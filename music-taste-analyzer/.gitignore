@@ -1,0 +1,10 @@
+.env
+*.cookie
+.tools/
+dist/
+*.exe
+music_taste_profile.json
+login-qr.png
+netease-login.png
+.DS_Store
+*.tmp

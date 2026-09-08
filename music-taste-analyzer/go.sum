@@ -1,0 +1,4 @@
+github.com/guohuiyuan/music-lib v0.0.0-20260902162047-3b22e851f4fa h1:UyvMwn2xs3Kb/pw850GaM+SP5STocw1aPWnkB2j0woA=
+github.com/guohuiyuan/music-lib v0.0.0-20260902162047-3b22e851f4fa/go.mod h1:3NMmYFjK/xfh3+vFR6c+BetrxUrIts3zwTrlnbRyjU4=
+github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e h1:MRM5ITcdelLK2j1vwZ3Je0FKVCfqOLp5zO6trqMLYs0=
+github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e/go.mod h1:XV66xRDqSt+GTGFMVlhk3ULuV0y9ZmzeVGR4mloJI3M=

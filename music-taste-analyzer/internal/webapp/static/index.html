@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Music Taste Analyzer</title>
+  <style>
+    :root{font-family:Inter,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:#151515;background:#f6f5f2}
+    *{box-sizing:border-box} body{margin:0;min-height:100vh;background:radial-gradient(circle at 10% 0,#fff 0,#f6f5f2 40%,#efede8 100%)}
+    .wrap{max-width:980px;margin:0 auto;padding:56px 24px 80px}.hero{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:28px}
+    h1{font-size:clamp(32px,6vw,58px);line-height:1;margin:0;letter-spacing:-.045em}.sub{max-width:520px;color:#666;line-height:1.7;margin:14px 0 0}
+    .privacy{font-size:13px;color:#666;border:1px solid #ddd8cf;border-radius:999px;padding:8px 12px;background:#fff9}
+    .card{background:#fff;border:1px solid #e7e2d9;border-radius:22px;box-shadow:0 14px 50px rgba(35,27,15,.06);padding:24px;margin-top:18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.platform{border:1px solid #e3ded5;background:#faf9f7;border-radius:16px;padding:16px;text-align:left;cursor:pointer;transition:.15s}
+    .platform:hover{transform:translateY(-1px);border-color:#999}.platform.active{background:#171717;color:#fff;border-color:#171717}.platform:disabled{opacity:.45;cursor:not-allowed}
+    .platform b{display:block;font-size:16px}.platform small{display:block;margin-top:5px;opacity:.68}.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+    select,button{font:inherit}.select{padding:11px 13px;border:1px solid #ddd7ce;border-radius:12px;background:#fff}.primary{background:#171717;color:#fff;border:0;border-radius:13px;padding:12px 18px;font-weight:650;cursor:pointer}.primary:disabled{opacity:.45;cursor:not-allowed}
+    .ghost{background:#fff;border:1px solid #ddd7ce;border-radius:13px;padding:10px 14px;cursor:pointer}.status{display:none}.status.show{display:block}.status-head{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .badge{font-size:12px;padding:6px 9px;border-radius:999px;background:#efede8}.qr-wrap{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:center;margin-top:22px}.qr{width:260px;height:260px;display:grid;place-items:center;background:#fff;border:1px solid #eee;border-radius:18px;padding:14px}.qr img,.qr canvas{max-width:232px!important;max-height:232px!important}
+    .steps{color:#666;line-height:1.8}.progress{margin-top:20px;padding:16px;border-radius:15px;background:#f6f5f2}.progress strong{display:block;color:#222;margin-bottom:5px}
+    .result{display:none}.result.show{display:block}.summary{font-size:18px;line-height:1.75}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.metric{background:#f6f5f2;border-radius:14px;padding:14px}.metric strong{font-size:24px;display:block}.metric span{color:#777;font-size:12px}
+    .columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{border:1px solid #ebe6dd;border-radius:16px;padding:16px}.panel h3{margin:0 0 12px;font-size:15px}.bars{display:flex;flex-direction:column;gap:10px}.bar-line{display:grid;grid-template-columns:120px 1fr 50px;gap:9px;align-items:center;font-size:13px}.bar-bg{height:8px;background:#ece9e3;border-radius:99px;overflow:hidden}.bar-fill{height:100%;background:#222;border-radius:99px}.tracks{padding-left:20px;color:#555;line-height:1.65}.facts{display:flex;flex-direction:column;gap:9px;color:#555;line-height:1.6}.fact{padding:10px 12px;background:#f7f5f1;border-radius:12px}.quality{font-size:13px;color:#666;line-height:1.65}
+    .caveat{font-size:13px;color:#777;line-height:1.65}.error{color:#a22}.hidden{display:none!important}
+    @media(max-width:720px){.hero{display:block}.privacy{display:inline-block;margin-top:16px}.grid{grid-template-columns:1fr}.qr-wrap,.columns{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.qr{margin:auto}.bar-line{grid-template-columns:100px 1fr 45px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div><h1>Music Taste Analyzer</h1><p class="sub">授权你的音乐账号，临时读取个人歌单并生成口味画像。原始歌单、登录态和分析结果都只在内存中使用，到期自动清理。</p></div>
+    <div class="privacy">无数据库 · 不落盘 · 用完即删</div>
+  </div>
+
+  <section class="card" id="startCard">
+    <h2 style="margin-top:0">选择音乐平台</h2>
+    <div class="grid" id="platforms"></div>
+    <div class="row" id="qqOptions" style="display:none"><label>QQ 音乐登录方式</label><select class="select" id="loginType"><option value="qq">QQ 扫码</option><option value="wx">微信扫码</option></select></div>
+    <div class="row"><label id="aiWrap" class="hidden"><input type="checkbox" id="useAI"> 使用 AI 深度画像（只发送聚合结果和少量代表歌曲）</label></div>
+    <div class="row"><button class="primary" id="startBtn">开始授权分析</button><span id="startError" class="error"></span></div>
+  </section>
+
+  <section class="card status" id="statusCard">
+    <div class="status-head"><div><div class="badge" id="statusBadge">等待扫码</div><h2 id="statusTitle">请扫码授权</h2></div><button class="ghost" id="cancelBtn">清除本次会话</button></div>
+    <div class="qr-wrap" id="qrWrap"><div class="qr" id="qr"></div><div class="steps"><b>只需要在这一页完成</b><br>1. 用对应音乐 App / QQ / 微信扫描左侧二维码。<br>2. 手机确认登录。<br>3. 页面会自动开始读取歌单并分析，不会再弹出二维码文件或 PowerShell 窗口。</div></div>
+    <div class="progress" id="progress"><strong>等待扫码</strong><span>授权后会自动继续。</span></div>
+  </section>
+
+  <section class="card result" id="resultCard">
+    <div class="status-head"><h2 style="margin:0">你的音乐口味画像</h2><div><button class="ghost" id="downloadBtn">下载本次结果</button> <button class="ghost" id="againBtn">重新分析</button></div></div>
+    <div class="summary" id="summary"></div>
+    <div class="metrics" id="metrics"></div>
+    <div class="columns" style="margin-bottom:14px">
+      <div class="panel"><h3>行为画像</h3><div class="facts" id="behaviorFacts"></div></div>
+      <div class="panel"><h3>语义信号覆盖率</h3><div class="bars" id="coverage"></div></div>
+    </div>
+    <div class="columns">
+      <div class="panel"><h3>曲风线索</h3><div class="bars" id="styles"></div></div>
+      <div class="panel"><h3>情绪线索</h3><div class="bars" id="moods"></div></div>
+      <div class="panel"><h3>使用场景</h3><div class="bars" id="scenes"></div></div>
+      <div class="panel"><h3>能量 / 听感线索</h3><div class="bars" id="energy"></div></div>
+    </div>
+    <div class="columns" style="margin-top:14px">
+      <div class="panel"><h3>相对常出现的歌手</h3><div class="bars" id="artists"></div></div>
+      <div class="panel"><h3>文字体系（不是严格演唱语言）</h3><div class="bars" id="textSystems"></div></div>
+    </div>
+    <div class="panel" style="margin-top:14px"><h3>代表歌曲</h3><ol class="tracks" id="tracks"></ol></div>
+    <div class="panel hidden" style="margin-top:14px" id="qualityPanel"><h3>数据清洗记录</h3><div class="quality" id="quality"></div></div>
+    <div class="panel hidden" style="margin-top:14px" id="semanticPanel"><h3>AI 深度画像</h3><div id="semantic"></div></div>
+    <div class="caveat" id="caveats" style="margin-top:16px"></div>
+  </section>
+</div>
+<script>
+const $=s=>document.querySelector(s); let platform='netease', sid='', token='', pollTimer=null, lastResult=null;
+async function api(url,opts={}){opts.headers={...(opts.headers||{}),'Content-Type':'application/json'};if(token)opts.headers['X-Session-Token']=token;const r=await fetch(url,opts);if(r.status===204)return null;const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'请求失败');return j}
+async function init(){const c=await api('/api/config');if(c.ai_enabled)$('#aiWrap').classList.remove('hidden');const box=$('#platforms');for(const p of c.platforms){const b=document.createElement('button');b.className='platform'+(p.id===platform?' active':'');b.disabled=!p.qr;b.innerHTML=`<b>${p.name}</b><small>${p.qr?'扫码授权':p.note||'暂不可用'}</small>`;b.onclick=()=>{platform=p.id;document.querySelectorAll('.platform').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('#qqOptions').style.display=platform==='qq'?'flex':'none'};box.appendChild(b)}}
+$('#startBtn').onclick=async()=>{try{$('#startError').textContent='';$('#startBtn').disabled=true;const body={platform,login_type:platform==='qq'?$('#loginType').value:'',use_ai:$('#useAI').checked};const j=await api('/api/sessions',{method:'POST',body:JSON.stringify(body)});sid=j.session.id;token=j.token;showStatus(j.session);pollTimer=setInterval(poll,1500)}catch(e){$('#startError').textContent=e.message;$('#startBtn').disabled=false}}
+function showStatus(s){$('#statusCard').classList.add('show');$('#startCard').classList.add('hidden');$('#statusBadge').textContent=statusText(s.status);$('#statusTitle').textContent=s.message||statusText(s.status);renderQR(s.qr||{});renderProgress(s)}
+function renderQR(q){const box=$('#qr');box.innerHTML='';if(q.image_url){const img=new Image();img.src=q.image_url;img.alt='登录二维码';box.appendChild(img);return}box.innerHTML='<span style="color:#888">二维码已完成使用</span>'}
+function renderProgress(s){const p=s.progress||{};let title=s.message||'';let detail='';if(s.status==='queued')detail='当前并发任务较多时会在这里短暂排队。';if(s.status==='analyzing'&&p.stage==='collecting')detail=`正在读取第 ${p.current_playlist||0} 个歌单${p.playlist_name?'：'+escapeHTML(p.playlist_name):''}`;if(s.status==='analyzing'&&p.stage==='analyzing')detail=`已临时读取 ${p.observations||0} 条记录，正在生成画像。`;$('#progress').innerHTML=`<strong>${escapeHTML(title)}</strong><span>${detail}</span>`;$('#qrWrap').style.display=(s.status==='waiting'||s.status==='scanned')?'grid':'none'}
+async function poll(){if(!sid)return;try{const j=await api('/api/sessions/'+sid);const s=j.session;$('#statusBadge').textContent=statusText(s.status);$('#statusTitle').textContent=s.message||statusText(s.status);renderProgress(s);if(s.status==='scanned'&&s.qr)renderQR(s.qr);if(s.status==='done'){clearInterval(pollTimer);lastResult=s.result;renderResult(s.result);return}if(s.status==='error'||s.status==='expired'){clearInterval(pollTimer);$('#progress').innerHTML=`<strong class="error">${escapeHTML(s.message)}</strong><span>请清除会话后重新开始。</span>`}}catch(e){clearInterval(pollTimer);$('#progress').innerHTML=`<strong class="error">${escapeHTML(e.message)}</strong>`}}
+function renderResult(r){$('#statusCard').classList.remove('show');$('#qr').innerHTML='';$('#progress').textContent='';$('#resultCard').classList.add('show');const p=r.profile;$('#summary').innerHTML=(p.summary||[]).map(x=>`<p>${escapeHTML(x)}</p>`).join('');$('#metrics').innerHTML=[['去重歌曲',p.unique_tracks],['歌手',p.unique_artists],['我喜欢占比',pct(p.favorite_share)],['多歌单重复',pct(p.multi_playlist_share)],['Top10歌手占比',pct(p.top10_artist_share)],['置信度',p.confidence]].map(x=>`<div class="metric"><strong>${escapeHTML(x[1])}</strong><span>${x[0]}</span></div>`).join('');$('#behaviorFacts').innerHTML=[p.listener_mode,p.exploration].filter(Boolean).map(x=>`<div class="fact">${escapeHTML(x)}</div>`).join('');const cv=p.signal_coverage||{};coverageBars('#coverage',[{name:'曲风',share:cv.style||0},{name:'情绪',share:cv.mood||0},{name:'场景',share:cv.scene||0},{name:'能量/听感',share:cv.energy||0}]);bars('#styles',p.style_signals);bars('#moods',p.mood_signals);bars('#scenes',p.scene_signals);bars('#energy',p.energy_signals);bars('#artists',p.top_artists);bars('#textSystems',p.text_systems);$('#tracks').innerHTML=(p.representative_tracks||[]).map(t=>`<li>${escapeHTML(t.name)} — ${escapeHTML(t.artist)}</li>`).join('');const q=p.data_quality||{};if((q.dropped_missing||0)+(q.merged_duplicates||0)+(q.noise_artist_mentions||0)>0){$('#qualityPanel').classList.remove('hidden');const samples=(q.noise_artist_samples||[]).map(escapeHTML).join('、');$('#quality').innerHTML=`输入 ${q.input_rows||0} 条；丢弃缺失项 ${q.dropped_missing||0} 条；合并重复记录 ${q.merged_duplicates||0} 条；过滤疑似噪声歌手提及 ${q.noise_artist_mentions||0} 次${samples?'（示例：'+samples+'）':''}。`;}else{$('#qualityPanel').classList.add('hidden')}$('#caveats').innerHTML='<b>边界说明</b><br>'+ (p.caveats||[]).map(escapeHTML).join('<br>');if(r.semantic_profile){$('#semanticPanel').classList.remove('hidden');const s=r.semantic_profile;const tags=[...(s.styles||[]),...(s.moods||[])].map(escapeHTML).join('、');$('#semantic').innerHTML=`${tags?'<p><b>高层次线索：</b>'+tags+'</p>':''}<p><b>核心：</b>${escapeHTML(s.core_summary||'')}</p><p><b>旋律/节奏：</b>${escapeHTML(s.melody_rhythm||'')}</p><p><b>人声：</b>${escapeHTML(s.vocal_preference||'')}</p><p><b>编曲：</b>${escapeHTML(s.arrangement_preference||'')}</p><p><b>歌词：</b>${escapeHTML(s.lyric_preference||'')}</p><p><b>不确定性：</b>${escapeHTML(s.uncertainty||'')}</p>`}else if(r.warning){$('#semanticPanel').classList.remove('hidden');$('#semantic').innerHTML=`<p class="error">${escapeHTML(r.warning)}</p>`}else{$('#semanticPanel').classList.add('hidden')}}
+function bars(sel,arr=[]){const max=Math.max(...arr.map(x=>x.weight||0),1);$(sel).innerHTML=arr.slice(0,8).map(x=>`<div class="bar-line"><span title="${escapeHTML(x.name)}">${escapeHTML(x.name)}</span><div class="bar-bg"><div class="bar-fill" style="width:${Math.max(3,(x.weight||0)/max*100)}%"></div></div><span>${pct(x.share)}</span></div>`).join('')||'<span style="color:#999">暂无足够线索</span>'}
+function coverageBars(sel,arr=[]){$(sel).innerHTML=arr.map(x=>`<div class="bar-line"><span>${escapeHTML(x.name)}</span><div class="bar-bg"><div class="bar-fill" style="width:${Math.max(0,Math.min(100,(x.share||0)*100))}%"></div></div><span>${pct(x.share)}</span></div>`).join('')}
+$('#cancelBtn').onclick=clearSession;$('#againBtn').onclick=async()=>{await clearSession();location.reload()};async function clearSession(){if(pollTimer)clearInterval(pollTimer);if(sid&&token){try{await api('/api/sessions/'+sid,{method:'DELETE'})}catch(_){}}sid='';token='';$('#statusCard').classList.remove('show');$('#resultCard').classList.remove('show');$('#startCard').classList.remove('hidden');$('#startBtn').disabled=false}
+$('#downloadBtn').onclick=()=>{if(!lastResult)return;const blob=new Blob([JSON.stringify(lastResult,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='music_taste_profile.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function statusText(s){return({waiting:'等待扫码',scanned:'已扫码',queued:'排队中',analyzing:'分析中',done:'已完成',error:'出错',expired:'已过期'})[s]||s}function pct(v){return Math.round((v||0)*1000)/10+'%'}function escapeHTML(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+window.addEventListener('pagehide',()=>{if(sid&&token)fetch('/api/sessions/'+sid,{method:'DELETE',headers:{'X-Session-Token':token},keepalive:true}).catch(()=>{})});init().catch(e=>{$('#startError').textContent=e.message});
+</script>
+</body>
+</html>

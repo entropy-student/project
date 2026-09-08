@@ -1,0 +1,7 @@
+[
+  {"name":"晴天","artist":"周杰伦","playlists":["我喜欢的音乐"],"favorite":true,"weight":1},
+  {"name":"七里香","artist":"周杰伦","playlists":["我喜欢的音乐","青春回忆"],"favorite":true,"weight":1},
+  {"name":"三生三世","artist":"张杰","playlists":["夜晚循环"],"weight":1},
+  {"name":"红豆","artist":"王菲","playlists":["夜晚循环"],"weight":1},
+  {"name":"カタオモイ","artist":"Aimer","playlists":["J-pop"],"weight":1}
+]
