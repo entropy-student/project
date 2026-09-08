@@ -10,6 +10,9 @@ RUN cat /tmp/bundle/source.b64.part-* \
  && tar -xzf /tmp/source.tar.gz -C /app \
  && rm -rf /tmp/bundle /tmp/source.tar.gz
 
+# First production E2E is GMPay-only. Keep PayPal disabled until its secrets and Sandbox/Live gate are ready.
+COPY config/apps.gmpay.production.json /app/config/apps.gmpay.production.json
+
 RUN if [ -f package-lock.json ]; then npm ci --omit=dev; else npm install --omit=dev; fi \
  && npm cache clean --force
 
