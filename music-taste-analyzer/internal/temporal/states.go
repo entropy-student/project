@@ -91,6 +91,11 @@ func assessCore(m Metrics, share, coverage float64, cfg Config) (float64, float6
 }
 
 func assessEmerging(m Metrics, evolutionCoverage, currentCoverage float64, now time.Time, cfg Config) (float64, float64) {
+	// Emerging is a longitudinal claim, not merely a recent-popularity claim. A
+	// weekly aggregate plus untimed all-time ranking is deliberately insufficient.
+	if evolutionCoverage < 0.45 || currentCoverage < 0.35 {
+		return 0, 0
+	}
 	if m.Recent90Score <= 0 || m.RecentActiveBuckets < cfg.MinEmergingBuckets || m.LastSeen == nil {
 		return 0, 0
 	}
@@ -213,7 +218,7 @@ func evidenceIDs(signals []signal, lookback time.Duration, now time.Time) []stri
 func deriveCurrentCoverage(events []domain.Event, now time.Time, cfg Config) float64 {
 	total, recent, timed := 0, 0, 0
 	for _, e := range events {
-		if e.Type == domain.EventPlaylistMembership || e.Type == domain.EventFavorite || e.Type == domain.EventPlay || e.Type == domain.EventComplete || e.Type == domain.EventSearch {
+		if e.Type == domain.EventPlaylistMembership || e.Type == domain.EventFavorite || e.Type == domain.EventPlay || e.Type == domain.EventPlayAggregate || e.Type == domain.EventComplete || e.Type == domain.EventSearch {
 			total++
 		}
 		at, _ := effectiveEventTime(e.Time)
