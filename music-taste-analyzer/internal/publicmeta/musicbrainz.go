@@ -21,6 +21,23 @@ type Client struct {
 	next time.Time
 }
 
+type mbArtist struct {
+	Name string `json:"name"`
+}
+
+type mbArtistCredit struct {
+	Name   string   `json:"name"`
+	Artist mbArtist `json:"artist"`
+}
+
+type mbRecording struct {
+	ID               string           `json:"id"`
+	Score            int              `json:"score"`
+	Title            string           `json:"title"`
+	FirstReleaseDate string           `json:"first-release-date"`
+	ArtistCredit     []mbArtistCredit `json:"artist-credit"`
+}
+
 func New(cfg Config) *Client {
 	defaults := DefaultConfig()
 	if cfg.MaxTracks <= 0 {
@@ -102,18 +119,7 @@ func (c *Client) matchOne(ctx context.Context, track domain.TrackRef) (Match, bo
 		return Match{}, false, fmt.Errorf("http %d", resp.StatusCode)
 	}
 	var payload struct {
-		Recordings []struct {
-			ID               string `json:"id"`
-			Score            int    `json:"score"`
-			Title            string `json:"title"`
-			FirstReleaseDate string `json:"first-release-date"`
-			ArtistCredit     []struct {
-				Name   string `json:"name"`
-				Artist struct {
-					Name string `json:"name"`
-				} `json:"artist"`
-			} `json:"artist-credit"`
-		} `json:"recordings"`
+		Recordings []mbRecording `json:"recordings"`
 	}
 	if err := json.NewDecoder(resp.Body).Decode(&payload); err != nil {
 		return Match{}, false, err
@@ -182,12 +188,7 @@ func canonicalArtistSet(artists []string) map[string]bool {
 	return out
 }
 
-func creditMatches(wanted map[string]bool, credits []struct {
-	Name   string `json:"name"`
-	Artist struct {
-		Name string `json:"name"`
-	} `json:"artist"`
-}) bool {
+func creditMatches(wanted map[string]bool, credits []mbArtistCredit) bool {
 	for _, credit := range credits {
 		for _, candidate := range []string{credit.Name, credit.Artist.Name} {
 			key := canonicalText(candidate)
