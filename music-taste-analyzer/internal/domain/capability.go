@@ -69,12 +69,15 @@ const (
 )
 
 func (s CapabilitySet) RecommendedMode() AnalysisMode {
-	hasTemporalBehavior := s.Supports(CapabilityRecentPlays) || s.Supports(CapabilityWeeklyRanking) || s.Supports(CapabilityPlaylistMembershipTime)
-	hasHistoricalAnchor := s.Supports(CapabilityAllTimeRanking) || s.Supports(CapabilityPlaylistMembershipTime)
-	if hasTemporalBehavior && hasHistoricalAnchor {
+	// Full dynamic analysis requires a genuinely longitudinal, time-stamped anchor.
+	// A 7-day ranking plus an untimed all-time ranking is useful, but it is only two
+	// aggregate views and must not be advertised as a complete evolution history.
+	hasRecentTimedBehavior := s.Supports(CapabilityRecentPlays) || s.Supports(CapabilityWeeklyRanking) || s.Supports(CapabilityPlaylistMembershipTime)
+	hasLongitudinalTimedHistory := s.Supports(CapabilityPlaylistMembershipTime)
+	if hasRecentTimedBehavior && hasLongitudinalTimedHistory {
 		return ModeDynamicFull
 	}
-	if hasTemporalBehavior || s.Supports(CapabilityPlaylistCreatedAt) || s.Supports(CapabilityPlaylistUpdatedAt) {
+	if hasRecentTimedBehavior || s.Supports(CapabilityAllTimeRanking) || s.Supports(CapabilityPlaylistCreatedAt) || s.Supports(CapabilityPlaylistUpdatedAt) {
 		return ModeDynamicPartial
 	}
 	return ModeCollectionOnly
