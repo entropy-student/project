@@ -55,6 +55,7 @@ func summarizeTraits(points []point, members []int) []Trait {
 			if name, strength := dimensionLabel(key, value); name != "" && strength > 0 {
 				add("dimension", name, w*0.72*confidence*strength, confidence)
 			}
+		}
 	}
 
 	traits := make([]Trait, 0, len(byKey))
@@ -70,9 +71,9 @@ func summarizeTraits(points []point, members []int) []Trait {
 		}
 		confidence := acc.confidence / float64(acc.support)
 		traits = append(traits, Trait{
-			Kind: acc.kind,
-			Name: acc.name,
-			Score: round3(acc.weight / maxWeight),
+			Kind:       acc.kind,
+			Name:       acc.name,
+			Score:      round3(acc.weight / maxWeight),
 			Confidence: round3(confidence),
 		})
 	}
@@ -180,37 +181,63 @@ func dimensionLabel(key string, value float64) (string, float64) {
 	high := value >= 0.5
 	switch key {
 	case domain.FeatureBrightness:
-		if high { return "明亮", strength }
+		if high {
+			return "明亮", strength
+		}
 		return "偏暗", strength
 	case domain.FeatureWarmth:
-		if high { return "温暖", strength }
+		if high {
+			return "温暖", strength
+		}
 		return "偏冷", strength
 	case domain.FeatureTension:
-		if high { return "紧张感", strength }
+		if high {
+			return "紧张感", strength
+		}
 		return "松弛", strength
 	case domain.FeatureWeight:
-		if high { return "厚重", strength }
+		if high {
+			return "厚重", strength
+		}
 		return "轻盈", strength
 	case domain.FeatureSweetness:
-		if high { return "甜感", strength }
+		if high {
+			return "甜感", strength
+		}
 		return "克制甜感", strength
 	case domain.FeatureEnergy:
-		if high { return "高能量", strength }
+		if high {
+			return "高能量", strength
+		}
 		return "低能量", strength
 	case domain.FeatureMelodyDriven:
-		if high { return "旋律驱动", strength }
+		if high {
+			return "旋律驱动", strength
+		}
 	case domain.FeatureRhythmDriven:
-		if high { return "律动驱动", strength }
+		if high {
+			return "律动驱动", strength
+		}
 	case domain.FeatureAtmosphereDriven:
-		if high { return "氛围驱动", strength }
+		if high {
+			return "氛围驱动", strength
+		}
 	case domain.FeatureVocalForward:
-		if high { return "人声靠前", strength }
+		if high {
+			return "人声靠前", strength
+		}
 	case domain.FeatureHookStrength:
-		if high { return "抓耳", strength }
+		if high {
+			return "抓耳", strength
+		}
 	case domain.FeatureEmotionalBuild:
-		if high { return "情绪递进", strength }
+		if high {
+			return "情绪递进", strength
+		}
 	case domain.FeatureDensity:
-		if high { return "编排偏密", strength }
+		if high {
+			return "编排偏密", strength
+		}
 		return "编排偏疏", strength
 	}
 	return "", 0
@@ -218,10 +245,15 @@ func dimensionLabel(key string, value float64) (string, float64) {
 
 func traitPriority(kind string) int {
 	switch kind {
-	case "genre": return 0
-	case "mood": return 1
-	case "dimension": return 2
-	case "scene": return 3
-	default: return 4
+	case "genre":
+		return 0
+	case "mood":
+		return 1
+	case "dimension":
+		return 2
+	case "scene":
+		return 3
+	default:
+		return 4
 	}
 }
