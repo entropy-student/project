@@ -6,6 +6,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
+	"strings"
 	"sync"
 	"time"
 
@@ -13,7 +14,10 @@ import (
 
 	"music-taste-analyzer/internal/aiprofile"
 	"music-taste-analyzer/internal/connectors"
+	"music-taste-analyzer/internal/domain"
+	"music-taste-analyzer/internal/normalize"
 	"music-taste-analyzer/internal/taste"
+	"music-taste-analyzer/internal/temporal"
 )
 
 type Status string
@@ -60,8 +64,16 @@ type Progress struct {
 	Observations    int    `json:"observations,omitempty"`
 }
 
+type DynamicProfile struct {
+	Mode         domain.AnalysisMode    `json:"mode"`
+	Capabilities domain.CapabilitySet   `json:"capabilities"`
+	Coverage     domain.CoverageReport  `json:"coverage"`
+	Temporal     temporal.CompactResult `json:"temporal"`
+}
+
 type Result struct {
 	Profile  *taste.Profile    `json:"profile,omitempty"`
+	Dynamic  *DynamicProfile   `json:"dynamic_profile,omitempty"`
 	Semantic *aiprofile.Result `json:"semantic_profile,omitempty"`
 	Warning  string            `json:"warning,omitempty"`
 }
@@ -371,12 +383,17 @@ func (m *Manager) runAnalysis(s *entry, cookie string) {
 	s.mu.Unlock()
 
 	client, err := connectors.NewClient(s.platform, cookie)
-	cookie = ""
 	if err != nil {
+		cookie = ""
 		s.setError(StatusError, "创建平台连接失败: "+err.Error())
 		return
 	}
-	observations, err := connectors.Collect(s.ctx, client, connectors.CollectOptions{MaxPlaylists: m.cfg.MaxPlaylists}, func(p connectors.CollectProgress) {
+	// Build the optional dynamic collector while the authenticated cookie exists.
+	// It lives only for this analysis call and is never persisted in the session.
+	dynamicCollector := connectors.NewDynamicCollector(s.platform, cookie)
+	cookie = ""
+
+	collected, err := connectors.CollectDetailed(s.ctx, client, connectors.CollectOptions{MaxPlaylists: m.cfg.MaxPlaylists}, func(p connectors.CollectProgress) {
 		s.mu.Lock()
 		s.progress = Progress{Stage: "collecting", CurrentPlaylist: p.CurrentPlaylist, PlaylistName: p.PlaylistName, TrackCount: p.TrackCount, Observations: p.Observations}
 		s.mu.Unlock()
@@ -387,21 +404,58 @@ func (m *Manager) runAnalysis(s *entry, cookie string) {
 	}
 
 	s.mu.Lock()
-	s.progress = Progress{Stage: "analyzing", Observations: len(observations)}
-	s.message = "正在生成口味画像"
+	s.progress = Progress{Stage: "analyzing", Observations: len(collected.Observations)}
+	s.message = "正在生成基础口味画像"
 	s.mu.Unlock()
-	profile := taste.Analyze(observations)
-	observations = nil // release raw user data as early as possible
+	profile := taste.Analyze(collected.Observations)
+	collected.Observations = nil // release legacy raw observations immediately
+
+	warnings := []string{}
+	v3Input := collected.Input
+	if dynamicCollector != nil {
+		s.mu.Lock()
+		s.progress = Progress{Stage: "dynamic"}
+		s.message = "正在读取近期听歌与时间证据"
+		s.mu.Unlock()
+		dynamicResult, dynamicErr := dynamicCollector.CollectDynamic(s.ctx, v3Input.CollectedAt)
+		if dynamicErr != nil {
+			warnings = append(warnings, "动态时间数据读取失败，已自动降级为收藏/歌单画像: "+dynamicErr.Error())
+		} else {
+			v3Input = normalize.MergeAnalysisInputs(v3Input, dynamicResult.Input)
+			warnings = append(warnings, dynamicResult.Warnings...)
+		}
+	}
 
 	result := &Result{Profile: &profile}
+	if err := v3Input.Validate(); err != nil {
+		warnings = append(warnings, "动态数据校验未通过，因此未输出时间画像: "+err.Error())
+	} else {
+		s.mu.Lock()
+		s.progress = Progress{Stage: "temporal"}
+		s.message = "正在计算当前口味与长期核心"
+		s.mu.Unlock()
+		fullTemporal := temporal.Analyze(v3Input, temporal.DefaultConfig())
+		compactTemporal := temporal.Compact(fullTemporal, 8)
+		result.Dynamic = &DynamicProfile{
+			Mode:         fullTemporal.Mode,
+			Capabilities: v3Input.Capabilities,
+			Coverage:     v3Input.Coverage,
+			Temporal:     compactTemporal,
+		}
+		fullTemporal = temporal.Result{} // release full per-subject time series before session storage
+	}
+	v3Input = domain.AnalysisInput{} // raw normalized events never survive the analysis call
+	collected.Input = domain.AnalysisInput{}
+
 	if s.useAI {
 		semantic, aiErr := aiprofile.AnalyzeContext(s.ctx, profile)
 		if aiErr != nil {
-			result.Warning = "基础画像已完成，但 AI 深度画像失败: " + aiErr.Error()
+			warnings = append(warnings, "基础画像已完成，但 AI 深度画像失败: "+aiErr.Error())
 		} else {
 			result.Semantic = semantic
 		}
 	}
+	result.Warning = strings.Join(uniqueWarnings(warnings), "；")
 
 	s.mu.Lock()
 	s.status = StatusDone
@@ -410,6 +464,20 @@ func (m *Manager) runAnalysis(s *entry, cookie string) {
 	s.result = result
 	s.expiresAt = time.Now().Add(m.cfg.ResultTTL)
 	s.mu.Unlock()
+}
+
+func uniqueWarnings(in []string) []string {
+	seen := map[string]bool{}
+	out := make([]string, 0, len(in))
+	for _, warning := range in {
+		warning = strings.TrimSpace(warning)
+		if warning == "" || seen[warning] {
+			continue
+		}
+		seen[warning] = true
+		out = append(out, warning)
+	}
+	return out
 }
 
 func (s *entry) updateStatus(status Status, message string) {
@@ -421,7 +489,7 @@ func (s *entry) updateStatus(status Status, message string) {
 
 func (s *entry) setError(status Status, message string) {
 	s.mu.Lock()
-	defer s.mu.Unlock()
+	de s.mu.Unlock()
 	s.status = status
 	s.message = message
 	s.qr = nil
