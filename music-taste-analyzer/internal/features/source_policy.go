@@ -1,0 +1,44 @@
+package features
+
+import "music-taste-analyzer/internal/domain"
+
+// ConfidenceCeiling prevents a weak evidence source from becoming authoritative
+// merely because many similar weak signals were repeated.
+func ConfidenceCeiling(source domain.FeatureSource) float64 {
+	switch source {
+	case domain.FeatureAudioAnalysis:
+		return 0.98
+	case domain.FeaturePlatformMetadata:
+		return 0.92
+	case domain.FeaturePublicMetadata:
+		return 0.84
+	case domain.FeatureUserLabel:
+		return 0.55
+	case domain.FeatureAIInference:
+		return 0.45
+	default:
+		return 0.40
+	}
+}
+
+func ClampFeatureConfidence(value domain.FeatureValue) domain.FeatureValue {
+	ceiling := ConfidenceCeiling(value.Source)
+	if value.Confidence < 0 {
+		value.Confidence = 0
+	}
+	if value.Confidence > ceiling {
+		value.Confidence = ceiling
+	}
+	return value
+}
+
+func ClampLabelConfidence(value domain.WeightedLabel) domain.WeightedLabel {
+	ceiling := ConfidenceCeiling(value.Source)
+	if value.Confidence < 0 {
+		value.Confidence = 0
+	}
+	if value.Confidence > ceiling {
+		value.Confidence = ceiling
+	}
+	return value
+}
