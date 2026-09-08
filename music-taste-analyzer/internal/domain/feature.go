@@ -20,17 +20,21 @@ type FeatureValue struct {
 }
 
 type WeightedLabel struct {
-	Name       string  `json:"name"`
-	Weight     float64 `json:"weight"`
-	Confidence float64 `json:"confidence"`
+	Name       string        `json:"name"`
+	Weight     float64       `json:"weight"`
+	Confidence float64       `json:"confidence"`
+	Source     FeatureSource `json:"source,omitempty"`
+	Evidence   []string      `json:"evidence,omitempty"`
 }
 
 type TrackFeatures struct {
-	Track       TrackRef        `json:"track"`
-	Genres      []WeightedLabel `json:"genres,omitempty"`
-	Languages   []WeightedLabel `json:"languages,omitempty"`
-	Dimensions  []FeatureValue  `json:"dimensions,omitempty"`
-	Caveats     []string        `json:"caveats,omitempty"`
+	Track      TrackRef        `json:"track"`
+	Genres     []WeightedLabel `json:"genres,omitempty"`
+	Moods      []WeightedLabel `json:"moods,omitempty"`
+	Scenes     []WeightedLabel `json:"scenes,omitempty"`
+	Languages  []WeightedLabel `json:"languages,omitempty"`
+	Dimensions []FeatureValue  `json:"dimensions,omitempty"`
+	Caveats    []string        `json:"caveats,omitempty"`
 }
 
 const (
