@@ -13,11 +13,20 @@ import (
 
 func TestMusicBrainzMatchRequiresTitleAndArtist(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if got := r.URL.Query().Get("query"); got != `recording:"Real Friends" AND artist:"Camila Cabello"` {
+		q := string(rune(34))
+		expected := "recording:" + q + "Real Friends" + q + " AND artist:" + q + "Camila Cabello" + q
+		if got := r.URL.Query().Get("query"); got != expected {
 			t.Fatalf("unexpected query: %q", got)
 		}
 		w.Header().Set("Content-Type", "application/json")
-		_, _ = w.Write([]byte(`{"recordings":[{"id":"mbid-1","score":100,"title":"Real Friends","first-release-date":"2017-12-07","artist-credit":[{"name":"Camila Cabello","artist":{"name":"Camila Cabello"}}]}]}`))
+		_ = json.NewEncoder(w).Encode(map[string]interface{}{
+			"recordings": []interface{}{map[string]interface{}{
+				"id": "mbid-1", "score": 100, "title": "Real Friends", "first-release-date": "2017-12-07",
+				"artist-credit": []interface{}{map[string]interface{}{
+					"name": "Camila Cabello", "artist": map[string]interface{}{"name": "Camila Cabello"},
+				}},
+			}},
+		})
 	}))
 	defer server.Close()
 
@@ -40,7 +49,14 @@ func TestMusicBrainzMatchRequiresTitleAndArtist(t *testing.T) {
 func TestMusicBrainzRejectsWrongArtist(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		_, _ = w.Write([]byte(`{"recordings":[{"id":"mbid-1","score":100,"title":"Same Title","artist-credit":[{"name":"Artist A","artist":{"name":"Artist A"}}]}]}`))
+		_ = json.NewEncoder(w).Encode(map[string]interface{}{
+			"recordings": []interface{}{map[string]interface{}{
+				"id": "mbid-1", "score": 100, "title": "Same Title",
+				"artist-credit": []interface{}{map[string]interface{}{
+					"name": "Artist A", "artist": map[string]interface{}{"name": "Artist A"},
+				}},
+			}},
+		})
 	}))
 	defer server.Close()
 	cfg := DefaultConfig()
@@ -66,7 +82,18 @@ func TestListenBrainzTagsStayPublicMetadata(t *testing.T) {
 			t.Fatal(err)
 		}
 		w.Header().Set("Content-Type", "application/json")
-		_, _ = w.Write([]byte(`{"mbid-1":{"tag":{"recording":[{"count":8,"genre_mbid":"genre-1","tag":"trip hop"},{"count":4,"tag":"dreamy"}],"artist":[{"count":2,"genre_mbid":"genre-2","tag":"electronic"}],"release_group":[]}}}`))
+		_ = json.NewEncoder(w).Encode(map[string]interface{}{
+			"mbid-1": map[string]interface{}{
+				"tag": map[string]interface{}{
+					"recording": []interface{}{
+						map[string]interface{}{"count": 8, "genre_mbid": "genre-1", "tag": "trip hop"},
+						map[string]interface{}{"count": 4, "tag": "dreamy"},
+					},
+					"artist": []interface{}{map[string]interface{}{"count": 2, "genre_mbid": "genre-2", "tag": "electronic"}},
+					"release_group": []interface{}{},
+				},
+			},
+		})
 	}))
 	defer server.Close()
 	cfg := DefaultConfig()
