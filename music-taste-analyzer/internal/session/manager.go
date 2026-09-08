@@ -15,6 +15,7 @@ import (
 	"music-taste-analyzer/internal/aiprofile"
 	"music-taste-analyzer/internal/connectors"
 	"music-taste-analyzer/internal/domain"
+	"music-taste-analyzer/internal/features"
 	"music-taste-analyzer/internal/normalize"
 	"music-taste-analyzer/internal/taste"
 	"music-taste-analyzer/internal/temporal"
@@ -72,10 +73,11 @@ type DynamicProfile struct {
 }
 
 type Result struct {
-	Profile  *taste.Profile    `json:"profile,omitempty"`
-	Dynamic  *DynamicProfile   `json:"dynamic_profile,omitempty"`
-	Semantic *aiprofile.Result `json:"semantic_profile,omitempty"`
-	Warning  string            `json:"warning,omitempty"`
+	Profile  *taste.Profile          `json:"profile,omitempty"`
+	Dynamic  *DynamicProfile         `json:"dynamic_profile,omitempty"`
+	Features *features.CompactResult `json:"feature_profile,omitempty"`
+	Semantic *aiprofile.Result       `json:"semantic_profile,omitempty"`
+	Warning  string                  `json:"warning,omitempty"`
 }
 
 type Public struct {
@@ -418,6 +420,17 @@ func (m *Manager) runAnalysis(s *entry, cookie string) {
 	}
 
 	result := &Result{Profile: &profile}
+	// Feature-space analysis is local and provenance-aware. It never invents BPM,
+	// key, instruments or arrangement data when the input does not contain them.
+	s.mu.Lock()
+	s.progress = Progress{Stage: "features"}
+	s.message = "正在提取可验证的音乐特征"
+	s.mu.Unlock()
+	fullFeatures := features.Analyze(v3Input)
+	compactFeatures := features.Compact(fullFeatures)
+	result.Features = &compactFeatures
+	fullFeatures = features.Result{}
+
 	if err := v3Input.Validate(); err != nil {
 		warnings = append(warnings, "动态数据校验未通过，因此未输出时间画像: "+err.Error())
 	} else {
