@@ -15,8 +15,9 @@ func TestRecommendedMode(t *testing.T) {
 		items []Capability
 		want  AnalysisMode
 	}{
-		{"full", []Capability{{Key: CapabilityRecentPlays, Status: CapabilityAvailable}, {Key: CapabilityAllTimeRanking, Status: CapabilityAvailable}}, ModeDynamicFull},
-		{"partial", []Capability{{Key: CapabilityPlaylistUpdatedAt, Status: CapabilityAvailable}}, ModeDynamicPartial},
+		{"full-longitudinal", []Capability{{Key: CapabilityRecentPlays, Status: CapabilityAvailable}, {Key: CapabilityPlaylistMembershipTime, Status: CapabilityAvailable}}, ModeDynamicFull},
+		{"aggregate-rankings-stay-partial", []Capability{{Key: CapabilityWeeklyRanking, Status: CapabilityAvailable}, {Key: CapabilityAllTimeRanking, Status: CapabilityAvailable}}, ModeDynamicPartial},
+		{"partial-metadata", []Capability{{Key: CapabilityPlaylistUpdatedAt, Status: CapabilityAvailable}}, ModeDynamicPartial},
 		{"static", []Capability{{Key: CapabilityPrivatePlaylists, Status: CapabilityAvailable}}, ModeCollectionOnly},
 	}
 	for _, tc := range cases {
