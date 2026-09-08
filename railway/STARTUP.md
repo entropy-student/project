@@ -1,0 +1,1 @@
+Railway should build from the repository root using the root Dockerfile, run continuously (no cron, no sleep), and health-check `/ready` on port 8787. The Dockerfile reconstructs the reviewed source bundle, verifies its SHA-256, installs production dependencies, and then overlays the Railway GMPay-only configuration.
