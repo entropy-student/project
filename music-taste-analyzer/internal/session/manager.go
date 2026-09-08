@@ -215,8 +215,6 @@ func (m *Manager) Create(ownerIP, platform, loginType string, useAI bool) (Publi
 		qr: qr, createdAt: now, expiresAt: now.Add(m.cfg.AuthTTL),
 		ctx: ctx, cancel: cancel,
 	}
-	// Re-check caps under the write lock. Several clients may have passed the
-	// inexpensive pre-flight check while their upstream QR requests were in flight.
 	m.mu.Lock()
 	select {
 	case <-m.closed:
@@ -346,8 +344,6 @@ func (m *Manager) pollLogin(s *entry) {
 			s.message = "授权成功，等待分析资源"
 			s.progress = Progress{Stage: "queued"}
 			s.qr = nil
-			// The short QR/auth TTL must not expire a valid session while it is
-			// queued or analyzing. From this point the analysis TTL owns the deadline.
 			s.expiresAt = time.Now().Add(m.cfg.AnalysisTTL)
 			s.mu.Unlock()
 			go m.runAnalysis(s, cookie)
@@ -376,9 +372,6 @@ func (m *Manager) runAnalysis(s *entry, cookie string) {
 	s.status = StatusAnalyzing
 	s.message = "正在读取歌单并分析"
 	s.progress = Progress{Stage: "collecting"}
-	// Queue waiting and active analysis each get a bounded window. Once a worker
-	// slot is acquired, refresh the deadline so a long queue does not leave only
-	// a few seconds for playlist collection.
 	s.expiresAt = time.Now().Add(m.cfg.AnalysisTTL)
 	s.mu.Unlock()
 
@@ -388,8 +381,6 @@ func (m *Manager) runAnalysis(s *entry, cookie string) {
 		s.setError(StatusError, "创建平台连接失败: "+err.Error())
 		return
 	}
-	// Build the optional dynamic collector while the authenticated cookie exists.
-	// It lives only for this analysis call and is never persisted in the session.
 	dynamicCollector := connectors.NewDynamicCollector(s.platform, cookie)
 	cookie = ""
 
@@ -408,7 +399,7 @@ func (m *Manager) runAnalysis(s *entry, cookie string) {
 	s.message = "正在生成基础口味画像"
 	s.mu.Unlock()
 	profile := taste.Analyze(collected.Observations)
-	collected.Observations = nil // release legacy raw observations immediately
+	collected.Observations = nil
 
 	warnings := []string{}
 	v3Input := collected.Input
@@ -442,9 +433,9 @@ func (m *Manager) runAnalysis(s *entry, cookie string) {
 			Coverage:     v3Input.Coverage,
 			Temporal:     compactTemporal,
 		}
-		fullTemporal = temporal.Result{} // release full per-subject time series before session storage
+		fullTemporal = temporal.Result{}
 	}
-	v3Input = domain.AnalysisInput{} // raw normalized events never survive the analysis call
+	v3Input = domain.AnalysisInput{}
 	collected.Input = domain.AnalysisInput{}
 
 	if s.useAI {
@@ -489,7 +480,7 @@ func (s *entry) updateStatus(status Status, message string) {
 
 func (s *entry) setError(status Status, message string) {
 	s.mu.Lock()
-	de s.mu.Unlock()
+	defer s.mu.Unlock()
 	s.status = status
 	s.message = message
 	s.qr = nil
