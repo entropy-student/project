@@ -1,12 +1,12 @@
 FROM alpine:3.20 AS unpack
 RUN apk add --no-cache python3
 WORKDIR /work
-COPY deploy/source.part* /bundle/
+COPY unified-pay-system/deploy/source.part* /bundle/
 RUN python3 - <<'PY'
 import base64, glob, io, lzma, os, shutil, tarfile, zipfile
 parts = sorted(glob.glob('/bundle/source.part*'))
 if not parts:
-    raise SystemExit('No deploy/source.part* files found')
+    raise SystemExit('No unified-pay-system/deploy/source.part* files found')
 encoded = ''.join(open(p, 'r', encoding='utf-8').read().strip() for p in parts)
 compressed = base64.b64decode(encoded, validate=True)
 raw = lzma.decompress(compressed)
