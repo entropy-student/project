@@ -2,9 +2,9 @@
 
 # Project Library · 项目库
 
-**把可运行项目按子目录独立归档，而不是让任何一个项目占据仓库根目录。**
+**一个仓库，多个彼此独立的项目目录。仓库根目录只做导航，不承载任何单个项目的运行文件。**
 
-[English](./README_EN.md) · [Music Taste Analyzer](./music-taste-analyzer/) · [Unified Pay System](./unified-pay-system/)
+[English](./README_EN.md)
 
 </div>
 
@@ -12,38 +12,49 @@
 
 ## 项目目录
 
-| 项目 | 状态 | 简介 | 位置 |
+| 项目 | 类型 | 状态 | 说明 |
 |---|---|---|---|
-| **Music Taste Analyzer** | Active | 用户主动授权音乐平台后，临时读取私人歌单并生成音乐口味画像；默认不把用户数据写入项目目录。 | [`music-taste-analyzer/`](./music-taste-analyzer/) |
-| **Unified Pay System** | Archived / Existing | 可复用的支付编排与授权基础设施。该项目仅从仓库根目录归档迁移，内容未做功能性调整。 | [`unified-pay-system/`](./unified-pay-system/) |
+| [Music Taste Analyzer](./music-taste-analyzer/) | 应用 / 工具 | Active | 授权音乐平台后生成音乐口味画像。 |
+| [Unified Pay System](./unified-pay-system/) | 共享基础设施 | Active / Deploying | 一次部署、多个产品复用的统一支付与权益编排服务。 |
 
-## 仓库约定
+## 仓库结构
 
 ```text
 project/
 ├── README.md
 ├── README_EN.md
-├── music-taste-analyzer/   # 当前维护项目
-└── unified-pay-system/     # 已有项目，原样归档
+├── .gitignore
+├── .github/                  # 仓库级 CI / Automation
+├── music-taste-analyzer/     # 独立项目
+└── unified-pay-system/       # 独立项目 / 共享支付基础设施
 ```
 
-- 一个子目录对应一个独立项目。
-- 仓库根目录只承担**项目索引 / 导航**职责。
-- 项目的代码、文档、构建脚本和依赖说明均保留在自己的子目录内。
-- 新增项目时，不再把项目自身的 README、Dockerfile 或部署文件直接放到总项目库根目录。
+## 仓库规则
+
+1. **一个子目录 = 一个项目。**
+2. 根目录只允许项目索引、仓库级 `.gitignore` 和 `.github/` 等全局文件。
+3. `Dockerfile`、项目配置、部署脚本、运行包、项目 README 等必须放在对应项目目录内。
+4. 新项目优先采用：`README.md + README_EN.md + CHANGELOG.md + PROJECT_RECORD.md + docs/` 的结构。
+5. 任何密钥、`.env`、数据库密码、支付 Secret 都不得提交到仓库。
 
 ## 当前重点
 
-### Music Taste Analyzer
+### Unified Pay System
 
-目标是把：
+目标不是给每一个产品重复搭一套支付，而是维护一个共享的支付中台：
 
-> **授权 → 私人歌单 → 数据清洗 → 行为/语义分析 → 音乐口味画像**
+```text
+多个产品 / 插件 / 网站 / App
+            ↓
+      Unified Pay Hub
+            ↓
+ Alipay / PayPal / GMPay / ...
+            ↓
+支付确认 → 权益 / License / Fulfillment
+```
 
-做成一个低配置、默认隐私友好、前后端一体的本地项目。
-
-当前支持网易云音乐、QQ 音乐、酷狗音乐的页面扫码链路；汽水音乐保留上游歌单读取能力，但扫码登录仍处于不稳定状态。更多信息见 [`music-taste-analyzer/README.md`](./music-taste-analyzer/README.md)。
+以后新增产品原则上只需要**登记 App + SKU + 履约方式**，而不是重新部署支付系统。
 
 ---
 
-> 本仓库是多个独立项目的集合。进入具体子目录后，请以该项目自己的 README、许可证说明和第三方依赖声明为准。
+进入具体项目后，请以该项目自己的 README 和 PROJECT_RECORD 为准。

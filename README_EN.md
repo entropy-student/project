@@ -2,9 +2,9 @@
 
 # Project Library
 
-**A home for independent runnable projects, each archived in its own subdirectory instead of taking over the repository root.**
+**One repository, multiple isolated project directories. The repository root is an index, not a runtime directory for any single project.**
 
-[中文](./README.md) · [Music Taste Analyzer](./music-taste-analyzer/) · [Unified Pay System](./unified-pay-system/)
+[中文](./README.md)
 
 </div>
 
@@ -12,38 +12,49 @@
 
 ## Projects
 
-| Project | Status | Description | Location |
+| Project | Type | Status | Description |
 |---|---|---|---|
-| **Music Taste Analyzer** | Active | Reads private playlists after explicit user authorization and builds a music-taste profile. User data is not written into the project directory by default. | [`music-taste-analyzer/`](./music-taste-analyzer/) |
-| **Unified Pay System** | Archived / Existing | Reusable payment orchestration and entitlement infrastructure. It was only moved out of the repository root; no functional optimization was applied during this reorganization. | [`unified-pay-system/`](./unified-pay-system/) |
+| [Music Taste Analyzer](./music-taste-analyzer/) | App / Tool | Active | Generates a music taste profile after explicit user authorization. |
+| [Unified Pay System](./unified-pay-system/) | Shared Infrastructure | Active / Deploying | A once-deployed payment and entitlement orchestration service reusable by multiple products. |
 
-## Repository convention
+## Repository layout
 
 ```text
 project/
 ├── README.md
 ├── README_EN.md
-├── music-taste-analyzer/   # actively maintained here
-└── unified-pay-system/     # existing project, archived as-is
+├── .gitignore
+├── .github/                  # Repository-wide CI / automation
+├── music-taste-analyzer/     # Independent project
+└── unified-pay-system/       # Independent shared payment infrastructure
 ```
 
-- One subdirectory represents one independent project.
-- The repository root is reserved for the **project index and navigation**.
-- Project code, documentation, build scripts and dependency notices stay inside that project's own directory.
-- Future projects should not place their own README, Dockerfile or deployment artifacts directly in the library root.
+## Repository rules
+
+1. **One child directory equals one project.**
+2. The root only contains the project index and repository-wide files such as `.gitignore` and `.github/`.
+3. Project Dockerfiles, runtime configs, deployment assets and project documentation stay inside their own project directory.
+4. New projects should preferably include `README.md`, `README_EN.md`, `CHANGELOG.md`, `PROJECT_RECORD.md`, and `docs/`.
+5. Secrets, `.env` files, database passwords and payment credentials must never be committed.
 
 ## Current focus
 
-### Music Taste Analyzer
+### Unified Pay System
 
-The project aims to turn:
+The goal is not to rebuild payment integration for every product. It is a shared internal payment hub:
 
-> **authorization → private playlists → data cleaning → behavioral/semantic analysis → music-taste profile**
+```text
+Products / Extensions / Websites / Apps
+                 ↓
+          Unified Pay Hub
+                 ↓
+     Alipay / PayPal / GMPay / ...
+                 ↓
+Payment confirmation → entitlement / license / fulfillment
+```
 
-into a lightweight, privacy-friendly local application with an integrated Web UI and Go backend.
-
-The current Web flow supports NetEase Cloud Music, QQ Music and Kugou Music. Soda Music playlist access exists upstream, while QR login remains unstable and is therefore not exposed as a normal Web login option yet. See [`music-taste-analyzer/README_EN.md`](./music-taste-analyzer/README_EN.md) for details.
+Adding a new product should normally mean registering an **App + SKU + fulfillment route**, not deploying another payment stack.
 
 ---
 
-> This repository is a collection of independent projects. Once inside a project directory, follow that project's own README, licensing notes and third-party notices.
+For project-specific details, use the README and PROJECT_RECORD inside that project directory.

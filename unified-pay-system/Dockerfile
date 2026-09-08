@@ -1,43 +1,24 @@
-FROM alpine:3.20 AS unpack
-RUN apk add --no-cache python3
-WORKDIR /work
-COPY deploy/source.part* /bundle/
-RUN python3 - <<'PY'
-import base64, glob, io, lzma, os, shutil, tarfile, zipfile
-parts = sorted(glob.glob('/bundle/source.part*'))
-if not parts:
-    raise SystemExit('No deploy/source.part* files found')
-encoded = ''.join(open(p, 'r', encoding='utf-8').read().strip() for p in parts)
-compressed = base64.b64decode(encoded, validate=True)
-raw = lzma.decompress(compressed)
-os.makedirs('/unpacked', exist_ok=True)
-try:
-    with tarfile.open(fileobj=io.BytesIO(raw), mode='r:*') as tf:
-        tf.extractall('/unpacked')
-except tarfile.ReadError:
-    with zipfile.ZipFile(io.BytesIO(raw)) as zf:
-        zf.extractall('/unpacked')
-roots = ['/unpacked', '/unpacked/Unified-Pay-System']
-source = next((p for p in roots if os.path.isfile(os.path.join(p, 'package.json'))), None)
-if source is None:
-    for root, dirs, files in os.walk('/unpacked'):
-        if 'package.json' in files:
-            source = root
-            break
-if source is None:
-    raise SystemExit('package.json not found after unpacking source bundle')
-shutil.copytree(source, '/runtime', dirs_exist_ok=True)
-print('Prepared runtime from', source)
-PY
-
 FROM node:20-alpine
 WORKDIR /app
-COPY --from=unpack /runtime/ ./
+
+# Rebuild the reviewed Unified Pay V0.18 source archive from small text chunks.
+COPY bundle/source.b64.part-* /tmp/bundle/
+RUN cat /tmp/bundle/source.b64.part-* \
+    | base64 -d \
+    > /tmp/source.tar.gz \
+ && echo "653b511bd98595d0ad21fbb5729e1a41055a41c59f7b9c4c8b7ca21a791104a8  /tmp/source.tar.gz" | sha256sum -c - \
+ && tar -xzf /tmp/source.tar.gz -C /app \
+ && rm -rf /tmp/bundle /tmp/source.tar.gz
+
+# First production E2E is GMPay-only. Keep PayPal disabled until its secrets and Sandbox/Live gate are ready.
+COPY config/apps.gmpay.production.json /app/config/apps.gmpay.production.json
+
 RUN if [ -f package-lock.json ]; then npm ci --omit=dev; else npm install --omit=dev; fi \
-  && npm cache clean --force
+ && npm cache clean --force
+
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=8787
 USER node
 EXPOSE 8787
-HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD node -e "fetch('http://127.0.0.1:8787/ready').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"
 CMD ["node","src/index.mjs"]
