@@ -1,0 +1,28 @@
+name: Music Taste Analyzer CI
+
+on:
+  push:
+    paths:
+      - "music-taste-analyzer/**"
+      - ".github/workflows/music-taste-analyzer.yml"
+  pull_request:
+    paths:
+      - "music-taste-analyzer/**"
+      - ".github/workflows/music-taste-analyzer.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: music-taste-analyzer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+          cache-dependency-path: music-taste-analyzer/go.sum
+      - name: Test
+        run: go test ./...
+      - name: Vet
+        run: go vet ./...
