@@ -30,6 +30,7 @@ type WeightedLabel struct {
 type TrackFeatures struct {
 	Track      TrackRef        `json:"track"`
 	Genres     []WeightedLabel `json:"genres,omitempty"`
+	Tags       []WeightedLabel `json:"tags,omitempty"`
 	Moods      []WeightedLabel `json:"moods,omitempty"`
 	Scenes     []WeightedLabel `json:"scenes,omitempty"`
 	Languages  []WeightedLabel `json:"languages,omitempty"`
@@ -38,6 +39,7 @@ type TrackFeatures struct {
 }
 
 const (
+	FeatureReleaseYear      = "release_year"
 	FeatureBrightness       = "brightness"
 	FeatureWarmth           = "warmth"
 	FeatureTension          = "tension"
