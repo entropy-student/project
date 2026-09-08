@@ -1,0 +1,55 @@
+{
+  "apps": {
+    "gpt-view-plus": {
+      "name": "GPT View+",
+      "public_client": true,
+      "allowed_origins": [
+        "https://chatgpt.com",
+        "chrome-extension://hkjjjgacpobiomabocehlgbpifieibdj"
+      ],
+      "merchant_profile": "default",
+      "products": {
+        "pro-lifetime": {
+          "name": "GPT View+ Pro Lifetime",
+          "amount": 90,
+          "currency": "CNY",
+          "fulfillment": {
+            "type": "license",
+            "entitlement": "pro_lifetime",
+            "max_devices": 3
+          },
+          "refunds": {
+            "enabled": true,
+            "revoke_on_full_refund": true
+          },
+          "license_self_service": {
+            "allow_device_reset": true,
+            "reset_cooldown_hours": 24
+          }
+        }
+      }
+    }
+  },
+  "merchants": {
+    "default": {
+      "name": "Default merchant",
+      "providers": {
+        "gmpay": {
+          "credential_sets": [
+            {
+              "id": "gmpay-primary",
+              "state": "active",
+              "secrets": {
+                "base_url": "env://GMPAY_BASE_URL",
+                "pid": "env://GMPAY_PID",
+                "secret_key": "env://GMPAY_SECRET_KEY",
+                "token": "env://GMPAY_TOKEN",
+                "network": "env://GMPAY_NETWORK"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
