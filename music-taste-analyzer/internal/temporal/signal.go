@@ -96,6 +96,10 @@ func behaviorWeight(eventType domain.EventType, ctx domain.EventContext) (float6
 		return 1.8, 1, false
 	case domain.EventPlay:
 		return 1.0, 1, false
+	case domain.EventPlayAggregate:
+		// Aggregate rankings are weaker than chronological plays: they confirm
+		// repeated consumption but do not reveal exact sessions or source context.
+		return 0.78, 1, false
 	case domain.EventComplete:
 		return 1.25, 1, false
 	case domain.EventArtistFollow:
