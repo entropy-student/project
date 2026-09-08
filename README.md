@@ -1,87 +1,49 @@
-# Unified Pay System V0.18.0
+<div align="center">
 
-Reusable payment orchestration infrastructure for browser extensions, websites, Apps, mini-program backends and future products.
+# Project Library · 项目库
 
-## Current capabilities
+**把可运行项目按子目录独立归档，而不是让任何一个项目占据仓库根目录。**
 
-- server-owned App/SKU pricing;
-- provider abstraction: Mock / PayPal REST / GMPay crypto / Alipay gated / WorldFirst gated / WeChat deferred;
-- deterministic checkout + idempotency + expiry;
-- payment webhook verification boundary + proactive reconciliation;
-- PostgreSQL relational store + migrations + row locks;
-- durable fulfillment retry/dead-letter;
-- License issuance, activation, verification, revocation and customer device self-service;
-- partial/full refunds + refund reconciliation + automatic entitlement revocation;
-- Admin RBAC, audit, metrics, alerts, backup/restore;
-- durable lifecycle event Outbox with HMAC delivery/retry/dead-letter;
-- per-app scoped server credentials;
-- multi-project / multi-merchant `merchant_profile` routing;
-- dispute / chargeback ledger, webhook lifecycle, Admin visibility and metrics;
-- provider-statement settlement/reconciliation ledger with durable difference findings;
-- provider credential versioning with `active` + `verify_only` rotation and secret-reference resolution;
-- Admin `static` / `sso` / `hybrid` authentication boundary with local RBAC;
-- local or injected distributed rate-limit adapter with fail-closed backend errors;
-- same-origin License Customer Portal without a new account system;
-- Outbox terminal-event replay + payload retention while preserving dedupe tombstones;
-- SDK structured errors + TypeScript declarations.
+[English](./README_EN.md) · [Music Taste Analyzer](./music-taste-analyzer/) · [Unified Pay System](./unified-pay-system/)
 
-## Architecture
+</div>
+
+---
+
+## 项目目录
+
+| 项目 | 状态 | 简介 | 位置 |
+|---|---|---|---|
+| **Music Taste Analyzer** | Active | 用户主动授权音乐平台后，临时读取私人歌单并生成音乐口味画像；默认不把用户数据写入项目目录。 | [`music-taste-analyzer/`](./music-taste-analyzer/) |
+| **Unified Pay System** | Archived / Existing | 可复用的支付编排与授权基础设施。该项目仅从仓库根目录归档迁移，内容未做功能性调整。 | [`unified-pay-system/`](./unified-pay-system/) |
+
+## 仓库约定
 
 ```text
-Plugin / Website / App / Mini-program backend
-                  ↓
-            Unified Pay API
-                  ↓
-       App auth / origin policy
-                  ↓
-          Checkout + ledgers
-                  ↓
-       Provider + merchant profile
-          ├─ Mock
-          ├─ PayPal (Sandbox-ready / Live gated)
-          ├─ GMPay / EPUSDT (adapter ready / self-host E2E gated)
-          ├─ Alipay (product onboarding in progress)
-          ├─ WorldFirst (Global Checkout gated)
-          └─ WeChat (deferred)
-                  ↓
-             PAID ledger
-                  ↓
-             Fulfillment
-                  ↓
-      License / downstream service
-                  ↓
-        Durable lifecycle Outbox
-                  ↓
-        App event webhooks
-
-Provider statements → canonical rows → settlement findings
-Provider disputes   → dispute ledger  → operational review
+project/
+├── README.md
+├── README_EN.md
+├── music-taste-analyzer/   # 当前维护项目
+└── unified-pay-system/     # 已有项目，原样归档
 ```
 
-## Start locally
+- 一个子目录对应一个独立项目。
+- 仓库根目录只承担**项目索引 / 导航**职责。
+- 项目的代码、文档、构建脚本和依赖说明均保留在自己的子目录内。
+- 新增项目时，不再把项目自身的 README、Dockerfile 或部署文件直接放到总项目库根目录。
 
-```powershell
-Copy-Item .env.example .env
-npm install
-npm test
-npm start
-```
+## 当前重点
 
-Default local URL: `http://127.0.0.1:8787`.
+### Music Taste Analyzer
 
-## Important
+目标是把：
 
-PayPal has a real REST adapter but Live remains gated until Sandbox buyer approval/capture/refund is completed. GMPay/EPUSDT has a native HMAC-SHA256 adapter but remains gated until a self-hosted gateway, wallet/API key and low-value on-chain E2E exist. Alipay remains at Computer Website Payment product onboarding; WorldFirst Global Checkout and WeChat remain gated/deferred. Mock/canonical tests are not real-money evidence.
+> **授权 → 私人歌单 → 数据清洗 → 行为/语义分析 → 音乐口味画像**
 
-Read **`00_HANDOFF.md` first** when continuing this project in another conversation. It is the only handoff document.
+做成一个低配置、默认隐私友好、前后端一体的本地项目。
 
-Detailed docs are under `docs/`, especially `ARCHITECTURE.md`, `SECURITY.md`, `PAYPAL.md`, `GMPAY.md`, `PROVIDER_CREDENTIALS.md`, `ADMIN_SSO.md`, `DISTRIBUTED_RATE_LIMIT.md`, `CUSTOMER_PORTAL.md`, `OUTBOX.md`, `DISPUTES.md`, `SETTLEMENT_RECONCILIATION.md`, and `ROADMAP.md`.
+当前支持网易云音乐、QQ 音乐、酷狗音乐的页面扫码链路；汽水音乐保留上游歌单读取能力，但扫码登录仍处于不稳定状态。更多信息见 [`music-taste-analyzer/README.md`](./music-taste-analyzer/README.md)。
 
+---
 
-## V0.18 provider strategy
-
-Domestic priority remains **Alipay**. PayPal is now the current overseas buyer-checkout implementation and begins in Sandbox. The normal WorldFirst account is retained for collection/settlement/FX; buyer-facing WorldFirst Global Checkout remains gated unless Enterprise onboarding explicitly approves it. GMPay/EPUSDT is added as an optional self-hosted crypto rail and is not the default domestic payment method. WeChat Pay remains deferred. See `docs/PROVIDER_STRATEGY.md`, `docs/PAYPAL.md`, and `docs/GMPAY.md`.
-
-## V0.15.1 production pre-provider hardening
-
-Production now fails fast on an enabled Mock provider, insecure browser origins, HTTP product-fulfillment webhooks, or weak/missing fulfillment HMAC secrets. PostgreSQL `pg` is a required runtime dependency because production requires the PostgreSQL store.
+> 本仓库是多个独立项目的集合。进入具体子目录后，请以该项目自己的 README、许可证说明和第三方依赖声明为准。
