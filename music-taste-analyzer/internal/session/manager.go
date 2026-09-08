@@ -73,11 +73,13 @@ type DynamicProfile struct {
 }
 
 type Result struct {
-	Profile  *taste.Profile          `json:"profile,omitempty"`
-	Dynamic  *DynamicProfile         `json:"dynamic_profile,omitempty"`
-	Features *features.CompactResult `json:"feature_profile,omitempty"`
-	Semantic *aiprofile.Result       `json:"semantic_profile,omitempty"`
-	Warning  string                  `json:"warning,omitempty"`
+	Profile     *taste.Profile          `json:"profile,omitempty"`
+	Dynamic     *DynamicProfile         `json:"dynamic_profile,omitempty"`
+	Features    *features.CompactResult `json:"feature_profile,omitempty"`
+	Islands     *TasteIslandsProfile    `json:"taste_islands,omitempty"`
+	Exploration *ExplorationProfile     `json:"exploration,omitempty"`
+	Semantic    *aiprofile.Result       `json:"semantic_profile,omitempty"`
+	Warning     string                  `json:"warning,omitempty"`
 }
 
 type Public struct {
@@ -429,6 +431,14 @@ func (m *Manager) runAnalysis(s *entry, cookie string) {
 	fullFeatures := features.Analyze(v3Input)
 	compactFeatures := features.Compact(fullFeatures)
 	result.Features = &compactFeatures
+
+	s.mu.Lock()
+	s.progress = Progress{Stage: "taste_structure"}
+	s.message = "正在发现音乐岛与探索方式"
+	s.mu.Unlock()
+	islandProfile, explorationProfile := analyzeTasteStructure(v3Input, fullFeatures)
+	result.Islands = islandProfile
+	result.Exploration = explorationProfile
 	fullFeatures = features.Result{}
 
 	if err := v3Input.Validate(); err != nil {
