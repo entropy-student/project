@@ -95,11 +95,7 @@ func (c *Client) matchOne(ctx context.Context, track domain.TrackRef) (Match, bo
 		return Match{}, false, nil
 	}
 	artist := strings.TrimSpace(track.Artists[0])
-	query := `recording:"` + escapeLucene(title) + `" AND artist:"` + escapeLucene(artist) + `"`
-	// The backslashes above are stripped below to keep the source readable in tools
-	// that escape JSON strings. The actual MusicBrainz query must contain quote
-	// delimiters, not escaped quote characters.
-	query = strings.ReplaceAll(query, `\"`, `"`)
+	query := "recording:" + quoteLucene(title) + " AND artist:" + quoteLucene(artist)
 	params := url.Values{}
 	params.Set("query", query)
 	params.Set("fmt", "json")
@@ -165,14 +161,16 @@ func (c *Client) wait(ctx context.Context) error {
 	return nil
 }
 
-func escapeLucene(value string) string {
+func quoteLucene(value string) string {
 	var b strings.Builder
+	b.WriteRune(rune(34))
 	for _, r := range value {
 		if r == rune(92) || r == rune(34) {
 			b.WriteRune(rune(92))
 		}
 		b.WriteRune(r)
 	}
+	b.WriteRune(rune(34))
 	return b.String()
 }
 
