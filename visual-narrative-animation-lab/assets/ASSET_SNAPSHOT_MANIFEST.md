@@ -1,0 +1,31 @@
+# Asset Snapshot Manifest
+
+Snapshot date: 2026-09-14
+
+This manifest identifies the binary working set that corresponds to the current G2C prototype. The project library keeps the durable documentation, registries, and checksums in Git. High-resolution binary working files remain in the project snapshot until a stable Git LFS / release-asset policy is selected.
+
+## Key assets
+
+| Asset | Purpose | Size | SHA-256 |
+|---|---|---:|---|
+| `assets/G2B_character_style_proof/00_source_character_turnaround.png` | Original character identity anchor | 3,271,896 B | `8c7228ecb76f28c73b02d37b1f44462df1157e961fb4ce6257854cc776b64a70` |
+| `assets/G2B_locked_style/01_art_bible_anchor.png` | Locked Art Bible visual anchor | 2,075,929 B | `56b3883fb4783ed1839c4f7fdd1bdf120c42047e10ed6eee68ff4019eb76b918` |
+| `assets/G2B_locked_style/02_expression_sheet_8.png` | Eight-expression reference sheet | 2,210,351 B | `7e7b3b34b3d7c9f0e12ae6c0cef5b0f2876c4845417fcd13e6194b592e8b0adf` |
+| `assets/G2B_locked_style/03_pose_sheet_8.png` | Eight-pose reference sheet | 2,014,643 B | `d8eb67ae544eaf5e652d607e1122d71a97560f56f30d10fb37f985d29b96cf13` |
+| `assets/G2C_production/G2C_S01-S08_composite_v0.png` | Main G2C production composition sheet | 2,078,510 B | `35bb66b6717d63dc427a862442989fbae9e170c761afa468e31c0d8b4e5356d1` |
+| `renders/G2C_animatic_v0/review_contact.jpg` | Animatic visual review contact | 246,295 B | `de272d77acafa7e3cc3fb33b14ef0cd10494e793f6cf529eca95dde43f6ce977` |
+| `renders/G2C_animatic_v0/G2C_animatic_v0.mp4` | Current ~38 s prototype animatic | 1,804,055 B | `fd0a016d401c1f55c352c07cf54015e622e9c71a4d331b4e83565e6850c5a249` |
+
+## Working snapshot
+
+- Package: `visual-narrative-animation-lab.zip`
+- SHA-256: `d1a01cedbfa39add0c8f7d9c6344be45996f3dd21276e6188f550d149284568a`
+- Contains current documents, original/AI-generated working assets, and G2C animatic artifacts.
+
+## Copyright boundary
+
+Third-party benchmark videos and extracted frame sheets are intentionally excluded from the project library. Only derived timing data, structural analysis, and methodology documents are retained in Git.
+
+## Verification
+
+Use root `ASSET_HASHES.sha256` to verify a restored binary working set before continuing production.
