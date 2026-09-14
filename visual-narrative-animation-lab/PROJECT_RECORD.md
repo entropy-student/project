@@ -35,6 +35,8 @@
 - G2C1：完成镜头资产解析，18 Beat 收敛为少量主构图 + 复用/裁切/叠加。
 - G2C2：已形成主要生产构图与 16:9 裁切资产。
 - G2C3：已输出第一条约 38 秒 Animatic v0 作为质量验证基线。
+- Project Library：项目已整理进 `entropy-student/project/visual-narrative-animation-lab`，根目录中英文导航均已登记。
+- Asset Recovery：关键二进制资产、Animatic 与完整工作快照的 SHA-256 已进入仓库。
 
 ## 4. Current Stage
 
@@ -59,7 +61,7 @@
 
 ## 6. Next Actions
 
-1. 审看 `renders/G2C_animatic_v0_preview.mp4`。
+1. 审看当前工作快照中的 `renders/G2C_animatic_v0/G2C_animatic_v0.mp4`。
 2. 对照 `docs/g1/G1_VISUAL_BEAT_GRAMMAR_v0.1.md` 记录缺失层。
 3. PASS：进入 G3，正式建设 Character / Pose / Scene / Prop Asset System。
 4. RETURN：只针对明确缺失项修正 G2，不扩大范围。
@@ -73,14 +75,23 @@
 - `docs/g2/G2B_ART_BIBLE_v0.1.md` — 角色/画风锁定。
 - `docs/g2/G2C_SHOT_ASSET_MANIFEST.md` — 镜头资产解析。
 - `docs/g2/G2C_TIMELINE_EVIDENCE.md` — Animatic 时间轴证据。
+- `assets/ASSET_SNAPSHOT_MANIFEST.md` — 当前二进制工作集的用途、大小与哈希。
+- `ASSET_HASHES.sha256` — 恢复工作快照时的文件身份校验。
 
 ## 8. Asset / Copyright Boundary
 
 - 原创主角、AI 生成角色/场景和项目样片可作为项目资产保存。
 - 第三方创作者视频仅用于研究和比较；原视频与逐帧截图不进入本项目仓库。
 - 仓库保留派生的结构化分析、镜头时间数据和方法论总结。
+- 当前高分辨率二进制工作文件不进入普通 Git 历史；先用哈希 + manifest 锁定，后续再决定 Git LFS / Release Asset 托管。
 
-## 9. Resume Checklist
+## 9. Current Working Snapshot
+
+- Package: `visual-narrative-animation-lab.zip`
+- SHA-256: `d1a01cedbfa39add0c8f7d9c6344be45996f3dd21276e6188f550d149284568a`
+- Includes project documents, original/AI-generated assets and the current Animatic v0.
+
+## 10. Resume Checklist
 
 重新接手项目时：
 
@@ -88,7 +99,8 @@
 README.md
 → PROJECT_RECORD.md
 → REVIEWER_HANDOFF.md
-→ renders/G2C_animatic_v0_preview.mp4
+→ assets/ASSET_SNAPSHOT_MANIFEST.md
 → docs/g1/G1_VISUAL_BEAT_GRAMMAR_v0.1.md
 → docs/g2/G2C_TIMELINE_EVIDENCE.md
+→ restore/verify binary snapshot with ASSET_HASHES.sha256
 ```
