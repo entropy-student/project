@@ -47,7 +47,7 @@ G7 Batch Validation                      ⏳
 G8 Reusable Skill / Workflow             ⏳
 ```
 
-当前需要验证：`renders/G2C_animatic_v0_preview.mp4` 是否已经具备目标中的“画面叙事感”，以及还缺哪一层。
+当前需要验证的是第一条约 38 秒 `G2C_animatic_v0` 是否已经具备目标中的“画面叙事感”，以及还缺哪一层。
 
 ## 关键结论
 
@@ -68,10 +68,9 @@ visual-narrative-animation-lab/
 ├── docs/
 │   ├── g1/   # 基准拆解与 Visual Beat Grammar
 │   └── g2/   # 原创 MVP、Art Bible、资产/时间轴证据
-├── assets/
-│   └── previews/  # 仓库友好的压缩预览
-└── renders/
-    └── G2C_animatic_v0_preview.mp4
+└── assets/
+    ├── README.md
+    └── ASSET_SNAPSHOT_MANIFEST.md
 ```
 
 ## 阅读顺序
@@ -84,11 +83,15 @@ PROJECT_RECORD.md
 REVIEWER_HANDOFF.md
   ↓
 docs/g1 + docs/g2
+  ↓
+assets/ASSET_SNAPSHOT_MANIFEST.md
 ```
 
 ## 资产策略
 
-GitHub 只保留项目继续开发所需的文档、关键视觉预览和低码率样片。高分辨率中间资产不重复堆入仓库，但通过登记表与 SHA-256 追踪。第三方参考视频及其逐帧截图不进入仓库，仅保留派生分析数据。
+GitHub 当前保存**项目真相、方法、资产登记与精确校验信息**。高分辨率角色图、生产帧和 Animatic MP4 暂留在工作快照中，不重复塞入普通 Git 历史；其文件身份由 `ASSET_HASHES.sha256` 与 `assets/ASSET_SNAPSHOT_MANIFEST.md` 锁定。后续若需要把二进制资产长期托管到仓库，将单独选择 Git LFS 或 Release Asset 方案。
+
+第三方参考视频及其逐帧截图不进入仓库，仅保留派生分析数据。
 
 ## Governance
 
