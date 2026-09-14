@@ -8,7 +8,7 @@
 
 [中文](./README.md)
 
-![Projects](https://img.shields.io/badge/projects-2-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-3-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-Chinese%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -22,6 +22,7 @@
 |---|---|---|---:|---|
 | 🎧 **Music Taste Analyzer** | Reads private playlists after explicit authorization and produces an explainable music taste profile | App / Tool | Active | [Open](./music-taste-analyzer/) |
 | 💳 **Unified Pay System** | A once-deployed shared payment, verification, refund, reconciliation, and entitlement layer for multiple products | Shared Infrastructure | **Deploying** | [Open](./unified-pay-system/) |
+| 🎬 **Visual Narrative Animation Lab** | Turns narration into Visual Beats and develops a reusable hand-drawn narrative-video production and automation workflow | Content Production / AI Workflow | **Prototype** | [Open](./visual-narrative-animation-lab/) |
 
 ---
 
