@@ -1,6 +1,6 @@
 # G3.5 — UI + Growth Design Freeze
 
-Status: `NEXT`
+Status: `IN_PROGRESS`
 Owner: Reviewer + Owner
 Executor: none until PASS
 
@@ -10,28 +10,30 @@ Executor: none until PASS
 
 目标不是先写代码，而是让 Codex 后续**不需要自己发明产品决策**。
 
-## Required Outputs
+## Current progress
 
-G3.5 PASS 前至少产出：
+已完成文本合同：
 
 ```text
-design/
-├── UI_GROWTH_BRIEF.md
-├── DESIGN_SYSTEM.md
-├── PAGE_CONTRACTS.md
-├── INTERACTION_STATES.md
-├── ANALYTICS_EVENT_CONTRACT.md
-├── FUNCTIONAL_ACCEPTANCE.md
-├── VISUAL_ACCEPTANCE.md
-└── references/
-    ├── home-desktop.png
-    ├── home-mobile.png
-    ├── scan-progress.png
-    ├── free-top3.png
-    └── full-report.png
+design/UI_GROWTH_BRIEF.md             ✅
+design/DESIGN_SYSTEM.md               ✅
+design/PAGE_CONTRACTS.md              ✅
+design/INTERACTION_STATES.md          ✅
+design/ANALYTICS_EVENT_CONTRACT.md    ✅
+design/FUNCTIONAL_ACCEPTANCE.md       ✅
+design/VISUAL_ACCEPTANCE.md           ✅
 ```
 
-实际文件名可微调，但信息不可缺失。
+待完成：
+
+```text
+design/references/home-desktop.png     ⏳
+design/references/home-mobile.png      ⏳
+design/references/scan-progress.png    ⏳
+design/references/free-top3.png        ⏳
+design/references/full-report.png      ⏳
+Owner visual approval                  ⏳
+```
 
 ## Growth / Activation Hypothesis
 
@@ -56,18 +58,47 @@ Paid Expansion 后续主要增加：
 - Continuity
 - More certainty
 
-## Pages to Freeze
+## Design decision
 
-至少冻结：
-1. Home / Landing
-2. Scan input
-3. Scan progress
-4. Scan incomplete / blocked / error
-5. Free Top 3
-6. Issue detail / evidence view
-7. Pricing / paid expansion explanation
-8. Full report shell
-9. Mobile variants
+当前推荐视觉方向：
+
+> **Editorial Diagnostic Console / Evidence-first Diagnostic**
+
+含义：
+- 不把 opaque score 放在视觉中心；
+- 先展示 observed fact / evidence；
+- 结果页像专业诊断工具，不像 AI chatbot；
+- bold hierarchy + high whitespace；
+- clean / warm signal accent；
+- motion 只解释状态。
+
+详细规范见 `../design/DESIGN_SYSTEM.md`。
+
+## Homepage / product path
+
+当前冻结方向：
+
+```text
+Problem framing
+→ URL input
+→ Trust strip
+→ Scan progress
+→ Evidence-backed Top 3
+→ Issue evidence detail
+→ Paid expansion preview
+→ Future Direct PayPal at G9
+```
+
+Hero 主要承诺方向：
+
+> 别急着再买流量，先看看你的网站在哪里漏单。
+
+Supporting value：
+- public pages only；
+- no admin access；
+- no install；
+- no website changes；
+- free evidence-backed Top 3。
 
 ## Trust / Proof Questions
 
@@ -132,58 +163,74 @@ Visual PASS 不能替代 Functional PASS，反之亦然。
 
 ## Analytics Event Contract
 
-首版至少规划：
+首版语义已经冻结在：
+
+`../design/ANALYTICS_EVENT_CONTRACT.md`
+
+核心：
 
 ```text
 landing_view
 scan_started
+scan_rejected
 scan_completed
 scan_incomplete
 top3_viewed
 issue_expanded
-pricing_viewed
-checkout_started
-payment_completed
-full_report_viewed
+paid_expansion_viewed
+checkout_started      [G9]
+payment_completed     [G9]
+full_report_viewed    [future]
 ```
 
 G3.5 只冻结事件语义，不要求现在安装 analytics provider。
 
 Preferred analytics candidate: PostHog or equivalent. Prefer project-owned integration over plugin sprawl.
 
-## Plugin Policy
-
-不提前堆插件。
-
-首发优先顺序：
-1. analytics / instrumentation；
-2. SEO/Search integration when needed；
-3. transactional email when needed；
-4. backup/restore before production。
-
-每个插件必须回答：
-- 为什么需要？
-- 能否由已有项目代码更简单实现？
-- 是否增加安全/性能/维护风险？
-
 ## Payment Boundary
 
 G3.5 不设计真实支付实现。
 
-只允许在 UI 中定义未来 paid expansion 的位置和 entitlement semantics。
+Payment Gate = G9。
+Provider tentative = Direct PayPal。
+Unified Pay 当前不作为本项目依赖。
 
-当前 Payment Gate = G9；Provider tentative = Direct PayPal。
+## Skill Dogfood
+
+本项目也是 `independent-store-operations` 的真实验证场。
+
+所有重要产品/运营假设必须记录在：
+
+`SKILL_DOGFOOD_LOG.md`
+
+用真实行为更新为：
+- SUPPORTED
+- REJECTED
+- INCONCLUSIVE
+
+不能用“Skill 自己指导自己的页面”作为 Skill 正确的证据。
 
 ## PASS Criteria
 
 只有满足以下条件才能 `PASS_G3_5_UI_GROWTH_DESIGN_FREEZE`：
 
-- 用户路径冻结；
-- Core Aha 冻结；
-- 页面与状态完整；
-- desktop/mobile high-fidelity approved by Owner；
-- Trust/Proof/CTA reviewed；
-- Design System 可执行；
-- Analytics events frozen；
-- Visual + Functional acceptance contract ready；
-- Codex 不再需要做产品方向判断。
+- 用户路径冻结； ✅
+- Core Aha 冻结； ✅ candidate frozen
+- 页面与状态完整； ✅
+- Trust/Proof/CTA reviewed； ✅ first pass
+- Design System 可执行； ✅
+- Analytics events frozen； ✅
+- Visual + Functional acceptance contract ready； ✅
+- desktop/mobile high-fidelity approved by Owner； ⏳
+- Golden Screenshots frozen； ⏳
+- Codex 不再需要做产品方向判断； ⏳ 取决于视觉冻结
+
+## Current next action
+
+```text
+CREATE_HIGH_FIDELITY_GOLDEN_SCREENS
+→ OWNER_VISUAL_REVIEW
+→ FIX_IF_NEEDED
+→ PASS_G3_5
+→ RELEASE_G4_TO_CODEX
+```
