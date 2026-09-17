@@ -1,7 +1,7 @@
 # Conversion Leak Audit — EXECUTOR HANDOFF
 
 > Intended executor: Codex / local development agent
-> Current Gate: `G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION`
+> Current State: `HOLD_FOR_G3_5_UI_GROWTH_DESIGN_FREEZE`
 
 ## Read First
 
@@ -9,34 +9,45 @@
 2. `../PROJECT_RECORD.md`
 3. `REVIEWER_HANDOFF.md`
 4. `ROADMAP.md`
-5. `HANDOFF_PROTOCOL.md`
+5. `G3_5_UI_GROWTH_FREEZE.md`
+6. `HANDOFF_PROTOCOL.md`
+
+## Current Instruction
+
+Do **not** start G4 product implementation yet.
+
+Wait until Reviewer marks:
+
+```text
+PASS_G3_5_UI_GROWTH_DESIGN_FREEZE
+```
+
+Only after that will this document be updated with the frozen implementation contract.
 
 ## Do Not Repeat
 
 Do not redo:
 - theory research;
-- 77-rule knowledge catalog;
+- 77-rule catalog;
 - 17-rule MTRS selection;
-- 51-rule fixture design;
+- 51 fixtures;
 - G1 WordPress baseline;
 - G2 Safe Scanner V0;
 - old standalone G3 Rule Engine.
 
-## Current Source Assets
+## Frozen Technical Assets
 
-The reviewed handoff snapshot contains:
-- `scanner/` — current Python Scanner V0
-- `wordpress-g1-baseline/` — current WordPress baseline
+Current reviewed source assets:
+- `scanner/` — Python Scanner V0
+- `wordpress-g1-baseline/` — WordPress baseline
 
-Recovery checks before GitHub document migration:
+Recovery checks:
 - Scanner tests: `55 / 55 PASS`
 - WordPress asset checks: `20 / 20 PASS`
 
-When the product source is placed on the Owner Windows machine, preserve the same logical directories.
+## Future G4 Boundary
 
-## G4 Required Work
-
-Build the local-only integration:
+After G3.5 PASS, Codex will implement:
 
 ```text
 WordPress form
@@ -48,60 +59,38 @@ WordPress form
 → WordPress free result page
 ```
 
-Recommended implementation boundary:
+Implementation must follow the frozen UI/design/analytics/acceptance contracts. Codex must not invent visual direction, payment flow or new scanner rules during implementation.
 
-### WordPress integration layer
-Owns:
-- public URL form;
-- nonce/CSRF;
-- normalized API request;
-- scan_id/status mapping;
-- polling UI;
-- free Top 3 rendering;
-- explicit incomplete/error states.
+## Future Visual Acceptance
 
-Must NOT:
-- run Scrapy/Chromium inside PHP request;
-- directly modify frozen Scanner rules;
-- expose internal Scanner unrestricted to public internet.
+Codex will be required to:
+- implement against design tokens/page contracts;
+- reproduce desktop/mobile golden screenshots;
+- run Playwright screenshots / visual regression;
+- pass functional acceptance separately from visual acceptance.
 
-### Scanner
-Keep existing boundaries:
-- public URL safety validation;
-- bounded crawl;
-- evidence-backed findings;
-- fail closed;
-- `/healthz`;
-- job/report API;
-- SQLite local persistence.
+`clone-ui` output, if supplied, is reference material only. Do not let clone code replace project architecture or overwrite unrelated functionality.
 
-## G4 Forbidden
+## Payment
 
-- production payment;
-- live payment Secret;
-- VPS deployment;
-- domain cutover;
-- Shared reverse-proxy/tunnel modification;
-- production login/auth design;
-- new uncalibrated rules;
-- unbounded crawling;
-- raw HTML → LLM free-form diagnosis.
+Payment is not part of G4.
+
+Current future candidate: Direct PayPal at G9. Unified Pay is not a current dependency.
 
 ## Required Completion Report
 
-Update GitHub docs with:
+When implementation resumes, update GitHub docs with:
 
 ```text
 Gate:
 Files changed:
 Commands/tests run:
 Results:
-Screenshots/evidence if applicable:
+Screenshots/evidence:
 Known limitations:
 Risks:
 Next action:
 Owner intervention required: YES/NO
 ```
 
-Write factual execution evidence to `EXECUTION_EVIDENCE.md`.
-Do not declare Gate PASS yourself unless instructed; Reviewer decides Gate status.
+Write factual execution evidence to `EXECUTION_EVIDENCE.md`. Reviewer, not Codex, declares Gate PASS.
