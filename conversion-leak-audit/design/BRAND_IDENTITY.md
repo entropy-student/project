@@ -1,18 +1,27 @@
 # Conversion Leak Audit — Brand Identity
 
-Status: `DRAFT_FOR_G3_5`
+Status: `PRIMARY_DIRECTION_SELECTED`
 
 ## 1. Current decision
 
-The current blue bar-chart-like mark is a **placeholder**, not the final logo.
+Owner + Reviewer have selected **B — Gap Mark** as the primary brand direction.
 
-Reviewer assessment:
-- usable as a temporary product icon;
-- simple and readable;
-- but too generic for final brand identity;
-- weak connection to the core concepts: leak / gap / evidence / scan.
+Decision:
 
-Owner has not expressed a fixed style preference. Final logo should stay compatible with the current clean diagnostic-tool visual direction.
+```text
+PRIMARY_LOGO_DIRECTION = GAP_MARK
+BACKUP_DIRECTION = REFINED_BAR_MARK
+```
+
+Why Gap Mark:
+- expresses a visible missing / interrupted segment;
+- connects naturally to Conversion **Leak** Audit without using a literal leaking bucket/cart;
+- remains compatible with evidence / diagnosis positioning;
+- more distinctive than generic analytics bars;
+- avoids magnifier/security-tool category confusion;
+- can remain readable at favicon scale.
+
+The earlier blue bar-chart-like mark is retained only as a fallback/reference and is not the canonical identity.
 
 ## 2. Brand principles
 
@@ -31,30 +40,16 @@ Avoid:
 - AI sparkles / neon orb language;
 - overly complex symbols that fail at favicon size.
 
-## 3. Logo concept territory
+## 3. Canonical symbol concept — Gap Mark
 
-Preferred concept family:
+A compact geometric symbol built around an otherwise continuous shape with one controlled visible gap.
 
-> **A measurable pattern with one visible gap / interruption, plus a subtle inspection cue.**
+Meaning:
+- a measurable system exists;
+- one part is missing / interrupted;
+- the product finds and explains that gap.
 
-This should communicate:
-- something is leaking / missing;
-- the system notices the gap;
-- evidence and diagnosis rather than prediction.
-
-Candidate directions for visual exploration:
-
-### A — Broken Signal Bars
-Three compact vertical signal bars, with one bar interrupted by a small gap.
-
-### B — Gap Frame
-A simple rounded square / frame with one side intentionally broken and a small marker near the gap.
-
-### C — Evidence Pulse
-A compact line / pulse pattern with a visible discontinuity highlighted by one dot.
-
-### D — Split Column / Leak Mark
-Two or three geometric columns where one has a controlled offset or cut, creating a memorable negative-space leak.
+The gap must be visible from the silhouette itself and must not depend on a tiny decorative dot or gradient.
 
 ## 4. Favicon constraints
 
@@ -65,44 +60,54 @@ Final mark must remain recognizable at:
 - browser tab scale;
 - monochrome fallback.
 
-No internal text.
-No tiny decorative details.
-No dependence on gradients for recognition.
+Requirements:
+- no internal text;
+- no thin micro-details;
+- no gradient required for recognition;
+- gap still visible at 16×16;
+- shape distinguishable on light and dark backgrounds.
 
-## 5. Wordmark
+## 5. Required variants
+
+Before G3.5 PASS, freeze:
+- primary full-color symbol;
+- monochrome dark;
+- monochrome light;
+- favicon 16×16 / 32×32 reference;
+- navigation symbol + wordmark lockup.
+
+## 6. Wordmark
 
 Working name remains:
 
 `Conversion Leak Audit`
 
-The symbol and wordmark may appear together in navigation, but the symbol must work independently as favicon/app icon.
+The symbol and wordmark may appear together in navigation, while the symbol must work independently as favicon/app icon.
 
-## 6. Platform compatibility marks
+## 7. Platform compatibility marks
 
-Owner explicitly requested visible compatibility cues for major independent-store platforms.
-
-Homepage / compatibility strip may show recognizable platform marks such as:
+Homepage may show compatibility cues for:
 - WordPress / WooCommerce;
 - Shopify;
 - Wix;
 - Squarespace;
 - BigCommerce;
-- `+ more` / platform-agnostic fallback.
+- `+ more`.
 
-These marks are **compatibility indicators**, not endorsements or partnerships.
+These marks are compatibility indicators, not endorsements or partnerships.
 
-UI copy should make this clear with language such as:
+Preferred copy:
 
 > Works with major independent-store platforms and other publicly accessible storefronts.
 
 Do not imply official integration unless one exists.
 
-## 7. Current Gate
+## 8. Current Gate
 
-Logo identity is **not yet frozen**.
+Logo family is selected; final geometry is not yet frozen.
 
 Next:
-1. generate 3–4 extreme-minimal logo candidates;
-2. review at favicon scale and nav scale;
-3. select one candidate or request one final refinement;
-4. freeze symbol before G3.5 PASS.
+1. refine Gap Mark for small-size legibility;
+2. verify 16×16 / 32×32 / nav / dark-light variants;
+3. place refined mark into final Golden Screens;
+4. freeze with G3.5 visual approval.
