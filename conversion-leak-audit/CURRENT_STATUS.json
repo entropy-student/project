@@ -1,6 +1,6 @@
 {
   "project": "conversion-leak-audit",
-  "updated_at": "2026-09-17",
+  "updated_at": "2026-09-18",
   "theory_skill": {
     "repository": "entropy-student/spike.skill",
     "path": "independent-store-operations",
@@ -15,12 +15,14 @@
     "G1_WORDPRESS_LOCAL_BASELINE": "PASS",
     "G2_SAFE_SCANNER_V0": "PASS",
     "G3_RULE_ENGINE_V0": "MERGED_CLOSED",
-    "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "NEXT",
-    "G5_COMPLETE_FIX_QUEUE_LLM": "PENDING",
+    "G3_5_UI_GROWTH_DESIGN_FREEZE": "NEXT",
+    "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "PENDING",
+    "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "PENDING",
+    "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "PENDING",
     "G6_VPS_ONBOARDING_STORAGE": "HOLD",
     "G7_VPS_PRIVATE_DEPLOYMENT": "HOLD",
     "G8_DOMAIN_HTTPS": "HOLD",
-    "G9_PRODUCTION_PAYMENT": "HOLD",
+    "G9_PAYMENT_CONTROLLED_GOLIVE": "HOLD",
     "G10_PRODUCTION_ACCEPTANCE": "HOLD",
     "G11_ACQUISITION_BUSINESS_VALIDATION": "HOLD"
   },
@@ -35,11 +37,24 @@
     "wordpress_ci_run_id": 35237395508,
     "scanner_network_ci_run_id": 35235157740
   },
+  "design": {
+    "status": "NOT_FROZEN",
+    "clone_ui_role": "VISUAL_REFERENCE_EXTRACTION_ONLY",
+    "golden_screenshot_required": true,
+    "visual_regression_required": true,
+    "analytics_event_contract_required": true
+  },
+  "payment": {
+    "status": "DEFERRED_TO_G9",
+    "tentative_provider": "PAYPAL_DIRECT",
+    "unified_pay": "NOT_CURRENT_DEPENDENCY_NEEDS_SEPARATE_FIX"
+  },
   "constraints": {
     "payment": "HOLD",
     "vps": "HOLD",
     "production_secret": "FORBIDDEN",
-    "public_production_scanner": "HOLD"
+    "public_production_scanner": "HOLD",
+    "codex_product_implementation_before_g3_5_pass": "FORBIDDEN"
   },
-  "next_action": "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION"
+  "next_action": "G3_5_UI_GROWTH_DESIGN_FREEZE"
 }
