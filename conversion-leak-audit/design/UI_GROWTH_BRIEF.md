@@ -240,7 +240,56 @@ Recommended direction: **Editorial Diagnostic Console**
 
 页面应像“一个非常清楚的专业诊断工具”，而不是 SEO 工具目录或 AI chatbot。
 
-## 9. Owner approval required later
+## 9. Analytics implementation decision
+
+G3.5 只冻结事件合同；正式实现放到 G4/G4.5。
+
+首选方案：
+
+```text
+project-owned WordPress integration layer
+→ PostHog JS SDK
+→ PostHog Cloud
+```
+
+原则：
+- 不为了埋点单独增加 WordPress 社区插件；
+- 事件由项目代码显式发送；
+- 首发使用 PostHog Cloud 免费额度即可；
+- 后续如有数据合规/成本需求再评估自托管或替换 provider；
+- analytics provider 不能成为 Scanner / Top 3 主流程的硬依赖，埋点失败不得阻断用户扫描。
+
+核心事件语义以 `ANALYTICS_EVENT_CONTRACT.md` 为准。
+
+## 10. Borrowed-template regression policy
+
+当前 WordPress 基线借用了 SaasLauncher / 既有项目框架，但本项目会改 UI 与背后功能，因此正式把“模板回归风险”列为 G4/G4.5 一级风险。
+
+原则：
+
+```text
+borrowed baseline
+→ freeze verified baseline behavior
+→ implement one bounded surface at a time
+→ run baseline regression
+→ run new functional acceptance
+→ run visual regression
+```
+
+必须避免：
+- 直接大面积覆盖父主题 / 全局样式；
+- 为了像高保真而重写无关组件；
+- clone-ui 输出直接覆盖生产源码；
+- 一次同时修改 UI、Scanner integration、状态机和全局 CSS 后再统一排错。
+
+G4/G4.5 采用三层保护：
+1. **Baseline Regression**：G1 已验证行为不能回退；
+2. **Functional Acceptance**：Scanner / Top 3 / 状态流必须正确；
+3. **Visual Regression**：修功能不能破坏已冻结 Golden Screens。
+
+实现策略：优先新增 project-owned child-theme / integration components，最小化修改 borrowed framework 的 shared/global behavior。
+
+## 11. Owner approval required later
 
 G3.5 最终 PASS 前仍需 Owner 看到并批准：
 - desktop golden screens；
