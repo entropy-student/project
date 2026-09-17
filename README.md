@@ -8,7 +8,7 @@
 
 [English](./README_EN.md)
 
-![Projects](https://img.shields.io/badge/projects-3-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-4-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-中文%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -23,6 +23,7 @@
 | 🎧 **Music Taste Analyzer（音乐口味分析器）** | 用户主动授权后读取私人歌单，并生成可解释的音乐口味画像 | App / Tool | Active | [进入](./music-taste-analyzer/) |
 | 💳 **Unified Pay System（统一支付中台）** | 一次部署，多产品共享支付、验单、退款、对账与权益履约能力 | Shared Infrastructure | **Deploying** | [进入](./unified-pay-system/) |
 | 🎬 **Visual Narrative Animation Lab（画面叙事动画实验室）** | 从口播/配音提炼 Visual Beats，建立可复用的手绘叙事动画生产与自动化流水线 | Content Production / AI Workflow | **Prototype** | [进入](./visual-narrative-animation-lab/) |
+| 🔎 **Conversion Leak Audit（独立站转化漏损诊断）** | 扫描公开独立站，基于事实与可信规则输出免费 Top 3 与后续 Fix Queue | Diagnostic Product / Commerce Tool | **Local Integration Next** | [进入](./conversion-leak-audit/) |
 
 ---
 
