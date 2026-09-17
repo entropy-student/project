@@ -23,7 +23,7 @@ Responsibilities:
 - public URL input;
 - scan progress;
 - free Top 3 result UI;
-- later paid unlock UI.
+- later full-report / paid-unlock UI.
 
 Baseline:
 - WordPress 7.1
@@ -31,7 +31,24 @@ Baseline:
 - project child theme
 - Gutenberg / Full Site Editing
 
-## 3. Integration Layer
+The G1 baseline is functional scaffolding, not final UI. Final visual/product behavior must pass G3.5 before Codex implements G4.
+
+## 3. UI / Growth Design Layer
+
+Canonical design decisions live in `G3_5_UI_GROWTH_FREEZE.md` and future `design/` assets.
+
+High-fidelity must be expressed as implementable contracts, not only screenshots:
+- Design System;
+- page contracts;
+- interaction states;
+- desktop + mobile golden screenshots;
+- analytics event contract;
+- functional acceptance;
+- visual regression acceptance.
+
+`clone-ui` may extract visual language from references, but must not directly take ownership of the product source tree or rewrite unrelated functionality.
+
+## 4. Integration Layer
 
 Project-owned WordPress plugin/integration layer.
 
@@ -42,6 +59,7 @@ Responsibilities:
 - scan_id / status mapping;
 - polling;
 - render evidence-backed results;
+- emit analytics events;
 - future entitlement hook.
 
 Forbidden:
@@ -49,7 +67,7 @@ Forbidden:
 - bypassing Scanner security gates;
 - embedding production Secrets in WordPress source.
 
-## 4. Scanner V0
+## 5. Scanner V0
 
 Python service.
 
@@ -79,24 +97,15 @@ Job / Report API
 
 V0 persistence: SQLite for local product-development phase.
 
-## 5. Scanner Rules
+## 6. Rule / Theory Boundary
 
-Canonical theory/rule source:
-`entropy-student/spike.skill/independent-store-operations/`
+Canonical theory/rule source: `entropy-student/spike.skill/independent-store-operations/`.
 
 V0 automatic set: 17 trusted rules.
 
-Do not automatically add commercial-experiment variables such as:
-- ideal price;
-- discount size;
-- free-shipping threshold;
-- CTA copy;
-- popup timing;
-- generic trust score.
+Do not automatically add experiment variables such as ideal price, discount size, shipping threshold, CTA copy, popup timing or generic trust score.
 
-These require store-specific evidence / experiment.
-
-## 6. LLM Boundary
+## 7. LLM Boundary
 
 Forbidden:
 
@@ -115,34 +124,71 @@ structured facts
 
 Free Top 3 should remain deterministic and low/zero-token where practical.
 
-## 7. Network Boundary
+API credentials must live only in environment/Secret Store, never chat/GitHub/source.
 
-Scanner needs network to inspect real public sites.
+## 8. Analytics / Operations Boundary
 
-WordPress local development and fixture tests can run without public internet after dependencies/images are available locally.
+Instrumentation is required before acquisition scaling.
 
-Security principles:
+Preferred approach:
+- project-owned event emission;
+- PostHog or equivalent as analytics backend candidate;
+- avoid adding a large plugin stack when a small integration is sufficient.
+
+Event contract candidate:
+
+```text
+landing_view
+scan_started
+scan_completed
+top3_viewed
+issue_expanded
+pricing_viewed
+checkout_started
+payment_completed
+full_report_viewed
+```
+
+Operational integrations are added only when a real requirement appears. SEO/Search, email and backup are separate operational concerns, not reasons to overload WordPress early.
+
+## 9. Skill Dogfood Boundary
+
+This product is also a real-world validation environment for `independent-store-operations`.
+
+Skill-derived product/operations hypotheses must be logged before observing results. After real behavior data exists, mark each hypothesis `SUPPORTED / REJECTED / INCONCLUSIVE`. Do not treat implementation choice as validation.
+
+## 10. Network / Data Boundary
+
+Scanner needs network to inspect real public sites. WordPress local development and fixtures can run without public internet once dependencies are local.
+
+Security:
 - public URL only;
 - no localhost/private/link-local/metadata targets;
 - same-origin bounded crawl;
 - redirect revalidation;
 - connection-time IP pinning;
 - fail closed;
-- browser never used to bypass explicit blocking / rate limits.
+- browser never used to bypass explicit blocking/rate limits.
 
-## 8. Data Boundary
+Local V0 stores job/report metadata and structured findings. Raw scraped HTML is not normal durable product data.
 
-Local V0 stores job/report metadata and structured findings.
+## 11. Payment Boundary
 
-Do not treat raw scraped HTML as normal durable product data.
+Payment is intentionally deferred to G9.
 
-Production data/storage layout will be frozen at G6 before VPS deployment.
+Current default candidate: **Direct PayPal**.
 
-## 9. Production Target
+Unified Pay is explicitly not a current dependency because its production path still needs separate fixes/validation.
+
+Payment must map the correct `scan_id/report` to an entitlement; do not model this product as generic card-key/file delivery.
+
+Before G9 there must be no production payment Secret and no payment-driven blocker for UI, Scanner integration, report logic or VPS staging.
+
+## 12. Production Target
 
 Shared VPS, project-isolated Compose.
 
-Planned project-scoped paths:
+Planned paths:
 
 ```text
 /srv/apps/conversion-leak-audit
