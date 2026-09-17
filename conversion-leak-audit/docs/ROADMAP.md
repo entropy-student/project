@@ -3,28 +3,57 @@
 ## Current Map
 
 ```text
-P0   Product / Governance                   PASS
-P0A  WordPress-first                        PASS
-P0B  Shared VPS final target                PASS
-PF   Theory / Rules / Pre-development       PASS
+P0   Product / Governance                    PASS
+P0A  WordPress-first                         PASS
+P0B  Shared VPS final target                 PASS
+PF   Theory / Rules / Pre-development        PASS
 
-G1   WordPress Local Baseline               PASS
-G2   Safe Scanner V0                        PASS
-G3   Rule Engine V0                         MERGED / CLOSED
-
-G4   WordPress ↔ Scanner ↔ Top 3 Local Loop  NEXT
-G5   Complete Fix Queue + LLM Explanation   PENDING
-G6   VPS Onboarding / Storage               HOLD
-G7   VPS Private Deployment                 HOLD
-G8   Domain / HTTPS / Shared Ingress         HOLD
-G9   Production Payment / Controlled Go-live HOLD
-G10  Production Acceptance                  HOLD
-G11  Acquisition / Business Validation      HOLD
+G1   WordPress Local Baseline                PASS
+G2   Safe Scanner V0                         PASS
+G3   Rule Engine V0                          MERGED / CLOSED
+G3.5 UI + Growth Design Freeze               NEXT
+G4   WordPress ↔ Scanner ↔ Top 3 Local Loop   PENDING
+G4.5 Visual + Functional Acceptance          PENDING
+G5   Full Fix Queue + LLM + Skill Dogfood    PENDING
+G6   VPS Onboarding / Storage                HOLD
+G7   VPS Private Deployment                  HOLD
+G8   Domain / HTTPS / Shared Ingress          HOLD
+G9   Payment / Controlled Go-live            HOLD
+G10  Production Acceptance                   HOLD
+G11  Acquisition / Business Validation       HOLD
 ```
+
+## G3.5 — UI + Growth Design Freeze
+
+Owner + Reviewer Gate. Before Codex product implementation, freeze:
+
+- customer journey and core Aha;
+- page information architecture;
+- Trust / Proof / Offer / CTA;
+- desktop + mobile high-fidelity references;
+- Design System;
+- loading / progress / error / incomplete states;
+- Analytics Event Contract;
+- Visual Acceptance / Golden Screenshots;
+- Functional Acceptance;
+- Free → Paid boundary.
+
+Core Activation hypothesis:
+
+```text
+URL submitted
+→ scan completes
+→ evidence-backed Top 3 viewed
+→ user experiences “this found something concrete about my store”
+```
+
+`clone-ui` is reference extraction only. It must not directly rewrite the product architecture or broad existing source code.
+
+Acceptance: the implementation brief is sufficiently precise that Codex does not need to invent product/UI decisions while coding.
 
 ## G4 — Local Free Loop
 
-Goal:
+Only begins after G3.5 PASS.
 
 ```text
 URL input
@@ -43,82 +72,64 @@ Acceptance:
 - user sees progress/errors;
 - no payment / VPS / production Secret.
 
-## G5 — Paid-value Product Layer
+## G4.5 — Visual + Functional Acceptance
+
+Run after G4 implementation and before expanding product scope.
+
+Must prove:
+- functional acceptance suite passes;
+- desktop/mobile golden screenshots exist;
+- Playwright screenshot comparison is within accepted tolerance;
+- loading/error/incomplete states match design contract;
+- implementation did not break Scanner safety or WordPress baseline;
+- analytics events fire according to contract.
+
+## G5 — Full Fix Queue + LLM + Skill Dogfood
 
 Goal:
 - complete Fix Queue;
 - prioritization;
 - model explanation from structured findings;
-- downloadable/shareable result if useful;
-- paid/unpaid content boundary ready, but real payment still not required until approved Gate.
+- optional downloadable/shareable result;
+- Free vs Paid value boundary;
+- record real product hypotheses in `SKILL_DOGFOOD_LOG.md`.
 
-Important:
-- LLM explains evidence; it does not replace deterministic scan facts.
-- free scan should remain low/zero LLM-token where practical.
+LLM explains evidence; it does not replace deterministic facts. Free scan should remain low/zero-token where practical.
 
 ## G6 — VPS Storage / Onboarding
 
-Before deployment, freeze:
-
-```text
-/srv/apps/conversion-leak-audit
-/srv/data/conversion-leak-audit
-/srv/backups/conversion-leak-audit
-```
-
-Must define:
-- DB/storage location;
-- Secret metadata and runtime reader;
-- backup method;
-- restore method;
-- retention;
-- project-specific Compose;
-- no anonymous durable volumes;
-- no cross-project durable sharing.
+Freeze project storage, backup, restore, Secret metadata, Compose and isolation before deployment.
 
 ## G7 — Private VPS Deployment
 
-Deploy project privately on Shared VPS without taking ownership of shared 80/443 or modifying shared infrastructure.
+Deploy privately without taking ownership of shared 80/443 or shared infrastructure.
 
 ## G8 — Domain / HTTPS
 
-Only through Shared Infra Gate when public ingress is needed.
+Public ingress only after Shared Infra Gate.
 
-Project must not independently modify:
-- SSH;
-- firewall;
-- Docker daemon;
-- shared reverse proxy;
-- shared tunnel;
-- shared network ownership.
+## G9 — Payment / Controlled Go-live
 
-## G9 — Production Payment / Controlled Go-live
+Payment is deliberately deferred until the product loop is already working.
 
-Payment remains separate Gate.
+Current provider decision:
+- tentative default: **Direct PayPal**;
+- Unified Pay is not a current dependency because it still needs separate fixes and production validation;
+- re-open payment architecture only at G9 or by explicit Owner decision.
 
-Requirements:
-- provider/account ready;
-- entitlement contract;
+Required at G9:
+- scan/report entitlement mapping;
 - idempotency;
+- webhook verification;
 - refund/rights revocation;
 - Secret safety;
 - small controlled canary.
 
-Prefer reuse of Unified Pay when it is the approved production route.
+The product is not a generic card-key delivery flow. Payment must unlock the correct `scan_id/report entitlement`.
 
 ## G10 — Production Acceptance
 
-Only call the product “online” when all applicable conditions hold:
-- correct HTTPS domain;
-- WordPress healthy;
-- Scanner healthy;
-- free scan loop works;
-- payment loop works within approved scope;
-- internal endpoints protected;
-- persistent data survives restart;
-- backup/restore path verified;
-- rollback executable;
-- VPS readback evidence exists.
+Only call the product online when HTTPS, WordPress, Scanner, free loop, approved payment scope, persistence, security, backup/restore and rollback all pass.
 
 ## G11 — Acquisition / Business Validation
 
@@ -132,4 +143,4 @@ Solution Proof
 → Retention / Referral as applicable
 ```
 
-Do not scale acquisition before trust/product loop shows meaningful behavior evidence.
+Use behavior data to validate/reject product and Skill hypotheses. Do not scale acquisition before the product/trust loop has meaningful evidence.
