@@ -15,12 +15,15 @@ PF  理论 / 规则 / 开发前验证                PASS
 G1  WordPress Local Baseline               PASS
 G2  Safe Scanner V0                        PASS
 G3  Rule Engine V0                         MERGED / CLOSED
-G4  WordPress → Scanner → Top 3 本地闭环    NEXT
+G3.5 UI + Growth Design Freeze             NEXT
+G4  WordPress → Scanner → Top 3 本地闭环    PENDING
+G4.5 Visual + Functional Acceptance        PENDING
+G5  Full Fix Queue + LLM + Skill Dogfood   PENDING
 
 VPS / 支付 / 生产                          HOLD
 ```
 
-当前不是继续研究理论，而是进入**本地产品闭环**阶段。
+当前不是继续写功能，而是先冻结 UI、增长路径、高保真和验收合同，再交给 Codex 实现。
 
 ## 阅读顺序
 
@@ -31,44 +34,37 @@ PROJECT_RECORD.md
 ↓
 docs/REVIEWER_HANDOFF.md
 ↓
+docs/G3_5_UI_GROWTH_FREEZE.md
+↓
 docs/ROADMAP.md
 ↓
 docs/EXECUTION_EVIDENCE.md
 ```
 
-如果由 Codex / Executor 接手，再读：
-
+Codex / Executor 额外阅读：
 - `docs/EXECUTOR_HANDOFF.md`
 - `docs/HANDOFF_PROTOCOL.md`
 
 ## 理论资产
 
-独立站运营理论不在本项目重复维护。
+Canonical Skill：`entropy-student/spike.skill/independent-store-operations/`，当前 `v0.6.0`。
 
-Canonical Skill：
+理论已覆盖：八段运营链、L0–L3、H1/C1/E1、店型、P0–P4、交易拓扑、Trust/Proof、经济护栏、Scanner 边界、77 条知识规则与 17 条 Scanner V0 可信规则。
 
-- Repository: `entropy-student/spike.skill`
-- Path: `independent-store-operations/`
-- Current version: `v0.6.0`
-
-理论体系已经覆盖：八段运营链、L0–L3 证据层、H1/C1/E1 规则类型、店型、信息距离 P0–P4、交易拓扑、Trust/Proof、经济护栏、Scanner 能力边界、77 条知识规则与 17 条 Scanner V0 可信规则。
+本项目同时通过 `docs/SKILL_DOGFOOD_LOG.md` 反向验证该 Skill；采用某个建议本身不算验证，必须等待真实行为数据。
 
 ## 当前产品组件
 
 ### WordPress
-
-已验证本地基线：
-
 - WordPress 7.1
 - MariaDB 11.4
 - SaasLauncher 2.0.18
-- 项目 Child Theme
-- Home / How it works / Demo / Pricing / FAQ / Blog
-- 6 / 6 页面 HTTP 200
+- project Child Theme
+- 6 个基础页面全部 200
+
+G1 是功能基线，不是最终 UI。
 
 ### Scanner V0
-
-Python 实现，采用：
 
 ```text
 URL / DNS / SSRF Safety Gate
@@ -79,41 +75,49 @@ URL / DNS / SSRF Safety Gate
 → evidence-backed Issues
 ```
 
-当前回归基线：
+回归基线：Scanner `55/55`、Rules `51/51`、Real facts `26/26`、Real rules `28/28`、Unexpected ISSUE `0`、Geo misuse `0`。
 
-- Scanner project tests: `55 / 55 PASS`
-- Rule fixtures: `51 / 51`
-- Real-network facts: `26 / 26`
-- Real rule assertions: `28 / 28`
-- Unexpected ISSUE: `0`
-- Geo context misuse: `0`
+## G3.5 — 为什么先设计再交给 Codex
 
-## Claim Boundary
+必须先冻结：
+- customer journey / Activation；
+- Home / Scan / Progress / Free Top 3 / Pricing / Full Report；
+- Trust / Proof / Offer / CTA；
+- desktop + mobile high-fidelity；
+- Design System；
+- loading / error / incomplete states；
+- analytics events；
+- visual + functional acceptance。
 
-V1 只允许声称：
+`clone-ui` 只用于视觉参考提取，不允许直接大面积改写产品源码。
 
-> 发现可观察到的站内因素，这些因素可能增加购买犹豫、不信任或操作阻力。
+高保真将通过 Golden Screenshot + Playwright visual regression 落地，而不是只给 Codex 一张参考图。
 
-不得声称：
+## Token / API
 
-- 找到了没有订单的真正根因；
-- 能精确计算收入损失；
-- 保证提高转化率。
+免费扫描核心路径原则上零 LLM Token：Scrapy、浏览器提取、Rule Engine、WordPress、Top 3 都是代码。
+
+LLM 后续只解释结构化 Issue。API Key 只进入运行环境 Secret Store / 环境变量，不进入聊天或 GitHub。
+
+## Payment
+
+支付整体后移到 `G9`。
+
+当前暂定：**Direct PayPal**。
+
+Unified Pay 目前尚未跑通并需要单独修改，因此不作为本项目当前依赖。到 G9 再做最终 Payment Architecture Review。
 
 ## 当前下一步
 
-`G4 — WordPress → Scanner → Top 3 Local Integration`
+`G3.5 — UI + Growth Design Freeze`
 
-目标：
+流程：
 
 ```text
-WordPress URL input
-→ create scan job
-→ progress/status
-→ Scanner V0
-→ evidence-backed findings
-→ Top 3
-→ WordPress free result page
+Reviewer + Growth Skill
+→ UI / Growth design
+→ Owner 审核高保真与产品路径
+→ freeze design / analytics / acceptance
+→ PASS_G3_5
+→ Codex 开始 G4
 ```
-
-限制：local only / no payment / no VPS / no production secret / no public production scanner。
