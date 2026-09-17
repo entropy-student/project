@@ -33,7 +33,7 @@ PF   Theory / Rules / Pre-development        PASS
 G1   WordPress Local Baseline                PASS
 G2   Safe Scanner V0                         PASS
 G3   Rule Engine V0                          MERGED / CLOSED
-G3.5 UI + Growth Design Freeze               NEXT
+G3.5 UI + Growth Design Freeze               IN PROGRESS
 G4   WP ↔ Scanner ↔ Top 3 Local Loop          PENDING
 G4.5 Visual + Functional Acceptance          PENDING
 G5   Full Fix Queue + LLM + Skill Dogfood    PENDING
@@ -68,40 +68,58 @@ WordPress 7.1 + MariaDB 11.4 + SaasLauncher 2.0.18 + child theme；6 个基础�
 
 ## 4. G3.5 — UI + Growth Design Freeze
 
-在把产品交给 Codex 实现 G4 前，先冻结产品体验与增长设计。
+当前阶段已进入 `IN_PROGRESS`。
 
-G3.5 必须确定：
-- 用户路径与核心 Aha；
-- 首页 / Scan / Progress / Free Top 3 / Full Report / Pricing 的信息架构；
-- Trust / Proof / CTA / Offer；
-- Desktop + Mobile high-fidelity reference；
-- Design System；
-- interaction / loading / error / incomplete states；
-- Analytics Event Contract；
-- Visual Acceptance / Golden Screenshot；
-- Functional Acceptance；
-- Free → Paid 边界。
+已经完成并写入 `design/`：
+- `UI_GROWTH_BRIEF.md`
+- `DESIGN_SYSTEM.md`
+- `PAGE_CONTRACTS.md`
+- `INTERACTION_STATES.md`
+- `ANALYTICS_EVENT_CONTRACT.md`
+- `FUNCTIONAL_ACCEPTANCE.md`
+- `VISUAL_ACCEPTANCE.md`
 
-核心 Activation 假设：
+当前推荐视觉方向：
+
+> **Editorial Diagnostic Console / Evidence-first Diagnostic**
+
+核心原则：
+- Evidence > opaque score；
+- Free Top 3 提供完整但有限的一次胜利；
+- 页面不做 AI-neon / fake terminal / fake progress；
+- 结果页先展示 observed fact + evidence；
+- paid value 扩展 scope / depth / prioritization / personalization / continuity；
+- clone-ui 只做视觉参考提取，不直接重写产品源码。
+
+核心 Activation candidate：
 
 ```text
-输入 URL
-→ 完成扫描
-→ 看见有证据的 Top 3
-→ “这里真的可能在漏单”
+landing_view
+→ scan_started
+→ scan_completed
+→ top3_viewed
+→ 用户看到与自己网站直接相关、带证据的具体问题
 ```
 
-### clone-ui 使用边界
-`clone-ui` 只能用于提取视觉参考（layout / spacing / typography / component / motion language），不得直接大面积重写现有 WordPress 产品源码。视觉参考必须先转成项目自己的 Design Spec，再由 Codex 在既有架构内实现。
+已冻结的产品路径：
 
-### 高保真验收
-高保真不能只靠截图口头要求。Codex 后续必须同时满足：
-- design spec；
-- golden screenshots（至少 desktop + mobile）；
-- Playwright screenshot / visual regression；
-- functional acceptance tests。
+```text
+Landing
+→ URL input + Trust strip
+→ honest scan progress
+→ Evidence-backed Top 3
+→ Evidence detail
+→ Paid expansion preview
+→ future payment at G9
+```
 
-G3.5 是 Owner + Reviewer Gate；未 PASS 前 Codex 不开始 G4 产品实现。
+当前唯一未完成的 G3.5 核心项：
+- Desktop Golden Screens；
+- Mobile Golden Screens；
+- Home / Progress / Free Top 3 / Full Report shell 高保真；
+- Owner visual approval。
+
+这些通过后才能 `PASS_G3_5` 并释放 G4 给 Codex。
 
 ## 5. 运营 / 插件策略
 
@@ -115,8 +133,7 @@ G3.5 是 Owner + Reviewer Gate；未 PASS 前 Codex 不开始 G4 产品实现。
 
 当前不安装一批 WordPress 插件。行为分析优先考虑 PostHog 或等价方案，尽量由项目 integration layer 自己完成事件埋点，减少插件耦合。
 
-核心事件候选：
-`landing_view → scan_started → scan_completed → top3_viewed → issue_expanded → pricing_viewed → checkout_started → payment_completed → full_report_viewed`。
+事件语义已冻结在 `design/ANALYTICS_EVENT_CONTRACT.md`。
 
 ## 6. Skill Dogfood
 
@@ -170,16 +187,15 @@ optional LLM explanation (later)
 
 ## 10. 当前下一动作
 
-不是 Codex G4。
-
 ```text
-Reviewer + Growth Skill
-→ G3.5 UI / Growth design
-→ Owner visual/product approval
-→ freeze design + analytics + acceptance contracts
+CREATE_HIGH_FIDELITY_GOLDEN_SCREENS
+→ OWNER_VISUAL_REVIEW
+→ FIX_IF_NEEDED
 → PASS_G3_5
-→ then hand to Codex for G4
+→ RELEASE_G4_TO_CODEX
 ```
+
+Codex 仍保持 `HOLD_FOR_G3_5_UI_GROWTH_DESIGN_FREEZE`。
 
 ## 11. 不允许重复执行
 
