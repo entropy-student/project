@@ -15,33 +15,47 @@
 8. historical chat / old package
 ```
 
-理论规则另以：
-
-`entropy-student/spike.skill/independent-store-operations/`
-
-为权威来源。
+理论规则另以 `entropy-student/spike.skill/independent-store-operations/` 为权威来源。
 
 ## 2. Reviewer → Executor
 
-Reviewer 需要改变执行目标时，优先更新：
+Reviewer 改变执行目标时，优先更新：
+- `PROJECT_RECORD.md`
+- `CURRENT_STATUS.json`
+- `docs/REVIEWER_HANDOFF.md`
+- `docs/EXECUTOR_HANDOFF.md`
+- 必要的 Gate 专用文档
 
-- `PROJECT_RECORD.md`（Gate / project state）
-- `CURRENT_STATUS.json`（machine-readable state）
-- `docs/REVIEWER_HANDOFF.md`（当前验收要求）
-- `docs/EXECUTOR_HANDOFF.md`（执行边界 / 下一任务）
+Reviewer 在聊天中的默认回报应保持简短，例如：
 
-Executor 不应仅凭旧聊天继续执行。
+```text
+Reviewer 已完成并写入 GitHub。
+请查阅：conversion-leak-audit/docs/REVIEWER_HANDOFF.md
+当前 Gate：Gx ...
+```
+
+详细结论以 GitHub 文档为准，不在聊天里重复整份报告。
 
 ## 3. Executor → Reviewer
 
 Executor 完成一轮后：
-
 1. 提交真实代码；
 2. 将事实证据追加到 `docs/EXECUTION_EVIDENCE.md`；
 3. 在 commit message 中写明 Gate / change；
-4. 不擅自把 `CURRENT_STATUS.json` 的 Gate 从 PENDING/NEXT 改成 PASS，除非 Reviewer 已明确授权。
+4. 如有截图/验收资产，写入约定目录；
+5. 不擅自将 Gate 改成 PASS，除非 Reviewer 明确授权。
 
-建议回报格式：
+Executor 在聊天/终端回报也应简短，例如：
+
+```text
+执行完成，证据已写入 GitHub。
+请查阅：conversion-leak-audit/docs/EXECUTION_EVIDENCE.md
+Commit: <sha>
+```
+
+详细命令、测试、风险、截图位置均进入 GitHub，不依赖复制聊天内容。
+
+## 4. Required Execution Evidence
 
 ```text
 Gate:
@@ -49,19 +63,20 @@ Commit:
 Files changed:
 Commands/tests:
 Results:
+Screenshots / visual evidence:
 Known limitations:
 Risks:
 Next suggested action:
 Owner intervention required: YES/NO
 ```
 
-## 4. Gate Ownership
+## 5. Gate Ownership
 
 - Executor：实现、测试、提供证据。
 - Reviewer：判断 PASS / RETURN / HOLD / MERGED / CLOSED。
-- Owner：付款、Secret、身份授权、重大产品方向、Shared Infra 变更、不可逆操作、生产开启。
+- Owner：付款、Secret、身份授权、重大产品方向、Shared Infra 变更、不可逆操作、生产开启，以及 G3.5 的最终视觉/产品方向确认。
 
-## 5. What Must Never Enter GitHub
+## 6. What Must Never Enter GitHub
 
 - API Secret / payment Secret；
 - private key；
@@ -70,13 +85,9 @@ Owner intervention required: YES/NO
 - production database dump containing private user data；
 - raw sensitive customer data。
 
-允许记录：
-- Secret 名称；
-- Secret 应放在哪里；
-- 哪个 runtime reader 需要权限；
-- 是否存在 / 是否验证（但不记录值）。
+允许记录 Secret 名称、放置位置、runtime reader、存在/验证状态，但不得记录值。
 
-## 6. Avoid State Drift
+## 7. Avoid State Drift
 
 每个 Gate 正式变化时，至少同步：
 
@@ -87,30 +98,36 @@ REVIEWER_HANDOFF.md
 ROADMAP.md
 ```
 
-如果四者冲突：
+如果冲突：停止继续开发，先恢复单一真相。
 
-> 停止继续开发，先恢复单一真相。
-
-## 7. Do Not Re-run Passed Work
+## 8. Do Not Re-run Passed Work
 
 除非有新反例 / 代码回归 / Reviewer reopen：
-
 - theory foundation 不重跑；
 - G1 不重搭；
 - G2 不重做；
 - G3 不重新拆出。
 
-## 8. Current Handoff Point
+## 9. Current Handoff Point
 
 ```text
 G1 = PASS
 G2 = PASS
 G3 = MERGED / CLOSED
-G4 = NEXT
+G3.5 = NEXT
+G4 = PENDING
 ```
 
-下一轮 Executor 任务应围绕：
+Codex 当前应 HOLD，等待 Reviewer/Owner 完成 `G3_5_UI_GROWTH_FREEZE.md`。
 
-`WordPress → Scanner → Top 3 local integration`
+## 10. Promotion to Shared Governance
 
-展开。
+本协议当前只在 Conversion Leak Audit 项目试运行。
+
+如果 G3.5 → G4 → G4.5 等连续 Gate 能稳定通过，并证明：
+- 聊天搬运显著减少；
+- 状态漂移减少；
+- Reviewer/Executor 能独立通过 GitHub 恢复上下文；
+- 证据链完整；
+
+则将该模式整理进通用项目管理规范 Skill，作为标准 Reviewer ↔ Executor 协作协议。
