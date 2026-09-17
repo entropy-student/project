@@ -1,0 +1,45 @@
+{
+  "project": "conversion-leak-audit",
+  "updated_at": "2026-09-17",
+  "theory_skill": {
+    "repository": "entropy-student/spike.skill",
+    "path": "independent-store-operations",
+    "version": "0.6.0",
+    "status": "PASS_FROZEN_FOR_IMPLEMENTATION"
+  },
+  "gates": {
+    "P0": "PASS",
+    "P0A": "PASS",
+    "P0B": "PASS",
+    "PF": "PASS",
+    "G1_WORDPRESS_LOCAL_BASELINE": "PASS",
+    "G2_SAFE_SCANNER_V0": "PASS",
+    "G3_RULE_ENGINE_V0": "MERGED_CLOSED",
+    "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "NEXT",
+    "G5_COMPLETE_FIX_QUEUE_LLM": "PENDING",
+    "G6_VPS_ONBOARDING_STORAGE": "HOLD",
+    "G7_VPS_PRIVATE_DEPLOYMENT": "HOLD",
+    "G8_DOMAIN_HTTPS": "HOLD",
+    "G9_PRODUCTION_PAYMENT": "HOLD",
+    "G10_PRODUCTION_ACCEPTANCE": "HOLD",
+    "G11_ACQUISITION_BUSINESS_VALIDATION": "HOLD"
+  },
+  "evidence": {
+    "scanner_project_tests": "55/55 PASS",
+    "rule_fixtures": "51/51 PASS",
+    "real_fact_assertions": "26/26 PASS",
+    "real_rule_assertions": "28/28 PASS",
+    "unexpected_issue": 0,
+    "geo_context_misuse": 0,
+    "wordpress_asset_checks": "20/20 PASS",
+    "wordpress_ci_run_id": 35237395508,
+    "scanner_network_ci_run_id": 35235157740
+  },
+  "constraints": {
+    "payment": "HOLD",
+    "vps": "HOLD",
+    "production_secret": "FORBIDDEN",
+    "public_production_scanner": "HOLD"
+  },
+  "next_action": "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION"
+}
