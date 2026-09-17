@@ -23,6 +23,7 @@ design/INTERACTION_STATES.md          ✅
 design/ANALYTICS_EVENT_CONTRACT.md    ✅
 design/FUNCTIONAL_ACCEPTANCE.md       ✅
 design/VISUAL_ACCEPTANCE.md           ✅
+design/DEMO_FIXTURE_GOLDEN.md         ✅
 ```
 
 视觉探索状态：
@@ -31,17 +32,17 @@ design/VISUAL_ACCEPTANCE.md           ✅
 V1 exploratory high-fidelity           reviewed
 V2 platform-compatible direction       reviewed
 V3 evidence-first direction            PASS_CANDIDATE
+V4 structure direction                 OWNER_APPROVED
 ```
 
-当前视觉方向已基本收敛，不再重新探索整体风格。
+当前整体视觉方向已冻结，不再重新探索风格。
 
 待完成：
 
 ```text
-fixed Demo Fixture / truthful copy      ⏳
-final Golden Screens                    ⏳
-final logo / favicon                     ⏳
-Owner final visual approval              ⏳
+Gap Mark final geometry / favicon       ⏳
+final truthful Golden Screens           ⏳
+Owner final visual approval             ⏳
 ```
 
 ## Growth / Activation Hypothesis
@@ -73,7 +74,7 @@ Paid Expansion 后续主要增加：
 
 > **Editorial Diagnostic Console / Evidence-first Diagnostic**
 
-Reviewer decision：`VISUAL_DIRECTION = PASS_CANDIDATE`
+Owner + Reviewer decision：`VISUAL_DIRECTION = APPROVED`
 
 保留：
 - white / clean / deep-blue diagnostic direction；
@@ -85,36 +86,56 @@ Reviewer decision：`VISUAL_DIRECTION = PASS_CANDIDATE`
 - desktop/mobile consistency；
 - full-report information architecture。
 
-最后收敛仅允许修：
-- Claim Boundary；
-- Demo data真实性；
-- finding内容必须来自冻结规则；
-- fake social proof移除；
-- Evidence-first表达增强；
-- brand/logo identity。
+最后收敛只允许修：
+- truthful content/data；
+- final Gap Mark geometry；
+- favicon/nav small-size behavior；
+- Golden Screen implementation details。
 
 不再重新发明整体视觉风格。
 
 ## Brand / logo decision
 
-现有左上角蓝色 bar-chart-like 图标：
+Owner + Reviewer 已选择：
 
-> `PLACEHOLDER_ONLY`
+```text
+PRIMARY = B — Gap Mark
+BACKUP  = refined A — Bar Mark
+```
 
-Reviewer 判断：简单可用，但过于通用，不冻结为最终 Logo。
+原因：Gap Mark 同时表达“缺口 / 漏点 / 可测结构”，比通用 analytics bar 更有品牌含义，又不会被误认为 Search/Security 产品。
 
-最终 Logo 方向：
-- 极简几何；
-- favicon 16×16 仍可识别；
-- 表达 gap / interruption / leak + inspection/evidence；
-- monochrome 可用；
-- 不做购物车、放大镜、AI sparkle cliché。
+最终要求：
+- 16×16 仍看得到 gap；
+- 32×32 / nav / mobile 清晰；
+- light/dark background 均可用；
+- monochrome 仍可识别；
+- 不依赖 gradient 才能成立。
 
-下一轮生成 3–4 个 Logo 候选，详见 `../design/BRAND_IDENTITY.md`。
+详见 `../design/BRAND_IDENTITY.md`。
 
-Owner 已明确希望首页展示主要独立站平台标识：
-WordPress/WooCommerce、Shopify、Wix、Squarespace、BigCommerce + more。
-这些只表达兼容性，不暗示官方合作。
+Owner 已明确希望首页展示主要独立站平台标识：WordPress/WooCommerce、Shopify、Wix、Squarespace、BigCommerce + more。只表达兼容性，不暗示官方合作。
+
+## Truthful demo fixture
+
+最终 Golden Screens 禁止再手填展示数字或虚构 findings。
+
+Canonical demo fixture：
+
+`../design/DEMO_FIXTURE_GOLDEN.md`
+
+固定结果：
+
+```text
+17 trusted rules checked
+3 confirmed demo issues
+
+1. CORE-007 — product price not visible near purchase action
+2. PHYS-002 — shipping information hard to find
+3. PHYS-001 — return information hard to find
+```
+
+Full Report shell 不能为了“看起来丰富”伪造额外 high/medium/low counts。
 
 ## Homepage / product path
 
@@ -261,8 +282,9 @@ Unified Pay 当前不作为本项目依赖。
 - Design System 可执行； ✅
 - Analytics events frozen； ✅
 - Visual + Functional acceptance contract ready； ✅
-- overall visual direction； ✅ PASS_CANDIDATE
-- truthful fixed Demo Fixture； ⏳
+- overall visual direction； ✅ OWNER_APPROVED
+- truthful fixed Demo Fixture； ✅
+- primary logo family selected； ✅ GAP_MARK
 - final logo/favicons； ⏳
 - desktop/mobile final Golden Screens approved by Owner； ⏳
 - Codex 不再需要做产品方向判断； ⏳
@@ -270,9 +292,8 @@ Unified Pay 当前不作为本项目依赖。
 ## Current next action
 
 ```text
-GENERATE_MINIMAL_LOGO_CANDIDATES
-+ FREEZE_TRUTHFUL_DEMO_FIXTURE
-→ FINAL_GOLDEN_SCREENS
+REFINE_GAP_MARK_FOR_FAVICON
+→ GENERATE_FINAL_TRUTHFUL_GOLDEN_SCREENS
 → OWNER_FINAL_VISUAL_REVIEW
 → PASS_G3_5
 → RELEASE_G4_TO_CODEX
