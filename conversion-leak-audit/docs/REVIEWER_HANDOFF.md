@@ -11,29 +11,63 @@ PF = PASS
 G1 WordPress Local Baseline = PASS
 G2 Safe Scanner V0 = PASS
 G3 Rule Engine V0 = MERGED / CLOSED
-G3.5 UI + Growth Design Freeze = NEXT
+G3.5 UI + Growth Design Freeze = IN PROGRESS
 G4 WordPress ↔ Scanner ↔ Top 3 = PENDING
 ```
 
-Codex product implementation is paused until G3.5 PASS.
+Codex product implementation remains paused until G3.5 PASS.
 
-## G3.5 Reviewer Goal
+## G3.5 Completed in current Reviewer round
 
-Freeze enough product/UI/growth detail that Codex does not invent product decisions while coding.
+Text/product contracts now exist:
 
-Reviewer must produce/approve:
-- user journey + core Activation/Aha;
-- page contracts for Home / Scan / Progress / Free Top 3 / Pricing / Full Report;
-- Trust / Proof / Offer / CTA logic;
-- Desktop + Mobile high-fidelity references;
-- Design System;
-- loading/error/incomplete states;
-- Analytics Event Contract;
-- Visual Acceptance / Golden Screenshot contract;
-- Functional Acceptance contract;
-- Free → Paid boundary.
+```text
+design/UI_GROWTH_BRIEF.md             READY
+design/DESIGN_SYSTEM.md               READY
+design/PAGE_CONTRACTS.md              READY
+design/INTERACTION_STATES.md          READY
+design/ANALYTICS_EVENT_CONTRACT.md    READY
+design/FUNCTIONAL_ACCEPTANCE.md       READY
+design/VISUAL_ACCEPTANCE.md           READY
+```
 
-Owner visual/product approval is required before PASS_G3_5.
+Current recommended design direction:
+
+> **Editorial Diagnostic Console / Evidence-first Diagnostic**
+
+Key decisions:
+- observed fact/evidence before opaque scoring;
+- free result = evidence-backed Top 3 complete-but-bounded win;
+- no fake percentage progress;
+- no AI-neon / fake terminal / generic chatbot feel;
+- paid expansion adds scope/depth/prioritization/personalization/continuity;
+- clone-ui is reference extraction only;
+- analytics semantics are provider-independent;
+- payment stays deferred to G9, tentative Direct PayPal.
+
+## Current G3.5 blocker / next task
+
+Only the high-fidelity owner review remains before G3.5 can PASS.
+
+Required golden references:
+- Home desktop;
+- Home mobile;
+- Scan progress;
+- Scan incomplete/error;
+- Free Top 3 desktop/mobile;
+- Evidence detail;
+- Full report shell.
+
+Next sequence:
+
+```text
+CREATE_HIGH_FIDELITY_GOLDEN_SCREENS
+→ OWNER_VISUAL_REVIEW
+→ revisions if needed
+→ PASS_G3_5
+→ update EXECUTOR_HANDOFF
+→ release G4 to Codex
+```
 
 ## Growth Principle
 
