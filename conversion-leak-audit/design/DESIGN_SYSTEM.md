@@ -117,6 +117,19 @@ Shadow 极轻：
 
 避免 icon wall。
 
+### Platform Compatibility Strip
+首页可展示主要独立站平台标识，用于快速回答“我的站能不能扫”。
+
+可包含：
+- WordPress / WooCommerce；
+- Shopify；
+- Wix；
+- Squarespace；
+- BigCommerce；
+- `+ more`。
+
+必须表达为兼容性提示，不得暗示官方合作或深度平台接入。
+
 ### Finding Card
 结构固定：
 
@@ -186,7 +199,21 @@ Finding card 必须在无需横向滚动时读完标题 + observed fact。
 - reduced motion；
 - error message 与字段关联。
 
-## 10. clone-ui boundary
+## 10. Brand / logo boundary
+
+Current blue bar-style mark is **placeholder only** and must not be treated as frozen identity.
+
+Final symbol should:
+- stay minimal and geometric;
+- remain legible at favicon scale;
+- convey a gap / interruption / leak plus inspection/evidence;
+- work in monochrome;
+- avoid generic analytics-bar-only meaning;
+- avoid shopping-cart, magnifier and AI-sparkle clichés.
+
+Detailed brand contract: `BRAND_IDENTITY.md`.
+
+## 11. clone-ui boundary
 
 clone-ui 只能输出：
 - reference layout；
