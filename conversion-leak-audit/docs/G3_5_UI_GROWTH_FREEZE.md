@@ -17,6 +17,7 @@ Executor: none until PASS
 ```text
 design/UI_GROWTH_BRIEF.md             ✅
 design/DESIGN_SYSTEM.md               ✅
+design/BRAND_IDENTITY.md              ✅
 design/PAGE_CONTRACTS.md              ✅
 design/INTERACTION_STATES.md          ✅
 design/ANALYTICS_EVENT_CONTRACT.md    ✅
@@ -24,15 +25,23 @@ design/FUNCTIONAL_ACCEPTANCE.md       ✅
 design/VISUAL_ACCEPTANCE.md           ✅
 ```
 
+视觉探索状态：
+
+```text
+V1 exploratory high-fidelity           reviewed
+V2 platform-compatible direction       reviewed
+V3 evidence-first direction            PASS_CANDIDATE
+```
+
+当前视觉方向已基本收敛，不再重新探索整体风格。
+
 待完成：
 
 ```text
-design/references/home-desktop.png     ⏳
-design/references/home-mobile.png      ⏳
-design/references/scan-progress.png    ⏳
-design/references/free-top3.png        ⏳
-design/references/full-report.png      ⏳
-Owner visual approval                  ⏳
+fixed Demo Fixture / truthful copy      ⏳
+final Golden Screens                    ⏳
+final logo / favicon                     ⏳
+Owner final visual approval              ⏳
 ```
 
 ## Growth / Activation Hypothesis
@@ -60,19 +69,52 @@ Paid Expansion 后续主要增加：
 
 ## Design decision
 
-当前推荐视觉方向：
+当前视觉方向：
 
 > **Editorial Diagnostic Console / Evidence-first Diagnostic**
 
-含义：
-- 不把 opaque score 放在视觉中心；
-- 先展示 observed fact / evidence；
-- 结果页像专业诊断工具，不像 AI chatbot；
-- bold hierarchy + high whitespace；
-- clean / warm signal accent；
-- motion 只解释状态。
+Reviewer decision：`VISUAL_DIRECTION = PASS_CANDIDATE`
 
-详细规范见 `../design/DESIGN_SYSTEM.md`。
+保留：
+- white / clean / deep-blue diagnostic direction；
+- high whitespace；
+- platform compatibility strip；
+- URL-first hero；
+- real scan stages；
+- evidence-led finding cards；
+- desktop/mobile consistency；
+- full-report information architecture。
+
+最后收敛仅允许修：
+- Claim Boundary；
+- Demo data真实性；
+- finding内容必须来自冻结规则；
+- fake social proof移除；
+- Evidence-first表达增强；
+- brand/logo identity。
+
+不再重新发明整体视觉风格。
+
+## Brand / logo decision
+
+现有左上角蓝色 bar-chart-like 图标：
+
+> `PLACEHOLDER_ONLY`
+
+Reviewer 判断：简单可用，但过于通用，不冻结为最终 Logo。
+
+最终 Logo 方向：
+- 极简几何；
+- favicon 16×16 仍可识别；
+- 表达 gap / interruption / leak + inspection/evidence；
+- monochrome 可用；
+- 不做购物车、放大镜、AI sparkle cliché。
+
+下一轮生成 3–4 个 Logo 候选，详见 `../design/BRAND_IDENTITY.md`。
+
+Owner 已明确希望首页展示主要独立站平台标识：
+WordPress/WooCommerce、Shopify、Wix、Squarespace、BigCommerce + more。
+这些只表达兼容性，不暗示官方合作。
 
 ## Homepage / product path
 
@@ -81,7 +123,7 @@ Paid Expansion 后续主要增加：
 ```text
 Problem framing
 → URL input
-→ Trust strip
+→ Trust strip / platform compatibility
 → Scan progress
 → Evidence-backed Top 3
 → Issue evidence detail
@@ -89,9 +131,7 @@ Problem framing
 → Future Direct PayPal at G9
 ```
 
-Hero 主要承诺方向：
-
-> 别急着再买流量，先看看你的网站在哪里漏单。
+Hero 承诺必须维持 Claim Boundary，不直接承诺 revenue/conversion uplift。
 
 Supporting value：
 - public pages only；
@@ -217,20 +257,23 @@ Unified Pay 当前不作为本项目依赖。
 - 用户路径冻结； ✅
 - Core Aha 冻结； ✅ candidate frozen
 - 页面与状态完整； ✅
-- Trust/Proof/CTA reviewed； ✅ first pass
+- Trust/Proof/CTA reviewed； ✅
 - Design System 可执行； ✅
 - Analytics events frozen； ✅
 - Visual + Functional acceptance contract ready； ✅
-- desktop/mobile high-fidelity approved by Owner； ⏳
-- Golden Screenshots frozen； ⏳
-- Codex 不再需要做产品方向判断； ⏳ 取决于视觉冻结
+- overall visual direction； ✅ PASS_CANDIDATE
+- truthful fixed Demo Fixture； ⏳
+- final logo/favicons； ⏳
+- desktop/mobile final Golden Screens approved by Owner； ⏳
+- Codex 不再需要做产品方向判断； ⏳
 
 ## Current next action
 
 ```text
-CREATE_HIGH_FIDELITY_GOLDEN_SCREENS
-→ OWNER_VISUAL_REVIEW
-→ FIX_IF_NEEDED
+GENERATE_MINIMAL_LOGO_CANDIDATES
++ FREEZE_TRUTHFUL_DEMO_FIXTURE
+→ FINAL_GOLDEN_SCREENS
+→ OWNER_FINAL_VISUAL_REVIEW
 → PASS_G3_5
 → RELEASE_G4_TO_CODEX
 ```
