@@ -20,10 +20,10 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
-CURRENT_GATE=K0R2_WORDPRESS_STUDIO_CONSOLIDATION
+K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
+CURRENT_CHECKPOINT=OWNER_STUDIO_MIGRATION_REVIEW
 K1_NOT_ENTERED=YES
-WORDPRESS_STUDIO_CONSOLIDATION=IN_PROGRESS
-WORDPRESS_STUDIO_CONSOLIDATION=IN_PROGRESS
+WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
 
@@ -96,11 +96,24 @@ Verified:
 Formal Reviewer decision:
 - `docs/REVIEWER_DECISION_K0R1_PASS.md`
 
-### Current checkpoint — Owner template review
+### Responsive baseline correction
 
-Owner should inspect:
+The earlier K0 375px mobile PASS subclaim is superseded by K0R2 evidence. Current truth:
 
-`http://localhost:8090`
+```text
+K0_FUNCTIONAL_BASELINE=PASS
+K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
+K1_MUST_FIX_MOBILE_375=YES
+```
+
+The defect reproduces on both Docker source and Studio import, so it is not a Studio migration regression.
+
+Formal Reviewer decision:
+- `docs/REVIEWER_DECISION_K0R2_RECONCILED_PASS.md`
+
+### Current checkpoint — Owner Studio migration review
+
+Owner should inspect the Studio-managed `Mini Craft Night Kit` site
 
 At minimum:
 - Home
@@ -108,7 +121,7 @@ At minimum:
 - Cart
 - Checkout
 
-No K1 implementation starts until Owner chooses USE / RETURN.
+No K1 implementation starts until Owner confirms the Studio site is the accepted base. K1 must include the inherited 375px mobile clipping fix.
 
 ### K1 — UI/Growth Decision + Brand Adaptation
 
@@ -208,14 +221,8 @@ Candidate Governance rule now validated twice:
 
 ## Current Next Action
 
-Current Gate:
+Current checkpoint:
 
-`K0R2_WORDPRESS_STUDIO_CONSOLIDATION`
+`OWNER_STUDIO_MIGRATION_REVIEW`
 
-Goal:
-migrate the accepted Docker PoC into WordPress Studio without changing site content or entering K1.
-
-Formal Reviewer decision:
-- `docs/REVIEWER_DECISION_K0R2_STUDIO_CONSOLIDATION.md`
-
-The Docker PoC remains the rollback baseline until Studio migration is reviewed and accepted.
+K0R2 Studio migration is accepted. The Docker PoC remains rollback until Owner accepts Studio as the active base. The inherited 375px clipping is mandatory K1 remediation.
