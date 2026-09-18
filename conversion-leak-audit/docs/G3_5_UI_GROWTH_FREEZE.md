@@ -1,6 +1,6 @@
 # G3.5 — UI + Growth Design Freeze
 
-Status: `READY_FOR_OWNER_FINAL_APPROVAL`
+Status: `PASS`
 Owner: Reviewer + Owner
 Executor: none until PASS
 
@@ -42,7 +42,7 @@ V4 structure direction                 OWNER_APPROVED
 ```text
 Gap Mark final geometry / favicon       ✅
 final truthful Golden Screens           ✅ FINAL_GOLDEN_CANDIDATE
-Owner final visual approval             ⏳
+Owner final visual approval             ✅
 ```
 
 ## Growth / Activation Hypothesis
@@ -286,14 +286,13 @@ Unified Pay 当前不作为本项目依赖。
 - truthful fixed Demo Fixture； ✅
 - primary logo family selected； ✅ GAP_MARK
 - final logo/favicons； ✅
-- desktop/mobile final Golden Screens approved by Owner； ⏳ final owner check
+- desktop/mobile final Golden Screens approved by Owner； ✅
 - Codex 不再需要做产品方向判断； ✅
 
 ## Current next action
 
 ```text
-OWNER_FINAL_VISUAL_REVIEW
-→ PASS_G3_5
+PASS_G3_5
 → RELEASE_G4_TO_CODEX
 ```
 
@@ -313,3 +312,16 @@ Final candidate corrections completed:
 - final Gap Mark is used for nav/favicon direction.
 
 Generated-image copy is illustrative. If image text ever conflicts with the canonical contracts, `FINAL_GOLDEN_SCREEN_SPEC.md` and `DEMO_FIXTURE_GOLDEN.md` win.
+
+## Final Gate Decision
+
+```text
+PASS_G3_5_UI_GROWTH_DESIGN_FREEZE
+OWNER_VISUAL_APPROVAL=PASS
+VISUAL_DIRECTION=FROZEN
+PRIMARY_LOGO=GAP_MARK
+TRUTHFUL_DEMO_FIXTURE=FROZEN
+G4_RELEASED_TO_CODEX=YES
+```
+
+Next execution contract: `G4_EXECUTION_CONTRACT.md`.
