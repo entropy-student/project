@@ -9,8 +9,8 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K1_UI_GROWTH_DECISION_AND_BRAND_ADAPTATION
-K1_STATUS=APPROVED_TO_EXECUTE
+CURRENT_GATE=K1A_VISUAL_DIRECTION_AND_GROWTH_MAPPING
+K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
 K1_MUST_FIX_MOBILE_375=YES
@@ -143,3 +143,10 @@ Formal decision: `docs/REVIEWER_DECISION_K1_UI_GROWTH_BRAND_ADAPTATION.md`
 Current Gate: `K1_UI_GROWTH_DECISION_AND_BRAND_ADAPTATION`.
 
 Executor must follow the approved Growth/UI hierarchy, use the minimum-change strategy, avoid unverified product claims or fake proof, fix the inherited 375px clipping, preserve Gutenberg/WooCommerce behavior, update `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`, then stop at Reviewer.
+
+
+## K1A Override
+
+K1 implementation is paused. Reviewer must first produce the concrete visual direction and growth-to-UI mapping. Owner approval is required before Codex starts K1B implementation.
+
+Formal decision: `docs/REVIEWER_DECISION_K1A_VISUAL_DIRECTION.md`.
