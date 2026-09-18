@@ -24,3 +24,16 @@ The exact execution record is in [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md).
 Please review `EXECUTION_EVIDENCE.md` and decide the formal K0 outcome. Executor work stops here. No K1 brand or fidelity work has started.
 
 The local WordPress admin credentials and `.env` values are intentionally omitted from GitHub evidence.
+
+## K0R1 Cleanup Handoff
+
+`PASS_CANDIDATE_K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP`
+
+- Removed only the five confirmed K0-generated WooCommerce download/extraction artifacts from the shared workspace root.
+- No artifact needed retention under `.artifacts/` or `.cache/`; the running site uses named Docker volumes and no root-level install asset.
+- The PoC project root is clean and still runs on `http://localhost:8090`.
+- Home, Product, Cart, and Checkout smoke checks passed after cleanup; no K0 reinstall or template re-import was performed.
+- The old site on `http://localhost:8088` still returned 200; its containers, database volume, and recorded hashes remain unchanged.
+- Unrelated projects and protected shared files were not touched. Remaining non-K0 root items are explicitly out of scope.
+
+Reviewer should decide the formal K0R1 result. Executor stops here and does not enter K1.
