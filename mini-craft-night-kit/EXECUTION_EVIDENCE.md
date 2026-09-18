@@ -170,3 +170,119 @@ STOP_AT_REVIEWER=YES
 
 
 OUT_OF_SCOPE_WORKSPACE_DEBT=Protected non-K0 items remain: dujiao-next.zip, .clone-ui/, dujiao-next/, formwork-design/, mini-craft-night-kit/, project-github-sync/, and SHARED_VPS_HANDOFF.md.
+---
+
+## K0R2 — WordPress Studio Consolidation
+
+- Gate: `K0R2_LOCAL_PROJECT_HYGIENE_CLEANUP` / WordPress Studio consolidation execution requested by Owner
+- Execution date: 2026-09-18 (Asia/Shanghai)
+- Executor result: `RETURN_K0R2_RESPONSIVE_BASELINE_CONFLICT`
+- Reviewer decision source: `docs/REVIEWER_DECISION_K0R2_STUDIO_CONSOLIDATION.md`
+- Reviewer-owned files were not modified. GitHub `PROJECT_RECORD.md` and `REVIEWER_HANDOFF.md` still identify K0R1 as their current checkpoint; this document records the K0R2 execution requested by Owner and leaves that truth reconciliation to Reviewer.
+
+### Source and target
+
+- Docker source retained at `http://localhost:8090`
+- Docker source project: `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-kadence-poc`
+- Studio site name: `Mini Craft Night Kit`
+- Studio site URL: `http://localhost:8881/`
+- Studio site directory: project-local `.studio\mini-craft-night-kit`
+- WordPress Studio desktop/CLI version: `1.21.0`
+- Studio runtime: native PHP `8.3`; Studio-managed SQLite database at `wp-content/database/.ht.sqlite`
+- Studio imported core: WordPress `6.8.9` (the source Docker baseline remains WordPress `6.8.2`; Studio only exposed the `6.8` line as `6.8.9`)
+
+### Backup and import
+
+- Full-site backup created from the running Docker source before import.
+- Backup layout contained `wp-config.php`, `wp-content/plugins`, `wp-content/themes`, `wp-content/uploads`, and `sql/`.
+- Local-only backup location: `mini-craft-kadence-poc\.artifacts\studio-migration\mini-craft-kadence-poc-studio-backup.zip`
+- Local backup SHA-256: `B71556D2E98162537042FAC9292E04015AD9AEB33461C9495C16F78D9B0031C1`
+- Import method: official bundled Studio CLI `import <backup> --path <site>`.
+- WordPress.com Sync: not used.
+- Import result: `PASS`; Studio site registered and online.
+
+### Imported stack and preserved content
+
+- Active theme: Kadence `1.5.2`
+- Active plugins: Kadence Blocks `3.7.11`, Kadence Starter Templates `2.3.4`, WooCommerce `10.0.4`
+- Inactive preinstalled plugins retained: Akismet `5.4`, Hello Dolly `1.7.2`
+- Studio runtime MU/drop-in components (`99-studio-loader`, SQLite integration) are Studio infrastructure, not an extra migration plugin.
+- `EXTRA_MIGRATION_PLUGIN_INSTALLED=NO`
+- Published pages include Home, Shop, Cart, Checkout, My account, Blog, Reviews, About, and Contact.
+- Published products found: 4; Smart Speaker was used for bounded cart/checkout smoke only.
+- Menus preserved: Company, Main, Support; media attachments found: 60.
+
+### Runtime validation
+
+| Surface | Studio URL / check | Result |
+|---|---|---|
+| Home | `http://localhost:8881/` | HTTP 200 |
+| Product | `http://localhost:8881/product/smart-speaker/` | HTTP 200 |
+| Cart | `http://localhost:8881/cart/` | HTTP 200 |
+| Checkout, empty cart | `http://localhost:8881/checkout/` | HTTP 302 to Cart, expected WooCommerce behavior |
+| Checkout, one local demo item | same URL after adding Smart Speaker | HTTP 200 |
+| Studio admin auto-login | `/studio-auto-login?redirect_to=%2Fwp-admin%2F` | HTTP 200, final `/wp-admin/` |
+| WooCommerce Orders admin | `/wp-admin/admin.php?page=wc-orders` | HTTP 200; WooCommerce Orders marker present |
+
+No order was submitted and no payment action occurred.
+
+### Gutenberg validation
+
+- Home editor endpoint: `/wp-admin/post.php?post=939&action=edit`
+- Editor page: HTTP 200; `block-editor` bootstrap marker present.
+- Home content block markers: 156.
+- Invalid block / `is-invalid` markers in editor response: 0.
+- `GUTENBERG_EDITOR=PASS`
+- `INVALID_BLOCK_COUNT=0`
+
+### Responsive validation
+
+Local screenshots were generated under `mini-craft-kadence-poc\.artifacts\studio-migration\responsive\` at 375, 768, 1440, and 1920 CSS pixels.
+
+- Mobile 375: `RETURN` — Home header title and main heading are visibly clipped beyond the viewport in Studio. The same 375px clipping is present in a comparison screenshot from the retained Docker source, so this is a source-baseline conflict rather than a Studio-only mutation.
+- Tablet 768: visually bounded and readable in the Studio screenshot.
+- Desktop 1440: visually bounded and readable in the Studio screenshot.
+- Desktop 1920: smoke screenshot generated and visually bounded.
+- No responsive CSS or template edits were made.
+
+`MOBILE_RESPONSIVE=RETURN`
+`TABLET_RESPONSIVE=PASS`
+`DESKTOP_RESPONSIVE=PASS`
+`RESPONSIVE_BASELINE_CONFLICT=YES`
+
+### Safety and containment
+
+```text
+STUDIO_INSTALLED_OR_AVAILABLE=PASS
+STUDIO_SITE_IMPORTED=PASS
+HOME_RUNTIME=PASS
+PRODUCT_RUNTIME=PASS
+CART_RUNTIME=PASS
+CHECKOUT_RUNTIME=PASS
+WOOCOMMERCE_BASELINE=PASS
+GUTENBERG_EDITOR=PASS
+INVALID_BLOCK_COUNT=0
+OWNER_STUDIO_ADMIN_ACCESS=PASS
+DOCKER_SOURCE_RETAINED=PASS
+OLD_PROJECT_UNCHANGED=PASS
+SHARED_WORKSPACE_ROOT_CLEAN=PASS_K0R2_SCOPED
+PROJECT_ROOT_HYGIENE=PASS
+EXTRA_MIGRATION_PLUGIN_INSTALLED=NO
+BRAND_CUSTOMIZATION=NO
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+DOCKER_VOLUMES_DELETED=NO
+UNRELATED_PROJECTS_TOUCHED=NO
+STOP_AT_REVIEWER=YES
+```
+
+Old project regression checks: `localhost:8088` remained HTTP 200; old `/wp-admin/` remained HTTP 302; old project README, compose, and Reviewer Handoff hashes matched the K0 baseline; old container and database volume remained present.
+
+K0R2-scoped shared-root check passed: no Studio migration archive, extraction directory, cookie, or helper was left in the shared `VPS基建` root. Existing unrelated `dujiao-next.zip` and other unrelated project directories were retained and not touched; they remain out of scope.
+
+### Return reason and stop
+
+`RETURN_K0R2_RESPONSIVE_BASELINE_CONFLICT`: the required 375px responsive check is not a PASS, and the same issue is observable on the retained Docker source. Executor did not alter the original template or write CSS to hide the issue. Reviewer must decide whether the earlier K0 mobile PASS evidence should be reconciled, or issue a separate bounded remediation Gate.
+
+No K1 branding, copy, layout, payment, or commerce customization was started. Docker source and all Docker volumes remain available for rollback. Executor stops here for Reviewer review.
