@@ -3,130 +3,107 @@
 Last reviewed: 2026-09-18  
 Maintainer: Reviewer
 
-## Reviewer Decision
+## Current Reviewer Truth
 
 ```text
-STRATEGIC_PIVOT_TO_KADENCE_SINGLE_PRODUCT=APPROVED
-OLD_19_PAGE_HIGH_FIDELITY_ROUTE=PAUSED
-OLD_PROJECT=KEEP
-MANUAL_06_19_REBUILD=STOP
-
-UI_GROWTH_PRE_REVIEW=APPROVED
-CLONE_UI_ROLE=VISUAL_ASSIST_ONLY
-MINIMAL_PLUGIN_POLICY=APPROVED
-CANONICAL_COMMERCE_SYSTEM=WOOCOMMERCE
-MVP_PAYMENT=WOOCOMMERCE_PAYPAL_PAYMENTS
-DUJIAO_SECOND_ORDER_SYSTEM=NO
-GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
-
-CURRENT_GATE=K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC
-NEXT_OWNER_CHECKPOINT=REVIEW_IMPORTED_TEMPLATE
+REVIEW_DECISION=PASS_K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC
+K0=PASS
+CURRENT_CHECKPOINT=OWNER_REVIEW_IMPORTED_TEMPLATE
+K1_NOT_ENTERED=YES
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
+GITHUB_HANDOFF_TRIAL_SUCCESS_COUNT=1
 ```
 
-## Current Gate — K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC
+Formal decision:
 
-Goal:
+- `docs/REVIEWER_DECISION_K0_PASS.md`
 
-在不修改旧 mini-craft-night-kit 项目的前提下，新建独立本地 WordPress PoC，完整导入 Kadence Single Product Starter Template，验证其原生 UI、Gutenberg、WooCommerce 和响应式基线。
+## K0 Review Summary
 
-### Required
+Reviewer accepted the Executor evidence for:
 
-- 独立本地 WordPress 实例；
-- Kadence Theme；
-- Kadence Blocks；
-- Starter Templates 所需免费组件；
-- Single Product 完整导入；
-- WooCommerce 基线；
-- Home / Product / Cart / Checkout 验证；
-- mobile / tablet / desktop 验证；
-- Gutenberg 编辑器正常；
-- 旧项目不变；
-- 不做品牌改造；
-- 不接正式支付；
-- 不部署 VPS。
+- exact Kadence Single Product full-site import;
+- independent local PoC;
+- Home / Product / Cart / Checkout runtime;
+- WooCommerce baseline;
+- Gutenberg editor validity;
+- `INVALID_BLOCK_COUNT=0`;
+- mobile/tablet/desktop/ultra-wide responsive baseline;
+- old project unchanged;
+- no Mini Craft branding;
+- no clone-ui;
+- no real payment;
+- no VPS.
 
-### PASS Candidate
+K0 is formally closed.
+
+## Current Owner checkpoint
+
+Open:
+
+`http://localhost:8090`
+
+Review:
+- Home;
+- Product;
+- Cart;
+- Checkout.
+
+Return one decision:
 
 ```text
-PASS_CANDIDATE_K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC
-KADENCE_SINGLE_PRODUCT_IMPORTED=PASS
-FRONTEND_RUNTIME=PASS
-GUTENBERG_EDITOR=PASS
-WOOCOMMERCE_BASELINE=PASS
-MOBILE_RESPONSIVE=PASS
-TABLET_RESPONSIVE=PASS
-DESKTOP_RESPONSIVE=PASS
-OLD_PROJECT_UNCHANGED=PASS
-COMMERCE_CUSTOM_BUILD=NO
-REAL_PAYMENT_ACTIONS=0
-VPS_WRITES=ZERO
-STOP_AT_REVIEWER=YES
+OWNER_TEMPLATE_DECISION=USE
 ```
 
-## Before K1
-
-Owner must review the real imported template.
-
-Then Reviewer + Growth/Acquisition Framework must produce approved UI Decision:
-- KEEP / ADAPT / DROP；
-- Offer hierarchy；
-- Hero；
-- CTA；
-- trust proof；
-- required product facts；
-- visual adaptation boundary。
-
-Executor may not invent conversion architecture.
-
-## Fidelity Rule
-
-clone-ui may be used only after target UI is approved.
-
-A visual clone is not accepted unless these also pass:
+or
 
 ```text
-GUTENBERG_VALIDITY
-RESPONSIVE
-WOOCOMMERCE_BEHAVIOR
-OWNER_EDITABILITY
-BUSINESS_TRUTH
+OWNER_TEMPLATE_DECISION=RETURN
 ```
 
-## Payment Decision
+No K1 implementation is authorized before this decision.
 
-Project-specific architecture change approved:
+## If Owner chooses USE
+
+Reviewer will run the pre-K1 UI/Growth decision process:
 
 ```text
-WooCommerce = canonical commerce/order system
-WooCommerce PayPal Payments = MVP payment
-Dujiao second canonical order system = NO
+Owner
++ Reviewer
++ Growth / Acquisition Framework
+        ↓
+K1_UI_DECISION
+        ↓
+Executor
 ```
 
-Long-term Shared Payment integration is deferred until real business evidence justifies a WooCommerce gateway adapter.
+The K1 scope must define:
+- KEEP / ADAPT / DROP;
+- Offer hierarchy;
+- Hero;
+- CTA;
+- Trust;
+- product facts;
+- visual adaptation boundary.
 
-## GitHub Operating Model — Trial
+clone-ui may only be used after that target is approved.
 
-Reviewer-owned:
-- `PROJECT_RECORD.md`
-- `REVIEWER_HANDOFF.md`
-- Reviewer Decision docs
+## Payment Truth
 
-Executor-owned:
-- `EXECUTION_EVIDENCE.md`
-- `EXECUTOR_HANDOFF.md`
-- bounded evidence indexes
+```text
+CANONICAL_COMMERCE_SYSTEM=WOOCOMMERCE
+MVP_PAYMENT=WOOCOMMERCE_PAYPAL_PAYMENTS
+DUJIAO_SECOND_CANONICAL_ORDER_SYSTEM=NO
+```
 
-Chat response should normally be short:
-> 已完成，可查阅对应 GitHub 文档。
+Payment is not part of the current checkpoint.
 
-After at least 3 stable Gates, propose Governance Change Gate to adopt this globally.
+## GitHub Handoff Trial
 
-## Related Docs
+```text
+SUCCESSFUL_GATES=1
+TARGET_FOR_GLOBAL_GOVERNANCE=3
+```
 
-- `docs/PROJECT_PLAN_AND_ROADMAP.md`
-- `docs/UI_GROWTH_AND_FIDELITY_DECISION.md`
-- `docs/PLUGIN_AND_OPERATIONS_PLAN.md`
-- `docs/PAYMENT_ARCHITECTURE_DECISION.md`
-- `docs/GITHUB_HANDOFF_PROTOCOL.md`
+No global Governance update yet.
