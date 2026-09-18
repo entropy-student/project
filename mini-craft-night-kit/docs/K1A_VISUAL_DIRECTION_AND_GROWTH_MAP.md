@@ -27,7 +27,38 @@ Homepage job:
 → Shop the Kit
 ```
 
-## 2. Visual System
+## 2. Visual Source Decision
+
+Do not invent a new homepage visual language.
+
+Use the archived Mini Craft Home visual master as the **visual reference**, because its existing hierarchy already maps closely to the current Growth logic:
+
+```text
+Header
+→ split Hero (~38/62)
+→ compact benefit strip
+→ How It Works
+→ What's Inside / comparison
+→ Made for Real Moments
+→ warm closing CTA
+→ perk / trust strip
+```
+
+Kadence remains the **implementation architecture**. The old Home is not restored as runtime code and is not to be pixel-cloned at the cost of Gutenberg/WooCommerce correctness.
+
+Decision priority:
+
+```text
+Growth / business truth
+> K1A approved hierarchy
+> Kadence native structure
+> archived Mini Craft visual master
+> pixel parity
+```
+
+This lets K1B reuse both mature Kadence mechanics and the already-developed Mini Craft visual language, instead of starting another visual design cycle.
+
+## 3. Visual System
 
 Reuse the accepted Mini Craft visual system from the archived route instead of inventing a new brand.
 
@@ -70,7 +101,7 @@ Prioritize:
 
 Do not make the page a grid of packshots.
 
-## 3. Homepage Section Order
+## 4. Homepage Section Order
 
 ### Screen 1 — Hero
 
@@ -275,7 +306,7 @@ Visual:
 
 wide cozy editorial photo + simple olive CTA.
 
-## 4. Header / Footer
+## 5. Header / Footer
 
 ### Header
 
@@ -301,7 +332,7 @@ ADAPT toward:
 
 Do not add fake social links or policy pages that do not exist.
 
-## 5. Kadence KEEP / ADAPT / DROP Mapping
+## 6. Kadence KEEP / ADAPT / DROP Mapping
 
 ### KEEP
 - responsive container system;
@@ -329,7 +360,7 @@ Do not add fake social links or policy pages that do not exist.
 - duplicate feature sections;
 - any content that makes the visitor think the store sells electronics.
 
-## 6. Responsive Intent
+## 7. Responsive Intent
 
 Known inherited defect:
 
@@ -354,7 +385,7 @@ Regression:
 
 `768 / 820 / 1024 / 1280 / 1366 / 1440 / 1920 / 2048 / 2560`
 
-## 7. Conversion Logic by Screen
+## 8. Conversion Logic by Screen
 
 ```text
 Hero
@@ -385,7 +416,7 @@ Closing CTA
 Return to the emotional outcome
 ```
 
-## 8. What K1B is allowed to implement immediately
+## 9. What K1B is allowed to implement immediately
 
 Can implement now:
 - brand colors/fonts;
@@ -412,7 +443,7 @@ Must remain held until factual input exists:
 - star rating;
 - testimonials.
 
-## 9. Owner Review Question
+## 10. Owner Review Question
 
 Owner approval should answer only:
 
