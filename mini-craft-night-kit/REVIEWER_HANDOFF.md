@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K1A_VISUAL_REVIEW
+CURRENT_GATE=K1B_WORDPRESS_IMPLEMENTATION
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -157,3 +157,14 @@ Formal decision: `docs/REVIEWER_DECISION_K1A_VISUAL_DIRECTION.md`.
 Reviewer completed `docs/K1A_VISUAL_DIRECTION_AND_GROWTH_MAP.md`.
 
 Do not start K1B until Owner explicitly approves the K1A visual direction.
+
+
+## K1B Authorization
+
+Owner approved K1A visual/growth direction.
+
+Current Gate: `K1B_WORDPRESS_IMPLEMENTATION`.
+
+Codex must implement using Kadence layout lock, must not generate final images, must use existing approved assets or editable placeholders, must fix inherited 375px clipping, preserve Gutenberg/WooCommerce, update Executor evidence, and stop at Reviewer.
+
+Formal decision: `docs/REVIEWER_DECISION_K1B_WORDPRESS_IMPLEMENTATION.md`.
