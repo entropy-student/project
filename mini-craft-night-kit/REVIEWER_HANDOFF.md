@@ -9,8 +9,8 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_STUDIO_MIGRATION_REVIEW
-K1_NOT_ENTERED=YES
+CURRENT_GATE=K1_UI_GROWTH_DECISION_AND_BRAND_ADAPTATION
+K1_STATUS=APPROVED_TO_EXECUTE
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
 K1_MUST_FIX_MOBILE_375=YES
@@ -132,3 +132,14 @@ The Studio migration is accepted because the 375px clipping reproduces on the re
 Current checkpoint: `OWNER_STUDIO_MIGRATION_REVIEW`.
 
 GitHub handoff stability counter remains at 2 because this Gate exposed a truth conflict.
+
+
+## K1 Authorization
+
+Owner confirmed the Studio-managed `Mini Craft Night Kit` opens normally and is accepted as the active local development base.
+
+Formal decision: `docs/REVIEWER_DECISION_K1_UI_GROWTH_BRAND_ADAPTATION.md`
+
+Current Gate: `K1_UI_GROWTH_DECISION_AND_BRAND_ADAPTATION`.
+
+Executor must follow the approved Growth/UI hierarchy, use the minimum-change strategy, avoid unverified product claims or fake proof, fix the inherited 375px clipping, preserve Gutenberg/WooCommerce behavior, update `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`, then stop at Reviewer.
