@@ -18,9 +18,14 @@ MVP_PAYMENT=WOOCOMMERCE_PAYPAL_PAYMENTS
 DUJIAO_SECOND_ORDER_SYSTEM=NO
 GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 
-CURRENT_GATE=K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC
+K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
+CURRENT_CHECKPOINT=OWNER_REVIEW_IMPORTED_TEMPLATE
+K1_NOT_ENTERED=YES
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
+
+GITHUB_HANDOFF_TRIAL_SUCCESS_COUNT=1
+GITHUB_HANDOFF_TARGET_FOR_GLOBAL_GOVERNANCE=3
 ```
 
 ## Why the route changed
@@ -54,48 +59,78 @@ WordPress
 → Production Canary
 ```
 
-## Gate Plan
+## Gate Status
 
-### K0 — Kadence Local PoC
-只导入原版，不做品牌改造。验证 UI、Gutenberg、WooCommerce、手机/平板/桌面响应式。
+### K0 — Kadence Local PoC — PASS
+
+Verified:
+- exact Single Product full-site import;
+- Home / Product / Cart / Checkout runtime;
+- Gutenberg valid, invalid block count 0;
+- WooCommerce baseline;
+- mobile/tablet/desktop/ultra-wide responsive baseline;
+- old project unchanged;
+- no brand customization;
+- no payment;
+- no VPS.
+
+Formal Reviewer decision:
+- `docs/REVIEWER_DECISION_K0_PASS.md`
+
+### Current checkpoint — Owner template review
+
+Owner should inspect:
+
+`http://localhost:8090`
+
+At minimum:
+- Home
+- Product
+- Cart
+- Checkout
+
+No K1 implementation starts until Owner chooses USE / RETURN.
 
 ### K1 — UI/Growth Decision + Brand Adaptation
-Owner + Reviewer + Growth/Acquisition Framework 先确认 Offer / Hero / CTA / Trust / KEEP-ADAPT-DROP，再交给 Executor。
+
+If Owner chooses USE:
+
+Owner + Reviewer + Growth/Acquisition Framework first confirm:
+- Offer hierarchy;
+- Hero;
+- CTA;
+- Trust;
+- KEEP / ADAPT / DROP;
+- required product facts;
+- visual adaptation boundary.
+
+Only then Executor implements.
 
 ### K2 — WooCommerce Commerce Loop
-Product → Cart → Checkout → Order → Confirmation。
+Product → Cart → Checkout → Order → Confirmation.
 
 ### K3 — Payment
-MVP 固定为 WooCommerce + WooCommerce PayPal Payments。
+MVP fixed as WooCommerce + WooCommerce PayPal Payments.
 
-Dujiao 不作为 Mini Craft 的第二套 canonical order system。
-
-长期若统一支付收益明确，再评估 WooCommerce → Shared Payment Layer Adapter。
+Dujiao is not a second canonical order system.
 
 ### K4 — Conversion & Trust
-Home / Product / FAQ / Shipping & Returns / Contact。
+Home / Product / FAQ / Shipping & Returns / Contact.
 
 ### K5 — Release Candidate QA
-移动、平板、桌面、超宽；Gutenberg validity；Cart/Checkout；邮件；性能；SEO；Secret hygiene。
+Responsive, Gutenberg validity, WooCommerce, email, SEO, performance, Secret hygiene.
 
 ### K6 — VPS Deployment
-本地 RC PASS 后再做。
+Only after local RC PASS.
 
 ### K7 — Production Canary
-低金额真实订单 → 支付 → 状态 → 邮件 → 退款/取消 → 上线。
+Low-value real order → payment → state → email → refund/cancel → launch.
 
 ## UI Governance
 
-Executor 开始 K1 前必须先有 Reviewer-approved UI Decision。
+clone-ui is visual-assist only.
 
-clone-ui 只用于已确认 UI 的视觉收敛，不得牺牲：
-- Gutenberg validity；
-- responsive；
-- WooCommerce hooks / behavior；
-- Owner editability；
-- business truth。
-
-UI Gate 同时要求：
+UI PASS requires:
 
 ```text
 VISUAL_FIDELITY=PASS
@@ -108,32 +143,34 @@ BUSINESS_TRUTH=PASS
 
 ## Plugin Policy
 
-插件最小化。
+K0 baseline:
+- Kadence Theme
+- Kadence Blocks
+- Starter Templates
+- WooCommerce
 
-K0 只允许 Kadence / Starter Template / WooCommerce 基础组件。
-
-后续按需增加：
-- PayPal Payments；
-- transactional email；
-- 单一 SEO 插件；
-- analytics；
-- 必要 backup/migration。
-
-Reviews、CRM、弃购、affiliate、loyalty、A/B test、ERP/OMS/WMS 等全部等真实需求出现后再开 Gate。
+Future plugins are added only when a current MVP capability requires them.
 
 ## GitHub Handoff
 
-Reviewer owns：
+Reviewer owns:
 - `PROJECT_RECORD.md`
 - `REVIEWER_HANDOFF.md`
-- `docs/*DECISION*.md`
+- Reviewer Decision docs
 
-Executor owns：
+Executor owns:
 - `EXECUTION_EVIDENCE.md`
 - `EXECUTOR_HANDOFF.md`
 - bounded evidence indexes
 
-连续至少 3 个 Gate 跑通后，再通过 Governance Change Gate 推广到全局规范。
+Trial status:
+
+```text
+SUCCESSFUL_GATES=1
+TARGET=3
+```
+
+After at least 3 stable Gates, open a Governance Change Gate before promoting this protocol globally.
 
 ## Current Documents
 
@@ -142,9 +179,12 @@ Executor owns：
 - `docs/PLUGIN_AND_OPERATIONS_PLAN.md`
 - `docs/PAYMENT_ARCHITECTURE_DECISION.md`
 - `docs/GITHUB_HANDOFF_PROTOCOL.md`
+- `docs/REVIEWER_DECISION_K0_PASS.md`
 
 ## Current Next Action
 
-`K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC`
+Owner reviews the imported Kadence site at:
 
-开发总周期预估：**3–5 个集中工作日**，不含 PayPal/KYC 等外部审批等待。
+`http://localhost:8090`
+
+No Executor action is currently authorized beyond K0.
