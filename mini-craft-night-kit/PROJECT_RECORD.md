@@ -20,8 +20,9 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
-CURRENT_CHECKPOINT=OWNER_REVIEW_IMPORTED_TEMPLATE
+CURRENT_GATE=K0R2_WORDPRESS_STUDIO_CONSOLIDATION
 K1_NOT_ENTERED=YES
+WORDPRESS_STUDIO_CONSOLIDATION=IN_PROGRESS
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
 
@@ -206,8 +207,14 @@ Candidate Governance rule now validated twice:
 
 ## Current Next Action
 
-Owner reviews the imported Kadence site at:
+Current Gate:
 
-`http://localhost:8090`
+`K0R2_WORDPRESS_STUDIO_CONSOLIDATION`
 
-No Executor action is currently authorized beyond K0R1.
+Goal:
+migrate the accepted Docker PoC into WordPress Studio without changing site content or entering K1.
+
+Formal Reviewer decision:
+- `docs/REVIEWER_DECISION_K0R2_STUDIO_CONSOLIDATION.md`
+
+The Docker PoC remains the rollback baseline until Studio migration is reviewed and accepted.
