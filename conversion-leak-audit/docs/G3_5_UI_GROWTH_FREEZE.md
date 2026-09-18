@@ -1,6 +1,6 @@
 # G3.5 — UI + Growth Design Freeze
 
-Status: `IN_PROGRESS`
+Status: `READY_FOR_OWNER_FINAL_APPROVAL`
 Owner: Reviewer + Owner
 Executor: none until PASS
 
@@ -40,8 +40,8 @@ V4 structure direction                 OWNER_APPROVED
 待完成：
 
 ```text
-Gap Mark final geometry / favicon       ⏳
-final truthful Golden Screens           ⏳
+Gap Mark final geometry / favicon       ✅
+final truthful Golden Screens           ✅ FINAL_GOLDEN_CANDIDATE
 Owner final visual approval             ⏳
 ```
 
@@ -285,16 +285,31 @@ Unified Pay 当前不作为本项目依赖。
 - overall visual direction； ✅ OWNER_APPROVED
 - truthful fixed Demo Fixture； ✅
 - primary logo family selected； ✅ GAP_MARK
-- final logo/favicons； ⏳
-- desktop/mobile final Golden Screens approved by Owner； ⏳
-- Codex 不再需要做产品方向判断； ⏳
+- final logo/favicons； ✅
+- desktop/mobile final Golden Screens approved by Owner； ⏳ final owner check
+- Codex 不再需要做产品方向判断； ✅
 
 ## Current next action
 
 ```text
-REFINE_GAP_MARK_FOR_FAVICON
-→ GENERATE_FINAL_TRUTHFUL_GOLDEN_SCREENS
-→ OWNER_FINAL_VISUAL_REVIEW
+OWNER_FINAL_VISUAL_REVIEW
 → PASS_G3_5
 → RELEASE_G4_TO_CODEX
 ```
+
+
+## Final Golden Candidate
+
+Text-canonical visual reference:
+
+`../design/FINAL_GOLDEN_SCREEN_SPEC.md`
+
+Final candidate corrections completed:
+- demo product does not expose a determinable price;
+- scan progress uses the four-page demo fixture;
+- severity totals are removed;
+- only CORE-007 / PHYS-002 / PHYS-001 are shown;
+- Full Report summary uses 3 confirmed findings / 17 trusted checks / Synthetic Demo;
+- final Gap Mark is used for nav/favicon direction.
+
+Generated-image copy is illustrative. If image text ever conflicts with the canonical contracts, `FINAL_GOLDEN_SCREEN_SPEC.md` and `DEMO_FIXTURE_GOLDEN.md` win.
