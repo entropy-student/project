@@ -6,104 +6,56 @@ Maintainer: Reviewer
 ## Current Reviewer Truth
 
 ```text
-REVIEW_DECISION=PASS_K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC
-K0=PASS
-CURRENT_CHECKPOINT=OWNER_REVIEW_IMPORTED_TEMPLATE
+K0_FUNCTIONAL_RESULT=PASS
+PROJECT_CONTAINMENT=RETURN
+WORKSPACE_ROOT_HYGIENE=RETURN
+CURRENT_GATE=K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP
 K1_NOT_ENTERED=YES
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
-GITHUB_HANDOFF_TRIAL_SUCCESS_COUNT=1
 ```
 
-Formal decision:
+Formal cleanup decision:
 
-- `docs/REVIEWER_DECISION_K0_PASS.md`
+- `docs/REVIEWER_DECISION_K0R1_PROJECT_HYGIENE_RETURN.md`
 
-## K0 Review Summary
+## Why this RETURN exists
 
-Reviewer accepted the Executor evidence for:
+Owner-provided local workspace evidence shows WooCommerce download/extraction artifacts left in the shared parent directory after K0.
 
-- exact Kadence Single Product full-site import;
-- independent local PoC;
-- Home / Product / Cart / Checkout runtime;
-- WooCommerce baseline;
-- Gutenberg editor validity;
-- `INVALID_BLOCK_COUNT=0`;
-- mobile/tablet/desktop/ultra-wide responsive baseline;
-- old project unchanged;
-- no Mini Craft branding;
-- no clone-ui;
-- no real payment;
-- no VPS.
+The intended project directory is:
 
-K0 is formally closed.
+`mini-craft-kadence-poc/`
 
-## Current Owner checkpoint
+Temporary or retained K0 artifacts must not remain scattered beside unrelated projects.
 
-Open:
+K0 technical functionality remains accepted. This Gate only corrects project hygiene and containment.
 
-`http://localhost:8090`
+## Current Gate — K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP
 
-Review:
-- Home;
-- Product;
-- Cart;
-- Checkout.
+Executor must:
 
-Return one decision:
+- inventory artifacts created by K0;
+- remove reproducible temporary downloads/extractions after verifying runtime;
+- if retention is required, move them under a project-local `.artifacts/` or `.cache/`;
+- leave unrelated projects untouched;
+- preserve `mini-craft-night-kit/`;
+- run a narrow Home/Product/Cart/Checkout smoke test;
+- update `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`;
+- stop at Reviewer.
+
+Expected candidate:
 
 ```text
-OWNER_TEMPLATE_DECISION=USE
+PASS_CANDIDATE_K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP
+K0_FUNCTIONAL_BASELINE_RETAINED=PASS
+K0_TEMP_ARTIFACTS_CONTAINED_OR_REMOVED=PASS
+SHARED_WORKSPACE_ROOT_CLEAN=PASS
+UNRELATED_PROJECTS_TOUCHED=NO
+OLD_PROJECT_UNCHANGED=PASS
+VPS_WRITES=ZERO
+REAL_PAYMENT_ACTIONS=0
+STOP_AT_REVIEWER=YES
 ```
 
-or
-
-```text
-OWNER_TEMPLATE_DECISION=RETURN
-```
-
-No K1 implementation is authorized before this decision.
-
-## If Owner chooses USE
-
-Reviewer will run the pre-K1 UI/Growth decision process:
-
-```text
-Owner
-+ Reviewer
-+ Growth / Acquisition Framework
-        ↓
-K1_UI_DECISION
-        ↓
-Executor
-```
-
-The K1 scope must define:
-- KEEP / ADAPT / DROP;
-- Offer hierarchy;
-- Hero;
-- CTA;
-- Trust;
-- product facts;
-- visual adaptation boundary.
-
-clone-ui may only be used after that target is approved.
-
-## Payment Truth
-
-```text
-CANONICAL_COMMERCE_SYSTEM=WOOCOMMERCE
-MVP_PAYMENT=WOOCOMMERCE_PAYPAL_PAYMENTS
-DUJIAO_SECOND_CANONICAL_ORDER_SYSTEM=NO
-```
-
-Payment is not part of the current checkpoint.
-
-## GitHub Handoff Trial
-
-```text
-SUCCESSFUL_GATES=1
-TARGET_FOR_GLOBAL_GOVERNANCE=3
-```
-
-No global Governance update yet.
+No K1 work is authorized until K0R1 passes.
