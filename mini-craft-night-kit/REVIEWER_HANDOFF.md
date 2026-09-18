@@ -8,9 +8,12 @@ Maintainer: Reviewer
 ```text
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
-CURRENT_GATE=K0R2_WORDPRESS_STUDIO_CONSOLIDATION
+K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
+CURRENT_CHECKPOINT=OWNER_STUDIO_MIGRATION_REVIEW
 K1_NOT_ENTERED=YES
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
+K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
+K1_MUST_FIX_MOBILE_375=YES
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
 GITHUB_HANDOFF_TRIAL_SUCCESS_COUNT=2
@@ -118,3 +121,14 @@ No global Governance update yet.
 Formal decision: `docs/REVIEWER_DECISION_K0R2_STUDIO_CONSOLIDATION.md`
 
 Current action: migrate the accepted Docker PoC into WordPress Studio using the supported import path. Keep Docker as rollback. Do not enter K1, payment, or VPS work. Executor must update `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md` and stop at Reviewer.
+
+
+## K0R2 Reviewer Reconciliation
+
+Formal decision: `docs/REVIEWER_DECISION_K0R2_RECONCILED_PASS.md`
+
+The Studio migration is accepted because the 375px clipping reproduces on the retained Docker source and therefore is not a Studio migration regression. The earlier K0 mobile-375 PASS subclaim is superseded. K1 must fix the inherited 375px clipping before K1 can PASS.
+
+Current checkpoint: `OWNER_STUDIO_MIGRATION_REVIEW`.
+
+GitHub handoff stability counter remains at 2 because this Gate exposed a truth conflict.
