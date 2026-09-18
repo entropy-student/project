@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K1A_VISUAL_DIRECTION_AND_GROWTH_MAPPING
+CURRENT_CHECKPOINT=OWNER_K1A_VISUAL_REVIEW
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -150,3 +150,10 @@ Executor must follow the approved Growth/UI hierarchy, use the minimum-change st
 K1 implementation is paused. Reviewer must first produce the concrete visual direction and growth-to-UI mapping. Owner approval is required before Codex starts K1B implementation.
 
 Formal decision: `docs/REVIEWER_DECISION_K1A_VISUAL_DIRECTION.md`.
+
+
+## K1A Deliverable Ready
+
+Reviewer completed `docs/K1A_VISUAL_DIRECTION_AND_GROWTH_MAP.md`.
+
+Do not start K1B until Owner explicitly approves the K1A visual direction.
