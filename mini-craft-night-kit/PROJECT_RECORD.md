@@ -21,8 +21,8 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_STUDIO_MIGRATION_REVIEW
-K1_NOT_ENTERED=YES
+CURRENT_GATE=K1_UI_GROWTH_DECISION_AND_BRAND_ADAPTATION
+K1_STATUS=APPROVED_TO_EXECUTE
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
@@ -111,7 +111,11 @@ The defect reproduces on both Docker source and Studio import, so it is not a St
 Formal Reviewer decision:
 - `docs/REVIEWER_DECISION_K0R2_RECONCILED_PASS.md`
 
-### Current checkpoint — Owner Studio migration review
+### Owner Studio migration review — PASS
+
+Owner confirmed the Studio-managed site opens normally and is accepted as the active local development base.
+
+### Current Gate — K1 UI/Growth Decision + Brand Adaptation
 
 Owner should inspect the Studio-managed `Mini Craft Night Kit` site
 
@@ -121,7 +125,7 @@ At minimum:
 - Cart
 - Checkout
 
-No K1 implementation starts until Owner confirms the Studio site is the accepted base. K1 must include the inherited 375px mobile clipping fix.
+K1 is now approved to execute. The inherited 375px mobile clipping fix is mandatory within K1.
 
 ### K1 — UI/Growth Decision + Brand Adaptation
 
@@ -221,8 +225,11 @@ Candidate Governance rule now validated twice:
 
 ## Current Next Action
 
-Current checkpoint:
+Current Gate:
 
-`OWNER_STUDIO_MIGRATION_REVIEW`
+`K1_UI_GROWTH_DECISION_AND_BRAND_ADAPTATION`
 
-K0R2 Studio migration is accepted. The Docker PoC remains rollback until Owner accepts Studio as the active base. The inherited 375px clipping is mandatory K1 remediation.
+Formal decision:
+- `docs/REVIEWER_DECISION_K1_UI_GROWTH_BRAND_ADAPTATION.md`
+
+WordPress Studio is the active local development base. Docker PoC remains rollback only. K1 must perform minimal Mini Craft brand/growth adaptation and fix the inherited 375px clipping.
