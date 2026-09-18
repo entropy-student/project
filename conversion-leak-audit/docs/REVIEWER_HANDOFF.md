@@ -11,105 +11,75 @@ PF = PASS
 G1 WordPress Local Baseline = PASS
 G2 Safe Scanner V0 = PASS
 G3 Rule Engine V0 = MERGED / CLOSED
-G3.5 UI + Growth Design Freeze = IN PROGRESS
-G4 WordPress ↔ Scanner ↔ Top 3 = PENDING
+G3.5 UI + Growth Design Freeze = PASS
+G4 WordPress ↔ Scanner ↔ Top 3 = NEXT / RELEASED TO CODEX
+G4.5 Visual + Functional Acceptance = PENDING
 ```
 
-Codex product implementation remains paused until G3.5 PASS.
-
-## G3.5 Completed in current Reviewer round
-
-Text/product contracts now exist:
+## G3.5 Final Decision
 
 ```text
-design/UI_GROWTH_BRIEF.md             READY
-design/DESIGN_SYSTEM.md               READY
-design/PAGE_CONTRACTS.md              READY
-design/INTERACTION_STATES.md          READY
-design/ANALYTICS_EVENT_CONTRACT.md    READY
-design/FUNCTIONAL_ACCEPTANCE.md       READY
-design/VISUAL_ACCEPTANCE.md           READY
+PASS_G3_5_UI_GROWTH_DESIGN_FREEZE
+VISUAL_DIRECTION = Editorial Diagnostic Console / Evidence-first Diagnostic
+PRIMARY_LOGO = Gap Mark
+TRUTHFUL_DEMO_FIXTURE = FROZEN
+OWNER_VISUAL_APPROVAL = PASS
 ```
 
-Current recommended design direction:
+Canonical design contracts live in `../design/`.
 
-> **Editorial Diagnostic Console / Evidence-first Diagnostic**
+Highest-priority implementation references:
+1. `../design/FINAL_GOLDEN_SCREEN_SPEC.md`
+2. `../design/DEMO_FIXTURE_GOLDEN.md`
+3. `../design/DESIGN_SYSTEM.md`
+4. `../design/PAGE_CONTRACTS.md`
+5. `../design/INTERACTION_STATES.md`
+6. `../design/ANALYTICS_EVENT_CONTRACT.md`
+7. `../design/FUNCTIONAL_ACCEPTANCE.md`
+8. `../design/VISUAL_ACCEPTANCE.md`
 
-Key decisions:
-- observed fact/evidence before opaque scoring;
-- free result = evidence-backed Top 3 complete-but-bounded win;
-- no fake percentage progress;
-- no AI-neon / fake terminal / generic chatbot feel;
-- paid expansion adds scope/depth/prioritization/personalization/continuity;
-- clone-ui is reference extraction only;
-- analytics semantics are provider-independent;
-- payment stays deferred to G9, tentative Direct PayPal.
+If generated-image text conflicts with these contracts, GitHub contracts win.
 
-## Current G3.5 blocker / next task
+## Current Reviewer Position
 
-Only the high-fidelity owner review remains before G3.5 can PASS.
+Reviewer does not implement G4 code.
 
-Required golden references:
-- Home desktop;
-- Home mobile;
-- Scan progress;
-- Scan incomplete/error;
-- Free Top 3 desktop/mobile;
-- Evidence detail;
-- Full report shell.
+Codex is now authorized to execute only:
 
-Next sequence:
+`G4_EXECUTION_CONTRACT.md`
+
+The next Reviewer action is to read Codex's updated `EXECUTION_EVIDENCE.md` and decide:
+
+- PASS_G4
+- RETURN_G4
+- STOP / OWNER CHECKPOINT
+
+## G4 hard boundaries
+
+No:
+- payment;
+- PayPal;
+- Unified Pay;
+- VPS;
+- public production scanner;
+- production Secret;
+- new Scanner rules;
+- LLM full-report generation;
+- broad clone-ui rewrite.
+
+G4 is local integration only:
 
 ```text
-CREATE_HIGH_FIDELITY_GOLDEN_SCREENS
-→ OWNER_VISUAL_REVIEW
-→ revisions if needed
-→ PASS_G3_5
-→ update EXECUTOR_HANDOFF
-→ release G4 to Codex
+WordPress URL form
+→ Scanner job
+→ scan_id
+→ honest progress
+→ deterministic findings
+→ evidence-backed Top 3
+→ WordPress result page
 ```
 
-## Growth Principle
-
-Primary Activation hypothesis:
-
-```text
-scan_started
-→ scan_completed
-→ top3_viewed
-→ user experiences a concrete evidence-backed finding about their store
-```
-
-The free product must deliver a bounded but complete win. Paid value should expand depth/scope/personalization/continuity rather than intentionally cripple the free result.
-
-## clone-ui Boundary
-
-Allowed: extract layout, spacing, typography, component language and motion references.
-
-Forbidden: broad direct rewriting of the existing product source, architecture or unrelated components. Clone output is reference material, not canonical product code.
-
-## Product Claim Boundary
-
-Allowed:
-> 发现可观察到的站内因素，这些因素可能增加购买犹豫、不信任或操作阻力。
-
-Forbidden:
-- root-cause claim from L0/L1 evidence;
-- exact revenue-loss claim;
-- guaranteed conversion uplift;
-- free-form LLM diagnosis from raw HTML.
-
-## Accepted Technical Architecture
-
-- Frontend/CMS: WordPress + SaasLauncher + child theme
-- Scanner: Python
-- Static extraction: Scrapy first
-- Dynamic fallback: bounded browser only when technically needed
-- Persistence: SQLite for V0 local phase
-- Rule set: frozen 17-rule MTRS
-- LLM: explanation layer only after deterministic findings
-
-## Evidence Baseline
+## Frozen baseline
 
 ```text
 Rule fixtures             51 / 51 PASS
@@ -124,25 +94,19 @@ WordPress asset checks    20 / 20 PASS
 G1 CI run `35237395508`: success.
 G2 network CI run `35235157740`: success.
 
-## Payment Decision
+G4 must preserve these validated foundations unless a new real counterexample justifies reopening one.
 
-Payment remains HOLD until G9.
+## Payment
 
-- tentative provider: Direct PayPal;
-- Unified Pay is not a current project dependency and needs separate fixes/production validation;
-- do not let payment block G3.5–G8;
-- payment must later unlock the correct scan/report entitlement.
+Payment stays deferred to G9.
 
-## Skill Dogfood
+Tentative provider: Direct PayPal.
+Unified Pay is not a current dependency.
 
-Use `SKILL_DOGFOOD_LOG.md` to log Skill-derived hypotheses before implementation/measurement. Only real behavioral evidence may move them to SUPPORTED/REJECTED/INCONCLUSIVE.
+## GitHub handoff rule
 
-## Reviewer Rules
+Reviewer writes decisions/contracts to GitHub.
+Codex writes execution facts/evidence to GitHub.
+Chat can remain short and point to the relevant file.
 
-1. Do not reopen theory without a real counterexample.
-2. Do not alter frozen rules merely to make implementation pass.
-3. Keep `PROJECT_RECORD.md` and `CURRENT_STATUS.json` synchronized after Gate changes.
-4. Every Executor completion must cite files/tests/commands/evidence.
-5. Reviewer results go to GitHub; Codex execution results go to GitHub; chat responses can stay short and point to the relevant document.
-6. If a task needs payment Secret, Shared Infra change, irreversible action or production opening: RETURN to Owner.
-7. After this GitHub handoff workflow successfully completes several Gates, promote it into the shared project-management governance standard.
+If this workflow remains stable through several Gates, promote it to shared project-management governance.
