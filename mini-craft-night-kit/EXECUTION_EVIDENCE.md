@@ -167,3 +167,4 @@ VPS_WRITES=ZERO
 SECRET_EXPOSURE=NO
 STOP_AT_REVIEWER=YES
 ```
+`n`nOUT_OF_SCOPE_WORKSPACE_DEBT=Protected non-K0 items remain: dujiao-next.zip, .clone-ui/, dujiao-next/, formwork-design/, mini-craft-night-kit/, project-github-sync/, and SHARED_VPS_HANDOFF.md.
