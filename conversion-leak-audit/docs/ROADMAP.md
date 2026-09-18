@@ -11,8 +11,8 @@ PF   Theory / Rules / Pre-development        PASS
 G1   WordPress Local Baseline                PASS
 G2   Safe Scanner V0                         PASS
 G3   Rule Engine V0                          MERGED / CLOSED
-G3.5 UI + Growth Design Freeze               NEXT
-G4   WordPress ↔ Scanner ↔ Top 3 Local Loop   PENDING
+G3.5 UI + Growth Design Freeze               PASS
+G4   WordPress ↔ Scanner ↔ Top 3 Local Loop   NEXT / EXECUTOR READY
 G4.5 Visual + Functional Acceptance          PENDING
 G5   Full Fix Queue + LLM + Skill Dogfood    PENDING
 G6   VPS Onboarding / Storage                HOLD
@@ -53,7 +53,7 @@ Acceptance: the implementation brief is sufficiently precise that Codex does not
 
 ## G4 — Local Free Loop
 
-Only begins after G3.5 PASS.
+G3.5 is PASS. G4 is released to Codex under `G4_EXECUTION_CONTRACT.md`.
 
 ```text
 URL input
