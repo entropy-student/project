@@ -8,8 +8,9 @@ Maintainer: Reviewer
 ```text
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
-CURRENT_CHECKPOINT=OWNER_REVIEW_IMPORTED_TEMPLATE
+CURRENT_GATE=K0R2_WORDPRESS_STUDIO_CONSOLIDATION
 K1_NOT_ENTERED=YES
+DOCKER_SOURCE_MUST_BE_RETAINED=YES
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
 GITHUB_HANDOFF_TRIAL_SUCCESS_COUNT=2
@@ -110,3 +111,10 @@ Candidate governance lesson validated:
 project-generated downloads, extraction folders, caches, helper files and temporary artifacts must be contained under the project directory or removed before PASS_CANDIDATE.
 
 No global Governance update yet.
+
+
+## Current K0R2 Override
+
+Formal decision: `docs/REVIEWER_DECISION_K0R2_STUDIO_CONSOLIDATION.md`
+
+Current action: migrate the accepted Docker PoC into WordPress Studio using the supported import path. Keep Docker as rollback. Do not enter K1, payment, or VPS work. Executor must update `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md` and stop at Reviewer.
