@@ -19,7 +19,7 @@ DUJIAO_SECOND_ORDER_SYSTEM=NO
 GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
-CURRENT_CHECKPOINT=OWNER_REVIEW_IMPORTED_TEMPLATE
+CURRENT_CHECKPOINT=K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP
 K1_NOT_ENTERED=YES
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
@@ -183,8 +183,13 @@ After at least 3 stable Gates, open a Governance Change Gate before promoting th
 
 ## Current Next Action
 
-Owner reviews the imported Kadence site at:
+Before Owner template review continues, Executor must complete the bounded cleanup Gate:
 
-`http://localhost:8090`
+`K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP`
 
-No Executor action is currently authorized beyond K0.
+Reason: K0 left WooCommerce download/extraction artifacts scattered in the shared local workspace root instead of containing/removing them.
+
+Formal Reviewer decision:
+- `docs/REVIEWER_DECISION_K0R1_PROJECT_HYGIENE_RETURN.md`
+
+K0 functional baseline remains PASS; this Gate is cleanup only.
