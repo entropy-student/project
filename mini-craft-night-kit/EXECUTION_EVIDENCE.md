@@ -115,3 +115,55 @@ Local `.env` credentials were kept only in the independent PoC directory and wer
 - The local site is HTTP-only by design for this gate; no production SSL, domain, VPS, Cloudflare, DNS, or payment setup was performed.
 - WordPress 6.8.2 shows a newer WordPress update in wp-admin. The verified baseline remains pinned to the stable local image; WooCommerce 10.0.4 is the compatible package used for this WordPress baseline.
 - No K1 branding, copy, hero, color, layout, custom CSS, custom commerce, or clone-UI work was performed.
+
+## K0R1 — Local Project Hygiene Cleanup
+
+- Gate: `K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP`
+- Reviewer return was bounded to K0-generated WooCommerce download and extraction artifacts.
+- K0 was not reinstalled, reimported, or functionally redesigned.
+
+### Confirmed K0 artifacts removed
+
+All five targets were created during the K0 execution window, matched the K0 installation evidence, and were confirmed to be outside the running WordPress mounts. The runtime uses only the independent named Docker volumes; no shared-root zip or extraction path is mounted.
+
+| Removed category | Confirmed item | Read-only pre-cleanup evidence |
+|---|---|---|
+| Latest WooCommerce download | `woocommerce-latest-stable.zip` | 18,024,069 bytes; modified 2026-09-18 07:27:28Z; SHA-256 `6BAE9BF74D722B6DEB15F049687C311CFAFC26E3A5D8FA55AC6EA4B9A3A8DF19` |
+| Latest WooCommerce extraction | `woocommerce-latest-stable-extract-20260918/` | 5,862 files; modified 2026-09-18 07:30:10Z |
+| Compatibility-download attempt | `woocommerce-10.0.4.zip` | 21,391,000 bytes; modified 2026-09-18 07:35:01Z; SHA-256 `273AA0B56641720DACE4B15369D8FD7079C29BFF0F91DB034120221437C7FEAE` |
+| Verified WooCommerce package | `woocommerce-10.0.4-fresh.zip` | 17,802,904 bytes; modified 2026-09-18 07:41:14Z; SHA-256 `002B3CB8B1FCACF9836367A1AE617C87D6DEF0C33D16B8A79A4F81DAD9894429` |
+| Verified package extraction | `woocommerce-10.0.4-extract/` | 4,964 files; modified 2026-09-18 07:41:41Z |
+
+No artifact was retained because every item was a reproducible installation/download intermediate and the installed WooCommerce runtime was already present in the named WordPress volume. No `.artifacts/` or `.cache/` directory was needed.
+
+### Post-cleanup verification
+
+- Shared root no longer contains the five K0 WooCommerce zip/extraction names.
+- `mini-craft-kadence-poc/` contains only its local Compose/configuration files; no install zip, extraction directory, temporary script, debug output, or duplicate backup remains.
+- Local `.env` remains in the PoC directory and was not read into or written to GitHub evidence.
+- No template import, plugin installation, Docker volume deletion, payment action, or VPS write was performed in K0R1.
+- Smoke test after cleanup: Home 200, Product 200, Cart 200, Checkout 200 in the existing local browser session; no re-import was required.
+- Docker: WordPress container remains up on 8090; MariaDB remains healthy.
+- Old project: `http://localhost:8088/` returned 200; old containers and `mini-craft-night-kit_db_data` remain present; K0 baseline hashes remain unchanged.
+- Protected unrelated items (`dujiao-next/`, `dujiao-next.zip`, `formwork-design/`, `.clone-ui/`, `project-github-sync/`, `SHARED_VPS_HANDOFF.md`, and the old project) were not touched.
+
+The remaining unrelated root-level project/archive items are out of scope for K0R1 and were intentionally left in place.
+
+```text
+PASS_CANDIDATE_K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP
+K0_FUNCTIONAL_BASELINE_RETAINED=PASS
+K0_TEMP_ARTIFACTS_CONTAINED_OR_REMOVED=PASS
+SHARED_WORKSPACE_ROOT_CLEAN=PASS
+PROJECT_ROOT_HYGIENE=PASS
+HOME_RUNTIME=PASS
+PRODUCT_RUNTIME=PASS
+CART_RUNTIME=PASS
+CHECKOUT_RUNTIME=PASS
+UNRELATED_PROJECTS_TOUCHED=NO
+OLD_PROJECT_UNCHANGED=PASS
+DOCKER_VOLUMES_DELETED=NO
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+STOP_AT_REVIEWER=YES
+```
