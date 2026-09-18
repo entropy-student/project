@@ -21,8 +21,8 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K1_UI_GROWTH_DECISION_AND_BRAND_ADAPTATION
-K1_STATUS=APPROVED_TO_EXECUTE
+CURRENT_GATE=K1A_VISUAL_DIRECTION_AND_GROWTH_MAPPING
+K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
@@ -233,3 +233,13 @@ Formal decision:
 - `docs/REVIEWER_DECISION_K1_UI_GROWTH_BRAND_ADAPTATION.md`
 
 WordPress Studio is the active local development base. Docker PoC remains rollback only. K1 must perform minimal Mini Craft brand/growth adaptation and fix the inherited 375px clipping.
+
+
+## K1 Split
+
+K1 is now split into:
+
+- K1A: Visual Direction + Growth Mapping
+- K1B: WordPress implementation after Owner visual approval
+
+Formal decision: `docs/REVIEWER_DECISION_K1A_VISUAL_DIRECTION.md`.
