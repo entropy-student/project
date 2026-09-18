@@ -10,6 +10,15 @@ STRATEGIC_PIVOT_TO_KADENCE_SINGLE_PRODUCT=APPROVED
 OLD_19_PAGE_HIGH_FIDELITY_ROUTE=PAUSED
 OLD_PROJECT=KEEP
 MANUAL_06_19_REBUILD=STOP
+
+UI_GROWTH_PRE_REVIEW=APPROVED
+CLONE_UI_ROLE=VISUAL_ASSIST_ONLY
+MINIMAL_PLUGIN_POLICY=APPROVED
+CANONICAL_COMMERCE_SYSTEM=WOOCOMMERCE
+MVP_PAYMENT=WOOCOMMERCE_PAYPAL_PAYMENTS
+DUJIAO_SECOND_ORDER_SYSTEM=NO
+GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
+
 CURRENT_GATE=K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC
 NEXT_OWNER_CHECKPOINT=REVIEW_IMPORTED_TEMPLATE
 VPS=DEFERRED
@@ -56,24 +65,24 @@ VPS_WRITES=ZERO
 STOP_AT_REVIEWER=YES
 ```
 
-## Current Execution / Review Protocol
+## Before K1
 
-### Before K1
 Owner must review the real imported template.
 
-Then Reviewer + Growth/Acquisition framework define:
-- KEEP / ADAPT / DROP sections;
-- Offer hierarchy;
-- Hero;
-- CTA;
-- trust proof;
-- required product facts;
-- visual adaptation boundary.
+Then Reviewer + Growth/Acquisition Framework must produce approved UI Decision:
+- KEEP / ADAPT / DROP；
+- Offer hierarchy；
+- Hero；
+- CTA；
+- trust proof；
+- required product facts；
+- visual adaptation boundary。
 
-Executor may not invent the conversion architecture.
+Executor may not invent conversion architecture.
 
-### UI fidelity
-clone-ui may be used only after the target UI has been approved.
+## Fidelity Rule
+
+clone-ui may be used only after target UI is approved.
 
 A visual clone is not accepted unless these also pass:
 
@@ -85,32 +94,39 @@ OWNER_EDITABILITY
 BUSINESS_TRUTH
 ```
 
-No visual parity fix may break WordPress block validity, responsive behavior or WooCommerce behavior.
+## Payment Decision
 
-## Payment Decision Deferred
+Project-specific architecture change approved:
 
-Do not select a payment architecture inside K0.
+```text
+WooCommerce = canonical commerce/order system
+WooCommerce PayPal Payments = MVP payment
+Dujiao second canonical order system = NO
+```
 
-Candidate paths:
-1. WooCommerce + official PayPal Payments;
-2. WooCommerce + Shared Payment Layer via a WooCommerce gateway adapter;
-3. WordPress marketing front end → Dujiao checkout / order handoff.
-
-Reviewer must compare them after the WooCommerce PoC exists. Do not run two canonical order systems without an explicit architecture decision.
+Long-term Shared Payment integration is deferred until real business evidence justifies a WooCommerce gateway adapter.
 
 ## GitHub Operating Model — Trial
 
 Reviewer-owned:
+- `PROJECT_RECORD.md`
 - `REVIEWER_HANDOFF.md`
-- Reviewer decisions
-- `PROJECT_RECORD.md` truth updates
+- Reviewer Decision docs
 
 Executor-owned:
 - `EXECUTION_EVIDENCE.md`
 - `EXECUTOR_HANDOFF.md`
-- bounded manifests/evidence indexes
+- bounded evidence indexes
 
 Chat response should normally be short:
-> 已完成，可查阅 `mini-craft-night-kit/EXECUTION_EVIDENCE.md` 与 `EXECUTOR_HANDOFF.md`。
+> 已完成，可查阅对应 GitHub 文档。
 
-If this handoff mechanism runs reliably across several Gates, propose adding it to the global Governance specification.
+After at least 3 stable Gates, propose Governance Change Gate to adopt this globally.
+
+## Related Docs
+
+- `docs/PROJECT_PLAN_AND_ROADMAP.md`
+- `docs/UI_GROWTH_AND_FIDELITY_DECISION.md`
+- `docs/PLUGIN_AND_OPERATIONS_PLAN.md`
+- `docs/PAYMENT_ARCHITECTURE_DECISION.md`
+- `docs/GITHUB_HANDOFF_PROTOCOL.md`
