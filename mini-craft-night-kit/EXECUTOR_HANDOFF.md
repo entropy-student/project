@@ -37,3 +37,32 @@ The local WordPress admin credentials and `.env` values are intentionally omitte
 - Unrelated projects and protected shared files were not touched. Remaining non-K0 root items are explicitly out of scope.
 
 Reviewer should decide the formal K0R1 result. Executor stops here and does not enter K1.
+---
+
+## K0R2 — WordPress Studio Consolidation
+
+### Status
+
+`RETURN_K0R2_RESPONSIVE_BASELINE_CONFLICT`
+
+### Completed execution
+
+- Installed/used official WordPress Studio `1.21.0` bundled CLI path.
+- Created and registered the independent Studio site `Mini Craft Night Kit` at `http://localhost:8881/`.
+- Imported a full backup from the running Docker PoC using the supported Studio import path; no WordPress.com Sync and no extra migration plugin.
+- Preserved Kadence, Kadence Blocks, Starter Templates, WooCommerce, pages, menus, products, uploads/media, and SQLite Studio database.
+- Verified Home/Product/Cart/Checkout, one-item Checkout, Studio auto-login, WooCommerce Orders admin, Gutenberg editor bootstrap, and invalid-block count 0.
+- Preserved Docker source at `http://localhost:8090`, its containers, and its named volumes as rollback.
+- Confirmed old `mini-craft-night-kit` remained unchanged and `localhost:8088` remained available.
+
+### Reviewer return
+
+The required 375px responsive check is not a PASS: the Studio Home screenshot shows clipped header/title and main heading. The retained Docker source shows the same 375px clipping, creating a conflict with the earlier K0 responsive PASS evidence. No CSS/template fix was made because K0R2 forbids architecture or visual remediation.
+
+Review `EXECUTION_EVIDENCE.md` for the full runtime, import, containment, and safety evidence. Reviewer should reconcile the baseline conflict or issue a bounded remediation Gate. The current GitHub Reviewer-owned checkpoint files were not modified.
+
+### Checkpoint
+
+`STOP_AT_REVIEWER=YES`
+
+No K1 work started. No real payment, VPS write, Docker volume deletion, or credential publication occurred.
