@@ -166,14 +166,18 @@ optional LLM explanation (later)
 ## 10. 当前下一动作
 
 ```text
-CREATE_HIGH_FIDELITY_GOLDEN_SCREENS
-→ OWNER_VISUAL_REVIEW
-→ FIX_IF_NEEDED
-→ PASS_G3_5
-→ RELEASE_G4_TO_CODEX
+Codex
+→ execute docs/G4_EXECUTION_CONTRACT.md
+→ update docs/EXECUTION_EVIDENCE.md
+→ Reviewer reads GitHub evidence
+→ PASS / RETURN G4
 ```
 
-Codex 仍保持 `HOLD_FOR_G3_5_UI_GROWTH_DESIGN_FREEZE`。
+当前：
+- G3.5 已 PASS；
+- G4 已释放给 Codex；
+- G4 仅允许本地 WordPress ↔ Scanner ↔ Top 3 闭环；
+- Payment / VPS / Production 继续 HOLD。
 
 ## 11. 不允许重复执行
 
