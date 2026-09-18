@@ -21,7 +21,7 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K1A_VISUAL_REVIEW
+CURRENT_GATE=K1B_WORDPRESS_IMPLEMENTATION
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -252,3 +252,12 @@ Reviewer completed `docs/K1A_VISUAL_DIRECTION_AND_GROWTH_MAP.md`.
 Visual source decision: reuse the archived Mini Craft Home visual master as the visual reference while retaining Kadence as the implementation architecture.
 
 Owner review marker: `OWNER_K1A_VISUAL_DIRECTION=PASS` or RETURN with requested direction changes.
+
+
+## K1A Owner Decision
+
+`OWNER_K1A_VISUAL_DIRECTION=PASS`
+
+K1B is authorized. Codex must not generate final images; use approved existing assets or editable placeholders only.
+
+Formal decision: `docs/REVIEWER_DECISION_K1B_WORDPRESS_IMPLEMENTATION.md`.
