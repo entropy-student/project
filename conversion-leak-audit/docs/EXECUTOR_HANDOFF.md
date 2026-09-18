@@ -1,96 +1,102 @@
 # Conversion Leak Audit — EXECUTOR HANDOFF
 
 > Intended executor: Codex / local development agent
-> Current State: `HOLD_FOR_G3_5_UI_GROWTH_DESIGN_FREEZE`
+> Current State: `G4_READY_FOR_EXECUTION`
 
-## Read First
-
-1. `../README.md`
-2. `../PROJECT_RECORD.md`
-3. `REVIEWER_HANDOFF.md`
-4. `ROADMAP.md`
-5. `G3_5_UI_GROWTH_FREEZE.md`
-6. `HANDOFF_PROTOCOL.md`
-
-## Current Instruction
-
-Do **not** start G4 product implementation yet.
-
-Wait until Reviewer marks:
+## Reviewer authorization
 
 ```text
 PASS_G3_5_UI_GROWTH_DESIGN_FREEZE
+G4_RELEASED_TO_CODEX=YES
 ```
 
-Only after that will this document be updated with the frozen implementation contract.
+You may begin G4.
 
-## Do Not Repeat
+## Read First
 
-Do not redo:
-- theory research;
-- 77-rule catalog;
-- 17-rule MTRS selection;
-- 51 fixtures;
-- G1 WordPress baseline;
-- G2 Safe Scanner V0;
-- old standalone G3 Rule Engine.
+1. `../PROJECT_RECORD.md`
+2. `../CURRENT_STATUS.json`
+3. `REVIEWER_HANDOFF.md`
+4. `G4_EXECUTION_CONTRACT.md`
+5. `G3_5_UI_GROWTH_FREEZE.md`
+6. `../design/FINAL_GOLDEN_SCREEN_SPEC.md`
+7. `../design/DEMO_FIXTURE_GOLDEN.md`
+8. `../design/FUNCTIONAL_ACCEPTANCE.md`
+9. `../design/VISUAL_ACCEPTANCE.md`
+10. `HANDOFF_PROTOCOL.md`
 
-## Frozen Technical Assets
+## Execute
 
-Current reviewed source assets:
-- `scanner/` — Python Scanner V0
-- `wordpress-g1-baseline/` — WordPress baseline
-
-Recovery checks:
-- Scanner tests: `55 / 55 PASS`
-- WordPress asset checks: `20 / 20 PASS`
-
-## Future G4 Boundary
-
-After G3.5 PASS, Codex will implement:
+Implement only:
 
 ```text
 WordPress form
 → Scanner job create API
 → scan_id
 → status polling
-→ Scanner result
+→ honest progress states
+→ Scanner report
 → deterministic Top 3
+→ evidence detail
 → WordPress free result page
 ```
 
-Implementation must follow the frozen UI/design/analytics/acceptance contracts. Codex must not invent visual direction, payment flow or new scanner rules during implementation.
+Full requirements and tests are canonical in:
 
-## Future Visual Acceptance
+`G4_EXECUTION_CONTRACT.md`
 
-Codex will be required to:
-- implement against design tokens/page contracts;
-- reproduce desktop/mobile golden screenshots;
-- run Playwright screenshots / visual regression;
-- pass functional acceptance separately from visual acceptance.
+## Source assets
 
-`clone-ui` output, if supplied, is reference material only. Do not let clone code replace project architecture or overwrite unrelated functionality.
+Use the reviewed local trees:
+- `scanner/`
+- `wordpress-g1-baseline/`
 
-## Payment
+Do not recreate G1/G2.
 
-Payment is not part of G4.
+Before edits, record current regression results. After edits, rerun them.
 
-Current future candidate: Direct PayPal at G9. Unified Pay is not a current dependency.
+## Visual rule
 
-## Required Completion Report
+Implement the frozen design; do not invent a new UI direction.
 
-When implementation resumes, update GitHub docs with:
+`clone-ui` may only provide reference extraction. Do not paste a cloned site over the validated product architecture.
+
+Generated mockup text is not authoritative. GitHub design contracts are authoritative.
+
+## Forbidden in G4
+
+Do not implement:
+- PayPal / payment;
+- Unified Pay;
+- checkout / entitlement;
+- LLM full report;
+- VPS / domain / HTTPS;
+- production Secrets;
+- public production scanner;
+- new Scanner rules;
+- unrelated WordPress plugin stack.
+
+## Completion
+
+Update `EXECUTION_EVIDENCE.md` with:
 
 ```text
-Gate:
+Gate: G4
+Commit / local revision:
 Files changed:
-Commands/tests run:
-Results:
-Screenshots/evidence:
+Architecture changes:
+Commands run:
+Regression results:
+Integration results:
+Screenshots:
 Known limitations:
 Risks:
-Next action:
 Owner intervention required: YES/NO
+Recommended Reviewer decision:
 ```
 
-Write factual execution evidence to `EXECUTION_EVIDENCE.md`. Reviewer, not Codex, declares Gate PASS.
+Candidate result:
+
+`PASS_CANDIDATE_G4_LOCAL_FREE_LOOP`
+
+Do not declare final PASS yourself. Reviewer will read GitHub evidence and decide.
