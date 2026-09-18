@@ -15,7 +15,7 @@
     "G1_WORDPRESS_LOCAL_BASELINE": "PASS",
     "G2_SAFE_SCANNER_V0": "PASS",
     "G3_RULE_ENGINE_V0": "MERGED_CLOSED",
-    "G3_5_UI_GROWTH_DESIGN_FREEZE": "IN_PROGRESS",
+    "G3_5_UI_GROWTH_DESIGN_FREEZE": "READY_FOR_OWNER_FINAL_APPROVAL",
     "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "PENDING",
     "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "PENDING",
     "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "PENDING",
@@ -38,7 +38,7 @@
     "scanner_network_ci_run_id": 35235157740
   },
   "design": {
-    "status": "TEXT_CONTRACTS_READY_HIGH_FIDELITY_PENDING",
+    "status": "FINAL_GOLDEN_CANDIDATE_READY_FOR_OWNER_REVIEW",
     "direction": "EDITORIAL_DIAGNOSTIC_CONSOLE_EVIDENCE_FIRST",
     "ui_growth_brief": "READY",
     "design_system": "READY",
@@ -47,9 +47,12 @@
     "analytics_event_contract": "READY",
     "functional_acceptance": "READY",
     "visual_acceptance": "READY",
-    "golden_screens": "PENDING_OWNER_REVIEW",
+    "golden_screens": "FINAL_CANDIDATE_READY",
     "clone_ui_role": "VISUAL_REFERENCE_EXTRACTION_ONLY",
-    "visual_regression_required": true
+    "visual_regression_required": true,
+    "logo": "GAP_MARK_FINAL_CANDIDATE",
+    "truthful_demo_fixture": "FROZEN",
+    "final_golden_screen_spec": "READY"
   },
   "payment": {
     "status": "DEFERRED_TO_G9",
@@ -63,5 +66,5 @@
     "public_production_scanner": "HOLD",
     "codex_product_implementation_before_g3_5_pass": "FORBIDDEN"
   },
-  "next_action": "CREATE_HIGH_FIDELITY_GOLDEN_SCREENS_AND_OWNER_REVIEW"
+  "next_action": "OWNER_FINAL_VISUAL_APPROVAL_THEN_PASS_G3_5"
 }
