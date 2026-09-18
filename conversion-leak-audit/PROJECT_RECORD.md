@@ -33,8 +33,8 @@ PF   Theory / Rules / Pre-development        PASS
 G1   WordPress Local Baseline                PASS
 G2   Safe Scanner V0                         PASS
 G3   Rule Engine V0                          MERGED / CLOSED
-G3.5 UI + Growth Design Freeze               IN PROGRESS
-G4   WP ↔ Scanner ↔ Top 3 Local Loop          PENDING
+G3.5 UI + Growth Design Freeze               PASS
+G4   WP ↔ Scanner ↔ Top 3 Local Loop          NEXT / EXECUTOR READY
 G4.5 Visual + Functional Acceptance          PENDING
 G5   Full Fix Queue + LLM + Skill Dogfood    PENDING
 G6   VPS Onboarding / Storage                HOLD
@@ -68,58 +68,36 @@ WordPress 7.1 + MariaDB 11.4 + SaasLauncher 2.0.18 + child theme；6 个基础�
 
 ## 4. G3.5 — UI + Growth Design Freeze
 
-当前阶段已进入 `IN_PROGRESS`。
+Status: **PASS**
 
-已经完成并写入 `design/`：
-- `UI_GROWTH_BRIEF.md`
-- `DESIGN_SYSTEM.md`
-- `PAGE_CONTRACTS.md`
-- `INTERACTION_STATES.md`
-- `ANALYTICS_EVENT_CONTRACT.md`
-- `FUNCTIONAL_ACCEPTANCE.md`
-- `VISUAL_ACCEPTANCE.md`
+Frozen decisions:
+- Editorial Diagnostic Console / Evidence-first Diagnostic;
+- Gap Mark primary logo;
+- platform compatibility strip;
+- URL-first Home;
+- honest Scanner progress;
+- evidence-backed Free Top 3;
+- truthful synthetic demo fixture;
+- provider-independent analytics events;
+- functional + visual acceptance kept separate;
+- clone-ui = reference extraction only;
+- payment remains deferred.
 
-当前推荐视觉方向：
+Canonical implementation contracts:
+- `design/FINAL_GOLDEN_SCREEN_SPEC.md`
+- `design/DEMO_FIXTURE_GOLDEN.md`
+- `design/DESIGN_SYSTEM.md`
+- `design/PAGE_CONTRACTS.md`
+- `design/INTERACTION_STATES.md`
+- `design/ANALYTICS_EVENT_CONTRACT.md`
+- `design/FUNCTIONAL_ACCEPTANCE.md`
+- `design/VISUAL_ACCEPTANCE.md`
 
-> **Editorial Diagnostic Console / Evidence-first Diagnostic**
+Gate result:
 
-核心原则：
-- Evidence > opaque score；
-- Free Top 3 提供完整但有限的一次胜利；
-- 页面不做 AI-neon / fake terminal / fake progress；
-- 结果页先展示 observed fact + evidence；
-- paid value 扩展 scope / depth / prioritization / personalization / continuity；
-- clone-ui 只做视觉参考提取，不直接重写产品源码。
+`PASS_G3_5_UI_GROWTH_DESIGN_FREEZE`
 
-核心 Activation candidate：
-
-```text
-landing_view
-→ scan_started
-→ scan_completed
-→ top3_viewed
-→ 用户看到与自己网站直接相关、带证据的具体问题
-```
-
-已冻结的产品路径：
-
-```text
-Landing
-→ URL input + Trust strip
-→ honest scan progress
-→ Evidence-backed Top 3
-→ Evidence detail
-→ Paid expansion preview
-→ future payment at G9
-```
-
-当前唯一未完成的 G3.5 核心项：
-- Desktop Golden Screens；
-- Mobile Golden Screens；
-- Home / Progress / Free Top 3 / Full Report shell 高保真；
-- Owner visual approval。
-
-这些通过后才能 `PASS_G3_5` 并释放 G4 给 Codex。
+G4 is now released to Codex under `docs/G4_EXECUTION_CONTRACT.md`.
 
 ## 5. 运营 / 插件策略
 
