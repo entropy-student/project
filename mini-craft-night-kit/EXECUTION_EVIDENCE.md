@@ -286,3 +286,118 @@ K0R2-scoped shared-root check passed: no Studio migration archive, extraction di
 `RETURN_K0R2_RESPONSIVE_BASELINE_CONFLICT`: the required 375px responsive check is not a PASS, and the same issue is observable on the retained Docker source. Executor did not alter the original template or write CSS to hide the issue. Reviewer must decide whether the earlier K0 mobile PASS evidence should be reconciled, or issue a separate bounded remediation Gate.
 
 No K1 branding, copy, layout, payment, or commerce customization was started. Docker source and all Docker volumes remain available for rollback. Executor stops here for Reviewer review.
+## K1B — WordPress Implementation
+
+### Scope and status
+
+`PASS_CANDIDATE_K1B_WORDPRESS_IMPLEMENTATION`
+
+K1B was executed against the registered WordPress Studio target only:
+
+- Studio target: `http://localhost:8881/`
+- Docker PoC rollback source: `http://localhost:8090/` retained and not edited
+- Kadence Layout System: preserved; no structure-level rebuild
+- Reviewer-owned documents: not modified
+- PayPal, real payment, K2, VPS, production: not entered
+
+### Approved brand adaptation
+
+- `K1A_DIRECTION_IMPLEMENTED=PASS`
+- `KADENCE_LAYOUT_SYSTEM_PRESERVED=PASS`
+- `MINI_CRAFT_BRAND_ADAPTATION=PASS`
+- Approved hierarchy and copy were applied to the existing Kadence Home composition: hero, experience strip, differentiation, beginner framing, neutral trust shell, What’s Inside shell, product surface, and closing CTA.
+- Irrelevant inherited Smart Speaker/demo sections and inherited testimonial row were removed from the Home composition without rebuilding the Kadence row/column system.
+- Header navigation was reduced to Home / Shop / Contact with the existing Kadence menu system.
+- Approved Mini Craft palette and typography direction were applied through Kadence theme settings.
+- `CLONE_UI_EXECUTED=NO`
+- `COMMERCE_CUSTOM_BUILD=NO`
+
+### Image and claims policy
+
+- `FINAL_IMAGES_GENERATED_BY_CODEX=NO`
+- `FAKE_SOCIAL_PROOF=NO`
+- Existing approved Mini Craft assets were reused from the retained old project source: product-main, product-flow-1, product-flow-2, product-flow-3, product-inside, and product-moment-1.
+- No formal product image, lifestyle image, UGC, customer proof, testimonial, rating, or social-proof asset was generated.
+- Missing/withheld factual content remains neutral and replaceable in Gutenberg.
+- `UNVERIFIED_CLAIMS_PUBLISHED=NO`: inherited demo price, shipping promise, money-back promise, review count, rating, and featured-brand claims were removed or withheld.
+- Local attachment IDs for the reused image set: `1031–1036`.
+
+### WordPress / WooCommerce runtime
+
+- WordPress `6.8.9`
+- Kadence `1.5.2`
+- Kadence Blocks `3.7.11`
+- Kadence Starter Templates `2.3.4`
+- WooCommerce `10.0.4`
+- `WOOCOMMERCE_COMING_SOON=OFF` for the local runtime baseline
+- Product `223`: title `Mini Craft Night Kit`, slug `mini-craft-night-kit`, published, local gallery retained
+- No order was submitted; local order count remained `0`
+
+| Surface | URL | Result |
+|---|---|---|
+| Home | `http://localhost:8881/` | HTTP 200 |
+| Product | `http://localhost:8881/product/mini-craft-night-kit/` | HTTP 200 |
+| Cart | `http://localhost:8881/cart/` | HTTP 200 |
+| Checkout, empty cart | `http://localhost:8881/checkout/` | HTTP 302 to Cart, expected WooCommerce behavior |
+| Checkout, one local product | same URL after adding product `223` | HTTP 200 |
+
+`HOME_RUNTIME=PASS`
+`PRODUCT_RUNTIME=PASS`
+`CART_RUNTIME=PASS`
+`CHECKOUT_RUNTIME=PASS`
+`WOOCOMMERCE_BASELINE=PASS`
+`FRONTEND_RUNTIME=PASS`
+
+### Gutenberg validity and editability
+
+- Home content remains native Kadence/WooCommerce block markup; no Custom HTML replacement was used.
+- `use_block_editor_for_post(939)=true`
+- `has_blocks(939)=true`
+- `parse_blocks()` / `serialize_blocks()` round trip: `true`
+- `INVALID_BLOCK_COUNT=0`
+- Residual inherited Smart Speaker, Lorem ipsum, fake review, demo price, shipping, and featured-brand strings: `0`
+- Home product surface still uses the native `woocommerce/handpicked-products` block and points only to local product `223`.
+- `GUTENBERG_EDITOR=PASS`
+- `OWNER_EDITABILITY=PASS`
+
+### Responsive validation and inherited 375px fix
+
+The required Home responsive matrix was checked at:
+
+`320, 375, 390, 430, 768, 820, 1024, 1280, 1366, 1440, 1920, 2048, 2560` CSS pixels.
+
+- Mobile 320 / 375 / 390 / 430: latest screenshots show header, hero, supporting copy, CTA, product heading, experience strip, and approved asset within the viewport; no visible right-side crop.
+- Tablet 768 / 820 / 1024: bounded and readable.
+- Desktop 1280 / 1366 / 1440 / 1920 / 2048: bounded and readable.
+- Ultra-wide 2560: smoke-tested; content remains centered and does not expand without bound.
+- The inherited 375px issue was fixed with narrow-device overflow guards plus editable mobile-only line breaks for the approved supporting copy and product heading. Kadence row/column structure was not rebuilt.
+- Local QA screenshots are retained only in the local PoC artifact directory; they are not committed to GitHub.
+
+`MOBILE_320_RESPONSIVE=PASS`
+`MOBILE_375_RESPONSIVE=PASS`
+`MOBILE_390_RESPONSIVE=PASS`
+`MOBILE_430_RESPONSIVE=PASS`
+`TABLET_RESPONSIVE=PASS`
+`DESKTOP_RESPONSIVE=PASS`
+`ULTRAWIDE_SMOKE=PASS`
+`MOBILE_375_INHERITED_CROP=FIXED`
+
+### Safety and containment
+
+- `OLD_PROJECT_UNCHANGED=PASS`: old `README.md`, `docker-compose.yml`, and `REVIEWER_HANDOFF.md` hashes still match the recorded K0 baselines.
+- No old project file, theme, database, or volume was edited or deleted.
+- Final old-site HTTP recheck was unavailable because Docker Desktop was not exposing a usable Docker Engine in this host session; this is recorded as `OLD_PROJECT_RUNTIME_RECHECK=UNAVAILABLE_DOCKER_ENGINE`, not as a mutation or a pass claim.
+- Docker source and its rollback backup remain retained; Docker volumes deleted: `NO`.
+- `UNRELATED_PROJECTS_TOUCHED=NO`
+- `REAL_PAYMENT_ACTIONS=0`
+- `VPS_WRITES=ZERO`
+- `SECRET_EXPOSURE=NO`
+- No `.env`, password, token, cookie, private key, or payment credential was written to GitHub.
+- Local pre-K1B full backup retained at `.artifacts/k1b-implementation/pre-k1b-backup.zip`; SHA-256 `EFA44656360BEFC031FCE6551365F6DC8BA3188094013BD247CFE6337ABDCEF1`.
+- Temporary K1B helper scripts, diagnostic markers, and local auth cookies were removed after validation.
+
+### Reviewer checkpoint
+
+`STOP_AT_REVIEWER=YES`
+
+K1B execution is complete. Executor does not enter K2, PayPal, VPS, or production.
