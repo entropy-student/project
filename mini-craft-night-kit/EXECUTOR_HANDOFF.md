@@ -66,3 +66,31 @@ Review `EXECUTION_EVIDENCE.md` for the full runtime, import, containment, and sa
 `STOP_AT_REVIEWER=YES`
 
 No K1 work started. No real payment, VPS write, Docker volume deletion, or credential publication occurred.
+---
+
+## K1B — WordPress Implementation
+
+### Status
+
+`PASS_CANDIDATE_K1B_WORDPRESS_IMPLEMENTATION`
+
+K1B implementation was completed on the WordPress Studio target `http://localhost:8881/`. The existing Kadence row/column layout system remains in place; no structure-level rebuild was performed.
+
+### Delivered
+
+- Applied the approved K1A Mini Craft hierarchy, copy, palette, and typography direction to the existing Kadence composition.
+- Reused approved Mini Craft assets only; no formal product/lifestyle/UGC/proof images were generated.
+- Removed inherited Smart Speaker/demo copy, fake proof, and unverified claims while keeping Gutenberg-editable native blocks.
+- Fixed the inherited narrow-device crop at 320/375/390/430 with bounded mobile rules and editable mobile-only line breaks.
+- Preserved native WooCommerce product, cart, checkout, and order surfaces.
+- Verified Home/Product/Cart HTTP 200; empty Checkout 302 to Cart as expected; Checkout with local product 223 HTTP 200.
+- Verified `use_block_editor_for_post=true`, native block round trip, and invalid block count `0`.
+- Retained the Docker PoC source and K1B rollback backup; did not modify old project files or volumes.
+
+### Safety note
+
+The old project baseline files still match their K0 hashes. A final old-site HTTP recheck could not be completed because Docker Desktop did not expose a usable Docker Engine in this host session; no old project mutation was observed. No payment, VPS, production, secret, or Reviewer-document action occurred.
+
+### Reviewer checkpoint
+
+Please review the appended K1B evidence in `EXECUTION_EVIDENCE.md`. Executor stops here with `STOP_AT_REVIEWER=YES` and does not enter K2.
