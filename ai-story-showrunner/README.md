@@ -106,25 +106,29 @@ Company / Model / Protocol / Feature
 
 ### Visual Narrative Animation Lab
 
-`visual-narrative-animation-lab` 是本项目的**下游视觉叙事研发 / 生产能力**，不是本项目本身。
+`visual-narrative-animation-lab` 现在定位为本项目的**视觉叙事研发 / 导演语法参考库**，不是默认生产执行链。
 
 ```text
-AI Story Showrunner
-        ↓
-Story / Script / Shotbook contract
-        ↓
 Visual Narrative Animation Lab
         ↓
-Visual Beat / Asset / Animatic / Render
+提供 Visual Beat / Shot Grammar / Consistency 经验
+        ↓
+AI Story Showrunner 编译低层施工包
+        ↓
+Antigravity 执行
 ```
+
+默认成片施工路线已冻结为 Antigravity。
 
 ### spike.skill
 
 现有 Skill 作为可替换 Worker 接入，而不是复制进本项目。当前已确认的相关能力见：
 
-- `docs/TOOL_INVENTORY.md`
-- `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
+- `docs/CONTENT_STRATEGY_AND_CONVERSION.md`
+- `docs/WORKER_ADAPTER_PLAN.md`
 - `docs/WORKER_CONTRACTS.md`
+- `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
+- `docs/TOOL_INVENTORY.md`
 
 ## Governance
 
@@ -156,7 +160,7 @@ G10 Reusable Showrunner Skill / Runtime         ⏳
 2. 热点负责“为什么现在看”，人类问题负责“为什么值得看”，AI 机制负责“看完得到什么”。
 3. AI 概念可以晚出现；故事不能依赖观众先知道专有名词。
 4. 麦基式结构属于**故事骨架阶段**，不是成稿后的润色补丁。
-5. 景岁类 Skill 属于**表达 / 叙事执行层**，不是全局大脑。
+5. 景岁类 Skill 当前定位为**候选 Writer Style Engine**，必须通过项目 Adapter 限权，不是全局大脑。
 6. Visual Beat 不是“一句一图”；画面由语义变化驱动。
 7. **Antigravity 冻结为当前执行 Agent**：不承担导演决策，只执行低层施工指令；Nano Banana 是当前批量生图执行路径。
 8. 默认一个小镜头一张图；动作优先拆成多张静态图，不为了省图增加复杂运动。
@@ -178,6 +182,10 @@ PROJECT_RECORD.md
 docs/ARCHITECTURE.md
   ↓
 docs/PIPELINE_AND_GATES.md
+  ↓
+docs/CONTENT_STRATEGY_AND_CONVERSION.md
+  ↓
+docs/WORKER_ADAPTER_PLAN.md
   ↓
 docs/WORKER_CONTRACTS.md
   ↓
