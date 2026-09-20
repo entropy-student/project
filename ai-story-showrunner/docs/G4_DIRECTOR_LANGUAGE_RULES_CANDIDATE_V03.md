@@ -161,6 +161,16 @@ Common still-image grammar: A intention/setup → B action/change → C result/r
 
 Use only the number of states that add meaning. Do not add images merely to imitate motion.
 
+A spoken list / enumeration does NOT automatically become a montage. If several items can coexist in one coherent image state without changing causality, relation, attention, or payoff, keep one Visual Beat.
+
+Examples:
+- three remembered preferences may share one notebook insert;
+- “桌子大当然有用 / 多摆几份资料更方便” may share one work-surface state;
+- repeated verbal clauses should not force extra images when the visual state is unchanged.
+
+Failure:
+`RETURN_MONTAGE_INFLATION`.
+
 A Visual Beat may also be a **reveal setup state**: an image that deliberately withholds the final object/result so the next beat can land the payoff. This is valid only when anticipation itself has narrative/comic meaning.
 
 Example:
