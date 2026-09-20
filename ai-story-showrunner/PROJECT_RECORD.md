@@ -483,3 +483,27 @@ Live Daily Radar is intentionally NOT switched to the proposed v0.2 planner unti
 Current:
 `G3R PASS_CANDIDATE / G4 BLOCKED`.
 
+## 19. G3R Owner Alignment Without PASS — 2026-09-20
+
+Owner accepts the overall direction and authorizes document consolidation, but explicitly withholds PASS because two issues remain for discussion.
+
+Current candidate baseline:
+- Bilibili primary;
+- daily editorial target;
+- 3–5min primary duration target, exceptions by narrative need;
+- first-person recurring IP;
+- STORY_MODEL / STORY_ACTION only;
+- tutorial module removed;
+- initial mix hypothesis 5 / 2;
+- optional bounded viewpoint;
+- causal Story Beat Gate.
+
+Governance:
+- historical G3R proposals remain historical evidence only;
+- live Daily Topic Radar v0.1 is unchanged;
+- G4 remains blocked;
+- two open questions are not guessed or auto-resolved.
+
+State:
+`OWNER_ALIGNED / HOLD / NOT PASS`.
+
