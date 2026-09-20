@@ -126,8 +126,8 @@ Showrunner 不重复实现 Worker 的专业能力。
 ```text
 P0  Project Boundary / Governance Reconciliation PASS
 G1  Worker Inventory + Canonical Contracts     PASS
-G2  Topic → Human Problem → Story MVP          PENDING / HOLD FOR OWNER REVIEW
-G3  Story → Script / SRT MVP                   PENDING
+G2  Topic → Human Problem → Story MVP          PASS
+G3  Story → Script / SRT MVP                   PENDING / NEXT
 G4  Script → Director Shotbook MVP             PENDING
 G5  Shotbook → Image Asset Package MVP         PENDING
 G6  Image Assets → Video MVP                   PENDING
@@ -383,3 +383,22 @@ README.md
 ```
 
 已经 PASS 的 Gate 默认不重做，除非新证据推翻原结论。
+
+
+## 15. G2 Validation Result — 2026-09-20
+
+Reviewer decision: **PASS**
+
+验证题：
+- MCP — abstract protocol / interoperability
+- Agent — delegated workflow execution
+- Context / Memory — working context vs persistent memory
+
+主要结论：
+- L3 Human Situation → L2 Capability Change → L1 Technical Mechanism 在三种题型上均可工作；
+- One Mechanism Gate 必须保留；
+- Story-first 可行，但 story motif 也需要去重，不能只去重 topic；
+- conversion adjacency 必须按 audience 判断，不能按技术热度判断；
+- G3 的关键风险从“故事能否成立”转变为“Writer 是否会把故事重新写成科普”。
+
+Detailed review: `docs/G2_VALIDATION_REVIEW.md`
