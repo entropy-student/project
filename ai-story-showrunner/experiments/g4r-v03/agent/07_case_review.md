@@ -14,9 +14,9 @@ It does NOT yet justify canonical promotion.
 New v0.3 experiment:
 - Dramatic Sequences: 6
 - Semantic Shots: 36
-- Visual Beats: 66
-- Reference duration: ~176.95s / 2:57
-- Average Visual Beat: ~2.68s
+- Visual Beats: 67
+- Reference duration: ~177.22s / 2:57
+- Average Visual Beat: ~2.65s
 
 Historical v0.1:
 - Semantic Shots: 36
@@ -217,9 +217,24 @@ one PAYOFF event.
 Visual Beats:
 1. callback — IP used to own the whole workflow;
 2. AI has now completed all upstream work;
-3. only the mouse crosses back to IP.
+3. setup — AI begins returning one object, but its identity is withheld;
+4. reveal — 鼠标 becomes the sole focal object.
+
+Why four:
+the third image creates anticipation, while the fourth image owns the actual punchline reveal. Revealing the mouse in image 3 collapses setup and payoff into one state.
 
 Timing:
-the final mouse beat receives the punchline hold.
+the fourth mouse image receives the landing hold.
 
 This is the intended use of the six-layer system.
+
+
+## 8. Owner refinement accepted
+
+Owner explicitly preferred four images for the mouse payoff.
+
+This produces a useful general rule:
+
+> **When a punchline depends on object identity, setup and reveal may deserve separate Visual Beats even inside one Semantic Shot.**
+
+The setup image must withhold the final object clearly enough that the reveal still has value.
