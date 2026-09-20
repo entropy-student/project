@@ -1,4 +1,4 @@
-# Pipeline & Gates v0.1
+# Pipeline & Gates v0.2
 
 ## Stage 0 — Signal Intake
 
@@ -163,96 +163,133 @@ Writer 可以改变表达，不得静默改变 KnowledgeCore。
 
 ---
 
-## Stage 5 — Director / Shot Decomposition
+## Stage 5 — G4 Director / Shot Compiler
 
-脚本锁定后，导演把故事拆成**可直接施工的小镜头**。
+Canonical contract:
+- `docs/G4_DIRECTOR_LANGUAGE_RULES.md`
+- `docs/G4_DIRECTOR_COMPILER_CONTRACT.md`
 
-### Current Rule
+Status:
+`G4 = PASS`
 
-> **One small shot ≈ one image.**
+Canonical six-layer pipeline:
 
-动作、反应、姿态变化优先拆成多个小镜头和多张静态图，而不是依赖复杂运镜或视频生成。
+```text
+Locked Script + KnowledgeCore
+→ Dramatic Hierarchy
+→ Episode / Sequence Visual Strategy
+→ Visual Intention
+→ Semantic Shot
+→ Visual Beat
+→ Timing & Edit Calibration
+→ Director Shotboard
+```
 
-### Director Output Must Lock
+G4 locks:
+- why each image exists;
+- narration binding;
+- local visual intention;
+- shot function;
+- actual shot size / POV at Visual Beat level;
+- image-level state;
+- image relation;
+- reference timing.
 
-G4 uses two nested units:
+G4 requires 100% locked-script coverage.
 
-1. SemanticShot — visual/story event;
-2. VisualBeat — image-level shotbook row.
+G4 does NOT lock final generation prompts or canonical binary reference paths.
 
-VisualBeat must lock:
-- visual_beat_id;
-- semantic_shot_id;
-- start / end / duration from accepted timing source;
-- narration fragment;
-- character IDs;
-- scene ID;
-- action / expression hint;
-- visual state / visual delta;
-- composition / camera hint;
-- transition intent;
-- forbidden visuals;
-- acceptance criteria.
-
-G4 does NOT lock final generation Prompt / canonical reference asset paths.
-Those are compiled after Character / Scene / Style locks.
-
-### Canonical Schemas
-
-- `schemas/semantic_shot.schema.json`
-- `schemas/visual_beat.schema.json`
-
-### Gate
-
-- 不允许 Antigravity 自行拆镜；
-- 不允许它自行合并镜头；
-- 不允许它改时间；
-- 镜头数量以表达清楚和施工简单为优先，不以少生图为目标。
-
-### Fail
+Fail:
 `RETURN_TO_DIRECTOR`
 
 ---
 
-## Stage 6 — Character / Scene / Style Lock
+## Stage 6 — G5 Image Asset Package
 
-在批量生图前冻结：
+Canonical contract:
+- `docs/G5_IMAGE_ASSET_PACKAGE_CONTRACT.md`
+- `docs/PRODUCTION_VISUAL_STYLE.md`
 
-- Character Bible + canonical references；
-- Scene Bible + canonical references；
-- Style Bible；
-- continuity strategy。
+Internal phases:
 
-人物出现的每张图必须携带相同 Character ID 与 canonical reference；连续镜头可追加上一张通过图。
+```text
+G5A Asset Requirement Extraction
+→ G5B Canonical Reference Lock
+→ G5C Image Generation Compiler
+```
 
-人物漂移：
-`RETURN_CHARACTER_DRIFT`
+### G5A
+Extract:
+- Character;
+- Scene;
+- Style;
+- Prop / UI;
+- Beat → Asset dependencies.
 
-场景关键结构漂移：
-`RETURN_SCENE_DRIFT`
+### G5B
+Lock:
+- Character Bible;
+- Scene Bible;
+- Style Bible;
+- Prop/UI Bible;
+- Reference Manifest.
+
+Current production style:
+`SIMPLIFIED_FLAT_NARRATIVE_COMIC`
+
+### G5C
+Compile exactly one deterministic image-generation row per accepted Visual Beat unless explicitly documented otherwise.
+
+Minimum row:
+- image_id;
+- visual_beat_id;
+- semantic_shot_id;
+- prompt;
+- negative_constraints;
+- character_refs;
+- scene_refs;
+- prop_ui_refs;
+- style_refs;
+- continuity_ref;
+- shot_size;
+- POV;
+- aspect_ratio;
+- resolution;
+- text_render_mode;
+- output_name;
+- acceptance_criteria.
+
+G5 must not change story, beat count, timing or Director intent.
+
+Fail examples:
+- `RETURN_CHARACTER_DRIFT`
+- `RETURN_SCENE_DRIFT`
+- `RETURN_STYLE_DRIFT`
+- `RETURN_IMAGE_MISSED_BEAT`
+- `RETURN_UI_TEXT_FAILURE`
+- `RETURN_REFERENCE_UNRESOLVED`
 
 ---
 
-## Stage 7 — Low-Level Execution Package
+## Stage 7 — G6 Low-Level Execution Package
 
-把前面所有导演决定编译成 Antigravity 可直接执行的施工包。
-
-Canonical contract：
-
+Canonical contract:
 `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
 
-核心文件：
+G6 packages accepted G4/G5 outputs for Antigravity.
 
+Core files:
 - `07_SHOT_TIMELINE.csv`
 - `08_IMAGE_GENERATION.csv`
 - `09_EDIT_INSTRUCTIONS.md`
-- Character / Scene / Style references。
+- Character / Scene / Style / Prop / UI references.
 
-### Execution Philosophy
+Execution philosophy:
 
-> 上游思考尽可能充分，下游执行尽可能愚蠢。
+> **上游思考尽可能充分，下游执行尽可能愚蠢。**
 
-没有写的效果默认 `DO_NOT_ADD`。
+Missing creative decisions are not delegated downstream.
+Unspecified effects default to `DO_NOT_ADD`.
 
 ---
 
