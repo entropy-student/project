@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K1B_WORDPRESS_IMPLEMENTATION
+CURRENT_CHECKPOINT=OWNER_K1B_VISUAL_REVIEW
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -168,3 +168,12 @@ Current Gate: `K1B_WORDPRESS_IMPLEMENTATION`.
 Codex must implement using Kadence layout lock, must not generate final images, must use existing approved assets or editable placeholders, must fix inherited 375px clipping, preserve Gutenberg/WooCommerce, update Executor evidence, and stop at Reviewer.
 
 Formal decision: `docs/REVIEWER_DECISION_K1B_WORDPRESS_IMPLEMENTATION.md`.
+
+
+## K1B Technical Review
+
+Formal decision: `docs/REVIEWER_DECISION_K1B_TECHNICAL_PASS_OWNER_VISUAL_PENDING.md`.
+
+Reviewer accepts the technical evidence. K1B final closure is pending Owner visual review of the Studio-managed site. K2 remains unauthorized.
+
+Owner marker: `OWNER_K1B_VISUAL=PASS` or `OWNER_K1B_VISUAL=RETURN` with specific issues.
