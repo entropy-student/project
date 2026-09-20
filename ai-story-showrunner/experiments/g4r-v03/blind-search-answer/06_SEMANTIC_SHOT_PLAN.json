@@ -313,11 +313,11 @@
       "scene_id": "SC3.1",
       "paragraph_range": [
         28,
-        32
+        31
       ],
-      "narration_span": "这时候最奇怪的地方就出现了。\n\n它不是没联网。\n\n也不是搜到了什么野鸡论坛。\n\n它甚至把正确的官网放在了我面前。\n\n但它拿着回答“订单款项去哪儿”的那句话，回答了我“服务费退不退”的问题。",
+      "narration_span": "这时候最奇怪的地方就出现了。\n\n它不是没联网。\n\n也不是搜到了什么野鸡论坛。\n\n它甚至把正确的官网放在了我面前。",
       "dramatic_refs": [
-        "SC3.1_28_32"
+        "SC3.1_28_31"
       ],
       "visual_intention": {
         "primary": "CLARIFY_MECHANISM",
@@ -644,8 +644,8 @@
     }
   ],
   "coverage_validation": {
-    "status": "FAIL",
+    "status": "PASS",
     "script_len": 789,
-    "plan_len": 819
+    "plan_len": 789
   }
 }
