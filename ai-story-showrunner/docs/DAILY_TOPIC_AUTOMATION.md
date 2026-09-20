@@ -1,4 +1,6 @@
-# Daily Topic Radar Automation Contract v0.1
+# Daily Topic Radar Automation Contract v0.1 — SUPERSEDED
+
+ > Historical contract. Superseded by `docs/DAILY_TOPIC_AUTOMATION_V2.md` after G3R PASS. Kept for audit history.
 
 ## Goal
 
