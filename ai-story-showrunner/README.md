@@ -142,8 +142,8 @@ Antigravity 执行
 
 ```text
 P0  Project Boundary / Governance Reconciliation ✅ PASS
-G1  Worker Inventory + Canonical Contracts     ← HERE
-G2  Topic → Human Problem → Story MVP          ⏳
+G1  Worker Inventory + Canonical Contracts     ✅ PASS
+G2  Topic → Human Problem → Story MVP          ← HERE
 G3  Story → Script / SRT MVP                   ⏳
 G4  Script → Director Shotbook MVP             ⏳
 G5  Shotbook → Image Asset Package MVP         ⏳
