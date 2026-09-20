@@ -401,3 +401,93 @@ The required Home responsive matrix was checked at:
 `STOP_AT_REVIEWER=YES`
 
 K1B execution is complete. Executor does not enter K2, PayPal, VPS, or production.
+## K2 — WooCommerce Commerce Loop
+
+### Scope and status
+
+`PASS_CANDIDATE_K2_WOOCOMMERCE_COMMERCE_LOOP`
+
+K2 was executed on the accepted WordPress Studio local target only:
+
+- Target: `http://localhost:8881/`
+- Docker PoC source retained as rollback; no Docker source, old project, volume, VPS, production domain, or PayPal resource was changed.
+- Formal K2 decision read from `docs/REVIEWER_DECISION_K2_WOOCOMMERCE_COMMERCE_LOOP.md` dated 2026-09-21.
+- Local-only test order reference is intentionally redacted from GitHub evidence.
+
+### Local/test-only commerce configuration
+
+- Product: existing WooCommerce product `223`, title `Mini Craft Night Kit`
+- SKU: `MCK-LOCAL-TEST-001`
+- Price: `JPY 1` local/test-only value; not a Mini Craft business-price decision
+- Inventory strategy: `manage_stock=yes`, initial stock `10`, backorders `no`, sold individually `no`
+- Result after the one successful local order: stock `9`, status `instock`
+- Existing site currency `JPY` was retained as a local baseline; no formal currency decision was made.
+- Tax calculation remained disabled: `woocommerce_calc_taxes=no`; no tax policy was invented.
+- Native WooCommerce uncovered/rest-of-world Flat Rate instance configured only for this test: title `Local test shipping — no fulfillment promise`, cost `0`, tax status `none`.
+- Local hold-stock behavior: `woocommerce_hold_stock_minutes=0`. This is test-only because Studio SQLite's WooCommerce 10 stock-reservation SQL path returned a compatibility failure; the product's normal stock quantity and availability checks remain enabled.
+- WooCommerce core COD was enabled only as `Local test only — no payment`; no money was collected and no provider was contacted.
+- No formal shipping time, shipping fee, tax, returns, fulfillment, or policy promise was added.
+
+`PRODUCT_CONFIG=PASS`
+`SKU_STOCK_STRATEGY=PASS`
+`LOCAL_SHIPPING_TEST_CONFIG=PASS`
+`PAYPAL_CONFIGURED=NO`
+
+### Commerce loop evidence
+
+| Step | Result |
+|---|---|
+| Product | HTTP 200; product title and native Add to Cart surface present |
+| Add to Cart | HTTP 200; local product added with quantity 1 |
+| Cart read | Store API returned one item, product 223, quantity 1 |
+| Cart update | Native Store API quantity update 2 → 1 returned HTTP 200 |
+| Cart remove | Native Store API removal returned HTTP 200 and zero remaining items |
+| Checkout validation | Missing Japanese prefecture returned `woocommerce_rest_invalid_address`; valid `JP13` local test address proceeded |
+| Order creation | One local order created through WooCommerce Store API using core COD; no external payment action |
+| Order baseline | Status `processing`, total `JPY 1`, one Mini Craft Night Kit line item, stock 10 → 9 |
+| Order confirmation | Redacted `/checkout/order-received/[order-key-redacted]/` endpoint returned HTTP 200 with confirmation marker |
+| Orders admin | Real Studio admin page `wp-admin/admin.php?page=wc-orders` loaded; Orders page showed one Processing local test order and two checkout-draft validation attempts |
+
+`ADD_TO_CART=PASS`
+`CART_UPDATE_REMOVE=PASS`
+`CHECKOUT_VALIDATION=PASS`
+`ORDER_CREATION=PASS`
+`ORDER_CONFIRMATION=PASS`
+`ORDERS_ADMIN=PASS`
+`ORDER_STATE_BASELINE=PASS`
+
+The two `checkout-draft` entries are local rejected/abandoned validation attempts created while testing invalid address and SQLite stock-hold behavior. No payment or fulfillment action occurred; they were not deleted because this Gate does not authorize destructive order cleanup.
+
+### Gutenberg, UI, and responsive regression
+
+- Home remains native Kadence/WooCommerce block markup.
+- `use_block_editor_for_post(939)=true`
+- `has_blocks(939)=true`
+- `parse_blocks()` / `serialize_blocks()` round trip: `true`
+- Home top-level block count remained `7`; no structure-level rebuild or WooCommerce custom commerce UI was introduced.
+- The only UI-adjacent adjustment in this Gate was restoring spaces around K1B mobile-only `<br>` markers so desktop text remains readable while mobile wrapping remains intact.
+- Fresh local screenshots at 375px and 1440px show the existing K1B UI remains bounded and readable.
+
+`GUTENBERG_REGRESSION=PASS`
+`RESPONSIVE_SMOKE=PASS`
+`K1B_UI_REGRESSION=PASS`
+`OWNER_EDITABILITY=PASS`
+
+### Backup, cleanup, and safety
+
+- Pre-K2 full Studio backup retained locally at `.artifacts/k2-commerce-loop/pre-k2-backup.zip`.
+- Backup SHA-256: `AE6AD6CC4CC0265E7E45404F8BC08861F84DCDCD01B041BD1149CB55704FFB23`
+- Temporary K2 PHP helpers, local cookies, Store API headers, checkout responses, confirmation URL, and admin HTML were removed after validation.
+- Only the local rollback backup and non-sensitive responsive QA screenshots remain in the K2 artifact directory.
+- `REAL_PAYMENT_ACTIONS=0`
+- `VPS_WRITES=ZERO`
+- `SECRET_EXPOSURE=NO`
+- `DOCKER_VOLUMES_DELETED=NO`
+- `UNRELATED_PROJECTS_TOUCHED=NO`
+- No `.env`, password, token, cookie, order key, private key, or payment credential was written to GitHub.
+
+### Reviewer checkpoint
+
+`STOP_AT_REVIEWER=YES`
+
+K2 execution is complete. Executor does not enter K3/PayPal, K4, K5, K6/VPS, K7, or production.
