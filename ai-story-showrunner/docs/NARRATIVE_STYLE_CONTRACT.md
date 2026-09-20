@@ -1,4 +1,4 @@
-# Narrative Style Contract v0.2 — OWNER ALIGNED / NOT PASS
+# Narrative Style Contract v0.3 — OWNER ALIGNED / NOT PASS
 
 ## 1. Purpose
 
@@ -519,3 +519,190 @@ The audience should not feel:
 - “这里是 turning point”;
 - “这里开始输出观点”;
 - “这里作者在做总结”.
+
+
+---
+
+## 18. Hook Strength Gate
+
+A non-intro opening can still be weak. Use one of two preferred hook types.
+
+### 18.1 Event / counter-intuitive hook — preferred
+
+Open with:
+- abnormal event;
+- surprising consequence;
+- unusual decision;
+- contradiction.
+
+Example:
+> 我本来想招个 AI 替我干活。第三天以后，我成了它的入职培训老师。
+
+### 18.2 Desire / conflict hook — acceptable
+
+A strong desire or aversion may open the episode only if conflict appears immediately.
+
+Prefer:
+> 我讨厌重复交代东西。
+
+Avoid:
+> 我一直有个特别朴素的愿望。
+
+### 18.3 Hook self-test
+
+Take the first sentence alone:
+
+1. Is there a concrete human situation?
+2. Is there tension / contradiction / curiosity?
+3. Would a viewer with zero knowledge of the technical term still want the next line?
+
+Target: at least 2 / 3 YES.
+
+Return:
+`RETURN_HOOK_TOO_PASSIVE`.
+
+---
+
+## 19. Narrative Engine Selection
+
+The system supports more than one story engine.
+
+### 19.1 Event-driven
+
+Prefer when the mechanism creates real external consequences:
+- money;
+- permission;
+- execution;
+- irreversible action;
+- social/work consequences.
+
+Pattern:
+```text
+action
+→ consequence
+→ new action
+→ changed consequence
+→ recognition
+```
+
+Agent is a validated example.
+
+### 19.2 Metaphor-driven
+
+Prefer when the core problem is a cognitive boundary:
+- context;
+- memory;
+- attention;
+- abstract model limitations.
+
+The metaphor must carry story turns.
+
+Valid:
+```text
+desk gets bigger
+→ desk fills
+→ narrator expands it
+→ new task resets working surface
+→ notebook appears
+```
+
+Invalid:
+> “AI 就像一张桌子。” followed by a normal lecture.
+
+### 19.3 Anti-template rule
+
+Portable invariant:
+```text
+character desire
+→ character action
+→ mechanism response
+→ meaningful state change
+→ next choice
+→ recognition / payoff
+```
+
+NOT portable:
+```text
+mistake
+→ disaster
+→ overcorrect
+→ compromise
+```
+
+Conflict shape, metaphor, humor and climax remain topic-dependent.
+
+---
+
+## 20. Mechanism Definition Compression
+
+The technical-definition segment is a high-risk lecturer transition.
+
+Rule:
+
+> **Two-line contrast beats three-paragraph explanation whenever accuracy permits.**
+
+Example:
+```text
+桌子，是现在干活用的。
+笔记，是以后要找回来的。
+```
+
+Then add only the minimum technical clarification required by KnowledgeCore.
+
+Definition Gate:
+- does the recurring IP still sound present?
+- can the distinction be expressed as a comparison/action?
+- did the terminology appear only after intuition?
+- can any sentence be deleted without accuracy loss?
+
+Return:
+`RETURN_MECHANISM_BECAME_LECTURE`.
+
+---
+
+## 21. Formatting as Semantic Rhythm
+
+Formatting in the spoken-script artifact may support semantic timing.
+
+Allowed selectively:
+
+### Isolated reveal
+```text
+系统显示：
+
+已退款。
+```
+
+### Repeated short stop
+```text
+规则冲突——停。
+金额异常——停。
+很难撤回——也停。
+```
+
+### Delayed landing word
+```text
+最后只把一样东西还给我——
+
+鼠标。
+```
+
+Purpose:
+- emulate screen appearance;
+- create a pause;
+- make repeated rhythm itself an action;
+- give a punchline / reversal a landing point.
+
+Do NOT use formatting as decoration.
+If every paragraph is emphasized, emphasis has no meaning.
+
+Return:
+`RETURN_FORMATTING_INFLATION`.
+
+---
+
+## 22. Consolidated Writing Principle
+
+The complete current candidate can be summarized as:
+
+> **先让人进入处境，再让角色为了自己的欲望行动；让 AI 机制作为世界规则回击这些行动；用麦基控制因果，用景岁的轻盈控制表面，用对白的行动与潜台词控制句子；抽象机制能用事件就用事件，适合时允许一个能真正运转的比喻系统；最后只解释故事还没有自己证明的那一点。**
