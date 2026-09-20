@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://entropy-student.local/ai-story-showrunner/asset-manifest.schema.json",
+  "title": "AI Story Showrunner Asset Manifest",
+  "type": "object",
+  "required": [
+    "episode_id",
+    "assets"
+  ],
+  "properties": {
+    "episode_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset_id",
+          "asset_type",
+          "scope",
+          "reference_status",
+          "description"
+        ],
+        "properties": {
+          "asset_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "asset_type": {
+            "type": "string",
+            "enum": [
+              "CHARACTER",
+              "SCENE",
+              "PROP",
+              "UI_DOCUMENT",
+              "STYLE"
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "GLOBAL",
+              "EPISODE",
+              "SEQUENCE",
+              "BEAT"
+            ]
+          },
+          "reference_status": {
+            "type": "string",
+            "enum": [
+              "AVAILABLE",
+              "MISSING_REAL_ASSET",
+              "NOT_REQUIRED",
+              "TO_GENERATE_CANONICAL"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required_views": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "canonical_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "used_by_beats": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
