@@ -2,7 +2,11 @@
 
 ## Status
 
-`G5 = IN_PROGRESS`
+`G5 = IN_PROGRESS / G5A PASS / G5B PASS / G5C IN PROGRESS`
+
+Canonical production visual baseline:
+
+`docs/PRODUCTION_VISUAL_STYLE.md`
 
 ## 1. Purpose
 
@@ -105,6 +109,9 @@ Style lock may include:
 - prohibited visual styles.
 
 ### G5C — Image Generation Compiler
+
+Current MVP status:
+`IN_PROGRESS`
 
 Compile one final image row per accepted Visual Beat.
 
