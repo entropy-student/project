@@ -643,3 +643,37 @@ G4 is READY but Owner explicitly requested no next-round execution yet.
 State:
 `G3R PASS / G4 READY_NOT_STARTED / OWNER HOLD`.
 
+## 24. G4 Started — Director Compiler Split + Agent Semantic Shot Plan — 2026-09-20
+
+Owner authorized G4.
+
+Key architecture decision:
+Do not mix visual-semantic shot decisions with fake estimated final timecodes.
+
+G4 now has two internal phases:
+
+```text
+G4A Semantic Director
+→ locks visual-state shot plan
+
+final audio / SRT lock
+
+G4B Exact Timeline Compiler
+→ produces exact shot.schema rows
+```
+
+New artifacts:
+- `docs/G4_DIRECTOR_COMPILER_CONTRACT.md`
+- `schemas/semantic_shot.schema.json`
+
+First G4A validation:
+- Agent;
+- 36 semantic shots;
+- result PASS_CANDIDATE.
+
+Important visual finding:
+The main risk is not image count. It is repeated-scene fatigue and explainer regression. More still images are acceptable; composition/action/state must change meaningfully.
+
+Current:
+`G4 IN_PROGRESS / G4A AGENT PASS_CANDIDATE / G4B BLOCKED_BY_AUDIO_MASTER / G5 BLOCKED`.
+
