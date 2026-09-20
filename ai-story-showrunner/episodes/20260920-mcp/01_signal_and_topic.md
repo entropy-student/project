@@ -30,8 +30,8 @@ audience_payoff: 理解 MCP 解决的是 AI 应用与外部能力之间的标准
 search_anchor: MCP / Model Context Protocol
 primary_content_job: DISCOVERY
 secondary_content_job: TRUST
-conversion_adjacency: HIGH
-conversion_path_hypothesis: Agent / AI workflow / tool integration / automation 类工具与教程
+conversion_adjacency: MEDIUM
+conversion_path_hypothesis: 对普通用户主要通向 AI workflow / automation 理解与教程；对 builder audience 才更直接通向 MCP / integration 工具
 visual_storyability:
   status: PASS
   reason: 可以连续表现秘书跨部门办事、反复碰壁、老板加班手把手接线、统一窗口出现、后续新部门快速接入
@@ -39,8 +39,9 @@ novelty_vs_history:
   status: NEW
   reason: 本项目首个正式 G2 验证样本
 repetition_risk:
-  level: LOW
-  repeated_elements: []
+  level: MEDIUM
+  repeated_elements:
+    - 与 Agent 验证样本都使用“老板/助理”关系；如果进入真实发布，应至少重写其中一个 surface story
 uncertainties:
   - 不把 MCP 简化成权限系统
   - 不暗示 MCP 消除了底层 API、业务逻辑或授权
