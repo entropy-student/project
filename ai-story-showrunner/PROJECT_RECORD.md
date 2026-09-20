@@ -607,3 +607,39 @@ No open editorial questions remain.
 Governance remains intentionally unchanged until explicit Owner gate decision:
 `G3R HOLD / READY FOR OWNER PASS / G4 BLOCKED`.
 
+## 23. G3R Final PASS + Consistency Closeout — 2026-09-20
+
+Owner explicitly PASSed G3R.
+
+Final Reviewer review found the narrative system itself sound, but identified stale current-state conflicts in:
+- old HOLD / NOT PASS labels;
+- old 4–6 / 3–8 duration proposal;
+- historical STORY_TUTORIAL;
+- old viewpoint phrase “观点是余味，不是承重墙”;
+- stale Reviewer Handoff current-goal sections;
+- Daily Planner proposal state.
+
+All were reconciled.
+
+Canonical state now:
+- Bilibili;
+- DAILY editorial target;
+- 3–5 min default;
+- first-person recurring IP;
+- STORY_MODEL / STORY_ACTION;
+- viewpoint can carry story meaning but must be proven through story;
+- Narrative Style Contract v0.3;
+- Writer Quality Contract v0.4;
+- Daily Topic Planner v0.2 active;
+- Season 0 approved but not started.
+
+Accepted validation:
+- Agent 91;
+- Context/Memory 92;
+- MCP 90.
+
+G4 is READY but Owner explicitly requested no next-round execution yet.
+
+State:
+`G3R PASS / G4 READY_NOT_STARTED / OWNER HOLD`.
+
