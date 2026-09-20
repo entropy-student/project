@@ -492,3 +492,37 @@ G4 = READY_NOT_STARTED
 OWNER_HOLD_BEFORE_G4 = YES
 ```
 
+---
+
+## G4 Start — Two-phase Director / Shot Compiler + Agent G4A
+
+Date: 2026-09-20
+
+Owner explicitly authorized entering the next round.
+
+New G4 contract:
+- `docs/G4_DIRECTOR_COMPILER_CONTRACT.md`
+
+New intermediate schema:
+- `schemas/semantic_shot.schema.json`
+
+Architecture correction:
+- G4A locks semantic shot decisions without final timestamps.
+- G4B compiles exact start/end/duration only after final audio/SRT is locked.
+- This prevents fake precision while preserving the existing final `shot.schema.json` contract.
+
+Agent G4A:
+- source script: `episodes/20260920-agent/G3R_narrative_test_v2.md`
+- plan: `episodes/20260920-agent/G4A_semantic_shot_plan_v1.json`
+- review: `episodes/20260920-agent/G4A_semantic_shot_review_v1.md`
+- semantic shots: 36
+- result: PASS_CANDIDATE
+
+G4 overall:
+`IN_PROGRESS`
+
+G4B:
+`BLOCKED_BY_AUDIO_MASTER / AUDIO_MODE=TBD`
+
+No G5 or Antigravity execution started.
+
