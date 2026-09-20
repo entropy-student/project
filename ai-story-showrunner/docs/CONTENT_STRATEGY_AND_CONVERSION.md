@@ -1,4 +1,4 @@
-# Content Strategy & Conversion Contract v0.1
+# Content Strategy & Conversion Contract v0.2
 
 ## 1. Purpose
 
@@ -480,3 +480,59 @@ Antigravity Execution Automation
 - 怎么构成故事；
 - 怎么形成高留存视觉状态序列；
 - 怎么从真实反馈发现需求。
+
+
+---
+
+## 16. Bilibili-first Editorial Operating Model
+
+Canonical channel strategy is defined in:
+`docs/BILIBILI_CHANNEL_STRATEGY.md`
+
+Primary platform: **Bilibili**  
+Editorial target: **daily publishing**  
+Production throughput: **UNPROVEN until G4–G7**
+
+Business jobs remain:
+`DISCOVERY / TRUST / SOLUTION`.
+
+They are now explicitly separate from editorial format:
+
+`STORY_MODEL / STORY_ACTION / STORY_TUTORIAL`.
+
+### Season 0 hypothesis
+
+First 21 published episodes are a calibration season.
+
+Initial 7-day mix:
+- 4 × STORY_MODEL
+- 2 × STORY_ACTION
+- 1 × STORY_TUTORIAL / real experiment
+
+This is a test portfolio, not a permanent quota.
+
+### Early growth priority
+
+Per Acquisition Growth Radar, the current bottleneck is expected to be:
+
+`Audience / Situation × Message / Creative Fit`
+
+not offer or conversion optimization.
+
+Therefore:
+- Discovery + Trust dominate;
+- actionable value is encouraged when natural;
+- tutorials are used to test high-intent demand;
+- early content must not be distorted around a hypothetical future product.
+
+### Bilibili evidence fields
+
+Prefer platform-native evidence:
+- average watch duration;
+- audience retention curve;
+- play-to-follow rate;
+- saves / coins / comments;
+- audience/fan interest;
+- qualified questions and repeated problem clusters.
+
+Views remain Attention evidence only.
