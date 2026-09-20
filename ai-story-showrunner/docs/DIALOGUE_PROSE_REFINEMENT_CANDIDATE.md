@@ -1,6 +1,6 @@
-# Dialogue / Prose Refinement Candidate v0.1 — NOT CANONICAL
+# Dialogue / Prose Refinement Candidate v0.1 — SUPERSEDED
 
-> Status: OWNER REVIEW / G3R HOLD
+> Status: SUPERSEDED on 2026-09-20. Stable rules promoted into `docs/NARRATIVE_STYLE_CONTRACT.md` v0.2 and `docs/WRITER_QUALITY_CONTRACT.md` v0.3. Kept only as historical review evidence.
 >
 > Purpose: consolidate the dialogue-level recommendations from the current McKee research and the attached "退款文案修改建议（麦基视角）" into one non-canonical candidate. After Owner confirms the rewritten sample, merge the accepted rules into NARRATIVE_STYLE_CONTRACT / WRITER_QUALITY_CONTRACT.
 
