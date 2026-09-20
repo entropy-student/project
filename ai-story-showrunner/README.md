@@ -13,10 +13,11 @@
 → 把机制变成故事里的世界规则
 → 结构化故事
 → 口播 / SRT
-→ Visual Beats / Shotbook
-→ 图片资产
-→ 图片序列视频
-→ 发布与反馈
+→ 逐镜头低层剪辑指令包
+→ Antigravity 批量生图
+→ Antigravity 按时间线拼接
+→ 视频初稿
+→ QA / 发布与反馈
 ```
 
 核心不是“给 AI 概念套故事”，而是：
@@ -122,6 +123,7 @@ Visual Beat / Asset / Animatic / Render
 现有 Skill 作为可替换 Worker 接入，而不是复制进本项目。当前已确认的相关能力见：
 
 - `docs/TOOL_INVENTORY.md`
+- `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
 - `docs/WORKER_CONTRACTS.md`
 
 ## Governance
@@ -156,10 +158,11 @@ G10 Reusable Showrunner Skill / Runtime         ⏳
 4. 麦基式结构属于**故事骨架阶段**，不是成稿后的润色补丁。
 5. 景岁类 Skill 属于**表达 / 叙事执行层**，不是全局大脑。
 6. Visual Beat 不是“一句一图”；画面由语义变化驱动。
-7. 生图模型是 Adapter；Nano Banana 是当前候选执行器，不进入核心架构锁定。
-8. 所有阶段必须有结构化 Handoff；禁止只靠聊天上下文传递。
-9. 自动化不得降低人工验证基线。
-10. 失败必须在最近的 Gate 被拦截，禁止垃圾输入一路传到成片。
+7. **Antigravity 冻结为当前执行 Agent**：不承担导演决策，只执行低层施工指令；Nano Banana 是当前批量生图执行路径。
+8. 默认一个小镜头一张图；动作优先拆成多张静态图，不为了省图增加复杂运动。
+9. 所有阶段必须有结构化 Handoff；禁止只靠聊天上下文传递。
+10. 自动化不得降低人工验证基线。
+11. 失败必须在最近的 Gate 被拦截，禁止垃圾输入一路传到成片。
 
 ## 阅读顺序
 
