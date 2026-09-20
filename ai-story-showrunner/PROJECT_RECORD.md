@@ -126,7 +126,7 @@ Showrunner 不重复实现 Worker 的专业能力。
 ```text
 P0  Project Boundary / Governance Reconciliation PASS
 G1  Worker Inventory + Canonical Contracts     PASS
-G2  Topic → Human Problem → Story MVP          CURRENT
+G2  Topic → Human Problem → Story MVP          PENDING / HOLD FOR OWNER REVIEW
 G3  Story → Script / SRT MVP                   PENDING
 G4  Script → Director Shotbook MVP             PENDING
 G5  Shotbook → Image Asset Package MVP         PENDING
@@ -353,7 +353,7 @@ G2–G7 首轮不做大量选题，固定使用三类难度不同的题目验证
 
 ## 13. Next Actions
 
-G1 已 PASS。当前推进 G2：
+G1 已 PASS。**按 Owner 指令暂停，G2 暂不推进。** 待 Owner 审阅整体方向后，再执行：
 
 1. 用 MCP 生成并验证 TopicOpportunity / KnowledgeCore / StoryPremise；
 2. 用 Agent / Agentic Action 复跑同一 Contract；
