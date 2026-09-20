@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Topic Registry Entry",
+  "type": "object",
+  "required": [
+    "topic_id",
+    "mechanism_family",
+    "mechanism",
+    "human_problem_family",
+    "human_problem",
+    "audience_payoff",
+    "content_job",
+    "first_seen",
+    "status"
+  ],
+  "properties": {
+    "topic_id": {
+      "type": "string"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mechanism_family": {
+      "type": "string"
+    },
+    "mechanism": {
+      "type": "string"
+    },
+    "human_problem_family": {
+      "type": "string"
+    },
+    "human_problem": {
+      "type": "string"
+    },
+    "audience_payoff": {
+      "type": "string"
+    },
+    "search_anchor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "content_job": {
+      "enum": [
+        "DISCOVERY",
+        "TRUST",
+        "SOLUTION"
+      ]
+    },
+    "story_motif": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hook_pattern": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "visual_motif": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "first_seen": {
+      "type": "string"
+    },
+    "last_considered": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "last_published": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "candidate",
+        "validation",
+        "scheduled",
+        "published",
+        "hold",
+        "rejected",
+        "revisit_allowed"
+      ]
+    },
+    "revisit_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "performance": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  }
+}
