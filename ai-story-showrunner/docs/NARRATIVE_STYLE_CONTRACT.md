@@ -1,4 +1,4 @@
-# Narrative Style Contract v0.3 — OWNER ALIGNED / NOT PASS
+# Narrative Style Contract v0.3 — G3R PASS
 
 ## 1. Purpose
 
@@ -8,7 +8,7 @@
 
 > **用景岁的轻盈口述让观众愿意听，用 McKee 的因果与意义让故事值得听完，用 KnowledgeCore 保证机制准确，用固定 IP 累积长期人格。**
 
-本文件仍属于 G3R candidate baseline。Owner 尚未最终 PASS。
+本文件为 G3R PASS 后的 canonical narrative-style baseline。后续修改必须经过新的 Reviewer/Owner 变更记录。
 
 ---
 
