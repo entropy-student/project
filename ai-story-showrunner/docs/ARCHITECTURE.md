@@ -152,17 +152,22 @@ Story Writer 不能悄悄改变 KnowledgeCore。
 - SRT；
 - claim refs。
 
-### DirectorPackage
+### DirectorPackage / Low-Level Execution Package
 
-- semantic sections；
-- Visual Beats；
-- beat timing；
-- shot intent；
-- transition intent；
-- asset requirement；
-- reuse candidate；
-- on-screen text；
-- evidence frame requirement。
+最终不是高层视觉意图，而是可直接施工的低层包：
+
+- exact shot list；
+- start / end / duration；
+- one shot ≈ one image；
+- narration / subtitle mapping；
+- character / scene IDs；
+- action / expression / composition / camera angle；
+- final image prompt；
+- reference images；
+- transition / edit instruction；
+- output spec。
+
+Canonical contract: `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`。
 
 ### AssetManifest
 
@@ -211,19 +216,22 @@ BLOCKED_BY_REAL_INPUT
 - SRT；
 - terminology reveal。
 
-### Layer C — Production Intelligence
+### Layer C — Production Compilation + Execution
 
-负责“怎么让画面把故事演出来”：
+负责把已经锁定的故事/脚本编译成**逐镜头低层施工指令**，再交给 Antigravity 执行：
 
-- director；
-- Visual Beat；
-- asset resolution；
-- image generation；
-- motion；
-- render；
+- shot decomposition；
+- exact timeline；
+- character / scene / style bible；
+- one-shot-one-image plan；
+- final image prompts + references；
+- simple edit instructions；
+- output spec；
 - QA。
 
-禁止 Production Layer 倒过来决定核心故事。
+当前默认：**一个小镜头一张图；动作拆成多张静态图。** Nano Banana 生图成本低，因此不以“少生成图片”为优化目标。
+
+Antigravity 是受限 Executor，不得倒过来决定故事、镜头、角色、Prompt、时间或剪辑风格。
 
 ## 6. The Middle-Layer Translator
 
@@ -358,14 +366,14 @@ Adapter 必须回答：
 - 可复用道具。
 
 ### Asset Registry
-- character pose；
-- expression；
-- scene；
-- prop；
-- callback frame；
-- style lock。
+- canonical character references；
+- expression / pose references；
+- canonical scene references；
+- prop references；
+- style lock；
+- continuity references。
 
-目标是让内容越做资产越多，而不是每期重新生成一切。
+目标首先是**身份与场景稳定**，不是节省生成次数。需要新状态时直接生成新图。
 
 ## 12. Automation Levels
 
