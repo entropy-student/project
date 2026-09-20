@@ -1,0 +1,933 @@
+{
+  "episode_id": "20260920-agent",
+  "source_script": "episodes/20260920-agent/G3R_narrative_test_v2.md",
+  "gate": "G4A",
+  "status": "PASS_CANDIDATE",
+  "timing_mode": "SEMANTIC_ONLY_NO_FINAL_TIMECODES",
+  "characters": [
+    "CHAR_IP_001",
+    "CHAR_AI_001"
+  ],
+  "scenes": [
+    "SCENE_SHOP_DESK_001",
+    "SCENE_REFUND_UI_001"
+  ],
+  "visual_strategy": [
+    "story action and reaction first",
+    "one small shot approximately one image",
+    "use UI inserts only when the screen state itself is the story event",
+    "avoid architecture diagrams and explanatory cards",
+    "mechanism reveal remains embodied by character action"
+  ],
+  "shots": [
+    {
+      "semantic_shot_id": "AG_S001",
+      "narration_span": "假设我今天真开了家小店，我最先想辞掉的工作，大概就是退款。",
+      "story_function": "HOOK / establish ironic desire",
+      "visual_state": "IP sits behind a small shop admin desk buried in refund notifications, staring at the screen as if this is the job he most wants to escape.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP leans toward a monitor packed with refund requests, hand hovering over mouse.",
+      "expression": "tired, mildly incredulous",
+      "composition": "medium-wide, desk and monitor both visible",
+      "camera_angle": "front 3/4",
+      "image_intent": "Immediate human situation: small-business owner overwhelmed by repetitive refund work.",
+      "continuity_role": "ESTABLISH",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no title card",
+        "no infographic",
+        "no generic AI robot"
+      ],
+      "acceptance_criteria": [
+        "refund workload is visually obvious",
+        "IP is primary subject",
+        "scene feels lived-in rather than corporate stock"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S002",
+      "narration_span": "查订单，看看过没过期限，再看东西发没发，符合条件就退，不符合就解释。",
+      "story_function": "show repetitive micro-work",
+      "visual_state": "Multiple small admin windows surround the IP while his hand repeats the same click-check-click rhythm.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP rapidly checks order status, shipping state, and refund buttons across overlapping windows.",
+      "expression": "mechanically focused",
+      "composition": "medium shot with screen layers occupying foreground edges",
+      "camera_angle": "over-shoulder 3/4",
+      "image_intent": "Make repetitive decision labor concrete without showing a text checklist.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no numbered list card",
+        "no flowchart"
+      ],
+      "acceptance_criteria": [
+        "repetition is visible",
+        "same desk continuity preserved"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S003",
+      "narration_span": "我是一个长着人脸的“确认”按钮。",
+      "story_function": "IP-specific comic metaphor",
+      "visual_state": "IP slumps behind a comically oversized physical confirmation button placed where the keyboard should be.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP presses the oversized confirm button with deadpan resignation.",
+      "expression": "deadpan",
+      "composition": "medium close-up",
+      "camera_angle": "front",
+      "image_intent": "Turn the recurring verbal joke into a visual motif.",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "subtitle_intent": "确认按钮",
+      "visual_forbidden": [
+        "no literal transformation of IP into a machine",
+        "no text-heavy meme card"
+      ],
+      "acceptance_criteria": [
+        "joke reads instantly",
+        "IP remains recognizable"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S004",
+      "narration_span": "所以我第一反应当然是：这不正适合交给 AI 吗？",
+      "story_function": "first action decision",
+      "visual_state": "IP turns from the refund screen toward the AI partner with sudden confidence.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP swivels laptop toward AI partner and gestures at the refund pile.",
+      "expression": "IP optimistic; AI attentive",
+      "composition": "two-shot, medium",
+      "camera_angle": "side 3/4",
+      "image_intent": "The story moves because the character chooses delegation.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no glowing futuristic AI hologram"
+      ],
+      "acceptance_criteria": [
+        "delegation gesture is clear",
+        "both recurring characters visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S005",
+      "narration_span": "我把订单资料和退款规则全丢给它：“今天这些退款，你帮我处理掉。”",
+      "story_function": "delegate task",
+      "visual_state": "IP physically slides a stack of order sheets and rule sheets toward AI partner.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP pushes folders across desk; AI partner receives them.",
+      "expression": "IP relieved; AI neutral/confident",
+      "composition": "desk-level medium shot",
+      "camera_angle": "lateral",
+      "image_intent": "Use physical handoff instead of abstract data transfer.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": "今天这些退款，你帮我处理掉。",
+      "visual_forbidden": [
+        "no arrows between boxes"
+      ],
+      "acceptance_criteria": [
+        "handoff is visually literal",
+        "same props can recur later"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S006",
+      "narration_span": "十秒以后，它给了我一份特别完整的《退款处理方案》。",
+      "story_function": "expectation-result gap",
+      "visual_state": "AI partner proudly hands back a neat multi-page plan instead of doing the work.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner presents a thick stapled plan to IP.",
+      "expression": "AI pleased; IP blank",
+      "composition": "medium two-shot",
+      "camera_angle": "front 3/4",
+      "image_intent": "The failure is visible as a returned document, not explained by a slide.",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "subtitle_intent": "《退款处理方案》",
+      "visual_forbidden": [
+        "no four-step presentation slide"
+      ],
+      "acceptance_criteria": [
+        "audience immediately understands AI returned advice rather than execution"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S007",
+      "narration_span": "最后还贴心地提醒我：“注意保持礼貌沟通。”",
+      "story_function": "comic escalation of useless helpfulness",
+      "visual_state": "Close insert on the last line of the plan while IP's finger stops on the polite-reminder line.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP points at the final reminder line.",
+      "expression": "not visible / implied through hand pause",
+      "composition": "insert close-up of paper and finger",
+      "camera_angle": "top-down slight angle",
+      "image_intent": "Let the document itself deliver the joke.",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "subtitle_intent": "注意保持礼貌沟通。",
+      "visual_forbidden": [
+        "no full-screen text card"
+      ],
+      "acceptance_criteria": [
+        "only the necessary phrase is readable",
+        "paper matches prior shot"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S008",
+      "narration_span": "我从头看了一遍，又看了一眼第四步。“回复客户。” 嗯。",
+      "story_function": "subtext reaction",
+      "visual_state": "IP holds the plan, eyes fixed on the fourth line, then gives a tiny deadpan look.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP lowers the paper slightly after rereading the last step.",
+      "expression": "silent disbelief",
+      "composition": "medium close-up",
+      "camera_angle": "front",
+      "image_intent": "Preserve the '嗯' as visual subtext; no explanatory caption.",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "subtitle_intent": "嗯。",
+      "visual_forbidden": [
+        "no speech bubble explaining frustration"
+      ],
+      "acceptance_criteria": [
+        "reaction is readable without exaggerated cartoon anger"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S009",
+      "narration_span": "它非常认真地把我的工作拆成四份，然后完整退货给我了。",
+      "story_function": "IP metaphor payoff",
+      "visual_state": "AI partner slides the same four-part work stack back across the desk like a returned parcel.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner pushes a parcel-like bundle labeled with the work back toward IP.",
+      "expression": "AI earnest; IP resigned",
+      "composition": "medium two-shot",
+      "camera_angle": "desk-level 3/4",
+      "image_intent": "Visualize '退货给我' as a recurring physical joke.",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no ecommerce logo parody"
+      ],
+      "acceptance_criteria": [
+        "returned-work metaphor is clear",
+        "not a literal product ad"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S010",
+      "narration_span": "“你不是都知道下一步该干什么吗？” “那订单、退款、邮箱，一起给你。”",
+      "story_function": "second action / escalation",
+      "visual_state": "IP opens access to three concrete tools in front of AI partner.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP places three clearly different tool objects/interfaces—orders, refund control, mail—within AI partner's reach.",
+      "expression": "IP determined; AI focused",
+      "composition": "medium-wide desk shot",
+      "camera_angle": "front 3/4",
+      "image_intent": "Show increased operational access as physical availability, not system architecture.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no permission matrix",
+        "no network diagram"
+      ],
+      "acceptance_criteria": [
+        "three tool domains are distinguishable",
+        "access escalation is obvious"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S011",
+      "narration_span": "第一封进来，查订单，符合规则，退了，发邮件。",
+      "story_function": "autonomy success 1",
+      "visual_state": "AI partner independently checks an order and completes a refund while IP does nothing.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner operates order screen; IP sits back.",
+      "expression": "AI focused; IP pleasantly surprised",
+      "composition": "over-shoulder two-shot",
+      "camera_angle": "rear 3/4",
+      "image_intent": "First proof that delegation now genuinely works.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no text checklist"
+      ],
+      "acceptance_criteria": [
+        "AI is visibly the actor",
+        "IP no longer clicks"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S012",
+      "narration_span": "第二封，不符合，它自己解释。第三封，又处理完了。",
+      "story_function": "autonomy success montage",
+      "visual_state": "AI partner processes a decline reply, then another completed request while IP's hands stay off the controls.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner alternates between email reply and refund completion; IP watches from side.",
+      "expression": "IP increasingly relaxed",
+      "composition": "medium montage-style state",
+      "camera_angle": "side",
+      "image_intent": "Compress repeated success into one meaningful changed state rather than separate identical shots.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no repeated identical UI screenshots"
+      ],
+      "acceptance_criteria": [
+        "progress is visible without redundant images"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S013",
+      "narration_span": "我把电脑声音开着。叮一声，少点一次鼠标。再叮一声，又少点一次。",
+      "story_function": "sensory relaxation",
+      "visual_state": "IP leans back as notification sound indicators appear while his mouse hand stays idle.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP removes hand from mouse; AI continues working in background.",
+      "expression": "subtle satisfaction",
+      "composition": "medium shot, idle mouse prominent foreground",
+      "camera_angle": "low desk angle",
+      "image_intent": "Make the sensory 'ding' and reduced clicking visual.",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "subtitle_intent": "叮。",
+      "visual_forbidden": [
+        "no musical-note decorations everywhere"
+      ],
+      "acceptance_criteria": [
+        "idle mouse symbolizes reduced labor",
+        "AI remains active in background"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S014",
+      "narration_span": "到第三声的时候，我已经开始查楼下哪家咖啡下午三点还营业。",
+      "story_function": "human payoff before reversal",
+      "visual_state": "IP casually searches for a cafe while AI works behind him.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP looks at a cafe map/list on phone, half turned away from work.",
+      "expression": "relaxed, slightly smug",
+      "composition": "medium close-up with phone foreground",
+      "camera_angle": "front 3/4",
+      "image_intent": "Concrete human detail signals relief better than an emotion label.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no generic vacation imagery"
+      ],
+      "acceptance_criteria": [
+        "cafe search is readable",
+        "work still visible in background"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S015",
+      "narration_span": "然后屏幕上跳出来一条记录。金额大得让我瞬间坐直。",
+      "story_function": "major complication enters",
+      "visual_state": "A large refund amount suddenly appears on the monitor; IP snaps upright.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_REFUND_UI_001",
+      "action": "IP straightens sharply toward screen.",
+      "expression": "alert, concerned",
+      "composition": "over-shoulder with large amount visible but no fake brand UI",
+      "camera_angle": "rear 3/4",
+      "image_intent": "The visual state changes from leisure to danger in one beat.",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no flashing red alarm graphics",
+        "no dramatic disaster effects"
+      ],
+      "acceptance_criteria": [
+        "large amount is visually obvious",
+        "reaction is grounded"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S016",
+      "narration_span": "订单备注还拉了老长一串：客户说没收到，物流显示签收，客服又写着“已补发”，下面还有两轮来回沟通。",
+      "story_function": "complexity/stakes",
+      "visual_state": "Close insert shows a tangled order record with conflicting status markers and long conversation history.",
+      "character_ids": [],
+      "scene_id": "SCENE_REFUND_UI_001",
+      "action": "Static UI insert of conflicting order facts.",
+      "expression": null,
+      "composition": "screen insert close-up",
+      "camera_angle": "straight-on",
+      "image_intent": "Show why this case is genuinely ambiguous without a narrator diagram.",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no real company logos",
+        "no huge paragraphs of readable text"
+      ],
+      "acceptance_criteria": [
+        "conflict is visually legible through a few concise status elements"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S017",
+      "narration_span": "系统显示：已退款。",
+      "story_function": "irreversible consequence",
+      "visual_state": "Minimal screen state: completed refund status occupies the focal area.",
+      "character_ids": [],
+      "scene_id": "SCENE_REFUND_UI_001",
+      "action": "System state is already final.",
+      "expression": null,
+      "composition": "tight UI insert",
+      "camera_angle": "straight-on",
+      "image_intent": "Let the system state itself be the punch.",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "HOLD",
+      "subtitle_intent": "已退款。",
+      "visual_forbidden": [
+        "no decorative captions",
+        "no additional explanation"
+      ],
+      "acceptance_criteria": [
+        "'已退款' is the dominant readable state"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S018",
+      "narration_span": "我盯着那三个字。“……谁让你点确认了？”",
+      "story_function": "verbal action / reclaim control",
+      "visual_state": "IP stares frozen at screen, then turns toward AI partner.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP slowly turns from screen to AI partner.",
+      "expression": "contained alarm, not exaggerated anger",
+      "composition": "medium close-up with AI partner edge-of-frame",
+      "camera_angle": "front 3/4",
+      "image_intent": "The line performs control reclamation; visual holds the subtext.",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "subtitle_intent": "……谁让你点确认了？",
+      "visual_forbidden": [
+        "no cartoon rage symbols"
+      ],
+      "acceptance_criteria": [
+        "tension is readable through gaze and turn"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S019",
+      "narration_span": "刚才还觉得它会自己决定特别省事，现在我只想把它的手从鼠标上拿开。",
+      "story_function": "strategy reversal",
+      "visual_state": "IP physically pulls the mouse/control back toward himself from AI partner.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP slides mouse/control device away from AI partner.",
+      "expression": "protective, corrective",
+      "composition": "hands and faces in medium shot",
+      "camera_angle": "desk-level",
+      "image_intent": "Turn abstract permission rollback into a concrete action.",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no permissions-settings slide"
+      ],
+      "acceptance_criteria": [
+        "control reversal is physically obvious"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S020",
+      "narration_span": "于是我当场改规则：以后所有退款，都先问我。听起来非常安全。",
+      "story_function": "false solution",
+      "visual_state": "IP confidently places a visible 'ask me first' checkpoint between AI partner and refund button.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP inserts a physical approval stamp/card in front of the refund control.",
+      "expression": "IP satisfied",
+      "composition": "medium two-shot",
+      "camera_angle": "front 3/4",
+      "image_intent": "Represent universal approval as a tangible bottleneck object.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": "所有退款，先问我。",
+      "visual_forbidden": [
+        "no decision tree"
+      ],
+      "acceptance_criteria": [
+        "approval checkpoint is visually clear"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S021",
+      "narration_span": "第二天早上，我打开电脑，二十多个确认窗口整整齐齐排在那里。",
+      "story_function": "false solution fails",
+      "visual_state": "Morning desk; monitor flooded with many approval popups.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP opens laptop and freezes at the wall of approval prompts.",
+      "expression": "deflated disbelief",
+      "composition": "wide enough to show screen flood and body reaction",
+      "camera_angle": "rear 3/4",
+      "image_intent": "The bottleneck consequence becomes visible instantly.",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no unreadably dense real UI"
+      ],
+      "acceptance_criteria": [
+        "many confirmations are obvious without textual overload"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S022",
+      "narration_span": "一个个像上课举手。“这笔能退吗？”“这笔呢？”“这个呢？”“这个可以吗？”",
+      "story_function": "comic personification of bottleneck",
+      "visual_state": "Confirmation windows are staged like small raised hands while IP faces them like an exhausted teacher.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP sits before a row of popup 'hands'.",
+      "expression": "exhausted",
+      "composition": "medium-wide frontal",
+      "camera_angle": "front",
+      "image_intent": "Continue the IP's everyday metaphor without switching to infographic mode.",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no literal classroom scene replacing the shop entirely"
+      ],
+      "acceptance_criteria": [
+        "metaphor reads while shop context stays visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S023",
+      "narration_span": "昨天订单是我自己查。今天它什么都查完了。最后只把一样东西还给我——鼠标。",
+      "story_function": "line-design payoff",
+      "visual_state": "AI partner has neatly completed all research; at the edge of frame a single mouse is pushed back to IP.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner slides only the mouse toward IP.",
+      "expression": "AI neutral; IP deadpan",
+      "composition": "low desk close-up emphasizing mouse with both characters blurred/secondary",
+      "camera_angle": "desk-level",
+      "image_intent": "Land the word '鼠标' as a visual object, not a caption.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "subtitle_intent": "鼠标。",
+      "visual_forbidden": [
+        "no giant word MOUSE on screen"
+      ],
+      "acceptance_criteria": [
+        "mouse is unmistakably the final returned item"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S024",
+      "narration_span": "很好。我成功从客服升级成了 AI 的审批插件。",
+      "story_function": "IP-specific comic diagnosis",
+      "visual_state": "IP sits plugged metaphorically between AI partner and refund control like a human approval dongle.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP reluctantly stamps/approves while AI queues cases.",
+      "expression": "deadpan",
+      "composition": "medium",
+      "camera_angle": "front",
+      "image_intent": "Visualize '审批插件' without turning the character into a literal machine.",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "subtitle_intent": "AI 的审批插件",
+      "visual_forbidden": [
+        "no body horror",
+        "no literal USB inserted into body"
+      ],
+      "acceptance_criteria": [
+        "joke remains human and readable"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S025",
+      "narration_span": "我把那二十多个窗口关掉，又重新打开退款规则。",
+      "story_function": "new strategy begins",
+      "visual_state": "IP closes the flood of popups and places a blank rule sheet beside the controls.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP sweeps popups away and starts rewriting rules.",
+      "expression": "focused",
+      "composition": "medium over-shoulder",
+      "camera_angle": "rear 3/4",
+      "image_intent": "Show active correction rather than narrator summary.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no abstract policy document slide"
+      ],
+      "acceptance_criteria": [
+        "new strategy action is explicit"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S026",
+      "narration_span": "59 块，昨天下单，还没发货——它自己退。",
+      "story_function": "concrete method case / low risk",
+      "visual_state": "Simple low-value order with clear unshipped status passes automatically through AI partner.",
+      "character_ids": [
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_REFUND_UI_001",
+      "action": "AI partner approves a clearly simple refund without stopping.",
+      "expression": "calm",
+      "composition": "medium with concise order card",
+      "camera_angle": "front 3/4",
+      "image_intent": "Concrete example first; no abstract rule labels.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": "59 块——它自己退。",
+      "visual_forbidden": [
+        "no three-axis risk chart"
+      ],
+      "acceptance_criteria": [
+        "low-value/clear/easy case reads instantly"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S027",
+      "narration_span": "2999 块，备注扯了三页，钱出去还不好追回——停。",
+      "story_function": "concrete method case / high risk",
+      "visual_state": "Large ambiguous refund reaches a physical stop marker before execution.",
+      "character_ids": [
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_REFUND_UI_001",
+      "action": "AI partner's hand/control pauses before refund while a stop state appears.",
+      "expression": "attentive",
+      "composition": "close medium",
+      "camera_angle": "side 3/4",
+      "image_intent": "Show the boundary as an action stop, not a framework slide.",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "subtitle_intent": "停。",
+      "visual_forbidden": [
+        "no traffic-light infographic"
+      ],
+      "acceptance_criteria": [
+        "stop occurs before irreversible action"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S028",
+      "narration_span": "规则互相打架——停。做完很难撤回来——也停。",
+      "story_function": "boundary generalization through repeated action",
+      "visual_state": "Two different difficult cases queue and both halt before the final control.",
+      "character_ids": [
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner pauses at the same handoff point for two visibly different cases.",
+      "expression": "neutral/focused",
+      "composition": "medium shot with two case cards/props",
+      "camera_angle": "front 3/4",
+      "image_intent": "Use repetition as semantic rhythm while keeping a character actor on screen.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": "停。也停。",
+      "visual_forbidden": [
+        "no numbered method list"
+      ],
+      "acceptance_criteria": [
+        "two different reasons for stopping are visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S029",
+      "narration_span": "几天后，又来了一笔麻烦退款。这次它没碰钱。",
+      "story_function": "climax setup / test new rule",
+      "visual_state": "A new complex refund appears; AI partner deliberately keeps hands away from the refund control.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner reviews the case but stops before the money action.",
+      "expression": "AI focused; IP watching",
+      "composition": "medium two-shot",
+      "camera_angle": "side 3/4",
+      "image_intent": "Show restraint as an active choice.",
+      "continuity_role": "ESTABLISH",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no warning triangle as the main subject"
+      ],
+      "acceptance_criteria": [
+        "audience sees that execution has intentionally paused"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S030",
+      "narration_span": "它把订单、规则和之前的沟通记录全整理好，只弹出来一句：“这笔超出自动处理范围，需要你确认。”",
+      "story_function": "successful human handoff",
+      "visual_state": "AI partner lays out a concise evidence bundle and a single confirmation request to IP.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner presents organized case materials without clicking refund.",
+      "expression": "AI composed; IP attentive",
+      "composition": "medium desk two-shot",
+      "camera_angle": "front 3/4",
+      "image_intent": "The new operating rule is proven by behavior.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "subtitle_intent": "这笔超出自动处理范围，需要你确认。",
+      "visual_forbidden": [
+        "no full architecture diagram"
+      ],
+      "acceptance_criteria": [
+        "evidence bundle and handoff are both visible",
+        "refund control remains untouched"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S031",
+      "narration_span": "我盯着那个窗口看了两秒。第一次觉得 AI 来烦我，也不是什么坏事。",
+      "story_function": "emotional payoff",
+      "visual_state": "IP looks at the single confirmation window, shoulders relaxed rather than annoyed.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP pauses, then gives a small accepting nod.",
+      "expression": "relieved, quietly approving",
+      "composition": "medium close-up",
+      "camera_angle": "front",
+      "image_intent": "Contrast with the earlier wall of approval windows.",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no smiley icons",
+        "no explanatory caption"
+      ],
+      "acceptance_criteria": [
+        "relief is readable but understated"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S032",
+      "narration_span": "后来我才知道，所谓 Agent，关键也不只是会不会聊天、会不会接几个工具。",
+      "story_function": "term reveal",
+      "visual_state": "Same shop scene; AI partner stands at the working desk with the real tools already used throughout the story.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP looks across the actual workflow tools already present; no new diagram appears.",
+      "expression": "reflective",
+      "composition": "medium-wide two-shot",
+      "camera_angle": "front 3/4",
+      "image_intent": "Reveal the term only after the audience has seen the behavior; reuse story objects.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": "Agent",
+      "visual_forbidden": [
+        "no Agent definition card",
+        "no LLM-tool-workflow arrows"
+      ],
+      "acceptance_criteria": [
+        "term reveal stays grounded in existing story environment"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S033",
+      "narration_span": "真正变化的是，我开始把“下一步做什么”这件事交给它。它可以自己往前走。",
+      "story_function": "mechanism compression",
+      "visual_state": "AI partner independently moves a case through several real desk stations while IP remains seated back.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner moves from order check to reply to refund decision point without prompting.",
+      "expression": "AI focused; IP observant",
+      "composition": "wide lateral shot showing a short physical workflow path",
+      "camera_angle": "side",
+      "image_intent": "Embodied workflow control instead of boxes/arrows.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": "下一步做什么",
+      "visual_forbidden": [
+        "no static flowchart"
+      ],
+      "acceptance_criteria": [
+        "autonomous next-step choice is shown through movement/action"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S034",
+      "narration_span": "但到了某些地方，它得知道停。",
+      "story_function": "mechanism boundary",
+      "visual_state": "AI partner stops at the same approval boundary before a high-stakes control and looks to IP.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner physically stops and turns toward IP before final action.",
+      "expression": "AI neutral/attentive; IP ready to decide",
+      "composition": "medium two-shot",
+      "camera_angle": "side 3/4",
+      "image_intent": "One action expresses the core viewpoint.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "subtitle_intent": "它得知道停。",
+      "visual_forbidden": [
+        "no red stop-sign graphic as substitute for character action"
+      ],
+      "acceptance_criteria": [
+        "handoff is the central visible event"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S035",
+      "narration_span": "所以现在我看一个 Agent，第一眼已经不是它接了多少工具。",
+      "story_function": "viewpoint setup",
+      "visual_state": "A pile of extra tool icons/interfaces sits ignored at the edge while IP watches the handoff behavior instead.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "IP turns attention away from extra tool cards toward AI partner's stop-and-ask behavior.",
+      "expression": "measured",
+      "composition": "medium with tools secondary foreground",
+      "camera_angle": "front 3/4",
+      "image_intent": "Visually deprioritize tool count without creating a comparison slide.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no split-screen 'more tools vs less tools' infographic"
+      ],
+      "acceptance_criteria": [
+        "tool quantity is clearly secondary"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG_S036",
+      "narration_span": "我只看一件事——它知不知道，什么时候该自己往前走。以及什么时候，该回来敲门。",
+      "story_function": "final viewpoint / close",
+      "visual_state": "AI partner stands at a half-open doorway between the work area and IP, one hand ready to continue, the other lightly knocking before crossing the boundary.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_SHOP_DESK_001",
+      "action": "AI partner pauses and knocks; IP looks up to receive the decision.",
+      "expression": "calm mutual recognition",
+      "composition": "medium-wide, doorway/threshold framed naturally within shop world",
+      "camera_angle": "front 3/4",
+      "image_intent": "Pay off the '回来敲门' metaphor as a real boundary action, not a slogan card.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "subtitle_intent": "什么时候，该回来敲门。",
+      "visual_forbidden": [
+        "no giant final quote card",
+        "no inspirational glow",
+        "no black-screen thesis text"
+      ],
+      "acceptance_criteria": [
+        "door/threshold metaphor feels native to story",
+        "final image remains character-led"
+      ]
+    }
+  ]
+}
