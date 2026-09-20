@@ -1,7 +1,7 @@
 # G3R Context / Memory Narrative Smoke Test v2 — Patch Integrated
 
 ## Status
-G3R_MEMORY_NARRATIVE_TEST_V2 = PASS_CANDIDATE / OWNER REVIEW
+G3R_MEMORY_NARRATIVE_TEST_V2 = ACCEPTED_VALIDATION / G3R_PASS
 
 ## Title
 **我给AI换了张越来越大的桌子，它怎么还是会忘？**
