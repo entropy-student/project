@@ -1,20 +1,20 @@
 {
   "episode_id": "20260920-mcp",
-  "status": "HOLD",
+  "status": "G2",
   "primary_content_job": "DISCOVERY",
   "topic": {
     "artifact_ref": "01_signal_and_topic.md",
-    "gate_status": "HOLD"
+    "gate_status": "PASS"
   },
   "knowledge": {
     "artifact_ref": "02_knowledge_core.md",
-    "gate_status": "HOLD",
-    "locked": false
+    "gate_status": "PASS",
+    "locked": true
   },
   "story": {
     "artifact_ref": "03_story_premise.md",
-    "gate_status": "HOLD",
-    "locked": false
+    "gate_status": "PASS",
+    "locked": true
   },
   "script": {
     "script_ref": "04_script.md",
@@ -66,6 +66,13 @@
       "worker_version_or_ref": "2026-09-20",
       "artifact_ref": "episode.json",
       "gate_result": "HOLD_BEFORE_G2"
+    },
+    {
+      "stage": "G2-resume",
+      "worker_id": "reviewer-showrunner",
+      "worker_version_or_ref": "2026-09-20 official MCP 2026-07-28 verification",
+      "artifact_ref": "03_story_premise.md",
+      "gate_result": "PASS_MCP_SAMPLE"
     }
   ]
 }
