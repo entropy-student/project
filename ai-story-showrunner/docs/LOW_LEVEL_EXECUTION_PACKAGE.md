@@ -1,4 +1,4 @@
-# Low-Level Execution Package v0.1
+# Low-Level Execution Package v0.2
 
 ## 1. Purpose
 
@@ -24,6 +24,21 @@ Voice / Audio Master + Shot Timeline + One Shot ≈ One Image → Batch Image Ge
 不把“镜头运动”默认交给视频模型。需要动作感时，优先用多张静态图表达状态 A → B → C。
 
 Nano Banana 生图成本低，因此默认策略是：**优先增加图片数量降低执行复杂度，而不是为了节省图片强行复用一张图做复杂运动。**
+
+## 2A. Upstream Source of Truth
+
+This package consumes accepted outputs from:
+
+- G4 Director / Shot Compiler;
+- G5 Image Asset Package Compiler.
+
+G4 decides what each Visual Beat means and when it appears.
+G5 provides the exact image-generation row and reference package.
+
+Antigravity must not reinterpret either layer.
+
+Canonical visual baseline:
+`docs/PRODUCTION_VISUAL_STYLE.md`
 
 ## 3. Package Structure
 
@@ -118,9 +133,12 @@ Antigravity 不自行改 start/end。若最终音频改变导致时间轴不匹�
 | negative_constraints | 禁止项 |
 | character_refs | 人物参考图 |
 | scene_refs | 场景参考图 |
+| prop_ui_refs | 道具/UI/文档参考 |
+| style_refs | 风格参考 |
 | continuity_ref | 上一镜参考 |
 | aspect_ratio | 比例 |
 | resolution | 分辨率 |
+| text_render_mode | NONE / IMAGE_NATIVE / POST_OVERLAY |
 | output_name | 文件名 |
 | acceptance | 验收条件 |
 
