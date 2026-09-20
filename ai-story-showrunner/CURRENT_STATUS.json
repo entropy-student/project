@@ -65,7 +65,7 @@
     "content jobs are DISCOVERY, TRUST, or SOLUTION with one primary job per episode",
     "metrics are separated into traffic, trust, and conversion",
     "McKee-style causal structure is currently an internal Story Engine gate",
-    "Jingsui is a candidate writer style engine behind a restrictive project adapter"
+    "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
   "project_state": "G3R_PASS_OWNER_HOLD_BEFORE_G4",
   "g2_validation": {
@@ -85,7 +85,7 @@
     "evergreen_bank": "topic-ledger/EVERGREEN_BANK.md",
     "status": "PASS",
     "automation_enabled": true,
-    "automation_contract": "docs/DAILY_TOPIC_AUTOMATION.md",
+    "automation_contract": "docs/DAILY_TOPIC_AUTOMATION_V2.md",
     "rolling_horizon_days": 7,
     "calendar_owner_view": "topic-ledger/calendar/YYYY-MM.md"
   },
@@ -98,19 +98,17 @@
       "20260920-context-memory"
     ],
     "result": "PASS",
-    "planning_duration_seconds": "70-85",
     "planning_speaking_rate_cps": 5,
-    "writer_adapter_status": "QUALITY_VALIDATED_MANUAL_ORCHESTRATION",
-    "editorial_baseline_status": "REOPENED_DUE_TO_PLATFORM_STRATEGY_DRIFT",
-    "short_form_samples_status": "VALIDATION_REFERENCE_ONLY"
+    "writer_adapter_status": "CANONICAL_STYLE_SOURCE_QUALITY_VALIDATED_MANUAL_ORCHESTRATION",
+    "editorial_baseline_status": "SUPERSEDED_BY_G3R_PASS",
+    "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
+    "historical_short_form_planning_duration_seconds": "70-85"
   },
   "owner_review_scope": "Owner has paused before G4. Do not start G4 until explicit Owner instruction.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
     "review": "docs/G3R_EDITORIAL_REVIEW.md",
-    "proposed_writer_contract": "docs/WRITER_QUALITY_CONTRACT.md",
-    "proposed_daily_planner": "docs/DAILY_TOPIC_AUTOMATION_V2_PROPOSAL.md",
     "primary_platform": "Bilibili",
     "editorial_cadence_target": "DAILY",
     "production_throughput": "UNPROVEN",
@@ -179,6 +177,9 @@
     "owner_pass_received": true,
     "daily_planner": "docs/DAILY_TOPIC_AUTOMATION_V2.md",
     "review_artifact": "docs/G3R_EDITORIAL_REVIEW.md",
-    "g4_release": "READY_BUT_OWNER_HOLD"
+    "g4_release": "READY_BUT_OWNER_HOLD",
+    "writer_contract": "docs/WRITER_QUALITY_CONTRACT.md",
+    "jingsui_style_source_status": "CANONICAL",
+    "writer_runtime_status": "MANUAL_ORCHESTRATION"
   }
 }
