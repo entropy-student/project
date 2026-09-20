@@ -215,6 +215,7 @@ Internal phases:
 ```text
 G5A Asset Requirement Extraction
 → G5B Canonical Reference Lock
+→ G5B.5 Visual Acquisition Review
 → G5C Image Generation Compiler
 ```
 
@@ -236,6 +237,18 @@ Lock:
 
 Current production style:
 `SIMPLIFIED_FLAT_NARRATIVE_COMIC`
+
+### G5B.5
+Review the proposed visual style through:
+- acquisition-growth Evidence → Bottleneck → Lever → Experiment → Decision;
+- external platform/research evidence;
+- Control vs Challenger hypothesis.
+
+Canonical:
+`docs/VISUAL_ACQUISITION_REVIEW_GATE.md`
+
+Current decision:
+`KEEP + ITERATE` — simplified flat narrative comic remains Control; lower-complexity line-cartoon remains Challenger.
 
 ### G5C
 Compile exactly one deterministic image-generation row per accepted Visual Beat unless explicitly documented otherwise.
