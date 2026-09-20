@@ -1,318 +1,213 @@
-# G4 Director / Shot Compiler Contract v0.1
+# G4 Director / Shot Compiler Contract v0.3
 
 ## Status
 
-G4 = IN_PROGRESS
+`G4 = PASS / OWNER APPROVED`
 
-Purpose:
-Convert a locked long-form Script into a visually coherent, execution-ready shot design without inventing fake precision before audio timing exists.
+Canonical Director rules:
+`docs/G4_DIRECTOR_LANGUAGE_RULES.md`
 
-G4 uses three internal layers: G4A1 Semantic Director → G4A2 Visual Beat Compiler → G4B Exact Timeline Compiler.
+Validation:
+`experiments/g4r-v03/VALIDATION_SUMMARY.md`
 
----
+## 1. Purpose
 
-## 1. Why Two Phases
+Convert locked Script + KnowledgeCore into a complete, human-reviewable Shotbook where every image-level beat has a dramatic reason, visual strategy, framing logic, and reference timing.
 
-The final execution contract requires exact:
-- start;
-- end;
-- duration;
-- subtitle timing.
+G4 ends at **what each image must communicate**.
 
-But the current G3R long-form validation scripts do not yet have final voice audio.
+It does NOT lock:
+- final image-generation prompt;
+- canonical character reference paths;
+- canonical scene reference paths;
+- style reference package;
+- final generation output filenames.
 
-Therefore G4 must not pretend estimated timing is final timing.
+Those belong to G5.
 
-> **Semantic shot decisions may be locked before audio; exact timestamps may not.**
+## 2. Canonical Six-Layer Pipeline
 
----
+```text
+Locked Script + KnowledgeCore
+→ 1. Dramatic Hierarchy Map
+→ 2. Episode / Sequence Visual Strategy
+→ 3. Visual Intention Map
+→ 4. Semantic Shot Design
+→ 5. Visual Beat Compilation
+→ 6. Timing & Edit Calibration
+→ Director Shotboard / Shotbook
+```
 
-## 2. G4A1 — Semantic Director
+Cross-cutting QA:
+- Knowledge integrity;
+- Murch priority;
+- eye-trace / spatial continuity where applicable;
+- montage / contrast / metaphor relation;
+- anti-PPT;
+- still-image executability;
+- 100% locked-script coverage.
 
-### Input
+## 3. Dramatic Hierarchy
 
-Required:
-- locked Script;
-- locked KnowledgeCore;
-- locked Story / narrative intent;
-- channel IP / character context;
-- known visual style constraints.
+Use McKee-derived:
+`Sequence → Scene → Beat`.
 
-Optional:
-- planning SRT;
-- rough duration target.
-
-### Output
-
-`SemanticShotPlan`
-
-Each shot locks:
-- semantic_shot_id;
-- narration_span / script_span;
-- story_function;
-- visual_state;
-- character_ids;
-- scene_id;
-- action;
-- expression;
-- composition;
-- camera_angle;
-- image_intent;
-- continuity_role;
-- transition_intent;
-- subtitle_intent;
-- visual_forbidden;
-- acceptance_criteria.
-
-It explicitly does **not** lock:
-- final start;
-- final end;
-- final duration.
-
-### Shot boundary rule
-
-Create a new shot when the **visual state meaningfully changes**:
-- action state;
-- reaction;
-- subject;
-- location;
-- information state;
-- visual metaphor state;
-- story consequence;
-- payoff/reversal.
-
-Do NOT cut mechanically on:
-- punctuation;
-- every subtitle cue;
-- every sentence.
-
-### Visual progression rule
-
-Prefer:
-`state A → state B → state C`
-
-over:
-`one static diagram explaining A/B/C`.
-
-### Anti-PPT rule
-
-Return when:
-- narration is mostly represented by text cards;
-- abstract concepts become boxes/arrows without story need;
-- same composition is reused with only labels changed;
-- character disappears during mechanism explanation when a character action can carry it.
+Beat = action/reaction/tactic change.
+Scene = perceptible story/value/state turn.
+Sequence = larger cumulative dramatic movement.
 
 Failure:
-`RETURN_DIRECTOR_BECAME_EXPLAINER`
+- `RETURN_DRAMATIC_HIERARCHY_FLAT`
+- `RETURN_BEAT_OVERSEGMENTED`
 
----
+## 4. Episode / Sequence Visual Strategy
 
-## 3. G4A2 — Visual Beat Compiler
+Before individual shot design, lock:
+- primary visual engine;
+- optional secondary engine;
+- world / scene system;
+- 0–2 meaningful motifs;
+- 1–3 dominant visual components;
+- visual-intensity arc;
+- image-relation grammar by sequence.
 
-### Purpose
+Allowed relation grammars include:
+`CONTINUITY / PARALLEL / MONTAGE / CONTRAST / METAPHOR / INSERT_LED / CLARIFY`.
 
-Compile each accepted SemanticShot into 1..N low-level visual beats using the calibrated Jingsui pacing profile:
+Failure:
+- `RETURN_NO_EPISODE_VISUAL_STRATEGY`
+- `RETURN_VISUAL_ENGINE_MISMATCH`
 
-`docs/G4_JINGSUI_TIMING_PROFILE.md`
+## 5. Visual Intention
 
-Relationship:
+Each dramatic unit or cluster must define what the viewer primarily needs to:
+`NOTICE / UNDERSTAND / FEEL`.
 
-`SemanticShot → 1..N VisualBeats`
+Camera choices come after intention.
 
-A VisualBeat is the closest planning unit to the final one-image shot.
+Failure:
+`RETURN_CAMERA_CHOICE_UNMOTIVATED`
 
-### Timing mode
+## 6. Semantic Shot
 
-Before final audio:
+A Semantic Shot is one coherent Director-level visual strategy.
 
-`TIMING_MODE = JINGSUI_CALIBRATED_PROVISIONAL`
-
-Use:
-- speech planning rate ≈ 5.9 Chinese chars/s;
-- ordinary visual beat ≈ 1.3–4.5s;
-- median target ≈ 2.7s;
-- fast reaction / punchline ≈ 0.8–1.8s;
-- explanation / landing may hold 4–8s.
-
-Provisional times are valid for pacing and image-count planning only.
-
-### Split rule
-
-Split a SemanticShot when one of these changes materially:
-- action state;
-- reaction/expression;
-- focal object/UI state;
-- joke setup → landing;
-- camera/composition needed to preserve rhythm;
-- metaphor progression;
-- information state.
-
-Do not split solely because a sentence is long.
-
-### Output
-
-Each VisualBeat locks:
-- visual_beat_id;
-- semantic_shot_id;
-- provisional_start/end/duration;
-- narration fragment;
+It locks:
+- dramatic refs;
+- primary visual intention;
+- shot function;
+- subject priority;
+- staging / blocking;
+- framing strategy / shot-size progression plan;
+- POV strategy;
+- composition strategy;
+- eye-trace;
+- screen-direction rule where continuity applies;
+- visual intensity;
+- image-relation grammar;
 - visual state;
-- image intent;
-- composition/camera;
-- continuity relation;
-- transition intent;
 - acceptance criteria.
 
-### Density Gate
+It does NOT lock one exact image size/POV for every child beat.
 
-Return when:
-- average visual hold is too slow for the intended Jingsui-like surface rhythm without a deliberate reason;
-- repeated 4–8s holds dominate;
-- multiple distinct actions/reactions are forced into one image;
-- dense text cards are used to avoid proper visual decomposition.
+## 7. Visual Beat
+
+Relationship:
+`Semantic Shot → 1..N Visual Beats`.
+
+Visual Beat is the closest planning unit to one final generated still.
+
+Each Visual Beat locks:
+- narration fragment;
+- local visual intention;
+- actual shot size;
+- actual POV / angle;
+- image-level state;
+- image relation;
+- visual intensity;
+- reference timing.
+
+Split only when image-level meaning changes.
+
+A spoken list does not automatically become montage.
+
+Setup and reveal may be separate beats when withholding information creates the payoff.
+
+Failures:
+- `RETURN_VISUAL_BEAT_REDUNDANT`
+- `RETURN_MONTAGE_INFLATION`
+- `RETURN_REACTION_REDUNDANT`
+- `RETURN_INSERT_NOT_CAUSAL`
+
+## 8. Script Coverage Gate
+
+Semantic Shot spans and Visual Beat narration bindings must cover 100% of the locked spoken script, in order.
+
+A difficult-to-visualize line may share an existing visual state; it may not silently disappear.
 
 Failure:
-`RETURN_VISUAL_BEAT_DENSITY_MISMATCH`
+`RETURN_SCRIPT_COVERAGE_GAP`
 
----
+## 9. Timing & Edit Calibration
 
-## 4. G4B — Exact Timeline Compiler
+Meaning decides the unit; rhythm decides the duration.
 
-### Timing sources
+Current Jingsui-calibrated priors:
+- speech planning prior ≈ 5.9 Chinese chars/s;
+- historical visual-beat median ≈ 2.7s;
+- fast reaction/punchline ≈ 0.8–1.8s;
+- ordinary observed range ≈ 1.3–4.5s;
+- longer explanation/landing may reach 4–8s.
 
-G4B accepts one of two timing sources:
+These are priors, not quotas.
 
-1. `AUDIO_LOCKED`
-   - final upstream/executor audio exists;
-   - strongest execution timing source.
+Accepted timing source:
+- `JINGSUI_CALIBRATED_REFERENCE`; or
+- `AUDIO_LOCKED` when real final audio exists.
 
-2. `JINGSUI_CALIBRATED_REFERENCE`
-   - explicitly approved by Owner for current planning/production baseline;
-   - derived from calibrated ~5.9 Chinese chars/s plus Jingsui-like pause/visual-beat profile;
-   - may be used to lock the current Shotbook timeline and SRT before final voice generation.
-
-If later generated audio differs materially from the reference timing, recompile timing only.
-Do not redo Director semantics unless the script/visual meaning changed.
-
-### Input
-
-- accepted SemanticShotPlan;
-- accepted timing source (`AUDIO_LOCKED` or `JINGSUI_CALIBRATED_REFERENCE`);
-- SRT derived from the locked script;
-- Character / Scene / Style locks.
-
-### Output
-
-Final rows conforming to:
-- `schemas/shot.schema.json`;
-- `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`.
-
-This phase locks:
-- exact start;
-- exact end;
-- exact duration;
-- final subtitle;
-- image_id;
-- final transition;
-- prompt-ready visual state.
-
-### Timeline rule
-
-Time follows the selected timing source.
-
-Current approved source:
-`JINGSUI_CALIBRATED_REFERENCE`.
-
-If later audio changes the timeline beyond tolerance:
+If later audio materially differs:
 `RETURN_TIMELINE_MISMATCH`
-and recompile G4B only.
+and recompile timing only unless visual meaning changed.
 
-Do NOT redo G4A unless story/visual semantics also changed.
+## 10. Human Review Output
 
----
+Every episode should expose a human-readable:
 
-## 5. G4 Gate Acceptance
+`DIRECTOR_SHOTBOARD.md` or `DIRECTOR_SHOTBOARD.csv`
 
-G4 PASS requires:
+Minimum columns:
+- Beat ID;
+- time;
+- narration;
+- final image state;
+- shot size;
+- POV;
+- visual intention;
+- relation / transition notes.
 
-### G4A1 + G4A2
-- script meaning preserved;
-- no KnowledgeCore drift;
-- shot boundaries follow visual-state changes;
-- each shot has a clear visual reason;
-- no PPT/explainer regression;
-- continuity requirements are explicit;
-- Antigravity has no creative decisions left at shot level.
+The machine-readable Shotbook remains JSON.
 
-### G4B
-- timeline is derived from an accepted timing source and locked-script SRT;
-- every final shot validates against `shot.schema`;
-- no timeline overlap/gap error except intentional silence;
-- final shot count matches semantic plan unless a documented timing-only split/merge is approved;
-- image and transition intent are executable.
+## 11. Gate Evidence
 
-Current gate cannot PASS until both phases have evidence.
+Known cases:
+- Agent — ACTION_REACTION;
+- Context / Memory — EVOLVING_METAPHOR;
+- MCP — REPEATED_FRICTION.
 
----
+Blind case:
+- Search Answer — INVESTIGATION_DISCOVERY.
 
-## 6. Recommended Validation Sequence
-
-1. Agent — event-driven / action-reaction heavy.
-2. Context & Memory — metaphor-driven / continuity heavy.
-3. MCP — interoperability / repeated friction / concept reveal.
-
-Reason:
-Agent is the easiest place to prove whether the Director can preserve story energy without turning dialogue into static explanatory cards.
-
----
-
-## 7. Current Production Principles
-
-- one small shot ≈ one image;
-- more images are acceptable when they reduce execution complexity;
-- no automatic camera motion;
-- no unexplained transitions;
-- no visual effect unless specified;
-- missing decision = RETURN, not executor improvisation;
-- upstream thinking rich, downstream execution dumb.
-
----
-
-## 8. Current Audio Dependency
-
-Current planning timing source:
-`JINGSUI_CALIBRATED_REFERENCE` — OWNER APPROVED.
-
-Audio mode remains TBD for later voice production.
+The blind case required only episode configuration; no seventh layer or material architecture rewrite.
 
 Therefore:
-- G4A1/G4A2/G4B may PASS using the calibrated reference timing;
-- current Shotbook timing is canonical for planning and first execution packaging;
-- later real audio may trigger timing-only recompilation;
-- audio-mode selection no longer blocks G4.
+`G4 = PASS`.
 
----
+## 12. G4 → G5 Boundary
 
-## 9. G4 Output Boundary
+G4 answers:
+> What must this image communicate, and why does this image exist?
 
-G4 canonical output is the **Shotbook / VisualBeat plan**, validated against:
+G5 answers:
+> Which locked character/scene/style/prop assets does it use, and what exact prompt/reference package will generate it reproducibly?
 
-- `schemas/semantic_shot.schema.json`
-- `schemas/visual_beat.schema.json`
-
-G4 does NOT require final image-generation Prompt or canonical reference asset paths.
-
-Those belong downstream after Character / Scene / Style locking.
-
-The existing `schemas/shot.schema.json` is a later low-level execution row and may require:
-- final prompt;
-- negative constraints;
-- reference assets;
-- continuity reference;
-- exact execution metadata.
-
-Rule:
-
-> **Director decides what the image must communicate; downstream asset compiler decides the final generation prompt after identity/scene/style locks exist.**
-
-Do not fabricate downstream fields merely to satisfy a later schema.
+Do not fabricate G5 fields inside G4.
