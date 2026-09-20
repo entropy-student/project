@@ -1,6 +1,6 @@
 # AI Story Showrunner — PROJECT RECORD
 
-> 本文件是项目长期单一真相。重新接手本项目时，先读本文件，再读 `docs/`。
+> 本文件保存项目的长期目标、决策、里程碑与历史记录。**当前 Gate 的唯一 Reviewer 真相以 `REVIEWER_HANDOFF.md` 为准。** 重新接手时按 README 指定顺序恢复上下文。
 
 ## 1. Final Goal
 
@@ -124,7 +124,7 @@ Showrunner 不重复实现 Worker 的专业能力。
 ## 6. Current Authoritative Status
 
 ```text
-P0  Project Boundary / Architecture            PASS
+P0  Project Boundary / Governance Reconciliation PASS
 G1  Worker Inventory + Canonical Contracts     CURRENT
 G2  Topic → Human Problem → Story MVP          PENDING
 G3  Story → Script / SRT MVP                   PENDING
@@ -139,6 +139,9 @@ G10 Reusable Showrunner Skill / Runtime         PENDING
 
 ## 7. P0 Completed
 
+- 对齐 canonical `vps-project-governance` v0.1.6 + active addenda；
+- 建立唯一 `REVIEWER_HANDOFF.md`、`EXECUTION_EVIDENCE.md`、`CURRENT_STATUS.json` 与 `docs/GOVERNANCE_ADAPTATION.md`；
+- 对早期先建文档、后补 Handoff 的 bootstrap 历史做 fresh GitHub read-back，对账后重新确认 P0；
 - 深度检查 `entropy-student/project` 的项目库规范；
 - 对比 `visual-narrative-animation-lab`，确认新项目必须独立立项；
 - 遍历 `entropy-student/spike.skill` 当前相关能力；
@@ -317,11 +320,14 @@ G2–G7 首轮不做大量选题，固定使用三类难度不同的题目验证
 
 ```text
 README.md
+→ REVIEWER_HANDOFF.md
+→ CURRENT_STATUS.json
 → PROJECT_RECORD.md
 → docs/ARCHITECTURE.md
 → docs/PIPELINE_AND_GATES.md
 → docs/WORKER_CONTRACTS.md
 → docs/TOOL_INVENTORY.md
+→ EXECUTION_EVIDENCE.md（需要审计时）
 → 当前 Gate
 ```
 
