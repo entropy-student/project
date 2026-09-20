@@ -307,3 +307,28 @@ PASS_G3_STORY_TO_SCRIPT_SRT_MVP
 NEXT_GATE: G4
 ```
 
+---
+
+## G3R — Bilibili Editorial / Narrative Rebaseline
+
+- Date: 2026-09-20
+- Status: PASS_CANDIDATE / OWNER REVIEW
+- G4: BLOCKED
+
+### Evidence reviewed
+- accepted project contracts and G1–G3 artifacts;
+- Acquisition Growth Radar v0.2;
+- Jingsui v3.4;
+- Bilibili official creator Data Center documentation;
+- Bilibili official 2025 investor materials on mid/long-form, AI category growth and creator monetization.
+
+### Candidate artifacts
+- `docs/BILIBILI_CHANNEL_STRATEGY.md`
+- `docs/G3R_EDITORIAL_REVIEW.md`
+- `docs/DAILY_TOPIC_AUTOMATION_V2_PROPOSAL.md`
+- proposed v0.2 additions to Writer / Content Strategy contracts.
+
+### Governance note
+No G4 production work was started.
+The live scheduled Daily Topic Radar was not changed to the proposed v0.2 planner before Owner approval.
+
