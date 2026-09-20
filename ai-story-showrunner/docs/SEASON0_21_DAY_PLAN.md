@@ -1,6 +1,6 @@
-# Season 0 — 21-day Calibration Plan (PROPOSED)
+# Season 0 — 21-day Calibration Plan (APPROVED / NOT STARTED)
 
-> Status: OWNER ALIGNED / NOT ACTIVE. Requires explicit G3R PASS.
+> Status: **APPROVED by G3R PASS / NOT STARTED.** Season 0 begins only when the Owner starts the publishing/calibration phase; approval does not start G4 or publication automatically.
 
 ## Goal
 
