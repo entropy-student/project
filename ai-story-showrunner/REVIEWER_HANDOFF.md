@@ -46,7 +46,7 @@
 P0  Project Boundary / Governance Reconciliation     ✅ PASS
 G1  Worker Inventory + Canonical Contracts           ✅ PASS
 G2  Topic → Human Problem → Story MVP                ✅ PASS
-G2.5 Topic Supply / Ledger / Dedup                   ◐ PASS_CANDIDATE / OWNER REVIEW
+G2.5 Topic Supply / Ledger / Dedup                   ✅ PASS
 G3  Story → Script / SRT MVP                         ⏸ PENDING
 G4  Script → Director Shotbook MVP                   ⏳
 G5  Shotbook → Image Asset Package MVP               ⏳
@@ -219,7 +219,7 @@ G2 只回到 Topic / Knowledge / Story，不触碰 Production 层。
 
 ## 6.5 Current Gate — G2.5 Topic Supply / Ledger / Dedup
 
-Reviewer status: **PASS_CANDIDATE / OWNER REVIEW**
+Reviewer status: **PASS**
 
 Purpose:
 - 冻结 HOT + EVERGREEN 双轨选题供应；
@@ -228,7 +228,7 @@ Purpose:
 - 建立 Daily Radar snapshot contract；
 - 建立 Evergreen Bank；
 - 冻结“合格热点抢占，否则走常规池”的排期逻辑；
-- 评估每日自动任务，但本 Gate 不自动开启定时执行。
+- 每日自动任务已批准启用：只做 Radar + rolling schedule，不自动发布。
 
 Artifacts:
 - `docs/TOPIC_OPERATING_SYSTEM.md`
@@ -247,21 +247,24 @@ External evidence used:
 - Berger & Milkman virality research；
 - AI-TREND-RADAR / TrendRadar public projects。
 
-Open decision:
-- 是否接受当前 Topic Operating System；
-- 接受后再决定每日自动任务的具体运行时间与输出渠道。
+Accepted:
+- Topic Operating System accepted；
+- Daily Topic Radar enabled；
+- GitHub calendar is Owner-facing schedule；
+- rolling horizon = 7 days；
+- only `planned` slots may be hot-overridden.
 
 ## 12. Next Step
 
-- Reviewer next action: **暂停 G3。先完成 G2.5 Owner Review。** 接受 Topic Operating System 后，再进入 Jingsui Writer Adapter 验证。
+- Reviewer next action: G2.5 已 PASS；可进入 G3，验证 Jingsui Writer Adapter。
 - Executor next action: G2 暂无 Antigravity 执行；只在 Production PoC 时触发。
-- Owner intervention required: **YES — review Topic Operating System; no technical action required**
+- Owner intervention required: **NO**
 
 ## 13. Status Summary
 
 - 整体进展：P0、G1、G2 已 PASS；上游内容模型已通过三类题型首轮验证。
 - 最终目标：AI Story Showrunner 成为唯一总控层，候选 Skill 经 Adapter 接入，Antigravity 负责低层施工。
-- 当前状态：G2 PASS / G2.5 PASS_CANDIDATE / HOLD BEFORE G3。
+- 当前状态：G2.5 PASS / READY FOR G3。
 - 本轮完成：流量/信任/转化 Contract、Topic schema、Episode schema、Shot schema、Worker Adapter 规则、字段映射、Antigravity PoC 定义。
-- 下一步：Owner 审阅 HOT+EVERGREEN、Topic Registry、去重规则和 Daily Radar；通过后才进入 G3。
+- 下一步：进入 G3；Daily Topic Radar 独立持续维护 GitHub rolling schedule。
 - 注意事项：当前绝不能把“文档架构已完成”误称为“流水线已经自动跑通”。
