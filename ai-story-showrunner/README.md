@@ -146,7 +146,7 @@ G1  Worker Inventory + Canonical Contracts     ✅ PASS
 G2  Topic → Human Problem → Story MVP          ✅ PASS
 G2.5 Topic Supply / Ledger / Dedup             ✅ PASS
 G3  Story → Script / SRT MVP                   ✅ PASS
-G3R Bilibili Editorial / Narrative Rebaseline ◐ OWNER REVIEW
+G3R Bilibili Editorial / Narrative Rebaseline ◐ HOLD — 2 OPEN QUESTIONS
 G4  Script/SRT → Director / Shot Compiler MVP  ⛔ BLOCKED
 G5  Shotbook → Image Asset Package MVP         ⏳
 G6  Image Assets → Video MVP                   ⏳
@@ -211,13 +211,13 @@ Writer quality 采用 McKee 因果骨架 + narrative transportation + short-form
 
 ## Current editorial review hold
 
-The project is currently held at **G3R** for Owner review.
+The project is currently held at **G3R**. Owner accepts the overall direction for consolidation but explicitly has **not** issued PASS; two editorial questions remain unresolved.
 
 Proposed Bilibili-first baseline:
 - daily editorial publishing target;
 - recurring first-person channel IP;
-- 3–8 minute routed duration, standard 4–6 minutes;
-- STORY_MODEL / STORY_ACTION / STORY_TUTORIAL editorial modes;
+- 3–5 minute primary duration target, with justified exceptions;
+- STORY_MODEL / STORY_ACTION editorial modes only;
 - first 21 published episodes as Season 0 calibration.
 
 See:
