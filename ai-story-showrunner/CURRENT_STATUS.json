@@ -8,9 +8,9 @@
     "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
   },
   "current_gate": {
-    "id": "G3R",
-    "name": "Bilibili Editorial / Narrative Rebaseline",
-    "status": "PASS"
+    "id": "G4",
+    "name": "Script / SRT → Director / Shot Compiler MVP",
+    "status": "IN_PROGRESS"
   },
   "accepted_gates": [
     {
@@ -45,11 +45,11 @@
     }
   ],
   "next_gate": {
-    "id": "G4",
-    "name": "Script / SRT → Director / Shot Compiler MVP",
-    "status": "READY_NOT_STARTED"
+    "id": "G5",
+    "name": "Shotbook → Image Asset Package MVP",
+    "status": "BLOCKED"
   },
-  "owner_intervention_required": true,
+  "owner_intervention_required": false,
   "unknowns": [
     "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR",
     "audio mode final choice: upstream TTS vs Antigravity TTS",
@@ -67,7 +67,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G3R_PASS_OWNER_HOLD_BEFORE_G4",
+  "project_state": "G4_IN_PROGRESS_G4A_AGENT_PASS_CANDIDATE_G4B_AUDIO_BLOCKED",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -104,7 +104,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "Owner has paused before G4. Do not start G4 until explicit Owner instruction.",
+  "owner_review_scope": "No Owner action required yet. Continue G4A semantic Director validation; do not enter G5.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -181,5 +181,35 @@
     "writer_contract": "docs/WRITER_QUALITY_CONTRACT.md",
     "jingsui_style_source_status": "CANONICAL",
     "writer_runtime_status": "MANUAL_ORCHESTRATION"
+  },
+  "g4": {
+    "status": "IN_PROGRESS",
+    "contract": "docs/G4_DIRECTOR_COMPILER_CONTRACT.md",
+    "semantic_shot_schema": "schemas/semantic_shot.schema.json",
+    "phase_a": {
+      "name": "Semantic Director",
+      "status": "PASS_CANDIDATE_ON_AGENT",
+      "final_timecodes_required": false,
+      "validation_sequence": [
+        "20260920-agent",
+        "20260920-context-memory",
+        "20260920-mcp"
+      ],
+      "agent": {
+        "plan": "episodes/20260920-agent/G4A_semantic_shot_plan_v1.json",
+        "review": "episodes/20260920-agent/G4A_semantic_shot_review_v1.md",
+        "semantic_shot_count": 36,
+        "status": "PASS_CANDIDATE"
+      }
+    },
+    "phase_b": {
+      "name": "Exact Timeline Compiler",
+      "status": "BLOCKED_BY_AUDIO_MASTER",
+      "requires_final_audio": true,
+      "audio_mode": "TBD"
+    },
+    "key_decision": "Do not create fake exact timestamps before final audio. Lock semantic shots first, then compile exact timing from locked audio/SRT.",
+    "next_validation": "Context / Memory G4A semantic shot plan",
+    "overall_pass_allowed": false
   }
 }
