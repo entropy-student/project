@@ -145,8 +145,8 @@ P0  Project Boundary / Governance Reconciliation ✅ PASS
 G1  Worker Inventory + Canonical Contracts     ✅ PASS
 G2  Topic → Human Problem → Story MVP          ✅ PASS
 G2.5 Topic Supply / Ledger / Dedup             ✅ PASS
-G3  Story → Script / SRT MVP                   ⏸ PENDING
-G4  Script → Director Shotbook MVP             ⏳
+G3  Story → Script / SRT MVP                   ✅ PASS
+G4  Script/SRT → Director / Shot Compiler MVP  ⏸ PENDING
 G5  Shotbook → Image Asset Package MVP         ⏳
 G6  Image Assets → Video MVP                   ⏳
 G7  Three-topic End-to-End Validation          ⏳
@@ -201,3 +201,8 @@ EXECUTION_EVIDENCE.md（需要审计执行事实时）
 Owner 日常查看：`topic-ledger/calendar/YYYY-MM.md`。
 
 Daily Topic Radar 每日维护未来 7 天滚动排期；合格热点只可抢占 `planned` 槽位，`locked` / `published` 不得自动改写。执行合同见 `docs/DAILY_TOPIC_AUTOMATION.md`。
+
+
+## G3 Writer baseline
+
+Writer quality 采用 McKee 因果骨架 + narrative transportation + short-form retention + Jingsui voice 四层模型。首轮 3 个 validation episode 已通过 Script/SRT QA；详见 `docs/WRITER_QUALITY_CONTRACT.md` 与 `docs/G3_VALIDATION_REVIEW.md`。
