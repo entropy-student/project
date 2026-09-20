@@ -45,7 +45,7 @@
 ```text
 P0  Project Boundary / Governance Reconciliation     ✅ PASS
 G1  Worker Inventory + Canonical Contracts           ✅ PASS
-G2  Topic → Human Problem → Story MVP                ← CURRENT
+G2  Topic → Human Problem → Story MVP                ⏸ PENDING / HOLD
 G3  Story → Script / SRT MVP                         ⏳
 G4  Script → Director Shotbook MVP                   ⏳
 G5  Shotbook → Image Asset Package MVP               ⏳
@@ -104,7 +104,7 @@ G1 contracts:
 - `schemas/episode.schema.json`
 - `schemas/shot.schema.json`
 
-## 6. Current Gate — G2
+## 6. Next Gate — G2 (HOLD FOR OWNER REVIEW)
 
 ### Goal
 
@@ -214,15 +214,15 @@ G2 只回到 Topic / Knowledge / Story，不触碰 Production 层。
 
 ## 12. Next Step
 
-- Reviewer next action: 执行 G2，先用 MCP 跑 TopicOpportunity → KnowledgeCore → StoryPremise，并按同一 Contract 验证 Agent / Memory。
+- Reviewer next action: **暂停。等待 Owner 审阅 G1 的整体方向；未收到继续指令前不进入 G2。**
 - Executor next action: G2 暂无 Antigravity 执行；只在 Production PoC 时触发。
-- Owner intervention required: **NO**
+- Owner intervention required: **YES — direction review only; no technical action required**
 
 ## 13. Status Summary
 
-- 整体进展：P0、G1 已 PASS，正式进入内容核心验证 G2。
+- 整体进展：P0、G1 已 PASS；按 Owner 指令停在 G1 完成点，G2 未正式开始。
 - 最终目标：AI Story Showrunner 成为唯一总控层，候选 Skill 经 Adapter 接入，Antigravity 负责低层施工。
-- 当前 Gate：G2 Topic → Human Problem → Story MVP。
+- 当前状态：G1 PASS / HOLD BEFORE G2。
 - 本轮完成：流量/信任/转化 Contract、Topic schema、Episode schema、Shot schema、Worker Adapter 规则、字段映射、Antigravity PoC 定义。
-- 下一步：用 MCP / Agent / Memory 三个题验证 Topic 与 Story Engine。
+- 下一步：等待 Owner 审阅；确认方向后再用 MCP / Agent / Memory 验证 Topic 与 Story Engine。
 - 注意事项：当前绝不能把“文档架构已完成”误称为“流水线已经自动跑通”。
