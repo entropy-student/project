@@ -82,7 +82,7 @@ short-form storyized AI explainer
 
 TO:
 daily Bilibili story-driven AI knowledge channel
-with recurring IP and optional action/tutorial payoff
+with recurring IP and optional actionable payoff
 ```
 
 ## Proposed canonical decisions
@@ -92,11 +92,26 @@ with recurring IP and optional action/tutorial payoff
 3. Default POV = first-person channel IP.
 4. Default duration = 4–6 min, with 3–8 min routed bands.
 5. Business job remains DISCOVERY / TRUST / SOLUTION.
-6. Add editorial mode STORY_MODEL / STORY_ACTION / STORY_TUTORIAL.
+6. Editorial modes = STORY_MODEL / STORY_ACTION only.
 7. Season 0 = first 21 published episodes.
-8. Initial weekly portfolio hypothesis = 4 model / 2 action / 1 tutorial.
+8. Initial weekly portfolio hypothesis = 5 model / 2 action.
 9. Daily Radar remains active; calendar remains daily.
 10. G4 remains blocked until Owner approves this rebaseline.
 
 Status:
 `G3R PASS_CANDIDATE / OWNER REVIEW`
+
+
+## Owner refinement — tutorial mode removed
+
+Owner explicitly removed tutorial as a channel module.
+
+Updated candidate:
+- STORY_MODEL
+- STORY_ACTION
+
+Initial weekly hypothesis:
+- 5 STORY_MODEL
+- 2 STORY_ACTION
+
+Opinion is not a third mode. It is optional and must pass the bounded Viewpoint Gate.
