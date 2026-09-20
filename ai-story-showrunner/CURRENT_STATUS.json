@@ -10,7 +10,7 @@
   "current_gate": {
     "id": "G3R",
     "name": "Bilibili Editorial / Narrative Rebaseline",
-    "status": "PASS_CANDIDATE"
+    "status": "HOLD"
   },
   "accepted_gates": [
     {
@@ -62,7 +62,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is a candidate writer style engine behind a restrictive project adapter"
   ],
-  "project_state": "HOLD_FOR_OWNER_REVIEW_G3R",
+  "project_state": "HOLD_G3R_OWNER_ALIGNED_PENDING_2_QUESTIONS",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -99,9 +99,9 @@
     "editorial_baseline_status": "REOPENED_DUE_TO_PLATFORM_STRATEGY_DRIFT",
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY"
   },
-  "owner_review_scope": "Approve or return Bilibili-first daily channel strategy before G4",
+  "owner_review_scope": "Discuss and resolve 2 remaining editorial questions; then Owner may PASS or RETURN G3R",
   "g3_rebaseline": {
-    "status": "PASS_CANDIDATE",
+    "status": "OWNER_ALIGNED_NOT_PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
     "review": "docs/G3R_EDITORIAL_REVIEW.md",
     "proposed_writer_contract": "docs/WRITER_QUALITY_CONTRACT.md",
@@ -125,9 +125,11 @@
       "STORY_MODEL": 5,
       "STORY_ACTION": 2
     },
-    "live_daily_automation": "UNCHANGED_UNTIL_OWNER_PASS",
+    "live_daily_automation": "UNCHANGED_V0_1_UNTIL_EXPLICIT_OWNER_PASS",
     "season0_plan": "docs/SEASON0_21_DAY_PLAN.md",
     "tutorial_mode": "REMOVED_BY_OWNER",
-    "opinion_policy": "OPTIONAL_BOUNDED_NOT_REQUIRED"
+    "opinion_policy": "OPTIONAL_BOUNDED_NOT_REQUIRED",
+    "open_questions_count": 2,
+    "open_questions": "DETAILS_PENDING_OWNER_DISCUSSION"
   }
 }
