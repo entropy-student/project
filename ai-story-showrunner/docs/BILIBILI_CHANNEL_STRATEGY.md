@@ -1,9 +1,10 @@
-# Bilibili Channel Editorial Strategy v0.1 — OWNER REVIEW
+# Bilibili Channel Editorial Strategy v0.2 — OWNER ALIGNED / NOT PASS
 
 ## 1. Channel Positioning
 
 Primary platform: **Bilibili**  
 Editorial cadence: **DAILY target**  
+Decision status: **OWNER ALIGNED / NOT PASS**  
 Primary objective: **Audience growth → repeated viewing → trust → future monetization**
 
 Canonical positioning:
@@ -101,8 +102,8 @@ Do not use 70–85 seconds as the Bilibili canonical duration.
 Initial duration bands:
 
 - HOT / timely story: **3–5 min**
-- standard story episode: **4–6 min**
-- exceptional deep story: may exceed 8 min if retention evidence later supports it
+- standard story episode: **3–5 min**
+- exceptional story: may exceed 5 min when the narrative genuinely requires it
 
 Duration is a result of narrative requirements, not a quota.
 
@@ -174,7 +175,7 @@ Not:
 
 Longer duration does not mean “add more explanation.”
 
-A 4–6 minute story needs:
+A 3–5 minute standard story needs:
 - at least one clear desire;
 - at least one meaningful first action;
 - multiple *escalating* complications;
@@ -295,9 +296,8 @@ Weekly Review:
 - best traffic pattern;
 - best trust pattern;
 - which editorial mode performs best;
-- whether tutorial episodes attract the intended audience;
 - whether first-person IP improves follow behavior;
-- whether 4–6min is too long/short for actual audience.
+- whether 3–5min is too long/short for the actual audience.
 
 ## 15. Current Editorial Thesis
 
@@ -392,3 +392,20 @@ If yes, the beat is probably removable.
 Canonical definition:
 
 > **好故事不是“发生很多事”，而是每件事都导致下一件事，而且人物经过它以后已经和进去之前不一样。**
+
+
+## 18. Decision Status
+
+Owner has accepted the overall direction for continued document consolidation, but has **not** issued final PASS.
+
+Current meaning:
+
+```text
+DIRECTION = OWNER_ALIGNED
+G3R = HOLD
+FINAL_PASS = NO
+G4 = BLOCKED
+OPEN_QUESTIONS = 2 (pending discussion)
+```
+
+No downstream production gate may treat this document as fully accepted until those two open questions are resolved and Owner explicitly PASSes G3R.
