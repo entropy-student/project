@@ -19,14 +19,20 @@
 
 ## Stage 1 — Topic Opportunity
 
-不是输出“今天讲 MCP”，而是五元组：
+不是输出“今天讲 MCP”，而是结构化 TopicOpportunity：
 
 ```text
 Why Now
-× Human Problem
+× Human Problem / Stakes
 × AI Mechanism
+× Curiosity Gap
 × Story Seed
 × Audience Payoff
+× Search Anchor
+× Primary Content Job
+× Conversion Adjacency
+× Visual Storyability
+× Novelty / Repetition Risk
 ```
 
 ### Required Tests
@@ -45,6 +51,18 @@ Why Now
 
 #### Mechanism Test
 背后有一个值得理解、且能准确解释的 AI 机制。
+
+#### One-Mechanism Test
+默认一条视频只承担一个核心机制；如果必须同时塞多个机制才能成立，`RETURN_TOPIC_TOO_DENSE`。
+
+#### Storyability Test
+必须能形成欲望、阻碍、后果、Gap/转折和可视化动作。
+
+#### Commercial Adjacency Test
+记录未来是否自然靠近真实需求，但该字段**不得作为硬广授权**。
+
+### Content Job
+每期先声明一个 primary role：`DISCOVERY` / `TRUST` / `SOLUTION`。允许 secondary role，但不得多主任务。
 
 ### Fail
 `RETURN_TO_TOPIC_TRANSLATION`
@@ -275,6 +293,10 @@ AI 机制是否准确，热点事实是否仍然新鲜。
 ### Visual QA
 画面是否参与叙事，是否仍像 PPT / 图集。
 
+额外执行 **Visual Repetition Gate**：与近期内容相比，是否重复开场构图、人物站位、视觉隐喻、反应镜头、背景和节奏模板。角色一致性允许稳定，事件状态与画面表达不能模板化。
+
+失败：`RETURN_VISUAL_REPETITION`。
+
 ### Production QA
 音画、字幕、尺寸、文件、时长是否正确。
 
@@ -286,15 +308,15 @@ AI 机制是否准确，热点事实是否仍然新鲜。
 
 发布后数据不直接“证明内容原则”。
 
-按证据分层：
+按业务任务分三层：
 
 ```text
-Attention
-→ Interest
-→ Completion / Retention
-→ Qualified Comments / Saves / Follows
-→ downstream acquisition behavior
+Traffic
+→ Trust
+→ Conversion
 ```
+
+并且先读取本期 `primary_content_job`，禁止所有视频都用播放量判断。
 
 使用 `acquisition-growth-radar` 的 Evidence / Bottleneck 思路：
 
@@ -303,16 +325,31 @@ Attention
 3. 一次只改一个核心变量；
 4. 不因为单条表现差就推翻全部故事方法。
 
-### Feedback fields
-
+### Traffic fields
+- exposure / play start；
 - hook retention；
 - mid-video drop；
 - completion；
+- new audience share（能获取时）。
+
+### Trust fields
 - saves；
-- comments by type；
-- follow conversion；
-- recurring confusion；
-- story / concept recall（能获取时）。
+- follows；
+- qualified comments；
+- meaningful questions；
+- story / concept recall（能观察时）；
+- repeat viewers（能获取时）。
+
+### Conversion fields
+- profile visits；
+- resource / link click；
+- DM / inquiry；
+- signup / tool usage；
+- purchase / qualified lead（如适用）。
+
+重复出现的问题另写入 demand cluster，用于后续产品机会判断。
+
+完整策略见 `docs/CONTENT_STRATEGY_AND_CONVERSION.md`。
 
 结果写回 Content Ledger。
 
