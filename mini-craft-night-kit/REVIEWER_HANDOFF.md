@@ -188,3 +188,10 @@ Formal decision: `docs/REVIEWER_DECISION_K1B_PASS.md`.
 Current Gate: `K2_WOOCOMMERCE_COMMERCE_LOOP`.
 
 K2 should verify the local Product → Add to Cart → Cart → Checkout → Order → Confirmation loop. Do not enter PayPal, production payment, VPS, or production deployment.
+
+
+## K2 Authorization
+
+Formal decision: `docs/REVIEWER_DECISION_K2_WOOCOMMERCE_COMMERCE_LOOP.md`.
+
+Executor should verify the local WooCommerce commerce loop and stop at Reviewer. Do not enter PayPal, real payment, VPS, or production deployment.
