@@ -1,5 +1,7 @@
 # Content Strategy & Conversion Contract v0.2
 
+> **G3R STATUS: PROPOSED / OWNER REVIEW.** The Bilibili-first additions in this revision do not become accepted canonical policy until Owner PASS.
+
 ## 1. Purpose
 
 本文件定义 AI Story Showrunner 的内容业务目标：
