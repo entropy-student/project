@@ -1,0 +1,1128 @@
+{
+  "experiment": "G4R_V03_AGENT",
+  "status": "EXPERIMENTAL_NOT_CANONICAL",
+  "source_script": "episodes/20260920-agent/G3R_narrative_test_v2.md",
+  "source_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE_V03.md",
+  "semantic_shot_count": 36,
+  "shots": [
+    {
+      "semantic_shot_id": "AG3_S001",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "narration_span": "假设我今天真开了家小店，我最先想辞掉的工作，大概就是退款。",
+      "dramatic_refs": [
+        "SC1.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "ORIENT",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "ESTABLISH",
+      "subject_priority": "IP + refund workload",
+      "staging_blocking": "IP sits in ZONE_A boxed in by refund requests; AI not yet active.",
+      "shot_size": "WIDE_MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "IP left-center, refund queue occupying foreground/right; room geography shows ZONE_A/B/C.",
+      "eye_trace_in": "refund queue",
+      "eye_trace_out": "IP",
+      "screen_direction": "stable left-to-right shop axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Owner is visually trapped by repetitive refund work.",
+      "acceptance_criteria": [
+        "viewer instantly reads human problem",
+        "shop geography established",
+        "no title-card look"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S002",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "narration_span": "不是因为退款有多难，恰恰是因为它太简单了。查订单，看看过没过期限，再看东西发没发，符合条件就退，不符合就解释。",
+      "dramatic_refs": [
+        "SC1.1_B2"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "FOLLOW_ACTION"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "IP hands + mouse + simple refund states",
+      "staging_blocking": "Repeated micro-actions: check order → check deadline → check shipping → click/answer.",
+      "shot_size": "MEDIUM_INSERT_MIX",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Montage relation inside same shop; each state keeps mouse/control as anchor.",
+      "eye_trace_in": "IP hand",
+      "eye_trace_out": "mouse/control",
+      "screen_direction": "same task direction",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Simple tasks accumulate through repeated identical control actions.",
+      "acceptance_criteria": [
+        "no checklist card",
+        "repetition feels mechanical",
+        "mouse motif introduced"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S003",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "narration_span": "每一单都不难，但一早上来三十多封以后，我感觉自己已经不是老板了。我是一个长着人脸的“确认”按钮。",
+      "dramatic_refs": [
+        "SC1.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "IP + oversized confirmation-control relationship",
+      "staging_blocking": "IP slumps at desk with one hand mechanically above the same confirmation control.",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "IP face and hand share frame; confirm control prominent foreground.",
+      "eye_trace_in": "mouse/control",
+      "eye_trace_out": "IP face",
+      "screen_direction": "same axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "METAPHOR",
+      "visual_state": "The joke lands through body state, not literal transformation.",
+      "acceptance_criteria": [
+        "IP remains human",
+        "confirm-button joke readable",
+        "no meme text card"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S004",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "narration_span": "所以我第一反应当然是：这不正适合交给 AI 吗？",
+      "dramatic_refs": [
+        "SC1.1_B4"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP → AI",
+      "staging_blocking": "IP turns from ZONE_A toward AI in ZONE_B and gestures to the refund pile.",
+      "shot_size": "MEDIUM_TWO_SHOT",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Diagonal line from IP to AI; shared decision station visible in background.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "AI",
+      "screen_direction": "left-to-right transfer",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Delegation begins as a spatial transfer of responsibility.",
+      "acceptance_criteria": [
+        "desire/action clear",
+        "AI integrated into same world",
+        "no futuristic hologram"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S005",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.2",
+      "narration_span": "我把订单资料和退款规则全丢给它：“今天这些退款，你帮我处理掉。”",
+      "dramatic_refs": [
+        "SC1.2_B1"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "documents/rules crossing from IP to AI",
+      "staging_blocking": "IP physically pushes folders and queue across from ZONE_A into ZONE_B.",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Desk-level transfer composition, both hands visible.",
+      "eye_trace_in": "folders",
+      "eye_trace_out": "AI hands",
+      "screen_direction": "left-to-right transfer",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Work crosses the boundary toward AI.",
+      "acceptance_criteria": [
+        "handoff visible",
+        "same props can recur",
+        "no abstract data arrows"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S006",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.2",
+      "narration_span": "十秒以后，它给了我一份特别完整的《退款处理方案》。",
+      "dramatic_refs": [
+        "SC1.2_B2"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "REVERSAL",
+      "subject_priority": "AI returns a thick plan instead of execution",
+      "staging_blocking": "AI slides a polished plan back from ZONE_B to IP.",
+      "shot_size": "MEDIUM_TWO_SHOT",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Reverse transfer mirrors S005; plan becomes focal object.",
+      "eye_trace_in": "AI hands",
+      "eye_trace_out": "plan",
+      "screen_direction": "right-to-left return",
+      "visual_intensity": "MEDIUM_LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "The same work comes back as advice.",
+      "acceptance_criteria": [
+        "mirrors previous handoff",
+        "reversal clear without narration",
+        "plan not a slide deck"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S007",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "narration_span": "第一步，查订单。第二步，核对规则。第三步，判断能不能退。第四步，回复客户。",
+      "dramatic_refs": [
+        "SC2.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "NOTICE_OBJECT",
+        "secondary": "BUILD_PATTERN"
+      },
+      "shot_function_primary": "INSERT_OBJECT",
+      "subject_priority": "plan's fourth line",
+      "staging_blocking": "IP scans the plan; visual emphasis travels down to '回复客户'.",
+      "shot_size": "INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Only a few concise lines visible; fourth step positioned near eye-trace landing.",
+      "eye_trace_in": "top of plan",
+      "eye_trace_out": "fourth line",
+      "screen_direction": "N/A",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_state": "The plan itself proves the work still returns to IP.",
+      "acceptance_criteria": [
+        "text minimal",
+        "fourth line dominant",
+        "no full-screen explainer"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S008",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "narration_span": "最后还贴心地提醒我：“注意保持礼貌沟通。”我从头看了一遍，又看了一眼第四步。“回复客户。”嗯。",
+      "dramatic_refs": [
+        "SC2.1_B2",
+        "SC2.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP face + plan edge",
+      "staging_blocking": "IP lowers the paper slightly; eyes stay on the fourth line, then deadpan '嗯'.",
+      "shot_size": "CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Face dominates; plan edge remains as cause in foreground.",
+      "eye_trace_in": "fourth line",
+      "eye_trace_out": "IP eyes",
+      "screen_direction": "same axis",
+      "visual_intensity": "MEDIUM_LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Subtext reaction replaces explanation.",
+      "acceptance_criteria": [
+        "reaction understated",
+        "cause remains visible",
+        "no emotion caption"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S009",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "narration_span": "它非常认真地把我的工作拆成四份，然后完整退货给我了。",
+      "dramatic_refs": [
+        "SC2.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "METAPHOR_STATE",
+      "subject_priority": "returned-work bundle",
+      "staging_blocking": "AI earnestly slides the four-part bundle back like a returned parcel.",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Bundle centered between AI and IP; their body language contrasts.",
+      "eye_trace_in": "IP face",
+      "eye_trace_out": "bundle",
+      "screen_direction": "right-to-left return",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "METAPHOR",
+      "visual_state": "'退货给我' becomes one coherent visual joke.",
+      "acceptance_criteria": [
+        "metaphor serves payoff",
+        "AI earnest not malicious",
+        "no brand parody"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S010",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "narration_span": "“你不是都知道下一步该干什么吗？”“那订单、退款、邮箱，一起给你。”",
+      "dramatic_refs": [
+        "SC2.1_B4"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP gives tool access",
+      "staging_blocking": "IP moves three operational controls/interfaces from shared station toward AI zone.",
+      "shot_size": "WIDE_MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Three zones visible; control objects shift toward AI.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "AI zone",
+      "screen_direction": "left-to-right control transfer",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Control, not just information, now changes hands.",
+      "acceptance_criteria": [
+        "tool domains distinguishable",
+        "no permission matrix",
+        "spatial control shift clear"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S011",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "narration_span": "这一次，它终于没给我写攻略。第一封进来，查订单，符合规则，退了，发邮件。",
+      "dramatic_refs": [
+        "SC3.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "AI performs full first workflow",
+      "staging_blocking": "AI moves task from order screen through shared decision station without IP intervention.",
+      "shot_size": "WIDE_MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "AI crosses ZONE_B → ZONE_C; IP remains seated farther away.",
+      "eye_trace_in": "AI",
+      "eye_trace_out": "decision station",
+      "screen_direction": "rightward workflow",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Audience sees a whole task advance, not an explanation of Agent.",
+      "acceptance_criteria": [
+        "AI visibly acts",
+        "IP does not click",
+        "workflow geography readable"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S012",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "narration_span": "第二封，不符合，它自己解释。第三封，又处理完了。",
+      "dramatic_refs": [
+        "SC3.1_B2",
+        "SC3.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "FOLLOW_ACTION"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "AI repeats successful independent outcomes",
+      "staging_blocking": "Two compact states: decline/reply, then another completion.",
+      "shot_size": "MEDIUM_MONTAGE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Same spatial grammar, different object/result states.",
+      "eye_trace_in": "AI action",
+      "eye_trace_out": "completed state",
+      "screen_direction": "same workflow direction",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Pattern builds without redundant full scenes.",
+      "acceptance_criteria": [
+        "two outcomes distinct",
+        "same world continuity",
+        "no repetitive screenshots"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S013",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "narration_span": "我把电脑声音开着。叮一声，少点一次鼠标。再叮一声，又少点一次。",
+      "dramatic_refs": [
+        "SC3.1_B4"
+      ],
+      "visual_intention": {
+        "primary": "NOTICE_OBJECT",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "idle mouse + IP hand leaving it",
+      "staging_blocking": "IP's hand progressively withdraws from mouse while AI stays active.",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "LOW_EYE_LEVEL",
+      "composition": "Mouse foreground, IP torso midground, AI background.",
+      "eye_trace_in": "mouse",
+      "eye_trace_out": "empty space around hand",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Less clicking is shown through absence of action.",
+      "acceptance_criteria": [
+        "mouse motif advances",
+        "AI remains active",
+        "no music-note decoration"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S014",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "narration_span": "到第三声的时候，我已经开始查楼下哪家咖啡下午三点还营业。",
+      "dramatic_refs": [
+        "SC3.1_B5"
+      ],
+      "visual_intention": {
+        "primary": "FEEL_RELATION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP attention leaves work",
+      "staging_blocking": "IP turns away from decision station and checks cafe on phone; AI works behind.",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Phone foreground; AI and shared station softened behind.",
+      "eye_trace_in": "IP hand",
+      "eye_trace_out": "phone",
+      "screen_direction": "attention turns away from workflow",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Relaxation is concrete behavior, not a stated emotion.",
+      "acceptance_criteria": [
+        "cafe search readable",
+        "work persists background",
+        "open composition"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S015",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.1",
+      "narration_span": "然后屏幕上跳出来一条记录。金额大得让我瞬间坐直。",
+      "dramatic_refs": [
+        "SC4.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "SHARE_POV"
+      },
+      "shot_function_primary": "REVEAL",
+      "subject_priority": "large amount appears",
+      "staging_blocking": "IP snaps upright toward shared decision station.",
+      "shot_size": "POV_TO_MEDIUM",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Large amount appears near prior phone eye position, pulling attention back to work.",
+      "eye_trace_in": "phone area",
+      "eye_trace_out": "large amount",
+      "screen_direction": "attention reverses back right",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_state": "The visual field tightens as risk enters.",
+      "acceptance_criteria": [
+        "amount obvious",
+        "reaction immediate",
+        "no flashing alarm graphics"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S016",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.1",
+      "narration_span": "订单备注还拉了老长一串：客户说没收到，物流显示签收，客服又写着“已补发”，下面还有两轮来回沟通。属于我自己看了，都得先喝口水再决定的那种。",
+      "dramatic_refs": [
+        "SC4.1_B2",
+        "SC4.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "NOTICE_OBJECT",
+        "secondary": "CLARIFY_MECHANISM"
+      },
+      "shot_function_primary": "INSERT_OBJECT",
+      "subject_priority": "conflicting case evidence",
+      "staging_blocking": "Concise case view shows conflicting shipping/support states while IP leans in.",
+      "shot_size": "INSERT_WITH_REACTION_EDGE",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "UI/detail occupies center; IP face edge retains human context.",
+      "eye_trace_in": "large amount",
+      "eye_trace_out": "conflicting statuses",
+      "screen_direction": "N/A",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_state": "Ambiguity is visible without paragraph UI.",
+      "acceptance_criteria": [
+        "conflict legible",
+        "text minimal",
+        "IP remains tied to evidence"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S017",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.1",
+      "narration_span": "系统显示：已退款。",
+      "dramatic_refs": [
+        "SC4.1_B4"
+      ],
+      "visual_intention": {
+        "primary": "SEE_CONSEQUENCE",
+        "secondary": "EXPERIENCE_REVERSAL"
+      },
+      "shot_function_primary": "INSERT_OBJECT",
+      "subject_priority": "completed refund status",
+      "staging_blocking": "Final system state already committed.",
+      "shot_size": "EXTREME_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "'已退款' dominates a clean focal area.",
+      "eye_trace_in": "conflict statuses",
+      "eye_trace_out": "已退款",
+      "screen_direction": "N/A",
+      "visual_intensity": "PEAK",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_state": "The irreversible-looking result becomes the whole image event.",
+      "acceptance_criteria": [
+        "status unmistakable",
+        "no extra explanation",
+        "hold allowed"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S018",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.2",
+      "narration_span": "我盯着那三个字。“……谁让你点确认了？”",
+      "dramatic_refs": [
+        "SC4.2_B1",
+        "SC4.2_B2"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP turns from screen to AI",
+      "staging_blocking": "Frozen gaze → slow turn toward AI.",
+      "shot_size": "CLOSE_TO_TWO_SHOT",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Start on IP eyes, end with AI entering frame edge.",
+      "eye_trace_in": "已退款",
+      "eye_trace_out": "AI",
+      "screen_direction": "screen-left to screen-right turn",
+      "visual_intensity": "PEAK",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Verbal action reclaims authority.",
+      "acceptance_criteria": [
+        "reaction contained",
+        "AI not villainized",
+        "turn creates relation"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S019",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.2",
+      "narration_span": "刚才还觉得它会自己决定特别省事，现在我只想把它的手从鼠标上拿开。",
+      "dramatic_refs": [
+        "SC4.2_B3"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "control is physically pulled back",
+      "staging_blocking": "IP crosses into ZONE_C and slides the mouse/control back toward ZONE_A.",
+      "shot_size": "MEDIUM_TWO_SHOT",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Hands at center; ownership shift is unmistakable.",
+      "eye_trace_in": "AI side",
+      "eye_trace_out": "mouse moving to IP",
+      "screen_direction": "right-to-left control reclaim",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Strategy reversal is embodied by object transfer.",
+      "acceptance_criteria": [
+        "mouse motif reverses",
+        "no permission-screen slide",
+        "body blocking clear"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S020",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "narration_span": "于是我当场改规则：以后所有退款，都先问我。听起来非常安全。",
+      "dramatic_refs": [
+        "SC5.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "approval barrier introduced",
+      "staging_blocking": "IP positions an approval checkpoint between AI zone and decision station.",
+      "shot_size": "WIDE_MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "New physical bottleneck sits exactly between ZONE_B and ZONE_C.",
+      "eye_trace_in": "mouse",
+      "eye_trace_out": "approval barrier",
+      "screen_direction": "workflow blocked toward center",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "False safety solution becomes spatial bottleneck.",
+      "acceptance_criteria": [
+        "barrier clear",
+        "not a flowchart",
+        "IP confident"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S021",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "narration_span": "第二天早上，我打开电脑，二十多个确认窗口整整齐齐排在那里。",
+      "dramatic_refs": [
+        "SC5.1_B2"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "ORIENT"
+      },
+      "shot_function_primary": "REVEAL",
+      "subject_priority": "approval overload",
+      "staging_blocking": "Wide morning view: IP returns to ZONE_A facing a wall/grid of pending approvals around ZONE_C.",
+      "shot_size": "WIDE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Frame density spikes; IP small relative to approval clutter.",
+      "eye_trace_in": "door/room entry",
+      "eye_trace_out": "approval wall",
+      "screen_direction": "forward into clutter",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "The cost of overcorrection reads at one glance.",
+      "acceptance_criteria": [
+        "many approvals obvious",
+        "text not dense",
+        "frame density at peak"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S022",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "narration_span": "一个个像上课举手。“这笔能退吗？”“这笔呢？”“这个呢？”“这个可以吗？”",
+      "dramatic_refs": [
+        "SC5.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "repeated approval requests",
+      "staging_blocking": "Several approval windows pop at slightly different positions like raised hands; IP faces them.",
+      "shot_size": "MEDIUM_WIDE_MONTAGE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Pattern repetition keeps IP center while requests accumulate around.",
+      "eye_trace_in": "approval wall",
+      "eye_trace_out": "IP",
+      "screen_direction": "static human / multiplying requests",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Repetition creates comedy and bottleneck meaning.",
+      "acceptance_criteria": [
+        "classroom metaphor stays inside shop",
+        "no literal classroom cutaway",
+        "pattern readable"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S023",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "narration_span": "昨天订单是我自己查。今天它什么都查完了。最后只把一样东西还给我——鼠标。",
+      "dramatic_refs": [
+        "SC5.1_B4"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "mouse returned after all upstream work",
+      "staging_blocking": "AI stands by completed evidence; only mouse slides across ZONE_C to IP.",
+      "shot_size": "LOW_MEDIUM_INSERT_TO_TWO_SHOT",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "LOW_EYE_LEVEL",
+      "composition": "Mouse path is primary; characters secondary.",
+      "eye_trace_in": "AI completed work",
+      "eye_trace_out": "mouse",
+      "screen_direction": "right-to-left return",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "One object exposes the absurd remaining bottleneck.",
+      "acceptance_criteria": [
+        "mouse appears only at landing",
+        "no quote card",
+        "completed upstream work implied"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S024",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "narration_span": "很好。我成功从客服升级成了 AI 的审批插件。",
+      "dramatic_refs": [
+        "SC5.1_B5"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP as human bottleneck",
+      "staging_blocking": "IP sits between AI and final station repeatedly clicking approvals.",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "AI behind one shoulder, decision station ahead; IP literally in-between.",
+      "eye_trace_in": "mouse",
+      "eye_trace_out": "IP",
+      "screen_direction": "center bottleneck",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "'审批插件' is conveyed by blocking, not body transformation.",
+      "acceptance_criteria": [
+        "human remains human",
+        "bottleneck obvious",
+        "comic but grounded"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S025",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "narration_span": "我把那二十多个窗口关掉，又重新打开退款规则。",
+      "dramatic_refs": [
+        "SC6.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "reset clutter / redesign begins",
+      "staging_blocking": "IP closes approval clutter and clears ZONE_C, then opens rule sheet.",
+      "shot_size": "WIDE_MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Frame density visibly drops.",
+      "eye_trace_in": "approval clutter",
+      "eye_trace_out": "clean station",
+      "screen_direction": "clutter collapses",
+      "visual_intensity": "RELEASE",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Visual reset mirrors conceptual reset.",
+      "acceptance_criteria": [
+        "space becomes simpler",
+        "new strategy action clear"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S026",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "narration_span": "59 块，昨天下单，还没发货——它自己退。",
+      "dramatic_refs": [
+        "SC6.1_B2"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "low-risk case passes",
+      "staging_blocking": "AI carries a simple low-value case through ZONE_C without stopping.",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Clear path through decision station.",
+      "eye_trace_in": "AI",
+      "eye_trace_out": "completed low-risk result",
+      "screen_direction": "left-to-right pass",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Low-risk autonomy shown as uninterrupted flow.",
+      "acceptance_criteria": [
+        "simple case readable",
+        "no risk matrix",
+        "movement uninterrupted"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S027",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "narration_span": "2999 块，备注扯了三页，钱出去还不好追回——停。",
+      "dramatic_refs": [
+        "SC6.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "high-risk case stops",
+      "staging_blocking": "AI reaches same station with large/complex case and stops before final control.",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Composition intentionally mirrors S026 but motion stops earlier.",
+      "eye_trace_in": "same entry",
+      "eye_trace_out": "stopped hand",
+      "screen_direction": "same direction, interrupted",
+      "visual_intensity": "MEDIUM_HIGH",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Meaning comes from contrast with previous uninterrupted case.",
+      "acceptance_criteria": [
+        "mirrors S026",
+        "stop before action",
+        "risk difference concrete"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S028",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "narration_span": "规则互相打架——停。做完很难撤回来——也停。",
+      "dramatic_refs": [
+        "SC6.1_B4"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "two more stop cases",
+      "staging_blocking": "Two compact cases arrive and stop at same threshold for different reasons.",
+      "shot_size": "MEDIUM_MONTAGE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Same stop geography, different props/case states.",
+      "eye_trace_in": "threshold",
+      "eye_trace_out": "paused action",
+      "screen_direction": "repeated stop pattern",
+      "visual_intensity": "MEDIUM_HIGH",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Boundary rule becomes pattern without list slide.",
+      "acceptance_criteria": [
+        "reasons visually distinct",
+        "same threshold continuity",
+        "no numbered tips"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S029",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.2",
+      "narration_span": "几天后，又来了一笔麻烦退款。这次它没碰钱。",
+      "dramatic_refs": [
+        "SC6.2_B1"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "real test of redesigned rule",
+      "staging_blocking": "AI receives a complex case, investigates, then keeps hands away from final control.",
+      "shot_size": "WIDE_MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "AI active in ZONE_B; ZONE_C intentionally untouched.",
+      "eye_trace_in": "complex case",
+      "eye_trace_out": "empty final control",
+      "screen_direction": "forward work stops before center",
+      "visual_intensity": "MEDIUM_HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Restraint is shown as an action choice.",
+      "acceptance_criteria": [
+        "AI still works",
+        "money/control untouched",
+        "new rule under real pressure"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S030",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.2",
+      "narration_span": "它把订单、规则和之前的沟通记录全整理好，只弹出来一句：“这笔超出自动处理范围，需要你确认。”",
+      "dramatic_refs": [
+        "SC6.2_B2",
+        "SC6.2_B3"
+      ],
+      "visual_intention": {
+        "primary": "NOTICE_OBJECT",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "evidence bundle + single handoff request",
+      "staging_blocking": "AI organizes concise evidence and places one confirmation request at ZONE_C for IP.",
+      "shot_size": "MEDIUM_TWO_SHOT",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Clean evidence center; one request rather than many windows.",
+      "eye_trace_in": "AI evidence",
+      "eye_trace_out": "IP",
+      "screen_direction": "right-to-center handoff",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Good interruption is materially different from approval overload.",
+      "acceptance_criteria": [
+        "one request only",
+        "evidence concise",
+        "refund control untouched"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S031",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.2",
+      "narration_span": "我盯着那个窗口看了两秒。第一次觉得 AI 来烦我，也不是什么坏事。",
+      "dramatic_refs": [
+        "SC6.2_B4"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP accepts interruption",
+      "staging_blocking": "IP looks at the single request and gives a small nod rather than frustration.",
+      "shot_size": "CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Request edge remains in foreground.",
+      "eye_trace_in": "request",
+      "eye_trace_out": "IP eyes",
+      "screen_direction": "same axis",
+      "visual_intensity": "RELEASE",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Reaction proves the new boundary works emotionally.",
+      "acceptance_criteria": [
+        "understated approval",
+        "contrast with S021 overload",
+        "no smiley icon"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S032",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "narration_span": "后来我才知道，所谓 Agent，关键也不只是会不会聊天、会不会接几个工具。",
+      "dramatic_refs": [
+        "SC6.3_B1"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "CLARIFY",
+      "subject_priority": "existing workflow world + tools secondary",
+      "staging_blocking": "IP observes AI operating within the same shop; extra tool controls sit visually secondary.",
+      "shot_size": "WIDE_MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "AI workflow path primary, unused tool icons/props peripheral.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "AI workflow",
+      "screen_direction": "stable shop axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Term reveal attaches to already-demonstrated behavior.",
+      "acceptance_criteria": [
+        "no Agent definition card",
+        "tools secondary",
+        "story world maintained"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S033",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "narration_span": "真正变化的是，我开始把“下一步做什么”这件事交给它。它可以自己往前走。",
+      "dramatic_refs": [
+        "SC6.3_B2"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "FOLLOW_ACTION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "AI advances workflow without prompts",
+      "staging_blocking": "AI independently moves a case ZONE_B → ZONE_C while IP stays out of path.",
+      "shot_size": "WIDE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Whole workflow geography visible; path of action readable.",
+      "eye_trace_in": "AI",
+      "eye_trace_out": "decision station",
+      "screen_direction": "rightward progression",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Mechanism is embodied as next-step control.",
+      "acceptance_criteria": [
+        "no arrows needed",
+        "AI chooses/advances visibly",
+        "IP not micromanaging"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S034",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "narration_span": "但到了某些地方，它得知道停。",
+      "dramatic_refs": [
+        "SC6.3_B3"
+      ],
+      "visual_intention": {
+        "primary": "SEE_CONSEQUENCE",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "AI stops at boundary and turns to IP",
+      "staging_blocking": "AI reaches ZONE_C, stops before final control, turns toward ZONE_A.",
+      "shot_size": "MEDIUM_TWO_SHOT",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Threshold center, AI right, IP left; both visible.",
+      "eye_trace_in": "AI movement",
+      "eye_trace_out": "IP",
+      "screen_direction": "right-to-left gaze handoff",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Core boundary is shown in one blocking decision.",
+      "acceptance_criteria": [
+        "stop precedes action",
+        "handoff readable",
+        "no stop-sign graphic"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S035",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "narration_span": "所以现在我看一个 Agent，第一眼已经不是它接了多少工具。",
+      "dramatic_refs": [
+        "SC6.3_B4"
+      ],
+      "visual_intention": {
+        "primary": "COMPARE_STATES",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "RELATION",
+      "subject_priority": "tool quantity de-emphasized",
+      "staging_blocking": "Several tool controls remain out of focus while IP watches AI's stop/handoff behavior.",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Foreground tools soft; background relationship sharp.",
+      "eye_trace_in": "tools",
+      "eye_trace_out": "AI-IP relation",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Viewer attention shifts from capability count to behavior.",
+      "acceptance_criteria": [
+        "tools visibly secondary",
+        "no split-screen scorecard"
+      ]
+    },
+    {
+      "semantic_shot_id": "AG3_S036",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "narration_span": "我只看一件事——它知不知道，什么时候该自己往前走。以及什么时候，该回来敲门。",
+      "dramatic_refs": [
+        "SC6.3_B4"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "final handoff/knock",
+      "staging_blocking": "AI stands just outside IP decision zone and lightly taps/knocks on the partition before handing over the case.",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "composition": "Clean frame, balanced IP/AI, threshold visible, minimal clutter.",
+      "eye_trace_in": "AI",
+      "eye_trace_out": "shared threshold",
+      "screen_direction": "right-to-left request",
+      "visual_intensity": "RELEASE",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Final image resolves the control-boundary motif without a slogan card.",
+      "acceptance_criteria": [
+        "character-led ending",
+        "threshold motif pays off",
+        "hold can breathe"
+      ]
+    }
+  ]
+}
