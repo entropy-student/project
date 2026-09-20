@@ -256,3 +256,37 @@ Current action:
 Owner reviews candidate rules.  
 Only after explicit approval should the three cases be rerun from scratch.
 
+## G4 Director Rebaseline v0.3 — Final Candidate
+
+Final rereview changed the proposed architecture from five to six layers.
+
+Final candidate:
+- `docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE_V03.md`
+- `docs/G4_DIRECTOR_RULES_FINAL_REREVIEW_V03.md`
+
+Proposed stable pipeline:
+```text
+Dramatic Hierarchy Map
+→ Episode / Sequence Visual Strategy
+→ Visual Intention Map
+→ Semantic Shot Design
+→ Visual Beat Compilation
+→ Timing & Edit Calibration
+```
+
+Key corrections:
+- McKee: Sequence → Scene → Beat, not Beat-only.
+- Beat need not create a major value turn; Scene/Sequence carry larger turns.
+- Jingsui timing is a small-sample surface prior, not a target/quota.
+- 2.7s does not justify a cut.
+- Explicitly support continuity + montage/contrast/metaphor image relations.
+- New scripts should change episode configuration, not Director architecture.
+
+Known unresolved cross-document conflicts after approval:
+- Writer provisional SRT still contains 5.0 chars/s vs current ~5.9 calibrated prior.
+- old 3–5 min duration guidance vs current G4 cases at ~2:30–2:52.
+
+No canonical contract changed yet.
+No case rerun started.
+G5 remains blocked.
+
