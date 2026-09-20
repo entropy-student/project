@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_IN_PROGRESS_G5A_PASS_G5B_SPEC_LOCKED_REAL_IP_REF_MISSING",
+  "project_state": "G5_IN_PROGRESS_PRODUCTION_STYLE_APPROVED_CHARACTER_MASTER_V2_NEXT",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -282,14 +282,26 @@
     },
     "phase_b": {
       "name": "Canonical Reference Lock",
-      "status": "SPEC_LOCKED_BLOCKED_BY_REAL_IP_REFERENCE",
+      "status": "STYLE_DIRECTION_APPROVED_REFERENCE_CALIBRATION_IN_PROGRESS",
       "character_bible": "experiments/g5/blind-search-answer/04_CHARACTER_BIBLE.md",
       "scene_bible": "experiments/g5/blind-search-answer/05_SCENE_BIBLE.md",
       "style_bible": "experiments/g5/blind-search-answer/06_STYLE_BIBLE.md",
       "prop_ui_bible": "experiments/g5/blind-search-answer/07_PROP_UI_BIBLE.md",
       "reference_manifest": "experiments/g5/blind-search-answer/08_REFERENCE_MANIFEST.json",
       "blocking_real_asset": "CHAR_IP_001",
-      "blocking_reason": "Canonical IP three-view reference is not present in repository."
+      "blocking_reason": "Canonical IP three-view reference is not present in repository.",
+      "style_direction": "SIMPLIFIED_FLAT_NARRATIVE_COMIC",
+      "current_conversation_inputs": {
+        "ip_identity_image": "AVAILABLE_IN_CURRENT_CONVERSATION_NOT_PERSISTED_IN_REPO",
+        "production_character_master_v1": "GENERATED_CURRENT_CONVERSATION",
+        "workdesk_scene_master_v1": "GENERATED_CURRENT_CONVERSATION"
+      },
+      "next_steps": [
+        "Generate Production Character Master v2 with reduced drift complexity",
+        "Validate Workdesk Scene Master under simplified production style",
+        "Generate 3 real G4 calibration frames",
+        "Promote STYLE_CHANNEL_001 to VISUAL_LOCKED if calibration passes"
+      ]
     },
     "phase_c": {
       "name": "Image Generation Compiler",
