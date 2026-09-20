@@ -1,6 +1,6 @@
 # Writer Quality Contract v0.4 — Bilibili-first
 
-> **G3R STATUS: OWNER ALIGNED / NOT PASS.** The direction is accepted for consolidation, but remains non-canonical until the remaining Owner review is resolved and G3R receives explicit PASS.
+> **G3R STATUS: PASS.** This is the canonical Bilibili-first Writer Quality Contract for the current editorial baseline.
 
 Canonical narrative-style layer: `docs/NARRATIVE_STYLE_CONTRACT.md`
 
