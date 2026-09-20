@@ -93,9 +93,9 @@
       "action": "IP counts duplicate notes, AI waits innocently.",
       "expression": "deadpan",
       "composition": "medium two-shot",
-      "camera_angle": "Show the fifth-repeat absurdity through duplicated physical notes.",
-      "image_intent": "METAPHOR",
-      "continuity_role": "CUT",
+      "camera_angle": "front 3/4",
+      "image_intent": "Show the fifth-repeat absurdity through duplicated physical notes.",
+      "continuity_role": "METAPHOR",
       "subtitle_intent": null,
       "visual_forbidden": [
         "no PPT slide",
@@ -110,7 +110,8 @@
         "visual state must advance story or mechanism"
       ],
       "planning_duration_hint_sec": null,
-      "notes": null
+      "notes": null,
+      "transition_intent": "CUT"
     },
     {
       "semantic_shot_id": "CM_S004",
@@ -125,9 +126,9 @@
       "action": "IP hands over requirements as if establishing a rule.",
       "expression": "firm",
       "composition": "medium two-shot",
-      "camera_angle": "Clarify the protagonist desire without a text manifesto.",
-      "image_intent": "CONTINUE",
-      "continuity_role": "CUT",
+      "camera_angle": "front 3/4",
+      "image_intent": "Clarify the protagonist desire without a text manifesto.",
+      "continuity_role": "CONTINUE",
       "subtitle_intent": null,
       "visual_forbidden": [
         "no PPT slide",
@@ -142,7 +143,8 @@
         "visual state must advance story or mechanism"
       ],
       "planning_duration_hint_sec": null,
-      "notes": null
+      "notes": null,
+      "transition_intent": "CUT"
     },
     {
       "semantic_shot_id": "CM_S005",
@@ -288,9 +290,9 @@
       "action": "IP looks at remaining desk space, then gestures wider.",
       "expression": "too confident",
       "composition": "medium close-up",
-      "camera_angle": "Turn '还能加' into a behavioral decision.",
-      "image_intent": "REACTION",
-      "continuity_role": "HOLD",
+      "camera_angle": "front 3/4",
+      "image_intent": "Turn '还能加' into a behavioral decision.",
+      "continuity_role": "REACTION",
       "subtitle_intent": null,
       "visual_forbidden": [
         "no PPT slide",
@@ -305,7 +307,8 @@
         "visual state must advance story or mechanism"
       ],
       "planning_duration_hint_sec": null,
-      "notes": null
+      "notes": null,
+      "transition_intent": "HOLD"
     },
     {
       "semantic_shot_id": "CM_S010",
@@ -580,9 +583,9 @@
       "action": "IP grabs for a note AI is moving away.",
       "expression": "alarmed",
       "composition": "medium two-shot",
-      "camera_angle": "Turn fear of forgetting into physical interference.",
-      "image_intent": "REACTION",
-      "continuity_role": "CUT",
+      "camera_angle": "front 3/4",
+      "image_intent": "Turn fear of forgetting into physical interference.",
+      "continuity_role": "REACTION",
       "subtitle_intent": null,
       "visual_forbidden": [
         "no PPT slide",
@@ -597,7 +600,8 @@
         "visual state must advance story or mechanism"
       ],
       "planning_duration_hint_sec": null,
-      "notes": null
+      "notes": null,
+      "transition_intent": "CUT"
     },
     {
       "semantic_shot_id": "CM_S019",
@@ -612,9 +616,9 @@
       "action": "AI holds multiple similar notes and looks to IP.",
       "expression": "questioning",
       "composition": "medium two-shot",
-      "camera_angle": "Make ambiguity concrete.",
-      "image_intent": "REVERSAL",
-      "continuity_role": "CUT",
+      "camera_angle": "front",
+      "image_intent": "Make ambiguity concrete.",
+      "continuity_role": "REVERSAL",
       "subtitle_intent": null,
       "visual_forbidden": [
         "no PPT slide",
@@ -629,7 +633,8 @@
         "visual state must advance story or mechanism"
       ],
       "planning_duration_hint_sec": null,
-      "notes": null
+      "notes": null,
+      "transition_intent": "CUT"
     },
     {
       "semantic_shot_id": "CM_S020",
@@ -643,9 +648,9 @@
       "action": "IP pauses mid-gesture.",
       "expression": "sheepish",
       "composition": "medium close-up",
-      "camera_angle": "Let silence expose narrator's own uncertainty.",
-      "image_intent": "REACTION",
-      "continuity_role": "HOLD",
+      "camera_angle": "front",
+      "image_intent": "Let silence expose narrator's own uncertainty.",
+      "continuity_role": "REACTION",
       "subtitle_intent": null,
       "visual_forbidden": [
         "no PPT slide",
@@ -660,7 +665,8 @@
         "visual state must advance story or mechanism"
       ],
       "planning_duration_hint_sec": null,
-      "notes": null
+      "notes": null,
+      "transition_intent": "HOLD"
     },
     {
       "semantic_shot_id": "CM_S021",
@@ -839,9 +845,9 @@
       "action": "IP gives a vague familiar instruction.",
       "expression": "casual",
       "composition": "medium two-shot",
-      "camera_angle": "Set up expectation without explanation.",
-      "image_intent": "CONTINUE",
-      "continuity_role": "CUT",
+      "camera_angle": "front 3/4",
+      "image_intent": "Set up expectation without explanation.",
+      "continuity_role": "CONTINUE",
       "subtitle_intent": null,
       "visual_forbidden": [
         "no PPT slide",
@@ -856,7 +862,8 @@
         "visual state must advance story or mechanism"
       ],
       "planning_duration_hint_sec": null,
-      "notes": null
+      "notes": null,
+      "transition_intent": "CUT"
     },
     {
       "semantic_shot_id": "CM_S027",
@@ -871,9 +878,9 @@
       "action": "AI looks from empty desk to IP.",
       "expression": "genuinely unsure",
       "composition": "medium two-shot",
-      "camera_angle": "Expose difference between current workspace and persistent memory.",
-      "image_intent": "REVERSAL",
-      "continuity_role": "CUT",
+      "camera_angle": "front",
+      "image_intent": "Expose difference between current workspace and persistent memory.",
+      "continuity_role": "REVERSAL",
       "subtitle_intent": null,
       "visual_forbidden": [
         "no PPT slide",
@@ -888,7 +895,8 @@
         "visual state must advance story or mechanism"
       ],
       "planning_duration_hint_sec": null,
-      "notes": null
+      "notes": null,
+      "transition_intent": "CUT"
     },
     {
       "semantic_shot_id": "CM_S028",
@@ -1131,9 +1139,9 @@
       "action": "AI references note; IP nods with hands off.",
       "expression": "quietly satisfied",
       "composition": "medium two-shot",
-      "camera_angle": "Human payoff: narrator does not need to repeat requirement.",
-      "image_intent": "PAYOFF",
-      "continuity_role": "CUT",
+      "camera_angle": "front 3/4",
+      "image_intent": "Human payoff: narrator does not need to repeat requirement.",
+      "continuity_role": "PAYOFF",
       "subtitle_intent": null,
       "visual_forbidden": [
         "no PPT slide",
@@ -1148,7 +1156,8 @@
         "visual state must advance story or mechanism"
       ],
       "planning_duration_hint_sec": null,
-      "notes": null
+      "notes": null,
+      "transition_intent": "CUT"
     },
     {
       "semantic_shot_id": "CM_S036",
@@ -1412,5 +1421,10 @@
       "planning_duration_hint_sec": null,
       "notes": null
     }
-  ]
+  ],
+  "schema_validation": {
+    "status": "PASS",
+    "checked_at": "2026-09-20",
+    "issue_count": 0
+  }
 }
