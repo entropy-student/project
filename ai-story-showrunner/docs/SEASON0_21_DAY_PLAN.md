@@ -1,6 +1,6 @@
 # Season 0 — 21-day Calibration Plan (PROPOSED)
 
-> Status: G3R OWNER REVIEW. Not active until Owner PASS.
+> Status: OWNER ALIGNED / NOT ACTIVE. Requires explicit G3R PASS.
 
 ## Goal
 
@@ -37,7 +37,7 @@ Quality gates outrank quota.
 ## Week 1 — Establish the baseline
 
 Question:
-> Can the channel’s first-person IP + story-first AI format hold attention at 4–6 minutes?
+> Can the channel’s first-person IP + story-first AI format hold attention at roughly 3–5 minutes?
 
 Prefer mostly Evergreen topics so freshness is not a major confound.
 
@@ -93,7 +93,7 @@ Do not optimize for completion percentage alone.
 
 Initial routes:
 - HOT: 3–5 min
-- standard: 4–6 min
+- standard: 3–5 min
 
 After enough published evidence:
 - if retention consistently holds and viewers ask for depth → allow longer;
