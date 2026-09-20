@@ -114,3 +114,48 @@ DESIGN_DECISION_ACCEPTED_WITHIN_G1
 G1 remains IN_PROGRESS
 ```
 
+---
+
+## Gate G1 — Worker Inventory + Canonical Contracts
+
+- Date: 2026-09-20
+- Reviewer decision: PASS
+
+### Read-back Evidence
+
+Confirmed present and readable:
+
+- `docs/CONTENT_STRATEGY_AND_CONVERSION.md`
+- `docs/WORKER_ADAPTER_PLAN.md`
+- `docs/ADAPTER_FIELD_MAPPINGS.md`
+- `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
+- `docs/ANTIGRAVITY_POC.md`
+- `schemas/topic_opportunity.schema.json`
+- `schemas/episode.schema.json`
+- `schemas/shot.schema.json`
+
+### Worker Findings
+
+- No canonical standalone Topic Skill found in current `spike.skill` root + recursive path scan.
+- No canonical standalone McKee Skill found in current scan.
+- Jingsui is admitted only as a candidate Writer Style Engine behind a restrictive Adapter.
+- acquisition-growth-radar is positioned at Publish/Learning, not Topic selection.
+- entertainment-rander is optional Signal Intake only.
+- Antigravity integration classification: `MANUAL_EXECUTOR / NOT_YET_POC_VALIDATED`.
+
+### Accepted Design
+
+- Topic contract uses hard gates before comparative scoring.
+- Every episode has one primary content job: DISCOVERY / TRUST / SOLUTION.
+- Metrics are separated into Traffic / Trust / Conversion.
+- Visual Repetition Gate is required.
+- One video defaults to one core AI mechanism.
+- McKee-style causal structure belongs to internal Story Engine Gate for now.
+
+### Result
+
+```text
+PASS_G1_WORKER_INVENTORY_AND_CANONICAL_CONTRACTS
+NEXT_GATE: G2
+```
+
