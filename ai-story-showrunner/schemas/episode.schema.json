@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://entropy-student.local/ai-story-showrunner/episode.schema.json",
+  "title": "AI Story Showrunner Episode State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "episode_id",
+    "status",
+    "primary_content_job",
+    "topic",
+    "knowledge",
+    "story",
+    "script",
+    "director",
+    "execution",
+    "qa",
+    "metrics",
+    "provenance"
+  ],
+  "properties": {
+    "episode_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "pattern": "^(P0|G[0-9]+|RETURN_[A-Z0-9_]+|HOLD|BLOCKED_BY_REAL_INPUT)$"
+    },
+    "primary_content_job": {
+      "type": "string",
+      "enum": [
+        "DISCOVERY",
+        "TRUST",
+        "SOLUTION"
+      ]
+    },
+    "topic": {
+      "type": "object",
+      "required": [
+        "artifact_ref",
+        "gate_status"
+      ],
+      "properties": {
+        "artifact_ref": {
+          "type": "string"
+        },
+        "gate_status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS",
+            "RETURN",
+            "HOLD"
+          ]
+        }
+      }
+    },
+    "knowledge": {
+      "type": "object",
+      "required": [
+        "artifact_ref",
+        "gate_status",
+        "locked"
+      ],
+      "properties": {
+        "artifact_ref": {
+          "type": "string"
+        },
+        "gate_status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS",
+            "RETURN",
+            "HOLD"
+          ]
+        },
+        "locked": {
+          "type": "boolean"
+        }
+      }
+    },
+    "story": {
+      "type": "object",
+      "required": [
+        "artifact_ref",
+        "gate_status",
+        "locked"
+      ],
+      "properties": {
+        "artifact_ref": {
+          "type": "string"
+        },
+        "gate_status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS",
+            "RETURN",
+            "HOLD"
+          ]
+        },
+        "locked": {
+          "type": "boolean"
+        }
+      }
+    },
+    "script": {
+      "type": "object",
+      "required": [
+        "script_ref",
+        "srt_ref",
+        "gate_status",
+        "locked"
+      ],
+      "properties": {
+        "script_ref": {
+          "type": "string"
+        },
+        "srt_ref": {
+          "type": "string"
+        },
+        "gate_status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS",
+            "RETURN",
+            "HOLD"
+          ]
+        },
+        "locked": {
+          "type": "boolean"
+        }
+      }
+    },
+    "director": {
+      "type": "object",
+      "required": [
+        "shot_package_ref",
+        "gate_status"
+      ],
+      "properties": {
+        "shot_package_ref": {
+          "type": "string"
+        },
+        "gate_status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS",
+            "RETURN",
+            "HOLD"
+          ]
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "required": [
+        "executor",
+        "package_ref",
+        "integration_level",
+        "audio_mode",
+        "gate_status"
+      ],
+      "properties": {
+        "executor": {
+          "type": "string",
+          "const": "Antigravity"
+        },
+        "package_ref": {
+          "type": "string"
+        },
+        "integration_level": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "MANUAL_EXECUTOR",
+            "PROGRAMMATIC"
+          ]
+        },
+        "audio_mode": {
+          "type": "string",
+          "enum": [
+            "TBD",
+            "UPSTREAM_TTS",
+            "EXECUTOR_TTS"
+          ]
+        },
+        "gate_status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS_CANDIDATE",
+            "PASS",
+            "RETURN",
+            "HOLD"
+          ]
+        }
+      }
+    },
+    "qa": {
+      "type": "object",
+      "required": [
+        "story",
+        "knowledge",
+        "visual",
+        "visual_repetition",
+        "production"
+      ],
+      "properties": {
+        "story": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS",
+            "RETURN"
+          ]
+        },
+        "knowledge": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS",
+            "RETURN"
+          ]
+        },
+        "visual": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS",
+            "RETURN"
+          ]
+        },
+        "visual_repetition": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS",
+            "RETURN"
+          ]
+        },
+        "production": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "PASS",
+            "RETURN"
+          ]
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "traffic",
+        "trust",
+        "conversion"
+      ],
+      "properties": {
+        "traffic": {
+          "type": "object"
+        },
+        "trust": {
+          "type": "object"
+        },
+        "conversion": {
+          "type": "object"
+        }
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "stage",
+          "worker_id",
+          "artifact_ref"
+        ],
+        "properties": {
+          "stage": {
+            "type": "string"
+          },
+          "worker_id": {
+            "type": "string"
+          },
+          "worker_version_or_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "artifact_ref": {
+            "type": "string"
+          },
+          "gate_result": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
