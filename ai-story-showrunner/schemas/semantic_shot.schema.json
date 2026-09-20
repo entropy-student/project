@@ -1,44 +1,127 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://entropy-student.local/ai-story-showrunner/semantic-shot.schema.json",
-  "title": "AI Story Showrunner Semantic Shot",
+  "title": "AI Story Showrunner Semantic Shot v0.3",
   "type": "object",
-  "additionalProperties": false,
+  "additionalProperties": true,
   "required": [
     "semantic_shot_id",
-    "narration_span",
-    "story_function",
-    "visual_state",
-    "character_ids",
+    "sequence_id",
     "scene_id",
-    "action",
-    "expression",
-    "composition",
-    "camera_angle",
-    "image_intent",
-    "continuity_role",
-    "transition_intent",
-    "visual_forbidden",
+    "narration_span",
+    "dramatic_refs",
+    "visual_intention",
+    "shot_function_primary",
+    "subject_priority",
+    "staging_blocking",
+    "framing_strategy",
+    "pov_strategy",
+    "composition_strategy",
+    "eye_trace_in",
+    "eye_trace_out",
+    "visual_intensity",
+    "image_relation_grammar",
+    "visual_state",
     "acceptance_criteria"
   ],
   "properties": {
-    "semantic_shot_id": {"type":"string","minLength":1},
-    "narration_span": {"type":"string","minLength":1},
-    "story_function": {"type":"string","minLength":1},
-    "visual_state": {"type":"string","minLength":1},
-    "character_ids": {"type":"array","items":{"type":"string"}},
-    "scene_id": {"type":["string","null"]},
-    "action": {"type":"string","minLength":1},
-    "expression": {"type":["string","null"]},
-    "composition": {"type":"string","minLength":1},
-    "camera_angle": {"type":"string","minLength":1},
-    "image_intent": {"type":"string","minLength":1},
-    "continuity_role": {"type":"string","enum":["ESTABLISH","CONTINUE","REACTION","REVERSAL","INSERT","METAPHOR","PAYOFF","TRANSITION"]},
-    "transition_intent": {"type":"string","enum":["CUT","DISSOLVE","HOLD","MATCH_CUT","NONE"]},
-    "subtitle_intent": {"type":["string","null"]},
-    "visual_forbidden": {"type":"array","items":{"type":"string"}},
-    "acceptance_criteria": {"type":"array","minItems":1,"items":{"type":"string"}},
-    "planning_duration_hint_sec": {"type":["number","null"],"exclusiveMinimum":0},
-    "notes": {"type":["string","null"]}
+    "semantic_shot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sequence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scene_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "narration_span": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dramatic_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "visual_intention": {
+      "type": "object",
+      "required": [
+        "primary"
+      ],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "secondary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "shot_function_primary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_priority": {
+      "type": "string",
+      "minLength": 1
+    },
+    "staging_blocking": {
+      "type": "string",
+      "minLength": 1
+    },
+    "framing_strategy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pov_strategy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "composition_strategy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eye_trace_in": {
+      "type": "string",
+      "minLength": 1
+    },
+    "eye_trace_out": {
+      "type": "string",
+      "minLength": 1
+    },
+    "screen_direction": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "visual_intensity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "image_relation_grammar": {
+      "type": "string",
+      "minLength": 1
+    },
+    "visual_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
   }
 }
