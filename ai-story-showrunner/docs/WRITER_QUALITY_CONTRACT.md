@@ -260,13 +260,23 @@ SRT 必须从 locked script 派生，不重写。
 
 ## 12. Admission Rule
 
-Jingsui Writer Adapter 只有在至少三个不同机制 episode 中：
+Jingsui-derived Writer Style / Adapter baseline 只有在至少三个不同机制 episode 中：
 - 不改变 KnowledgeCore；
 - 不改变 StoryPremise 核心因果；
 - 文案不退化成教程；
 - 能稳定生成可直接口播的 Script + SRT；
 
-才从 STRONG CANDIDATE 升为 canonical Writer Worker。
+才从 STRONG CANDIDATE 升为 **canonical Writer Style Source / restricted adapter baseline**。
+
+G3R 已通过三题质量验证，因此当前：
+`JINGSUI_STYLE_SOURCE = CANONICAL`.
+
+这不等于程序化 Writer orchestration 已经跑通。
+
+Runtime / orchestration status 仍单独保持：
+`QUALITY_VALIDATED / MANUAL_ORCHESTRATION`
+
+直到未来 Gate 有真实机器编排证据。
 
 ---
 
