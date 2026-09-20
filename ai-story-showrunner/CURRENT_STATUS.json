@@ -67,7 +67,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G4_PASS_G4R_DIRECTOR_RULES_CANDIDATE_OWNER_REVIEW",
+  "project_state": "G4_PASS_G4R_V03_FINAL_CANDIDATE_OWNER_REVIEW",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -104,7 +104,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "Review theory-first Director Language Rules candidate. Do not rerun cases or start G5 until Owner approval.",
+  "owner_review_scope": "Review G4 Director Language Rules v0.3 final candidate. Do not rerun cases or start G5 until explicit Owner approval.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -239,19 +239,23 @@
     "owner_hold_before_g5": true
   },
   "g4_rebaseline_candidate": {
-    "status": "OWNER_REVIEW",
-    "rules": "docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE.md",
+    "status": "FINAL_CANDIDATE_OWNER_REVIEW",
+    "rules": "docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE_V03.md",
     "research": "docs/G4_DIRECTOR_REBASELINE_RESEARCH.md",
     "reason": "G4 v0.1 was case-derived and under-specified in dramatic-beat-to-camera-language translation.",
     "canonical_g4_v0_1_remains_pass": true,
     "g5_blocked": true,
     "cases_rerun": false,
     "proposed_pipeline": [
-      "Dramatic Beat Map",
+      "Dramatic Hierarchy Map",
+      "Episode / Sequence Visual Strategy",
       "Visual Intention Map",
-      "Semantic Shot",
-      "Visual Beat",
-      "Timing Calibration"
-    ]
+      "Semantic Shot Design",
+      "Visual Beat Compilation",
+      "Timing & Edit Calibration"
+    ],
+    "rereview": "docs/G4_DIRECTOR_RULES_FINAL_REREVIEW_V03.md",
+    "previous_candidate": "docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE.md",
+    "unseen_case_required_before_promotion": true
   }
 }
