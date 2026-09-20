@@ -173,20 +173,34 @@ Writer 可以改变表达，不得静默改变 KnowledgeCore。
 
 动作、反应、姿态变化优先拆成多个小镜头和多张静态图，而不是依赖复杂运镜或视频生成。
 
-### 每个 Shot 必须锁定
+### Director Output Must Lock
 
-- shot_id；
-- exact start / end / duration；
-- narration / subtitle；
-- character IDs；
-- scene ID；
-- action；
-- expression；
-- composition；
-- camera angle；
-- transition；
-- image_id；
-- 禁止项。
+G4 uses two nested units:
+
+1. SemanticShot — visual/story event;
+2. VisualBeat — image-level shotbook row.
+
+VisualBeat must lock:
+- visual_beat_id;
+- semantic_shot_id;
+- start / end / duration from accepted timing source;
+- narration fragment;
+- character IDs;
+- scene ID;
+- action / expression hint;
+- visual state / visual delta;
+- composition / camera hint;
+- transition intent;
+- forbidden visuals;
+- acceptance criteria.
+
+G4 does NOT lock final generation Prompt / canonical reference asset paths.
+Those are compiled after Character / Scene / Style locks.
+
+### Canonical Schemas
+
+- `schemas/semantic_shot.schema.json`
+- `schemas/visual_beat.schema.json`
 
 ### Gate
 
