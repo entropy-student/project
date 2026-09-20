@@ -62,7 +62,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is a candidate writer style engine behind a restrictive project adapter"
   ],
-  "project_state": "HOLD_G3R_OWNER_ALIGNED_PENDING_1_QUESTION",
+  "project_state": "HOLD_G3R_READY_FOR_OWNER_PASS_DECISION",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -99,7 +99,7 @@
     "editorial_baseline_status": "REOPENED_DUE_TO_PLATFORM_STRATEGY_DRIFT",
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY"
   },
-  "owner_review_scope": "Review Agent narrative smoke test and discuss 1 remaining editorial question; then Owner may PASS or RETURN G3R",
+  "owner_review_scope": "Final Owner PASS / RETURN decision on G3R; G4 remains blocked until explicit PASS",
   "g3_rebaseline": {
     "status": "OWNER_ALIGNED_NOT_PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -129,8 +129,8 @@
     "season0_plan": "docs/SEASON0_21_DAY_PLAN.md",
     "tutorial_mode": "REMOVED_BY_OWNER",
     "opinion_policy": "OPTIONAL_BOUNDED_NOT_REQUIRED",
-    "open_questions_count": 1,
-    "open_questions": "1 REMAINING / DETAILS PENDING OWNER DISCUSSION",
+    "open_questions_count": 0,
+    "open_questions": [],
     "narrative_style_contract": "docs/NARRATIVE_STYLE_CONTRACT.md",
     "narrative_style_status": "OWNER_ALIGNED",
     "narrative_smoke_test": "episodes/20260920-agent/G3R_narrative_test_v1.md",
@@ -140,9 +140,24 @@
       "Narrative style and viewpoint: Jingsui lightness + McKee causality/meaning + Controlling Question + Idea/Counter-Idea + Lightness Guard"
     ],
     "dialogue_refinement_candidate": "docs/DIALOGUE_PROSE_REFINEMENT_CANDIDATE.md",
-    "dialogue_refinement_status": "OWNER_REVIEW_NOT_CANONICAL",
+    "dialogue_refinement_status": "PROMOTED_INTO_MAIN_CONTRACTS",
     "narrative_smoke_test_v2": "episodes/20260920-agent/G3R_narrative_test_v2.md",
     "narrative_smoke_test_v2_review": "episodes/20260920-agent/G3R_narrative_test_review_v2.md",
-    "narrative_smoke_test_v2_score": 91
+    "narrative_smoke_test_v2_score": 91,
+    "narrative_style_contract_version": "0.2",
+    "writer_quality_contract_version": "0.3",
+    "cross_topic_validation": {
+      "status": "PASS_CANDIDATE",
+      "agent": {
+        "artifact": "episodes/20260920-agent/G3R_narrative_test_v2.md",
+        "score": 91
+      },
+      "context_memory": {
+        "artifact": "episodes/20260920-context-memory/G3R_narrative_test_v1.md",
+        "score": 89
+      },
+      "finding": "Narrative style transfers across permission/risk and conceptual-memory topics without requiring the same conflict pattern"
+    },
+    "ready_for_owner_pass_decision": true
   }
 }
