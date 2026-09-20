@@ -3,10 +3,10 @@
   "status": "EXPERIMENTAL_BLIND_NOT_CANONICAL",
   "frozen_rules_sha": "fccc6a6bad667d6a013183f8d0a9f998d448b5d4",
   "semantic_shot_count": 19,
-  "visual_beat_count": 42,
-  "estimated_duration_sec": 144.65,
-  "estimated_duration_hms": "2:25",
-  "avg_visual_beat_sec": 3.44,
+  "visual_beat_count": 44,
+  "estimated_duration_sec": 142.21,
+  "estimated_duration_hms": "2:22",
+  "avg_visual_beat_sec": 3.23,
   "coverage_validation": "PASS",
   "beats": [
     {
@@ -55,7 +55,7 @@
       "timing_kind": "PUNCH",
       "start": 5.25,
       "duration": 1.49,
-      "end": 6.75
+      "end": 6.74
     },
     {
       "visual_beat_id": "SRCH_VB003",
@@ -77,7 +77,7 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 6.75,
+      "start": 6.74,
       "duration": 5.23,
       "end": 11.97
     },
@@ -343,7 +343,7 @@
       "timing_kind": "NORMAL",
       "start": 46,
       "duration": 3.71,
-      "end": 49.7
+      "end": 49.71
     },
     {
       "visual_beat_id": "SRCH_VB015",
@@ -365,9 +365,9 @@
       "visual_intensity": "PEAK",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH_SETUP",
-      "start": 49.7,
+      "start": 49.71,
       "duration": 1.63,
-      "end": 51.33
+      "end": 51.34
     },
     {
       "visual_beat_id": "SRCH_VB016",
@@ -389,9 +389,9 @@
       "visual_intensity": "PEAK",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REVERSAL",
-      "start": 51.33,
+      "start": 51.34,
       "duration": 2.14,
-      "end": 53.47
+      "end": 53.48
     },
     {
       "visual_beat_id": "SRCH_VB017",
@@ -413,9 +413,9 @@
       "visual_intensity": "PEAK",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REACTION",
-      "start": 53.47,
+      "start": 53.48,
       "duration": 1.4,
-      "end": 54.87
+      "end": 54.88
     },
     {
       "visual_beat_id": "SRCH_VB018",
@@ -437,7 +437,7 @@
       "visual_intensity": "PEAK",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 54.87,
+      "start": 54.88,
       "duration": 2.36,
       "end": 57.24
     },
@@ -607,7 +607,7 @@
       "timing_kind": "PUNCH",
       "start": 79.92,
       "duration": 3.99,
-      "end": 83.92
+      "end": 83.91
     },
     {
       "visual_beat_id": "SRCH_VB026",
@@ -629,9 +629,9 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 83.92,
+      "start": 83.91,
       "duration": 3.71,
-      "end": 87.63
+      "end": 87.62
     },
     {
       "visual_beat_id": "SRCH_VB027",
@@ -653,7 +653,7 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 87.63,
+      "start": 87.62,
       "duration": 3.54,
       "end": 91.16
     },
@@ -679,7 +679,7 @@
       "timing_kind": "NORMAL",
       "start": 91.16,
       "duration": 1.34,
-      "end": 92.51
+      "end": 92.5
     },
     {
       "visual_beat_id": "SRCH_VB029",
@@ -701,9 +701,9 @@
       "visual_intensity": "RELEASE_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 92.51,
+      "start": 92.5,
       "duration": 1.49,
-      "end": 94
+      "end": 93.99
     },
     {
       "visual_beat_id": "SRCH_VB030",
@@ -725,9 +725,9 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 94,
+      "start": 93.99,
       "duration": 3.71,
-      "end": 97.71
+      "end": 97.7
     },
     {
       "visual_beat_id": "SRCH_VB031",
@@ -749,9 +749,9 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 97.71,
+      "start": 97.7,
       "duration": 3.18,
-      "end": 100.89
+      "end": 100.88
     },
     {
       "visual_beat_id": "SRCH_VB032",
@@ -773,9 +773,9 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 100.89,
+      "start": 100.88,
       "duration": 5.9,
-      "end": 106.79
+      "end": 106.78
     },
     {
       "visual_beat_id": "SRCH_VB033",
@@ -797,9 +797,9 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 106.79,
+      "start": 106.78,
       "duration": 1.2,
-      "end": 107.99
+      "end": 107.98
     },
     {
       "visual_beat_id": "SRCH_VB034",
@@ -821,9 +821,9 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 107.99,
+      "start": 107.98,
       "duration": 2.86,
-      "end": 110.86
+      "end": 110.84
     },
     {
       "visual_beat_id": "SRCH_VB035",
@@ -845,9 +845,9 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 110.86,
+      "start": 110.84,
       "duration": 5.73,
-      "end": 116.59
+      "end": 116.57
     },
     {
       "visual_beat_id": "SRCH_VB036",
@@ -869,9 +869,9 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 116.59,
+      "start": 116.57,
       "duration": 2.02,
-      "end": 118.61
+      "end": 118.59
     },
     {
       "visual_beat_id": "SRCH_VB037",
@@ -893,9 +893,9 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 118.61,
+      "start": 118.59,
       "duration": 2.34,
-      "end": 120.95
+      "end": 120.93
     },
     {
       "visual_beat_id": "SRCH_VB038",
@@ -903,10 +903,34 @@
       "sequence_id": "SEQ6",
       "paragraph_range": [
         57,
+        57
+      ],
+      "narration_fragment": "所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。",
+      "image_state": "IP sees a cited AI answer but does not treat the citation badge as proof by itself",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "READ_REACTION",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "JINGSUI_PRIOR_ESTIMATE",
+      "timing_kind": "NORMAL",
+      "start": 120.93,
+      "duration": 3.02,
+      "end": 123.95
+    },
+    {
+      "visual_beat_id": "SRCH_VB039",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        58,
         58
       ],
-      "narration_fragment": "所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。\n\n如果答案不重要，我当然也不会每次都去查。",
-      "image_state": "IP no longer treats citations as proof, but low-stakes answers still pass without ritual verification",
+      "narration_fragment": "如果答案不重要，我当然也不会每次都去查。",
+      "image_state": "a low-stakes answer passes without a verification ritual; IP keeps working normally",
       "inherited_visual_intention": "FOLLOW_ACTION",
       "local_visual_intention": "FEEL_RELATION",
       "shot_function": "ACTION",
@@ -917,36 +941,60 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 120.95,
-      "duration": 7.62,
-      "end": 128.56
+      "start": 123.95,
+      "duration": 2.52,
+      "end": 126.47
     },
     {
-      "visual_beat_id": "SRCH_VB039",
+      "visual_beat_id": "SRCH_VB040",
       "semantic_shot_id": "SRCH_S018",
       "sequence_id": "SEQ6",
       "paragraph_range": [
         59,
-        60
+        59
       ],
-      "narration_fragment": "但如果这件事真的会让我花钱、改方案，或者做一个很难撤回来的决定，\n\n我会多问一句：",
-      "image_state": "money/plan/irreversible decision makes IP stop before acting",
+      "narration_fragment": "但如果这件事真的会让我花钱、改方案，或者做一个很难撤回来的决定，",
+      "image_state": "money / plan / hard-to-reverse consequences enter the working decision space and cause a visible stop",
       "inherited_visual_intention": "FOLLOW_ACTION",
-      "local_visual_intention": "EXPERIENCE_REVERSAL",
+      "local_visual_intention": "COMPARE_STATES",
       "shot_function": "ACTION",
-      "shot_size": "MEDIUM_TWO_SHOT",
+      "shot_size": "MEDIUM_WIDE",
       "pov_mode": "OBSERVER",
       "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
       "image_relation_grammar": "CONTRAST",
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 128.56,
-      "duration": 6.07,
-      "end": 134.64
+      "start": 126.47,
+      "duration": 4.38,
+      "end": 130.85
     },
     {
-      "visual_beat_id": "SRCH_VB040",
+      "visual_beat_id": "SRCH_VB041",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        60,
+        60
+      ],
+      "narration_fragment": "我会多问一句：",
+      "image_state": "IP pauses before action and turns back to the source/answer with one deliberate follow-up",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "FOLLOW_ACTION",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "JINGSUI_PRIOR_ESTIMATE",
+      "timing_kind": "PUNCH_SETUP",
+      "start": 130.85,
+      "duration": 1.35,
+      "end": 132.2
+    },
+    {
+      "visual_beat_id": "SRCH_VB042",
       "semantic_shot_id": "SRCH_S018",
       "sequence_id": "SEQ6",
       "paragraph_range": [
@@ -965,12 +1013,12 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 134.64,
+      "start": 132.2,
       "duration": 3.35,
-      "end": 137.99
+      "end": 135.55
     },
     {
-      "visual_beat_id": "SRCH_VB041",
+      "visual_beat_id": "SRCH_VB043",
       "semantic_shot_id": "SRCH_S019",
       "sequence_id": "SEQ6",
       "paragraph_range": [
@@ -989,12 +1037,12 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 137.99,
+      "start": 135.55,
       "duration": 4.07,
-      "end": 142.06
+      "end": 139.62
     },
     {
-      "visual_beat_id": "SRCH_VB042",
+      "visual_beat_id": "SRCH_VB044",
       "semantic_shot_id": "SRCH_S019",
       "sequence_id": "SEQ6",
       "paragraph_range": [
@@ -1013,9 +1061,10 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "FINAL",
-      "start": 142.06,
+      "start": 139.62,
       "duration": 2.59,
-      "end": 144.65
+      "end": 142.21
     }
-  ]
+  ],
+  "density_review": "Split low-stakes vs high-stakes verification behavior into distinct meaningful image states; no rule changes."
 }
