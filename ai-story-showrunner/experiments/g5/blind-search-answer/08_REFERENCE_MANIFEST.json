@@ -1,0 +1,70 @@
+{
+  "episode_id": "blind-search-answer",
+  "status": "G5B_SPEC_LOCKED_REFERENCE_IMAGES_PENDING",
+  "references": [
+    {
+      "asset_id": "CHAR_IP_001",
+      "type": "CHARACTER",
+      "status": "MISSING_REAL_ASSET",
+      "canonical_paths": [],
+      "generation_allowed": false,
+      "note": "Must use user's real canonical IP three-view reference; do not recreate identity from text."
+    },
+    {
+      "asset_id": "SCENE_WORKDESK_001",
+      "type": "SCENE",
+      "status": "TO_GENERATE_CANONICAL",
+      "canonical_paths": [],
+      "generation_allowed": true,
+      "note": "Generate empty/stable primary workdesk master after style approval."
+    },
+    {
+      "asset_id": "SCENE_PHONEBOOK_ANALOGY_001",
+      "type": "SCENE",
+      "status": "TO_GENERATE_CANONICAL",
+      "canonical_paths": [],
+      "generation_allowed": true,
+      "note": "Minimal analogy scene."
+    },
+    {
+      "asset_id": "UI_AI_ANSWER_001",
+      "type": "UI_DOCUMENT",
+      "status": "TO_GENERATE_CANONICAL",
+      "canonical_paths": [],
+      "generation_allowed": true,
+      "text_render_mode": "POST_OVERLAY"
+    },
+    {
+      "asset_id": "UI_POLICY_PAGE_001",
+      "type": "UI_DOCUMENT",
+      "status": "TO_GENERATE_CANONICAL",
+      "canonical_paths": [],
+      "generation_allowed": true,
+      "text_render_mode": "POST_OVERLAY"
+    },
+    {
+      "asset_id": "PROP_COST_SHEET_001",
+      "type": "PROP",
+      "status": "TO_GENERATE_CANONICAL",
+      "canonical_paths": [],
+      "generation_allowed": true,
+      "text_render_mode": "POST_OVERLAY"
+    },
+    {
+      "asset_id": "PROP_CONTACT_BOOK_001",
+      "type": "PROP",
+      "status": "TO_GENERATE_CANONICAL",
+      "canonical_paths": [],
+      "generation_allowed": true,
+      "text_render_mode": "POST_OVERLAY"
+    },
+    {
+      "asset_id": "STYLE_CHANNEL_001",
+      "type": "STYLE",
+      "status": "TO_GENERATE_CANONICAL",
+      "canonical_paths": [],
+      "generation_allowed": true,
+      "note": "Text style lock exists; approve visual samples before full generation."
+    }
+  ]
+}
