@@ -1,6 +1,6 @@
 # Content Strategy & Conversion Contract v0.2
 
-> **G3R STATUS: OWNER ALIGNED / NOT PASS.** Bilibili-first additions remain candidate policy pending two unresolved Owner questions and explicit G3R PASS.
+> **G3R STATUS: PASS.** Bilibili-first content strategy is canonical for the current editorial baseline.
 
 ## 1. Purpose
 
