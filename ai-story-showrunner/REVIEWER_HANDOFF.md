@@ -168,3 +168,53 @@ Continue **within G4 only**:
 > Compile Context / Memory into a G4A semantic shot plan and compare with Agent.
 
 No Owner action required yet.
+
+## G4 Final Closeout — PASS / Owner Hold
+
+G4 cross-topic validation is complete.
+
+Final review:
+- `docs/G4_VALIDATION_REVIEW.md`
+
+Accepted timing basis:
+- `JINGSUI_CALIBRATED_REFERENCE`
+- ~5.9 Chinese chars/s
+- visual beat median target ~2.7s
+- final audio may later trigger timing-only realignment
+
+Validated episodes:
+- Agent: 36 semantic shots → 61 visual beats → 150.14s → PASS
+- Context / Memory: 43 → 63 → 172.19s → PASS
+- MCP: 44 → 63 → 166.38s → PASS
+
+Machine checks:
+- structural field errors: 0
+- invalid roles/transitions: 0
+- timing overlap/nonpositive duration errors: 0
+
+Final G4 architecture:
+```text
+Locked Script / KnowledgeCore
+→ G4A1 Semantic Director
+→ G4A2 Visual Beat Compiler
+→ G4B Jingsui-calibrated reference timing / SRT
+→ Shotbook
+```
+
+Canonical G4 schemas:
+- `schemas/semantic_shot.schema.json`
+- `schemas/visual_beat.schema.json`
+
+Important boundary:
+G4 locks what each image-level beat must communicate.
+Final image-generation prompts and canonical reference-asset paths remain downstream after Character / Scene / Style locking.
+
+Current state:
+```text
+G4 = PASS
+G5 = READY_NOT_STARTED
+OWNER_HOLD_BEFORE_G5 = YES
+```
+
+Do not enter G5 until explicit Owner approval.
+
