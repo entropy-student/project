@@ -1,0 +1,1161 @@
+{
+  "experiment": "G4R_V03_MCP",
+  "status": "EXPERIMENTAL_NOT_CANONICAL",
+  "source_script": "episodes/20260920-mcp/G3R_narrative_test_v1.md",
+  "source_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE_V03.md",
+  "semantic_shot_count": 35,
+  "shots": [
+    {
+      "semantic_shot_id": "MCP3_S001",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "paragraph_range": [
+        1,
+        3
+      ],
+      "narration_span": "我本来是想招个 AI 替我干活。\n\n第三天以后，\n\n我成了它的入职培训老师。",
+      "dramatic_refs": [
+        "SC1.1_1_3"
+      ],
+      "visual_intention": {
+        "primary": "ORIENT",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "ESTABLISH",
+      "subject_priority": "IP + AI employee relation",
+      "staging_blocking": "IP expected AI to reduce work, but now stands with onboarding materials facing AI like a trainer.",
+      "framing_strategy": "medium two-shot with work hub context",
+      "pov_strategy": "OBSERVER eye-level",
+      "composition_strategy": "IP with manuals foreground, AI waiting opposite.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "manuals/AI",
+      "screen_direction": "stable hub axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Role reversal: employer becomes trainer.",
+      "acceptance_criteria": [
+        "hook readable",
+        "no technology diagram"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S002",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "paragraph_range": [
+        4,
+        4
+      ],
+      "narration_span": "第一天，我让它帮我查库存。",
+      "dramatic_refs": [
+        "SC1.1_4_4"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": null
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP sends AI to inventory",
+      "staging_blocking": "IP gestures AI from HUB toward inventory door in HALL.",
+      "framing_strategy": "medium-wide, show task origin and destination",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Clear path from IP toward first department door.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "inventory door",
+      "screen_direction": "left-to-right",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "First delegation begins concretely.",
+      "acceptance_criteria": [
+        "department door visible",
+        "same company world"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S003",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "paragraph_range": [
+        5,
+        11
+      ],
+      "narration_span": "它问我：\n\n“库存在哪？”\n\n我说：\n\n“后台。”\n\n“哪个后台？”\n\n“商品后台。”\n\n“怎么查？”",
+      "dramatic_refs": [
+        "SC1.1_5_11"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "RELATION",
+      "subject_priority": "AI + inventory entrance rules",
+      "staging_blocking": "AI reaches inventory door, repeatedly turns back to IP as each local detail becomes another question.",
+      "framing_strategy": "medium two-shot/OTS strategy, keep unfamiliar door controls in frame",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "AI near door, IP slightly behind; local entry device remains focal anchor.",
+      "eye_trace_in": "door handle/control",
+      "eye_trace_out": "IP/AI",
+      "screen_direction": "same hallway axis",
+      "visual_intensity": "MEDIUM_HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "One department generates a chain of integration questions.",
+      "acceptance_criteria": [
+        "do not cut every question at Semantic level",
+        "local friction remains spatial"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S004",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "paragraph_range": [
+        12,
+        15
+      ],
+      "narration_span": "……\n\n行。\n\n我教。\n\n点这里，进这里，搜商品名，再看剩余库存。",
+      "dramatic_refs": [
+        "SC1.1_12_15"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP trains AI on inventory",
+      "staging_blocking": "After a silent beat, IP physically demonstrates the local workflow and points through the required steps.",
+      "framing_strategy": "medium object/action progression",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Hands/door controls/action path dominate, not a checklist card.",
+      "eye_trace_in": "AI question",
+      "eye_trace_out": "IP hands",
+      "screen_direction": "toward department",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Manual onboarding solves only this local system.",
+      "acceptance_criteria": [
+        "training visible",
+        "no numbered slide"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S005",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "paragraph_range": [
+        16,
+        18
+      ],
+      "narration_span": "教完以后效果还不错。\n\n我心想可以。\n\n一个员工培训一次，后面不就省事了吗？",
+      "dramatic_refs": [
+        "SC1.1_16_18"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP false confidence",
+      "staging_blocking": "AI succeeds; IP relaxes and mentally files training as a one-time cost.",
+      "framing_strategy": "medium reaction with inventory task succeeding behind",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Successful department action background, IP foreground confidence.",
+      "eye_trace_in": "AI success",
+      "eye_trace_out": "IP",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "False belief: train once and future work is easy.",
+      "acceptance_criteria": [
+        "success concrete",
+        "confidence understated"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S006",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.2",
+      "paragraph_range": [
+        19,
+        19
+      ],
+      "narration_span": "第二天，我让它看看昨天收了多少钱。",
+      "dramatic_refs": [
+        "SC1.2_19_19"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": null
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP sends AI to finance",
+      "staging_blocking": "Next day IP casually directs AI toward finance door.",
+      "framing_strategy": "medium-wide hallway continuity",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Reuse corridor geography; finance door now destination.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "finance door",
+      "screen_direction": "left-to-right",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Second task appears routine at first.",
+      "acceptance_criteria": [
+        "same world anchors"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S007",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.2",
+      "paragraph_range": [
+        20,
+        26
+      ],
+      "narration_span": "它又问：\n\n“在哪看？”\n\n我说：\n\n“财务系统。”\n\n“哪个页面？”\n\n“账单。”\n\n“怎么进？”",
+      "dramatic_refs": [
+        "SC1.2_20_26"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "EXPERIENCE_REVERSAL"
+      },
+      "shot_function_primary": "RELATION",
+      "subject_priority": "AI + finance entrance rules",
+      "staging_blocking": "At finance door, the same question pattern returns with different local terms.",
+      "framing_strategy": "medium two-shot with finance-specific controls",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Mirror inventory staging but vary local props/door interface.",
+      "eye_trace_in": "finance door",
+      "eye_trace_out": "IP reaction",
+      "screen_direction": "same hallway axis",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "PARALLEL",
+      "visual_state": "Repetition reveals the problem is structural.",
+      "acceptance_criteria": [
+        "mirrors S003 without duplicating exact image",
+        "different local convention visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S008",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.2",
+      "paragraph_range": [
+        27,
+        29
+      ],
+      "narration_span": "我看着它。\n\n有一种非常熟悉的不祥预感。\n\n又教了一遍。",
+      "dramatic_refs": [
+        "SC1.2_27_29"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP recognition + retraining",
+      "staging_blocking": "IP stares with familiar dread, then reluctantly starts another training sequence.",
+      "framing_strategy": "close reaction → medium action strategy",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Reaction first, then training gesture re-enters frame.",
+      "eye_trace_in": "AI",
+      "eye_trace_out": "IP face/hands",
+      "screen_direction": "same axis",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "The second retraining converts coincidence into pattern.",
+      "acceptance_criteria": [
+        "reaction meaningful",
+        "training compressed"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S009",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.3",
+      "paragraph_range": [
+        30,
+        32
+      ],
+      "narration_span": "第三天我要它找一份合同。\n\n“合同在哪？”\n\n我已经不想回答了。",
+      "dramatic_refs": [
+        "SC1.3_30_32"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "REVERSAL",
+      "subject_priority": "third department repetition",
+      "staging_blocking": "At contract door, AI asks the same kind of entry question; IP visibly gives up responding.",
+      "framing_strategy": "medium-wide then reaction-ready framing",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Third door in same corridor; IP posture deteriorates.",
+      "eye_trace_in": "contract door",
+      "eye_trace_out": "IP",
+      "screen_direction": "same axis",
+      "visual_intensity": "HIGH_COMIC",
+      "image_relation_grammar": "PARALLEL",
+      "visual_state": "Third recurrence locks the pattern.",
+      "acceptance_criteria": [
+        "contract props distinct",
+        "IP fatigue visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S010",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "paragraph_range": [
+        33,
+        36
+      ],
+      "narration_span": "库存有库存的入口。\n\n财务有财务的入口。\n\n合同有合同的入口。\n\n客服、邮件、项目管理……",
+      "dramatic_refs": [
+        "SC2.1_33_36"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "ORIENT"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "multiple department entrances",
+      "staging_blocking": "Inventory, finance, contract, support/email/project-management entry differences appear as parallel door states in the same corridor system.",
+      "framing_strategy": "wide parallel montage",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Common hallway grammar; local handles/forms/labels vary.",
+      "eye_trace_in": "one door",
+      "eye_trace_out": "next door",
+      "screen_direction": "left-to-right corridor",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Different systems expose different local entry conventions.",
+      "acceptance_criteria": [
+        "shared world grammar",
+        "not four PPT cards"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S011",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "paragraph_range": [
+        37,
+        38
+      ],
+      "narration_span": "每多接一个东西，我就得重新给它发一份：\n\n《恭喜入职，这是本部门新员工须知》。",
+      "dramatic_refs": [
+        "SC2.1_37_38"
+      ],
+      "visual_intention": {
+        "primary": "NOTICE_OBJECT",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "onboarding manual stack",
+      "staging_blocking": "Each new system adds another department-specific employee handbook to IP's growing stack.",
+      "framing_strategy": "medium object-led two-shot",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Manual stack between IP and AI, taller than before.",
+      "eye_trace_in": "doors",
+      "eye_trace_out": "manual stack",
+      "screen_direction": "same axis",
+      "visual_intensity": "HIGH_COMIC",
+      "image_relation_grammar": "METAPHOR",
+      "visual_state": "Integration cost becomes physical accumulation.",
+      "acceptance_criteria": [
+        "manual motif clear",
+        "one coherent gag"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S012",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.2",
+      "paragraph_range": [
+        39,
+        41
+      ],
+      "narration_span": "最离谱的是，这个 AI 明明什么都懂。\n\n你让它写代码，它会。\n\n让它分析合同，它也会。",
+      "dramatic_refs": [
+        "SC2.2_39_41"
+      ],
+      "visual_intention": {
+        "primary": "COMPARE_STATES",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "AI cognitive capability",
+      "staging_blocking": "AI confidently writes code and analyzes a contract in the HUB, with no entry-friction problem inside tasks it already has access to.",
+      "framing_strategy": "medium montage using two capability states",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "AI remains same character; task props change, not whole world.",
+      "eye_trace_in": "manual stack",
+      "eye_trace_out": "AI competence",
+      "screen_direction": "N/A",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Model capability is shown to be real.",
+      "acceptance_criteria": [
+        "no magical intelligence glow",
+        "same AI identity"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S013",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.2",
+      "paragraph_range": [
+        42,
+        43
+      ],
+      "narration_span": "可一到真正干活的时候，它就站在门口问我：\n\n“门把手在哪？”",
+      "dramatic_refs": [
+        "SC2.2_42_43"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "AI stuck at unfamiliar door handle",
+      "staging_blocking": "Despite obvious intelligence, AI stands at a new door asking where the handle/entry is.",
+      "framing_strategy": "medium to close object/reaction progression",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Unfamiliar handle foreground, AI face midground, IP background.",
+      "eye_trace_in": "AI competence memory",
+      "eye_trace_out": "door handle",
+      "screen_direction": "same corridor axis",
+      "visual_intensity": "HIGH_COMIC",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Capability vs interoperability friction becomes one image contrast.",
+      "acceptance_criteria": [
+        "door handle joke lands",
+        "not literal API diagram"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S014",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "paragraph_range": [
+        44,
+        45
+      ],
+      "narration_span": "后来我发现问题好像不全在它。\n\n主要是我这家公司每个部门都特别有个性。",
+      "dramatic_refs": [
+        "SC3.1_44_45"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "ORIENT"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP re-evaluates cause",
+      "staging_blocking": "IP scans the corridor of different department doors rather than blaming AI alone.",
+      "framing_strategy": "wide-medium reflective staging",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "AI remains calm; IP's gaze travels across door variations.",
+      "eye_trace_in": "AI",
+      "eye_trace_out": "department row",
+      "screen_direction": "same axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Problem diagnosis shifts from employee to environment.",
+      "acceptance_criteria": [
+        "no explanatory caption"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S015",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "paragraph_range": [
+        46,
+        49
+      ],
+      "narration_span": "库存部：\n\n“进门先报商品编号。”\n\n财务部：\n\n“我们这里只认账单 ID。”",
+      "dramatic_refs": [
+        "SC3.1_46_49"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "PARALLEL",
+      "subject_priority": "inventory vs finance dialects",
+      "staging_blocking": "Inventory door and finance door present different local identifiers/requirements in one comparative corridor composition.",
+      "framing_strategy": "wide/medium parallel comparison",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Two doors share composition but differ in local rule props.",
+      "eye_trace_in": "inventory rule",
+      "eye_trace_out": "finance rule",
+      "screen_direction": "left-to-right comparison",
+      "visual_intensity": "HIGH_COMIC",
+      "image_relation_grammar": "PARALLEL",
+      "visual_state": "Different local schemas are visible without a table.",
+      "acceptance_criteria": [
+        "minimal readable text",
+        "business differences preserved"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S016",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "paragraph_range": [
+        50,
+        53
+      ],
+      "narration_span": "合同部：\n\n“先告诉我文件路径。”\n\n客服部：\n\n“我们的工单状态一共有十四种。”",
+      "dramatic_refs": [
+        "SC3.1_50_53"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "PARALLEL",
+      "subject_priority": "contract vs support dialects",
+      "staging_blocking": "Contract and support doors add further incompatible local conventions.",
+      "framing_strategy": "wide/medium parallel comparison",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Continue same corridor grammar with new local props.",
+      "eye_trace_in": "contract rule",
+      "eye_trace_out": "support rule",
+      "screen_direction": "left-to-right comparison",
+      "visual_intensity": "HIGH_COMIC",
+      "image_relation_grammar": "PARALLEL",
+      "visual_state": "Variation grows while world stays coherent.",
+      "acceptance_criteria": [
+        "do not imply rules are literally doors",
+        "visual metaphor stable"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S017",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.2",
+      "paragraph_range": [
+        54,
+        57
+      ],
+      "narration_span": "我看了一圈。\n\n很好。\n\nAI 没疯。\n\n我快疯了。",
+      "dramatic_refs": [
+        "SC3.2_54_57"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "IP surrounded by local conventions",
+      "staging_blocking": "IP looks across all doors; AI is fine; IP is the one visibly overwhelmed.",
+      "framing_strategy": "wide to medium reaction strategy",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "IP centered, mismatched door rules around; AI calm off to side.",
+      "eye_trace_in": "door row",
+      "eye_trace_out": "IP",
+      "screen_direction": "N/A",
+      "visual_intensity": "PEAK_COMIC",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "‘AI 没疯，我快疯了’ lands through environment and reaction.",
+      "acceptance_criteria": [
+        "no rage symbols",
+        "comic but grounded"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S018",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.1",
+      "paragraph_range": [
+        58,
+        59
+      ],
+      "narration_span": "我一开始想得很简单：\n\n那我就给它全部学会。",
+      "dramatic_refs": [
+        "SC4.1_58_59"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP chooses brute-force training",
+      "staging_blocking": "IP closes reflection and opens a master training binder, committing to teaching everything.",
+      "framing_strategy": "medium two-shot, binder as focal prop",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Binder enters center between IP and AI.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "binder",
+      "screen_direction": "same axis",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "False solution begins as an action.",
+      "acceptance_criteria": [
+        "not a strategy slide"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S019",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.1",
+      "paragraph_range": [
+        60,
+        62
+      ],
+      "narration_span": "库存培训一次。\n\n财务培训一次。\n\n合同培训一次。",
+      "dramatic_refs": [
+        "SC4.1_60_62"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "three department trainings",
+      "staging_blocking": "Inventory, finance, contract training moments compress into one escalating montage; manual stack grows.",
+      "framing_strategy": "montage of same trainer/employee relationship",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Repeat body positions, vary department prop and manual.",
+      "eye_trace_in": "binder",
+      "eye_trace_out": "manual stack",
+      "screen_direction": "N/A",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Training effort accumulates without cutting for every spoken noun mechanically.",
+      "acceptance_criteria": [
+        "three states materially distinct",
+        "same motif"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S020",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.2",
+      "paragraph_range": [
+        63,
+        64
+      ],
+      "narration_span": "再来个新软件？\n\n再培训一次。",
+      "dramatic_refs": [
+        "SC4.2_63_64"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REVERSAL",
+      "subject_priority": "new software/new door",
+      "staging_blocking": "A brand-new software door appears; IP immediately receives another blank training manual.",
+      "framing_strategy": "medium-wide reveal",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "New door at corridor end, IP manual in foreground.",
+      "eye_trace_in": "old stack",
+      "eye_trace_out": "new door/manual",
+      "screen_direction": "toward corridor end",
+      "visual_intensity": "PEAK_COMIC",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "New system resets the manual-learning burden.",
+      "acceptance_criteria": [
+        "newness clear",
+        "same company world"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S021",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.2",
+      "paragraph_range": [
+        65,
+        66
+      ],
+      "narration_span": "理论上没有问题。\n\n只要我这辈子不再安装任何软件。",
+      "dramatic_refs": [
+        "SC4.2_65_66"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "absurd no-new-software condition",
+      "staging_blocking": "IP stares at a 'never install anything again' implication while manual pile remains beside him.",
+      "framing_strategy": "medium reaction with software shelf/door in background",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "IP trapped between manual stack and future tools.",
+      "eye_trace_in": "new manual",
+      "eye_trace_out": "IP",
+      "screen_direction": "same axis",
+      "visual_intensity": "PEAK_COMIC",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Brute-force solution is shown as absurdly non-scalable.",
+      "acceptance_criteria": [
+        "no literal policy poster required",
+        "joke readable"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S022",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "paragraph_range": [
+        67,
+        70
+      ],
+      "narration_span": "后来有一天，我突然换了个想法。\n\n既然每个部门都要跟这个 AI 打交道，\n\n为什么一定要让 AI 每次重新学一套暗号？\n\n能不能让这些部门，至少在门口挂一块差不多格式的牌子？",
+      "dramatic_refs": [
+        "SC5.1_67_70"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "FOLLOW_ACTION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP stops training and studies door interfaces",
+      "staging_blocking": "IP closes the training binder, walks to the doors, and shifts attention from AI to how departments present themselves.",
+      "framing_strategy": "wide-medium movement within hallway",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Binder leaves foreground; door fronts become primary.",
+      "eye_trace_in": "manuals",
+      "eye_trace_out": "door fronts",
+      "screen_direction": "toward doors",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Question changes from 'teach AI more' to 'standardize the meeting point'.",
+      "acceptance_criteria": [
+        "strategy shift visible",
+        "no protocol term yet"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S023",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.2",
+      "paragraph_range": [
+        71,
+        74
+      ],
+      "narration_span": "比如：\n\n我是谁。\n\n我能帮你做什么。\n\n你要怎么叫我。",
+      "dramatic_refs": [
+        "SC5.2_71_74"
+      ],
+      "visual_intention": {
+        "primary": "NOTICE_OBJECT",
+        "secondary": "CLARIFY_MECHANISM"
+      },
+      "shot_function_primary": "INSERT_OBJECT",
+      "subject_priority": "prototype service placard",
+      "staging_blocking": "A simple physical placard shows three concise categories: who I am / what I can do / how to call me.",
+      "framing_strategy": "insert within door context, not full-screen card",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Placard mounted next to real department door; door remains visible.",
+      "eye_trace_in": "door",
+      "eye_trace_out": "placard",
+      "screen_direction": "N/A",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_state": "Common description format appears as a story prop.",
+      "acceptance_criteria": [
+        "minimal text",
+        "not a protocol spec dump"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S024",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.3",
+      "paragraph_range": [
+        75,
+        77
+      ],
+      "narration_span": "库存把“查库存”挂出来。\n\n财务把“查账单”挂出来。\n\n文件系统把“读文件”挂出来。",
+      "dramatic_refs": [
+        "SC5.3_75_77"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "PARALLEL",
+      "subject_priority": "three departments expose capabilities",
+      "staging_blocking": "Inventory, finance, and file-system doors retain different functions but use comparable-format service placards.",
+      "framing_strategy": "wide parallel corridor composition",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Same placard layout, different capability content.",
+      "eye_trace_in": "first placard",
+      "eye_trace_out": "third placard",
+      "screen_direction": "left-to-right",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "PARALLEL",
+      "visual_state": "Standardized interface does not erase different business functions.",
+      "acceptance_criteria": [
+        "different services visible",
+        "format similarity visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S025",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.3",
+      "paragraph_range": [
+        78,
+        81
+      ],
+      "narration_span": "AI 到一个新地方，不用先拉着我培训半天。\n\n先看牌子。\n\n知道这里有哪些东西能用。\n\n需要哪一个，再按约定的方式去调用。",
+      "dramatic_refs": [
+        "SC5.3_78_81"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "AI uses standardized discovery flow",
+      "staging_blocking": "At a new door, AI first reads placard, identifies available capability, then uses the indicated entry/call method without IP retraining.",
+      "framing_strategy": "medium-wide action progression",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "AI path: door → placard → local action; IP stays distant/inactive.",
+      "eye_trace_in": "new door",
+      "eye_trace_out": "AI action",
+      "screen_direction": "toward department",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Discovery replaces manual onboarding.",
+      "acceptance_criteria": [
+        "AI is actor",
+        "IP not teaching",
+        "no magic auto-entry"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S026",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "paragraph_range": [
+        82,
+        85
+      ],
+      "narration_span": "第一次把这套东西接起来以后，我最大的感受其实不是：\n\n“哇，AI 又变聪明了。”\n\n它压根没突然变聪明。\n\n变的是我终于不用每去一个部门，就重新给它办一次入职。",
+      "dramatic_refs": [
+        "SC6.1_82_85"
+      ],
+      "visual_intention": {
+        "primary": "COMPARE_STATES",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "AI unchanged, workflow smoother",
+      "staging_blocking": "AI looks exactly the same while manuals are unused and it moves between departments independently.",
+      "framing_strategy": "medium-wide contrast, manuals foreground unused",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "No visual intelligence upgrade; only friction objects disappear from use.",
+      "eye_trace_in": "AI",
+      "eye_trace_out": "unused manuals",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "MCP-like interoperability changes access friction, not model intelligence.",
+      "acceptance_criteria": [
+        "AI appearance unchanged",
+        "manual motif resolves"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S027",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.2",
+      "paragraph_range": [
+        86,
+        86
+      ],
+      "narration_span": "也是到这里，我才真正理解 MCP 这种东西到底在解决什么。",
+      "dramatic_refs": [
+        "SC6.2_86_86"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "ORIENT"
+      },
+      "shot_function_primary": "CLARIFY",
+      "subject_priority": "term reveal in existing story world",
+      "staging_blocking": "MCP term appears only after the standardized door behavior is already understood.",
+      "framing_strategy": "wide-medium existing-world shot",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "No new diagram; AI uses the same corridor/placards.",
+      "eye_trace_in": "AI action",
+      "eye_trace_out": "subtitle term",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Technical name attaches to prior intuition.",
+      "acceptance_criteria": [
+        "term late",
+        "no definition card"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S028",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.2",
+      "paragraph_range": [
+        87,
+        87
+      ],
+      "narration_span": "它不是给 AI 再加一个更聪明的大脑。",
+      "dramatic_refs": [
+        "SC6.2_87_87"
+      ],
+      "visual_intention": {
+        "primary": "COMPARE_STATES",
+        "secondary": "CLARIFY_MECHANISM"
+      },
+      "shot_function_primary": "CLARIFY",
+      "subject_priority": "no smarter brain",
+      "staging_blocking": "IP indicates AI's unchanged head/appearance, then points back to interaction pattern.",
+      "framing_strategy": "medium two-shot",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "AI unchanged; placard/door secondary in frame.",
+      "eye_trace_in": "MCP term",
+      "eye_trace_out": "AI",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Blocks 'MCP makes AI smarter' misconception.",
+      "acceptance_criteria": [
+        "no glowing brain graphic"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S029",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.2",
+      "paragraph_range": [
+        88,
+        88
+      ],
+      "narration_span": "也不是给所有软件装一个万能遥控器。",
+      "dramatic_refs": [
+        "SC6.2_88_88"
+      ],
+      "visual_intention": {
+        "primary": "COMPARE_STATES",
+        "secondary": "CLARIFY_MECHANISM"
+      },
+      "shot_function_primary": "CLARIFY",
+      "subject_priority": "no universal remote",
+      "staging_blocking": "Different departments still have distinct doors/functions even with same-format placards.",
+      "framing_strategy": "wide corridor comparison",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Common interface format coexists with different interiors/props.",
+      "eye_trace_in": "AI",
+      "eye_trace_out": "door row",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Blocks 'one universal API replaces everything' misconception.",
+      "acceptance_criteria": [
+        "differences remain obvious"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S030",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.2",
+      "paragraph_range": [
+        89,
+        90
+      ],
+      "narration_span": "更像是让 AI 应用和外面的系统之间，\n\n终于有了一种比较统一的见面方式。",
+      "dramatic_refs": [
+        "SC6.2_89_90"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "common meeting ritual",
+      "staging_blocking": "AI repeats the same basic approach at two different doors: read description, choose capability, enter/use.",
+      "framing_strategy": "wide-medium parallel action",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Same ritual across different doors.",
+      "eye_trace_in": "door A",
+      "eye_trace_out": "door B",
+      "screen_direction": "left-to-right",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "PARALLEL",
+      "visual_state": "Unified meeting method becomes visible behavior.",
+      "acceptance_criteria": [
+        "no architecture arrows"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S031",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "paragraph_range": [
+        91,
+        94
+      ],
+      "narration_span": "外部系统可以告诉它：\n\n“我这里有什么工具。”\n\n“有什么资源。”\n\n“你可以怎么用。”",
+      "dramatic_refs": [
+        "SC6.3_91_94"
+      ],
+      "visual_intention": {
+        "primary": "NOTICE_OBJECT",
+        "secondary": "CLARIFY_MECHANISM"
+      },
+      "shot_function_primary": "INSERT_OBJECT",
+      "subject_priority": "system exposes tools/resources/how-to-use",
+      "staging_blocking": "One concise service placard displays small categories for tools/resources/how-to-use while the actual department remains visible.",
+      "framing_strategy": "insert nested in real door context",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Keep only minimal category text.",
+      "eye_trace_in": "door",
+      "eye_trace_out": "placard categories",
+      "screen_direction": "N/A",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_state": "Server-side description is legible without becoming a slide.",
+      "acceptance_criteria": [
+        "minimal text",
+        "not full spec"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S032",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "paragraph_range": [
+        95,
+        95
+      ],
+      "narration_span": "AI 这一边再按这套方式去发现、连接和使用。",
+      "dramatic_refs": [
+        "SC6.3_95_95"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "CLARIFY_MECHANISM"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "AI discovers/connects/uses",
+      "staging_blocking": "AI reads the service description, selects a capability, and proceeds to use it.",
+      "framing_strategy": "medium action sequence strategy",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Placard → action path remains spatially grounded.",
+      "eye_trace_in": "placard",
+      "eye_trace_out": "AI use",
+      "screen_direction": "toward service",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Client-side behavior is shown as action.",
+      "acceptance_criteria": [
+        "do not imply hidden auth is irrelevant"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S033",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.4",
+      "paragraph_range": [
+        96,
+        97
+      ],
+      "narration_span": "所以现在别人再跟我说：\n\n“这个 AI 已经很聪明了，为什么还要 MCP？”",
+      "dramatic_refs": [
+        "SC6.4_96_97"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "ORIENT"
+      },
+      "shot_function_primary": "RELATION",
+      "subject_priority": "question returns",
+      "staging_blocking": "Someone asks why a smart AI still needs MCP; IP glances toward corridor rather than opening an explanation deck.",
+      "framing_strategy": "medium reaction with corridor callback",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Question source off-frame; old corridor visible behind IP.",
+      "eye_trace_in": "question",
+      "eye_trace_out": "corridor",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Final answer begins from remembered experience, not lecture.",
+      "acceptance_criteria": [
+        "no podium framing"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S034",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.4",
+      "paragraph_range": [
+        98,
+        99
+      ],
+      "narration_span": "我第一反应已经不是解释协议了。\n\n我只会想到那几天。",
+      "dramatic_refs": [
+        "SC6.4_98_99"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP memory callback",
+      "staging_blocking": "IP closes any protocol explanation impulse and looks toward old onboarding manuals/doors.",
+      "framing_strategy": "medium close to object callback",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Manual stack or old door-handle prop re-enters frame.",
+      "eye_trace_in": "corridor",
+      "eye_trace_out": "manual/handle",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Narrator chooses story memory over technical lecture.",
+      "acceptance_criteria": [
+        "callback object recognizable"
+      ]
+    },
+    {
+      "semantic_shot_id": "MCP3_S035",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.4",
+      "paragraph_range": [
+        100,
+        104
+      ],
+      "narration_span": "一个什么都会的员工，\n\n每天站在不同部门门口。\n\n等着我过去告诉它——\n\n门把手，\n\n到底在哪。",
+      "dramatic_refs": [
+        "SC6.4_100_104"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "BUILD_PATTERN"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "capable employee at different doors + final handle reveal",
+      "staging_blocking": "AI stands at successive department doors; final beat lands on IP having to point out the handle/entry again.",
+      "framing_strategy": "wide-to-object reveal strategy",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Employee small against corridor, then final handle becomes focal object.",
+      "eye_trace_in": "AI at doors",
+      "eye_trace_out": "door handle",
+      "screen_direction": "left-to-right then stop",
+      "visual_intensity": "RELEASE",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Final image restates the entire problem through the door-handle motif.",
+      "acceptance_criteria": [
+        "final payoff character-led",
+        "no final definition card"
+      ]
+    }
+  ],
+  "coverage_validation": {
+    "status": "PASS",
+    "script_len": 932,
+    "plan_len": 932
+  }
+}
