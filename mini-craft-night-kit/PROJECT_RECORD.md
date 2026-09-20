@@ -292,3 +292,12 @@ Formal decision: `docs/REVIEWER_DECISION_K1B_PASS.md`.
 Current Gate: `K2_WOOCOMMERCE_COMMERCE_LOOP`.
 
 Final product/lifestyle image replacement remains a later controlled task and does not block K2.
+
+
+## K2 Authorization
+
+Formal decision: `docs/REVIEWER_DECISION_K2_WOOCOMMERCE_COMMERCE_LOOP.md`.
+
+Current Gate: `K2_WOOCOMMERCE_COMMERCE_LOOP`.
+
+K2 verifies local Product → Add to Cart → Cart → Checkout → Order → Confirmation. PayPal and real payment remain K3.
