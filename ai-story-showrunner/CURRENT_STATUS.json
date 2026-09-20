@@ -62,7 +62,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is a candidate writer style engine behind a restrictive project adapter"
   ],
-  "project_state": "HOLD_G3R_READY_FOR_OWNER_PASS_DECISION",
+  "project_state": "HOLD_G3R_READY_FOR_EXPLICIT_OWNER_PASS",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -99,7 +99,7 @@
     "editorial_baseline_status": "REOPENED_DUE_TO_PLATFORM_STRATEGY_DRIFT",
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY"
   },
-  "owner_review_scope": "Final Owner PASS / RETURN decision on G3R; G4 remains blocked until explicit PASS",
+  "owner_review_scope": "Explicit Owner PASS / RETURN for G3R. If PASS, run Reviewer closeout and release G4.",
   "g3_rebaseline": {
     "status": "OWNER_ALIGNED_NOT_PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -144,20 +144,31 @@
     "narrative_smoke_test_v2": "episodes/20260920-agent/G3R_narrative_test_v2.md",
     "narrative_smoke_test_v2_review": "episodes/20260920-agent/G3R_narrative_test_review_v2.md",
     "narrative_smoke_test_v2_score": 91,
-    "narrative_style_contract_version": "0.2",
-    "writer_quality_contract_version": "0.3",
+    "narrative_style_contract_version": "0.3",
+    "writer_quality_contract_version": "0.4",
     "cross_topic_validation": {
       "status": "PASS_CANDIDATE",
       "agent": {
         "artifact": "episodes/20260920-agent/G3R_narrative_test_v2.md",
-        "score": 91
+        "review": "episodes/20260920-agent/G3R_narrative_test_review_v2.md",
+        "score": 91,
+        "type": "EVENT_DRIVEN_PERMISSION_ACTION"
       },
       "context_memory": {
-        "artifact": "episodes/20260920-context-memory/G3R_narrative_test_v1.md",
-        "score": 89
+        "artifact": "episodes/20260920-context-memory/G3R_narrative_test_v2.md",
+        "review": "episodes/20260920-context-memory/G3R_narrative_test_review_v2.md",
+        "score": 92,
+        "type": "METAPHOR_DRIVEN_COGNITIVE_DISTINCTION"
       },
-      "finding": "Narrative style transfers across permission/risk and conceptual-memory topics without requiring the same conflict pattern"
+      "mcp": {
+        "artifact": "episodes/20260920-mcp/G3R_narrative_test_v1.md",
+        "review": "episodes/20260920-mcp/G3R_narrative_test_review_v1.md",
+        "score": 90,
+        "type": "REPEATED_INTEGRATION_FRICTION_INTEROPERABILITY"
+      },
+      "finding": "The portable invariant is character desire → action → mechanism response → state change → next choice → recognition/payoff; conflict shape and narrative engine remain topic-dependent."
     },
-    "ready_for_owner_pass_decision": true
+    "ready_for_owner_pass_decision": true,
+    "patch_integration_status": "FORMALLY_INTEGRATED_IN_PROJECT_DOCS"
   }
 }
