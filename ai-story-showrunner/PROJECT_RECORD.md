@@ -127,7 +127,8 @@ Showrunner 不重复实现 Worker 的专业能力。
 P0  Project Boundary / Governance Reconciliation PASS
 G1  Worker Inventory + Canonical Contracts     PASS
 G2  Topic → Human Problem → Story MVP          PASS
-G3  Story → Script / SRT MVP                   PENDING / NEXT
+G2.5 Topic Supply / Ledger / Dedup             PASS_CANDIDATE / OWNER REVIEW
+G3  Story → Script / SRT MVP                   PENDING
 G4  Script → Director Shotbook MVP             PENDING
 G5  Shotbook → Image Asset Package MVP         PENDING
 G6  Image Assets → Video MVP                   PENDING
@@ -402,3 +403,29 @@ Reviewer decision: **PASS**
 - G3 的关键风险从“故事能否成立”转变为“Writer 是否会把故事重新写成科普”。
 
 Detailed review: `docs/G2_VALIDATION_REVIEW.md`
+
+
+## 16. G2.5 Topic Operating System — 2026-09-20
+
+Owner raised two pre-G3 requirements:
+1. stable topic supply;
+2. duplicate prevention.
+
+Design created:
+- HOT + EVERGREEN two-lane supply;
+- Daily Radar only discovers/shortlists, it does not publish;
+- Topic Registry is the semantic memory;
+- Calendar is scheduling only;
+- four-level dedup: Signal / Topic / Angle / Story-Visual motif;
+- candidate quality separates Reach Potential from long-term Asset Value;
+- 40 evergreen human-problem seeds added to validate long-term supply.
+
+External project decision:
+- borrow ingestion/history patterns from AI-TREND-RADAR / TrendRadar;
+- do not inherit their scoring as canonical content judgment.
+
+Automation:
+- recommended, but intentionally NOT enabled before Owner accepts the contract.
+
+Current state:
+`G2.5 PASS_CANDIDATE / HOLD BEFORE G3`.
