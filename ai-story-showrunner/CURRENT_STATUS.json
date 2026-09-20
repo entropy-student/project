@@ -28,8 +28,15 @@
   "unknowns": [
     "canonical topic/history-selection skill location",
     "canonical McKee story-structure skill or final placement",
-    "Antigravity/Nano Banana integration level",
-    "final routing rule among visual production workers"
+    "Antigravity/Nano Banana technical integration level",
+    "audio mode: upstream TTS vs Antigravity TTS"
   ],
-  "authoritative_handoff": "REVIEWER_HANDOFF.md"
+  "authoritative_handoff": "REVIEWER_HANDOFF.md",
+  "locked_decisions": [
+    "Antigravity is the default restricted execution agent for image-to-video production",
+    "one small shot approximately equals one generated image",
+    "motion is preferably represented by multiple still images",
+    "executor has near-zero creative freedom",
+    "character and scene consistency are controlled by canonical references and per-shot contracts"
+  ]
 }
