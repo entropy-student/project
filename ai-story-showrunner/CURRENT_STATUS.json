@@ -8,9 +8,9 @@
     "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
   },
   "current_gate": {
-    "id": "G2",
-    "name": "Topic → Human Problem → Story MVP",
-    "status": "IN_PROGRESS"
+    "id": "G1",
+    "name": "Worker Inventory + Canonical Contracts",
+    "status": "PASS"
   },
   "accepted_gates": [
     {
@@ -25,11 +25,11 @@
     }
   ],
   "next_gate": {
-    "id": "G3",
-    "name": "Story → Script / SRT MVP",
+    "id": "G2",
+    "name": "Topic → Human Problem → Story MVP",
     "status": "PENDING"
   },
-  "owner_intervention_required": false,
+  "owner_intervention_required": true,
   "unknowns": [
     "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR",
     "audio mode final choice: upstream TTS vs Antigravity TTS",
@@ -46,5 +46,7 @@
     "metrics are separated into traffic, trust, and conversion",
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is a candidate writer style engine behind a restrictive project adapter"
-  ]
+  ],
+  "project_state": "HOLD_FOR_OWNER_REVIEW",
+  "owner_review_scope": "Review overall direction after G1; no technical action required"
 }
