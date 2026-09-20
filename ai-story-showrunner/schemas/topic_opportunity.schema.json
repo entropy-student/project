@@ -242,7 +242,6 @@
       "enum": [
         "STORY_MODEL",
         "STORY_ACTION",
-        "STORY_TUTORIAL",
         null
       ]
     },
