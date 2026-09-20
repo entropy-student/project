@@ -8,9 +8,9 @@
     "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
   },
   "current_gate": {
-    "id": "G2",
-    "name": "Topic → Human Problem → Story MVP",
-    "status": "PASS"
+    "id": "G2.5",
+    "name": "Topic Supply / Ledger / Dedup",
+    "status": "PASS_CANDIDATE"
   },
   "accepted_gates": [
     {
@@ -34,7 +34,7 @@
     "name": "Story → Script / SRT MVP",
     "status": "PENDING"
   },
-  "owner_intervention_required": false,
+  "owner_intervention_required": true,
   "unknowns": [
     "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR",
     "audio mode final choice: upstream TTS vs Antigravity TTS",
@@ -52,7 +52,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is a candidate writer style engine behind a restrictive project adapter"
   ],
-  "project_state": "READY_FOR_G3",
+  "project_state": "HOLD_FOR_OWNER_REVIEW_G2_5",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -61,5 +61,15 @@
     ],
     "review_artifact": "docs/G2_VALIDATION_REVIEW.md",
     "result": "PASS"
+  },
+  "owner_review_scope": "Review topic supply, daily radar, dedup and topic-quality framework before G3",
+  "g2_5": {
+    "topic_operating_system": "docs/TOPIC_OPERATING_SYSTEM.md",
+    "registry": "topic-ledger/topic-registry.jsonl",
+    "daily_template": "topic-ledger/daily/TEMPLATE.json",
+    "calendar": "topic-ledger/calendar/2026-09.md",
+    "evergreen_bank": "topic-ledger/EVERGREEN_BANK.md",
+    "status": "PASS_CANDIDATE",
+    "automation_enabled": false
   }
 }
