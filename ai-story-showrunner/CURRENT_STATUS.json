@@ -10,7 +10,7 @@
   "current_gate": {
     "id": "G3R",
     "name": "Bilibili Editorial / Narrative Rebaseline",
-    "status": "HOLD"
+    "status": "PASS"
   },
   "accepted_gates": [
     {
@@ -37,12 +37,17 @@
       "id": "G3",
       "name": "Story → Script / SRT MVP",
       "status": "PASS"
+    },
+    {
+      "id": "G3R",
+      "name": "Bilibili Editorial / Narrative Rebaseline",
+      "status": "PASS"
     }
   ],
   "next_gate": {
     "id": "G4",
     "name": "Script / SRT → Director / Shot Compiler MVP",
-    "status": "BLOCKED"
+    "status": "READY_NOT_STARTED"
   },
   "owner_intervention_required": true,
   "unknowns": [
@@ -62,7 +67,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is a candidate writer style engine behind a restrictive project adapter"
   ],
-  "project_state": "HOLD_G3R_READY_FOR_EXPLICIT_OWNER_PASS",
+  "project_state": "G3R_PASS_OWNER_HOLD_BEFORE_G4",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -99,9 +104,9 @@
     "editorial_baseline_status": "REOPENED_DUE_TO_PLATFORM_STRATEGY_DRIFT",
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY"
   },
-  "owner_review_scope": "Explicit Owner PASS / RETURN for G3R. If PASS, run Reviewer closeout and release G4.",
+  "owner_review_scope": "Owner has paused before G4. Do not start G4 until explicit Owner instruction.",
   "g3_rebaseline": {
-    "status": "OWNER_ALIGNED_NOT_PASS",
+    "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
     "review": "docs/G3R_EDITORIAL_REVIEW.md",
     "proposed_writer_contract": "docs/WRITER_QUALITY_CONTRACT.md",
@@ -125,17 +130,17 @@
       "STORY_MODEL": 5,
       "STORY_ACTION": 2
     },
-    "live_daily_automation": "UNCHANGED_V0_1_UNTIL_EXPLICIT_OWNER_PASS",
+    "live_daily_automation": "ACTIVE_V0_2",
     "season0_plan": "docs/SEASON0_21_DAY_PLAN.md",
     "tutorial_mode": "REMOVED_BY_OWNER",
     "opinion_policy": "OPTIONAL_BOUNDED_NOT_REQUIRED",
     "open_questions_count": 0,
     "open_questions": [],
     "narrative_style_contract": "docs/NARRATIVE_STYLE_CONTRACT.md",
-    "narrative_style_status": "OWNER_ALIGNED",
+    "narrative_style_status": "CANONICAL_G3R_PASS",
     "narrative_smoke_test": "episodes/20260920-agent/G3R_narrative_test_v1.md",
     "narrative_smoke_test_review": "episodes/20260920-agent/G3R_narrative_test_review_v1.md",
-    "narrative_smoke_test_status": "PASS_CANDIDATE_OWNER_REVIEW",
+    "narrative_smoke_test_status": "SUPERSEDED_BY_ACCEPTED_V2",
     "resolved_owner_alignment": [
       "Narrative style and viewpoint: Jingsui lightness + McKee causality/meaning + Controlling Question + Idea/Counter-Idea + Lightness Guard"
     ],
@@ -147,7 +152,7 @@
     "narrative_style_contract_version": "0.3",
     "writer_quality_contract_version": "0.4",
     "cross_topic_validation": {
-      "status": "PASS_CANDIDATE",
+      "status": "PASS",
       "agent": {
         "artifact": "episodes/20260920-agent/G3R_narrative_test_v2.md",
         "review": "episodes/20260920-agent/G3R_narrative_test_review_v2.md",
@@ -168,7 +173,12 @@
       },
       "finding": "The portable invariant is character desire → action → mechanism response → state change → next choice → recognition/payoff; conflict shape and narrative engine remain topic-dependent."
     },
-    "ready_for_owner_pass_decision": true,
-    "patch_integration_status": "FORMALLY_INTEGRATED_IN_PROJECT_DOCS"
+    "ready_for_owner_pass_decision": false,
+    "patch_integration_status": "FORMALLY_INTEGRATED_IN_PROJECT_DOCS",
+    "pass_date": "2026-09-20",
+    "owner_pass_received": true,
+    "daily_planner": "docs/DAILY_TOPIC_AUTOMATION_V2.md",
+    "review_artifact": "docs/G3R_EDITORIAL_REVIEW.md",
+    "g4_release": "READY_BUT_OWNER_HOLD"
   }
 }
