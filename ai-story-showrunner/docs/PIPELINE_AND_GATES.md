@@ -145,131 +145,120 @@ Writer 可以改变表达，不得静默改变 KnowledgeCore。
 
 ---
 
-## Stage 5 — Director / Visual Beat
+## Stage 5 — Director / Shot Decomposition
 
-脚本锁定后，导演从语义和戏剧动作拆 Visual Beat。
+脚本锁定后，导演把故事拆成**可直接施工的小镜头**。
 
-### 禁止
+### Current Rule
 
-```text
-一句台词
-= 一张图
-= 一个镜头
-```
+> **One small shot ≈ one image.**
 
-### 必须回答
+动作、反应、姿态变化优先拆成多个小镜头和多张静态图，而不是依赖复杂运镜或视频生成。
 
-每个 Beat：
+### 每个 Shot 必须锁定
 
-1. 观众这一拍必须理解什么；
-2. 主体发生什么变化；
-3. 为什么需要新画面；
-4. 现有画面能否复用；
-5. 画面最后停在什么状态；
-6. 下一拍如何承接。
+- shot_id；
+- exact start / end / duration；
+- narration / subtitle；
+- character IDs；
+- scene ID；
+- action；
+- expression；
+- composition；
+- camera angle；
+- transition；
+- image_id；
+- 禁止项。
 
-### Visual Gate
+### Gate
 
-- 一句可多 Beat；
-- 多句可同 Beat；
-- punchline / reaction 可短；
-- explanation 可 hold；
-- reuse 优先于无意义新图；
-- 画面必须参与叙事，而不是装饰字幕。
+- 不允许 Antigravity 自行拆镜；
+- 不允许它自行合并镜头；
+- 不允许它改时间；
+- 镜头数量以表达清楚和施工简单为优先，不以少生图为目标。
 
 ### Fail
 `RETURN_TO_DIRECTOR`
 
 ---
 
-## Stage 6 — Asset Resolution
+## Stage 6 — Character / Scene / Style Lock
 
-先解析资产，再生成图片。
+在批量生图前冻结：
 
-### Output
+- Character Bible + canonical references；
+- Scene Bible + canonical references；
+- Style Bible；
+- continuity strategy。
 
-`AssetManifest`
+人物出现的每张图必须携带相同 Character ID 与 canonical reference；连续镜头可追加上一张通过图。
 
-每个 Beat 的视觉需求标记：
+人物漂移：
+`RETURN_CHARACTER_DRIFT`
 
-- `REUSE_EXISTING`
-- `GENERATE_NEW`
-- `SOURCE_REAL`
-- `GRAPHIC_OVERLAY`
-- `TEXT_ONLY`
-- `UNRESOLVED`
-
-### Generate Rule
-
-只有“新的、无法由现有资产表达的视觉状态”才生成新母图。
-
-### Consistency Gate
-
-需要角色时必须绑定：
-
-- Character Reference；
-- Style Lock；
-- continuity reference（需要时）。
-
-### Fail
-`RETURN_TO_ASSET_RESOLUTION`
+场景关键结构漂移：
+`RETURN_SCENE_DRIFT`
 
 ---
 
-## Stage 7 — Image Generation Adapter
+## Stage 7 — Low-Level Execution Package
 
-当前候选执行环境：
+把前面所有导演决定编译成 Antigravity 可直接执行的施工包。
 
-- Antigravity；
-- Nano Banana。
+Canonical contract：
 
-但核心 Contract 不写死 Provider。
+`docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
 
-### Input
+核心文件：
 
-`AssetRequest[]`
+- `07_SHOT_TIMELINE.csv`
+- `08_IMAGE_GENERATION.csv`
+- `09_EDIT_INSTRUCTIONS.md`
+- Character / Scene / Style references。
 
-### Output
+### Execution Philosophy
 
-- asset id；
-- file / URI；
-- generation provider；
-- prompt version；
-- references；
-- dimensions；
-- QA status。
+> 上游思考尽可能充分，下游执行尽可能愚蠢。
 
-### Gate
-
-- 人物身份；
-- 场景连续；
-- 关键动作；
-- 构图；
-- 画面可裁切性；
-- 禁止错误文字进入最终画面。
+没有写的效果默认 `DO_NOT_ADD`。
 
 ---
 
-## Stage 8 — Motion / Render
+## Stage 8 — Antigravity Execution
 
-根据内容路由，不强制只有一个执行器。
+Antigravity 当前冻结为**执行 Agent**，不是导演。
 
-候选：
+执行顺序：
 
-- `visual-narrative-animation-lab`；
-- `aroll-video-maker`；
-- `video-talkcraft-design-orchestrator`；
-- Remotion / CSS；
-- `narrative-motion-semantics` 作为特定信息关系的语义库。
+1. 按 Image Generation Sheet 批量调用 Nano Banana 生图；
+2. 每张图先做 identity / scene / composition QA；
+3. 合格图片按 Shot Timeline 放入对应时间段；
+4. 只执行明确指定的简单 cut / transition / subtitle / audio；
+5. 导出视频初稿；
+6. 返回 execution_result。
 
-### Render Gate
+### Forbidden
 
-- 音频主时间轴；
-- Visual Beat 与语义同步；
-- 动效表达关系，而不是统一 fade；
-- 画面密度有变化；
-- callback / reuse 正常；
-- 字幕 / 正式文字由后期可靠渲染。
+Antigravity 不得自行：
+
+- 改故事 / 文案 / SRT；
+- 改镜头数量或时长；
+- 改角色 / 场景；
+- 改 Prompt；
+- 加运镜 / 转场 / BGM / SFX；
+- 删除它认为“多余”的图片。
+
+无法执行时：
+`RETURN_EXECUTION_CONTRACT_UNRESOLVED`
+
+### Audio Branch — TBD
+
+当前保留两个候选：
+
+- **AUDIO_MODE=A**：上游先完成 TTS/配音，Antigravity 以现成音频为唯一主时间轴；
+- **AUDIO_MODE=B**：Antigravity 按锁定 script/SRT + voice config 生成 TTS，再锁音频时间轴。
+
+在真实 PoC 前保持 `TBD`。
 
 ---
 
