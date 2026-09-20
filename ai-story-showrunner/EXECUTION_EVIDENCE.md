@@ -344,3 +344,24 @@ The live scheduled Daily Topic Radar was not changed to the proposed v0.2 planne
 - Added scene/beat causal progression contract.
 - G4 remains BLOCKED pending final Owner PASS.
 
+---
+
+## G3R Documentation Consolidation — Owner Aligned / Not Pass
+
+- Date: 2026-09-20
+- Owner allowed documentation consolidation.
+- Owner did NOT issue G3R PASS.
+- Two unresolved editorial questions remain.
+- Tutorial mode removed from current candidate baseline.
+- Candidate modes: STORY_MODEL / STORY_ACTION.
+- Candidate primary duration: 3–5 min with justified exceptions.
+- Candidate weekly mix: 5 / 2.
+- Live Daily Topic Radar v0.1 not changed.
+- No G4 work started.
+
+```text
+G3R HOLD
+OPEN_QUESTIONS = 2
+G4 BLOCKED
+```
+
