@@ -447,3 +447,56 @@ READY_FOR_OWNER_PASS_DECISION = YES
 G4 = BLOCKED UNTIL EXPLICIT OWNER PASS
 ```
 
+## G3R Patch Integration + Three-Case Validation — Current Authoritative Addendum
+
+Owner approved formal integration of the latest copywriting patch into project-space documentation.
+
+Promoted candidate contracts:
+- `docs/NARRATIVE_STYLE_CONTRACT.md` v0.3
+- `docs/WRITER_QUALITY_CONTRACT.md` v0.4
+
+New stable additions:
+1. Hook Strength Gate:
+   - event / counter-intuitive;
+   - desire / conflict.
+2. Narrative Engine Selection:
+   - EVENT_DRIVEN;
+   - METAPHOR_DRIVEN.
+3. Mechanism Definition Compression:
+   - contrast before paragraph explanation;
+   - minimum accuracy-critical clarification.
+4. Formatting as Semantic Rhythm:
+   - isolated reveal;
+   - repeated stop;
+   - delayed landing word;
+   - no formatting inflation.
+
+Final G3R narrative validation set:
+- Agent v2 — 91/100 — event-driven permission/action;
+- Context / Memory v2 — 92/100 — metaphor-driven cognitive distinction;
+- MCP v1 — 90/100 — repeated integration friction / interoperability.
+
+Validated invariant:
+```text
+character desire
+→ character action
+→ mechanism response
+→ meaningful state change
+→ next choice
+→ recognition / payoff
+```
+
+Explicit anti-template rule:
+Do NOT standardize:
+`mistake → disaster → overcorrect → compromise`.
+
+Governance state remains:
+```text
+G3R = HOLD
+OPEN_QUESTIONS = 0
+READY_FOR_EXPLICIT_OWNER_PASS = YES
+G4 = BLOCKED
+```
+
+The next governance action is an explicit Owner PASS / RETURN decision.
+
