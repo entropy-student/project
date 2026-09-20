@@ -1,0 +1,1289 @@
+{
+  "experiment": "G4R_V03_CONTEXT_MEMORY",
+  "status": "EXPERIMENTAL_NOT_CANONICAL",
+  "source_script": "episodes/20260920-context-memory/G3R_narrative_test_v2.md",
+  "source_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE_V03.md",
+  "semantic_shot_count": 44,
+  "shots": [
+    {
+      "semantic_shot_id": "CM3_S001",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "narration_span": "我讨厌重复交代东西。",
+      "dramatic_refs": [
+        "SC1.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "ORIENT",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "ESTABLISH",
+      "subject_priority": "IP + repeated requirement notes",
+      "staging_blocking": "IP faces the same small set of requirement notes around the current work desk.",
+      "framing_strategy": "medium human-first; enough desk context to see repetition",
+      "pov_strategy": "OBSERVER eye-level",
+      "composition_strategy": "IP centered; duplicate notes cluster near one side instead of becoming full-screen text.",
+      "eye_trace_in": "notes",
+      "eye_trace_out": "IP face",
+      "screen_direction": "stable room axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Repeated requirements are a lived work problem, not a title card.",
+      "acceptance_criteria": [
+        "human problem clear",
+        "text minimal",
+        "same room anchors visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S002",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "narration_span": "“这个项目不要 PPT 风。”“先说结论。”“这个角色别画成人类客服。”",
+      "dramatic_refs": [
+        "SC1.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "three recurring requirement notes",
+      "staging_blocking": "Three concise note objects recur around the same working setup.",
+      "framing_strategy": "object-led montage within same space",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Each note appears as a physical/sticky-note-like recurring prop while IP remains in environment.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "notes",
+      "screen_direction": "N/A",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Three specific preferences become repeatable story props.",
+      "acceptance_criteria": [
+        "only necessary phrases readable",
+        "no card-deck look"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S003",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "narration_span": "这种话第一次说叫需求。说到第五次，我就开始怀疑，到底谁是谁的助理。",
+      "dramatic_refs": [
+        "SC1.1_B2"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "IP surrounded by duplicates",
+      "staging_blocking": "Duplicate copies accumulate; IP counts them while AI waits innocently.",
+      "framing_strategy": "medium reaction with visible repeated props",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "IP face and duplicate notes share frame.",
+      "eye_trace_in": "notes",
+      "eye_trace_out": "IP",
+      "screen_direction": "same axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "METAPHOR",
+      "visual_state": "Fifth repetition turns requirement into absurd role reversal.",
+      "acceptance_criteria": [
+        "IP remains primary",
+        "no literal servant gag"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S004",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "narration_span": "所以我对 AI 一直有个特别简单的要求：我说过。你记住。别再让我说第二遍。",
+      "dramatic_refs": [
+        "SC1.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP handing preferences to AI",
+      "staging_blocking": "IP gathers the recurring notes and deliberately hands them to AI.",
+      "framing_strategy": "two-shot handoff; medium",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Notes move from IP side to AI side.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "AI hands",
+      "screen_direction": "left-to-right handoff",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Desire is expressed as transfer, not manifesto text.",
+      "acceptance_criteria": [
+        "handoff clear",
+        "same note props retained"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S005",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "narration_span": "如果把 AI 想成一个助理，那它面前其实一直有张桌子。",
+      "dramatic_refs": [
+        "SC2.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "ORIENT",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "ESTABLISH",
+      "subject_priority": "AI + normal active desk",
+      "staging_blocking": "Same room reveals a finite active desk in front of AI; notebook station absent.",
+      "framing_strategy": "wide-medium to establish stable room geometry",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Desk footprint, AI seat, overflow edge all visible.",
+      "eye_trace_in": "IP/AI",
+      "eye_trace_out": "active desk",
+      "screen_direction": "stable left-right room axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Desk becomes a recurring world object, not a diagram.",
+      "acceptance_criteria": [
+        "room geometry lockable",
+        "desk finite",
+        "no labels"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S006",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "narration_span": "我今天要处理的资料、刚刚聊过的话、改到第三版的要求，全得先摆到这张桌子上。",
+      "dramatic_refs": [
+        "SC2.1_B2"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "current-task materials",
+      "staging_blocking": "IP places today files, recent chat, and versioned requirement sheets onto active desk.",
+      "framing_strategy": "medium-wide, show object placement and desk capacity",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Materials occupy defined zones on same desk.",
+      "eye_trace_in": "empty desk",
+      "eye_trace_out": "filled zones",
+      "screen_direction": "left-to-right placement",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Current working set becomes spatially concrete.",
+      "acceptance_criteria": [
+        "materials distinct",
+        "desk still readable as one surface"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S007",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "narration_span": "“刚才那个价格是多少？”它知道。",
+      "dramatic_refs": [
+        "SC2.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "SEE_CONSEQUENCE",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "visible price note on active desk",
+      "staging_blocking": "AI points to the still-visible current price note without searching elsewhere.",
+      "framing_strategy": "medium interaction with object",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Price note near prior eye-trace position.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "price note",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Current context feels useful because relevant info is already present.",
+      "acceptance_criteria": [
+        "answer visually obvious",
+        "no floating response text"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S008",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "narration_span": "“第三份文档里我删了哪段？”它也知道。",
+      "dramatic_refs": [
+        "SC2.1_B4"
+      ],
+      "visual_intention": {
+        "primary": "SEE_CONSEQUENCE",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "third document/version stack",
+      "staging_blocking": "AI retrieves correct current-task version from the same desk.",
+      "framing_strategy": "medium object-handling",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Version stack visible in relation to active work surface.",
+      "eye_trace_in": "price note",
+      "eye_trace_out": "version stack",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Second success reinforces the mistaken memory intuition.",
+      "acceptance_criteria": [
+        "version continuity clear"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S009",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.2",
+      "narration_span": "我看着那张桌子，只有一个念头：还能加。",
+      "dramatic_refs": [
+        "SC2.2_B1"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP eyeing remaining desk space",
+      "staging_blocking": "IP looks along desk edge and gestures wider.",
+      "framing_strategy": "medium-close reaction with desk edge in frame",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Eye-line travels from current materials toward empty edge.",
+      "eye_trace_in": "desk contents",
+      "eye_trace_out": "empty edge",
+      "screen_direction": "same axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Wrong conclusion becomes visible as a decision impulse.",
+      "acceptance_criteria": [
+        "no explanatory caption",
+        "desk edge motivates next state"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S010",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "narration_span": "于是桌子越换越大。",
+      "dramatic_refs": [
+        "SC3.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "TRACK_METAPHOR_STATE",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "METAPHOR_STATE",
+      "subject_priority": "desk footprint expanding",
+      "staging_blocking": "Desk extends within the same room while anchors stay fixed.",
+      "framing_strategy": "wide enough for scale progression",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Stable wall/window anchors prove this is the same room.",
+      "eye_trace_in": "desk edge",
+      "eye_trace_out": "expanded edge",
+      "screen_direction": "same room axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "METAPHOR",
+      "visual_state": "Expansion is a state change, not a new random desk.",
+      "acceptance_criteria": [
+        "stable room anchors",
+        "scale growth obvious"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S011",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "narration_span": "今天的文件放上去。昨天的讨论放上去。前天改过三版、我自己都快忘了为什么改的东西，也放上去。",
+      "dramatic_refs": [
+        "SC3.1_B2"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "desk accumulating layers",
+      "staging_blocking": "Three time layers progressively occupy more of the expanded desk.",
+      "framing_strategy": "wide/medium montage anchored to same camera geography",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Today → yesterday → older versions fill distinct desk regions.",
+      "eye_trace_in": "expanded desk",
+      "eye_trace_out": "cluttered desk",
+      "screen_direction": "same accumulation direction",
+      "visual_intensity": "MEDIUM_HIGH",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Accumulation itself is the action.",
+      "acceptance_criteria": [
+        "each state visibly denser",
+        "no unrelated prop changes"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S012",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "narration_span": "后来它那个工位已经不像办公桌了。像我把整个项目文件夹拍扁以后，硬铺了一层桌布。",
+      "dramatic_refs": [
+        "SC3.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "absurdly huge desk",
+      "staging_blocking": "Desk now spans most of room like a flattened project folder; IP/AI look small beside it.",
+      "framing_strategy": "very wide; scale is subject",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Room anchors remain visible to prove expansion rather than location change.",
+      "eye_trace_in": "clutter",
+      "eye_trace_out": "whole footprint",
+      "screen_direction": "same room axis",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "METAPHOR",
+      "visual_state": "The tablecloth joke lands through scale.",
+      "acceptance_criteria": [
+        "comic but still coherent room",
+        "no fantasy cutaway"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S013",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.2",
+      "narration_span": "但桌子再大，终究还是会满。",
+      "dramatic_refs": [
+        "SC3.2_B1"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "REVERSAL",
+      "subject_priority": "no free active surface",
+      "staging_blocking": "AI holds a new file above a completely occupied work surface.",
+      "framing_strategy": "wide-medium; fullness and blocked action visible",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "New file hangs over center where no space remains.",
+      "eye_trace_in": "full desk",
+      "eye_trace_out": "new file",
+      "screen_direction": "same axis",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Finite capacity appears as an action problem.",
+      "acceptance_criteria": [
+        "no empty desk area",
+        "new file cannot land"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S014",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.2",
+      "narration_span": "新的资料还在往里进。旧的东西就得开始挪。",
+      "dramatic_refs": [
+        "SC3.2_B2"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "material displacement",
+      "staging_blocking": "AI shifts older stacks from active desk toward overflow edge as new material arrives.",
+      "framing_strategy": "medium-wide spatial relation between ZONE_A and B",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Movement from active center toward side overflow is primary.",
+      "eye_trace_in": "new file",
+      "eye_trace_out": "old stack moving aside",
+      "screen_direction": "center-to-side",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Context management is shown as tradeoff.",
+      "acceptance_criteria": [
+        "overflow edge distinct from notebook station"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S015",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.2",
+      "narration_span": "这几页暂时用不上，先收起来。",
+      "dramatic_refs": [
+        "SC3.2_B3"
+      ],
+      "visual_intention": {
+        "primary": "NOTICE_OBJECT",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "INSERT_OBJECT",
+      "subject_priority": "low-priority pages leaving active surface",
+      "staging_blocking": "AI places a small page stack into overflow/archive edge.",
+      "framing_strategy": "object-led medium/insert",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Active desk remains in background so removal is contextual.",
+      "eye_trace_in": "active page",
+      "eye_trace_out": "overflow shelf",
+      "screen_direction": "center-to-side",
+      "visual_intensity": "MEDIUM_HIGH",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_state": "Removal means off active surface, not erased forever.",
+      "acceptance_criteria": [
+        "no 'deleted' implication"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S016",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.2",
+      "narration_span": "前面的讨论太长，压成一张摘要。",
+      "dramatic_refs": [
+        "SC3.2_B4"
+      ],
+      "visual_intention": {
+        "primary": "TRACK_METAPHOR_STATE",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "METAPHOR_STATE",
+      "subject_priority": "thick discussion becomes one summary sheet",
+      "staging_blocking": "AI replaces a thick stack with one concise summary page on active desk.",
+      "framing_strategy": "object transformation; medium/insert progression",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Before/after occupy same desk zone.",
+      "eye_trace_in": "thick stack",
+      "eye_trace_out": "single page",
+      "screen_direction": "same position",
+      "visual_intensity": "MEDIUM_HIGH",
+      "image_relation_grammar": "METAPHOR",
+      "visual_state": "Compaction reduces footprint while preserving a usable representation.",
+      "acceptance_criteria": [
+        "do not imply exact product algorithm",
+        "same content lineage visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S017",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.2",
+      "narration_span": "几个重复要求，合成一条。",
+      "dramatic_refs": [
+        "SC3.2_B5"
+      ],
+      "visual_intention": {
+        "primary": "TRACK_METAPHOR_STATE",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "METAPHOR_STATE",
+      "subject_priority": "duplicate preferences consolidated",
+      "staging_blocking": "Three similar requirement notes become one consolidated note.",
+      "framing_strategy": "insert with prior duplicate-note callback",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Use same recurring preference colors/shapes from S002.",
+      "eye_trace_in": "three notes",
+      "eye_trace_out": "one note",
+      "screen_direction": "same desk zone",
+      "visual_intensity": "MEDIUM_HIGH",
+      "image_relation_grammar": "METAPHOR",
+      "visual_state": "Dedup callback connects story and mechanism.",
+      "acceptance_criteria": [
+        "same recurring preferences recognizable"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S018",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.2",
+      "narration_span": "我一看就急了。“哎，这个别收啊，我前面说过的。”",
+      "dramatic_refs": [
+        "SC3.2_B6"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP stops AI from moving note",
+      "staging_blocking": "IP reaches across active desk and grabs at a note being moved.",
+      "framing_strategy": "medium two-shot; hands and faces visible",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Crossed hands at center show conflict.",
+      "eye_trace_in": "AI hand",
+      "eye_trace_out": "IP hand",
+      "screen_direction": "opposed movement",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Fear of forgetting becomes physical interference.",
+      "acceptance_criteria": [
+        "not melodramatic",
+        "note remains causally relevant"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S019",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.2",
+      "narration_span": "它看着我：“你是说哪一个？”",
+      "dramatic_refs": [
+        "SC3.2_B7"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "EXPERIENCE_REVERSAL"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "AI holding multiple similar notes",
+      "staging_blocking": "AI pauses with several similar notes and looks back at IP.",
+      "framing_strategy": "medium two-shot; ambiguous objects visible",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Notes between characters create the question visually.",
+      "eye_trace_in": "IP hand",
+      "eye_trace_out": "AI gaze",
+      "screen_direction": "same axis",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "The ambiguity turns back onto the narrator.",
+      "acceptance_criteria": [
+        "multiple plausible notes visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S020",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.2",
+      "narration_span": "……我自己也想了两秒。",
+      "dramatic_refs": [
+        "SC3.2_B8"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": null
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP hesitates",
+      "staging_blocking": "IP's raised hand freezes; eyes move across similar notes.",
+      "framing_strategy": "close reaction with note edges in foreground",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "No extra visual information; silence owns the beat.",
+      "eye_trace_in": "AI gaze",
+      "eye_trace_out": "IP eyes",
+      "screen_direction": "same axis",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "The narrator also cannot identify the supposedly important item.",
+      "acceptance_criteria": [
+        "understated pause",
+        "no emotion label"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S021",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.3",
+      "narration_span": "问题是，那句话它确实看过。一个小时前甚至还摆在桌面正中间。只是新的东西越来越多，它被挪走了。",
+      "dramatic_refs": [
+        "SC3.3_B1",
+        "SC3.3_B2"
+      ],
+      "visual_intention": {
+        "primary": "SHARE_POV",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "REVEAL",
+      "subject_priority": "displaced important note",
+      "staging_blocking": "IP finally spots the old note now at side/overflow while new material occupies center.",
+      "framing_strategy": "wide-medium POV relation; show old vs current position",
+      "pov_strategy": "IP_POV",
+      "composition_strategy": "Spatial before/after implied by desk zones.",
+      "eye_trace_in": "center desk",
+      "eye_trace_out": "side note",
+      "screen_direction": "center-to-side",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "The issue is displacement from current working surface.",
+      "acceptance_criteria": [
+        "note identity matches earlier prop",
+        "not shown as destroyed"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S022",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.3",
+      "narration_span": "我得出的结论非常科学：桌子还是不够大。",
+      "dramatic_refs": [
+        "SC3.3_B3"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "wrong diagnosis",
+      "staging_blocking": "IP unfolds or points to an even larger desk-extension plan.",
+      "framing_strategy": "medium reaction + object",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Absurd expansion plan enters from frame edge.",
+      "eye_trace_in": "displaced note",
+      "eye_trace_out": "expansion plan",
+      "screen_direction": "same axis",
+      "visual_intensity": "HIGH",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Character misdiagnosis is the joke and next action.",
+      "acceptance_criteria": [
+        "clearly wrong but believable character logic"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S023",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.3",
+      "narration_span": "于是我继续扩。一张不够，两张。两张不够，把会议桌也搬过来。",
+      "dramatic_refs": [
+        "SC3.3_B4"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "desk expansion escalation",
+      "staging_blocking": "Additional desk and meeting table connect into one growing active surface.",
+      "framing_strategy": "wide montage preserving room anchors",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Furniture expands along same room direction.",
+      "eye_trace_in": "plan",
+      "eye_trace_out": "larger footprint",
+      "screen_direction": "left-to-right expansion",
+      "visual_intensity": "PEAK_COMIC",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Expansion itself becomes escalating comedy.",
+      "acceptance_criteria": [
+        "same room",
+        "progressive scale"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S024",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.3",
+      "narration_span": "实在不行，整个办公室地板都算桌面。",
+      "dramatic_refs": [
+        "SC3.3_B4"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "floor overflow",
+      "staging_blocking": "IP kneels placing project material across floor as active surface.",
+      "framing_strategy": "very wide/high enough to read floor takeover",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Room is almost consumed by working material.",
+      "eye_trace_in": "tables",
+      "eye_trace_out": "floor-spread files",
+      "screen_direction": "outward expansion",
+      "visual_intensity": "PEAK_COMIC",
+      "image_relation_grammar": "METAPHOR",
+      "visual_state": "Maximum absurd extension before hard contrast.",
+      "acceptance_criteria": [
+        "same room anchors",
+        "comedic peak"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S025",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.3",
+      "narration_span": "只要地方够大，总有一天，我可以把自己这辈子跟 AI 说过的话全部摊开。看起来问题已经快被我解决了。",
+      "dramatic_refs": [
+        "SC3.3_B4"
+      ],
+      "visual_intention": {
+        "primary": "FEEL_RELATION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "IP proud inside absurd workspace",
+      "staging_blocking": "IP stands satisfied in a room almost fully consumed by active materials.",
+      "framing_strategy": "very wide; tiny character vs huge footprint",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Density/scale at maximum; hold before reset.",
+      "eye_trace_in": "floor spread",
+      "eye_trace_out": "IP",
+      "screen_direction": "N/A",
+      "visual_intensity": "PEAK_COMIC",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Wrong confidence peaks visually.",
+      "acceptance_criteria": [
+        "no new gag beyond established metaphor"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S026",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.1",
+      "narration_span": "直到第二周，我开了一个新任务。桌面干干净净。",
+      "dramatic_refs": [
+        "SC4.1_B1",
+        "SC4.1_B2"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "ORIENT"
+      },
+      "shot_function_primary": "REVERSAL",
+      "subject_priority": "same room, clean active surface",
+      "staging_blocking": "Hard contrast: same room anchors, active desk clean; prior clutter gone from active surface.",
+      "framing_strategy": "wide matching composition to peak-clutter shot",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Use matching geometry so the reset is undeniable.",
+      "eye_trace_in": "cluttered room memory",
+      "eye_trace_out": "clean desk",
+      "screen_direction": "same axis",
+      "visual_intensity": "HARD_RELEASE",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "New task resets current work surface without changing world identity.",
+      "acceptance_criteria": [
+        "same room",
+        "not a random new office",
+        "notebook station still absent"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S027",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.1",
+      "narration_span": "我随口说了一句：“还是按我喜欢的方式来。”",
+      "dramatic_refs": [
+        "SC4.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP assumes preference persists",
+      "staging_blocking": "IP casually gestures from clean desk to AI as if nothing needs explaining.",
+      "framing_strategy": "medium two-shot on clean desk",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Large clean negative space emphasizes missing context.",
+      "eye_trace_in": "clean desk",
+      "eye_trace_out": "AI",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Expectation is visible through casual behavior.",
+      "acceptance_criteria": [
+        "no note visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S028",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.1",
+      "narration_span": "它问：“你喜欢什么方式？”",
+      "dramatic_refs": [
+        "SC4.1_B4"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "AI genuinely asks",
+      "staging_blocking": "AI looks at empty active surface then back to IP.",
+      "framing_strategy": "medium two-shot then reaction-ready framing",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Empty surface remains between them.",
+      "eye_trace_in": "AI gaze to desk",
+      "eye_trace_out": "IP",
+      "screen_direction": "same axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "The gap is caused by absence of persistent preference.",
+      "acceptance_criteria": [
+        "AI not portrayed stupid",
+        "empty desk causal"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S029",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.2",
+      "narration_span": "我盯着那张空桌子。然后又看了看我上周辛辛苦苦扩建出来的超级工位。",
+      "dramatic_refs": [
+        "SC4.2_B1",
+        "SC4.2_B2"
+      ],
+      "visual_intention": {
+        "primary": "COMPARE_STATES",
+        "secondary": "SHARE_POV"
+      },
+      "shot_function_primary": "COMPARE",
+      "subject_priority": "empty current desk vs remembered huge workspace",
+      "staging_blocking": "IP alternates gaze between present clean desk and spatial callback/remembered huge footprint.",
+      "framing_strategy": "wide matched comparison or controlled associative contrast",
+      "pov_strategy": "IP_POV",
+      "composition_strategy": "Keep same room geometry to compare states rather than locations.",
+      "eye_trace_in": "empty desk",
+      "eye_trace_out": "remembered footprint",
+      "screen_direction": "same geometry",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Current capacity and past expansion are explicitly contrasted.",
+      "acceptance_criteria": [
+        "comparison readable without labels"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S030",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.2",
+      "narration_span": "它解决的是：现在能放多少。不是：以后还能找回什么。",
+      "dramatic_refs": [
+        "SC4.2_B3"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "CLARIFY",
+      "subject_priority": "active desk vs absent persistent record",
+      "staging_blocking": "IP touches current desk, then looks to an empty side position where no persistent note system exists yet.",
+      "framing_strategy": "medium-wide; relation between active surface and empty side space",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Two spatial roles prepared before notebook introduction.",
+      "eye_trace_in": "desk",
+      "eye_trace_out": "empty side station",
+      "screen_direction": "same axis",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "The conceptual distinction is embodied before terminology.",
+      "acceptance_criteria": [
+        "no Context/Memory labels yet"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S031",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "narration_span": "我没继续买桌子。在旁边放了一本笔记。",
+      "dramatic_refs": [
+        "SC5.1_B1"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "notebook introduced at side station",
+      "staging_blocking": "IP places a small notebook at ZONE_C instead of expanding active desk.",
+      "framing_strategy": "medium object-handling with both zones visible",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Desk and notebook are spatially separate but adjacent.",
+      "eye_trace_in": "active desk edge",
+      "eye_trace_out": "notebook",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "A new persistence object appears without changing current desk role.",
+      "acceptance_criteria": [
+        "notebook small",
+        "separate from overflow edge"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S032",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "narration_span": "也没什么都往里记。只挑那些我真的不想再说第五遍，而且过几周还会用到的东西。",
+      "dramatic_refs": [
+        "SC5.1_B2",
+        "SC5.1_B3"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "selective memory",
+      "staging_blocking": "IP sorts many transient papers but writes only a few durable preference notes into notebook.",
+      "framing_strategy": "medium/insert progression",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Large transient pile vs small selected set.",
+      "eye_trace_in": "many papers",
+      "eye_trace_out": "few notebook entries",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Memory is selective, not exhaustive transcript storage.",
+      "acceptance_criteria": [
+        "selection visible",
+        "not everything copied"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S033",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "narration_span": "比如：“视频先讲故事，别一上来讲概念。”“不要 PPT 风。”“能直接说结论，就别先绕三页背景。”",
+      "dramatic_refs": [
+        "SC5.1_B4"
+      ],
+      "visual_intention": {
+        "primary": "NOTICE_OBJECT",
+        "secondary": "BUILD_PATTERN"
+      },
+      "shot_function_primary": "INSERT_OBJECT",
+      "subject_priority": "three durable preference entries",
+      "staging_blocking": "Notebook shows three concise recurring preferences.",
+      "framing_strategy": "insert; minimum readable text",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Use same recurring preference wording/colors from opening.",
+      "eye_trace_in": "notebook cover",
+      "eye_trace_out": "three entries",
+      "screen_direction": "N/A",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_state": "Specific durable memories connect to opening friction.",
+      "acceptance_criteria": [
+        "three entries readable",
+        "no long page of text"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S034",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.2",
+      "narration_span": "后来又开了一个新任务。桌面还是新的。",
+      "dramatic_refs": [
+        "SC5.2_B1"
+      ],
+      "visual_intention": {
+        "primary": "ORIENT",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "ESTABLISH",
+      "subject_priority": "clean desk + persistent notebook",
+      "staging_blocking": "Same room: active desk clean again, but notebook remains at side station.",
+      "framing_strategy": "wide matched composition to S026",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Desk reset and notebook persistence coexist in same frame.",
+      "eye_trace_in": "clean desk",
+      "eye_trace_out": "notebook",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Visual proof that current surface can reset while memory object persists.",
+      "acceptance_criteria": [
+        "matching room anchors",
+        "notebook clearly persistent"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S035",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.2",
+      "narration_span": "我说：“还是按以前的方式来。”它翻了一下旁边那本笔记。",
+      "dramatic_refs": [
+        "SC5.2_B2",
+        "SC5.2_B3"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "AI retrieves from notebook",
+      "staging_blocking": "AI reaches to notebook station before starting task.",
+      "framing_strategy": "medium two-shot with hand path from notebook to active desk",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Retrieval movement connects side station to current surface.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "notebook",
+      "screen_direction": "side-to-center",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Retrieval is an action, not magical recall.",
+      "acceptance_criteria": [
+        "notebook used deliberately",
+        "current desk still new"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S036",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.2",
+      "narration_span": "“哦，对。”“先讲故事，不要 PPT 风。”这次我没说第二遍。",
+      "dramatic_refs": [
+        "SC5.2_B4",
+        "SC5.2_B5"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "READ_REACTION"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "remembered preference returns to work",
+      "staging_blocking": "AI places/references the relevant preference on current desk; IP simply nods.",
+      "framing_strategy": "medium two-shot; note and reaction both readable",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Retrieved note lands on active surface between them.",
+      "eye_trace_in": "notebook",
+      "eye_trace_out": "IP nod",
+      "screen_direction": "side-to-center",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Human payoff is absence of repetition.",
+      "acceptance_criteria": [
+        "no extra explanation",
+        "preference matches opening"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S037",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "narration_span": "桌子，是现在干活用的。笔记，是以后要找回来的。",
+      "dramatic_refs": [
+        "SC6.1_B1",
+        "SC6.1_B2"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "CLARIFY",
+      "subject_priority": "desk and notebook in one functional scene",
+      "staging_blocking": "AI uses current materials on desk while notebook sits separately at side.",
+      "framing_strategy": "wide-medium relation shot",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Both systems visible with distinct spatial roles.",
+      "eye_trace_in": "desk",
+      "eye_trace_out": "notebook",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Two-line distinction is shown through concurrent function, not labeled boxes.",
+      "acceptance_criteria": [
+        "no giant labels",
+        "roles visually distinct"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S038",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "narration_span": "前者装的是这一刻正在用的东西。后者留下的是以后还值得重新拿回来的东西。",
+      "dramatic_refs": [
+        "SC6.1_B2"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "FOLLOW_ACTION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "current use vs later retrieval",
+      "staging_blocking": "Current-task paper stays on desk; durable preference is returned to notebook after use.",
+      "framing_strategy": "medium object relation",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Objects travel to appropriate zones.",
+      "eye_trace_in": "desk",
+      "eye_trace_out": "notebook",
+      "screen_direction": "center-to-side",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Function difference becomes behavior.",
+      "acceptance_criteria": [
+        "avoid overexplaining with text"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S039",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "narration_span": "AI 里的 Context 和长期 Memory，大概也可以先这么理解。Context 更像眼前这张有限的工作台。",
+      "dramatic_refs": [
+        "SC6.1_B3",
+        "SC6.1_B4"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "CLARIFY",
+      "subject_priority": "term reveal anchored to active desk",
+      "staging_blocking": "Term appears only in subtitle/voice while camera remains on already-understood work surface.",
+      "framing_strategy": "medium-wide existing-world shot",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "No new diagram; active desk is still doing current work.",
+      "eye_trace_in": "desk",
+      "eye_trace_out": "current material",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Technical name attaches to established intuition.",
+      "acceptance_criteria": [
+        "term late",
+        "no definition card"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S040",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "narration_span": "当前任务里的话、资料和状态，要先在这里，它这一刻才能直接用。桌面越来越挤的时候，系统可能会整理、压缩，或者把一部分内容移出去。",
+      "dramatic_refs": [
+        "SC6.1_B4",
+        "SC6.1_B5"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "TRACK_METAPHOR_STATE"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "replay of active-work management",
+      "staging_blocking": "A concise reprise shows current materials used, then crowding, summary/repositioning.",
+      "framing_strategy": "medium montage; reuse established states rather than inventing new diagram",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Earlier visual grammar returns in compressed form.",
+      "eye_trace_in": "current material",
+      "eye_trace_out": "summary/moved stack",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Mechanism explanation reuses story evidence.",
+      "acceptance_criteria": [
+        "no new unsupported behavior",
+        "compact callback"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S041",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.2",
+      "narration_span": "而长期 Memory，不是把你以前说过的每句话永久铺满整张桌子。它更像桌边留下的一本笔记。以后需要的时候，再把相关的东西拿回来。",
+      "dramatic_refs": [
+        "SC6.2_B1",
+        "SC6.2_B2",
+        "SC6.2_B3"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "FOLLOW_ACTION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "selective persisted note retrieved into current desk",
+      "staging_blocking": "Notebook remains compact; one relevant note is taken from it and placed onto active desk.",
+      "framing_strategy": "medium relation + object progression",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Side-to-center retrieval path is primary.",
+      "eye_trace_in": "notebook",
+      "eye_trace_out": "current desk",
+      "screen_direction": "side-to-center",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Memory is persistence+retrieval, not all history permanently present.",
+      "acceptance_criteria": [
+        "notebook not huge archive wall",
+        "one relevant note retrieved"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S042",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "narration_span": "所以现在我再看到“上下文更长”，已经不会自动翻译成：“它记性更好了。”",
+      "dramatic_refs": [
+        "SC6.3_B1"
+      ],
+      "visual_intention": {
+        "primary": "COMPARE_STATES",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "REACTION",
+      "subject_priority": "old giant-desk plan rejected",
+      "staging_blocking": "IP sees old expansion plan and pushes/folds it aside.",
+      "framing_strategy": "medium reaction + callback object",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Old plan appears near frame edge; current reasonable desk stays central.",
+      "eye_trace_in": "old plan",
+      "eye_trace_out": "current desk",
+      "screen_direction": "edge-to-out",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Old diagnosis is explicitly discarded.",
+      "acceptance_criteria": [
+        "no slogan card",
+        "callback meaningful"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S043",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "narration_span": "桌子大，当然很好。项目复杂的时候，多摆几份资料总比少摆强。",
+      "dramatic_refs": [
+        "SC6.3_B2"
+      ],
+      "visual_intention": {
+        "primary": "COMPARE_STATES",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "large-but-reasonable desk useful for complex current work",
+      "staging_blocking": "AI and IP comfortably use a larger active surface for several current documents.",
+      "framing_strategy": "wide-medium balanced work scene",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "More current material fits without absurd clutter.",
+      "eye_trace_in": "current desk",
+      "eye_trace_out": "multiple useful docs",
+      "screen_direction": "same axis",
+      "visual_intensity": "LOW",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Counter-idea preserved: larger context still helps current work.",
+      "acceptance_criteria": [
+        "not anti-context",
+        "balanced depiction"
+      ]
+    },
+    {
+      "semantic_shot_id": "CM3_S044",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "narration_span": "但桌子再大，也还是桌子。真正让我不用再说第五遍的，不是桌子无限变大。而是有些东西离开桌面以后，下一次，它还知道去哪里把它找回来。",
+      "dramatic_refs": [
+        "SC6.3_B3"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "retrieval before IP repeats himself",
+      "staging_blocking": "On another fresh task, AI retrieves the durable preference from notebook and places it on clean active desk before IP needs to repeat anything.",
+      "framing_strategy": "wide-medium to object/reaction progression; final frame simplified",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Notebook-to-desk path leads eye to quiet IP reaction.",
+      "eye_trace_in": "notebook",
+      "eye_trace_out": "IP/desk",
+      "screen_direction": "side-to-center",
+      "visual_intensity": "RELEASE",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Final payoff resolves the original human problem through retrieval behavior.",
+      "acceptance_criteria": [
+        "no final quote card",
+        "desk/notebook both visible",
+        "IP does not repeat preference"
+      ]
+    }
+  ]
+}
