@@ -1,56 +1,68 @@
-# DRAFT — 02 — MCP KnowledgeCore
+# 02 — MCP KnowledgeCore
 
 ## Status
 
-`KNOWLEDGE_GATE = DRAFT_HOLD_NOT_ACCEPTED`
+`KNOWLEDGE_GATE = PASS`
 
-## One Mechanism
+## One Locked Mechanism
 
-> MCP 为 AI 应用与外部能力提供一套标准化 client/server 协议，使客户端能够发现并使用服务器暴露的工具、资源和提示能力。
+> MCP 是一套开放的 client/server 协议，使 AI 应用能够用标准化方式发现并使用 MCP server 暴露的工具、资源与提示能力。
 
 ## Key Claims
 
-1. MCP 是开放协议/标准化连接方式，不是某一个模型专属功能。
-2. MCP 采用 host / client / server 架构；server 可暴露 tools、resources、prompts 等能力。
-3. Tools 可让模型通过 MCP 调用外部系统动作或查询，例如 API、数据库或计算。
-4. Resources 用于向客户端暴露可作为上下文的数据/content。
-5. MCP 解决的是**标准化互操作接口**；它不会自动替代每个底层系统自己的 API、业务逻辑或身份授权。
+1. MCP 是开放协议，不是某一个模型或厂商专属功能。
+2. MCP 官方架构包含 Host、Client、Server；Host 负责更复杂的编排，Client 与 Server 通过 MCP 通信。
+3. Server 可以暴露 Tools、Resources、Prompts 等能力。
+4. Tools 是模型可调用的函数能力，可用于访问 API、数据库、计算等外部系统。
+5. Resources 为应用/模型提供可读取的上下文数据或内容。
+6. MCP 的核心价值是标准化互操作方式；它不会自动替代底层系统已有的 API、业务规则、认证和授权。
+7. Tool 的用户确认/人机控制属于应用与安全设计的一部分，不能把 MCP 本身等同为“权限系统”。
 
 ## Misconceptions to Block
 
-### Wrong: MCP = AI 的权限系统
+### Wrong: MCP = 权限系统
 
-权限、用户同意、授权由 host/application 与具体实现负责；MCP 本身不能被简化成“权限开关”。
+MCP 规范包含授权相关机制，但“谁有权做什么、是否需要用户确认”不能被压缩成 MCP 的唯一或核心定义。
 
-### Wrong: MCP = 一个万能 API，把所有软件 API 都消灭
+### Wrong: MCP = 一个万能 API，底层 API 都不需要了
 
-MCP server 往往仍需与真实数据库/API/应用交互。标准化发生在 MCP client ↔ MCP server 这一层。
+MCP Server 仍可能封装真实 API、数据库或其他服务。标准化的是 AI 应用与 MCP Server 之间的协议层。
 
-### Wrong: 有 MCP，模型就变聪明了
+### Wrong: MCP = 有了它模型就更聪明
 
-MCP 改善的是外部能力接入与互操作，不改变模型本身的推理能力。
+MCP 改善的是外部能力接入与互操作，不直接提高模型本身的推理能力。
+
+### Wrong: MCP = 每个工具都变成一样的功能
+
+不同 Server 仍暴露不同工具与 schema。统一的是发现、描述、调用这些能力的协议方式，而不是把业务语义抹平。
 
 ## Ordinary-Person Mental Model
 
-以前：每接一个新系统，都要给 AI 应用单独做一次“翻译/接线”。
+以前：
+- AI 想去库存系统办事，要学一套接法；
+- 想去财务系统，又是一套；
+- 再换一个应用，又重新做一次。
 
-现在的 mental model：不同系统可以通过 MCP server 用同一种协议向 AI 应用说明“我有哪些资源、我能做哪些动作”。
+MCP mental model：
+- 各系统通过 MCP Server 用同一种“对外办事协议”描述自己有哪些资料、有哪些工具、这些工具需要什么参数；
+- AI 应用侧通过 MCP Client 用相同协议去发现和使用这些能力。
 
 ## Source Refs
 
-- MCP Introduction: https://github.com/modelcontextprotocol/docs/blob/main/introduction.mdx
-- MCP 2026-07-28 Tools: https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/server/tools.mdx
-- MCP Server Primitives: https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/server/index.mdx
-- MCP 2026-07-28 release: https://blog.modelcontextprotocol.io/posts/2026-07-28/
+- Specification 2026-07-28: https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/index.mdx
+- Server primitives: https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/server/index.mdx
+- Tools: https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/server/tools.mdx
+- Architecture: https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/docs/specification/2026-07-28/architecture/index.mdx
+- 2026-07-28 release: https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/blog/content/posts/2026-07-28-spec-ga/index.md
 
 ## Scope Boundary
 
 本 episode 不展开：
-- transport 细节；
-- 2026 spec stateless core 的实现细节；
-- authorization specification；
+- JSON-RPC / transport 细节；
+- 2026-07-28 stateless core；
+- authorization 规范细节；
 - sampling / elicitation / extensions；
-- SDK 比较；
-- server 开发教程。
+- SDK / Server 开发教程；
+- MCP Apps / Skills over MCP。
 
-这些都留给其他 episode，确保 one mechanism only。
+这些内容全部留给其他 episode，确保本期 one mechanism only。
