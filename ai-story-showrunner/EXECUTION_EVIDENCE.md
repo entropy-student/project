@@ -389,3 +389,31 @@ Smoke test:
 
 No G4 production work was started.
 
+---
+
+## G3R Dialogue Promotion + Context/Memory Cross-topic Test
+
+- Date: 2026-09-20
+- Dialogue/prose candidate rules promoted into Narrative Style Contract v0.2 and Writer Quality Contract v0.3.
+- No G4 work started.
+
+Agent narrative test:
+- `episodes/20260920-agent/G3R_narrative_test_v2.md`
+- self-review: 91/100.
+
+Context / Memory narrative test:
+- `episodes/20260920-context-memory/G3R_narrative_test_v1.md`
+- self-review: 89/100.
+
+Cross-topic portability:
+- PASS_CANDIDATE.
+- Risk/permission conflict is not required for the format to work.
+- Conceptual misunderstanding + character-caused escalation can sustain the same story-first model.
+
+Governance:
+```text
+G3R HOLD
+READY_FOR_OWNER_PASS_DECISION
+G4 BLOCKED
+```
+
