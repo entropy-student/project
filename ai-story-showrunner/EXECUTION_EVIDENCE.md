@@ -271,3 +271,39 @@ PASS_G2_5_TOPIC_SUPPLY_LEDGER_DEDUP
 DAILY_TOPIC_RADAR_ENABLED
 READY_FOR_G3
 ```
+
+---
+
+## Gate G3 — Story → Script / SRT MVP
+
+- Date: 2026-09-20
+- Reviewer decision: PASS
+- Writer quality contract: `docs/WRITER_QUALITY_CONTRACT.md`
+- Validation review: `docs/G3_VALIDATION_REVIEW.md`
+
+### Validation
+
+Episodes:
+- MCP
+- Agent
+- Context / Memory
+
+Mechanical QA:
+- Script↔SRT exact text consistency: 3/3 PASS
+- forced self-intro: 0
+- forced English sign-off: 0
+- tutorial regression: no material failure
+- locked mechanism drift: no material failure
+
+### Important limitation
+
+Writer policy/Adapter quality is validated manually under Showrunner control.
+Programmatic orchestration is NOT yet proven.
+
+### Result
+
+```text
+PASS_G3_STORY_TO_SCRIPT_SRT_MVP
+NEXT_GATE: G4
+```
+
