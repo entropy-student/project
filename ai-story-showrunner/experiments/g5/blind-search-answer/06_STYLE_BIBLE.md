@@ -3,7 +3,7 @@
 ## STYLE_CHANNEL_001
 
 Status:
-`DIRECTION_APPROVED / PRODUCTION_REFERENCE_CALIBRATION_IN_PROGRESS`
+`VISUAL_DIRECTION_LOCKED / PRODUCTION_SIMPLIFICATION_GUARD_ACTIVE`
 
 Owner approved direction:
 **扁平简化漫画风 / simplified flat narrative comic style**
@@ -117,8 +117,21 @@ Before full episode generation, approve:
    - character + UI/evidence;
    - pure evidence insert.
 
-Only after these pass:
-`STYLE_CHANNEL_001 = VISUAL_LOCKED`
+Calibration result:
+- Character + Workdesk = PASS
+- Character + UI/Evidence = PASS
+- Pure Evidence Insert = PASS
+
+Therefore:
+`STYLE_CHANNEL_001 = VISUAL_DIRECTION_LOCKED`
+
+Important:
+the calibration frames are composition/integration references, not permission to increase micro-detail.
+Production simplification guard remains mandatory:
+- fewer stable hair clumps;
+- 1–2 flat shadow levels;
+- reduced clothing folds;
+- simplified stable background props.
 
 Failure:
 `RETURN_STYLE_DRIFT`
