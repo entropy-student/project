@@ -1,4 +1,4 @@
-# G3R Overall Editorial Review — PASS_CANDIDATE
+# G3R Overall Editorial Review — OWNER ALIGNED / HOLD
 
 Date: 2026-09-20
 
@@ -99,7 +99,7 @@ with recurring IP and optional actionable payoff
 10. G4 remains blocked until Owner approves this rebaseline.
 
 Status:
-`G3R PASS_CANDIDATE / OWNER REVIEW`
+`G3R OWNER_ALIGNED / HOLD / NOT PASS`
 
 
 ## Owner refinement — tutorial mode removed
@@ -115,3 +115,16 @@ Initial weekly hypothesis:
 - 2 STORY_ACTION
 
 Opinion is not a third mode. It is optional and must pass the bounded Viewpoint Gate.
+
+
+## Current Owner State
+
+Owner accepts the overall direction and authorizes documentation cleanup, but explicitly withholds PASS because two issues remain for discussion.
+
+Therefore:
+- consolidate accepted-direction documents: YES;
+- activate v2 planner: NO;
+- enter G4: NO;
+- reinterpret candidate rules as final canonical baseline: NO.
+
+The two open issues will be appended here after discussion.
