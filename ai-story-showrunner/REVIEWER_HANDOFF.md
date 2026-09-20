@@ -47,8 +47,8 @@ P0  Project Boundary / Governance Reconciliation     ✅ PASS
 G1  Worker Inventory + Canonical Contracts           ✅ PASS
 G2  Topic → Human Problem → Story MVP                ✅ PASS
 G2.5 Topic Supply / Ledger / Dedup                   ✅ PASS
-G3  Story → Script / SRT MVP                         ⏸ PENDING
-G4  Script → Director Shotbook MVP                   ⏳
+G3  Story → Script / SRT MVP                         ✅ PASS
+G4  Script/SRT → Director / Shot Compiler MVP         ⏸ PENDING
 G5  Shotbook → Image Asset Package MVP               ⏳
 G6  Image Assets → Video MVP                         ⏳
 G7  Three-topic End-to-End Validation                ⏳
@@ -268,3 +268,34 @@ Accepted:
 - 本轮完成：流量/信任/转化 Contract、Topic schema、Episode schema、Shot schema、Worker Adapter 规则、字段映射、Antigravity PoC 定义。
 - 下一步：进入 G3；Daily Topic Radar 独立持续维护 GitHub rolling schedule。
 - 注意事项：当前绝不能把“文档架构已完成”误称为“流水线已经自动跑通”。
+
+
+## Accepted Gate — G3 Story → Script / SRT MVP
+
+Reviewer decision: **PASS**
+
+Artifacts:
+- `docs/WRITER_QUALITY_CONTRACT.md`
+- `docs/G3_VALIDATION_REVIEW.md`
+- each validation episode `04_script.md`
+- each validation episode `04_script.srt`
+
+Accepted writer model:
+- McKee causal structure;
+- narrative transportation;
+- short-form retention;
+- Jingsui voice as style layer only.
+
+Project overrides:
+- no forced self-introduction;
+- no forced first-person;
+- no forced English sign-off;
+- no Writer visual/edit authority.
+
+Three episodes passed Script↔SRT exact consistency and no tutorial-regression material issue.
+
+Jingsui adapter status:
+`QUALITY_VALIDATED / MANUAL_ORCHESTRATION`
+
+Next:
+G4 Director / Shot Compiler. Do not claim programmatic writer orchestration; that remains later automation work.
