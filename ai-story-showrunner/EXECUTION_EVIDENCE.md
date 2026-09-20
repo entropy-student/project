@@ -218,3 +218,31 @@ NEXT_GATE: G3
 
 No script, image, video, or Antigravity execution was accepted as part of G2.
 
+---
+
+## Gate G2.5 — Topic Supply / Ledger / Dedup
+
+- Date: 2026-09-20
+- Status: PASS_CANDIDATE / OWNER REVIEW
+- Reason: Owner requires topic supply and duplicate prevention to be solved before G3.
+
+### Artifacts created
+
+- `docs/TOPIC_OPERATING_SYSTEM.md`
+- `topic-ledger/README.md`
+- `topic-ledger/topic-registry.jsonl`
+- `topic-ledger/daily/TEMPLATE.json`
+- `topic-ledger/calendar/2026-09.md`
+- `topic-ledger/EVERGREEN_BANK.md`
+- `schemas/topic_registry_entry.schema.json`
+
+### Decisions
+
+- Calendar alone is insufficient; Registry is canonical topic memory.
+- Topic supply is HOT + EVERGREEN.
+- Qualified HOT candidates have scheduling preemption; unqualified trends do not.
+- Daily task is recommended as signal radar / shortlist only.
+- Automatic publishing and automatic `published` state are forbidden.
+- Automation has not been enabled.
+- G3 remains blocked pending Owner review.
+
