@@ -318,7 +318,7 @@ Current state:
 
 ## G3R — Bilibili Editorial / Narrative Rebaseline
 
-Reviewer status: **PASS_CANDIDATE / OWNER REVIEW**
+Reviewer status: **OWNER ALIGNED / HOLD / NOT PASS**
 
 Artifacts:
 - `docs/BILIBILI_CHANNEL_STRATEGY.md`
@@ -332,12 +332,12 @@ Proposed decisions:
 3. Production throughput remains UNPROVEN until G4–G7.
 4. Default narrator = first-person recurring channel IP.
 5. Story mechanism model follows “world rule produces consequences”, not definition-first explanation.
-6. Bilibili duration routing = 3–8 min, standard center 4–6 min.
+6. Bilibili primary duration target = 3–5 min; extend only when story requirements justify it.
 7. Business Job remains DISCOVERY / TRUST / SOLUTION.
-8. Editorial Mode becomes separate: STORY_MODEL / STORY_ACTION / STORY_TUTORIAL.
+8. Editorial Mode = STORY_MODEL / STORY_ACTION only.
 9. First 21 published episodes = Season 0 calibration.
-10. Initial portfolio hypothesis = 4 model / 2 action / 1 tutorial per 7 days.
-11. Tutorial is optional and must pass Actionability Gate; no bolted-on how-to section.
+10. Initial portfolio hypothesis = 5 STORY_MODEL / 2 STORY_ACTION per 7 days.
+11. Tutorial channel module was removed by Owner; actionable methods only appear when they pass Actionability Gate.
 12. Existing 70–85s G3 scripts remain writer capability references only.
 
 Growth diagnosis:
@@ -347,7 +347,7 @@ Live automation safety:
 The currently scheduled Daily Topic Radar remains on the accepted v0.1 behavior until Owner PASS. The proposed v0.2 planner has NOT been activated.
 
 Next:
-G4 remains BLOCKED pending Owner PASS / RETURN on G3R.
+G4 remains BLOCKED pending resolution of two Owner questions and explicit Owner PASS / RETURN on G3R.
 
 
 ## G3R Refinement — Tutorial Removed / Story Craft Tightened
@@ -363,3 +363,27 @@ Updated proposal:
 - new Story Beat Gate requires immediate want → action → response/resistance → result → state change → next causal question/decision.
 
 G4 remains BLOCKED pending Owner PASS on the rebaseline.
+
+
+## Current Authoritative G3R State — Owner Aligned, Not Passed
+
+Latest Owner instruction:
+- overall direction accepted for documentation consolidation;
+- explicit PASS withheld;
+- two editorial issues remain to be discussed.
+
+Current candidate baseline:
+- Bilibili primary;
+- daily editorial target;
+- primary duration target 3–5 min, justified exceptions allowed;
+- recurring first-person channel IP;
+- STORY_MODEL + STORY_ACTION only;
+- initial mix hypothesis 5 / 2;
+- viewpoint optional and bounded;
+- Story Beat Gate requires causal state change;
+- live Daily Topic Radar remains on accepted v0.1 until explicit PASS.
+
+Hard state:
+`G3R = HOLD`
+`OPEN_QUESTIONS = 2`
+`G4 = BLOCKED`
