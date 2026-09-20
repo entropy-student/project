@@ -137,123 +137,114 @@ term_reveal_timestamp_or_section
 
 ---
 
-## 6. Director Worker
-
-候选：
-- Jingsui Visual Beat layer；
-- Aroll Semantic Director；
-- Visual Narrative Animation Lab 的 SHOTBOOK 方法。
+## 6. Director / Shot Compiler
 
 ### Input
 - locked script；
-- aligned / provisional timeline；
-- World Bible；
-- Asset Registry。
+- SRT / audio timing；
+- Character / Scene / Style context。
 
 ### Required Output
 
-每个 Visual Beat：
+每个 Shot：
 
 ```yaml
-beat_id:
-time_range:
-narration_ref:
-focus:
-dramatic_action:
-visual_state_start:
-visual_change:
-visual_state_end:
-shot_design:
-transition:
-asset_need:
-reuse_candidate:
-on_screen_text:
-evidence_requirement:
+shot_id:
+start:
+end:
+duration:
+narration:
+subtitle:
+character_ids:
+scene_id:
+action:
+expression:
+composition:
+camera_angle:
+image_id:
+transition_in:
+transition_out:
+notes:
 ```
+
+### Rule
+
+默认 **one small shot ≈ one image**。动作变化优先拆多个 Shot，而不是把复杂运动交给 Executor。
+
+---
+
+## 7. Character / Scene / Style Compiler
+
+### Output
+
+- Character Bible；
+- canonical front / 3/4 / side references；
+- immutable identity traits；
+- Scene Bible；
+- canonical scene references；
+- Style Bible；
+- continuity reference policy。
+
+### Rule
+
+任何包含角色的新图必须带同一 Character ID + canonical reference；连续镜头可追加上一镜通过图。
+
+---
+
+## 8. Low-Level Execution Package Compiler
+
+### Canonical Contract
+
+`docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
+
+### Required Output
+
+- exact Shot Timeline；
+- one-row-per-image Image Generation Sheet；
+- final executable prompts；
+- negative constraints；
+- character / scene / continuity refs；
+- edit instructions；
+- output spec；
+- audio mode。
+
+它的职责是把导演决策**编译到底层**，不是让 Antigravity 再做导演推理。
+
+---
+
+## 9. Antigravity Execution Agent
+
+### Input
+
+完整 Low-Level Execution Package。
+
+### Execution
+
+1. 按表批量调用 Nano Banana 生图；
+2. 只接受通过 identity / scene / composition QA 的图片；
+3. 按 exact timeline 放图；
+4. 按明确指令添加简单 cut / transition / subtitle / audio；
+5. 导出成片与 execution result。
+
+### Freedom
+
+接近零。只允许不改变结果的工具操作细节和等价技术重试。
 
 ### Forbidden
-按标点机械一行一镜。
 
----
+不得改故事、文案、SRT、镜头数量、时间、角色、场景、Prompt、构图、转场、BGM/SFX 或视频比例。
 
-## 7. Asset Resolver
+无法执行：
+`RETURN_EXECUTION_CONTRACT_UNRESOLVED`
 
-### Input
-- Shotbook；
-- Asset Registry；
-- Character / Style / Scene Bible。
+### Audio
 
-### Output
+当前 `AUDIO_MODE=TBD`：
 
-```yaml
-asset_request_id:
-beat_ids:
-mode: REUSE_EXISTING | GENERATE_NEW | SOURCE_REAL | GRAPHIC_OVERLAY | TEXT_ONLY | UNRESOLVED
-canonical_subject:
-required_action:
-required_expression:
-scene:
-props:
-composition:
-continuity_refs:
-provider_constraints:
-```
+- A：上游提供最终音频；
+- B：Antigravity 严格按锁定 script/SRT + voice config 生成 TTS。
 
-### Rule
-Prompt 是 AssetRequest 的编译结果，不是最上游真相。
-
----
-
-## 8. Image Generation Adapter
-
-### Input
-`AssetRequest`
-
-### Output
-
-```yaml
-asset_id:
-provider:
-provider_job_ref:
-file_ref:
-width:
-height:
-prompt_hash:
-reference_assets:
-qa:
-```
-
-Provider 可替换。
-
-当前 Antigravity / Nano Banana 只能在确认稳定调用方式后标记为 `PROGRAMMATIC`；否则是 `MANUAL_EXECUTOR`。
-
----
-
-## 9. Motion / Render Worker
-
-### Input
-- audio master；
-- Shotbook；
-- AssetManifest；
-- subtitles；
-- style / motion config。
-
-### Output
-
-```yaml
-render_id:
-timeline_ref:
-render_ref:
-duration:
-resolution:
-fps:
-audio_ref:
-subtitle_ref:
-qa:
-```
-
-### Rule
-如果使用 Narrative Motion Semantics，必须遵守其当前 INCOMPLETE 边界；unsupported semantic 不硬套模板。
+真实 PoC 后再冻结。
 
 ---
 
