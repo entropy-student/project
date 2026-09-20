@@ -1,5 +1,7 @@
 # Writer Quality Contract v0.2 — Bilibili-first
 
+> **G3R STATUS: PROPOSED / OWNER REVIEW.** The Bilibili-first additions in this revision do not become accepted canonical policy until Owner PASS.
+
 ## 1. Purpose
 
 G3 的目标不是“把 StoryPremise 改写成顺口文案”，而是验证：
