@@ -1,0 +1,89 @@
+# AI Story Showrunner — EXECUTION EVIDENCE
+
+> Append-only evidence record.  
+> Reviewer truth: `REVIEWER_HANDOFF.md`  
+> 本文件不记录 Secret，也不把计划当事实。
+
+---
+
+## Gate: P0-GOVERNANCE-RECONCILIATION
+
+- Date: 2026-09-20
+- Purpose: 将已经建立的 AI Story Showrunner 项目重新对齐 canonical Governance，并通过 fresh authoritative read-back 核验当前仓库事实。
+- Historical note: 项目最初 README / PROJECT_RECORD / docs 写入发生在正式 `REVIEWER_HANDOFF.md` 建立之前。本轮不伪造历史 Executor 证据，而是对当前事实重新核验。
+
+### Preflight Evidence
+
+Canonical Governance read:
+
+- Repository: `entropy-student/spike.skill`
+- Path: `vps-project-governance/SKILL.md`
+- Core baseline: v0.1.6
+- Governance Handoff reviewed: YES
+- Relevant conclusion: Owner / Reviewer / Executor、Gate、Evidence、PASS/RETURN、唯一 Reviewer Handoff 均应保留；VPS-only addenda 可在当前非部署阶段标 N/A。
+
+Project authoritative read-back reviewed:
+
+- `ai-story-showrunner/README.md`
+- `ai-story-showrunner/PROJECT_RECORD.md`
+- `ai-story-showrunner/docs/ARCHITECTURE.md`
+- `ai-story-showrunner/docs/PIPELINE_AND_GATES.md`
+- `ai-story-showrunner/docs/WORKER_CONTRACTS.md`
+- `ai-story-showrunner/docs/TOOL_INVENTORY.md`
+
+### Findings Before Reconciliation
+
+PASS-like strengths:
+
+- 已有明确 Gate；
+- 已有 nearest-gate rollback；
+- 已区分 Showrunner / Worker；
+- 已记录 UNKNOWN；
+- 已禁止假自动化和 Provider lock-in。
+
+Governance gaps:
+
+1. 缺唯一 `REVIEWER_HANDOFF.md`；
+2. `PROJECT_RECORD.md` 被写成“长期单一真相”，与 canonical Governance 的 current Reviewer truth 模型不完全一致；
+3. 没有独立记录 bootstrap reconciliation evidence；
+4. 没有明确说明哪些 VPS-only 条款 N/A、何时恢复；
+5. 没有 machine-readable current status 镜像。
+
+### Actual Writes
+
+本轮新增：
+
+- `REVIEWER_HANDOFF.md`
+- `docs/GOVERNANCE_ADAPTATION.md`
+- `EXECUTION_EVIDENCE.md`
+- `CURRENT_STATUS.json`
+
+本轮修改：
+
+- `README.md`
+- `PROJECT_RECORD.md`
+
+### Verification
+
+需要满足：
+
+- Reviewer Handoff 能单独回答：目标、当前 Gate、已 PASS、UNKNOWN、下一步、Owner 是否需要介入；
+- PROJECT_RECORD 不再与 Reviewer Handoff 竞争“当前唯一真相”；
+- README 阅读顺序优先恢复 Reviewer Handoff；
+- CURRENT_STATUS.json 与 Reviewer Handoff 的 current gate 一致；
+- G1 保持 CURRENT / IN_PROGRESS，不因治理文档补齐而误判 PASS。
+
+### Result
+
+```text
+PASS_CANDIDATE_P0_GOVERNANCE_RECONCILIATION
+STOP_AT_REVIEWER: YES
+```
+
+Reviewer accepted decision: `PASS`，记录于 `REVIEWER_HANDOFF.md`。
+
+---
+
+## Secret / Private Data Statement
+
+No private key, password, Cookie, Token, webhook URL, encryption-key value, decrypted private data, or private business identifiers are recorded here.
