@@ -386,3 +386,49 @@ Important:
 - non-character canonical scene/UI/prop/style refs can be generated/approved in G5B;
 - G5C may draft all image rows, but rows requiring IP cannot be marked execution-ready until the actual canonical three-view reference is available.
 
+## G5C Compile — 44 Image Rows / Pilot Ready
+
+Canonical docs aligned:
+- `docs/PRODUCTION_VISUAL_STYLE.md`
+- `docs/G5_IMAGE_ASSET_PACKAGE_CONTRACT.md`
+- `docs/PIPELINE_AND_GATES.md` v0.2
+- `docs/LOW_LEVEL_EXECUTION_PACKAGE.md` v0.2
+
+G5C outputs:
+- `experiments/g5/blind-search-answer/10_IMAGE_GENERATION_ROWS.json`
+- `experiments/g5/blind-search-answer/11_IMAGE_GENERATION_PLAN.md`
+- `experiments/g5/blind-search-answer/12_PILOT_BATCH.json`
+
+Validation:
+```text
+Visual Beats = 44
+Image Rows = 44
+Beat order/ID mapping = PASS
+Duplicate image IDs = 0
+Duplicate output names = 0
+Required prompt fields = PASS
+Acceptance criteria = PASS
+POST_OVERLAY rows = 33
+Continuity-ref rows = 36
+Structural issues = 0
+```
+
+High-risk Pilot:
+- SRCH_VB001 — character + workdesk baseline
+- SRCH_VB009 — character + cost-sheet causal prop
+- SRCH_VB012 — official-page master
+- SRCH_VB015 — setup must withhold reveal
+- SRCH_VB016 — matched same-page reveal
+- SRCH_VB022 — question/evidence semantic comparison
+- SRCH_VB025 — temporary phonebook analogy world
+- SRCH_VB044 — opening callback / final behavior change
+
+Current:
+```text
+G5A = PASS
+G5B = PASS_DIRECTION_LOCKED
+G5C = PASS_CANDIDATE_PILOT_READY
+Full 44-image batch = NOT_STARTED
+Next = Generate + QA 8 pilot images
+```
+
