@@ -159,3 +159,23 @@ PASS_G1_WORKER_INVENTORY_AND_CANONICAL_CONTRACTS
 NEXT_GATE: G2
 ```
 
+---
+
+## Owner Review Hold After G1
+
+- Date: 2026-09-20
+- Owner instruction: stop after G1 completion and review the overall direction before continuing.
+- Authoritative state: `G1 PASS / HOLD BEFORE G2`.
+- A MCP G2 preflight draft had already been created before the stop instruction was processed.
+- That MCP material is retained for traceability but explicitly downgraded to `DRAFT_HOLD_NOT_ACCEPTED`; it is **not** counted as G2 progress or evidence.
+- No Agent / Memory G2 validation was performed.
+- No G3+ work is accepted.
+
+### Result
+
+```text
+G1 PASS
+PROJECT HOLD FOR OWNER REVIEW
+G2 PENDING
+```
+
