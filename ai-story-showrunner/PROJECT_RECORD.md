@@ -128,7 +128,7 @@ P0  Project Boundary / Governance Reconciliation PASS
 G1  Worker Inventory + Canonical Contracts     PASS
 G2  Topic → Human Problem → Story MVP          PASS
 G2.5 Topic Supply / Ledger / Dedup             PASS_CANDIDATE / OWNER REVIEW
-G3  Story → Script / SRT MVP                   PENDING
+G3  Story → Script / SRT MVP                   PASS
 G4  Script → Director Shotbook MVP             PENDING
 G5  Shotbook → Image Asset Package MVP         PENDING
 G6  Image Assets → Video MVP                   PENDING
@@ -429,3 +429,25 @@ Automation:
 
 Current state:
 `G2.5 PASS_CANDIDATE / HOLD BEFORE G3`.
+
+
+## 17. G3 Writer Validation — 2026-09-20
+
+Reviewer decision: **PASS**
+
+Writing model:
+`McKee causality + Narrative Transportation + Short-form Retention + Jingsui Voice`
+
+Validation set:
+- MCP ~74s
+- Agent ~75s
+- Context / Memory ~78s
+
+Key findings:
+- term reveal should follow story intuition;
+- state/progression density matters more than “golden sentence” density;
+- 70–85s is a useful first calibration range, not a permanent rule;
+- Jingsui is valuable as voice/style layer but its first-person/signature/English-tail/visual-authority defaults are overridden;
+- Script and estimated SRT matched exactly across all three samples.
+
+Next: G4 Director / Shot Compiler.
