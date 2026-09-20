@@ -138,6 +138,11 @@
     "narrative_smoke_test_status": "PASS_CANDIDATE_OWNER_REVIEW",
     "resolved_owner_alignment": [
       "Narrative style and viewpoint: Jingsui lightness + McKee causality/meaning + Controlling Question + Idea/Counter-Idea + Lightness Guard"
-    ]
+    ],
+    "dialogue_refinement_candidate": "docs/DIALOGUE_PROSE_REFINEMENT_CANDIDATE.md",
+    "dialogue_refinement_status": "OWNER_REVIEW_NOT_CANONICAL",
+    "narrative_smoke_test_v2": "episodes/20260920-agent/G3R_narrative_test_v2.md",
+    "narrative_smoke_test_v2_review": "episodes/20260920-agent/G3R_narrative_test_review_v2.md",
+    "narrative_smoke_test_v2_score": 91
   }
 }
