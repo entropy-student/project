@@ -299,3 +299,18 @@ Jingsui adapter status:
 
 Next:
 G4 Director / Shot Compiler. Do not claim programmatic writer orchestration; that remains later automation work.
+
+
+## HOLD — G3 Editorial Rebaseline for Bilibili-first Strategy
+
+Owner clarified Bilibili is the primary platform and questioned the 70–85s short-form baseline, narrative POV, IP role, and long-term acquisition/content strategy.
+
+Decision:
+- G3 short-form samples remain valid as **writer capability evidence only**.
+- They are NOT the final editorial baseline.
+- 70–85s is no longer canonical.
+- G4 is blocked.
+- Rebaseline must decide Bilibili-first duration, IP narrator/protagonist model, story-vs-explainer balance, and early-channel content portfolio before production continues.
+
+Current state:
+`HOLD_FOR_G3_EDITORIAL_REBASELINE`
