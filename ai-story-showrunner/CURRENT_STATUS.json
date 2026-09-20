@@ -8,8 +8,8 @@
     "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
   },
   "current_gate": {
-    "id": "G1",
-    "name": "Worker Inventory + Canonical Contracts",
+    "id": "G2",
+    "name": "Topic → Human Problem → Story MVP",
     "status": "IN_PROGRESS"
   },
   "accepted_gates": [
@@ -17,19 +17,23 @@
       "id": "P0",
       "name": "Project Boundary / Governance Reconciliation",
       "status": "PASS"
+    },
+    {
+      "id": "G1",
+      "name": "Worker Inventory + Canonical Contracts",
+      "status": "PASS"
     }
   ],
   "next_gate": {
-    "id": "G2",
-    "name": "Topic → Human Problem → Story MVP",
+    "id": "G3",
+    "name": "Story → Script / SRT MVP",
     "status": "PENDING"
   },
   "owner_intervention_required": false,
   "unknowns": [
-    "canonical topic/history-selection skill location",
-    "canonical McKee story-structure skill or final placement",
-    "Antigravity/Nano Banana technical integration level",
-    "audio mode: upstream TTS vs Antigravity TTS"
+    "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR",
+    "audio mode final choice: upstream TTS vs Antigravity TTS",
+    "whether Topic contract should later be extracted into a reusable Skill after episode validation"
   ],
   "authoritative_handoff": "REVIEWER_HANDOFF.md",
   "locked_decisions": [
@@ -37,6 +41,10 @@
     "one small shot approximately equals one generated image",
     "motion is preferably represented by multiple still images",
     "executor has near-zero creative freedom",
-    "character and scene consistency are controlled by canonical references and per-shot contracts"
+    "character and scene consistency are controlled by canonical references and per-shot contracts",
+    "content jobs are DISCOVERY, TRUST, or SOLUTION with one primary job per episode",
+    "metrics are separated into traffic, trust, and conversion",
+    "McKee-style causal structure is currently an internal Story Engine gate",
+    "Jingsui is a candidate writer style engine behind a restrictive project adapter"
   ]
 }
