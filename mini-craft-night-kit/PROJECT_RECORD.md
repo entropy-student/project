@@ -21,7 +21,7 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K1B_WORDPRESS_IMPLEMENTATION
+CURRENT_CHECKPOINT=OWNER_K1B_VISUAL_REVIEW
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -261,3 +261,18 @@ Owner review marker: `OWNER_K1A_VISUAL_DIRECTION=PASS` or RETURN with requested 
 K1B is authorized. Codex must not generate final images; use approved existing assets or editable placeholders only.
 
 Formal decision: `docs/REVIEWER_DECISION_K1B_WORDPRESS_IMPLEMENTATION.md`.
+
+
+## K1B Technical Review
+
+Reviewer accepted the technical implementation evidence.
+
+```text
+K1B_TECHNICAL_REVIEW=PASS
+K1B_FINAL_REVIEW=PENDING_OWNER_VISUAL
+K2_NOT_AUTHORIZED=YES
+```
+
+Formal decision: `docs/REVIEWER_DECISION_K1B_TECHNICAL_PASS_OWNER_VISUAL_PENDING.md`.
+
+Owner must visually inspect the Studio-managed site before K1B is formally closed.
