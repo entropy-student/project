@@ -1,7 +1,6 @@
-# Daily Topic / Publishing Planner v0.2 — PROPOSED
+# Daily Topic / Publishing Planner v0.2 — SUPERSEDED
 
-> **NOT ACTIVE until Owner PASS of G3R.**  
-> The currently scheduled Daily Topic Radar keeps using the accepted v0.1 behavior until then.
+> **SUPERSEDED after G3R PASS.** Active canonical contract: `docs/DAILY_TOPIC_AUTOMATION_V2.md`.
 
 ## Proposed changes after PASS
 
