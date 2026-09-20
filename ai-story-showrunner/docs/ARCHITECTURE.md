@@ -110,10 +110,16 @@ episodes/<episode_id>/
 ```text
 Signal
 + Why Now
-+ Human Problem
++ Human Problem / Stakes
 + AI Mechanism
-+ Audience Value
++ Curiosity Gap
 + Story Seed
++ Audience Payoff
++ Search Anchor
++ Primary Content Job
++ Conversion Adjacency
++ Visual Storyability
++ Novelty / Repetition Risk
 ```
 
 ### StoryPremise
@@ -203,7 +209,11 @@ BLOCKED_BY_REAL_INPUT
 - audience translation；
 - human tension；
 - knowledge core；
-- topic ranking / rejection。
+- topic hard-gate / ranking / rejection；
+- DISCOVERY / TRUST / SOLUTION content job；
+- conversion adjacency；
+- search anchor；
+- history / visual repetition risk。
 
 ### Layer B — Narrative Intelligence
 
@@ -339,8 +349,9 @@ Adapter 必须回答：
 | AI 机制错误 | KnowledgeCore |
 | 故事只是伪包装 | Story |
 | 口播像教程 / 演讲 | Script |
-| 一句一图 | Director |
-| 人物漂移 | Asset |
+| 镜头没有状态变化 / 仍像 PPT | Director |
+| 视觉模板与近期内容过度重复 | Director / Story |
+| 人物漂移 | Character / Scene Lock |
 | 动效没有表达关系 | Motion |
 | 音画错位 | Timeline / Render |
 | 热点事实过期 | Research / Knowledge |
@@ -353,9 +364,13 @@ Adapter 必须回答：
 
 ### Content Ledger
 - 已讲主题；
+- primary content job（DISCOVERY / TRUST / SOLUTION）；
 - 已用人类问题；
 - 已用比喻 / 故事母题；
-- 表现数据；
+- 已用 hook / visual motif；
+- traffic / trust / conversion 分层数据；
+- conversion adjacency hypothesis；
+- repeated problem clusters；
 - 是否允许重讲。
 
 ### World Bible
@@ -390,3 +405,18 @@ Showrunner 可程序化调用 Worker Adapter，并自动维护 episode state。
 只有 Gate PASS 才自动进入下一 Stage；失败自动 RETURN / HOLD。
 
 G8 前禁止把 L0/L1 宣称成“全自动”。
+
+
+## 13. Content Business Contract
+
+流量、信任与转化的正式策略见 `docs/CONTENT_STRATEGY_AND_CONVERSION.md`。
+
+核心约束：
+
+- Topic 先过 Hard Gates，再比较机会强弱；
+- 每期只有一个 `primary_content_job`：DISCOVERY / TRUST / SOLUTION；
+- 一条视频默认一个核心 AI mechanism；
+- `conversion_adjacency` 只描述未来需求邻近度，不允许倒逼硬广；
+- Final QA 增加 Visual Repetition Gate；
+- Metrics 必须拆分 Traffic / Trust / Conversion，禁止只看播放量；
+- 内容反馈可反向形成 product-demand hypothesis，但单条爆款不能直接证明产品需求。
