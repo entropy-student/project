@@ -332,3 +332,15 @@ NEXT_GATE: G4
 No G4 production work was started.
 The live scheduled Daily Topic Radar was not changed to the proposed v0.2 planner before Owner approval.
 
+---
+
+## G3R Refinement — Tutorial Module Removed
+
+- Date: 2026-09-20
+- Owner decision: remove tutorial as editorial mode.
+- Remaining modes: STORY_MODEL / STORY_ACTION.
+- Proposed weekly mix: 5 / 2.
+- Added optional bounded Viewpoint Gate.
+- Added scene/beat causal progression contract.
+- G4 remains BLOCKED pending final Owner PASS.
+
