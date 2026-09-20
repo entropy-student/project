@@ -1,6 +1,6 @@
 {
   "episode_id": "blind-search-answer",
-  "status": "G5B_SPEC_LOCKED_REFERENCE_IMAGES_PENDING",
+  "status": "G5B_STYLE_DIRECTION_APPROVED_PRODUCTION_REFERENCE_CALIBRATION",
   "references": [
     {
       "asset_id": "CHAR_IP_001",
@@ -8,7 +8,7 @@
       "status": "MISSING_REAL_ASSET",
       "canonical_paths": [],
       "generation_allowed": false,
-      "note": "Must use user's real canonical IP three-view reference; do not recreate identity from text."
+      "note": "Owner supplied the canonical IP identity image in the current conversation; repository still lacks a persisted binary reference. Production Character Master v2 is being derived from this approved identity."
     },
     {
       "asset_id": "SCENE_WORKDESK_001",
@@ -16,7 +16,7 @@
       "status": "TO_GENERATE_CANONICAL",
       "canonical_paths": [],
       "generation_allowed": true,
-      "note": "Generate empty/stable primary workdesk master after style approval."
+      "note": "A Workdesk Scene Master has been generated in the current conversation and is pending production-style calibration/persistence."
     },
     {
       "asset_id": "SCENE_PHONEBOOK_ANALOGY_001",
@@ -64,7 +64,7 @@
       "status": "TO_GENERATE_CANONICAL",
       "canonical_paths": [],
       "generation_allowed": true,
-      "note": "Text style lock exists; approve visual samples before full generation."
+      "note": "Owner approved simplified flat narrative comic style. Production Character Master v2 + 3 real-beat calibration frames remain before VISUAL_LOCKED."
     }
   ]
 }
