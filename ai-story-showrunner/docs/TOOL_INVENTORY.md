@@ -1,6 +1,6 @@
 # Tool / Skill Inventory — 2026-09-20
 
-本清单记录 P0 立项时实际检查到的相关能力。用途是**决定复用边界**，不是复制这些 Skill。
+本清单记录已实际检查到的相关能力。用途是**发现候选能力并决定复用边界**，不是最终 Worker 编制。正式 Worker admission 以 `WORKER_ADAPTER_PLAN.md` 为准。
 
 ## A. `entropy-student/spike.skill`
 
@@ -20,7 +20,7 @@ Showrunner 位置：
 
 ### 2. jingsui-story-video-director
 
-**状态：已存在 / 核心候选 Worker**
+**状态：已存在 / STRONG CANDIDATE Writer capability**
 
 已包含：
 - 主题 → 切口 → 口播 → SRT；
@@ -38,7 +38,9 @@ Showrunner 位置：
 - 已有角色 / 风格 / 叙事校准。
 
 Showrunner 位置：
-`Writer Worker + optional Director Worker`
+`WRITER_STYLE_ENGINE via project Adapter`
+
+其自带 Director / Image / Edit 输出在当前主路线中不具 canonical authority。
 
 注意：
 它当前能从“主题”一路做到剪辑计划，因此接入 Showrunner 后必须限制权限，避免它覆盖已经锁定的 Topic / Knowledge / Story Contract。
@@ -68,7 +70,7 @@ Showrunner 位置：
 
 ### 4. aroll-video-maker
 
-**状态：已存在 / 下游生产候选**
+**状态：已存在 / reference or alternative route**
 
 强项：
 - voiceover master timeline；
@@ -80,7 +82,9 @@ Showrunner 位置：
 - 已明确取消 sentence = image。
 
 Showrunner 位置：
-`Director / Asset / Render Worker`
+`Director-method reference / future alternative route`
+
+当前默认成片执行路线已冻结为 Antigravity。
 
 ---
 
@@ -149,25 +153,21 @@ AI Story Showrunner 负责“整期内容生产的上游大脑”；Visual Narra
 
 ### Topic / Trend Selection Skill
 
-用户明确提到已有“选题 Skill”，但 P0 在当前 `spike.skill` 根目录中未发现一个名称明确对应“历史选题账本 + 每日 AI 选题”的 canonical Skill。
+已完成 `spike.skill` root + recursive path scan，当前未发现名称/路径明确对应“历史选题账本 + 每日 AI 选题”的 canonical Skill。
 
 状态：
-`TO_LOCATE`
+`NO_CANONICAL_FOUND_IN_CURRENT_SCAN / CONTRACT_FIRST`
 
-下一步：
-- 搜索其他仓库 / 当前工作区；
-- 找到后做 Adapter；
-- 若不存在，再决定是否新建，不能因为没找到就直接重复造轮子。
+当前先使用 `schemas/topic_opportunity.schema.json` + `CONTENT_STRATEGY_AND_CONVERSION.md`，由 Showrunner 在 G2 验证；至少 3 个真实 episode 后再决定是否抽成 reusable Skill。
 
 ### McKee Story Structure Worker
 
 当前没有确认独立 canonical Skill。
 
 状态：
-`TO_DEFINE`
+`INTERNAL_STORY_ENGINE_GATE / PROVISIONAL`
 
-初步判断：
-优先把它设计成 Story Engine 的结构 Gate，而不是“成稿后再润色”的独立 Writer。
+当前扫描未发现独立 McKee Skill。除非后续找到更权威现有能力，否则优先作为 Story Engine 结构 Gate，而不是成稿后润色 Worker。
 
 ### Antigravity / Nano Banana
 
@@ -202,3 +202,11 @@ G1 必须把“能在 UI 里用”与“可被 Showrunner 自动调用”分开�
 ```
 
 AI Story Showrunner 的第一价值不是再创造一个 Skill，而是把这些 Worker 从“各自为政”改造成**同一个 Production System 的可替换部门**。
+
+
+## D. New Project Contracts
+
+- `docs/CONTENT_STRATEGY_AND_CONVERSION.md`：流量 / 信任 / 转化、内容任务、Visual Repetition Gate。
+- `schemas/topic_opportunity.schema.json`：TopicOpportunity 机器可读 contract。
+- `docs/WORKER_ADAPTER_PLAN.md`：候选 Skill 的限权、适配、admission 规则。
+- `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`：Antigravity 低层施工合同。
