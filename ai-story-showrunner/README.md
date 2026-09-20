@@ -144,6 +144,7 @@ Antigravity 执行
 P0  Project Boundary / Governance Reconciliation ✅ PASS
 G1  Worker Inventory + Canonical Contracts     ✅ PASS
 G2  Topic → Human Problem → Story MVP          ✅ PASS
+G2.5 Topic Supply / Ledger / Dedup             ✅ PASS
 G3  Story → Script / SRT MVP                   ⏸ PENDING
 G4  Script → Director Shotbook MVP             ⏳
 G5  Shotbook → Image Asset Package MVP         ⏳
@@ -193,3 +194,10 @@ docs/TOOL_INVENTORY.md
   ↓
 EXECUTION_EVIDENCE.md（需要审计执行事实时）
 ```
+
+
+## 每日选题排期
+
+Owner 日常查看：`topic-ledger/calendar/YYYY-MM.md`。
+
+Daily Topic Radar 每日维护未来 7 天滚动排期；合格热点只可抢占 `planned` 槽位，`locked` / `published` 不得自动改写。执行合同见 `docs/DAILY_TOPIC_AUTOMATION.md`。
