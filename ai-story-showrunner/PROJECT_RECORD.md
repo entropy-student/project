@@ -550,3 +550,34 @@ Agent 3–5 minute narrative smoke test created and reviewed as PASS_CANDIDATE. 
 Current state:
 `G3R HOLD / 1 OWNER QUESTION REMAINS`.
 
+## 21. Dialogue Layer Promoted + Cross-topic Portability — 2026-09-20
+
+Confirmed sentence-level layer:
+- dialogue = verbal action;
+- preserve subtext;
+- recurring IP vocabulary/worldview;
+- dramatic economy;
+- reaction/silence can replace explanation;
+- selective line-ending design;
+- concrete cases before abstract methods.
+
+These rules were promoted into:
+- `docs/NARRATIVE_STYLE_CONTRACT.md` v0.2;
+- `docs/WRITER_QUALITY_CONTRACT.md` v0.3.
+
+Validation:
+- Agent v2: 91/100 self-review;
+- Context/Memory v1: 89/100 self-review.
+
+Important anti-template finding:
+The portable unit is NOT:
+`mistake → disaster → overcorrect → compromise`.
+
+The portable unit is:
+`character desire → character action → mechanism response → meaningful state change → next choice → recognition/payoff`.
+
+Conflict shape, humor, metaphor and climax must remain topic-dependent.
+
+Current:
+`G3R HOLD / READY FOR OWNER PASS DECISION / G4 BLOCKED`.
+
