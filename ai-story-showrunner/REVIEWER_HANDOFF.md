@@ -44,8 +44,8 @@
 
 ```text
 P0  Project Boundary / Governance Reconciliation     ✅ PASS
-G1  Worker Inventory + Canonical Contracts           ← CURRENT
-G2  Topic → Human Problem → Story MVP                ⏳
+G1  Worker Inventory + Canonical Contracts           ✅ PASS
+G2  Topic → Human Problem → Story MVP                ← CURRENT
 G3  Story → Script / SRT MVP                         ⏳
 G4  Script → Director Shotbook MVP                   ⏳
 G5  Shotbook → Image Asset Package MVP               ⏳
@@ -75,58 +75,86 @@ Accepted baseline:
 
 P0 的最初仓库建档发生在正式 Governance reconciliation 之前。该历史偏差已在 `EXECUTION_EVIDENCE.md` 中记录，并通过 fresh GitHub read-back 对当前事实进行重新核验；不删除历史、不伪造 Executor 证据。
 
-## 6. Current Gate — G1
+### G1 — Worker Inventory + Canonical Contracts
+
+Reviewer decision: **PASS**
+
+Accepted baseline:
+
+- TopicOpportunity contract 已冻结并机器化；
+- Episode State schema 已建立；
+- Low-Level Shot schema 已建立；
+- 景岁 Skill 定位为候选 Writer Style Engine，并通过 Adapter 限权；
+- acquisition-growth-radar 定位为 Publish/Learning Adapter；
+- entertainment-rander 仅作为 optional Signal Source；
+- 当前扫描未发现独立 Topic Skill，采用 contract-first，不提前新造 Skill；
+- 当前扫描未发现独立 McKee Skill，冻结为 Showrunner 内部 Story Engine Gate；
+- Antigravity 集成级别明确为 `MANUAL_EXECUTOR / NOT_YET_POC_VALIDATED`；
+- AUDIO_MODE A/B 路径与 PoC 标准已定义；
+- Worker admission 必须经过真实 episode evidence。
+
+G1 contracts:
+
+- `docs/CONTENT_STRATEGY_AND_CONVERSION.md`
+- `docs/WORKER_ADAPTER_PLAN.md`
+- `docs/ADAPTER_FIELD_MAPPINGS.md`
+- `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
+- `docs/ANTIGRAVITY_POC.md`
+- `schemas/topic_opportunity.schema.json`
+- `schemas/episode.schema.json`
+- `schemas/shot.schema.json`
+
+## 6. Current Gate — G2
 
 ### Goal
 
-把“有很多 Skill”变成可执行的系统接口，而不是人工凭记忆串联。
+验证 Story-first Topic Contract 能否把不同类型的 AI 主题稳定转成：
+
+```text
+Signal / Concept
+→ Human Problem
+→ one AI Mechanism
+→ Storyable Situation
+→ StoryPremise
+```
+
+### Validation Set
+
+1. MCP；
+2. AI Agent / Agentic Action；
+3. Context / Memory。
 
 ### Allowed Scope
 
-- 继续遍历并定位已有选题 / 研究 /故事 / 导演 / 生图 / 渲染能力；
-- 冻结每个 Stage 的 canonical input/output；
-- 建立 Episode Package 和 machine-readable status；
-- 建立 Worker Adapter 映射；
-- 标记 UNKNOWN / TO_LOCATE / EXTERNAL_ADAPTER；
-- 必要时新增纯文档 / schema / contract 文件。
+- fresh research / KnowledgeCore；
+- TopicOpportunity；
+- Human Problem / Stakes；
+- StoryPremise；
+- No-name / Storyability / One-Mechanism / Non-Trivial Payoff gates；
+- DISCOVERY / TRUST / SOLUTION role selection。
 
 ### Forbidden Scope
 
-- 不提前生产正式视频；
-- 不把“UI 中能用的工具”宣称成“可程序化调用”；
-- 不新造已有 Skill 的重复版本；
-- 不为了跑通流程静默修改上游 Skill；
-- 不跳过 G1 直接宣称半自动；
-- 不把 MCP / Agent / Memory 的故事测试结果提前写成 G2 PASS。
+- 不提前把题目写成完整景岁稿；
+- 不生成正式图片或视频；
+- 不为了流量改变技术事实；
+- 不因为 conversion adjacency 高就强行做 SOLUTION；
+- 不允许多个核心 AI mechanism 混进一条 MVP。
 
 ### Acceptance Criteria
 
-G1 PASS 必须同时满足：
+三个题目至少都能产出：
 
-1. 每个 Stage 有明确 owner / worker role；
-2. 每个 Stage 有 canonical input/output；
-3. Episode state 能唯一定位当前 Gate；
-4. 现有 Worker 与 Stage 的 Adapter 映射清晰；
-5. 所有未知能力显式标记，不猜；
-6. 选题 Skill canonical 位置已找到，或明确证据证明需要新建；
-7. McKee 结构层位置已冻结；
-8. Low-Level Execution Package 字段已冻结：逐镜头时间线、逐图 Prompt/reference、角色/场景一致性、剪辑指令；
-9. Antigravity 的角色已冻结为受限 Executor，不具有导演自由度；
-10. Nano Banana / Antigravity 的技术集成级别已明确：PROGRAMMATIC / MANUAL_EXECUTOR / UNKNOWN；
-11. AUDIO_MODE 在 PoC 前可保持 TBD，但两条候选路径与切换条件必须明确；
-12. G2 的唯一执行合同可直接下发，不需要 Owner 补充技术判断。
-
-### Evidence Required
-
-- GitHub file/path read-back；
-- Worker source / version / blob SHA（能获取时）；
-- contracts/schema 文件存在且相互一致；
-- CURRENT_STATUS / Reviewer Handoff 与 Project Record 状态一致；
-- UNKNOWN 清单没有被计划文字冒充事实。
+- valid TopicOpportunity；
+- one locked KnowledgeCore；
+- 一个删掉术语仍成立的 StoryPremise；
+- 明确 reject/return reason；
+- primary_content_job 与 conversion_adjacency；
+- 无关键事实错误。
 
 ### Rollback
 
-G1 只涉及项目本地可逆文档 / schema 变更。若 contract 设计错误，回退对应文件即可；不影响外部 Worker、生产系统或用户资产。
+G2 只回到 Topic / Knowledge / Story，不触碰 Production 层。
 
 ## 7. Confirmed Facts
 
@@ -145,9 +173,9 @@ G1 只涉及项目本地可逆文档 / schema 变更。若 contract 设计错误
 
 ## 8. UNKNOWN / Open Risks
 
-- 独立“选题 Skill / 历史选题账本”的 canonical 位置：**TO_LOCATE**。
-- McKee 结构是否已有独立 canonical Skill：**TO_LOCATE / likely Story Engine Gate**。
-- Antigravity / Nano Banana 是否可稳定程序化调用：**INTEGRATION_UNKNOWN**。
+- 独立 Topic Skill：当前 `spike.skill` 扫描未发现，G2 采用 contract-first；是否抽成 Skill 等至少 3 个真实 episode 后决定。
+- McKee：当前冻结为内部 Story Engine Gate；若未来找到更权威现有能力可重新评估。
+- Antigravity：`MANUAL_EXECUTOR / NOT_YET_POC_VALIDATED`；PROGRAMMATIC 尚未证明。
 - 图片到成片的主路线已冻结：Antigravity 严格执行 Low-Level Execution Package；Aroll / Visual Narrative Lab / TalkCraft 暂不作为默认执行链。
 - 音频路径仍待定：上游先 TTS，或由 Antigravity 严格按 locked script/SRT 生成。
 - 后续是否需要独立数据库保存 Episode / Content Ledger：G8 前暂不决定。
@@ -186,15 +214,15 @@ G1 只涉及项目本地可逆文档 / schema 变更。若 contract 设计错误
 
 ## 12. Next Step
 
-- Reviewer next action: 完成 G1 剩余 Worker 定位，并冻结 Antigravity 施工包 schema 与 AUDIO_MODE PoC 方案。
-- Executor next action: 暂未下发独立 Executor Gate；G1 合同冻结后再决定是否需要 Executor。
+- Reviewer next action: 执行 G2，先用 MCP 跑 TopicOpportunity → KnowledgeCore → StoryPremise，并按同一 Contract 验证 Agent / Memory。
+- Executor next action: G2 暂无 Antigravity 执行；只在 Production PoC 时触发。
 - Owner intervention required: **NO**
 
 ## 13. Status Summary
 
-- 整体进展：项目已立项，治理已对齐，进入“把工具收编成系统”的 G1。
-- 最终目标：AI Story Showrunner 成为唯一总控层，现有 Skill 作为可替换 Worker 运转。
-- 当前 Gate：G1 Worker Inventory + Canonical Contracts。
-- 本轮完成：治理规范核对、缺口识别、唯一 Reviewer Handoff 建立、P0 重新对账。
-- 下一步：完成 G1 剩余 UNKNOWN 与机器可读 contract。
+- 整体进展：P0、G1 已 PASS，正式进入内容核心验证 G2。
+- 最终目标：AI Story Showrunner 成为唯一总控层，候选 Skill 经 Adapter 接入，Antigravity 负责低层施工。
+- 当前 Gate：G2 Topic → Human Problem → Story MVP。
+- 本轮完成：流量/信任/转化 Contract、Topic schema、Episode schema、Shot schema、Worker Adapter 规则、字段映射、Antigravity PoC 定义。
+- 下一步：用 MCP / Agent / Memory 三个题验证 Topic 与 Story Engine。
 - 注意事项：当前绝不能把“文档架构已完成”误称为“流水线已经自动跑通”。
