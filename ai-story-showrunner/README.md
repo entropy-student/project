@@ -146,7 +146,8 @@ G1  Worker Inventory + Canonical Contracts     ✅ PASS
 G2  Topic → Human Problem → Story MVP          ✅ PASS
 G2.5 Topic Supply / Ledger / Dedup             ✅ PASS
 G3  Story → Script / SRT MVP                   ✅ PASS
-G4  Script/SRT → Director / Shot Compiler MVP  ⏸ PENDING
+G3R Bilibili Editorial / Narrative Rebaseline ◐ OWNER REVIEW
+G4  Script/SRT → Director / Shot Compiler MVP  ⛔ BLOCKED
 G5  Shotbook → Image Asset Package MVP         ⏳
 G6  Image Assets → Video MVP                   ⏳
 G7  Three-topic End-to-End Validation          ⏳
@@ -206,3 +207,21 @@ Daily Topic Radar 每日维护未来 7 天滚动排期；合格热点只可抢�
 ## G3 Writer baseline
 
 Writer quality 采用 McKee 因果骨架 + narrative transportation + short-form retention + Jingsui voice 四层模型。首轮 3 个 validation episode 已通过 Script/SRT QA；详见 `docs/WRITER_QUALITY_CONTRACT.md` 与 `docs/G3_VALIDATION_REVIEW.md`。
+
+
+## Current editorial review hold
+
+The project is currently held at **G3R** for Owner review.
+
+Proposed Bilibili-first baseline:
+- daily editorial publishing target;
+- recurring first-person channel IP;
+- 3–8 minute routed duration, standard 4–6 minutes;
+- STORY_MODEL / STORY_ACTION / STORY_TUTORIAL editorial modes;
+- first 21 published episodes as Season 0 calibration.
+
+See:
+- `docs/BILIBILI_CHANNEL_STRATEGY.md`
+- `docs/G3R_EDITORIAL_REVIEW.md`
+
+Current Daily Topic Radar remains active under the previously accepted v0.1 contract until this rebaseline receives Owner PASS.
