@@ -348,3 +348,18 @@ The currently scheduled Daily Topic Radar remains on the accepted v0.1 behavior 
 
 Next:
 G4 remains BLOCKED pending Owner PASS / RETURN on G3R.
+
+
+## G3R Refinement — Tutorial Removed / Story Craft Tightened
+
+Owner decision:
+- remove STORY_TUTORIAL as a channel module;
+- retain STORY_MODEL and STORY_ACTION only.
+
+Updated proposal:
+- weekly hypothesis = 5 STORY_MODEL / 2 STORY_ACTION;
+- default content length target centered on 3–5 min, with extension only when story requirements justify it;
+- opinion is optional, bounded, and must not be the factual/story load-bearing wall;
+- new Story Beat Gate requires immediate want → action → response/resistance → result → state change → next causal question/decision.
+
+G4 remains BLOCKED pending Owner PASS on the rebaseline.
