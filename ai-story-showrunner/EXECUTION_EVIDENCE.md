@@ -179,3 +179,42 @@ PROJECT HOLD FOR OWNER REVIEW
 G2 PENDING
 ```
 
+---
+
+## Gate G2 — Topic → Human Problem → Story MVP
+
+- Date: 2026-09-20
+- Reviewer decision: PASS
+- Validation episodes:
+  - `episodes/20260920-mcp/`
+  - `episodes/20260920-agent/`
+  - `episodes/20260920-context-memory/`
+- Cross-topic review: `docs/G2_VALIDATION_REVIEW.md`
+
+### Current official evidence used
+
+MCP:
+- Model Context Protocol specification 2026-07-28
+- MCP server primitives / tools specification
+- MCP 2026-07-28 release notes
+
+Agent:
+- OpenAI practical guide to building agents
+- OpenAI Workspace Agents
+- OpenAI Agents API / long-running agent infrastructure
+
+Context / Memory:
+- OpenAI conversation state / context window guide
+- OpenAI Agents API context management
+- OpenAI Dreaming / Memory
+- OpenAI Memory FAQ
+
+### Result
+
+```text
+PASS_G2_TOPIC_TO_HUMAN_PROBLEM_TO_STORY_MVP
+NEXT_GATE: G3
+```
+
+No script, image, video, or Antigravity execution was accepted as part of G2.
+
