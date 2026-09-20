@@ -46,6 +46,7 @@
 P0  Project Boundary / Governance Reconciliation     ✅ PASS
 G1  Worker Inventory + Canonical Contracts           ✅ PASS
 G2  Topic → Human Problem → Story MVP                ✅ PASS
+G2.5 Topic Supply / Ledger / Dedup                   ◐ PASS_CANDIDATE / OWNER REVIEW
 G3  Story → Script / SRT MVP                         ⏸ PENDING
 G4  Script → Director Shotbook MVP                   ⏳
 G5  Shotbook → Image Asset Package MVP               ⏳
@@ -216,17 +217,51 @@ G2 只回到 Topic / Knowledge / Story，不触碰 Production 层。
 - 历史 commit 可作为 rollback point；
 - 当前不存在 DB / Secret /生产数据恢复风险。
 
+## 6.5 Current Gate — G2.5 Topic Supply / Ledger / Dedup
+
+Reviewer status: **PASS_CANDIDATE / OWNER REVIEW**
+
+Purpose:
+- 冻结 HOT + EVERGREEN 双轨选题供应；
+- 建立 Topic Registry，而不是只靠日历；
+- 建立四层去重：signal / topic / angle / story-visual motif；
+- 建立 Daily Radar snapshot contract；
+- 建立 Evergreen Bank；
+- 冻结“合格热点抢占，否则走常规池”的排期逻辑；
+- 评估每日自动任务，但本 Gate 不自动开启定时执行。
+
+Artifacts:
+- `docs/TOPIC_OPERATING_SYSTEM.md`
+- `topic-ledger/README.md`
+- `topic-ledger/topic-registry.jsonl`
+- `topic-ledger/daily/TEMPLATE.json`
+- `topic-ledger/calendar/2026-09.md`
+- `topic-ledger/EVERGREEN_BANK.md`
+- `schemas/topic_registry_entry.schema.json`
+
+External evidence used:
+- 抖音精选优质内容标准；
+- 小红书热点榜公开排序规则；
+- YouTube 官方选题/趋势/可持续内容建议；
+- Information Gap / curiosity research；
+- Berger & Milkman virality research；
+- AI-TREND-RADAR / TrendRadar public projects。
+
+Open decision:
+- 是否接受当前 Topic Operating System；
+- 接受后再决定每日自动任务的具体运行时间与输出渠道。
+
 ## 12. Next Step
 
-- Reviewer next action: G2 已完成；下一步进入 G3，用 Jingsui Writer Adapter 把 locked StoryPremise 转成 Script / SRT，但不得改变 KnowledgeCore。
+- Reviewer next action: **暂停 G3。先完成 G2.5 Owner Review。** 接受 Topic Operating System 后，再进入 Jingsui Writer Adapter 验证。
 - Executor next action: G2 暂无 Antigravity 执行；只在 Production PoC 时触发。
-- Owner intervention required: **NO**
+- Owner intervention required: **YES — review Topic Operating System; no technical action required**
 
 ## 13. Status Summary
 
 - 整体进展：P0、G1、G2 已 PASS；上游内容模型已通过三类题型首轮验证。
 - 最终目标：AI Story Showrunner 成为唯一总控层，候选 Skill 经 Adapter 接入，Antigravity 负责低层施工。
-- 当前状态：G2 PASS / READY FOR G3。
+- 当前状态：G2 PASS / G2.5 PASS_CANDIDATE / HOLD BEFORE G3。
 - 本轮完成：流量/信任/转化 Contract、Topic schema、Episode schema、Shot schema、Worker Adapter 规则、字段映射、Antigravity PoC 定义。
-- 下一步：G3 验证 Jingsui Writer Adapter 是否能在不破坏故事与事实的前提下生成高质量口播稿与 SRT。
+- 下一步：Owner 审阅 HOT+EVERGREEN、Topic Registry、去重规则和 Daily Radar；通过后才进入 G3。
 - 注意事项：当前绝不能把“文档架构已完成”误称为“流水线已经自动跑通”。
