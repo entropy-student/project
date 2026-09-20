@@ -1,0 +1,410 @@
+{
+  "episode_id": "blind-search-answer",
+  "status": "READY_FOR_PILOT",
+  "rationale": "Covers character identity, workdesk geometry, causal prop, stable UI master, setup/reveal continuity, semantic evidence comparison, analogy scene, and final callback.",
+  "beats": [
+    {
+      "image_id": "IMG_001",
+      "visual_beat_id": "SRCH_VB001",
+      "semantic_shot_id": "SRCH_S001",
+      "sequence_id": "SEQ1",
+      "start": 0,
+      "end": 5.25,
+      "duration": 5.25,
+      "narration": "我现在看到 AI 回答下面带着“官方来源”四个字，第一反应已经不是放心了。",
+      "prompt": "16:9 横屏，扁平简化漫画叙事插画，适合批量静态分镜视频。 线条稳定干净，头发主发束简化，1–2 层块面阴影，衣褶克制，背景只保留有叙事作用的固定物件；不要精修海报感，不要 PPT/信息图感。 严格保持 CHAR_IP_001：同一个年轻男性 IP，深色蓬松短发但只保留少量稳定主发束，酒红色上衣、米白领口、黑裤、简洁白鞋；脸型、发型轮廓、服装和年龄感不得漂移。 固定主工作桌场景：同一桌面、显示器位置、鼠标区、资料区和背景锚点保持一致。 本镜头唯一要表达的状态：official-source cue appears under answer; IP no longer relaxes automatically。 对应旁白语义：我现在看到 AI 回答下面带着“官方来源”四个字，第一反应已经不是放心了。。 景别：MEDIUM_CLOSE；POV：OBSERVER；镜头角度：EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT。 视觉意图：READ_REACTION；画面关系：CONTINUITY；视觉强度：LOW_MEDIUM。 需要使用并保持以下已锁定资产状态：UI_AI_ANSWER_001（虚构 AI 回答面板，布局稳定，答案区与来源区固定；关键文字后期覆盖）；UI_POLICY_PAGE_001（同一张虚构官方退款政策页面，布局与两条规则位置固定；关键文字后期覆盖）。 按 canonical reference 建立本镜头，不复制无关上一镜细节。 关键中文文字不要依赖生图模型精确生成：保留干净、可后期覆盖的文本区域与正确层级位置；禁止生成大量乱码或长段伪文字。 主体必须一眼可读，画面只承担这一 Beat，不提前泄露后续 reveal，不添加下一 Beat 才出现的信息。",
+      "negative_constraints": [
+        "不要PPT、信息图、讲义卡片式构图",
+        "不要霓虹赛博AI风、全息蓝紫光效",
+        "不要随机改变角色脸型、发型轮廓、服装或年龄感",
+        "不要随机改变固定工作桌、显示器、鼠标区和背景锚点",
+        "不要增加无关人物、图标、箭头、装饰文字",
+        "不要过多发丝、复杂衣褶、厚重多层写实阴影",
+        "不要生成与本Beat无关的下一步剧情状态",
+        "不要依赖模型生成准确长段中文；不要乱码占据主体"
+      ],
+      "character_refs": [
+        "CHAR_IP_001"
+      ],
+      "scene_refs": [
+        "SCENE_WORKDESK_001"
+      ],
+      "prop_ui_refs": [
+        "UI_AI_ANSWER_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "style_refs": [
+        "STYLE_CHANNEL_001"
+      ],
+      "continuity_ref": null,
+      "shot_size": "MEDIUM_CLOSE",
+      "pov": "OBSERVER",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "text_render_mode": "POST_OVERLAY",
+      "output_name": "SRCH_VB001.png",
+      "acceptance_criteria": [
+        "准确表达：official-source cue appears under answer; IP no longer relaxes automatically",
+        "景别/POV符合 MEDIUM_CLOSE / OBSERVER",
+        "符合扁平简化漫画生产风，不出现PPT化或海报化",
+        "CHAR_IP_001 身份、酒红上衣和主要发型轮廓稳定",
+        "SCENE_WORKDESK_001 几何与主要道具位置稳定",
+        "必须是同一份退款政策页面布局，不得随机换网页",
+        "为关键文字保留正确、清晰的后期覆盖区域"
+      ],
+      "execution_status": "READY_FOR_PILOT_OR_BATCH"
+    },
+    {
+      "image_id": "IMG_009",
+      "visual_beat_id": "SRCH_VB009",
+      "semantic_shot_id": "SRCH_S004",
+      "sequence_id": "SEQ1",
+      "start": 30.49,
+      "end": 34.35,
+      "duration": 3.86,
+      "narration": "于是我顺手就在成本表里写了一行：\n\n“服务费：可退。”",
+      "prompt": "16:9 横屏，扁平简化漫画叙事插画，适合批量静态分镜视频。 线条稳定干净，头发主发束简化，1–2 层块面阴影，衣褶克制，背景只保留有叙事作用的固定物件；不要精修海报感，不要 PPT/信息图感。 严格保持 CHAR_IP_001：同一个年轻男性 IP，深色蓬松短发但只保留少量稳定主发束，酒红色上衣、米白领口、黑裤、简洁白鞋；脸型、发型轮廓、服装和年龄感不得漂移。 固定主工作桌场景：同一桌面、显示器位置、鼠标区、资料区和背景锚点保持一致。 本镜头唯一要表达的状态：IP writes 服务费：可退 into the cost sheet。 对应旁白语义：于是我顺手就在成本表里写了一行： “服务费：可退。”。 景别：MEDIUM_INSERT；POV：OBSERVER；镜头角度：EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT。 视觉意图：SEE_CONSEQUENCE；画面关系：CONTINUITY；视觉强度：MEDIUM。 需要使用并保持以下已锁定资产状态：PROP_COST_SHEET_001（桌面成本表，道具位置稳定；关键结论文字后期覆盖）。 延续上一张已验收图片 IMG_008 的人物身份、场景几何、主体左右关系和关键道具位置；只改变本 Beat 要求的视觉状态。 关键中文文字不要依赖生图模型精确生成：保留干净、可后期覆盖的文本区域与正确层级位置；禁止生成大量乱码或长段伪文字。 主体必须一眼可读，画面只承担这一 Beat，不提前泄露后续 reveal，不添加下一 Beat 才出现的信息。",
+      "negative_constraints": [
+        "不要PPT、信息图、讲义卡片式构图",
+        "不要霓虹赛博AI风、全息蓝紫光效",
+        "不要随机改变角色脸型、发型轮廓、服装或年龄感",
+        "不要随机改变固定工作桌、显示器、鼠标区和背景锚点",
+        "不要增加无关人物、图标、箭头、装饰文字",
+        "不要过多发丝、复杂衣褶、厚重多层写实阴影",
+        "不要生成与本Beat无关的下一步剧情状态",
+        "不要依赖模型生成准确长段中文；不要乱码占据主体"
+      ],
+      "character_refs": [
+        "CHAR_IP_001"
+      ],
+      "scene_refs": [
+        "SCENE_WORKDESK_001"
+      ],
+      "prop_ui_refs": [
+        "PROP_COST_SHEET_001"
+      ],
+      "style_refs": [
+        "STYLE_CHANNEL_001"
+      ],
+      "continuity_ref": "IMG_008",
+      "shot_size": "MEDIUM_INSERT",
+      "pov": "OBSERVER",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "text_render_mode": "POST_OVERLAY",
+      "output_name": "SRCH_VB009.png",
+      "acceptance_criteria": [
+        "准确表达：IP writes 服务费：可退 into the cost sheet",
+        "景别/POV符合 MEDIUM_INSERT / OBSERVER",
+        "符合扁平简化漫画生产风，不出现PPT化或海报化",
+        "CHAR_IP_001 身份、酒红上衣和主要发型轮廓稳定",
+        "SCENE_WORKDESK_001 几何与主要道具位置稳定",
+        "为关键文字保留正确、清晰的后期覆盖区域",
+        "与 IMG_008 连续性成立，仅改变当前Beat所需状态"
+      ],
+      "execution_status": "READY_FOR_PILOT_OR_BATCH"
+    },
+    {
+      "image_id": "IMG_012",
+      "visual_beat_id": "SRCH_VB012",
+      "semantic_shot_id": "SRCH_S006",
+      "sequence_id": "SEQ2",
+      "start": 40.58,
+      "end": 42.94,
+      "duration": 2.36,
+      "narration": "网页没找错。\n\n标题就是退款规则。",
+      "prompt": "16:9 横屏，扁平简化漫画叙事插画，适合批量静态分镜视频。 线条稳定干净，头发主发束简化，1–2 层块面阴影，衣褶克制，背景只保留有叙事作用的固定物件；不要精修海报感，不要 PPT/信息图感。 本镜头不需要人物；不要擅自加入角色。 固定主工作桌场景：同一桌面、显示器位置、鼠标区、资料区和背景锚点保持一致。 本镜头唯一要表达的状态：same official refund page opens; title confirms source is correct。 对应旁白语义：网页没找错。 标题就是退款规则。。 景别：WIDE_POV；POV：IP_POV；镜头角度：EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT。 视觉意图：ORIENT；画面关系：POV_DISCOVERY；视觉强度：MEDIUM。 需要使用并保持以下已锁定资产状态：UI_POLICY_PAGE_001（同一张虚构官方退款政策页面，布局与两条规则位置固定；关键文字后期覆盖）。 延续上一张已验收图片 IMG_011 的人物身份、场景几何、主体左右关系和关键道具位置；只改变本 Beat 要求的视觉状态。 关键中文文字不要依赖生图模型精确生成：保留干净、可后期覆盖的文本区域与正确层级位置；禁止生成大量乱码或长段伪文字。 主体必须一眼可读，画面只承担这一 Beat，不提前泄露后续 reveal，不添加下一 Beat 才出现的信息。",
+      "negative_constraints": [
+        "不要PPT、信息图、讲义卡片式构图",
+        "不要霓虹赛博AI风、全息蓝紫光效",
+        "不要随机改变角色脸型、发型轮廓、服装或年龄感",
+        "不要随机改变固定工作桌、显示器、鼠标区和背景锚点",
+        "不要增加无关人物、图标、箭头、装饰文字",
+        "不要过多发丝、复杂衣褶、厚重多层写实阴影",
+        "不要生成与本Beat无关的下一步剧情状态",
+        "不要依赖模型生成准确长段中文；不要乱码占据主体",
+        "不要加入IP人物或其他人物"
+      ],
+      "character_refs": [],
+      "scene_refs": [
+        "SCENE_WORKDESK_001"
+      ],
+      "prop_ui_refs": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "style_refs": [
+        "STYLE_CHANNEL_001"
+      ],
+      "continuity_ref": "IMG_011",
+      "shot_size": "WIDE_POV",
+      "pov": "IP_POV",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "text_render_mode": "POST_OVERLAY",
+      "output_name": "SRCH_VB012.png",
+      "acceptance_criteria": [
+        "准确表达：same official refund page opens; title confirms source is correct",
+        "景别/POV符合 WIDE_POV / IP_POV",
+        "符合扁平简化漫画生产风，不出现PPT化或海报化",
+        "SCENE_WORKDESK_001 几何与主要道具位置稳定",
+        "必须是同一份退款政策页面布局，不得随机换网页",
+        "为关键文字保留正确、清晰的后期覆盖区域",
+        "与 IMG_011 连续性成立，仅改变当前Beat所需状态"
+      ],
+      "execution_status": "READY_FOR_PILOT_OR_BATCH"
+    },
+    {
+      "image_id": "IMG_015",
+      "visual_beat_id": "SRCH_VB015",
+      "semantic_shot_id": "SRCH_S008",
+      "sequence_id": "SEQ2",
+      "start": 49.71,
+      "end": 51.34,
+      "duration": 1.63,
+      "narration": "我往下又看了一行。",
+      "prompt": "16:9 横屏，扁平简化漫画叙事插画，适合批量静态分镜视频。 线条稳定干净，头发主发束简化，1–2 层块面阴影，衣褶克制，背景只保留有叙事作用的固定物件；不要精修海报感，不要 PPT/信息图感。 严格保持 CHAR_IP_001：同一个年轻男性 IP，深色蓬松短发但只保留少量稳定主发束，酒红色上衣、米白领口、黑裤、简洁白鞋；脸型、发型轮廓、服装和年龄感不得漂移。 固定主工作桌场景：同一桌面、显示器位置、鼠标区、资料区和背景锚点保持一致。 本镜头唯一要表达的状态：eye/cursor moves one line downward; final answer is not revealed yet。 对应旁白语义：我往下又看了一行。。 景别：MATCHED_INSERT；POV：IP_POV；镜头角度：EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT。 视觉意图：BUILD_ANTICIPATION；画面关系：POV_DISCOVERY；视觉强度：PEAK。 需要使用并保持以下已锁定资产状态：UI_AI_ANSWER_001（虚构 AI 回答面板，布局稳定，答案区与来源区固定；关键文字后期覆盖）。 延续上一张已验收图片 IMG_014 的人物身份、场景几何、主体左右关系和关键道具位置；只改变本 Beat 要求的视觉状态。 关键中文文字不要依赖生图模型精确生成：保留干净、可后期覆盖的文本区域与正确层级位置；禁止生成大量乱码或长段伪文字。 主体必须一眼可读，画面只承担这一 Beat，不提前泄露后续 reveal，不添加下一 Beat 才出现的信息。",
+      "negative_constraints": [
+        "不要PPT、信息图、讲义卡片式构图",
+        "不要霓虹赛博AI风、全息蓝紫光效",
+        "不要随机改变角色脸型、发型轮廓、服装或年龄感",
+        "不要随机改变固定工作桌、显示器、鼠标区和背景锚点",
+        "不要增加无关人物、图标、箭头、装饰文字",
+        "不要过多发丝、复杂衣褶、厚重多层写实阴影",
+        "不要生成与本Beat无关的下一步剧情状态",
+        "不要依赖模型生成准确长段中文；不要乱码占据主体",
+        "不要提前突出或完整揭晓“平台服务费不予退还”这一最终反转信息"
+      ],
+      "character_refs": [
+        "CHAR_IP_001"
+      ],
+      "scene_refs": [
+        "SCENE_WORKDESK_001"
+      ],
+      "prop_ui_refs": [
+        "UI_AI_ANSWER_001"
+      ],
+      "style_refs": [
+        "STYLE_CHANNEL_001"
+      ],
+      "continuity_ref": "IMG_014",
+      "shot_size": "MATCHED_INSERT",
+      "pov": "IP_POV",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "text_render_mode": "POST_OVERLAY",
+      "output_name": "SRCH_VB015.png",
+      "acceptance_criteria": [
+        "准确表达：eye/cursor moves one line downward; final answer is not revealed yet",
+        "景别/POV符合 MATCHED_INSERT / IP_POV",
+        "符合扁平简化漫画生产风，不出现PPT化或海报化",
+        "CHAR_IP_001 身份、酒红上衣和主要发型轮廓稳定",
+        "SCENE_WORKDESK_001 几何与主要道具位置稳定",
+        "为关键文字保留正确、清晰的后期覆盖区域",
+        "与 IMG_014 连续性成立，仅改变当前Beat所需状态",
+        "只建立下移视线/光标的期待，不提前完成反转"
+      ],
+      "execution_status": "READY_FOR_PILOT_OR_BATCH"
+    },
+    {
+      "image_id": "IMG_016",
+      "visual_beat_id": "SRCH_VB016",
+      "semantic_shot_id": "SRCH_S008",
+      "sequence_id": "SEQ2",
+      "start": 51.34,
+      "end": 53.48,
+      "duration": 2.14,
+      "narration": "“平台服务费不予退还。”",
+      "prompt": "16:9 横屏，扁平简化漫画叙事插画，适合批量静态分镜视频。 线条稳定干净，头发主发束简化，1–2 层块面阴影，衣褶克制，背景只保留有叙事作用的固定物件；不要精修海报感，不要 PPT/信息图感。 本镜头不需要人物；不要擅自加入角色。 固定主工作桌场景：同一桌面、显示器位置、鼠标区、资料区和背景锚点保持一致。 本镜头唯一要表达的状态：reveal: 平台服务费不予退还 becomes dominant。 对应旁白语义：“平台服务费不予退还。”。 景别：INSERT；POV：IP_POV；镜头角度：EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT。 视觉意图：EXPERIENCE_REVERSAL；画面关系：POV_DISCOVERY；视觉强度：PEAK。 需要使用并保持以下已锁定资产状态：UI_POLICY_PAGE_001（同一张虚构官方退款政策页面，布局与两条规则位置固定；关键文字后期覆盖）。 延续上一张已验收图片 IMG_015 的人物身份、场景几何、主体左右关系和关键道具位置；只改变本 Beat 要求的视觉状态。 关键中文文字不要依赖生图模型精确生成：保留干净、可后期覆盖的文本区域与正确层级位置；禁止生成大量乱码或长段伪文字。 主体必须一眼可读，画面只承担这一 Beat，不提前泄露后续 reveal，不添加下一 Beat 才出现的信息。",
+      "negative_constraints": [
+        "不要PPT、信息图、讲义卡片式构图",
+        "不要霓虹赛博AI风、全息蓝紫光效",
+        "不要随机改变角色脸型、发型轮廓、服装或年龄感",
+        "不要随机改变固定工作桌、显示器、鼠标区和背景锚点",
+        "不要增加无关人物、图标、箭头、装饰文字",
+        "不要过多发丝、复杂衣褶、厚重多层写实阴影",
+        "不要生成与本Beat无关的下一步剧情状态",
+        "不要依赖模型生成准确长段中文；不要乱码占据主体",
+        "不要加入IP人物或其他人物",
+        "不要更换网页布局；必须与上一Beat为同一页面同一空间位置"
+      ],
+      "character_refs": [],
+      "scene_refs": [
+        "SCENE_WORKDESK_001"
+      ],
+      "prop_ui_refs": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "style_refs": [
+        "STYLE_CHANNEL_001"
+      ],
+      "continuity_ref": "IMG_015",
+      "shot_size": "INSERT",
+      "pov": "IP_POV",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "text_render_mode": "POST_OVERLAY",
+      "output_name": "SRCH_VB016.png",
+      "acceptance_criteria": [
+        "准确表达：reveal: 平台服务费不予退还 becomes dominant",
+        "景别/POV符合 INSERT / IP_POV",
+        "符合扁平简化漫画生产风，不出现PPT化或海报化",
+        "SCENE_WORKDESK_001 几何与主要道具位置稳定",
+        "必须是同一份退款政策页面布局，不得随机换网页",
+        "为关键文字保留正确、清晰的后期覆盖区域",
+        "与 IMG_015 连续性成立，仅改变当前Beat所需状态",
+        "第二条政策信息成为唯一主要视觉焦点并完成反转"
+      ],
+      "execution_status": "READY_FOR_PILOT_OR_BATCH"
+    },
+    {
+      "image_id": "IMG_022",
+      "visual_beat_id": "SRCH_VB022",
+      "semantic_shot_id": "SRCH_S011",
+      "sequence_id": "SEQ3",
+      "start": 67.62,
+      "end": 72.85,
+      "duration": 5.23,
+      "narration": "但它拿着回答“订单款项去哪儿”的那句话，回答了我“服务费退不退”的问题。",
+      "prompt": "16:9 横屏，扁平简化漫画叙事插画，适合批量静态分镜视频。 线条稳定干净，头发主发束简化，1–2 层块面阴影，衣褶克制，背景只保留有叙事作用的固定物件；不要精修海报感，不要 PPT/信息图感。 本镜头不需要人物；不要擅自加入角色。 固定主工作桌场景：同一桌面、显示器位置、鼠标区、资料区和背景锚点保持一致。 本镜头唯一要表达的状态：matched comparison isolates question facet 服务费 against cited facet 订单款项。 对应旁白语义：但它拿着回答“订单款项去哪儿”的那句话，回答了我“服务费退不退”的问题。。 景别：MATCHED_INSERT；POV：IP_POV；镜头角度：EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT。 视觉意图：COMPARE_STATES；画面关系：MATCHED_INSERT；视觉强度：HIGH_MEDIUM。 需要使用并保持以下已锁定资产状态：UI_AI_ANSWER_001（虚构 AI 回答面板，布局稳定，答案区与来源区固定；关键文字后期覆盖）；UI_POLICY_PAGE_001（同一张虚构官方退款政策页面，布局与两条规则位置固定；关键文字后期覆盖）。 延续上一张已验收图片 IMG_021 的人物身份、场景几何、主体左右关系和关键道具位置；只改变本 Beat 要求的视觉状态。 关键中文文字不要依赖生图模型精确生成：保留干净、可后期覆盖的文本区域与正确层级位置；禁止生成大量乱码或长段伪文字。 主体必须一眼可读，画面只承担这一 Beat，不提前泄露后续 reveal，不添加下一 Beat 才出现的信息。",
+      "negative_constraints": [
+        "不要PPT、信息图、讲义卡片式构图",
+        "不要霓虹赛博AI风、全息蓝紫光效",
+        "不要随机改变角色脸型、发型轮廓、服装或年龄感",
+        "不要随机改变固定工作桌、显示器、鼠标区和背景锚点",
+        "不要增加无关人物、图标、箭头、装饰文字",
+        "不要过多发丝、复杂衣褶、厚重多层写实阴影",
+        "不要生成与本Beat无关的下一步剧情状态",
+        "不要依赖模型生成准确长段中文；不要乱码占据主体",
+        "不要加入IP人物或其他人物"
+      ],
+      "character_refs": [],
+      "scene_refs": [
+        "SCENE_WORKDESK_001"
+      ],
+      "prop_ui_refs": [
+        "UI_AI_ANSWER_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "style_refs": [
+        "STYLE_CHANNEL_001"
+      ],
+      "continuity_ref": "IMG_021",
+      "shot_size": "MATCHED_INSERT",
+      "pov": "IP_POV",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "text_render_mode": "POST_OVERLAY",
+      "output_name": "SRCH_VB022.png",
+      "acceptance_criteria": [
+        "准确表达：matched comparison isolates question facet 服务费 against cited facet 订单款项",
+        "景别/POV符合 MATCHED_INSERT / IP_POV",
+        "符合扁平简化漫画生产风，不出现PPT化或海报化",
+        "SCENE_WORKDESK_001 几何与主要道具位置稳定",
+        "必须是同一份退款政策页面布局，不得随机换网页",
+        "为关键文字保留正确、清晰的后期覆盖区域",
+        "与 IMG_021 连续性成立，仅改变当前Beat所需状态"
+      ],
+      "execution_status": "READY_FOR_PILOT_OR_BATCH"
+    },
+    {
+      "image_id": "IMG_025",
+      "visual_beat_id": "SRCH_VB025",
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "start": 79.92,
+      "end": 83.91,
+      "duration": 3.99,
+      "narration": "“老板电话是 138……”\n\n资料没找错。\n\n答案还是没回答问题。",
+      "prompt": "16:9 横屏，扁平简化漫画叙事插画，适合批量静态分镜视频。 线条稳定干净，头发主发束简化，1–2 层块面阴影，衣褶克制，背景只保留有叙事作用的固定物件；不要精修海报感，不要 PPT/信息图感。 严格保持 CHAR_IP_001：同一个年轻男性 IP，深色蓬松短发但只保留少量稳定主发束，酒红色上衣、米白领口、黑裤、简洁白鞋；脸型、发型轮廓、服装和年龄感不得漂移。 简洁通讯录类比场景：只服务本段类比，不扩展成第二套复杂世界。 本镜头唯一要表达的状态：wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question。 对应旁白语义：“老板电话是 138……” 资料没找错。 答案还是没回答问题。。 景别：MEDIUM_TWO_SHOT；POV：OBSERVER；镜头角度：EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT。 视觉意图：LAND_PAYOFF；画面关系：ASSOCIATIVE_MONTAGE；视觉强度：MEDIUM_COMIC。 需要使用并保持以下已锁定资产状态：UI_AI_ANSWER_001（虚构 AI 回答面板，布局稳定，答案区与来源区固定；关键文字后期覆盖）；PROP_CONTACT_BOOK_001（虚构老板通讯录记录，只用虚构号码；关键文字后期覆盖）。 按 canonical reference 建立本镜头，不复制无关上一镜细节。 关键中文文字不要依赖生图模型精确生成：保留干净、可后期覆盖的文本区域与正确层级位置；禁止生成大量乱码或长段伪文字。 主体必须一眼可读，画面只承担这一 Beat，不提前泄露后续 reveal，不添加下一 Beat 才出现的信息。",
+      "negative_constraints": [
+        "不要PPT、信息图、讲义卡片式构图",
+        "不要霓虹赛博AI风、全息蓝紫光效",
+        "不要随机改变角色脸型、发型轮廓、服装或年龄感",
+        "不要随机改变固定工作桌、显示器、鼠标区和背景锚点",
+        "不要增加无关人物、图标、箭头、装饰文字",
+        "不要过多发丝、复杂衣褶、厚重多层写实阴影",
+        "不要生成与本Beat无关的下一步剧情状态",
+        "不要依赖模型生成准确长段中文；不要乱码占据主体"
+      ],
+      "character_refs": [
+        "CHAR_IP_001"
+      ],
+      "scene_refs": [
+        "SCENE_PHONEBOOK_ANALOGY_001"
+      ],
+      "prop_ui_refs": [
+        "UI_AI_ANSWER_001",
+        "PROP_CONTACT_BOOK_001"
+      ],
+      "style_refs": [
+        "STYLE_CHANNEL_001"
+      ],
+      "continuity_ref": null,
+      "shot_size": "MEDIUM_TWO_SHOT",
+      "pov": "OBSERVER",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "text_render_mode": "POST_OVERLAY",
+      "output_name": "SRCH_VB025.png",
+      "acceptance_criteria": [
+        "准确表达：wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question",
+        "景别/POV符合 MEDIUM_TWO_SHOT / OBSERVER",
+        "符合扁平简化漫画生产风，不出现PPT化或海报化",
+        "CHAR_IP_001 身份、酒红上衣和主要发型轮廓稳定",
+        "为关键文字保留正确、清晰的后期覆盖区域"
+      ],
+      "execution_status": "READY_FOR_PILOT_OR_BATCH"
+    },
+    {
+      "image_id": "IMG_044",
+      "visual_beat_id": "SRCH_VB044",
+      "semantic_shot_id": "SRCH_S019",
+      "sequence_id": "SEQ6",
+      "start": 139.62,
+      "end": 142.21,
+      "duration": 2.59,
+      "narration": "它真的给我找对了网页。",
+      "prompt": "16:9 横屏，扁平简化漫画叙事插画，适合批量静态分镜视频。 线条稳定干净，头发主发束简化，1–2 层块面阴影，衣褶克制，背景只保留有叙事作用的固定物件；不要精修海报感，不要 PPT/信息图感。 严格保持 CHAR_IP_001：同一个年轻男性 IP，深色蓬松短发但只保留少量稳定主发束，酒红色上衣、米白领口、黑裤、简洁白鞋；脸型、发型轮廓、服装和年龄感不得漂移。 固定主工作桌场景：同一桌面、显示器位置、鼠标区、资料区和背景锚点保持一致。 本镜头唯一要表达的状态：opening callback resolves: official page is correct, and IP clicks/checks it before accepting the conclusion。 对应旁白语义：它真的给我找对了网页。。 景别：MEDIUM_CLOSE；POV：OBSERVER；镜头角度：EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT。 视觉意图：LAND_PAYOFF；画面关系：CONTINUITY；视觉强度：RELEASE。 需要使用并保持以下已锁定资产状态：UI_POLICY_PAGE_001（同一张虚构官方退款政策页面，布局与两条规则位置固定；关键文字后期覆盖）。 延续上一张已验收图片 IMG_043 的人物身份、场景几何、主体左右关系和关键道具位置；只改变本 Beat 要求的视觉状态。 关键中文文字不要依赖生图模型精确生成：保留干净、可后期覆盖的文本区域与正确层级位置；禁止生成大量乱码或长段伪文字。 主体必须一眼可读，画面只承担这一 Beat，不提前泄露后续 reveal，不添加下一 Beat 才出现的信息。",
+      "negative_constraints": [
+        "不要PPT、信息图、讲义卡片式构图",
+        "不要霓虹赛博AI风、全息蓝紫光效",
+        "不要随机改变角色脸型、发型轮廓、服装或年龄感",
+        "不要随机改变固定工作桌、显示器、鼠标区和背景锚点",
+        "不要增加无关人物、图标、箭头、装饰文字",
+        "不要过多发丝、复杂衣褶、厚重多层写实阴影",
+        "不要生成与本Beat无关的下一步剧情状态",
+        "不要依赖模型生成准确长段中文；不要乱码占据主体"
+      ],
+      "character_refs": [
+        "CHAR_IP_001"
+      ],
+      "scene_refs": [
+        "SCENE_WORKDESK_001"
+      ],
+      "prop_ui_refs": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "style_refs": [
+        "STYLE_CHANNEL_001"
+      ],
+      "continuity_ref": "IMG_043",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov": "OBSERVER",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "text_render_mode": "POST_OVERLAY",
+      "output_name": "SRCH_VB044.png",
+      "acceptance_criteria": [
+        "准确表达：opening callback resolves: official page is correct, and IP clicks/checks it before accepting the conclusion",
+        "景别/POV符合 MEDIUM_CLOSE / OBSERVER",
+        "符合扁平简化漫画生产风，不出现PPT化或海报化",
+        "CHAR_IP_001 身份、酒红上衣和主要发型轮廓稳定",
+        "SCENE_WORKDESK_001 几何与主要道具位置稳定",
+        "必须是同一份退款政策页面布局，不得随机换网页",
+        "为关键文字保留正确、清晰的后期覆盖区域",
+        "与 IMG_043 连续性成立，仅改变当前Beat所需状态"
+      ],
+      "execution_status": "READY_FOR_PILOT_OR_BATCH"
+    }
+  ]
+}
