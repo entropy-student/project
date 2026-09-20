@@ -19,8 +19,8 @@
   "script": {
     "script_ref": "04_script.md",
     "srt_ref": "04_script.srt",
-    "gate_status": "PENDING",
-    "locked": false
+    "gate_status": "PASS",
+    "locked": true
   },
   "director": {
     "shot_package_ref": "05_shots.json",
@@ -59,6 +59,13 @@
       "worker_version_or_ref": "CONTENT_STRATEGY_AND_CONVERSION v0.1",
       "artifact_ref": "03_story_premise.md",
       "gate_result": "PASS_CANDIDATE_AGENT"
+    },
+    {
+      "stage": "G3-writer",
+      "worker_id": "jingsui-writer-adapter",
+      "worker_version_or_ref": "QUALITY_VALIDATED_MANUAL_ORCHESTRATION",
+      "artifact_ref": "04_script.md",
+      "gate_result": "PASS"
     }
   ]
 }
