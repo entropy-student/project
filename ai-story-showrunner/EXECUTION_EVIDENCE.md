@@ -448,3 +448,47 @@ Result:
 State:
 `G3R HOLD / READY FOR EXPLICIT OWNER PASS / G4 BLOCKED`.
 
+---
+
+## G3R Final PASS Closeout
+
+Date: 2026-09-20
+
+Owner decision:
+**PASS**
+
+Reviewer decision after final consistency review:
+**PASS**
+
+Final canonical editorial baseline:
+- Bilibili primary;
+- daily editorial target;
+- production throughput unproven;
+- 3–5 min standard target;
+- first-person recurring IP;
+- STORY_MODEL / STORY_ACTION only;
+- tutorial mode removed;
+- viewpoint may be story meaning but must be dramatized, bounded, and evidence-grounded.
+
+Final three-case validation:
+- Agent v2 — accepted validation — 91/100 self-review;
+- Context / Memory v2 — accepted validation — 92/100 self-review;
+- MCP v1 — accepted validation — 90/100 self-review.
+
+Final consistency cleanup:
+- removed current-state NOT PASS markers from canonical contracts;
+- superseded 4–6 / 3–8 duration proposal with 3–5 target;
+- superseded STORY_TUTORIAL;
+- superseded “观点是余味，不是承重墙” with “观点可以是故事的灵魂，但不能是作者的演讲”;
+- rewrote G3R final review;
+- rewrote Reviewer Handoff as current authoritative state;
+- activated Daily Topic Planner v0.2 by updating the existing scheduled task in place;
+- did not start G4.
+
+Gate result:
+```text
+G3R = PASS
+G4 = READY_NOT_STARTED
+OWNER_HOLD_BEFORE_G4 = YES
+```
+
