@@ -7,10 +7,10 @@
     "note": "prior only; meaning defines beat, timing calibrates after"
   },
   "semantic_shot_count": 44,
-  "visual_beat_count": 87,
-  "estimated_duration_sec": 208.79,
-  "estimated_duration_hms": "3:29",
-  "avg_visual_beat_sec": 2.4,
+  "visual_beat_count": 89,
+  "estimated_duration_sec": 212.64,
+  "estimated_duration_hms": "3:33",
+  "avg_visual_beat_sec": 2.39,
   "beats": [
     {
       "visual_beat_id": "CM3_VB001",
@@ -110,7 +110,7 @@
       "timing_kind": "NORMAL",
       "start": 5.88,
       "duration": 1.85,
-      "end": 7.72
+      "end": 7.73
     },
     {
       "visual_beat_id": "CM3_VB006",
@@ -128,9 +128,9 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 7.72,
+      "start": 7.73,
       "duration": 3.69,
-      "end": 11.41
+      "end": 11.42
     },
     {
       "visual_beat_id": "CM3_VB007",
@@ -148,9 +148,9 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 11.41,
+      "start": 11.42,
       "duration": 2.89,
-      "end": 14.3
+      "end": 14.31
     },
     {
       "visual_beat_id": "CM3_VB008",
@@ -168,7 +168,7 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 14.3,
+      "start": 14.31,
       "duration": 1.49,
       "end": 15.8
     },
@@ -256,6 +256,26 @@
       "visual_beat_id": "CM3_VB013",
       "semantic_shot_id": "CM3_S007",
       "sequence_id": "SEQ2",
+      "narration_fragment": "刚开始我特别满意。",
+      "image_state": "IP relaxes after the desk successfully supports the current task",
+      "inherited_visual_intention": "SEE_CONSEQUENCE",
+      "local_visual_intention": "READ_REACTION",
+      "shot_function": "REACTION",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "LOW",
+      "timing_source": "JINGSUI_PRIOR_ESTIMATE",
+      "timing_kind": "REACTION",
+      "start": 27.42,
+      "duration": 1.94,
+      "end": 29.36
+    },
+    {
+      "visual_beat_id": "CM3_VB014",
+      "semantic_shot_id": "CM3_S007",
+      "sequence_id": "SEQ2",
       "narration_fragment": "“刚才那个价格是多少？”它知道。",
       "image_state": "AI points to visible current price note",
       "inherited_visual_intention": "SEE_CONSEQUENCE",
@@ -268,12 +288,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 27.42,
+      "start": 29.36,
       "duration": 2.19,
-      "end": 29.61
+      "end": 31.55
     },
     {
-      "visual_beat_id": "CM3_VB014",
+      "visual_beat_id": "CM3_VB015",
       "semantic_shot_id": "CM3_S008",
       "sequence_id": "SEQ2",
       "narration_fragment": "“第三份文档里我删了哪段？”它也知道。",
@@ -288,12 +308,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 29.61,
+      "start": 31.55,
       "duration": 2.69,
-      "end": 32.3
+      "end": 34.24
     },
     {
-      "visual_beat_id": "CM3_VB015",
+      "visual_beat_id": "CM3_VB016",
       "semantic_shot_id": "CM3_S009",
       "sequence_id": "SEQ2",
       "narration_fragment": "我看着那张桌子，只有一个念头：",
@@ -308,12 +328,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REACTION",
-      "start": 32.3,
+      "start": 34.24,
       "duration": 2.62,
-      "end": 34.92
+      "end": 36.86
     },
     {
-      "visual_beat_id": "CM3_VB016",
+      "visual_beat_id": "CM3_VB017",
       "semantic_shot_id": "CM3_S009",
       "sequence_id": "SEQ2",
       "narration_fragment": "还能加。",
@@ -328,12 +348,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 34.92,
+      "start": 36.86,
       "duration": 1.2,
-      "end": 36.12
+      "end": 38.06
     },
     {
-      "visual_beat_id": "CM3_VB017",
+      "visual_beat_id": "CM3_VB018",
       "semantic_shot_id": "CM3_S010",
       "sequence_id": "SEQ3",
       "narration_fragment": "于是桌子越换越大。",
@@ -348,12 +368,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 36.12,
+      "start": 38.06,
       "duration": 1.51,
-      "end": 37.63
+      "end": 39.57
     },
     {
-      "visual_beat_id": "CM3_VB018",
+      "visual_beat_id": "CM3_VB019",
       "semantic_shot_id": "CM3_S011",
       "sequence_id": "SEQ3",
       "narration_fragment": "今天的文件放上去。",
@@ -368,12 +388,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 37.63,
+      "start": 39.57,
       "duration": 1.43,
-      "end": 39.06
+      "end": 41
     },
     {
-      "visual_beat_id": "CM3_VB019",
+      "visual_beat_id": "CM3_VB020",
       "semantic_shot_id": "CM3_S011",
       "sequence_id": "SEQ3",
       "narration_fragment": "昨天的讨论放上去。",
@@ -388,12 +408,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 39.06,
+      "start": 41,
       "duration": 1.43,
-      "end": 40.49
+      "end": 42.43
     },
     {
-      "visual_beat_id": "CM3_VB020",
+      "visual_beat_id": "CM3_VB021",
       "semantic_shot_id": "CM3_S011",
       "sequence_id": "SEQ3",
       "narration_fragment": "前天改过三版、我自己都快忘了为什么改的东西，也放上去。",
@@ -408,12 +428,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 40.49,
+      "start": 42.43,
       "duration": 4.21,
-      "end": 44.71
+      "end": 46.64
     },
     {
-      "visual_beat_id": "CM3_VB021",
+      "visual_beat_id": "CM3_VB022",
       "semantic_shot_id": "CM3_S012",
       "sequence_id": "SEQ3",
       "narration_fragment": "后来它那个工位已经不像办公桌了。",
@@ -428,12 +448,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 44.71,
+      "start": 46.64,
       "duration": 2.69,
-      "end": 47.4
+      "end": 49.33
     },
     {
-      "visual_beat_id": "CM3_VB022",
+      "visual_beat_id": "CM3_VB023",
       "semantic_shot_id": "CM3_S012",
       "sequence_id": "SEQ3",
       "narration_fragment": "像我把整个项目文件夹拍扁以后，硬铺了一层桌布。",
@@ -448,12 +468,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 47.4,
+      "start": 49.33,
       "duration": 4.03,
-      "end": 51.43
+      "end": 53.36
     },
     {
-      "visual_beat_id": "CM3_VB023",
+      "visual_beat_id": "CM3_VB024",
       "semantic_shot_id": "CM3_S013",
       "sequence_id": "SEQ3",
       "narration_fragment": "但桌子再大，终究还是会满。",
@@ -468,12 +488,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REVERSAL",
-      "start": 51.43,
+      "start": 53.36,
       "duration": 2.48,
-      "end": 53.91
+      "end": 55.84
     },
     {
-      "visual_beat_id": "CM3_VB024",
+      "visual_beat_id": "CM3_VB025",
       "semantic_shot_id": "CM3_S014",
       "sequence_id": "SEQ3",
       "narration_fragment": "新的资料还在往里进。",
@@ -488,12 +508,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 53.91,
+      "start": 55.84,
       "duration": 1.68,
-      "end": 55.59
+      "end": 57.52
     },
     {
-      "visual_beat_id": "CM3_VB025",
+      "visual_beat_id": "CM3_VB026",
       "semantic_shot_id": "CM3_S014",
       "sequence_id": "SEQ3",
       "narration_fragment": "旧的东西就得开始挪。",
@@ -508,12 +528,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 55.59,
+      "start": 57.52,
       "duration": 1.68,
-      "end": 57.27
+      "end": 59.2
     },
     {
-      "visual_beat_id": "CM3_VB026",
+      "visual_beat_id": "CM3_VB027",
       "semantic_shot_id": "CM3_S015",
       "sequence_id": "SEQ3",
       "narration_fragment": "这几页暂时用不上，先收起来。",
@@ -528,12 +548,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 57.27,
+      "start": 59.2,
       "duration": 2.19,
-      "end": 59.45
+      "end": 61.39
     },
     {
-      "visual_beat_id": "CM3_VB027",
+      "visual_beat_id": "CM3_VB028",
       "semantic_shot_id": "CM3_S016",
       "sequence_id": "SEQ3",
       "narration_fragment": "前面的讨论太长，",
@@ -548,12 +568,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 59.45,
+      "start": 61.39,
       "duration": 1.34,
-      "end": 60.8
+      "end": 62.73
     },
     {
-      "visual_beat_id": "CM3_VB028",
+      "visual_beat_id": "CM3_VB029",
       "semantic_shot_id": "CM3_S016",
       "sequence_id": "SEQ3",
       "narration_fragment": "压成一张摘要。",
@@ -568,12 +588,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 60.8,
+      "start": 62.73,
       "duration": 1.49,
-      "end": 62.29
+      "end": 64.22
     },
     {
-      "visual_beat_id": "CM3_VB029",
+      "visual_beat_id": "CM3_VB030",
       "semantic_shot_id": "CM3_S017",
       "sequence_id": "SEQ3",
       "narration_fragment": "几个重复要求，",
@@ -588,12 +608,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 62.29,
+      "start": 64.22,
       "duration": 1.2,
-      "end": 63.49
+      "end": 65.42
     },
     {
-      "visual_beat_id": "CM3_VB030",
+      "visual_beat_id": "CM3_VB031",
       "semantic_shot_id": "CM3_S017",
       "sequence_id": "SEQ3",
       "narration_fragment": "合成一条。",
@@ -608,12 +628,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 63.49,
+      "start": 65.42,
       "duration": 1.2,
-      "end": 64.69
+      "end": 66.62
     },
     {
-      "visual_beat_id": "CM3_VB031",
+      "visual_beat_id": "CM3_VB032",
       "semantic_shot_id": "CM3_S018",
       "sequence_id": "SEQ3",
       "narration_fragment": "我一看就急了。",
@@ -628,12 +648,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REACTION",
-      "start": 64.69,
+      "start": 66.62,
       "duration": 1.43,
-      "end": 66.12
+      "end": 68.05
     },
     {
-      "visual_beat_id": "CM3_VB032",
+      "visual_beat_id": "CM3_VB033",
       "semantic_shot_id": "CM3_S018",
       "sequence_id": "SEQ3",
       "narration_fragment": "“哎，这个别收啊，我前面说过的。”",
@@ -648,12 +668,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 66.12,
+      "start": 68.05,
       "duration": 2.19,
-      "end": 68.31
+      "end": 70.24
     },
     {
-      "visual_beat_id": "CM3_VB033",
+      "visual_beat_id": "CM3_VB034",
       "semantic_shot_id": "CM3_S019",
       "sequence_id": "SEQ3",
       "narration_fragment": "它看着我：“你是说哪一个？”",
@@ -668,12 +688,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REVERSAL",
-      "start": 68.31,
+      "start": 70.24,
       "duration": 2.31,
-      "end": 70.62
+      "end": 72.55
     },
     {
-      "visual_beat_id": "CM3_VB034",
+      "visual_beat_id": "CM3_VB035",
       "semantic_shot_id": "CM3_S020",
       "sequence_id": "SEQ3",
       "narration_fragment": "……我自己也想了两秒。",
@@ -688,12 +708,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REACTION",
-      "start": 70.62,
+      "start": 72.55,
       "duration": 1.77,
-      "end": 72.39
+      "end": 74.32
     },
     {
-      "visual_beat_id": "CM3_VB035",
+      "visual_beat_id": "CM3_VB036",
       "semantic_shot_id": "CM3_S021",
       "sequence_id": "SEQ3",
       "narration_fragment": "问题是，那句话它确实看过。",
@@ -708,12 +728,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 72.39,
+      "start": 74.32,
       "duration": 2.02,
-      "end": 74.41
+      "end": 76.34
     },
     {
-      "visual_beat_id": "CM3_VB036",
+      "visual_beat_id": "CM3_VB037",
       "semantic_shot_id": "CM3_S021",
       "sequence_id": "SEQ3",
       "narration_fragment": "一个小时前甚至还摆在桌面正中间。",
@@ -728,12 +748,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 74.41,
+      "start": 76.34,
       "duration": 2.69,
-      "end": 77.1
+      "end": 79.03
     },
     {
-      "visual_beat_id": "CM3_VB037",
+      "visual_beat_id": "CM3_VB038",
       "semantic_shot_id": "CM3_S021",
       "sequence_id": "SEQ3",
       "narration_fragment": "只是新的东西越来越多，它被挪走了。",
@@ -748,12 +768,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 77.1,
+      "start": 79.03,
       "duration": 2.69,
-      "end": 79.8
+      "end": 81.72
     },
     {
-      "visual_beat_id": "CM3_VB038",
+      "visual_beat_id": "CM3_VB039",
       "semantic_shot_id": "CM3_S022",
       "sequence_id": "SEQ3",
       "narration_fragment": "我得出的结论非常科学：",
@@ -768,12 +788,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REACTION",
-      "start": 79.8,
+      "start": 81.72,
       "duration": 2.11,
-      "end": 81.91
+      "end": 83.83
     },
     {
-      "visual_beat_id": "CM3_VB039",
+      "visual_beat_id": "CM3_VB040",
       "semantic_shot_id": "CM3_S022",
       "sequence_id": "SEQ3",
       "narration_fragment": "桌子还是不够大。",
@@ -788,12 +808,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 81.91,
+      "start": 83.83,
       "duration": 1.66,
-      "end": 83.57
+      "end": 85.49
     },
     {
-      "visual_beat_id": "CM3_VB040",
+      "visual_beat_id": "CM3_VB041",
       "semantic_shot_id": "CM3_S023",
       "sequence_id": "SEQ3",
       "narration_fragment": "于是我继续扩。一张不够，两张。",
@@ -808,12 +828,12 @@
       "visual_intensity": "PEAK_COMIC",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 83.57,
+      "start": 85.49,
       "duration": 2.11,
-      "end": 85.68
+      "end": 87.6
     },
     {
-      "visual_beat_id": "CM3_VB041",
+      "visual_beat_id": "CM3_VB042",
       "semantic_shot_id": "CM3_S023",
       "sequence_id": "SEQ3",
       "narration_fragment": "两张不够，",
@@ -828,12 +848,12 @@
       "visual_intensity": "PEAK_COMIC",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 85.68,
+      "start": 87.6,
       "duration": 0.8,
-      "end": 86.48
+      "end": 88.4
     },
     {
-      "visual_beat_id": "CM3_VB042",
+      "visual_beat_id": "CM3_VB043",
       "semantic_shot_id": "CM3_S023",
       "sequence_id": "SEQ3",
       "narration_fragment": "把会议桌也搬过来。",
@@ -848,12 +868,12 @@
       "visual_intensity": "PEAK_COMIC",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 86.48,
+      "start": 88.4,
       "duration": 1.83,
-      "end": 88.31
+      "end": 90.23
     },
     {
-      "visual_beat_id": "CM3_VB043",
+      "visual_beat_id": "CM3_VB044",
       "semantic_shot_id": "CM3_S024",
       "sequence_id": "SEQ3",
       "narration_fragment": "实在不行，整个办公室地板都算桌面。",
@@ -868,12 +888,12 @@
       "visual_intensity": "PEAK_COMIC",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 88.31,
+      "start": 90.23,
       "duration": 3.01,
-      "end": 91.32
+      "end": 93.24
     },
     {
-      "visual_beat_id": "CM3_VB044",
+      "visual_beat_id": "CM3_VB045",
       "semantic_shot_id": "CM3_S025",
       "sequence_id": "SEQ3",
       "narration_fragment": "只要地方够大，总有一天，我可以把自己这辈子跟 AI 说过的话全部摊开。",
@@ -888,12 +908,12 @@
       "visual_intensity": "PEAK_COMIC",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 91.32,
+      "start": 93.24,
       "duration": 5.08,
-      "end": 96.4
+      "end": 98.32
     },
     {
-      "visual_beat_id": "CM3_VB045",
+      "visual_beat_id": "CM3_VB046",
       "semantic_shot_id": "CM3_S025",
       "sequence_id": "SEQ3",
       "narration_fragment": "看起来问题已经快被我解决了。",
@@ -908,12 +928,12 @@
       "visual_intensity": "PEAK_COMIC",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 96.4,
+      "start": 98.32,
       "duration": 2.68,
-      "end": 99.08
+      "end": 101
     },
     {
-      "visual_beat_id": "CM3_VB046",
+      "visual_beat_id": "CM3_VB047",
       "semantic_shot_id": "CM3_S026",
       "sequence_id": "SEQ4",
       "narration_fragment": "直到第二周，我开了一个新任务。",
@@ -928,12 +948,12 @@
       "visual_intensity": "HARD_RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 99.08,
+      "start": 101,
       "duration": 2.36,
-      "end": 101.44
+      "end": 103.36
     },
     {
-      "visual_beat_id": "CM3_VB047",
+      "visual_beat_id": "CM3_VB048",
       "semantic_shot_id": "CM3_S026",
       "sequence_id": "SEQ4",
       "narration_fragment": "桌面干干净净。",
@@ -948,12 +968,12 @@
       "visual_intensity": "HARD_RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REVERSAL",
-      "start": 101.44,
+      "start": 103.36,
       "duration": 1.63,
-      "end": 103.07
+      "end": 104.99
     },
     {
-      "visual_beat_id": "CM3_VB048",
+      "visual_beat_id": "CM3_VB049",
       "semantic_shot_id": "CM3_S027",
       "sequence_id": "SEQ4",
       "narration_fragment": "我随口说了一句：“还是按我喜欢的方式来。”",
@@ -968,12 +988,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 103.07,
+      "start": 104.99,
       "duration": 3.03,
-      "end": 106.1
+      "end": 108.02
     },
     {
-      "visual_beat_id": "CM3_VB049",
+      "visual_beat_id": "CM3_VB050",
       "semantic_shot_id": "CM3_S028",
       "sequence_id": "SEQ4",
       "narration_fragment": "它问：“你喜欢什么方式？”",
@@ -988,12 +1008,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REVERSAL",
-      "start": 106.1,
+      "start": 108.02,
       "duration": 2.14,
-      "end": 108.24
+      "end": 110.16
     },
     {
-      "visual_beat_id": "CM3_VB050",
+      "visual_beat_id": "CM3_VB051",
       "semantic_shot_id": "CM3_S029",
       "sequence_id": "SEQ4",
       "narration_fragment": "我盯着那张空桌子。",
@@ -1008,12 +1028,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REACTION",
-      "start": 108.24,
+      "start": 110.16,
       "duration": 1.77,
-      "end": 110.01
+      "end": 111.93
     },
     {
-      "visual_beat_id": "CM3_VB051",
+      "visual_beat_id": "CM3_VB052",
       "semantic_shot_id": "CM3_S029",
       "sequence_id": "SEQ4",
       "narration_fragment": "然后又看了看我上周辛辛苦苦扩建出来的超级工位。",
@@ -1028,12 +1048,32 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 110.01,
+      "start": 111.93,
       "duration": 3.88,
-      "end": 113.89
+      "end": 115.81
     },
     {
-      "visual_beat_id": "CM3_VB052",
+      "visual_beat_id": "CM3_VB053",
+      "semantic_shot_id": "CM3_S030",
+      "sequence_id": "SEQ4",
+      "narration_fragment": "好像突然哪里不太对。",
+      "image_state": "IP pauses between the empty current desk and the remembered giant workspace as the diagnosis begins to break",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "READ_REACTION",
+      "shot_function": "REACTION",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "JINGSUI_PRIOR_ESTIMATE",
+      "timing_kind": "REACTION",
+      "start": 115.81,
+      "duration": 1.94,
+      "end": 117.75
+    },
+    {
+      "visual_beat_id": "CM3_VB054",
       "semantic_shot_id": "CM3_S030",
       "sequence_id": "SEQ4",
       "narration_fragment": "我上周扩的那张桌子，确实很有用。它让我一次能摊更多东西。",
@@ -1048,12 +1088,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 113.89,
+      "start": 117.75,
       "duration": 4.38,
-      "end": 118.27
+      "end": 122.13
     },
     {
-      "visual_beat_id": "CM3_VB053",
+      "visual_beat_id": "CM3_VB055",
       "semantic_shot_id": "CM3_S030",
       "sequence_id": "SEQ4",
       "narration_fragment": "但它解决的是：现在能放多少。",
@@ -1068,12 +1108,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 118.27,
+      "start": 122.13,
       "duration": 2.51,
-      "end": 120.78
+      "end": 124.64
     },
     {
-      "visual_beat_id": "CM3_VB054",
+      "visual_beat_id": "CM3_VB056",
       "semantic_shot_id": "CM3_S030",
       "sequence_id": "SEQ4",
       "narration_fragment": "不是：以后还能找回什么。",
@@ -1088,12 +1128,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 120.78,
+      "start": 124.64,
       "duration": 2.17,
-      "end": 122.95
+      "end": 126.81
     },
     {
-      "visual_beat_id": "CM3_VB055",
+      "visual_beat_id": "CM3_VB057",
       "semantic_shot_id": "CM3_S031",
       "sequence_id": "SEQ5",
       "narration_fragment": "我没继续买桌子。",
@@ -1108,12 +1148,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 122.95,
+      "start": 126.81,
       "duration": 1.34,
-      "end": 124.29
+      "end": 128.15
     },
     {
-      "visual_beat_id": "CM3_VB056",
+      "visual_beat_id": "CM3_VB058",
       "semantic_shot_id": "CM3_S031",
       "sequence_id": "SEQ5",
       "narration_fragment": "在旁边放了一本笔记。",
@@ -1128,12 +1168,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 124.29,
+      "start": 128.15,
       "duration": 2,
-      "end": 126.29
+      "end": 130.15
     },
     {
-      "visual_beat_id": "CM3_VB057",
+      "visual_beat_id": "CM3_VB059",
       "semantic_shot_id": "CM3_S032",
       "sequence_id": "SEQ5",
       "narration_fragment": "也没什么都往里记。",
@@ -1148,12 +1188,12 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 126.29,
+      "start": 130.15,
       "duration": 1.51,
-      "end": 127.8
+      "end": 131.66
     },
     {
-      "visual_beat_id": "CM3_VB058",
+      "visual_beat_id": "CM3_VB060",
       "semantic_shot_id": "CM3_S032",
       "sequence_id": "SEQ5",
       "narration_fragment": "只挑那些我真的不想再说第五遍，而且过几周还会用到的东西。",
@@ -1168,12 +1208,12 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 127.8,
+      "start": 131.66,
       "duration": 4.55,
-      "end": 132.35
+      "end": 136.21
     },
     {
-      "visual_beat_id": "CM3_VB059",
+      "visual_beat_id": "CM3_VB061",
       "semantic_shot_id": "CM3_S033",
       "sequence_id": "SEQ5",
       "narration_fragment": "比如：“视频先讲故事，别一上来讲概念。”",
@@ -1188,12 +1228,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 132.35,
+      "start": 136.21,
       "duration": 2.61,
-      "end": 134.97
+      "end": 138.82
     },
     {
-      "visual_beat_id": "CM3_VB060",
+      "visual_beat_id": "CM3_VB062",
       "semantic_shot_id": "CM3_S033",
       "sequence_id": "SEQ5",
       "narration_fragment": "“不要 PPT 风。”",
@@ -1208,12 +1248,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 134.97,
+      "start": 138.82,
       "duration": 0.8,
-      "end": 135.77
+      "end": 139.62
     },
     {
-      "visual_beat_id": "CM3_VB061",
+      "visual_beat_id": "CM3_VB063",
       "semantic_shot_id": "CM3_S033",
       "sequence_id": "SEQ5",
       "narration_fragment": "“能直接说结论，就别先绕三页背景。”",
@@ -1228,12 +1268,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 135.77,
+      "start": 139.62,
       "duration": 2.52,
-      "end": 138.29
+      "end": 142.14
     },
     {
-      "visual_beat_id": "CM3_VB062",
+      "visual_beat_id": "CM3_VB064",
       "semantic_shot_id": "CM3_S034",
       "sequence_id": "SEQ5",
       "narration_fragment": "后来又开了一个新任务。",
@@ -1248,12 +1288,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 138.29,
+      "start": 142.14,
       "duration": 1.85,
-      "end": 140.14
+      "end": 143.99
     },
     {
-      "visual_beat_id": "CM3_VB063",
+      "visual_beat_id": "CM3_VB065",
       "semantic_shot_id": "CM3_S034",
       "sequence_id": "SEQ5",
       "narration_fragment": "桌面还是新的。",
@@ -1268,12 +1308,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 140.14,
+      "start": 143.99,
       "duration": 1.49,
-      "end": 141.64
+      "end": 145.48
     },
     {
-      "visual_beat_id": "CM3_VB064",
+      "visual_beat_id": "CM3_VB066",
       "semantic_shot_id": "CM3_S035",
       "sequence_id": "SEQ5",
       "narration_fragment": "我说：“还是按以前的方式来。”",
@@ -1288,12 +1328,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 141.64,
+      "start": 145.48,
       "duration": 2.02,
-      "end": 143.65
+      "end": 147.5
     },
     {
-      "visual_beat_id": "CM3_VB065",
+      "visual_beat_id": "CM3_VB067",
       "semantic_shot_id": "CM3_S035",
       "sequence_id": "SEQ5",
       "narration_fragment": "它翻了一下旁边那本笔记。",
@@ -1308,12 +1348,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 143.65,
+      "start": 147.5,
       "duration": 2.02,
-      "end": 145.67
+      "end": 149.52
     },
     {
-      "visual_beat_id": "CM3_VB066",
+      "visual_beat_id": "CM3_VB068",
       "semantic_shot_id": "CM3_S036",
       "sequence_id": "SEQ5",
       "narration_fragment": "“哦，对。”",
@@ -1328,12 +1368,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 145.67,
+      "start": 149.52,
       "duration": 1.2,
-      "end": 146.87
+      "end": 150.72
     },
     {
-      "visual_beat_id": "CM3_VB067",
+      "visual_beat_id": "CM3_VB069",
       "semantic_shot_id": "CM3_S036",
       "sequence_id": "SEQ5",
       "narration_fragment": "“先讲故事，不要 PPT 风。”这次我没说第二遍。",
@@ -1348,12 +1388,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 146.87,
+      "start": 150.72,
       "duration": 3.21,
-      "end": 150.08
+      "end": 153.93
     },
     {
-      "visual_beat_id": "CM3_VB068",
+      "visual_beat_id": "CM3_VB070",
       "semantic_shot_id": "CM3_S037",
       "sequence_id": "SEQ6",
       "narration_fragment": "到这里我才真的把两件事分开。桌子，是现在干活用的。",
@@ -1368,12 +1408,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 150.08,
+      "start": 153.93,
       "duration": 3.88,
-      "end": 153.96
+      "end": 157.81
     },
     {
-      "visual_beat_id": "CM3_VB069",
+      "visual_beat_id": "CM3_VB071",
       "semantic_shot_id": "CM3_S037",
       "sequence_id": "SEQ6",
       "narration_fragment": "笔记，是以后要找回来的。",
@@ -1388,12 +1428,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 153.96,
+      "start": 157.81,
       "duration": 2.17,
-      "end": 156.13
+      "end": 159.98
     },
     {
-      "visual_beat_id": "CM3_VB070",
+      "visual_beat_id": "CM3_VB072",
       "semantic_shot_id": "CM3_S038",
       "sequence_id": "SEQ6",
       "narration_fragment": "前者装的是这一刻正在用的东西。",
@@ -1408,12 +1448,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 156.13,
+      "start": 159.98,
       "duration": 2.52,
-      "end": 158.65
+      "end": 162.5
     },
     {
-      "visual_beat_id": "CM3_VB071",
+      "visual_beat_id": "CM3_VB073",
       "semantic_shot_id": "CM3_S038",
       "sequence_id": "SEQ6",
       "narration_fragment": "后者留下的是以后还值得重新拿回来的东西。",
@@ -1428,12 +1468,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 158.65,
+      "start": 162.5,
       "duration": 3.37,
-      "end": 162.02
+      "end": 165.87
     },
     {
-      "visual_beat_id": "CM3_VB072",
+      "visual_beat_id": "CM3_VB074",
       "semantic_shot_id": "CM3_S039",
       "sequence_id": "SEQ6",
       "narration_fragment": "AI 里的 Context 和长期 Memory，大概也可以先这么理解。",
@@ -1448,12 +1488,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 162.02,
+      "start": 165.87,
       "duration": 3.28,
-      "end": 165.3
+      "end": 169.15
     },
     {
-      "visual_beat_id": "CM3_VB073",
+      "visual_beat_id": "CM3_VB075",
       "semantic_shot_id": "CM3_S039",
       "sequence_id": "SEQ6",
       "narration_fragment": "Context 更像眼前这张有限的工作台。",
@@ -1468,12 +1508,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 165.3,
+      "start": 169.15,
       "duration": 2.7,
-      "end": 168
+      "end": 171.85
     },
     {
-      "visual_beat_id": "CM3_VB074",
+      "visual_beat_id": "CM3_VB076",
       "semantic_shot_id": "CM3_S040",
       "sequence_id": "SEQ6",
       "narration_fragment": "当前任务里的话、资料和状态，要先在这里，它这一刻才能直接用。",
@@ -1488,12 +1528,12 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 168,
+      "start": 171.85,
       "duration": 4.55,
-      "end": 172.55
+      "end": 176.4
     },
     {
-      "visual_beat_id": "CM3_VB075",
+      "visual_beat_id": "CM3_VB077",
       "semantic_shot_id": "CM3_S040",
       "sequence_id": "SEQ6",
       "narration_fragment": "桌面越来越挤的时候，",
@@ -1508,12 +1548,12 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 172.55,
+      "start": 176.4,
       "duration": 1.68,
-      "end": 174.23
+      "end": 178.08
     },
     {
-      "visual_beat_id": "CM3_VB076",
+      "visual_beat_id": "CM3_VB078",
       "semantic_shot_id": "CM3_S040",
       "sequence_id": "SEQ6",
       "narration_fragment": "系统可能会整理、压缩，或者把一部分内容移出去。",
@@ -1528,12 +1568,12 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 174.23,
+      "start": 178.08,
       "duration": 3.54,
-      "end": 177.77
+      "end": 181.62
     },
     {
-      "visual_beat_id": "CM3_VB077",
+      "visual_beat_id": "CM3_VB079",
       "semantic_shot_id": "CM3_S041",
       "sequence_id": "SEQ6",
       "narration_fragment": "而长期 Memory，不是把你以前说过的每句话永久铺满整张桌子。",
@@ -1548,12 +1588,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 177.77,
+      "start": 181.62,
       "duration": 4.24,
-      "end": 182.01
+      "end": 185.86
     },
     {
-      "visual_beat_id": "CM3_VB078",
+      "visual_beat_id": "CM3_VB080",
       "semantic_shot_id": "CM3_S041",
       "sequence_id": "SEQ6",
       "narration_fragment": "它更像桌边留下的一本笔记。",
@@ -1568,12 +1608,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 182.01,
+      "start": 185.86,
       "duration": 2.19,
-      "end": 184.19
+      "end": 188.05
     },
     {
-      "visual_beat_id": "CM3_VB079",
+      "visual_beat_id": "CM3_VB081",
       "semantic_shot_id": "CM3_S041",
       "sequence_id": "SEQ6",
       "narration_fragment": "以后需要的时候，再把相关的东西拿回来。",
@@ -1588,12 +1628,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 184.19,
+      "start": 188.05,
       "duration": 3.35,
-      "end": 187.55
+      "end": 191.4
     },
     {
-      "visual_beat_id": "CM3_VB080",
+      "visual_beat_id": "CM3_VB082",
       "semantic_shot_id": "CM3_S042",
       "sequence_id": "SEQ6",
       "narration_fragment": "所以现在我再看到“上下文更长”，已经不会自动翻译成：",
@@ -1608,12 +1648,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 187.55,
+      "start": 191.4,
       "duration": 3.88,
-      "end": 191.42
+      "end": 195.28
     },
     {
-      "visual_beat_id": "CM3_VB081",
+      "visual_beat_id": "CM3_VB083",
       "semantic_shot_id": "CM3_S042",
       "sequence_id": "SEQ6",
       "narration_fragment": "“它记性更好了。”",
@@ -1628,12 +1668,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 191.42,
+      "start": 195.28,
       "duration": 1.49,
-      "end": 192.92
+      "end": 196.77
     },
     {
-      "visual_beat_id": "CM3_VB082",
+      "visual_beat_id": "CM3_VB084",
       "semantic_shot_id": "CM3_S043",
       "sequence_id": "SEQ6",
       "narration_fragment": "桌子大，当然很好。",
@@ -1648,12 +1688,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 192.92,
+      "start": 196.77,
       "duration": 1.34,
-      "end": 194.26
+      "end": 198.11
     },
     {
-      "visual_beat_id": "CM3_VB083",
+      "visual_beat_id": "CM3_VB085",
       "semantic_shot_id": "CM3_S043",
       "sequence_id": "SEQ6",
       "narration_fragment": "项目复杂的时候，多摆几份资料总比少摆强。",
@@ -1668,12 +1708,12 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 194.26,
+      "start": 198.11,
       "duration": 3.2,
-      "end": 197.46
+      "end": 201.31
     },
     {
-      "visual_beat_id": "CM3_VB084",
+      "visual_beat_id": "CM3_VB086",
       "semantic_shot_id": "CM3_S044",
       "sequence_id": "SEQ6",
       "narration_fragment": "但桌子再大，也还是桌子。",
@@ -1688,12 +1728,12 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 197.46,
+      "start": 201.31,
       "duration": 2.17,
-      "end": 199.63
+      "end": 203.48
     },
     {
-      "visual_beat_id": "CM3_VB085",
+      "visual_beat_id": "CM3_VB087",
       "semantic_shot_id": "CM3_S044",
       "sequence_id": "SEQ6",
       "narration_fragment": "真正让我不用再说第五遍的，不是桌子无限变大。",
@@ -1708,12 +1748,12 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 199.63,
+      "start": 203.48,
       "duration": 3.54,
-      "end": 203.17
+      "end": 207.02
     },
     {
-      "visual_beat_id": "CM3_VB086",
+      "visual_beat_id": "CM3_VB088",
       "semantic_shot_id": "CM3_S044",
       "sequence_id": "SEQ6",
       "narration_fragment": "而是有些东西离开桌面以后，下一次，",
@@ -1728,12 +1768,12 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 203.17,
+      "start": 207.02,
       "duration": 2.69,
-      "end": 205.86
+      "end": 209.71
     },
     {
-      "visual_beat_id": "CM3_VB087",
+      "visual_beat_id": "CM3_VB089",
       "semantic_shot_id": "CM3_S044",
       "sequence_id": "SEQ6",
       "narration_fragment": "它还知道去哪里把它找回来。",
@@ -1748,13 +1788,14 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "FINAL",
-      "start": 205.86,
+      "start": 209.71,
       "duration": 2.93,
-      "end": 208.79
+      "end": 212.64
     }
   ],
   "validation": {
     "status": "PASS",
     "issue_count": 0
-  }
+  },
+  "coverage_note": "Two previously omitted spoken spans added; full-script coverage audit required before PASS."
 }
