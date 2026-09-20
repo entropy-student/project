@@ -365,3 +365,27 @@ OPEN_QUESTIONS = 2
 G4 BLOCKED
 ```
 
+---
+
+## G3R Narrative Style Contract + Agent Smoke Test
+
+- Date: 2026-09-20
+- New candidate contract: `docs/NARRATIVE_STYLE_CONTRACT.md`
+- Owner alignment: narrative/viewpoint direction strongly accepted for consolidation.
+- Overall G3R: HOLD; one Owner editorial question remains.
+
+Safeguards added:
+- Controlling Question before thesis;
+- Idea vs Counter-Idea;
+- Lightness Guard;
+- climax should carry meaning where possible;
+- fixed IP remains participant/fallible narrator, not teacher.
+
+Smoke test:
+- `episodes/20260920-agent/G3R_narrative_test_v1.md`
+- `episodes/20260920-agent/G3R_narrative_test_review_v1.md`
+- result: PASS_CANDIDATE / OWNER REVIEW
+- estimated spoken target: roughly 3–3.5 minutes before final voice alignment.
+
+No G4 production work was started.
+
