@@ -362,3 +362,27 @@ G5C = NOT_STARTED
 G6 = BLOCKED_BY_G5
 ```
 
+## G5B Spec Lock — Blind Search Answer
+
+G5B text/spec layer completed:
+
+- `04_CHARACTER_BIBLE.md`
+- `05_SCENE_BIBLE.md`
+- `06_STYLE_BIBLE.md`
+- `07_PROP_UI_BIBLE.md`
+- `08_REFERENCE_MANIFEST.json`
+
+Status:
+```text
+G5A = PASS
+G5B = SPEC_LOCKED_BLOCKED_BY_REAL_IP_REFERENCE
+G5C = READY_FOR_DRAFT_COMPILATION
+```
+
+Important:
+- no image generation has started;
+- no fake reference path was created;
+- `CHAR_IP_001` remains the only real-input blocker currently identified;
+- non-character canonical scene/UI/prop/style refs can be generated/approved in G5B;
+- G5C may draft all image rows, but rows requiring IP cannot be marked execution-ready until the actual canonical three-view reference is available.
+
