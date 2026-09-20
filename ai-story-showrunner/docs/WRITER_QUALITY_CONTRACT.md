@@ -1,6 +1,6 @@
 # Writer Quality Contract v0.2 — Bilibili-first
 
-> **G3R STATUS: PROPOSED / OWNER REVIEW.** The Bilibili-first additions in this revision do not become accepted canonical policy until Owner PASS.
+> **G3R STATUS: OWNER ALIGNED / NOT PASS.** The direction is accepted for consolidation, but remains non-canonical until the two outstanding Owner questions are resolved and G3R receives explicit PASS.
 
 ## 1. Purpose
 
@@ -90,7 +90,7 @@ G3 的 70–85s 三篇稿件只用于验证 Writer 是否会破坏 Story / Knowl
 ### Bilibili-first planning bands
 
 - HOT / timely story: **3–5 min**
-- standard story episode: **4–6 min**
+- standard story episode: **3–5 min**
 - exceptional deep story: >8 min only when later retention evidence supports it
 
 Duration is decided by narrative requirements, not filled to a quota.
@@ -316,7 +316,7 @@ Failure:
 
 ## 15. Bilibili Long-form Story Gate
 
-A 4–8 minute script must not be a short story padded with explanation.
+A standard 3–5 minute script must not be a short story padded with explanation. Longer exceptions follow the same rule.
 
 For standard long-form stories, seek:
 - clear desire;
