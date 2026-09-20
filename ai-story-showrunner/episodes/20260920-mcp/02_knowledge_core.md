@@ -1,8 +1,8 @@
-# 02 — MCP KnowledgeCore
+# DRAFT — 02 — MCP KnowledgeCore
 
 ## Status
 
-`KNOWLEDGE_GATE = PASS`
+`KNOWLEDGE_GATE = DRAFT_HOLD_NOT_ACCEPTED`
 
 ## One Mechanism
 
