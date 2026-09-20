@@ -1,0 +1,1841 @@
+{
+  "episode_id": "20260920-mcp",
+  "source_semantic_plan": "episodes/20260920-mcp/G4A_semantic_shot_plan_v1.json",
+  "timing_profile": "docs/G4_JINGSUI_TIMING_PROFILE.md",
+  "timing_mode": "JINGSUI_CALIBRATED_PROVISIONAL",
+  "semantic_shot_count": 44,
+  "visual_beat_count": 63,
+  "provisional_total_duration_sec": 166.38,
+  "provisional_total_duration_hms": "2:46",
+  "average_visual_beat_sec": 2.64,
+  "note": "Planning-only timing. Final audio replaces these timecodes in G4B.",
+  "beats": [
+    {
+      "visual_beat_id": "MCP_VB001",
+      "semantic_shot_id": "MCP_S001",
+      "phase": "SETUP",
+      "provisional_start": 0,
+      "provisional_end": 2.82,
+      "provisional_duration": 2.82,
+      "narration_fragment": "我本来是想招个 AI 替我干活。第三天以后，",
+      "visual_state": "IP stands with training clipboard while AI partner waits like a new employee.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Open on the role reversal, not the technology.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "ESTABLISH",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB002",
+      "semantic_shot_id": "MCP_S001",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 2.82,
+      "provisional_end": 4.76,
+      "provisional_duration": 1.94,
+      "narration_fragment": "我成了它的入职培训老师。",
+      "visual_state": "IP stands with training clipboard while AI partner waits like a new employee.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Open on the role reversal, not the technology.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "ESTABLISH",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB003",
+      "semantic_shot_id": "MCP_S002",
+      "phase": "SINGLE",
+      "provisional_start": 4.76,
+      "provisional_end": 6.8,
+      "provisional_duration": 2.04,
+      "narration_fragment": "第一天，我让它帮我查库存。",
+      "visual_state": "IP points AI partner toward the inventory department.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Start first concrete department task.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "side 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB004",
+      "semantic_shot_id": "MCP_S003",
+      "phase": "SINGLE",
+      "provisional_start": 6.8,
+      "provisional_end": 9.3,
+      "provisional_duration": 2.49,
+      "narration_fragment": "它问我：“库存在哪？”我说：“后台。”",
+      "visual_state": "AI partner stops before several back-office doors and turns back to IP.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Make 'where is backend' a spatial ambiguity.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB005",
+      "semantic_shot_id": "MCP_S004",
+      "phase": "SINGLE",
+      "provisional_start": 9.3,
+      "provisional_end": 11.34,
+      "provisional_duration": 2.04,
+      "narration_fragment": "“哪个后台？”“商品后台。”“怎么查？”",
+      "visual_state": "AI reaches inventory door but still lacks the local way to operate it.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Each answer reveals another local convention.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB006",
+      "semantic_shot_id": "MCP_S005",
+      "phase": "SINGLE",
+      "provisional_start": 11.34,
+      "provisional_end": 14.74,
+      "provisional_duration": 3.4,
+      "narration_fragment": "……行。我教。点这里，进这里，搜商品名，再看剩余库存。",
+      "visual_state": "IP physically demonstrates inventory workflow step by step.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Training is a visible sequence, not a checklist card.",
+      "composition_hint": "medium over-shoulder",
+      "camera_angle_hint": "rear 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB007",
+      "semantic_shot_id": "MCP_S006",
+      "phase": "SETUP",
+      "provisional_start": 14.74,
+      "provisional_end": 17.28,
+      "provisional_duration": 2.54,
+      "narration_fragment": "教完以后效果还不错。我心想可以。",
+      "visual_state": "AI successfully checks inventory while IP relaxes with confidence.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Show why one-time training seems reasonable.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "side",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB008",
+      "semantic_shot_id": "MCP_S006",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 17.28,
+      "provisional_end": 20.25,
+      "provisional_duration": 2.98,
+      "narration_fragment": "一个员工培训一次，后面不就省事了吗？",
+      "visual_state": "AI successfully checks inventory while IP relaxes with confidence.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Show why one-time training seems reasonable.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "side",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB009",
+      "semantic_shot_id": "MCP_S007",
+      "phase": "SINGLE",
+      "provisional_start": 20.25,
+      "provisional_end": 22.98,
+      "provisional_duration": 2.72,
+      "narration_fragment": "第二天，我让它看看昨天收了多少钱。",
+      "visual_state": "IP sends AI toward finance department with casual confidence.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Repeat setup with a new department.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "side",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB010",
+      "semantic_shot_id": "MCP_S008",
+      "phase": "SETUP",
+      "provisional_start": 22.98,
+      "provisional_end": 25.33,
+      "provisional_duration": 2.35,
+      "narration_fragment": "它又问：“在哪看？”我说：“财务系统。",
+      "visual_state": "AI stands at finance door asking the same escalating questions again.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Mirror day-one friction but with different local rules.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB011",
+      "semantic_shot_id": "MCP_S008",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 25.33,
+      "provisional_end": 27.17,
+      "provisional_duration": 1.84,
+      "narration_fragment": "”“哪个页面？”“账单。”“怎么进？”",
+      "visual_state": "AI stands at finance door asking the same escalating questions again.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Mirror day-one friction but with different local rules.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB012",
+      "semantic_shot_id": "MCP_S009",
+      "phase": "SINGLE",
+      "provisional_start": 27.17,
+      "provisional_end": 30.31,
+      "provisional_duration": 3.14,
+      "narration_fragment": "我看着它。有一种非常熟悉的不祥预感。",
+      "visual_state": "IP stares silently at AI, recognizing the pattern.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Use gaze as subtext; no explanatory graphic.",
+      "composition_hint": "medium close-up",
+      "camera_angle_hint": "front",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB013",
+      "semantic_shot_id": "MCP_S010",
+      "phase": "SINGLE",
+      "provisional_start": 30.31,
+      "provisional_end": 31.34,
+      "provisional_duration": 1.03,
+      "narration_fragment": "又教了一遍。",
+      "visual_state": "IP once again demonstrates department-specific controls.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Visually repeat training with different props.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "side 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB014",
+      "semantic_shot_id": "MCP_S011",
+      "phase": "SINGLE",
+      "provisional_start": 31.34,
+      "provisional_end": 34.51,
+      "provisional_duration": 3.17,
+      "narration_fragment": "第三天我要它找一份合同。“合同在哪？”",
+      "visual_state": "At contract department door, AI turns back with the same question before entering.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Third repetition makes the pattern undeniable.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB015",
+      "semantic_shot_id": "MCP_S012",
+      "phase": "SINGLE",
+      "provisional_start": 34.51,
+      "provisional_end": 36.29,
+      "provisional_duration": 1.79,
+      "narration_fragment": "我已经不想回答了。",
+      "visual_state": "IP lowers head onto clipboard/desk edge instead of answering.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Human reaction carries the joke.",
+      "composition_hint": "medium close-up",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB016",
+      "semantic_shot_id": "MCP_S013",
+      "phase": "SETUP",
+      "provisional_start": 36.29,
+      "provisional_end": 39.1,
+      "provisional_duration": 2.8,
+      "narration_fragment": "库存有库存的入口。财务有财务的入口。",
+      "visual_state": "Different department doors each have visibly different handles, forms, and local controls.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Make integration diversity concrete through doors and local interfaces.",
+      "composition_hint": "wide hallway",
+      "camera_angle_hint": "front perspective",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB017",
+      "semantic_shot_id": "MCP_S013",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 39.1,
+      "provisional_end": 41.9,
+      "provisional_duration": 2.8,
+      "narration_fragment": "合同有合同的入口。客服、邮件、项目管理……",
+      "visual_state": "Different department doors each have visibly different handles, forms, and local controls.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Make integration diversity concrete through doors and local interfaces.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front perspective",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB018",
+      "semantic_shot_id": "MCP_S014",
+      "phase": "SETUP",
+      "provisional_start": 41.9,
+      "provisional_end": 44.88,
+      "provisional_duration": 2.98,
+      "narration_fragment": "每多接一个东西，我就得重新给它发一份：",
+      "visual_state": "IP hands AI yet another department-specific onboarding booklet.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Turn repeated integration work into accumulating onboarding manuals.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB019",
+      "semantic_shot_id": "MCP_S014",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 44.88,
+      "provisional_end": 47.33,
+      "provisional_duration": 2.45,
+      "narration_fragment": "《恭喜入职，这是本部门新员工须知》。",
+      "visual_state": "IP hands AI yet another department-specific onboarding booklet.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Turn repeated integration work into accumulating onboarding manuals.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB020",
+      "semantic_shot_id": "MCP_S015",
+      "phase": "SETUP",
+      "provisional_start": 47.33,
+      "provisional_end": 49.61,
+      "provisional_duration": 2.28,
+      "narration_fragment": "最离谱的是，这个 AI 明明什么都懂。",
+      "visual_state": "AI effortlessly completes code and contract-analysis tasks at a desk.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Show model intelligence is not the bottleneck.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB021",
+      "semantic_shot_id": "MCP_S015",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 49.61,
+      "provisional_end": 52.6,
+      "provisional_duration": 2.98,
+      "narration_fragment": "你让它写代码，它会。让它分析合同，它也会。",
+      "visual_state": "AI effortlessly completes code and contract-analysis tasks at a desk.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Show model intelligence is not the bottleneck.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB022",
+      "semantic_shot_id": "MCP_S016",
+      "phase": "SETUP",
+      "provisional_start": 52.6,
+      "provisional_end": 54.53,
+      "provisional_duration": 1.93,
+      "narration_fragment": "可一到真正干活的时候，",
+      "visual_state": "AI stands helplessly before a department door with an unfamiliar handle.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Land the door-handle motif as the interoperability problem.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB023",
+      "semantic_shot_id": "MCP_S016",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 54.53,
+      "provisional_end": 57.12,
+      "provisional_duration": 2.59,
+      "narration_fragment": "它就站在门口问我：“门把手在哪？”",
+      "visual_state": "AI stands helplessly before a department door with an unfamiliar handle.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Land the door-handle motif as the interoperability problem.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB024",
+      "semantic_shot_id": "MCP_S017",
+      "phase": "SETUP",
+      "provisional_start": 57.12,
+      "provisional_end": 59.4,
+      "provisional_duration": 2.28,
+      "narration_fragment": "后来我发现问题好像不全在它。",
+      "visual_state": "IP looks down a hallway where each department door follows a different design language.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Shift blame from AI alone to interface heterogeneity.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "rear 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB025",
+      "semantic_shot_id": "MCP_S017",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 59.4,
+      "provisional_end": 62.56,
+      "provisional_duration": 3.16,
+      "narration_fragment": "主要是我这家公司每个部门都特别有个性。",
+      "visual_state": "IP looks down a hallway where each department door follows a different design language.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Shift blame from AI alone to interface heterogeneity.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "rear 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB026",
+      "semantic_shot_id": "MCP_S018",
+      "phase": "SINGLE",
+      "provisional_start": 62.56,
+      "provisional_end": 66.47,
+      "provisional_duration": 3.91,
+      "narration_fragment": "库存部：“进门先报商品编号。” 财务部：“我们这里只认账单 ID。”",
+      "visual_state": "Inventory and finance doors each display different local entry requirements.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Concrete local schemas without becoming a protocol table.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "front",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB027",
+      "semantic_shot_id": "MCP_S019",
+      "phase": "SETUP",
+      "provisional_start": 66.47,
+      "provisional_end": 68.93,
+      "provisional_duration": 2.47,
+      "narration_fragment": "合同部：“先告诉我文件路径。” 客服部：",
+      "visual_state": "Contract and support doors show their own different conventions.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Continue heterogeneity with new real-world-style requirements.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "side",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB028",
+      "semantic_shot_id": "MCP_S019",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 68.93,
+      "provisional_end": 71.22,
+      "provisional_duration": 2.29,
+      "narration_fragment": "“我们的工单状态一共有十四种。”",
+      "visual_state": "Contract and support doors show their own different conventions.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Continue heterogeneity with new real-world-style requirements.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "side",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB029",
+      "semantic_shot_id": "MCP_S020",
+      "phase": "SINGLE",
+      "provisional_start": 71.22,
+      "provisional_end": 74.06,
+      "provisional_duration": 2.83,
+      "narration_fragment": "我看了一圈。很好。AI 没疯。我快疯了。",
+      "visual_state": "IP stands center hallway surrounded by mismatched departments while AI waits calmly.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Let environment prove the absurdity.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB030",
+      "semantic_shot_id": "MCP_S021",
+      "phase": "SINGLE",
+      "provisional_start": 74.06,
+      "provisional_end": 77.29,
+      "provisional_duration": 3.23,
+      "narration_fragment": "我一开始想得很简单：那我就给它全部学会。",
+      "visual_state": "IP opens a huge master training binder labeled only with neutral tabs, ready to teach everything.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "False solution is more training, not standardization.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB031",
+      "semantic_shot_id": "MCP_S022",
+      "phase": "SINGLE",
+      "provisional_start": 77.29,
+      "provisional_end": 80.52,
+      "provisional_duration": 3.23,
+      "narration_fragment": "库存培训一次。财务培训一次。合同培训一次。",
+      "visual_state": "AI cycles through three department-specific training sessions with growing manual stack.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Compress repetitive training while preserving the pattern.",
+      "composition_hint": "wide montage state",
+      "camera_angle_hint": "front",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB032",
+      "semantic_shot_id": "MCP_S023",
+      "phase": "SINGLE",
+      "provisional_start": 80.52,
+      "provisional_end": 83.01,
+      "provisional_duration": 2.49,
+      "narration_fragment": "再来个新软件？再培训一次。",
+      "visual_state": "A brand-new unfamiliar door appears at end of hallway; IP automatically reaches for another manual.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Show that manual onboarding scales poorly.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "front perspective",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB033",
+      "semantic_shot_id": "MCP_S024",
+      "phase": "SETUP",
+      "provisional_start": 83.01,
+      "provisional_end": 84.38,
+      "provisional_duration": 1.37,
+      "narration_fragment": "理论上没有问题。",
+      "visual_state": "IP looks at a locked software-install box as if banning all future tools.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Make the impossible assumption tangible.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB034",
+      "semantic_shot_id": "MCP_S024",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 84.38,
+      "provisional_end": 87.2,
+      "provisional_duration": 2.82,
+      "narration_fragment": "只要我这辈子不再安装任何软件。",
+      "visual_state": "IP looks at a locked software-install box as if banning all future tools.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Make the impossible assumption tangible.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB035",
+      "semantic_shot_id": "MCP_S025",
+      "phase": "SINGLE",
+      "provisional_start": 87.2,
+      "provisional_end": 89.84,
+      "provisional_duration": 2.63,
+      "narration_fragment": "后来有一天，我突然换了个想法。",
+      "visual_state": "IP stops mid-training and looks at the department doors themselves.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Pivot attention from training AI to standardizing how departments present themselves.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "side 3/4",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB036",
+      "semantic_shot_id": "MCP_S026",
+      "phase": "SETUP",
+      "provisional_start": 89.84,
+      "provisional_end": 92.29,
+      "provisional_duration": 2.46,
+      "narration_fragment": "既然每个部门都要跟这个 AI 打交道，",
+      "visual_state": "IP watches AI compare incompatible door instructions, then questions the setup.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Make the question arise from visible repeated friction.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "front",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB037",
+      "semantic_shot_id": "MCP_S026",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 92.29,
+      "provisional_end": 95.1,
+      "provisional_duration": 2.81,
+      "narration_fragment": "为什么一定要让 AI 每次重新学一套暗号？",
+      "visual_state": "IP watches AI compare incompatible door instructions, then questions the setup.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Make the question arise from visible repeated friction.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB038",
+      "semantic_shot_id": "MCP_S027",
+      "phase": "SETUP",
+      "provisional_start": 95.1,
+      "provisional_end": 96.52,
+      "provisional_duration": 1.42,
+      "narration_fragment": "能不能让这些部门，",
+      "visual_state": "IP sketches a simple uniform service placard and places it beside one department door.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Introduce common interface as a physical door placard, not an architecture layer.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB039",
+      "semantic_shot_id": "MCP_S027",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 96.52,
+      "provisional_end": 99.35,
+      "provisional_duration": 2.83,
+      "narration_fragment": "至少在门口挂一块差不多格式的牌子？",
+      "visual_state": "IP sketches a simple uniform service placard and places it beside one department door.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Introduce common interface as a physical door placard, not an architecture layer.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB040",
+      "semantic_shot_id": "MCP_S028",
+      "phase": "SINGLE",
+      "provisional_start": 99.35,
+      "provisional_end": 102.58,
+      "provisional_duration": 3.23,
+      "narration_fragment": "比如：我是谁。我能帮你做什么。你要怎么叫我。",
+      "visual_state": "Close view of a simple three-part service placard with concise labels, not a full protocol spec.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Use minimal readable structure only because the sign is a story object.",
+      "composition_hint": "close insert",
+      "camera_angle_hint": "straight-on",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB041",
+      "semantic_shot_id": "MCP_S029",
+      "phase": "SETUP",
+      "provisional_start": 102.58,
+      "provisional_end": 105.74,
+      "provisional_duration": 3.16,
+      "narration_fragment": "库存把“查库存”挂出来。财务把“查账单”挂出来。",
+      "visual_state": "Three different departments keep their unique interiors but present comparable-format placards outside.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Show standardized description without pretending business functions become identical.",
+      "composition_hint": "wide hallway",
+      "camera_angle_hint": "front perspective",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB042",
+      "semantic_shot_id": "MCP_S029",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 105.74,
+      "provisional_end": 107.68,
+      "provisional_duration": 1.93,
+      "narration_fragment": "文件系统把“读文件”挂出来。",
+      "visual_state": "Three different departments keep their unique interiors but present comparable-format placards outside.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Show standardized description without pretending business functions become identical.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front perspective",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB043",
+      "semantic_shot_id": "MCP_S030",
+      "phase": "SINGLE",
+      "provisional_start": 107.68,
+      "provisional_end": 111.24,
+      "provisional_duration": 3.57,
+      "narration_fragment": "AI 到一个新地方，不用先拉着我培训半天。先看牌子。",
+      "visual_state": "AI reaches a new door, reads placard first, while IP remains seated far away.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Show discovery replacing manual onboarding.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "side",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB044",
+      "semantic_shot_id": "MCP_S031",
+      "phase": "SINGLE",
+      "provisional_start": 111.24,
+      "provisional_end": 113.29,
+      "provisional_duration": 2.04,
+      "narration_fragment": "知道这里有哪些东西能用。",
+      "visual_state": "AI identifies available local capabilities from the placard and selects one.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Represent discoverable capabilities through the physical story prop.",
+      "composition_hint": "medium insert",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB045",
+      "semantic_shot_id": "MCP_S032",
+      "phase": "SINGLE",
+      "provisional_start": 113.29,
+      "provisional_end": 116.46,
+      "provisional_duration": 3.17,
+      "narration_fragment": "需要哪一个，再按约定的方式去调用。",
+      "visual_state": "AI uses the indicated department entry/control method without IP retraining.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Show common protocol behavior while preserving department-specific function.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "side 3/4",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB046",
+      "semantic_shot_id": "MCP_S033",
+      "phase": "SETUP",
+      "provisional_start": 116.46,
+      "provisional_end": 118.75,
+      "provisional_duration": 2.28,
+      "narration_fragment": "第一次把这套东西接起来以后，",
+      "visual_state": "AI works through a department smoothly; IP watches without any magical transformation.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Block the misconception that MCP makes the model smarter.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB047",
+      "semantic_shot_id": "MCP_S033",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 118.75,
+      "provisional_end": 121.56,
+      "provisional_duration": 2.81,
+      "narration_fragment": "我最大的感受其实不是：“哇，AI 又变聪明了。”",
+      "visual_state": "AI works through a department smoothly; IP watches without any magical transformation.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Block the misconception that MCP makes the model smarter.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB048",
+      "semantic_shot_id": "MCP_S034",
+      "phase": "SETUP",
+      "provisional_start": 121.56,
+      "provisional_end": 123.23,
+      "provisional_duration": 1.68,
+      "narration_fragment": "它压根没突然变聪明。",
+      "visual_state": "IP sits with unused stack of onboarding manuals while AI moves between departments independently.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Show interoperability payoff as removal of repetitive integration labor.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front perspective",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB049",
+      "semantic_shot_id": "MCP_S034",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 123.23,
+      "provisional_end": 127.78,
+      "provisional_duration": 4.55,
+      "narration_fragment": "变的是我终于不用每去一个部门，就重新给它办一次入职。",
+      "visual_state": "IP sits with unused stack of onboarding manuals while AI moves between departments independently.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Show interoperability payoff as removal of repetitive integration labor.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front perspective",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB050",
+      "semantic_shot_id": "MCP_S035",
+      "phase": "SINGLE",
+      "provisional_start": 127.78,
+      "provisional_end": 131.69,
+      "provisional_duration": 3.91,
+      "narration_fragment": "也是到这里，我才真正理解 MCP 这种东西到底在解决什么。",
+      "visual_state": "The same standardized placards and AI behavior remain on screen as the term MCP is introduced in subtitle only.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Reveal the term after intuition, without a new explainer scene.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB051",
+      "semantic_shot_id": "MCP_S036",
+      "phase": "SINGLE",
+      "provisional_start": 131.69,
+      "provisional_end": 134.24,
+      "provisional_duration": 2.55,
+      "narration_fragment": "它不是给 AI 再加一个更聪明的大脑。",
+      "visual_state": "AI's head/appearance remains unchanged before and after; only access pattern differs.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Reject intelligence-upgrade interpretation through character action.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB052",
+      "semantic_shot_id": "MCP_S037",
+      "phase": "SINGLE",
+      "provisional_start": 134.24,
+      "provisional_end": 137.13,
+      "provisional_duration": 2.89,
+      "narration_fragment": "也不是给所有软件装一个万能遥控器。",
+      "visual_state": "Different departments still have different services and interiors; no universal remote exists.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Show standardized protocol does not erase business differences.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB053",
+      "semantic_shot_id": "MCP_S038",
+      "phase": "SETUP",
+      "provisional_start": 137.13,
+      "provisional_end": 139.77,
+      "provisional_duration": 2.64,
+      "narration_fragment": "更像是让 AI 应用和外面的系统之间，",
+      "visual_state": "AI arrives at multiple distinct doors and repeats the same basic read-discover-connect ritual.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Embodied standardized interaction instead of protocol diagram.",
+      "composition_hint": "wide sequence state",
+      "camera_angle_hint": "side perspective",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB054",
+      "semantic_shot_id": "MCP_S038",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 139.77,
+      "provisional_end": 142.68,
+      "provisional_duration": 2.91,
+      "narration_fragment": "终于有了一种比较统一的见面方式。",
+      "visual_state": "AI arrives at multiple distinct doors and repeats the same basic read-discover-connect ritual.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Embodied standardized interaction instead of protocol diagram.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "side perspective",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB055",
+      "semantic_shot_id": "MCP_S039",
+      "phase": "SETUP",
+      "provisional_start": 142.68,
+      "provisional_end": 145.67,
+      "provisional_duration": 2.99,
+      "narration_fragment": "外部系统可以告诉它：“我这里有什么工具。",
+      "visual_state": "A department placard exposes concise categories for tools/resources/how-to-use while keeping unique local content.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Represent tools/resources as discoverable offerings, not floating boxes.",
+      "composition_hint": "close-medium",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB056",
+      "semantic_shot_id": "MCP_S039",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 145.67,
+      "provisional_end": 147.6,
+      "provisional_duration": 1.94,
+      "narration_fragment": "”“有什么资源。”“你可以怎么用。”",
+      "visual_state": "A department placard exposes concise categories for tools/resources/how-to-use while keeping unique local content.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Represent tools/resources as discoverable offerings, not floating boxes.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB057",
+      "semantic_shot_id": "MCP_S040",
+      "phase": "SINGLE",
+      "provisional_start": 147.6,
+      "provisional_end": 151.12,
+      "provisional_duration": 3.51,
+      "narration_fragment": "AI 这一边再按这套方式去发现、连接和使用。",
+      "visual_state": "AI moves from reading placard to using the selected department capability.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Close the mechanism through behavior.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "side",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB058",
+      "semantic_shot_id": "MCP_S041",
+      "phase": "SETUP",
+      "provisional_start": 151.12,
+      "provisional_end": 152.89,
+      "provisional_duration": 1.77,
+      "narration_fragment": "所以现在别人再跟我说：",
+      "visual_state": "IP hears the question while watching competent AI pause at another new door.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Return to original human confusion.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB059",
+      "semantic_shot_id": "MCP_S041",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 152.89,
+      "provisional_end": 155.19,
+      "provisional_duration": 2.31,
+      "narration_fragment": "“这个 AI 已经很聪明了，为什么还要 MCP？”",
+      "visual_state": "IP hears the question while watching competent AI pause at another new door.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Return to original human confusion.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB060",
+      "semantic_shot_id": "MCP_S042",
+      "phase": "SETUP",
+      "provisional_start": 155.19,
+      "provisional_end": 157.79,
+      "provisional_duration": 2.6,
+      "narration_fragment": "我第一反应已经不是解释协议了。",
+      "visual_state": "IP looks at the old stack of onboarding manuals from earlier days.",
+      "visual_delta": "establish department/door friction state",
+      "image_intent": "Bring story memory back before final line.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB061",
+      "semantic_shot_id": "MCP_S042",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 157.79,
+      "provisional_end": 159.35,
+      "provisional_duration": 1.56,
+      "narration_fragment": "我只会想到那几天。",
+      "visual_state": "IP looks at the old stack of onboarding manuals from earlier days.",
+      "visual_delta": "land on friction, realization, or standardized-use payoff",
+      "image_intent": "Bring story memory back before final line.",
+      "composition_hint": "reaction, door-handle, manual, or service-placard landing frame",
+      "camera_angle_hint": "front",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB062",
+      "semantic_shot_id": "MCP_S043",
+      "phase": "SINGLE",
+      "provisional_start": 159.35,
+      "provisional_end": 163.2,
+      "provisional_duration": 3.85,
+      "narration_fragment": "一个什么都会的员工，每天站在不同部门门口。",
+      "visual_state": "AI stands in hallway between many department doors, capable but waiting.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "Return to recurring employee/door motif.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front perspective",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    },
+    {
+      "visual_beat_id": "MCP_VB063",
+      "semantic_shot_id": "MCP_S044",
+      "phase": "SINGLE",
+      "provisional_start": 163.2,
+      "provisional_end": 166.38,
+      "provisional_duration": 3.17,
+      "narration_fragment": "等着我过去告诉它——门把手，到底在哪。",
+      "visual_state": "Close on IP arriving to point at the odd door handle, mirroring the early friction.",
+      "visual_delta": "use semantic shot as one complete visual state",
+      "image_intent": "End on the concrete recurring friction, not a definition card.",
+      "composition_hint": "medium close two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ]
+    }
+  ]
+}
