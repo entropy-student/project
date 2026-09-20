@@ -1,8 +1,8 @@
-# 03 — MCP StoryPremise
+# DRAFT — 03 — MCP StoryPremise
 
 ## Status
 
-`STORY_GATE = PASS_CANDIDATE_MCP`
+`STORY_GATE = DRAFT_HOLD_NOT_ACCEPTED`
 
 ## Story Without Jargon
 
