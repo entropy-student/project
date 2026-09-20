@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://entropy-student.local/ai-story-showrunner/shot.schema.json",
+  "title": "AI Story Showrunner Low-Level Shot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "shot_id",
+    "start",
+    "end",
+    "duration",
+    "narration",
+    "subtitle",
+    "character_ids",
+    "scene_id",
+    "action",
+    "expression",
+    "composition",
+    "camera_angle",
+    "image_id",
+    "transition_in",
+    "transition_out",
+    "prompt",
+    "negative_constraints",
+    "reference_assets"
+  ],
+  "properties": {
+    "shot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "start": {
+      "type": "number",
+      "minimum": 0
+    },
+    "end": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "duration": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "narration": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "character_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scene_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expression": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "composition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "camera_angle": {
+      "type": "string",
+      "minLength": 1
+    },
+    "image_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "transition_in": {
+      "type": "string",
+      "enum": [
+        "CUT",
+        "DISSOLVE",
+        "NONE"
+      ]
+    },
+    "transition_out": {
+      "type": "string",
+      "enum": [
+        "CUT",
+        "DISSOLVE",
+        "NONE"
+      ]
+    },
+    "prompt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "negative_constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reference_assets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "continuity_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "end": {
+            "type": "number"
+          },
+          "start": {
+            "type": "number"
+          }
+        }
+      },
+      "then": {}
+    }
+  ]
+}
