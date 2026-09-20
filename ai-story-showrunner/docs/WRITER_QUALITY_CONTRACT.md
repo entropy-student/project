@@ -2,6 +2,8 @@
 
 > **G3R STATUS: OWNER ALIGNED / NOT PASS.** The direction is accepted for consolidation, but remains non-canonical until the two outstanding Owner questions are resolved and G3R receives explicit PASS.
 
+Canonical narrative-style layer: `docs/NARRATIVE_STYLE_CONTRACT.md`
+
 ## 1. Purpose
 
 G3 的目标不是“把 StoryPremise 改写成顺口文案”，而是验证：
