@@ -178,19 +178,27 @@ Failure:
 
 ## 4. G4B — Exact Timeline Compiler
 
-### Preconditions
+### Timing sources
 
-One of:
-- `AUDIO_MODE = UPSTREAM_TTS` and final audio exists;
-- `AUDIO_MODE = EXECUTOR_TTS` and executor TTS has been generated and locked.
+G4B accepts one of two timing sources:
 
-Final SRT must match locked script.
+1. `AUDIO_LOCKED`
+   - final upstream/executor audio exists;
+   - strongest execution timing source.
+
+2. `JINGSUI_CALIBRATED_REFERENCE`
+   - explicitly approved by Owner for current planning/production baseline;
+   - derived from calibrated ~5.9 Chinese chars/s plus Jingsui-like pause/visual-beat profile;
+   - may be used to lock the current Shotbook timeline and SRT before final voice generation.
+
+If later generated audio differs materially from the reference timing, recompile timing only.
+Do not redo Director semantics unless the script/visual meaning changed.
 
 ### Input
 
 - accepted SemanticShotPlan;
-- final audio master;
-- final SRT;
+- accepted timing source (`AUDIO_LOCKED` or `JINGSUI_CALIBRATED_REFERENCE`);
+- SRT derived from the locked script;
 - Character / Scene / Style locks.
 
 ### Output
@@ -210,9 +218,12 @@ This phase locks:
 
 ### Timeline rule
 
-Exact time follows audio.
+Time follows the selected timing source.
 
-If audio changes:
+Current approved source:
+`JINGSUI_CALIBRATED_REFERENCE`.
+
+If later audio changes the timeline beyond tolerance:
 `RETURN_TIMELINE_MISMATCH`
 and recompile G4B only.
 
@@ -234,7 +245,7 @@ G4 PASS requires:
 - Antigravity has no creative decisions left at shot level.
 
 ### G4B
-- exact timeline is derived from locked audio/SRT;
+- timeline is derived from an accepted timing source and locked-script SRT;
 - every final shot validates against `shot.schema`;
 - no timeline overlap/gap error except intentional silence;
 - final shot count matches semantic plan unless a documented timing-only split/merge is approved;
@@ -269,10 +280,39 @@ Agent is the easiest place to prove whether the Director can preserve story ener
 
 ## 8. Current Audio Dependency
 
-`AUDIO_MODE = TBD`
+Current planning timing source:
+`JINGSUI_CALIBRATED_REFERENCE` — OWNER APPROVED.
+
+Audio mode remains TBD for later voice production.
 
 Therefore:
-- G4A1 and G4A2 may proceed now;
-- G4A2 may use Jingsui-calibrated provisional timing;
-- G4B remains the final exact-timing recompile after real audio exists;
-- provisional timing must never be mislabeled as final execution timing.
+- G4A1/G4A2/G4B may PASS using the calibrated reference timing;
+- current Shotbook timing is canonical for planning and first execution packaging;
+- later real audio may trigger timing-only recompilation;
+- audio-mode selection no longer blocks G4.
+
+---
+
+## 9. G4 Output Boundary
+
+G4 canonical output is the **Shotbook / VisualBeat plan**, validated against:
+
+- `schemas/semantic_shot.schema.json`
+- `schemas/visual_beat.schema.json`
+
+G4 does NOT require final image-generation Prompt or canonical reference asset paths.
+
+Those belong downstream after Character / Scene / Style locking.
+
+The existing `schemas/shot.schema.json` is a later low-level execution row and may require:
+- final prompt;
+- negative constraints;
+- reference assets;
+- continuity reference;
+- exact execution metadata.
+
+Rule:
+
+> **Director decides what the image must communicate; downstream asset compiler decides the final generation prompt after identity/scene/style locks exist.**
+
+Do not fabricate downstream fields merely to satisfy a later schema.
