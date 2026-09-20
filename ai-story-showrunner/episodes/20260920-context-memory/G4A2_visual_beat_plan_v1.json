@@ -1,0 +1,1778 @@
+{
+  "episode_id": "20260920-context-memory",
+  "source_semantic_plan": "episodes/20260920-context-memory/G4A_semantic_shot_plan_v1.json",
+  "timing_profile": "docs/G4_JINGSUI_TIMING_PROFILE.md",
+  "timing_mode": "JINGSUI_CALIBRATED_PROVISIONAL",
+  "semantic_shot_count": 43,
+  "visual_beat_count": 63,
+  "provisional_total_duration_sec": 172.19,
+  "provisional_total_duration_hms": "2:52",
+  "average_visual_beat_sec": 2.73,
+  "note": "Planning-only timing. Final audio replaces these timecodes in G4B.",
+  "beats": [
+    {
+      "visual_beat_id": "CM_VB001",
+      "semantic_shot_id": "CM_S001",
+      "phase": "SINGLE",
+      "provisional_start": 0,
+      "provisional_end": 1.71,
+      "provisional_duration": 1.71,
+      "narration_fragment": "我讨厌重复交代东西。",
+      "visual_state": "IP faces three repeated requirement notes on screen/desk.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Make repetition feel like lived work, not a title card.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "ESTABLISH",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB002",
+      "semantic_shot_id": "CM_S002",
+      "phase": "SINGLE",
+      "provisional_start": 1.71,
+      "provisional_end": 5.61,
+      "provisional_duration": 3.91,
+      "narration_fragment": "“这个项目不要 PPT 风。”“先说结论。”“这个角色别画成人类客服。”",
+      "visual_state": "Three familiar requirement cards appear around the same working scene.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Turn requirements into recurring props that can reappear later.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "over-shoulder",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB003",
+      "semantic_shot_id": "CM_S003",
+      "phase": "SETUP",
+      "provisional_start": 5.61,
+      "provisional_end": 7.37,
+      "provisional_duration": 1.76,
+      "narration_fragment": "这种话第一次说叫需求。",
+      "visual_state": "IP is surrounded by duplicate copies of the same notes while AI partner waits.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Show the fifth-repeat absurdity through duplicated physical notes.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB004",
+      "semantic_shot_id": "CM_S003",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 7.37,
+      "provisional_end": 10.71,
+      "provisional_duration": 3.34,
+      "narration_fragment": "说到第五次，我就开始怀疑，到底谁是谁的助理。",
+      "visual_state": "IP is surrounded by duplicate copies of the same notes while AI partner waits.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Show the fifth-repeat absurdity through duplicated physical notes.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB005",
+      "semantic_shot_id": "CM_S004",
+      "phase": "SETUP",
+      "provisional_start": 10.71,
+      "provisional_end": 13.34,
+      "provisional_duration": 2.64,
+      "narration_fragment": "所以我对 AI 一直有个特别简单的要求：",
+      "visual_state": "IP pushes the three recurring notes toward AI partner with a firm gesture.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Clarify the protagonist desire without a text manifesto.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB006",
+      "semantic_shot_id": "CM_S004",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 13.34,
+      "provisional_end": 15.8,
+      "provisional_duration": 2.46,
+      "narration_fragment": "我说过。你记住。别再让我说第二遍。",
+      "visual_state": "IP pushes the three recurring notes toward AI partner with a firm gesture.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Clarify the protagonist desire without a text manifesto.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB007",
+      "semantic_shot_id": "CM_S005",
+      "phase": "SINGLE",
+      "provisional_start": 15.8,
+      "provisional_end": 19.54,
+      "provisional_duration": 3.74,
+      "narration_fragment": "如果把 AI 想成一个助理，那它面前其实一直有张桌子。",
+      "visual_state": "AI partner sits at a finite desk inside the same stylized office.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Establish the desk as a recurring world object, not an infographic.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "ESTABLISH",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB008",
+      "semantic_shot_id": "CM_S006",
+      "phase": "SETUP",
+      "provisional_start": 19.54,
+      "provisional_end": 22.17,
+      "provisional_duration": 2.62,
+      "narration_fragment": "我今天要处理的资料、刚刚聊过的话、",
+      "visual_state": "Documents, chat strips and versioned notes are physically placed onto the desk.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Current working set becomes concrete through physical placement.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "side 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB009",
+      "semantic_shot_id": "CM_S006",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 22.17,
+      "provisional_end": 25.32,
+      "provisional_duration": 3.15,
+      "narration_fragment": "改到第三版的要求，全得先摆到这张桌子上。",
+      "visual_state": "Documents, chat strips and versioned notes are physically placed onto the desk.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Current working set becomes concrete through physical placement.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "side 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB010",
+      "semantic_shot_id": "CM_S007",
+      "phase": "SINGLE",
+      "provisional_start": 25.32,
+      "provisional_end": 27.53,
+      "provisional_duration": 2.21,
+      "narration_fragment": "“刚才那个价格是多少？”它知道。",
+      "visual_state": "AI partner points immediately to the price note still visible on desk.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Show why a large working context feels like memory.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB011",
+      "semantic_shot_id": "CM_S008",
+      "phase": "SINGLE",
+      "provisional_start": 27.53,
+      "provisional_end": 30.25,
+      "provisional_duration": 2.72,
+      "narration_fragment": "“第三份文档里我删了哪段？”它也知道。",
+      "visual_state": "AI partner retrieves the third document from the same desk stack.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Second success reinforces the wrong mental model.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "side",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB012",
+      "semantic_shot_id": "CM_S009",
+      "phase": "SINGLE",
+      "provisional_start": 30.25,
+      "provisional_end": 33.4,
+      "provisional_duration": 3.14,
+      "narration_fragment": "我看着那张桌子，只有一个念头：还能加。",
+      "visual_state": "IP measures the desk edge with ambitious eyes.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Turn '还能加' into a behavioral decision.",
+      "composition_hint": "medium close-up",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB013",
+      "semantic_shot_id": "CM_S010",
+      "phase": "SINGLE",
+      "provisional_start": 33.4,
+      "provisional_end": 34.93,
+      "provisional_duration": 1.54,
+      "narration_fragment": "于是桌子越换越大。",
+      "visual_state": "Desk visibly extends sideways beyond normal proportions.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "First physical escalation of the metaphor.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB014",
+      "semantic_shot_id": "CM_S011",
+      "phase": "SETUP",
+      "provisional_start": 34.93,
+      "provisional_end": 36.32,
+      "provisional_duration": 1.39,
+      "narration_fragment": "今天的文件放上去。",
+      "visual_state": "Layers of today's docs, yesterday's chat and older revisions fill zones of the expanded desk.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Show accumulation over time as physical clutter.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "top/front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB015",
+      "semantic_shot_id": "CM_S011",
+      "phase": "PROGRESSION",
+      "provisional_start": 36.32,
+      "provisional_end": 38.76,
+      "provisional_duration": 2.44,
+      "narration_fragment": "昨天的讨论放上去。前天改过三版、",
+      "visual_state": "Layers of today's docs, yesterday's chat and older revisions fill zones of the expanded desk.",
+      "visual_delta": "advance the physical desk/notebook action or shift focal object",
+      "image_intent": "Show accumulation over time as physical clutter.",
+      "composition_hint": "alternate framing / closer object-action view within same scene continuity",
+      "camera_angle_hint": "top/front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB016",
+      "semantic_shot_id": "CM_S011",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 38.76,
+      "provisional_end": 41.89,
+      "provisional_duration": 3.13,
+      "narration_fragment": "我自己都快忘了为什么改的东西，也放上去。",
+      "visual_state": "Layers of today's docs, yesterday's chat and older revisions fill zones of the expanded desk.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Show accumulation over time as physical clutter.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "top/front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB017",
+      "semantic_shot_id": "CM_S012",
+      "phase": "SETUP",
+      "provisional_start": 41.89,
+      "provisional_end": 44.66,
+      "provisional_duration": 2.77,
+      "narration_fragment": "后来它那个工位已经不像办公桌了。",
+      "visual_state": "The gigantic desk resembles a flattened project folder turned into furniture.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Land the deskcloth metaphor visually but keep office world coherent.",
+      "composition_hint": "very wide",
+      "camera_angle_hint": "slight high angle",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB018",
+      "semantic_shot_id": "CM_S012",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 44.66,
+      "provisional_end": 48.62,
+      "provisional_duration": 3.96,
+      "narration_fragment": "像我把整个项目文件夹拍扁以后，硬铺了一层桌布。",
+      "visual_state": "The gigantic desk resembles a flattened project folder turned into furniture.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Land the deskcloth metaphor visually but keep office world coherent.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "slight high angle",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB019",
+      "semantic_shot_id": "CM_S013",
+      "phase": "SINGLE",
+      "provisional_start": 48.62,
+      "provisional_end": 51.12,
+      "provisional_duration": 2.49,
+      "narration_fragment": "但桌子再大，终究还是会满。",
+      "visual_state": "Every usable surface is now covered; a new document has nowhere to go.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Introduce finite working capacity through an action problem.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB020",
+      "semantic_shot_id": "CM_S014",
+      "phase": "SINGLE",
+      "provisional_start": 51.12,
+      "provisional_end": 54.35,
+      "provisional_duration": 3.23,
+      "narration_fragment": "新的资料还在往里进。旧的东西就得开始挪。",
+      "visual_state": "New material arrives while AI moves old stacks off the main work surface.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Make context management a visible tradeoff.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "side",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB021",
+      "semantic_shot_id": "CM_S015",
+      "phase": "SINGLE",
+      "provisional_start": 54.35,
+      "provisional_end": 56.56,
+      "provisional_duration": 2.21,
+      "narration_fragment": "这几页暂时用不上，先收起来。",
+      "visual_state": "AI places low-priority pages into a side archive box.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Show selective removal, not permanent destruction.",
+      "composition_hint": "medium insert",
+      "camera_angle_hint": "side 3/4",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB022",
+      "semantic_shot_id": "CM_S016",
+      "phase": "SINGLE",
+      "provisional_start": 56.56,
+      "provisional_end": 58.95,
+      "provisional_duration": 2.38,
+      "narration_fragment": "前面的讨论太长，压成一张摘要。",
+      "visual_state": "A thick discussion stack is compressed into one concise summary sheet.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Visualize compaction as compression into a smaller usable artifact.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB023",
+      "semantic_shot_id": "CM_S017",
+      "phase": "SINGLE",
+      "provisional_start": 58.95,
+      "provisional_end": 60.82,
+      "provisional_duration": 1.87,
+      "narration_fragment": "几个重复要求，合成一条。",
+      "visual_state": "Duplicate requirement notes collapse into one consolidated note.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Show summarization without implying exact product behavior.",
+      "composition_hint": "close insert",
+      "camera_angle_hint": "top-down",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB024",
+      "semantic_shot_id": "CM_S018",
+      "phase": "SINGLE",
+      "provisional_start": 60.82,
+      "provisional_end": 64.3,
+      "provisional_duration": 3.48,
+      "narration_fragment": "我一看就急了。“哎，这个别收啊，我前面说过的。”",
+      "visual_state": "IP reaches across desk to stop AI from moving a note.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Turn fear of forgetting into physical interference.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB025",
+      "semantic_shot_id": "CM_S019",
+      "phase": "SINGLE",
+      "provisional_start": 64.3,
+      "provisional_end": 66.63,
+      "provisional_duration": 2.32,
+      "narration_fragment": "它看着我：“你是说哪一个？”",
+      "visual_state": "AI pauses with several similar notes in hand, genuinely unsure which matters.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Make ambiguity concrete.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB026",
+      "semantic_shot_id": "CM_S020",
+      "phase": "SINGLE",
+      "provisional_start": 66.63,
+      "provisional_end": 68.41,
+      "provisional_duration": 1.79,
+      "narration_fragment": "……我自己也想了两秒。",
+      "visual_state": "IP freezes with hand half-raised, also unsure.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Let silence expose narrator's own uncertainty.",
+      "composition_hint": "medium close-up",
+      "camera_angle_hint": "front",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB027",
+      "semantic_shot_id": "CM_S021",
+      "phase": "SETUP",
+      "provisional_start": 68.41,
+      "provisional_end": 70.32,
+      "provisional_duration": 1.91,
+      "narration_fragment": "问题是，那句话它确实看过。",
+      "visual_state": "The relevant note is shown now sitting off to the side while new materials occupy center desk.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Explain current-context displacement with spatial continuity.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "over-shoulder",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB028",
+      "semantic_shot_id": "CM_S021",
+      "phase": "PROGRESSION",
+      "provisional_start": 70.32,
+      "provisional_end": 72.93,
+      "provisional_duration": 2.61,
+      "narration_fragment": "一个小时前甚至还摆在桌面正中间。",
+      "visual_state": "The relevant note is shown now sitting off to the side while new materials occupy center desk.",
+      "visual_delta": "advance the physical desk/notebook action or shift focal object",
+      "image_intent": "Explain current-context displacement with spatial continuity.",
+      "composition_hint": "alternate framing / closer object-action view within same scene continuity",
+      "camera_angle_hint": "over-shoulder",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB029",
+      "semantic_shot_id": "CM_S021",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 72.93,
+      "provisional_end": 75.54,
+      "provisional_duration": 2.61,
+      "narration_fragment": "只是新的东西越来越多，它被挪走了。",
+      "visual_state": "The relevant note is shown now sitting off to the side while new materials occupy center desk.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Explain current-context displacement with spatial continuity.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "over-shoulder",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB030",
+      "semantic_shot_id": "CM_S022",
+      "phase": "SINGLE",
+      "provisional_start": 75.54,
+      "provisional_end": 79.05,
+      "provisional_duration": 3.51,
+      "narration_fragment": "我得出的结论非常科学：桌子还是不够大。",
+      "visual_state": "IP proudly points to a sketch for an even larger desk extension.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Preserve narrator misjudgment as action, not lecture.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB031",
+      "semantic_shot_id": "CM_S023",
+      "phase": "SINGLE",
+      "provisional_start": 79.05,
+      "provisional_end": 82.28,
+      "provisional_duration": 3.23,
+      "narration_fragment": "一张不够，两张。两张不够，把会议桌也搬过来。",
+      "visual_state": "A second desk and meeting table are dragged into the workspace.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Escalate metaphor through visible construction.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB032",
+      "semantic_shot_id": "CM_S024",
+      "phase": "SINGLE",
+      "provisional_start": 82.28,
+      "provisional_end": 85.01,
+      "provisional_duration": 2.72,
+      "narration_fragment": "实在不行，整个办公室地板都算桌面。",
+      "visual_state": "Documents spread across floor as IP claims the whole office surface.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Peak the desk-expansion riff before reversal.",
+      "composition_hint": "very wide",
+      "camera_angle_hint": "high 3/4",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB033",
+      "semantic_shot_id": "CM_S025",
+      "phase": "SINGLE",
+      "provisional_start": 85.01,
+      "provisional_end": 88.86,
+      "provisional_duration": 3.85,
+      "narration_fragment": "直到第二周，我开了一个新任务。桌面干干净净。",
+      "visual_state": "Cut to a new task/day: AI partner sits at a clean, empty desk.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Strong visual contrast with previous overloaded office.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB034",
+      "semantic_shot_id": "CM_S026",
+      "phase": "SINGLE",
+      "provisional_start": 88.86,
+      "provisional_end": 90.73,
+      "provisional_duration": 1.87,
+      "narration_fragment": "“还是按我喜欢的方式来。”",
+      "visual_state": "IP casually gestures as if the preference should be obvious.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Set up expectation without explanation.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB035",
+      "semantic_shot_id": "CM_S027",
+      "phase": "SINGLE",
+      "provisional_start": 90.73,
+      "provisional_end": 92.89,
+      "provisional_duration": 2.16,
+      "narration_fragment": "它问：“你喜欢什么方式？”",
+      "visual_state": "AI partner looks at empty desk with no preference note available.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Expose difference between current workspace and persistent memory.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB036",
+      "semantic_shot_id": "CM_S028",
+      "phase": "SETUP",
+      "provisional_start": 92.89,
+      "provisional_end": 94.34,
+      "provisional_duration": 1.45,
+      "narration_fragment": "我盯着那张空桌子。",
+      "visual_state": "IP looks from clean current desk toward the ridiculous giant old workspace in the background/memory.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Use spatial contrast instead of a comparison slide.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "side",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB037",
+      "semantic_shot_id": "CM_S028",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 94.34,
+      "provisional_end": 98.4,
+      "provisional_duration": 4.07,
+      "narration_fragment": "然后又看了看我上周辛辛苦苦扩建出来的超级工位。",
+      "visual_state": "IP looks from clean current desk toward the ridiculous giant old workspace in the background/memory.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Use spatial contrast instead of a comparison slide.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "side",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB038",
+      "semantic_shot_id": "CM_S029",
+      "phase": "SETUP",
+      "provisional_start": 98.4,
+      "provisional_end": 99.38,
+      "provisional_duration": 0.98,
+      "narration_fragment": "它解决的是：",
+      "visual_state": "IP places one hand on current desk, then looks toward empty side shelf where no lasting note exists.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Embodied two-part contrast; avoid large text card.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB039",
+      "semantic_shot_id": "CM_S029",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 99.38,
+      "provisional_end": 102.59,
+      "provisional_duration": 3.21,
+      "narration_fragment": "现在能放多少。不是：以后还能找回什么。",
+      "visual_state": "IP places one hand on current desk, then looks toward empty side shelf where no lasting note exists.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Embodied two-part contrast; avoid large text card.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB040",
+      "semantic_shot_id": "CM_S030",
+      "phase": "SINGLE",
+      "provisional_start": 102.59,
+      "provisional_end": 105.48,
+      "provisional_duration": 2.89,
+      "narration_fragment": "我没继续买桌子。在旁边放了一本笔记。",
+      "visual_state": "IP sets down a small notebook beside the desk instead of expanding furniture.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Introduce persistent memory layer as a separate object.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "desk-level",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB041",
+      "semantic_shot_id": "CM_S031",
+      "phase": "SETUP",
+      "provisional_start": 105.48,
+      "provisional_end": 106.88,
+      "provisional_duration": 1.4,
+      "narration_fragment": "也没什么都往里记。",
+      "visual_state": "IP chooses only a few recurring preference notes for the notebook, leaving many transient papers out.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Show memory as selective, not exhaustive history storage.",
+      "composition_hint": "medium insert",
+      "camera_angle_hint": "top/front",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB042",
+      "semantic_shot_id": "CM_S031",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 106.88,
+      "provisional_end": 111.42,
+      "provisional_duration": 4.54,
+      "narration_fragment": "只挑那些我真的不想再说第五遍，而且过几周还会用到的东西。",
+      "visual_state": "IP chooses only a few recurring preference notes for the notebook, leaving many transient papers out.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Show memory as selective, not exhaustive history storage.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "top/front",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB043",
+      "semantic_shot_id": "CM_S032",
+      "phase": "SETUP",
+      "provisional_start": 111.42,
+      "provisional_end": 113.71,
+      "provisional_duration": 2.28,
+      "narration_fragment": "“视频先讲故事，别一上来讲概念。",
+      "visual_state": "Three concise recurring preferences are written into the notebook.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Use a few readable phrases only because they are themselves the story objects.",
+      "composition_hint": "close insert",
+      "camera_angle_hint": "top-down",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB044",
+      "semantic_shot_id": "CM_S032",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 113.71,
+      "provisional_end": 116.69,
+      "provisional_duration": 2.98,
+      "narration_fragment": "”“不要 PPT 风。”“能直接说结论，就别先绕三页背景。”",
+      "visual_state": "Three concise recurring preferences are written into the notebook.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Use a few readable phrases only because they are themselves the story objects.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "top-down",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB045",
+      "semantic_shot_id": "CM_S033",
+      "phase": "SINGLE",
+      "provisional_start": 116.69,
+      "provisional_end": 119.58,
+      "provisional_duration": 2.89,
+      "narration_fragment": "后来又开了一个新任务。桌面还是新的。",
+      "visual_state": "Another fresh task begins with a clean desk, notebook still beside it.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Make persistence across tasks spatially visible.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front",
+      "continuity_role": "ESTABLISH",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB046",
+      "semantic_shot_id": "CM_S034",
+      "phase": "SINGLE",
+      "provisional_start": 119.58,
+      "provisional_end": 123.15,
+      "provisional_duration": 3.57,
+      "narration_fragment": "“还是按以前的方式来。”它翻了一下旁边那本笔记。",
+      "visual_state": "AI partner deliberately opens notebook before starting work.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Show retrieval as an action that reintroduces information.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "side 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB047",
+      "semantic_shot_id": "CM_S035",
+      "phase": "SINGLE",
+      "provisional_start": 123.15,
+      "provisional_end": 126.66,
+      "provisional_duration": 3.51,
+      "narration_fragment": "“哦，对。”“先讲故事，不要 PPT 风。”这次我没说第二遍。",
+      "visual_state": "AI points to remembered preference; IP simply nods instead of repeating himself.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Human payoff: narrator does not need to repeat requirement.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB048",
+      "semantic_shot_id": "CM_S036",
+      "phase": "SINGLE",
+      "provisional_start": 126.66,
+      "provisional_end": 130.51,
+      "provisional_duration": 3.85,
+      "narration_fragment": "桌子，是现在干活用的。笔记，是以后要找回来的。",
+      "visual_state": "Desk and notebook remain together in one ordinary scene, each used for its actual role.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Two-line contrast embodied in one scene, not a labeled infographic.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB049",
+      "semantic_shot_id": "CM_S037",
+      "phase": "SETUP",
+      "provisional_start": 130.51,
+      "provisional_end": 132.6,
+      "provisional_duration": 2.09,
+      "narration_fragment": "Context 更像眼前这张有限的工作台。",
+      "visual_state": "AI partner actively uses only materials currently laid out on desk.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Keep term reveal anchored to the same physical work behavior.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "side",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB050",
+      "semantic_shot_id": "CM_S037",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 132.6,
+      "provisional_end": 137.13,
+      "provisional_duration": 4.53,
+      "narration_fragment": "当前任务里的话、资料和状态，要先在这里，它这一刻才能直接用。",
+      "visual_state": "AI partner actively uses only materials currently laid out on desk.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Keep term reveal anchored to the same physical work behavior.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "side",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB051",
+      "semantic_shot_id": "CM_S038",
+      "phase": "SETUP",
+      "provisional_start": 137.13,
+      "provisional_end": 138.72,
+      "provisional_duration": 1.58,
+      "narration_fragment": "桌面越来越挤的时候，",
+      "visual_state": "Desk begins to crowd; AI compresses and moves older materials as earlier, now understood.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Reuse earlier action as mechanism proof instead of new diagrams.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB052",
+      "semantic_shot_id": "CM_S038",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 138.72,
+      "provisional_end": 142.23,
+      "provisional_duration": 3.51,
+      "narration_fragment": "系统可能会整理、压缩，或者把一部分内容移出去。",
+      "visual_state": "Desk begins to crowd; AI compresses and moves older materials as earlier, now understood.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Reuse earlier action as mechanism proof instead of new diagrams.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB053",
+      "semantic_shot_id": "CM_S039",
+      "phase": "SETUP",
+      "provisional_start": 142.23,
+      "provisional_end": 142.77,
+      "provisional_duration": 0.54,
+      "narration_fragment": "而长期 Memory，",
+      "visual_state": "AI closes notebook after retrieving one relevant note and places that note onto current desk.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Show memory as persistence + retrieval, not permanent full transcript.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "desk-level",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB054",
+      "semantic_shot_id": "CM_S039",
+      "phase": "PROGRESSION",
+      "provisional_start": 142.77,
+      "provisional_end": 146.37,
+      "provisional_duration": 3.6,
+      "narration_fragment": "不是把你以前说过的每句话永久铺满整张桌子。",
+      "visual_state": "AI closes notebook after retrieving one relevant note and places that note onto current desk.",
+      "visual_delta": "advance the physical desk/notebook action or shift focal object",
+      "image_intent": "Show memory as persistence + retrieval, not permanent full transcript.",
+      "composition_hint": "alternate framing / closer object-action view within same scene continuity",
+      "camera_angle_hint": "desk-level",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB055",
+      "semantic_shot_id": "CM_S039",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 146.37,
+      "provisional_end": 151.67,
+      "provisional_duration": 5.3,
+      "narration_fragment": "它更像桌边留下的一本笔记。以后需要的时候，再把相关的东西拿回来。",
+      "visual_state": "AI closes notebook after retrieving one relevant note and places that note onto current desk.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Show memory as persistence + retrieval, not permanent full transcript.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "desk-level",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB056",
+      "semantic_shot_id": "CM_S040",
+      "phase": "SETUP",
+      "provisional_start": 151.67,
+      "provisional_end": 154.04,
+      "provisional_duration": 2.37,
+      "narration_fragment": "所以现在我再看到“上下文更长”，",
+      "visual_state": "IP looks at an absurdly large desk extension sign, then pushes it aside.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Reject old mental model through a physical callback.",
+      "composition_hint": "medium",
+      "camera_angle_hint": "front",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB057",
+      "semantic_shot_id": "CM_S040",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 154.04,
+      "provisional_end": 156.85,
+      "provisional_duration": 2.81,
+      "narration_fragment": "已经不会自动翻译成：“它记性更好了。”",
+      "visual_state": "IP looks at an absurdly large desk extension sign, then pushes it aside.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Reject old mental model through a physical callback.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "front",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB058",
+      "semantic_shot_id": "CM_S041",
+      "phase": "SETUP",
+      "provisional_start": 156.85,
+      "provisional_end": 158.09,
+      "provisional_duration": 1.24,
+      "narration_fragment": "桌子大，当然很好。",
+      "visual_state": "IP and AI successfully use a reasonably large desk for a complex current task.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Show that larger context remains useful; avoid false binary.",
+      "composition_hint": "wide",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB059",
+      "semantic_shot_id": "CM_S041",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 158.09,
+      "provisional_end": 161.27,
+      "provisional_duration": 3.18,
+      "narration_fragment": "项目复杂的时候，多摆几份资料总比少摆强。",
+      "visual_state": "IP and AI successfully use a reasonably large desk for a complex current task.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Show that larger context remains useful; avoid false binary.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB060",
+      "semantic_shot_id": "CM_S042",
+      "phase": "SINGLE",
+      "provisional_start": 161.27,
+      "provisional_end": 163.59,
+      "provisional_duration": 2.32,
+      "narration_fragment": "但桌子再大，也还是桌子。",
+      "visual_state": "Camera returns to the large desk, now visually finite within the room.",
+      "visual_delta": "use the semantic shot as one complete visual state",
+      "image_intent": "Land the bounded insight with the recurring object.",
+      "composition_hint": "medium-wide",
+      "camera_angle_hint": "side",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB061",
+      "semantic_shot_id": "CM_S043",
+      "phase": "SETUP",
+      "provisional_start": 163.59,
+      "provisional_end": 165.76,
+      "provisional_duration": 2.17,
+      "narration_fragment": "真正让我不用再说第五遍的，",
+      "visual_state": "On a new task, AI retrieves the durable preference from notebook and places it back onto a fresh desk before IP needs to speak.",
+      "visual_delta": "establish current metaphor/action state",
+      "image_intent": "Close on retrieval behavior, not a slogan card.",
+      "composition_hint": "medium two-shot",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB062",
+      "semantic_shot_id": "CM_S043",
+      "phase": "PROGRESSION",
+      "provisional_start": 165.76,
+      "provisional_end": 167.21,
+      "provisional_duration": 1.45,
+      "narration_fragment": "不是桌子无限变大。",
+      "visual_state": "On a new task, AI retrieves the durable preference from notebook and places it back onto a fresh desk before IP needs to speak.",
+      "visual_delta": "advance the physical desk/notebook action or shift focal object",
+      "image_intent": "Close on retrieval behavior, not a slogan card.",
+      "composition_hint": "alternate framing / closer object-action view within same scene continuity",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    },
+    {
+      "visual_beat_id": "CM_VB063",
+      "semantic_shot_id": "CM_S043",
+      "phase": "RESULT_OR_REACTION",
+      "provisional_start": 167.21,
+      "provisional_end": 172.19,
+      "provisional_duration": 4.97,
+      "narration_fragment": "而是有些东西离开桌面以后，下一次，它还知道去哪里把它找回来。",
+      "visual_state": "On a new task, AI retrieves the durable preference from notebook and places it back onto a fresh desk before IP needs to speak.",
+      "visual_delta": "land on consequence, reaction, or retrieval payoff",
+      "image_intent": "Close on retrieval behavior, not a slogan card.",
+      "composition_hint": "reaction, object payoff, or wider state-result framing",
+      "camera_angle_hint": "front 3/4",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating boxes/arrows",
+        "no generic robot",
+        "no dense explanatory text"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve desk/notebook spatial continuity",
+        "visual state must advance story or mechanism"
+      ]
+    }
+  ]
+}
