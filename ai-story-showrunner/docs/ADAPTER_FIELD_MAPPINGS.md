@@ -183,11 +183,11 @@ Canonical output 必须符合：
 
 | Adapter | Status |
 |---|---|
-| Jingsui Writer | CONTRACT DEFINED / NOT YET EPISODE-VALIDATED |
+| Jingsui Writer | QUALITY VALIDATED ON 3 EPISODES / MANUAL ORCHESTRATION |
 | Acquisition Learning | CONTRACT DEFINED / NOT YET EPISODE-VALIDATED |
 | Entertainment Signal | OPTIONAL / NOT YET EPISODE-VALIDATED |
 | Story Engine | INTERNAL PROVISIONAL |
 | Director Compiler | SCHEMA DEFINED / IMPLEMENTATION PENDING |
 | Antigravity Executor | ROLE FROZEN / INTEGRATION UNKNOWN |
 
-只有真实 episode Evidence 后，才能从 candidate 升为 canonical Worker。
+Jingsui Writer 已获得 3 个真实 validation episode 的质量证据，因此其**项目级 Writer policy / Adapter contract**已通过；但 programmatic orchestration 仍未证明，不能宣称自动调用已打通。其他 Worker 仍需真实 episode Evidence 后才能升级。
