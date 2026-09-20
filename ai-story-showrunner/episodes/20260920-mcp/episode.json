@@ -1,0 +1,64 @@
+{
+  "episode_id": "20260920-mcp",
+  "status": "G2",
+  "primary_content_job": "DISCOVERY",
+  "topic": {
+    "artifact_ref": "01_signal_and_topic.md",
+    "gate_status": "PASS"
+  },
+  "knowledge": {
+    "artifact_ref": "02_knowledge_core.md",
+    "gate_status": "PASS",
+    "locked": true
+  },
+  "story": {
+    "artifact_ref": "03_story_premise.md",
+    "gate_status": "PASS",
+    "locked": true
+  },
+  "script": {
+    "script_ref": "04_script.md",
+    "srt_ref": "04_script.srt",
+    "gate_status": "PENDING",
+    "locked": false
+  },
+  "director": {
+    "shot_package_ref": "05_shots.json",
+    "gate_status": "PENDING"
+  },
+  "execution": {
+    "executor": "Antigravity",
+    "package_ref": "execution/",
+    "integration_level": "MANUAL_EXECUTOR",
+    "audio_mode": "TBD",
+    "gate_status": "PENDING"
+  },
+  "qa": {
+    "story": "PENDING",
+    "knowledge": "PENDING",
+    "visual": "PENDING",
+    "visual_repetition": "PENDING",
+    "production": "PENDING"
+  },
+  "metrics": {
+    "traffic": {},
+    "trust": {},
+    "conversion": {}
+  },
+  "provenance": [
+    {
+      "stage": "G2-research",
+      "worker_id": "showrunner-web-research",
+      "worker_version_or_ref": "MCP official 2026-07-28 sources",
+      "artifact_ref": "02_knowledge_core.md",
+      "gate_result": "PASS"
+    },
+    {
+      "stage": "G2-topic-story",
+      "worker_id": "showrunner-internal",
+      "worker_version_or_ref": "CONTENT_STRATEGY_AND_CONVERSION v0.1",
+      "artifact_ref": "03_story_premise.md",
+      "gate_result": "PASS_CANDIDATE_MCP"
+    }
+  ]
+}
