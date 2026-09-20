@@ -8,9 +8,9 @@
     "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
   },
   "current_gate": {
-    "id": "G3",
-    "name": "Story → Script / SRT MVP",
-    "status": "PASS"
+    "id": "G3R",
+    "name": "Bilibili Editorial / Narrative Rebaseline",
+    "status": "HOLD"
   },
   "accepted_gates": [
     {
@@ -42,9 +42,9 @@
   "next_gate": {
     "id": "G4",
     "name": "Script / SRT → Director / Shot Compiler MVP",
-    "status": "PENDING"
+    "status": "BLOCKED"
   },
-  "owner_intervention_required": false,
+  "owner_intervention_required": true,
   "unknowns": [
     "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR",
     "audio mode final choice: upstream TTS vs Antigravity TTS",
@@ -62,7 +62,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is a candidate writer style engine behind a restrictive project adapter"
   ],
-  "project_state": "READY_FOR_G4",
+  "project_state": "HOLD_FOR_G3_EDITORIAL_REBASELINE",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -95,6 +95,9 @@
     "result": "PASS",
     "planning_duration_seconds": "70-85",
     "planning_speaking_rate_cps": 5,
-    "writer_adapter_status": "QUALITY_VALIDATED_MANUAL_ORCHESTRATION"
-  }
+    "writer_adapter_status": "QUALITY_VALIDATED_MANUAL_ORCHESTRATION",
+    "editorial_baseline_status": "REOPENED_DUE_TO_PLATFORM_STRATEGY_DRIFT",
+    "short_form_samples_status": "VALIDATION_REFERENCE_ONLY"
+  },
+  "owner_review_scope": "Review Bilibili-first duration, IP narrative perspective, content portfolio and acquisition strategy before G4"
 }
