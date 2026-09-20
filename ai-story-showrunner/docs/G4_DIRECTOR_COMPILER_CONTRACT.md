@@ -7,7 +7,7 @@ G4 = IN_PROGRESS
 Purpose:
 Convert a locked long-form Script into a visually coherent, execution-ready shot design without inventing fake precision before audio timing exists.
 
-G4 is intentionally split into two internal phases.
+G4 uses three internal layers: G4A1 Semantic Director → G4A2 Visual Beat Compiler → G4B Exact Timeline Compiler.
 
 ---
 
@@ -27,7 +27,7 @@ Therefore G4 must not pretend estimated timing is final timing.
 
 ---
 
-## 2. G4A — Semantic Director
+## 2. G4A1 — Semantic Director
 
 ### Input
 
@@ -107,7 +107,76 @@ Failure:
 
 ---
 
-## 3. G4B — Exact Timeline Compiler
+## 3. G4A2 — Visual Beat Compiler
+
+### Purpose
+
+Compile each accepted SemanticShot into 1..N low-level visual beats using the calibrated Jingsui pacing profile:
+
+`docs/G4_JINGSUI_TIMING_PROFILE.md`
+
+Relationship:
+
+`SemanticShot → 1..N VisualBeats`
+
+A VisualBeat is the closest planning unit to the final one-image shot.
+
+### Timing mode
+
+Before final audio:
+
+`TIMING_MODE = JINGSUI_CALIBRATED_PROVISIONAL`
+
+Use:
+- speech planning rate ≈ 5.9 Chinese chars/s;
+- ordinary visual beat ≈ 1.3–4.5s;
+- median target ≈ 2.7s;
+- fast reaction / punchline ≈ 0.8–1.8s;
+- explanation / landing may hold 4–8s.
+
+Provisional times are valid for pacing and image-count planning only.
+
+### Split rule
+
+Split a SemanticShot when one of these changes materially:
+- action state;
+- reaction/expression;
+- focal object/UI state;
+- joke setup → landing;
+- camera/composition needed to preserve rhythm;
+- metaphor progression;
+- information state.
+
+Do not split solely because a sentence is long.
+
+### Output
+
+Each VisualBeat locks:
+- visual_beat_id;
+- semantic_shot_id;
+- provisional_start/end/duration;
+- narration fragment;
+- visual state;
+- image intent;
+- composition/camera;
+- continuity relation;
+- transition intent;
+- acceptance criteria.
+
+### Density Gate
+
+Return when:
+- average visual hold is too slow for the intended Jingsui-like surface rhythm without a deliberate reason;
+- repeated 4–8s holds dominate;
+- multiple distinct actions/reactions are forced into one image;
+- dense text cards are used to avoid proper visual decomposition.
+
+Failure:
+`RETURN_VISUAL_BEAT_DENSITY_MISMATCH`
+
+---
+
+## 4. G4B — Exact Timeline Compiler
 
 ### Preconditions
 
@@ -151,11 +220,11 @@ Do NOT redo G4A unless story/visual semantics also changed.
 
 ---
 
-## 4. G4 Gate Acceptance
+## 5. G4 Gate Acceptance
 
 G4 PASS requires:
 
-### G4A
+### G4A1 + G4A2
 - script meaning preserved;
 - no KnowledgeCore drift;
 - shot boundaries follow visual-state changes;
@@ -175,7 +244,7 @@ Current gate cannot PASS until both phases have evidence.
 
 ---
 
-## 5. Recommended Validation Sequence
+## 6. Recommended Validation Sequence
 
 1. Agent — event-driven / action-reaction heavy.
 2. Context & Memory — metaphor-driven / continuity heavy.
@@ -186,7 +255,7 @@ Agent is the easiest place to prove whether the Director can preserve story ener
 
 ---
 
-## 6. Current Production Principles
+## 7. Current Production Principles
 
 - one small shot ≈ one image;
 - more images are acceptable when they reduce execution complexity;
@@ -198,11 +267,12 @@ Agent is the easiest place to prove whether the Director can preserve story ener
 
 ---
 
-## 7. Current Audio Dependency
+## 8. Current Audio Dependency
 
 `AUDIO_MODE = TBD`
 
 Therefore:
-- G4A may proceed now;
-- G4B remains blocked until an audio path is selected and tested;
-- estimated timings may be stored only as planning metadata, never as final shot timing.
+- G4A1 and G4A2 may proceed now;
+- G4A2 may use Jingsui-calibrated provisional timing;
+- G4B remains the final exact-timing recompile after real audio exists;
+- provisional timing must never be mislabeled as final execution timing.
