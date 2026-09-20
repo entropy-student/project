@@ -7,10 +7,10 @@
     "note": "prior only; meaning defines beat, timing calibrates after"
   },
   "semantic_shot_count": 36,
-  "visual_beat_count": 66,
-  "estimated_duration_sec": 176.95,
+  "visual_beat_count": 67,
+  "estimated_duration_sec": 177.17,
   "estimated_duration_hms": "2:57",
-  "avg_visual_beat_sec": 2.68,
+  "avg_visual_beat_sec": 2.64,
   "beats": [
     {
       "visual_beat_id": "AG3_VB001",
@@ -142,7 +142,7 @@
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
       "start": 18.2,
-      "end": 20.87,
+      "end": 20.88,
       "duration": 2.68
     },
     {
@@ -160,7 +160,7 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 20.87,
+      "start": 20.88,
       "end": 24.28,
       "duration": 3.4
     },
@@ -218,7 +218,7 @@
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
       "start": 33.17,
-      "end": 36.96,
+      "end": 36.97,
       "duration": 3.8
     },
     {
@@ -236,8 +236,8 @@
       "visual_intensity": "LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 36.96,
-      "end": 38.62,
+      "start": 36.97,
+      "end": 38.63,
       "duration": 1.66
     },
     {
@@ -255,7 +255,7 @@
       "visual_intensity": "MEDIUM_LOW",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 38.62,
+      "start": 38.63,
       "end": 41.58,
       "duration": 2.95
     },
@@ -275,7 +275,7 @@
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REACTION",
       "start": 41.58,
-      "end": 45.37,
+      "end": 45.38,
       "duration": 3.8
     },
     {
@@ -293,7 +293,7 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 45.37,
+      "start": 45.38,
       "end": 49.91,
       "duration": 4.53
     },
@@ -560,7 +560,7 @@
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
       "start": 80.41,
-      "end": 82.94,
+      "end": 82.93,
       "duration": 2.52
     },
     {
@@ -578,7 +578,7 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REACTION",
-      "start": 82.94,
+      "start": 82.93,
       "end": 88.25,
       "duration": 5.32
     },
@@ -598,7 +598,7 @@
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REVERSAL",
       "start": 88.25,
-      "end": 90.06,
+      "end": 90.05,
       "duration": 1.8
     },
     {
@@ -616,8 +616,8 @@
       "visual_intensity": "PEAK",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REACTION",
-      "start": 90.06,
-      "end": 91.66,
+      "start": 90.05,
+      "end": 91.65,
       "duration": 1.6
     },
     {
@@ -635,8 +635,8 @@
       "visual_intensity": "PEAK",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REVERSAL",
-      "start": 91.66,
-      "end": 93.46,
+      "start": 91.65,
+      "end": 93.45,
       "duration": 1.8
     },
     {
@@ -654,8 +654,8 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 93.46,
-      "end": 98.69,
+      "start": 93.45,
+      "end": 98.68,
       "duration": 5.23
     },
     {
@@ -673,8 +673,8 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 98.69,
-      "end": 101.89,
+      "start": 98.68,
+      "end": 101.88,
       "duration": 3.2
     },
     {
@@ -692,8 +692,8 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 101.89,
-      "end": 103.55,
+      "start": 101.88,
+      "end": 103.54,
       "duration": 1.66
     },
     {
@@ -711,8 +711,8 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REVERSAL",
-      "start": 103.55,
-      "end": 108.56,
+      "start": 103.54,
+      "end": 108.55,
       "duration": 5.01
     },
     {
@@ -730,8 +730,8 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 108.56,
-      "end": 110.4,
+      "start": 108.55,
+      "end": 110.38,
       "duration": 1.83
     },
     {
@@ -749,8 +749,8 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 110.4,
-      "end": 111.83,
+      "start": 110.38,
+      "end": 111.81,
       "duration": 1.43
     },
     {
@@ -768,8 +768,8 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 111.83,
-      "end": 113.26,
+      "start": 111.81,
+      "end": 113.24,
       "duration": 1.43
     },
     {
@@ -777,60 +777,83 @@
       "semantic_shot_id": "AG3_S023",
       "sequence_id": "SEQ5",
       "narration_fragment": "昨天订单是我自己查。",
-      "image_state": "callback: IP used to own whole workflow",
+      "image_state": "callback: IP personally checks the order and owns the mouse/control",
       "visual_intention": "LAND_PAYOFF",
       "shot_function": "PAYOFF",
-      "shot_size": "LOW_MEDIUM_INSERT_TO_TWO_SHOT",
+      "shot_size": "MEDIUM",
       "pov_mode": "OBSERVER",
-      "camera_angle": "LOW_EYE_LEVEL",
+      "camera_angle": "EYE_LEVEL",
       "image_relation_grammar": "CONTRAST",
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 113.26,
-      "end": 114.94,
-      "duration": 1.68
+      "start": 113.24,
+      "end": 114.92,
+      "duration": 1.68,
+      "local_visual_intention": "COMPARE_STATES"
     },
     {
       "visual_beat_id": "AG3_VB042",
       "semantic_shot_id": "AG3_S023",
       "sequence_id": "SEQ5",
       "narration_fragment": "今天它什么都查完了。",
-      "image_state": "AI has completed all upstream work",
+      "image_state": "AI has completed all upstream checking while IP is no longer doing the investigative work",
       "visual_intention": "LAND_PAYOFF",
       "shot_function": "PAYOFF",
-      "shot_size": "LOW_MEDIUM_INSERT_TO_TWO_SHOT",
+      "shot_size": "MEDIUM_TWO_SHOT",
       "pov_mode": "OBSERVER",
-      "camera_angle": "LOW_EYE_LEVEL",
+      "camera_angle": "EYE_LEVEL",
       "image_relation_grammar": "CONTRAST",
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 114.94,
-      "end": 116.62,
-      "duration": 1.68
+      "start": 114.92,
+      "end": 116.6,
+      "duration": 1.68,
+      "local_visual_intention": "SEE_CONSEQUENCE"
     },
     {
       "visual_beat_id": "AG3_VB043",
       "semantic_shot_id": "AG3_S023",
       "sequence_id": "SEQ5",
-      "narration_fragment": "最后只把一样东西还给我——鼠标。",
-      "image_state": "mouse slides back alone and lands the joke",
+      "narration_fragment": "最后只把一样东西还给我——",
+      "image_state": "AI begins sliding one small object back across the decision station, but the object identity is still hidden/occluded",
       "visual_intention": "LAND_PAYOFF",
       "shot_function": "PAYOFF",
-      "shot_size": "LOW_MEDIUM_INSERT_TO_TWO_SHOT",
+      "shot_size": "LOW_MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "LOW_EYE_LEVEL",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "HIGH",
+      "timing_source": "JINGSUI_PRIOR_ESTIMATE",
+      "timing_kind": "PUNCH_SETUP",
+      "start": 116.6,
+      "end": 118.15,
+      "duration": 1.55,
+      "local_visual_intention": "BUILD_ANTICIPATION"
+    },
+    {
+      "visual_beat_id": "AG3_VB044",
+      "semantic_shot_id": "AG3_S023",
+      "sequence_id": "SEQ5",
+      "narration_fragment": "鼠标。",
+      "image_state": "reveal: the returned object is the mouse; mouse becomes the sole focal object between AI and IP",
+      "visual_intention": "LAND_PAYOFF",
+      "shot_function": "PAYOFF",
+      "shot_size": "INSERT",
       "pov_mode": "OBSERVER",
       "camera_angle": "LOW_EYE_LEVEL",
       "image_relation_grammar": "CONTRAST",
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 116.62,
-      "end": 119.3,
-      "duration": 2.68
+      "start": 118.15,
+      "end": 119.5,
+      "duration": 1.35,
+      "local_visual_intention": "LAND_PAYOFF"
     },
     {
-      "visual_beat_id": "AG3_VB044",
+      "visual_beat_id": "AG3_VB045",
       "semantic_shot_id": "AG3_S024",
       "sequence_id": "SEQ5",
       "narration_fragment": "很好。",
@@ -844,12 +867,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 119.3,
-      "end": 120.55,
+      "start": 119.5,
+      "end": 120.75,
       "duration": 1.25
     },
     {
-      "visual_beat_id": "AG3_VB045",
+      "visual_beat_id": "AG3_VB046",
       "semantic_shot_id": "AG3_S024",
       "sequence_id": "SEQ5",
       "narration_fragment": "我成功从客服升级成了 AI 的审批插件。",
@@ -863,12 +886,12 @@
       "visual_intensity": "HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 120.55,
-      "end": 123.76,
+      "start": 120.75,
+      "end": 123.97,
       "duration": 3.22
     },
     {
-      "visual_beat_id": "AG3_VB046",
+      "visual_beat_id": "AG3_VB047",
       "semantic_shot_id": "AG3_S025",
       "sequence_id": "SEQ6",
       "narration_fragment": "我把那二十多个窗口关掉，",
@@ -882,12 +905,12 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 123.76,
-      "end": 125.7,
+      "start": 123.97,
+      "end": 125.91,
       "duration": 1.94
     },
     {
-      "visual_beat_id": "AG3_VB047",
+      "visual_beat_id": "AG3_VB048",
       "semantic_shot_id": "AG3_S025",
       "sequence_id": "SEQ6",
       "narration_fragment": "又重新打开退款规则。",
@@ -901,12 +924,12 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 125.7,
-      "end": 127.38,
+      "start": 125.91,
+      "end": 127.59,
       "duration": 1.68
     },
     {
-      "visual_beat_id": "AG3_VB048",
+      "visual_beat_id": "AG3_VB049",
       "semantic_shot_id": "AG3_S026",
       "sequence_id": "SEQ6",
       "narration_fragment": "59 块，昨天下单，还没发货——它自己退。",
@@ -920,12 +943,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 127.38,
-      "end": 129.94,
+      "start": 127.59,
+      "end": 130.15,
       "duration": 2.56
     },
     {
-      "visual_beat_id": "AG3_VB049",
+      "visual_beat_id": "AG3_VB050",
       "semantic_shot_id": "AG3_S027",
       "sequence_id": "SEQ6",
       "narration_fragment": "2999 块，备注扯了三页，钱出去还不好追回——停。",
@@ -939,12 +962,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 129.94,
-      "end": 133.53,
+      "start": 130.15,
+      "end": 133.74,
       "duration": 3.59
     },
     {
-      "visual_beat_id": "AG3_VB050",
+      "visual_beat_id": "AG3_VB051",
       "semantic_shot_id": "AG3_S028",
       "sequence_id": "SEQ6",
       "narration_fragment": "规则互相打架——停。",
@@ -958,12 +981,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "QUICK",
-      "start": 133.53,
-      "end": 134.79,
+      "start": 133.74,
+      "end": 135,
       "duration": 1.26
     },
     {
-      "visual_beat_id": "AG3_VB051",
+      "visual_beat_id": "AG3_VB052",
       "semantic_shot_id": "AG3_S028",
       "sequence_id": "SEQ6",
       "narration_fragment": "做完很难撤回来——也停。",
@@ -977,12 +1000,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 134.79,
-      "end": 136.79,
+      "start": 135,
+      "end": 137,
       "duration": 2
     },
     {
-      "visual_beat_id": "AG3_VB052",
+      "visual_beat_id": "AG3_VB053",
       "semantic_shot_id": "AG3_S029",
       "sequence_id": "SEQ6",
       "narration_fragment": "几天后，又来了一笔麻烦退款。",
@@ -996,12 +1019,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 136.79,
-      "end": 138.98,
+      "start": 137,
+      "end": 139.19,
       "duration": 2.19
     },
     {
-      "visual_beat_id": "AG3_VB053",
+      "visual_beat_id": "AG3_VB054",
       "semantic_shot_id": "AG3_S029",
       "sequence_id": "SEQ6",
       "narration_fragment": "这次它没碰钱。",
@@ -1015,12 +1038,12 @@
       "visual_intensity": "MEDIUM_HIGH",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 138.98,
-      "end": 140.47,
+      "start": 139.19,
+      "end": 140.68,
       "duration": 1.49
     },
     {
-      "visual_beat_id": "AG3_VB054",
+      "visual_beat_id": "AG3_VB055",
       "semantic_shot_id": "AG3_S030",
       "sequence_id": "SEQ6",
       "narration_fragment": "它把订单、规则和之前的沟通记录全整理好，",
@@ -1034,12 +1057,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 140.47,
-      "end": 143.67,
+      "start": 140.68,
+      "end": 143.88,
       "duration": 3.2
     },
     {
-      "visual_beat_id": "AG3_VB055",
+      "visual_beat_id": "AG3_VB056",
       "semantic_shot_id": "AG3_S030",
       "sequence_id": "SEQ6",
       "narration_fragment": "只弹出来一句：“这笔超出自动处理范围，需要你确认。”",
@@ -1053,12 +1076,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 143.67,
-      "end": 147.38,
+      "start": 143.88,
+      "end": 147.59,
       "duration": 3.71
     },
     {
-      "visual_beat_id": "AG3_VB056",
+      "visual_beat_id": "AG3_VB057",
       "semantic_shot_id": "AG3_S031",
       "sequence_id": "SEQ6",
       "narration_fragment": "我盯着那个窗口看了两秒。",
@@ -1072,12 +1095,12 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "REACTION",
-      "start": 147.38,
-      "end": 149.66,
+      "start": 147.59,
+      "end": 149.87,
       "duration": 2.28
     },
     {
-      "visual_beat_id": "AG3_VB057",
+      "visual_beat_id": "AG3_VB058",
       "semantic_shot_id": "AG3_S031",
       "sequence_id": "SEQ6",
       "narration_fragment": "第一次觉得 AI 来烦我，也不是什么坏事。",
@@ -1091,12 +1114,12 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 149.66,
-      "end": 152.87,
+      "start": 149.87,
+      "end": 153.09,
       "duration": 3.22
     },
     {
-      "visual_beat_id": "AG3_VB058",
+      "visual_beat_id": "AG3_VB059",
       "semantic_shot_id": "AG3_S032",
       "sequence_id": "SEQ6",
       "narration_fragment": "后来我才知道，所谓 Agent，",
@@ -1110,12 +1133,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 152.87,
-      "end": 154.59,
+      "start": 153.09,
+      "end": 154.8,
       "duration": 1.71
     },
     {
-      "visual_beat_id": "AG3_VB059",
+      "visual_beat_id": "AG3_VB060",
       "semantic_shot_id": "AG3_S032",
       "sequence_id": "SEQ6",
       "narration_fragment": "关键也不只是会不会聊天、会不会接几个工具。",
@@ -1129,12 +1152,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 154.59,
-      "end": 157.96,
+      "start": 154.8,
+      "end": 158.17,
       "duration": 3.37
     },
     {
-      "visual_beat_id": "AG3_VB060",
+      "visual_beat_id": "AG3_VB061",
       "semantic_shot_id": "AG3_S033",
       "sequence_id": "SEQ6",
       "narration_fragment": "真正变化的是，我开始把“下一步做什么”这件事交给它。",
@@ -1148,12 +1171,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 157.96,
-      "end": 161.83,
+      "start": 158.17,
+      "end": 162.05,
       "duration": 3.88
     },
     {
-      "visual_beat_id": "AG3_VB061",
+      "visual_beat_id": "AG3_VB062",
       "semantic_shot_id": "AG3_S033",
       "sequence_id": "SEQ6",
       "narration_fragment": "它可以自己往前走。",
@@ -1167,12 +1190,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 161.83,
-      "end": 163.66,
+      "start": 162.05,
+      "end": 163.88,
       "duration": 1.83
     },
     {
-      "visual_beat_id": "AG3_VB062",
+      "visual_beat_id": "AG3_VB063",
       "semantic_shot_id": "AG3_S034",
       "sequence_id": "SEQ6",
       "narration_fragment": "但到了某些地方，它得知道停。",
@@ -1186,12 +1209,12 @@
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
-      "start": 163.66,
-      "end": 166.17,
+      "start": 163.88,
+      "end": 166.39,
       "duration": 2.51
     },
     {
-      "visual_beat_id": "AG3_VB063",
+      "visual_beat_id": "AG3_VB064",
       "semantic_shot_id": "AG3_S035",
       "sequence_id": "SEQ6",
       "narration_fragment": "所以现在我看一个 Agent，第一眼已经不是它接了多少工具。",
@@ -1205,12 +1228,12 @@
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 166.17,
-      "end": 170.25,
+      "start": 166.39,
+      "end": 170.47,
       "duration": 4.08
     },
     {
-      "visual_beat_id": "AG3_VB064",
+      "visual_beat_id": "AG3_VB065",
       "semantic_shot_id": "AG3_S036",
       "sequence_id": "SEQ6",
       "narration_fragment": "我只看一件事——",
@@ -1224,12 +1247,12 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 170.25,
-      "end": 171.5,
+      "start": 170.47,
+      "end": 171.72,
       "duration": 1.25
     },
     {
-      "visual_beat_id": "AG3_VB065",
+      "visual_beat_id": "AG3_VB066",
       "semantic_shot_id": "AG3_S036",
       "sequence_id": "SEQ6",
       "narration_fragment": "它知不知道，什么时候该自己往前走。",
@@ -1243,12 +1266,12 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
-      "start": 171.5,
-      "end": 174.19,
+      "start": 171.72,
+      "end": 174.41,
       "duration": 2.69
     },
     {
-      "visual_beat_id": "AG3_VB066",
+      "visual_beat_id": "AG3_VB067",
       "semantic_shot_id": "AG3_S036",
       "sequence_id": "SEQ6",
       "narration_fragment": "以及什么时候，该回来敲门。",
@@ -1262,9 +1285,13 @@
       "visual_intensity": "RELEASE",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "FINAL",
-      "start": 174.19,
-      "end": 176.95,
+      "start": 174.41,
+      "end": 177.17,
       "duration": 2.76
     }
+  ],
+  "notes": [
+    "Agent case refinement: S023 uses four images.",
+    "The fourth image is a distinct reveal/landing image for 鼠标; the third image withholds object identity to preserve punchline."
   ]
 }
