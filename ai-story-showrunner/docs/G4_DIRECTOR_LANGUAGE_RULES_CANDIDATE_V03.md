@@ -116,9 +116,9 @@ Every Semantic Shot needs:
 - shot function;
 - subject priority;
 - staging/blocking;
-- shot size;
-- POV/angle;
-- composition;
+- framing strategy / shot-size progression plan;
+- POV strategy;
+- composition strategy;
 - eye-trace in/out;
 - screen direction when continuity applies;
 - visual intensity;
@@ -137,6 +137,14 @@ Relationship: Semantic Shot → 1..N Visual Beats.
 
 Visual Beat is the image-level still unit.
 
+Each Visual Beat locks the actual:
+- local visual intention (may inherit or override Semantic Shot intention);
+- shot size;
+- POV;
+- angle / composition delta;
+- focal subject/object state;
+- timing relation.
+
 Split only when image-level meaning changes:
 - intention/setup → action;
 - action → result;
@@ -152,6 +160,13 @@ Split only when image-level meaning changes:
 Common still-image grammar: A intention/setup → B action/change → C result/reaction.
 
 Use only the number of states that add meaning. Do not add images merely to imitate motion.
+
+A Visual Beat may also be a **reveal setup state**: an image that deliberately withholds the final object/result so the next beat can land the payoff. This is valid only when anticipation itself has narrative/comic meaning.
+
+Example:
+`AI finished work → hand begins returning one object → reveal: mouse`.
+
+Do not reveal the punchline object early.
 
 ## 7. Timing & Edit Calibration — Jingsui corrected
 
