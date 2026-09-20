@@ -108,6 +108,25 @@ Style lock may include:
 - character/world integration;
 - prohibited visual styles.
 
+### G5B.5 — Visual Acquisition Review
+
+Required before G5C Pilot.
+
+Canonical:
+`docs/VISUAL_ACQUISITION_REVIEW_GATE.md`
+
+Purpose:
+treat visual style as a Message / Creative Lever and challenge internal taste with external evidence + a controlled visual-style hypothesis.
+
+Current decision:
+`KEEP + ITERATE`
+
+Control:
+`SIMPLIFIED_FLAT_NARRATIVE_COMIC`
+
+Challenger:
+`ULTRA_SIMPLE_NARRATIVE_LINE_CARTOON`
+
 ### G5C — Image Generation Compiler
 
 Current MVP status:
