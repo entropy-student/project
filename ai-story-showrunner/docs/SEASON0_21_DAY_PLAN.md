@@ -10,7 +10,7 @@ Daily publishing is used to rapidly learn:
 2. what makes viewers stay;
 3. what makes them follow / save / coin / ask good questions;
 4. whether the recurring IP becomes a reason to return;
-5. when practical/tutorial value helps rather than harms the story.
+5. when practical/actionable value helps rather than harms the story.
 
 This is not a 21-day “growth guarantee”.
 
@@ -29,9 +29,8 @@ Keep stable unless a major failure appears:
 ## Portfolio
 
 Per seven-day block, default target:
-- 4 STORY_MODEL
+- 5 STORY_MODEL
 - 2 STORY_ACTION
-- 1 STORY_TUTORIAL / real experiment
 
 Quality gates outrank quota.
 
@@ -59,14 +58,13 @@ Question:
 
 Compare patterns:
 - STORY_MODEL: ends with a mental model;
-- STORY_ACTION: ends with one practical decision framework;
-- STORY_TUTORIAL: ends with a real workflow/demo.
+- STORY_ACTION: ends with one practical decision framework or behavior.
 
 Do not interpret views alone.
 Look for:
 - saves / coins;
 - qualified questions;
-- watch drop at the point where “method/tutorial” begins;
+- watch drop at the point where the method section begins;
 - follow conversion;
 - comments asking for more implementation detail.
 
@@ -96,12 +94,11 @@ Do not optimize for completion percentage alone.
 Initial routes:
 - HOT: 3–5 min
 - standard: 4–6 min
-- action/tutorial: 5–8 min
 
 After enough published evidence:
 - if retention consistently holds and viewers ask for depth → allow longer;
 - if major drops repeat before payoff → reduce or restructure before merely shortening;
-- if tutorial sections create sharp drops → separate or rewrite them instead of deleting practical value automatically.
+- if method sections create sharp drops → first check whether the method is bolted on or too abstract.
 
 ## IP learning
 
@@ -135,7 +132,7 @@ Evidence
 ```
 
 Avoid:
-- changing title, duration, POV, visual style and tutorial ratio all at once;
+- changing title, duration, POV, visual style and method ratio all at once;
 - treating one viral video as proof of the whole channel thesis;
 - treating one weak video as proof the format is dead.
 
