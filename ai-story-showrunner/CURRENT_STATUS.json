@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_IN_PROGRESS_G5B_CALIBRATION_PASS_G5C_READY",
+  "project_state": "G5_IN_PROGRESS_G5C_44_ROWS_COMPILED_PILOT_READY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "G4 owner approval received. G5 is in progress. Real IP reference remains required before character-dependent image generation can be marked generation-ready.",
+  "owner_review_scope": "G4 PASS. G5A/B complete. G5C 44 rows compiled and structurally validated. Next: 8-image high-risk pilot generation/QA.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -311,8 +311,26 @@
     },
     "phase_c": {
       "name": "Image Generation Compiler",
-      "status": "READY_TO_COMPILE",
-      "note": "Compile 44 deterministic image-generation rows. Current-conversation refs are usable for this workflow; repo binary persistence remains separate."
+      "status": "PASS_CANDIDATE_PILOT_READY",
+      "image_rows": "experiments/g5/blind-search-answer/10_IMAGE_GENERATION_ROWS.json",
+      "human_plan": "experiments/g5/blind-search-answer/11_IMAGE_GENERATION_PLAN.md",
+      "pilot_batch": "experiments/g5/blind-search-answer/12_PILOT_BATCH.json",
+      "visual_beats": 44,
+      "image_rows_count": 44,
+      "structural_validation": "PASS",
+      "post_overlay_rows": 33,
+      "continuity_rows": 36,
+      "pilot_beats": [
+        "SRCH_VB001",
+        "SRCH_VB009",
+        "SRCH_VB012",
+        "SRCH_VB015",
+        "SRCH_VB016",
+        "SRCH_VB022",
+        "SRCH_VB025",
+        "SRCH_VB044"
+      ],
+      "next": "Generate and review 8 high-risk pilot images before full 44-image batch."
     }
   }
 }
