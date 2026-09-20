@@ -1,10 +1,10 @@
-# Writer Quality Contract v0.1
+# Writer Quality Contract v0.2 — Bilibili-first
 
 ## 1. Purpose
 
 G3 的目标不是“把 StoryPremise 改写成顺口文案”，而是验证：
 
-> **Writer 能否在不破坏 locked KnowledgeCore / StoryPremise 的前提下，把故事写成短视频里真正值得听完的口播。**
+> **Writer 能否在不破坏 locked KnowledgeCore / StoryPremise 的前提下，把故事写成在 Bilibili 上本身值得看完、又能真正理解 AI 的 IP 叙事。**
 
 ---
 
@@ -40,9 +40,9 @@ Writer 不得把因果骨架压成“举三个例子 + 总结定义”。
 
 抽象解释必须尽量附着在已经发生的事件之后。
 
-### Layer C — Short-form Retention
+### Layer C — Narrative Retention
 
-负责让短视频从第一秒持续推进。
+负责让视频从第一段开始持续推进；不再以短视频压缩为默认前提。
 
 规则：
 1. 第一拍直接进入异常事件 / 冲突，不自我介绍；
@@ -75,21 +75,26 @@ Writer 不得把因果骨架压成“举三个例子 + 总结定义”。
 
 ---
 
-## 3. G3 Validation Timing
+## 3. Platform / Duration Baseline
 
-首轮验证默认：
+### Historical validation note
 
-- target duration: **70–85 seconds**；
-- planning speaking rate: **5.0 spoken Chinese chars/s**；
-- target spoken chars: roughly **350–425**；
-- actual TTS / real voice later overrides estimate。
+G3 的 70–85s 三篇稿件只用于验证 Writer 是否会破坏 Story / KnowledgeCore。
 
-理由：
-- 比 45–60s 留出足够因果空间，避免故事刚开始就被迫讲定义；
-- 又足够短，仍能用于抖音 / 小红书 / Shorts 类短视频验证；
-- 后续真实 retention 数据再校准。
+它们现在统一降级为：
 
-这不是永久标准。
+`SHORT_FORM_WRITER_VALIDATION_REFERENCE_ONLY`
+
+### Bilibili-first planning bands
+
+- HOT / timely story: **3–5 min**
+- standard story episode: **4–6 min**
+- STORY_ACTION / STORY_TUTORIAL: **5–8 min**
+- exceptional deep story: >8 min only when later retention evidence supports it
+
+Duration is decided by narrative requirements, not filled to a quota.
+
+Editorial target is DAILY, but one-episode-per-day production throughput remains unproven until G4–G7.
 
 ---
 
@@ -259,3 +264,76 @@ Jingsui Writer Adapter 只有在至少三个不同机制 episode 中：
 - 能稳定生成可直接口播的 Script + SRT；
 
 才从 STRONG CANDIDATE 升为 canonical Writer Worker。
+
+---
+
+## 13. Channel IP / POV Contract
+
+Default narrator is the recurring **first-person channel IP**.
+
+Preferred narrative relation:
+
+```text
+I experience / choose
+→ world and recurring characters react
+→ viewer recognizes the same problem
+```
+
+POV routing:
+- first person: default for channel identity and story experience;
+- third person: real external cases / supporting characters;
+- second person: sparingly for mental simulation or returning the question to the viewer.
+
+Trust boundary:
+- channel IP may be fictional/stylized;
+- do not fabricate real-world personal tests, purchases, employment, losses or first-hand experience;
+- fictional simulation must remain legible as the channel’s story world.
+
+## 14. Editorial Mode Contract
+
+Business Job and Editorial Mode are separate.
+
+Allowed editorial modes:
+
+- `STORY_MODEL` — story → mechanism → mental model / judgment
+- `STORY_ACTION` — story → mechanism → practical decision/action
+- `STORY_TUTORIAL` — story/problem → mechanism → real workflow/demo/tutorial
+
+Every episode must select exactly one primary editorial mode.
+
+### Actionability Gate
+
+Add action/tutorial only when all are true:
+1. the action follows directly from the locked mechanism;
+2. it is stable and evidence-based;
+3. it does not require an unrelated second mechanism;
+4. it naturally resolves or extends the story problem.
+
+Otherwise end with a strong mental model.
+
+Failure:
+`RETURN_TUTORIAL_BOLTED_ON`
+
+## 15. Bilibili Long-form Story Gate
+
+A 4–8 minute script must not be a short story padded with explanation.
+
+For standard long-form stories, seek:
+- clear desire;
+- first action;
+- escalating complications;
+- false solution / misjudgment when natural;
+- meaningful turning point;
+- action-consequence cycles after partial insight;
+- mechanism becoming visible through events;
+- payoff that changes what the IP/viewer understands or does.
+
+Forbidden:
+
+```text
+story
+→ story ends
+→ lecture begins
+```
+
+Explanation should remain embedded in ongoing action and consequence.
