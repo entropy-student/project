@@ -91,7 +91,6 @@ G3 的 70–85s 三篇稿件只用于验证 Writer 是否会破坏 Story / Knowl
 
 - HOT / timely story: **3–5 min**
 - standard story episode: **4–6 min**
-- STORY_ACTION / STORY_TUTORIAL: **5–8 min**
 - exceptional deep story: >8 min only when later retention evidence supports it
 
 Duration is decided by narrative requirements, not filled to a quota.
@@ -299,13 +298,12 @@ Allowed editorial modes:
 
 - `STORY_MODEL` — story → mechanism → mental model / judgment
 - `STORY_ACTION` — story → mechanism → practical decision/action
-- `STORY_TUTORIAL` — story/problem → mechanism → real workflow/demo/tutorial
 
 Every episode must select exactly one primary editorial mode.
 
 ### Actionability Gate
 
-Add action/tutorial only when all are true:
+Add an action/method section only when all are true:
 1. the action follows directly from the locked mechanism;
 2. it is stable and evidence-based;
 3. it does not require an unrelated second mechanism;
@@ -314,7 +312,7 @@ Add action/tutorial only when all are true:
 Otherwise end with a strong mental model.
 
 Failure:
-`RETURN_TUTORIAL_BOLTED_ON`
+`RETURN_ACTION_BOLTED_ON`
 
 ## 15. Bilibili Long-form Story Gate
 
@@ -339,3 +337,73 @@ story
 ```
 
 Explanation should remain embedded in ongoing action and consequence.
+
+
+## 16. Viewpoint Gate
+
+观点为 optional layer，不单独构成 Editorial Mode。
+
+Writer 可以表达一个 bounded interpretation，但必须满足：
+- 事实与 KnowledgeCore 已先成立；
+- 观点来自故事结果，不是先有结论再挑故事；
+- 只承担一个主要判断；
+- 避免从单一案例泛化到“所有人 / 整个行业 / 未来一定”；
+- 有重要例外时主动给边界；
+- 删除观点后，故事与机制仍然有独立价值。
+
+推荐语言：
+- “我现在更愿意把它理解成……”
+- “至少在这个场景里……”
+- “这件事让我更在意的其实是……”
+
+降权：
+- “这证明了……”
+- “所以未来一定……”
+- “所有人都应该……”
+- “真正的答案只有一个……”
+
+Failure:
+`RETURN_OPINION_OVERREACH`.
+
+## 17. Scene / Beat Writing Rule
+
+Do not write a paragraph because “the script needs another paragraph”.
+
+Each scene or beat should answer:
+
+1. **此刻人物想要什么？**
+2. **他做了什么？**
+3. **世界怎么回应？**
+4. **结果和预期哪里不同？**
+5. **因此什么发生了变化？**
+6. **这个变化为什么逼出下一段？**
+
+A beat should preferably change at least one of:
+`knowledge / goal / strategy / stakes / relationship / behavior-relevant emotion / available options`.
+
+### Causal Link Test
+
+Prefer:
+`因为 A，所以 B；但是 B 导致 C；因此人物只能做 D。`
+
+Avoid:
+`A 发生了。然后 B 发生了。然后 C 发生了。`
+
+### Compression Test
+
+If a beat can be deleted without changing:
+- character decision;
+- causal chain;
+- audience understanding;
+- tension;
+- payoff;
+
+delete or merge it.
+
+### Concrete Test
+
+Every abstract claim should be earned by a visible event, action, object, consequence, or character reaction whenever possible.
+
+Definition:
+
+> **讲得好 = 具体、因果、推进、有人物反应，而且段落结束时故事状态真的变了。**
