@@ -124,10 +124,18 @@ Visual Beat / Asset / Animatic / Render
 - `docs/TOOL_INVENTORY.md`
 - `docs/WORKER_CONTRACTS.md`
 
+## Governance
+
+本项目遵循 `entropy-student/spike.skill/vps-project-governance` **v0.1.6 + active addenda** 的内容项目适配版。
+
+当前项目事实以 `REVIEWER_HANDOFF.md` 为 Reviewer 唯一当前真相；`PROJECT_RECORD.md` 保存长期历史与决策；`EXECUTION_EVIDENCE.md` 保存可复核证据；`CURRENT_STATUS.json` 只是机器可读镜像。
+
+详见 `docs/GOVERNANCE_ADAPTATION.md`。
+
 ## 当前 Gate
 
 ```text
-P0  Project Boundary / Architecture            ✅ PASS
+P0  Project Boundary / Governance Reconciliation ✅ PASS
 G1  Worker Inventory + Canonical Contracts     ← HERE
 G2  Topic → Human Problem → Story MVP          ⏳
 G3  Story → Script / SRT MVP                   ⏳
@@ -158,6 +166,10 @@ G10 Reusable Showrunner Skill / Runtime         ⏳
 ```text
 README.md
   ↓
+REVIEWER_HANDOFF.md
+  ↓
+CURRENT_STATUS.json
+  ↓
 PROJECT_RECORD.md
   ↓
 docs/ARCHITECTURE.md
@@ -167,4 +179,6 @@ docs/PIPELINE_AND_GATES.md
 docs/WORKER_CONTRACTS.md
   ↓
 docs/TOOL_INVENTORY.md
+  ↓
+EXECUTION_EVIDENCE.md（需要审计执行事实时）
 ```
