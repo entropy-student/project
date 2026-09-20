@@ -1,0 +1,651 @@
+{
+  "experiment": "G4R_V03_BLIND_SEARCH_ANSWER",
+  "status": "EXPERIMENTAL_BLIND_NOT_CANONICAL",
+  "source_script": "experiments/g4r-v03/blind-search-answer/02_SCRIPT.md",
+  "frozen_rules_sha": "fccc6a6bad667d6a013183f8d0a9f998d448b5d4",
+  "semantic_shot_count": 19,
+  "shots": [
+    {
+      "semantic_shot_id": "SRCH_S001",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "paragraph_range": [
+        1,
+        2
+      ],
+      "narration_span": "我现在看到 AI 回答下面带着“官方来源”四个字，第一反应已经不是放心了。\n\n是先点开看看。",
+      "dramatic_refs": [
+        "SC1.1_1_2"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "ESTABLISH",
+      "subject_priority": "IP + official-source cue",
+      "staging_blocking": "IP sees an AI answer carrying an official-source cue; instead of relaxing, hand moves toward source link.",
+      "framing_strategy": "medium-close human-first",
+      "pov_strategy": "OBSERVER_EYE_LEVEL",
+      "composition_strategy": "IP face and source cue share frame; cursor/hand already points toward verification action.",
+      "eye_trace_in": "source cue",
+      "eye_trace_out": "IP hand/cursor",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Current habit is established before backstory: official source now triggers checking, not blind trust.",
+      "acceptance_criteria": [
+        "hook readable",
+        "no generic warning graphic",
+        "human action visible"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S002",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "paragraph_range": [
+        3,
+        5
+      ],
+      "narration_span": "因为有一次，我只是想偷个懒，查一条特别简单的退款规则。\n\n问题也很具体：\n\n“订单退掉以后，平台收的那笔服务费，会不会一起退回来？”",
+      "dramatic_refs": [
+        "SC1.1_3_5"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "ORIENT"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP query",
+      "staging_blocking": "IP sits at cost/work desk and asks one narrowly scoped question about whether the platform service fee is refunded.",
+      "framing_strategy": "medium desk interaction",
+      "pov_strategy": "OBSERVER_EYE_LEVEL",
+      "composition_strategy": "Question object/interface visible only enough to preserve the phrase 服务费.",
+      "eye_trace_in": "IP",
+      "eye_trace_out": "question phrase 服务费",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "The exact facet being asked—service fee—is visually anchored early.",
+      "acceptance_criteria": [
+        "服务费 visible/understandable",
+        "no long chat screenshot"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S003",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.1",
+      "paragraph_range": [
+        6,
+        9
+      ],
+      "narration_span": "它搜了一下。\n\n几秒钟以后，答案出来了：\n\n“会。退款完成后，款项会原路退回。”\n\n下面还真的挂着一条官方帮助中心的链接。",
+      "dramatic_refs": [
+        "SC1.1_6_9"
+      ],
+      "visual_intention": {
+        "primary": "SEE_CONSEQUENCE",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "REVEAL",
+      "subject_priority": "AI answer + official source",
+      "staging_blocking": "AI answer appears with a confident '会' and an official help-center source beneath it.",
+      "framing_strategy": "answer-pane medium/insert progression",
+      "pov_strategy": "IP_POV",
+      "composition_strategy": "Answer conclusion is primary; source badge/link sits immediately below as trust amplifier.",
+      "eye_trace_in": "question phrase 服务费",
+      "eye_trace_out": "official source cue",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_state": "Correct-looking sourcing increases confidence before any contradiction appears.",
+      "acceptance_criteria": [
+        "answer concise",
+        "official source clear",
+        "no real brand"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S004",
+      "sequence_id": "SEQ1",
+      "scene_id": "SC1.2",
+      "paragraph_range": [
+        10,
+        12
+      ],
+      "narration_span": "我当时那个放心程度，大概相当于老师不仅告诉你答案，还把参考答案拍在了桌上。\n\n于是我顺手就在成本表里写了一行：\n\n“服务费：可退。”",
+      "dramatic_refs": [
+        "SC1.2_10_12"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "SEE_CONSEQUENCE"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP trust → cost sheet",
+      "staging_blocking": "IP relaxes, then writes 服务费：可退 into the cost sheet.",
+      "framing_strategy": "medium reaction to object action",
+      "pov_strategy": "OBSERVER_EYE_LEVEL",
+      "composition_strategy": "AI answer remains in background while cost sheet becomes foreground.",
+      "eye_trace_in": "official source cue",
+      "eye_trace_out": "cost-sheet entry",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "The answer changes a real working assumption; stakes become concrete.",
+      "acceptance_criteria": [
+        "cost-sheet entry readable",
+        "trust shown through behavior not narration"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S005",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "paragraph_range": [
+        13,
+        15
+      ],
+      "narration_span": "本来这件事到这里已经结束了。\n\n但我那天可能刚好手比较欠。\n\n我点开了那个官方网页。",
+      "dramatic_refs": [
+        "SC2.1_13_15"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "IP clicks source after case seems finished",
+      "staging_blocking": "IP is about to move on, hesitates, then clicks the official source almost casually.",
+      "framing_strategy": "medium desk continuity",
+      "pov_strategy": "OBSERVER_EYE_LEVEL",
+      "composition_strategy": "Cost sheet remains present; cursor moves from finished task back to source.",
+      "eye_trace_in": "cost-sheet entry",
+      "eye_trace_out": "source link",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Investigation begins because of a small human action, not because narrator announces a lesson.",
+      "acceptance_criteria": [
+        "casual click readable",
+        "same desk continuity"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S006",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.1",
+      "paragraph_range": [
+        16,
+        18
+      ],
+      "narration_span": "网页没找错。\n\n标题就是退款规则。\n\n甚至 AI 刚才那句话，也真的能在上面找到。",
+      "dramatic_refs": [
+        "SC2.1_16_18"
+      ],
+      "visual_intention": {
+        "primary": "ORIENT",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "ESTABLISH",
+      "subject_priority": "official refund page",
+      "staging_blocking": "The exact same fictional official policy page opens; title is correct and the AI-cited sentence is visibly present.",
+      "framing_strategy": "POV medium-wide page view",
+      "pov_strategy": "IP_POV",
+      "composition_strategy": "Stable page layout established: title upper area; two policy lines stacked below.",
+      "eye_trace_in": "page title",
+      "eye_trace_out": "first policy line",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "POV_DISCOVERY",
+      "visual_state": "The source is genuinely correct/relevant, blocking the easy explanation 'wrong page'.",
+      "acceptance_criteria": [
+        "same page must persist later",
+        "official status clear",
+        "minimal text"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S007",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.2",
+      "paragraph_range": [
+        19,
+        20
+      ],
+      "narration_span": "上面写着：\n\n“退款完成后，订单款项将退回原支付方式。”",
+      "dramatic_refs": [
+        "SC2.2_19_20"
+      ],
+      "visual_intention": {
+        "primary": "NOTICE_OBJECT",
+        "secondary": "SHARE_POV"
+      },
+      "shot_function_primary": "INSERT_OBJECT",
+      "subject_priority": "first policy line: order payment",
+      "staging_blocking": "IP reads the first line stating the order payment returns to original method.",
+      "framing_strategy": "tight insert on first line within stable page layout",
+      "pov_strategy": "IP_POV",
+      "composition_strategy": "First line highlighted; second line remains below but not yet focal.",
+      "eye_trace_in": "first line start",
+      "eye_trace_out": "phrase 订单款项",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_state": "This is the true sentence the AI overgeneralized from.",
+      "acceptance_criteria": [
+        "订单款项 legible",
+        "do not reveal second line as dominant yet"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S008",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.2",
+      "paragraph_range": [
+        21,
+        22
+      ],
+      "narration_span": "我往下又看了一行。\n\n“平台服务费不予退还。”",
+      "dramatic_refs": [
+        "SC2.2_21_22"
+      ],
+      "visual_intention": {
+        "primary": "EXPERIENCE_REVERSAL",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "REVEAL",
+      "subject_priority": "second policy line: service fee not refunded",
+      "staging_blocking": "IP gaze moves one line down; the service-fee exception becomes the new focal point.",
+      "framing_strategy": "matched insert, same page position shifted downward",
+      "pov_strategy": "IP_POV",
+      "composition_strategy": "Second line highlighted in same page; first line now de-emphasized but still spatially nearby.",
+      "eye_trace_in": "订单款项 line",
+      "eye_trace_out": "平台服务费不予退还",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "PEAK",
+      "image_relation_grammar": "POV_DISCOVERY",
+      "visual_state": "Contradiction is discovered through eye movement on the same correct source.",
+      "acceptance_criteria": [
+        "平台服务费不予退还 dominant",
+        "same page continuity",
+        "no red-alert decoration"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S009",
+      "sequence_id": "SEQ2",
+      "scene_id": "SC2.3",
+      "paragraph_range": [
+        23,
+        27
+      ],
+      "narration_span": "……\n\n我又看了一眼 AI 的答案。\n\n“会。”\n\n再看网页。\n\n“不予退还。”",
+      "dramatic_refs": [
+        "SC2.3_23_27"
+      ],
+      "visual_intention": {
+        "primary": "READ_REACTION",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "REVERSAL",
+      "subject_priority": "AI '会' vs source '不予退还'",
+      "staging_blocking": "IP freezes, then alternates gaze between the AI answer and the official source line.",
+      "framing_strategy": "matched contrast: answer pane ↔ source line ↔ reaction",
+      "pov_strategy": "OBSERVER_WITH_POV_INSERTS",
+      "composition_strategy": "Keep '会' and '不予退还' in stable matched focal positions to make contradiction effortless to read.",
+      "eye_trace_in": "source line",
+      "eye_trace_out": "AI answer / IP eyes",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "PEAK",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "The story's central Gap becomes visible without explanation.",
+      "acceptance_criteria": [
+        "both claims concise",
+        "IP reaction understated",
+        "eye-trace easy"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S010",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.1",
+      "paragraph_range": [
+        28,
+        32
+      ],
+      "narration_span": "这时候最奇怪的地方就出现了。\n\n它不是没联网。\n\n也不是搜到了什么野鸡论坛。\n\n它甚至把正确的官网放在了我面前。\n\n但它拿着回答“订单款项去哪儿”的那句话，回答了我“服务费退不退”的问题。",
+      "dramatic_refs": [
+        "SC3.1_28_32"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "CLARIFY",
+      "subject_priority": "correct source vs wrong conclusion",
+      "staging_blocking": "IP checks three possibilities in the same investigation: web access exists, source is official, page is correct; then points back to mismatch between question and cited sentence.",
+      "framing_strategy": "medium desk + evidence objects, not a diagram",
+      "pov_strategy": "OBSERVER_EYE_LEVEL",
+      "composition_strategy": "Official page and question remain co-present; eliminated explanations visually recede.",
+      "eye_trace_in": "IP reaction",
+      "eye_trace_out": "question + cited sentence",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "HIGH_MEDIUM",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Error is localized away from retrieval/source identity and toward evidence-question alignment.",
+      "acceptance_criteria": [
+        "no RAG architecture boxes",
+        "官网正确 remains explicit"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S011",
+      "sequence_id": "SEQ3",
+      "scene_id": "SC3.2",
+      "paragraph_range": [
+        32,
+        32
+      ],
+      "narration_span": "但它拿着回答“订单款项去哪儿”的那句话，回答了我“服务费退不退”的问题。",
+      "dramatic_refs": [
+        "SC3.2_32_32"
+      ],
+      "visual_intention": {
+        "primary": "COMPARE_STATES",
+        "secondary": "CLARIFY_MECHANISM"
+      },
+      "shot_function_primary": "INSERT_OBJECT",
+      "subject_priority": "question facet vs evidence facet",
+      "staging_blocking": "One matched evidence frame puts 服务费 from the question beside 订单款项 from the cited line without pretending they are the same phrase.",
+      "framing_strategy": "minimal matched insert in story context",
+      "pov_strategy": "IP_POV",
+      "composition_strategy": "Two short phrases occupy comparable positions with different surrounding context.",
+      "eye_trace_in": "服务费",
+      "eye_trace_out": "订单款项",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "HIGH_MEDIUM",
+      "image_relation_grammar": "MATCHED_INSERT",
+      "visual_state": "The exact semantic mismatch becomes visible.",
+      "acceptance_criteria": [
+        "no giant conceptual labels",
+        "phrases remain sourced from story objects"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "scene_id": "SC4.1",
+      "paragraph_range": [
+        33,
+        38
+      ],
+      "narration_span": "就像我问一个人：\n\n“老板今天来不来？”\n\n他翻开通讯录，准确找到了老板那一页，然后特别自信地告诉我：\n\n“老板电话是 138……”\n\n资料没找错。\n\n答案还是没回答问题。",
+      "dramatic_refs": [
+        "SC4.1_33_38"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "METAPHOR_STATE",
+      "subject_priority": "phonebook analogy",
+      "staging_blocking": "A compact associative analogy: question asks whether boss comes today; person opens correct boss contact page and answers with phone number.",
+      "framing_strategy": "2–3 state associative montage, visually distinct but brief",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Keep same IP-like storyteller logic; do not build a separate elaborate universe.",
+      "eye_trace_in": "question",
+      "eye_trace_out": "phone number answer",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "MEDIUM_COMIC",
+      "image_relation_grammar": "ASSOCIATIVE_MONTAGE",
+      "visual_state": "Correct record + wrong facet becomes intuitive.",
+      "acceptance_criteria": [
+        "analogy short",
+        "老板电话 not treated as real personal data",
+        "returns quickly to main story"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S013",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "paragraph_range": [
+        39,
+        42
+      ],
+      "narration_span": "我后来又试了一次。\n\n这次没问它“答案是什么”。\n\n我只问：\n\n“你引用的网页里，哪一句话明确说明服务费会退？”",
+      "dramatic_refs": [
+        "SC5.1_39_42"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "NOTICE_OBJECT"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "evidence challenge query",
+      "staging_blocking": "Back at the same desk, IP asks not for the answer but for the exact sentence that explicitly says the service fee will be refunded.",
+      "framing_strategy": "medium two-shot/interface relation",
+      "pov_strategy": "OBSERVER_EYE_LEVEL",
+      "composition_strategy": "New question emphasizes 哪一句 and 服务费 while official page remains available.",
+      "eye_trace_in": "phonebook analogy exit",
+      "eye_trace_out": "new evidence question",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Strategy changes from conclusion-seeking to evidence-seeking.",
+      "acceptance_criteria": [
+        "same story world",
+        "question concise"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S014",
+      "sequence_id": "SEQ5",
+      "scene_id": "SC5.1",
+      "paragraph_range": [
+        43,
+        44
+      ],
+      "narration_span": "它重新看了一遍。\n\n然后答案变了。",
+      "dramatic_refs": [
+        "SC5.1_43_44"
+      ],
+      "visual_intention": {
+        "primary": "SEE_CONSEQUENCE",
+        "secondary": "EXPERIENCE_REVERSAL"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "AI rechecks and changes answer",
+      "staging_blocking": "AI answer pane changes after re-examining the same official page; IP sees the conclusion reverse.",
+      "framing_strategy": "matched answer-pane before/after",
+      "pov_strategy": "IP_POV",
+      "composition_strategy": "Same interface geometry, changed conclusion state.",
+      "eye_trace_in": "evidence question",
+      "eye_trace_out": "changed answer",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "RELEASE_MEDIUM",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "The new verification strategy produces a different conclusion without changing the source page.",
+      "acceptance_criteria": [
+        "source remains same",
+        "answer change clear",
+        "no magical glow"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S015",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "paragraph_range": [
+        45,
+        46
+      ],
+      "narration_span": "因为“搜到网页”和“用对网页里的证据”，其实是两件事。\n\n搜索做的，是把可能有用的资料拿回来。",
+      "dramatic_refs": [
+        "SC6.1_45_46"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "CLARIFY",
+      "subject_priority": "retrieval vs evidence use",
+      "staging_blocking": "IP places the same official page on the desk, then traces from page to the particular sentence actually supporting the question.",
+      "framing_strategy": "medium object relation",
+      "pov_strategy": "OBSERVER_EYE_LEVEL",
+      "composition_strategy": "Page is one object; selected evidence is a smaller focal region inside it.",
+      "eye_trace_in": "whole page",
+      "eye_trace_out": "supporting line",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "'找回来' and '用对证据' are differentiated through scale of attention, not boxes.",
+      "acceptance_criteria": [
+        "no pipeline diagram",
+        "same page reused"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S016",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.1",
+      "paragraph_range": [
+        47,
+        51
+      ],
+      "narration_span": "但资料回来以后，模型还得判断：\n\n哪一句跟你的问题真正对应。\n\n哪些只是看起来很像。\n\n有没有例外。\n\n几句话放在一起以后，结论到底是什么。",
+      "dramatic_refs": [
+        "SC6.1_47_51"
+      ],
+      "visual_intention": {
+        "primary": "CLARIFY_MECHANISM",
+        "secondary": "BUILD_PATTERN"
+      },
+      "shot_function_primary": "MONTAGE_STEP",
+      "subject_priority": "evidence integration tasks",
+      "staging_blocking": "A compact evidence-reading sequence shows four concerns inside the same page/question workspace: correspondence, misleading similarity, exception, combined conclusion.",
+      "framing_strategy": "one coherent investigation montage, not one card per clause",
+      "pov_strategy": "OBSERVER_WITH_POV",
+      "composition_strategy": "Question and page stay fixed; highlight/focal relation changes only when meaning changes.",
+      "eye_trace_in": "question phrase",
+      "eye_trace_out": "final integrated evidence",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "MONTAGE",
+      "visual_state": "Generation still needs to use evidence correctly after retrieval.",
+      "acceptance_criteria": [
+        "anti-montage-inflation",
+        "no claim model literally reads linearly",
+        "all four concerns can share 2–3 beats later"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S017",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.2",
+      "paragraph_range": [
+        52,
+        56
+      ],
+      "narration_span": "这一步如果错了，就会出现一种特别有迷惑性的答案：\n\n来源是真的。\n\n链接也是真的。\n\n甚至引用的句子也是真的。\n\n只有最后那个结论，是错的。",
+      "dramatic_refs": [
+        "SC6.2_52_56"
+      ],
+      "visual_intention": {
+        "primary": "BUILD_PATTERN",
+        "secondary": "LAND_PAYOFF"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "true-source / true-link / true-quote / wrong-conclusion stack",
+      "staging_blocking": "Same answer package is deconstructed: source valid, link valid, quote valid—yet conclusion mismatches the question.",
+      "framing_strategy": "progressive evidence-object reveal",
+      "pov_strategy": "OBSERVER",
+      "composition_strategy": "Keep one answer package on screen; validation marks accumulate around components, then final conclusion remains isolated as wrong.",
+      "eye_trace_in": "source/link/quote",
+      "eye_trace_out": "final conclusion",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "MEDIUM",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "The dangerous error feels trustworthy because many surrounding components are real.",
+      "acceptance_criteria": [
+        "not a checklist slide",
+        "one object package evolves",
+        "final contradiction clear"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "paragraph_range": [
+        57,
+        61
+      ],
+      "narration_span": "所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。\n\n如果答案不重要，我当然也不会每次都去查。\n\n但如果这件事真的会让我花钱、改方案，或者做一个很难撤回来的决定，\n\n我会多问一句：\n\n“这个来源里的哪句话，真的支持你的结论？”",
+      "dramatic_refs": [
+        "SC6.3_57_61"
+      ],
+      "visual_intention": {
+        "primary": "FOLLOW_ACTION",
+        "secondary": "FEEL_RELATION"
+      },
+      "shot_function_primary": "ACTION",
+      "subject_priority": "new verification rule with risk boundary",
+      "staging_blocking": "IP uses ordinary AI answers casually, but for money/plan/irreversible decisions pauses and asks which exact source sentence supports the conclusion.",
+      "framing_strategy": "medium action contrast at same desk",
+      "pov_strategy": "OBSERVER_EYE_LEVEL",
+      "composition_strategy": "Low-stakes state passes; high-stakes state stops at verification action.",
+      "eye_trace_in": "ordinary answer",
+      "eye_trace_out": "verification question",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "LOW_MEDIUM",
+      "image_relation_grammar": "CONTRAST",
+      "visual_state": "Method remains proportional rather than turning into 'verify everything'.",
+      "acceptance_criteria": [
+        "risk boundary clear",
+        "no numbered tips card"
+      ]
+    },
+    {
+      "semantic_shot_id": "SRCH_S019",
+      "sequence_id": "SEQ6",
+      "scene_id": "SC6.3",
+      "paragraph_range": [
+        62,
+        63
+      ],
+      "narration_span": "因为 AI 搜索最容易让我放松警惕的地方，可能恰恰就是——\n\n它真的给我找对了网页。",
+      "dramatic_refs": [
+        "SC6.3_62_63"
+      ],
+      "visual_intention": {
+        "primary": "LAND_PAYOFF",
+        "secondary": "COMPARE_STATES"
+      },
+      "shot_function_primary": "PAYOFF",
+      "subject_priority": "official source callback",
+      "staging_blocking": "Return to the original official-source cue; this time IP clicks it before accepting the answer.",
+      "framing_strategy": "medium-close callback matching opening composition",
+      "pov_strategy": "OBSERVER_EYE_LEVEL",
+      "composition_strategy": "Opening frame is echoed, but behavior has changed.",
+      "eye_trace_in": "official source cue",
+      "eye_trace_out": "click/action",
+      "screen_direction": "STABLE_DESK_AXIS_WHEN_CONTINUITY_APPLIES",
+      "visual_intensity": "RELEASE",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_state": "Final meaning is proven by changed behavior: the correct webpage can still require evidence checking.",
+      "acceptance_criteria": [
+        "callback to S001",
+        "no final slogan card",
+        "hold can breathe"
+      ]
+    }
+  ],
+  "coverage_validation": {
+    "status": "FAIL",
+    "script_len": 789,
+    "plan_len": 819
+  }
+}
