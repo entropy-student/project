@@ -246,3 +246,28 @@ No script, image, video, or Antigravity execution was accepted as part of G2.
 - Automation has not been enabled.
 - G3 remains blocked pending Owner review.
 
+
+---
+
+## G2.5 Owner Acceptance + Automation Enablement
+
+- Date: 2026-09-20
+- Owner accepted Topic Operating System.
+- Reviewer decision: PASS.
+- Daily Topic Radar scheduled task: ENABLED.
+- Timezone: Asia/Shanghai.
+- Cadence: daily, flexible morning window around 08:00.
+- Rolling planning horizon: 7 days.
+- GitHub owner view: `topic-ledger/calendar/YYYY-MM.md`.
+- Initial 2026-09 rolling calendar seeded with 2026-09-21 through 2026-09-27 planned topics.
+- Hot candidates may replace only `planned` slots.
+- `locked` / `published` slots are immutable to the daily radar.
+- Automatic publishing remains forbidden.
+
+### Result
+
+```text
+PASS_G2_5_TOPIC_SUPPLY_LEDGER_DEDUP
+DAILY_TOPIC_RADAR_ENABLED
+READY_FOR_G3
+```
