@@ -12,17 +12,15 @@
 4. Add `editorial_mode` to every planned slot:
    - STORY_MODEL
    - STORY_ACTION
-   - STORY_TUTORIAL
 5. Initial seven-day portfolio target:
-   - 4 STORY_MODEL
-   - 2 STORY_ACTION
-   - 1 STORY_TUTORIAL / real experiment.
+   - 5 STORY_MODEL
+   - 2 STORY_ACTION.
 6. A qualified HOT topic may override any unlocked slot regardless of mode; the displaced Evergreen returns to the bank.
 7. Do not force the weekly ratio when good candidates are missing. Quality gates outrank quota.
 8. Suggested duration is routed by mode:
    - HOT: 3–5 min;
    - standard STORY_MODEL: 4–6 min;
-   - STORY_ACTION / STORY_TUTORIAL: 5–8 min.
+   - STORY_ACTION: normally 3–5 min; may exceed when the story genuinely requires it.
 9. Calendar should show:
    Date / Topic / Lane / Business Job / Editorial Mode / Target Duration / Status / Notes.
 10. Daily Radar still does **not** publish, enter G4+, or claim production throughput.
