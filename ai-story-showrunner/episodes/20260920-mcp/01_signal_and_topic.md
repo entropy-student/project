@@ -1,8 +1,8 @@
-# 01 — MCP Signal & TopicOpportunity
+# DRAFT — 01 — MCP Signal & TopicOpportunity
 
 ## Status
 
-`TOPIC_GATE = PASS`
+`TOPIC_GATE = DRAFT_HOLD_NOT_ACCEPTED`
 
 ## Signal
 
