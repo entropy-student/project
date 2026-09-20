@@ -24,57 +24,153 @@
     "uncertainties"
   ],
   "properties": {
-    "topic_id": {"type": "string", "minLength": 1},
-    "signal": {"type": "string", "minLength": 1},
-    "why_now": {"type": "string", "minLength": 1},
-    "human_problem": {"type": "string", "minLength": 1},
-    "human_stakes": {"type": "string", "minLength": 1},
-    "ai_mechanism": {"type": "string", "minLength": 1},
-    "one_mechanism_only": {"type": "boolean"},
-    "curiosity_gap": {"type": "string", "minLength": 1},
-    "story_seed": {"type": "string", "minLength": 1},
-    "audience_payoff": {"type": "string", "minLength": 1},
-    "search_anchor": {"type": ["string", "null"]},
+    "topic_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "signal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "why_now": {
+      "type": "string",
+      "minLength": 1
+    },
+    "human_problem": {
+      "type": "string",
+      "minLength": 1
+    },
+    "human_stakes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ai_mechanism": {
+      "type": "string",
+      "minLength": 1
+    },
+    "one_mechanism_only": {
+      "type": "boolean"
+    },
+    "curiosity_gap": {
+      "type": "string",
+      "minLength": 1
+    },
+    "story_seed": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audience_payoff": {
+      "type": "string",
+      "minLength": 1
+    },
+    "search_anchor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "primary_content_job": {
       "type": "string",
-      "enum": ["DISCOVERY", "TRUST", "SOLUTION"]
+      "enum": [
+        "DISCOVERY",
+        "TRUST",
+        "SOLUTION"
+      ]
     },
     "secondary_content_job": {
-      "type": ["string", "null"],
-      "enum": ["DISCOVERY", "TRUST", "SOLUTION", null]
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "DISCOVERY",
+        "TRUST",
+        "SOLUTION",
+        null
+      ]
     },
     "conversion_adjacency": {
       "type": "string",
-      "enum": ["NONE", "LOW", "MEDIUM", "HIGH", "UNKNOWN"]
+      "enum": [
+        "NONE",
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "UNKNOWN"
+      ]
     },
-    "conversion_path_hypothesis": {"type": ["string", "null"]},
+    "conversion_path_hypothesis": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "visual_storyability": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status", "reason"],
+      "required": [
+        "status",
+        "reason"
+      ],
       "properties": {
-        "status": {"type": "string", "enum": ["PASS", "RETURN"]},
-        "reason": {"type": "string", "minLength": 1}
+        "status": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "novelty_vs_history": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status", "reason"],
+      "required": [
+        "status",
+        "reason"
+      ],
       "properties": {
-        "status": {"type": "string", "enum": ["NEW", "REVISIT_ALLOWED", "TOO_SIMILAR", "UNKNOWN"]},
-        "reason": {"type": "string", "minLength": 1}
+        "status": {
+          "type": "string",
+          "enum": [
+            "NEW",
+            "REVISIT_ALLOWED",
+            "TOO_SIMILAR",
+            "UNKNOWN"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "repetition_risk": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["level", "repeated_elements"],
+      "required": [
+        "level",
+        "repeated_elements"
+      ],
       "properties": {
-        "level": {"type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"]},
+        "level": {
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "UNKNOWN"
+          ]
+        },
         "repeated_elements": {
           "type": "array",
-          "items": {"type": "string"}
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -82,25 +178,99 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "human_relevance": {"type": "string", "enum": ["PASS", "RETURN"]},
-        "mechanism_integrity": {"type": "string", "enum": ["PASS", "RETURN"]},
-        "storyability": {"type": "string", "enum": ["PASS", "RETURN"]},
-        "one_mechanism": {"type": "string", "enum": ["PASS", "RETURN"]},
-        "non_trivial_payoff": {"type": "string", "enum": ["PASS", "RETURN"]}
+        "human_relevance": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN"
+          ]
+        },
+        "mechanism_integrity": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN"
+          ]
+        },
+        "storyability": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN"
+          ]
+        },
+        "one_mechanism": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN"
+          ]
+        },
+        "non_trivial_payoff": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN"
+          ]
+        }
       }
     },
     "source_refs": {
       "type": "array",
       "minItems": 1,
-      "items": {"type": "string"}
+      "items": {
+        "type": "string"
+      }
     },
     "uncertainties": {
       "type": "array",
-      "items": {"type": "string"}
+      "items": {
+        "type": "string"
+      }
     },
     "risks": {
       "type": "array",
-      "items": {"type": "string"}
+      "items": {
+        "type": "string"
+      }
+    },
+    "editorial_mode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "STORY_MODEL",
+        "STORY_ACTION",
+        "STORY_TUTORIAL",
+        null
+      ]
+    },
+    "actionability": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reason"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "NATURAL",
+            "OPTIONAL",
+            "FORCED",
+            "UNKNOWN"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
     }
   }
 }
