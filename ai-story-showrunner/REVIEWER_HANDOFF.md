@@ -387,3 +387,26 @@ Hard state:
 `G3R = HOLD`
 `OPEN_QUESTIONS = 2`
 `G4 = BLOCKED`
+
+## G3R Narrative Style Alignment + Smoke Test
+
+Owner response to the narrative/viewpoint review: **strongly aligned**, but overall G3R remains HOLD because one additional editorial issue is still pending.
+
+New candidate contract:
+- `docs/NARRATIVE_STYLE_CONTRACT.md`
+
+Three added safeguards:
+1. Controlling Question before thesis;
+2. Idea vs Counter-Idea;
+3. Lightness Guard — McKee structure must remain invisible on the surface.
+
+Narrative smoke test:
+- `episodes/20260920-agent/G3R_narrative_test_v1.md`
+- review: `episodes/20260920-agent/G3R_narrative_test_review_v1.md`
+- status: PASS_CANDIDATE / OWNER REVIEW
+
+No G4 work started.
+
+Current:
+`G3R HOLD / 1 OPEN OWNER QUESTION / G4 BLOCKED`.
+
