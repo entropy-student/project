@@ -6,6 +6,14 @@
 
 该任务是 Editorial Planner，不是 Publisher。
 
+## Schedule
+
+- Enabled: YES
+- Timezone: Asia/Shanghai
+- Cadence: Daily
+- Preferred run window: morning, around 08:00
+- Owner-facing schedule: `topic-ledger/calendar/YYYY-MM.md`
+
 ## Canonical Inputs
 
 - `docs/TOPIC_OPERATING_SYSTEM.md`
@@ -39,7 +47,6 @@
 ## Hot Override Rule
 
 热点只能抢占 `planned`，不能抢占：
-
 - `locked`
 - `published`
 - 当天已经进入制作的 episode
@@ -50,17 +57,13 @@
 
 ## Rolling Horizon
 
-默认维持：
-
-`today + next 6 calendar days`
+默认维持 `today + next 6 calendar days`。
 
 不是要求每天都必须发布；这是候选生产排期。未来如果账号实际发布频率改变，只改 Calendar Cadence，不改 Topic Radar 核心。
 
 ## Output Minimum
 
 每日 GitHub 必须可见：
-
-### Daily Snapshot
 - Hot signals
 - Candidate shortlist
 - Duplicate matches
@@ -69,7 +72,8 @@
 - Evergreen fallback
 - Evidence refs
 
-### Calendar
+Calendar schema:
+
 | Date | Topic | Lane | Content Job | Status | Why Now / Human Problem | Notes |
 
 ## Safety / Governance
