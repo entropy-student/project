@@ -127,6 +127,7 @@
       "STORY_ACTION": 2,
       "STORY_TUTORIAL": 1
     },
-    "live_daily_automation": "UNCHANGED_UNTIL_OWNER_PASS"
+    "live_daily_automation": "UNCHANGED_UNTIL_OWNER_PASS",
+    "season0_plan": "docs/SEASON0_21_DAY_PLAN.md"
   }
 }
