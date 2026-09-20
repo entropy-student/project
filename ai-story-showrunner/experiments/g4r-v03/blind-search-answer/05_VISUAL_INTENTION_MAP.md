@@ -11,7 +11,7 @@
 | SRCH_S007 | SEQ2 | 19–20 | NOTICE_OBJECT | SHARE_POV | INSERT_OBJECT | This is the true sentence the AI overgeneralized from. |
 | SRCH_S008 | SEQ2 | 21–22 | EXPERIENCE_REVERSAL | NOTICE_OBJECT | REVEAL | Contradiction is discovered through eye movement on the same correct source. |
 | SRCH_S009 | SEQ2 | 23–27 | READ_REACTION | COMPARE_STATES | REVERSAL | The story's central Gap becomes visible without explanation. |
-| SRCH_S010 | SEQ3 | 28–32 | CLARIFY_MECHANISM | COMPARE_STATES | CLARIFY | Error is localized away from retrieval/source identity and toward evidence-question alignment. |
+| SRCH_S010 | SEQ3 | 28–31 | CLARIFY_MECHANISM | COMPARE_STATES | CLARIFY | Error is localized away from retrieval/source identity and toward evidence-question alignment. |
 | SRCH_S011 | SEQ3 | 32–32 | COMPARE_STATES | CLARIFY_MECHANISM | INSERT_OBJECT | The exact semantic mismatch becomes visible. |
 | SRCH_S012 | SEQ4 | 33–38 | CLARIFY_MECHANISM | LAND_PAYOFF | METAPHOR_STATE | Correct record + wrong facet becomes intuitive. |
 | SRCH_S013 | SEQ5 | 39–42 | FOLLOW_ACTION | NOTICE_OBJECT | ACTION | Strategy changes from conclusion-seeking to evidence-seeking. |
