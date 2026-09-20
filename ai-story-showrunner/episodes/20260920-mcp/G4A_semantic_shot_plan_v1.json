@@ -1,0 +1,1513 @@
+{
+  "episode_id": "20260920-mcp",
+  "source_script": "episodes/20260920-mcp/G3R_narrative_test_v1.md",
+  "source_knowledge": "episodes/20260920-mcp/02_knowledge_core.md",
+  "gate": "G4A1",
+  "status": "PASS_CANDIDATE",
+  "timing_mode": "SEMANTIC_ONLY",
+  "narrative_engine": "REPEATED_INTEGRATION_FRICTION",
+  "semantic_shot_count": 44,
+  "characters": [
+    "CHAR_IP_001",
+    "CHAR_AI_001"
+  ],
+  "scenes": [
+    "SCENE_OFFICE_HUB_001",
+    "SCENE_OFFICE_HALL_001",
+    "SCENE_INVENTORY_001",
+    "SCENE_FINANCE_001",
+    "SCENE_CONTRACT_001"
+  ],
+  "shots": [
+    {
+      "semantic_shot_id": "MCP_S001",
+      "narration_span": "我本来是想招个 AI 替我干活。第三天以后，我成了它的入职培训老师。",
+      "story_function": "HOOK / ironic reversal",
+      "visual_state": "IP stands with training clipboard while AI partner waits like a new employee.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HUB_001",
+      "action": "IP holds onboarding notes instead of delegating work.",
+      "expression": "deadpan",
+      "composition": "medium two-shot",
+      "camera_angle": "front 3/4",
+      "image_intent": "Open on the role reversal, not the technology.",
+      "continuity_role": "ESTABLISH",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S002",
+      "narration_span": "第一天，我让它帮我查库存。",
+      "story_function": "first task",
+      "visual_state": "IP points AI partner toward the inventory department.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP sends AI toward inventory door.",
+      "expression": "hopeful",
+      "composition": "medium-wide",
+      "camera_angle": "side 3/4",
+      "image_intent": "Start first concrete department task.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S003",
+      "narration_span": "它问我：“库存在哪？”我说：“后台。”",
+      "story_function": "first friction",
+      "visual_state": "AI partner stops before several back-office doors and turns back to IP.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI points at multiple possible doors.",
+      "expression": "questioning",
+      "composition": "medium two-shot",
+      "camera_angle": "front",
+      "image_intent": "Make 'where is backend' a spatial ambiguity.",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S004",
+      "narration_span": "“哪个后台？”“商品后台。”“怎么查？”",
+      "story_function": "friction deepens",
+      "visual_state": "AI reaches inventory door but still lacks the local way to operate it.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_INVENTORY_001",
+      "action": "AI looks at unfamiliar local controls beside the inventory door.",
+      "expression": "uncertain",
+      "composition": "medium",
+      "camera_angle": "front 3/4",
+      "image_intent": "Each answer reveals another local convention.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S005",
+      "narration_span": "……行。我教。点这里，进这里，搜商品名，再看剩余库存。",
+      "story_function": "manual onboarding",
+      "visual_state": "IP physically demonstrates inventory workflow step by step.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_INVENTORY_001",
+      "action": "IP guides AI through local inventory controls.",
+      "expression": "resigned",
+      "composition": "medium over-shoulder",
+      "camera_angle": "rear 3/4",
+      "image_intent": "Training is a visible sequence, not a checklist card.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S006",
+      "narration_span": "教完以后效果还不错。我心想可以。一个员工培训一次，后面不就省事了吗？",
+      "story_function": "false confidence",
+      "visual_state": "AI successfully checks inventory while IP relaxes with confidence.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_INVENTORY_001",
+      "action": "AI completes inventory lookup; IP steps back.",
+      "expression": "confident",
+      "composition": "medium two-shot",
+      "camera_angle": "side",
+      "image_intent": "Show why one-time training seems reasonable.",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S007",
+      "narration_span": "第二天，我让它看看昨天收了多少钱。",
+      "story_function": "second task",
+      "visual_state": "IP sends AI toward finance department with casual confidence.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP gestures toward finance door.",
+      "expression": "casual",
+      "composition": "medium-wide",
+      "camera_angle": "side",
+      "image_intent": "Repeat setup with a new department.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S008",
+      "narration_span": "它又问：“在哪看？”我说：“财务系统。”“哪个页面？”“账单。”“怎么进？”",
+      "story_function": "repeat friction",
+      "visual_state": "AI stands at finance door asking the same escalating questions again.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_FINANCE_001",
+      "action": "AI points between unfamiliar finance controls; IP answers each time.",
+      "expression": "questioning",
+      "composition": "medium two-shot",
+      "camera_angle": "front 3/4",
+      "image_intent": "Mirror day-one friction but with different local rules.",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S009",
+      "narration_span": "我看着它。有一种非常熟悉的不祥预感。",
+      "story_function": "reaction",
+      "visual_state": "IP stares silently at AI, recognizing the pattern.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_FINANCE_001",
+      "action": "IP pauses mid-answer.",
+      "expression": "contained dread",
+      "composition": "medium close-up",
+      "camera_angle": "front",
+      "image_intent": "Use gaze as subtext; no explanatory graphic.",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S010",
+      "narration_span": "又教了一遍。",
+      "story_function": "repeated onboarding",
+      "visual_state": "IP once again demonstrates department-specific controls.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_FINANCE_001",
+      "action": "IP trains AI on finance-specific workflow.",
+      "expression": "tired",
+      "composition": "medium",
+      "camera_angle": "side 3/4",
+      "image_intent": "Visually repeat training with different props.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S011",
+      "narration_span": "第三天我要它找一份合同。“合同在哪？”",
+      "story_function": "third task / repetition",
+      "visual_state": "At contract department door, AI turns back with the same question before entering.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_CONTRACT_001",
+      "action": "AI points at contract door; IP freezes.",
+      "expression": "AI innocent; IP exhausted",
+      "composition": "medium two-shot",
+      "camera_angle": "front",
+      "image_intent": "Third repetition makes the pattern undeniable.",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S012",
+      "narration_span": "我已经不想回答了。",
+      "story_function": "reaction",
+      "visual_state": "IP lowers head onto clipboard/desk edge instead of answering.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_CONTRACT_001",
+      "action": "IP gives up for a beat.",
+      "expression": "defeated",
+      "composition": "medium close-up",
+      "camera_angle": "front 3/4",
+      "image_intent": "Human reaction carries the joke.",
+      "continuity_role": "REACTION",
+      "transition_intent": "HOLD",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S013",
+      "narration_span": "库存有库存的入口。财务有财务的入口。合同有合同的入口。客服、邮件、项目管理……",
+      "story_function": "system friction montage",
+      "visual_state": "Different department doors each have visibly different handles, forms, and local controls.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI walks past multiple incompatible doors.",
+      "expression": "overwhelmed",
+      "composition": "wide hallway",
+      "camera_angle": "front perspective",
+      "image_intent": "Make integration diversity concrete through doors and local interfaces.",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S014",
+      "narration_span": "每多接一个东西，我就得重新给它发一份：《恭喜入职，这是本部门新员工须知》。",
+      "story_function": "recurring motif",
+      "visual_state": "IP hands AI yet another department-specific onboarding booklet.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP adds another manual to an already tall stack.",
+      "expression": "deadpan",
+      "composition": "medium",
+      "camera_angle": "front 3/4",
+      "image_intent": "Turn repeated integration work into accumulating onboarding manuals.",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S015",
+      "narration_span": "最离谱的是，这个 AI 明明什么都懂。你让它写代码，它会。让它分析合同，它也会。",
+      "story_function": "counter-idea / capability",
+      "visual_state": "AI effortlessly completes code and contract-analysis tasks at a desk.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HUB_001",
+      "action": "AI handles complex cognitive tasks confidently.",
+      "expression": "capable",
+      "composition": "medium-wide",
+      "camera_angle": "front 3/4",
+      "image_intent": "Show model intelligence is not the bottleneck.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S016",
+      "narration_span": "可一到真正干活的时候，它就站在门口问我：“门把手在哪？”",
+      "story_function": "core friction payoff",
+      "visual_state": "AI stands helplessly before a department door with an unfamiliar handle.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI points at weird door handle while IP watches.",
+      "expression": "AI puzzled; IP deadpan",
+      "composition": "medium two-shot",
+      "camera_angle": "front",
+      "image_intent": "Land the door-handle motif as the interoperability problem.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S017",
+      "narration_span": "后来我发现问题好像不全在它。主要是我这家公司每个部门都特别有个性。",
+      "story_function": "recognition begins",
+      "visual_state": "IP looks down a hallway where each department door follows a different design language.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP scans inconsistent doors.",
+      "expression": "reflective",
+      "composition": "wide",
+      "camera_angle": "rear 3/4",
+      "image_intent": "Shift blame from AI alone to interface heterogeneity.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S018",
+      "narration_span": "库存部：“进门先报商品编号。” 财务部：“我们这里只认账单 ID。”",
+      "story_function": "department dialects 1",
+      "visual_state": "Inventory and finance doors each display different local entry requirements.",
+      "character_ids": [
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI compares two incompatible department entry cards.",
+      "expression": "confused",
+      "composition": "medium-wide",
+      "camera_angle": "front",
+      "image_intent": "Concrete local schemas without becoming a protocol table.",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S019",
+      "narration_span": "合同部：“先告诉我文件路径。” 客服部：“我们的工单状态一共有十四种。”",
+      "story_function": "department dialects 2",
+      "visual_state": "Contract and support doors show their own different conventions.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI carries more local manuals; IP trails behind.",
+      "expression": "overloaded",
+      "composition": "medium-wide",
+      "camera_angle": "side",
+      "image_intent": "Continue heterogeneity with new real-world-style requirements.",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S020",
+      "narration_span": "我看了一圈。很好。AI 没疯。我快疯了。",
+      "story_function": "IP reaction payoff",
+      "visual_state": "IP stands center hallway surrounded by mismatched departments while AI waits calmly.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP rubs temples; AI remains neutral.",
+      "expression": "deadpan exhausted",
+      "composition": "wide",
+      "camera_angle": "front",
+      "image_intent": "Let environment prove the absurdity.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S021",
+      "narration_span": "我一开始想得很简单：那我就给它全部学会。",
+      "story_function": "false solution",
+      "visual_state": "IP opens a huge master training binder labeled only with neutral tabs, ready to teach everything.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HUB_001",
+      "action": "IP places giant training binder on desk.",
+      "expression": "determined",
+      "composition": "medium two-shot",
+      "camera_angle": "front 3/4",
+      "image_intent": "False solution is more training, not standardization.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S022",
+      "narration_span": "库存培训一次。财务培训一次。合同培训一次。",
+      "story_function": "training montage",
+      "visual_state": "AI cycles through three department-specific training sessions with growing manual stack.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP repeatedly trains AI at three doors.",
+      "expression": "busy",
+      "composition": "wide montage state",
+      "camera_angle": "front",
+      "image_intent": "Compress repetitive training while preserving the pattern.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S023",
+      "narration_span": "再来个新软件？再培训一次。",
+      "story_function": "false solution breaks",
+      "visual_state": "A brand-new unfamiliar door appears at end of hallway; IP automatically reaches for another manual.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "New door appears; IP sighs and opens blank training notebook.",
+      "expression": "resigned",
+      "composition": "medium-wide",
+      "camera_angle": "front perspective",
+      "image_intent": "Show that manual onboarding scales poorly.",
+      "continuity_role": "REVERSAL",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S024",
+      "narration_span": "理论上没有问题。只要我这辈子不再安装任何软件。",
+      "story_function": "comic consequence",
+      "visual_state": "IP looks at a locked software-install box as if banning all future tools.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HUB_001",
+      "action": "IP places a ridiculous 'no new software' cover over install button/device shelf.",
+      "expression": "dry irony",
+      "composition": "medium",
+      "camera_angle": "front",
+      "image_intent": "Make the impossible assumption tangible.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S025",
+      "narration_span": "后来有一天，我突然换了个想法。",
+      "story_function": "new strategy begins",
+      "visual_state": "IP stops mid-training and looks at the department doors themselves.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP closes training binder and studies the doors.",
+      "expression": "curious",
+      "composition": "medium",
+      "camera_angle": "side 3/4",
+      "image_intent": "Pivot attention from training AI to standardizing how departments present themselves.",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S026",
+      "narration_span": "既然每个部门都要跟这个 AI 打交道，为什么一定要让 AI 每次重新学一套暗号？",
+      "story_function": "controlling question",
+      "visual_state": "IP watches AI compare incompatible door instructions, then questions the setup.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP points from one weird door sign to another.",
+      "expression": "questioning",
+      "composition": "medium-wide",
+      "camera_angle": "front",
+      "image_intent": "Make the question arise from visible repeated friction.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S027",
+      "narration_span": "能不能让这些部门，至少在门口挂一块差不多格式的牌子？",
+      "story_function": "standardization proposal",
+      "visual_state": "IP sketches a simple uniform service placard and places it beside one department door.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP mounts first standardized placard beside a door.",
+      "expression": "practical",
+      "composition": "medium",
+      "camera_angle": "front 3/4",
+      "image_intent": "Introduce common interface as a physical door placard, not an architecture layer.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S028",
+      "narration_span": "比如：我是谁。我能帮你做什么。你要怎么叫我。",
+      "story_function": "placard structure",
+      "visual_state": "Close view of a simple three-part service placard with concise labels, not a full protocol spec.",
+      "character_ids": [
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI reads three concise fields on placard.",
+      "expression": "attentive",
+      "composition": "close insert",
+      "camera_angle": "straight-on",
+      "image_intent": "Use minimal readable structure only because the sign is a story object.",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S029",
+      "narration_span": "库存把“查库存”挂出来。财务把“查账单”挂出来。文件系统把“读文件”挂出来。",
+      "story_function": "standardization across systems",
+      "visual_state": "Three different departments keep their unique interiors but present comparable-format placards outside.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI walks past three consistent-format placards.",
+      "expression": "interested",
+      "composition": "wide hallway",
+      "camera_angle": "front perspective",
+      "image_intent": "Show standardized description without pretending business functions become identical.",
+      "continuity_role": "METAPHOR",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S030",
+      "narration_span": "AI 到一个新地方，不用先拉着我培训半天。先看牌子。",
+      "story_function": "discovery behavior",
+      "visual_state": "AI reaches a new door, reads placard first, while IP remains seated far away.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI reads service placard instead of calling IP.",
+      "expression": "self-sufficient",
+      "composition": "medium-wide",
+      "camera_angle": "side",
+      "image_intent": "Show discovery replacing manual onboarding.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S031",
+      "narration_span": "知道这里有哪些东西能用。",
+      "story_function": "capability discovery",
+      "visual_state": "AI identifies available local capabilities from the placard and selects one.",
+      "character_ids": [
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI points to one offered capability.",
+      "expression": "focused",
+      "composition": "medium insert",
+      "camera_angle": "front 3/4",
+      "image_intent": "Represent discoverable capabilities through the physical story prop.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S032",
+      "narration_span": "需要哪一个，再按约定的方式去调用。",
+      "story_function": "standardized invocation",
+      "visual_state": "AI uses the indicated department entry/control method without IP retraining.",
+      "character_ids": [
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI follows placard instructions and accesses department service.",
+      "expression": "confident",
+      "composition": "medium",
+      "camera_angle": "side 3/4",
+      "image_intent": "Show common protocol behavior while preserving department-specific function.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S033",
+      "narration_span": "第一次把这套东西接起来以后，我最大的感受其实不是：“哇，AI 又变聪明了。”",
+      "story_function": "counter-idea setup",
+      "visual_state": "AI works through a department smoothly; IP watches without any magical transformation.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HUB_001",
+      "action": "AI remains visually the same while workflow friction disappears.",
+      "expression": "IP reflective",
+      "composition": "medium two-shot",
+      "camera_angle": "front",
+      "image_intent": "Block the misconception that MCP makes the model smarter.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S034",
+      "narration_span": "它压根没突然变聪明。变的是我终于不用每去一个部门，就重新给它办一次入职。",
+      "story_function": "human payoff",
+      "visual_state": "IP sits with unused stack of onboarding manuals while AI moves between departments independently.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP sets manuals aside; AI continues working.",
+      "expression": "relieved",
+      "composition": "wide",
+      "camera_angle": "front perspective",
+      "image_intent": "Show interoperability payoff as removal of repetitive integration labor.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S035",
+      "narration_span": "也是到这里，我才真正理解 MCP 这种东西到底在解决什么。",
+      "story_function": "term reveal",
+      "visual_state": "The same standardized placards and AI behavior remain on screen as the term MCP is introduced in subtitle only.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP observes the now-consistent interaction pattern.",
+      "expression": "reflective",
+      "composition": "medium-wide",
+      "camera_angle": "front 3/4",
+      "image_intent": "Reveal the term after intuition, without a new explainer scene.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S036",
+      "narration_span": "它不是给 AI 再加一个更聪明的大脑。",
+      "story_function": "misconception block 1",
+      "visual_state": "AI's head/appearance remains unchanged before and after; only access pattern differs.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HUB_001",
+      "action": "IP taps AI's unchanged head, then points toward standardized doors.",
+      "expression": "wry",
+      "composition": "medium",
+      "camera_angle": "front",
+      "image_intent": "Reject intelligence-upgrade interpretation through character action.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S037",
+      "narration_span": "也不是给所有软件装一个万能遥控器。",
+      "story_function": "misconception block 2",
+      "visual_state": "Different departments still have different services and interiors; no universal remote exists.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI uses different capabilities behind same-format placards.",
+      "expression": "neutral",
+      "composition": "wide",
+      "camera_angle": "front",
+      "image_intent": "Show standardized protocol does not erase business differences.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S038",
+      "narration_span": "更像是让 AI 应用和外面的系统之间，终于有了一种比较统一的见面方式。",
+      "story_function": "mechanism compression",
+      "visual_state": "AI arrives at multiple distinct doors and repeats the same basic read-discover-connect ritual.",
+      "character_ids": [
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI follows the same meeting ritual at different doors.",
+      "expression": "confident",
+      "composition": "wide sequence state",
+      "camera_angle": "side perspective",
+      "image_intent": "Embodied standardized interaction instead of protocol diagram.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S039",
+      "narration_span": "外部系统可以告诉它：“我这里有什么工具。”“有什么资源。”“你可以怎么用。”",
+      "story_function": "server capability description",
+      "visual_state": "A department placard exposes concise categories for tools/resources/how-to-use while keeping unique local content.",
+      "character_ids": [
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI reads capability categories from placard.",
+      "expression": "attentive",
+      "composition": "close-medium",
+      "camera_angle": "front 3/4",
+      "image_intent": "Represent tools/resources as discoverable offerings, not floating boxes.",
+      "continuity_role": "INSERT",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S040",
+      "narration_span": "AI 这一边再按这套方式去发现、连接和使用。",
+      "story_function": "client behavior",
+      "visual_state": "AI moves from reading placard to using the selected department capability.",
+      "character_ids": [
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI discovers, enters, and uses a service in one continuous spatial action.",
+      "expression": "focused",
+      "composition": "medium-wide",
+      "camera_angle": "side",
+      "image_intent": "Close the mechanism through behavior.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S041",
+      "narration_span": "所以现在别人再跟我说：“这个 AI 已经很聪明了，为什么还要 MCP？”",
+      "story_function": "final question setup",
+      "visual_state": "IP hears the question while watching competent AI pause at another new door.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP glances toward AI at new doorway.",
+      "expression": "knowing",
+      "composition": "medium two-shot",
+      "camera_angle": "front 3/4",
+      "image_intent": "Return to original human confusion.",
+      "continuity_role": "CONTINUE",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S042",
+      "narration_span": "我第一反应已经不是解释协议了。我只会想到那几天。",
+      "story_function": "memory callback",
+      "visual_state": "IP looks at the old stack of onboarding manuals from earlier days.",
+      "character_ids": [
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HUB_001",
+      "action": "IP flips through old department training manuals.",
+      "expression": "wry",
+      "composition": "medium",
+      "camera_angle": "front",
+      "image_intent": "Bring story memory back before final line.",
+      "continuity_role": "REACTION",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S043",
+      "narration_span": "一个什么都会的员工，每天站在不同部门门口。",
+      "story_function": "final image setup",
+      "visual_state": "AI stands in hallway between many department doors, capable but waiting.",
+      "character_ids": [
+        "CHAR_AI_001",
+        "CHAR_IP_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "AI pauses at a door while IP approaches from distance.",
+      "expression": "patient",
+      "composition": "wide",
+      "camera_angle": "front perspective",
+      "image_intent": "Return to recurring employee/door motif.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "CUT",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    },
+    {
+      "semantic_shot_id": "MCP_S044",
+      "narration_span": "等着我过去告诉它——门把手，到底在哪。",
+      "story_function": "final payoff",
+      "visual_state": "Close on IP arriving to point at the odd door handle, mirroring the early friction.",
+      "character_ids": [
+        "CHAR_IP_001",
+        "CHAR_AI_001"
+      ],
+      "scene_id": "SCENE_OFFICE_HALL_001",
+      "action": "IP points at handle; AI looks from handle to IP.",
+      "expression": "calm comic resignation",
+      "composition": "medium close two-shot",
+      "camera_angle": "front 3/4",
+      "image_intent": "End on the concrete recurring friction, not a definition card.",
+      "continuity_role": "PAYOFF",
+      "transition_intent": "HOLD",
+      "subtitle_intent": null,
+      "visual_forbidden": [
+        "no PPT slide",
+        "no architecture diagram",
+        "no floating protocol arrows",
+        "no generic robot",
+        "no dense explanatory text",
+        "no vendor logos"
+      ],
+      "acceptance_criteria": [
+        "preserve recurring IP and AI partner identity",
+        "preserve department-door continuity",
+        "visual state must advance friction, standardization, or payoff"
+      ],
+      "planning_duration_hint_sec": null,
+      "notes": null
+    }
+  ],
+  "schema_validation": {
+    "status": "PASS",
+    "checked_at": "2026-09-20",
+    "issue_count": 0
+  }
+}
