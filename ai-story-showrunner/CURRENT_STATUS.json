@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_IN_PROGRESS_G5C_44_ROWS_COMPILED_PILOT_READY",
+  "project_state": "G5_IN_PROGRESS_G5B5_ACQUISITION_REVIEW_PASS_G5C_PILOT_READY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "G4 PASS. G5A/B complete. G5C 44 rows compiled and structurally validated. Next: 8-image high-risk pilot generation/QA.",
+  "owner_review_scope": "G5B.5 acquisition review completed: keep current simplified narrative comic as Control, reduce complexity 15–25%, test ultra-simple line/cartoon as Challenger. G5C pilot remains next.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -330,7 +330,18 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Generate and review 8 high-risk pilot images before full 44-image batch."
+      "next": "Generate high-risk Pilot using Control; include a small paired Control-vs-Challenger style test before full style scale."
+    },
+    "phase_b_5": {
+      "name": "Visual Acquisition Review",
+      "status": "PASS_KEEP_ITERATE",
+      "contract": "docs/VISUAL_ACQUISITION_REVIEW_GATE.md",
+      "framework_source": "entropy-student/spike.skill/acquisition-growth-radar/SKILL.md",
+      "control": "SIMPLIFIED_FLAT_NARRATIVE_COMIC",
+      "challenger": "ULTRA_SIMPLE_NARRATIVE_LINE_CARTOON",
+      "decision": "KEEP + ITERATE",
+      "control_adjustment": "Reduce per-frame visual micro-complexity approximately 15–25%; keep recurring IP and story-world identity.",
+      "evidence_limit": "Real audience attention/trust/retention evidence is not yet available; long-term SCALE prohibited."
     }
   }
 }
