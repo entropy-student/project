@@ -581,3 +581,29 @@ Conflict shape, humor, metaphor and climax must remain topic-dependent.
 Current:
 `G3R HOLD / READY FOR OWNER PASS DECISION / G4 BLOCKED`.
 
+## 22. Final Copywriting Patch Integration + Three-Case Test — 2026-09-20
+
+Owner approved formal project-space integration of the latest writing patch.
+
+Narrative Style Contract advanced to v0.3.
+Writer Quality Contract advanced to v0.4.
+
+New rules:
+- Hook strength classification;
+- event-driven vs metaphor-driven narrative engines;
+- technical definition compression;
+- semantic formatting / rhythm.
+
+Three-case editorial validation:
+- Agent: 91/100;
+- Context / Memory: 92/100;
+- MCP: 90/100.
+
+Key conclusion:
+The framework is not tied to one plot template. The stable unit is causal character movement under an AI mechanism; the surface engine can vary by topic.
+
+No open editorial questions remain.
+
+Governance remains intentionally unchanged until explicit Owner gate decision:
+`G3R HOLD / READY FOR OWNER PASS / G4 BLOCKED`.
+
