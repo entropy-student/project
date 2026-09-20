@@ -290,3 +290,75 @@ No canonical contract changed yet.
 No case rerun started.
 G5 remains blocked.
 
+## G4 Owner Acceptance / G5 Start — 2026-09-21
+
+Owner explicitly accepted G4 and authorized the next gate.
+
+### G4 final state
+
+```text
+G4 = PASS
+G4 Director Language v0.3 = CANONICAL
+G5 owner hold = RELEASED
+```
+
+Canonical:
+- `docs/G4_DIRECTOR_LANGUAGE_RULES.md`
+- `docs/G4_DIRECTOR_COMPILER_CONTRACT.md`
+- `schemas/semantic_shot.schema.json`
+- `schemas/visual_beat.schema.json`
+
+Validation evidence:
+- Agent — PASS_CANDIDATE
+- Context / Memory — PASS_CANDIDATE
+- MCP — PASS_CANDIDATE
+- unseen Search Answer — BLIND_PASS
+- summary: `experiments/g4r-v03/VALIDATION_SUMMARY.md`
+
+### Current Gate — G5
+
+Name:
+`Shotbook → Image Asset Package MVP`
+
+Contract:
+`docs/G5_IMAGE_ASSET_PACKAGE_CONTRACT.md`
+
+Internal phases:
+```text
+G5A Asset Requirement Extraction
+→ G5B Canonical Reference Lock
+→ G5C Image Generation Compiler
+```
+
+First MVP:
+`blind-search-answer`
+
+G5A outputs:
+- `experiments/g5/blind-search-answer/01_ASSET_MANIFEST.json`
+- `experiments/g5/blind-search-answer/02_BEAT_ASSET_MATRIX.json`
+- `experiments/g5/blind-search-answer/03_ASSET_INVENTORY.md`
+
+G5A result:
+`PASS`
+
+Finding:
+- 44 Visual Beats
+- 8 reusable asset definitions
+- `CHAR_IP_001 = MISSING_REAL_ASSET`
+- 37/44 beats depend on the recurring IP reference
+- project repo currently contains no real IP three-view file
+
+Do not fabricate the missing character reference.
+
+G5B may continue with scene / UI / prop / style specifications and canonical non-character assets.
+Character-dependent generation remains blocked until the real IP reference is available.
+
+Current:
+```text
+G5 = IN_PROGRESS
+G5A = PASS
+G5B = READY_IN_PROGRESS
+G5C = NOT_STARTED
+G6 = BLOCKED_BY_G5
+```
+
