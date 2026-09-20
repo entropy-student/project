@@ -1,22 +1,22 @@
 {
   "episode_id": "blind-search-answer",
-  "status": "G5B_STYLE_DIRECTION_APPROVED_PRODUCTION_REFERENCE_CALIBRATION",
+  "status": "G5B_CALIBRATION_PASS_G5C_READY",
   "references": [
     {
       "asset_id": "CHAR_IP_001",
       "type": "CHARACTER",
-      "status": "MISSING_REAL_ASSET",
+      "status": "AVAILABLE_IN_CURRENT_CONVERSATION_NOT_REPO_PERSISTED",
       "canonical_paths": [],
-      "generation_allowed": false,
-      "note": "Owner supplied the canonical IP identity image in the current conversation; repository still lacks a persisted binary reference. Production Character Master v2 is being derived from this approved identity."
+      "generation_allowed": true,
+      "note": "Owner canonical IP image is available in the current conversation. Use as identity source. Persisting binary into repo remains separate."
     },
     {
       "asset_id": "SCENE_WORKDESK_001",
       "type": "SCENE",
-      "status": "TO_GENERATE_CANONICAL",
+      "status": "CALIBRATION_PASS_CURRENT_CONVERSATION",
       "canonical_paths": [],
       "generation_allowed": true,
-      "note": "A Workdesk Scene Master has been generated in the current conversation and is pending production-style calibration/persistence."
+      "note": "Workdesk geometry and character-in-scene integration passed calibration. Exact binary not yet persisted in repo."
     },
     {
       "asset_id": "SCENE_PHONEBOOK_ANALOGY_001",
@@ -29,18 +29,20 @@
     {
       "asset_id": "UI_AI_ANSWER_001",
       "type": "UI_DOCUMENT",
-      "status": "TO_GENERATE_CANONICAL",
+      "status": "CALIBRATION_PASS_CURRENT_CONVERSATION",
       "canonical_paths": [],
       "generation_allowed": true,
-      "text_render_mode": "POST_OVERLAY"
+      "text_render_mode": "POST_OVERLAY",
+      "note": "AI answer + official-source cue integration passed in character+UI calibration."
     },
     {
       "asset_id": "UI_POLICY_PAGE_001",
       "type": "UI_DOCUMENT",
-      "status": "TO_GENERATE_CANONICAL",
+      "status": "CALIBRATION_PASS_CURRENT_CONVERSATION",
       "canonical_paths": [],
       "generation_allowed": true,
-      "text_render_mode": "POST_OVERLAY"
+      "text_render_mode": "POST_OVERLAY",
+      "note": "Policy-page layout/evidence insert passed calibration. Exact text still prefers POST_OVERLAY for production reliability."
     },
     {
       "asset_id": "PROP_COST_SHEET_001",
@@ -61,10 +63,10 @@
     {
       "asset_id": "STYLE_CHANNEL_001",
       "type": "STYLE",
-      "status": "TO_GENERATE_CANONICAL",
+      "status": "VISUAL_DIRECTION_LOCKED",
       "canonical_paths": [],
       "generation_allowed": true,
-      "note": "Owner approved simplified flat narrative comic style. Production Character Master v2 + 3 real-beat calibration frames remain before VISUAL_LOCKED."
+      "note": "Simplified flat narrative comic direction validated by 3 real G4 calibration frame categories. Production simplification guard remains active."
     }
   ]
 }
