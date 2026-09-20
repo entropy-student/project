@@ -218,3 +218,41 @@ OWNER_HOLD_BEFORE_G5 = YES
 
 Do not enter G5 until explicit Owner approval.
 
+## G4 Director-Language Rebaseline Candidate — Owner Review
+
+Owner identified a process-quality issue:
+
+> G4 v0.1 used case-first discovery, then backfilled rules.  
+> Before rerunning cases, establish a theory-first Director rule system.
+
+New candidate artifacts:
+- `docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE.md`
+- `docs/G4_DIRECTOR_REBASELINE_RESEARCH.md`
+
+Candidate source responsibilities:
+- McKee → dramatic beat / action-reaction / meaningful state change
+- Murch → cut priority
+- Katz / Rabiger → staging / framing / POV / continuity / camera grammar
+- Bruce Block → visual structure / intensity
+- Jingsui → surface pacing calibration only
+
+Proposed candidate pipeline:
+```text
+Locked Script
+→ Dramatic Beat Map
+→ Visual Intention Map
+→ Semantic Shot
+→ Visual Beat
+→ Timing Calibration
+```
+
+Important:
+- Existing G4 v0.1 remains PASS as historical MVP evidence.
+- Candidate is NOT canonical yet.
+- Agent / Context-Memory / MCP have NOT been rerun under the candidate.
+- G5 remains READY_NOT_STARTED / BLOCKED by Owner review.
+
+Current action:
+Owner reviews candidate rules.  
+Only after explicit approval should the three cases be rerun from scratch.
+
