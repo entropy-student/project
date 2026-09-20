@@ -4,6 +4,25 @@
 
 它不是新的“万能视频 Skill”，而是一个 **Showrunner / Orchestrator Control Plane**：负责决定谁在什么时候工作、输入输出必须长什么样、什么条件才能进入下一阶段，以及整期内容最终是否合格。
 
+## 当前 Gate 状态
+
+```text
+P0 / G1 / G2 / G2.5 / G3 / G3R = PASS
+G4 = READY_NOT_STARTED
+OWNER_HOLD_BEFORE_G4 = YES
+```
+
+当前 canonical editorial baseline：
+- Bilibili；
+- DAILY editorial target；
+- 3–5 分钟标准目标；
+- 第一人称固定 IP；
+- STORY_MODEL / STORY_ACTION；
+- Daily Topic Planner v0.2 已启用；
+- Production throughput 仍为 UNPROVEN。
+
+Owner 当前指令：**先整体 Review，不进入 G4。**
+
 ## 一句话定位
 
 ```text
