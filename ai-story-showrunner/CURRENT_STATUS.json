@@ -8,8 +8,8 @@
     "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
   },
   "current_gate": {
-    "id": "G2.5",
-    "name": "Topic Supply / Ledger / Dedup",
+    "id": "G3",
+    "name": "Story → Script / SRT MVP",
     "status": "PASS"
   },
   "accepted_gates": [
@@ -32,11 +32,16 @@
       "id": "G2.5",
       "name": "Topic Supply / Ledger / Dedup",
       "status": "PASS"
+    },
+    {
+      "id": "G3",
+      "name": "Story → Script / SRT MVP",
+      "status": "PASS"
     }
   ],
   "next_gate": {
-    "id": "G3",
-    "name": "Story → Script / SRT MVP",
+    "id": "G4",
+    "name": "Script / SRT → Director / Shot Compiler MVP",
     "status": "PENDING"
   },
   "owner_intervention_required": false,
@@ -57,7 +62,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is a candidate writer style engine behind a restrictive project adapter"
   ],
-  "project_state": "READY_FOR_G3",
+  "project_state": "READY_FOR_G4",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -78,5 +83,18 @@
     "automation_contract": "docs/DAILY_TOPIC_AUTOMATION.md",
     "rolling_horizon_days": 7,
     "calendar_owner_view": "topic-ledger/calendar/YYYY-MM.md"
+  },
+  "g3_validation": {
+    "writer_quality_contract": "docs/WRITER_QUALITY_CONTRACT.md",
+    "review_artifact": "docs/G3_VALIDATION_REVIEW.md",
+    "episodes": [
+      "20260920-mcp",
+      "20260920-agent",
+      "20260920-context-memory"
+    ],
+    "result": "PASS",
+    "planning_duration_seconds": "70-85",
+    "planning_speaking_rate_cps": 5,
+    "writer_adapter_status": "QUALITY_VALIDATED_MANUAL_ORCHESTRATION"
   }
 }
