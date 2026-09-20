@@ -37,7 +37,7 @@
 - Auth/secrets: 当前无项目 Secret；若后续接外部模型/API，按 Governance Secret Policy 单独治理。
 - Shared Infra dependencies: 当前 N/A。
 - External workers: `entropy-student/spike.skill` 中多个 Skill + `visual-narrative-animation-lab`。
-- External adapters: Antigravity / Nano Banana 等目前仅标记为 `EXTERNAL_ADAPTER / INTEGRATION_UNKNOWN`。
+- Execution model: **Antigravity 已冻结为当前受限 Execution Agent**；Nano Banana 为当前图片生成路径。其程序化/自动化集成方式仍为 `INTEGRATION_UNKNOWN`。
 - Target-host boundary: 当前所有项目事实以 GitHub authoritative read-back 为准；未声称修改用户本地主机。
 
 ## 4. Current State
@@ -110,8 +110,11 @@ G1 PASS 必须同时满足：
 5. 所有未知能力显式标记，不猜；
 6. 选题 Skill canonical 位置已找到，或明确证据证明需要新建；
 7. McKee 结构层位置已冻结；
-8. Nano Banana / Antigravity 的集成级别已明确：PROGRAMMATIC / MANUAL_EXECUTOR / UNKNOWN；
-9. G2 的唯一执行合同可直接下发，不需要 Owner 补充技术判断。
+8. Low-Level Execution Package 字段已冻结：逐镜头时间线、逐图 Prompt/reference、角色/场景一致性、剪辑指令；
+9. Antigravity 的角色已冻结为受限 Executor，不具有导演自由度；
+10. Nano Banana / Antigravity 的技术集成级别已明确：PROGRAMMATIC / MANUAL_EXECUTOR / UNKNOWN；
+11. AUDIO_MODE 在 PoC 前可保持 TBD，但两条候选路径与切换条件必须明确；
+12. G2 的唯一执行合同可直接下发，不需要 Owner 补充技术判断。
 
 ### Evidence Required
 
@@ -145,7 +148,8 @@ G1 只涉及项目本地可逆文档 / schema 变更。若 contract 设计错误
 - 独立“选题 Skill / 历史选题账本”的 canonical 位置：**TO_LOCATE**。
 - McKee 结构是否已有独立 canonical Skill：**TO_LOCATE / likely Story Engine Gate**。
 - Antigravity / Nano Banana 是否可稳定程序化调用：**INTEGRATION_UNKNOWN**。
-- 最终实际渲染主路线在 Aroll / Visual Narrative Lab / TalkCraft 中如何选择：G1 需形成 routing rule。
+- 图片到成片的主路线已冻结：Antigravity 严格执行 Low-Level Execution Package；Aroll / Visual Narrative Lab / TalkCraft 暂不作为默认执行链。
+- 音频路径仍待定：上游先 TTS，或由 Antigravity 严格按 locked script/SRT 生成。
 - 后续是否需要独立数据库保存 Episode / Content Ledger：G8 前暂不决定。
 
 ## 9. Owner-only Checkpoints
@@ -182,7 +186,7 @@ G1 只涉及项目本地可逆文档 / schema 变更。若 contract 设计错误
 
 ## 12. Next Step
 
-- Reviewer next action: 完成 G1 的剩余定位与 contract freeze。
+- Reviewer next action: 完成 G1 剩余 Worker 定位，并冻结 Antigravity 施工包 schema 与 AUDIO_MODE PoC 方案。
 - Executor next action: 暂未下发独立 Executor Gate；G1 合同冻结后再决定是否需要 Executor。
 - Owner intervention required: **NO**
 
