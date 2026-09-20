@@ -34,19 +34,36 @@ Worker 输出必须可被 Showrunner 验证。
 
 ```yaml
 topic_id:
+signal:
 why_now:
 human_problem:
+human_stakes:
 ai_mechanism:
+one_mechanism_only:
+curiosity_gap:
 story_seed:
 audience_payoff:
+search_anchor:
+primary_content_job: DISCOVERY | TRUST | SOLUTION
+secondary_content_job:
+conversion_adjacency: NONE | LOW | MEDIUM | HIGH | UNKNOWN
+conversion_path_hypothesis:
+visual_storyability:
 novelty_vs_history:
+repetition_risk:
 source_refs:
+uncertainties:
 risks:
 ```
 
+### Required Gate Discipline
+先过 Human Relevance / Mechanism Integrity / Storyability / One Mechanism / Non-Trivial Payoff，再做候选比较。高“流量分”不能补偿 Hard Gate 失败。
+
 ### Forbidden
-只返回：
-`MCP`、`Agent`、`OpenAI 新功能`。
+- 只返回 `MCP`、`Agent`、`OpenAI 新功能`；
+- 用“预计会爆”代替可解释维度；
+- 因 conversion adjacency 高就强行进入 SOLUTION；
+- 把单一公司新闻直接当完整选题。
 
 ---
 
@@ -113,7 +130,9 @@ story_summary_without_jargon:
 - duration；
 - speaking rate / voice；
 - platform；
-- IP config。
+- IP config；
+- primary_content_job；
+- search_anchor（如适用）。
 
 ### Required Output
 
@@ -127,7 +146,10 @@ term_reveal_timestamp_or_section
 ```
 
 ### Allowed
-语言、幽默、节奏、口语化。
+语言、幽默、节奏、口语化、平台入口包装。
+
+### Hook Requirement
+优先从异常事件、决定、冲突或后果进入；默认禁止以“今天介绍 X / 最近 AI 圈很火 / 什么是 X”作为开头。
 
 ### Forbidden
 - 改核心机制；
@@ -262,9 +284,15 @@ knowledge:
 visual:
   status:
   failures:
+visual_repetition:
+  status:
+  repeated_patterns:
 production:
   status:
   failures:
+business_job:
+  primary_content_job:
+  metric_expectation:
 decision:
 return_stage:
 ```
@@ -308,3 +336,32 @@ QA 不直接修复全部问题，只负责定位。
 - motion parameters；
 
 可重建，但必须指向其 canonical parent。
+
+
+## 11. Metrics / Learning Worker
+
+### Input
+- episode primary_content_job；
+- platform metrics；
+- comments / questions / saves / follows；
+- downstream actions（能获取时）；
+- historical Content Ledger。
+
+### Required Output
+
+```yaml
+traffic:
+  findings:
+trust:
+  findings:
+conversion:
+  findings:
+primary_job_result:
+repeated_problem_clusters:
+product_demand_hypotheses:
+recommended_single_variable_test:
+```
+
+### Rule
+
+不得把高播放直接解释为高信任或高转化；不得把一条爆款直接解释为产品需求成立。
