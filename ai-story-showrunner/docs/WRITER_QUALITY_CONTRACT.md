@@ -1,6 +1,6 @@
-# Writer Quality Contract v0.2 — Bilibili-first
+# Writer Quality Contract v0.3 — Bilibili-first
 
-> **G3R STATUS: OWNER ALIGNED / NOT PASS.** The direction is accepted for consolidation, but remains non-canonical until the two outstanding Owner questions are resolved and G3R receives explicit PASS.
+> **G3R STATUS: OWNER ALIGNED / NOT PASS.** The direction is accepted for consolidation, but remains non-canonical until the remaining Owner review is resolved and G3R receives explicit PASS.
 
 Canonical narrative-style layer: `docs/NARRATIVE_STYLE_CONTRACT.md`
 
@@ -409,3 +409,38 @@ Every abstract claim should be earned by a visible event, action, object, conseq
 Definition:
 
 > **讲得好 = 具体、因果、推进、有人物反应，而且段落结束时故事状态真的变了。**
+
+
+## 18. Dialogue / Prose QA
+
+The sentence-level rules are defined in:
+`docs/NARRATIVE_STYLE_CONTRACT.md#15-dialogue--prose-layer`.
+
+Before Script PASS_CANDIDATE, sample the important lines and check:
+
+- ACTION: line performs an action, not only information transfer;
+- SUBTEXT: narrator does not explain what the audience can infer;
+- CHARACTER: line reflects recurring IP vocabulary / worldview;
+- ECONOMY: no redundant emotion label, transition or summary;
+- DESIGN: selected reversals/punchlines use reaction, pause or line ending effectively.
+
+### Specific anti-patterns
+
+Return:
+- “我很开心 / 我很难过 / 我突然意识到……” when the event already communicates it;
+- “后来我想了想 / 接下来 / 最后我发现……” used only as outline markers;
+- generic “这说明 / 因此我们应该” podium summaries;
+- abstract method lists where concrete events could carry the rule.
+
+Failure:
+`RETURN_DIALOGUE_TOO_ON_THE_NOSE`.
+
+### Important
+
+This gate does NOT require:
+- every line to have hidden meaning;
+- every line to be witty;
+- every beat to pause;
+- every sentence to end with a punchline.
+
+Natural spoken flow outranks technique visibility.
