@@ -10,7 +10,7 @@
   "current_gate": {
     "id": "G3R",
     "name": "Bilibili Editorial / Narrative Rebaseline",
-    "status": "HOLD"
+    "status": "PASS_CANDIDATE"
   },
   "accepted_gates": [
     {
@@ -62,7 +62,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is a candidate writer style engine behind a restrictive project adapter"
   ],
-  "project_state": "HOLD_FOR_G3_EDITORIAL_REBASELINE",
+  "project_state": "HOLD_FOR_OWNER_REVIEW_G3R",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -99,5 +99,34 @@
     "editorial_baseline_status": "REOPENED_DUE_TO_PLATFORM_STRATEGY_DRIFT",
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY"
   },
-  "owner_review_scope": "Review Bilibili-first duration, IP narrative perspective, content portfolio and acquisition strategy before G4"
+  "owner_review_scope": "Approve or return Bilibili-first daily channel strategy before G4",
+  "g3_rebaseline": {
+    "status": "PASS_CANDIDATE",
+    "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
+    "review": "docs/G3R_EDITORIAL_REVIEW.md",
+    "proposed_writer_contract": "docs/WRITER_QUALITY_CONTRACT.md",
+    "proposed_daily_planner": "docs/DAILY_TOPIC_AUTOMATION_V2_PROPOSAL.md",
+    "primary_platform": "Bilibili",
+    "editorial_cadence_target": "DAILY",
+    "production_throughput": "UNPROVEN",
+    "default_pov": "FIRST_PERSON_CHANNEL_IP",
+    "default_duration": "4-6 min",
+    "duration_routes": {
+      "hot": "3-5 min",
+      "standard": "4-6 min",
+      "action_or_tutorial": "5-8 min"
+    },
+    "editorial_modes": [
+      "STORY_MODEL",
+      "STORY_ACTION",
+      "STORY_TUTORIAL"
+    ],
+    "season0_published_episodes": 21,
+    "initial_weekly_mix": {
+      "STORY_MODEL": 4,
+      "STORY_ACTION": 2,
+      "STORY_TUTORIAL": 1
+    },
+    "live_daily_automation": "UNCHANGED_UNTIL_OWNER_PASS"
+  }
 }
