@@ -94,3 +94,34 @@ The old project baseline files still match their K0 hashes. A final old-site HTT
 ### Reviewer checkpoint
 
 Please review the appended K1B evidence in `EXECUTION_EVIDENCE.md`. Executor stops here with `STOP_AT_REVIEWER=YES` and does not enter K2.
+---
+
+## K2 — WooCommerce Commerce Loop
+
+### Status
+
+`PASS_CANDIDATE_K2_WOOCOMMERCE_COMMERCE_LOOP`
+
+The local Studio WooCommerce loop completed without PayPal or real payment:
+
+`Product → Add to Cart → Cart → Checkout → Order creation → Confirmation → Orders admin`
+
+### Completed
+
+- Configured product 223 with SKU `MCK-LOCAL-TEST-001`, local/test-only JPY 1 price, managed stock 10, and no backorders.
+- Added native local/test-only Flat Rate shipping at zero cost with an explicit no-fulfillment-promise title.
+- Kept tax calculation disabled because formal tax policy is not confirmed.
+- Enabled WooCommerce core COD only as `Local test only — no payment`; no payment provider was contacted.
+- Verified add, cart quantity update, cart removal, required-address validation, valid checkout, order creation, processing baseline, inventory decrement, confirmation page, and Orders admin visibility.
+- Confirmed Gutenberg round trip and fresh 375/1440 responsive smoke after K2 changes.
+- Retained a pre-K2 Studio full backup and cleaned all temporary K2 helpers/cookies/responses.
+
+### Known local-only note
+
+WooCommerce 10's temporary stock-reservation SQL path is incompatible with the Studio SQLite compatibility layer in this setup. The local-only `woocommerce_hold_stock_minutes=0` setting was used; ordinary product stock remains managed and the successful order reduced stock from 10 to 9. Formal production stock-hold behavior remains a later Reviewer decision.
+
+Two local checkout-draft attempts remain visible in Orders alongside the one successful Processing test order. They contain no payment or fulfillment action and were not deleted in this Gate.
+
+### Reviewer checkpoint
+
+Review the appended K2 evidence in `EXECUTION_EVIDENCE.md`. Executor stops here with `STOP_AT_REVIEWER=YES` and does not enter K3/PayPal, K4, VPS, or production.
