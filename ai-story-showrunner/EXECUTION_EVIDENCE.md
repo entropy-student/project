@@ -526,3 +526,33 @@ G4B:
 
 No G5 or Antigravity execution started.
 
+---
+
+## G4 Final PASS — Director / VisualBeat Shotbook
+
+Date: 2026-09-20
+
+Final review:
+- `docs/G4_VALIDATION_REVIEW.md`
+
+Timing source approved by Owner:
+- `JINGSUI_CALIBRATED_REFERENCE`
+
+Evidence:
+- Agent: 36 semantic shots / 61 visual beats / 150.14s / avg 2.46s
+- Context / Memory: 43 / 63 / 172.19s / avg 2.73s
+- MCP: 44 / 63 / 166.38s / avg 2.64s
+
+Machine validation:
+- all semantic plans PASS structure checks;
+- all visual-beat plans PASS timing continuity checks;
+- no overlaps or nonpositive durations.
+
+Gate:
+`G4 = PASS`
+
+Next:
+`G5 = READY_NOT_STARTED`
+
+Owner explicitly requested pause after G4 PASS. No G5 work started.
+
