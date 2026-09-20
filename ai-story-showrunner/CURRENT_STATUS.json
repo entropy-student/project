@@ -8,8 +8,8 @@
     "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
   },
   "current_gate": {
-    "id": "G1",
-    "name": "Worker Inventory + Canonical Contracts",
+    "id": "G2",
+    "name": "Topic → Human Problem → Story MVP",
     "status": "PASS"
   },
   "accepted_gates": [
@@ -22,14 +22,19 @@
       "id": "G1",
       "name": "Worker Inventory + Canonical Contracts",
       "status": "PASS"
+    },
+    {
+      "id": "G2",
+      "name": "Topic → Human Problem → Story MVP",
+      "status": "PASS"
     }
   ],
   "next_gate": {
-    "id": "G2",
-    "name": "Topic → Human Problem → Story MVP",
+    "id": "G3",
+    "name": "Story → Script / SRT MVP",
     "status": "PENDING"
   },
-  "owner_intervention_required": true,
+  "owner_intervention_required": false,
   "unknowns": [
     "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR",
     "audio mode final choice: upstream TTS vs Antigravity TTS",
@@ -47,6 +52,14 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is a candidate writer style engine behind a restrictive project adapter"
   ],
-  "project_state": "HOLD_FOR_OWNER_REVIEW",
-  "owner_review_scope": "Review overall direction after G1; no technical action required"
+  "project_state": "READY_FOR_G3",
+  "g2_validation": {
+    "episodes": [
+      "20260920-mcp",
+      "20260920-agent",
+      "20260920-context-memory"
+    ],
+    "review_artifact": "docs/G2_VALIDATION_REVIEW.md",
+    "result": "PASS"
+  }
 }
