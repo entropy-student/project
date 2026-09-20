@@ -1,0 +1,25 @@
+{
+  "date": "YYYY-MM-DD",
+  "captured_at": "",
+  "source_status": [],
+  "hot_signals": [],
+  "normalized_clusters": [],
+  "candidates": [
+    {
+      "candidate_id": "",
+      "lane": "HOT",
+      "signal_refs": [],
+      "proposed_human_problem": "",
+      "proposed_mechanism": "",
+      "registry_matches": [],
+      "duplicate_status": "UNKNOWN",
+      "hard_gate_status": "PENDING",
+      "reach_notes": [],
+      "asset_notes": [],
+      "recommended_action": "HOLD"
+    }
+  ],
+  "evergreen_fallback": [],
+  "selected_for_editorial_review": null,
+  "notes": []
+}
