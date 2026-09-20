@@ -1,4 +1,4 @@
-# Narrative Style Contract v0.1 — OWNER ALIGNED / NOT PASS
+# Narrative Style Contract v0.2 — OWNER ALIGNED / NOT PASS
 
 ## 1. Purpose
 
@@ -373,3 +373,149 @@ Before PASS candidate:
 Canonical definition:
 
 > **好故事 = 人物因为自己的欲望做出行动，世界以机制回应并不断改变局面，人物被迫修正，最终关键选择让观众自己理解故事的意义；整个过程听起来却仍像一个人在轻松讲一件真有意思的事。**
+
+
+---
+
+## 15. Dialogue / Prose Layer
+
+McKee-style story structure is not enough. The sentence-level surface must also stay dramatic, human and character-specific.
+
+### 15.1 Dialogue is verbal action
+
+Every important spoken line or first-person narration should do something:
+- pressure;
+- evade;
+- reclaim control;
+- test;
+- justify;
+- bargain;
+- hide panic;
+- provoke;
+- decide.
+
+Do not keep a line merely because it accurately states an idea.
+
+### 15.2 Preserve subtext
+
+If action, context or reaction already lets the audience infer the feeling or conclusion, do not name it again.
+
+Prefer:
+```text
+event
+→ reaction / pause / action
+→ audience infers
+```
+
+over:
+```text
+event
+→ narrator labels emotion
+→ narrator explains meaning
+```
+
+Common failure:
+`RETURN_DIALOGUE_TOO_ON_THE_NOSE`.
+
+### 15.3 Character-specific vocabulary
+
+The recurring IP should have a recognizable thinking vocabulary.
+
+Current preferred source domains:
+- 自动化;
+- 外包;
+- bug;
+- 退货;
+- 审批;
+- 插件;
+- 成本;
+- 偷懒;
+- 上班 / 工位.
+
+These are NOT mandatory catchphrases.
+
+Rule:
+> **固定的是他看世界的比喻来源，不是固定口头禅。**
+
+### 15.4 Dramatic economy
+
+Delete or merge:
+- structural signposts that add no action;
+- emotion labels already conveyed by behavior;
+- summaries that later lines already prove;
+- repeated payoff statements.
+
+Canonical compression test:
+
+> **如果下一句已经能让观众自己得出结论，上一句总结优先删掉。**
+
+### 15.5 Action / reaction / silence
+
+At genuine reversals and turning points, physical action, image state or a short pause may carry more weight than another explanatory line.
+
+Silence is not a style decoration.
+Use it only when the story state has truly changed.
+
+### 15.6 Line design
+
+For selected punchlines / reversals, the key image or word may be delayed to the sentence ending.
+
+Example:
+```text
+昨天订单是我自己查。
+今天它什么都查完了。
+最后只把一样东西还给我——
+鼠标。
+```
+
+Do not apply mechanically.
+
+### 15.7 Concrete method before abstraction
+
+When a STORY_ACTION episode contains a transferable rule:
+1. show concrete cases first;
+2. let the viewer infer the distinction;
+3. name the rule only when naming adds value.
+
+Do not convert the ending into a numbered tutorial.
+
+---
+
+## 16. Dialogue Gate
+
+For each important line ask:
+
+1. **ACTION** — 说这句话是在做什么？
+2. **SUBTEXT** — 什么没有被说出来？
+3. **CHARACTER** — 换一个 narrator 能原封不动说吗？
+4. **ECONOMY** — 动作 / 下一句已经证明的东西，这句是否又解释一遍？
+5. **DESIGN** — 能否由停顿、动作、词序或更强的句尾承担？
+
+Return when:
+- narrator labels already visible emotion;
+- explanation outruns experience;
+- transition wording exposes the outline;
+- generic narrator vocabulary dominates;
+- ending steps onto a podium to summarize.
+
+Failure:
+`RETURN_DIALOGUE_TOO_ON_THE_NOSE`.
+
+---
+
+## 17. Surface Style Principle
+
+Final synthesis:
+
+> **麦基藏在骨架里，景岁留在表面上，角色活在每一句话里。**
+
+The audience should feel:
+- “这人怎么又把自己坑了”;
+- “事情怎么又变了”;
+- “这句挺像他会说的”;
+- “哦，原来这个 AI 机制是这么回事”.
+
+The audience should not feel:
+- “这里是 turning point”;
+- “这里开始输出观点”;
+- “这里作者在做总结”.
