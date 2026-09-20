@@ -314,3 +314,37 @@ Decision:
 
 Current state:
 `HOLD_FOR_G3_EDITORIAL_REBASELINE`
+
+
+## G3R — Bilibili Editorial / Narrative Rebaseline
+
+Reviewer status: **PASS_CANDIDATE / OWNER REVIEW**
+
+Artifacts:
+- `docs/BILIBILI_CHANNEL_STRATEGY.md`
+- `docs/G3R_EDITORIAL_REVIEW.md`
+- proposed Bilibili additions in `docs/WRITER_QUALITY_CONTRACT.md`
+- `docs/DAILY_TOPIC_AUTOMATION_V2_PROPOSAL.md`
+
+Proposed decisions:
+1. Primary platform = Bilibili.
+2. Editorial publishing target = daily.
+3. Production throughput remains UNPROVEN until G4–G7.
+4. Default narrator = first-person recurring channel IP.
+5. Story mechanism model follows “world rule produces consequences”, not definition-first explanation.
+6. Bilibili duration routing = 3–8 min, standard center 4–6 min.
+7. Business Job remains DISCOVERY / TRUST / SOLUTION.
+8. Editorial Mode becomes separate: STORY_MODEL / STORY_ACTION / STORY_TUTORIAL.
+9. First 21 published episodes = Season 0 calibration.
+10. Initial portfolio hypothesis = 4 model / 2 action / 1 tutorial per 7 days.
+11. Tutorial is optional and must pass Actionability Gate; no bolted-on how-to section.
+12. Existing 70–85s G3 scripts remain writer capability references only.
+
+Growth diagnosis:
+Early account bottleneck is Audience / Situation × Message / Creative Fit. Do not optimize early episodes around hypothetical product sales.
+
+Live automation safety:
+The currently scheduled Daily Topic Radar remains on the accepted v0.1 behavior until Owner PASS. The proposed v0.2 planner has NOT been activated.
+
+Next:
+G4 remains BLOCKED pending Owner PASS / RETURN on G3R.
