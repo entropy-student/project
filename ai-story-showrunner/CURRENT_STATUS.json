@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_IN_PROGRESS_G5B5_ACQUISITION_REVIEW_PASS_G5C_PILOT_READY",
+  "project_state": "G5_IN_PROGRESS_FRAME_DESIGN_RULES_RESEARCH_CANDIDATE_PILOT_HOLD",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "G5B.5 acquisition review completed: keep current simplified narrative comic as Control, reduce complexity 15–25%, test ultra-simple line/cartoon as Challenger. G5C pilot remains next.",
+  "owner_review_scope": "Review candidate Visual Frame Design rules. 8-image pilot is temporarily on hold; after approval, recompile pilot frames before generation.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -342,6 +342,14 @@
       "decision": "KEEP + ITERATE",
       "control_adjustment": "Reduce per-frame visual micro-complexity approximately 15–25%; keep recurring IP and story-world identity.",
       "evidence_limit": "Real audience attention/trust/retention evidence is not yet available; long-term SCALE prohibited."
+    },
+    "frame_design_review": {
+      "status": "CANDIDATE_OWNER_REVIEW",
+      "rules": "docs/VISUAL_FRAME_DESIGN_RULES_CANDIDATE_V01.md",
+      "research": "docs/VISUAL_FRAME_RESEARCH_NOTES.md",
+      "finding": "Missing layer is frame-level attention/composition design, not just visual style.",
+      "pilot_status": "HOLD_UNTIL_RULE_REVIEW",
+      "next": "Owner review rules, then recompile 8 Search pilot beats under new frame design constraints."
     }
   }
 }
