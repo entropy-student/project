@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_IN_PROGRESS_PRODUCTION_STYLE_APPROVED_CHARACTER_MASTER_V2_NEXT",
+  "project_state": "G5_IN_PROGRESS_G5B_CALIBRATION_PASS_G5C_READY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -282,14 +282,14 @@
     },
     "phase_b": {
       "name": "Canonical Reference Lock",
-      "status": "STYLE_DIRECTION_APPROVED_REFERENCE_CALIBRATION_IN_PROGRESS",
+      "status": "PASS_DIRECTION_LOCKED",
       "character_bible": "experiments/g5/blind-search-answer/04_CHARACTER_BIBLE.md",
       "scene_bible": "experiments/g5/blind-search-answer/05_SCENE_BIBLE.md",
       "style_bible": "experiments/g5/blind-search-answer/06_STYLE_BIBLE.md",
       "prop_ui_bible": "experiments/g5/blind-search-answer/07_PROP_UI_BIBLE.md",
       "reference_manifest": "experiments/g5/blind-search-answer/08_REFERENCE_MANIFEST.json",
-      "blocking_real_asset": "CHAR_IP_001",
-      "blocking_reason": "Canonical IP three-view reference is not present in repository.",
+      "blocking_real_asset": null,
+      "blocking_reason": null,
       "style_direction": "SIMPLIFIED_FLAT_NARRATIVE_COMIC",
       "current_conversation_inputs": {
         "ip_identity_image": "AVAILABLE_IN_CURRENT_CONVERSATION_NOT_PERSISTED_IN_REPO",
@@ -297,16 +297,22 @@
         "workdesk_scene_master_v1": "GENERATED_CURRENT_CONVERSATION"
       },
       "next_steps": [
-        "Generate Production Character Master v2 with reduced drift complexity",
-        "Validate Workdesk Scene Master under simplified production style",
-        "Generate 3 real G4 calibration frames",
-        "Promote STYLE_CHANNEL_001 to VISUAL_LOCKED if calibration passes"
-      ]
+        "Compile all 44 Visual Beats into image-generation rows",
+        "Validate prompt/reference/continuity mapping",
+        "Review a small generated batch before full 44-image execution"
+      ],
+      "calibration_review": "experiments/g5/blind-search-answer/09_CALIBRATION_REVIEW.md",
+      "calibration_results": {
+        "character_workdesk": "PASS",
+        "character_ui_evidence": "PASS",
+        "pure_evidence_insert": "PASS",
+        "production_simplification_guard": "ACTIVE"
+      }
     },
     "phase_c": {
       "name": "Image Generation Compiler",
-      "status": "READY_FOR_DRAFT_COMPILATION_BLOCKED_FOR_CHARACTER_READY_EXECUTION",
-      "note": "Can compile final rows now, but character-dependent rows cannot be marked generation-ready until CHAR_IP_001 is resolved."
+      "status": "READY_TO_COMPILE",
+      "note": "Compile 44 deterministic image-generation rows. Current-conversation refs are usable for this workflow; repo binary persistence remains separate."
     }
   }
 }
