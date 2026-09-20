@@ -507,3 +507,46 @@ Governance:
 State:
 `OWNER_ALIGNED / HOLD / NOT PASS`.
 
+## 20. Narrative Style Consolidation + Agent Test — 2026-09-20
+
+Narrative style candidate is now explicitly defined as:
+`Jingsui lightness × McKee causality/meaning × AI mechanism as world rule × first-person recurring IP`.
+
+New contract:
+`docs/NARRATIVE_STYLE_CONTRACT.md`.
+
+New safeguards:
+1. Controlling Question before viewpoint;
+2. Idea vs Counter-Idea;
+3. Lightness Guard so structure remains invisible.
+
+McKee principles retained:
+- desire;
+- expectation/result gap;
+- progressive complications;
+- beat/scene state change;
+- character-driven action;
+- controlling idea / counter-idea;
+- climax expressing meaning.
+
+Jingsui principles retained:
+- concrete person/event first;
+- first-person participant;
+- self-deprecation/light reaction;
+- event-driven spoken flow;
+- thesis delay;
+- natural long/short spoken phrasing;
+- no sudden lecturer mode.
+
+Removed/overridden:
+- forced self-intro;
+- forced English signoff;
+- joke quota;
+- formulaic dramatic timing;
+- viewpoint-first writing.
+
+Agent 3–5 minute narrative smoke test created and reviewed as PASS_CANDIDATE. It does not advance G4.
+
+Current state:
+`G3R HOLD / 1 OWNER QUESTION REMAINS`.
+
