@@ -417,3 +417,34 @@ READY_FOR_OWNER_PASS_DECISION
 G4 BLOCKED
 ```
 
+---
+
+## G3R Patch Integration + Three-Case Narrative Evidence
+
+Date: 2026-09-20
+
+Owner accepted the latest copywriting patch for formal project-space integration.
+
+Contracts updated:
+- Narrative Style Contract v0.3
+- Writer Quality Contract v0.4
+
+Added:
+- Hook Strength Gate;
+- Event-driven / Metaphor-driven narrative engine selection;
+- Mechanism Definition Compression;
+- Formatting as Semantic Rhythm.
+
+Final script evidence:
+- Agent v2: `episodes/20260920-agent/G3R_narrative_test_v2.md` — 91/100 self-review.
+- Context / Memory v2: `episodes/20260920-context-memory/G3R_narrative_test_v2.md` — 92/100 self-review.
+- MCP v1: `episodes/20260920-mcp/G3R_narrative_test_v1.md` — 90/100 self-review.
+
+Result:
+- cross-topic portability = PASS_CANDIDATE;
+- three distinct story engines/conflict textures retain KnowledgeCore and IP-first storytelling;
+- no G4 production work started.
+
+State:
+`G3R HOLD / READY FOR EXPLICIT OWNER PASS / G4 BLOCKED`.
+
