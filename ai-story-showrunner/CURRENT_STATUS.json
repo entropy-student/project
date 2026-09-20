@@ -1,0 +1,35 @@
+{
+  "project": "ai-story-showrunner",
+  "updated_at": "2026-09-20",
+  "governance": {
+    "canonical_repo": "entropy-student/spike.skill",
+    "canonical_path": "vps-project-governance",
+    "core_version": "0.1.6",
+    "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
+  },
+  "current_gate": {
+    "id": "G1",
+    "name": "Worker Inventory + Canonical Contracts",
+    "status": "IN_PROGRESS"
+  },
+  "accepted_gates": [
+    {
+      "id": "P0",
+      "name": "Project Boundary / Governance Reconciliation",
+      "status": "PASS"
+    }
+  ],
+  "next_gate": {
+    "id": "G2",
+    "name": "Topic → Human Problem → Story MVP",
+    "status": "PENDING"
+  },
+  "owner_intervention_required": false,
+  "unknowns": [
+    "canonical topic/history-selection skill location",
+    "canonical McKee story-structure skill or final placement",
+    "Antigravity/Nano Banana integration level",
+    "final routing rule among visual production workers"
+  ],
+  "authoritative_handoff": "REVIEWER_HANDOFF.md"
+}
