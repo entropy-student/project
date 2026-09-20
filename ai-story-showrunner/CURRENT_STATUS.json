@@ -1,6 +1,6 @@
 {
   "project": "ai-story-showrunner",
-  "updated_at": "2026-09-20",
+  "updated_at": "2026-09-21",
   "governance": {
     "canonical_repo": "entropy-student/spike.skill",
     "canonical_path": "vps-project-governance",
@@ -8,9 +8,9 @@
     "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
   },
   "current_gate": {
-    "id": "G4",
-    "name": "Script / SRT → Director / Shot Compiler MVP",
-    "status": "PASS"
+    "id": "G5",
+    "name": "Shotbook → Image Asset Package MVP",
+    "status": "IN_PROGRESS"
   },
   "accepted_gates": [
     {
@@ -42,14 +42,19 @@
       "id": "G3R",
       "name": "Bilibili Editorial / Narrative Rebaseline",
       "status": "PASS"
+    },
+    {
+      "id": "G4",
+      "name": "Script / SRT → Director / Shot Compiler MVP",
+      "status": "PASS"
     }
   ],
   "next_gate": {
-    "id": "G5",
-    "name": "Shotbook → Image Asset Package MVP",
-    "status": "READY_NOT_STARTED"
+    "id": "G6",
+    "name": "Low-Level Execution Package / Antigravity PoC",
+    "status": "BLOCKED_BY_G5"
   },
-  "owner_intervention_required": true,
+  "owner_intervention_required": false,
   "unknowns": [
     "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR",
     "audio mode final choice: upstream TTS vs Antigravity TTS",
@@ -67,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G4_PASS_G4R_V03_FINAL_CANDIDATE_OWNER_REVIEW",
+  "project_state": "G5_IN_PROGRESS_G5A_PASS_G5B_NEXT",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -104,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "Review G4 Director Language Rules v0.3 final candidate. Do not rerun cases or start G5 until explicit Owner approval.",
+  "owner_review_scope": "G4 owner approval received. G5 is in progress. Real IP reference remains required before character-dependent image generation can be marked generation-ready.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -236,16 +241,19 @@
         "status": "PASS"
       }
     },
-    "owner_hold_before_g5": true
+    "owner_hold_before_g5": false,
+    "canonical_director_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES.md",
+    "owner_pass_received": true,
+    "rebaseline_validation": "experiments/g4r-v03/VALIDATION_SUMMARY.md"
   },
   "g4_rebaseline_candidate": {
-    "status": "FINAL_CANDIDATE_OWNER_REVIEW",
+    "status": "PROMOTED_TO_CANONICAL",
     "rules": "docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE_V03.md",
     "research": "docs/G4_DIRECTOR_REBASELINE_RESEARCH.md",
     "reason": "G4 v0.1 was case-derived and under-specified in dramatic-beat-to-camera-language translation.",
     "canonical_g4_v0_1_remains_pass": true,
-    "g5_blocked": true,
-    "cases_rerun": false,
+    "g5_blocked": false,
+    "cases_rerun": true,
     "proposed_pipeline": [
       "Dramatic Hierarchy Map",
       "Episode / Sequence Visual Strategy",
@@ -256,6 +264,31 @@
     ],
     "rereview": "docs/G4_DIRECTOR_RULES_FINAL_REREVIEW_V03.md",
     "previous_candidate": "docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE.md",
-    "unseen_case_required_before_promotion": true
+    "unseen_case_required_before_promotion": false,
+    "canonical_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES.md"
+  },
+  "g5": {
+    "status": "IN_PROGRESS",
+    "contract": "docs/G5_IMAGE_ASSET_PACKAGE_CONTRACT.md",
+    "first_mvp_case": "blind-search-answer",
+    "phase_a": {
+      "name": "Asset Requirement Extraction",
+      "status": "PASS",
+      "manifest": "experiments/g5/blind-search-answer/01_ASSET_MANIFEST.json",
+      "beat_asset_matrix": "experiments/g5/blind-search-answer/02_BEAT_ASSET_MATRIX.json",
+      "inventory_review": "experiments/g5/blind-search-answer/03_ASSET_INVENTORY.md",
+      "visual_beats": 44,
+      "assets": 8
+    },
+    "phase_b": {
+      "name": "Canonical Reference Lock",
+      "status": "READY_IN_PROGRESS",
+      "blocking_real_asset": "CHAR_IP_001",
+      "blocking_reason": "Canonical IP three-view reference is not present in repository."
+    },
+    "phase_c": {
+      "name": "Image Generation Compiler",
+      "status": "NOT_STARTED"
+    }
   }
 }
