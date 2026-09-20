@@ -8,7 +8,7 @@
 
 [中文](./README.md)
 
-![Projects](https://img.shields.io/badge/projects-3-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-6-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-Chinese%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -23,6 +23,9 @@
 | 🎧 **Music Taste Analyzer** | Reads private playlists after explicit authorization and produces an explainable music taste profile | App / Tool | Active | [Open](./music-taste-analyzer/) |
 | 💳 **Unified Pay System** | A once-deployed shared payment, verification, refund, reconciliation, and entitlement layer for multiple products | Shared Infrastructure | **Deploying** | [Open](./unified-pay-system/) |
 | 🎬 **Visual Narrative Animation Lab** | Turns narration into Visual Beats and develops a reusable hand-drawn narrative-video production and automation workflow | Content Production / AI Workflow | **Prototype** | [Open](./visual-narrative-animation-lab/) |
+| 🔎 **Conversion Leak Audit** | Scans public storefronts and produces evidence-backed conversion-leak findings and a prioritized fix queue | Diagnostic Product / Commerce Tool | **Local Integration Next** | [Open](./conversion-leak-audit/) |
+| 🎨 **Mini Craft Night Kit** | Uses WordPress + Kadence + WooCommerce to build a sellable single-product commerce site quickly | Ecommerce / Physical Product | **Kadence PoC** | [Open](./mini-craft-night-kit/) |
+| 🎭 **AI Story Showrunner** | Translates AI changes into human stories and orchestrates topic, story, script, directing, image, render, and feedback workers | Content Operating System / Orchestration | **G1 Contracts** | [Open](./ai-story-showrunner/) |
 
 ---
 
