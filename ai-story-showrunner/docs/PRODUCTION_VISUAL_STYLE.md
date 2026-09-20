@@ -2,7 +2,7 @@
 
 ## Status
 
-`CANONICAL / G5B OWNER-APPROVED DIRECTION`
+`CANONICAL CONTROL / G5B OWNER-APPROVED / G5B.5 ACQUISITION REVIEWED`
 
 This document defines the reusable production visual baseline for AI Story Showrunner.
 
@@ -216,3 +216,28 @@ The production visual system should optimize for:
 > **角色稳定、场景稳定、叙事清楚、批量可复现。**
 
 Single-image polish is subordinate to cross-video consistency and story readability.
+
+
+---
+
+## 10. Acquisition Review Decision
+
+Canonical review:
+`docs/VISUAL_ACQUISITION_REVIEW_GATE.md`
+
+Decision:
+`KEEP + ITERATE`
+
+The current style remains the Production Control.
+
+Adjustment:
+- reduce per-frame micro-detail / decoration by approximately 15–25% relative to current calibration images;
+- protect focal hierarchy and fast readability;
+- do not switch the channel to pure stick figures.
+
+Challenger:
+`ULTRA_SIMPLE_NARRATIVE_LINE_CARTOON`
+
+The Challenger retains the recurring IP silhouette and identity cues but uses substantially simpler facial/environment rendering.
+
+Long-term style SCALE requires real audience + repeatability evidence.
