@@ -125,8 +125,8 @@ Showrunner 不重复实现 Worker 的专业能力。
 
 ```text
 P0  Project Boundary / Governance Reconciliation PASS
-G1  Worker Inventory + Canonical Contracts     CURRENT
-G2  Topic → Human Problem → Story MVP          PENDING
+G1  Worker Inventory + Canonical Contracts     PASS
+G2  Topic → Human Problem → Story MVP          CURRENT
 G3  Story → Script / SRT MVP                   PENDING
 G4  Script → Director Shotbook MVP             PENDING
 G5  Shotbook → Image Asset Package MVP         PENDING
@@ -353,15 +353,15 @@ G2–G7 首轮不做大量选题，固定使用三类难度不同的题目验证
 
 ## 13. Next Actions
 
-当前只推进 G1：
+G1 已 PASS。当前推进 G2：
 
-1. 冻结 Episode Package machine-readable schema；
-2. 建立 Jingsui Writer Adapter 字段 mapping；
-3. 建立 acquisition-growth-radar Learning Adapter 字段 mapping；
-4. 定义 Director / Shot Compiler machine-readable schema；
-5. 验证 Antigravity / Nano Banana 技术集成级别；
-6. 为 AUDIO_MODE=A/B 设计最小 PoC；
-7. 完成后进入 G2，用 TopicOpportunity Contract 跑 MCP / Agent / Memory。
+1. 用 MCP 生成并验证 TopicOpportunity / KnowledgeCore / StoryPremise；
+2. 用 Agent / Agentic Action 复跑同一 Contract；
+3. 用 Context / Memory 复跑同一 Contract；
+4. 比较三种题型的 reject reason / storyability / conversion adjacency；
+5. 三题通过后 Reviewer 决定 G2 PASS，再进入 G3 Writer Adapter 验证。
+
+Production side note：Antigravity 当前归类为 `MANUAL_EXECUTOR / NOT_YET_POC_VALIDATED`；AUDIO_MODE 保持 TBD，不阻塞 G2。
 
 ## 14. Resume Rule
 
