@@ -1,10 +1,10 @@
-# Bilibili Channel Editorial Strategy v0.2 — OWNER ALIGNED / NOT PASS
+# Bilibili Channel Editorial Strategy v0.3 — G3R PASS
 
 ## 1. Channel Positioning
 
 Primary platform: **Bilibili**  
 Editorial cadence: **DAILY target**  
-Decision status: **OWNER ALIGNED / NOT PASS**  
+Decision status: **G3R PASS**  
 Primary objective: **Audience growth → repeated viewing → trust → future monetization**
 
 Canonical positioning:
@@ -315,41 +315,50 @@ Daily Bilibili story channel
 
 ## 16. Opinion / Viewpoint Policy
 
-观点不是第三种内容模式，也不是每期必需。
+观点不是第三种内容模式，也不是每期必需，但它可以成为一篇故事的**中心意义**。
 
-默认顺序：
+关键不是“少表达观点”，而是：
+
+> **观点可以是故事的灵魂，但不能是作者的演讲。**
+
+### Internal order
+
+Before writing a thesis, define a **Controlling Question**.
+
+Then, when a viewpoint exists:
 
 ```text
 Fact / event
 → mechanism
+→ Idea vs Counter-Idea
 → story consequence
-→ optional bounded viewpoint
+→ climax / meaningful choice proves the meaning
+→ narrator may lightly name it
 ```
 
 ### Allowed viewpoint
+
 A useful viewpoint:
-- emerges from evidence already shown;
-- is narrower than the topic itself;
-- helps the viewer interpret or decide;
-- admits boundaries / counterexamples when relevant;
-- can be removed without making the factual story collapse.
+- is rooted in locked facts / KnowledgeCore;
+- answers a human question created by the AI mechanism;
+- has a real counter-position inside the story;
+- is narrower than a universal social prediction;
+- is tested by character action and consequence;
+- preferably becomes clear through the climax before the narrator names it.
 
 ### High-risk viewpoint
+
 Return or soften when:
-- the thesis is decided before the story and evidence are selected;
-- a broad social judgment is supported by one anecdote;
-- motive is inferred without evidence;
-- the narrator jumps from “what happened” to “therefore everyone should…”;
-- disagreement with the opinion would make the whole video feel dishonest.
-
-Rule:
-
-> **观点是余味，不是承重墙。**
+- thesis is decided first and story is selected only to prove it;
+- one anecdote is generalized to everyone / the whole industry / the future;
+- motives are inferred without evidence;
+- the narrator repeatedly states the thesis instead of dramatizing it;
+- the story collapses unless viewers already agree with the opinion.
 
 Default budget:
 - 0 or 1 primary viewpoint per episode;
-- normally appears after the mechanism is understandable;
-- no forced “升华”.
+- no forced “升华”;
+- if the climax already proves the meaning, shorten the explicit explanation.
 
 Failure:
 `RETURN_OPINION_OVERREACH`.
@@ -396,16 +405,21 @@ Canonical definition:
 
 ## 18. Decision Status
 
-Owner has accepted the overall direction for continued document consolidation, but has **not** issued final PASS.
+Owner issued explicit G3R PASS on 2026-09-20.
 
-Current meaning:
+Canonical editorial baseline:
 
 ```text
-DIRECTION = OWNER_ALIGNED
-G3R = HOLD
-FINAL_PASS = NO
-G4 = BLOCKED
-OPEN_QUESTIONS = 2 (pending discussion)
+PRIMARY_PLATFORM = Bilibili
+EDITORIAL_CADENCE_TARGET = DAILY
+PRODUCTION_THROUGHPUT = UNPROVEN
+DEFAULT_POV = FIRST_PERSON_CHANNEL_IP
+DEFAULT_DURATION = 3–5 min (exceptions by narrative need)
+EDITORIAL_MODES = STORY_MODEL / STORY_ACTION
+INITIAL_WEEKLY_MIX = 5 / 2 hypothesis
+NARRATIVE_STYLE = Jingsui lightness × McKee causality/meaning × AI mechanism as world rule × recurring IP
+G3R = PASS
+G4 = READY_NOT_STARTED
 ```
 
-No downstream production gate may treat this document as fully accepted until those two open questions are resolved and Owner explicitly PASSes G3R.
+This PASS approves the editorial / narrative baseline only. It does **not** prove daily production throughput and does not start G4 automatically.
