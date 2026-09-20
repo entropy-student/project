@@ -276,7 +276,27 @@ Treat that as evidence, not yet a universal duration rule.
 Do not add material merely to satisfy the old 3–5 minute guidance.
 Duration policy should be re-baselined upstream after more episodes.
 
-## 14. Revalidation plan
+## 14. Script Coverage Gate
+
+Every spoken line in the locked Script must be accounted for by the Director plan.
+
+Required:
+- Semantic Shot narration spans collectively cover 100% of locked spoken script in order;
+- Visual Beat narration bindings collectively cover the same spoken script in order;
+- no sentence may disappear merely because it is hard to visualize;
+- if a spoken line intentionally shares an existing image, bind it to that beat rather than omitting it.
+
+Allowed omissions:
+- document headings;
+- metadata;
+- non-spoken production notes.
+
+Failure:
+`RETURN_SCRIPT_COVERAGE_GAP`.
+
+This Gate exists because the first G4 Memory MVP undercounted script coverage and therefore underestimated duration.
+
+## 15. Revalidation plan
 
 After Owner approval:
 1. freeze v0.3;
@@ -288,7 +308,7 @@ After Owner approval:
 
 Do not patch the old Shotbooks and call it validation.
 
-## 15. Final principle
+## 16. Final principle
 
 McKee defines dramatic hierarchy.
 Visual Strategy gives the episode a coherent visual system.
