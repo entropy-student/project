@@ -451,3 +451,35 @@ Key findings:
 - Script and estimated SRT matched exactly across all three samples.
 
 Next: G4 Director / Shot Compiler.
+
+## 18. G3R Bilibili Editorial Rebaseline — 2026-09-20
+
+Trigger:
+Owner clarified:
+- Bilibili is primary platform;
+- daily publishing is desired;
+- fixed IP will exist;
+- pure concept explanation may be insufficient;
+- stories should remain intrinsically watchable;
+- future growth/monetization matters.
+
+Reviewer finding:
+The architecture remains valid, but the editorial baseline drifted toward short-form.
+
+PASS_CANDIDATE proposes:
+- daily Bilibili story-driven AI knowledge channel;
+- first-person recurring channel IP;
+- 3–8min duration routing, standard 4–6min;
+- mechanism as story-world causal rule;
+- separate Business Job and Editorial Mode;
+- STORY_MODEL / STORY_ACTION / STORY_TUTORIAL;
+- action/tutorial only when naturally implied;
+- Season 0 = first 21 published episodes;
+- initial 7-day mix 4 / 2 / 1;
+- daily editorial target locked, production throughput not yet proven.
+
+Live Daily Radar is intentionally NOT switched to the proposed v0.2 planner until Owner PASS.
+
+Current:
+`G3R PASS_CANDIDATE / G4 BLOCKED`.
+
