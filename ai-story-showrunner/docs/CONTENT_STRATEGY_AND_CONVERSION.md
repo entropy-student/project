@@ -1,6 +1,6 @@
 # Content Strategy & Conversion Contract v0.2
 
-> **G3R STATUS: PROPOSED / OWNER REVIEW.** The Bilibili-first additions in this revision do not become accepted canonical policy until Owner PASS.
+> **G3R STATUS: OWNER ALIGNED / NOT PASS.** Bilibili-first additions remain candidate policy pending two unresolved Owner questions and explicit G3R PASS.
 
 ## 1. Purpose
 
@@ -523,7 +523,7 @@ not offer or conversion optimization.
 Therefore:
 - Discovery + Trust dominate;
 - actionable value is encouraged when natural;
-- - early content must not be distorted around a hypothetical future product.
+- early content must not be distorted around a hypothetical future product.
 
 ### Bilibili evidence fields
 
