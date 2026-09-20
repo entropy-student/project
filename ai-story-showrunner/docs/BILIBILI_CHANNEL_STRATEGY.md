@@ -8,12 +8,11 @@ Primary objective: **Audience growth → repeated viewing → trust → future m
 
 Canonical positioning:
 
-> **一个固定 IP 带观众进入 AI 时代正在发生的故事；故事本身值得看，AI 机制负责让观众看懂世界，方法/教程只在问题天然需要时出现。**
+> **一个固定 IP 带观众进入 AI 时代正在发生的故事；故事本身值得看，AI 机制负责让观众看懂世界，方法只在问题天然需要时出现。**
 
 Not:
 - AI news reader;
 - encyclopedia-style AI explainer;
-- generic tool tutorial channel;
 - story skin wrapped around definitions.
 
 ## 2. Core Content Formula
@@ -61,40 +60,24 @@ Use when:
 - the action follows directly from the mechanism;
 - practical value strengthens trust and saves/favorites.
 
-#### STORY_TUTORIAL
-Story/problem setup → mechanism → real workflow/demo/tutorial.
-
-Use when:
-- the problem has a concrete procedure;
-- the procedure is stable enough to teach;
-- the audience has clear task intent.
-
-Rule:
-
-> **Every episode can be useful. Not every episode needs a tutorial.**
-
-A tutorial added only to increase “value density” but not caused by the story is a failure:
-`RETURN_TUTORIAL_BOLTED_ON`.
 
 ## 4. Initial Content Portfolio — Season 0 Hypothesis
 
 For the first 21 published Bilibili episodes, use this as an **experimental distribution**, not a permanent quota:
 
-- 4 / 7 days: STORY_MODEL
+- 5 / 7 days: STORY_MODEL
 - 2 / 7 days: STORY_ACTION
-- 1 / 7 days: STORY_TUTORIAL / real experiment
 
 Equivalent approximation:
-- ~55–60% story + concept/mental model
-- ~25–30% story + actionable method
-- ~10–15% deeper tutorial/experiment
+- ~70% story + concept/mental model
+- ~30% story + actionable method
 
 Hot topics may replace a planned slot but inherit the best-fit editorial mode.
 
 Why:
 - a new account first needs discovery and a recognizable creative identity;
 - practical/actionable episodes create saves, search value and trust;
-- tutorials provide high-intent evidence without turning the whole channel into a tool manual.
+- actionable episodes add practical value without turning the channel into a tool manual.
 
 ## 5. Daily Publishing Policy
 
@@ -119,7 +102,6 @@ Initial duration bands:
 
 - HOT / timely story: **3–5 min**
 - standard story episode: **4–6 min**
-- story + tutorial / deeper mechanism: **5–8 min**
 - exceptional deep story: may exceed 8 min if retention evidence later supports it
 
 Duration is a result of narrative requirements, not a quota.
@@ -230,7 +212,7 @@ After KnowledgeCore and StoryPremise, ask:
 3. Can it be explained without adding a second unrelated mechanism?
 4. Does the action naturally resolve or extend the story problem?
 
-If YES → STORY_ACTION / STORY_TUTORIAL candidate.
+If YES → STORY_ACTION candidate.
 
 If NO → finish with a strong mental model. Do not manufacture a tutorial.
 
@@ -241,9 +223,7 @@ Examples:
 - Agent:
   action can be “where approval checkpoints belong”.
 - MCP:
-  for a general audience, mental-model payoff may be stronger than forcing a setup tutorial.
-- “How to build an MCP server”:
-  naturally STORY_TUTORIAL, but this is a different topic/audience.
+  for a general audience, mental-model payoff may be stronger than forcing an implementation method.
 
 ## 12. Acquisition Strategy
 
@@ -327,7 +307,88 @@ Daily Bilibili story channel
 + AI concepts/hot events translated into human conflicts
 + mechanism acts as world rule
 + story is independently watchable
-+ action/tutorial only when naturally implied
++ action only when naturally implied
 + Discovery + Trust dominate early stage
 + real audience data decides future optimization
 ```
+
+
+## 16. Opinion / Viewpoint Policy
+
+观点不是第三种内容模式，也不是每期必需。
+
+默认顺序：
+
+```text
+Fact / event
+→ mechanism
+→ story consequence
+→ optional bounded viewpoint
+```
+
+### Allowed viewpoint
+A useful viewpoint:
+- emerges from evidence already shown;
+- is narrower than the topic itself;
+- helps the viewer interpret or decide;
+- admits boundaries / counterexamples when relevant;
+- can be removed without making the factual story collapse.
+
+### High-risk viewpoint
+Return or soften when:
+- the thesis is decided before the story and evidence are selected;
+- a broad social judgment is supported by one anecdote;
+- motive is inferred without evidence;
+- the narrator jumps from “what happened” to “therefore everyone should…”;
+- disagreement with the opinion would make the whole video feel dishonest.
+
+Rule:
+
+> **观点是余味，不是承重墙。**
+
+Default budget:
+- 0 or 1 primary viewpoint per episode;
+- normally appears after the mechanism is understandable;
+- no forced “升华”.
+
+Failure:
+`RETURN_OPINION_OVERREACH`.
+
+## 17. Story Beat Quality Contract
+
+A story segment is good only when it changes the state of the story.
+
+Every meaningful beat should contain most of:
+
+```text
+Immediate want
+→ action
+→ resistance / response
+→ result
+→ state change
+→ next question / next decision
+```
+
+A state change means at least one meaningful variable changed:
+- knowledge;
+- goal;
+- strategy;
+- stakes;
+- relationship;
+- emotion that changes behavior;
+- available options.
+
+Changing only location, wording, or visual composition does not count.
+
+### Beat PASS test
+
+After removing the beat, ask:
+1. Does the next beat still make equal sense?
+2. Did the protagonist learn / lose / gain / decide nothing?
+3. Did the situation fail to become harder, clearer, stranger or more consequential?
+
+If yes, the beat is probably removable.
+
+Canonical definition:
+
+> **好故事不是“发生很多事”，而是每件事都导致下一件事，而且人物经过它以后已经和进去之前不一样。**
