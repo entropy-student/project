@@ -1,0 +1,772 @@
+{
+  "episode_id": "blind-search-answer",
+  "rows": [
+    {
+      "visual_beat_id": "SRCH_VB001",
+      "semantic_shot_id": "SRCH_S001",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "我现在看到 AI 回答下面带着“官方来源”四个字，第一反应已经不是放心了。",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "image_state": "official-source cue appears under answer; IP no longer relaxes automatically",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB002",
+      "semantic_shot_id": "SRCH_S001",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "是先点开看看。",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "image_state": "hand/cursor moves to open the source instead",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB003",
+      "semantic_shot_id": "SRCH_S002",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "因为有一次，我只是想偷个懒，查一条特别简单的退款规则。\n\n问题也很具体：",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "image_state": "IP frames this as a tiny easy rule-check he wants to outsource",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB004",
+      "semantic_shot_id": "SRCH_S002",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "“订单退掉以后，平台收的那笔服务费，会不会一起退回来？”",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "OBSERVER",
+      "image_state": "exact question facet lands: 平台服务费会不会退",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB005",
+      "semantic_shot_id": "SRCH_S003",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "它搜了一下。\n\n几秒钟以后，答案出来了：",
+      "shot_size": "MEDIUM",
+      "pov_mode": "IP_POV",
+      "image_state": "AI performs search and answer state arrives",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB006",
+      "semantic_shot_id": "SRCH_S003",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "“会。退款完成后，款项会原路退回。”",
+      "shot_size": "INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "answer conclusion becomes focal: 会",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": []
+    },
+    {
+      "visual_beat_id": "SRCH_VB007",
+      "semantic_shot_id": "SRCH_S003",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "下面还真的挂着一条官方帮助中心的链接。",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "official help-center source appears directly under the answer",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB008",
+      "semantic_shot_id": "SRCH_S004",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "我当时那个放心程度，大概相当于老师不仅告诉你答案，还把参考答案拍在了桌上。",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "image_state": "IP visibly relaxes because the answer looks source-backed; no literal classroom cutaway",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB009",
+      "semantic_shot_id": "SRCH_S004",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "于是我顺手就在成本表里写了一行：\n\n“服务费：可退。”",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "OBSERVER",
+      "image_state": "IP writes 服务费：可退 into the cost sheet",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "PROP_COST_SHEET_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB010",
+      "semantic_shot_id": "SRCH_S005",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "本来这件事到这里已经结束了。\n\n但我那天可能刚好手比较欠。",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "image_state": "task appears finished; IP is already about to move on, then hesitates",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB011",
+      "semantic_shot_id": "SRCH_S005",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "我点开了那个官方网页。",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "image_state": "IP clicks the official source almost casually",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB012",
+      "semantic_shot_id": "SRCH_S006",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "网页没找错。\n\n标题就是退款规则。",
+      "shot_size": "WIDE_POV",
+      "pov_mode": "IP_POV",
+      "image_state": "same official refund page opens; title confirms source is correct",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": []
+    },
+    {
+      "visual_beat_id": "SRCH_VB013",
+      "semantic_shot_id": "SRCH_S006",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "甚至 AI 刚才那句话，也真的能在上面找到。",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "AI-cited sentence is visibly present on that same page",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB014",
+      "semantic_shot_id": "SRCH_S007",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "上面写着：\n\n“退款完成后，订单款项将退回原支付方式。”",
+      "shot_size": "INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "first policy sentence is highlighted: 订单款项退回原支付方式",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": []
+    },
+    {
+      "visual_beat_id": "SRCH_VB015",
+      "semantic_shot_id": "SRCH_S008",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "我往下又看了一行。",
+      "shot_size": "MATCHED_INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "eye/cursor moves one line downward; final answer is not revealed yet",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB016",
+      "semantic_shot_id": "SRCH_S008",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "“平台服务费不予退还。”",
+      "shot_size": "INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "reveal: 平台服务费不予退还 becomes dominant",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": []
+    },
+    {
+      "visual_beat_id": "SRCH_VB017",
+      "semantic_shot_id": "SRCH_S009",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "……",
+      "shot_size": "CLOSE",
+      "pov_mode": "OBSERVER",
+      "image_state": "silent hold on the contradiction",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB018",
+      "semantic_shot_id": "SRCH_S009",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "我又看了一眼 AI 的答案。\n\n“会。”",
+      "shot_size": "MATCHED_INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "IP looks back to AI answer: 会",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB019",
+      "semantic_shot_id": "SRCH_S009",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "再看网页。\n\n“不予退还。”",
+      "shot_size": "MATCHED_INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "IP looks back to official page: 不予退还",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB020",
+      "semantic_shot_id": "SRCH_S010",
+      "sequence_id": "SEQ3",
+      "narration_fragment": "这时候最奇怪的地方就出现了。\n\n它不是没联网。\n\n也不是搜到了什么野鸡论坛。",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "image_state": "investigation rules out easy causes: not offline, not forum, not dubious source",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB021",
+      "semantic_shot_id": "SRCH_S010",
+      "sequence_id": "SEQ3",
+      "narration_fragment": "它甚至把正确的官网放在了我面前。",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "image_state": "correct official page remains physically present as the evidence object",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB022",
+      "semantic_shot_id": "SRCH_S011",
+      "sequence_id": "SEQ3",
+      "narration_fragment": "但它拿着回答“订单款项去哪儿”的那句话，回答了我“服务费退不退”的问题。",
+      "shot_size": "MATCHED_INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "matched comparison isolates question facet 服务费 against cited facet 订单款项",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": []
+    },
+    {
+      "visual_beat_id": "SRCH_VB023",
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "narration_fragment": "就像我问一个人：\n\n“老板今天来不来？”",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "image_state": "analogy question: 老板今天来不来",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_PHONEBOOK_ANALOGY_001",
+        "PROP_CONTACT_BOOK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB024",
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "narration_fragment": "他翻开通讯录，准确找到了老板那一页，然后特别自信地告诉我：",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "OBSERVER",
+      "image_state": "person accurately opens the boss's correct contact record",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_PHONEBOOK_ANALOGY_001",
+        "PROP_CONTACT_BOOK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB025",
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "narration_fragment": "“老板电话是 138……”\n\n资料没找错。\n\n答案还是没回答问题。",
+      "shot_size": "MEDIUM_TWO_SHOT",
+      "pov_mode": "OBSERVER",
+      "image_state": "wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "UI_AI_ANSWER_001",
+        "SCENE_PHONEBOOK_ANALOGY_001",
+        "PROP_CONTACT_BOOK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB026",
+      "semantic_shot_id": "SRCH_S013",
+      "sequence_id": "SEQ5",
+      "narration_fragment": "我后来又试了一次。\n\n这次没问它“答案是什么”。\n\n我只问：",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "image_state": "back at desk, IP changes strategy: no longer asks for conclusion first",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB027",
+      "semantic_shot_id": "SRCH_S013",
+      "sequence_id": "SEQ5",
+      "narration_fragment": "“你引用的网页里，哪一句话明确说明服务费会退？”",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "OBSERVER",
+      "image_state": "new evidence challenge is focal: 哪一句明确说明服务费会退",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB028",
+      "semantic_shot_id": "SRCH_S014",
+      "sequence_id": "SEQ5",
+      "narration_fragment": "它重新看了一遍。",
+      "shot_size": "MEDIUM",
+      "pov_mode": "IP_POV",
+      "image_state": "AI returns attention to the same official page",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB029",
+      "semantic_shot_id": "SRCH_S014",
+      "sequence_id": "SEQ5",
+      "narration_fragment": "然后答案变了。",
+      "shot_size": "MATCHED_INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "same answer pane changes conclusion after evidence check",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": []
+    },
+    {
+      "visual_beat_id": "SRCH_VB030",
+      "semantic_shot_id": "SRCH_S015",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "因为“搜到网页”和“用对网页里的证据”，其实是两件事。",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "image_state": "whole correct page is shown as one evidence object",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB031",
+      "semantic_shot_id": "SRCH_S015",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "搜索做的，是把可能有用的资料拿回来。",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "OBSERVER",
+      "image_state": "attention narrows from whole page to the exact supporting sentence",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB032",
+      "semantic_shot_id": "SRCH_S016",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "但资料回来以后，模型还得判断：\n\n哪一句跟你的问题真正对应。\n\n哪些只是看起来很像。",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER_WITH_POV",
+      "image_state": "same question-page workspace compares true correspondence vs merely similar wording",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB033",
+      "semantic_shot_id": "SRCH_S016",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "有没有例外。",
+      "shot_size": "INSERT",
+      "pov_mode": "IP_POV",
+      "image_state": "exception line becomes explicit check point",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": []
+    },
+    {
+      "visual_beat_id": "SRCH_VB034",
+      "semantic_shot_id": "SRCH_S016",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "几句话放在一起以后，结论到底是什么。",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "image_state": "multiple relevant lines are considered together before final conclusion",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB035",
+      "semantic_shot_id": "SRCH_S017",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "这一步如果错了，就会出现一种特别有迷惑性的答案：\n\n来源是真的。\n\n链接也是真的。",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "image_state": "one answer package remains on screen while source and link are confirmed real",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB036",
+      "semantic_shot_id": "SRCH_S017",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "甚至引用的句子也是真的。",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "OBSERVER",
+      "image_state": "quoted sentence is also confirmed real",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB037",
+      "semantic_shot_id": "SRCH_S017",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "只有最后那个结论，是错的。",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "image_state": "final conclusion alone remains mismatched/wrong",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB038",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "image_state": "IP sees a cited AI answer but does not treat the citation badge as proof by itself",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB039",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "如果答案不重要，我当然也不会每次都去查。",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "image_state": "a low-stakes answer passes without a verification ritual; IP keeps working normally",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB040",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "但如果这件事真的会让我花钱、改方案，或者做一个很难撤回来的决定，",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "image_state": "money / plan / hard-to-reverse consequences enter the working decision space and cause a visible stop",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB041",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "我会多问一句：",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "image_state": "IP pauses before action and turns back to the source/answer with one deliberate follow-up",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB042",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "“这个来源里的哪句话，真的支持你的结论？”",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "OBSERVER",
+      "image_state": "verification question becomes the action: 哪句话真的支持这个结论",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB043",
+      "semantic_shot_id": "SRCH_S019",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "因为 AI 搜索最容易让我放松警惕的地方，可能恰恰就是——",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "image_state": "final setup returns to the seductive feeling of a correct webpage",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB044",
+      "semantic_shot_id": "SRCH_S019",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "它真的给我找对了网页。",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "image_state": "opening callback resolves: official page is correct, and IP clicks/checks it before accepting the conclusion",
+      "asset_ids": [
+        "STYLE_CHANNEL_001",
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "blocking_asset_ids": [
+        "CHAR_IP_001"
+      ]
+    }
+  ]
+}
