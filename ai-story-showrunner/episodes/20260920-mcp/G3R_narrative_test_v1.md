@@ -1,7 +1,7 @@
 # G3R MCP Narrative Smoke Test v1 — Patch Integrated
 
 ## Status
-G3R_MCP_NARRATIVE_TEST = PASS_CANDIDATE / OWNER REVIEW
+G3R_MCP_NARRATIVE_TEST = ACCEPTED_VALIDATION / G3R_PASS
 
 ## Title
 **我招了个AI以后，怎么每天还在教它上班？**
