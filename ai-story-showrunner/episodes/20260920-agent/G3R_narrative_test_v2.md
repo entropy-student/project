@@ -1,7 +1,7 @@
 # G3R Agent Narrative Smoke Test v2 — Dialogue Refined
 
 ## Status
-G3R_NARRATIVE_TEST_V2 = PASS_CANDIDATE / OWNER REVIEW
+G3R_NARRATIVE_TEST_V2 = ACCEPTED_VALIDATION / G3R_PASS
 
 ## Title
 **我把退款全交给AI以后，最先后悔的是什么？**
