@@ -1,4 +1,4 @@
-# Writer Quality Contract v0.3 — Bilibili-first
+# Writer Quality Contract v0.4 — Bilibili-first
 
 > **G3R STATUS: OWNER ALIGNED / NOT PASS.** The direction is accepted for consolidation, but remains non-canonical until the remaining Owner review is resolved and G3R receives explicit PASS.
 
@@ -444,3 +444,53 @@ This gate does NOT require:
 - every sentence to end with a punchline.
 
 Natural spoken flow outranks technique visibility.
+
+
+## 19. Hook / Engine / Definition / Formatting QA
+
+Canonical details:
+`docs/NARRATIVE_STYLE_CONTRACT.md` sections 18–21.
+
+### Hook
+- [ ] first sentence is event/counter-intuitive OR desire already touching conflict;
+- [ ] no emotional/background declaration before tension;
+- [ ] zero-knowledge viewer can still understand the human problem.
+
+### Narrative Engine
+Declare internally:
+- `EVENT_DRIVEN`, or
+- `METAPHOR_DRIVEN`.
+
+A metaphor-driven episode must prove that the metaphor itself carries multiple causal turns.
+
+### Mechanism Definition
+- [ ] term reveal follows intuition;
+- [ ] definition remains in narrator voice;
+- [ ] use contrast before paragraph explanation;
+- [ ] add only accuracy-critical clarification.
+
+### Formatting
+- [ ] isolated lines / emphasis correspond to actual reversals or timing;
+- [ ] repetition has semantic function;
+- [ ] emphasis is sparse enough to retain force.
+
+Failures:
+- `RETURN_HOOK_TOO_PASSIVE`
+- `RETURN_METAPHOR_DECORATIVE_ONLY`
+- `RETURN_MECHANISM_BECAME_LECTURE`
+- `RETURN_FORMATTING_INFLATION`
+
+## 20. Three-Case G3R Narrative Validation Set
+
+Current long-form editorial validation set:
+1. Agent — event-driven / permission and action;
+2. Context & Memory — metaphor-driven / cognitive distinction;
+3. MCP — repeated integration friction / interoperability.
+
+The Writer layer is not considered stable merely because one conflict archetype works.
+Cross-topic stability requires:
+- same KnowledgeCore discipline;
+- different conflict shapes;
+- consistent first-person IP;
+- terminology after intuition;
+- no recurring “lesson template”.
