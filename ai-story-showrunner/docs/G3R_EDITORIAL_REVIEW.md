@@ -1,130 +1,231 @@
-# G3R Overall Editorial Review — OWNER ALIGNED / HOLD
+# G3R Final Editorial Review — PASS
 
 Date: 2026-09-20
 
-## Scope
+## 1. Decision
 
-Re-review triggered by Owner clarification:
-- Bilibili is primary platform;
-- daily publishing is desired;
-- channel should not become pure science/explainer;
-- fixed channel IP will exist;
-- future goal includes traffic, trust and monetization/acquisition.
+Reviewer decision: **PASS**
 
-## What remains valid
+Owner decision: **PASS**
 
-PASS and keep:
-- Story-first translation;
-- HOT + EVERGREEN topic system;
-- one core mechanism by default;
-- KnowledgeCore lock;
-- McKee-style causality before voice styling;
-- Jingsui as style layer, not global brain;
-- Topic Registry / dedup;
-- fixed cast + flexible world;
-- Traffic / Trust / Conversion metrics separation;
-- Antigravity as restricted executor.
+Scope:
+Bilibili editorial / narrative rebaseline only.
 
-## What was wrong / incomplete
+This PASS does not start G4 and does not prove production throughput.
 
-### 1. Short-form duration leaked into channel strategy
-70–85s was useful for G3 writer validation but is not appropriate as the Bilibili default.
+---
 
-Action:
-- downgrade old scripts to short-form reference;
-- establish 3–8 minute Bilibili bands.
+## 2. Final Canonical Baseline
 
-### 2. Third-person validation stories underused the planned channel IP
-Third person made the stories clear, but weaker as a recurring channel identity.
+- Primary platform: **Bilibili**
+- Editorial cadence target: **DAILY**
+- Production throughput: **UNPROVEN**
+- Standard duration target: **3–5 min**
+- Longer exception: allowed only when narrative need justifies it
+- Default POV: **first-person recurring channel IP**
+- Editorial modes:
+  - `STORY_MODEL`
+  - `STORY_ACTION`
+- Tutorial mode: **removed**
+- Initial seven-day mix hypothesis:
+  - 5 × STORY_MODEL
+  - 2 × STORY_ACTION
+- Business jobs remain:
+  - DISCOVERY
+  - TRUST
+  - SOLUTION
 
-Action:
-- first-person fictional/stylized IP becomes default POV;
-- third/second person become routed tools rather than defaults.
+Canonical positioning:
 
-### 3. “Story vs tutorial” was treated too much like a binary
-Pure concept can lack practical payoff; mandatory tutorial can corrupt story and audience positioning.
+> **一个固定 IP 带观众进入 AI 时代正在发生的故事；故事本身值得看，AI 机制负责让观众看懂世界，方法只在问题天然需要时出现。**
 
-Action:
-- separate Business Job from Editorial Mode:
-  - STORY_MODEL
-  - STORY_ACTION
-  - STORY_TUTORIAL.
+---
 
-### 4. Daily radar and daily publishing were conflated with production proof
-Owner wants daily output, but the production chain has not yet proven one 4–6min episode/day.
+## 3. Narrative System Accepted
 
-Action:
-- lock daily editorial target;
-- leave throughput unproven until production gates.
+Canonical style:
 
-### 5. Long-form story requirements were underspecified
-A longer script cannot be created by padding explanation.
+> **景岁的轻盈口述 × McKee 的因果/意义 × AI机制作为世界规则 × 第一人称IP的认知变化。**
 
-Action:
-- Bilibili story contract must add escalating complications, false solution/misjudgment when useful, stronger turning point and repeated action-consequence cycles.
+Accepted structural rules:
+- protagonist desire;
+- expectation-result Gap;
+- progressive complications;
+- meaningful beat/state change;
+- character-driven action;
+- Controlling Question before thesis;
+- Idea vs Counter-Idea when a viewpoint exists;
+- climax should prove meaning where possible;
+- structure must remain invisible at the surface.
 
-## External evidence used
+Accepted sentence-level rules:
+- dialogue = verbal action;
+- preserve subtext;
+- character-specific vocabulary;
+- dramatic economy;
+- action/reaction/silence may replace explanation;
+- selective line design;
+- concrete cases before abstraction;
+- mechanism definition compression;
+- semantic formatting only at real emphasis points.
 
-- Bilibili official creator data center exposes average watch duration, retention curve, play-to-follow rate and audience/fan preferences.
-- Bilibili official Q3 2025 investor materials describe mid-to-long-form as a platform hallmark and report ~20% YoY growth in watch time for videos over five minutes.
-- Bilibili official materials identify AI as a fast-growing content category and creator-led storytelling as engagement/commercially relevant.
-- Acquisition Growth Radar: early-stage focus should remain Audience / Situation + Message / Creative + Trust evidence, not premature offer optimization.
+---
 
-## Reviewer judgment
+## 4. Viewpoint Policy — Final
 
-Architecture remains sound.
+The earlier rule “观点是余味，不是承重墙” is superseded.
 
-The main correction is editorial, not technical:
+Final rule:
+
+> **观点可以是故事的灵魂，但不能是作者的演讲。**
+
+A viewpoint is optional, but when present it must:
+- grow from facts / locked mechanism;
+- have a real counter-position;
+- be tested through story consequence;
+- avoid unsupported universal prediction;
+- preferably be proven by climax before explicit narration.
+
+Failure:
+`RETURN_OPINION_OVERREACH`.
+
+---
+
+## 5. Narrative Engine Policy
+
+Validated engines:
+
+### EVENT_DRIVEN
+Best for:
+- money;
+- permission;
+- execution;
+- irreversible consequences.
+
+### METAPHOR_DRIVEN
+Best for:
+- context;
+- memory;
+- cognitive boundaries;
+- abstract mechanisms.
+
+### Other topic-dependent engines
+Allowed when they preserve the invariant below.
+
+Portable invariant:
 
 ```text
-FROM:
-short-form storyized AI explainer
-
-TO:
-daily Bilibili story-driven AI knowledge channel
-with recurring IP and optional actionable payoff
+character desire
+→ character action
+→ mechanism response
+→ meaningful state change
+→ next choice
+→ recognition / payoff
 ```
 
-## Proposed canonical decisions
+Explicitly NOT canonical:
+```text
+mistake → disaster → overcorrect → compromise
+```
 
-1. Primary platform = Bilibili.
-2. Editorial target = daily publishing.
-3. Default POV = first-person channel IP.
-4. Default duration = 4–6 min, with 3–8 min routed bands.
-5. Business job remains DISCOVERY / TRUST / SOLUTION.
-6. Editorial modes = STORY_MODEL / STORY_ACTION only.
-7. Season 0 = first 21 published episodes.
-8. Initial weekly portfolio hypothesis = 5 model / 2 action.
-9. Daily Radar remains active; calendar remains daily.
-10. G4 remains blocked until Owner approves this rebaseline.
+---
 
-Status:
-`G3R OWNER_ALIGNED / HOLD / NOT PASS`
+## 6. Three-Case Validation Evidence
 
+### Agent
+Artifact:
+`episodes/20260920-agent/G3R_narrative_test_v2.md`
 
-## Owner refinement — tutorial mode removed
+Type:
+EVENT_DRIVEN_PERMISSION_ACTION
 
-Owner explicitly removed tutorial as a channel module.
+Self-review:
+91 / 100
 
-Updated candidate:
-- STORY_MODEL
-- STORY_ACTION
+Validated:
+- action/permission conflict;
+- subtext;
+- practical boundary;
+- late term reveal;
+- viewpoint proven by consequence.
 
-Initial weekly hypothesis:
-- 5 STORY_MODEL
-- 2 STORY_ACTION
+### Context / Memory
+Artifact:
+`episodes/20260920-context-memory/G3R_narrative_test_v2.md`
 
-Opinion is not a third mode. It is optional and must pass the bounded Viewpoint Gate.
+Type:
+METAPHOR_DRIVEN_COGNITIVE_DISTINCTION
 
+Self-review:
+92 / 100
 
-## Current Owner State
+Validated:
+- weak-risk topic can still sustain story;
+- metaphor can carry causal turns;
+- definition can stay inside narrator voice;
+- context ≠ persistent memory remains accurate.
 
-Owner accepts the overall direction and authorizes documentation cleanup, but explicitly withholds PASS because two issues remain for discussion.
+### MCP
+Artifact:
+`episodes/20260920-mcp/G3R_narrative_test_v1.md`
 
-Therefore:
-- consolidate accepted-direction documents: YES;
-- activate v2 planner: NO;
-- enter G4: NO;
-- reinterpret candidate rules as final canonical baseline: NO.
+Type:
+REPEATED_INTEGRATION_FRICTION_INTEROPERABILITY
 
-The two open issues will be appended here after discussion.
+Self-review:
+90 / 100
+
+Validated:
+- abstract protocol can be translated into human friction;
+- no “MCP = permission system” drift;
+- no “MCP = universal API replacing all APIs” drift;
+- terminology remains late.
+
+Cross-topic result:
+**PASS**
+
+---
+
+## 7. Historical Decisions Superseded
+
+The following are historical and must not be treated as current:
+- 70–85s as final Bilibili duration;
+- 4–6min standard / 3–8min routing;
+- STORY_TUTORIAL;
+- forced self-introduction;
+- forced English signoff;
+- “观点是余味，不是承重墙” as the final viewpoint rule;
+- G3R HOLD / NOT PASS;
+- two unresolved editorial questions.
+
+Current duration:
+**3–5 min standard target, exceptions by narrative need.**
+
+Current modes:
+**STORY_MODEL / STORY_ACTION only.**
+
+---
+
+## 8. Remaining Known Risks
+
+These do not block G3R PASS:
+
+1. IP recognizability is demonstrated only across three validation scripts, not published audience behavior.
+2. Daily editorial cadence is approved, but daily production throughput is unproven.
+3. Visual execution may reintroduce PPT/explainer feel if G4 over-diagrams the mechanism.
+4. Audio path remains unresolved: upstream TTS vs restricted executor TTS.
+5. Antigravity remains `MANUAL_EXECUTOR / NOT_YET_POC_VALIDATED`.
+6. Season 0 metrics remain hypotheses until real publication data exists.
+
+---
+
+## 9. Gate Outcome
+
+```text
+G3R = PASS
+OPEN_QUESTIONS = 0
+G4 = READY_NOT_STARTED
+OWNER_HOLD_BEFORE_G4 = YES
+```
+
+Next gate may begin only after explicit Owner instruction.
