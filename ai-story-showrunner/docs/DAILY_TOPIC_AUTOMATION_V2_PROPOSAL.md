@@ -19,7 +19,7 @@
 7. Do not force the weekly ratio when good candidates are missing. Quality gates outrank quota.
 8. Suggested duration is routed by mode:
    - HOT: 3–5 min;
-   - standard STORY_MODEL: 4–6 min;
+   - standard STORY_MODEL: 3–5 min;
    - STORY_ACTION: normally 3–5 min; may exceed when the story genuinely requires it.
 9. Calendar should show:
    Date / Topic / Lane / Business Job / Editorial Mode / Target Duration / Status / Notes.
