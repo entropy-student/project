@@ -151,22 +151,24 @@ G10 Reusable Showrunner Skill / Runtime         PENDING
 - 冻结 Gate-first 错误拦截机制；
 - 建立首版架构、流水线、Worker 契约和工具清单。
 
-## 8. Existing Workers / Dependencies
+## 8. Candidate Workers / Dependencies
 
-已确认可复用：
+**以下只是已发现能力源，不代表最终 Worker 编制。** Worker 必须通过 Adapter / Contract / Episode evidence 后才能进入 canonical registry。
+
+已确认可复用能力：
 
 - `acquisition-growth-radar`：发布后的增长 / 验证反馈层；
-- `jingsui-story-video-director`：故事型口播、SRT、Visual Beat、分镜与生图计划的重要 Worker；
+- `jingsui-story-video-director`：强候选 Writer Style Engine；其自带 Director/生图/剪辑权限在本项目中默认关闭；
 - `short-form-spoken-script`：短视频 Promise / Hook / 口播 / SRT 的候选脚本 Worker；
-- `aroll-video-maker`：配音主时间轴 + Semantic Director + Visual Beat + Remotion 路径；
+- `aroll-video-maker`：保留为导演/视觉方法参考或未来替代路径，当前不是默认成片执行 Worker；
 - `narrative-motion-semantics`：流程 / 时间 / 对比 / 因果动效语义库，目前明确 INCOMPLETE；
-- `video-talkcraft-design-orchestrator`：TalkCraft 的上层视觉编排入口；
-- `visual-narrative-animation-lab`：画面叙事语法、Asset Resolution、Animatic 的项目级下游能力。
+- `video-talkcraft-design-orchestrator`：保留为视觉编排参考/未来替代路径，当前不是默认成片执行 Worker；
+- `visual-narrative-animation-lab`：画面叙事语法、Asset Resolution、Animatic 的研发/参考能力；默认生产执行已改为 Antigravity。
 
-尚未在当前 Skill 仓库中确认到 canonical 位置：
+当前 `spike.skill` root + recursive path scan 结果：
 
-- 独立“选题 Skill / 历史选题账本”；
-- 独立“麦基结构 Skill”；
+- 未发现独立“选题 Skill / 历史选题账本”；当前采用 contract-first，先不新造 Skill；
+- 未发现独立“麦基结构 Skill”；当前冻结为 Showrunner 内部 Story Engine Gate；
 - Antigravity / Nano Banana 的稳定程序化调用接口。
 
 这些必须标记为 `TO_LOCATE / TO_DEFINE / EXTERNAL_ADAPTER`，不得假装已经自动打通。
@@ -230,7 +232,23 @@ Low-Level Execution Package
 
 Canonical contract: `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
 
-### D6. Nearest-Gate Rollback
+### D6. Content Jobs + Conversion Adjacency
+
+每一期必须声明一个 `primary_content_job`：`DISCOVERY / TRUST / SOLUTION`。
+
+TopicOpportunity 增加 `conversion_adjacency`、`search_anchor`、`visual_storyability`、`repetition_risk`。商业邻近度用于判断长期需求路径，不构成硬广授权。
+
+Metrics 拆分为 Traffic / Trust / Conversion；禁止播放量单指标决策。
+
+Canonical strategy: `docs/CONTENT_STRATEGY_AND_CONVERSION.md`
+
+### D7. Worker Adapter Before Skill Mutation
+
+优先通过 Showrunner Adapter 限权/补输入，而不是直接把通用 canonical Skill 改成项目专用版。
+
+Canonical plan: `docs/WORKER_ADAPTER_PLAN.md`
+
+### D8. Nearest-Gate Rollback
 
 失败只回退到能够修复问题的最近上游。
 
@@ -285,7 +303,13 @@ Canonical contract: `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
 
 **Control**：World / Character / Scene Bible + Asset Resolver。
 
-### R8. Metrics Corruption
+### R8. Visual Template Fatigue
+
+角色稳定但构图、反应镜头、故事母题、节奏模板长期重复，导致 AI 批量感。
+
+**Control**：Visual Repetition Gate + Content Ledger 记录 hook / motif / scene usage。
+
+### R9. Metrics Corruption
 
 为了播放量逐渐牺牲故事完整性和知识准确性。
 
@@ -310,9 +334,9 @@ G2–G7 首轮不做大量选题，固定使用三类难度不同的题目验证
 - 三个题目都能通过 Middle-Layer Gate；
 - 三个故事删掉术语后仍成立；
 - AI 机制表述无关键事实错误；
-- Story → Script → Shotbook 的信息没有静默漂移；
-- Shotbook 不是一句一图；
-- Image Manifest 能区分 reuse / generate；
+- Story → Script → Low-Level Execution Package 的信息没有静默漂移；
+- 每个小镜头都有明确状态变化与施工理由；允许 one-small-shot ≈ one-image，但禁止“台词机械切句=镜头”；
+- Character / Scene references 能控制身份与环境连续性；
 - 至少一条完成到可审看的视频 / animatic；
 - 失败点能定位并回滚，不需要整条重跑。
 
@@ -331,14 +355,13 @@ G2–G7 首轮不做大量选题，固定使用三类难度不同的题目验证
 
 当前只推进 G1：
 
-1. 为每个 Stage 冻结 canonical input / output；
-2. 建立 `episode_id` 与 Episode Package；
-3. 给现有 Skill 做 Worker Adapter 映射；
-4. 明确“选题 Skill”现有位置或新建必要性；
-5. 明确麦基结构规则是独立 Worker 还是 Story Engine 内部 Gate；
-6. 验证 Antigravity / Nano Banana 的技术集成级别；
-7. 为 AUDIO_MODE=A/B 设计最小 PoC，暂不提前选边；
-8. 完成后进入 G2，仅验证 Topic → Story，不提前正式生产视频。
+1. 冻结 Episode Package machine-readable schema；
+2. 建立 Jingsui Writer Adapter 字段 mapping；
+3. 建立 acquisition-growth-radar Learning Adapter 字段 mapping；
+4. 定义 Director / Shot Compiler machine-readable schema；
+5. 验证 Antigravity / Nano Banana 技术集成级别；
+6. 为 AUDIO_MODE=A/B 设计最小 PoC；
+7. 完成后进入 G2，用 TopicOpportunity Contract 跑 MCP / Agent / Memory。
 
 ## 14. Resume Rule
 
@@ -351,6 +374,8 @@ README.md
 → PROJECT_RECORD.md
 → docs/ARCHITECTURE.md
 → docs/PIPELINE_AND_GATES.md
+→ docs/CONTENT_STRATEGY_AND_CONVERSION.md
+→ docs/WORKER_ADAPTER_PLAN.md
 → docs/WORKER_CONTRACTS.md
 → docs/TOOL_INVENTORY.md
 → EXECUTION_EVIDENCE.md（需要审计时）
