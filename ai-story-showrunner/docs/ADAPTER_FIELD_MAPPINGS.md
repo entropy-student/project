@@ -168,12 +168,14 @@ TopicOpportunity + KnowledgeCore → StoryPremise
 
 当前不是 Jingsui Visual Beat 的直接透传。
 
-Canonical input：locked Script/SRT + audio timing + Character/Scene/Style context。
+Canonical input：locked Script + KnowledgeCore + narrative intent + timing basis + available Character/Scene context。
 
-Canonical output 必须符合：
+Canonical G4 output:
+- `schemas/semantic_shot.schema.json`
+- `schemas/visual_beat.schema.json`
+- reference-timed SRT derived from locked script.
 
-- `schemas/shot.schema.json`
-- `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
+Final `schemas/shot.schema.json` belongs to downstream low-level execution compilation after Character/Scene/Style references and image prompts exist.
 
 默认 one-small-shot ≈ one-image，但 shot boundary 由**视觉状态变化**决定，而不是机械按字幕 cue/标点拆。
 
