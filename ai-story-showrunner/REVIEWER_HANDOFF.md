@@ -410,3 +410,40 @@ No G4 work started.
 Current:
 `G3R HOLD / 1 OPEN OWNER QUESTION / G4 BLOCKED`.
 
+## G3R Dialogue Promotion + Cross-topic Narrative Validation
+
+Owner approved continuing the dialogue/prose refinement direction.
+
+Promoted into main candidate contracts:
+- `docs/NARRATIVE_STYLE_CONTRACT.md` v0.2;
+- `docs/WRITER_QUALITY_CONTRACT.md` v0.3.
+
+The temporary candidate file is retained only as superseded historical review evidence:
+- `docs/DIALOGUE_PROSE_REFINEMENT_CANDIDATE.md`.
+
+Dialogue/prose rules now include:
+- verbal action;
+- subtext;
+- character-specific vocabulary;
+- dramatic economy;
+- action/reaction/silence;
+- selective line design;
+- concrete method before abstraction.
+
+Cross-topic narrative tests:
+1. Agent — `episodes/20260920-agent/G3R_narrative_test_v2.md` — self-review 91/100.
+2. Context / Memory — `episodes/20260920-context-memory/G3R_narrative_test_v1.md` — self-review 89/100.
+
+Cross-topic finding:
+- the narrative system works for both permission/risk conflict and lower-stakes conceptual misunderstanding;
+- shared structure is desire → character-caused action → mechanism pushes back → state changes → recognition;
+- specific conflict shape must remain topic-dependent and must NOT become a repeated template.
+
+Current governance state:
+```text
+G3R = HOLD
+OPEN_QUESTIONS = 0
+READY_FOR_OWNER_PASS_DECISION = YES
+G4 = BLOCKED UNTIL EXPLICIT OWNER PASS
+```
+
