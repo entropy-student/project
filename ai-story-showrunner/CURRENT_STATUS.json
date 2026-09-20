@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_IN_PROGRESS_G5A_PASS_G5B_NEXT",
+  "project_state": "G5_IN_PROGRESS_G5A_PASS_G5B_SPEC_LOCKED_REAL_IP_REF_MISSING",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -282,13 +282,19 @@
     },
     "phase_b": {
       "name": "Canonical Reference Lock",
-      "status": "READY_IN_PROGRESS",
+      "status": "SPEC_LOCKED_BLOCKED_BY_REAL_IP_REFERENCE",
+      "character_bible": "experiments/g5/blind-search-answer/04_CHARACTER_BIBLE.md",
+      "scene_bible": "experiments/g5/blind-search-answer/05_SCENE_BIBLE.md",
+      "style_bible": "experiments/g5/blind-search-answer/06_STYLE_BIBLE.md",
+      "prop_ui_bible": "experiments/g5/blind-search-answer/07_PROP_UI_BIBLE.md",
+      "reference_manifest": "experiments/g5/blind-search-answer/08_REFERENCE_MANIFEST.json",
       "blocking_real_asset": "CHAR_IP_001",
       "blocking_reason": "Canonical IP three-view reference is not present in repository."
     },
     "phase_c": {
       "name": "Image Generation Compiler",
-      "status": "NOT_STARTED"
+      "status": "READY_FOR_DRAFT_COMPILATION_BLOCKED_FOR_CHARACTER_READY_EXECUTION",
+      "note": "Can compile final rows now, but character-dependent rows cannot be marked generation-ready until CHAR_IP_001 is resolved."
     }
   }
 }
