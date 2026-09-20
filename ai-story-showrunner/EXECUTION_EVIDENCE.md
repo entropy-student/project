@@ -87,3 +87,30 @@ Reviewer accepted decision: `PASS`，记录于 `REVIEWER_HANDOFF.md`。
 ## Secret / Private Data Statement
 
 No private key, password, Cookie, Token, webhook URL, encryption-key value, decrypted private data, or private business identifiers are recorded here.
+
+---
+
+## G1 Design Decision — Low-Level Antigravity Execution
+
+- Date: 2026-09-20
+- Owner decision: Antigravity should act like the previous Execution Agent and complete image generation + timeline assembly in one run, with near-zero creative freedom.
+- Production simplification: final video is primarily a sequence of generated still images placed at exact times; complex motion should normally be decomposed into more still-image shots.
+- Cost assumption supplied by Owner: Nano Banana image generation is cheap enough that image count is not the primary optimization target.
+- Audio path remains OPEN: upstream TTS vs Antigravity TTS from locked script/SRT.
+
+### Accepted design changes
+
+- Added `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`.
+- Frozen one-small-shot ≈ one-image default.
+- Frozen Character / Scene / Style canonical-reference contracts.
+- Frozen exact Shot Timeline + one-row-per-image generation sheet.
+- Frozen `DO_NOT_ADD` default for unspecified effects.
+- Antigravity cannot change story, text, shot count, timing, prompts, characters, scenes or edit style.
+
+### Result
+
+```text
+DESIGN_DECISION_ACCEPTED_WITHIN_G1
+G1 remains IN_PROGRESS
+```
+
