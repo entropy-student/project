@@ -205,7 +205,32 @@ Nano Banana、其他图片模型、Remotion、其他渲染器都属于 Adapter�
 
 核心 Pipeline 不以单一 Provider 名称设计。
 
-### D5. Nearest-Gate Rollback
+### D5. Antigravity as Restricted Executor
+
+当前图片到成片的默认执行路线正式冻结为：
+
+```text
+Low-Level Execution Package
+→ Antigravity
+→ Nano Banana batch image generation
+→ exact timeline placement
+→ simple edit
+→ video draft
+```
+
+原则：
+
+- Antigravity 不做导演推理；
+- 一个小镜头默认一张图；
+- 动作优先拆成多张静态图；
+- 不以节省生图次数为优化目标；
+- 角色/场景一致性由 canonical references + per-shot contract 保证；
+- 未明确指定的效果默认不添加；
+- 音频模式暂为 TBD：上游 TTS vs Antigravity 严格 TTS。
+
+Canonical contract: `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
+
+### D6. Nearest-Gate Rollback
 
 失败只回退到能够修复问题的最近上游。
 
@@ -311,8 +336,9 @@ G2–G7 首轮不做大量选题，固定使用三类难度不同的题目验证
 3. 给现有 Skill 做 Worker Adapter 映射；
 4. 明确“选题 Skill”现有位置或新建必要性；
 5. 明确麦基结构规则是独立 Worker 还是 Story Engine 内部 Gate；
-6. 定义 Nano Banana / Antigravity 为何种 Adapter；
-7. 完成后进入 G2，仅验证 Topic → Story，不提前生图。
+6. 验证 Antigravity / Nano Banana 的技术集成级别；
+7. 为 AUDIO_MODE=A/B 设计最小 PoC，暂不提前选边；
+8. 完成后进入 G2，仅验证 Topic → Story，不提前正式生产视频。
 
 ## 14. Resume Rule
 
