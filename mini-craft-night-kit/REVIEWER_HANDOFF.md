@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K1B_VISUAL_REVIEW
+CURRENT_GATE=K2_WOOCOMMERCE_COMMERCE_LOOP
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -177,3 +177,14 @@ Formal decision: `docs/REVIEWER_DECISION_K1B_TECHNICAL_PASS_OWNER_VISUAL_PENDING
 Reviewer accepts the technical evidence. K1B final closure is pending Owner visual review of the Studio-managed site. K2 remains unauthorized.
 
 Owner marker: `OWNER_K1B_VISUAL=PASS` or `OWNER_K1B_VISUAL=RETURN` with specific issues.
+
+
+## K1B Final PASS
+
+Owner confirmed the initial visual implementation.
+
+Formal decision: `docs/REVIEWER_DECISION_K1B_PASS.md`.
+
+Current Gate: `K2_WOOCOMMERCE_COMMERCE_LOOP`.
+
+K2 should verify the local Product → Add to Cart → Cart → Checkout → Order → Confirmation loop. Do not enter PayPal, production payment, VPS, or production deployment.
