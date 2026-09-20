@@ -185,7 +185,7 @@
       "semantic_shot_id": "CM3_S007",
       "sequence_id": "SEQ2",
       "scene_id": "SC2.1",
-      "narration_span": "“刚才那个价格是多少？”它知道。",
+      "narration_span": "刚开始我特别满意。“刚才那个价格是多少？”它知道。",
       "dramatic_refs": [
         "SC2.1_B3"
       ],
@@ -847,7 +847,7 @@
       "semantic_shot_id": "CM3_S030",
       "sequence_id": "SEQ4",
       "scene_id": "SC4.2",
-      "narration_span": "它解决的是：现在能放多少。不是：以后还能找回什么。",
+      "narration_span": "好像突然哪里不太对。我上周扩的那张桌子，确实很有用。它让我一次能摊更多东西。但它解决的是：现在能放多少。不是：以后还能找回什么。",
       "dramatic_refs": [
         "SC4.2_B3"
       ],
@@ -1052,7 +1052,7 @@
       "semantic_shot_id": "CM3_S037",
       "sequence_id": "SEQ6",
       "scene_id": "SC6.1",
-      "narration_span": "桌子，是现在干活用的。笔记，是以后要找回来的。",
+      "narration_span": "到这里我才真的把两件事分开。桌子，是现在干活用的。笔记，是以后要找回来的。",
       "dramatic_refs": [
         "SC6.1_B1",
         "SC6.1_B2"
@@ -1285,5 +1285,6 @@
         "IP does not repeat preference"
       ]
     }
-  ]
+  ],
+  "coverage_note": "Narration spans revised after full-script coverage audit; all spoken script must be covered in order."
 }
