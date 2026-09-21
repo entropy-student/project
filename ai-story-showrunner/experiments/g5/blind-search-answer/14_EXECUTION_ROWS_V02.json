@@ -1,0 +1,2015 @@
+{
+  "episode_id": "blind-search-answer",
+  "gate": "G5C4",
+  "status": "FAIL",
+  "frame_blueprints": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json",
+  "count": 44,
+  "validation": {
+    "status": "FAIL",
+    "issues": [
+      "SRCH_VB043 setup missing withheld information"
+    ]
+  },
+  "execution_mode_counts": {
+    "GENERATE": 14,
+    "DERIVE_EDIT": 26,
+    "COMPOSITE_CROP": 4
+  },
+  "rows": [
+    {
+      "execution_id": "EXEC_001",
+      "visual_beat_id": "SRCH_VB001",
+      "semantic_shot_id": "SRCH_S001",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB001",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 看见“官方来源”后，IP 没有立刻放心. Primary focus: IP 的眼神/微妙怀疑表情. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: 普通观看 → 看见来源后仍保持谨慎. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Do not reveal: 政策页 / 服务费不退 / 最终反转. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "cat",
+        "plant cluster",
+        "book pile",
+        "speech/thought bubble",
+        "full policy page",
+        "brand/logo",
+        "decorative title"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB001.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: READ_REACTION",
+        "P1 immediately readable: IP 的脸部/身体反应",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_002",
+      "visual_beat_id": "SRCH_VB002",
+      "semantic_shot_id": "SRCH_S001",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB002",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB001.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: hand/cursor moves to open the source instead. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "NONE",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB002.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: hand/cursor moves to open the source instead",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_003",
+      "visual_beat_id": "SRCH_VB003",
+      "semantic_shot_id": "SRCH_S002",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB003",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 快速建立当前空间/页面/状态. Primary focus: IP frames this as a tiny easy rule-check he wants to outsource. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: IP frames this as a tiny easy rule-check he wants to outsource. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB003.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: ORIENT",
+        "P1 immediately readable: IP frames this as a tiny easy rule-check he wants to outsource",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_004",
+      "visual_beat_id": "SRCH_VB004",
+      "semantic_shot_id": "SRCH_S002",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB004",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB003.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: exact question facet lands: 平台服务费会不会退. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB004.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: exact question facet lands: 平台服务费会不会退",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_005",
+      "visual_beat_id": "SRCH_VB005",
+      "semantic_shot_id": "SRCH_S003",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB005",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB004.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: AI performs search and answer state arrives. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB005.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: AI performs search and answer state arrives",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_006",
+      "visual_beat_id": "SRCH_VB006",
+      "semantic_shot_id": "SRCH_S003",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB006",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB005.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: answer conclusion becomes focal: 会. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB006.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: SEE_CONSEQUENCE",
+        "P1 immediately readable: answer conclusion becomes focal: 会",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_007",
+      "visual_beat_id": "SRCH_VB007",
+      "semantic_shot_id": "SRCH_S003",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB007",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001",
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB006.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: official help-center source appears directly under the answer. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB007.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: official help-center source appears directly under the answer",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_008",
+      "visual_beat_id": "SRCH_VB008",
+      "semantic_shot_id": "SRCH_S004",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB008",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: IP visibly relaxes because the answer looks source-backed; no literal classroom cutaway. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB008.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: READ_REACTION",
+        "P1 immediately readable: IP 的脸部/身体反应",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_009",
+      "visual_beat_id": "SRCH_VB009",
+      "semantic_shot_id": "SRCH_S004",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB009",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "PROP_COST_SHEET_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB008.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: 成本表新增一条错误判断. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. Keep hidden: 官方政策反转.",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB009.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: SEE_CONSEQUENCE",
+        "P1 immediately readable: IP writes 服务费：可退 into the cost sheet",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_010",
+      "visual_beat_id": "SRCH_VB010",
+      "semantic_shot_id": "SRCH_S005",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB010",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: task appears finished; IP is already about to move on, then hesitates. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_render_mode": "NONE",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB010.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: READ_REACTION",
+        "P1 immediately readable: IP 的脸部/身体反应",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_011",
+      "visual_beat_id": "SRCH_VB011",
+      "semantic_shot_id": "SRCH_S005",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB011",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB010.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: IP clicks the official source almost casually. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB011.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: IP clicks the official source almost casually",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_012",
+      "visual_beat_id": "SRCH_VB012",
+      "semantic_shot_id": "SRCH_S006",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB012",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB011.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: 来源链接 → 正确政策页 Context. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. Keep hidden: 平台服务费不予退还.",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB012.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: ORIENT",
+        "P1 immediately readable: same official refund page opens; title confirms source is correct",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_013",
+      "visual_beat_id": "SRCH_VB013",
+      "semantic_shot_id": "SRCH_S006",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB013",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001",
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB012.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: AI-cited sentence is visibly present on that same page. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB013.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: AI-cited sentence is visibly present on that same page",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_014",
+      "visual_beat_id": "SRCH_VB014",
+      "semantic_shot_id": "SRCH_S007",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB014",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB013.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: first policy sentence is highlighted: 订单款项退回原支付方式. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB014.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: first policy sentence is highlighted: 订单款项退回原支付方式",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_015",
+      "visual_beat_id": "SRCH_VB015",
+      "semantic_shot_id": "SRCH_S008",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB015",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB014.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: 阅读焦点从上一行向下一行移动. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. Keep hidden: 平台服务费不予退还.",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "character",
+        "workdesk",
+        "AI answer pane",
+        "brand/logo",
+        "navigation clutter",
+        "arrows",
+        "red/green polarity",
+        "warning icon",
+        "number badge",
+        "next-line exact text"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB015.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: BUILD_ANTICIPATION",
+        "P1 immediately readable: 即将发生变化的同一 causal region / 阅读位置",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_016",
+      "visual_beat_id": "SRCH_VB016",
+      "semantic_shot_id": "SRCH_S008",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB016",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB015.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: 此前隐藏的第二条政策文字现在可读. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "character",
+        "logo",
+        "navigation",
+        "full-page text",
+        "warning icon",
+        "red exclamation",
+        "arrow",
+        "title card"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB016.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: EXPERIENCE_REVERSAL",
+        "P1 immediately readable: reveal: 平台服务费不予退还 becomes dominant",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_017",
+      "visual_beat_id": "SRCH_VB017",
+      "semantic_shot_id": "SRCH_S009",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB017",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: silent hold on the contradiction. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_render_mode": "NONE",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB017.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: READ_REACTION",
+        "P1 immediately readable: IP 的脸部/身体反应",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_018",
+      "visual_beat_id": "SRCH_VB018",
+      "semantic_shot_id": "SRCH_S009",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB018",
+      "execution_mode": "COMPOSITE_CROP",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [
+        "UI_AI_ANSWER_001"
+      ],
+      "prompt": null,
+      "edit_delta": null,
+      "composite_instructions": "Compose only the story-source crops required by the Blueprint. Primary sources: UI_AI_ANSWER_001. Preserve each source's identity, remove non-causal chrome, leave intentional whitespace, add no VS/arrows/conclusion card, and use POST_OVERLAY for exact text.",
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB018.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: COMPARE_STATES",
+        "P1 immediately readable: 故事源 A 中的关键对象/短句 / 故事源 B 中的关键对象/短句",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_019",
+      "visual_beat_id": "SRCH_VB019",
+      "semantic_shot_id": "SRCH_S009",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB019",
+      "execution_mode": "COMPOSITE_CROP",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "prompt": null,
+      "edit_delta": null,
+      "composite_instructions": "Compose only the story-source crops required by the Blueprint. Primary sources: UI_POLICY_PAGE_001. Preserve each source's identity, remove non-causal chrome, leave intentional whitespace, add no VS/arrows/conclusion card, and use POST_OVERLAY for exact text.",
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB019.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: COMPARE_STATES",
+        "P1 immediately readable: 故事源 A 中的关键对象/短句 / 故事源 B 中的关键对象/短句",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_020",
+      "visual_beat_id": "SRCH_VB020",
+      "semantic_shot_id": "SRCH_S010",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB020",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: investigation rules out easy causes: not offline, not forum, not dubious source. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: investigation rules out easy causes: not offline, not forum, not dubious source. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "NONE",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB020.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: CLARIFY_MECHANISM",
+        "P1 immediately readable: investigation rules out easy causes: not offline, not forum, not dubious source",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_021",
+      "visual_beat_id": "SRCH_VB021",
+      "semantic_shot_id": "SRCH_S010",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB021",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB020.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: correct official page remains physically present as the evidence object. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB021.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: SEE_CONSEQUENCE",
+        "P1 immediately readable: correct official page remains physically present as the evidence object",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_022",
+      "visual_beat_id": "SRCH_VB022",
+      "semantic_shot_id": "SRCH_S011",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB022",
+      "execution_mode": "COMPOSITE_CROP",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001",
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [
+        "UI_AI_ANSWER_001",
+        "UI_POLICY_PAGE_001"
+      ],
+      "prompt": null,
+      "edit_delta": null,
+      "composite_instructions": "Compose only the story-source crops required by the Blueprint. Primary sources: UI_AI_ANSWER_001, UI_POLICY_PAGE_001. Preserve each source's identity, remove non-causal chrome, leave intentional whitespace, add no VS/arrows/conclusion card, and use POST_OVERLAY for exact text.",
+      "negative_constraints": [
+        "character",
+        "brand/logo",
+        "full chat window",
+        "full webpage",
+        "VS",
+        "!=",
+        "arrows",
+        "third explanation card",
+        "explanatory title"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB022.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: COMPARE_STATES",
+        "P1 immediately readable: 故事源 A 中的关键对象/短句 / 故事源 B 中的关键对象/短句",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_023",
+      "visual_beat_id": "SRCH_VB023",
+      "semantic_shot_id": "SRCH_S012",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB023",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001",
+          "TEMP_ANALOGY_ACTOR_001"
+        ],
+        "scene_refs": [
+          "SCENE_PHONEBOOK_ANALOGY_001"
+        ],
+        "prop_ui_refs": [
+          "PROP_CONTACT_BOOK_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 快速建立当前空间/页面/状态. Primary focus: analogy question: 老板今天来不来. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: LOW. Attention: CM → CM. Frame delta: analogy question: 老板今天来不来. Keep character identity refs: CHAR_IP_001, TEMP_ANALOGY_ACTOR_001. Keep scene refs: SCENE_PHONEBOOK_ANALOGY_001. Use only these causal prop/UI refs: PROP_CONTACT_BOOK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB023.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: ORIENT",
+        "P1 immediately readable: analogy question: 老板今天来不来",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_024",
+      "visual_beat_id": "SRCH_VB024",
+      "semantic_shot_id": "SRCH_S012",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB024",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001",
+          "TEMP_ANALOGY_ACTOR_001"
+        ],
+        "scene_refs": [
+          "SCENE_PHONEBOOK_ANALOGY_001"
+        ],
+        "prop_ui_refs": [
+          "PROP_CONTACT_BOOK_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB023.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: person accurately opens the boss's correct contact record. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB024.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: SEE_CONSEQUENCE",
+        "P1 immediately readable: person accurately opens the boss's correct contact record",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_025",
+      "visual_beat_id": "SRCH_VB025",
+      "semantic_shot_id": "SRCH_S012",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB025",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001",
+          "TEMP_ANALOGY_ACTOR_001"
+        ],
+        "scene_refs": [
+          "SCENE_PHONEBOOK_ANALOGY_001"
+        ],
+        "prop_ui_refs": [
+          "PROP_CONTACT_BOOK_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB024.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: 正确老板记录已经找到，但回答落在电话号码而非“来不来”. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "AI UI",
+        "giant phone screen",
+        "contact-list wall",
+        "bubble",
+        "title",
+        "arrow",
+        "complex office"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB025.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: LAND_PAYOFF",
+        "P1 immediately readable: wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_026",
+      "visual_beat_id": "SRCH_VB026",
+      "semantic_shot_id": "SRCH_S013",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB026",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众跟住一个会改变状态的具体动作. Primary focus: back at desk, IP changes strategy: no longer asks for conclusion first. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: CM → RM. Frame delta: back at desk, IP changes strategy: no longer asks for conclusion first. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_render_mode": "NONE",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB026.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: back at desk, IP changes strategy: no longer asks for conclusion first",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_027",
+      "visual_beat_id": "SRCH_VB027",
+      "semantic_shot_id": "SRCH_S013",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB027",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001",
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB026.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: new evidence challenge is focal: 哪一句明确说明服务费会退. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB027.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: new evidence challenge is focal: 哪一句明确说明服务费会退",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_028",
+      "visual_beat_id": "SRCH_VB028",
+      "semantic_shot_id": "SRCH_S014",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB028",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众跟住一个会改变状态的具体动作. Primary focus: AI returns attention to the same official page. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: CM → RM. Frame delta: AI returns attention to the same official page. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB028.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: AI returns attention to the same official page",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_029",
+      "visual_beat_id": "SRCH_VB029",
+      "semantic_shot_id": "SRCH_S014",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB029",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001",
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB028.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: same answer pane changes conclusion after evidence check. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB029.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: EXPERIENCE_REVERSAL",
+        "P1 immediately readable: same answer pane changes conclusion after evidence check",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_030",
+      "visual_beat_id": "SRCH_VB030",
+      "semantic_shot_id": "SRCH_S015",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB030",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: whole correct page is shown as one evidence object. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: whole correct page is shown as one evidence object. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB030.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: CLARIFY_MECHANISM",
+        "P1 immediately readable: whole correct page is shown as one evidence object",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_031",
+      "visual_beat_id": "SRCH_VB031",
+      "semantic_shot_id": "SRCH_S015",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB031",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB030.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: attention narrows from whole page to the exact supporting sentence. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB031.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: attention narrows from whole page to the exact supporting sentence",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_032",
+      "visual_beat_id": "SRCH_VB032",
+      "semantic_shot_id": "SRCH_S016",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB032",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: same question-page workspace compares true correspondence vs merely similar wording. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: same question-page workspace compares true correspondence vs merely similar wording. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB032.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: CLARIFY_MECHANISM",
+        "P1 immediately readable: same question-page workspace compares true correspondence vs merely similar wording",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_033",
+      "visual_beat_id": "SRCH_VB033",
+      "semantic_shot_id": "SRCH_S016",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB033",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB032.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: exception line becomes explicit check point. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB033.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: exception line becomes explicit check point",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_034",
+      "visual_beat_id": "SRCH_VB034",
+      "semantic_shot_id": "SRCH_S016",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB034",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: multiple relevant lines are considered together before final conclusion. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: multiple relevant lines are considered together before final conclusion. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_render_mode": "NONE",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB034.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: CLARIFY_MECHANISM",
+        "P1 immediately readable: multiple relevant lines are considered together before final conclusion",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_035",
+      "visual_beat_id": "SRCH_VB035",
+      "semantic_shot_id": "SRCH_S017",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB035",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让多个真实状态形成一个可识别模式. Primary focus: one answer package remains on screen while source and link are confirmed real. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: one answer package remains on screen while source and link are confirmed real. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB035.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: BUILD_PATTERN",
+        "P1 immediately readable: one answer package remains on screen while source and link are confirmed real",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_036",
+      "visual_beat_id": "SRCH_VB036",
+      "semantic_shot_id": "SRCH_S017",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB036",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB035.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: quoted sentence is also confirmed real. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "NONE",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB036.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: quoted sentence is also confirmed real",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_037",
+      "visual_beat_id": "SRCH_VB037",
+      "semantic_shot_id": "SRCH_S017",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB037",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB036.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: final conclusion alone remains mismatched/wrong. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_render_mode": "NONE",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB037.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: LAND_PAYOFF",
+        "P1 immediately readable: final conclusion alone remains mismatched/wrong",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_038",
+      "visual_beat_id": "SRCH_VB038",
+      "semantic_shot_id": "SRCH_S018",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB038",
+      "execution_mode": "GENERATE",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [],
+      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: IP sees a cited AI answer but does not treat the citation badge as proof by itself. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB038.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: READ_REACTION",
+        "P1 immediately readable: IP 的脸部/身体反应",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_039",
+      "visual_beat_id": "SRCH_VB039",
+      "semantic_shot_id": "SRCH_S018",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB039",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB038.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: a low-stakes answer passes without a verification ritual; IP keeps working normally. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB039.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: FEEL_RELATION",
+        "P1 immediately readable: a low-stakes answer passes without a verification ritual; IP keeps working normally",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_040",
+      "visual_beat_id": "SRCH_VB040",
+      "semantic_shot_id": "SRCH_S018",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB040",
+      "execution_mode": "COMPOSITE_CROP",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": null,
+      "source_asset_refs": [
+        "UI_AI_ANSWER_001"
+      ],
+      "prompt": null,
+      "edit_delta": null,
+      "composite_instructions": "Compose only the story-source crops required by the Blueprint. Primary sources: UI_AI_ANSWER_001. Preserve each source's identity, remove non-causal chrome, leave intentional whitespace, add no VS/arrows/conclusion card, and use POST_OVERLAY for exact text.",
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB040.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: COMPARE_STATES",
+        "P1 immediately readable: 故事源 A 中的关键对象/短句 / 故事源 B 中的关键对象/短句",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_041",
+      "visual_beat_id": "SRCH_VB041",
+      "semantic_shot_id": "SRCH_S018",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB041",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB040.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: IP pauses before action and turns back to the source/answer with one deliberate follow-up. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB041.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: IP pauses before action and turns back to the source/answer with one deliberate follow-up",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_042",
+      "visual_beat_id": "SRCH_VB042",
+      "semantic_shot_id": "SRCH_S018",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB042",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB041.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: verification question becomes the action: 哪句话真的支持这个结论. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_render_mode": "NONE",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB042.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: verification question becomes the action: 哪句话真的支持这个结论",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_043",
+      "visual_beat_id": "SRCH_VB043",
+      "semantic_shot_id": "SRCH_S019",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB043",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB042.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: final setup returns to the seductive feeling of a correct webpage. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB043.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: BUILD_ANTICIPATION",
+        "P1 immediately readable: 即将发生变化的同一 causal region / 阅读位置",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "execution_id": "EXEC_044",
+      "visual_beat_id": "SRCH_VB044",
+      "semantic_shot_id": "SRCH_S019",
+      "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB044",
+      "execution_mode": "DERIVE_EDIT",
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "source_frame_ref": "SRCH_VB001.png",
+      "source_asset_refs": [],
+      "prompt": null,
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: 同样看见来源，但行为从迟疑/被动接受变成主动核验. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "composite_instructions": null,
+      "negative_constraints": [
+        "summary checklist",
+        "lesson card",
+        "large moral text",
+        "brand/logo",
+        "cat",
+        "extra decorative props",
+        "full policy page"
+      ],
+      "text_render_mode": "POST_OVERLAY",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080",
+      "output_name": "SRCH_VB044.png",
+      "acceptance_criteria": [
+        "G4 intent preserved: LAND_PAYOFF",
+        "P1 immediately readable: opening callback resolves: official page is correct, and IP clicks/checks it before accepting the conclusion",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    }
+  ]
+}
