@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED
+CURRENT_GATE=K3R11_CONNECTION_STATE_RECONCILIATION
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -690,3 +690,19 @@ CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED
 Owner must reconnect Sandbox once through the local WooCommerce PayPal Settings UI using the rotated credentials. The replacement Secret remains Owner-only. No public origin or checkout action proceeds until Reviewer receives the sanitized reconnect result.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_OWNER_SANDBOX_RECONNECT.md`.
+
+
+## K3R11 Connection-State Mismatch
+
+Owner UI shows a connected Sandbox account presentation with a Disconnect control, but the preceding read-only PPCP REST probe reported merchant connected = NO.
+
+```text
+PPCP_ADMIN_UI_CONNECTION_STATE=CONNECTED_PRESENTATION
+PPCP_REST_MERCHANT_CONNECTED=NO
+DISCONNECT_AUTHORIZED=NO
+CURRENT_GATE=K3R11_CONNECTION_STATE_RECONCILIATION
+```
+
+Owner reconnect is paused. Executor must reconcile the state read-only before any disconnect/reconnect or public-origin work continues.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_UI_REST_CONNECTION_STATE_MISMATCH.md`.
