@@ -1241,7 +1241,7 @@
       "brand_mode": "NONE",
       "ui_mode": "CONTEXT",
       "continuity_preserve": [
-        "UI_POLICY_PAGE_001 shell/geometry"
+        "UI_POLICY_PAGE_001 shell/geometry and restrained official-help-center visual language"
       ],
       "continuity_ref": "SRCH_VB011",
       "frame_delta": "来源链接 → 正确政策页 Context",
@@ -1258,14 +1258,18 @@
           "STYLE_CHANNEL_001"
         ]
       },
-      "execution_mode": "DERIVE_EDIT",
+      "execution_mode": "GENERATE",
       "subtitle_safe_check": "PASS",
       "acceptance_criteria": [
         "G4 intent preserved: ORIENT",
-        "P1 immediately readable: same official refund page opens; title confirms source is correct",
-        "no unnecessary brand/logo, bubble, card or explanatory arrow",
-        "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
+        "P1 immediately readable: a generic official refund-policy page title confirms the viewer is on the correct page",
+        "locked viewpoint is IP_POV / readable page discovery",
+        "no character body or over-shoulder framing",
+        "page is low-density and clearly belongs to a help/policy context",
+        "do not reveal the later clause that platform service fee is non-refundable",
+        "exact Chinese title/body wording is reserved for POST_OVERLAY",
+        "no unnecessary brand/logo, floating card, decorative arrow, or random navigation/sidebar/ads",
+        "caption-safe and readable at reduced size"
       ],
       "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
