@@ -987,3 +987,16 @@ SECRET_EXPOSURE=NO
 STOP_AT_REVIEWER=YES
 
 PPCP was left installed and active only to preserve the captured P0 failure state for Reviewer decision; the project-local rollback backup is ready. No further K3R5 phase was entered.
+
+## K3R6 PPCP page-scope mount isolation (2026-09-21)
+
+- Scope: Docker/MariaDB active runtime only, `http://localhost:8093/`; no Studio or other runtime writes.
+- A (clean local admin page load): `/wp-admin/admin.php?page=wc-settings&tab=checkout` returned HTTP 200. Native WooCommerce Payments UI was visible, including `Payment providers` and the PayPal provider card. `#ppcp-settings-container` count was `0`. `ppcp-settings-js-index.js` was loaded. Browser Console recorded Minified React error `#299` from the PPCP settings bundle (`ReactDOM.createRoot` mount path).
+- B (separate clean page load): `/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-gateway` returned HTTP 200. `#ppcp-settings-container` count was exactly `1`; it was visible, had one child, and contained rendered PayPal Payments UI. The actionable control was visible and enabled as `Activate PayPal Payments`; `Manually Connect` was visible. No literal `Connect to PayPal` label was present in this PPCP 4.1.3 UI. No Console error or React `#299` was recorded on B. No control was clicked and no PayPal authorization was started.
+- Authenticated local-admin REST smoke: `wc-admin/features` HTTP 200; `wc-admin/options` HTTP 200; `wc_paypal/settings` HTTP 200; `wc_paypal/payment` HTTP 200; Store API products HTTP 200; Store API cart HTTP 200. A/B page requests were HTTP 200.
+- Runtime smoke: repeated home requests were HTTP 200 with approximately 0.27–0.43 s observed latency after the initial sample; WordPress container CPU was 0.01% and MariaDB container CPU was 0.02% at capture. No worker timeout or blocking runtime symptom was observed in this bounded probe.
+- Safety: no plugin/version change, WooCommerce change, patch, DOM workaround, PayPal login, Live mode, real payment, VPS write, public tunnel, or Studio write.
+
+K3R6_RESULT=PASS_CANDIDATE_K3R6_PPCP_OVERVIEW_ONLY_UI_DEFECT
+OWNER_CHECKPOINT=RETURN_OWNER_PAYPAL_SANDBOX_AUTH_REQUIRED_DOCKER
+STOP_AT_REVIEWER=YES
