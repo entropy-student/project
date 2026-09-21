@@ -911,3 +911,35 @@ Prompt-only identity lock is insufficient.
 Decision:
 do not rework VB025 during Pilot.
 Continue final high-risk beat VB044.
+
+
+---
+
+## G5 Pilot — VB044 preflight execution correction
+
+Date: 2026-09-21
+
+Detected:
+- VB044 Blueprint story prop = `UI_POLICY_PAGE_001`;
+- old asset binding/execution still referenced `UI_AI_ANSWER_001`;
+- old mode tried `DERIVE_EDIT(source=VB001)`;
+- VB001 contains the opening AI-answer shell, while VB044 needs the correct policy/source page;
+- old edit instruction simultaneously required preserving UI shell.
+
+Decision:
+`RETURN_DERIVE_SOURCE_INCOMPATIBLE`.
+
+Correction:
+- VB044 `DERIVE_EDIT → GENERATE`;
+- `source_frame_ref = null`;
+- bind `UI_POLICY_PAGE_001`;
+- preserve `composition_callback_ref = SRCH_VB001` as spatial/visual rhyme only;
+- opening/ending callback is now composition continuity, not source-image derivation.
+
+New mode counts:
+- GENERATE: 17
+- DERIVE_EDIT: 23
+- COMPOSITE_CROP: 4
+
+Next:
+generate final high-risk Pilot beat VB044.
