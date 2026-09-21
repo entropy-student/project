@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
+CURRENT_CHECKPOINT=OWNER_K3R11_DISCONNECT_CONFIRMATION_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -641,3 +641,26 @@ Current Gate: `K3R11_PUBLIC_ORIGIN_REBIND_PREP`.
 Sequence: verify rollback → official local disconnect once → verify old binding cleared → create temporary HTTPS public origin → switch WordPress origin reversibly → verify reachability → stop at Owner Manual Connect using rotated credentials. No buyer approval/capture yet.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_CONNECTION_RECONCILED_PUBLIC_ORIGIN_REBIND.md`.
+
+
+## K3R11 Rebind Prep — Owner Disconnect Confirmation
+
+Reviewer independently inspected Executor commit `29e91674322273dcb8a670b8b528a0e2c51940ec`.
+
+Accepted:
+
+```text
+ROLLBACK_POINT_VERIFIED=PASS
+DOCKER_WORDPRESS=RUNNING
+DOCKER_MARIADB=RUNNING_HEALTHY
+LOCAL_HOME_HTTP=200
+OFFICIAL_DISCONNECT_CONTROL=LOCATED
+DISCONNECT_ACTION=NOT_EXECUTED
+PUBLIC_HTTPS_ORIGIN=NOT_CREATED
+WORDPRESS_URL_REBIND=NOT_EXECUTED
+SECRET_VALUES_OUTPUT=NO
+```
+
+Current checkpoint: `OWNER_K3R11_DISCONNECT_CONFIRMATION_REQUIRED`.
+
+Owner must explicitly confirm one official PPCP Disconnect action. After confirmation, Executor may perform exactly one official Disconnect, verify redacted disconnected state/runtime health, then continue the already-authorized public-origin preparation. No credential input, checkout, capture, Live, VPS, or production-domain action is authorized at this checkpoint.
