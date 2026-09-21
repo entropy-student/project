@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED
+CURRENT_GATE=K3R11_CONNECTION_STATE_RECONCILIATION
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -595,3 +595,20 @@ Current checkpoint: `OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED`.
 Owner may perform exactly one local Sandbox Manual Connect using the rotated credentials in the local PayPal Settings page, then return only a sanitized success/fail UI result. No checkout, capture, Live, tunnel, VPS, or further mutation is authorized at this checkpoint.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_OWNER_SANDBOX_RECONNECT.md`.
+
+
+## K3R11 Owner UI Observation — Reconnect Paused
+
+Owner reached the local PayPal Settings page but no Manual Connect control is present. The UI instead shows Connection status with a Disconnect control and Business/Sandbox account metadata, while the prior Executor REST probe reported `PPCP_MERCHANT_CONNECTED=NO`.
+
+```text
+PPCP_ADMIN_UI_CONNECTION_STATE=CONNECTED_PRESENTATION
+PPCP_REST_MERCHANT_CONNECTED=NO
+OWNER_RECONNECT_ACTION=PAUSED
+DISCONNECT_AUTHORIZED=NO
+CURRENT_GATE=K3R11_CONNECTION_STATE_RECONCILIATION
+```
+
+Do not ask Owner to disconnect merely to reveal Manual Connect. Executor must perform read-only reconciliation of the UI-vs-REST state and return the smallest safe next action.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_UI_REST_CONNECTION_STATE_MISMATCH.md`.
