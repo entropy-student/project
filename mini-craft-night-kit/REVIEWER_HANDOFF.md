@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R6_PPCP_PAGE_SCOPE_MOUNT_ISOLATION
+CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_AUTH_DOCKER
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -282,3 +282,12 @@ PPCP 4.1.3 reproduces React #299 on Docker, but K3R5 also showed the direct PayP
 Formal decision: `docs/REVIEWER_DECISION_K3R6_PPCP_PAGE_SCOPE_MOUNT_ISOLATION.md`.
 
 Test the generic Payments overview and direct PayPal section in separate clean page loads. If the direct PayPal section renders correctly, continue only to the real Owner Sandbox login/consent boundary. If the direct section is broken, return without changing versions.
+
+
+## K3R6 Final PASS / Owner Sandbox Auth
+
+Formal decision: `docs/REVIEWER_DECISION_K3R6_PASS_OWNER_SANDBOX_AUTH.md`.
+
+Accepted: direct PayPal settings UI is healthy enough to continue; React #299 is an overview-page-only known nonblocking admin defect.
+
+Owner should now complete only PayPal Sandbox provider login/authorization on the Docker/MariaDB runtime at `http://localhost:8093/`. After Owner confirmation, resume the same K3 flow; do not restart earlier isolation Gates.
