@@ -163,7 +163,13 @@ Failure:
 
 ## 9. Timing & Edit Calibration
 
-Meaning decides the unit; rhythm decides the duration.
+Meaning decides the unit; **semantic rhythm decides the intended pace**.
+
+G4 owns the creative timing intent:
+- `timing_kind`;
+- fast / normal / slow / punch / build / reversal / hold / final behavior;
+- relative duration;
+- protected timing anchors where duration itself carries meaning.
 
 Current Jingsui-calibrated priors:
 - speech planning prior ≈ 5.9 Chinese chars/s;
@@ -174,11 +180,21 @@ Current Jingsui-calibrated priors:
 
 These are priors, not quotas.
 
-Accepted timing source:
-- `JINGSUI_CALIBRATED_REFERENCE`; or
-- `AUDIO_LOCKED` when real final audio exists.
+`JINGSUI_CALIBRATED_REFERENCE` durations are retained as **semantic timing priors**. They must not be blindly discarded, but they are not guaranteed to be physically feasible with the locked production voice.
 
-If later audio materially differs:
+When real voice calibration exists, G6 must solve timing under:
+`docs/SRT_AUDIO_TIMING_STANDARD.md`
+
+The exact production milliseconds are determined by:
+`semantic timing intent + measured voice feasibility + local reallocation`
+
+Important:
+- G6 must not flatten all beats to one natural speaking pace;
+- G4 must not force an audibly impossible exact window;
+- feasible reference windows should remain unchanged or close;
+- infeasible windows should borrow/donate time locally while preserving timing kind and protected anchors.
+
+If solved audio materially changes exact timing:
 `RETURN_TIMELINE_MISMATCH`
 and recompile timing only unless visual meaning changed.
 
