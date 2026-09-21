@@ -1,0 +1,4262 @@
+{
+  "episode_id": "blind-search-answer",
+  "gate": "G5C1_G5C3",
+  "status": "FAIL",
+  "canonical_rules": "docs/VISUAL_FRAME_BLUEPRINT_RULES.md",
+  "source_visual_beats": "experiments/g4r-v03/blind-search-answer/07_VISUAL_BEAT_PLAN.json",
+  "count": 44,
+  "validation": {
+    "status": "FAIL",
+    "issues": [
+      "SRCH_VB043 setup missing withheld information"
+    ]
+  },
+  "blueprints": [
+    {
+      "visual_beat_id": "SRCH_VB001",
+      "semantic_shot_id": "SRCH_S001",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "我现在看到 AI 回答下面带着“官方来源”四个字，第一反应已经不是放心了。",
+      "start": 0,
+      "end": 5.25,
+      "duration": 5.25,
+      "g4_lock": {
+        "visual_intention": "READ_REACTION",
+        "shot_size": "MEDIUM_CLOSE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "CHARACTER_REACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "看见“官方来源”后，IP 没有立刻放心",
+      "primary_focus": {
+        "object": "IP 的眼神/微妙怀疑表情",
+        "zone": "LM",
+        "salience": "face + gaze + moderate isolation"
+      },
+      "secondary_focus": {
+        "object": "显示器中很小的通用官方来源提示",
+        "zone": "RM",
+        "role": "解释反应原因"
+      },
+      "primary_zone": "LM",
+      "secondary_zone": "RM",
+      "attention_entry": "LM",
+      "attention_exit": "RM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "leave gaze space toward the causal object",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "GAZE",
+        "ISOLATION"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "cat",
+        "plant cluster",
+        "book pile",
+        "speech/thought bubble",
+        "full policy page",
+        "brand/logo",
+        "decorative title"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_SOURCE_CUE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": null,
+      "frame_delta": "普通观看 → 看见来源后仍保持谨慎",
+      "withheld_information": [
+        "政策页",
+        "服务费不退",
+        "最终反转"
+      ],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: READ_REACTION",
+        "P1 immediately readable: IP 的脸部/身体反应",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB002",
+      "semantic_shot_id": "SRCH_S001",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "是先点开看看。",
+      "start": 5.25,
+      "end": 6.74,
+      "duration": 1.49,
+      "g4_lock": {
+        "visual_intention": "FOLLOW_ACTION",
+        "shot_size": "MEDIUM_CLOSE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众跟住一个会改变状态的具体动作",
+      "primary_focus": {
+        "object": "hand/cursor moves to open the source instead",
+        "zone": "CM",
+        "salience": "actor-action relation + gesture"
+      },
+      "secondary_focus": {
+        "object": "被操作/被改变的对象",
+        "zone": "RM",
+        "role": "让动作结果可读"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "RM",
+      "attention_entry": "CM",
+      "attention_exit": "RM",
+      "transition_mode": "HOLD",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [],
+        "explanatory_overlay": "OFF",
+        "render_mode": "NONE"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry"
+      ],
+      "continuity_ref": "SRCH_VB001",
+      "frame_delta": "hand/cursor moves to open the source instead",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: hand/cursor moves to open the source instead",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB003",
+      "semantic_shot_id": "SRCH_S002",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "因为有一次，我只是想偷个懒，查一条特别简单的退款规则。\n\n问题也很具体：",
+      "start": 6.74,
+      "end": 11.97,
+      "duration": 5.23,
+      "g4_lock": {
+        "visual_intention": "ORIENT",
+        "shot_size": "MEDIUM",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "WORLD_STATE",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "快速建立当前空间/页面/状态",
+      "primary_focus": {
+        "object": "IP frames this as a tiny easy rule-check he wants to outsource",
+        "zone": "CM",
+        "salience": "scale + clear world/state relation"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "MEDIUM",
+      "density_reason": "需要建立世界/空间关系；不增加无因果装饰",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "CONTEXT",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB002",
+      "frame_delta": "IP frames this as a tiny easy rule-check he wants to outsource",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: ORIENT",
+        "P1 immediately readable: IP frames this as a tiny easy rule-check he wants to outsource",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB004",
+      "semantic_shot_id": "SRCH_S002",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "“订单退掉以后，平台收的那笔服务费，会不会一起退回来？”",
+      "start": 11.97,
+      "end": 16.02,
+      "duration": 4.05,
+      "g4_lock": {
+        "visual_intention": "NOTICE_OBJECT",
+        "shot_size": "MEDIUM_INSERT",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让一个因果物件/证据成为注意力中心",
+      "primary_focus": {
+        "object": "exact question facet lands: 平台服务费会不会退",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "EVIDENCE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB003",
+      "frame_delta": "exact question facet lands: 平台服务费会不会退",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: exact question facet lands: 平台服务费会不会退",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB005",
+      "semantic_shot_id": "SRCH_S003",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "它搜了一下。\n\n几秒钟以后，答案出来了：",
+      "start": 16.02,
+      "end": 18.71,
+      "duration": 2.69,
+      "g4_lock": {
+        "visual_intention": "FOLLOW_ACTION",
+        "shot_size": "MEDIUM",
+        "pov": "IP_POV",
+        "image_relation_grammar": "INSERT_LED"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众跟住一个会改变状态的具体动作",
+      "primary_focus": {
+        "object": "AI performs search and answer state arrives",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "stable answer-pane shell"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "REGION",
+      "continuity_preserve": [
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB004",
+      "frame_delta": "AI performs search and answer state arrives",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: AI performs search and answer state arrives",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB006",
+      "semantic_shot_id": "SRCH_S003",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "“会。退款完成后，款项会原路退回。”",
+      "start": 18.71,
+      "end": 21.39,
+      "duration": 2.68,
+      "g4_lock": {
+        "visual_intention": "SEE_CONSEQUENCE",
+        "shot_size": "INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "INSERT_LED"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众看到前一步行动已经产生现实后果",
+      "primary_focus": {
+        "object": "answer conclusion becomes focal: 会",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "stable answer-pane shell"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "REGION",
+      "continuity_preserve": [
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB005",
+      "frame_delta": "answer conclusion becomes focal: 会",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: SEE_CONSEQUENCE",
+        "P1 immediately readable: answer conclusion becomes focal: 会",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB007",
+      "semantic_shot_id": "SRCH_S003",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "下面还真的挂着一条官方帮助中心的链接。",
+      "start": 21.39,
+      "end": 24.59,
+      "duration": 3.2,
+      "g4_lock": {
+        "visual_intention": "NOTICE_OBJECT",
+        "shot_size": "MEDIUM_INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "INSERT_LED"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让一个因果物件/证据成为注意力中心",
+      "primary_focus": {
+        "object": "official help-center source appears directly under the answer",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "stable policy-page shell"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "EVIDENCE",
+      "continuity_preserve": [
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB006",
+      "frame_delta": "official help-center source appears directly under the answer",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001",
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: official help-center source appears directly under the answer",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB008",
+      "semantic_shot_id": "SRCH_S004",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "我当时那个放心程度，大概相当于老师不仅告诉你答案，还把参考答案拍在了桌上。",
+      "start": 24.59,
+      "end": 30.49,
+      "duration": 5.9,
+      "g4_lock": {
+        "visual_intention": "READ_REACTION",
+        "shot_size": "MEDIUM_CLOSE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "CHARACTER_REACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众读到人物对当前信息的即时反应",
+      "primary_focus": {
+        "object": "IP 的脸部/身体反应",
+        "zone": "LM",
+        "salience": "gaze + expression + isolation"
+      },
+      "secondary_focus": {
+        "object": "引发反应的 causal object / UI cue",
+        "zone": "RM",
+        "role": "解释人物为什么产生这个反应"
+      },
+      "primary_zone": "LM",
+      "secondary_zone": "RM",
+      "attention_entry": "LM",
+      "attention_exit": "RM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "leave gaze space toward the causal object",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "GAZE",
+        "ISOLATION"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB007",
+      "frame_delta": "IP visibly relaxes because the answer looks source-backed; no literal classroom cutaway",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: READ_REACTION",
+        "P1 immediately readable: IP 的脸部/身体反应",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB009",
+      "semantic_shot_id": "SRCH_S004",
+      "sequence_id": "SEQ1",
+      "narration_fragment": "于是我顺手就在成本表里写了一行：\n\n“服务费：可退。”",
+      "start": 30.49,
+      "end": 34.35,
+      "duration": 3.86,
+      "g4_lock": {
+        "visual_intention": "SEE_CONSEQUENCE",
+        "shot_size": "MEDIUM_INSERT",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "AI 的错误回答已经进入真实决策",
+      "primary_focus": {
+        "object": "手正在成本表写入“服务费：可退”",
+        "zone": "CM",
+        "salience": "hand + pen + isolated line"
+      },
+      "secondary_focus": {
+        "object": "酒红色袖口",
+        "zone": "LM",
+        "role": "保留角色身份线索"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "LM",
+      "attention_entry": "CU",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "DEPTH_LAYERED",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "PROP_COST_SHEET_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "PROP_COST_SHEET_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB008",
+      "frame_delta": "成本表新增一条错误判断",
+      "withheld_information": [
+        "官方政策反转"
+      ],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "PROP_COST_SHEET_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: SEE_CONSEQUENCE",
+        "P1 immediately readable: IP writes 服务费：可退 into the cost sheet",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB010",
+      "semantic_shot_id": "SRCH_S005",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "本来这件事到这里已经结束了。\n\n但我那天可能刚好手比较欠。",
+      "start": 34.35,
+      "end": 38.73,
+      "duration": 4.38,
+      "g4_lock": {
+        "visual_intention": "READ_REACTION",
+        "shot_size": "MEDIUM",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "CHARACTER_REACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众读到人物对当前信息的即时反应",
+      "primary_focus": {
+        "object": "IP 的脸部/身体反应",
+        "zone": "LM",
+        "salience": "gaze + expression + isolation"
+      },
+      "secondary_focus": {
+        "object": "引发反应的 causal object / UI cue",
+        "zone": "RM",
+        "role": "解释人物为什么产生这个反应"
+      },
+      "primary_zone": "LM",
+      "secondary_zone": "RM",
+      "attention_entry": "LM",
+      "attention_exit": "RM",
+      "transition_mode": "RESET",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "leave gaze space toward the causal object",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "GAZE",
+        "ISOLATION"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [],
+        "explanatory_overlay": "OFF",
+        "render_mode": "NONE"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "NONE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry"
+      ],
+      "continuity_ref": null,
+      "frame_delta": "task appears finished; IP is already about to move on, then hesitates",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: READ_REACTION",
+        "P1 immediately readable: IP 的脸部/身体反应",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB011",
+      "semantic_shot_id": "SRCH_S005",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "我点开了那个官方网页。",
+      "start": 38.73,
+      "end": 40.58,
+      "duration": 1.85,
+      "g4_lock": {
+        "visual_intention": "FOLLOW_ACTION",
+        "shot_size": "MEDIUM_CLOSE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众跟住一个会改变状态的具体动作",
+      "primary_focus": {
+        "object": "IP clicks the official source almost casually",
+        "zone": "CM",
+        "salience": "actor-action relation + gesture"
+      },
+      "secondary_focus": {
+        "object": "被操作/被改变的对象",
+        "zone": "RM",
+        "role": "让动作结果可读"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "RM",
+      "attention_entry": "CM",
+      "attention_exit": "RM",
+      "transition_mode": "HOLD",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB010",
+      "frame_delta": "IP clicks the official source almost casually",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: IP clicks the official source almost casually",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB012",
+      "semantic_shot_id": "SRCH_S006",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "网页没找错。\n\n标题就是退款规则。",
+      "start": 40.58,
+      "end": 42.94,
+      "duration": 2.36,
+      "g4_lock": {
+        "visual_intention": "ORIENT",
+        "shot_size": "WIDE_POV",
+        "pov": "IP_POV",
+        "image_relation_grammar": "POV_DISCOVERY"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "排除“找错网页”这个解释",
+      "primary_focus": {
+        "object": "通用官方退款规则页面标题",
+        "zone": "CU",
+        "salience": "title scale + clean whitespace"
+      },
+      "secondary_focus": {
+        "object": "低显著度官方帮助中心身份提示",
+        "zone": "LU",
+        "role": "确认来源身份"
+      },
+      "primary_zone": "CU",
+      "secondary_zone": "LU",
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "RESET",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "stable policy-page shell"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "CONTEXT",
+      "continuity_preserve": [
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB011",
+      "frame_delta": "来源链接 → 正确政策页 Context",
+      "withheld_information": [
+        "平台服务费不予退还"
+      ],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: ORIENT",
+        "P1 immediately readable: same official refund page opens; title confirms source is correct",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB013",
+      "semantic_shot_id": "SRCH_S006",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "甚至 AI 刚才那句话，也真的能在上面找到。",
+      "start": 42.94,
+      "end": 46,
+      "duration": 3.06,
+      "g4_lock": {
+        "visual_intention": "NOTICE_OBJECT",
+        "shot_size": "MEDIUM_INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "POV_DISCOVERY"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让一个因果物件/证据成为注意力中心",
+      "primary_focus": {
+        "object": "AI-cited sentence is visibly present on that same page",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "stable policy-page shell"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "EVIDENCE",
+      "continuity_preserve": [
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB012",
+      "frame_delta": "AI-cited sentence is visibly present on that same page",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001",
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: AI-cited sentence is visibly present on that same page",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB014",
+      "semantic_shot_id": "SRCH_S007",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "上面写着：\n\n“退款完成后，订单款项将退回原支付方式。”",
+      "start": 46,
+      "end": 49.71,
+      "duration": 3.71,
+      "g4_lock": {
+        "visual_intention": "NOTICE_OBJECT",
+        "shot_size": "INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "INSERT_LED"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让一个因果物件/证据成为注意力中心",
+      "primary_focus": {
+        "object": "first policy sentence is highlighted: 订单款项退回原支付方式",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "stable policy-page shell"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "EVIDENCE",
+      "continuity_preserve": [
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB013",
+      "frame_delta": "first policy sentence is highlighted: 订单款项退回原支付方式",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: first policy sentence is highlighted: 订单款项退回原支付方式",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB015",
+      "semantic_shot_id": "SRCH_S008",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "我往下又看了一行。",
+      "start": 49.71,
+      "end": 51.34,
+      "duration": 1.63,
+      "g4_lock": {
+        "visual_intention": "BUILD_ANTICIPATION",
+        "shot_size": "MATCHED_INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "POV_DISCOVERY"
+      },
+      "frame_archetype": "MATCHED_SETUP_REVEAL",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让视线从上一条政策下移，但暂不揭晓下一条",
+      "primary_focus": {
+        "object": "刚移动到下一行区域的阅读位置/光标",
+        "zone": "CM",
+        "salience": "neutral cursor/position + isolation"
+      },
+      "secondary_focus": {
+        "object": "上一条政策尾部上下文",
+        "zone": "CU",
+        "role": "建立阅读方向"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "CU",
+      "attention_entry": "CU",
+      "attention_exit": "CM",
+      "transition_mode": "WITHHOLD_REVEAL",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 4,
+      "intensity_drivers": [
+        "SPACE",
+        "ISOLATION"
+      ],
+      "background_anchors": [
+        "stable answer-pane shell"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "character",
+        "workdesk",
+        "AI answer pane",
+        "brand/logo",
+        "navigation clutter",
+        "arrows",
+        "red/green polarity",
+        "warning icon",
+        "number badge",
+        "next-line exact text"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "REGION",
+      "continuity_preserve": [
+        "UI_POLICY_PAGE_001 exact shell/crop/line spacing"
+      ],
+      "continuity_ref": "SRCH_VB014",
+      "frame_delta": "阅读焦点从上一行向下一行移动",
+      "withheld_information": [
+        "平台服务费不予退还"
+      ],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: BUILD_ANTICIPATION",
+        "P1 immediately readable: 即将发生变化的同一 causal region / 阅读位置",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB016",
+      "semantic_shot_id": "SRCH_S008",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "“平台服务费不予退还。”",
+      "start": 51.34,
+      "end": 53.48,
+      "duration": 2.14,
+      "g4_lock": {
+        "visual_intention": "EXPERIENCE_REVERSAL",
+        "shot_size": "INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "POV_DISCOVERY"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "正式揭晓服务费不退",
+      "primary_focus": {
+        "object": "“平台服务费不予退还”",
+        "zone": "CM",
+        "salience": "exact evidence + isolation"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "WITHHOLD_REVEAL",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 5,
+      "intensity_drivers": [
+        "TONE",
+        "ISOLATION"
+      ],
+      "background_anchors": [
+        "stable policy-page shell"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "character",
+        "logo",
+        "navigation",
+        "full-page text",
+        "warning icon",
+        "red exclamation",
+        "arrow",
+        "title card"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "EVIDENCE",
+      "continuity_preserve": [
+        "SRCH_VB015 exact crop/page geometry/text position"
+      ],
+      "continuity_ref": "SRCH_VB015",
+      "frame_delta": "此前隐藏的第二条政策文字现在可读",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: EXPERIENCE_REVERSAL",
+        "P1 immediately readable: reveal: 平台服务费不予退还 becomes dominant",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB017",
+      "semantic_shot_id": "SRCH_S009",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "……",
+      "start": 53.48,
+      "end": 54.88,
+      "duration": 1.4,
+      "g4_lock": {
+        "visual_intention": "READ_REACTION",
+        "shot_size": "CLOSE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "CHARACTER_REACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众读到人物对当前信息的即时反应",
+      "primary_focus": {
+        "object": "IP 的脸部/身体反应",
+        "zone": "LM",
+        "salience": "gaze + expression + isolation"
+      },
+      "secondary_focus": {
+        "object": "引发反应的 causal object / UI cue",
+        "zone": "RM",
+        "role": "解释人物为什么产生这个反应"
+      },
+      "primary_zone": "LM",
+      "secondary_zone": "RM",
+      "attention_entry": "LM",
+      "attention_exit": "RM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "leave gaze space toward the causal object",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 5,
+      "intensity_drivers": [
+        "GAZE",
+        "ISOLATION"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [],
+        "explanatory_overlay": "OFF",
+        "render_mode": "NONE"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "NONE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry"
+      ],
+      "continuity_ref": "SRCH_VB016",
+      "frame_delta": "silent hold on the contradiction",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: READ_REACTION",
+        "P1 immediately readable: IP 的脸部/身体反应",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB018",
+      "semantic_shot_id": "SRCH_S009",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "我又看了一眼 AI 的答案。\n\n“会。”",
+      "start": 54.88,
+      "end": 57.24,
+      "duration": 2.36,
+      "g4_lock": {
+        "visual_intention": "COMPARE_STATES",
+        "shot_size": "MATCHED_INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "DUAL_COMPARE",
+      "focus_mode": "DUAL",
+      "dramatic_job": "让两个状态/对象的差异直接可见",
+      "primary_focus": {
+        "object": [
+          "故事源 A 中的关键对象/短句",
+          "故事源 B 中的关键对象/短句"
+        ],
+        "zone": [
+          "LM",
+          "RM"
+        ],
+        "salience": "matched source crops + central whitespace"
+      },
+      "secondary_focus": null,
+      "primary_zone": null,
+      "secondary_zone": null,
+      "attention_entry": "LM",
+      "attention_exit": "RM",
+      "transition_mode": "HOLD",
+      "composition_mode": "BALANCED_DUAL",
+      "composition_callback_ref": null,
+      "negative_space_role": "central whitespace separates the two story sources",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 5,
+      "intensity_drivers": [
+        "SPACE",
+        "TONE"
+      ],
+      "background_anchors": [
+        "stable answer-pane shell"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "SOURCE_CROP_DUAL",
+      "continuity_preserve": [
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB017",
+      "frame_delta": "IP looks back to AI answer: 会",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "COMPOSITE_CROP",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: COMPARE_STATES",
+        "P1 immediately readable: 故事源 A 中的关键对象/短句 / 故事源 B 中的关键对象/短句",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB019",
+      "semantic_shot_id": "SRCH_S009",
+      "sequence_id": "SEQ2",
+      "narration_fragment": "再看网页。\n\n“不予退还。”",
+      "start": 57.24,
+      "end": 59.21,
+      "duration": 1.97,
+      "g4_lock": {
+        "visual_intention": "COMPARE_STATES",
+        "shot_size": "MATCHED_INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "DUAL_COMPARE",
+      "focus_mode": "DUAL",
+      "dramatic_job": "让两个状态/对象的差异直接可见",
+      "primary_focus": {
+        "object": [
+          "故事源 A 中的关键对象/短句",
+          "故事源 B 中的关键对象/短句"
+        ],
+        "zone": [
+          "LM",
+          "RM"
+        ],
+        "salience": "matched source crops + central whitespace"
+      },
+      "secondary_focus": null,
+      "primary_zone": null,
+      "secondary_zone": null,
+      "attention_entry": "LM",
+      "attention_exit": "RM",
+      "transition_mode": "HOLD",
+      "composition_mode": "BALANCED_DUAL",
+      "composition_callback_ref": null,
+      "negative_space_role": "central whitespace separates the two story sources",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 5,
+      "intensity_drivers": [
+        "SPACE",
+        "TONE"
+      ],
+      "background_anchors": [
+        "stable policy-page shell"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "SOURCE_CROP_DUAL",
+      "continuity_preserve": [
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB018",
+      "frame_delta": "IP looks back to official page: 不予退还",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "COMPOSITE_CROP",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: COMPARE_STATES",
+        "P1 immediately readable: 故事源 A 中的关键对象/短句 / 故事源 B 中的关键对象/短句",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB020",
+      "semantic_shot_id": "SRCH_S010",
+      "sequence_id": "SEQ3",
+      "narration_fragment": "这时候最奇怪的地方就出现了。\n\n它不是没联网。\n\n也不是搜到了什么野鸡论坛。",
+      "start": 59.21,
+      "end": 64.61,
+      "duration": 5.4,
+      "g4_lock": {
+        "visual_intention": "CLARIFY_MECHANISM",
+        "shot_size": "MEDIUM_WIDE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "WORLD_STATE",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "通过故事内对象关系让机制变得可理解",
+      "primary_focus": {
+        "object": "investigation rules out easy causes: not offline, not forum, not dubious source",
+        "zone": "CM",
+        "salience": "scale + clear world/state relation"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "RESET",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "MEDIUM",
+      "density_reason": "需要建立世界/空间关系；不增加无因果装饰",
+      "visual_intensity": 4,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [],
+        "explanatory_overlay": "OFF",
+        "render_mode": "NONE"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry"
+      ],
+      "continuity_ref": null,
+      "frame_delta": "investigation rules out easy causes: not offline, not forum, not dubious source",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: CLARIFY_MECHANISM",
+        "P1 immediately readable: investigation rules out easy causes: not offline, not forum, not dubious source",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB021",
+      "semantic_shot_id": "SRCH_S010",
+      "sequence_id": "SEQ3",
+      "narration_fragment": "它甚至把正确的官网放在了我面前。",
+      "start": 64.61,
+      "end": 67.62,
+      "duration": 3.01,
+      "g4_lock": {
+        "visual_intention": "SEE_CONSEQUENCE",
+        "shot_size": "MEDIUM",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众看到前一步行动已经产生现实后果",
+      "primary_focus": {
+        "object": "correct official page remains physically present as the evidence object",
+        "zone": "CM",
+        "salience": "actor-action relation + gesture"
+      },
+      "secondary_focus": {
+        "object": "被操作/被改变的对象",
+        "zone": "RM",
+        "role": "让动作结果可读"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "RM",
+      "attention_entry": "CM",
+      "attention_exit": "RM",
+      "transition_mode": "HOLD",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 4,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB020",
+      "frame_delta": "correct official page remains physically present as the evidence object",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: SEE_CONSEQUENCE",
+        "P1 immediately readable: correct official page remains physically present as the evidence object",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB022",
+      "semantic_shot_id": "SRCH_S011",
+      "sequence_id": "SEQ3",
+      "narration_fragment": "但它拿着回答“订单款项去哪儿”的那句话，回答了我“服务费退不退”的问题。",
+      "start": 67.62,
+      "end": 72.85,
+      "duration": 5.23,
+      "g4_lock": {
+        "visual_intention": "COMPARE_STATES",
+        "shot_size": "MATCHED_INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "MATCHED_INSERT"
+      },
+      "frame_archetype": "DUAL_COMPARE",
+      "focus_mode": "DUAL",
+      "dramatic_job": "让“服务费”和“订单款项”的语义错位直接可见",
+      "primary_focus": {
+        "object": [
+          "问题真实 source crop 中的“服务费”",
+          "政策真实 source crop 中的“订单款项”"
+        ],
+        "zone": [
+          "LM",
+          "RM"
+        ],
+        "salience": "matched source crops + central whitespace"
+      },
+      "secondary_focus": null,
+      "primary_zone": null,
+      "secondary_zone": null,
+      "attention_entry": "LM",
+      "attention_exit": "RM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "BALANCED_DUAL",
+      "composition_callback_ref": null,
+      "negative_space_role": "central whitespace separates the two story sources",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 4,
+      "intensity_drivers": [
+        "SPACE",
+        "TONE"
+      ],
+      "background_anchors": [
+        "stable policy-page shell"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "character",
+        "brand/logo",
+        "full chat window",
+        "full webpage",
+        "VS",
+        "!=",
+        "arrows",
+        "third explanation card",
+        "explanatory title"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "SOURCE_CROP_DUAL",
+      "continuity_preserve": [
+        "question source identity",
+        "policy source identity"
+      ],
+      "continuity_ref": "SRCH_VB021",
+      "frame_delta": "第一次把问题对象和证据对象并置",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001",
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "COMPOSITE_CROP",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: COMPARE_STATES",
+        "P1 immediately readable: 故事源 A 中的关键对象/短句 / 故事源 B 中的关键对象/短句",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB023",
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "narration_fragment": "就像我问一个人：\n\n“老板今天来不来？”",
+      "start": 72.85,
+      "end": 75.37,
+      "duration": 2.52,
+      "g4_lock": {
+        "visual_intention": "ORIENT",
+        "shot_size": "MEDIUM",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "ASSOCIATIVE_MONTAGE"
+      },
+      "frame_archetype": "RELATIONAL_TWO_SUBJECT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "快速建立当前空间/页面/状态",
+      "primary_focus": {
+        "object": "analogy question: 老板今天来不来",
+        "zone": "CM",
+        "salience": "scale + clear world/state relation"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "RESET",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "minimal analogy-space anchor"
+      ],
+      "story_props": [
+        "PROP_CONTACT_BOOK_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "NONE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "PROP_CONTACT_BOOK_001 shell/geometry"
+      ],
+      "continuity_ref": null,
+      "frame_delta": "analogy question: 老板今天来不来",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001",
+          "TEMP_ANALOGY_ACTOR_001"
+        ],
+        "scene_refs": [
+          "SCENE_PHONEBOOK_ANALOGY_001"
+        ],
+        "prop_ui_refs": [
+          "PROP_CONTACT_BOOK_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: ORIENT",
+        "P1 immediately readable: analogy question: 老板今天来不来",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB024",
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "narration_fragment": "他翻开通讯录，准确找到了老板那一页，然后特别自信地告诉我：",
+      "start": 75.37,
+      "end": 79.92,
+      "duration": 4.55,
+      "g4_lock": {
+        "visual_intention": "SEE_CONSEQUENCE",
+        "shot_size": "MEDIUM_INSERT",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "ASSOCIATIVE_MONTAGE"
+      },
+      "frame_archetype": "RELATIONAL_TWO_SUBJECT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众看到前一步行动已经产生现实后果",
+      "primary_focus": {
+        "object": "person accurately opens the boss's correct contact record",
+        "zone": "CM",
+        "salience": "scale + clear world/state relation"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "minimal analogy-space anchor"
+      ],
+      "story_props": [
+        "PROP_CONTACT_BOOK_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "NONE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "PROP_CONTACT_BOOK_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB023",
+      "frame_delta": "person accurately opens the boss's correct contact record",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001",
+          "TEMP_ANALOGY_ACTOR_001"
+        ],
+        "scene_refs": [
+          "SCENE_PHONEBOOK_ANALOGY_001"
+        ],
+        "prop_ui_refs": [
+          "PROP_CONTACT_BOOK_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: SEE_CONSEQUENCE",
+        "P1 immediately readable: person accurately opens the boss's correct contact record",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB025",
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "narration_fragment": "“老板电话是 138……”\n\n资料没找错。\n\n答案还是没回答问题。",
+      "start": 79.92,
+      "end": 83.91,
+      "duration": 3.99,
+      "g4_lock": {
+        "visual_intention": "LAND_PAYOFF",
+        "shot_size": "MEDIUM_TWO_SHOT",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "ASSOCIATIVE_MONTAGE"
+      },
+      "frame_archetype": "RELATIONAL_TWO_SUBJECT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "用类比证明资料找对仍可能答非所问",
+      "primary_focus": {
+        "object": "临时角色自信展示正确老板通讯录/电话号码",
+        "zone": "RM",
+        "salience": "gesture + contact prop"
+      },
+      "secondary_focus": {
+        "object": "IP 困惑反应",
+        "zone": "LM",
+        "role": "让答非所问无需解释即可成立"
+      },
+      "primary_zone": "RM",
+      "secondary_zone": "LM",
+      "attention_entry": "RM",
+      "attention_exit": "LM",
+      "transition_mode": "HOLD",
+      "composition_mode": "WEIGHTED_DUAL",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "stable answer-pane shell"
+      ],
+      "story_props": [
+        "PROP_CONTACT_BOOK_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "AI UI",
+        "giant phone screen",
+        "contact-list wall",
+        "bubble",
+        "title",
+        "arrow",
+        "complex office"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "PROP_ONLY",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "PROP_CONTACT_BOOK_001 shell/geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB024",
+      "frame_delta": "正确老板记录已经找到，但回答落在电话号码而非“来不来”",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001",
+          "TEMP_ANALOGY_ACTOR_001"
+        ],
+        "scene_refs": [
+          "SCENE_PHONEBOOK_ANALOGY_001"
+        ],
+        "prop_ui_refs": [
+          "PROP_CONTACT_BOOK_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: LAND_PAYOFF",
+        "P1 immediately readable: wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB026",
+      "semantic_shot_id": "SRCH_S013",
+      "sequence_id": "SEQ5",
+      "narration_fragment": "我后来又试了一次。\n\n这次没问它“答案是什么”。\n\n我只问：",
+      "start": 83.91,
+      "end": 87.62,
+      "duration": 3.71,
+      "g4_lock": {
+        "visual_intention": "FOLLOW_ACTION",
+        "shot_size": "MEDIUM",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众跟住一个会改变状态的具体动作",
+      "primary_focus": {
+        "object": "back at desk, IP changes strategy: no longer asks for conclusion first",
+        "zone": "CM",
+        "salience": "actor-action relation + gesture"
+      },
+      "secondary_focus": {
+        "object": "被操作/被改变的对象",
+        "zone": "RM",
+        "role": "让动作结果可读"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "RM",
+      "attention_entry": "CM",
+      "attention_exit": "RM",
+      "transition_mode": "RESET",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [],
+        "explanatory_overlay": "OFF",
+        "render_mode": "NONE"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "NONE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry"
+      ],
+      "continuity_ref": null,
+      "frame_delta": "back at desk, IP changes strategy: no longer asks for conclusion first",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: back at desk, IP changes strategy: no longer asks for conclusion first",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB027",
+      "semantic_shot_id": "SRCH_S013",
+      "sequence_id": "SEQ5",
+      "narration_fragment": "“你引用的网页里，哪一句话明确说明服务费会退？”",
+      "start": 87.62,
+      "end": 91.16,
+      "duration": 3.54,
+      "g4_lock": {
+        "visual_intention": "NOTICE_OBJECT",
+        "shot_size": "MEDIUM_INSERT",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让一个因果物件/证据成为注意力中心",
+      "primary_focus": {
+        "object": "new evidence challenge is focal: 哪一句明确说明服务费会退",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "EVIDENCE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB026",
+      "frame_delta": "new evidence challenge is focal: 哪一句明确说明服务费会退",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001",
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: new evidence challenge is focal: 哪一句明确说明服务费会退",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB028",
+      "semantic_shot_id": "SRCH_S014",
+      "sequence_id": "SEQ5",
+      "narration_fragment": "它重新看了一遍。",
+      "start": 91.16,
+      "end": 92.5,
+      "duration": 1.34,
+      "g4_lock": {
+        "visual_intention": "FOLLOW_ACTION",
+        "shot_size": "MEDIUM",
+        "pov": "IP_POV",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众跟住一个会改变状态的具体动作",
+      "primary_focus": {
+        "object": "AI returns attention to the same official page",
+        "zone": "CM",
+        "salience": "actor-action relation + gesture"
+      },
+      "secondary_focus": {
+        "object": "被操作/被改变的对象",
+        "zone": "RM",
+        "role": "让动作结果可读"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "RM",
+      "attention_entry": "CM",
+      "attention_exit": "RM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB027",
+      "frame_delta": "AI returns attention to the same official page",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: AI returns attention to the same official page",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB029",
+      "semantic_shot_id": "SRCH_S014",
+      "sequence_id": "SEQ5",
+      "narration_fragment": "然后答案变了。",
+      "start": 92.5,
+      "end": 93.99,
+      "duration": 1.49,
+      "g4_lock": {
+        "visual_intention": "EXPERIENCE_REVERSAL",
+        "shot_size": "MATCHED_INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让反转信息本身成为故事变化",
+      "primary_focus": {
+        "object": "same answer pane changes conclusion after evidence check",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "WITHHOLD_REVEAL",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "stable policy-page shell"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001",
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "EVIDENCE",
+      "continuity_preserve": [
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB028",
+      "frame_delta": "same answer pane changes conclusion after evidence check",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001",
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: EXPERIENCE_REVERSAL",
+        "P1 immediately readable: same answer pane changes conclusion after evidence check",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB030",
+      "semantic_shot_id": "SRCH_S015",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "因为“搜到网页”和“用对网页里的证据”，其实是两件事。",
+      "start": 93.99,
+      "end": 97.7,
+      "duration": 3.71,
+      "g4_lock": {
+        "visual_intention": "CLARIFY_MECHANISM",
+        "shot_size": "MEDIUM_WIDE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "WORLD_STATE",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "通过故事内对象关系让机制变得可理解",
+      "primary_focus": {
+        "object": "whole correct page is shown as one evidence object",
+        "zone": "CM",
+        "salience": "scale + clear world/state relation"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "RESET",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "MEDIUM",
+      "density_reason": "需要建立世界/空间关系；不增加无因果装饰",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": null,
+      "frame_delta": "whole correct page is shown as one evidence object",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: CLARIFY_MECHANISM",
+        "P1 immediately readable: whole correct page is shown as one evidence object",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB031",
+      "semantic_shot_id": "SRCH_S015",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "搜索做的，是把可能有用的资料拿回来。",
+      "start": 97.7,
+      "end": 100.88,
+      "duration": 3.18,
+      "g4_lock": {
+        "visual_intention": "NOTICE_OBJECT",
+        "shot_size": "MEDIUM_INSERT",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让一个因果物件/证据成为注意力中心",
+      "primary_focus": {
+        "object": "attention narrows from whole page to the exact supporting sentence",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "EVIDENCE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB030",
+      "frame_delta": "attention narrows from whole page to the exact supporting sentence",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: attention narrows from whole page to the exact supporting sentence",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB032",
+      "semantic_shot_id": "SRCH_S016",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "但资料回来以后，模型还得判断：\n\n哪一句跟你的问题真正对应。\n\n哪些只是看起来很像。",
+      "start": 100.88,
+      "end": 106.78,
+      "duration": 5.9,
+      "g4_lock": {
+        "visual_intention": "CLARIFY_MECHANISM",
+        "shot_size": "MEDIUM_WIDE",
+        "pov": "OBSERVER_WITH_POV",
+        "image_relation_grammar": "MONTAGE"
+      },
+      "frame_archetype": "WORLD_STATE",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "通过故事内对象关系让机制变得可理解",
+      "primary_focus": {
+        "object": "same question-page workspace compares true correspondence vs merely similar wording",
+        "zone": "CM",
+        "salience": "scale + clear world/state relation"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "MEDIUM",
+      "density_reason": "需要建立世界/空间关系；不增加无因果装饰",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB031",
+      "frame_delta": "same question-page workspace compares true correspondence vs merely similar wording",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: CLARIFY_MECHANISM",
+        "P1 immediately readable: same question-page workspace compares true correspondence vs merely similar wording",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB033",
+      "semantic_shot_id": "SRCH_S016",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "有没有例外。",
+      "start": 106.78,
+      "end": 107.98,
+      "duration": 1.2,
+      "g4_lock": {
+        "visual_intention": "NOTICE_OBJECT",
+        "shot_size": "INSERT",
+        "pov": "IP_POV",
+        "image_relation_grammar": "MONTAGE"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让一个因果物件/证据成为注意力中心",
+      "primary_focus": {
+        "object": "exception line becomes explicit check point",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "stable policy-page shell"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "NONE",
+      "continuity_preserve": [
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB032",
+      "frame_delta": "exception line becomes explicit check point",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: exception line becomes explicit check point",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB034",
+      "semantic_shot_id": "SRCH_S016",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "几句话放在一起以后，结论到底是什么。",
+      "start": 107.98,
+      "end": 110.84,
+      "duration": 2.86,
+      "g4_lock": {
+        "visual_intention": "CLARIFY_MECHANISM",
+        "shot_size": "MEDIUM_WIDE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "MONTAGE"
+      },
+      "frame_archetype": "WORLD_STATE",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "通过故事内对象关系让机制变得可理解",
+      "primary_focus": {
+        "object": "multiple relevant lines are considered together before final conclusion",
+        "zone": "CM",
+        "salience": "scale + clear world/state relation"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "MEDIUM",
+      "density_reason": "需要建立世界/空间关系；不增加无因果装饰",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [],
+        "explanatory_overlay": "OFF",
+        "render_mode": "NONE"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "NONE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry"
+      ],
+      "continuity_ref": "SRCH_VB033",
+      "frame_delta": "multiple relevant lines are considered together before final conclusion",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: CLARIFY_MECHANISM",
+        "P1 immediately readable: multiple relevant lines are considered together before final conclusion",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB035",
+      "semantic_shot_id": "SRCH_S017",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "这一步如果错了，就会出现一种特别有迷惑性的答案：\n\n来源是真的。\n\n链接也是真的。",
+      "start": 110.84,
+      "end": 116.57,
+      "duration": 5.73,
+      "g4_lock": {
+        "visual_intention": "BUILD_PATTERN",
+        "shot_size": "MEDIUM_WIDE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "WORLD_STATE",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让多个真实状态形成一个可识别模式",
+      "primary_focus": {
+        "object": "one answer package remains on screen while source and link are confirmed real",
+        "zone": "CM",
+        "salience": "scale + clear world/state relation"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "MEDIUM",
+      "density_reason": "需要建立世界/空间关系；不增加无因果装饰",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB034",
+      "frame_delta": "one answer package remains on screen while source and link are confirmed real",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: BUILD_PATTERN",
+        "P1 immediately readable: one answer package remains on screen while source and link are confirmed real",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB036",
+      "semantic_shot_id": "SRCH_S017",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "甚至引用的句子也是真的。",
+      "start": 116.57,
+      "end": 118.59,
+      "duration": 2.02,
+      "g4_lock": {
+        "visual_intention": "NOTICE_OBJECT",
+        "shot_size": "MEDIUM_INSERT",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让一个因果物件/证据成为注意力中心",
+      "primary_focus": {
+        "object": "quoted sentence is also confirmed real",
+        "zone": "CM",
+        "salience": "tight crop + isolation + exact causal state"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "HOLD",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [],
+        "explanatory_overlay": "OFF",
+        "render_mode": "NONE"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "EVIDENCE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry"
+      ],
+      "continuity_ref": "SRCH_VB035",
+      "frame_delta": "quoted sentence is also confirmed real",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: NOTICE_OBJECT",
+        "P1 immediately readable: quoted sentence is also confirmed real",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB037",
+      "semantic_shot_id": "SRCH_S017",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "只有最后那个结论，是错的。",
+      "start": 118.59,
+      "end": 120.93,
+      "duration": 2.34,
+      "g4_lock": {
+        "visual_intention": "LAND_PAYOFF",
+        "shot_size": "MEDIUM_CLOSE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让 payoff 通过行为/结果落地",
+      "primary_focus": {
+        "object": "final conclusion alone remains mismatched/wrong",
+        "zone": "CM",
+        "salience": "actor-action relation + gesture"
+      },
+      "secondary_focus": {
+        "object": "被操作/被改变的对象",
+        "zone": "RM",
+        "role": "让动作结果可读"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "RM",
+      "attention_entry": "CM",
+      "attention_exit": "RM",
+      "transition_mode": "HOLD",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 3,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [],
+        "explanatory_overlay": "OFF",
+        "render_mode": "NONE"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "NONE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry"
+      ],
+      "continuity_ref": "SRCH_VB036",
+      "frame_delta": "final conclusion alone remains mismatched/wrong",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: LAND_PAYOFF",
+        "P1 immediately readable: final conclusion alone remains mismatched/wrong",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB038",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。",
+      "start": 120.93,
+      "end": 123.95,
+      "duration": 3.02,
+      "g4_lock": {
+        "visual_intention": "READ_REACTION",
+        "shot_size": "MEDIUM_CLOSE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "CHARACTER_REACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众读到人物对当前信息的即时反应",
+      "primary_focus": {
+        "object": "IP 的脸部/身体反应",
+        "zone": "LM",
+        "salience": "gaze + expression + isolation"
+      },
+      "secondary_focus": {
+        "object": "引发反应的 causal object / UI cue",
+        "zone": "RM",
+        "role": "解释人物为什么产生这个反应"
+      },
+      "primary_zone": "LM",
+      "secondary_zone": "RM",
+      "attention_entry": "LM",
+      "attention_exit": "RM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "leave gaze space toward the causal object",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "GAZE",
+        "ISOLATION"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB037",
+      "frame_delta": "IP sees a cited AI answer but does not treat the citation badge as proof by itself",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "GENERATE",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: READ_REACTION",
+        "P1 immediately readable: IP 的脸部/身体反应",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB039",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "如果答案不重要，我当然也不会每次都去查。",
+      "start": 123.95,
+      "end": 126.47,
+      "duration": 2.52,
+      "g4_lock": {
+        "visual_intention": "FEEL_RELATION",
+        "shot_size": "MEDIUM",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众感受到两个状态/选择之间的关系",
+      "primary_focus": {
+        "object": "a low-stakes answer passes without a verification ritual; IP keeps working normally",
+        "zone": "CM",
+        "salience": "actor-action relation + gesture"
+      },
+      "secondary_focus": {
+        "object": "被操作/被改变的对象",
+        "zone": "RM",
+        "role": "让动作结果可读"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "RM",
+      "attention_entry": "CM",
+      "attention_exit": "RM",
+      "transition_mode": "HOLD",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB038",
+      "frame_delta": "a low-stakes answer passes without a verification ritual; IP keeps working normally",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: FEEL_RELATION",
+        "P1 immediately readable: a low-stakes answer passes without a verification ritual; IP keeps working normally",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB040",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "但如果这件事真的会让我花钱、改方案，或者做一个很难撤回来的决定，",
+      "start": 126.47,
+      "end": 130.85,
+      "duration": 4.38,
+      "g4_lock": {
+        "visual_intention": "COMPARE_STATES",
+        "shot_size": "MEDIUM_WIDE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "DUAL_COMPARE",
+      "focus_mode": "DUAL",
+      "dramatic_job": "让两个状态/对象的差异直接可见",
+      "primary_focus": {
+        "object": [
+          "故事源 A 中的关键对象/短句",
+          "故事源 B 中的关键对象/短句"
+        ],
+        "zone": [
+          "LM",
+          "RM"
+        ],
+        "salience": "matched source crops + central whitespace"
+      },
+      "secondary_focus": null,
+      "primary_zone": null,
+      "secondary_zone": null,
+      "attention_entry": "LM",
+      "attention_exit": "RM",
+      "transition_mode": "HOLD",
+      "composition_mode": "BALANCED_DUAL",
+      "composition_callback_ref": null,
+      "negative_space_role": "central whitespace separates the two story sources",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "SPACE",
+        "TONE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "SOURCE_CROP_DUAL",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB039",
+      "frame_delta": "money / plan / hard-to-reverse consequences enter the working decision space and cause a visible stop",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "COMPOSITE_CROP",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: COMPARE_STATES",
+        "P1 immediately readable: 故事源 A 中的关键对象/短句 / 故事源 B 中的关键对象/短句",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB041",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "我会多问一句：",
+      "start": 130.85,
+      "end": 132.2,
+      "duration": 1.35,
+      "g4_lock": {
+        "visual_intention": "FOLLOW_ACTION",
+        "shot_size": "MEDIUM_CLOSE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众跟住一个会改变状态的具体动作",
+      "primary_focus": {
+        "object": "IP pauses before action and turns back to the source/answer with one deliberate follow-up",
+        "zone": "CM",
+        "salience": "actor-action relation + gesture"
+      },
+      "secondary_focus": {
+        "object": "被操作/被改变的对象",
+        "zone": "RM",
+        "role": "让动作结果可读"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "RM",
+      "attention_entry": "CM",
+      "attention_exit": "RM",
+      "transition_mode": "HOLD",
+      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_AI_ANSWER_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_CAUSAL_UI",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_AI_ANSWER_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB040",
+      "frame_delta": "IP pauses before action and turns back to the source/answer with one deliberate follow-up",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: IP pauses before action and turns back to the source/answer with one deliberate follow-up",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB042",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "“这个来源里的哪句话，真的支持你的结论？”",
+      "start": 132.2,
+      "end": 135.55,
+      "duration": 3.35,
+      "g4_lock": {
+        "visual_intention": "FOLLOW_ACTION",
+        "shot_size": "MEDIUM_INSERT",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTRAST"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "让观众跟住一个会改变状态的具体动作",
+      "primary_focus": {
+        "object": "verification question becomes the action: 哪句话真的支持这个结论",
+        "zone": "CM",
+        "salience": "actor-action relation + gesture"
+      },
+      "secondary_focus": {
+        "object": "被操作/被改变的对象",
+        "zone": "RM",
+        "role": "让动作结果可读"
+      },
+      "primary_zone": "CM",
+      "secondary_zone": "RM",
+      "attention_entry": "CM",
+      "attention_exit": "RM",
+      "transition_mode": "HOLD",
+      "composition_mode": "DEPTH_LAYERED",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [],
+        "explanatory_overlay": "OFF",
+        "render_mode": "NONE"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "NONE",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry"
+      ],
+      "continuity_ref": "SRCH_VB041",
+      "frame_delta": "verification question becomes the action: 哪句话真的支持这个结论",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: FOLLOW_ACTION",
+        "P1 immediately readable: verification question becomes the action: 哪句话真的支持这个结论",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB043",
+      "semantic_shot_id": "SRCH_S019",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "因为 AI 搜索最容易让我放松警惕的地方，可能恰恰就是——",
+      "start": 135.55,
+      "end": 139.62,
+      "duration": 4.07,
+      "g4_lock": {
+        "visual_intention": "BUILD_ANTICIPATION",
+        "shot_size": "MEDIUM_CLOSE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "MATCHED_SETUP_REVEAL",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "建立下一状态即将发生、但尚未揭晓的期待",
+      "primary_focus": {
+        "object": "即将发生变化的同一 causal region / 阅读位置",
+        "zone": "CM",
+        "salience": "position continuity + isolation"
+      },
+      "secondary_focus": null,
+      "primary_zone": "CM",
+      "secondary_zone": null,
+      "attention_entry": "CM",
+      "attention_exit": "CM",
+      "transition_mode": "WITHHOLD_REVEAL",
+      "composition_mode": "CENTER_NEAR_CENTER",
+      "composition_callback_ref": null,
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "SPACE",
+        "ISOLATION"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "real/invented brand logos",
+        "speech/thought bubbles",
+        "floating info cards",
+        "decorative arrows",
+        "narration duplicated as large text",
+        "non-causal decorative clutter",
+        "full webpage/chat chrome not required by this Beat",
+        "random navigation/sidebar/ads"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "REGION",
+      "continuity_preserve": [
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "UI_POLICY_PAGE_001 shell/geometry"
+      ],
+      "continuity_ref": "SRCH_VB042",
+      "frame_delta": "final setup returns to the seductive feeling of a correct webpage",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: BUILD_ANTICIPATION",
+        "P1 immediately readable: 即将发生变化的同一 causal region / 阅读位置",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    },
+    {
+      "visual_beat_id": "SRCH_VB044",
+      "semantic_shot_id": "SRCH_S019",
+      "sequence_id": "SEQ6",
+      "narration_fragment": "它真的给我找对了网页。",
+      "start": 139.62,
+      "end": 142.21,
+      "duration": 2.59,
+      "g4_lock": {
+        "visual_intention": "LAND_PAYOFF",
+        "shot_size": "MEDIUM_CLOSE",
+        "pov": "OBSERVER",
+        "image_relation_grammar": "CONTINUITY"
+      },
+      "frame_archetype": "CHARACTER_ACTION",
+      "focus_mode": "SINGLE",
+      "dramatic_job": "用行为变化完成整期观点",
+      "primary_focus": {
+        "object": "IP 主动点击来源进行核验",
+        "zone": "RM",
+        "salience": "hand/cursor + deliberate gaze"
+      },
+      "secondary_focus": {
+        "object": "平静、确认式人物表情",
+        "zone": "LM",
+        "role": "与开头反应形成回扣"
+      },
+      "primary_zone": "RM",
+      "secondary_zone": "LM",
+      "attention_entry": "LM",
+      "attention_exit": "RM",
+      "transition_mode": "HANDOFF",
+      "composition_mode": "CALLBACK_MATCH",
+      "composition_callback_ref": "SRCH_VB001",
+      "negative_space_role": "protect P1 from competing information",
+      "density": "LOW",
+      "density_reason": "单 Beat 只保留当前因果信息",
+      "visual_intensity": 2,
+      "intensity_drivers": [
+        "ISOLATION",
+        "SCALE"
+      ],
+      "background_anchors": [
+        "fixed desk edge",
+        "fixed monitor position",
+        "one quiet world anchor"
+      ],
+      "story_props": [
+        "UI_POLICY_PAGE_001"
+      ],
+      "remove_or_suppress": [
+        "summary checklist",
+        "lesson card",
+        "large moral text",
+        "brand/logo",
+        "cat",
+        "extra decorative props",
+        "full policy page"
+      ],
+      "text_policy": {
+        "caption_layer": "SEPARATE",
+        "diegetic_text": [
+          "only causal exact phrase/state required by the Beat"
+        ],
+        "explanatory_overlay": "OFF",
+        "render_mode": "POST_OVERLAY"
+      },
+      "brand_mode": "NONE",
+      "ui_mode": "MINIMAL_SOURCE_CUE",
+      "continuity_preserve": [
+        "CHAR_IP_001",
+        "SCENE_WORKDESK_001",
+        "opening character-monitor geometry"
+      ],
+      "continuity_ref": "SRCH_VB043",
+      "frame_delta": "同样看见来源，但行为从迟疑/被动接受变成主动核验",
+      "withheld_information": [],
+      "asset_binding": {
+        "character_refs": [
+          "CHAR_IP_001"
+        ],
+        "scene_refs": [
+          "SCENE_WORKDESK_001"
+        ],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
+        ],
+        "style_refs": [
+          "STYLE_CHANNEL_001"
+        ]
+      },
+      "execution_mode": "DERIVE_EDIT",
+      "subtitle_safe_check": "PASS",
+      "acceptance_criteria": [
+        "G4 intent preserved: LAND_PAYOFF",
+        "P1 immediately readable: opening callback resolves: official page is correct, and IP clicks/checks it before accepting the conclusion",
+        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "caption-safe and readable at reduced size",
+        "only current Beat information is visible"
+      ]
+    }
+  ]
+}
