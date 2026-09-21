@@ -22,15 +22,44 @@
 - `topic-ledger/calendar/YYYY-MM.md`
 - `topic-ledger/daily/YYYY-MM-DD.json`
 
+## 2.5 Independent Axes
+
+The planner must keep these separate:
+
+- `Lane = HOT / EVERGREEN`
+- `Business Job = DISCOVERY / TRUST / SOLUTION`
+- `Editorial Mode = STORY_MODEL / STORY_ACTION`
+
+HOT is a supply source, not an editorial format.
+
 ## 3. Daily Selection
 
 1. Fetch and verify current public AI signals.
 2. Cluster duplicate coverage of the same event.
-3. Run Human Relevance / Mechanism Integrity / One Mechanism / Storyability / Non-trivial Payoff / Audience Fit gates.
+3. Run Human Relevance / Mechanism Integrity / One Mechanism / Storyability / Non-trivial Payoff / Audience Fit gates. For HOT candidates, also run Remove-the-brand / Durable mechanism / Human consequence / Half-life fit.
 4. Run semantic duplicate gates against Topic Registry and recent story/visual motifs.
 5. If a qualified HOT candidate exists, it may override the nearest unlocked `planned` slot.
 6. Otherwise select a non-duplicate Evergreen candidate.
 7. Maintain today + next 6 days.
+
+### HOT candidate rule
+
+A HOT candidate should preferably satisfy:
+
+```text
+current event
+→ concrete human consequence
+→ durable AI mechanism
+→ story-worthy conflict
+```
+
+Reject / deprioritize:
+- financing / personnel / benchmark news with no human consequence;
+- model-number updates whose effect cannot be felt by the target audience;
+- events that only work while company/product names remain in the title;
+- topics whose useful half-life is shorter than current production latency.
+
+During Season 0 Week 1, keep the baseline mostly Evergreen but allow 1–2 qualified HOT episodes if available. This is a test allowance, not a quota.
 
 ## 4. Editorial Mode
 
@@ -74,7 +103,8 @@ The Daily Radar must NOT:
 - modify locked/published slots;
 - enter G4 or later production gates;
 - claim DAILY_PRODUCTION_CAPABILITY;
-- relax KnowledgeCore or duplicate gates for a hot topic.
+- relax KnowledgeCore or duplicate gates for a hot topic;
+- force a HOT slot merely to satisfy a percentage target.
 
 Production throughput remains:
 `UNPROVEN until G4–G7 evidence`.
