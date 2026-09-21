@@ -1,4 +1,4 @@
-# Low-Level Execution Package v0.2
+# Low-Level Execution Package v0.3
 
 ## 1. Purpose
 
@@ -40,6 +40,9 @@ Antigravity must not reinterpret either layer.
 Canonical visual baseline:
 `docs/PRODUCTION_VISUAL_STYLE.md`
 
+Canonical recurring-character identity:
+`docs/CHARACTER_IDENTITY_LOCK.md`
+
 ## 3. Package Structure
 
 - 00_EXECUTION_ORDER.md
@@ -76,7 +79,16 @@ Antigravity 使用 locked script / SRT 和指定 voice config 生成语音；生
 
 人物一致性必须由输入包解决，不能交给 Executor“尽量保持”。每个正式角色建立唯一 Character ID，例如 `CHAR_001`。
 
-每个角色至少锁定：canonical front / 3/4 / side references、脸型、五官、发型/发色、年龄感、身材比例、固定服装、固定配饰、固定主色、禁止变化项、可变化的表情/姿势/朝向。
+每个角色至少锁定：canonical front / 3/4 / side references、脸型、五官、发型/发色、年龄/成熟度、身材比例、固定服装、固定配饰、固定主色、禁止变化项、可变化的表情/姿势/朝向。
+
+对 `CHAR_IP_001`：
+- 必须明确读作成年青年男性；
+- 不允许少年化 / 童颜化 / Q版化；
+- 不允许放大眼睛、缩短圆化下颌、弱化鼻部结构；
+- 不允许成人比例被缩成少年/吉祥物比例；
+- 不允许酒红色米白领上衣被 hoodie 等其他服装替换。
+
+风格简化只能减少绘制细节，不能简化身份解剖。
 
 任何包含该角色的新图：
 
@@ -84,7 +96,9 @@ Antigravity 使用 locked script / SRT 和指定 voice config 生成语音；生
 2. 必须携带 canonical reference image；
 3. Prompt 必须复述 identity lock；
 4. 连续镜头可再附上一张上一镜通过图作为 continuity reference；
-5. 不允许 Executor 自己重新设计人物。
+5. `DERIVE_EDIT` 仍必须携带 canonical identity reference，source frame 不可单独作为人物真源；
+6. 若上一张已发生年龄/脸型/服装漂移，不得继续派生，必须回到最近一张通过图；
+7. 不允许 Executor 自己重新设计人物。
 
 身份漂移：`RETURN_CHARACTER_DRIFT`，不得继续剪辑。
 
@@ -129,7 +143,10 @@ Antigravity 不自行改 start/end。若最终音频改变导致时间轴不匹�
 |---|---|
 | image_id | 唯一图片编号 |
 | shot_id | 服务哪个镜头 |
-| prompt | 完整最终 Prompt |
+| execution_mode | GENERATE / DERIVE_EDIT / COMPOSITE_CROP |
+| prompt | GENERATE 时的完整最终 Prompt |
+| source_frame_ref | DERIVE_EDIT 的已通过源图 |
+| identity_lock | 人物身份/成熟度/服装 Hard Lock |
 | negative_constraints | 禁止项 |
 | character_refs | 人物参考图 |
 | scene_refs | 场景参考图 |
@@ -142,7 +159,13 @@ Antigravity 不自行改 start/end。若最终音频改变导致时间轴不匹�
 | output_name | 文件名 |
 | acceptance | 验收条件 |
 
-Prompt 必须是可直接执行版本。Antigravity 不负责改 Prompt、补美术方向、猜角色身份、猜场景或猜构图。
+Prompt / Edit 指令必须是可直接执行版本。Antigravity 不负责改 Prompt、补美术方向、猜角色身份、猜场景或猜构图。
+
+Owner image-production policy:
+- 人物 / 场景 / UI / 表格 / 证据页的视觉资产仍以生图/图像编辑模型为主；
+- `COMPOSITE_CROP` 只裁切/组合已经通过 QA 的图像源；
+- 不把 HTML / SVG / Pillow 等代码绘制 UI/表格作为当前默认生产路径；
+- exact text 仍可按 `POST_OVERLAY` 规则后期覆盖。
 
 ## 9. Motion Policy
 
