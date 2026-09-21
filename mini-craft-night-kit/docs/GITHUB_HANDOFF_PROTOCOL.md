@@ -1,7 +1,7 @@
 # Mini Craft Night Kit — GitHub Reviewer / Executor Handoff Protocol
 
-Last reviewed: 2026-09-18  
-Status: **TRIAL APPROVED**
+Last reviewed: 2026-09-21  
+Status: **V2 TRIAL — ORIGINAL GOVERNANCE INHERITED**
 
 ## 1. Goal
 
@@ -133,3 +133,203 @@ CLEANUP_AFTER_OWNER_RUN=<what is removed and when>
 Executor must not delete or move any helper needed by the Owner before the Owner checkpoint is completed. Cleanup may remove container-temporary copies only if the Owner wrapper deterministically recreates them from a retained local source on every run and that exact path is verified after cleanup.
 
 A syntax/lint check alone is not sufficient for Owner checkpoint readiness. The exact wrapper/staging chain must be validated after cleanup.
+
+
+## 9. V2 — Inherit the original Reviewer / Executor Governance
+
+This GitHub protocol is a transport/audit implementation of the original project-management governance. It does **not** replace the governance model.
+
+Canonical flow:
+
+```text
+Owner
+  ↓
+Reviewer / Architect / Gatekeeper
+  ↓
+Execution Agent
+  ↓
+Raw Evidence + Actual Artifacts
+  ↓
+Reviewer Independent Verification
+  ↓
+PASS / RETURN
+```
+
+Core invariants:
+
+- Execution Agent is not a second Reviewer.
+- `PASS_CANDIDATE != PASS`.
+- GitHub is the message bus / evidence surface, not an authority that makes Executor claims true.
+- Reviewer must independently inspect enough source, diff, runtime read-back, raw evidence, screenshots or artifacts to support the decision.
+- A conclusion written by Executor is a navigation hint only until Reviewer verifies the underlying material.
+- Unknown state must remain `UNKNOWN`; do not fill gaps from old plans, README, or Executor inference.
+- Accepted Gates are not rerun unless fresh material drift exists.
+
+## 10. Handoff roles — V2
+
+### `EXECUTOR_HANDOFF.md`
+
+Purpose: **navigation only**.
+
+It should answer briefly:
+
+- what changed;
+- what result Executor claims;
+- where the actual evidence is;
+- what Reviewer must inspect;
+- why Executor stopped.
+
+It must not be treated as sufficient evidence for a Reviewer PASS.
+
+### `EXECUTION_EVIDENCE.md`
+
+Purpose: append-only execution evidence index / bounded evidence summary.
+
+It should contain sanitized command/result facts and point to reviewable artifacts.
+
+### `review-packets/<GATE>/`
+
+Purpose: Reviewer-verifiable material for nontrivial Gates.
+
+Required for:
+
+- diagnostic RETURNs;
+- payment/auth/webhook work;
+- database/runtime migrations;
+- architecture changes;
+- production/deploy work;
+- UI/visual acceptance where source evidence alone is insufficient;
+- any Gate where the implementation is not fully represented by a normal Git diff.
+
+Recommended structure:
+
+```text
+review-packets/<GATE>/
+  MANIFEST.md
+  FILES_CHANGED.md
+  COMMANDS.md
+  DIAGNOSTIC_PACKET.md        # when diagnostic
+  OWNER_CHECKPOINT_READINESS.md # when Owner action required
+  snapshots/
+  logs/
+  scripts/
+  config-snapshots/
+  hashes.txt
+```
+
+Do not add secrets, cookies, tokens, private keys, customer-sensitive data, or credential-bearing raw bodies.
+
+## 11. Mandatory Reviewer Verification Set
+
+Before formal PASS on a nontrivial Gate, Reviewer must independently inspect the applicable items below rather than only reading Executor conclusions:
+
+1. **Scope / diff**
+   - actual changed source/config files or a faithful sanitized snapshot;
+   - expected vs actual file/resource delta.
+
+2. **Runtime truth**
+   - post-change read-back from the real target runtime;
+   - versions, routes, service/container state, relevant settings;
+   - post-cleanup state when cleanup is part of the Gate.
+
+3. **Test evidence**
+   - exact sanitized command/action;
+   - exit/HTTP/status result;
+   - negative tests where relevant;
+   - control/baseline comparison for diagnostics.
+
+4. **Rollback / safety**
+   - rollback artifact/path/hash when required;
+   - proof destructive/production actions did not exceed scope.
+
+5. **Artifacts**
+   - any helper/script/config/snapshot the Owner or Reviewer still needs must be present and hash/size checked at handoff time.
+
+6. **Boundary checks**
+   - secrets not exposed;
+   - unrelated projects/resources untouched;
+   - Owner-only actions not crossed.
+
+Reviewer may sample or expand evidence based on risk, but must not downgrade this into “Executor said PASS, therefore PASS.”
+
+## 12. Evidence retention / cleanup lifecycle
+
+Use the original lifecycle:
+
+```text
+KEEP CURRENT
+→ ARCHIVE UNIQUE HISTORY
+→ DELETE REPRODUCIBLE DUPLICATES
+```
+
+Before Reviewer PASS:
+
+- do not delete any artifact needed to independently verify the Gate;
+- only pure cache/download/extraction junk may be removed;
+- if an Owner command depends on a local artifact, that artifact must survive until the Owner checkpoint completes;
+- temporary container copies may be removed only when the retained local source can deterministically recreate them and that chain has been verified.
+
+After Reviewer PASS:
+
+- retain current Source of Truth;
+- retain unique evidence and rollback references required for recovery/audit;
+- archive useful history;
+- remove reproducible duplicates and temporary clutter.
+
+## 13. Owner burden minimization
+
+The desired Owner experience is:
+
+```text
+Owner gives goal
+→ Reviewer writes Gate to GitHub
+→ Executor executes and writes evidence/artifacts to GitHub
+→ Owner says only “Review latest result” when needed
+→ Reviewer independently reviews GitHub
+```
+
+Owner should not routinely copy/paste long logs, evidence, diffs, screenshots, or files between Executor and Reviewer.
+
+Owner intervention is reserved for actual external boundaries such as:
+
+- account / identity authorization;
+- Secret entry;
+- payment;
+- irreversible/destructive decision;
+- manual provider UI where no safe automation exists;
+- explicit visual acceptance.
+
+If Reviewer cannot access a required binary/visual artifact through GitHub, request only that missing artifact instead of asking the Owner to repackage the entire project.
+
+## 14. Full-project review cadence
+
+The earlier three-cycle review principle is retained.
+
+After approximately 3 meaningful Executor → Reviewer cycles, and also after a major runtime/payment/architecture incident, perform a deeper 2–3 round project review before continuing broad feature expansion.
+
+A full review should inspect the actual project state, not only management documents:
+
+- architecture / source-of-truth boundaries;
+- canonical runtime and deployment assumptions;
+- actual source/configuration;
+- dependencies/plugins/versions;
+- database/order/payment state boundaries;
+- security / Secret handling;
+- rollback/recovery;
+- payment/idempotency/webhook assumptions;
+- UI and responsive drift where applicable;
+- documentation truth vs runtime truth;
+- obsolete/reproducible artifacts;
+- implementation order and remaining risks.
+
+## 15. Mini Craft specific full-review trigger
+
+For Mini Craft:
+
+```text
+FULL_PROJECT_REVIEW_AFTER_K3R8_RESOLUTION=REQUIRED
+ROUNDS=2_TO_3
+K4_BROAD_FEATURE_EXPANSION_BEFORE_FULL_REVIEW=HOLD
+```
+
+Once the current K3R8* PayPal/helper incident reaches a stable resolved checkpoint, Reviewer must perform a fresh whole-project review using actual source/runtime/evidence available through GitHub plus only the minimum extra Owner-supplied artifact if GitHub cannot expose a required binary/visual.
