@@ -1048,3 +1048,40 @@ STOP_REASON=Owner-only credential input is required before Phase C
 
 K3R8C_RESULT=RETURN_OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED
 STOP_AT_OWNER_CHECKPOINT=YES
+
+## K3R8D Owner helper artifact readiness repair (2026-09-21)
+
+- Scope: active local Docker/MariaDB runtime only: `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery`, WordPress at `http://localhost:8093/`. No PPCP, WooCommerce, WordPress, version, Live, payment, Studio, VPS, database, or credential configuration was changed.
+- The Owner-reported `ERROR_CLASS=LOCAL_HELPER_MISSING` is not a credential verdict. In the previous wrapper, that result was emitted before `docker cp`; the exact missing candidate was the host-side PHP source path `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery\.artifacts\k3r8c-container-oauth.php`, resolved from the wrapper's hard-coded project path. The container staging path had not yet been reached.
+- Current retained source artifacts after repair:
+  - `.artifacts/k3r8c-container-oauth.ps1` — 5,152 bytes — SHA-256 `11174B970BC5C3806309BB6879D38D9F60DCA8B1D52B74542C6FCE8183017B96`
+  - `.artifacts/k3r8c-container-oauth.php` — 2,961 bytes — SHA-256 `358E3AF38AAE41BA95E701A33B7CFC17B4B1CC22CAA4C8EBB4B7B0228137E789`
+- The wrapper now resolves the PHP source beside itself via `$PSScriptRoot`, checks the active container, copies to `/tmp/k3r8c-container-oauth.php`, verifies the remote file before execution, and removes only that remote temporary copy in `finally`. The local `.ps1` and `.php` source files are not removed.
+- No-secret end-to-end dry-run was executed twice through the same wrapper staging/execution/cleanup path. Both runs reached PHP/WordPress input validation without making an OAuth request, returned `NO_SECRET_DRY_RUN=PASS`, exited 0, and left no remote helper. After the second run: remote helper absent; both local source artifacts present.
+- The dry-run did not read or use any Client ID, Secret, token, response body, cookie, or authorization header. No credential-bearing log or file was created.
+
+DIAGNOSTIC_PACKET
+GATE=K3R8D_OWNER_HELPER_ARTIFACT_READINESS_REPAIR
+ENVIRONMENT=Windows host plus active Docker/MariaDB WordPress runtime mini-craft-k3r4-recovery-wordpress at localhost:8093
+TRIGGER=Owner K3R8C run returned LOCAL_HELPER_MISSING with HTTP_STATUS=0 before an OAuth request
+REPRODUCTION=Previous wrapper performed Test-Path on its host-side PHP source path before docker cp; repaired wrapper was then run twice with -NoSecretDryRun
+OBSERVED=Previous result was LOCAL_HELPER_MISSING; current source helpers exist; two no-secret runs staged, executed, and cleaned the remote helper successfully
+CONTROL_OR_BASELINE=Active WordPress container is running; no PayPal request was made by the dry-run; remote helper was absent after each run
+HYPOTHESES_RULED_OUT=Credential invalidity, PayPal HTTP response, container OAuth failure, and PHP request failure were not tested or inferred; no credentials were accessed; source-path failure was isolated before network execution
+HYPOTHESES_REMAINING=Owner-entered Sandbox credential pair result and the later PPCP manual-connect behavior remain pending Owner checkpoint
+ARTIFACTS=retained local .artifacts/k3r8c-container-oauth.ps1 and .artifacts/k3r8c-container-oauth.php; remote /tmp/k3r8c-container-oauth.php is run-scoped only and absent after cleanup
+SECRETS_REDACTED=YES
+NEXT_DISCRIMINATING_TEST=Owner runs the exact readiness-verified wrapper and reports only its five redacted output fields
+STOP_REASON=Owner-only Client ID and hidden Sandbox Secret input is required for the real OAuth request
+
+OWNER_CHECKPOINT_READINESS
+COMMAND=powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery\.artifacts\k3r8c-container-oauth.ps1"
+LOCAL_ARTIFACTS_PRESENT=PASS
+CONTAINER_STAGING_PATH=PASS
+POST_CLEANUP_EXISTENCE_CHECK=PASS
+NO_SECRET_DRY_RUN=PASS
+EXPECTED_PRE_AUTH_STAGE=CONTAINER_HELPER_EXECUTED_INPUT_VALIDATION
+CLEANUP_AFTER_OWNER_RUN=Wrapper removes only /tmp/k3r8c-container-oauth.php in finally; retained local source helpers remain in active runtime .artifacts
+
+K3R8D_RESULT=RETURN_OWNER_K3R8D_CONTAINER_OAUTH_REQUIRED
+STOP_AT_OWNER_CHECKPOINT=YES
