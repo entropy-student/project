@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R11_PUBLIC_SANDBOX_ORIGIN
+CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -570,3 +570,28 @@ Current Gate: `K3R11_PUBLIC_SANDBOX_ORIGIN`.
 Executor is authorized to proceed with the already-approved temporary, reversible HTTPS public Sandbox origin preparation defined in `docs/REVIEWER_DECISION_K3R10_RETURN_K3R11_PUBLIC_SANDBOX_ORIGIN.md`.
 
 If the rotated Secret invalidates the stored PPCP Sandbox connection, Executor must stop at an Owner local-UI reconnect checkpoint; it must not request or read the Secret.
+
+
+## K3R11 Preflight Review — Owner Sandbox Reconnect Required
+
+Reviewer independently inspected Executor commit `ac80184082607502e2d547e8ec7646c8db58465a`.
+
+Accepted:
+
+```text
+ROLLBACK_READY=PASS
+SANDBOX_SECRET_ROTATION_CONFIRMED=YES
+PPCP_MERCHANT_CONNECTED=NO
+PPCP_SANDBOX_MODE=YES
+PPCP_ONBOARDING_COMPLETED=YES
+PUBLIC_HTTPS_ORIGIN=NOT_CREATED
+RUNTIME_HEALTH=PASS
+```
+
+Executor correctly stopped before creating a public origin because the rotated Secret invalidated the stored PPCP merchant connection.
+
+Current checkpoint: `OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED`.
+
+Owner may perform exactly one local Sandbox Manual Connect using the rotated credentials in the local PayPal Settings page, then return only a sanitized success/fail UI result. No checkout, capture, Live, tunnel, VPS, or further mutation is authorized at this checkpoint.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_OWNER_SANDBOX_RECONNECT.md`.
