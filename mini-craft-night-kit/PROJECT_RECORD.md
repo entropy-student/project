@@ -21,7 +21,7 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R3_STUDIO_WOOCOMMERCE_RUNTIME_ISOLATION
+CURRENT_GATE=K3R4_LOCAL_RUNTIME_ESCAPE_DOCKER_MARIADB
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -367,3 +367,14 @@ K3R2 returned `RETURN_K3R2_STUDIO_OR_WOOCOMMERCE_RUNTIME_SYSTEMIC`: current site
 This disproves a K3/PPCP-only explanation for the broader timeout. K3R3 will use a fresh Studio control to separate Studio-runtime vs WooCommerce-on-Studio vs imported Mini Craft state, while keeping current site A read-only.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R3_STUDIO_WOOCOMMERCE_RUNTIME_ISOLATION.md`.
+
+
+## K3R3 Result / K3R4 Authorization
+
+K3R3 returned `RETURN_K3R3_STUDIO_RUNTIME_SYSTEMIC` after a completely fresh Studio WordPress control (no WooCommerce/PPCP/project data) reproduced the same request-hang and one-hot PHP worker pattern.
+
+Accepted conclusion: the broader timeout is systemic to the current WordPress Studio runtime/host path, not Mini Craft, WooCommerce, or PPCP alone.
+
+Next Gate moves local execution to a new isolated Docker + MariaDB runtime, while retaining all Studio sites and the K0 Docker PoC untouched.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R4_LOCAL_RUNTIME_ESCAPE_DOCKER_MARIADB.md`.
