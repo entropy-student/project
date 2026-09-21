@@ -973,3 +973,31 @@ Retry:
 - no second self, split-screen, bubble, arrow, slogan, checklist, moral text, cat or extra props.
 
 No architecture rewrite required.
+
+
+---
+
+## G5 Pilot — VB044 Attempt 2 RETURN_EXECUTION
+
+Date: 2026-09-21
+
+Result:
+`SRCH_VB044 = RETURN_EXECUTION_ATTEMPT2`.
+
+Improved:
+- one recurring IP only;
+- opening-like character/monitor composition is much closer;
+- character maturity is acceptable for Pilot;
+- hand/trackpad action begins to read as deliberate verification.
+
+Remaining failures:
+- screen shows OpenAI homepage rather than the causal policy/source page;
+- OpenAI branding violates `brand_mode = NONE`;
+- notebook reintroduces checklist/lesson-card semantics;
+- therefore the frame still explains the lesson instead of showing one verification behavior.
+
+Retry rule:
+preserve current character, camera, desk and verification gesture.
+Edit only:
+1. screen → generic brandless policy/source page;
+2. remove checklist/moral text from foreground notebook.
