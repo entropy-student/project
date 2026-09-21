@@ -8,9 +8,9 @@
     "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
   },
   "current_gate": {
-    "id": "G5",
-    "name": "Shotbook → Image Asset Package MVP",
-    "status": "IN_PROGRESS"
+    "id": "G6",
+    "name": "Low-Level Execution Package / Antigravity PoC",
+    "status": "READY"
   },
   "accepted_gates": [
     {
@@ -47,12 +47,17 @@
       "id": "G4",
       "name": "Script / SRT → Director / Shot Compiler MVP",
       "status": "PASS"
+    },
+    {
+      "id": "G5",
+      "name": "Shotbook → Image Asset Package MVP",
+      "status": "PASS"
     }
   ],
   "next_gate": {
-    "id": "G6",
-    "name": "Low-Level Execution Package / Antigravity PoC",
-    "status": "BLOCKED_BY_REAL_REFERENCE_PERSISTENCE"
+    "id": "G7",
+    "name": "Three-topic End-to-End Validation",
+    "status": "BLOCKED_BY_G6"
   },
   "owner_intervention_required": false,
   "unknowns": [
@@ -72,7 +77,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_HIGH_RISK_PILOT_COMPLETE_PASS_CANDIDATE_REAL_REFERENCE_PERSISTENCE_BLOCKER",
+  "project_state": "G5_PASS_G6_READY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +114,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "8-beat G5 high-risk Pilot complete. All selected beats reached accepted Pilot state. G5 logic is PASS_CANDIDATE. Do not enter G6 until canonical binary references are persisted and bound.",
+  "owner_review_scope": "G5 final PASS. High-risk Pilot 8/8 accepted and persistent reference package path validation PASS (9/9 used assets resolved). Main line is now G6 Low-Level Execution Package / Antigravity PoC.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -277,7 +282,7 @@
     "canonical_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES.md"
   },
   "g5": {
-    "status": "PASS_CANDIDATE_BLOCKED_BY_REAL_REFERENCE_PERSISTENCE",
+    "status": "PASS",
     "contract": "docs/G5_IMAGE_ASSET_PACKAGE_CONTRACT.md",
     "first_mvp_case": "blind-search-answer",
     "phase_a": {
@@ -291,14 +296,14 @@
     },
     "phase_b": {
       "name": "Canonical Reference Lock",
-      "status": "PASS_DIRECTION_LOCKED",
+      "status": "PASS_REFERENCE_PACKAGE_PERSISTED",
       "character_bible": "experiments/g5/blind-search-answer/04_CHARACTER_BIBLE.md",
       "scene_bible": "experiments/g5/blind-search-answer/05_SCENE_BIBLE.md",
       "style_bible": "experiments/g5/blind-search-answer/06_STYLE_BIBLE.md",
       "prop_ui_bible": "experiments/g5/blind-search-answer/07_PROP_UI_BIBLE.md",
       "reference_manifest": "experiments/g5/blind-search-answer/08_REFERENCE_MANIFEST.json",
-      "blocking_real_asset": "EXECUTION_ACCESSIBLE_REFERENCE_PERSISTENCE",
-      "blocking_reason": "CHAR_IP_001 source set has been recovered and visually verified in Library. Remaining blocker is copying recovered character refs and approved scene/UI refs into execution-accessible canonical paths and validating row resolution.",
+      "blocking_real_asset": null,
+      "blocking_reason": null,
       "style_direction": "SIMPLIFIED_FLAT_NARRATIVE_COMIC",
       "current_conversation_inputs": {
         "ip_identity_image": "AVAILABLE_IN_CURRENT_CONVERSATION_NOT_PERSISTED_IN_REPO",
@@ -329,7 +334,7 @@
     },
     "phase_c": {
       "name": "Frame Blueprint → Beat Binding → Execution Mode → Prompt/Edit Compiler",
-      "status": "HIGH_RISK_PILOT_COMPLETE_PASS_CANDIDATE",
+      "status": "PASS",
       "frame_blueprints": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json",
       "execution_rows": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
       "recompile_review": "experiments/g5/blind-search-answer/15_FRAME_BLUEPRINT_RECOMPILE_REVIEW.md",
@@ -361,7 +366,7 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Persist recovered CHAR_IP_001 source set plus required scene/UI masters into execution-accessible canonical paths; populate Reference Manifest canonical_paths; rerun machine reference-path validation; then issue final G5 PASS.",
+      "next": "G5 complete.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
@@ -374,7 +379,9 @@
         "SRCH_VB025": "PASS_WITH_MINOR_CHARACTER_RISK",
         "SRCH_VB044": "PASS_WITH_MINOR"
       },
-      "pilot_review": "experiments/g5/blind-search-answer/17_HIGH_RISK_PILOT_REVIEW.md"
+      "pilot_review": "experiments/g5/blind-search-answer/17_HIGH_RISK_PILOT_REVIEW.md",
+      "reference_path_validation": "experiments/g5/blind-search-answer/18_REFERENCE_PATH_VALIDATION.md",
+      "reference_path_validation_result": "PASS"
     },
     "phase_b_5": {
       "name": "Visual Acquisition Review",
@@ -425,5 +432,14 @@
       "current_character_in_scene_master": "LATEST_OWNER_APPROVED_VB001_CURRENT_CONVERSATION"
     },
     "gate_review": "docs/G5_GATE_REVIEW.md"
+  },
+  "g6": {
+    "status": "READY",
+    "contract": "docs/LOW_LEVEL_EXECUTION_PACKAGE.md",
+    "first_poc_case": "blind-search-answer",
+    "reference_package_root": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1",
+    "reference_package_zip": "/ai-story-showrunner/g5/blind-search-answer/g5-reference-package-v1.zip",
+    "audio_mode": "TBD",
+    "next": "Assemble the first G6 low-level execution package. Resolve Audio Mode with a real PoC, lock final audio, compile exact Shot Timeline, then hand the deterministic image/edit package to Antigravity."
   }
 }
