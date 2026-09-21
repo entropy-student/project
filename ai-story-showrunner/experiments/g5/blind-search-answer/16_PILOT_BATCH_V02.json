@@ -1064,13 +1064,19 @@
         }
       },
       "pilot_execution_note": "Pilot scope: validate DUAL_COMPARE semantics first. Left crop must visibly anchor 服务费 as the question object; right crop must visibly anchor 订单款项 as the policy/evidence object. Do not add VS, arrows, conclusion cards, or explanatory titles. Exact full COMPOSITE_CROP determinism remains pending until UI_AI_ANSWER_001 and UI_POLICY_PAGE_001 binaries are persisted.",
-      "pilot_result": "RETURN_SEMANTIC_EXECUTION_DRIFT",
+      "pilot_result": "PASS_WITH_MINOR_SEMANTIC_COMPARE",
       "pilot_retry_note": [
         "Attempt 1 failed the core mechanism: right side revealed the correct conclusion 平台服务费不予退还 instead of the mismatched evidence object 订单款项.",
         "Attempt 1 illegally introduced a character/thought bubble despite negative constraint character.",
         "Character appearance also drifted juvenile/cute and costume/identity direction diverged; this is additional evidence that no-character beats must not introduce the IP.",
         "Retry is source-crop dual only: left question crop emphasizes 服务费; right policy crop emphasizes 订单款项将退回原支付方式.",
         "No person, no hands, no speech/thought bubble, no explanatory title, no VS, no arrows, no conclusion card."
+      ],
+      "pilot_notes": [
+        "Core semantic mismatch is readable: 服务费 question vs 订单款项 evidence.",
+        "No character/thought bubble/VS/arrows in accepted attempt.",
+        "Minor: ChatGPT/OpenAI branding appeared and source crops remain broader than production target.",
+        "Deterministic COMPOSITE_CROP still requires persisted UI source binaries."
       ]
     },
     {
