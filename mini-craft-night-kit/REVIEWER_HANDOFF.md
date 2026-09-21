@@ -1,6 +1,6 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
-Last reviewed: 2026-09-18  
+Last reviewed: 2026-09-21  
 Maintainer: Reviewer
 
 ## Current Reviewer Truth
@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R8D_OWNER_HELPER_ARTIFACT_READINESS_REPAIR
+CURRENT_CHECKPOINT=OWNER_K3R8E_PAYEE_PROBE_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -413,3 +413,13 @@ Current Gate: `K3R8E_PAYEE_PROBE_PARITY_TEST`.
 Run one provider-parity test outside PPCP using the same request semantics and Owner-entered Sandbox credentials. No version change, patch, Live, capture, real payment, tunnel, or VPS.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R8E_PAYEE_PROBE_PARITY_TEST.md`.
+
+## K3R8E Review / Owner Checkpoint
+
+Reviewer independently checked the latest K3R8E evidence and the formal parity-test decision rather than accepting the Executor return label by itself.
+
+The intended test is correctly bounded: Sandbox-only OAuth, create one uncaptured USD 1.00 test order, GET that order, and report only whether payee fields are present. It is specifically designed to distinguish PayPal Sandbox/account/app behavior from PPCP 4.1.3's `request_payee()` path.
+
+Recorded readiness evidence is sufficient to proceed to the Owner checkpoint, with one limitation: the local helper source itself is not committed to GitHub, so Reviewer cannot inspect its bytes directly.
+
+Current checkpoint: `OWNER_K3R8E_PAYEE_PROBE_REQUIRED`.
