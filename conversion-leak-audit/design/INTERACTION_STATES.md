@@ -1,6 +1,6 @@
 # Conversion Leak Audit — Interaction States
 
-Status: `DRAFT_FOR_G3_5`
+Status: `FROZEN_G3_5`
 
 ## 1. URL Form State Machine
 
