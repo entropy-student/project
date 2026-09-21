@@ -12,7 +12,7 @@ Canonical identity source:
 Owner-approved original IP image supplied in the current conversation.
 
 Repository binary state:
-`NOT_YET_PERSISTED`
+`SOURCE_RECOVERED_LIBRARY / REPO_PERSISTENCE_PENDING`
 
 ## Identity definition
 
@@ -144,3 +144,18 @@ Failure:
 - `RETURN_CHARACTER_DRIFT`
 - `RETURN_CHARACTER_MATURITY_DRIFT`
 - `RETURN_COSTUME_DRIFT`
+
+
+## Recovered source assets — 2026-09-21
+
+The previously missing character source set was recovered from the user's persistent Library and visually checked against this Bible:
+
+- canonical identity portrait: `人物形象参考图(20260920-171855).png`;
+- production character master: `image-gen-1(20260920-172809).png`;
+- front / 3-quarter / side turnaround: `image-gen-2(20260920-172811).png`;
+- extended character / expression / action / scene guide: `AI角色设定与场景风格指南.png`.
+
+These Library sources match the locked adult identity, hair silhouette, wine-red + cream-collar costume, black trousers and white shoes.
+
+Important:
+Library recovery does NOT equal G6-ready persistence. Until these binaries are copied into an execution-accessible repository/reference package, `canonical_paths` remains empty and G6 remains blocked.
