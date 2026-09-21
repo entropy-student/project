@@ -67,6 +67,14 @@
       "canonical_paths": [],
       "generation_allowed": true,
       "note": "Simplified flat narrative comic direction validated by 3 real G4 calibration frame categories. Production simplification guard remains active."
+    },
+    {
+      "asset_id": "TEMP_ANALOGY_ACTOR_001",
+      "type": "CHARACTER",
+      "status": "TO_GENERATE_CANONICAL",
+      "canonical_paths": [],
+      "generation_allowed": true,
+      "note": "Sequence-local supporting actor for phonebook analogy. Minimal identity only; must not compete with recurring IP."
     }
   ]
 }
