@@ -677,3 +677,15 @@ The main risk is not image count. It is repeated-scene fatigue and explainer reg
 Current:
 `G4 IN_PROGRESS / G4A AGENT PASS_CANDIDATE / G4B BLOCKED_BY_AUDIO_MASTER / G5 BLOCKED`.
 
+
+
+## 2026-09-21 — VB009 execution compatibility patch
+
+- Re-reviewed G5 state after the canonical POV patch.
+- Found VB009 execution conflict: target `IP_POV_HANDS` could not deterministically derive from observer-view VB008 while also preserving source camera/crop.
+- Reclassified VB009 from `DERIVE_EDIT` to `GENERATE`.
+- Added G5 `DERIVE_EDIT` compatibility boundary.
+- Added partial-visibility identity QA rule for hands/cuff POV frames.
+- Synced Blueprint, Execution Rows, Pilot Batch, CURRENT_STATUS, README, REVIEWER_HANDOFF and evidence.
+- New execution counts: `GENERATE 15 / DERIVE_EDIT 25 / COMPOSITE_CROP 4`.
+- Current next action: generate + QA VB009; PASS then continue VB012.
