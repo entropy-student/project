@@ -545,6 +545,38 @@ STOP_AT_OWNER_CHECKPOINT=YES
 STOP_AT_REVIEWER=YES
 ```
 
+## K3R11 Public Origin Rebind Prep — Owner Manual Connect checkpoint (2026-09-22)
+
+The one authorized official PPCP Disconnect was completed. Redacted verification shows merchant connected `NO` and the local Client ID, Client Secret, merchant ID, and merchant email bindings are absent; Sandbox mode remains enabled. WordPress and MariaDB remain healthy.
+
+The local runtime is now served through this temporary accountless HTTPS Quick Tunnel:
+
+`https://email-rich-barbie-merchants.trycloudflare.com`
+
+Original `home_url` and `siteurl` were both `http://localhost:8093`; both were reversibly rebound to the temporary HTTPS origin. Public Home and `wp-json` returned `200`. Public wp-admin and the direct PayPal Settings route were reachable and redirected unauthenticated requests to the WordPress login page (`302`, final `200`). No credentials were entered or output by Executor.
+
+The temporary WordPress `.maintenance` marker that appeared during the first smoke test was removed as a stale local maintenance artifact; subsequent runtime checks passed. No business data, plugin version, WooCommerce version, WordPress version, PPCP source, Live mode, payment, capture, VPS, or production domain was changed.
+
+Owner checkpoint: open the public origin, log in to WordPress locally, go to WooCommerce → Settings → Payments → PayPal Payments, and enter the already-rotated Sandbox credentials through the UI. Do not send Client ID or Secret to chat or GitHub. After the UI reports the sanitized connection result, stop and return to Reviewer; do not perform buyer approval or capture.
+
+```text
+GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
+RESULT=PASS_CANDIDATE_K3R11_PUBLIC_ORIGIN_REBIND_PREP_READY
+ROLLBACK_POINT_VERIFIED=PASS
+OFFICIAL_DISCONNECT=PASS_ONCE
+PUBLIC_HTTPS_ORIGIN=PASS
+WORDPRESS_URL_REBIND=PASS_REVERSIBLE
+PUBLIC_FRONTEND=PASS
+PUBLIC_WP_ADMIN=PASS_AUTH_REDIRECT
+PUBLIC_DIRECT_PAYPAL_SETTINGS=PASS_AUTH_REDIRECT
+SANDBOX_CREDENTIALS=OWNER_ONLY
+OWNER_ACTION=MANUAL_CONNECT_USING_ROTATED_SANDBOX_CREDENTIALS_IN_PUBLIC_UI
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+NEXT=STOP_AT_OWNER_CHECKPOINT
+```
+
 ## K3R11 Public Origin Rebind Prep — awaiting official Disconnect confirmation (2026-09-21)
 
 The K3R11 rollback point and active local Docker/MariaDB runtime were verified. The authenticated PayPal Payments Settings page is open and the official `Disconnect` control is ready, but it has not been clicked. Because this action clears the local PPCP merchant/credential binding, execution is paused for mandatory action-time Owner confirmation.

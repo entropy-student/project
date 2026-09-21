@@ -169,6 +169,81 @@ SECRET_EXPOSURE=NO
 STOP_AT_REVIEWER=YES
 ```
 
+## K3R11 Public Origin Rebind Prep — Owner Manual Connect checkpoint (2026-09-22)
+
+### Official Disconnect and redacted post-state
+
+The single authorized official WooCommerce PayPal Payments Disconnect was executed from the authenticated local Settings UI. No reconnect was attempted and no credential value was read or output.
+
+```text
+OFFICIAL_DISCONNECT=EXECUTED_ONCE
+PPCP_MERCHANT_CONNECTED=NO
+PPCP_SANDBOX_MODE=YES
+PPCP_ONBOARDING_COMPLETED=NO
+CLIENT_ID_BINDING_PRESENT=NO
+CLIENT_SECRET_BINDING_PRESENT=NO
+MERCHANT_ID_BINDING_PRESENT=NO
+MERCHANT_EMAIL_BINDING_PRESENT=NO
+```
+
+The post-disconnect read-only helper was copied into the WordPress container, executed, and removed from both container and host. The active runtime remained healthy: WordPress container running, MariaDB healthy, local home HTTP `200`, and local admin unauthenticated redirect `302`.
+
+### Temporary HTTPS origin and reversible URL rebind
+
+An accountless Cloudflare Quick Tunnel was started with the preinstalled local `cloudflared` binary; no Cloudflare login, token, account authorization, VPS, or production domain was used.
+
+```text
+PUBLIC_HTTPS_ORIGIN=https://email-rich-barbie-merchants.trycloudflare.com
+ORIGIN_TARGET=http://localhost:8093
+ORIGINAL_HOME_URL=http://localhost:8093
+ORIGINAL_SITE_URL=http://localhost:8093
+REBIND_HOME_URL=https://email-rich-barbie-merchants.trycloudflare.com
+REBIND_SITE_URL=https://email-rich-barbie-merchants.trycloudflare.com
+```
+
+The exact rollback is to restore both WordPress options `home` and `siteurl` to `http://localhost:8093`, then stop the Quick Tunnel process. The verified pre-K3R11 rollback point remains available locally at `mini-craft-k3r4-mariadb-recovery/.artifacts/k3r11-preflight-20260921-231206`.
+
+### Public-origin smoke tests
+
+```text
+PUBLIC_HOME_HTTP=200
+PUBLIC_WPJSON_HTTP=200
+PUBLIC_WP_ADMIN_DIRECT_HTTP=302
+PUBLIC_WP_ADMIN_FINAL_HTTP=200_LOGIN_PAGE
+PUBLIC_DIRECT_PAYPAL_SETTINGS_DIRECT_HTTP=302
+PUBLIC_DIRECT_PAYPAL_SETTINGS_FINAL_HTTP=200_LOGIN_PAGE
+LOCAL_HOME_AFTER_REBIND_HTTP=200
+DOCKER_WORDPRESS=RUNNING
+DOCKER_MARIADB=RUNNING_HEALTHY
+```
+
+The `302` responses are the expected unauthenticated redirects; the browser reached the public WordPress login page for both wp-admin and the direct PayPal Settings URL. No Owner credentials were entered by Executor.
+
+During the first URL-rebind smoke test, WordPress created a temporary `.maintenance` marker and returned 503. Container logs showed no plugin/update fatal. The marker was copied only to a container `/tmp` path, removed as a stale WordPress maintenance artifact, and the runtime immediately returned to the statuses above. The temporary `/tmp` copy and all PHP helpers were removed.
+
+```text
+K3R11_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
+ROLLBACK_POINT_VERIFIED=PASS
+OFFICIAL_DISCONNECT=PASS_ONCE
+OLD_CREDENTIAL_BINDING_CLEARED=PASS
+PUBLIC_HTTPS_ORIGIN=PASS
+WORDPRESS_URL_REBIND=PASS_REVERSIBLE
+PUBLIC_FRONTEND=PASS
+PUBLIC_WP_ADMIN=PASS_AUTH_REDIRECT
+PUBLIC_DIRECT_PAYPAL_SETTINGS=PASS_AUTH_REDIRECT
+RUNTIME_HEALTH=PASS
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PAYPAL_LIVE_ENABLED=NO
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+OWNER_MANUAL_CONNECT=NOT_EXECUTED
+STOP_AT_OWNER_CHECKPOINT=YES
+PASS_CANDIDATE_K3R11_PUBLIC_ORIGIN_REBIND_PREP_READY
+```
+
 ## K3R11 Public Origin Rebind Prep — pre-action checkpoint (2026-09-21)
 
 The existing local rollback point was re-verified before the bounded official Disconnect action:
