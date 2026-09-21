@@ -556,3 +556,40 @@ Next:
 
 Owner explicitly requested pause after G4 PASS. No G5 work started.
 
+
+
+---
+
+## G5 VB009 POV / Execution Compatibility Patch
+
+Date: 2026-09-21
+
+Trigger:
+accepted POV audit changed VB009 from OBSERVER to IP_POV_HANDS.
+
+Detected contradiction:
+- VB008 source frame is OBSERVER / MEDIUM_CLOSE;
+- VB009 target is IP_POV_HANDS / MEDIUM_INSERT;
+- old execution row required both a POV reframe and preservation of source camera/crop.
+
+Reviewer decision:
+`RETURN_DERIVE_SOURCE_INCOMPATIBLE`.
+
+Correction:
+- VB009 `DERIVE_EDIT → GENERATE`;
+- remove `source_frame_ref=SRCH_VB008.png`;
+- retain VB008 only as semantic/world continuity;
+- prompt locks downward first-person desk insert, own adult hand + wine-red/cream cuff + pen + cost sheet;
+- exact Chinese remains POST_OVERLAY;
+- identity QA is visibility-scoped.
+
+Execution distribution:
+- GENERATE: 15
+- DERIVE_EDIT: 25
+- COMPOSITE_CROP: 4
+
+Result:
+`VB009_RETRY_READY_FRESH_GENERATE_IP_POV_HANDS`.
+
+Next:
+`Generate/QA VB009 → PASS → VB012`.
