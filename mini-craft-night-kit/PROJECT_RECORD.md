@@ -315,3 +315,12 @@ GOVERNANCE_CHANGE_GATE_ELIGIBLE=YES
 ```
 
 K2 test values (JPY 1, JPY currency, zero-cost shipping, tax disabled, COD test method, hold-stock=0) are not production business truth.
+
+
+## K3 Authorization
+
+Formal decision: `docs/REVIEWER_DECISION_K3_PAYPAL_SANDBOX.md`.
+
+Current Gate: `K3_PAYPAL_SANDBOX`.
+
+Use only official WooCommerce PayPal Payments in Sandbox. Owner intervention is limited to PayPal login/account authorization/identity/Secret/Live enablement. If localhost blocks provider callbacks, return to Reviewer instead of creating an unauthorized tunnel or VPS route.
