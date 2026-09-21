@@ -732,3 +732,32 @@ SECRET_VALUES_OUTPUT=NO
 PASS_CANDIDATE_K3R11_CONNECTION_STATE_RECONCILED
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R11 Public Origin Readiness Verification — Reviewer checkpoint (2026-09-22)
+
+`PASS_CANDIDATE_K3R11_PUBLIC_ORIGIN_READINESS_VERIFY`
+
+Owner's public-origin Manual Connect was independently verified without reading credentials. Redacted PPCP REST state reports Sandbox merchant connected, Sandbox mode enabled, and onboarding `data.completed=YES`; common, onboarding, settings, payment, and features endpoints returned HTTP `200`. Direct PayPal Settings rendered the connected Sandbox presentation and the HTTPS webhook notification configuration.
+
+The existing local test Checkout rendered one PayPal payment button after synthetic local-only billing fields were filled. PPCP SDK v6 assets loaded successfully and no checkout client-token/rendering error appeared; no checkout form was submitted. Webhook REST state returned HTTP `200`, an HTTPS callback URL, and 17 subscribed events. No webhook test was sent.
+
+Runtime remained healthy: public Home and `wp-json` returned `200`, authenticated public wp-admin and Direct PayPal Settings loaded, WordPress was running, and MariaDB was healthy. The temporary Quick Tunnel remains active for Reviewer inspection. Optional Apple Pay/Google Pay admin preview errors were observed, but did not affect the PayPal connection, Checkout button, or webhook readiness checks.
+
+```text
+GATE=K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
+RESULT=PASS_CANDIDATE_K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
+SANDBOX_MERCHANT_CONNECTED=PASS
+PPCP_CLIENT_TOKEN=PASS
+PAYPAL_CHECKOUT_BUTTON_RENDERED=PASS
+WEBHOOK_REGISTER=PASS
+PUBLIC_HTTPS_ORIGIN=PASS
+RUNTIME_HEALTH=PASS
+BUYER_APPROVAL=NOT_EXECUTED
+CAPTURE_ACTIONS=0
+REFUND_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```

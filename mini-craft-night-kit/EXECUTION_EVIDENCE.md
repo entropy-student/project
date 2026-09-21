@@ -1629,3 +1629,88 @@ REMOTE_HELPER_REMOVED=PASS
 PASS_CANDIDATE_K3R11_CONNECTION_STATE_RECONCILED
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R11 Public Origin Readiness Verification (2026-09-22)
+
+Owner supplied the sanitized public-origin UI result `Connected to PayPal`. The following checks were performed read-only or with bounded local Checkout rendering only. No buyer approval, order submission, capture, refund, Live activation, version change, source patch, VPS action, or production-domain action occurred.
+
+### Public origin and connection state
+
+```text
+PUBLIC_HTTPS_ORIGIN=https://email-rich-barbie-merchants.trycloudflare.com
+PUBLIC_ORIGIN_TARGET=http://localhost:8093
+SANDBOX_MERCHANT_CONNECTED=PASS
+PPCP_SANDBOX_MODE=PASS
+PPCP_ONBOARDING_COMPLETED=PASS
+DIRECT_PAYPAL_SETTINGS=PASS
+```
+
+The corrected in-container redacted read returned `merchant.isConnected=YES`, Sandbox `YES`, and HTTP `200` for PPCP common, onboarding, settings, payment, and features endpoints. The onboarding response reports `data.completed=YES`; no credential values were read or output. The direct public Settings page rendered the Connection status panel and Sandbox account presentation.
+
+### SDK v6 and Checkout rendering
+
+The public Checkout page loaded the existing local test cart (`Mini Craft Night Kit`, quantity `1`, local test shipping, displayed total `¥1`). Synthetic local test billing values were used only to satisfy required field rendering; no form submission was made.
+
+```text
+PPCP_CLIENT_TOKEN=PASS
+PAYPAL_CHECKOUT_BUTTON_RENDERED=PASS
+PAYPAL_BUTTON_COUNT=1
+PAYPAL_SDK_V6_SCRIPTS=LOADED
+CHECKOUT_PAYPAL_CONSOLE_FATAL=NO
+```
+
+The PayPal SDK v6 and PPCP boot assets returned HTTP `200` in the container access evidence. After required local test fields were filled, the Checkout DOM contained one enabled `使用PayPal付款` button and PayPal widget iframes. The token itself was never read, logged, or output.
+
+### Webhook readiness
+
+```text
+WEBHOOK_REST_HTTP=200
+WEBHOOK_URL_PRESENT=YES
+WEBHOOK_URL_HTTPS=YES
+WEBHOOK_EVENTS_COUNT=17
+WEBHOOK_REGISTER=PASS
+```
+
+The Direct PayPal Settings UI showed the current HTTPS notification URL under the temporary origin and the subscribed event list. The redacted `/wc/v3/wc_paypal/webhooks` response returned HTTP `200`, an HTTPS URL, and 17 configured events. No test webhook was sent. A direct unauthenticated GET to the POST-only callback returned `404`; this was not used as a registration verdict and no POST/provider payload was generated.
+
+### Runtime
+
+```text
+PUBLIC_HOME_HTTP=200
+PUBLIC_WPJSON_HTTP=200
+PUBLIC_WP_ADMIN=AUTHENTICATED_UI_LOADED
+PUBLIC_DIRECT_PAYPAL_SETTINGS=AUTHENTICATED_UI_LOADED
+DOCKER_WORDPRESS=RUNNING
+DOCKER_MARIADB=RUNNING_HEALTHY
+WORDPRESS_SAMPLE_CPU=1.65%
+MARIADB_SAMPLE_CPU=0.86%
+RUNTIME_HEALTH=PASS
+```
+
+The local `cloudflared` Quick Tunnel remained active for the Reviewer checkpoint. It was accountless and used no Cloudflare credentials or token.
+
+### Non-blocking observation
+
+The PayPal Settings admin preview logged optional Apple Pay and Google Pay preview-manager configuration errors. The Connection status, direct Settings UI, Sandbox state, webhook subscription, and PayPal Checkout button remained functional; no PayPal Checkout client-token or rendering error was observed.
+
+```text
+K3R11_GATE=K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
+SANDBOX_MERCHANT_CONNECTED=PASS
+PPCP_CLIENT_TOKEN=PASS
+PAYPAL_CHECKOUT_BUTTON_RENDERED=PASS
+WEBHOOK_REGISTER=PASS
+PUBLIC_HTTPS_ORIGIN=PASS
+RUNTIME_HEALTH=PASS
+BUYER_APPROVAL=NOT_EXECUTED
+ORDER_CREATED=NO
+CAPTURE_ACTIONS=0
+REFUND_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+PASS_CANDIDATE_K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
+STOP_AT_REVIEWER=YES
+```
