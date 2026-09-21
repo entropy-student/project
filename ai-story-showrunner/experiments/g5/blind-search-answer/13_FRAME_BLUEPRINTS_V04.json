@@ -1,15 +1,13 @@
 {
   "episode_id": "blind-search-answer",
   "gate": "G5C1_G5C3",
-  "status": "FAIL",
+  "status": "PASS_CANDIDATE",
   "canonical_rules": "docs/VISUAL_FRAME_BLUEPRINT_RULES.md",
   "source_visual_beats": "experiments/g4r-v03/blind-search-answer/07_VISUAL_BEAT_PLAN.json",
   "count": 44,
   "validation": {
-    "status": "FAIL",
-    "issues": [
-      "SRCH_VB043 setup missing withheld information"
-    ]
+    "status": "PASS",
+    "issues": []
   },
   "blueprints": [
     {
@@ -4132,7 +4130,9 @@
       ],
       "continuity_ref": "SRCH_VB042",
       "frame_delta": "final setup returns to the seductive feeling of a correct webpage",
-      "withheld_information": [],
+      "withheld_information": [
+        "最终回扣：它真的找对了网页"
+      ],
       "asset_binding": {
         "character_refs": [
           "CHAR_IP_001"
@@ -4154,7 +4154,8 @@
         "P1 immediately readable: 即将发生变化的同一 causal region / 阅读位置",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
+        "only current Beat information is visible",
+        "结尾 setup 不提前说出“网页确实找对了”的最终落点"
       ]
     },
     {
