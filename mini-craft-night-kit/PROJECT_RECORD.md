@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R6_PPCP_PAGE_SCOPE_MOUNT_ISOLATION
+CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_AUTH_DOCKER
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -405,3 +405,14 @@ K3R5 returned `RETURN_K3R5_PPCP_4_1_3_DOCKER_UI_CONFLICT` after reproducing Reac
 Reviewer therefore does not authorize a version change yet. K3R6 will distinguish an overview-page-only mount defect from a truly broken direct PayPal settings UI.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R6_PPCP_PAGE_SCOPE_MOUNT_ISOLATION.md`.
+
+
+## K3R6 Final Review — PASS / Owner Checkpoint
+
+K3R6 returned `PASS_CANDIDATE_K3R6_PPCP_OVERVIEW_ONLY_UI_DEFECT` and `RETURN_OWNER_PAYPAL_SANDBOX_AUTH_REQUIRED_DOCKER`.
+
+Reviewer accepts the direct PayPal settings page as usable. The React #299 defect is limited to the generic WooCommerce Payments overview and is carried as a known nonblocking admin defect.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R6_PASS_OWNER_SANDBOX_AUTH.md`.
+
+Current checkpoint: `OWNER_K3_PAYPAL_SANDBOX_AUTH_DOCKER`.
