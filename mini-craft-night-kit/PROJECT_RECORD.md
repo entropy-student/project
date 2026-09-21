@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R8B_LOCAL_OAUTH_HELPER_DIAGNOSTIC
+CURRENT_CHECKPOINT=OWNER_K3R8B_CORRECTED_HELPER_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -454,3 +454,12 @@ Owner-run helper returned `PAYPAL_SANDBOX_OAUTH=FAIL ERROR=LOCAL_REQUEST_FAILURE
 Next bounded step is host-side/helper diagnostics with secrets remaining Owner-only.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R8B_LOCAL_OAUTH_HELPER_DIAGNOSTIC.md`.
+
+
+## K3R8B Host/Helper Diagnostic Result
+
+K3R8B host/helper diagnostics completed without classifying the Sandbox credentials as invalid. Executor returned `RETURN_OWNER_K3R8B_CORRECTED_HELPER_REQUIRED`.
+
+Current checkpoint: `OWNER_K3R8B_CORRECTED_HELPER_REQUIRED`.
+
+Owner should rerun the corrected local OAuth helper and return only its redacted result.
