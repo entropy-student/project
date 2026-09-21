@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED
+CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REOPEN_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -781,3 +781,23 @@ Current checkpoint: `OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED`.
 Owner may privately complete Sandbox buyer login and approve the single test purchase, then return only a sanitized success/fail result. Do not share buyer credentials or provider payloads.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R10_OWNER_SANDBOX_BUYER_AUTH.md`.
+
+
+## K3R10 Owner Closed Buyer Flow — Reopen Once Authorized
+
+Owner closed the PayPal popup and prior Checkout page before buyer login/approval.
+
+Accepted prior state remains:
+
+```text
+BUYER_APPROVAL=NOT_EXECUTED
+ORDER_CREATED=NOT_OBSERVED_BEFORE_CHECKPOINT
+CAPTURE_ACTIONS=0
+REFUND_ACTIONS=0
+```
+
+The prior provider handoff is treated as abandoned before payment. Owner may reopen the current public Checkout and start exactly one fresh Sandbox buyer flow, then privately complete buyer login/approval.
+
+Current checkpoint: `OWNER_K3R10_SANDBOX_BUYER_AUTH_REOPEN_REQUIRED`.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R10_REOPEN_SANDBOX_BUYER_FLOW.md`.
