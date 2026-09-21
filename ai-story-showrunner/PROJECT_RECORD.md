@@ -781,3 +781,13 @@ Current:
 - No new Topic/hotspot/IP narrative-policy changes were introduced during this closure.
 - Final G5 blocker: persist and bind real canonical character/scene/UI reference binaries.
 - G6 remains blocked until reference-path validation passes.
+
+
+## 2026-09-21 — G5 final PASS
+
+- Persisted the complete v1 reference package for all 9 asset IDs used by the 44 execution rows.
+- Reference-path machine validation: PASS (9/9 resolved, 0 missing).
+- High-risk Pilot remained accepted (8/8).
+- G5 promoted from PASS_CANDIDATE to final PASS.
+- G6 released and is now READY.
+- Hotspot ratio / hotspot integration / IP narrative-engine ideas remain discussion-only and were not added to canonical rules.
