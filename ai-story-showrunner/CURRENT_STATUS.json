@@ -10,7 +10,7 @@
   "current_gate": {
     "id": "G6",
     "name": "Low-Level Execution Package / Antigravity PoC",
-    "status": "READY"
+    "status": "IN_PROGRESS"
   },
   "accepted_gates": [
     {
@@ -62,7 +62,6 @@
   "owner_intervention_required": false,
   "unknowns": [
     "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR",
-    "audio mode final choice: upstream TTS vs Antigravity TTS",
     "whether Topic contract should later be extracted into a reusable Skill after episode validation"
   ],
   "authoritative_handoff": "REVIEWER_HANDOFF.md",
@@ -75,9 +74,11 @@
     "content jobs are DISCOVERY, TRUST, or SOLUTION with one primary job per episode",
     "metrics are separated into traffic, trust, and conversion",
     "McKee-style causal structure is currently an internal Story Engine gate",
-    "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
+    "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual",
+    "Production timing source of truth is the measured upstream Audio Master; planning CPS and Visual Beat timing estimates cannot be used as final SRT timecodes",
+    "G6 audio mode is A_UPSTREAM_COSYVOICE; Antigravity does not regenerate or retime production speech"
   ],
-  "project_state": "G5_PASS_G6_READY",
+  "project_state": "G6_IN_PROGRESS_AUDIO_TIMING_REBASELINE",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -112,9 +113,10 @@
     "writer_adapter_status": "CANONICAL_STYLE_SOURCE_QUALITY_VALIDATED_MANUAL_ORCHESTRATION",
     "editorial_baseline_status": "SUPERSEDED_BY_G3R_PASS",
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
-    "historical_short_form_planning_duration_seconds": "70-85"
+    "historical_short_form_planning_duration_seconds": "70-85",
+    "planning_speaking_rate_status": "PLANNING_ONLY_NOT_PRODUCTION_TIMECODE_SOURCE"
   },
-  "owner_review_scope": "G5 final PASS. High-risk Pilot 8/8 accepted and persistent reference package path validation PASS (9/9 used assets resolved). Main line is now G6 Low-Level Execution Package / Antigravity PoC.",
+  "owner_review_scope": "G6 in progress. CosyVoice upstream TTS PoC passed deterministic voice/timing mechanics, but a 1.407x high-risk case exposed invalid Visual-Beat-derived SRT timing. Canonical SRT/Audio timing has been rebaselined to Audio Master first.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -214,11 +216,12 @@
     },
     "phase_b": {
       "name": "Exact Timeline Compiler",
-      "status": "BLOCKED_BY_AUDIO_MASTER",
+      "status": "BLOCKED_BY_FINAL_AUDIO_MASTER",
       "requires_final_audio": true,
-      "audio_mode": "TBD"
+      "audio_mode": "A_UPSTREAM_COSYVOICE",
+      "timing_standard": "docs/SRT_AUDIO_TIMING_STANDARD.md"
     },
-    "key_decision": "Do not create fake exact timestamps before final audio. Lock semantic shots first, then compile exact timing from locked audio/SRT.",
+    "key_decision": "Do not create exact production timestamps before measured final audio. G4 locks meaning/order/relative rhythm first; G6 compiles exact timing from the Audio Master.",
     "next_validation": "Context / Memory G4A semantic shot plan",
     "overall_pass_allowed": false,
     "validation_review": "docs/G4_VALIDATION_REVIEW.md",
@@ -434,12 +437,30 @@
     "gate_review": "docs/G5_GATE_REVIEW.md"
   },
   "g6": {
-    "status": "READY",
+    "status": "IN_PROGRESS",
     "contract": "docs/LOW_LEVEL_EXECUTION_PACKAGE.md",
     "first_poc_case": "blind-search-answer",
     "reference_package_root": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1",
     "reference_package_zip": "/ai-story-showrunner/g5/blind-search-answer/g5-reference-package-v1.zip",
-    "audio_mode": "TBD",
-    "next": "Assemble the first G6 low-level execution package. Resolve Audio Mode with a real PoC, lock final audio, compile exact Shot Timeline, then hand the deterministic image/edit package to Antigravity."
+    "audio_mode": "A_UPSTREAM_COSYVOICE",
+    "next": "Generate natural Speech Units with the fixed CosyVoice Voice Profile, build and lock FINAL_AUDIO, compile FINAL_AUDIO_ALIGNED.srt, then retime the accepted 44 Visual Beats and generate the exact Shot Timeline.",
+    "timing_standard": "docs/SRT_AUDIO_TIMING_STANDARD.md",
+    "tts_poc": {
+      "engine": "CosyVoice-300M",
+      "mode": "zero_shot",
+      "prompt_cache": true,
+      "fixed_seed": true,
+      "deterministic_repeat_test": "PASS",
+      "baseline_case": "PASS",
+      "punch_case": "PASS",
+      "high_risk_case": {
+        "natural_duration_sec": 4.2493,
+        "old_window_sec": 3.02,
+        "required_speed_ratio": 1.407,
+        "listening_result": "UNACCEPTABLE",
+        "diagnosis": "REFERENCE_TIMING_ARCHITECTURE_FAILURE_NOT_TTS_FAILURE"
+      }
+    },
+    "reference_timing_status": "PLANNING_ONLY_DO_NOT_USE_AS_TTS_CONTRACT"
   }
 }
