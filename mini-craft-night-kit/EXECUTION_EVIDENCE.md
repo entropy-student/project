@@ -931,3 +931,59 @@ NORMAL_STOCK_HOLD=PASS
 STOP_AT_REVIEWER=YES
 
 No PayPal reauthorization, Live mode, VPS, production domain, or K4/K5 work was entered.
+## K3R5 P0 — Docker PPCP 4.1.3 UI Compatibility Return — 2026-09-21 14:03 +08:00
+
+Gate: K3R5_PAYPAL_SANDBOX_DOCKER
+Target: http://localhost:8093/
+
+### Pre-K3R5 rollback
+
+- ROLLBACK_DIR: local-only C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery\.artifacts\k3r5-preflight-20260921
+- ROLLBACK_DATABASE: MariaDB dump created successfully; 2,178,206 bytes; mariadb-check returned OK for the database tables
+- ROLLBACK_WP_CONTENT: complete named-volume archive created successfully; 11,097 archive entries; plugins and uploads present
+- ROLLBACK_CONFIG: local wp-config.php copy retained; no configuration values recorded here
+- ROLLBACK_SECRET_EXPOSURE=NO
+
+### P0 change
+
+- Official woocommerce-paypal-payments version 4.1.3 installed from the WordPress.org package and activated on the Docker/MariaDB recovery runtime
+- No PayPal login, account connection, OAuth consent, credential entry, Sandbox authorization, Live enablement, or payment action was performed
+- No version upgrade/downgrade, Studio write, VPS write, public tunnel, or custom PayPal API was used
+- Plugin list after activation remained: Akismet inactive; Hello inactive; Kadence Blocks active 3.7.11; Kadence Starter Templates active 2.3.4; WooCommerce active 10.0.4; WooCommerce PayPal Payments active 4.1.3
+
+### P0 runtime evidence
+
+- WooCommerce Home UI loaded with visible Home, store task list, and Welcome to Mini Craft Night Kit
+- WooCommerce Settings → Payments UI loaded with visible Payments and Payment providers
+- PayPal settings section HTTP response: 200 at dmin.php?page=wc-settings&tab=checkout&section=ppcp-gateway
+- WooCommerce PayPal settings REST requests observed in the local browser network: wc_paypal/settings 200 and wc_paypal/payment 200
+- /wp-json/wc-admin/features/ 200 with authenticated REST nonce
+- /wp-json/wc-admin/options/ 200 with its required options query and authenticated REST nonce
+- Store API products 200; Store API cart 200
+- Product 200; Cart 200; Checkout 200 after local add-to-cart
+- Home 200; /wp-json/ 200; authenticated WooCommerce Home 200; authenticated Payments 200
+- Five repeated Home requests returned 200 at approximately 0.24–0.36 seconds
+- WordPress container up; MariaDB healthy; sampled CPU approximately 0.01% WordPress and 0.03% MariaDB
+
+### Browser Console conflict
+
+- PPCP_REACT_ERROR=CONFIRMED
+- PPCP_REACT_ERROR_CODE=Minified React error #299
+- Stack points to ReactDOM.createRoot inside wp-content/plugins/woocommerce-paypal-payments/assets/ppcp-settings-js-index.js
+- A deprecated WordPress tooltip warning was also present; the blocking finding is the PPCP React #299 error
+- The Payments page rendered its outer shell, but the PPCP React mount is not considered healthy; no PayPal authorization was attempted
+
+### Gate result
+
+RETURN_K3R5_PPCP_4_1_3_DOCKER_UI_CONFLICT
+
+P0_RESULT=RETURN
+P1_OWNER_PAYPAL_AUTH=NOT_REACHED
+PAYPAL_LIVE_ENABLED=NO
+REAL_PAYMENT_ACTIONS=0
+STUDIO_WRITES=ZERO
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+STOP_AT_REVIEWER=YES
+
+PPCP was left installed and active only to preserve the captured P0 failure state for Reviewer decision; the project-local rollback backup is ready. No further K3R5 phase was entered.
