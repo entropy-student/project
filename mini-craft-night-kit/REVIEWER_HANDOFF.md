@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
+CURRENT_CHECKPOINT=OWNER_K3R11_PUBLIC_SANDBOX_MANUAL_CONNECT_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -680,3 +680,34 @@ Governance correction: this Owner checkpoint was unnecessarily conservative. A l
 Executor may now perform exactly one official PPCP Disconnect, verify redacted disconnected state/runtime health, and continue public-origin preparation. Stop only at a genuine Owner-only boundary such as Cloudflare account authorization or local entry of rotated Sandbox credentials.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_DISCONNECT_CONFIRMED_AND_OWNER_GATE_CORRECTION.md`.
+
+
+## K3R11 Public-Origin Rebind Prep — PASS / Owner Manual Connect
+
+Reviewer independently inspected Executor commit `8663ef00b7f339e8da482237825fe1827d0b0988`.
+
+Accepted:
+
+```text
+K3R11_PUBLIC_ORIGIN_REBIND_PREP=PASS
+ROLLBACK_POINT_VERIFIED=PASS
+OFFICIAL_DISCONNECT=PASS_ONCE
+OLD_CREDENTIAL_BINDING_CLEARED=PASS
+PUBLIC_HTTPS_ORIGIN=PASS
+WORDPRESS_URL_REBIND=PASS_REVERSIBLE
+PUBLIC_FRONTEND=PASS
+PUBLIC_WP_ADMIN=PASS_AUTH_REDIRECT
+PUBLIC_DIRECT_PAYPAL_SETTINGS=PASS_AUTH_REDIRECT
+RUNTIME_HEALTH=PASS
+SECRET_VALUES_OUTPUT=NO
+```
+
+Temporary public origin: `https://email-rich-barbie-merchants.trycloudflare.com`.
+
+Current checkpoint: `OWNER_K3R11_PUBLIC_SANDBOX_MANUAL_CONNECT_REQUIRED`.
+
+Owner may log into WordPress through the temporary HTTPS origin and perform exactly one Sandbox Manual Connect using the already-rotated credentials. Keep credentials local; after the sanitized UI result, stop before buyer approval/capture.
+
+Quick Tunnel is ephemeral; if it becomes unavailable before Owner completes the action, return to Executor for tunnel re-establishment rather than changing scope.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_REBIND_PREP_PASS_OWNER_PUBLIC_MANUAL_CONNECT.md`.
