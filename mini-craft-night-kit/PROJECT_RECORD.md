@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R11_CONNECTION_STATE_RECONCILIATION
+CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -706,3 +706,20 @@ CURRENT_GATE=K3R11_CONNECTION_STATE_RECONCILIATION
 Owner reconnect is paused. Executor must reconcile the state read-only before any disconnect/reconnect or public-origin work continues.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_UI_REST_CONNECTION_STATE_MISMATCH.md`.
+
+
+## K3R11 Connection-State Reconciliation — PASS
+
+Corrected PPCP REST parsing shows the admin UI and REST state agree: merchant connected = YES and Sandbox = YES. The prior disconnected result was a helper response-path bug and is superseded.
+
+```text
+K3R11_CONNECTION_STATE_RECONCILIATION=PASS
+PPCP_REST_MERCHANT_CONNECTED=YES
+PRIOR_DISCONNECTED_RESULT=SUPERSEDED_HELPER_PARSE_ERROR
+OLD_SANDBOX_SECRET_REUSE=FORBIDDEN
+CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
+```
+
+Because the local PPCP connection is still bound to credential material stored before the Sandbox Secret rotation, the next bounded phase first uses PPCP's official local disconnect path to remove that old binding, then creates the temporary HTTPS public origin, then stops for Owner Manual Connect with the rotated credentials.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_CONNECTION_RECONCILED_PUBLIC_ORIGIN_REBIND.md`.
