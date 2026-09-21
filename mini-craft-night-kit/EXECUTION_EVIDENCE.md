@@ -673,3 +673,6 @@ OLD_PROJECT_UNCHANGED=PASS
 UNRELATED_PROJECTS_TOUCHED=NO
 STOP_AT_REVIEWER=YES
 ~~~
+### Error detail clarification
+
+The React decoder for the captured production exception `#299` resolves the full text to: `Target container is not a DOM element.` The live page inspection independently confirmed the targeted `#ppcp-settings-container` element was absent. No WooCommerce “Click for error details” link was rendered by the stuck Home view, so no additional WooCommerce UI error text was available to capture.
