@@ -670,3 +670,30 @@ Retry constraint:
 
 Decision:
 no architecture rewrite; regenerate only.
+
+
+---
+
+## G5 Pilot — VB015 PASS_WITH_MINOR
+
+Date: 2026-09-21
+
+Selected:
+`VB015 image 1`.
+
+Result:
+`SRCH_VB015 = PASS_WITH_MINOR`.
+
+Accepted:
+- matched-setup function is clear;
+- next-line region is the visual target;
+- reversal sentence remains withheld;
+- geometry is suitable to lock for VB016.
+
+Deferred minor:
+- crop could still be tighter;
+- “服务费” label appears earlier than ideal, but does not reveal the actual reversal sentence.
+
+Decision:
+do not rework.
+Use image 1 as VB016 matched-reveal source geometry.
