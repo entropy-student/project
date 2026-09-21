@@ -1,4 +1,4 @@
-# SRT / Audio Timing Standard v0.4 — CANONICAL
+# SRT / Audio Timing Standard v0.5 — CANONICAL
 
 ## Status
 
@@ -8,21 +8,21 @@ Date: 2026-09-22
 
 ## 1. Purpose
 
-Production speech timing is solved **before Director work**.
+Production speech timing is **planned before Director work**. Final absolute timestamps are resolved automatically after real TTS.
 
 ```text
 locked spoken script
 → Speech Units
 → semantic timing intent
 → Voice Timing Profile
-→ Production SRT + TTS Manifest
+→ PLANNED Production SRT + TTS Manifest
 → Director
 → Assets
 → Production Package
 → Executor TTS
 ```
 
-Real TTS is execution/QA, not a normal second creative timing pass.
+Real TTS is execution/QA and the source of final absolute speech duration. It does not trigger a second creative timing pass; a Runtime Timeline Resolver automatically derives the final timeline.
 
 ## 2. Authority
 
@@ -38,7 +38,7 @@ Owns:
 - semantic pace classification;
 - timing lock class;
 - authored semantic pauses;
-- Production SRT start/end;
+- planned Production SRT start/end;
 - TTS Manifest timing/speed intent.
 
 ### Voice Timing Profile
@@ -48,15 +48,25 @@ Current canonical profile:
 `profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json`
 
 ### Director
-Consumes Production SRT.
+Consumes the planned Production SRT.
 
 Director may arrange visual beats inside the locked speech timeline, but may not invent speech duration or TTS speed.
 
-### Executor
-Executes the locked TTS recipe.
+### Runtime Timeline Resolver
+After real TTS, owns:
+- actual normalized durations;
+- final absolute start/end timestamps;
+- downstream cumulative shifts;
+- ELASTIC slack rebalance;
+- final subtitle timeline;
+- final Visual Beat / Shot Timeline timestamps.
 
-Material mismatch:
-`RETURN_VOICE_TIMING_PROFILE_MISS`
+It may not change text, semantic pace, Visual Beat meaning/order, POV or HARD_ANCHOR meaning.
+
+### Executor
+Executes the locked TTS recipe and then runs the Runtime Timeline Resolver.
+
+A profile drift is diagnostic by default. Use `RETURN_VOICE_TIMING_PROFILE_MISS` only when locked constraints cannot be reconciled automatically.
 
 ## 3. Timing units
 
@@ -97,7 +107,7 @@ Pace matters; exact milliseconds may flex inside the profile-safe range.
 ### ELASTIC
 Ordinary narration may donate/borrow small amounts of time during compile-time solving.
 
-## 6. Production-SRT compilation
+## 6. Planned Production-SRT compilation
 
 For each Speech Unit:
 
@@ -112,7 +122,7 @@ For each Speech Unit:
 9. emit cue start/end;
 10. emit corresponding TTS Manifest row.
 
-Then perform a **whole-script timeline pass**:
+Then perform a **whole-script planned-timeline pass**:
 - preserve order;
 - preserve HARD_ANCHOR;
 - prevent overlap;
@@ -122,7 +132,7 @@ Then perform a **whole-script timeline pass**:
 
 Therefore:
 
-> **逐段计算 duration，整篇统一编排 start/end，输出一个完整 Production SRT。**
+> **逐段计算 duration，整篇统一编排 planned start/end，输出一个完整 planned Production SRT。**
 
 ## 7. Legacy/reference timing
 
@@ -139,7 +149,35 @@ If a legacy reference conflicts with the Voice Timing Profile:
 4. borrow/donate from ELASTIC neighbors;
 5. expand a local section only when necessary.
 
-## 8. Voice-profile acceptance — canonical v2.1 model
+## 8. Runtime resolution
+
+After real TTS:
+
+```text
+planned timeline
+→ actual normalized durations
+→ Runtime Timeline Resolver
+→ FINAL_SUBTITLES.srt
+→ FINAL_TIMELINE.json
+→ FINAL_SHOT_TIMELINE.csv
+```
+
+Automatic resolution may:
+- shift downstream timestamps;
+- shrink/expand ELASTIC slack;
+- extend valid visual holds;
+- extend total episode duration.
+
+It may not:
+- rewrite speech;
+- change pace class/speed;
+- remove HARD_ANCHOR meaning;
+- reorder Speech Units/Visual Beats;
+- change POV/visual meaning.
+
+The Owner should not have to return the real SRT for a second package compilation.
+
+## 9. Voice-profile acceptance — canonical v2.1 model
 
 Absolute error is diagnostic only.
 
@@ -164,7 +202,7 @@ Guidance:
 
 Do not treat under-allocation and over-allocation as equivalent failure modes.
 
-## 9. Canonical CosyVoice v2.1 safety branches
+## 10. Canonical CosyVoice v2.1 safety branches
 
 The generic Timing Compiler reads these from the profile rather than hard-coding them.
 
@@ -176,7 +214,7 @@ Current profile includes:
 
 These are **profile parameters**, not universal Story Showrunner constants.
 
-## 10. TTS Manifest
+## 11. TTS Manifest
 
 Each row must include at least:
 - speech_unit_id;
@@ -193,7 +231,7 @@ Each row must include at least:
 
 Machine-specific absolute paths belong runtime configuration, not the canonical profile/Skill contract.
 
-## 11. Executor policy
+## 12. Executor policy
 
 Executor may:
 - load model once;
@@ -210,7 +248,7 @@ Executor may NOT:
 - redesign SRT;
 - use major time-stretch to rescue a compiler/profile miss.
 
-## 12. Recalibration triggers
+## 13. Recalibration triggers
 
 Do not recalibrate for every episode.
 
@@ -222,7 +260,7 @@ Recalibrate/review only when:
 - generation settings materially change;
 - repeated production `RETURN_VOICE_TIMING_PROFILE_MISS` occurs.
 
-## 13. Historical calibration evidence
+## 14. Historical calibration evidence
 
 V1 symmetric-error regression was rejected.
 
@@ -238,7 +276,7 @@ Canonical result:
 Detailed calibration artifacts remain historical evidence under:
 `experiments/g6/voice-timing-calibration/`
 
-## 14. Human intervention
+## 15. Human intervention
 
 Normal production requires no Owner approval of:
 - final script;
@@ -248,6 +286,6 @@ Normal production requires no Owner approval of:
 
 Escalate only for an unresolved RETURN/BLOCKED state or explicit owner override.
 
-## 15. Core principle
+## 16. Core principle
 
-> **语义决定怎么说；Voice Timing Profile 让 Timing Compiler 在生成真实音频前就分配安全时间；Director 只在这条已锁定时间轴上设计画面。**
+> **语义决定怎么说；Voice Timing Profile 负责提前规划安全时间；真实 TTS 决定最终绝对时间；Runtime Timeline Resolver 自动校准；Director 的语义/视觉决策不因普通时长偏差而重做。**
