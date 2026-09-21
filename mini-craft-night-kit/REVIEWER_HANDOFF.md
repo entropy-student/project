@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K4_BUSINESS_FACTS_REQUIRED
+CURRENT_GATE=K4_UI_CONVERSION_TRUST_FINALIZE
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -858,7 +858,7 @@ Formal decision: `docs/REVIEWER_DECISION_K3_PASS_K4_CONVERSION_TRUST.md`.
 Owner requested that explicit UI modification be part of the project flow. K4 remains a single Gate rather than being split further.
 
 ```text
-CURRENT_CHECKPOINT=OWNER_K4_BUSINESS_FACTS_REQUIRED
+CURRENT_GATE=K4_UI_CONVERSION_TRUST_FINALIZE
 UI_MODIFICATION_STAGE=ADDED
 ```
 
@@ -897,3 +897,32 @@ Current checkpoint: `OWNER_K4_BUSINESS_FACTS_REQUIRED`.
 All remaining facts are batched into one Owner checkpoint: final kit contents; duration/difficulty; shipping destinations/method/cost/timing; return window/conditions; missing/damaged-item support channel; public support email/contact channel; and public business/return address if one will be published.
 
 Formal decision: `docs/REVIEWER_DECISION_K4_IMPLEMENTATION_PASS_OWNER_BUSINESS_FACTS.md`.
+
+
+## K4 Owner Business Facts — CONFIRMED
+
+Owner approved the recommended MVP defaults and confirmed they must remain editable later.
+
+```text
+OWNER_K4_BUSINESS_POLICY=CONFIRMED
+INITIAL_MARKET=UNITED_STATES
+SHIPPING_METHOD=TRACKED_STANDARD_SHIPPING
+SHIPPING_COST=DISPLAY_AT_CHECKOUT
+FIXED_DELIVERY_PROMISE=NO_UNTIL_VERIFIED
+RETURN_WINDOW=14_DAYS_AFTER_DELIVERY
+NON_DEFECT_RETURN_CONDITION=UNUSED_UNASSEMBLED_ORIGINAL_PACKAGING
+NON_DEFECT_RETURN_SHIPPING=BUYER_PAID
+MISSING_DAMAGED_REPORT_WINDOW=7_DAYS
+MISSING_DAMAGED_PRIMARY_REMEDY=REPLACEMENT_FIRST
+PUBLIC_SUPPORT_CHANNEL=CONTACT_FORM
+DOMAIN_SUPPORT_EMAIL=ADD_WHEN_FINALIZED
+PUBLIC_HOME_ADDRESS=NO
+BUSINESS_RULES_FUTURE_EDITABLE=YES
+CURRENT_GATE=K4_UI_CONVERSION_TRUST_FINALIZE
+```
+
+Product contents must only reflect supplier-confirmed SKU contents. Difficulty may be described as suitable for beginners/hobbyists, but no fixed completion time may be promised until verified.
+
+Executor may now update Product / FAQ / Shipping & Returns / Contact using these approved rules and perform one final K4 verification pass.
+
+Formal decision: `docs/REVIEWER_DECISION_K4_OWNER_BUSINESS_FACTS_CONFIRMED.md`.
