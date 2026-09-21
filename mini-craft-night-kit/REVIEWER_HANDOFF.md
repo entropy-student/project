@@ -399,3 +399,17 @@ Do not continue treating invalid credentials as the leading explanation if PPCP 
 Current Gate: `K3R8C_PHASE_C_PPCP_MANUAL_CONNECT_ISOLATION`.
 
 Executor should now inspect the existing failed PPCP manual-connect attempt's redacted REST/log evidence first. Do not ask Owner to re-enter credentials unless existing evidence is insufficient; at most one bounded retry is allowed. No version change, source patch, Live mode, real payment, public tunnel, or VPS action.
+
+## K3R8C Phase C Review / K3R8E Authorization
+
+Reviewer inspected the underlying K3R8C evidence and PPCP 4.1.3 source rather than accepting the Executor return label alone.
+
+Confirmed: manual connect fails in `request_payee()` after valid OAuth. PPCP's source creates a minimal USD 1.00 order, retrieves it, then expects payee merchant ID + email; exceptions are collapsed into the generic `Failed to retrieve payee details.` message.
+
+Not confirmed yet: that PPCP itself is the root-cause defect. The same symptom could still be caused by PayPal Sandbox/app/account behavior in that exact order create/get path.
+
+Current Gate: `K3R8E_PAYEE_PROBE_PARITY_TEST`.
+
+Run one provider-parity test outside PPCP using the same request semantics and Owner-entered Sandbox credentials. No version change, patch, Live, capture, real payment, tunnel, or VPS.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8E_PAYEE_PROBE_PARITY_TEST.md`.
