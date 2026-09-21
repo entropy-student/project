@@ -826,3 +826,31 @@ Pilot execution note:
 - Pilot may generate a representative payoff frame fresh;
 - full-episode canonical mode remains `DERIVE_EDIT(source=VB024)`;
 - recurring-IP drift is a high-risk QA item because canonical IP binary is still not persisted.
+
+
+---
+
+## G5 Pilot — VB025 Attempt 1 RETURN_EXECUTION
+
+Date: 2026-09-21
+
+Result:
+`SRCH_VB025 = RETURN_EXECUTION`.
+
+Failures:
+- required two-person story payoff disappeared;
+- output became a prop/product-demo close-up;
+- giant phone UI violated the explicit negative constraint;
+- style drifted toward realistic/3D product illustration;
+- therefore the analogy did not land as a story moment.
+
+Retry:
+- two-shot story scene;
+- left: canonical IP puzzled / speechless;
+- right: clearly adult supporting actor confidently presenting the correct paper contact-book record;
+- only causal prop = paper contact book;
+- cue = boss phone number / correct boss record;
+- no AI UI, giant phone, title, arrows, explanatory card or bubble;
+- simplified flat narrative comic only.
+
+No theory rewrite required.
