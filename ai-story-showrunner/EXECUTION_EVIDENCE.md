@@ -882,3 +882,32 @@ preserve composition, blocking and prop action.
 Correct only recurring-IP identity/costume/style; keep the supporting actor adult and distinct.
 
 No G4/G5 architecture rewrite required.
+
+
+---
+
+## G5 Pilot — VB025 PASS_WITH_MINOR_CHARACTER_RISK
+
+Date: 2026-09-21
+
+Result:
+`SRCH_VB025 = PASS_WITH_MINOR_CHARACTER_RISK`.
+
+Accepted:
+- two-person analogy payoff works as a story scene;
+- supporting actor confidently presents correct boss contact;
+- recurring IP reaction makes the wrong-facet answer legible;
+- auxiliary actor remains visually distinct.
+
+Deferred character risk:
+- CHAR_IP_001 is less juvenile than prior attempt but still not fully canonical;
+- face/hair geometry and costume retain residual drift;
+- hoodie-like interpretation risk remains.
+
+Production implication:
+canonical IP image reference must be persisted and bound as an actual image input before G6 deterministic generation.
+Prompt-only identity lock is insufficient.
+
+Decision:
+do not rework VB025 during Pilot.
+Continue final high-risk beat VB044.
