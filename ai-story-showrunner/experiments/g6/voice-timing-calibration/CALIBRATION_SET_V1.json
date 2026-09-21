@@ -1,0 +1,208 @@
+{
+  "version": "v1",
+  "date": "2026-09-21",
+  "purpose": "One-time Voice Timing Profile calibration for current CosyVoice setup",
+  "fixed_setup": {
+    "engine": "CosyVoice-300M",
+    "mode": "zero_shot",
+    "seed": 1986,
+    "reference_audio": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\reference-clone.wav",
+    "reference_text": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\reference-clone-text.txt",
+    "cosyvoice_root": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\CosyVoice",
+    "venv_python": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\cosyvoice-venv\\Scripts\\python.exe"
+  },
+  "normalization": {
+    "measure_raw_duration": true,
+    "effective_measurement": "trim technical leading/trailing silence using deterministic energy threshold; retain 60ms head margin and 120ms tail margin; never cut voiced phonemes",
+    "fit_target": "normalized_duration",
+    "note": "semantic pauses are NOT included in lexical duration model"
+  },
+  "model": {
+    "train_count": 14,
+    "heldout_count": 4,
+    "fit_features": [
+      "intercept",
+      "cjk_char_count",
+      "latin_or_abbrev_token_count",
+      "arabic_number_token_count",
+      "soft_punctuation_count",
+      "hard_punctuation_count",
+      "short_utterance_indicator"
+    ],
+    "fit_method": "robust linear regression if available; otherwise ordinary least squares with no feature expansion",
+    "semantic_speed_normalization": "base_equivalent_duration = normalized_duration * generation_speed",
+    "prediction": "predicted_duration = predicted_base_equivalent_duration / intended_speed",
+    "acceptance": {
+      "median_absolute_error_ms": 150,
+      "p90_absolute_error_ms": 300,
+      "large_unplanned_speed_change": "none"
+    }
+  },
+  "samples": [
+    {
+      "id": "CAL001",
+      "split": "train",
+      "existing": true,
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "会。退款完成后，款项会原路退回。",
+      "known_duration_sec": 2.5542,
+      "notes": "existing baseline"
+    },
+    {
+      "id": "CAL002",
+      "split": "train",
+      "existing": true,
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。",
+      "known_duration_sec": 4.2493,
+      "notes": "existing long/high-density case"
+    },
+    {
+      "id": "CAL003",
+      "split": "train",
+      "existing": true,
+      "semantic_class": "PUNCH_SETUP",
+      "generation_speed": 1,
+      "text": "我会多问一句：",
+      "known_duration_sec": 1.2771,
+      "notes": "existing short case"
+    },
+    {
+      "id": "CAL004",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "网页没有找错。",
+      "notes": "short normal"
+    },
+    {
+      "id": "CAL005",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "我点开了那个官方网页。",
+      "notes": "medium normal"
+    },
+    {
+      "id": "CAL006",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "PUNCH_SETUP",
+      "generation_speed": 1,
+      "text": "几秒钟以后，答案出来了：“会。”",
+      "notes": "colon + quote"
+    },
+    {
+      "id": "CAL007",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "FAST_NORMAL",
+      "generation_speed": 1.06,
+      "text": "如果答案不重要，我当然不会每次都重新查一遍。",
+      "notes": "fast-normal, comma"
+    },
+    {
+      "id": "CAL008",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "FAST_CLEAR",
+      "generation_speed": 1.08,
+      "text": "不对，答案变了。",
+      "notes": "short punch"
+    },
+    {
+      "id": "CAL009",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "CONTROLLED",
+      "generation_speed": 1,
+      "text": "来源是真的，链接也是真的，只有最后那个结论是错的。",
+      "notes": "reversal/controlled"
+    },
+    {
+      "id": "CAL010",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "FINAL",
+      "generation_speed": 0.96,
+      "text": "它真的给我找对了网页。",
+      "notes": "final landing"
+    },
+    {
+      "id": "CAL011",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "这个来源里的哪句话，真的支持你的结论？",
+      "notes": "question"
+    },
+    {
+      "id": "CAL012",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "我连续检查了 3 次，结果每一次都指向同一个页面。",
+      "notes": "Arabic number"
+    },
+    {
+      "id": "CAL013",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "AI 不是没找到资料，而是把正确的资料用错了地方。",
+      "notes": "AI token"
+    },
+    {
+      "id": "CAL014",
+      "split": "train",
+      "existing": false,
+      "semantic_class": "CONTROLLED",
+      "generation_speed": 1,
+      "text": "MCP 解决的不是模型会不会思考，而是工具之间怎么稳定地连接起来。",
+      "notes": "MCP token + long controlled"
+    },
+    {
+      "id": "BLD001",
+      "split": "heldout",
+      "existing": false,
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "然后答案变了。",
+      "notes": "blind short normal"
+    },
+    {
+      "id": "BLD002",
+      "split": "heldout",
+      "existing": false,
+      "semantic_class": "FAST_CLEAR",
+      "generation_speed": 1.08,
+      "text": "你引用的网页里，哪一句话明确说明服务费会退？",
+      "notes": "blind question"
+    },
+    {
+      "id": "BLD003",
+      "split": "heldout",
+      "existing": false,
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "我让 AI 连续检查了 3 次，它每次都给出了同一个链接。",
+      "notes": "blind AI + Arabic number"
+    },
+    {
+      "id": "BLD004",
+      "split": "heldout",
+      "existing": false,
+      "semantic_class": "FINAL",
+      "generation_speed": 0.96,
+      "text": "真正危险的，不是它没有来源，而是来源和结论之间少了一步判断。",
+      "notes": "blind long final"
+    }
+  ]
+}
