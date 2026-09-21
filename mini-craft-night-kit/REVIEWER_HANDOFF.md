@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R4_LOCAL_RUNTIME_ESCAPE_DOCKER_MARIADB
+CURRENT_GATE=K3R5_PAYPAL_SANDBOX_DOCKER
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -260,3 +260,16 @@ Fresh clean WordPress in Studio reproduced the timeout before WooCommerce existe
 Formal decision: `docs/REVIEWER_DECISION_K3R4_LOCAL_RUNTIME_ESCAPE_DOCKER_MARIADB.md`.
 
 Create a new isolated Docker + MariaDB local control/recovery stack. Keep A/B/C0, the pre-K3 backup, K0 Docker PoC, and old project untouched. Do not resume PayPal in this Gate. If the Studio backup cannot be moved to MariaDB through a supported/safe path, return to Reviewer rather than writing a custom converter.
+
+
+## K3R4 Final PASS / K3R5 Authorization
+
+Formal pass: `docs/REVIEWER_DECISION_K3R4_PASS.md`.
+
+Active local runtime is now Docker/MariaDB at `http://localhost:8093/`. Studio A/B/C0 remain retained read-only and are no longer the active execution environment.
+
+Current Gate: `K3R5_PAYPAL_SANDBOX_DOCKER`.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R5_PAYPAL_SANDBOX_DOCKER.md`.
+
+First re-test official PPCP 4.1.3 admin/UI health on Docker before any Owner authorization. If healthy, stop only at the actual Owner Sandbox login/consent checkpoint. If localhost later blocks callback/webhook, return to Reviewer instead of creating a public route.
