@@ -14,15 +14,19 @@ G2   PASS
 G2.5 PASS
 G3   PASS
 G3R  PASS
+G4   PASS
 
-G4   IN_PROGRESS
-  G4A Semantic Director: Agent PASS_CANDIDATE
-  G4B Exact Timeline Compiler: BLOCKED_BY_AUDIO_MASTER
+G5   IN_PROGRESS
+  G5A Asset Requirement Extraction: PASS
+  G5B Canonical Reference Lock: PASS_DIRECTION_LOCKED
+  G5B.5 Visual Acquisition Review: PASS_KEEP_ITERATE
+  G5C Pilot: VB001 PASS_WITH_MINOR
+  G5C Pilot: VB009 RETRY_READY_FRESH_GENERATE_IP_POV_HANDS
 
-G5   BLOCKED
+G6   BLOCKED_BY_G5
 ```
 
-Owner explicitly started G4.
+Current action: generate + QA `SRCH_VB009` as a fresh first-person hands insert. Do not derive it from the observer-view VB008.
 
 ## 2. Final Goal
 
@@ -646,3 +650,27 @@ not visible = full face / third-party observer composition
 Next:
 retry VB009 under corrected POV.
 
+
+
+## G5 VB009 POV / Execution Compatibility Patch — 2026-09-21
+
+Reviewer found a downstream execution contradiction after the accepted POV audit:
+
+- VB008 = `OBSERVER / MEDIUM_CLOSE`;
+- VB009 = `IP_POV_HANDS / MEDIUM_INSERT`;
+- existing VB009 row still used `DERIVE_EDIT(source=VB008)` and simultaneously said both “reframe to IP_POV_HANDS” and “do not change camera/crop”.
+
+Decision:
+`RETURN_DERIVE_SOURCE_INCOMPATIBLE`.
+
+Patch:
+- VB009 execution mode: `DERIVE_EDIT → GENERATE`;
+- source frame removed;
+- `continuity_ref=VB008` retained only as semantic/world continuity;
+- hands/cuff-only identity QA scopes to visible cues and does not require off-frame face/body checks;
+- execution mode distribution becomes `GENERATE 15 / DERIVE_EDIT 25 / COMPOSITE_CROP 4`.
+
+Next:
+`Generate + QA SRCH_VB009 → PASS → continue SRCH_VB012`.
+
+G6 remains blocked by G5.
