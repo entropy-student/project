@@ -277,3 +277,14 @@ C0 already reproduces the Studio request-hang/one-hot-worker pattern. Per the Re
 A remained read-only with PPCP inactive. No PayPal, version, database, VPS, public-route, or payment action occurred. B and C0 are retained for Reviewer inspection.
 
 `STOP_AT_REVIEWER=YES`
+## K3R4 Executor Handoff — 2026-09-21 12:58 +08:00
+
+PASS_CANDIDATE_K3R4_DOCKER_MARIADB_LOCAL_RECOVERY
+
+D0 clean Docker + MariaDB control passed on port 8092. D1 official WooCommerce 10.0.4 control passed without PPCP. D2 restored the retained pre-K3 Mini Craft state into an independent MariaDB runtime on port 8093 using the retained SQL dump and wp-content; no custom database converter was used.
+
+D2 passed Home/Product/Cart/Checkout, authenticated wp-admin and Orders admin, WooCommerce Home/Payments, authenticated wc-admin features/options contract, Store API, Gutenberg editor endpoint, and 375px/768px/1440px smoke checks. The clone-only hold-stock option is 10 minutes, and one local pending test order produced a reserved-stock row. No payment action occurred.
+
+Studio A/B/C0, old Docker 8090, old project 8088, existing volumes, PayPal credentials, and unrelated projects were not touched. PPCP remains out of the recovered runtime.
+
+Reviewer action: review D0/D1/D2 evidence and decide whether K3R4 is accepted. Executor stops here; no K4/K5/VPS/Live work was started.
