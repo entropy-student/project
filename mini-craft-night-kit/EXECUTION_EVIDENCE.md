@@ -723,3 +723,75 @@ STOP_AT_REVIEWER=YES
 ```
 
 The direct Payments-page failure is isolated to the active PPCP path, but the broader WooCommerce Home/admin REST and Store API failure remains. No further change is authorized by K3R1; leave PPCP deactivated for Reviewer review.
+## K3R2 — Pre-K3 parallel baseline comparison (2026-09-21) — RETURN
+
+- Gate: `K3R2_PRE_K3_PARALLEL_BASELINE_COMPARISON`
+- Result: `RETURN_K3R2_STUDIO_OR_WOOCOMMERCE_RUNTIME_SYSTEMIC`
+- A current site: `http://localhost:8881/`, path `mini-craft-kadence-poc/.studio/mini-craft-night-kit`
+- B pre-K3 clone: `http://localhost:8882/`, path `mini-craft-kadence-poc/.studio/mini-craft-k3r2-pre-k3-20260921`
+- B source: retained `mini-craft-kadence-poc/.artifacts/k3-paypal-sandbox/pre-k3-backup.zip`; import completed successfully. Backup SHA-256 matched the retained K3 record.
+- B was created with a separate Studio name, directory, site record, and port. B was kept running for Reviewer inspection.
+
+### Plugin and mutation boundary
+
+- A PPCP state before/after comparison: `woocommerce-paypal-payments` `4.1.3`, inactive.
+- B plugin inventory after import: WooCommerce `10.0.4` active; Kadence components present; no `woocommerce-paypal-payments` entry.
+- Filesystem check: A PPCP directory exists; B PPCP directory does not exist.
+- No PPCP was installed or activated in B.
+- A was not overwritten, restored, restarted, or configured by this Gate. A-side operations were read-only status/plugin checks and HTTP probes only.
+- No version change, PayPal authorization, Live mode, real payment, database migration, VPS, Cloudflare, or public tunnel was performed.
+
+### A/B runtime comparison
+
+All probes used the same local HTTP method with `--noproxy *` and a 4-second bounded timeout. `HTTP 000` means no HTTP response before the timeout; it is not a guessed application status.
+
+| Required check | A — current 8881 | B — pre-K3 clone 8882 |
+|---|---:|---:|
+| WordPress frontend `/` | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| Studio auto-login → wp-admin | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| wp-admin `/wp-admin/` | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| WooCommerce Home `page=wc-admin` | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| Settings → Payments | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| `/wp-json/wc-admin/features` | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| `/wp-json/wc-admin/options` | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| Store API products | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| Store API cart | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| Product `/product/mini-craft-night-kit/` | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| Cart `/cart/` | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+| Checkout `/checkout/` | HTTP 000 / ~4.0s timeout | HTTP 000 / ~4.0s timeout |
+
+Both Studio ports were listening on IPv6 loopback (`::1:8881` and `::1:8882`), so the result is not explained by an unbound port. The B start operation completed with `WordPress server started` before the probes.
+
+### PHP worker evidence
+
+At the comparison sample, A and B each had four native Studio PHP workers. Over a 5-second process-CPU delta sample:
+
+- A: one worker consumed approximately 4.828 CPU seconds (~96.6% of one core); the other three were approximately 0 CPU delta.
+- B: one worker consumed approximately 4.891 CPU seconds (~97.8% of one core); the other three were approximately 0 CPU delta.
+- HTTP requests for both sites continued to time out during/after the sample.
+
+### Interpretation
+
+B is not healthy while A is unhealthy. The pre-K3 baseline clone reproduces the same no-response and worker-hang pattern without PPCP. Therefore this Gate does not confirm a K3-only regression.
+
+```text
+K3R2_GATE=K3R2_PRE_K3_PARALLEL_BASELINE_COMPARISON
+PRE_K3_BACKUP_IMPORT=PASS
+PARALLEL_CLONE=PASS
+PARALLEL_CLONE_URL=http://localhost:8882/
+A_SITE_MODIFIED=NO
+A_PPCP_REMAINS_DEACTIVATED=YES
+B_PPCP_INSTALLED=NO
+PRE_K3_BASELINE_HEALTHY=NO
+CURRENT_SITE_RUNTIME_REGRESSION=NOT_CONFIRMED
+A_B_RUNTIME_RESULT=BOTH_FAIL_SIMILARLY
+RETURN_K3R2_STUDIO_OR_WOOCOMMERCE_RUNTIME_SYSTEMIC=YES
+NO_VERSION_CHANGE=YES
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+UNRELATED_PROJECTS_TOUCHED=NO
+STOP_AT_REVIEWER=YES
+```
+
+The parallel clone and its imported database are intentionally retained until Reviewer decides the next runtime/database diagnostic. No recovery action was applied to A.
