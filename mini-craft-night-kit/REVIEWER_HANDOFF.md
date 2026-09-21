@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
+CURRENT_GATE=K4_CONVERSION_TRUST
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -822,3 +822,32 @@ Current Gate: `K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY`.
 Executor may now verify exactly one order/capture, WooCommerce paid/processing state, redacted PayPal correlation, physical-fulfillment non-completion, actual webhook/callback processing, and runtime health. No second payment or refund is authorized.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R10_OWNER_BUYER_APPROVAL_SUCCESS_VERIFY_CAPTURE.md`.
+
+
+## K3 Final Review — PASS / K4 Authorized
+
+Reviewer independently inspected Executor commit `bc81a85bc70804c3b00cf095508d2595d357a0fa`.
+
+Accepted:
+
+```text
+K3_PAYMENT=PASS
+SINGLE_SANDBOX_PAYMENT=PASS
+PAYPAL_CAPTURE=PASS
+WOO_ORDER_PAID_PROCESSING=PASS
+PAYPAL_WOO_CORRELATION=PASS_REDACTED
+PHYSICAL_FULFILLMENT_AUTO_COMPLETED=NO
+WEBHOOK_CALLBACK=PASS
+DUPLICATE_PAYMENT=NO
+DUPLICATE_CAPTURE=NO
+```
+
+K3 Sandbox payment acceptance is formally closed.
+
+Current Gate: `K4_CONVERSION_TRUST`.
+
+At K4 start, Executor should first restore WordPress home/siteurl to the recorded localhost origin and stop the temporary Quick Tunnel after localhost health verification. This is an authorized local cleanup and does not require another Owner checkpoint.
+
+K4 scope follows the project roadmap: Home / Product / FAQ / Shipping & Returns / Contact. Executor must preserve business truth, WooCommerce behavior, Owner editability, responsive behavior, and Gutenberg validity. Missing business facts must be batched into one compact Owner checkpoint rather than asked piecemeal.
+
+Formal decision: `docs/REVIEWER_DECISION_K3_PASS_K4_CONVERSION_TRUST.md`.
