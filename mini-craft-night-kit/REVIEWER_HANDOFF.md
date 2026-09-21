@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED
+CURRENT_GATE=K3R8D_OWNER_HELPER_ARTIFACT_READINESS_REPAIR
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -352,3 +352,14 @@ Reviewer reviewed the appended K3R8C evidence and `DIAGNOSTIC_PACKET`. The hando
 Current checkpoint: `OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED`.
 
 Owner action: run `.artifacts/k3r8c-container-oauth.ps1` locally and return only `CONTAINER_OAUTH_STAGE`, `PAYPAL_SANDBOX_OAUTH`, `HTTP_STATUS`, `TOKEN_RECEIVED`, and `ERROR_CLASS`.
+
+
+## K3R8C Owner Run Failure / K3R8D Authorization
+
+Owner's exact K3R8C command returned `LOCAL_HELPER_MISSING` before any OAuth HTTP result. Credentials remain unclassified.
+
+This exposes a gap between the prior evidence claim (local helpers retained) and actual Owner checkpoint readiness. K3R8D is limited to repairing and proving the helper artifact/staging chain with no credentials.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8D_OWNER_HELPER_ARTIFACT_READINESS_REPAIR.md`.
+
+Do not return another Owner command until `DIAGNOSTIC_PACKET` + `OWNER_CHECKPOINT_READINESS` are both present and the exact wrapper path passes a no-secret post-cleanup dry run.
