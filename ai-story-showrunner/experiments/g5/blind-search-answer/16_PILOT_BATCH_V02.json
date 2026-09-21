@@ -1492,7 +1492,15 @@
         "pov_reason": "The ending payoff is the visible behavior change: audience watches the protagonist actively verify the source.",
         "composition_callback_ref": "SRCH_VB001"
       },
-      "pilot_execution_note": "Pilot must validate callback as composition rhyme, not source-frame derivation. Generate fresh with UI_POLICY_PAGE_001 while matching VB001 character-monitor spatial relationship and showing changed behavior."
+      "pilot_execution_note": "Pilot must validate callback as composition rhyme, not source-frame derivation. Generate fresh with UI_POLICY_PAGE_001 while matching VB001 character-monitor spatial relationship and showing changed behavior.",
+      "pilot_result": "RETURN_EXECUTION",
+      "pilot_retry_note": [
+        "Attempt 1 turned the ending into an explanatory summary poster.",
+        "Illegal additions: duplicated protagonist, speech/thought bubbles, arrow, English slogan, checklist/lesson-card semantics.",
+        "The real callback behavior—actively clicking/checking the source—was not dominant.",
+        "Retry must contain one recurring IP only, same opening desk/monitor spatial relationship, observer medium-close, calm deliberate verification action.",
+        "No second self, no split-screen, no bubble, no arrow, no checklist, no moral text, no slogan, no cat, no extra decorative props."
+      ]
     }
   ],
   "validation": "PASS_AFTER_CHARACTER_AND_STALE_REF_PATCH",
