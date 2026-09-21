@@ -538,3 +538,19 @@ This eliminates invalid credentials and container network/TLS as explanations fo
 Current Gate: `K3R8C_PHASE_C_PPCP_MANUAL_CONNECT_ISOLATION`.
 
 Phase C should first inspect the existing PPCP manual-connect failure evidence without asking Owner to re-enter credentials. Only if the existing evidence is insufficient may one bounded retry with the same locally-entered credentials be requested.
+
+## K3R8C Phase C Reviewer Assessment / K3R8E
+
+Reviewer independently inspected the latest Executor evidence and PPCP 4.1.3 source.
+
+Accepted: PPCP manual connect fails in its additional payee-probe stage after a valid Sandbox OAuth token was proven.
+
+Correction: the Executor label `PPCP_MANUAL_CONNECT_DEFECT_CONFIRMED` is too strong. Current evidence still permits two adjacent causes: (1) PPCP 4.1.3's implementation/client path, or (2) PayPal Sandbox/account/app behavior during the exact create-order/get-order payee probe.
+
+Current truth:
+
+`K3R8C_PPCP_MANUAL_CONNECT_PAYEE_PROBE_FAILURE_CONFIRMED`
+
+Next Gate: `K3R8E_PAYEE_PROBE_PARITY_TEST`.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8E_PAYEE_PROBE_PARITY_TEST.md`.
