@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_PILOT_IN_PROGRESS_VB009_PASS_VB012_GENERATE_READY",
+  "project_state": "G5_PILOT_IN_PROGRESS_VB012_PASS_VB015_REVIEW",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "VB009 accepted PASS_WITH_MINOR; do not micro-polish. VB012 source compatibility review found OVER_SHOULDER→IP_POV + subject-set change, so DERIVE_EDIT is invalid. Generate VB012 fresh, then QA.",
+  "owner_review_scope": "VB012 accepted PASS_WITH_MINOR. Record minor issues only: visible laptop/desk framing and invented '示例平台' brand cue. Continue to VB015 without rework.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -352,14 +352,14 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Generate SRCH_VB012 as a fresh IP_POV policy-page context frame. If it passes, continue SRCH_VB015.",
+      "next": "Review SRCH_VB015 execution compatibility and generate if structurally valid; then QA and continue VB016.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
         "SRCH_VB001": "PASS_WITH_MINOR_CURRENT_CHARACTER_IN_SCENE_MASTER",
         "SRCH_VB009": "PASS_WITH_MINOR",
-        "SRCH_VB012": "RETRY_READY_FRESH_GENERATE_IP_POV",
-        "SRCH_VB015": "PENDING",
+        "SRCH_VB012": "PASS_WITH_MINOR",
+        "SRCH_VB015": "IN_REVIEW",
         "SRCH_VB016": "PENDING",
         "SRCH_VB022": "PENDING",
         "SRCH_VB025": "PENDING",
