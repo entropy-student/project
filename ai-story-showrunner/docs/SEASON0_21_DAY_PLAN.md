@@ -28,20 +28,11 @@ Keep stable unless a major failure appears:
 
 ## Portfolio
 
-Two independent axes are tracked.
-
-### Editorial mode
 Per seven-day block, default target:
 - 5 STORY_MODEL
 - 2 STORY_ACTION
 
-### Topic lane
-Week 1 baseline remains mostly Evergreen, but:
-- allow 1–2 qualified HOT episodes when strong candidates exist;
-- do not force HOT when no candidate passes all gates;
-- HOT may be either STORY_MODEL or STORY_ACTION.
-
-Quality gates outrank every quota.
+Quality gates outrank quota.
 
 ## Week 1 — Establish the baseline
 
@@ -49,8 +40,6 @@ Question:
 > Can the channel’s first-person IP + story-first AI format hold attention at roughly 3–5 minutes?
 
 Prefer mostly Evergreen topics so freshness is not a major confound.
-
-However, do **not** delay the first HOT test until Week 3. If a candidate passes the full HOT Durable Translation Test, allow 1–2 HOT episodes in Week 1 to learn whether timely signals materially improve stranger acquisition.
 
 Track:
 - average watch duration;
@@ -79,12 +68,10 @@ Look for:
 - follow conversion;
 - comments asking for more implementation detail.
 
-## Week 3 — Expand timely-topic and packaging tests
+## Week 3 — Test timely topics and packaging
 
 Question:
-> When HOT usage is increased deliberately, can it bring more new viewers without breaking channel identity?
-
-Week 3 is the stronger controlled comparison, not the first-ever HOT exposure.
+> Can a HOT topic bring new viewers without breaking channel identity?
 
 Daily Radar may override planned Evergreen slots.
 
