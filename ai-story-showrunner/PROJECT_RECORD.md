@@ -697,3 +697,12 @@ Current:
 - Core purpose succeeded: confirm the refund-policy page is the correct source without exposing the later service-fee reversal.
 - Minor issues logged only: outer laptop/desk framing and invented generic brand cue.
 - No rework authorized during Pilot; continue to VB015.
+
+
+## 2026-09-21 — VB015 Pilot pass
+
+- Owner/reviewer selected image 1.
+- `SRCH_VB015 = PASS_WITH_MINOR`.
+- Accepted as the matched-setup master for VB016.
+- Minor early exposure of the “服务费” label is logged, but the reversal sentence remains withheld.
+- Next: reveal only `平台服务费不予退还` with identical crop/page geometry.
