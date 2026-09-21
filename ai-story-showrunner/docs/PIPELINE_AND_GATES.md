@@ -1,4 +1,4 @@
-# Pipeline & Gates v0.5
+# Pipeline & Gates v0.6
 
 ## Stage 0 — Topic Resolution / Signal Intake
 
@@ -36,7 +36,7 @@ If no topic is specified, load today's Calendar item automatically.
 ```text
 Why Now
 × Human Problem / Stakes
-× AI Mechanism
+× Causal Mechanism
 × Curiosity Gap
 × Story Seed
 × Audience Payoff
@@ -107,7 +107,7 @@ Why Now
 
 ## Stage 3 — Story Premise
 
-把 AI 机制转成**故事里的因果规则**。
+把已锁定的领域机制 / causal mechanism 转成**故事里的因果规则**。
 
 ### McKee-style Minimum Structure
 
@@ -127,7 +127,7 @@ Protagonist wants something
 必须同时满足：
 
 1. 主角有欲望，不只是“负责听讲”；
-2. AI 机制会改变事件结果；
+2. locked causal mechanism 会改变事件结果；
 3. 至少一次预期与现实出现 Gap；
 4. 冲突会升级，而不是平铺三个例子；
 5. 术语删掉以后，因果仍然成立；
@@ -210,13 +210,13 @@ Status:
 Canonical six-layer pipeline:
 
 ```text
-Locked Script + KnowledgeCore
+Locked Script + KnowledgeCore + Production SRT
 → Dramatic Hierarchy
 → Episode / Sequence Visual Strategy
 → Visual Intention
 → Semantic Shot
 → Visual Beat
-→ Timing & Edit Calibration
+→ Production-SRT Visual Mapping & Edit Calibration
 → Director Shotboard
 ```
 
@@ -398,9 +398,9 @@ Antigravity 不得自行：
 
 ### Audio Mode — RESOLVED
 
-`AUDIO_MODE=A_UPSTREAM_COSYVOICE`
+`AUDIO_MODE=EXECUTOR_LOCKED_COSYVOICE`
 
-The Production Package specifies the voice/timing contract. Antigravity executes the locked CosyVoice recipe and must not creatively retime or rewrite speech.
+Upstream Timing Compiler owns the Production SRT, semantic pace, authored pauses and TTS Manifest. Antigravity executes the locked CosyVoice recipe and must not creatively retime or rewrite speech.
 
 A future executor may change, but timing remains upstream-controlled.
 
@@ -430,7 +430,7 @@ Otherwise G5 execution rows go directly to Antigravity + machine QA.
 故事是否真的成立。
 
 ### Knowledge QA
-AI 机制是否准确，热点事实是否仍然新鲜。
+locked causal mechanism / domain facts 是否准确，热点事实（如适用）是否仍然新鲜。
 
 ### Visual QA
 画面是否参与叙事，是否仍像 PPT / 图集。
