@@ -297,8 +297,8 @@
       "style_bible": "experiments/g5/blind-search-answer/06_STYLE_BIBLE.md",
       "prop_ui_bible": "experiments/g5/blind-search-answer/07_PROP_UI_BIBLE.md",
       "reference_manifest": "experiments/g5/blind-search-answer/08_REFERENCE_MANIFEST.json",
-      "blocking_real_asset": "CHAR_IP_001_CANONICAL_BINARY_REFERENCE",
-      "blocking_reason": "Canonical identity source and approved visual masters are not persisted/bound as executable binary paths. Prompt-only identity lock caused repeated drift during Pilot.",
+      "blocking_real_asset": "EXECUTION_ACCESSIBLE_REFERENCE_PERSISTENCE",
+      "blocking_reason": "CHAR_IP_001 source set has been recovered and visually verified in Library. Remaining blocker is copying recovered character refs and approved scene/UI refs into execution-accessible canonical paths and validating row resolution.",
       "style_direction": "SIMPLIFIED_FLAT_NARRATIVE_COMIC",
       "current_conversation_inputs": {
         "ip_identity_image": "AVAILABLE_IN_CURRENT_CONVERSATION_NOT_PERSISTED_IN_REPO",
@@ -318,6 +318,13 @@
         "character_ui_evidence": "PASS",
         "pure_evidence_insert": "PASS",
         "production_simplification_guard": "ACTIVE"
+      },
+      "source_recovery": {
+        "CHAR_IP_001": "RECOVERED_AND_VISUALLY_VERIFIED_LIBRARY_REPO_PERSISTENCE_PENDING",
+        "canonical_identity_library_file_id": "file_00000000872081fdb2b7ef891cc9f705",
+        "character_master_library_file_id": "file_00000000ea9c81fdb3b7320e99aaf274",
+        "turnaround_library_file_id": "file_00000000117c81fda2e1db89ef98e06d",
+        "character_guide_library_file_id": "file_00000000a54481fd94cd8f5bb8590755"
       }
     },
     "phase_c": {
@@ -354,7 +361,7 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Persist and bind real canonical reference binaries (CHAR_IP_001 first, then required scene/UI masters); rerun machine reference-path validation; then issue final G5 PASS.",
+      "next": "Persist recovered CHAR_IP_001 source set plus required scene/UI masters into execution-accessible canonical paths; populate Reference Manifest canonical_paths; rerun machine reference-path validation; then issue final G5 PASS.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
