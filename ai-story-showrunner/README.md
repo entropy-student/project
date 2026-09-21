@@ -8,7 +8,7 @@
 
 ```text
 P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5 = PASS
-G6 = IN_PROGRESS — Voice Timing Profile + Antigravity Production Package
+G6 = IN_PROGRESS — Production SRT + TTS Manifest + Antigravity Production Package
 G7 = BLOCKED_BY_G6
 ```
 
@@ -21,7 +21,7 @@ G7 = BLOCKED_BY_G6
 - Daily Topic Planner v0.2 已启用；
 - Production throughput 仍为 UNPROVEN。
 
-Owner 当前执行线：**G5 已正式 PASS；G6 正在建立可复用 Voice Timing Profile，并据此编译 Production SRT / TTS Manifest，再一次性生成完整 Antigravity Production Package。**
+Owner 当前执行线：**Voice Timing Profile v2.1 已冻结；G6 下一步编译 Production SRT / TTS Manifest，再一次性生成完整 Antigravity Production Package。Skill Candidate extraction 作为并行架构工作流进行。**
 
 ## 一句话定位
 
@@ -234,9 +234,8 @@ G5 is now PASS. The high-risk Pilot and reference-path validation both passed.
 
 Current main-line gate: **G6 Low-Level Execution Package / Antigravity PoC**.
 
-First G6 task:
-- run one-time 15–24 utterance Voice Timing Profile calibration;
-- validate held-out timing prediction;
+Current G6 task:
+- use frozen Voice Timing Profile v2.1;
 - compile Production SRT + TTS Manifest before normal TTS execution;
 - compile the full Antigravity Production Package;
 - let Antigravity execute locked CosyVoice TTS + images + edit + export.
