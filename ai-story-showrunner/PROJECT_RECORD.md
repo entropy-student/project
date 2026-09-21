@@ -858,3 +858,25 @@ one-time Voice Timing Profile calibration → held-out validation → Production
 - Canonical profile frozen at `profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json`.
 - Routine timing calibration is complete.
 - G6 next moves to Production SRT + TTS Manifest + Antigravity Production Package compilation.
+
+
+## 2026-09-22 — One-delivery runtime timeline architecture
+
+Decision:
+- upstream Timing Compiler produces a planned production timeline;
+- real TTS duration becomes final runtime clock truth;
+- Antigravity/Executor runs a Runtime Timeline Resolver locally;
+- final outputs are `FINAL_SUBTITLES.srt`, `FINAL_TIMELINE.json`, and `FINAL_SHOT_TIMELINE.csv`;
+- ordinary duration drift does not require Owner → Showrunner → Antigravity round-trip;
+- Voice Timing Profile drift is diagnostic unless locked constraints become infeasible;
+- full Production Package remains HOLD until Antigravity video runtime is probed.
+
+Video-runtime probe policy:
+- zero-install discovery first;
+- explicitly search for existing Codex/local Remotion and Hyperframe projects;
+- reuse existing runtime when available;
+- if installation is needed, stop at `INSTALL_REQUIRED` before installing.
+
+Output retention:
+- `docs/OUTPUT_RECORD_STANDARD.md` accepted as canonical simple output-ledger rule;
+- one episode INDEX + one RUN_RECORD.json per meaningful retained production run.
