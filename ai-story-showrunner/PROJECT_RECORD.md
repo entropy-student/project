@@ -791,3 +791,15 @@ Current:
 - G5 promoted from PASS_CANDIDATE to final PASS.
 - G6 released and is now READY.
 - Hotspot ratio / hotspot integration / IP narrative-engine ideas remain discussion-only and were not added to canonical rules.
+
+
+## 2026-09-21 — Audio-first SRT timing standard
+
+- A timing architecture defect was found during CosyVoice stress testing.
+- A long sentence naturally required 4.2493s but had inherited a 3.020s G4 visual window; fitting required 1.407x and sounded unacceptable.
+- Diagnosis: Visual Beat timing is a relative visual rhythm prior, not a speech timing source.
+- Added canonical `docs/SRT_AUDIO_TIMING_STANDARD.md`.
+- Production order is now locked script → Speech Units → measured CosyVoice audio → explicit pauses → FINAL_AUDIO → aligned SRT → Visual Beat retiming → Shot Timeline.
+- Planning 5 chars/sec remains estimation-only.
+- Major per-cue speed rescue is prohibited; timing must be reallocated around real audio.
+- Audio mode resolved to upstream CosyVoice; Antigravity consumes final audio instead of regenerating it.
