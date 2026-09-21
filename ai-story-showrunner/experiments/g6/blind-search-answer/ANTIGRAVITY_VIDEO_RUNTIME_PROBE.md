@@ -1,85 +1,149 @@
-# Antigravity Video Runtime Probe v0.1
+# Antigravity Video Runtime Probe v0.2
 
 ## Goal
 
-Determine **how Antigravity can actually produce deterministic video** before we freeze the full Production Package contract.
+Determine what deterministic video-production backend Antigravity can actually use **in the current local environment** before we freeze the full Production Package.
 
-This probe is intentionally small and must answer:
+Known prior:
+the Owner previously used/downloaded Remotion and Hyperframe through Codex on this machine, but their locations are unknown.
 
-1. Can Antigravity produce an MP4 from exact timeline instructions?
-2. What runtime/backend does it actually use?
-3. Can it call a programmable renderer such as:
-   - FFmpeg;
-   - Remotion;
-   - Hyperframe;
-   - another local CLI/library;
-   - an internal timeline/rendering API?
-4. If only a GUI/editor-like workflow is available, is it deterministic enough to replay from structured instructions?
-5. Can it re-render after one controlled edit without rebuilding everything manually?
-
-Do **not** infer or claim a backend without testing it.
+Therefore the probe must **search for and reuse existing local installations/projects before considering any installation**.
 
 ## Scope
 
-This is a runtime capability spike, not a real episode render.
+This is a capability/discovery spike, not the real episode render.
 
 Do NOT:
-- generate the full 44-frame episode;
-- build the final Production Package;
-- redesign current Director/Asset contracts;
-- change Production SRT;
+- generate the full episode;
+- use the real 44-frame production assets;
+- freeze the final Production Package;
+- change script/timing contracts;
 - publish anything.
 
-## Phase 1 — Capability discovery
+## Installation policy
 
-Inspect the current Antigravity environment and report availability of:
+### Phase A — zero installation only
 
-- shell / command execution;
-- FFmpeg / ffprobe;
-- Node.js / npm;
-- Remotion or ability to install/use an existing local Remotion project without redesigning the environment;
-- Hyperframe or any existing local Hyperframe runtime;
-- browser/HTML rendering capability;
-- native/internal media timeline APIs;
-- GUI editor automation, if that is the only path.
+During discovery and first render attempt:
+- do not run `npm install`;
+- do not run `pip install`;
+- do not download FFmpeg;
+- do not install Remotion/Hyperframe;
+- do not modify global PATH;
+- do not upgrade Node/package managers.
 
-For each candidate backend report:
+First establish what already exists.
+
+### Phase B — if nothing usable exists
+
+Stop and report:
+`INSTALL_REQUIRED`
+
+Include the smallest recommended install/reuse plan.
+
+Do not install automatically in this probe.
+
+## Phase 1 — runtime discovery
+
+Inspect:
+
+### Basic runtime
+- shell / PowerShell
+- `where.exe ffmpeg`
+- `ffmpeg -version`
+- `ffprobe -version`
+- `node -v`
+- `npm -v`
+- `npx --version`
+- browser/HTML rendering tools already exposed by Antigravity
+
+### Existing Codex/local projects
+
+Search for existing Remotion / Hyperframe resources.
+
+Look for:
+- `package.json` containing `remotion`, `@remotion/*` or `hyperframe`;
+- `remotion.config.*`;
+- Remotion `Root.*` / compositions;
+- directories named `remotion`, `hyperframe`, `video-talkcraft`;
+- existing render scripts such as `render.*`, `video.*`, `export.*`;
+- existing local node_modules only when tied to a real project.
+
+Prioritize likely Owner project locations:
+- Desktop
+- Documents
+- Downloads
+- known video-production folders
+- Git/project workspaces
+- folders previously created by Codex
+
+Use available indexed/file-search tools or `rg`/`fd` if present.
+
+Do **not** blindly crawl the entire system drive if a narrower search can answer the question.
+
+If an existing project is found:
+- report exact path;
+- inspect its package scripts/dependencies;
+- try to reuse it without reinstalling dependencies.
+
+### Antigravity-native capability
+
+Inspect whether Antigravity exposes:
+- native timeline API;
+- native media composition/export API;
+- internal browser/video renderer;
+- GUI editor automation.
+
+Do not infer native capability merely from UI appearance.
+
+## Capability report
+
+For each candidate:
 
 ```text
 backend
 available: yes/no
-how detected
-can consume exact durations: yes/no/unknown
+exact path / detection evidence
+already installed: yes/no
+requires install: yes/no
+can consume structured exact durations: yes/no/unknown
 can place audio: yes/no/unknown
 can place subtitles: yes/no/unknown
 can render MP4: yes/no/unknown
-reproducible from files: yes/no/unknown
+reproducible from files/source: yes/no/unknown
+manual GUI required: yes/no/unknown
 notes
 ```
 
-Do not reinstall large dependencies merely to make a backend appear available.
+Candidate backends:
+- FFmpeg
+- existing Remotion
+- existing Hyperframe
+- Antigravity native timeline/runtime
+- other already-installed reproducible renderer
 
-## Phase 2 — Choose the smallest deterministic backend
+## Phase 2 — select backend
 
-Preference is **not** “use Remotion no matter what”.
+Select the smallest **already available** deterministic backend that can satisfy:
+- structured timeline input;
+- still-image durations;
+- audio placement;
+- subtitle placement;
+- MP4 export;
+- reproducible rerender.
 
-Choose the backend that is:
-1. already available;
-2. programmatically controllable;
-3. deterministic from files;
-4. able to render MP4;
-5. simplest for the current still-image + narration workflow.
+Do not prefer Remotion merely because it is Remotion.
 
-Examples:
-- FFmpeg may be enough for stills + exact durations + audio + subtitles.
-- Remotion may be preferable if later visual motion/layout logic needs React/code.
-- Hyperframe may be preferable only if it is actually available and materially useful.
-- An Antigravity-native timeline API is acceptable if it can export a reproducible project/instruction artifact.
-- GUI-only/manual editing is a warning signal and must be reported clearly.
+Decision guidance:
+- FFmpeg is acceptable for simple stills/audio/subtitles.
+- Existing Remotion is attractive if code-driven visual motion/layout is already usable.
+- Existing Hyperframe is attractive only if its local project/runtime works.
+- Native Antigravity timeline is acceptable if it has a reproducible artifact/API.
+- GUI-only manual editing should be classified separately.
 
-## Phase 3 — 12-second probe render
+## Phase 3 — 12-second probe
 
-Create a disposable probe workspace:
+Create:
 
 ```text
 video-runtime-probe/
@@ -91,28 +155,24 @@ video-runtime-probe/
 └─ VIDEO_RUNTIME_PROBE_REPORT.json
 ```
 
-Create or use three simple 1920×1080 placeholder stills:
+Use three simple local 1920×1080 placeholder stills:
 - FRAME_A
 - FRAME_B
 - FRAME_C
 
-They may be plain generated cards for the purpose of this probe.
-No image model is required.
+No image model required.
 
-Create a 12-second deterministic timeline:
+Timeline v1:
 
 ```text
-0.0–4.0s   FRAME_A
-4.0–8.0s   FRAME_B
-8.0–12.0s  FRAME_C
+0–4s   FRAME_A
+4–8s   FRAME_B
+8–12s  FRAME_C
 ```
 
 Add:
-- one audio track (a generated 12s silent WAV or another deterministic local test WAV is acceptable);
-- three subtitle cues:
-  - 0–4s: FRAME A
-  - 4–8s: FRAME B
-  - 8–12s: FRAME C
+- deterministic local 12s audio; silence is acceptable;
+- subtitle cues matching A/B/C.
 
 Render:
 `outputs/probe_v1.mp4`
@@ -120,98 +180,84 @@ Render:
 Target:
 - 1920×1080
 - 30 fps
-- H.264 video preferred
-- AAC or compatible audio
-- 12 seconds
+- 12s
+- H.264 preferred
+- audio track present
 
-## Phase 4 — Controlled mutation test
+## Phase 4 — structured mutation
 
-Without changing backend/toolchain, make exactly one structured change:
+Using the same backend/source artifact:
 
 ```text
-FRAME_B end changes:
-8.0s → 7.0s
-
-FRAME_C start changes:
-8.0s → 7.0s
-
-FRAME_C remains until 12.0s.
+FRAME_B: 4–7s
+FRAME_C: 7–12s
 ```
 
-Subtitle cue timing must change correspondingly.
+Change matching subtitle timing.
 
 Render:
 `outputs/probe_v2.mp4`
 
-The purpose is to prove that the timeline can be recompiled from structured instructions rather than manually rebuilt.
+This must be a structured edit/rerender, not a manual rebuild.
 
-## Phase 5 — Verification
+## Phase 5 — verify
 
-Use available technical inspection such as ffprobe or equivalent.
+Use ffprobe or backend-equivalent technical inspection.
 
-For both videos record:
-- container;
-- codec;
-- resolution;
-- fps;
-- actual duration;
-- audio presence;
-- render success.
+For both files record:
+- container
+- codec
+- resolution
+- fps
+- duration
+- audio presence
+- render success
 
 Also record:
-- exact command/source/project file used;
-- whether the render can be reproduced by rerunning that artifact;
-- whether Antigravity required manual GUI interaction;
-- whether the backend supports future still-image duration control, subtitle placement and narration placement.
+- exact reusable source/project/command artifact;
+- whether rerun reproduces the render;
+- manual GUI interaction required;
+- whether backend can later consume resolved real-TTS timing.
 
-## Required output
+## Overall result
 
-Create:
-`video-runtime-probe/VIDEO_RUNTIME_PROBE_REPORT.json`
+One of:
 
-Minimum structure:
+- `PASS_PROGRAMMATIC`
+- `PASS_NATIVE_TIMELINE`
+- `PASS_GUI_ONLY`
+- `INSTALL_REQUIRED`
+- `RETURN_NO_VIDEO_RUNTIME`
 
-```json
-{
-  "overall_result": "PASS_PROGRAMMATIC | PASS_NATIVE_TIMELINE | PASS_GUI_ONLY | RETURN_NO_VIDEO_RUNTIME",
-  "capabilities": [],
-  "selected_backend": "",
-  "selection_reason": "",
-  "probe_v1": {},
-  "probe_v2": {},
-  "reproducible": true,
-  "manual_gui_required": false,
-  "recommended_production_architecture": "",
-  "retained_paths": []
-}
-```
+## Production-package recommendation
 
-## Decision rules
+The report must explicitly answer:
 
-### PASS_PROGRAMMATIC
-A deterministic file/code/CLI-based render path works.
+> If the real episode were delivered once with semantic anchors + Runtime Timeline Resolver outputs, what should the final Production Package target?
 
-### PASS_NATIVE_TIMELINE
-An Antigravity-internal timeline/render API works and produces a reproducible project/instruction artifact.
+Examples:
+- FFmpeg command/script project
+- existing Remotion project
+- existing Hyperframe project
+- Antigravity-native timeline artifact
+- GUI automation package
 
-### PASS_GUI_ONLY
-Video can be made, but only through opaque/manual editor operations.
-
-This is not a production-package PASS; it means the package design must explicitly account for GUI automation limitations.
-
-### RETURN_NO_VIDEO_RUNTIME
-Antigravity cannot produce/export video in the current environment.
+Do not freeze the answer beyond the evidence.
 
 ## Final response
 
 Return only:
 
-1. selected backend;
-2. overall result;
-3. whether shell/FFmpeg/Remotion/Hyperframe/native timeline were available;
-4. probe_v1 and probe_v2 paths;
-5. source/project/command artifact path;
-6. report path;
-7. one-sentence recommendation for how the future Production Package should target Antigravity.
+1. selected backend/result;
+2. FFmpeg availability/path;
+3. Node/npm availability;
+4. existing Remotion path/result;
+5. existing Hyperframe path/result;
+6. Antigravity-native timeline result;
+7. whether anything would require installation;
+8. `probe_v1.mp4` and `probe_v2.mp4` paths;
+9. reusable source/project/command artifact path;
+10. report path;
+11. one-sentence recommended Production Package target.
 
-Do not start real episode video production after the probe.
+Do not start real episode production.
