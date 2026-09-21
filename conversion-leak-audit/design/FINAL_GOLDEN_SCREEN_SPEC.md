@@ -1,6 +1,6 @@
 # Conversion Leak Audit — Final Golden Screen Specification
 
-Status: `FINAL_GOLDEN_CANDIDATE`
+Status: `APPROVED_FROZEN_G3_5`
 Gate: `G3.5_UI_GROWTH_DESIGN_FREEZE`
 
 This document is the text-canonical companion to the final high-fidelity board reviewed in chat. If generated-image text conflicts with this file, **this file wins**.
