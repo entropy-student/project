@@ -3,7 +3,7 @@
 > **Status: CANONICAL / OWNER APPROVED / G4 PASS.**
 > Purpose: theory-first Director architecture designed to survive new scripts without structural redesign.
 > Promotion evidence: Agent / Context-Memory / MCP known-case validation + one unseen Investigation/Discovery blind case.
-> Historical G4 v0.1 remains evidence only; v0.3 is the current Director baseline.
+> Historical G4 v0.1/v0.3 material remains evidence; v0.5 is the current Director baseline.
 
 ## 1. Final six-layer architecture
 
