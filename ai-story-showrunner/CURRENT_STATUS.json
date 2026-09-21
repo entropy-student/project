@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_PILOT_IN_PROGRESS_VB022_SEMANTIC_COMPARE_READY",
+  "project_state": "G5_PILOT_IN_PROGRESS_VB022_RETRY_READY_NO_CHARACTER",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "VB016 PASS_WITH_MINOR recorded. VB022 COMPOSITE_CROP architecture is sound. Pilot will validate dual-source comparison semantics using representative crops; full deterministic COMPOSITE_CROP remains pending because source binaries are not persisted in repo.",
+  "owner_review_scope": "VB022 attempt 1 RETURN: semantic mismatch and executor drift. It compared user question to the correct policy conclusion instead of 服务费 vs 订单款项, and illegally introduced a drifting character. Retry must contain zero character pixels and only two source crops.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -352,7 +352,7 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Generate/compose a VB022 representative dual-source compare: left source clearly carries 服务费 as the questioned object; right source clearly carries 订单款项 as the evidence object. No VS/arrows/explanation card. QA semantic mismatch readability.",
+      "next": "Retry VB022 as source-crop dual only: left = question object 服务费退不退; right = evidence object 订单款项退回原支付方式. Zero character, zero bubble/title/VS/arrow. If PASS, continue VB025.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
@@ -361,7 +361,7 @@
         "SRCH_VB012": "PASS_WITH_MINOR",
         "SRCH_VB015": "PASS_WITH_MINOR_SETUP_MASTER_IMAGE1",
         "SRCH_VB016": "PASS_WITH_MINOR",
-        "SRCH_VB022": "READY_FOR_SEMANTIC_COMPARE_PILOT",
+        "SRCH_VB022": "RETURN_SEMANTIC_EXECUTION_DRIFT_RETRY_READY",
         "SRCH_VB025": "PENDING",
         "SRCH_VB044": "PENDING"
       }
