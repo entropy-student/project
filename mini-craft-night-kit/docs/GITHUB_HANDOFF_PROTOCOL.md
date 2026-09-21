@@ -80,3 +80,34 @@ Executor 只能写：
 - 历史记录可追踪。
 
 成功后建立 Governance Change Gate，将其推广到其他项目。
+
+
+## 7. Mandatory Diagnostic Evidence Packet
+
+For any diagnostic RETURN, conflict-isolation Gate, compatibility investigation, runtime failure, or nontrivial root-cause claim, Executor must include a compact but sufficient `DIAGNOSTIC_PACKET` in `EXECUTOR_HANDOFF.md` and detailed supporting evidence in `EXECUTION_EVIDENCE.md`.
+
+A diagnostic handoff is incomplete if it contains only a conclusion label such as `NETWORK_FAILURE`, `PLUGIN_CONFLICT`, `LOCAL_REQUEST_FAILURE`, or `COMPATIBILITY_ISSUE` without the supporting observations.
+
+Minimum packet:
+
+```text
+DIAGNOSTIC_PACKET
+GATE=<gate>
+ENVIRONMENT=<runtime/version/target>
+TRIGGER=<exact sanitized symptom/error>
+REPRODUCTION=<exact bounded command/route/action, sanitized>
+OBSERVED=<HTTP/status/error type/timing/CPU/etc.>
+CONTROL_OR_BASELINE=<comparison result, if any>
+HYPOTHESES_RULED_OUT=<evidence-backed exclusions>
+HYPOTHESES_REMAINING=<ranked candidates, not conclusions>
+ARTIFACTS=<safe local evidence/helper paths + hashes when relevant>
+SECRETS_REDACTED=YES
+NEXT_DISCRIMINATING_TEST=<single smallest next test>
+STOP_REASON=<why Executor stopped>
+```
+
+For exceptions, include sanitized exception class/category, stage marker, and HTTP status when available. Do not include credentials, tokens, cookies, authorization headers, raw sensitive response bodies, or secret-bearing command lines.
+
+Reviewer must not promote a diagnostic conclusion to formal truth if the packet lacks enough evidence to distinguish it from adjacent hypotheses. In that case, return for evidence completion rather than inventing the missing chain.
+
+This rule is project-local trial governance. Global promotion still requires a separate Governance Change Gate.
