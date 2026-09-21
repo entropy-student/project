@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R9_SANDBOX_MANUAL_CONNECT_REQUIRED
+CURRENT_CHECKPOINT=K3R9_POST_RESULT_RESTORE_AND_VERIFY
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -474,3 +474,25 @@ Owner may perform exactly one Sandbox Manual Connect in the direct PayPal Settin
 After the Owner result, Executor must restore the prior plugin activation state exactly and return evidence to Reviewer.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R9_PREP_PASS_OWNER_MANUAL_CONNECT.md`.
+
+
+## K3R9 Owner Manual Connect — UI SUCCESS / Post-Restore Verification
+
+Owner supplied direct UI evidence showing the visible success toast `Connected to PayPal` in the active local PayPal Payments settings page.
+
+Reviewer accepts:
+
+```text
+MANUAL_CONNECT_RESULT=SUCCESS
+VISIBLE_MESSAGE=Connected to PayPal
+MERCHANT_CONNECTED=UNKNOWN_PENDING_READ_ONLY_VERIFY
+SANDBOX_CONNECTED=UNKNOWN_PENDING_READ_ONLY_VERIFY
+```
+
+The failure does not reproduce in the minimal plugin environment, which strongly points to a WordPress/plugin interaction rather than PayPal Sandbox provider capability.
+
+K3R9 is not formally closed yet. Executor must restore Kadence Blocks 3.7.11 and Kadence Starter Templates 2.3.4, keep WooCommerce 10.0.4 + PPCP 4.1.3 active, then perform read-only connection/runtime verification and stop at Reviewer. No reconnect, credential entry, version/source change, Live, payment, tunnel, or VPS action.
+
+Current checkpoint: `K3R9_POST_RESULT_RESTORE_AND_VERIFY`.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R9_OWNER_CONNECT_SUCCESS_POST_RESTORE_VERIFY.md`.
