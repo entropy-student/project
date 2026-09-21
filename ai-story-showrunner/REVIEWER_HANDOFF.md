@@ -198,14 +198,32 @@ resume G6 using Candidate contracts.
 
 Candidate migration is complete.
 
-Resume the validation episode at:
+Timing compile is also complete:
 
 ```text
 locked Blind Search script
 → Candidate Timing Compiler
-→ Production SRT
-→ TTS Manifest
-→ full Antigravity Production Package
+→ Production SRT ✅
+→ TTS Manifest ✅
 ```
+
+Timing result:
+- 44 Speech Units;
+- 43 TTS rows;
+- 1 explicit 1.4s silent hold;
+- Production SRT total = 146.7209s;
+- exact locked-script coverage PASS;
+- row/schema/timeline validation PASS.
+
+Next allowed:
+`TTS-only execution verification`
+
+Task:
+`experiments/g6/blind-search-answer/ANTIGRAVITY_TTS_ONLY_TASK.md`
+
+Owner HOLD:
+`FULL_ANTIGRAVITY_PRODUCTION_PACKAGE`
+
+Do not assemble the full package, image plan, edit package or final video until the Owner discussion completes.
 
 Do not label the Skill CANONICAL until final-video E2E PASS.
