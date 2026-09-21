@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R11_PUBLIC_SANDBOX_ORIGIN
+CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -674,3 +674,19 @@ CURRENT_GATE=K3R11_PUBLIC_SANDBOX_ORIGIN
 ```
 
 The replacement Secret remains Owner-only. K3R11 may now prepare the temporary reversible HTTPS public Sandbox origin. If PPCP requires reconnection after rotation, stop for Owner local UI input rather than requesting credentials in chat.
+
+
+## K3R11 Preflight — Owner Sandbox Reconnect Checkpoint
+
+Secret rotation invalidated the stored PPCP merchant connection while leaving Sandbox mode, onboarding, and runtime healthy.
+
+```text
+K3R11_PREFLIGHT=PASS
+PPCP_MERCHANT_CONNECTED=NO
+PUBLIC_HTTPS_ORIGIN=NOT_CREATED
+CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED
+```
+
+Owner must reconnect Sandbox once through the local WooCommerce PayPal Settings UI using the rotated credentials. The replacement Secret remains Owner-only. No public origin or checkout action proceeds until Reviewer receives the sanitized reconnect result.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_OWNER_SANDBOX_RECONNECT.md`.
