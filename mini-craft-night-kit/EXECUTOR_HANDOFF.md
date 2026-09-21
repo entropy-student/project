@@ -195,3 +195,28 @@ Authorize one bounded isolation test: temporarily deactivate only WooCommerce Pa
 ### Error detail clarification
 
 The React decoder for the captured production exception `#299` resolves the full text to: `Target container is not a DOM element.` The live page inspection independently confirmed the targeted `#ppcp-settings-container` element was absent. No WooCommerce “Click for error details” link was rendered by the stuck Home view, so no additional WooCommerce UI error text was available to capture.
+## K3R1 — PPCP conflict isolation (2026-09-21) — RETURN
+
+### Status
+
+`RETURN_K3R1_CONFLICT_NOT_ISOLATED`
+
+### Only authorized action performed
+
+- Temporarily deactivated `woocommerce-paypal-payments` `4.1.3`.
+- Did not uninstall it, delete its configuration, modify credentials, retry PayPal authorization, change versions, restore a backup, enable Live, run a payment, touch VPS/public routing, or migrate the database.
+- Restarted only the target local Studio runtime once because the PHP workers were saturated; no database or volume operation was performed.
+
+### Result
+
+- WooCommerce Settings → Payments recovered from the blank provider body and showed native payment providers/payment methods.
+- WooCommerce Home remained a blank/Store Activity shell.
+- `/wc-admin/features`, `/wc-admin/options`, and final Store API products/cart probes still timed out after the bounded restart.
+- The post-restart worker sample had lower CPU, but request-hang behavior remained.
+- The final Home tab did not show a new React console error; the prior Payments React #299 was not fully re-captured after navigation timeout. Do not treat this as a full React PASS.
+
+### Reviewer checkpoint
+
+PPCP is confirmed as the direct cause of the Payments-page blank/native-method failure, but deactivation did not isolate the broader WooCommerce Home/API failure. Keep PPCP deactivated. Reviewer must decide the next bounded diagnostic or recovery Gate; no further changes were made.
+
+`STOP_AT_REVIEWER=YES`
