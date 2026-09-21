@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R8B_LOCAL_OAUTH_HELPER_DIAGNOSTIC
+CURRENT_CHECKPOINT=OWNER_K3R8B_CORRECTED_HELPER_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -327,3 +327,10 @@ The Owner-run helper failed locally before producing a PayPal HTTP authenticatio
 Formal decision: `docs/REVIEWER_DECISION_K3R8B_LOCAL_OAUTH_HELPER_DIAGNOSTIC.md`.
 
 Inspect/fix only the local helper and host request path with redacted diagnostics; then return a corrected Owner-run command. Secrets remain Owner-only.
+
+
+## K3R8B Owner Checkpoint
+
+Executor completed the host/helper diagnostic and returned `RETURN_OWNER_K3R8B_CORRECTED_HELPER_REQUIRED`. Credentials are still unclassified.
+
+Owner should rerun the corrected helper locally and report only the redacted PASS/FAIL and HTTP/result classification. Do not paste Client ID, Secret, tokens, headers, or response body.
