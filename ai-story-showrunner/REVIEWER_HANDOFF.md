@@ -795,3 +795,26 @@ Reviewer correction:
 
 Result doc:
 `experiments/g6/voice-timing-calibration/VOICE_TIMING_CALIBRATION_V1_RESULT.md`
+
+
+## 2026-09-21 — Targeted Voice Timing v2 ready
+
+V1 raw JSON artifacts are now persisted in GitHub:
+- `VOICE_TIMING_PROFILE_V1_REJECTED.json`
+- `calibration_report_v1.json`
+- `heldout_report_v1.json`
+
+V2 is intentionally small:
+- 3 new calibration/control generations;
+- freeze two targeted rule parameters;
+- 3 new strict held-out generations;
+- total new TTS generations = 6.
+
+Targeted repairs:
+1. short NORMAL minimum-duration floor;
+2. mixed Latin + Arabic interaction without additive double penalty.
+
+Acceptance now prioritizes unsafe under-allocation and semantic tail slack.
+
+Task:
+`experiments/g6/voice-timing-calibration/ANTIGRAVITY_TARGETED_V2_TASK.md`
