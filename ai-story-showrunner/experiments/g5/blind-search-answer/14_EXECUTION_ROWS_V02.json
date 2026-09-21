@@ -1,14 +1,12 @@
 {
   "episode_id": "blind-search-answer",
   "gate": "G5C4",
-  "status": "FAIL",
+  "status": "PASS_CANDIDATE",
   "frame_blueprints": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json",
   "count": 44,
   "validation": {
-    "status": "FAIL",
-    "issues": [
-      "SRCH_VB043 setup missing withheld information"
-    ]
+    "status": "PASS",
+    "issues": []
   },
   "execution_mode_counts": {
     "GENERATE": 14,
@@ -1941,7 +1939,7 @@
       "source_frame_ref": "SRCH_VB042.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: final setup returns to the seductive feeling of a correct webpage. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: final setup returns to the seductive feeling of a correct webpage. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style.  Keep final callback statement hidden: 网页确实找对了.",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
