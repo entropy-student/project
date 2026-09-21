@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R11_DISCONNECT_CONFIRMATION_REQUIRED
+CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -664,3 +664,19 @@ SECRET_VALUES_OUTPUT=NO
 Current checkpoint: `OWNER_K3R11_DISCONNECT_CONFIRMATION_REQUIRED`.
 
 Owner must explicitly confirm one official PPCP Disconnect action. After confirmation, Executor may perform exactly one official Disconnect, verify redacted disconnected state/runtime health, then continue the already-authorized public-origin preparation. No credential input, checkout, capture, Live, VPS, or production-domain action is authorized at this checkpoint.
+
+
+## K3R11 Owner Confirmation / Governance Boundary Correction
+
+Owner explicitly confirmed the single official Disconnect action.
+
+```text
+OWNER_K3R11_DISCONNECT_CONFIRMATION=YES
+CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
+```
+
+Governance correction: this Owner checkpoint was unnecessarily conservative. A local, reversible, rollback-protected action that is already explicitly Reviewer-authorized and does not require secrets/provider authorization should not require a second Owner confirmation. Future equivalent actions should proceed without interrupting Owner.
+
+Executor may now perform exactly one official PPCP Disconnect, verify redacted disconnected state/runtime health, and continue public-origin preparation. Stop only at a genuine Owner-only boundary such as Cloudflare account authorization or local entry of rotated Sandbox credentials.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_DISCONNECT_CONFIRMED_AND_OWNER_GATE_CORRECTION.md`.
