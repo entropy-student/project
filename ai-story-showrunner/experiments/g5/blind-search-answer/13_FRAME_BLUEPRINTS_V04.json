@@ -2523,20 +2523,21 @@
         "SCALE"
       ],
       "background_anchors": [
-        "stable answer-pane shell"
+        "minimal analogy-space anchor",
+        "same simple contact-book world as VB023/VB024"
       ],
       "story_props": [
-        "PROP_CONTACT_BOOK_001",
-        "UI_AI_ANSWER_001"
+        "PROP_CONTACT_BOOK_001"
       ],
       "remove_or_suppress": [
         "AI UI",
         "giant phone screen",
         "contact-list wall",
-        "bubble",
+        "speech/thought bubble",
         "title",
         "arrow",
         "complex office",
+        "real/invented brand logos",
         "teen/child reinterpretation",
         "oversized juvenile eyes",
         "rounded baby-face jaw/chin",
@@ -2581,13 +2582,14 @@
       "subtitle_safe_check": "PASS",
       "acceptance_criteria": [
         "G4 intent preserved: LAND_PAYOFF",
-        "P1 immediately readable: wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question",
-        "no unnecessary brand/logo, bubble, card or explanatory arrow",
-        "caption-safe and readable at reduced size",
-        "only current Beat information is visible",
-        "CHAR_IP_001 reads as the same clearly adult young man",
-        "adult eye/jaw/chin/nose/body proportions remain canonical",
-        "wine-red top with cream/off-white collar remains unchanged"
+        "P1 immediately readable: supporting actor confidently shows the correct boss contact/phone number",
+        "P2 immediately readable: CHAR_IP_001 reacts with puzzled disbelief because the attendance question is still unanswered",
+        "scene reads as a small story moment, not a diagram/tutorial/PPT",
+        "no AI UI, title card, arrow, speech/thought bubble, giant phone screen, or contact-list wall",
+        "PROP_CONTACT_BOOK_001 is the only causal information prop",
+        "CHAR_IP_001 remains clearly adult with canonical wine-red/cream-collar costume",
+        "supporting actor remains visually secondary and distinct from CHAR_IP_001",
+        "caption-safe and readable at reduced size"
       ],
       "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
       "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
