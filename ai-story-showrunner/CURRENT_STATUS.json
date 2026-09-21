@@ -563,5 +563,19 @@
     "keyframe_review_required": false,
     "final_video_review_required": true,
     "keyframe_sampling": "CALIBRATION_ONLY"
+  },
+  "skill_extraction_review": {
+    "status": "REVIEW_COMPLETE_READY_FOR_P0_RECONCILIATION",
+    "review_date": "2026-09-22",
+    "migration_map": "docs/skill-migration-review/MIGRATION_MAP_V1.md",
+    "conflict_register": "docs/skill-migration-review/CONFLICT_REGISTER_V1.md",
+    "review_summary": "docs/skill-migration-review/REVIEW_SUMMARY_V1.md",
+    "p0_conflicts": 9,
+    "p1_split_issues": 9,
+    "p2_cleanup_issues": 4,
+    "candidate_skill_target": "entropy-student/spike.skill/story-showrunner",
+    "migration_started": false,
+    "canonical_promotion_requires_end_to_end_pass": true,
+    "next": "SKILL_EXTRACTION_R1 — reconcile P0 canonical conflicts before writing candidate Skill files."
   }
 }
