@@ -1339,3 +1339,70 @@ UNRELATED_PROJECTS_TOUCHED=NO
 PASS_CANDIDATE_K3R9_POST_RESTORE_VERIFY
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R10 Sandbox checkout/capture — callback boundary return (2026-09-21)
+
+- Gate: `K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE`
+- Active runtime: Docker/MariaDB WordPress at `http://localhost:8093/`; WordPress 6.8.2; WooCommerce 10.0.4; WooCommerce PayPal Payments 4.1.3. All remained unchanged.
+- Sandbox connection was available before checkout: PayPal was present as a Checkout method and selected by default. No reconnect or credential entry was performed.
+
+### Test-only checkout preflight
+
+- Product: `Mini Craft Night Kit`.
+- SKU: `MCK-LOCAL-TEST-001`.
+- Quantity: `1`.
+- Displayed price/total: `¥1`.
+- Product page reported local stock available (`9` before cart add).
+- Shipping method was explicitly labeled `Local test shipping — no fulfillment promise`.
+- Checkout also exposed the separate `Local test only — no payment` method. Synthetic local test billing values were used only to render the checkout form; no real customer data was used.
+- The item was added to the browser-local cart only. No WooCommerce order was created.
+
+### Checkout result
+
+- Checkout PayPal method: visible and selected.
+- PPCP SDK v6 loaded, but client-token generation failed in the browser; the PayPal approval button did not render and the legacy `Proceed to PayPal` control remained hidden.
+- Browser console contained only the redacted PPCP category `Failed to generate client token`; no token, cookie, header, buyer credential, or response body was recorded.
+- Buyer login/approval was not reached.
+- `ORDER_CREATED=NO`.
+- `PAYPAL_CAPTURE_ACTIONS=0`.
+- `REFUND_ACTIONS=0`.
+
+### Callback/webhook boundary
+
+- Existing PPCP log evidence shows the Sandbox merchant connection had succeeded and Sandbox OAuth returned HTTP 200 before this checkout attempt.
+- PPCP attempted to register the provider callback at `https://localhost:8093/wp-json/paypal/v1/incoming`.
+- PayPal rejected that webhook registration because the URL was not a valid publicly reachable webhook URL; PPCP recorded webhook subscription failure.
+- This is the Gate-defined public-callback boundary. No tunnel, VPS route, Cloudflare route, public domain, or callback workaround was created.
+
+### Runtime and safety
+
+- WordPress container: running; restart count `0`.
+- MariaDB container: running; health `healthy`; restart count `0`.
+- Store API products/cart remained HTTP `200` through direct no-proxy local probes.
+- `PPCP_VERSION_CHANGED=NO`.
+- `WOOCOMMERCE_VERSION_CHANGED=NO`.
+- `WORDPRESS_VERSION_CHANGED=NO`.
+- `PAYPAL_LIVE_ENABLED=NO`.
+- `REAL_PAYMENT_ACTIONS=0`.
+- `VPS_WRITES=ZERO`.
+- `PUBLIC_TUNNEL_CREATED=NO`.
+- `SECRET_VALUES_COMMITTED=NO`.
+- `SECRET_VALUES_WRITTEN_TO_EVIDENCE=NO`.
+- `DIAGNOSTIC_SECRET_OUTPUT_INCIDENT=REVIEW_REQUIRED`: a pre-existing PPCP log line containing credential fields was inadvertently included in a bounded diagnostic tool output; no value is reproduced here, retained in project files, or committed to GitHub. Reviewer/Owner should treat the affected Sandbox credential pair as requiring containment/rotation before any future use.
+
+```text
+K3R10_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE
+PAYPAL_CHECKOUT_METHOD_VISIBLE=YES
+PAYPAL_CHECKOUT_BUTTON_RENDERED=NO
+PPCP_CLIENT_TOKEN=FAIL
+BUYER_APPROVAL_REACHED=NO
+ORDER_CREATED=NO
+PAYPAL_CAPTURE_ACTIONS=0
+WOO_ORDER_PROVIDER_CORRELATION=NOT_APPLICABLE
+WOO_ORDER_PAID_PROCESSING=NOT_APPLICABLE
+PHYSICAL_FULFILLMENT_AUTO_COMPLETED=NOT_APPLICABLE
+WEBHOOK_REGISTER=FAIL_INVALID_PUBLIC_URL
+PUBLIC_CALLBACK_REQUIRED=YES
+RETURN_K3_PUBLIC_CALLBACK_REQUIRED
+STOP_AT_REVIEWER=YES
+```

@@ -590,3 +590,29 @@ UNRELATED_PROJECTS_TOUCHED=NO
 PASS_CANDIDATE_K3R9_POST_RESTORE_VERIFY
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R10 Executor handoff — Sandbox checkout stopped at public callback boundary (2026-09-21)
+
+`RETURN_K3_PUBLIC_CALLBACK_REQUIRED`
+
+The active Docker/MariaDB runtime remained healthy and unchanged. PayPal was visible and selected at Checkout for the test-only `Mini Craft Night Kit` cart: quantity 1, SKU `MCK-LOCAL-TEST-001`, displayed total `¥1`, local stock available, and shipping labeled `Local test shipping — no fulfillment promise`. Synthetic local test billing values were used only to render Checkout; no real customer data was used.
+
+The PPCP SDK v6 loaded but failed to generate a client token, so the PayPal approval button did not render. Buyer approval was never reached. No WooCommerce order was created, no provider transaction or capture occurred, and no refund occurred.
+
+Existing PPCP evidence shows Sandbox merchant connection/OAuth had succeeded, but PayPal rejected PPCP's webhook registration for `https://localhost:8093/wp-json/paypal/v1/incoming` as an invalid public webhook URL. The Gate therefore stops at the explicit public-callback boundary. No tunnel, VPS route, Cloudflare route, public domain, or workaround was created.
+
+Safety: PPCP/WooCommerce/WordPress versions unchanged; Live disabled; real payment actions `0`; VPS writes `0`; secret values were not committed or written to these handoff files. A pre-existing PPCP log line containing credential fields was inadvertently included in a bounded diagnostic tool output; no value is reproduced here or retained in GitHub. Reviewer/Owner should contain/rotate the affected Sandbox credential pair before any future use.
+
+```text
+K3R10_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE
+PAYPAL_CHECKOUT_METHOD_VISIBLE=YES
+PAYPAL_CHECKOUT_BUTTON_RENDERED=NO
+PPCP_CLIENT_TOKEN=FAIL
+BUYER_APPROVAL_REACHED=NO
+ORDER_CREATED=NO
+PAYPAL_CAPTURE_ACTIONS=0
+WEBHOOK_REGISTER=FAIL_INVALID_PUBLIC_URL
+PUBLIC_CALLBACK_REQUIRED=YES
+RETURN_K3_PUBLIC_CALLBACK_REQUIRED
+STOP_AT_REVIEWER=YES
+```
