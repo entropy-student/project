@@ -762,6 +762,103 @@ OWNER_ACTION=NONE
 NEXT=STOP_AT_REVIEWER
 ```
 
+## K4 UI Conversion Trust Finalize — latest authoritative addendum (2026-09-22)
+
+```text
+GATE=K4_UI_CONVERSION_TRUST_FINALIZE
+RESULT=PASS_CANDIDATE_K4_UI_CONVERSION_TRUST_FINAL
+HOME_CONVERSION_TRUST=PASS
+PRODUCT_CONVERSION_TRUST=PASS
+FAQ=PASS
+SHIPPING_RETURNS=PASS
+CONTACT=PASS
+BUSINESS_TRUTH=PASS
+OWNER_EDITABILITY=PASS
+RESPONSIVE=PASS
+GUTENBERG_VALIDITY=PASS
+INVALID_BLOCK_COUNT=0
+WOOCOMMERCE_BEHAVIOR=PASS
+CONTACT_FORM=KADENCE_NATIVE_FORM_RENDERED
+HOME_PRODUCT_FAQ_SHIPPING_CONTACT_HTTP=200
+CART_HTTP=200
+CHECKOUT_HTTP=302_EMPTY_CART_EXPECTED
+WPJSON_HTTP=200
+WP_ADMIN_AUTHENTICATED=PASS
+WOOCOMMERCE_HOME_UI=PASS
+WOOCOMMERCE_PAYMENTS_UI=PASS
+DIRECT_PAYPAL_SETTINGS_UI=PASS
+PPCP_CONNECTION_STATE=CONNECTED_SANDBOX_REDACTED
+EXISTING_SANDBOX_ORDER=PROCESSING_PAID_UNCHANGED
+K4_NEW_ORDER_ACTIONS=0
+RUNTIME_HEALTH=PASS
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+```
+
+The final editable content uses the Reviewer-confirmed US / tracked-standard / checkout-displayed-cost / no-fixed-promise / 14-day-after-delivery / replacement-first / contact-form rules. No unverified contents, public email, phone, home address, fixed delivery promise, or supplier claim was added. Contact form rendering was checked without submitting it; temporary repair helpers were removed.
+
+Rollback remains available locally at `mini-craft-k3r4-mariadb-recovery/.artifacts/k4-finalize-preflight-20260922-025529`. No Reviewer-owned document was modified.
+
+Latest Reviewer Truth requires the next bounded step to be an Owner UI edit window before formal K4 close. Owner may edit Home / Product / FAQ / Shipping & Returns / Contact only; Cart / Checkout / Account and payment/order logic remain protected.
+
+```text
+OWNER_ACTION=OWNER_K4_UI_EDIT_WINDOW
+K4_FORMAL_CLOSE=DEFERRED_UNTIL_OWNER_UI_EDIT
+NEXT=STOP_AT_REVIEWER
+```
+
+## K4 UI Conversion Trust Finalize — Executor handoff (2026-09-22)
+
+```text
+GATE=K4_UI_CONVERSION_TRUST_FINALIZE
+RESULT=PASS_CANDIDATE_K4_UI_CONVERSION_TRUST_FINAL
+```
+
+Applied the latest Owner-confirmed, editable MVP rules to Product, FAQ, Shipping & Returns, and Contact. The Contact page now uses a native Kadence Form block with Name, Email, Message, and Send message controls. The local WordPress mail fallback remains unexposed; final domain mailbox and operational return address remain pending and were not invented. No form submission occurred.
+
+```text
+HOME_CONVERSION_TRUST=PASS
+PRODUCT_CONVERSION_TRUST=PASS
+FAQ=PASS
+SHIPPING_RETURNS=PASS
+CONTACT=PASS
+BUSINESS_TRUTH=PASS
+OWNER_EDITABILITY=PASS
+RESPONSIVE=PASS
+GUTENBERG_VALIDITY=PASS
+INVALID_BLOCK_COUNT=0
+WOOCOMMERCE_BEHAVIOR=PASS
+WOOCommerce_HOME_UI=PASS
+WOOCommerce_PAYMENTS_UI=PASS
+DIRECT_PAYPAL_SETTINGS_UI=PASS
+PPCP_CONNECTION_STATE=CONNECTED_SANDBOX_REDACTED
+HOME_HTTP=200
+PRODUCT_HTTP=200
+FAQ_HTTP=200
+SHIPPING_RETURNS_HTTP=200
+CONTACT_HTTP=200
+CART_HTTP=200
+CHECKOUT_HTTP=302_EMPTY_CART_EXPECTED
+WPJSON_HTTP=200
+DOCKER_RUNTIME=PASS
+MARIADB_HEALTH=PASS
+K4_NEW_ORDER_ACTIONS=0
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+```
+
+Rollback point remains local only at `mini-craft-k3r4-mariadb-recovery/.artifacts/k4-finalize-preflight-20260922-025529` and is intact. Temporary content-repair helpers were removed from both host and container. No Reviewer-owned document was modified.
+
+Latest Reviewer Truth requires one Owner UI edit window before formal K4 closure. Owner may edit only Home / Product / FAQ / Shipping & Returns / Contact; Cart / Checkout / Account, PayPal configuration, and WooCommerce payment/order logic remain protected. The next bounded verification must re-read the latest page state after Owner declares editing complete.
+
+```text
+OWNER_ACTION=OWNER_K4_UI_EDIT_WINDOW
+K4_FORMAL_CLOSE=DEFERRED_UNTIL_OWNER_UI_EDIT
+NEXT=STOP_AT_REVIEWER
+```
+
 ## K4 UI + Conversion & Trust — Reviewer checkpoint (2026-09-22)
 
 `PASS_CANDIDATE_K4_UI_CONVERSION_TRUST`
@@ -842,5 +939,49 @@ DUPLICATE_PAYMENT=NO
 DUPLICATE_CAPTURE=NO
 RUNTIME_HEALTH=PASS
 OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+## K4 UI Conversion Trust Finalize — latest authoritative handoff (2026-09-22)
+
+```text
+GATE=K4_UI_CONVERSION_TRUST_FINALIZE
+RESULT=PASS_CANDIDATE_K4_UI_CONVERSION_TRUST_FINAL
+HOME_CONVERSION_TRUST=PASS
+PRODUCT_CONVERSION_TRUST=PASS
+FAQ=PASS
+SHIPPING_RETURNS=PASS
+CONTACT=PASS
+BUSINESS_TRUTH=PASS
+OWNER_EDITABILITY=PASS
+RESPONSIVE=PASS
+GUTENBERG_VALIDITY=PASS
+INVALID_BLOCK_COUNT=0
+WOOCOMMERCE_BEHAVIOR=PASS
+CONTACT_FORM=KADENCE_NATIVE_FORM_RENDERED
+HOME_PRODUCT_FAQ_SHIPPING_CONTACT_HTTP=200
+CART_HTTP=200
+CHECKOUT_HTTP=302_EMPTY_CART_EXPECTED
+WPJSON_HTTP=200
+WP_ADMIN_AUTHENTICATED=PASS
+WOOCOMMERCE_HOME_UI=PASS
+WOOCOMMERCE_PAYMENTS_UI=PASS
+DIRECT_PAYPAL_SETTINGS_UI=PASS
+PPCP_CONNECTION_STATE=CONNECTED_SANDBOX_REDACTED
+EXISTING_SANDBOX_ORDER=PROCESSING_PAID_UNCHANGED
+K4_NEW_ORDER_ACTIONS=0
+RUNTIME_HEALTH=PASS
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+```
+
+The final pages use only the Reviewer-confirmed editable US / tracked-standard / checkout-displayed-cost / no-fixed-promise / 14-day-after-delivery / replacement-first / contact-form rules. No unverified contents, public email, phone, home address, fixed delivery promise, or supplier claim was added. Contact form rendering was checked without submission, and temporary repair helpers were removed from host and container. Rollback remains available locally at `mini-craft-k3r4-mariadb-recovery/.artifacts/k4-finalize-preflight-20260922-025529`.
+
+The latest Reviewer decision requires the next bounded step to be `OWNER_K4_UI_EDIT_WINDOW` before formal K4 close. Owner may edit Home / Product / FAQ / Shipping & Returns / Contact only; Cart / Checkout / Account and PayPal/WooCommerce payment-order logic remain protected.
+
+```text
+OWNER_ACTION=OWNER_K4_UI_EDIT_WINDOW
+K4_FORMAL_CLOSE=DEFERRED_UNTIL_OWNER_UI_EDIT
 NEXT=STOP_AT_REVIEWER
 ```
