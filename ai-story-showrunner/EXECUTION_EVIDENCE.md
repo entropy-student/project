@@ -1001,3 +1001,28 @@ preserve current character, camera, desk and verification gesture.
 Edit only:
 1. screen → generic brandless policy/source page;
 2. remove checklist/moral text from foreground notebook.
+
+
+---
+
+## G5 High-Risk Pilot Final Closure
+
+Date: 2026-09-21
+
+Final accepted Pilot states:
+- VB001 PASS_WITH_MINOR
+- VB009 PASS_WITH_MINOR
+- VB012 PASS_WITH_MINOR
+- VB015 PASS_WITH_MINOR
+- VB016 PASS_WITH_MINOR
+- VB022 PASS_WITH_MINOR_SEMANTIC_COMPARE
+- VB025 PASS_WITH_MINOR_CHARACTER_RISK
+- VB044 PASS_WITH_MINOR
+
+Result:
+`HIGH_RISK_PILOT = PASS_CANDIDATE`.
+
+Gate:
+`G5 = PASS_CANDIDATE_BLOCKED_BY_REAL_REFERENCE_PERSISTENCE`.
+
+The remaining blocker is not story/frame theory. It is executable canonical reference persistence and binding.
