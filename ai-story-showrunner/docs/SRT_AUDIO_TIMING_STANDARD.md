@@ -1,384 +1,253 @@
-# SRT / Audio Timing Standard v0.3 — CANONICAL
+# SRT / Audio Timing Standard v0.4 — CANONICAL
 
 ## Status
 
-`CANONICAL / SEMANTIC TIMING + REUSABLE VOICE PROFILE`
+`CANONICAL / TIMING COMPILER BEFORE DIRECTOR / VOICE PROFILE v2.1`
 
-Date: 2026-09-21
+Date: 2026-09-22
 
 ## 1. Purpose
 
-Production SRT should be compiled correctly near the Writer stage, not routinely redesigned after real audio generation.
-
-The timing system therefore separates:
-
-- **Semantic Timing Intent** — how fast/slow/held a line should feel;
-- **Voice Timing Profile** — reusable empirical model of how the fixed production voice behaves;
-- **Production SRT** — timestamps predicted from both;
-- **Execution TTS** — Antigravity deterministically renders the already-locked timing contract.
-
-Real TTS is primarily a QA signal, not a normal second creative timing pass.
-
-Canonical Voice Timing Profile specification:
-`docs/VOICE_TIMING_PROFILE_SPEC.md`
-
----
-
-## 2. Timing authority
-
-### Creative authority
-
-G3/G4 semantic rhythm decides:
-- NORMAL / BUILD / PUNCH / REVERSAL / REACTION / FINAL;
-- relative fast/slow behavior;
-- protected holds;
-- semantic pauses;
-- pacing intent.
-
-### Prediction authority
-
-The reusable `VOICE_TIMING_PROFILE.json` predicts physically reasonable duration for the locked voice.
-
-### Exact execution authority
-
-The resulting Production SRT + TTS Manifest are locked before Antigravity execution.
-
-Antigravity must execute them, not redesign them.
-
-If execution materially misses prediction:
-`RETURN_VOICE_TIMING_PROFILE_MISS`
-
----
-
-## 3. Production flow
+Production speech timing is solved **before Director work**.
 
 ```text
-LOCKED SCRIPT
-  ↓
-SPEECH UNIT SEGMENTATION
-  ↓
-SEMANTIC TIMING CLASS
-  ↓
-VOICE_TIMING_PROFILE
-  ↓
-PRODUCTION SRT + TTS MANIFEST
-  ↓
-G4 DIRECTOR
-  ↓
-G5 ASSET PACKAGE
-  ↓
-G6 PRODUCTION PACKAGE
-  ↓
-ANTIGRAVITY
-  ├─ deterministic CosyVoice TTS
-  ├─ image generation/edit
-  ├─ timeline assembly
-  └─ final render
+locked spoken script
+→ Speech Units
+→ semantic timing intent
+→ Voice Timing Profile
+→ Production SRT + TTS Manifest
+→ Director
+→ Assets
+→ Production Package
+→ Executor TTS
 ```
 
-The normal episode does NOT insert a second creative SRT-calibration stage after TTS.
+Real TTS is execution/QA, not a normal second creative timing pass.
 
----
+## 2. Authority
 
-## 4. Timing units
+### Writer / Story
+Owns:
+- locked spoken text;
+- dramatic meaning;
+- optional semantic timing hints.
 
-### Speech Unit
+### Timing Compiler
+Owns:
+- Speech Unit segmentation;
+- semantic pace classification;
+- timing lock class;
+- authored semantic pauses;
+- Production SRT start/end;
+- TTS Manifest timing/speed intent.
 
-A natural spoken/prosody unit.
+### Voice Timing Profile
+Provides the reusable empirical duration/safety model for one stable production voice.
 
-Split by:
-- sentence meaning;
-- breath;
-- setup → quote;
-- question → answer;
-- reversal;
-- punch;
-- intentional pause.
+Current canonical profile:
+`profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json`
 
-Do not split merely because an image changes.
+### Director
+Consumes Production SRT.
 
-### Subtitle Cue
+Director may arrange visual beats inside the locked speech timeline, but may not invent speech duration or TTS speed.
 
-A readability unit.
+### Executor
+Executes the locked TTS recipe.
 
-Rules:
-- one natural semantic unit by default;
-- no blank line inside cue;
-- maximum two visible lines;
-- may map many-to-many with Visual Beats.
-
-### Visual Beat
-
-A visual meaning/state unit.
-
-Visual Beat count does not determine subtitle count.
-
-### Semantic Pause
-
-An intentional silence/hold.
-
-It is not TTS garbage silence and is not disposable.
-
----
-
-## 5. Semantic pace classes
-
-Recommended starting classes:
-
-| class | intent | initial voice-speed envelope |
-|---|---|---|
-| SLOW_NORMAL | reflective / landing | 0.92–1.00x |
-| NORMAL | conversational | 0.97–1.05x |
-| FAST_NORMAL | compressed build | 1.02–1.10x |
-| FAST_CLEAR | punch / concise | 1.03–1.12x |
-| CONTROLLED | reversal / important reveal | 0.97–1.05x |
-| FINAL | landing / finish | 0.92–1.00x |
-
-These are calibration envelopes, not universal constants.
-
-The Voice Timing Profile may refine them.
-
----
-
-## 6. Timing lock classes
-
-### HARD_ANCHOR
-
-Exact/near-exact duration matters:
-- deliberate silence;
-- reversal hold;
-- setup/reveal gap;
-- owner-approved timing anchor.
-
-### SEMANTIC_RANGE
-
-Pace matters; exact milliseconds do not.
-
-### ELASTIC
-
-Ordinary narration may donate/borrow small amounts of time while preserving meaning.
-
----
-
-## 7. Production-SRT compilation
-
-For every Speech Unit:
-
-1. identify `timing_kind`;
-2. map to semantic pace class;
-3. identify lock class;
-4. collect text features;
-5. predict speech duration using Voice Timing Profile;
-6. add semantic pause budget;
-7. derive cue start/end;
-8. validate local rhythm and target episode duration;
-9. output TTS Manifest fields.
-
-The compiler should preserve deliberate relative rhythm from G4 reference timing where useful, but must not blindly inherit a physically implausible numeric window.
-
----
-
-## 8. Reference timing
-
-Existing G4 reference duration is a semantic prior.
-
-Use it as follows:
-
-### Feasible reference
-
-If Voice Timing Profile predicts the line can fit naturally within the intended semantic speed envelope:
-
-> keep the reference duration or stay close.
-
-### Infeasible reference
-
-If the reference window requires an obviously excessive local speed:
-
-> reallocate locally at compile time before G4/G5 production lock.
-
-Preferred repair order:
-
-1. preserve HARD_ANCHOR;
-2. preserve semantic pace class;
-3. trim technical/non-semantic slack;
-4. use allowed semantic speed envelope;
-5. borrow/donate from nearby ELASTIC units;
-6. preserve section/episode duration where feasible;
-7. expand section only if local solve fails.
-
-This solve should happen before normal downstream production.
-
----
-
-## 9. Semantic pause priors
-
-Initial calibration priors:
-
-- ordinary continuation: 60–140ms;
-- setup → quote/answer: 80–180ms;
-- semantic transition: 140–300ms;
-- punch/reversal hold: 250–700ms;
-- deliberate silent reaction: 500–1500ms.
-
-Voice Timing Profile may refine these.
-
-Technical TTS head/tail silence is separate and should be normalized.
-
----
-
-## 10. Execution TTS policy
-
-Antigravity receives a locked TTS Manifest containing at least:
-
-- cue / speech_unit_id;
-- exact text;
-- target start/end;
-- semantic pace class;
-- intended speed;
-- Voice Profile ID;
-- reference audio path;
-- reference transcript path;
-- seed;
-- prompt/speaker cache instructions;
-- allowed technical alignment tolerance.
-
-Antigravity may:
-- load the model once;
-- cache speaker features once;
-- generate each unit;
-- normalize technical silence;
-- apply only bounded technical alignment;
-- assemble the final audio timeline.
-
-Antigravity may NOT:
-- rewrite text;
-- choose a different semantic speed;
-- redistribute semantic pauses;
-- redesign SRT;
-- force major per-cue acceleration.
-
----
-
-## 11. Timing-profile miss
-
-If actual TTS materially differs from predicted Production SRT:
-
+Material mismatch:
 `RETURN_VOICE_TIMING_PROFILE_MISS`
 
-This indicates one of:
-- profile lacks a text-feature class;
-- semantic classifier is wrong;
-- voice/reference changed;
-- TTS settings changed;
-- predictor is underfit.
+## 3. Timing units
 
-Fix the reusable profile/compiler.
+### Speech Unit
+Natural spoken/prosody unit, split by meaning, breath, setup/answer, reversal, punch or authored pause.
 
-Do not normalize this into per-episode manual SRT repair.
+### Subtitle Cue
+Readability unit derived from locked speech. Maximum two visible lines by default.
 
----
+### Semantic Pause
+Intentional authored silence/hold. It is not disposable TTS padding.
 
-## 12. Calibration workflow
+### Visual Beat
+Visual meaning/state unit. It may be many-to-many with subtitle cues.
 
-Voice Timing Profile is calibrated once per materially stable voice setup.
+## 4. Dramatic timing kind → voice pace class
 
-Minimum calibration coverage:
-- short / medium / long NORMAL;
-- FAST_NORMAL / BUILD;
-- PUNCH;
-- REVERSAL / CONTROLLED;
-- FINAL;
-- comma-heavy;
-- quote;
-- question;
-- colon → quote;
-- numbers;
-- English/AI/MCP tokens;
-- very short utterance.
+| dramatic timing kind | voice pace class |
+|---|---|
+| NORMAL | NORMAL |
+| BUILD / BUILD_PATTERN | FAST_NORMAL |
+| PUNCH_SETUP | NORMAL |
+| PUNCH | FAST_CLEAR |
+| REVERSAL | CONTROLLED |
+| REACTION | SLOW_NORMAL or authored silent hold |
+| FINAL | FINAL |
 
-Then validate on held-out utterances.
+The mapping is semantic. Exact speed comes from the selected Voice Timing Profile.
 
-Target:
-- median absolute timing prediction error <= 150ms;
-- p90 absolute error <= 300ms;
-- no held-out case needs large unplanned speed change.
+## 5. Timing lock classes
 
----
+### HARD_ANCHOR
+Deliberate silence, setup/reveal gap, reversal hold, or explicitly protected timing anchor.
 
-## 13. Current Blind Search Answer evidence
+### SEMANTIC_RANGE
+Pace matters; exact milliseconds may flex inside the profile-safe range.
 
-### Baseline
+### ELASTIC
+Ordinary narration may donate/borrow small amounts of time during compile-time solving.
 
-- natural TTS: 2.5542s
-- old window: 2.680s
-- feasible
-- PASS
+## 6. Production-SRT compilation
 
-### Tight line
+For each Speech Unit:
 
-`所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。`
+1. classify dramatic timing kind;
+2. map to voice pace class;
+3. assign lock class;
+4. collect profile features;
+5. predict safe duration;
+6. apply profile safety branches/floors;
+7. add authored semantic pause;
+8. solve local timeline;
+9. emit cue start/end;
+10. emit corresponding TTS Manifest row.
 
-- natural TTS: 4.2493s
-- old window: 3.020s
-- required speed: 1.407x
-- listening result: unacceptable
+Then perform a **whole-script timeline pass**:
+- preserve order;
+- preserve HARD_ANCHOR;
+- prevent overlap;
+- inspect cumulative pacing;
+- keep local rhythm coherent;
+- avoid drift from independently rounded cue durations.
 
-Diagnosis:
+Therefore:
 
-> one reference window was infeasible; this does not invalidate semantic timing, and it does not justify flattening the episode to one natural speed.
+> **逐段计算 duration，整篇统一编排 start/end，输出一个完整 Production SRT。**
 
-This case becomes calibration evidence for Voice Timing Profile and the compile-time local solver.
+## 7. Legacy/reference timing
 
-### Punch
+Historical G4/Jingsui/reference-SRT timings may be imported only as **optional semantic priors** for legacy episodes.
 
-- natural TTS: 1.2771s
-- old window: 1.350s
-- feasible
-- PASS
+They are not production timing authority.
 
----
+For new episodes, Timing Compiler does not wait for G4 to create speech timing.
 
-## 14. File roles
+If a legacy reference conflicts with the Voice Timing Profile:
+1. preserve semantic intent;
+2. preserve HARD_ANCHOR where possible;
+3. solve inside profile-safe pace;
+4. borrow/donate from ELASTIC neighbors;
+5. expand a local section only when necessary.
 
-### `VOICE_TIMING_PROFILE.json`
+## 8. Voice-profile acceptance — canonical v2.1 model
 
-Reusable voice-specific timing model.
+Absolute error is diagnostic only.
 
-### `PRODUCTION_SUBTITLES.srt`
+Primary safety metric:
 
-Production SRT compiled before Director/Asset execution.
+`required_extra_speed = max(1.0, actual_duration / allocated_window)`
 
-### `TTS_MANIFEST.json`
+- <= 1.03x → PASS
+- >1.03x and <=1.05x → PASS_WITH_MINOR
+- >1.05x → RETURN_PROFILE_MISS
 
-Locked per-unit TTS execution recipe.
+Over-allocation:
 
-### `REFERENCE_TIMING.srt`
+`tail_slack = max(0, allocated_window - actual_duration)`
 
-Historical / semantic pacing input only.
+Guidance:
+- PUNCH / FAST_CLEAR preferred <= 0.30s;
+- NORMAL / FAST_NORMAL preferred <= 0.60s;
+- CONTROLLED / FINAL preferred <= 0.70s;
+- up to 0.90s may be PASS_WITH_MINOR for CONTROLLED / FINAL when semantic pacing remains acceptable;
+- material excess returns for profile/compiler review.
 
-### `07_SHOT_TIMELINE.csv`
+Do not treat under-allocation and over-allocation as equivalent failure modes.
 
-Visual timeline compiled against Production SRT.
+## 9. Canonical CosyVoice v2.1 safety branches
 
----
+The generic Timing Compiler reads these from the profile rather than hard-coding them.
 
-## 15. Human intervention
+Current profile includes:
+- short NORMAL floor: 1.4715s;
+- mixed Latin + Arabic margin: 0.3178s;
+- CONTROLLED safety floor: 5.0 CJK chars/s;
+- FINAL safety floor: 5.5 CJK chars/s.
 
-Normal production does not require Owner approval of:
-- SRT timing;
+These are **profile parameters**, not universal Story Showrunner constants.
+
+## 10. TTS Manifest
+
+Each row must include at least:
+- speech_unit_id;
+- exact text;
+- target start/end;
+- dramatic timing kind;
+- voice pace class;
+- intended generation speed;
+- Voice Profile ID;
+- seed / deterministic settings;
+- logical reference-audio/reference-text IDs;
+- authored pause;
+- allowed technical alignment tolerance.
+
+Machine-specific absolute paths belong runtime configuration, not the canonical profile/Skill contract.
+
+## 11. Executor policy
+
+Executor may:
+- load model once;
+- cache speaker prompt once;
+- generate locked Speech Units;
+- normalize technical leading/trailing silence;
+- perform bounded technical alignment;
+- assemble final audio track.
+
+Executor may NOT:
+- rewrite text;
+- choose new semantic pace;
+- move authored pauses;
+- redesign SRT;
+- use major time-stretch to rescue a compiler/profile miss.
+
+## 12. Recalibration triggers
+
+Do not recalibrate for every episode.
+
+Recalibrate/review only when:
+- TTS engine/model materially changes;
+- reference voice changes;
+- speaking style changes;
+- language changes;
+- generation settings materially change;
+- repeated production `RETURN_VOICE_TIMING_PROFILE_MISS` occurs.
+
+## 13. Historical calibration evidence
+
+V1 symmetric-error regression was rejected.
+
+Targeted v2 repaired:
+- short NORMAL unsafe under-allocation;
+- mixed Latin + Arabic additive over-count.
+
+v2.1 blind closeout validated CONTROLLED and FINAL safety floors.
+
+Canonical result:
+`VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1 = PASS_WITH_MINOR / FROZEN`
+
+Detailed calibration artifacts remain historical evidence under:
+`experiments/g6/voice-timing-calibration/`
+
+## 14. Human intervention
+
+Normal production requires no Owner approval of:
 - final script;
-- individual TTS cases.
+- Production SRT;
+- individual TTS lines;
+- Director timing mapping.
 
-Escalate only when:
-- profile confidence is low;
-- a hard timing constraint is infeasible;
-- repeated profile misses occur;
-- the user explicitly requests a timing/style override.
+Escalate only for an unresolved RETURN/BLOCKED state or explicit owner override.
 
----
+## 15. Core principle
 
-## 16. Core principle
-
-> **语义决定怎么说；Voice Timing Profile 让我们在生成音频之前就知道大概要说多久。**
-
-Production should enter Antigravity with timing already solved.
+> **语义决定怎么说；Voice Timing Profile 让 Timing Compiler 在生成真实音频前就分配安全时间；Director 只在这条已锁定时间轴上设计画面。**
