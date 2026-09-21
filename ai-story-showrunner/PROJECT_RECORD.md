@@ -814,3 +814,26 @@ Current:
 - Infeasible windows borrow/donate time locally while protecting PUNCH / REVERSAL / HOLD / FINAL timing intent and anchor pauses.
 - Natural TTS is used as a feasibility baseline only.
 - Major local speed-up remains prohibited as a rescue mechanism.
+
+
+## 2026-09-21 — Skill productization + autonomous workflow decision
+
+Owner accepted the following architecture corrections:
+
+- `ai-story-showrunner` is a validation workspace; permanent target is a reusable `story-showrunner` Skill in the Skill library after E2E validation.
+- Generic core must support domains beyond AI through Domain Adapters.
+- Default topic resolution: explicit user topic/override → today's Calendar → Topic Radar → Evergreen Bank.
+- Final script does not require normal Owner approval.
+- First-batch/critical-frame manual generation is not a recurring production Gate; it is calibration-only.
+- Normal Owner interaction target is optional override at invocation + final-video review.
+- Timing moves closer to Writer via a reusable Voice Timing Profile so Production SRT is already production-grade before Antigravity execution.
+- Antigravity is responsible for deterministic execution of locked CosyVoice TTS + images + edit + export, but not timing/story decisions.
+- Audio mode corrected to `EXECUTOR_LOCKED_COSYVOICE`.
+
+New canonical docs:
+- `docs/STORY_SHOWRUNNER_SKILL_TARGET.md`
+- `docs/VOICE_TIMING_PROFILE_SPEC.md`
+- `docs/SRT_AUDIO_TIMING_STANDARD.md` v0.3
+
+Immediate next:
+one-time Voice Timing Profile calibration → held-out validation → Production SRT/TTS Manifest → complete Antigravity Production Package.
