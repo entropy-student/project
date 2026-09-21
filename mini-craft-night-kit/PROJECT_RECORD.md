@@ -21,7 +21,7 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_AUTH
+CURRENT_GATE=K3R1_PPCP_CONFLICT_ISOLATION
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -338,3 +338,12 @@ REAL_PAYMENT_ACTIONS=0
 ```
 
 Owner must complete the provider-side Sandbox login/account authorization from WooCommerce → Settings → Payments → PayPal Payments → Connect to PayPal, without sharing credentials or Secrets in chat/GitHub. After Owner confirmation, resume the same K3 Gate.
+
+
+## K3R1 PPCP Conflict Isolation
+
+K3 diagnostic returned `RETURN_REVIEWER_PPCP_CONFLICT_ISOLATION_REQUIRED` after capturing a PPCP 4.1.3 React mount fatal and associated admin/API timeout signals.
+
+Reviewer authorizes one reversible test: temporarily deactivate only `woocommerce-paypal-payments`, retest WooCommerce admin/API health, and return. No uninstall, version change, backup restore, credential mutation, PayPal re-authorization, Live mode, public tunnel, VPS, or real payment.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R1_PPCP_CONFLICT_ISOLATION.md`.
