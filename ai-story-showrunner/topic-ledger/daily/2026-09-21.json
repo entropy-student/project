@@ -1,0 +1,146 @@
+{
+  "date": "2026-09-21",
+  "planner_version": "0.2",
+  "status": "completed",
+  "production_scope": "editorial_only_no_G4_plus",
+  "signals": [
+    {
+      "cluster_id": "agent-runtime-boundary-2026-09",
+      "lane": "HOT",
+      "canonical_event": "Agent能力增强后，运行时异常行为、工具越权与边界控制成为显性产品问题",
+      "signals": [
+        {
+          "source": "Google Developers Blog",
+          "date": "2026-09-16",
+          "url": "https://developers.googleblog.com/agent-anomaly-detection-now-in-private-preview-on-the-gemini-enterprise-agent-platform/",
+          "evidence": "Google发布Agent Anomaly Detection，明确指出更自主的Agent可能触碰不该使用的工具，并提供运行时检测/阻断。"
+        },
+        {
+          "source": "Google Developers Blog",
+          "date": "2026-09-15",
+          "url": "https://developers.googleblog.com/build-zero-trust-ai-agents-that-judge-intent-not-just-syntax/",
+          "evidence": "Google提出zero-trust agent运行时治理与intent gating，强调仅靠预先写死的规则不足以覆盖Agent行为风险。"
+        }
+      ],
+      "mapped_topic_id": "tools-do-not-mean-permission",
+      "human_translation": "AI越来越会替你办事以后，真正危险的不是它会不会，而是它什么时候不该自己做。",
+      "gates": {
+        "evidence": "PASS",
+        "human_relevance": "PASS",
+        "mechanism_integrity": "PASS",
+        "one_mechanism": "PASS — tool capability and authorization/runtime approval are separate layers",
+        "storyability": "PASS",
+        "non_trivial_payoff": "PASS",
+        "audience_fit": "PASS",
+        "D1_signal_duplicate": "CLUSTERED",
+        "D2_topic_duplicate": "MATCH_EXISTING tools-do-not-mean-permission",
+        "D3_angle_duplicate": "PASS_AS_REACTIVATION — new runtime-governance signal materially reactivates the existing unpublished topic",
+        "D4_story_visual_duplicate": "PASS — story motif not yet locked/published"
+      },
+      "decision": "HOT_OVERRIDE"
+    },
+    {
+      "cluster_id": "model-misalignment-reporting-2026-09",
+      "lane": "HOT",
+      "canonical_event": "OpenAI发布模型失配事件追踪与披露框架",
+      "signals": [
+        {
+          "source": "OpenAI",
+          "date": "2026-09-17",
+          "url": "https://openai.com/index/model-misalignment-reporting-framework/"
+        }
+      ],
+      "human_translation": "模型偶发做出不符合开发者意图的行为，应该怎样被发现和披露？",
+      "gates": {
+        "evidence": "PASS",
+        "human_relevance": "BORDERLINE",
+        "mechanism_integrity": "PASS",
+        "one_mechanism": "BORDERLINE — reporting framework easily expands into several safety mechanisms",
+        "storyability": "BORDERLINE",
+        "non_trivial_payoff": "PASS",
+        "audience_fit": "BORDERLINE",
+        "duplicate_gate": "PASS"
+      },
+      "decision": "NO_OVERRIDE"
+    },
+    {
+      "cluster_id": "gemini-live-3-8-2026-09",
+      "lane": "HOT",
+      "canonical_event": "Google发布Gemini 3.8 Live与Live Extended Thinking，强化实时语音Agent推理",
+      "signals": [
+        {
+          "source": "Google",
+          "date": "2026-09-15",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/"
+        }
+      ],
+      "human_translation": "当语音AI不只是聊天而是边听边推理、执行任务，交互到底变了什么？",
+      "gates": {
+        "evidence": "PASS",
+        "human_relevance": "PASS",
+        "mechanism_integrity": "PASS",
+        "one_mechanism": "BORDERLINE — live dialogue + visual grounding + extended reasoning competing",
+        "storyability": "PASS",
+        "non_trivial_payoff": "BORDERLINE",
+        "audience_fit": "PASS",
+        "duplicate_gate": "PASS"
+      },
+      "decision": "NO_OVERRIDE"
+    },
+    {
+      "cluster_id": "frontier-pace-measurement-2026-09",
+      "lane": "HOT",
+      "canonical_event": "Anthropic提出衡量前沿实验室AI发展速度的新指标",
+      "signals": [
+        {
+          "source": "Anthropic",
+          "date": "2026-09-21",
+          "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development"
+        }
+      ],
+      "human_translation": "普通人怎样知道前沿AI到底进步得有多快？",
+      "gates": {
+        "evidence": "PASS",
+        "human_relevance": "BORDERLINE",
+        "mechanism_integrity": "PASS",
+        "one_mechanism": "PASS",
+        "storyability": "FAIL — current angle is measurement/policy heavy",
+        "non_trivial_payoff": "PASS",
+        "audience_fit": "BORDERLINE",
+        "duplicate_gate": "PASS"
+      },
+      "decision": "NO_OVERRIDE"
+    }
+  ],
+  "today_selection": {
+    "topic_id": "tools-do-not-mean-permission",
+    "topic": "为什么AI有工具，也不代表它应该拥有所有权限？",
+    "lane": "HOT",
+    "business_job": "TRUST",
+    "editorial_mode": "STORY_ACTION",
+    "target_duration": "3–5 min",
+    "hot_override": true,
+    "override_reason": "Google在9月15–16日连续发布zero-trust agent与Agent Anomaly Detection材料，使既有未发布主题获得新的强一方证据和时效入口。",
+    "action_payoff": "把能力、权限、运行时确认/阻断分开；关键动作需要边界，而不是因为Agent会做就默认授权。"
+  },
+  "rolling_schedule": [
+    {"date":"2026-09-21","topic_id":"tools-do-not-mean-permission","lane":"HOT","business_job":"TRUST","editorial_mode":"STORY_ACTION","target_duration":"3–5 min","status":"planned"},
+    {"date":"2026-09-22","topic_id":"long-chat-drift","lane":"EVERGREEN","business_job":"TRUST","editorial_mode":"STORY_MODEL","target_duration":"3–5 min","status":"planned"},
+    {"date":"2026-09-23","topic_id":"more-context-worse-answer","lane":"EVERGREEN","business_job":"DISCOVERY","editorial_mode":"STORY_MODEL","target_duration":"3–5 min","status":"planned"},
+    {"date":"2026-09-24","topic_id":"same-prompt-different-answer","lane":"EVERGREEN","business_job":"DISCOVERY","editorial_mode":"STORY_MODEL","target_duration":"3–5 min","status":"planned"},
+    {"date":"2026-09-25","topic_id":"confident-but-wrong","lane":"EVERGREEN","business_job":"TRUST","editorial_mode":"STORY_MODEL","target_duration":"3–5 min","status":"planned"},
+    {"date":"2026-09-26","topic_id":"search-found-but-wrong-answer","lane":"EVERGREEN","business_job":"TRUST","editorial_mode":"STORY_ACTION","target_duration":"3–5 min","status":"planned"},
+    {"date":"2026-09-27","topic_id":"multi-agent-not-always-better","lane":"EVERGREEN","business_job":"DISCOVERY","editorial_mode":"STORY_MODEL","target_duration":"3–5 min","status":"planned"}
+  ],
+  "portfolio_check": {
+    "STORY_MODEL": 5,
+    "STORY_ACTION": 2,
+    "quality_gate_over_quota": true
+  },
+  "governance": {
+    "locked_or_published_modified": false,
+    "published_marked": false,
+    "entered_G4_plus": false,
+    "daily_production_capability_claimed": false
+  }
+}
