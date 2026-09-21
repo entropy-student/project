@@ -1,23 +1,26 @@
-# Antigravity Task — Blind Search Production TTS
+# Antigravity Task — Blind Search Production TTS + Runtime Timeline Resolution
 
 ## Scope
 
-Produce the **real production narration audio** for the current Blind Search episode and simultaneously verify it against the already-compiled timing contract.
+Produce the real narration audio for this episode and resolve the **final absolute timeline** locally from actual TTS durations.
 
-This is no longer a disposable timing test.
+This is part of the one-delivery architecture.
 
-Do NOT build the full Antigravity Production Package.
-Do NOT generate images.
-Do NOT edit video.
+Do NOT:
+- generate images;
+- edit/render the real episode video;
+- build/freeze the full Antigravity Production Package;
+- return actual SRT to the Owner for a second Showrunner compile.
 
 Inputs, relative to:
 `ai-story-showrunner/experiments/g6/blind-search-answer/`
 
 - `timing/01_SPEECH_UNITS.json`
-- `timing/02_PRODUCTION_SUBTITLES.srt`
+- `timing/02_PRODUCTION_SUBTITLES.srt`  ← planned timeline
 - `timing/03_TTS_MANIFEST.json`
+- `TIMELINE_RESOLVER_RULES.md`
 
-## Fixed runtime
+## Fixed TTS runtime
 
 Use the already validated local setup:
 
@@ -34,9 +37,23 @@ Use the already validated local setup:
 - seed: 1986
 - sample rate: 22050 Hz
 
-Load the model once.
-Cache the speaker prompt once.
-Reset seed exactly as required by the validated deterministic setup.
+Load model once.
+Cache speaker prompt once.
+Use one process/session when practical.
+
+## Resume-safe execution
+
+Generate by Speech Unit, not one giant request.
+
+For each completed unit:
+1. write normalized production WAV immediately;
+2. append/update the execution report immediately;
+3. mark the unit complete.
+
+If the agent/session/network is interrupted:
+- do not regenerate already completed PASS units;
+- verify their files/report entries;
+- resume from the first incomplete unit.
 
 ## Production outputs
 
@@ -46,118 +63,140 @@ Generate and retain:
 tts/
 ├─ units/
 │  ├─ SU001.wav
-│  ├─ SU002.wav
-│  └─ ... 43 voiced units total
+│  └─ ... 43 voiced units
 ├─ narration_master.wav
 └─ tts_execution_report.json
+
+timing/runtime/
+├─ FINAL_SUBTITLES.srt
+├─ FINAL_TIMELINE.json
+├─ FINAL_SHOT_TIMELINE.csv
+└─ TIMELINE_RESOLUTION_REPORT.json
 ```
 
-The explicit 1.4s silent reaction hold is not sent to TTS. It must exist in `narration_master.wav` at the exact timeline position defined by Production SRT / Speech Units.
+The explicit 1.4s silent reaction unit is not sent to TTS.
 
-## Per-unit execution
+## Per-unit TTS
 
-For every TTS row:
+For every manifest row:
 
-1. use exact `text`;
-2. use exact `generation_speed`;
-3. generate once;
-4. do not retry for aesthetic variation;
-5. normalize technical leading/trailing silence using the validated deterministic VAD rule;
+1. exact text;
+2. exact generation speed;
+3. deterministic seed/settings;
+4. generate once; no aesthetic retry loop;
+5. normalize technical head/tail silence with the validated VAD rule;
 6. preserve internal semantic pauses;
-7. save normalized production WAV as `tts/units/<speech_unit_id>.wav`;
-8. record:
-   - raw duration;
-   - normalized duration;
-   - target speech-window duration = `end - start`;
-   - required_extra_speed = max(1.0, actual_normalized / target_speech_window);
-   - speech_tail_slack = max(0, target_speech_window - actual_normalized);
-   - result.
+7. save as `tts/units/<speech_unit_id>.wav`;
+8. record raw/normalized durations.
 
-## Timing acceptance
+Also calculate:
 
-PASS:
-- required_extra_speed <= 1.03x.
+`required_extra_speed_if_forced_to_plan = actual_normalized / planned_speech_window`
 
-PASS_WITH_MINOR:
-- >1.03x and <=1.05x.
+This metric is for profile diagnostics.
 
-RETURN:
-- >1.05x.
+If >1.05:
+record `VOICE_TIMING_PROFILE_DRIFT`.
 
-Tail slack is diagnostic.
-Do not rewrite timing merely because actual speech is shorter than the safe window.
+Do NOT automatically fail the current episode only because the actual speech is longer than planned.
 
-## Master narration assembly
+## Runtime Timeline Resolver
 
-If and only if all 43 rows have no RETURN:
+After all 43 voiced units exist, follow:
+`TIMELINE_RESOLVER_RULES.md`
 
-1. place each normalized unit at its Production SRT target start;
-2. preserve every `authored_pause_after`;
-3. preserve the explicit 1.4s silent reaction hold;
-4. use silence for safe unused tail windows;
-5. produce:
-   `tts/narration_master.wav`
-6. target total timeline:
-   approximately `146.7209s` (sample-rounding tolerance allowed).
+Core rule:
 
-Do NOT materially time-stretch individual speech units to fill safe slack.
+> actual normalized speech duration becomes final runtime clock truth.
 
-## Critical rule
-
-This is production TTS execution under a frozen timing contract.
+Automatically:
+- shift downstream absolute timestamps;
+- preserve Speech Unit order;
+- preserve authored semantic pauses;
+- preserve the explicit 1.4s HARD_ANCHOR;
+- rebalance only ELASTIC slack;
+- extend semantically valid visual holds;
+- allow total episode duration to expand.
 
 Do NOT:
-- change Production SRT;
-- change text;
+- rewrite text;
 - change pace class;
-- change generation speed;
-- move authored pauses;
-- tune the Voice Timing Profile against this episode;
-- proceed to images/video/package assembly.
+- choose a new speed;
+- delete/reorder Speech Units;
+- change Visual Beat meaning/order/POV;
+- force major time-stretch to retain planned total duration.
 
-If any row requires >1.05x:
+## FINAL_SUBTITLES.srt
 
-`RETURN_VOICE_TIMING_PROFILE_MISS`
+Generate from resolved actual timing.
 
-Retain:
-- failed unit WAV(s);
-- execution report;
-- already-successful unit WAVs.
+Text/order must remain exactly aligned to the locked Speech Units.
 
-Do not create `narration_master.wav` until the timing miss is resolved.
+No overlaps.
 
-## Report
+## FINAL_TIMELINE.json
 
-Create:
-`tts/tts_execution_report.json`
+For every Speech Unit include:
+- speech_unit_id;
+- planned_start/end;
+- actual_duration;
+- final_start;
+- final_speech_end;
+- final_window_end;
+- resolved_pause_after;
+- delta_vs_planned_ms;
+- profile_drift flag;
+- repair_level_used.
 
-For every row:
+## FINAL_SHOT_TIMELINE.csv
+
+For the current one-Speech-Unit-per-Visual-Beat mapping include:
+
+- visual_beat_id
 - speech_unit_id
-- raw_duration_sec
-- normalized_duration_sec
-- target_speech_window_sec
-- required_extra_speed
-- speech_tail_slack_sec
-- PASS / PASS_WITH_MINOR / RETURN
-- production_wav_path
+- final_start
+- final_end
+- timing_source = RESOLVED_RUNTIME_TIMELINE
+- delta_vs_planned_ms
+- repair_level_used
 
-Summary:
-- row count
-- PASS count
-- PASS_WITH_MINOR count
-- RETURN count
-- worst required_extra_speed
-- largest speech-tail slack
-- narration master duration, if produced
-- overall result
+## Master narration
+
+Build `tts/narration_master.wav` from the resolved timeline:
+- place each normalized Speech Unit at its final start;
+- preserve resolved pauses;
+- preserve 1.4s silent reaction;
+- no forced stretching to fill planned windows.
+
+Its duration should match the resolved final episode timeline, not necessarily 146.7209s.
+
+## Blocking return
+
+Return:
+`RETURN_TIMELINE_RESOLUTION_INFEASIBLE`
+
+only if a locked constraint cannot be preserved without changing creative/semantic truth.
+
+Examples:
+- Speech Unit order must change;
+- HARD_ANCHOR must be removed;
+- text/speed/pace must be creatively redesigned;
+- Visual Beat meaning or POV must change;
+- two hard constraints conflict.
 
 ## Final response
 
 Return only:
-- execution summary;
-- any failed row IDs;
-- `narration_master.wav` path if created;
-- report path;
-- units folder path.
 
-Do not start video production.
+- TTS rows completed / resumed count;
+- profile-drift row IDs, if any;
+- overall timeline-resolution result;
+- final total duration;
+- `tts/narration_master.wav` path;
+- `tts/tts_execution_report.json` path;
+- `timing/runtime/FINAL_SUBTITLES.srt` path;
+- `timing/runtime/FINAL_TIMELINE.json` path;
+- `timing/runtime/FINAL_SHOT_TIMELINE.csv` path;
+- `timing/runtime/TIMELINE_RESOLUTION_REPORT.json` path.
+
+Do not start real episode video production.
