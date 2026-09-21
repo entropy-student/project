@@ -926,3 +926,16 @@ Product contents must only reflect supplier-confirmed SKU contents. Difficulty m
 Executor may now update Product / FAQ / Shipping & Returns / Contact using these approved rules and perform one final K4 verification pass.
 
 Formal decision: `docs/REVIEWER_DECISION_K4_OWNER_BUSINESS_FACTS_CONFIRMED.md`.
+
+
+## K4 Owner UI Edit Window — REQUIRED BEFORE FORMAL CLOSE
+
+Owner clarified that no personal UI edits have been made yet. The currently issued Executor K4-finalize run remains valid, but K4 must not be formally closed immediately after that run.
+
+Required sequence: Executor current run → STOP_AT_REVIEWER → Owner UI edit window → bounded delta verification → K4 PASS → K5.
+
+Do not allow concurrent Owner/Executor edits to the same page. Owner may edit Home / Product / FAQ / Shipping & Returns / Contact only; Cart / Checkout / Account core flows and payment/order logic remain protected.
+
+Pending checkpoint after Executor returns: `OWNER_K4_UI_EDIT_WINDOW`.
+
+Formal decision: `docs/REVIEWER_DECISION_K4_OWNER_UI_EDIT_WINDOW_BEFORE_K5.md`.
