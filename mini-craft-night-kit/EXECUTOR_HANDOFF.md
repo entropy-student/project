@@ -544,3 +544,49 @@ PASS_CANDIDATE_K3R9_PPCP_MINIMAL_ENV_PREP
 STOP_AT_OWNER_CHECKPOINT=YES
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R9 Executor handoff — post-result restore verified (2026-09-21)
+
+`PASS_CANDIDATE_K3R9_POST_RESTORE_VERIFY`
+
+Owner's single authorized Sandbox Manual Connect attempt produced the Reviewer-accepted UI result `Connected to PayPal`. Executor did not reconnect, re-enter credentials, or read any credential value.
+
+The exact pre-isolation activation state was restored:
+
+- Kadence Blocks 3.7.11 active;
+- Kadence Starter Templates 2.3.4 active;
+- WooCommerce 10.0.4 active;
+- WooCommerce PayPal Payments 4.1.3 active;
+- Akismet and Hello Dolly inactive.
+
+Read-only in-container PPCP verification returned merchant connected YES, Sandbox mode YES, Sandbox-connected YES, onboarding completed YES, and HTTP 200 for common/onboarding/settings/payment/features. The direct PayPal Settings page returned HTTP 200 with authenticated admin access, exactly one `#ppcp-settings-container`, and the PPCP settings script loaded. The known generic Payments overview mount boundary remains a prior state; it did not prevent the direct PayPal page from rendering.
+
+WordPress, Product, Cart, Store API products/cart, and expected empty-cart Checkout behavior remained healthy. Both containers remained running, MariaDB stayed healthy, recent logs showed no PHP fatal/timeout marker and no PPCP connection-error marker. The temporary read-only helper was removed locally and from the container.
+
+No PayPal reconnect, credential entry, version change, source patch, Live mode, real payment, tunnel, VPS action, or unrelated-project write was performed. Executor stops for Reviewer decision on formal K3R9 PASS and any separate conflict-isolation Gate.
+
+```text
+K3R9_GATE=K3R9_POST_RESULT_RESTORE_AND_VERIFY
+K3R9_OWNER_MANUAL_CONNECT_UI=SUCCESS
+PLUGIN_STATE_RESTORED=PASS
+PPCP_MERCHANT_CONNECTED=YES
+PPCP_SANDBOX_CONNECTED=YES
+PPCP_ONBOARDING_COMPLETED=YES
+PPCP_REST_STATE=PASS
+DIRECT_PAYPAL_SETTINGS_AFTER_RESTORE=PASS
+MINI_CRAFT_RUNTIME_AFTER_RESTORE=PASS
+PPCP_CONNECTION_ERROR_AFTER_RESTORE=NOT_OBSERVED
+PAYPAL_RECONNECT_ACTIONS=0
+CREDENTIALS_READ_OR_ENTERED_BY_EXECUTOR=NO
+REAL_PAYMENT_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PPCP_SOURCE_PATCHED=NO
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+UNRELATED_PROJECTS_TOUCHED=NO
+PASS_CANDIDATE_K3R9_POST_RESTORE_VERIFY
+STOP_AT_REVIEWER=YES
+```

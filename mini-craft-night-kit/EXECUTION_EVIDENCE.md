@@ -1265,3 +1265,77 @@ PASS_CANDIDATE_K3R9_PPCP_MINIMAL_ENV_PREP
 STOP_AT_OWNER_CHECKPOINT=YES
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R9 Post-result restore and read-only verification (2026-09-21)
+
+- Gate: `K3R9_POST_RESULT_RESTORE_AND_VERIFY`
+- Owner's single authorized minimal-environment attempt was accepted by Reviewer as `K3R9_OWNER_MANUAL_CONNECT_UI=SUCCESS` with visible `Connected to PayPal`. Executor did not re-enter credentials, reconnect, or inspect any credential value.
+- The K3R9 rollback directory and pre-isolation manifest remained present locally. No restore-from-backup was needed; only the two temporarily deactivated plugins were reactivated.
+
+### Exact plugin-state restoration
+
+- Kadence Blocks `3.7.11`: restored to active.
+- Kadence Starter Templates `2.3.4`: restored to active.
+- WooCommerce `10.0.4`: remained active.
+- WooCommerce PayPal Payments `4.1.3`: remained active.
+- Akismet `5.4` and Hello Dolly `1.7.2`: remained inactive.
+- Post-restore active-plugin inventory exactly matched the saved pre-isolation manifest. No plugin/version/theme files or settings were deleted or changed.
+
+### Read-only PPCP connection state after restoration
+
+An in-container authenticated read-only probe used the existing local administrator session only in memory and emitted only redacted booleans/statuses. It did not perform a reconnect or write provider state.
+
+- `/wc/v3/wc_paypal/common`: HTTP `200`; `merchant.isConnected=YES`; `merchant.isSandbox=YES`; `useSandbox=YES`.
+- `/wc/v3/wc_paypal/onboarding`: HTTP `200`; `completed=YES`.
+- `/wc/v3/wc_paypal/settings`: HTTP `200`.
+- `/wc/v3/wc_paypal/payment`: HTTP `200`.
+- `/wc/v3/wc_paypal/features`: HTTP `200`.
+- Direct PayPal Settings page: HTTP `200`; authenticated admin marker `YES`; exactly one `#ppcp-settings-container`; PPCP settings script marker present.
+- Payments overview: HTTP `200`; its zero PPCP container count is the previously known overview-only mount boundary, while the direct PayPal route remained healthy. No new direct-page connection failure was observed.
+
+### WordPress/WooCommerce/runtime regression check
+
+- WordPress container: running; restart count `0`.
+- MariaDB container: running; health `healthy`; restart count `0`.
+- `/`: HTTP `200`.
+- `/wp-json/`: HTTP `200`.
+- Product `/product/mini-craft-night-kit/`: HTTP `200`.
+- Cart `/cart/`: HTTP `200`.
+- Empty-cart Checkout `/checkout/`: HTTP `302`, expected WooCommerce behavior.
+- Store API products: HTTP `200`.
+- Store API cart: HTTP `200`.
+- Unauthenticated `/wp-admin/`: HTTP `302`, expected login redirect.
+- Recent container log scan: PHP fatal/parse/timeout marker count `0`; PPCP connection-error marker count `0`.
+- Resource sample: WordPress `0.01%` CPU; MariaDB `0.04%` CPU.
+- One-time read-only helper was removed from both local `.artifacts` and the container `/tmp`; no secret-bearing artifact was retained.
+
+```text
+K3R9_GATE=K3R9_POST_RESULT_RESTORE_AND_VERIFY
+K3R9_OWNER_MANUAL_CONNECT_UI=SUCCESS
+PLUGIN_STATE_RESTORED=PASS
+PRE_ISOLATION_ACTIVE_PLUGIN_STATE_MATCH=PASS
+PPCP_MERCHANT_CONNECTED=YES
+PPCP_SANDBOX_MODE=YES
+PPCP_SANDBOX_CONNECTED=YES
+PPCP_ONBOARDING_COMPLETED=YES
+PPCP_REST_STATE=PASS
+DIRECT_PAYPAL_SETTINGS_AFTER_RESTORE=PASS
+DIRECT_PPCP_CONTAINER_COUNT=1
+WORDPRESS_RUNTIME_AFTER_RESTORE=PASS
+WOOCOMMERCE_RUNTIME_AFTER_RESTORE=PASS
+PPCP_CONNECTION_ERROR_AFTER_RESTORE=NOT_OBSERVED
+OVERVIEW_REACT_MOUNT_BOUNDARY=KNOWN_PRIOR_STATE
+PAYPAL_RECONNECT_ACTIONS=0
+CREDENTIALS_READ_OR_ENTERED_BY_EXECUTOR=NO
+REAL_PAYMENT_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PPCP_SOURCE_PATCHED=NO
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+UNRELATED_PROJECTS_TOUCHED=NO
+PASS_CANDIDATE_K3R9_POST_RESTORE_VERIFY
+STOP_AT_REVIEWER=YES
+```
