@@ -943,3 +943,33 @@ New mode counts:
 
 Next:
 generate final high-risk Pilot beat VB044.
+
+
+---
+
+## G5 Pilot — VB044 Attempt 1 RETURN_EXECUTION
+
+Date: 2026-09-21
+
+Result:
+`SRCH_VB044 = RETURN_EXECUTION`.
+
+Failure:
+- callback became a before/after summary poster instead of a story callback;
+- protagonist was duplicated into two versions;
+- bubbles, arrow, English slogan and checklist were introduced despite explicit suppression;
+- the intended action change — actively checking the source — was no longer the dominant event.
+
+What remains valid:
+- ending callback architecture;
+- observer-view medium-close;
+- opening/ending spatial rhyme;
+- behavior-change payoff.
+
+Retry:
+- one recurring IP only;
+- same desk/monitor relationship as opening;
+- IP calmly and deliberately clicks/checks the source;
+- no second self, split-screen, bubble, arrow, slogan, checklist, moral text, cat or extra props.
+
+No architecture rewrite required.
