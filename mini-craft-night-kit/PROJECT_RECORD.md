@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3R9_SANDBOX_MANUAL_CONNECT_REQUIRED
+CURRENT_CHECKPOINT=K3R9_POST_RESULT_RESTORE_AND_VERIFY
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -596,3 +596,17 @@ CURRENT_CHECKPOINT=OWNER_K3R9_SANDBOX_MANUAL_CONNECT_REQUIRED
 Owner is authorized for exactly one Sandbox Manual Connect attempt in the direct PayPal Settings page. After the result, Executor must restore the prior plugin activation state exactly before returning to Reviewer.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R9_PREP_PASS_OWNER_MANUAL_CONNECT.md`.
+
+
+## K3R9 Owner Manual Connect — SUCCESS UI
+
+Owner supplied direct UI evidence showing `Connected to PayPal` after the single authorized Sandbox Manual Connect attempt in the minimal plugin environment.
+
+```text
+K3R9_OWNER_MANUAL_CONNECT_UI=SUCCESS
+CURRENT_CHECKPOINT=K3R9_POST_RESULT_RESTORE_AND_VERIFY
+```
+
+Executor must now restore the prior Kadence plugin activation state exactly and perform read-only verification that the PayPal merchant/Sandbox connection and runtime remain healthy. K3R9 remains open until that evidence is reviewed.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R9_OWNER_CONNECT_SUCCESS_POST_RESTORE_VERIFY.md`.
