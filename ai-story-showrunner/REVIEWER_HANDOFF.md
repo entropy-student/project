@@ -731,3 +731,14 @@ Next main-line gate:
 - G6 Audio Mode resolved to `A_UPSTREAM_COSYVOICE`.
 - Existing `08_REFERENCE_TIMING.srt` is planning-only and must not drive production TTS.
 - Next: generate full natural Speech Units → FINAL_AUDIO → FINAL_AUDIO_ALIGNED.srt → retime 44 Visual Beats → exact Shot Timeline.
+
+
+## 2026-09-21 — Timing model correction v0.2
+
+- Owner correctly rejected a pure “natural-audio-first” interpretation because G4 intentionally encodes semantic pacing differences.
+- Canonical model is now dual-authority: Semantic Timing Intent = creative constraint; solved Audio Master = exact physical clock.
+- Preserve `timing_kind`, relative pacing, protected holds/anchors and feasible reference windows.
+- Raw CosyVoice at speed=1.0 is measurement baseline only, not the final pacing mandate.
+- Infeasible windows trigger local reallocation from nearby elastic units before large speed changes or episode expansion.
+- Current high-risk 1.407x case is diagnosed as a local window allocation failure, not evidence that the full timeline should be replaced by natural TTS timing.
+- Next: full-script `TIMING_CALIBRATION.json` → local constrained solve → semantic-paced FINAL_AUDIO → final SRT.
