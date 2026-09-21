@@ -220,3 +220,35 @@ The React decoder for the captured production exception `#299` resolves the full
 PPCP is confirmed as the direct cause of the Payments-page blank/native-method failure, but deactivation did not isolate the broader WooCommerce Home/API failure. Keep PPCP deactivated. Reviewer must decide the next bounded diagnostic or recovery Gate; no further changes were made.
 
 `STOP_AT_REVIEWER=YES`
+## K3R2 — Pre-K3 parallel baseline comparison (2026-09-21) — RETURN
+
+### Status
+
+`RETURN_K3R2_STUDIO_OR_WOOCOMMERCE_RUNTIME_SYSTEMIC`
+
+### What was executed
+
+- Read the current K3R2 Reviewer Truth and decision.
+- Created a separate Studio site from the retained `pre-k3-backup.zip`:
+  - Name: `Mini Craft K3R2 Pre-K3 Baseline`
+  - Path: `mini-craft-kadence-poc/.studio/mini-craft-k3r2-pre-k3-20260921`
+  - URL/port: `http://localhost:8882/`
+- Import completed successfully and the B server started.
+- B contains WooCommerce 10.0.4 but no PPCP plugin; the current A site remains at `http://localhost:8881/` with PPCP inactive.
+
+### A/B result
+
+The same bounded probes were run against both sites: frontend, Studio auto-login/wp-admin, WooCommerce Home, Payments, `wc-admin/features`, `wc-admin/options`, Store API products/cart, Product, Cart, and Checkout. Every route on both A and B returned HTTP 000 after approximately 4 seconds with no response.
+
+Each site had four Studio PHP workers. A and B each showed one worker consuming about 97% of one CPU core over a 5-second sample while the other workers were idle; request timeouts persisted.
+
+B therefore does not provide a healthy pre-K3 baseline. The evidence supports a Studio/WooCommerce runtime-systemic issue, not a K3-only regression.
+
+### Safety and Reviewer checkpoint
+
+- A was not overwritten, restored, restarted, or configured.
+- PPCP remains deactivated on A.
+- No PPCP installation/activation, version change, PayPal authorization, Live mode, payment, VPS/public route, or database migration occurred.
+- B is intentionally retained at port 8882 for Reviewer inspection.
+
+`STOP_AT_REVIEWER=YES`
