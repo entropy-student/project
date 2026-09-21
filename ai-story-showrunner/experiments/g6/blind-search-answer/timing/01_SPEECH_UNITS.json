@@ -1,0 +1,1340 @@
+{
+  "artifact": "SPEECH_UNITS",
+  "episode_id": "blind-search-answer",
+  "status": "COMPILED_CANDIDATE",
+  "compiler": "entropy-student/spike.skill/story-showrunner/references/TIMING_COMPILER.md",
+  "voice_profile": "VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1",
+  "source_script": "experiments/g4r-v03/blind-search-answer/02_SCRIPT.md",
+  "semantic_prior": "experiments/g4r-v03/blind-search-answer/07_VISUAL_BEAT_PLAN.json",
+  "compile_policy": {
+    "segmentation": "one Speech Unit per accepted Visual Beat; preserves exact locked-script paragraph coverage while retaining existing semantic timing-kind assignments",
+    "legacy_timing_role": "non-compressive semantic prior only",
+    "allocation": "max(Voice Profile v2.1 safe speech duration, legacy semantic-prior beat duration)",
+    "slack_semantics": "when legacy semantic prior is longer than predicted speech, the difference becomes authored_pause_after; legacy timing never forces faster speech",
+    "silent_reaction": "explicit ellipsis is a 1.4s HARD_ANCHOR silent hold and is not sent to TTS"
+  },
+  "unit_count": 44,
+  "tts_unit_count": 43,
+  "silent_hold_count": 1,
+  "total_timeline_sec": 146.7209,
+  "units": [
+    {
+      "speech_unit_id": "SU001",
+      "visual_beat_id": "SRCH_VB001",
+      "paragraph_range": [
+        1,
+        1
+      ],
+      "text": "我现在看到 AI 回答下面带着“官方来源”四个字，第一反应已经不是放心了。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 29,
+        "latin_or_abbrev_token_count": 1,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 30,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 5.1243,
+      "allocated_window_duration": 5.25,
+      "authored_pause_after": 0.1257,
+      "legacy_semantic_prior_duration": 5.25,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU002",
+      "visual_beat_id": "SRCH_VB002",
+      "paragraph_range": [
+        2,
+        2
+      ],
+      "text": "是先点开看看。",
+      "timing_kind": "PUNCH",
+      "pace_class": "FAST_CLEAR",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 6,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 6,
+        "short_utterance_indicator": 1
+      },
+      "predicted_speech_duration": 0.7731,
+      "allocated_window_duration": 1.49,
+      "authored_pause_after": 0.7169,
+      "legacy_semantic_prior_duration": 1.49,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU003",
+      "visual_beat_id": "SRCH_VB003",
+      "paragraph_range": [
+        3,
+        4
+      ],
+      "text": "因为有一次，我只是想偷个懒，查一条特别简单的退款规则。\n问题也很具体：",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 30,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 3,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 30,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 5.4517,
+      "allocated_window_duration": 5.4517,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 5.23,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU004",
+      "visual_beat_id": "SRCH_VB004",
+      "paragraph_range": [
+        5,
+        5
+      ],
+      "text": "“订单退掉以后，平台收的那笔服务费，会不会一起退回来？”",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 23,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 2,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 23,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 4.0849,
+      "allocated_window_duration": 4.0849,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 4.05,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU005",
+      "visual_beat_id": "SRCH_VB005",
+      "paragraph_range": [
+        6,
+        7
+      ],
+      "text": "它搜了一下。\n几秒钟以后，答案出来了：",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 15,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 2,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 15,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 3.0577,
+      "allocated_window_duration": 3.0577,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 2.69,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU006",
+      "visual_beat_id": "SRCH_VB006",
+      "paragraph_range": [
+        8,
+        8
+      ],
+      "text": "“会。退款完成后，款项会原路退回。”",
+      "timing_kind": "PUNCH",
+      "pace_class": "FAST_CLEAR",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 13,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 2,
+        "content_unit_count": 13,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 2.3483,
+      "allocated_window_duration": 2.68,
+      "authored_pause_after": 0.3317,
+      "legacy_semantic_prior_duration": 2.68,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU007",
+      "visual_beat_id": "SRCH_VB007",
+      "paragraph_range": [
+        9,
+        9
+      ],
+      "text": "下面还真的挂着一条官方帮助中心的链接。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 18,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 18,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 2.5069,
+      "allocated_window_duration": 3.2,
+      "authored_pause_after": 0.6931,
+      "legacy_semantic_prior_duration": 3.2,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU008",
+      "visual_beat_id": "SRCH_VB008",
+      "paragraph_range": [
+        10,
+        10
+      ],
+      "text": "我当时那个放心程度，大概相当于老师不仅告诉你答案，还把参考答案拍在了桌上。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 34,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 2,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 34,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 5.4973,
+      "allocated_window_duration": 5.9,
+      "authored_pause_after": 0.4027,
+      "legacy_semantic_prior_duration": 5.9,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU009",
+      "visual_beat_id": "SRCH_VB009",
+      "paragraph_range": [
+        11,
+        12
+      ],
+      "text": "于是我顺手就在成本表里写了一行：\n“服务费：可退。”",
+      "timing_kind": "PUNCH",
+      "pace_class": "FAST_CLEAR",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 20,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 2,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 20,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 3.4256,
+      "allocated_window_duration": 3.86,
+      "authored_pause_after": 0.4344,
+      "legacy_semantic_prior_duration": 3.86,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU010",
+      "visual_beat_id": "SRCH_VB010",
+      "paragraph_range": [
+        13,
+        14
+      ],
+      "text": "本来这件事到这里已经结束了。\n但我那天可能刚好手比较欠。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 25,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 2,
+        "content_unit_count": 25,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 3.609,
+      "allocated_window_duration": 4.38,
+      "authored_pause_after": 0.771,
+      "legacy_semantic_prior_duration": 4.38,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU011",
+      "visual_beat_id": "SRCH_VB011",
+      "paragraph_range": [
+        15,
+        15
+      ],
+      "text": "我点开了那个官方网页。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 10,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 10,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 1.4797,
+      "allocated_window_duration": 1.85,
+      "authored_pause_after": 0.3703,
+      "legacy_semantic_prior_duration": 1.85,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU012",
+      "visual_beat_id": "SRCH_VB012",
+      "paragraph_range": [
+        16,
+        17
+      ],
+      "text": "网页没找错。\n标题就是退款规则。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 13,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 2,
+        "content_unit_count": 13,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 2.0682,
+      "allocated_window_duration": 2.36,
+      "authored_pause_after": 0.2918,
+      "legacy_semantic_prior_duration": 2.36,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU013",
+      "visual_beat_id": "SRCH_VB013",
+      "paragraph_range": [
+        18,
+        18
+      ],
+      "text": "甚至 AI 刚才那句话，也真的能在上面找到。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 16,
+        "latin_or_abbrev_token_count": 1,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 17,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 3.4551,
+      "allocated_window_duration": 3.4551,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 3.06,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU014",
+      "visual_beat_id": "SRCH_VB014",
+      "paragraph_range": [
+        19,
+        20
+      ],
+      "text": "上面写着：\n“退款完成后，订单款项将退回原支付方式。”",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 21,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 2,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 21,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 3.8281,
+      "allocated_window_duration": 3.8281,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 3.71,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU015",
+      "visual_beat_id": "SRCH_VB015",
+      "paragraph_range": [
+        21,
+        21
+      ],
+      "text": "我往下又看了一行。",
+      "timing_kind": "PUNCH_SETUP",
+      "pace_class": "NORMAL",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 8,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 8,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 1.2229,
+      "allocated_window_duration": 1.63,
+      "authored_pause_after": 0.4071,
+      "legacy_semantic_prior_duration": 1.63,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU016",
+      "visual_beat_id": "SRCH_VB016",
+      "paragraph_range": [
+        22,
+        22
+      ],
+      "text": "“平台服务费不予退还。”",
+      "timing_kind": "REVERSAL",
+      "pace_class": "CONTROLLED",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 9,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 9,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 1.8,
+      "allocated_window_duration": 2.14,
+      "authored_pause_after": 0.34,
+      "legacy_semantic_prior_duration": 2.14,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [
+        "controlled_floor=5cps"
+      ],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU017",
+      "visual_beat_id": "SRCH_VB017",
+      "paragraph_range": [
+        23,
+        23
+      ],
+      "text": "……",
+      "timing_kind": "REACTION",
+      "pace_class": null,
+      "lock_class": "HARD_ANCHOR",
+      "predicted_speech_duration": 0,
+      "allocated_window_duration": 1.4,
+      "authored_pause_after": 1.4,
+      "legacy_semantic_prior_duration": 1.4,
+      "timing_source": "LEGACY_SEMANTIC_PRIOR_SILENT_HOLD",
+      "tts_required": false
+    },
+    {
+      "speech_unit_id": "SU018",
+      "visual_beat_id": "SRCH_VB018",
+      "paragraph_range": [
+        24,
+        25
+      ],
+      "text": "我又看了一眼 AI 的答案。\n“会。”",
+      "timing_kind": "PUNCH",
+      "pace_class": "FAST_CLEAR",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 10,
+        "latin_or_abbrev_token_count": 1,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 2,
+        "content_unit_count": 11,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 2.2407,
+      "allocated_window_duration": 2.36,
+      "authored_pause_after": 0.1193,
+      "legacy_semantic_prior_duration": 2.36,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU019",
+      "visual_beat_id": "SRCH_VB019",
+      "paragraph_range": [
+        26,
+        27
+      ],
+      "text": "再看网页。\n“不予退还。”",
+      "timing_kind": "REVERSAL",
+      "pace_class": "CONTROLLED",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 8,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 2,
+        "content_unit_count": 8,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 1.6,
+      "allocated_window_duration": 1.97,
+      "authored_pause_after": 0.37,
+      "legacy_semantic_prior_duration": 1.97,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [
+        "controlled_floor=5cps"
+      ],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU020",
+      "visual_beat_id": "SRCH_VB020",
+      "paragraph_range": [
+        28,
+        30
+      ],
+      "text": "这时候最奇怪的地方就出现了。\n它不是没联网。\n也不是搜到了什么野鸡论坛。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 31,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 3,
+        "content_unit_count": 31,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 4.5827,
+      "allocated_window_duration": 5.4,
+      "authored_pause_after": 0.8173,
+      "legacy_semantic_prior_duration": 5.4,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU021",
+      "visual_beat_id": "SRCH_VB021",
+      "paragraph_range": [
+        31,
+        31
+      ],
+      "text": "它甚至把正确的官网放在了我面前。",
+      "timing_kind": "PUNCH",
+      "pace_class": "FAST_CLEAR",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 15,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 15,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 1.9645,
+      "allocated_window_duration": 3.01,
+      "authored_pause_after": 1.0455,
+      "legacy_semantic_prior_duration": 3.01,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU022",
+      "visual_beat_id": "SRCH_VB022",
+      "paragraph_range": [
+        32,
+        32
+      ],
+      "text": "但它拿着回答“订单款项去哪儿”的那句话，回答了我“服务费退不退”的问题。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 30,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 30,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 4.5157,
+      "allocated_window_duration": 5.23,
+      "authored_pause_after": 0.7143,
+      "legacy_semantic_prior_duration": 5.23,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU023",
+      "visual_beat_id": "SRCH_VB023",
+      "paragraph_range": [
+        33,
+        34
+      ],
+      "text": "就像我问一个人：\n“老板今天来不来？”",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 14,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 14,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 2.4613,
+      "allocated_window_duration": 2.52,
+      "authored_pause_after": 0.0587,
+      "legacy_semantic_prior_duration": 2.52,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU024",
+      "visual_beat_id": "SRCH_VB024",
+      "paragraph_range": [
+        35,
+        35
+      ],
+      "text": "他翻开通讯录，准确找到了老板那一页，然后特别自信地告诉我：",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 26,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 3,
+        "hard_punctuation_count": 0,
+        "content_unit_count": 26,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 4.7348,
+      "allocated_window_duration": 4.7348,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 4.55,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU025",
+      "visual_beat_id": "SRCH_VB025",
+      "paragraph_range": [
+        36,
+        38
+      ],
+      "text": "“老板电话是 138……”\n资料没找错。\n答案还是没回答问题。",
+      "timing_kind": "PUNCH",
+      "pace_class": "FAST_CLEAR",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 19,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 1,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 2,
+        "content_unit_count": 20,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 3.0173,
+      "allocated_window_duration": 3.99,
+      "authored_pause_after": 0.9727,
+      "legacy_semantic_prior_duration": 3.99,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU026",
+      "visual_beat_id": "SRCH_VB026",
+      "paragraph_range": [
+        39,
+        41
+      ],
+      "text": "我后来又试了一次。\n这次没问它“答案是什么”。\n我只问：",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 21,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 2,
+        "content_unit_count": 21,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 3.5634,
+      "allocated_window_duration": 3.71,
+      "authored_pause_after": 0.1466,
+      "legacy_semantic_prior_duration": 3.71,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU027",
+      "visual_beat_id": "SRCH_VB027",
+      "paragraph_range": [
+        42,
+        42
+      ],
+      "text": "“你引用的网页里，哪一句话明确说明服务费会退？”",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 20,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 20,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 3.2317,
+      "allocated_window_duration": 3.54,
+      "authored_pause_after": 0.3083,
+      "legacy_semantic_prior_duration": 3.54,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU028",
+      "visual_beat_id": "SRCH_VB028",
+      "paragraph_range": [
+        43,
+        43
+      ],
+      "text": "它重新看了一遍。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 7,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 7,
+        "short_utterance_indicator": 1
+      },
+      "predicted_speech_duration": 1.4715,
+      "allocated_window_duration": 1.4715,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 1.34,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [
+        "short_normal_floor=1.4715"
+      ],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU029",
+      "visual_beat_id": "SRCH_VB029",
+      "paragraph_range": [
+        44,
+        44
+      ],
+      "text": "然后答案变了。",
+      "timing_kind": "PUNCH",
+      "pace_class": "FAST_CLEAR",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 6,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 6,
+        "short_utterance_indicator": 1
+      },
+      "predicted_speech_duration": 0.7731,
+      "allocated_window_duration": 1.49,
+      "authored_pause_after": 0.7169,
+      "legacy_semantic_prior_duration": 1.49,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU030",
+      "visual_beat_id": "SRCH_VB030",
+      "paragraph_range": [
+        45,
+        45
+      ],
+      "text": "因为“搜到网页”和“用对网页里的证据”，其实是两件事。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 21,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 21,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 3.3601,
+      "allocated_window_duration": 3.71,
+      "authored_pause_after": 0.3499,
+      "legacy_semantic_prior_duration": 3.71,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU031",
+      "visual_beat_id": "SRCH_VB031",
+      "paragraph_range": [
+        46,
+        46
+      ],
+      "text": "搜索做的，是把可能有用的资料拿回来。",
+      "timing_kind": "PUNCH",
+      "pace_class": "FAST_CLEAR",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 16,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 16,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 2.5168,
+      "allocated_window_duration": 3.18,
+      "authored_pause_after": 0.6632,
+      "legacy_semantic_prior_duration": 3.18,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU032",
+      "visual_beat_id": "SRCH_VB032",
+      "paragraph_range": [
+        47,
+        49
+      ],
+      "text": "但资料回来以后，模型还得判断：\n哪一句跟你的问题真正对应。\n哪些只是看起来很像。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 34,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 2,
+        "hard_punctuation_count": 2,
+        "content_unit_count": 34,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 5.7006,
+      "allocated_window_duration": 5.9,
+      "authored_pause_after": 0.1994,
+      "legacy_semantic_prior_duration": 5.9,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU033",
+      "visual_beat_id": "SRCH_VB033",
+      "paragraph_range": [
+        50,
+        50
+      ],
+      "text": "有没有例外。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 5,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 5,
+        "short_utterance_indicator": 1
+      },
+      "predicted_speech_duration": 1.4715,
+      "allocated_window_duration": 1.4715,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 1.2,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [
+        "short_normal_floor=1.4715"
+      ],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU034",
+      "visual_beat_id": "SRCH_VB034",
+      "paragraph_range": [
+        51,
+        51
+      ],
+      "text": "几句话放在一起以后，结论到底是什么。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 16,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 16,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 2.7181,
+      "allocated_window_duration": 2.86,
+      "authored_pause_after": 0.1419,
+      "legacy_semantic_prior_duration": 2.86,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU035",
+      "visual_beat_id": "SRCH_VB035",
+      "paragraph_range": [
+        52,
+        54
+      ],
+      "text": "这一步如果错了，就会出现一种特别有迷惑性的答案：\n来源是真的。\n链接也是真的。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 33,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 2,
+        "hard_punctuation_count": 2,
+        "content_unit_count": 33,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 5.5722,
+      "allocated_window_duration": 5.73,
+      "authored_pause_after": 0.1578,
+      "legacy_semantic_prior_duration": 5.73,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU036",
+      "visual_beat_id": "SRCH_VB036",
+      "paragraph_range": [
+        55,
+        55
+      ],
+      "text": "甚至引用的句子也是真的。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 11,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 11,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 1.6081,
+      "allocated_window_duration": 2.02,
+      "authored_pause_after": 0.4119,
+      "legacy_semantic_prior_duration": 2.02,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU037",
+      "visual_beat_id": "SRCH_VB037",
+      "paragraph_range": [
+        56,
+        56
+      ],
+      "text": "只有最后那个结论，是错的。",
+      "timing_kind": "PUNCH",
+      "pace_class": "FAST_CLEAR",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 11,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 11,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 1.9223,
+      "allocated_window_duration": 2.34,
+      "authored_pause_after": 0.4177,
+      "legacy_semantic_prior_duration": 2.34,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU038",
+      "visual_beat_id": "SRCH_VB038",
+      "paragraph_range": [
+        57,
+        57
+      ],
+      "text": "所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 25,
+        "latin_or_abbrev_token_count": 1,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 26,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 4.6107,
+      "allocated_window_duration": 4.6107,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 3.02,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU039",
+      "visual_beat_id": "SRCH_VB039",
+      "paragraph_range": [
+        58,
+        58
+      ],
+      "text": "如果答案不重要，我当然也不会每次都去查。",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 18,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 18,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 2.9749,
+      "allocated_window_duration": 2.9749,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 2.52,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU040",
+      "visual_beat_id": "SRCH_VB040",
+      "paragraph_range": [
+        59,
+        59
+      ],
+      "text": "但如果这件事真的会让我花钱、改方案，或者做一个很难撤回来的决定，",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 29,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 3,
+        "hard_punctuation_count": 0,
+        "content_unit_count": 29,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 5.12,
+      "allocated_window_duration": 5.12,
+      "authored_pause_after": 0,
+      "legacy_semantic_prior_duration": 4.38,
+      "allocation_rule": "VOICE_PROFILE_SAFE_DURATION",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU041",
+      "visual_beat_id": "SRCH_VB041",
+      "paragraph_range": [
+        60,
+        60
+      ],
+      "text": "我会多问一句：",
+      "timing_kind": "PUNCH_SETUP",
+      "pace_class": "NORMAL",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 6,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 0,
+        "content_unit_count": 6,
+        "short_utterance_indicator": 1
+      },
+      "predicted_speech_duration": 1.0997,
+      "allocated_window_duration": 1.35,
+      "authored_pause_after": 0.2503,
+      "legacy_semantic_prior_duration": 1.35,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU042",
+      "visual_beat_id": "SRCH_VB042",
+      "paragraph_range": [
+        61,
+        61
+      ],
+      "text": "“这个来源里的哪句话，真的支持你的结论？”",
+      "timing_kind": "PUNCH",
+      "pace_class": "FAST_CLEAR",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 17,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 17,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 2.6356,
+      "allocated_window_duration": 3.35,
+      "authored_pause_after": 0.7144,
+      "legacy_semantic_prior_duration": 3.35,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU043",
+      "visual_beat_id": "SRCH_VB043",
+      "paragraph_range": [
+        62,
+        62
+      ],
+      "text": "因为 AI 搜索最容易让我放松警惕的地方，可能恰恰就是——",
+      "timing_kind": "NORMAL",
+      "pace_class": "NORMAL",
+      "lock_class": "ELASTIC",
+      "features": {
+        "cjk_char_count": 22,
+        "latin_or_abbrev_token_count": 1,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 1,
+        "hard_punctuation_count": 0,
+        "content_unit_count": 23,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 4.0222,
+      "allocated_window_duration": 4.07,
+      "authored_pause_after": 0.0478,
+      "legacy_semantic_prior_duration": 4.07,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    },
+    {
+      "speech_unit_id": "SU044",
+      "visual_beat_id": "SRCH_VB044",
+      "paragraph_range": [
+        63,
+        63
+      ],
+      "text": "它真的给我找对了网页。",
+      "timing_kind": "FINAL",
+      "pace_class": "FINAL",
+      "lock_class": "SEMANTIC_RANGE",
+      "features": {
+        "cjk_char_count": 10,
+        "latin_or_abbrev_token_count": 0,
+        "arabic_number_token_count": 0,
+        "soft_punctuation_count": 0,
+        "hard_punctuation_count": 1,
+        "content_unit_count": 10,
+        "short_utterance_indicator": 0
+      },
+      "predicted_speech_duration": 1.8939,
+      "allocated_window_duration": 2.59,
+      "authored_pause_after": 0.6961,
+      "legacy_semantic_prior_duration": 2.59,
+      "allocation_rule": "PROFILE_SAFE_DURATION_PLUS_NONCOMPRESSIVE_LEGACY_SEMANTIC_HOLD",
+      "applied_profile_rules": [
+        "final_floor=5.5cps"
+      ],
+      "mixed_token_rule_applied": false,
+      "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
+      "tts_required": true
+    }
+  ]
+}
