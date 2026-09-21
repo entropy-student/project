@@ -1025,3 +1025,26 @@ K3R8B_HOST_DIAGNOSTIC=PASS_WITH_TLS_STACK_MISMATCH
 K3R8B_OWNER_RETRY=REQUIRED
 K3R8B_RESULT=RETURN_OWNER_K3R8B_CORRECTED_HELPER_REQUIRED
 STOP_AT_OWNER_CHECKPOINT=YES
+## K3R8C Container-native OAuth checkpoint (2026-09-21)
+
+- Scope: active Docker/MariaDB runtime `http://localhost:8093/`; no PPCP/WooCommerce/WordPress version change, source patch, Live enablement, or repeated connect attempt.
+- The OAuth request path was moved off Windows HTTPS stacks. A PHP helper inside the WordPress container uses WordPress `wp_remote_post` to `https://api-m.sandbox.paypal.com/v1/oauth2/token` with `grant_type=client_credentials`.
+- Owner input path: a local PowerShell wrapper prompts Client ID and hidden Secret, sends them only as transient STDIN bytes to `docker exec`; they are not command-line arguments, environment variables, files, logs, GitHub content, or shell-history literals. The PHP helper emits only the five redacted result fields and never emits response content.
+- Validation: container PHP lint exit 0; PowerShell wrapper syntax errors 0; no credential-like literals in either helper. The container-side temporary helper was removed after validation; local helper files remain only under active runtime `.artifacts` and contain no credential values.
+
+DIAGNOSTIC_PACKET
+GATE=K3R8C_CONTAINER_NATIVE_OAUTH_CHECK
+ENVIRONMENT=Windows host plus active WordPress Docker container mini-craft-k3r4-recovery-wordpress on localhost:8093
+TRIGGER=Owner K3R8B helper returned LOCAL_REQUEST_FAILURE before an HTTP credential result
+REPRODUCTION=Owner runs the local container-native wrapper; Client ID and Secret enter only interactive prompts and travel through STDIN to PHP wp_remote_post
+OBSERVED=container PHP lint 0; PowerShell syntax errors 0; OAuth status pending Owner execution
+CONTROL_OR_BASELINE=K3R8A container DNS/TLS reachability PASS; Windows host path had mixed Schannel/HTTP-stack behavior
+HYPOTHESES_RULED_OUT=No conclusion of invalid credentials; no credential was read, recovered, printed, or stored by Executor
+HYPOTHESES_REMAINING=Sandbox credential pair validity; container-native HTTP response; PPCP 4.1.3 manual-connect behavior after valid OAuth
+ARTIFACTS=active runtime .artifacts/k3r8c-container-oauth.php and .artifacts/k3r8c-container-oauth.ps1; helper validation only; no secret-bearing artifact
+SECRETS_REDACTED=YES
+NEXT_DISCRIMINATING_TEST=Owner runs the wrapper and returns only CONTAINER_OAUTH_STAGE, PAYPAL_SANDBOX_OAUTH, HTTP_STATUS, TOKEN_RECEIVED, ERROR_CLASS
+STOP_REASON=Owner-only credential input is required before Phase C
+
+K3R8C_RESULT=RETURN_OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED
+STOP_AT_OWNER_CHECKPOINT=YES
