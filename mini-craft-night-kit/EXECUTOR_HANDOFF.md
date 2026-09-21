@@ -504,3 +504,43 @@ PPCP_SOURCE_PATCHED=NO
 VPS_WRITES=ZERO
 STOP_AT_OWNER_CHECKPOINT=YES
 STOP_AT_REVIEWER=YES
+
+## K3R9 Executor handoff — minimal plugin environment ready (2026-09-21)
+
+`PASS_CANDIDATE_K3R9_PPCP_MINIMAL_ENV_PREP`
+
+The active Docker/MariaDB runtime remains `http://localhost:8093/`. A local rollback point was created and validated before mutation:
+
+- MariaDB dump, full `wp-content` archive, and local `wp-config.php` copy retained under `.artifacts/k3r9-preflight-20260921-211040`.
+- Database integrity check passed; no backup content or credential value was written to GitHub.
+
+The pre-isolation active plugin set was Kadence Blocks 3.7.11, Kadence Starter Templates 2.3.4, WooCommerce 10.0.4, and PPCP 4.1.3. Only Kadence Blocks and Kadence Starter Templates were temporarily deactivated. The active set is now exactly WooCommerce 10.0.4 plus WooCommerce PayPal Payments 4.1.3. No plugin/theme files, versions, business data, PayPal settings, or credentials were changed.
+
+Only WooCommerce/PPCP transient prefixes were cleared. No object-cache or advanced-cache drop-in was present. A container-local authenticated read probe confirmed the direct PayPal Settings page is usable: HTTP 200, admin marker present, exactly one `#ppcp-settings-container`, and PPCP settings script loaded. The Payments overview also returned HTTP 200. The probe used an in-memory local admin session cookie, emitted no cookie/body, and was deleted after use.
+
+Final smoke remained healthy: front page and `/wp-json/` returned HTTP 200 on repeated direct requests; unauthenticated `/wp-admin/` returned expected 302; WordPress remained running and MariaDB healthy. No browser button was clicked and no PayPal authorization was retried.
+
+Owner checkpoint: perform exactly one local Sandbox Manual Connect retry in the direct PayPal Settings page using Owner-entered credentials. Do not send credentials, tokens, cookies, or response bodies in chat/GitHub. After the result, restore the prior plugin activation state exactly and stop for Reviewer; Executor must not enter a source patch or next Gate.
+
+```text
+K3R9_GATE=K3R9_PPCP_MINIMAL_ENV_ISOLATION
+ROLLBACK_READY=PASS
+PLUGIN_ISOLATION=PASS
+DIRECT_PAYPAL_SETTINGS=PASS
+MINIMAL_ENV_RUNTIME=PASS
+OWNER_MANUAL_CONNECT=NOT_RUN_OWNER_CHECKPOINT
+RESTORE_PRIOR_PLUGIN_STATE=DEFERRED_UNTIL_OWNER_RESULT
+PAYPAL_AUTH_ACTIONS=0
+REAL_PAYMENT_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PPCP_SOURCE_PATCHED=NO
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+UNRELATED_PROJECTS_TOUCHED=NO
+PASS_CANDIDATE_K3R9_PPCP_MINIMAL_ENV_PREP
+STOP_AT_OWNER_CHECKPOINT=YES
+STOP_AT_REVIEWER=YES
+```

@@ -1185,3 +1185,83 @@ PPCP_SOURCE_PATCHED=NO
 VPS_WRITES=ZERO
 STOP_AT_OWNER_CHECKPOINT=YES
 STOP_AT_REVIEWER=YES
+
+## K3R9 PPCP minimal environment isolation — Owner checkpoint (2026-09-21)
+
+- Gate: `K3R9_PPCP_MINIMAL_ENV_ISOLATION`
+- Active runtime: `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery`; URL `http://localhost:8093/`; containers `mini-craft-k3r4-recovery-wordpress` and `mini-craft-k3r4-recovery-mariadb`.
+- Scope remained local and reversible. No WordPress/WooCommerce/PPCP version change, source patch, theme replacement, PayPal authorization, Live mode, payment/capture, tunnel, VPS, database migration, or Owner Secret access occurred.
+
+### Rollback point
+
+- Local-only rollback directory: `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery\.artifacts\k3r9-preflight-20260921-211040`
+- MariaDB single-transaction dump: 3,042,772 bytes; SHA-256 `7BB4F752418338A13AE21299A7D45C5A7C41AB887C83CEF608ABC27F75042DCE`; `mariadb-check` returned success.
+- Full `wp-content` archive: 65,980,519 bytes; SHA-256 `9699EBC39D2467E72BD03718231631D3EA479CAB3D2589BD6DEB87E7158FD364`.
+- Local `wp-config.php` copy: 5,922 bytes; SHA-256 `496A407429FF680EE5321B812182ECA68BBDE7FB629545441917F60091AC231C`; contents were not read into Evidence.
+- Pre-isolation active-plugin inventory was saved locally as non-secret metadata. The rollback point is retained; no restore was needed before the Owner checkpoint.
+
+### Plugin isolation
+
+Pre-isolation active plugins:
+
+- Kadence Blocks `3.7.11`
+- Kadence Starter Templates `2.3.4`
+- WooCommerce `10.0.4`
+- WooCommerce PayPal Payments `4.1.3`
+
+Authorized reversible action:
+
+- Temporarily deactivated only Kadence Blocks and Kadence Starter Templates.
+- WooCommerce `10.0.4` and WooCommerce PayPal Payments `4.1.3` remain active.
+- Post-isolation active plugin inventory contains exactly those two required plugins.
+- Theme remained Kadence `1.5.2`; WordPress remained `6.8.2`; no plugin files or settings were deleted.
+
+### Cache/transient isolation
+
+- No `object-cache.php` or `advanced-cache.php` drop-in was present.
+- Cleared only WooCommerce/PPCP transient prefixes through WordPress APIs; 40 pre-existing matching transient entries were removed during the first cleanup.
+- The authenticated page probe regenerated 4 ordinary WooCommerce/PPCP cache entries as part of normal bootstrap. A final allowlisted cleanup removed 16 matching entries and reported `FINAL_REMAINING_MATCHING_COUNT=0`.
+- No unrelated options, business data, orders, credentials, or provider configuration were changed.
+
+### Direct settings and runtime verification
+
+- A one-time PHP probe ran inside the active WordPress container using an in-memory existing local `admin` session cookie. The cookie and page bodies were not output or persisted; the probe source and remote copy were removed after use.
+- Direct PayPal Settings page: HTTP `200`; authenticated admin marker `YES`; `#ppcp-settings-container` count `1`; `ppcp-settings-js-index.js` marker `YES`.
+- Generic Payments overview: HTTP `200`; authenticated admin marker `YES`; expected overview container count `0`; PPCP settings script marker `YES`.
+- Probe PHP lint: `No syntax errors detected`; local and remote one-time helpers were removed after validation.
+- Final public smoke: `/` returned HTTP `200` in 3/3 requests at approximately `0.36–0.45s`; `/wp-json/` returned HTTP `200` in 3/3 at approximately `0.22–0.37s`; unauthenticated `/wp-admin/` returned expected HTTP `302` in 3/3.
+- WordPress container remained running with restart count `0`; MariaDB remained `healthy` with restart count `0`. Resource sample: WordPress `0.01%` CPU, MariaDB `5.32%` CPU.
+
+### Owner boundary
+
+The minimal environment is prepared for exactly one Owner-run Sandbox Manual Connect retry. Executor did not click Connect/Manually Connect and did not enter, obtain, or request Client ID/Secret. Prior plugin activation state must be restored exactly after the Owner result, as required by the Reviewer decision; no automatic reconnect or next Gate is authorized.
+
+```text
+K3R9_GATE=K3R9_PPCP_MINIMAL_ENV_ISOLATION
+ROLLBACK_READY=PASS
+ACTIVE_PLUGINS_BEFORE=KADENCE_BLOCKS_3.7.11,KADENCE_STARTER_TEMPLATES_2.3.4,WOOCOMMERCE_10.0.4,PPCP_4.1.3
+ACTIVE_PLUGINS_AFTER=WOOCOMMERCE_10.0.4,PPCP_4.1.3
+PLUGIN_ISOLATION=PASS
+ALLOWLIST_TRANSIENT_CLEANUP=PASS
+DIRECT_PAYPAL_SETTINGS_HTTP=200
+DIRECT_PAYPAL_SETTINGS_AUTH=PASS
+PPCP_SETTINGS_CONTAINER_COUNT=1
+PPCP_SETTINGS_SCRIPT=LOADED
+MINIMAL_ENV_RUNTIME=PASS
+OWNER_MANUAL_CONNECT=NOT_RUN_OWNER_CHECKPOINT
+PAYPAL_AUTH_ACTIONS=0
+REAL_PAYMENT_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PPCP_SOURCE_PATCHED=NO
+THEME_CHANGED=NO
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+UNRELATED_PROJECTS_TOUCHED=NO
+RESTORE_PRIOR_PLUGIN_STATE=DEFERRED_UNTIL_OWNER_RESULT
+PASS_CANDIDATE_K3R9_PPCP_MINIMAL_ENV_PREP
+STOP_AT_OWNER_CHECKPOINT=YES
+STOP_AT_REVIEWER=YES
+```
