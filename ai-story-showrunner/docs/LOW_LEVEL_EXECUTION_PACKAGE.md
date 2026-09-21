@@ -32,7 +32,8 @@ This package consumes accepted outputs from:
 - G4 Director / Shot Compiler;
 - G5 Image Asset Package Compiler.
 
-G4 decides what each Visual Beat means and when it appears.
+G4 decides what each Visual Beat means, its order, visual intention and relative rhythm.
+Exact production timing is compiled only after the Audio Master exists, under `docs/SRT_AUDIO_TIMING_STANDARD.md`.
 G5 provides the exact image-generation row and reference package.
 
 Antigravity must not reinterpret either layer.
@@ -47,8 +48,8 @@ Canonical recurring-character identity:
 
 - 00_EXECUTION_ORDER.md
 - 01_SCRIPT.md
-- 02_SUBTITLES.srt
-- 03_AUDIO.*（AUDIO_MODE=A 时必有）
+- 02_SUBTITLES.srt（must be FINAL_AUDIO_ALIGNED）
+- 03_AUDIO.*（FINAL_AUDIO master）
 - 04_CHARACTER_BIBLE.md
 - 05_SCENE_BIBLE.md
 - 06_STYLE_BIBLE.md
@@ -63,17 +64,27 @@ Canonical recurring-character identity:
 
 其中 `07_SHOT_TIMELINE.csv` 和 `08_IMAGE_GENERATION.csv` 是 Antigravity 最核心的施工文件。
 
-## 4. Audio Mode — CURRENTLY OPEN
+## 4. Audio Mode — RESOLVED
 
-### AUDIO_MODE=A — Upstream Audio
+### AUDIO_MODE=A — Upstream Audio / CANONICAL
 
-上游先把锁定文案 / SRT 转成最终配音，再交给 Antigravity。Antigravity 不重写、不重新 TTS，以现成音频为唯一主时间轴。
+当前正式选择：
 
-### AUDIO_MODE=B — Executor TTS
+`AUDIO_MODE = A_UPSTREAM_COSYVOICE`
 
-Antigravity 使用 locked script / SRT 和指定 voice config 生成语音；生成后先锁最终音频长度，再严格按音频更新时间线。不得改字或自行增删停顿文案。
+上游使用锁定 Voice Profile 生成自然配音并测量真实时长，形成 FINAL_AUDIO。之后再生成 FINAL_AUDIO_ALIGNED.srt，并据此重编 Visual Beat / Shot Timeline 的精确时间。
 
-当前：`AUDIO_MODE = TBD`，等真实 Antigravity PoC 后再决定。
+Antigravity：
+- 不重新 TTS；
+- 不改字；
+- 不自行改变语速；
+- 不自行移动字幕；
+- 不把旧的 G4 reference timing 当作生产时间轴。
+
+Canonical timing contract:
+`docs/SRT_AUDIO_TIMING_STANDARD.md`
+
+The Audio Master is the production clock.
 
 ## 5. Character Consistency Contract
 
@@ -133,7 +144,7 @@ Antigravity 使用 locked script / SRT 和指定 voice config 生成语音；生
 | subtitle | 对应字幕 |
 | notes | 禁止项/注意项 |
 
-Antigravity 不自行改 start/end。若最终音频改变导致时间轴不匹配：`RETURN_TIMELINE_MISMATCH`，由上游重新编译 Shot Timeline。
+Antigravity 不自行改 start/end。Shot Timeline 的 exact start/end 必须来自已锁定 Audio Master；旧 Visual Beat 估算时间不得直接进入生产。若音频与时间轴不匹配：`RETURN_TIMELINE_MISMATCH`，由上游按 `docs/SRT_AUDIO_TIMING_STANDARD.md` 重新编译。
 
 ## 8. Image Generation Sheet
 
