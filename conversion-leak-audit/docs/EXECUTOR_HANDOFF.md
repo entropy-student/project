@@ -25,6 +25,22 @@ You may begin G4.
 9. `../design/VISUAL_ACCEPTANCE.md`
 10. `HANDOFF_PROTOCOL.md`
 
+## Mandatory source-baseline precheck
+
+Before changing any product source:
+
+1. Locate the existing reviewed `scanner/` and `wordpress-g1-baseline/` trees.
+2. Record their workspace-relative roots.
+3. Record source provenance and revision: Git repository/ref/commit when tracked; otherwise the existing snapshot/provenance identifier available locally.
+4. Rerun and record the frozen pre-change regression commands/results.
+5. Confirm the baseline corresponds to the previously reviewed G1/G2 assets.
+
+If either source tree is missing, recreated, ambiguous, or cannot be tied to the validated baseline:
+
+`RETURN_G4_SOURCE_BASELINE_UNRESOLVED`
+
+Stop at Reviewer. Do not rebuild G1/G2 as a substitute.
+
 ## Execute
 
 Implement only:
