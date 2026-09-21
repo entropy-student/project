@@ -1,6 +1,6 @@
-# AI Story Showrunner（AI故事总导演系统）
+# AI Story Showrunner（当前验证工作区）
 
-把 AI 常见概念、AI 时事与普通人的现实处境，转译成**故事驱动、可持续生产、可编排执行**的视频内容系统。
+当前仓库用于验证一个可复用的 **Story Showrunner**：把选题/知识转译成故事驱动、可持续生产、可编排执行的视频。AI 是第一个 Domain Adapter，不是长期唯一边界。
 
 它不是新的“万能视频 Skill”，而是一个 **Showrunner / Orchestrator Control Plane**：负责决定谁在什么时候工作、输入输出必须长什么样、什么条件才能进入下一阶段，以及整期内容最终是否合格。
 
@@ -8,7 +8,7 @@
 
 ```text
 P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5 = PASS
-G6 = READY — Low-Level Execution Package / Antigravity PoC
+G6 = IN_PROGRESS — Voice Timing Profile + Antigravity Production Package
 G7 = BLOCKED_BY_G6
 ```
 
@@ -21,7 +21,7 @@ G7 = BLOCKED_BY_G6
 - Daily Topic Planner v0.2 已启用；
 - Production throughput 仍为 UNPROVEN。
 
-Owner 当前执行线：**G5 已正式 PASS；下一步进入 G6，先组装 Low-Level Execution Package，并通过真实 PoC 决定 Audio Mode / 锁定最终音频时间轴。**
+Owner 当前执行线：**G5 已正式 PASS；G6 正在建立可复用 Voice Timing Profile，并据此编译 Production SRT / TTS Manifest，再一次性生成完整 Antigravity Production Package。**
 
 ## 一句话定位
 
@@ -31,10 +31,10 @@ Owner 当前执行线：**G5 已正式 PASS；下一步进入 G6，先组装 Low
 → 背后的 AI 机制是什么
 → 把机制变成故事里的世界规则
 → 结构化故事
-→ 口播 / SRT
-→ 逐镜头低层剪辑指令包
-→ Antigravity 批量生图
-→ Antigravity 按时间线拼接
+→ 口播 / Production SRT（Voice Timing Profile）
+→ 逐镜头低层施工包
+→ Antigravity 执行 CosyVoice 配音 + 批量生图
+→ Antigravity 按锁定时间线拼接
 → 视频初稿
 → QA / 发布与反馈
 ```
@@ -168,7 +168,7 @@ G3  Story → Script / SRT MVP                   ✅ PASS
 G3R Bilibili Editorial / Narrative Rebaseline ✅ PASS
 G4  Script/SRT → Director / Shot Compiler MVP  ✅ PASS
 G5  Shotbook → Image Asset Package MVP         ✅ PASS
-G6  Low-Level Execution / Antigravity PoC      ▶ READY
+G6  Voice Timing / Production Package PoC      ▶ IN_PROGRESS
 G7  Three-topic End-to-End Validation          ⛔ BLOCKED_BY_G6
 G8  Semi-automated Orchestration               ⏳
 G9  Publish / Analytics Learning Loop           ⏳
@@ -235,11 +235,20 @@ G5 is now PASS. The high-risk Pilot and reference-path validation both passed.
 Current main-line gate: **G6 Low-Level Execution Package / Antigravity PoC**.
 
 First G6 task:
-- materialize the persisted reference package;
-- resolve `AUDIO_MODE = A/B` with a real PoC;
-- lock final audio;
-- compile exact Shot Timeline + Image Generation Sheet + Edit Instructions;
-- hand the deterministic package to Antigravity.
+- run one-time 15–24 utterance Voice Timing Profile calibration;
+- validate held-out timing prediction;
+- compile Production SRT + TTS Manifest before normal TTS execution;
+- compile the full Antigravity Production Package;
+- let Antigravity execute locked CosyVoice TTS + images + edit + export.
+
+Long-term target:
+- extract the stable generic control plane into the `story-showrunner` Skill library after end-to-end validation;
+- default topic source is today's Calendar unless the user explicitly overrides it;
+- normal production does not require Owner approval of script/SRT/key frames; key-frame sampling is calibration-only.
+
+See also:
+- `docs/STORY_SHOWRUNNER_SKILL_TARGET.md`
+- `docs/VOICE_TIMING_PROFILE_SPEC.md`
 
 See:
 - `docs/G5_GATE_REVIEW.md`
