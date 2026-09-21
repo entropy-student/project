@@ -763,3 +763,11 @@ Current:
 - `SRCH_VB044 = RETURN_EXECUTION`.
 - Generated output over-explained the callback as a summary poster.
 - Retry locked to one IP + same opening spatial relationship + deliberate source verification only.
+
+
+## 2026-09-21 — VB044 attempt 2 returned
+
+- Callback composition and character improved.
+- `SRCH_VB044 = RETURN_EXECUTION_ATTEMPT2`.
+- Remaining issues are execution-only: wrong branded webpage + checklist lesson-card regression.
+- Next edit preserves composition/action and changes only screen + notebook semantics.
