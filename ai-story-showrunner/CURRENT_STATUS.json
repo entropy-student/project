@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_PILOT_IN_PROGRESS_VB044_RETRY_READY_MINIMAL_CALLBACK",
+  "project_state": "G5_PILOT_IN_PROGRESS_VB044_RETRY2_READY_SOURCE_ONLY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "VB044 attempt 1 RETURN_EXECUTION: output became a summary poster with duplicated IP, bubbles, arrow, English slogan and checklist. Retry must be a single-character callback frame with same opening spatial relationship and only one changed behavior: deliberate source verification.",
+  "owner_review_scope": "VB044 attempt 2 improved character/callback composition, but screen object was wrong (OpenAI homepage), brand NONE failed, and checklist/lesson-card semantics reappeared. Retry should preserve character/camera/action and replace only screen + remove checklist/moral text.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -352,7 +352,7 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Retry VB044 as a minimal single-IP callback match: same desk/monitor relation as opening, one adult IP, deliberate click/check of source, no second self, bubbles, arrows, slogan, checklist or moral text. If PASS/PASS_WITH_MINOR, close and review the 8-beat Pilot.",
+      "next": "Retry VB044 by editing the accepted attempt-2 composition: preserve single adult IP, camera, desk and verification gesture; replace screen with generic brandless policy/source page; remove checklist/moral text. If PASS/PASS_WITH_MINOR, close and review the 8-beat Pilot.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
@@ -363,7 +363,7 @@
         "SRCH_VB016": "PASS_WITH_MINOR",
         "SRCH_VB022": "PASS_WITH_MINOR_SEMANTIC_COMPARE",
         "SRCH_VB025": "PASS_WITH_MINOR_CHARACTER_RISK",
-        "SRCH_VB044": "RETURN_EXECUTION_RETRY_READY_MINIMAL_CALLBACK"
+        "SRCH_VB044": "RETURN_EXECUTION_RETRY2_READY_SOURCE_ONLY"
       }
     },
     "phase_b_5": {
