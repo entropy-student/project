@@ -106,6 +106,7 @@ REAL_PAYMENT_ACTIONS=0
 VPS_WRITES=ZERO
 SECRET_EXPOSURE=NO
 STOP_AT_REVIEWER=YES
+
 ```
 
 Local `.env` credentials were kept only in the independent PoC directory and were not written to this repository.
@@ -1138,4 +1139,49 @@ WOOCOMMERCE_VERSION_CHANGED=NO
 WORDPRESS_VERSION_CHANGED=NO
 PPCP_SOURCE_PATCHED=NO
 VPS_WRITES=ZERO
+STOP_AT_REVIEWER=YES
+
+## K3R8E Payee-probe parity helper readiness (2026-09-21)
+
+- Scope: active local Docker/MariaDB runtime only: `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery`, WordPress at `http://localhost:8093/`. No PPCP, WooCommerce, WordPress, version, source, Live, payment, database, VPS, tunnel, or credential configuration was changed.
+- This is the Reviewer-approved provider-parity test for the confirmed boundary `K3R8C_PPCP_MANUAL_CONNECT_PAYEE_PROBE_FAILURE_CONFIRMED`. It is not a PPCP defect verdict.
+- A local-only wrapper and PHP helper were prepared under the active runtime `.artifacts` directory. They are not committed to GitHub. The PHP helper performs, only after Owner input, Sandbox OAuth, the specified USD 1.00 `CAPTURE` order-create request, and an order GET; it never captures. It emits only the seven K3R8E redacted fields.
+- Owner input path: the wrapper prompts Client ID and hidden Secret locally, then sends transient bytes only through `docker exec -i` STDIN to the active WordPress container. No credential is placed in command arguments, environment variables, files, logs, GitHub, or shell history. The helper never emits response bodies, token, order ID, payee values, headers, or debug IDs.
+- Local artifact readiness: `.artifacts/k3r8e-payee-probe.ps1` — 5,237 bytes — SHA-256 `4CD2143F2C4C5B08E4AB950D32ADA8849131229BA71F3E39DC50A6BBAABD8E8E`; `.artifacts/k3r8e-payee-probe.php` — 6,911 bytes — SHA-256 `7E9615E20242A9816C10B3215020995C37C9270713C04C31E8E608026CCC9676`. These are local metadata only; no credential values are present.
+- Validation: PowerShell parser completed with zero errors; PHP lint completed with `No syntax errors detected`; two no-secret end-to-end runs used the same source-existence → `docker cp` → remote helper execution → cleanup path. Both returned `NO_SECRET_DRY_RUN=PASS` and `EXPECTED_PRE_AUTH_STAGE=CONTAINER_HELPER_EXECUTED_INPUT_VALIDATION`; neither made a PayPal request. The remote `/tmp/k3r8e-payee-probe.php` was absent after each run, while both local source files remained present.
+- No real Client ID or Secret was read by Executor. No OAuth, order creation, order GET, or capture was executed by Executor. Existing Owner OAuth PASS evidence was not reused as a substitute for this newly authorized parity sequence.
+
+DIAGNOSTIC_PACKET
+GATE=K3R8E_PAYEE_PROBE_PARITY_TEST
+ENVIRONMENT=active Docker/MariaDB WordPress runtime at localhost:8093; container mini-craft-k3r4-recovery-wordpress
+TRIGGER=Reviewer accepted OAuth PASS plus PPCP request_payee payee-probe failure, but did not accept a PPCP root-cause verdict
+REPRODUCTION=Owner must run the readiness-verified local wrapper; it stages the PHP helper into the active container, sends interactive credentials only via STDIN, performs OAuth → order create → order GET, emits seven redacted fields, and removes the remote helper in finally
+OBSERVED=Source artifacts present; PowerShell parse 0; PHP lint 0; two no-secret staging/execution/cleanup dry-runs PASS; no network request or credential access by Executor
+CONTROL_OR_BASELINE=Active WordPress container running; remote helper absent after cleanup; local source helpers retained; PPCP/WooCommerce/WordPress state unchanged
+HYPOTHESES_RULED_OUT=Helper artifact absence, PHP syntax failure, PowerShell syntax failure, and staging/cleanup failure
+HYPOTHESES_REMAINING=Provider Sandbox OAuth/order-create/order-GET/payee response capability versus PPCP 4.1.3 request_payee client-path behavior
+ARTIFACTS=local-only active runtime .artifacts/k3r8e-payee-probe.ps1 and .artifacts/k3r8e-payee-probe.php; no secret-bearing GitHub artifact; remote /tmp helper is ephemeral and cleaned
+SECRETS_REDACTED=YES
+NEXT_DISCRIMINATING_TEST=Owner runs the command below and returns only OAUTH_HTTP, ORDER_CREATE_HTTP, ORDER_GET_HTTP, PAYEE_OBJECT_PRESENT, PAYEE_MERCHANT_ID_PRESENT, PAYEE_EMAIL_PRESENT, and ERROR_CLASS
+STOP_REASON=Owner-only Sandbox Client ID and hidden Secret input is required for the real parity request
+
+OWNER_CHECKPOINT_READINESS
+COMMAND=powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery\.artifacts\k3r8e-payee-probe.ps1"
+LOCAL_ARTIFACTS_PRESENT=PASS
+CONTAINER_STAGING_PATH=PASS
+POST_CLEANUP_EXISTENCE_CHECK=PASS
+NO_SECRET_DRY_RUN=PASS
+EXPECTED_PRE_AUTH_STAGE=CONTAINER_HELPER_EXECUTED_INPUT_VALIDATION
+CLEANUP_AFTER_OWNER_RUN=Wrapper removes only the ephemeral /tmp/k3r8e-payee-probe.php; local source helpers remain in active runtime .artifacts
+
+K3R8E_RESULT=RETURN_OWNER_K3R8E_PAYEE_PROBE_REQUIRED
+REAL_PAYMENT_ACTIONS=0
+PAYPAL_CAPTURE_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PPCP_SOURCE_PATCHED=NO
+VPS_WRITES=ZERO
+STOP_AT_OWNER_CHECKPOINT=YES
 STOP_AT_REVIEWER=YES
