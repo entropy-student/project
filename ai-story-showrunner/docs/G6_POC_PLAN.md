@@ -39,3 +39,10 @@ Turn accepted G4/G5 outputs into a deterministic low-level package that Antigrav
 ## Deferred
 
 Hotspot portfolio ratio, hotspot integration policy and expanded IP narrative-engine design remain outside this G6 main-line task.
+
+
+## SRT timing clarification
+
+`experiments/g4r-v03/blind-search-answer/08_REFERENCE_TIMING.srt` is validated as a **reference timing** file only.
+
+It preserves the accepted 44 Visual Beat timing estimate, but it is not yet waveform-aligned final subtitle timing. After final voice/TTS is locked, G6 must produce `FINAL_AUDIO_ALIGNED.srt` and compile the production Shot Timeline from that real audio.
