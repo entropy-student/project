@@ -31,7 +31,8 @@
       "timing_kind": "NORMAL",
       "start": 0,
       "duration": 5.25,
-      "end": 5.25
+      "end": 5.25,
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB002",
@@ -55,7 +56,8 @@
       "timing_kind": "PUNCH",
       "start": 5.25,
       "duration": 1.49,
-      "end": 6.74
+      "end": 6.74,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB003",
@@ -79,7 +81,8 @@
       "timing_kind": "NORMAL",
       "start": 6.74,
       "duration": 5.23,
-      "end": 11.97
+      "end": 11.97,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB004",
@@ -95,15 +98,16 @@
       "local_visual_intention": "NOTICE_OBJECT",
       "shot_function": "ACTION",
       "shot_size": "MEDIUM_INSERT",
-      "pov_mode": "OBSERVER",
-      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "SCREEN_NORMAL_IP_POV",
       "image_relation_grammar": "CONTINUITY",
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
       "start": 11.97,
       "duration": 4.05,
-      "end": 16.02
+      "end": 16.02,
+      "pov_reason": "Exact question facet must be experienced as the protagonist sees/asks it; character reaction is not the beat."
     },
     {
       "visual_beat_id": "SRCH_VB005",
@@ -127,7 +131,8 @@
       "timing_kind": "NORMAL",
       "start": 16.02,
       "duration": 2.69,
-      "end": 18.71
+      "end": 18.71,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB006",
@@ -151,7 +156,8 @@
       "timing_kind": "PUNCH",
       "start": 18.71,
       "duration": 2.68,
-      "end": 21.39
+      "end": 21.39,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB007",
@@ -175,7 +181,8 @@
       "timing_kind": "NORMAL",
       "start": 21.39,
       "duration": 3.2,
-      "end": 24.59
+      "end": 24.59,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB008",
@@ -199,7 +206,8 @@
       "timing_kind": "NORMAL",
       "start": 24.59,
       "duration": 5.9,
-      "end": 30.49
+      "end": 30.49,
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB009",
@@ -215,15 +223,16 @@
       "local_visual_intention": "SEE_CONSEQUENCE",
       "shot_function": "ACTION",
       "shot_size": "MEDIUM_INSERT",
-      "pov_mode": "OBSERVER",
-      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "pov_mode": "IP_POV_HANDS",
+      "camera_angle": "DOWNWARD_DESK_IP_POV",
       "image_relation_grammar": "CONTINUITY",
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
       "start": 30.49,
       "duration": 3.86,
-      "end": 34.35
+      "end": 34.35,
+      "pov_reason": "The story consequence is created by the protagonist personally writing the assumption into the cost sheet."
     },
     {
       "visual_beat_id": "SRCH_VB010",
@@ -247,7 +256,8 @@
       "timing_kind": "NORMAL",
       "start": 34.35,
       "duration": 4.38,
-      "end": 38.73
+      "end": 38.73,
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB011",
@@ -263,15 +273,16 @@
       "local_visual_intention": "FOLLOW_ACTION",
       "shot_function": "ACTION",
       "shot_size": "MEDIUM_CLOSE",
-      "pov_mode": "OBSERVER",
-      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "pov_mode": "OVER_SHOULDER_IP",
+      "camera_angle": "OVER_SHOULDER_TO_SCREEN",
       "image_relation_grammar": "CONTINUITY",
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
       "start": 38.73,
       "duration": 1.85,
-      "end": 40.58
+      "end": 40.58,
+      "pov_reason": "The click belongs to the protagonist but must also lead cleanly into the readable page discovery that follows."
     },
     {
       "visual_beat_id": "SRCH_VB012",
@@ -295,7 +306,8 @@
       "timing_kind": "NORMAL",
       "start": 40.58,
       "duration": 2.36,
-      "end": 42.94
+      "end": 42.94,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB013",
@@ -319,7 +331,8 @@
       "timing_kind": "NORMAL",
       "start": 42.94,
       "duration": 3.06,
-      "end": 46
+      "end": 46,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB014",
@@ -343,7 +356,8 @@
       "timing_kind": "NORMAL",
       "start": 46,
       "duration": 3.71,
-      "end": 49.71
+      "end": 49.71,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB015",
@@ -367,7 +381,8 @@
       "timing_kind": "PUNCH_SETUP",
       "start": 49.71,
       "duration": 1.63,
-      "end": 51.34
+      "end": 51.34,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB016",
@@ -391,7 +406,8 @@
       "timing_kind": "REVERSAL",
       "start": 51.34,
       "duration": 2.14,
-      "end": 53.48
+      "end": 53.48,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB017",
@@ -415,7 +431,8 @@
       "timing_kind": "REACTION",
       "start": 53.48,
       "duration": 1.4,
-      "end": 54.88
+      "end": 54.88,
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB018",
@@ -439,7 +456,8 @@
       "timing_kind": "PUNCH",
       "start": 54.88,
       "duration": 2.36,
-      "end": 57.24
+      "end": 57.24,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB019",
@@ -463,7 +481,8 @@
       "timing_kind": "REVERSAL",
       "start": 57.24,
       "duration": 1.97,
-      "end": 59.21
+      "end": 59.21,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB020",
@@ -487,7 +506,8 @@
       "timing_kind": "NORMAL",
       "start": 59.21,
       "duration": 5.4,
-      "end": 64.61
+      "end": 64.61,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB021",
@@ -511,7 +531,8 @@
       "timing_kind": "PUNCH",
       "start": 64.61,
       "duration": 3.01,
-      "end": 67.62
+      "end": 67.62,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB022",
@@ -535,7 +556,8 @@
       "timing_kind": "NORMAL",
       "start": 67.62,
       "duration": 5.23,
-      "end": 72.85
+      "end": 72.85,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB023",
@@ -559,7 +581,8 @@
       "timing_kind": "NORMAL",
       "start": 72.85,
       "duration": 2.52,
-      "end": 75.37
+      "end": 75.37,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB024",
@@ -583,7 +606,8 @@
       "timing_kind": "NORMAL",
       "start": 75.37,
       "duration": 4.55,
-      "end": 79.92
+      "end": 79.92,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB025",
@@ -607,7 +631,8 @@
       "timing_kind": "PUNCH",
       "start": 79.92,
       "duration": 3.99,
-      "end": 83.91
+      "end": 83.91,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB026",
@@ -631,7 +656,8 @@
       "timing_kind": "NORMAL",
       "start": 83.91,
       "duration": 3.71,
-      "end": 87.62
+      "end": 87.62,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB027",
@@ -647,15 +673,16 @@
       "local_visual_intention": "NOTICE_OBJECT",
       "shot_function": "ACTION",
       "shot_size": "MEDIUM_INSERT",
-      "pov_mode": "OBSERVER",
-      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "SCREEN_NORMAL_IP_POV",
       "image_relation_grammar": "CONTINUITY",
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
       "start": 87.62,
       "duration": 3.54,
-      "end": 91.16
+      "end": 91.16,
+      "pov_reason": "The new evidence-challenge query is the exact action the viewer should experience with the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB028",
@@ -679,7 +706,8 @@
       "timing_kind": "NORMAL",
       "start": 91.16,
       "duration": 1.34,
-      "end": 92.5
+      "end": 92.5,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB029",
@@ -703,7 +731,8 @@
       "timing_kind": "PUNCH",
       "start": 92.5,
       "duration": 1.49,
-      "end": 93.99
+      "end": 93.99,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB030",
@@ -727,7 +756,8 @@
       "timing_kind": "NORMAL",
       "start": 93.99,
       "duration": 3.71,
-      "end": 97.7
+      "end": 97.7,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB031",
@@ -743,15 +773,16 @@
       "local_visual_intention": "NOTICE_OBJECT",
       "shot_function": "CLARIFY",
       "shot_size": "MEDIUM_INSERT",
-      "pov_mode": "OBSERVER",
-      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "pov_mode": "OBJECTIVE_INSERT",
+      "camera_angle": "OBJECT_NORMAL_INSERT",
       "image_relation_grammar": "CONTINUITY",
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
       "start": 97.7,
       "duration": 3.18,
-      "end": 100.88
+      "end": 100.88,
+      "pov_reason": "The supporting sentence itself is the causal object; character subjectivity is unnecessary here."
     },
     {
       "visual_beat_id": "SRCH_VB032",
@@ -775,7 +806,8 @@
       "timing_kind": "NORMAL",
       "start": 100.88,
       "duration": 5.9,
-      "end": 106.78
+      "end": 106.78,
+      "pov_reason": "Semantic explanation needs an external story-world frame with selective subjective evidence inserts."
     },
     {
       "visual_beat_id": "SRCH_VB033",
@@ -799,7 +831,8 @@
       "timing_kind": "NORMAL",
       "start": 106.78,
       "duration": 1.2,
-      "end": 107.98
+      "end": 107.98,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB034",
@@ -823,7 +856,8 @@
       "timing_kind": "NORMAL",
       "start": 107.98,
       "duration": 2.86,
-      "end": 110.84
+      "end": 110.84,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB035",
@@ -847,7 +881,8 @@
       "timing_kind": "NORMAL",
       "start": 110.84,
       "duration": 5.73,
-      "end": 116.57
+      "end": 116.57,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB036",
@@ -863,15 +898,16 @@
       "local_visual_intention": "NOTICE_OBJECT",
       "shot_function": "PAYOFF",
       "shot_size": "MEDIUM_INSERT",
-      "pov_mode": "OBSERVER",
-      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "pov_mode": "OBJECTIVE_INSERT",
+      "camera_angle": "OBJECT_NORMAL_INSERT",
       "image_relation_grammar": "CONTRAST",
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "NORMAL",
       "start": 116.57,
       "duration": 2.02,
-      "end": 118.59
+      "end": 118.59,
+      "pov_reason": "The quoted sentence must be isolated as verified evidence; showing the character would dilute the proof."
     },
     {
       "visual_beat_id": "SRCH_VB037",
@@ -886,16 +922,17 @@
       "inherited_visual_intention": "BUILD_PATTERN",
       "local_visual_intention": "LAND_PAYOFF",
       "shot_function": "PAYOFF",
-      "shot_size": "MEDIUM_CLOSE",
-      "pov_mode": "OBSERVER",
-      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "shot_size": "INSERT",
+      "pov_mode": "OBJECTIVE_INSERT",
+      "camera_angle": "OBJECT_NORMAL_INSERT",
       "image_relation_grammar": "CONTRAST",
       "visual_intensity": "MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
       "start": 118.59,
       "duration": 2.34,
-      "end": 120.93
+      "end": 120.93,
+      "pov_reason": "The final wrong conclusion itself is the payoff object; no external character view is needed."
     },
     {
       "visual_beat_id": "SRCH_VB038",
@@ -919,7 +956,8 @@
       "timing_kind": "NORMAL",
       "start": 120.93,
       "duration": 3.02,
-      "end": 123.95
+      "end": 123.95,
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB039",
@@ -943,7 +981,8 @@
       "timing_kind": "NORMAL",
       "start": 123.95,
       "duration": 2.52,
-      "end": 126.47
+      "end": 126.47,
+      "pov_reason": "External spatial/behavior relation carries the meaning better than literal first-person view."
     },
     {
       "visual_beat_id": "SRCH_VB040",
@@ -967,7 +1006,8 @@
       "timing_kind": "NORMAL",
       "start": 126.47,
       "duration": 4.38,
-      "end": 130.85
+      "end": 130.85,
+      "pov_reason": "Current POV best serves the locked visual intention and information hierarchy."
     },
     {
       "visual_beat_id": "SRCH_VB041",
@@ -991,7 +1031,8 @@
       "timing_kind": "PUNCH_SETUP",
       "start": 130.85,
       "duration": 1.35,
-      "end": 132.2
+      "end": 132.2,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB042",
@@ -1007,15 +1048,16 @@
       "local_visual_intention": "FOLLOW_ACTION",
       "shot_function": "ACTION",
       "shot_size": "MEDIUM_INSERT",
-      "pov_mode": "OBSERVER",
-      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "SCREEN_NORMAL_IP_POV",
       "image_relation_grammar": "CONTRAST",
       "visual_intensity": "LOW_MEDIUM",
       "timing_source": "JINGSUI_PRIOR_ESTIMATE",
       "timing_kind": "PUNCH",
       "start": 132.2,
       "duration": 3.35,
-      "end": 135.55
+      "end": 135.55,
+      "pov_reason": "The verification question is the protagonist's new behavior; the viewer should inhabit the exact question being asked."
     },
     {
       "visual_beat_id": "SRCH_VB043",
@@ -1039,7 +1081,8 @@
       "timing_kind": "NORMAL",
       "start": 135.55,
       "duration": 4.07,
-      "end": 139.62
+      "end": 139.62,
+      "pov_reason": "Current POV best serves the locked visual intention and information hierarchy."
     },
     {
       "visual_beat_id": "SRCH_VB044",
@@ -1063,8 +1106,24 @@
       "timing_kind": "FINAL",
       "start": 139.62,
       "duration": 2.59,
-      "end": 142.21
+      "end": 142.21,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     }
   ],
-  "density_review": "Split low-stakes vs high-stakes verification behavior into distinct meaningful image states; no rule changes."
+  "density_review": "Split low-stakes vs high-stakes verification behavior into distinct meaningful image states; no rule changes.",
+  "pov_review": {
+    "status": "PASS_BOUNDED_PATCH",
+    "canonical_rules": "docs/G4_VIEWPOINT_GRAMMAR.md",
+    "changed_beats": [
+      "SRCH_VB004",
+      "SRCH_VB009",
+      "SRCH_VB011",
+      "SRCH_VB027",
+      "SRCH_VB031",
+      "SRCH_VB036",
+      "SRCH_VB037",
+      "SRCH_VB042"
+    ],
+    "unchanged_beats": 36
+  }
 }
