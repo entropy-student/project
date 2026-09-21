@@ -1179,5 +1179,7 @@
         ]
       }
     }
-  ]
+  ],
+  "validation": "PASS",
+  "source_blueprint_status": "PASS_CANDIDATE"
 }
