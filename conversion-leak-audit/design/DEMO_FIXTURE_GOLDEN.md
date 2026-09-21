@@ -1,6 +1,6 @@
 # Conversion Leak Audit — Golden Demo Fixture
 
-Status: `FROZEN_FOR_G3_5_VISUALS`
+Status: `FROZEN_G3_5`
 
 Purpose: provide one truthful, reproducible demo dataset for all final Golden Screens. Do not hand-invent issue counts or findings in design mockups.
 
