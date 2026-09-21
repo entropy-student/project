@@ -1,4 +1,4 @@
-# Pipeline & Gates v0.3
+# Pipeline & Gates v0.4
 
 ## Stage 0 — Signal Intake
 
@@ -209,6 +209,7 @@ Fail:
 Canonical contract:
 - `docs/G5_IMAGE_ASSET_PACKAGE_CONTRACT.md`
 - `docs/PRODUCTION_VISUAL_STYLE.md`
+- `docs/CHARACTER_IDENTITY_LOCK.md`
 
 Internal phases:
 
@@ -276,6 +277,9 @@ Locks:
 ### G5C2 — Beat Asset Binding
 Bind only assets that are actually visible or causally required by the Blueprint.
 
+Any recurring-character Beat must also bind the canonical identity source and obey `docs/CHARACTER_IDENTITY_LOCK.md`.
+Previous generated frames are continuity refs only and may not replace canonical identity.
+
 Do not bind an asset merely because narration mentions it.
 
 ### G5C3 — Execution Mode
@@ -283,6 +287,10 @@ Choose exactly one:
 - `GENERATE`
 - `DERIVE_EDIT`
 - `COMPOSITE_CROP`
+
+Current Owner policy:
+UI / table / evidence visual assets remain image-generation/image-edit assets.
+`COMPOSITE_CROP` may crop/compose already approved images, but is not a code-drawn UI/table production path.
 
 Prefer deterministic derive/composite when it preserves continuity better than regeneration.
 
