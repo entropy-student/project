@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_PILOT_IN_PROGRESS_VB022_RETRY_READY_NO_CHARACTER",
+  "project_state": "G5_PILOT_IN_PROGRESS_VB022_PASS_VB025_REVIEW",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "VB022 attempt 1 RETURN: semantic mismatch and executor drift. It compared user question to the correct policy conclusion instead of 服务费 vs 订单款项, and illegally introduced a drifting character. Retry must contain zero character pixels and only two source crops.",
+  "owner_review_scope": "VB022 semantic compare accepted PASS_WITH_MINOR. Core mismatch 服务费 vs 订单款项 is readable. Minor brand/logo and crop density deferred; deterministic COMPOSITE_CROP still pending persisted source binaries. Continue VB025.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -352,7 +352,7 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Retry VB022 as source-crop dual only: left = question object 服务费退不退; right = evidence object 订单款项退回原支付方式. Zero character, zero bubble/title/VS/arrow. If PASS, continue VB025.",
+      "next": "Review VB025 analogy payoff execution. If structurally valid, generate Pilot and QA for story-scene readability without diagram/PPT regression.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
@@ -361,8 +361,8 @@
         "SRCH_VB012": "PASS_WITH_MINOR",
         "SRCH_VB015": "PASS_WITH_MINOR_SETUP_MASTER_IMAGE1",
         "SRCH_VB016": "PASS_WITH_MINOR",
-        "SRCH_VB022": "RETURN_SEMANTIC_EXECUTION_DRIFT_RETRY_READY",
-        "SRCH_VB025": "PENDING",
+        "SRCH_VB022": "PASS_WITH_MINOR_SEMANTIC_COMPARE",
+        "SRCH_VB025": "IN_REVIEW",
         "SRCH_VB044": "PENDING"
       }
     },
