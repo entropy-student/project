@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_AUTH
+CURRENT_GATE=K3R1_PPCP_CONFLICT_ISOLATION
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -226,3 +226,10 @@ Executor correctly returned at `RETURN_OWNER_PAYPAL_SANDBOX_AUTH_REQUIRED`.
 Current checkpoint: `OWNER_K3_PAYPAL_SANDBOX_AUTH`.
 
 Owner action: complete PayPal Sandbox login/account authorization in the official WooCommerce PayPal Payments flow. Do not share password, Secret, token, OAuth code, cookie, or webhook secret. After Owner confirmation, resume K3 from the existing checkpoint; do not restart K3 from scratch.
+
+
+## K3R1 Authorization
+
+Formal decision: `docs/REVIEWER_DECISION_K3R1_PPCP_CONFLICT_ISOLATION.md`.
+
+Temporarily deactivate only WooCommerce PayPal Payments, retest WooCommerce Home/Payments/admin REST/Store API/worker behavior, and stop at Reviewer. Do not uninstall, version-change, restore backup, retry PayPal authorization, expose Secrets, create a public route, or enable Live.
