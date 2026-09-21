@@ -11,19 +11,23 @@
   "product_target": {
     "skill_repo": "entropy-student/spike.skill",
     "skill_path": "story-showrunner",
-    "lifecycle": "CANDIDATE_EXTRACTION_APPROVED_CANONICAL_AFTER_E2E"
+    "lifecycle": "CANDIDATE_EXTRACTED_CANONICAL_AFTER_E2E"
   },
   "active_workstream": {
-    "id": "SKILL_EXTRACTION_R1",
-    "name": "P0 Canonical Reconciliation",
+    "id": "SKILL_EXTRACTION_R2",
+    "name": "Candidate Skill Migration",
     "status": "PASS",
-    "migration_started": false,
-    "next": "SKILL_EXTRACTION_R2_CANDIDATE_MIGRATION"
+    "migration_started": true,
+    "migration_completed": true,
+    "candidate_repo": "entropy-student/spike.skill",
+    "candidate_path": "story-showrunner",
+    "candidate_status": "CANDIDATE_E2E_NOT_YET_PROVEN",
+    "next": "RESUME_G6_PRODUCTION_SRT_AND_TTS_MANIFEST"
   },
   "production": {
     "current_gate": "G6",
     "status": "IN_PROGRESS",
-    "current_task": "PRODUCTION_SRT_AND_TTS_MANIFEST_NEXT",
+    "current_task": "COMPILE_PRODUCTION_SRT_AND_TTS_MANIFEST_USING_STORY_SHOWRUNNER_CANDIDATE",
     "next_after_package": "ANTIGRAVITY_E2E_EXECUTION",
     "next_gate": {
       "id": "G7",
@@ -108,11 +112,15 @@
     "conflict_register": "docs/skill-migration-review/CONFLICT_REGISTER_V1.md",
     "review_summary": "docs/skill-migration-review/REVIEW_SUMMARY_V1.md",
     "p0_conflicts_resolved": 9,
-    "p1_split_issues_remaining": 8,
+    "p1_split_issues_remaining": 0,
     "p1_pre_resolved": [
       "C18_TIMING_KIND_TO_PACE_CLASS_MAPPING"
     ],
-    "p2_cleanup_resolved": 4
+    "p2_cleanup_resolved": 4,
+    "r2_review": "docs/skill-migration-review/R2_CANDIDATE_MIGRATION_REVIEW.md",
+    "p1_status": "RESOLVED_IN_R2",
+    "candidate_created": true,
+    "candidate_status": "CANDIDATE_E2E_NOT_YET_PROVEN"
   },
   "locked_decisions": [
     "Core is domain-neutral; AI is the first domain adapter.",
@@ -122,7 +130,7 @@
     "G4 owns visual rhythm inside Production SRT, not speech duration.",
     "Manual key-frame Pilot is calibration-only, not a normal episode gate.",
     "Normal Owner interaction is optional invocation override plus final-video review.",
-    "Candidate Skill extraction happens now; canonical Skill promotion waits for E2E PASS."
+    "Story Showrunner candidate has been extracted to entropy-student/spike.skill/story-showrunner; canonical promotion still waits for E2E PASS."
   ],
   "unknowns": [
     "Antigravity programmatic integration availability; current executor mode remains manually triggered.",
