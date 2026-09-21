@@ -1,581 +1,132 @@
 {
+  "schema_version": "2.0",
   "project": "ai-story-showrunner",
-  "updated_at": "2026-09-21",
-  "governance": {
-    "canonical_repo": "entropy-student/spike.skill",
-    "canonical_path": "vps-project-governance",
-    "core_version": "0.1.6",
-    "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
+  "updated_at": "2026-09-22",
+  "role": "VALIDATION_RUNTIME_WORKSPACE",
+  "canonical_truth": {
+    "handoff": "REVIEWER_HANDOFF.md",
+    "history": "PROJECT_RECORD.md",
+    "evidence": "EXECUTION_EVIDENCE.md"
   },
-  "current_gate": {
-    "id": "G6",
-    "name": "Low-Level Execution Package / Antigravity PoC",
-    "status": "IN_PROGRESS"
+  "product_target": {
+    "skill_repo": "entropy-student/spike.skill",
+    "skill_path": "story-showrunner",
+    "lifecycle": "CANDIDATE_EXTRACTION_APPROVED_CANONICAL_AFTER_E2E"
+  },
+  "active_workstream": {
+    "id": "SKILL_EXTRACTION_R1",
+    "name": "P0 Canonical Reconciliation",
+    "status": "PASS",
+    "migration_started": false,
+    "next": "SKILL_EXTRACTION_R2_CANDIDATE_MIGRATION"
+  },
+  "production": {
+    "current_gate": "G6",
+    "status": "IN_PROGRESS",
+    "current_task": "PRODUCTION_SRT_AND_TTS_MANIFEST_NEXT",
+    "next_after_package": "ANTIGRAVITY_E2E_EXECUTION",
+    "next_gate": {
+      "id": "G7",
+      "name": "End-to-End Validation",
+      "status": "BLOCKED_BY_G6"
+    }
   },
   "accepted_gates": [
-    {
-      "id": "P0",
-      "name": "Project Boundary / Governance Reconciliation",
-      "status": "PASS"
-    },
-    {
-      "id": "G1",
-      "name": "Worker Inventory + Canonical Contracts",
-      "status": "PASS"
-    },
-    {
-      "id": "G2",
-      "name": "Topic → Human Problem → Story MVP",
-      "status": "PASS"
-    },
-    {
-      "id": "G2.5",
-      "name": "Topic Supply / Ledger / Dedup",
-      "status": "PASS"
-    },
-    {
-      "id": "G3",
-      "name": "Story → Script / SRT MVP",
-      "status": "PASS"
-    },
-    {
-      "id": "G3R",
-      "name": "Bilibili Editorial / Narrative Rebaseline",
-      "status": "PASS"
-    },
-    {
-      "id": "G4",
-      "name": "Script / SRT → Director / Shot Compiler MVP",
-      "status": "PASS"
-    },
-    {
-      "id": "G5",
-      "name": "Shotbook → Image Asset Package MVP",
-      "status": "PASS"
-    }
+    "P0",
+    "G1",
+    "G2",
+    "G2.5",
+    "G3",
+    "G3R",
+    "G4",
+    "G5"
   ],
-  "next_gate": {
-    "id": "G7",
-    "name": "Three-topic End-to-End Validation",
-    "status": "BLOCKED_BY_G6"
-  },
-  "owner_intervention_required": false,
-  "unknowns": [
-    "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR"
+  "canonical_pipeline": [
+    "TopicProvider",
+    "DomainAdapter",
+    "Knowledge/CausalCore",
+    "StoryEngine",
+    "Writer",
+    "TimingCompiler",
+    "Director",
+    "Frame/AssetCompiler",
+    "ProductionCompiler",
+    "ExecutorAdapter",
+    "QA"
   ],
-  "authoritative_handoff": "REVIEWER_HANDOFF.md",
-  "locked_decisions": [
-    "Antigravity is the default restricted execution agent for image-to-video production",
-    "one small shot approximately equals one generated image",
-    "motion is preferably represented by multiple still images",
-    "executor has near-zero creative freedom",
-    "character and scene consistency are controlled by canonical references and per-shot contracts",
-    "content jobs are DISCOVERY, TRUST, or SOLUTION with one primary job per episode",
-    "metrics are separated into traffic, trust, and conversion",
-    "McKee-style causal structure is currently an internal Story Engine gate",
-    "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual",
-    "G4 timing_kind / relative pacing / protected anchors must be preserved; raw natural TTS is feasibility data, not a mandate to flatten the whole episode to one pace.",
-    "The current repository is a validation workspace; after end-to-end validation the stable generic control plane will be extracted into the story-showrunner Skill library.",
-    "Default topic resolution is explicit user topic > explicit user override > today's Calendar > Topic Radar > Evergreen Bank.",
-    "Normal production does not require Owner approval of final script, SRT, Director plan, or first-batch key frames; Owner normally reviews the final video.",
-    "Manual critical-frame generation is calibration-only, not a recurring episode gate.",
-    "Voice Timing Profile compiles production-grade SRT near the Writer stage; real TTS is normally execution/QA, not a second creative timing pass.",
-    "G6 audio mode is EXECUTOR_LOCKED_COSYVOICE: Antigravity executes the locked TTS manifest but has no timing or rewriting authority."
-  ],
-  "project_state": "G6_VOICE_TIMING_PROFILE_FROZEN_PRODUCTION_SRT_NEXT",
-  "g2_validation": {
-    "episodes": [
-      "20260920-mcp",
-      "20260920-agent",
-      "20260920-context-memory"
-    ],
-    "review_artifact": "docs/G2_VALIDATION_REVIEW.md",
-    "result": "PASS"
+  "timing": {
+    "status": "FROZEN_CANONICAL_PASS_WITH_MINOR",
+    "standard": "docs/SRT_AUDIO_TIMING_STANDARD.md",
+    "profile_spec": "docs/VOICE_TIMING_PROFILE_SPEC.md",
+    "profile": "profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json",
+    "audio_mode": "EXECUTOR_LOCKED_COSYVOICE",
+    "ownership": "TIMING_COMPILER_BEFORE_DIRECTOR",
+    "routine_recalibration_required": false
   },
-  "g2_5": {
-    "topic_operating_system": "docs/TOPIC_OPERATING_SYSTEM.md",
-    "registry": "topic-ledger/topic-registry.jsonl",
-    "daily_template": "topic-ledger/daily/TEMPLATE.json",
-    "calendar": "topic-ledger/calendar/2026-09.md",
-    "evergreen_bank": "topic-ledger/EVERGREEN_BANK.md",
-    "status": "PASS",
-    "automation_enabled": true,
-    "automation_contract": "docs/DAILY_TOPIC_AUTOMATION_V2.md",
-    "rolling_horizon_days": 7,
-    "calendar_owner_view": "topic-ledger/calendar/YYYY-MM.md"
-  },
-  "g3_validation": {
-    "writer_quality_contract": "docs/WRITER_QUALITY_CONTRACT.md",
-    "review_artifact": "docs/G3_VALIDATION_REVIEW.md",
-    "episodes": [
-      "20260920-mcp",
-      "20260920-agent",
-      "20260920-context-memory"
-    ],
-    "result": "PASS",
-    "planning_speaking_rate_cps": 5,
-    "writer_adapter_status": "CANONICAL_STYLE_SOURCE_QUALITY_VALIDATED_MANUAL_ORCHESTRATION",
-    "editorial_baseline_status": "SUPERSEDED_BY_G3R_PASS",
-    "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
-    "historical_short_form_planning_duration_seconds": "70-85",
-    "planning_speaking_rate_status": "PLANNING_ONLY_NOT_PRODUCTION_TIMECODE_SOURCE"
-  },
-  "owner_review_scope": "G6 in progress. Product boundary and workflow corrected: future generic story-showrunner Skill, calendar-first default topic routing, no normal script/key-frame Owner gates, and reusable Voice Timing Profile before Production SRT.",
-  "g3_rebaseline": {
-    "status": "PASS",
-    "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
-    "review": "docs/G3R_EDITORIAL_REVIEW.md",
-    "primary_platform": "Bilibili",
-    "editorial_cadence_target": "DAILY",
-    "production_throughput": "UNPROVEN",
-    "default_pov": "FIRST_PERSON_CHANNEL_IP",
-    "default_duration": "3-5 min",
-    "duration_routes": {
-      "hot": "3-5 min",
-      "standard": "3-5 min",
-      "action": "3-5 min, extend only if needed"
-    },
-    "editorial_modes": [
-      "STORY_MODEL",
-      "STORY_ACTION"
-    ],
-    "season0_published_episodes": 21,
-    "initial_weekly_mix": {
-      "STORY_MODEL": 5,
-      "STORY_ACTION": 2
-    },
-    "live_daily_automation": "ACTIVE_V0_2",
-    "season0_plan": "docs/SEASON0_21_DAY_PLAN.md",
-    "tutorial_mode": "REMOVED_BY_OWNER",
-    "opinion_policy": "OPTIONAL_BOUNDED_NOT_REQUIRED",
-    "open_questions_count": 0,
-    "open_questions": [],
-    "narrative_style_contract": "docs/NARRATIVE_STYLE_CONTRACT.md",
-    "narrative_style_status": "CANONICAL_G3R_PASS",
-    "narrative_smoke_test": "episodes/20260920-agent/G3R_narrative_test_v1.md",
-    "narrative_smoke_test_review": "episodes/20260920-agent/G3R_narrative_test_review_v1.md",
-    "narrative_smoke_test_status": "SUPERSEDED_BY_ACCEPTED_V2",
-    "resolved_owner_alignment": [
-      "Narrative style and viewpoint: Jingsui lightness + McKee causality/meaning + Controlling Question + Idea/Counter-Idea + Lightness Guard"
-    ],
-    "dialogue_refinement_candidate": "docs/DIALOGUE_PROSE_REFINEMENT_CANDIDATE.md",
-    "dialogue_refinement_status": "PROMOTED_INTO_MAIN_CONTRACTS",
-    "narrative_smoke_test_v2": "episodes/20260920-agent/G3R_narrative_test_v2.md",
-    "narrative_smoke_test_v2_review": "episodes/20260920-agent/G3R_narrative_test_review_v2.md",
-    "narrative_smoke_test_v2_score": 91,
-    "narrative_style_contract_version": "0.3",
-    "writer_quality_contract_version": "0.4",
-    "cross_topic_validation": {
-      "status": "PASS",
-      "agent": {
-        "artifact": "episodes/20260920-agent/G3R_narrative_test_v2.md",
-        "review": "episodes/20260920-agent/G3R_narrative_test_review_v2.md",
-        "score": 91,
-        "type": "EVENT_DRIVEN_PERMISSION_ACTION"
-      },
-      "context_memory": {
-        "artifact": "episodes/20260920-context-memory/G3R_narrative_test_v2.md",
-        "review": "episodes/20260920-context-memory/G3R_narrative_test_review_v2.md",
-        "score": 92,
-        "type": "METAPHOR_DRIVEN_COGNITIVE_DISTINCTION"
-      },
-      "mcp": {
-        "artifact": "episodes/20260920-mcp/G3R_narrative_test_v1.md",
-        "review": "episodes/20260920-mcp/G3R_narrative_test_review_v1.md",
-        "score": 90,
-        "type": "REPEATED_INTEGRATION_FRICTION_INTEROPERABILITY"
-      },
-      "finding": "The portable invariant is character desire → action → mechanism response → state change → next choice → recognition/payoff; conflict shape and narrative engine remain topic-dependent."
-    },
-    "ready_for_owner_pass_decision": false,
-    "patch_integration_status": "FORMALLY_INTEGRATED_IN_PROJECT_DOCS",
-    "pass_date": "2026-09-20",
-    "owner_pass_received": true,
-    "daily_planner": "docs/DAILY_TOPIC_AUTOMATION_V2.md",
-    "review_artifact": "docs/G3R_EDITORIAL_REVIEW.md",
-    "g4_release": "READY_BUT_OWNER_HOLD",
-    "writer_contract": "docs/WRITER_QUALITY_CONTRACT.md",
-    "jingsui_style_source_status": "CANONICAL",
-    "writer_runtime_status": "MANUAL_ORCHESTRATION"
-  },
-  "g4": {
+  "director": {
     "status": "PASS",
     "contract": "docs/G4_DIRECTOR_COMPILER_CONTRACT.md",
-    "semantic_shot_schema": "schemas/semantic_shot.schema.json",
-    "phase_a": {
-      "name": "Semantic Director",
-      "status": "PASS_CANDIDATE_ON_AGENT",
-      "final_timecodes_required": false,
-      "validation_sequence": [
-        "20260920-agent",
-        "20260920-context-memory",
-        "20260920-mcp"
-      ],
-      "agent": {
-        "plan": "episodes/20260920-agent/G4A_semantic_shot_plan_v1.json",
-        "review": "episodes/20260920-agent/G4A_semantic_shot_review_v1.md",
-        "semantic_shot_count": 36,
-        "status": "PASS_CANDIDATE"
-      }
-    },
-    "phase_b": {
-      "name": "Exact Timeline Compiler",
-      "status": "READY_FOR_PRODUCTION_SRT_COMPILATION",
-      "requires_final_audio": false,
-      "audio_mode": "EXECUTOR_LOCKED_COSYVOICE",
-      "timing_standard": "docs/SRT_AUDIO_TIMING_STANDARD.md"
-    },
-    "key_decision": "G4 consumes Production SRT compiled from semantic timing intent + canonical Voice Timing Profile v2.1. No further routine voice timing calibration is required.",
-    "next_validation": "Context / Memory G4A semantic shot plan",
-    "overall_pass_allowed": false,
-    "validation_review": "docs/G4_VALIDATION_REVIEW.md",
-    "timing_source": "JINGSUI_CALIBRATED_REFERENCE",
-    "cross_topic_validation": {
-      "agent": {
-        "semantic_shots": 36,
-        "visual_beats": 61,
-        "total_sec": 150.14,
-        "avg_sec": 2.46,
-        "status": "PASS"
-      },
-      "context_memory": {
-        "semantic_shots": 43,
-        "visual_beats": 63,
-        "total_sec": 172.19,
-        "avg_sec": 2.73,
-        "status": "PASS"
-      },
-      "mcp": {
-        "semantic_shots": 44,
-        "visual_beats": 63,
-        "total_sec": 166.38,
-        "avg_sec": 2.64,
-        "status": "PASS"
-      }
-    },
-    "owner_hold_before_g5": false,
-    "canonical_director_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES.md",
-    "owner_pass_received": true,
-    "rebaseline_validation": "experiments/g4r-v03/VALIDATION_SUMMARY.md",
-    "pov_grammar": {
-      "status": "PASS",
-      "canonical": "docs/G4_VIEWPOINT_GRAMMAR.md",
-      "audit": "experiments/g4r-v03/blind-search-answer/08_POV_AUDIT.md",
-      "reviewed_beats": 44,
-      "changed_beats": 8,
-      "unchanged_beats": 36,
-      "validation_issues": []
-    }
+    "language_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES.md",
+    "viewpoint": "docs/G4_VIEWPOINT_GRAMMAR.md",
+    "timing_source": "PRODUCTION_SRT"
   },
-  "g4_rebaseline_candidate": {
-    "status": "PROMOTED_TO_CANONICAL",
-    "rules": "docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE_V03.md",
-    "research": "docs/G4_DIRECTOR_REBASELINE_RESEARCH.md",
-    "reason": "G4 v0.1 was case-derived and under-specified in dramatic-beat-to-camera-language translation.",
-    "canonical_g4_v0_1_remains_pass": true,
-    "g5_blocked": false,
-    "cases_rerun": true,
-    "proposed_pipeline": [
-      "Dramatic Hierarchy Map",
-      "Episode / Sequence Visual Strategy",
-      "Visual Intention Map",
-      "Semantic Shot Design",
-      "Visual Beat Compilation",
-      "Timing & Edit Calibration"
-    ],
-    "rereview": "docs/G4_DIRECTOR_RULES_FINAL_REREVIEW_V03.md",
-    "previous_candidate": "docs/G4_DIRECTOR_LANGUAGE_RULES_CANDIDATE.md",
-    "unseen_case_required_before_promotion": false,
-    "canonical_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES.md"
-  },
-  "g5": {
-    "status": "PASS",
+  "assets": {
+    "g5_status": "PASS",
     "contract": "docs/G5_IMAGE_ASSET_PACKAGE_CONTRACT.md",
-    "first_mvp_case": "blind-search-answer",
-    "phase_a": {
-      "name": "Asset Requirement Extraction",
-      "status": "PASS",
-      "manifest": "experiments/g5/blind-search-answer/01_ASSET_MANIFEST.json",
-      "beat_asset_matrix": "experiments/g5/blind-search-answer/02_BEAT_ASSET_MATRIX.json",
-      "inventory_review": "experiments/g5/blind-search-answer/03_ASSET_INVENTORY.md",
-      "visual_beats": 44,
-      "assets": 8
-    },
-    "phase_b": {
-      "name": "Canonical Reference Lock",
-      "status": "PASS_REFERENCE_PACKAGE_PERSISTED",
-      "character_bible": "experiments/g5/blind-search-answer/04_CHARACTER_BIBLE.md",
-      "scene_bible": "experiments/g5/blind-search-answer/05_SCENE_BIBLE.md",
-      "style_bible": "experiments/g5/blind-search-answer/06_STYLE_BIBLE.md",
-      "prop_ui_bible": "experiments/g5/blind-search-answer/07_PROP_UI_BIBLE.md",
-      "reference_manifest": "experiments/g5/blind-search-answer/08_REFERENCE_MANIFEST.json",
-      "blocking_real_asset": null,
-      "blocking_reason": null,
-      "style_direction": "SIMPLIFIED_FLAT_NARRATIVE_COMIC",
-      "current_conversation_inputs": {
-        "ip_identity_image": "AVAILABLE_IN_CURRENT_CONVERSATION_NOT_PERSISTED_IN_REPO",
-        "production_character_master_v1": "GENERATED_CURRENT_CONVERSATION",
-        "workdesk_scene_master_v1": "GENERATED_CURRENT_CONVERSATION"
-      },
-      "next_steps": [
-        "Persist CHAR_IP_001 canonical identity image/master into repository or approved execution-accessible asset store",
-        "Persist approved SCENE_WORKDESK_001 / UI_POLICY_PAGE_001 / UI_AI_ANSWER_001 masters as needed",
-        "Populate canonical_paths in Reference Manifest",
-        "Validate every execution row resolves real reference inputs",
-        "Issue final G5 PASS and release G6"
-      ],
-      "calibration_review": "experiments/g5/blind-search-answer/09_CALIBRATION_REVIEW.md",
-      "calibration_results": {
-        "character_workdesk": "PASS",
-        "character_ui_evidence": "PASS",
-        "pure_evidence_insert": "PASS",
-        "production_simplification_guard": "ACTIVE"
-      },
-      "source_recovery": {
-        "CHAR_IP_001": "RECOVERED_AND_VISUALLY_VERIFIED_LIBRARY_REPO_PERSISTENCE_PENDING",
-        "canonical_identity_library_file_id": "file_00000000872081fdb2b7ef891cc9f705",
-        "character_master_library_file_id": "file_00000000ea9c81fdb3b7320e99aaf274",
-        "turnaround_library_file_id": "file_00000000117c81fda2e1db89ef98e06d",
-        "character_guide_library_file_id": "file_00000000a54481fd94cd8f5bb8590755"
-      }
-    },
-    "phase_c": {
-      "name": "Frame Blueprint → Beat Binding → Execution Mode → Prompt/Edit Compiler",
-      "status": "PASS",
-      "frame_blueprints": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json",
-      "execution_rows": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
-      "recompile_review": "experiments/g5/blind-search-answer/15_FRAME_BLUEPRINT_RECOMPILE_REVIEW.md",
-      "pilot_batch": "experiments/g5/blind-search-answer/16_PILOT_BATCH_V02.json",
-      "visual_beats": 44,
-      "frame_blueprints_count": 44,
-      "execution_rows_count": 44,
-      "structural_validation": "PASS_AFTER_CHARACTER_IDENTITY_PATCH",
-      "asset_reference_validation": "PASS",
-      "unknown_asset_refs": [],
-      "execution_mode_counts": {
-        "GENERATE": 17,
-        "DERIVE_EDIT": 23,
-        "COMPOSITE_CROP": 4
-      },
-      "historical_v01_outputs": {
-        "status": "SUPERSEDED_DO_NOT_USE",
-        "image_rows": "experiments/g5/blind-search-answer/10_IMAGE_GENERATION_ROWS.json",
-        "human_plan": "experiments/g5/blind-search-answer/11_IMAGE_GENERATION_PLAN.md",
-        "pilot_batch": "experiments/g5/blind-search-answer/12_PILOT_BATCH.json"
-      },
-      "pilot_beats": [
-        "SRCH_VB001",
-        "SRCH_VB009",
-        "SRCH_VB012",
-        "SRCH_VB015",
-        "SRCH_VB016",
-        "SRCH_VB022",
-        "SRCH_VB025",
-        "SRCH_VB044"
-      ],
-      "next": "G5 complete.",
-      "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
-      "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
-      "pilot_progress": {
-        "SRCH_VB001": "PASS_WITH_MINOR_CURRENT_CHARACTER_IN_SCENE_MASTER",
-        "SRCH_VB009": "PASS_WITH_MINOR",
-        "SRCH_VB012": "PASS_WITH_MINOR",
-        "SRCH_VB015": "PASS_WITH_MINOR_SETUP_MASTER_IMAGE1",
-        "SRCH_VB016": "PASS_WITH_MINOR",
-        "SRCH_VB022": "PASS_WITH_MINOR_SEMANTIC_COMPARE",
-        "SRCH_VB025": "PASS_WITH_MINOR_CHARACTER_RISK",
-        "SRCH_VB044": "PASS_WITH_MINOR"
-      },
-      "pilot_review": "experiments/g5/blind-search-answer/17_HIGH_RISK_PILOT_REVIEW.md",
-      "reference_path_validation": "experiments/g5/blind-search-answer/18_REFERENCE_PATH_VALIDATION.md",
-      "reference_path_validation_result": "PASS"
-    },
-    "phase_b_5": {
-      "name": "Visual Acquisition Review",
-      "status": "PASS_KEEP_ITERATE",
-      "contract": "docs/VISUAL_ACQUISITION_REVIEW_GATE.md",
-      "framework_source": "entropy-student/spike.skill/acquisition-growth-radar/SKILL.md",
-      "control": "SIMPLIFIED_FLAT_NARRATIVE_COMIC",
-      "challenger": "ULTRA_SIMPLE_NARRATIVE_LINE_CARTOON",
-      "decision": "KEEP + ITERATE",
-      "control_adjustment": "Reduce per-frame visual micro-complexity approximately 15–25%; keep recurring IP and story-world identity.",
-      "evidence_limit": "Real audience attention/trust/retention evidence is not yet available; long-term SCALE prohibited."
-    },
-    "frame_design_review": {
-      "status": "PASS_CANONICAL",
-      "canonical_rules": "docs/VISUAL_FRAME_BLUEPRINT_RULES.md",
-      "schema": "schemas/frame_blueprint.schema.json",
-      "validation": "experiments/g5/blind-search-answer/15_FRAME_BLUEPRINT_RECOMPILE_REVIEW.md",
-      "finding": "Frame-level attention architecture is now canonical; one dramatic job, explicit P1/P2, one main delta, no-brand-by-default, source-crop comparison, derive-before-regenerate."
-    },
-    "character_identity_patch": {
-      "status": "CANONICAL_PATCH_APPLIED_RETEST_REQUIRED",
-      "policy": "docs/CHARACTER_IDENTITY_LOCK.md",
-      "diagnosis": [
-        "style simplification was under-specified and allowed juvenile reinterpretation",
-        "youthful wording was too permissive",
-        "derive/edit needed explicit canonical identity reference precedence",
-        "costume drift to hoodie proved identity lock was not machine-enforced"
-      ],
-      "hard_locks": [
-        "CLEARLY_ADULT_YOUNG_MALE",
-        "NATURAL_ADULT_EYE_SCALE",
-        "STABLE_JAW_CHIN_NOSE",
-        "ADULT_BODY_PROPORTION",
-        "CANONICAL_HAIR_SILHOUETTE",
-        "WINE_RED_TOP_CREAM_COLLAR_COSTUME"
-      ],
-      "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
-      "previous_pilot_character_frames": "REJECTED_NOT_SOURCE_ELIGIBLE",
-      "next": "VB001 identity revalidation passed. Next: VB009 fresh IP_POV_HANDS generation with visibility-scoped hand/cuff identity QA.",
-      "machine_validation": {
-        "ip_rows": 31,
-        "derive_ip_rows": 16,
-        "identity_lock_issues": 0,
-        "stale_unbound_continuity_refs": 0,
-        "result": "PASS"
-      },
-      "revalidation_result": "VB001_PASS_WITH_MINOR",
-      "current_character_in_scene_master": "LATEST_OWNER_APPROVED_VB001_CURRENT_CONVERSATION"
-    },
-    "gate_review": "docs/G5_GATE_REVIEW.md"
+    "frame_rules": "docs/VISUAL_FRAME_BLUEPRINT_RULES.md",
+    "character_identity": "docs/CHARACTER_IDENTITY_LOCK.md",
+    "normal_manual_pilot_required": false,
+    "pilot_policy": "CALIBRATION_EXCEPTION_ONLY"
   },
-  "g6": {
-    "status": "IN_PROGRESS",
-    "contract": "docs/LOW_LEVEL_EXECUTION_PACKAGE.md",
-    "first_poc_case": "blind-search-answer",
-    "reference_package_root": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1",
-    "reference_package_zip": "/ai-story-showrunner/g5/blind-search-answer/g5-reference-package-v1.zip",
-    "audio_mode": "EXECUTOR_LOCKED_COSYVOICE",
-    "next": "Compile the current locked script into PRODUCTION_SUBTITLES.srt using the frozen Voice Timing Profile v2.1; then generate TTS_MANIFEST.json and the complete Antigravity Production Package.",
-    "timing_standard": "docs/SRT_AUDIO_TIMING_STANDARD.md",
-    "tts_poc": {
-      "engine": "CosyVoice-300M",
-      "mode": "zero_shot",
-      "prompt_cache": true,
-      "fixed_seed": true,
-      "deterministic_repeat_test": "PASS",
-      "baseline_case": "PASS",
-      "punch_case": "PASS",
-      "high_risk_case": {
-        "natural_duration_sec": 4.2493,
-        "old_window_sec": 3.02,
-        "required_speed_ratio": 1.407,
-        "listening_result": "UNACCEPTABLE",
-        "diagnosis": "LOCAL_REFERENCE_WINDOW_INFEASIBLE; SEMANTIC_TIMING_MUST_BE_PRESERVED_VIA_LOCAL_REALLOCATION"
-      }
-    },
-    "reference_timing_status": "CALIBRATION_INPUT",
-    "timing_model": "SEMANTIC_INTENT_PLUS_REUSABLE_VOICE_TIMING_PROFILE",
-    "voice_timing_profile_spec": "docs/VOICE_TIMING_PROFILE_SPEC.md",
-    "production_package_target": [
-      "00_EXECUTION_ORDER.md",
-      "01_SCRIPT.md",
-      "02_PRODUCTION_SUBTITLES.srt",
-      "03_TTS_MANIFEST.json",
-      "04_AUDIO_SPEC.md",
-      "05_VISUAL_BEATS.json",
-      "06_SHOT_TIMELINE.csv",
-      "07_IMAGE_GENERATION.csv",
-      "08_CHARACTER_BIBLE.md",
-      "09_SCENE_BIBLE.md",
-      "10_STYLE_BIBLE.md",
-      "11_REFERENCE_MANIFEST.json",
-      "12_EDIT_INSTRUCTIONS.md",
-      "13_OUTPUT_SPEC.md",
-      "14_QA_RULES.md",
-      "references/"
+  "current_validation_episode": {
+    "id": "blind-search-answer",
+    "locked_script": "experiments/g4r-v03/blind-search-answer/02_SCRIPT.md",
+    "legacy_reference_srt": "experiments/g4r-v03/blind-search-answer/08_REFERENCE_TIMING.srt",
+    "legacy_reference_role": "SEMANTIC_PRIOR_ONLY",
+    "reference_package": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1",
+    "next_artifacts": [
+      "PRODUCTION_SUBTITLES.srt",
+      "TTS_MANIFEST.json",
+      "ANTIGRAVITY_PRODUCTION_PACKAGE"
+    ]
+  },
+  "topic_runtime": {
+    "default_priority": [
+      "EXPLICIT_USER_TOPIC",
+      "EXPLICIT_USER_OVERRIDE",
+      "TODAYS_CALENDAR",
+      "TOPIC_RADAR",
+      "EVERGREEN_BANK"
     ],
-    "voice_timing_calibration": {
-      "status": "PASS_WITH_MINOR_CANONICAL_FROZEN",
-      "calibration_set": "experiments/g6/voice-timing-calibration/CALIBRATION_SET_V1.json",
-      "antigravity_task": "experiments/g6/voice-timing-calibration/ANTIGRAVITY_CALIBRATION_TASK.md",
-      "total_samples": 18,
-      "existing_samples": 3,
-      "new_generations_expected": 15,
-      "training_samples": 14,
-      "heldout_samples": 4,
-      "next_after_pass": "Compile PRODUCTION_SUBTITLES.srt + TTS_MANIFEST.json, then full Antigravity Production Package.",
-      "result_doc": "experiments/g6/voice-timing-calibration/VOICE_TIMING_CALIBRATION_V1_RESULT.md",
-      "v1_metrics": {
-        "train_r2": 0.9789,
-        "train_mae_ms": 119.9,
-        "heldout_median_absolute_error_ms": 393.5,
-        "heldout_p90_absolute_error_ms": 737.2,
-        "heldout_max_absolute_error_ms": 801.9,
-        "unsafe_underallocation_case": "BLD001"
-      },
-      "v1_decision": "REJECT_PROFILE_DO_NOT_USE_FOR_PRODUCTION",
-      "next": "Run a small targeted v2 calibration, not another full 18-sample sweep. Focus on short NORMAL variability and mixed Latin+Arabic normalization; validate one-sided under-allocation safety plus semantic tail-slack.",
-      "v2": {
-        "strategy": "TARGETED_RULE_REPAIR_NOT_FULL_RECALIBRATION",
-        "new_generations_expected": 6,
-        "calibration_new": 3,
-        "heldout_new": 3,
-        "set": "experiments/g6/voice-timing-calibration/TARGETED_CALIBRATION_SET_V2.json",
-        "antigravity_task": "experiments/g6/voice-timing-calibration/ANTIGRAVITY_TARGETED_V2_TASK.md",
-        "targeted_failures": [
-          "SHORT_NORMAL_UNDERALLOCATION",
-          "MIXED_LATIN_ARABIC_OVERCOUNT"
-        ],
-        "acceptance": "ONE_SIDED_TIMING_SAFETY_PLUS_SEMANTIC_TAIL_SLACK"
-      },
-      "v2_result": {
-        "status": "PASS_WITH_MINOR_TARGETED_NOT_CANONICAL",
-        "short_normal_floor_sec": 1.4715,
-        "mixed_margin_sec": 0.3178,
-        "blocker": "V2C003 FINAL control underpredicted 2.6114s vs 3.2824s; full profile not yet frozen."
-      },
-      "v2_1": {
-        "new_generations_expected": 2,
-        "task": "experiments/g6/voice-timing-calibration/ANTIGRAVITY_V2_1_MICRO_CLOSEOUT_TASK.md",
-        "set": "experiments/g6/voice-timing-calibration/V2_1_MICRO_CLOSEOUT_SET.json",
-        "controlled_safe_cps": 5,
-        "final_safe_cps": 5.5,
-        "decision_after_pass": "FREEZE_VOICE_TIMING_PROFILE_AND_COMPILE_PRODUCTION_SRT",
-        "result": "PASS_WITH_MINOR",
-        "profile_status": "CANONICAL",
-        "testing_complete": true
-      },
-      "canonical_profile": "profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json",
-      "closeout_report": "experiments/g6/voice-timing-calibration/voice_timing_v2_1_closeout_report.json"
-    }
-  },
-  "skill_productization": {
-    "target": "story-showrunner",
-    "canonical_target_doc": "docs/STORY_SHOWRUNNER_SKILL_TARGET.md",
-    "current_repo_role": "VALIDATION_WORKSPACE",
-    "migration_timing": "AFTER_CURRENT_END_TO_END_VALIDATION",
-    "domain_model": "GENERIC_CORE_PLUS_DOMAIN_ADAPTERS",
-    "initial_domain_adapter": "AI"
-  },
-  "default_topic_resolution": [
-    "EXPLICIT_USER_TOPIC",
-    "EXPLICIT_USER_OVERRIDE",
-    "TODAYS_CALENDAR",
-    "TOPIC_RADAR",
-    "EVERGREEN_BANK"
-  ],
-  "human_intervention_policy": {
-    "script_review_required": false,
-    "srt_review_required": false,
-    "director_review_required": false,
-    "keyframe_review_required": false,
-    "final_video_review_required": true,
-    "keyframe_sampling": "CALIBRATION_ONLY"
+    "calendar": "topic-ledger/calendar/YYYY-MM.md",
+    "registry": "topic-ledger/topic-registry.jsonl",
+    "evergreen": "topic-ledger/EVERGREEN_BANK.md",
+    "runtime_state_stays_outside_skill_source": true
   },
   "skill_extraction_review": {
-    "status": "REVIEW_COMPLETE_READY_FOR_P0_RECONCILIATION",
-    "review_date": "2026-09-22",
     "migration_map": "docs/skill-migration-review/MIGRATION_MAP_V1.md",
     "conflict_register": "docs/skill-migration-review/CONFLICT_REGISTER_V1.md",
     "review_summary": "docs/skill-migration-review/REVIEW_SUMMARY_V1.md",
-    "p0_conflicts": 9,
-    "p1_split_issues": 9,
-    "p2_cleanup_issues": 4,
-    "candidate_skill_target": "entropy-student/spike.skill/story-showrunner",
-    "migration_started": false,
-    "canonical_promotion_requires_end_to_end_pass": true,
-    "next": "SKILL_EXTRACTION_R1 — reconcile P0 canonical conflicts before writing candidate Skill files."
-  }
+    "p0_conflicts_resolved": 9,
+    "p1_split_issues_remaining": 8,
+    "p1_pre_resolved": [
+      "C18_TIMING_KIND_TO_PACE_CLASS_MAPPING"
+    ],
+    "p2_cleanup_resolved": 4
+  },
+  "locked_decisions": [
+    "Core is domain-neutral; AI is the first domain adapter.",
+    "Writer locks spoken text; Timing Compiler owns Production SRT before Director.",
+    "Voice Timing Profile v2.1 is canonical for the current CosyVoice setup.",
+    "Antigravity executes locked CosyVoice TTS but has no speech-timing or rewriting authority.",
+    "G4 owns visual rhythm inside Production SRT, not speech duration.",
+    "Manual key-frame Pilot is calibration-only, not a normal episode gate.",
+    "Normal Owner interaction is optional invocation override plus final-video review.",
+    "Candidate Skill extraction happens now; canonical Skill promotion waits for E2E PASS."
+  ],
+  "unknowns": [
+    "Antigravity programmatic integration availability; current executor mode remains manually triggered.",
+    "Full Production Package and final video E2E are not yet validated."
+  ],
+  "owner_intervention_required": false
 }
