@@ -16,7 +16,7 @@ MINIMAL_PLUGIN_POLICY=APPROVED
 CANONICAL_COMMERCE_SYSTEM=WOOCOMMERCE
 MVP_PAYMENT=WOOCOMMERCE_PAYPAL_PAYMENTS
 DUJIAO_SECOND_ORDER_SYSTEM=NO
-GITHUB_HANDOFF_PROTOCOL=V2_TRIAL_ORIGINAL_GOVERNANCE_INHERITED
+GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
@@ -28,8 +28,6 @@ K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
-FULL_PROJECT_REVIEW_AFTER_K3R8_RESOLUTION=REQUIRED
-K4_BROAD_FEATURE_EXPANSION_BEFORE_FULL_REVIEW=HOLD
 
 GITHUB_HANDOFF_TRIAL_SUCCESS_COUNT=4
 GITHUB_HANDOFF_TARGET_FOR_GLOBAL_GOVERNANCE=3
@@ -493,13 +491,18 @@ The result conflicts with K3R8C evidence claiming the local helper artifacts rem
 
 Formal decision: `docs/REVIEWER_DECISION_K3R8D_OWNER_HELPER_ARTIFACT_READINESS_REPAIR.md`.
 
+## Owner Note — Handoff Experiment / Fresh Review
 
-## Handoff V2 / Full Review Trigger
+The original project-management Governance remains unchanged.
 
-Owner requested restoration of the original project-management governance principle: Reviewer must independently verify actual source/runtime/evidence rather than accept Executor conclusions at face value, while GitHub should reduce Owner relay work.
+The recently proposed stronger GitHub handoff / review-packet method is **reference-only** and is not an active rule because it has not been proven end-to-end.
 
-Project-local protocol upgraded in `docs/GITHUB_HANDOFF_PROTOCOL.md`.
+Owner request retained:
 
-Formal decision: `docs/REVIEWER_DECISION_HANDOFF_V2_AND_POST_K3R8_FULL_REVIEW.md`.
+```text
+AFTER_CURRENT_K3R8_ISSUE_RESOLVES=RUN_FRESH_OVERALL_PROJECT_REVIEW
+REVIEW_BASIS=ACTUAL_CURRENT_SOURCE_RUNTIME_EVIDENCE
+DO_NOT_ACCEPT_EXECUTOR_SUMMARY_AS_TRUTH_BY_ITSELF=YES
+```
 
-After the current K3R8* incident reaches a stable resolved checkpoint, perform a fresh 2–3 round whole-project review before broad K4 expansion. Previous conclusions are inputs, not assumptions; reconcile against current evidence.
+This is a project review action, not a Governance modification.
