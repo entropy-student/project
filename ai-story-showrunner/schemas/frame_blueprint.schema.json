@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://entropy-student.local/ai-story-showrunner/frame-blueprint.schema.json",
+  "title": "AI Story Showrunner Frame Blueprint v0.4",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "visual_beat_id",
+    "semantic_shot_id",
+    "sequence_id",
+    "g4_lock",
+    "frame_archetype",
+    "focus_mode",
+    "dramatic_job",
+    "primary_focus",
+    "attention_entry",
+    "attention_exit",
+    "transition_mode",
+    "composition_mode",
+    "density",
+    "visual_intensity",
+    "background_anchors",
+    "remove_or_suppress",
+    "text_policy",
+    "brand_mode",
+    "ui_mode",
+    "continuity_preserve",
+    "frame_delta",
+    "withheld_information",
+    "asset_binding",
+    "execution_mode",
+    "subtitle_safe_check",
+    "acceptance_criteria"
+  ],
+  "properties": {
+    "visual_beat_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "semantic_shot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sequence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "g4_lock": {
+      "type": "object",
+      "required": [
+        "visual_intention",
+        "shot_size",
+        "pov"
+      ],
+      "properties": {
+        "visual_intention": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shot_size": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pov": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "frame_archetype": {
+      "type": "string",
+      "enum": [
+        "CHARACTER_REACTION",
+        "CHARACTER_ACTION",
+        "RELATIONAL_TWO_SUBJECT",
+        "OBJECT_EVIDENCE_INSERT",
+        "WORLD_STATE",
+        "DUAL_COMPARE",
+        "MATCHED_SETUP_REVEAL"
+      ]
+    },
+    "focus_mode": {
+      "type": "string",
+      "enum": [
+        "SINGLE",
+        "DUAL",
+        "FIELD"
+      ]
+    },
+    "dramatic_job": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primary_focus": {},
+    "secondary_focus": {},
+    "primary_zone": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "secondary_zone": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attention_entry": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attention_exit": {
+      "type": "string",
+      "minLength": 1
+    },
+    "transition_mode": {
+      "type": "string",
+      "enum": [
+        "HOLD",
+        "HANDOFF",
+        "RESET",
+        "WITHHOLD_REVEAL",
+        "INTENTIONAL_BREAK"
+      ]
+    },
+    "composition_mode": {
+      "type": "string",
+      "minLength": 1
+    },
+    "composition_callback_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "density": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH_JUSTIFIED"
+      ]
+    },
+    "density_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "visual_intensity": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "intensity_drivers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "background_anchors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "story_props": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "remove_or_suppress": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "text_policy": {
+      "type": "object"
+    },
+    "brand_mode": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "GENERIC",
+        "REAL_CAUSAL",
+        "REAL_CONTEXT"
+      ]
+    },
+    "ui_mode": {
+      "type": "string"
+    },
+    "continuity_preserve": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "continuity_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "frame_delta": {
+      "type": "string",
+      "minLength": 1
+    },
+    "withheld_information": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "asset_binding": {
+      "type": "object"
+    },
+    "execution_mode": {
+      "type": "string",
+      "enum": [
+        "GENERATE",
+        "DERIVE_EDIT",
+        "COMPOSITE_CROP"
+      ]
+    },
+    "subtitle_safe_check": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "REVIEW_REQUIRED"
+      ]
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
