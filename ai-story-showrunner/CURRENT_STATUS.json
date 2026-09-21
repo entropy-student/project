@@ -82,7 +82,7 @@
     "Voice Timing Profile compiles production-grade SRT near the Writer stage; real TTS is normally execution/QA, not a second creative timing pass.",
     "G6 audio mode is EXECUTOR_LOCKED_COSYVOICE: Antigravity executes the locked TTS manifest but has no timing or rewriting authority."
   ],
-  "project_state": "G6_IN_PROGRESS_VOICE_TIMING_PROFILE",
+  "project_state": "G6_VOICE_TIMING_PROFILE_V1_RETURN_TARGETED_V2_NEXT",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -447,7 +447,7 @@
     "reference_package_root": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1",
     "reference_package_zip": "/ai-story-showrunner/g5/blind-search-answer/g5-reference-package-v1.zip",
     "audio_mode": "EXECUTOR_LOCKED_COSYVOICE",
-    "next": "Run the prepared Antigravity Voice Timing Profile calibration task. Expected new CosyVoice generations: 15. On PASS, compile Production SRT + TTS Manifest and the full Antigravity Production Package.",
+    "next": "Prepare and run targeted Voice Timing Profile v2 calibration. Do not compile Production SRT until the v2 profile passes.",
     "timing_standard": "docs/SRT_AUDIO_TIMING_STANDARD.md",
     "tts_poc": {
       "engine": "CosyVoice-300M",
@@ -487,7 +487,7 @@
       "references/"
     ],
     "voice_timing_calibration": {
-      "status": "READY_TO_RUN",
+      "status": "V1_RETURN_PROFILE_INSUFFICIENT",
       "calibration_set": "experiments/g6/voice-timing-calibration/CALIBRATION_SET_V1.json",
       "antigravity_task": "experiments/g6/voice-timing-calibration/ANTIGRAVITY_CALIBRATION_TASK.md",
       "total_samples": 18,
@@ -495,7 +495,18 @@
       "new_generations_expected": 15,
       "training_samples": 14,
       "heldout_samples": 4,
-      "next_after_pass": "Compile PRODUCTION_SUBTITLES.srt + TTS_MANIFEST.json, then full Antigravity Production Package."
+      "next_after_pass": "Compile PRODUCTION_SUBTITLES.srt + TTS_MANIFEST.json, then full Antigravity Production Package.",
+      "result_doc": "experiments/g6/voice-timing-calibration/VOICE_TIMING_CALIBRATION_V1_RESULT.md",
+      "v1_metrics": {
+        "train_r2": 0.9789,
+        "train_mae_ms": 119.9,
+        "heldout_median_absolute_error_ms": 393.5,
+        "heldout_p90_absolute_error_ms": 737.2,
+        "heldout_max_absolute_error_ms": 801.9,
+        "unsafe_underallocation_case": "BLD001"
+      },
+      "v1_decision": "REJECT_PROFILE_DO_NOT_USE_FOR_PRODUCTION",
+      "next": "Run a small targeted v2 calibration, not another full 18-sample sweep. Focus on short NORMAL variability and mixed Latin+Arabic normalization; validate one-sided under-allocation safety plus semantic tail-slack."
     }
   },
   "skill_productization": {
