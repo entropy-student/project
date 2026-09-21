@@ -319,7 +319,7 @@
       "visual_beats": 44,
       "frame_blueprints_count": 44,
       "execution_rows_count": 44,
-      "structural_validation": "PASS",
+      "structural_validation": "PASS_AFTER_CHARACTER_IDENTITY_PATCH",
       "asset_reference_validation": "PASS",
       "unknown_asset_refs": [],
       "execution_mode_counts": {
@@ -384,7 +384,14 @@
       ],
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "previous_pilot_character_frames": "REJECTED_NOT_SOURCE_ELIGIBLE",
-      "next": "Regenerate only VB001 with canonical identity reference + hard lock; if maturity/face/costume PASS, resume remaining Pilot."
+      "next": "Regenerate only VB001 with canonical identity reference + hard lock; if maturity/face/costume PASS, resume remaining Pilot.",
+      "machine_validation": {
+        "ip_rows": 31,
+        "derive_ip_rows": 16,
+        "identity_lock_issues": 0,
+        "stale_unbound_continuity_refs": 0,
+        "result": "PASS"
+      }
     }
   }
 }
