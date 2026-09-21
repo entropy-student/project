@@ -6,7 +6,9 @@
   "count": 44,
   "validation": {
     "status": "PASS",
-    "issues": []
+    "issues": [],
+    "character_identity_rows": 31,
+    "character_identity_patch": "PASS"
   },
   "execution_mode_counts": {
     "GENERATE": 14,
@@ -36,7 +38,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 看见“官方来源”后，IP 没有立刻放心. Primary focus: IP 的眼神/微妙怀疑表情. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: 普通观看 → 看见来源后仍保持谨慎. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Do not reveal: 政策页 / 服务费不退 / 最终反转. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 看见“官方来源”后，IP 没有立刻放心. Primary focus: IP 的眼神/微妙怀疑表情. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: 普通观看 → 看见来源后仍保持谨慎. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Do not reveal: 政策页 / 服务费不退 / 最终反转. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -46,7 +48,14 @@
         "speech/thought bubble",
         "full policy page",
         "brand/logo",
-        "decorative title"
+        "decorative title",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -57,8 +66,34 @@
         "P1 immediately readable: IP 的脸部/身体反应",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_002",
@@ -81,7 +116,7 @@
       "source_frame_ref": "SRCH_VB001.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: hand/cursor moves to open the source instead. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: hand/cursor moves to open the source instead. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -91,7 +126,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "NONE",
       "aspect_ratio": "16:9",
@@ -102,8 +144,34 @@
         "P1 immediately readable: hand/cursor moves to open the source instead",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_003",
@@ -127,7 +195,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 快速建立当前空间/页面/状态. Primary focus: IP frames this as a tiny easy rule-check he wants to outsource. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: IP frames this as a tiny easy rule-check he wants to outsource. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 快速建立当前空间/页面/状态. Primary focus: IP frames this as a tiny easy rule-check he wants to outsource. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: IP frames this as a tiny easy rule-check he wants to outsource. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -138,7 +206,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -149,8 +224,34 @@
         "P1 immediately readable: IP frames this as a tiny easy rule-check he wants to outsource",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_004",
@@ -175,7 +276,7 @@
       "source_frame_ref": "SRCH_VB003.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: exact question facet lands: 平台服务费会不会退. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: exact question facet lands: 平台服务费会不会退. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -185,7 +286,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -196,8 +304,34 @@
         "P1 immediately readable: exact question facet lands: 平台服务费会不会退",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_005",
@@ -240,7 +374,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_006",
@@ -283,7 +431,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_007",
@@ -327,7 +489,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_008",
@@ -351,7 +527,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: IP visibly relaxes because the answer looks source-backed; no literal classroom cutaway. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: IP visibly relaxes because the answer looks source-backed; no literal classroom cutaway. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -362,7 +538,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -373,8 +556,34 @@
         "P1 immediately readable: IP 的脸部/身体反应",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_009",
@@ -399,7 +608,7 @@
       "source_frame_ref": "SRCH_VB008.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: 成本表新增一条错误判断. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. Keep hidden: 官方政策反转.",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: 成本表新增一条错误判断. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. Keep hidden: 官方政策反转.",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -409,7 +618,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -420,8 +636,34 @@
         "P1 immediately readable: IP writes 服务费：可退 into the cost sheet",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_010",
@@ -443,7 +685,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: task appears finished; IP is already about to move on, then hesitates. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: task appears finished; IP is already about to move on, then hesitates. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -452,7 +694,14 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "NONE",
       "aspect_ratio": "16:9",
@@ -463,8 +712,34 @@
         "P1 immediately readable: IP 的脸部/身体反应",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_011",
@@ -489,7 +764,7 @@
       "source_frame_ref": "SRCH_VB010.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: IP clicks the official source almost casually. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: IP clicks the official source almost casually. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -499,7 +774,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -510,8 +792,34 @@
         "P1 immediately readable: IP clicks the official source almost casually",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_012",
@@ -554,7 +862,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_013",
@@ -598,7 +920,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_014",
@@ -641,7 +977,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_015",
@@ -686,7 +1036,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_016",
@@ -729,7 +1093,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_017",
@@ -751,7 +1129,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: silent hold on the contradiction. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: silent hold on the contradiction. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -760,7 +1138,14 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "NONE",
       "aspect_ratio": "16:9",
@@ -771,8 +1156,34 @@
         "P1 immediately readable: IP 的脸部/身体反应",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_018",
@@ -817,7 +1228,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_019",
@@ -862,7 +1287,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_020",
@@ -884,7 +1323,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: investigation rules out easy causes: not offline, not forum, not dubious source. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: investigation rules out easy causes: not offline, not forum, not dubious source. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: investigation rules out easy causes: not offline, not forum, not dubious source. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: investigation rules out easy causes: not offline, not forum, not dubious source. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -895,7 +1334,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "NONE",
       "aspect_ratio": "16:9",
@@ -906,8 +1352,34 @@
         "P1 immediately readable: investigation rules out easy causes: not offline, not forum, not dubious source",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_021",
@@ -932,7 +1404,7 @@
       "source_frame_ref": "SRCH_VB020.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: correct official page remains physically present as the evidence object. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: correct official page remains physically present as the evidence object. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -942,7 +1414,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -953,8 +1432,34 @@
         "P1 immediately readable: correct official page remains physically present as the evidence object",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_022",
@@ -1002,7 +1507,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_023",
@@ -1027,7 +1546,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 快速建立当前空间/页面/状态. Primary focus: analogy question: 老板今天来不来. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: LOW. Attention: CM → CM. Frame delta: analogy question: 老板今天来不来. Keep character identity refs: CHAR_IP_001, TEMP_ANALOGY_ACTOR_001. Keep scene refs: SCENE_PHONEBOOK_ANALOGY_001. Use only these causal prop/UI refs: PROP_CONTACT_BOOK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 快速建立当前空间/页面/状态. Primary focus: analogy question: 老板今天来不来. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: LOW. Attention: CM → CM. Frame delta: analogy question: 老板今天来不来. Keep character identity refs: CHAR_IP_001, TEMP_ANALOGY_ACTOR_001. Keep scene refs: SCENE_PHONEBOOK_ANALOGY_001. Use only these causal prop/UI refs: PROP_CONTACT_BOOK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -1036,7 +1555,14 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1047,8 +1573,35 @@
         "P1 immediately readable: analogy question: 老板今天来不来",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001",
+          "TEMP_ANALOGY_ACTOR_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_024",
@@ -1074,7 +1627,7 @@
       "source_frame_ref": "SRCH_VB023.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: person accurately opens the boss's correct contact record. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: person accurately opens the boss's correct contact record. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -1082,7 +1635,14 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1093,8 +1653,35 @@
         "P1 immediately readable: person accurately opens the boss's correct contact record",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001",
+          "TEMP_ANALOGY_ACTOR_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_025",
@@ -1120,7 +1707,7 @@
       "source_frame_ref": "SRCH_VB024.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: 正确老板记录已经找到，但回答落在电话号码而非“来不来”. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: 正确老板记录已经找到，但回答落在电话号码而非“来不来”. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "AI UI",
@@ -1129,7 +1716,14 @@
         "bubble",
         "title",
         "arrow",
-        "complex office"
+        "complex office",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1140,8 +1734,35 @@
         "P1 immediately readable: wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001",
+          "TEMP_ANALOGY_ACTOR_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_026",
@@ -1163,7 +1784,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众跟住一个会改变状态的具体动作. Primary focus: back at desk, IP changes strategy: no longer asks for conclusion first. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: CM → RM. Frame delta: back at desk, IP changes strategy: no longer asks for conclusion first. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 让观众跟住一个会改变状态的具体动作. Primary focus: back at desk, IP changes strategy: no longer asks for conclusion first. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: CM → RM. Frame delta: back at desk, IP changes strategy: no longer asks for conclusion first. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -1172,7 +1793,14 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "NONE",
       "aspect_ratio": "16:9",
@@ -1183,8 +1811,34 @@
         "P1 immediately readable: back at desk, IP changes strategy: no longer asks for conclusion first",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_027",
@@ -1210,7 +1864,7 @@
       "source_frame_ref": "SRCH_VB026.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: new evidence challenge is focal: 哪一句明确说明服务费会退. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: new evidence challenge is focal: 哪一句明确说明服务费会退. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -1220,7 +1874,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1231,8 +1892,34 @@
         "P1 immediately readable: new evidence challenge is focal: 哪一句明确说明服务费会退",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_028",
@@ -1256,7 +1943,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众跟住一个会改变状态的具体动作. Primary focus: AI returns attention to the same official page. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: CM → RM. Frame delta: AI returns attention to the same official page. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 让观众跟住一个会改变状态的具体动作. Primary focus: AI returns attention to the same official page. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: CM → RM. Frame delta: AI returns attention to the same official page. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -1267,7 +1954,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1278,8 +1972,34 @@
         "P1 immediately readable: AI returns attention to the same official page",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_029",
@@ -1323,7 +2043,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_030",
@@ -1347,7 +2081,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: whole correct page is shown as one evidence object. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: whole correct page is shown as one evidence object. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: whole correct page is shown as one evidence object. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: whole correct page is shown as one evidence object. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -1358,7 +2092,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1369,8 +2110,34 @@
         "P1 immediately readable: whole correct page is shown as one evidence object",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_031",
@@ -1395,7 +2162,7 @@
       "source_frame_ref": "SRCH_VB030.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: attention narrows from whole page to the exact supporting sentence. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: attention narrows from whole page to the exact supporting sentence. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -1405,7 +2172,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1416,8 +2190,34 @@
         "P1 immediately readable: attention narrows from whole page to the exact supporting sentence",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_032",
@@ -1441,7 +2241,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: same question-page workspace compares true correspondence vs merely similar wording. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: same question-page workspace compares true correspondence vs merely similar wording. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: same question-page workspace compares true correspondence vs merely similar wording. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: same question-page workspace compares true correspondence vs merely similar wording. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_POLICY_PAGE_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -1452,7 +2252,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1463,8 +2270,34 @@
         "P1 immediately readable: same question-page workspace compares true correspondence vs merely similar wording",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_033",
@@ -1505,7 +2338,21 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "identity_lock": {
+        "required": false,
+        "canonical_character_ids": [],
+        "canonical_identity_ref_required": false,
+        "policy_ref": null,
+        "hard_constraints": [
+          "preserve approved sequence-local character identity within its sequence"
+        ],
+        "reference_precedence": [
+          "APPROVED_SEQUENCE_CHARACTER_REF",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_034",
@@ -1527,7 +2374,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: multiple relevant lines are considered together before final conclusion. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: multiple relevant lines are considered together before final conclusion. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 通过故事内对象关系让机制变得可理解. Primary focus: multiple relevant lines are considered together before final conclusion. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: multiple relevant lines are considered together before final conclusion. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -1536,7 +2383,14 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "NONE",
       "aspect_ratio": "16:9",
@@ -1547,8 +2401,34 @@
         "P1 immediately readable: multiple relevant lines are considered together before final conclusion",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_035",
@@ -1572,7 +2452,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让多个真实状态形成一个可识别模式. Primary focus: one answer package remains on screen while source and link are confirmed real. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: one answer package remains on screen while source and link are confirmed real. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 让多个真实状态形成一个可识别模式. Primary focus: one answer package remains on screen while source and link are confirmed real. Composition: CENTER_NEAR_CENTER; focus mode: SINGLE; density: MEDIUM. Attention: CM → CM. Frame delta: one answer package remains on screen while source and link are confirmed real. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -1583,7 +2463,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1594,8 +2481,34 @@
         "P1 immediately readable: one answer package remains on screen while source and link are confirmed real",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_036",
@@ -1618,7 +2531,7 @@
       "source_frame_ref": "SRCH_VB035.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: quoted sentence is also confirmed real. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: quoted sentence is also confirmed real. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -1628,7 +2541,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "NONE",
       "aspect_ratio": "16:9",
@@ -1639,8 +2559,34 @@
         "P1 immediately readable: quoted sentence is also confirmed real",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_037",
@@ -1663,7 +2609,7 @@
       "source_frame_ref": "SRCH_VB036.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: final conclusion alone remains mismatched/wrong. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: final conclusion alone remains mismatched/wrong. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -1671,7 +2617,14 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "NONE",
       "aspect_ratio": "16:9",
@@ -1682,8 +2635,34 @@
         "P1 immediately readable: final conclusion alone remains mismatched/wrong",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_038",
@@ -1707,7 +2686,7 @@
       },
       "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": "16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: IP sees a cited AI answer but does not treat the citation badge as proof by itself. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
+      "prompt": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. 16:9 simplified flat narrative comic. Dramatic job: 让观众读到人物对当前信息的即时反应. Primary focus: IP 的脸部/身体反应. Composition: OFF_CENTER_GAZE_SPACE; focus mode: SINGLE; density: LOW. Attention: LM → RM. Frame delta: IP sees a cited AI answer but does not treat the citation badge as proof by itself. Keep character identity refs: CHAR_IP_001. Keep scene refs: SCENE_WORKDESK_001. Use only these causal prop/UI refs: UI_AI_ANSWER_001. No brand/logo unless explicitly causal. No speech/thought bubbles, floating cards, decorative arrows or narration-duplication text. Keep bottom caption-safe area clear.",
       "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
@@ -1718,7 +2697,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1729,8 +2715,34 @@
         "P1 immediately readable: IP 的脸部/身体反应",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_039",
@@ -1755,7 +2767,7 @@
       "source_frame_ref": "SRCH_VB038.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: a low-stakes answer passes without a verification ritual; IP keeps working normally. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: a low-stakes answer passes without a verification ritual; IP keeps working normally. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -1765,7 +2777,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1776,8 +2795,34 @@
         "P1 immediately readable: a low-stakes answer passes without a verification ritual; IP keeps working normally",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_040",
@@ -1805,14 +2850,21 @@
       ],
       "prompt": null,
       "edit_delta": null,
-      "composite_instructions": "Compose only the story-source crops required by the Blueprint. Primary sources: UI_AI_ANSWER_001. Preserve each source's identity, remove non-causal chrome, leave intentional whitespace, add no VS/arrows/conclusion card, and use POST_OVERLAY for exact text.",
+      "composite_instructions": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Compose only the story-source crops required by the Blueprint. Primary sources: UI_AI_ANSWER_001. Preserve each source's identity, remove non-causal chrome, leave intentional whitespace, add no VS/arrows/conclusion card, and use POST_OVERLAY for exact text.",
       "negative_constraints": [
         "real/invented brand logos",
         "speech/thought bubbles",
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1823,8 +2875,34 @@
         "P1 immediately readable: 故事源 A 中的关键对象/短句 / 故事源 B 中的关键对象/短句",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_041",
@@ -1849,7 +2927,7 @@
       "source_frame_ref": "SRCH_VB040.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: IP pauses before action and turns back to the source/answer with one deliberate follow-up. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: IP pauses before action and turns back to the source/answer with one deliberate follow-up. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -1859,7 +2937,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1870,8 +2955,34 @@
         "P1 immediately readable: IP pauses before action and turns back to the source/answer with one deliberate follow-up",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_042",
@@ -1894,7 +3005,7 @@
       "source_frame_ref": "SRCH_VB041.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: verification question becomes the action: 哪句话真的支持这个结论. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: verification question becomes the action: 哪句话真的支持这个结论. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -1902,7 +3013,14 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "NONE",
       "aspect_ratio": "16:9",
@@ -1913,8 +3031,34 @@
         "P1 immediately readable: verification question becomes the action: 哪句话真的支持这个结论",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_043",
@@ -1939,7 +3083,7 @@
       "source_frame_ref": "SRCH_VB042.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: final setup returns to the seductive feeling of a correct webpage. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style.  Keep final callback statement hidden: 网页确实找对了.",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: final setup returns to the seductive feeling of a correct webpage. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style.  Keep final callback statement hidden: 网页确实找对了.",
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -1949,7 +3093,14 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -1960,8 +3111,34 @@
         "P1 immediately readable: 即将发生变化的同一 causal region / 阅读位置",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     },
     {
       "execution_id": "EXEC_044",
@@ -1986,7 +3163,7 @@
       "source_frame_ref": "SRCH_VB001.png",
       "source_asset_refs": [],
       "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: 同样看见来源，但行为从迟疑/被动接受变成主动核验. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: 同样看见来源，但行为从迟疑/被动接受变成主动核验. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
       "composite_instructions": null,
       "negative_constraints": [
         "summary checklist",
@@ -1995,7 +3172,14 @@
         "brand/logo",
         "cat",
         "extra decorative props",
-        "full policy page"
+        "full policy page",
+        "teen/child appearance",
+        "oversized cute anime eyes",
+        "rounded juvenile jaw/chin",
+        "weakened/removed nose structure",
+        "chibi or oversized-head body ratio",
+        "blush-driven cute-boy reinterpretation",
+        "hoodie or any costume replacement"
       ],
       "text_render_mode": "POST_OVERLAY",
       "aspect_ratio": "16:9",
@@ -2006,8 +3190,37 @@
         "P1 immediately readable: opening callback resolves: official page is correct, and IP clicks/checks it before accepting the conclusion",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
+      ],
+      "identity_lock": {
+        "required": true,
+        "canonical_character_ids": [
+          "CHAR_IP_001"
+        ],
+        "canonical_identity_ref_required": true,
+        "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "hard_constraints": [
+          "same clearly adult young male identity as CHAR_IP_001",
+          "natural adult eye size",
+          "stable face outline / jaw / chin / nose structure",
+          "stable adult head-body proportion",
+          "stable canonical dark short tousled hair silhouette and fringe",
+          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+          "style simplification may reduce rendering detail only; never identity anatomy"
+        ],
+        "reference_precedence": [
+          "OWNER_CANONICAL_IP",
+          "APPROVED_PRODUCTION_CHARACTER_MASTER",
+          "APPROVED_ANGLE_POSE",
+          "PREVIOUS_ACCEPTED_FRAME",
+          "PROMPT_PROSE"
+        ]
+      }
     }
-  ]
+  ],
+  "schema_version": "frame_execution_row.v0.3",
+  "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
+  "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT"
 }
