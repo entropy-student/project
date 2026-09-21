@@ -1,4 +1,4 @@
-# Architecture v0.2
+# Architecture v0.3
 
 ## 1. System Boundary
 
@@ -139,7 +139,7 @@ episodes/<episode_id>/
 Signal
 + Why Now
 + Human Problem / Stakes
-+ AI Mechanism
++ Causal Mechanism
 + Curiosity Gap
 + Story Seed
 + Audience Payoff
@@ -158,7 +158,7 @@ Signal
 - desire；
 - obstacle；
 - stakes；
-- AI mechanism as causal rule；
+- locked causal mechanism / world rule；
 - turning point；
 - payoff。
 
@@ -274,39 +274,36 @@ BLOCKED_BY_REAL_INPUT
 
 Antigravity 是受限 Executor，不得倒过来决定故事、镜头、角色、Prompt、时间或剪辑风格。
 
-## 6. The Middle-Layer Translator
+## 6. Domain Translation Adapter
 
-这是本项目最关键的独有模块之一。
+This is a reusable boundary between domain research and story construction.
 
-输入：
-
+Generic input:
 ```text
-OpenAI 发布 X
-MCP
-Agent
-Context Window
-AI Memory
+Domain signal / concept / event
 ```
 
-输出不是“科普标题”，而是：
-
+Generic output:
 ```text
-Capability Change
+Domain Change / Rule
 → Human Consequence
 → Conflict
 → Storyable Situation
-→ AI Mechanism
+→ Causal Mechanism
 ```
 
-示例结构：
+The core does not assume AI.
 
+AI Adapter example:
 ```text
 Agent can act
-→ AI starts executing instead of only suggesting
+→ execution replaces suggestion
 → convenience vs control
 → a secretary that never asks for confirmation
 → agent/tool/permission/human-in-the-loop
 ```
+
+Other domain adapters may express economic causality, scientific mechanisms, historical causal chains, business systems, etc.
 
 ## 7. Story Engine Position
 
@@ -377,7 +374,7 @@ Adapter 必须回答：
 |---|---|
 | 选题没人关心 | Topic |
 | 太技术 / 太低级 | Middle-Layer Translator |
-| AI 机制错误 | KnowledgeCore |
+| causal mechanism / domain fact 错误 | KnowledgeCore |
 | 故事只是伪包装 | Story |
 | 口播像教程 / 演讲 | Script |
 | 镜头没有状态变化 / 仍像 PPT | Director |
@@ -460,7 +457,7 @@ G8 前禁止把 L0/L1 宣称成“全自动”。
 
 - Topic 先过 Hard Gates，再比较机会强弱；
 - 每期只有一个 `primary_content_job`：DISCOVERY / TRUST / SOLUTION；
-- 一条视频默认一个核心 AI mechanism；
+- 一条视频默认一个核心 causal mechanism；
 - `conversion_adjacency` 只描述未来需求邻近度，不允许倒逼硬广；
 - Final QA 增加 Visual Repetition Gate；
 - Metrics 必须拆分 Traffic / Trust / Conversion，禁止只看播放量；
