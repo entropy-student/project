@@ -1,4 +1,4 @@
-# Writer Quality Contract v0.4 — Bilibili-first
+# Writer Quality Contract v0.5 — Bilibili-first
 
 > **G3R STATUS: PASS.** This is the canonical Bilibili-first Writer Quality Contract for the current editorial baseline.
 
@@ -182,7 +182,7 @@ Editorial target is DAILY, but one-episode-per-day production throughput remains
 ## 8. Writer Invariants
 
 Writer 不得改变：
-- locked AI mechanism；
+- locked causal mechanism / domain mechanism；
 - key facts；
 - causal story skeleton；
 - protagonist desire；
@@ -233,18 +233,28 @@ Writer 不得改变：
 
 ---
 
-## 10. SRT Gate
+## 10. Writer → Timing Compiler Gate
 
-SRT 必须从 locked script 派生，不重写。
+Writer locks the **spoken text**, not the final timestamps.
 
-首轮无真实音频时：
-- 使用 5.0 chars/s 估算；
-- 按完整意群切；
-- 默认单 cue 约 1.4–3.5s；
-- punchline / reveal 可适当留白；
-- 时间连续、不重叠。
+Writer may provide semantic timing hints such as:
+- build;
+- punch;
+- reversal;
+- controlled landing;
+- intentional pause.
 
-真实 TTS/配音生成后必须重新对齐。
+The downstream Timing Compiler must derive Production SRT from:
+- locked spoken script;
+- semantic timing intent;
+- canonical Voice Timing Profile.
+
+Forbidden:
+- fixed chars/s timing as production authority;
+- Writer-local guessed timestamps overriding the Timing Compiler;
+- routine post-TTS creative retiming.
+
+Real TTS later validates execution. Material mismatch returns to the Voice Timing Profile / Timing Compiler.
 
 ---
 
@@ -264,7 +274,7 @@ Jingsui-derived Writer Style / Adapter baseline 只有在至少三个不同机�
 - 不改变 KnowledgeCore；
 - 不改变 StoryPremise 核心因果；
 - 文案不退化成教程；
-- 能稳定生成可直接口播的 Script + SRT；
+- 能稳定生成可直接口播的 Script + Timing handoff；
 
 才从 STRONG CANDIDATE 升为 **canonical Writer Style Source / restricted adapter baseline**。
 
