@@ -8,13 +8,13 @@
 
 ```text
 P0 / G1 / G2 / G2.5 / G3 / G3R / G4 = PASS
-G5 = IN_PROGRESS
+G5 = PASS_CANDIDATE
   G5A = PASS
   G5B = PASS_DIRECTION_LOCKED
   G5B.5 = PASS_KEEP_ITERATE
-  G5C Pilot: VB001 = PASS_WITH_MINOR
-  G5C Pilot: VB009 = RETRY_READY_FRESH_GENERATE_IP_POV_HANDS
-G6 = BLOCKED_BY_G5
+  G5C High-Risk Pilot = PASS_CANDIDATE (8/8 accepted)
+  Final blocker = REAL_REFERENCE_PERSISTENCE
+G6 = BLOCKED_BY_REAL_REFERENCE_PERSISTENCE
 ```
 
 当前 canonical editorial baseline：
@@ -26,7 +26,7 @@ G6 = BLOCKED_BY_G5
 - Daily Topic Planner v0.2 已启用；
 - Production throughput 仍为 UNPROVEN。
 
-Owner 当前执行线：**继续 G5 高风险 Pilot；先生成并 QA VB009，PASS 后进入 VB012；暂不进入 G6。**
+Owner 当前执行线：**先持久化并绑定 canonical character / scene / UI reference binaries，完成 reference-path validation；随后正式 G5 PASS 并进入 G6。**
 
 ## 一句话定位
 
@@ -170,10 +170,10 @@ G1  Worker Inventory + Canonical Contracts     ✅ PASS
 G2  Topic → Human Problem → Story MVP          ✅ PASS
 G2.5 Topic Supply / Ledger / Dedup             ✅ PASS
 G3  Story → Script / SRT MVP                   ✅ PASS
-G3R Bilibili Editorial / Narrative Rebaseline ◐ HOLD — 2 OPEN QUESTIONS
-G4  Script/SRT → Director / Shot Compiler MVP  ⛔ BLOCKED
-G5  Shotbook → Image Asset Package MVP         ⏳
-G6  Image Assets → Video MVP                   ⏳
+G3R Bilibili Editorial / Narrative Rebaseline ✅ PASS
+G4  Script/SRT → Director / Shot Compiler MVP  ✅ PASS
+G5  Shotbook → Image Asset Package MVP         ◐ PASS_CANDIDATE — real references pending
+G6  Low-Level Execution / Antigravity PoC      ⛔ BLOCKED_BY_REAL_REFERENCE_PERSISTENCE
 G7  Three-topic End-to-End Validation          ⏳
 G8  Semi-automated Orchestration               ⏳
 G9  Publish / Analytics Learning Loop           ⏳
@@ -225,7 +225,7 @@ EXECUTION_EVIDENCE.md（需要审计执行事实时）
 
 Owner 日常查看：`topic-ledger/calendar/YYYY-MM.md`。
 
-Daily Topic Radar 每日维护未来 7 天滚动排期；合格热点只可抢占 `planned` 槽位，`locked` / `published` 不得自动改写。执行合同见 `docs/DAILY_TOPIC_AUTOMATION.md`。
+Daily Topic Radar 每日维护未来 7 天滚动排期；合格热点只可抢占 `planned` 槽位，`locked` / `published` 不得自动改写。执行合同见 `docs/DAILY_TOPIC_AUTOMATION_V2.md`。
 
 
 ## G3 Writer baseline
@@ -233,19 +233,16 @@ Daily Topic Radar 每日维护未来 7 天滚动排期；合格热点只可抢�
 Writer quality 采用 McKee 因果骨架 + narrative transportation + short-form retention + Jingsui voice 四层模型。首轮 3 个 validation episode 已通过 Script/SRT QA；详见 `docs/WRITER_QUALITY_CONTRACT.md` 与 `docs/G3_VALIDATION_REVIEW.md`。
 
 
-## Current editorial review hold
+## Current execution focus
 
-The project is currently held at **G3R**. Owner accepts the overall direction for consolidation but explicitly has **not** issued PASS; two editorial questions remain unresolved.
+Editorial rebaseline (G3R) and Director / Shot Compiler (G4) are already PASS.
 
-Proposed Bilibili-first baseline:
-- daily editorial publishing target;
-- recurring first-person channel IP;
-- 3–5 minute primary duration target, with justified exceptions;
-- STORY_MODEL / STORY_ACTION editorial modes only;
-- first 21 published episodes as Season 0 calibration.
+Current production focus:
+- G5 high-risk Pilot is complete and accepted as PASS_CANDIDATE;
+- remaining blocker is executable canonical reference persistence;
+- G6 stays blocked until reference-path validation passes.
 
 See:
-- `docs/BILIBILI_CHANNEL_STRATEGY.md`
-- `docs/G3R_EDITORIAL_REVIEW.md`
-
-Current Daily Topic Radar remains active under the previously accepted v0.1 contract until this rebaseline receives Owner PASS.
+- `experiments/g5/blind-search-answer/17_HIGH_RISK_PILOT_REVIEW.md`
+- `docs/G5_GATE_REVIEW.md`
+- `CURRENT_STATUS.json`
