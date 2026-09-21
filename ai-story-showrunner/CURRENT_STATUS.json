@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_IN_PROGRESS_FRAME_BLUEPRINT_V04_CANONICAL_44_RECOMPILED_PILOT_READY",
+  "project_state": "G5_IN_PROGRESS_CHARACTER_IDENTITY_PATCH_CANONICAL_PILOT_REVALIDATION_REQUIRED",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "Frame Blueprint v0.4 is canonical. Search Case 44/44 Blueprints and execution rows structurally PASS. Next: run the new 8-beat Pilot; full 44-image batch remains not started.",
+  "owner_review_scope": "Character drift root cause reviewed and patched canonically. Revalidate one identity-critical frame (VB001) against canonical adult IP before resuming the remaining Pilot.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -311,7 +311,7 @@
     },
     "phase_c": {
       "name": "Frame Blueprint → Beat Binding → Execution Mode → Prompt/Edit Compiler",
-      "status": "PASS_CANDIDATE_PILOT_READY",
+      "status": "PILOT_REVALIDATION_REQUIRED_AFTER_CHARACTER_DRIFT_PATCH",
       "frame_blueprints": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json",
       "execution_rows": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
       "recompile_review": "experiments/g5/blind-search-answer/15_FRAME_BLUEPRINT_RECOMPILE_REVIEW.md",
@@ -343,7 +343,9 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Generate + QA the new 8-beat Pilot from v0.4 Blueprint/Execution rows. Do not start full 44-image batch until Pilot PASS."
+      "next": "First revalidate VB001 character identity. Do not use rejected juvenile/hoodie frames as continuity sources.",
+      "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT"
     },
     "phase_b_5": {
       "name": "Visual Acquisition Review",
@@ -362,6 +364,27 @@
       "schema": "schemas/frame_blueprint.schema.json",
       "validation": "experiments/g5/blind-search-answer/15_FRAME_BLUEPRINT_RECOMPILE_REVIEW.md",
       "finding": "Frame-level attention architecture is now canonical; one dramatic job, explicit P1/P2, one main delta, no-brand-by-default, source-crop comparison, derive-before-regenerate."
+    },
+    "character_identity_patch": {
+      "status": "CANONICAL_PATCH_APPLIED_RETEST_REQUIRED",
+      "policy": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "diagnosis": [
+        "style simplification was under-specified and allowed juvenile reinterpretation",
+        "youthful wording was too permissive",
+        "derive/edit needed explicit canonical identity reference precedence",
+        "costume drift to hoodie proved identity lock was not machine-enforced"
+      ],
+      "hard_locks": [
+        "CLEARLY_ADULT_YOUNG_MALE",
+        "NATURAL_ADULT_EYE_SCALE",
+        "STABLE_JAW_CHIN_NOSE",
+        "ADULT_BODY_PROPORTION",
+        "CANONICAL_HAIR_SILHOUETTE",
+        "WINE_RED_TOP_CREAM_COLLAR_COSTUME"
+      ],
+      "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
+      "previous_pilot_character_frames": "REJECTED_NOT_SOURCE_ELIGIBLE",
+      "next": "Regenerate only VB001 with canonical identity reference + hard lock; if maturity/face/costume PASS, resume remaining Pilot."
     }
   }
 }
