@@ -8,7 +8,8 @@
   "validation": {
     "status": "PASS",
     "issues": [],
-    "character_identity_patch": "APPLIED"
+    "character_identity_patch": "APPLIED",
+    "stale_continuity_preserve": "PASS_0"
   },
   "blueprints": [
     {
@@ -88,7 +89,6 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry",
         "UI_AI_ANSWER_001 shell/geometry",
         "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
@@ -2534,7 +2534,6 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "PROP_CONTACT_BOOK_001 shell/geometry",
-        "UI_AI_ANSWER_001 shell/geometry",
         "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB024",
