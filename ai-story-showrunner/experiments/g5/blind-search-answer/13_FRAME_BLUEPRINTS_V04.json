@@ -1501,10 +1501,11 @@
         "ISOLATION"
       ],
       "background_anchors": [
-        "stable answer-pane shell"
+        "stable policy-page shell",
+        "same crop/line spacing as adjacent policy evidence beats"
       ],
       "story_props": [
-        "UI_AI_ANSWER_001"
+        "UI_POLICY_PAGE_001"
       ],
       "remove_or_suppress": [
         "character",
@@ -1550,8 +1551,10 @@
       "subtitle_safe_check": "PASS",
       "acceptance_criteria": [
         "G4 intent preserved: BUILD_ANTICIPATION",
-        "P1 immediately readable: 即将发生变化的同一 causal region / 阅读位置",
-        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "P1 immediately readable: reading focus has moved to the next policy-line region",
+        "same policy-page crop/shell as the surrounding evidence sequence",
+        "the next line's exact content remains unreadable/withheld",
+        "no character, workdesk, AI-answer pane, brand/logo, arrows, warning icon or red/green polarity",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
       ],
