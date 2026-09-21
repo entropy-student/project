@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_AUTH_DOCKER
+CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_MANUAL_CONNECT
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -291,3 +291,12 @@ Formal decision: `docs/REVIEWER_DECISION_K3R6_PASS_OWNER_SANDBOX_AUTH.md`.
 Accepted: direct PayPal settings UI is healthy enough to continue; React #299 is an overview-page-only known nonblocking admin defect.
 
 Owner should now complete only PayPal Sandbox provider login/authorization on the Docker/MariaDB runtime at `http://localhost:8093/`. After Owner confirmation, resume the same K3 flow; do not restart earlier isolation Gates.
+
+
+## K3 Automatic Onboarding Callback Result / K3R7
+
+Provider-side completion did not write a local merchant connection: merchant connected=no, onboarding completed=no, merchant ID absent, Sandbox mode=no. Do not treat the prior provider success page as K3 Sandbox PASS.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R7_PAYPAL_SANDBOX_MANUAL_CONNECTION.md`.
+
+Owner should use PPCP `See advanced options` → Sandbox Mode → Manually Connect with SANDBOX REST app credentials entered only in the local WooCommerce UI. Do not expose credentials in chat/GitHub. Public callback/tunnel remains deferred until after Sandbox merchant connection is confirmed.
