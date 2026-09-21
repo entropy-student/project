@@ -854,3 +854,31 @@ Retry:
 - simplified flat narrative comic only.
 
 No theory rewrite required.
+
+
+---
+
+## G5 Pilot — VB025 Attempt 2 RETURN_CHARACTER_DRIFT
+
+Date: 2026-09-21
+
+Result:
+`SRCH_VB025 = RETURN_CHARACTER_DRIFT`.
+
+What improved:
+- two-person story payoff is now structurally correct;
+- supporting actor confidently presents the correct boss contact;
+- IP puzzled reaction makes the wrong-facet answer legible;
+- paper contact book works as the causal prop.
+
+What failed:
+- CHAR_IP_001 became juvenile/chibi again;
+- eyes enlarged, face rounded, chin shortened, blush/cute semantics increased;
+- costume drifted toward a burgundy hoodie instead of canonical wine-red + cream/off-white collar;
+- rendering moved toward cute anime rather than simplified flat narrative comic.
+
+Retry rule:
+preserve composition, blocking and prop action.
+Correct only recurring-IP identity/costume/style; keep the supporting actor adult and distinct.
+
+No G4/G5 architecture rewrite required.
