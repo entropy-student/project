@@ -762,6 +762,37 @@ OWNER_ACTION=NONE
 NEXT=STOP_AT_REVIEWER
 ```
 
+## K4 UI + Conversion & Trust — Reviewer checkpoint (2026-09-22)
+
+`PASS_CANDIDATE_K4_UI_CONVERSION_TRUST`
+
+K3 temporary cleanup is complete: WordPress home/siteurl are restored to `http://localhost:8093/`, localhost runtime is healthy, the Quick Tunnel is stopped, and the PPCP Sandbox connection was not disconnected. K4 implementation and verification covered Home, Product, FAQ, Shipping & Returns, and Contact while retaining Kadence structure, WooCommerce canonical commerce, native Gutenberg editing, minimal plugins, and the accepted responsive baseline.
+
+```text
+UI_MODIFICATION=PASS
+HOME_CONVERSION_TRUST=PASS
+PRODUCT_CONVERSION_TRUST=PASS
+FAQ=PASS
+SHIPPING_RETURNS=PASS_SAFE_FACTUAL_BOUNDARY
+CONTACT=PASS_SAFE_FACTUAL_BOUNDARY
+BUSINESS_TRUTH=PASS
+OWNER_EDITABILITY=PASS
+RESPONSIVE=PASS
+GUTENBERG_VALIDITY=PASS
+WOOCOMMERCE_BEHAVIOR=PASS
+PPCP_DISCONNECT_ACTIONS=0
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+```
+
+One batched Owner fact checkpoint remains before public sales: confirm final kit contents, duration/difficulty, shipping destinations/method/cost/timing, return window/conditions, missing-or-damaged-item support channel, public support email/response channel, and public business address. No invented claim was added in their absence.
+
+```text
+OWNER_ACTION=ONE_BATCHED_BUSINESS_FACT_CHECKPOINT
+NEXT=STOP_AT_REVIEWER
+```
+
 ## K3R10 Resumed Sandbox Checkout — Owner buyer checkpoint (2026-09-22)
 
 `RETURN_OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED`

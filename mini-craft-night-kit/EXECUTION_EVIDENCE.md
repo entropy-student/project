@@ -1840,3 +1840,123 @@ SECRET_VALUES_OUTPUT=NO
 PASS_CANDIDATE_K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
 STOP_AT_REVIEWER=YES
 ```
+
+## K4 UI + Conversion & Trust — local implementation and verification (2026-09-22)
+
+### K3 temporary environment cleanup
+
+K3 cleanup was completed before the K4 page work. The WordPress public-origin rebind was restored to the recorded local origin, localhost health was verified, and the temporary Quick Tunnel was stopped. The PPCP Sandbox merchant connection was not disconnected.
+
+```text
+K3_TEMP_PUBLIC_ORIGIN_ROLLBACK=PASS
+ORIGINAL_HOME_URL=http://localhost:8093/
+ORIGINAL_SITE_URL=http://localhost:8093/
+LOCAL_HOME_HTTP=200
+LOCAL_WPJSON_HTTP=200
+LOCAL_WP_ADMIN_AUTH_REDIRECT=302_EXPECTED
+PUBLIC_QUICK_TUNNEL=STOPPED
+PUBLIC_ORIGIN_AFTER_STOP=502_EXPECTED_UNAVAILABLE
+PPCP_DISCONNECT_ACTIONS=0
+K4_ROLLBACK_BACKUP=PASS
+```
+
+The rollback backup remains local only at `.artifacts/k4-preflight-20260922-011148` in the active runtime project. It was not committed to GitHub and its contents were not exported.
+
+### K4 audit and bounded implementation
+
+The audited scope was Home, Product, FAQ, Shipping & Returns, and Contact. The existing Kadence structure and approved Mini Craft assets were retained. Page content was updated with native Gutenberg blocks and factual boundaries; no clone-ui reconstruction, custom theme rebuild, or bulk CSS was introduced.
+
+```text
+HOME_PAGE_ID=939
+PRODUCT_ID=223
+FAQ_PAGE_ID=1121
+SHIPPING_RETURNS_PAGE_ID=9
+CONTACT_PAGE_ID=10
+HOME_SHOP_LINKS=3
+HOME_FAQ_LINKS=1
+FAKE_STAR_BLOCKS_REMOVED=10
+UNVERIFIED_TEMPLATE_CLAIMS=DISABLED
+FAKE_SOCIAL_LINKS=REMOVED
+DEMO_CONTACT_DATA=REMOVED
+SAMPLE_POLICY_TEXT=REMOVED
+MENU_PLACEHOLDER_ITEMS_REMOVED=10
+HEADER_CTA_LINK=PASS
+```
+
+The product remains the existing WooCommerce product and its existing local test metadata was not rewritten. WooCommerce remains the only canonical product, cart, checkout, order, and payment system. The theme/plugin set and versions were not changed:
+
+```text
+KADENCE_THEME=1.5.2
+KADENCE_BLOCKS=3.7.11_ACTIVE
+KADENCE_STARTER_TEMPLATES=2.3.4_ACTIVE
+WOOCOMMERCE=10.0.4_ACTIVE
+WOOCOMMERCE_PAYPAL_PAYMENTS=4.1.3_ACTIVE
+PLUGIN_POLICY=MINIMAL_PRESERVED
+```
+
+The following owner-confirmed business facts remain intentionally unfilled rather than invented: final kit contents, duration/difficulty, shipping destinations/method/cost/timing, return window/conditions, missing-or-damaged-item support channel, public support email/response channel, and public business address. These are one batched Owner checkpoint before public sales, not piecemeal implementation blockers.
+
+### Runtime, Gutenberg, and WooCommerce verification
+
+```text
+HOME_HTTP=200
+PRODUCT_HTTP=200
+FAQ_HTTP=200
+SHIPPING_RETURNS_HTTP=200
+CONTACT_HTTP=200
+CART_HTTP=200
+CHECKOUT_HTTP=302_EMPTY_CART_EXPECTED
+WPJSON_HTTP=200
+WP_ADMIN_AUTHENTICATED_EDITOR=PASS
+PPCP_MERCHANT_CONNECTED=YES
+PPCP_SANDBOX_MODE=YES
+PPCP_ONBOARDING_COMPLETED=YES
+DO_BLOCKS_RENDER=PASS
+RUNTIME_FATAL_ERROR_COUNT=0
+RUNTIME_PARSE_ERROR_COUNT=0
+RUNTIME_TIMEOUT_ERROR_COUNT=0
+```
+
+Gutenberg editor checks passed for Home, Product, FAQ, Shipping & Returns, and Contact. No invalid-block marker was observed, and the pages remain native/editable. Product, Cart, and Checkout behavior was left on the existing WooCommerce path; no order/payment logic was changed.
+
+### Responsive verification
+
+The accepted K1B responsive baseline was retained. K4 changed editable content, menu destinations, and unverified Kadence product/footer option output only; it did not change the responsive CSS or rebuild the Kadence layout system. A new local screenshot smoke matrix covered Home and Product at 375, 430, 768, 1024, 1366, 1440, 1920, 2048, and 2560px.
+
+```text
+K1B_RESPONSIVE_BASELINE_RETAINED=PASS
+K4_RESPONSIVE_SCREENSHOT_COUNT=18
+K4_SCREENSHOT_WIDTHS=375,430,768,1024,1366,1440,1920,2048,2560
+K4_HOME_MOBILE_SMOKE=PASS
+K4_HOME_ULTRAWIDE_SMOKE=PASS
+K4_PRODUCT_MOBILE_SMOKE=PASS
+K4_PRODUCT_DESKTOP_SMOKE=PASS
+KADENCE_LAYOUT_REBUILD=NO
+CUSTOM_CSS_ADDED=NO
+```
+
+### K4 result
+
+```text
+GATE=K4_UI_CONVERSION_TRUST
+UI_MODIFICATION=PASS
+HOME_CONVERSION_TRUST=PASS
+PRODUCT_CONVERSION_TRUST=PASS
+FAQ=PASS
+SHIPPING_RETURNS=PASS_SAFE_FACTUAL_BOUNDARY
+CONTACT=PASS_SAFE_FACTUAL_BOUNDARY
+BUSINESS_TRUTH=PASS
+OWNER_EDITABILITY=PASS
+RESPONSIVE=PASS
+GUTENBERG_VALIDITY=PASS
+WOOCOMMERCE_BEHAVIOR=PASS
+CANONICAL_COMMERCE_SYSTEM=WOOCOMMERCE
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+PASS_CANDIDATE_K4_UI_CONVERSION_TRUST
+STOP_AT_REVIEWER=YES
+```
