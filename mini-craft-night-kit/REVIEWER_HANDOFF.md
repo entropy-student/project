@@ -210,3 +210,10 @@ Current Gate: `K3_PAYPAL_SANDBOX`.
 PayPal login/account authorization/KYC/Secrets/production enablement remain Owner checkpoints.
 
 GitHub handoff stable-Gate count is now 4; a separate Governance Change Gate is eligible but has not been opened or promoted automatically.
+
+
+## K3 Authorization
+
+Formal decision: `docs/REVIEWER_DECISION_K3_PAYPAL_SANDBOX.md`.
+
+Executor should proceed autonomously through official WooCommerce PayPal Payments Sandbox setup and testing until an actual Owner-only PayPal authorization step is required. Never request Secrets in GitHub/chat. If provider callback cannot reach localhost, return `RETURN_K3_PUBLIC_CALLBACK_REQUIRED` rather than creating an unauthorized public endpoint.
