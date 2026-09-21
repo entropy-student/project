@@ -1,0 +1,111 @@
+{
+  "profile_id": "VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1",
+  "version": "2.1",
+  "status": "CANONICAL_PASS_WITH_MINOR",
+  "frozen_date": "2026-09-22",
+  "voice": {
+    "engine": "CosyVoice-300M",
+    "mode": "zero_shot",
+    "seed": 1986,
+    "sample_rate_hz": 22050,
+    "reference_audio": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\reference-clone.wav",
+    "reference_text": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\reference-clone-text.txt"
+  },
+  "normalization": {
+    "algorithm": "deterministic_energy_vad",
+    "frame_length_ms": 10,
+    "hop_length_ms": 5,
+    "threshold_db": -50,
+    "head_margin_ms": 60,
+    "tail_margin_ms": 120,
+    "preserve_internal_semantic_pauses": true
+  },
+  "base_predictor": {
+    "source": "V1 Huber regression retained as point predictor",
+    "intercept_sec": -0.0076,
+    "coefficients": {
+      "cjk_char_count": 0.1284,
+      "latin_or_abbrev_token_count": 0.737,
+      "arabic_number_token_count": 0.4201,
+      "soft_punctuation_count": 0.468,
+      "hard_punctuation_count": 0.2033,
+      "short_utterance_indicator": -0.1311
+    },
+    "note": "V1 point predictor is not sufficient alone; safety branches below are mandatory."
+  },
+  "semantic_speed_map": {
+    "NORMAL": 1,
+    "PUNCH_SETUP": 1,
+    "FAST_NORMAL": 1.06,
+    "FAST_CLEAR": 1.08,
+    "CONTROLLED": 1,
+    "FINAL": 0.96
+  },
+  "safety_rules": {
+    "short_normal": {
+      "condition": "semantic_class == NORMAL && content_unit_count <= 7",
+      "short_normal_floor_sec": 1.4715,
+      "rule": "allocated = max(base_prediction_without_negative_short_term, short_normal_floor_sec)"
+    },
+    "mixed_latin_arabic": {
+      "condition": "latin_or_abbrev_token_count > 0 && arabic_number_token_count > 0",
+      "mixed_margin_sec": 0.3178,
+      "rule": "replace additive latin+arabic fixed penalties with max(total_latin_penalty,total_arabic_penalty), then add mixed_margin_sec"
+    },
+    "controlled": {
+      "safe_cps": 5,
+      "rule": "semantic_floor = cjk_char_count / 5.0 / intended_speed; allocated = max(v2_prediction, semantic_floor)"
+    },
+    "final": {
+      "safe_cps": 5.5,
+      "rule": "semantic_floor = cjk_char_count / 5.5 / intended_speed; allocated = max(v2_prediction, semantic_floor)"
+    }
+  },
+  "production_acceptance": {
+    "primary_metric": "one-sided timing safety",
+    "required_extra_speed_pass_max": 1.03,
+    "required_extra_speed_minor_max": 1.05,
+    "return_if_required_extra_speed_gt": 1.05,
+    "tail_slack_guidance_sec": {
+      "PUNCH_FAST_CLEAR": 0.3,
+      "NORMAL_FAST_NORMAL": 0.6,
+      "CONTROLLED_FINAL": 0.9
+    },
+    "note": "Absolute error is diagnostic only; unsafe under-allocation is the primary blocker."
+  },
+  "validation": {
+    "v1_result": "RETURN_PROFILE_INSUFFICIENT",
+    "v2_targeted_result": "PASS_WITH_MINOR",
+    "v2_1_closeout_result": "PASS_WITH_MINOR",
+    "closeout_samples": {
+      "V21B001": {
+        "class": "CONTROLLED",
+        "allocated": 4.2,
+        "actual": 3.4466,
+        "required_extra_speed": 1,
+        "tail_slack": 0.7534,
+        "result": "PASS_WITH_MINOR"
+      },
+      "V21B002": {
+        "class": "FINAL",
+        "allocated": 4.1667,
+        "actual": 3.6539,
+        "required_extra_speed": 1,
+        "tail_slack": 0.5128,
+        "result": "PASS"
+      }
+    }
+  },
+  "production_policy": {
+    "normal_episode_recalibration_required": false,
+    "use_for_production_srt": true,
+    "material_miss_return_code": "RETURN_VOICE_TIMING_PROFILE_MISS",
+    "recalibrate_if": [
+      "TTS engine/model materially changes",
+      "reference voice changes",
+      "speaking style changes",
+      "language changes",
+      "repeated material profile misses"
+    ]
+  }
+}
