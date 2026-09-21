@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_MANUAL_CONNECT
+CURRENT_GATE=K3R8_PAYPAL_SANDBOX_CREDENTIAL_PLUGIN_ISOLATION
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -427,3 +427,12 @@ Reviewer chooses the official manual Sandbox connection path before authorizing 
 Formal decision: `docs/REVIEWER_DECISION_K3R7_PAYPAL_SANDBOX_MANUAL_CONNECTION.md`.
 
 Current checkpoint: `OWNER_K3_PAYPAL_SANDBOX_MANUAL_CONNECT`.
+
+
+## K3R7 Result / K3R8 Authorization
+
+Official PPCP manual Sandbox connection still returns `Could not connect to PayPal. Please verify your credentials and try again.` after Owner re-entered Sandbox credentials.
+
+Reviewer will now separate credential validity, container network/TLS, and PPCP 4.1.3 manual-connect behavior. No more blind reconnect attempts.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8_PAYPAL_SANDBOX_CREDENTIAL_PLUGIN_ISOLATION.md`.
