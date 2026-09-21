@@ -720,3 +720,14 @@ Persistent package:
 
 Next main-line gate:
 `G6 Low-Level Execution Package / Antigravity PoC`.
+
+
+## 2026-09-21 — SRT / Audio Timing Rebaseline
+
+- Root cause confirmed: G4 Visual Beat timing estimates were incorrectly reused as speech-duration contracts.
+- CosyVoice PoC: baseline PASS, punch PASS, high-risk sentence required 1.407x and was audibly unacceptable.
+- Canonical timing authority is now FINAL_AUDIO first.
+- New canonical contract: `docs/SRT_AUDIO_TIMING_STANDARD.md`.
+- G6 Audio Mode resolved to `A_UPSTREAM_COSYVOICE`.
+- Existing `08_REFERENCE_TIMING.srt` is planning-only and must not drive production TTS.
+- Next: generate full natural Speech Units → FINAL_AUDIO → FINAL_AUDIO_ALIGNED.srt → retime 44 Visual Beats → exact Shot Timeline.
