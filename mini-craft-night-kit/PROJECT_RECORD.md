@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE
+CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_SECRET_ROTATION_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -640,3 +640,24 @@ GLOBAL_GOVERNANCE_CHANGED=NO
 Goal: retain GitHub as the full evidence/truth plane while requiring compact structured chat receipts containing Gate, result, summary, evidence files, commit, Owner action, and stop/next state.
 
 Reference: `docs/SIDE_TASK_GITHUB_HANDOFF_STRUCTURED_RECEIPT.md`.
+
+
+## K3R10 Review — RETURN / Public Sandbox Origin Required
+
+K3R10 reached Checkout but did not reach buyer approval. PPCP client-token generation failed and PayPal rejected localhost webhook registration.
+
+```text
+K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE=RETURN
+RETURN_K3_PUBLIC_CALLBACK_REQUIRED=ACCEPTED
+PUBLIC_SANDBOX_ORIGIN_REQUIRED=YES
+ORDER_CREATED=NO
+PAYPAL_CAPTURE_ACTIONS=0
+CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_SECRET_ROTATION_REQUIRED
+```
+
+Reviewer source inspection shows client-token generation is separate from webhook registration but uses the domain derived from WordPress `home_url()`. Therefore the next bounded Gate provides one temporary reversible HTTPS public Sandbox origin for the local runtime rather than a webhook-only workaround.
+
+A Sandbox credential-bearing diagnostic output incident was also recorded. The affected Sandbox Secret must be rotated before any further use; the new Secret remains Owner-only.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R10_RETURN_K3R11_PUBLIC_SANDBOX_ORIGIN.md`.
+Incident: `docs/SECURITY_INCIDENT_K3R10_SANDBOX_CREDENTIAL_OUTPUT.md`.
