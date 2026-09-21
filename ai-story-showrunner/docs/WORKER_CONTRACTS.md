@@ -1,4 +1,4 @@
-# Worker Contracts v0.1
+# Worker Contracts v0.2
 
 ## 1. Contract Philosophy
 
@@ -38,7 +38,7 @@ signal:
 why_now:
 human_problem:
 human_stakes:
-ai_mechanism:
+causal_mechanism:
 one_mechanism_only:
 curiosity_gap:
 story_seed:
@@ -128,7 +128,7 @@ story_summary_without_jargon:
 - locked KnowledgeCore；
 - locked StoryPremise；
 - duration；
-- speaking rate / voice；
+- voice profile / speaking-style config；
 - platform；
 - IP config；
 - primary_content_job；
@@ -140,7 +140,7 @@ story_summary_without_jargon:
 title
 hook
 locked_spoken_script
-srt
+semantic_timing_hints
 claim_map
 term_reveal_timestamp_or_section
 ```
@@ -155,7 +155,34 @@ term_reveal_timestamp_or_section
 - 改核心机制；
 - 新增未经证实的事实；
 - 把 story 重新变成 explainer；
-- SRT 与 locked script 不一致。
+- 改写或绕过 locked spoken script；
+- 自行生成与 Timing Compiler 冲突的 production timecode。
+
+---
+
+## 5A. Timing Compiler
+
+### Input
+- locked spoken script；
+- semantic timing hints / dramatic intent；
+- canonical Voice Timing Profile；
+- target duration constraints（如有）。
+
+### Required Output
+- Speech Units；
+- semantic pace class；
+- timing lock class；
+- authored semantic pauses；
+- `PRODUCTION_SUBTITLES.srt`；
+- `TTS_MANIFEST.json`。
+
+### Rule
+Timing Compiler owns spoken timing. It runs before Director.
+
+Real TTS is execution/QA. Material mismatch returns:
+`RETURN_VOICE_TIMING_PROFILE_MISS`
+
+Director and Executor may not redesign spoken timing.
 
 ---
 
@@ -163,7 +190,7 @@ term_reveal_timestamp_or_section
 
 ### Input
 - locked script；
-- SRT / audio timing；
+- locked Production SRT / TTS timing contract；
 - Character / Scene / Style context。
 
 ### Required Output
@@ -261,12 +288,18 @@ notes:
 
 ### Audio
 
-当前 `AUDIO_MODE=TBD`：
+Canonical:
+`AUDIO_MODE=EXECUTOR_LOCKED_COSYVOICE`
 
-- A：上游提供最终音频；
-- B：Antigravity 严格按锁定 script/SRT + voice config 生成 TTS。
+Upstream owns:
+- locked spoken text;
+- Production SRT;
+- semantic pace;
+- authored pauses;
+- Voice Timing Profile;
+- TTS Manifest.
 
-真实 PoC 后再冻结。
+Antigravity only executes the locked CosyVoice recipe. It may not rewrite, re-pace, redistribute semantic pauses or redesign SRT.
 
 ---
 
@@ -321,15 +354,15 @@ QA 不直接修复全部问题，只负责定位。
 ## Immutable after Gate PASS
 
 - `KnowledgeCore.key_claims`
-- `StoryPremise.mechanism_in_story`
+- `StoryPremise.mechanism_in_story` / locked causal mechanism
 - locked script text（Script Gate 后）
-- timeline source（真实配音存在时）
+- Production SRT / TTS Manifest timing contract
 
 需要改变必须显式 reopen 对应 Gate。
 
 ## Derived artifacts
 
-- SRT；
+- Production SRT（可由 locked script + profile 重建，但一旦下游 Gate 锁定即为时间轴父级）；
 - Visual Beats；
 - prompts；
 - crops；
