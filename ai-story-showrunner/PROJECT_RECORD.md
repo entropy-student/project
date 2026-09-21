@@ -739,3 +739,11 @@ Current:
 - Prop-only / giant-phone output failed the required two-person analogy payoff.
 - Style also drifted into realistic/3D product-demo rendering.
 - Retry locked to a simplified-flat two-shot: IP puzzled + supporting actor confidently showing paper contact book.
+
+
+## 2026-09-21 — VB025 attempt 2 character drift
+
+- Story composition/payoff now works.
+- `SRCH_VB025 = RETURN_CHARACTER_DRIFT`.
+- Recurring IP again drifted juvenile/chibi and hoodie-like.
+- Next retry preserves composition/contact-book action and corrects identity/style only.
