@@ -1,8 +1,8 @@
-# Story Showrunner Skill Productization Target v0.1
+# Story Showrunner Skill Productization Target v0.2
 
 ## Status
 
-`CANONICAL TARGET / EXTRACT AFTER END-TO-END VALIDATION`
+`CANDIDATE EXTRACTION APPROVED / CANONICAL PROMOTION AFTER END-TO-END VALIDATION`
 
 Date: 2026-09-21
 
@@ -16,7 +16,7 @@ The intended long-term artifact is a reusable Skill:
 
 The Skill owns the generic narrative-video production control plane. AI is only the first Domain Adapter.
 
-Do NOT migrate the repository yet. First close the current end-to-end production validation; then extract stable contracts into the Skill library in one controlled migration.
+Do not copy the repository wholesale. Extract the stable generic contracts into a **candidate Skill now**, after canonical-conflict reconciliation. Keep the current project as the validation/runtime fixture. Promote the candidate Skill to CANONICAL only after end-to-end production validation.
 
 ## 2. Default invocation
 
@@ -135,18 +135,42 @@ Later TTS generation is primarily an execution/QA step, not a normal second crea
 
 A large mismatch during TTS indicates a Timing Compiler / Voice Timing Profile defect and should RETURN for system correction.
 
-## 7. Migration gate
+## 7. Two-stage migration lifecycle
 
-Extract to the Skill library only after:
+### Stage A — Candidate extraction now
 
-- Voice Timing Profile is calibrated;
-- production SRT is validated against real TTS;
-- one complete Antigravity Production Package is compiled;
-- Antigravity completes TTS + image generation + edit + export;
-- final QA can localize failures;
-- the full current episode reaches a reviewable final video.
+Allowed after:
+- project-wide migration review exists;
+- P0 canonical conflicts are reconciled;
+- stable core vs domain adapter vs profile vs runtime-state boundaries are explicit.
 
-At that point:
-- generic contracts move into `story-showrunner`;
-- AI-specific rules move into `adapters/ai/`;
-- episode outputs become run/workspace artifacts rather than permanent Skill source.
+Candidate extraction moves:
+- generic contracts;
+- schemas;
+- templates;
+- provider/domain adapters;
+- reusable profiles.
+
+It does **not** move:
+- episode artifacts;
+- Pilot history;
+- calibration history except the frozen production profile;
+- live project Gate state.
+
+Candidate status:
+`CANDIDATE / VALIDATION_REQUIRED`
+
+### Stage B — Canonical promotion after E2E
+
+Promote `story-showrunner` to CANONICAL only after:
+- frozen Voice Timing Profile is used to compile a Production SRT;
+- one complete Production Package is compiled;
+- executor completes TTS + image generation + edit + export;
+- final QA localizes failures correctly;
+- the current validation episode reaches a reviewable final video.
+
+After PASS:
+- the Skill becomes the default reusable control plane;
+- the current `ai-story-showrunner` project becomes a validation/history workspace;
+- future episode runtime state lives outside Skill source.
+
