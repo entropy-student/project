@@ -747,3 +747,12 @@ Current:
 - `SRCH_VB025 = RETURN_CHARACTER_DRIFT`.
 - Recurring IP again drifted juvenile/chibi and hoodie-like.
 - Next retry preserves composition/contact-book action and corrects identity/style only.
+
+
+## 2026-09-21 — VB025 Pilot pass with character risk
+
+- `SRCH_VB025 = PASS_WITH_MINOR_CHARACTER_RISK`.
+- Story payoff and two-person blocking are validated.
+- Residual recurring-IP drift remains and is explicitly deferred.
+- Canonical IP image-reference persistence promoted to a hard prerequisite before G6.
+- Next: final high-risk Pilot beat VB044.
