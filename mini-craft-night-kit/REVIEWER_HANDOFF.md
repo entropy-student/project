@@ -9,14 +9,14 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K2_WOOCOMMERCE_COMMERCE_LOOP
+CURRENT_GATE=K3_PAYPAL_SANDBOX
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
 K1_MUST_FIX_MOBILE_375=YES
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
-GITHUB_HANDOFF_TRIAL_SUCCESS_COUNT=2
+GITHUB_HANDOFF_TRIAL_SUCCESS_COUNT=4
 ```
 
 Formal decisions:
@@ -195,3 +195,18 @@ K2 should verify the local Product → Add to Cart → Cart → Checkout → Ord
 Formal decision: `docs/REVIEWER_DECISION_K2_WOOCOMMERCE_COMMERCE_LOOP.md`.
 
 Executor should verify the local WooCommerce commerce loop and stop at Reviewer. Do not enter PayPal, real payment, VPS, or production deployment.
+
+
+## K2 Final PASS
+
+Formal decision: `docs/REVIEWER_DECISION_K2_PASS.md`.
+
+Reviewer accepts the local Product → Add to Cart → Cart → Checkout → Order → Confirmation → Orders admin loop.
+
+Carry-forward: Studio SQLite required a local-only `hold_stock_minutes=0` workaround. It must not become production policy; normal stock reservation must be revalidated on the production database stack.
+
+Current Gate: `K3_PAYPAL_SANDBOX`.
+
+PayPal login/account authorization/KYC/Secrets/production enablement remain Owner checkpoints.
+
+GitHub handoff stable-Gate count is now 4; a separate Governance Change Gate is eligible but has not been opened or promoted automatically.
