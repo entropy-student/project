@@ -639,3 +639,34 @@ Execution interpretation:
 - VB016 must preserve VB015 crop/page geometry and reveal only the previously withheld line.
 
 No architecture change required.
+
+
+---
+
+## G5 Pilot — VB015 Attempt 1 RETURN_GENERATION_ONLY
+
+Date: 2026-09-21
+
+Result:
+`SRCH_VB015 = RETURN_GENERATION_ONLY`.
+
+What failed:
+- output expanded into a full help-center page;
+- sidebar/modules created excessive density;
+- the intended reading movement from previous line to next-line region was not visually dominant;
+- setup/reveal anticipation was weak.
+
+What did NOT fail:
+- G4 meaning;
+- matched setup/reveal architecture;
+- DERIVE_EDIT logic for full-episode production.
+
+Retry constraint:
+- tight crop only;
+- previous policy-line tail may remain visible;
+- next-line target region must be centered but blank/blurred/unreadable;
+- no sidebar, brand, full-page context, warning icon, arrows, or red/green polarity;
+- preserve exact crop/page geometry for VB016 reveal.
+
+Decision:
+no architecture rewrite; regenerate only.
