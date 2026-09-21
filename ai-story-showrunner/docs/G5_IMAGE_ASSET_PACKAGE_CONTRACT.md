@@ -1,8 +1,8 @@
-# G5 Shotbook → Frame / Asset / Execution Package Contract v0.3
+# G5 Shotbook → Frame / Asset / Execution Package Contract v0.4
 
 ## Status
 
-`G5 = IN_PROGRESS`
+`G5 = PASS / CANONICAL`
 
 Canonical sources:
 - `docs/G4_DIRECTOR_COMPILER_CONTRACT.md`
@@ -37,8 +37,25 @@ G5A Episode Asset Requirement Extraction
 → G5C2 Beat Asset Binding
 → G5C3 Execution Mode Selection
 → G5C4 Prompt / Edit Compiler
-→ G5 Pilot QA
+→ Automatic Package QA
 ```
+
+## 2A. Calibration Exception — NOT a normal episode Gate
+
+Manual/high-risk Pilot QA is **calibration-only**.
+
+Trigger it only when:
+- a new recurring character is introduced;
+- a new visual style is introduced;
+- image model/provider changes materially;
+- executor changes materially;
+- Prompt/Edit Compiler changes materially;
+- automated QA reveals a new repeated failure class.
+
+Normal episode flow does not require Owner review of first-batch key frames.
+
+If no calibration trigger exists:
+`G5C4 → Automatic Package QA → Production Package`
 
 ## 3. G5A — Episode Asset Inventory
 
@@ -352,7 +369,8 @@ Requires at least one full episode where:
 3. Beat assets are bound after Blueprint;
 4. every Beat has execution mode;
 5. no fake references;
-6. high-risk Pilot passes;
-7. executor package requires no creative improvisation.
+6. if a calibration exception was triggered, that bounded calibration passes; otherwise no Pilot is required;
+7. automatic package QA passes;
+8. executor package requires no creative improvisation.
 
 Actual full-episode image generation is downstream evidence; it is not required to define the G5 contract.
