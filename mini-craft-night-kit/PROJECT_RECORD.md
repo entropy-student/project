@@ -506,3 +506,15 @@ DO_NOT_ACCEPT_EXECUTOR_SUMMARY_AS_TRUTH_BY_ITSELF=YES
 ```
 
 This is a project review action, not a Governance modification.
+
+## K3R8D Executor Result / Owner OAuth Checkpoint
+
+Reviewer inspected the latest GitHub `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md` for K3R8D.
+
+Accepted at this checkpoint: the Executor's recorded diagnosis is internally consistent with the prior Owner-observed `LOCAL_HELPER_MISSING`, and the recorded repair targets the host-side PHP helper path/staging chain. Evidence records two no-secret end-to-end dry runs, retained local helper hashes/sizes, remote cleanup, and no credential use.
+
+Limitation: the retained `.artifacts` helper files are local-only and are not themselves available through GitHub, so Reviewer has not independently inspected their bytes. The next Owner execution is therefore also the real end-to-end verification of the repaired local artifacts.
+
+Current checkpoint: `OWNER_K3R8D_CONTAINER_OAUTH_REQUIRED`.
+
+Do not classify Sandbox credentials until the Owner run returns an HTTP OAuth result.
