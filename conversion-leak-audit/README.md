@@ -15,15 +15,15 @@ PF  理论 / 规则 / 开发前验证                PASS
 G1  WordPress Local Baseline               PASS
 G2  Safe Scanner V0                        PASS
 G3  Rule Engine V0                         MERGED / CLOSED
-G3.5 UI + Growth Design Freeze             NEXT
-G4  WordPress → Scanner → Top 3 本地闭环    PENDING
+G3.5 UI + Growth Design Freeze             PASS
+G4  WordPress → Scanner → Top 3 本地闭环    NEXT / EXECUTOR READY
 G4.5 Visual + Functional Acceptance        PENDING
 G5  Full Fix Queue + LLM + Skill Dogfood   PENDING
 
 VPS / 支付 / 生产                          HOLD
 ```
 
-当前不是继续写功能，而是先冻结 UI、增长路径、高保真和验收合同，再交给 Codex 实现。
+G3.5 已冻结并通过；当前进入 G4 本地免费闭环。Codex 只能按 G4 合同执行，并在任何编辑前完成源码基线可追溯预检。
 
 ## 阅读顺序
 
@@ -109,15 +109,16 @@ Unified Pay 目前尚未跑通并需要单独修改，因此不作为本项目�
 
 ## 当前下一步
 
-`G3.5 — UI + Growth Design Freeze`
-
-流程：
+`G4 — WordPress ↔ Scanner ↔ Top 3 Local Loop`
 
 ```text
-Reviewer + Growth Skill
-→ UI / Growth design
-→ Owner 审核高保真与产品路径
-→ freeze design / analytics / acceptance
-→ PASS_G3_5
-→ Codex 开始 G4
+Codex source-baseline precheck
+→ confirm reviewed scanner / WordPress source provenance
+→ rerun frozen regressions
+→ implement local URL → Scanner → Top 3 loop
+→ update EXECUTION_EVIDENCE.md / EXECUTOR_HANDOFF.md
+→ PASS_CANDIDATE_G4
+→ Reviewer independent PASS / RETURN
 ```
+
+若原始 source baseline 缺失、来源不明或无法对应既有验证结果：`RETURN_G4_SOURCE_BASELINE_UNRESOLVED`，禁止重建 G1/G2 代替原基线。
