@@ -573,3 +573,30 @@ Regenerate VB001 only
 → Resume remaining 8-beat Pilot
 ```
 
+## G5 Pilot Resume — VB001 Accepted
+
+Owner accepted the latest VB001 without further micro-polish.
+
+Result:
+`SRCH_VB001 = PASS_WITH_MINOR`
+
+Role:
+`CURRENT_CHARACTER_IN_SCENE_MASTER`
+
+Accepted qualities:
+- adult-young-male identity no longer juvenile;
+- canonical burgundy / cream-collar direction restored sufficiently for current Pilot;
+- P1 reaction readable;
+- clutter substantially reduced.
+
+Deferred minor polish:
+- collar geometry can be refined later;
+- P2 source cue can be reduced later;
+- background can be simplified later.
+
+Important:
+earlier juvenile/hoodie/drifted outputs remain `REJECTED_NOT_SOURCE_ELIGIBLE`.
+
+Next:
+`SRCH_VB009` cost-sheet action Pilot.
+
