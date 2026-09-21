@@ -1,392 +1,501 @@
-# SRT / Audio Timing Standard v0.1 — CANONICAL
+# SRT / Audio Timing Standard v0.2 — CANONICAL
 
 ## Status
 
-`CANONICAL / G6 AUDIO-TIMING REBASELINE / OWNER APPROVED`
+`CANONICAL / SEMANTIC-TIMING + AUDIO-FEASIBILITY MODEL`
 
 Date: 2026-09-21
 
 ## 1. Purpose
 
-This standard defines how locked script, TTS, SRT, Visual Beats and the final Shot Timeline obtain timing.
+This standard defines how locked Script, semantic rhythm, TTS, SRT, Visual Beats and the final Shot Timeline obtain timing.
 
-It exists because the Blind Search Answer PoC exposed a category error:
+The key correction is:
 
-> a Visual Beat duration estimate is not a speech-duration contract.
+> **Natural TTS duration is a feasibility measurement, not the creative timing authority.**
 
-The old reference timeline assigned 3.020s to:
+The previous v0.1 over-corrected toward “audio first” and risked erasing deliberate semantic pacing already designed upstream.
 
-`所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。`
+The production system therefore uses two different authorities:
 
-The locked CosyVoice voice produced the same text naturally in 4.2493s. Forcing it into 3.020s required 1.407x speech speed and was audibly unacceptable.
+- **Semantic Timing Intent** decides how a line should feel: fast / normal / slow / punch / build / reversal / hold / final.
+- **Measured TTS Audio** decides what is physically achievable with the locked voice without sounding unnatural.
 
-Therefore exact production timing must be compiled from measured audio, not inherited from G4 visual estimates.
-
----
-
-## 2. Timing authority
-
-Production timing authority is:
-
-```text
-LOCKED SCRIPT
-  ↓
-SPEECH UNIT SEGMENTATION
-  ↓
-FIXED VOICE PROFILE + TTS DRY RUN
-  ↓
-MEASURED AUDIO DURATIONS + EXPLICIT PAUSE BUDGET
-  ↓
-AUDIO MASTER
-  ↓
-FINAL SRT
-  ↓
-VISUAL-BEAT RETIMING
-  ↓
-SHOT TIMELINE
-```
-
-Hard rule:
-
-> **Audio Master is the production clock.**
-
-The following are NOT allowed to act as final production clocks:
-
-- planning speaking-rate estimates;
-- G4 Visual Beat estimated start/end;
-- image duration guesses;
-- subtitle cue count;
-- a desired total duration that has not passed audio feasibility review.
+Final timing must satisfy both.
 
 ---
 
-## 3. Separate the three timing units
+## 2. Two-clock model
+
+### 2.1 Creative clock — Semantic Timing Intent
+
+G4 / Director may intentionally require:
+- a quick line;
+- a slow landing;
+- a compressed build;
+- a delayed reveal;
+- a punch followed by silence;
+- a reversal hold;
+- a final line with breathing room.
+
+These are real creative constraints and MUST NOT be discarded simply because TTS at `speed=1.0` has a different natural duration.
+
+### 2.2 Physical clock — Measured Voice Feasibility
+
+The fixed production voice provides:
+- raw spoken duration;
+- feasible speed range;
+- real pause behavior;
+- leading/trailing silence;
+- pronunciation stability.
+
+This measurement prevents semantic timing targets from demanding physically bad speech.
+
+### 2.3 Final production clock
+
+The final Audio Master is the exact physical timeline **after** semantic timing constraints have been solved.
+
+Therefore:
+
+> **Semantic Timing Intent constrains the schedule; Audio Master freezes the solved schedule.**
+
+Audio Master is not allowed to erase upstream rhythm design.
+Semantic timing is not allowed to force obviously unnatural speech.
+
+---
+
+## 3. Separate four timing units
 
 ### 3.1 Speech Unit
 
-A Speech Unit is a natural TTS/prosody unit.
+A natural spoken/prosody unit.
 
-It is split by spoken meaning and breath/prosody, not by shot count.
-
-Examples that normally become separate Speech Units:
-
-- complete sentences;
-- setup line → quoted answer;
-- question setup → question;
-- reversal line;
-- deliberate punch line;
-- explicit semantic pause.
-
-Do not merge independent spoken thoughts only to match one Visual Beat.
+Split by spoken meaning, breath, setup/reveal structure and rhetorical function — not by image count.
 
 ### 3.2 Subtitle Cue
 
-A Subtitle Cue is a readability unit.
+A readability unit.
 
 Default:
 - one natural semantic unit per cue;
 - no blank line inside a cue;
 - maximum two visible lines;
-- preferred display duration about 1.2–4.5s;
-- shorter is allowed for punches;
-- longer than about 6s should normally be split at a semantic boundary.
-
-A Subtitle Cue does not need to equal a Visual Beat.
+- one cue may map to one or multiple Visual Beats;
+- one Visual Beat may span multiple cues.
 
 ### 3.3 Visual Beat
 
-A Visual Beat is a visual meaning/state unit.
+An image-state / visual-meaning unit controlled by G4.
 
-It is controlled by G4 dramatic/visual grammar.
+Visual Beat count never determines subtitle count.
 
-Relationships are explicitly many-to-many:
+### 3.4 Semantic Timing Unit
 
-- one Visual Beat may span several Subtitle Cues;
-- one Subtitle Cue may continue across a Visual Beat change;
-- neither count constrains the other.
+A Speech Unit or intentional silence carrying an explicit rhythm contract.
 
----
+Minimum fields:
 
-## 4. Script → Speech Unit segmentation rules
-
-Split when any of the following is true:
-
-1. a full sentence ends;
-2. a colon introduces a quote, answer or reveal;
-3. a setup line exists mainly to prepare the next line;
-4. a rhetorical question or answer needs its own beat;
-5. a contrast/reversal needs an audible reset;
-6. the unit is too long for natural single-breath delivery;
-7. the writer intentionally inserted a dramatic pause.
-
-Do not split merely because a new image appears.
-
-Do not keep two independent paragraphs in one SRT cue merely because G4 grouped them into one Visual Beat.
-
-`……` or equivalent silent reaction is not spoken subtitle text by default. Represent it as an explicit silence interval.
+- `timing_kind`
+- `pace_intent`
+- `timing_lock`
+- `reference_duration`
+- `pause_before_range_ms`
+- `pause_after_range_ms`
+- `stretch_priority`
 
 ---
 
-## 5. Voice profile is part of timing
+## 4. Timing kinds and pace intent
 
-Every production voice must have a fixed Voice Profile:
+Existing G4 timing kinds remain meaningful.
 
-- TTS engine/model;
-- reference audio;
-- reference text;
-- speaker/prompt cache;
-- random seed;
-- default TTS speed;
-- sample rate;
-- silence-normalization policy.
+Recommended default interpretation:
 
-For the current PoC:
+| timing_kind | pace_intent | speech behavior | pause behavior |
+|---|---|---|---|
+| NORMAL | NORMAL | conversational | ordinary |
+| BUILD / BUILD_PATTERN | FAST_NORMAL | slightly compressed | low pause |
+| PUNCH_SETUP | NORMAL | clear setup | short anticipatory pause |
+| PUNCH | FAST_CLEAR | concise, firm | visible post-pause allowed |
+| REVERSAL | CONTROLLED | do not rush reveal | stronger post-hold |
+| REACTION | N/A or SLOW | often little/no speech | hold matters |
+| FINAL | SLOW_NORMAL | allow landing | stronger tail pause |
 
-- engine: CosyVoice-300M;
-- mode: zero-shot;
-- reference audio/text: owner local canonical pair;
-- speaker prompt: cached once per run;
-- random seed: fixed;
-- model: loaded once per run.
+Initial voice-speed envelopes for calibration:
 
-Changing the reference voice requires a short re-calibration PoC before production use.
+- `SLOW_NORMAL`: about `0.92–1.00x`
+- `NORMAL`: about `0.97–1.05x`
+- `FAST_NORMAL`: about `1.02–1.10x`
+- `FAST_CLEAR`: about `1.03–1.12x`
+- `CONTROLLED`: about `0.97–1.05x`
 
----
+These are starting envelopes, not universal laws. The current voice must be calibrated by listening.
 
-## 6. Production timing procedure
-
-### Phase A — Planning only
-
-A planning speaking rate such as `5 chars/sec` may estimate rough episode length.
-
-It must be labelled `PLANNING_ONLY`.
-
-It must never be converted directly into final cue timestamps.
-
-### Phase B — Natural TTS dry run
-
-Generate every Speech Unit with the fixed Voice Profile at the episode's single base speed.
-
-Default principle:
-
-> keep one consistent voice speed across the episode.
-
-Measure the actual output duration of every unit.
-
-Normalize technical silence:
-- remove abnormal/generated leading silence;
-- preserve only a small consistent head margin;
-- remove abnormal trailing silence;
-- preserve a small natural tail.
-
-Do not cut voiced phonemes.
-
-### Phase C — Explicit pause budget
-
-Pauses are authored separately from speech duration.
-
-Default starting ranges:
-
-- ordinary adjacent sentence: 80–160ms;
-- setup → quote/answer: 80–180ms;
-- semantic transition: 160–300ms;
-- punch/reversal/reaction: 250–700ms;
-- deliberate silent dramatic beat: 500–1500ms.
-
-These are calibration ranges, not rigid constants.
-
-### Phase D — Build Audio Master
-
-Concatenate normalized Speech Units and explicit pauses.
-
-The resulting audio timeline defines:
-- cue start/end;
-- episode duration;
-- silence intervals.
-
-### Phase E — Compile SRT
-
-Build SRT from the measured Audio Master.
-
-SRT timestamps must describe the actual spoken audio.
-
-Do not stretch speech to match a pre-existing Visual Beat estimate.
-
-### Phase F — Retime Visual Beats
-
-Preserve:
-- Visual Beat order;
-- visual intention;
-- POV;
-- shot function;
-- setup/payoff relationship.
-
-Recompile exact Visual Beat start/end against the Audio Master.
-
-G4 reference durations may guide rhythm, but they are soft priors only.
+A line may intentionally be faster than “natural speed=1.0”.
+That is different from forcing a line to `1.407x` merely to rescue a bad allocation.
 
 ---
 
-## 7. Speed policy
+## 5. Timing lock classes
 
-### 7.1 Global speed
+### HARD_ANCHOR
 
-If the owner has a preferred total-duration target, first:
+Use when exact/near-exact duration is part of meaning:
+- deliberate silence;
+- reaction hold;
+- setup/reveal gap;
+- major reversal beat;
+- explicitly owner-approved anchor.
 
-1. adjust pause budgets within their allowed ranges;
-2. choose one global TTS speed for the episode.
+This time is protected during rebalancing.
 
-Default preferred global range:
+### SEMANTIC_RANGE
 
-`0.95x–1.08x`
+Use when pace matters but exact milliseconds do not.
 
-A wider value requires listening review.
+Example:
+- punch should be quick;
+- final line should land slowly;
+- explanation should remain conversational.
 
-### 7.2 Per-cue speed
+The compiler should preserve the intended range, not one arbitrary number.
 
-Per-cue speed changes are NOT the normal way to make timing fit.
+### ELASTIC
 
-Default:
-- `1.00x` local speed;
-- tiny technical correction only when necessary.
+Use for narration/explanation whose exact duration may donate or borrow time while preserving meaning.
 
-Recommended technical correction:
-- automatic: about `0.98x–1.02x`;
-- review: about `0.95x–1.05x`;
-- outside this range: reallocate timing instead of forcing speech.
+Most `NORMAL` exposition is elastic.
+
+---
+
+## 6. Reference duration is a prior, not disposable
+
+A G4 `reference_duration` may encode intentional rhythm and must not be thrown away.
+
+For each Semantic Timing Unit:
+
+1. keep the original reference duration;
+2. measure raw TTS duration at calibrated base speed;
+3. derive the speed needed to hit the old reference window;
+4. compare that speed with the unit's semantic speed envelope.
+
+### If feasible
+
+If the old reference duration can be achieved inside the semantic envelope:
+
+> keep the original window or stay very close to it.
+
+### If infeasible
+
+If the old reference duration requires speech outside the semantic envelope:
+
+> the compiler MUST NOT simply force the speed.
+
+Instead it performs local time reallocation.
+
+---
+
+## 7. Local time reallocation
+
+Reallocation happens in this order:
+
+1. preserve `HARD_ANCHOR` units;
+2. preserve semantic pace class;
+3. reduce unnecessary technical silence;
+4. use allowed speed range for the current timing kind;
+5. borrow time from nearby `ELASTIC` units with slack;
+6. redistribute within the same Semantic Shot / local Sequence first;
+7. preserve section anchor points and overall episode duration when feasible;
+8. only expand the section / episode when no acceptable local solution exists.
 
 Hard principle:
 
-> if one sentence needs major acceleration while nearby cues contain slack, the timeline is wrong.
+> **A high-risk line should borrow time from elastic neighbors before it is forced to sound unnatural.**
 
-### 7.3 Hard-duration target
+A timing change should be as local as possible.
 
-If a hard episode duration cannot be reached with:
-- allowed pause compression; and
-- one acceptable global speed,
-
-return:
-
-`RETURN_AUDIO_DURATION_TARGET_INCOMPATIBLE`
-
-Do not create local 1.3x–1.5x speech to rescue the schedule.
+Do not globally convert the entire episode to one “natural” pace merely because one line failed.
 
 ---
 
-## 8. High-risk timing gate
+## 8. Feasibility calculation
 
-Before exact Shot Timeline lock, run a full-script timing audit.
+For a unit:
 
-At minimum flag:
+- `N` = measured raw spoken duration at calibrated base voice;
+- `R` = original reference window;
+- `P` = protected/desired pause inside that window;
+- `A = R - P` = available spoken time;
+- `Q = N / A` = required speed ratio.
 
-- unusually long Speech Units;
-- very short windows;
-- quotation/setup chains;
-- reversal/punch sections;
-- cues whose natural audio is materially longer than a provisional allocation;
-- any local speed requirement beyond the technical correction range.
+Interpretation:
 
-PoC sampling must include:
+- if `Q` lies inside the semantic speed envelope → reference timing is feasible;
+- if `Q` is slightly outside → local redistribution first;
+- if `Q` is far outside → reference window is invalid for this voice/text pair.
 
-1. a normal baseline sentence;
-2. the densest/longest high-risk sentence;
-3. a short punch;
-4. when present, a quote/reversal or deliberate silence case.
-
-A high-risk case failure invalidates the timing model before full-episode execution.
+Do not judge by one universal ratio alone. The acceptable ratio depends on semantic intent.
 
 ---
 
-## 9. Current Blind Search Answer finding
+## 9. Pause is semantic, not leftover silence
 
-Observed CosyVoice results:
+Technical silence and dramatic pause are different.
 
-- baseline:
-  - natural 2.5542s;
-  - available 2.680s;
-  - PASS at 1.00x plus tail silence.
+### Technical silence
 
-- tight sentence:
-  - natural 4.2493s;
-  - old Visual-Beat-derived window 3.020s;
-  - required 1.4070x;
-  - audibly unacceptable;
-  - result: reference timing architecture failure, not TTS failure.
+Generated by TTS implementation.
+Normalize/remove as needed.
 
-- punch:
-  - natural 1.2771s;
-  - available 1.350s;
-  - PASS at 1.00x plus tail silence.
+### Semantic pause
 
-Conclusion:
+Intentionally authored.
 
-> `08_REFERENCE_TIMING.srt` remains a planning/reference artifact and MUST NOT be used as the production TTS timing contract.
+Initial ranges:
+
+- ordinary continuation: `60–140ms`
+- setup → quote/answer: `80–180ms`
+- semantic transition: `140–300ms`
+- punch/reversal hold: `250–700ms`
+- deliberate silent reaction: `500–1500ms`
+
+Semantic pauses are first-class timing units and must not be silently consumed to fix a dense line unless their lock permits it.
 
 ---
 
-## 10. File roles
+## 10. Production procedure
 
-### Reference / planning
+### Phase A — Lock semantic rhythm
 
-`REFERENCE_TIMING.srt`
+From Script + G4:
 
-May exist for rough G4 pacing only.
+- segment Speech Units;
+- preserve existing `timing_kind`;
+- assign `pace_intent`;
+- assign `timing_lock`;
+- retain old reference durations as priors;
+- identify explicit pauses / holds.
 
-Must be labelled non-production.
+### Phase B — Voice calibration dry run
 
-### Production
+Using fixed Voice Profile:
 
-`FINAL_AUDIO.wav`
-- canonical production clock.
+- generate each Speech Unit at calibrated base speed;
+- measure spoken duration;
+- normalize technical head/tail silence;
+- do not yet assemble final audio.
 
-`FINAL_AUDIO_ALIGNED.srt`
-- canonical subtitle timing.
+This is measurement, not final pacing.
 
-`07_SHOT_TIMELINE.csv`
-- exact visual timing compiled from FINAL_AUDIO.
+### Phase C — Timing solve
+
+For every unit:
+
+- test original reference window against its semantic speed envelope;
+- keep feasible windows;
+- locally rebalance infeasible windows;
+- protect anchors;
+- preserve sequence-level rhythm.
+
+### Phase D — Semantic-paced TTS
+
+Generate each Speech Unit at the solved semantic speed.
+
+The episode MAY contain intentionally different speeds when justified by timing kind.
+
+Random speed variation is prohibited.
+
+### Phase E — Build Audio Master
+
+Assemble:
+- solved spoken units;
+- authored semantic pauses;
+- protected holds.
+
+This becomes `FINAL_AUDIO.wav`.
+
+### Phase F — Compile final SRT
+
+Compile exact Subtitle Cue timestamps from the solved Audio Master.
+
+### Phase G — Compile exact Visual Beat timing
+
+Map accepted Visual Beats onto the solved audio timeline while preserving:
+- beat order;
+- meaning;
+- POV;
+- setup/reveal relation;
+- relative rhythm intent.
 
 ---
 
-## 11. G4 / G6 contract correction
+## 11. High-risk timing gate
 
-G4 decides:
-- what the beat means;
-- shot order;
-- visual intention;
-- viewpoint;
-- relative rhythm.
+Before full production, audit the whole script — not just one arbitrary case.
 
-G4 does NOT lock exact speech-constrained timestamps before Audio Master exists.
+Flag at minimum:
 
-G6 decides exact production time only after the Audio Master is measured and locked.
+- high text-density units;
+- very short reference windows;
+- long quoted lines;
+- punch/reversal chains;
+- protected silence;
+- units requiring speed outside their semantic envelope;
+- local regions with insufficient elastic slack.
+
+High-risk sample must include:
+
+1. normal baseline;
+2. densest line;
+3. short punch;
+4. reversal/quote/hold when present.
+
+A failed high-risk case triggers **timing reallocation**, not immediate script rewrite and not blind speed-up.
 
 ---
 
-## 12. Acceptance gate
+## 12. Blind Search Answer diagnosis
 
-Production timing may pass only when:
+Observed:
 
-- locked text is unchanged;
+### Baseline
+
+- raw TTS: `2.5542s`
+- old window: `2.680s`
+- feasible at normal pace
+- result: PASS
+
+### Tight line
+
+Text:
+
+`所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。`
+
+- raw TTS: `4.2493s`
+- old window: `3.020s`
+- required: `1.4070x`
+- listening result: unacceptable
+
+Correct diagnosis:
+
+> This does NOT prove that all old timing should be replaced by natural TTS timing.
+
+It proves that this specific reference window is infeasible for its current semantic category + voice + text.
+
+Correct repair:
+
+> preserve its semantic role, enlarge its local speech window, and recover time from nearby elastic beats where possible.
+
+### Punch
+
+- raw TTS: `1.2771s`
+- old window: `1.350s`
+- feasible
+- result: PASS
+
+Therefore the old timeline contains both valid and invalid allocations. It should be **calibrated**, not discarded.
+
+---
+
+## 13. File roles
+
+### `REFERENCE_TIMING.srt`
+
+Contains the original semantic rhythm proposal.
+
+Status:
+`REFERENCE / CALIBRATION INPUT`
+
+It is NOT production-final, but it is not meaningless.
+
+### `TIMING_CALIBRATION.json`
+
+Required G6 intermediate artifact.
+
+For each Speech Unit:
+
+- original reference duration;
+- timing kind;
+- timing lock;
+- measured raw TTS duration;
+- semantic speed envelope;
+- required ratio;
+- solved speed;
+- borrowed/donated time;
+- final duration;
+- validation result.
+
+### `FINAL_AUDIO.wav`
+
+Final solved semantic-paced audio.
+
+### `FINAL_AUDIO_ALIGNED.srt`
+
+Final subtitle timestamps.
+
+### `07_SHOT_TIMELINE.csv`
+
+Exact Visual Beat timeline compiled from the solved audio.
+
+---
+
+## 14. G4 / G6 responsibility
+
+### G4 owns
+
+- semantic rhythm;
+- `timing_kind`;
+- fast/slow/punch/reversal/hold intent;
+- reference duration / relative duration design;
+- timing anchors.
+
+### G6 owns
+
+- voice feasibility measurement;
+- speed-envelope calibration;
+- local reallocation;
+- final exact milliseconds;
+- Audio Master;
+- final SRT / Shot Timeline.
+
+G6 may not flatten all timing kinds into one natural speaking speed.
+
+G4 may not demand an infeasible exact duration after voice calibration.
+
+---
+
+## 15. Acceptance gate
+
+Timing passes only when:
+
+- locked text remains unchanged;
+- semantic timing intent is preserved;
+- protected anchors are preserved;
 - Voice Profile is fixed;
-- every Speech Unit has measured duration;
-- explicit pauses are represented;
+- high-risk units have been measured;
+- no line is made audibly unnatural merely to preserve a bad numeric window;
+- reallocation is local and traceable;
 - SRT is structurally valid;
-- no cue is forced into unnatural local speed;
-- exact Visual Beat timing has been recompiled from audio;
-- final Shot Timeline and Audio Master end at the same production time.
+- final Visual Beat timing matches solved audio;
+- timing calibration artifact records all exceptions.
 
 Failure codes:
 
 - `RETURN_SRT_STRUCTURE_INVALID`
-- `RETURN_SPEECH_UNIT_UNNATURAL`
+- `RETURN_SEMANTIC_TIMING_LOST`
+- `RETURN_TIMING_WINDOW_INFEASIBLE`
+- `RETURN_LOCAL_REALLOCATION_FAILED`
 - `RETURN_LOCAL_SPEED_EXCESSIVE`
-- `RETURN_AUDIO_DURATION_TARGET_INCOMPATIBLE`
 - `RETURN_TIMELINE_MISMATCH`
 
 ---
 
-## 13. Core principle
+## 16. Core principle
 
-> **先把话自然地说完，再决定画面在什么时候切。**
+> **语义先决定“这句话应该怎么快慢”，声音再验证“这个快慢能不能自然做到”。**
 
-Visual rhythm still matters, but exact time is negotiated around real speech instead of forcing speech into guessed visual windows.
+Do not force every line to natural speed.
+
+Do not force every line to an arbitrary pre-existing timestamp.
+
+Preserve the designed rhythm, then calibrate only the physically impossible parts.
