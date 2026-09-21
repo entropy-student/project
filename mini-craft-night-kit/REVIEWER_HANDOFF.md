@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=K3R9_POST_RESULT_RESTORE_AND_VERIFY
+CURRENT_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -496,3 +496,31 @@ K3R9 is not formally closed yet. Executor must restore Kadence Blocks 3.7.11 and
 Current checkpoint: `K3R9_POST_RESULT_RESTORE_AND_VERIFY`.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R9_OWNER_CONNECT_SUCCESS_POST_RESTORE_VERIFY.md`.
+
+
+## K3R9 Final Review — PASS / K3R10 Authorization
+
+Reviewer independently inspected the post-restore evidence and Executor commit.
+
+Accepted:
+
+```text
+K3R9_PPCP_MINIMAL_ENV_ISOLATION=PASS
+PLUGIN_STATE_RESTORED=PASS
+PPCP_MERCHANT_CONNECTED=YES
+PPCP_SANDBOX_CONNECTED=YES
+PPCP_ONBOARDING_COMPLETED=YES
+DIRECT_PAYPAL_SETTINGS_AFTER_RESTORE=PASS
+WORDPRESS_RUNTIME_AFTER_RESTORE=PASS
+WOOCOMMERCE_RUNTIME_AFTER_RESTORE=PASS
+```
+
+Important correction: K3R9 does **not** prove Kadence caused the earlier failure. Manual Connect succeeded after minimal-environment/transient isolation, and the connection remained healthy after restoring the complete prior plugin set. The exact historical trigger remains unresolved and is deferred unless it recurs.
+
+Current Gate: `K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE`.
+
+K3R10 resumes the original K3 payment acceptance path: checkout visibility → one Sandbox order → Owner buyer approval if required → capture → WooCommerce paid/processing state → provider/order correlation → callback/webhook inspection. No Live, real payment, tunnel, VPS, source patch, or version change.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R9_PASS_K3R10_SANDBOX_CHECKOUT_CAPTURE.md`.
+
+Project-local side task recorded: `docs/SIDE_TASK_GITHUB_HANDOFF_STRUCTURED_RECEIPT.md`. It is non-blocking and does not yet modify active Governance.
