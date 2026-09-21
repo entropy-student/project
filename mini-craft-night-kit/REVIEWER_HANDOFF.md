@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R8_SANDBOX_OAUTH_CHECK_REQUIRED
+CURRENT_GATE=K3R8B_LOCAL_OAUTH_HELPER_DIAGNOSTIC
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -318,3 +318,12 @@ Container DNS and HTTPS/TLS reachability to PayPal Sandbox passed. HTTP 403 from
 Current checkpoint: `OWNER_K3R8_SANDBOX_OAUTH_CHECK_REQUIRED`.
 
 Owner should run the local helper at `.artifacts/k3r8-paypal-sandbox-oauth-check.ps1`, enter Sandbox Client ID and Secret only into the local PowerShell prompts, and report only the helper's redacted PASS/FAIL + HTTP status output.
+
+
+## K3R8 Owner OAuth Result / K3R8B
+
+The Owner-run helper failed locally before producing a PayPal HTTP authentication result: `LOCAL_REQUEST_FAILURE`. Do not classify the Sandbox credentials yet.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8B_LOCAL_OAUTH_HELPER_DIAGNOSTIC.md`.
+
+Inspect/fix only the local helper and host request path with redacted diagnostics; then return a corrected Owner-run command. Secrets remain Owner-only.
