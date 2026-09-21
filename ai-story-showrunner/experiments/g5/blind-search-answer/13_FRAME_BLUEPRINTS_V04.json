@@ -4575,9 +4575,9 @@
       "brand_mode": "NONE",
       "ui_mode": "MINIMAL_SOURCE_CUE",
       "continuity_preserve": [
-        "CHAR_IP_001",
-        "SCENE_WORKDESK_001",
-        "opening character-monitor geometry",
+        "CHAR_IP_001 identity/costume",
+        "SCENE_WORKDESK_001 geometry",
+        "opening character-monitor composition relationship",
         "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB043",
@@ -4591,23 +4591,23 @@
           "SCENE_WORKDESK_001"
         ],
         "prop_ui_refs": [
-          "UI_AI_ANSWER_001"
+          "UI_POLICY_PAGE_001"
         ],
         "style_refs": [
           "STYLE_CHANNEL_001"
         ]
       },
-      "execution_mode": "DERIVE_EDIT",
+      "execution_mode": "GENERATE",
       "subtitle_safe_check": "PASS",
       "acceptance_criteria": [
         "G4 intent preserved: LAND_PAYOFF",
-        "P1 immediately readable: opening callback resolves: official page is correct, and IP clicks/checks it before accepting the conclusion",
-        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "P1 immediately readable: IP deliberately clicks/checks the correct source page before accepting the conclusion",
+        "composition clearly rhymes with SRCH_VB001 without requiring the same UI shell",
+        "character remains observer-view medium-close, not first-person",
+        "no summary checklist, lesson card, large moral text, brand/logo, cat, extra decorative props or full policy-page takeover",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible",
-        "CHAR_IP_001 reads as the same clearly adult young man",
-        "adult eye/jaw/chin/nose/body proportions remain canonical",
-        "wine-red top with cream/off-white collar remains unchanged"
+        "CHAR_IP_001 remains the same clearly adult young man",
+        "canonical face/body maturity and wine-red collared costume pass identity QA"
       ],
       "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
       "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
