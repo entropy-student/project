@@ -1,0 +1,13 @@
+{
+  "median_heldout_absolute_error_ms":393.5,
+  "p90_heldout_absolute_error_ms":737.2,
+  "max_heldout_absolute_error_ms":801.9,
+  "result":"RETURN_PROFILE_INSUFFICIENT",
+  "acceptance_criteria":{"median_threshold_ms":150.0,"p90_threshold_ms":300.0},
+  "rows":[
+    {"id":"BLD001","text":"然后答案变了。","semantic_class":"NORMAL","intended_speed":1.0,"predicted_duration_sec":0.8351,"actual_normalized_duration_sec":1.4215,"absolute_error_ms":586.4,"relative_error_pct":41.25},
+    {"id":"BLD002","text":"你引用的网页里，哪一句话明确说明服务费会退？","semantic_class":"FAST_CLEAR","intended_speed":1.08,"predicted_duration_sec":2.9927,"actual_normalized_duration_sec":3.0568,"absolute_error_ms":64.1,"relative_error_pct":2.1},
+    {"id":"BLD003","text":"我让 AI 连续检查了 3 次，它每次都给出了同一个链接。","semantic_class":"NORMAL","intended_speed":1.0,"predicted_duration_sec":4.3892,"actual_normalized_duration_sec":3.5873,"absolute_error_ms":801.9,"relative_error_pct":22.35},
+    {"id":"BLD004","text":"真正危险的，不是它没有来源，而是来源和结论之间少了一步判断。","semantic_class":"FINAL","intended_speed":0.96,"predicted_duration_sec":4.7906,"actual_normalized_duration_sec":4.59,"absolute_error_ms":200.6,"relative_error_pct":4.37}
+  ]
+}
