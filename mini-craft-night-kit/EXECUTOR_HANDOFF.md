@@ -252,3 +252,28 @@ B therefore does not provide a healthy pre-K3 baseline. The evidence supports a 
 - B is intentionally retained at port 8882 for Reviewer inspection.
 
 `STOP_AT_REVIEWER=YES`
+## K3R3 — Studio / WooCommerce runtime isolation (C0 stop) (2026-09-21) — RETURN
+
+### Status
+
+`RETURN_K3R3_STUDIO_RUNTIME_SYSTEMIC`
+
+### C0 result
+
+Created a fresh independent Studio control:
+
+- Name: `Mini Craft K3R3 Clean WordPress Control`
+- Path: `mini-craft-kadence-poc/.studio/mini-craft-k3r3-control-20260921`
+- URL/port: `http://localhost:8883/`
+- Runtime: Studio 1.21.0, WordPress 6.8.9, native PHP 8.4
+- WooCommerce/PPCP: not installed
+
+Before any WooCommerce installation, C0 front page, wp-admin, core `/wp-json/`, and three repeated front-page requests all returned HTTP 000 after approximately 3–4 seconds. C0 had four PHP workers; one consumed about 96.6% of one core over a 5-second sample while the other three were idle.
+
+### Gate stop
+
+C0 already reproduces the Studio request-hang/one-hot-worker pattern. Per the Reviewer decision, C1 WooCommerce installation and B WooCommerce deactivation were not executed.
+
+A remained read-only with PPCP inactive. No PayPal, version, database, VPS, public-route, or payment action occurred. B and C0 are retained for Reviewer inspection.
+
+`STOP_AT_REVIEWER=YES`
