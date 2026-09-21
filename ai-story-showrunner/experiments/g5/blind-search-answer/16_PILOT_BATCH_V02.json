@@ -1,6 +1,6 @@
 {
   "episode_id": "blind-search-answer",
-  "status": "REVALIDATION_REQUIRED_AFTER_CHARACTER_DRIFT_PATCH",
+  "status": "IN_PROGRESS",
   "blueprint_rules": "docs/VISUAL_FRAME_BLUEPRINT_RULES.md",
   "beats": [
     {
@@ -1421,5 +1421,19 @@
     "canonical collared costume drifted to hoodie",
     "extra decorative/cute semantics appeared",
     "generated frames must not become continuity sources"
-  ]
+  ],
+  "character_master": {
+    "beat": "SRCH_VB001",
+    "result": "PASS_WITH_MINOR",
+    "role": "CURRENT_CHARACTER_IN_SCENE_MASTER",
+    "accepted_image_note": "Latest owner-approved VB001 frame from current conversation",
+    "source_eligibility": "ELIGIBLE",
+    "deferred_minor_issues": [
+      "collar geometry may be refined later",
+      "P2 official-source cue may be reduced further later",
+      "background detail may be simplified later"
+    ]
+  },
+  "rejected_character_sources_note": "Earlier juvenile/hoodie/drifted VB001 attempts remain REJECTED_NOT_SOURCE_ELIGIBLE.",
+  "next_beat": "SRCH_VB009"
 }
