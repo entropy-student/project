@@ -1026,3 +1026,27 @@ Gate:
 `G5 = PASS_CANDIDATE_BLOCKED_BY_REAL_REFERENCE_PERSISTENCE`.
 
 The remaining blocker is not story/frame theory. It is executable canonical reference persistence and binding.
+
+
+---
+
+## G5 Final PASS / Reference Path Validation
+
+Date: 2026-09-21
+
+Machine result:
+```text
+execution rows = 44
+used asset ids = 9
+resolved = 9
+unknown = 0
+missing canonical paths = 0
+missing Library paths = 0
+REFERENCE_PATH_VALIDATION = PASS
+```
+
+Gate result:
+`G5 = PASS`.
+
+Next:
+`G6 = READY`.
