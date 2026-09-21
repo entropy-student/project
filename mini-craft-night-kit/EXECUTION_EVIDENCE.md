@@ -491,3 +491,92 @@ The two `checkout-draft` entries are local rejected/abandoned validation attempt
 `STOP_AT_REVIEWER=YES`
 
 K2 execution is complete. Executor does not enter K3/PayPal, K4, K5, K6/VPS, K7, or production.
+
+## K3 — PayPal Sandbox (2026-09-21) — RETURN
+
+~~~
+K3_GATE=K3_PAYPAL_SANDBOX
+K3_PREFLIGHT=PASS
+K3_LOCAL_RUNTIME=WORDPRESS_STUDIO
+K3_LOCAL_SITE_PATH=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-kadence-poc\.studio\mini-craft-night-kit
+K3_LOCAL_URL=http://localhost:8881/
+K3_ROLLBACK_BACKUP=PASS
+K3_BACKUP_ARTIFACT_LOCAL_ONLY=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-kadence-poc\.artifacts\k3-paypal-sandbox\pre-k3-backup.zip
+K3_BACKUP_SHA256=F669688F07BF0B4287B50C1B0B2DEBA5B8527E2BFAE03E9CC55C7CB9920939FF
+~~~
+
+### K3 preflight and baseline
+
+- Studio CLI 1.21.0; Studio-managed Mini Craft site exists and was reachable.
+- K2 test baseline was recorded before payment changes: JPY currency, existing local/test-only Mini Craft product, local/test-only zero-cost shipping, tax disabled, and the Studio SQLite hold_stock_minutes=0 workaround. These remain test-only values and were not promoted to production truth.
+- Old project remained present; http://localhost:8088/ returned HTTP 200 during the K3 preflight. No old project files, database, volume, or theme were changed.
+- No VPS, Cloudflare, public tunnel, production domain, or production payment action was used.
+
+### Official plugin
+
+~~~
+OFFICIAL_WOOCOMMERCE_PAYPAL_PAYMENTS=PASS
+PLUGIN_NAME=WooCommerce PayPal Payments
+PLUGIN_SLUG=woocommerce-paypal-payments
+PLUGIN_VERSION=4.1.3
+PLUGIN_SOURCE=WordPress.org official WooCommerce plugin by WooCommerce
+PLUGIN_ACTIVE=YES
+ADDITIONAL_PAYMENT_PLUGIN=NO
+~~~
+
+The Studio WP-CLI remote installer returned a URL-invalid download error. The same official WordPress.org package was downloaded into the project-local .cache, installed successfully, activated, and the reproducible zip was removed after installation. No third-party PayPal plugin was installed.
+
+The official setup wizard was advanced only through non-credential choices appropriate to this physical-goods local test store: Business account type, Physical Goods, and No thanks for the optional Expanded Checkout application.
+
+### Owner checkpoint
+
+The official UI reached:
+
+~~~
+WooCommerce → Settings → Payments → PayPal Payments
+Complete Your Payment Setup
+Connect to PayPal
+~~~
+
+The page explicitly requires PayPal login to continue. Therefore:
+
+~~~
+RETURN_OWNER_PAYPAL_SANDBOX_AUTH_REQUIRED
+PAYPAL_MODE=NOT_CONFIGURED_OWNER_CHECKPOINT
+PAYPAL_LIVE_ENABLED=NO
+SANDBOX_ACCOUNT_CONNECTED=NOT_RUN_OWNER_CHECKPOINT
+~~~
+
+Owner-only action: in the local WordPress PayPal Payments setup page, click Connect to PayPal, complete the PayPal Sandbox account login/authorization in the provider flow, and choose Sandbox only if an environment choice is presented. Do not send any PayPal password, Client Secret, token, OAuth code, cookie, or webhook secret in chat or GitHub.
+
+### K3 validation status
+
+~~~
+PAYPAL_CHECKOUT_VISIBLE=NOT_RUN_OWNER_CHECKPOINT
+SANDBOX_PAYMENT_APPROVED=NOT_RUN_OWNER_CHECKPOINT
+SANDBOX_CAPTURE=NOT_RUN_OWNER_CHECKPOINT
+ORDER_PROVIDER_CORRELATION=NOT_RUN_OWNER_CHECKPOINT
+WOO_ORDER_PAID_STATE=NOT_RUN_OWNER_CHECKPOINT
+PHYSICAL_FULFILLMENT_NOT_AUTO_COMPLETED=NOT_RUN_OWNER_CHECKPOINT
+WEBHOOK_OR_CALLBACK=NOT_RUN_OWNER_CHECKPOINT
+PUBLIC_CALLBACK_ROUTE=NOT_CREATED
+SANDBOX_REFUND=NOT_RUN_OWNER_CHECKPOINT
+REFUND_IDEMPOTENCY_SMOKE=NOT_RUN_OWNER_CHECKPOINT
+~~~
+
+A browser smoke open reached the existing Cart page and showed the normal empty-cart state. K2 already carried the local Checkout baseline; K3 payment checkout was intentionally not executed before Owner authorization.
+
+### Safety and handoff
+
+~~~
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+PRODUCTION_DOMAIN_WRITES=ZERO
+SECRET_EXPOSURE=NO
+UNRELATED_PROJECTS_TOUCHED=NO
+OLD_PROJECT_UNCHANGED=PASS
+REVIEWER_DOCS_MODIFIED=NO
+STOP_AT_REVIEWER=YES
+~~~
+
+K3 is stopped at the minimum Owner authorization checkpoint. Resume the same Gate only after the Owner completes the provider-side Sandbox authorization; do not enter Live, K4, K5, VPS, or production.
