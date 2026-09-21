@@ -1336,5 +1336,7 @@
       "timing_source": "VOICE_PROFILE_V2_1_WITH_NONCOMPRESSIVE_LEGACY_SEMANTIC_PRIOR",
       "tts_required": true
     }
-  ]
+  ],
+  "timeline_role": "PLANNED_TIMELINE_INPUT_TO_RUNTIME_RESOLVER",
+  "runtime_timeline_resolver": "experiments/g6/blind-search-answer/TIMELINE_RESOLVER_RULES.md"
 }
