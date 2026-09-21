@@ -111,3 +111,25 @@ For exceptions, include sanitized exception class/category, stage marker, and HT
 Reviewer must not promote a diagnostic conclusion to formal truth if the packet lacks enough evidence to distinguish it from adjacent hypotheses. In that case, return for evidence completion rather than inventing the missing chain.
 
 This rule is project-local trial governance. Global promotion still requires a separate Governance Change Gate.
+
+
+## 8. Owner Checkpoint Artifact Readiness
+
+Before Executor returns an Owner-run command, every referenced local artifact must still exist at the final stop point and the exact Owner command must be dry-run validated through the same staging path without credentials.
+
+Minimum readiness evidence:
+
+```text
+OWNER_CHECKPOINT_READINESS
+COMMAND=<exact sanitized Owner command>
+LOCAL_ARTIFACTS_PRESENT=PASS
+CONTAINER_STAGING_PATH=PASS|N/A
+POST_CLEANUP_EXISTENCE_CHECK=PASS
+NO_SECRET_DRY_RUN=PASS
+EXPECTED_PRE_AUTH_STAGE=<stage reached without credentials>
+CLEANUP_AFTER_OWNER_RUN=<what is removed and when>
+```
+
+Executor must not delete or move any helper needed by the Owner before the Owner checkpoint is completed. Cleanup may remove container-temporary copies only if the Owner wrapper deterministically recreates them from a retained local source on every run and that exact path is verified after cleanup.
+
+A syntax/lint check alone is not sufficient for Owner checkpoint readiness. The exact wrapper/staging chain must be validated after cleanup.
