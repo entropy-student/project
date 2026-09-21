@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_IN_PROGRESS_CHARACTER_IDENTITY_PATCH_CANONICAL_PILOT_REVALIDATION_REQUIRED",
+  "project_state": "G5_PILOT_IN_PROGRESS_VB001_PASS_WITH_MINOR_NEXT_VB009",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -343,9 +343,19 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "First revalidate VB001 character identity. Do not use rejected juvenile/hoodie frames as continuity sources.",
+      "next": "Generate + QA SRCH_VB009 using the accepted character identity lock; keep VB001 as current character-in-scene master.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
-      "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT"
+      "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
+      "pilot_progress": {
+        "SRCH_VB001": "PASS_WITH_MINOR_CURRENT_CHARACTER_IN_SCENE_MASTER",
+        "SRCH_VB009": "NEXT",
+        "SRCH_VB012": "PENDING",
+        "SRCH_VB015": "PENDING",
+        "SRCH_VB016": "PENDING",
+        "SRCH_VB022": "PENDING",
+        "SRCH_VB025": "PENDING",
+        "SRCH_VB044": "PENDING"
+      }
     },
     "phase_b_5": {
       "name": "Visual Acquisition Review",
@@ -391,7 +401,9 @@
         "identity_lock_issues": 0,
         "stale_unbound_continuity_refs": 0,
         "result": "PASS"
-      }
+      },
+      "revalidation_result": "VB001_PASS_WITH_MINOR",
+      "current_character_in_scene_master": "LATEST_OWNER_APPROVED_VB001_CURRENT_CONVERSATION"
     }
   }
 }
