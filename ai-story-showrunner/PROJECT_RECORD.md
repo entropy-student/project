@@ -722,3 +722,12 @@ Current:
 - Generated frame compared the wrong pair of concepts and therefore lost the “服务费 vs 订单款项” object mismatch.
 - It also violated the no-character constraint and reintroduced a drifting/juvenile character.
 - Decision: remove character entirely; retry as pure two-source crop comparison.
+
+
+## 2026-09-21 — VB022 semantic compare pass
+
+- `SRCH_VB022 = PASS_WITH_MINOR_SEMANTIC_COMPARE`.
+- Core object mismatch `服务费` vs `订单款项` is visually legible.
+- Minor brand exposure / crop density deferred.
+- Deterministic source-crop execution remains pending asset persistence.
+- Next: VB025 analogy payoff.
