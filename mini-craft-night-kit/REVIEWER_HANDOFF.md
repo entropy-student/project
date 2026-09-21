@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REOPEN_REQUIRED
+CURRENT_GATE=K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -801,3 +801,24 @@ The prior provider handoff is treated as abandoned before payment. Owner may reo
 Current checkpoint: `OWNER_K3R10_SANDBOX_BUYER_AUTH_REOPEN_REQUIRED`.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R10_REOPEN_SANDBOX_BUYER_FLOW.md`.
+
+
+## K3R10 Owner Sandbox Buyer Approval — SUCCESS / Post-Payment Verify
+
+Owner supplied UI evidence showing the WooCommerce order-received page after completing the single Sandbox PayPal buyer flow.
+
+Accepted:
+
+```text
+BUYER_APPROVAL_RESULT=SUCCESS
+ORDER_RECEIVED_UI=PASS
+SINGLE_TEST_FLOW=YES
+CAPTURE_STATE=UNKNOWN_PENDING_EXECUTOR_VERIFY
+WEBHOOK_PROCESSING=UNKNOWN_PENDING_EXECUTOR_VERIFY
+```
+
+Current Gate: `K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY`.
+
+Executor may now verify exactly one order/capture, WooCommerce paid/processing state, redacted PayPal correlation, physical-fulfillment non-completion, actual webhook/callback processing, and runtime health. No second payment or refund is authorized.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R10_OWNER_BUYER_APPROVAL_SUCCESS_VERIFY_CAPTURE.md`.
