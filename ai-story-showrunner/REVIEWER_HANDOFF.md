@@ -600,3 +600,49 @@ earlier juvenile/hoodie/drifted outputs remain `REJECTED_NOT_SOURCE_ELIGIBLE`.
 Next:
 `SRCH_VB009` cost-sheet action Pilot.
 
+## G4 POV Grammar Patch / Search Answer Audit — 2026-09-21
+
+Owner identified that VB009 felt wrong because a first-person owned action was shown from a third-party observer view.
+
+Canonical addition:
+- `docs/G4_VIEWPOINT_GRAMMAR.md`
+- G4 Director rules v0.4
+- G4 contract v0.4
+- Visual Beat schema v0.4 adds `pov_reason`
+
+Core question:
+`Should the audience watch the protagonist, or experience the action/discovery with the protagonist?`
+
+44 Search Beats audited:
+- changed: 8
+- unchanged: 36
+- architecture rewrite: NO
+- machine validation issues: 0
+
+Changed:
+```text
+VB004 OBSERVER → IP_POV
+VB009 OBSERVER → IP_POV_HANDS
+VB011 OBSERVER → OVER_SHOULDER_IP
+VB027 OBSERVER → IP_POV
+VB031 OBSERVER → OBJECTIVE_INSERT
+VB036 OBSERVER → OBJECTIVE_INSERT
+VB037 OBSERVER → OBJECTIVE_INSERT
+VB042 OBSERVER → IP_POV
+```
+
+Important downstream correction:
+POV now controls Beat Asset Binding.
+Object/POV inserts no longer automatically bind the full character + desk scene.
+
+VB009 canonical direction:
+```text
+IP_POV_HANDS
+camera = DOWNWARD_DESK_IP_POV
+visible = own hand + wine-red/cream cuff + pen + cost sheet
+not visible = full face / third-party observer composition
+```
+
+Next:
+retry VB009 under corrected POV.
+
