@@ -21,7 +21,7 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3_PAYPAL_SANDBOX
+CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_AUTH
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -324,3 +324,17 @@ Formal decision: `docs/REVIEWER_DECISION_K3_PAYPAL_SANDBOX.md`.
 Current Gate: `K3_PAYPAL_SANDBOX`.
 
 Use only official WooCommerce PayPal Payments in Sandbox. Owner intervention is limited to PayPal login/account authorization/identity/Secret/Live enablement. If localhost blocks provider callbacks, return to Reviewer instead of creating an unauthorized tunnel or VPS route.
+
+
+## K3 Owner Checkpoint
+
+Executor reached the approved Owner-only PayPal authorization boundary.
+
+```text
+RETURN=RETURN_OWNER_PAYPAL_SANDBOX_AUTH_REQUIRED
+CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_AUTH
+PAYPAL_LIVE_ENABLED=NO
+REAL_PAYMENT_ACTIONS=0
+```
+
+Owner must complete the provider-side Sandbox login/account authorization from WooCommerce → Settings → Payments → PayPal Payments → Connect to PayPal, without sharing credentials or Secrets in chat/GitHub. After Owner confirmation, resume the same K3 Gate.
