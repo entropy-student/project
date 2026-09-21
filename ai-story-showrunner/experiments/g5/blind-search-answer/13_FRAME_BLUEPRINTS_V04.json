@@ -914,10 +914,9 @@
       "brand_mode": "NONE",
       "ui_mode": "MINIMAL_CAUSAL_UI",
       "continuity_preserve": [
-        "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry",
+        "SCENE_WORKDESK_001 desk/world geometry",
         "PROP_COST_SHEET_001 shell/geometry",
-        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
+        "CHAR_IP_001 visible identity cue only: wine-red sleeve + cream/off-white cuff"
       ],
       "continuity_ref": "SRCH_VB008",
       "frame_delta": "成本表新增一条错误判断",
@@ -938,17 +937,18 @@
           "STYLE_CHANNEL_001"
         ]
       },
-      "execution_mode": "DERIVE_EDIT",
+      "execution_mode": "GENERATE",
       "subtitle_safe_check": "PASS",
       "acceptance_criteria": [
         "G4 intent preserved: SEE_CONSEQUENCE",
-        "P1 immediately readable: IP writes 服务费：可退 into the cost sheet",
+        "P1 immediately readable: first-person own hand is writing into the cost-sheet row reserved for 服务费：可退",
+        "camera is downward first-person / near-first-person desk POV, not third-party observer",
+        "full face and full body are not shown",
+        "visible CHAR_IP_001 cue is limited to canonical wine-red sleeve + cream/off-white cuff and natural adult hand anatomy",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible",
-        "CHAR_IP_001 reads as the same clearly adult young man",
-        "adult eye/jaw/chin/nose/body proportions remain canonical",
-        "wine-red top with cream/off-white collar remains unchanged"
+        "only current Beat information is visible; official policy reversal remains hidden",
+        "exact Chinese wording is supplied by POST_OVERLAY rather than trusted to native image text"
       ],
       "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
       "pov_reason": "The story consequence is created by the protagonist personally writing the assumption into the cost sheet."
