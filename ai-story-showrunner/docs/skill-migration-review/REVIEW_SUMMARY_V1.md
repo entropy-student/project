@@ -3,56 +3,83 @@
 Date: 2026-09-22
 
 Result:
-`READY_FOR_CANDIDATE_MIGRATION_AFTER_P0_RECONCILIATION`
+`SKILL_EXTRACTION_R1_PASS / READY_FOR_CANDIDATE_MIGRATION`
 
 ## Reviewer conclusion
 
-The system is mature enough to extract a candidate `story-showrunner` Skill now.
+The system is ready to create a candidate `story-showrunner` Skill.
 
-Do not copy the project wholesale.
+Do not copy the validation project wholesale.
 
-The correct extraction model is:
+Extraction model:
 
 ```text
 stable generic contracts
 → Skill core
 
-AI knowledge/topic logic
-→ domain adapter
+domain-specific research/topic/knowledge rules
+→ domain adapters
 
-Bilibili/Jingsui/first-person/current visual identity
+Bilibili/Jingsui/first-person/current visual/character/voice choices
 → profiles
 
 Antigravity/CosyVoice/Nano Banana
-→ production adapters
+→ provider/executor adapters
 
 Calendar/Registry/Episode state
-→ runtime state
+→ runtime state outside Skill source
 
 Pilot/validation/calibration history
-→ remains in project
+→ remains in validation project
 ```
 
-The main architectural blocker is no longer product design. It is document reconciliation around Timing and old current-state text.
+## R1 result
 
-## Findings
+Resolved all 9 P0 conflicts:
+- audio mode;
+- speech-timing ownership;
+- obsolete Writer SRT estimation;
+- timing acceptance metric;
+- stale Voice Profile spec;
+- recurring G5 Pilot wording;
+- stale G5 status;
+- AI-specific core mechanism fields;
+- candidate-vs-canonical migration lifecycle.
 
-- 9 P0 conflicts must be reconciled before candidate migration.
-- 9 P1 split/portability issues should be handled while migrating.
-- 4 P2 source-of-truth cleanup issues should be repaired in the project.
-- Core Director / POV / Frame Blueprint / schema work is strongly reusable.
-- Voice Timing Profile v2.1 is reusable as a profile, but machine paths must be externalized.
-- The current project remains the end-to-end validation fixture after extraction.
+Also completed current-truth cleanup:
+- REVIEWER_HANDOFF rewritten;
+- CURRENT_STATUS normalized;
+- README updated;
+- Director observability output no longer implies Owner approval.
 
-## Recommended next Gate
+Timing vocabulary mapping was also pre-resolved.
 
-`SKILL_EXTRACTION_R1 — P0 Canonical Reconciliation`
+## Remaining migration work
 
-Scope:
-1. repair the nine P0 conflicts in current canonical docs;
-2. normalize current Handoff/Status;
-3. do not yet create the Skill files in spike.skill;
-4. reviewer rereads the repaired rule set;
-5. if clean, create `story-showrunner` candidate in one migration pass.
+P1 work is now **structural extraction**, not unresolved product architecture:
 
-No Owner intervention is needed during R1 unless a genuine product-policy ambiguity appears.
+1. split generic Writer contract from Bilibili/Jingsui/first-person editorial profile;
+2. split generic Character Identity contract from CHAR_IP_001 profile;
+3. move Simplified Flat Narrative Comic into visual profile;
+4. split core Production Package contract from Antigravity/CosyVoice/Nano Banana adapters;
+5. externalize local machine paths from frozen voice profile;
+6. define RuntimeStateLocator for Calendar/Registry;
+7. rename schema identity from AI Story Showrunner to Story Showrunner;
+8. make Visual Beat timing source explicitly Production SRT.
+
+## Next Gate
+
+`SKILL_EXTRACTION_R2 — CANDIDATE MIGRATION`
+
+R2 may now write to:
+`entropy-student/spike.skill/story-showrunner/`
+
+R2 must:
+- create the candidate Skill structure;
+- migrate only cleaned/reusable rules;
+- preserve the current project as validation fixture;
+- mark the Skill `CANDIDATE / E2E_NOT_YET_PROVEN`.
+
+Canonical promotion remains blocked until the current episode produces a reviewable final video through the new production package/executor path.
+
+No Owner intervention is required unless R2 uncovers a genuine product-policy ambiguity.
