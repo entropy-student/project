@@ -761,3 +761,29 @@ SECRET_VALUES_OUTPUT=NO
 OWNER_ACTION=NONE
 NEXT=STOP_AT_REVIEWER
 ```
+
+## K3R10 Resumed Sandbox Checkout — Owner buyer checkpoint (2026-09-22)
+
+`RETURN_OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED`
+
+The temporary public HTTPS origin remains active and the public Checkout page contains the existing Mini Craft Night Kit local test cart: quantity `1`, displayed local test amount `¥1`, and local-test-only shipping. Synthetic billing values were used only to render Checkout. PayPal was selected and the PayPal button was clicked once.
+
+The flow reached the PayPal secure-browser handoff dialog. Owner action is required: in the visible Checkout tab, click the PayPal dialog's `点击以继续` / continue control if it is still shown, then privately sign in with the Sandbox buyer account and complete the Sandbox approval. Do not send the buyer password, OTP, token, cookie, or any provider payload to chat.
+
+Executor did not submit the WooCommerce checkout, did not approve the buyer flow, did not capture, and did not refund. No order-creation or capture request was observed in the sanitized local access boundary before stopping. After Owner returns only a non-sensitive approval result, Executor may continue the same single payment flow to capture and verify WooCommerce status, redacted correlation, physical-fulfillment non-completion, and webhook processing.
+
+```text
+GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE_RESUME
+RESULT=RETURN_OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED
+PUBLIC_HTTPS_ORIGIN=RETAINED
+PAYPAL_SELECTED=PASS
+BUYER_APPROVAL=OWNER_REQUIRED
+ORDER_CREATED=NOT_OBSERVED_BEFORE_CHECKPOINT
+CAPTURE_ACTIONS=0
+REFUND_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+OWNER_ACTION=PRIVATE_SANDBOX_BUYER_LOGIN_AND_APPROVAL
+NEXT=STOP_AT_OWNER_CHECKPOINT
+```

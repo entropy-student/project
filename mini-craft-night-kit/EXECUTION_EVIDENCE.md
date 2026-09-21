@@ -1714,3 +1714,40 @@ SECRET_VALUES_OUTPUT=NO
 PASS_CANDIDATE_K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R10 Resumed Sandbox Checkout — Owner buyer checkpoint (2026-09-22)
+
+The active temporary HTTPS origin and WordPress public-origin rebind were kept in place. The public Checkout page loaded the existing local test cart without changing the product, price, inventory, shipping test label, or site configuration.
+
+```text
+PUBLIC_HTTPS_ORIGIN=https://email-rich-barbie-merchants.trycloudflare.com
+TEST_PRODUCT=Mini Craft Night Kit
+TEST_QUANTITY=1
+TEST_AMOUNT=¥1_DISPLAYED_LOCAL_TEST_AMOUNT
+TEST_SHIPPING=LOCAL_TEST_ONLY
+SYNTHETIC_CUSTOMER_DATA=USED_FOR_LOCAL_CHECKOUT_RENDERING_ONLY
+PAYPAL_SELECTED=YES
+```
+
+Executor filled only synthetic local test billing values and clicked the PayPal checkout button once. The PayPal flow reached the provider's secure-browser handoff dialog, which displayed the prompt to continue in a secure PayPal browser. No buyer credential was entered or read. The local Checkout page remained open; no buyer approval, order submission, capture, or refund was performed.
+
+Sanitized local access evidence after the bounded attempt showed no WooCommerce order-creation or capture request at the WordPress boundary. This is a buyer-authentication checkpoint, not a payment result.
+
+```text
+K3R10_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE_RESUME
+PAYPAL_CHECKOUT_OPEN=PASS
+PAYPAL_SELECTED=PASS
+BUYER_AUTHENTICATION=OWNER_REQUIRED
+BUYER_APPROVAL=NOT_EXECUTED
+ORDER_CREATED=NOT_OBSERVED_BEFORE_CHECKPOINT
+CAPTURE_ACTIONS=0
+REFUND_ACTIONS=0
+WEBHOOK_PAYMENT_PROCESSING=NOT_YET_APPLICABLE
+PUBLIC_HTTPS_ORIGIN=RETAINED
+LOCALHOST_REBIND=NOT_RESTORED
+PAYPAL_LIVE_ENABLED=NO
+SECRET_VALUES_OUTPUT=NO
+REAL_CUSTOMER_DATA=NO
+RETURN_OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED
+STOP_AT_OWNER_CHECKPOINT=YES
+```
