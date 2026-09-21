@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED
+CURRENT_GATE=K3R8D_OWNER_HELPER_ARTIFACT_READINESS_REPAIR
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -481,3 +481,12 @@ Executor completed the container-native helper preparation and supplied a comple
 Current checkpoint: `OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED`.
 
 Owner must run the local wrapper and return only the five redacted fields. No Phase C is authorized until the container-native OAuth result is known.
+
+
+## K3R8C Owner Run Result / K3R8D
+
+Owner ran the exact K3R8C command and received `ERROR_CLASS=LOCAL_HELPER_MISSING` with HTTP status 0. This is not a credential or PayPal verdict.
+
+The result conflicts with K3R8C evidence claiming the local helper artifacts remained available. Reviewer treats this as an Owner-checkpoint artifact readiness defect and requires repair plus post-cleanup end-to-end validation.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8D_OWNER_HELPER_ARTIFACT_READINESS_REPAIR.md`.
