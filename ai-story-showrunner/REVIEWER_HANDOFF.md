@@ -77,11 +77,9 @@ Audio mode:
 
 Authority:
 - Writer locks spoken text and dramatic meaning.
-- Timing Compiler owns Speech Units, semantic pace, authored pauses, Production SRT and TTS Manifest.
-- G4 consumes Production SRT and owns visual rhythm only.
-- Antigravity executes the locked TTS recipe and may not rewrite or creatively retime speech.
-
-No routine post-TTS creative SRT realignment.
+- Timing Compiler owns Speech Units, semantic pace, authored pauses, planned Production SRT and TTS Manifest.
+- G4 consumes the planned Production SRT and owns visual rhythm/meaning only.
+- Antigravity executes the locked TTS recipe and may not rewrite/re-pace speech. After real TTS, Runtime Timeline Resolver automatically recalculates final absolute timestamps without a creative recompile or Owner round-trip.
 
 ## 5. G4 truth
 
@@ -211,21 +209,36 @@ Timing result:
 - 44 Speech Units;
 - 43 TTS rows;
 - 1 explicit 1.4s silent hold;
-- Production SRT total = 146.7209s;
+- planned Production SRT total = 146.7209s (planning value, not final runtime duration);
 - exact locked-script coverage PASS;
 - row/schema/timeline validation PASS.
 
 Next allowed:
-1. production TTS execution — retain 43 unit WAVs + `narration_master.wav`;
-2. independent 12s Antigravity video-runtime probe.
+1. production TTS execution + Runtime Timeline Resolver — retain 43 unit WAVs, `narration_master.wav`, FINAL_SUBTITLES / FINAL_TIMELINE / FINAL_SHOT_TIMELINE;
+2. independent 12s Antigravity video-runtime probe v0.2.
 
 Tasks:
 - `experiments/g6/blind-search-answer/ANTIGRAVITY_TTS_ONLY_TASK.md`
 - `experiments/g6/blind-search-answer/ANTIGRAVITY_VIDEO_RUNTIME_PROBE.md`
 
 Owner HOLD:
-`FULL_ANTIGRAVITY_PRODUCTION_PACKAGE` until the video-runtime probe establishes whether Antigravity should target FFmpeg, Remotion, Hyperframe, a native timeline, or another execution path.
+`FULL_ANTIGRAVITY_PRODUCTION_PACKAGE` until the zero-install video-runtime probe establishes whether Antigravity should target an existing FFmpeg, existing Codex/local Remotion, existing Codex/local Hyperframe, a native timeline, or another reproducible execution path.
 
-Do not assemble the full package, image plan, edit package or final video until the Owner discussion completes.
+Do not freeze the full package or real-video backend until the probe returns. The current target architecture is one delivery: planned timing → real TTS → Runtime Timeline Resolver → final timeline → selected video runtime.
 
 Do not label the Skill CANONICAL until final-video E2E PASS.
+
+
+## 13. Output recording
+
+Canonical simple standard:
+`docs/OUTPUT_RECORD_STANDARD.md`
+
+Production output ledger:
+`outputs/`
+
+Rule:
+- one episode `INDEX.md`;
+- one `RUN_RECORD.json` per meaningful retained production run;
+- `experiments/` remains R&D/validation evidence;
+- `outputs/` records accepted production execution.
