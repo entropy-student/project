@@ -787,3 +787,29 @@ SECRET_VALUES_OUTPUT=NO
 OWNER_ACTION=PRIVATE_SANDBOX_BUYER_LOGIN_AND_APPROVAL
 NEXT=STOP_AT_OWNER_CHECKPOINT
 ```
+
+## K3R10 Post-Payment Capture/Webhook Verify — Reviewer checkpoint (2026-09-22)
+
+`PASS_CANDIDATE_K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY`
+
+The single Sandbox buyer-approved flow produced WooCommerce order `1120` only. The order is `processing` and paid, has a paid date, requires shipping, and is not completed. The provider read-only check returned a completed Sandbox order with exactly one completed capture and no refund. The WooCommerce transaction identifier matched the provider capture internally; only redacted presence/match evidence was recorded.
+
+Sanitized callback evidence showed two POST HTTP 200 requests to the PayPal callback endpoint. Count-only WooCommerce log inspection found payment/webhook activity and success-related entries; no raw provider payload or credential material was exported. No duplicate payment or capture was observed.
+
+The public HTTPS origin remains active, WordPress returned HTTP 200, the WordPress container is running, and MariaDB is healthy. Temporary helpers were removed from host and container. No Live mode, refund, second payment, VPS write, or secret output occurred.
+
+```text
+GATE=K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
+RESULT=PASS_CANDIDATE_K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
+SINGLE_SANDBOX_PAYMENT=PASS
+PAYPAL_CAPTURE=PASS
+WOO_ORDER_PAID_PROCESSING=PASS
+PAYPAL_WOO_CORRELATION=PASS_REDACTED
+PHYSICAL_FULFILLMENT_AUTO_COMPLETED=NO
+PAYPAL_WEBHOOK_DELIVERY=PASS
+DUPLICATE_PAYMENT=NO
+DUPLICATE_CAPTURE=NO
+RUNTIME_HEALTH=PASS
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```

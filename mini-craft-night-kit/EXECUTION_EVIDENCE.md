@@ -1751,3 +1751,92 @@ REAL_CUSTOMER_DATA=NO
 RETURN_OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED
 STOP_AT_OWNER_CHECKPOINT=YES
 ```
+
+## K3R10 Post-Payment Capture and Webhook Verification (2026-09-22)
+
+Owner supplied the non-sensitive order-received result after the single Sandbox buyer approval. The following checks were read-only and limited to that same test flow.
+
+### WooCommerce order state
+
+```text
+TARGET_ORDER=1120
+ORDER_EXISTS=YES
+PPCP_ORDER_COUNT=1
+ORDER_STATUS=processing
+ORDER_IS_PAID=YES
+ORDER_DATE_PAID=YES
+ORDER_DATE_COMPLETED=NO
+ORDER_PAYMENT_METHOD=ppcp-gateway
+ORDER_NEEDS_SHIPPING=YES
+ORDER_SHIPPING_ITEM_COUNT=1
+ORDER_LINE_ITEM_COUNT=1
+ORDER_TRANSACTION_ID_PRESENT=YES
+TRANSACTION_FINGERPRINT_OCCURRENCES=1
+```
+
+The order's PPCP metadata and transaction identifier were inspected in memory. Raw PayPal order/capture identifiers and their fingerprints were not written to GitHub.
+
+### PayPal Sandbox provider state
+
+The container-only read-only helper used the existing stored Sandbox connection internally. It emitted statuses and presence/match booleans only; no credential, token, order ID, capture ID, authorization header, or response body was emitted.
+
+```text
+PAYPAL_CREDENTIALS_PRESENT=YES
+PAYPAL_ORDER_ID_PRESENT=YES
+PAYPAL_OAUTH_HTTP=200
+PAYPAL_TOKEN_RECEIVED=YES
+PAYPAL_ORDER_GET_HTTP=200
+PAYPAL_ORDER_STATUS=COMPLETED
+PAYPAL_CAPTURE_COUNT=1
+PAYPAL_CAPTURE_ID_PRESENT=YES
+PAYPAL_CAPTURE_STATUS=COMPLETED
+PAYPAL_REFUND_COUNT=0
+WOO_TRANSACTION_ID_MATCHES_CAPTURE=YES
+PAYPAL_SINGLE_CAPTURE_NO_DUPLICATE=YES
+```
+
+The temporary provider and order helpers were removed from both host and container after verification.
+
+### Callback/webhook and runtime
+
+Sanitized Apache access-log counting showed two POST requests to the PayPal callback endpoint with HTTP 200. A single GET 404 was classified as expected for the POST-only route. WooCommerce log scans were count-only; raw provider and application log lines were not exported.
+
+```text
+PAYPAL_CALLBACK_POST_200_COUNT=2
+PAYPAL_CALLBACK_GET_404=EXPECTED_POST_ONLY_ROUTE
+WC_LOG_PAYMENT_RELATED_LINE_COUNT=54
+WC_LOG_WEBHOOK_RELATED_LINE_COUNT=35
+WC_LOG_SUCCESS_RELATED_LINE_COUNT=4
+PAYPAL_WEBHOOK_DELIVERY=PASS
+PPCP_WEBHOOK_HTTP_PROCESSING=PASS
+PHYSICAL_FULFILLMENT_AUTO_COMPLETED=NO
+SHIPPING_ITEM_PRESENT=YES
+PUBLIC_HOME_HTTP=200
+PUBLIC_WPJSON_HTTP=200
+DOCKER_WORDPRESS=RUNNING
+DOCKER_MARIADB=HEALTHY
+PUBLIC_HTTPS_ORIGIN=RETAINED
+LOCALHOST_REBIND=NOT_RESTORED
+```
+
+### Gate result
+
+```text
+K3R10_GATE=K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
+SINGLE_SANDBOX_PAYMENT=PASS
+PAYPAL_CAPTURE=PASS
+WOOCOMMERCE_ORDER=PASS
+WOO_ORDER_PAID_PROCESSING=PASS
+PAYPAL_WOO_CORRELATION=PASS_REDACTED
+PHYSICAL_FULFILLMENT_AUTO_COMPLETED=NO
+WEBHOOK_CALLBACK=PASS
+DUPLICATE_PAYMENT=NO
+DUPLICATE_CAPTURE=NO
+REFUND_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+PASS_CANDIDATE_K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
+STOP_AT_REVIEWER=YES
+```
