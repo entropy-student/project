@@ -299,3 +299,21 @@ WooCommerce Home, Payments, PayPal section HTTP response, wc-admin REST, Store A
 P1 was not entered. No PayPal login, Sandbox authorization, credential/Secret handling, Live mode, payment, VPS, tunnel, Studio write, or version change occurred. PPCP remains active pending Reviewer direction; rollback is available and no further action was taken.
 
 Reviewer checkpoint: decide the next bounded PPCP conflict/rollback action. Executor stops here.
+
+## K3R6 Executor handoff (2026-09-21)
+
+K3R6 page-scope isolation completed on the Docker/MariaDB runtime at `http://localhost:8093/`.
+
+A, the generic WooCommerce Payments overview, returned HTTP 200 and rendered the native Payments overview. The PPCP settings bundle loaded, but `#ppcp-settings-container` was absent and the browser recorded Minified React error `#299` from the PPCP React mount path.
+
+B, the direct `section=ppcp-gateway` route loaded in a separate clean page context with HTTP 200. It had exactly one visible `#ppcp-settings-container`, rendered PayPal Payments UI, and exposed an enabled `Activate PayPal Payments` control plus visible `Manually Connect` text. No React `#299` or other Console error was recorded. No control was clicked; the Owner PayPal Sandbox authorization boundary was not crossed.
+
+Authenticated local-admin REST smoke returned HTTP 200 for `wc-admin/features`, `wc-admin/options`, `wc_paypal/settings`, `wc_paypal/payment`, Store API products, and Store API cart. Repeated home requests stayed HTTP 200; observed runtime CPU remained low (WordPress 0.01%, MariaDB 0.02% at capture).
+
+Decision markers:
+
+- `PASS_CANDIDATE_K3R6_PPCP_OVERVIEW_ONLY_UI_DEFECT`
+- `RETURN_OWNER_PAYPAL_SANDBOX_AUTH_REQUIRED_DOCKER`
+- `STOP_AT_REVIEWER=YES`
+
+Reviewer should decide whether to accept the overview-only PPCP mount defect and, if proceeding, perform the Owner-only PayPal Sandbox login/consent action. No version change, patch, DOM workaround, WooCommerce change, Live mode, real payment, VPS write, public tunnel, or Studio write occurred.
