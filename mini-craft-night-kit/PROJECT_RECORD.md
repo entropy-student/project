@@ -24,7 +24,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K4_CONVERSION_TRUST
+CURRENT_GATE=K4_UI_CONVERSION_TRUST
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -153,8 +153,10 @@ MVP fixed as WooCommerce + WooCommerce PayPal Payments.
 
 Dujiao is not a second canonical order system.
 
-### K4 — Conversion & Trust
-Home / Product / FAQ / Shipping & Returns / Contact.
+### K4 — UI Modification + Conversion & Trust
+UI modification first, then conversion/trust refinement across Home / Product / FAQ / Shipping & Returns / Contact.
+
+Owner may directly edit these pages during K4. Cart / Checkout / Account core flows and PayPal/payment logic remain protected unless separately authorized.
 
 ### K5 — Release Candidate QA
 Responsive, Gutenberg validity, WooCommerce, email, SEO, performance, Secret hygiene.
@@ -862,9 +864,22 @@ PAYPAL_WOO_CORRELATION=PASS_REDACTED
 WEBHOOK_CALLBACK=PASS
 DUPLICATE_PAYMENT=NO
 DUPLICATE_CAPTURE=NO
-CURRENT_GATE=K4_CONVERSION_TRUST
+CURRENT_GATE=K4_UI_CONVERSION_TRUST
 ```
 
 The temporary Quick Tunnel/public WordPress origin may now be rolled back at K4 start after localhost health verification. K4 follows the original roadmap: Home / Product / FAQ / Shipping & Returns / Contact.
 
 Formal decision: `docs/REVIEWER_DECISION_K3_PASS_K4_CONVERSION_TRUST.md`.
+
+
+## K4 Scope Update — UI Modification Added
+
+```text
+CURRENT_GATE=K4_UI_CONVERSION_TRUST
+UI_MODIFICATION_STAGE=ADDED
+K4_SEQUENCE=UI_MODIFICATION_THEN_CONVERSION_TRUST
+```
+
+Owner may directly modify Home / Product / FAQ / Shipping & Returns / Contact during K4. Executor must avoid concurrent edits to the same page and rebase from the latest Owner-approved page state before continuing.
+
+Formal decision: `docs/REVIEWER_DECISION_K4_UI_CONVERSION_TRUST_SCOPE.md`.
