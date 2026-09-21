@@ -52,7 +52,7 @@
   "next_gate": {
     "id": "G6",
     "name": "Low-Level Execution Package / Antigravity PoC",
-    "status": "BLOCKED_BY_G5"
+    "status": "BLOCKED_BY_REAL_REFERENCE_PERSISTENCE"
   },
   "owner_intervention_required": false,
   "unknowns": [
@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_PILOT_IN_PROGRESS_VB044_RETRY2_READY_SOURCE_ONLY",
+  "project_state": "G5_HIGH_RISK_PILOT_COMPLETE_PASS_CANDIDATE_REAL_REFERENCE_PERSISTENCE_BLOCKER",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "VB044 attempt 2 improved character/callback composition, but screen object was wrong (OpenAI homepage), brand NONE failed, and checklist/lesson-card semantics reappeared. Retry should preserve character/camera/action and replace only screen + remove checklist/moral text.",
+  "owner_review_scope": "8-beat G5 high-risk Pilot complete. All selected beats reached accepted Pilot state. G5 logic is PASS_CANDIDATE. Do not enter G6 until canonical binary references are persisted and bound.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -277,7 +277,7 @@
     "canonical_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES.md"
   },
   "g5": {
-    "status": "IN_PROGRESS",
+    "status": "PASS_CANDIDATE_BLOCKED_BY_REAL_REFERENCE_PERSISTENCE",
     "contract": "docs/G5_IMAGE_ASSET_PACKAGE_CONTRACT.md",
     "first_mvp_case": "blind-search-answer",
     "phase_a": {
@@ -297,8 +297,8 @@
       "style_bible": "experiments/g5/blind-search-answer/06_STYLE_BIBLE.md",
       "prop_ui_bible": "experiments/g5/blind-search-answer/07_PROP_UI_BIBLE.md",
       "reference_manifest": "experiments/g5/blind-search-answer/08_REFERENCE_MANIFEST.json",
-      "blocking_real_asset": null,
-      "blocking_reason": null,
+      "blocking_real_asset": "CHAR_IP_001_CANONICAL_BINARY_REFERENCE",
+      "blocking_reason": "Canonical identity source and approved visual masters are not persisted/bound as executable binary paths. Prompt-only identity lock caused repeated drift during Pilot.",
       "style_direction": "SIMPLIFIED_FLAT_NARRATIVE_COMIC",
       "current_conversation_inputs": {
         "ip_identity_image": "AVAILABLE_IN_CURRENT_CONVERSATION_NOT_PERSISTED_IN_REPO",
@@ -306,9 +306,11 @@
         "workdesk_scene_master_v1": "GENERATED_CURRENT_CONVERSATION"
       },
       "next_steps": [
-        "Compile all 44 Visual Beats into image-generation rows",
-        "Validate prompt/reference/continuity mapping",
-        "Review a small generated batch before full 44-image execution"
+        "Persist CHAR_IP_001 canonical identity image/master into repository or approved execution-accessible asset store",
+        "Persist approved SCENE_WORKDESK_001 / UI_POLICY_PAGE_001 / UI_AI_ANSWER_001 masters as needed",
+        "Populate canonical_paths in Reference Manifest",
+        "Validate every execution row resolves real reference inputs",
+        "Issue final G5 PASS and release G6"
       ],
       "calibration_review": "experiments/g5/blind-search-answer/09_CALIBRATION_REVIEW.md",
       "calibration_results": {
@@ -320,7 +322,7 @@
     },
     "phase_c": {
       "name": "Frame Blueprint → Beat Binding → Execution Mode → Prompt/Edit Compiler",
-      "status": "PILOT_REVALIDATION_REQUIRED_VB009_EXECUTION_PATCH_READY",
+      "status": "HIGH_RISK_PILOT_COMPLETE_PASS_CANDIDATE",
       "frame_blueprints": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json",
       "execution_rows": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
       "recompile_review": "experiments/g5/blind-search-answer/15_FRAME_BLUEPRINT_RECOMPILE_REVIEW.md",
@@ -352,7 +354,7 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Retry VB044 by editing the accepted attempt-2 composition: preserve single adult IP, camera, desk and verification gesture; replace screen with generic brandless policy/source page; remove checklist/moral text. If PASS/PASS_WITH_MINOR, close and review the 8-beat Pilot.",
+      "next": "Persist and bind real canonical reference binaries (CHAR_IP_001 first, then required scene/UI masters); rerun machine reference-path validation; then issue final G5 PASS.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
@@ -363,8 +365,9 @@
         "SRCH_VB016": "PASS_WITH_MINOR",
         "SRCH_VB022": "PASS_WITH_MINOR_SEMANTIC_COMPARE",
         "SRCH_VB025": "PASS_WITH_MINOR_CHARACTER_RISK",
-        "SRCH_VB044": "RETURN_EXECUTION_RETRY2_READY_SOURCE_ONLY"
-      }
+        "SRCH_VB044": "PASS_WITH_MINOR"
+      },
+      "pilot_review": "experiments/g5/blind-search-answer/17_HIGH_RISK_PILOT_REVIEW.md"
     },
     "phase_b_5": {
       "name": "Visual Acquisition Review",
@@ -413,6 +416,7 @@
       },
       "revalidation_result": "VB001_PASS_WITH_MINOR",
       "current_character_in_scene_master": "LATEST_OWNER_APPROVED_VB001_CURRENT_CONVERSATION"
-    }
+    },
+    "gate_review": "docs/G5_GATE_REVIEW.md"
   }
 }
