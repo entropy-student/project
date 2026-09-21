@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://entropy-student.local/ai-story-showrunner/frame-execution-row.schema.json",
-  "title": "AI Story Showrunner Frame Execution Row v0.2",
+  "title": "AI Story Showrunner Frame Execution Row v0.3",
   "type": "object",
   "additionalProperties": true,
   "required": [
@@ -9,6 +9,7 @@
     "frame_blueprint_ref",
     "execution_mode",
     "asset_binding",
+    "identity_lock",
     "output_name",
     "acceptance_criteria"
   ],
@@ -123,6 +124,50 @@
       "minItems": 1,
       "items": {
         "type": "string"
+      }
+    },
+    "identity_lock": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "required",
+        "canonical_character_ids",
+        "canonical_identity_ref_required",
+        "policy_ref",
+        "hard_constraints",
+        "reference_precedence"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "canonical_character_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "canonical_identity_ref_required": {
+          "type": "boolean"
+        },
+        "policy_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hard_constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reference_precedence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     }
   }
