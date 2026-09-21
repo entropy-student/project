@@ -117,7 +117,8 @@
           "adult eye/jaw/chin/nose/body proportions remain canonical",
           "wine-red top with cream/off-white collar remains unchanged"
         ],
-        "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+        "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
       },
       "execution": {
         "execution_id": "EXEC_001",
@@ -211,7 +212,7 @@
         "g4_lock": {
           "visual_intention": "SEE_CONSEQUENCE",
           "shot_size": "MEDIUM_INSERT",
-          "pov": "OBSERVER",
+          "pov": "IP_POV_HANDS",
           "image_relation_grammar": "CONTINUITY"
         },
         "frame_archetype": "CHARACTER_ACTION",
@@ -232,7 +233,7 @@
         "attention_entry": "CU",
         "attention_exit": "CM",
         "transition_mode": "HOLD",
-        "composition_mode": "DEPTH_LAYERED",
+        "composition_mode": "FIRST_PERSON_DESK_INSERT",
         "composition_callback_ref": null,
         "negative_space_role": "protect P1 from competing information",
         "density": "LOW",
@@ -313,7 +314,8 @@
           "adult eye/jaw/chin/nose/body proportions remain canonical",
           "wine-red top with cream/off-white collar remains unchanged"
         ],
-        "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+        "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "pov_reason": "The story consequence is created by the protagonist personally writing the assumption into the cost sheet."
       },
       "execution": {
         "execution_id": "EXEC_009",
@@ -338,7 +340,7 @@
         "source_frame_ref": "SRCH_VB008.png",
         "source_asset_refs": [],
         "prompt": null,
-        "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: 成本表新增一条错误判断. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. Keep hidden: 官方政策反转.",
+        "edit_delta": "Preserve the accepted source only as continuity support. Reframe/execute in locked POV mode IP_POV_HANDS. POV reason: The story consequence is created by the protagonist personally writing the assumption into the cost sheet. Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: 成本表新增一条错误判断. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. Keep hidden: 官方政策反转.",
         "composite_instructions": null,
         "negative_constraints": [
           "real/invented brand logos",
@@ -355,7 +357,9 @@
           "weakened/removed nose structure",
           "chibi or oversized-head body ratio",
           "blush-driven cute-boy reinterpretation",
-          "hoodie or any costume replacement"
+          "hoodie or any costume replacement",
+          "camera viewpoint different from locked POV mode",
+          "unrequested full character when POV/objective insert excludes the character"
         ],
         "text_render_mode": "POST_OVERLAY",
         "aspect_ratio": "16:9",
@@ -393,7 +397,9 @@
             "PREVIOUS_ACCEPTED_FRAME",
             "PROMPT_PROSE"
           ]
-        }
+        },
+        "pov_mode": "IP_POV_HANDS",
+        "pov_reason": "The story consequence is created by the protagonist personally writing the assumption into the cost sheet."
       }
     },
     {
@@ -491,7 +497,8 @@
           "no unnecessary brand/logo, bubble, card or explanatory arrow",
           "caption-safe and readable at reduced size",
           "only current Beat information is visible"
-        ]
+        ],
+        "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
       },
       "execution": {
         "execution_id": "EXEC_012",
@@ -648,7 +655,8 @@
           "no unnecessary brand/logo, bubble, card or explanatory arrow",
           "caption-safe and readable at reduced size",
           "only current Beat information is visible"
-        ]
+        ],
+        "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
       },
       "execution": {
         "execution_id": "EXEC_015",
@@ -799,7 +807,8 @@
           "no unnecessary brand/logo, bubble, card or explanatory arrow",
           "caption-safe and readable at reduced size",
           "only current Beat information is visible"
-        ]
+        ],
+        "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
       },
       "execution": {
         "execution_id": "EXEC_016",
@@ -958,7 +967,8 @@
           "no unnecessary brand/logo, bubble, card or explanatory arrow",
           "caption-safe and readable at reduced size",
           "only current Beat information is visible"
-        ]
+        ],
+        "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
       },
       "execution": {
         "execution_id": "EXEC_022",
@@ -1133,7 +1143,8 @@
           "adult eye/jaw/chin/nose/body proportions remain canonical",
           "wine-red top with cream/off-white collar remains unchanged"
         ],
-        "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+        "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
       },
       "execution": {
         "execution_id": "EXEC_025",
@@ -1328,7 +1339,8 @@
           "adult eye/jaw/chin/nose/body proportions remain canonical",
           "wine-red top with cream/off-white collar remains unchanged"
         ],
-        "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+        "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
       },
       "execution": {
         "execution_id": "EXEC_044",
@@ -1435,5 +1447,14 @@
     ]
   },
   "rejected_character_sources_note": "Earlier juvenile/hoodie/drifted VB001 attempts remain REJECTED_NOT_SOURCE_ELIGIBLE.",
-  "next_beat": "SRCH_VB009"
+  "next_beat": "SRCH_VB009",
+  "pov_review": {
+    "status": "PATCHED",
+    "changed_pilot_beats": [
+      "SRCH_VB009"
+    ]
+  },
+  "pilot_progress": {
+    "SRCH_VB009": "RETRY_AFTER_POV_PATCH"
+  }
 }
