@@ -20,16 +20,17 @@ Turn accepted G4/G5 outputs into a deterministic low-level package that Antigrav
 
 1. Materialize `g5-reference-package-v1` into the G6 working package.
 2. Use `AUDIO_MODE=A_UPSTREAM_COSYVOICE`.
-3. Segment the locked script into natural Speech Units under `docs/SRT_AUDIO_TIMING_STANDARD.md`.
-4. Run the fixed CosyVoice Voice Profile at one episode-level base speed; measure real duration for every Speech Unit.
-5. Normalize technical head/tail silence and author explicit pause intervals.
-6. Assemble and lock `FINAL_AUDIO.wav`.
-7. Compile `FINAL_AUDIO_ALIGNED.srt` from the measured audio timeline.
-8. Retime the accepted Visual Beats against FINAL_AUDIO while preserving order, dramatic job, POV and setup/payoff relationships.
-9. Generate `07_SHOT_TIMELINE.csv`.
-10. Generate `08_IMAGE_GENERATION.csv` from the accepted 44 G5 execution rows.
-11. Generate `09_EDIT_INSTRUCTIONS.md` and output spec.
-12. Run a small Antigravity execution slice before full-episode execution.
+3. Segment the locked script into Speech Units while preserving G4 `timing_kind`, pace intent, timing anchors and reference durations.
+4. Run the fixed CosyVoice Voice Profile at calibrated base speed to measure feasibility for every Speech Unit.
+5. Build `TIMING_CALIBRATION.json`: compare reference windows against semantic speed envelopes and identify infeasible regions.
+6. Keep feasible reference windows; locally reallocate time only where needed, protecting anchors and semantic pace.
+7. Generate semantic-paced TTS at the solved per-unit speed and assemble `FINAL_AUDIO.wav` with authored pauses.
+8. Compile `FINAL_AUDIO_ALIGNED.srt` from the solved audio timeline.
+9. Retime the accepted Visual Beats only where exact timing changed, preserving order, dramatic job, POV and setup/payoff relationships.
+10. Generate `07_SHOT_TIMELINE.csv`.
+11. Generate `08_IMAGE_GENERATION.csv` from the accepted 44 G5 execution rows.
+12. Generate `09_EDIT_INSTRUCTIONS.md` and output spec.
+13. Run a small Antigravity execution slice before full-episode execution.
 
 ## PoC acceptance
 
@@ -57,11 +58,12 @@ PoC evidence showed:
 - punch natural TTS: 1.2771s inside a 1.350s old window — PASS.
 
 Root cause:
-old timestamps inherited G4 Visual Beat pacing estimates. They are not valid speech-duration contracts.
+old timestamps mixed useful semantic rhythm intent with numeric windows that were not always voice-feasible.
 
 Therefore:
-- Audio Master becomes the production clock;
-- exact SRT is generated from measured audio;
-- Visual Beats are retimed after audio lock;
-- per-cue major speed-up is prohibited as a rescue mechanism;
-- planning `5 chars/sec` remains planning-only and cannot create production timestamps.
+- keep `timing_kind`, relative pacing and protected anchors as upstream creative constraints;
+- use raw TTS only to measure physical feasibility, not to flatten the whole episode to one natural pace;
+- keep old reference windows when they are feasible inside the semantic speed envelope;
+- when a window is infeasible, borrow/donate time locally before changing section/episode duration;
+- major per-cue speed-up is prohibited as a rescue mechanism;
+- final Audio Master freezes the solved semantic-paced schedule.
