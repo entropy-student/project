@@ -518,3 +518,23 @@ Limitation: the retained `.artifacts` helper files are local-only and are not th
 Current checkpoint: `OWNER_K3R8D_CONTAINER_OAUTH_REQUIRED`.
 
 Do not classify Sandbox credentials until the Owner run returns an HTTP OAuth result.
+
+## K3R8D Owner OAuth Result — PASS / Phase C Authorized
+
+Owner executed the repaired container-native OAuth helper and returned:
+
+```text
+CONTAINER_OAUTH_STAGE=PHP_WP_REMOTE_POST
+PAYPAL_SANDBOX_OAUTH=PASS
+HTTP_STATUS=200
+TOKEN_RECEIVED=YES
+ERROR_CLASS=NONE
+```
+
+Accepted conclusion: the Sandbox Client ID + Secret pair entered in this run is valid, PayPal Sandbox is reachable from the active WordPress container, and the container WordPress HTTP stack can successfully obtain an OAuth access token.
+
+This eliminates invalid credentials and container network/TLS as explanations for a failure involving the same credential pair.
+
+Current Gate: `K3R8C_PHASE_C_PPCP_MANUAL_CONNECT_ISOLATION`.
+
+Phase C should first inspect the existing PPCP manual-connect failure evidence without asking Owner to re-enter credentials. Only if the existing evidence is insufficient may one bounded retry with the same locally-entered credentials be requested.
