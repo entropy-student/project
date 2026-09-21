@@ -16,7 +16,7 @@ MINIMAL_PLUGIN_POLICY=APPROVED
 CANONICAL_COMMERCE_SYSTEM=WOOCOMMERCE
 MVP_PAYMENT=WOOCOMMERCE_PAYPAL_PAYMENTS
 DUJIAO_SECOND_ORDER_SYSTEM=NO
-GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
+GITHUB_HANDOFF_PROTOCOL=V2_TRIAL_ORIGINAL_GOVERNANCE_INHERITED
 
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
@@ -28,6 +28,8 @@ K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
+FULL_PROJECT_REVIEW_AFTER_K3R8_RESOLUTION=REQUIRED
+K4_BROAD_FEATURE_EXPANSION_BEFORE_FULL_REVIEW=HOLD
 
 GITHUB_HANDOFF_TRIAL_SUCCESS_COUNT=4
 GITHUB_HANDOFF_TARGET_FOR_GLOBAL_GOVERNANCE=3
@@ -490,3 +492,14 @@ Owner ran the exact K3R8C command and received `ERROR_CLASS=LOCAL_HELPER_MISSING
 The result conflicts with K3R8C evidence claiming the local helper artifacts remained available. Reviewer treats this as an Owner-checkpoint artifact readiness defect and requires repair plus post-cleanup end-to-end validation.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R8D_OWNER_HELPER_ARTIFACT_READINESS_REPAIR.md`.
+
+
+## Handoff V2 / Full Review Trigger
+
+Owner requested restoration of the original project-management governance principle: Reviewer must independently verify actual source/runtime/evidence rather than accept Executor conclusions at face value, while GitHub should reduce Owner relay work.
+
+Project-local protocol upgraded in `docs/GITHUB_HANDOFF_PROTOCOL.md`.
+
+Formal decision: `docs/REVIEWER_DECISION_HANDOFF_V2_AND_POST_K3R8_FULL_REVIEW.md`.
+
+After the current K3R8* incident reaches a stable resolved checkpoint, perform a fresh 2–3 round whole-project review before broad K4 expansion. Previous conclusions are inputs, not assumptions; reconcile against current evidence.
