@@ -756,3 +756,10 @@ Current:
 - Residual recurring-IP drift remains and is explicitly deferred.
 - Canonical IP image-reference persistence promoted to a hard prerequisite before G6.
 - Next: final high-risk Pilot beat VB044.
+
+
+## 2026-09-21 — VB044 first attempt returned
+
+- `SRCH_VB044 = RETURN_EXECUTION`.
+- Generated output over-explained the callback as a summary poster.
+- Retry locked to one IP + same opening spatial relationship + deliberate source verification only.
