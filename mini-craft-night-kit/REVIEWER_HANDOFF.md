@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE
+CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_SECRET_ROTATION_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -524,3 +524,32 @@ K3R10 resumes the original K3 payment acceptance path: checkout visibility → o
 Formal decision: `docs/REVIEWER_DECISION_K3R9_PASS_K3R10_SANDBOX_CHECKOUT_CAPTURE.md`.
 
 Project-local side task recorded: `docs/SIDE_TASK_GITHUB_HANDOFF_STRUCTURED_RECEIPT.md`. It is non-blocking and does not yet modify active Governance.
+
+
+## K3R10 Review — RETURN Accepted / K3R11 Public Sandbox Origin
+
+Reviewer independently inspected the K3R10 evidence and PPCP SDK v6 client-token source.
+
+Accepted:
+
+```text
+PAYPAL_CHECKOUT_METHOD_VISIBLE=YES
+PPCP_CLIENT_TOKEN=FAIL
+PAYPAL_CHECKOUT_BUTTON_RENDERED=NO
+BUYER_APPROVAL_REACHED=NO
+ORDER_CREATED=NO
+WEBHOOK_REGISTER=FAIL_INVALID_PUBLIC_URL
+PUBLIC_CALLBACK_REQUIRED=YES
+RETURN_K3_PUBLIC_CALLBACK_REQUIRED=ACCEPTED
+```
+
+Precision correction: this is a **public Sandbox origin** boundary, not webhook-only. PPCP client-token generation is independent from webhook registration but also derives its domain from WordPress `home_url()`; the current localhost origin is therefore part of both blocked paths.
+
+Security incident: a pre-existing PPCP log line containing Sandbox credential fields was surfaced in diagnostic output. No value was committed to GitHub, but the affected Sandbox Secret must be rotated before reuse.
+
+Current checkpoint: `OWNER_K3R11_SANDBOX_SECRET_ROTATION_REQUIRED`.
+
+After Owner confirms rotation (without sharing the new Secret), Executor may prepare a temporary reversible HTTPS public Sandbox origin. K3R11 stops before buyer approval/capture.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R10_RETURN_K3R11_PUBLIC_SANDBOX_ORIGIN.md`.
+Incident: `docs/SECURITY_INCIDENT_K3R10_SANDBOX_CREDENTIAL_OUTPUT.md`.
