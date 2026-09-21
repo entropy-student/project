@@ -72,7 +72,7 @@ Canonical recurring-character identity:
 
 `AUDIO_MODE = A_UPSTREAM_COSYVOICE`
 
-上游使用锁定 Voice Profile 生成自然配音并测量真实时长，形成 FINAL_AUDIO。之后再生成 FINAL_AUDIO_ALIGNED.srt，并据此重编 Visual Beat / Shot Timeline 的精确时间。
+上游保留 G4 的 semantic timing intent（快/慢/PUNCH/REVERSAL/HOLD 等），使用锁定 Voice Profile 测量可行性，并只对不可实现的局部时间窗做受约束重分配。之后生成 semantic-paced FINAL_AUDIO、FINAL_AUDIO_ALIGNED.srt，再编译精确 Shot Timeline。
 
 Antigravity：
 - 不重新 TTS；
@@ -84,7 +84,7 @@ Antigravity：
 Canonical timing contract:
 `docs/SRT_AUDIO_TIMING_STANDARD.md`
 
-The Audio Master is the production clock.
+Semantic Timing Intent is the creative constraint; the solved Audio Master is the exact production clock.
 
 ## 5. Character Consistency Contract
 
