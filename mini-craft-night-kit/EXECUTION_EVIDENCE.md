@@ -1011,3 +1011,17 @@ K3R8_PHASE_A_NETWORK_TLS=PASS
 K3R8_PHASE_B_OWNER_OAUTH=REQUIRED
 K3R8_RESULT=RETURN_OWNER_K3R8_SANDBOX_OAUTH_CHECK_REQUIRED
 STOP_AT_REVIEWER=YES
+## K3R8B Local OAuth helper diagnostic (2026-09-21)
+
+- Scope remained host/helper-only on the active Docker/MariaDB runtime. No PayPal credential, PPCP/WooCommerce version, source, Live mode, or provider connection was changed.
+- Host baseline: PowerShell 7.6.5 Core. .NET DNS resolution succeeded with two addresses; TCP 443 succeeded. `Resolve-DnsName` did not return a usable record in this PowerShell session, so it was not used as the final DNS verdict.
+- HTTPS stack results: `Invoke-WebRequest` returned HTTP 403; .NET HttpClient with default proxy handling returned HTTP 403; .NET HttpClient with proxy disabled also returned HTTP 403. These prove an HTTP-layer response but are not credential verdicts.
+- Proxy/environment: `HTTP_PROXY` was present with an HTTP scheme and no userinfo; `HTTPS_PROXY`, `ALL_PROXY`, and `NO_PROXY` were absent. WinHTTP reported direct access. Proxy values were not printed.
+- Raw TLS comparison: Windows curl/Schannel failed the TLS handshake with exit 35 in both default and no-proxy modes; direct .NET SslStream also failed with a generic IO exception. This is a mixed host TLS/proxy-path result, not a DNS/TCP failure and not a credential result.
+- Existing helper was syntax-valid but collapsed all request/setup exceptions to `LOCAL_REQUEST_FAILURE`. Body/header construction was independently validated with non-secret dummy values. The helper was revised locally to classify only `DNS_FAILURE`, `TCP_FAILURE`, `TLS_FAILURE`, `PROXY_FAILURE`, `HTTP_401`, `HTTP_403`, `HTTP_200_TOKEN_RECEIVED`, or `POWERSHELL_REQUEST_EXCEPTION`; it never prints response bodies or credential-bearing values.
+
+ROOT_CAUSE_CANDIDATE=HELPER_EXCEPTION_CLASSIFICATION_GAP_WITH_MIXED_HOST_SCHANNEL_PROXY_PATH
+K3R8B_HOST_DIAGNOSTIC=PASS_WITH_TLS_STACK_MISMATCH
+K3R8B_OWNER_RETRY=REQUIRED
+K3R8B_RESULT=RETURN_OWNER_K3R8B_CORRECTED_HELPER_REQUIRED
+STOP_AT_OWNER_CHECKPOINT=YES
