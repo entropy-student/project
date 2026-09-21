@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REOPEN_REQUIRED
+CURRENT_GATE=K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -811,7 +811,7 @@ PAYPAL_SELECTED=PASS
 BUYER_APPROVAL=OWNER_REQUIRED
 ORDER_CREATED=NOT_OBSERVED_BEFORE_CHECKPOINT
 CAPTURE_ACTIONS=0
-CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED
+CURRENT_GATE=K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
 ```
 
 Owner must privately complete Sandbox buyer login/approval for the single existing test flow. The temporary public origin remains active and must not be torn down.
@@ -831,3 +831,18 @@ CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REOPEN_REQUIRED
 ```
 
 Owner may reopen Checkout and start one fresh Sandbox buyer flow. The temporary public origin remains required.
+
+
+## K3R10 Owner Buyer Approval — SUCCESS UI
+
+Owner completed the single Sandbox PayPal buyer flow and reached the WooCommerce order-received page.
+
+```text
+BUYER_APPROVAL_RESULT=SUCCESS
+ORDER_RECEIVED_UI=PASS
+CURRENT_GATE=K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
+```
+
+Executor must now independently verify the single order/capture, paid/processing status, redacted provider correlation, non-completion of physical fulfillment, actual webhook/callback processing, and runtime health before Reviewer can close K3R10.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R10_OWNER_BUYER_APPROVAL_SUCCESS_VERIFY_CAPTURE.md`.
