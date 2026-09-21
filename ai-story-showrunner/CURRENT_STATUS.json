@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_IN_PROGRESS_FRAME_DESIGN_RULES_RESEARCH_CANDIDATE_PILOT_HOLD",
+  "project_state": "G5_IN_PROGRESS_FRAME_BLUEPRINT_V04_CANONICAL_44_RECOMPILED_PILOT_READY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "Review candidate Visual Frame Design rules. 8-image pilot is temporarily on hold; after approval, recompile pilot frames before generation.",
+  "owner_review_scope": "Frame Blueprint v0.4 is canonical. Search Case 44/44 Blueprints and execution rows structurally PASS. Next: run the new 8-beat Pilot; full 44-image batch remains not started.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -310,16 +310,29 @@
       }
     },
     "phase_c": {
-      "name": "Image Generation Compiler",
+      "name": "Frame Blueprint → Beat Binding → Execution Mode → Prompt/Edit Compiler",
       "status": "PASS_CANDIDATE_PILOT_READY",
-      "image_rows": "experiments/g5/blind-search-answer/10_IMAGE_GENERATION_ROWS.json",
-      "human_plan": "experiments/g5/blind-search-answer/11_IMAGE_GENERATION_PLAN.md",
-      "pilot_batch": "experiments/g5/blind-search-answer/12_PILOT_BATCH.json",
+      "frame_blueprints": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json",
+      "execution_rows": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
+      "recompile_review": "experiments/g5/blind-search-answer/15_FRAME_BLUEPRINT_RECOMPILE_REVIEW.md",
+      "pilot_batch": "experiments/g5/blind-search-answer/16_PILOT_BATCH_V02.json",
       "visual_beats": 44,
-      "image_rows_count": 44,
+      "frame_blueprints_count": 44,
+      "execution_rows_count": 44,
       "structural_validation": "PASS",
-      "post_overlay_rows": 33,
-      "continuity_rows": 36,
+      "asset_reference_validation": "PASS",
+      "unknown_asset_refs": [],
+      "execution_mode_counts": {
+        "GENERATE": 14,
+        "DERIVE_EDIT": 26,
+        "COMPOSITE_CROP": 4
+      },
+      "historical_v01_outputs": {
+        "status": "SUPERSEDED_DO_NOT_USE",
+        "image_rows": "experiments/g5/blind-search-answer/10_IMAGE_GENERATION_ROWS.json",
+        "human_plan": "experiments/g5/blind-search-answer/11_IMAGE_GENERATION_PLAN.md",
+        "pilot_batch": "experiments/g5/blind-search-answer/12_PILOT_BATCH.json"
+      },
       "pilot_beats": [
         "SRCH_VB001",
         "SRCH_VB009",
@@ -330,7 +343,7 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Generate high-risk Pilot using Control; include a small paired Control-vs-Challenger style test before full style scale."
+      "next": "Generate + QA the new 8-beat Pilot from v0.4 Blueprint/Execution rows. Do not start full 44-image batch until Pilot PASS."
     },
     "phase_b_5": {
       "name": "Visual Acquisition Review",
@@ -344,12 +357,11 @@
       "evidence_limit": "Real audience attention/trust/retention evidence is not yet available; long-term SCALE prohibited."
     },
     "frame_design_review": {
-      "status": "CANDIDATE_OWNER_REVIEW",
-      "rules": "docs/VISUAL_FRAME_DESIGN_RULES_CANDIDATE_V01.md",
-      "research": "docs/VISUAL_FRAME_RESEARCH_NOTES.md",
-      "finding": "Missing layer is frame-level attention/composition design, not just visual style.",
-      "pilot_status": "HOLD_UNTIL_RULE_REVIEW",
-      "next": "Owner review rules, then recompile 8 Search pilot beats under new frame design constraints."
+      "status": "PASS_CANONICAL",
+      "canonical_rules": "docs/VISUAL_FRAME_BLUEPRINT_RULES.md",
+      "schema": "schemas/frame_blueprint.schema.json",
+      "validation": "experiments/g5/blind-search-answer/15_FRAME_BLUEPRINT_RECOMPILE_REVIEW.md",
+      "finding": "Frame-level attention architecture is now canonical; one dramatic job, explicit P1/P2, one main delta, no-brand-by-default, source-crop comparison, derive-before-regenerate."
     }
   }
 }
