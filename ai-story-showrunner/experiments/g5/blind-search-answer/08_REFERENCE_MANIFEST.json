@@ -1,14 +1,14 @@
 {
   "episode_id": "blind-search-answer",
-  "status": "G5B_CALIBRATION_PASS_G5C_READY",
+  "status": "G5_PASS_CANDIDATE_SOURCE_RECOVERY_IN_PROGRESS",
   "references": [
     {
       "asset_id": "CHAR_IP_001",
       "type": "CHARACTER",
-      "status": "AVAILABLE_IN_CURRENT_CONVERSATION_IDENTITY_HARD_LOCKED",
+      "status": "SOURCE_RECOVERED_LIBRARY_REPO_PERSISTENCE_PENDING",
       "canonical_paths": [],
       "generation_allowed": true,
-      "note": "Owner canonical IP image is the identity truth. Clearly adult young male. Previous generated frames are secondary continuity refs only and may never replace canonical identity or propagate maturity/face/costume drift.",
+      "note": "Owner canonical identity source and supporting character master/turnaround were recovered from Library and visually verified. They are not yet persisted into an execution-accessible repo path; canonical_paths remains intentionally empty until real persistence succeeds.",
       "identity_role": "CANONICAL_IDENTITY_SOURCE",
       "maturity_lock": "CLEARLY_ADULT_YOUNG_MALE",
       "costume_lock": "WINE_RED_TOP_CREAM_COLLAR_BLACK_TROUSERS_WHITE_SHOES",
@@ -17,7 +17,20 @@
         "APPROVED_PRODUCTION_CHARACTER_MASTER",
         "APPROVED_ANGLE_POSE",
         "PREVIOUS_ACCEPTED_FRAME"
-      ]
+      ],
+      "source_recovery": {
+        "status": "RECOVERED_AND_VISUALLY_VERIFIED",
+        "canonical_identity_library_file_id": "file_00000000872081fdb2b7ef891cc9f705",
+        "canonical_identity_library_name": "人物形象参考图(20260920-171855).png",
+        "approved_character_master_library_file_id": "file_00000000ea9c81fdb3b7320e99aaf274",
+        "approved_character_master_library_name": "image-gen-1(20260920-172809).png",
+        "turnaround_library_file_id": "file_00000000117c81fda2e1db89ef98e06d",
+        "turnaround_library_name": "image-gen-2(20260920-172811).png",
+        "character_guide_library_file_id": "file_00000000a54481fd94cd8f5bb8590755",
+        "character_guide_library_name": "AI角色设定与场景风格指南.png",
+        "repo_persistence": "PENDING",
+        "note": "Recovered from ChatGPT Library and visually verified against current Character Bible. Library IDs are source-recovery metadata only and do not count as executable canonical_paths for Antigravity."
+      }
     },
     {
       "asset_id": "SCENE_WORKDESK_001",
