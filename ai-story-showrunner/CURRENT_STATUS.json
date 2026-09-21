@@ -82,7 +82,7 @@
     "Voice Timing Profile compiles production-grade SRT near the Writer stage; real TTS is normally execution/QA, not a second creative timing pass.",
     "G6 audio mode is EXECUTOR_LOCKED_COSYVOICE: Antigravity executes the locked TTS manifest but has no timing or rewriting authority."
   ],
-  "project_state": "G6_VOICE_TIMING_PROFILE_V1_RETURN_TARGETED_V2_NEXT",
+  "project_state": "G6_VOICE_TIMING_PROFILE_V2_TARGETED_READY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -447,7 +447,7 @@
     "reference_package_root": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1",
     "reference_package_zip": "/ai-story-showrunner/g5/blind-search-answer/g5-reference-package-v1.zip",
     "audio_mode": "EXECUTOR_LOCKED_COSYVOICE",
-    "next": "Prepare and run targeted Voice Timing Profile v2 calibration. Do not compile Production SRT until the v2 profile passes.",
+    "next": "Run the targeted v2 package: 3 calibration/control generations, freeze two rule parameters, then 3 strict held-out generations. If no held-out RETURN, reviewer decides whether to freeze Voice Timing Profile v2 and compile Production SRT.",
     "timing_standard": "docs/SRT_AUDIO_TIMING_STANDARD.md",
     "tts_poc": {
       "engine": "CosyVoice-300M",
@@ -487,7 +487,7 @@
       "references/"
     ],
     "voice_timing_calibration": {
-      "status": "V1_RETURN_PROFILE_INSUFFICIENT",
+      "status": "V2_TARGETED_READY_TO_RUN",
       "calibration_set": "experiments/g6/voice-timing-calibration/CALIBRATION_SET_V1.json",
       "antigravity_task": "experiments/g6/voice-timing-calibration/ANTIGRAVITY_CALIBRATION_TASK.md",
       "total_samples": 18,
@@ -506,7 +506,20 @@
         "unsafe_underallocation_case": "BLD001"
       },
       "v1_decision": "REJECT_PROFILE_DO_NOT_USE_FOR_PRODUCTION",
-      "next": "Run a small targeted v2 calibration, not another full 18-sample sweep. Focus on short NORMAL variability and mixed Latin+Arabic normalization; validate one-sided under-allocation safety plus semantic tail-slack."
+      "next": "Run a small targeted v2 calibration, not another full 18-sample sweep. Focus on short NORMAL variability and mixed Latin+Arabic normalization; validate one-sided under-allocation safety plus semantic tail-slack.",
+      "v2": {
+        "strategy": "TARGETED_RULE_REPAIR_NOT_FULL_RECALIBRATION",
+        "new_generations_expected": 6,
+        "calibration_new": 3,
+        "heldout_new": 3,
+        "set": "experiments/g6/voice-timing-calibration/TARGETED_CALIBRATION_SET_V2.json",
+        "antigravity_task": "experiments/g6/voice-timing-calibration/ANTIGRAVITY_TARGETED_V2_TASK.md",
+        "targeted_failures": [
+          "SHORT_NORMAL_UNDERALLOCATION",
+          "MIXED_LATIN_ARABIC_OVERCOUNT"
+        ],
+        "acceptance": "ONE_SIDED_TIMING_SAFETY_PLUS_SEMANTIC_TAIL_SLACK"
+      }
     }
   },
   "skill_productization": {
