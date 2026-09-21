@@ -114,11 +114,12 @@ ROADMAP.md
 G1 = PASS
 G2 = PASS
 G3 = MERGED / CLOSED
-G3.5 = NEXT
-G4 = PENDING
+G3.5 = PASS
+G4 = NEXT / RELEASED TO CODEX
+G4.5 = PENDING
 ```
 
-Codex 当前应 HOLD，等待 Reviewer/Owner 完成 `G3_5_UI_GROWTH_FREEZE.md`。
+2026-09-22 Reviewer reconciliation confirms G4 is the current execution Gate. Before any G4 edits, Codex must complete the source-baseline traceability precheck in `G4_EXECUTION_CONTRACT.md`. If the reviewed source baseline cannot be proven, return `RETURN_G4_SOURCE_BASELINE_UNRESOLVED` and stop.
 
 ## 10. Promotion to Shared Governance
 
