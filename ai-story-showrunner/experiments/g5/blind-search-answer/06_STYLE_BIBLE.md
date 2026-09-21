@@ -1,4 +1,4 @@
-# Blind Search Answer — Style Bible v0.2
+# Blind Search Answer — Style Bible v0.3
 
 ## STYLE_CHANNEL_001
 
@@ -27,7 +27,7 @@ best balance of:
 ## Core visual language
 
 - story-first still illustration;
-- simplified anime/comic proportions, not chibi;
+- simplified comic rendering with canonical adult body/face proportions; never simplify anatomy into juvenile/chibi proportions;
 - clean stable outline;
 - reduced hair strand complexity;
 - 1–2 flat shadow levels;
@@ -43,7 +43,7 @@ best balance of:
 ## Character simplification lock
 
 Preserve:
-- youthful male narrator identity;
+- clearly adult young-male narrator identity;
 - dark tousled short hair silhouette;
 - warm, rational, gentle expression baseline;
 - wine-red top;
@@ -51,13 +51,30 @@ Preserve:
 - black trousers;
 - simple white shoes.
 
-Simplify:
-- hair into a small number of stable major clumps;
-- skin shading to broad flat shapes;
-- clothing folds to only major structural folds;
+Simplify ONLY:
+- hair micro-strands into a small number of stable major clumps;
+- skin/render shading to broad flat shapes;
+- clothing micro-folds to major structural folds;
 - background props to stable story-relevant objects.
 
+Do NOT simplify:
+- age/maturity;
+- face outline / jaw / chin;
+- eye scale;
+- nose structure;
+- head/body proportion;
+- costume identity;
+- major hair silhouette / fringe partition.
+
+Canonical character policy:
+`docs/CHARACTER_IDENTITY_LOCK.md`
+
 Do NOT simplify into:
+- child / teen reinterpretation;
+- cute-boy / baby-face rendering;
+- oversized anime eyes;
+- rounded juvenile jaw;
+- blush-driven "cute" semantics;
 - stick figure;
 - faceless mascot;
 - chibi head/body ratio;
