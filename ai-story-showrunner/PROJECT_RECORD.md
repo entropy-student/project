@@ -848,3 +848,13 @@ one-time Voice Timing Profile calibration → held-out validation → Production
 - Reviewer found the original metric partially misaligned with production: under-allocation forces unnatural acceleration, while over-allocation mainly produces tail slack.
 - Voice Timing Profile Spec advanced to v0.2 with one-sided safety metrics and semantic slack review.
 - v1 profile is rejected; next step is targeted v2, not another full calibration sweep.
+
+
+## 2026-09-22 — Voice Timing Profile v2.1 final freeze
+
+- Final two-sample blind closeout returned PASS_WITH_MINOR.
+- CONTROLLED semantic safety floor 5.0 CPS produced no under-allocation; tail slack 0.7534s was within predeclared minor tolerance.
+- FINAL semantic safety floor 5.5 CPS produced no under-allocation; tail slack 0.5128s passed.
+- Canonical profile frozen at `profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json`.
+- Routine timing calibration is complete.
+- G6 next moves to Production SRT + TTS Manifest + Antigravity Production Package compilation.
