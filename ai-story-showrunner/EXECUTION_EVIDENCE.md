@@ -593,3 +593,29 @@ Result:
 
 Next:
 `Generate/QA VB009 → PASS → VB012`.
+
+
+---
+
+## G5 Pilot — VB012 PASS_WITH_MINOR
+
+Date: 2026-09-21
+
+Result:
+`SRCH_VB012 = PASS_WITH_MINOR`.
+
+Accepted:
+- IP_POV policy-page discovery works;
+- viewer can tell the page is a refund-rules page;
+- later “platform service fee non-refundable” reversal is not leaked;
+- page remains readable enough for the Pilot.
+
+Deferred minor issues:
+- laptop/desk outer framing remains more visible than ideal;
+- generated page included invented “示例平台” branding;
+- production package should prefer direct page-view framing and brand NONE;
+- exact Chinese remains POST_OVERLAY policy.
+
+Decision:
+do not rework VB012 during Pilot.
+Continue to VB015.
