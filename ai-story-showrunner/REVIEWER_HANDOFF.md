@@ -674,3 +674,28 @@ Next:
 `Generate + QA SRCH_VB009 → PASS → continue SRCH_VB012`.
 
 G6 remains blocked by G5.
+
+
+## G5 High-Risk Pilot Closure — 2026-09-21
+
+```text
+G5 High-Risk Pilot = PASS_CANDIDATE
+8/8 selected beats = accepted Pilot state
+G5 = PASS_CANDIDATE_BLOCKED_BY_REAL_REFERENCE_PERSISTENCE
+G6 = BLOCKED_BY_REAL_REFERENCE_PERSISTENCE
+```
+
+Review:
+- `experiments/g5/blind-search-answer/17_HIGH_RISK_PILOT_REVIEW.md`
+- `docs/G5_GATE_REVIEW.md`
+
+Validated:
+- Frame Blueprint / POV / setup-reveal / dual-source compare / callback architecture;
+- strict DERIVE_EDIT compatibility boundary;
+- downstream executor must not add explanatory graphics.
+
+Main remaining blocker:
+real canonical reference binaries are not persisted/bound. Repeated character drift proves prompt-only identity locking is insufficient.
+
+Next:
+persist canonical reference binaries → populate Reference Manifest canonical_paths → machine reference validation → final G5 PASS → G6.
