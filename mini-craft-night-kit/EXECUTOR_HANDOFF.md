@@ -288,3 +288,14 @@ D2 passed Home/Product/Cart/Checkout, authenticated wp-admin and Orders admin, W
 Studio A/B/C0, old Docker 8090, old project 8088, existing volumes, PayPal credentials, and unrelated projects were not touched. PPCP remains out of the recovered runtime.
 
 Reviewer action: review D0/D1/D2 evidence and decide whether K3R4 is accepted. Executor stops here; no K4/K5/VPS/Live work was started.
+## K3R5 Executor Handoff — 2026-09-21 14:03 +08:00
+
+RETURN_K3R5_PPCP_4_1_3_DOCKER_UI_CONFLICT
+
+P0 pre-K3R5 rollback backup is complete under the D2 project's local .artifacts directory: MariaDB dump, wp-config copy, and full wp-content archive were validated. Official WooCommerce PayPal Payments 4.1.3 was then installed and activated on http://localhost:8093/.
+
+WooCommerce Home, Payments, PayPal section HTTP response, wc-admin REST, Store API, Product/Cart/Checkout, and runtime latency all returned successfully. However, the browser Console reproduced Minified React error #299 from PPCP ppcp-settings-js-index.js at ReactDOM.createRoot. This is the defined Docker UI conflict. The Payments outer page is visible, but PPCP mount health is not PASS.
+
+P1 was not entered. No PayPal login, Sandbox authorization, credential/Secret handling, Live mode, payment, VPS, tunnel, Studio write, or version change occurred. PPCP remains active pending Reviewer direction; rollback is available and no further action was taken.
+
+Reviewer checkpoint: decide the next bounded PPCP conflict/rollback action. Executor stops here.
