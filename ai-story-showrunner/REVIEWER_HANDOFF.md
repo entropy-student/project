@@ -773,3 +773,25 @@ Next main-line gate:
 - Infeasible windows trigger local reallocation from nearby elastic units before large speed changes or episode expansion.
 - Current high-risk 1.407x case is diagnosed as a local window allocation failure, not evidence that the full timeline should be replaced by natural TTS timing.
 - Next: full-script `TIMING_CALIBRATION.json` → local constrained solve → semantic-paced FINAL_AUDIO → final SRT.
+
+
+## 2026-09-21 — Voice Timing Calibration v1 result
+
+Result:
+`RETURN_PROFILE_INSUFFICIENT`
+
+Evidence:
+- train R2 0.9789 / MAE 119.9ms;
+- held-out median AE 393.5ms;
+- held-out p90 AE 737.2ms;
+- BLD001 under-allocated by 586.4ms and is the key unsafe case;
+- BLD003 over-allocated by 801.9ms, which is a pacing-slack issue rather than forced-fast-speech failure.
+
+Reviewer correction:
+- future acceptance is asymmetric: unsafe under-allocation is primary; over-allocation is evaluated as semantic tail slack;
+- do not encode a keyword-specific “然后” pause rule from one example;
+- reject the v1 linear profile;
+- next is a small targeted v2 calibration for short NORMAL variability + mixed Latin/Arabic normalization, not another full 18-sample sweep.
+
+Result doc:
+`experiments/g6/voice-timing-calibration/VOICE_TIMING_CALIBRATION_V1_RESULT.md`
