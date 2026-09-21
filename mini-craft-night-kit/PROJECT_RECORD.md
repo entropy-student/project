@@ -24,7 +24,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K4_UI_CONVERSION_TRUST
+CURRENT_CHECKPOINT=OWNER_K4_BUSINESS_FACTS_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -864,7 +864,7 @@ PAYPAL_WOO_CORRELATION=PASS_REDACTED
 WEBHOOK_CALLBACK=PASS
 DUPLICATE_PAYMENT=NO
 DUPLICATE_CAPTURE=NO
-CURRENT_GATE=K4_UI_CONVERSION_TRUST
+CURRENT_CHECKPOINT=OWNER_K4_BUSINESS_FACTS_REQUIRED
 ```
 
 The temporary Quick Tunnel/public WordPress origin may now be rolled back at K4 start after localhost health verification. K4 follows the original roadmap: Home / Product / FAQ / Shipping & Returns / Contact.
@@ -875,7 +875,7 @@ Formal decision: `docs/REVIEWER_DECISION_K3_PASS_K4_CONVERSION_TRUST.md`.
 ## K4 Scope Update — UI Modification Added
 
 ```text
-CURRENT_GATE=K4_UI_CONVERSION_TRUST
+CURRENT_CHECKPOINT=OWNER_K4_BUSINESS_FACTS_REQUIRED
 UI_MODIFICATION_STAGE=ADDED
 K4_SEQUENCE=UI_MODIFICATION_THEN_CONVERSION_TRUST
 ```
@@ -883,3 +883,20 @@ K4_SEQUENCE=UI_MODIFICATION_THEN_CONVERSION_TRUST
 Owner may directly modify Home / Product / FAQ / Shipping & Returns / Contact during K4. Executor must avoid concurrent edits to the same page and rebase from the latest Owner-approved page state before continuing.
 
 Formal decision: `docs/REVIEWER_DECISION_K4_UI_CONVERSION_TRUST_SCOPE.md`.
+
+
+## K4 Implementation Review — PASS / Final Facts Pending
+
+The K4 UI and conversion/trust implementation passed technical review. Fake/unverified template content was removed, five scoped pages remain native/editable, responsive/Gutenberg/WooCommerce behavior passed, and K3 temporary public-origin cleanup is complete.
+
+```text
+K4_IMPLEMENTATION=PASS
+SHIPPING_RETURNS=PASS_SAFE_FACTUAL_BOUNDARY
+CONTACT=PASS_SAFE_FACTUAL_BOUNDARY
+K4_FINAL_PASS=PENDING_OWNER_BUSINESS_FACTS
+CURRENT_CHECKPOINT=OWNER_K4_BUSINESS_FACTS_REQUIRED
+```
+
+Remaining Owner facts are batched into one checkpoint before final K4 acceptance.
+
+Formal decision: `docs/REVIEWER_DECISION_K4_IMPLEMENTATION_PASS_OWNER_BUSINESS_FACTS.md`.
