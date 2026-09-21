@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_PILOT_IN_PROGRESS_VB001_PASS_WITH_MINOR_NEXT_VB009",
+  "project_state": "G5_PILOT_IN_PROGRESS_POV_PATCH_PASS_VB009_RETRY_READY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "Character drift root cause reviewed and patched canonically. Revalidate one identity-critical frame (VB001) against canonical adult IP before resuming the remaining Pilot.",
+  "owner_review_scope": "POV grammar patch PASS: 8/44 beats corrected. Retry VB009 as first-person hand-action insert; then continue remaining Pilot.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -244,7 +244,16 @@
     "owner_hold_before_g5": false,
     "canonical_director_rules": "docs/G4_DIRECTOR_LANGUAGE_RULES.md",
     "owner_pass_received": true,
-    "rebaseline_validation": "experiments/g4r-v03/VALIDATION_SUMMARY.md"
+    "rebaseline_validation": "experiments/g4r-v03/VALIDATION_SUMMARY.md",
+    "pov_grammar": {
+      "status": "PASS",
+      "canonical": "docs/G4_VIEWPOINT_GRAMMAR.md",
+      "audit": "experiments/g4r-v03/blind-search-answer/08_POV_AUDIT.md",
+      "reviewed_beats": 44,
+      "changed_beats": 8,
+      "unchanged_beats": 36,
+      "validation_issues": []
+    }
   },
   "g4_rebaseline_candidate": {
     "status": "PROMOTED_TO_CANONICAL",
@@ -343,12 +352,12 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Generate + QA SRCH_VB009 using the accepted character identity lock; keep VB001 as current character-in-scene master.",
+      "next": "Retry SRCH_VB009 as IP_POV_HANDS. If it passes, continue SRCH_VB012.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
         "SRCH_VB001": "PASS_WITH_MINOR_CURRENT_CHARACTER_IN_SCENE_MASTER",
-        "SRCH_VB009": "NEXT",
+        "SRCH_VB009": "RETRY_READY_IP_POV_HANDS",
         "SRCH_VB012": "PENDING",
         "SRCH_VB015": "PENDING",
         "SRCH_VB016": "PENDING",
