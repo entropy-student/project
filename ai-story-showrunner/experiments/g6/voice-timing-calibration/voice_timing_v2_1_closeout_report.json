@@ -1,0 +1,38 @@
+{
+  "task": "Voice Timing Profile v2.1 Micro Closeout",
+  "date": "2026-09-22",
+  "overall_result": "PASS_WITH_MINOR",
+  "frozen_environment": {
+    "engine": "CosyVoice-300M",
+    "mode": "zero_shot",
+    "seed": 1986,
+    "reference_wav": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\reference-clone.wav",
+    "sample_rate": 22050
+  },
+  "frozen_parameters": {
+    "short_normal_floor_sec": 1.4715,
+    "mixed_margin_sec": 0.3178,
+    "CONTROLLED_safe_cps": 5.0,
+    "FINAL_safe_cps": 5.5
+  },
+  "samples": [
+    {
+      "id": "V21B001",
+      "semantic_class": "CONTROLLED",
+      "allocated_duration_sec": 4.2,
+      "actual_normalized_duration_sec": 3.4466,
+      "required_extra_speed": 1.0,
+      "tail_slack_sec": 0.7534,
+      "result": "PASS_WITH_MINOR"
+    },
+    {
+      "id": "V21B002",
+      "semantic_class": "FINAL",
+      "allocated_duration_sec": 4.1667,
+      "actual_normalized_duration_sec": 3.6539,
+      "required_extra_speed": 1.0,
+      "tail_slack_sec": 0.5128,
+      "result": "PASS"
+    }
+  ]
+}
