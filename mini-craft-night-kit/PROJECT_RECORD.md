@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=K3R9_POST_RESULT_RESTORE_AND_VERIFY
+CURRENT_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -610,3 +610,33 @@ CURRENT_CHECKPOINT=K3R9_POST_RESULT_RESTORE_AND_VERIFY
 Executor must now restore the prior Kadence plugin activation state exactly and perform read-only verification that the PayPal merchant/Sandbox connection and runtime remain healthy. K3R9 remains open until that evidence is reviewed.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R9_OWNER_CONNECT_SUCCESS_POST_RESTORE_VERIFY.md`.
+
+
+## K3R9 Final Review — PASS
+
+Post-restore evidence confirms the full pre-isolation plugin set is restored, PayPal Sandbox merchant connection remains established, onboarding is complete, Direct PayPal Settings remains healthy, and WordPress/WooCommerce runtime remains healthy.
+
+```text
+K3R9_PPCP_MINIMAL_ENV_ISOLATION=PASS
+PPCP_SANDBOX_CONNECTION_AFTER_RESTORE=PASS
+ROOT_CAUSE_EXACT_TRIGGER=UNRESOLVED_NONBLOCKING
+CURRENT_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE
+```
+
+Do not claim Kadence as the proven cause. Further historical conflict isolation is deferred unless the failure recurs.
+
+K3R10 now resumes the actual Sandbox payment flow: checkout option → one test order → Sandbox approval/capture → WooCommerce paid/processing state → provider/order correlation → callback/webhook inspection.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R9_PASS_K3R10_SANDBOX_CHECKOUT_CAPTURE.md`.
+
+### Recorded side task — GitHub handoff receipt
+
+```text
+SIDE_TASK_GITHUB_HANDOFF_STRUCTURED_RECEIPT=RECORDED_DEFERRED
+MAINLINE_BLOCKING=NO
+GLOBAL_GOVERNANCE_CHANGED=NO
+```
+
+Goal: retain GitHub as the full evidence/truth plane while requiring compact structured chat receipts containing Gate, result, summary, evidence files, commit, Owner action, and stop/next state.
+
+Reference: `docs/SIDE_TASK_GITHUB_HANDOFF_STRUCTURED_RECEIPT.md`.
