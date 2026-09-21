@@ -706,3 +706,11 @@ Current:
 - Accepted as the matched-setup master for VB016.
 - Minor early exposure of the “服务费” label is logged, but the reversal sentence remains withheld.
 - Next: reveal only `平台服务费不予退还` with identical crop/page geometry.
+
+
+## 2026-09-21 — VB016 Pilot pass
+
+- `SRCH_VB016 = PASS_WITH_MINOR`.
+- Matched setup/reveal pair VB015→VB016 is validated.
+- Minor UI/browser framing polish deferred.
+- Next high-risk Pilot: VB022 source-crop compare.
