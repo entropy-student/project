@@ -857,3 +857,77 @@ STOP_AT_REVIEWER=YES
 ```
 
 C0 is intentionally retained with B until Reviewer decides cleanup/recovery. No further K3R3 action is authorized from this result.
+## K3R4 D0-D2 Docker + MariaDB Local Recovery — 2026-09-21 12:58 +08:00
+
+Gate: K3R4_LOCAL_RUNTIME_ESCAPE_DOCKER_MARIADB
+
+### D0 clean control runtime
+
+- D0_PROJECT: C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-docker-mariadb
+- D0_URL: http://localhost:8092
+- COMPOSE_PROJECT: mini-craft-k3r4-docker-mariadb
+- D0_IMAGES: wordpress:6.8.2-php8.3-apache, mariadb:11.4.7
+- D0_CONTAINERS: mini-craft-k3r4-wordpress, mini-craft-k3r4-mariadb
+- D0_VOLUMES: independent WordPress and MariaDB named volumes
+- D0_RUNTIME: / 200; /wp-admin/ 302 unauthenticated; /wp-json/ 200; five repeated home requests 200 with approximately 49–69 ms response times
+- D0_HEALTH: MariaDB healthy; WordPress container up; sampled CPU approximately 0.01%
+- D0_RESULT=PASS
+
+### D1 official WooCommerce control runtime
+
+- D1_INSTALL: official WooCommerce 10.0.4 only; no Kadence, Starter Templates, PPCP, or payment onboarding
+- D1_PLUGIN_LIST: Akismet inactive; Hello inactive; WooCommerce active 10.0.4
+- D1_TEST_DATA: one generic local control product, no Mini Craft import
+- D1_AUTH_RUNTIME: Home 200; wp-admin 200; WooCommerce Home 200; Settings → Payments 200; /wp-json/wc-admin/features 200; /wp-json/wc-admin/options 200; Store API products/cart 200; Product 200; Cart 200; Checkout 200
+- D1_HEALTH: MariaDB healthy; WordPress container up; sampled CPU approximately 0.01%
+- D1_RESULT=PASS
+
+### D2 Mini Craft recovery on MariaDB
+
+- D2_PROJECT: C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery
+- D2_URL: http://localhost:8093
+- D2_COMPOSE_PROJECT: mini-craft-k3r4-mariadb-recovery
+- D2_IMAGES: wordpress:6.8.2-php8.3-apache, mariadb:11.4.7
+- D2_CONTAINERS: mini-craft-k3r4-recovery-wordpress, mini-craft-k3r4-recovery-mariadb
+- D2_VOLUMES: independent MariaDB, WordPress core, and WordPress content named volumes
+- D2_SOURCE: retained pre-k3-backup.zip; direct SQL dump import plus retained wp-content copy; no SQLite→MariaDB converter
+- D2_DB_IMPORT: 52 tables imported into MariaDB successfully; no Studio wp-config.php reused
+- D2_PLUGIN_LIST: Akismet inactive; Hello inactive; Kadence Blocks active 3.7.11; Kadence Starter Templates active 2.3.4; WooCommerce active 10.0.4; PPCP absent
+- D2_URL_NORMALIZATION: clone-only siteurl and home set to http://localhost:8093
+- D2_STOCK_HOLD: backup contained woocommerce_hold_stock_minutes=0; clone-only recovery runtime normalized to 10; a local pending test order produced one wc_reserved_stock row with quantity 1; no payment was attempted
+- D2_RUNTIME: Home 200; Product 200; Cart 200; Checkout 200 after local add-to-cart; wp-admin 200; Orders admin 200; Gutenberg editor endpoint 200
+- D2_WOOCOMMERCE_ADMIN: WooCommerce Home 200; Settings → Payments 200; /wp-json/wc-admin/features/ 200 with authenticated REST nonce; /wp-json/wc-admin/options/ 200 with its required options query and authenticated REST nonce
+- D2_STORE_API: products 200; cart 200
+- D2_RESPONSIVE: 375px mobile, 768px tablet, and 1440px desktop smoke checks completed; 375px visual check showed mobile header/menu and no visible horizontal crop; browser warning/error log count 0
+- D2_PERFORMANCE: repeated home requests 200 at approximately 0.23–0.29 seconds; repeated wp-json requests 200 at approximately 0.21–0.27 seconds; sampled WordPress CPU approximately 0.01%; no one-hot worker observed
+- D2_RESULT=PASS
+
+### Safety and scope
+
+- STUDIO_A_B_C0_TOUCHED=NO
+- CURRENT_STUDIO_PPCP_REACTIVATED=NO
+- OLD_DOCKER_8090_TOUCHED=NO
+- OLD_PROJECT_UNCHANGED=PASS
+- OLD_8090_SMOKE=200
+- OLD_8088_SMOKE=200
+- UNRELATED_PROJECTS_TOUCHED=NO
+- DOCKER_VOLUMES_DELETED=NO
+- REAL_PAYMENT_ACTIONS=0
+- PAYPAL_AUTH_ACTIONS=0
+- LIVE_MODE=NO
+- VPS_WRITES=ZERO
+- SECRET_EXPOSURE=NO
+
+### Gate result
+
+PASS_CANDIDATE_K3R4_DOCKER_MARIADB_LOCAL_RECOVERY
+
+D0_CLEAN_WORDPRESS=PASS
+D1_WOOCOMMERCE_DOCKER_BASELINE=PASS
+D2_MINI_CRAFT_MARIADB_RECOVERY=PASS
+K1B_UI_PRESERVED=PASS
+K2_COMMERCE_PRESERVED=PASS
+NORMAL_STOCK_HOLD=PASS
+STOP_AT_REVIEWER=YES
+
+No PayPal reauthorization, Live mode, VPS, production domain, or K4/K5 work was entered.
