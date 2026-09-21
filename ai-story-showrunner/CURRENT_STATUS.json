@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_PILOT_IN_PROGRESS_VB025_PASS_VB044_REVIEW",
+  "project_state": "G5_PILOT_IN_PROGRESS_VB044_FRESH_CALLBACK_READY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "VB025 accepted PASS_WITH_MINOR_CHARACTER_RISK. Story payoff works; recurring-IP residual identity drift remains. Canonical image reference persistence is now a hard prerequisite before G6 deterministic production. Continue final high-risk Pilot beat VB044.",
+  "owner_review_scope": "VB044 preflight found DERIVE source incompatibility: VB001 has AI-answer shell while VB044 needs policy-page source. Fixed to fresh GENERATE with composition callback to VB001; UI_POLICY_PAGE_001 bound.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -332,8 +332,8 @@
       "asset_reference_validation": "PASS",
       "unknown_asset_refs": [],
       "execution_mode_counts": {
-        "GENERATE": 16,
-        "DERIVE_EDIT": 24,
+        "GENERATE": 17,
+        "DERIVE_EDIT": 23,
         "COMPOSITE_CROP": 4
       },
       "historical_v01_outputs": {
@@ -352,7 +352,7 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Review VB044 callback execution and generate final high-risk Pilot frame if structurally valid.",
+      "next": "Generate final Pilot beat VB044 as a fresh callback-match frame. QA callback readability, behavior change, and character identity. Then close/review the 8-beat high-risk Pilot.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
@@ -363,7 +363,7 @@
         "SRCH_VB016": "PASS_WITH_MINOR",
         "SRCH_VB022": "PASS_WITH_MINOR_SEMANTIC_COMPARE",
         "SRCH_VB025": "PASS_WITH_MINOR_CHARACTER_RISK",
-        "SRCH_VB044": "IN_REVIEW"
+        "SRCH_VB044": "READY_FRESH_GENERATE_CALLBACK_MATCH"
       }
     },
     "phase_b_5": {
