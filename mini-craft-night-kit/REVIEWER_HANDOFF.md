@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
+CURRENT_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE_RESUME
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -729,3 +729,30 @@ Current Gate: `K3R11_PUBLIC_ORIGIN_READINESS_VERIFY`.
 Executor may now verify merchant connection, Sandbox/onboarding state, SDK v6 client-token generation, PayPal Checkout button rendering, webhook registration/status, direct settings health, and runtime health. No buyer approval, capture, refund, Live, VPS, production-domain cutover, version change, or source patch.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_OWNER_PUBLIC_CONNECT_SUCCESS_VERIFY_READINESS.md`.
+
+
+## K3R11 Final Review — PASS / K3R10 Resumed
+
+Reviewer independently inspected Executor commit `f8c416006dd84d4b00b50a9837e9b6a5f8b30870`.
+
+Accepted:
+
+```text
+K3R11_PUBLIC_ORIGIN_READINESS_VERIFY=PASS
+SANDBOX_MERCHANT_CONNECTED=PASS
+PPCP_CLIENT_TOKEN=PASS
+PAYPAL_CHECKOUT_BUTTON_RENDERED=PASS
+WEBHOOK_REGISTER=PASS
+PUBLIC_HTTPS_ORIGIN=PASS
+RUNTIME_HEALTH=PASS
+BUYER_APPROVAL=NOT_EXECUTED
+CAPTURE_ACTIONS=0
+```
+
+K3R11 is formally closed. The temporary HTTPS Quick Tunnel and WordPress public-origin rebind remain active because the resumed Sandbox payment/callback test requires them.
+
+Current Gate: `K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE_RESUME`.
+
+Executor may proceed through the bounded public Checkout until Sandbox buyer authentication/approval is required, then stop at Owner. After Owner approval, exactly one Sandbox payment/capture will be verified together with WooCommerce paid/processing state, redacted provider correlation, physical-fulfillment non-completion, and actual webhook/callback processing.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_PASS_RESUME_K3R10_SANDBOX_CAPTURE.md`.
