@@ -192,3 +192,6 @@ Secondary Home candidate: `WC_ADMIN_REST_REQUEST_TIMEOUT_UNDER_PPCP_OR_REMOTE_CA
 Authorize one bounded isolation test: temporarily deactivate only WooCommerce PayPal Payments, or restore the retained pre-K3 backup, and retest the Payments page, WooCommerce Home, and the affected REST routes. Executor did not perform this deactivation because the user required a Reviewer return when plugin isolation is the next test. Do not retry authorization or alter the existing PayPal credential state until the isolation result is reviewed.
 
 `STOP_AT_REVIEWER=YES`
+### Error detail clarification
+
+The React decoder for the captured production exception `#299` resolves the full text to: `Target container is not a DOM element.` The live page inspection independently confirmed the targeted `#ppcp-settings-container` element was absent. No WooCommerce “Click for error details” link was rendered by the stuck Home view, so no additional WooCommerce UI error text was available to capture.
