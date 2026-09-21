@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_AUTH_DOCKER
+CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_MANUAL_CONNECT
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -416,3 +416,14 @@ Reviewer accepts the direct PayPal settings page as usable. The React #299 defec
 Formal decision: `docs/REVIEWER_DECISION_K3R6_PASS_OWNER_SANDBOX_AUTH.md`.
 
 Current checkpoint: `OWNER_K3_PAYPAL_SANDBOX_AUTH_DOCKER`.
+
+
+## K3 Automatic Onboarding Callback Result / K3R7
+
+Owner completed the provider-side PayPal flow, but local read-only inspection found no merchant connection, no onboarding completion, no merchant ID, and Sandbox mode remained off. The automatic flow is therefore not accepted as a Sandbox connection.
+
+Reviewer chooses the official manual Sandbox connection path before authorizing any public callback/tunnel.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R7_PAYPAL_SANDBOX_MANUAL_CONNECTION.md`.
+
+Current checkpoint: `OWNER_K3_PAYPAL_SANDBOX_MANUAL_CONNECT`.
