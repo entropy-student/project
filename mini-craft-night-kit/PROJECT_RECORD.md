@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R9_PPCP_MINIMAL_ENV_ISOLATION
+CURRENT_CHECKPOINT=OWNER_K3R9_SANDBOX_MANUAL_CONNECT_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -582,3 +582,17 @@ PPCP 4.1.3 is the current official release; no version upgrade test is available
 K3R9 will temporarily isolate the active WordPress plugin environment to WooCommerce + WooCommerce PayPal Payments, with rollback, then stop for one Owner-run Sandbox Manual Connect retry. No source patch, theme change, Live payment, tunnel, or VPS action is authorized.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R8E_PASS_K3R9_MINIMAL_ENV_ISOLATION.md`.
+
+
+## K3R9 Phase A — PASS / Owner Checkpoint
+
+Reviewer accepted the rollback, minimal-plugin isolation, transient cleanup, direct PayPal Settings readiness, and runtime evidence.
+
+```text
+K3R9_PPCP_MINIMAL_ENV_PREP=PASS
+CURRENT_CHECKPOINT=OWNER_K3R9_SANDBOX_MANUAL_CONNECT_REQUIRED
+```
+
+Owner is authorized for exactly one Sandbox Manual Connect attempt in the direct PayPal Settings page. After the result, Executor must restore the prior plugin activation state exactly before returning to Reviewer.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R9_PREP_PASS_OWNER_MANUAL_CONNECT.md`.
