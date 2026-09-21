@@ -795,3 +795,65 @@ STOP_AT_REVIEWER=YES
 ```
 
 The parallel clone and its imported database are intentionally retained until Reviewer decides the next runtime/database diagnostic. No recovery action was applied to A.
+## K3R3 — Studio / WooCommerce runtime isolation (C0 stop) (2026-09-21) — RETURN
+
+- Gate: `K3R3_STUDIO_WOOCOMMERCE_RUNTIME_ISOLATION`
+- Result: `RETURN_K3R3_STUDIO_RUNTIME_SYSTEMIC`
+- A current site remained read-only at `http://localhost:8881/`; PPCP `4.1.3` remained inactive.
+- B pre-K3 clone at `http://localhost:8882/` was not changed in this Gate.
+- Fresh control C0: `Mini Craft K3R3 Clean WordPress Control`, path `mini-craft-kadence-poc/.studio/mini-craft-k3r3-control-20260921`, URL `http://localhost:8883/`.
+- Studio CLI/runtime family: Studio `1.21.0`, WordPress `6.8.9`, native PHP `8.4`.
+
+### C0 construction boundary
+
+- C0 was created as a fresh Studio WordPress site with a separate site record, directory, and port.
+- C0 `wp-content/plugins/woocommerce/` was absent; C0 `woocommerce-paypal-payments/` was also absent.
+- No Kadence, Starter Templates, WooCommerce, PPCP, payment onboarding, or project database was installed in C0.
+- Ports `8881`, `8882`, and `8883` were listening on IPv6 loopback; C0 start completed with `WordPress server started`.
+
+### C0 runtime checks
+
+All HTTP checks used `--noproxy *`, a 1-second connect limit, and a bounded response timeout.
+
+| Check | C0 result |
+|---|---:|
+| Front page `/` | HTTP 000 / 4.008s timeout |
+| wp-admin `/wp-admin/` | HTTP 000 / 4.007s timeout |
+| Core REST `/wp-json/` | HTTP 000 / 4.010s timeout |
+| Repeated `/` request 1 | HTTP 000 / 3.004s timeout |
+| Repeated `/` request 2 | HTTP 000 / 3.014s timeout |
+| Repeated `/` request 3 | HTTP 000 / 3.005s timeout |
+
+C0 had four native Studio PHP workers. In a 5-second process-CPU sample, one worker consumed approximately 4.828 CPU seconds (~96.6% of one core) while the other three had approximately 0 CPU delta. HTTP requests continued to time out.
+
+### Gate stop and safety
+
+Because clean WordPress C0 already hangs before WooCommerce is installed, the decision requires an immediate return. C1 was not created or installed, and B WooCommerce deactivation was not executed.
+
+```text
+K3R3_GATE=K3R3_STUDIO_WOOCOMMERCE_RUNTIME_ISOLATION
+C0_CREATED=PASS
+C0_CLEAN_WORDPRESS=PASS
+C0_WOOCOMMERCE_INSTALLED=NO
+C0_FRONTEND=TIMEOUT
+C0_WP_ADMIN=TIMEOUT
+C0_CORE_REST=TIMEOUT
+C0_REPEATED_REQUESTS=TIMEOUT
+C0_PHP_WORKER_HANG=OBSERVED
+C1_EXECUTED=NO_GATE_STOP_AT_C0
+B_WOOCOMMERCE_DEACTIVATION=NOT_EXECUTED_GATE_STOP_AT_C0
+A_SITE_MODIFIED=NO
+A_PPCP_REMAINS_DEACTIVATED=YES
+PAYPAL_AUTH_RETRY=0
+REAL_PAYMENT_ACTIONS=0
+NO_VERSION_CHANGE=YES
+DATABASE_MIGRATION=NO
+VPS_WRITES=ZERO
+PUBLIC_TUNNEL=NO
+SECRET_EXPOSURE=NO
+UNRELATED_PROJECTS_TOUCHED=NO
+RETURN_K3R3_STUDIO_RUNTIME_SYSTEMIC=YES
+STOP_AT_REVIEWER=YES
+```
+
+C0 is intentionally retained with B until Reviewer decides cleanup/recovery. No further K3R3 action is authorized from this result.
