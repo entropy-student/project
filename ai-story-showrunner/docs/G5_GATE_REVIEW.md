@@ -2,9 +2,9 @@
 
 Date: 2026-09-21
 
-## Current decision
+## Final decision
 
-`G5 = PASS_CANDIDATE_BLOCKED_BY_REAL_REFERENCE_PERSISTENCE`
+`G5 = PASS`
 
 ## PASS criteria review
 
@@ -14,28 +14,28 @@ Date: 2026-09-21
 | Blueprint preserves accepted G4 meaning | PASS |
 | Beat assets bound after Blueprint | PASS |
 | exactly one execution mode per Beat | PASS |
-| high-risk Pilot | PASS_CANDIDATE — 8/8 accepted |
-| no fake references | PASS — no fake path invented |
-| real executable canonical references | BLOCKED |
-| executor has no missing creative identity decision | BLOCKED until real refs are bound |
+| high-risk Pilot | PASS — 8/8 accepted Pilot state |
+| no fake references | PASS |
+| real executable canonical references | PASS — persistent Library package v1 |
+| reference-path machine validation | PASS — 9/9 used assets resolved |
+| executor has no missing creative identity decision | PASS at G5 package level |
 
-## Why G5 is not final PASS yet
+## Final evidence
 
-The logic/compiler layer is validated, but the production package still references canonical assets whose binaries are not persisted into executable paths.
-Pilot evidence showed repeated recurring-character drift when the real canonical identity image was not bound.
+- `experiments/g5/blind-search-answer/17_HIGH_RISK_PILOT_REVIEW.md`
+- `experiments/g5/blind-search-answer/18_REFERENCE_PATH_VALIDATION.md`
+- `experiments/g5/blind-search-answer/08_REFERENCE_MANIFEST.json`
 
-Final G5 PASS requires:
-1. persisted `CHAR_IP_001` canonical image reference;
-2. persisted approved recurring scene/UI masters needed by execution rows;
-3. populated `canonical_paths` in the Reference Manifest;
-4. machine validation that required rows resolve those paths.
+## Important production risks retained
 
-## G6 release condition
+These do not block G5, but remain QA gates in G6/Execution:
+- recurring-character drift if canonical image references are not actually attached;
+- executor over-explanation (bubbles/arrows/checklists/summary cards);
+- brand/UI expansion;
+- invalid DERIVE_EDIT source compatibility.
 
-`REFERENCE_PATH_VALIDATION = PASS`
+## Release
 
-Then:
-`G5 = PASS`
-→ `G6 = READY`.
+`G5 PASS → G6 READY`
 
-No full 44-image generation is required before G5 PASS; that is downstream execution evidence.
+Full 44-image generation is downstream execution evidence and was never required for G5 PASS.
