@@ -1,6 +1,6 @@
 # Conversion Leak Audit — Analytics Event Contract
 
-Status: `DRAFT_FOR_G3_5`
+Status: `FROZEN_G3_5`
 
 目标：把本项目做成可验证产品，而不是只看页面“感觉不错”。
 
