@@ -1278,7 +1278,16 @@
           ]
         }
       },
-      "pilot_execution_note": "Isolated Pilot does not include VB024 source. For Pilot only, generate a representative payoff frame fresh using the same analogy-world constraints. Full-episode canonical execution remains DERIVE_EDIT from accepted VB024. Watch specifically for recurring-IP identity drift because the canonical IP binary is not yet persisted."
+      "pilot_execution_note": "Isolated Pilot does not include VB024 source. For Pilot only, generate a representative payoff frame fresh using the same analogy-world constraints. Full-episode canonical execution remains DERIVE_EDIT from accepted VB024. Watch specifically for recurring-IP identity drift because the canonical IP binary is not yet persisted.",
+      "pilot_result": "RETURN_EXECUTION",
+      "pilot_retry_note": [
+        "Attempt 1 became a prop/product-demo close-up and omitted both required story characters.",
+        "Giant phone UI violated the negative constraint.",
+        "Style drifted toward realistic/3D product illustration instead of simplified flat narrative comic.",
+        "Retry composition: CHAR_IP_001 on left with puzzled/disbelieving reaction; TEMP_ANALOGY_ACTOR_001 on right, confidently presenting a paper contact book.",
+        "Only causal prop is the paper contact book; readable cue may be 老板电话：138… via POST_OVERLAY.",
+        "No AI UI, no giant phone, no title, no arrows, no explanatory card, no speech/thought bubble."
+      ]
     },
     {
       "blueprint": {
