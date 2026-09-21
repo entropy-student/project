@@ -803,3 +803,14 @@ Current:
 - Planning 5 chars/sec remains estimation-only.
 - Major per-cue speed rescue is prohibited; timing must be reallocated around real audio.
 - Audio mode resolved to upstream CosyVoice; Antigravity consumes final audio instead of regenerating it.
+
+
+## 2026-09-21 — Timing model v0.2: semantic intent + voice feasibility
+
+- Previous audio-first correction was itself too aggressive because it would flatten deliberately varied semantic pace.
+- Revised canonical rule: G4 owns semantic timing intent; G6 measures whether each intended window is physically achievable with the locked voice.
+- Existing reference timing is retained as calibration input, not discarded.
+- Feasible windows remain unchanged or close.
+- Infeasible windows borrow/donate time locally while protecting PUNCH / REVERSAL / HOLD / FINAL timing intent and anchor pauses.
+- Natural TTS is used as a feasibility baseline only.
+- Major local speed-up remains prohibited as a rescue mechanism.
