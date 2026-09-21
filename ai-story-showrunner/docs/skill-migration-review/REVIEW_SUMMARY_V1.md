@@ -3,7 +3,7 @@
 Date: 2026-09-22
 
 Result:
-`SKILL_EXTRACTION_R1_PASS / READY_FOR_CANDIDATE_MIGRATION`
+`SKILL_EXTRACTION_R2_PASS / CANDIDATE_EXTRACTED / E2E_PENDING`
 
 ## Reviewer conclusion
 
@@ -67,19 +67,25 @@ P1 work is now **structural extraction**, not unresolved product architecture:
 7. rename schema identity from AI Story Showrunner to Story Showrunner;
 8. make Visual Beat timing source explicitly Production SRT.
 
-## Next Gate
+## Migration closeout
 
-`SKILL_EXTRACTION_R2 — CANDIDATE MIGRATION`
+`SKILL_EXTRACTION_R2 — PASS`
 
-R2 may now write to:
+Candidate created at:
 `entropy-student/spike.skill/story-showrunner/`
 
-R2 must:
-- create the candidate Skill structure;
-- migrate only cleaned/reusable rules;
-- preserve the current project as validation fixture;
-- mark the Skill `CANDIDATE / E2E_NOT_YET_PROVEN`.
+R2 completed:
+- cleaned generic Core extraction;
+- Domain/Provider adapters;
+- Editorial/Visual/Character/Voice profiles;
+- runtime-state boundary;
+- portable schemas/templates;
+- local-path externalization;
+- Visual Beat timing source = Production SRT.
 
-Canonical promotion remains blocked until the current episode produces a reviewable final video through the new production package/executor path.
+Next is not another migration round.
 
-No Owner intervention is required unless R2 uncovers a genuine product-policy ambiguity.
+Resume G6:
+`Production SRT → TTS Manifest → Production Package → Antigravity → final video QA`.
+
+Canonical promotion remains blocked until this E2E path passes.
