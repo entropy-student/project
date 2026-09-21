@@ -1,4 +1,4 @@
-# G4 Director Language Rules v0.4 — CANONICAL / G4 PASS
+# G4 Director Language Rules v0.5 — CANONICAL / G4 PASS
 
 > **Status: CANONICAL / OWNER APPROVED / G4 PASS.**
 > Purpose: theory-first Director architecture designed to survive new scripts without structural redesign.
@@ -13,7 +13,7 @@ Locked Script + KnowledgeCore
 → 3. Visual Intention Map
 → 4. Semantic Shot Design
 → 5. Visual Beat Compilation
-→ 6. Timing & Edit Calibration
+→ 6. Production-SRT Visual Mapping & Edit Calibration
 
 Cross-cutting QA: Knowledge integrity / Murch cut priority / eye-trace / continuity / anti-PPT / still-image executability.
 
@@ -212,25 +212,30 @@ Example:
 
 Do not reveal the punchline object early.
 
-## 7. Timing & Edit Calibration — Jingsui corrected
+## 7. Production-SRT Visual Mapping & Edit Calibration
 
-Meaning decides the unit. Rhythm decides the duration.
+Meaning decides the visual unit. The locked Production SRT decides the spoken clock.
 
-Jingsui sample evidence is an initial surface prior only:
-- weighted speech mean ≈ 5.92 Chinese chars/s;
-- visual-beat median ≈ 2.7s;
-- ordinary observed range ≈ 1.3–4.5s;
-- fast reaction/punchline ≈ 0.8–1.8s;
-- longer landing/explanation may reach 4–8s.
+Director timing therefore means **visual timing**, not speech-rate estimation.
 
-These are NOT targets or quotas.
+G4 may decide:
+- cut / hold / handoff;
+- setup → reveal split;
+- reaction timing;
+- visual beat density;
+- visual anchors;
+- whether one spoken span is covered by one or several still states.
 
-Do not create or delete a shot because 2.7 seconds elapsed.
-Do not force future voices to 5.9 chars/s when real audio disagrees.
+G4 may not decide:
+- chars-per-second;
+- TTS speed;
+- Production SRT cue duration;
+- routine post-TTS retiming.
 
-When real TTS/voice exists:
-- realign timing;
-- preserve dramatic/visual structure unless meaning changed.
+Historical Jingsui observations remain useful as aesthetic evidence, not authority.
+
+If visual meaning cannot fit the locked speech timeline:
+`RETURN_TIMING_VISUAL_CONFLICT`.
 
 ## 8. Murch edit priority
 
@@ -340,17 +345,15 @@ Failure:
 
 This Gate exists because the first G4 Memory MVP undercounted script coverage and therefore underestimated duration.
 
-## 15. Revalidation plan
+## 15. Validation status
 
-After Owner approval:
-1. freeze v0.3;
-2. rerun Agent from scratch;
-3. rerun Context / Memory from scratch;
-4. rerun MCP from scratch;
-5. add one unseen fourth script if available;
-6. only then promote or revise the rules.
+The theory-first Director architecture has already passed:
+- Agent;
+- Context / Memory;
+- MCP;
+- one unseen Investigation/Discovery case.
 
-Do not patch the old Shotbooks and call it validation.
+Future revalidation is required only after a material Director-contract change, new visual grammar, or repeated production failure class.
 
 ## 16. Final principle
 
@@ -359,4 +362,4 @@ Visual Strategy gives the episode a coherent visual system.
 Visual Intention says what the audience must experience now.
 Director grammar decides staging and camera.
 Visual Beat turns movement into meaningful still states.
-Jingsui only calibrates how those justified states breathe in time.
+Production SRT supplies the spoken clock; Director grammar decides how justified visual states breathe inside that clock.
