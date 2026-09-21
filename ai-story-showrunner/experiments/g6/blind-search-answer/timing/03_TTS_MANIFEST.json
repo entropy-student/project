@@ -728,5 +728,13 @@
       "allowed_alignment_tolerance_ms": 120,
       "runtime_overrides": {}
     }
+  ],
+  "timeline_role": "PLANNED_TIMELINE_INPUT_TO_RUNTIME_RESOLVER",
+  "runtime_timeline_resolver": "experiments/g6/blind-search-answer/TIMELINE_RESOLVER_RULES.md",
+  "expected_final_outputs": [
+    "timing/runtime/FINAL_SUBTITLES.srt",
+    "timing/runtime/FINAL_TIMELINE.json",
+    "timing/runtime/FINAL_SHOT_TIMELINE.csv",
+    "timing/runtime/TIMELINE_RESOLUTION_REPORT.json"
   ]
 }
