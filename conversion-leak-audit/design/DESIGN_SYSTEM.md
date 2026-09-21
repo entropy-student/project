@@ -1,6 +1,6 @@
 # Conversion Leak Audit — Design System
 
-Status: `DRAFT_FOR_G3_5`
+Status: `FROZEN_G3_5`
 
 Design direction: **Editorial Diagnostic Console**
 
