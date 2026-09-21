@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K4_UI_CONVERSION_TRUST
+CURRENT_CHECKPOINT=OWNER_K4_BUSINESS_FACTS_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -858,7 +858,7 @@ Formal decision: `docs/REVIEWER_DECISION_K3_PASS_K4_CONVERSION_TRUST.md`.
 Owner requested that explicit UI modification be part of the project flow. K4 remains a single Gate rather than being split further.
 
 ```text
-CURRENT_GATE=K4_UI_CONVERSION_TRUST
+CURRENT_CHECKPOINT=OWNER_K4_BUSINESS_FACTS_REQUIRED
 UI_MODIFICATION_STAGE=ADDED
 ```
 
@@ -869,3 +869,31 @@ Owner may directly edit Home / Product / FAQ / Shipping & Returns / Contact duri
 Protected without separate Reviewer approval: Cart / Checkout / Account core flows, PayPal configuration, and WooCommerce payment/order state logic.
 
 Formal decision: `docs/REVIEWER_DECISION_K4_UI_CONVERSION_TRUST_SCOPE.md`.
+
+
+## K4 Implementation Review — PASS / Owner Business Facts
+
+Reviewer independently inspected Executor commit `f6f9166c24389504741f184132cfb9b5f5006899`.
+
+Accepted implementation evidence:
+
+```text
+K4_IMPLEMENTATION=PASS
+UI_MODIFICATION=PASS
+HOME_CONVERSION_TRUST=PASS
+PRODUCT_CONVERSION_TRUST=PASS
+FAQ=PASS
+BUSINESS_TRUTH=PASS
+OWNER_EDITABILITY=PASS
+RESPONSIVE=PASS
+GUTENBERG_VALIDITY=PASS
+WOOCOMMERCE_BEHAVIOR=PASS
+```
+
+K4 is not formally closed because Shipping & Returns and Contact intentionally remain at safe factual boundaries pending Owner-confirmed business facts.
+
+Current checkpoint: `OWNER_K4_BUSINESS_FACTS_REQUIRED`.
+
+All remaining facts are batched into one Owner checkpoint: final kit contents; duration/difficulty; shipping destinations/method/cost/timing; return window/conditions; missing/damaged-item support channel; public support email/contact channel; and public business/return address if one will be published.
+
+Formal decision: `docs/REVIEWER_DECISION_K4_IMPLEMENTATION_PASS_OWNER_BUSINESS_FACTS.md`.
