@@ -1,6 +1,6 @@
 {
   "episode_id": "blind-search-answer",
-  "status": "IN_PROGRESS",
+  "status": "PASS_CANDIDATE_HIGH_RISK_PILOT_COMPLETE",
   "blueprint_rules": "docs/VISUAL_FRAME_BLUEPRINT_RULES.md",
   "beats": [
     {
@@ -1493,13 +1493,19 @@
         "composition_callback_ref": "SRCH_VB001"
       },
       "pilot_execution_note": "Pilot must validate callback as composition rhyme, not source-frame derivation. Generate fresh with UI_POLICY_PAGE_001 while matching VB001 character-monitor spatial relationship and showing changed behavior.",
-      "pilot_result": "RETURN_EXECUTION_ATTEMPT2",
+      "pilot_result": "PASS_WITH_MINOR",
       "pilot_retry_note": [
         "Attempt 2 fixed single-IP callback composition and improved maturity.",
         "Screen object wrong: OpenAI homepage instead of the causal policy/source page.",
         "brand_mode NONE failed due to OpenAI logo/homepage.",
         "Checklist/lesson-card semantics reappeared in notebook.",
         "Retry must preserve current character/camera/desk/trackpad action; edit only screen and remove checklist/moral text."
+      ],
+      "pilot_notes": [
+        "Final retry accepted: one recurring IP, opening-like character/monitor spatial relationship, generic brandless policy/source page.",
+        "No duplicated self, bubble, arrow, slogan, checklist or lesson-card regression.",
+        "Verification action is readable enough for Pilot; click specificity can be refined later.",
+        "Minor desk prop density deferred."
       ]
     }
   ],
