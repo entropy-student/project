@@ -800,3 +800,29 @@ true deterministic `COMPOSITE_CROP` remains pending until `UI_AI_ANSWER_001` and
 
 Decision:
 semantic Pilot passes; continue VB025.
+
+
+---
+
+## G5 Pilot — VB025 preflight correction
+
+Date: 2026-09-21
+
+Preflight found stale analogy-world references:
+- Blueprint background anchor incorrectly said `stable answer-pane shell`;
+- Blueprint story props incorrectly included `UI_AI_ANSWER_001`.
+
+Corrected:
+- background = minimal phonebook analogy space;
+- only causal prop = `PROP_CONTACT_BOOK_001`;
+- AI UI / diagram / title / arrows remain prohibited.
+
+Identity scope correction:
+- `CHAR_IP_001` remains canonical identity-locked;
+- `TEMP_ANALOGY_ACTOR_001` is sequence-local and must be distinct/secondary, not treated as the same canonical identity.
+
+Pilot execution note:
+- isolated Pilot does not include VB024 source;
+- Pilot may generate a representative payoff frame fresh;
+- full-episode canonical mode remains `DERIVE_EDIT(source=VB024)`;
+- recurring-IP drift is a high-risk QA item because canonical IP binary is still not persisted.
