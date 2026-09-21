@@ -125,3 +125,41 @@ Two local checkout-draft attempts remain visible in Orders alongside the one suc
 ### Reviewer checkpoint
 
 Review the appended K2 evidence in `EXECUTION_EVIDENCE.md`. Executor stops here with `STOP_AT_REVIEWER=YES` and does not enter K3/PayPal, K4, VPS, or production.
+
+## K3 RETURN — PayPal Sandbox Owner Checkpoint (2026-09-21)
+
+~~~
+K3_GATE=K3_PAYPAL_SANDBOX
+RETURN=RETURN_OWNER_PAYPAL_SANDBOX_AUTH_REQUIRED
+K3_PREFLIGHT=PASS
+K3_ROLLBACK_BACKUP=PASS
+OFFICIAL_WOOCOMMERCE_PAYPAL_PAYMENTS=PASS
+PAYPAL_MODE=NOT_CONFIGURED_OWNER_CHECKPOINT
+PAYPAL_LIVE_ENABLED=NO
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+STOP_AT_REVIEWER=YES
+~~~
+
+Completed:
+- Read the current GitHub Reviewer Truth and K3 decision documents.
+- Created the project-local rollback archive:
+  C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-kadence-poc\.artifacts\k3-paypal-sandbox\pre-k3-backup.zip
+- Backup SHA256:
+  F669688F07BF0B4287B50C1B0B2DEBA5B8527E2BFAE03E9CC55C7CB9920939FF
+- Installed and activated only the official WooCommerce PayPal Payments plugin, version 4.1.3.
+- Removed the temporary official install zip after successful installation.
+- Advanced the official wizard to the actual Connect to PayPal step without entering credentials.
+
+Owner action required:
+1. Open the local WordPress PayPal Payments setup page.
+2. Click Connect to PayPal.
+3. Complete PayPal Sandbox login/account authorization in the provider flow; select Sandbox only if prompted.
+4. Return to the Reviewer checkpoint without sending any password, Secret, token, OAuth code, cookie, or webhook secret in chat/GitHub.
+
+Not executed because the Owner checkpoint was reached:
+- Sandbox account connection, approval/capture, provider correlation, callback/webhook verification, and refund.
+- No Live mode, real payment, public callback, VPS, Cloudflare, K4, K5, or production action.
+
+The old project on port 8088 remained HTTP 200 and was not modified. Reviewer-owned documents were not modified.
