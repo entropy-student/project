@@ -2,7 +2,7 @@
 
 Date: 2026-09-22
 
-Status: `R1_PASS / P0_RESOLVED / P2_CLEANED`
+Status: `R2_PASS / P0_P1_P2_RESOLVED / CANDIDATE_EXTRACTED`
 
 ## R1 resolution outcome
 
@@ -156,7 +156,26 @@ Decision:
 two-stage lifecycle:
 `CANDIDATE_EXTRACTION_NOW → CANONICAL_AFTER_E2E_PASS`.
 
-## P1 conflicts / splits
+## R2 P1 outcome
+
+| Conflict | R2 result |
+|---|---|
+| C10 Writer/editorial split | RESOLVED |
+| C11 Identity/profile split | RESOLVED |
+| C12 Visual style profile | RESOLVED |
+| C13 Provider adapter split | RESOLVED |
+| C14 Local path externalization | RESOLVED |
+| C15 Runtime state locator | RESOLVED |
+| C16 Schema identity | RESOLVED |
+| C17 Visual Beat timing source | RESOLVED |
+| C18 Timing vocabulary map | RESOLVED |
+
+Candidate:
+`entropy-student/spike.skill/story-showrunner`
+
+All migration conflicts are closed. Remaining work is E2E validation, not migration reconciliation.
+
+## P1 conflicts / splits — RESOLVED IN R2
 
 ### C10 — Bilibili/Jingsui/first-person rules are mixed into core writer
 
@@ -330,11 +349,11 @@ P0 blockers:
 P2 current-truth cleanup:
 `COMPLETE`
 
-Remaining migration work:
-- perform P1 core/profile/adapter/runtime splits;
-- externalize machine-specific runtime paths;
-- rename schema identity to `story-showrunner`;
-- align Visual Beat timing source to Production SRT;
-- build the candidate Skill without copying project history.
+Remaining migration blockers:
+`NONE`
 
-Candidate migration is now authorized.
+Candidate migration:
+`PASS`
+
+Canonical promotion blocker:
+`END_TO_END_FINAL_VIDEO_VALIDATION`
