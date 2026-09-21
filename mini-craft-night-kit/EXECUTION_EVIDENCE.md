@@ -580,3 +580,96 @@ STOP_AT_REVIEWER=YES
 ~~~
 
 K3 is stopped at the minimum Owner authorization checkpoint. Resume the same Gate only after the Owner completes the provider-side Sandbox authorization; do not enter Live, K4, K5, VPS, or production.
+## K3 bounded diagnostic — WooCommerce/PPCP runtime failure (2026-09-21) — RETURN REVIEWER
+
+This is a bounded diagnostic only. No PayPal authorization was retried, no credential was modified or deleted, no Live mode was enabled, and no payment/capture/refund action was executed.
+
+~~~
+K3_DIAGNOSTIC=BOUNDED
+K3_DIAGNOSTIC_STATUS=RETURN_REVIEWER
+STUDIO_RUNTIME_RESTART=PASS_BOUNDED_LOCAL_ONLY
+PAYPAL_PLUGIN=woocommerce-paypal-payments 4.1.3 active
+PAYPAL_USE_SANDBOX=false
+PAYPAL_MERCHANT_CONNECTED=false
+PAYPAL_CLIENT_SECRET_STORED=false
+PAYPAL_ONBOARDING_COMPLETED=false
+PAYPAL_AUTH_RETRY=0
+PAYPAL_LIVE_ENABLED=NO
+CREDENTIALS_MODIFIED=NO
+~~~
+
+### Direct browser evidence
+
+- WooCommerce Settings → Payments loaded the WordPress shell and the payment-provider headings, but the provider body remained blank/loading.
+- The current page did not expose a “Click for error details” control; the link could not be captured because the affected React content never rendered. This is recorded as `CLICK_FOR_ERROR_DETAILS=NOT_EXPOSED_BY_STUCK_LOAD`, not as a guessed message.
+- Browser Console captured a real exception:
+  `Minified React error #299` from `wp-content/plugins/woocommerce-paypal-payments/assets/ppcp-settings-js-index.js`, at the PayPal settings bundle's `createRoot` call.
+- Local inspection of the loaded official bundle shows the mount call targets `document.getElementById("ppcp-settings-container")`; the live Payments page had `#ppcp-settings-container` count `0`. This is the direct evidence for the blank Payments body.
+- WooCommerce Home remained stuck on its Store Activity loading state after reload; no current DOM “Click for error details” link was present. Earlier reproduction showed the reported “Oops, something went wrong” state.
+
+~~~
+PAYPAL_SETTINGS_SCRIPT=LOADED
+PAYPAL_SETTINGS_MOUNT_TARGET_PRESENT=NO
+PAYPAL_SETTINGS_REACT_EXCEPTION=MINIFIED_REACT_ERROR_299
+CLICK_FOR_ERROR_DETAILS=NOT_EXPOSED_BY_STUCK_LOAD
+HOME_REACT_BODY=STUCK_LOADING_STORE_ACTIVITY
+HOME_ERROR_DETAIL_FULL_TEXT=NOT_AVAILABLE_IN_CURRENT_DOM
+~~~
+
+### REST and Network evidence
+
+REST route registration remained present for `/wc-admin/features`, `/wc-admin/options`, `/wc/store/v1/products`, `/wc/store/v1/cart`, `/wc/v3/wc_paypal/settings`, and `/wc/v3/wc_paypal/webhooks`.
+
+Post-restart HTTP probes were mixed: public Store API `products?per_page=1` and `cart` each returned HTTP 200 in the first clean sample; repeated probes for `/wc-admin/features`, `/wc-admin/options`, and both PayPal settings/webhook routes timed out without an HTTP response. Later repeated frontend HEAD probes also timed out while the local PHP workers were saturated. This is not a clean REST health PASS.
+
+~~~
+REST_ROUTE_REGISTRATION=PASS
+WC_STORE_PRODUCTS_SAMPLE=HTTP_200
+WC_STORE_CART_SAMPLE=HTTP_200
+WC_ADMIN_FEATURES_HTTP=TIMEOUT_NO_HEADERS
+WC_ADMIN_OPTIONS_HTTP=TIMEOUT_NO_HEADERS
+PPCP_SETTINGS_HTTP=TIMEOUT_NO_HEADERS
+PPCP_WEBHOOKS_HTTP=TIMEOUT_NO_HEADERS
+NETWORK_FAILURE_CLASS=LOCAL_REQUEST_TIMEOUT_OR_WORKER_SATURATION
+~~~
+
+### Logs and runtime evidence
+
+- `WP_DEBUG=false`; `WP_DEBUG_LOG=false`; no `wp-content/debug.log` was present.
+- No dedicated project PHP error log was found; WooCommerce logs were available.
+- WooCommerce logs contain repeated Patterns Toolkit connection warnings.
+- The PayPal log contains repeated upstream webhook API HTTP 404 responses and onboarding/OAuth records with `use_sandbox=false`; sensitive one-time OAuth fields were not retained in this evidence.
+- After the bounded local runtime restart, four Studio PHP workers were again observed at sustained high CPU while the admin/API requests stalled. The restart was only a diagnostic recovery action and did not change WordPress business data or PayPal settings.
+
+~~~
+WP_DEBUG=FALSE
+WP_DEBUG_LOG=FALSE
+PHP_ERROR_LOG=NOT_FOUND
+WORDPRESS_DEBUG_LOG=NOT_FOUND
+WOOCOMMERCE_LOG=AVAILABLE
+PPCP_UPSTREAM_WEBHOOK_LOG=HTTP_404_OBSERVED
+PPCP_ONBOARDING_LOG=USE_SANDBOX_FALSE_OBSERVED
+PHP_WORKER_SATURATION=OBSERVED
+~~~
+
+### Root-cause candidate and minimum fix
+
+~~~
+ROOT_CAUSE_CANDIDATE=PPCP_4.1.3_ADMIN_SETTINGS_REACT_MOUNT_FATAL_PLUS_ASSOCIATED_REMOTE_API_OR_WORKER_HANG
+HOME_FAILURE_CANDIDATE=WC_ADMIN_REST_REQUEST_TIMEOUT_UNDER_PPCP_OR_REMOTE_CALL_SATURATION
+MINIMUM_FIX=REVIEWER_AUTHORIZE_BOUNDED_PPCP_ISOLATION_TEST_OR_PRE_K3_ROLLBACK
+PPCP_DEACTIVATION=NOT_EXECUTED_REVIEWER_REQUIRED
+~~~
+
+The direct Payments-page failure is attributable to the active official PPCP settings bundle mounting React against a missing container. The Home failure has an additional request-timeout/worker-saturation signal, so the executor does not claim that the PayPal JS fatal alone explains every symptom. The minimum next step is a Reviewer-authorized isolation test: temporarily deactivate only WooCommerce PayPal Payments, or restore the retained pre-K3 backup, then retest Payments, WooCommerce Home, and the affected REST routes. If isolation clears the fault, keep the result at Reviewer and re-establish a clean Sandbox-only onboarding path later; do not mutate or reuse the observed production-mode onboarding state.
+
+~~~
+RETURN_REVIEWER_PPCP_CONFLICT_ISOLATION_REQUIRED=YES
+PAYPAL_AUTH_RETRY=0
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+OLD_PROJECT_UNCHANGED=PASS
+UNRELATED_PROJECTS_TOUCHED=NO
+STOP_AT_REVIEWER=YES
+~~~
