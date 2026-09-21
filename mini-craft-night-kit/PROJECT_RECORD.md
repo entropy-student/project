@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_SECRET_ROTATION_REQUIRED
+CURRENT_GATE=K3R11_PUBLIC_SANDBOX_ORIGIN
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -661,3 +661,16 @@ A Sandbox credential-bearing diagnostic output incident was also recorded. The a
 
 Formal decision: `docs/REVIEWER_DECISION_K3R10_RETURN_K3R11_PUBLIC_SANDBOX_ORIGIN.md`.
 Incident: `docs/SECURITY_INCIDENT_K3R10_SANDBOX_CREDENTIAL_OUTPUT.md`.
+
+
+## K3R11 Owner Security Precondition — COMPLETE
+
+Owner confirmed the affected PayPal Sandbox Secret was rotated.
+
+```text
+SANDBOX_SECRET_ROTATED=YES
+OLD_SANDBOX_SECRET_REUSE=FORBIDDEN
+CURRENT_GATE=K3R11_PUBLIC_SANDBOX_ORIGIN
+```
+
+The replacement Secret remains Owner-only. K3R11 may now prepare the temporary reversible HTTPS public Sandbox origin. If PPCP requires reconnection after rotation, stop for Owner local UI input rather than requesting credentials in chat.
