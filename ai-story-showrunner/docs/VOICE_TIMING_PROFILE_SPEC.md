@@ -1,188 +1,171 @@
-# Voice Timing Profile Specification v0.2 — CANONICAL
+# Voice Timing Profile Specification v0.3 — CANONICAL
 
 ## Purpose
 
-Create a reusable timing model for one fixed production voice so production SRT can be compiled at the Writer/Timing stage without routine second-pass retiming after real TTS.
+A Voice Timing Profile is a reusable empirical timing/safety model for one stable TTS voice setup.
 
-The Voice Timing Profile is calibrated once per materially different voice setup and then reused across episodes.
+It allows the Timing Compiler to build a safe Production SRT **before** real TTS execution.
 
-## Recalibration triggers
+The generic Story Showrunner contract is provider-neutral. A concrete profile may belong to CosyVoice, another TTS engine, a human narrator model, or another stable voice setup.
 
-Recalibrate only when one of these materially changes:
-- TTS model / engine;
-- reference voice audio;
-- reference transcript;
-- speaking-style target;
+## Canonical lifecycle
+
+```text
+CALIBRATION_CANDIDATE
+→ held-out validation
+→ PASS / PASS_WITH_MINOR
+→ FROZEN
+→ production use
+→ recalibrate only on material drift
+```
+
+Normal new episodes do not trigger recalibration.
+
+## Required profile identity
+
+A frozen profile should identify:
+- profile_id;
+- version;
+- TTS engine/model or voice system;
 - language;
-- generation settings that materially affect prosody.
+- reference-voice logical ID;
+- deterministic generation settings where applicable;
+- normalization method;
+- semantic speed map;
+- predictor parameters;
+- safety branches/floors;
+- validation summary;
+- status.
 
-A normal new episode does NOT trigger recalibration.
+Do not store machine-specific absolute paths as canonical identity. Those belong runtime config.
 
-## v1 calibration finding
+## Required timing dimensions
 
-The first 14-train / 4-held-out Huber regression failed held-out validation.
+The profile should model enough information to predict safe duration for the target voice, which may include:
+- CJK/spoken-unit count;
+- Latin/abbreviation spoken units;
+- Arabic-number spoken units;
+- punctuation/clause effects;
+- short-utterance nonlinearity;
+- mixed-token interactions;
+- semantic pace class;
+- provider/model-specific effects.
 
-Key lessons:
-- short NORMAL utterances have high lexical/prosodic variance and need a conservative minimum-duration floor;
-- separate large Latin-token and number-token penalties can over-count mixed-token lines;
-- one keyword pair is insufficient evidence for keyword-specific pause rules;
-- the model objective must prioritize safe timing windows, not symmetric absolute-error minimization.
+A profile is not required to use one universal regression architecture.
 
-The v1 profile is rejected and must not be used for production.
+## Semantic pace classes
 
-## Profile dimensions
-
-The profile must model at least:
-
-### Semantic pace class
+Canonical cross-pipeline classes:
 - SLOW_NORMAL
 - NORMAL
 - FAST_NORMAL
-- FAST_CLEAR / PUNCH
-- CONTROLLED / REVERSAL
+- FAST_CLEAR
+- CONTROLLED
 - FINAL
 
-### Length bucket
-- SHORT
-- MEDIUM
-- LONG
+Dramatic timing kind → pace-class mapping is defined by:
+`docs/SRT_AUDIO_TIMING_STANDARD.md`
 
-### Text features
-- Chinese character count;
-- punctuation counts;
-- comma/period/question/colon/quote;
-- Arabic numbers;
-- Latin/English tokens;
-- abbreviations such as AI / MCP;
-- quoted speech;
-- clause count.
+## Prediction contract
 
-### Fixed-cost effects
-Short utterances have non-linear onset/offset cost and must not be estimated by chars/sec alone.
-
-A v2 profile should include a conservative `short_normal_min_duration` calibrated across multiple unrelated short utterances, rather than learning a single unconstrained linear short-utterance coefficient.
-
-### Mixed-token normalization
-Latin abbreviations and Arabic numbers should be normalized toward approximate spoken/effective units before duration estimation. Avoid independent large fixed penalties that simply add together when multiple token types co-occur.
-
-## Required outputs
-
-For each semantic pace class, store:
-- target effective chars/sec;
-- preferred lower/upper range;
-- hard-risk upper bound;
-- minimum utterance duration;
-- punctuation pause priors;
-- short-utterance fixed cost;
-- prediction-error distribution;
-- sample count;
-- confidence.
-
-Recommended top-level artifact:
-
-`VOICE_TIMING_PROFILE.json`
-
-## Timing prediction
-
-Production SRT estimation should use:
+The profile must expose a deterministic function conceptually equivalent to:
 
 ```text
-predicted_speech_duration
-= lexical_duration
-+ punctuation_cost
-+ short_utterance_fixed_cost
-+ token_adjustments
-+ semantic_pace_adjustment
+base prediction
++ provider/voice-specific corrections
++ safety branch/floor
+→ allocated speech duration
 ```
 
-Then add authored semantic pauses separately.
+Then the Timing Compiler adds authored semantic pauses and performs whole-script scheduling.
 
 Do not use one universal chars/sec value for every line.
 
-## Calibration set
+## Safety objective
 
-Minimum one-time calibration set should contain 15–24 representative utterances covering:
+The primary objective is to prevent **unsafe under-allocation**.
 
+`required_extra_speed = max(1.0, actual / allocated)`
+
+Canonical thresholds:
+- <=1.03x → PASS
+- >1.03x and <=1.05x → PASS_WITH_MINOR
+- >1.05x → RETURN_PROFILE_MISS
+
+Track over-allocation separately as tail slack.
+
+Absolute error is diagnostic, not the sole production acceptance metric.
+
+## Current frozen profile
+
+Current validated production profile:
+
+`profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json`
+
+Status:
+`CANONICAL_PASS_WITH_MINOR / FROZEN`
+
+Its current safety rules include:
+- short NORMAL minimum window;
+- mixed Latin+Arabic interaction correction;
+- CONTROLLED semantic floor;
+- FINAL semantic floor.
+
+The numerical values belong to that profile, not this generic specification.
+
+## Calibration guidance for a new voice setup
+
+A new profile should cover representative:
 - short / medium / long NORMAL;
-- BUILD / FAST_NORMAL;
-- PUNCH;
-- REVERSAL / CONTROLLED;
-- FINAL / landing;
-- comma-heavy sentence;
-- question;
-- quote;
-- colon → quote;
+- FAST_NORMAL / BUILD;
+- FAST_CLEAR / PUNCH;
+- CONTROLLED / REVERSAL;
+- FINAL;
+- punctuation-heavy lines;
+- questions/quotes;
 - numbers;
-- AI / MCP / English tokens;
-- long sentence;
-- very short utterance.
+- Latin/abbreviations;
+- mixed token combinations;
+- very short utterances.
 
-Use the canonical reference voice and fixed seed/settings.
+Use held-out samples that do not influence frozen parameters.
 
-## Acceptance target
-
-The profile is good enough for normal production when it prevents unsafe under-allocation and keeps excess slack within semantic tolerance.
-
-Primary safety metrics:
-
-`under_allocation = max(0, actual_duration - allocated_window)`
-
-`required_extra_speed = actual_duration / allocated_window`
-
-Initial technical limits:
-- `required_extra_speed <= 1.03x` → PASS;
-- `1.03x–1.05x` → PASS_WITH_MINOR;
-- `>1.05x` → RETURN_PROFILE_MISS.
-
-Over-allocation is tracked separately:
-
-`tail_slack = max(0, allocated_window - actual_duration)`
-
-Over-allocation does not force bad speech, but excessive slack can damage pacing. Evaluate it by semantic class:
-- PUNCH / FAST_CLEAR: preferred <= 300ms;
-- NORMAL / FAST_NORMAL: preferred <= 600ms;
-- CONTROLLED / FINAL: preferred <= 700ms.
-
-Absolute error remains diagnostic, not the sole PASS criterion.
-
-Do not treat under-allocation and over-allocation as equivalent failure modes.
+If a profile fails:
+- diagnose the failure class;
+- run targeted follow-up calibration when possible;
+- do not tune against held-out results and call it blind validation;
+- do not force a large full sweep when a smaller targeted test resolves the identified class.
 
 ## Production behavior
 
-Normal episode:
-
 ```text
-locked script
-→ semantic timing classification
+locked spoken script
+→ Timing Compiler
 → Voice Timing Profile
 → Production SRT + TTS Manifest
-→ Director / assets
-→ Antigravity execution
+→ Director
+→ production package
+→ Executor TTS
 ```
 
-Antigravity generates the real TTS according to the locked manifest.
-
-If actual TTS differs only by small technical error, apply bounded technical alignment.
-
-If actual TTS materially exceeds the prediction:
+If actual TTS materially exceeds the safe allocation:
 `RETURN_VOICE_TIMING_PROFILE_MISS`
 
-That is a profile/compiler defect, not a normal manual retiming step.
+Fix the reusable profile/compiler, not the individual episode by default.
 
-## Execution ownership
+## Recalibration triggers
 
-Upstream owns:
-- text;
-- semantic pace;
-- target timestamps;
-- voice profile;
-- per-unit intended speed;
-- authored pauses.
+Recalibrate/review only when one of these materially changes:
+- TTS engine/model;
+- reference voice;
+- speaking style target;
+- language;
+- generation settings affecting prosody;
+- repeated material profile misses.
 
-Antigravity owns only deterministic execution of the locked TTS recipe.
+## Historical note
 
-Antigravity must not:
-- rewrite;
-- choose a new pace;
-- move semantic pauses;
-- creatively retime SRT.
+The rejected v1 regression and v2/v2.1 calibration evidence are retained under:
+`experiments/g6/voice-timing-calibration/`
+
+Historical failures are evidence, not active profile rules.
