@@ -61,8 +61,7 @@
   },
   "owner_intervention_required": false,
   "unknowns": [
-    "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR",
-    "whether Topic contract should later be extracted into a reusable Skill after episode validation"
+    "Antigravity programmatic integration availability; current classification is MANUAL_EXECUTOR"
   ],
   "authoritative_handoff": "REVIEWER_HANDOFF.md",
   "locked_decisions": [
@@ -75,12 +74,15 @@
     "metrics are separated into traffic, trust, and conversion",
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual",
-    "G6 audio mode is A_UPSTREAM_COSYVOICE; Antigravity does not regenerate or retime production speech",
-    "Semantic Timing Intent is the creative timing authority; the solved Audio Master is the exact production clock.",
     "G4 timing_kind / relative pacing / protected anchors must be preserved; raw natural TTS is feasibility data, not a mandate to flatten the whole episode to one pace.",
-    "When a reference window is infeasible, G6 must reallocate time locally before allowing large local speed changes or expanding the episode."
+    "The current repository is a validation workspace; after end-to-end validation the stable generic control plane will be extracted into the story-showrunner Skill library.",
+    "Default topic resolution is explicit user topic > explicit user override > today's Calendar > Topic Radar > Evergreen Bank.",
+    "Normal production does not require Owner approval of final script, SRT, Director plan, or first-batch key frames; Owner normally reviews the final video.",
+    "Manual critical-frame generation is calibration-only, not a recurring episode gate.",
+    "Voice Timing Profile compiles production-grade SRT near the Writer stage; real TTS is normally execution/QA, not a second creative timing pass.",
+    "G6 audio mode is EXECUTOR_LOCKED_COSYVOICE: Antigravity executes the locked TTS manifest but has no timing or rewriting authority."
   ],
-  "project_state": "G6_IN_PROGRESS_SEMANTIC_TIMING_CALIBRATION",
+  "project_state": "G6_IN_PROGRESS_VOICE_TIMING_PROFILE",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -118,7 +120,7 @@
     "historical_short_form_planning_duration_seconds": "70-85",
     "planning_speaking_rate_status": "PLANNING_ONLY_NOT_PRODUCTION_TIMECODE_SOURCE"
   },
-  "owner_review_scope": "G6 in progress. Timing model corrected: preserve G4 semantic rhythm intent and reference durations where voice-feasible; use CosyVoice measurement to calibrate only infeasible local windows.",
+  "owner_review_scope": "G6 in progress. Product boundary and workflow corrected: future generic story-showrunner Skill, calendar-first default topic routing, no normal script/key-frame Owner gates, and reusable Voice Timing Profile before Production SRT.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -218,12 +220,12 @@
     },
     "phase_b": {
       "name": "Exact Timeline Compiler",
-      "status": "BLOCKED_BY_SEMANTIC_TIMING_SOLVE",
-      "requires_final_audio": true,
-      "audio_mode": "A_UPSTREAM_COSYVOICE",
+      "status": "BLOCKED_BY_PRODUCTION_SRT_COMPILER",
+      "requires_final_audio": false,
+      "audio_mode": "EXECUTOR_LOCKED_COSYVOICE",
       "timing_standard": "docs/SRT_AUDIO_TIMING_STANDARD.md"
     },
-    "key_decision": "G4 owns semantic rhythm intent and reference timing priors; G6 owns voice-feasibility calibration and final exact milliseconds. Feasible windows stay close; infeasible windows are locally reallocated.",
+    "key_decision": "Production SRT is compiled from semantic timing intent + reusable Voice Timing Profile before normal executor TTS. G4 consumes that timeline; actual TTS later validates execution.",
     "next_validation": "Context / Memory G4A semantic shot plan",
     "overall_pass_allowed": false,
     "validation_review": "docs/G4_VALIDATION_REVIEW.md",
@@ -444,8 +446,8 @@
     "first_poc_case": "blind-search-answer",
     "reference_package_root": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1",
     "reference_package_zip": "/ai-story-showrunner/g5/blind-search-answer/g5-reference-package-v1.zip",
-    "audio_mode": "A_UPSTREAM_COSYVOICE",
-    "next": "Build full-script TIMING_CALIBRATION.json from G4 timing_kind/reference durations plus measured CosyVoice durations; keep feasible windows, locally rebalance infeasible regions, then render semantic-paced FINAL_AUDIO and compile FINAL_AUDIO_ALIGNED.srt.",
+    "audio_mode": "EXECUTOR_LOCKED_COSYVOICE",
+    "next": "Run one-time 15–24 utterance CosyVoice Voice Timing Profile calibration, validate held-out prediction error, then compile PRODUCTION_SUBTITLES.srt + TTS_MANIFEST.json and the complete Antigravity Production Package.",
     "timing_standard": "docs/SRT_AUDIO_TIMING_STANDARD.md",
     "tts_poc": {
       "engine": "CosyVoice-300M",
@@ -463,7 +465,49 @@
         "diagnosis": "LOCAL_REFERENCE_WINDOW_INFEASIBLE; SEMANTIC_TIMING_MUST_BE_PRESERVED_VIA_LOCAL_REALLOCATION"
       }
     },
-    "reference_timing_status": "CALIBRATION_INPUT_NOT_DISCARDED_NOT_PRODUCTION_FINAL",
-    "timing_model": "SEMANTIC_INTENT_PLUS_AUDIO_FEASIBILITY"
+    "reference_timing_status": "CALIBRATION_INPUT",
+    "timing_model": "SEMANTIC_INTENT_PLUS_REUSABLE_VOICE_TIMING_PROFILE",
+    "voice_timing_profile_spec": "docs/VOICE_TIMING_PROFILE_SPEC.md",
+    "production_package_target": [
+      "00_EXECUTION_ORDER.md",
+      "01_SCRIPT.md",
+      "02_PRODUCTION_SUBTITLES.srt",
+      "03_TTS_MANIFEST.json",
+      "04_AUDIO_SPEC.md",
+      "05_VISUAL_BEATS.json",
+      "06_SHOT_TIMELINE.csv",
+      "07_IMAGE_GENERATION.csv",
+      "08_CHARACTER_BIBLE.md",
+      "09_SCENE_BIBLE.md",
+      "10_STYLE_BIBLE.md",
+      "11_REFERENCE_MANIFEST.json",
+      "12_EDIT_INSTRUCTIONS.md",
+      "13_OUTPUT_SPEC.md",
+      "14_QA_RULES.md",
+      "references/"
+    ]
+  },
+  "skill_productization": {
+    "target": "story-showrunner",
+    "canonical_target_doc": "docs/STORY_SHOWRUNNER_SKILL_TARGET.md",
+    "current_repo_role": "VALIDATION_WORKSPACE",
+    "migration_timing": "AFTER_CURRENT_END_TO_END_VALIDATION",
+    "domain_model": "GENERIC_CORE_PLUS_DOMAIN_ADAPTERS",
+    "initial_domain_adapter": "AI"
+  },
+  "default_topic_resolution": [
+    "EXPLICIT_USER_TOPIC",
+    "EXPLICIT_USER_OVERRIDE",
+    "TODAYS_CALENDAR",
+    "TOPIC_RADAR",
+    "EVERGREEN_BANK"
+  ],
+  "human_intervention_policy": {
+    "script_review_required": false,
+    "srt_review_required": false,
+    "director_review_required": false,
+    "keyframe_review_required": false,
+    "final_video_review_required": true,
+    "keyframe_sampling": "CALIBRATION_ONLY"
   }
 }
