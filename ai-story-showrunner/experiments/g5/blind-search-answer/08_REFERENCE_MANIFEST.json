@@ -1,12 +1,15 @@
 {
   "episode_id": "blind-search-answer",
-  "status": "G5_PASS_CANDIDATE_SOURCE_RECOVERY_IN_PROGRESS",
+  "status": "G5_REFERENCE_PACKAGE_PERSISTED_READY_FOR_PATH_VALIDATION",
   "references": [
     {
       "asset_id": "CHAR_IP_001",
       "type": "CHARACTER",
-      "status": "SOURCE_RECOVERED_LIBRARY_REPO_PERSISTENCE_PENDING",
-      "canonical_paths": [],
+      "status": "CANONICAL_BINARY_PERSISTED_LIBRARY_PACKAGE_V1",
+      "canonical_paths": [
+        "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/references/characters/CHAR_IP_001_identity.jpg",
+        "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/references/characters/CHAR_IP_001_turnaround.jpg"
+      ],
       "generation_allowed": true,
       "note": "Owner canonical identity source and supporting character master/turnaround were recovered from Library and visually verified. They are not yet persisted into an execution-accessible repo path; canonical_paths remains intentionally empty until real persistence succeeds.",
       "identity_role": "CANONICAL_IDENTITY_SOURCE",
@@ -30,75 +33,129 @@
         "character_guide_library_name": "AI角色设定与场景风格指南.png",
         "repo_persistence": "PENDING",
         "note": "Recovered from ChatGPT Library and visually verified against current Character Bible. Library IDs are source-recovery metadata only and do not count as executable canonical_paths for Antigravity."
-      }
+      },
+      "library_file_ids": [
+        "libfile_e0f161492c9c81919f5c6073ffc03914",
+        "libfile_6cf74420046881919febbd5ae7259e18"
+      ]
     },
     {
       "asset_id": "SCENE_WORKDESK_001",
       "type": "SCENE",
-      "status": "CALIBRATION_PASS_CURRENT_CONVERSATION",
-      "canonical_paths": [],
+      "status": "CANONICAL_BINARY_PERSISTED_LIBRARY_PACKAGE_V1",
+      "canonical_paths": [
+        "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/references/scenes/SCENE_WORKDESK_001.jpg"
+      ],
       "generation_allowed": true,
-      "note": "Workdesk geometry and character-in-scene integration passed calibration. Exact binary not yet persisted in repo."
+      "note": "Workdesk geometry and character-in-scene integration passed calibration. Exact binary not yet persisted in repo.",
+      "library_file_ids": [
+        "libfile_53aa09f70e6c819191070a3814a9acde"
+      ]
     },
     {
       "asset_id": "SCENE_PHONEBOOK_ANALOGY_001",
       "type": "SCENE",
-      "status": "TO_GENERATE_CANONICAL",
-      "canonical_paths": [],
+      "status": "CANONICAL_BINARY_PERSISTED_LIBRARY_PACKAGE_V1",
+      "canonical_paths": [
+        "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/references/scenes/SCENE_PHONEBOOK_ANALOGY_001.jpg"
+      ],
       "generation_allowed": true,
-      "note": "Minimal analogy scene."
+      "note": "Minimal analogy scene.",
+      "library_file_ids": [
+        "libfile_02050bbabd3c8191935e12ed83f5f5e6"
+      ]
     },
     {
       "asset_id": "UI_AI_ANSWER_001",
       "type": "UI_DOCUMENT",
-      "status": "CALIBRATION_PASS_CURRENT_CONVERSATION",
-      "canonical_paths": [],
+      "status": "CANONICAL_BINARY_PERSISTED_LIBRARY_PACKAGE_V1",
+      "canonical_paths": [
+        "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/references/ui/UI_AI_ANSWER_001.jpg"
+      ],
       "generation_allowed": true,
       "text_render_mode": "POST_OVERLAY",
-      "note": "AI answer + official-source cue integration passed in character+UI calibration."
+      "note": "AI answer + official-source cue integration passed in character+UI calibration.",
+      "library_file_ids": [
+        "libfile_067b5030c0108191bb41012663b57581"
+      ]
     },
     {
       "asset_id": "UI_POLICY_PAGE_001",
       "type": "UI_DOCUMENT",
-      "status": "CALIBRATION_PASS_CURRENT_CONVERSATION",
-      "canonical_paths": [],
+      "status": "CANONICAL_BINARY_PERSISTED_LIBRARY_PACKAGE_V1",
+      "canonical_paths": [
+        "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/references/ui/UI_POLICY_PAGE_001.jpg"
+      ],
       "generation_allowed": true,
       "text_render_mode": "POST_OVERLAY",
-      "note": "Policy-page layout/evidence insert passed calibration. Exact text still prefers POST_OVERLAY for production reliability."
+      "note": "Policy-page layout/evidence insert passed calibration. Exact text still prefers POST_OVERLAY for production reliability.",
+      "library_file_ids": [
+        "libfile_c98b5f8480c88191a16f80227e5a6a4d"
+      ]
     },
     {
       "asset_id": "PROP_COST_SHEET_001",
       "type": "PROP",
-      "status": "TO_GENERATE_CANONICAL",
-      "canonical_paths": [],
+      "status": "CANONICAL_BINARY_PERSISTED_LIBRARY_PACKAGE_V1",
+      "canonical_paths": [
+        "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/references/props/PROP_COST_SHEET_001.jpg"
+      ],
       "generation_allowed": true,
-      "text_render_mode": "POST_OVERLAY"
+      "text_render_mode": "POST_OVERLAY",
+      "library_file_ids": [
+        "libfile_101fcb5055fc8191bdd506dc2e4b4297"
+      ]
     },
     {
       "asset_id": "PROP_CONTACT_BOOK_001",
       "type": "PROP",
-      "status": "TO_GENERATE_CANONICAL",
-      "canonical_paths": [],
+      "status": "CANONICAL_BINARY_PERSISTED_LIBRARY_PACKAGE_V1",
+      "canonical_paths": [
+        "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/references/props/PROP_CONTACT_BOOK_001.jpg"
+      ],
       "generation_allowed": true,
-      "text_render_mode": "POST_OVERLAY"
+      "text_render_mode": "POST_OVERLAY",
+      "library_file_ids": [
+        "libfile_33bd1c51026881919e9d695d0ade518c"
+      ]
     },
     {
       "asset_id": "STYLE_CHANNEL_001",
       "type": "STYLE",
-      "status": "VISUAL_DIRECTION_LOCKED",
-      "canonical_paths": [],
+      "status": "CANONICAL_BINARY_PERSISTED_LIBRARY_PACKAGE_V1",
+      "canonical_paths": [
+        "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/references/style/STYLE_CHANNEL_001.jpg"
+      ],
       "generation_allowed": true,
-      "note": "Simplified flat narrative comic direction. Simplification applies to render detail only; adult identity anatomy, maturity, body proportion, costume and major hair silhouette are hard locked."
+      "note": "Simplified flat narrative comic direction. Simplification applies to render detail only; adult identity anatomy, maturity, body proportion, costume and major hair silhouette are hard locked.",
+      "library_file_ids": [
+        "libfile_a7cf4505a0e0819196b1dd3749882bba"
+      ]
     },
     {
       "asset_id": "TEMP_ANALOGY_ACTOR_001",
       "type": "CHARACTER",
-      "status": "TO_GENERATE_CANONICAL",
-      "canonical_paths": [],
+      "status": "CANONICAL_BINARY_PERSISTED_LIBRARY_PACKAGE_V1",
+      "canonical_paths": [
+        "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/references/characters/TEMP_ANALOGY_ACTOR_001.jpg"
+      ],
       "generation_allowed": true,
-      "note": "Sequence-local supporting actor for phonebook analogy. Minimal identity only; must not compete with recurring IP."
+      "note": "Sequence-local supporting actor for phonebook analogy. Minimal identity only; must not compete with recurring IP.",
+      "library_file_ids": [
+        "libfile_85265ce727b48191a1f13f956ae8fd50"
+      ]
     }
   ],
   "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
-  "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT"
+  "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
+  "asset_store": {
+    "type": "CHATGPT_LIBRARY",
+    "package_version": "g5-reference-package-v1",
+    "root_path": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1",
+    "package_manifest_path": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1/PACKAGE_MANIFEST.json",
+    "package_manifest_library_file_id": "libfile_59bb6137b3bc81918c4b0afd8d82621b",
+    "package_zip_path": "/ai-story-showrunner/g5/blind-search-answer/g5-reference-package-v1.zip",
+    "package_zip_library_file_id": "libfile_c3e24a77fe7c8191a8af798f6fc0519f",
+    "execution_note": "G6 must materialize this package before Antigravity execution; canonical_paths are package-internal persistent Library paths."
+  }
 }
