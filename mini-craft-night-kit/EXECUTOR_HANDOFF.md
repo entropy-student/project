@@ -337,3 +337,25 @@ Owner must rerun the corrected helper locally. Do not classify the Sandbox crede
 
 K3R8B_RESULT=RETURN_OWNER_K3R8B_CORRECTED_HELPER_REQUIRED
 STOP_AT_OWNER_CHECKPOINT=YES
+## K3R8C Executor handoff — container-native Owner checkpoint (2026-09-21)
+
+The Windows HTTPS path is no longer used for the OAuth request. The new local-only wrapper sends Owner-entered values through transient STDIN to a PHP helper executed inside `mini-craft-k3r4-recovery-wordpress`; the PHP helper uses WordPress `wp_remote_post`. No value is placed in command arguments, environment variables, files, logs, GitHub, or shell history. The helper emits only the required five redacted fields.
+
+Validation completed without credentials: PHP lint exit 0, PowerShell syntax errors 0, and no credential-like literals in either helper. The remote temporary PHP helper is removed after each wrapper run. No PPCP reconnect or configuration change occurred.
+
+DIAGNOSTIC_PACKET
+GATE=K3R8C_CONTAINER_NATIVE_OAUTH_CHECK
+ENVIRONMENT=active Docker/MariaDB WordPress runtime at localhost:8093
+TRIGGER=K3R8B Owner helper stopped at LOCAL_REQUEST_FAILURE without HTTP status
+REPRODUCTION=run .artifacts/k3r8c-container-oauth.ps1; interactive inputs are sent to container PHP via STDIN
+OBSERVED=container-native OAuth result pending Owner execution; helper validation passes
+CONTROL_OR_BASELINE=container DNS/TLS baseline previously PASS; host PowerShell stacks were mixed and are bypassed
+HYPOTHESES_RULED_OUT=Executor did not classify credentials and did not access or persist them
+HYPOTHESES_REMAINING=credential validity, container OAuth HTTP result, PPCP manual-connect behavior
+ARTIFACTS=.artifacts/k3r8c-container-oauth.php; .artifacts/k3r8c-container-oauth.ps1; no secret-bearing artifact
+SECRETS_REDACTED=YES
+NEXT_DISCRIMINATING_TEST=Owner runs the wrapper and reports only its five redacted output fields
+STOP_REASON=Owner-only credential entry required
+
+K3R8C_RESULT=RETURN_OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED
+STOP_AT_OWNER_CHECKPOINT=YES
