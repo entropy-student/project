@@ -1406,3 +1406,64 @@ PUBLIC_CALLBACK_REQUIRED=YES
 RETURN_K3_PUBLIC_CALLBACK_REQUIRED
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R11 Public Sandbox Origin — Owner reconnect checkpoint (2026-09-21)
+
+- Gate: `K3R11_PUBLIC_SANDBOX_ORIGIN`.
+- Owner security precondition was confirmed: `SANDBOX_SECRET_ROTATED=YES`; the replacement Secret was not requested, read, recorded, or output by Executor.
+- Rollback point created before any K3R11 mutation under local project path `.artifacts/k3r11-preflight-20260921-231206`.
+- Rollback contents and SHA-256 metadata:
+  - `database.sql`: 5,853,278 bytes; SHA-256 `DF1C782C784BB4C3EA3C91D4F7E576B5260E3CD4100A5C95DDEA7D920232D285`.
+  - `wp-content.tar.gz`: 65,991,284 bytes; SHA-256 `9B68A54974B04D0F95A5C1C3574666E9FAD8B681EDCBC2404AB942F9C6932C0B`.
+  - `wp-config.php`: 5,922 bytes; SHA-256 `496A407429FF680EE5321B812182ECA68BBDE7FB629545441917F60091AC231C`.
+  - Backup is local-only and was not committed to GitHub.
+
+### Preflight baseline
+
+- WordPress `home_url`: `http://localhost:8093/`.
+- WordPress `siteurl`: `http://localhost:8093/`.
+- WordPress container: running; restart count `0`.
+- MariaDB container: running; health `healthy`; restart count `0`.
+- No WordPress URL, Docker, PPCP, WooCommerce, theme, plugin, or database mutation was made.
+
+### Secret-rotation connection check
+
+The in-container read-only probe emitted only statuses and booleans, then was removed locally and from the container.
+
+- `/wc/v3/wc_paypal/common`: HTTP `200`.
+- `PPCP_MERCHANT_CONNECTED=NO` after the Owner's Sandbox Secret rotation.
+- `PPCP_SANDBOX_MODE=YES`.
+- `/wc/v3/wc_paypal/onboarding`: HTTP `200`; `PPCP_ONBOARDING_COMPLETED=YES`.
+- `/wc/v3/wc_paypal/settings`: HTTP `200`.
+- `/wc/v3/wc_paypal/payment`: HTTP `200`.
+- `/wc/v3/wc_paypal/features`: HTTP `200`.
+- `LOCAL_HELPER_REMOVED=PASS`; `REMOTE_HELPER_REMOVED=PASS`.
+
+Because the stored PPCP connection is no longer valid after rotation, K3R11 stops before creating a public origin. Owner must reconnect once through the local WooCommerce PayPal Settings page using the already-rotated Sandbox Secret; the Secret must remain local and must not be sent to chat/GitHub.
+
+```text
+K3R11_GATE=K3R11_PUBLIC_SANDBOX_ORIGIN
+ROLLBACK_READY=PASS
+ORIGINAL_HOME_URL=http://localhost:8093/
+ORIGINAL_SITE_URL=http://localhost:8093/
+SANDBOX_SECRET_ROTATION_CONFIRMED=YES
+PPCP_MERCHANT_CONNECTED=NO
+PPCP_SANDBOX_MODE=YES
+PPCP_ONBOARDING_COMPLETED=YES
+PUBLIC_HTTPS_ORIGIN=NOT_CREATED_OWNER_RECONNECT_FIRST
+PPCP_CLIENT_TOKEN=NOT_TESTED
+PAYPAL_CHECKOUT_BUTTON_RENDERED=NOT_TESTED
+WEBHOOK_REGISTER=NOT_TESTED
+DIRECT_PAYPAL_SETTINGS=READ_ONLY_REST_HEALTHY
+RUNTIME_HEALTH=PASS
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PAYPAL_LIVE_ENABLED=NO
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO_NEW_SECRET_ACCESSED
+RETURN_OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED
+STOP_AT_OWNER_CHECKPOINT=YES
+STOP_AT_REVIEWER=YES
+```

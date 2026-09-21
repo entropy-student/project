@@ -616,3 +616,39 @@ PUBLIC_CALLBACK_REQUIRED=YES
 RETURN_K3_PUBLIC_CALLBACK_REQUIRED
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R11 Executor handoff — Owner Sandbox reconnect required (2026-09-21)
+
+`RETURN_OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED`
+
+Owner confirmed `SANDBOX_SECRET_ROTATED=YES`. The replacement Secret remained Owner-only and was never requested, read, recorded, or output by Executor.
+
+Before any K3R11 mutation, Executor created and verified the local rollback point `.artifacts/k3r11-preflight-20260921-231206` containing the database dump, `wp-content` archive, and local `wp-config.php` copy. Original WordPress `home_url` and `siteurl` were both `http://localhost:8093/`. WordPress was running with restart count `0`; MariaDB was running and healthy with restart count `0`.
+
+Read-only in-container PPCP checks after rotation returned: common HTTP `200`, Sandbox mode `YES`, onboarding HTTP `200`/completed `YES`, settings/payment/features HTTP `200`, but `PPCP_MERCHANT_CONNECTED=NO`. The stored connection therefore cannot be used for public-origin preparation until Owner reconnects locally.
+
+The temporary read-only helper was removed from both host project artifacts and the WordPress container. No public tunnel/origin was created; no WordPress URL, PPCP/WooCommerce setting, version, database business data, Live mode, payment, VPS, or production domain was changed.
+
+Owner action: open the local WooCommerce PayPal Settings page at `http://localhost:8093/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-gateway`, reconnect Sandbox once with the already-rotated Secret, and report only the non-sensitive UI result. Do not paste the Secret, token, cookie, headers, or response body into chat. After Owner confirms the UI connection, Executor can resume K3R11 public-origin preparation; Executor must not continue automatically now.
+
+```text
+K3R11_GATE=K3R11_PUBLIC_SANDBOX_ORIGIN
+ROLLBACK_READY=PASS
+SANDBOX_SECRET_ROTATION_CONFIRMED=YES
+PPCP_MERCHANT_CONNECTED=NO
+PPCP_SANDBOX_MODE=YES
+PPCP_ONBOARDING_COMPLETED=YES
+PUBLIC_HTTPS_ORIGIN=NOT_CREATED_OWNER_RECONNECT_FIRST
+PPCP_CLIENT_TOKEN=NOT_TESTED
+WEBHOOK_REGISTER=NOT_TESTED
+RUNTIME_HEALTH=PASS
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PAYPAL_LIVE_ENABLED=NO
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+RETURN_OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED
+STOP_AT_OWNER_CHECKPOINT=YES
+STOP_AT_REVIEWER=YES
+```
