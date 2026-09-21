@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R2_PRE_K3_PARALLEL_BASELINE_COMPARISON
+CURRENT_GATE=K3R3_STUDIO_WOOCOMMERCE_RUNTIME_ISOLATION
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -242,3 +242,12 @@ K3R1 did not isolate the broader WooCommerce runtime/API failure. PPCP remains d
 Formal decision: `docs/REVIEWER_DECISION_K3R2_PRE_K3_PARALLEL_BASELINE_COMPARISON.md`.
 
 Create a separate temporary Studio site from the retained pre-K3 backup and compare current vs pre-K3 baseline. Do not overwrite the current site, reactivate PPCP, change versions, retry PayPal authorization, or touch production/VPS.
+
+
+## K3R2 Result / K3R3 Authorization
+
+A and B both reproduce the same timeout/one-hot-PHP-worker failure; B has no PPCP. Broader failure is therefore not isolated to the PayPal plugin or K3 mutation.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R3_STUDIO_WOOCOMMERCE_RUNTIME_ISOLATION.md`.
+
+Keep A read-only with PPCP inactive. Create fresh Studio control C, test clean WordPress (C0), then official WooCommerce 10.0.4 only (C1) if C0 is healthy. Use clone B only for the bounded WooCommerce-deactivation comparison described in the decision. Stop at Reviewer.
