@@ -243,6 +243,23 @@ The edit must also bind canonical identity reference.
 Failure:
 `RETURN_CANONICAL_IDENTITY_REFERENCE_MISSING`
 
+## 9.1 Partial-visibility / POV identity scope
+
+Canonical identity binding is required when an identity-bearing body/costume cue is visible, but QA must be scoped to what the camera can actually see.
+
+For `IP_POV_HANDS` / hands-cuff-only frames:
+- bind `CHAR_IP_001` because the hand + wine-red/cream cuff carries identity continuity;
+- validate adult hand anatomy and canonical sleeve/cuff costume cue;
+- do not require face, jaw, nose, hair or full-body checks when they are off-frame;
+- do not generate a face/full body merely to satisfy the identity checklist.
+
+Rule:
+
+> **Reference scope may be full identity; QA scope must match visible identity evidence.**
+
+Failure:
+`RETURN_IDENTITY_QA_SCOPE_MISMATCH`.
+
 ---
 
 ## 10. Drift propagation rule
