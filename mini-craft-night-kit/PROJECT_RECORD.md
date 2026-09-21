@@ -21,7 +21,7 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R2_PRE_K3_PARALLEL_BASELINE_COMPARISON
+CURRENT_GATE=K3R3_STUDIO_WOOCOMMERCE_RUNTIME_ISOLATION
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -358,3 +358,12 @@ Accepted finding: PPCP 4.1.3 directly caused the Payments-page blank React mount
 Next Gate is a non-destructive A/B comparison using a separate Studio clone restored from the retained pre-K3 backup. The current site must not be overwritten.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R2_PRE_K3_PARALLEL_BASELINE_COMPARISON.md`.
+
+
+## K3R2 Result / K3R3 Authorization
+
+K3R2 returned `RETURN_K3R2_STUDIO_OR_WOOCOMMERCE_RUNTIME_SYSTEMIC`: current site A and pre-K3 clone B both hang similarly even though B has no PPCP.
+
+This disproves a K3/PPCP-only explanation for the broader timeout. K3R3 will use a fresh Studio control to separate Studio-runtime vs WooCommerce-on-Studio vs imported Mini Craft state, while keeping current site A read-only.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R3_STUDIO_WOOCOMMERCE_RUNTIME_ISOLATION.md`.
