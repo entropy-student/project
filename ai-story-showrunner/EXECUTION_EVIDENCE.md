@@ -697,3 +697,27 @@ Deferred minor:
 Decision:
 do not rework.
 Use image 1 as VB016 matched-reveal source geometry.
+
+
+---
+
+## G5 Pilot — VB016 PASS_WITH_MINOR
+
+Date: 2026-09-21
+
+Result:
+`SRCH_VB016 = PASS_WITH_MINOR`.
+
+Accepted:
+- matched reveal relationship with VB015 is legible;
+- `平台服务费不予退还` becomes the dominant reversal;
+- no new character/story layer is introduced.
+
+Deferred minor:
+- browser chrome/title remain broader than ideal;
+- blue highlight has mild product-demo semantics;
+- tighter crop could increase drama but is not required for Pilot.
+
+Decision:
+do not rework.
+Continue to VB022.
