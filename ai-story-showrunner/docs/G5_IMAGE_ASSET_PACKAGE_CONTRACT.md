@@ -1,335 +1,291 @@
-# G5 Shotbook → Image Asset Package Contract v0.1
+# G5 Shotbook → Frame / Asset / Execution Package Contract v0.2
 
 ## Status
 
-`G5 = IN_PROGRESS / G5A PASS / G5B PASS / G5C IN PROGRESS`
+`G5 = IN_PROGRESS`
 
-Canonical production visual baseline:
-
-`docs/PRODUCTION_VISUAL_STYLE.md`
+Canonical sources:
+- `docs/G4_DIRECTOR_COMPILER_CONTRACT.md`
+- `docs/VISUAL_FRAME_BLUEPRINT_RULES.md`
+- `docs/PRODUCTION_VISUAL_STYLE.md`
+- `docs/VISUAL_ACQUISITION_REVIEW_GATE.md`
 
 ## 1. Purpose
 
-Compile an accepted G4 Visual Beat Shotbook into a reproducible image-generation package.
-
-G5 does not decide:
-- story;
-- script;
-- beat count;
-- timing;
-- visual intention;
-- shot size / POV already locked by G4.
-
-G5 decides:
-- which reusable assets each beat depends on;
-- how character / scene / style / prop / UI identity is locked;
-- which references must be attached;
-- the final image-generation instruction for each beat;
-- how continuity is carried from one generated still to the next.
+Compile accepted G4 Visual Beats into a deterministic image-production package without delegating creative decisions to the executor.
 
 Principle:
 
-> **G4 decides what the image means. G5 decides how to generate that exact image consistently.**
+> **G4 decides what the image means. Frame Blueprint decides how attention is arranged. G5 then binds assets and chooses how to execute that exact frame.**
 
----
+G5 must not change:
+- story;
+- script;
+- Beat count/order;
+- timing;
+- G4 visual intention;
+- G4 shot size / POV.
 
-## 2. G5 Internal Phases
+## 2. Internal pipeline
 
-### G5A — Asset Requirement Extraction
+```text
+G5A Episode Asset Requirement Extraction
+→ G5B Canonical Reference Lock
+→ G5B.5 Visual Acquisition Review
+→ G5C1 Frame Blueprint Compilation
+→ G5C2 Beat Asset Binding
+→ G5C3 Execution Mode Selection
+→ G5C4 Prompt / Edit Compiler
+→ G5 Pilot QA
+```
 
-Input:
-- accepted G4 Shotbook;
-- episode Visual Strategy;
-- existing project IP / reference assets when available.
+## 3. G5A — Episode Asset Inventory
 
-Output:
-- Character Asset Requirements;
-- Scene Asset Requirements;
-- Prop / UI / Document Requirements;
-- Style Requirements;
-- beat → asset dependency matrix.
+Extract possible episode-level:
+- characters;
+- scenes;
+- props;
+- UI/documents;
+- style assets.
 
-Every asset must receive:
-- stable asset ID;
-- scope: GLOBAL / EPISODE / SEQUENCE / BEAT;
-- reuse role;
-- required views / states;
-- real-reference status.
+Important:
+this is an **inventory**, not final Beat binding.
 
-Real-reference status:
-- `AVAILABLE`
-- `MISSING_REAL_ASSET`
-- `NOT_REQUIRED`
-- `TO_GENERATE_CANONICAL`
+Do not infer that an asset must appear in a Beat merely because narration mentions it.
 
-Do not invent a file path when a real asset does not exist.
+## 4. G5B — Canonical Reference Lock
 
-### G5B — Canonical Reference Lock
+Freeze reusable:
+- Character Bible;
+- Scene Bible;
+- Style Bible;
+- Prop/UI Bible;
+- Reference Manifest.
 
-Freeze reusable identity before compiling individual prompts.
+No fake paths.
+Missing real input remains explicit.
 
-Minimum outputs:
-- `CHARACTER_BIBLE.md`
-- `SCENE_BIBLE.md`
-- `STYLE_BIBLE.md`
-- `PROP_UI_BIBLE.md`
-- `REFERENCE_MANIFEST.json`
-
-Character lock may include:
-- face/head silhouette;
-- hair;
-- age impression;
-- body proportion;
-- fixed clothing/accessories;
-- canonical front / 3/4 / side views;
-- prohibited identity drift.
-
-Scene lock may include:
-- room geometry;
-- furniture positions;
-- stable screen axis;
-- lighting/time;
-- recurring camera anchors;
-- allowed state variants;
-- prohibited geometry drift.
-
-UI/document lock may include:
-- layout;
-- stable text regions;
-- state variants;
-- readable critical phrases;
-- fictional branding constraints.
-
-Style lock may include:
-- line/render style;
-- material texture;
-- background treatment;
-- color discipline;
-- character/world integration;
-- prohibited visual styles.
-
-### G5B.5 — Visual Acquisition Review
-
-Required before G5C Pilot.
+## 5. G5B.5 — Visual Acquisition Review
 
 Canonical:
 `docs/VISUAL_ACQUISITION_REVIEW_GATE.md`
 
-Purpose:
-treat visual style as a Message / Creative Lever and challenge internal taste with external evidence + a controlled visual-style hypothesis.
-
-Current decision:
-`KEEP + ITERATE`
-
-Control:
+Current Control:
 `SIMPLIFIED_FLAT_NARRATIVE_COMIC`
 
-Challenger:
-`ULTRA_SIMPLE_NARRATIVE_LINE_CARTOON`
+Decision:
+`KEEP + ITERATE`
 
-### G5C — Image Generation Compiler
+Frame architecture outranks decorative style complexity.
 
-Current MVP status:
-`IN_PROGRESS`
+## 6. G5C1 — Frame Blueprint Compilation
 
-Compile one final image row per accepted Visual Beat.
+Canonical:
+`docs/VISUAL_FRAME_BLUEPRINT_RULES.md`
 
-Minimum row:
-- image_id;
-- visual_beat_id;
-- semantic_shot_id;
-- prompt;
-- negative_constraints;
+Input:
+accepted G4 Visual Beat.
+
+Output:
+one `Frame Blueprint` per Visual Beat.
+
+It locks:
+- dramatic job;
+- focus mode;
+- P1/P2;
+- attention path;
+- composition mode;
+- density;
+- text policy;
+- brand mode;
+- UI mode;
+- continuity preserve;
+- frame delta;
+- withheld information;
+- frame-level acceptance criteria.
+
+It must preserve G4 intent.
+
+## 7. G5C2 — Beat Asset Binding
+
+Only after Blueprint.
+
+Bind only assets that are:
+- visible in the frame;
+- causally required;
+- required to preserve continuity/identity.
+
+Do not bind assets only because narration mentions them.
+
+Failure:
+`RETURN_ASSET_BINDING_PREMATURE`
+
+## 8. G5C3 — Execution Mode Selection
+
+Every Beat receives one:
+
+### GENERATE
+Use when a genuinely new independent story state must be generated.
+
+### DERIVE_EDIT
+Use when an accepted/canonical frame can be preserved and only one main state changes.
+
+Preferred for:
+- setup → reveal;
+- UI state change;
+- matched insert;
+- same-scene state delta;
+- before/after.
+
+### COMPOSITE_CROP
+Use when deterministic crop/composition of existing sources is more reliable than generative recreation.
+
+Preferred for:
+- exact evidence;
+- source-crop comparisons;
+- deterministic UI inserts.
+
+Rule:
+
+> `DERIVE_EDIT / COMPOSITE_CROP > GENERATE` when they preserve the intended state more deterministically.
+
+## 9. G5C4 — Prompt / Edit Compiler
+
+### GENERATE row
+Must contain:
+- blueprint_ref;
 - character_refs;
 - scene_refs;
 - prop_ui_refs;
 - style_refs;
-- continuity_ref;
-- shot_size;
-- POV;
-- aspect_ratio;
-- resolution;
-- output_name;
-- acceptance_criteria.
+- prompt;
+- negative constraints;
+- output name;
+- acceptance criteria.
+
+### DERIVE_EDIT row
+Must contain:
+- blueprint_ref;
+- source_frame_ref;
+- immutable locks;
+- exact delta;
+- forbidden changes;
+- output name;
+- acceptance criteria.
+
+### COMPOSITE_CROP row
+Must contain:
+- blueprint_ref;
+- source asset/frame refs;
+- crop/placement instructions;
+- overlay instructions;
+- output name;
+- acceptance criteria.
+
+Executor must not reinterpret story meaning.
+
+## 10. Text policy
+
+Exact critical text:
+`POST_OVERLAY`
+
+Image generation owns:
+- shell;
+- spacing;
+- geometry;
+- highlight region;
+- visual hierarchy.
+
+Post overlay owns:
+- exact Chinese wording;
+- verified brand text;
+- exact policy text;
+- exact amounts/identifiers.
+
+## 11. Brand policy
 
 Default:
-`1 Visual Beat ≈ 1 generated image`.
+`NONE`
 
-G5 must not merge or invent beats.
+No invented brand names/logos for realism.
 
----
+Real brand only if:
+- causally required;
+- KnowledgeCore verified;
+- explicitly approved.
 
-## 3. Prompt Architecture
+## 12. Reference policy
 
-Final prompt should be compiled, not improvised.
+Canonical identity refs never replaced by prior generated frames.
 
-Recommended order:
+Previous accepted frame may be:
+- continuity support;
+- derive/edit source.
 
-1. identity lock;
-2. scene/world lock;
-3. exact story action/state;
-4. subject priority;
-5. framing / POV;
-6. composition / eye-trace requirement;
-7. prop/UI state;
-8. continuity state;
-9. style lock;
-10. exclusions.
+`continuity_ref` = adjacent continuity.
+`composition_callback_ref` = non-adjacent visual rhyme.
 
-Prompt must describe the exact image to generate.
+## 13. Default output ratio
 
-Do not include Director reasoning prose that the generator cannot act on.
+`16:9`
 
----
+Default target:
+`1920×1080`
 
-## 4. Reference Strategy
+Do not crop away Blueprint focal structure.
 
-### Character reference
-Required whenever a recurring character appears.
+## 14. Acceptance gates
 
-### Scene reference
-Required whenever recurring geometry matters.
+### G4 Fidelity
+Blueprint/execution preserves G4 meaning.
 
-### Prop/UI reference
-Required when an object/page/interface must remain materially consistent across beats.
-
-### Continuity reference
-Use the previous accepted generated image only when:
-- same scene continues;
-- character pose/state evolves;
-- object position must persist;
-- matching composition is required.
-
-Do not use continuity refs across intentional discontinuity/montage unless explicitly useful.
-
----
-
-## 5. Canonical Asset vs Beat Image
-
-Reusable canonical assets are not final story frames.
-
-Examples:
-- character turnaround = canonical asset;
-- empty workroom = scene canonical;
-- policy-page master layout = UI canonical;
-- Beat 16 page with second policy line highlighted = generated beat image.
-
-Do not use a beat-specific composition as the only canonical reference if the asset must recur more broadly.
-
----
-
-## 6. Text / UI Policy
-
-Critical text is allowed only when it is causal to the story.
-
-For text-heavy UI:
-- lock a stable master layout;
-- minimize visible copy;
-- isolate exact critical phrases;
-- do not expect the image generator to faithfully render long paragraphs.
-
-If exact typography cannot be reliably generated:
-- generate the stable visual shell;
-- overlay exact text downstream as a locked edit asset.
-
-Mark:
-`TEXT_RENDER_MODE = IMAGE_NATIVE | POST_OVERLAY`.
-
----
-
-## 7. Resolution / Ratio
-
-Current default video frame:
-`16:9`.
-
-Default target image:
-`1920×1080` or equivalent 16:9 high-resolution source.
-
-If the generator's native output differs, retain 16:9 and down/up-scale only downstream with no crop that changes composition.
-
-Episode package must specify one canonical ratio unless a deliberate exception exists.
-
----
-
-## 8. Acceptance Gates
+### Focus Gate
+P1 is immediately discoverable.
 
 ### Identity Gate
-Recurring character remains recognizably the same.
-
-Failure:
-`RETURN_CHARACTER_DRIFT`
+Recurring IP stays recognizably identical.
 
 ### Scene Gate
-Recurring geometry / major prop positions remain stable.
-
-Failure:
-`RETURN_SCENE_DRIFT`
+Recurring geometry remains stable.
 
 ### Style Gate
-Rendering language remains within accepted Style Bible.
+Production visual style remains within canonical range.
 
-Failure:
-`RETURN_STYLE_DRIFT`
+### One-Main-Delta Gate
+Continuity Beat changes only what the Blueprint requires.
 
-### Beat Fidelity Gate
-Generated image communicates the exact G4 beat.
+### Reveal Gate
+Setup does not leak payoff.
 
-Failure:
-`RETURN_IMAGE_MISSED_BEAT`
+### Text Gate
+Exact text is correct through declared render mode.
 
-### Text/UI Gate
-Critical text/state is accurate enough for the declared render mode.
+### Brand Gate
+No unnecessary brand identity.
 
-Failure:
-`RETURN_UI_TEXT_FAILURE`
+### Execution Determinism Gate
+Executor has no missing creative choice.
 
-### Reference Resolution Gate
-Every required reference is:
-- available;
-- explicitly marked to generate canonical first;
-- or blocks execution as real input.
+## 15. Historical G5C v0.1 outputs
 
-Failure:
-`RETURN_REFERENCE_UNRESOLVED`
+The original Search Case files:
+- `10_IMAGE_GENERATION_ROWS.json`
+- `11_IMAGE_GENERATION_PLAN.md`
+- `12_PILOT_BATCH.json`
 
----
+are preserved as historical validation evidence but are **SUPERSEDED** because they bound assets before Frame Blueprint and lacked execution-mode selection.
 
-## 9. G5 PASS
+Do not use them for production.
 
-G5 PASS requires at least one full episode where:
+## 16. G5 PASS
 
-1. every Visual Beat maps to exactly one image-generation row unless documented otherwise;
-2. reusable character/scene/style/prop/UI assets have stable IDs;
-3. required reference status is explicit;
-4. final prompts do not require Executor creativity;
-5. no fake reference paths exist;
-6. package can be handed to the image executor with unresolved items clearly blocking only what they actually block;
-7. one end-to-end asset package passes Reviewer inspection.
+Requires at least one full episode where:
+1. every Visual Beat has exactly one Blueprint;
+2. Blueprint preserves G4;
+3. Beat assets are bound after Blueprint;
+4. every Beat has execution mode;
+5. no fake references;
+6. high-risk Pilot passes;
+7. executor package requires no creative improvisation.
 
-Actual image generation is downstream execution evidence and is not required to define G5's contract, but unresolved real references may keep an episode at `PASS_CANDIDATE / BLOCKED_BY_REAL_INPUT`.
-
----
-
-## 10. G5 MVP Sequence
-
-First case:
-`blind-search-answer`
-
-Why:
-- one main IP;
-- one stable desk scene;
-- one stable official-policy-page master;
-- one cost-sheet prop;
-- evidence-focused framing;
-- low asset count but nontrivial continuity.
-
-Validation target:
-prove that asset locking and prompt compilation can preserve:
-- character identity;
-- same-page continuity;
-- exact reveal states;
-- matched contrast frames;
-- G4 eye-trace intent.
-
-After MVP:
-run a higher-continuity case such as Context / Memory before G5 final PASS.
+Actual full-episode image generation is downstream evidence; it is not required to define the G5 contract.
