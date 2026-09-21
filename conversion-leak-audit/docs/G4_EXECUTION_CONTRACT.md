@@ -43,6 +43,25 @@ Use the reviewed local source trees:
 
 Do not re-create G1/G2 from scratch.
 
+## Source baseline traceability precheck
+
+This precheck is mandatory before any G4 product edit.
+
+For both reviewed source trees:
+- confirm the tree exists locally;
+- record its workspace-relative root;
+- record source provenance and revision (Git repository/ref/commit if tracked; otherwise the existing local snapshot/provenance identifier);
+- identify the exact pre-change regression command set;
+- prove the source corresponds to the already reviewed G1/G2 baseline.
+
+Do not recreate either tree to satisfy this check.
+
+If the original source baseline is missing, ambiguous, or cannot be tied to the validated evidence, return:
+
+`RETURN_G4_SOURCE_BASELINE_UNRESOLVED`
+
+and stop at Reviewer.
+
 ## Regression-first rule
 
 Before product changes:
