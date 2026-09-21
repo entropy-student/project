@@ -291,6 +291,23 @@
         "SRCH_VB044"
       ],
       "notes": "Textual style lock can be defined now; one or more approved visual refs should be generated/selected before full episode execution."
+    },
+    {
+      "asset_id": "TEMP_ANALOGY_ACTOR_001",
+      "asset_type": "CHARACTER",
+      "scope": "SEQUENCE",
+      "reference_status": "TO_GENERATE_CANONICAL",
+      "description": "Temporary secondary actor used only in the compact phonebook analogy sequence; visually simple, non-branded, not a recurring channel IP.",
+      "required_views": [
+        "simple 3/4 conversational pose"
+      ],
+      "canonical_refs": [],
+      "used_by_beats": [
+        "SRCH_VB023",
+        "SRCH_VB024",
+        "SRCH_VB025"
+      ],
+      "notes": "Keep deliberately generic and subordinate to CHAR_IP_001. Do not create a second persistent character identity."
     }
   ]
 }
