@@ -743,3 +743,34 @@ Pilot limitation:
 
 Pass condition:
 viewer should understand the mismatch without VS / arrows / explanatory card.
+
+
+---
+
+## G5 Pilot — VB022 Attempt 1 RETURN
+
+Date: 2026-09-21
+
+Result:
+`SRCH_VB022 = RETURN_SEMANTIC_EXECUTION_DRIFT`.
+
+Primary semantic failure:
+- intended mismatch = question object `服务费` vs evidence object `订单款项`;
+- generated output instead contrasted the user question with the later correct conclusion `平台服务费不予退还`;
+- this destroys the intended “答非所问 / object mismatch” mechanism.
+
+Execution-contract failure:
+- Blueprint/row explicitly prohibit `character`, but output introduced the recurring IP plus a thought bubble and explanatory labels;
+- this converted source-crop comparison into an explanation card/comic panel.
+
+Character evidence:
+- introduced character also drifted toward juvenile/cute rendering and non-canonical identity/costume semantics;
+- because VB022 requires no character at all, the correct fix is removal, not further character prompting.
+
+Retry:
+- left crop = `服务费退不退` / service-fee question object;
+- right crop = `订单款项将退回原支付方式` / order-funds evidence object;
+- no character, hands, bubble, title, VS, arrows, conclusion card;
+- preserve central whitespace and let the semantic mismatch be self-evident.
+
+No architecture rewrite required.
