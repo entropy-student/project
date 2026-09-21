@@ -1123,20 +1123,21 @@
           "SCALE"
         ],
         "background_anchors": [
-          "stable answer-pane shell"
+          "minimal analogy-space anchor",
+          "same simple contact-book world as VB023/VB024"
         ],
         "story_props": [
-          "PROP_CONTACT_BOOK_001",
-          "UI_AI_ANSWER_001"
+          "PROP_CONTACT_BOOK_001"
         ],
         "remove_or_suppress": [
           "AI UI",
           "giant phone screen",
           "contact-list wall",
-          "bubble",
+          "speech/thought bubble",
           "title",
           "arrow",
           "complex office",
+          "real/invented brand logos",
           "teen/child reinterpretation",
           "oversized juvenile eyes",
           "rounded baby-face jaw/chin",
@@ -1181,13 +1182,14 @@
         "subtitle_safe_check": "PASS",
         "acceptance_criteria": [
           "G4 intent preserved: LAND_PAYOFF",
-          "P1 immediately readable: wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question",
-          "no unnecessary brand/logo, bubble, card or explanatory arrow",
-          "caption-safe and readable at reduced size",
-          "only current Beat information is visible",
-          "CHAR_IP_001 reads as the same clearly adult young man",
-          "adult eye/jaw/chin/nose/body proportions remain canonical",
-          "wine-red top with cream/off-white collar remains unchanged"
+          "P1 immediately readable: supporting actor confidently shows the correct boss contact/phone number",
+          "P2 immediately readable: CHAR_IP_001 reacts with puzzled disbelief because the attendance question is still unanswered",
+          "scene reads as a small story moment, not a diagram/tutorial/PPT",
+          "no AI UI, title card, arrow, speech/thought bubble, giant phone screen, or contact-list wall",
+          "PROP_CONTACT_BOOK_001 is the only causal information prop",
+          "CHAR_IP_001 remains clearly adult with canonical wine-red/cream-collar costume",
+          "supporting actor remains visually secondary and distinct from CHAR_IP_001",
+          "caption-safe and readable at reduced size"
         ],
         "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
         "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
@@ -1240,39 +1242,43 @@
         "output_name": "SRCH_VB025.png",
         "acceptance_criteria": [
           "G4 intent preserved: LAND_PAYOFF",
-          "P1 immediately readable: wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question",
-          "no unnecessary brand/logo, bubble, card or explanatory arrow",
-          "caption-safe and readable at reduced size",
-          "only current Beat information is visible",
-          "CHAR_IP_001 remains the same clearly adult young man",
-          "canonical face/body maturity and wine-red collared costume pass identity QA"
+          "P1 immediately readable: supporting actor confidently shows the correct boss contact/phone number",
+          "P2 immediately readable: CHAR_IP_001 reacts with puzzled disbelief because the attendance question is still unanswered",
+          "scene reads as a small story moment, not a diagram/tutorial/PPT",
+          "no AI UI, title card, arrow, speech/thought bubble, giant phone screen, or contact-list wall",
+          "PROP_CONTACT_BOOK_001 is the only causal information prop",
+          "CHAR_IP_001 remains clearly adult with canonical wine-red/cream-collar costume",
+          "supporting actor remains visually secondary and distinct from CHAR_IP_001",
+          "caption-safe and readable at reduced size"
         ],
         "identity_lock": {
           "required": true,
           "canonical_character_ids": [
-            "CHAR_IP_001",
+            "CHAR_IP_001"
+          ],
+          "sequence_local_character_ids": [
             "TEMP_ANALOGY_ACTOR_001"
           ],
           "canonical_identity_ref_required": true,
           "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
           "hard_constraints": [
-            "same clearly adult young male identity as CHAR_IP_001",
-            "natural adult eye size",
-            "stable face outline / jaw / chin / nose structure",
-            "stable adult head-body proportion",
-            "stable canonical dark short tousled hair silhouette and fringe",
-            "wine-red top + cream/off-white collar + black trousers + simple white shoes",
+            "CHAR_IP_001 remains the same clearly adult young male identity",
+            "natural adult eye size and stable adult face/body proportion for CHAR_IP_001",
+            "canonical dark short tousled hair silhouette for CHAR_IP_001",
+            "wine-red top + cream/off-white collar + black trousers + simple white shoes for CHAR_IP_001",
+            "TEMP_ANALOGY_ACTOR_001 is a distinct clearly adult supporting person and must not resemble or visually compete with CHAR_IP_001",
             "style simplification may reduce rendering detail only; never identity anatomy"
           ],
           "reference_precedence": [
             "OWNER_CANONICAL_IP",
             "APPROVED_PRODUCTION_CHARACTER_MASTER",
-            "APPROVED_ANGLE_POSE",
+            "APPROVED_SEQUENCE_CHARACTER_REF",
             "PREVIOUS_ACCEPTED_FRAME",
             "PROMPT_PROSE"
           ]
         }
-      }
+      },
+      "pilot_execution_note": "Isolated Pilot does not include VB024 source. For Pilot only, generate a representative payoff frame fresh using the same analogy-world constraints. Full-episode canonical execution remains DERIVE_EDIT from accepted VB024. Watch specifically for recurring-IP identity drift because the canonical IP binary is not yet persisted."
     },
     {
       "blueprint": {
