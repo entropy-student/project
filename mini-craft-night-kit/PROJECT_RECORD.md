@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED
+CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REOPEN_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -817,3 +817,17 @@ CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED
 Owner must privately complete Sandbox buyer login/approval for the single existing test flow. The temporary public origin remains active and must not be torn down.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R10_OWNER_SANDBOX_BUYER_AUTH.md`.
+
+
+## K3R10 Buyer Flow Reopen
+
+Owner closed the pre-approval PayPal popup/Checkout page. No order/capture had occurred, so the session is treated as abandoned before payment.
+
+```text
+BUYER_APPROVAL=NOT_EXECUTED
+ORDER_CREATED=NOT_OBSERVED_BEFORE_CHECKPOINT
+CAPTURE_ACTIONS=0
+CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REOPEN_REQUIRED
+```
+
+Owner may reopen Checkout and start one fresh Sandbox buyer flow. The temporary public origin remains required.
