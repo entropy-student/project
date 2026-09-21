@@ -1,6 +1,6 @@
 # Conversion Leak Audit — Functional Acceptance
 
-Status: `DRAFT_FOR_G3_5`
+Status: `FROZEN_G3_5_ACTIVE_FOR_G4`
 
 本文件定义 Codex 后续实现必须满足的功能契约。视觉 PASS 不能替代功能 PASS。
 
