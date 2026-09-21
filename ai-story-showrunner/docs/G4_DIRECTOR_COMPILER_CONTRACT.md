@@ -1,4 +1,4 @@
-# G4 Director / Shot Compiler Contract v0.3
+# G4 Director / Shot Compiler Contract v0.4
 
 ## Status
 
@@ -6,6 +6,9 @@
 
 Canonical Director rules:
 `docs/G4_DIRECTOR_LANGUAGE_RULES.md`
+
+Canonical POV grammar:
+`docs/G4_VIEWPOINT_GRAMMAR.md`
 
 Validation:
 `experiments/g4r-v03/VALIDATION_SUMMARY.md`
@@ -122,6 +125,7 @@ Each Visual Beat locks:
 - local visual intention;
 - actual shot size;
 - actual POV / angle;
+- POV reason;
 - image-level state;
 - image relation;
 - visual intensity;
@@ -133,7 +137,16 @@ A spoken list does not automatically become montage.
 
 Setup and reveal may be separate beats when withholding information creates the payoff.
 
+POV must be motivated by the Beat:
+- reaction/body meaning → OBSERVER;
+- shared discovery/read → IP_POV;
+- owned manual action → IP_POV_HANDS;
+- actor + readable target → OVER_SHOULDER_IP;
+- causal object alone → OBJECTIVE_INSERT.
+
 Failures:
+- `RETURN_POV_UNMOTIVATED`
+- `RETURN_POV_SWITCH_UNMOTIVATED`
 - `RETURN_VISUAL_BEAT_REDUNDANT`
 - `RETURN_MONTAGE_INFLATION`
 - `RETURN_REACTION_REDUNDANT`
