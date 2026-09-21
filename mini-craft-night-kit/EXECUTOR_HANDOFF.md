@@ -652,3 +652,34 @@ RETURN_OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED
 STOP_AT_OWNER_CHECKPOINT=YES
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R11 Executor handoff — connection state reconciled (2026-09-21)
+
+`PASS_CANDIDATE_K3R11_CONNECTION_STATE_RECONCILED`
+
+The Owner's connected-account presentation was reconciled without clicking Disconnect or reconnecting. The prior `PPCP_REST_MERCHANT_CONNECTED=NO` came from an Executor read-only helper using the wrong response path: PPCP `/wc/v3/wc_paypal/common` places `merchant` at the top level, not under `data`.
+
+The corrected redacted probe returned common HTTP `200`, `merchant.isConnected=YES`, `merchant.isSandbox=YES`, Sandbox/manual-connection flags enabled, onboarding HTTP `200`/completed `YES`, and HTTP `200` for settings/payment/features. The related local options `woocommerce-ppcp-data-common` and `woocommerce-ppcp-data-onboarding` are present with connection/onboarding metadata flags present/enabled; no credential value was read or output.
+
+This means the UI and correctly parsed REST state agree. External validity of the rotated Secret was not tested. No Disconnect, reconnect, PayPal API credential request, public origin, tunnel, payment, capture, version change, source change, or VPS action occurred. The temporary helper was removed from host and container.
+
+Smallest safe next step: Reviewer may supersede the false mismatch and decide whether to resume the already-authorized K3R11 public-origin preparation. No Owner action is required for this reconciliation result.
+
+```text
+K3R11_GATE=K3R11_CONNECTION_STATE_RECONCILIATION
+PPCP_ADMIN_UI_CONNECTION_STATE=CONNECTED_PRESENTATION
+PPCP_REST_MERCHANT_CONNECTED=YES
+PPCP_STATE_MISMATCH=FALSE_PRIOR_PROBE_PATH_ERROR
+PPCP_EXTERNAL_SECRET_VALIDITY=NOT_TESTED
+DISCONNECT_ACTION=NOT_EXECUTED
+RECONNECT_ACTION=NOT_EXECUTED
+PUBLIC_HTTPS_ORIGIN=NOT_CREATED
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+PASS_CANDIDATE_K3R11_CONNECTION_STATE_RECONCILED
+STOP_AT_REVIEWER=YES
+```

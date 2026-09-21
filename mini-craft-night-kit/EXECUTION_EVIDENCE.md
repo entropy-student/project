@@ -1467,3 +1467,55 @@ RETURN_OWNER_K3R11_SANDBOX_RECONNECT_REQUIRED
 STOP_AT_OWNER_CHECKPOINT=YES
 STOP_AT_REVIEWER=YES
 ```
+
+## K3R11 Connection-state reconciliation — probe structure corrected (2026-09-21)
+
+- Gate: `K3R11_CONNECTION_STATE_RECONCILIATION`.
+- Owner's UI observation remains: Connection status, Disconnect, Business/Sandbox, and merchant metadata presentation are visible. No Disconnect action was executed.
+- The prior `PPCP_REST_MERCHANT_CONNECTED=NO` was a read-only probe parsing error, not a confirmed PPCP state. PPCP `/wc/v3/wc_paypal/common` returns `merchant` at the top level; the prior helper incorrectly looked for `data.merchant`.
+- A corrected in-container read-only probe used `common.merchant` and emitted only redacted statuses/presence metadata. It was linted, staged ephemerally, executed, and removed from both host and container.
+
+### Corrected REST state
+
+- `/wc/v3/wc_paypal/common`: HTTP `200`.
+- Top-level `merchant` object: present.
+- `merchant.isConnected=YES`.
+- `merchant.isSandbox=YES`.
+- Merchant ID, email, Client ID, and Client Secret fields: present only as boolean metadata; no values were read into evidence or output.
+- `data.useSandbox=YES`; `data.useManualConnection=YES`.
+- `/wc/v3/wc_paypal/onboarding`: HTTP `200`; `completed=YES`.
+- `/wc/v3/wc_paypal/settings`: HTTP `200`.
+- `/wc/v3/wc_paypal/payment`: HTTP `200`.
+- `/wc/v3/wc_paypal/features`: HTTP `200`.
+
+### Local option-state evidence
+
+- Related option `woocommerce-ppcp-data-common`: present; metadata flags indicate merchant ID, merchant email, Client ID, Client Secret, `merchant_connected`, `sandbox_merchant`, `use_sandbox`, and `use_manual_connection` are present/enabled. Values were not output.
+- Related option `woocommerce-ppcp-data-onboarding`: present; onboarding completed flag present/enabled. Values were not output.
+- The Settings UI shows the connected presentation because local merchant metadata and connection flags are present; the corrected REST response agrees. The apparent mismatch was caused by the prior probe's wrong response path.
+- Whether the externally rotated Secret is accepted by PayPal has not been tested in this Gate. Local presence is not a credential-validity verdict.
+
+```text
+K3R11_GATE=K3R11_CONNECTION_STATE_RECONCILIATION
+PPCP_ADMIN_UI_CONNECTION_STATE=CONNECTED_PRESENTATION
+PPCP_REST_MERCHANT_CONNECTED=YES
+PPCP_STATE_MISMATCH=FALSE_PRIOR_PROBE_PATH_ERROR
+PPCP_COMMON_RESPONSE_PATH=TOP_LEVEL_MERCHANT
+PPCP_SANDBOX_MODE=YES
+PPCP_ONBOARDING_COMPLETED=YES
+PPCP_CONNECTION_METADATA_PRESENT=YES
+PPCP_EXTERNAL_SECRET_VALIDITY=NOT_TESTED
+DISCONNECT_ACTION=NOT_EXECUTED
+RECONNECT_ACTION=NOT_EXECUTED
+PUBLIC_HTTPS_ORIGIN=NOT_CREATED
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+LOCAL_HELPER_REMOVED=PASS
+REMOTE_HELPER_REMOVED=PASS
+PASS_CANDIDATE_K3R11_CONNECTION_STATE_RECONCILED
+STOP_AT_REVIEWER=YES
+```
