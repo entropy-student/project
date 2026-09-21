@@ -1,4 +1,4 @@
-# Low-Level Execution Package v0.3
+# Low-Level Execution Package v0.4
 
 ## 1. Purpose
 
@@ -33,7 +33,7 @@ This package consumes accepted outputs from:
 - G5 Image Asset Package Compiler.
 
 G4 decides what each Visual Beat means, its order, visual intention and relative rhythm.
-Exact production timing is compiled only after the Audio Master exists, under `docs/SRT_AUDIO_TIMING_STANDARD.md`.
+Exact production timing is compiled upstream from semantic timing intent + `VOICE_TIMING_PROFILE`, before executor TTS, under `docs/SRT_AUDIO_TIMING_STANDARD.md`.
 G5 provides the exact image-generation row and reference package.
 
 Antigravity must not reinterpret either layer.
@@ -48,43 +48,67 @@ Canonical recurring-character identity:
 
 - 00_EXECUTION_ORDER.md
 - 01_SCRIPT.md
-- 02_SUBTITLES.srt（must be FINAL_AUDIO_ALIGNED）
-- 03_AUDIO.*（FINAL_AUDIO master）
-- 04_CHARACTER_BIBLE.md
-- 05_SCENE_BIBLE.md
-- 06_STYLE_BIBLE.md
-- 07_SHOT_TIMELINE.csv
-- 08_IMAGE_GENERATION.csv
-- 09_EDIT_INSTRUCTIONS.md
-- 10_OUTPUT_SPEC.md
+- 02_PRODUCTION_SUBTITLES.srt
+- 03_TTS_MANIFEST.json
+- 04_AUDIO_SPEC.md
+- 05_VISUAL_BEATS.json
+- 06_SHOT_TIMELINE.csv
+- 07_IMAGE_GENERATION.csv
+- 08_CHARACTER_BIBLE.md
+- 09_SCENE_BIBLE.md
+- 10_STYLE_BIBLE.md
+- 11_REFERENCE_MANIFEST.json
+- 12_EDIT_INSTRUCTIONS.md
+- 13_OUTPUT_SPEC.md
+- 14_QA_RULES.md
 - references/characters/
 - references/scenes/
 - references/props/
 - references/style/
 
-其中 `07_SHOT_TIMELINE.csv` 和 `08_IMAGE_GENERATION.csv` 是 Antigravity 最核心的施工文件。
+其中 `03_TTS_MANIFEST.json`、`06_SHOT_TIMELINE.csv` 和 `07_IMAGE_GENERATION.csv` 是 Antigravity 最核心的施工文件。
 
 ## 4. Audio Mode — RESOLVED
 
-### AUDIO_MODE=A — Upstream Audio / CANONICAL
+### AUDIO_MODE = EXECUTOR_LOCKED_COSYVOICE
 
-当前正式选择：
+Current production contract:
 
-`AUDIO_MODE = A_UPSTREAM_COSYVOICE`
+Upstream compiles:
+- locked text;
+- semantic pace;
+- Production SRT;
+- Voice Timing Profile;
+- TTS Manifest;
+- semantic pauses;
+- target timestamps.
 
-上游保留 G4 的 semantic timing intent（快/慢/PUNCH/REVERSAL/HOLD 等），使用锁定 Voice Profile 测量可行性，并只对不可实现的局部时间窗做受约束重分配。之后生成 semantic-paced FINAL_AUDIO、FINAL_AUDIO_ALIGNED.srt，再编译精确 Shot Timeline。
+Antigravity then executes CosyVoice locally according to that manifest.
 
-Antigravity：
-- 不重新 TTS；
-- 不改字；
-- 不自行改变语速；
-- 不自行移动字幕；
-- 不把旧的 G4 reference timing 当作生产时间轴。
+This is **executor TTS without executor timing authority**.
 
-Canonical timing contract:
-`docs/SRT_AUDIO_TIMING_STANDARD.md`
+Antigravity:
+- may load model once and cache speaker prompt once;
+- may generate each locked Speech Unit;
+- may normalize technical silence;
+- may perform only bounded technical alignment;
+- may assemble the final audio track.
 
-Semantic Timing Intent is the creative constraint; the solved Audio Master is the exact production clock.
+Antigravity may NOT:
+- rewrite text;
+- choose new semantic speed;
+- move semantic pauses;
+- redesign SRT;
+- use major time-stretch to rescue a timing error.
+
+Material timing mismatch:
+`RETURN_VOICE_TIMING_PROFILE_MISS`
+
+Canonical timing contracts:
+- `docs/SRT_AUDIO_TIMING_STANDARD.md`
+- `docs/VOICE_TIMING_PROFILE_SPEC.md`
+
+Semantic Timing Intent is the creative constraint; Production SRT/TTS Manifest are the executor contract.
 
 ## 5. Character Consistency Contract
 
@@ -144,7 +168,7 @@ Semantic Timing Intent is the creative constraint; the solved Audio Master is th
 | subtitle | 对应字幕 |
 | notes | 禁止项/注意项 |
 
-Antigravity 不自行改 start/end。Shot Timeline 的 exact start/end 必须来自已锁定 Audio Master；旧 Visual Beat 估算时间不得直接进入生产。若音频与时间轴不匹配：`RETURN_TIMELINE_MISMATCH`，由上游按 `docs/SRT_AUDIO_TIMING_STANDARD.md` 重新编译。
+Antigravity 不自行改 start/end。Shot Timeline 的 exact start/end 必须来自已锁定 Production SRT；Voice Timing Profile 负责在执行前验证语音可行性。若实际 TTS 出现材料级偏差：`RETURN_VOICE_TIMING_PROFILE_MISS`，不得由 Executor 自行重排时间。
 
 ## 8. Image Generation Sheet
 
