@@ -54,6 +54,23 @@ The next Reviewer action is to read Codex's updated `EXECUTION_EVIDENCE.md` and 
 - RETURN_G4
 - STOP / OWNER CHECKPOINT
 
+## 2026-09-22 Takeover Reconciliation
+
+Formal decision:
+
+`REVIEWER_DECISION_G4_TAKEOVER_RECONCILIATION.md`
+
+Independent GitHub reconstruction confirms:
+- G3.5 remains PASS and is not reopened.
+- No G4 execution evidence exists yet.
+- G4 remains the only authorized implementation Gate.
+- stale README / handoff text was reconciled.
+- the reviewed `scanner/` and `wordpress-g1-baseline/` trees are referenced by contract but are not stored in this project repository.
+
+Therefore the first mandatory G4 action is a source-baseline traceability precheck before any edit. Executor must record workspace-relative roots, source provenance/revision, and frozen regression results. If the original baseline is missing or ambiguous, return `RETURN_G4_SOURCE_BASELINE_UNRESOLVED`; do not recreate G1/G2.
+
+Owner intervention required: NO.
+
 ## G4 hard boundaries
 
 No:
