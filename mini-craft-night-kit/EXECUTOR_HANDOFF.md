@@ -327,3 +327,13 @@ No PPCP reconnect was retried. Phase C remains blocked until Owner reports the h
 
 K3R8_RESULT=RETURN_OWNER_K3R8_SANDBOX_OAUTH_CHECK_REQUIRED
 STOP_AT_REVIEWER=YES
+## K3R8B Executor handoff — corrected Owner helper checkpoint (2026-09-21)
+
+Host-only diagnostics did not produce a credential verdict. .NET DNS and TCP 443 succeeded. PowerShell `Invoke-WebRequest` and .NET HttpClient both reached an HTTP response (403 without credentials). The host has an HTTP proxy environment variable present, WinHTTP direct access, and a mixed raw TLS result: curl/Schannel and direct SslStream failed handshake while the HTTP stacks returned 403. No proxy value was printed.
+
+The original helper's broad catch masked whether failure happened during request construction or transport. Request body/header construction was validated without real credentials. The local helper now emits only redacted categories and HTTP 401/403/200-token results; it does not print response content or credential values.
+
+Owner must rerun the corrected helper locally. Do not classify the Sandbox credentials until the helper returns `HTTP_401`, `HTTP_403`, or `HTTP_200_TOKEN_RECEIVED`.
+
+K3R8B_RESULT=RETURN_OWNER_K3R8B_CORRECTED_HELPER_REQUIRED
+STOP_AT_OWNER_CHECKPOINT=YES
