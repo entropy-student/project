@@ -689,3 +689,11 @@ Current:
 - Synced Blueprint, Execution Rows, Pilot Batch, CURRENT_STATUS, README, REVIEWER_HANDOFF and evidence.
 - New execution counts: `GENERATE 15 / DERIVE_EDIT 25 / COMPOSITE_CROP 4`.
 - Current next action: generate + QA VB009; PASS then continue VB012.
+
+
+## 2026-09-21 — VB012 Pilot pass
+
+- VB012 accepted as `PASS_WITH_MINOR`.
+- Core purpose succeeded: confirm the refund-policy page is the correct source without exposing the later service-fee reversal.
+- Minor issues logged only: outer laptop/desk framing and invented generic brand cue.
+- No rework authorized during Pilot; continue to VB015.
