@@ -774,3 +774,29 @@ Retry:
 - preserve central whitespace and let the semantic mismatch be self-evident.
 
 No architecture rewrite required.
+
+
+---
+
+## G5 Pilot — VB022 PASS_WITH_MINOR
+
+Date: 2026-09-21
+
+Result:
+`SRCH_VB022 = PASS_WITH_MINOR_SEMANTIC_COMPARE`.
+
+Accepted:
+- left side clearly asks about `服务费`;
+- right-side evidence clearly speaks about `订单款项`;
+- mismatch is understandable without VS / arrows / explanatory card;
+- no character is required.
+
+Deferred minor:
+- generated attempt exposed ChatGPT/OpenAI branding despite brand NONE;
+- source crops remain broader than ideal.
+
+Execution limitation:
+true deterministic `COMPOSITE_CROP` remains pending until `UI_AI_ANSWER_001` and `UI_POLICY_PAGE_001` binaries are persisted.
+
+Decision:
+semantic Pilot passes; continue VB025.
