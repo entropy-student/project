@@ -818,3 +818,24 @@ Acceptance now prioritizes unsafe under-allocation and semantic tail slack.
 
 Task:
 `experiments/g6/voice-timing-calibration/ANTIGRAVITY_TARGETED_V2_TASK.md`
+
+
+## 2026-09-22 — Voice Timing Profile v2.1 frozen
+
+Final blind closeout:
+- V21B001 CONTROLLED: allocated 4.2000s / actual 3.4466s / required extra speed 1.0000x / tail slack 0.7534s / PASS_WITH_MINOR.
+- V21B002 FINAL: allocated 4.1667s / actual 3.6539s / required extra speed 1.0000x / tail slack 0.5128s / PASS.
+
+Overall:
+`PASS_WITH_MINOR`
+
+Decision:
+- freeze `VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1` as canonical;
+- no more timing calibration in the normal path;
+- release Production SRT compilation.
+
+Canonical profile:
+`profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json`
+
+Next:
+`locked script → PRODUCTION_SUBTITLES.srt → TTS_MANIFEST.json → full Antigravity Production Package`.
