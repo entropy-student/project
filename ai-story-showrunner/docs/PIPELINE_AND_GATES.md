@@ -1,4 +1,4 @@
-# Pipeline & Gates v0.2
+# Pipeline & Gates v0.3
 
 ## Stage 0 — Signal Intake
 
@@ -216,8 +216,16 @@ Internal phases:
 G5A Asset Requirement Extraction
 → G5B Canonical Reference Lock
 → G5B.5 Visual Acquisition Review
-→ G5C Image Generation Compiler
+→ G5C1 Frame Blueprint Compilation
+→ G5C2 Beat Asset Binding
+→ G5C3 Execution Mode Selection
+→ G5C4 Prompt / Edit Compiler
 ```
+
+Canonical frame rules:
+- `docs/VISUAL_FRAME_BLUEPRINT_RULES.md`
+- `schemas/frame_blueprint.schema.json`
+- `schemas/frame_execution_row.schema.json`
 
 ### G5A
 Extract:
@@ -250,29 +258,41 @@ Canonical:
 Current decision:
 `KEEP + ITERATE` — simplified flat narrative comic remains Control; lower-complexity line-cartoon remains Challenger.
 
-### G5C
-Compile exactly one deterministic image-generation row per accepted Visual Beat unless explicitly documented otherwise.
+### G5C1 — Frame Blueprint
+Compile one Frame Blueprint per accepted Visual Beat.
 
-Minimum row:
-- image_id;
-- visual_beat_id;
-- semantic_shot_id;
-- prompt;
-- negative_constraints;
-- character_refs;
-- scene_refs;
-- prop_ui_refs;
-- style_refs;
-- continuity_ref;
-- shot_size;
-- POV;
-- aspect_ratio;
-- resolution;
-- text_render_mode;
-- output_name;
-- acceptance_criteria.
+Locks:
+- dramatic job;
+- P1/P2;
+- focus mode;
+- attention path;
+- composition;
+- density;
+- text/brand/UI policy;
+- continuity preserve;
+- one main delta;
+- withheld information.
 
-G5 must not change story, beat count, timing or Director intent.
+### G5C2 — Beat Asset Binding
+Bind only assets that are actually visible or causally required by the Blueprint.
+
+Do not bind an asset merely because narration mentions it.
+
+### G5C3 — Execution Mode
+Choose exactly one:
+- `GENERATE`
+- `DERIVE_EDIT`
+- `COMPOSITE_CROP`
+
+Prefer deterministic derive/composite when it preserves continuity better than regeneration.
+
+### G5C4 — Prompt / Edit Compiler
+Compile executor instructions from G4 + Blueprint + bound assets + execution mode.
+
+Exact text defaults to `POST_OVERLAY`.
+Brand defaults to `NONE`.
+
+G5 must not change story, Beat count, timing or Director intent.
 
 Fail examples:
 - `RETURN_CHARACTER_DRIFT`
