@@ -1,4 +1,4 @@
-# G5 Shotbook → Frame / Asset / Execution Package Contract v0.2
+# G5 Shotbook → Frame / Asset / Execution Package Contract v0.3
 
 ## Status
 
@@ -8,6 +8,7 @@ Canonical sources:
 - `docs/G4_DIRECTOR_COMPILER_CONTRACT.md`
 - `docs/VISUAL_FRAME_BLUEPRINT_RULES.md`
 - `docs/PRODUCTION_VISUAL_STYLE.md`
+- `docs/CHARACTER_IDENTITY_LOCK.md`
 - `docs/VISUAL_ACQUISITION_REVIEW_GATE.md`
 
 ## 1. Purpose
@@ -128,7 +129,7 @@ Every Beat receives one:
 Use when a genuinely new independent story state must be generated.
 
 ### DERIVE_EDIT
-Use when an accepted/canonical frame can be preserved and only one main state changes.
+Use image-edit generation when an accepted/canonical frame can be preserved and only one main state changes.
 
 Preferred for:
 - setup → reveal;
@@ -137,13 +138,29 @@ Preferred for:
 - same-scene state delta;
 - before/after.
 
+For any recurring character:
+- source frame is continuity input only;
+- canonical identity reference remains mandatory;
+- canonical identity overrides any drift already present in the source frame.
+
+If the source frame already failed identity/maturity/costume QA:
+do not derive from it.
+
 ### COMPOSITE_CROP
-Use when deterministic crop/composition of existing sources is more reliable than generative recreation.
+Use when crop/composition of already approved visual sources is more reliable than regenerating the whole frame.
+
+Allowed sources:
+- image-model-generated frames/assets that already passed QA;
+- owner-provided/approved image assets.
 
 Preferred for:
-- exact evidence;
+- evidence source crops;
 - source-crop comparisons;
-- deterministic UI inserts.
+- matched visual excerpts.
+
+Important Owner constraint:
+`COMPOSITE_CROP` is NOT a code-drawn UI/table pipeline.
+UI / table / document visual assets remain image-generation assets unless the Owner explicitly changes this policy.
 
 Rule:
 
@@ -155,6 +172,7 @@ Rule:
 Must contain:
 - blueprint_ref;
 - character_refs;
+- identity_lock;
 - scene_refs;
 - prop_ui_refs;
 - style_refs;
@@ -167,6 +185,8 @@ Must contain:
 Must contain:
 - blueprint_ref;
 - source_frame_ref;
+- identity_lock;
+- canonical character refs when a recurring character appears;
 - immutable locks;
 - exact delta;
 - forbidden changes;
@@ -216,11 +236,29 @@ Real brand only if:
 
 ## 12. Reference policy
 
-Canonical identity refs never replaced by prior generated frames.
+Canonical character policy:
+`docs/CHARACTER_IDENTITY_LOCK.md`
+
+Reference precedence:
+
+```text
+canonical identity
+> approved production character master
+> approved angle/pose
+> previous accepted frame
+> prompt prose
+```
+
+Canonical identity refs are never replaced by prior generated frames.
 
 Previous accepted frame may be:
 - continuity support;
 - derive/edit source.
+
+It may not redefine maturity, face geometry, body proportion, costume or hair silhouette.
+
+Any character-containing execution row must explicitly carry an `identity_lock`.
+If a source frame already drifted, reject it and return to the nearest accepted source.
 
 `continuity_ref` = adjacent continuity.
 `composition_callback_ref` = non-adjacent visual rhyme.
@@ -243,7 +281,15 @@ Blueprint/execution preserves G4 meaning.
 P1 is immediately discoverable.
 
 ### Identity Gate
-Recurring IP stays recognizably identical.
+Recurring IP stays recognizably identical AND preserves:
+- clearly adult young-male maturity;
+- natural eye scale;
+- stable jaw/chin/nose geometry;
+- canonical adult body proportion;
+- canonical wine-red collared costume;
+- canonical major hair silhouette.
+
+Juvenile/cute reinterpretation is a hard failure.
 
 ### Scene Gate
 Recurring geometry remains stable.
