@@ -1,28 +1,78 @@
-# Blind Search Answer — Character Bible v0.1
+# Blind Search Answer — Character Bible v0.2
 
 ## CHAR_IP_001 — Recurring Channel IP
 
 Status:
-`BLOCKED_BY_REAL_REFERENCE / SPEC_READY`
+`IDENTITY_DIRECTION_LOCKED / PILOT_REVALIDATION_REQUIRED`
+
+Canonical identity policy:
+`docs/CHARACTER_IDENTITY_LOCK.md`
 
 Canonical identity source:
-the user's existing IP three-view reference.
+Owner-approved original IP image supplied in the current conversation.
 
-Current repository state:
-`MISSING_REAL_ASSET`
+Repository binary state:
+`NOT_YET_PERSISTED`
 
-## Locked rule
+## Identity definition
 
-Do NOT invent or redesign:
-- face shape;
-- hairstyle / hair color;
-- age impression;
+CHAR_IP_001 is a:
+
+> **young adult male / 成年青年男性**
+
+He must NOT drift into:
+- teen / school-age boy;
+- chibi;
+- cute-boy reinterpretation;
+- baby-faced mascot.
+
+## Hard locked identity
+
+Do NOT invent, simplify or redesign:
+
+- age / maturity impression;
+- face outline;
+- jaw / chin geometry;
+- eye-to-face ratio;
+- nose structure;
+- hairstyle silhouette / fringe partition / hair color;
 - body proportion;
-- clothing;
-- accessories;
+- default costume;
 - canonical colors.
 
-Those identity fields must be extracted from the actual approved three-view image when available.
+### Default costume
+
+- wine-red top;
+- cream/off-white collar;
+- black trousers;
+- simple white shoes.
+
+Do NOT silently replace with:
+- hoodie;
+- T-shirt;
+- school uniform;
+- jacket;
+- novelty costume.
+
+## Allowed style simplification
+
+May simplify:
+- hair micro-strands;
+- shadow layers;
+- clothing micro-folds;
+- surface texture;
+- background detail.
+
+May NOT simplify:
+- facial anatomy;
+- adult proportion;
+- maturity;
+- costume identity;
+- major hair silhouette.
+
+Rule:
+
+> **画法可以变简单，人不能变小孩。**
 
 ## Allowed per-beat variation
 
@@ -34,21 +84,63 @@ Those identity fields must be extracted from the actual approved three-view imag
 - interaction with mouse / monitor / cost sheet;
 - camera-relative orientation.
 
-## Required canonical views
+Expression must not be created by changing identity geometry.
 
-- front;
-- 3/4;
-- side.
+## Reference precedence
 
-If the provided three-view already contains these, reuse it rather than regenerating a new identity sheet.
+```text
+Owner canonical IP image
+>
+Approved Production Character Master
+>
+Approved angle / pose reference
+>
+Previous accepted frame
+>
+Prompt prose
+```
 
-## Continuity rule
+A previous generated frame is continuity support only.
+It never becomes the identity truth.
 
-Every beat containing IP:
-1. attach the same canonical IP reference;
-2. preserve fixed identity/clothing;
-3. use previous accepted frame only as an additional continuity reference where pose/desk geometry must continue;
-4. never let a previous generated frame replace the canonical identity reference.
+## Per-frame rule
+
+Every Beat containing CHAR_IP_001 must:
+
+1. bind `CHAR_IP_001`;
+2. attach canonical identity reference;
+3. preserve adult maturity / face / body / costume hard locks;
+4. attach scene/style refs as required;
+5. optionally attach previous accepted frame for local continuity.
+
+For `DERIVE_EDIT`:
+source frame alone is insufficient.
+Canonical identity reference must still be bound.
+
+## Drift-chain protection
+
+If a generated character frame fails identity/maturity/costume QA:
+
+`REJECTED_CHARACTER_DRIFT`
+
+Do NOT use it as the next source frame.
+
+Return to:
+nearest accepted frame + canonical identity source.
+
+## Required character QA
+
+- same person?
+- clearly adult young man?
+- natural eye size?
+- jaw/chin stable?
+- nose structure present?
+- hair silhouette/fringe stable?
+- adult body proportion stable?
+- wine-red collared costume unchanged?
+- no cute/chibi semantics introduced?
 
 Failure:
-`RETURN_CHARACTER_DRIFT`
+- `RETURN_CHARACTER_DRIFT`
+- `RETURN_CHARACTER_MATURITY_DRIFT`
+- `RETURN_COSTUME_DRIFT`
