@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R1_PPCP_CONFLICT_ISOLATION
+CURRENT_GATE=K3R2_PRE_K3_PARALLEL_BASELINE_COMPARISON
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -233,3 +233,12 @@ Owner action: complete PayPal Sandbox login/account authorization in the officia
 Formal decision: `docs/REVIEWER_DECISION_K3R1_PPCP_CONFLICT_ISOLATION.md`.
 
 Temporarily deactivate only WooCommerce PayPal Payments, retest WooCommerce Home/Payments/admin REST/Store API/worker behavior, and stop at Reviewer. Do not uninstall, version-change, restore backup, retry PayPal authorization, expose Secrets, create a public route, or enable Live.
+
+
+## K3R1 Result / K3R2 Authorization
+
+K3R1 did not isolate the broader WooCommerce runtime/API failure. PPCP remains deactivated.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R2_PRE_K3_PARALLEL_BASELINE_COMPARISON.md`.
+
+Create a separate temporary Studio site from the retained pre-K3 backup and compare current vs pre-K3 baseline. Do not overwrite the current site, reactivate PPCP, change versions, retry PayPal authorization, or touch production/VPS.
