@@ -1,4 +1,4 @@
-# Topic Operating System v0.2
+# Topic Operating System v0.1
 
 ## 1. Purpose
 
@@ -14,22 +14,6 @@
 ---
 
 ## 2. Core Model — Two-Lane Topic Supply
-
-### Axis separation
-
-Topic **Lane** and episode **Editorial Mode / Business Job** are independent axes:
-
-```text
-Lane: HOT / EVERGREEN
-Editorial Mode: STORY_MODEL / STORY_ACTION
-Business Job: DISCOVERY / TRUST / SOLUTION
-```
-
-因此：
-- HOT 不是第三种内容形式；
-- HOT 可以是 STORY_MODEL，也可以是 STORY_ACTION；
-- EVERGREEN 同样可以承担 DISCOVERY / TRUST / SOLUTION；
-- 不允许因为“热点”本身改变 story-first 原则。
 
 ### Lane A — HOT / Event-driven
 
@@ -52,21 +36,6 @@ Hot candidate 必须同时通过：
 - storyability；
 - production latency < topic half-life；
 - duplicate gate。
-
-#### HOT Durable Translation Test
-
-热点进入正式候选前，再做四步快速过滤：
-
-1. **Remove-the-brand**：删掉公司名 / 产品名后，这件事对普通人是否仍然值得关心？
-2. **Durable mechanism**：这条新闻是否指向一个一个月后仍成立的 AI 机制 / 人类问题？
-3. **Human consequence**：能否落到具体人物的行动、选择、损失、便利、冲突或后果，而不只是“行业发生了什么”？
-4. **Half-life fit**：按当前生产速度，能否在热点有效期内发布？
-
-推荐：
-`HOT EVENT → HUMAN CONSEQUENCE → DURABLE MECHANISM → STORY`
-
-不推荐：
-`HOT EVENT → NEWS SUMMARY → TECHNICAL EXPLANATION`
 
 只要热点失败任一 Hard Gate，就不抢占常规选题。
 
@@ -101,10 +70,10 @@ Evergreen 不等于“百科概念”。
 
 ### A. First-party AI sources — highest factual authority
 
-- OpenAI / Anthropic / Google DeepMind / major model labs official releases;
-- product docs / API changelogs;
-- official research;
-- major open-source project releases.
+- OpenAI / Anthropic / Google DeepMind / major model labs official releases；
+- product docs / API changelogs；
+- official research；
+- major open-source project releases。
 
 用于回答：
 - 什么真的变了；
@@ -356,17 +325,7 @@ Any candidate passes ALL hard gates + audience fit + duplicate gate + can publis
 → no: Choose Evergreen Bank candidate
 
 不要设“今天必须讲热点”。
-正确规则：**合格热点拥有抢占权，但没有配额特权。**
-
-### Season 0 lane guidance
-
-为了尽早验证热点能否帮助新账号获得陌生流量，同时避免把账号训练成新闻号：
-
-- Week 1 仍以 Evergreen 为主；
-- 若出现通过全部 HOT Gates 的题，允许 1–2 个 HOT 槽位进入首周；
-- HOT 与 STORY_MODEL / STORY_ACTION 比例独立；
-- 不为了凑热点比例降低质量 Gate；
-- Week 3 再扩大 HOT / packaging 对照，而不是等到 Week 3 才第一次使用热点。
+正确规则：**合格热点拥有抢占权。**
 
 ---
 
