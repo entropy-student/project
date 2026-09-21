@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R8C_CONTAINER_NATIVE_OAUTH_CHECK
+CURRENT_CHECKPOINT=OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -343,3 +343,12 @@ Owner re-ran the corrected helper and it still failed at the host PowerShell req
 Formal decision: `docs/REVIEWER_DECISION_K3R8C_CONTAINER_NATIVE_OAUTH_CHECK.md`.
 
 Bypass the host PowerShell HTTP stack. Perform the direct OAuth request inside the active WordPress container with credentials supplied only via Owner interactive STDIN. All future diagnostic returns must include the mandatory `DIAGNOSTIC_PACKET` from `docs/GITHUB_HANDOFF_PROTOCOL.md`; conclusion-only handoffs are incomplete.
+
+
+## K3R8C Executor Result / Owner Checkpoint
+
+Reviewer reviewed the appended K3R8C evidence and `DIAGNOSTIC_PACKET`. The handoff is materially better than the prior conclusion-only diagnostic returns: environment, trigger, reproduction path, observations, ruled-out hypotheses, remaining hypotheses, artifacts, secret boundary, next discriminating test, and stop reason are all present.
+
+Current checkpoint: `OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED`.
+
+Owner action: run `.artifacts/k3r8c-container-oauth.ps1` locally and return only `CONTAINER_OAUTH_STAGE`, `PAYPAL_SANDBOX_OAUTH`, `HTTP_STATUS`, `TOKEN_RECEIVED`, and `ERROR_CLASS`.
