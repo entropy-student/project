@@ -21,7 +21,7 @@ GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC=PASS
 K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R1_PPCP_CONFLICT_ISOLATION
+CURRENT_GATE=K3R2_PRE_K3_PARALLEL_BASELINE_COMPARISON
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -347,3 +347,14 @@ K3 diagnostic returned `RETURN_REVIEWER_PPCP_CONFLICT_ISOLATION_REQUIRED` after 
 Reviewer authorizes one reversible test: temporarily deactivate only `woocommerce-paypal-payments`, retest WooCommerce admin/API health, and return. No uninstall, version change, backup restore, credential mutation, PayPal re-authorization, Live mode, public tunnel, VPS, or real payment.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R1_PPCP_CONFLICT_ISOLATION.md`.
+
+
+## K3R1 Result / K3R2 Authorization
+
+K3R1 returned `RETURN_K3R1_CONFLICT_NOT_ISOLATED`.
+
+Accepted finding: PPCP 4.1.3 directly caused the Payments-page blank React mount failure, but broader WooCommerce Home/admin REST/Store API timeouts persisted with PPCP deactivated.
+
+Next Gate is a non-destructive A/B comparison using a separate Studio clone restored from the retained pre-K3 backup. The current site must not be overwritten.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R2_PRE_K3_PARALLEL_BASELINE_COMPARISON.md`.
