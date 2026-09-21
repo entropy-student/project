@@ -733,7 +733,14 @@
         }
       },
       "pilot_execution_note": "For isolated Pilot validation, VB015 may be generated as a fresh matched-setup master because upstream VB014 is not part of the Pilot batch. Canonical full-episode execution remains DERIVE_EDIT from VB014; VB016 must preserve VB015 crop/page geometry for reveal validation.",
-      "pilot_retry_note": "Attempt 1 RETURN_GENERATION_ONLY: output showed a full help-center page with sidebar/modules. Retry must be tight crop only: previous policy-line tail visible near upper region; next-line target region in center remains blank/blurred/unreadable; no sidebar, no brand, no full-page context, no warning/polarity cue. Preserve geometry for VB016 matched reveal."
+      "pilot_retry_note": "Attempt 1 RETURN_GENERATION_ONLY: output showed a full help-center page with sidebar/modules. Retry must be tight crop only: previous policy-line tail visible near upper region; next-line target region in center remains blank/blurred/unreadable; no sidebar, no brand, no full-page context, no warning/polarity cue. Preserve geometry for VB016 matched reveal.",
+      "pilot_result": "PASS_WITH_MINOR_SETUP_MASTER_IMAGE1",
+      "pilot_notes": [
+        "Image 1 selected over image 2.",
+        "Matched-setup geometry is acceptable.",
+        "Minor: service-fee label appears earlier than ideal, but reversal sentence remains withheld.",
+        "No further VB015 rework during Pilot."
+      ]
     },
     {
       "blueprint": {
@@ -883,7 +890,8 @@
             "PROMPT_PROSE"
           ]
         }
-      }
+      },
+      "pilot_execution_note": "Use accepted VB015 image 1 as the exact matched-setup geometry reference. Reveal only the previously blurred/hidden line as 平台服务费不予退还. Do not change crop, page shell, camera angle, surrounding rows, or introduce warning/red exclamation/brand/navigation."
     },
     {
       "blueprint": {
