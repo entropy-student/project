@@ -27,14 +27,14 @@
   "production": {
     "current_gate": "G6",
     "status": "IN_PROGRESS",
-    "current_task": "TTS_ONLY_EXECUTION_READY_PRODUCTION_PACKAGE_HELD",
+    "current_task": "PRODUCTION_TTS_READY_AND_VIDEO_RUNTIME_PROBE_READY",
     "next_after_package": "ANTIGRAVITY_E2E_EXECUTION",
     "next_gate": {
       "id": "G7",
       "name": "End-to-End Validation",
       "status": "BLOCKED_BY_G6"
     },
-    "production_package_status": "HOLD_BY_OWNER_DISCUSSION",
+    "production_package_status": "HOLD_PENDING_VIDEO_RUNTIME_PROBE_AND_OWNER_DISCUSSION",
     "timing": {
       "status": "PASS_CANDIDATE_TIMING_COMPILED",
       "speech_units": 44,
@@ -52,7 +52,17 @@
     "tts_execution": {
       "status": "READY_NOT_EXECUTED",
       "task": "experiments/g6/blind-search-answer/ANTIGRAVITY_TTS_ONLY_TASK.md",
-      "scope": "TTS_ONLY_NO_MASTER_AUDIO_NO_IMAGES_NO_VIDEO_NO_FULL_PACKAGE"
+      "scope": "PRODUCTION_TTS_UNITS_PLUS_NARRATION_MASTER_NO_IMAGES_NO_VIDEO_NO_FULL_PACKAGE",
+      "outputs": [
+        "tts/units/*.wav",
+        "tts/narration_master.wav",
+        "tts/tts_execution_report.json"
+      ]
+    },
+    "video_runtime_probe": {
+      "status": "READY_NOT_EXECUTED",
+      "task": "experiments/g6/blind-search-answer/ANTIGRAVITY_VIDEO_RUNTIME_PROBE.md",
+      "purpose": "Determine actual Antigravity render backend/capability before freezing full Production Package."
     }
   },
   "accepted_gates": [
