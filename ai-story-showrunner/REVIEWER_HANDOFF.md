@@ -432,3 +432,90 @@ Full 44-image batch = NOT_STARTED
 Next = Generate + QA 8 pilot images
 ```
 
+## G5 Frame Blueprint v0.4 Canonical / 44-Beat Recompile — 2026-09-21
+
+Owner approved continued integration after local v0.4 validation.
+
+### Canonical additions
+
+- `docs/VISUAL_FRAME_BLUEPRINT_RULES.md`
+- `schemas/frame_blueprint.schema.json`
+- `schemas/frame_execution_row.schema.json`
+- `docs/G5_IMAGE_ASSET_PACKAGE_CONTRACT.md` v0.2
+- `docs/PIPELINE_AND_GATES.md` v0.3
+
+Canonical G5C flow:
+
+```text
+G4 Visual Beat
+→ G5C1 Frame Blueprint
+→ G5C2 Beat Asset Binding
+→ G5C3 Execution Mode
+→ G5C4 Prompt / Edit Compiler
+```
+
+Execution modes:
+- `GENERATE`
+- `DERIVE_EDIT`
+- `COMPOSITE_CROP`
+
+Core frame rules:
+- one dominant dramatic job;
+- explicit P1/P2;
+- SINGLE / DUAL / FIELD focus modes;
+- one main delta;
+- brand NONE by default;
+- exact text POST_OVERLAY;
+- setup must not leak reveal through wording/color/icon/polarity;
+- DUAL_COMPARE prefers source crops;
+- derive/edit/composite preferred over regeneration when deterministic;
+- Beat asset binding happens after Blueprint;
+- `composition_callback_ref` is separate from adjacent continuity.
+
+### Search Case full recompile
+
+New authoritative experimental outputs:
+- `13_FRAME_BLUEPRINTS_V04.json`
+- `14_EXECUTION_ROWS_V02.json`
+- `15_FRAME_BLUEPRINT_RECOMPILE_REVIEW.md`
+- `16_PILOT_BATCH_V02.json`
+
+Validation:
+```text
+Visual Beats = 44
+Frame Blueprints = 44
+Execution Rows = 44
+Structural issues = 0
+Unknown asset refs = 0
+Blueprint validation = PASS
+Execution package validation = PASS
+```
+
+Execution mode distribution:
+```text
+GENERATE = 14
+DERIVE_EDIT = 26
+COMPOSITE_CROP = 4
+```
+
+A missing sequence-local asset `TEMP_ANALOGY_ACTOR_001` was caught by cross-check and formally added to Asset + Reference Manifests.
+
+Historical outputs:
+- `10_IMAGE_GENERATION_ROWS.json`
+- `11_IMAGE_GENERATION_PLAN.md`
+- `12_PILOT_BATCH.json`
+
+remain evidence only and are:
+`SUPERSEDED_DO_NOT_USE`.
+
+Current:
+```text
+G5A = PASS
+G5B = PASS_DIRECTION_LOCKED
+G5B.5 = PASS_KEEP_ITERATE
+Frame Blueprint v0.4 = CANONICAL
+G5C = PASS_CANDIDATE_PILOT_READY
+Full 44-image batch = NOT_STARTED
+Next = new 8-beat Pilot generation + QA
+```
+
