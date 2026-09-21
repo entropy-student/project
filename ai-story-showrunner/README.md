@@ -7,14 +7,9 @@
 ## 当前 Gate 状态
 
 ```text
-P0 / G1 / G2 / G2.5 / G3 / G3R / G4 = PASS
-G5 = PASS_CANDIDATE
-  G5A = PASS
-  G5B = PASS_DIRECTION_LOCKED
-  G5B.5 = PASS_KEEP_ITERATE
-  G5C High-Risk Pilot = PASS_CANDIDATE (8/8 accepted)
-  Final blocker = REAL_REFERENCE_PERSISTENCE
-G6 = BLOCKED_BY_REAL_REFERENCE_PERSISTENCE
+P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5 = PASS
+G6 = READY — Low-Level Execution Package / Antigravity PoC
+G7 = BLOCKED_BY_G6
 ```
 
 当前 canonical editorial baseline：
@@ -26,7 +21,7 @@ G6 = BLOCKED_BY_REAL_REFERENCE_PERSISTENCE
 - Daily Topic Planner v0.2 已启用；
 - Production throughput 仍为 UNPROVEN。
 
-Owner 当前执行线：**先持久化并绑定 canonical character / scene / UI reference binaries，完成 reference-path validation；随后正式 G5 PASS 并进入 G6。**
+Owner 当前执行线：**G5 已正式 PASS；下一步进入 G6，先组装 Low-Level Execution Package，并通过真实 PoC 决定 Audio Mode / 锁定最终音频时间轴。**
 
 ## 一句话定位
 
@@ -172,9 +167,9 @@ G2.5 Topic Supply / Ledger / Dedup             ✅ PASS
 G3  Story → Script / SRT MVP                   ✅ PASS
 G3R Bilibili Editorial / Narrative Rebaseline ✅ PASS
 G4  Script/SRT → Director / Shot Compiler MVP  ✅ PASS
-G5  Shotbook → Image Asset Package MVP         ◐ PASS_CANDIDATE — real references pending
-G6  Low-Level Execution / Antigravity PoC      ⛔ BLOCKED_BY_REAL_REFERENCE_PERSISTENCE
-G7  Three-topic End-to-End Validation          ⏳
+G5  Shotbook → Image Asset Package MVP         ✅ PASS
+G6  Low-Level Execution / Antigravity PoC      ▶ READY
+G7  Three-topic End-to-End Validation          ⛔ BLOCKED_BY_G6
 G8  Semi-automated Orchestration               ⏳
 G9  Publish / Analytics Learning Loop           ⏳
 G10 Reusable Showrunner Skill / Runtime         ⏳
@@ -235,14 +230,18 @@ Writer quality 采用 McKee 因果骨架 + narrative transportation + short-form
 
 ## Current execution focus
 
-Editorial rebaseline (G3R) and Director / Shot Compiler (G4) are already PASS.
+G5 is now PASS. The high-risk Pilot and reference-path validation both passed.
 
-Current production focus:
-- G5 high-risk Pilot is complete and accepted as PASS_CANDIDATE;
-- remaining blocker is executable canonical reference persistence;
-- G6 stays blocked until reference-path validation passes.
+Current main-line gate: **G6 Low-Level Execution Package / Antigravity PoC**.
+
+First G6 task:
+- materialize the persisted reference package;
+- resolve `AUDIO_MODE = A/B` with a real PoC;
+- lock final audio;
+- compile exact Shot Timeline + Image Generation Sheet + Edit Instructions;
+- hand the deterministic package to Antigravity.
 
 See:
-- `experiments/g5/blind-search-answer/17_HIGH_RISK_PILOT_REVIEW.md`
 - `docs/G5_GATE_REVIEW.md`
-- `CURRENT_STATUS.json`
+- `experiments/g5/blind-search-answer/18_REFERENCE_PATH_VALIDATION.md`
+- `docs/LOW_LEVEL_EXECUTION_PACKAGE.md`
