@@ -398,3 +398,62 @@ CLEANUP_AFTER_OWNER_RUN=The wrapper removes only the container temporary PHP hel
 
 K3R8D_RESULT=RETURN_OWNER_K3R8D_CONTAINER_OAUTH_REQUIRED
 STOP_AT_REVIEWER=YES
+
+## K3R8C Phase C Executor handoff — PPCP manual-connect defect confirmed (2026-09-21)
+
+The Owner's container-native OAuth result was:
+
+```text
+CONTAINER_OAUTH_STAGE=PHP_WP_REMOTE_POST
+PAYPAL_SANDBOX_OAUTH=PASS
+HTTP_STATUS=200
+TOKEN_RECEIVED=YES
+ERROR_CLASS=NONE
+```
+
+This phase therefore did not re-investigate the Sandbox credential pair and did not ask Owner to enter it again. Existing PPCP evidence was sufficient, so no bounded manual-connect retry was executed.
+
+The latest existing Sandbox manual-connect attempt is recorded in the PPCP WooCommerce log at `2026-09-21T11:12:47Z`: `sandbox=true`, followed by `Direct API authentication failed: Failed to retrieve payee details.` The matching access-log request to `/wp-json/wc/v3/wc_paypal/authenticate/direct` returned HTTP 200. The direct settings page rendered the generic visible error `Could not connect to PayPal. Please verify your credentials and try again.`; browser Console captured three PPCP `Connection error Object` entries from `ppcp-settings-js-index.js`.
+
+Source inspection explains the boundary: PPCP 4.1.3 `connect_direct()` calls `authenticate_via_direct_api()`, which runs `request_payee()`. That method creates a minimal PayPal order and retrieves it to obtain payee details. PPCP catches any upstream/JSON/transport Throwable and converts it to the generic `Failed to retrieve payee details.` log plus an HTTP-200 `success=false` REST response. Thus OAuth token issuance PASS does not make this additional PPCP payee-probe path PASS.
+
+Read-only runtime state after the failed attempt:
+
+- WordPress 6.8.2, WooCommerce 10.0.4, PPCP 4.1.3 active and unchanged.
+- `common`: HTTP 200, `useSandbox=true`, `useManualConnection=true`, `merchant.isConnected=false`.
+- `onboarding`: HTTP 200, `completed=false`, `step=4`, `gatewaysSynced=false`, `gatewaysRefreshed=false`.
+- `settings`, `payment`, and `features`: HTTP 200; PPCP payment gateway entries remain disabled.
+- `webhooks`: HTTP 200 with `success=false`, `No webhooks found.`
+- No persisted merchant connection state was created; no PHP fatal/parse/runtime crash was found in the bounded container log scan.
+
+ROOT_CAUSE_CANDIDATE=PPCP_4_1_3_MANUAL_CONNECT_PAYEE_PROBE_FAILURE_AFTER_VALID_SANDBOX_OAUTH
+PPCP_MANUAL_CONNECT_REST_HTTP=200
+PPCP_MANUAL_CONNECT_REST_SUCCESS=false
+PPCP_MERCHANT_CONNECTED=NO
+PPCP_SANDBOX_MODE=YES
+PPCP_ONBOARDING_COMPLETED=NO
+BOUNDED_MANUAL_CONNECT_RETRY=NOT_EXECUTED_EXISTING_EVIDENCE_SUFFICIENT
+
+DIAGNOSTIC_PACKET
+GATE=K3R8C_PHASE_C_PPCP_MANUAL_CONNECT_ISOLATION
+ENVIRONMENT=active Docker/MariaDB runtime at localhost:8093; WordPress 6.8.2; WooCommerce 10.0.4; PPCP 4.1.3
+TRIGGER=Valid container OAuth token issuance was followed by an existing PPCP Sandbox manual-connect failure
+REPRODUCTION=Existing direct-connect request reached /wp-json/wc/v3/wc_paypal/authenticate/direct with Sandbox enabled and failed during PPCP payee retrieval; no retry was sent
+OBSERVED=OAuth PASS/200/token; PPCP log generic payee-retrieval failure; REST HTTP 200 success=false; browser generic error and PPCP Connection error Object; merchant remains disconnected
+CONTROL_OR_BASELINE=Read-only REST GETs for common/settings/payment/features returned HTTP 200; containers healthy; no PHP fatal; no version or source change
+HYPOTHESES_RULED_OUT=Credential-pair invalidity and container OAuth reachability failure for this run; version drift; PHP fatal; Live/payment/VPS/public callback action
+HYPOTHESES_REMAINING=PPCP direct manual-connect payee-probe incompatibility or a provider capability response hidden by PPCP's generic exception wrapper
+ARTIFACTS=redacted WooCommerce PPCP log; access-log status lines; source references in AuthenticationRestEndpoint.php and AuthenticationManager.php; browser Console/UI; redacted REST state
+SECRETS_REDACTED=YES
+NEXT_DISCRIMINATING_TEST=Reviewer decision on the PPCP manual-connect defect boundary; any provider-capability test must be separately authorized
+STOP_REASON=Existing evidence is sufficient; no further credential entry or automatic retry is authorized
+
+RETURN_K3R8C_PPCP_MANUAL_CONNECT_DEFECT_CONFIRMED
+REAL_PAYMENT_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PPCP_SOURCE_PATCHED=NO
+VPS_WRITES=ZERO
+STOP_AT_REVIEWER=YES

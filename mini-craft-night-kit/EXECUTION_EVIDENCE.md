@@ -1085,3 +1085,57 @@ CLEANUP_AFTER_OWNER_RUN=Wrapper removes only /tmp/k3r8c-container-oauth.php in f
 
 K3R8D_RESULT=RETURN_OWNER_K3R8D_CONTAINER_OAUTH_REQUIRED
 STOP_AT_OWNER_CHECKPOINT=YES
+
+## K3R8C Phase C — PPCP manual-connect isolation (2026-09-21)
+
+- Scope: active Docker/MariaDB runtime only, `http://localhost:8093/`; no PPCP/WooCommerce/WordPress version change, source patch, Live enablement, real payment, public tunnel, VPS write, database migration, or credential mutation.
+- Owner's real container-native OAuth result was accepted as the precondition for this phase: `PAYPAL_SANDBOX_CREDENTIAL_PAIR=VALID_FOR_THIS_RUN`, `PAYPAL_SANDBOX_CONTAINER_HTTP=PASS`, `PAYPAL_SANDBOX_OAUTH_TOKEN_ISSUANCE=PASS`. No credential was re-entered by Executor.
+- Existing PPCP log evidence was sufficient; no bounded manual-connect retry was executed.
+
+### Existing manual-connect failure evidence
+
+- The WooCommerce PayPal Payments log `woocommerce-paypal-payments-2026-09-21-8098f8945f88a0b743a37ee6e7224fa0.log` records the latest Sandbox attempt at `2026-09-21T11:12:47Z`: `Attempting manual connection to PayPal...` with `sandbox=true`, followed by `Direct API authentication failed: Failed to retrieve payee details.`
+- The web access log records the corresponding `POST /wp-json/wc/v3/wc_paypal/authenticate/direct` at `11:12:46Z` as HTTP 200. Earlier production and Sandbox attempts were also HTTP 200; the production attempt separately recorded an upstream 401, while the latest Sandbox attempt was wrapped by PPCP without an upstream status/body in the WooCommerce log.
+- The PPCP 4.1.3 source confirms the direct-connect path: `AuthenticationRestEndpoint::connect_direct()` validates format, then `AuthenticationManager::authenticate_via_direct_api()` calls `request_payee()`. `request_payee()` creates a minimal PayPal order and retrieves that order to obtain the payee; any upstream/JSON/transport Throwable is collapsed to `Failed to retrieve payee details.` and the REST response is returned as HTTP 200 with `success=false` and the generic `Could not connect to PayPal. Please verify your credentials and try again.` message.
+- Browser evidence on the direct PPCP page: the page rendered HTTP 200; the visible notice was `Could not connect to PayPal. Please verify your credentials and try again.`; Console captured three PPCP bundle errors `Connection error Object` from `ppcp-settings-js-index.js`. No new React #299 was observed on this direct page.
+
+### Current PPCP/plugin/REST state
+
+- Runtime versions: WordPress 6.8.2, WooCommerce 10.0.4, WooCommerce PayPal Payments 4.1.3; PPCP active; WordPress and MariaDB containers running, MariaDB healthy.
+- Redacted authenticated REST inspection returned HTTP 200 for `/wc/v3/wc_paypal/common`, `/settings`, `/payment`, and `/features`. `common` reports `useSandbox=true`, `useManualConnection=true`, `merchant.isConnected=false`, `merchant.isSandbox=false`; `onboarding` reports `completed=false`, `step=4`, `gatewaysSynced=false`, `gatewaysRefreshed=false`.
+- `/wc/v3/wc_paypal/payment` returned `success=true` but all PPCP payment gateway entries remained disabled. `/wc/v3/wc_paypal/webhooks` returned HTTP 200 with `success=false` and `No webhooks found.`
+- The post-failure `woocommerce-ppcp-data-common` state has no persisted merchant connection: `merchant_connected=false`, `sandbox_merchant=false`, seller type `unknown`, and no persisted merchant/client credential fields. This is a read-only state check; no option was changed.
+- Container runtime scan found no PHP Fatal error, PHP Parse error, Uncaught Error, memory exhaustion, execution-timeout, or segmentation fault in the bounded log window. No worker/runtime crash explains the direct-connect failure.
+
+ROOT_CAUSE_CANDIDATE=PPCP_4_1_3_MANUAL_CONNECT_PAYEE_PROBE_FAILURE_AFTER_VALID_SANDBOX_OAUTH
+PPCP_MANUAL_CONNECT_REST_HTTP=200
+PPCP_MANUAL_CONNECT_REST_SUCCESS=false
+PPCP_MANUAL_CONNECT_UPSTREAM_ERROR=NOT_EXPOSED_BY_PPCP_LOG_WRAPPER
+PPCP_MERCHANT_CONNECTED=NO
+PPCP_SANDBOX_MODE=YES
+PPCP_ONBOARDING_COMPLETED=NO
+BOUNDED_MANUAL_CONNECT_RETRY=NOT_EXECUTED_EXISTING_EVIDENCE_SUFFICIENT
+
+DIAGNOSTIC_PACKET
+GATE=K3R8C_PHASE_C_PPCP_MANUAL_CONNECT_ISOLATION
+ENVIRONMENT=active Docker/MariaDB WordPress runtime at localhost:8093; WordPress 6.8.2; WooCommerce 10.0.4; PPCP 4.1.3
+TRIGGER=Owner OAuth helper returned HTTP 200 with token, while the existing PPCP Sandbox manual-connect attempt remained disconnected
+REPRODUCTION=Existing PPCP direct-connect attempt with Sandbox mode enabled reached /wc/v3/wc_paypal/authenticate/direct and failed in the payee-retrieval stage; Executor did not repeat the request
+OBSERVED=Container OAuth token issuance PASS; PPCP log says Failed to retrieve payee details; REST access HTTP 200; UI success=false generic error; common state isConnected=false; onboarding incomplete
+CONTROL_OR_BASELINE=Authenticated read-only REST GETs for common/settings/payment/features returned HTTP 200; containers running; no PHP fatal/runtime crash; plugin active at unchanged version
+HYPOTHESES_RULED_OUT=Sandbox credential-pair invalidity and container OAuth reachability failure for this run; version drift; PHP fatal; Live mode; real payment; public callback/VPS issue
+HYPOTHESES_REMAINING=PPCP 4.1.3 direct manual-connect payee probe incompatibility or a PayPal Sandbox capability response hidden by the plugin's generic exception wrapper
+ARTIFACTS=redacted PPCP WooCommerce log; container access-log lines; source references in modules/ppcp-settings/src/Endpoint/AuthenticationRestEndpoint.php and Service/AuthenticationManager.php; browser Console/UI evidence; redacted REST state
+SECRETS_REDACTED=YES
+NEXT_DISCRIMINATING_TEST=Reviewer should decide whether to accept the confirmed manual-connect defect boundary or authorize a separately scoped provider-capability test; no automatic retry was performed
+STOP_REASON=The existing evidence is sufficient for the K3R8C return and no further credential entry is authorized in this phase
+
+RETURN_K3R8C_PPCP_MANUAL_CONNECT_DEFECT_CONFIRMED
+REAL_PAYMENT_ACTIONS=0
+PAYPAL_LIVE_ENABLED=NO
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PPCP_SOURCE_PATCHED=NO
+VPS_WRITES=ZERO
+STOP_AT_REVIEWER=YES
