@@ -16,6 +16,8 @@ K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
 K1_MUST_FIX_MOBILE_375=YES
 VPS=DEFERRED
 PRODUCTION_PAYMENT=DEFERRED
+FULL_PROJECT_REVIEW_AFTER_K3R8_RESOLUTION=REQUIRED
+K4_BROAD_FEATURE_EXPANSION_BEFORE_FULL_REVIEW=HOLD
 GITHUB_HANDOFF_TRIAL_SUCCESS_COUNT=4
 ```
 
@@ -363,3 +365,16 @@ This exposes a gap between the prior evidence claim (local helpers retained) and
 Formal decision: `docs/REVIEWER_DECISION_K3R8D_OWNER_HELPER_ARTIFACT_READINESS_REPAIR.md`.
 
 Do not return another Owner command until `DIAGNOSTIC_PACKET` + `OWNER_CHECKPOINT_READINESS` are both present and the exact wrapper path passes a no-secret post-cleanup dry run.
+
+
+## Handoff V2 / Independent Review Requirement
+
+Mini Craft now explicitly inherits the original Reviewer/Executor governance model. GitHub remains the transport and evidence surface; Executor-authored summaries are not accepted as truth by themselves.
+
+Reviewer must independently inspect the applicable actual source/diff/runtime read-back/tests/rollback/artifacts before formal PASS. `EXECUTOR_HANDOFF.md` is navigation only. Nontrivial Gates should retain gate-scoped review materials under `review-packets/<GATE>/` when feasible.
+
+Owner relay work should be minimized: Executor writes evidence/artifacts to GitHub and Reviewer pulls them directly. Owner only supplies irreducible external actions or a binary/visual artifact that the GitHub interface cannot expose.
+
+Formal decision: `docs/REVIEWER_DECISION_HANDOFF_V2_AND_POST_K3R8_FULL_REVIEW.md`.
+
+After current K3R8* resolution: perform 2–3 fresh whole-project review rounds before K4 broad feature expansion. Start from current actual project/runtime/evidence and revalidate prior truth rather than assuming previous Reviewer conclusions remain correct.
