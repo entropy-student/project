@@ -169,6 +169,41 @@ SECRET_EXPOSURE=NO
 STOP_AT_REVIEWER=YES
 ```
 
+## K3R11 Public Origin Rebind Prep — pre-action checkpoint (2026-09-21)
+
+The existing local rollback point was re-verified before the bounded official Disconnect action:
+
+- Rollback directory: local-only `mini-craft-k3r4-mariadb-recovery/.artifacts/k3r11-preflight-20260921-231206`
+- `database.sql`: present; size `5,853,278`; SHA-256 matched the previously recorded local baseline.
+- `wp-content.tar.gz`: present; size `65,991,284`; SHA-256 matched the previously recorded local baseline.
+- `wp-config.php`: present; size `5,922`; SHA-256 matched the previously recorded local baseline.
+- WordPress container: running.
+- MariaDB container: running/healthy.
+- Local home URL smoke test: `http://localhost:8093/` returned HTTP `200`.
+- Previously recorded original `home_url` and `siteurl`: `http://localhost:8093`.
+
+The official WooCommerce PayPal Payments Settings page was opened in the authenticated local browser and the `Disconnect` control was located. No click was performed, no reconnect was performed, and no credential value was read or output. The required action-time confirmation is pending before the single authorized Disconnect.
+
+```text
+K3R11_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
+ROLLBACK_POINT_VERIFIED=PASS
+CURRENT_LOCAL_HOME_URL=http://localhost:8093
+CURRENT_LOCAL_SITE_URL=http://localhost:8093
+DOCKER_WORDPRESS=RUNNING
+DOCKER_MARIADB=RUNNING_HEALTHY
+LOCAL_HOME_HTTP=200
+OFFICIAL_DISCONNECT_CONTROL=LOCATED
+DISCONNECT_ACTION=NOT_EXECUTED
+OWNER_ACTION_TIME_CONFIRMATION=REQUIRED
+OLD_SANDBOX_SECRET_REUSE=FORBIDDEN
+SECRET_VALUES_OUTPUT=NO
+PUBLIC_HTTPS_ORIGIN=NOT_CREATED
+WORDPRESS_URL_REBIND=NOT_EXECUTED
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+STOP_AT_OWNER_CHECKPOINT=YES
+```
+
 
 OUT_OF_SCOPE_WORKSPACE_DEBT=Protected non-K0 items remain: dujiao-next.zip, .clone-ui/, dujiao-next/, formwork-design/, mini-craft-night-kit/, project-github-sync/, and SHARED_VPS_HANDOFF.md.
 ---

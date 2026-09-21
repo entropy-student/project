@@ -545,6 +545,23 @@ STOP_AT_OWNER_CHECKPOINT=YES
 STOP_AT_REVIEWER=YES
 ```
 
+## K3R11 Public Origin Rebind Prep — awaiting official Disconnect confirmation (2026-09-21)
+
+The K3R11 rollback point and active local Docker/MariaDB runtime were verified. The authenticated PayPal Payments Settings page is open and the official `Disconnect` control is ready, but it has not been clicked. Because this action clears the local PPCP merchant/credential binding, execution is paused for mandatory action-time Owner confirmation.
+
+After confirmation, Executor will perform exactly one official Disconnect, verify redacted disconnected state and runtime health, then prepare the temporary HTTPS origin and reversible WordPress URL rebind. No credential input is needed for Disconnect; the later Owner Manual Connect remains a separate checkpoint.
+
+```text
+GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
+ROLLBACK_POINT_VERIFIED=PASS
+OFFICIAL_DISCONNECT=READY_NOT_EXECUTED
+OWNER_ACTION=CONFIRM_ONE_OFFICIAL_DISCONNECT_CLICK
+OLD_SANDBOX_SECRET_REUSE=FORBIDDEN
+SECRET_VALUES_OUTPUT=NO
+PUBLIC_HTTPS_ORIGIN=NOT_CREATED
+NEXT=STOP_AT_OWNER_CHECKPOINT
+```
+
 ## K3R9 Executor handoff — post-result restore verified (2026-09-21)
 
 `PASS_CANDIDATE_K3R9_POST_RESTORE_VERIFY`
