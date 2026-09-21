@@ -1,0 +1,47 @@
+{
+  "version": "v2.1-micro-closeout",
+  "date": "2026-09-21",
+  "purpose": "Final blind validation of semantic duration safety floors before freezing Voice Timing Profile",
+  "inherited_v2": {
+    "short_normal_floor_sec": 1.4715,
+    "mixed_margin_sec": 0.3178,
+    "status": "PASS_WITH_MINOR_TARGETED"
+  },
+  "candidate_semantic_floors": {
+    "CONTROLLED": {
+      "safe_cps": 5,
+      "formula": "cjk_char_count / 5.0 / intended_speed"
+    },
+    "FINAL": {
+      "safe_cps": 5.5,
+      "formula": "cjk_char_count / 5.5 / intended_speed"
+    }
+  },
+  "allocation_rule": "allocated_duration = max(v2_candidate_prediction, semantic_floor_duration)",
+  "acceptance": {
+    "required_extra_speed_pass_max": 1.03,
+    "required_extra_speed_minor_max": 1.05,
+    "return_if_required_extra_speed_gt": 1.05,
+    "semantic_tail_slack_pass_max_sec": 0.7,
+    "semantic_tail_slack_minor_max_sec": 0.9,
+    "return_if_semantic_tail_slack_gt_sec": 0.9
+  },
+  "samples": [
+    {
+      "id": "V21B001",
+      "split": "strict_heldout",
+      "semantic_class": "CONTROLLED",
+      "generation_speed": 1,
+      "text": "真正关键的是来源有没有直接支持最后那个结论。",
+      "purpose": "blind CONTROLLED no-soft-punctuation stress"
+    },
+    {
+      "id": "V21B002",
+      "split": "strict_heldout",
+      "semantic_class": "FINAL",
+      "generation_speed": 0.96,
+      "text": "最后我只留下了真正能够被原文直接证明的那句话。",
+      "purpose": "blind FINAL no-soft-punctuation stress"
+    }
+  ]
+}
