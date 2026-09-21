@@ -7,7 +7,8 @@
   "count": 44,
   "validation": {
     "status": "PASS",
-    "issues": []
+    "issues": [],
+    "character_identity_patch": "APPLIED"
   },
   "blueprints": [
     {
@@ -66,7 +67,13 @@
         "speech/thought bubble",
         "full policy page",
         "brand/logo",
-        "decorative title"
+        "decorative title",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -82,7 +89,8 @@
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
         "UI_POLICY_PAGE_001 shell/geometry",
-        "UI_AI_ANSWER_001 shell/geometry"
+        "UI_AI_ANSWER_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": null,
       "frame_delta": "普通观看 → 看见来源后仍保持谨慎",
@@ -112,8 +120,12 @@
         "P1 immediately readable: IP 的脸部/身体反应",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB002",
@@ -171,7 +183,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -183,7 +201,8 @@
       "ui_mode": "MINIMAL_CAUSAL_UI",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry"
+        "SCENE_WORKDESK_001 geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB001",
       "frame_delta": "hand/cursor moves to open the source instead",
@@ -207,8 +226,12 @@
         "P1 immediately readable: hand/cursor moves to open the source instead",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB003",
@@ -264,7 +287,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -279,7 +308,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry"
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB002",
       "frame_delta": "IP frames this as a tiny easy rule-check he wants to outsource",
@@ -305,8 +335,12 @@
         "P1 immediately readable: IP frames this as a tiny easy rule-check he wants to outsource",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB004",
@@ -362,7 +396,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -377,7 +417,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_AI_ANSWER_001 shell/geometry"
+        "UI_AI_ANSWER_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB003",
       "frame_delta": "exact question facet lands: 平台服务费会不会退",
@@ -403,8 +444,12 @@
         "P1 immediately readable: exact question facet lands: 平台服务费会不会退",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB005",
@@ -737,7 +782,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -752,7 +803,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_AI_ANSWER_001 shell/geometry"
+        "UI_AI_ANSWER_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB007",
       "frame_delta": "IP visibly relaxes because the answer looks source-backed; no literal classroom cutaway",
@@ -778,8 +830,12 @@
         "P1 immediately readable: IP 的脸部/身体反应",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB009",
@@ -839,7 +895,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -854,7 +916,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "PROP_COST_SHEET_001 shell/geometry"
+        "PROP_COST_SHEET_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB008",
       "frame_delta": "成本表新增一条错误判断",
@@ -882,8 +945,12 @@
         "P1 immediately readable: IP writes 服务费：可退 into the cost sheet",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB010",
@@ -939,7 +1006,13 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -951,7 +1024,8 @@
       "ui_mode": "NONE",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry"
+        "SCENE_WORKDESK_001 geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": null,
       "frame_delta": "task appears finished; IP is already about to move on, then hesitates",
@@ -975,8 +1049,12 @@
         "P1 immediately readable: IP 的脸部/身体反应",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB011",
@@ -1036,7 +1114,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -1051,7 +1135,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry"
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB010",
       "frame_delta": "IP clicks the official source almost casually",
@@ -1077,8 +1162,12 @@
         "P1 immediately readable: IP clicks the official source almost casually",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB012",
@@ -1601,7 +1690,13 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -1613,7 +1708,8 @@
       "ui_mode": "NONE",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry"
+        "SCENE_WORKDESK_001 geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB016",
       "frame_delta": "silent hold on the contradiction",
@@ -1637,8 +1733,12 @@
         "P1 immediately readable: IP 的脸部/身体反应",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB018",
@@ -1884,7 +1984,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -1896,7 +2002,8 @@
       "ui_mode": "MINIMAL_CAUSAL_UI",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry"
+        "SCENE_WORKDESK_001 geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": null,
       "frame_delta": "investigation rules out easy causes: not offline, not forum, not dubious source",
@@ -1920,8 +2027,12 @@
         "P1 immediately readable: investigation rules out easy causes: not offline, not forum, not dubious source",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB021",
@@ -1981,7 +2092,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -1996,7 +2113,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry"
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB020",
       "frame_delta": "correct official page remains physically present as the evidence object",
@@ -2022,8 +2140,12 @@
         "P1 immediately readable: correct official page remains physically present as the evidence object",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB022",
@@ -2175,7 +2297,13 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -2189,7 +2317,8 @@
       "ui_mode": "NONE",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "PROP_CONTACT_BOOK_001 shell/geometry"
+        "PROP_CONTACT_BOOK_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": null,
       "frame_delta": "analogy question: 老板今天来不来",
@@ -2216,8 +2345,12 @@
         "P1 immediately readable: analogy question: 老板今天来不来",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB024",
@@ -2269,7 +2402,13 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -2283,7 +2422,8 @@
       "ui_mode": "NONE",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "PROP_CONTACT_BOOK_001 shell/geometry"
+        "PROP_CONTACT_BOOK_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB023",
       "frame_delta": "person accurately opens the boss's correct contact record",
@@ -2310,8 +2450,12 @@
         "P1 immediately readable: person accurately opens the boss's correct contact record",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB025",
@@ -2369,7 +2513,13 @@
         "bubble",
         "title",
         "arrow",
-        "complex office"
+        "complex office",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -2384,7 +2534,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "PROP_CONTACT_BOOK_001 shell/geometry",
-        "UI_AI_ANSWER_001 shell/geometry"
+        "UI_AI_ANSWER_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB024",
       "frame_delta": "正确老板记录已经找到，但回答落在电话号码而非“来不来”",
@@ -2411,8 +2562,12 @@
         "P1 immediately readable: wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB026",
@@ -2468,7 +2623,13 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -2480,7 +2641,8 @@
       "ui_mode": "NONE",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry"
+        "SCENE_WORKDESK_001 geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": null,
       "frame_delta": "back at desk, IP changes strategy: no longer asks for conclusion first",
@@ -2504,8 +2666,12 @@
         "P1 immediately readable: back at desk, IP changes strategy: no longer asks for conclusion first",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB027",
@@ -2562,7 +2728,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -2578,7 +2750,8 @@
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
         "UI_POLICY_PAGE_001 shell/geometry",
-        "UI_AI_ANSWER_001 shell/geometry"
+        "UI_AI_ANSWER_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB026",
       "frame_delta": "new evidence challenge is focal: 哪一句明确说明服务费会退",
@@ -2605,8 +2778,12 @@
         "P1 immediately readable: new evidence challenge is focal: 哪一句明确说明服务费会退",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB028",
@@ -2666,7 +2843,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -2681,7 +2864,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry"
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB027",
       "frame_delta": "AI returns attention to the same official page",
@@ -2707,8 +2891,12 @@
         "P1 immediately readable: AI returns attention to the same official page",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB029",
@@ -2857,7 +3045,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -2872,7 +3066,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry"
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": null,
       "frame_delta": "whole correct page is shown as one evidence object",
@@ -2898,8 +3093,12 @@
         "P1 immediately readable: whole correct page is shown as one evidence object",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB031",
@@ -2955,7 +3154,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -2970,7 +3175,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry"
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB030",
       "frame_delta": "attention narrows from whole page to the exact supporting sentence",
@@ -2996,8 +3202,12 @@
         "P1 immediately readable: attention narrows from whole page to the exact supporting sentence",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB032",
@@ -3053,7 +3263,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -3068,7 +3284,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry"
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB031",
       "frame_delta": "same question-page workspace compares true correspondence vs merely similar wording",
@@ -3094,8 +3311,12 @@
         "P1 immediately readable: same question-page workspace compares true correspondence vs merely similar wording",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB033",
@@ -3235,7 +3456,13 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -3247,7 +3474,8 @@
       "ui_mode": "NONE",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry"
+        "SCENE_WORKDESK_001 geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB033",
       "frame_delta": "multiple relevant lines are considered together before final conclusion",
@@ -3271,8 +3499,12 @@
         "P1 immediately readable: multiple relevant lines are considered together before final conclusion",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB035",
@@ -3328,7 +3560,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -3343,7 +3581,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_AI_ANSWER_001 shell/geometry"
+        "UI_AI_ANSWER_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB034",
       "frame_delta": "one answer package remains on screen while source and link are confirmed real",
@@ -3369,8 +3608,12 @@
         "P1 immediately readable: one answer package remains on screen while source and link are confirmed real",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB036",
@@ -3424,7 +3667,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -3436,7 +3685,8 @@
       "ui_mode": "EVIDENCE",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry"
+        "SCENE_WORKDESK_001 geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB035",
       "frame_delta": "quoted sentence is also confirmed real",
@@ -3460,8 +3710,12 @@
         "P1 immediately readable: quoted sentence is also confirmed real",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB037",
@@ -3517,7 +3771,13 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -3529,7 +3789,8 @@
       "ui_mode": "NONE",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry"
+        "SCENE_WORKDESK_001 geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB036",
       "frame_delta": "final conclusion alone remains mismatched/wrong",
@@ -3553,8 +3814,12 @@
         "P1 immediately readable: final conclusion alone remains mismatched/wrong",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB038",
@@ -3614,7 +3879,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -3629,7 +3900,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_AI_ANSWER_001 shell/geometry"
+        "UI_AI_ANSWER_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB037",
       "frame_delta": "IP sees a cited AI answer but does not treat the citation badge as proof by itself",
@@ -3655,8 +3927,12 @@
         "P1 immediately readable: IP 的脸部/身体反应",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB039",
@@ -3716,7 +3992,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -3731,7 +4013,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_AI_ANSWER_001 shell/geometry"
+        "UI_AI_ANSWER_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB038",
       "frame_delta": "a low-stakes answer passes without a verification ritual; IP keeps working normally",
@@ -3757,8 +4040,12 @@
         "P1 immediately readable: a low-stakes answer passes without a verification ritual; IP keeps working normally",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB040",
@@ -3818,7 +4105,13 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -3833,7 +4126,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_AI_ANSWER_001 shell/geometry"
+        "UI_AI_ANSWER_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB039",
       "frame_delta": "money / plan / hard-to-reverse consequences enter the working decision space and cause a visible stop",
@@ -3859,8 +4153,12 @@
         "P1 immediately readable: 故事源 A 中的关键对象/短句 / 故事源 B 中的关键对象/短句",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB041",
@@ -3920,7 +4218,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -3935,7 +4239,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_AI_ANSWER_001 shell/geometry"
+        "UI_AI_ANSWER_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB040",
       "frame_delta": "IP pauses before action and turns back to the source/answer with one deliberate follow-up",
@@ -3961,8 +4266,12 @@
         "P1 immediately readable: IP pauses before action and turns back to the source/answer with one deliberate follow-up",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB042",
@@ -4018,7 +4327,13 @@
         "floating info cards",
         "decorative arrows",
         "narration duplicated as large text",
-        "non-causal decorative clutter"
+        "non-causal decorative clutter",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -4030,7 +4345,8 @@
       "ui_mode": "NONE",
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry"
+        "SCENE_WORKDESK_001 geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB041",
       "frame_delta": "verification question becomes the action: 哪句话真的支持这个结论",
@@ -4054,8 +4370,12 @@
         "P1 immediately readable: verification question becomes the action: 哪句话真的支持这个结论",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB043",
@@ -4111,7 +4431,13 @@
         "narration duplicated as large text",
         "non-causal decorative clutter",
         "full webpage/chat chrome not required by this Beat",
-        "random navigation/sidebar/ads"
+        "random navigation/sidebar/ads",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -4126,7 +4452,8 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry"
+        "UI_POLICY_PAGE_001 shell/geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB042",
       "frame_delta": "final setup returns to the seductive feeling of a correct webpage",
@@ -4155,8 +4482,12 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible",
-        "结尾 setup 不提前说出“网页确实找对了”的最终落点"
-      ]
+        "结尾 setup 不提前说出“网页确实找对了”的最终落点",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     },
     {
       "visual_beat_id": "SRCH_VB044",
@@ -4215,7 +4546,13 @@
         "brand/logo",
         "cat",
         "extra decorative props",
-        "full policy page"
+        "full policy page",
+        "teen/child reinterpretation",
+        "oversized juvenile eyes",
+        "rounded baby-face jaw/chin",
+        "blush-driven cute semantics",
+        "chibi/oversized-head proportions",
+        "hoodie or other costume substitution"
       ],
       "text_policy": {
         "caption_layer": "SEPARATE",
@@ -4230,7 +4567,8 @@
       "continuity_preserve": [
         "CHAR_IP_001",
         "SCENE_WORKDESK_001",
-        "opening character-monitor geometry"
+        "opening character-monitor geometry",
+        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB043",
       "frame_delta": "同样看见来源，但行为从迟疑/被动接受变成主动核验",
@@ -4256,8 +4594,13 @@
         "P1 immediately readable: opening callback resolves: official page is correct, and IP clicks/checks it before accepting the conclusion",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
-      ]
+        "only current Beat information is visible",
+        "CHAR_IP_001 reads as the same clearly adult young man",
+        "adult eye/jaw/chin/nose/body proportions remain canonical",
+        "wine-red top with cream/off-white collar remains unchanged"
+      ],
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
     }
-  ]
+  ],
+  "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md"
 }
