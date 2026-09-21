@@ -1000,3 +1000,14 @@ PPCP was left installed and active only to preserve the captured P0 failure stat
 K3R6_RESULT=PASS_CANDIDATE_K3R6_PPCP_OVERVIEW_ONLY_UI_DEFECT
 OWNER_CHECKPOINT=RETURN_OWNER_PAYPAL_SANDBOX_AUTH_REQUIRED_DOCKER
 STOP_AT_REVIEWER=YES
+## K3R8 PayPal Sandbox credential / plugin isolation — Phase A and Owner checkpoint (2026-09-21)
+
+- Target: active Docker/MariaDB runtime `http://localhost:8093/`; PPCP 4.1.3 remained active. No version change, source patch, Live enablement, repeated connect attempt, or credential mutation was performed.
+- Phase A no-secret container probe: DNS resolution for `api-m.sandbox.paypal.com` succeeded. HTTPS reached the PayPal endpoint and returned HTTP 403 for the unauthenticated base request; this is network reachability evidence, not a credential verdict. TLS negotiated successfully with TLS 1.3 and certificate verification `OK`; probe exit was 0.
+- Phase B helper: a LOCAL-ONLY PowerShell helper was created at the active runtime `.artifacts` path for Owner execution. It prompts Client ID and `Read-Host -AsSecureString` Secret, posts only the OAuth client-credentials request, and outputs only redacted PASS/FAIL plus HTTP status/token-received yes/no. Syntax validation returned 0 errors. No credential value, Authorization header, token, response body, or credential-bearing log was written.
+- Phase C is intentionally pending Owner OAuth result; PPCP logs/REST error-code interpretation will occur only if the Owner helper returns OAuth PASS.
+
+K3R8_PHASE_A_NETWORK_TLS=PASS
+K3R8_PHASE_B_OWNER_OAUTH=REQUIRED
+K3R8_RESULT=RETURN_OWNER_K3R8_SANDBOX_OAUTH_CHECK_REQUIRED
+STOP_AT_REVIEWER=YES
