@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R3_STUDIO_WOOCOMMERCE_RUNTIME_ISOLATION
+CURRENT_GATE=K3R4_LOCAL_RUNTIME_ESCAPE_DOCKER_MARIADB
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -251,3 +251,12 @@ A and B both reproduce the same timeout/one-hot-PHP-worker failure; B has no PPC
 Formal decision: `docs/REVIEWER_DECISION_K3R3_STUDIO_WOOCOMMERCE_RUNTIME_ISOLATION.md`.
 
 Keep A read-only with PPCP inactive. Create fresh Studio control C, test clean WordPress (C0), then official WooCommerce 10.0.4 only (C1) if C0 is healthy. Use clone B only for the bounded WooCommerce-deactivation comparison described in the decision. Stop at Reviewer.
+
+
+## K3R3 Result / K3R4 Authorization
+
+Fresh clean WordPress in Studio reproduced the timeout before WooCommerce existed. Treat the current Studio runtime as unreliable for continued Mini Craft execution.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R4_LOCAL_RUNTIME_ESCAPE_DOCKER_MARIADB.md`.
+
+Create a new isolated Docker + MariaDB local control/recovery stack. Keep A/B/C0, the pre-K3 backup, K0 Docker PoC, and old project untouched. Do not resume PayPal in this Gate. If the Studio backup cannot be moved to MariaDB through a supported/safe path, return to Reviewer rather than writing a custom converter.
