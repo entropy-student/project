@@ -317,3 +317,13 @@ Decision markers:
 - `STOP_AT_REVIEWER=YES`
 
 Reviewer should decide whether to accept the overview-only PPCP mount defect and, if proceeding, perform the Owner-only PayPal Sandbox login/consent action. No version change, patch, DOM workaround, WooCommerce change, Live mode, real payment, VPS write, public tunnel, or Studio write occurred.
+## K3R8 Executor handoff — Phase A complete, Owner OAuth pending (2026-09-21)
+
+Phase A passed on the active Docker/MariaDB runtime at `http://localhost:8093/`: the WordPress container resolved `api-m.sandbox.paypal.com`, reached it over HTTPS, and completed TLS verification with PayPal certificate data and TLS 1.3. The unauthenticated base request returned HTTP 403, which is consistent with a no-credential reachability probe and is not treated as a credential result.
+
+A local-only PowerShell helper is available under the active runtime `.artifacts` directory. Owner must run it manually. It prompts Client ID and hidden Sandbox Secret, performs the direct OAuth client-credentials request, and prints only redacted status. It does not persist or print credential values, headers, tokens, or response bodies. The helper parsed with zero syntax errors.
+
+No PPCP reconnect was retried. Phase C remains blocked until Owner reports the helper's redacted result. If OAuth is PASS, inspect only redacted PPCP manual-connect logs/REST error code; if OAuth fails, return the credential-invalid marker.
+
+K3R8_RESULT=RETURN_OWNER_K3R8_SANDBOX_OAUTH_CHECK_REQUIRED
+STOP_AT_REVIEWER=YES
