@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
+CURRENT_CHECKPOINT=OWNER_K3R11_DISCONNECT_CONFIRMATION_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -723,3 +723,16 @@ CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
 Because the local PPCP connection is still bound to credential material stored before the Sandbox Secret rotation, the next bounded phase first uses PPCP's official local disconnect path to remove that old binding, then creates the temporary HTTPS public origin, then stops for Owner Manual Connect with the rotated credentials.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_CONNECTION_RECONCILED_PUBLIC_ORIGIN_REBIND.md`.
+
+
+## K3R11 Rebind Prep — Owner Confirmation Required
+
+Executor verified rollback/runtime readiness and located the official PPCP Disconnect control without executing it.
+
+```text
+ROLLBACK_POINT_VERIFIED=PASS
+OFFICIAL_DISCONNECT=READY_NOT_EXECUTED
+CURRENT_CHECKPOINT=OWNER_K3R11_DISCONNECT_CONFIRMATION_REQUIRED
+```
+
+Owner must explicitly authorize one official Disconnect before execution continues.
