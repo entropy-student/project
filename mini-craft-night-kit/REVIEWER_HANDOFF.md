@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R11_PUBLIC_SANDBOX_MANUAL_CONNECT_REQUIRED
+CURRENT_GATE=K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -711,3 +711,21 @@ Owner may log into WordPress through the temporary HTTPS origin and perform exac
 Quick Tunnel is ephemeral; if it becomes unavailable before Owner completes the action, return to Executor for tunnel re-establishment rather than changing scope.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_REBIND_PREP_PASS_OWNER_PUBLIC_MANUAL_CONNECT.md`.
+
+
+## K3R11 Owner Public Manual Connect — UI SUCCESS / Readiness Verification
+
+Owner supplied direct UI evidence from the temporary public HTTPS origin showing the success toast `Connected to PayPal`.
+
+Reviewer accepts:
+
+```text
+OWNER_PUBLIC_MANUAL_CONNECT=SUCCESS
+VISIBLE_MESSAGE=Connected to PayPal
+```
+
+Current Gate: `K3R11_PUBLIC_ORIGIN_READINESS_VERIFY`.
+
+Executor may now verify merchant connection, Sandbox/onboarding state, SDK v6 client-token generation, PayPal Checkout button rendering, webhook registration/status, direct settings health, and runtime health. No buyer approval, capture, refund, Live, VPS, production-domain cutover, version change, or source patch.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_OWNER_PUBLIC_CONNECT_SUCCESS_VERIFY_READINESS.md`.
