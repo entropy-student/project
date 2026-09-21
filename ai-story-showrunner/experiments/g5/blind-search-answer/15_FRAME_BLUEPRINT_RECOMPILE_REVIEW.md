@@ -1,12 +1,12 @@
 # Blind Search Answer — Frame Blueprint v0.4 Recompile Review
 
-Status: `FAIL`
+Status: `PASS_CANDIDATE`
 
 ## Counts
 - Visual Beats: 44
 - Frame Blueprints: 44
 - Execution Rows: 44
-- Validation issues: 1
+- Validation issues: 0
 
 ## Execution modes
 - GENERATE: 14
@@ -38,3 +38,16 @@ Status: `FAIL`
 
 ## Next
 Run the 8-beat Pilot from the new Blueprint/Execution package. Do not use historical v0.1 rows.
+
+## Validation fix
+
+Machine Gate initially caught:
+`SRCH_VB043 setup missing withheld information`.
+
+Fixed:
+VB043 now explicitly withholds the final callback:
+“它真的找对了网页”.
+
+Final structural validation:
+`PASS / 0 issues`.
+
