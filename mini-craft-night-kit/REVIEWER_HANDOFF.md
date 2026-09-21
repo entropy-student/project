@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K4_CONVERSION_TRUST
+CURRENT_GATE=K4_UI_CONVERSION_TRUST
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -851,3 +851,21 @@ At K4 start, Executor should first restore WordPress home/siteurl to the recorde
 K4 scope follows the project roadmap: Home / Product / FAQ / Shipping & Returns / Contact. Executor must preserve business truth, WooCommerce behavior, Owner editability, responsive behavior, and Gutenberg validity. Missing business facts must be batched into one compact Owner checkpoint rather than asked piecemeal.
 
 Formal decision: `docs/REVIEWER_DECISION_K3_PASS_K4_CONVERSION_TRUST.md`.
+
+
+## K4 Scope Update — UI Modification Added
+
+Owner requested that explicit UI modification be part of the project flow. K4 remains a single Gate rather than being split further.
+
+```text
+CURRENT_GATE=K4_UI_CONVERSION_TRUST
+UI_MODIFICATION_STAGE=ADDED
+```
+
+Execution order: UI Modification → Conversion & Trust → K4 acceptance → K5 RC QA.
+
+Owner may directly edit Home / Product / FAQ / Shipping & Returns / Contact during K4. Executor must avoid simultaneous edits to the same page and must re-read the latest page state before resuming work on Owner-edited pages.
+
+Protected without separate Reviewer approval: Cart / Checkout / Account core flows, PayPal configuration, and WooCommerce payment/order state logic.
+
+Formal decision: `docs/REVIEWER_DECISION_K4_UI_CONVERSION_TRUST_SCOPE.md`.
