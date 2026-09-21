@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
+CURRENT_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE_RESUME
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -778,3 +778,25 @@ CURRENT_GATE=K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
 Executor must now independently verify Sandbox merchant connection, SDK client token, PayPal Checkout button rendering, webhook registration/status, and runtime health. K3R11 remains open until Reviewer accepts those checks.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_OWNER_PUBLIC_CONNECT_SUCCESS_VERIFY_READINESS.md`.
+
+
+## K3R11 Final Review — PASS
+
+Public-origin readiness is complete.
+
+```text
+K3R11_PUBLIC_ORIGIN_READINESS_VERIFY=PASS
+SANDBOX_MERCHANT_CONNECTED=PASS
+PPCP_CLIENT_TOKEN=PASS
+PAYPAL_CHECKOUT_BUTTON_RENDERED=PASS
+WEBHOOK_REGISTER=PASS
+PUBLIC_HTTPS_ORIGIN=PASS
+RUNTIME_HEALTH=PASS
+CURRENT_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE_RESUME
+```
+
+The temporary Quick Tunnel/public WordPress origin remains active for the resumed payment/callback test and must not be torn down yet.
+
+Next mainline: public Checkout → Sandbox buyer approval → exactly one Sandbox capture → WooCommerce paid/processing state → redacted PayPal correlation → verify no automatic physical fulfillment → actual webhook/callback processing.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_PASS_RESUME_K3R10_SANDBOX_CAPTURE.md`.
