@@ -21,7 +21,7 @@ G7 = BLOCKED_BY_G6
 - Daily Topic Planner v0.2 已启用；
 - Production throughput 仍为 UNPROVEN。
 
-Owner 当前执行线：**Voice Timing Profile v2.1 已冻结；G6 下一步编译 Production SRT / TTS Manifest，再一次性生成完整 Antigravity Production Package。Skill Candidate extraction 作为并行架构工作流进行。**
+Owner 当前执行线：**`story-showrunner` Candidate 已迁入 `entropy-student/spike.skill/story-showrunner`；现在回到 G6，用 Candidate Timing Compiler + Voice Timing Profile v2.1 编译 Production SRT / TTS Manifest，再生成完整 Antigravity Production Package。**
 
 ## 一句话定位
 
@@ -172,7 +172,7 @@ G6  Voice Timing / Production Package PoC      ▶ IN_PROGRESS
 G7  Three-topic End-to-End Validation          ⛔ BLOCKED_BY_G6
 G8  Semi-automated Orchestration               ⏳
 G9  Publish / Analytics Learning Loop           ⏳
-G10 Reusable Showrunner Skill / Runtime         ⏳
+G10 Canonical Skill Promotion / Runtime         ⏳  (Candidate 已存在)
 ```
 
 ## P0 已锁定原则
@@ -241,7 +241,7 @@ Current G6 task:
 - let Antigravity execute locked CosyVoice TTS + images + edit + export.
 
 Long-term target:
-- extract the stable generic control plane into the `story-showrunner` Skill library after end-to-end validation;
+- `story-showrunner` Candidate 已完成抽取；完整 E2E PASS 后再从 CANDIDATE 升级为 CANONICAL;
 - default topic source is today's Calendar unless the user explicitly overrides it;
 - normal production does not require Owner approval of script/SRT/key frames; key-frame sampling is calibration-only.
 
