@@ -1,13 +1,13 @@
-# Architecture v0.1
+# Architecture v0.2
 
 ## 1. System Boundary
 
-AI Story Showrunner 是 **Control Plane**，不是 Production Worker。
+`ai-story-showrunner` 当前是 **validation workspace**。长期产品边界是可复用的 `story-showrunner` Skill；Showrunner 本身是 **Control Plane**，不是 Production Worker。
 
 ```text
                     CONTROL PLANE
 ┌────────────────────────────────────────────────────┐
-│ AI Story Showrunner                                │
+│ Story Showrunner Skill / current validation shell  │
 │ - Episode State                                    │
 │ - Routing                                          │
 │ - Contracts                                        │
@@ -54,6 +54,34 @@ Showrunner validates
   ↓
 PASS / RETURN
 ```
+
+## 2A. Default Topic Resolution
+
+Normal invocation does not require the owner to manually choose a topic.
+
+Priority:
+
+```text
+explicit user topic
+> explicit user override/constraint
+> today's Topic Calendar
+> Topic Radar
+> Evergreen Bank
+```
+
+If the user simply asks to run today's production, the Showrunner should automatically resolve today's Calendar item first.
+
+## 2B. Domain-Neutral Core
+
+The reusable core is not AI-specific.
+
+Generic core:
+`Topic Provider → Research Adapter → Knowledge/Causal Core → Story → Writer → Timing → Director → Assets → Production → Executor → QA`
+
+AI / technology is the first Domain Adapter, not the permanent system boundary.
+
+Canonical productization target:
+`docs/STORY_SHOWRUNNER_SKILL_TARGET.md`
 
 ## 3. Canonical Episode State
 
@@ -201,7 +229,7 @@ BLOCKED_BY_REAL_INPUT
 
 ### Layer A — Editorial Intelligence
 
-负责“讲什么”：
+负责“讲什么”。默认先读取当日 Topic Calendar；只有用户显式覆盖时才跳过日历：
 
 - signal intake；
 - history / duplication check；
@@ -223,8 +251,11 @@ BLOCKED_BY_REAL_INPUT
 - McKee-style causal structure；
 - script；
 - humor / voice；
-- SRT；
-- terminology reveal。
+- terminology reveal；
+- semantic timing classification；
+- Voice Timing Profile driven production-SRT compilation。
+
+正常流程中，最终文案与 SRT 不要求 Owner 人工 PASS。只有 Worker 自身 RETURN/BLOCKED 且无法自动修复时才升级给 Owner。
 
 ### Layer C — Production Compilation + Execution
 
@@ -389,6 +420,20 @@ Adapter 必须回答：
 - continuity references。
 
 目标首先是**身份与场景稳定**，不是节省生成次数。需要新状态时直接生成新图。
+
+## 11A. Human Intervention Policy
+
+正常每期不设置“文案确认 Gate”或“关键画面人工抽检 Gate”。
+
+默认 Owner 路径：
+
+```text
+optional topic/style override
+→ autonomous pipeline
+→ final video review
+```
+
+关键帧人工生成/审核仅是系统校准手段，用于新角色、新风格、新图片模型、新 Executor 或新失败类型，不属于常规生产。
 
 ## 12. Automation Levels
 
