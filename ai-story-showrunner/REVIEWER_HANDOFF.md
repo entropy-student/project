@@ -519,3 +519,57 @@ Full 44-image batch = NOT_STARTED
 Next = new 8-beat Pilot generation + QA
 ```
 
+## G5 Character Identity Drift Review / Canonical Patch — 2026-09-21
+
+Owner rejected code-drawn UI/table production and questioned why the recurring IP became substantially more juvenile.
+
+Root-cause review found:
+1. existing docs said age/proportion/clothing should remain stable, but the rule was not elevated into a global machine-level Hard Lock;
+2. wording such as "youthful male" left excessive latitude for teen/cute reinterpretation;
+3. style simplification did not explicitly distinguish render-detail simplification from identity-anatomy simplification;
+4. DERIVE_EDIT needed stronger reference precedence: a source frame may support continuity but may never become identity truth;
+5. recent generated frames showed actual maturity + costume drift (larger/rounder eyes, rounder jaw, weaker nose, juvenile proportions, hoodie substitution).
+
+Canonical fix:
+- `docs/CHARACTER_IDENTITY_LOCK.md`
+- `docs/PRODUCTION_VISUAL_STYLE.md` v0.2
+- `04_CHARACTER_BIBLE.md` v0.2
+- `06_STYLE_BIBLE.md` v0.3
+- G5 contract v0.3
+- Low-Level Execution v0.3
+- Reference Manifest identity precedence
+- Frame execution schema v0.3
+- 44 execution rows now carry explicit `identity_lock`
+
+Hard rule:
+```text
+Style can simplify rendering.
+Style may NOT simplify identity anatomy.
+```
+
+CHAR_IP_001 must remain:
+- clearly adult young male;
+- natural adult eye scale;
+- stable jaw/chin/nose;
+- adult body proportion;
+- canonical dark short tousled hair silhouette;
+- wine-red top + cream/off-white collar + black trousers + white shoes.
+
+Rejected frames:
+recent juvenile/hoodie Pilot outputs are `REJECTED_NOT_SOURCE_ELIGIBLE`.
+They must not be used as DERIVE_EDIT sources.
+
+Owner production policy:
+- people/scenes/UI/tables/evidence visuals remain image-generation/image-edit based;
+- no default HTML/SVG/Pillow code-drawn UI/table pipeline;
+- COMPOSITE_CROP only composes/crops approved image sources;
+- exact critical text may still use POST_OVERLAY.
+
+Current next:
+```text
+Regenerate VB001 only
+→ Character Identity / Maturity / Costume QA
+→ PASS
+→ Resume remaining 8-beat Pilot
+```
+
