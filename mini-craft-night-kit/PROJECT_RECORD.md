@@ -15,6 +15,7 @@ CLONE_UI_ROLE=VISUAL_ASSIST_ONLY
 MINIMAL_PLUGIN_POLICY=APPROVED
 CANONICAL_COMMERCE_SYSTEM=WOOCOMMERCE
 MVP_PAYMENT=WOOCOMMERCE_PAYPAL_PAYMENTS
+K3_PAYMENT=PASS
 DUJIAO_SECOND_ORDER_SYSTEM=NO
 GITHUB_HANDOFF_PROTOCOL=TRIAL_APPROVED
 
@@ -23,7 +24,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
+CURRENT_GATE=K4_CONVERSION_TRUST
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -846,3 +847,24 @@ CURRENT_GATE=K3R10_POST_PAYMENT_CAPTURE_WEBHOOK_VERIFY
 Executor must now independently verify the single order/capture, paid/processing status, redacted provider correlation, non-completion of physical fulfillment, actual webhook/callback processing, and runtime health before Reviewer can close K3R10.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R10_OWNER_BUYER_APPROVAL_SUCCESS_VERIFY_CAPTURE.md`.
+
+
+## K3 Final Review — PASS
+
+The complete PayPal Sandbox acceptance flow has passed: merchant connection, public-origin readiness, buyer approval, exactly one Capture, WooCommerce paid/processing state, redacted provider correlation, real webhook/callback processing, and physical-fulfillment non-completion.
+
+```text
+K3_PAYMENT=PASS
+SINGLE_SANDBOX_PAYMENT=PASS
+PAYPAL_CAPTURE=PASS
+WOO_ORDER_PAID_PROCESSING=PASS
+PAYPAL_WOO_CORRELATION=PASS_REDACTED
+WEBHOOK_CALLBACK=PASS
+DUPLICATE_PAYMENT=NO
+DUPLICATE_CAPTURE=NO
+CURRENT_GATE=K4_CONVERSION_TRUST
+```
+
+The temporary Quick Tunnel/public WordPress origin may now be rolled back at K4 start after localhost health verification. K4 follows the original roadmap: Home / Product / FAQ / Shipping & Returns / Contact.
+
+Formal decision: `docs/REVIEWER_DECISION_K3_PASS_K4_CONVERSION_TRUST.md`.
