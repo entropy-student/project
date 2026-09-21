@@ -619,3 +619,23 @@ Deferred minor issues:
 Decision:
 do not rework VB012 during Pilot.
 Continue to VB015.
+
+
+---
+
+## G5 Pilot — VB015 preflight correction
+
+Date: 2026-09-21
+
+Preflight found stale references inside the VB015 Blueprint:
+- background anchor incorrectly said `answer-pane shell`;
+- story prop incorrectly referenced `UI_AI_ANSWER_001`.
+
+Both conflict with the actual locked policy-page sequence and were corrected to `UI_POLICY_PAGE_001`.
+
+Execution interpretation:
+- full-episode canonical VB015 remains `DERIVE_EDIT(source=VB014)`, because it is a same-page reading-focus shift;
+- isolated Pilot does not include VB014, so Pilot validation may generate VB015 as a fresh matched-setup master;
+- VB016 must preserve VB015 crop/page geometry and reveal only the previously withheld line.
+
+No architecture change required.
