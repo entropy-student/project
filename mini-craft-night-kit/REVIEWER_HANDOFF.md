@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R8_PAYPAL_SANDBOX_CREDENTIAL_PLUGIN_ISOLATION
+CURRENT_CHECKPOINT=OWNER_K3R8_SANDBOX_OAUTH_CHECK_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -309,3 +309,12 @@ Manual Sandbox connection still fails with the official PPCP error. Stop repeate
 Formal decision: `docs/REVIEWER_DECISION_K3R8_PAYPAL_SANDBOX_CREDENTIAL_PLUGIN_ISOLATION.md`.
 
 First verify container PayPal Sandbox network/TLS without secrets, then have Owner run a local secure direct OAuth check. If OAuth succeeds but PPCP still rejects the same credentials, return a PPCP 4.1.3 manual-connect defect to Reviewer without version changes or source patches.
+
+
+## K3R8 Phase A PASS / Owner OAuth Checkpoint
+
+Container DNS and HTTPS/TLS reachability to PayPal Sandbox passed. HTTP 403 from an unauthenticated request is not a credential verdict.
+
+Current checkpoint: `OWNER_K3R8_SANDBOX_OAUTH_CHECK_REQUIRED`.
+
+Owner should run the local helper at `.artifacts/k3r8-paypal-sandbox-oauth-check.ps1`, enter Sandbox Client ID and Secret only into the local PowerShell prompts, and report only the helper's redacted PASS/FAIL + HTTP status output.
