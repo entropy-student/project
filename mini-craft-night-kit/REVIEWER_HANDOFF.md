@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R8B_CORRECTED_HELPER_REQUIRED
+CURRENT_GATE=K3R8C_CONTAINER_NATIVE_OAUTH_CHECK
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -334,3 +334,12 @@ Inspect/fix only the local helper and host request path with redacted diagnostic
 Executor completed the host/helper diagnostic and returned `RETURN_OWNER_K3R8B_CORRECTED_HELPER_REQUIRED`. Credentials are still unclassified.
 
 Owner should rerun the corrected helper locally and report only the redacted PASS/FAIL and HTTP/result classification. Do not paste Client ID, Secret, tokens, headers, or response body.
+
+
+## K3R8B Re-run Result / K3R8C Authorization
+
+Owner re-ran the corrected helper and it still failed at the host PowerShell request layer with `POWERSHELL_REQUEST_EXCEPTION`. This is not a credential verdict.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8C_CONTAINER_NATIVE_OAUTH_CHECK.md`.
+
+Bypass the host PowerShell HTTP stack. Perform the direct OAuth request inside the active WordPress container with credentials supplied only via Owner interactive STDIN. All future diagnostic returns must include the mandatory `DIAGNOSTIC_PACKET` from `docs/GITHUB_HANDOFF_PROTOCOL.md`; conclusion-only handoffs are incomplete.
