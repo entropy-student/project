@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R11_SANDBOX_SECRET_ROTATION_REQUIRED
+CURRENT_GATE=K3R11_PUBLIC_SANDBOX_ORIGIN
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -553,3 +553,20 @@ After Owner confirms rotation (without sharing the new Secret), Executor may pre
 
 Formal decision: `docs/REVIEWER_DECISION_K3R10_RETURN_K3R11_PUBLIC_SANDBOX_ORIGIN.md`.
 Incident: `docs/SECURITY_INCIDENT_K3R10_SANDBOX_CREDENTIAL_OUTPUT.md`.
+
+
+## K3R11 Owner Secret Rotation — COMPLETE / Execution Authorized
+
+Owner confirmed:
+
+```text
+SANDBOX_SECRET_ROTATED=YES
+```
+
+Reviewer accepts the security precondition for K3R11. The replacement Sandbox Secret remains Owner-only and must not be pasted into chat/GitHub or surfaced in diagnostic output.
+
+Current Gate: `K3R11_PUBLIC_SANDBOX_ORIGIN`.
+
+Executor is authorized to proceed with the already-approved temporary, reversible HTTPS public Sandbox origin preparation defined in `docs/REVIEWER_DECISION_K3R10_RETURN_K3R11_PUBLIC_SANDBOX_ORIGIN.md`.
+
+If the rotated Secret invalidates the stored PPCP Sandbox connection, Executor must stop at an Owner local-UI reconnect checkpoint; it must not request or read the Secret.
