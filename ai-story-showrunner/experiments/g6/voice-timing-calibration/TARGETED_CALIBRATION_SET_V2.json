@@ -1,0 +1,135 @@
+{
+  "version": "v2-targeted",
+  "date": "2026-09-21",
+  "purpose": "Targeted repair of Voice Timing Profile v1: short NORMAL floor + mixed Latin/Arabic interaction",
+  "reuse_v1": {
+    "calibration_report": "calibration_report_v1.json",
+    "heldout_report": "heldout_report_v1.json",
+    "rejected_profile": "VOICE_TIMING_PROFILE_V1_REJECTED.json",
+    "reused_evidence": [
+      {
+        "id": "CAL004",
+        "role": "short_normal_low",
+        "text": "网页没有找错。",
+        "actual_normalized_duration_sec": 0.8293
+      },
+      {
+        "id": "BLD001",
+        "role": "short_normal_high",
+        "text": "然后答案变了。",
+        "actual_normalized_duration_sec": 1.4215
+      },
+      {
+        "id": "BLD003",
+        "role": "mixed_latin_arabic",
+        "text": "我让 AI 连续检查了 3 次，它每次都给出了同一个链接。",
+        "actual_normalized_duration_sec": 3.5873
+      }
+    ]
+  },
+  "fixed_setup": {
+    "engine": "CosyVoice-300M",
+    "mode": "zero_shot",
+    "seed": 1986,
+    "reference_audio": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\reference-clone.wav",
+    "reference_text": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\reference-clone-text.txt",
+    "cosyvoice_root": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\CosyVoice",
+    "venv": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\cosyvoice-venv",
+    "sample_rate_hz": 22050
+  },
+  "v1_coefficients": {
+    "intercept": -0.0076,
+    "cjk_char_count": 0.1284,
+    "latin_or_abbrev_token_count": 0.737,
+    "arabic_number_token_count": 0.4201,
+    "soft_punctuation_count": 0.468,
+    "hard_punctuation_count": 0.2033,
+    "short_utterance_indicator": -0.1311
+  },
+  "candidate_v2_rules": {
+    "short_normal": {
+      "definition": "semantic_class == NORMAL and content_unit_count <= 7",
+      "base_predictor_change": "do not apply the v1 negative short_utterance coefficient",
+      "floor_fit_rule": "short_normal_floor_sec = max(actual normalized duration of short-NORMAL calibration evidence) + 0.05",
+      "prediction_rule": "allocated = max(base_prediction_without_negative_short_term, short_normal_floor_sec)"
+    },
+    "mixed_latin_arabic": {
+      "definition": "latin_or_abbrev_token_count > 0 and arabic_number_token_count > 0",
+      "base_token_rule": "replace additive latin+arabic penalties with max(total_latin_penalty, total_arabic_penalty)",
+      "margin_fit_rule": "mixed_margin_sec = max(0, max(actual - candidate_prediction across mixed calibration evidence)) + 0.05",
+      "prediction_rule": "candidate mixed prediction + mixed_margin_sec"
+    },
+    "unchanged": {
+      "semantic_speed_map": {
+        "NORMAL": 1,
+        "PUNCH_SETUP": 1,
+        "FAST_NORMAL": 1.06,
+        "FAST_CLEAR": 1.08,
+        "CONTROLLED": 1,
+        "FINAL": 0.96
+      },
+      "punctuation_coefficients": "reuse v1 for this targeted test",
+      "non_targeted_predictor": "reuse v1 except the two rules above"
+    }
+  },
+  "acceptance": {
+    "primary": "one-sided timing safety",
+    "pass_required_extra_speed_max": 1.03,
+    "pass_with_minor_required_extra_speed_max": 1.05,
+    "return_if_required_extra_speed_gt": 1.05,
+    "normal_tail_slack_preferred_max_sec": 0.6,
+    "normal_tail_slack_minor_max_sec": 0.8,
+    "return_if_normal_tail_slack_gt_sec": 0.8,
+    "note": "absolute error remains diagnostic only"
+  },
+  "new_samples": [
+    {
+      "id": "V2C001",
+      "split": "calibration",
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "结果页面变了。",
+      "purpose": "third unrelated short NORMAL for floor calibration"
+    },
+    {
+      "id": "V2C002",
+      "split": "calibration",
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "MCP 接上了 2 个工具。",
+      "purpose": "second mixed Latin+Arabic calibration case"
+    },
+    {
+      "id": "V2C003",
+      "split": "calibration_control",
+      "semantic_class": "FINAL",
+      "generation_speed": 0.96,
+      "text": "最后我只保留了那句真正被来源支持的话。",
+      "purpose": "semantic-speed control; does not tune short/mixed parameters"
+    },
+    {
+      "id": "V2B001",
+      "split": "heldout",
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "这次链接对了。",
+      "purpose": "blind short NORMAL"
+    },
+    {
+      "id": "V2B002",
+      "split": "heldout",
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "AI 又检查了 2 次，答案还是一样。",
+      "purpose": "blind mixed Latin+Arabic"
+    },
+    {
+      "id": "V2B003",
+      "split": "heldout",
+      "semantic_class": "NORMAL",
+      "generation_speed": 1,
+      "text": "我重新打开了页面，又把前后的两句话一起看了一遍。",
+      "purpose": "blind long NORMAL regression control"
+    }
+  ]
+}
