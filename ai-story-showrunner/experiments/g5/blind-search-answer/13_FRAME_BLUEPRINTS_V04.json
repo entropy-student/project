@@ -125,7 +125,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB002",
@@ -231,7 +232,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB003",
@@ -340,7 +342,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB004",
@@ -353,7 +356,7 @@
       "g4_lock": {
         "visual_intention": "NOTICE_OBJECT",
         "shot_size": "MEDIUM_INSERT",
-        "pov": "OBSERVER",
+        "pov": "IP_POV",
         "image_relation_grammar": "CONTINUITY"
       },
       "frame_archetype": "OBJECT_EVIDENCE_INSERT",
@@ -415,21 +418,14 @@
       "brand_mode": "NONE",
       "ui_mode": "EVIDENCE",
       "continuity_preserve": [
-        "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry",
-        "UI_AI_ANSWER_001 shell/geometry",
-        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
+        "UI_AI_ANSWER_001 shell/geometry"
       ],
       "continuity_ref": "SRCH_VB003",
       "frame_delta": "exact question facet lands: 平台服务费会不会退",
       "withheld_information": [],
       "asset_binding": {
-        "character_refs": [
-          "CHAR_IP_001"
-        ],
-        "scene_refs": [
-          "SCENE_WORKDESK_001"
-        ],
+        "character_refs": [],
+        "scene_refs": [],
         "prop_ui_refs": [
           "UI_AI_ANSWER_001"
         ],
@@ -449,7 +445,7 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "pov_reason": "Exact question facet must be experienced as the protagonist sees/asks it; character reaction is not the beat."
     },
     {
       "visual_beat_id": "SRCH_VB005",
@@ -539,7 +535,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB006",
@@ -629,7 +626,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB007",
@@ -722,7 +720,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB008",
@@ -835,7 +834,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB009",
@@ -848,7 +848,7 @@
       "g4_lock": {
         "visual_intention": "SEE_CONSEQUENCE",
         "shot_size": "MEDIUM_INSERT",
-        "pov": "OBSERVER",
+        "pov": "IP_POV_HANDS",
         "image_relation_grammar": "CONTINUITY"
       },
       "frame_archetype": "CHARACTER_ACTION",
@@ -869,7 +869,7 @@
       "attention_entry": "CU",
       "attention_exit": "CM",
       "transition_mode": "HOLD",
-      "composition_mode": "DEPTH_LAYERED",
+      "composition_mode": "FIRST_PERSON_DESK_INSERT",
       "composition_callback_ref": null,
       "negative_space_role": "protect P1 from competing information",
       "density": "LOW",
@@ -950,7 +950,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "The story consequence is created by the protagonist personally writing the assumption into the cost sheet."
     },
     {
       "visual_beat_id": "SRCH_VB010",
@@ -1054,7 +1055,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB011",
@@ -1067,7 +1069,7 @@
       "g4_lock": {
         "visual_intention": "FOLLOW_ACTION",
         "shot_size": "MEDIUM_CLOSE",
-        "pov": "OBSERVER",
+        "pov": "OVER_SHOULDER_IP",
         "image_relation_grammar": "CONTINUITY"
       },
       "frame_archetype": "CHARACTER_ACTION",
@@ -1088,7 +1090,7 @@
       "attention_entry": "CM",
       "attention_exit": "RM",
       "transition_mode": "HOLD",
-      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_mode": "OVER_SHOULDER_TARGET",
       "composition_callback_ref": null,
       "negative_space_role": "protect P1 from competing information",
       "density": "LOW",
@@ -1135,7 +1137,7 @@
       "continuity_preserve": [
         "CHAR_IP_001 identity/costume",
         "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry",
+        "UI_AI_ANSWER_001 shell/geometry",
         "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
       ],
       "continuity_ref": "SRCH_VB010",
@@ -1149,7 +1151,7 @@
           "SCENE_WORKDESK_001"
         ],
         "prop_ui_refs": [
-          "UI_POLICY_PAGE_001"
+          "UI_AI_ANSWER_001"
         ],
         "style_refs": [
           "STYLE_CHANNEL_001"
@@ -1167,7 +1169,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "The click belongs to the protagonist but must also lead cleanly into the readable page discovery that follows."
     },
     {
       "visual_beat_id": "SRCH_VB012",
@@ -1263,7 +1266,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB013",
@@ -1356,7 +1360,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB014",
@@ -1446,7 +1451,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB015",
@@ -1544,7 +1550,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB016",
@@ -1634,7 +1641,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB017",
@@ -1738,7 +1746,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB018",
@@ -1834,7 +1843,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB019",
@@ -1930,7 +1940,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB020",
@@ -2032,7 +2043,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB021",
@@ -2145,7 +2157,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB022",
@@ -2245,7 +2258,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB023",
@@ -2350,7 +2364,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB024",
@@ -2455,7 +2470,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB025",
@@ -2566,7 +2582,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB026",
@@ -2670,7 +2687,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB027",
@@ -2683,7 +2701,7 @@
       "g4_lock": {
         "visual_intention": "NOTICE_OBJECT",
         "shot_size": "MEDIUM_INSERT",
-        "pov": "OBSERVER",
+        "pov": "IP_POV",
         "image_relation_grammar": "CONTINUITY"
       },
       "frame_archetype": "OBJECT_EVIDENCE_INSERT",
@@ -2746,24 +2764,15 @@
       "brand_mode": "NONE",
       "ui_mode": "EVIDENCE",
       "continuity_preserve": [
-        "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry",
-        "UI_AI_ANSWER_001 shell/geometry",
-        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
+        "UI_AI_ANSWER_001 shell/geometry"
       ],
       "continuity_ref": "SRCH_VB026",
       "frame_delta": "new evidence challenge is focal: 哪一句明确说明服务费会退",
       "withheld_information": [],
       "asset_binding": {
-        "character_refs": [
-          "CHAR_IP_001"
-        ],
-        "scene_refs": [
-          "SCENE_WORKDESK_001"
-        ],
+        "character_refs": [],
+        "scene_refs": [],
         "prop_ui_refs": [
-          "UI_POLICY_PAGE_001",
           "UI_AI_ANSWER_001"
         ],
         "style_refs": [
@@ -2782,7 +2791,7 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "pov_reason": "The new evidence-challenge query is the exact action the viewer should experience with the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB028",
@@ -2895,7 +2904,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB029",
@@ -2988,7 +2998,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB030",
@@ -3097,7 +3108,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB031",
@@ -3110,7 +3122,7 @@
       "g4_lock": {
         "visual_intention": "NOTICE_OBJECT",
         "shot_size": "MEDIUM_INSERT",
-        "pov": "OBSERVER",
+        "pov": "OBJECTIVE_INSERT",
         "image_relation_grammar": "CONTINUITY"
       },
       "frame_archetype": "OBJECT_EVIDENCE_INSERT",
@@ -3172,21 +3184,14 @@
       "brand_mode": "NONE",
       "ui_mode": "EVIDENCE",
       "continuity_preserve": [
-        "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry",
-        "UI_POLICY_PAGE_001 shell/geometry",
-        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
+        "UI_POLICY_PAGE_001 shell/geometry"
       ],
       "continuity_ref": "SRCH_VB030",
       "frame_delta": "attention narrows from whole page to the exact supporting sentence",
       "withheld_information": [],
       "asset_binding": {
-        "character_refs": [
-          "CHAR_IP_001"
-        ],
-        "scene_refs": [
-          "SCENE_WORKDESK_001"
-        ],
+        "character_refs": [],
+        "scene_refs": [],
         "prop_ui_refs": [
           "UI_POLICY_PAGE_001"
         ],
@@ -3206,7 +3211,7 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "pov_reason": "The supporting sentence itself is the causal object; character subjectivity is unnecessary here."
     },
     {
       "visual_beat_id": "SRCH_VB032",
@@ -3315,7 +3320,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "Semantic explanation needs an external story-world frame with selective subjective evidence inserts."
     },
     {
       "visual_beat_id": "SRCH_VB033",
@@ -3403,7 +3409,8 @@
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
         "only current Beat information is visible"
-      ]
+      ],
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state."
     },
     {
       "visual_beat_id": "SRCH_VB034",
@@ -3503,7 +3510,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB035",
@@ -3612,7 +3620,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV."
     },
     {
       "visual_beat_id": "SRCH_VB036",
@@ -3625,7 +3634,7 @@
       "g4_lock": {
         "visual_intention": "NOTICE_OBJECT",
         "shot_size": "MEDIUM_INSERT",
-        "pov": "OBSERVER",
+        "pov": "OBJECTIVE_INSERT",
         "image_relation_grammar": "CONTRAST"
       },
       "frame_archetype": "OBJECT_EVIDENCE_INSERT",
@@ -3678,26 +3687,22 @@
         "caption_layer": "SEPARATE",
         "diegetic_text": [],
         "explanatory_overlay": "OFF",
-        "render_mode": "NONE"
+        "render_mode": "POST_OVERLAY"
       },
       "brand_mode": "NONE",
       "ui_mode": "EVIDENCE",
       "continuity_preserve": [
-        "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry",
-        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
+        "UI_POLICY_PAGE_001 shell/geometry"
       ],
       "continuity_ref": "SRCH_VB035",
       "frame_delta": "quoted sentence is also confirmed real",
       "withheld_information": [],
       "asset_binding": {
-        "character_refs": [
-          "CHAR_IP_001"
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_POLICY_PAGE_001"
         ],
-        "scene_refs": [
-          "SCENE_WORKDESK_001"
-        ],
-        "prop_ui_refs": [],
         "style_refs": [
           "STYLE_CHANNEL_001"
         ]
@@ -3714,7 +3719,7 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "pov_reason": "The quoted sentence must be isolated as verified evidence; showing the character would dilute the proof."
     },
     {
       "visual_beat_id": "SRCH_VB037",
@@ -3726,11 +3731,11 @@
       "duration": 2.34,
       "g4_lock": {
         "visual_intention": "LAND_PAYOFF",
-        "shot_size": "MEDIUM_CLOSE",
-        "pov": "OBSERVER",
+        "shot_size": "INSERT",
+        "pov": "OBJECTIVE_INSERT",
         "image_relation_grammar": "CONTRAST"
       },
-      "frame_archetype": "CHARACTER_ACTION",
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
       "focus_mode": "SINGLE",
       "dramatic_job": "让 payoff 通过行为/结果落地",
       "primary_focus": {
@@ -3748,7 +3753,7 @@
       "attention_entry": "CM",
       "attention_exit": "RM",
       "transition_mode": "HOLD",
-      "composition_mode": "OFF_CENTER_GAZE_SPACE",
+      "composition_mode": "CENTER_NEAR_CENTER",
       "composition_callback_ref": null,
       "negative_space_role": "protect P1 from competing information",
       "density": "LOW",
@@ -3782,26 +3787,22 @@
         "caption_layer": "SEPARATE",
         "diegetic_text": [],
         "explanatory_overlay": "OFF",
-        "render_mode": "NONE"
+        "render_mode": "POST_OVERLAY"
       },
       "brand_mode": "NONE",
       "ui_mode": "NONE",
       "continuity_preserve": [
-        "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry",
-        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
+        "UI_AI_ANSWER_001 shell/geometry"
       ],
       "continuity_ref": "SRCH_VB036",
       "frame_delta": "final conclusion alone remains mismatched/wrong",
       "withheld_information": [],
       "asset_binding": {
-        "character_refs": [
-          "CHAR_IP_001"
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
         ],
-        "scene_refs": [
-          "SCENE_WORKDESK_001"
-        ],
-        "prop_ui_refs": [],
         "style_refs": [
           "STYLE_CHANNEL_001"
         ]
@@ -3818,7 +3819,7 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "pov_reason": "The final wrong conclusion itself is the payoff object; no external character view is needed."
     },
     {
       "visual_beat_id": "SRCH_VB038",
@@ -3931,7 +3932,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist."
     },
     {
       "visual_beat_id": "SRCH_VB039",
@@ -4044,7 +4046,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External spatial/behavior relation carries the meaning better than literal first-person view."
     },
     {
       "visual_beat_id": "SRCH_VB040",
@@ -4157,7 +4160,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "Current POV best serves the locked visual intention and information hierarchy."
     },
     {
       "visual_beat_id": "SRCH_VB041",
@@ -4270,7 +4274,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     },
     {
       "visual_beat_id": "SRCH_VB042",
@@ -4283,10 +4288,10 @@
       "g4_lock": {
         "visual_intention": "FOLLOW_ACTION",
         "shot_size": "MEDIUM_INSERT",
-        "pov": "OBSERVER",
+        "pov": "IP_POV",
         "image_relation_grammar": "CONTRAST"
       },
-      "frame_archetype": "CHARACTER_ACTION",
+      "frame_archetype": "OBJECT_EVIDENCE_INSERT",
       "focus_mode": "SINGLE",
       "dramatic_job": "让观众跟住一个会改变状态的具体动作",
       "primary_focus": {
@@ -4304,7 +4309,7 @@
       "attention_entry": "CM",
       "attention_exit": "RM",
       "transition_mode": "HOLD",
-      "composition_mode": "DEPTH_LAYERED",
+      "composition_mode": "CENTER_NEAR_CENTER",
       "composition_callback_ref": null,
       "negative_space_role": "protect P1 from competing information",
       "density": "LOW",
@@ -4338,26 +4343,22 @@
         "caption_layer": "SEPARATE",
         "diegetic_text": [],
         "explanatory_overlay": "OFF",
-        "render_mode": "NONE"
+        "render_mode": "POST_OVERLAY"
       },
       "brand_mode": "NONE",
       "ui_mode": "NONE",
       "continuity_preserve": [
-        "CHAR_IP_001 identity/costume",
-        "SCENE_WORKDESK_001 geometry",
-        "CHAR_IP_001 clearly-adult maturity / face geometry / adult body proportion / canonical costume"
+        "UI_AI_ANSWER_001 shell/geometry"
       ],
       "continuity_ref": "SRCH_VB041",
       "frame_delta": "verification question becomes the action: 哪句话真的支持这个结论",
       "withheld_information": [],
       "asset_binding": {
-        "character_refs": [
-          "CHAR_IP_001"
+        "character_refs": [],
+        "scene_refs": [],
+        "prop_ui_refs": [
+          "UI_AI_ANSWER_001"
         ],
-        "scene_refs": [
-          "SCENE_WORKDESK_001"
-        ],
-        "prop_ui_refs": [],
         "style_refs": [
           "STYLE_CHANNEL_001"
         ]
@@ -4374,7 +4375,7 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "pov_reason": "The verification question is the protagonist's new behavior; the viewer should inhabit the exact question being asked."
     },
     {
       "visual_beat_id": "SRCH_VB043",
@@ -4486,7 +4487,8 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "Current POV best serves the locked visual intention and information hierarchy."
     },
     {
       "visual_beat_id": "SRCH_VB044",
@@ -4598,8 +4600,23 @@
         "adult eye/jaw/chin/nose/body proportions remain canonical",
         "wine-red top with cream/off-white collar remains unchanged"
       ],
-      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md"
+      "character_identity_lock_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event."
     }
   ],
-  "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md"
+  "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
+  "pov_review": {
+    "status": "PASS_SYNCED_FROM_G4",
+    "canonical_rules": "docs/G4_VIEWPOINT_GRAMMAR.md",
+    "changed_beats": [
+      "SRCH_VB004",
+      "SRCH_VB009",
+      "SRCH_VB011",
+      "SRCH_VB027",
+      "SRCH_VB031",
+      "SRCH_VB036",
+      "SRCH_VB037",
+      "SRCH_VB042"
+    ]
+  }
 }
