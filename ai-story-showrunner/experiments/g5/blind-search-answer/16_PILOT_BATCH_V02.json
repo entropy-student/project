@@ -891,7 +891,13 @@
           ]
         }
       },
-      "pilot_execution_note": "Use accepted VB015 image 1 as the exact matched-setup geometry reference. Reveal only the previously blurred/hidden line as 平台服务费不予退还. Do not change crop, page shell, camera angle, surrounding rows, or introduce warning/red exclamation/brand/navigation."
+      "pilot_execution_note": "Use accepted VB015 image 1 as the exact matched-setup geometry reference. Reveal only the previously blurred/hidden line as 平台服务费不予退还. Do not change crop, page shell, camera angle, surrounding rows, or introduce warning/red exclamation/brand/navigation.",
+      "pilot_result": "PASS_WITH_MINOR",
+      "pilot_notes": [
+        "Matched reveal against VB015 works.",
+        "Reversal sentence is dominant and immediately readable.",
+        "Minor browser chrome / full-page title / UI-demo feel deferred."
+      ]
     },
     {
       "blueprint": {
