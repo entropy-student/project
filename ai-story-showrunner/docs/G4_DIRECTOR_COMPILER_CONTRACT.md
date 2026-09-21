@@ -1,4 +1,4 @@
-# G4 Director / Shot Compiler Contract v0.4
+# G4 Director / Shot Compiler Contract v0.5
 
 ## Status
 
@@ -15,7 +15,7 @@ Validation:
 
 ## 1. Purpose
 
-Convert locked Script + KnowledgeCore into a complete, human-reviewable Shotbook where every image-level beat has a dramatic reason, visual strategy, framing logic, and reference timing.
+Convert locked Script + KnowledgeCore + Production SRT into a complete Shotbook where every image-level beat has a dramatic reason, visual strategy, framing logic, and exact visual timing mapped to the production timeline.
 
 G4 ends at **what each image must communicate**.
 
@@ -31,13 +31,13 @@ Those belong to G5.
 ## 2. Canonical Six-Layer Pipeline
 
 ```text
-Locked Script + KnowledgeCore
+Locked Script + KnowledgeCore + Production SRT
 → 1. Dramatic Hierarchy Map
 → 2. Episode / Sequence Visual Strategy
 → 3. Visual Intention Map
 → 4. Semantic Shot Design
 → 5. Visual Beat Compilation
-→ 6. Timing & Edit Calibration
+→ 6. Production-SRT Visual Mapping & Edit Calibration
 → Director Shotboard / Shotbook
 ```
 
@@ -161,46 +161,37 @@ A difficult-to-visualize line may share an existing visual state; it may not sil
 Failure:
 `RETURN_SCRIPT_COVERAGE_GAP`
 
-## 9. Timing & Edit Calibration
+## 9. Production-SRT Visual Mapping & Edit Calibration
 
-Meaning decides the unit; **semantic rhythm decides the intended pace**.
+Speech timing is already solved upstream.
 
-G4 owns the creative timing intent:
-- `timing_kind`;
-- fast / normal / slow / punch / build / reversal / hold / final behavior;
-- relative duration;
-- protected timing anchors where duration itself carries meaning.
+Canonical authority:
+`locked script → Timing Compiler → Voice Timing Profile → Production SRT → G4`
 
-Current Jingsui-calibrated priors:
-- speech planning prior ≈ 5.9 Chinese chars/s;
-- historical visual-beat median ≈ 2.7s;
-- fast reaction/punchline ≈ 0.8–1.8s;
-- ordinary observed range ≈ 1.3–4.5s;
-- longer explanation/landing may reach 4–8s.
+G4 does **not** own:
+- speech chars-per-second;
+- TTS speed selection;
+- Speech Unit duration prediction;
+- semantic pause duration for the spoken track.
 
-These are priors, not quotas.
+G4 owns **visual rhythm inside the locked production timeline**:
+- where a visual state begins/ends;
+- when setup becomes reveal;
+- when reaction deserves a separate still;
+- visual hold / cut / handoff;
+- protected visual anchors whose meaning depends on timing.
 
-`JINGSUI_CALIBRATED_REFERENCE` durations are retained as **semantic timing priors**. They must not be blindly discarded, but they are not guaranteed to be physically feasible with the locked production voice.
+Historical Jingsui timing observations (for example ~5.9 Chinese chars/s or ~2.7s median visual beat) remain validation evidence only. They are not production timing authority.
 
-When real voice calibration exists, G6 must solve timing under:
-`docs/SRT_AUDIO_TIMING_STANDARD.md`
+Rules:
+- Visual Beat boundaries must remain inside the Production SRT / authored-pause timeline.
+- G4 may split or merge visual states without changing spoken text/time.
+- If the visual idea truly needs more time than the locked timeline allows, return `RETURN_TIMING_VISUAL_CONFLICT` to Timing Compiler; do not silently slow/accelerate speech.
+- If downstream audio materially misses the locked profile prediction, return `RETURN_VOICE_TIMING_PROFILE_MISS`; G4 is not reopened unless visual meaning changes.
 
-The exact production milliseconds are determined by:
-`semantic timing intent + measured voice feasibility + local reallocation`
+## 10. Human-Readable Observability Output
 
-Important:
-- G6 must not flatten all beats to one natural speaking pace;
-- G4 must not force an audibly impossible exact window;
-- feasible reference windows should remain unchanged or close;
-- infeasible windows should borrow/donate time locally while preserving timing kind and protected anchors.
-
-If solved audio materially changes exact timing:
-`RETURN_TIMELINE_MISMATCH`
-and recompile timing only unless visual meaning changed.
-
-## 10. Human Review Output
-
-Every episode should expose a human-readable:
+Every episode should expose a human-readable debug/audit view. This is observability, not a mandatory Owner approval Gate:
 
 `DIRECTOR_SHOTBOARD.md` or `DIRECTOR_SHOTBOARD.csv`
 
