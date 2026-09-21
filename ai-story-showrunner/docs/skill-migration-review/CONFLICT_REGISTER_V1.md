@@ -2,14 +2,35 @@
 
 Date: 2026-09-22
 
-Status: `REVIEW_COMPLETE`
+Status: `R1_PASS / P0_RESOLVED / P2_CLEANED`
+
+## R1 resolution outcome
+
+| Conflict | R1 result |
+|---|---|
+| C01 Audio mode | RESOLVED — `EXECUTOR_LOCKED_COSYVOICE` |
+| C02 Timing ownership | RESOLVED — Timing Compiler before G4; G4 visual timing only |
+| C03 Writer SRT Gate | RESOLVED — Writer locks text; Timing Compiler creates Production SRT |
+| C04 Timing acceptance | RESOLVED — one-sided under-allocation safety + tail slack |
+| C05 Voice Profile Spec | RESOLVED — v0.3 describes frozen-profile lifecycle |
+| C06 G5 Pilot path | RESOLVED — calibration exception only |
+| C07 G5 status | RESOLVED — PASS / canonical |
+| C08 AI leakage in core | RESOLVED for P0 named fields — core uses causal mechanism/domain adapter |
+| C09 migration lifecycle | RESOLVED — candidate now, canonical after E2E |
+
+Additional cleanup completed:
+- C18 timing-kind → voice-pace mapping is now explicit in Timing Standard v0.4.
+- C19 REVIEWER_HANDOFF rewritten as current truth only.
+- C20 CURRENT_STATUS normalized to schema v2.0.
+- C21 README current execution focus updated.
+- C22 Director human-readable output redefined as observability/debug, not Owner Gate.
 
 Severity:
 - P0 = must resolve before candidate migration
 - P1 = resolve during migration
 - P2 = cleanup/history issue; does not block extraction
 
-## P0 conflicts
+## P0 conflicts — RESOLVED IN R1
 
 ### C01 — Audio mode has three incompatible truths
 
@@ -303,19 +324,17 @@ Rename semantics from approval gate to review/debug view.
 
 ## Migration blockers summary
 
-Before writing the candidate Skill, resolve at minimum:
+P0 blockers:
+`NONE`
 
-```text
-C01 Audio mode
-C02 Timing ownership
-C03 Writer SRT Gate
-C04 Timing acceptance
-C05 Voice profile spec
-C06 Pilot normal-path wording
-C07 G5 status
-C08 AI-specific core leakage
-C09 Candidate-vs-canonical migration lifecycle
-```
+P2 current-truth cleanup:
+`COMPLETE`
 
-P1 splits can be performed during migration.
-P2 cleanup should happen in the project in parallel, but does not prevent creating the candidate Skill once P0 is reconciled.
+Remaining migration work:
+- perform P1 core/profile/adapter/runtime splits;
+- externalize machine-specific runtime paths;
+- rename schema identity to `story-showrunner`;
+- align Visual Beat timing source to Production SRT;
+- build the candidate Skill without copying project history.
+
+Candidate migration is now authorized.
