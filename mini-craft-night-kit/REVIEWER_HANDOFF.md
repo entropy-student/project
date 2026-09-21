@@ -383,3 +383,19 @@ Reviewer limitation: the actual local `.artifacts` helper bytes are not present 
 Current checkpoint: `OWNER_K3R8D_CONTAINER_OAUTH_REQUIRED`.
 
 After the current K3R8* issue is stably resolved, perform the already-requested fresh overall project review against actual current source/runtime/evidence.
+
+## K3R8D Owner OAuth PASS / K3R8C Phase C
+
+Owner's repaired container-native helper reached PayPal Sandbox through WordPress `wp_remote_post` and returned HTTP 200 with an access token present.
+
+Reviewer accepts:
+
+- `PAYPAL_SANDBOX_CREDENTIAL_PAIR=VALID_FOR_THIS_RUN`
+- `PAYPAL_SANDBOX_CONTAINER_HTTP=PASS`
+- `PAYPAL_SANDBOX_OAUTH_TOKEN_ISSUANCE=PASS`
+
+Do not continue treating invalid credentials as the leading explanation if PPCP rejects this same pair.
+
+Current Gate: `K3R8C_PHASE_C_PPCP_MANUAL_CONNECT_ISOLATION`.
+
+Executor should now inspect the existing failed PPCP manual-connect attempt's redacted REST/log evidence first. Do not ask Owner to re-enter credentials unless existing evidence is insufficient; at most one bounded retry is allowed. No version change, source patch, Live mode, real payment, public tunnel, or VPS action.
