@@ -1279,13 +1279,20 @@
         }
       },
       "pilot_execution_note": "Isolated Pilot does not include VB024 source. For Pilot only, generate a representative payoff frame fresh using the same analogy-world constraints. Full-episode canonical execution remains DERIVE_EDIT from accepted VB024. Watch specifically for recurring-IP identity drift because the canonical IP binary is not yet persisted.",
-      "pilot_result": "RETURN_CHARACTER_DRIFT",
+      "pilot_result": "PASS_WITH_MINOR_CHARACTER_RISK",
       "pilot_retry_note": [
         "Attempt 2 fixed story structure: two-shot + contact-book payoff is readable.",
         "Recurring IP materially drifted juvenile/chibi: oversized eyes, rounder face, shorter chin, cute/blush semantics.",
         "Costume drifted toward burgundy hoodie instead of canonical wine-red top with cream/off-white collar.",
         "Retry must preserve composition and prop action; correct identity/style only.",
         "TEMP_ANALOGY_ACTOR_001 remains adult and visually distinct from CHAR_IP_001."
+      ],
+      "pilot_notes": [
+        "Two-person analogy payoff is readable and story-like.",
+        "Supporting actor and recurring IP are distinct.",
+        "Recurring IP juvenile drift is reduced but not eliminated; face/hair/costume remain not fully canonical.",
+        "Do not micro-polish this frame during Pilot.",
+        "Persist canonical IP image reference before G6 deterministic production."
       ]
     },
     {
