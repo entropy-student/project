@@ -7,9 +7,14 @@
 ## 当前 Gate 状态
 
 ```text
-P0 / G1 / G2 / G2.5 / G3 / G3R = PASS
-G4 = READY_NOT_STARTED
-OWNER_HOLD_BEFORE_G4 = YES
+P0 / G1 / G2 / G2.5 / G3 / G3R / G4 = PASS
+G5 = IN_PROGRESS
+  G5A = PASS
+  G5B = PASS_DIRECTION_LOCKED
+  G5B.5 = PASS_KEEP_ITERATE
+  G5C Pilot: VB001 = PASS_WITH_MINOR
+  G5C Pilot: VB009 = RETRY_READY_FRESH_GENERATE_IP_POV_HANDS
+G6 = BLOCKED_BY_G5
 ```
 
 当前 canonical editorial baseline：
@@ -21,7 +26,7 @@ OWNER_HOLD_BEFORE_G4 = YES
 - Daily Topic Planner v0.2 已启用；
 - Production throughput 仍为 UNPROVEN。
 
-Owner 当前指令：**先整体 Review，不进入 G4。**
+Owner 当前执行线：**继续 G5 高风险 Pilot；先生成并 QA VB009，PASS 后进入 VB012；暂不进入 G6。**
 
 ## 一句话定位
 
