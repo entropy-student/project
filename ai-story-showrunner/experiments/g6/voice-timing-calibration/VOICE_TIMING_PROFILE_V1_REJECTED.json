@@ -1,0 +1,46 @@
+{
+  "profile_id": "VOICE_TIMING_PROFILE_COSYVOICE_300M_V1",
+  "version": "1.0",
+  "timestamp": "2026-09-21 23:16:25",
+  "engine": "CosyVoice-300M",
+  "reference_wav": "C:\\Users\\34707\\Desktop\\视频制作流\\5.音频制作\\reference-clone.wav",
+  "reference_text": "如果只说一句“大家更爱宠物了”，其实还不够。因为这背后，至少有三件事在同时变化：家庭关系，我们的生活方式，还有大家对风险的敏感程度。今天就从一个最直观的地方开始看：为什么宠物用品的货架，越来越像母婴用品？先看一个基本事实：养宠，早就不是什么小众爱好了。",
+  "seed": 1986,
+  "normalization_rule": {
+    "algorithm": "deterministic_energy_vad",
+    "frame_length_ms": 10,
+    "hop_length_ms": 5,
+    "threshold_db": -50.0,
+    "head_margin_ms": 60,
+    "tail_margin_ms": 120,
+    "rationale": "Trim abnormal technical leading/trailing padding; preserve phoneme onsets/offsets and semantic pauses."
+  },
+  "model_architecture": {
+    "model_type": "HuberRegressor (robust linear regression)",
+    "features": ["cjk_char_count","latin_or_abbrev_token_count","arabic_number_token_count","soft_punctuation_count","hard_punctuation_count","short_utterance_indicator"],
+    "formula": "predicted_duration = (intercept + sum(coef_i * feature_i)) / intended_speed"
+  },
+  "fitted_coefficients": {
+    "intercept": -0.0076,
+    "cjk_char_count": 0.1284,
+    "latin_or_abbrev_token_count": 0.737,
+    "arabic_number_token_count": 0.4201,
+    "soft_punctuation_count": 0.468,
+    "hard_punctuation_count": 0.2033,
+    "short_utterance_indicator": -0.1311
+  },
+  "semantic_class_default_speed_map": {
+    "NORMAL": 1.0,
+    "PUNCH_SETUP": 1.0,
+    "FAST_NORMAL": 1.06,
+    "FAST_CLEAR": 1.08,
+    "CONTROLLED": 1.0,
+    "FINAL": 0.96
+  },
+  "punctuation_effects": {"soft_punctuation_sec":0.468,"hard_punctuation_sec":0.2033},
+  "short_utterance_handling": {"definition":"Content unit count (CJK + Latin + Arabic) <= 7","effect_sec":-0.1311},
+  "sample_count": {"total":18,"train":14,"heldout":4},
+  "training_error": {"sample_count":14,"mean_absolute_error_ms":119.9,"median_absolute_error_ms":94.3,"max_absolute_error_ms":555.0,"r2_score":0.9789},
+  "heldout_error": {"median_absolute_error_ms":393.5,"p90_heldout_absolute_error_ms":737.2,"max_heldout_absolute_error_ms":801.9},
+  "status": "RETURN_PROFILE_INSUFFICIENT"
+}
