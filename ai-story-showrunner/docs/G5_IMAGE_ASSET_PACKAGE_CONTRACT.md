@@ -146,6 +146,21 @@ For any recurring character:
 If the source frame already failed identity/maturity/costume QA:
 do not derive from it.
 
+### DERIVE_EDIT compatibility boundary
+
+`DERIVE_EDIT` is allowed only when the accepted source can preserve the target frame's locked viewpoint/composition and the change is a local state delta.
+
+Do **not** use `DERIVE_EDIT` when the target requires a material change in:
+- POV family (for example OBSERVER → IP_POV / IP_POV_HANDS);
+- camera side / angle / crop that changes who is looking;
+- visible subject set (for example full character → hands-only insert);
+- primary prop/UI geometry that does not yet exist in the source.
+
+In those cases, use `GENERATE` unless a separate approved source already matches the target POV/composition.
+
+Failure:
+`RETURN_DERIVE_SOURCE_INCOMPATIBLE`.
+
 ### COMPOSITE_CROP
 Use when crop/composition of already approved visual sources is more reliable than regenerating the whole frame.
 
@@ -290,6 +305,12 @@ Recurring IP stays recognizably identical AND preserves:
 - canonical major hair silhouette.
 
 Juvenile/cute reinterpretation is a hard failure.
+
+Visibility-scoped identity QA:
+- evaluate only identity features actually visible in the frame;
+- a hands/cuff-only POV frame still binds the canonical character reference when the costume/body cue is identity-bearing;
+- do not require off-frame face/jaw/nose/full-body checks;
+- do not expose a full character merely to make identity QA easier.
 
 ### Scene Gate
 Recurring geometry remains stable.
