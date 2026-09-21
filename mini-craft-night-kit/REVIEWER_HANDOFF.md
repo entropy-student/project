@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R9_PPCP_MINIMAL_ENV_ISOLATION
+CURRENT_CHECKPOINT=OWNER_K3R9_SANDBOX_MANUAL_CONNECT_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -452,3 +452,25 @@ Current Gate: `K3R9_PPCP_MINIMAL_ENV_ISOLATION`.
 Formal decision: `docs/REVIEWER_DECISION_K3R8E_PASS_K3R9_MINIMAL_ENV_ISOLATION.md`.
 
 Executor may prepare a rollback point, temporarily reduce active plugins to WooCommerce + WooCommerce PayPal Payments, clear reversible caches/transients, verify the direct settings UI, and stop at an Owner Manual Connect checkpoint. No version change, source patch, theme replacement, Live, payment, tunnel, or VPS action is authorized.
+
+
+## K3R9 Phase A Review — PASS / Owner Manual Connect
+
+Reviewer independently inspected the latest Executor evidence and accepts the minimal-environment preparation.
+
+```text
+K3R9_PPCP_MINIMAL_ENV_PREP=PASS
+ROLLBACK_READY=PASS
+PLUGIN_ISOLATION=PASS
+DIRECT_PAYPAL_SETTINGS=PASS
+MINIMAL_ENV_RUNTIME=PASS
+OWNER_MANUAL_CONNECT=AUTHORIZED_ONCE
+```
+
+Current checkpoint: `OWNER_K3R9_SANDBOX_MANUAL_CONNECT_REQUIRED`.
+
+Owner may perform exactly one Sandbox Manual Connect in the direct PayPal Settings page using locally entered credentials. No retry, Live, payment/capture, source patch, version change, tunnel, or VPS action is authorized.
+
+After the Owner result, Executor must restore the prior plugin activation state exactly and return evidence to Reviewer.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R9_PREP_PASS_OWNER_MANUAL_CONNECT.md`.
