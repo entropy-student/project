@@ -1,17 +1,9 @@
-# Mini Craft Review Packets
+# Review Packets — Experimental Reference
 
-Gate-scoped review packets preserve the material Reviewer needs for independent verification.
+Status: **REFERENCE ONLY / NOT REQUIRED**
 
-Use for nontrivial diagnostics, payments, runtime/database migrations, architecture changes, deploy/production work, and other Gates not fully represented by a normal Git diff.
+This directory was introduced while exploring a stronger GitHub handoff. It is not part of active Governance yet.
 
-Minimum principle:
+Do not require gate-scoped review packets merely because this directory exists. Use the current approved Governance and project-local GitHub handoff protocol.
 
-```text
-Executor conclusion
-    ≠
-Reviewer evidence
-```
-
-Keep review-relevant artifacts until Reviewer PASS. Never store secrets, tokens, passwords, cookies, private keys, credential dumps, customer-sensitive data, or secret-bearing response bodies.
-
-See `docs/GITHUB_HANDOFF_PROTOCOL.md` for the current project-local V2 rules.
+If a later Governance Change Gate validates this approach, this area may be promoted. Until then, it is only an experiment/reference and must not add mandatory process burden.
