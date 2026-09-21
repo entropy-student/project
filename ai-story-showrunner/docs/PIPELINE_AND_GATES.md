@@ -1,9 +1,21 @@
-# Pipeline & Gates v0.4
+# Pipeline & Gates v0.5
 
-## Stage 0 — Signal Intake
+## Stage 0 — Topic Resolution / Signal Intake
+
+### Default routing
+
+```text
+explicit user topic
+> explicit user override
+> today's Topic Calendar
+> Topic Radar
+> Evergreen Bank
+```
+
+If no topic is specified, load today's Calendar item automatically.
 
 ### Input
-- AI 新闻 / 产品变化；
+- domain news / product changes；
 - 技术概念；
 - 用户评论 / 问题；
 - 平台趋势；
@@ -50,7 +62,7 @@ Why Now
 必须有人想得到某样东西，并承担错误选择的代价。
 
 #### Mechanism Test
-背后有一个值得理解、且能准确解释的 AI 机制。
+背后有一个值得理解、且能准确解释的领域机制 / causal rule。AI Adapter 下表现为 AI mechanism。
 
 #### One-Mechanism Test
 默认一条视频只承担一个核心机制；如果必须同时塞多个机制才能成立，`RETURN_TOPIC_TOO_DENSE`。
@@ -126,7 +138,7 @@ Protagonist wants something
 
 ---
 
-## Stage 4 — Script / SRT
+## Stage 4 — Script + Production SRT Timing
 
 Story Structure PASS 后才允许风格化。
 
@@ -156,6 +168,29 @@ Story Structure PASS 后才允许风格化。
 - payoff 是否兑现开头；
 - 事实 / 数字是否与 KnowledgeCore 一致；
 - SRT 是否来自 locked script。
+
+### Timing Compiler
+
+After locked script:
+
+```text
+Speech Unit segmentation
+→ semantic timing kind / pace intent
+→ reusable Voice Timing Profile
+→ predicted production timestamps
+→ structurally valid Production SRT
+```
+
+The SRT should already be close enough to production that normal TTS does not require a second creative retiming pass.
+
+Real TTS later verifies prediction. A material mismatch returns to the Timing Compiler / Voice Timing Profile instead of becoming routine manual calibration.
+
+Canonical timing contract:
+`docs/SRT_AUDIO_TIMING_STANDARD.md`
+
+### Owner Gate
+
+No normal Owner approval is required for final script or SRT.
 
 ### Rule
 
@@ -361,14 +396,29 @@ Antigravity 不得自行：
 无法执行时：
 `RETURN_EXECUTION_CONTRACT_UNRESOLVED`
 
-### Audio Branch — TBD
+### Audio Mode — RESOLVED
 
-当前保留两个候选：
+`AUDIO_MODE=A_UPSTREAM_COSYVOICE`
 
-- **AUDIO_MODE=A**：上游先完成 TTS/配音，Antigravity 以现成音频为唯一主时间轴；
-- **AUDIO_MODE=B**：Antigravity 按锁定 script/SRT + voice config 生成 TTS，再锁音频时间轴。
+The Production Package specifies the voice/timing contract. Antigravity executes the locked CosyVoice recipe and must not creatively retime or rewrite speech.
 
-在真实 PoC 前保持 `TBD`。
+A future executor may change, but timing remains upstream-controlled.
+
+---
+
+## Stage 8A — Image Calibration Exception
+
+Manual critical-frame sampling is not a normal episode stage.
+
+Use it only for:
+- new recurring character;
+- new visual style;
+- new image model/provider;
+- new executor;
+- materially changed Prompt Compiler;
+- a newly observed automated-QA failure class.
+
+Otherwise G5 execution rows go directly to Antigravity + machine QA.
 
 ---
 
@@ -470,3 +520,22 @@ Traffic
 - 不可由模型伪造的结果。
 
 禁止用“看起来合理”代替真实输入。
+
+
+## Default Owner Interaction
+
+Normal run:
+
+```text
+invoke Story Showrunner
+→ auto-resolve today's topic
+→ autonomous G2–G6
+→ Antigravity execution
+→ final video
+→ Owner review
+```
+
+Owner does not normally approve script, SRT, Director plan or first-batch key frames.
+
+Canonical long-term product boundary:
+`docs/STORY_SHOWRUNNER_SKILL_TARGET.md`
