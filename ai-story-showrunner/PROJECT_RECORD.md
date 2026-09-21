@@ -714,3 +714,11 @@ Current:
 - Matched setup/reveal pair VB015→VB016 is validated.
 - Minor UI/browser framing polish deferred.
 - Next high-risk Pilot: VB022 source-crop compare.
+
+
+## 2026-09-21 — VB022 first attempt returned
+
+- `SRCH_VB022 = RETURN_SEMANTIC_EXECUTION_DRIFT`.
+- Generated frame compared the wrong pair of concepts and therefore lost the “服务费 vs 订单款项” object mismatch.
+- It also violated the no-character constraint and reintroduced a drifting/juvenile character.
+- Decision: remove character entirely; retry as pure two-source crop comparison.
