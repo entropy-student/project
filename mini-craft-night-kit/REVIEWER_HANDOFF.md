@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE_RESUME
+CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -756,3 +756,28 @@ Current Gate: `K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE_RESUME`.
 Executor may proceed through the bounded public Checkout until Sandbox buyer authentication/approval is required, then stop at Owner. After Owner approval, exactly one Sandbox payment/capture will be verified together with WooCommerce paid/processing state, redacted provider correlation, physical-fulfillment non-completion, and actual webhook/callback processing.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_PASS_RESUME_K3R10_SANDBOX_CAPTURE.md`.
+
+
+## K3R10 Resumed Checkout — Owner Sandbox Buyer Auth
+
+Reviewer independently inspected Executor commit `d7c14cc5eaa7e92c147231f1d44a02b849c2e146`.
+
+Accepted:
+
+```text
+PAYPAL_CHECKOUT_OPEN=PASS
+PAYPAL_SELECTED=PASS
+BUYER_AUTHENTICATION=OWNER_REQUIRED
+BUYER_APPROVAL=NOT_EXECUTED
+ORDER_CREATED=NOT_OBSERVED_BEFORE_CHECKPOINT
+CAPTURE_ACTIONS=0
+REFUND_ACTIONS=0
+PUBLIC_HTTPS_ORIGIN=RETAINED
+PAYPAL_LIVE_ENABLED=NO
+```
+
+Current checkpoint: `OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED`.
+
+Owner may privately complete Sandbox buyer login and approve the single test purchase, then return only a sanitized success/fail result. Do not share buyer credentials or provider payloads.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R10_OWNER_SANDBOX_BUYER_AUTH.md`.
