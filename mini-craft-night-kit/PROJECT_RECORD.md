@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3R11_DISCONNECT_CONFIRMATION_REQUIRED
+CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -736,3 +736,15 @@ CURRENT_CHECKPOINT=OWNER_K3R11_DISCONNECT_CONFIRMATION_REQUIRED
 ```
 
 Owner must explicitly authorize one official Disconnect before execution continues.
+
+
+## K3R11 Disconnect Confirmation / Process Correction
+
+Owner confirmed the single official PPCP Disconnect.
+
+```text
+OWNER_K3R11_DISCONNECT_CONFIRMATION=YES
+CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
+```
+
+Process correction: this Owner checkpoint was not actually required by the intended governance boundary because the action was local, reversible, rollback-protected, already Reviewer-authorized, and required no secret/provider authorization. Future equivalent actions should not interrupt Owner.
