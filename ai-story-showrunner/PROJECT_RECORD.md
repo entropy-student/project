@@ -731,3 +731,11 @@ Current:
 - Minor brand exposure / crop density deferred.
 - Deterministic source-crop execution remains pending asset persistence.
 - Next: VB025 analogy payoff.
+
+
+## 2026-09-21 — VB025 first attempt returned
+
+- `SRCH_VB025 = RETURN_EXECUTION`.
+- Prop-only / giant-phone output failed the required two-person analogy payoff.
+- Style also drifted into realistic/3D product-demo rendering.
+- Retry locked to a simplified-flat two-shot: IP puzzled + supporting actor confidently showing paper contact book.
