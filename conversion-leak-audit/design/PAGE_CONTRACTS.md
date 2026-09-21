@@ -1,6 +1,6 @@
 # Conversion Leak Audit — Page Contracts
 
-Status: `DRAFT_FOR_G3_5`
+Status: `FROZEN_G3_5`
 
 Codex 后续实现时，每个页面都必须满足“目的 / 用户问题 / 必须内容 / 禁止内容 / 状态 / CTA / 证据”合同。
 
