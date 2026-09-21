@@ -11,8 +11,8 @@
     "character_identity_patch": "PASS"
   },
   "execution_mode_counts": {
-    "GENERATE": 15,
-    "DERIVE_EDIT": 25,
+    "GENERATE": 16,
+    "DERIVE_EDIT": 24,
     "COMPOSITE_CROP": 4
   },
   "rows": [
@@ -829,7 +829,7 @@
       "visual_beat_id": "SRCH_VB012",
       "semantic_shot_id": "SRCH_S006",
       "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB012",
-      "execution_mode": "DERIVE_EDIT",
+      "execution_mode": "GENERATE",
       "asset_binding": {
         "character_refs": [],
         "scene_refs": [],
@@ -840,10 +840,10 @@
           "STYLE_CHANNEL_001"
         ]
       },
-      "source_frame_ref": "SRCH_VB011.png",
+      "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": null,
-      "edit_delta": "Preserve immutable locks and source-frame geometry. Change only: 来源链接 → 正确政策页 Context. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. Keep hidden: 平台服务费不予退还.",
+      "prompt": "16:9 simplified flat narrative comic / clean story-world UI insert. Locked viewpoint: IP_POV. The viewer is looking directly at a generic official help-center refund policy page. Dramatic job: remove the possibility that the protagonist opened the wrong webpage. Primary focus: a large clean policy-page title region that clearly reads as a refund-rules page; exact Chinese title will be applied in POST_OVERLAY. Secondary cue: a very subtle generic official-help-center identity cue, with no real or invented brand/logo. Keep the page shell minimal, calm, low-density, and readable at reduced size. Do not show a person, hands, desk, speech bubbles, floating cards, arrows, decorative infographics, random navigation/sidebar/ads, or unrelated article content. Critically, do not reveal or imply the later reversal that the platform service fee is non-refundable. Reserve clean whitespace and stable geometry so later beats can reuse the same page shell.",
+      "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -861,25 +861,28 @@
       "output_name": "SRCH_VB012.png",
       "acceptance_criteria": [
         "G4 intent preserved: ORIENT",
-        "P1 immediately readable: same official refund page opens; title confirms source is correct",
-        "no unnecessary brand/logo, bubble, card or explanatory arrow",
-        "caption-safe and readable at reduced size",
-        "only current Beat information is visible"
+        "P1 immediately readable: a generic official refund-policy page title confirms the viewer is on the correct page",
+        "locked viewpoint is IP_POV / readable page discovery",
+        "no character body or over-shoulder framing",
+        "page is low-density and clearly belongs to a help/policy context",
+        "do not reveal the later clause that platform service fee is non-refundable",
+        "exact Chinese title/body wording is reserved for POST_OVERLAY",
+        "no unnecessary brand/logo, floating card, decorative arrow, or random navigation/sidebar/ads",
+        "caption-safe and readable at reduced size"
       ],
       "identity_lock": {
         "required": false,
         "canonical_character_ids": [],
         "canonical_identity_ref_required": false,
         "policy_ref": null,
-        "hard_constraints": [
-          "preserve approved sequence-local character identity within its sequence"
-        ],
+        "hard_constraints": [],
         "reference_precedence": [
-          "APPROVED_SEQUENCE_CHARACTER_REF",
-          "PREVIOUS_ACCEPTED_FRAME",
+          "APPROVED_UI_MASTER",
           "PROMPT_PROSE"
         ]
-      }
+      },
+      "pov_mode": "IP_POV",
+      "pov_reason": "Viewer must share the protagonist's reading/discovery that the source page itself is correct."
     },
     {
       "execution_id": "EXEC_013",
