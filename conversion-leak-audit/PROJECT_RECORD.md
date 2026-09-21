@@ -167,6 +167,7 @@ optional LLM explanation (later)
 
 ```text
 Codex
+→ source-baseline traceability precheck
 → execute docs/G4_EXECUTION_CONTRACT.md
 → update docs/EXECUTION_EVIDENCE.md
 → Reviewer reads GitHub evidence
@@ -176,6 +177,8 @@ Codex
 当前：
 - G3.5 已 PASS；
 - G4 已释放给 Codex；
+- 2026-09-22 Reviewer 接管复核已完成，见 `docs/REVIEWER_DECISION_G4_TAKEOVER_RECONCILIATION.md`；
+- G4 任何源码编辑前必须证明原 `scanner/` 与 `wordpress-g1-baseline/` 的来源/版本/回归基线可追溯；若不能证明则 RETURN，不得重建；
 - G4 仅允许本地 WordPress ↔ Scanner ↔ Top 3 闭环；
 - Payment / VPS / Production 继续 HOLD。
 
