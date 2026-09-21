@@ -721,3 +721,25 @@ Deferred minor:
 Decision:
 do not rework.
 Continue to VB022.
+
+
+---
+
+## G5 Pilot — VB022 preflight scope
+
+Date: 2026-09-21
+
+Architecture review:
+- `COMPOSITE_CROP` is still the correct production mode;
+- the dramatic unit is not “AI vs policy” generically;
+- it is the object mismatch:
+  - question object = `服务费`;
+  - evidence object = `订单款项`.
+
+Pilot limitation:
+- `UI_AI_ANSWER_001` and `UI_POLICY_PAGE_001` binaries are still not persisted in repo;
+- therefore this Pilot first validates visual/semantic comparison grammar with representative crops;
+- deterministic full-source composite execution remains pending asset persistence.
+
+Pass condition:
+viewer should understand the mismatch without VS / arrows / explanatory card.
