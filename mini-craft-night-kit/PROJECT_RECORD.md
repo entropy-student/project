@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3R11_PUBLIC_SANDBOX_MANUAL_CONNECT_REQUIRED
+CURRENT_GATE=K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -764,3 +764,17 @@ CURRENT_CHECKPOINT=OWNER_K3R11_PUBLIC_SANDBOX_MANUAL_CONNECT_REQUIRED
 Owner must now perform exactly one Sandbox Manual Connect through the temporary public WordPress UI using the rotated credentials. No buyer approval/capture is authorized yet. The Quick Tunnel is temporary and must be revalidated if it drops.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_REBIND_PREP_PASS_OWNER_PUBLIC_MANUAL_CONNECT.md`.
+
+
+## K3R11 Owner Public Manual Connect — SUCCESS UI
+
+Owner supplied UI evidence showing `Connected to PayPal` while WordPress was operating on the temporary public HTTPS origin.
+
+```text
+OWNER_PUBLIC_MANUAL_CONNECT=SUCCESS
+CURRENT_GATE=K3R11_PUBLIC_ORIGIN_READINESS_VERIFY
+```
+
+Executor must now independently verify Sandbox merchant connection, SDK client token, PayPal Checkout button rendering, webhook registration/status, and runtime health. K3R11 remains open until Reviewer accepts those checks.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_OWNER_PUBLIC_CONNECT_SUCCESS_VERIFY_READINESS.md`.
