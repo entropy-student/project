@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R8C_CONTAINER_NATIVE_OAUTH_CHECK
+CURRENT_CHECKPOINT=OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -472,3 +472,12 @@ Corrected host helper still returned `POWERSHELL_REQUEST_EXCEPTION`; credentials
 K3R8C moves the direct OAuth check into the active Docker/WordPress runtime and requires a mandatory diagnostic evidence packet for all further diagnostic handoffs.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R8C_CONTAINER_NATIVE_OAUTH_CHECK.md`.
+
+
+## K3R8C Executor Result / Owner Container OAuth Checkpoint
+
+Executor completed the container-native helper preparation and supplied a complete `DIAGNOSTIC_PACKET`. Reviewer accepts the evidence packet as sufficient for this checkpoint.
+
+Current checkpoint: `OWNER_K3R8C_CONTAINER_OAUTH_REQUIRED`.
+
+Owner must run the local wrapper and return only the five redacted fields. No Phase C is authorized until the container-native OAuth result is known.
