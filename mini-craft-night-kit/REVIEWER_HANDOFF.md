@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3R8E_PAYEE_PROBE_REQUIRED
+CURRENT_GATE=K3R9_PPCP_MINIMAL_ENV_ISOLATION
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -423,3 +423,32 @@ The intended test is correctly bounded: Sandbox-only OAuth, create one uncapture
 Recorded readiness evidence is sufficient to proceed to the Owner checkpoint, with one limitation: the local helper source itself is not committed to GitHub, so Reviewer cannot inspect its bytes directly.
 
 Current checkpoint: `OWNER_K3R8E_PAYEE_PROBE_REQUIRED`.
+
+
+## K3R8E Final Review — PASS / K3R9 Authorization
+
+Owner returned the approved K3R8E redacted parity result:
+
+```text
+OAUTH_HTTP=200
+ORDER_CREATE_HTTP=201
+ORDER_GET_HTTP=200
+PAYEE_OBJECT_PRESENT=YES
+PAYEE_MERCHANT_ID_PRESENT=YES
+PAYEE_EMAIL_PRESENT=YES
+ERROR_CLASS=NONE
+```
+
+Reviewer accepts `K3R8E_PAYEE_PROBE_PARITY_TEST=PASS`.
+
+This proves that, on the active Docker/MariaDB runtime, the same Sandbox app/account can successfully complete OAuth, create the minimal USD 1.00 uncaptured order, retrieve it, and receive the payee fields PPCP expects.
+
+The provider/app/account path is therefore no longer the isolated failure boundary for this test. The remaining boundary is PPCP 4.1.3's manual-connect client path or an interaction affecting that path inside WordPress.
+
+PPCP 4.1.3 is currently the official latest version, so no upgrade Gate is authorized. The next bounded step follows official support-style conflict isolation before any source patch.
+
+Current Gate: `K3R9_PPCP_MINIMAL_ENV_ISOLATION`.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8E_PASS_K3R9_MINIMAL_ENV_ISOLATION.md`.
+
+Executor may prepare a rollback point, temporarily reduce active plugins to WooCommerce + WooCommerce PayPal Payments, clear reversible caches/transients, verify the direct settings UI, and stop at an Owner Manual Connect checkpoint. No version change, source patch, theme replacement, Live, payment, tunnel, or VPS action is authorized.
