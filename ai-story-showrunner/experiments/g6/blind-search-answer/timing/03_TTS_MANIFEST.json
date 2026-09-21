@@ -24,10 +24,10 @@
   },
   "semantics": {
     "end_field": "target speech end",
-    "allocated_window_end_field": "end of Speech Unit including authored semantic hold",
     "authored_pause_after": "semantic hold after normalized speech; not technical padding",
     "allowed_alignment_tolerance_ms": 120,
-    "alignment_tolerance_note": "technical only; production safety remains governed by required-extra-speed and tail-slack rules from Voice Timing Profile v2.1"
+    "alignment_tolerance_note": "technical only; production safety remains governed by required-extra-speed and tail-slack rules from Voice Timing Profile v2.1",
+    "allocated_window_rule": "allocated_window_end = end + authored_pause_after; silent holds are listed separately and shift later row starts."
   },
   "row_count": 43,
   "silent_holds": [
@@ -42,11 +42,9 @@
   "rows": [
     {
       "speech_unit_id": "SU001",
-      "visual_beat_id": "SRCH_VB001",
       "text": "我现在看到 AI 回答下面带着“官方来源”四个字，第一反应已经不是放心了。",
       "start": 0,
       "end": 5.1243,
-      "allocated_window_end": 5.25,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -56,16 +54,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.1257,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU002",
-      "visual_beat_id": "SRCH_VB002",
       "text": "是先点开看看。",
       "start": 5.25,
       "end": 6.0231,
-      "allocated_window_end": 6.74,
       "timing_kind": "PUNCH",
       "pace_class": "FAST_CLEAR",
       "generation_speed": 1.08,
@@ -75,16 +70,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.7169,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU003",
-      "visual_beat_id": "SRCH_VB003",
       "text": "因为有一次，我只是想偷个懒，查一条特别简单的退款规则。\n问题也很具体：",
       "start": 6.74,
       "end": 12.1917,
-      "allocated_window_end": 12.1917,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -94,16 +86,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU004",
-      "visual_beat_id": "SRCH_VB004",
       "text": "“订单退掉以后，平台收的那笔服务费，会不会一起退回来？”",
       "start": 12.1917,
       "end": 16.2766,
-      "allocated_window_end": 16.2766,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -113,16 +102,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU005",
-      "visual_beat_id": "SRCH_VB005",
       "text": "它搜了一下。\n几秒钟以后，答案出来了：",
       "start": 16.2766,
       "end": 19.3343,
-      "allocated_window_end": 19.3343,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -132,16 +118,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU006",
-      "visual_beat_id": "SRCH_VB006",
       "text": "“会。退款完成后，款项会原路退回。”",
       "start": 19.3343,
       "end": 21.6826,
-      "allocated_window_end": 22.0143,
       "timing_kind": "PUNCH",
       "pace_class": "FAST_CLEAR",
       "generation_speed": 1.08,
@@ -151,16 +134,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.3317,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU007",
-      "visual_beat_id": "SRCH_VB007",
       "text": "下面还真的挂着一条官方帮助中心的链接。",
       "start": 22.0143,
       "end": 24.5212,
-      "allocated_window_end": 25.2143,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -170,16 +150,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.6931,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU008",
-      "visual_beat_id": "SRCH_VB008",
       "text": "我当时那个放心程度，大概相当于老师不仅告诉你答案，还把参考答案拍在了桌上。",
       "start": 25.2143,
       "end": 30.7116,
-      "allocated_window_end": 31.1143,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -189,16 +166,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.4027,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU009",
-      "visual_beat_id": "SRCH_VB009",
       "text": "于是我顺手就在成本表里写了一行：\n“服务费：可退。”",
       "start": 31.1143,
       "end": 34.5399,
-      "allocated_window_end": 34.9743,
       "timing_kind": "PUNCH",
       "pace_class": "FAST_CLEAR",
       "generation_speed": 1.08,
@@ -208,16 +182,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.4344,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU010",
-      "visual_beat_id": "SRCH_VB010",
       "text": "本来这件事到这里已经结束了。\n但我那天可能刚好手比较欠。",
       "start": 34.9743,
       "end": 38.5833,
-      "allocated_window_end": 39.3543,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -227,16 +198,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.771,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU011",
-      "visual_beat_id": "SRCH_VB011",
       "text": "我点开了那个官方网页。",
       "start": 39.3543,
       "end": 40.834,
-      "allocated_window_end": 41.2043,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -246,16 +214,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.3703,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU012",
-      "visual_beat_id": "SRCH_VB012",
       "text": "网页没找错。\n标题就是退款规则。",
       "start": 41.2043,
       "end": 43.2725,
-      "allocated_window_end": 43.5643,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -265,16 +230,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.2918,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU013",
-      "visual_beat_id": "SRCH_VB013",
       "text": "甚至 AI 刚才那句话，也真的能在上面找到。",
       "start": 43.5643,
       "end": 47.0194,
-      "allocated_window_end": 47.0194,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -284,16 +246,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU014",
-      "visual_beat_id": "SRCH_VB014",
       "text": "上面写着：\n“退款完成后，订单款项将退回原支付方式。”",
       "start": 47.0194,
       "end": 50.8475,
-      "allocated_window_end": 50.8475,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -303,16 +262,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU015",
-      "visual_beat_id": "SRCH_VB015",
       "text": "我往下又看了一行。",
       "start": 50.8475,
       "end": 52.0704,
-      "allocated_window_end": 52.4775,
       "timing_kind": "PUNCH_SETUP",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -322,16 +278,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.4071,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU016",
-      "visual_beat_id": "SRCH_VB016",
       "text": "“平台服务费不予退还。”",
       "start": 52.4775,
       "end": 54.2775,
-      "allocated_window_end": 54.6175,
       "timing_kind": "REVERSAL",
       "pace_class": "CONTROLLED",
       "generation_speed": 1,
@@ -341,16 +294,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.34,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU018",
-      "visual_beat_id": "SRCH_VB018",
       "text": "我又看了一眼 AI 的答案。\n“会。”",
       "start": 56.0175,
       "end": 58.2582,
-      "allocated_window_end": 58.3775,
       "timing_kind": "PUNCH",
       "pace_class": "FAST_CLEAR",
       "generation_speed": 1.08,
@@ -360,16 +310,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.1193,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU019",
-      "visual_beat_id": "SRCH_VB019",
       "text": "再看网页。\n“不予退还。”",
       "start": 58.3775,
       "end": 59.9775,
-      "allocated_window_end": 60.3475,
       "timing_kind": "REVERSAL",
       "pace_class": "CONTROLLED",
       "generation_speed": 1,
@@ -379,16 +326,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.37,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU020",
-      "visual_beat_id": "SRCH_VB020",
       "text": "这时候最奇怪的地方就出现了。\n它不是没联网。\n也不是搜到了什么野鸡论坛。",
       "start": 60.3475,
       "end": 64.9302,
-      "allocated_window_end": 65.7475,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -398,16 +342,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.8173,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU021",
-      "visual_beat_id": "SRCH_VB021",
       "text": "它甚至把正确的官网放在了我面前。",
       "start": 65.7475,
       "end": 67.712,
-      "allocated_window_end": 68.7575,
       "timing_kind": "PUNCH",
       "pace_class": "FAST_CLEAR",
       "generation_speed": 1.08,
@@ -417,16 +358,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 1.0455,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU022",
-      "visual_beat_id": "SRCH_VB022",
       "text": "但它拿着回答“订单款项去哪儿”的那句话，回答了我“服务费退不退”的问题。",
       "start": 68.7575,
       "end": 73.2732,
-      "allocated_window_end": 73.9875,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -436,16 +374,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.7143,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU023",
-      "visual_beat_id": "SRCH_VB023",
       "text": "就像我问一个人：\n“老板今天来不来？”",
       "start": 73.9875,
       "end": 76.4488,
-      "allocated_window_end": 76.5075,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -455,16 +390,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.0587,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU024",
-      "visual_beat_id": "SRCH_VB024",
       "text": "他翻开通讯录，准确找到了老板那一页，然后特别自信地告诉我：",
       "start": 76.5075,
       "end": 81.2423,
-      "allocated_window_end": 81.2423,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -474,16 +406,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU025",
-      "visual_beat_id": "SRCH_VB025",
       "text": "“老板电话是 138……”\n资料没找错。\n答案还是没回答问题。",
       "start": 81.2423,
       "end": 84.2596,
-      "allocated_window_end": 85.2323,
       "timing_kind": "PUNCH",
       "pace_class": "FAST_CLEAR",
       "generation_speed": 1.08,
@@ -493,16 +422,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.9727,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU026",
-      "visual_beat_id": "SRCH_VB026",
       "text": "我后来又试了一次。\n这次没问它“答案是什么”。\n我只问：",
       "start": 85.2323,
       "end": 88.7957,
-      "allocated_window_end": 88.9423,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -512,16 +438,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.1466,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU027",
-      "visual_beat_id": "SRCH_VB027",
       "text": "“你引用的网页里，哪一句话明确说明服务费会退？”",
       "start": 88.9423,
       "end": 92.174,
-      "allocated_window_end": 92.4823,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -531,16 +454,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.3083,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU028",
-      "visual_beat_id": "SRCH_VB028",
       "text": "它重新看了一遍。",
       "start": 92.4823,
       "end": 93.9538,
-      "allocated_window_end": 93.9538,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -550,16 +470,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU029",
-      "visual_beat_id": "SRCH_VB029",
       "text": "然后答案变了。",
       "start": 93.9538,
       "end": 94.7269,
-      "allocated_window_end": 95.4438,
       "timing_kind": "PUNCH",
       "pace_class": "FAST_CLEAR",
       "generation_speed": 1.08,
@@ -569,16 +486,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.7169,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU030",
-      "visual_beat_id": "SRCH_VB030",
       "text": "因为“搜到网页”和“用对网页里的证据”，其实是两件事。",
       "start": 95.4438,
       "end": 98.8039,
-      "allocated_window_end": 99.1538,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -588,16 +502,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.3499,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU031",
-      "visual_beat_id": "SRCH_VB031",
       "text": "搜索做的，是把可能有用的资料拿回来。",
       "start": 99.1538,
       "end": 101.6706,
-      "allocated_window_end": 102.3338,
       "timing_kind": "PUNCH",
       "pace_class": "FAST_CLEAR",
       "generation_speed": 1.08,
@@ -607,16 +518,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.6632,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU032",
-      "visual_beat_id": "SRCH_VB032",
       "text": "但资料回来以后，模型还得判断：\n哪一句跟你的问题真正对应。\n哪些只是看起来很像。",
       "start": 102.3338,
       "end": 108.0344,
-      "allocated_window_end": 108.2338,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -626,16 +534,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.1994,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU033",
-      "visual_beat_id": "SRCH_VB033",
       "text": "有没有例外。",
       "start": 108.2338,
       "end": 109.7053,
-      "allocated_window_end": 109.7053,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -645,16 +550,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU034",
-      "visual_beat_id": "SRCH_VB034",
       "text": "几句话放在一起以后，结论到底是什么。",
       "start": 109.7053,
       "end": 112.4234,
-      "allocated_window_end": 112.5653,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -664,16 +566,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.1419,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU035",
-      "visual_beat_id": "SRCH_VB035",
       "text": "这一步如果错了，就会出现一种特别有迷惑性的答案：\n来源是真的。\n链接也是真的。",
       "start": 112.5653,
       "end": 118.1375,
-      "allocated_window_end": 118.2953,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -683,16 +582,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.1578,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU036",
-      "visual_beat_id": "SRCH_VB036",
       "text": "甚至引用的句子也是真的。",
       "start": 118.2953,
       "end": 119.9034,
-      "allocated_window_end": 120.3153,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -702,16 +598,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.4119,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU037",
-      "visual_beat_id": "SRCH_VB037",
       "text": "只有最后那个结论，是错的。",
       "start": 120.3153,
       "end": 122.2376,
-      "allocated_window_end": 122.6553,
       "timing_kind": "PUNCH",
       "pace_class": "FAST_CLEAR",
       "generation_speed": 1.08,
@@ -721,16 +614,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.4177,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU038",
-      "visual_beat_id": "SRCH_VB038",
       "text": "所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。",
       "start": 122.6553,
       "end": 127.266,
-      "allocated_window_end": 127.266,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -740,16 +630,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU039",
-      "visual_beat_id": "SRCH_VB039",
       "text": "如果答案不重要，我当然也不会每次都去查。",
       "start": 127.266,
       "end": 130.2409,
-      "allocated_window_end": 130.2409,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -759,16 +646,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU040",
-      "visual_beat_id": "SRCH_VB040",
       "text": "但如果这件事真的会让我花钱、改方案，或者做一个很难撤回来的决定，",
       "start": 130.2409,
       "end": 135.3609,
-      "allocated_window_end": 135.3609,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -778,16 +662,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU041",
-      "visual_beat_id": "SRCH_VB041",
       "text": "我会多问一句：",
       "start": 135.3609,
       "end": 136.4606,
-      "allocated_window_end": 136.7109,
       "timing_kind": "PUNCH_SETUP",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -797,16 +678,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.2503,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU042",
-      "visual_beat_id": "SRCH_VB042",
       "text": "“这个来源里的哪句话，真的支持你的结论？”",
       "start": 136.7109,
       "end": 139.3465,
-      "allocated_window_end": 140.0609,
       "timing_kind": "PUNCH",
       "pace_class": "FAST_CLEAR",
       "generation_speed": 1.08,
@@ -816,16 +694,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.7144,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU043",
-      "visual_beat_id": "SRCH_VB043",
       "text": "因为 AI 搜索最容易让我放松警惕的地方，可能恰恰就是——",
       "start": 140.0609,
       "end": 144.0831,
-      "allocated_window_end": 144.1309,
       "timing_kind": "NORMAL",
       "pace_class": "NORMAL",
       "generation_speed": 1,
@@ -835,16 +710,13 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.0478,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     },
     {
       "speech_unit_id": "SU044",
-      "visual_beat_id": "SRCH_VB044",
       "text": "它真的给我找对了网页。",
       "start": 144.1309,
       "end": 146.0248,
-      "allocated_window_end": 146.7209,
       "timing_kind": "FINAL",
       "pace_class": "FINAL",
       "generation_speed": 0.96,
@@ -854,8 +726,7 @@
       "reference_text_resource_id": "voice_reference_text:default_narrator_v1",
       "authored_pause_after": 0.6961,
       "allowed_alignment_tolerance_ms": 120,
-      "runtime_overrides": {},
-      "timing_note": "`end` is target speech end. `allocated_window_end` includes authored semantic hold before the next unit. 120ms is technical alignment tolerance only, not the Voice Profile acceptance threshold."
+      "runtime_overrides": {}
     }
   ]
 }
