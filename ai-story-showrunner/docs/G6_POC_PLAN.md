@@ -6,7 +6,15 @@ Status: `IN_PROGRESS`
 
 ## Goal
 
-Turn accepted G4/G5 outputs into a deterministic low-level package that Antigravity can execute without creative interpretation.
+Compile one complete deterministic Antigravity Production Package and validate that the executor can generate:
+
+- CosyVoice audio;
+- image assets;
+- timeline assembly;
+- subtitles;
+- final video;
+
+without creative reinterpretation.
 
 ## Entry conditions
 
@@ -14,56 +22,130 @@ Turn accepted G4/G5 outputs into a deterministic low-level package that Antigrav
 - G5 = PASS;
 - high-risk Pilot = PASS;
 - reference-path validation = PASS;
-- persistent reference package v1 = available.
+- persistent reference package v1 = available;
+- CosyVoice deterministic PoC = PASS.
 
-## First sequence
+## Current timing decision
 
-1. Materialize `g5-reference-package-v1` into the G6 working package.
-2. Use `AUDIO_MODE=A_UPSTREAM_COSYVOICE`.
-3. Segment the locked script into Speech Units while preserving G4 `timing_kind`, pace intent, timing anchors and reference durations.
-4. Run the fixed CosyVoice Voice Profile at calibrated base speed to measure feasibility for every Speech Unit.
-5. Build `TIMING_CALIBRATION.json`: compare reference windows against semantic speed envelopes and identify infeasible regions.
-6. Keep feasible reference windows; locally reallocate time only where needed, protecting anchors and semantic pace.
-7. Generate semantic-paced TTS at the solved per-unit speed and assemble `FINAL_AUDIO.wav` with authored pauses.
-8. Compile `FINAL_AUDIO_ALIGNED.srt` from the solved audio timeline.
-9. Retime the accepted Visual Beats only where exact timing changed, preserving order, dramatic job, POV and setup/payoff relationships.
-10. Generate `07_SHOT_TIMELINE.csv`.
-11. Generate `08_IMAGE_GENERATION.csv` from the accepted 44 G5 execution rows.
-12. Generate `09_EDIT_INSTRUCTIONS.md` and output spec.
-13. Run a small Antigravity execution slice before full-episode execution.
+Production timing is no longer solved by routine per-episode post-TTS calibration.
+
+Canonical path:
+
+```text
+locked script
+→ semantic timing class
+→ reusable VOICE_TIMING_PROFILE
+→ PRODUCTION_SUBTITLES.srt
+→ TTS_MANIFEST.json
+→ Director / Asset package
+→ Antigravity deterministic execution
+```
+
+Canonical contracts:
+- `docs/SRT_AUDIO_TIMING_STANDARD.md`
+- `docs/VOICE_TIMING_PROFILE_SPEC.md`
+
+The current three-case PoC is calibration evidence:
+- baseline: natural 2.5542s vs 2.680s reference — feasible;
+- tight line: natural 4.2493s vs 3.020s reference — 1.407x, audibly unacceptable;
+- punch: natural 1.2771s vs 1.350s reference — feasible.
+
+This proves the need for a reusable voice-specific timing model, not a routine second-pass retiming workflow.
+
+## Immediate sequence
+
+1. Run one-time Voice Timing Profile calibration on 15–24 representative utterances using the current canonical CosyVoice setup.
+2. Produce `VOICE_TIMING_PROFILE.json`.
+3. Validate it on held-out utterances.
+4. Recompile the current locked script into `PRODUCTION_SUBTITLES.srt` using semantic timing intent + Voice Timing Profile.
+5. Produce `TTS_MANIFEST.json` with exact text, semantic pace, intended speed, target start/end, voice/profile references and seed.
+6. Compile exact Visual Beat / Shot Timeline against the Production SRT.
+7. Assemble the full Antigravity Production Package.
+8. Hand the package to Antigravity.
+9. Antigravity executes:
+   - locked CosyVoice TTS;
+   - Nano Banana image generation/edit;
+   - exact timeline assembly;
+   - subtitles;
+   - final export.
+10. Run final QA and record any RETURN state.
+
+## Audio execution mode
+
+`AUDIO_MODE = EXECUTOR_LOCKED_COSYVOICE`
+
+Meaning:
+
+Upstream owns:
+- script;
+- semantic pace;
+- SRT;
+- timing;
+- voice profile;
+- TTS manifest.
+
+Antigravity owns:
+- deterministic CosyVoice execution only.
+
+Antigravity may not:
+- rewrite text;
+- choose a different pace;
+- redesign SRT;
+- redistribute semantic pauses;
+- creatively retime speech.
+
+Material timing miss:
+`RETURN_VOICE_TIMING_PROFILE_MISS`
+
+## Production package target
+
+Minimum package:
+
+- `00_EXECUTION_ORDER.md`
+- `01_SCRIPT.md`
+- `02_PRODUCTION_SUBTITLES.srt`
+- `03_TTS_MANIFEST.json`
+- `04_AUDIO_SPEC.md`
+- `05_VISUAL_BEATS.json`
+- `06_SHOT_TIMELINE.csv`
+- `07_IMAGE_GENERATION.json` or `.csv`
+- `08_CHARACTER_BIBLE.md`
+- `09_SCENE_BIBLE.md`
+- `10_STYLE_BIBLE.md`
+- `11_REFERENCE_MANIFEST.json`
+- `12_EDIT_INSTRUCTIONS.md`
+- `13_OUTPUT_SPEC.md`
+- `14_QA_RULES.md`
+- `references/`
+
+External local dependencies may remain outside the package:
+- canonical reference voice wav;
+- matching reference transcript;
+- CosyVoice repository/model;
+- cosyvoice venv.
 
 ## PoC acceptance
 
-- references resolve without manual guessing;
-- character refs are actually attached on every recurring-IP generation;
-- no executor-added bubbles/arrows/checklists/brand;
-- timeline follows final audio exactly;
-- executor returns instead of improvising when a contract is unresolved.
+- Voice Timing Profile predicts held-out timing within accepted tolerance;
+- Production SRT requires no routine creative rework after TTS;
+- character refs resolve;
+- image rows execute without manual prompt rewriting;
+- no executor-added brand/checklist/explainer clutter;
+- executor-generated audio follows locked timing contract;
+- image timeline matches Production SRT;
+- final video is reviewable;
+- unresolved contract produces RETURN rather than improvisation.
+
+## Human intervention
+
+Normal G6 execution requires no Owner approval of:
+- script;
+- SRT;
+- Director plan;
+- first-batch key frames.
+
+Manual key-frame sampling remains calibration-only for new model/style/character/executor failure classes.
 
 ## Deferred
 
 Hotspot portfolio ratio, hotspot integration policy and expanded IP narrative-engine design remain outside this G6 main-line task.
-
-
-## SRT / Audio timing decision
-
-Canonical contract:
-`docs/SRT_AUDIO_TIMING_STANDARD.md`
-
-`experiments/g4r-v03/blind-search-answer/08_REFERENCE_TIMING.srt` is a **planning/reference artifact only**.
-
-PoC evidence showed:
-- baseline natural TTS: 2.5542s inside a 2.680s old window — PASS;
-- tight sentence natural TTS: 4.2493s inside a 3.020s old window — would require 1.407x and sounded unacceptable;
-- punch natural TTS: 1.2771s inside a 1.350s old window — PASS.
-
-Root cause:
-old timestamps mixed useful semantic rhythm intent with numeric windows that were not always voice-feasible.
-
-Therefore:
-- keep `timing_kind`, relative pacing and protected anchors as upstream creative constraints;
-- use raw TTS only to measure physical feasibility, not to flatten the whole episode to one natural pace;
-- keep old reference windows when they are feasible inside the semantic speed envelope;
-- when a window is infeasible, borrow/donate time locally before changing section/episode duration;
-- major per-cue speed-up is prohibited as a rescue mechanism;
-- final Audio Master freezes the solved semantic-paced schedule.
