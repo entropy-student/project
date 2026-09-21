@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3_PAYPAL_SANDBOX
+CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_AUTH
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -217,3 +217,12 @@ GitHub handoff stable-Gate count is now 4; a separate Governance Change Gate is 
 Formal decision: `docs/REVIEWER_DECISION_K3_PAYPAL_SANDBOX.md`.
 
 Executor should proceed autonomously through official WooCommerce PayPal Payments Sandbox setup and testing until an actual Owner-only PayPal authorization step is required. Never request Secrets in GitHub/chat. If provider callback cannot reach localhost, return `RETURN_K3_PUBLIC_CALLBACK_REQUIRED` rather than creating an unauthorized public endpoint.
+
+
+## K3 Owner Authorization Checkpoint
+
+Executor correctly returned at `RETURN_OWNER_PAYPAL_SANDBOX_AUTH_REQUIRED`.
+
+Current checkpoint: `OWNER_K3_PAYPAL_SANDBOX_AUTH`.
+
+Owner action: complete PayPal Sandbox login/account authorization in the official WooCommerce PayPal Payments flow. Do not share password, Secret, token, OAuth code, cookie, or webhook secret. After Owner confirmation, resume K3 from the existing checkpoint; do not restart K3 from scratch.
