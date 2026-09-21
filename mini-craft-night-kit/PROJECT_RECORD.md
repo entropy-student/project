@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3R8B_CORRECTED_HELPER_REQUIRED
+CURRENT_GATE=K3R8C_CONTAINER_NATIVE_OAUTH_CHECK
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -463,3 +463,12 @@ K3R8B host/helper diagnostics completed without classifying the Sandbox credenti
 Current checkpoint: `OWNER_K3R8B_CORRECTED_HELPER_REQUIRED`.
 
 Owner should rerun the corrected local OAuth helper and return only its redacted result.
+
+
+## K3R8B Owner Re-run Result / K3R8C
+
+Corrected host helper still returned `POWERSHELL_REQUEST_EXCEPTION`; credentials remain unclassified. Reviewer will no longer use the Windows PowerShell HTTP stack for the credential verdict.
+
+K3R8C moves the direct OAuth check into the active Docker/WordPress runtime and requires a mandatory diagnostic evidence packet for all further diagnostic handoffs.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8C_CONTAINER_NATIVE_OAUTH_CHECK.md`.
