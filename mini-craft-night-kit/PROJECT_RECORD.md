@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_CHECKPOINT=OWNER_K3R8E_PAYEE_PROBE_REQUIRED
+CURRENT_GATE=K3R9_PPCP_MINIMAL_ENV_ISOLATION
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -564,3 +564,21 @@ Accepted for checkpoint readiness: the planned parity test matches the approved 
 Reviewer limitation remains: the actual local `.artifacts/k3r8e-payee-probe.ps1/.php` bytes are local-only and cannot be independently inspected from GitHub.
 
 Current checkpoint: `OWNER_K3R8E_PAYEE_PROBE_REQUIRED`.
+
+
+## K3R8E Final Review — PASS / K3R9
+
+Owner's approved provider-parity run returned OAuth 200, order-create 201, order-GET 200, and all expected payee fields present.
+
+```text
+K3R8E_PAYEE_PROBE_PARITY_TEST=PASS
+PAYPAL_SANDBOX_PROVIDER_PARITY=PASS
+PPCP_4_1_3_MANUAL_CONNECT_FAILURE_BOUNDARY=ISOLATED_TO_PPCP_OR_WORDPRESS_INTERACTION
+CURRENT_GATE=K3R9_PPCP_MINIMAL_ENV_ISOLATION
+```
+
+PPCP 4.1.3 is the current official release; no version upgrade test is available.
+
+K3R9 will temporarily isolate the active WordPress plugin environment to WooCommerce + WooCommerce PayPal Payments, with rollback, then stop for one Owner-run Sandbox Manual Connect retry. No source patch, theme change, Live payment, tunnel, or VPS action is authorized.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8E_PASS_K3R9_MINIMAL_ENV_ISOLATION.md`.
