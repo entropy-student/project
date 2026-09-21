@@ -447,7 +447,7 @@
     "reference_package_root": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1",
     "reference_package_zip": "/ai-story-showrunner/g5/blind-search-answer/g5-reference-package-v1.zip",
     "audio_mode": "EXECUTOR_LOCKED_COSYVOICE",
-    "next": "Run one-time 15–24 utterance CosyVoice Voice Timing Profile calibration, validate held-out prediction error, then compile PRODUCTION_SUBTITLES.srt + TTS_MANIFEST.json and the complete Antigravity Production Package.",
+    "next": "Run the prepared Antigravity Voice Timing Profile calibration task. Expected new CosyVoice generations: 15. On PASS, compile Production SRT + TTS Manifest and the full Antigravity Production Package.",
     "timing_standard": "docs/SRT_AUDIO_TIMING_STANDARD.md",
     "tts_poc": {
       "engine": "CosyVoice-300M",
@@ -485,7 +485,18 @@
       "13_OUTPUT_SPEC.md",
       "14_QA_RULES.md",
       "references/"
-    ]
+    ],
+    "voice_timing_calibration": {
+      "status": "READY_TO_RUN",
+      "calibration_set": "experiments/g6/voice-timing-calibration/CALIBRATION_SET_V1.json",
+      "antigravity_task": "experiments/g6/voice-timing-calibration/ANTIGRAVITY_CALIBRATION_TASK.md",
+      "total_samples": 18,
+      "existing_samples": 3,
+      "new_generations_expected": 15,
+      "training_samples": 14,
+      "heldout_samples": 4,
+      "next_after_pass": "Compile PRODUCTION_SUBTITLES.srt + TTS_MANIFEST.json, then full Antigravity Production Package."
+    }
   },
   "skill_productization": {
     "target": "story-showrunner",
