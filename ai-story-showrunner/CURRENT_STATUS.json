@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_PILOT_IN_PROGRESS_VB015_RETRY_READY",
+  "project_state": "G5_PILOT_IN_PROGRESS_VB015_PASS_VB016_READY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "VB015 first setup attempt returned: full help-center page was too broad and did not create matched setup anticipation. No architecture change. Retry with tight crop: previous policy-line tail visible, next-line region blank/blurred, no sidebar/brand/full page.",
+  "owner_review_scope": "VB015 image 1 accepted PASS_WITH_MINOR. Preserve its crop/page geometry as the matched setup master. Next: reveal only the withheld service-fee line in VB016; no camera/UI-shell change.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -352,15 +352,15 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Regenerate VB015 as a tight matched setup crop. If PASS/PASS_WITH_MINOR, immediately generate VB016 with identical crop/page geometry revealing the withheld service-fee line.",
+      "next": "Edit/generate VB016 from the accepted VB015 setup master with identical crop/page geometry, revealing only 平台服务费不予退还. If PASS/PASS_WITH_MINOR, continue VB022.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
         "SRCH_VB001": "PASS_WITH_MINOR_CURRENT_CHARACTER_IN_SCENE_MASTER",
         "SRCH_VB009": "PASS_WITH_MINOR",
         "SRCH_VB012": "PASS_WITH_MINOR",
-        "SRCH_VB015": "RETURN_GENERATION_ONLY_RETRY_READY",
-        "SRCH_VB016": "PENDING",
+        "SRCH_VB015": "PASS_WITH_MINOR_SETUP_MASTER_IMAGE1",
+        "SRCH_VB016": "READY_FOR_MATCHED_REVEAL",
         "SRCH_VB022": "PENDING",
         "SRCH_VB025": "PENDING",
         "SRCH_VB044": "PENDING"
