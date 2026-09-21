@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K3_PAYPAL_SANDBOX_MANUAL_CONNECT
+CURRENT_GATE=K3R8_PAYPAL_SANDBOX_CREDENTIAL_PLUGIN_ISOLATION
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -300,3 +300,12 @@ Provider-side completion did not write a local merchant connection: merchant con
 Formal decision: `docs/REVIEWER_DECISION_K3R7_PAYPAL_SANDBOX_MANUAL_CONNECTION.md`.
 
 Owner should use PPCP `See advanced options` → Sandbox Mode → Manually Connect with SANDBOX REST app credentials entered only in the local WooCommerce UI. Do not expose credentials in chat/GitHub. Public callback/tunnel remains deferred until after Sandbox merchant connection is confirmed.
+
+
+## K3R7 Result / K3R8 Authorization
+
+Manual Sandbox connection still fails with the official PPCP error. Stop repeated reconnect attempts.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R8_PAYPAL_SANDBOX_CREDENTIAL_PLUGIN_ISOLATION.md`.
+
+First verify container PayPal Sandbox network/TLS without secrets, then have Owner run a local secure direct OAuth check. If OAuth succeeds but PPCP still rejects the same credentials, return a PPCP 4.1.3 manual-connect defect to Reviewer without version changes or source patches.
