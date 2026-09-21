@@ -5,6 +5,37 @@
 > Project-specific adaptation: `docs/GOVERNANCE_ADAPTATION.md`  
 > Detailed evidence: `EXECUTION_EVIDENCE.md`
 
+## 0. LATEST OVERRIDE — 2026-09-21
+
+This section overrides stale historical current-state text below.
+
+Current state:
+```text
+P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5 = PASS
+G6 = IN_PROGRESS
+current subtask = VOICE_TIMING_PROFILE_CALIBRATION
+G7 = BLOCKED_BY_G6
+```
+
+Canonical decisions:
+- this repository is a validation workspace; long-term target is the reusable `story-showrunner` Skill;
+- AI is the first Domain Adapter, not the permanent system boundary;
+- default topic = explicit user override, otherwise today's Calendar, then Radar, then Evergreen;
+- normal production has no Owner Gate for final script, SRT, Director plan or first-batch key frames;
+- manual key-frame generation is calibration-only;
+- Production SRT is compiled near Writer using semantic timing + reusable Voice Timing Profile;
+- Antigravity executes locked CosyVoice TTS + image generation + edit; it has no creative timing authority;
+- current audio mode = `EXECUTOR_LOCKED_COSYVOICE`.
+
+Immediate next action:
+> Run the one-time 15–24 utterance Voice Timing Profile calibration, validate held-out prediction error, then compile Production SRT + TTS Manifest and the full Antigravity Production Package.
+
+Canonical docs:
+- `docs/STORY_SHOWRUNNER_SKILL_TARGET.md`
+- `docs/VOICE_TIMING_PROFILE_SPEC.md`
+- `docs/SRT_AUDIO_TIMING_STANDARD.md`
+- `docs/G6_POC_PLAN.md`
+
 ## 1. Current Authoritative State
 
 ```text
