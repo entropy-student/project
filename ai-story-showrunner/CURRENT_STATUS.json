@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_PILOT_IN_PROGRESS_POV_PATCH_PASS_VB009_RETRY_READY",
+  "project_state": "G5_PILOT_IN_PROGRESS_VB009_EXECUTION_PATCH_READY",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "POV grammar patch PASS: 8/44 beats corrected. Retry VB009 as first-person hand-action insert; then continue remaining Pilot.",
+  "owner_review_scope": "VB009 POV is accepted. Execution incompatibility fixed: fresh GENERATE as IP_POV_HANDS, visibility-scoped identity QA. Generate/QA VB009 next; PASS then continue VB012.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -320,7 +320,7 @@
     },
     "phase_c": {
       "name": "Frame Blueprint → Beat Binding → Execution Mode → Prompt/Edit Compiler",
-      "status": "PILOT_REVALIDATION_REQUIRED_AFTER_CHARACTER_DRIFT_PATCH",
+      "status": "PILOT_REVALIDATION_REQUIRED_VB009_EXECUTION_PATCH_READY",
       "frame_blueprints": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json",
       "execution_rows": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
       "recompile_review": "experiments/g5/blind-search-answer/15_FRAME_BLUEPRINT_RECOMPILE_REVIEW.md",
@@ -332,8 +332,8 @@
       "asset_reference_validation": "PASS",
       "unknown_asset_refs": [],
       "execution_mode_counts": {
-        "GENERATE": 14,
-        "DERIVE_EDIT": 26,
+        "GENERATE": 15,
+        "DERIVE_EDIT": 25,
         "COMPOSITE_CROP": 4
       },
       "historical_v01_outputs": {
@@ -352,12 +352,12 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Retry SRCH_VB009 as IP_POV_HANDS. If it passes, continue SRCH_VB012.",
+      "next": "Generate SRCH_VB009 as a fresh IP_POV_HANDS frame (not DERIVE_EDIT from VB008). If it passes, continue SRCH_VB012.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
         "SRCH_VB001": "PASS_WITH_MINOR_CURRENT_CHARACTER_IN_SCENE_MASTER",
-        "SRCH_VB009": "RETRY_READY_IP_POV_HANDS",
+        "SRCH_VB009": "RETRY_READY_FRESH_GENERATE_IP_POV_HANDS",
         "SRCH_VB012": "PENDING",
         "SRCH_VB015": "PENDING",
         "SRCH_VB016": "PENDING",
@@ -403,7 +403,7 @@
       ],
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "previous_pilot_character_frames": "REJECTED_NOT_SOURCE_ELIGIBLE",
-      "next": "Regenerate only VB001 with canonical identity reference + hard lock; if maturity/face/costume PASS, resume remaining Pilot.",
+      "next": "VB001 identity revalidation passed. Next: VB009 fresh IP_POV_HANDS generation with visibility-scoped hand/cuff identity QA.",
       "machine_validation": {
         "ip_rows": 31,
         "derive_ip_rows": 16,
