@@ -11,8 +11,8 @@
     "character_identity_patch": "PASS"
   },
   "execution_mode_counts": {
-    "GENERATE": 16,
-    "DERIVE_EDIT": 24,
+    "GENERATE": 17,
+    "DERIVE_EDIT": 23,
     "COMPOSITE_CROP": 4
   },
   "rows": [
@@ -3109,7 +3109,7 @@
       "visual_beat_id": "SRCH_VB044",
       "semantic_shot_id": "SRCH_S019",
       "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB044",
-      "execution_mode": "DERIVE_EDIT",
+      "execution_mode": "GENERATE",
       "asset_binding": {
         "character_refs": [
           "CHAR_IP_001"
@@ -3118,16 +3118,16 @@
           "SCENE_WORKDESK_001"
         ],
         "prop_ui_refs": [
-          "UI_AI_ANSWER_001"
+          "UI_POLICY_PAGE_001"
         ],
         "style_refs": [
           "STYLE_CHANNEL_001"
         ]
       },
-      "source_frame_ref": "SRCH_VB001.png",
+      "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": null,
-      "edit_delta": "Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: 同样看见来源，但行为从迟疑/被动接受变成主动核验. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. ",
+      "prompt": "16:9 simplified flat narrative comic. Callback composition: visually rhyme with SRCH_VB001 opening frame — observer medium-close, recurring IP on left/left-center and monitor/source target on right, same quiet workdesk world and similar character-monitor spatial relationship. Do not copy SRCH_VB001 UI shell; this is a fresh frame. Dramatic payoff: the same clearly adult CHAR_IP_001 now deliberately clicks/checks the correct source page before accepting the conclusion. Expression is calm, focused, verification-oriented rather than passive reassurance. Show a small generic policy/help-page source cue on the monitor, based on UI_POLICY_PAGE_001, with no brand/logo and no full-page text takeover. Hard identity lock: canonical dark short tousled hair, natural adult eye scale, stable adult jaw/chin/nose/body proportion, wine-red top with cream/off-white collar, black trousers, simple white shoes; never hoodie, teen, child, chibi or cute-boy reinterpretation. Low-density desk, no cat, no lesson card, no summary checklist, no moral text, no decorative arrows. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
         "summary checklist",
@@ -3151,10 +3151,11 @@
       "output_name": "SRCH_VB044.png",
       "acceptance_criteria": [
         "G4 intent preserved: LAND_PAYOFF",
-        "P1 immediately readable: opening callback resolves: official page is correct, and IP clicks/checks it before accepting the conclusion",
-        "no unnecessary brand/logo, bubble, card or explanatory arrow",
+        "P1 immediately readable: IP deliberately clicks/checks the correct source page before accepting the conclusion",
+        "composition clearly rhymes with SRCH_VB001 without requiring the same UI shell",
+        "character remains observer-view medium-close, not first-person",
+        "no summary checklist, lesson card, large moral text, brand/logo, cat, extra decorative props or full policy-page takeover",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible",
         "CHAR_IP_001 remains the same clearly adult young man",
         "canonical face/body maturity and wine-red collared costume pass identity QA"
       ],
@@ -3181,7 +3182,10 @@
           "PREVIOUS_ACCEPTED_FRAME",
           "PROMPT_PROSE"
         ]
-      }
+      },
+      "pov_mode": "OBSERVER",
+      "pov_reason": "The ending payoff is the visible behavior change: audience watches the protagonist actively verify the source.",
+      "composition_callback_ref": "SRCH_VB001"
     }
   ],
   "schema_version": "frame_execution_row.v0.3",
