@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K3R11_CONNECTION_STATE_RECONCILIATION
+CURRENT_GATE=K3R11_PUBLIC_ORIGIN_REBIND_PREP
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -612,3 +612,32 @@ CURRENT_GATE=K3R11_CONNECTION_STATE_RECONCILIATION
 Do not ask Owner to disconnect merely to reveal Manual Connect. Executor must perform read-only reconciliation of the UI-vs-REST state and return the smallest safe next action.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_UI_REST_CONNECTION_STATE_MISMATCH.md`.
+
+
+## K3R11 Connection-State Reconciliation — PASS / Rebind Prep
+
+Reviewer independently inspected Executor commit `1657c2b815656e493c8100df117a77dbd413608a` and the PPCP authentication/disconnect source.
+
+Accepted:
+
+```text
+K3R11_CONNECTION_STATE_RECONCILIATION=PASS
+PPCP_ADMIN_UI_CONNECTION_STATE=CONNECTED_PRESENTATION
+PPCP_REST_MERCHANT_CONNECTED=YES
+PPCP_STATE_MISMATCH=FALSE_PRIOR_PROBE_PATH_ERROR
+DISCONNECT_ACTION=NOT_EXECUTED_YET
+RECONNECT_ACTION=NOT_EXECUTED
+SECRET_VALUES_OUTPUT=NO
+```
+
+Correction: the earlier `PPCP_MERCHANT_CONNECTED=NO` result is superseded; the helper parsed `data.merchant` instead of the actual top-level `merchant` object.
+
+Security boundary remains: local PPCP is still bound to credential material stored before Owner rotated the Sandbox Secret, and `OLD_SANDBOX_SECRET_REUSE=FORBIDDEN` remains authoritative.
+
+PPCP official disconnect source clears local merchant/authentication state without requiring Owner credentials. One bounded official disconnect is therefore authorized before public-origin setup.
+
+Current Gate: `K3R11_PUBLIC_ORIGIN_REBIND_PREP`.
+
+Sequence: verify rollback → official local disconnect once → verify old binding cleared → create temporary HTTPS public origin → switch WordPress origin reversibly → verify reachability → stop at Owner Manual Connect using rotated credentials. No buyer approval/capture yet.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R11_CONNECTION_RECONCILED_PUBLIC_ORIGIN_REBIND.md`.
