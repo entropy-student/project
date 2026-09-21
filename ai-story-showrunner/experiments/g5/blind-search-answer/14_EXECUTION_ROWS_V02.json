@@ -11,8 +11,8 @@
     "character_identity_patch": "PASS"
   },
   "execution_mode_counts": {
-    "GENERATE": 14,
-    "DERIVE_EDIT": 26,
+    "GENERATE": 15,
+    "DERIVE_EDIT": 25,
     "COMPOSITE_CROP": 4
   },
   "rows": [
@@ -580,7 +580,7 @@
       "visual_beat_id": "SRCH_VB009",
       "semantic_shot_id": "SRCH_S004",
       "frame_blueprint_ref": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json#SRCH_VB009",
-      "execution_mode": "DERIVE_EDIT",
+      "execution_mode": "GENERATE",
       "asset_binding": {
         "character_refs": [
           "CHAR_IP_001"
@@ -595,10 +595,10 @@
           "STYLE_CHANNEL_001"
         ]
       },
-      "source_frame_ref": "SRCH_VB008.png",
+      "source_frame_ref": null,
       "source_asset_refs": [],
-      "prompt": null,
-      "edit_delta": "Preserve the accepted source only as continuity support. Reframe/execute in locked POV mode IP_POV_HANDS. POV reason: The story consequence is created by the protagonist personally writing the assumption into the cost sheet. Hard CHAR_IP_001 identity lock: same clearly adult young man; natural adult eye size; stable jaw/chin/nose and adult body proportion; canonical dark short tousled hair silhouette; wine-red top with cream/off-white collar, black trousers, simple white shoes. Simplify rendering detail only. Never reinterpret as teen/child/chibi/cute-boy, never add blush to juvenilize, never replace costume with hoodie. Canonical identity overrides any drift in continuity/source frame. Preserve immutable locks and source-frame geometry. Change only: 成本表新增一条错误判断. Do not change character identity, scene/UI shell, camera/crop, unrelated props or style. Keep hidden: 官方政策反转.",
+      "prompt": "16:9 simplified flat narrative comic. Locked POV: IP_POV_HANDS / downward first-person desk insert. The viewer experiences the protagonist personally writing a mistaken assumption into a cost sheet. Show only the protagonist's own natural adult hand, pen, and a small portion of the canonical wine-red sleeve with cream/off-white cuff; do not show the full face or full body. Primary focus at center: hand + pen contacting one isolated cost-sheet row. Preserve the established workdesk world/desk geometry as continuity, but compose a genuinely new first-person insert rather than deriving the observer shot. Use PROP_COST_SHEET_001 as a clean low-density cost-sheet shell. Reserve one clear row for the exact text “服务费：可退”; exact Chinese wording will be applied via POST_OVERLAY. Keep the official policy reversal hidden. No brand/logo, speech/thought bubble, floating card, decorative arrow, narration-duplication text, random UI chrome, or non-causal clutter. Keep bottom caption-safe area clear.",
+      "edit_delta": null,
       "composite_instructions": null,
       "negative_constraints": [
         "real/invented brand logos",
@@ -625,12 +625,14 @@
       "output_name": "SRCH_VB009.png",
       "acceptance_criteria": [
         "G4 intent preserved: SEE_CONSEQUENCE",
-        "P1 immediately readable: IP writes 服务费：可退 into the cost sheet",
+        "P1 immediately readable: own hand is actively writing into the isolated cost-sheet row",
+        "locked POV is IP_POV_HANDS / downward first-person desk view",
+        "no full face or third-party full-character composition",
+        "visible CHAR_IP_001 cue passes: natural adult hand anatomy + canonical wine-red sleeve / cream cuff",
+        "cost-sheet shell is readable and low-density; exact phrase 服务费：可退 is reserved for POST_OVERLAY",
         "no unnecessary brand/logo, bubble, card or explanatory arrow",
         "caption-safe and readable at reduced size",
-        "only current Beat information is visible",
-        "CHAR_IP_001 remains the same clearly adult young man",
-        "canonical face/body maturity and wine-red collared costume pass identity QA"
+        "official policy reversal is not leaked"
       ],
       "identity_lock": {
         "required": true,
@@ -639,14 +641,17 @@
         ],
         "canonical_identity_ref_required": true,
         "policy_ref": "docs/CHARACTER_IDENTITY_LOCK.md",
+        "visibility_scope": "PARTIAL_BODY_HANDS_CUFF_ONLY",
         "hard_constraints": [
-          "same clearly adult young male identity as CHAR_IP_001",
-          "natural adult eye size",
-          "stable face outline / jaw / chin / nose structure",
-          "stable adult head-body proportion",
-          "stable canonical dark short tousled hair silhouette and fringe",
-          "wine-red top + cream/off-white collar + black trousers + simple white shoes",
-          "style simplification may reduce rendering detail only; never identity anatomy"
+          "visible hand anatomy reads as adult, not child/chibi",
+          "visible costume cue is the canonical wine-red sleeve with cream/off-white cuff",
+          "do not invent or expose a full face/body merely to satisfy identity checking",
+          "style simplification may reduce rendering detail only; it may not change the visible identity/costume cue"
+        ],
+        "qa_scope": [
+          "adult hand anatomy",
+          "canonical wine-red sleeve + cream/off-white cuff",
+          "no juvenile/chibi hand or mascot semantics"
         ],
         "reference_precedence": [
           "OWNER_CANONICAL_IP",
