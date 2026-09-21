@@ -1,6 +1,6 @@
 # Conversion Leak Audit — Visual Acceptance
 
-Status: `DRAFT_FOR_G3_5`
+Status: `FROZEN_G3_5_ACTIVE_FOR_G4_5`
 
 视觉验收目标：把“高保真”从主观感觉变成可重复检查。
 
