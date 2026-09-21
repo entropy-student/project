@@ -1062,7 +1062,8 @@
             "PROMPT_PROSE"
           ]
         }
-      }
+      },
+      "pilot_execution_note": "Pilot scope: validate DUAL_COMPARE semantics first. Left crop must visibly anchor 服务费 as the question object; right crop must visibly anchor 订单款项 as the policy/evidence object. Do not add VS, arrows, conclusion cards, or explanatory titles. Exact full COMPOSITE_CROP determinism remains pending until UI_AI_ANSWER_001 and UI_POLICY_PAGE_001 binaries are persisted."
     },
     {
       "blueprint": {
