@@ -163,3 +163,32 @@ Not executed because the Owner checkpoint was reached:
 - No Live mode, real payment, public callback, VPS, Cloudflare, K4, K5, or production action.
 
 The old project on port 8088 remained HTTP 200 and was not modified. Reviewer-owned documents were not modified.
+## K3 bounded diagnostic return — PPCP/WooCommerce admin failure (2026-09-21)
+
+### Return marker
+
+`RETURN_REVIEWER_PPCP_CONFLICT_ISOLATION_REQUIRED`
+
+The bounded diagnostic did not retry PayPal authorization and did not change/delete any PayPal credential. Live mode, real payment, capture, refund, public callback, VPS, production, upgrades, downgrades, and database migration were not performed.
+
+### Evidence summary
+
+- Official `woocommerce-paypal-payments` 4.1.3 remains active.
+- Payments page browser Console: `Minified React error #299` in `ppcp-settings-js-index.js` at `createRoot`.
+- The bundle's React mount target is `#ppcp-settings-container`; the live Payments page had no such element. This directly explains the blank Payments body.
+- WooCommerce Home remained stuck on Store Activity loading during the current reload; the current DOM did not expose “Click for error details”.
+- Route registration exists, but repeated requests to `wc-admin/features`, `wc-admin/options`, `wc_paypal/settings`, and `wc_paypal/webhooks` timed out without headers. Store products/cart returned HTTP 200 in the first post-restart sample, then later requests stalled while four Studio PHP workers again showed sustained high CPU.
+- Logs show repeated WooCommerce Patterns Toolkit connection warnings and PPCP upstream webhook HTTP 404s. Existing PPCP onboarding records show `use_sandbox=false` and incomplete merchant connection; no sensitive values were copied into evidence.
+- `WP_DEBUG` and `WP_DEBUG_LOG` are false, no `wp-content/debug.log` or dedicated project PHP error log was found.
+
+### Root-cause candidate
+
+`PPCP_4.1.3_ADMIN_SETTINGS_REACT_MOUNT_FATAL_PLUS_ASSOCIATED_REMOTE_API_OR_WORKER_HANG`
+
+Secondary Home candidate: `WC_ADMIN_REST_REQUEST_TIMEOUT_UNDER_PPCP_OR_REMOTE_CALL_SATURATION`.
+
+### Minimum Reviewer action
+
+Authorize one bounded isolation test: temporarily deactivate only WooCommerce PayPal Payments, or restore the retained pre-K3 backup, and retest the Payments page, WooCommerce Home, and the affected REST routes. Executor did not perform this deactivation because the user required a Reviewer return when plugin isolation is the next test. Do not retry authorization or alter the existing PayPal credential state until the isolation result is reviewed.
+
+`STOP_AT_REVIEWER=YES`
