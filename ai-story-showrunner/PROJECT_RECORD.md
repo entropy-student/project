@@ -837,3 +837,14 @@ New canonical docs:
 
 Immediate next:
 one-time Voice Timing Profile calibration → held-out validation → Production SRT/TTS Manifest → complete Antigravity Production Package.
+
+
+## 2026-09-21 — Voice Timing Profile v1 held-out failure
+
+- 14-train / 4-held-out Huber model failed the original symmetric timing thresholds.
+- Held-out median AE = 393.5ms; p90 = 737.2ms; max = 801.9ms.
+- BLD001 exposed a dangerous short-NORMAL under-allocation.
+- BLD003 exposed mixed Latin + Arabic additive over-counting.
+- Reviewer found the original metric partially misaligned with production: under-allocation forces unnatural acceleration, while over-allocation mainly produces tail slack.
+- Voice Timing Profile Spec advanced to v0.2 with one-sided safety metrics and semantic slack review.
+- v1 profile is rejected; next step is targeted v2, not another full calibration sweep.
