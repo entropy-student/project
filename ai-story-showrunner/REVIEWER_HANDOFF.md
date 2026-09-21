@@ -699,3 +699,24 @@ real canonical reference binaries are not persisted/bound. Repeated character dr
 
 Next:
 persist canonical reference binaries → populate Reference Manifest canonical_paths → machine reference validation → final G5 PASS → G6.
+
+
+## G5 Final PASS / G6 Release — 2026-09-21
+
+```text
+G5 = PASS
+REFERENCE_PATH_VALIDATION = PASS
+G6 = READY
+```
+
+Evidence:
+- 8/8 high-risk Pilot beats accepted;
+- 44 execution rows validated;
+- 9/9 used asset IDs resolve to persistent canonical paths;
+- 0 unknown refs / 0 missing paths.
+
+Persistent package:
+`/ai-story-showrunner/g5/blind-search-answer/reference-package-v1`
+
+Next main-line gate:
+`G6 Low-Level Execution Package / Antigravity PoC`.
