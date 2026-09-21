@@ -371,3 +371,15 @@ Do not modify or reinterpret the original project-management Governance from thi
 The proposed Handoff V2 / review-packet approach is not yet validated and is reference-only. Continue using the existing approved Governance and current project-local GitHub handoff protocol.
 
 After the current K3R8* issue reaches a stable resolution, the next Reviewer task is a fresh overall project review based on actual current source/runtime/evidence. Prior Reviewer conclusions must be revalidated where evidence is material.
+
+## K3R8D Review / Owner Checkpoint
+
+Reviewer inspected the K3R8D Executor evidence directly in GitHub rather than accepting the handoff label alone.
+
+Evidence is internally consistent: the previous failure occurred before `docker cp`, the repaired wrapper resolves the PHP helper via `$PSScriptRoot`, the retained helper sizes/hashes are recorded, and two no-secret staging → container execution → cleanup dry runs are recorded as passing.
+
+Reviewer limitation: the actual local `.artifacts` helper bytes are not present in GitHub, so their existence/content cannot be independently verified from the repository. The Owner run is the next decisive verification of that local state.
+
+Current checkpoint: `OWNER_K3R8D_CONTAINER_OAUTH_REQUIRED`.
+
+After the current K3R8* issue is stably resolved, perform the already-requested fresh overall project review against actual current source/runtime/evidence.
