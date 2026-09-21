@@ -167,17 +167,27 @@ Escalate only unresolved RETURN/BLOCKED states or explicit Owner policy choices.
 Review artifacts:
 - `docs/skill-migration-review/MIGRATION_MAP_V1.md`
 - `docs/skill-migration-review/CONFLICT_REGISTER_V1.md`
-- `docs/skill-migration-review/REVIEW_SUMMARY_V1.md`
+- `docs/skill-migration-review/R1_CANONICAL_RECONCILIATION_REVIEW.md`
+- `docs/skill-migration-review/R2_CANDIDATE_MIGRATION_REVIEW.md`
 
 `SKILL_EXTRACTION_R1 = PASS`
+`SKILL_EXTRACTION_R2 = PASS`
+
+Candidate now exists:
+`entropy-student/spike.skill/story-showrunner`
+
+Candidate status:
+`CANDIDATE / E2E_NOT_YET_PROVEN`
 
 Resolved:
 - all 9 P0 canonical conflicts;
-- all 4 P2 current-truth cleanup issues;
-- C18 timing-kind → pace-class mapping.
+- all P1 core/profile/adapter/runtime splits;
+- all 4 P2 source-of-truth cleanup issues;
+- schema identity/timing-source migration;
+- portable voice profile path externalization.
 
 Next:
-`SKILL_EXTRACTION_R2 — create story-showrunner CANDIDATE in spike.skill and perform P1 splits during migration.`
+resume G6 using Candidate contracts.
 
 ## 11. Remaining unknowns
 
@@ -186,9 +196,16 @@ Next:
 
 ## 12. Immediate next action
 
-Proceed with candidate Skill migration.
+Candidate migration is complete.
 
-Do not yet label the Skill CANONICAL.
+Resume the validation episode at:
 
-After migration, resume the validation episode at:
-`Production SRT → TTS Manifest → Antigravity Production Package`.
+```text
+locked Blind Search script
+→ Candidate Timing Compiler
+→ Production SRT
+→ TTS Manifest
+→ full Antigravity Production Package
+```
+
+Do not label the Skill CANONICAL until final-video E2E PASS.
