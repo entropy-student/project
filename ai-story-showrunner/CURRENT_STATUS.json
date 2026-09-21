@@ -72,7 +72,7 @@
     "McKee-style causal structure is currently an internal Story Engine gate",
     "Jingsui is the canonical Writer Style Source behind a restrictive project adapter; runtime orchestration remains manual"
   ],
-  "project_state": "G5_PILOT_IN_PROGRESS_VB025_CHARACTER_RETRY_READY",
+  "project_state": "G5_PILOT_IN_PROGRESS_VB025_PASS_VB044_REVIEW",
   "g2_validation": {
     "episodes": [
       "20260920-mcp",
@@ -109,7 +109,7 @@
     "short_form_samples_status": "VALIDATION_REFERENCE_ONLY",
     "historical_short_form_planning_duration_seconds": "70-85"
   },
-  "owner_review_scope": "VB025 attempt 2 composition/payoff is acceptable, but recurring IP materially drifted juvenile/chibi and hoodie-like. Retry should preserve composition/contact-book action and correct only character identity/style.",
+  "owner_review_scope": "VB025 accepted PASS_WITH_MINOR_CHARACTER_RISK. Story payoff works; recurring-IP residual identity drift remains. Canonical image reference persistence is now a hard prerequisite before G6 deterministic production. Continue final high-risk Pilot beat VB044.",
   "g3_rebaseline": {
     "status": "PASS",
     "strategy": "docs/BILIBILI_CHANNEL_STRATEGY.md",
@@ -352,7 +352,7 @@
         "SRCH_VB025",
         "SRCH_VB044"
       ],
-      "next": "Retry VB025 preserving the accepted two-shot composition: restore CHAR_IP_001 adult identity + canonical wine-red/cream-collar costume; keep supporting actor adult/distinct; keep phonebook payoff. If PASS/PASS_WITH_MINOR, continue VB044.",
+      "next": "Review VB044 callback execution and generate final high-risk Pilot frame if structurally valid.",
       "character_identity_policy": "docs/CHARACTER_IDENTITY_LOCK.md",
       "image_asset_policy": "IMAGE_GENERATION_FIRST_NO_CODE_DRAWN_UI_DEFAULT",
       "pilot_progress": {
@@ -362,8 +362,8 @@
         "SRCH_VB015": "PASS_WITH_MINOR_SETUP_MASTER_IMAGE1",
         "SRCH_VB016": "PASS_WITH_MINOR",
         "SRCH_VB022": "PASS_WITH_MINOR_SEMANTIC_COMPARE",
-        "SRCH_VB025": "RETURN_CHARACTER_DRIFT_RETRY_READY",
-        "SRCH_VB044": "PENDING"
+        "SRCH_VB025": "PASS_WITH_MINOR_CHARACTER_RISK",
+        "SRCH_VB044": "IN_REVIEW"
       }
     },
     "phase_b_5": {
