@@ -771,3 +771,13 @@ Current:
 - `SRCH_VB044 = RETURN_EXECUTION_ATTEMPT2`.
 - Remaining issues are execution-only: wrong branded webpage + checklist lesson-card regression.
 - Next edit preserves composition/action and changes only screen + notebook semantics.
+
+
+## 2026-09-21 — G5 high-risk Pilot closure
+
+- 8/8 high-risk Pilot beats reached accepted states.
+- G5 compiler/frame architecture promoted to PASS_CANDIDATE.
+- Repeated failures clustered around executor over-explanation, incompatible derive sources, brand/UI expansion, and recurring-character drift.
+- No new Topic/hotspot/IP narrative-policy changes were introduced during this closure.
+- Final G5 blocker: persist and bind real canonical character/scene/UI reference binaries.
+- G6 remains blocked until reference-path validation passes.
