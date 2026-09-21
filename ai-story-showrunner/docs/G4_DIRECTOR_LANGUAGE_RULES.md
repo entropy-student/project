@@ -1,4 +1,4 @@
-# G4 Director Language Rules v0.3 — CANONICAL / G4 PASS
+# G4 Director Language Rules v0.4 — CANONICAL / G4 PASS
 
 > **Status: CANONICAL / OWNER APPROVED / G4 PASS.**
 > Purpose: theory-first Director architecture designed to survive new scripts without structural redesign.
@@ -132,6 +132,38 @@ Shot size follows information need:
 - medium for interaction, gesture, task, object handling;
 - close for meaningful reaction, decision, subtext;
 - insert for causal object/UI/detail state.
+
+## 5A. Viewpoint Grammar
+
+Canonical detail:
+`docs/G4_VIEWPOINT_GRAMMAR.md`
+
+POV is chosen from dramatic function, not from scene default.
+
+Core distinction:
+
+> **Should the audience watch the protagonist, or see/do the moment with the protagonist?**
+
+Modes:
+- `OBSERVER` — reaction/body/behavior is the story;
+- `IP_POV` — audience shares reading/discovery;
+- `IP_POV_HANDS` — protagonist's own manual action creates the consequence;
+- `OVER_SHOULDER_IP` — preserve protagonist ownership + readable target;
+- `OBJECTIVE_INSERT` — causal object/evidence must be isolated clearly;
+- `RELATIONAL_OBSERVER` — two-subject relation is the story;
+- `HYBRID_OBSERVER_POV` — Semantic Shot strategy; child Beats still choose an actual mode.
+
+Every new Visual Beat should record `pov_reason`.
+
+Rules:
+- first-person narration does not force all shots to IP_POV;
+- exact hand-owned actions should not default to third-party OBSERVER;
+- exact evidence may be IP_POV when discovery matters, or OBJECTIVE_INSERT when proof itself matters;
+- POV changes require a story/information reason, never variety alone.
+
+Failures:
+- `RETURN_POV_UNMOTIVATED`
+- `RETURN_POV_SWITCH_UNMOTIVATED`
 
 ## 6. Visual Beat Compilation
 
