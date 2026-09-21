@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R5_PAYPAL_SANDBOX_DOCKER
+CURRENT_GATE=K3R6_PPCP_PAGE_SCOPE_MOUNT_ISOLATION
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -396,3 +396,12 @@ STUDIO_RUNTIME=RETAINED_READ_ONLY
 K3 PayPal Sandbox remains incomplete. Current Gate: `K3R5_PAYPAL_SANDBOX_DOCKER`.
 
 Formal K3R5 decision: `docs/REVIEWER_DECISION_K3R5_PAYPAL_SANDBOX_DOCKER.md`.
+
+
+## K3R5 Result / K3R6 Authorization
+
+K3R5 returned `RETURN_K3R5_PPCP_4_1_3_DOCKER_UI_CONFLICT` after reproducing React #299 on the healthy Docker/MariaDB runtime. However, the direct PayPal settings route and PPCP REST endpoints still returned HTTP 200, while the broader WooCommerce/runtime remained healthy.
+
+Reviewer therefore does not authorize a version change yet. K3R6 will distinguish an overview-page-only mount defect from a truly broken direct PayPal settings UI.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R6_PPCP_PAGE_SCOPE_MOUNT_ISOLATION.md`.
