@@ -1,4 +1,4 @@
-# Voice Timing Profile Specification v0.1 — CANONICAL
+# Voice Timing Profile Specification v0.2 — CANONICAL
 
 ## Purpose
 
@@ -17,6 +17,18 @@ Recalibrate only when one of these materially changes:
 - generation settings that materially affect prosody.
 
 A normal new episode does NOT trigger recalibration.
+
+## v1 calibration finding
+
+The first 14-train / 4-held-out Huber regression failed held-out validation.
+
+Key lessons:
+- short NORMAL utterances have high lexical/prosodic variance and need a conservative minimum-duration floor;
+- separate large Latin-token and number-token penalties can over-count mixed-token lines;
+- one keyword pair is insufficient evidence for keyword-specific pause rules;
+- the model objective must prioritize safe timing windows, not symmetric absolute-error minimization.
+
+The v1 profile is rejected and must not be used for production.
 
 ## Profile dimensions
 
@@ -47,6 +59,11 @@ The profile must model at least:
 
 ### Fixed-cost effects
 Short utterances have non-linear onset/offset cost and must not be estimated by chars/sec alone.
+
+A v2 profile should include a conservative `short_normal_min_duration` calibrated across multiple unrelated short utterances, rather than learning a single unconstrained linear short-utterance coefficient.
+
+### Mixed-token normalization
+Latin abbreviations and Arabic numbers should be normalized toward approximate spoken/effective units before duration estimation. Avoid independent large fixed penalties that simply add together when multiple token types co-occur.
 
 ## Required outputs
 
@@ -104,14 +121,31 @@ Use the canonical reference voice and fixed seed/settings.
 
 ## Acceptance target
 
-The profile is good enough for normal production when held-out sentence prediction error is small enough that final TTS does not require creative retiming.
+The profile is good enough for normal production when it prevents unsafe under-allocation and keeps excess slack within semantic tolerance.
 
-Initial target:
-- median absolute timing error <= 150ms;
-- 90th percentile absolute error <= 300ms;
-- no held-out case requires an unplanned large speed change.
+Primary safety metrics:
 
-These thresholds are calibration targets and may be revised with evidence.
+`under_allocation = max(0, actual_duration - allocated_window)`
+
+`required_extra_speed = actual_duration / allocated_window`
+
+Initial technical limits:
+- `required_extra_speed <= 1.03x` → PASS;
+- `1.03x–1.05x` → PASS_WITH_MINOR;
+- `>1.05x` → RETURN_PROFILE_MISS.
+
+Over-allocation is tracked separately:
+
+`tail_slack = max(0, allocated_window - actual_duration)`
+
+Over-allocation does not force bad speech, but excessive slack can damage pacing. Evaluate it by semantic class:
+- PUNCH / FAST_CLEAR: preferred <= 300ms;
+- NORMAL / FAST_NORMAL: preferred <= 600ms;
+- CONTROLLED / FINAL: preferred <= 700ms.
+
+Absolute error remains diagnostic, not the sole PASS criterion.
+
+Do not treat under-allocation and over-allocation as equivalent failure modes.
 
 ## Production behavior
 
