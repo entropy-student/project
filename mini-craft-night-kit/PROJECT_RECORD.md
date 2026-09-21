@@ -923,3 +923,16 @@ CURRENT_GATE=K4_UI_CONVERSION_TRUST_FINALIZE
 These are content/business defaults, not permanent architecture constraints. Executor may finalize K4 pages and return one final PASS_CANDIDATE.
 
 Formal decision: `docs/REVIEWER_DECISION_K4_OWNER_BUSINESS_FACTS_CONFIRMED.md`.
+
+
+## K4 Owner UI Edit Window — PENDING
+
+Owner has not yet performed the planned manual UI edits. The current Executor K4-finalize run may finish, but formal K4 closure is deferred until Owner gets one edit window and a final bounded delta verification passes.
+
+```text
+OWNER_UI_EDIT_COMPLETED=NO
+K4_FORMAL_CLOSE=DEFERRED_UNTIL_OWNER_UI_EDIT
+PENDING_CHECKPOINT=OWNER_K4_UI_EDIT_WINDOW
+```
+
+Formal decision: `docs/REVIEWER_DECISION_K4_OWNER_UI_EDIT_WINDOW_BEFORE_K5.md`.
