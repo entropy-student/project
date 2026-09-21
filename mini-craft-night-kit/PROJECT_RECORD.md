@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R10_PAYPAL_SANDBOX_CHECKOUT_CAPTURE_RESUME
+CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -800,3 +800,20 @@ The temporary Quick Tunnel/public WordPress origin remains active for the resume
 Next mainline: public Checkout → Sandbox buyer approval → exactly one Sandbox capture → WooCommerce paid/processing state → redacted PayPal correlation → verify no automatic physical fulfillment → actual webhook/callback processing.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R11_PASS_RESUME_K3R10_SANDBOX_CAPTURE.md`.
+
+
+## K3R10 Sandbox Buyer Auth Checkpoint
+
+The resumed public Checkout reached the PayPal Sandbox buyer authentication boundary without creating an order or capture.
+
+```text
+PAYPAL_SELECTED=PASS
+BUYER_APPROVAL=OWNER_REQUIRED
+ORDER_CREATED=NOT_OBSERVED_BEFORE_CHECKPOINT
+CAPTURE_ACTIONS=0
+CURRENT_CHECKPOINT=OWNER_K3R10_SANDBOX_BUYER_AUTH_REQUIRED
+```
+
+Owner must privately complete Sandbox buyer login/approval for the single existing test flow. The temporary public origin remains active and must not be torn down.
+
+Formal decision: `docs/REVIEWER_DECISION_K3R10_OWNER_SANDBOX_BUYER_AUTH.md`.
