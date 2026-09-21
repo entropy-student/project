@@ -676,3 +676,50 @@ STOP_AT_REVIEWER=YES
 ### Error detail clarification
 
 The React decoder for the captured production exception `#299` resolves the full text to: `Target container is not a DOM element.` The live page inspection independently confirmed the targeted `#ppcp-settings-container` element was absent. No WooCommerce “Click for error details” link was rendered by the stuck Home view, so no additional WooCommerce UI error text was available to capture.
+## K3R1 — PPCP conflict isolation (2026-09-21) — RETURN
+
+- Gate: `K3R1_PPCP_CONFLICT_ISOLATION`
+- Result: `RETURN_K3R1_CONFLICT_NOT_ISOLATED`
+- Scope: one temporary deactivation test only; no reinstall, uninstall, option/credential deletion, version change, backup restore, authorization retry, Live mode, real payment, VPS, public tunnel, or database migration.
+
+### Authorized action and state
+
+- Plugin tested: `woocommerce-paypal-payments` `4.1.3`.
+- Before: active.
+- Action: deactivated only with the local Studio WordPress CLI.
+- After: inactive; PPCP remains deactivated.
+- Plugin files and stored configuration were not deleted or edited.
+- Because four target PHP workers were saturated, the target local Studio runtime was restarted once as a bounded diagnostic recovery action. No database or volume operation was performed.
+
+### Isolation results
+
+- WooCommerce Settings → Payments: the blank provider body recovered enough to render the native WooCommerce payment UI, including `Payment providers`, `Take offline payments`, `Accept payments with Woo`, and the PayPal action-needed card.
+- Native payment methods: visible again. The PayPal action-needed card is not evidence that PPCP was reactivated; the plugin list remained inactive.
+- WooCommerce Home: not recovered to a usable dashboard; the main area remained the Store Activity shell/blank state.
+- `/wc-admin/features`: timeout/no response after the final bounded restart probe.
+- `/wc-admin/options`: timeout/no response after the final bounded restart probe.
+- Store API products: timeout after the final bounded restart probe; an earlier post-deactivation sample returned HTTP 200, so the result is not a stable API health pass.
+- Store API cart: timeout after the final bounded restart probe.
+- PHP worker state: four new target workers were observed after the restart with lower CPU in the post-restart sample, but request timeouts persisted; worker saturation/request-hang behavior was not cleared.
+- React #299: the final Home tab did not show a new console error and the Payments UI rendered native methods, but a final Payments-tab console recapture was not completed because navigation timed out. The prior active-PPCP React #299 fault is therefore not claimed as a full console PASS.
+
+### Gate conclusion
+
+```text
+PPCP_DEACTIVATION_CLEARS_PAYMENTS_PAGE_FAILURE=PASS
+PPCP_DEACTIVATION_CLEARS_WC_HOME_API_FAILURE=FAIL
+REACT_299_POST_DEACTIVATION=NOT_OBSERVED_ON_FINAL_HOME_TAB
+PPCP_REMAINS_DEACTIVATED=YES
+PAYPAL_AUTH_RETRY=0
+PAYPAL_LIVE_ENABLED=NO
+REAL_PAYMENT_ACTIONS=0
+K3R1_ISOLATION=FAIL
+RETURN_K3R1_CONFLICT_NOT_ISOLATED=YES
+VPS_WRITES=ZERO
+SECRET_EXPOSURE=NO
+UNRELATED_PROJECTS_TOUCHED=NO
+OLD_PROJECT_UNCHANGED=PASS
+STOP_AT_REVIEWER=YES
+```
+
+The direct Payments-page failure is isolated to the active PPCP path, but the broader WooCommerce Home/admin REST and Store API failure remains. No further change is authorized by K3R1; leave PPCP deactivated for Reviewer review.
