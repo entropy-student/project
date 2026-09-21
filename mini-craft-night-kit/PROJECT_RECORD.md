@@ -23,7 +23,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K3R8D_OWNER_HELPER_ARTIFACT_READINESS_REPAIR
+CURRENT_CHECKPOINT=OWNER_K3R8E_PAYEE_PROBE_REQUIRED
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -554,3 +554,13 @@ Current truth:
 Next Gate: `K3R8E_PAYEE_PROBE_PARITY_TEST`.
 
 Formal decision: `docs/REVIEWER_DECISION_K3R8E_PAYEE_PROBE_PARITY_TEST.md`.
+
+## K3R8E Executor Result / Owner Payee-Probe Checkpoint
+
+Reviewer inspected the latest K3R8E `EXECUTION_EVIDENCE.md`, `EXECUTOR_HANDOFF.md`, and the formal K3R8E decision.
+
+Accepted for checkpoint readiness: the planned parity test matches the approved semantics (Sandbox OAuth → create USD 1.00 CAPTURE-intent order → GET order → presence-only payee inspection), no capture is performed, no production/Live/VPS/version/source mutation is included, and the recorded helper dry-run/staging/cleanup evidence is internally consistent.
+
+Reviewer limitation remains: the actual local `.artifacts/k3r8e-payee-probe.ps1/.php` bytes are local-only and cannot be independently inspected from GitHub.
+
+Current checkpoint: `OWNER_K3R8E_PAYEE_PROBE_REQUIRED`.
