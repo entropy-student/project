@@ -1,4 +1,4 @@
-# Production Visual Style v0.1
+# Production Visual Style v0.2
 
 ## Status
 
@@ -42,7 +42,7 @@ Identity source:
 Owner-approved IP image supplied in conversation.
 
 Preserve:
-- youthful male narrator identity;
+- clearly adult young-male narrator identity;
 - dark, tousled short-hair silhouette;
 - warm / rational / gentle baseline expression;
 - wine-red top;
@@ -51,19 +51,35 @@ Preserve:
 - simple white shoes.
 
 Production simplification:
-- hair reduced to stable major clumps rather than many individual strands;
+- hair micro-strands reduced to stable major clumps while preserving canonical silhouette/fringe;
 - skin/render shading limited to 1–2 broad flat levels;
-- only major clothing folds;
+- only major clothing folds; canonical costume geometry remains unchanged;
 - clean stable outline;
 - no decorative micro-detail added between beats.
 
-Character Guide is a human reference.
-Per-beat generation should attach only the minimum machine references required:
-- canonical identity reference;
-- relevant angle/pose reference;
+Canonical character policy:
+`docs/CHARACTER_IDENTITY_LOCK.md`
+
+Character simplification boundary:
+render complexity may decrease; identity anatomy may not.
+
+Never simplify:
+- adult maturity;
+- face outline / jaw / chin;
+- eye scale;
+- nose structure;
+- adult body proportion;
+- costume identity;
+- major hair silhouette.
+
+Per-beat generation should attach:
+- canonical identity reference whenever the recurring IP appears;
+- approved angle/pose reference when useful;
 - scene reference;
 - style reference;
 - causal prop/UI reference.
+
+Previous generated frames are secondary continuity references only; they never replace canonical identity.
 
 ---
 
@@ -201,9 +217,11 @@ Default:
 
 For every beat:
 - attach canonical identity where character appears;
+- enforce `docs/CHARACTER_IDENTITY_LOCK.md`;
 - attach canonical scene when recurring geometry matters;
 - attach UI/prop master where causal;
 - use previous accepted image only as continuity support, never as replacement for canonical identity;
+- reject and break the derivation chain if the source frame already shows maturity/face/costume drift;
 - use exact output names;
 - run beat fidelity / identity / scene / style QA before timeline assembly.
 
@@ -241,3 +259,25 @@ Challenger:
 The Challenger retains the recurring IP silhouette and identity cues but uses substantially simpler facial/environment rendering.
 
 Long-term style SCALE requires real audience + repeatability evidence.
+
+
+---
+
+## 11. Character Drift Guard
+
+Observed Pilot failure proved that "simplified comic style" can be misread as juvenile/cute character redesign.
+
+Therefore:
+
+> **Simplified rendering != simplified anatomy.**
+
+Hard failures:
+- teen/child appearance;
+- oversized eyes;
+- shorter/rounder juvenile jaw;
+- weakened nose structure;
+- oversized head / shortened adult body;
+- blush/cute reinterpretation;
+- wine-red collared top replaced by hoodie or other costume.
+
+Any such frame is rejected before it may become a continuity source.
