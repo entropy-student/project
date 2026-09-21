@@ -216,13 +216,15 @@ Timing result:
 - row/schema/timeline validation PASS.
 
 Next allowed:
-`TTS-only execution verification`
+1. production TTS execution — retain 43 unit WAVs + `narration_master.wav`;
+2. independent 12s Antigravity video-runtime probe.
 
-Task:
-`experiments/g6/blind-search-answer/ANTIGRAVITY_TTS_ONLY_TASK.md`
+Tasks:
+- `experiments/g6/blind-search-answer/ANTIGRAVITY_TTS_ONLY_TASK.md`
+- `experiments/g6/blind-search-answer/ANTIGRAVITY_VIDEO_RUNTIME_PROBE.md`
 
 Owner HOLD:
-`FULL_ANTIGRAVITY_PRODUCTION_PACKAGE`
+`FULL_ANTIGRAVITY_PRODUCTION_PACKAGE` until the video-runtime probe establishes whether Antigravity should target FFmpeg, Remotion, Hyperframe, a native timeline, or another execution path.
 
 Do not assemble the full package, image plan, edit package or final video until the Owner discussion completes.
 
