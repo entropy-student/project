@@ -1,23 +1,21 @@
-# Antigravity Task — Blind Search TTS Execution Only
+# Antigravity Task — Blind Search Production TTS
 
 ## Scope
 
-Execute **TTS only** for the already-compiled Blind Search timing artifacts.
+Produce the **real production narration audio** for the current Blind Search episode and simultaneously verify it against the already-compiled timing contract.
+
+This is no longer a disposable timing test.
 
 Do NOT build the full Antigravity Production Package.
 Do NOT generate images.
 Do NOT edit video.
-Do NOT remap Director/Visual Beats.
-Do NOT modify Production SRT.
 
-Inputs:
+Inputs, relative to:
+`ai-story-showrunner/experiments/g6/blind-search-answer/`
 
+- `timing/01_SPEECH_UNITS.json`
 - `timing/02_PRODUCTION_SUBTITLES.srt`
 - `timing/03_TTS_MANIFEST.json`
-- `timing/01_SPEECH_UNITS.json`
-
-Relative to:
-`ai-story-showrunner/experiments/g6/blind-search-answer/`
 
 ## Fixed runtime
 
@@ -36,15 +34,27 @@ Use the already validated local setup:
 - seed: 1986
 - sample rate: 22050 Hz
 
-Load model once.
-Cache speaker prompt once.
+Load the model once.
+Cache the speaker prompt once.
 Reset seed exactly as required by the validated deterministic setup.
 
-## Execution
+## Production outputs
 
-There are:
-- 43 TTS rows;
-- 1 explicit silent hold, which must NOT be sent to TTS.
+Generate and retain:
+
+```text
+tts/
+├─ units/
+│  ├─ SU001.wav
+│  ├─ SU002.wav
+│  └─ ... 43 voiced units total
+├─ narration_master.wav
+└─ tts_execution_report.json
+```
+
+The explicit 1.4s silent reaction hold is not sent to TTS. It must exist in `narration_master.wav` at the exact timeline position defined by Production SRT / Speech Units.
+
+## Per-unit execution
 
 For every TTS row:
 
@@ -54,7 +64,8 @@ For every TTS row:
 4. do not retry for aesthetic variation;
 5. normalize technical leading/trailing silence using the validated deterministic VAD rule;
 6. preserve internal semantic pauses;
-7. record:
+7. save normalized production WAV as `tts/units/<speech_unit_id>.wav`;
+8. record:
    - raw duration;
    - normalized duration;
    - target speech-window duration = `end - start`;
@@ -62,7 +73,7 @@ For every TTS row:
    - speech_tail_slack = max(0, target_speech_window - actual_normalized);
    - result.
 
-## Per-row timing result
+## Timing acceptance
 
 PASS:
 - required_extra_speed <= 1.03x.
@@ -73,38 +84,54 @@ PASS_WITH_MINOR:
 RETURN:
 - >1.05x.
 
-Tail slack is diagnostic here.
+Tail slack is diagnostic.
 Do not rewrite timing merely because actual speech is shorter than the safe window.
+
+## Master narration assembly
+
+If and only if all 43 rows have no RETURN:
+
+1. place each normalized unit at its Production SRT target start;
+2. preserve every `authored_pause_after`;
+3. preserve the explicit 1.4s silent reaction hold;
+4. use silence for safe unused tail windows;
+5. produce:
+   `tts/narration_master.wav`
+6. target total timeline:
+   approximately `146.7209s` (sample-rounding tolerance allowed).
+
+Do NOT materially time-stretch individual speech units to fill safe slack.
 
 ## Critical rule
 
-This task is a **Voice Timing execution verification**, not a new timing-design pass.
+This is production TTS execution under a frozen timing contract.
 
 Do NOT:
-- change SRT;
-- change semantic pace class;
+- change Production SRT;
+- change text;
+- change pace class;
 - change generation speed;
 - move authored pauses;
-- stretch audio materially;
-- tune Voice Profile against these episode rows.
+- tune the Voice Timing Profile against this episode;
+- proceed to images/video/package assembly.
 
-If any row returns >1.05x:
+If any row requires >1.05x:
+
 `RETURN_VOICE_TIMING_PROFILE_MISS`
 
-Retain the failed WAV(s) needed for diagnosis and stop before full audio/video assembly.
+Retain:
+- failed unit WAV(s);
+- execution report;
+- already-successful unit WAVs.
 
-## If all rows have no RETURN
+Do not create `narration_master.wav` until the timing miss is resolved.
+
+## Report
 
 Create:
+`tts/tts_execution_report.json`
 
-1. `tts_execution_report.json`
-2. `tts_wavs/` containing the 43 normalized unit WAVs
-
-Do not yet assemble the final master audio unless separately authorized after Production Package discussion.
-
-## Output report
-
-For each row:
+For every row:
 - speech_unit_id
 - raw_duration_sec
 - normalized_duration_sec
@@ -112,15 +139,25 @@ For each row:
 - required_extra_speed
 - speech_tail_slack_sec
 - PASS / PASS_WITH_MINOR / RETURN
+- production_wav_path
 
 Summary:
-- row count;
-- PASS count;
-- PASS_WITH_MINOR count;
-- RETURN count;
-- worst required_extra_speed;
-- largest speech-tail slack;
-- overall result.
+- row count
+- PASS count
+- PASS_WITH_MINOR count
+- RETURN count
+- worst required_extra_speed
+- largest speech-tail slack
+- narration master duration, if produced
+- overall result
 
-Final response:
-return only the summary, any failed row IDs, and retained output paths.
+## Final response
+
+Return only:
+- execution summary;
+- any failed row IDs;
+- `narration_master.wav` path if created;
+- report path;
+- units folder path.
+
+Do not start video production.
