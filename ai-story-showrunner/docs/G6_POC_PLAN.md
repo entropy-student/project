@@ -2,7 +2,7 @@
 
 Date: 2026-09-21
 
-Status: `READY`
+Status: `IN_PROGRESS`
 
 ## Goal
 
@@ -19,14 +19,17 @@ Turn accepted G4/G5 outputs into a deterministic low-level package that Antigrav
 ## First sequence
 
 1. Materialize `g5-reference-package-v1` into the G6 working package.
-2. Resolve `AUDIO_MODE` through a real PoC:
-   - A = upstream final TTS/audio;
-   - B = Antigravity TTS from locked script/SRT.
-3. Once audio is final, compile exact timecodes from locked audio/SRT.
-4. Generate `07_SHOT_TIMELINE.csv`.
-5. Generate `08_IMAGE_GENERATION.csv` from the accepted 44 G5 execution rows.
-6. Generate `09_EDIT_INSTRUCTIONS.md` and output spec.
-7. Run a small Antigravity execution slice before full-episode execution.
+2. Use `AUDIO_MODE=A_UPSTREAM_COSYVOICE`.
+3. Segment the locked script into natural Speech Units under `docs/SRT_AUDIO_TIMING_STANDARD.md`.
+4. Run the fixed CosyVoice Voice Profile at one episode-level base speed; measure real duration for every Speech Unit.
+5. Normalize technical head/tail silence and author explicit pause intervals.
+6. Assemble and lock `FINAL_AUDIO.wav`.
+7. Compile `FINAL_AUDIO_ALIGNED.srt` from the measured audio timeline.
+8. Retime the accepted Visual Beats against FINAL_AUDIO while preserving order, dramatic job, POV and setup/payoff relationships.
+9. Generate `07_SHOT_TIMELINE.csv`.
+10. Generate `08_IMAGE_GENERATION.csv` from the accepted 44 G5 execution rows.
+11. Generate `09_EDIT_INSTRUCTIONS.md` and output spec.
+12. Run a small Antigravity execution slice before full-episode execution.
 
 ## PoC acceptance
 
@@ -41,8 +44,24 @@ Turn accepted G4/G5 outputs into a deterministic low-level package that Antigrav
 Hotspot portfolio ratio, hotspot integration policy and expanded IP narrative-engine design remain outside this G6 main-line task.
 
 
-## SRT timing clarification
+## SRT / Audio timing decision
 
-`experiments/g4r-v03/blind-search-answer/08_REFERENCE_TIMING.srt` is validated as a **reference timing** file only.
+Canonical contract:
+`docs/SRT_AUDIO_TIMING_STANDARD.md`
 
-It preserves the accepted 44 Visual Beat timing estimate, but it is not yet waveform-aligned final subtitle timing. After final voice/TTS is locked, G6 must produce `FINAL_AUDIO_ALIGNED.srt` and compile the production Shot Timeline from that real audio.
+`experiments/g4r-v03/blind-search-answer/08_REFERENCE_TIMING.srt` is a **planning/reference artifact only**.
+
+PoC evidence showed:
+- baseline natural TTS: 2.5542s inside a 2.680s old window — PASS;
+- tight sentence natural TTS: 4.2493s inside a 3.020s old window — would require 1.407x and sounded unacceptable;
+- punch natural TTS: 1.2771s inside a 1.350s old window — PASS.
+
+Root cause:
+old timestamps inherited G4 Visual Beat pacing estimates. They are not valid speech-duration contracts.
+
+Therefore:
+- Audio Master becomes the production clock;
+- exact SRT is generated from measured audio;
+- Visual Beats are retimed after audio lock;
+- per-cue major speed-up is prohibited as a rescue mechanism;
+- planning `5 chars/sec` remains planning-only and cannot create production timestamps.
