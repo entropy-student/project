@@ -149,3 +149,16 @@ Codex writes execution facts/evidence to GitHub.
 Chat can remain short and point to the relevant file.
 
 If this workflow remains stable through several Gates, promote it to shared project-management governance.
+
+
+## 2026-09-22 Repository Reconciliation
+
+Formal decision:
+
+`REVIEWER_DECISION_G4_REPOSITORY_RECONCILIATION.md`
+
+G4 functional work remains a PASS candidate, but final PASS is withheld until the local implementation is moved into a clean, project-scoped Git workspace based on current GitHub `main`, tested again, committed on a dedicated G4 branch, and returned to Reviewer.
+
+The existing dirty monorepo worktree must not be cleaned/reset/pulled or used for the final G4 commit because it contains unrelated sibling-project pending changes.
+
+Owner intervention required: NO.
