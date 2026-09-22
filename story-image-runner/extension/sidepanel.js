@@ -45,7 +45,17 @@ async function importText(replace) {
 
 $("replaceText").addEventListener("click", () => runUi(() => importText(true)));
 $("appendText").addEventListener("click", () => runUi(() => importText(false)));
-$("start").addEventListener("click", () => runUi(async () => { await persistSettings(); await call("START_RUN"); }));
+$("start").addEventListener("click", () => runUi(async () => {
+  await persistSettings();
+  const state = (await call("GET_STATE")).state;
+  const hasPending = (state.jobs || []).some((job) => job.status === "pending");
+  const lines = parsePromptText($("promptText").value);
+  if (!hasPending && lines.length) {
+    await call("REPLACE_JOBS", { jobs: jobsFromPromptLines(lines) });
+    $("promptText").value = "";
+  }
+  await call("START_RUN");
+}));
 $("pause").addEventListener("click", () => runUi(() => call("PAUSE_RUN")));
 $("stop").addEventListener("click", () => runUi(() => call("STOP_RUN")));
 $("retryFailed").addEventListener("click", () => runUi(() => call("RETRY_FAILED")));
