@@ -1169,3 +1169,28 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 No Product rebuild, custom carousel, JavaScript patch, product/order/payment logic change, WooCommerce/PayPal version change, Home/Header mutation, VPS action, or secret output occurred.
+
+## K4 Strict Storefront Cleanup — Executor handoff (2026-09-23)
+
+```text
+GATE=K4_STRICT_STOREFRONT_CLEANUP
+RESULT=RETURN_REVIEWER_GUTENBERG_RECOVERY_BOUNDARY
+SUMMARY=Stopped before implementation after read-only Gutenberg validation found 11 invalid blocks across Contact and FAQ; no site state was changed.
+EVIDENCE=EXECUTION_EVIDENCE.md
+CONTACT_INVALID_BLOCKS=4;KADENCE_FORM_1;CORE_COLUMN_3
+FAQ_INVALID_BLOCKS=7;CORE_DETAILS_7
+SHIPPING_RETURNS_INVALID_BLOCKS=0
+CONTACT_FORM_VISIBLE_FIELDS=NAME_LABEL;EMAIL_LABEL;MESSAGE_TEXTAREA;NAME_AND_EMAIL_INPUTS_MISSING
+ROLLBACK_POINT=LOCAL_ONLY:.artifacts/k4-strict-storefront-cleanup/rollback-point.json;VERIFIED=YES
+HOME_PROTECTED=YES
+PRODUCT_GALLERY_PROTECTED=YES
+PAGE_CONFIG_PRODUCT_MUTATION=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+VISUAL_REVIEW_PACKAGE=NOT_CREATED
+OWNER_ACTION=REVIEWER_DECISION_REQUIRED_ON_SAFE_NATIVE_BLOCK_RECOVERY
+NEXT=STOP_AT_REVIEWER
+```
+
+No recovery, reserialization, copy edit, locale change, product visibility/category change, screenshot, or cart mutation was attempted. The existing local baseline and rollback snapshot are preserved for a future Reviewer-authorized continuation.
