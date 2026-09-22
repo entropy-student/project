@@ -1027,3 +1027,25 @@ NEXT=STOP_AT_REVIEWER
 Implementation facts: Kadence structure was reused; no images were generated; the existing Media Library/template assets remain Owner-replaceable; Contact keeps the native Kadence form with three visible inputs; Gutenberg parse verification returned unknown/invalid count `0` for all five implementation pages. The 13-width responsive smoke matrix covers `320,375,390,430,768,820,1024,1280,1366,1440,1920,2048,2560` for Home, Product, FAQ, Shipping & Returns, and Contact (`65/65` captures). HTTP, Store API, Docker/MariaDB, temporary Add to Cart→Cart→Checkout, plugin versions, PayPal configuration, and existing Sandbox order baseline were verified without payment or order creation.
 
 Protected scope: Shop, Cart, Checkout, Thank You / Order Received, and My Account structure was not rebuilt. No PPCP/WooCommerce/WordPress version or configuration change, Live action, VPS write, secret output, or K5 work occurred.
+
+## K4 Content Fill — Reviewer copy handoff (2026-09-22)
+
+```text
+GATE=K4_CONTENT_FILL_REVIEWER_COPY
+RESULT=PASS_CANDIDATE_K4_CONTENT_FILL_REVIEWER_COPY
+SUMMARY=Applied the authoritative K4 final copy to existing editable Home, Product, FAQ, Shipping & Returns, and Contact text slots only; protected commerce and payment surfaces were unchanged.
+EVIDENCE=EXECUTION_EVIDENCE.md;docs/UI_COPY_FILL_SCREENSHOT_INDEX.md;docs/ui-k4-copy/01-home-desktop.png;docs/ui-k4-copy/01-home-mobile.png;docs/ui-k4-copy/02-product-desktop.png;docs/ui-k4-copy/02-product-mobile.png;docs/ui-k4-copy/03-faq-desktop.png;docs/ui-k4-copy/03-faq-mobile.png;docs/ui-k4-copy/04-shipping-desktop.png;docs/ui-k4-copy/04-shipping-mobile.png;docs/ui-k4-copy/05-contact-desktop.png;docs/ui-k4-copy/05-contact-mobile.png
+GUTENBERG_INVALID_BLOCK_COUNT=0
+RESPONSIVE_MATRIX=PASS_65_OF_65
+HORIZONTAL_OVERFLOW=NO_DOCUMENT_OVERFLOW
+PRODUCT_CART_CHECKOUT_SMOKE=PASS_NO_ORDER_CREATED
+PAYPAL_WOOCOMMERCE_CONFIGURATION=UNCHANGED
+EXISTING_SANDBOX_ORDER=UNCHANGED_PROCESSING
+IMAGE_MEDIA_LAYOUT_CHANGES=NO
+SECRET_EXPOSURE=NO
+VPS_WRITES=ZERO
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+The implementation kept the Kadence layout system and existing editable slots. Copy was consolidated where the locked shell did not expose a separate block for every specification sub-item; no new blocks, styles, links to unconfirmed destinations, images, or transactional text were introduced.
