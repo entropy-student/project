@@ -96,9 +96,16 @@ Capture and commit:
 - Home mobile 390 full-page
 
 Per Visual Evidence Protocol:
-if screenshots cannot be rendered directly in current chat, return:
-VISUAL_REVIEW_DELIVERY=OWNER_UPLOAD_REQUIRED
-with exact GitHub paths/links.
+- commit the screenshots to GitHub;
+- package all screenshot evidence from this Gate into one ZIP;
+- ZIP must contain only this Gate's visual screenshots plus a non-sensitive manifest;
+- return the ZIP's exact absolute local path for Owner transfer.
+
+Required return fields:
+VISUAL_REVIEW_PACKAGE=<absolute local zip path>
+VISUAL_REVIEW_DELIVERY=OWNER_UPLOAD_ZIP_REQUIRED
+
+Owner will upload the ZIP to Reviewer for visual inspection.
 
 ## Return
 
@@ -113,8 +120,9 @@ HEADER_LOGO_PROTECTED=YES
 PRODUCT_MEDIA_PROTECTED=YES
 DELETED_SECTIONS_RESTORED=NO
 GUTENBERG_INVALID_BLOCK_COUNT=
-VISUAL_REVIEW_DELIVERY=<CHAT_ATTACHMENT | OWNER_UPLOAD_REQUIRED>
-OWNER_ACTION=<NONE | UPLOAD_FINAL_SCREENSHOTS>
+VISUAL_REVIEW_PACKAGE=<absolute local zip path>
+VISUAL_REVIEW_DELIVERY=OWNER_UPLOAD_ZIP_REQUIRED
+OWNER_ACTION=UPLOAD_VISUAL_REVIEW_ZIP
 NEXT=STOP_AT_REVIEWER
 
 Do not enter K5.
