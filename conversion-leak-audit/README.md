@@ -17,13 +17,14 @@ G2  Safe Scanner V0                        PASS
 G3  Rule Engine V0                         MERGED / CLOSED
 G3.5 UI + Growth Design Freeze             PASS
 G4  WordPress → Scanner → Top 3 本地闭环    PASS
-G4.5 Visual + Functional Acceptance        NEXT / EXECUTOR READY
+G4.5 Visual + Functional Acceptance        PASS
+G4.6 Acquisition + SEO Readiness           NEXT / EXECUTOR READY
 G5  Full Fix Queue + LLM + Skill Dogfood   PENDING
 
 VPS / 支付 / 生产                          HOLD
 ```
 
-G4 已正式 PASS 并合入 `main`；当前进入 G4.5 视觉 + 功能验收。G4.5 只做 acceptance，不扩产品范围。
+G4.5 已正式 PASS 并合入 `main`；当前进入 G4.6 获客 + SEO 就绪。G4.6 只做 Message / Proof / Activation path / 搜索可发现性准备，不做大规模内容生产、不做上线部署。
 
 ## 阅读顺序
 
@@ -109,16 +110,18 @@ Unified Pay 目前尚未跑通并需要单独修改，因此不作为本项目�
 
 ## 当前下一步
 
-`G4.5 — Visual + Functional Acceptance`
+`G4.6 — Acquisition + SEO Readiness`
 
 ```text
-Codex reads docs/G4_5_ACCEPTANCE_CONTRACT.md
-→ functional acceptance rerun
-→ Golden Screenshot / responsive acceptance
-→ update EXECUTION_EVIDENCE.md / EXECUTOR_HANDOFF.md
-→ PASS_CANDIDATE_G4_5
+Codex reads docs/G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md
+→ Message / Proof / Activation path
+→ SEO metadata / canonical / robots / sitemap
+→ noindex dynamic scan results
+→ hide unfinished Blog / Pricing from acquisition surfaces
+→ automated readiness checks
+→ PASS_CANDIDATE_G4_6_ACQUISITION_SEO_READINESS
 → Reviewer independent PASS / RETURN
 ```
 
-G4 final decision：`PASS_G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION`。  
+G4.5 final decision：`PASS_G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`。  
 Payment / VPS / Production 继续 HOLD。
