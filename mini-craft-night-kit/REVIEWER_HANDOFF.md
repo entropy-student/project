@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K4_UI_CONVERSION_TRUST_FINALIZE
+CURRENT_CHECKPOINT=OWNER_K4_UI_EDIT_WINDOW
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -858,7 +858,7 @@ Formal decision: `docs/REVIEWER_DECISION_K3_PASS_K4_CONVERSION_TRUST.md`.
 Owner requested that explicit UI modification be part of the project flow. K4 remains a single Gate rather than being split further.
 
 ```text
-CURRENT_GATE=K4_UI_CONVERSION_TRUST_FINALIZE
+CURRENT_CHECKPOINT=OWNER_K4_UI_EDIT_WINDOW
 UI_MODIFICATION_STAGE=ADDED
 ```
 
@@ -918,7 +918,7 @@ PUBLIC_SUPPORT_CHANNEL=CONTACT_FORM
 DOMAIN_SUPPORT_EMAIL=ADD_WHEN_FINALIZED
 PUBLIC_HOME_ADDRESS=NO
 BUSINESS_RULES_FUTURE_EDITABLE=YES
-CURRENT_GATE=K4_UI_CONVERSION_TRUST_FINALIZE
+CURRENT_CHECKPOINT=OWNER_K4_UI_EDIT_WINDOW
 ```
 
 Product contents must only reflect supplier-confirmed SKU contents. Difficulty may be described as suitable for beginners/hobbyists, but no fixed completion time may be promised until verified.
@@ -939,3 +939,35 @@ Do not allow concurrent Owner/Executor edits to the same page. Owner may edit Ho
 Pending checkpoint after Executor returns: `OWNER_K4_UI_EDIT_WINDOW`.
 
 Formal decision: `docs/REVIEWER_DECISION_K4_OWNER_UI_EDIT_WINDOW_BEFORE_K5.md`.
+
+
+## K4 Finalize Review — ACCEPTED / Owner UI Edit Window OPEN
+
+Reviewer independently inspected Executor commit `ab635ae3e9890ee7f2a479d879899c171ff7af46`.
+
+Accepted baseline:
+
+```text
+K4_FINALIZE_IMPLEMENTATION=PASS
+HOME_CONVERSION_TRUST=PASS
+PRODUCT_CONVERSION_TRUST=PASS
+FAQ=PASS
+SHIPPING_RETURNS=PASS
+CONTACT=PASS
+BUSINESS_TRUTH=PASS
+OWNER_EDITABILITY=PASS
+RESPONSIVE=PASS
+GUTENBERG_VALIDITY=PASS
+WOOCOMMERCE_BEHAVIOR=PASS
+RUNTIME_HEALTH=PASS
+```
+
+K4 is intentionally not closed yet.
+
+Current checkpoint: `OWNER_K4_UI_EDIT_WINDOW`.
+
+Owner may now edit Home / Product / FAQ / Shipping & Returns / Contact. Executor must not concurrently edit those pages. Cart / Checkout / Account core flows and PayPal/WooCommerce payment-order logic remain protected.
+
+After Owner reports UI editing complete, Executor performs one bounded delta verification from the latest Owner-edited state, then returns to Reviewer for formal K4 close.
+
+Formal decision: `docs/REVIEWER_DECISION_K4_FINALIZE_ACCEPT_OWNER_UI_EDIT_WINDOW_OPEN.md`.
