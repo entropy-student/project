@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_SPEC
+CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -992,3 +992,35 @@ Owner's design objective is now explicit: future product-site re-skins should no
 Executor is authorized to create documentation only: `docs/UI_DESIGN_SYSTEM.md` and `docs/STOREFRONT_RESKIN_MAP.md`, based on the snapshot pack and actual editable page structure. No live page mutation is authorized in this sub-gate.
 
 Formal decision: `docs/REVIEWER_DECISION_K4_UI_SNAPSHOT_PACK_PASS_REUSABLE_SHELL_SPEC.md`.
+
+
+## K4 Reusable Storefront Shell — SPEC PASS / Implementation Authorized
+
+Reviewer has fixed the reusable storefront design specification.
+
+Authoritative design documents:
+- docs/UI_DESIGN_SYSTEM.md
+- docs/STOREFRONT_RESKIN_MAP.md
+- docs/REVIEWER_DECISION_K4_REUSABLE_SHELL_SPEC_PASS_IMPLEMENTATION.md
+
+Current Gate:
+K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION
+
+Owner objective is fixed:
+- future re-skins normally change images, text/product data, and global colors only;
+- no normal-case layout rebuild;
+- no WooCommerce flow rebuild;
+- no payment logic rebuild.
+
+Executor image generation is forbidden. Existing approved images / Media Library assets / replaceable neutral placeholders only.
+
+Responsive and function protection outrank visual parity. Required widths remain:
+320 / 375 / 390 / 430 / 768 / 820 / 1024 / 1280 / 1366 / 1440 / 1920 / 2048 / 2560.
+
+Primary layout adaptation scope:
+Home / Product / FAQ / Shipping & Returns / Contact.
+
+Shop / Cart / Checkout / Thank You / My Account remain structurally protected and may inherit only global brand tokens/typography unless separately authorized.
+
+Next:
+Executor implements the Reviewer-owned spec, verifies responsive/Gutenberg/WooCommerce/PayPal preservation, and stops at Reviewer.
