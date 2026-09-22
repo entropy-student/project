@@ -115,11 +115,12 @@ G1 = PASS
 G2 = PASS
 G3 = MERGED / CLOSED
 G3.5 = PASS
-G4 = NEXT / RELEASED TO CODEX
-G4.5 = PENDING
+G4 = PASS
+G4.5 = PASS
+G4.6 = NEXT / RELEASED TO CODEX
 ```
 
-2026-09-22 Reviewer reconciliation confirms G4 is the current execution Gate. Before any G4 edits, Codex must complete the source-baseline traceability precheck in `G4_EXECUTION_CONTRACT.md`. If the reviewed source baseline cannot be proven, return `RETURN_G4_SOURCE_BASELINE_UNRESOLVED` and stop.
+Current execution Gate: `G4.6 Acquisition + SEO Readiness`. G4 and G4.5 are closed unless a concrete regression or explicit Reviewer reopen occurs.
 
 ## 10. Promotion to Shared Governance
 
@@ -140,5 +141,17 @@ G4.5 = PENDING
 G4 PASS
 G4.5 NEXT / RELEASED TO CODEX
 Contract: G4_5_ACCEPTANCE_CONTRACT.md
+Payment / VPS / Production: HOLD
+```
+
+
+## G4.6 current handoff
+
+```text
+G4 PASS
+G4.5 PASS
+G4.6 NEXT / RELEASED TO CODEX
+Contract: G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md
+G5: PENDING
 Payment / VPS / Production: HOLD
 ```
