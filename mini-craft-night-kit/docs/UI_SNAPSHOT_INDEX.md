@@ -12,7 +12,7 @@ This is a read-only archive captured at the `OWNER_K4_UI_EDIT_WINDOW` checkpoint
 | 06 | Contact | `http://localhost:8093/contact/` | [06-contact-desktop.png](ui-current/06-contact-desktop.png) | [06-contact-mobile.png](ui-current/06-contact-mobile.png) | Yes | Native Kadence form surface; final contact routing remains an Owner-editable concern. |
 | 07 | Cart | `http://localhost:8093/cart/` | [07-cart-desktop.png](ui-current/07-cart-desktop.png) | [07-cart-mobile.png](ui-current/07-cart-mobile.png) | Yes | Canonical WooCommerce cart; anonymous snapshot shows the current empty-cart baseline. |
 | 08 | Checkout | `http://localhost:8093/checkout/` | [08-checkout-desktop.png](ui-current/08-checkout-desktop.png) | [08-checkout-mobile.png](ui-current/08-checkout-mobile.png) | Yes | Canonical WooCommerce checkout; anonymous empty-cart redirect/visibility is preserved. |
-| 09 | Thank You / Order Received | `http://localhost:8093/checkout/order-received/1120/?key=[redacted]` | [09-thank-you-desktop.png](ui-current/09-thank-you-desktop.png) | [09-thank-you-mobile.png](ui-current/09-thank-you-mobile.png) | Yes | Existing Sandbox test-order confirmation only; no new order was created. |
+| 09 | Thank You / Order Received | `http://localhost:8093/checkout/order-received/1120/?key=[redacted]` | [09-thank-you-desktop.png](ui-current/09-thank-you-desktop.png) | [09-thank-you-mobile.png](ui-current/09-thank-you-mobile.png) | Yes | Existing order-received route; anonymous capture currently shows the login gate, and no new order was created. |
 | 10 | My Account / Orders | `http://localhost:8093/my-account/` | [10-account-desktop.png](ui-current/10-account-desktop.png) | [10-account-mobile.png](ui-current/10-account-mobile.png) | Yes | Canonical WooCommerce account surface; anonymous/logged-out baseline. |
 
 ## Capture metadata
@@ -25,6 +25,7 @@ This is a read-only archive captured at the `OWNER_K4_UI_EDIT_WINDOW` checkpoint
 - `SCREENSHOT_COUNT=20`
 - `ANONYMOUS_CAPTURE=YES`
 - `EXISTING_ORDER_REUSED=YES`
+- `THANK_YOU_CAPTURE_STATE=ANONYMOUS_LOGIN_GATE`
 - `NEW_ORDER_ACTIONS=0`
 - `PAYMENT_ACTIONS=0`
 - `PAGE_OR_CONFIGURATION_CHANGES=0`

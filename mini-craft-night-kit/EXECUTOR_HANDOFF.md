@@ -1011,4 +1011,4 @@ OWNER_ACTION=NONE
 NEXT=STOP_AT_REVIEWER
 ```
 
-The pack is a current-state, read-only archive. Checkout shows the anonymous empty-cart baseline; Thank You reuses the existing local Sandbox test order without recording its key. No page, configuration, plugin/theme, WooCommerce, PayPal, order, or payment state was changed.
+The pack is a current-state, read-only archive. Checkout shows the anonymous empty-cart baseline; the existing Thank You route currently shows the anonymous login gate, and its order key is not recorded. No page, configuration, plugin/theme, WooCommerce, PayPal, order, or payment state was changed.

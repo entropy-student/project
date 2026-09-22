@@ -2155,6 +2155,7 @@ SNAPSHOT_COUNT=20
 PNG_INTEGRITY=20_OF_20_VALID
 
 PAGE_HTTP_SMOKE=HOME_200;SHOP_200;PRODUCT_200;FAQ_200;SHIPPING_RETURNS_200;CONTACT_200;CART_200;CHECKOUT_302_EMPTY_CART_EXPECTED;THANK_YOU_EXISTING_ORDER_200;MY_ACCOUNT_200
+THANK_YOU_CAPTURE_STATE=ANONYMOUS_LOGIN_GATE
 DOCKER_WORDPRESS_RUNTIME=PASS
 DOCKER_MARIADB_RUNTIME=PASS_HEALTHY
 EXISTING_TEST_ORDER_REUSED=YES
@@ -2166,7 +2167,7 @@ OWNER_K4_UI_EDIT_WINDOW_PRESERVED=YES
 SECRET_EXPOSURE=NO
 UNRELATED_PROJECTS_TOUCHED=NO
 
-The Checkout capture is the anonymous empty-cart baseline; the Thank You capture reuses the existing local Sandbox test-order URL and intentionally does not record its order key. No page, configuration, WooCommerce, PayPal, order, or payment state was changed. This snapshot pack is evidence for the Owner/Reviewer design decision and does not close the Owner UI edit window.
+The Checkout capture is the anonymous empty-cart baseline. The Thank You capture reuses the existing local Sandbox test-order route; the current anonymous view shows the login gate, and its order key is intentionally not recorded. No page, configuration, WooCommerce, PayPal, order, or payment state was changed. This snapshot pack is evidence for the Owner/Reviewer design decision and does not close the Owner UI edit window.
 
 PASS_CANDIDATE_K4_UI_SNAPSHOT_PACK
 STOP_AT_REVIEWER=YES
