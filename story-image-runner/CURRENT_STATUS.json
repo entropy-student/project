@@ -15,8 +15,8 @@
     "P0_PROJECT_INTAKE_GOVERNANCE": "PASS",
     "P0A_PLUGIN_ARCHITECTURE_SAFETY_FREEZE": "PASS",
     "G1_PLUGIN_CORE_STATIC_IMPLEMENTATION": "PASS",
-    "G1_5_BROWSER_LOAD_DRY_RUN": "NEXT_OWNER_CHECKPOINT",
-    "G2_SINGLE_REAL_IMAGE_CANARY": "PENDING",
+    "G1_5_BROWSER_LOAD_DRY_RUN": "PARTIAL_OWNER_EVIDENCE",
+    "G2_SINGLE_REAL_IMAGE_CANARY": "PENDING_CONTROLLED_RETEST",
     "G3_BOUNDED_10_IMAGE_BATCH": "PENDING",
     "G4_BULK_USABILITY_HARDENING": "PENDING",
     "G5_PLUGIN_RELEASE_PACKAGE": "PENDING"
@@ -24,12 +24,29 @@
   "implementation": {
     "shape": "PURE_MV3_BROWSER_EXTENSION",
     "local_bridge_required": false,
-    "static_tests": "7/7 PASS",
+    "static_tests": "11/11 PASS",
     "extension_static_check": "PASS",
     "real_image_generations": 0,
     "concurrency": 1,
     "live_generation_default": false,
-    "live_generation_resets_on_browser_restart": true
+    "live_generation_resets_on_browser_restart": true,
+    "version": "0.1.3",
+    "max_queue_jobs": 500,
+    "import_modes": [
+      "single",
+      "blankline",
+      "line"
+    ],
+    "default_import_mode": "single",
+    "browser_runtime_observed": {
+      "side_panel_open": "PASS_OWNER_OBSERVED",
+      "storage": "PASS_OWNER_OBSERVED",
+      "queue_write_read": "PASS_OWNER_OBSERVED",
+      "chatgpt_content_script": "READY_OWNER_OBSERVED",
+      "automatic_task_navigation": "OBSERVED",
+      "generated_image_completion": "NOT_YET_VERIFIED",
+      "automatic_download": "NOT_YET_VERIFIED"
+    }
   },
   "constraints": {
     "cookie_or_session_export": "FORBIDDEN",
@@ -38,6 +55,14 @@
     "captcha_or_antibot_bypass": "FORBIDDEN",
     "account_rotation": "FORBIDDEN"
   },
-  "next_action": "OWNER_LOAD_UNPACKED_EXTENSION_WITH_LIVE_MODE_OFF",
-  "owner_intervention_required_now": true
+  "next_action": "DOCUMENTATION_ONLY_CURRENTLY; RESUME_CONTROLLED_SINGLE_IMAGE_CANARY_WHEN_OWNER_CHOOSES",
+  "owner_intervention_required_now": false,
+  "deferred_backlog": [
+    "MULTIPLE_IMAGES_PER_PROMPT",
+    "REFERENCE_IMAGE_ATTACHMENT_FROM_URL_REPOSITORY_OR_LOCAL_SOURCE",
+    "TRUE_IMAGE_FORMAT_VALIDATION_AND_OPTIONAL_PNG_NORMALIZATION",
+    "INTERRUPTION_RECONCILIATION_BEFORE_RETRY",
+    "LONG_RUN_BATCH_STRESS_VALIDATION",
+    "OPTIONAL_FLEXIBLE_OUTPUT_LOCATION"
+  ]
 }
