@@ -41,6 +41,31 @@ If either source tree is missing, recreated, ambiguous, or cannot be tied to the
 
 Stop at Reviewer. Do not rebuild G1/G2 as a substitute.
 
+## Reviewer-resolved recovery source — 2026-09-22
+
+The previous local precheck returned `RETURN_G4_SOURCE_BASELINE_UNRESOLVED` correctly because the source trees were absent from that workspace.
+
+Reviewer has now recovered and independently verified the canonical package:
+
+`conversion-leak-audit-final-2026-09-17.zip`
+
+Expected SHA256:
+
+`e5c3aa1da7a8fe5a431eade38f2b45fc48862b21470e413f4a034f150f59df03`
+
+It contains the canonical handoff snapshots:
+- `conversion-leak-audit/scanner/`
+- `conversion-leak-audit/wordpress-g1-baseline/`
+
+After Owner places this package in the local workspace, Executor must:
+
+1. Verify the ZIP SHA256 exactly.
+2. Extract/restore only the canonical `scanner/` and `wordpress-g1-baseline/` trees into the project workspace; do not reconstruct them from Skill validation files.
+3. Record the restored workspace-relative paths and package provenance.
+4. Run Scanner regression from `scanner/`: `python -m pytest -q` (expected 55/55).
+5. Run WordPress asset regression: `python wordpress-g1-baseline/acceptance/run_asset_checks.py` (expected 20/20).
+6. If both pass, continue G4 under the existing contract. If checksum or either regression differs, stop at Reviewer.
+
 ## Execute
 
 Implement only:
