@@ -119,3 +119,16 @@ Candidate result:
 Then `STOP_AT_REVIEWER`.
 
 Reviewer alone declares final G4.5 PASS.
+
+
+## Owner access checkpoint
+
+Before final G4.5 PASS, execute and satisfy:
+
+`G4_5_OWNER_ACCESS_CHECKPOINT.md`
+
+The Owner must receive working local front-end and WordPress administrator/editing access and must have the opportunity to inspect the real rendered implementation.
+
+Codex screenshot evidence cannot substitute for Owner access.
+
+Final G4.5 PASS is forbidden while this checkpoint is pending.
