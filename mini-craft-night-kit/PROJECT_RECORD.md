@@ -1131,3 +1131,21 @@ Current checkpoint:
 Technical acceptance includes responsive 13/13, Gutenberg validity, footer repair, standardized native icons, preserved Offer slots, and commerce smoke with WooCommerce/PayPal/order state unchanged.
 
 Formal K4 close still waits for Owner visual PASS plus one bounded final delta verification.
+
+
+## K4 Home Final Visual Review — Section Dedup
+
+The post-polish Home was visually reviewed in-chat.
+
+The standalone Three-step strip is now judged redundant with the following Three-value section and is authorized for removal.
+
+Next Gate:
+`K4_HOME_SECTION_DEDUP`
+
+Scope is intentionally narrow:
+- delete Three-step strip only;
+- keep Three-value section intact;
+- normalize only adjacent spacing;
+- no other Home redesign or commerce/payment changes.
+
+The GitHub handoff protocol now also requires actual in-chat screenshot visibility for final Visual PASS; GitHub-only PNG evidence is Technical evidence until the pixels are directly reviewed.
