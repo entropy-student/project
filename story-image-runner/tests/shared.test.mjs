@@ -2,14 +2,29 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   parsePromptText,
+  splitPromptText,
+  previewImportCount,
   normalizeImportedJobs,
   normalizeSettings,
   sanitizeRelativeFolder,
-  makeOutputFilename
+  makeOutputFilename,
+  MAX_QUEUE_JOBS
 } from "../extension/shared.js";
 
 test("parsePromptText ignores blank lines", () => {
   assert.deepEqual(parsePromptText("a\n\n b \n"), ["a", "b"]);
+});
+
+test("single import mode treats entire textarea as one prompt", () => {
+  assert.deepEqual(splitPromptText("line1\nline2\nline3", "single"), ["line1\nline2\nline3"]);
+});
+
+test("blankline import mode splits only on blank lines", () => {
+  assert.deepEqual(splitPromptText("a1\na2\n\n b1\n b2 ", "blankline"), ["a1\na2", "b1\n b2"]);
+});
+
+test("previewImportCount matches line mode count", () => {
+  assert.equal(previewImportCount("a\n\n b \n c", "line"), 3);
 });
 
 test("normalizeImportedJobs assigns deterministic shot ids", () => {
@@ -42,4 +57,11 @@ test("safe nested folder and filename", () => {
 
 test("unsupported aspect is rejected", () => {
   assert.throws(() => normalizeSettings({ aspect: "21:9" }), /Unsupported/);
+});
+
+test("maximum queue size accepts 500 and rejects 501", () => {
+  const jobs500 = Array.from({ length: MAX_QUEUE_JOBS }, (_, i) => ({ prompt: `p${i + 1}` }));
+  assert.equal(normalizeImportedJobs(jobs500, { projectId: "demo" }).length, MAX_QUEUE_JOBS);
+  const jobs501 = Array.from({ length: MAX_QUEUE_JOBS + 1 }, (_, i) => ({ prompt: `p${i + 1}` }));
+  assert.throws(() => normalizeImportedJobs(jobs501, { projectId: "demo" }), /maximum queue size/);
 });
