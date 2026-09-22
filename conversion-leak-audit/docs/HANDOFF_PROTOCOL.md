@@ -132,3 +132,13 @@ G4.5 = PENDING
 - 证据链完整；
 
 则将该模式整理进通用项目管理规范 Skill，作为标准 Reviewer ↔ Executor 协作协议。
+
+
+## G4.5 current handoff
+
+```text
+G4 PASS
+G4.5 NEXT / RELEASED TO CODEX
+Contract: G4_5_ACCEPTANCE_CONTRACT.md
+Payment / VPS / Production: HOLD
+```
