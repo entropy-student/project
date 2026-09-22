@@ -22,14 +22,14 @@
   "production": {
     "current_gate": "G6",
     "status": "IN_PROGRESS",
-    "current_task": "PRODUCTION_TTS_RUNTIME_RESOLUTION_AND_VIDEO_RUNTIME_PROBE_READY",
+    "current_task": "DISCUSS_AND_FREEZE_FFMPEG_CENTERED_PRODUCTION_PACKAGE_ARCHITECTURE",
     "next_after_package": "ANTIGRAVITY_E2E_EXECUTION",
     "next_gate": {
       "id": "G7",
       "name": "End-to-End Validation",
       "status": "BLOCKED_BY_G6"
     },
-    "production_package_status": "HOLD_PENDING_VIDEO_RUNTIME_PROBE",
+    "production_package_status": "READY_FOR_OWNER_ARCHITECTURE_DISCUSSION_AFTER_VIDEO_RUNTIME_PASS",
     "timing": {
       "status": "PLANNED_TIMELINE_COMPILED_PASS",
       "speech_units": 44,
@@ -64,11 +64,21 @@
       "resume_safe": true
     },
     "video_runtime_probe": {
-      "status": "READY_NOT_EXECUTED",
+      "status": "PASS_PROGRAMMATIC",
       "version": "v0.2",
-      "task": "experiments/g6/blind-search-answer/ANTIGRAVITY_VIDEO_RUNTIME_PROBE.md",
-      "install_policy": "ZERO_INSTALL_FIRST; reuse existing local/Codex FFmpeg/Remotion/Hyperframe; stop at INSTALL_REQUIRED before installing.",
-      "purpose": "Determine actual deterministic Antigravity video backend before freezing full Production Package."
+      "selected_backend": "FFmpeg",
+      "selected_backend_role": "BASELINE_DETERMINISTIC_RENDERER",
+      "install_required": false,
+      "verified_outputs": {
+        "probe_v1": "1920x1080 / 30fps / 360f / 12.000s / H.264 + AAC",
+        "probe_v2": "1920x1080 / 30fps / 360f / 12.000s / H.264 + AAC",
+        "structured_mutation": "PASS"
+      },
+      "discovered_optional_runtimes": {
+        "remotion": "FOUND_NOT_SELECTED_NOT_RENDER_VALIDATED_IN_THIS_PROBE",
+        "hyperframe": "FOUND_NOT_SELECTED_NOT_RENDER_VALIDATED_IN_THIS_PROBE"
+      },
+      "evidence": "experiments/g6/blind-search-answer/video-runtime-probe/VIDEO_RUNTIME_PROBE_REPORT.json"
     },
     "one_delivery_architecture": {
       "status": "LOCKED_CANDIDATE",
@@ -183,7 +193,7 @@
     "Normal target is one Showrunner delivery; Owner does not return real SRT for package recompilation."
   ],
   "unknowns": [
-    "Antigravity video backend is not yet known; probe must first reuse existing local/Codex FFmpeg/Remotion/Hyperframe or native runtime without installation.",
+    "Production Package architecture is intentionally not frozen yet; discuss FFmpeg baseline vs optional Remotion/Hyperframe motion layer.",
     "Full Production Package and final video E2E are not yet validated."
   ],
   "owner_intervention_required": false,
