@@ -1,0 +1,43 @@
+{
+  "package_id": "blind-search-answer-g6-e2e-v1",
+  "status": "READY_NOT_EXECUTED",
+  "renderer": "FFmpeg",
+  "renderer_mode": "BASELINE_STATIC_FIRST",
+  "one_delivery": true,
+  "source_artifacts": {
+    "script": "experiments/g4r-v03/blind-search-answer/02_SCRIPT.md",
+    "speech_units": "experiments/g6/blind-search-answer/timing/01_SPEECH_UNITS.json",
+    "planned_srt": "experiments/g6/blind-search-answer/timing/02_PRODUCTION_SUBTITLES.srt",
+    "tts_manifest": "experiments/g6/blind-search-answer/timing/03_TTS_MANIFEST.json",
+    "timeline_resolver": "experiments/g6/blind-search-answer/TIMELINE_RESOLVER_RULES.md",
+    "visual_beats": "experiments/g4r-v03/blind-search-answer/07_VISUAL_BEAT_PLAN.json",
+    "frame_blueprints": "experiments/g5/blind-search-answer/13_FRAME_BLUEPRINTS_V04.json",
+    "image_execution_rows": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
+    "reference_manifest": "experiments/g5/blind-search-answer/08_REFERENCE_MANIFEST.json",
+    "reference_package": "/ai-story-showrunner/g5/blind-search-answer/reference-package-v1"
+  },
+  "expected_runtime_outputs": [
+    "tts/units/*.wav",
+    "tts/narration_master.wav",
+    "tts/tts_execution_report.json",
+    "timing/runtime/FINAL_SUBTITLES.srt",
+    "timing/runtime/FINAL_TIMELINE.json",
+    "timing/runtime/FINAL_SHOT_TIMELINE.csv",
+    "timing/runtime/TIMELINE_RESOLUTION_REPORT.json",
+    "frames/SRCH_VB001.png ... SRCH_VB044.png",
+    "render/render_plan.json",
+    "render/render_report.json",
+    "final/blind-search-answer.mp4",
+    "FINAL_QA_REPORT.json",
+    "RUN_RECORD.json"
+  ],
+  "restrictions": {
+    "no_script_change": true,
+    "no_semantic_timing_change": true,
+    "no_visual_beat_reorder": true,
+    "no_pov_change": true,
+    "no_remotion_in_v1": true,
+    "no_hyperframe_in_v1": true,
+    "no_unrequested_bgm_sfx": true
+  }
+}
