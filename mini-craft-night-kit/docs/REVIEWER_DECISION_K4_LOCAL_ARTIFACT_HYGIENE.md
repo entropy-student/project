@@ -93,3 +93,18 @@ GATE=K4_LOCAL_ARTIFACT_HYGIENE
 RESULT=PASS_CANDIDATE_K4_LOCAL_ARTIFACT_HYGIENE
 OWNER_ACTION=NONE
 NEXT=STOP_AT_REVIEWER
+
+
+## Explicit protection for latest Owner/GPT-6 work
+
+The hygiene pass must preserve all latest Owner/GPT-6 design work and project documentation.
+
+Do not delete or overwrite:
+- current Home page content, blocks, styles, media assignments, or any GPT-6-applied visual changes;
+- any new project documentation created during the latest design work;
+- any project-specific asset that is not positively identified as disposable temporary output;
+- any file under the project tree merely because it was created today.
+
+The cleanup target is shared-root transient material only, such as confirmed disposable `.tmp-k4-matrix-*` capture/render folders already superseded by committed evidence.
+
+If there is any doubt whether an item is part of the latest design work, KEEP IT.
