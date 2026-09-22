@@ -1158,3 +1158,25 @@ Executor must only capture the current Home for Reviewer consolidation. No page/
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_HOME_VISUAL_REVIEW_CAPTURE.md`
+
+
+## K4 Home Visual Review Capture — PASS / Final Polish Authorized
+
+Reviewer reviewed the current 1440 desktop and 390 mobile captures.
+
+Consolidated visual findings:
+- Hero should carry more visual weight without increasing dead space;
+- sections ②/③/④/⑥ are too loose and should be compressed;
+- native icon alignment needs normalization;
+- sections ② and ③ need clearer visual differentiation;
+- section ⑤ product-display should remain visually prominent;
+- closing CTA may tighten slightly;
+- Footer broken/missing brand visual must be repaired and public theme-credit clutter removed where native controls permit.
+
+Current Gate:
+`K4_HOME_FINAL_DENSITY_ALIGNMENT_POLISH`
+
+Formal implementation spec:
+`docs/REVIEWER_DECISION_K4_HOME_FINAL_DENSITY_ALIGNMENT_POLISH.md`
+
+No image generation, no business-copy changes, no commerce/payment changes.
