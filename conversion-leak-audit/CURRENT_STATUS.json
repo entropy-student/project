@@ -67,7 +67,7 @@
     "public_production_scanner": "HOLD",
     "g4_scope": "LOCAL_ONLY_NO_PAYMENT_NO_VPS_NO_PRODUCTION_SECRET"
   },
-  "next_action": "CODEX_EXECUTE_G4_5_PER_G4_5_ACCEPTANCE_CONTRACT",
+  "next_action": "CODEX_EXECUTE_G4_5_FROM_CLEAN_PROJECT_SCOPED_WORKSPACE",
   "reviewer_reconciliation": {
     "date": "2026-09-22",
     "status": "RECONCILED",
@@ -102,8 +102,12 @@
     "merge_commit": "554951fc778d2b60a4a1fe655e07c37310ef76ad"
   },
   "g4_5": {
-    "status": "NEXT_READY_FOR_EXECUTOR",
+    "status": "RELEASED_TO_CODEX",
     "contract": "docs/G4_5_ACCEPTANCE_CONTRACT.md",
-    "scope": "VISUAL_AND_FUNCTIONAL_ACCEPTANCE_ONLY"
+    "release": "docs/REVIEWER_RELEASE_G4_5.md",
+    "scope": "VISUAL_AND_FUNCTIONAL_ACCEPTANCE_ONLY",
+    "repository_mode": "CLEAN_SPARSE_PROJECT_SCOPED_WORKSPACE",
+    "branch": "codex/g4-5-visual-functional-acceptance",
+    "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS"
   }
 }
