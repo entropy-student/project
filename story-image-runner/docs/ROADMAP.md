@@ -20,7 +20,7 @@ The project ends at reliable bulk image generation. Video assembly is out of sco
 P0    Project Intake + Governance          PASS
 P0A   Plugin Architecture + Safety         PASS
 G1    Plugin Core Static Implementation    PASS
-G1.5  Browser Load + Dry Run               NEXT
+G1.5  Browser Load + Dry Run               PARTIAL OWNER EVIDENCE
 G2    Single Real Image Canary             PENDING
 G3    Bounded 10-Image Batch               PENDING
 G4    Bulk Usability Hardening             PENDING
@@ -46,7 +46,7 @@ Delivered:
 - Live generation OFF by default;
 - typed error handling.
 
-Static evidence: 7/7 tests PASS and extension static check PASS.
+Static evidence: 11/11 tests PASS and extension static check PASS.
 
 ## G1.5 — Browser Load + Dry Run
 
@@ -111,3 +111,19 @@ Freeze V1:
 - version;
 - checksum;
 - release acceptance.
+
+
+## Deferred backlog — recorded, not scheduled
+
+The following future capabilities are documented but are not part of the currently authorized work:
+
+```text
+D1  copies=N / multiple images from one prompt
+D2  real reference-image attachment from GitHub/URL/local source
+D3  true image-format validation and optional PNG normalization
+D4  interrupted-job reconciliation before retry
+D5  long-run batch stress validation: 10 → 50 → 100+
+D6  optional flexible output-location workflow
+```
+
+See `CAPABILITY_BOUNDARIES_AND_DEFERRED_BACKLOG.md` for exact current behavior and limitations.
