@@ -22,14 +22,14 @@
   "production": {
     "current_gate": "G6",
     "status": "IN_PROGRESS",
-    "current_task": "DISCUSS_AND_FREEZE_FFMPEG_CENTERED_PRODUCTION_PACKAGE_ARCHITECTURE",
-    "next_after_package": "ANTIGRAVITY_E2E_EXECUTION",
+    "current_task": "G6_E2E_PRODUCTION_PACKAGE_V1_READY_FOR_ANTIGRAVITY_EXECUTION",
+    "next_after_package": "ANTIGRAVITY_FULL_E2E_EXECUTION",
     "next_gate": {
       "id": "G7",
       "name": "End-to-End Validation",
       "status": "BLOCKED_BY_G6"
     },
-    "production_package_status": "READY_FOR_OWNER_ARCHITECTURE_DISCUSSION_AFTER_VIDEO_RUNTIME_PASS",
+    "production_package_status": "READY_NOT_EXECUTED",
     "timing": {
       "status": "PLANNED_TIMELINE_COMPILED_PASS",
       "speech_units": 44,
@@ -92,6 +92,20 @@
         "final video"
       ],
       "owner_second_roundtrip_required": false
+    },
+    "production_package": {
+      "id": "blind-search-answer-g6-e2e-v1",
+      "path": "experiments/g6/blind-search-answer/production-package-v1",
+      "renderer": "FFmpeg",
+      "renderer_mode": "BASELINE_STATIC_FIRST",
+      "remotion": "EXCLUDED_FROM_V1",
+      "hyperframe": "EXCLUDED_FROM_V1",
+      "one_delivery": true,
+      "expected_final": "final/blind-search-answer.mp4",
+      "external_source_requirement": {
+        "path": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
+        "git_blob_sha": "ce7605c4d4a9d3731bc1778a9889a21119ac8b29"
+      }
     }
   },
   "accepted_gates": [
@@ -193,7 +207,7 @@
     "Normal target is one Showrunner delivery; Owner does not return real SRT for package recompilation."
   ],
   "unknowns": [
-    "Production Package architecture is intentionally not frozen yet; discuss FFmpeg baseline vs optional Remotion/Hyperframe motion layer.",
+    "Full E2E final video has not yet been executed; package v1 is ready.",
     "Full Production Package and final video E2E are not yet validated."
   ],
   "owner_intervention_required": false,
