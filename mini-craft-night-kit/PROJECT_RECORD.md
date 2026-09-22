@@ -24,7 +24,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_SPEC
+CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -977,3 +977,25 @@ PAYMENT_LOGIC_REBUILD=NO
 Next work is documentation-only: define the fixed storefront shell, replaceable content layer, replaceable brand tokens, per-page replacement map, and future re-skin checklist before Owner performs manual UI edits.
 
 Formal decision: `docs/REVIEWER_DECISION_K4_UI_SNAPSHOT_PACK_PASS_REUSABLE_SHELL_SPEC.md`.
+
+
+## K4 Reusable Storefront Shell — Design Spec Complete
+
+Reviewer finalized:
+- docs/UI_DESIGN_SYSTEM.md
+- docs/STOREFRONT_RESKIN_MAP.md
+
+Current Gate:
+K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION
+
+Reusable-shell target:
+FUTURE_RESKIN_NORMAL_SCOPE=IMAGES_TEXT_GLOBAL_COLORS
+LAYOUT_REBUILD=NORMALLY_NO
+WOOCOMMERCE_FLOW_REBUILD=NO
+PAYMENT_LOGIC_REBUILD=NO
+EXECUTOR_IMAGE_GENERATION=FORBIDDEN
+
+Functionality, responsive behavior, Gutenberg validity, Owner editability, and WooCommerce/PayPal integrity outrank pixel parity.
+
+Formal decision:
+docs/REVIEWER_DECISION_K4_REUSABLE_SHELL_SPEC_PASS_IMPLEMENTATION.md
