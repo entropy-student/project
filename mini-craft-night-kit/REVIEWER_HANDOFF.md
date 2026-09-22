@@ -1137,3 +1137,24 @@ or a bounded RETURN issue.
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_HOME_DETAIL_POLISH_TECH_PASS.md`
+
+
+## K4 Home Visual Review — Owner Feedback Recorded / Read-Only Capture
+
+Owner visual feedback is now recorded:
+- increase Hero visual weight;
+- compress sections ②–⑥;
+- align newly added icons;
+- differentiate visually repetitive sections ② and ③;
+- fix missing icon in section ⑧;
+- generally reduce vertical looseness outside Hero and product display.
+
+No implementation is authorized yet.
+
+Current Gate:
+`K4_HOME_VISUAL_REVIEW_CAPTURE`
+
+Executor must only capture the current Home for Reviewer consolidation. No page/style/config mutation.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_HOME_VISUAL_REVIEW_CAPTURE.md`
