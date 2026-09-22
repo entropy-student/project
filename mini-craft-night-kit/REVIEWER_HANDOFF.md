@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_CHECKPOINT=OWNER_K4_UI_EDIT_WINDOW
+CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_SPEC
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -858,7 +858,7 @@ Formal decision: `docs/REVIEWER_DECISION_K3_PASS_K4_CONVERSION_TRUST.md`.
 Owner requested that explicit UI modification be part of the project flow. K4 remains a single Gate rather than being split further.
 
 ```text
-CURRENT_CHECKPOINT=OWNER_K4_UI_EDIT_WINDOW
+CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_SPEC
 UI_MODIFICATION_STAGE=ADDED
 ```
 
@@ -918,7 +918,7 @@ PUBLIC_SUPPORT_CHANNEL=CONTACT_FORM
 DOMAIN_SUPPORT_EMAIL=ADD_WHEN_FINALIZED
 PUBLIC_HOME_ADDRESS=NO
 BUSINESS_RULES_FUTURE_EDITABLE=YES
-CURRENT_CHECKPOINT=OWNER_K4_UI_EDIT_WINDOW
+CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_SPEC
 ```
 
 Product contents must only reflect supplier-confirmed SKU contents. Difficulty may be described as suitable for beginners/hobbyists, but no fixed completion time may be promised until verified.
@@ -971,3 +971,24 @@ Owner may now edit Home / Product / FAQ / Shipping & Returns / Contact. Executor
 After Owner reports UI editing complete, Executor performs one bounded delta verification from the latest Owner-edited state, then returns to Reviewer for formal K4 close.
 
 Formal decision: `docs/REVIEWER_DECISION_K4_FINALIZE_ACCEPT_OWNER_UI_EDIT_WINDOW_OPEN.md`.
+
+
+## K4 UI Snapshot Pack — PASS / Reusable Shell Spec
+
+Reviewer accepted the read-only 10-page / 20-screenshot archive from commits `53160d147684d6ee7342c723a1272bc607450a22` and `4909653e5f580ff74bd44fa96c675cade2dd4a75`.
+
+```text
+SNAPSHOT_PACK=PASS
+PAGE_COUNT=10
+SCREENSHOT_COUNT=20
+PAGE_OR_CONFIGURATION_CHANGES=0
+CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_SPEC
+```
+
+Caveat: Checkout is the anonymous empty-cart baseline; Thank You currently shows the anonymous login gate. This does not block shell-design work because commerce/transaction page structure remains protected.
+
+Owner's design objective is now explicit: future product-site re-skins should normally require only image replacement, text/content replacement, and global color/token replacement, without page-layout rebuilding or commerce-flow changes.
+
+Executor is authorized to create documentation only: `docs/UI_DESIGN_SYSTEM.md` and `docs/STOREFRONT_RESKIN_MAP.md`, based on the snapshot pack and actual editable page structure. No live page mutation is authorized in this sub-gate.
+
+Formal decision: `docs/REVIEWER_DECISION_K4_UI_SNAPSHOT_PACK_PASS_REUSABLE_SHELL_SPEC.md`.
