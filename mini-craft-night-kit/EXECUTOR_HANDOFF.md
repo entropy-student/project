@@ -1115,3 +1115,29 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The screenshots are the current visual state for Reviewer comparison. Implementation is intentionally deferred; no page repair, icon fix, spacing change, image replacement, or design version was created.
+
+## K4 Home Final Density & Alignment Polish — Executor handoff (2026-09-22)
+
+```text
+GATE=K4_HOME_FINAL_DENSITY_ALIGNMENT_POLISH
+RESULT=PASS_CANDIDATE_K4_HOME_FINAL_DENSITY_ALIGNMENT_POLISH
+SUMMARY=Applied the final scoped Home density/alignment polish to Page 939: Hero heading weight, compact flat Three-step strip, bordered Three-value tiles, tighter Story/FAQ/CTA spacing, preserved Offer slots, standardized native icons, and repaired the Footer native brand lockup.
+EVIDENCE=EXECUTION_EVIDENCE.md;docs/ui-k4-final-density-polish/home-desktop-1440.png;docs/ui-k4-final-density-polish/home-mobile-390.png
+HOME_HTTP=200
+RESPONSIVE_MATRIX=PASS_13_OF_13
+HORIZONTAL_OVERFLOW=NO
+CONTENT_CLIPPING=NO
+NATIVE_HOME_ICONS=7
+FOOTER_BROKEN_IMAGE=0
+FOOTER_CREDIT=REMOVED_VIA_NATIVE_THEME_SETTING
+GUTENBERG_INVALID_BLOCK_COUNT=0
+PRODUCT_CART_CHECKOUT_SMOKE=PASS_NO_ORDER_OR_PAYMENT
+WOOCOMMERCE_PAYPAL_ORDER_STATE=UNCHANGED
+IMAGE_GENERATION=NOT_USED
+TEMP_CAPTURE_PROFILE_CLEANUP=PASS
+TEMP_HELPER_CLEANUP=PASS
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+Protected scope remained unchanged: no WooCommerce/PayPal/order/payment logic, version, source patch, VPS, Live action, public tunnel, or secret output was used. The screenshots are the post-polish 1440px desktop and 390px mobile full-page captures.
