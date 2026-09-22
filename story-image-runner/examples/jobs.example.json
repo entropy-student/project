@@ -1,0 +1,62 @@
+[
+  {
+    "project_id": "demo-mcp",
+    "shot_id": "S001",
+    "aspect": "16:9",
+    "prompt": "A quiet night office, one programmer facing a laptop, cinematic wide shot, no text."
+  },
+  {
+    "project_id": "demo-mcp",
+    "shot_id": "S002",
+    "aspect": "16:9",
+    "prompt": "Close view of a laptop with several abstract tool windows around it, one person only, no readable text."
+  },
+  {
+    "project_id": "demo-mcp",
+    "shot_id": "S003",
+    "aspect": "16:9",
+    "prompt": "The programmer looks confused as several disconnected devices sit on the desk, cinematic medium shot, no text."
+  },
+  {
+    "project_id": "demo-mcp",
+    "shot_id": "S004",
+    "aspect": "16:9",
+    "prompt": "A visual metaphor of a universal adapter connecting several different tools, clean cinematic illustration, no text."
+  },
+  {
+    "project_id": "demo-mcp",
+    "shot_id": "S005",
+    "aspect": "16:9",
+    "prompt": "The programmer plugs one simple connector into the laptop while multiple tools become connected, no text."
+  },
+  {
+    "project_id": "demo-mcp",
+    "shot_id": "S006",
+    "aspect": "16:9",
+    "prompt": "Three-panel cinematic composition showing files, a calendar, and a database becoming reachable through one connector, no text."
+  },
+  {
+    "project_id": "demo-mcp",
+    "shot_id": "S007",
+    "aspect": "16:9",
+    "prompt": "The programmer relaxes as the previously messy tool setup becomes organized, warm lighting, no text."
+  },
+  {
+    "project_id": "demo-mcp",
+    "shot_id": "S008",
+    "aspect": "16:9",
+    "prompt": "Abstract close-up of standardized connectors linking separate digital systems, polished editorial illustration, no text."
+  },
+  {
+    "project_id": "demo-mcp",
+    "shot_id": "S009",
+    "aspect": "16:9",
+    "prompt": "Wide shot of one AI assistant reaching several tools through a single organized connector layer, no text."
+  },
+  {
+    "project_id": "demo-mcp",
+    "shot_id": "S010",
+    "aspect": "16:9",
+    "prompt": "Final calm desk scene, programmer working with one clean connected system instead of many separate tools, no text."
+  }
+]
