@@ -42,3 +42,8 @@ button.danger { color:#ffb4b4; border-color:#6b3538; background:#2a1c1e; }
 .diagnostic-text { font-size:11px; line-height:1.5; color:#aeb4c0; white-space:pre-wrap; word-break:break-word; }
 .diagnostic-text.ok { color:#b9e6c4; }
 .diagnostic-text.bad { color:#ffb7b7; }
+
+
+.import-grid { margin-top: 10px; }
+.import-grid input[disabled] { opacity: 0.85; }
+#importHint { display:block; margin-top:8px; color:#8d93a0; line-height:1.45; }
