@@ -2457,3 +2457,27 @@ TEMP_CAPTURE_PROFILE_CLEANUP=PASS
 ```
 
 The change was limited to the existing Home page 939: four Owner-replaceable Offer media slots and seven native Kadence icon blocks. The Hero block hash is identical before/after. Existing Media Library assets were reused; no image-generation or web-download action occurred. Product UI was opened read-only and showed the existing Add to Cart control; route checks returned Product 200, Cart 200, and the expected empty-cart Checkout redirect. No order, payment, WooCommerce, PayPal, global style, or Docker/MariaDB configuration was changed.
+
+## K4 Home Visual Review Capture — 2026-09-22
+
+```text
+GATE=K4_HOME_VISUAL_REVIEW_CAPTURE
+RESULT=PASS_CANDIDATE_K4_HOME_VISUAL_REVIEW_CAPTURE
+PAGE_ID=939
+HOME_HTTP=200
+HOME_PAGE_MODIFIED_READONLY=2026-09-22T11:25:09
+PAGE_MUTATION=0
+CONFIG_MUTATION=0
+CAPTURE_METHOD=read-only headless browser navigation and scroll-triggered lazy-load capture
+DESKTOP_CAPTURE=docs/ui-k4-visual-review-capture/home-desktop-1440.png
+DESKTOP_VIEWPORT=1440px_FULL_PAGE_1440x3968
+MOBILE_CAPTURE=docs/ui-k4-visual-review-capture/home-mobile-390.png
+MOBILE_VIEWPORT=390px_FULL_PAGE_390x6839
+TEMP_CAPTURE_PROFILE_CLEANUP=PASS
+SHARED_ROOT_CAPTURE_DEBRIS=0
+WOOCOMMERCE_PAYPAL_ORDER_PAYMENT_MUTATION=0
+SECRET_OUTPUT=0
+VPS_WRITES=ZERO
+```
+
+This is a read-only visual inventory for Reviewer consolidation. No Home block, image/media, icon, color, spacing, CSS, responsive rule, Header/Footer, WooCommerce, PayPal, order, payment, or configuration was changed. The capture preserves the current real state, including the observed missing/non-rendering Footer visual state; no repair or design variant was attempted.

@@ -1098,3 +1098,20 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 Protected scope remained unchanged: no Hero edits, page architecture rebuild, global palette/font change, WooCommerce/PayPal configuration change, order/payment action, version change, VPS write, or secret output occurred.
+
+## K4 Home Visual Review Capture — Executor handoff (2026-09-22)
+
+```text
+GATE=K4_HOME_VISUAL_REVIEW_CAPTURE
+RESULT=PASS_CANDIDATE_K4_HOME_VISUAL_REVIEW_CAPTURE
+SUMMARY=Captured the current Home page 939 read-only at desktop 1440px and mobile 390px after browser-only lazy-load activation; no visual or runtime mutation was performed.
+EVIDENCE=EXECUTION_EVIDENCE.md;docs/ui-k4-visual-review-capture/home-desktop-1440.png;docs/ui-k4-visual-review-capture/home-mobile-390.png
+PAGE_MUTATION=0
+CONFIG_MUTATION=0
+HOME_HTTP=200
+TEMP_CAPTURE_PROFILE_CLEANUP=PASS
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+The screenshots are the current visual state for Reviewer comparison. Implementation is intentionally deferred; no page repair, icon fix, spacing change, image replacement, or design version was created.
