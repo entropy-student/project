@@ -1,0 +1,73 @@
+{
+  "date": "2026-09-22",
+  "planner": "Daily Topic / Publishing Planner v0.2",
+  "selection": {
+    "topic_id": "ai-human-hybrid-dating-deception",
+    "topic": "为什么AI骗局里还要故意混进真人？",
+    "lane": "HOT",
+    "business_job": "DISCOVERY",
+    "editorial_mode": "STORY_MODEL",
+    "target_duration": "3–5 min",
+    "hot_override": true,
+    "overridden_slot": "2026-09-22 long-chat-drift",
+    "displaced_topic_action": "return_to_evergreen_pool"
+  },
+  "canonical_signal_cluster": {
+    "event": "Anthropic September 2026 threat-intelligence report / deceptive dating app network",
+    "first_party_source": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+    "freshness": "published 2026-09-10; still receiving fresh secondary coverage in the last week",
+    "verified_facts": [
+      "Anthropic says a China-based app studio operated more than 20 deceptive dating apps.",
+      "Anthropic reports more than 4,700 AI personas interacted with at least 25,000 people in a two-week April 2026 window.",
+      "The feed was approximately 75% AI personas and 25% real people.",
+      "Real workers handled authenticity bottlenecks such as live video calls and social-media follow-backs while AI handled conversation at scale.",
+      "Anthropic says it banned the attributed accounts and organizations."
+    ],
+    "cluster_note": "Multiple reports about the dating-app case are treated as one canonical event, not separate signals."
+  },
+  "candidate_gates": {
+    "human_relevance": "PASS — users can directly understand the risk of believing they are interacting with a real person.",
+    "mechanism_integrity": "PASS — hybrid human+AI systems can allocate repetitive scalable interaction to AI and scarce authenticity checks to humans.",
+    "one_mechanism": "PASS — focus only on division of labor between scalable AI personas and human authenticity bottlenecks.",
+    "storyability": "PASS — apparent relationship → suspicion → real-person verification → restored trust → reveal that the human was only one component of a larger automated system.",
+    "non_trivial_payoff": "PASS — the important change is not simply that AI can impersonate people, but that a small amount of genuine human interaction can make a mostly automated system appear fully human.",
+    "audience_fit": "PASS — durable AI mental model translated through an immediately legible human situation.",
+    "duplicate_gates": {
+      "D1_signal": "PASS — clustered Anthropic report and derivative coverage into one event.",
+      "D2_topic": "PASS — no registry topic has hybrid human+AI authenticity bottleneck as mechanism + problem + payoff.",
+      "D3_angle": "PASS — distinct from agent permission/control and hallucination/search topics already scheduled.",
+      "D4_story_visual_motif": "PASS_WITH_WATCH — external real case differs from current office/secretary/desk motifs; avoid reusing boss/assistant framing."
+    }
+  },
+  "other_signals_reviewed": [
+    {
+      "signal": "OpenAI model-misalignment reporting framework and six incident reports (2026-09-16)",
+      "decision": "QUALIFIED_BUT_NOT_SELECTED",
+      "reason": "Strong signal, but its control/authorization angle is semantically closer to the 2026-09-21 agent-permission HOT slot, increasing D3 repetition risk."
+    },
+    {
+      "signal": "OpenAI building standards for the next phase of AI (2026-09-21)",
+      "decision": "REJECT_FOR_TODAY",
+      "reason": "Important strategic signal but too broad for One Mechanism and ordinary-user storyability without narrowing beyond the source."
+    },
+    {
+      "signal": "Googlebook built-in AI features / preorder news (2026-09-21)",
+      "decision": "REJECT_FOR_TODAY",
+      "reason": "Fresh product news, but current signal is primarily feature/product launch; durable non-trivial mechanism payoff is weaker than selected case."
+    }
+  ],
+  "rolling_schedule_policy": {
+    "window": "2026-09-22..2026-09-28",
+    "story_model_count": 6,
+    "story_action_count": 1,
+    "mix_note": "5/2 is an experimental hypothesis, not a quota. No second STORY_ACTION topic was forced because quality and duplicate gates outrank portfolio balancing.",
+    "daily_production_capability": "UNPROVEN"
+  },
+  "governance": {
+    "locked_or_published_modified": false,
+    "auto_published": false,
+    "entered_g4_plus": false,
+    "generated_video": false,
+    "published_platform_content": false
+  }
+}
