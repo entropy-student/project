@@ -16,8 +16,8 @@
     "G2_SAFE_SCANNER_V0": "PASS",
     "G3_RULE_ENGINE_V0": "MERGED_CLOSED",
     "G3_5_UI_GROWTH_DESIGN_FREEZE": "PASS",
-    "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "RETURN_CONTRACT_COMPLETION_REQUIRED",
-    "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "PENDING",
+    "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "PASS",
+    "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "NEXT_READY_FOR_EXECUTOR",
     "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "PENDING",
     "G6_VPS_ONBOARDING_STORAGE": "HOLD",
     "G7_VPS_PRIVATE_DEPLOYMENT": "HOLD",
@@ -67,7 +67,7 @@
     "public_production_scanner": "HOLD",
     "g4_scope": "LOCAL_ONLY_NO_PAYMENT_NO_VPS_NO_PRODUCTION_SECRET"
   },
-  "next_action": "CODEX_COMPLETE_G4_REAL_SCANNER_STATE_ANALYTICS_DEMO_AND_EVIDENCE_ON_DEDICATED_BRANCH",
+  "next_action": "CODEX_EXECUTE_G4_5_PER_G4_5_ACCEPTANCE_CONTRACT",
   "reviewer_reconciliation": {
     "date": "2026-09-22",
     "status": "RECONCILED",
@@ -85,19 +85,25 @@
   },
   "repository_reconciliation": {
     "date": "2026-09-22",
-    "status": "REQUIRED_BEFORE_FINAL_G4_PASS",
+    "status": "PASS_MERGED",
     "decision_doc": "docs/REVIEWER_DECISION_G4_REPOSITORY_RECONCILIATION.md",
     "dirty_shared_worktree": "DO_NOT_MUTATE",
     "target_workspace": "CLEAN_SPARSE_CONVERSION_LEAK_AUDIT_ONLY",
-    "final_merge": "HOLD_UNTIL_REVIEWER_PASS"
+    "final_merge": "MERGED_PR_2"
   },
   "g4_reviewer_review": {
     "date": "2026-09-22",
     "repository_reconciliation": "PASS",
-    "functional_candidate": "PARTIAL_PASS",
-    "final_g4_pass": "WITHHELD",
-    "decision_doc": "docs/REVIEWER_DECISION_G4_CONTRACT_COMPLETION_RETURN.md",
-    "branch": "codex/g4-repository-reconciliation",
-    "reviewed_tip": "9d4d8531ecdb1774d03e9edec9a7c4da8819a704"
+    "contract_completion": "PASS",
+    "final_g4_pass": "PASS",
+    "decision_doc": "docs/REVIEWER_DECISION_G4_PASS.md",
+    "reviewed_tip": "14061cbdf8a0643a391487c508243b5c3bfaf490",
+    "pull_request": 2,
+    "merge_commit": "554951fc778d2b60a4a1fe655e07c37310ef76ad"
+  },
+  "g4_5": {
+    "status": "NEXT_READY_FOR_EXECUTOR",
+    "contract": "docs/G4_5_ACCEPTANCE_CONTRACT.md",
+    "scope": "VISUAL_AND_FUNCTIONAL_ACCEPTANCE_ONLY"
   }
 }
