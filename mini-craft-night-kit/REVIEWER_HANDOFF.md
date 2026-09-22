@@ -1296,3 +1296,23 @@ Three-value invalid-block warnings are verification-only:
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_OWNER_MANUAL_BASELINE_VERIFY.md`
+
+
+## Visual Evidence Delivery — ZIP Standard
+
+Owner requested a simpler visual-review handoff.
+
+Effective immediately for screenshot/UI Gates:
+- Executor still commits screenshot evidence to GitHub;
+- Executor also packages the Gate's screenshots into one clean ZIP;
+- ZIP contains only visual evidence plus a non-sensitive manifest;
+- Executor returns the exact local ZIP path;
+- Owner uploads that ZIP into the Reviewer chat;
+- Reviewer gives Visual PASS only after inspecting the ZIP contents.
+
+Current K4 Gate must return:
+`VISUAL_REVIEW_PACKAGE=<absolute local zip path>`
+`VISUAL_REVIEW_DELIVERY=OWNER_UPLOAD_ZIP_REQUIRED`
+`OWNER_ACTION=UPLOAD_VISUAL_REVIEW_ZIP`
+
+No per-image Owner transfer is required unless Reviewer specifically requests it.
