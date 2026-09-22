@@ -16,14 +16,14 @@ G1  WordPress Local Baseline               PASS
 G2  Safe Scanner V0                        PASS
 G3  Rule Engine V0                         MERGED / CLOSED
 G3.5 UI + Growth Design Freeze             PASS
-G4  WordPress → Scanner → Top 3 本地闭环    NEXT / EXECUTOR READY
-G4.5 Visual + Functional Acceptance        PENDING
+G4  WordPress → Scanner → Top 3 本地闭环    PASS
+G4.5 Visual + Functional Acceptance        NEXT / EXECUTOR READY
 G5  Full Fix Queue + LLM + Skill Dogfood   PENDING
 
 VPS / 支付 / 生产                          HOLD
 ```
 
-G3.5 已冻结并通过；当前进入 G4 本地免费闭环。Codex 只能按 G4 合同执行，并在任何编辑前完成源码基线可追溯预检。
+G4 已正式 PASS 并合入 `main`；当前进入 G4.5 视觉 + 功能验收。G4.5 只做 acceptance，不扩产品范围。
 
 ## 阅读顺序
 
@@ -109,16 +109,16 @@ Unified Pay 目前尚未跑通并需要单独修改，因此不作为本项目�
 
 ## 当前下一步
 
-`G4 — WordPress ↔ Scanner ↔ Top 3 Local Loop`
+`G4.5 — Visual + Functional Acceptance`
 
 ```text
-Codex source-baseline precheck
-→ confirm reviewed scanner / WordPress source provenance
-→ rerun frozen regressions
-→ implement local URL → Scanner → Top 3 loop
+Codex reads docs/G4_5_ACCEPTANCE_CONTRACT.md
+→ functional acceptance rerun
+→ Golden Screenshot / responsive acceptance
 → update EXECUTION_EVIDENCE.md / EXECUTOR_HANDOFF.md
-→ PASS_CANDIDATE_G4
+→ PASS_CANDIDATE_G4_5
 → Reviewer independent PASS / RETURN
 ```
 
-若原始 source baseline 缺失、来源不明或无法对应既有验证结果：`RETURN_G4_SOURCE_BASELINE_UNRESOLVED`，禁止重建 G1/G2 代替原基线。
+G4 final decision：`PASS_G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION`。  
+Payment / VPS / Production 继续 HOLD。
