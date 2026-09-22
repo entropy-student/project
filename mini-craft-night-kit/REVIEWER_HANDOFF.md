@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K4_CONTENT_FILL_REVIEWER_COPY
+CURRENT_CHECKPOINT=OWNER_K4_FINAL_UI_EDIT_WINDOW
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -1049,3 +1049,30 @@ Formal decision:
 - `docs/REVIEWER_DECISION_K4_SHELL_PASS_CONTENT_FILL.md`
 
 After Executor applies the copy, it must rerun responsive/Gutenberg/WooCommerce regression and STOP_AT_REVIEWER.
+
+
+## K4 Content Fill — PASS / Owner Final UI Edit Window OPEN
+
+Reviewer accepted Executor commit `98a7d3d4c8cd9851f4780a70c63c89ee3f57b092`.
+
+```text
+K4_CONTENT_FILL_REVIEWER_COPY=PASS
+RESPONSIVE_MATRIX=65_OF_65_PASS
+GUTENBERG_INVALID_BLOCK_COUNT=0
+COMMERCE_SMOKE=PASS
+IMAGE_MEDIA_LAYOUT_CHANGES=NO
+CURRENT_CHECKPOINT=OWNER_K4_FINAL_UI_EDIT_WINDOW
+```
+
+Owner may now make final visual adjustments on Home / Product / FAQ / Shipping & Returns / Contact, normally limited to images, visible-text micro-edits, and global colors.
+
+Owner should not rebuild layout, section order, responsive rules, Cart/Checkout/Account, WooCommerce payment/order logic, or PayPal.
+
+When done, Owner returns:
+`OWNER_K4_UI_EDIT_RESULT=COMPLETE`
+plus changed pages/types.
+
+Then Executor performs bounded delta verification only.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_COPY_PASS_OWNER_FINAL_UI_WINDOW.md`
