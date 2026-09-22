@@ -9,7 +9,7 @@ Maintainer: Reviewer
 K0_FUNCTIONAL_RESULT=PASS
 K0R1_PROJECT_HYGIENE=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS
-CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION
+CURRENT_GATE=K4_CONTENT_FILL_REVIEWER_COPY
 K1_STATUS=SPLIT_K1A_K1B
 DOCKER_SOURCE_MUST_BE_RETAINED=YES
 K0_MOBILE_375_VISUAL_BASELINE=KNOWN_DEFECT
@@ -1024,3 +1024,28 @@ Shop / Cart / Checkout / Thank You / My Account remain structurally protected an
 
 Next:
 Executor implements the Reviewer-owned spec, verifies responsive/Gutenberg/WooCommerce/PayPal preservation, and stops at Reviewer.
+
+
+## K4 Reusable Shell Implementation — ACCEPTED / Text-Only Content Fill
+
+Reviewer accepted Executor commit `1e118131f9d3ec3995c35b09199f255eb27be2a2` as the structural reusable-shell baseline.
+
+```text
+K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION=PASS
+RESPONSIVE_MATRIX=65_OF_65_PASS
+GUTENBERG_INVALID_BLOCK_COUNT=0
+IMAGE_GENERATION=NO
+WOOCOMMERCE_BEHAVIOR=PASS
+PPCP_CONFIGURATION_TOUCHED=NO
+CURRENT_GATE=K4_CONTENT_FILL_REVIEWER_COPY
+```
+
+Authoritative copy is now Reviewer-owned in:
+- `docs/K4_FINAL_COPY_SPEC.md`
+
+This next pass is strictly text-only. Images, global colors, layout, section order, typography settings, responsive logic, CSS, and commerce/payment behavior are frozen.
+
+Formal decision:
+- `docs/REVIEWER_DECISION_K4_SHELL_PASS_CONTENT_FILL.md`
+
+After Executor applies the copy, it must rerun responsive/Gutenberg/WooCommerce regression and STOP_AT_REVIEWER.
