@@ -12,8 +12,8 @@ G1   WordPress Local Baseline                PASS
 G2   Safe Scanner V0                         PASS
 G3   Rule Engine V0                          MERGED / CLOSED
 G3.5 UI + Growth Design Freeze               PASS
-G4   WordPress ↔ Scanner ↔ Top 3 Local Loop   NEXT / EXECUTOR READY
-G4.5 Visual + Functional Acceptance          PENDING
+G4   WordPress ↔ Scanner ↔ Top 3 Local Loop   PASS
+G4.5 Visual + Functional Acceptance          NEXT / EXECUTOR READY
 G5   Full Fix Queue + LLM + Skill Dogfood    PENDING
 G6   VPS Onboarding / Storage                HOLD
 G7   VPS Private Deployment                  HOLD
@@ -53,7 +53,7 @@ Acceptance: the implementation brief is sufficiently precise that Codex does not
 
 ## G4 — Local Free Loop
 
-G3.5 is PASS. G4 is released to Codex under `G4_EXECUTION_CONTRACT.md`.
+G4 is PASS. The accepted implementation is merged to `main`; `G4_EXECUTION_CONTRACT.md` remains the historical implementation contract.
 
 ```text
 URL input
@@ -74,7 +74,7 @@ Acceptance:
 
 ## G4.5 — Visual + Functional Acceptance
 
-Run after G4 implementation and before expanding product scope.
+Current Gate. Released to Codex under `G4_5_ACCEPTANCE_CONTRACT.md`. Run after G4 implementation and before expanding product scope.
 
 Must prove:
 - functional acceptance suite passes;
