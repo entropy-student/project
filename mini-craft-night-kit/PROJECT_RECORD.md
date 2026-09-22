@@ -1074,3 +1074,16 @@ The Home now contains four replaceable 4:3 offer media slots and seven native bu
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_HOME_DETAIL_POLISH_TECH_PASS.md`
+
+
+## K4 Home Visual Review — Capture Before Final Polish
+
+Owner provided a side-by-side visual review and requested one more read-only screenshot pass before any further modification.
+
+Current Gate:
+`K4_HOME_VISUAL_REVIEW_CAPTURE`
+
+Recorded issues:
+Hero needs more weight; sections ②–⑥ are too loose; icon alignment is inconsistent; sections ②/③ are repetitive; footer section ⑧ has a missing icon; non-Hero/non-product sections can be compressed.
+
+No visual mutation is authorized until Reviewer consolidates the final change set from the returned screenshots.
