@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {"contentSize": "760px", "wideSize": "1180px"},
+    "color": {
+      "palette": [
+        {"slug": "cla-ink", "name": "CLA Ink", "color": "#111827"},
+        {"slug": "cla-accent", "name": "CLA Accent", "color": "#5b4df5"},
+        {"slug": "cla-surface", "name": "CLA Surface", "color": "#f7f8fb"}
+      ]
+    }
+  }
+}

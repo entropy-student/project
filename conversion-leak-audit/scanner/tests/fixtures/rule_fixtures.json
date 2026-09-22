@@ -1,0 +1,705 @@
+[
+  {
+    "fixture_id": "G1-P",
+    "rule_id": "GATE-001",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "ACCESS_OK",
+    "forbidden_output": "AUDIT_INCOMPLETE",
+    "state": {
+      "http_status": 200,
+      "dom_complete": true,
+      "waf_blocked": false,
+      "critical_js_complete": true
+    }
+  },
+  {
+    "fixture_id": "G1-N",
+    "rule_id": "GATE-001",
+    "case_type": "negative",
+    "expected_result": "AUDIT_INCOMPLETE",
+    "allowed_output": "ACCESS_RATE_LIMITED",
+    "forbidden_output": "页面缺少价格/政策/内容",
+    "state": {
+      "http_status": 429,
+      "dom_complete": false,
+      "critical_js_complete": false
+    }
+  },
+  {
+    "fixture_id": "G1-E",
+    "rule_id": "GATE-001",
+    "case_type": "edge",
+    "expected_result": "AUDIT_INCOMPLETE",
+    "allowed_output": "ACCESS_JS_INCOMPLETE",
+    "forbidden_output": "价格缺失/CTA缺失Issue",
+    "state": {
+      "http_status": 200,
+      "dom_complete": false,
+      "critical_js_complete": false
+    }
+  },
+  {
+    "fixture_id": "G2-P",
+    "rule_id": "GATE-002",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "上下文完整",
+    "forbidden_output": "CONTEXT_INSUFFICIENT",
+    "state": {
+      "final_url": "https://shop.test/p",
+      "region": "US",
+      "currency": "USD",
+      "viewport": "390x844",
+      "timestamp": "2026-09-17T12:00:00Z",
+      "geo_redirect": false
+    }
+  },
+  {
+    "fixture_id": "G2-N",
+    "rule_id": "GATE-002",
+    "case_type": "negative",
+    "expected_result": "CONTEXT_INSUFFICIENT",
+    "allowed_output": "上下文不足",
+    "forbidden_output": "直接判断配送/价格Issue",
+    "state": {
+      "final_url": "https://shop.test/uk",
+      "region": "",
+      "currency": "",
+      "viewport": "390x844",
+      "timestamp": "2026-09-17T12:00:00Z",
+      "geo_redirect": true
+    }
+  },
+  {
+    "fixture_id": "G2-E",
+    "rule_id": "GATE-002",
+    "case_type": "edge",
+    "expected_result": "PASS",
+    "allowed_output": "ACCESS_OK_WITH_GEO_CONTEXT",
+    "forbidden_output": "用US规则评价UK页面",
+    "state": {
+      "final_url": "https://shop.test/uk",
+      "region": "UK",
+      "currency": "GBP",
+      "viewport": "390x844",
+      "timestamp": "2026-09-17T12:00:00Z",
+      "geo_redirect": true
+    }
+  },
+  {
+    "fixture_id": "C1-P",
+    "rule_id": "CORE-001",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "页面可访问",
+    "forbidden_output": "页面错误",
+    "state": {
+      "core_page": true,
+      "http_status": 200,
+      "dom_complete": true
+    }
+  },
+  {
+    "fixture_id": "C1-N",
+    "rule_id": "CORE-001",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "关键商业页面不可访问",
+    "forbidden_output": "这是销量低的根因",
+    "state": {
+      "core_page": true,
+      "http_status": 500,
+      "dom_complete": false
+    }
+  },
+  {
+    "fixture_id": "C1-E",
+    "rule_id": "CORE-001",
+    "case_type": "edge",
+    "expected_result": "NOT_APPLICABLE",
+    "allowed_output": "受保护页面",
+    "forbidden_output": "关键商业页故障",
+    "state": {
+      "core_page": false,
+      "http_status": 401,
+      "login_required": true,
+      "intentionally_protected": true
+    }
+  },
+  {
+    "fixture_id": "C2-P",
+    "rule_id": "CORE-002",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "购买动作可操作",
+    "forbidden_output": "无",
+    "state": {
+      "direct_purchase": true,
+      "in_stock": true,
+      "required_options_selected": true,
+      "cta_present": true,
+      "cta_action_success": true
+    }
+  },
+  {
+    "fixture_id": "C2-N",
+    "rule_id": "CORE-002",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "购买动作在测试状态不可操作",
+    "forbidden_output": "因此损失X%订单",
+    "state": {
+      "direct_purchase": true,
+      "in_stock": true,
+      "required_options_selected": true,
+      "cta_present": true,
+      "cta_action_success": false
+    }
+  },
+  {
+    "fixture_id": "C2-E",
+    "rule_id": "CORE-002",
+    "case_type": "edge",
+    "expected_result": "NOT_APPLICABLE",
+    "allowed_output": "当前不可购买状态",
+    "forbidden_output": "CTA失效Issue",
+    "state": {
+      "direct_purchase": true,
+      "in_stock": false,
+      "out_of_stock": true,
+      "cta_present": true,
+      "cta_action_success": false
+    }
+  },
+  {
+    "fixture_id": "C3-P",
+    "rule_id": "CORE-003",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "移动核心任务未阻断",
+    "forbidden_output": "移动体验完美",
+    "state": {
+      "mobile_context": true,
+      "blocking_overlay": false,
+      "horizontal_overflow_blocks_task": false
+    }
+  },
+  {
+    "fixture_id": "C3-N",
+    "rule_id": "CORE-003",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "测试视口核心任务被阻断",
+    "forbidden_output": "移动端转化下降X%",
+    "state": {
+      "mobile_context": true,
+      "blocking_overlay": true,
+      "overlay_dismissible": false,
+      "cta_covered": true,
+      "horizontal_overflow_blocks_task": false
+    }
+  },
+  {
+    "fixture_id": "C3-E",
+    "rule_id": "CORE-003",
+    "case_type": "edge",
+    "expected_result": "PASS",
+    "allowed_output": "可恢复遮挡",
+    "forbidden_output": "弹窗必然有害",
+    "state": {
+      "mobile_context": true,
+      "blocking_overlay": true,
+      "overlay_dismissible": true,
+      "cta_covered": true,
+      "cta_covered_after_dismiss": false,
+      "horizontal_overflow_blocks_task": false
+    }
+  },
+  {
+    "fixture_id": "C4-P",
+    "rule_id": "CORE-004",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "存在合法可访问名称",
+    "forbidden_output": "无",
+    "state": {
+      "key_form": true,
+      "accessible_name": true,
+      "placeholder_only": false
+    }
+  },
+  {
+    "fixture_id": "C4-N",
+    "rule_id": "CORE-004",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "关键表单控件缺少可识别标签",
+    "forbidden_output": "用户因此放弃",
+    "state": {
+      "key_form": true,
+      "accessible_name": false,
+      "placeholder_only": true
+    }
+  },
+  {
+    "fixture_id": "C4-E",
+    "rule_id": "CORE-004",
+    "case_type": "edge",
+    "expected_result": "PASS",
+    "allowed_output": "存在合法可访问名称",
+    "forbidden_output": "缺少标签Issue",
+    "state": {
+      "key_form": true,
+      "accessible_name": true,
+      "custom_control": true
+    }
+  },
+  {
+    "fixture_id": "C6-P",
+    "rule_id": "CORE-006",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "核心导航有效",
+    "forbidden_output": "无",
+    "state": {
+      "core_internal_link": true,
+      "target_status": 200
+    }
+  },
+  {
+    "fixture_id": "C6-N",
+    "rule_id": "CORE-006",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "核心内部导航链接损坏",
+    "forbidden_output": "网站整体导航差",
+    "state": {
+      "core_internal_link": true,
+      "target_status": 404
+    }
+  },
+  {
+    "fixture_id": "C6-E",
+    "rule_id": "CORE-006",
+    "case_type": "edge",
+    "expected_result": "NOT_APPLICABLE",
+    "allowed_output": "非核心内部链接",
+    "forbidden_output": "本站核心导航损坏",
+    "state": {
+      "core_internal_link": false,
+      "target_status": 503
+    }
+  },
+  {
+    "fixture_id": "C7-P",
+    "rule_id": "CORE-007",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "购买前价格可见",
+    "forbidden_output": "无",
+    "state": {
+      "direct_purchase": true,
+      "quote_based": false,
+      "price_visible": true,
+      "price_rule_visible": false
+    }
+  },
+  {
+    "fixture_id": "C7-N",
+    "rule_id": "CORE-007",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "直接购买价格不可确定",
+    "forbidden_output": "定价太高/太低",
+    "state": {
+      "direct_purchase": true,
+      "quote_based": false,
+      "price_visible": false,
+      "price_rule_visible": false
+    }
+  },
+  {
+    "fixture_id": "C7-E",
+    "rule_id": "CORE-007",
+    "case_type": "edge",
+    "expected_result": "NOT_APPLICABLE",
+    "allowed_output": "定制报价交易",
+    "forbidden_output": "缺少价格Issue",
+    "state": {
+      "direct_purchase": false,
+      "quote_based": true,
+      "price_visible": false
+    }
+  },
+  {
+    "fixture_id": "C9-P",
+    "rule_id": "CORE-009",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "商业页允许索引",
+    "forbidden_output": "保证会排名",
+    "state": {
+      "intended_indexable_commercial": true,
+      "noindex": false
+    }
+  },
+  {
+    "fixture_id": "C9-N",
+    "rule_id": "CORE-009",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "目标商业页被标记noindex",
+    "forbidden_output": "因此SEO流量低X%",
+    "state": {
+      "intended_indexable_commercial": true,
+      "noindex": true
+    }
+  },
+  {
+    "fixture_id": "C9-E",
+    "rule_id": "CORE-009",
+    "case_type": "edge",
+    "expected_result": "NOT_APPLICABLE",
+    "allowed_output": "非目标索引页",
+    "forbidden_output": "SEO错误",
+    "state": {
+      "intended_indexable_commercial": false,
+      "noindex": true
+    }
+  },
+  {
+    "fixture_id": "C10-P",
+    "rule_id": "CORE-010",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "结构化数据与可见事实一致",
+    "forbidden_output": "富结果必然展示",
+    "state": {
+      "product_page": true,
+      "visible_price": 49,
+      "visible_currency": "USD",
+      "structured_price": 49,
+      "structured_currency": "USD",
+      "localized": false
+    }
+  },
+  {
+    "fixture_id": "C10-N",
+    "rule_id": "CORE-010",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "结构化价格与页面价格冲突",
+    "forbidden_output": "Google必然处罚",
+    "state": {
+      "product_page": true,
+      "visible_price": 49,
+      "visible_currency": "USD",
+      "structured_price": 39,
+      "structured_currency": "USD",
+      "localized": false
+    }
+  },
+  {
+    "fixture_id": "C10-E",
+    "rule_id": "CORE-010",
+    "case_type": "edge",
+    "expected_result": "PASS",
+    "allowed_output": "当前地区数据一致",
+    "forbidden_output": "用默认USD版本判冲突",
+    "state": {
+      "product_page": true,
+      "visible_price": 49,
+      "visible_currency": "EUR",
+      "structured_price": 49,
+      "structured_currency": "EUR",
+      "localized": true
+    }
+  },
+  {
+    "fixture_id": "P1-P",
+    "rule_id": "PHYS-001",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "退货信息可合理发现",
+    "forbidden_output": "政策足够宽松",
+    "state": {
+      "physical": true,
+      "return_proximity": "P1",
+      "high_consideration": false
+    }
+  },
+  {
+    "fixture_id": "P1-N",
+    "rule_id": "PHYS-001",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "未找到适用于当前交易的退货信息",
+    "forbidden_output": "一定导致弃购",
+    "state": {
+      "physical": true,
+      "return_proximity": "P4",
+      "high_consideration": false
+    }
+  },
+  {
+    "fixture_id": "P1-E",
+    "rule_id": "PHYS-001",
+    "case_type": "edge",
+    "expected_result": "ISSUE",
+    "allowed_output": "退货信息存在但离购买决策较远",
+    "forbidden_output": "没有退货政策",
+    "state": {
+      "physical": true,
+      "return_proximity": "P3",
+      "high_consideration": true
+    }
+  },
+  {
+    "fixture_id": "P2-P",
+    "rule_id": "PHYS-002",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "配送关键条件可合理发现",
+    "forbidden_output": "配送方案最优",
+    "state": {
+      "physical": true,
+      "international": false,
+      "region_context_ok": true,
+      "shipping_cost_known": true,
+      "shipping_timing_known": true
+    }
+  },
+  {
+    "fixture_id": "P2-N",
+    "rule_id": "PHYS-002",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "关键配送信息未合理发现",
+    "forbidden_output": "因此损失X收入",
+    "state": {
+      "physical": true,
+      "international": false,
+      "region_context_ok": true,
+      "shipping_cost_known": false,
+      "shipping_timing_known": false
+    }
+  },
+  {
+    "fixture_id": "P2-E",
+    "rule_id": "PHYS-002",
+    "case_type": "edge",
+    "expected_result": "PASS",
+    "allowed_output": "当前地区配送信息清楚",
+    "forbidden_output": "用US配送规则评价",
+    "state": {
+      "physical": true,
+      "international": true,
+      "region_context_ok": true,
+      "shipping_cost_known": true,
+      "shipping_timing_known": true
+    }
+  },
+  {
+    "fixture_id": "S1-P",
+    "rule_id": "SUB-001",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "首期与后续标准价清楚",
+    "forbidden_output": "折扣力度合理",
+    "state": {
+      "promo_to_standard": true,
+      "intro_price_visible": true,
+      "standard_price_visible": true
+    }
+  },
+  {
+    "fixture_id": "S1-N",
+    "rule_id": "SUB-001",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "后续标准收费难以发现",
+    "forbidden_output": "订阅价格太贵",
+    "state": {
+      "promo_to_standard": true,
+      "intro_price_visible": true,
+      "standard_price_visible": false
+    }
+  },
+  {
+    "fixture_id": "S1-E",
+    "rule_id": "SUB-001",
+    "case_type": "edge",
+    "expected_result": "NOT_APPLICABLE",
+    "allowed_output": "无首期转标准价结构",
+    "forbidden_output": "缺少标准价Issue",
+    "state": {
+      "promo_to_standard": false,
+      "intro_price_visible": false,
+      "standard_price_visible": true
+    }
+  },
+  {
+    "fixture_id": "S2-P",
+    "rule_id": "SUB-002",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "扣费周期清楚",
+    "forbidden_output": "无",
+    "state": {
+      "recurring": true,
+      "cadence_visible": true
+    }
+  },
+  {
+    "fixture_id": "S2-N",
+    "rule_id": "SUB-002",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "扣费周期无法确认",
+    "forbidden_output": "订阅不划算",
+    "state": {
+      "recurring": true,
+      "cadence_visible": false
+    }
+  },
+  {
+    "fixture_id": "S2-E",
+    "rule_id": "SUB-002",
+    "case_type": "edge",
+    "expected_result": "NOT_APPLICABLE",
+    "allowed_output": "非周期交易",
+    "forbidden_output": "缺少扣费周期",
+    "state": {
+      "recurring": false,
+      "cadence_visible": false
+    }
+  },
+  {
+    "fixture_id": "S3-P",
+    "rule_id": "SUB-003",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "自动续费事实清楚",
+    "forbidden_output": "续费策略最优",
+    "state": {
+      "recurring": true,
+      "auto_renew_visible": true,
+      "prepaid_fixed_term_no_renew": false
+    }
+  },
+  {
+    "fixture_id": "S3-N",
+    "rule_id": "SUB-003",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "自动续费事实难以发现",
+    "forbidden_output": "商家故意欺骗",
+    "state": {
+      "recurring": true,
+      "auto_renew_visible": false,
+      "prepaid_fixed_term_no_renew": false
+    }
+  },
+  {
+    "fixture_id": "S3-E",
+    "rule_id": "SUB-003",
+    "case_type": "edge",
+    "expected_result": "NOT_APPLICABLE",
+    "allowed_output": "非自动续费",
+    "forbidden_output": "缺少auto-renew说明",
+    "state": {
+      "recurring": false,
+      "auto_renew_visible": false,
+      "prepaid_fixed_term_no_renew": true
+    }
+  },
+  {
+    "fixture_id": "S4-P",
+    "rule_id": "SUB-004",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "试用转付费关键事实清楚",
+    "forbidden_output": "无",
+    "state": {
+      "trial_to_paid": true,
+      "free_forever": false,
+      "trial_length_visible": true,
+      "post_trial_amount_visible": true,
+      "auto_conversion_visible": true
+    }
+  },
+  {
+    "fixture_id": "S4-N",
+    "rule_id": "SUB-004",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "试用后的收费事实不完整",
+    "forbidden_output": "一定构成违法",
+    "state": {
+      "trial_to_paid": true,
+      "free_forever": false,
+      "trial_length_visible": true,
+      "post_trial_amount_visible": false,
+      "auto_conversion_visible": false
+    }
+  },
+  {
+    "fixture_id": "S4-E",
+    "rule_id": "SUB-004",
+    "case_type": "edge",
+    "expected_result": "NOT_APPLICABLE",
+    "allowed_output": "非trial-to-paid",
+    "forbidden_output": "缺少试用收费说明",
+    "state": {
+      "trial_to_paid": false,
+      "free_forever": true,
+      "trial_length_visible": false,
+      "post_trial_amount_visible": false,
+      "auto_conversion_visible": false
+    }
+  },
+  {
+    "fixture_id": "S5-P",
+    "rule_id": "SUB-005",
+    "case_type": "positive",
+    "expected_result": "PASS",
+    "allowed_output": "取消核心条件可合理发现",
+    "forbidden_output": "取消策略最佳",
+    "state": {
+      "recurring": true,
+      "marketplace_dependent": false,
+      "cancel_method_visible": true,
+      "cancel_deadline_material": true,
+      "cancel_deadline_visible": true
+    }
+  },
+  {
+    "fixture_id": "S5-N",
+    "rule_id": "SUB-005",
+    "case_type": "negative",
+    "expected_result": "ISSUE",
+    "allowed_output": "取消截止条件难以合理发现",
+    "forbidden_output": "商家恶意设置障碍",
+    "state": {
+      "recurring": true,
+      "marketplace_dependent": false,
+      "cancel_method_visible": true,
+      "cancel_deadline_material": true,
+      "cancel_deadline_visible": false
+    }
+  },
+  {
+    "fixture_id": "S5-E",
+    "rule_id": "SUB-005",
+    "case_type": "edge",
+    "expected_result": "PASS",
+    "allowed_output": "第三方取消责任方清楚",
+    "forbidden_output": "官网必须提供直接取消按钮",
+    "state": {
+      "recurring": false,
+      "marketplace_dependent": true,
+      "third_party_cancel_provider_visible": true
+    }
+  }
+]

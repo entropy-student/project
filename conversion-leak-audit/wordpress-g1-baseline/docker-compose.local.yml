@@ -1,0 +1,59 @@
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${WP_DB_NAME:-conversion_leak_audit}
+      MARIADB_USER: ${WP_DB_USER:-cla_local}
+      MARIADB_PASSWORD: ${WP_DB_PASSWORD:-change-me-local-only}
+      MARIADB_ROOT_PASSWORD: ${WP_DB_ROOT_PASSWORD:-change-me-local-only-root}
+    volumes:
+      - ./runtime/db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  wordpress:
+    image: wordpress:7.1-php8.3-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WP_PORT:-8080}:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${WP_DB_NAME:-conversion_leak_audit}
+      WORDPRESS_DB_USER: ${WP_DB_USER:-cla_local}
+      WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD:-change-me-local-only}
+      CLA_SCANNER_BASE_URL: ${CLA_SCANNER_BASE_URL:-http://host.docker.internal:8000}
+    volumes:
+      - ./runtime/wordpress:/var/www/html
+      - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
+      - ../g4-wordpress-integration/conversion-leak-audit-g4.php:/var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.php:ro
+      - ../g4-wordpress-integration/conversion-leak-audit-g4.js:/var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.js:ro
+      - ../g4-wordpress-integration/conversion-leak-audit-g4.css:/var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.css:ro
+      - ./wp-content/themes/conversion-leak-audit-child:/var/www/html/wp-content/themes/conversion-leak-audit-child
+
+  wpcli:
+    image: wordpress:cli-php8.3
+    profiles: ["tools"]
+    depends_on:
+      wordpress:
+        condition: service_started
+    user: "33:33"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${WP_DB_NAME:-conversion_leak_audit}
+      WORDPRESS_DB_USER: ${WP_DB_USER:-cla_local}
+      WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD:-change-me-local-only}
+    volumes:
+      - ./runtime/wordpress:/var/www/html
+      - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
+      - ../g4-wordpress-integration/conversion-leak-audit-g4.php:/var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.php:ro
+      - ./wp-content/themes/conversion-leak-audit-child:/var/www/html/wp-content/themes/conversion-leak-audit-child
+      - ./scripts:/workspace/scripts:ro
+      - ./content:/workspace/content:ro
+    working_dir: /var/www/html

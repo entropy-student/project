@@ -141,3 +141,27 @@ Candidate result:
 `PASS_CANDIDATE_G4_LOCAL_FREE_LOOP`
 
 Do not declare final PASS yourself. Reviewer will read GitHub evidence and decide.
+
+## G4 Repository Reconciliation — 2026-09-22
+
+The prior G4 implementation was reconciled into a new clean project-scoped workspace based on the fetched `origin/main` at `746a4882d9511ab103713b9ae1d6bd2d5e8ebfaa`. The dedicated branch is `codex/g4-repository-reconciliation`. The old shared monorepo worktree was not reset, cleaned, checked out, staged, committed, or otherwise modified beyond the required remote fetch.
+
+Reconciliation commit: `e3a7573` (`conversion leak audit: reconcile G4 workspace`).
+
+Only the `conversion-leak-audit/` sparse project was materialized. The canonical `scanner/` and `wordpress-g1-baseline/` trees were restored from the final handoff recovery package, with provenance and SHA256 recorded in `docs/EXECUTION_EVIDENCE.md`. Reviewer-owned governance documents were preserved from the current GitHub checkout.
+
+Clean-workspace verification:
+
+- Scanner frozen regression: `55 passed`.
+- WordPress asset regression: `TOTAL=20 PASS=20 FAIL=0`.
+- G4 browser integration: landing, job creation, `scan_id` binding, bounded polling, report rendering, deterministic Top 3, evidence traceability, unsafe URL fail-closed, unavailable/timeout, blocked/rate-limited/incomplete, zero/one/two findings: PASS.
+- G4 screenshots: `docs/evidence/g4-screenshots/`.
+- Payment actions, VPS writes, and production secrets: `0`.
+
+Files changed are limited to the `conversion-leak-audit/**` project scope and are listed by the reconciliation commit. Local `.env`, Docker runtime state, SQLite state, and generated caches are not committed.
+
+Recommended Reviewer decision: `REVIEW_G4_PASS_CANDIDATE_REPOSITORY_RECONCILED`.
+
+Candidate result: `PASS_CANDIDATE_G4_REPOSITORY_RECONCILED`.
+
+Do not declare final G4 PASS. Stop at Reviewer after the dedicated branch is pushed.
