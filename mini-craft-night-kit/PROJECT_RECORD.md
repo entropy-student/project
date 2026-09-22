@@ -1168,3 +1168,15 @@ Final bounded work:
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_OWNER_MANUAL_EDITS_FINALIZE.md`
+
+
+## K4 Owner Manual Baseline — Superseding Verification Gate
+
+Owner manually saved additional Home deletions, including removal of the Three-step section.
+
+Current saved Home/Header is authoritative. No deleted content may be restored by Executor.
+
+Previous `K4_OWNER_MANUAL_EDITS_FINALIZE` scope is superseded by:
+`K4_OWNER_MANUAL_BASELINE_VERIFY`
+
+Three-value invalid-block state is now read-only verification. Any remaining invalid blocks must be reported, not repaired, unless Reviewer later authorizes a bounded fix.
