@@ -1,10 +1,17 @@
 {
   "manifest_version": 3,
   "name": "Story Image Runner",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Queue prompts, generate images in ChatGPT, and download them with deterministic filenames.",
-  "permissions": ["storage", "tabs", "downloads", "sidePanel"],
-  "host_permissions": ["https://chatgpt.com/*"],
+  "permissions": [
+    "storage",
+    "tabs",
+    "downloads",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*"
+  ],
   "background": {
     "service_worker": "background.js",
     "type": "module"
@@ -17,8 +24,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://chatgpt.com/*"],
-      "js": ["content.js"],
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_idle"
     }
   ]
