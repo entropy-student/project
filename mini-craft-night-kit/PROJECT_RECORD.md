@@ -1040,3 +1040,24 @@ Owner now has the final UI edit window for images, visible-text micro-edits, and
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_COPY_PASS_OWNER_FINAL_UI_WINDOW.md`
+
+
+## K4 Local Artifact Hygiene — PASS / Home Detail Polish
+
+Local hygiene commit `68e446115c623b93a87dc9492061b8b2e065396d` removed 62 confirmed reproducible Mini Craft K4 temp directories (~1.07 GB) without page/media/config/commerce mutation.
+
+The current GPT-6 Home remains the visual baseline.
+
+Authorized bounded next step:
+`K4_HOME_DETAIL_POLISH`
+
+Scope:
+- four replaceable product/content media slots;
+- native burgundy line icons;
+- minor detail polish;
+- Hero unchanged;
+- no image generation;
+- no commerce/payment changes.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_HOME_DETAIL_POLISH.md`
