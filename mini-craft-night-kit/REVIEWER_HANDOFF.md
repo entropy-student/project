@@ -1363,3 +1363,37 @@ Formal decision:
 `docs/REVIEWER_DECISION_K4_FULL_VISUAL_AUDIT_RETURN_STOREFRONT_CLEANUP.md`
 
 Home current saved state and the Product gallery repair are protected.
+
+
+## K4 Strict Storefront Cleanup — AUTHORIZED
+
+The previous storefront-cleanup decision is superseded by a stricter visual remediation Gate based on direct review of the full audit ZIP.
+
+Current Gate:
+`K4_STRICT_STOREFRONT_CLEANUP`
+
+Required before K4 Visual PASS:
+- customer-facing WooCommerce strings English;
+- inherited demo tech products removed from customer-visible Shop/Related Products without hard deletion;
+- Mini Craft product category corrected from Accessories to a suitable craft category;
+- Product mobile typography tightened while preserving canonical Woo structure;
+- Contact native form visibly renders Name / Email / Message / Send message;
+- customer-facing internal-governance copy removed from Contact and FAQ;
+- FAQ Orders & Support matches native FAQ pattern;
+- Shipping & Returns duplicate heading and mobile hierarchy cleaned up;
+- Shop excess whitespace reduced and single-product result/sort controls handled natively where reasonable;
+- populated Cart and populated Checkout desktop/mobile screenshots captured without order/payment;
+- Account English;
+- mobile Footer stacked cleanly.
+
+Protected:
+- current Home visual baseline;
+- Product gallery fix and canonical gallery;
+- payment/order state;
+- business-policy facts.
+
+Strategic product-model mismatch is recorded but NOT auto-resolved:
+`PRODUCT_MODEL_STRATEGY_DECISION=PENDING_OWNER_REVIEW`
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_STRICT_STOREFRONT_CLEANUP.md`
