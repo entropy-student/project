@@ -1,0 +1,24 @@
+/*
+Theme Name: Conversion Leak Audit Child
+Template: saaslauncher
+Version: 0.1.0
+Description: Minimal project-local layer for Conversion Leak Audit. Parent theme remains SaasLauncher.
+*/
+
+:root {
+  --cla-ink: #111827;
+  --cla-muted: #5f6b7a;
+  --cla-surface: #f7f8fb;
+  --cla-border: #e6e9ef;
+  --cla-accent: #5b4df5;
+  --cla-good: #16794b;
+}
+
+.cla-scan-shell { max-width: 840px; margin: 2rem auto; padding: 1.25rem; border: 1px solid var(--cla-border); border-radius: 20px; background: #fff; box-shadow: 0 18px 60px rgba(17,24,39,.08); }
+.cla-scan-form { display: grid; grid-template-columns: 1fr auto; gap: .75rem; }
+.cla-scan-form input { min-height: 52px; border: 1px solid var(--cla-border); border-radius: 12px; padding: 0 1rem; font: inherit; }
+.cla-scan-form button { min-height: 52px; padding: 0 1.25rem; border: 0; border-radius: 12px; background: var(--cla-accent); color: #fff; font-weight: 700; cursor: not-allowed; }
+.cla-scan-note { color: var(--cla-muted); font-size: .92rem; margin-top: .8rem; }
+.cla-proof-grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1rem; }
+.cla-proof-card { border:1px solid var(--cla-border); border-radius:16px; padding:1rem; background:#fff; }
+@media (max-width: 680px) { .cla-scan-form { grid-template-columns: 1fr; } .cla-proof-grid { grid-template-columns:1fr; } }

@@ -1,0 +1,21 @@
+PASS page:home content/pages/home.html
+PASS page:how-it-works content/pages/how-it-works.html
+PASS page:demo content/pages/demo.html
+PASS page:pricing content/pages/pricing.html
+PASS page:faq content/pages/faq.html
+PASS page:blog content/pages/blog.html
+PASS placeholder_shortcode_present 
+PASS placeholder_disabled_input 
+PASS placeholder_no_fetch 
+PASS home_uses_placeholder 
+PASS claim_boundary_present 
+PASS pricing_marks_unvalidated 
+PASS payment_disabled 
+PASS child_theme_parent 
+PASS theme_json_valid 
+PASS compose_no_vps_paths 
+PASS compose_local_port 
+PASS compose_no_production_domain 
+PASS no_scanner_endpoint 
+PASS no_live_secret_markers 
+TOTAL=20 PASS=20 FAIL=0
