@@ -198,3 +198,21 @@ Required next step: create a clean sparse/project-scoped workspace from current 
 Formal decision: `docs/REVIEWER_DECISION_G4_REPOSITORY_RECONCILIATION.md`.
 
 Do not mutate sibling project worktrees. Do not merge G4 to main before Reviewer PASS.
+
+
+### G4 Contract Completion Review — 2026-09-22
+
+Repository reconciliation has passed Reviewer inspection. G4 final PASS remains withheld for a bounded contract-completion return.
+
+Required before final G4 PASS:
+- one real Scanner V0 canary through the WordPress integration;
+- real PRIORITIZING state + canonical progress mapping;
+- analytics contract compliance and automated assertions;
+- refresh-result test;
+- exact four-page Golden Demo fixture fidelity and required summary;
+- complete G4 screenshot evidence;
+- blue/navy frozen primary visual direction restored.
+
+Formal decision: `docs/REVIEWER_DECISION_G4_CONTRACT_COMPLETION_RETURN.md`.
+
+G1/G2/source recovery/repository isolation remain accepted and must not be rebuilt.
