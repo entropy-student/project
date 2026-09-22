@@ -284,7 +284,7 @@ Executor does not declare G4.5 PASS. Dedicated branch should be pushed and execu
 
 ## G4.5 Final Polish — 2026-09-23
 
-Reviewer returned `RETURN_G4_5_FINAL_POLISH_ONLY`. Latest `origin/main` (`23a5f48a978cbd29c597e8a27d228230676b2428`) was fetched; the only main changes since the branch base were Reviewer governance files, with no product-source changes. The dedicated branch `codex/g4-5-visual-editability-rework` was safely rebased; it was not merged to main.
+Reviewer returned `RETURN_G4_5_FINAL_POLISH_ONLY`. Final pre-push fetch resolved latest `origin/main` to `bb61e42d0644ba07f4681f985136c275c4ad8861`; main's only project-path changes since the branch base were `CURRENT_STATUS.json` and the Reviewer final-polish decision. Later main commits added no `conversion-leak-audit/**` changes. The dedicated branch `codex/g4-5-visual-editability-rework` was safely rebased onto that tip; it was not merged to main.
 
 Final bounded corrections:
 

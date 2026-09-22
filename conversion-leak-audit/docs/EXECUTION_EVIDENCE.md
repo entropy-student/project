@@ -406,7 +406,7 @@ Candidate result: `PASS_CANDIDATE_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
 
 Gate: `G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
 
-Reviewer decision: `RETURN_G4_5_FINAL_POLISH_ONLY`. Fetched `origin/main` at `23a5f48a978cbd29c597e8a27d228230676b2428`; its only changes since the branch base were `CURRENT_STATUS.json` and the new Reviewer final-polish decision. No product source under `conversion-leak-audit/**` changed on main. The dedicated branch was rebased onto that latest main and remains unmerged.
+Reviewer decision: `RETURN_G4_5_FINAL_POLISH_ONLY`. Final pre-push fetch resolved `origin/main` at `bb61e42d0644ba07f4681f985136c275c4ad8861`. Since the branch base, main changed only `CURRENT_STATUS.json` and added the Reviewer final-polish decision; subsequent main commits added no further `conversion-leak-audit/**` changes. No product source under the project changed on main. The dedicated branch was rebased onto that latest main and remains unmerged.
 
 Changed paths are limited to the project:
 
