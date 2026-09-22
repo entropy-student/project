@@ -1205,3 +1205,31 @@ No further Home mutation is authorized until the final desktop/mobile screenshot
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_HOME_FINAL_POLISH_TECH_PASS_VISUAL_PENDING.md`
+
+
+## K4 Home Final Density & Alignment Polish — TECHNICAL PASS
+
+Reviewer accepted Executor commit `56f4932e21e2883ce2223e8547121d98c725205d` on technical evidence.
+
+```text
+HOME_HTTP=200
+RESPONSIVE_MATRIX=13_OF_13_PASS
+HORIZONTAL_OVERFLOW=NO
+CONTENT_CLIPPING=NO
+GUTENBERG_INVALID_BLOCK_COUNT=0
+NATIVE_HOME_ICONS=7
+FOOTER_BROKEN_IMAGE=0
+FOOTER_CREDIT=REMOVED_NATIVE_SETTING
+COMMERCE_SMOKE=PASS_NO_ORDER_OR_PAYMENT
+WOOCOMMERCE_PAYPAL_ORDER_STATE=UNCHANGED
+CURRENT_CHECKPOINT=OWNER_K4_FINAL_VISUAL_CONFIRMATION
+```
+
+Owner must visually inspect the current Home and return:
+`OWNER_K4_FINAL_VISUAL=PASS`
+or a bounded RETURN issue.
+
+If PASS, perform one final bounded K4 delta verification before formal K4 close.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_HOME_FINAL_POLISH_TECH_PASS.md`
