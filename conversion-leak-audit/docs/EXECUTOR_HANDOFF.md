@@ -228,3 +228,94 @@ Candidate:
 `PASS_CANDIDATE_G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
 
 Then `STOP_AT_REVIEWER`.
+
+## G4.5 Visual Editability Rework — 2026-09-23
+
+Gate: `G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
+
+The bounded rework was executed in a new clean sparse workspace on the dedicated branch `codex/g4-5-visual-editability-rework`, from the latest fetched `origin/main`. The existing shared monorepo was not reused for implementation, and no sibling project was changed.
+
+Completed:
+
+- Home static content and section order now remain in Gutenberg; dynamic Scanner behavior remains in the shortcode/integration layer.
+- Home hierarchy brings the scan surface forward on mobile and subdues the decorative report preview.
+- Top 3 defaults to priority/rule, title, concise observed fact, first move, then expandable details/evidence. Evidence remains available and traceable.
+- Progress remains four-stage, backend-driven, and percentage-free.
+- Project navigation and minimal footer use only real routes/pages; template residual SaaS copy is removed.
+- Secondary pages use a shared content width, spacing, hierarchy, and navy/blue direction.
+- Pretty route verification passed for `/how-it-works/`, `/demo/`, `/pricing/`, `/faq/`, and `/blog/`.
+- Reversible Home Gutenberg edit proof passed: save → frontend changed → restore → frontend restored.
+- Screenshot package was generated outside Git and contains only screenshots and `MANIFEST.md`.
+
+Verification:
+
+```text
+SCANNER_REGRESSION=55/55 PASS
+WORDPRESS_REGRESSION=20/20 PASS
+G4_INTEGRATION=PASS
+REAL_SCANNER_CANARY=PASS
+ANALYTICS_CONTRACT=PASS
+GOLDEN_DEMO=PASS
+REFRESH_RESULT=PASS
+MOBILE_FORM_SUBMIT=PASS
+OWNER_EDITABILITY_PROOF=PASS
+PRETTY_ROUTES=PASS
+PAYMENT_ACTIONS=0
+VPS_WRITES=0
+PRODUCTION_SECRETS=0
+OUT_OF_SCOPE_CHANGES=0
+```
+
+Real canary evidence: safe public target `http://1.1.1.1/`; terminal state `AUDIT_INCOMPLETE`; report pages `1`; `EVIDENCE_LESS_ISSUE=0`. Fixture evidence: exact Golden Demo pages `/`, `/products/example`, `/cart`, `/faq` and exact findings `CORE-007`, `PHYS-002`, `PHYS-001`.
+
+WordPress editability target achieved: `WORDPRESS_OWNER_EDITABILITY=FULL_FOR_STATIC_CONTENT_AND_LAYOUT`. The runtime local admin and runtime credentials are intentionally not recorded in GitHub evidence.
+
+Screenshot package:
+
+`C:\Users\34707\Documents\ChatGPT\VPS基建\conversion-leak-audit-g4-5-owner-editable-visual-review.zip`
+
+Implementation and first evidence commit: `dba52f8` (`conversion leak audit: rework G4.5 visual editability`).
+
+Recommended Reviewer decision: `REVIEW_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
+
+Candidate result: `PASS_CANDIDATE_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
+
+Executor does not declare G4.5 PASS. Dedicated branch should be pushed and execution should stop at Reviewer.
+
+## G4.5 Final Polish — 2026-09-23
+
+Reviewer returned `RETURN_G4_5_FINAL_POLISH_ONLY`. Final pre-push fetch resolved latest `origin/main` to `bb61e42d0644ba07f4681f985136c275c4ad8861`; main's only project-path changes since the branch base were `CURRENT_STATUS.json` and the Reviewer final-polish decision. Later main commits added no `conversion-leak-audit/**` changes. The dedicated branch `codex/g4-5-visual-editability-rework` was safely rebased onto that tip; it was not merged to main.
+
+Final bounded corrections:
+
+- Removed `$29 planned launch price` and customer-facing G1 / checkout / Gate language from Pricing and its static preview. Retained `Free preview`, `$0`, `Full fix queue`, and `Planned paid expansion`. No payment button or action exists.
+- Reduced Home H1 size and hero spacing, subdued the decorative preview, and tuned shared secondary-page, header, and mobile navigation spacing. Scanner behavior and Top 3/Evidence structure remain unchanged.
+- Captured Site Editor from a real authenticated local Administrator session. WP-CLI verified the `cla_admin` role; the password is not stored in repository evidence or screenshot package.
+
+Verification:
+
+```text
+SCANNER_REGRESSION=55/55 PASS
+WORDPRESS_REGRESSION=20/20 PASS
+G4_INTEGRATION=PASS
+PRETTY_ROUTES=PASS (all six routes HTTP 200)
+OWNER_EDITABILITY_PROOF=PASS
+SITE_EDITOR_ACCESS=PASS_AUTHENTICATED_ADMIN
+PRICING_PUBLIC_COPY=PASS
+PAYMENT_ACTIONS=0
+OUT_OF_SCOPE_CHANGES=0
+VPS_WRITES=0
+PRODUCTION_SECRETS=0
+```
+
+Final screenshot ZIP:
+
+`C:\Users\34707\Documents\ChatGPT\VPS基建\conversion-leak-audit-g4-5-final-visual-review.zip`
+
+It contains the 10 requested PNG screenshots and `MANIFEST.md` only. The progress image captured backend `MATCHING_EVIDENCE`; the Top 3 and mobile Evidence screenshots show the actual result/detail surfaces. The authenticated Site Editor is visible without login fields or password.
+
+Recommended Reviewer decision: `REVIEW_G4_5_FINAL_POLISH_COMPLETE`.
+
+Candidate result: `PASS_CANDIDATE_G4_5_FINAL_VISUAL_COMPLETE`.
+
+Executor does not declare G4.5 PASS. Push the rebased dedicated branch and stop at Reviewer.

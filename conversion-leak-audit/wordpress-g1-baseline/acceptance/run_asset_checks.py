@@ -22,8 +22,8 @@ check('home_uses_placeholder', '[cla_scan_placeholder]' in home)
 check('claim_boundary_present', 'cannot prove why your customers did not buy' in home)
 
 pricing = (ROOT/'content/pages/pricing.html').read_text()
-check('pricing_marks_unvalidated', 'planned launch price' in pricing and 'unvalidated' in pricing.lower())
-check('payment_disabled', 'Checkout is intentionally disabled in G1' in pricing)
+check('pricing_free_paid_boundary', all(token in pricing for token in ['Free preview', '$0', 'Full fix queue', 'Planned paid expansion']))
+check('pricing_no_internal_price_or_gate_copy', all(token not in pricing.lower() for token in ['$29', 'g1', 'checkout', 'gate']))
 
 child_style = (ROOT/'wp-content/themes/conversion-leak-audit-child/style.css').read_text()
 check('child_theme_parent', 'Template: saaslauncher' in child_style)
