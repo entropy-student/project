@@ -1200,3 +1200,20 @@ Current Gate:
 `K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR`
 
 This supersedes the prior verification-only Gate. Product repair must remain minimal and preserve canonical WooCommerce gallery behavior. All visual evidence is delivered as one ZIP plus GitHub archive.
+
+
+## K4 Full Visual Audit — Technical PASS / Visual RETURN
+
+Executor commit `7db4f27f647611d0a4702b2b95bc63617f1786cc` is accepted for the Product gallery repair and technical regression evidence.
+
+Direct review of the full screenshot ZIP found customer-facing cleanup still required:
+- WooCommerce frontend locale mismatch (Chinese strings inside English storefront);
+- inherited demo tech products visible in Shop/Related Products;
+- Contact form Name/Email inputs not visibly rendered;
+- FAQ Orders & Support formatting inconsistency;
+- redundant Shipping & Returns inner heading.
+
+Next Gate:
+`K4_STOREFRONT_CLEANUP_AFTER_VISUAL_AUDIT`
+
+K4 remains open.
