@@ -24,8 +24,24 @@
     </section>
 
     <section class="card">
-      <h2>批量任务</h2>
-      <textarea id="promptText" rows="8" placeholder="每行一条 Prompt"></textarea>
+      <div class="section-head">
+        <h2>批量任务</h2>
+        <span id="importPreview" class="badge muted">预计导入 0 条</span>
+      </div>
+      <textarea id="promptText" rows="8" placeholder="默认整个文本框 = 1 条 prompt；可切换拆分模式"></textarea>
+      <div class="grid import-grid">
+        <label>导入模式
+          <select id="importMode">
+            <option value="single">整个文本框 = 1 条</option>
+            <option value="blankline">按空行拆分</option>
+            <option value="line">按每行拆分</option>
+          </select>
+        </label>
+        <label>单次排队上限
+          <input id="maxQueue" value="500" disabled />
+        </label>
+      </div>
+      <small id="importHint">适合长 prompt、带换行的提示词。</small>
       <div class="row">
         <button id="replaceText">用文本替换队列</button>
         <button id="appendText" class="secondary">追加文本</button>
