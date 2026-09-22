@@ -39,8 +39,11 @@ async function importText(replace) {
   await persistSettings();
   const lines = parsePromptText($("promptText").value);
   if (!lines.length) throw new Error("请输入至少一条 Prompt");
-  await call(replace ? "REPLACE_JOBS" : "IMPORT_JOBS", { jobs: jobsFromPromptLines(lines) });
+  const result = await call(replace ? "REPLACE_JOBS" : "IMPORT_JOBS", { jobs: jobsFromPromptLines(lines) });
+  const verify = (await call("GET_STATE")).state;
+  if (!(verify.jobs || []).length) throw new Error(`QUEUE_WRITE_MISMATCH: 后台返回写入 ${result.count ?? lines.length} 条，但重新读取仍为 0 条`);
   $("promptText").value = "";
+  showDiagnostic(`队列写入成功：${verify.jobs.length} 条；待处理 ${verify.jobs.filter((j) => j.status === "pending").length} 条`, true);
 }
 
 $("replaceText").addEventListener("click", () => runUi(() => importText(true)));
@@ -61,6 +64,20 @@ $("stop").addEventListener("click", () => runUi(() => call("STOP_RUN")));
 $("retryFailed").addEventListener("click", () => runUi(() => call("RETRY_FAILED")));
 $("clear").addEventListener("click", () => runUi(async () => {
   if (confirm("清空全部任务？")) await call("CLEAR_JOBS");
+}));
+
+$("selfTest").addEventListener("click", () => runUi(async () => {
+  const ping = await call("PING");
+  const state = (await call("GET_STATE")).state;
+  showDiagnostic([
+    `后台版本：${ping.runtimeVersion}`,
+    `Storage：${ping.storageWritable ? "PASS" : "FAIL"}`,
+    `队列：${ping.jobCount} 条 / pending ${ping.pendingCount} 条`,
+    `Live：${ping.liveEnabled ? "ON" : "OFF"}`,
+    `ChatGPT content-script：${ping.chatgptReady ? "READY" : "NOT READY"}`,
+    `最后心跳：${ping.lastHeartbeatAt || "无"}`,
+    `UI读取队列：${(state.jobs || []).length} 条`
+  ].join("\n"), ping.storageWritable);
 }));
 
 $("liveEnabled").addEventListener("change", async (event) => {
@@ -134,6 +151,14 @@ async function runUi(fn) {
   hideError();
   try { await fn(); await refresh(); }
   catch (error) { showError(error.message); }
+}
+
+function showDiagnostic(text, ok = null) {
+  const el = $("diagnosticText");
+  el.textContent = text;
+  el.classList.remove("ok", "bad");
+  if (ok === true) el.classList.add("ok");
+  if (ok === false) el.classList.add("bad");
 }
 
 function showError(text) { $("errorBox").textContent = text; $("errorBox").classList.remove("hidden"); }
