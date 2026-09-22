@@ -1336,3 +1336,30 @@ Scope:
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR.md`
+
+
+## K4 Full Visual Audit — Product Gallery TECH PASS / Storefront Visual RETURN
+
+Reviewer directly inspected the uploaded visual-review ZIP from Executor commit `7db4f27f647611d0a4702b2b95bc63617f1786cc`.
+
+Accepted:
+- canonical WooCommerce Product gallery repair;
+- interaction/responsive evidence;
+- Home/Header baseline preservation;
+- Gutenberg invalid count 0;
+- no order/payment mutation.
+
+Visual RETURN issues:
+1. English brand pages are mixed with Chinese WooCommerce frontend strings.
+2. Legacy demo products (Remote Control / Universal Charger / USB-C Cable) remain visible in Shop and Product Related Products.
+3. Contact form visibly lacks Name and Email input controls; only Message textarea renders.
+4. FAQ Orders & Support needs native structured FAQ formatting.
+5. Shipping & Returns repeats the same page heading inside the content card.
+
+Current Gate:
+`K4_STOREFRONT_CLEANUP_AFTER_VISUAL_AUDIT`
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_FULL_VISUAL_AUDIT_RETURN_STOREFRONT_CLEANUP.md`
+
+Home current saved state and the Product gallery repair are protected.
