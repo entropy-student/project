@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Story Image Runner</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Story Image Runner</h1>
+        <p>批量 Prompt → ChatGPT 生图 → 自动下载</p>
+      </div>
+      <span id="runBadge" class="badge">IDLE</span>
+    </header>
+
+    <section class="card live-card">
+      <label class="switch-row">
+        <input id="liveEnabled" type="checkbox" />
+        <span><strong>Live generation</strong><small>关闭时不会向 ChatGPT 提交任何 Prompt；浏览器重启后自动关闭。</small></span>
+      </label>
+    </section>
+
+    <section class="card">
+      <h2>批量任务</h2>
+      <textarea id="promptText" rows="8" placeholder="每行一条 Prompt"></textarea>
+      <div class="row">
+        <button id="replaceText">用文本替换队列</button>
+        <button id="appendText" class="secondary">追加文本</button>
+        <label class="file-button secondary">导入 JSON/TXT<input id="fileInput" type="file" accept=".json,.txt,text/plain,application/json" hidden /></label>
+      </div>
+    </section>
+
+    <section class="card grid">
+      <label>Project ID<input id="projectId" value="batch-001" /></label>
+      <label>下载目录<input id="outputFolder" value="StoryImageRunner" /></label>
+      <label>画幅<select id="aspect"><option>auto</option><option>1:1</option><option>16:9</option><option>9:16</option><option>4:5</option><option>5:4</option><option>4:3</option><option>3:4</option></select></label>
+      <label>每 N 张新会话<input id="newChatEvery" type="number" min="1" max="1000" value="1" /></label>
+      <label>任务间隔 ms<input id="delayMs" type="number" min="0" max="60000" value="2500" /></label>
+      <label>单张超时 ms<input id="timeoutMs" type="number" min="30000" max="900000" value="240000" /></label>
+      <label class="wide">Prompt 前缀<input id="promptPrefix" value="Generate an image. " /></label>
+    </section>
+
+    <section class="controls">
+      <button id="start" class="primary">开始</button>
+      <button id="pause">暂停</button>
+      <button id="stop">停止</button>
+      <button id="retryFailed" class="secondary">重试失败项</button>
+      <button id="clear" class="danger">清空</button>
+    </section>
+
+    <section class="card summary">
+      <div><strong id="countAll">0</strong><span>全部</span></div>
+      <div><strong id="countPending">0</strong><span>待处理</span></div>
+      <div><strong id="countDone">0</strong><span>完成</span></div>
+      <div><strong id="countFailed">0</strong><span>失败</span></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head"><h2>队列</h2><span id="liveBadge" class="badge muted">LIVE OFF</span></div>
+      <div id="errorBox" class="error hidden"></div>
+      <div id="jobs" class="jobs"></div>
+    </section>
+  </main>
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>
