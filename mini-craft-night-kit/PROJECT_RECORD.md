@@ -1061,3 +1061,16 @@ Scope:
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_HOME_DETAIL_POLISH.md`
+
+
+## K4 Home Detail Polish — Technical PASS
+
+Executor commit `e5416cf9c585b795f588a03f796342f1e3b36824` passed technical review.
+
+Current checkpoint:
+`OWNER_K4_HOME_VISUAL_REVIEW`
+
+The Home now contains four replaceable 4:3 offer media slots and seven native burgundy icon blocks while preserving the GPT-6 Hero, responsive behavior, Gutenberg validity, and commerce/payment state.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_HOME_DETAIL_POLISH_TECH_PASS.md`
