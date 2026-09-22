@@ -1254,3 +1254,25 @@ Visual Evidence Protocol is now updated: GitHub screenshot archive remains manda
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_HOME_SECTION_DEDUP.md`
+
+
+## K4 Owner Manual Home/Header Edits — Saved / Finalize Authorized
+
+Owner has manually saved a new protected baseline:
+- wide Hero background image with current light left→right overlay;
+- current Hero copy/CTA placement;
+- current Header/logo branding;
+- four new product-display media assignments;
+- current remaining Home structure/content.
+
+Two final cleanup items remain:
+1. remove redundant Three-step section;
+2. remove/repair the invalid child blocks in the Three-value cards so Gutenberg invalid count returns to 0.
+
+Current Gate:
+`K4_OWNER_MANUAL_EDITS_FINALIZE`
+
+Executor must protect the current Hero, Header/logo, and four product media assignments exactly as saved.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_OWNER_MANUAL_EDITS_FINALIZE.md`
