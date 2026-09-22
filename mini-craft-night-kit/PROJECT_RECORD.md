@@ -1087,3 +1087,23 @@ Recorded issues:
 Hero needs more weight; sections ②–⑥ are too loose; icon alignment is inconsistent; sections ②/③ are repetitive; footer section ⑧ has a missing icon; non-Hero/non-product sections can be compressed.
 
 No visual mutation is authorized until Reviewer consolidates the final change set from the returned screenshots.
+
+
+## K4 Home Visual Review — Final Modification Plan
+
+Read-only capture commit `2ecee86b6de749d8ab5fcae64b683ba0cdcdf0d7` is accepted as the visual-review baseline.
+
+Next Gate:
+`K4_HOME_FINAL_DENSITY_ALIGNMENT_POLISH`
+
+Final plan:
+- increase Hero weight modestly;
+- compress sections ②/③/④/⑥;
+- differentiate ③ from the flat process strip ②;
+- preserve section ⑤ product-image prominence;
+- standardize native icon alignment;
+- slightly tighten closing CTA;
+- repair footer broken brand visual and simplify footer attribution.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_HOME_FINAL_DENSITY_ALIGNMENT_POLISH.md`
