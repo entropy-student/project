@@ -1,7 +1,7 @@
 # Conversion Leak Audit — EXECUTOR HANDOFF
 
 > Intended executor: Codex / local development agent
-> Current State: `G4_PASS_G4_5_READY_FOR_EXECUTION`
+> Current State: `G4_5_PASS_G4_6_READY_FOR_EXECUTION`
 
 ## Reviewer authorization
 
@@ -319,3 +319,36 @@ Recommended Reviewer decision: `REVIEW_G4_5_FINAL_POLISH_COMPLETE`.
 Candidate result: `PASS_CANDIDATE_G4_5_FINAL_VISUAL_COMPLETE`.
 
 Executor does not declare G4.5 PASS. Push the rebased dedicated branch and stop at Reviewer.
+
+
+## Reviewer release — G4.6
+
+G4.5 final decision:
+
+`PASS_G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
+
+G4.5 implementation is merged to `main` through PR #3.
+
+Current authorized Gate:
+
+`G4_6_ACQUISITION_SEO_READINESS`
+
+Read and execute:
+
+`G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md`
+
+This Gate may modify Message / Proof / Demo / navigation visibility / SEO metadata / canonical / robots / sitemap behavior and related readiness tests.
+
+Do not:
+- reopen G4.5 visual structure;
+- bulk-generate blog content;
+- add payment;
+- touch VPS/domain/HTTPS;
+- add new Scanner rules;
+- build G5 Full Fix Queue / LLM report.
+
+Candidate:
+
+`PASS_CANDIDATE_G4_6_ACQUISITION_SEO_READINESS`
+
+Then `STOP_AT_REVIEWER`.
