@@ -166,8 +166,8 @@ optional LLM explanation (later)
 ## 10. 当前下一动作
 
 ```text
-Codex
-→ source-baseline traceability precheck
+Owner restores verified 2026-09-17 canonical package once
+→ Codex verifies package SHA256 + reruns 55/55 and 20/20
 → execute docs/G4_EXECUTION_CONTRACT.md
 → update docs/EXECUTION_EVIDENCE.md
 → Reviewer reads GitHub evidence
@@ -178,7 +178,8 @@ Codex
 - G3.5 已 PASS；
 - G4 已释放给 Codex；
 - 2026-09-22 Reviewer 接管复核已完成，见 `docs/REVIEWER_DECISION_G4_TAKEOVER_RECONCILIATION.md`；
-- G4 任何源码编辑前必须证明原 `scanner/` 与 `wordpress-g1-baseline/` 的来源/版本/回归基线可追溯；若不能证明则 RETURN，不得重建；
+- 2026-09-22 已从 Owner Library 找回并校验 canonical package `conversion-leak-audit-final-2026-09-17.zip`，SHA256 `e5c3aa1da7a8fe5a431eade38f2b45fc48862b21470e413f4a034f150f59df03`；Reviewer 已从该包重新实跑 Scanner 55/55 与 WordPress 20/20 PASS；见 `docs/REVIEWER_DECISION_G4_SOURCE_BASELINE_RECOVERY.md`；
+- G4 源码编辑前仍需由 Codex 在本地恢复该 verified package 中的 `scanner/` 与 `wordpress-g1-baseline/`，再次校验 SHA256 + 55/55 + 20/20；不得重建；
 - G4 仅允许本地 WordPress ↔ Scanner ↔ Top 3 闭环；
 - Payment / VPS / Production 继续 HOLD。
 
