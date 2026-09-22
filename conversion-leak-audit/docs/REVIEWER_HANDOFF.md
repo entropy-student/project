@@ -12,8 +12,8 @@ G1 WordPress Local Baseline = PASS
 G2 Safe Scanner V0 = PASS
 G3 Rule Engine V0 = MERGED / CLOSED
 G3.5 UI + Growth Design Freeze = PASS
-G4 WordPress ↔ Scanner ↔ Top 3 = NEXT / RELEASED TO CODEX
-G4.5 Visual + Functional Acceptance = PENDING
+G4 WordPress ↔ Scanner ↔ Top 3 = PASS
+G4.5 Visual + Functional Acceptance = NEXT / RELEASED TO CODEX
 ```
 
 ## G3.5 Final Decision
@@ -42,16 +42,17 @@ If generated-image text conflicts with these contracts, GitHub contracts win.
 
 ## Current Reviewer Position
 
-Reviewer does not implement G4 code.
+G4 is closed with:
+
+`PASS_G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION`
 
 Codex is now authorized to execute only:
 
-`G4_EXECUTION_CONTRACT.md`
+`G4_5_ACCEPTANCE_CONTRACT.md`
 
-The next Reviewer action is to read Codex's updated `EXECUTION_EVIDENCE.md` and decide:
-
-- PASS_G4
-- RETURN_G4
+The next Reviewer action is to read G4.5 evidence and decide:
+- PASS_G4_5
+- RETURN_G4_5
 - STOP / OWNER CHECKPOINT
 
 ## 2026-09-22 Takeover Reconciliation
@@ -182,5 +183,22 @@ Bounded corrections remain:
 - restore frozen blue/navy primary visual direction.
 
 Do not redo G1/G2 or the repository reconciliation architecture.
+
+Owner intervention required: NO.
+
+
+## 2026-09-22 Final G4 PASS
+
+Formal decision:
+
+`REVIEWER_DECISION_G4_PASS.md`
+
+G4 passed after source recovery, repository reconciliation, bounded contract-completion corrections, and independent Reviewer verification.
+
+Implementation was merged through PR #2 into `main` at merge commit `554951fc778d2b60a4a1fe655e07c37310ef76ad`.
+
+Current Gate: `G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`.
+
+Contract: `G4_5_ACCEPTANCE_CONTRACT.md`.
 
 Owner intervention required: NO.
