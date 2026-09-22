@@ -73,15 +73,25 @@ Executor 只能写：
 - Executor 必须把最终截图提交到 GitHub，作为长期 Evidence；
 - 仅有 GitHub 路径、commit、hash 或“截图已归档”不等于 Reviewer 已完成视觉验收；
 - Reviewer 必须实际看到截图像素后，才能给 `Visual PASS`；
-- 如果当前工具链不能把 GitHub PNG 直接呈现给 Reviewer，Executor 返回时必须明确：
-  - `VISUAL_REVIEW_DELIVERY=OWNER_UPLOAD_REQUIRED`
-  - 最终 desktop / mobile 截图的精确 GitHub 路径或可下载链接；
-- Owner 将这些截图手动上传到当前对话后，Reviewer 再做视觉判断；
-- 在 Reviewer 未实际看到截图像素前，只能给 `Technical PASS`，不能给最终 `Visual PASS`；
-- UI Gate 的标准证据交付默认包含：
-  1. 仓库归档截图；
-  2. 当前对话可直接查看的截图，或明确的 Owner 手动上传 checkpoint。
+- 所有需要 Reviewer 视觉确认的截图证据，Executor 除了提交 GitHub 归档外，还必须额外打包成一个 Owner 可直接转交的 ZIP；
+- ZIP 只包含本次 Gate 的视觉证据与一个简短 manifest，不得混入日志、Secrets、cookies、credentials、数据库导出、无关截图或其它项目文件；
+- ZIP 默认命名：`<gate>-visual-review.zip`；
+- ZIP 内建议结构：
+  - `desktop/`
+  - `mobile/`
+  - `manifest.txt`
+- `manifest.txt` 至少记录：Gate、截图文件名、视口尺寸、页面、commit SHA；不得记录 Secret；
+- Executor 返回时必须明确：
+  - `VISUAL_REVIEW_PACKAGE=<absolute local zip path>`
+  - `VISUAL_REVIEW_DELIVERY=OWNER_UPLOAD_ZIP_REQUIRED`
+- Owner 将该 ZIP 直接上传到当前对话，Reviewer 解包并实际查看截图像素后再做视觉判断；
+- 在 Reviewer 未实际看到 ZIP 中的截图像素前，只能给 `Technical PASS`，不能给最终 `Visual PASS`；
+- UI Gate 的标准视觉证据交付默认包含：
+  1. GitHub 中的长期截图归档；
+  2. 本次视觉证据 ZIP；
+  3. Owner 将 ZIP 上传到当前对话后的 Reviewer 视觉审查。
 
+除非 Reviewer 明确要求，不再让 Owner 逐张下载/上传截图。
 禁止用 Base64 长文本替代正常截图交付。
 
 ## 7. Promotion to Global Governance
