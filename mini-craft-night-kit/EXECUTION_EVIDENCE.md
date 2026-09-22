@@ -2367,6 +2367,114 @@ OWNER_ACTION=NONE
 NEXT=STOP_AT_REVIEWER
 ```
 
+## K4 Full Visual Audit + Product Gallery Repair — 2026-09-23
+
+```text
+GATE=K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR
+RESULT=PASS_CANDIDATE_K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR
+ACTIVE_RUNTIME=http://localhost:8093/
+WORDPRESS_CONTAINER=UP
+MARIADB_CONTAINER=UP_HEALTHY
+HOME_HTTP=200
+PRODUCT_HTTP=200
+WOO_VERSION=10.0.4
+PPCP_VERSION=4.1.3
+```
+
+### Product gallery diagnosis
+
+The defect was reproduced on the canonical WooCommerce product page before the fix. The initial desktop gallery showed a large active image, but repeated native thumbnail clicks produced an active image as small as `105x96` with a `96px` flex viewport; the mobile path reproduced the same thumbnail-like active state. Refresh restored the first image. The native gallery had six thumbnails and one active slide throughout, so the failure was a sizing/reflow consequence rather than a missing gallery mount.
+
+```text
+PRODUCT_ID=223
+PRODUCT_GALLERY_IDS=1032,1033,1034,1035,1036
+PRODUCT_GALLERY_ROOT_CAUSE=GALLERY_MEDIA_FULL_DIMENSIONS_ARE_INTRINSICALLY_LOW_RES_90_TO_281PX;NATIVE_WOO_FLEX_VIEWPORT_SIZED_ACTIVE_SLIDE_TO_INTRINSIC_IMAGE_DIMENSIONS
+PRE_FIX_DESKTOP_AFTER_THUMBNAIL=ACTIVE_IMAGE_105x96;VIEWPORT_HEIGHT_96;LARGE_ACTIVE_IMAGE=NO
+PRE_FIX_MOBILE_AFTER_THUMBNAIL=ACTIVE_IMAGE_105x96;VIEWPORT_HEIGHT_96;LARGE_ACTIVE_IMAGE=NO
+PRE_FIX_REFRESH=FIRST_IMAGE_RESTORED
+```
+
+### Minimal repair
+
+The repair preserves the WooCommerce canonical gallery, native thumbnails, native zoom/lightbox markup, product content, and commerce flow. A rollback point was created for the existing Customizer CSS (`sha256=e1e7c2d7ea7ec8083a4cb7727c32168d6a544aa55f83adf93d47bc6504ac31c2`) before adding one scoped rule through WordPress Custom CSS:
+
+```text
+.single-product .woocommerce-product-gallery .woocommerce-product-gallery__image img { width:100%; height:auto; display:block; }
+```
+
+```text
+PRODUCT_GALLERY_FIX=MINIMAL_SCOPED_CUSTOM_CSS_WIDTH_100_HEIGHT_AUTO_DISPLAY_BLOCK
+CANONICAL_WOOCOMMERCE_GALLERY=RETAINED
+CUSTOM_CAROUSEL_OR_REBUILD=NO
+PRODUCT_MEDIA_ASSIGNMENTS=UNCHANGED
+THUMBNAIL_COUNT=6
+ZOOM_LIGHTBOX=NATIVE_MARKUP_PRESERVED
+CUSTOM_CSS_AFTER_SHA256=04c837e3b1891e54d80083c2c031c807c6ed41bfe2e3351992a1c4a516d7d04d
+```
+
+After the fix, all five repeated interactions at every tested width kept one active image at least 50% of the viewport width, with the active image rendered at the gallery width and the thumbnails remaining `60x65`-class thumbnails. Refresh and both desktop/mobile paths remained stable.
+
+```text
+PRODUCT_GALLERY_INTERACTION_MATRIX=PASS_65_OF_65
+PRODUCT_GALLERY_REFRESH=PASS_13_OF_13
+PRODUCT_GALLERY_ACTIVE_IMAGE_SIZE=PASS_13_OF_13
+THUMBNAIL_PRESERVATION=PASS_13_OF_13
+```
+
+### Full visual audit and regression evidence
+
+```text
+AUDIT_VIEWPORTS=DESKTOP_1440;MOBILE_390
+AUDIT_SURFACES=HOME;SHOP;PRODUCT;FAQ;SHIPPING_RETURNS;CONTACT;CART;CHECKOUT;ACCOUNT
+PNG_COUNT=22
+SCREENSHOT_ROOT=docs/ui-k4-full-visual-audit/
+PRODUCT_GALLERY_SCREENSHOTS=product-gallery/desktop-product-initial.png;product-gallery/desktop-product-after-thumbnail.png;product-gallery/mobile-product-initial.png;product-gallery/mobile-product-after-thumbnail.png
+THANK_YOU_CAPTURE=NOT_CAPTURED
+THANK_YOU_REASON=ORDER_RECEIVED_URL_WITHOUT_PRIVATE_ORDER_KEY_RENDERED_ANONYMOUS_NO_KEY_GATE;NO_NEW_ORDER_OR_PAYMENT_CREATED
+```
+
+Home and Product were tested at `320,375,390,430,768,820,1024,1280,1366,1440,1920,2048,2560`.
+
+```text
+HOME_RESPONSIVE_MATRIX=PASS_13_OF_13
+PRODUCT_RESPONSIVE_MATRIX=PASS_13_OF_13
+HOME_PRODUCT_HORIZONTAL_OVERFLOW=0_OF_26
+HOME_PRODUCT_INVALID_BLOCK_TEXT=0_OF_26
+MOBILE_NAV=PASS_13_OF_13
+GUTENBERG_INVALID_BLOCK_COUNT=0
+HOME_UNREGISTERED_BLOCK_COUNT=0
+HOME_PAGE_ID=939
+HOME_CONTENT_UNTOUCHED=YES
+HOME_BASELINE_PROTECTED=YES
+HEADER_LOGO_PROTECTED=YES
+HOME_PRODUCT_MEDIA_PROTECTED=YES
+DELETED_HOME_SECTIONS_RESTORED=NO
+```
+
+The Home capture shows the currently saved wide Hero/overlay/copy/CTA, Header/logo, current four product-display images/order, remaining section order, Story, FAQ, reassurance, CTA, and Footer. The repair selector is limited to `.single-product .woocommerce-product-gallery`, so no Home/Header selector or content was changed.
+
+```text
+PRODUCT_CART_CHECKOUT_SMOKE=PASS
+ADD_TO_CART_ACTIONS=1_SESSION_ONLY
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+WOO_PAYPAL_CONFIG_MUTATION=0
+EXISTING_SANDBOX_ORDER_MUTATION=0
+OBSERVED_ORDER_STATUS_COUNTS=processing_2;pending_2;checkout-draft_2
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_OUTPUT=0
+```
+
+The visual-review ZIP contains only the 22 current-Gate PNGs and `manifest.txt`; no logs, cookies, credentials, database export, provider payload, or unrelated project files are included.
+
+```text
+VISUAL_REVIEW_PACKAGE=K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR-visual-review.zip
+VISUAL_REVIEW_DELIVERY=OWNER_UPLOAD_ZIP_REQUIRED
+OWNER_ACTION=UPLOAD_VISUAL_REVIEW_ZIP
+NEXT=STOP_AT_REVIEWER
+```
+
 ## K4 Local Artifact Hygiene — 2026-09-22
 
 ```text

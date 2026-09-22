@@ -1141,3 +1141,31 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 Protected scope remained unchanged: no WooCommerce/PayPal/order/payment logic, version, source patch, VPS, Live action, public tunnel, or secret output was used. The screenshots are the post-polish 1440px desktop and 390px mobile full-page captures.
+
+## K4 Full Visual Audit + Product Gallery Repair — Executor handoff (2026-09-23)
+
+```text
+GATE=K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR
+RESULT=PASS_CANDIDATE_K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR
+SUMMARY=Reproduced and minimally repaired the canonical WooCommerce Product gallery sizing defect with one scoped Custom CSS rule; captured the full current storefront audit at desktop 1440px and mobile 390px.
+PRODUCT_GALLERY_ROOT_CAUSE=LOW_INTRINSIC_DIMENSIONS_IN_PRODUCT_GALLERY_MEDIA_1032_TO_1036_CAUSING_NATIVE_FLEX_VIEWPORT_TO_COLLAPSE_AFTER_THUMBNAIL_SWITCH
+PRODUCT_GALLERY_FIX=SCOPED_SINGLE_PRODUCT_GALLERY_IMAGE_WIDTH_100_HEIGHT_AUTO_DISPLAY_BLOCK
+PRODUCT_GALLERY_INTERACTION_MATRIX=PASS_65_OF_65
+PRODUCT_GALLERY_REFRESH=PASS_13_OF_13
+HOME_PRODUCT_RESPONSIVE_MATRIX=PASS_13_OF_13_EACH
+HOME_PRODUCT_HORIZONTAL_OVERFLOW=0_OF_26
+GUTENBERG_INVALID_BLOCK_COUNT=0
+HOME_BASELINE_PROTECTED=YES
+HEADER_LOGO_PROTECTED=YES
+HOME_PRODUCT_MEDIA_PROTECTED=YES
+DELETED_HOME_SECTIONS_RESTORED=NO
+COMMERCE_SMOKE=PASS_NO_ORDER_NO_PAYMENT
+THANK_YOU=NOT_CAPTURED_ANONYMOUS_NO_KEY_GATE
+EVIDENCE=EXECUTION_EVIDENCE.md;docs/ui-k4-full-visual-audit/
+VISUAL_REVIEW_PACKAGE=K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR-visual-review.zip
+VISUAL_REVIEW_DELIVERY=OWNER_UPLOAD_ZIP_REQUIRED
+OWNER_ACTION=UPLOAD_VISUAL_REVIEW_ZIP
+NEXT=STOP_AT_REVIEWER
+```
+
+No Product rebuild, custom carousel, JavaScript patch, product/order/payment logic change, WooCommerce/PayPal version change, Home/Header mutation, VPS action, or secret output occurred.
