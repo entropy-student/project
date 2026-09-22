@@ -1,57 +1,57 @@
 # Story Image Runner
 
-A governed local browser-automation project for turning structured video shot prompts into image-generation jobs through a signed-in ChatGPT web session, then exporting deterministic assets for downstream video production.
+Chrome / Edge batch image-generation plugin for ChatGPT.
 
-## Goal
+## Final product goal
 
 ```text
-Script / SRT
-→ Shotbook
-→ jobs.json
-→ Story Image Runner
-→ ChatGPT image generation
-→ deterministic image files + manifests
-→ later: visual QA / regeneration
-→ later: Remotion or other video assembly
+Paste/import prompts
+→ queue them
+→ use the user's signed-in ChatGPT web session
+→ generate images one by one
+→ automatically download and name them
 ```
 
-This project is intentionally **not** an OpenAI API wrapper. The planned web path uses a user-controlled signed-in Chromium browser session and a local bridge.
+Video assembly is out of scope.
 
 ## Current status
 
 ```text
-P0_PROJECT_INTAKE_GOVERNANCE = PASS
-P0A_ARCHITECTURE_SAFETY_FREEZE = PASS
-G1_LOCAL_PLUMBING_DRY_RUN = RELEASED_TO_EXECUTOR
-G1_5_SINGLE_IMAGE_CANARY = PENDING
-G2_BOUNDED_10_IMAGE_BATCH = PENDING
-G3_REFERENCE_ASPECT_RESUME = PENDING
-G4_VIDEO_PROJECT_ADAPTER = PENDING
-G5_VISUAL_QA_REGEN = PENDING
-G6_REMOTION_HANDOFF = PENDING
+G1_PLUGIN_CORE_STATIC_IMPLEMENTATION = PASS
+G1_5_BROWSER_LOAD_DRY_RUN = NEXT
+G2_SINGLE_REAL_IMAGE_CANARY = PENDING
+G3_BOUNDED_10_IMAGE_BATCH = PENDING
+G4_BULK_USABILITY_HARDENING = PENDING
+G5_PLUGIN_RELEASE_PACKAGE = PENDING
 ```
 
-Read first:
+Implementation branch: `story-image-runner/plugin-v1`.
 
-1. `PROJECT_RECORD.md`
-2. `CURRENT_STATUS.json`
-3. `REVIEWER_HANDOFF.md`
-4. `docs/G1_EXECUTION_CONTRACT.md`
-5. `docs/ARCHITECTURE.md`
-6. `docs/HANDOFF_PROTOCOL.md`
+## Implemented
 
-## Safety baseline
+- MV3 Chrome/Edge extension
+- side-panel UI
+- TXT / JSON import
+- persistent queue
+- start / pause / stop / retry
+- deterministic filenames
+- background ChatGPT tab
+- prompt-submit DOM adapter
+- fresh-image detection
+- automatic download with fallback
+- rate-limit pause
+- Live generation safety switch
 
-- `SAFE_MODE=true` by default.
-- G1 must not submit a real ChatGPT prompt or consume image quota.
-- Local bridge must bind to `127.0.0.1`, not `0.0.0.0`.
-- Browser cookies/session credentials must never be copied into the repository, logs, manifests, or chat.
-- First real generation is a separately authorized single-image canary.
-- Concurrency starts at 1.
-- Rate-limit / auth / ambiguous-result failures fail closed; no blind retry loops.
+Live generation defaults OFF and resets OFF after browser restart.
 
-## Third-party reference policy
+## Install for browser test
 
-Public projects may be studied for observable architecture and behavior. Do not copy code from a repository unless its license has been verified as compatible and attribution/notice obligations are satisfied.
+1. Download/extract the extension package.
+2. Open `chrome://extensions/` or `edge://extensions/`.
+3. Enable Developer mode.
+4. Click Load unpacked.
+5. Select the `extension/` folder.
+6. Keep ChatGPT signed in in the same browser profile.
+7. Click the extension icon to open the side panel.
 
-The initial implementation should be clean-room from the contracts in this repository.
+First test must keep Live generation OFF.
