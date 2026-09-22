@@ -1233,3 +1233,24 @@ If PASS, perform one final bounded K4 delta verification before formal K4 close.
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_HOME_FINAL_POLISH_TECH_PASS.md`
+
+
+## K4 Home Final Visual Review — RETURN: Remove Redundant Three-step Strip
+
+Owner and Reviewer visually inspected the final desktop/mobile captures.
+
+Decision:
+- remove the standalone Three-step strip (Open the box / Make together / Keep the memory);
+- keep the Three-value section (Less planning / Easy to begin / Something remains);
+- do not relocate the removed process copy elsewhere on Home;
+- only normalize the immediate Hero→Three-value spacing after deletion.
+
+Current Gate:
+`K4_HOME_SECTION_DEDUP`
+
+This is the last authorized Home structure change before final visual confirmation.
+
+Visual Evidence Protocol is now updated: GitHub screenshot archive remains mandatory, but final Visual PASS requires the Reviewer to actually see screenshot pixels in chat. If connector rendering is unavailable, Owner uploads the final desktop/mobile screenshots manually.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_HOME_SECTION_DEDUP.md`
