@@ -13,7 +13,8 @@ G2 Safe Scanner V0 = PASS
 G3 Rule Engine V0 = MERGED / CLOSED
 G3.5 UI + Growth Design Freeze = PASS
 G4 WordPress ↔ Scanner ↔ Top 3 = PASS
-G4.5 Visual + Functional Acceptance = NEXT / RELEASED TO CODEX
+G4.5 Visual + Functional Acceptance = PASS
+G4.6 Acquisition + SEO Readiness = NEXT / RELEASED TO CODEX
 ```
 
 ## G3.5 Final Decision
@@ -202,3 +203,22 @@ Current Gate: `G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`.
 Contract: `G4_5_ACCEPTANCE_CONTRACT.md`.
 
 Owner intervention required: NO.
+
+
+## 2026-09-23 G4.5 Final PASS / G4.6 Release
+
+Formal G4.5 decision:
+
+`REVIEWER_DECISION_G4_5_PASS.md`
+
+G4.5 is closed. Do not reopen its visual structure without a concrete regression or Owner request.
+
+Current authorized Gate:
+
+`G4_6_ACQUISITION_SEO_READINESS`
+
+Contract:
+
+`G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md`
+
+This gate uses Acquisition Growth Radar principles and SEO readiness checks to improve Message, Proof/Trust, Activation path, indexability, and technical search hygiene without starting a bulk content program or production deployment.
