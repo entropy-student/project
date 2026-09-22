@@ -17,14 +17,15 @@
     "G3_RULE_ENGINE_V0": "MERGED_CLOSED",
     "G3_5_UI_GROWTH_DESIGN_FREEZE": "PASS",
     "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "PASS",
-    "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "RETURN_FINAL_POLISH_ONLY",
+    "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "PASS",
     "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "PENDING",
     "G6_VPS_ONBOARDING_STORAGE": "HOLD",
     "G7_VPS_PRIVATE_DEPLOYMENT": "HOLD",
     "G8_DOMAIN_HTTPS": "HOLD",
     "G9_PAYMENT_CONTROLLED_GOLIVE": "HOLD",
     "G10_PRODUCTION_ACCEPTANCE": "HOLD",
-    "G11_ACQUISITION_BUSINESS_VALIDATION": "HOLD"
+    "G11_ACQUISITION_BUSINESS_VALIDATION": "HOLD",
+    "G4_6_ACQUISITION_SEO_READINESS": "NEXT_READY_FOR_EXECUTOR"
   },
   "evidence": {
     "scanner_project_tests": "55/55 PASS",
@@ -67,7 +68,7 @@
     "public_production_scanner": "HOLD",
     "g4_scope": "LOCAL_ONLY_NO_PAYMENT_NO_VPS_NO_PRODUCTION_SECRET"
   },
-  "next_action": "CODEX_REMOVE_UNFROZEN_PRICING_COPY_AND_CAPTURE_AUTHENTICATED_SITE_EDITOR",
+  "next_action": "CODEX_EXECUTE_G4_6_ACQUISITION_SEO_READINESS_CONTRACT",
   "reviewer_reconciliation": {
     "date": "2026-09-22",
     "status": "RECONCILED",
@@ -102,23 +103,18 @@
     "merge_commit": "554951fc778d2b60a4a1fe655e07c37310ef76ad"
   },
   "g4_5": {
-    "status": "RETURN_FINAL_POLISH_ONLY",
-    "contract": "docs/G4_5_ACCEPTANCE_CONTRACT.md",
-    "release": "docs/REVIEWER_RELEASE_G4_5.md",
-    "scope": "VISUAL_AND_FUNCTIONAL_ACCEPTANCE_ONLY",
-    "repository_mode": "CLEAN_SPARSE_PROJECT_SCOPED_WORKSPACE",
-    "branch": "codex/g4-5-visual-functional-acceptance",
-    "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS",
-    "owner_access_checkpoint": "docs/G4_5_OWNER_ACCESS_CHECKPOINT.md",
-    "owner_visual_approval": "RETURN_DENSITY_AND_EDITABILITY",
-    "owner_access": "READY",
-    "owner_editability": "FULL_FOR_STATIC_CONTENT_AND_LAYOUT_PASS",
-    "visual_capture_decision": "docs/REVIEWER_DECISION_G4_5_OWNER_ACCESS_AND_VISUAL_CAPTURE.md",
-    "visual_review_decision": "docs/REVIEWER_DECISION_G4_5_VISUAL_REVIEW_RETURN.md",
-    "rework_contract": "docs/G4_5_VISUAL_EDITABILITY_REWORK_CONTRACT.md",
-    "target_owner_editability": "FULL_FOR_STATIC_CONTENT_AND_LAYOUT",
-    "rework_branch": "codex/g4-5-visual-editability-rework",
-    "visual_rework": "SUBSTANTIALLY_ACCEPTED",
-    "final_polish_decision": "docs/REVIEWER_DECISION_G4_5_FINAL_POLISH_RETURN.md"
+    "status": "PASS",
+    "decision_doc": "docs/REVIEWER_DECISION_G4_5_PASS.md",
+    "pull_request": 3,
+    "merge_commit": "40a1657ddd785069851ada7078acc1acae18f4d0",
+    "owner_editability": "FULL_FOR_STATIC_CONTENT_AND_LAYOUT",
+    "visual_functional_acceptance": "PASS"
+  },
+  "g4_6": {
+    "status": "NEXT_READY_FOR_EXECUTOR",
+    "contract": "docs/G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md",
+    "scope": "MESSAGE_PROOF_ACTIVATION_AND_SEO_READINESS",
+    "branch": "codex/g4-6-acquisition-seo-readiness",
+    "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS"
   }
 }
