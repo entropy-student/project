@@ -18,7 +18,7 @@ Video assembly is out of scope.
 
 ```text
 G1_PLUGIN_CORE_STATIC_IMPLEMENTATION = PASS
-G1_5_BROWSER_LOAD_DRY_RUN = NEXT
+G1_5_BROWSER_LOAD_DRY_RUN = PARTIAL OWNER EVIDENCE
 G2_SINGLE_REAL_IMAGE_CANARY = PENDING
 G3_BOUNDED_10_IMAGE_BATCH = PENDING
 G4_BULK_USABILITY_HARDENING = PENDING
@@ -55,3 +55,16 @@ Live generation defaults OFF and resets OFF after browser restart.
 7. Click the extension icon to open the side panel.
 
 First test must keep Live generation OFF.
+
+
+## V0.1.3 current notes
+
+- default prompt import: entire textarea = one prompt;
+- optional split by blank line or by line;
+- import-count preview and large line-split confirmation;
+- explicit queue cap: 500 jobs;
+- local tests: 11/11 PASS;
+- browser runtime has proven queue/storage/content-script connectivity, but final image detection/download is still being validated.
+
+Current capability boundaries and deferred work:
+`docs/CAPABILITY_BOUNDARIES_AND_DEFERRED_BACKLOG.md`
