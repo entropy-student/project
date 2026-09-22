@@ -162,3 +162,25 @@ G4 functional work remains a PASS candidate, but final PASS is withheld until th
 The existing dirty monorepo worktree must not be cleaned/reset/pulled or used for the final G4 commit because it contains unrelated sibling-project pending changes.
 
 Owner intervention required: NO.
+
+
+## 2026-09-22 G4 Contract Completion Review
+
+Formal decision:
+
+`REVIEWER_DECISION_G4_CONTRACT_COMPLETION_RETURN.md`
+
+Repository reconciliation is accepted, but final G4 PASS is withheld.
+
+Bounded corrections remain:
+- real Scanner V0 canary through WordPress integration;
+- real `PRIORITIZING` backend state and canonical progress copy;
+- analytics event contract compliance + tests;
+- refresh-result coverage;
+- frozen four-page Golden Demo fidelity + summary;
+- complete required G4 screenshot evidence;
+- restore frozen blue/navy primary visual direction.
+
+Do not redo G1/G2 or the repository reconciliation architecture.
+
+Owner intervention required: NO.
