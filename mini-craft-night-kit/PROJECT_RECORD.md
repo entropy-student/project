@@ -1107,3 +1107,15 @@ Final plan:
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_HOME_FINAL_DENSITY_ALIGNMENT_POLISH.md`
+
+
+## K4 Home Final Density Polish — Technical PASS / Visual Confirmation Pending
+
+Executor commit `56f4932e21e2883ce2223e8547121d98c725205d` passed technical review. The final screenshot pair is archived at:
+- docs/ui-k4-final-density-polish/home-desktop-1440.png
+- docs/ui-k4-final-density-polish/home-mobile-390.png
+
+Current checkpoint:
+`OWNER_K4_FINAL_VISUAL_CONFIRMATION`
+
+K4 is not formally closed until those final captures are visually accepted.
