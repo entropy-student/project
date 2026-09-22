@@ -401,3 +401,71 @@ Known limitations: the WordPress/Scanner environment is local-only; no payment, 
 Implementation and first evidence commit: `dba52f8` (`conversion leak audit: rework G4.5 visual editability`). Recommended Reviewer decision: `REVIEW_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
 
 Candidate result: `PASS_CANDIDATE_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
+
+## G4.5 Final Polish — 2026-09-23
+
+Gate: `G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
+
+Reviewer decision: `RETURN_G4_5_FINAL_POLISH_ONLY`. Fetched `origin/main` at `23a5f48a978cbd29c597e8a27d228230676b2428`; its only changes since the branch base were `CURRENT_STATUS.json` and the new Reviewer final-polish decision. No product source under `conversion-leak-audit/**` changed on main. The dedicated branch was rebased onto that latest main and remains unmerged.
+
+Changed paths are limited to the project:
+
+- `g4-wordpress-integration/conversion-leak-audit-g4.css`
+- `g4-wordpress-integration/conversion-leak-audit-g4.php` (asset cache version only)
+- `wordpress-g1-baseline/acceptance/run_asset_checks.py`
+- `wordpress-g1-baseline/content/pages/pricing.html`
+- `wordpress-g1-baseline/static-preview/index.html` (stale pricing preview copy)
+- `wordpress-g1-baseline/wp-content/themes/conversion-leak-audit-child/style.css`
+- `wordpress-g1-baseline/wp-content/themes/conversion-leak-audit-child/templates/front-page.html`
+- this evidence and `docs/EXECUTOR_HANDOFF.md`
+
+Pricing now states `Free preview`, `$0`, `Full fix queue`, and `Planned paid expansion`. The unfrozen `$29` and customer-facing G1 / checkout / Gate language were removed. No purchase button, concrete paid price, payment integration, or payment action was added. WordPress acceptance assertions were updated to enforce the new public-copy boundary while retaining 20 total checks.
+
+Visual changes are limited to smaller Home headline bounds, tighter hero-to-scan spacing, a quieter report preview, consistent page/card rhythm, and stable desktop/mobile navigation spacing with visible hover/focus styling. The scan form and Scanner behavior are unchanged. Top 3 and Evidence markup/information structure was not changed.
+
+### Final verification
+
+```text
+Scanner: Python312 -m pytest -q                         = 55/55 PASS
+WordPress: Python312 -X utf8 acceptance/run_asset_checks.py = TOTAL=20 PASS=20 FAIL=0
+G4 fixture browser suite                              = PASS
+PRETTY_ROUTES                                          = PASS
+OWNER_EDITABILITY_PROOF                                = PASS
+PAYMENT_ACTIONS                                        = 0
+```
+
+The local WordPress route check returned HTTP 200 for `/`, `/how-it-works/`, `/demo/`, `/pricing/`, `/faq/`, and `/blog/`. The fixture suite reconfirmed G4 integration, real PRIORITIZING mapping, analytics contract, Golden Demo, refresh result, and mobile form submit. WP-CLI confirmed `cla_admin` has the `administrator` role. Playwright authenticated that local account, opened the actual `/wp-admin/site-editor.php` surface, and captured it without displaying credentials. The reversible Gutenberg proof again changed Home static copy, observed the front-end change, restored the original, and observed the restoration.
+
+Pricing was also checked against the live local WordPress page: `$29`, `G1`, and `checkout` are absent. Mobile document width did not overflow. The progress screenshot shows backend phase `MATCHING_EVIDENCE`.
+
+### Final visual evidence
+
+Playwright / Chrome screenshots, `deviceScaleFactor=1`, reduced motion, no DevTools:
+
+`C:\Users\34707\Documents\ChatGPT\VPS基建\conversion-leak-audit-g4-5-final-visual-review.zip`
+
+The package has 10 requested screenshots plus `MANIFEST.md`: `final-home-desktop.png`, `final-home-mobile.png`, `final-top3-desktop.png`, `final-top3-mobile.png`, `final-evidence-mobile.png`, `final-progress-mobile.png`, `final-pricing.png`, `final-how-it-works.png`, `final-site-editor-authenticated.png`, and `final-home-editor.png`. The ZIP excludes passwords, cookies, databases, environment files, runtime files, source code, and secrets.
+
+The local Compose instance was explicitly restored on port `8083` after the default `8080` was occupied. Final route, screenshot, and browser checks passed on the restored local instance.
+
+### Scope and handoff
+
+```text
+PRICING_PUBLIC_COPY       = PASS
+SITE_EDITOR_ACCESS        = PASS_AUTHENTICATED_ADMIN
+WORDPRESS_OWNER_EDITABILITY = FULL_FOR_STATIC_CONTENT_AND_LAYOUT
+HOME_VISUAL_POLISH        = PASS_CANDIDATE
+NAV_VISUAL_POLISH         = PASS_CANDIDATE
+SECONDARY_PAGE_VISUAL_POLISH = PASS_CANDIDATE
+TOP3_STRUCTURE            = UNCHANGED_ACCEPTED
+OUT_OF_SCOPE_CHANGES      = 0
+PAYMENT_ACTIONS           = 0
+VPS_WRITES                = 0
+PRODUCTION_SECRETS        = 0
+```
+
+No Scanner semantics, product features, payment behavior, VPS setup, or production configuration changed. G4.5 remains subject to Reviewer decision. Owner intervention required: `NO`; Owner action: upload the final visual ZIP to Reviewer.
+
+Recommended Reviewer decision: `REVIEW_G4_5_FINAL_POLISH_COMPLETE`.
+
+Candidate result: `PASS_CANDIDATE_G4_5_FINAL_VISUAL_COMPLETE`.

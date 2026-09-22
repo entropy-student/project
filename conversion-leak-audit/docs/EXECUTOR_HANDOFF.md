@@ -281,3 +281,41 @@ Recommended Reviewer decision: `REVIEW_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
 Candidate result: `PASS_CANDIDATE_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
 
 Executor does not declare G4.5 PASS. Dedicated branch should be pushed and execution should stop at Reviewer.
+
+## G4.5 Final Polish — 2026-09-23
+
+Reviewer returned `RETURN_G4_5_FINAL_POLISH_ONLY`. Latest `origin/main` (`23a5f48a978cbd29c597e8a27d228230676b2428`) was fetched; the only main changes since the branch base were Reviewer governance files, with no product-source changes. The dedicated branch `codex/g4-5-visual-editability-rework` was safely rebased; it was not merged to main.
+
+Final bounded corrections:
+
+- Removed `$29 planned launch price` and customer-facing G1 / checkout / Gate language from Pricing and its static preview. Retained `Free preview`, `$0`, `Full fix queue`, and `Planned paid expansion`. No payment button or action exists.
+- Reduced Home H1 size and hero spacing, subdued the decorative preview, and tuned shared secondary-page, header, and mobile navigation spacing. Scanner behavior and Top 3/Evidence structure remain unchanged.
+- Captured Site Editor from a real authenticated local Administrator session. WP-CLI verified the `cla_admin` role; the password is not stored in repository evidence or screenshot package.
+
+Verification:
+
+```text
+SCANNER_REGRESSION=55/55 PASS
+WORDPRESS_REGRESSION=20/20 PASS
+G4_INTEGRATION=PASS
+PRETTY_ROUTES=PASS (all six routes HTTP 200)
+OWNER_EDITABILITY_PROOF=PASS
+SITE_EDITOR_ACCESS=PASS_AUTHENTICATED_ADMIN
+PRICING_PUBLIC_COPY=PASS
+PAYMENT_ACTIONS=0
+OUT_OF_SCOPE_CHANGES=0
+VPS_WRITES=0
+PRODUCTION_SECRETS=0
+```
+
+Final screenshot ZIP:
+
+`C:\Users\34707\Documents\ChatGPT\VPS基建\conversion-leak-audit-g4-5-final-visual-review.zip`
+
+It contains the 10 requested PNG screenshots and `MANIFEST.md` only. The progress image captured backend `MATCHING_EVIDENCE`; the Top 3 and mobile Evidence screenshots show the actual result/detail surfaces. The authenticated Site Editor is visible without login fields or password.
+
+Recommended Reviewer decision: `REVIEW_G4_5_FINAL_POLISH_COMPLETE`.
+
+Candidate result: `PASS_CANDIDATE_G4_5_FINAL_VISUAL_COMPLETE`.
+
+Executor does not declare G4.5 PASS. Push the rebased dedicated branch and stop at Reviewer.

@@ -156,7 +156,7 @@ add_action('init', 'cla_g4_register_shortcodes', 20);
 
 function cla_g4_enqueue_assets(): void {
     if (is_admin()) { return; }
-    wp_enqueue_style('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.css'), [], '0.4.0');
-    wp_enqueue_script('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.js'), [], '0.4.0', true);
+    wp_enqueue_style('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.css'), [], '0.4.1');
+    wp_enqueue_script('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.js'), [], '0.4.1', true);
 }
 add_action('wp_enqueue_scripts', 'cla_g4_enqueue_assets', 20);
