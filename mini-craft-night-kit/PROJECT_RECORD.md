@@ -24,7 +24,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION
+CURRENT_GATE=K4_CONTENT_FILL_REVIEWER_COPY
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -999,3 +999,25 @@ Functionality, responsive behavior, Gutenberg validity, Owner editability, and W
 
 Formal decision:
 docs/REVIEWER_DECISION_K4_REUSABLE_SHELL_SPEC_PASS_IMPLEMENTATION.md
+
+
+## K4 Reusable Shell — Structural Baseline PASS / Reviewer Copy Fill
+
+Executor commit `1e118131f9d3ec3995c35b09199f255eb27be2a2` is accepted as the reusable shell baseline.
+
+```text
+SHELL_STRUCTURAL_BASELINE=PASS
+RESPONSIVE_MATRIX=65_OF_65_PASS
+GUTENBERG_VALIDITY=PASS
+WOOCOMMERCE_BEHAVIOR=PASS
+IMAGE_GENERATION=NO
+CURRENT_GATE=K4_CONTENT_FILL_REVIEWER_COPY
+```
+
+Reviewer finalized customer-facing copy in:
+- `docs/K4_FINAL_COPY_SPEC.md`
+
+Next pass changes text only. Images, colors, layout, responsive rules, and commerce/payment behavior stay unchanged.
+
+Formal decision:
+- `docs/REVIEWER_DECISION_K4_SHELL_PASS_CONTENT_FILL.md`
