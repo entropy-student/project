@@ -196,4 +196,4 @@ Recommended Reviewer decision: `REVIEW_G4_PASS_CANDIDATE_REPOSITORY_RECONCILED`.
 
 Candidate result: `PASS_CANDIDATE_G4_REPOSITORY_RECONCILED`.
 
-Reconciliation commit: `e3a7573` (`conversion leak audit: reconcile G4 workspace`).
+Initial reconciliation commit: `0d86710` (`conversion leak audit: reconcile G4 workspace`).

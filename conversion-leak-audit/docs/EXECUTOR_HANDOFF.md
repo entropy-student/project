@@ -146,7 +146,7 @@ Do not declare final PASS yourself. Reviewer will read GitHub evidence and decid
 
 The prior G4 implementation was reconciled into a new clean project-scoped workspace based on the fetched `origin/main` at `746a4882d9511ab103713b9ae1d6bd2d5e8ebfaa`. The dedicated branch is `codex/g4-repository-reconciliation`. The old shared monorepo worktree was not reset, cleaned, checked out, staged, committed, or otherwise modified beyond the required remote fetch.
 
-Reconciliation commit: `e3a7573` (`conversion leak audit: reconcile G4 workspace`).
+Initial reconciliation commit: `0d86710` (`conversion leak audit: reconcile G4 workspace`).
 
 Only the `conversion-leak-audit/` sparse project was materialized. The canonical `scanner/` and `wordpress-g1-baseline/` trees were restored from the final handoff recovery package, with provenance and SHA256 recorded in `docs/EXECUTION_EVIDENCE.md`. Reviewer-owned governance documents were preserved from the current GitHub checkout.
 
