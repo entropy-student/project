@@ -1076,3 +1076,37 @@ Then Executor performs bounded delta verification only.
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_COPY_PASS_OWNER_FINAL_UI_WINDOW.md`
+
+
+## K4 Local Artifact Hygiene — PASS
+
+Reviewer accepted Executor commit `68e446115c623b93a87dc9492061b8b2e065396d`.
+
+```text
+CLEANED_COUNT=62
+CLEANED_BYTES=1071221612
+ARCHIVED=NONE
+GPT6_HOME_PROTECTED=YES
+UNRELATED_PROJECTS_TOUCHED=NO
+HOME_HTTP=200
+WORDPRESS=UP
+MARIADB=HEALTHY
+```
+
+`.tmp-cdp-test2` remains unclassified and intentionally untouched.
+
+## K4 Home Detail Polish — AUTHORIZED
+
+Current GPT-6 Home is the visual baseline. Hero is locked for this pass.
+
+Bounded work:
+- add four replaceable product/content media slots to the current offer section;
+- add restrained native burgundy line icons to steps/value/trust areas;
+- make small spacing/border/surface consistency refinements only.
+
+Executor image generation remains forbidden.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_HOME_DETAIL_POLISH.md`
+
+Parent checkpoint remains `OWNER_K4_FINAL_UI_EDIT_WINDOW`.
