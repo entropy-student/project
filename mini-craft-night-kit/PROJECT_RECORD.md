@@ -1180,3 +1180,11 @@ Previous `K4_OWNER_MANUAL_EDITS_FINALIZE` scope is superseded by:
 `K4_OWNER_MANUAL_BASELINE_VERIFY`
 
 Three-value invalid-block state is now read-only verification. Any remaining invalid blocks must be reported, not repaired, unless Reviewer later authorizes a bounded fix.
+
+
+## Visual Evidence Handoff Standard — ZIP
+
+Owner standardized UI screenshot review delivery:
+all screenshot evidence must be committed to GitHub and additionally packaged into one Gate-specific ZIP for Owner transfer to Reviewer.
+
+The ZIP contains only current-Gate screenshots plus a non-sensitive manifest. Reviewer visual acceptance requires inspecting the uploaded ZIP.
