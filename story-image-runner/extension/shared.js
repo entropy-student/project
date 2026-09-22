@@ -1,5 +1,7 @@
 export const STORAGE_KEY = "sir_state_v1";
 export const SESSION_KEY = "sir_session_v1";
+export const MAX_QUEUE_JOBS = 500;
+export const IMPORT_MODES = new Set(["single", "blankline", "line"]);
 
 export const DEFAULT_SETTINGS = Object.freeze({
   projectId: "batch-001",
@@ -9,7 +11,8 @@ export const DEFAULT_SETTINGS = Object.freeze({
   timeoutMs: 240000,
   newChatEvery: 1,
   promptPrefix: "Generate an image. ",
-  closeOwnedTabWhenIdle: false
+  closeOwnedTabWhenIdle: false,
+  importMode: "single"
 });
 
 export const ALLOWED_ASPECTS = new Set(["auto", "1:1", "16:9", "9:16", "4:5", "5:4", "4:3", "3:4"]);
@@ -44,6 +47,7 @@ export function normalizeSettings(input = {}) {
   out.newChatEvery = clampInt(out.newChatEvery, 1, 1000, DEFAULT_SETTINGS.newChatEvery);
   out.promptPrefix = String(out.promptPrefix ?? DEFAULT_SETTINGS.promptPrefix).slice(0, 1000);
   out.closeOwnedTabWhenIdle = Boolean(out.closeOwnedTabWhenIdle);
+  out.importMode = normalizeImportMode(out.importMode);
   return out;
 }
 
@@ -53,6 +57,12 @@ function clampInt(value, min, max, fallback) {
   return Math.max(min, Math.min(max, n));
 }
 
+export function normalizeImportMode(value) {
+  const mode = String(value ?? DEFAULT_SETTINGS.importMode).trim().toLowerCase();
+  if (!IMPORT_MODES.has(mode)) throw new Error("Unsupported import mode");
+  return mode;
+}
+
 export function parsePromptText(text) {
   return String(text ?? "")
     .split(/\r?\n/)
@@ -60,9 +70,28 @@ export function parsePromptText(text) {
     .filter(Boolean);
 }
 
+export function splitPromptText(text, mode = DEFAULT_SETTINGS.importMode) {
+  const normalizedMode = normalizeImportMode(mode);
+  const raw = String(text ?? "").replace(/\r\n/g, "\n").trim();
+  if (!raw) return [];
+  if (normalizedMode === "single") return [raw];
+  if (normalizedMode === "blankline") {
+    return raw
+      .split(/\n\s*\n+/)
+      .map((block) => block.trim())
+      .filter(Boolean);
+  }
+  return parsePromptText(raw);
+}
+
+export function previewImportCount(text, mode = DEFAULT_SETTINGS.importMode) {
+  return splitPromptText(text, mode).length;
+}
+
 export function normalizeImportedJobs(input, settings = DEFAULT_SETTINGS) {
   const s = normalizeSettings(settings);
   if (!Array.isArray(input)) throw new Error("Jobs must be an array");
+  if (input.length > MAX_QUEUE_JOBS) throw new Error(`Too many jobs: maximum queue size is ${MAX_QUEUE_JOBS}`);
   const seen = new Set();
   return input.map((raw, index) => {
     const prompt = String(raw?.prompt ?? "").trim();
