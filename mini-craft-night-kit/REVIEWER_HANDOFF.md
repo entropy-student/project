@@ -1316,3 +1316,23 @@ Current K4 Gate must return:
 `OWNER_ACTION=UPLOAD_VISUAL_REVIEW_ZIP`
 
 No per-image Owner transfer is required unless Reviewer specifically requests it.
+
+
+## K4 Full Visual Audit + Product Gallery Repair — AUTHORIZED
+
+Owner reported a Product gallery defect: the initial Product page may show a normal large main image, while later gallery interaction can collapse the active media into a small thumbnail-like state and leave a large blank area.
+
+Previous verification-only scope is superseded.
+
+Current Gate:
+`K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR`
+
+Scope:
+- reproduce and minimally repair the Product gallery defect while preserving canonical WooCommerce gallery behavior;
+- do not rebuild Product;
+- protect the current Owner Home/Header baseline exactly;
+- capture the full latest storefront visual set (desktop 1440 + mobile 390) for Home, Shop, Product, FAQ, Shipping & Returns, Contact, Cart, Checkout, safe existing Thank You if accessible, and Account;
+- package all Gate screenshots into one ZIP for Owner upload to Reviewer.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR.md`
