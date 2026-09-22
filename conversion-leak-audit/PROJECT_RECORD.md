@@ -35,7 +35,8 @@ G2   Safe Scanner V0                         PASS
 G3   Rule Engine V0                          MERGED / CLOSED
 G3.5 UI + Growth Design Freeze               PASS
 G4   WP ↔ Scanner ↔ Top 3 Local Loop          PASS
-G4.5 Visual + Functional Acceptance          NEXT / EXECUTOR READY
+G4.5 Visual + Functional Acceptance          PASS
+G4.6 Acquisition + SEO Readiness             NEXT / EXECUTOR READY
 G5   Full Fix Queue + LLM + Skill Dogfood    PENDING
 G6   VPS Onboarding / Storage                HOLD
 G7   VPS Private Deployment                  HOLD
@@ -227,3 +228,22 @@ Implementation landed through PR #2; merge commit: `554951fc778d2b60a4a1fe655e07
 Next Gate: `G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`, released under `docs/G4_5_ACCEPTANCE_CONTRACT.md`.
 
 The prior G4 repository-reconciliation and contract-completion return sections are historical and superseded by this PASS.
+
+
+### G4.5 Final PASS — 2026-09-23
+
+Reviewer decision: `PASS_G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`.
+
+Accepted:
+- Owner-editable WordPress static content/layout;
+- authenticated Site Editor;
+- final Home/mobile/Top3/Evidence/Progress visual acceptance;
+- pretty routes;
+- internal/unfrozen Pricing copy removed;
+- Scanner 55/55 and WordPress 20/20 preserved.
+
+PR #3 merged to main at `40a1657ddd785069851ada7078acc1acae18f4d0`.
+
+Next: `G4.6 Acquisition + SEO Readiness`, governed by `docs/G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md`.
+
+G4.6 exists to prevent acquisition/SEO concerns from endlessly reopening G4.5 visual work.
