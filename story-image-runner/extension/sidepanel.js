@@ -1,4 +1,10 @@
-import { parsePromptText } from "./shared.js";
+import {
+  splitPromptText,
+  previewImportCount,
+  MAX_QUEUE_JOBS,
+  DEFAULT_SETTINGS,
+  normalizeImportMode
+} from "./shared.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -16,7 +22,8 @@ function settingsFromForm() {
     newChatEvery: Number($("newChatEvery").value),
     delayMs: Number($("delayMs").value),
     timeoutMs: Number($("timeoutMs").value),
-    promptPrefix: $("promptPrefix").value
+    promptPrefix: $("promptPrefix").value,
+    importMode: importModeValue()
   };
 }
 
@@ -24,10 +31,18 @@ async function persistSettings() {
   await call("SET_SETTINGS", { settings: settingsFromForm() });
 }
 
-function jobsFromPromptLines(lines) {
+function importModeValue() {
+  return normalizeImportMode($("importMode").value || DEFAULT_SETTINGS.importMode);
+}
+
+function promptBlocks() {
+  return splitPromptText($("promptText").value, importModeValue());
+}
+
+function jobsFromPromptBlocks(blocks) {
   const projectId = $("projectId").value.trim();
   const aspect = $("aspect").value;
-  return lines.map((prompt, i) => ({
+  return blocks.map((prompt, i) => ({
     project_id: projectId,
     shot_id: `S${String(i + 1).padStart(3, "0")}`,
     aspect,
@@ -35,14 +50,31 @@ function jobsFromPromptLines(lines) {
   }));
 }
 
+function refreshImportPreview() {
+  const count = previewImportCount($("promptText").value, importModeValue());
+  $("importPreview").textContent = `预计导入 ${count} 条`;
+  const mode = importModeValue();
+  $("importHint").textContent = mode === "single"
+    ? "当前模式：整个文本框作为 1 条 prompt。适合长提示词和多行提示词。"
+    : mode === "blankline"
+      ? "当前模式：按空行拆分。两个 prompt 之间空一行。"
+      : "当前模式：按每行拆分。每一非空行会变成 1 条任务。";
+}
+
 async function importText(replace) {
   await persistSettings();
-  const lines = parsePromptText($("promptText").value);
-  if (!lines.length) throw new Error("请输入至少一条 Prompt");
-  const result = await call(replace ? "REPLACE_JOBS" : "IMPORT_JOBS", { jobs: jobsFromPromptLines(lines) });
+  const blocks = promptBlocks();
+  if (!blocks.length) throw new Error("请输入至少一条 Prompt");
+  if (blocks.length > MAX_QUEUE_JOBS) throw new Error(`TOO_MANY_JOBS: 单次最多排队 ${MAX_QUEUE_JOBS} 条任务`);
+  if (importModeValue() === "line" && blocks.length >= 20) {
+    const ok = confirm(`你当前选择的是“按每行拆分”，本次将导入 ${blocks.length} 条任务。是否继续？`);
+    if (!ok) return;
+  }
+  const result = await call(replace ? "REPLACE_JOBS" : "IMPORT_JOBS", { jobs: jobsFromPromptBlocks(blocks) });
   const verify = (await call("GET_STATE")).state;
-  if (!(verify.jobs || []).length) throw new Error(`QUEUE_WRITE_MISMATCH: 后台返回写入 ${result.count ?? lines.length} 条，但重新读取仍为 0 条`);
+  if (!(verify.jobs || []).length) throw new Error(`QUEUE_WRITE_MISMATCH: 后台返回写入 ${result.count ?? blocks.length} 条，但重新读取仍为 0 条`);
   $("promptText").value = "";
+  refreshImportPreview();
   showDiagnostic(`队列写入成功：${verify.jobs.length} 条；待处理 ${verify.jobs.filter((j) => j.status === "pending").length} 条`, true);
 }
 
@@ -52,10 +84,11 @@ $("start").addEventListener("click", () => runUi(async () => {
   await persistSettings();
   const state = (await call("GET_STATE")).state;
   const hasPending = (state.jobs || []).some((job) => job.status === "pending");
-  const lines = parsePromptText($("promptText").value);
-  if (!hasPending && lines.length) {
-    await call("REPLACE_JOBS", { jobs: jobsFromPromptLines(lines) });
+  const blocks = promptBlocks();
+  if (!hasPending && blocks.length) {
+    await call("REPLACE_JOBS", { jobs: jobsFromPromptBlocks(blocks) });
     $("promptText").value = "";
+    refreshImportPreview();
   }
   await call("START_RUN");
 }));
@@ -100,12 +133,21 @@ $("fileInput").addEventListener("change", async (event) => {
       const parsed = JSON.parse(text);
       jobs = Array.isArray(parsed) ? parsed : parsed.jobs;
       if (!Array.isArray(jobs)) throw new Error("JSON 必须是任务数组，或包含 jobs 数组");
+      if (jobs.length > MAX_QUEUE_JOBS) throw new Error(`TOO_MANY_JOBS: 单次最多排队 ${MAX_QUEUE_JOBS} 条任务`);
     } else {
-      jobs = jobsFromPromptLines(parsePromptText(text));
+      const blocks = splitPromptText(text, importModeValue());
+      if (blocks.length > MAX_QUEUE_JOBS) throw new Error(`TOO_MANY_JOBS: 单次最多排队 ${MAX_QUEUE_JOBS} 条任务`);
+      jobs = jobsFromPromptBlocks(blocks);
     }
     await call("REPLACE_JOBS", { jobs });
     event.target.value = "";
   });
+});
+
+$("promptText").addEventListener("input", refreshImportPreview);
+$("importMode").addEventListener("change", async () => {
+  refreshImportPreview();
+  await runUi(() => persistSettings());
 });
 
 chrome.runtime.onMessage.addListener((message) => {
@@ -130,6 +172,8 @@ function render(state) {
   $("delayMs").value = state.settings.delayMs;
   $("timeoutMs").value = state.settings.timeoutMs;
   $("promptPrefix").value = state.settings.promptPrefix;
+  $("importMode").value = state.settings.importMode || DEFAULT_SETTINGS.importMode;
+  $("maxQueue").value = String(MAX_QUEUE_JOBS);
   $("runBadge").textContent = String(state.run.status || "idle").toUpperCase();
   $("liveBadge").textContent = state.liveEnabled ? "LIVE ON" : "LIVE OFF";
 
@@ -145,6 +189,7 @@ function render(state) {
       ${job.error ? `<div class="job-error">${escapeHtml(job.error.code)} · ${escapeHtml(job.error.message)}</div>` : ""}
     </div>
   `).join("");
+  refreshImportPreview();
 }
 
 async function runUi(fn) {
@@ -166,4 +211,5 @@ function hideError() { $("errorBox").classList.add("hidden"); }
 function escapeHtml(value) { return String(value ?? "").replace(/[&<>'"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c])); }
 
 refresh();
+refreshImportPreview();
 setInterval(refresh, 1500);
