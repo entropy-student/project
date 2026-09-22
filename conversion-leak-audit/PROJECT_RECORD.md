@@ -188,3 +188,13 @@ Owner restores verified 2026-09-17 canonical package once
 除非 Reviewer 明确 reopen：不重建理论、不重做 77-rule catalog、不重新立项 51 fixtures、不重做 G1、不重做 G2、不单独重开旧 G3。
 
 重大状态变化必须回写本文件与 `CURRENT_STATUS.json`。
+
+### G4 Repository Reconciliation — 2026-09-22
+
+G4 functional implementation has reached PASS_CANDIDATE locally, but its source/evidence is not yet persisted in a clean traceable Git commit. The shared monorepo worktree contains unrelated pending changes and is behind current GitHub main.
+
+Required next step: create a clean sparse/project-scoped workspace from current main, migrate only G4-owned assets, preserve current Reviewer-owned documents, rerun frozen regressions and G4 integration tests, commit only `conversion-leak-audit/**` on a dedicated G4 branch, push that branch, then stop for Reviewer inspection.
+
+Formal decision: `docs/REVIEWER_DECISION_G4_REPOSITORY_RECONCILIATION.md`.
+
+Do not mutate sibling project worktrees. Do not merge G4 to main before Reviewer PASS.
