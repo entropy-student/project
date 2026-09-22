@@ -5,7 +5,8 @@ import {
   normalizeSettings,
   normalizeImportedJobs,
   makeOutputFilename,
-  publicState
+  publicState,
+  MAX_QUEUE_JOBS
 } from "./shared.js";
 
 let processing = false;
@@ -116,6 +117,7 @@ async function handleMessage(message, sender) {
     case "IMPORT_JOBS": {
       const state = await getState();
       const incoming = normalizeImportedJobs(message.jobs, state.settings);
+      if (state.jobs.length + incoming.length > MAX_QUEUE_JOBS) throw typed("TOO_MANY_JOBS", `Too many jobs: maximum queue size is ${MAX_QUEUE_JOBS}`, false);
       const existing = new Set(state.jobs.map((j) => j.key));
       for (const job of incoming) if (existing.has(job.key)) throw typed("DUPLICATE_JOB", `Duplicate job ${job.key}`, false);
       state.jobs.push(...incoming);
