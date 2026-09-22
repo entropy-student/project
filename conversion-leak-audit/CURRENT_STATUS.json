@@ -25,7 +25,7 @@
     "G9_PAYMENT_CONTROLLED_GOLIVE": "HOLD",
     "G10_PRODUCTION_ACCEPTANCE": "HOLD",
     "G11_ACQUISITION_BUSINESS_VALIDATION": "HOLD",
-    "G4_6_ACQUISITION_SEO_READINESS": "NEXT_READY_FOR_EXECUTOR"
+    "G4_6_ACQUISITION_SEO_READINESS": "RETURN_META_CONTRACT_COMPLETION_ONLY"
   },
   "evidence": {
     "scanner_project_tests": "55/55 PASS",
@@ -68,7 +68,7 @@
     "public_production_scanner": "HOLD",
     "g4_scope": "LOCAL_ONLY_NO_PAYMENT_NO_VPS_NO_PRODUCTION_SECRET"
   },
-  "next_action": "CODEX_EXECUTE_G4_6_ACQUISITION_SEO_READINESS_CONTRACT",
+  "next_action": "CODEX_ADD_HOME_NO_SIGNUP_META_AND_STRENGTHEN_G4_6_ACCEPTANCE",
   "reviewer_reconciliation": {
     "date": "2026-09-22",
     "status": "RECONCILED",
@@ -111,10 +111,12 @@
     "visual_functional_acceptance": "PASS"
   },
   "g4_6": {
-    "status": "NEXT_READY_FOR_EXECUTOR",
+    "status": "RETURN_META_CONTRACT_COMPLETION_ONLY",
     "contract": "docs/G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md",
     "scope": "MESSAGE_PROOF_ACTIVATION_AND_SEO_READINESS",
     "branch": "codex/g4-6-acquisition-seo-readiness",
-    "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS"
+    "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS",
+    "reviewer_decision": "docs/REVIEWER_DECISION_G4_6_META_CONTRACT_RETURN.md",
+    "accepted_except": "HOME_META_NO_SIGNUP_REQUIREMENT_AND_TEST"
   }
 }
