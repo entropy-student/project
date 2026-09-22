@@ -71,6 +71,28 @@ Therefore the first mandatory G4 action is a source-baseline traceability preche
 
 Owner intervention required: NO.
 
+## 2026-09-22 Source Baseline Recovery
+
+Formal decision:
+
+`REVIEWER_DECISION_G4_SOURCE_BASELINE_RECOVERY.md`
+
+Reviewer recovered the canonical 2026-09-17 final package from the Owner's Library and verified SHA256:
+
+`e5c3aa1da7a8fe5a431eade38f2b45fc48862b21470e413f4a034f150f59df03`
+
+Recovered canonical trees:
+- `scanner/`
+- `wordpress-g1-baseline/`
+
+Independent Reviewer re-run from that package:
+- Scanner: `55 / 55 PASS`
+- WordPress assets: `20 / 20 PASS`
+
+Therefore `RETURN_G4_SOURCE_BASELINE_UNRESOLVED` is resolved. Executor must restore these exact trees from the verified package into the local workspace, verify the checksum and regressions again locally, then continue G4. Do not rebuild G1/G2.
+
+Owner action required: ONE LOCAL FILE RESTORE ONLY.
+
 ## G4 hard boundaries
 
 No:
