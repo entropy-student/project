@@ -398,6 +398,6 @@ OUT_OF_SCOPE_CHANGES     = 0
 
 Known limitations: the WordPress/Scanner environment is local-only; no payment, VPS, production secret, or public production Scanner path was exercised. Visual acceptance remains a Reviewer decision. Owner intervention required: `NO`.
 
-Implementation commit: recorded in the dedicated branch history after this evidence entry is committed. Recommended Reviewer decision: `REVIEW_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
+Implementation and first evidence commit: `dba52f8` (`conversion leak audit: rework G4.5 visual editability`). Recommended Reviewer decision: `REVIEW_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
 
 Candidate result: `PASS_CANDIDATE_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.

@@ -274,6 +274,8 @@ Screenshot package:
 
 `C:\Users\34707\Documents\ChatGPT\VPS基建\conversion-leak-audit-g4-5-owner-editable-visual-review.zip`
 
+Implementation and first evidence commit: `dba52f8` (`conversion leak audit: rework G4.5 visual editability`).
+
 Recommended Reviewer decision: `REVIEW_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
 
 Candidate result: `PASS_CANDIDATE_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
