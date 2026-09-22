@@ -128,7 +128,7 @@ function cla_g4_scan_app_shortcode(): string {
     $html .= '<div class="cla-g4-scan-card">';
     $html .= '<div class="cla-g4-kicker">FREE PUBLIC SCAN</div>';
     $html .= '<h2>See the first three points worth checking.</h2>';
-    $html .= '<p class="cla-g4-muted">Public pages only. No admin access, no install, and no changes to your site.</p>';
+    $html .= '<p class="cla-g4-muted cla-g46-proof-cta">Public pages only. No admin access, no install, and no changes to your site. <a href="/demo/">View sample audit</a></p>';
     $html .= '<form class="cla-g4-form" data-cla-scan-form novalidate>'; 
     $html .= '<label for="cla-g4-store-url">Store URL</label>';
     $html .= '<div class="cla-g4-form-row"><input id="cla-g4-store-url" name="url" type="url" inputmode="url" autocomplete="url" placeholder="https://yourstore.com" required><button type="submit" data-cla-submit>Scan my store</button></div>';

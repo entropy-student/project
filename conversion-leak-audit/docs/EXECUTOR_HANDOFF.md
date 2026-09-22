@@ -229,6 +229,46 @@ Candidate:
 
 Then `STOP_AT_REVIEWER`.
 
+## G4.6 Acquisition / SEO Readiness — 2026-09-23
+
+```text
+BASE_MAIN=8e0f044541598a1eee6a304df8a7c6b6368bf473
+BRANCH=codex/g4-6-acquisition-seo-readiness
+```
+
+The final fetch confirmed `origin/main` is still BASE_MAIN and there are no newer `conversion-leak-audit/**` governance or product changes to synchronize. Work took place in a fresh, clean, project-scoped sparse workspace. No sibling project or main branch was changed.
+
+Candidate verification summary:
+
+```text
+MESSAGE_READINESS=PASS
+DEMO_PROOF=PASS
+NAV_READINESS=PASS
+HOME_META=PASS; HOW_IT_WORKS_META=PASS; DEMO_META=PASS; FAQ_META=PASS
+CANONICAL=PASS
+SCAN_RESULT_NOINDEX=PASS
+SCAN_RESULT_CANONICAL_HOME=PASS
+SITEMAP=PASS; SITEMAP_UNFINISHED_SURFACES_EXCLUDED=PASS
+ROBOTS_READINESS=PASS
+H1_SANITY=PASS
+PUBLIC_INTERNAL_TERMS=0
+BLOG_PRIMARY_NAV=HIDDEN; BLOG_NOINDEX=PASS; BLOG_SITEMAP_EXCLUDED=PASS
+PRICING_PRIMARY_NAV=HIDDEN; PRICING_NOINDEX=PASS; PRICING_SITEMAP_EXCLUDED=PASS
+ANALYTICS_CONTRACT=PASS
+SCANNER_REGRESSION=55/55 PASS
+WORDPRESS_REGRESSION=20/20 PASS
+SEO_READINESS_ACCEPTANCE=43/43 PASS
+G4_BROWSER_REGRESSION=PASS
+PAYMENT_ACTIONS=0; VPS_WRITES=0; PRODUCTION_SECRETS=0
+OUT_OF_SCOPE_CHANGES=0
+```
+
+New repeatable acceptance: `wordpress-g1-baseline/acceptance/run_seo_readiness_checks.py`. Local screenshot set (4 PNGs) and detailed readiness/production-deferred evidence are under `docs/evidence/g4-6-screenshots/` and `docs/evidence/G4_6_SEO_READINESS.md`. The site remained local-only at `http://127.0.0.1:8084/`; no production host, payment, VPS, or secret was used. Scanner rules and semantics are unchanged.
+
+Known limitation: metadata, canonical, sitemap, robots, and page content were validated on local WordPress; production-domain crawl/index behavior and the explicitly deferred production checklist have not been exercised. Owner action: `NONE`. Recommended Reviewer decision: `REVIEW_G4_6_ACQUISITION_SEO_READINESS`.
+
+Candidate result: `PASS_CANDIDATE_G4_6_ACQUISITION_SEO_READINESS`. Executor does not declare Gate PASS. Push only the dedicated branch, do not merge main, and `STOP_AT_REVIEWER`.
+
 ## G4.5 Visual Editability Rework — 2026-09-23
 
 Gate: `G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`

@@ -469,3 +469,47 @@ No Scanner semantics, product features, payment behavior, VPS setup, or producti
 Recommended Reviewer decision: `REVIEW_G4_5_FINAL_POLISH_COMPLETE`.
 
 Candidate result: `PASS_CANDIDATE_G4_5_FINAL_VISUAL_COMPLETE`.
+
+## G4.6 Acquisition / SEO Readiness — 2026-09-23
+
+Gate: `G4_6_ACQUISITION_SEO_READINESS`
+
+```text
+BASE_MAIN=8e0f044541598a1eee6a304df8a7c6b6368bf473
+BRANCH=codex/g4-6-acquisition-seo-readiness
+```
+The final `git fetch origin` confirmed `origin/main` remained at BASE_MAIN with no `conversion-leak-audit/**` changes. This is a clean project-scoped sparse workspace. No merge was made.
+
+Readiness evidence and screenshots: [G4_6_SEO_READINESS.md](evidence/G4_6_SEO_READINESS.md) and `docs/evidence/g4-6-screenshots/` (4 Playwright PNGs). The readiness acceptance passed 43/43 checks on local WordPress `http://127.0.0.1:8084/`. This includes independent Home / How it works / Demo / FAQ metadata, exactly one canonical per indexable page, static metadata plus noindex and clean-Home canonical on `?scan_id=`, native sitemap / robots behavior, Blog and Pricing hidden + noindex + sitemap-excluded, one H1 per indexable page, Demo proof/CTA, and zero customer-visible internal project terms.
+
+```text
+MESSAGE_READINESS=PASS
+DEMO_PROOF=PASS
+NAV_READINESS=PASS
+HOME_META=PASS
+HOW_IT_WORKS_META=PASS
+DEMO_META=PASS
+FAQ_META=PASS
+CANONICAL=PASS
+SCAN_RESULT_NOINDEX=PASS
+SCAN_RESULT_CANONICAL_HOME=PASS
+SITEMAP=PASS
+ROBOTS_READINESS=PASS
+H1_SANITY=PASS
+PUBLIC_INTERNAL_TERMS=0
+BLOG_PRIMARY_NAV=HIDDEN; BLOG_NOINDEX=PASS; BLOG_SITEMAP_EXCLUDED=PASS
+PRICING_PRIMARY_NAV=HIDDEN; PRICING_NOINDEX=PASS; PRICING_SITEMAP_EXCLUDED=PASS
+ANALYTICS_CONTRACT=PASS
+SCANNER_REGRESSION=55/55 PASS
+WORDPRESS_REGRESSION=20/20 PASS
+SEO_READINESS_ACCEPTANCE=43/43 PASS
+G4_BROWSER_REGRESSION=PASS
+PAYMENT_ACTIONS=0
+VPS_WRITES=0
+PRODUCTION_SECRETS=0
+OUT_OF_SCOPE_CHANGES=0
+```
+
+Scanner regression: `py -3.12 -m pytest -q` (`55 passed`). WordPress baseline: `py -3.12 -X utf8 acceptance/run_asset_checks.py` (`TOTAL=20 PASS=20 FAIL=0`). The G4 browser suite was rerun against local WordPress and deterministic Scanner fixture; it covered backend-driven progress through `PRIORITIZING`, 0/1/2/3 findings, incomplete/blocked/rate-limited/timeout, unsafe URL fail-closed, refresh, analytics, Golden Demo, and mobile submission. No Scanner rules or semantics changed. No analytics provider or paid action was introduced.
+
+Production-deferred: Search Console, formal-domain canonical, HTTPS, production robots.txt and sitemap submission, favicon/site name, Privacy, Terms, Organization schema, real Core Web Vitals. Known limitation: SEO and crawl readiness are verified locally only; no production domain was configured or tested. Owner intervention required: `NONE`. Recommended Reviewer decision: `REVIEW_G4_6_ACQUISITION_SEO_READINESS`. Executor result is a candidate only and stops at Reviewer.

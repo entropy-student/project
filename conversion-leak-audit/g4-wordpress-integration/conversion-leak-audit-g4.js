@@ -235,7 +235,7 @@
     }
     results.innerHTML = demoSummary + '<div class="cla-g4-results-head"><div><p class="cla-g4-kicker">FREE TOP 3</p><h2>' + escapeHtml(summary) + '</h2><p class="cla-g4-muted">Only evidence-backed ISSUE decisions are shown. The list is never padded.</p></div><span class="cla-g4-result-count">' + count + ' finding' + (count === 1 ? '' : 's') + '</span></div>' +
       '<div class="cla-g4-findings">' + cards + '</div>' +
-      '<div class="cla-g4-full-preview"><p class="cla-g4-kicker">NEXT LAYER</p><h3>Review the evidence you can verify.</h3><p>Full expansion can add complete evidence context and a prioritized action plan. Payment and checkout are not part of this local G4 loop.</p><button type="button" data-cla-paid-preview>See what a full queue would include</button><div data-cla-paid-copy hidden>Complete fix queue, evidence context, and prioritized next actions are future expansion areas. No payment action was started.</div></div>' +
+      '<div class="cla-g4-full-preview"><p class="cla-g4-kicker">NEXT LAYER</p><h3>Review the evidence you can verify.</h3><p>Full expansion can add complete evidence context and a prioritized action plan. Full report access and payment are not available in this preview.</p><button type="button" data-cla-paid-preview>See what a full queue would include</button><div data-cla-paid-copy hidden>Complete fix queue, evidence context, and prioritized next actions are future expansion areas. No payment action was started.</div></div>' +
       '<p class="cla-g4-scan-reference">Scan reference: ' + escapeHtml(scanId || '') + '</p>';
     results.hidden = false;
     progress.hidden = true;
