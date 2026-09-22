@@ -16,7 +16,7 @@
     "G2_SAFE_SCANNER_V0": "PASS",
     "G3_RULE_ENGINE_V0": "MERGED_CLOSED",
     "G3_5_UI_GROWTH_DESIGN_FREEZE": "PASS",
-    "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "PASS_CANDIDATE_REPOSITORY_RECONCILIATION_REQUIRED",
+    "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "RETURN_CONTRACT_COMPLETION_REQUIRED",
     "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "PENDING",
     "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "PENDING",
     "G6_VPS_ONBOARDING_STORAGE": "HOLD",
@@ -67,7 +67,7 @@
     "public_production_scanner": "HOLD",
     "g4_scope": "LOCAL_ONLY_NO_PAYMENT_NO_VPS_NO_PRODUCTION_SECRET"
   },
-  "next_action": "CODEX_CREATE_CLEAN_PROJECT_SCOPED_WORKSPACE_AND_COMMIT_G4_BRANCH",
+  "next_action": "CODEX_COMPLETE_G4_REAL_SCANNER_STATE_ANALYTICS_DEMO_AND_EVIDENCE_ON_DEDICATED_BRANCH",
   "reviewer_reconciliation": {
     "date": "2026-09-22",
     "status": "RECONCILED",
@@ -90,5 +90,14 @@
     "dirty_shared_worktree": "DO_NOT_MUTATE",
     "target_workspace": "CLEAN_SPARSE_CONVERSION_LEAK_AUDIT_ONLY",
     "final_merge": "HOLD_UNTIL_REVIEWER_PASS"
+  },
+  "g4_reviewer_review": {
+    "date": "2026-09-22",
+    "repository_reconciliation": "PASS",
+    "functional_candidate": "PARTIAL_PASS",
+    "final_g4_pass": "WITHHELD",
+    "decision_doc": "docs/REVIEWER_DECISION_G4_CONTRACT_COMPLETION_RETURN.md",
+    "branch": "codex/g4-repository-reconciliation",
+    "reviewed_tip": "9d4d8531ecdb1774d03e9edec9a7c4da8819a704"
   }
 }
