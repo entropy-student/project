@@ -1180,3 +1180,28 @@ Formal implementation spec:
 `docs/REVIEWER_DECISION_K4_HOME_FINAL_DENSITY_ALIGNMENT_POLISH.md`
 
 No image generation, no business-copy changes, no commerce/payment changes.
+
+
+## K4 Home Final Density & Alignment Polish — TECHNICAL PASS / Final Visual Confirmation Pending
+
+Reviewer accepted Executor commit `56f4932e21e2883ce2223e8547121d98c725205d` on technical evidence.
+
+```text
+HOME_HTTP=200
+RESPONSIVE_MATRIX=13_OF_13_PASS
+HORIZONTAL_OVERFLOW=NO
+CONTENT_CLIPPING=NO
+GUTENBERG_INVALID_BLOCK_COUNT=0
+NATIVE_HOME_ICONS=7
+FOOTER_BROKEN_IMAGE=0
+FOOTER_CREDIT=REMOVED_NATIVE_SETTING
+COMMERCE_SMOKE=PASS_NO_ORDER_OR_PAYMENT
+WOOCOMMERCE_PAYPAL_ORDER_STATE=UNCHANGED
+IMAGE_GENERATION=NO
+CURRENT_CHECKPOINT=OWNER_K4_FINAL_VISUAL_CONFIRMATION
+```
+
+No further Home mutation is authorized until the final desktop/mobile screenshot pair is visually reviewed.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_HOME_FINAL_POLISH_TECH_PASS_VISUAL_PENDING.md`
