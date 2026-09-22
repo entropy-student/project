@@ -1,0 +1,28 @@
+{
+  "version": "2.0",
+  "name": "probe_v2",
+  "target_fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "total_duration_sec": 12,
+  "tracks": [
+    {
+      "segment_id": "FRAME_A",
+      "start_sec": 0,
+      "end_sec": 4,
+      "duration_sec": 4
+    },
+    {
+      "segment_id": "FRAME_B",
+      "start_sec": 4,
+      "end_sec": 7,
+      "duration_sec": 3
+    },
+    {
+      "segment_id": "FRAME_C",
+      "start_sec": 7,
+      "end_sec": 12,
+      "duration_sec": 5
+    }
+  ]
+}
