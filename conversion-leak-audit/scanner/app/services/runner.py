@@ -174,6 +174,10 @@ class ScanRunner:
                     decisions=decisions,
                     warnings=list(payload.get("warnings", [])),
                 )
+                # Keep prioritization as a real backend phase. The UI may only
+                # display phases persisted by the Scanner; it must not invent
+                # this state with a client-side timer.
+                await self.store.update(job_id, phase="PRIORITIZING")
                 st = JobStatus.SUCCEEDED if result.access_state == "ACCESS_OK" else JobStatus.AUDIT_INCOMPLETE
                 await self.store.update(job_id, status=st, phase="COMPLETE" if st == JobStatus.SUCCEEDED else "INCOMPLETE", result=result, error_code=payload.get("error_code"))
             except UnsafeTarget as exc:

@@ -139,7 +139,7 @@ function cla_g4_scan_app_shortcode(): string {
     $html .= '<div class="cla-g4-progress" data-cla-progress hidden aria-live="polite">';
     $html .= '<div class="cla-g4-kicker">SCAN PROGRESS</div><h2 data-cla-progress-title>Preparing your scan.</h2><p class="cla-g4-muted" data-cla-progress-copy>We will show only states returned by the Scanner.</p>';
     $html .= '<ol class="cla-g4-progress-list">';
-    $html .= '<li data-phase="CHECKING_ACCESS">Checking access</li><li data-phase="READING_PAGES">Reading pages</li><li data-phase="MATCHING_EVIDENCE">Matching evidence</li><li data-phase="PRIORITIZING">Prioritizing</li>';
+    $html .= '<li data-phase="CHECKING_ACCESS">Checking access</li><li data-phase="READING_PAGES">Reading pages</li><li data-phase="MATCHING_EVIDENCE">Analyzing with trusted rules</li><li data-phase="PRIORITIZING">Finalizing results</li>';
     $html .= '</ol><p class="cla-g4-scan-reference" data-cla-scan-reference hidden></p></div>';
     $html .= '<div class="cla-g4-feedback" data-cla-feedback hidden role="status"></div>';
     $html .= '<section class="cla-g4-results" data-cla-results hidden aria-live="polite"></section>';

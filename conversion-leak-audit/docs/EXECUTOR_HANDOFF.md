@@ -165,3 +165,39 @@ Recommended Reviewer decision: `REVIEW_G4_PASS_CANDIDATE_REPOSITORY_RECONCILED`.
 Candidate result: `PASS_CANDIDATE_G4_REPOSITORY_RECONCILED`.
 
 Do not declare final G4 PASS. Stop at Reviewer after the dedicated branch is pushed.
+
+## G4 Contract Completion Corrections — 2026-09-22
+
+The dedicated branch was updated from the latest `origin/main` at `99e5685a3e18e1c92bb3530f1e375c14642ea668` by rebase. Latest Reviewer-owned governance was preserved; only Executor-owned implementation, tests, screenshots, and evidence are changed.
+
+Completed bounded corrections:
+
+- Real Scanner canary through WordPress: PASS; terminal `AUDIT_INCOMPLETE`, report schema compatible, evidence-less ISSUE `0`.
+- Real Scanner backend `PRIORITIZING`: PASS; standalone phase test and fixture browser mapping cover it.
+- Analytics contract: PASS; frozen incomplete enum, privacy-safe site hash, no full URL, no payment events.
+- Functional acceptance: refresh result, analytics contract, real prioritizing mapping, and mobile form submit are explicit tests and pass.
+- Golden Demo: exact four-page fixture `/`, `/products/example`, `/cart`, `/faq`; exact three findings and required summary.
+- Screenshot pack: desktop Home/Progress/Top 3/Incomplete plus mobile Home/Progress/Top 3 complete.
+- Visual drift: primary action/accent returned to blue/deep navy direction without broad redesign.
+
+Final clean-workspace verification:
+
+```text
+Scanner regression = 55/55 PASS
+WordPress regression = 20/20 PASS
+fixture-backed G4 suite = PASS
+real Scanner canary = PASS
+analytics contract = PASS
+Golden Demo = PASS
+screenshot evidence = COMPLETE
+PAYMENT_ACTIONS=0
+VPS_WRITES=0
+PRODUCTION_SECRETS=0
+OUT_OF_SCOPE_CHANGES=0
+```
+
+Recommended Reviewer decision: `REVIEW_G4_PASS_CANDIDATE_G4_CONTRACT_COMPLETE`.
+
+Candidate result: `PASS_CANDIDATE_G4_CONTRACT_COMPLETE`.
+
+Executor does not declare final G4 PASS. Push the dedicated branch and stop at Reviewer.

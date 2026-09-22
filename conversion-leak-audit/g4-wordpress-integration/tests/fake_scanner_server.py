@@ -16,18 +16,25 @@ RULES = [
     {
         "rule_id": "CORE-007",
         "message": "Product price was not visible near the purchase action.",
-        "fact_refs": ["page:0", "selector:buy-button"],
+        "fact_refs": ["page:1", "selector:buy-button"],
     },
     {
         "rule_id": "PHYS-002",
         "message": "Shipping information was not found in the purchase-adjacent content.",
-        "fact_refs": ["page:0", "selector:shipping"],
+        "fact_refs": ["page:1", "page:2", "selector:shipping"],
     },
     {
         "rule_id": "PHYS-001",
         "message": "Return information was not found in the checked public navigation.",
-        "fact_refs": ["page:0", "selector:returns"],
+        "fact_refs": ["page:0", "page:1", "page:3", "selector:returns"],
     },
+]
+
+GOLDEN_PAGES = [
+    "/",
+    "/products/example",
+    "/cart",
+    "/faq",
 ]
 
 
@@ -44,18 +51,24 @@ def report_for(fixture: str) -> dict:
             "fact_refs": ["page:0", "selector:nav"],
         }
     )
+    pages = [
+        {
+            "requested_url": f"https://demo-store-golden-v1.example{path}",
+            "final_url": f"https://demo-store-golden-v1.example{path}",
+            "status": 200,
+            "access_state": "ACCESS_OK",
+            "facts": {"fixture_page": path},
+        }
+        for path in GOLDEN_PAGES
+    ]
     return {
         "scan_id": "",
         "requested_url": f"https://demo-store-golden-v1.example/?fixture={fixture}",
-        "pages": [
-            {
-                "requested_url": f"https://demo-store-golden-v1.example/?fixture={fixture}",
-                "final_url": f"https://demo-store-golden-v1.example/products/demo?fixture={fixture}",
-                "status_code": 200,
-            }
-        ],
+        "pages": pages,
         "decisions": decisions,
         "warnings": [],
+        "demo_fixture": "demo-store-golden-v1" if fixture == "demo" else None,
+        "summary": {"confirmed_findings": 3, "trusted_checks": 17, "label": "Synthetic Demo"} if fixture == "demo" else None,
     }
 
 
@@ -112,7 +125,7 @@ class Handler(BaseHTTPRequestHandler):
         fixture = job["fixture"]
         if len(parts) == 4 and parts[3] == "report":
             if fixture in {"incomplete", "blocked", "rate-limited"}:
-                self.send_json(200, {"scan_id": scan_id, "pages": [], "decisions": [], "warnings": ["ACCESS_BLOCKED"]})
+                self.send_json(200, {"scan_id": scan_id, "pages": [], "decisions": [], "warnings": ["BLOCKED"]})
                 return
             report = report_for(fixture)
             report["scan_id"] = scan_id
@@ -121,7 +134,8 @@ class Handler(BaseHTTPRequestHandler):
         job["polls"] += 1
         poll = job["polls"]
         if fixture in {"incomplete", "blocked", "rate-limited"} and poll >= 3:
-            response = {"id": scan_id, "requested_url": "", "status": "AUDIT_INCOMPLETE", "phase": "INCOMPLETE", "error_code": "ACCESS_BLOCKED"}
+            reason = "RATE_LIMITED" if fixture == "rate-limited" else "BLOCKED"
+            response = {"id": scan_id, "requested_url": "", "status": "AUDIT_INCOMPLETE", "phase": "INCOMPLETE", "error_code": reason}
         elif fixture == "timeout" and poll >= 3:
             response = {"id": scan_id, "requested_url": "", "status": "FAILED", "phase": "FAILED", "error_code": "SCAN_TIMEOUT"}
         elif poll == 1:
@@ -130,6 +144,8 @@ class Handler(BaseHTTPRequestHandler):
             response = {"id": scan_id, "requested_url": "", "status": "RUNNING", "phase": "READING_PAGES"}
         elif poll == 3:
             response = {"id": scan_id, "requested_url": "", "status": "RUNNING", "phase": "MATCHING_EVIDENCE"}
+        elif poll == 4:
+            response = {"id": scan_id, "requested_url": "", "status": "RUNNING", "phase": "PRIORITIZING"}
         else:
             response = {"id": scan_id, "requested_url": "", "status": "SUCCEEDED", "phase": "COMPLETE"}
         self.send_json(200, response)

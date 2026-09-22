@@ -1,14 +1,14 @@
 :root {
-  --cla-g4-canvas: #f6f7f5;
+  --cla-g4-canvas: #ffffff;
   --cla-g4-surface: #ffffff;
-  --cla-g4-subtle: #eef0ec;
-  --cla-g4-ink: #111412;
-  --cla-g4-secondary: #5d655f;
-  --cla-g4-muted: #828a84;
-  --cla-g4-border: #d8ddd8;
-  --cla-g4-accent: #ff6338;
-  --cla-g4-accent-hover: #e94f28;
-  --cla-g4-accent-soft: #fff0ea;
+  --cla-g4-subtle: #f2f6fb;
+  --cla-g4-ink: #10233f;
+  --cla-g4-secondary: #536273;
+  --cla-g4-muted: #7b8796;
+  --cla-g4-border: #dbe4ef;
+  --cla-g4-accent: #2f63c7;
+  --cla-g4-accent-hover: #244fa5;
+  --cla-g4-accent-soft: #eaf0fc;
   --cla-g4-info: #2f63c7;
   --cla-g4-info-soft: #eaf0fc;
   --cla-g4-success: #18794e;
@@ -76,6 +76,8 @@
 .cla-g4-feedback.is-error { border-color: #e7b4af; color: #8d302b; background: #fff8f7; }
 
 .cla-g4-results { margin-top: 16px; padding: 32px; }
+.cla-g4-demo-summary { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 0 0 24px; padding: 16px 18px; border: 1px solid var(--cla-g4-border); border-radius: 14px; color: var(--cla-g4-secondary); background: var(--cla-g4-info-soft); }
+.cla-g4-demo-summary strong { color: var(--cla-g4-ink); }
 .cla-g4-results-head { display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; padding-bottom: 28px; border-bottom: 1px solid var(--cla-g4-border); }
 .cla-g4-result-count { flex: 0 0 auto; padding: 8px 12px; border-radius: 999px; color: var(--cla-g4-accent-hover); background: var(--cla-g4-accent-soft); font-size: 13px; font-weight: 800; }
 .cla-g4-findings { display: grid; gap: 16px; margin-top: 24px; }
@@ -108,7 +110,7 @@
 .cla-g4-proof-grid p { margin: 0; color: var(--cla-g4-secondary); line-height: 1.55; }
 .cla-g4-step { color: var(--cla-g4-accent-hover); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px; font-weight: 800; }
 .cla-g4-boundary { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; padding: 36px; border-radius: 20px; background: var(--cla-g4-ink); color: #fff; }
-.cla-g4-boundary .cla-g4-kicker { color: #ffad96; }
+.cla-g4-boundary .cla-g4-kicker { color: #9fc0ff; }
 .cla-g4-boundary p { margin: 0; color: #d9dfda; line-height: 1.6; }
 .cla-g4-boundary h2 { color: #fff; }
 
