@@ -24,7 +24,7 @@ K0R1_LOCAL_PROJECT_HYGIENE_CLEANUP=PASS
 K0R2_WORDPRESS_STUDIO_CONSOLIDATION=PASS_RETAINED_READ_ONLY
 ACTIVE_LOCAL_RUNTIME=DOCKER_MARIADB
 ACTIVE_LOCAL_URL=http://localhost:8093/
-CURRENT_GATE=K4_CONTENT_FILL_REVIEWER_COPY
+CURRENT_CHECKPOINT=OWNER_K4_FINAL_UI_EDIT_WINDOW
 K1_STATUS=SPLIT_K1A_K1B
 WORDPRESS_STUDIO_CONSOLIDATION=PASS
 VPS=DEFERRED
@@ -1021,3 +1021,22 @@ Next pass changes text only. Images, colors, layout, responsive rules, and comme
 
 Formal decision:
 - `docs/REVIEWER_DECISION_K4_SHELL_PASS_CONTENT_FILL.md`
+
+
+## K4 Reviewer Copy — PASS / Owner Final Visual Window
+
+Commit `98a7d3d4c8cd9851f4780a70c63c89ee3f57b092` passed Reviewer evidence review.
+
+```text
+COPY_FILL=PASS
+RESPONSIVE_MATRIX=65_OF_65_PASS
+GUTENBERG_VALIDITY=PASS
+COMMERCE_SMOKE=PASS
+CURRENT_CHECKPOINT=OWNER_K4_FINAL_UI_EDIT_WINDOW
+K4_FORMAL_CLOSE=DEFERRED_UNTIL_OWNER_DELTA_VERIFY
+```
+
+Owner now has the final UI edit window for images, visible-text micro-edits, and global colors on the five editable pages. Reusable layout and commerce flows remain protected.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_COPY_PASS_OWNER_FINAL_UI_WINDOW.md`
