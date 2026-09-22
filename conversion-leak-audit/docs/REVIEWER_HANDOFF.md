@@ -43,18 +43,20 @@ If generated-image text conflicts with these contracts, GitHub contracts win.
 
 ## Current Reviewer Position
 
-G4 is closed with:
+G4.5 is closed with:
 
-`PASS_G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION`
+`PASS_G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
 
 Codex is now authorized to execute only:
 
-`G4_5_ACCEPTANCE_CONTRACT.md`
+`G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md`
 
-The next Reviewer action is to read G4.5 evidence and decide:
-- PASS_G4_5
-- RETURN_G4_5
+The next Reviewer action is to inspect G4.6 execution evidence and decide:
+- PASS_G4_6
+- RETURN_G4_6
 - STOP / OWNER CHECKPOINT
+
+G4.6 must not reopen G4.5 visual structure unless a concrete regression is discovered.
 
 ## 2026-09-22 Takeover Reconciliation
 
