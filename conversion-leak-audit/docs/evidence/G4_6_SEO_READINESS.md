@@ -5,6 +5,7 @@ GATE=G4_6_ACQUISITION_SEO_READINESS
 CAPTURED=2026-09-23 (Asia/Shanghai)
 BASE_MAIN=8e0f044541598a1eee6a304df8a7c6b6368bf473 (origin/main, unchanged at final fetch)
 BRANCH=codex/g4-6-acquisition-seo-readiness
+IMPLEMENTATION_COMMIT=c26f9ca089b3020beb8f991b0a9a53bc697d5f26
 LOCAL_WORDPRESS=http://127.0.0.1:8084/
 ```
 

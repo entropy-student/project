@@ -477,6 +477,7 @@ Gate: `G4_6_ACQUISITION_SEO_READINESS`
 ```text
 BASE_MAIN=8e0f044541598a1eee6a304df8a7c6b6368bf473
 BRANCH=codex/g4-6-acquisition-seo-readiness
+IMPLEMENTATION_COMMIT=c26f9ca089b3020beb8f991b0a9a53bc697d5f26
 ```
 The final `git fetch origin` confirmed `origin/main` remained at BASE_MAIN with no `conversion-leak-audit/**` changes. This is a clean project-scoped sparse workspace. No merge was made.
 

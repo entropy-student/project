@@ -234,6 +234,7 @@ Then `STOP_AT_REVIEWER`.
 ```text
 BASE_MAIN=8e0f044541598a1eee6a304df8a7c6b6368bf473
 BRANCH=codex/g4-6-acquisition-seo-readiness
+IMPLEMENTATION_COMMIT=c26f9ca089b3020beb8f991b0a9a53bc697d5f26
 ```
 
 The final fetch confirmed `origin/main` is still BASE_MAIN and there are no newer `conversion-leak-audit/**` governance or product changes to synchronize. Work took place in a fresh, clean, project-scoped sparse workspace. No sibling project or main branch was changed.
