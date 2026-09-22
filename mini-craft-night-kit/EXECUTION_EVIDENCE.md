@@ -2366,3 +2366,47 @@ PASS_CANDIDATE_K4_CONTENT_FILL_REVIEWER_COPY
 OWNER_ACTION=NONE
 NEXT=STOP_AT_REVIEWER
 ```
+
+## K4 Local Artifact Hygiene — 2026-09-22
+
+```text
+GATE=K4_LOCAL_ARTIFACT_HYGIENE
+RESULT=PASS_CANDIDATE_K4_LOCAL_ARTIFACT_HYGIENE
+SHARED_ROOT=C:\Users\34707\Documents\ChatGPT\VPS基建
+COMMITTED_K4_EVIDENCE=docs/ui-current/;docs/ui-k4-shell/;docs/ui-k4-copy/
+```
+
+### Pre-cleanup attribution and action
+
+The following root-level names were positively attributed to this project's K4 screenshot/responsive work by their `.tmp-k4-*` / `.tmp-mc-*` naming, same-day timestamps, and matching committed screenshot evidence. They were reproducible browser capture/profile directories and were not runtime, rollback, database, or media dependencies:
+
+```text
+CLEANED=.tmp-k4-* (40 directories: matrix, shell, shell2, shell3, shell4, shell5, single);.tmp-mc-* (22 directories: current UI snapshot captures)
+CLEANED_COUNT=62
+CLEANED_BYTES=1071221612
+ARCHIVED=NONE
+```
+
+The uncertain `.tmp-cdp-test2` directory was not opened or removed. It remains in place because current evidence does not positively prove ownership by this K4 run. `.git`, `.clone-ui`, existing project directories, and other root entries were left untouched.
+
+### Post-cleanup regression and safety
+
+```text
+SHARED_WORKSPACE_ROOT_K4_TEMP_ARTIFACTS=REMOVED
+UNCLASSIFIED_LEFT_IN_PLACE=.tmp-cdp-test2
+UNRELATED_PROJECTS_TOUCHED=NO
+HOME_HTTP=200
+WORDPRESS_CONTAINER=running
+MARIADB_CONTAINER=running|healthy
+DOCKER_VOLUMES_DELETED=NO
+PAGE_MODIFICATIONS=0
+MEDIA_MODIFICATIONS=0
+CONFIG_MODIFICATIONS=0
+WOOCOMMERCE_PAYPAL_ORDER_PAYMENT_MODIFICATIONS=0
+SECRET_OUTPUT=0
+VPS_WRITES=ZERO
+LATEST_HYGIENE_DECISION_RE_READ=PASS
+LATEST_OWNER_GPT6_HOME_MEDIA_PROJECT_DOCS=PROTECTED
+```
+
+No WordPress, media, configuration, WooCommerce, PayPal, order, payment, Docker container, or volume action was performed in this hygiene Gate. No archive was needed because the confirmed temporary directories were already superseded by committed evidence and had no rollback/debug retention requirement.

@@ -1049,3 +1049,32 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The implementation kept the Kadence layout system and existing editable slots. Copy was consolidated where the locked shell did not expose a separate block for every specification sub-item; no new blocks, styles, links to unconfirmed destinations, images, or transactional text were introduced.
+
+## K4 Local Artifact Hygiene — 2026-09-22
+
+```text
+GATE=K4_LOCAL_ARTIFACT_HYGIENE
+RESULT=PASS_CANDIDATE_K4_LOCAL_ARTIFACT_HYGIENE
+CLEANED=.tmp-k4-* and .tmp-mc-* confirmed K4/Mini Craft reproducible capture directories
+CLEANED_COUNT=62
+CLEANED_BYTES=1071221612
+ARCHIVED=NONE
+LEFT_UNTOUCHED_UNRELATED=.tmp-cdp-test2;.git;.clone-ui;existing project directories and other root entries
+UNCLASSIFIED_LEFT_IN_PLACE=.tmp-cdp-test2
+SUMMARY=Confirmed K4 capture/profile debris was removed from the shared root; uncertain CDP material was preserved.
+EVIDENCE=EXECUTION_EVIDENCE.md;docs/UI_SNAPSHOT_INDEX.md;docs/UI_COPY_FILL_SCREENSHOT_INDEX.md;docs/ui-current/;docs/ui-k4-shell/;docs/ui-k4-copy/
+HOME_HTTP=200
+WORDPRESS_CONTAINER=running
+MARIADB_CONTAINER=running|healthy
+PAGE_MEDIA_CONFIG_MODIFICATIONS=0
+WOOCOMMERCE_PAYPAL_ORDER_PAYMENT_MODIFICATIONS=0
+DOCKER_VOLUMES_DELETED=NO
+LATEST_HYGIENE_DECISION_RE_READ=PASS
+LATEST_OWNER_GPT6_HOME_MEDIA_PROJECT_DOCS=PROTECTED
+SECRET_OUTPUT=0
+VPS_WRITES=ZERO
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+The active `OWNER_K4_FINAL_UI_EDIT_WINDOW` remains open. This side task did not edit WordPress, media, configuration, commerce/payment state, Docker containers, or volumes. `.tmp-cdp-test2` remains unclassified and was intentionally left in place.
