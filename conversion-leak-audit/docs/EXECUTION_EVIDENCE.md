@@ -204,6 +204,9 @@ Reviewer return: `RETURN_G4_CONTRACT_COMPLETION_REQUIRED`
 
 The dedicated branch was rebased onto the latest fetched `origin/main` at `99e5685a3e18e1c92bb3530f1e375c14642ea668`. The current branch preserves the latest Reviewer-owned `PROJECT_RECORD.md`, `CURRENT_STATUS.json`, `REVIEWER_HANDOFF.md`, and `REVIEWER_DECISION_G4_CONTRACT_COMPLETION_RETURN.md` byte-for-byte from `origin/main` before Executor evidence updates.
 
+Dedicated branch: `codex/g4-repository-reconciliation`  
+Correction implementation commit: `62d1d70ac6e697745a375fb3c257152091204208`
+
 ### R1 — Real Scanner canary
 
 Command:

@@ -170,6 +170,8 @@ Do not declare final G4 PASS. Stop at Reviewer after the dedicated branch is pus
 
 The dedicated branch was updated from the latest `origin/main` at `99e5685a3e18e1c92bb3530f1e375c14642ea668` by rebase. Latest Reviewer-owned governance was preserved; only Executor-owned implementation, tests, screenshots, and evidence are changed.
 
+Correction implementation commit: `62d1d70ac6e697745a375fb3c257152091204208`.
+
 Completed bounded corrections:
 
 - Real Scanner canary through WordPress: PASS; terminal `AUDIT_INCOMPLETE`, report schema compatible, evidence-less ISSUE `0`.
