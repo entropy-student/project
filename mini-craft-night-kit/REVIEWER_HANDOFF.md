@@ -1276,3 +1276,23 @@ Executor must protect the current Hero, Header/logo, and four product media assi
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_OWNER_MANUAL_EDITS_FINALIZE.md`
+
+
+## K4 Owner Manual Baseline — Verification Only
+
+Owner has manually deleted the Three-step section and additional Home content, and saved the page.
+
+The CURRENT SAVED Home/Header state is now authoritative. Executor must not restore any deleted section.
+
+The previous `K4_OWNER_MANUAL_EDITS_FINALIZE` instruction is superseded.
+
+Current Gate:
+`K4_OWNER_MANUAL_BASELINE_VERIFY`
+
+Three-value invalid-block warnings are verification-only:
+- do not delete/repair blocks proactively;
+- if invalid count = 0, continue;
+- if invalid count > 0, return to Reviewer without mutation.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_OWNER_MANUAL_BASELINE_VERIFY.md`
