@@ -1,0 +1,134 @@
+import { parsePromptText } from "./shared.js";
+
+const $ = (id) => document.getElementById(id);
+
+async function call(type, payload = {}) {
+  const res = await chrome.runtime.sendMessage({ type, ...payload });
+  if (!res?.ok) throw new Error(`${res?.error?.code ?? "ERROR"}: ${res?.error?.message ?? "Unknown error"}`);
+  return res;
+}
+
+function settingsFromForm() {
+  return {
+    projectId: $("projectId").value.trim(),
+    outputFolder: $("outputFolder").value.trim(),
+    aspect: $("aspect").value,
+    newChatEvery: Number($("newChatEvery").value),
+    delayMs: Number($("delayMs").value),
+    timeoutMs: Number($("timeoutMs").value),
+    promptPrefix: $("promptPrefix").value
+  };
+}
+
+async function persistSettings() {
+  await call("SET_SETTINGS", { settings: settingsFromForm() });
+}
+
+function jobsFromPromptLines(lines) {
+  const projectId = $("projectId").value.trim();
+  const aspect = $("aspect").value;
+  return lines.map((prompt, i) => ({
+    project_id: projectId,
+    shot_id: `S${String(i + 1).padStart(3, "0")}`,
+    aspect,
+    prompt
+  }));
+}
+
+async function importText(replace) {
+  await persistSettings();
+  const lines = parsePromptText($("promptText").value);
+  if (!lines.length) throw new Error("请输入至少一条 Prompt");
+  await call(replace ? "REPLACE_JOBS" : "IMPORT_JOBS", { jobs: jobsFromPromptLines(lines) });
+  $("promptText").value = "";
+}
+
+$("replaceText").addEventListener("click", () => runUi(() => importText(true)));
+$("appendText").addEventListener("click", () => runUi(() => importText(false)));
+$("start").addEventListener("click", () => runUi(async () => { await persistSettings(); await call("START_RUN"); }));
+$("pause").addEventListener("click", () => runUi(() => call("PAUSE_RUN")));
+$("stop").addEventListener("click", () => runUi(() => call("STOP_RUN")));
+$("retryFailed").addEventListener("click", () => runUi(() => call("RETRY_FAILED")));
+$("clear").addEventListener("click", () => runUi(async () => {
+  if (confirm("清空全部任务？")) await call("CLEAR_JOBS");
+}));
+
+$("liveEnabled").addEventListener("change", async (event) => {
+  const enabled = event.target.checked;
+  if (enabled) {
+    const ok = confirm("开启 Live generation 后，点击“开始”会真的向当前浏览器中的 ChatGPT 提交 Prompt 并消耗图片生成额度。继续吗？");
+    if (!ok) { event.target.checked = false; return; }
+  }
+  await runUi(() => call("SET_LIVE_ENABLED", { enabled }));
+});
+
+$("fileInput").addEventListener("change", async (event) => {
+  await runUi(async () => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    await persistSettings();
+    const text = await file.text();
+    let jobs;
+    if (file.name.toLowerCase().endsWith(".json")) {
+      const parsed = JSON.parse(text);
+      jobs = Array.isArray(parsed) ? parsed : parsed.jobs;
+      if (!Array.isArray(jobs)) throw new Error("JSON 必须是任务数组，或包含 jobs 数组");
+    } else {
+      jobs = jobsFromPromptLines(parsePromptText(text));
+    }
+    await call("REPLACE_JOBS", { jobs });
+    event.target.value = "";
+  });
+});
+
+chrome.runtime.onMessage.addListener((message) => {
+  if (message?.type === "STATE_PUSH" && message.state) render(message.state);
+});
+
+async function refresh() {
+  try {
+    const res = await call("GET_STATE");
+    render(res.state);
+  } catch (error) {
+    showError(error.message);
+  }
+}
+
+function render(state) {
+  $("liveEnabled").checked = Boolean(state.liveEnabled);
+  $("projectId").value = state.settings.projectId;
+  $("outputFolder").value = state.settings.outputFolder;
+  $("aspect").value = state.settings.aspect;
+  $("newChatEvery").value = state.settings.newChatEvery;
+  $("delayMs").value = state.settings.delayMs;
+  $("timeoutMs").value = state.settings.timeoutMs;
+  $("promptPrefix").value = state.settings.promptPrefix;
+  $("runBadge").textContent = String(state.run.status || "idle").toUpperCase();
+  $("liveBadge").textContent = state.liveEnabled ? "LIVE ON" : "LIVE OFF";
+
+  const jobs = state.jobs || [];
+  $("countAll").textContent = jobs.length;
+  $("countPending").textContent = jobs.filter((j) => ["pending", "running"].includes(j.status)).length;
+  $("countDone").textContent = jobs.filter((j) => j.status === "completed").length;
+  $("countFailed").textContent = jobs.filter((j) => j.status === "failed").length;
+  $("jobs").innerHTML = jobs.map((job) => `
+    <div class="job">
+      <div class="job-top"><span class="job-title">${escapeHtml(job.projectId)}/${escapeHtml(job.shotId)}</span><span class="job-status">${escapeHtml(job.status)}</span></div>
+      <div class="job-prompt">${escapeHtml(job.promptPreview || "")}</div>
+      ${job.error ? `<div class="job-error">${escapeHtml(job.error.code)} · ${escapeHtml(job.error.message)}</div>` : ""}
+    </div>
+  `).join("");
+}
+
+async function runUi(fn) {
+  hideError();
+  try { await fn(); await refresh(); }
+  catch (error) { showError(error.message); }
+}
+
+function showError(text) { $("errorBox").textContent = text; $("errorBox").classList.remove("hidden"); }
+function hideError() { $("errorBox").classList.add("hidden"); }
+function escapeHtml(value) { return String(value ?? "").replace(/[&<>'"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c])); }
+
+refresh();
+setInterval(refresh, 1500);
