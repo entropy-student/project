@@ -5,79 +5,58 @@
 
 ## Current decision
 
+Owner corrected the project goal on 2026-09-22:
+
+> Final product is a plugin/tool like the referenced video whose core purpose is batch image generation and automatic download.
+
+Therefore the former video-pipeline / Remotion roadmap is superseded.
+
+Current state:
+
 ```text
 P0_PROJECT_INTAKE_GOVERNANCE = PASS
-P0A_ARCHITECTURE_SAFETY_FREEZE = PASS
-G1_LOCAL_PLUMBING_DRY_RUN = RELEASED TO EXECUTOR
+P0A_PLUGIN_ARCHITECTURE_SAFETY_FREEZE = PASS
+G1_PLUGIN_CORE_STATIC_IMPLEMENTATION = PASS
+G1_5_BROWSER_LOAD_DRY_RUN = NEXT
 ```
 
-## Why G1 is zero-quota
+## Implementation
 
-This is a browser-automation project. Governance requires a central fail-closed safe mode before the first real action.
+Branch:
 
-Therefore G1 proves the plumbing without clicking the ChatGPT submit button or generating an image.
+`story-image-runner/plugin-v1`
 
-Only after Reviewer accepts G1 may G1.5 authorize one real image.
+The extension is now pure MV3 and does not require a Local Bridge for V1.
 
-## Frozen G1 architecture
+Implemented:
+
+- side-panel batch UI;
+- TXT / JSON prompt import;
+- local persistent queue;
+- Start / Pause / Stop / Retry;
+- deterministic filenames;
+- owned ChatGPT tab;
+- prompt submit adapter;
+- fresh-image detection;
+- automatic download;
+- new-chat-every-N;
+- typed failures;
+- rate-limit pause;
+- Live mode safety switch.
+
+## Independent static checks
 
 ```text
-CLI
-→ localhost bridge
-→ validated queue/state
-→ extension polling/heartbeat
-→ browser readiness state
-→ dry-run result
+JavaScript syntax checks = PASS
+npm test = 7/7 PASS
+extension static check = PASS
+real image generations during implementation = 0
 ```
 
-G1 does not yet need a working ChatGPT DOM submit adapter.
+## Current Owner checkpoint
 
-## Reviewer acceptance focus
+Load the unpacked extension in Chrome / Edge with **Live generation OFF**.
 
-G1 PASS requires independent evidence for:
+If that passes, Reviewer can authorize exactly one real image Canary.
 
-- `SAFE_MODE=true` default;
-- live submission impossible in safe mode;
-- bridge bound only to loopback;
-- schema validation;
-- path traversal rejection;
-- duplicate-job rejection;
-- abort clears or marks queued/in-flight dry-run state safely;
-- extension/bridge heartbeat has stale detection;
-- restart does not silently mark unfinished work successful;
-- no cookie/token/session export;
-- tests pass;
-- no real image-generation action occurred.
-
-## Current Executor entry
-
-`docs/G1_EXECUTION_CONTRACT.md`
-
-Executor must return:
-
-```text
-GATE=G1_LOCAL_PLUMBING_DRY_RUN
-RESULT=PASS_CANDIDATE_G1_LOCAL_PLUMBING_DRY_RUN | RETURN_<PRECISE_REASON>
-SUMMARY=<short>
-EVIDENCE=EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
-COMMIT=<sha>
-OWNER_ACTION=NONE
-NEXT=STOP_AT_REVIEWER
-```
-
-Reviewer will then independently decide PASS / RETURN.
-
-## Protected boundaries
-
-No:
-
-- real prompt submission;
-- image quota consumption;
-- reference-image upload to ChatGPT;
-- cookie/session extraction;
-- rate-limit bypass;
-- anti-bot bypass;
-- multi-account rotation;
-- concurrency > 1;
-- mass generation;
-- VPS or production deployment.
+No Codex work is currently required unless the browser-runtime test returns a concrete defect.
