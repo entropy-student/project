@@ -34,8 +34,8 @@ G1   WordPress Local Baseline                PASS
 G2   Safe Scanner V0                         PASS
 G3   Rule Engine V0                          MERGED / CLOSED
 G3.5 UI + Growth Design Freeze               PASS
-G4   WP ↔ Scanner ↔ Top 3 Local Loop          NEXT / EXECUTOR READY
-G4.5 Visual + Functional Acceptance          PENDING
+G4   WP ↔ Scanner ↔ Top 3 Local Loop          PASS
+G4.5 Visual + Functional Acceptance          NEXT / EXECUTOR READY
 G5   Full Fix Queue + LLM + Skill Dogfood    PENDING
 G6   VPS Onboarding / Storage                HOLD
 G7   VPS Private Deployment                  HOLD
@@ -166,21 +166,19 @@ optional LLM explanation (later)
 ## 10. 当前下一动作
 
 ```text
-Owner restores verified 2026-09-17 canonical package once
-→ Codex verifies package SHA256 + reruns 55/55 and 20/20
-→ execute docs/G4_EXECUTION_CONTRACT.md
-→ update docs/EXECUTION_EVIDENCE.md
-→ Reviewer reads GitHub evidence
-→ PASS / RETURN G4
+Codex
+→ read docs/G4_5_ACCEPTANCE_CONTRACT.md
+→ rerun functional acceptance
+→ run Golden Screenshot / responsive acceptance
+→ update EXECUTION_EVIDENCE.md / EXECUTOR_HANDOFF.md
+→ PASS_CANDIDATE_G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE
+→ Reviewer PASS / RETURN
 ```
 
 当前：
-- G3.5 已 PASS；
-- G4 已释放给 Codex；
-- 2026-09-22 Reviewer 接管复核已完成，见 `docs/REVIEWER_DECISION_G4_TAKEOVER_RECONCILIATION.md`；
-- 2026-09-22 已从 Owner Library 找回并校验 canonical package `conversion-leak-audit-final-2026-09-17.zip`，SHA256 `e5c3aa1da7a8fe5a431eade38f2b45fc48862b21470e413f4a034f150f59df03`；Reviewer 已从该包重新实跑 Scanner 55/55 与 WordPress 20/20 PASS；见 `docs/REVIEWER_DECISION_G4_SOURCE_BASELINE_RECOVERY.md`；
-- G4 源码编辑前仍需由 Codex 在本地恢复该 verified package 中的 `scanner/` 与 `wordpress-g1-baseline/`，再次校验 SHA256 + 55/55 + 20/20；不得重建；
-- G4 仅允许本地 WordPress ↔ Scanner ↔ Top 3 闭环；
+- G4 已正式 PASS，见 `docs/REVIEWER_DECISION_G4_PASS.md`；
+- G4 实现已通过 PR #2 合入 `main`，merge commit `554951fc778d2b60a4a1fe655e07c37310ef76ad`；
+- G4.5 是当前唯一执行 Gate，仅做视觉 + 功能验收，不扩产品范围；
 - Payment / VPS / Production 继续 HOLD。
 
 ## 11. 不允许重复执行
@@ -216,3 +214,16 @@ Required before final G4 PASS:
 Formal decision: `docs/REVIEWER_DECISION_G4_CONTRACT_COMPLETION_RETURN.md`.
 
 G1/G2/source recovery/repository isolation remain accepted and must not be rebuilt.
+
+
+### G4 Final PASS — 2026-09-22
+
+Reviewer final decision: `PASS_G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION`.
+
+Accepted evidence includes Scanner `55/55`, WordPress `20/20`, real Scanner canary, real `PRIORITIZING`, analytics contract, frozen four-page Golden Demo, refresh-result coverage, complete required G4 screenshots, fail-closed states, and no payment/VPS/production-secret actions.
+
+Implementation landed through PR #2; merge commit: `554951fc778d2b60a4a1fe655e07c37310ef76ad`.
+
+Next Gate: `G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`, released under `docs/G4_5_ACCEPTANCE_CONTRACT.md`.
+
+The prior G4 repository-reconciliation and contract-completion return sections are historical and superseded by this PASS.
