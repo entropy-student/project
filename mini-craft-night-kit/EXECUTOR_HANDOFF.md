@@ -1012,3 +1012,18 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The pack is a current-state, read-only archive. Checkout shows the anonymous empty-cart baseline; the existing Thank You route currently shows the anonymous login gate, and its order key is not recorded. No page, configuration, plugin/theme, WooCommerce, PayPal, order, or payment state was changed.
+
+## K4 Reusable Storefront Shell Implementation — Executor handoff (2026-09-22)
+
+```text
+GATE=K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION
+RESULT=PASS_CANDIDATE_K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION
+SUMMARY=Reviewer-approved Kadence storefront shell applied to Home/Product/FAQ/Shipping & Returns/Contact with editable factual content, minimal responsive guards, and protected WooCommerce flows retained.
+EVIDENCE=EXECUTION_EVIDENCE.md;docs/ui-k4-shell/01-home-desktop.png;docs/ui-k4-shell/01-home-mobile.png;docs/ui-k4-shell/03-product-desktop.png;docs/ui-k4-shell/03-product-mobile.png;docs/ui-k4-shell/04-faq-desktop.png;docs/ui-k4-shell/04-faq-mobile.png;docs/ui-k4-shell/05-shipping-returns-desktop.png;docs/ui-k4-shell/05-shipping-returns-mobile.png;docs/ui-k4-shell/06-contact-desktop.png;docs/ui-k4-shell/06-contact-mobile.png
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+Implementation facts: Kadence structure was reused; no images were generated; the existing Media Library/template assets remain Owner-replaceable; Contact keeps the native Kadence form with three visible inputs; Gutenberg parse verification returned unknown/invalid count `0` for all five implementation pages. The 13-width responsive smoke matrix covers `320,375,390,430,768,820,1024,1280,1366,1440,1920,2048,2560` for Home, Product, FAQ, Shipping & Returns, and Contact (`65/65` captures). HTTP, Store API, Docker/MariaDB, temporary Add to Cart→Cart→Checkout, plugin versions, PayPal configuration, and existing Sandbox order baseline were verified without payment or order creation.
+
+Protected scope: Shop, Cart, Checkout, Thank You / Order Received, and My Account structure was not rebuilt. No PPCP/WooCommerce/WordPress version or configuration change, Live action, VPS write, secret output, or K5 work occurred.

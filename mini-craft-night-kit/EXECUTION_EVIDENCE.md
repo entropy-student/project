@@ -2171,3 +2171,108 @@ The Checkout capture is the anonymous empty-cart baseline. The Thank You capture
 
 PASS_CANDIDATE_K4_UI_SNAPSHOT_PACK
 STOP_AT_REVIEWER=YES
+
+## K4 Reusable Storefront Shell Implementation — Executor evidence (2026-09-22)
+
+This section records the bounded implementation of the Reviewer-approved reusable shell. It supersedes neither Reviewer-owned decisions nor the formal Reviewer result.
+
+```text
+CURRENT_GATE=K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION
+ROLLBACK_POINT=PASS_LOCAL_ONLY
+ROLLBACK_PATH=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-shell-preflight-20260922-131055
+ACTIVE_RUNTIME=http://localhost:8093/
+ACTIVE_WORDPRESS_RUNTIME=mini-craft-k3r4-recovery-wordpress
+ACTIVE_MARIADB_RUNTIME=mini-craft-k3r4-recovery-mariadb_HEALTHY
+```
+
+### Shell implementation
+
+```text
+KADENCE_LAYOUT_SYSTEM_REBUILT=NO
+KADENCE_LAYOUT_SYSTEM_REUSED=YES
+GLOBAL_PALETTE_TOKENS=UPDATED_TO_REVIEWER_APPROVED_VALUES
+BODY_FONT=PLUS_JAKARTA_SANS
+HEADING_FONT=DM_SERIF_DISPLAY
+BUTTON_RADIUS=10PX_GLOBAL_TOKEN
+LARGE_CUSTOM_CSS=NO
+MINIMAL_RESPONSIVE_CSS_GUARD=YES
+ABSOLUTE_POSITIONING_ADDED=NO
+IMAGE_GENERATION=NO
+IMAGE_SOURCE=EXISTING_APPROVED_MEDIA_LIBRARY_AND_EXISTING_TEMPLATE_ASSETS
+OWNER_REPLACEABLE_MEDIA=YES
+```
+
+Home retained the existing Kadence hero/section structure and normalized hard-coded colors to global palette tokens; a responsive-only line break uses the existing `k1b-mobile-break` class. Product post `223` retained the WooCommerce title, price, inventory, gallery, SKU, and Add to Cart path; only the editable Gutenberg content below the commerce area was organized into factual columns, support links, and policy context. FAQ `1121`, Shipping & Returns `9`, and Contact `10` use editable core Gutenberg groups, headings, paragraphs, columns, lists, details, and buttons. Contact retains the native Kadence form block and now renders Name, Email, and Message inputs plus the submit button; no unconfirmed recipient channel was created and the form was not submitted.
+
+Shop, Cart, Checkout, Thank You / Order Received, and My Account remain WooCommerce/Kadence structure and inherit global tokens only. No WooCommerce, PayPal, order, payment, or account markup was rebuilt.
+
+### Gutenberg and runtime verification
+
+```text
+GUTENBERG_INVALID_BLOCK_COUNT=0
+GUTENBERG_PARSE_RESULTS=HOME_101_BLOCKS_UNKNOWN_0;PRODUCT_25_UNKNOWN_0;FAQ_18_UNKNOWN_0;SHIPPING_27_UNKNOWN_0;CONTACT_21_UNKNOWN_0
+CONTACT_FORM_FIELDS=3
+CONTACT_FORM_RENDER=PASS_NOT_SUBMITTED
+HOME_HTTP=200
+SHOP_HTTP=200
+PRODUCT_HTTP=200
+FAQ_HTTP=200
+SHIPPING_RETURNS_HTTP=200
+CONTACT_HTTP=200
+CART_HTTP=200
+CHECKOUT_EMPTY_CART_HTTP=302_EXPECTED
+CHECKOUT_AFTER_TEMP_ADD_TO_CART_HTTP=200
+THANK_YOU_EXISTING_ORDER_1120_HTTP=200
+MY_ACCOUNT_HTTP=200
+WPJSON_HTTP=200
+STORE_API_PRODUCTS_HTTP=200
+STORE_API_CART_HTTP=200
+ADD_TO_CART_TEMP_SESSION=200
+DOCKER_WORDPRESS=UP
+DOCKER_MARIADB=HEALTHY
+HOME_RESPONSE=200_0.753453S_SMOKE
+PHP_CPU_SAMPLE=0.01_PERCENT
+MARIADB_CPU_SAMPLE=0.02_PERCENT
+```
+
+The temporary Add to Cart smoke used an isolated local cookie session only; it created no order and performed no payment action. Existing WooCommerce order `1120` remains WooCommerce `processing`, has a transaction ID, and was not modified. Product `223` remains SKU `MCK-LOCAL-TEST-001`, `instock`, stock `8`; no product/order business fields were changed by the shell implementation. Active versions remain Kadence `1.5.2`, Kadence Blocks `3.7.11`, Kadence Starter Templates `2.3.4`, WooCommerce `10.0.4`, and WooCommerce PayPal Payments `4.1.3`.
+
+### Responsive evidence
+
+```text
+RESPONSIVE_WIDTH_MATRIX=320,375,390,430,768,820,1024,1280,1366,1440,1920,2048,2560
+RESPONSIVE_MATRIX_SCREENSHOTS=65_OF_65
+RESPONSIVE_MATRIX_PAGES=HOME,PRODUCT,FAQ,SHIPPING_RETURNS,CONTACT
+COMMITTED_UI_SCREENSHOTS=10
+COMMITTED_UI_SCREENSHOT_PATH=docs/ui-k4-shell/
+COMMITTED_UI_SCREENSHOT_SET=HOME_PRODUCT_FAQ_SHIPPING_RETURNS_CONTACT_DESKTOP_1440_AND_MOBILE_390
+HORIZONTAL_OVERFLOW=NO_DOCUMENT_OVERFLOW_IN_DOM_SMOKE
+HEADER_NAVIGATION=PASS
+MOBILE_STACKING=PASS
+IMAGE_DISTORTION=NO_OBSERVED
+FORM_LAYOUT=PASS
+ULTRAWIDE_SMOKE=PASS
+```
+
+### Protected scope and safety
+
+```text
+WOOCOMMERCE_CANONICAL_COMMERCE_ORDER_SYSTEM=YES
+PPCP_CONFIGURATION_TOUCHED=NO
+PPCP_VERSION_CHANGED=NO
+WOOCOMMERCE_VERSION_CHANGED=NO
+WORDPRESS_VERSION_CHANGED=NO
+PAYPAL_SANDBOX_CONNECTION=UNCHANGED_REDACTED
+EXISTING_SANDBOX_ORDER_1120=PROCESSING_UNCHANGED
+NEW_ORDER_ACTIONS=0
+REAL_PAYMENT_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_VALUES_OUTPUT=NO
+SECRET_VALUES_COMMITTED=NO
+UNRELATED_PROJECTS_TOUCHED=NO
+OLD_PROJECT_TOUCHED=NO
+PASS_CANDIDATE_K4_REUSABLE_STOREFRONT_SHELL_IMPLEMENTATION
+STOP_AT_REVIEWER=YES
+```
+
+The local rollback point remains available. Host-only helper and CDP inspection files remain contained under the active runtime `.artifacts` directory and are not part of the GitHub commit; no helper, credential, token, cookie, or environment file is included in the evidence commit.
