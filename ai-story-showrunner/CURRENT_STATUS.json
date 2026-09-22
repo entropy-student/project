@@ -22,14 +22,14 @@
   "production": {
     "current_gate": "G6",
     "status": "IN_PROGRESS",
-    "current_task": "G6_E2E_PRODUCTION_PACKAGE_V1_READY_FOR_ANTIGRAVITY_EXECUTION",
+    "current_task": "RUN_ASSET_STAGE_ONLY_THEN_RETURN_REVIEWER_PACKAGE",
     "next_after_package": "ANTIGRAVITY_FULL_E2E_EXECUTION",
     "next_gate": {
       "id": "G7",
       "name": "End-to-End Validation",
       "status": "BLOCKED_BY_G6"
     },
-    "production_package_status": "READY_NOT_EXECUTED",
+    "production_package_status": "ASSET_GATE_V1_READY_NOT_EXECUTED",
     "timing": {
       "status": "PLANNED_TIMELINE_COMPILED_PASS",
       "speech_units": 44,
@@ -106,6 +106,27 @@
         "path": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
         "git_blob_sha": "ce7605c4d4a9d3731bc1778a9889a21119ac8b29"
       }
+    },
+    "render_authorization": "BLOCKED_PENDING_ASSET_GATE_PASS",
+    "asset_gate": {
+      "status": "READY_NOT_EXECUTED",
+      "scope": [
+        "production TTS",
+        "Runtime Timeline Resolver",
+        "44 production frames",
+        "asset mechanical QA",
+        "reviewer handoff ZIP"
+      ],
+      "stop_before": [
+        "FFmpeg final render",
+        "Remotion",
+        "Hyperframe"
+      ],
+      "reviewer_outcomes": [
+        "ASSET_GATE_PASS",
+        "ASSET_GATE_PASS_WITH_MINOR",
+        "ASSET_GATE_RETURN"
+      ]
     }
   },
   "accepted_gates": [
