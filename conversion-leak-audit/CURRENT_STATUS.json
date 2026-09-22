@@ -67,11 +67,20 @@
     "public_production_scanner": "HOLD",
     "g4_scope": "LOCAL_ONLY_NO_PAYMENT_NO_VPS_NO_PRODUCTION_SECRET"
   },
-  "next_action": "CODEX_EXECUTE_G4_WITH_SOURCE_BASELINE_PRECHECK_PER_G4_EXECUTION_CONTRACT",
+  "next_action": "OWNER_RESTORE_VERIFIED_2026_09_17_PACKAGE_THEN_CODEX_RESUME_G4",
   "reviewer_reconciliation": {
     "date": "2026-09-22",
     "status": "RECONCILED",
     "decision_doc": "docs/REVIEWER_DECISION_G4_TAKEOVER_RECONCILIATION.md",
-    "source_baseline_precheck": "REQUIRED_BEFORE_G4_EDITS"
+    "source_baseline_precheck": "RESOLVED_BY_CANONICAL_RECOVERY_PACKAGE"
+  },
+  "source_baseline_recovery": {
+    "date": "2026-09-22",
+    "status": "RESOLVED",
+    "package": "conversion-leak-audit-final-2026-09-17.zip",
+    "sha256": "e5c3aa1da7a8fe5a431eade38f2b45fc48862b21470e413f4a034f150f59df03",
+    "decision_doc": "docs/REVIEWER_DECISION_G4_SOURCE_BASELINE_RECOVERY.md",
+    "reviewer_scanner_regression": "55/55 PASS",
+    "reviewer_wordpress_asset_regression": "20/20 PASS"
   }
 }
