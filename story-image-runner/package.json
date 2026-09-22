@@ -1,6 +1,6 @@
 {
   "name": "story-image-runner-plugin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "type": "module",
   "description": "Chrome/Edge extension for queued batch image generation through a signed-in ChatGPT web session.",
