@@ -1149,3 +1149,22 @@ Scope is intentionally narrow:
 - no other Home redesign or commerce/payment changes.
 
 The GitHub handoff protocol now also requires actual in-chat screenshot visibility for final Visual PASS; GitHub-only PNG evidence is Technical evidence until the pixels are directly reviewed.
+
+
+## K4 Owner Manual Edits — Finalization
+
+Owner saved a new Home/Header visual baseline:
+- full-width Hero background treatment;
+- updated Header/logo;
+- four replacement product images in the Offer/product-display section.
+
+The previous `K4_HOME_SECTION_DEDUP` scope is superseded by:
+`K4_OWNER_MANUAL_EDITS_FINALIZE`
+
+Final bounded work:
+- remove the redundant Three-step section;
+- remove/repair the invalid child blocks in the Three-value cards;
+- preserve all Owner manual Hero/Header/product-media changes exactly.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_OWNER_MANUAL_EDITS_FINALIZE.md`
