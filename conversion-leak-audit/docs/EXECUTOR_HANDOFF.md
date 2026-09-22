@@ -1,7 +1,7 @@
 # Conversion Leak Audit — EXECUTOR HANDOFF
 
 > Intended executor: Codex / local development agent
-> Current State: `G4_READY_FOR_EXECUTION`
+> Current State: `G4_PASS_G4_5_READY_FOR_EXECUTION`
 
 ## Reviewer authorization
 
@@ -203,3 +203,28 @@ Recommended Reviewer decision: `REVIEW_G4_PASS_CANDIDATE_G4_CONTRACT_COMPLETE`.
 Candidate result: `PASS_CANDIDATE_G4_CONTRACT_COMPLETE`.
 
 Executor does not declare final G4 PASS. Push the dedicated branch and stop at Reviewer.
+
+
+## Reviewer release — G4.5
+
+G4 final decision:
+
+`PASS_G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION`
+
+G4 implementation is merged to `main` through PR #2.
+
+Current authorized Gate:
+
+`G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
+
+Read and execute:
+
+`G4_5_ACCEPTANCE_CONTRACT.md`
+
+Do not expand into G5, payment, VPS, domain/HTTPS, production Secret, or public production Scanner.
+
+Candidate:
+
+`PASS_CANDIDATE_G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
+
+Then `STOP_AT_REVIEWER`.
