@@ -1188,3 +1188,15 @@ Owner standardized UI screenshot review delivery:
 all screenshot evidence must be committed to GitHub and additionally packaged into one Gate-specific ZIP for Owner transfer to Reviewer.
 
 The ZIP contains only current-Gate screenshots plus a non-sensitive manifest. Reviewer visual acceptance requires inspecting the uploaded ZIP.
+
+
+## K4 Full Visual Audit + Product Gallery Repair
+
+Owner requested one consolidated screenshot package for all current storefront pages and reported a Product gallery interaction defect.
+
+Observed symptom: Product initial load can show a normal large image, but later gallery interaction may collapse the active image while leaving excessive blank space.
+
+Current Gate:
+`K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR`
+
+This supersedes the prior verification-only Gate. Product repair must remain minimal and preserve canonical WooCommerce gallery behavior. All visual evidence is delivered as one ZIP plus GitHub archive.
