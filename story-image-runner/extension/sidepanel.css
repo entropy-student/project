@@ -36,3 +36,9 @@ button.danger { color:#ffb4b4; border-color:#6b3538; background:#2a1c1e; }
 .job-error { font-size:10px; color:#ffadad; margin-top:5px; }
 .error { color:#ffb7b7; background:#2b1c1e; border:1px solid #68353a; border-radius:8px; padding:8px; margin-bottom:8px; font-size:11px; }
 .hidden { display:none; }
+
+
+.diagnostics { border-color:#313643; }
+.diagnostic-text { font-size:11px; line-height:1.5; color:#aeb4c0; white-space:pre-wrap; word-break:break-word; }
+.diagnostic-text.ok { color:#b9e6c4; }
+.diagnostic-text.bad { color:#ffb7b7; }
