@@ -13,7 +13,8 @@ G2   Safe Scanner V0                         PASS
 G3   Rule Engine V0                          MERGED / CLOSED
 G3.5 UI + Growth Design Freeze               PASS
 G4   WordPress ↔ Scanner ↔ Top 3 Local Loop   PASS
-G4.5 Visual + Functional Acceptance          NEXT / EXECUTOR READY
+G4.5 Visual + Functional Acceptance          PASS
+G4.6 Acquisition + SEO Readiness             NEXT / EXECUTOR READY
 G5   Full Fix Queue + LLM + Skill Dogfood    PENDING
 G6   VPS Onboarding / Storage                HOLD
 G7   VPS Private Deployment                  HOLD
@@ -83,6 +84,22 @@ Must prove:
 - loading/error/incomplete states match design contract;
 - implementation did not break Scanner safety or WordPress baseline;
 - analytics events fire according to contract.
+
+## G4.6 — Acquisition + SEO Readiness
+
+Current Gate. Contract: `G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md`.
+
+Purpose:
+- make the value proposition/category clear;
+- strengthen proof without fabricated social proof;
+- improve Demo as pre-scan trust;
+- remove unfinished Blog/Pricing from acquisition surfaces;
+- prepare page metadata, canonical, robots and sitemap behavior;
+- noindex dynamic scan-result URLs;
+- preserve existing behavioral analytics;
+- avoid bulk SEO content until external Activation evidence exists.
+
+This is readiness, not traffic scaling.
 
 ## G5 — Full Fix Queue + LLM + Skill Dogfood
 
