@@ -1217,3 +1217,29 @@ Next Gate:
 `K4_STOREFRONT_CLEANUP_AFTER_VISUAL_AUDIT`
 
 K4 remains open.
+
+
+## K4 Strict Storefront Cleanup — Authorized
+
+Direct visual review of the full audit ZIP established a stricter K4 close standard.
+
+Current Gate:
+`K4_STRICT_STOREFRONT_CLEANUP`
+
+Authoritative remediation scope:
+- English customer storefront UI;
+- hide inherited demo tech products from Shop/Related Products;
+- correct Mini Craft product taxonomy from Accessories;
+- tighten Product mobile typography;
+- repair Contact form visible Name/Email fields and remove internal governance wording;
+- normalize FAQ Orders & Support;
+- remove Shipping & Returns heading duplication and tighten mobile hierarchy;
+- clean Shop spacing/single-product controls;
+- capture populated Cart and actual populated Checkout;
+- English Account;
+- improve mobile Footer stacking.
+
+The current Home and Product gallery repair are protected.
+
+A separate strategic question remains open and must not be auto-decided by Executor:
+single Date Night Kit vs multi-category Mini Craft brand.
