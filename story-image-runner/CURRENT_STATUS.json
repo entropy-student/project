@@ -3,41 +3,41 @@
   "updated_at": "2026-09-22",
   "repository": "entropy-student/project",
   "path": "story-image-runner",
+  "implementation_branch": "story-image-runner/plugin-v1",
   "governance": {
     "repository": "entropy-student/spike.skill",
     "path": "vps-project-governance",
     "core_baseline": "v0.1.6",
     "status": "ACTIVE"
   },
+  "product_goal": "CHROME_EDGE_BATCH_CHATGPT_IMAGE_GENERATION_PLUGIN",
   "gates": {
     "P0_PROJECT_INTAKE_GOVERNANCE": "PASS",
-    "P0A_ARCHITECTURE_SAFETY_FREEZE": "PASS",
-    "G1_LOCAL_PLUMBING_DRY_RUN": "NEXT_RELEASED_TO_EXECUTOR",
-    "G1_5_SINGLE_IMAGE_CANARY": "PENDING",
-    "G2_BOUNDED_10_IMAGE_BATCH": "PENDING",
-    "G3_REFERENCE_ASPECT_RESUME": "PENDING",
-    "G4_VIDEO_PROJECT_ADAPTER": "PENDING",
-    "G5_VISUAL_QA_REGEN": "PENDING",
-    "G6_REMOTION_HANDOFF": "PENDING"
+    "P0A_PLUGIN_ARCHITECTURE_SAFETY_FREEZE": "PASS",
+    "G1_PLUGIN_CORE_STATIC_IMPLEMENTATION": "PASS",
+    "G1_5_BROWSER_LOAD_DRY_RUN": "NEXT_OWNER_CHECKPOINT",
+    "G2_SINGLE_REAL_IMAGE_CANARY": "PENDING",
+    "G3_BOUNDED_10_IMAGE_BATCH": "PENDING",
+    "G4_BULK_USABILITY_HARDENING": "PENDING",
+    "G5_PLUGIN_RELEASE_PACKAGE": "PENDING"
   },
-  "runtime": {
-    "implementation": "NOT_STARTED",
+  "implementation": {
+    "shape": "PURE_MV3_BROWSER_EXTENSION",
+    "local_bridge_required": false,
+    "static_tests": "7/7 PASS",
+    "extension_static_check": "PASS",
     "real_image_generations": 0,
-    "safe_mode_required_default": true,
-    "bridge_bind": "127.0.0.1",
-    "bridge_port_default": 8787,
-    "concurrency": 1
+    "concurrency": 1,
+    "live_generation_default": false,
+    "live_generation_resets_on_browser_restart": true
   },
   "constraints": {
-    "g1_real_prompt_submit": "FORBIDDEN",
-    "g1_image_quota_consumption": "FORBIDDEN",
     "cookie_or_session_export": "FORBIDDEN",
-    "blind_retry": "FORBIDDEN",
+    "blind_retry_after_ambiguous_submit": "FORBIDDEN",
     "rate_limit_bypass": "FORBIDDEN",
     "captcha_or_antibot_bypass": "FORBIDDEN",
-    "vps": "HOLD",
-    "mass_generation": "HOLD"
+    "account_rotation": "FORBIDDEN"
   },
-  "next_action": "EXECUTOR_RUN_G1_LOCAL_PLUMBING_DRY_RUN",
-  "owner_intervention_required_now": false
+  "next_action": "OWNER_LOAD_UNPACKED_EXTENSION_WITH_LIVE_MODE_OFF",
+  "owner_intervention_required_now": true
 }
