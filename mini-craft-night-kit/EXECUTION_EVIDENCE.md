@@ -2410,3 +2410,50 @@ LATEST_OWNER_GPT6_HOME_MEDIA_PROJECT_DOCS=PROTECTED
 ```
 
 No WordPress, media, configuration, WooCommerce, PayPal, order, payment, Docker container, or volume action was performed in this hygiene Gate. No archive was needed because the confirmed temporary directories were already superseded by committed evidence and had no rollback/debug retention requirement.
+
+## K4 Home Detail Polish — 2026-09-22
+
+```text
+GATE=K4_HOME_DETAIL_POLISH
+RESULT=PASS_CANDIDATE_K4_HOME_DETAIL_POLISH
+FRONT_PAGE_ID=939
+HOME_PAGE_ID=939
+HOME_HTTP=200
+CURRENT_CONTENT_HASH=b7fc2a62de4582b840d1db240051b8caa1596068b0411a6d25ed5bf01535fb27
+ROLLBACK_BASELINE_HASH=282f03edd866d94603cfdfb15ebbd6d56d823165192cf6de72ddf05a162c3ad9
+HERO_CURRENT_HASH=02e430c1abae85725fae44aea78bbfb7562904f28618ea717c1638da99694a37
+HERO_BASELINE_HASH=02e430c1abae85725fae44aea78bbfb7562904f28618ea717c1638da99694a37
+HERO_CHANGED=NO
+OFFER_REPLACEABLE_MEDIA_SLOTS=4
+OFFER_MEDIA_RATIO=4:3
+OFFER_MEDIA_LIBRARY_ASSETS=1164;1165 (existing approved assets reused, alternated; no new media generated)
+NATIVE_ICON_BLOCKS=7
+ICON_PLACEMENT=3_STEP_ITEMS;3_VALUE_ITEMS;1_TRUST_ITEM
+ICON_COLOR=existing palette3 burgundy token
+GUTENBERG_INVALID_BLOCK_COUNT=0
+GUTENBERG_EDITOR_CHECK=EDITOR_OPENED_NO_INVALID_BLOCK_WARNING;REGISTERED_BLOCK_RENDER_PROXY=0
+RESPONSIVE_WIDTHS=320,375,390,430,768,820,1024,1280,1366,1440,1920,2048,2560
+RESPONSIVE_MATRIX=PASS_13_OF_13
+HORIZONTAL_OVERFLOW=NO
+MOBILE_NAV=PASS
+OFFER_IMAGE_RATIO_CHECK=1.333_AT_ALL_TESTED_WIDTHS
+HOME_SCREENSHOTS=docs/ui-k4-detail-polish/home-desktop-1440.png;docs/ui-k4-detail-polish/home-mobile-390.png
+PRODUCT_CART_CHECKOUT_SMOKE=PASS_ROUTE_AND_FORM_NO_ORDER_CREATED
+PRODUCT_HTTP=200
+CART_HTTP=200
+CHECKOUT_ROUTE=302_EMPTY_CART_BASELINE
+PRODUCT_ADD_TO_CART_UI=VISIBLE_IN_LOCAL_BROWSER
+WOOCOMMERCE_PAYPAL_CONFIGURATION=UNCHANGED
+EXISTING_SANDBOX_ORDER=UNCHANGED
+GLOBAL_PALETTE=UNCHANGED
+TYPOGRAPHY=UNCHANGED
+HEADER_FOOTER=UNCHANGED
+IMAGE_GENERATION=NOT_USED
+REAL_PAYMENT_ACTIONS=0
+SECRET_OUTPUT=0
+VPS_WRITES=ZERO
+TEMP_HELPER_CLEANUP=PASS
+TEMP_CAPTURE_PROFILE_CLEANUP=PASS
+```
+
+The change was limited to the existing Home page 939: four Owner-replaceable Offer media slots and seven native Kadence icon blocks. The Hero block hash is identical before/after. Existing Media Library assets were reused; no image-generation or web-download action occurred. Product UI was opened read-only and showed the existing Add to Cart control; route checks returned Product 200, Cart 200, and the expected empty-cart Checkout redirect. No order, payment, WooCommerce, PayPal, global style, or Docker/MariaDB configuration was changed.

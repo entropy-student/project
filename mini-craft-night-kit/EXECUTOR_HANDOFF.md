@@ -1078,3 +1078,23 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The active `OWNER_K4_FINAL_UI_EDIT_WINDOW` remains open. This side task did not edit WordPress, media, configuration, commerce/payment state, Docker containers, or volumes. `.tmp-cdp-test2` remains unclassified and was intentionally left in place.
+
+## K4 Home Detail Polish — Executor handoff (2026-09-22)
+
+```text
+GATE=K4_HOME_DETAIL_POLISH
+RESULT=PASS_CANDIDATE_K4_HOME_DETAIL_POLISH
+SUMMARY=Added four editable 4:3 Offer media slots and seven restrained native burgundy Kadence icons to the existing Home page 939; the GPT-6 Hero remained byte/hash-equivalent.
+EVIDENCE=EXECUTION_EVIDENCE.md;docs/ui-k4-detail-polish/home-desktop-1440.png;docs/ui-k4-detail-polish/home-mobile-390.png
+RESPONSIVE_MATRIX=PASS_13_OF_13
+GUTENBERG_INVALID_BLOCK_COUNT=0
+HORIZONTAL_OVERFLOW=NO
+PRODUCT_CART_CHECKOUT_SMOKE=PASS_ROUTE_AND_FORM_NO_ORDER_CREATED
+WOOCOMMERCE_PAYPAL_ORDER_STATE=UNCHANGED
+IMAGE_GENERATION=NOT_USED
+TEMP_CAPTURE_CLEANUP=PASS
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+Protected scope remained unchanged: no Hero edits, page architecture rebuild, global palette/font change, WooCommerce/PayPal configuration change, order/payment action, version change, VPS write, or secret output occurred.
