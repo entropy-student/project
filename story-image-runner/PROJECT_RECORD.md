@@ -43,8 +43,8 @@ A local Bridge is no longer required for V1. Browser extension storage and the d
 P0_PROJECT_INTAKE_GOVERNANCE=PASS
 P0A_PLUGIN_ARCHITECTURE_SAFETY_FREEZE=PASS
 G1_PLUGIN_CORE_STATIC_IMPLEMENTATION=PASS
-G1_5_BROWSER_LOAD_DRY_RUN=NEXT
-G2_SINGLE_REAL_IMAGE_CANARY=PENDING
+G1_5_BROWSER_LOAD_DRY_RUN=PARTIAL_OWNER_EVIDENCE
+G2_SINGLE_REAL_IMAGE_CANARY=PENDING_CONTROLLED_RETEST
 G3_BOUNDED_10_IMAGE_BATCH=PENDING
 G4_BULK_USABILITY_HARDENING=PENDING
 G5_PLUGIN_RELEASE_PACKAGE=PENDING
@@ -91,7 +91,7 @@ node --check extension/background.js = PASS
 node --check extension/content.js = PASS
 node --check extension/sidepanel.js = PASS
 node --check extension/shared.js = PASS
-npm test = 7/7 PASS
+npm test = 11/11 PASS
 npm run check = PASS
 ```
 
@@ -119,3 +119,36 @@ Owner loads the unpacked extension in the same Chrome / Edge profile where ChatG
 First checkpoint is **browser load only** with Live generation OFF.
 
 No Codex handoff is required unless the browser test exposes a defect.
+
+
+## 8. Current capability boundaries
+
+V0.1.3 current behavior:
+
+```text
+1 job → 1 prompt submission → 1 expected generated image
+MAX_QUEUE_JOBS = 500
+CONCURRENCY = 1
+DEFAULT_IMPORT_MODE = whole textarea is one prompt
+```
+
+The 500-job limit is a plugin queue limit, not a proven promise that one browser/account can finish 500 image generations continuously.
+
+Owner runtime observations now prove that the side panel, Storage, queue write/read and ChatGPT content-script connection work. Automatic task navigation also started in the browser. Final generated-image detection and automatic download are still not formally verified.
+
+Detailed boundaries and deferred items:
+`docs/CAPABILITY_BOUNDARIES_AND_DEFERRED_BACKLOG.md`
+
+Recorded but not yet authorized for implementation:
+- multiple images/copies per prompt;
+- true reference-image attachment from repository/URL/local source;
+- actual image MIME validation / optional true-PNG normalization;
+- interruption reconciliation before retry;
+- long-run batch stress validation;
+- optional more flexible output-location workflow.
+
+## 9. Current next action
+
+No new feature implementation is authorized by the latest Owner instruction.
+
+Documentation is current. Resume with one controlled image Canary only when Owner chooses to continue validation.
