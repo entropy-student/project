@@ -17,7 +17,7 @@ Current state:
 P0_PROJECT_INTAKE_GOVERNANCE = PASS
 P0A_PLUGIN_ARCHITECTURE_SAFETY_FREEZE = PASS
 G1_PLUGIN_CORE_STATIC_IMPLEMENTATION = PASS
-G1_5_BROWSER_LOAD_DRY_RUN = NEXT
+G1_5_BROWSER_LOAD_DRY_RUN = PARTIAL OWNER EVIDENCE
 ```
 
 ## Implementation
@@ -48,7 +48,7 @@ Implemented:
 
 ```text
 JavaScript syntax checks = PASS
-npm test = 7/7 PASS
+npm test = 11/11 PASS
 extension static check = PASS
 real image generations during implementation = 0
 ```
@@ -60,3 +60,48 @@ Load the unpacked extension in Chrome / Edge with **Live generation OFF**.
 If that passes, Reviewer can authorize exactly one real image Canary.
 
 No Codex work is currently required unless the browser-runtime test returns a concrete defect.
+
+
+## Browser evidence now observed
+
+Owner-provided runtime evidence:
+
+```text
+background runtime = 0.1.2 observed during live test
+Storage = PASS
+queue write/read = PASS
+queue observed = 7 total / 6 pending
+Live = ON
+ChatGPT content-script = READY
+automatic task navigation = OBSERVED
+final generated image completion = NOT YET VERIFIED
+automatic download = NOT YET VERIFIED
+```
+
+The 7-job queue came from the older per-line parsing behavior and must not be treated as intended V0.1.3 grouping evidence.
+
+V0.1.3 has since changed prompt import behavior to:
+```text
+single textarea = 1 prompt by default
+optional blank-line split
+optional per-line split
+queue preview
+MAX_QUEUE_JOBS = 500
+```
+
+## Deferred backlog
+
+Canonical detail:
+`docs/CAPABILITY_BOUNDARIES_AND_DEFERRED_BACKLOG.md`
+
+Deferred and not currently authorized:
+```text
+multiple images/copies per prompt
+reference-image attachment from repository/URL/local source
+binary image-format validation / normalization
+interruption reconciliation before retry
+long-run stress validation
+flexible output-location workflow
+```
+
+Current action: documentation only. Resume controlled Canary when Owner requests.
