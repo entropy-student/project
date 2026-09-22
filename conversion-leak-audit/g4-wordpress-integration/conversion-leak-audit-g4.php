@@ -137,7 +137,7 @@ function cla_g4_scan_app_shortcode(): string {
     $html .= '<div class="cla-g4-trust-row" aria-label="Scan boundaries"><span>Public pages only</span><span>No admin access</span><span>No install</span><span>No website changes</span></div>';
     $html .= '</div>';
     $html .= '<div class="cla-g4-progress" data-cla-progress hidden aria-live="polite">';
-    $html .= '<div class="cla-g4-kicker">SCAN PROGRESS</div><h2 data-cla-progress-title>Preparing your scan.</h2><p class="cla-g4-muted" data-cla-progress-copy>We will show only states returned by the Scanner.</p>';
+    $html .= '<div class="cla-g4-kicker">SCAN PROGRESS</div><h2 data-cla-progress-title>Checking access</h2><p class="cla-g4-muted" data-cla-progress-copy>Only public-page states returned by the Scanner are shown.</p>';
     $html .= '<ol class="cla-g4-progress-list">';
     $html .= '<li data-phase="CHECKING_ACCESS">Checking access</li><li data-phase="READING_PAGES">Reading pages</li><li data-phase="MATCHING_EVIDENCE">Analyzing with trusted rules</li><li data-phase="PRIORITIZING">Finalizing results</li>';
     $html .= '</ol><p class="cla-g4-scan-reference" data-cla-scan-reference hidden></p></div>';
@@ -154,33 +154,9 @@ function cla_g4_register_shortcodes(): void {
 }
 add_action('init', 'cla_g4_register_shortcodes', 20);
 
-function cla_g4_home_markup(): string {
-    $html = '<div class="cla-g4-page">';
-    $html .= '<section class="cla-g4-hero"><div class="cla-g4-hero-copy">';
-    $html .= '<p class="cla-g4-eyebrow">EVIDENCE-FIRST STOREFRONT DIAGNOSTICS</p>';
-    $html .= '<h1>Find friction that may be making customers hesitate.</h1>';
-    $html .= '<p class="cla-g4-lede">Scan public storefront pages for evidence-backed issues. Get a free Top 3 based on trusted checks, not guesses.</p>';
-    $html .= '<div class="cla-g4-hero-facts"><span>No credit card for free scan</span><span>Public pages only</span><span>No website changes</span></div>';
-    $html .= '</div><div class="cla-g4-report-preview" aria-label="Report preview"><div class="cla-g4-preview-top"><span class="cla-g4-mark" aria-hidden="true"><i></i><i></i></span><span>FREE TOP 3</span></div><strong>Evidence before advice.</strong><p>Observed fact → source → first move.</p><div class="cla-g4-preview-lines"><span></span><span></span><span></span></div></div></section>';
-    $html .= cla_g4_scan_app_shortcode();
-    $html .= '<section class="cla-g4-platforms"><p class="cla-g4-kicker">BUILT FOR PUBLIC STOREFRONTS</p><div><span>WordPress / WooCommerce</span><span>Shopify</span><span>Wix</span><span>Squarespace</span><span>BigCommerce</span><span>+ more</span></div><small>Platform marks express compatibility only, not partnership.</small></section>';
-    $html .= '<section class="cla-g4-proof-grid"><article><span class="cla-g4-step">01</span><h2>Observe</h2><p>Check accessible pages, purchase actions, and policy discoverability.</p></article><article><span class="cla-g4-step">02</span><h2>Prioritize</h2><p>Keep only findings that a trusted rule can support with evidence.</p></article><article><span class="cla-g4-step">03</span><h2>Fix or verify</h2><p>Get a concrete first move without pretending a public scan proves causality.</p></article></section>';
-    $html .= '<section class="cla-g4-boundary"><div><p class="cla-g4-kicker">CLAIM BOUNDARY</p><h2>Observable friction is a starting point, not a revenue verdict.</h2></div><p>We can surface public-page signals that may add hesitation, uncertainty, or operational friction. Traffic quality, funnel drop-off, payment declines, and causal lift require your own data or controlled experiments.</p></section>';
-    $html .= '</div>';
-    return $html;
-}
-
-function cla_g4_filter_front_page_content(string $content): string {
-    if (is_admin() || !is_front_page() || !in_the_loop()) {
-        return $content;
-    }
-    return cla_g4_home_markup();
-}
-add_filter('the_content', 'cla_g4_filter_front_page_content', 20);
-
 function cla_g4_enqueue_assets(): void {
     if (is_admin()) { return; }
-    wp_enqueue_style('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.css'), [], '0.1.0');
-    wp_enqueue_script('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.js'), [], '0.1.0', true);
+    wp_enqueue_style('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.css'), [], '0.4.0');
+    wp_enqueue_script('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.js'), [], '0.4.0', true);
 }
 add_action('wp_enqueue_scripts', 'cla_g4_enqueue_assets', 20);

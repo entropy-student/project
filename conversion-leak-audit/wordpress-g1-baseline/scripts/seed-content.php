@@ -36,6 +36,8 @@ update_option('page_on_front', $ids['home']);
 update_option('page_for_posts', 0);
 update_option('blogname', 'Conversion Leak Audit');
 update_option('blogdescription', 'Find observable store leaks before buying more traffic.');
+update_option('permalink_structure', '/%postname%/');
+flush_rewrite_rules(false);
 
 // Remove WordPress starter content so parent theme page-list navigation does not expose noise.
 $sample = get_page_by_path('sample-page', OBJECT, 'page');

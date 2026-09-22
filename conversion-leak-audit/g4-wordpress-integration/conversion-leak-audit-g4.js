@@ -23,27 +23,30 @@
   var busy = false;
 
   var phaseCopy = {
-    CHECKING_ACCESS: ['Checking access', '正在确认网站是否可以安全读取。'],
-    READING_PAGES: ['Reading pages', '正在检查公开页面与购买相关信息。'],
-    MATCHING_EVIDENCE: ['Analyzing with trusted rules', '正在把观察到的事实与可信规则匹配。'],
-    PRIORITIZING: ['Finalizing results', '正在整理最值得先看的问题。']
+    CHECKING_ACCESS: ['Checking access', 'Checking whether public pages can be read safely.'],
+    READING_PAGES: ['Reading pages', 'Checking public pages and purchase-related information.'],
+    MATCHING_EVIDENCE: ['Analyzing with trusted rules', 'Matching observed facts to trusted rules.'],
+    PRIORITIZING: ['Finalizing results', 'Organizing the issues worth checking first.']
   };
   var findingMeta = {
     'CORE-007': {
       title: 'Product price not visible near purchase action',
-      observed: 'A direct-purchase product page exposes a purchase action, but no visible product price is present near the purchase decision.',
+      observed: 'No visible product price was found near the purchase action.',
+      observedDetail: 'A direct-purchase product page exposes a purchase action, but no visible product price is present near the purchase decision.',
       why: 'Shoppers may need clear price information before they can evaluate the purchase.',
       firstMove: 'Make the current purchase price visible near the primary purchase action.'
     },
     'PHYS-002': {
       title: 'Shipping information is hard to find',
-      observed: 'Shipping cost or delivery timing was not found in the expected purchase-adjacent pages checked.',
+      observed: 'Shipping cost or delivery timing was not found near the purchase decision.',
+      observedDetail: 'Shipping cost or delivery timing was not found in the expected purchase-adjacent pages checked.',
       why: 'Missing or distant shipping information can leave an important purchase question unresolved.',
       firstMove: 'Surface shipping cost and timing closer to the product or cart decision point.'
     },
     'PHYS-001': {
       title: 'Return information is hard to find',
-      observed: 'No clear return or refund policy link was found in the checked public navigation and purchase context.',
+      observed: 'No clear return or refund policy link was found in the checked purchase path.',
+      observedDetail: 'No clear return or refund policy link was found in the checked public navigation and purchase context.',
       why: 'Return terms are a common purchase-risk question and should be easy to discover before checkout.',
       firstMove: 'Make return and refund terms directly discoverable from the relevant purchase journey.'
     }
@@ -150,8 +153,8 @@
     var copy = phaseCopy[phase] || phaseCopy.READING_PAGES;
     recordProgressPhase(phase);
     progress.hidden = false;
-    progressTitle.textContent = copy[1];
-    progressCopy.textContent = job.status === 'QUEUED' ? '准备扫描。' : copy[1];
+    progressTitle.textContent = copy[0];
+    progressCopy.textContent = copy[1];
     app.querySelectorAll('[data-phase]').forEach(function (item) {
       var active = item.getAttribute('data-phase') === phase;
       item.classList.toggle('is-active', active);
@@ -201,6 +204,7 @@
       var meta = findingMeta[decision.rule_id] || {
         title: 'Observable friction worth checking',
         observed: decision.message || 'The trusted rule returned an evidence-backed issue.',
+        observedDetail: decision.message || 'The trusted rule returned an evidence-backed issue.',
         why: 'This observable signal may represent a point of purchase uncertainty worth checking.',
         firstMove: 'Review the cited public evidence and verify the relevant purchase path.'
       };
@@ -220,9 +224,8 @@
         '<div class="cla-g4-finding-top"><span class="cla-g4-priority">P' + finding.rank + '</span><span class="cla-g4-rule">' + escapeHtml(decision.rule_id) + '</span></div>' +
         '<h3>' + escapeHtml(meta.title) + '</h3>' +
         '<p><strong>Observed fact</strong>' + escapeHtml(meta.observed) + '</p>' +
-        '<p><strong>Why it may matter</strong>' + escapeHtml(meta.why) + '</p>' +
         '<p><strong>First move</strong>' + escapeHtml(meta.firstMove) + '</p>' +
-        '<details data-evidence-detail><summary>View evidence</summary><div class="cla-g4-evidence" data-evidence-content><p><strong>Source</strong>' + escapeHtml(source) + '</p><p><strong>Evidence references</strong>' + escapeHtml(refs) + '</p><p><strong>Scanner decision</strong>' + escapeHtml(decision.message) + '</p><p><strong>Limit</strong>Public-page evidence is a useful starting point, not proof of revenue loss or causal lift.</p></div></details>' +
+        '<details data-evidence-detail><summary>View details &amp; evidence</summary><div class="cla-g4-detail-body"><p><strong>Why it may matter</strong>' + escapeHtml(meta.why) + '</p><div class="cla-g4-evidence" data-evidence-content><p><strong>Source</strong>' + escapeHtml(source) + '</p><p><strong>Evidence references</strong>' + escapeHtml(refs) + '</p><p><strong>Scanner decision</strong>' + escapeHtml(decision.message) + '</p><p><strong>Limitation</strong>Public-page evidence is a useful starting point, not proof of revenue loss or causal lift.</p></div></div></details>' +
         '</article>';
     }).join('');
     var summary = count ? 'We found ' + count + ' trusted finding' + (count === 1 ? '' : 's') + ' worth checking first.' : 'No high-priority issue was confirmed in the auditable range.';

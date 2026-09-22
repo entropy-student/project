@@ -320,3 +320,84 @@ Architecture remains the existing local WordPress → Scanner → Top 3 loop. No
 Recommended Reviewer decision: `REVIEW_G4_PASS_CANDIDATE_G4_CONTRACT_COMPLETE`.
 
 Candidate result: `PASS_CANDIDATE_G4_CONTRACT_COMPLETE`.
+
+## G4.5 Visual Editability Rework — 2026-09-23
+
+Gate: `G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
+
+Reviewer return followed `docs/G4_5_VISUAL_EDITABILITY_REWORK_CONTRACT.md`. Work was performed in the clean sparse project workspace on branch `codex/g4-5-visual-editability-rework`, based on the fetched latest `origin/main`. The old shared monorepo worktree and all sibling projects were not used for implementation.
+
+### Files changed
+
+Only `conversion-leak-audit/**` was changed:
+
+- `g4-wordpress-integration/conversion-leak-audit-g4.php`
+- `g4-wordpress-integration/conversion-leak-audit-g4.js`
+- `g4-wordpress-integration/conversion-leak-audit-g4.css`
+- `wordpress-g1-baseline/content/pages/home.html`
+- `wordpress-g1-baseline/scripts/seed-content.php`
+- `wordpress-g1-baseline/wp-content/themes/conversion-leak-audit-child/style.css`
+- `wordpress-g1-baseline/wp-content/themes/conversion-leak-audit-child/theme.json`
+- `wordpress-g1-baseline/wp-content/themes/conversion-leak-audit-child/templates/front-page.html`
+- `wordpress-g1-baseline/wp-content/themes/conversion-leak-audit-child/templates/page.html`
+- `wordpress-g1-baseline/wp-content/themes/conversion-leak-audit-child/parts/header.html`
+- `wordpress-g1-baseline/wp-content/themes/conversion-leak-audit-child/parts/footer.html`
+- this evidence file and `docs/EXECUTOR_HANDOFF.md`
+
+Generated Python caches, local SQLite state, WordPress runtime files, Docker state, and temporary browser scripts remain uncommitted. Reviewer-owned governance documents were not modified.
+
+### Architecture and bounded corrections
+
+- Removed the Home full `the_content` replacement. Gutenberg now owns static Home copy and section order; the Scanner remains mounted through the `[cla_scan_placeholder]` shortcode.
+- Kept REST wiring, scan creation, bounded polling, real backend progress mapping, deterministic Top 3, evidence detail, analytics, and safety behavior in the integration layer.
+- Reduced default Top 3 density to priority/rule, title, concise observed fact, first move, and expandable details/evidence. Expanded evidence retains source, references, Scanner decision, and limitation.
+- Kept the four real public progress stages and canonical English copy; no fake percentage or frontend timer was added.
+- Replaced template navigation/footer remnants with the real project navigation and minimal footer. Pretty routes use `/how-it-works/`, `/demo/`, `/pricing/`, `/faq/`, and `/blog/`.
+- Preserved the frozen 17-rule semantics, four-page Golden Demo fixture, claim boundaries, and blue/navy/white visual direction.
+
+### Commands and results
+
+```text
+Python312 -m pytest -q scanner/                         = 55/55 PASS
+Python312 -X utf8 acceptance/run_asset_checks.py        = 20/20 PASS
+Python312 -m pytest -q g4-wordpress-integration/tests/test_real_prioritizing_state.py = 1 PASS
+g45_functional.py                                      = PASS
+editable_proof.py                                      = OWNER_EDITABILITY_PROOF=PASS
+real_canary.py                                         = REAL_SCANNER_CANARY=PASS
+```
+
+The fixture-backed browser suite passed `G4_INTEGRATION`, `PRETTY_ROUTES`, `ANALYTICS_CONTRACT`, `REAL_PRIORITIZING_STATE`, `GOLDEN_DEMO`, `REFRESH_RESULT`, and `MOBILE_FORM_SUBMIT`; `PAYMENT_ACTIONS=0`. The real local canary used the safe public target `http://1.1.1.1/` and proved WordPress → real Scanner POST → real `scan_id` → bounded polling → terminal `AUDIT_INCOMPLETE` → report retrieval/schema compatibility, with `EVIDENCE_LESS_ISSUE=0`.
+
+The reversible Gutenberg proof changed a harmless Home claim-boundary text block, saved it, observed the changed text on the frontend, restored the original text, and observed the restored frontend text. No temporary proof text is committed.
+
+### Screenshot evidence
+
+Playwright with Chrome, `deviceScaleFactor=1`, reduced motion, and no DevTools generated the temporary package:
+
+`C:\Users\34707\Documents\ChatGPT\VPS基建\conversion-leak-audit-g4-5-owner-editable-visual-review.zip`
+
+The package contains 17 PNG files plus `MANIFEST.md`: Home desktop/mobile viewport and full page, progress desktop/mobile, Top 3 desktop/mobile viewport and full page, evidence desktop/mobile, incomplete desktop/mobile, Pricing full page, Home editor, and Site Editor. It contains no source, runtime, cookies, database, environment file, password, or secret. `WORDPRESS_OWNER_EDITABILITY=FULL_FOR_STATIC_CONTENT_AND_LAYOUT`.
+
+### Final verification and risks
+
+```text
+SCANNER_REGRESSION       = 55/55 PASS
+WORDPRESS_REGRESSION     = 20/20 PASS
+G4_INTEGRATION           = PASS
+REAL_SCANNER_CANARY      = PASS
+ANALYTICS_CONTRACT       = PASS
+GOLDEN_DEMO              = PASS
+OWNER_EDITABILITY_PROOF  = PASS
+PRETTY_ROUTES            = PASS
+SCREENSHOT_PACKAGE       = READY
+PAYMENT_ACTIONS          = 0
+VPS_WRITES               = 0
+PRODUCTION_SECRETS       = 0
+OUT_OF_SCOPE_CHANGES     = 0
+```
+
+Known limitations: the WordPress/Scanner environment is local-only; no payment, VPS, production secret, or public production Scanner path was exercised. Visual acceptance remains a Reviewer decision. Owner intervention required: `NO`.
+
+Implementation commit: recorded in the dedicated branch history after this evidence entry is committed. Recommended Reviewer decision: `REVIEW_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.
+
+Candidate result: `PASS_CANDIDATE_G4_5_OWNER_EDITABLE_VISUAL_REWORK`.

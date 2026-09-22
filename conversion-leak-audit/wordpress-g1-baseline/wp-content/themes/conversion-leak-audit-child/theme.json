@@ -6,9 +6,9 @@
     "layout": {"contentSize": "760px", "wideSize": "1180px"},
     "color": {
       "palette": [
-        {"slug": "cla-ink", "name": "CLA Ink", "color": "#111827"},
-        {"slug": "cla-accent", "name": "CLA Accent", "color": "#5b4df5"},
-        {"slug": "cla-surface", "name": "CLA Surface", "color": "#f7f8fb"}
+        {"slug": "cla-ink", "name": "CLA Ink", "color": "#10233f"},
+        {"slug": "cla-accent", "name": "CLA Blue", "color": "#2f63c7"},
+        {"slug": "cla-surface", "name": "CLA Surface", "color": "#ffffff"}
       ]
     }
   }
