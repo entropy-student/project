@@ -1,4 +1,4 @@
-# Direct Implementation Evidence — v0.1.0
+# Direct Implementation Evidence — v0.1.1
 
 Date: 2026-09-22
 
@@ -8,33 +8,45 @@ Implementation branch:
 
 `story-image-runner/plugin-v1`
 
-Implemented files include:
+## v0.1.1 usability fix
 
-- `extension/manifest.json`
-- `extension/background.js`
-- `extension/content.js`
-- `extension/shared.js`
-- `extension/sidepanel.html`
-- `extension/sidepanel.css`
-- `extension/sidepanel.js`
-- `tests/shared.test.mjs`
-- `scripts/check-extension.mjs`
+First Owner browser test proved:
 
-Local checks:
+- extension loads;
+- side panel opens;
+- Live generation can be enabled;
+- no real generation occurred because the typed prompt had not yet been added to the queue;
+- UI showed `NO_PENDING_JOBS`.
+
+This exposed a usability defect: typing a prompt and pressing Start did not auto-enqueue it.
+
+v0.1.1 changes Start behavior:
 
 ```text
-node --check extension/background.js = PASS
-node --check extension/content.js = PASS
+IF queue has no pending job
+AND prompt textarea contains one or more lines
+THEN replace queue from textarea
+AND immediately start
+```
+
+Manual “用文本替换队列” / “追加文本” controls remain available.
+
+## Local checks
+
+```text
 node --check extension/sidepanel.js = PASS
-node --check extension/shared.js = PASS
 npm test = 7/7 PASS
 npm run check = PASS
 ```
 
 Packaged extension SHA256:
 
-`5192d2a24fa9dce856af7ebdc89d7a9410164994846d96695e1c3690d7ee1860`
+`b45275f4b2df793fb31b4241aa26c27f81b1578888ffdf9144f65dc55f643869`
 
-No real ChatGPT prompt was submitted and no image-generation quota was consumed during implementation.
+Packaged source SHA256:
 
-Remaining evidence boundary: live Chrome/Edge DOM and download behavior.
+`9f319d9f1d4643e2edee87c5946ffe36aa22e94f8b8912b5704ecd8ac3cb83c5`
+
+Real image generations during v0.1.1 fix: 0.
+
+Remaining evidence boundary: live prompt submission, fresh-image detection, and automatic download.
