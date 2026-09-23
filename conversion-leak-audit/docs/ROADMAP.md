@@ -16,7 +16,7 @@ G4   WordPress ↔ Scanner ↔ Top 3 Local Loop   PASS
 G4.5 Visual + Functional Acceptance          PASS
 G4.6 Acquisition + SEO Readiness             PASS
 G5   Full Fix Queue + LLM + Skill Dogfood    PASS
-G6   VPS Onboarding / Storage                HOLD
+G6   VPS Onboarding / Storage                NEXT / EXECUTOR READY
 G7   VPS Private Deployment                  HOLD
 G8   Domain / HTTPS / Shared Ingress          HOLD
 G9   Payment / Controlled Go-live            HOLD
@@ -117,7 +117,9 @@ LLM explains evidence; it does not replace deterministic facts. Free scan should
 
 ## G6 — VPS Storage / Onboarding
 
-Freeze project storage, backup, restore, Secret metadata, Compose and isolation before deployment.
+Current Gate. Released under `G6_EXECUTION_CONTRACT.md`.
+
+Freeze project storage, backup, restore, Secret metadata, Compose, resource budget, private-port plan and isolation before deployment. G6 may create only project-owned `/srv/apps`, `/srv/data`, `/srv/backups` roots and disposable restore canaries; it must not deploy the application or modify shared ingress/infrastructure.
 
 ## G7 — Private VPS Deployment
 
