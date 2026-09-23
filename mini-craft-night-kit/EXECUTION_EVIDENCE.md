@@ -3045,3 +3045,54 @@ SECRET_VALUES_WRITTEN_TO_GITHUB_OR_EVIDENCE=NO
 VPS_WRITES=ZERO
 NEXT=STOP_AT_REVIEWER
 ```
+
+## PROJECT_DIRECTORY_CONSOLIDATION — Executor Return (2026-09-23)
+
+```text
+GATE=PROJECT_DIRECTORY_CONSOLIDATION
+RESULT=RETURN_REVIEWER_LOCAL_CLEANUP_POLICY_BLOCKED
+CANONICAL_WORKSPACE=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace
+REPO_PHYSICAL_LOCATION=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\project-github-sync\\mini-craft-night-kit
+REPO_POINTER_CREATED=PASS
+ACTIVE_RUNTIME_PHYSICAL_LOCATION=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-k3r4-mariadb-recovery
+ACTIVE_RUNTIME_PHYSICAL_MOVE=DEFERRED_WITH_REASON (retained K3R8C, K3R8E, and K4 QA scripts contain the absolute runtime path; Compose labels record its current working directory)
+OTHER_RUNTIME_MOVES=NONE (8092, 8090, and 8088 Mini Craft containers are running; the legacy 8088 WordPress service also has host bind mounts)
+WORKSPACE_STRUCTURE=CREATED; README_LOCAL_WORKSPACE.md AND POINTER NOTES PRESENT
+ARTIFACTS_LOCATION=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace\\artifacts
+VISUAL_ZIP_RETAINED=YES; SHA256=7F7255D5F3AFFBE5A3AED560811B4C6C9867B8E6F074FEBD4B83E3BADD85BEDA
+MANIFEST_RETAINED=YES; SHA256=1AAF1F30FED204E373C0017574C38ED4D50B1E4BA32039F51502492CE8F6A2BF
+ROLLBACK_SQL_RETAINED=YES_LOCAL_ONLY; SHA256=8C20D3A3DC36DE7226373A033347DB4269098202DB8A1D0C883309ED22F3BF8E
+ROOT_K4_CRASHPAD_DIRS=.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile (five Crashpad-only files per directory; zero Edge references; exact deletion command rejected by execution policy; retained)
+K4_GATE_PROFILES_AND_DEBUG=4_PROFILES+2_DEBUG_SCREENSHOTS (zero browser-process references at inventory; exact deletion command rejected by execution policy; retained; no alternate deletion method attempted)
+ROOT_CDP_PROFILE=.tmp-cdp-test2 (9 Edge process references; UNCLASSIFIED_ACTIVE; retained)
+UNCLASSIFIED_ROOT=g4-5-owner-visual-review-runtime (empty at inventory; left untouched)
+PROJECT_ARCHIVE=_project-artifacts/mini-craft-night-kit (preserved; shared parent also contains conversion-leak-audit)
+ROOT_MINI_CRAFT_ITEMS_BEFORE=mini-craft-k3r4-docker-mariadb;mini-craft-k3r4-mariadb-recovery;mini-craft-kadence-poc;mini-craft-night-kit;_project-artifacts/mini-craft-night-kit;three pre-existing temp folders
+ROOT_MINI_CRAFT_ITEMS_AFTER=same runtime/archive entries;mini-craft-night-kit-workspace created;three temp folders remain
+ROOT_ITEMS_REMAINING_WITH_REASON=active runtimes;Git worktrees;shared archive;two K4 Crashpad folders blocked from deletion;active .tmp-cdp-test2;unclassified empty g4-5 directory
+PATH_EXISTS_CHECK=PASS (ZIP, manifest, SQL, workspace index and pointer files exist at the recorded paths; moved-file hashes match)
+SITE_HTTP_200=HOME,SHOP,PRODUCT,FAQ,SHIPPING,CONTACT,CART,ACCOUNT;CHECKOUT=302 in fresh empty anonymous session (redirected to Cart; no cart/order/payment action)
+WORDPRESS_CONTAINER=UP
+MARIADB_CONTAINER=HEALTHY
+PAGE_CONFIG_MEDIA_MUTATION=0
+WOOCOMMERCE_PAYPAL_ORDER_PAYMENT_MUTATION=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+DOCKER_VOLUMES_DELETED=NO
+WORKSPACE_TEMP_CLEANUP=RETURN
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=.tmp-cdp-test2;.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile
+LOCAL_HELPERS_CLEANED=NO_HELPER_FILES_FOUND;EMPTY_HELPERS_DIRECTORY_REMAINS
+BROWSER_PROFILES_CLEANED=RETURN_EXECUTION_POLICY_BLOCKED (4 Gate-local profiles remain)
+DEBUG_SCREENSHOTS_REMAINING=2_GATE_LOCAL_FILES
+ROLLBACK_LOCATION=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace\\artifacts\\gates\\k4-final-mobile-commerce-visual-polish\\rollback\\pre-gate.sql
+VISUAL_ZIP_LOCATION=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace\\artifacts\\deliverables\\k4-final-mobile-commerce-visual-polish\\K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH-visual-review.zip
+SECRET_OUTPUT=0
+VPS_WRITES=ZERO
+NEXT=STOP_AT_REVIEWER
+```
+
+The current workspace README, repository pointer, runtime pointer, rollback pointers, and inventory are local-only under the canonical workspace. The active runtime was not stopped, moved, or recreated. No Docker volume was deleted. All four Mini Craft environment container pairs remained as found. Site status probes bypassed the host proxy because its configured localhost proxy port was unavailable; direct site requests showed Home and the listed storefront routes working, while Checkout correctly redirected for a fresh session with an empty cart.
+
+Cleanup is incomplete solely because the exact-path deletion operation for the explicitly authorized disposable artifacts was rejected by the execution policy. No alternate deletion method was attempted. Reviewer direction is required before claiming workspace hygiene complete.
