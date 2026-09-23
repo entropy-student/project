@@ -25,7 +25,6 @@
         "BACKGROUND",
         "PROP",
         "UI_OR_DOCUMENT",
-        "COMPOSITE_TEMPLATE",
         "BOARD"
       ]
     },
@@ -92,9 +91,8 @@
       "enum": [
         "NEW_GENERATE",
         "EXACT_REUSE",
-        "REFRAME",
         "DERIVE_EDIT",
-        "COMPOSITE",
+        "REFERENCE_DRIVEN",
         "MANUAL_IMPORT"
       ]
     },
