@@ -1908,3 +1908,15 @@ This control plane is diagnostic only and does not replace the governed SSH path
 
 Formal decision:
 `docs/REVIEWER_DECISION_K6R2_HOSTINGER_CONTROL_PLANE_FALLBACK.md`
+
+
+## K6R2R1 — fresh Codex Hostinger tool-surface reload
+
+Historical Shared VPS evidence confirms the original working access path was direct governed SSH from Windows using the recorded ops identity/known_hosts contract. K6R1 already reproduced that same contract and failed before host-key presentation, so no SSH-command correction is identified.
+
+K6R2 registered/authenticated the official Hostinger MCP, but the active Executor session did not hot-refresh the VPS/API tool surface. Current Gate: `K6R2R1_FRESH_CODEX_HOSTINGER_TOOL_SURFACE`.
+
+Run the next check in a fresh Codex execution session. Do not retry SSH. If Hostinger VPS/API read tools are exposed, perform the previously authorized read-only provider inventory. If not, return tool-surface unavailable without re-registering, token inspection, or unofficial/manual API substitutes.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K6R2R1_FRESH_CODEX_HOSTINGER_TOOL_SURFACE.md`
