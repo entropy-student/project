@@ -18,7 +18,7 @@
     "G3_5_UI_GROWTH_DESIGN_FREEZE": "PASS",
     "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "PASS",
     "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "PASS",
-    "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "NEXT_READY_FOR_EXECUTOR",
+    "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "TECHNICAL_ACCEPTED_VISUAL_REVIEW_PENDING",
     "G6_VPS_ONBOARDING_STORAGE": "HOLD",
     "G7_VPS_PRIVATE_DEPLOYMENT": "HOLD",
     "G8_DOMAIN_HTTPS": "HOLD",
@@ -68,7 +68,7 @@
     "public_production_scanner": "HOLD",
     "g4_scope": "LOCAL_ONLY_NO_PAYMENT_NO_VPS_NO_PRODUCTION_SECRET"
   },
-  "next_action": "CODEX_EXECUTE_G5_FULL_FIX_QUEUE_LLM_DOGFOOD_CONTRACT",
+  "next_action": "CODEX_PACKAGE_EXISTING_G5_SCREENSHOTS_FOR_REVIEWER",
   "reviewer_reconciliation": {
     "date": "2026-09-22",
     "status": "RECONCILED",
@@ -121,10 +121,13 @@
     "wordpress_regression": "20/20 PASS"
   },
   "g5": {
-    "status": "NEXT_READY_FOR_EXECUTOR",
+    "status": "TECHNICAL_ACCEPTED_VISUAL_REVIEW_PENDING",
     "contract": "docs/G5_EXECUTION_CONTRACT.md",
     "branch": "codex/g5-full-fix-queue-llm-dogfood",
     "scope": "FULL_FIX_QUEUE_OPTIONAL_LLM_EXPLANATION_SKILL_DOGFOOD",
-    "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS"
+    "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS",
+    "technical_review": "PASS",
+    "visual_review": "PENDING",
+    "visual_checkpoint": "docs/REVIEWER_DECISION_G5_VISUAL_CHECKPOINT.md"
   }
 }
