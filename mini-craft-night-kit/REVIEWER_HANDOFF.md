@@ -1397,3 +1397,31 @@ Strategic product-model mismatch is recorded but NOT auto-resolved:
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_STRICT_STOREFRONT_CLEANUP.md`
+
+
+## K4 Strict Cleanup RETURN — Native Block Recovery Authorized
+
+Executor correctly stopped at the Gutenberg recovery boundary before any mutation.
+
+Observed pre-existing invalid blocks:
+- Contact page 10: 4 total = 1 Kadence Form + 3 core/column
+- FAQ page 1121: 7 core/details
+- Shipping & Returns page 9: 0
+
+Current strict-cleanup Gate is PAUSED.
+
+New bounded Gate:
+`K4_NATIVE_BLOCK_RECOVERY_CONTACT_FAQ`
+
+Recovery rules:
+- no automatic Attempt Recovery;
+- no whole-page reserialization;
+- no hand-authored Kadence plugin markup;
+- replace only invalid targets using registered native/core/Kadence blocks and current block serializers;
+- preserve exact copy during this recovery Gate;
+- preserve Home/Product Gallery/locale/products/PayPal/orders.
+
+After recovery PASS, Reviewer will resume `K4_STRICT_STOREFRONT_CLEANUP`.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_NATIVE_BLOCK_RECOVERY_CONTACT_FAQ.md`
