@@ -19,3 +19,27 @@ Governance:
 
 Initial Reviewer hypothesis:
 a limited-detail, cutout-friendly 2D story-comic family is likely to outperform highly detailed styles on reuse and consistency, but this is not yet accepted and must be benchmarked.
+
+
+## 2026-09-23 — P0 deep research PASS
+
+Reviewer completed the first research/problem-definition gate.
+
+Accepted conclusions:
+- no verified pricing rule supports choosing an art style solely because it is presumed to consume fewer image output tokens at fixed model/quality/size;
+- the primary economic strategy is to reduce new generations and retries through reuse, derive/edit and compositing;
+- reference-driven consistency is preferable to prompt-only repetition for the long-term system;
+- structured metadata is sufficient for the initial asset library; vector retrieval is deferred;
+- three style families are fixed for controlled testing, but no final style is locked.
+
+P0 result:
+`PASS_P0_RESEARCH_AND_PROBLEM_DEFINITION`
+
+G1 package prepared:
+- staged 10-shot benchmark;
+- compact style profiles;
+- minimal visual-asset schema;
+- hard-return and measurement rules.
+
+Next:
+`G1_STYLE_AND_REUSE_BENCHMARK = READY_NOT_EXECUTED`
