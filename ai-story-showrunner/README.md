@@ -9,7 +9,7 @@
 ```text
 P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5 = PASS（按各 Gate 原始验证范围）
 G6R = PASS — Candidate Timing ↔ Visual Beat ↔ Runtime reconciled
-G6A = READY_NOT_EXECUTED — First-E2E Asset Calibration
+G6A = IN_PROGRESS — real CosyVoice run returned by listening QA; GPT-SoVITS WebUI PASS; A/B pending; frames 20/44
 G7 = BLOCKED_BY_G6A — Final-video End-to-End Validation
 ```
 
@@ -22,7 +22,7 @@ G7 = BLOCKED_BY_G6A — Final-video End-to-End Validation
 - Daily Topic Planner v0.2 已启用；
 - Production throughput 仍为 UNPROVEN。
 
-Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取，Timing Compiler 已产出 Production SRT / TTS Manifest，FFmpeg runtime probe 已 PASS。2026-09-23 takeover review 发现 Candidate timing 与旧 G4 Visual Beat timing artifact 之间存在迁移缝隙，因此当前先完成 G6R runtime reconciliation，再放行首次 44-frame Asset Calibration。**
+Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取；G6R runtime reconciliation 已 PASS；第一轮真实 CosyVoice + Runtime Timeline 已执行但音频 listening QA RETURN；GPT-SoVITS 本地 WebUI 已成功打开，下一步仅做 5-case A/B 决定音频 baseline。画面已到 20/44，最终渲染继续阻断。**
 
 ## 一句话定位
 
@@ -169,9 +169,9 @@ G3  Story → Script / SRT MVP                   ✅ PASS
 G3R Bilibili Editorial / Narrative Rebaseline ✅ PASS
 G4  Script/SRT → Director / Shot Compiler MVP  ✅ PASS
 G5  Shotbook → Image Asset Package MVP         ✅ PASS
-G6R Candidate Runtime Reconciliation          ▶ IN_PROGRESS
-G6A First-E2E Asset Calibration                ⛔ BLOCKED_BY_G6R
-G7  End-to-End Final Video Validation           ⛔ BLOCKED
+G6R Candidate Runtime Reconciliation          ✅ PASS
+G6A First-E2E Asset Calibration                ▶ IN_PROGRESS / AUDIO_QA_RETURN / GPT-SOVITS_A-B_PENDING
+G7  End-to-End Final Video Validation           ⛔ BLOCKED_BY_G6A
 G8  Semi-automated Orchestration               ⏳
 G9  Publish / Analytics Learning Loop           ⏳
 G10 Canonical Skill Promotion / Runtime         ⏳  (Candidate 已存在)
@@ -253,12 +253,13 @@ G6R completed:
 - Candidate-compliant 44 Visual Beats;
 - production-package-v2.
 
-Current G6A task:
-- execute real locked CosyVoice production TTS;
-- resolve FINAL runtime timeline;
-- generate 44 production frames;
-- run asset/identity/reference/continuity QA;
-- stop at Reviewer before final FFmpeg render.
+Current G6A state:
+- real locked CosyVoice production TTS: executed / listening QA RETURN;
+- FINAL runtime timeline: resolved from real durations;
+- GPT-SoVITS local environment + Chinese WebUI: PASS;
+- next: run a 5-case GPT-SoVITS vs CosyVoice A/B and choose the audio baseline;
+- production frames: 20/44 latest snapshot; remaining visual execution is not the current priority before the audio decision;
+- final FFmpeg render remains blocked.
 
 Long-term target:
 - `story-showrunner` Candidate 已完成抽取；完整 E2E PASS 后再从 CANDIDATE 升级为 CANONICAL;

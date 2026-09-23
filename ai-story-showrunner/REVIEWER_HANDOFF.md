@@ -1,7 +1,7 @@
 # Story Showrunner Validation Workspace — REVIEWER HANDOFF
 
 Date: 2026-09-23  
-Status: `CURRENT TRUTH ONLY / G6A IN_PROGRESS / AUDIO QA RETURN / TTS CANDIDATE TRIAL`
+Status: `CURRENT TRUTH ONLY / G6A IN_PROGRESS / AUDIO QA RETURN / GPT-SOVITS WEBUI PASS / A-B PENDING`
 
 Historical chronology belongs in:
 - `PROJECT_RECORD.md`
@@ -195,18 +195,25 @@ Current facts:
 - first production-frame snapshot reached 20 / 44;
 - final render remains blocked.
 
-A local GPT-SoVITS candidate trial is now in progress because the remaining complaint is not only timing/joins but also synthetic timbre, voiced noise and weak emotion.
+A local GPT-SoVITS candidate trial is now active because the remaining complaint is not only timing/joins but also synthetic timbre, voiced noise and weak emotion.
+
+Local environment read-back now confirms:
+- GPT-SoVITS workspace and dedicated Conda Python resolve correctly;
+- Python user-site isolation is active;
+- CUDA / RTX 4050 are available;
+- required WebUI imports pass;
+- `zh_CN` locale is available;
+- the WebUI has opened successfully on the Owner machine;
+- `pip check` still reports a non-blocking package-name mismatch for `faster-whisper → onnxruntime` while `onnxruntime-gpu` imports successfully.
 
 Current technical next action:
 
 ```text
-finish GPT-SoVITS isolated-environment dependency sync
-→ launch WebUI
-→ run a 5-case A/B against current CosyVoice
+run the 5-case GPT-SoVITS vs CosyVoice A/B
 → choose audio baseline
 → repair/regenerate only failed units
 → regenerate runtime timeline
-→ resume G6A frame gate
+→ only then decide whether to resume the remaining frame gate
 ```
 
 Current audio-trial handoff:

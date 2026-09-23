@@ -15,21 +15,21 @@
   },
   "active_workstream": {
     "id": "G6A_AUDIO_QA_AND_TTS_TRIAL",
-    "name": "First-E2E asset calibration: real TTS listening QA, candidate TTS A/B, partial frame execution",
+    "name": "First-E2E asset calibration: GPT-SoVITS candidate A/B after local WebUI pass",
     "status": "IN_PROGRESS",
-    "next": "Complete the GPT-SoVITS isolated-environment dependency sync and WebUI launch, run a 5-case A/B against CosyVoice, choose the audio baseline, then repair/regenerate only failed units and resume the frame gate."
+    "next": "Run the 5-case GPT-SoVITS vs CosyVoice A/B, choose the audio baseline, repair/regenerate only failed units, regenerate the runtime timeline, then decide whether to resume remaining frame execution."
   },
   "production": {
     "current_gate": "G6A",
     "status": "IN_PROGRESS_AUDIO_QA_RETURN",
-    "current_task": "G6A_AUDIO_REPAIR_PLUS_GPT_SOVITS_AB_TRIAL",
-    "next_after_package": "AUDIO_BASELINE_DECISION_THEN_RESUME_FRAME_ASSET_GATE",
+    "current_task": "G6A_GPT_SOVITS_5_CASE_AB_TRIAL",
+    "next_after_package": "AUDIO_BASELINE_DECISION_THEN_TARGETED_REPAIR_AND_RUNTIME_RERESOLVE",
     "next_gate": {
       "id": "G7",
       "name": "End-to-End Final Video Validation",
       "status": "BLOCKED_BY_G6A"
     },
-    "production_package_status": "V2_PARTIALLY_EXECUTED_AUDIO_REPAIR_PENDING",
+    "production_package_status": "V2_PARTIALLY_EXECUTED_AUDIO_BASELINE_REVIEW_PENDING",
     "timing": {
       "status": "REAL_TTS_RESOLVED_TIMELINE_AVAILABLE_AUDIO_QA_RETURN",
       "speech_units": 44,
@@ -218,18 +218,32 @@
     "routine_recalibration_required": false,
     "candidate_tts_trial": {
       "engine": "GPT-SoVITS",
-      "status": "INSTALL_IN_PROGRESS_NOT_YET_PROVEN",
+      "status": "WEBUI_PASS_AB_NOT_YET_RUN",
       "workspace": "C:\\AI\\GPT-SoVITS",
       "conda_env": "GPTSoVits",
       "python": "3.10.21",
       "cuda_gpu_verified": true,
-      "webui_verified": false,
-      "latest_blockers": [
-        "shellingham",
-        "rapidfuzz>=3.0.0",
-        "platformdirs>=2.5.0"
-      ],
-      "decision_rule": "Do not replace canonical CosyVoice baseline until representative A/B PASS."
+      "webui_verified": true,
+      "latest_blockers": [],
+      "decision_rule": "Do not replace canonical CosyVoice baseline until representative A/B PASS.",
+      "webui_verification": "OWNER_LOCAL_RUN_2026-09-23",
+      "environment_check": {
+        "gpt_home": "C:\\AI\\GPT-SoVITS",
+        "python": "C:\\Users\\34707\\miniconda3\\envs\\GPTSoVits\\python.exe",
+        "python_version": "3.10.21",
+        "user_site_enabled": false,
+        "cuda": true,
+        "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "gradio": "4.44.1",
+        "fastapi": "0.115.14",
+        "starlette": "0.46.2",
+        "required_imports": "PASS",
+        "zh_cn_locale": true,
+        "main_port": 9874,
+        "device": "cuda:0",
+        "pip_check_note": "faster-whisper metadata expects distribution name onnxruntime; current onnxruntime-gpu import passes. Treat as non-blocking unless runtime failure appears."
+      },
+      "next": "RUN_5_CASE_AB"
     }
   },
   "director": {
@@ -299,9 +313,9 @@
     "Normal target is one Showrunner delivery; Owner does not return real SRT for package recompilation."
   ],
   "unknowns": [
-    "Targeted CosyVoice audio repair has not yet been re-executed and listening-accepted.",
-    "GPT-SoVITS candidate WebUI / inference has not yet completed an A/B PASS on this machine.",
-    "The first production-frame snapshot reached 20/44; remaining frames and returned image-QA items are not yet closed.",
+    "GPT-SoVITS has opened successfully, but the 5-case representative A/B against CosyVoice has not yet been run or accepted.",
+    "No final audio baseline has been accepted; CosyVoice remains the current project baseline until an explicit A/B decision.",
+    "The first production-frame snapshot reached 20/44; remaining frame execution is not the current priority before the audio baseline decision.",
     "No final-video Candidate E2E PASS exists yet."
   ],
   "owner_intervention_required": false,

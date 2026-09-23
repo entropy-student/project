@@ -975,3 +975,26 @@ Current:
 
 Detailed handoff:
 `docs/G6A_AUDIO_QA_AND_TTS_MIGRATION_TRIAL.md`.
+
+
+---
+
+## 2026-09-23 — GPT-SoVITS local WebUI ready for A/B
+
+The previous GPT-SoVITS installation blocker is closed for local WebUI use.
+
+Validated locally:
+- exact GPT-SoVITS workspace and dedicated Conda Python;
+- Python user-site isolation;
+- CUDA / RTX 4050;
+- required WebUI imports;
+- project config on port 9874;
+- `zh_CN` locale;
+- successful WebUI open.
+
+A remaining `pip check` package-name warning involving `faster-whisper` and `onnxruntime-gpu` is retained as a diagnostic note, not treated as a blocker without a real runtime failure.
+
+Current decision:
+`GPT-SoVITS = CANDIDATE_READY_FOR_5_CASE_A_B`.
+
+CosyVoice remains the project baseline until explicit A/B acceptance.
