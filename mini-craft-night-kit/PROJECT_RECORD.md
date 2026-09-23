@@ -1389,3 +1389,10 @@ Commit `58dd18534b74919e5396b1e6d2eaa880da24544f` is accepted. The project now h
 Current checkpoint: five bundled Owner decisions before P0 implementation — product model, public origin, analytics provider, legal/consent path, and delivery/email provider/mailbox convention.
 
 No K5 yet.
+
+
+## K4.7 Owner Launch Truth — resolved
+
+Owner selected multi-category Mini Craft as the long-term brand model, with the current Night Kit as the first actual offer. Public validation origin is `https://minicraft.spikersun.com`; initial analytics is GA4; legal path is draft-first then Owner/legal review; initial transactional email provider is Resend with `support@minicraft.spikersun.com` as the planned support address and inbound forwarding as the low-cost first path.
+
+No empty/fake category expansion is authorized. Product truth for the first production SKU remains pending before production commerce launch.
