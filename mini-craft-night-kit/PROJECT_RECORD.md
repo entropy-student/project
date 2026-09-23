@@ -1378,3 +1378,14 @@ The site is functionally strong but remains local/test-state for public search a
 Current Gate: `K4_6_GROWTH_FOUNDATION_SPEC`.
 
 This Gate converts the audit into minimal durable growth docs without touching WordPress or external accounts. Owner decisions remain compressed into five future bundles: PRODUCT_TRUTH, PUBLIC_ORIGIN, MEASUREMENT, LEGAL_CONSENT, DELIVERY_AND_EMAIL.
+
+
+## K4.6 Growth Foundation Spec — PASS
+
+Commit `58dd18534b74919e5396b1e6d2eaa880da24544f` is accepted. The project now has a durable Growth System, Unit Economics template, Event Taxonomy, UTM Standard, and evidence-backed CRO Backlog.
+
+## K4.7 Owner Launch Truth Checkpoint
+
+Current checkpoint: five bundled Owner decisions before P0 implementation — product model, public origin, analytics provider, legal/consent path, and delivery/email provider/mailbox convention.
+
+No K5 yet.
