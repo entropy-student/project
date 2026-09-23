@@ -1,7 +1,7 @@
 # Story Showrunner Validation Workspace — REVIEWER HANDOFF
 
 Date: 2026-09-23  
-Status: `CURRENT TRUTH ONLY / G6A IN_PROGRESS / AUDIO QA RETURN / GPT-SOVITS WEBUI PASS / A-B PENDING`
+Status: `CURRENT TRUTH ONLY / G6A IN_PROGRESS / AUDIO QA RETURN / GPT-SOVITS FINETUNE PASS / INFERENCE QA NEXT / A-B PENDING`
 
 Historical chronology belongs in:
 - `PROJECT_RECORD.md`
@@ -206,10 +206,26 @@ Local environment read-back now confirms:
 - the WebUI has opened successfully on the Owner machine;
 - `pip check` still reports a non-blocking package-name mismatch for `faster-whisper → onnxruntime` while `onnxruntime-gpu` imports successfully.
 
+Local GPT-SoVITS fine-tune status on 2026-09-23:
+
+- target experiment: `narrator01_v2pp`, model family `v2ProPlus`;
+- training source prepared from the Owner-selected clean voice sample and produced 13 aligned segments;
+- the first fine-tune attempts exposed several Windows-specific runtime failures that the WebUI incorrectly surfaced as "training completed";
+- `7-sv_cn` was initially empty because the SV extractor used `torchaudio.load()` and hit the same TorchCodec path previously seen in inference; the local extractor was patched to load WAV through librosa and 13 SV embeddings were then produced;
+- SoVITS on Windows single RTX 4050 crashed at the first batch through `mp.spawn + Gloo + DDP` with exit code `3221225477 / 0xC0000005`; the local `s2_train.py` path was patched to bypass DDP for single-GPU Windows execution;
+- GPT training had the same unnecessary single-GPU distributed path; `s1_train.py` was patched to use `devices=1 / strategy=auto` for one GPU, and `AR/data/bucket_sampler.py` was patched to use `num_replicas=1 / rank=0` when torch.distributed is not initialized;
+- PyTorch Lightning Rich teardown then raised a Windows GBK encoding error after a successful epoch; the local GPT training path now disables the Rich progress bar;
+- final SoVITS weights now exist at epochs 4 and 8, with `narrator01_v2pp_e8_s248.pth` as the latest trained SoVITS candidate;
+- final GPT weights now exist at epochs 5, 10 and 15, with `narrator01_v2pp-e15.ckpt` as the latest trained GPT candidate;
+- this establishes local fine-tune execution PASS only; voice similarity / naturalness is not yet accepted and no canonical TTS migration has occurred.
+
 Current technical next action:
 
 ```text
-run the 5-case GPT-SoVITS vs CosyVoice A/B
+load narrator01_v2pp-e15.ckpt + narrator01_v2pp_e8_s248.pth in 1C inference
+→ use the same clean 3–10s reference and the same comparison sentence
+→ judge whether fine-tune materially improves speaker similarity over zero-shot
+→ if promising, run the 5-case GPT-SoVITS vs CosyVoice A/B
 → choose audio baseline
 → repair/regenerate only failed units
 → regenerate runtime timeline
