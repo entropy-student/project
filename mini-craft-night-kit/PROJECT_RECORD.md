@@ -1396,3 +1396,12 @@ No K5 yet.
 Owner selected multi-category Mini Craft as the long-term brand model, with the current Night Kit as the first actual offer. Public validation origin is `https://minicraft.spikersun.com`; initial analytics is GA4; legal path is draft-first then Owner/legal review; initial transactional email provider is Resend with `support@minicraft.spikersun.com` as the planned support address and inbound forwarding as the low-cost first path.
 
 No empty/fake category expansion is authorized. Product truth for the first production SKU remains pending before production commerce launch.
+
+
+## K4.8 First SKU Product Truth Discovery
+
+Current Gate: `K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY`.
+
+Reason: the brand model is now resolved as multi-category, but the current Night Kit remains a concept shell without a concrete supplier/SKU. Product truth is the next P0 dependency before production SEO/feed/schema/analytics launch work can be trusted.
+
+The Gate will shortlist 3–5 real candidate supplier/SKU offers and stop before supplier contact or sample purchase.
