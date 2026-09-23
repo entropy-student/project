@@ -3287,23 +3287,25 @@ WORDPRESS_CONTAINER=mini-craft-k3r4-recovery-wordpress;RUNNING;RESTART_COUNT=0;I
 MARIADB_CONTAINER=mini-craft-k3r4-recovery-mariadb;RUNNING_HEALTHY;RESTART_COUNT=0;IMAGE=mariadb:11.4.7;HOST_PORT=NONE
 PERSISTENT_VOLUMES=mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-wp-data;mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-wp-content;mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-db-data
 HTTP_STATUS_200=/;/shop/;/product/mini-craft-night-kit/;/faq/;/shipping-returns/;/contact/;/cart/;/checkout/;/my-account/;/wp-json/
-LOCAL_HTTP_PROBE=PASS_WITH_PROXY_BYPASS;SYSTEM_PROXY_INTERCEPTED_INITIAL_CURL_PROBE;SITE_PROBES_USED_DIRECT_LOOPBACK
+LOCAL_HTTP_PROBE=PASS_WITH_DIRECT_LOOPBACK_AND_PROXY_BYPASS;INITIAL_CURL_ATTEMPTS_INTERCEPTED_BY_SYSTEM_PROXY_127.0.0.1:10808
+FRESH_BROWSER_CHECK=PRODUCT_AND_SHOP_NAVIGATED_FROM_LOCALHOST;INITIAL_STALE_PRODUCT_TAB_SNAPSHOT_DISCARDED
 ADMIN_SESSION=VISIBLE_AS_ADMIN;PRODUCT_EDIT_ADMIN_BAR_LINK_PRESENT
 ADMIN_PRODUCT_CREATE_SAVE=NOT_TESTED
 ADMIN_MEDIA_UPLOAD_REPLACE=NOT_TESTED
 ADMIN_PRICE_STOCK_SKU_CATEGORY_PUBLISH=NOT_TESTED
 ORDERS_ADMIN=NOT_TESTED
-STOREFRONT_RESPONSIVE_DESKTOP_MOBILE=NOT_TESTED_AFTER_BASELINE_CONFLICT
+STOREFRONT_RESPONSIVE_DESKTOP_MOBILE=NOT_TESTED
 PRODUCT_GALLERY=GALLERY_AND_THUMBNAIL_LINKS_PRESENT;INTERACTION_NOT_TESTED
 CONTACT_FORM=NOT_TESTED
 CART_CHECKOUT_FLOW=NOT_TESTED;NO_CART_MUTATION_INITIATED
 PAYPAL_SANDBOX_STATE=NOT_READ;NO_PAYPAL_CONFIGURATION_TOUCHED
-CUSTOMER_LANGUAGE=CONFLICT;RENDERED_PRODUCT_PAGE_CONTAINS_CHINESE_WOOCOMMERCE_UI
-ADMIN_LANGUAGE=CHINESE_UI_OBSERVED;USER_SETTING_NOT_INDEPENDENTLY_READ
-PRODUCT_CATEGORY=CONFLICT;RENDERED_AS_ACCESSORIES
-LEGACY_DEMO_PRODUCTS=CONFLICT;RELATED_PRODUCTS_RENDER_USB-C_CABLE;UNIVERSAL_CHARGER;REMOTE_CONTROL
+CUSTOMER_LANGUAGE=ENGLISH_ON_FRESH_PRODUCT_AND_SHOP_PAGES
+ADMIN_LANGUAGE=NOT_CHECKED
+PRODUCT_CATEGORY=CRAFT_KITS_ON_FRESH_PRODUCT_PAGE
+SHOP_CATALOG=ONLY_MINI_CRAFT_NIGHT_KIT_RENDERED
+LEGACY_DEMO_PRODUCTS=SHOP_HIDDEN;PRODUCT_RELATED_SECTION_STILL_RENDERS_USB-C_CABLE;UNIVERSAL_CHARGER;REMOTE_CONTROL
 LOCAL_QA_PRODUCT_DATA=JPY_1;STOCK_8;SKU_MCK-LOCAL-TEST-001;NO_VALUE_CHANGED
-K4_ACCEPTED_BASELINE_CONFLICT=YES;CURRENT_RENDER_DIFFERS_FROM_PRIOR_K4_ACCEPTED_ENGLISH_CRAFT_KITS_AND_HIDDEN_DEMO_PRODUCT_STATE
+K4_ACCEPTED_BASELINE_CONFLICT=PARTIAL;FRESH_PRODUCT_AND_SHOP_MATCH_ENGLISH_CRAFT_KITS_AND_SHOP_SINGLE_PRODUCT_STATE;PRODUCT_RELATED_SECTION_CONFLICTS_WITH_ACCEPTED_LEGACY_DEMO_HIDDEN_STATE
 PLUGIN_THEME_VERSION_DRIFT=NOT_CHECKED
 GUTENBERG_BLOCK_VALIDITY=NOT_CHECKED;WP_CLI_NOT_INSTALLED;EDITOR_SESSION_NOT_OPENED
 CRITICAL_PHP_JS_ERRORS=NOT_CHECKED
@@ -3321,15 +3323,16 @@ LIVE_ACTIONS=0
 VPS_WRITES=ZERO
 SECRET_OUTPUT=0
 ROOT_TRANSIENTS_CREATED=NONE
-ROOT_TEMP_PATTERN_SCAN=.tmp-k4-*; .tmp-mc-*;NO_MATCHES_AT_SCAN_TIME
+ROOT_TEMP_PATTERN_SCAN=.tmp-k4-*;.tmp-mc-*;NO_MATCHES_AT_SCAN_TIME
 LOCAL_HELPERS_CREATED=NO
 BROWSER_PROFILES_CREATED=NO
 WORKSPACE_TEMP_CLEANUP=PASS_NO_TEMP_CREATED
 ROLLBACK_LOCATION=UNCHANGED_ACTIVE_NAMED_DOCKER_VOLUMES;NO_NEW_ROLLBACK_CREATED
-EVIDENCE_UPDATED=YES
 NEXT=STOP_AT_REVIEWER
 ```
 
-The browser's read-only accessibility snapshot for the current local Product page showed a logged-in `admin` toolbar and an “Edit product” link, but did not test saving or uploading. The same rendered page contained the Chinese strings “加入购物车”, “库存 8 件”, “描述” and “相关产品”, used category `Accessories`, and displayed the three inherited demo-related products. This contradicts the K4 accepted storefront state and blocks treating the current runtime as the reviewed release candidate. The visible JPY 1 / stock 8 / `MCK-LOCAL-TEST-001` values remain local test data only.
+The first accessibility snapshot came from an already-open, stale Product tab and was not used as current-state evidence. After a fresh navigation, the Product and Shop pages rendered in English and showed the `Craft Kits` category; Shop listed only Mini Craft Night Kit. However, the fresh Product page's Related products section still showed `USB-C Cable`, `Remote Control`, and `Universal Charger`. This is the sole confirmed storefront conflict with the accepted K4 cleanup baseline and is sufficient to stop before K5 mutation or deployment packaging; this Gate does not authorize re-running that K4 cleanup.
 
-All listed public routes returned HTTP 200 using direct loopback requests with proxy bypass. Docker reported the designated 8093 WordPress container running and its MariaDB healthy. The first curl attempts were intercepted by a local system proxy at 127.0.0.1:10808; the direct-loopback recheck passed. No browser interaction, site save, media upload, product/cart/checkout mutation, order, payment, PayPal action, VPS action, or secret access occurred. Because the active storefront no longer matches the accepted K4 baseline, responsive/admin CRUD/Gutenberg/plugin drift checks and creation of a deployment package/backup were stopped rather than packaging an unresolved state.
+The logged-in page exposed the `admin` toolbar and an `Edit product` link only. No product save, media upload, field edit, order-admin access, cart action, or checkout submission was tested. Product gallery thumbnails were present but not clicked. The existing JPY 1 / stock 8 / `MCK-LOCAL-TEST-001` values were observed and left unchanged as local QA data.
+
+All listed routes returned HTTP 200 through direct loopback requests. Docker reported the designated 8093 WordPress container running and MariaDB healthy. WordPress CLI is not installed in the container; plugin/theme drift, Gutenberg validity, JavaScript/PHP application logs, PayPal sandbox state, responsive breakpoints and remaining admin capabilities were not verified. The deployment manifest and new DB/wp-content/config backups were deliberately not created while the K4 product-display conflict remains unresolved. No site, Docker, product, media, cart, order, payment, PayPal, VPS or secret state was changed.
