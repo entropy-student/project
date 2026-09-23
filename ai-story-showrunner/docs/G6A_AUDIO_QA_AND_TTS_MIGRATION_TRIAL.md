@@ -1,7 +1,7 @@
 # G6A Audio QA + Candidate TTS Migration Trial
 
 Date: 2026-09-23  
-Status: `IN_PROGRESS / COSYVOICE AUDIO QA RETURN / GPT-SOVITS CANDIDATE NOT YET PROVEN`
+Status: `IN_PROGRESS / COSYVOICE AUDIO QA RETURN / GPT-SOVITS WEBUI PASS / A-B NOT YET PROVEN`
 
 ## 1. Purpose
 
@@ -169,26 +169,42 @@ Windows compatibility adjustments made during installation:
 6. pin Gradio-compatible FastAPI / Starlette versions during WebUI troubleshooting;
 7. bypass localhost proxying with `NO_PROXY=localhost,127.0.0.1,0.0.0.0`.
 
-## 8. Current installation blocker
+## 8. Current local environment state
 
-The environment is not yet declared PASS.
+The installation blocker is closed for WebUI launch.
 
-Latest WebUI start attempt exposed missing transitive packages in the isolated Conda environment:
+Latest local environment check:
 
-- `shellingham` — immediate startup blocker;
-- `rapidfuzz>=3.0.0` — required by FunASR;
-- `platformdirs>=2.5.0` — required by pooch.
+- workspace: `C:\\AI\\GPT-SoVITS`;
+- Python: `C:\\Users\\34707\\miniconda3\\envs\\GPTSoVits\\python.exe`;
+- Python 3.10.21;
+- `PYTHONNOUSERSITE=1` effective;
+- CUDA = true;
+- RTX 4050 Laptop GPU detected;
+- Gradio 4.44.1;
+- FastAPI 0.115.14;
+- Starlette 0.46.2;
+- `shellingham`, `rapidfuzz`, `platformdirs`, `onnxruntime`, `jieba`, `opencc`, `pyopenjtalk` imports all PASS;
+- project config import PASS;
+- main port = 9874;
+- device = `cuda:0`;
+- `zh_CN` locale available;
+- Owner confirmed the WebUI opened successfully.
+
+Remaining environment note:
+
+`pip check` reports that `faster-whisper 1.2.1` requires the distribution `onnxruntime`, while the current environment uses `onnxruntime-gpu` and the `onnxruntime` module imports successfully. Treat this as a non-blocking packaging metadata warning unless a real faster-whisper runtime failure appears.
 
 Next technical action:
 
 ```text
-complete isolated-environment dependency sync
-→ pip check
-→ launch WebUI successfully
-→ generate a short A/B test set
+run 5-case A/B
+→ choose audio baseline
+→ targeted unit repair/regeneration
+→ regenerate runtime timeline
 ```
 
-Do not reinstall the whole environment unless this targeted repair fails.
+Do not reinstall or rebuild the environment merely to clear the metadata warning.
 
 ## 9. A/B acceptance plan
 
