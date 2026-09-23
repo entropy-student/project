@@ -229,6 +229,8 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - enabling the WebUI option `是否直接对上次合成结果调整语速和音色，防止随机性` for the same sentence produced 3/3 perceptually identical outputs;
 - therefore same-text deterministic replay is available through the inference cache/freeze path; this control is suitable for reusing an accepted semantic/prosody realization, but it must be cleared when moving to a new sentence so a new semantic realization can be generated;
 - current interpretation: speaker-similarity, basic generation stability and same-text replay determinism are promising; cross-sentence prosody control is still not yet validated;
+- follow-up reversal/surprise sentence QA with cache/freeze disabled was judged by Owner as having no material problem, with no reported repetition/collapse or obvious delivery defect;
+- this strengthens the current `e5 + e8` candidate, but broader cross-sentence delivery coverage is still pending before canonical promotion;
 - this is still a candidate-quality result, not canonical promotion.
 
 Current technical next action:
