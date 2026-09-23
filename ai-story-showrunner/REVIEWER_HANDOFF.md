@@ -1,7 +1,7 @@
 # Story Showrunner Validation Workspace — REVIEWER HANDOFF
 
 Date: 2026-09-23  
-Status: `CURRENT TRUTH ONLY / G6A IN_PROGRESS / AUDIO QA RETURN / GPT-SOVITS FINETUNE PASS / INFERENCE QA NEXT / A-B PENDING`
+Status: `CURRENT TRUTH ONLY / G6A IN_PROGRESS / AUDIO QA RETURN / GPT-SOVITS MANUAL QA PASS_CANDIDATE / API DETERMINISM NEXT / MIGRATION NOT YET CANONICAL`
 
 Historical chronology belongs in:
 - `PROJECT_RECORD.md`
@@ -246,15 +246,23 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 Current technical next action:
 
 ```text
-load narrator01_v2pp-e15.ckpt + narrator01_v2pp_e8_s248.pth in 1C inference
-→ use the same clean 3–10s reference and the same comparison sentence
-→ judge whether fine-tune materially improves speaker similarity over zero-shot
-→ if promising, run the 5-case GPT-SoVITS vs CosyVoice A/B
-→ choose audio baseline
-→ repair/regenerate only failed units
-→ regenerate runtime timeline
-→ only then decide whether to resume the remaining frame gate
+manual GPT-SoVITS representative listening QA = PASS_CANDIDATE
+→ validate official API path with e5 + e8 and fixed-seed deterministic smoke
+→ accept/reject the API realization by one retained listening sample
+→ if PASS, run one-time GPT-SoVITS Voice Timing Profile calibration + held-out validation
+→ build provider adapter/runtime validation
+→ only then decide whether GPT-SoVITS replaces the canonical CosyVoice audio baseline
+→ regenerate only required episode units and resolve runtime timeline again
+→ only then resume the remaining frame/final-render gate
 ```
+
+Prepared automation helpers:
+
+- `tools/gpt-sovits/PATCH_API_TORCHCODEC.bat`
+- `tools/gpt-sovits/START_GPT_SOVITS_API.bat`
+- `tools/gpt-sovits/RUN_API_DETERMINISM_SMOKE.bat`
+
+The API smoke deliberately uses a fixed seed to test production reproducibility. That seed is only a candidate setting until the retained output passes Owner listening QA.
 
 Current audio-trial handoff:
 
