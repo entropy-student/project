@@ -36,8 +36,8 @@ G3   Rule Engine V0                          MERGED / CLOSED
 G3.5 UI + Growth Design Freeze               PASS
 G4   WP ↔ Scanner ↔ Top 3 Local Loop          PASS
 G4.5 Visual + Functional Acceptance          PASS
-G4.6 Acquisition + SEO Readiness             NEXT / EXECUTOR READY
-G5   Full Fix Queue + LLM + Skill Dogfood    PENDING
+G4.6 Acquisition + SEO Readiness             PASS
+G5   Full Fix Queue + LLM + Skill Dogfood    NEXT / EXECUTOR READY
 G6   VPS Onboarding / Storage                HOLD
 G7   VPS Private Deployment                  HOLD
 G8   Domain / HTTPS / Shared Ingress          HOLD
@@ -168,19 +168,22 @@ optional LLM explanation (later)
 
 ```text
 Codex
-→ read docs/G4_5_ACCEPTANCE_CONTRACT.md
-→ rerun functional acceptance
-→ run Golden Screenshot / responsive acceptance
-→ update EXECUTION_EVIDENCE.md / EXECUTOR_HANDOFF.md
-→ PASS_CANDIDATE_G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE
+→ read docs/G5_EXECUTION_CONTRACT.md
+→ build deterministic complete Fix Queue from existing ISSUE findings
+→ add provider-neutral optional LLM explanation over structured issues only
+→ preserve free Top 3 as zero-LLM path
+→ update analytics contract minimally if needed
+→ update SKILL_DOGFOOD_LOG hypotheses without claiming validation
+→ rerun all regressions
+→ PASS_CANDIDATE_G5_FULL_FIX_QUEUE_LLM_DOGFOOD
 → Reviewer PASS / RETURN
 ```
 
 当前：
-- G4 已正式 PASS，见 `docs/REVIEWER_DECISION_G4_PASS.md`；
-- G4 实现已通过 PR #2 合入 `main`，merge commit `554951fc778d2b60a4a1fe655e07c37310ef76ad`；
-- G4.5 是当前唯一执行 Gate，仅做视觉 + 功能验收，不扩产品范围；
-- Payment / VPS / Production 继续 HOLD。
+- G4.6 已正式 PASS，见 `docs/REVIEWER_DECISION_G4_6_PASS.md`；
+- G4.6 通过 PR #6 合入 `main`，merge commit `71d810f61aa0e48b0feaf8cc9ec5deeeed128b27`；
+- G5 是当前唯一执行 Gate；
+- Payment / VPS / Domain / Production 继续 HOLD。
 
 ## 11. 不允许重复执行
 
@@ -247,3 +250,25 @@ PR #3 merged to main at `40a1657ddd785069851ada7078acc1acae18f4d0`.
 Next: `G4.6 Acquisition + SEO Readiness`, governed by `docs/G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md`.
 
 G4.6 exists to prevent acquisition/SEO concerns from endlessly reopening G4.5 visual work.
+
+
+### G4.6 Final PASS — 2026-09-23
+
+Reviewer decision: `PASS_G4_6_ACQUISITION_SEO_READINESS`.
+
+Accepted:
+- acquisition message/proof path;
+- truthful synthetic Demo;
+- Blog/Pricing hidden from primary acquisition surfaces and noindexed;
+- page-specific metadata;
+- Home no-signup metadata contract;
+- canonical / scan-result noindex;
+- WordPress native sitemap / robots readiness;
+- SEO readiness `44/44 PASS`;
+- Scanner `55/55 PASS`;
+- WordPress `20/20 PASS`;
+- no payment/VPS/production-secret expansion.
+
+PR #6 merged to main at `71d810f61aa0e48b0feaf8cc9ec5deeeed128b27`.
+
+Next Gate: `G5_FULL_FIX_QUEUE_LLM_DOGFOOD`, governed by `docs/G5_EXECUTION_CONTRACT.md`.
