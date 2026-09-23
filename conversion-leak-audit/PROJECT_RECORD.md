@@ -313,3 +313,25 @@ Key rule: payment success unlocks the correct report entitlement; it does not au
 Before any VPS write or formal deployment, Owner approval is mandatory.
 
 Formal decision: `docs/REVIEWER_DECISION_POST_G5_GATE_REORDER.md`.
+
+
+### Project Pause — 2026-09-23
+
+Owner paused the project without archival/sealing.
+
+State:
+
+`PAUSED_BY_OWNER`
+
+G6 read-only VPS preflight evidence and deployment/storage design were checkpointed into `main` via PR #12. No VPS write or deployment was executed.
+
+Canonical restart document:
+
+`docs/PROJECT_PAUSE_HANDOFF.md`
+
+On resume:
+- restart from G6;
+- re-check VPS read-only state because shared-host conditions may change;
+- obtain explicit Owner approval before any VPS write.
+
+No Executor work is authorized while paused.
