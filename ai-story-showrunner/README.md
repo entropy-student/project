@@ -7,9 +7,10 @@
 ## 当前 Gate 状态
 
 ```text
-P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5 = PASS
-G6 = IN_PROGRESS — Production SRT + TTS Manifest + Antigravity Production Package
-G7 = BLOCKED_BY_G6
+P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5 = PASS（按各 Gate 原始验证范围）
+G6R = IN_PROGRESS — Candidate Timing ↔ Visual Beat ↔ Runtime Reconciliation
+G6A = BLOCKED_BY_G6R — First-E2E Asset Calibration
+G7 = BLOCKED — Final-video End-to-End Validation
 ```
 
 当前 canonical editorial baseline：
@@ -21,7 +22,7 @@ G7 = BLOCKED_BY_G6
 - Daily Topic Planner v0.2 已启用；
 - Production throughput 仍为 UNPROVEN。
 
-Owner 当前执行线：**`story-showrunner` Candidate 已迁入 `entropy-student/spike.skill/story-showrunner`；现在回到 G6，用 Candidate Timing Compiler + Voice Timing Profile v2.1 编译 Production SRT / TTS Manifest，再生成完整 Antigravity Production Package。**
+Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取，Timing Compiler 已产出 Production SRT / TTS Manifest，FFmpeg runtime probe 已 PASS。2026-09-23 takeover review 发现 Candidate timing 与旧 G4 Visual Beat timing artifact 之间存在迁移缝隙，因此当前先完成 G6R runtime reconciliation，再放行首次 44-frame Asset Calibration。**
 
 ## 一句话定位
 
@@ -168,8 +169,9 @@ G3  Story → Script / SRT MVP                   ✅ PASS
 G3R Bilibili Editorial / Narrative Rebaseline ✅ PASS
 G4  Script/SRT → Director / Shot Compiler MVP  ✅ PASS
 G5  Shotbook → Image Asset Package MVP         ✅ PASS
-G6  Voice Timing / Production Package PoC      ▶ IN_PROGRESS
-G7  Three-topic End-to-End Validation          ⛔ BLOCKED_BY_G6
+G6R Candidate Runtime Reconciliation          ▶ IN_PROGRESS
+G6A First-E2E Asset Calibration                ⛔ BLOCKED_BY_G6R
+G7  End-to-End Final Video Validation           ⛔ BLOCKED
 G8  Semi-automated Orchestration               ⏳
 G9  Publish / Analytics Learning Loop           ⏳
 G10 Canonical Skill Promotion / Runtime         ⏳  (Candidate 已存在)
@@ -188,6 +190,10 @@ G10 Canonical Skill Promotion / Runtime         ⏳  (Candidate 已存在)
 9. 所有阶段必须有结构化 Handoff；禁止只靠聊天上下文传递。
 10. 自动化不得降低人工验证基线。
 11. 失败必须在最近的 Gate 被拦截，禁止垃圾输入一路传到成片。
+
+## 文档入口
+
+当前/历史文档分层见：`docs/CURRENT_DOC_INDEX.md`。
 
 ## 阅读顺序
 
@@ -230,15 +236,21 @@ Writer quality 采用 McKee 因果骨架 + narrative transportation + short-form
 
 ## Current execution focus
 
-G5 is now PASS. The high-risk Pilot and reference-path validation both passed.
+G5 remains PASS within its original asset-contract scope.
 
-Current main-line gate: **G6 Low-Level Execution Package / Antigravity PoC**.
+Current main-line gate: **G6R Candidate Runtime Reconciliation**.
 
-Current G6 task:
-- use frozen Voice Timing Profile v2.1;
-- compile Production SRT + TTS Manifest before normal TTS execution;
-- compile the full Antigravity Production Package;
-- let Antigravity execute locked CosyVoice TTS + images + edit + export.
+Already proven:
+- Voice Timing Profile v2.1 frozen;
+- Candidate Production SRT + TTS Manifest compiled;
+- FFmpeg baseline runtime probe PASS.
+
+Current G6R task:
+- preserve the accepted 44 Visual Beat meanings/order/POV;
+- bind them 44/44 to Candidate Speech Units with durable semantic anchors;
+- align Candidate Visual Beat schema + Runtime Timeline Resolver implementation;
+- rebuild the current execution package from reconciled contracts;
+- only then release the first-E2E Asset Calibration Gate.
 
 Long-term target:
 - `story-showrunner` Candidate 已完成抽取；完整 E2E PASS 后再从 CANDIDATE 升级为 CANONICAL;

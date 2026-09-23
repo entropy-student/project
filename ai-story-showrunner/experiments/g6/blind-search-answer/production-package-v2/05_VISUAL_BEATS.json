@@ -1,0 +1,1640 @@
+{
+  "experiment": "G6R_BLIND_SEARCH_ANSWER_CANDIDATE_VISUAL_BEATS",
+  "status": "CANDIDATE_RECONCILED",
+  "source_semantics": "experiments/g4r-v03/blind-search-answer/07_VISUAL_BEAT_PLAN.json",
+  "source_timing_bindings": "experiments/g6/blind-search-answer/timing/05_VISUAL_BEAT_TIMING_BINDINGS.json",
+  "timing_source": "PLANNED_PRODUCTION_SRT",
+  "semantic_mutation": false,
+  "visual_beat_count": 44,
+  "planned_duration_sec": 146.7209,
+  "beats": [
+    {
+      "visual_beat_id": "SRCH_VB001",
+      "semantic_shot_id": "SRCH_S001",
+      "sequence_id": "SEQ1",
+      "paragraph_range": [
+        1,
+        1
+      ],
+      "narration_fragment": "我现在看到 AI 回答下面带着“官方来源”四个字，第一反应已经不是放心了。",
+      "image_state": "official-source cue appears under answer; IP no longer relaxes automatically",
+      "inherited_visual_intention": "READ_REACTION",
+      "local_visual_intention": "READ_REACTION",
+      "shot_function": "ESTABLISH",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 0,
+      "duration": 5.25,
+      "end": 5.25,
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist.",
+      "speech_unit_id": "SU001",
+      "start_anchor": {
+        "speech_unit_id": "SU001",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU001",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB002",
+      "semantic_shot_id": "SRCH_S001",
+      "sequence_id": "SEQ1",
+      "paragraph_range": [
+        2,
+        2
+      ],
+      "narration_fragment": "是先点开看看。",
+      "image_state": "hand/cursor moves to open the source instead",
+      "inherited_visual_intention": "READ_REACTION",
+      "local_visual_intention": "FOLLOW_ACTION",
+      "shot_function": "ESTABLISH",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH",
+      "start": 5.25,
+      "duration": 1.49,
+      "end": 6.74,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event.",
+      "speech_unit_id": "SU002",
+      "start_anchor": {
+        "speech_unit_id": "SU002",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU002",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB003",
+      "semantic_shot_id": "SRCH_S002",
+      "sequence_id": "SEQ1",
+      "paragraph_range": [
+        3,
+        4
+      ],
+      "narration_fragment": "因为有一次，我只是想偷个懒，查一条特别简单的退款规则。\n\n问题也很具体：",
+      "image_state": "IP frames this as a tiny easy rule-check he wants to outsource",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "ORIENT",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 6.74,
+      "duration": 5.4517,
+      "end": 12.1917,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV.",
+      "speech_unit_id": "SU003",
+      "start_anchor": {
+        "speech_unit_id": "SU003",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU003",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB004",
+      "semantic_shot_id": "SRCH_S002",
+      "sequence_id": "SEQ1",
+      "paragraph_range": [
+        5,
+        5
+      ],
+      "narration_fragment": "“订单退掉以后，平台收的那笔服务费，会不会一起退回来？”",
+      "image_state": "exact question facet lands: 平台服务费会不会退",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "NOTICE_OBJECT",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "SCREEN_NORMAL_IP_POV",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 12.1917,
+      "duration": 4.0849,
+      "end": 16.2766,
+      "pov_reason": "Exact question facet must be experienced as the protagonist sees/asks it; character reaction is not the beat.",
+      "speech_unit_id": "SU004",
+      "start_anchor": {
+        "speech_unit_id": "SU004",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU004",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB005",
+      "semantic_shot_id": "SRCH_S003",
+      "sequence_id": "SEQ1",
+      "paragraph_range": [
+        6,
+        7
+      ],
+      "narration_fragment": "它搜了一下。\n\n几秒钟以后，答案出来了：",
+      "image_state": "AI performs search and answer state arrives",
+      "inherited_visual_intention": "SEE_CONSEQUENCE",
+      "local_visual_intention": "FOLLOW_ACTION",
+      "shot_function": "REVEAL",
+      "shot_size": "MEDIUM",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 16.2766,
+      "duration": 3.0577,
+      "end": 19.3343,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU005",
+      "start_anchor": {
+        "speech_unit_id": "SU005",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU005",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB006",
+      "semantic_shot_id": "SRCH_S003",
+      "sequence_id": "SEQ1",
+      "paragraph_range": [
+        8,
+        8
+      ],
+      "narration_fragment": "“会。退款完成后，款项会原路退回。”",
+      "image_state": "answer conclusion becomes focal: 会",
+      "inherited_visual_intention": "SEE_CONSEQUENCE",
+      "local_visual_intention": "SEE_CONSEQUENCE",
+      "shot_function": "REVEAL",
+      "shot_size": "INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH",
+      "start": 19.3343,
+      "duration": 2.68,
+      "end": 22.0143,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU006",
+      "start_anchor": {
+        "speech_unit_id": "SU006",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU006",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB007",
+      "semantic_shot_id": "SRCH_S003",
+      "sequence_id": "SEQ1",
+      "paragraph_range": [
+        9,
+        9
+      ],
+      "narration_fragment": "下面还真的挂着一条官方帮助中心的链接。",
+      "image_state": "official help-center source appears directly under the answer",
+      "inherited_visual_intention": "SEE_CONSEQUENCE",
+      "local_visual_intention": "NOTICE_OBJECT",
+      "shot_function": "REVEAL",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 22.0143,
+      "duration": 3.2,
+      "end": 25.2143,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU007",
+      "start_anchor": {
+        "speech_unit_id": "SU007",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU007",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB008",
+      "semantic_shot_id": "SRCH_S004",
+      "sequence_id": "SEQ1",
+      "paragraph_range": [
+        10,
+        10
+      ],
+      "narration_fragment": "我当时那个放心程度，大概相当于老师不仅告诉你答案，还把参考答案拍在了桌上。",
+      "image_state": "IP visibly relaxes because the answer looks source-backed; no literal classroom cutaway",
+      "inherited_visual_intention": "READ_REACTION",
+      "local_visual_intention": "READ_REACTION",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 25.2143,
+      "duration": 5.9,
+      "end": 31.1143,
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist.",
+      "speech_unit_id": "SU008",
+      "start_anchor": {
+        "speech_unit_id": "SU008",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU008",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB009",
+      "semantic_shot_id": "SRCH_S004",
+      "sequence_id": "SEQ1",
+      "paragraph_range": [
+        11,
+        12
+      ],
+      "narration_fragment": "于是我顺手就在成本表里写了一行：\n\n“服务费：可退。”",
+      "image_state": "IP writes 服务费：可退 into the cost sheet",
+      "inherited_visual_intention": "READ_REACTION",
+      "local_visual_intention": "SEE_CONSEQUENCE",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "IP_POV_HANDS",
+      "camera_angle": "DOWNWARD_DESK_IP_POV",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH",
+      "start": 31.1143,
+      "duration": 3.86,
+      "end": 34.9743,
+      "pov_reason": "The story consequence is created by the protagonist personally writing the assumption into the cost sheet.",
+      "speech_unit_id": "SU009",
+      "start_anchor": {
+        "speech_unit_id": "SU009",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU009",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB010",
+      "semantic_shot_id": "SRCH_S005",
+      "sequence_id": "SEQ2",
+      "paragraph_range": [
+        13,
+        14
+      ],
+      "narration_fragment": "本来这件事到这里已经结束了。\n\n但我那天可能刚好手比较欠。",
+      "image_state": "task appears finished; IP is already about to move on, then hesitates",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "READ_REACTION",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 34.9743,
+      "duration": 4.38,
+      "end": 39.3543,
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist.",
+      "speech_unit_id": "SU010",
+      "start_anchor": {
+        "speech_unit_id": "SU010",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU010",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB011",
+      "semantic_shot_id": "SRCH_S005",
+      "sequence_id": "SEQ2",
+      "paragraph_range": [
+        15,
+        15
+      ],
+      "narration_fragment": "我点开了那个官方网页。",
+      "image_state": "IP clicks the official source almost casually",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "FOLLOW_ACTION",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OVER_SHOULDER_IP",
+      "camera_angle": "OVER_SHOULDER_TO_SCREEN",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 39.3543,
+      "duration": 1.85,
+      "end": 41.2043,
+      "pov_reason": "The click belongs to the protagonist but must also lead cleanly into the readable page discovery that follows.",
+      "speech_unit_id": "SU011",
+      "start_anchor": {
+        "speech_unit_id": "SU011",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU011",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB012",
+      "semantic_shot_id": "SRCH_S006",
+      "sequence_id": "SEQ2",
+      "paragraph_range": [
+        16,
+        17
+      ],
+      "narration_fragment": "网页没找错。\n\n标题就是退款规则。",
+      "image_state": "same official refund page opens; title confirms source is correct",
+      "inherited_visual_intention": "ORIENT",
+      "local_visual_intention": "ORIENT",
+      "shot_function": "ESTABLISH",
+      "shot_size": "WIDE_POV",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "POV_DISCOVERY",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 41.2043,
+      "duration": 2.36,
+      "end": 43.5643,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU012",
+      "start_anchor": {
+        "speech_unit_id": "SU012",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU012",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB013",
+      "semantic_shot_id": "SRCH_S006",
+      "sequence_id": "SEQ2",
+      "paragraph_range": [
+        18,
+        18
+      ],
+      "narration_fragment": "甚至 AI 刚才那句话，也真的能在上面找到。",
+      "image_state": "AI-cited sentence is visibly present on that same page",
+      "inherited_visual_intention": "ORIENT",
+      "local_visual_intention": "NOTICE_OBJECT",
+      "shot_function": "ESTABLISH",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "POV_DISCOVERY",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 43.5643,
+      "duration": 3.4551,
+      "end": 47.0194,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU013",
+      "start_anchor": {
+        "speech_unit_id": "SU013",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU013",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB014",
+      "semantic_shot_id": "SRCH_S007",
+      "sequence_id": "SEQ2",
+      "paragraph_range": [
+        19,
+        20
+      ],
+      "narration_fragment": "上面写着：\n\n“退款完成后，订单款项将退回原支付方式。”",
+      "image_state": "first policy sentence is highlighted: 订单款项退回原支付方式",
+      "inherited_visual_intention": "NOTICE_OBJECT",
+      "local_visual_intention": "NOTICE_OBJECT",
+      "shot_function": "INSERT_OBJECT",
+      "shot_size": "INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "INSERT_LED",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 47.0194,
+      "duration": 3.8281,
+      "end": 50.8475,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU014",
+      "start_anchor": {
+        "speech_unit_id": "SU014",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU014",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB015",
+      "semantic_shot_id": "SRCH_S008",
+      "sequence_id": "SEQ2",
+      "paragraph_range": [
+        21,
+        21
+      ],
+      "narration_fragment": "我往下又看了一行。",
+      "image_state": "eye/cursor moves one line downward; final answer is not revealed yet",
+      "inherited_visual_intention": "EXPERIENCE_REVERSAL",
+      "local_visual_intention": "BUILD_ANTICIPATION",
+      "shot_function": "REVEAL",
+      "shot_size": "MATCHED_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "POV_DISCOVERY",
+      "visual_intensity": "PEAK",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH_SETUP",
+      "start": 50.8475,
+      "duration": 1.63,
+      "end": 52.4775,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU015",
+      "start_anchor": {
+        "speech_unit_id": "SU015",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU015",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB016",
+      "semantic_shot_id": "SRCH_S008",
+      "sequence_id": "SEQ2",
+      "paragraph_range": [
+        22,
+        22
+      ],
+      "narration_fragment": "“平台服务费不予退还。”",
+      "image_state": "reveal: 平台服务费不予退还 becomes dominant",
+      "inherited_visual_intention": "EXPERIENCE_REVERSAL",
+      "local_visual_intention": "EXPERIENCE_REVERSAL",
+      "shot_function": "REVEAL",
+      "shot_size": "INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "POV_DISCOVERY",
+      "visual_intensity": "PEAK",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "REVERSAL",
+      "start": 52.4775,
+      "duration": 2.14,
+      "end": 54.6175,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU016",
+      "start_anchor": {
+        "speech_unit_id": "SU016",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU016",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB017",
+      "semantic_shot_id": "SRCH_S009",
+      "sequence_id": "SEQ2",
+      "paragraph_range": [
+        23,
+        23
+      ],
+      "narration_fragment": "……",
+      "image_state": "silent hold on the contradiction",
+      "inherited_visual_intention": "READ_REACTION",
+      "local_visual_intention": "READ_REACTION",
+      "shot_function": "REVERSAL",
+      "shot_size": "CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "PEAK",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "REACTION",
+      "start": 54.6175,
+      "duration": 1.4,
+      "end": 56.0175,
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist.",
+      "speech_unit_id": "SU017",
+      "start_anchor": {
+        "speech_unit_id": "SU017",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU017",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "HARD_ANCHOR"
+    },
+    {
+      "visual_beat_id": "SRCH_VB018",
+      "semantic_shot_id": "SRCH_S009",
+      "sequence_id": "SEQ2",
+      "paragraph_range": [
+        24,
+        25
+      ],
+      "narration_fragment": "我又看了一眼 AI 的答案。\n\n“会。”",
+      "image_state": "IP looks back to AI answer: 会",
+      "inherited_visual_intention": "READ_REACTION",
+      "local_visual_intention": "COMPARE_STATES",
+      "shot_function": "REVERSAL",
+      "shot_size": "MATCHED_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "PEAK",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH",
+      "start": 56.0175,
+      "duration": 2.36,
+      "end": 58.3775,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU018",
+      "start_anchor": {
+        "speech_unit_id": "SU018",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU018",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB019",
+      "semantic_shot_id": "SRCH_S009",
+      "sequence_id": "SEQ2",
+      "paragraph_range": [
+        26,
+        27
+      ],
+      "narration_fragment": "再看网页。\n\n“不予退还。”",
+      "image_state": "IP looks back to official page: 不予退还",
+      "inherited_visual_intention": "READ_REACTION",
+      "local_visual_intention": "COMPARE_STATES",
+      "shot_function": "REVERSAL",
+      "shot_size": "MATCHED_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "PEAK",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "REVERSAL",
+      "start": 58.3775,
+      "duration": 1.97,
+      "end": 60.3475,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU019",
+      "start_anchor": {
+        "speech_unit_id": "SU019",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU019",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB020",
+      "semantic_shot_id": "SRCH_S010",
+      "sequence_id": "SEQ3",
+      "paragraph_range": [
+        28,
+        30
+      ],
+      "narration_fragment": "这时候最奇怪的地方就出现了。\n\n它不是没联网。\n\n也不是搜到了什么野鸡论坛。",
+      "image_state": "investigation rules out easy causes: not offline, not forum, not dubious source",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "CLARIFY_MECHANISM",
+      "shot_function": "CLARIFY",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "HIGH_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 60.3475,
+      "duration": 5.4,
+      "end": 65.7475,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV.",
+      "speech_unit_id": "SU020",
+      "start_anchor": {
+        "speech_unit_id": "SU020",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU020",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB021",
+      "semantic_shot_id": "SRCH_S010",
+      "sequence_id": "SEQ3",
+      "paragraph_range": [
+        31,
+        31
+      ],
+      "narration_fragment": "它甚至把正确的官网放在了我面前。",
+      "image_state": "correct official page remains physically present as the evidence object",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "SEE_CONSEQUENCE",
+      "shot_function": "CLARIFY",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "HIGH_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH",
+      "start": 65.7475,
+      "duration": 3.01,
+      "end": 68.7575,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event.",
+      "speech_unit_id": "SU021",
+      "start_anchor": {
+        "speech_unit_id": "SU021",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU021",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB022",
+      "semantic_shot_id": "SRCH_S011",
+      "sequence_id": "SEQ3",
+      "paragraph_range": [
+        32,
+        32
+      ],
+      "narration_fragment": "但它拿着回答“订单款项去哪儿”的那句话，回答了我“服务费退不退”的问题。",
+      "image_state": "matched comparison isolates question facet 服务费 against cited facet 订单款项",
+      "inherited_visual_intention": "COMPARE_STATES",
+      "local_visual_intention": "COMPARE_STATES",
+      "shot_function": "INSERT_OBJECT",
+      "shot_size": "MATCHED_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "MATCHED_INSERT",
+      "visual_intensity": "HIGH_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 68.7575,
+      "duration": 5.23,
+      "end": 73.9875,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU022",
+      "start_anchor": {
+        "speech_unit_id": "SU022",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU022",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB023",
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "paragraph_range": [
+        33,
+        34
+      ],
+      "narration_fragment": "就像我问一个人：\n\n“老板今天来不来？”",
+      "image_state": "analogy question: 老板今天来不来",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "ORIENT",
+      "shot_function": "METAPHOR_STATE",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "ASSOCIATIVE_MONTAGE",
+      "visual_intensity": "MEDIUM_COMIC",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 73.9875,
+      "duration": 2.52,
+      "end": 76.5075,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV.",
+      "speech_unit_id": "SU023",
+      "start_anchor": {
+        "speech_unit_id": "SU023",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU023",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB024",
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "paragraph_range": [
+        35,
+        35
+      ],
+      "narration_fragment": "他翻开通讯录，准确找到了老板那一页，然后特别自信地告诉我：",
+      "image_state": "person accurately opens the boss's correct contact record",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "SEE_CONSEQUENCE",
+      "shot_function": "METAPHOR_STATE",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "ASSOCIATIVE_MONTAGE",
+      "visual_intensity": "MEDIUM_COMIC",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 76.5075,
+      "duration": 4.7348,
+      "end": 81.2423,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event.",
+      "speech_unit_id": "SU024",
+      "start_anchor": {
+        "speech_unit_id": "SU024",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU024",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB025",
+      "semantic_shot_id": "SRCH_S012",
+      "sequence_id": "SEQ4",
+      "paragraph_range": [
+        36,
+        38
+      ],
+      "narration_fragment": "“老板电话是 138……”\n\n资料没找错。\n\n答案还是没回答问题。",
+      "image_state": "wrong-facet answer lands: 老板电话是138…; correct record still does not answer attendance question",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "LAND_PAYOFF",
+      "shot_function": "METAPHOR_STATE",
+      "shot_size": "MEDIUM_TWO_SHOT",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "ASSOCIATIVE_MONTAGE",
+      "visual_intensity": "MEDIUM_COMIC",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH",
+      "start": 81.2423,
+      "duration": 3.99,
+      "end": 85.2323,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event.",
+      "speech_unit_id": "SU025",
+      "start_anchor": {
+        "speech_unit_id": "SU025",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU025",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB026",
+      "semantic_shot_id": "SRCH_S013",
+      "sequence_id": "SEQ5",
+      "paragraph_range": [
+        39,
+        41
+      ],
+      "narration_fragment": "我后来又试了一次。\n\n这次没问它“答案是什么”。\n\n我只问：",
+      "image_state": "back at desk, IP changes strategy: no longer asks for conclusion first",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "FOLLOW_ACTION",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 85.2323,
+      "duration": 3.71,
+      "end": 88.9423,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event.",
+      "speech_unit_id": "SU026",
+      "start_anchor": {
+        "speech_unit_id": "SU026",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU026",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB027",
+      "semantic_shot_id": "SRCH_S013",
+      "sequence_id": "SEQ5",
+      "paragraph_range": [
+        42,
+        42
+      ],
+      "narration_fragment": "“你引用的网页里，哪一句话明确说明服务费会退？”",
+      "image_state": "new evidence challenge is focal: 哪一句明确说明服务费会退",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "NOTICE_OBJECT",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "SCREEN_NORMAL_IP_POV",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 88.9423,
+      "duration": 3.54,
+      "end": 92.4823,
+      "pov_reason": "The new evidence-challenge query is the exact action the viewer should experience with the protagonist.",
+      "speech_unit_id": "SU027",
+      "start_anchor": {
+        "speech_unit_id": "SU027",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU027",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB028",
+      "semantic_shot_id": "SRCH_S014",
+      "sequence_id": "SEQ5",
+      "paragraph_range": [
+        43,
+        43
+      ],
+      "narration_fragment": "它重新看了一遍。",
+      "image_state": "AI returns attention to the same official page",
+      "inherited_visual_intention": "SEE_CONSEQUENCE",
+      "local_visual_intention": "FOLLOW_ACTION",
+      "shot_function": "PAYOFF",
+      "shot_size": "MEDIUM",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "RELEASE_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 92.4823,
+      "duration": 1.4715,
+      "end": 93.9538,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU028",
+      "start_anchor": {
+        "speech_unit_id": "SU028",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU028",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB029",
+      "semantic_shot_id": "SRCH_S014",
+      "sequence_id": "SEQ5",
+      "paragraph_range": [
+        44,
+        44
+      ],
+      "narration_fragment": "然后答案变了。",
+      "image_state": "same answer pane changes conclusion after evidence check",
+      "inherited_visual_intention": "SEE_CONSEQUENCE",
+      "local_visual_intention": "EXPERIENCE_REVERSAL",
+      "shot_function": "PAYOFF",
+      "shot_size": "MATCHED_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "RELEASE_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH",
+      "start": 93.9538,
+      "duration": 1.49,
+      "end": 95.4438,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU029",
+      "start_anchor": {
+        "speech_unit_id": "SU029",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU029",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB030",
+      "semantic_shot_id": "SRCH_S015",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        45,
+        45
+      ],
+      "narration_fragment": "因为“搜到网页”和“用对网页里的证据”，其实是两件事。",
+      "image_state": "whole correct page is shown as one evidence object",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "CLARIFY_MECHANISM",
+      "shot_function": "CLARIFY",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 95.4438,
+      "duration": 3.71,
+      "end": 99.1538,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV.",
+      "speech_unit_id": "SU030",
+      "start_anchor": {
+        "speech_unit_id": "SU030",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU030",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB031",
+      "semantic_shot_id": "SRCH_S015",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        46,
+        46
+      ],
+      "narration_fragment": "搜索做的，是把可能有用的资料拿回来。",
+      "image_state": "attention narrows from whole page to the exact supporting sentence",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "NOTICE_OBJECT",
+      "shot_function": "CLARIFY",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "OBJECTIVE_INSERT",
+      "camera_angle": "OBJECT_NORMAL_INSERT",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH",
+      "start": 99.1538,
+      "duration": 3.18,
+      "end": 102.3338,
+      "pov_reason": "The supporting sentence itself is the causal object; character subjectivity is unnecessary here.",
+      "speech_unit_id": "SU031",
+      "start_anchor": {
+        "speech_unit_id": "SU031",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU031",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB032",
+      "semantic_shot_id": "SRCH_S016",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        47,
+        49
+      ],
+      "narration_fragment": "但资料回来以后，模型还得判断：\n\n哪一句跟你的问题真正对应。\n\n哪些只是看起来很像。",
+      "image_state": "same question-page workspace compares true correspondence vs merely similar wording",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "CLARIFY_MECHANISM",
+      "shot_function": "MONTAGE_STEP",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER_WITH_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "MONTAGE",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 102.3338,
+      "duration": 5.9,
+      "end": 108.2338,
+      "pov_reason": "Semantic explanation needs an external story-world frame with selective subjective evidence inserts.",
+      "speech_unit_id": "SU032",
+      "start_anchor": {
+        "speech_unit_id": "SU032",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU032",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB033",
+      "semantic_shot_id": "SRCH_S016",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        50,
+        50
+      ],
+      "narration_fragment": "有没有例外。",
+      "image_state": "exception line becomes explicit check point",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "NOTICE_OBJECT",
+      "shot_function": "MONTAGE_STEP",
+      "shot_size": "INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "MONTAGE",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 108.2338,
+      "duration": 1.4715,
+      "end": 109.7053,
+      "pov_reason": "Viewer must share the protagonist's reading/discovery of the causal information state.",
+      "speech_unit_id": "SU033",
+      "start_anchor": {
+        "speech_unit_id": "SU033",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU033",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB034",
+      "semantic_shot_id": "SRCH_S016",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        51,
+        51
+      ],
+      "narration_fragment": "几句话放在一起以后，结论到底是什么。",
+      "image_state": "multiple relevant lines are considered together before final conclusion",
+      "inherited_visual_intention": "CLARIFY_MECHANISM",
+      "local_visual_intention": "CLARIFY_MECHANISM",
+      "shot_function": "MONTAGE_STEP",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "MONTAGE",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 109.7053,
+      "duration": 2.86,
+      "end": 112.5653,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV.",
+      "speech_unit_id": "SU034",
+      "start_anchor": {
+        "speech_unit_id": "SU034",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU034",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB035",
+      "semantic_shot_id": "SRCH_S017",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        52,
+        54
+      ],
+      "narration_fragment": "这一步如果错了，就会出现一种特别有迷惑性的答案：\n\n来源是真的。\n\n链接也是真的。",
+      "image_state": "one answer package remains on screen while source and link are confirmed real",
+      "inherited_visual_intention": "BUILD_PATTERN",
+      "local_visual_intention": "BUILD_PATTERN",
+      "shot_function": "PAYOFF",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 112.5653,
+      "duration": 5.73,
+      "end": 118.2953,
+      "pov_reason": "External/objective story-world view best establishes the relation or mechanism without pretending to be literal eye POV.",
+      "speech_unit_id": "SU035",
+      "start_anchor": {
+        "speech_unit_id": "SU035",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU035",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB036",
+      "semantic_shot_id": "SRCH_S017",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        55,
+        55
+      ],
+      "narration_fragment": "甚至引用的句子也是真的。",
+      "image_state": "quoted sentence is also confirmed real",
+      "inherited_visual_intention": "BUILD_PATTERN",
+      "local_visual_intention": "NOTICE_OBJECT",
+      "shot_function": "PAYOFF",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "OBJECTIVE_INSERT",
+      "camera_angle": "OBJECT_NORMAL_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 118.2953,
+      "duration": 2.02,
+      "end": 120.3153,
+      "pov_reason": "The quoted sentence must be isolated as verified evidence; showing the character would dilute the proof.",
+      "speech_unit_id": "SU036",
+      "start_anchor": {
+        "speech_unit_id": "SU036",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU036",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB037",
+      "semantic_shot_id": "SRCH_S017",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        56,
+        56
+      ],
+      "narration_fragment": "只有最后那个结论，是错的。",
+      "image_state": "final conclusion alone remains mismatched/wrong",
+      "inherited_visual_intention": "BUILD_PATTERN",
+      "local_visual_intention": "LAND_PAYOFF",
+      "shot_function": "PAYOFF",
+      "shot_size": "INSERT",
+      "pov_mode": "OBJECTIVE_INSERT",
+      "camera_angle": "OBJECT_NORMAL_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH",
+      "start": 120.3153,
+      "duration": 2.34,
+      "end": 122.6553,
+      "pov_reason": "The final wrong conclusion itself is the payoff object; no external character view is needed.",
+      "speech_unit_id": "SU037",
+      "start_anchor": {
+        "speech_unit_id": "SU037",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU037",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB038",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        57,
+        57
+      ],
+      "narration_fragment": "所以现在我看 AI 搜索结果，已经不太把“有引用”当成正确证明了。",
+      "image_state": "IP sees a cited AI answer but does not treat the citation badge as proof by itself",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "READ_REACTION",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 122.6553,
+      "duration": 4.6107,
+      "end": 127.266,
+      "pov_reason": "Character reaction/body state is the dramatic information, so the audience must watch the protagonist.",
+      "speech_unit_id": "SU038",
+      "start_anchor": {
+        "speech_unit_id": "SU038",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU038",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB039",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        58,
+        58
+      ],
+      "narration_fragment": "如果答案不重要，我当然也不会每次都去查。",
+      "image_state": "a low-stakes answer passes without a verification ritual; IP keeps working normally",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "FEEL_RELATION",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 127.266,
+      "duration": 2.9749,
+      "end": 130.2409,
+      "pov_reason": "External spatial/behavior relation carries the meaning better than literal first-person view.",
+      "speech_unit_id": "SU039",
+      "start_anchor": {
+        "speech_unit_id": "SU039",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU039",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB040",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        59,
+        59
+      ],
+      "narration_fragment": "但如果这件事真的会让我花钱、改方案，或者做一个很难撤回来的决定，",
+      "image_state": "money / plan / hard-to-reverse consequences enter the working decision space and cause a visible stop",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "COMPARE_STATES",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_WIDE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 130.2409,
+      "duration": 5.12,
+      "end": 135.3609,
+      "pov_reason": "Current POV best serves the locked visual intention and information hierarchy.",
+      "speech_unit_id": "SU040",
+      "start_anchor": {
+        "speech_unit_id": "SU040",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU040",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB041",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        60,
+        60
+      ],
+      "narration_fragment": "我会多问一句：",
+      "image_state": "IP pauses before action and turns back to the source/answer with one deliberate follow-up",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "FOLLOW_ACTION",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH_SETUP",
+      "start": 135.3609,
+      "duration": 1.35,
+      "end": 136.7109,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event.",
+      "speech_unit_id": "SU041",
+      "start_anchor": {
+        "speech_unit_id": "SU041",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU041",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB042",
+      "semantic_shot_id": "SRCH_S018",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        61,
+        61
+      ],
+      "narration_fragment": "“这个来源里的哪句话，真的支持你的结论？”",
+      "image_state": "verification question becomes the action: 哪句话真的支持这个结论",
+      "inherited_visual_intention": "FOLLOW_ACTION",
+      "local_visual_intention": "FOLLOW_ACTION",
+      "shot_function": "ACTION",
+      "shot_size": "MEDIUM_INSERT",
+      "pov_mode": "IP_POV",
+      "camera_angle": "SCREEN_NORMAL_IP_POV",
+      "image_relation_grammar": "CONTRAST",
+      "visual_intensity": "LOW_MEDIUM",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "PUNCH",
+      "start": 136.7109,
+      "duration": 3.35,
+      "end": 140.0609,
+      "pov_reason": "The verification question is the protagonist's new behavior; the viewer should inhabit the exact question being asked.",
+      "speech_unit_id": "SU042",
+      "start_anchor": {
+        "speech_unit_id": "SU042",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU042",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    },
+    {
+      "visual_beat_id": "SRCH_VB043",
+      "semantic_shot_id": "SRCH_S019",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        62,
+        62
+      ],
+      "narration_fragment": "因为 AI 搜索最容易让我放松警惕的地方，可能恰恰就是——",
+      "image_state": "final setup returns to the seductive feeling of a correct webpage",
+      "inherited_visual_intention": "LAND_PAYOFF",
+      "local_visual_intention": "BUILD_ANTICIPATION",
+      "shot_function": "PAYOFF",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "RELEASE",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "NORMAL",
+      "start": 140.0609,
+      "duration": 4.07,
+      "end": 144.1309,
+      "pov_reason": "Current POV best serves the locked visual intention and information hierarchy.",
+      "speech_unit_id": "SU043",
+      "start_anchor": {
+        "speech_unit_id": "SU043",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU043",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC"
+    },
+    {
+      "visual_beat_id": "SRCH_VB044",
+      "semantic_shot_id": "SRCH_S019",
+      "sequence_id": "SEQ6",
+      "paragraph_range": [
+        63,
+        63
+      ],
+      "narration_fragment": "它真的给我找对了网页。",
+      "image_state": "opening callback resolves: official page is correct, and IP clicks/checks it before accepting the conclusion",
+      "inherited_visual_intention": "LAND_PAYOFF",
+      "local_visual_intention": "LAND_PAYOFF",
+      "shot_function": "PAYOFF",
+      "shot_size": "MEDIUM_CLOSE",
+      "pov_mode": "OBSERVER",
+      "camera_angle": "EYE_LEVEL_OR_SCREEN_NORMAL_WHERE_INSERT",
+      "image_relation_grammar": "CONTINUITY",
+      "visual_intensity": "RELEASE",
+      "timing_source": "PLANNED_PRODUCTION_SRT",
+      "timing_kind": "FINAL",
+      "start": 144.1309,
+      "duration": 2.59,
+      "end": 146.7209,
+      "pov_reason": "External view preserves the character's behavior/action relationship as the story event.",
+      "speech_unit_id": "SU044",
+      "start_anchor": {
+        "speech_unit_id": "SU044",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU044",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE"
+    }
+  ]
+}
