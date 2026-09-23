@@ -1,8 +1,8 @@
 # Mini Craft Night Kit — PROJECT STORAGE MANIFEST
 
-Status: PRE-DEPLOYMENT FROZEN PLAN / REMOTE READBACK PENDING
+Status: PRE-DEPLOYMENT FROZEN PLAN / K6R3 READ-ONLY HOST PREFLIGHT PASS / REMOTE STORAGE NOT CREATED
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6R3_SHARED_VPS_READONLY_PREFLIGHT_COMPLETION`
+Current Gate: `K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
@@ -156,7 +156,7 @@ No broad Docker prune.
 
 ## 11. Resource footprint / remote reality
 
-A bounded Reviewer SSH read-back on 2026-09-24 found the recorded host reachable, 88G free on the 96G root filesystem, and no Mini Craft project namespaces. Full K6 Phase A resource/topology and deployment-footprint evidence remain pending; this snapshot does not authorize a write.
+A bounded Reviewer SSH read-back on 2026-09-24 found the recorded host reachable, 88G free on the 96G root filesystem, and no Mini Craft project namespaces. The full K6R3 Phase A read-only host inventory was accepted by Reviewer on 2026-09-24: 5.5 GiB RAM available, 88G root free, existing shared services protected and no Mini Craft namespace collision. Production package footprint and before/after deployment delta remain pending; this snapshot does not authorize a write.
 
 Before the first K6 deployment write, record:
 
@@ -167,8 +167,8 @@ Before the first K6 deployment write, record:
 - before/after deployment delta.
 
 ```text
-EXPECTED_INITIAL_FOOTPRINT=PENDING_K6R3_FULL_PREFLIGHT
-RESOURCE_HEADROOM=PENDING_K6R3_FULL_PREFLIGHT
+EXPECTED_INITIAL_FOOTPRINT=PENDING_K6_PHASE_B_PACKAGE_SEAL
+RESOURCE_HEADROOM=K6R3_HOST_BASELINE_PASS; DEPLOYMENT_DELTA_PENDING
 ```
 
 If headroom cannot be proven safe, stop before write.
