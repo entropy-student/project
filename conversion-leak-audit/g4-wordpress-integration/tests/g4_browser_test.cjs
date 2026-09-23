@@ -1,11 +1,11 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { chromium } = require('playwright');
+const { chromium } = require(process.env.CLA_PLAYWRIGHT_MODULE || 'playwright');
 
 const BASE = process.env.CLA_WORDPRESS_BASE || 'http://127.0.0.1:8081/';
 const DEMO_HOST = 'https://demo-store-golden-v1.example/';
-const screenshotDir = path.resolve(__dirname, '..', '..', 'docs', 'evidence', 'g4-screenshots');
+const screenshotDir = path.resolve(process.env.CLA_G4_SCREENSHOT_DIR || path.resolve(__dirname, '..', '..', 'docs', 'evidence', 'g4-screenshots'));
 const incompleteReasons = new Set(['RATE_LIMITED', 'BLOCKED', 'LOGIN_REQUIRED', 'JS_INCOMPLETE', 'GEO_CONTEXT_MISMATCH', 'SITE_UNAVAILABLE', 'UNKNOWN_FAILURE']);
 fs.mkdirSync(screenshotDir, { recursive: true });
 
@@ -34,6 +34,7 @@ async function submitFixture(page, fixture) {
   const reference = await page.locator('[data-cla-scan-reference]').last().textContent();
   const findingRules = await page.locator('.cla-g4-finding').evaluateAll((nodes) => nodes.map((node) => node.dataset.ruleId));
   const resultText = await page.locator('[data-cla-results]').innerText();
+  assert.doesNotMatch(resultText, /\b(?:G[1-5](?:\.\d+)?|V1|Gate|frozen rules?)\b/i, `${fixture}: no internal project language in public results`);
   const analyticsEvents = await page.evaluate(() => window.claAnalyticsEvents || []);
   const phases = await page.evaluate(() => window.claProgressPhases || []);
   assert.equal(api.create, 1, `${fixture}: exactly one create request`);

@@ -1,0 +1,5 @@
+/wordpress-g1-baseline/runtime/
+/wordpress-g1-baseline/.env
+/scanner/*.sqlite3
+**/__pycache__/
+*.py[cod]

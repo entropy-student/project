@@ -229,6 +229,51 @@ Candidate:
 
 Then `STOP_AT_REVIEWER`.
 
+## G4.6 Acquisition / SEO Readiness — 2026-09-23
+
+```text
+BASE_MAIN=8e0f044541598a1eee6a304df8a7c6b6368bf473
+BRANCH=codex/g4-6-acquisition-seo-readiness
+INITIAL_IMPLEMENTATION_COMMIT=c26f9ca089b3020beb8f991b0a9a53bc697d5f26
+```
+
+The implementation began from BASE_MAIN `8e0f044541598a1eee6a304df8a7c6b6368bf473`. Reviewer governance commits `774d5db15d9544f4e13d1fc2ecf36c24b14187d9` and `a1fdbaeba3378e7b0f590549605cb911c32bf2a3` were cherry-picked without merging main. The pre-push fetch resolved latest `origin/main` to `994987cdac9a9fe1402fc1829daef45108735027`; intervening main changes were in `ai-story-showrunner/` only, and all required current governance files compare identical to `origin/main`. The unmerged G4.6 candidate implementation remains on the dedicated branch. No unrelated Mini Craft commits or sibling project changes were incorporated.
+
+Candidate verification summary:
+
+```text
+MESSAGE_READINESS=PASS
+DEMO_PROOF=PASS
+NAV_READINESS=PASS
+HOME_META=PASS; HOME_META_NO_SIGNUP=PASS; HOW_IT_WORKS_META=PASS; DEMO_META=PASS; FAQ_META=PASS
+CANONICAL=PASS
+SCAN_RESULT_NOINDEX=PASS
+SCAN_RESULT_CANONICAL_HOME=PASS
+SITEMAP=PASS; SITEMAP_UNFINISHED_SURFACES_EXCLUDED=PASS
+ROBOTS_READINESS=PASS
+H1_SANITY=PASS
+PUBLIC_INTERNAL_TERMS=0
+BLOG_PRIMARY_NAV=HIDDEN; BLOG_NOINDEX=PASS; BLOG_SITEMAP_EXCLUDED=PASS
+PRICING_PRIMARY_NAV=HIDDEN; PRICING_NOINDEX=PASS; PRICING_SITEMAP_EXCLUDED=PASS
+ANALYTICS_CONTRACT=PASS
+SCANNER_REGRESSION=55/55 PASS
+WORDPRESS_REGRESSION=20/20 PASS
+SEO_READINESS_ACCEPTANCE=44/44 PASS
+G4_BROWSER_REGRESSION=PASS
+PAYMENT_ACTIONS=0; VPS_WRITES=0; PRODUCTION_SECRETS=0
+OUT_OF_SCOPE_CHANGES=0
+```
+
+New repeatable acceptance: `wordpress-g1-baseline/acceptance/run_seo_readiness_checks.py`. Local screenshot set (4 PNGs) and detailed readiness/production-deferred evidence are under `docs/evidence/g4-6-screenshots/` and `docs/evidence/G4_6_SEO_READINESS.md`. The site remained local-only at `http://127.0.0.1:8084/`; no production host, payment, VPS, or secret was used. Scanner rules and semantics are unchanged.
+
+Meta-contract completion commit: `ef9d31e4a8170028c549e4493c2c77f4bd24adc7`. Home description is `Get a free evidence-backed Top 3 from public storefront pages. No signup or admin access required.` The repeatable acceptance explicitly checks `HOME_META_NO_SIGNUP=PASS`; total is 44/44. Scanner regression remains 55/55 and WordPress baseline remains 20/20.
+
+Local workspace hygiene: five verified CLA-owned items (three full review packages and two ZIPs) were moved to `_project-artifacts/conversion-leak-audit/`; nothing was deleted. Active runtime/workspaces were not moved. `.tmp-cdp-test2` and the two `.tmp-k4-*` items remain untouched because they are active and/or their CLA ownership is unproven. Local index: `00_INDEX.md`. Nothing from this archive is staged or committed (`GIT_ARTIFACT_ARCHIVE_FILES=0`).
+
+Known limitation: metadata, canonical, sitemap, robots, and page content were validated on local WordPress; production-domain crawl/index behavior and the explicitly deferred production checklist have not been exercised. Owner action: `NONE`. Recommended Reviewer decision: `REVIEW_G4_6_ACQUISITION_SEO_READINESS`.
+
+Candidate result: `PASS_CANDIDATE_G4_6_META_CONTRACT_COMPLETE`. Recommended Reviewer decision: `REVIEW_G4_6_META_CONTRACT_COMPLETION_ONLY`. Owner action: `NONE`. Executor does not declare Gate PASS; push only the dedicated branch, do not merge main, and `STOP_AT_REVIEWER`.
+
 ## G4.5 Visual Editability Rework — 2026-09-23
 
 Gate: `G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
