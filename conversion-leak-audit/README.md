@@ -24,7 +24,9 @@ G5  Full Fix Queue + LLM + Skill Dogfood   PASS
 VPS / 支付 / 生产                          HOLD
 ```
 
-G5 已正式 PASS 并合入 `main`。当前进入 G6 VPS Onboarding + Storage：只冻结和验证项目专属存储、备份恢复、Secret 元数据、Compose 隔离、资源预算与私有端口计划；不部署业务、不开放公网、不修改共享 80/443/反向代理/防火墙。
+G5 已正式 PASS 并合入 `main`。G6 已完成只读 VPS 预检，但 Owner 在首次 VPS 写入前暂停项目。当前状态：`PAUSED_BY_OWNER`；未封存、未部署、未执行任何 CLA VPS 写入。
+
+恢复项目时先阅读：`docs/PROJECT_PAUSE_HANDOFF.md`。
 
 ## 阅读顺序
 
