@@ -48,13 +48,17 @@ G5 is closed with:
 
 `PASS_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
 
-No Executor gate is currently released.
-
-Next roadmap gate:
+Current authorized Executor Gate:
 
 `G6_VPS_ONBOARDING_STORAGE`
 
-G6 remains HOLD until Reviewer defines a dedicated VPS/onboarding/storage execution contract. Do not start deployment, public exposure, domain/HTTPS, payment, or production Secret work from prior informal instructions.
+Execute only:
+
+`G6_EXECUTION_CONTRACT.md`
+
+G6 may freeze/create project-owned storage and run disposable restore canaries. It may not deploy the application for service use or modify shared 80/443, reverse proxy, tunnel, firewall, Docker daemon, shared network, DNS, payment, or production Secrets.
+
+Reviewer will inspect G6 host-local evidence and decide PASS / RETURN before G7 is released.
 
 ## 2026-09-22 Takeover Reconciliation
 
@@ -254,3 +258,22 @@ PR #11 merged to main at `75c789cd4612790414bc1dc05d829e6945c539f8`.
 G6 is next in the roadmap but remains HOLD pending a dedicated Reviewer contract.
 
 Owner intervention required: NONE for G5 closure.
+
+
+## 2026-09-23 G6 Release
+
+Current Gate:
+
+`G6_VPS_ONBOARDING_STORAGE`
+
+Contract:
+
+`G6_EXECUTION_CONTRACT.md`
+
+Allowed remote writes are restricted to:
+- `/srv/apps/conversion-leak-audit`
+- `/srv/data/conversion-leak-audit`
+- `/srv/backups/conversion-leak-audit`
+- disposable project-scoped restore canaries.
+
+G7 private application deployment remains HOLD until G6 Reviewer PASS.
