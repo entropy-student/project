@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "project": "story-visual-asset-engine",
+  "updated_at": "2026-09-23",
+  "role": "VISUAL_ASSET_RND_AND_PRODUCTION_SYSTEM",
+  "canonical_truth": {
+    "handoff": "REVIEWER_HANDOFF.md",
+    "history": "PROJECT_RECORD.md",
+    "evidence": "EXECUTION_EVIDENCE.md"
+  },
+  "governance": {
+    "source": "entropy-student/spike.skill/vps-project-governance",
+    "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
+  },
+  "final_goal": "Reusable, provider-neutral story visual asset system that searches/reuses/derives/composites accepted assets before generating new images.",
+  "current_gate": {
+    "id": "P0_RESEARCH_AND_PROBLEM_DEFINITION",
+    "status": "IN_PROGRESS",
+    "next": "Define the controlled three-style benchmark, minimal asset schema, and measurement plan."
+  },
+  "style": {
+    "locked": false,
+    "current_hypothesis": "LIMITED_2D_STORY_COMIC_CUTOUT_FRIENDLY",
+    "benchmark_required": true
+  },
+  "cost_truth": {
+    "documented": "No verified evidence that semantic art style alone lowers billed image-output tokens at fixed model/quality/size.",
+    "strategy": "Reduce new generations/retries; exploit lower quality/resolution where acceptable; reuse/derive/composite first."
+  },
+  "proposed_reuse_order": [
+    "EXACT_REUSE",
+    "REFRAME",
+    "DERIVE_EDIT",
+    "COMPOSITE",
+    "NEW_GENERATE"
+  ],
+  "integration": {
+    "target": "ai-story-showrunner",
+    "status": "BLOCKED_UNTIL_THIS_PROJECT_PILOT_PASS"
+  },
+  "unknowns": [
+    "Best audience-facing style among reuse-friendly candidates.",
+    "Actual provider-specific cost delta between candidate styles after controlling for size/quality.",
+    "First-pass acceptance and retry rates by style.",
+    "Minimum useful reusable asset set for one recurring IP.",
+    "Threshold at which embedding retrieval adds value beyond structured tags."
+  ],
+  "owner_intervention_required": false
+}
