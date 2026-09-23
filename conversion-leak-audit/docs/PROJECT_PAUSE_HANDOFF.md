@@ -227,3 +227,18 @@ Remaining:
 - the two previously listed `.tmp-k4-*` paths were not present at verification time.
 
 Next local-only step: identify and release the G4 workspace file lock, then move the G4 workspace into the umbrella directory. Do not force-delete or touch VPS.
+
+
+## G4 consolidation lock — unresolved access denied
+
+Final consolidation retry returned:
+
+`RETURN_G4_LOCK_OWNER_UNRESOLVED`
+
+The local lock-owner query returned Access Denied, so no process identity/ownership could be safely established. No process was stopped, G4 was not moved, canonical Git remained unchanged, and VPS actions remained zero.
+
+Remaining known consolidation blocker:
+
+`workspaces\conversion-leak-audit-g4`
+
+Recommended next local-only action: reboot the local Windows machine, then before opening Docker Desktop, VS Code, browsers, terminals, or CLA local runtimes, retry moving the G4 workspace into the umbrella directory. If the lock persists immediately after reboot, use an elevated local handle-inspection tool/process only to identify the owner before any process termination.
