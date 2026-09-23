@@ -225,6 +225,8 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - reducing `temperature` from 1.0 to 0.8 did not make e10 sufficiently stable;
 - switching only the GPT checkpoint to `narrator01_v2pp-e5.ckpt`, while keeping SoVITS e8, the same reference audio/text, target text, speed 1, top_k 15, top_p 1 and temperature 0.8, produced 3/3 successful generations;
 - current GPT-SoVITS QA candidate is therefore `narrator01_v2pp-e5.ckpt + narrator01_v2pp_e8_s248.pth` with `temperature=0.8`; e10 and e15 are rejected from the current candidate path for stability;
+- follow-up repeated QA on the curiosity/suspicion sentence produced 3/3 successful generations with speaker timbre judged similar to the target voice, but the three runs had noticeably different prosody/intonation;
+- current interpretation: speaker-similarity and basic generation stability are promising, while prosody determinism remains unresolved and must be controlled before batch production;
 - this is still a candidate-quality result, not canonical promotion.
 
 Current technical next action:
