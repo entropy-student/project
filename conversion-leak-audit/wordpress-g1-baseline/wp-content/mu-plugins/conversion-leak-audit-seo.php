@@ -29,7 +29,7 @@ function cla_g46_page_titles(): array {
 
 function cla_g46_page_descriptions(): array {
     return [
-        'home' => 'Get a free Top 3 from public storefront pages, backed by visible evidence. No admin access is needed.',
+        'home' => 'Get a free evidence-backed Top 3 from public storefront pages. No signup or admin access required.',
         'how-it-works' => 'Learn how this ecommerce conversion audit checks a limited set of public storefront pages, records evidence, and marks incomplete scans clearly.',
         'demo' => 'See a synthetic example ecommerce storefront audit with three evidence-backed findings, their sources, first moves, and limitations.',
         'faq' => 'Answers about the ecommerce conversion audit, public-page scanning, evidence, access, and scan limitations.',

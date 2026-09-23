@@ -175,7 +175,7 @@ expected_titles = {
     'faq': 'Ecommerce Conversion Audit FAQ | Conversion Leak Audit',
 }
 expected_descriptions = {
-    'home': ['free top 3', 'public storefront pages', 'evidence', 'no admin access'],
+    'home': ['free', 'top 3', 'public storefront pages', 'evidence-backed', 'admin access'],
     'how-it-works': ['ecommerce conversion audit', 'public storefront pages', 'evidence'],
     'demo': ['synthetic', 'example ecommerce storefront audit', 'evidence-backed'],
     'faq': ['ecommerce conversion audit', 'public-page scanning', 'limitations'],
@@ -185,12 +185,19 @@ for slug in expected_titles:
     parser = pages[slug]
     route = routes[slug]
     expected_canonical = urllib.parse.urljoin(BASE_URL + '/', route.lstrip('/'))
-    check(f'{slug.upper().replace("-", "_")}_META', parser.title == expected_titles[slug] and len(parser.descriptions) == 1 and all(term in parser.descriptions[0].lower() for term in expected_descriptions[slug]), f'title={parser.title!r}; descriptions={parser.descriptions!r}')
+    description = parser.descriptions[0].lower() if parser.descriptions else ''
+    description_ok = all(term in description for term in expected_descriptions[slug])
+    if slug == 'home':
+        description_ok = description_ok and re.search(r'\bno\s+(?:signup\s+or\s+)?admin access\b|\bwithout admin access\b|\badmin access (?:is )?not required\b|\bdoes not require admin access\b', description) is not None
+    check(f'{slug.upper().replace("-", "_")}_META', parser.title == expected_titles[slug] and len(parser.descriptions) == 1 and description_ok, f'title={parser.title!r}; descriptions={parser.descriptions!r}')
     check(f'canonical:{slug}', len(parser.canonicals) == 1 and parser.canonicals[0].rstrip('/') == expected_canonical.rstrip('/'), f'canonical={parser.canonicals!r}')
     check(f'robots:indexable:{slug}', len(parser.robots) == 1 and 'noindex' not in parser.robots[0] and 'nofollow' not in parser.robots[0], f'robots={parser.robots!r}')
     levels = [level for level, _ in parser.headings]
     hierarchy_ok = parser.h1_count == 1 and bool(levels) and levels[0] == 1 and all(current <= previous + 1 for previous, current in zip(levels, levels[1:]))
     check(f'h1_sanity:{slug}', hierarchy_ok, f'h1={parser.h1_count}; headings={parser.headings!r}')
+
+home_description = pages['home'].descriptions[0].lower() if pages['home'].descriptions else ''
+check('HOME_META_NO_SIGNUP', re.search(r'\bno[\s-]+sign[\s-]?up\b|\bwithout\s+(?:a\s+)?signing\s+up\b|\bno account required\b', home_description) is not None, f'description={home_description!r}')
 
 home_text = pages['home'].visible_text.lower()
 check('message_readiness', 'evidence-first ecommerce conversion audit' in home_text and 'find friction that may be making customers hesitate' in home_text and 'free scan' in home_text and 'public pages' in home_text and 'evidence-backed top 3' in home_text and 'no admin access' in home_text)

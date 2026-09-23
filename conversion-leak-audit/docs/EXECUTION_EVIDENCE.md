@@ -477,17 +477,18 @@ Gate: `G4_6_ACQUISITION_SEO_READINESS`
 ```text
 BASE_MAIN=8e0f044541598a1eee6a304df8a7c6b6368bf473
 BRANCH=codex/g4-6-acquisition-seo-readiness
-IMPLEMENTATION_COMMIT=c26f9ca089b3020beb8f991b0a9a53bc697d5f26
+INITIAL_IMPLEMENTATION_COMMIT=c26f9ca089b3020beb8f991b0a9a53bc697d5f26
 ```
-The final `git fetch origin` confirmed `origin/main` remained at BASE_MAIN with no `conversion-leak-audit/**` changes. This is a clean project-scoped sparse workspace. No merge was made.
+The initial implementation used BASE_MAIN `8e0f044541598a1eee6a304df8a7c6b6368bf473`. Reviewer governance commits `774d5db15d9544f4e13d1fc2ecf36c24b14187d9` and `a1fdbaeba3378e7b0f590549605cb911c32bf2a3` were cherry-picked without merging main. The final fetch resolved latest `origin/main` to `796c4549442eca084abeeb0c26deb7a018bbaf4c`; intervening main commits were outside this project, and all required current governance files compare identical to `origin/main`. The unmerged G4.6 candidate implementation remains on the dedicated branch. No unrelated Mini Craft commits or sibling project changes were incorporated.
 
-Readiness evidence and screenshots: [G4_6_SEO_READINESS.md](evidence/G4_6_SEO_READINESS.md) and `docs/evidence/g4-6-screenshots/` (4 Playwright PNGs). The readiness acceptance passed 43/43 checks on local WordPress `http://127.0.0.1:8084/`. This includes independent Home / How it works / Demo / FAQ metadata, exactly one canonical per indexable page, static metadata plus noindex and clean-Home canonical on `?scan_id=`, native sitemap / robots behavior, Blog and Pricing hidden + noindex + sitemap-excluded, one H1 per indexable page, Demo proof/CTA, and zero customer-visible internal project terms.
+Readiness evidence and screenshots: [G4_6_SEO_READINESS.md](evidence/G4_6_SEO_READINESS.md) and `docs/evidence/g4-6-screenshots/` (4 Playwright PNGs). On the meta-contract completion run, readiness acceptance passed 44/44 checks on local WordPress `http://127.0.0.1:8084/`. This includes explicit `HOME_META_NO_SIGNUP`, independent Home / How it works / Demo / FAQ metadata, exactly one canonical per indexable page, static metadata plus noindex and clean-Home canonical on `?scan_id=`, native sitemap / robots behavior, Blog and Pricing hidden + noindex + sitemap-excluded, one H1 per indexable page, Demo proof/CTA, and zero customer-visible internal project terms.
 
 ```text
 MESSAGE_READINESS=PASS
 DEMO_PROOF=PASS
 NAV_READINESS=PASS
 HOME_META=PASS
+HOME_META_NO_SIGNUP=PASS
 HOW_IT_WORKS_META=PASS
 DEMO_META=PASS
 FAQ_META=PASS
@@ -503,7 +504,7 @@ PRICING_PRIMARY_NAV=HIDDEN; PRICING_NOINDEX=PASS; PRICING_SITEMAP_EXCLUDED=PASS
 ANALYTICS_CONTRACT=PASS
 SCANNER_REGRESSION=55/55 PASS
 WORDPRESS_REGRESSION=20/20 PASS
-SEO_READINESS_ACCEPTANCE=43/43 PASS
+SEO_READINESS_ACCEPTANCE=44/44 PASS
 G4_BROWSER_REGRESSION=PASS
 PAYMENT_ACTIONS=0
 VPS_WRITES=0
@@ -514,3 +515,9 @@ OUT_OF_SCOPE_CHANGES=0
 Scanner regression: `py -3.12 -m pytest -q` (`55 passed`). WordPress baseline: `py -3.12 -X utf8 acceptance/run_asset_checks.py` (`TOTAL=20 PASS=20 FAIL=0`). The G4 browser suite was rerun against local WordPress and deterministic Scanner fixture; it covered backend-driven progress through `PRIORITIZING`, 0/1/2/3 findings, incomplete/blocked/rate-limited/timeout, unsafe URL fail-closed, refresh, analytics, Golden Demo, and mobile submission. No Scanner rules or semantics changed. No analytics provider or paid action was introduced.
 
 Production-deferred: Search Console, formal-domain canonical, HTTPS, production robots.txt and sitemap submission, favicon/site name, Privacy, Terms, Organization schema, real Core Web Vitals. Known limitation: SEO and crawl readiness are verified locally only; no production domain was configured or tested. Owner intervention required: `NONE`. Recommended Reviewer decision: `REVIEW_G4_6_ACQUISITION_SEO_READINESS`. Executor result is a candidate only and stops at Reviewer.
+
+Meta-contract completion: Home description now reads `Get a free evidence-backed Top 3 from public storefront pages. No signup or admin access required.` `HOME_META_NO_SIGNUP=PASS` is a distinct required assertion; final SEO acceptance is 44/44. Scanner 55/55 and WordPress 20/20 were rerun and passed.
+
+Workspace hygiene (local-only, outside Git): five verified CLA-owned review artifacts (three package directories and two ZIPs) were moved under `_project-artifacts/conversion-leak-audit/`. No files were deleted. The active fake-Scanner runtime directory and active workspaces were kept in place; `.tmp-cdp-test2` and two `.tmp-k4-*` directories remain untouched due to active use or unresolved ownership. The artifact index documents the mapping and future output rule. `GIT_ARTIFACT_ARCHIVE_FILES=0`.
+
+Candidate result: `PASS_CANDIDATE_G4_6_META_CONTRACT_COMPLETE`. Owner action: `NONE`. Recommended Reviewer decision: `REVIEW_G4_6_META_CONTRACT_COMPLETION_ONLY`. Executor stops at Reviewer and does not declare the Gate PASS.
