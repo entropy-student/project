@@ -1351,3 +1351,17 @@ Canonical workspace:
 `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace`
 
 After Owner confirms manual cleanup, proceed to Growth/SEO Readiness before K5.
+
+
+## Local cleanup checkpoint accepted
+
+Owner manually removed the two shared-root K4 browser-temp folders. Remaining Gate-local browser/debug artifacts are intentionally retained and no longer block progress.
+
+## K4.5 Growth / SEO Readiness Audit
+
+Current Gate:
+`K4_5_GROWTH_SEO_READINESS_AUDIT`
+
+This audit occurs before K5 and before real traffic. It will establish technical SEO, Search/Merchant readiness, instrumentation, analytics, UTM, structured-data, lifecycle, privacy, CRO/trust, and Owner-action gaps without implementing changes.
+
+The Growth Playbook principle remains: instrumentation before meaningful traffic; prioritize the biggest unknown/constraint rather than mass content production.
