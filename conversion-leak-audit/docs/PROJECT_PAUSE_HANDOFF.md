@@ -202,3 +202,28 @@ Rules:
 - unresolved temp directories stay outside until ownership is proven;
 - move only; do not delete project data during consolidation;
 - no VPS action.
+
+
+## Local consolidation follow-up — G4 lock remains
+
+Result:
+
+`RETURN_LOCAL_CONSOLIDATION_MOVE_BLOCKED`
+
+Completed:
+- G4.5 workspace content consolidated;
+- G4.6 workspace content consolidated;
+- G5 workspace consolidated;
+- G6 workspace consolidated;
+- CLA project artifacts consolidated under the local umbrella directory;
+- three confirmed CLA temp directories consolidated;
+- canonical Git checkout unchanged;
+- VPS actions: 0.
+
+Remaining:
+- `workspaces\conversion-leak-audit-g4` is still in place because a local file handle/process holds it open;
+- three empty G4.6 source directories remain at the old location;
+- `.tmp-cdp-test2` and `%TEMP%\studio-siteurl-prepend-G4l7Ps` remain unresolved and intentionally untouched;
+- the two previously listed `.tmp-k4-*` paths were not present at verification time.
+
+Next local-only step: identify and release the G4 workspace file lock, then move the G4 workspace into the umbrella directory. Do not force-delete or touch VPS.
