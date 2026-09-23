@@ -1,0 +1,13 @@
+Gate: K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH
+Commit SHA (source baseline at capture): 2770c9ed6992993772d4496388fd1de1c561d9c2
+
+mobile/product-390.png | Product | 390px | populated product | gallery unchanged
+mobile/faq-390.png | FAQ | 390px
+mobile/shipping-390.png | Shipping & Returns | 390px
+mobile/contact-390.png | Contact | 390px | native Name, Email, Message, Send message visible
+mobile/cart-390.png | Cart | 390px | populated with 1 test item; no order
+mobile/checkout-390.png | Checkout | 390px | populated with 1 test item; United States; local test-only method selected; Place order visible; not clicked
+desktop/cart-1440.png | Cart | 1440px | populated with 1 test item; no order
+desktop/checkout-1440.png | Checkout | 1440px | populated with 1 test item; United States; local test-only method selected; Place order visible; not clicked
+
+No thank-you page captured; no new order was created. No payment action was performed.
