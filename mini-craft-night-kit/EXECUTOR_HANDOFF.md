@@ -1486,3 +1486,42 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 Next boundary: Reviewer/Owner must select which lead(s), if any, may be contacted. Supplier contact is not performed by this Gate; sample purchase requires separate explicit Owner authorization. The public listing records do not settle US shipping, landed cost, licensed media use, or supplier-specific remedies.
+
+
+## K5_RELEASE_CANDIDATE_QA — Executor Handoff / Reviewer Return (2026-09-23)
+
+```text
+GATE=K5_RELEASE_CANDIDATE_QA
+RESULT=RETURN_REVIEWER_ACTIVE_RUNTIME_BASELINE_DRIFT
+SUMMARY=Local 8093 runtime is healthy and listed routes return 200, but the rendered storefront conflicts with the K4 accepted baseline: Chinese WooCommerce UI, Accessories taxonomy, and three inherited demo products remain visible. Stopped before mutable QA and deployment packaging.
+ACTIVE_RUNTIME=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-k3r4-mariadb-recovery
+WORDPRESS_CONTAINER=UP;IMAGE=wordpress:6.8.2-php8.3-apache
+MARIADB_CONTAINER=HEALTHY;IMAGE=mariadb:11.4.7
+ROUTE_HTTP=200_HOME_SHOP_PRODUCT_FAQ_SHIPPING_CONTACT_CART_CHECKOUT_ACCOUNT_WP_JSON
+ADMIN_PRODUCT_EDIT=ADMIN_SESSION_AND_EDIT_LINK_OBSERVED;SAVE_OR_MEDIA_UPLOAD_NOT_TESTED
+FRONTEND_LANGUAGE=CHINESE_UI_OBSERVED;EXPECTED_ENGLISH_NOT_MET
+PRODUCT_CATEGORY=Accessories;EXPECTED_CRAFT_KITS_NOT_MET
+LEGACY_DEMO_PRODUCTS=VISIBLE_USB-C_CABLE;UNIVERSAL_CHARGER;REMOTE_CONTROL
+TEST_PRODUCT=JPY_1;STOCK_8;SKU_MCK-LOCAL-TEST-001;UNCHANGED_LOCAL_QA_ONLY
+ADMIN_CRUD_MEDIA_ORDERS_RESPONSIVE_GUTENBERG_PLUGIN_DRIFT=NOT_TESTED
+PAYPAL_SANDBOX=NOT_READ;UNCHANGED
+DEPLOYMENT_MANIFEST=DEFERRED_BASELINE_RECONCILIATION_REQUIRED
+DATABASE_WP_CONTENT_CONFIG_BACKUPS=NOT_CREATED
+SITE_MUTATION=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_OUTPUT=0
+WORKSPACE_TEMP_CLEANUP=PASS_NO_TEMP_CREATED
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=.tmp-k4-*; .tmp-mc-*;NO_MATCHES_AT_SCAN_TIME
+LOCAL_HELPERS_CLEANED=NOT_CREATED
+BROWSER_PROFILES_CLEANED=NOT_CREATED
+DELIVERABLE_LOCATION=GitHub: EXECUTION_EVIDENCE.md; EXECUTOR_HANDOFF.md
+ROLLBACK_LOCATION=UNCHANGED_ACTIVE_NAMED_DOCKER_VOLUMES
+EVIDENCE=EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+NEXT=STOP_AT_REVIEWER
+```
+
+Reviewer follow-up needed before a new executor attempt: determine whether the active 8093 WordPress database/runtime pointer is stale or whether accepted K4 storefront state has drifted. Do not restore blindly or run K4 cleanup as part of K5. Once the correct baseline is identified and reviewer-authorized, rerun the remaining bounded admin, responsive, Gutenberg, PayPal-state, and deployment-package checks. The pre-existing K5 test product remains non-production data; no live sale is authorized by this return.
