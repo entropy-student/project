@@ -1537,3 +1537,8 @@ Commit `fe0c5910bbce8d8858ef5273b0d808d2dfa2cac3` followed the canonical SSH con
 Current checkpoint: `K6R2_OWNER_HOSTINGER_CONSOLE_CHECK`.
 
 Only provider-side status inspection is requested: VPS Running, browser/serial console availability, ssh/sshd active state, port 22 listening state, and any visible provider network/security block. No configuration mutation is authorized.
+
+
+## K6R2 Hostinger control-plane fallback
+
+The manual Hostinger console checkpoint is deferred. Before asking Owner to operate a terminal, Executor will use Hostinger's official Codex-compatible Connector/MCP as a read-only provider-control-plane fallback. It may inspect VPS state/metrics, provider firewall, attached SSH-key metadata, action history and Docker Manager project/container state. No provider writes are authorized. If authentication is missing, Owner may only need to complete the browser sign-in/consent flow opened by the official Connector.
