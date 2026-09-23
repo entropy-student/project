@@ -1094,3 +1094,53 @@ Remaining unproven facts:
 - real Runtime Timeline Resolver execution against those durations;
 - 44 production frames under package v2;
 - final FFmpeg video E2E.
+
+
+---
+
+## Gate G6A — Real audio execution / listening QA return
+
+- Date: 2026-09-23
+- Scope: first real production TTS + runtime timeline execution inside the G6A asset-calibration run.
+- Gate status after review: `IN_PROGRESS / RETURN_AUDIO_LISTENING_QUALITY`.
+
+### Verified execution facts
+
+- 44 semantic/timeline units.
+- 43 voiced CosyVoice units + 1 silent reaction unit.
+- Runtime Timeline Resolver executed against real normalized durations.
+- Final runtime artifacts were produced:
+  - `FINAL_SUBTITLES.srt`
+  - `FINAL_TIMELINE.json`
+  - `FINAL_SHOT_TIMELINE.csv`
+  - `TIMELINE_RESOLUTION_REPORT.json`
+- Narration master duration: approximately 143.0936s.
+- First production-frame snapshot: 20 / 44 generated.
+
+### Owner listening evidence
+
+RETURN items were reported around:
+- 13s, 16s, 18s, 47s, 51s: hard joins / missing breathing gaps;
+- 18s: abrupt interruption;
+- 55s: pause too long;
+- 58s: articulation unclear / tail-cut risk;
+- 68s: phrase mispronunciation;
+- ~1:23: numeric pronunciation wrong;
+- ~2:02: AI pronunciation wrong;
+- ~2:08: syllables crowded / overlapped.
+
+Qualitative voice evidence:
+- insufficiently human;
+- noisy / synthetic voiced texture;
+- weak emotional variation.
+
+### Reviewer disposition
+
+- structural runtime-timeline architecture remains valid;
+- final audio is **not accepted**;
+- targeted CosyVoice repair is preferred over full regeneration for known local defects;
+- GPT-SoVITS may be evaluated as a candidate replacement, but no provider promotion is allowed without A/B PASS;
+- final video render remains blocked.
+
+Detailed execution / migration handoff:
+`docs/G6A_AUDIO_QA_AND_TTS_MIGRATION_TRIAL.md`.
