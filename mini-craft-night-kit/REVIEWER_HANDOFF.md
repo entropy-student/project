@@ -1880,3 +1880,16 @@ Deployment correction after this Gate: reuse existing Docker/Compose + Shared Ca
 
 Formal decision:
 `docs/REVIEWER_DECISION_K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY.md`
+
+
+## K6R1 — RETURN accepted / Owner Hostinger console checkpoint
+
+Executor commit `fe0c5910bbce8d8858ef5273b0d808d2dfa2cac3` is accepted. Local identity/fingerprint/known_hosts checks passed, and the one canonical strict SSH probe was closed remotely before host-key presentation. This proves neither trust drift nor Shared VPS material drift. No remote writes occurred.
+
+Current checkpoint:
+`K6R2_OWNER_HOSTINGER_CONSOLE_CHECK`
+
+Owner should only confirm VPS Running state, provider console availability, ssh/sshd service state, port 22 listening state, and any obvious provider-side network/security block. No reboot/config/key/firewall mutation is authorized.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K6R2_OWNER_HOSTINGER_CONSOLE_CHECK.md`
