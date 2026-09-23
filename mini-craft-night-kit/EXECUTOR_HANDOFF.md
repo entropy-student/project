@@ -1450,3 +1450,39 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The Growth System retains PRE_FIRST_QUALIFIED_TRAFFIC and the pending product-model decision. The event contract makes WooCommerce paid/captured order state canonical and requires a real production paid order to reconcile 1:1 exactly once; the unit-economics template contains no assumed numbers. No analytics/SEO implementation, external account creation, email, order, or payment action occurred.
+
+## K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY — Executor Handoff (2026-09-23)
+
+```text
+GATE=K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY
+RESULT=PASS_CANDIDATE_K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY
+SUMMARY=Documented four public supplier-offer screening leads with field-level evidence labels; no candidate is production-ready and no winner was selected.
+CANDIDATES_FOUND=4
+PRIMARY_SOURCE_COVERAGE=4_ALIBABA_MARKETPLACE_SUPPLIER_LISTINGS;0_INDEPENDENT_MANUFACTURER_DOMAIN_CORROBORATION
+US_SHIPPING_COVERAGE=0_OF_4_EXPLICIT
+MOQ_COVERAGE=3_OF_4_EXPLICIT;B_UNKNOWN
+LANDED_COST_COVERAGE=0_VERIFIED;4_PARTIAL_PRODUCT_PRICE_ONLY
+MEDIA_RIGHTS_COVERAGE=0_OF_4_EXPLICIT
+TOP_EVIDENCE_COMPLETE_CANDIDATES=A_ORFON_ND766;C_YUHAN_MWK001 (strongest listing detail, not winners or production-ready)
+SUPPLIER_CONTACT_REQUIRED=YES_FOR_SELECTED_LEAD(S)
+SAMPLE_PURCHASE_REQUIRED=YES_BEFORE_PRODUCT_CLAIMS;NOT_DONE;SEPARATE_OWNER_AUTHORIZATION_REQUIRED
+PRODUCT_MODEL_STRATEGY=MULTI_CATEGORY_MINI_CRAFT_BRAND
+SITE_MUTATION=0
+ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+EXTERNAL_ACCOUNT_ACTIONS=0
+SUPPLIER_CONTACT_ACTIONS=0
+SAMPLE_PURCHASE_ACTIONS=0
+WORKSPACE_TEMP_CLEANUP=PASS_NO_LOCAL_ARTIFACTS_CREATED
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=NOT_RESCANNED;prior .tmp-cdp-test2 remains out of scope and untouched
+LOCAL_HELPERS_CLEANED=NOT_CREATED
+BROWSER_PROFILES_CLEANED=NOT_CREATED
+DELIVERABLE_LOCATION=mini-craft-night-kit/docs/FIRST_SKU_PRODUCT_TRUTH_DISCOVERY.md;mini-craft-night-kit/docs/FIRST_SKU_CANDIDATE_MATRIX.md
+ROLLBACK_LOCATION=NOT_APPLICABLE_READ_ONLY_RESEARCH
+EVIDENCE=EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md;docs/FIRST_SKU_PRODUCT_TRUTH_DISCOVERY.md;docs/FIRST_SKU_CANDIDATE_MATRIX.md
+OWNER_ACTION=AUTHORIZE_SUPPLIER_CONTACT_FOR_SELECTED_LEAD(S);NO_SAMPLE_PURCHASE_AUTHORIZATION
+NEXT=STOP_AT_REVIEWER
+```
+
+Next boundary: Reviewer/Owner must select which lead(s), if any, may be contacted. Supplier contact is not performed by this Gate; sample purchase requires separate explicit Owner authorization. The public listing records do not settle US shipping, landed cost, licensed media use, or supplier-specific remedies.
