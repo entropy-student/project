@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "visual_asset.schema.json",
+  "title": "Story Visual Asset",
+  "type": "object",
+  "required": [
+    "asset_id",
+    "asset_type",
+    "style_version",
+    "source_kind",
+    "qa_status",
+    "reuse_scope",
+    "created_at"
+  ],
+  "properties": {
+    "asset_id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9_\\-]+$"
+    },
+    "asset_type": {
+      "enum": [
+        "CHARACTER_MASTER",
+        "CHARACTER_POSE",
+        "CHARACTER_EXPRESSION",
+        "BACKGROUND",
+        "PROP",
+        "UI_OR_DOCUMENT",
+        "COMPOSITE_TEMPLATE",
+        "BOARD"
+      ]
+    },
+    "style_version": {
+      "type": "string"
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "pose": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "expression": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "camera_scale": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "camera_angle": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pov": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "background_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "aspect_ratio": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_kind": {
+      "enum": [
+        "NEW_GENERATE",
+        "EXACT_REUSE",
+        "REFRAME",
+        "DERIVE_EDIT",
+        "COMPOSITE",
+        "MANUAL_IMPORT"
+      ]
+    },
+    "parent_asset_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "prompt_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provider": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "quality": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "size": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "usage": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
+    },
+    "seed_or_determinism": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ]
+    },
+    "qa_status": {
+      "enum": [
+        "UNREVIEWED",
+        "PASS_CANDIDATE",
+        "PASS",
+        "RETURN",
+        "SUPERSEDED"
+      ]
+    },
+    "reuse_scope": {
+      "enum": [
+        "GLOBAL",
+        "CHARACTER",
+        "LOCATION",
+        "EPISODE",
+        "ONE_SHOT"
+      ]
+    },
+    "file_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
