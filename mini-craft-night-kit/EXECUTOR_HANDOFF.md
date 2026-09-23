@@ -1621,3 +1621,49 @@ Reviewer note: the empty diagnostic marker and shared-root browser temp director
 - No authenticated session, remote shell, or remote inventory was obtained. All Phase A host, container/network/ingress, /srv namespace, collision, and resource fields remain `UNVERIFIED_REMOTE_KEX_CLOSED`.
 - No alternate identity/path, host-key bypass, retry via other access, or VPS/Docker write was attempted. No Phase B/C/D work started.
 - VPS writes=0; Docker writes=0; no deployment resources changed. Owner action requested=NONE. STOP_AT_REVIEWER pending reviewer direction on the SSH/KEX availability boundary.
+
+
+## K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY — Executor Handoff (2026-09-23)
+
+```text
+GATE=K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY
+RESULT=RETURN_OWNER_HOSTINGER_CONSOLE_CHECK_REQUIRED
+GOVERNANCE_SOURCE_READ=PASS_GITHUB_CANONICAL
+SHARED_VPS_HANDOFF_READ=PASS_LOCAL_UNIQUE_HANDOFF
+IDENTITY_REFERENCE_CHECK=PASS
+PUBLIC_FINGERPRINT_MATCH=YES
+KNOWN_HOSTS_PIN_CHECK=PASS
+SSH_CANONICAL_PROBE=FAIL_EXIT_255
+SSH_HOST_KEY_PRESENTED=NO
+SSH_HOST_KEY_MATCH=NOT_APPLICABLE
+SSH_CONNECTION_CLASSIFICATION=REMOTE_CLOSED_PRE_HOST_KEY
+SHARED_VPS_DYNAMIC_PREFLIGHT=NOT_RUN_NO_AUTHENTICATED_SESSION
+REMOTE_USER=UNVERIFIED
+HOSTNAME=UNVERIFIED
+OS=UNVERIFIED
+CPU_RAM_DISK=UNVERIFIED
+DOCKER_VERSION=UNVERIFIED
+COMPOSE_VERSION=UNVERIFIED
+CURRENT_CONTAINERS=UNVERIFIED
+CURRENT_NETWORKS=UNVERIFIED
+CURRENT_HOST_PORTS=UNVERIFIED
+CURRENT_80_443_OWNER=UNVERIFIED
+UFW_STATE=UNVERIFIED
+CADDY_STATE=UNVERIFIED
+CLOUDFLARED_STATE=UNVERIFIED
+SRV_NAMESPACE_INVENTORY=UNVERIFIED
+MINICRAFT_PATH_COLLISION=UNVERIFIED
+MINICRAFT_CONTAINER_COLLISION=UNVERIFIED
+MINICRAFT_NETWORK_COLLISION=UNVERIFIED
+RESOURCE_HEADROOM=UNVERIFIED
+EXISTING_PROJECTS_PROTECTED=NO_REMOTE_READ;NO_WRITES
+VPS_ACTIONS=0
+DOCKER_ACTIONS=0
+SHARED_INFRA_WRITES=0
+REAL_PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+OWNER_ACTION=CHECK_HOSTINGER_CONSOLE
+NEXT=STOP_AT_REVIEWER
+```
+
+Exactly one canonical strict SSH attempt was made with the recorded endpoint, identity and known_hosts, without alternate clients or trust bypass. TCP/SSH closed before a remote host key appeared; this proves neither host-key drift nor shared-host material drift. No Phase B inventory, deployment or remote mutation was performed. Evidence: `EXECUTION_EVIDENCE.md` (K6R1 section). Owner checkpoint: confirm VPS Running; if available, use Hostinger web/serial console only to report ssh/sshd active state, port 22 listening state, and any obvious provider/network/security block. Do not change settings or reboot.
