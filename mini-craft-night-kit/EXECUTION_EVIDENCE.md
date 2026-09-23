@@ -3417,3 +3417,14 @@ NEXT=STOP_AT_REVIEWER
 ### Visual evidence delivery note
 
 - A visual-review ZIP was not created: the connected browser surface does not expose screenshot export, and no supported screenshot-capable browser automation was available in this session. The missing populated-checkout final action is therefore documented from the live UI/accessible-control inspection, but no screenshot artifact is attached. Exact 1440px/390px viewport checks remain pending; no fallback page, synthetic button, order, or payment action was used.
+
+
+## LOCAL_DOCUMENT_CONSOLIDATION_CLEANUP (2026-09-23)
+
+- Local canonical workspace document folders established: `docs/current`, `docs/deployment`, and `docs/archive`.
+- Nine historical local documentation copies were moved into `docs/archive/legacy-local-copy`; source/destination hashes matched after each move. No duplicate or temporary file deletion was justified or performed.
+- Shared-root direct Mini Craft loose documents: 9 before (in the two identified historical project folders), 0 after. The unrelated shared VPS handoff file was not touched.
+- K4/K5 deliverables, rollback SQL, K5 backups/config/manifest, runtime artifacts, active runtime directory, and canonical Git worktree were not moved or modified.
+- Read-only verification: WordPress container Up; MariaDB Healthy; localhost:8093 returned HTTP 200 when bypassing the host proxy. Canonical Git repo HEAD and dirty count remained unchanged (HEAD `8daab71da0d6ab8651d11e114781b4a0651f0ad1`, 14 pre-existing dirty entries).
+- K5 backup, config, and manifest hashes were checked before/after; unchanged. No secrets or config contents were added to GitHub. Docker/VPS/site/commerce mutations: 0.
+- Uncertain browser temp directories and an empty historical diagnostic marker remain in place; no unrelated cleanup was attempted. K6 remains paused; STOP_AT_REVIEWER.
