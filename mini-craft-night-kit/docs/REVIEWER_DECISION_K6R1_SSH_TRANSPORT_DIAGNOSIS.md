@@ -1,7 +1,12 @@
 # Reviewer Decision — K6R1 SSH Transport Diagnosis and Preflight Recovery
 
 Date: 2026-09-23
-Status: AUTHORIZED
+Status: SUPERSEDED
+
+> **Authority notice:** This Gate is historical and must not be executed.
+> It is superseded by `REVIEWER_DECISION_K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY.md`.
+> Any overlapping SSH/Shared VPS rule defers to the canonical
+> `entropy-student/spike.skill/vps-project-governance` latest.
 Parent: K6_VPS_PRODUCTION_DEPLOYMENT
 Executor return: 82962230c984767a65bbd675df2c2b9698cb5496
 
