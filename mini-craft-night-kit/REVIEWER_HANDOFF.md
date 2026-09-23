@@ -1,6 +1,29 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
-Last reviewed: 2026-09-21  
+## CURRENT REVIEWER STATUS — 2026-09-24
+
+This section supersedes older `CURRENT_GATE` markers below. Governance rules come from the latest canonical `entropy-student/spike.skill/vps-project-governance`; project facts come from accepted Reviewer decisions and fresh evidence.
+
+```text
+K5_RELEASE_CANDIDATE=PASS
+K6_DEPLOYMENT=OWNER_AUTHORIZED_SANDBOX_FIRST
+SSH_TRANSPORT=PASS_READ_ONLY_2026-09-24
+K6R2R1_HOSTINGER_TOOL_SURFACE=SUPERSEDED_NOT_EXECUTED
+CURRENT_GATE=K6R3_SHARED_VPS_READONLY_PREFLIGHT_COMPLETION
+FULL_SHARED_VPS_PHASE_A=PENDING
+REMOTE_DEPLOYMENT_STARTED=NO
+PAYPAL_LIVE=NO
+REAL_PAYMENT=NO
+OWNER_ACTION=NONE_NOW
+```
+
+Independent Reviewer evidence: the recorded Windows `ops` SSH identity and known-host fingerprints matched the unique Shared VPS handoff; a bounded strict read-only connection exited 0 and returned `ops`, `srv1970241`, Ubuntu 24.04.5 LTS. Root disk was 96G/10% used/88G free. Existing Dujiao-Next, Unified Pay and Xianyu app containers were healthy; Caddy still owned 80/443 and cloudflared was running. Mini Craft had no container or `/srv/apps`, `/srv/data`, `/srv/backups` project namespace at the time of the probe. No VPS write or Secret read occurred. The exact cause of the prior pre-host-key close is UNKNOWN.
+
+K5 PASS and the Owner's Sandbox-first K6 authorization remain recorded. This new evidence supersedes the SSH-unavailable condition for the time of the probe; it does not complete the full K6 Phase A or authorize a deployment write in the next Gate. The Hostinger tool-surface check is no longer the next action. Formal Reviewer decision and exact Executor scope: `docs/REVIEWER_DECISION_K6R3_SSH_RECOVERY_RECONCILIATION.md`.
+
+Next: Executor completes only the remaining shared-VPS read-only baseline on the governed SSH path, writes redacted Evidence/Handoff, then stops for Reviewer PASS/RETURN. Preserve the project storage manifest and accepted K5 package. Public canary, DNS/ingress changes, Secret provisioning, PayPal Live and real-money sales remain outside this read-only Gate. The local non-main checkout is stale/dirty relative to GitHub `main`; do not overwrite it to run this Gate.
+
+Last reviewed: 2026-09-24  
 Maintainer: Reviewer
 
 ## CURRENT AUTHORITATIVE GOVERNANCE OVERRIDE — 2026-09-23
