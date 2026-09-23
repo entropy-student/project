@@ -1472,3 +1472,10 @@ Next phase is Sandbox-first production deployment to `https://minicraft.spikersu
 Owner authorized deployment. Current target is a Sandbox-first public canary at `https://minicraft.spikersun.com` on the existing shared Hostinger VPS.
 
 The deployment must first revalidate shared-host truth, then use a project-isolated WordPress/MariaDB Compose stack under the current `/srv` contract, reuse current shared ingress rather than replacing it, restore the accepted K5 RC, migrate URLs, establish DNS/HTTPS, and verify public Checkout with PayPal still in Sandbox. Real-money payment and Soft Launch remain separately blocked.
+
+
+## Local document consolidation before K6
+
+Owner paused VPS deployment to clean local project documentation first. Current Gate: `LOCAL_DOCUMENT_CONSOLIDATION_CLEANUP`.
+
+Target is a clean canonical workspace where current/deployment/archive documents live under `mini-craft-night-kit-workspace\\docs\\`, Gate artifacts remain under `artifacts\\`, and loose Mini Craft documentation is removed from the shared `VPS基建` root where safe. Only proven duplicate/superseded/temp project-owned files may be deleted; operational runtime/repo/backups/secrets/unrelated projects remain untouched.
