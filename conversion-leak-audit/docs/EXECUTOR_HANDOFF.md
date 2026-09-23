@@ -1,7 +1,7 @@
 # Conversion Leak Audit — EXECUTOR HANDOFF
 
 > Intended executor: Codex / local development agent
-> Current State: `G4_5_PASS_G4_6_READY_FOR_EXECUTION`
+> Current State: `G4_6_PASS_G5_READY_FOR_EXECUTION`
 
 ## Reviewer authorization
 
@@ -395,5 +395,46 @@ Do not:
 Candidate:
 
 `PASS_CANDIDATE_G4_6_ACQUISITION_SEO_READINESS`
+
+Then `STOP_AT_REVIEWER`.
+
+
+## Reviewer release — G5
+
+G4.6 final decision:
+
+`PASS_G4_6_ACQUISITION_SEO_READINESS`
+
+G4.6 is merged to `main` through PR #6.
+
+Current authorized Gate:
+
+`G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
+
+Read and execute:
+
+`G5_EXECUTION_CONTRACT.md`
+
+Core rule:
+
+```text
+deterministic Scanner finding
+→ complete Fix Queue
+→ optional structured LLM explanation
+```
+
+Never:
+
+```text
+raw page
+→ LLM
+→ new diagnosis
+```
+
+Payment / entitlement / VPS / domain / production remain HOLD.
+
+Candidate:
+
+`PASS_CANDIDATE_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
 
 Then `STOP_AT_REVIEWER`.
