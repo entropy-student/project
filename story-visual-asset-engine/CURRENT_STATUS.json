@@ -12,13 +12,13 @@
     "source": "entropy-student/spike.skill/vps-project-governance",
     "adaptation": "docs/GOVERNANCE_ADAPTATION.md"
   },
-  "final_goal": "Reusable, provider-neutral story visual asset system that searches/reuses/derives/composites accepted assets before generating new images.",
+  "final_goal": "Reusable, provider-neutral story visual asset system that searches and reuses accepted assets, then uses reference-driven derive/edit before new image generation.",
   "current_gate": {
     "id": "G1_STYLE_AND_REUSE_BENCHMARK",
     "status": "READY_NOT_EXECUTED",
     "previous_gate": "P0_RESEARCH_AND_PROBLEM_DEFINITION",
     "previous_result": "PASS",
-    "next": "Run G1A early-discrimination benchmark: 5 tasks × 3 style profiles under controlled provider/model/settings, then Reviewer evaluates survivors before G1B."
+    "next": "Run G1A early-discrimination benchmark with low-quality-first screening: 5 tasks × 3 style profiles under controlled settings; record real usage/cost, retry rate, consistency and visual quality, then promote only finalists to higher-quality validation."
   },
   "style": {
     "locked": false,
@@ -32,13 +32,11 @@
   },
   "cost_truth": {
     "documented": "No verified evidence that semantic art style alone lowers billed image-output tokens at fixed model/quality/size.",
-    "strategy": "Reduce new generations/retries; exploit lower quality/resolution where acceptable; reuse/derive/composite first."
+    "strategy": "Reduce new generations/retries; use low-quality-first screening where acceptable; use direct reuse/reference-driven edit; exploit prompt caching where supported."
   },
   "proposed_reuse_order": [
     "EXACT_REUSE",
-    "REFRAME",
-    "DERIVE_EDIT",
-    "COMPOSITE",
+    "DERIVE_EDIT_OR_REFERENCE_DRIVEN",
     "NEW_GENERATE"
   ],
   "integration": {
@@ -72,6 +70,17 @@
       "B08",
       "B09"
     ],
-    "provider_locked": false
+    "provider_locked": false,
+    "cost_strategy": {
+      "low_quality_first": true,
+      "final_quality_only_for_survivors": true,
+      "prompt_cache_if_supported": true,
+      "reference_driven_generation_or_edit": true,
+      "local_crop_or_composite": false
+    }
+  },
+  "removed_paths": {
+    "crop_or_reframe": "REMOVED_BY_OWNER",
+    "local_composite": "REMOVED_BY_OWNER"
   }
 }
