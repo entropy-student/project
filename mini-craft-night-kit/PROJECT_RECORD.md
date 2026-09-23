@@ -1445,3 +1445,12 @@ Commit `61ec3c81a4eb48faa513fd9bb511bfabe98302c4` is accepted. The apparent K4 b
 Current Gate: `K5_RELEASE_CANDIDATE_QA_RESUME`.
 
 Remaining work is RC verification and local deployment-package preparation only. No K4 replay, VPS deployment, Live PayPal, analytics/email/SEO implementation, or supplier work.
+
+
+## K5 Resume — partial completion / K5R2 reconciliation
+
+Commit `2f8e33022ea8e82b310b3bac44846dc5dce6de5a` proved Owner admin operability, Orders access, Gallery/Contact health, runtime health and created verified local deployment backups/manifest. It stopped because populated Checkout did not expose a final action in the observed PayPal state.
+
+Current Gate: `K5R2_CHECKOUT_ACTION_VERSION_RECONCILIATION`.
+
+The Gate will distinguish core WooCommerce Place-order health from PPCP localhost rendering and will resolve the production WordPress image mismatch (current image tag 6.8.2 vs actual persistent core 7.1.1) without replaying prior QA.
