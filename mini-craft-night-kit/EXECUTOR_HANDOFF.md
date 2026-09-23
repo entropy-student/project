@@ -1235,3 +1235,51 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 Permanent closeout rule recorded in `EXECUTION_EVIDENCE.md`: all future Mini Craft Gates must report the seven-field workspace cleanup contract; Gate helpers/profiles stay under `.artifacts/<gate>` or OS temp and are removed unless explicitly retained with purpose/manifest; durable screenshots go to GitHub; visual ZIPs stay in Gate deliverables; cross-runtime archive use is limited to verified `_project-artifacts/mini-craft-night-kit/<gate>/`. Unknown ownership is reported and left in place. The `.tmp-k4-detail-browser-*` entries remain unresolved and the `.tmp-cdp-test2` profile remains active; no other project, container, volume, VPS resource, or business state was touched. Strict Storefront Cleanup was not resumed and K5 was not entered.
+
+## K4 Strict Storefront Cleanup Resume — Executor candidate (2026-09-23)
+
+```text
+GATE=K4_STRICT_STOREFRONT_CLEANUP_RESUME
+RESULT=PASS_CANDIDATE_K4_STRICT_STOREFRONT_CLEANUP_RESUME
+SUMMARY=Completed bounded customer-facing cleanup, native product/archive/footer settings, scoped mobile typography, and visual/runtime verification; Home and canonical Product Gallery remained protected.
+CUSTOMER_FRONTEND_LANGUAGE=ENGLISH
+LEGACY_DEMO_PRODUCTS_CUSTOMER_VISIBLE=NO_DRAFT
+PRODUCT_CATEGORY=Craft_Kits
+CONTACT_FORM_VISIBLE_FIELDS=NAME_EMAIL_MESSAGE_SEND
+CONTACT_FORM_NATIVE_STRUCTURE=UNCHANGED
+CONTACT_INTERNAL_GOVERNANCE_COPY_REMOVED=YES
+FAQ_ORDERS_SUPPORT_STRUCTURE=TWO_NATIVE_DETAILS;NINE_TOTAL
+FAQ_INTERNAL_GOVERNANCE_COPY_REMOVED=YES
+SHIPPING_RETURNS_HIERARCHY=PASS
+SHOP_SINGLE_PRODUCT_CONTROLS=HIDDEN_NATIVE
+CART_POPULATED_CAPTURE=PASS_1440_390
+CHECKOUT_POPULATED_CAPTURE=PASS_1440_390;PLACE_ORDER_NOT_CLICKED
+MOBILE_FOOTER=PASS_NATIVE_STACK_BRAND_NAV_COPYRIGHT
+PRODUCT_GALLERY_PROTECTED=YES
+HOME_PROTECTED=YES
+GUTENBERG_EDITOR_VISUAL_VALIDATION=PENDING_SESSION
+GUTENBERG_DETERMINISTIC_UNREGISTERED_BLOCKS=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+PRODUCT_MODEL_STRATEGY_DECISION=PENDING_OWNER_REVIEW
+TEST_PRICE_PENDING_PRODUCTION=YES
+TEST_STOCK_PENDING_PRODUCTION=YES
+TEST_SKU_PENDING_PRODUCTION=YES
+WORKSPACE_TEMP_CLEANUP=PASS
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=.tmp-cdp-test2;.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile
+LOCAL_HELPERS_CLEANED=PASS
+BROWSER_PROFILES_CLEANED=PASS
+DELIVERABLE_LOCATION=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-strict-storefront-cleanup-resume/deliverables/
+ROLLBACK_LOCATION=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-strict-storefront-cleanup-resume/rollback/pre-gate.sql
+EVIDENCE=docs/ui-k4-strict-storefront-cleanup-resume/;EXECUTION_EVIDENCE.md
+COMMIT=TO_BE_SET_AFTER_COMMIT
+VISUAL_REVIEW_PACKAGE=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-strict-storefront-cleanup-resume/deliverables/K4_STRICT_STOREFRONT_CLEANUP_RESUME-visual-review.zip
+VISUAL_REVIEW_PACKAGE_SHA256=05A6D93A587A36DE3692D16A55E4A2E51EA01510D854FD1FE3220537589C2DD2
+VISUAL_REVIEW_DELIVERY=OWNER_UPLOAD_ZIP_REQUIRED
+OWNER_ACTION=UPLOAD_VISUAL_REVIEW_ZIP
+NEXT=STOP_AT_REVIEWER
+```
+
+The 22 screenshots cover Home, Shop, Product, FAQ, Shipping & Returns, Contact, populated Cart, populated Checkout, Account, and Product Gallery initial/after-thumbnail states. No order/payment/live operation was made. The populated Checkout was captured at HTTP 200; after its isolated temporary cart was cleared, an empty Checkout request redirected to Cart (302), as expected. WordPress 7.1.1, Kadence 1.5.2, WooCommerce 10.0.4, and PPCP 4.1.3 remained at their existing versions; PPCP settings and order 1120 stayed unchanged. The only remaining editor-side limitation is the already-known unavailable Gutenberg session; deterministic block parsing found zero unregistered blocks and front-end rendering passed.

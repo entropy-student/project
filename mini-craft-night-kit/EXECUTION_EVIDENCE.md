@@ -2846,3 +2846,80 @@ ROLLBACK_LOCATION=
 Gate temporaries belong under the active runtime `.artifacts/<gate>/{rollback,screenshots,browser-profile,helpers,deliverables}/` or OS temp, never as new shared-root `.tmp-k4-*` / `.tmp-mc-*` entries. Remove helpers and browser profiles created by the Gate before return unless a retained artifact has an explicit purpose/manifest. Keep durable screenshots in GitHub; keep a visual ZIP under the Gate's deliverables. Cross-runtime artifacts may use `_project-artifacts/mini-craft-night-kit/<gate>/` only after archive purpose is verified. Classify before cleanup; unknown provenance, active sessions, other projects, `.git`, `.clone-ui`, runtimes, volumes, source, and referenced rollback stay untouched and are reported rather than guessed away.
 
 Post-cleanup checks: `http://localhost:8093/`, Product, Contact, FAQ, and Shipping & Returns all returned HTTP 200. The active WordPress container remained running with restart count 0 and its Compose working directory unchanged; MariaDB remained healthy with restart count 0. Public HTML language remains `zh-Hans`, consistent with the previously recorded `zh_CN` site locale. This Gate made no WordPress, page, media, configuration, product, PayPal, order, payment, Docker-volume, or VPS writes.
+
+## K4 Strict Storefront Cleanup Resume — Executor candidate (2026-09-23)
+
+Authority was re-synced to Reviewer Hand-off and `docs/REVIEWER_DECISION_K4_STRICT_STOREFRONT_CLEANUP_RESUME.md` at base commit `5e7adfcffbdbbf6975cf198fac4429ec5e963490`. `PROJECT_RECORD.md` still carries an older 2026-09-21 status snapshot; the newer 2026-09-23 Reviewer Hand-off and the Gate-specific decision authorize this bounded resume and are recorded as the operative status.
+
+```text
+GATE=K4_STRICT_STOREFRONT_CLEANUP_RESUME
+RESULT=PASS_CANDIDATE_K4_STRICT_STOREFRONT_CLEANUP_RESUME
+ACTIVE_RUNTIME=mini-craft-k3r4-mariadb-recovery
+LOCAL_URL=http://localhost:8093/
+WORDPRESS=7.1.1
+KADENCE_THEME=1.5.2
+ACTIVE_PLUGINS=Kadence_Blocks_3.7.11;Kadence_Starter_Templates_2.3.4;WooCommerce_10.0.4;WooCommerce_PayPal_Payments_4.1.3
+CUSTOMER_FRONTEND_LANGUAGE=ENGLISH_en_US;ADMIN_USER_LANGUAGE=zh_CN
+```
+
+Implemented only the authorized storefront edits: set the effective site locale to WordPress English while retaining the admin user's Chinese locale; set legacy demo products 222/224/117 to reversible `draft` status; assigned product 223 to the native top-level `Craft Kits` category; reduced Shop title height desktop 240→150px and tablet 200→130px; explicitly disabled native Kadence result-count/sorting controls; removed Contact internal-governance copy while preserving the exact native Kadence Form bytes (SHA-256 `631b0ec76dae167a22751608b399f147ab799a0c1c5100ea651ef3f91fb53348`); replaced the FAQ Orders & Support prose with two native `core/details` blocks, leaving the existing seven items in place (nine total); removed the duplicate inner Shipping & Returns H1 and consolidated its support CTA; made only scoped mobile Product-description typography and Shipping page heading/spacing CSS changes; and rearranged the Kadence Footer into one native row with brand → navigation → copyright, desktop row / mobile column.
+
+```text
+HOME_PAGE_939_SHA256=07093dcd9a3ecaac4f09e9e9c56c82a957ec1cfcf17d7375fe2ba0baf4e97831_UNCHANGED
+PRODUCT_PAGE_223_SHA256=7a8dee19692b87d364f51cccbcc7edcafd779de12e17bfd750e453a3d423d446_UNCHANGED
+PRODUCT_223_SKU=MCK-LOCAL-TEST-001_UNCHANGED
+PRODUCT_223_PRICE=1_UNCHANGED
+PRODUCT_223_STOCK=8_INSTOCK_UNCHANGED
+PRODUCT_CATEGORY=Craft_Kits
+LEGACY_DEMO_PRODUCTS=222_DRAFT;224_DRAFT;117_DRAFT;NOT_DELETED
+CONTACT_FORM_STRUCTURE=BYTE_IDENTICAL_TO_PRE_GATE_VALID_FORM
+CONTACT_FRONTEND_FIELDS=NAME_EMAIL_MESSAGE_SEND
+CONTACT_INTERNAL_GOVERNANCE_COPY_REMAINING=NO
+FAQ_NATIVE_DETAILS=9;EXISTING_7_RETAINED;TWO_ORDERS_SUPPORT_ITEMS_ADDED
+FAQ_INTERNAL_GOVERNANCE_COPY_REMAINING=NO
+SHIPPING_RETURNS=ONE_VISIBLE_THEME_H1;SHIPPING_RETURNS_DAMAGED_OR_MISSING_ITEMS_RETAINED
+SHIPPING_POLICY_FACTS=UNCHANGED
+SHOP_SINGLE_PRODUCT_CONTROLS=HIDDEN_NATIVE
+PRODUCT_GALLERY_CANONICAL_INTERACTION=PASS
+PRODUCT_GALLERY_SCOPED_RULE_SHA256=1cd56ca9d8a7590233c8b84e1a099506a13ca2aeb5fe518506989549bfd251dc_UNCHANGED
+CUSTOM_CSS_SHA256_AFTER_SCOPED_MOBILE_RULES=950fd2490ff0f5e8aa39e1b257819bd58dd316f8c98b8641cafdb3488eb42ecd
+```
+
+Anonymous isolated-browser evidence: Home, Shop, Product, FAQ, Shipping & Returns, Contact, Cart, populated Checkout, and Account were captured at 1440px desktop / 390px mobile. All captured page responses were HTTP 200; customer-visible strings were English; no horizontal overflow was measured (desktop deltas -15px to 0px; mobile 0px); mobile navigation opened; Shop exposed only Mini Craft Night Kit; Contact fields and all nine FAQ details rendered; populated Cart contained one item; populated Checkout exposed billing, order summary, and payment sections, with Place order never clicked. Product thumbnail switching changed the active image while keeping it at gallery width (desktop 565/565px; mobile 326/326px), with six thumbnails and zoom available. The temporary cart was cleared after screenshots.
+
+```text
+GUTENBERG_EDITOR_VISUAL_VALIDATION=PENDING_SESSION
+GUTENBERG_DETERMINISTIC_PARSE=PASS;UNREGISTERED_BLOCKS=0_HOME_PRODUCT_CONTACT_FAQ_SHIPPING
+HTTP_HOME_SHOP_PRODUCT_FAQ_SHIPPING_CONTACT_CART_ACCOUNT=200
+HTTP_POPULATED_CART_CHECKOUT_CAPTURE=200
+EMPTY_CHECKOUT_AFTER_TEST_CART_CLEANUP=302_EXPECTED_EMPTY_CART_REDIRECT
+EXISTING_ORDER_1120=PROCESSING;PPCP_GATEWAY;TRANSACTION_PRESENT_UNCHANGED
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+PAYPAL_CONFIGURATION_MUTATION=0
+VPS_WRITES=ZERO
+SECRET_OUTPUT=0
+```
+
+Screenshot manifest and 22 durable PNGs are under `docs/ui-k4-strict-storefront-cleanup-resume/`. Local review ZIP SHA-256: `05A6D93A587A36DE3692D16A55E4A2E51EA01510D854FD1FE3220537589C2DD2`; it contains only `desktop/`, `mobile/`, `product-gallery/`, and `manifest.txt`.
+
+Rollback point: active-runtime local-only SQL export at `mini-craft-k3r4-mariadb-recovery/.artifacts/k4-strict-storefront-cleanup-resume/rollback/pre-gate.sql`, SHA-256 `94F9E4C57CA03E57A70EEEF20C28A62AEB318DFC6D1F8A02861A6556059A6A0C`. It is not uploaded or included in the ZIP.
+
+```text
+WORKSPACE_TEMP_CLEANUP=PASS
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=.tmp-cdp-test2;.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile (pre-existing, deliberately untouched under Hygiene V2)
+LOCAL_HELPERS_CLEANED=PASS
+BROWSER_PROFILES_CLEANED=PASS
+DELIVERABLE_LOCATION=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-strict-storefront-cleanup-resume/deliverables/
+ROLLBACK_LOCATION=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-strict-storefront-cleanup-resume/rollback/pre-gate.sql
+UNRELATED_PROJECTS_TOUCHED=NO
+DOCKER_VOLUMES_DELETED=NO
+PRODUCT_MODEL_STRATEGY_DECISION=PENDING_OWNER_REVIEW
+TEST_PRICE_PENDING_PRODUCTION=YES
+TEST_STOCK_PENDING_PRODUCTION=YES
+TEST_SKU_PENDING_PRODUCTION=YES
+OWNER_ACTION=UPLOAD_VISUAL_REVIEW_ZIP
+NEXT=STOP_AT_REVIEWER
+```

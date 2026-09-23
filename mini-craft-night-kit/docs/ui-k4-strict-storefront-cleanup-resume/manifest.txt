@@ -1,0 +1,48 @@
+GATE=K4_STRICT_STOREFRONT_CLEANUP_RESUME
+BASE_COMMIT=5e7adfcffbdbbf6975cf198fac4429ec5e963490
+BROWSER=Microsoft Edge headless; anonymous isolated profile
+PROFILE_PATH=.artifacts/k4-strict-storefront-cleanup-resume/browser-profile/anonymous-edge (temporary)
+ORDER_ACTIONS=0; PAYMENT_ACTIONS=0; PLACE_ORDER=NOT_CLICKED
+
+PAGE=01-home; VIEWPORT=1440x1000; STATE=default; FILE=desktop/01-home-1440.png; HTTP=200; URL=http://localhost:8093/
+PAGE=01-home; VIEWPORT=390x844; STATE=default; FILE=mobile/01-home-390.png; HTTP=200; URL=http://localhost:8093/
+MOBILE_NAV={"found":true,"before":"false","after":"true","visible":true}
+REGRESSION_home=DESKTOP_OVERFLOW=-15;MOBILE_OVERFLOW=0
+PAGE=02-shop; VIEWPORT=1440x1000; STATE=default; FILE=desktop/02-shop-1440.png; HTTP=200; URL=http://localhost:8093/shop/
+PAGE=02-shop; VIEWPORT=390x844; STATE=default; FILE=mobile/02-shop-390.png; HTTP=200; URL=http://localhost:8093/shop/
+SHOP_VISIBLE_PRODUCTS=["Mini Craft Night Kit"]; LEGACY_DEMO_VISIBLE=false; SHOP_SINGLE_PRODUCT_CONTROLS={"count":false,"sorting":false}
+REGRESSION_shop=DESKTOP_OVERFLOW=0;MOBILE_OVERFLOW=0
+PAGE=03-product; VIEWPORT=1440x1000; STATE=default; FILE=desktop/03-product-1440.png; HTTP=200; URL=http://localhost:8093/product/mini-craft-night-kit/
+PAGE=03-product; VIEWPORT=390x844; STATE=default; FILE=mobile/03-product-390.png; HTTP=200; URL=http://localhost:8093/product/mini-craft-night-kit/
+PRODUCT_CATEGORY=Craft Kits; RELATED_LEGACY_VISIBLE=false
+REGRESSION_product=DESKTOP_OVERFLOW=-15;MOBILE_OVERFLOW=0
+PAGE=04-faq; VIEWPORT=1440x1000; STATE=default; FILE=desktop/04-faq-1440.png; HTTP=200; URL=http://localhost:8093/faq/
+PAGE=04-faq; VIEWPORT=390x844; STATE=default; FILE=mobile/04-faq-390.png; HTTP=200; URL=http://localhost:8093/faq/
+FAQ_DETAILS=9; FAQ_DETAILS_TOGGLE=true; FAQ_SUMMARIES=["What is the Mini Craft Night Kit?","Is it beginner-friendly?","What is included?","Where do you ship?","What shipping method do you use?","How long will delivery take?","What is the return window?","How do I contact support?","Do you have a public support email or phone number?"]
+REGRESSION_faq=DESKTOP_OVERFLOW=-15;MOBILE_OVERFLOW=0
+PAGE=05-shipping-returns; VIEWPORT=1440x1000; STATE=default; FILE=desktop/05-shipping-returns-1440.png; HTTP=200; URL=http://localhost:8093/shipping-returns/
+PAGE=05-shipping-returns; VIEWPORT=390x844; STATE=default; FILE=mobile/05-shipping-returns-390.png; HTTP=200; URL=http://localhost:8093/shipping-returns/
+SHIPPING_HIERARCHY={"h1":["Shipping & Returns"],"h2":["Shipping","Returns","Damaged or Missing Items","Need help or more details?"],"policy":true}
+REGRESSION_shipping-returns=DESKTOP_OVERFLOW=-15;MOBILE_OVERFLOW=0
+PAGE=06-contact; VIEWPORT=1440x1000; STATE=default; FILE=desktop/06-contact-1440.png; HTTP=200; URL=http://localhost:8093/contact/
+PAGE=06-contact; VIEWPORT=390x844; STATE=default; FILE=mobile/06-contact-390.png; HTTP=200; URL=http://localhost:8093/contact/
+CONTACT_FIELDS={"form":true,"name":true,"email":true,"message":true,"submit":"Send message"}
+REGRESSION_contact=DESKTOP_OVERFLOW=-15;MOBILE_OVERFLOW=0
+PAGE=product; VIEWPORT=1440x1000; STATE=initial; FILE=product-gallery/desktop-product-initial.png; HTTP=200; URL=http://localhost:8093/product/mini-craft-night-kit/
+PAGE=product; VIEWPORT=1440x1000; STATE=after-thumbnail; FILE=product-gallery/desktop-product-after-thumbnail.png; HTTP=200; URL=http://localhost:8093/product/mini-craft-night-kit/
+GALLERY_DESKTOP_INITIAL_W=565;AFTER_W=565;GALLERY_W=565;SRC_CHANGED=true;LARGE_ACTIVE_IMAGE=true;THUMBNAILS=6;ZOOM=true
+PAGE=product; VIEWPORT=390x844; STATE=initial; FILE=product-gallery/mobile-product-initial.png; HTTP=200; URL=http://localhost:8093/product/mini-craft-night-kit/
+PAGE=product; VIEWPORT=390x844; STATE=after-thumbnail; FILE=product-gallery/mobile-product-after-thumbnail.png; HTTP=200; URL=http://localhost:8093/product/mini-craft-night-kit/
+GALLERY_MOBILE_INITIAL_W=326;AFTER_W=326;GALLERY_W=326;SRC_CHANGED=true;LARGE_ACTIVE_IMAGE=true;THUMBNAILS=6;ZOOM=true
+TEMP_CART_ADD=HTTP_200;NOTICE=false
+PAGE=07-cart-populated; VIEWPORT=1440x1000; STATE=default; FILE=desktop/07-cart-populated-1440.png; HTTP=200; URL=http://localhost:8093/cart/
+PAGE=07-cart-populated; VIEWPORT=390x844; STATE=default; FILE=mobile/07-cart-populated-390.png; HTTP=200; URL=http://localhost:8093/cart/
+CART_POPULATED={"rows":1,"product":true,"quantity":"1"}
+PAGE=08-checkout-populated; VIEWPORT=1440x1000; STATE=default; FILE=desktop/08-checkout-populated-1440.png; HTTP=200; URL=http://localhost:8093/checkout/
+PAGE=08-checkout-populated; VIEWPORT=390x844; STATE=default; FILE=mobile/08-checkout-populated-390.png; HTTP=200; URL=http://localhost:8093/checkout/
+CHECKOUT_POPULATED={"url":"http://localhost:8093/checkout/","billing":true,"orderSummary":true,"paymentArea":true,"placeOrder":true,"item":true}; PLACE_ORDER_CLICKED=NO
+PAGE=09-account; VIEWPORT=1440x1000; STATE=default; FILE=desktop/09-account-1440.png; HTTP=200; URL=http://localhost:8093/my-account/
+PAGE=09-account; VIEWPORT=390x844; STATE=default; FILE=mobile/09-account-390.png; HTTP=200; URL=http://localhost:8093/my-account/
+ACCOUNT_LOGIN={"login":true,"email":true,"password":true}
+TEMP_CART_CLEARED=YES; ORDER_CREATED=NO; PAYMENT_ACTIONS=0
+FOOTER_MOBILE_LAYOUT={"rowClass":"site-middle-footer-inner-wrap site-footer-row site-footer-row-columns-1 site-footer-row-column-layout-right-golden site-footer-row-tablet-column-layout-default site-footer-row-mobile-column-layout-column ft-ro-dir-row ft-ro-collapse-normal ft-ro-t-dir-column ft-ro-m-dir-column ft-ro-lstyle-plain","display":"flex","gridTemplateColumns":"repeat(2, minmax(0px, 1fr))","sections":[{"class":"site-footer-middle-section-1 site-footer-section footer-section-inner-items-3","top":5250,"width":342}],"items":[{"class":"footer-widget-area widget-area site-footer-focus-item footer-widget1 content-align-left content-tablet-align-center content-mobile-align-default content-valign-middle content-tablet-valign-default content-mobile-valign-default","top":5250,"width":342},{"class":"footer-navigation","top":5316,"width":342},{"class":"footer-html inner-link-style-normal","top":5360,"width":342}]}
