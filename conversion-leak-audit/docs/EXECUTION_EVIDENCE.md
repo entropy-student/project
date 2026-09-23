@@ -531,7 +531,7 @@ Gate: `G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
 ```text
 BASE_MAIN=d0b821c91f433ce6cf8e3c534fa6a87d91c43b90
 BRANCH=codex/g5-full-fix-queue-llm-dogfood
-COMMIT=PENDING_FINAL_COMMIT
+IMPLEMENTATION_COMMIT=ba6826d
 WORKSPACE=clean project-scoped sparse checkout; only conversion-leak-audit/ materialized
 ```
 
