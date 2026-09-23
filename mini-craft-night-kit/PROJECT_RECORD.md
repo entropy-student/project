@@ -1365,3 +1365,16 @@ Current Gate:
 This audit occurs before K5 and before real traffic. It will establish technical SEO, Search/Merchant readiness, instrumentation, analytics, UTM, structured-data, lifecycle, privacy, CRO/trust, and Owner-action gaps without implementing changes.
 
 The Growth Playbook principle remains: instrumentation before meaningful traffic; prioritize the biggest unknown/constraint rather than mass content production.
+
+
+## K4.5 Growth / SEO Readiness Audit — PASS
+
+Commit `f69ea6e3f2ee58c5bcb55d0c5dc33981a6f8b7a4` is accepted. Readiness matrix: P0 5 / P1 7 / P2 5 / Defer 4.
+
+The site is functionally strong but remains local/test-state for public search and growth: public HTTPS origin, production commercial truth, minimal measurement, privacy/consent, and delivery/email validation are the P0 constraints.
+
+## K4.6 Growth Foundation Spec
+
+Current Gate: `K4_6_GROWTH_FOUNDATION_SPEC`.
+
+This Gate converts the audit into minimal durable growth docs without touching WordPress or external accounts. Owner decisions remain compressed into five future bundles: PRODUCT_TRUTH, PUBLIC_ORIGIN, MEASUREMENT, LEGAL_CONSENT, DELIVERY_AND_EMAIL.
