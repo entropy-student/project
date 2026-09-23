@@ -3,6 +3,28 @@
 Last reviewed: 2026-09-21  
 Maintainer: Reviewer
 
+## CURRENT AUTHORITATIVE GOVERNANCE OVERRIDE — 2026-09-23
+
+Generic governance is not redefined by this project.
+
+```text
+GOVERNANCE_SOURCE=entropy-student/spike.skill/vps-project-governance latest
+DUPLICATED_PROJECT_GOVERNANCE_RULES=REFERENCE_ONLY
+PROJECT_FACT_SOURCE=current Reviewer decision/Handoff + fresh accepted Evidence
+CURRENT_GATE=K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY
+K0_K5_RERUN=NO_UNLESS_MATERIAL_DRIFT
+PROJECT_STORAGE_MANIFEST=mini-craft-night-kit/PROJECT_STORAGE_MANIFEST.md
+```
+
+Where any Mini Craft document repeats generic Owner/Reviewer/Executor, Gate, SSH, Shared Infra,
+Target Host Reality, Secret, Storage, deployment-manifest, Evidence, rollback, resource or
+Owner-operation rules, canonical Governance controls unless a current Reviewer decision explicitly
+sets a bounded stricter override.
+
+Formal reconciliation:
+`docs/REVIEWER_DECISION_K6_GOVERNANCE_RECONCILIATION_PASS.md`.
+
+
 ## Current Reviewer Truth
 
 ```text
