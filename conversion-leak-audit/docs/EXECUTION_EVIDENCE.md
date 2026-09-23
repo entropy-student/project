@@ -592,3 +592,90 @@ Local runtime used a separate Docker Compose project and ignored runtime directo
 Known limitations: local full-report preview only; no real provider/API-key or production deployment acceptance; regex/allowlist claim guards cannot prove semantic truth; D001–D006 remain inconclusive; downloadable report/export was deferred as optional by contract. Owner intervention required: `NONE`. Recommended Reviewer decision: `REVIEW_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`. Executor result is a candidate only and stops at Reviewer.
 
 Candidate result: `PASS_CANDIDATE_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`.
+
+## G6 VPS onboarding/storage — read-only preflight — 2026-09-23
+
+```text
+GATE=G6_VPS_ONBOARDING_STORAGE
+RESULT=RETURN_G6_OWNER_APPROVAL_REQUIRED_BEFORE_VPS_WRITE
+BASE_MAIN=1c22d4ea4060918de7a849e185e0bbc107c01ca1
+BRANCH=codex/g6-vps-onboarding-storage
+COMMIT=PENDING_FINAL_COMMIT
+TARGET_VPS_PREFLIGHT=PASS
+VPS_WRITES_EXECUTED=0
+PUBLIC_PORTS_OPENED=0
+PAYMENT_ACTIONS=0
+PRODUCTION_SECRETS=0
+```
+
+The workspace was created from fetched `origin/main` as a clean project-scoped sparse checkout; only `conversion-leak-audit/` is materialized. During execution `origin/main` advanced from `66ae35b26492950d24ae0ab1c86825105e78b578` to this `BASE_MAIN`; the intervening commits changed no `conversion-leak-audit/**` paths, so the isolated branch was rebased to latest main without changing this project's source baseline. No merge was performed. The shared monorepo worktree was not used for edits.
+
+### Read-only target snapshot
+
+The existing authorized SSH identity and pinned host key were verified without requesting or displaying credentials. The target identified itself as `srv1970241`, matching the shared-VPS handoff. Only host/runtime metadata was read; no other project's application files or Secrets were opened.
+
+```text
+OS=Ubuntu 24.04.5 LTS
+KERNEL=6.8.0-139-generic
+UPTIME=1 week 5 days 18 hours 31 minutes at probe
+CPU=2 vCPU; AMD EPYC 9354P 32-Core Processor
+LOAD_AVERAGE=0.48 0.13 0.10
+MEMORY_TOTAL=8,131,472 KiB (7.75 GiB)
+MEMORY_AVAILABLE=5,739,240 KiB (5.47 GiB)
+SWAP=2,097,148 KiB total; 768 KiB used
+ROOT_AND_SRV_DISK=95.80 GiB total; 87.14 GiB available; 10% used
+DOCKER=29.8.0
+DOCKER_COMPOSE=v5.5.1
+CURRENT_CONTAINERS=8 total; 8 running; 0 stopped
+PORT_80_OWNER=spikersun-edge-caddy-1 (shared Caddy)
+PORT_443_OWNER=spikersun-edge-caddy-1 (shared Caddy; TCP and UDP 443 published)
+OTHER_TCP_LISTENERS=22/sshd; 127.0.0.53:53 and 127.0.0.54:53/systemd-resolved; 127.0.0.1:65529/monarx-agent
+PRIVATE_PORT_CANDIDATES=127.0.0.1:18085 and 127.0.0.1:18124 unoccupied at probe
+CLA_APPS_PATH=ABSENT
+CLA_DATA_PATH=ABSENT
+CLA_BACKUPS_PATH=ABSENT
+```
+
+All eight running container names/images/statuses and published/container-only ports, shared network names, and first-level `/srv/apps`, `/srv/data`, `/srv/backups` directory owner/group/mode metadata are recorded in `docs/G6_VPS_PREFLIGHT.md`. Caddy owns public 80/443; cloudflared is running; shared Docker networks were observed but not joined. A single instantaneous `docker stats` sample was about 1.44 GiB total (Xianyu 1.275 GiB); it is not historical peak evidence.
+
+### Repository changes and validation
+
+Only deployment design and G6 documentation were added. No application/PHP/JS/CSS, Scanner rules, or product behavior changed. Files changed are `deploy/vps/compose.production.yml`, `docs/G6_VPS_PREFLIGHT.md`, `docs/PROJECT_STORAGE_MANIFEST.md`, `docs/G6_BACKUP_RESTORE.md`, `docs/G6_SECRET_MANIFEST.md`, and this evidence plus the Executor handoff.
+
+```text
+COMPOSE_STATIC_VALIDATION=PASS (local Compose v5.4.0 `docker compose ... config --quiet`; disposable non-secret env stubs removed; no service started)
+SCANNER_REGRESSION=55/55 PASS (`py -3.12 -m pytest -q`, rerun after latest-main sync)
+WORDPRESS_REGRESSION=20/20 PASS (`py -3.12 -X utf8 acceptance/run_asset_checks.py`, rerun after latest-main sync; TOTAL=20 PASS=20 FAIL=0)
+LATEST_MAIN_SYNC_REVALIDATION=PASS (Compose static check and both required regressions rerun on branch based at BASE_MAIN)
+SEO_READINESS=NOT_RERUN (application unchanged; no local stack started)
+G4_G5_BROWSER_REGRESSION=NOT_RERUN (application unchanged; no local stack started)
+OUT_OF_SCOPE_CHANGES=0
+GIT_ARTIFACT_ARCHIVE_FILES=0
+```
+
+The rendered Compose model was inspected: services are `wordpress`, `mariadb`, and `scanner`; WordPress publishes only `127.0.0.1:18085`; MariaDB has no host port; Scanner is container-internal on port 8000; the DB network is internal; there is no Docker socket, host network, shared ingress network, privileged mode, or 80/443 publication. Local non-secret validation stubs were removed after the static check. No image was pulled/built and no container/network was created or started.
+
+### Candidate plans, limitations, and approval boundary
+
+```text
+STEADY_MEMORY_BUDGET=1 GiB reservation candidate
+BURST_MEMORY_BUDGET=2 GiB aggregate hard-cap candidate
+CPU_ASSUMPTION=1.50 vCPU aggregate cap on a 2-vCPU host
+SCANNER_CONCURRENCY=1
+CHROMIUM_CONCURRENCY=1 (up to 2 bounded pages)
+MIN_FREE_DISK_RESERVE=20 GiB
+PROJECT_DATA_BUDGET=8 GiB
+BACKUP_STORAGE_BUDGET=8 GiB
+WORDPRESS_PRIVATE_PORT=127.0.0.1:18085 (recheck before any bind)
+SCANNER_PRIVATE_PORT=container-internal 8000; no host bind
+DATABASE_HOST_PORT=NONE
+REAL_LLM_PROVIDER=NOT_CONFIGURED
+REAL_LLM_API_KEY=NOT_PROVIDED
+PAYMENT_SECRETS=DEFERRED_TO_G9
+```
+
+Memory limits are candidates, not measured CLA high-water usage. Historical production-shaped WordPress/MariaDB/Chromium peak data does not exist; G7 must remeasure and stop if limits or host admission floors fail. The proposed data and backup quotas leave the observed free disk above the 20 GiB reserve, but Docker image/layer usage remains unmeasured and must be checked before any future pull/build. The current G4 integration does not allow Compose service DNS `scanner`; the candidate endpoint therefore requires a separately bounded and tested G7 compatibility change before deployment.
+
+The exact conditional first-write allowlist is `WRITE_01` through `WRITE_09` in `docs/G6_VPS_PREFLIGHT.md`, including project directory trees, reviewed Compose copy, one-use synthetic canary credential, isolated disposable MariaDB/WordPress/SQLite backup-restore canaries, and removal of only those exact temporary canary resources. None was executed. No `/srv` directory was created; no file was copied; no Docker resource was created; no chown/chmod, backup/restore, scheduler, firewall, proxy, tunnel, DNS, 80/443, payment, or production Secret action occurred.
+
+Owner action: explicitly approve or reject the exact first-write set after Reviewer review. Until that approval, all VPS changes remain prohibited. Recommended Reviewer decision: review the read-only preflight, candidate storage/Compose/backup/Secret designs, resource headroom assumptions, and enumerated write set; keep deployment on hold pending Owner approval. Executor stops before every VPS write.

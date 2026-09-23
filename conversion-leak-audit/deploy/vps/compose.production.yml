@@ -1,0 +1,127 @@
+name: conversion-leak-audit
+
+services:
+  mariadb:
+    image: mariadb:11.4
+    restart: unless-stopped
+    env_file:
+      - ${CLA_MARIADB_ENV_FILE:-/srv/data/conversion-leak-audit/secrets/mariadb.env}
+    mem_reservation: 256m
+    mem_limit: 512m
+    cpus: "0.35"
+    volumes:
+      - type: bind
+        source: /srv/data/conversion-leak-audit/db
+        target: /var/lib/mysql
+    networks:
+      - database
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  scanner:
+    # A reviewed, immutable image must be produced before G7; none is built or pulled in G6.
+    image: ${CLA_SCANNER_IMAGE:?set a reviewed Scanner image before G7}
+    restart: unless-stopped
+    user: "10001:10001"
+    working_dir: /var/lib/cla-scanner
+    command:
+      - python
+      - -m
+      - uvicorn
+      - app.main:app
+      - --app-dir
+      - /opt/conversion-leak-audit/scanner
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+    environment:
+      CLA_G5_LLM_ENABLED: "false"
+      PYTHONDONTWRITEBYTECODE: "1"
+    mem_reservation: 512m
+    mem_limit: 1024m
+    cpus: "0.80"
+    shm_size: 256m
+    pids_limit: 256
+    expose:
+      - "8000"
+    volumes:
+      - type: bind
+        source: /srv/data/conversion-leak-audit/scanner
+        target: /var/lib/cla-scanner
+    networks:
+      - scanner
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=3)"
+      interval: 15s
+      timeout: 5s
+      retries: 4
+      start_period: 30s
+
+  wordpress:
+    image: wordpress:7.1-php8.3-apache
+    restart: unless-stopped
+    env_file:
+      - ${CLA_WORDPRESS_ENV_FILE:-/srv/data/conversion-leak-audit/secrets/wordpress.env}
+    environment:
+      WORDPRESS_DB_HOST: mariadb:3306
+      WP_ENVIRONMENT_TYPE: production
+      CLA_SCANNER_BASE_URL: http://scanner:8000
+      CLA_G5_LLM_ENABLED: "false"
+    mem_reservation: 256m
+    mem_limit: 512m
+    cpus: "0.35"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      scanner:
+        condition: service_healthy
+    ports:
+      - target: 80
+        published: "18085"
+        host_ip: 127.0.0.1
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /srv/data/conversion-leak-audit/wordpress/uploads
+        target: /var/www/html/wp-content/uploads
+      - type: bind
+        source: ../../g4-wordpress-integration/conversion-leak-audit-g4.php
+        target: /var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.php
+        read_only: true
+      - type: bind
+        source: ../../g4-wordpress-integration/conversion-leak-audit-g5.php
+        target: /var/www/html/wp-content/mu-plugins/conversion-leak-audit-g5.php
+        read_only: true
+      - type: bind
+        source: ../../g4-wordpress-integration/conversion-leak-audit-g4.js
+        target: /var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.js
+        read_only: true
+      - type: bind
+        source: ../../g4-wordpress-integration/conversion-leak-audit-g4.css
+        target: /var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.css
+        read_only: true
+      - type: bind
+        source: ../../wordpress-g1-baseline/wp-content/mu-plugins/conversion-leak-audit-seo.php
+        target: /var/www/html/wp-content/mu-plugins/conversion-leak-audit-seo.php
+        read_only: true
+      - type: bind
+        source: ../../wordpress-g1-baseline/wp-content/themes/conversion-leak-audit-child
+        target: /var/www/html/wp-content/themes/conversion-leak-audit-child
+        read_only: true
+    networks:
+      - database
+      - scanner
+
+networks:
+  database:
+    internal: true
+  scanner:
+    driver: bridge
