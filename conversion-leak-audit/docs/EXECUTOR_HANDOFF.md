@@ -531,3 +531,43 @@ Candidate:
 `PASS_CANDIDATE_G6_VPS_ONBOARDING_STORAGE`
 
 Then `STOP_AT_REVIEWER`.
+
+## Executor handoff — G6 read-only VPS preflight — 2026-09-23
+
+```text
+GATE=G6_VPS_ONBOARDING_STORAGE
+RESULT=RETURN_G6_OWNER_APPROVAL_REQUIRED_BEFORE_VPS_WRITE
+BASE_MAIN=1c22d4ea4060918de7a849e185e0bbc107c01ca1
+BRANCH=codex/g6-vps-onboarding-storage
+IMPLEMENTATION_COMMIT=187dc5b20bbd3cf8bad0e77ea306f253430a1376
+TARGET_VPS_PREFLIGHT=PASS
+VPS_WRITES_EXECUTED=0
+NEXT=STOP_AT_REVIEWER
+```
+
+### Preflight and candidate design
+
+- Authenticated to the registered shared target `srv1970241` using existing SSH configuration and pinned host key; no credentials were requested, printed, or added to the repository.
+- Observed Ubuntu 24.04.5 LTS / kernel `6.8.0-139-generic`, 2 vCPU, 7.75 GiB RAM with 5.47 GiB available, 2 GiB swap, and 87.14 GiB available on the shared root/`/srv` filesystem. Docker Engine 29.8.0 and Compose v5.5.1 were present.
+- Eight shared containers were running and none stopped. Shared Caddy owns host 80/443; cloudflared and shared Docker networks were observed. CLA paths under `/srv/apps`, `/srv/data`, and `/srv/backups` were absent. No listener or shared service was altered.
+- Proposed only: 1 GiB steady reservation / 2 GiB aggregate cap, 1.50 vCPU aggregate cap, one Scanner job/browser worker, 20 GiB free-disk floor, 8 GiB data and 8 GiB backup caps. This is candidate allocation, not measured CLA peak capacity; image/layer disk use and production-shaped memory high-water remain limitations.
+- Private port candidate: WordPress `127.0.0.1:18085` (free at probe; must recheck), Scanner container-internal `8000` with no host publication, MariaDB no host port.
+- Added a project-scoped Compose design plus storage, backup/restore, Secret metadata, and preflight docs. Local Docker Compose v5.4.0 static config passed using disposable non-secret env stubs, which were removed. Scanner regression was rerun at 55/55; WordPress asset regression was rerun at 20/20. No product logic changed. SEO/G4/G5 browser service tests were not rerun because no local application stack was started and only deployment/docs assets changed.
+- Real LLM provider/key: `NOT_CONFIGURED` / `NOT_PROVIDED`; payment Secrets remain deferred to G9.
+
+### Mandatory approval hold
+
+`docs/G6_VPS_PREFLIGHT.md` contains the exact conditional `WRITE_01`–`WRITE_09` sequence and risks. No step has been performed. Explicit Owner approval and Reviewer clearance are required before any VPS write, directory creation, copy, Secret file, Docker canary, backup, or restore test. The Owner must approve or reject that exact write set; no approval is inferred from this handoff.
+
+```text
+COMPOSE_STATIC_VALIDATION=PASS
+SCANNER_REGRESSION=55/55_PASS
+WORDPRESS_REGRESSION=20/20_PASS
+VPS_WRITES_EXECUTED=0
+PUBLIC_PORTS_OPENED=0
+PAYMENT_ACTIONS=0
+PRODUCTION_SECRETS=0
+OUT_OF_SCOPE_CHANGES=0
+OWNER_ACTION=APPROVE_OR_REJECT_FIRST_VPS_WRITES
+RECOMMENDED_REVIEWER_DECISION=REVIEW_G6_READ_ONLY_PREFLIGHT_AND_WRITE_ALLOWLIST
+```
