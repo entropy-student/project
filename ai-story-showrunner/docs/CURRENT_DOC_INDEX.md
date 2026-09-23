@@ -11,11 +11,12 @@ Read in this order:
 2. `../CURRENT_STATUS.json` — machine-readable mirror.
 3. `G6A_AUDIO_QA_AND_TTS_MIGRATION_TRIAL.md` — active G6A audio execution, listening QA, repair and candidate TTS trial.
 4. `GPT_SOVITS_QUICKSTART.md` — concise Owner-facing usage guide for the current local GPT-SoVITS candidate.
-5. `G6R_CANDIDATE_RUNTIME_RECONCILIATION.md` — accepted runtime reconciliation gate.
-6. `../../spike.skill/story-showrunner/SKILL.md` — portable Candidate entrypoint.
-7. Candidate core contracts under `entropy-student/spike.skill/story-showrunner/references/`.
-8. `../EXECUTION_EVIDENCE.md` — accepted/reviewable execution evidence when auditing facts.
-9. `../PROJECT_RECORD.md` — chronology and historical decisions.
+5. `../tools/gpt-sovits/README.md` — current GPT-SoVITS local runtime/API helper gate and candidate settings.
+6. `G6R_CANDIDATE_RUNTIME_RECONCILIATION.md` — accepted runtime reconciliation gate.
+7. `../../spike.skill/story-showrunner/SKILL.md` — portable Candidate entrypoint.
+8. Candidate core contracts under `entropy-student/spike.skill/story-showrunner/references/`.
+9. `../EXECUTION_EVIDENCE.md` — accepted/reviewable execution evidence when auditing facts.
+10. `../PROJECT_RECORD.md` — chronology and historical decisions.
 
 ## Current project contracts still active
 
