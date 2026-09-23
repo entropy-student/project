@@ -3413,3 +3413,7 @@ NEXT=STOP_AT_REVIEWER
 - `NEW_ORDER_ACTIONS=0; PAYMENT_ACTIONS=0; LIVE_ACTIONS=0; VPS_WRITES=0; SECRET_OUTPUT=0`.
 - Workspace: no new shared-root temporary directories; no browser profiles were created; helper files removed (local helpers directory contains zero files). Pre-existing `.tmp-cdp-test2` was left untouched.
 
+
+### Visual evidence delivery note
+
+- A visual-review ZIP was not created: the connected browser surface does not expose screenshot export, and no supported screenshot-capable browser automation was available in this session. The missing populated-checkout final action is therefore documented from the live UI/accessible-control inspection, but no screenshot artifact is attached. Exact 1440px/390px viewport checks remain pending; no fallback page, synthetic button, order, or payment action was used.
