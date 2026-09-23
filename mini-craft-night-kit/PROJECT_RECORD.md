@@ -1547,3 +1547,9 @@ The manual Hostinger console checkpoint is deferred. Before asking Owner to oper
 ## K6R2R1 fresh Codex Hostinger tool-surface check
 
 Historical records confirm the original VPS access was direct governed SSH from the Owner Windows host, using the same ops identity/known_hosts contract that K6R1 already retried. The current failure is therefore not explained by a forgotten SSH command. Because the official Hostinger MCP was registered/authenticated only after the current Executor session began, the next bounded check is a fresh Codex session to determine whether the VPS/API tools load there. No SSH retry or provider write is authorized in this Gate.
+
+## K6R3 governed SSH recovery reconciliation — 2026-09-24
+
+A later independent Reviewer read-only SSH probe succeeded through the recorded `ops` identity and pinned host trust. The previous pre-host-key failure remains historically valid for its attempt, but the Hostinger tool-surface fallback is superseded as the next action. Existing shared applications were healthy, Caddy continued to own 80/443, root disk was 10% used, and no Mini Craft VPS namespace/container existed at the time of the probe. No VPS write occurred.
+
+K5 RC PASS and the Owner's Sandbox-first K6 authorization remain intact. The current Gate is `K6R3_SHARED_VPS_READONLY_PREFLIGHT_COMPLETION`: finish the full shared-host Phase A inventory, then stop for Reviewer decision before any deployment write. Formal decision: `docs/REVIEWER_DECISION_K6R3_SSH_RECOVERY_RECONCILIATION.md`. PayPal Live and real sales remain unauthorized.
