@@ -1596,3 +1596,17 @@ The local deployment package and manifest are under `C:\Users\34707\Documents\Ch
 Reviewer action: diagnose why the native final checkout action is absent on a populated Checkout before accepting this Gate. Exact 1440/390 viewport QA, browser Console JS inspection, Gutenberg editor visual validation, and direct confirmation that a stored non-US session cannot obtain test shipping remain unverified. Do not deploy, click Place order, alter PayPal settings, or start Live actions in this handoff.
 
 Visual evidence delivery: no ZIP was created because the connected browser surface lacks screenshot export and supported screenshot-capable browser automation was unavailable. The Checkout action absence was confirmed in the live populated Checkout view and accessibility controls; exact 1440px/390px captures remain pending. No test order or payment was triggered.
+
+
+## Executor handoff — LOCAL_DOCUMENT_CONSOLIDATION_CLEANUP
+
+Result: `PASS_CANDIDATE_LOCAL_DOCUMENT_CONSOLIDATION_CLEANUP`; stopped at Reviewer. K6 deployment remains paused.
+
+- Canonical local documentation entry: `mini-craft-night-kit-workspace/docs/current/LOCAL_DOCUMENT_INVENTORY.md`.
+- Deployment pointer: `mini-craft-night-kit-workspace/docs/deployment/README.md`. K5 deployment manifest and backups remain in the protected `artifacts/gates/k5-release-candidate-qa` package.
+- Nine unique historical local docs were moved, hash-preserving, into `docs/archive/legacy-local-copy/`; no deletes were made. Current workspace README now points to the doc structure.
+- Active runtime path and canonical Git worktree were unchanged. WordPress remained Up, MariaDB Healthy; direct localhost HTTP 200 was confirmed after bypassing the configured proxy. K5 protected hashes were unchanged.
+- Shared-root Mini Craft loose-document count: 9 before / 0 after. Unrelated shared handoff and uncertain browser-temp directories remain untouched.
+- No Docker/VPS/site/WooCommerce/PayPal/order mutation; no secrets/config values added to GitHub.
+
+Reviewer note: the empty diagnostic marker and shared-root browser temp directories were retained as uncertain/out-of-scope. No K6 action was taken.
