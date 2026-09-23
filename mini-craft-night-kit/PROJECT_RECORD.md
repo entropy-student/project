@@ -1243,3 +1243,20 @@ The current Home and Product gallery repair are protected.
 
 A separate strategic question remains open and must not be auto-decided by Executor:
 single Date Night Kit vs multi-category Mini Craft brand.
+
+
+## K4 Gutenberg Recovery Boundary — Reviewer Resolution
+
+Executor return `973d9522f1dea09ae9513b2f056829b6a4bd48f1` found 11 pre-existing invalid Gutenberg blocks and correctly stopped with zero site mutation.
+
+Isolated defects:
+- Contact: invalid Kadence Form 1 + core/column 3; Name/Email labels exist but their inputs do not render.
+- FAQ: invalid core/details 7.
+- Shipping & Returns: invalid 0.
+
+A narrow reversible recovery Gate is authorized:
+`K4_NATIVE_BLOCK_RECOVERY_CONTACT_FAQ`
+
+It must replace only invalid blocks through registered current block serializers, preserve copy, and not resume the broader storefront cleanup automatically.
+
+The broader `K4_STRICT_STOREFRONT_CLEANUP` remains pending after recovery.
