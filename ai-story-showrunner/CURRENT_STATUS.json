@@ -109,7 +109,7 @@
     "production_package": {
       "id": "blind-search-answer-g6r-v2",
       "path": "experiments/g6/blind-search-answer/production-package-v2",
-      "status": "READY_FOR_G6A",
+      "status": "PARTIALLY_EXECUTED_AUDIO_BASELINE_REVIEW_PENDING",
       "renderer": "FFmpeg",
       "renderer_mode": "BASELINE_STATIC_FIRST",
       "one_delivery": true,
