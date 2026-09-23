@@ -1339,3 +1339,15 @@ Target local workspace:
 `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\`
 
 The consolidation may physically move the current runtime only after proving Docker/Git path safety; otherwise it must use a documented pointer rather than risking runtime breakage.
+
+
+## Project Directory Consolidation — structural PASS
+
+Commit `a33b3bd9ce7b96fffa91a4ffad0d891e28c2342a` established the canonical local workspace and pointers without moving path-sensitive Git/Docker runtimes.
+
+Final cleanup is Owner-manual only because Executor deletion policy blocked the exact disposable-file deletions. No further automated deletion Gate is required for this residue.
+
+Canonical workspace:
+`C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace`
+
+After Owner confirms manual cleanup, proceed to Growth/SEO Readiness before K5.
