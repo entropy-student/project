@@ -15,7 +15,7 @@ G3.5 UI + Growth Design Freeze               PASS
 G4   WordPress ↔ Scanner ↔ Top 3 Local Loop   PASS
 G4.5 Visual + Functional Acceptance          PASS
 G4.6 Acquisition + SEO Readiness             PASS
-G5   Full Fix Queue + LLM + Skill Dogfood    NEXT / EXECUTOR READY
+G5   Full Fix Queue + LLM + Skill Dogfood    PASS
 G6   VPS Onboarding / Storage                HOLD
 G7   VPS Private Deployment                  HOLD
 G8   Domain / HTTPS / Shared Ingress          HOLD
@@ -103,7 +103,7 @@ This is readiness, not traffic scaling.
 
 ## G5 — Full Fix Queue + LLM + Skill Dogfood
 
-Current Gate. Released under `G5_EXECUTION_CONTRACT.md`.
+PASS. Final decision: `REVIEWER_DECISION_G5_PASS.md`.
 
 Goal:
 - complete Fix Queue;
