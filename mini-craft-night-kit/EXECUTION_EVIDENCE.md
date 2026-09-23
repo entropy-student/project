@@ -3016,10 +3016,10 @@ HOME_PROTECTED=YES
 
 The Media Library and retained local artifacts were checked by exact asset hashes; no content-identical higher-resolution source was found for the currently used low-intrinsic-resolution gallery images. No image was generated, replaced, or modified. Gutenberg GUI validation remains pending because an editor session was unavailable; deterministic registered-block validation remains zero.
 
-Eight screenshots were captured: Product / FAQ / Shipping & Returns / Contact / populated Cart / populated Checkout at mobile 390px, plus populated Cart / populated Checkout at desktop 1440px. The ZIP contains only desktop/, mobile/, and manifest.txt (9 entries total), SHA-256 C2959632EFF01F2E21DB12AE6E9A5B73CBC500CCB841171D62B7BB3F5BFD0A82.
+Eight screenshots were captured: Product / FAQ / Shipping & Returns / Contact / populated Cart / populated Checkout at mobile 390px, plus populated Cart / populated Checkout at desktop 1440px. The ZIP contains only desktop/, mobile/, and manifest.txt (9 entries total), SHA-256 7F7255D5F3AFFBE5A3AED560811B4C6C9867B8E6F074FEBD4B83E3BADD85BEDA.
 
 ```text
-SCREENSHOT_ARCHIVE_COMMIT=669d4fb0de4721a34251f58111a88f486d704506
+SCREENSHOT_ARCHIVE_COMMIT=73b70a52701561ef4be4fb07a5bf5f8ce287e134
 GITHUB_SCREENSHOT_DIRECTORY=docs/ui-k4-final-mobile-commerce-visual-polish/
 VISUAL_REVIEW_PACKAGE_LOCAL=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-final-mobile-commerce-visual-polish/deliverables/K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH-visual-review.zip
 ```

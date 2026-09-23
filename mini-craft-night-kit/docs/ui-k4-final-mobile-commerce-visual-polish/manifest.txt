@@ -1,6 +1,6 @@
 Gate: K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH
 Source baseline commit SHA: 2770c9ed6992993772d4496388fd1de1c561d9c2
-Screenshot archive commit SHA: 669d4fb0de4721a34251f58111a88f486d704506
+Screenshot archive commit SHA: 73b70a52701561ef4be4fb07a5bf5f8ce287e134
 
 mobile/product-390.png | Product | 390px | populated product | gallery unchanged
 mobile/faq-390.png | FAQ | 390px
