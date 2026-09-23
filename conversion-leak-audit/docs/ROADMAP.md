@@ -1,5 +1,9 @@
 # Conversion Leak Audit — ROADMAP
 
+## Project state — PAUSED
+
+Owner paused the project on 2026-09-23 without archival/sealing. No Gate execution is authorized until explicit reopen. Resume from G6 after a fresh read-only VPS preflight and Owner approval before any write.
+
 ## Current Map
 
 ```text
@@ -16,14 +20,14 @@ G4   WordPress ↔ Scanner ↔ Top 3 Local Loop   PASS
 G4.5 Visual + Functional Acceptance          PASS
 G4.6 Acquisition + SEO Readiness             PASS
 G5   Full Fix Queue + LLM + Skill Dogfood    PASS
-G6   VPS Onboarding / Storage                NEXT / EXECUTOR READY
-G6.5 Payment + Entitlement Local Loop        HOLD
-G7   VPS Private Deployment                  HOLD
-G8   Domain / HTTPS / Shared Ingress         HOLD
-G9   Real Payment Provider Validation        HOLD
-G9.5 Real LLM Provider Canary                HOLD
-G10  Production Acceptance                   HOLD
-G11  Acquisition / Business Validation       HOLD
+G6   VPS Onboarding / Storage                PAUSED AFTER READ-ONLY PREFLIGHT
+G6.5 Payment + Entitlement Local Loop        HOLD / PROJECT PAUSED
+G7   VPS Private Deployment                  HOLD / PROJECT PAUSED
+G8   Domain / HTTPS / Shared Ingress         HOLD / PROJECT PAUSED
+G9   Real Payment Provider Validation        HOLD / PROJECT PAUSED
+G9.5 Real LLM Provider Canary                HOLD / PROJECT PAUSED
+G10  Production Acceptance                   HOLD / PROJECT PAUSED
+G11  Acquisition / Business Validation       HOLD / PROJECT PAUSED
 ```
 
 ## G3.5 — UI + Growth Design Freeze
