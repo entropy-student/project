@@ -1698,3 +1698,18 @@ Supplier contact is an external action and requires explicit Owner authorization
 
 Formal checkpoint:
 `docs/REVIEWER_DECISION_K4_9_SUPPLIER_CONTACT_OWNER_CHECKPOINT.md`
+
+
+## Owner launch direction — supplier work deferred
+
+Owner clarified that supplier selection, sourcing, pricing optimization and profit validation belong to later operations. The current project objective is to launch a technically complete, Owner-operable WooCommerce storefront.
+
+`K4_9_SUPPLIER_CONTACT_OWNER_CHECKPOINT` is deferred to operations and no longer blocks launch.
+
+Current Gate:
+`K5_RELEASE_CANDIDATE_QA`
+
+K5 validates the platform/admin/storefront/deployment package. Current JPY 1 / stock 8 / MCK-LOCAL-TEST-001 may remain only as local QA data and must not become publicly sellable production truth.
+
+Formal decision:
+`docs/REVIEWER_DECISION_SUPPLIER_DEFERRED_K5_RC_QA.md`
