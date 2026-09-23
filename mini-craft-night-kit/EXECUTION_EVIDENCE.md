@@ -3352,3 +3352,64 @@ All listed routes returned HTTP 200 through direct loopback requests. Docker rep
 - Safety: no order, payment, PayPal, Live, VPS, SEO, analytics, or email actions. No secrets were read or emitted.
 - Local rollback/diagnostic baseline retained at `C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-k3r4-mariadb-recovery\\.artifacts\\k5r1-related-products-baseline-repair\\rollback\\before.json` (cache values are reproducible; only the one named related-products transient was cleared).
 - Cleanup: temporary PHP helpers removed from host and container `/tmp`; no shared-root temporary directories created; no visual ZIP required because no layout/block/template changes.
+
+
+## K5 Release Candidate QA Resume — 2026-09-23
+
+```text
+GATE=K5_RELEASE_CANDIDATE_QA_RESUME
+RESULT=RETURN_REVIEWER_CHECKOUT_FINAL_ACTION_MISSING
+NEXT=STOP_AT_REVIEWER
+```
+
+### Runtime and versions
+
+- Active runtime: `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery`; site: `http://localhost:8093/`.
+- WordPress container image tag: `wordpress:6.8.2-php8.3-apache`; actual WordPress core reported by the persistent installation: `7.1.1`. The difference is explained by the durable WordPress core volume retaining the updated core; it is not an unexplained new version drift. Pin/reconcile the production image against the actual core before deployment.
+- MariaDB image: `mariadb:11.4.7`; named DB, WordPress, and wp-content volumes remain attached and intact.
+- WooCommerce `10.0.4`; Kadence Theme `1.5.2`; Kadence Blocks `3.7.11`; Starter Templates `2.3.4`; WooCommerce PayPal Payments `4.1.3`.
+- Containers were running; MariaDB reported healthy. Home, Shop, Product, FAQ, Shipping & Returns, Contact, Cart, and My Account returned HTTP 200. Empty Checkout's redirect to Cart is expected. Populated Checkout was opened separately.
+
+### Admin operations (reversible QA)
+
+- Created temporary native WooCommerce Draft product `K5 QA TEMP PRODUCT` (ID 1221), saved editable title/description/price/SKU/managed-stock/quantity/category fields, and verified Draft status plus the available Publish control. Publish was not clicked.
+- Verified the current administrator has the media-upload capability; a disposable duplicate image passed through WordPress's native media upload handler and was assignable as the product image. The temporary item and attachment were deleted afterward; the original media remains. Browser file-picker interaction itself was not exercised.
+- Product 223 was not edited: test price JPY 1, stock 8, SKU `MCK-LOCAL-TEST-001`, and Craft Kits category remain unchanged.
+- WooCommerce Orders admin opened successfully. No order was created.
+
+### Storefront and commerce regression
+
+- Fresh anonymous Shop shows Mini Craft Night Kit only; legacy products 222/224/117 remain Draft and absent from Shop and related products.
+- Product Gallery thumbnail switching was exercised repeatedly; active image remained full-size and gallery layout stable.
+- Contact exposes Name, Email, Message, and Send message. FAQ shows nine native disclosure items. Mobile navigation menu opened and displayed its links.
+- Exact 1440px desktop and 390px mobile viewport sweeps were unavailable in the connected browser session. Route smoke and partial visual checks are recorded; exact desktop/mobile responsive PASS is therefore not claimed. Browser JavaScript Console was not available for inspection.
+- Product → Add to Cart → Cart → populated Checkout was smoke-tested. Test cart changes were cleared. The populated Checkout showed US address/billing, order summary, shipping, and PayPal payment method, but no native final checkout action/button was visible in the rendered view or accessible controls.
+- `CHECKOUT_FINAL_ACTION_VISIBLE=NO`; `PLACE_ORDER_CLICKED=NO`. No new order, payment, capture, or Live action occurred.
+- One inherited local cart session displayed a stored Tokyo shipping destination before the test cart was cleared. Store settings are configured for US-only selling/shipping; because exact country-option enumeration was unavailable, non-US test-shipping rejection is not claimed as independently verified.
+
+### PayPal, market and application health
+
+- PPCP remains active at 4.1.3 and configured for Sandbox; merchant connection state was read as connected. The PayPal payment option was visible on populated Checkout. Live mode is not enabled. No credentials were read or changed.
+- Customer locale `en_US`; admin locale `zh_CN`. Selling/shipping settings are configured for the United States; guest checkout is enabled.
+- Recent WordPress container log scan found zero matches for fatal/parse/uncaught PHP errors. Primary routes returned HTTP 200. Browser JS error count is unverified because Console access was unavailable.
+- Deterministic saved-content inspection for Home 939, Product 223, Contact 10, FAQ 1121, and Shipping 9 found zero unregistered block names and no malformed block delimiters. Gutenberg editor visual validation remains `PENDING_SESSION`; parser inspection is not represented as GUI editor PASS.
+
+### Local deployment package and integrity
+
+- Package root: `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts\gates\k5-release-candidate-qa\`.
+- Final post-cleanup database backup: `backups\database\database-post-cleanup.sql`; SHA-256 `BB6A9F56C532C395B89089FC460FB5F20A038A012C84DDD210DCCF5E1AB4C602`.
+- Final wp-content backup: `backups\wp-content\wp-content-post-cleanup.tar.gz`; SHA-256 `543239EFEBE20915F3A8E96B65986CB4A5EB0B187E7E24C9E7286A7126E41D08`. Archive listing was validated inside the WordPress container.
+- `backups\config\wp-config.php` is local-only and excluded from GitHub; the local manifest records secret/environment variable names only, never values.
+- Deployment manifest: `manifest\deployment-manifest.md`; target `minicraft.spikersun.com`; HTTPS, DNS, and production URL migration are marked required. It records rollback/canary guidance and test data not for sale.
+- Backup hashes were recomputed locally. No database, wp-content, or config backup was uploaded to GitHub.
+
+### Blockers and safety
+
+- `BLOCKS_DEPLOYMENT=Populated Checkout has no visible native final action; cause needs Reviewer-directed diagnosis before release-candidate acceptance.`
+- `BLOCKS_PUBLIC_SALES=Real product truth, production price/currency, SKU and stock strategy remain Owner inputs; local JPY 1 / stock 8 / MCK-LOCAL-TEST-001 are test-only.`
+- `BLOCKS_SOFT_LAUNCH=Production domain/DNS/HTTPS migration, production payment verification, contact/transactional email delivery, Privacy/Terms/consent review, and GA4 remain outstanding.`
+- `DEFER_TO_OPERATIONS=Supplier selection/contact, assortment, margin optimization, SEO expansion, advertising and content growth.`
+- Temporary QA product and media were removed; local test cart was cleared. No product 223, page, locale, PayPal configuration, or existing order state was intentionally changed.
+- `NEW_ORDER_ACTIONS=0; PAYMENT_ACTIONS=0; LIVE_ACTIONS=0; VPS_WRITES=0; SECRET_OUTPUT=0`.
+- Workspace: no new shared-root temporary directories; no browser profiles were created; helper files removed (local helpers directory contains zero files). Pre-existing `.tmp-cdp-test2` was left untouched.
+
