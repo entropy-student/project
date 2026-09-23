@@ -1610,3 +1610,14 @@ Result: `PASS_CANDIDATE_LOCAL_DOCUMENT_CONSOLIDATION_CLEANUP`; stopped at Review
 - No Docker/VPS/site/WooCommerce/PayPal/order mutation; no secrets/config values added to GitHub.
 
 Reviewer note: the empty diagnostic marker and shared-root browser temp directories were retained as uncertain/out-of-scope. No K6 action was taken.
+
+
+## K6 Phase A — STOP / Reviewer Return (2026-09-23)
+
+`RESULT=RETURN_REVIEWER_SHARED_VPS_DRIFT` is used as a fail-closed preflight stop, not as a claim that an actual host-key drift was proven.
+
+- Approved local SSH identity/public fingerprint and recorded local host-key pins were present/matched.
+- Strict SSH policy was retained. TCP connected, but the remote closed during KEX before sending a host key; remote identity therefore remains unverified.
+- No authenticated session, remote shell, or remote inventory was obtained. All Phase A host, container/network/ingress, /srv namespace, collision, and resource fields remain `UNVERIFIED_REMOTE_KEX_CLOSED`.
+- No alternate identity/path, host-key bypass, retry via other access, or VPS/Docker write was attempted. No Phase B/C/D work started.
+- VPS writes=0; Docker writes=0; no deployment resources changed. Owner action requested=NONE. STOP_AT_REVIEWER pending reviewer direction on the SSH/KEX availability boundary.
