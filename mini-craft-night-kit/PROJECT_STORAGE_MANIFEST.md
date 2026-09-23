@@ -2,7 +2,7 @@
 
 Status: PRE-DEPLOYMENT FROZEN PLAN / REMOTE READBACK PENDING
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY`
+Current Gate: `K6R3_SHARED_VPS_READONLY_PREFLIGHT_COMPLETION`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
@@ -156,7 +156,7 @@ No broad Docker prune.
 
 ## 11. Resource footprint / remote reality
 
-Exact remote resource headroom and initial footprint are not yet claimed because K6R1 SSH read-back is pending.
+A bounded Reviewer SSH read-back on 2026-09-24 found the recorded host reachable, 88G free on the 96G root filesystem, and no Mini Craft project namespaces. Full K6 Phase A resource/topology and deployment-footprint evidence remain pending; this snapshot does not authorize a write.
 
 Before the first K6 deployment write, record:
 
@@ -167,8 +167,8 @@ Before the first K6 deployment write, record:
 - before/after deployment delta.
 
 ```text
-EXPECTED_INITIAL_FOOTPRINT=PENDING_K6R1_REMOTE_PREFLIGHT
-RESOURCE_HEADROOM=PENDING_K6R1_REMOTE_PREFLIGHT
+EXPECTED_INITIAL_FOOTPRINT=PENDING_K6R3_FULL_PREFLIGHT
+RESOURCE_HEADROOM=PENDING_K6R3_FULL_PREFLIGHT
 ```
 
 If headroom cannot be proven safe, stop before write.
