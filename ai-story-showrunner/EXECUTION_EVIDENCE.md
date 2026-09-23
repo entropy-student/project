@@ -1235,3 +1235,23 @@ Prepared-but-not-yet-executed API helpers:
 
 Next required evidence:
 official API smoke + retained WAV/report + listening acceptance, then one-time GPT-SoVITS timing calibration with held-out validation.
+
+
+---
+
+## G6A — Owner listening acceptance and asset-stage timing disposition
+
+Date: 2026-09-23
+
+Owner listening result for the GPT-SoVITS API sample:
+- voice quality: acceptable;
+- known issue: some generated phrases still contain overly long internal pauses / breath gaps.
+
+Disposition:
+- do not reject otherwise usable material solely because its duration misses the planned target;
+- do not force exact target duration during asset generation;
+- measure and record actual generated duration precisely for every Speech Unit;
+- use that measured timing as SRT2/runtime material truth;
+- defer routine redundant-breath cleanup until the post-assembly SRT3 pass.
+
+This listening acceptance does not by itself promote GPT-SoVITS to canonical and does not replace the requirement to persist the local API smoke evidence into the project repository.
