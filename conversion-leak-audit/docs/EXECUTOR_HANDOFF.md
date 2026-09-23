@@ -266,7 +266,7 @@ OUT_OF_SCOPE_CHANGES=0
 
 New repeatable acceptance: `wordpress-g1-baseline/acceptance/run_seo_readiness_checks.py`. Local screenshot set (4 PNGs) and detailed readiness/production-deferred evidence are under `docs/evidence/g4-6-screenshots/` and `docs/evidence/G4_6_SEO_READINESS.md`. The site remained local-only at `http://127.0.0.1:8084/`; no production host, payment, VPS, or secret was used. Scanner rules and semantics are unchanged.
 
-Meta-contract completion: Home description is `Get a free evidence-backed Top 3 from public storefront pages. No signup or admin access required.` The repeatable acceptance explicitly checks `HOME_META_NO_SIGNUP=PASS`; total is 44/44. Scanner regression remains 55/55 and WordPress baseline remains 20/20.
+Meta-contract completion commit: `ef9d31e4a8170028c549e4493c2c77f4bd24adc7`. Home description is `Get a free evidence-backed Top 3 from public storefront pages. No signup or admin access required.` The repeatable acceptance explicitly checks `HOME_META_NO_SIGNUP=PASS`; total is 44/44. Scanner regression remains 55/55 and WordPress baseline remains 20/20.
 
 Local workspace hygiene: five verified CLA-owned items (three full review packages and two ZIPs) were moved to `_project-artifacts/conversion-leak-audit/`; nothing was deleted. Active runtime/workspaces were not moved. `.tmp-cdp-test2` and the two `.tmp-k4-*` items remain untouched because they are active and/or their CLA ownership is unproven. Local index: `00_INDEX.md`. Nothing from this archive is staged or committed (`GIT_ARTIFACT_ARCHIVE_FILES=0`).
 

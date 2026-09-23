@@ -520,4 +520,6 @@ Meta-contract completion: Home description now reads `Get a free evidence-backed
 
 Workspace hygiene (local-only, outside Git): five verified CLA-owned review artifacts (three package directories and two ZIPs) were moved under `_project-artifacts/conversion-leak-audit/`. No files were deleted. The active fake-Scanner runtime directory and active workspaces were kept in place; `.tmp-cdp-test2` and two `.tmp-k4-*` directories remain untouched due to active use or unresolved ownership. The artifact index documents the mapping and future output rule. `GIT_ARTIFACT_ARCHIVE_FILES=0`.
 
+META_CONTRACT_COMPLETION_COMMIT=ef9d31e4a8170028c549e4493c2c77f4bd24adc7
+
 Candidate result: `PASS_CANDIDATE_G4_6_META_CONTRACT_COMPLETE`. Owner action: `NONE`. Recommended Reviewer decision: `REVIEW_G4_6_META_CONTRACT_COMPLETION_ONLY`. Executor stops at Reviewer and does not declare the Gate PASS.
