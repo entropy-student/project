@@ -14,7 +14,8 @@ G3 Rule Engine V0 = MERGED / CLOSED
 G3.5 UI + Growth Design Freeze = PASS
 G4 WordPress ↔ Scanner ↔ Top 3 = PASS
 G4.5 Visual + Functional Acceptance = PASS
-G4.6 Acquisition + SEO Readiness = NEXT / RELEASED TO CODEX
+G4.6 Acquisition + SEO Readiness = PASS
+G5 Full Fix Queue + LLM + Skill Dogfood = NEXT / RELEASED TO CODEX
 ```
 
 ## G3.5 Final Decision
@@ -43,20 +44,20 @@ If generated-image text conflicts with these contracts, GitHub contracts win.
 
 ## Current Reviewer Position
 
-G4.5 is closed with:
+G4.6 is closed with:
 
-`PASS_G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`
+`PASS_G4_6_ACQUISITION_SEO_READINESS`
 
 Codex is now authorized to execute only:
 
-`G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md`
+`G5_EXECUTION_CONTRACT.md`
 
-The next Reviewer action is to inspect G4.6 execution evidence and decide:
-- PASS_G4_6
-- RETURN_G4_6
+The next Reviewer action is to inspect G5 execution evidence and decide:
+- PASS_G5
+- RETURN_G5
 - STOP / OWNER CHECKPOINT
 
-G4.6 must not reopen G4.5 visual structure unless a concrete regression is discovered.
+G5 must preserve deterministic Scanner truth. LLM output is explanation only and may not create or alter findings.
 
 ## 2026-09-22 Takeover Reconciliation
 
@@ -224,3 +225,22 @@ Contract:
 `G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md`
 
 This gate uses Acquisition Growth Radar principles and SEO readiness checks to improve Message, Proof/Trust, Activation path, indexability, and technical search hygiene without starting a bulk content program or production deployment.
+
+
+## 2026-09-23 G4.6 Final PASS / G5 Release
+
+Formal G4.6 decision:
+
+`REVIEWER_DECISION_G4_6_PASS.md`
+
+PR #6 merged to main at `71d810f61aa0e48b0feaf8cc9ec5deeeed128b27`.
+
+Current authorized Gate:
+
+`G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
+
+Contract:
+
+`G5_EXECUTION_CONTRACT.md`
+
+Owner intervention required: NO for deterministic/fake-provider implementation. Any live model Secret remains optional and must not enter Git.
