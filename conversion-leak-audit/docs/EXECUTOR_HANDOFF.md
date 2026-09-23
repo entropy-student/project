@@ -1,7 +1,7 @@
 # Conversion Leak Audit — EXECUTOR HANDOFF
 
 > Intended executor: Codex / local development agent
-> Current State: `G4_6_PASS_G5_READY_FOR_EXECUTION`
+> Current State: `G5_PASS_G6_HOLD_PENDING_REVIEWER_CONTRACT`
 
 ## Reviewer authorization
 
@@ -479,3 +479,22 @@ Scope audit: all changed tracked files are under `conversion-leak-audit/**`; Sca
 Known limitation: regex/allowlist language guards are defense-in-depth and cannot prove arbitrary model output semantically safe; the real provider remains disabled and requires a separate explicit local configuration to exercise. All Skill hypotheses remain `INCONCLUSIVE` pending real external-user behavior.
 
 Recommended Reviewer decision: `REVIEW_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`. Executor is not declaring G5 PASS; reviewer should independently review the queue ordering source, report binding, structured prompt/output guards, fallback behavior, analytics properties, regressions, screenshots, and diff scope. Owner action: `NONE`.
+
+
+## Reviewer close — G5
+
+G5 final decision:
+
+`PASS_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
+
+G5 is merged to `main` through PR #11.
+
+No new Executor gate is currently released.
+
+Next roadmap gate:
+
+`G6_VPS_ONBOARDING_STORAGE`
+
+Do not start G6 until Reviewer publishes and releases a dedicated G6 execution contract.
+
+Payment / entitlement / domain / HTTPS / production Secret / public production Scanner remain HOLD.
