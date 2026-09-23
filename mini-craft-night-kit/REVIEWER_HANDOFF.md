@@ -1814,3 +1814,17 @@ Goal: consolidate Mini Craft-owned local documentation under `mini-craft-night-k
 
 Formal decision:
 `docs/REVIEWER_DECISION_LOCAL_DOCUMENT_CONSOLIDATION_CLEANUP.md`
+
+
+## Local document consolidation — FORMAL PASS
+
+Executor commit `fd06aa204575d03fb14d692345a337af165a446e` is accepted. Nine historical local Mini Craft documents were moved into the canonical workspace archive; no deletion was performed because no candidate met the proof threshold for safe deletion. Active runtime, Git worktree, K5 package/backups and unrelated projects remained unchanged.
+
+The retained `.tmp-*`/diagnostic residues are intentionally uncertain-retain and do not block deployment.
+
+Formal decision:
+`docs/REVIEWER_DECISION_LOCAL_DOCUMENT_CONSOLIDATION_CLEANUP_PASS.md`
+
+## K6 resumed
+
+The temporary cleanup pause is lifted. The Owner's earlier explicit authorization for `K6_VPS_PRODUCTION_DEPLOYMENT` remains valid; no second authorization is required. Resume from K6 Phase A read-only Shared VPS preflight before any mutation.
