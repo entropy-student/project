@@ -1325,3 +1325,49 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The mobile Cart and Checkout screenshots are populated with one local test product and contain no submitted order. Checkout shows the US-only state, local no-payment method, and the real native final action; no action was clicked. The Gate is returned to Reviewer because the execution policy blocked cleanup of Gate-created browser profile directories and debug captures, not because checkout action visibility failed.
+
+## PROJECT_DIRECTORY_CONSOLIDATION — Executor Return (2026-09-23)
+
+\`\`\`text
+GATE=PROJECT_DIRECTORY_CONSOLIDATION
+RESULT=RETURN_REVIEWER_LOCAL_CLEANUP_POLICY_BLOCKED
+SUMMARY=Canonical local workspace and pointers created; K4 ZIP, manifest, and rollback SQL hash-verified and relocated. Physical runtime moves were deferred. The specifically authorized disposable profile/debug cleanup and two root K4 Crashpad directory deletions remain blocked by execution policy.
+CANONICAL_WORKSPACE=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace
+REPO_PHYSICAL_LOCATION=C:\Users\34707\Documents\ChatGPT\VPS基建\project-github-sync\mini-craft-night-kit
+REPO_POINTER_CREATED=PASS
+ACTIVE_RUNTIME_PHYSICAL_LOCATION=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery
+ACTIVE_RUNTIME_PHYSICAL_MOVE=DEFERRED_WITH_REASON (three retained PowerShell tools contain its absolute path; Docker Compose labels retain the source working directory)
+ROLLBACK_LOCATIONS=workspace\rollback\k3r4-docker-mariadb, workspace\rollback\kadence-poc, workspace\rollback\legacy-runtime (pointer notes only; corresponding environments stay at original paths because containers are active; legacy runtime has host bind mounts)
+ARTIFACTS_LOCATION=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts
+CURRENT_GATE_PROFILES_DELETED=NO (four remain; zero Edge references at inventory; exact-path deletion command rejected; no alternate method attempted)
+CURRENT_GATE_DEBUG_SCREENSHOTS_DELETED=NO (two remain; exact-path deletion command rejected)
+VISUAL_ZIP_RETAINED=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts\deliverables\k4-final-mobile-commerce-visual-polish\K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH-visual-review.zip;SHA256=7F7255D5F3AFFBE5A3AED560811B4C6C9867B8E6F074FEBD4B83E3BADD85BEDA
+MANIFEST_RETAINED=YES;SHA256=1AAF1F30FED204E373C0017574C38ED4D50B1E4BA32039F51502492CE8F6A2BF
+ROLLBACK_SQL_RETAINED=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts\gates\k4-final-mobile-commerce-visual-polish\rollback\pre-gate.sql;LOCAL_ONLY;SHA256=8C20D3A3DC36DE7226373A033347DB4269098202DB8A1D0C883309ED22F3BF8E
+ROOT_MINI_CRAFT_ITEMS_BEFORE=mini-craft-k3r4-docker-mariadb;mini-craft-k3r4-mariadb-recovery;mini-craft-kadence-poc;mini-craft-night-kit;_project-artifacts\mini-craft-night-kit;three temp folders
+ROOT_MINI_CRAFT_ITEMS_AFTER=same runtime/archive items;mini-craft-night-kit-workspace created;three temp folders remain
+ROOT_TEMP_ITEMS_REMAINING=.tmp-cdp-test2 (9 Edge refs);.tmp-k4-detail-browser-desktop (5 Crashpad-only files);.tmp-k4-detail-browser-mobile (5 Crashpad-only files)
+ROOT_ITEMS_REMAINING_WITH_REASON=other Mini Craft environments active;Git roots untouched;shared artifact archive retained;active .tmp-cdp-test2;K4 Crashpad dirs not deleted due policy;g4-5-owner-visual-review-runtime empty/unclassified and untouched
+PATH_EXISTS_CHECK=PASS (workspace index, pointers, ZIP, manifest, rollback SQL exist; relocated files hash-match)
+SITE_HTTP_200=Home,Shop,Product,FAQ,Shipping & Returns,Contact,Cart,Account;Checkout=302 in a fresh empty anonymous session
+WORDPRESS_CONTAINER=UP
+MARIADB_CONTAINER=HEALTHY
+PAGE_CONFIG_MEDIA_MUTATION=0
+WOOCOMMERCE_PAYPAL_ORDER_PAYMENT_MUTATION=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+DOCKER_VOLUMES_DELETED=NO
+WORKSPACE_TEMP_CLEANUP=RETURN
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=.tmp-cdp-test2;.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile
+LOCAL_HELPERS_CLEANED=NO_HELPER_FILES_FOUND;EMPTY_DIRECTORY_REMAINS
+BROWSER_PROFILES_CLEANED=RETURN_EXECUTION_POLICY_BLOCKED
+README_LOCAL_WORKSPACE=PASS
+EVIDENCE=EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md;local inventory: C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts\gates\project-directory-consolidation\WORKSPACE_INVENTORY.md
+EVIDENCE_COMMIT=14cada733f5c4c5593992e228131e7e213de6a7b
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+\`\`\`
+
+No site, page, media, configuration, WooCommerce, PayPal, order, payment, or Docker state was changed. The active 8093 runtime remains at its original path. Direct localhost HTTP probes bypassed the unavailable host proxy; the fresh anonymous Checkout redirected to Cart because it had no cart items. The only unresolved acceptance item is cleanup blocked by the execution policy; this is returned to Reviewer without attempting another deletion route.
