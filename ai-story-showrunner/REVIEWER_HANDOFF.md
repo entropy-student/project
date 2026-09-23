@@ -237,6 +237,9 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - replacing that comma with a Chinese enumeration comma (`等等、这也能算正常？`) caused synthesis failure, so `、` is rejected as a pause-control token for this short-reaction pattern;
 - Owner decision: do not introduce systematic per-comma pause insertion or other post-processing because the engineering overhead is too high for the intended production workflow;
 - default synthesis punctuation remains the ordinary Chinese comma `，`; occasional slightly long comma pauses are accepted as a minor quality tradeoff unless they become a persistent QA failure pattern;
+- final representative serious-closing QA sentence was judged by Owner as having no material problem;
+- representative manual listening QA now covers neutral narration, curiosity/suspicion, reversal/surprise, short reaction (with known punctuation caveat), and serious closing; current GPT-SoVITS candidate remains `narrator01_v2pp-e5.ckpt + narrator01_v2pp_e8_s248.pth`, `temperature=0.8`, `top_k=15`, `top_p=1`, speed 1;
+- manual candidate listening QA is sufficient to move to Voice Timing Profile calibration and automation integration; canonical promotion still requires runtime/adapter validation rather than further ad-hoc sentence tuning.
 - this strengthens the current `e5 + e8` candidate, but broader cross-sentence delivery coverage is still pending before canonical promotion;
 - this is still a candidate-quality result, not canonical promotion.
 
