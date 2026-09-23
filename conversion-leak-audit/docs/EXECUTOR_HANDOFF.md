@@ -1,7 +1,7 @@
 # Conversion Leak Audit — EXECUTOR HANDOFF
 
 > Intended executor: Codex / local development agent
-> Current State: `G5_PASS_G6_HOLD_PENDING_REVIEWER_CONTRACT`
+> Current State: `G5_PASS_G6_READY_FOR_EXECUTION`
 
 ## Reviewer authorization
 
@@ -498,3 +498,36 @@ Next roadmap gate:
 Do not start G6 until Reviewer publishes and releases a dedicated G6 execution contract.
 
 Payment / entitlement / domain / HTTPS / production Secret / public production Scanner remain HOLD.
+
+
+## Reviewer release — G6
+
+G5 final decision:
+
+`PASS_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
+
+Current authorized Gate:
+
+`G6_VPS_ONBOARDING_STORAGE`
+
+Execute:
+
+`G6_EXECUTION_CONTRACT.md`
+
+G6 is onboarding/storage, not application deployment.
+
+Shared infrastructure is read-only:
+- 80/443;
+- reverse proxy;
+- tunnel;
+- firewall;
+- Docker daemon;
+- DNS;
+- shared networks;
+- other projects.
+
+Candidate:
+
+`PASS_CANDIDATE_G6_VPS_ONBOARDING_STORAGE`
+
+Then `STOP_AT_REVIEWER`.
