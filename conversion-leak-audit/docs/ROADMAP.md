@@ -14,8 +14,8 @@ G3   Rule Engine V0                          MERGED / CLOSED
 G3.5 UI + Growth Design Freeze               PASS
 G4   WordPress ↔ Scanner ↔ Top 3 Local Loop   PASS
 G4.5 Visual + Functional Acceptance          PASS
-G4.6 Acquisition + SEO Readiness             NEXT / EXECUTOR READY
-G5   Full Fix Queue + LLM + Skill Dogfood    PENDING
+G4.6 Acquisition + SEO Readiness             PASS
+G5   Full Fix Queue + LLM + Skill Dogfood    NEXT / EXECUTOR READY
 G6   VPS Onboarding / Storage                HOLD
 G7   VPS Private Deployment                  HOLD
 G8   Domain / HTTPS / Shared Ingress          HOLD
@@ -87,7 +87,7 @@ Must prove:
 
 ## G4.6 — Acquisition + SEO Readiness
 
-Current Gate. Contract: `G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md`.
+PASS. Contract: `G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md`; final decision: `REVIEWER_DECISION_G4_6_PASS.md`.
 
 Purpose:
 - make the value proposition/category clear;
@@ -102,6 +102,8 @@ Purpose:
 This is readiness, not traffic scaling.
 
 ## G5 — Full Fix Queue + LLM + Skill Dogfood
+
+Current Gate. Released under `G5_EXECUTION_CONTRACT.md`.
 
 Goal:
 - complete Fix Queue;
