@@ -85,3 +85,53 @@ Sources:
 
 Reviewer interpretation:
 semantic image retrieval is viable later, but P0 should start with structured metadata because the initial library is small.
+
+
+## P0 deep-research closeout — 2026-09-23
+
+Fresh source review added the following evidence:
+
+### OpenAI image-generation/edit path
+Official image-generation docs confirm:
+- generation cost includes text input, image input where applicable and image output usage;
+- quality and size are explicit cost/usage controls;
+- existing images can be edited;
+- one or more reference images can be used to generate a new image;
+- mask-guided local edits are supported.
+
+Sources:
+- https://developers.openai.com/api/docs/guides/image-generation
+- https://developers.openai.com/api/docs/guides/image-prompting
+
+### Reference/identity control
+Fresh review confirmed:
+- IP-Adapter combines image prompts with text prompts;
+- InstantID provides tuning-free single-image identity preservation;
+- PuLID provides tuning-free identity customization;
+- DreamO supports ID/IP/style/multiple conditions and explicitly reports style consistency as less stable than its other customization tasks.
+
+Sources:
+- https://github.com/tencent-ailab/IP-Adapter
+- https://github.com/instantX-research/InstantID
+- https://github.com/ToTheBeginning/PuLID
+- https://github.com/bytedance/DreamO
+
+### Structural conditioning
+ControlNet provides a documented example of external conditions controlling image generation rather than relying only on text prompts.
+
+Source:
+- https://github.com/lllyasviel/ControlNet
+
+### Reusable production libraries
+Current Toon Boom Harmony documentation confirms libraries/templates can store and reuse puppets, backgrounds, animations and key poses; drawing substitution is especially relevant to reusable body-part/pose variants.
+
+Source:
+- https://docs.toonboom.com/help/harmony-27/essentials/library/about-library.html
+
+### Reviewer closeout
+P0 acceptance criteria are fully satisfied.
+
+Result:
+`PASS_P0_RESEARCH_AND_PROBLEM_DEFINITION`
+
+No style has been promoted. G1 empirical benchmark remains required.
