@@ -15,7 +15,7 @@ G3.5 UI + Growth Design Freeze = PASS
 G4 WordPress ↔ Scanner ↔ Top 3 = PASS
 G4.5 Visual + Functional Acceptance = PASS
 G4.6 Acquisition + SEO Readiness = PASS
-G5 Full Fix Queue + LLM + Skill Dogfood = NEXT / RELEASED TO CODEX
+G5 Full Fix Queue + LLM + Skill Dogfood = PASS
 ```
 
 ## G3.5 Final Decision
@@ -44,20 +44,17 @@ If generated-image text conflicts with these contracts, GitHub contracts win.
 
 ## Current Reviewer Position
 
-G4.6 is closed with:
+G5 is closed with:
 
-`PASS_G4_6_ACQUISITION_SEO_READINESS`
+`PASS_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
 
-Codex is now authorized to execute only:
+No Executor gate is currently released.
 
-`G5_EXECUTION_CONTRACT.md`
+Next roadmap gate:
 
-The next Reviewer action is to inspect G5 execution evidence and decide:
-- PASS_G5
-- RETURN_G5
-- STOP / OWNER CHECKPOINT
+`G6_VPS_ONBOARDING_STORAGE`
 
-G5 must preserve deterministic Scanner truth. LLM output is explanation only and may not create or alter findings.
+G6 remains HOLD until Reviewer defines a dedicated VPS/onboarding/storage execution contract. Do not start deployment, public exposure, domain/HTTPS, payment, or production Secret work from prior informal instructions.
 
 ## 2026-09-22 Takeover Reconciliation
 
@@ -244,3 +241,16 @@ Contract:
 `G5_EXECUTION_CONTRACT.md`
 
 Owner intervention required: NO for deterministic/fake-provider implementation. Any live model Secret remains optional and must not enter Git.
+
+
+## 2026-09-23 G5 Final PASS
+
+Formal decision:
+
+`REVIEWER_DECISION_G5_PASS.md`
+
+PR #11 merged to main at `75c789cd4612790414bc1dc05d829e6945c539f8`.
+
+G6 is next in the roadmap but remains HOLD pending a dedicated Reviewer contract.
+
+Owner intervention required: NONE for G5 closure.
