@@ -1454,3 +1454,14 @@ Commit `2f8e33022ea8e82b310b3bac44846dc5dce6de5a` proved Owner admin operability
 Current Gate: `K5R2_CHECKOUT_ACTION_VERSION_RECONCILIATION`.
 
 The Gate will distinguish core WooCommerce Place-order health from PPCP localhost rendering and will resolve the production WordPress image mismatch (current image tag 6.8.2 vs actual persistent core 7.1.1) without replaying prior QA.
+
+
+## K5 Release Candidate — PASS
+
+The RC is accepted for deployment. Current inability to repeat the checkout-final-action check was a browser automation limitation, not a demonstrated application regression. Historical/current evidence together establishes WooCommerce core checkout, Sandbox payment integration, storefront/admin operability, backups and deployment readiness.
+
+Target production WordPress image: `wordpress:7.1.1-php8.3-apache`.
+
+## K6 VPS Production Deployment Owner Checkpoint
+
+Next phase is Sandbox-first production deployment to `https://minicraft.spikersun.com` on the shared Hostinger VPS. It requires explicit Owner authorization before any VPS/reverse-proxy write. Live PayPal/real-money sales remain separately blocked.
