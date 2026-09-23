@@ -110,23 +110,13 @@ LLM 后续只解释结构化 Issue。API Key 只进入运行环境 Secret Store 
 
 Unified Pay 目前尚未跑通并需要单独修改，因此不作为本项目当前依赖。G6.5 不要求真实支付接口或公网；G9 在 HTTPS 就绪后再做真实 Provider / Webhook 验收。
 
-## 当前下一步
+## 当前执行状态
 
-`G6 — VPS Onboarding + Storage`
+`PAUSED_BY_OWNER`
 
-```text
-Codex reads docs/G6_EXECUTION_CONTRACT.md
-→ target VPS read-only preflight
-→ freeze resource budget
-→ create project-owned /srv landing zone
-→ freeze Compose/storage/Secret metadata
-→ backup + disposable restore canaries
-→ rollback plan
-→ PASS_CANDIDATE_G6
-→ Reviewer independent PASS / RETURN
-```
+当前没有已授权的 Executor 任务，也没有 VPS 写入、部署、支付或 Provider 接入操作。
 
-G7 private application deployment remains HOLD until G6 Reviewer PASS.
+恢复时从 `docs/PROJECT_PAUSE_HANDOFF.md` 进入，并先重新做只读 VPS 状态确认。
 
 
 ## 本地目录约定
@@ -137,10 +127,12 @@ workspaces/           = 当前活跃 Gate 工作区
 _project-artifacts/   = 截图 / ZIP / Reviewer package / 本地证据
 ```
 
-每个 Gate 在 Reviewer PASS + merge 后，应执行一次 bounded hygiene：
-- 清理已合并且干净的 Gate workspace；
-- 将最终本地证据归档到 `_project-artifacts/conversion-leak-audit/archives/<gate>/`；
-- 保留 final review package + MANIFEST；
-- 不自动删除 ownership 不明的临时目录。
+项目暂停期间，本地目标更严格：
 
-详见：`docs/LOCAL_WORKSPACE_HYGIENE.md`。
+- 只保留 `project-github-sync` 中的 canonical Git checkout；
+- 已合并的 Gate worktree 删除；
+- CLA 本地截图、ZIP、review package、archives、runtime-temp 在确认无唯一证据后删除；
+- 不保留额外 Conversion Leak Audit 本地副本；
+- ownership 不明的 `.tmp-*` 不自动删除。
+
+详见：`docs/PROJECT_PAUSE_HANDOFF.md` 与 `docs/LOCAL_WORKSPACE_HYGIENE.md`。
