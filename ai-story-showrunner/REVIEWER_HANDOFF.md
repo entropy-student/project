@@ -226,7 +226,9 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - switching only the GPT checkpoint to `narrator01_v2pp-e5.ckpt`, while keeping SoVITS e8, the same reference audio/text, target text, speed 1, top_k 15, top_p 1 and temperature 0.8, produced 3/3 successful generations;
 - current GPT-SoVITS QA candidate is therefore `narrator01_v2pp-e5.ckpt + narrator01_v2pp_e8_s248.pth` with `temperature=0.8`; e10 and e15 are rejected from the current candidate path for stability;
 - follow-up repeated QA on the curiosity/suspicion sentence produced 3/3 successful generations with speaker timbre judged similar to the target voice, but the three runs had noticeably different prosody/intonation;
-- current interpretation: speaker-similarity and basic generation stability are promising, while prosody determinism remains unresolved and must be controlled before batch production;
+- enabling the WebUI option `是否直接对上次合成结果调整语速和音色，防止随机性` for the same sentence produced 3/3 perceptually identical outputs;
+- therefore same-text deterministic replay is available through the inference cache/freeze path; this control is suitable for reusing an accepted semantic/prosody realization, but it must be cleared when moving to a new sentence so a new semantic realization can be generated;
+- current interpretation: speaker-similarity, basic generation stability and same-text replay determinism are promising; cross-sentence prosody control is still not yet validated;
 - this is still a candidate-quality result, not canonical promotion.
 
 Current technical next action:
