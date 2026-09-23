@@ -1526,3 +1526,15 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 Reviewer follow-up needed: reconcile the Product Related products state with the accepted K4 cleanup evidence before resuming K5. Do not hide these products through CSS or re-run cleanup in this Gate. Once Reviewer confirms the expected active data/baseline, rerun remaining bounded admin, responsive, Gutenberg, PayPal-state and deployment-package checks. The test product remains non-production data; no live sale is authorized.
+
+## K5R1 Related Products Baseline Repair — 2026-09-23
+
+`PASS_CANDIDATE_K5R1_RELATED_PRODUCTS_BASELINE_REPAIR`
+
+Root cause was a stale WooCommerce `wc_related_223` transient containing the three draft legacy product IDs. Cleared that single transient only; the next WooCommerce native related-product query recomputed to an empty result. Fresh anonymous Product and Shop both return HTTP 200, with no legacy demo items visible and Mini Craft Night Kit retained in Shop. Product gallery thumbnail switching remains normal. Home, products, prices, SKU/stock, WooCommerce configuration, PayPal, and orders were not modified.
+
+Full evidence and exact before/after state: [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md#k5r1-related-products-baseline-repair--2026-09-23).
+
+Local rollback metadata: `C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-k3r4-mariadb-recovery\\.artifacts\\k5r1-related-products-baseline-repair\\rollback\\before.json`.
+
+Stopped at Reviewer checkpoint. No VPS deployment or Live PayPal action.
