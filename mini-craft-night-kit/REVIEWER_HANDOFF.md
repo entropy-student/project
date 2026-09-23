@@ -1571,3 +1571,27 @@ Formal decision:
 `docs/REVIEWER_DECISION_PROJECT_DIRECTORY_CONSOLIDATION.md`
 
 Do not start Growth/SEO or K5 until Reviewer accepts this consolidation.
+
+
+## Project Directory Consolidation — STRUCTURAL PASS / OWNER CLEANUP
+
+Executor commit `a33b3bd9ce7b96fffa91a4ffad0d891e28c2342a` is accepted for structural consolidation.
+
+Accepted:
+- canonical workspace created;
+- local README + repo/runtime/rollback pointers created;
+- K4 visual ZIP / manifest / rollback SQL relocated and verified;
+- Git and active runtime left in place where path dependencies make physical move unsafe;
+- site/runtime/business state unchanged.
+
+The only open item is local deletion blocked by Executor policy. Do not repeat another Codex deletion Gate.
+
+Owner manual cleanup is authorized for:
+- shared-root `.tmp-k4-detail-browser-desktop`
+- shared-root `.tmp-k4-detail-browser-mobile`
+- completed Gate's four browser profiles, two debug screenshots, and empty helpers directory under active-runtime `.artifacts\k4-final-mobile-commerce-visual-polish\`
+
+Do not delete `.tmp-cdp-test2` while Edge references remain.
+
+Formal decision:
+`docs/REVIEWER_DECISION_PROJECT_DIRECTORY_CONSOLIDATION_OWNER_CLEANUP.md`
