@@ -3187,3 +3187,40 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 No local workspace artifacts or temporary directories were created. The K4.5 docs record the full technical/on-page/schema/Search/Merchant/performance/instrumentation/privacy/email/CRO audit, the purchase event contract, a 5/7/5/4 priority matrix, and a consolidated Owner checkpoint list. The exact Cross-Border playbook file was not available in the Mini Craft repo/canonical workspace; the authorized Reviewer Decision principles and K1A growth map were used, and no unrelated project tree was scanned.
+
+
+## K4_6_GROWTH_FOUNDATION_SPEC — Executor Evidence (2026-09-23)
+
+```text
+GATE=K4_6_GROWTH_FOUNDATION_SPEC
+RESULT=PASS_CANDIDATE_K4_6_GROWTH_FOUNDATION_SPEC
+SCOPE=DOCUMENTATION_ONLY
+GROWTH_SYSTEM_CREATED=YES
+UNIT_ECONOMICS_TEMPLATE_CREATED=YES_NO_ASSUMED_VALUES
+EVENT_TAXONOMY_CREATED=YES
+UTM_STANDARD_CREATED=YES_EXAMPLES_ONLY
+CRO_BACKLOG_CREATED=YES_K4_5_EVIDENCE_ONLY
+ANALYTICS_PROVIDER=PENDING_OWNER_SELECTION
+PRODUCT_MODEL_STRATEGY_DECISION=PENDING_OWNER_REVIEW
+OWNER_CHECKPOINT_BUNDLES=PRODUCT_TRUTH;PUBLIC_ORIGIN;MEASUREMENT;LEGAL_CONSENT;DELIVERY_AND_EMAIL
+SITE_MUTATION=0
+ANALYTICS_IMPLEMENTATION=0
+SEO_IMPLEMENTATION=0
+EXTERNAL_ACCOUNT_ACTIONS=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+WORKSPACE_TEMP_CLEANUP=PASS_NO_LOCAL_ARTIFACTS_CREATED
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=NOT_RESCANNED; K4.5 evidence previously reported pre-existing .tmp-cdp-test2 with active Edge references; untouched
+LOCAL_HELPERS_CLEANED=NOT_CREATED
+BROWSER_PROFILES_CLEANED=NOT_CREATED
+DELIVERABLE_LOCATION=GitHub: mini-craft-night-kit/05_growth/
+ROLLBACK_LOCATION=NOT_APPLICABLE_DOCUMENTATION_ONLY
+DOC_COMMITS=00_GROWTH_SYSTEM.md:ef143bd00fc7c6bf63be86d38ddee53bf6635718;01_UNIT_ECONOMICS.md:79f102f9d1418af6dd2219a1b9c96054701425db;02_EVENT_TAXONOMY.md:008abdef5338339e24ffa421e41675656213a228;03_UTM_STANDARD.md:93dbfd4714589a2a507f79f35c441eba9c341e3f;07_CRO_BACKLOG.md:1daf2f5bac9493a1e328b16d5fa4d0e5357fb915
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+Five Owner decision bundles are consolidated in 00_GROWTH_SYSTEM.md. Unit-economics inputs remain OWNER_INPUT_REQUIRED; no business value was estimated. Purchase remains server/order-state canonical, browser signals are non-authoritative, and Sandbox/test orders are excluded from production purchase reporting.
+
+No WordPress, plugin, SEO metadata, robots, schema, product, WooCommerce, PayPal, order/payment, analytics provider, email, or external account state was changed. No screenshots, ZIPs, browser profiles, or local helpers were created.
