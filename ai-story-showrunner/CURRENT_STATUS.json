@@ -14,22 +14,22 @@
     "lifecycle": "CANDIDATE_EXTRACTED_CANONICAL_AFTER_E2E"
   },
   "active_workstream": {
-    "id": "G6R_CANDIDATE_RUNTIME_RECONCILIATION",
-    "name": "Candidate timing ↔ visual ↔ runtime reconciliation",
-    "status": "IN_PROGRESS_CROSS_REPO",
-    "next": "Merge project + story-showrunner reconciliation changes, then rebuild the current execution package and release the first-E2E Asset Calibration Gate."
+    "id": "G6A_FIRST_E2E_ASSET_CALIBRATION",
+    "name": "Real production TTS + resolved timeline + 44 production frames",
+    "status": "READY_NOT_EXECUTED",
+    "next": "Execute production-package-v2 through the Asset Calibration Gate, review returned evidence, then authorize or return final FFmpeg render."
   },
   "production": {
-    "current_gate": "G6R",
-    "status": "IN_PROGRESS",
-    "current_task": "RECONCILE_CANDIDATE_TIMING_VISUAL_RUNTIME_CONTRACT",
-    "next_after_package": "G6_ASSET_CALIBRATION_GATE",
+    "current_gate": "G6A",
+    "status": "READY_NOT_EXECUTED",
+    "current_task": "RUN_PRODUCTION_PACKAGE_V2_ASSET_CALIBRATION",
+    "next_after_package": "REVIEW_ASSET_GATE_THEN_FINAL_FFMPEG_RENDER",
     "next_gate": {
-      "id": "G6A",
-      "name": "First E2E Asset Calibration Gate",
-      "status": "BLOCKED_BY_G6R"
+      "id": "G7",
+      "name": "End-to-End Final Video Validation",
+      "status": "BLOCKED_BY_G6A"
     },
-    "production_package_status": "V1_SUPERSEDED_FOR_CURRENT_EXECUTION_PENDING_G6R_REBUILD",
+    "production_package_status": "V2_READY_FOR_FIRST_E2E_ASSET_CALIBRATION",
     "timing": {
       "status": "PLANNED_TIMELINE_COMPILED_PASS",
       "speech_units": 44,
@@ -96,29 +96,28 @@
       "owner_second_roundtrip_required": false
     },
     "production_package": {
-      "id": "blind-search-answer-g6-e2e-v1",
-      "path": "experiments/g6/blind-search-answer/production-package-v1",
+      "id": "blind-search-answer-g6r-v2",
+      "path": "experiments/g6/blind-search-answer/production-package-v2",
+      "status": "READY_FOR_G6A",
       "renderer": "FFmpeg",
       "renderer_mode": "BASELINE_STATIC_FIRST",
-      "remotion": "EXCLUDED_FROM_V1",
-      "hyperframe": "EXCLUDED_FROM_V1",
       "one_delivery": true,
-      "expected_final": "final/blind-search-answer.mp4",
-      "external_source_requirement": {
-        "path": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
-        "git_blob_sha": "ce7605c4d4a9d3731bc1778a9889a21119ac8b29"
-      },
-      "status": "V1_HISTORICAL_CANDIDATE_NOT_CURRENT_EXECUTION"
+      "stage_stop": "ASSET_CALIBRATION_BEFORE_FINAL_RENDER",
+      "timing_bindings": "experiments/g6/blind-search-answer/timing/05_VISUAL_BEAT_TIMING_BINDINGS.json",
+      "reconciled_visual_beats": "experiments/g6/blind-search-answer/production-package-v2/05_VISUAL_BEATS.json",
+      "resolver": "entropy-student/spike.skill/story-showrunner/runtime/timeline_resolver.py",
+      "expected_final": "final/blind-search-answer.mp4"
     },
-    "render_authorization": "BLOCKED_PENDING_G6R_AND_ASSET_GATE_PASS",
+    "render_authorization": "BLOCKED_PENDING_G6A_REVIEW",
     "asset_gate": {
-      "status": "BLOCKED_BY_G6R",
+      "status": "READY_NOT_EXECUTED",
       "scope": [
-        "production TTS",
+        "43 voiced production TTS units + 1 silent HARD_ANCHOR",
         "Runtime Timeline Resolver",
+        "FINAL_SUBTITLES / FINAL_TIMELINE / FINAL_SHOT_TIMELINE",
         "44 production frames",
-        "asset mechanical QA",
-        "reviewer handoff ZIP"
+        "asset mechanical / identity / reference / continuity QA",
+        "reviewer evidence package"
       ],
       "stop_before": [
         "FFmpeg final render",
@@ -132,7 +131,7 @@
       ]
     },
     "g6r": {
-      "status": "IN_PROGRESS_CROSS_REPO",
+      "status": "PASS",
       "reason": "Post-extraction review found that the new Candidate Timing Compiler was feeding legacy G4 Visual Beats whose timing_source remained JINGSUI_PRIOR_ESTIMATE, while the Runtime Timeline Resolver contract required durable semantic anchors that were not represented in the current Visual Beat schema/package.",
       "preserved_truth": [
         "locked script",
@@ -149,7 +148,26 @@
         "Reviewer Handoff / Current Status / Candidate Status synchronized"
       ],
       "project_binding_artifact": "experiments/g6/blind-search-answer/timing/05_VISUAL_BEAT_TIMING_BINDINGS.json",
-      "review_doc": "docs/G6R_CANDIDATE_RUNTIME_RECONCILIATION.md"
+      "review_doc": "docs/G6R_CANDIDATE_RUNTIME_RECONCILIATION.md",
+      "result": "PASS_G6R_CANDIDATE_RUNTIME_RECONCILIATION",
+      "completed_outputs": [
+        "44/44 durable Speech Unit ↔ Visual Beat bindings",
+        "Candidate Visual Beat anchor schema",
+        "deterministic runtime/timeline_resolver.py reference",
+        "synthetic duration-mutation smoke PASS with 0 overlaps",
+        "Candidate-compliant 44 Visual Beats",
+        "production-package-v2",
+        "synchronized current-status / handoff / candidate docs"
+      ],
+      "smoke_test": {
+        "path": "experiments/g6/blind-search-answer/g6r/06_RESOLVER_SMOKE_TEST_REPORT.json",
+        "result": "PASS",
+        "resolved_visual_beats": 44,
+        "overlap_count": 0,
+        "planned_total_duration_sec": 146.7209,
+        "synthetic_final_total_duration_sec": 147.247618,
+        "creative_fields_changed": false
+      }
     }
   },
   "accepted_gates": [
@@ -252,8 +270,8 @@
   ],
   "unknowns": [
     "Real production TTS for the current Blind Search episode has not yet been executed.",
-    "The reconciled Candidate Runtime Timeline Resolver has not yet been exercised against real 43-unit CosyVoice production durations.",
-    "The 44 production frames have not yet been generated under the reconciled package.",
+    "The reconciled Runtime Timeline Resolver has not yet been exercised against real 43-unit CosyVoice production durations.",
+    "The 44 production frames have not yet been generated under production-package-v2.",
     "No final-video Candidate E2E PASS exists yet."
   ],
   "owner_intervention_required": false,
