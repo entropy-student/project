@@ -155,3 +155,96 @@ Contract: G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md
 G5: PENDING
 Payment / VPS / Production: HOLD
 ```
+
+
+## 11. Mandatory Single Reviewer Handoff Artifact
+
+Every Executor stop at `STOP_AT_REVIEWER` must produce exactly one clear handoff artifact for the Owner/Reviewer.
+
+### If all evidence is already in GitHub
+
+Create/update one concise Git-tracked handoff file:
+
+`docs/EXECUTOR_HANDOFF.md`
+
+and return:
+
+```text
+REVIEWER_SOURCE=GITHUB
+REVIEWER_HANDOFF=conversion-leak-audit/docs/EXECUTOR_HANDOFF.md
+OWNER_ACTION=NONE
+```
+
+The Executor must not ask the Owner to upload duplicate Git-tracked evidence that Reviewer can inspect directly.
+
+### If Reviewer needs local-only assets
+
+Examples:
+- screenshots;
+- ZIP review package;
+- local runtime evidence not committed to Git.
+
+Create one package under:
+
+`VPS基建/_project-artifacts/conversion-leak-audit/review-packages/<gate>/`
+
+and return its absolute Windows path:
+
+```text
+REVIEWER_PACKAGE_PATH=C:\Users\...\VPS基建\_project-artifacts\conversion-leak-audit\review-packages\<gate>\<file>.zip
+OWNER_ACTION=UPLOAD_REVIEWER_PACKAGE
+```
+
+The package must contain one `MANIFEST.md` explaining exactly what Reviewer should inspect.
+
+### Chat/terminal return length
+
+Default return must be concise. Do not dump the full execution report into the terminal.
+
+Preferred shape:
+
+```text
+GATE=...
+RESULT=...
+BRANCH=...
+COMMIT=...
+REVIEWER_SOURCE=GITHUB|LOCAL_PACKAGE
+REVIEWER_HANDOFF=...        # when GitHub
+REVIEWER_PACKAGE_PATH=...   # when local-only package exists
+OWNER_ACTION=...
+NEXT=STOP_AT_REVIEWER
+```
+
+Detailed evidence belongs in GitHub or the single review package.
+
+## 12. Local Workspace / Artifact Lifecycle
+
+The project uses three distinct local areas:
+
+```text
+project-github-sync/   canonical checked-out repository
+workspaces/            active Gate worktrees only
+_project-artifacts/    local screenshots / ZIPs / review packages / runtime evidence
+```
+
+### After a Gate is merged and Reviewer PASS
+
+Executor or a dedicated hygiene step should:
+
+1. verify the Gate branch is merged;
+2. verify the workspace is clean;
+3. remove the merged Gate worktree from `workspaces/`;
+4. move final local review material into:
+   `_project-artifacts/conversion-leak-audit/archives/<gate>/`;
+5. remove disposable project-owned runtime temp after confirming it is no longer active;
+6. retain the final review package + manifest;
+7. never delete unknown/unowned temp directories;
+8. never delete canonical Git-tracked history as a substitute for local cleanup.
+
+### Active Gate rule
+
+Never delete or move the active Gate workspace before Reviewer PASS/merge.
+
+### Root hygiene
+
+Conversion Leak Audit temporary output must never be written directly into the `VPS基建` root.
