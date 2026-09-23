@@ -1043,3 +1043,10 @@ with transcript:
 `睡得好吗？希望你今天顺利，别遇到那种一大早就能惹你生气的人。`
 
 This local path is runtime configuration, not portable Skill identity.
+
+
+---
+
+## 2026-09-23 — Asset-stage timing decision
+
+Current material-generation rule: planned duration is guidance, not a hard synthesis target. Generated Speech Units must keep natural voiced delivery, while their actual durations are measured and recorded precisely. Working layers: SRT1 = planned timing; SRT2 = actual generated-audio timing and current material-stage authority; SRT3 = final post-assembly timing after redundant breath-gap cleanup. This remains a project-level validation rule until final-video E2E.
