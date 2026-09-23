@@ -3096,3 +3096,94 @@ NEXT=STOP_AT_REVIEWER
 The current workspace README, repository pointer, runtime pointer, rollback pointers, and inventory are local-only under the canonical workspace. The active runtime was not stopped, moved, or recreated. No Docker volume was deleted. All four Mini Craft environment container pairs remained as found. Site status probes bypassed the host proxy because its configured localhost proxy port was unavailable; direct site requests showed Home and the listed storefront routes working, while Checkout correctly redirected for a fresh session with an empty cart.
 
 Cleanup is incomplete solely because the exact-path deletion operation for the explicitly authorized disposable artifacts was rejected by the execution policy. No alternate deletion method was attempted. Reviewer direction is required before claiming workspace hygiene complete.
+
+
+## K4_5_GROWTH_SEO_READINESS_AUDIT — Executor Evidence (2026-09-23)
+
+```text
+GATE=K4_5_GROWTH_SEO_READINESS_AUDIT
+RESULT=PASS_CANDIDATE_K4_5_GROWTH_SEO_READINESS_AUDIT
+AUDIT_MODE=READ_ONLY
+LOCAL_URL=http://localhost:8093/
+ACTIVE_RUNTIME=mini-craft-k3r4-mariadb-recovery
+WORDPRESS=7.1.1
+WOOCOMMERCE=10.0.4
+ACTIVE_PLUGINS=Kadence Blocks 3.7.11;Kadence Starter Templates 2.3.4;WooCommerce 10.0.4;WooCommerce PayPal Payments 4.1.3
+WORDPRESS_CONTAINER=UP
+MARIADB_CONTAINER=HEALTHY
+```
+
+### Technical SEO / runtime observations
+
+- Read-only runtime options: home/site URL are localhost:8093; WordPress site title option is empty; tagline is “Screen-free craft nights for two”; permalink structure is /%postname%/; blog_public=0; site locale=en_US.
+- Primary routes Home, Shop, Product, FAQ, Shipping & Returns, Contact, Cart, and Account returned HTTP 200. Fresh empty-cart Checkout returned HTTP 302 to Cart; no cart, order, or payment action was taken.
+- Search and Craft Kits category returned 200 with noindex,nofollow. All six primary content pages and Cart/Account also returned noindex,nofollow.
+- robots.txt returned 200 and had no Sitemap directive. /wp-sitemap.xml, /sitemap_index.xml and sampled child sitemap endpoints returned 404.
+- Home, Product, FAQ, Shipping & Returns, and Contact canonicals point to localhost; Shop had no canonical tag. No meta description or OG/Twitter metadata was observed on those pages.
+- Privacy page ID 3 is draft; guest routes /privacy-policy/ and /?page_id=3 returned 404. WooCommerce Terms page is unset; /terms-and-conditions/ returned 404.
+- About, Blog, and Reviews are additional published local pages and currently noindex. About had no H1; Blog saved body was empty; Reviews had 16 saved words and no H1. Exact semantic duplicate analysis was not run.
+- Eight same-origin content-link paths from the six audited pages were probed; none returned a 4xx.
+- The three inherited demo product routes Remote Control, Universal Charger, and USB-C Cable returned 404; no redirect was observed.
+- WooCommerce selling and shipping specific-country lists both contain US. Guest checkout is enabled. These are current local options, not production validation.
+
+### Product / schema observations
+
+```text
+VISIBLE_PRODUCTS=1
+PRODUCT=Mini Craft Night Kit
+PRODUCT_CATEGORY=Craft Kits
+PRICE=1_TEST_ONLY
+CURRENCY=JPY
+STOCK=8_TEST_ONLY;AVAILABILITY=IN_STOCK_TEST_ONLY
+SKU=MCK-LOCAL-TEST-001_TEST_ONLY
+PRODUCT_REVIEW_COUNT=0
+PRODUCT_SCHEMA_COUNT=1
+PRODUCT_SCHEMA_TYPES=Organization,Product,Offer,UnitPriceSpecification
+PRODUCT_SCHEMA_FIELDS_PRESENT=name,description,image,sku,offers,price,priceCurrency,availability
+PRODUCT_SCHEMA_FIELDS_ABSENT=brand,shippingDetails,hasMerchantReturnPolicy
+BREADCRUMBLIST_SCHEMA=ABSENT
+FAQPAGE_SCHEMA=ABSENT
+DUPLICATE_PRODUCT_SCHEMA=NOT_DETECTED
+```
+
+No GTIN/MPN metadata was present under sampled common fields. Whether these identifiers apply must be confirmed by Owner/supplier. No structured data was edited.
+
+### On-page, instrumentation, lifecycle
+
+- Home title: “Screen-free craft nights for two”; H1 count 1. FAQ H1 count 2. Other audited primary pages had one H1 each.
+- Home had 7 img elements / 6 empty alt attributes; Product had 8 / 2 empty alt attributes. Sampled img elements carried width and height; srcset was present. Home’s 4 product display images were 1448×1086; Product main-image intrinsic markup was 506×332.
+- No GA4/PostHog bootstrap or SEO/analytics/consent/email provider plugin was detected. WooCommerce order-attribution JavaScript was present; it is not a GA4/PostHog ecommerce event pipeline. No project UTM standard was found in Mini Craft repo/workspace.
+- Contact form exists; no submission was made. Marketing email capture, session replay, error tracking, creator/affiliate attribution, and consent-manager integration were absent/not detected.
+- A WooCommerce sender-from-address option is configured, but its value is intentionally not recorded. Email delivery, sender-domain DNS authentication, and Contact form delivery remain unverified.
+- WooCommerce remains canonical commerce/order truth. No server-side analytics purchase event was present or implemented. Purchase contract is documented in docs/GROWTH_SEO_READINESS_AUDIT.md.
+
+### Local performance boundary
+
+One local GET-to-response-header sample returned Home HTML about 1.13 s / 153.6 kB and Product about 0.29 s / 104.7 kB. This excludes transferred CSS/JS/image bytes and is not field TTFB or a browser CWV run.
+
+Static markup counts: Home 22 script tags / 12 stylesheet links / 6 candidate head scripts without async/defer; Product 37 / 13 / 11. Product markup contains WooCommerce gallery assets and PPCP SDK boot/fraudnet loader references; dynamic provider requests were not traced. LCP/INP/CLS, total mobile payload, and Production field CWV remain UNVERIFIED.
+
+### Read-only safety / workspace
+
+```text
+PAGE_CONFIG_MEDIA_MUTATION=0
+WOOCOMMERCE_PAYPAL_ORDER_PAYMENT_MUTATION=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+EXTERNAL_ACCOUNTS_CREATED=NO
+SECRETS_OR_CREDENTIALS_OUTPUT=NO
+SCREENSHOTS_OR_ZIP_CREATED=NO
+LOCAL_TEMP_FILES_CREATED=NO
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=.tmp-cdp-test2 (pre-existing; 9 Edge references confirmed; untouched)
+LOCAL_HELPERS_CLEANED=NOT_CREATED
+BROWSER_PROFILES_CLEANED=NOT_CREATED
+WORKSPACE_TEMP_CLEANUP=PASS_NO_LOCAL_ARTIFACTS_CREATED
+DELIVERABLE_LOCATION=GitHub mini-craft-night-kit/docs/GROWTH_*;EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+ROLLBACK_LOCATION=NOT_APPLICABLE_READ_ONLY_AUDIT
+VPS_WRITES=ZERO
+NEXT=STOP_AT_REVIEWER
+```
+
+No local workspace artifacts or temporary directories were created. The K4.5 docs record the full technical/on-page/schema/Search/Merchant/performance/instrumentation/privacy/email/CRO audit, the purchase event contract, a 5/7/5/4 priority matrix, and a consolidated Owner checkpoint list. The exact Cross-Border playbook file was not available in the Mini Craft repo/canonical workspace; the authorized Reviewer Decision principles and K1A growth map were used, and no unrelated project tree was scanned.
