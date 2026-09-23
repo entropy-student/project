@@ -217,6 +217,8 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - PyTorch Lightning Rich teardown then raised a Windows GBK encoding error after a successful epoch; the local GPT training path now disables the Rich progress bar;
 - final SoVITS weights now exist at epochs 4 and 8, with `narrator01_v2pp_e8_s248.pth` as the latest trained SoVITS candidate;
 - final GPT weights now exist at epochs 5, 10 and 15, with `narrator01_v2pp-e15.ckpt` as the latest trained GPT candidate;
+- the earlier zero-shot listening test used a different target-speaker reference than the voice used for `narrator01_v2pp` fine-tuning, so that earlier listening result is retained only as functional zero-shot evidence and is NOT a valid speaker-similarity A/B baseline for the fine-tuned narrator;
+- the fair speaker-similarity comparison must use the same narrator voice reference (preferably a clean held-out 3–10s clip), same target sentence and same inference settings for both base/zero-shot and fine-tuned conditions;
 - this establishes local fine-tune execution PASS only; voice similarity / naturalness is not yet accepted and no canonical TTS migration has occurred.
 
 Current technical next action:
