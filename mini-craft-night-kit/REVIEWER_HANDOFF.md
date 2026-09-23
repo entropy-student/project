@@ -1425,3 +1425,25 @@ After recovery PASS, Reviewer will resume `K4_STRICT_STOREFRONT_CLEANUP`.
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_NATIVE_BLOCK_RECOVERY_CONTACT_FAQ.md`
+
+
+## K4 Native Block Recovery — Editor Session Unavailable / Artifact Path Authorized
+
+Executor returned `RETURN_REVIEWER_K4_GUTENBERG_EDITOR_SESSION_UNAVAILABLE` with zero mutation. This is a tooling/session limitation, not a new storefront regression.
+
+Do not retry the same unreliable Gutenberg GUI automation path.
+
+New bounded Gate:
+`K4_ARTIFACT_BACKED_BLOCK_RECOVERY`
+
+Strategy:
+- discover retained K4 rollback/page snapshots read-only;
+- restore the Contact Kadence Form only from an exact known-good serialized form artifact;
+- rebuild only invalid core/column and core/details blocks using WordPress core parse/serialize functions;
+- preserve current copy and every non-target block;
+- if no exact Kadence recovery source exists, stop with zero mutation.
+
+Known evidence includes a K4 content-fill state with invalid count 0 and Contact form render PASS. The retained copy-preflight artifact path is `.artifacts/k4-copy-preflight-20260922-144817/pages.json`, but usability must be proven before recovery.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_ARTIFACT_BACKED_BLOCK_RECOVERY.md`
