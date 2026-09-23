@@ -438,3 +438,44 @@ Candidate:
 `PASS_CANDIDATE_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
 
 Then `STOP_AT_REVIEWER`.
+
+## Executor candidate handoff — G5 — 2026-09-23
+
+```text
+GATE=G5_FULL_FIX_QUEUE_LLM_DOGFOOD
+RESULT=PASS_CANDIDATE_G5_FULL_FIX_QUEUE_LLM_DOGFOOD
+BASE_MAIN=d0b821c91f433ce6cf8e3c534fa6a87d91c43b90
+BRANCH=codex/g5-full-fix-queue-llm-dogfood
+COMMIT=PENDING_FINAL_COMMIT
+NEXT=STOP_AT_REVIEWER
+```
+
+### Acceptance summary
+
+```text
+FULL_FIX_QUEUE=PASS (all unique evidence-backed ISSUE decisions; honest 0/1/2/3/>3 states)
+QUEUE_ORDERING=PASS (G4 Top 3 order, then Scanner report order; no severity/impact score)
+EVIDENCE_TRACEABILITY=PASS (source, references, Scanner decision, first move, limitation)
+LLM_PROVIDER_ABSTRACTION=PASS (small interface; optional JSON HTTP adapter)
+LLM_STRUCTURED_INPUT=PASS (versioned issue-only schema; no raw HTML or URL)
+LLM_STRUCTURED_OUTPUT=PASS (strict JSON field/schema validation)
+LLM_HALLUCINATION_GUARDS=PASS (claim, rule, number, source, reference, URL/HTML, fixed-caveat checks)
+LLM_FALLBACK=PASS (fake success, unavailable, timeout, malformed JSON/schema, unsafe provider, guard rejection)
+FREE_TOP3_LLM_CALLS=0
+ANALYTICS_CONTRACT=PASS (privacy-safe event contract, local-preview access markers; no provider/payment events)
+SKILL_DOGFOOD=PASS (D001-D003 remain inconclusive; D004-D006 preregistered, no Skill change)
+SCANNER_REGRESSION=55/55_PASS
+WORDPRESS_REGRESSION=20/20_PASS
+G4_BROWSER_REGRESSION=PASS
+SEO_READINESS=44/44_PASS
+G5_PHP_CONTRACT=43/43_PASS
+G5_BROWSER_ACCEPTANCE=PASS
+```
+
+The browser acceptance ran through an isolated local WordPress stack and deterministic fake Scanner, not a live customer or production target. It proved all 15 currently issue-capable rules can appear exactly once in the full queue fixture; exact queue ordering; zero/one/two/three findings are not padded; evidence expansion; refresh-safe `scan_id`; no cross-scan display; incomplete remains incomplete; malformed references fail closed; fake explanation only on explicit request; deterministic fallback; analytics privacy contract; and mobile no-overflow. Seven G5 screenshots are in the local, non-Git artifacts directory `_project-artifacts/conversion-leak-audit/screenshots/g5/`.
+
+Scope audit: all changed tracked files are under `conversion-leak-audit/**`; Scanner rule files are unchanged; no sibling project was materialized in this sparse workspace. `OUT_OF_SCOPE_CHANGES=0`, `PAYMENT_ACTIONS=0`, `VPS_WRITES=0`, `PRODUCTION_SECRETS=0`. No live API key/provider, payment action, entitlement, production route, or external-user evidence was used. Optional report export remains deferred.
+
+Known limitation: regex/allowlist language guards are defense-in-depth and cannot prove arbitrary model output semantically safe; the real provider remains disabled and requires a separate explicit local configuration to exercise. All Skill hypotheses remain `INCONCLUSIVE` pending real external-user behavior.
+
+Recommended Reviewer decision: `REVIEW_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`. Executor is not declaring G5 PASS; reviewer should independently review the queue ordering source, report binding, structured prompt/output guards, fallback behavior, analytics properties, regressions, screenshots, and diff scope. Owner action: `NONE`.

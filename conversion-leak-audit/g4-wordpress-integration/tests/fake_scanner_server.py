@@ -37,20 +37,41 @@ GOLDEN_PAGES = [
     "/faq",
 ]
 
+FULL_QUEUE_RULES = [
+    {"rule_id": "CORE-001", "message": "A key commercial page was not available.", "fact_refs": ["page:0.status"]},
+    {"rule_id": "CORE-002", "message": "The purchase action was not usable in the checked state.", "fact_refs": ["page:0.facts.direct_purchase_signal"]},
+    {"rule_id": "CORE-003", "message": "The mobile view interrupted a core task.", "fact_refs": ["page:0.access_state"]},
+    {"rule_id": "CORE-004", "message": "A key form control did not have a clear label.", "fact_refs": ["page:0.facts.form_accessibility"]},
+    {"rule_id": "CORE-006", "message": "A core navigation link was broken.", "fact_refs": ["page:0.facts.internal_links"]},
+    {"rule_id": "CORE-007", "message": "Product price was not visible near the purchase action.", "fact_refs": ["page:0.facts.visible_price"]},
+    {"rule_id": "CORE-009", "message": "An intended commercial page was marked noindex.", "fact_refs": ["page:0.facts.noindex"]},
+    {"rule_id": "CORE-010", "message": "Structured price and currency did not match page facts.", "fact_refs": ["page:0.facts.structured_price"]},
+    {"rule_id": "PHYS-001", "message": "Return information was not found in the checked public navigation.", "fact_refs": ["page:0.facts.return_links"]},
+    {"rule_id": "PHYS-002", "message": "Shipping information was not found in the purchase-adjacent content.", "fact_refs": ["page:0.facts.shipping_links"]},
+    {"rule_id": "SUB-001", "message": "The standard subscription price was hard to find.", "fact_refs": ["page:0.facts.standard_price"]},
+    {"rule_id": "SUB-002", "message": "The recurring billing cadence was not clear.", "fact_refs": ["page:0.facts.cadence_visible"]},
+    {"rule_id": "SUB-003", "message": "Automatic renewal terms were hard to find.", "fact_refs": ["page:0.facts.auto_renew_signal"]},
+    {"rule_id": "SUB-004", "message": "Post-trial charge details were incomplete.", "fact_refs": ["page:0.facts.trial_days"]},
+    {"rule_id": "SUB-005", "message": "Cancellation terms were hard to find.", "fact_refs": ["page:0.facts.cancel_signal"]},
+]
+
 
 def report_for(fixture: str) -> dict:
-    count = {"zero": 0, "one": 1, "two": 2, "demo": 3}.get(fixture, 3)
-    decisions = [
-        {**rule, "result": "ISSUE"} for rule in RULES[:count]
-    ]
-    decisions.append(
-        {
-            "rule_id": "CORE-001",
-            "result": "PASS",
-            "message": "The page exposed a usable primary navigation.",
-            "fact_refs": ["page:0", "selector:nav"],
-        }
-    )
+    if fixture == "many":
+        decisions = [{**rule, "result": "ISSUE"} for rule in FULL_QUEUE_RULES]
+        decisions.append({**FULL_QUEUE_RULES[1], "result": "ISSUE"})
+        decisions.append({"rule_id": "GATE-001", "result": "PASS", "message": "Public access was available.", "fact_refs": ["page:0.status"]})
+    else:
+        count = {"zero": 0, "one": 1, "two": 2, "demo": 3}.get(fixture, 3)
+        decisions = [{**rule, "result": "ISSUE"} for rule in RULES[:count]]
+        decisions.append(
+            {
+                "rule_id": "CORE-001",
+                "result": "PASS",
+                "message": "The page exposed a usable primary navigation.",
+                "fact_refs": ["page:0", "selector:nav"],
+            }
+        )
     pages = [
         {
             "requested_url": f"https://demo-store-golden-v1.example{path}",

@@ -124,7 +124,8 @@ add_action('rest_api_init', 'cla_g4_register_rest_routes');
 function cla_g4_scan_app_shortcode(): string {
     $api_root = rest_url('cla/v1');
     $nonce = wp_create_nonce('wp_rest');
-    $html = '<section class="cla-g4-app" data-cla-g4-app data-api-root="' . esc_attr($api_root) . '" data-api-nonce="' . esc_attr($nonce) . '">';
+    $local_preview = function_exists('cla_g5_local_preview_enabled') && cla_g5_local_preview_enabled();
+    $html = '<section class="cla-g4-app" data-cla-g4-app data-local-full-preview="' . ($local_preview ? 'true' : 'false') . '" data-api-root="' . esc_attr($api_root) . '" data-api-nonce="' . esc_attr($nonce) . '">';
     $html .= '<div class="cla-g4-scan-card">';
     $html .= '<div class="cla-g4-kicker">FREE PUBLIC SCAN</div>';
     $html .= '<h2>See the first three points worth checking.</h2>';
@@ -156,7 +157,9 @@ add_action('init', 'cla_g4_register_shortcodes', 20);
 
 function cla_g4_enqueue_assets(): void {
     if (is_admin()) { return; }
-    wp_enqueue_style('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.css'), [], '0.4.1');
-    wp_enqueue_script('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.js'), [], '0.4.1', true);
+    wp_enqueue_style('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.css'), [], '0.5.0');
+    wp_enqueue_script('cla-g4-integration', content_url('mu-plugins/conversion-leak-audit-g4.js'), [], '0.5.0', true);
 }
 add_action('wp_enqueue_scripts', 'cla_g4_enqueue_assets', 20);
+
+require_once __DIR__ . '/conversion-leak-audit-g5.php';

@@ -28,11 +28,19 @@ services:
       WORDPRESS_DB_NAME: ${WP_DB_NAME:-conversion_leak_audit}
       WORDPRESS_DB_USER: ${WP_DB_USER:-cla_local}
       WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD:-change-me-local-only}
+      WP_ENVIRONMENT_TYPE: ${WP_ENVIRONMENT_TYPE:-local}
+      CLA_G5_LOCAL_PREVIEW: ${CLA_G5_LOCAL_PREVIEW:-false}
+      CLA_G5_LLM_ENABLED: ${CLA_G5_LLM_ENABLED:-false}
+      CLA_G5_LLM_PROVIDER: ${CLA_G5_LLM_PROVIDER:-none}
+      CLA_G5_LLM_ENDPOINT: ${CLA_G5_LLM_ENDPOINT:-}
+      CLA_G5_LLM_API_KEY: ${CLA_G5_LLM_API_KEY:-}
+      CLA_G5_LLM_MODEL: ${CLA_G5_LLM_MODEL:-}
       CLA_SCANNER_BASE_URL: ${CLA_SCANNER_BASE_URL:-http://host.docker.internal:8000}
     volumes:
       - ./runtime/wordpress:/var/www/html
       - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
       - ../g4-wordpress-integration/conversion-leak-audit-g4.php:/var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.php:ro
+      - ../g4-wordpress-integration/conversion-leak-audit-g5.php:/var/www/html/wp-content/mu-plugins/conversion-leak-audit-g5.php:ro
       - ../g4-wordpress-integration/conversion-leak-audit-g4.js:/var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.js:ro
       - ../g4-wordpress-integration/conversion-leak-audit-g4.css:/var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.css:ro
       - ./wp-content/themes/conversion-leak-audit-child:/var/www/html/wp-content/themes/conversion-leak-audit-child
@@ -49,10 +57,18 @@ services:
       WORDPRESS_DB_NAME: ${WP_DB_NAME:-conversion_leak_audit}
       WORDPRESS_DB_USER: ${WP_DB_USER:-cla_local}
       WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD:-change-me-local-only}
+      WP_ENVIRONMENT_TYPE: ${WP_ENVIRONMENT_TYPE:-local}
+      CLA_G5_LOCAL_PREVIEW: ${CLA_G5_LOCAL_PREVIEW:-false}
+      CLA_G5_LLM_ENABLED: ${CLA_G5_LLM_ENABLED:-false}
+      CLA_G5_LLM_PROVIDER: ${CLA_G5_LLM_PROVIDER:-none}
+      CLA_G5_LLM_ENDPOINT: ${CLA_G5_LLM_ENDPOINT:-}
+      CLA_G5_LLM_API_KEY: ${CLA_G5_LLM_API_KEY:-}
+      CLA_G5_LLM_MODEL: ${CLA_G5_LLM_MODEL:-}
     volumes:
       - ./runtime/wordpress:/var/www/html
       - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
       - ../g4-wordpress-integration/conversion-leak-audit-g4.php:/var/www/html/wp-content/mu-plugins/conversion-leak-audit-g4.php:ro
+      - ../g4-wordpress-integration/conversion-leak-audit-g5.php:/var/www/html/wp-content/mu-plugins/conversion-leak-audit-g5.php:ro
       - ./wp-content/themes/conversion-leak-audit-child:/var/www/html/wp-content/themes/conversion-leak-audit-child
       - ./scripts:/workspace/scripts:ro
       - ./content:/workspace/content:ro

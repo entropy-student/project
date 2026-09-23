@@ -100,6 +100,28 @@ G9 才启用，必须由可信服务端事实触发，不由前端按钮点击�
 ### `full_report_viewed`
 用户第一次看到已解锁完整报告。
 
+G5 本地 dogfood 使用同名事件时，必须同时发送 `report_mode=local_preview` 与 `access_state=not_entitled`；该本地预览不表示用户已解锁、付费或获得 entitlement。G9/G10 的付费语义仍以后续 Gate 的合同为准。
+
+G5 本地预览属性：
+- `site_id_hash`
+- `report_mode`（固定为 `local_preview`）
+- `access_state`（固定为 `not_entitled`）
+- `queue_count`
+
+### G5 local full-report preview events
+
+这些事件仅记录本地完整队列与解释预览中的界面行为，不证明付费意向或真实用户价值：
+
+| Event | Required properties |
+| --- | --- |
+| `full_issue_expanded` | `site_id_hash`, `rule_id`, `queue_position` |
+| `llm_explanation_requested` | `site_id_hash`, `rule_id`, `schema_version`, `queue_position` |
+| `llm_explanation_viewed` | `site_id_hash`, `rule_id`, `source` (`llm`, `deterministic_fake`, or `deterministic_fallback`) |
+| `llm_explanation_failed` | `site_id_hash`, `rule_id`, `reason` (`provider_unavailable`, `timeout`, `malformed_output`, `guard_rejected`, or `payload_too_large`) |
+
+G5 analytics 不得发送扫描 URL、证据正文/引用列表、prompt、LLM 输入/输出、API key 或支付属性。`site_id_hash` 必须是 lowercase SHA-256；事件名不得包含 `checkout_started` 或 `payment_completed`。
+`deterministic_fake` 仅用于本地 automated acceptance，不代表调用真实 LLM 或产生真实用户行为证据。
+
 ## 2. Aha proxy events
 
 `top3_viewed` 只是候选 Activation。
