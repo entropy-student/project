@@ -1425,3 +1425,12 @@ Supplier contact is deferred. K4.8 remains optional sourcing research only.
 Current Gate: `K5_RELEASE_CANDIDATE_QA`.
 
 Launch path is now: K5 RC QA → VPS deployment → production canary on `minicraft.spikersun.com` → Owner uploads/approves real product data → production payment/email/domain checks → Soft Launch → operations.
+
+
+## K5 RC QA — baseline drift return
+
+K5 commit `11115a72e18213f49cca49e928a9a40ea7e793b4` found fresh Product Related Products still showing USB-C Cable, Universal Charger, and Remote Control. Shop correctly shows only Mini Craft Night Kit, but Related Products conflicts with accepted K4 cleanup truth.
+
+Current bounded remediation: `K5R1_RELATED_PRODUCTS_BASELINE_REPAIR`.
+
+After PASS, resume K5 rather than replay earlier K4 gates.
