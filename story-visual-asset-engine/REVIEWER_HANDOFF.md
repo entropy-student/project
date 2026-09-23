@@ -1,7 +1,7 @@
 # Story Visual Asset Engine — REVIEWER HANDOFF
 
 Date: 2026-09-23  
-Status: `CURRENT TRUTH ONLY / P0 RESEARCH IN_PROGRESS / STYLE NOT LOCKED / ASSET-REUSE ARCHITECTURE UNDER REVIEW`
+Status: `CURRENT TRUTH ONLY / P0 PASS / G1 READY_NOT_EXECUTED / STYLE NOT LOCKED / ASSET-REUSE ARCHITECTURE CANDIDATE`
 
 ## 1. Final goal
 
@@ -37,7 +37,7 @@ Roles:
 
 ## 3. Current Gate
 
-`P0_RESEARCH_AND_PROBLEM_DEFINITION = IN_PROGRESS`
+`P0_RESEARCH_AND_PROBLEM_DEFINITION = PASS`
 
 P0 questions:
 
@@ -150,20 +150,21 @@ Three-view/model-sheet prompts belong to asset creation, not ordinary story-boar
 
 ## 8. P0 acceptance
 
-P0 may PASS only when:
-- cost assumptions are separated into documented facts vs inference;
-- 3 style families are selected for a controlled benchmark;
-- a minimal asset schema is defined;
-- reuse operation taxonomy is defined;
-- a fixed benchmark shot set is defined;
-- measurable evaluation criteria are defined;
-- no provider is prematurely locked.
+Acceptance checklist:
+- [x] cost assumptions separated into documented facts vs inference;
+- [x] 3 style families selected for a controlled benchmark;
+- [x] minimal asset schema defined;
+- [x] reuse operation taxonomy defined;
+- [x] fixed benchmark shot set defined;
+- [x] measurable evaluation criteria defined;
+- [x] no provider prematurely locked.
 
-## 9. Proposed next Gate
+Reviewer decision:
+`PASS_P0_RESEARCH_AND_PROBLEM_DEFINITION`.
 
-After P0 PASS:
+## 9. Current next Gate
 
-`G1_STYLE_AND_REUSE_BENCHMARK`
+`G1_STYLE_AND_REUSE_BENCHMARK = READY_NOT_EXECUTED`
 
 Run the same small shot set across three candidate styles and measure:
 - first-pass acceptability;
@@ -182,3 +183,16 @@ No full episode production in G1.
 `OWNER_ACTION_REQUIRED = NO`
 
 Owner input is useful only when choosing among visually acceptable finalists.
+
+
+## 11. G1 execution package now prepared
+
+Current executable inputs:
+- `docs/G1_STYLE_AND_REUSE_BENCHMARK_SPEC.md`
+- `prompts/STYLE_PROFILES_V0_1.md`
+- `schemas/visual_asset.schema.json`
+
+Cost-control decision:
+G1 uses staged execution. Run the 5-task early-discrimination set across all 3 styles first; only surviving styles proceed to the remaining stress set.
+
+No Story Showrunner integration is authorized yet.
