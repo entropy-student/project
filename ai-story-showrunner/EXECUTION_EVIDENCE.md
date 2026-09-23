@@ -1050,3 +1050,47 @@ Gate result:
 
 Next:
 `G6 = READY`.
+
+
+---
+
+## 2026-09-23 — G6R Candidate Runtime Reconciliation
+
+Reviewer takeover identified a post-extraction runtime seam between current Candidate timing and legacy G4 Visual Beat absolute timing.
+
+Reconciliation evidence:
+
+- project and Skill branches started from current main with no behind commits;
+- 44 Speech Units ↔ 44 accepted Visual Beats: exact ID-set match;
+- missing bindings: 0;
+- duplicate bindings: 0;
+- planned total preserved: 146.7209s;
+- Candidate Visual Beat schema now requires `speech_unit_id`, `start_anchor`, `end_anchor`, `timing_flex`;
+- legacy `JINGSUI_PRIOR_ESTIMATE` absolute timing removed from current Candidate Visual Beat output;
+- deterministic resolver reference added at `entropy-student/spike.skill/story-showrunner/runtime/timeline_resolver.py`;
+- resolver reference syntax was Reviewer-checked;
+- synthetic duration-mutation smoke:
+  - Visual Beats resolved: 44;
+  - overlap count: 0;
+  - synthetic final duration: 147.247618s;
+  - text changed: false;
+  - Beat order changed: false;
+  - POV changed: false;
+  - profile drift flags remained diagnostic;
+- Candidate-compliant `production-package-v2` created;
+- Skill PR #2 merged at `7114f9f85c645cd72cda67bb7db865d22272b2ae`;
+- Project PR #4 merged at `5b927e5cb5464cf94e250d58b2c00f2498a9152e`.
+
+Reviewer decision:
+
+`PASS_G6R_CANDIDATE_RUNTIME_RECONCILIATION`
+
+Release:
+
+`G6A_FIRST_E2E_ASSET_CALIBRATION = READY_NOT_EXECUTED`
+
+Remaining unproven facts:
+- real 43-unit CosyVoice production TTS;
+- real Runtime Timeline Resolver execution against those durations;
+- 44 production frames under package v2;
+- final FFmpeg video E2E.
