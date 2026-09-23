@@ -1704,3 +1704,42 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The official Hostinger MCP endpoint was configured through Codex CLI and local MCP status reported OAuth logged in; however, the active Executor tool inventory still exposes no Hostinger VPS READ APIs (only unrelated Hostinger AI Builder tools, not used). No SSH retry or manual HTTP/API substitute was attempted. See the K6R2 section of `EXECUTION_EVIDENCE.md`. Resume only when official Hostinger VPS read tools are available to the active task; no Owner console, terminal, API-token, or browser login action is requested.
+
+
+## K6R2 Hostinger Control-Plane Retry After Owner Login — Executor Handoff (2026-09-23)
+
+```text
+GATE=K6R2_HOSTINGER_CONTROL_PLANE_FALLBACK
+RESULT=RETURN_REVIEWER_HOSTINGER_CONNECTOR_UNAVAILABLE
+OWNER_REPORTED_CONNECTOR_LOGIN=YES
+HOSTINGER_MCP_ENTRY=LOCAL_CODEX_CLI_PRESENT
+CONNECTOR_AUTH_STATE=NOT_CONFIRMED_BY_SANITIZED_RECHECK
+ACTIVE_EXECUTOR_HOSTINGER_VPS_READ_TOOLS=ABSENT
+HOSTINGER_AI_BUILDER_TOOLS=AVAILABLE_BUT_NOT_USED
+EXPECTED_VPS_IDENTIFIED=NOT_VERIFIED
+VPS_PROVIDER_STATE=NOT_READ
+VPS_DETAILS=NOT_READ
+VPS_METRICS=NOT_READ
+VPS_UPTIME=NOT_READ
+PROVIDER_FIREWALL_STATE=NOT_READ
+PROVIDER_TCP22_STATE=NOT_READ
+ATTACHED_SSH_KEY_METADATA=NOT_READ
+RECENT_VPS_ACTION_HISTORY=NOT_READ
+HOSTINGER_DOCKER_MANAGER=NOT_CALLABLE_IN_ACTIVE_SESSION
+DOCKER_PROJECT_LIST=NOT_READ
+EXISTING_PROJECTS_PROVIDER_READBACK=NOT_READ
+SSH_FAILURE_DOMAIN_CLASSIFICATION=UNRESOLVED_CONTROL_PLANE_TOOLS_NOT_EXPOSED
+SSH_RETRY=NO
+HOSTINGER_CONTROL_PLANE_WRITES=0
+VPS_POWER_ACTIONS=0
+FIREWALL_WRITES=0
+SSH_KEY_WRITES=0
+DOCKER_PROJECT_WRITES=0
+RECOVERY_MODE_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+Owner's login confirmation did not add the official Hostinger VPS READ APIs to this active Executor session. The fresh sanitized local CLI check confirmed an MCP entry but could not positively determine its auth state; no credential or OAuth data was inspected or emitted. No provider reads were made. Do not retry SSH or substitute manual API calls. Resume only after the official read tools are callable in the active task.
