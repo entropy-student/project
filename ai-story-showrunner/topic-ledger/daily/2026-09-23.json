@@ -1,0 +1,89 @@
+{
+  "date": "2026-09-23",
+  "planner": "Daily Topic / Publishing Planner v0.2",
+  "status": "PASS",
+  "public_signal_scan": {
+    "window": "latest verified public AI signals available at run time",
+    "clusters": [
+      {
+        "cluster_id": "anthropic-opus-5-5-cost-capability",
+        "canonical_event": "Anthropic released Claude Opus 5.5 on 2026-09-22, describing a major capability step while costing about 40% less to run than Opus 5 on typical workloads.",
+        "primary_source": "https://www.anthropic.com/claude-opus-5-5",
+        "secondary_verification": "Reuters coverage dated 2026-09-22",
+        "candidate_translation": "为什么AI模型只是变便宜一些，却可能让一批以前不值得交给AI的工作突然值得了？",
+        "gate_result": {
+          "Evidence": "PASS",
+          "Human_Relevance": "PASS — cost changes whether ordinary repeated work is worth delegating",
+          "Mechanism_Integrity": "PASS — per-task economics changes the viable automation boundary; do not equate lower model price with guaranteed total workflow savings",
+          "One_Mechanism": "PASS — task economics / viability threshold only",
+          "Storyability": "PASS — same job rejected as too expensive, then becomes viable after cost frontier moves",
+          "Non_trivial_Payoff": "PASS — model progress matters not only when a benchmark rises, but when capability-per-cost crosses a real task threshold",
+          "Audience_Fit": "PASS — translates frontier-model news into a practical AI-work mental model",
+          "D1_D4_Duplicate": "PASS — no registry topic has the same mechanism + human problem + payoff; avoid reusing office/boss-secretary motifs"
+        },
+        "decision": "QUALIFIED_HOT"
+      },
+      {
+        "cluster_id": "openai-gpt6-release",
+        "canonical_event": "OpenAI has a current GPT-6 Sol/Luna release page.",
+        "candidate_translation": "新模型更强到底会改变普通人什么？",
+        "gate_result": {
+          "Evidence": "PASS",
+          "Human_Relevance": "PASS",
+          "Mechanism_Integrity": "FAIL — release-level signal is too broad without selecting a single durable mechanism",
+          "One_Mechanism": "FAIL",
+          "Storyability": "WEAK",
+          "Non_trivial_Payoff": "WEAK",
+          "Audience_Fit": "PASS",
+          "D1_D4_Duplicate": "PASS"
+        },
+        "decision": "REJECT_NO_SINGLE_MECHANISM"
+      },
+      {
+        "cluster_id": "anthropic-ai-development-pace-metrics",
+        "canonical_event": "Anthropic published a framework for measuring the pace of AI development inside frontier labs.",
+        "primary_source": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+        "candidate_translation": "为什么公众很难知道AI到底进步得有多快？",
+        "gate_result": {
+          "Evidence": "PASS",
+          "Human_Relevance": "WEAK_MEDIUM",
+          "Mechanism_Integrity": "PASS",
+          "One_Mechanism": "PASS",
+          "Storyability": "WEAK",
+          "Non_trivial_Payoff": "PASS",
+          "Audience_Fit": "WEAK_MEDIUM",
+          "D1_D4_Duplicate": "PASS"
+        },
+        "decision": "REJECT_AUDIENCE_STORYABILITY"
+      }
+    ]
+  },
+  "selection": {
+    "topic_id": "capability-cost-viability-threshold",
+    "topic": "为什么AI模型只是变便宜一些，却可能让一批以前不值得交给AI的工作突然值得了？",
+    "lane": "HOT",
+    "business_job": "DISCOVERY",
+    "editorial_mode": "STORY_MODEL",
+    "target_duration": "3–5 min",
+    "hot_override": true,
+    "overridden_slot": "2026-09-23",
+    "displaced_topic_id": "more-context-worse-answer",
+    "displaced_to": "2026-09-29",
+    "mechanism": "A capability-per-cost improvement can move a task across the economic viability threshold for AI delegation even when the task itself has not changed.",
+    "human_problem": "为什么一个昨天还嫌贵、不值得自动化的AI任务，今天可能突然值得交给模型做？",
+    "audience_payoff": "理解模型更新真正改变现实的一个方式，是改变哪些任务在成本上值得交给AI，而不只是榜单分数变高。",
+    "guardrail": "Do not claim a 40% model-runtime reduction equals 40% end-to-end workflow savings; total cost also depends on tokens, retries, tools, latency and human review."
+  },
+  "rolling_schedule": {
+    "range": ["2026-09-23", "2026-09-29"],
+    "story_model_count": 6,
+    "story_action_count": 1,
+    "portfolio_note": "5/2 remains an experiment hypothesis; quality gates outrank quota, so no second STORY_ACTION was forced."
+  },
+  "governance": {
+    "locked_or_published_modified": false,
+    "auto_published": false,
+    "entered_g4_plus": false,
+    "daily_production_capability": "UNPROVEN"
+  }
+}
