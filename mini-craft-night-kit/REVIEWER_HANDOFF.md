@@ -1475,3 +1475,32 @@ Formal decision:
 `docs/REVIEWER_DECISION_K4_WORKSPACE_HYGIENE_V2.md`
 
 After Hygiene V2 PASS, Reviewer may resume `K4_STRICT_STOREFRONT_CLEANUP`.
+
+
+## K4 Workspace Hygiene V2 — FORMAL PASS
+
+Executor commit `d0b821c91f433ce6cf8e3c534fa6a87d91c43b90` is accepted.
+
+PASS means:
+- root inventory/classification completed conservatively;
+- no active/rollback/source/runtime item was deleted;
+- one durable visual ZIP was moved into the verified project-artifacts archive;
+- no new root transients were created;
+- future Mini Craft Gates must use the seven-field workspace cleanup contract.
+
+Known root items remain intentionally unresolved:
+- `.tmp-cdp-test2` — active Edge references;
+- `.tmp-k4-detail-browser-desktop`
+- `.tmp-k4-detail-browser-mobile` — ownership not proven.
+
+These do not block K4 continuation, but they are not considered safely deletable yet.
+
+## K4 Strict Storefront Cleanup — RESUMED
+
+Current Gate:
+`K4_STRICT_STOREFRONT_CLEANUP_RESUME`
+
+Contact/FAQ repaired block structures are now protected baselines. The strict customer-facing cleanup may continue.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_STRICT_STOREFRONT_CLEANUP_RESUME.md`
