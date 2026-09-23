@@ -14,24 +14,24 @@
     "lifecycle": "CANDIDATE_EXTRACTED_CANONICAL_AFTER_E2E"
   },
   "active_workstream": {
-    "id": "G6A_FIRST_E2E_ASSET_CALIBRATION",
-    "name": "Real production TTS + resolved timeline + 44 production frames",
-    "status": "READY_NOT_EXECUTED",
-    "next": "Execute production-package-v2 through the Asset Calibration Gate, review returned evidence, then authorize or return final FFmpeg render."
+    "id": "G6A_AUDIO_QA_AND_TTS_TRIAL",
+    "name": "First-E2E asset calibration: real TTS listening QA, candidate TTS A/B, partial frame execution",
+    "status": "IN_PROGRESS",
+    "next": "Complete the GPT-SoVITS isolated-environment dependency sync and WebUI launch, run a 5-case A/B against CosyVoice, choose the audio baseline, then repair/regenerate only failed units and resume the frame gate."
   },
   "production": {
     "current_gate": "G6A",
-    "status": "READY_NOT_EXECUTED",
-    "current_task": "RUN_PRODUCTION_PACKAGE_V2_ASSET_CALIBRATION",
-    "next_after_package": "REVIEW_ASSET_GATE_THEN_FINAL_FFMPEG_RENDER",
+    "status": "IN_PROGRESS_AUDIO_QA_RETURN",
+    "current_task": "G6A_AUDIO_REPAIR_PLUS_GPT_SOVITS_AB_TRIAL",
+    "next_after_package": "AUDIO_BASELINE_DECISION_THEN_RESUME_FRAME_ASSET_GATE",
     "next_gate": {
       "id": "G7",
       "name": "End-to-End Final Video Validation",
       "status": "BLOCKED_BY_G6A"
     },
-    "production_package_status": "V2_READY_FOR_FIRST_E2E_ASSET_CALIBRATION",
+    "production_package_status": "V2_PARTIALLY_EXECUTED_AUDIO_REPAIR_PENDING",
     "timing": {
-      "status": "PLANNED_TIMELINE_COMPILED_PASS",
+      "status": "REAL_TTS_RESOLVED_TIMELINE_AVAILABLE_AUDIO_QA_RETURN",
       "speech_units": 44,
       "tts_units": 43,
       "silent_holds": 1,
@@ -52,17 +52,28 @@
         "timing/runtime/TIMELINE_RESOLUTION_REPORT.json"
       ],
       "visual_binding_status": "G6R_BINDINGS_COMPILED_PASS_CANDIDATE",
-      "visual_binding_artifact": "experiments/g6/blind-search-answer/timing/05_VISUAL_BEAT_TIMING_BINDINGS.json"
+      "visual_binding_artifact": "experiments/g6/blind-search-answer/timing/05_VISUAL_BEAT_TIMING_BINDINGS.json",
+      "final_runtime_master_duration_sec": 143.0936,
+      "runtime_execution": "PASS_STRUCTURAL / RETURN_LISTENING_QUALITY"
     },
     "tts_execution": {
-      "status": "READY_NOT_EXECUTED",
-      "task": "experiments/g6/blind-search-answer/ANTIGRAVITY_TTS_ONLY_TASK.md",
-      "scope": "PRODUCTION_TTS_PLUS_RUNTIME_TIMELINE_RESOLUTION_NO_IMAGES_NO_REAL_VIDEO",
+      "status": "EXECUTED_AUDIO_QA_RETURN",
+      "engine_current": "CosyVoice-300M",
+      "speech_units": 44,
+      "voiced_units": 43,
+      "silent_holds": 1,
+      "master_duration_sec": 143.0936,
       "outputs": [
         "tts/units/*.wav",
         "tts/narration_master.wav",
-        "tts/tts_execution_report.json"
+        "tts/tts_execution_report.json",
+        "timing/runtime/FINAL_SUBTITLES.srt",
+        "timing/runtime/FINAL_TIMELINE.json",
+        "timing/runtime/FINAL_SHOT_TIMELINE.csv",
+        "timing/runtime/TIMELINE_RESOLUTION_REPORT.json"
       ],
+      "owner_listening_qa": "RETURN",
+      "targeted_repair_status": "PREPARED_NOT_YET_ACCEPTED",
       "resume_safe": true
     },
     "video_runtime_probe": {
@@ -108,9 +119,9 @@
       "resolver": "entropy-student/spike.skill/story-showrunner/runtime/timeline_resolver.py",
       "expected_final": "final/blind-search-answer.mp4"
     },
-    "render_authorization": "BLOCKED_PENDING_G6A_REVIEW",
+    "render_authorization": "BLOCKED_PENDING_G6A_AUDIO_AND_ASSET_REVIEW",
     "asset_gate": {
-      "status": "READY_NOT_EXECUTED",
+      "status": "IN_PROGRESS_PARTIAL_REVIEW_RETURN",
       "scope": [
         "43 voiced production TTS units + 1 silent HARD_ANCHOR",
         "Runtime Timeline Resolver",
@@ -128,7 +139,11 @@
         "ASSET_GATE_PASS",
         "ASSET_GATE_PASS_WITH_MINOR",
         "ASSET_GATE_RETURN"
-      ]
+      ],
+      "generated_frames_reported": 20,
+      "total_frames": 44,
+      "remaining_frames_reported": 24,
+      "audio_blocker": "FINAL_AUDIO_BASELINE_NOT_ACCEPTED"
     },
     "g6r": {
       "status": "PASS",
@@ -198,9 +213,24 @@
     "standard": "docs/SRT_AUDIO_TIMING_STANDARD.md",
     "profile_spec": "docs/VOICE_TIMING_PROFILE_SPEC.md",
     "profile": "profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json",
-    "audio_mode": "EXECUTOR_LOCKED_COSYVOICE",
+    "audio_mode": "EXECUTOR_LOCKED_COSYVOICE_CURRENT_BASELINE_GPT_SOVITS_CANDIDATE_TRIAL",
     "ownership": "TIMING_COMPILER_BEFORE_DIRECTOR",
-    "routine_recalibration_required": false
+    "routine_recalibration_required": false,
+    "candidate_tts_trial": {
+      "engine": "GPT-SoVITS",
+      "status": "INSTALL_IN_PROGRESS_NOT_YET_PROVEN",
+      "workspace": "C:\\AI\\GPT-SoVITS",
+      "conda_env": "GPTSoVits",
+      "python": "3.10.21",
+      "cuda_gpu_verified": true,
+      "webui_verified": false,
+      "latest_blockers": [
+        "shellingham",
+        "rapidfuzz>=3.0.0",
+        "platformdirs>=2.5.0"
+      ],
+      "decision_rule": "Do not replace canonical CosyVoice baseline until representative A/B PASS."
+    }
   },
   "director": {
     "status": "PASS",
@@ -269,9 +299,9 @@
     "Normal target is one Showrunner delivery; Owner does not return real SRT for package recompilation."
   ],
   "unknowns": [
-    "Real production TTS for the current Blind Search episode has not yet been executed.",
-    "The reconciled Runtime Timeline Resolver has not yet been exercised against real 43-unit CosyVoice production durations.",
-    "The 44 production frames have not yet been generated under production-package-v2.",
+    "Targeted CosyVoice audio repair has not yet been re-executed and listening-accepted.",
+    "GPT-SoVITS candidate WebUI / inference has not yet completed an A/B PASS on this machine.",
+    "The first production-frame snapshot reached 20/44; remaining frames and returned image-QA items are not yet closed.",
     "No final-video Candidate E2E PASS exists yet."
   ],
   "owner_intervention_required": false,
