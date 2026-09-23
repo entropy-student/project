@@ -1169,3 +1169,32 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 No Product rebuild, custom carousel, JavaScript patch, product/order/payment logic change, WooCommerce/PayPal version change, Home/Header mutation, VPS action, or secret output occurred.
+
+## K4 Artifact-Backed Block Recovery — Executor handoff (2026-09-23)
+
+```text
+GATE=K4_ARTIFACT_BACKED_BLOCK_RECOVERY
+RESULT=PASS_CANDIDATE_K4_ARTIFACT_BACKED_BLOCK_RECOVERY
+SUMMARY=Restored the exact pre-copy validated Kadence Form block and repaired only Contact page 10's three bare-paragraph columns plus FAQ page 1121's seven native details blocks.
+RECOVERY_SOURCE=.artifacts/k4-copy-preflight-20260922-144817/pages.json
+KADENCE_FORM_SOURCE_HASH=631b0ec76dae167a22751608b399f147ab799a0c1c5100ea651ef3f91fb53348
+CONTACT_INVALID_TARGETS_REPAIRED=4_OF_4
+FAQ_INVALID_TARGETS_REPAIRED=7_OF_7
+NON_TARGET_BLOCK_SIGNATURES_PRESERVED=YES
+CONTACT_FRONTEND_FIELDS=NAME_EMAIL_MESSAGE_SEND
+FAQ_DETAILS_FRONTEND_COUNT=7
+GUTENBERG_EDITOR_VISUAL_VALIDATION=PENDING_SESSION
+HOME_PRODUCT_SHIPPING_LOCALE_COMMERCE_PAYPAL_ORDER=UNCHANGED
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_OUTPUT=0
+EVIDENCE=EXECUTION_EVIDENCE.md;docs/ui-k4-artifact-backed-block-recovery/
+VISUAL_REVIEW_PACKAGE=K4_ARTIFACT_BACKED_BLOCK_RECOVERY-visual-review.zip_LOCAL_ONLY
+VISUAL_REVIEW_DELIVERY=OWNER_UPLOAD_ZIP_REQUIRED
+OWNER_ACTION=UPLOAD_VISUAL_REVIEW_ZIP
+NEXT=STOP_AT_REVIEWER
+```
+
+Page-local rollback copies remain under the active runtime `.artifacts/k4-artifact-backed-block-recovery/`. This did not resume K4 Strict Storefront Cleanup and did not enter K5. The remaining Reviewer checkpoint is editor-session validation and visual review of the attached screenshot ZIP.
