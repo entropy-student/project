@@ -12,7 +12,7 @@ Target flow:
 ```text
 shot requirement
 → asset retrieval
-→ EXACT_REUSE / REFRAME / DERIVE_EDIT / COMPOSITE / NEW_GENERATE
+→ EXACT_REUSE / DERIVE_EDIT / NEW_GENERATE
 → QA
 → register accepted asset + lineage
 → board/timeline consumer
@@ -58,7 +58,7 @@ Current OpenAI image-generation documentation prices image generation by model/t
 
 Reviewer interpretation:
 - do not choose a style because it is assumed to be intrinsically cheaper in token accounting;
-- choose a style because it reduces retries, makes lower-quality settings usable, and increases asset reuse/edit/composite success;
+- choose a style because it reduces retries, makes lower-quality settings usable, and increases asset reuse/edit success;
 - the dominant cost strategy should be **generate fewer new images**.
 
 ### Industry / research precedent
@@ -105,7 +105,6 @@ CHARACTER_EXPRESSION
 BACKGROUND
 PROP
 UI_OR_DOCUMENT
-COMPOSITE_TEMPLATE
 BOARD
 ```
 
@@ -113,10 +112,8 @@ BOARD
 
 ```text
 1. EXACT_REUSE
-2. REFRAME / CROP
-3. DERIVE_EDIT from accepted asset
-4. COMPOSITE accepted assets
-5. NEW_GENERATE
+2. DERIVE_EDIT from accepted asset/reference
+3. NEW_GENERATE
 ```
 
 New generation is the last resort, not the default.
@@ -171,7 +168,7 @@ Run the same small shot set across three candidate styles and measure:
 - character drift;
 - composition/readability;
 - edit/derive success;
-- reuse/composite suitability;
+- direct reuse suitability;
 - prompt complexity;
 - generation usage/cost if exposed by provider;
 - retries required.
@@ -196,3 +193,20 @@ Cost-control decision:
 G1 uses staged execution. Run the 5-task early-discrimination set across all 3 styles first; only surviving styles proceed to the remaining stress set.
 
 No Story Showrunner integration is authorized yet.
+
+
+## 12. Owner override — no crop/composite path
+
+Owner decision on 2026-09-23:
+- remove local crop/reframe as a cost-saving production path;
+- remove local compositing as a cost-saving production path;
+- keep direct asset reuse, reference-driven generation/edit, low-quality-first screening, prompt caching where supported, and new generation as the remaining candidate mechanisms.
+
+Current reuse router:
+```text
+EXACT_REUSE
+→ DERIVE_EDIT / REFERENCE_DRIVEN_GENERATION
+→ NEW_GENERATE
+```
+
+This Owner decision supersedes earlier P0 references to `REFRAME` / `COMPOSITE` in current operational truth. Historical P0 documents remain audit evidence.
