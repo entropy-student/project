@@ -1713,3 +1713,16 @@ K5 validates the platform/admin/storefront/deployment package. Current JPY 1 / s
 
 Formal decision:
 `docs/REVIEWER_DECISION_SUPPLIER_DEFERRED_K5_RC_QA.md`
+
+
+## K5 RC QA — RETURN accepted
+
+Executor commit `11115a72e18213f49cca49e928a9a40ea7e793b4` correctly stopped after finding legacy demo tech products in the fresh Product Related Products section. This conflicts with accepted K4 storefront truth, which required demo products hidden from Shop and Related Products.
+
+Current Gate:
+`K5R1_RELATED_PRODUCTS_BASELINE_REPAIR`
+
+Scope is narrow: identify whether the cause is product-status drift, stale WooCommerce cache/transients, or inherited static/manual Product related output, then repair only that cause. Demo products must not be deleted. K5 resumes after Reviewer acceptance.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K5R1_RELATED_PRODUCTS_BASELINE_REPAIR.md`
