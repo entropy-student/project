@@ -14,22 +14,22 @@
     "lifecycle": "CANDIDATE_EXTRACTED_CANONICAL_AFTER_E2E"
   },
   "active_workstream": {
-    "id": "G6A_AUDIO_QA_AND_TTS_TRIAL",
-    "name": "First-E2E asset calibration: GPT-SoVITS candidate A/B after local WebUI pass",
+    "id": "G6A_GPT_SOVITS_API_AND_TIMING_PROFILE",
+    "name": "First-E2E asset calibration: GPT-SoVITS candidate runtime/API validation before timing-profile calibration",
     "status": "IN_PROGRESS",
-    "next": "Run the 5-case GPT-SoVITS vs CosyVoice A/B, choose the audio baseline, repair/regenerate only failed units, regenerate the runtime timeline, then decide whether to resume remaining frame execution."
+    "next": "Run the prepared GPT-SoVITS official API determinism smoke with the accepted e5+e8 candidate and Owner-designated reference, then run one-time GPT-SoVITS Voice Timing Profile calibration/held-out validation before any canonical migration."
   },
   "production": {
     "current_gate": "G6A",
-    "status": "IN_PROGRESS_AUDIO_QA_RETURN",
-    "current_task": "G6A_GPT_SOVITS_5_CASE_AB_TRIAL",
-    "next_after_package": "AUDIO_BASELINE_DECISION_THEN_TARGETED_REPAIR_AND_RUNTIME_RERESOLVE",
+    "status": "IN_PROGRESS_AUDIO_PROVIDER_CANDIDATE_RUNTIME_VALIDATION",
+    "current_task": "G6A_GPT_SOVITS_API_DETERMINISM_SMOKE",
+    "next_after_package": "GPT_SOVITS_TIMING_PROFILE_CALIBRATION_THEN_RUNTIME_ADAPTER_VALIDATION",
     "next_gate": {
       "id": "G7",
       "name": "End-to-End Final Video Validation",
       "status": "BLOCKED_BY_G6A"
     },
-    "production_package_status": "V2_PARTIALLY_EXECUTED_AUDIO_BASELINE_REVIEW_PENDING",
+    "production_package_status": "V2_PARTIALLY_EXECUTED_GPT_SOVITS_RUNTIME_VALIDATION_PENDING",
     "timing": {
       "status": "REAL_TTS_RESOLVED_TIMELINE_AVAILABLE_AUDIO_QA_RETURN",
       "speech_units": 44,
@@ -119,7 +119,7 @@
       "resolver": "entropy-student/spike.skill/story-showrunner/runtime/timeline_resolver.py",
       "expected_final": "final/blind-search-answer.mp4"
     },
-    "render_authorization": "BLOCKED_PENDING_G6A_AUDIO_AND_ASSET_REVIEW",
+    "render_authorization": "BLOCKED_PENDING_G6A_GPT_SOVITS_RUNTIME_AND_ASSET_REVIEW",
     "asset_gate": {
       "status": "IN_PROGRESS_PARTIAL_REVIEW_RETURN",
       "scope": [
@@ -143,7 +143,7 @@
       "generated_frames_reported": 20,
       "total_frames": 44,
       "remaining_frames_reported": 24,
-      "audio_blocker": "FINAL_AUDIO_BASELINE_NOT_ACCEPTED"
+      "audio_blocker": "GPT_SOVITS_CANDIDATE_RUNTIME_NOT_YET_VALIDATED"
     },
     "g6r": {
       "status": "PASS",
@@ -213,37 +213,60 @@
     "standard": "docs/SRT_AUDIO_TIMING_STANDARD.md",
     "profile_spec": "docs/VOICE_TIMING_PROFILE_SPEC.md",
     "profile": "profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json",
-    "audio_mode": "EXECUTOR_LOCKED_COSYVOICE_CURRENT_BASELINE_GPT_SOVITS_CANDIDATE_TRIAL",
+    "audio_mode": "EXECUTOR_LOCKED_COSYVOICE_CURRENT_CANONICAL_BASELINE_GPT_SOVITS_MANUAL_QA_PASS_CANDIDATE",
     "ownership": "TIMING_COMPILER_BEFORE_DIRECTOR",
     "routine_recalibration_required": false,
     "candidate_tts_trial": {
       "engine": "GPT-SoVITS",
-      "status": "WEBUI_PASS_AB_NOT_YET_RUN",
+      "model_family": "v2ProPlus",
+      "status": "MANUAL_LISTENING_QA_PASS_CANDIDATE_API_DETERMINISM_NEXT",
       "workspace": "C:\\AI\\GPT-SoVITS",
       "conda_env": "GPTSoVits",
       "python": "3.10.21",
       "cuda_gpu_verified": true,
       "webui_verified": true,
-      "latest_blockers": [],
-      "decision_rule": "Do not replace canonical CosyVoice baseline until representative A/B PASS.",
-      "webui_verification": "OWNER_LOCAL_RUN_2026-09-23",
-      "environment_check": {
-        "gpt_home": "C:\\AI\\GPT-SoVITS",
-        "python": "C:\\Users\\34707\\miniconda3\\envs\\GPTSoVits\\python.exe",
-        "python_version": "3.10.21",
-        "user_site_enabled": false,
-        "cuda": true,
-        "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
-        "gradio": "4.44.1",
-        "fastapi": "0.115.14",
-        "starlette": "0.46.2",
-        "required_imports": "PASS",
-        "zh_cn_locale": true,
-        "main_port": 9874,
-        "device": "cuda:0",
-        "pip_check_note": "faster-whisper metadata expects distribution name onnxruntime; current onnxruntime-gpu import passes. Treat as non-blocking unless runtime failure appears."
+      "candidate": {
+        "experiment": "narrator01_v2pp",
+        "gpt_weight": "GPT_weights_v2ProPlus/narrator01_v2pp-e5.ckpt",
+        "sovits_weight": "SoVITS_weights_v2ProPlus/narrator01_v2pp_e8_s248.pth",
+        "temperature": 0.8,
+        "top_k": 15,
+        "top_p": 1,
+        "speed": 1,
+        "parallel_infer": false
       },
-      "next": "RUN_5_CASE_AB"
+      "rejected_current_checkpoints": {
+        "narrator01_v2pp-e10.ckpt": "semantic instability/repetition/collapse in repeated QA",
+        "narrator01_v2pp-e15.ckpt": "abnormal/near-empty inference result in current QA path"
+      },
+      "manual_listening_qa": {
+        "result": "PASS_CANDIDATE",
+        "covered": [
+          "neutral narration",
+          "curiosity/suspicion",
+          "reversal/surprise",
+          "short reaction with punctuation caveat",
+          "serious closing"
+        ],
+        "known_minor": [
+          "ordinary Chinese comma can produce a slightly long pause",
+          "leading ellipsis can destabilize short-reaction synthesis and should be normalized in synthesis text when needed"
+        ]
+      },
+      "runtime_reference_candidate": {
+        "audio_path": "C:\\Users\\34707\\Downloads\\morning.mp3",
+        "transcript": "睡得好吗？希望你今天顺利，别遇到那种一大早就能惹你生气的人。",
+        "role": "OWNER_DESIGNATED_LOCAL_RUNTIME_REFERENCE_FOR_NEXT_API_SMOKE",
+        "note": "Machine-specific runtime input; not portable Skill identity."
+      },
+      "prepared_tools": [
+        "tools/gpt-sovits/PATCH_API_TORCHCODEC.bat",
+        "tools/gpt-sovits/START_GPT_SOVITS_API.bat",
+        "tools/gpt-sovits/RUN_API_DETERMINISM_SMOKE.bat",
+        "tools/gpt-sovits/API_DETERMINISM_SMOKE.py"
+      ],
+      "next": "RUN_OFFICIAL_API_DETERMINISM_SMOKE_THEN_LISTEN_RETAINED_RUN_1",
+      "decision_rule": "Do not replace canonical CosyVoice baseline until GPT-SoVITS official API/runtime validation and its own Voice Timing Profile held-out validation pass."
     }
   },
   "director": {
@@ -313,9 +336,10 @@
     "Normal target is one Showrunner delivery; Owner does not return real SRT for package recompilation."
   ],
   "unknowns": [
-    "GPT-SoVITS has opened successfully, but the 5-case representative A/B against CosyVoice has not yet been run or accepted.",
-    "No final audio baseline has been accepted; CosyVoice remains the current project baseline until an explicit A/B decision.",
-    "The first production-frame snapshot reached 20/44; remaining frame execution is not the current priority before the audio baseline decision.",
+    "GPT-SoVITS representative manual listening QA is PASS_CANDIDATE, but the official API/runtime path has not yet been executed and accepted.",
+    "GPT-SoVITS does not yet have its own frozen Voice Timing Profile; CosyVoice timing coefficients must not be reused.",
+    "No final audio baseline migration has been accepted; CosyVoice remains canonical until API/runtime + timing-profile validation pass.",
+    "The first production-frame snapshot reached 20/44; remaining frame execution is paused behind the current audio/runtime gate.",
     "No final-video Candidate E2E PASS exists yet."
   ],
   "owner_intervention_required": false,
