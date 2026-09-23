@@ -3051,14 +3051,14 @@ NEXT=STOP_AT_REVIEWER
 ```text
 GATE=PROJECT_DIRECTORY_CONSOLIDATION
 RESULT=RETURN_REVIEWER_LOCAL_CLEANUP_POLICY_BLOCKED
-CANONICAL_WORKSPACE=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace
-REPO_PHYSICAL_LOCATION=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\project-github-sync\\mini-craft-night-kit
+CANONICAL_WORKSPACE=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace
+REPO_PHYSICAL_LOCATION=C:\Users\34707\Documents\ChatGPT\VPS基建\project-github-sync\mini-craft-night-kit
 REPO_POINTER_CREATED=PASS
-ACTIVE_RUNTIME_PHYSICAL_LOCATION=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-k3r4-mariadb-recovery
+ACTIVE_RUNTIME_PHYSICAL_LOCATION=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery
 ACTIVE_RUNTIME_PHYSICAL_MOVE=DEFERRED_WITH_REASON (retained K3R8C, K3R8E, and K4 QA scripts contain the absolute runtime path; Compose labels record its current working directory)
 OTHER_RUNTIME_MOVES=NONE (8092, 8090, and 8088 Mini Craft containers are running; the legacy 8088 WordPress service also has host bind mounts)
 WORKSPACE_STRUCTURE=CREATED; README_LOCAL_WORKSPACE.md AND POINTER NOTES PRESENT
-ARTIFACTS_LOCATION=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace\\artifacts
+ARTIFACTS_LOCATION=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts
 VISUAL_ZIP_RETAINED=YES; SHA256=7F7255D5F3AFFBE5A3AED560811B4C6C9867B8E6F074FEBD4B83E3BADD85BEDA
 MANIFEST_RETAINED=YES; SHA256=1AAF1F30FED204E373C0017574C38ED4D50B1E4BA32039F51502492CE8F6A2BF
 ROLLBACK_SQL_RETAINED=YES_LOCAL_ONLY; SHA256=8C20D3A3DC36DE7226373A033347DB4269098202DB8A1D0C883309ED22F3BF8E
@@ -3086,8 +3086,8 @@ ROOT_TRANSIENTS_REMAINING=.tmp-cdp-test2;.tmp-k4-detail-browser-desktop;.tmp-k4-
 LOCAL_HELPERS_CLEANED=NO_HELPER_FILES_FOUND;EMPTY_HELPERS_DIRECTORY_REMAINS
 BROWSER_PROFILES_CLEANED=RETURN_EXECUTION_POLICY_BLOCKED (4 Gate-local profiles remain)
 DEBUG_SCREENSHOTS_REMAINING=2_GATE_LOCAL_FILES
-ROLLBACK_LOCATION=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace\\artifacts\\gates\\k4-final-mobile-commerce-visual-polish\\rollback\\pre-gate.sql
-VISUAL_ZIP_LOCATION=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace\\artifacts\\deliverables\\k4-final-mobile-commerce-visual-polish\\K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH-visual-review.zip
+ROLLBACK_LOCATION=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts\gates\k4-final-mobile-commerce-visual-polish\rollback\pre-gate.sql
+VISUAL_ZIP_LOCATION=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts\deliverables\k4-final-mobile-commerce-visual-polish\K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH-visual-review.zip
 SECRET_OUTPUT=0
 VPS_WRITES=ZERO
 NEXT=STOP_AT_REVIEWER
