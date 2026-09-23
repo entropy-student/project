@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "project": "ai-story-showrunner",
-  "updated_at": "2026-09-22",
+  "updated_at": "2026-09-23",
   "role": "VALIDATION_RUNTIME_WORKSPACE",
   "canonical_truth": {
     "handoff": "REVIEWER_HANDOFF.md",
@@ -14,22 +14,22 @@
     "lifecycle": "CANDIDATE_EXTRACTED_CANONICAL_AFTER_E2E"
   },
   "active_workstream": {
-    "id": "G6_RUNTIME_RESOLUTION_AND_VIDEO_PROBE",
-    "name": "One-delivery runtime validation",
-    "status": "IN_PROGRESS",
-    "next": "Run production TTS + Runtime Timeline Resolver and zero-install Antigravity video runtime probe."
+    "id": "G6R_CANDIDATE_RUNTIME_RECONCILIATION",
+    "name": "Candidate timing ↔ visual ↔ runtime reconciliation",
+    "status": "IN_PROGRESS_CROSS_REPO",
+    "next": "Merge project + story-showrunner reconciliation changes, then rebuild the current execution package and release the first-E2E Asset Calibration Gate."
   },
   "production": {
-    "current_gate": "G6",
+    "current_gate": "G6R",
     "status": "IN_PROGRESS",
-    "current_task": "RUN_ASSET_STAGE_ONLY_THEN_RETURN_REVIEWER_PACKAGE",
-    "next_after_package": "ANTIGRAVITY_FULL_E2E_EXECUTION",
+    "current_task": "RECONCILE_CANDIDATE_TIMING_VISUAL_RUNTIME_CONTRACT",
+    "next_after_package": "G6_ASSET_CALIBRATION_GATE",
     "next_gate": {
-      "id": "G7",
-      "name": "End-to-End Validation",
-      "status": "BLOCKED_BY_G6"
+      "id": "G6A",
+      "name": "First E2E Asset Calibration Gate",
+      "status": "BLOCKED_BY_G6R"
     },
-    "production_package_status": "ASSET_GATE_V1_READY_NOT_EXECUTED",
+    "production_package_status": "V1_SUPERSEDED_FOR_CURRENT_EXECUTION_PENDING_G6R_REBUILD",
     "timing": {
       "status": "PLANNED_TIMELINE_COMPILED_PASS",
       "speech_units": 44,
@@ -50,7 +50,9 @@
         "timing/runtime/FINAL_TIMELINE.json",
         "timing/runtime/FINAL_SHOT_TIMELINE.csv",
         "timing/runtime/TIMELINE_RESOLUTION_REPORT.json"
-      ]
+      ],
+      "visual_binding_status": "G6R_BINDINGS_COMPILED_PASS_CANDIDATE",
+      "visual_binding_artifact": "experiments/g6/blind-search-answer/timing/05_VISUAL_BEAT_TIMING_BINDINGS.json"
     },
     "tts_execution": {
       "status": "READY_NOT_EXECUTED",
@@ -105,11 +107,12 @@
       "external_source_requirement": {
         "path": "experiments/g5/blind-search-answer/14_EXECUTION_ROWS_V02.json",
         "git_blob_sha": "ce7605c4d4a9d3731bc1778a9889a21119ac8b29"
-      }
+      },
+      "status": "V1_HISTORICAL_CANDIDATE_NOT_CURRENT_EXECUTION"
     },
-    "render_authorization": "BLOCKED_PENDING_ASSET_GATE_PASS",
+    "render_authorization": "BLOCKED_PENDING_G6R_AND_ASSET_GATE_PASS",
     "asset_gate": {
-      "status": "READY_NOT_EXECUTED",
+      "status": "BLOCKED_BY_G6R",
       "scope": [
         "production TTS",
         "Runtime Timeline Resolver",
@@ -127,6 +130,26 @@
         "ASSET_GATE_PASS_WITH_MINOR",
         "ASSET_GATE_RETURN"
       ]
+    },
+    "g6r": {
+      "status": "IN_PROGRESS_CROSS_REPO",
+      "reason": "Post-extraction review found that the new Candidate Timing Compiler was feeding legacy G4 Visual Beats whose timing_source remained JINGSUI_PRIOR_ESTIMATE, while the Runtime Timeline Resolver contract required durable semantic anchors that were not represented in the current Visual Beat schema/package.",
+      "preserved_truth": [
+        "locked script",
+        "44 accepted Visual Beat meanings/order/POV",
+        "G5 Frame Blueprints and execution-row creative intent",
+        "Voice Timing Profile v2.1",
+        "FFmpeg programmatic baseline probe"
+      ],
+      "required_outputs": [
+        "44/44 Speech Unit ↔ Visual Beat durable timing bindings",
+        "Candidate Visual Beat anchor schema",
+        "deterministic Runtime Timeline Resolver reference implementation + smoke test",
+        "current Production Package rebuilt from reconciled contracts",
+        "Reviewer Handoff / Current Status / Candidate Status synchronized"
+      ],
+      "project_binding_artifact": "experiments/g6/blind-search-answer/timing/05_VISUAL_BEAT_TIMING_BINDINGS.json",
+      "review_doc": "docs/G6R_CANDIDATE_RUNTIME_RECONCILIATION.md"
     }
   },
   "accepted_gates": [
@@ -228,8 +251,10 @@
     "Normal target is one Showrunner delivery; Owner does not return real SRT for package recompilation."
   ],
   "unknowns": [
-    "Full E2E final video has not yet been executed; package v1 is ready.",
-    "Full Production Package and final video E2E are not yet validated."
+    "Real production TTS for the current Blind Search episode has not yet been executed.",
+    "The reconciled Candidate Runtime Timeline Resolver has not yet been exercised against real 43-unit CosyVoice production durations.",
+    "The 44 production frames have not yet been generated under the reconciled package.",
+    "No final-video Candidate E2E PASS exists yet."
   ],
   "owner_intervention_required": false,
   "output_recording": {
@@ -237,5 +262,12 @@
     "standard": "docs/OUTPUT_RECORD_STANDARD.md",
     "root": "outputs/",
     "rule": "one episode INDEX.md + one RUN_RECORD.json per meaningful retained production run"
+  },
+  "review_takeover": {
+    "date": "2026-09-23",
+    "result": "TAKEOVER_REVIEW_COMPLETE_RECONCILIATION_REQUIRED",
+    "historical_gates": "P0-G5 accepted within their original validation scope; not reinterpreted as production E2E proof.",
+    "handoff_drift": "FOUND_AND_RECONCILED_IN_THIS_CHANGESET",
+    "skill_promotion": "BLOCKED_UNTIL_FINAL_VIDEO_E2E_PASS"
   }
 }
