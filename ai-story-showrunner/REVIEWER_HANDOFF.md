@@ -52,9 +52,9 @@ AI is the first Domain Adapter, not the core boundary.
 P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5
 = ACCEPTED WITH THEIR ORIGINAL VALIDATION SCOPE
 
-G6R = IN_PROGRESS
-G6A First-E2E Asset Calibration Gate = BLOCKED_BY_G6R
-G7 Final End-to-End Validation = BLOCKED
+G6R = PASS
+G6A First-E2E Asset Calibration Gate = READY_NOT_EXECUTED
+G7 Final End-to-End Validation = BLOCKED_BY_G6A
 ```
 
 Important interpretation:
@@ -145,12 +145,18 @@ The earlier Handoff statement saying the renderer probe was still pending is sup
 
 `production-package-v1` remains historical candidate evidence.
 
-Current execution must not run its 44-frame Asset Gate until G6R is merged and the execution package is rebuilt/reconciled against:
+Current execution package:
 
+`experiments/g6/blind-search-answer/production-package-v2`
+
+It is rebuilt against:
 - Candidate planned timing;
-- durable Visual Beat anchors;
-- runtime resolver;
+- durable 44/44 Visual Beat anchors;
+- Candidate-compliant Visual Beats;
+- executable Runtime Timeline Resolver;
 - current Candidate schemas.
+
+Package v1 remains historical evidence only.
 
 ## 10. G6R acceptance
 
@@ -159,11 +165,15 @@ G6R may PASS only when:
 - [x] 44/44 Speech Unit ↔ Visual Beat binding exists;
 - [x] no missing/duplicate Visual Beat IDs in the validation fixture;
 - [x] planned binding total remains 146.7209s;
-- [ ] Candidate Visual Beat schema requires durable anchors;
-- [ ] deterministic Timeline Resolver reference implementation exists;
-- [ ] resolver smoke test passes without creative mutation;
-- [ ] Candidate Skill status docs are synchronized;
-- [ ] current execution package is rebuilt from reconciled contracts.
+- [x] Candidate Visual Beat schema requires durable anchors;
+- [x] deterministic Timeline Resolver reference implementation exists;
+- [x] resolver smoke test passes without creative mutation;
+- [x] Candidate Skill status docs are synchronized;
+- [x] current execution package is rebuilt from reconciled contracts.
+
+Reviewer result:
+
+`PASS_G6R_CANDIDATE_RUNTIME_RECONCILIATION`
 
 ## 11. Owner intervention
 
@@ -173,11 +183,15 @@ Normal technical reconciliation remains Reviewer/maintainer work.
 
 ## 12. Immediate next action
 
-Complete the cross-repo G6R change, independently review it, merge it, then release:
+Run:
 
 `G6A_FIRST_E2E_ASSET_CALIBRATION`
 
-That gate may generate real TTS + resolved timeline + 44 production frames, then stop for one calibration review before final FFmpeg assembly.
+using:
+
+`experiments/g6/blind-search-answer/production-package-v2/ANTIGRAVITY_ASSET_GATE_TASK.md`
+
+This gate may generate real TTS + resolved timeline + 44 production frames, then stop for one calibration review before final FFmpeg assembly.
 
 The Asset review is a **FIRST_E2E_CALIBRATION_EXCEPTION**, not a permanent per-episode Owner gate.
 
