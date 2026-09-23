@@ -1538,3 +1538,36 @@ Formal decision:
 `docs/REVIEWER_DECISION_K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH.md`
 
 Do not enter K5 or Growth/SEO until this Gate returns to Reviewer.
+
+
+## K4 Final Mobile Commerce Visual Polish — VISUAL/FUNCTIONAL ACCEPTED
+
+Reviewer directly inspected the uploaded visual ZIP from commit `7b5ca9cd80b99e02db4fd982ea2182ad7f18746e`.
+
+Accepted:
+- US-only storefront market alignment;
+- mobile Cart/Checkout layout;
+- visible native final checkout action (not clicked);
+- mobile typography cleanup;
+- Home and Product Gallery protection;
+- no order/payment/live action.
+
+The return reason is workspace-only: completed Gate browser profiles/debug captures were not removed due an execution-policy boundary, and several returned Windows paths were malformed in presentation.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_VISUAL_ACCEPT_WORKSPACE_RETURN.md`
+
+## Project Directory Consolidation — AUTHORIZED
+
+Current Gate:
+`PROJECT_DIRECTORY_CONSOLIDATION`
+
+Goal: create one understandable Mini Craft local workspace, explicitly clean disposable current-Gate artifacts, consolidate/move local runtime/rollback/artifact directories where safe, and use pointers where Git/Docker path constraints make a physical move unsafe.
+
+Target:
+`C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\`
+
+Formal decision:
+`docs/REVIEWER_DECISION_PROJECT_DIRECTORY_CONSOLIDATION.md`
+
+Do not start Growth/SEO or K5 until Reviewer accepts this consolidation.
