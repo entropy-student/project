@@ -1668,3 +1668,16 @@ Formal decision:
 `docs/REVIEWER_DECISION_K4_7_OWNER_LAUNCH_TRUTH_RESOLVED.md`
 
 Remaining immediate launch dependency is detailed PRODUCT_TRUTH for the first real product: contents/claims, production price/currency, SKU, stock model, identifiers/brand applicability, and approved production media.
+
+
+## K4.8 First SKU Product Truth Discovery — AUTHORIZED
+
+Current Gate:
+`K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY`
+
+Owner selected multi-category Mini Craft as the long-term brand model. The next P0 blocker is not analytics or SEO implementation; it is selecting a concrete first launch SKU/source with verified supplier, cost, MOQ, shipping, contents, identifiers, image-rights and risk facts.
+
+This Gate is research-only. No purchase, supplier contact, site mutation, analytics, SEO or Merchant implementation is authorized.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY.md`
