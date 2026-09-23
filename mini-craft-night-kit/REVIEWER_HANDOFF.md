@@ -1841,3 +1841,20 @@ The next Gate performs at most three bounded strict SSH/client-isolation attempt
 
 Formal decision:
 `docs/REVIEWER_DECISION_K6R1_SSH_TRANSPORT_DIAGNOSIS.md`
+
+
+## K6R1 — Governance-aligned SSH recovery
+
+Canonical `entropy-student/spike.skill/vps-project-governance` and the current Shared VPS handoff were re-read. The prior K6R1 transport-diagnosis scope is superseded because the shared-host SSH transport contract is already validated and must be reused, not redesigned.
+
+The current pre-host-key close is classified as `RETURN_SSH_CONNECTION_REQUIRED`, not proven host-key or Shared VPS drift. A real host-key mismatch remains `RETURN_SSH_TRUST_DRIFT` only if the remote actually presents a mismatching key.
+
+Current Gate:
+`K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY`
+
+Use exactly one canonical strict read-only probe. If the same pre-host-key close repeats, stop at a minimal Hostinger console status checkpoint; do not loop through alternate clients/accounts/keys or weaken host-key verification. If SSH recovers, perform only the bounded dynamic Shared VPS continuity probe and stop before deployment.
+
+Deployment correction after this Gate: reuse existing Docker/Compose + Shared Caddy + `/srv` contract; prefer public WordPress app membership on the existing `spikersun-edge` after current-topology confirmation; keep MariaDB project-local; do not invent a second ingress stack. A canonical `PROJECT_STORAGE_MANIFEST.md` is mandatory before K6 project writes.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY.md`
