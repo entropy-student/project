@@ -17,13 +17,13 @@
     "id": "G6A_GPT_SOVITS_API_AND_TIMING_PROFILE",
     "name": "GPT-SoVITS candidate runtime/API validation before timing-profile calibration",
     "status": "IN_PROGRESS",
-    "next": "Run the prepared official API determinism smoke with the accepted e5+e8 candidate; if accepted, run a separate GPT-SoVITS Voice Timing Profile calibration and held-out validation."
+    "next": "Persist/merge the GPT-SoVITS API smoke evidence, then continue material generation using precise actual-duration recording (SRT2) without forcing exact target duration; final breath-gap cleanup is deferred to post-assembly SRT3."
   },
   "production": {
     "current_gate": "G6A",
-    "status": "IN_PROGRESS_AUDIO_PROVIDER_CANDIDATE_RUNTIME_VALIDATION",
-    "current_task": "G6A_GPT_SOVITS_API_DETERMINISM_SMOKE",
-    "next_after_package": "GPT_SOVITS_TIMING_PROFILE_CALIBRATION_THEN_RUNTIME_ADAPTER_VALIDATION",
+    "status": "IN_PROGRESS_GPT_SOVITS_API_PASS_CANDIDATE_MATERIAL_TIMING_RECORD_EXACT",
+    "current_task": "G6A_MATERIAL_GENERATION_WITH_PRECISE_ACTUAL_DURATION_RECORDING",
+    "next_after_package": "PERSIST_API_EVIDENCE_THEN_SRT2_MATERIAL_TIMING_AND_LATER_SRT3_BREATH_CLEANUP",
     "next_gate": {
       "id": "G7",
       "name": "End-to-End Final Video Validation",
@@ -54,7 +54,19 @@
       "visual_binding_status": "G6R_BINDINGS_COMPILED_PASS_CANDIDATE",
       "visual_binding_artifact": "experiments/g6/blind-search-answer/timing/05_VISUAL_BEAT_TIMING_BINDINGS.json",
       "final_runtime_master_duration_sec": 143.0936,
-      "runtime_execution": "PASS_STRUCTURAL / RETURN_LISTENING_QUALITY"
+      "runtime_execution": "PASS_STRUCTURAL / RETURN_LISTENING_QUALITY",
+      "material_stage_policy": {
+        "phase": "ASSET_GENERATION_CALIBRATION",
+        "exact_target_duration_required": false,
+        "actual_duration_measurement_required": true,
+        "voiced_time_stretch_for_plan_match": false,
+        "known_pause_issue": "GPT-SoVITS can produce overlong internal breath/punctuation pauses; defer routine cleanup until post-assembly final timing pass.",
+        "timing_layers": {
+          "SRT1": "planned compiler timing",
+          "SRT2": "actual generated-audio timing measured precisely; current material-generation authority",
+          "SRT3": "post-video-assembly final timing after redundant breath/non-semantic pause cleanup"
+        }
+      }
     },
     "tts_execution": {
       "status": "EXECUTED_AUDIO_QA_RETURN",
@@ -219,7 +231,7 @@
     "candidate_tts_trial": {
       "engine": "GPT-SoVITS",
       "model_family": "v2ProPlus",
-      "status": "MANUAL_LISTENING_QA_PASS_CANDIDATE_API_DETERMINISM_NEXT",
+      "status": "API_SMOKE_PASS_CANDIDATE_OWNER_LISTEN_ACCEPTED_EVIDENCE_PERSISTENCE_PENDING",
       "workspace": "C:\\AI\\GPT-SoVITS",
       "candidate": {
         "experiment": "narrator01_v2pp",
@@ -247,8 +259,12 @@
         "tools/gpt-sovits/RUN_API_DETERMINISM_SMOKE.bat",
         "tools/gpt-sovits/API_DETERMINISM_SMOKE.py"
       ],
-      "next": "RUN_OFFICIAL_API_DETERMINISM_SMOKE_THEN_LISTEN_RETAINED_SAMPLE",
-      "decision_rule": "Do not replace canonical CosyVoice until GPT-SoVITS official API/runtime validation and its own Voice Timing Profile held-out validation pass."
+      "next": "PERSIST_API_SMOKE_EVIDENCE_THEN_CONTINUE_SRT2_ACTUAL_DURATION_RECORDING",
+      "decision_rule": "Do not replace canonical CosyVoice until GPT-SoVITS official API/runtime validation and its own Voice Timing Profile held-out validation pass.",
+      "api_listening": {
+        "result": "ACCEPTED_WITH_KNOWN_PAUSE_ISSUE",
+        "note": "Voice quality accepted by Owner; some generated phrases still contain overly long internal pauses. Do not force target duration during asset generation."
+      }
     }
   },
   "director": {
@@ -318,9 +334,9 @@
     "Normal target is one Showrunner delivery; Owner does not return real SRT for package recompilation."
   ],
   "unknowns": [
-    "GPT-SoVITS representative manual listening QA is PASS_CANDIDATE, but official API/runtime validation is not yet accepted.",
+    "GPT-SoVITS API smoke and Owner listening are acceptable, but Antigravity's smoke artifacts/branch are not yet persisted to the remote project repository.",
     "GPT-SoVITS does not yet have its own frozen Voice Timing Profile; CosyVoice timing coefficients must not be reused.",
-    "CosyVoice remains canonical until API/runtime plus timing-profile validation pass.",
+    "Overlong internal breath/punctuation pauses remain a known issue; routine cleanup is deferred to post-assembly SRT3 rather than forced during synthesis.",
     "Production frames remain partial at the last snapshot (20/44).",
     "No final-video Candidate E2E PASS exists yet."
   ],
