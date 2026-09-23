@@ -1649,3 +1649,22 @@ Reviewer defaults: SINGLE_PLANNED_DATE_NIGHT_KIT; GA4_FIRST; Resend-or-equivalen
 
 Formal checkpoint:
 `docs/REVIEWER_DECISION_K4_7_OWNER_LAUNCH_TRUTH_CHECKPOINT.md`
+
+
+## K4.7 Owner Launch Truth Checkpoint — RESOLVED
+
+Owner decisions:
+- PRODUCT_MODEL=`MULTI_CATEGORY_MINI_CRAFT_BRAND`
+- PUBLIC_ORIGIN=`https://minicraft.spikersun.com`
+- ANALYTICS_PROVIDER=`GA4_FIRST`
+- LEGAL_CONSENT_PATH=`DRAFT_FIRST_FOR_OWNER_LEGAL_REVIEW`
+- EMAIL_PROVIDER=`RESEND`
+- SUPPORT_ADDRESS=`support@minicraft.spikersun.com`
+- inbound initial path: Cloudflare Email Routing or equivalent forwarding
+
+Multi-category means future architecture may grow into real categories/collections/products/use-cases, but no empty category or fake product breadth is authorized. Current Night Kit remains the first actual offer.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_7_OWNER_LAUNCH_TRUTH_RESOLVED.md`
+
+Remaining immediate launch dependency is detailed PRODUCT_TRUTH for the first real product: contents/claims, production price/currency, SKU, stock model, identifiers/brand applicability, and approved production media.
