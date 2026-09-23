@@ -1488,3 +1488,10 @@ Commit `fd06aa204575d03fb14d692345a337af165a446e` consolidated 9 historical Mini
 ## K6 VPS Production Deployment — resumed
 
 The cleanup pause is lifted. Existing Owner authorization remains in force. Resume K6 at the mandatory read-only Shared VPS preflight; do not replay K5.
+
+
+## K6 Phase A — SSH transport unavailable
+
+Commit `82962230c984767a65bbd675df2c2b9698cb5496` reached TCP/22 but the remote closed during SSH key exchange before host-key presentation. No remote identity was verified and no VPS read/write occurred. This is classified as SSH transport preflight unavailability, not proven host-key or Shared VPS drift.
+
+Current Gate: `K6R1_SSH_TRANSPORT_DIAGNOSIS`. It performs bounded local/client transport isolation; if strict SSH recovers, it completes the read-only Shared VPS inventory. Deployment writes remain blocked.
