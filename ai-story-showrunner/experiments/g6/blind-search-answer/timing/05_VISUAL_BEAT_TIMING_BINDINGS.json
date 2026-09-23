@@ -1,0 +1,812 @@
+{
+  "artifact": "VISUAL_BEAT_TIMING_BINDINGS",
+  "version": "1.0",
+  "episode_id": "blind-search-answer",
+  "status": "G6R_CANDIDATE",
+  "timing_source": "PLANNED_PRODUCTION_SRT",
+  "source_speech_units": "timing/01_SPEECH_UNITS.json",
+  "source_visual_beats": "experiments/g4r-v03/blind-search-answer/07_VISUAL_BEAT_PLAN.json",
+  "policy": {
+    "mapping": "one Speech Unit to one accepted Visual Beat for this validation episode",
+    "start_anchor": "speech_unit.START",
+    "end_anchor": "speech_unit.WINDOW_END",
+    "creative_semantics_changed": false,
+    "legacy_absolute_timestamps_authoritative": false
+  },
+  "mapping_count": 44,
+  "planned_total_duration_sec": 146.7209,
+  "bindings": [
+    {
+      "visual_beat_id": "SRCH_VB001",
+      "speech_unit_id": "SU001",
+      "start_anchor": {
+        "speech_unit_id": "SU001",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU001",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 0,
+      "planned_end": 5.25,
+      "planned_window_duration": 5.25
+    },
+    {
+      "visual_beat_id": "SRCH_VB002",
+      "speech_unit_id": "SU002",
+      "start_anchor": {
+        "speech_unit_id": "SU002",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU002",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 5.25,
+      "planned_end": 6.74,
+      "planned_window_duration": 1.49
+    },
+    {
+      "visual_beat_id": "SRCH_VB003",
+      "speech_unit_id": "SU003",
+      "start_anchor": {
+        "speech_unit_id": "SU003",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU003",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 6.74,
+      "planned_end": 12.1917,
+      "planned_window_duration": 5.4517
+    },
+    {
+      "visual_beat_id": "SRCH_VB004",
+      "speech_unit_id": "SU004",
+      "start_anchor": {
+        "speech_unit_id": "SU004",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU004",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 12.1917,
+      "planned_end": 16.2766,
+      "planned_window_duration": 4.0849
+    },
+    {
+      "visual_beat_id": "SRCH_VB005",
+      "speech_unit_id": "SU005",
+      "start_anchor": {
+        "speech_unit_id": "SU005",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU005",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 16.2766,
+      "planned_end": 19.3343,
+      "planned_window_duration": 3.0577
+    },
+    {
+      "visual_beat_id": "SRCH_VB006",
+      "speech_unit_id": "SU006",
+      "start_anchor": {
+        "speech_unit_id": "SU006",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU006",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 19.3343,
+      "planned_end": 22.0143,
+      "planned_window_duration": 2.68
+    },
+    {
+      "visual_beat_id": "SRCH_VB007",
+      "speech_unit_id": "SU007",
+      "start_anchor": {
+        "speech_unit_id": "SU007",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU007",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 22.0143,
+      "planned_end": 25.2143,
+      "planned_window_duration": 3.2
+    },
+    {
+      "visual_beat_id": "SRCH_VB008",
+      "speech_unit_id": "SU008",
+      "start_anchor": {
+        "speech_unit_id": "SU008",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU008",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 25.2143,
+      "planned_end": 31.1143,
+      "planned_window_duration": 5.9
+    },
+    {
+      "visual_beat_id": "SRCH_VB009",
+      "speech_unit_id": "SU009",
+      "start_anchor": {
+        "speech_unit_id": "SU009",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU009",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 31.1143,
+      "planned_end": 34.9743,
+      "planned_window_duration": 3.86
+    },
+    {
+      "visual_beat_id": "SRCH_VB010",
+      "speech_unit_id": "SU010",
+      "start_anchor": {
+        "speech_unit_id": "SU010",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU010",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 34.9743,
+      "planned_end": 39.3543,
+      "planned_window_duration": 4.38
+    },
+    {
+      "visual_beat_id": "SRCH_VB011",
+      "speech_unit_id": "SU011",
+      "start_anchor": {
+        "speech_unit_id": "SU011",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU011",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 39.3543,
+      "planned_end": 41.2043,
+      "planned_window_duration": 1.85
+    },
+    {
+      "visual_beat_id": "SRCH_VB012",
+      "speech_unit_id": "SU012",
+      "start_anchor": {
+        "speech_unit_id": "SU012",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU012",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 41.2043,
+      "planned_end": 43.5643,
+      "planned_window_duration": 2.36
+    },
+    {
+      "visual_beat_id": "SRCH_VB013",
+      "speech_unit_id": "SU013",
+      "start_anchor": {
+        "speech_unit_id": "SU013",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU013",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 43.5643,
+      "planned_end": 47.0194,
+      "planned_window_duration": 3.4551
+    },
+    {
+      "visual_beat_id": "SRCH_VB014",
+      "speech_unit_id": "SU014",
+      "start_anchor": {
+        "speech_unit_id": "SU014",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU014",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 47.0194,
+      "planned_end": 50.8475,
+      "planned_window_duration": 3.8281
+    },
+    {
+      "visual_beat_id": "SRCH_VB015",
+      "speech_unit_id": "SU015",
+      "start_anchor": {
+        "speech_unit_id": "SU015",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU015",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 50.8475,
+      "planned_end": 52.4775,
+      "planned_window_duration": 1.63
+    },
+    {
+      "visual_beat_id": "SRCH_VB016",
+      "speech_unit_id": "SU016",
+      "start_anchor": {
+        "speech_unit_id": "SU016",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU016",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 52.4775,
+      "planned_end": 54.6175,
+      "planned_window_duration": 2.14
+    },
+    {
+      "visual_beat_id": "SRCH_VB017",
+      "speech_unit_id": "SU017",
+      "start_anchor": {
+        "speech_unit_id": "SU017",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU017",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "HARD_ANCHOR",
+      "planned_start": 54.6175,
+      "planned_end": 56.0175,
+      "planned_window_duration": 1.4
+    },
+    {
+      "visual_beat_id": "SRCH_VB018",
+      "speech_unit_id": "SU018",
+      "start_anchor": {
+        "speech_unit_id": "SU018",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU018",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 56.0175,
+      "planned_end": 58.3775,
+      "planned_window_duration": 2.36
+    },
+    {
+      "visual_beat_id": "SRCH_VB019",
+      "speech_unit_id": "SU019",
+      "start_anchor": {
+        "speech_unit_id": "SU019",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU019",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 58.3775,
+      "planned_end": 60.3475,
+      "planned_window_duration": 1.97
+    },
+    {
+      "visual_beat_id": "SRCH_VB020",
+      "speech_unit_id": "SU020",
+      "start_anchor": {
+        "speech_unit_id": "SU020",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU020",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 60.3475,
+      "planned_end": 65.7475,
+      "planned_window_duration": 5.4
+    },
+    {
+      "visual_beat_id": "SRCH_VB021",
+      "speech_unit_id": "SU021",
+      "start_anchor": {
+        "speech_unit_id": "SU021",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU021",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 65.7475,
+      "planned_end": 68.7575,
+      "planned_window_duration": 3.01
+    },
+    {
+      "visual_beat_id": "SRCH_VB022",
+      "speech_unit_id": "SU022",
+      "start_anchor": {
+        "speech_unit_id": "SU022",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU022",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 68.7575,
+      "planned_end": 73.9875,
+      "planned_window_duration": 5.23
+    },
+    {
+      "visual_beat_id": "SRCH_VB023",
+      "speech_unit_id": "SU023",
+      "start_anchor": {
+        "speech_unit_id": "SU023",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU023",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 73.9875,
+      "planned_end": 76.5075,
+      "planned_window_duration": 2.52
+    },
+    {
+      "visual_beat_id": "SRCH_VB024",
+      "speech_unit_id": "SU024",
+      "start_anchor": {
+        "speech_unit_id": "SU024",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU024",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 76.5075,
+      "planned_end": 81.2423,
+      "planned_window_duration": 4.7348
+    },
+    {
+      "visual_beat_id": "SRCH_VB025",
+      "speech_unit_id": "SU025",
+      "start_anchor": {
+        "speech_unit_id": "SU025",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU025",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 81.2423,
+      "planned_end": 85.2323,
+      "planned_window_duration": 3.99
+    },
+    {
+      "visual_beat_id": "SRCH_VB026",
+      "speech_unit_id": "SU026",
+      "start_anchor": {
+        "speech_unit_id": "SU026",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU026",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 85.2323,
+      "planned_end": 88.9423,
+      "planned_window_duration": 3.71
+    },
+    {
+      "visual_beat_id": "SRCH_VB027",
+      "speech_unit_id": "SU027",
+      "start_anchor": {
+        "speech_unit_id": "SU027",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU027",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 88.9423,
+      "planned_end": 92.4823,
+      "planned_window_duration": 3.54
+    },
+    {
+      "visual_beat_id": "SRCH_VB028",
+      "speech_unit_id": "SU028",
+      "start_anchor": {
+        "speech_unit_id": "SU028",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU028",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 92.4823,
+      "planned_end": 93.9538,
+      "planned_window_duration": 1.4715
+    },
+    {
+      "visual_beat_id": "SRCH_VB029",
+      "speech_unit_id": "SU029",
+      "start_anchor": {
+        "speech_unit_id": "SU029",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU029",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 93.9538,
+      "planned_end": 95.4438,
+      "planned_window_duration": 1.49
+    },
+    {
+      "visual_beat_id": "SRCH_VB030",
+      "speech_unit_id": "SU030",
+      "start_anchor": {
+        "speech_unit_id": "SU030",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU030",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 95.4438,
+      "planned_end": 99.1538,
+      "planned_window_duration": 3.71
+    },
+    {
+      "visual_beat_id": "SRCH_VB031",
+      "speech_unit_id": "SU031",
+      "start_anchor": {
+        "speech_unit_id": "SU031",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU031",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 99.1538,
+      "planned_end": 102.3338,
+      "planned_window_duration": 3.18
+    },
+    {
+      "visual_beat_id": "SRCH_VB032",
+      "speech_unit_id": "SU032",
+      "start_anchor": {
+        "speech_unit_id": "SU032",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU032",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 102.3338,
+      "planned_end": 108.2338,
+      "planned_window_duration": 5.9
+    },
+    {
+      "visual_beat_id": "SRCH_VB033",
+      "speech_unit_id": "SU033",
+      "start_anchor": {
+        "speech_unit_id": "SU033",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU033",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 108.2338,
+      "planned_end": 109.7053,
+      "planned_window_duration": 1.4715
+    },
+    {
+      "visual_beat_id": "SRCH_VB034",
+      "speech_unit_id": "SU034",
+      "start_anchor": {
+        "speech_unit_id": "SU034",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU034",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 109.7053,
+      "planned_end": 112.5653,
+      "planned_window_duration": 2.86
+    },
+    {
+      "visual_beat_id": "SRCH_VB035",
+      "speech_unit_id": "SU035",
+      "start_anchor": {
+        "speech_unit_id": "SU035",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU035",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 112.5653,
+      "planned_end": 118.2953,
+      "planned_window_duration": 5.73
+    },
+    {
+      "visual_beat_id": "SRCH_VB036",
+      "speech_unit_id": "SU036",
+      "start_anchor": {
+        "speech_unit_id": "SU036",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU036",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 118.2953,
+      "planned_end": 120.3153,
+      "planned_window_duration": 2.02
+    },
+    {
+      "visual_beat_id": "SRCH_VB037",
+      "speech_unit_id": "SU037",
+      "start_anchor": {
+        "speech_unit_id": "SU037",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU037",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 120.3153,
+      "planned_end": 122.6553,
+      "planned_window_duration": 2.34
+    },
+    {
+      "visual_beat_id": "SRCH_VB038",
+      "speech_unit_id": "SU038",
+      "start_anchor": {
+        "speech_unit_id": "SU038",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU038",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 122.6553,
+      "planned_end": 127.266,
+      "planned_window_duration": 4.6107
+    },
+    {
+      "visual_beat_id": "SRCH_VB039",
+      "speech_unit_id": "SU039",
+      "start_anchor": {
+        "speech_unit_id": "SU039",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU039",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 127.266,
+      "planned_end": 130.2409,
+      "planned_window_duration": 2.9749
+    },
+    {
+      "visual_beat_id": "SRCH_VB040",
+      "speech_unit_id": "SU040",
+      "start_anchor": {
+        "speech_unit_id": "SU040",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU040",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 130.2409,
+      "planned_end": 135.3609,
+      "planned_window_duration": 5.12
+    },
+    {
+      "visual_beat_id": "SRCH_VB041",
+      "speech_unit_id": "SU041",
+      "start_anchor": {
+        "speech_unit_id": "SU041",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU041",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 135.3609,
+      "planned_end": 136.7109,
+      "planned_window_duration": 1.35
+    },
+    {
+      "visual_beat_id": "SRCH_VB042",
+      "speech_unit_id": "SU042",
+      "start_anchor": {
+        "speech_unit_id": "SU042",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU042",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 136.7109,
+      "planned_end": 140.0609,
+      "planned_window_duration": 3.35
+    },
+    {
+      "visual_beat_id": "SRCH_VB043",
+      "speech_unit_id": "SU043",
+      "start_anchor": {
+        "speech_unit_id": "SU043",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU043",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "ELASTIC",
+      "planned_start": 140.0609,
+      "planned_end": 144.1309,
+      "planned_window_duration": 4.07
+    },
+    {
+      "visual_beat_id": "SRCH_VB044",
+      "speech_unit_id": "SU044",
+      "start_anchor": {
+        "speech_unit_id": "SU044",
+        "edge": "START",
+        "offset_ms": 0
+      },
+      "end_anchor": {
+        "speech_unit_id": "SU044",
+        "edge": "WINDOW_END",
+        "offset_ms": 0
+      },
+      "timing_flex": "SEMANTIC_RANGE",
+      "planned_start": 144.1309,
+      "planned_end": 146.7209,
+      "planned_window_duration": 2.59
+    }
+  ]
+}
