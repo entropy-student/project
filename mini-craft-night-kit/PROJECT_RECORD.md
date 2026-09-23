@@ -1528,3 +1528,12 @@ Current Gate: `K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY`.
 The Gate makes one canonical strict read-only connection attempt. A repeated pre-host-key close goes to a minimal Hostinger-console status checkpoint rather than alternate-client/key experimentation. If SSH recovers, only the dynamic Shared VPS continuity facts are refreshed.
 
 For later deployment, existing Docker/Compose, Caddy/edge network and `/srv` contracts are reused. Mini Craft also must add the Governance-required `PROJECT_STORAGE_MANIFEST.md` before remote project writes. Global Governance itself needs no change for this incident.
+
+
+## K6R1 governed SSH recovery — Owner checkpoint
+
+Commit `fe0c5910bbce8d8858ef5273b0d808d2dfa2cac3` followed the canonical SSH contract exactly once. Identity and trust metadata matched locally, but the remote closed before host-key presentation, so K6 cannot yet perform the dynamic Shared VPS read-only preflight.
+
+Current checkpoint: `K6R2_OWNER_HOSTINGER_CONSOLE_CHECK`.
+
+Only provider-side status inspection is requested: VPS Running, browser/serial console availability, ssh/sshd active state, port 22 listening state, and any visible provider network/security block. No configuration mutation is authorized.
