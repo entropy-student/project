@@ -22,10 +22,12 @@
     "G6_VPS_ONBOARDING_STORAGE": "READ_ONLY_PREFLIGHT_OWNER_APPROVAL_REQUIRED_BEFORE_WRITE",
     "G7_VPS_PRIVATE_DEPLOYMENT": "HOLD",
     "G8_DOMAIN_HTTPS": "HOLD",
-    "G9_PAYMENT_CONTROLLED_GOLIVE": "HOLD",
+    "G9_PAYMENT_CONTROLLED_GOLIVE": "HOLD_REAL_PROVIDER",
     "G10_PRODUCTION_ACCEPTANCE": "HOLD",
     "G11_ACQUISITION_BUSINESS_VALIDATION": "HOLD",
-    "G4_6_ACQUISITION_SEO_READINESS": "PASS"
+    "G4_6_ACQUISITION_SEO_READINESS": "PASS",
+    "G6_5_PAYMENT_ENTITLEMENT_LOCAL": "HOLD_UNTIL_G6_PREFLIGHT_REVIEW",
+    "G9_5_REAL_LLM_PROVIDER_CANARY": "HOLD"
   },
   "evidence": {
     "scanner_project_tests": "55/55 PASS",
@@ -142,5 +144,21 @@
     "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS",
     "owner_approval_before_vps_write": "REQUIRED",
     "formal_deployment_owner_approval": "REQUIRED"
+  },
+  "post_g5_gate_order": {
+    "decision_doc": "docs/REVIEWER_DECISION_POST_G5_GATE_REORDER.md",
+    "order": [
+      "G6",
+      "G6.5",
+      "G7",
+      "G8",
+      "G9",
+      "G9.5",
+      "G10",
+      "G11"
+    ],
+    "payment_logic_before_deployment": true,
+    "real_payment_after_https": true,
+    "real_llm_canary_after_public_infra": true
   }
 }
