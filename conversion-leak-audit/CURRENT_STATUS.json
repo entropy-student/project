@@ -175,7 +175,7 @@
     "resume_gate": "G6_VPS_ONBOARDING_STORAGE",
     "resume_rule": "FRESH_READ_ONLY_PREFLIGHT_THEN_OWNER_APPROVAL_BEFORE_ANY_VPS_WRITE",
     "local_cleanup": "REMOVE_VERIFIED_DUPLICATE_CLA_WORKSPACES_AND_ARTIFACTS_AFTER_SYNC",
-    "local_cleanup_status": "CONSOLIDATE_INTO_SINGLE_LOCAL_UMBRELLA",
+    "local_cleanup_status": "CONSOLIDATION_MOSTLY_COMPLETE_G4_LOCKED",
     "local_cleanup_removed": [
       "VPS基建\\g4-5-owner-visual-review-runtime",
       "workspaces\\g45-temp-20260923"
@@ -184,6 +184,21 @@
     "local_cleanup_vps_actions": 0,
     "local_cleanup_rule": "SAFE_RETRY_ONLY_IN_ENVIRONMENT_THAT_CAN_RECURSIVELY_DELETE_VERIFIED_CLA_PATHS",
     "local_consolidation_root": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\Conversion-Leak-Audit",
-    "local_consolidation_mode": "MOVE_NOT_DELETE"
+    "local_consolidation_mode": "MOVE_NOT_DELETE",
+    "local_consolidation_result": "RETURN_LOCAL_CONSOLIDATION_MOVE_BLOCKED",
+    "local_consolidation_remaining": [
+      "workspaces\\conversion-leak-audit-g4 (file lock)",
+      "3 empty G4.6 source directories",
+      ".tmp-cdp-test2 (unresolved ownership)",
+      "%TEMP%\\studio-siteurl-prepend-G4l7Ps (unresolved ownership)"
+    ],
+    "local_consolidation_completed": [
+      "G4.5 workspace content moved",
+      "G4.6 workspace content moved",
+      "G5 workspace moved",
+      "G6 workspace moved",
+      "_project-artifacts\\conversion-leak-audit moved",
+      "3 confirmed CLA temp dirs moved"
+    ]
   }
 }
