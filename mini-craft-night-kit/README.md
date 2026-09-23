@@ -1,5 +1,12 @@
 # Mini Craft Night Kit
 
+## Governance authority
+
+通用 VPS / SSH / Shared Infra / Storage / Secret / Gate 规则统一以
+`entropy-student/spike.skill/vps-project-governance` canonical latest 为准。
+本项目文档中重复这些规则的内容只作历史/项目说明，不构成第二套 Governance。
+项目专属事实仍以当前 Reviewer decision/Handoff + accepted Evidence 为准。
+
 ## 项目目标
 
 用最少自建工作，把 Mini Craft Night Kit 做成一个可正式销售的英文独立站。
@@ -34,19 +41,21 @@ WordPress
 
 ## 当前 Gate
 
-`K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC`
+`K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY`
 
-先确认原版 Kadence Single Product 的真实 UI、WooCommerce 基线、Gutenberg 可编辑性和多设备响应式。
+K0–K5 已完成。K6 已获 Owner 授权，但当前先恢复既有 Shared VPS SSH Contract 并完成一次
+只读动态 continuity probe；本 Gate 不部署。
 
 ## 文档索引
 
-- `PROJECT_RECORD.md` — 当前唯一项目 Truth
-- `REVIEWER_HANDOFF.md` — 当前 Reviewer Gate
+- `REVIEWER_HANDOFF.md` — 当前 Reviewer 项目 Truth / Gate
+- `PROJECT_RECORD.md` — 长期项目记录
 - `docs/PROJECT_PLAN_AND_ROADMAP.md` — 整体阶段、进度与工期
 - `docs/UI_GROWTH_AND_FIDELITY_DECISION.md` — UI / 增长 / clone-ui 规则
 - `docs/PLUGIN_AND_OPERATIONS_PLAN.md` — 插件与运营能力计划
 - `docs/PAYMENT_ARCHITECTURE_DECISION.md` — 支付架构决定
-- `docs/GITHUB_HANDOFF_PROTOCOL.md` — Reviewer / Executor GitHub 交接机制
+- `PROJECT_STORAGE_MANIFEST.md` — Shared VPS 项目存储/恢复地图
+- `docs/GITHUB_HANDOFF_PROTOCOL.md` — Mini Craft 专属交接补充规则
 
 ## 当前预计周期
 
