@@ -19,7 +19,7 @@
     "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "PASS",
     "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "PASS",
     "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "PASS",
-    "G6_VPS_ONBOARDING_STORAGE": "HOLD",
+    "G6_VPS_ONBOARDING_STORAGE": "RELEASED_TO_CODEX",
     "G7_VPS_PRIVATE_DEPLOYMENT": "HOLD",
     "G8_DOMAIN_HTTPS": "HOLD",
     "G9_PAYMENT_CONTROLLED_GOLIVE": "HOLD",
@@ -68,7 +68,7 @@
     "public_production_scanner": "HOLD",
     "g4_scope": "LOCAL_ONLY_NO_PAYMENT_NO_VPS_NO_PRODUCTION_SECRET"
   },
-  "next_action": "REVIEWER_PREPARE_G6_VPS_ONBOARDING_STORAGE_CONTRACT",
+  "next_action": "CODEX_EXECUTE_G6_VPS_ONBOARDING_STORAGE_CONTRACT",
   "reviewer_reconciliation": {
     "date": "2026-09-22",
     "status": "RECONCILED",
@@ -131,5 +131,14 @@
     "visual_review": "PASS",
     "free_top3_llm_calls": 0,
     "real_provider_canary": "DEFERRED_BEFORE_PRODUCTION"
+  },
+  "g6": {
+    "status": "RELEASED_TO_CODEX",
+    "contract": "docs/G6_EXECUTION_CONTRACT.md",
+    "scope": "VPS_ONBOARDING_STORAGE_BACKUP_RESTORE_ONLY",
+    "branch": "codex/g6-vps-onboarding-storage",
+    "public_deployment": "FORBIDDEN",
+    "shared_infra_changes": "FORBIDDEN",
+    "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS"
   }
 }
