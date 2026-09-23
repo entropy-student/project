@@ -3455,3 +3455,16 @@ Result: `RETURN_OWNER_HOSTINGER_CONSOLE_CHECK_REQUIRED`. This is a bounded SSH a
 - No retry, alternate SSH client/account/key, proxy workaround, relaxed host-key policy, or known_hosts change. No SSH/sshd/sudo/UFW/Docker/Caddy/cloudflared/DNS/deployment mutation. `VPS_ACTIONS=0`; `DOCKER_ACTIONS=0`; `SHARED_INFRA_WRITES=0`; `REAL_PAYMENT_ACTIONS=0`; `LIVE_ACTIONS=0`.
 - Owner checkpoint is limited to Hostinger console status: confirm the VPS is Running; if web/serial console is available, report whether ssh/sshd is active, whether port 22 is listening, and whether an obvious provider/network/security block is shown. No changes or reboot are requested.
 - Stopped at Reviewer. No Mini Craft deployment or later K6 phase began.
+
+
+## K6R2_HOSTINGER_CONTROL_PLANE_FALLBACK — 2026-09-23
+
+Result: `RETURN_REVIEWER_HOSTINGER_CONNECTOR_UNAVAILABLE`. Official Hostinger remote MCP setup and local OAuth state were verified, but its VPS read tools were not exposed to this active Executor tool session, so no provider inventory was called.
+
+- Re-read the current GitHub canonical Governance references, Mini Craft continuity files, K6R1 decision, and K6R2 decision. The current Gate prohibits SSH retries and permits only Hostinger official VPS read tools.
+- Before setup, Codex CLI `mcp list` had no Hostinger entry and the active tool inventory exposed only Hostinger AI Builder operations, not VPS/API tools. The AI Builder tools were not used.
+- Local Node version: `v24.19.0`. Registered the official Hostinger remote MCP endpoint `https://mcp.hostinger.com` in local Codex MCP configuration using the official Codex MCP command; no API token was generated or entered. A subsequent local Codex MCP status read reported OAuth `logged_in`. No credential, OAuth token, authorization URL, cookie, or secret value is included here.
+- Hostinger’s current official setup documentation identifies the Hostinger Connector/remote MCP as OAuth-capable for Codex and documents the remote MCP endpoint. The active conversation’s callable tool inventory did not refresh to expose Hostinger VPS READ tools after local registration/authentication. This is a tool-surface availability boundary, not a VPS/provider failure.
+- No Hostinger VPS list/details/metrics/firewall/SSH-key/actions/Docker Manager read tool was callable. Therefore expected VM identity, provider state, metrics/uptime, provider TCP/22, attached SSH-key metadata, action history, Docker projects/containers, and SSH failure-domain classification remain `NOT_VERIFIED`; no conclusion about VPS health is made.
+- No SSH probe was repeated. No Hostinger control-plane API call, VPS power action, firewall/key/Docker/DNS mutation, payment or Live action occurred. `HOSTINGER_CONTROL_PLANE_WRITES=0`; `VPS_POWER_ACTIONS=0`; `FIREWALL_WRITES=0`; `SSH_KEY_WRITES=0`; `DOCKER_PROJECT_WRITES=0`; `RECOVERY_MODE_ACTIONS=0`; `PAYMENT_ACTIONS=0`; `LIVE_ACTIONS=0`.
+- No Owner browser login is required according to the local CLI OAuth status. Stopped at Reviewer because the authenticated official MCP is not callable from this active task; do not substitute a manual API client or AI Builder tool. A resumed execution needs the official Hostinger VPS read tools to be present in its callable tool inventory.
