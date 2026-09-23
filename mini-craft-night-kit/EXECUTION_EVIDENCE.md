@@ -3270,3 +3270,66 @@ DOC_COMMITS=DISCOVERY:3b3923c5dc3dde31cca2b2bb0cd10aeac41d43e7;MATRIX:86d58e0519
 ```
 
 Four offer-level marketplace records were documented with field-by-field evidence labels and explicit unknowns. The leading records for possible bounded follow-up are A and C by public field coverage only; no offer has explicit US-shipping evidence, verified landed cost, an explicit commercial media license, or supplier-specific defect/missing-parts policy. No supplier was contacted and no sample was ordered. See the discovery report and comparison matrix for listing URLs, limitations, and risks. No local files, profiles, screenshots, or ZIPs were created; root entries were not re-scanned and prior unresolved items were not touched. No site, product, media, pricing, inventory, WooCommerce, PayPal, order/payment, SEO, analytics, email, or external-account state changed.
+
+
+## K5_RELEASE_CANDIDATE_QA — Executor Evidence / RETURN (2026-09-23)
+
+```text
+GATE=K5_RELEASE_CANDIDATE_QA
+RESULT=RETURN_REVIEWER_ACTIVE_RUNTIME_BASELINE_DRIFT
+MODE=BOUNDED_READ_ONLY_QA;STOPPED_BEFORE_MUTABLE_ADMIN_TESTS_OR_DEPLOYMENT_PACKAGING
+CANONICAL_WORKSPACE=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace
+ACTIVE_RUNTIME=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-k3r4-mariadb-recovery
+COMPOSE_PROJECT=mini-craft-k3r4-mariadb-recovery
+COMPOSE_FILE=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-k3r4-mariadb-recovery\\docker-compose.yml
+DOCKER_ENGINE=29.7.2_CLIENT_AND_SERVER
+WORDPRESS_CONTAINER=mini-craft-k3r4-recovery-wordpress;RUNNING;RESTART_COUNT=0;IMAGE=wordpress:6.8.2-php8.3-apache;PORT=8093
+MARIADB_CONTAINER=mini-craft-k3r4-recovery-mariadb;RUNNING_HEALTHY;RESTART_COUNT=0;IMAGE=mariadb:11.4.7;HOST_PORT=NONE
+PERSISTENT_VOLUMES=mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-wp-data;mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-wp-content;mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-db-data
+HTTP_STATUS_200=/;/shop/;/product/mini-craft-night-kit/;/faq/;/shipping-returns/;/contact/;/cart/;/checkout/;/my-account/;/wp-json/
+LOCAL_HTTP_PROBE=PASS_WITH_PROXY_BYPASS;SYSTEM_PROXY_INTERCEPTED_INITIAL_CURL_PROBE;SITE_PROBES_USED_DIRECT_LOOPBACK
+ADMIN_SESSION=VISIBLE_AS_ADMIN;PRODUCT_EDIT_ADMIN_BAR_LINK_PRESENT
+ADMIN_PRODUCT_CREATE_SAVE=NOT_TESTED
+ADMIN_MEDIA_UPLOAD_REPLACE=NOT_TESTED
+ADMIN_PRICE_STOCK_SKU_CATEGORY_PUBLISH=NOT_TESTED
+ORDERS_ADMIN=NOT_TESTED
+STOREFRONT_RESPONSIVE_DESKTOP_MOBILE=NOT_TESTED_AFTER_BASELINE_CONFLICT
+PRODUCT_GALLERY=GALLERY_AND_THUMBNAIL_LINKS_PRESENT;INTERACTION_NOT_TESTED
+CONTACT_FORM=NOT_TESTED
+CART_CHECKOUT_FLOW=NOT_TESTED;NO_CART_MUTATION_INITIATED
+PAYPAL_SANDBOX_STATE=NOT_READ;NO_PAYPAL_CONFIGURATION_TOUCHED
+CUSTOMER_LANGUAGE=CONFLICT;RENDERED_PRODUCT_PAGE_CONTAINS_CHINESE_WOOCOMMERCE_UI
+ADMIN_LANGUAGE=CHINESE_UI_OBSERVED;USER_SETTING_NOT_INDEPENDENTLY_READ
+PRODUCT_CATEGORY=CONFLICT;RENDERED_AS_ACCESSORIES
+LEGACY_DEMO_PRODUCTS=CONFLICT;RELATED_PRODUCTS_RENDER_USB-C_CABLE;UNIVERSAL_CHARGER;REMOTE_CONTROL
+LOCAL_QA_PRODUCT_DATA=JPY_1;STOCK_8;SKU_MCK-LOCAL-TEST-001;NO_VALUE_CHANGED
+K4_ACCEPTED_BASELINE_CONFLICT=YES;CURRENT_RENDER_DIFFERS_FROM_PRIOR_K4_ACCEPTED_ENGLISH_CRAFT_KITS_AND_HIDDEN_DEMO_PRODUCT_STATE
+PLUGIN_THEME_VERSION_DRIFT=NOT_CHECKED
+GUTENBERG_BLOCK_VALIDITY=NOT_CHECKED;WP_CLI_NOT_INSTALLED;EDITOR_SESSION_NOT_OPENED
+CRITICAL_PHP_JS_ERRORS=NOT_CHECKED
+PRIMARY_ROUTE_ERRORS=0_ON_ROUTES_LISTED_ABOVE
+WORDPRESS_VERSION=IMAGE_TAG_6.8.2;DATABASE_REPORTED_CORE_VERSION_NOT_INDEPENDENTLY_VERIFIED
+DEPLOYMENT_MANIFEST=NOT_PREPARED_BASELINE_RECONCILIATION_REQUIRED
+DATABASE_BACKUP=NOT_CREATED;STOPPED_BEFORE_PACKAGE_CREATION
+WP_CONTENT_BACKUP=NOT_CREATED;STOPPED_BEFORE_PACKAGE_CREATION
+CONFIG_BACKUP=NOT_CREATED;STOPPED_BEFORE_PACKAGE_CREATION;NO_CONFIG_OR_SECRET_VALUE_READ_OR_EXPORTED
+REQUIRED_ENV_SECRET_NAMES=NOT_INVENTORIED;DEPLOYMENT_PACKAGE_DEFERRED
+SITE_MUTATION=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+VPS_WRITES=ZERO
+SECRET_OUTPUT=0
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TEMP_PATTERN_SCAN=.tmp-k4-*; .tmp-mc-*;NO_MATCHES_AT_SCAN_TIME
+LOCAL_HELPERS_CREATED=NO
+BROWSER_PROFILES_CREATED=NO
+WORKSPACE_TEMP_CLEANUP=PASS_NO_TEMP_CREATED
+ROLLBACK_LOCATION=UNCHANGED_ACTIVE_NAMED_DOCKER_VOLUMES;NO_NEW_ROLLBACK_CREATED
+EVIDENCE_UPDATED=YES
+NEXT=STOP_AT_REVIEWER
+```
+
+The browser's read-only accessibility snapshot for the current local Product page showed a logged-in `admin` toolbar and an “Edit product” link, but did not test saving or uploading. The same rendered page contained the Chinese strings “加入购物车”, “库存 8 件”, “描述” and “相关产品”, used category `Accessories`, and displayed the three inherited demo-related products. This contradicts the K4 accepted storefront state and blocks treating the current runtime as the reviewed release candidate. The visible JPY 1 / stock 8 / `MCK-LOCAL-TEST-001` values remain local test data only.
+
+All listed public routes returned HTTP 200 using direct loopback requests with proxy bypass. Docker reported the designated 8093 WordPress container running and its MariaDB healthy. The first curl attempts were intercepted by a local system proxy at 127.0.0.1:10808; the direct-loopback recheck passed. No browser interaction, site save, media upload, product/cart/checkout mutation, order, payment, PayPal action, VPS action, or secret access occurred. Because the active storefront no longer matches the accepted K4 baseline, responsive/admin CRUD/Gutenberg/plugin drift checks and creation of a deployment package/backup were stopped rather than packaging an unresolved state.
