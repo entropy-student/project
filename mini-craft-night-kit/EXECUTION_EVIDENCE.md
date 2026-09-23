@@ -2902,7 +2902,7 @@ VPS_WRITES=ZERO
 SECRET_OUTPUT=0
 ```
 
-Screenshot manifest and 22 durable PNGs are under `docs/ui-k4-strict-storefront-cleanup-resume/`. Local review ZIP SHA-256: `05A6D93A587A36DE3692D16A55E4A2E51EA01510D854FD1FE3220537589C2DD2`; it contains only `desktop/`, `mobile/`, `product-gallery/`, and `manifest.txt`.
+Screenshot manifest and 22 durable PNGs are under `docs/ui-k4-strict-storefront-cleanup-resume/`, first archived in commit `45727c0092146b6b5d5e4d8601c81e6d7705b85c`. Local review ZIP SHA-256: `106DBC238DD52A09F5EF59484DA463801D9EFF4F04A2ABF84A0692ABFAD529D5`; it contains only `desktop/`, `mobile/`, `product-gallery/`, and `manifest.txt`.
 
 Rollback point: active-runtime local-only SQL export at `mini-craft-k3r4-mariadb-recovery/.artifacts/k4-strict-storefront-cleanup-resume/rollback/pre-gate.sql`, SHA-256 `94F9E4C57CA03E57A70EEEF20C28A62AEB318DFC6D1F8A02861A6556059A6A0C`. It is not uploaded or included in the ZIP.
 

@@ -1,5 +1,6 @@
 GATE=K4_STRICT_STOREFRONT_CLEANUP_RESUME
 BASE_COMMIT=5e7adfcffbdbbf6975cf198fac4429ec5e963490
+SCREENSHOT_ARCHIVE_COMMIT=45727c0092146b6b5d5e4d8601c81e6d7705b85c
 BROWSER=Microsoft Edge headless; anonymous isolated profile
 PROFILE_PATH=.artifacts/k4-strict-storefront-cleanup-resume/browser-profile/anonymous-edge (temporary)
 ORDER_ACTIONS=0; PAYMENT_ACTIONS=0; PLACE_ORDER=NOT_CLICKED
