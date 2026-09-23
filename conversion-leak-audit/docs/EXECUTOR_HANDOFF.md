@@ -237,7 +237,7 @@ BRANCH=codex/g4-6-acquisition-seo-readiness
 INITIAL_IMPLEMENTATION_COMMIT=c26f9ca089b3020beb8f991b0a9a53bc697d5f26
 ```
 
-The implementation began from BASE_MAIN `8e0f044541598a1eee6a304df8a7c6b6368bf473`. Reviewer governance commits `774d5db15d9544f4e13d1fc2ecf36c24b14187d9` and `a1fdbaeba3378e7b0f590549605cb911c32bf2a3` were cherry-picked without merging main. The final fetch resolved latest `origin/main` to `796c4549442eca084abeeb0c26deb7a018bbaf4c`; intervening main commits were outside this project, and all required current governance files compare identical to `origin/main`. The unmerged G4.6 candidate implementation remains on the dedicated branch. No unrelated Mini Craft commits or sibling project changes were incorporated.
+The implementation began from BASE_MAIN `8e0f044541598a1eee6a304df8a7c6b6368bf473`. Reviewer governance commits `774d5db15d9544f4e13d1fc2ecf36c24b14187d9` and `a1fdbaeba3378e7b0f590549605cb911c32bf2a3` were cherry-picked without merging main. The pre-push fetch resolved latest `origin/main` to `994987cdac9a9fe1402fc1829daef45108735027`; intervening main changes were in `ai-story-showrunner/` only, and all required current governance files compare identical to `origin/main`. The unmerged G4.6 candidate implementation remains on the dedicated branch. No unrelated Mini Craft commits or sibling project changes were incorporated.
 
 Candidate verification summary:
 

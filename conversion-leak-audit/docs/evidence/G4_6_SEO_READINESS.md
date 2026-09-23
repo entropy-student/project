@@ -4,7 +4,7 @@
 GATE=G4_6_ACQUISITION_SEO_READINESS
 CAPTURED=2026-09-23 (Asia/Shanghai)
 INITIAL_BASE_MAIN=8e0f044541598a1eee6a304df8a7c6b6368bf473
-LATEST_ORIGIN_MAIN=796c4549442eca084abeeb0c26deb7a018bbaf4c (fetched 2026-09-23 Asia/Shanghai)
+LATEST_ORIGIN_MAIN=994987cdac9a9fe1402fc1829daef45108735027 (pre-push fetch, 2026-09-23 Asia/Shanghai)
 PRIOR_REVIEWER_GOVERNANCE_FETCH=31829d5662fb164aa34d4732cb2b1906e251e26
 REVIEWER_GOVERNANCE_SYNC=774d5db15d9544f4e13d1fc2ecf36c24b14187d9 + a1fdbaeba3378e7b0f590549605cb911c32bf2a3 cherry-picked; main not merged
 BRANCH=codex/g4-6-acquisition-seo-readiness
@@ -13,6 +13,8 @@ META_CONTRACT_COMPLETION=RETURN_G4_6_META_CONTRACT_COMPLETION_ONLY
 META_CONTRACT_COMPLETION_COMMIT=ef9d31e4a8170028c549e4493c2c77f4bd24adc7
 LOCAL_WORDPRESS=http://127.0.0.1:8084/
 ```
+
+The implementation began from BASE_MAIN `8e0f044541598a1eee6a304df8a7c6b6368bf473`. Reviewer governance was synchronized by cherry-picking the two listed commits; main was not merged. The pre-push main changes after the previous check were confined to `ai-story-showrunner/`. Required current governance files compare identical to `origin/main`, while this branch intentionally retains its unmerged G4.6 candidate implementation.
 
 ## Readiness outcomes
 
