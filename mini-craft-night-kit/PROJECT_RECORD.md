@@ -1286,3 +1286,21 @@ Current Gate:
 `K4_WORKSPACE_HYGIENE_V2`
 
 This Gate must inventory and classify root items, delete only proven transient material, preserve the active runtime and unknown/unrelated items, and force future Gates to clean their temporary browser/helper artifacts before returning.
+
+
+## K4 Workspace Hygiene V2 — PASS
+
+Commit `d0b821c91f433ce6cf8e3c534fa6a87d91c43b90` is accepted.
+
+The workspace cleanup was conservative: no safe-delete candidate was proven, one K4 visual ZIP was archived, and unresolved root browser/profile items were retained rather than guessed away. The permanent workspace closeout contract is now mandatory for future Mini Craft Gates.
+
+## K4 Strict Storefront Cleanup — resumed
+
+Current Gate:
+`K4_STRICT_STOREFRONT_CLEANUP_RESUME`
+
+This resumes the previously paused storefront cleanup after:
+- Contact/FAQ artifact-backed recovery acceptance;
+- Workspace Hygiene V2 PASS.
+
+Growth/SEO Readiness remains planned after K4 visual/functional cleanup and before K5.
