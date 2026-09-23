@@ -1479,3 +1479,12 @@ The deployment must first revalidate shared-host truth, then use a project-isola
 Owner paused VPS deployment to clean local project documentation first. Current Gate: `LOCAL_DOCUMENT_CONSOLIDATION_CLEANUP`.
 
 Target is a clean canonical workspace where current/deployment/archive documents live under `mini-craft-night-kit-workspace\\docs\\`, Gate artifacts remain under `artifacts\\`, and loose Mini Craft documentation is removed from the shared `VPS基建` root where safe. Only proven duplicate/superseded/temp project-owned files may be deleted; operational runtime/repo/backups/secrets/unrelated projects remain untouched.
+
+
+## Local document consolidation — PASS
+
+Commit `fd06aa204575d03fb14d692345a337af165a446e` consolidated 9 historical Mini Craft local documents under the canonical workspace archive. No deletion was justified; uncertain `.tmp-*` and diagnostic residue remain retained rather than guessed away. Runtime, Git, K5 deployment package/backups and unrelated projects were unchanged.
+
+## K6 VPS Production Deployment — resumed
+
+The cleanup pause is lifted. Existing Owner authorization remains in force. Resume K6 at the mandatory read-only Shared VPS preflight; do not replay K5.
