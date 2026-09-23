@@ -1761,3 +1761,28 @@ This Gate only isolates native WooCommerce final-action vs PPCP-localhost render
 
 Formal decision:
 `docs/REVIEWER_DECISION_K5R2_CHECKOUT_ACTION_VERSION_RECONCILIATION.md`
+
+
+## K5 Release Candidate — FORMAL PASS
+
+K5 is formally accepted. The latest K5R2 stop was caused by browser automation being unable to establish a reliable fresh anonymous URL/session; no checkout regression was demonstrated.
+
+Accepted basis:
+- K4 proved native WooCommerce Place order rendering with the local test gateway;
+- K5 current cart/checkout smoke is healthy and PayPal Sandbox is visible/connected;
+- K3 proved Sandbox payment/capture/webhook end-to-end;
+- no checkout/payment config mutation occurred after K4.
+
+Production WordPress target is resolved to `wordpress:7.1.1-php8.3-apache`; public HTTPS PayPal button rendering remains a Production Canary check, not a deployment blocker.
+
+`BLOCKS_DEPLOYMENT=NONE`
+
+Formal decision:
+`docs/REVIEWER_DECISION_K5_RELEASE_CANDIDATE_PASS.md`
+
+## K6 VPS Production Deployment — OWNER CHECKPOINT
+
+Next step is bounded Sandbox-first deployment to `minicraft.spikersun.com` on the shared VPS. Because this writes to an external server/reverse proxy, explicit Owner authorization is required.
+
+Formal checkpoint:
+`docs/REVIEWER_DECISION_K6_VPS_PRODUCTION_DEPLOYMENT_OWNER_CHECKPOINT.md`
