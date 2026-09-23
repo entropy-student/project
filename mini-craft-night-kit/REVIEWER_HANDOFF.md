@@ -1595,3 +1595,20 @@ Do not delete `.tmp-cdp-test2` while Edge references remain.
 
 Formal decision:
 `docs/REVIEWER_DECISION_PROJECT_DIRECTORY_CONSOLIDATION_OWNER_CLEANUP.md`
+
+
+## Owner manual cleanup accepted
+
+Owner manually removed the two shared-root K4 browser-temp folders and elected not to delete the contained Gate-local profile/debug residue. This is accepted as non-blocking because remaining residue is contained inside project artifacts rather than the shared root.
+
+## K4.5 Growth / SEO Readiness Audit — AUTHORIZED
+
+Current Gate:
+`K4_5_GROWTH_SEO_READINESS_AUDIT`
+
+This is read-only. It audits technical SEO, structured data, Search/Merchant readiness, keyword/intent architecture, Core Web Vitals, analytics/instrumentation, UTM, purchase truth, privacy/consent, lifecycle email, CRO/trust, and Owner checkpoints.
+
+Growth framework comes from the Mini Craft Growth Playbook and Cross-Border Growth / Acquisition / Conversion playbook. Do not implement analytics/SEO changes in this Gate.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_5_GROWTH_SEO_READINESS_AUDIT.md`
