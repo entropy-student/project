@@ -1447,3 +1447,31 @@ Known evidence includes a K4 content-fill state with invalid count 0 and Contact
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_ARTIFACT_BACKED_BLOCK_RECOVERY.md`
+
+
+## K4 Artifact-Backed Block Recovery — ACCEPTED
+
+Executor commit `e1a64a1e5092142b1391961c28ce4ddd0c428f6d` is accepted for the bounded recovery scope.
+
+Reviewer inspected the recovery ZIP directly:
+- Contact desktop/mobile: Name, Email, Message and Send message are visibly restored.
+- FAQ desktop/mobile: seven native details items render again.
+
+`GUTENBERG_EDITOR_VISUAL_VALIDATION=PENDING_SESSION` remains a deferred editor-session check; do not force a risky GUI recovery solely to clear this marker.
+
+Formal acceptance:
+`docs/REVIEWER_DECISION_K4_ARTIFACT_BACKED_BLOCK_RECOVERY_ACCEPT.md`
+
+## K4 Workspace Hygiene V2 — AUTHORIZED
+
+Before resuming strict storefront cleanup, clean the shared root conservatively.
+
+Current Gate:
+`K4_WORKSPACE_HYGIENE_V2`
+
+The goal is classification + safe cleanup + a permanent anti-regression rule. The active runtime `mini-craft-k3r4-mariadb-recovery` is protected and must not be renamed/moved/deleted.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_WORKSPACE_HYGIENE_V2.md`
+
+After Hygiene V2 PASS, Reviewer may resume `K4_STRICT_STOREFRONT_CLEANUP`.
