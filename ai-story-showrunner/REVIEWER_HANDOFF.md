@@ -1,31 +1,34 @@
 # Story Showrunner Validation Workspace — REVIEWER HANDOFF
 
-Date: 2026-09-22  
-Status: `CURRENT TRUTH ONLY`
+Date: 2026-09-23  
+Status: `CURRENT TRUTH ONLY / TAKEOVER REVIEW RECONCILED`
 
 Historical chronology belongs in:
 - `PROJECT_RECORD.md`
 - `EXECUTION_EVIDENCE.md`
 - `experiments/`
 
+Current documentation map:
+- `docs/CURRENT_DOC_INDEX.md`
+
 ## 1. Final goal
 
-Extract and validate a reusable:
+Validate and promote the reusable:
 
 `entropy-student/spike.skill/story-showrunner`
 
-The current `ai-story-showrunner` repository is the validation/runtime workspace, not the permanent product boundary.
+The current `ai-story-showrunner` repository remains the validation/runtime workspace.
 
-Skill lifecycle:
+Promotion rule remains:
 
 ```text
-candidate extraction now
-→ current project remains E2E fixture
-→ final video PASS
-→ promote story-showrunner to CANONICAL
+Candidate contracts
+→ current episode final-video E2E
+→ final QA
+→ story-showrunner CANONICAL
 ```
 
-## 2. Current accepted pipeline
+## 2. Accepted pipeline
 
 ```text
 TopicProvider
@@ -43,202 +46,139 @@ TopicProvider
 
 AI is the first Domain Adapter, not the core boundary.
 
-## 3. Gate state
+## 3. Gate truth after 2026-09-23 takeover review
 
 ```text
-P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5 = PASS
-G6 = IN_PROGRESS
-G7 = BLOCKED_BY_G6
+P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5
+= ACCEPTED WITH THEIR ORIGINAL VALIDATION SCOPE
+
+G6R = IN_PROGRESS
+G6A First-E2E Asset Calibration Gate = BLOCKED_BY_G6R
+G7 Final End-to-End Validation = BLOCKED
 ```
 
-G6 current production task:
+Important interpretation:
+
+- G2/G3/G4/G5 PASS means their declared contract/quality gates passed.
+- It does **not** mean production throughput or full Candidate E2E already passed.
+- Do not reopen accepted story/director/asset semantics unless a new failure invalidates them.
+
+## 4. Why G6R exists
+
+The takeover review found a post-extraction seam:
+
+1. Candidate Timing Compiler already produced 44 Speech Units, Production SRT and TTS Manifest.
+2. The current G6 package still consumed the older G4 Visual Beat artifact whose `timing_source` is `JINGSUI_PRIOR_ESTIMATE`.
+3. Candidate runtime rules now require planned/final timing semantics and durable Speech Unit anchors.
+4. The Runtime Timeline Resolver contract described those anchors, but the current Visual Beat schema/package did not encode them as a required executable contract.
+
+Therefore the existing G6 package v1 is retained as historical evidence but is **not current Candidate E2E proof**.
+
+## 5. Preserved truth — do not redo
+
+G6R must not redesign:
+
+- locked Blind Search script;
+- KnowledgeCore / Story meaning;
+- the 44 accepted Visual Beat meanings;
+- Visual Beat order;
+- accepted POV decisions;
+- G5 Frame Blueprint creative intent;
+- character identity/style rules;
+- Voice Timing Profile v2.1;
+- FFmpeg baseline renderer decision.
+
+This is a runtime-contract reconciliation, not a creative rebaseline.
+
+## 6. G6R current artifacts
+
+Timing already compiled:
+
+- 44 Speech Units;
+- 43 voiced TTS rows;
+- 1 explicit 1.4s silent HARD_ANCHOR;
+- planned total: 146.7209s;
+- exact locked-script coverage: PASS.
+
+New reconciliation binding:
+
+`experiments/g6/blind-search-answer/timing/05_VISUAL_BEAT_TIMING_BINDINGS.json`
+
+It provides 44/44:
 
 ```text
-locked script
-→ Production SRT
-→ TTS_MANIFEST.json
-→ full Antigravity Production Package
-→ Antigravity TTS + images + edit + export
-→ final QA
+visual_beat_id
+↔ speech_unit_id
++ START anchor
++ WINDOW_END anchor
++ timing_flex / lock class
 ```
 
-## 4. Timing truth
+Historical absolute G4 timestamps are planning evidence only.
 
-Canonical:
-- `docs/SRT_AUDIO_TIMING_STANDARD.md` v0.4
-- `docs/VOICE_TIMING_PROFILE_SPEC.md` v0.3
-- `profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json`
+## 7. Runtime resolver truth
 
-Profile status:
-`FROZEN / PASS_WITH_MINOR`
+The Candidate resolver must:
 
-Audio mode:
-`EXECUTOR_LOCKED_COSYVOICE`
+- treat real normalized TTS duration as final speech-clock truth;
+- preserve text/order/semantic pace/authored pauses;
+- resolve final absolute timestamps from durable anchors;
+- emit FINAL_SUBTITLES / FINAL_TIMELINE / FINAL_SHOT_TIMELINE;
+- treat profile drift as diagnostic unless a locked hard constraint becomes infeasible;
+- never require an ordinary Owner round-trip for retiming.
 
-Authority:
-- Writer locks spoken text and dramatic meaning.
-- Timing Compiler owns Speech Units, semantic pace, authored pauses, planned Production SRT and TTS Manifest.
-- G4 consumes the planned Production SRT and owns visual rhythm/meaning only.
-- Antigravity executes the locked TTS recipe and may not rewrite/re-pace speech. After real TTS, Runtime Timeline Resolver automatically recalculates final absolute timestamps without a creative recompile or Owner round-trip.
+A deterministic reference implementation and schema alignment belong to the Candidate Skill repository and are part of G6R.
 
-## 5. G4 truth
+## 8. FFmpeg truth
 
-G4 = PASS.
+Video runtime probe already passed programmatically.
 
-Canonical:
-- `docs/G4_DIRECTOR_LANGUAGE_RULES.md`
-- `docs/G4_DIRECTOR_COMPILER_CONTRACT.md`
-- `docs/G4_VIEWPOINT_GRAMMAR.md`
+Baseline first E2E renderer:
 
-G4 no longer uses 5.9 chars/s or Jingsui timing as production authority.
+`FFmpeg / deterministic still-first assembly`
 
-Historical timing observations remain evidence only.
+Remotion / Hyperframe are optional later renderers, not baseline blockers.
 
-Human-readable Director Shotboard is observability/debug output, not a mandatory Owner approval Gate.
+The earlier Handoff statement saying the renderer probe was still pending is superseded.
 
-## 6. G5 truth
+## 9. Production package truth
 
-G5 = PASS.
+`production-package-v1` remains historical candidate evidence.
 
-Canonical:
-- `docs/G5_IMAGE_ASSET_PACKAGE_CONTRACT.md`
-- `docs/VISUAL_FRAME_BLUEPRINT_RULES.md`
-- `docs/CHARACTER_IDENTITY_LOCK.md`
+Current execution must not run its 44-frame Asset Gate until G6R is merged and the execution package is rebuilt/reconciled against:
 
-Manual/high-risk Pilot:
-`CALIBRATION_EXCEPTION_ONLY`
+- Candidate planned timing;
+- durable Visual Beat anchors;
+- runtime resolver;
+- current Candidate schemas.
 
-Normal episodes do not require Owner first-key-frame review.
+## 10. G6R acceptance
 
-## 7. Current validation episode
+G6R may PASS only when:
 
-Episode:
-`blind-search-answer`
+- [x] 44/44 Speech Unit ↔ Visual Beat binding exists;
+- [x] no missing/duplicate Visual Beat IDs in the validation fixture;
+- [x] planned binding total remains 146.7209s;
+- [ ] Candidate Visual Beat schema requires durable anchors;
+- [ ] deterministic Timeline Resolver reference implementation exists;
+- [ ] resolver smoke test passes without creative mutation;
+- [ ] Candidate Skill status docs are synchronized;
+- [ ] current execution package is rebuilt from reconciled contracts.
 
-Locked script:
-`experiments/g4r-v03/blind-search-answer/02_SCRIPT.md`
+## 11. Owner intervention
 
-Legacy reference SRT:
-`experiments/g4r-v03/blind-search-answer/08_REFERENCE_TIMING.srt`
+`OWNER_ACTION_REQUIRED = NO`
 
-Legacy SRT role:
-`SEMANTIC_PRIOR_ONLY / NOT PRODUCTION CLOCK`
-
-Persistent G5 reference package:
-`/ai-story-showrunner/g5/blind-search-answer/reference-package-v1`
-
-## 8. Topic/runtime state
-
-Default topic resolution:
-
-```text
-explicit user topic
-> explicit user override
-> today's Calendar
-> Topic Radar
-> Evergreen Bank
-```
-
-Live Calendar / Registry / daily ledger remain runtime state outside Skill source.
-
-## 9. Owner intervention policy
-
-Normal run:
-
-```text
-optional invocation override
-→ autonomous pipeline
-→ final video review
-```
-
-No routine Owner approval for:
-- final script;
-- Production SRT;
-- Director plan;
-- first-batch key frames;
-- individual TTS lines.
-
-Escalate only unresolved RETURN/BLOCKED states or explicit Owner policy choices.
-
-## 10. Skill extraction state
-
-Review artifacts:
-- `docs/skill-migration-review/MIGRATION_MAP_V1.md`
-- `docs/skill-migration-review/CONFLICT_REGISTER_V1.md`
-- `docs/skill-migration-review/R1_CANONICAL_RECONCILIATION_REVIEW.md`
-- `docs/skill-migration-review/R2_CANDIDATE_MIGRATION_REVIEW.md`
-
-`SKILL_EXTRACTION_R1 = PASS`
-`SKILL_EXTRACTION_R2 = PASS`
-
-Candidate now exists:
-`entropy-student/spike.skill/story-showrunner`
-
-Candidate status:
-`CANDIDATE / E2E_NOT_YET_PROVEN`
-
-Resolved:
-- all 9 P0 canonical conflicts;
-- all P1 core/profile/adapter/runtime splits;
-- all 4 P2 source-of-truth cleanup issues;
-- schema identity/timing-source migration;
-- portable voice profile path externalization.
-
-Next:
-resume G6 using Candidate contracts.
-
-## 11. Remaining unknowns
-
-- Antigravity programmatic integration availability remains unknown; current trigger is manual.
-- Full Production Package E2E has not yet produced a final video.
+Normal technical reconciliation remains Reviewer/maintainer work.
 
 ## 12. Immediate next action
 
-Candidate migration is complete.
+Complete the cross-repo G6R change, independently review it, merge it, then release:
 
-Timing compile is also complete:
+`G6A_FIRST_E2E_ASSET_CALIBRATION`
 
-```text
-locked Blind Search script
-→ Candidate Timing Compiler
-→ Production SRT ✅
-→ TTS Manifest ✅
-```
+That gate may generate real TTS + resolved timeline + 44 production frames, then stop for one calibration review before final FFmpeg assembly.
 
-Timing result:
-- 44 Speech Units;
-- 43 TTS rows;
-- 1 explicit 1.4s silent hold;
-- planned Production SRT total = 146.7209s (planning value, not final runtime duration);
-- exact locked-script coverage PASS;
-- row/schema/timeline validation PASS.
+The Asset review is a **FIRST_E2E_CALIBRATION_EXCEPTION**, not a permanent per-episode Owner gate.
 
-Next allowed:
-1. production TTS execution + Runtime Timeline Resolver — retain 43 unit WAVs, `narration_master.wav`, FINAL_SUBTITLES / FINAL_TIMELINE / FINAL_SHOT_TIMELINE;
-2. independent 12s Antigravity video-runtime probe v0.2.
-
-Tasks:
-- `experiments/g6/blind-search-answer/ANTIGRAVITY_TTS_ONLY_TASK.md`
-- `experiments/g6/blind-search-answer/ANTIGRAVITY_VIDEO_RUNTIME_PROBE.md`
-
-Owner HOLD:
-`FULL_ANTIGRAVITY_PRODUCTION_PACKAGE` until the zero-install video-runtime probe establishes whether Antigravity should target an existing FFmpeg, existing Codex/local Remotion, existing Codex/local Hyperframe, a native timeline, or another reproducible execution path.
-
-Do not freeze the full package or real-video backend until the probe returns. The current target architecture is one delivery: planned timing → real TTS → Runtime Timeline Resolver → final timeline → selected video runtime.
-
-Do not label the Skill CANONICAL until final-video E2E PASS.
-
-
-## 13. Output recording
-
-Canonical simple standard:
-`docs/OUTPUT_RECORD_STANDARD.md`
-
-Production output ledger:
-`outputs/`
-
-Rule:
-- one episode `INDEX.md`;
-- one `RUN_RECORD.json` per meaningful retained production run;
-- `experiments/` remains R&D/validation evidence;
-- `outputs/` records accepted production execution.
+Do not promote the Skill to CANONICAL until final-video E2E PASS.
