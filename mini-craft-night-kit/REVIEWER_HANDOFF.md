@@ -1726,3 +1726,23 @@ Scope is narrow: identify whether the cause is product-status drift, stale WooCo
 
 Formal decision:
 `docs/REVIEWER_DECISION_K5R1_RELATED_PRODUCTS_BASELINE_REPAIR.md`
+
+
+## K5R1 Related Products Baseline Repair — FORMAL PASS
+
+Executor commit `61ec3c81a4eb48faa513fd9bb511bfabe98302c4` is accepted. Root cause was stale WooCommerce transient `wc_related_223`; legacy products remained draft. Only that transient was cleared, fresh anonymous Product/Shop no longer expose demo products, and Product Gallery remains intact.
+
+Canonical rollback path includes `\\.artifacts\\` under the active runtime; any earlier `recovery.artifacts` string is a reporting typo.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K5R1_RELATED_PRODUCTS_BASELINE_REPAIR_PASS.md`
+
+## K5 Release Candidate QA Resume — AUTHORIZED
+
+Current Gate:
+`K5_RELEASE_CANDIDATE_QA_RESUME`
+
+Resume only unfinished K5 checks: Owner-operable admin CRUD/media capability, responsive/storefront regression smoke, cart/checkout, PayPal Sandbox read-only state, language/US market, Gutenberg/application health, and local-only deployment package/backups. Do not replay K4 and do not deploy VPS yet.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K5_RELEASE_CANDIDATE_QA_RESUME.md`
