@@ -174,3 +174,31 @@ The remaining verified CLA duplicates may be removed later only from an executio
 Canonical Git checkout remains:
 
 `C:\Users\34707\Documents\ChatGPT\VPS基建\project-github-sync\conversion-leak-audit`
+
+## Local consolidation target
+
+Owner prefers consolidation over deletion while the project is paused.
+
+Create one local umbrella directory:
+
+`C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\Conversion-Leak-Audit\\`
+
+Target structure:
+
+```text
+Conversion-Leak-Audit/
+  00_项目入口.txt
+  historical-workspaces/
+  artifacts/
+  temp/
+```
+
+Rules:
+- canonical Git checkout remains in place at `project-github-sync\\conversion-leak-audit`; do not physically move it;
+- `00_项目入口.txt` records the canonical Git path and pause/resume entry;
+- move verified CLA historical workspace clones into `historical-workspaces/`;
+- move verified CLA local artifacts into `artifacts/`;
+- move verified CLA temp directories into `temp/`;
+- unresolved temp directories stay outside until ownership is proven;
+- move only; do not delete project data during consolidation;
+- no VPS action.
