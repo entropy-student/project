@@ -219,7 +219,11 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - final GPT weights now exist at epochs 5, 10 and 15, with `narrator01_v2pp-e15.ckpt` as the latest trained GPT candidate;
 - the earlier zero-shot listening test used a different target-speaker reference than the voice used for `narrator01_v2pp` fine-tuning, so that earlier listening result is retained only as functional zero-shot evidence and is NOT a valid speaker-similarity A/B baseline for the fine-tuned narrator;
 - the fair speaker-similarity comparison must use the same narrator voice reference (preferably a clean held-out 3–10s clip), same target sentence and same inference settings for both base/zero-shot and fine-tuned conditions;
-- this establishes local fine-tune execution PASS only; voice similarity / naturalness is not yet accepted and no canonical TTS migration has occurred.
+- this establishes local fine-tune execution PASS only; voice similarity / naturalness is not yet accepted and no canonical TTS migration has occurred;
+- first post-finetune inference check found `narrator01_v2pp-e15.ckpt` produced an abnormal/near-empty result with the same SoVITS e8 model and reference conditions;
+- switching only the GPT checkpoint to `narrator01_v2pp-e10.ckpt` produced a normal result and Owner listening feedback was positive ("效果还不错");
+- therefore `e10 + SoVITS e8` is the current GPT-SoVITS candidate pair for QA, while `e15` is rejected from the current candidate path pending any later root-cause investigation;
+- this is still a candidate-quality result, not canonical promotion.
 
 Current technical next action:
 
