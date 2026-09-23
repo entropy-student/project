@@ -44,21 +44,23 @@ If generated-image text conflicts with these contracts, GitHub contracts win.
 
 ## Current Reviewer Position
 
-G5 is closed with:
+Project state:
 
-`PASS_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
+`PAUSED_BY_OWNER`
 
-Current authorized Executor Gate:
+No Executor Gate is currently authorized.
 
-`G6_VPS_ONBOARDING_STORAGE`
+G6 completed read-only VPS preflight only and is paused before the first remote write.
 
-Execute only:
+Canonical restart entry:
 
-`G6_EXECUTION_CONTRACT.md`
+`PROJECT_PAUSE_HANDOFF.md`
 
-G6 may freeze/create project-owned storage and run disposable restore canaries. It may not deploy the application for service use or modify shared 80/443, reverse proxy, tunnel, firewall, Docker daemon, shared network, DNS, payment, or production Secrets.
-
-Reviewer will inspect G6 host-local evidence and decide PASS / RETURN before G7 is released.
+On explicit Owner reopen, Reviewer must:
+1. refresh current repository state;
+2. refresh VPS read-only preflight;
+3. re-present any proposed VPS writes to Owner;
+4. obtain explicit approval before remote mutation.
 
 ## 2026-09-22 Takeover Reconciliation
 
