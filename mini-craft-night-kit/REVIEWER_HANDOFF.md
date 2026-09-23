@@ -1801,3 +1801,16 @@ Before any write, Executor must re-read and re-prove current Shared VPS truth. E
 
 Formal decision:
 `docs/REVIEWER_DECISION_K6_VPS_PRODUCTION_DEPLOYMENT.md`
+
+
+## Local document consolidation — AUTHORIZED / K6 paused
+
+Owner requested local-document cleanup before VPS deployment. `K6_VPS_PRODUCTION_DEPLOYMENT` is paused before execution.
+
+Current Gate:
+`LOCAL_DOCUMENT_CONSOLIDATION_CLEANUP`
+
+Goal: consolidate Mini Craft-owned local documentation under `mini-craft-night-kit-workspace\\docs\\{current,deployment,archive}` and delete only proven duplicate/superseded/temporary project-owned documents. Active runtime, Git repo, K5 deployment package/backups, secrets, Docker volumes and unrelated projects are protected.
+
+Formal decision:
+`docs/REVIEWER_DECISION_LOCAL_DOCUMENT_CONSOLIDATION_CLEANUP.md`
