@@ -1542,3 +1542,8 @@ Only provider-side status inspection is requested: VPS Running, browser/serial c
 ## K6R2 Hostinger control-plane fallback
 
 The manual Hostinger console checkpoint is deferred. Before asking Owner to operate a terminal, Executor will use Hostinger's official Codex-compatible Connector/MCP as a read-only provider-control-plane fallback. It may inspect VPS state/metrics, provider firewall, attached SSH-key metadata, action history and Docker Manager project/container state. No provider writes are authorized. If authentication is missing, Owner may only need to complete the browser sign-in/consent flow opened by the official Connector.
+
+
+## K6R2R1 fresh Codex Hostinger tool-surface check
+
+Historical records confirm the original VPS access was direct governed SSH from the Owner Windows host, using the same ops identity/known_hosts contract that K6R1 already retried. The current failure is therefore not explained by a forgotten SSH command. Because the official Hostinger MCP was registered/authenticated only after the current Executor session began, the next bounded check is a fresh Codex session to determine whether the VPS/API tools load there. No SSH retry or provider write is authorized in this Gate.
