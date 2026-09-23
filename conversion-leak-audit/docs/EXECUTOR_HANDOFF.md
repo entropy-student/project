@@ -1,7 +1,7 @@
 # Conversion Leak Audit — EXECUTOR HANDOFF
 
 > Intended executor: Codex / local development agent
-> Current State: `G5_PASS_G6_READY_FOR_EXECUTION`
+> Current State: `PAUSED_BY_OWNER`
 
 ## Reviewer authorization
 
@@ -571,3 +571,16 @@ OUT_OF_SCOPE_CHANGES=0
 OWNER_ACTION=APPROVE_OR_REJECT_FIRST_VPS_WRITES
 RECOMMENDED_REVIEWER_DECISION=REVIEW_G6_READ_ONLY_PREFLIGHT_AND_WRITE_ALLOWLIST
 ```
+
+
+## Project pause — 2026-09-23
+
+Owner paused this project.
+
+No implementation, deployment, VPS write, payment work, provider setup, cleanup of unknown files, or Gate advancement is authorized except the explicitly requested local hygiene task.
+
+Canonical resume document:
+
+`PROJECT_PAUSE_HANDOFF.md`
+
+G6 read-only preflight is preserved in Git. No VPS writes were executed.
