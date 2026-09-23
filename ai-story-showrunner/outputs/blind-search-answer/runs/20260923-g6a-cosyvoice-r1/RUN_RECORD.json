@@ -1,0 +1,30 @@
+{
+  "run_id": "20260923-g6a-cosyvoice-r1",
+  "episode_id": "blind-search-answer",
+  "stage": "G6A_REAL_TTS_RUNTIME_TIMELINE_AND_PARTIAL_FRAMES",
+  "status": "RETURN",
+  "created_at": "2026-09-23",
+  "inputs": [
+    "experiments/g6/blind-search-answer/production-package-v2",
+    "experiments/g6/blind-search-answer/timing/03_TTS_MANIFEST.json",
+    "experiments/g6/blind-search-answer/timing/05_VISUAL_BEAT_TIMING_BINDINGS.json"
+  ],
+  "skill_version": "CANDIDATE / exact runtime revision not captured in retained binary evidence",
+  "profiles": [
+    "profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json"
+  ],
+  "executor": "Antigravity",
+  "backend": "CosyVoice-300M + Runtime Timeline Resolver + partial production-frame execution",
+  "outputs": [
+    "LOCAL_RUNTIME_ONLY: tts/units/*.wav",
+    "LOCAL_RUNTIME_ONLY: tts/narration_master.wav",
+    "LOCAL_RUNTIME_ONLY: tts/tts_execution_report.json",
+    "LOCAL_RUNTIME_ONLY: timing/runtime/FINAL_SUBTITLES.srt",
+    "LOCAL_RUNTIME_ONLY: timing/runtime/FINAL_TIMELINE.json",
+    "LOCAL_RUNTIME_ONLY: timing/runtime/FINAL_SHOT_TIMELINE.csv",
+    "LOCAL_RUNTIME_ONLY: timing/runtime/TIMELINE_RESOLUTION_REPORT.json",
+    "REPORTED_PARTIAL: production frames 20/44"
+  ],
+  "return_code": null,
+  "notes": "Runtime/timeline architecture executed successfully against real CosyVoice durations, but Owner listening QA returned the narration master for joins, pauses, articulation, pronunciation, synthetic timbre/noise and weak emotion. Latest frame snapshot was 20/44. Binary/local runtime artifacts were not committed to GitHub; this record preserves the production-run ledger without claiming repository retention of those binaries."
+}
