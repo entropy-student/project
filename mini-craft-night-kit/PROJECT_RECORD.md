@@ -1260,3 +1260,17 @@ A narrow reversible recovery Gate is authorized:
 It must replace only invalid blocks through registered current block serializers, preserve copy, and not resume the broader storefront cleanup automatically.
 
 The broader `K4_STRICT_STOREFRONT_CLEANUP` remains pending after recovery.
+
+
+## K4 Block Recovery — Browser Session Fallback
+
+A second safe stop occurred because Gutenberg browser automation could not reliably identify the current editor URL. No site state changed.
+
+Reviewer authorized `K4_ARTIFACT_BACKED_BLOCK_RECOVERY` instead of repeating the same GUI path.
+
+The recovery is restricted to:
+- exact known-good serialized Kadence Form artifact restoration if an exact source can be proven;
+- WordPress-core serialization repair for Contact core/column and FAQ core/details invalid targets;
+- no broad storefront cleanup or unrelated state changes.
+
+The broader `K4_STRICT_STOREFRONT_CLEANUP` remains paused.
