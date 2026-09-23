@@ -221,8 +221,10 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - the fair speaker-similarity comparison must use the same narrator voice reference (preferably a clean held-out 3–10s clip), same target sentence and same inference settings for both base/zero-shot and fine-tuned conditions;
 - this establishes local fine-tune execution PASS only; voice similarity / naturalness is not yet accepted and no canonical TTS migration has occurred;
 - first post-finetune inference check found `narrator01_v2pp-e15.ckpt` produced an abnormal/near-empty result with the same SoVITS e8 model and reference conditions;
-- switching only the GPT checkpoint to `narrator01_v2pp-e10.ckpt` produced a normal result and Owner listening feedback was positive ("效果还不错");
-- therefore `e10 + SoVITS e8` is the current GPT-SoVITS candidate pair for QA, while `e15` is rejected from the current candidate path pending any later root-cause investigation;
+- `narrator01_v2pp-e10.ckpt + SoVITS e8` could sound good on individual runs, but repeated testing exposed semantic-generation instability: one run duplicated the phrase "我才意识到", and subsequent runs could collapse into sparse/non-speech output;
+- reducing `temperature` from 1.0 to 0.8 did not make e10 sufficiently stable;
+- switching only the GPT checkpoint to `narrator01_v2pp-e5.ckpt`, while keeping SoVITS e8, the same reference audio/text, target text, speed 1, top_k 15, top_p 1 and temperature 0.8, produced 3/3 successful generations;
+- current GPT-SoVITS QA candidate is therefore `narrator01_v2pp-e5.ckpt + narrator01_v2pp_e8_s248.pth` with `temperature=0.8`; e10 and e15 are rejected from the current candidate path for stability;
 - this is still a candidate-quality result, not canonical promotion.
 
 Current technical next action:
