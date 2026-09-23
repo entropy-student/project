@@ -19,12 +19,12 @@ G3.5 UI + Growth Design Freeze             PASS
 G4  WordPress → Scanner → Top 3 本地闭环    PASS
 G4.5 Visual + Functional Acceptance        PASS
 G4.6 Acquisition + SEO Readiness           PASS
-G5  Full Fix Queue + LLM + Skill Dogfood   NEXT / EXECUTOR READY
+G5  Full Fix Queue + LLM + Skill Dogfood   PASS
 
 VPS / 支付 / 生产                          HOLD
 ```
 
-G4.6 已正式 PASS 并合入 `main`；当前进入 G5 完整修复队列 + 可选大模型解释 + Skill Dogfood。Free Top 3 继续保持确定性、默认零 LLM；模型只解释既有结构化问题。
+G5 已正式 PASS 并合入 `main`：完整 Fix Queue、结构化可选 LLM 解释、fallback/claim guards 与 Skill Dogfood 均已验收。下一路线 Gate 为 G6 VPS Onboarding + Storage，但当前仍 HOLD，等待 Reviewer 发布专用执行合同。
 
 ## 阅读顺序
 
@@ -110,19 +110,10 @@ Unified Pay 目前尚未跑通并需要单独修改，因此不作为本项目�
 
 ## 当前下一步
 
-`G5 — Full Fix Queue + LLM + Skill Dogfood`
+`G6 — VPS Onboarding + Storage`
 
-```text
-Codex reads docs/G5_EXECUTION_CONTRACT.md
-→ deterministic complete Fix Queue
-→ local full-report shell
-→ provider-neutral optional LLM explanation
-→ hallucination / claim guards
-→ Skill dogfood hypotheses
-→ regression
-→ PASS_CANDIDATE_G5
-→ Reviewer independent PASS / RETURN
-```
+当前状态：`HOLD_PENDING_REVIEWER_CONTRACT`。
 
-G4.6 final decision：`PASS_G4_6_ACQUISITION_SEO_READINESS`。  
-Payment / VPS / Domain / Production 继续 HOLD。
+G5 final decision：`PASS_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`。
+
+在 G6 合同发布前，不执行 VPS 部署、公开 Scanner、Domain/HTTPS、Payment 或 Production Secret。
