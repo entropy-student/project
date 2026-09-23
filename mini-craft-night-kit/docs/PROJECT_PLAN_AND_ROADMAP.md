@@ -1,7 +1,26 @@
 # Mini Craft Night Kit — PROJECT PLAN & ROADMAP
 
-Last updated: 2026-09-18  
-Status: **ACTIVE — K0 NEXT**
+Last updated: 2026-09-23  
+Status: **ACTIVE — K6R1 SSH RECOVERY**
+
+## 0. Authority and current override
+
+Generic VPS/SSH/Shared Infra/Storage/Secret/Gate rules are not defined by this roadmap.
+They defer to canonical `entropy-student/spike.skill/vps-project-governance` latest.
+
+Current accepted execution state:
+
+```text
+K0-K5=PASS
+K6=OWNER_AUTHORIZED_SANDBOX_FIRST
+CURRENT_GATE=K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY
+PUBLIC_ORIGIN=https://minicraft.spikersun.com
+PAYPAL_LIVE=NO
+REAL_PAYMENT_AUTHORIZED=NO
+SOFT_LAUNCH=NO
+```
+
+The detailed K0–K7 descriptions below are roadmap/history, not competing Governance contracts.
 
 ## 1. Final Goal
 
@@ -43,18 +62,20 @@ Owner 已确认：
 ## 3. Current Position
 
 ```text
-Product / positioning        PASS
-Old visual exploration 01–05 PASS / archived as reference
-Kadence route decision        PASS
-UI/Growth governance          PASS
-Fidelity governance           PASS
-Plugin policy                 PASS
-Payment architecture          PASS
-GitHub handoff protocol       TRIAL APPROVED
-
-CURRENT:
-K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC
+K0 Kadence PoC                    PASS
+K1 UI/Growth Brand Adaptation     PASS
+K2 WooCommerce Commerce Loop      PASS
+K3 PayPal Sandbox                 PASS
+K4 Conversion/Trust               PASS for current local-test state
+K4.5/K4.6 Growth readiness/spec   PASS
+K5 Release Candidate QA           PASS
+K6 VPS Deployment                 AUTHORIZED / IN PROGRESS
+K6R1 SSH recovery                 CURRENT
+K7 Production Canary              NOT STARTED
 ```
+
+Current next action is the bounded K6R1 governed SSH recovery/read-only continuity probe.
+Do not replay K0–K5.
 
 ## 4. Execution Gates
 
@@ -186,20 +207,10 @@ order
 
 ## 6. Current Next Action
 
-唯一下一步：
+`K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY`
 
-`K0_KADENCE_SINGLE_PRODUCT_LOCAL_POC`
+Use the already validated Shared VPS SSH contract exactly once. If strict SSH recovers, refresh only
+the dynamic Shared VPS facts required by K6 and stop at Reviewer. If the same pre-host-key close
+repeats, stop at the minimal Hostinger-console Owner checkpoint.
 
-Executor 应：
-1. 新建独立本地 WordPress PoC；
-2. 不修改旧 mini-craft-night-kit；
-3. 导入 Kadence Single Product；
-4. 验证 WooCommerce；
-5. 验证 Gutenberg；
-6. 验证 mobile / tablet / desktop；
-7. 将结果写入：
-   - `EXECUTION_EVIDENCE.md`
-   - `EXECUTOR_HANDOFF.md`
-8. 停在 Reviewer。
-
-Owner 当前无需进行其他操作。
+Do not deploy in K6R1.
