@@ -90,6 +90,44 @@ If host identity is ambiguous or expected shared infrastructure cannot be safely
 
 and STOP_AT_REVIEWER.
 
+
+## Owner approval checkpoint before any VPS write
+
+Owner instruction: before any formal deployment or any write to the VPS, Executor must stop, report the intended write plan, and wait for explicit Owner approval.
+
+Therefore G6 is split into:
+
+```text
+read-only VPS preflight
+→ report target/resource/path/port/storage plan
+→ OWNER_APPROVAL_REQUIRED_BEFORE_REMOTE_WRITE
+→ only after explicit Owner approval may project-owned /srv paths or restore canaries be created
+```
+
+Before Owner approval, allowed remote actions are read-only only.
+
+Forbidden before approval:
+- mkdir/chown/chmod/touch/write under /srv;
+- Docker canary creation;
+- backup/restore test writes;
+- copying Compose/assets to VPS;
+- Secret-file creation;
+- any deployment action.
+
+Required return before the first write:
+
+`RETURN_G6_OWNER_APPROVAL_REQUIRED_BEFORE_VPS_WRITE`
+
+with:
+- target VPS identity;
+- proposed project paths;
+- proposed resource budget;
+- proposed private ports;
+- exact categories of remote writes;
+- confirmation that shared infrastructure will remain untouched.
+
+After explicit Owner approval, resume the same G6 Gate.
+
 ## G6B — Resource budget
 
 G6 must record a project resource budget before G7 deployment.
@@ -120,7 +158,7 @@ G6 must not solve resource pressure by stopping or shrinking another project.
 
 ## G6C — Project-owned directory layout
 
-After preflight passes, G6 may create only project-owned paths.
+After preflight passes **and explicit Owner approval has been received**, G6 may create only project-owned paths.
 
 Required structure:
 
