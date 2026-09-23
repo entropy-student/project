@@ -18,13 +18,13 @@ G3  Rule Engine V0                         MERGED / CLOSED
 G3.5 UI + Growth Design Freeze             PASS
 G4  WordPress → Scanner → Top 3 本地闭环    PASS
 G4.5 Visual + Functional Acceptance        PASS
-G4.6 Acquisition + SEO Readiness           NEXT / EXECUTOR READY
-G5  Full Fix Queue + LLM + Skill Dogfood   PENDING
+G4.6 Acquisition + SEO Readiness           PASS
+G5  Full Fix Queue + LLM + Skill Dogfood   NEXT / EXECUTOR READY
 
 VPS / 支付 / 生产                          HOLD
 ```
 
-G4.5 已正式 PASS 并合入 `main`；当前进入 G4.6 获客 + SEO 就绪。G4.6 只做 Message / Proof / Activation path / 搜索可发现性准备，不做大规模内容生产、不做上线部署。
+G4.6 已正式 PASS 并合入 `main`；当前进入 G5 完整修复队列 + 可选大模型解释 + Skill Dogfood。Free Top 3 继续保持确定性、默认零 LLM；模型只解释既有结构化问题。
 
 ## 阅读顺序
 
@@ -110,18 +110,19 @@ Unified Pay 目前尚未跑通并需要单独修改，因此不作为本项目�
 
 ## 当前下一步
 
-`G4.6 — Acquisition + SEO Readiness`
+`G5 — Full Fix Queue + LLM + Skill Dogfood`
 
 ```text
-Codex reads docs/G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md
-→ Message / Proof / Activation path
-→ SEO metadata / canonical / robots / sitemap
-→ noindex dynamic scan results
-→ hide unfinished Blog / Pricing from acquisition surfaces
-→ automated readiness checks
-→ PASS_CANDIDATE_G4_6_ACQUISITION_SEO_READINESS
+Codex reads docs/G5_EXECUTION_CONTRACT.md
+→ deterministic complete Fix Queue
+→ local full-report shell
+→ provider-neutral optional LLM explanation
+→ hallucination / claim guards
+→ Skill dogfood hypotheses
+→ regression
+→ PASS_CANDIDATE_G5
 → Reviewer independent PASS / RETURN
 ```
 
-G4.5 final decision：`PASS_G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE`。  
-Payment / VPS / Production 继续 HOLD。
+G4.6 final decision：`PASS_G4_6_ACQUISITION_SEO_READINESS`。  
+Payment / VPS / Domain / Production 继续 HOLD。
