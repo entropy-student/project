@@ -17,9 +17,11 @@ G4.5 Visual + Functional Acceptance          PASS
 G4.6 Acquisition + SEO Readiness             PASS
 G5   Full Fix Queue + LLM + Skill Dogfood    PASS
 G6   VPS Onboarding / Storage                NEXT / EXECUTOR READY
+G6.5 Payment + Entitlement Local Loop        HOLD
 G7   VPS Private Deployment                  HOLD
-G8   Domain / HTTPS / Shared Ingress          HOLD
-G9   Payment / Controlled Go-live            HOLD
+G8   Domain / HTTPS / Shared Ingress         HOLD
+G9   Real Payment Provider Validation        HOLD
+G9.5 Real LLM Provider Canary                HOLD
 G10  Production Acceptance                   HOLD
 G11  Acquisition / Business Validation       HOLD
 ```
@@ -121,6 +123,22 @@ Current Gate. Released under `G6_EXECUTION_CONTRACT.md`.
 
 Freeze project storage, backup, restore, Secret metadata, Compose, resource budget, private-port plan and isolation before deployment. G6 may create only project-owned `/srv/apps`, `/srv/data`, `/srv/backups` roots and disposable restore canaries; it must not deploy the application or modify shared ingress/infrastructure.
 
+## G6.5 — Payment + Entitlement Local Loop
+
+Runs after G6 read-only preflight review and before private deployment.
+
+Purpose:
+- order model;
+- payment state machine;
+- scan/report entitlement binding;
+- webhook fixture/fake provider;
+- idempotency;
+- refund and entitlement revocation;
+- no real payment provider required;
+- no public endpoint required.
+
+Real provider validation remains G9.
+
 ## G7 — Private VPS Deployment
 
 Deploy privately without taking ownership of shared 80/443 or shared infrastructure.
@@ -147,6 +165,18 @@ Required at G9:
 - small controlled canary.
 
 The product is not a generic card-key delivery flow. Payment must unlock the correct `scan_id/report entitlement`.
+
+## G9.5 — Real LLM Provider Canary
+
+Optional production-readiness canary after public infrastructure exists.
+
+Purpose:
+- configure one approved real model provider;
+- verify structured explanation contract;
+- verify token/cost bounds;
+- verify fallback/claim guards against live provider behavior.
+
+Payment success does not automatically trigger LLM usage.
 
 ## G10 — Production Acceptance
 
