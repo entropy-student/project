@@ -1504,3 +1504,37 @@ Contact/FAQ repaired block structures are now protected baselines. The strict cu
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_STRICT_STOREFRONT_CLEANUP_RESUME.md`
+
+
+## K4 Strict Storefront Cleanup Resume — TECHNICAL PASS / VISUAL RETURN
+
+Executor commit `152f48aa269e8bd93d5215299ee68c2977a10f1e` is accepted for the intended cleanup implementation and evidence production.
+
+Reviewer directly inspected the uploaded 22-image visual-review ZIP.
+
+Accepted:
+- English customer UI;
+- demo-product removal;
+- Craft Kits category;
+- Contact recovery/copy cleanup;
+- FAQ native Orders & Support structure;
+- Shipping hierarchy;
+- Shop controls;
+- mobile Footer;
+- Home/Gallery protection;
+- workspace cleanup contract.
+
+Remaining K4 blockers observed in pixels:
+- mobile Cart coupon/update area collision and weak product/shipping hierarchy;
+- Checkout defaults/offers shipping in Japan/Tokyo despite approved US-only initial market;
+- mobile Checkout field columns are visually broken/staggered;
+- final actionable Checkout control is not visibly demonstrated in the capture;
+- legacy global mobile typography still leaves Product/Shipping/Contact/FAQ body copy too small/narrow.
+
+Current Gate:
+`K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH`
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH.md`
+
+Do not enter K5 or Growth/SEO until this Gate returns to Reviewer.
