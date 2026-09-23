@@ -1667,3 +1667,40 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 Exactly one canonical strict SSH attempt was made with the recorded endpoint, identity and known_hosts, without alternate clients or trust bypass. TCP/SSH closed before a remote host key appeared; this proves neither host-key drift nor shared-host material drift. No Phase B inventory, deployment or remote mutation was performed. Evidence: `EXECUTION_EVIDENCE.md` (K6R1 section). Owner checkpoint: confirm VPS Running; if available, use Hostinger web/serial console only to report ssh/sshd active state, port 22 listening state, and any obvious provider/network/security block. Do not change settings or reboot.
+
+
+## K6R2_HOSTINGER_CONTROL_PLANE_FALLBACK — Executor Handoff (2026-09-23)
+
+```text
+GATE=K6R2_HOSTINGER_CONTROL_PLANE_FALLBACK
+RESULT=RETURN_REVIEWER_HOSTINGER_CONNECTOR_UNAVAILABLE
+HOSTINGER_OFFICIAL_CONNECTOR=OFFICIAL_REMOTE_MCP_CONFIGURED
+CONNECTOR_ALREADY_AVAILABLE=NO;INSTALLED_THIS_GATE
+CONNECTOR_AUTH_STATE=LOCAL_CODEX_CLI_LOGGED_IN;VPS_TOOLS_NOT_EXPOSED_IN_ACTIVE_SESSION
+OWNER_BROWSER_LOGIN_REQUIRED=NO
+EXPECTED_VPS_IDENTIFIED=NOT_VERIFIED
+VPS_PROVIDER_STATE=NOT_READ
+VPS_DETAILS=NOT_READ
+VPS_METRICS=NOT_READ
+VPS_UPTIME=NOT_READ
+PROVIDER_FIREWALL_STATE=NOT_READ
+PROVIDER_TCP22_STATE=NOT_READ
+ATTACHED_SSH_KEY_METADATA=NOT_READ
+RECENT_VPS_ACTION_HISTORY=NOT_READ
+HOSTINGER_DOCKER_MANAGER=NOT_CALLABLE_IN_ACTIVE_SESSION
+DOCKER_PROJECT_LIST=NOT_READ
+EXISTING_PROJECTS_PROVIDER_READBACK=NOT_READ
+SSH_FAILURE_DOMAIN_CLASSIFICATION=UNRESOLVED_CONTROL_PLANE_TOOLS_NOT_EXPOSED
+HOSTINGER_CONTROL_PLANE_WRITES=0
+VPS_POWER_ACTIONS=0
+FIREWALL_WRITES=0
+SSH_KEY_WRITES=0
+DOCKER_PROJECT_WRITES=0
+RECOVERY_MODE_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+The official Hostinger MCP endpoint was configured through Codex CLI and local MCP status reported OAuth logged in; however, the active Executor tool inventory still exposes no Hostinger VPS READ APIs (only unrelated Hostinger AI Builder tools, not used). No SSH retry or manual HTTP/API substitute was attempted. See the K6R2 section of `EXECUTION_EVIDENCE.md`. Resume only when official Hostinger VPS read tools are available to the active task; no Owner console, terminal, API-token, or browser login action is requested.
