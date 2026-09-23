@@ -2923,3 +2923,125 @@ TEST_SKU_PENDING_PRODUCTION=YES
 OWNER_ACTION=UPLOAD_VISUAL_REVIEW_ZIP
 NEXT=STOP_AT_REVIEWER
 ```
+
+
+## K4 Final Mobile Commerce Visual Polish — Executor return (2026-09-23)
+
+Authority was re-synced to the latest Reviewer Hand-off, Project Record, GitHub Hand-off Protocol, and K4 Final Mobile Commerce Visual Polish Reviewer Decision. Reviewer-owned documents were not edited.
+
+### Runtime and rollback
+
+```text
+GATE=K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH
+RESULT=RETURN_REVIEWER_WORKSPACE_TEMP_CLEANUP_BLOCKED
+ACTIVE_RUNTIME=mini-craft-k3r4-mariadb-recovery
+LOCAL_ORIGIN=http://localhost:8093
+WORDPRESS=7.1.1
+WOOCOMMERCE=10.0.4
+KADENCE_THEME=1.5.2
+KADENCE_BLOCKS=3.7.11
+PPCP=4.1.3
+WORDPRESS_CONTAINER=UP
+MARIADB=HEALTHY
+HOME_HTTP=200
+PRODUCT_HTTP=200
+CART_HTTP=200
+CHECKOUT_EMPTY_CART=302_EXPECTED
+FAQ_HTTP=200
+SHIPPING_RETURNS_HTTP=200
+CONTACT_HTTP=200
+ROLLBACK_LOCAL_ONLY=.artifacts/k4-final-mobile-commerce-visual-polish/rollback/pre-gate.sql
+ROLLBACK_SHA256=8C20D3A3DC36DE7226373A033347DB4269098202DB8A1D0C883309ED22F3BF8E
+```
+
+The rollback is local-only and was not uploaded. Product 223 remains at the locked local test baseline (¥1, stock 8, SKU MCK-LOCAL-TEST-001, Craft Kits). Legacy demo products 222, 224, and 117 remain draft. Six existing orders remain; order 1120 remains processing. No order or payment record was created or changed.
+
+### US market and native WooCommerce shipping
+
+```text
+INITIAL_MARKET_CONFIG=UNITED_STATES
+SELLING_COUNTRIES=UNITED_STATES_ONLY
+SHIPPING_COUNTRIES=UNITED_STATES_ONLY
+DEFAULT_CHECKOUT_COUNTRY=US
+US_ZONE_TEST_SHIPPING=AVAILABLE_LOCAL_ONLY
+NON_US_TEST_SHIPPING_AVAILABLE=NO
+REST_OF_WORLD_ZONE_METHODS=NONE
+```
+
+WooCommerce native country settings were restricted to the United States; the existing no-promise local test flat-rate method is available only in the US zone. The anonymous checkout renders United States (US); Japan/Tokyo is no longer a purchasable/default checkout state. No public business address was added. PayPal credentials/settings were not changed.
+
+### Legacy K1B mobile CSS and responsive polish
+
+```text
+LEGACY_K1B_GLOBAL_RULE_ROOT_CAUSE=YES
+LEGACY_K1B_RULE_ACTION=SCOPED_LEGACY_RULE_TO_BODY_HOME;ADDED_BOUNDED_MOBILE_PAGE_SCOPES
+PRODUCT_MOBILE_TYPOGRAPHY=PASS_16PX_BODY_25.28PX_LINE;H2_28PX;H3_24PX
+SHIPPING_MOBILE_TYPOGRAPHY=PASS_16PX_BODY_25.28PX_LINE;H2_28PX
+CONTACT_MOBILE_TYPOGRAPHY=PASS_16PX_BODY_25.28PX_LINE;H2_28PX;H3_24PX
+FAQ_MOBILE_TYPOGRAPHY=PASS_16PX_BODY_25.28PX_LINE;QUESTION_16PX
+MOBILE_CART_LAYOUT=PASS_390_NO_OVERFLOW
+MOBILE_CHECKOUT_LAYOUT=PASS_390_STACKED_FULL_WIDTH_FIELDS
+DESKTOP_CART_CHECKOUT=PASS_1440_NO_OVERFLOW
+```
+
+The inherited non-Home rule applied 200px width/max-width and 11px font-size to ordinary paragraphs. It was narrowed to the Home scope, then Product / FAQ / Shipping & Returns / Contact received limited mobile-only readable type rules. Home Page 939 content hash is unchanged (07093dcd9a3ecaac4f09e9e9c56c82a957ec1cfcf17d7375fe2ba0baf4e97831); Product Page 223 content hash is unchanged (7a8dee19692b87d364f51cccbcc7edcafd779de12e17bfd750e453a3d423d446). The canonical Product Gallery and its scoped CSS hash remained unchanged (ce67a28e80da665ee6a986543264c38b8efcf0fe92dabc0c7db3ba927f58fc04).
+
+At 390px, native Cart product name, image, price, quantity, and subtotal are visible; coupon input, Apply coupon, and Update cart are vertically separated; totals, shipping text, and Proceed to checkout are readable. Checkout billing fields render in full-width mobile rows. No horizontal overflow was measured at the captured 390px / 1440px viewports.
+
+### Checkout final action and payment safety
+
+```text
+CHECKOUT_FINAL_ACTION_VISIBLE=YES
+FINAL_ACTION=NATIVE_WOOCOMMERCE_PLACE_ORDER
+SELECTED_METHOD=LOCAL_TEST_ONLY_NO_PAYMENT
+FINAL_ACTION_BOX_MOBILE=326X50_VISIBLE
+FINAL_ACTION_BOX_DESKTOP=VISIBLE
+PLACE_ORDER_CLICKED=NO
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+```
+
+Selecting the native local test-only payment method through its visible label caused WooCommerce to render its real Place order control. It was visually verified at mobile and desktop sizes and was never clicked. No CSS was used to simulate or force-show the action; PayPal remains configured and unmodified.
+
+### Gutenberg, gallery assets, and visual evidence
+
+```text
+GUTENBERG_EDITOR_VISUAL_VALIDATION=PENDING_SESSION
+DETERMINISTIC_UNREGISTERED_BLOCKS=0
+PRODUCT_GALLERY_PROTECTED=YES
+PRODUCT_GALLERY_HIRES_ASSET_PENDING=YES
+HOME_PROTECTED=YES
+```
+
+The Media Library and retained local artifacts were checked by exact asset hashes; no content-identical higher-resolution source was found for the currently used low-intrinsic-resolution gallery images. No image was generated, replaced, or modified. Gutenberg GUI validation remains pending because an editor session was unavailable; deterministic registered-block validation remains zero.
+
+Eight screenshots were captured: Product / FAQ / Shipping & Returns / Contact / populated Cart / populated Checkout at mobile 390px, plus populated Cart / populated Checkout at desktop 1440px. The ZIP contains only desktop/, mobile/, and manifest.txt (9 entries total), SHA-256 C2959632EFF01F2E21DB12AE6E9A5B73CBC500CCB841171D62B7BB3F5BFD0A82.
+
+```text
+SCREENSHOT_ARCHIVE_COMMIT=669d4fb0de4721a34251f58111a88f486d704506
+GITHUB_SCREENSHOT_DIRECTORY=docs/ui-k4-final-mobile-commerce-visual-polish/
+VISUAL_REVIEW_PACKAGE_LOCAL=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-final-mobile-commerce-visual-polish/deliverables/K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH-visual-review.zip
+```
+
+### Workspace cleanup contract and stop
+
+All helper scripts created for this Gate were removed. No new shared-root transient was created. Pre-existing shared-root .tmp-cdp-test2, .tmp-k4-detail-browser-desktop, and .tmp-k4-detail-browser-mobile were left untouched.
+
+Four Gate-local browser profile directories and two pre-capture debug screenshots remain under this Gate's .artifacts directory. No Edge process command line referenced the profiles at the check, but the execution policy rejected the exact-path recursive cleanup operation; no alternative deletion mechanism was used. Therefore cleanup cannot be reported as PASS.
+
+```text
+WORKSPACE_TEMP_CLEANUP=RETURN
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=.tmp-cdp-test2;.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile (pre-existing; untouched)
+LOCAL_HELPERS_CLEANED=PASS
+BROWSER_PROFILES_CLEANED=RETURN_EXECUTION_POLICY_BLOCKED (4_GATE_LOCAL_PROFILES_REMAIN)
+DEBUG_SCREENSHOTS_REMAINING=2_GATE_LOCAL_FILES
+DELIVERABLE_LOCATION=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-final-mobile-commerce-visual-polish/deliverables/
+ROLLBACK_LOCATION=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-final-mobile-commerce-visual-polish/rollback/pre-gate.sql
+PAGE_CONFIG_MEDIA_CHANGES=AUTHORIZED_US_COUNTRY_ZONE_AND_SCOPED_RESPONSIVE_CSS_ONLY
+WOOCOMMERCE_PAYPAL_ORDER_LOGIC=UNCHANGED
+SECRET_VALUES_WRITTEN_TO_GITHUB_OR_EVIDENCE=NO
+VPS_WRITES=ZERO
+NEXT=STOP_AT_REVIEWER
+```

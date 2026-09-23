@@ -1283,3 +1283,45 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The 22 screenshots cover Home, Shop, Product, FAQ, Shipping & Returns, Contact, populated Cart, populated Checkout, Account, and Product Gallery initial/after-thumbnail states. No order/payment/live operation was made. The populated Checkout was captured at HTTP 200; after its isolated temporary cart was cleared, an empty Checkout request redirected to Cart (302), as expected. WordPress 7.1.1, Kadence 1.5.2, WooCommerce 10.0.4, and PPCP 4.1.3 remained at their existing versions; PPCP settings and order 1120 stayed unchanged. The only remaining editor-side limitation is the already-known unavailable Gutenberg session; deterministic block parsing found zero unregistered blocks and front-end rendering passed.
+
+
+## K4 Final Mobile Commerce Visual Polish — Executor handoff (2026-09-23)
+
+```text
+GATE=K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH
+RESULT=RETURN_REVIEWER_WORKSPACE_TEMP_CLEANUP_BLOCKED
+SUMMARY=Restricted native selling/shipping to the US; repaired 390px Cart/Checkout layout and scoped inherited mobile typography; native local-test Place order action is visible but was not clicked.
+INITIAL_MARKET_CONFIG=UNITED_STATES
+SELLING_COUNTRIES=UNITED_STATES_ONLY
+SHIPPING_COUNTRIES=UNITED_STATES_ONLY
+NON_US_TEST_SHIPPING_AVAILABLE=NO
+MOBILE_CART_LAYOUT=PASS
+MOBILE_CHECKOUT_LAYOUT=PASS
+CHECKOUT_FINAL_ACTION_VISIBLE=YES
+PLACE_ORDER_CLICKED=NO
+LEGACY_K1B_GLOBAL_RULE_ROOT_CAUSE=YES
+LEGACY_K1B_RULE_ACTION=SCOPED_TO_HOME;ADDED_LIMITED_PAGE_SCOPES
+PRODUCT_GALLERY_PROTECTED=YES
+PRODUCT_GALLERY_HIRES_ASSET_PENDING=YES
+HOME_PROTECTED=YES
+GUTENBERG_EDITOR_VISUAL_VALIDATION=PENDING_SESSION
+DETERMINISTIC_UNREGISTERED_BLOCKS=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+WORKSPACE_TEMP_CLEANUP=RETURN
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=.tmp-cdp-test2;.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile (pre-existing; untouched)
+LOCAL_HELPERS_CLEANED=PASS
+BROWSER_PROFILES_CLEANED=RETURN_EXECUTION_POLICY_BLOCKED (4 Gate-local profiles and 2 debug screenshots remain)
+DELIVERABLE_LOCATION=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-final-mobile-commerce-visual-polish/deliverables/
+ROLLBACK_LOCATION=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-final-mobile-commerce-visual-polish/rollback/pre-gate.sql
+EVIDENCE=EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md;docs/ui-k4-final-mobile-commerce-visual-polish/
+SCREENSHOT_ARCHIVE_COMMIT=669d4fb0de4721a34251f58111a88f486d704506
+VISUAL_REVIEW_PACKAGE_LOCAL=mini-craft-k3r4-mariadb-recovery/.artifacts/k4-final-mobile-commerce-visual-polish/deliverables/K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH-visual-review.zip
+VISUAL_REVIEW_PACKAGE_SHA256=C2959632EFF01F2E21DB12AE6E9A5B73CBC500CCB841171D62B7BB3F5BFD0A82
+OWNER_ACTION=UPLOAD_VISUAL_REVIEW_ZIP;REMOVE_GATE_LOCAL_BROWSER_PROFILES_AND_DEBUG_SCREENSHOTS
+NEXT=STOP_AT_REVIEWER
+```
+
+The mobile Cart and Checkout screenshots are populated with one local test product and contain no submitted order. Checkout shows the US-only state, local no-payment method, and the real native final action; no action was clicked. The Gate is returned to Reviewer because the execution policy blocked cleanup of Gate-created browser profile directories and debug captures, not because checkout action visibility failed.
