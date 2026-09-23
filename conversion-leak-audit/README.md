@@ -24,7 +24,7 @@ G5  Full Fix Queue + LLM + Skill Dogfood   PASS
 VPS / 支付 / 生产                          HOLD
 ```
 
-G5 已正式 PASS 并合入 `main`：完整 Fix Queue、结构化可选 LLM 解释、fallback/claim guards 与 Skill Dogfood 均已验收。下一路线 Gate 为 G6 VPS Onboarding + Storage，但当前仍 HOLD，等待 Reviewer 发布专用执行合同。
+G5 已正式 PASS 并合入 `main`。当前进入 G6 VPS Onboarding + Storage：只冻结和验证项目专属存储、备份恢复、Secret 元数据、Compose 隔离、资源预算与私有端口计划；不部署业务、不开放公网、不修改共享 80/443/反向代理/防火墙。
 
 ## 阅读顺序
 
@@ -112,8 +112,16 @@ Unified Pay 目前尚未跑通并需要单独修改，因此不作为本项目�
 
 `G6 — VPS Onboarding + Storage`
 
-当前状态：`HOLD_PENDING_REVIEWER_CONTRACT`。
+```text
+Codex reads docs/G6_EXECUTION_CONTRACT.md
+→ target VPS read-only preflight
+→ freeze resource budget
+→ create project-owned /srv landing zone
+→ freeze Compose/storage/Secret metadata
+→ backup + disposable restore canaries
+→ rollback plan
+→ PASS_CANDIDATE_G6
+→ Reviewer independent PASS / RETURN
+```
 
-G5 final decision：`PASS_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`。
-
-在 G6 合同发布前，不执行 VPS 部署、公开 Scanner、Domain/HTTPS、Payment 或 Production Secret。
+G7 private application deployment remains HOLD until G6 Reviewer PASS.
