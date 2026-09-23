@@ -235,6 +235,8 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - the successful short reaction still had a slightly overlong internal pause, so punctuation/short-utterance pause shaping remains a minor QA issue rather than a generation failure;
 - removing the internal comma entirely (`等等这也能算正常？`) eliminated the pause altogether, confirming the desired delivery sits between the current comma realization (too long) and no-punctuation realization (too short/no pause);
 - replacing that comma with a Chinese enumeration comma (`等等、这也能算正常？`) caused synthesis failure, so `、` is rejected as a pause-control token for this short-reaction pattern;
+- Owner decision: do not introduce systematic per-comma pause insertion or other post-processing because the engineering overhead is too high for the intended production workflow;
+- default synthesis punctuation remains the ordinary Chinese comma `，`; occasional slightly long comma pauses are accepted as a minor quality tradeoff unless they become a persistent QA failure pattern;
 - this strengthens the current `e5 + e8` candidate, but broader cross-sentence delivery coverage is still pending before canonical promotion;
 - this is still a candidate-quality result, not canonical promotion.
 
