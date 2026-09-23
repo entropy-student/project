@@ -3428,3 +3428,16 @@ NEXT=STOP_AT_REVIEWER
 - Read-only verification: WordPress container Up; MariaDB Healthy; localhost:8093 returned HTTP 200 when bypassing the host proxy. Canonical Git repo HEAD and dirty count remained unchanged (HEAD `8daab71da0d6ab8651d11e114781b4a0651f0ad1`, 14 pre-existing dirty entries).
 - K5 backup, config, and manifest hashes were checked before/after; unchanged. No secrets or config contents were added to GitHub. Docker/VPS/site/commerce mutations: 0.
 - Uncertain browser temp directories and an empty historical diagnostic marker remain in place; no unrelated cleanup was attempted. K6 remains paused; STOP_AT_REVIEWER.
+
+
+## K6 Phase A — Shared VPS Read-only Preflight RETURN (2026-09-23)
+
+Result: `RETURN_REVIEWER_SHARED_VPS_DRIFT` for fail-closed preflight unavailability. The actual remote host-key drift is **not established**.
+
+Local trust checks: the approved identity file and public-key file exist; the client public fingerprint matches the value recorded in the local Shared VPS handoff; the configured `known_hosts` file contains the three recorded host-key pins. SSH was invoked with the approved identity, `BatchMode=yes`, `IdentitiesOnly=yes`, `StrictHostKeyChecking=yes`, and the recorded `known_hosts` file.
+
+Connection evidence: TCP connection to the approved SSH endpoint was established, then the remote side closed during `kex_exchange_identification`, before presenting a host key. Therefore remote identity was not verified, no authenticated SSH session was established, and no remote command/inventory was executed. No alternate key, relaxed host-key policy, or other access path was attempted.
+
+Phase A fields remain `UNVERIFIED_REMOTE_KEX_CLOSED`: hostname; OS/kernel; CPU/RAM/disk; Docker/Compose versions; containers; networks; published ports; 80/443 owner; UFW; reverse proxy/Caddy/cloudflared; `/srv/apps`, `/srv/data`, `/srv/backups`; Mini Craft path/container/network collision; resource headroom; protected-project state.
+
+No Phase B/C/D action began. VPS writes=0; Docker writes=0; no directories, containers, networks, uploads, routes, DNS, firewall, proxy, or deployment files were changed. This return does not claim shared-host drift as a confirmed fact; it records that the required fresh baseline cannot be established safely. STOP_AT_REVIEWER.
