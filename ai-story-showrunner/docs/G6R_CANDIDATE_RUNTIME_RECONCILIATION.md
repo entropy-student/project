@@ -1,7 +1,7 @@
 # G6R — Candidate Runtime Reconciliation
 
 Date: 2026-09-23  
-Status: `IN_PROGRESS_CROSS_REPO`
+Status: `PASS`
 
 ## Goal
 
@@ -112,3 +112,23 @@ G6R PASS
 ```
 
 The G6A review is calibration-only and must not become a routine per-episode approval gate.
+
+
+## Reviewer closeout — 2026-09-23
+
+Result:
+`PASS_G6R_CANDIDATE_RUNTIME_RECONCILIATION`
+
+Evidence:
+- 44/44 durable bindings;
+- Candidate-compliant 44 Visual Beats;
+- required anchor fields: PASS;
+- deterministic resolver reference implementation added to `story-showrunner/runtime/timeline_resolver.py`;
+- synthetic duration mutation smoke: PASS;
+- resolved Visual Beats: 44;
+- overlaps: 0;
+- creative mutation: none;
+- `production-package-v2` built.
+
+Next:
+`G6A_FIRST_E2E_ASSET_CALIBRATION`.

@@ -8,9 +8,9 @@
 
 ```text
 P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5 = PASS（按各 Gate 原始验证范围）
-G6R = IN_PROGRESS — Candidate Timing ↔ Visual Beat ↔ Runtime Reconciliation
-G6A = BLOCKED_BY_G6R — First-E2E Asset Calibration
-G7 = BLOCKED — Final-video End-to-End Validation
+G6R = PASS — Candidate Timing ↔ Visual Beat ↔ Runtime reconciled
+G6A = READY_NOT_EXECUTED — First-E2E Asset Calibration
+G7 = BLOCKED_BY_G6A — Final-video End-to-End Validation
 ```
 
 当前 canonical editorial baseline：
@@ -238,19 +238,27 @@ Writer quality 采用 McKee 因果骨架 + narrative transportation + short-form
 
 G5 remains PASS within its original asset-contract scope.
 
-Current main-line gate: **G6R Candidate Runtime Reconciliation**.
+Current main-line gate: **G6A First-E2E Asset Calibration**.
 
 Already proven:
 - Voice Timing Profile v2.1 frozen;
 - Candidate Production SRT + TTS Manifest compiled;
 - FFmpeg baseline runtime probe PASS.
 
-Current G6R task:
-- preserve the accepted 44 Visual Beat meanings/order/POV;
-- bind them 44/44 to Candidate Speech Units with durable semantic anchors;
-- align Candidate Visual Beat schema + Runtime Timeline Resolver implementation;
-- rebuild the current execution package from reconciled contracts;
-- only then release the first-E2E Asset Calibration Gate.
+G6R completed:
+- 44/44 Candidate Speech Unit ↔ Visual Beat durable bindings;
+- Candidate anchor schema;
+- deterministic Runtime Timeline Resolver reference implementation;
+- synthetic timing mutation smoke PASS with 0 overlaps;
+- Candidate-compliant 44 Visual Beats;
+- production-package-v2.
+
+Current G6A task:
+- execute real locked CosyVoice production TTS;
+- resolve FINAL runtime timeline;
+- generate 44 production frames;
+- run asset/identity/reference/continuity QA;
+- stop at Reviewer before final FFmpeg render.
 
 Long-term target:
 - `story-showrunner` Candidate 已完成抽取；完整 E2E PASS 后再从 CANDIDATE 升级为 CANONICAL;

@@ -880,3 +880,44 @@ Video-runtime probe policy:
 Output retention:
 - `docs/OUTPUT_RECORD_STANDARD.md` accepted as canonical simple output-ledger rule;
 - one episode INDEX + one RUN_RECORD.json per meaningful retained production run.
+
+
+---
+
+## 2026-09-23 — Reviewer takeover + G6R runtime reconciliation
+
+A fresh Reviewer takeover did not accept historical conclusions as blanket production truth.
+
+Decision:
+- retain P0–G5 PASS only within each gate's original validation scope;
+- retain R2 Candidate extraction;
+- identify and repair a post-extraction timing/runtime seam rather than reopening creative work.
+
+Finding:
+- Candidate Timing Compiler output was current;
+- the active G6 fixture still consumed an older G4 Visual Beat artifact with `JINGSUI_PRIOR_ESTIMATE` absolute timing;
+- Runtime Timeline Resolver expected durable semantic anchors that were not yet required in the Candidate Visual Beat schema.
+
+Repair:
+- 44/44 Speech Unit ↔ Visual Beat durable bindings;
+- Candidate Visual Beat anchor schema;
+- executable deterministic Timeline Resolver reference;
+- CosyVoice/Antigravity timing ownership reconciliation;
+- Candidate-compliant 44 Visual Beats;
+- production-package-v2;
+- current/historical document index;
+- Reviewer Handoff and CURRENT_STATUS reconciliation.
+
+Smoke result:
+- 44 resolved beats;
+- 0 overlaps;
+- no text/order/POV mutation;
+- planned 146.7209s may safely shift under actual-duration truth.
+
+Gate:
+`G6R = PASS`
+
+Current:
+`G6A_FIRST_E2E_ASSET_CALIBRATION = READY_NOT_EXECUTED`
+
+The G6A stop is calibration-only and must not become a routine per-episode Owner approval gate.
