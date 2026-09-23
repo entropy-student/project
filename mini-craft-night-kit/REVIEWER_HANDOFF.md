@@ -1632,3 +1632,20 @@ Create only a lightweight 05_growth operating specification: Growth System, Unit
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_6_GROWTH_FOUNDATION_SPEC.md`
+
+
+## K4.6 Growth Foundation Spec — FORMAL PASS
+
+Executor commit `58dd18534b74919e5396b1e6d2eaa880da24544f` is accepted. The five lightweight Growth Foundation documents are now the durable pre-traffic operating spec.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_6_GROWTH_FOUNDATION_SPEC_PASS.md`
+
+## K4.7 Owner Launch Truth Checkpoint — OPEN
+
+Before P0 implementation, collect only five Owner decisions: PRODUCT_TRUTH launch model, PUBLIC_ORIGIN domain family, initial MEASUREMENT provider, LEGAL_CONSENT path, and DELIVERY_AND_EMAIL provider/mailbox convention.
+
+Reviewer defaults: SINGLE_PLANNED_DATE_NIGHT_KIT; GA4_FIRST; Resend-or-equivalent transactional provider. Owner may override.
+
+Formal checkpoint:
+`docs/REVIEWER_DECISION_K4_7_OWNER_LAUNCH_TRUTH_CHECKPOINT.md`
