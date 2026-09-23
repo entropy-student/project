@@ -1304,3 +1304,23 @@ This resumes the previously paused storefront cleanup after:
 - Workspace Hygiene V2 PASS.
 
 Growth/SEO Readiness remains planned after K4 visual/functional cleanup and before K5.
+
+
+## K4 Strict Storefront Cleanup Resume — visual review return
+
+Commit `152f48aa269e8bd93d5215299ee68c2977a10f1e` completed the authorized storefront cleanup and generated the full visual package.
+
+Reviewer pixel inspection accepted the major cleanup, but K4 remains open for one bounded final mobile-commerce polish.
+
+Observed blockers:
+- mobile Cart coupon/update controls collide and shipping hierarchy is weak;
+- checkout currently defaults to Japan/Tokyo and offers local test shipping, conflicting with the approved United States initial market;
+- mobile Checkout billing rows render as staggered half-width fields;
+- final checkout action is not visibly evidenced;
+- legacy responsive typography remains too small/narrow on several customer pages.
+
+Current Gate:
+`K4_FINAL_MOBILE_COMMERCE_VISUAL_POLISH`
+
+After this Gate passes, next intended sequence remains:
+K4 close → project directory consolidation → Growth/SEO Readiness → K5.
