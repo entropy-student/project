@@ -3224,3 +3224,49 @@ NEXT=STOP_AT_REVIEWER
 Five Owner decision bundles are consolidated in 00_GROWTH_SYSTEM.md. Unit-economics inputs remain OWNER_INPUT_REQUIRED; no business value was estimated. Purchase remains server/order-state canonical, browser signals are non-authoritative, and Sandbox/test orders are excluded from production purchase reporting.
 
 No WordPress, plugin, SEO metadata, robots, schema, product, WooCommerce, PayPal, order/payment, analytics provider, email, or external account state was changed. No screenshots, ZIPs, browser profiles, or local helpers were created.
+
+## K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY — Executor Evidence (2026-09-23)
+
+```text
+GATE=K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY
+RESULT=PASS_CANDIDATE_K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY
+MODE=RESEARCH_READ_ONLY
+CANDIDATES_FOUND=4
+CANDIDATE_IDS=K48-A-ORFON-ND766;K48-B-HONGDA-M2411;K48-C-YUHAN-MWK001;K48-D-BENGBU-GARDENHOUSE
+SOURCE_SCOPE=PUBLIC_ALIBABA_SUPPLIER_OFFER_LISTINGS_ONLY
+PRIMARY_SOURCE_COVERAGE=MARKETPLACE_SUPPLIER_LISTINGS_4_OF_4;INDEPENDENT_MANUFACTURER_DOMAIN_CORROBORATION_0_OF_4
+RICH_LISTING_DETAIL_COVERAGE=3_OF_4;D_HAS_OFFER_CARD_ONLY
+US_SHIPPING_COVERAGE=0_OF_4_EXPLICIT_QUOTE_OR_METHOD
+MOQ_COVERAGE=3_OF_4_EXPLICIT;B_PRICE_BAND_STARTS_AT_1_BUT_EXPLICIT_MOQ_UNKNOWN
+LANDED_COST_COVERAGE=0_OF_4_VERIFIED;4_OF_4_PRODUCT_PRICE_ONLY_PARTIAL
+MEDIA_RIGHTS_COVERAGE=0_OF_4_EXPLICIT_LICENSE
+DEFECT_AND_MISSING_PARTS_POLICY_COVERAGE=0_OF_4_SUPPLIER_SPECIFIC
+TOP_EVIDENCE_COMPLETE_CANDIDATES=K48-A-ORFON-ND766;K48-C-YUHAN-MWK001 (densest public listing records only; neither production-ready or selected as winner)
+SUPPLIER_CONTACT_REQUIRED=YES_FOR_SELECTED_LEAD_TO_VERIFY_US_SHIPPING_AND_COST;EXACT_BOM;VARIANT;CUSTOMIZATION_AND_PRIVATE_LABEL;IMAGE_AND_ART_RIGHTS;RETURNS;DEFECT_AND_MISSING_PARTS_REMEDY
+SAMPLE_PURCHASE_REQUIRED=YES_BEFORE_PUBLISHING_CONTENTS;QUALITY;BEGINNER;COMPLETION_TIME;GIFT_READINESS_OR_EXPERIENCE_CLAIMS;NO_SAMPLE_PURCHASED
+PRODUCT_MODEL_STRATEGY=MULTI_CATEGORY_MINI_CRAFT_BRAND
+SITE_MUTATION=0
+PRODUCT_OR_MEDIA_MUTATION=0
+PRICE_SKU_STOCK_MUTATION=0
+WOOCOMMERCE_PAYPAL_ORDER_PAYMENT_MUTATION=0
+SEO_PAGE_SCHEMA_ANALYTICS_EMAIL_IMPLEMENTATION=0
+ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+EXTERNAL_ACCOUNT_ACTIONS=0
+SUPPLIER_CONTACT_ACTIONS=0
+SAMPLE_PURCHASE_ACTIONS=0
+MEDIA_DOWNLOAD_ACTIONS=0
+SECRET_OUTPUT=0
+WORKSPACE_TEMP_CLEANUP=PASS_NO_LOCAL_ARTIFACTS_CREATED
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=NOT_RESCANNED; prior K4.6 evidence recorded pre-existing .tmp-cdp-test2 with active Edge references and left untouched
+LOCAL_HELPERS_CLEANED=NOT_CREATED
+BROWSER_PROFILES_CLEANED=NOT_CREATED
+DELIVERABLE_LOCATION=GitHub: docs/FIRST_SKU_PRODUCT_TRUTH_DISCOVERY.md; docs/FIRST_SKU_CANDIDATE_MATRIX.md
+ROLLBACK_LOCATION=NOT_APPLICABLE_READ_ONLY_RESEARCH
+OWNER_ACTION=AUTHORIZE_SUPPLIER_CONTACT_FOR_SELECTED_LEAD(S);SAMPLE_PURCHASE_REQUIRES_SEPARATE_EXPLICIT_AUTHORIZATION
+NEXT=STOP_AT_REVIEWER
+DOC_COMMITS=DISCOVERY:3b3923c5dc3dde31cca2b2bb0cd10aeac41d43e7;MATRIX:86d58e051933eea86c75a1be560ab2530979731a
+```
+
+Four offer-level marketplace records were documented with field-by-field evidence labels and explicit unknowns. The leading records for possible bounded follow-up are A and C by public field coverage only; no offer has explicit US-shipping evidence, verified landed cost, an explicit commercial media license, or supplier-specific defect/missing-parts policy. No supplier was contacted and no sample was ordered. See the discovery report and comparison matrix for listing URLs, limitations, and risks. No local files, profiles, screenshots, or ZIPs were created; root entries were not re-scanned and prior unresolved items were not touched. No site, product, media, pricing, inventory, WooCommerce, PayPal, order/payment, SEO, analytics, email, or external-account state changed.
