@@ -1746,3 +1746,18 @@ Resume only unfinished K5 checks: Owner-operable admin CRUD/media capability, re
 
 Formal decision:
 `docs/REVIEWER_DECISION_K5_RELEASE_CANDIDATE_QA_RESUME.md`
+
+
+## K5 Resume — RETURN accepted / narrow reconciliation
+
+Executor commit `2f8e33022ea8e82b310b3bac44846dc5dce6de5a` completed most remaining K5 evidence: admin CRUD/media, Orders admin, runtime health, Gallery, Contact, backups, and deployment manifest. The valid stop is the missing populated-Checkout final action.
+
+A second deployment-prep issue is now explicit: local container image tag `wordpress:6.8.2-php8.3-apache` differs from actual persistent WordPress core `7.1.1`; production image must be reconciled before deploy.
+
+Current Gate:
+`K5R2_CHECKOUT_ACTION_VERSION_RECONCILIATION`
+
+This Gate only isolates native WooCommerce final-action vs PPCP-localhost rendering and resolves the production WordPress image tag. Existing K5 QA/backups are not replayed.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K5R2_CHECKOUT_ACTION_VERSION_RECONCILIATION.md`
