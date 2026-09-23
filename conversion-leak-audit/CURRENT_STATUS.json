@@ -18,14 +18,14 @@
     "G3_5_UI_GROWTH_DESIGN_FREEZE": "PASS",
     "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "PASS",
     "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "PASS",
-    "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "PENDING",
+    "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "NEXT_READY_FOR_EXECUTOR",
     "G6_VPS_ONBOARDING_STORAGE": "HOLD",
     "G7_VPS_PRIVATE_DEPLOYMENT": "HOLD",
     "G8_DOMAIN_HTTPS": "HOLD",
     "G9_PAYMENT_CONTROLLED_GOLIVE": "HOLD",
     "G10_PRODUCTION_ACCEPTANCE": "HOLD",
     "G11_ACQUISITION_BUSINESS_VALIDATION": "HOLD",
-    "G4_6_ACQUISITION_SEO_READINESS": "RETURN_META_CONTRACT_COMPLETION_ONLY"
+    "G4_6_ACQUISITION_SEO_READINESS": "PASS"
   },
   "evidence": {
     "scanner_project_tests": "55/55 PASS",
@@ -68,7 +68,7 @@
     "public_production_scanner": "HOLD",
     "g4_scope": "LOCAL_ONLY_NO_PAYMENT_NO_VPS_NO_PRODUCTION_SECRET"
   },
-  "next_action": "CODEX_ADD_HOME_NO_SIGNUP_META_AND_STRENGTHEN_G4_6_ACCEPTANCE",
+  "next_action": "CODEX_EXECUTE_G5_FULL_FIX_QUEUE_LLM_DOGFOOD_CONTRACT",
   "reviewer_reconciliation": {
     "date": "2026-09-22",
     "status": "RECONCILED",
@@ -111,12 +111,20 @@
     "visual_functional_acceptance": "PASS"
   },
   "g4_6": {
-    "status": "RETURN_META_CONTRACT_COMPLETION_ONLY",
+    "status": "PASS",
     "contract": "docs/G4_6_ACQUISITION_SEO_READINESS_CONTRACT.md",
-    "scope": "MESSAGE_PROOF_ACTIVATION_AND_SEO_READINESS",
-    "branch": "codex/g4-6-acquisition-seo-readiness",
-    "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS",
-    "reviewer_decision": "docs/REVIEWER_DECISION_G4_6_META_CONTRACT_RETURN.md",
-    "accepted_except": "HOME_META_NO_SIGNUP_REQUIREMENT_AND_TEST"
+    "decision_doc": "docs/REVIEWER_DECISION_G4_6_PASS.md",
+    "pull_request": 6,
+    "merge_commit": "71d810f61aa0e48b0feaf8cc9ec5deeeed128b27",
+    "seo_readiness": "44/44 PASS",
+    "scanner_regression": "55/55 PASS",
+    "wordpress_regression": "20/20 PASS"
+  },
+  "g5": {
+    "status": "NEXT_READY_FOR_EXECUTOR",
+    "contract": "docs/G5_EXECUTION_CONTRACT.md",
+    "branch": "codex/g5-full-fix-queue-llm-dogfood",
+    "scope": "FULL_FIX_QUEUE_OPTIONAL_LLM_EXPLANATION_SKILL_DOGFOOD",
+    "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS"
   }
 }
