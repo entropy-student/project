@@ -1681,3 +1681,20 @@ This Gate is research-only. No purchase, supplier contact, site mutation, analyt
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY.md`
+
+
+## K4.8 First SKU Product Truth Discovery — FORMAL PASS
+
+Executor commit `aa92b28544267896645bd783b2b89a3546de30e2` is accepted as a research-only shortlist. No candidate is production-approved.
+
+Best-supported public records: A ORFON ND766 and C Yuhan MWK-001. B Hongda M2411 is a secondary candidate with higher cost/compliance/fragility risk. D remains low-evidence.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY_PASS.md`
+
+## K4.9 Supplier Contact — OWNER CHECKPOINT
+
+Supplier contact is an external action and requires explicit Owner authorization. Recommended first contact: A and C; optional B.
+
+Formal checkpoint:
+`docs/REVIEWER_DECISION_K4_9_SUPPLIER_CONTACT_OWNER_CHECKPOINT.md`
