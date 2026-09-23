@@ -1196,3 +1196,42 @@ Reviewer interpretation:
 `GPT_SOVITS_LOCAL_WEBUI = PASS_FOR_A_B_TRIAL`.
 
 This is not an audio-quality PASS and does not replace CosyVoice yet.
+
+
+---
+
+## G6A — GPT-SoVITS fine-tune and representative listening QA evidence
+
+Date: 2026-09-23
+
+Observed evidence:
+- formal SoVITS candidate: `narrator01_v2pp_e8_s248.pth`;
+- formal GPT checkpoints tested: e5 / e10 / e15;
+- e15 produced an abnormal / near-empty synthesis in the current QA path;
+- e10 produced at least one acceptable result but repeated QA also produced duplicated speech and sparse/non-speech failures; temperature 0.8 did not make it sufficiently reliable;
+- e5 + e8 produced 3/3 successful repeated stability generations;
+- curiosity/suspicion repeated QA with e5 produced 3/3 successful generations with target timbre accepted by Owner;
+- same-text WebUI cache/freeze replay produced 3 perceptually identical outputs;
+- reversal/surprise and serious-closing probes were accepted by Owner;
+- a short-reaction probe with a leading ellipsis failed; removing the leading ellipsis succeeded;
+- ordinary comma produced a slightly long pause; removing the comma removed the pause; enumeration comma failed in that probe;
+- Owner selected ordinary Chinese comma as default and rejected systematic pause-insertion post-processing due engineering overhead.
+
+Reviewer interpretation:
+`GPT_SOVITS_MANUAL_LISTENING_QA = PASS_CANDIDATE`.
+
+Not yet proven:
+- official API determinism;
+- production adapter behavior;
+- GPT-SoVITS Voice Timing Profile safety;
+- full-episode replacement;
+- final-video E2E.
+
+Prepared-but-not-yet-executed API helpers:
+- `tools/gpt-sovits/PATCH_API_TORCHCODEC.bat`;
+- `tools/gpt-sovits/START_GPT_SOVITS_API.bat`;
+- `tools/gpt-sovits/RUN_API_DETERMINISM_SMOKE.bat`;
+- `tools/gpt-sovits/API_DETERMINISM_SMOKE.py`.
+
+Next required evidence:
+official API smoke + retained WAV/report + listening acceptance, then one-time GPT-SoVITS timing calibration with held-out validation.
