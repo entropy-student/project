@@ -330,3 +330,48 @@ official API smoke
 ```
 
 No full-episode regeneration is authorized before this gate passes.
+
+
+## 11. GPT-SoVITS representative listening QA closeout
+
+Current candidate:
+
+```text
+GPT: narrator01_v2pp-e5.ckpt
+SoVITS: narrator01_v2pp_e8_s248.pth
+temperature: 0.8
+top_k: 15
+top_p: 1
+speed: 1
+parallel inference: false
+```
+
+Observed checkpoint behavior:
+- e15 produced an abnormal / near-empty synthesis in the current QA path;
+- e10 could sound good, but repeated QA exposed phrase repetition and sparse/non-speech collapse;
+- e5 + e8 produced repeated successful generations and is the current candidate pair.
+
+Representative Owner listening QA covered:
+- neutral narration;
+- curiosity / suspicion;
+- reversal / surprise;
+- short reaction;
+- serious closing.
+
+Result:
+`GPT_SOVITS_MANUAL_LISTENING_QA = PASS_CANDIDATE`.
+
+Known minor:
+- ordinary Chinese comma can pause slightly long;
+- short-reaction leading ellipsis can destabilize synthesis;
+- Owner decision is to keep ordinary Chinese comma as default and avoid systematic pause post-processing.
+
+Same-text WebUI cache/freeze replay proved identical replay is possible, but production automation must validate the official API seed/runtime path rather than depend on UI cache state.
+
+Prepared next-gate helpers:
+- `tools/gpt-sovits/PATCH_API_TORCHCODEC.bat`
+- `tools/gpt-sovits/START_GPT_SOVITS_API.bat`
+- `tools/gpt-sovits/RUN_API_DETERMINISM_SMOKE.bat`
+- `tools/gpt-sovits/API_DETERMINISM_SMOKE.py`
+
+No full-episode regeneration is authorized before API/runtime and timing-profile validation pass.
