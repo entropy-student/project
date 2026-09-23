@@ -7,21 +7,17 @@ This section supersedes older `CURRENT_GATE` markers below. Governance rules com
 ```text
 K5_RELEASE_CANDIDATE=PASS
 K6_DEPLOYMENT=OWNER_AUTHORIZED_SANDBOX_FIRST
-SSH_TRANSPORT=PASS_READ_ONLY_2026-09-24
-K6R2R1_HOSTINGER_TOOL_SURFACE=SUPERSEDED_NOT_EXECUTED
-CURRENT_GATE=K6R3_SHARED_VPS_READONLY_PREFLIGHT_COMPLETION
-FULL_SHARED_VPS_PHASE_A=PENDING
-REMOTE_DEPLOYMENT_STARTED=NO
+K6R3_SHARED_VPS_READONLY_PREFLIGHT=PASS
+CURRENT_GATE=K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL
+MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
 OWNER_ACTION=NONE_NOW
 ```
 
-Independent Reviewer evidence: the recorded Windows `ops` SSH identity and known-host fingerprints matched the unique Shared VPS handoff; a bounded strict read-only connection exited 0 and returned `ops`, `srv1970241`, Ubuntu 24.04.5 LTS. Root disk was 96G/10% used/88G free. Existing Dujiao-Next, Unified Pay and Xianyu app containers were healthy; Caddy still owned 80/443 and cloudflared was running. Mini Craft had no container or `/srv/apps`, `/srv/data`, `/srv/backups` project namespace at the time of the probe. No VPS write or Secret read occurred. The exact cause of the prior pre-host-key close is UNKNOWN.
+Formal Reviewer acceptance: `docs/REVIEWER_DECISION_K6R3_PASS_K6_PHASE_B_PACKAGE_SEAL.md`. The Executor's full K6 Phase A inventory was independently checked via strict, read-only SSH from the recorded Windows host. On 2026-09-24 the target was `ops@srv1970241`; existing apps were healthy, Caddy owned 80/443, UFW allowed only the existing 22/80/443 inbound ports, root disk had 88G free, RAM had 5.5 GiB available, and no Mini Craft VPS namespace/container/port collision existed. Two intermediate read-helper format errors were disclosed and bounded; final and independent read-back succeeded. No remote write, Secret read or payment occurred. The earlier K6R1 pre-host-key failure is historical; its exact cause remains UNKNOWN.
 
-K5 PASS and the Owner's Sandbox-first K6 authorization remain recorded. This new evidence supersedes the SSH-unavailable condition for the time of the probe; it does not complete the full K6 Phase A or authorize a deployment write in the next Gate. The Hostinger tool-surface check is no longer the next action. Formal Reviewer decision and exact Executor scope: `docs/REVIEWER_DECISION_K6R3_SSH_RECOVERY_RECONCILIATION.md`.
-
-Next: Executor completes only the remaining shared-VPS read-only baseline on the governed SSH path, writes redacted Evidence/Handoff, then stops for Reviewer PASS/RETURN. Preserve the project storage manifest and accepted K5 package. Public canary, DNS/ingress changes, Secret provisioning, PayPal Live and real-money sales remain outside this read-only Gate. The local non-main checkout is stale/dirty relative to GitHub `main`; do not overwrite it to run this Gate.
+Next Gate is **local-only** K6 Phase B package seal: verify accepted K5 backups/hashes, correct the production WordPress image to `wordpress:7.1.1-php8.3-apache`, render/validate the explicit production Compose manifest, freeze transfer/Secret metadata and backup/restore/rollback plans, and return to Reviewer. This does not authorize VPS writes, public route, DNS, Secret provisioning, PayPal Live or real sales. The dated Phase A baseline must be rechecked before a later consequential write if material drift occurs. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
 
 Last reviewed: 2026-09-24  
 Maintainer: Reviewer
