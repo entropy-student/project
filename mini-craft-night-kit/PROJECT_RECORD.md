@@ -1324,3 +1324,18 @@ Current Gate:
 
 After this Gate passes, next intended sequence remains:
 K4 close → project directory consolidation → Growth/SEO Readiness → K5.
+
+
+## K4 final mobile-commerce remediation — accepted; workspace consolidation required
+
+Commit `7b5ca9cd80b99e02db4fd982ea2182ad7f18746e` passes direct visual/functional review for the current local-test storefront.
+
+The Executor's RETURN is limited to local workspace hygiene: Gate-local browser profiles/debug screenshots remain and reported path strings are malformed.
+
+Before Growth/SEO, the project now enters:
+`PROJECT_DIRECTORY_CONSOLIDATION`
+
+Target local workspace:
+`C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\`
+
+The consolidation may physically move the current runtime only after proving Docker/Git path safety; otherwise it must use a documented pointer rather than risking runtime breakage.
