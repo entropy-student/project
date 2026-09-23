@@ -175,13 +175,15 @@
     "resume_gate": "G6_VPS_ONBOARDING_STORAGE",
     "resume_rule": "FRESH_READ_ONLY_PREFLIGHT_THEN_OWNER_APPROVAL_BEFORE_ANY_VPS_WRITE",
     "local_cleanup": "REMOVE_VERIFIED_DUPLICATE_CLA_WORKSPACES_AND_ARTIFACTS_AFTER_SYNC",
-    "local_cleanup_status": "PARTIAL_TOOL_BLOCKED",
+    "local_cleanup_status": "CONSOLIDATE_INTO_SINGLE_LOCAL_UMBRELLA",
     "local_cleanup_removed": [
       "VPS基建\\g4-5-owner-visual-review-runtime",
       "workspaces\\g45-temp-20260923"
     ],
     "local_cleanup_remaining_summary": "5 G4-G6 workspace clones; CLA _project-artifacts; 3 confirmed CLA temp dirs; several unresolved temp dirs left untouched",
     "local_cleanup_vps_actions": 0,
-    "local_cleanup_rule": "SAFE_RETRY_ONLY_IN_ENVIRONMENT_THAT_CAN_RECURSIVELY_DELETE_VERIFIED_CLA_PATHS"
+    "local_cleanup_rule": "SAFE_RETRY_ONLY_IN_ENVIRONMENT_THAT_CAN_RECURSIVELY_DELETE_VERIFIED_CLA_PATHS",
+    "local_consolidation_root": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\Conversion-Leak-Audit",
+    "local_consolidation_mode": "MOVE_NOT_DELETE"
   }
 }
