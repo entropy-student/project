@@ -291,3 +291,25 @@ Accepted:
 PR #11 merged to main at `75c789cd4612790414bc1dc05d829e6945c539f8`.
 
 Next roadmap gate: `G6_VPS_ONBOARDING_STORAGE`. It remains HOLD until Reviewer releases a dedicated execution contract.
+
+
+### Post-G5 Gate Reorder — 2026-09-23
+
+Owner approved a revised post-G5 sequence:
+
+```text
+G6 read-only VPS preflight / onboarding
+→ G6.5 local Payment + Entitlement
+→ G7 private VPS deployment
+→ G8 Domain + HTTPS
+→ G9 real payment-provider validation
+→ G9.5 real LLM-provider canary
+→ G10 production acceptance
+→ G11 acquisition/business validation
+```
+
+Key rule: payment success unlocks the correct report entitlement; it does not automatically trigger LLM usage. A real LLM provider/key has not yet been configured. Free Top 3 remains zero-LLM and the complete deterministic Fix Queue remains available without a live LLM provider.
+
+Before any VPS write or formal deployment, Owner approval is mandatory.
+
+Formal decision: `docs/REVIEWER_DECISION_POST_G5_GATE_REORDER.md`.
