@@ -1144,3 +1144,29 @@ Qualitative voice evidence:
 
 Detailed execution / migration handoff:
 `docs/G6A_AUDIO_QA_AND_TTS_MIGRATION_TRIAL.md`.
+
+
+---
+
+## G6A — GPT-SoVITS local environment / WebUI closeout
+
+Date: 2026-09-23
+
+Owner-local environment report confirms:
+- `C:\AI\GPT-SoVITS` exists;
+- dedicated Python `C:\Users\34707\miniconda3\envs\GPTSoVits\python.exe`;
+- Python 3.10.21;
+- user-site disabled;
+- CUDA available on RTX 4050 Laptop GPU;
+- Gradio/FastAPI/Starlette and required runtime imports PASS;
+- project config PASS, port 9874, device `cuda:0`;
+- `zh_CN` locale PASS;
+- Owner subsequently confirmed the WebUI opened successfully.
+
+Non-blocking note:
+`pip check` reports a `faster-whisper → onnxruntime` distribution-name mismatch while the installed `onnxruntime-gpu` module imports successfully.
+
+Reviewer interpretation:
+`GPT_SOVITS_LOCAL_WEBUI = PASS_FOR_A_B_TRIAL`.
+
+This is not an audio-quality PASS and does not replace CosyVoice yet.
