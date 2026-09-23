@@ -1274,3 +1274,15 @@ The recovery is restricted to:
 - no broad storefront cleanup or unrelated state changes.
 
 The broader `K4_STRICT_STOREFRONT_CLEANUP` remains paused.
+
+
+## K4 Recovery accepted; Workspace Hygiene V2 required
+
+The artifact-backed recovery at commit `e1a64a1e5092142b1391961c28ce4ddd0c428f6d` is accepted for Contact/FAQ block recovery. Frontend screenshots confirm restored Contact fields and FAQ details. Gutenberg editor GUI validation remains deferred due session availability.
+
+The shared workspace has accumulated root-level Mini-Craft temporary/runtime artifacts again. A second cleanup is required, but this time with a permanent anti-regression rule.
+
+Current Gate:
+`K4_WORKSPACE_HYGIENE_V2`
+
+This Gate must inventory and classify root items, delete only proven transient material, preserve the active runtime and unknown/unrelated items, and force future Gates to clean their temporary browser/helper artifacts before returning.
