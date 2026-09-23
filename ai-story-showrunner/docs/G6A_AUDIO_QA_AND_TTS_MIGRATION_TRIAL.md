@@ -1,7 +1,7 @@
 # G6A Audio QA + Candidate TTS Migration Trial
 
 Date: 2026-09-23  
-Status: `IN_PROGRESS / COSYVOICE AUDIO QA RETURN / GPT-SOVITS WEBUI PASS / A-B NOT YET PROVEN`
+Status: `IN_PROGRESS / COSYVOICE AUDIO QA RETURN / GPT-SOVITS MANUAL QA PASS_CANDIDATE / API DETERMINISM NEXT`
 
 ## 1. Purpose
 
@@ -12,9 +12,9 @@ This document is current execution evidence / handoff material. It does **not** 
 Current rule:
 
 ```text
-CosyVoice-300M = current proven timing baseline
-GPT-SoVITS = candidate voice-quality replacement under A/B validation
-final audio baseline changes only after an explicit A/B PASS
+CosyVoice-300M = current canonical timing/voice baseline
+GPT-SoVITS = manual listening QA PASS_CANDIDATE
+final audio baseline changes only after GPT-SoVITS official API/runtime validation + its own Voice Timing Profile held-out validation
 ```
 
 ## 2. Real production audio actually executed
@@ -198,10 +198,11 @@ Remaining environment note:
 Next technical action:
 
 ```text
-run 5-case A/B
-→ choose audio baseline
-→ targeted unit repair/regeneration
-→ regenerate runtime timeline
+run prepared official API determinism smoke with e5 + e8
+→ listen to retained API sample
+→ if API path PASS, run one-time GPT-SoVITS Voice Timing Profile calibration + held-out validation
+→ validate provider adapter/runtime duration handoff
+→ only then decide canonical audio migration and episode regeneration scope
 ```
 
 Do not reinstall or rebuild the environment merely to clear the metadata warning.
@@ -256,3 +257,76 @@ Actual state:
 - G7: still blocked by G6A.
 
 No Skill canonical promotion is authorized from this work.
+
+
+## 11. GPT-SoVITS fine-tune + representative listening QA closeout
+
+Fine-tune execution is complete for experiment `narrator01_v2pp` / `v2ProPlus`.
+
+Current candidate:
+
+```text
+GPT: narrator01_v2pp-e5.ckpt
+SoVITS: narrator01_v2pp_e8_s248.pth
+temperature: 0.8
+top_k: 15
+top_p: 1
+speed: 1
+parallel inference: false
+```
+
+Checkpoint QA:
+- e15 produced an abnormal / near-empty result in the current inference path;
+- e10 could sound good but repeated QA exposed phrase repetition and sparse/non-speech collapse;
+- e5 + e8 produced 3/3 successful repeated generations in the stability check and remained the strongest current candidate.
+
+Representative Owner listening QA:
+- neutral narration: accepted;
+- curiosity / suspicion: accepted;
+- reversal / surprise: accepted;
+- serious closing: accepted;
+- short reaction: accepted with a punctuation caveat.
+
+Punctuation evidence:
+- leading ellipsis on a short reaction could cause synthesis failure;
+- ordinary Chinese comma succeeded but can pause slightly long;
+- removing the comma removed the pause entirely;
+- Chinese enumeration comma caused a failed synthesis in that probe;
+- Owner decision: keep ordinary Chinese comma as the default and do not add systematic post-processing pauses.
+
+Same-text WebUI cache/freeze produced perceptually identical replay, but production automation must validate the official API seed/runtime path rather than depend on UI cache state.
+
+Reviewer state:
+`GPT_SOVITS_MANUAL_LISTENING_QA = PASS_CANDIDATE`.
+
+## 12. Prepared API automation gate
+
+Prepared project helpers:
+
+- `tools/gpt-sovits/PATCH_API_TORCHCODEC.bat`
+- `tools/gpt-sovits/START_GPT_SOVITS_API.bat`
+- `tools/gpt-sovits/RUN_API_DETERMINISM_SMOKE.bat`
+- `tools/gpt-sovits/API_DETERMINISM_SMOKE.py`
+
+Owner-designated local reference for the next API smoke:
+
+```text
+audio:
+C:\Users\34707\Downloads\morning.mp3
+
+transcript:
+睡得好吗？希望你今天顺利，别遇到那种一大早就能惹你生气的人。
+```
+
+This absolute path is runtime configuration only; it is not portable Skill identity.
+
+The next gate is:
+
+```text
+official API smoke
+→ deterministic/reproducible output evidence
+→ retained listening sample
+→ GPT-SoVITS Voice Timing Profile calibration
+```
+
+No full-episode regeneration is authorized before this gate passes.
