@@ -11,7 +11,7 @@ The winner must satisfy:
 - audience-facing quality floor;
 - recurring character stability;
 - story readability;
-- edit/derive/reframe reuse potential;
+- direct reuse and reference-driven edit/derive potential;
 - acceptable retry burden;
 - acceptable generation cost.
 
@@ -75,20 +75,29 @@ B10 DERIVE_EDIT
 
 ## 5. Cost-saving staged execution
 
-Do not immediately burn 30+ generation calls.
+Do not immediately burn 30+ generation calls. Local crop/reframe and local compositing are explicitly out of scope by Owner decision.
 
 ### G1A — early-discrimination set
 
 Run B01, B02, B03, B04, B10 for all three styles.
 
 Base target:
-`5 tasks × 3 styles = 15 style outputs`.
+`5 tasks × 3 styles = 15 low-quality screening outputs`.
+
+Use the lowest provider quality tier that still produces reviewable images. Only styles that survive G1A proceed to higher-quality confirmation; do not spend final-quality generation on styles already eliminated.
 
 If a style fails hard quality/consistency gates in >=3 of 5 tasks, it may be returned early and does not proceed to G1B.
 
 ### G1B — finalist stress set
 
 Only surviving styles run B05–B09.
+
+For finalists:
+- repeat representative accepted shots at the intended production quality;
+- keep provider/model/size controlled;
+- record actual billed usage/cost;
+- use reference-driven generation/edit where the test calls for continuity;
+- use prompt caching when the provider supports it and the repeated prefix is identical.
 
 This reduces benchmark cost while preserving comparable evidence.
 
@@ -138,7 +147,9 @@ Per output record:
 - billed/usage tokens or cost if exposed;
 - generation attempt number;
 - generation vs edit;
-- reference-image count.
+- reference-image count;
+- quality tier (screening/final);
+- prompt-cache status if exposed.
 
 ### QA
 Score 0–5:
@@ -165,7 +176,7 @@ Primary:
 - hard-return rate;
 - median identity consistency;
 - median story readability;
-- median reuse/editability.
+- median direct-reuse/reference-editability.
 
 Cost:
 - generation calls per accepted asset;
@@ -184,7 +195,7 @@ A style cannot win if:
 Among remaining candidates, select based on production behavior:
 1. lowest retry/call burden;
 2. strongest identity + style consistency;
-3. strongest reuse/editability;
+3. strongest direct reuse/reference-editability;
 4. adequate audience-facing visual appeal.
 
 Do not select from one exceptional best frame.
@@ -196,3 +207,19 @@ At the end of G1:
 - Reviewer evaluates evidence;
 - return `PASS_CANDIDATE_STYLE_<ID>` or `RETURN_G1_<CAUSE>`;
 - do not integrate with Story Showrunner yet.
+
+
+## 12. Explicitly excluded cost path
+
+Owner decision:
+- no local crop/reframe workflow;
+- no local compositing workflow.
+
+G1 therefore evaluates these cost levers only:
+1. asset-library direct reuse;
+2. low-quality-first screening, higher quality only for finalists/accepted production;
+3. reference-driven generation/edit to reduce drift and retries;
+4. prompt caching where supported;
+5. fewer total generations/retries.
+
+Do not reintroduce crop/composite as an optimization without a new Owner decision.
