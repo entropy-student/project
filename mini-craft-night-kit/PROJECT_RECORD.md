@@ -1495,3 +1495,14 @@ The cleanup pause is lifted. Existing Owner authorization remains in force. Resu
 Commit `82962230c984767a65bbd675df2c2b9698cb5496` reached TCP/22 but the remote closed during SSH key exchange before host-key presentation. No remote identity was verified and no VPS read/write occurred. This is classified as SSH transport preflight unavailability, not proven host-key or Shared VPS drift.
 
 Current Gate: `K6R1_SSH_TRANSPORT_DIAGNOSIS`. It performs bounded local/client transport isolation; if strict SSH recovers, it completes the read-only Shared VPS inventory. Deployment writes remain blocked.
+
+
+## K6 governance realignment
+
+Canonical VPS Governance and the current Shared VPS handoff were re-read before further K6 work. The existing SSH transport contract is already validated and must be reused; the current pre-host-key connection close is `SSH_CONNECTION_REQUIRED`, not proven trust/Shared-VPS drift.
+
+Current Gate: `K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY`.
+
+The Gate makes one canonical strict read-only connection attempt. A repeated pre-host-key close goes to a minimal Hostinger-console status checkpoint rather than alternate-client/key experimentation. If SSH recovers, only the dynamic Shared VPS continuity facts are refreshed.
+
+For later deployment, existing Docker/Compose, Caddy/edge network and `/srv` contracts are reused. Mini Craft also must add the Governance-required `PROJECT_STORAGE_MANIFEST.md` before remote project writes. Global Governance itself needs no change for this incident.
