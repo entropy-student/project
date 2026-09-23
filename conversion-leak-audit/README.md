@@ -102,11 +102,11 @@ LLM 后续只解释结构化 Issue。API Key 只进入运行环境 Secret Store 
 
 ## Payment
 
-支付整体后移到 `G9`。
+支付现拆成两个阶段：`G6.5` 先做本地 Payment + Entitlement 闭环，`G9` 再做真实支付 Provider 验收。
 
 当前暂定：**Direct PayPal**。
 
-Unified Pay 目前尚未跑通并需要单独修改，因此不作为本项目当前依赖。到 G9 再做最终 Payment Architecture Review。
+Unified Pay 目前尚未跑通并需要单独修改，因此不作为本项目当前依赖。G6.5 不要求真实支付接口或公网；G9 在 HTTPS 就绪后再做真实 Provider / Webhook 验收。
 
 ## 当前下一步
 
@@ -125,3 +125,20 @@ Codex reads docs/G6_EXECUTION_CONTRACT.md
 ```
 
 G7 private application deployment remains HOLD until G6 Reviewer PASS.
+
+
+## 本地目录约定
+
+```text
+project-github-sync/  = 正式 Git 项目
+workspaces/           = 当前活跃 Gate 工作区
+_project-artifacts/   = 截图 / ZIP / Reviewer package / 本地证据
+```
+
+每个 Gate 在 Reviewer PASS + merge 后，应执行一次 bounded hygiene：
+- 清理已合并且干净的 Gate workspace；
+- 将最终本地证据归档到 `_project-artifacts/conversion-leak-audit/archives/<gate>/`；
+- 保留 final review package + MANIFEST；
+- 不自动删除 ownership 不明的临时目录。
+
+详见：`docs/LOCAL_WORKSPACE_HYGIENE.md`。
