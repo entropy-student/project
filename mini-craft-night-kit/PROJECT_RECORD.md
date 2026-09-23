@@ -1434,3 +1434,14 @@ K5 commit `11115a72e18213f49cca49e928a9a40ea7e793b4` found fresh Product Related
 Current bounded remediation: `K5R1_RELATED_PRODUCTS_BASELINE_REPAIR`.
 
 After PASS, resume K5 rather than replay earlier K4 gates.
+
+
+## K5R1 Related Products Baseline Repair — PASS
+
+Commit `61ec3c81a4eb48faa513fd9bb511bfabe98302c4` is accepted. The apparent K4 baseline drift was a stale `wc_related_223` transient, not product publication drift or template regression. IDs 222/224/117 remained draft and the narrow cache reset restored the accepted storefront state.
+
+## K5 Release Candidate QA — resumed
+
+Current Gate: `K5_RELEASE_CANDIDATE_QA_RESUME`.
+
+Remaining work is RC verification and local deployment-package preparation only. No K4 replay, VPS deployment, Live PayPal, analytics/email/SEO implementation, or supplier work.
