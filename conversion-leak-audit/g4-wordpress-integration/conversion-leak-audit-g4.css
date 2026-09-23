@@ -98,6 +98,20 @@
 .cla-g4-full-preview h3 { margin: 0; font-size: 23px; }
 .cla-g4-full-preview button { min-height: 44px; padding: 0 16px; font-size: 14px; }
 .cla-g4-full-preview [data-cla-paid-copy] { margin: 16px 0 0; color: var(--cla-g4-secondary); font-size: 14px; }
+.cla-g5-preview-notice { margin: 0 0 24px; padding: 16px 18px; border-left: 3px solid var(--cla-g4-accent); border-radius: 0 10px 10px 0; background: var(--cla-g4-subtle); }
+.cla-g5-preview-notice p { margin: 0; color: var(--cla-g4-secondary); line-height: 1.55; }
+.cla-g5-preview-notice .cla-g4-kicker { margin-bottom: 7px; color: var(--cla-g4-accent-hover); }
+.cla-g5-queue-position { color: var(--cla-g4-accent-hover); font-size: 13px; font-weight: 800; }
+.cla-g5-queue .cla-g5-queue-item { min-width: 0; }
+.cla-g5-explain-button { min-height: 40px; margin-top: 16px; padding: 0 14px; border: 1px solid var(--cla-g4-border); border-radius: 9px; color: var(--cla-g4-accent-hover); background: var(--cla-g4-surface); font: inherit; font-size: 14px; font-weight: 750; cursor: pointer; }
+.cla-g5-explain-button:hover { border-color: var(--cla-g4-accent); background: var(--cla-g4-accent-soft); }
+.cla-g5-explain-button:focus-visible { outline: 3px solid rgba(47, 99, 199, .22); outline-offset: 2px; }
+.cla-g5-explain-button:disabled { cursor: wait; opacity: .65; }
+.cla-g5-explanation { margin-top: 16px; padding: 16px; border-left: 2px solid var(--cla-g4-accent); border-radius: 0 10px 10px 0; background: var(--cla-g4-subtle); }
+.cla-g5-explanation > strong { color: var(--cla-g4-accent-hover); }
+.cla-g5-explanation p { margin: 12px 0 0; }
+.cla-g5-explanation p strong { display: block; margin-bottom: 4px; color: var(--cla-g4-ink); font-size: 13px; }
+.cla-g5-empty { margin: 24px 0 0; padding: 20px; border: 1px dashed var(--cla-g4-border); border-radius: 12px; color: var(--cla-g4-secondary); }
 .cla-g4-incomplete { padding: 16px 4px 4px; }
 .cla-g4-incomplete h2 { margin: 0; font-size: 34px; line-height: 1.08; letter-spacing: -.035em; }
 .cla-g4-incomplete button { min-height: 44px; margin-top: 8px; }
@@ -137,6 +151,9 @@
   .cla-g4-progress-list { grid-template-columns: 1fr 1fr; }
   .cla-g4-progress { padding: 22px; }
   .cla-g4-progress h2 { font-size: 28px; }
+  .cla-g4-results.cla-g5-full-results { padding: 22px 18px; }
+  .cla-g5-queue .cla-g5-queue-item { padding: 20px 16px; }
+  .cla-g5-preview-notice { padding: 14px; }
   .cla-g4-results-head { display: block; }
   .cla-g4-result-count { display: inline-block; margin-top: 16px; }
   .cla-g4-proof-grid,

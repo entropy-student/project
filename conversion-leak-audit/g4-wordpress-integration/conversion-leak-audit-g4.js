@@ -16,11 +16,13 @@
   var results = app.querySelector('[data-cla-results]');
   var apiRoot = app.getAttribute('data-api-root').replace(/\/$/, '');
   var nonce = app.getAttribute('data-api-nonce');
+  var localFullPreview = app.getAttribute('data-local-full-preview') === 'true';
   var scanId = null;
   var scanUrl = null;
   var siteIdHash = null;
   var scanStartedAt = null;
   var busy = false;
+  var fullReportRequested = false;
 
   var phaseCopy = {
     CHECKING_ACCESS: ['Checking access', 'Checking whether public pages can be read safely.'],
@@ -213,6 +215,7 @@
   }
 
   function renderResults(report) {
+    results.classList.remove('cla-g5-full-results');
     var findings = mapFindings(report);
     var count = findings.length;
     var cards = findings.map(function (finding) {
@@ -233,9 +236,12 @@
     if (report && report.demo_fixture === 'demo-store-golden-v1' && report.summary) {
       demoSummary = '<div class="cla-g4-demo-summary" data-cla-demo-summary><strong>' + escapeHtml(report.summary.confirmed_findings + ' confirmed findings') + '</strong><span>' + escapeHtml(report.summary.trusted_checks + ' trusted checks') + '</span><span>' + escapeHtml(report.summary.label) + '</span></div>';
     }
+    var fullPreview = localFullPreview
+      ? '<div class="cla-g4-full-preview cla-g5-local-preview"><p class="cla-g4-kicker">LOCAL PREVIEW</p><h3>Complete fix queue</h3><p>Preview every evidence-backed issue for this scan. Paid access is not active and no checkout is available.</p><button type="button" data-cla-open-full-report>Open full queue</button></div>'
+      : '<div class="cla-g4-full-preview"><p class="cla-g4-kicker">NEXT LAYER</p><h3>Review the evidence you can verify.</h3><p>Full expansion can add complete evidence context and a prioritized action plan. Full report access and payment are not available in this preview.</p><button type="button" data-cla-paid-preview>See what a full queue would include</button><div data-cla-paid-copy hidden>Complete fix queue, evidence context, and prioritized next actions are future expansion areas. No payment action was started.</div></div>';
     results.innerHTML = demoSummary + '<div class="cla-g4-results-head"><div><p class="cla-g4-kicker">FREE TOP 3</p><h2>' + escapeHtml(summary) + '</h2><p class="cla-g4-muted">Only evidence-backed ISSUE decisions are shown. The list is never padded.</p></div><span class="cla-g4-result-count">' + count + ' finding' + (count === 1 ? '' : 's') + '</span></div>' +
       '<div class="cla-g4-findings">' + cards + '</div>' +
-      '<div class="cla-g4-full-preview"><p class="cla-g4-kicker">NEXT LAYER</p><h3>Review the evidence you can verify.</h3><p>Full expansion can add complete evidence context and a prioritized action plan. Full report access and payment are not available in this preview.</p><button type="button" data-cla-paid-preview>See what a full queue would include</button><div data-cla-paid-copy hidden>Complete fix queue, evidence context, and prioritized next actions are future expansion areas. No payment action was started.</div></div>' +
+      fullPreview +
       '<p class="cla-g4-scan-reference">Scan reference: ' + escapeHtml(scanId || '') + '</p>';
     results.hidden = false;
     progress.hidden = true;
@@ -250,9 +256,155 @@
         }
       });
     });
+    var fullButton = results.querySelector('[data-cla-open-full-report]');
+    if (fullButton) fullButton.addEventListener('click', function () { openFullReportPreview(); });
     var paidButton = results.querySelector('[data-cla-paid-preview]');
     var paidCopy = results.querySelector('[data-cla-paid-copy]');
     if (paidButton) paidButton.addEventListener('click', function () { paidCopy.hidden = false; paidButton.hidden = true; emit('paid_expansion_viewed', publicEventProperties({surface: 'free_result'})); });
+  }
+
+  function renderFullReportUnavailable() {
+    progress.hidden = true;
+    results.hidden = false;
+    results.innerHTML = '<div class="cla-g4-incomplete is-error"><p class="cla-g4-kicker">LOCAL PREVIEW UNAVAILABLE</p><h2>This scan could not be opened.</h2><p class="cla-g4-muted">Return to a completed scan and open its local full-queue preview. No report data was loaded.</p></div>';
+  }
+
+  function renderExplanation(panel, explanation, source) {
+    panel.replaceChildren();
+    panel.hidden = false;
+    var heading = document.createElement('strong');
+    heading.textContent = source === 'llm' ? 'Structured explanation' : (source === 'deterministic_fake' ? 'Deterministic fake-provider explanation' : 'Deterministic fallback');
+    panel.appendChild(heading);
+    [
+      ['Summary', explanation.summary],
+      ['Why it may matter', explanation.why_it_may_matter],
+      ['Recommended next step', explanation.recommended_next_step],
+      ['Caveat', explanation.caveat]
+    ].forEach(function (item) {
+      var paragraph = document.createElement('p');
+      var label = document.createElement('strong');
+      label.textContent = item[0];
+      paragraph.appendChild(label);
+      paragraph.appendChild(document.createTextNode(String(item[1] || '')));
+      panel.appendChild(paragraph);
+    });
+  }
+
+  function requestIssueExplanation(ruleId, position, button) {
+    var row = button.closest('[data-g5-queue-item]');
+    var panel = row && row.querySelector('[data-g5-explanation]');
+    if (!row || !panel || !siteIdHash || !scanId) return;
+    button.disabled = true;
+    button.textContent = 'Preparing explanation…';
+    emit('llm_explanation_requested', publicEventProperties({site_id_hash: siteIdHash, rule_id: ruleId, schema_version: 'cla.issue-explanation.v1', queue_position: position}));
+    request('/full-reports/' + encodeURIComponent(scanId) + '/issues/' + encodeURIComponent(ruleId) + '/explanation', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'X-WP-Nonce': nonce},
+      body: '{}'
+    }).then(function (response) {
+      var source = response.status === 'explained'
+        ? (response.provider === 'deterministic_fake' ? 'deterministic_fake' : 'llm')
+        : 'deterministic_fallback';
+      if (response.status !== 'explained') {
+        emit('llm_explanation_failed', publicEventProperties({site_id_hash: siteIdHash, rule_id: ruleId, reason: response.reason || 'provider_unavailable'}));
+      }
+      renderExplanation(panel, response.explanation, source);
+      emit('llm_explanation_viewed', publicEventProperties({site_id_hash: siteIdHash, rule_id: ruleId, source: source}));
+    }).catch(function () {
+      var observed = row.getAttribute('data-observed-fact') || 'The evidence-backed Scanner issue is available above.';
+      var firstMove = row.getAttribute('data-first-move') || 'Review the cited public evidence and verify the relevant purchase path.';
+      emit('llm_explanation_failed', publicEventProperties({site_id_hash: siteIdHash, rule_id: ruleId, reason: 'provider_unavailable'}));
+      renderExplanation(panel, {
+        summary: 'The Scanner observed: ' + observed,
+        why_it_may_matter: 'This observation may leave a question about the documented part of the public purchase journey unresolved.',
+        recommended_next_step: firstMove,
+        caveat: 'This public-page observation is not proof of revenue loss or causal conversion impact.'
+      }, 'deterministic_fallback');
+      emit('llm_explanation_viewed', publicEventProperties({site_id_hash: siteIdHash, rule_id: ruleId, source: 'deterministic_fallback'}));
+    }).finally(function () {
+      button.disabled = false;
+      button.textContent = 'Explain this finding';
+    });
+  }
+
+  function renderFullQueue(envelope) {
+    if (!envelope || String(envelope.scan_id || '').toLowerCase() !== String(scanId || '').toLowerCase() || !envelope.report || !['SUCCEEDED', 'AUDIT_INCOMPLETE'].includes(envelope.status)) {
+      renderFullReportUnavailable();
+      return;
+    }
+    if (envelope.status === 'AUDIT_INCOMPLETE') {
+      renderIncomplete({status: envelope.status, error_code: envelope.error_code}, envelope.report);
+      return;
+    }
+    var report = envelope.report;
+    results.classList.add('cla-g5-full-results');
+    var findings = Array.isArray(envelope.fix_queue) ? envelope.fix_queue : [];
+    var cards = findings.map(function (item) {
+      var ruleId = String(item.rule_id);
+      var meta = findingMeta[ruleId] || {};
+      var title = item.title || 'Evidence-backed Scanner issue';
+      var observed = item.observed_fact || 'The trusted rule returned an evidence-backed issue.';
+      var firstMove = item.first_move || 'Review the cited public evidence and verify the relevant purchase path.';
+      var refs = Array.isArray(item.evidence_refs) ? item.evidence_refs : [];
+      var source = sourceFor(report, refs);
+      var position = Number(item.position);
+      var why = meta.why || 'This observation may leave a question about the documented part of the public purchase journey unresolved.';
+      return '<article class="cla-g4-finding cla-g5-queue-item" data-g5-queue-item data-rule-id="' + escapeHtml(ruleId) + '" data-queue-position="' + position + '" data-observed-fact="' + escapeHtml(observed) + '" data-first-move="' + escapeHtml(firstMove) + '">' +
+        '<div class="cla-g4-finding-top"><span class="cla-g5-queue-position">Queue position ' + position + '</span><span class="cla-g4-rule">' + escapeHtml(ruleId) + '</span></div>' +
+        '<h3>' + escapeHtml(title) + '</h3>' +
+        '<p><strong>Observed fact</strong>' + escapeHtml(observed) + '</p>' +
+        '<p><strong>First move</strong>' + escapeHtml(firstMove) + '</p>' +
+        '<details data-g5-issue-detail><summary>View evidence and limitation</summary><div class="cla-g4-detail-body"><p><strong>Why it may matter</strong>' + escapeHtml(why) + '</p><div class="cla-g4-evidence"><p><strong>Source</strong>' + escapeHtml(source) + '</p><p><strong>Evidence references</strong>' + escapeHtml(refs.join(', ')) + '</p><p><strong>Scanner decision</strong>' + escapeHtml(item.scanner_decision || '') + '</p><p><strong>Limitation</strong>' + escapeHtml(item.limitation || '') + '</p></div></div></details>' +
+        '<button class="cla-g5-explain-button" type="button" data-g5-explain>Explain this finding</button><div class="cla-g5-explanation" data-g5-explanation hidden aria-live="polite"></div>' +
+        '</article>';
+    }).join('');
+    var empty = findings.length ? '' : '<p class="cla-g5-empty">No evidence-backed issues were confirmed in this completed scan. The queue is empty; no items were added.</p>';
+    results.innerHTML = '<div class="cla-g5-preview-notice"><p class="cla-g4-kicker">LOCAL FULL-REPORT PREVIEW</p><p>Paid access is not active in this Gate. This preview is tied to the scan reference below; no checkout or entitlement exists.</p></div>' +
+      '<div class="cla-g4-results-head"><div><p class="cla-g4-kicker">COMPLETE FIX QUEUE</p><h2>' + findings.length + ' evidence-backed issue' + (findings.length === 1 ? '' : 's') + '</h2><p class="cla-g4-muted">Queue position follows the existing Top 3 order, then the Scanner report order. It is not an impact score.</p></div><span class="cla-g4-result-count">' + findings.length + ' issue' + (findings.length === 1 ? '' : 's') + '</span></div>' +
+      '<div class="cla-g4-findings cla-g5-queue" data-g5-queue>' + cards + '</div>' + empty +
+      '<p class="cla-g4-scan-reference" data-cla-scan-reference>Scan reference: ' + escapeHtml(scanId) + '</p>';
+    results.hidden = false;
+    progress.hidden = true;
+    showFeedback('', '');
+    emit('full_report_viewed', publicEventProperties({site_id_hash: siteIdHash, report_mode: 'local_preview', access_state: 'not_entitled', queue_count: findings.length}));
+    results.querySelectorAll('[data-g5-issue-detail]').forEach(function (detail) {
+      detail.addEventListener('toggle', function () {
+        if (detail.open) {
+          var row = detail.closest('[data-g5-queue-item]');
+          emit('full_issue_expanded', publicEventProperties({site_id_hash: siteIdHash, rule_id: row.getAttribute('data-rule-id'), queue_position: Number(row.getAttribute('data-queue-position'))}));
+        }
+      });
+    });
+    results.querySelectorAll('[data-g5-explain]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var row = button.closest('[data-g5-queue-item]');
+        requestIssueExplanation(row.getAttribute('data-rule-id'), Number(row.getAttribute('data-queue-position')), button);
+      });
+    });
+  }
+
+  async function loadFullReport(id) {
+    if (!localFullPreview || !/^[0-9a-f]{32}$/i.test(id || '')) {
+      renderFullReportUnavailable();
+      return;
+    }
+    try {
+      var envelope = await request('/full-reports/' + encodeURIComponent(id));
+      if (!siteIdHash && envelope.report && envelope.report.requested_url) siteIdHash = await siteIdHashFor(envelope.report.requested_url);
+      renderFullQueue(envelope);
+    } catch (error) {
+      renderFullReportUnavailable();
+    }
+  }
+
+  function openFullReportPreview() {
+    if (!localFullPreview || !/^[0-9a-f]{32}$/i.test(scanId || '')) {
+      renderFullReportUnavailable();
+      return;
+    }
+    fullReportRequested = true;
+    history.pushState(null, '', window.location.pathname + '?scan_id=' + encodeURIComponent(scanId) + '&cla_g5_full_report=1');
+    loadFullReport(scanId);
   }
 
   function reasonLabel(code) {
@@ -278,6 +430,7 @@
   }
 
   function renderIncomplete(job, report) {
+    results.classList.remove('cla-g5-full-results');
     progress.hidden = true;
     results.hidden = false;
     results.innerHTML = '<div class="cla-g4-incomplete"><p class="cla-g4-kicker">SCAN INCOMPLETE</p><h2>No Top 3 was generated.</h2><p>' + escapeHtml(reasonLabel(job.error_code || (report && report.warnings && report.warnings[0]))) + '</p><p class="cla-g4-muted">We will not convert incomplete evidence into an ISSUE. You can retry a temporary access problem.</p><button type="button" data-cla-retry>Try again</button><p class="cla-g4-scan-reference">Scan reference: ' + escapeHtml(scanId || '') + '</p></div>';
@@ -306,6 +459,11 @@
         continue;
       }
       if (job.status === 'SUCCEEDED' || job.status === 'AUDIT_INCOMPLETE') {
+        if (fullReportRequested) {
+          await loadFullReport(id);
+          setBusy(false);
+          return;
+        }
         var report = null;
         try { report = await request('/scans/' + encodeURIComponent(id) + '/report'); } catch (error) { renderFailure(error); return; }
         if (!siteIdHash && report && report.requested_url) siteIdHash = await siteIdHashFor(report.requested_url);
@@ -325,6 +483,7 @@
 
   async function startScan(url) {
     scanUrl = url;
+    fullReportRequested = false;
     scanStartedAt = performance.now();
     siteIdHash = await siteIdHashFor(url);
     setBusy(true);
@@ -360,8 +519,12 @@
     startScan(value);
   });
 
-  var restored = new URLSearchParams(window.location.search).get('scan_id');
-  if (restored && /^[0-9a-f]{32}$/i.test(restored)) {
+  var initialParams = new URLSearchParams(window.location.search);
+  var restored = initialParams.get('scan_id');
+  fullReportRequested = initialParams.get('cla_g5_full_report') === '1';
+  if (fullReportRequested && (!localFullPreview || !restored || !/^[0-9a-f]{32}$/i.test(restored))) {
+    renderFullReportUnavailable();
+  } else if (restored && /^[0-9a-f]{32}$/i.test(restored)) {
     scanId = restored.toLowerCase();
     setBusy(true);
     setProgress({id: scanId, status: 'QUEUED', phase: 'CHECKING_ACCESS'});

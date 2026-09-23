@@ -523,3 +523,72 @@ Workspace hygiene (local-only, outside Git): five verified CLA-owned review arti
 META_CONTRACT_COMPLETION_COMMIT=ef9d31e4a8170028c549e4493c2c77f4bd24adc7
 
 Candidate result: `PASS_CANDIDATE_G4_6_META_CONTRACT_COMPLETE`. Owner action: `NONE`. Recommended Reviewer decision: `REVIEW_G4_6_META_CONTRACT_COMPLETION_ONLY`. Executor stops at Reviewer and does not declare the Gate PASS.
+
+## G5 Full Fix Queue + LLM Dogfood — 2026-09-23
+
+Gate: `G5_FULL_FIX_QUEUE_LLM_DOGFOOD`
+
+```text
+BASE_MAIN=d0b821c91f433ce6cf8e3c534fa6a87d91c43b90
+BRANCH=codex/g5-full-fix-queue-llm-dogfood
+IMPLEMENTATION_COMMIT=ba6826d
+WORKSPACE=clean project-scoped sparse checkout; only conversion-leak-audit/ materialized
+```
+
+G4, G4.5, and G4.6 were not reopened. No Scanner rule implementation or semantics, payment behavior, VPS, domain, HTTPS, production secret, public scanner, or SEO content surface was changed.
+
+### Queue and report shell
+
+The local full-report REST surface refetches the job and report by the same validated `scan_id`; job identity and any report `scan_id` must match. The local preview is additionally gated on `CLA_G5_LOCAL_PREVIEW`, WordPress environment type `local`, and a localhost site URL. It creates no entitlement or payment route. Invalid references, mismatched envelopes, unavailable reports, and incomplete scans fail closed; incomplete results do not become queue items.
+
+The server queue includes only unique `ISSUE` decisions with sanitized traceable evidence references and a non-empty observed fact. It exposes position, rule ID, title, observed fact, source/evidence references, Scanner decision, deterministic first move, and limitation/context. Ordering is deterministic without a new score: accepted G4 Top 3 order (`CORE-007`, `PHYS-002`, `PHYS-001`) first, then the existing Scanner report-decision order. Queue positions are explicitly presentation positions, not severity or impact ranks. Current 17-rule semantics remain unchanged.
+
+The deterministic full-queue fixture exercises all 15 existing rules that can return `ISSUE`; it also supplies a duplicate and a non-ISSUE decision to assert deduplication/filtering. Browser acceptance observed 15 unique rows in the expected order. Zero/one/two/three-item fixtures remain exact and are never padded.
+
+### LLM boundary and limits
+
+```text
+PROVIDER_INTERFACE=CLA_G5_Explanation_Provider
+CORE_TEST_PROVIDER=deterministic fake; no API key required
+LIVE_PROVIDER=optional provider-neutral JSON-over-HTTPS adapter; explicitly environment-enabled only
+STRUCTURED_INPUT=cla.issue-explanation.v1: rule_id, title, observed_fact, evidence_refs, first_move, limitation, bounded context_summary
+RAW_HTML_OR_FULL_URL_TO_MODEL=NO
+STRUCTURED_OUTPUT=summary, why_it_may_matter, recommended_next_step, caveat
+FREE_TOP3_LLM_CALLS=0
+```
+
+The output validator rejects unexpected/missing fields, oversized or empty values, external URLs/HTML, unsupported evidence sources, rule-ID changes, non-input evidence references, ungrounded numbers, and revenue/conversion causal-lift claims. The caveat must exactly equal the server limitation; it is not model-controlled. Invalid JSON/schema, provider error, timeout, unsafe/incomplete provider configuration, and guard rejection return deterministic non-LLM content.
+
+Bounds: one issue per explanation request; issue fact <=600 bytes; up to 12 evidence refs; structured input <=2,048 bytes; serialized provider request <=4,096 bytes; output <=2,400 bytes with each field <=900 bytes; max 300 output tokens; 8-second timeout; zero retries; immutable issue/provider-config cache for one hour. API keys are read only from environment and excluded from cache records, analytics, repository files, and test output. These claim guards are defense-in-depth, not a proof that arbitrary natural-language output can be made risk-free; no real provider is enabled in this candidate.
+
+### Analytics and dogfood
+
+The analytics contract documents the five minimal G5 events and required privacy-safe properties. The local `full_report_viewed` explicitly carries `report_mode=local_preview` and `access_state=not_entitled`. Tests confirm lowercase SHA-256 site hash, no raw URL/evidence/prompt/key properties, and no `checkout_started` or `payment_completed` events. No analytics provider was added.
+
+`docs/SKILL_DOGFOOD_LOG.md` keeps D001–D003 `INCONCLUSIVE` and preregisters D004–D006 about depth beyond Top 3, explanation comprehension, and evidence-versus-generated prose. All are L0 / no external-user evidence; implementation or deterministic fixtures are not treated as validation. No Skill source changed.
+
+### Verification
+
+```text
+SCANNER_REGRESSION=55/55 PASS
+WORDPRESS_REGRESSION=20/20 PASS (TOTAL=20 PASS=20 FAIL=0)
+SEO_READINESS=44/44 PASS
+G4_BROWSER_REGRESSION=PASS
+G5_PHP_CONTRACT=43/43 PASS
+G5_BROWSER_ACCEPTANCE=PASS (15 unique queue items; zero/one/two/three; refresh; evidence; fake provider; fallback; incomplete; invalid and cross-scan fail-closed; analytics; mobile overflow)
+FREE_TOP3_LLM_CALLS=0
+PAYMENT_ACTIONS=0
+VPS_WRITES=0
+PRODUCTION_SECRETS=0
+OUT_OF_SCOPE_CHANGES=0
+```
+
+Commands: `py -3.12 -m pytest -q`; `py -3.12 -X utf8 acceptance/run_asset_checks.py`; `CLA_G4_6_BASE_URL=http://127.0.0.1:8085 py -3.12 acceptance/run_seo_readiness_checks.py`; PHP contract test in the pinned local WordPress PHP 8.3 container; Playwright `g4_browser_test.cjs` and `g5_browser_test.cjs` against isolated local WordPress `http://127.0.0.1:8085/` and deterministic fake Scanner `8124`.
+
+Screenshot evidence is local-only at `_project-artifacts/conversion-leak-audit/screenshots/g5/` (not staged): desktop queue viewport/full-page, mobile queue, desktop/mobile explanation, desktop/mobile incomplete. G4 browser regression screenshots are in its `g4-regression/` child directory. No ZIP or screenshot was added to Git.
+
+Local runtime used a separate Docker Compose project and ignored runtime directory. The frozen SaasLauncher 2.0.18 theme dependency was reused from the existing local G4.6 runtime after WordPress.org theme download failed inside the WP-CLI container; that workspace was read-only and not altered. All runtime local passwords were generated ephemerally, not written to tracked files or evidence. No live LLM, production target, or external user cohort was used.
+
+Known limitations: local full-report preview only; no real provider/API-key or production deployment acceptance; regex/allowlist claim guards cannot prove semantic truth; D001–D006 remain inconclusive; downloadable report/export was deferred as optional by contract. Owner intervention required: `NONE`. Recommended Reviewer decision: `REVIEW_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`. Executor result is a candidate only and stops at Reviewer.
+
+Candidate result: `PASS_CANDIDATE_G5_FULL_FIX_QUEUE_LLM_DOGFOOD`.

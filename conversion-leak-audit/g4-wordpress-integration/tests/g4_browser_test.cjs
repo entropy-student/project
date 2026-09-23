@@ -79,7 +79,9 @@ function assertAnalyticsContract(events) {
 }
 
 async function main() {
-  const browser = await chromium.launch({ headless: true });
+  const launchOptions = { headless: true };
+  if (process.env.CLA_BROWSER_EXECUTABLE) launchOptions.executablePath = process.env.CLA_BROWSER_EXECUTABLE;
+  const browser = await chromium.launch(launchOptions);
   const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
   desktop.on('console', (message) => console.error(`BROWSER_CONSOLE ${message.type()} ${message.text()}`));
   desktop.on('pageerror', (error) => console.error(`BROWSER_PAGEERROR ${error.message}`));
