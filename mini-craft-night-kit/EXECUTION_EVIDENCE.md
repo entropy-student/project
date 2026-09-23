@@ -2749,3 +2749,100 @@ SECRET_COMMITTED=0
 The Form was restored byte-for-byte from the retained K4 copy-preflight snapshot (file hash and block hash above), before the later content-fill write. Its schema matches active Kadence Blocks 3.7.11, the original raw bytes round-trip identically through the registered block serializer, and server rendering exposes the required Name, Email, Message and Send message controls. The retained K4 shell evidence records the corresponding native form render and zero invalid blocks. Contact's three affected columns were rebuilt with registered `core/paragraph` children; FAQ's seven saved summaries, answer HTML and link bytes were preserved while each answer became a registered `core/paragraph` child. Writes were surgical block-range replacements; all non-target serialized bytes and existing column children were verified unchanged.
 
 The current Gutenberg editor session remains unavailable, so editor-side visual invalid-block validation is explicitly pending. Independent headless screenshots are archived above and included in the local review ZIP. No Home, Product, Gallery/CSS, Shipping, locale, WooCommerce/PayPal configuration, product business data, order/payment state, or other project was changed.
+
+## K4 Workspace Hygiene V2 — Executor candidate (2026-09-23)
+
+```text
+GATE=K4_WORKSPACE_HYGIENE_V2
+RESULT=PASS_CANDIDATE_K4_WORKSPACE_HYGIENE_V2
+ROOT_ITEMS_CLASSIFIED=16
+ROOT_ITEMS_AFTER_ARCHIVE_MOVE=15
+KEEP_ACTIVE=mini-craft-k3r4-mariadb-recovery
+KEEP_PROJECT_SOURCE=mini-craft-night-kit;project-github-sync;.git
+KEEP_ROLLBACK_REFERENCED=mini-craft-k3r4-docker-mariadb;mini-craft-kadence-poc
+ARCHIVED=K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR-visual-review.zip
+CLEANED=NONE
+DELETE_ELIGIBLE_TRANSIENTS=0
+UNCLASSIFIED_LEFT_IN_PLACE=.tmp-cdp-test2;.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile
+UNRELATED_LEFT_UNTOUCHED=.clone-ui;formwork-design;g4-5-owner-visual-review-runtime;SHARED_VPS_HANDOFF.md;workspaces;existing_conversion-leak-audit_archive
+ACTIVE_RUNTIME_UNCHANGED=YES
+ACTIVE_RUNTIME_PATH=mini-craft-k3r4-mariadb-recovery
+SITE_HTTP_200=YES
+HOME_HTTP=200
+PRODUCT_HTTP=200
+CONTACT_HTTP=200
+FAQ_HTTP=200
+SHIPPING_RETURNS_HTTP=200
+WORDPRESS_CONTAINER=UP_RESTART_COUNT_0
+MARIADB_CONTAINER=HEALTHY_RESTART_COUNT_0
+ACTIVE_RUNTIME_PATH_UNCHANGED=YES_COMPOSE_WORKING_DIR_MATCHES
+HOME_HASH_UNCHANGED=YES_NO_PAGE_WRITES
+PRODUCT_GALLERY_CSS_UNCHANGED=YES_NO_RUNTIME_FILE_WRITES
+CONTACT_FAQ_RECOVERY_UNCHANGED=YES_NO_DATABASE_WRITES;BOTH_HTTP_200
+SITE_LOCALE_CHANGE=0;PUBLIC_HTML_LANG=zh-Hans
+PRODUCT_STATE_UNCHANGED=YES_NO_DATABASE_WRITES
+PAYPAL_CONFIG_UNCHANGED=YES_NO_DATABASE_OR_CONFIG_WRITES
+EXISTING_SANDBOX_ORDER_UNCHANGED=YES_NO_ORDER_ACTIONS
+PAGE_CONFIG_MEDIA_MUTATION=0
+WOOCOMMERCE_PAYPAL_ORDER_PAYMENT_MUTATION=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+DOCKER_VOLUMES_DELETED=0
+VPS_WRITES=ZERO
+SECRET_OUTPUT=0
+WORKSPACE_TEMP_CLEANUP=PASS
+WORKSPACE_TEMP_CLEANUP_NOTE=UNCLASSIFIED_ROOT_ITEMS_RETAINED_BY_RULE
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=.tmp-cdp-test2;.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile
+LOCAL_HELPERS_CLEANED=NO_HELPERS_CREATED_BY_THIS_GATE
+BROWSER_PROFILES_CLEANED=NO_PROFILES_CREATED_BY_THIS_GATE;UNCLASSIFIED_EXISTING_PROFILES_RETAINED
+DELIVERABLE_LOCATION=_project-artifacts/mini-craft-night-kit/k4-full-visual-audit-product-gallery-repair/deliverables/K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR-visual-review.zip
+ROLLBACK_LOCATION=ARCHIVE_MOVE_REVERSIBLE_FROM_DELIVERABLE_LOCATION;EXISTING_PAGE_ROLLBACKS_UNCHANGED_UNDER_ACTIVE_RUNTIME/.artifacts/k4-artifact-backed-block-recovery/
+ANTI_REGRESSION_POLICY_RECORDED=YES
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+### Read-only root inventory and disposition
+
+The shared root had 16 immediate entries before the single archive move and 15 afterward. No recursive inspection was made of unrelated projects. Folder sizes below are metadata totals only where a focused Mini Craft/runtime check was needed; protected or unrelated folders were not recursively sized.
+
+| Root entry | Observed size / modified | Attribution and current references | Disposition |
+| --- | --- | --- | --- |
+| `.git` | Directory; not sized; 2026-09-23 08:06 | Workspace VCS metadata; explicitly protected | KEEP_PROJECT_SOURCE / never touched |
+| `.clone-ui` | Directory; not sized; 2026-09-17 09:10 | Generic visual tooling; no inspection | UNRELATED_LEAVE |
+| `.tmp-cdp-test2` | Directory; not sized; 2026-09-23 09:31 | Nine running `msedge.exe` command lines reference it; provenance/current session ownership not resolved | UNCLASSIFIED_LEFT_IN_PLACE |
+| `.tmp-k4-detail-browser-desktop` | 1,065,020 bytes, 5 Crashpad files; 2026-09-22 19:21 | No process reference; only crash metrics/settings observed. Existing shared archive index still marks ownership unproven, so name alone is insufficient | UNCLASSIFIED_LEFT_IN_PLACE |
+| `.tmp-k4-detail-browser-mobile` | 1,065,020 bytes, 5 Crashpad files; 2026-09-22 19:21 | Same ownership limitation as desktop; no source, rollback, or screenshot payload identified | UNCLASSIFIED_LEFT_IN_PLACE |
+| `_project-artifacts` | Directory; not recursively sized; modified 2026-09-23 09:40 by this archive operation | Its existing `conversion-leak-audit/00_INDEX.md` documents the local review/archive role and GitHub as source of truth; existing subtree was not changed | Existing archive retained; dedicated Mini Craft sibling used |
+| `formwork-design` | Directory; not sized; 2026-09-12 14:45 | Explicitly unrelated by project name; not inspected | UNRELATED_LEAVE |
+| `g4-5-owner-visual-review-runtime` | 8,281 bytes across 2 log files; newest 2026-09-22 23:32 | Separate visual-review runtime; a local listener/process remains active; logs not read and directory not changed | UNRELATED_LEAVE |
+| `K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR-visual-review.zip` | 8,548,199 bytes; 2026-09-23 02:54; SHA-256 `C940A0213987AD58F3ED9518A8FDDD44F805BD1AAE63DA70F6742F29CA48DC49` | 23 ZIP entries: 22 PNGs plus `manifest.txt`; all 22 PNG paths exist in committed `docs/ui-k4-full-visual-audit/`; no process reference or credential-value pattern found | ARCHIVE_PROJECT_ARTIFACT; moved with hash verification to the location above |
+| `mini-craft-k3r4-docker-mariadb` | 1,610 bytes; 2026-09-21 12:22 | Compose working directory of two running containers with distinct named WordPress and DB volumes | KEEP_ROLLBACK_REFERENCED |
+| `mini-craft-k3r4-mariadb-recovery` | 1,769,661,390 bytes / 43,711 files; 2026-09-21 12:55 root timestamp | Exact Compose working directory for active 8093 WordPress/MariaDB containers; three project-named data/content volumes | KEEP_ACTIVE; path and runtime dependencies untouched |
+| `mini-craft-kadence-poc` | 935,833,119 bytes / 38,122 files; 2026-09-21 09:18 root timestamp | K0 PoC Compose working directory; WordPress/DB containers and dedicated core/uploads/database volumes remain active | KEEP_ROLLBACK_REFERENCED |
+| `mini-craft-night-kit` | 564,150,470 bytes / 1,236 files; 2026-09-17 14:51 root timestamp | Old project source; two running containers reference its Compose path, scripts, `.htaccess`, `wp-content`, and unique DB volume | KEEP_PROJECT_SOURCE; untouched |
+| `project-github-sync` | Directory; not sized; 2026-09-22 19:01 | Existing checkout reports 14 pre-existing changed/untracked status entries; filenames/content not inspected or modified | KEEP_PROJECT_SOURCE; untouched |
+| `SHARED_VPS_HANDOFF.md` | 5,081 bytes; 2026-09-19 02:29 | Shared handoff file, outside this local cleanup scope | UNRELATED_LEAVE |
+| `workspaces` | Directory; not sized; 2026-09-23 08:44 | Workspace collection for other work; no recursive inspection | UNRELATED_LEAVE |
+
+The `_project-artifacts` index explicitly identifies that root as a local archive rather than canonical source. The Mini Craft ZIP move was reversible and kept its original bytes; the old root ZIP path is now absent. This did not move or alter the active runtime directory. The two `.tmp-k4-detail-browser-*` folders remain because provenance was not proven, while `.tmp-cdp-test2` remains because nine Edge processes reference it and it changed during inventory. No Docker command stopped, recreated, or removed containers/volumes.
+
+### Permanent workspace anti-regression contract
+
+This Gate records the following mandatory closeout fields for every future Mini Craft Executor Gate:
+
+```text
+WORKSPACE_TEMP_CLEANUP=<PASS | RETURN>
+ROOT_TRANSIENTS_CREATED=
+ROOT_TRANSIENTS_REMAINING=
+LOCAL_HELPERS_CLEANED=
+BROWSER_PROFILES_CLEANED=
+DELIVERABLE_LOCATION=
+ROLLBACK_LOCATION=
+```
+
+Gate temporaries belong under the active runtime `.artifacts/<gate>/{rollback,screenshots,browser-profile,helpers,deliverables}/` or OS temp, never as new shared-root `.tmp-k4-*` / `.tmp-mc-*` entries. Remove helpers and browser profiles created by the Gate before return unless a retained artifact has an explicit purpose/manifest. Keep durable screenshots in GitHub; keep a visual ZIP under the Gate's deliverables. Cross-runtime artifacts may use `_project-artifacts/mini-craft-night-kit/<gate>/` only after archive purpose is verified. Classify before cleanup; unknown provenance, active sessions, other projects, `.git`, `.clone-ui`, runtimes, volumes, source, and referenced rollback stay untouched and are reported rather than guessed away.
+
+Post-cleanup checks: `http://localhost:8093/`, Product, Contact, FAQ, and Shipping & Returns all returned HTTP 200. The active WordPress container remained running with restart count 0 and its Compose working directory unchanged; MariaDB remained healthy with restart count 0. Public HTML language remains `zh-Hans`, consistent with the previously recorded `zh_CN` site locale. This Gate made no WordPress, page, media, configuration, product, PayPal, order, payment, Docker-volume, or VPS writes.

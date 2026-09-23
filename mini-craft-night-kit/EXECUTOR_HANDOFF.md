@@ -1198,3 +1198,40 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 Page-local rollback copies remain under the active runtime `.artifacts/k4-artifact-backed-block-recovery/`. This did not resume K4 Strict Storefront Cleanup and did not enter K5. The remaining Reviewer checkpoint is editor-session validation and visual review of the attached screenshot ZIP.
+
+## K4 Workspace Hygiene V2 — Executor handoff (2026-09-23)
+
+```text
+GATE=K4_WORKSPACE_HYGIENE_V2
+RESULT=PASS_CANDIDATE_K4_WORKSPACE_HYGIENE_V2
+SUMMARY=Classified 16 initial shared-root entries; archived one already-GitHub-backed K4 visual ZIP into the verified project-artifacts archive; no safe-delete target was proven.
+KEEP_ACTIVE=mini-craft-k3r4-mariadb-recovery
+KEEP_PROJECT_SOURCE=mini-craft-night-kit;project-github-sync;.git
+KEEP_ROLLBACK_REFERENCED=mini-craft-k3r4-docker-mariadb;mini-craft-kadence-poc
+ARCHIVED=_project-artifacts/mini-craft-night-kit/k4-full-visual-audit-product-gallery-repair/deliverables/K4_FULL_VISUAL_AUDIT_PRODUCT_GALLERY_REPAIR-visual-review.zip
+CLEANED=NONE
+UNCLASSIFIED_LEFT_IN_PLACE=.tmp-cdp-test2 (9 Edge process references);.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile (ownership unproven)
+UNRELATED_LEFT_UNTOUCHED=.clone-ui;formwork-design;g4-5-owner-visual-review-runtime;SHARED_VPS_HANDOFF.md;workspaces;existing conversion-leak-audit archive subtree
+ACTIVE_RUNTIME_UNCHANGED=YES
+SITE_HTTP_200=YES;HOME=200;PRODUCT=200;CONTACT=200;FAQ=200;SHIPPING_RETURNS=200
+WORDPRESS_CONTAINER=UP_RESTART_COUNT_0
+MARIADB_CONTAINER=HEALTHY_RESTART_COUNT_0
+PAGE_CONFIG_MEDIA_MUTATION=0
+WOOCOMMERCE_PAYPAL_ORDER_PAYMENT_MUTATION=0
+NEW_ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+SECRET_OUTPUT=0
+WORKSPACE_TEMP_CLEANUP=PASS
+ROOT_TRANSIENTS_CREATED=NONE
+ROOT_TRANSIENTS_REMAINING=.tmp-cdp-test2;.tmp-k4-detail-browser-desktop;.tmp-k4-detail-browser-mobile
+LOCAL_HELPERS_CLEANED=NO_HELPERS_CREATED
+BROWSER_PROFILES_CLEANED=NO_NEW_PROFILES;UNCLASSIFIED_EXISTING_PROFILES_RETAINED
+DELIVERABLE_LOCATION=_project-artifacts/mini-craft-night-kit/k4-full-visual-audit-product-gallery-repair/deliverables/
+ROLLBACK_LOCATION=ARCHIVE_MOVE_REVERSIBLE_FROM_DELIVERABLE_LOCATION;K4_PAGE_ROLLBACKS_REMAIN_UNCHANGED_IN_ACTIVE_RUNTIME/.artifacts/k4-artifact-backed-block-recovery/
+ANTI_REGRESSION_POLICY_RECORDED=YES
+EVIDENCE=EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+Permanent closeout rule recorded in `EXECUTION_EVIDENCE.md`: all future Mini Craft Gates must report the seven-field workspace cleanup contract; Gate helpers/profiles stay under `.artifacts/<gate>` or OS temp and are removed unless explicitly retained with purpose/manifest; durable screenshots go to GitHub; visual ZIPs stay in Gate deliverables; cross-runtime archive use is limited to verified `_project-artifacts/mini-craft-night-kit/<gate>/`. Unknown ownership is reported and left in place. The `.tmp-k4-detail-browser-*` entries remain unresolved and the `.tmp-cdp-test2` profile remains active; no other project, container, volume, VPS resource, or business state was touched. Strict Storefront Cleanup was not resumed and K5 was not entered.
