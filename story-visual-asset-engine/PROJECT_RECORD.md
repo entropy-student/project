@@ -43,3 +43,20 @@ G1 package prepared:
 
 Next:
 `G1_STYLE_AND_REUSE_BENCHMARK = READY_NOT_EXECUTED`
+
+
+## 2026-09-23 — Owner removes crop/composite optimization
+
+Owner rejected the local crop/reframe and local compositing branches as cost-saving mechanisms.
+
+Current accepted cost strategy:
+- direct reuse from the asset library;
+- low-quality-first screening and higher quality only for survivors/final assets;
+- reference-driven generation/edit to reduce drift and retries;
+- prompt caching where supported;
+- new generation only when reuse/reference-driven paths cannot satisfy the shot.
+
+Current operational reuse order:
+`EXACT_REUSE → DERIVE_EDIT_OR_REFERENCE_DRIVEN → NEW_GENERATE`.
+
+Historical P0 notes mentioning crop/composite are retained as research history but are superseded for current execution.
