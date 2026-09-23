@@ -231,7 +231,8 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - current interpretation: speaker-similarity, basic generation stability and same-text replay determinism are promising; cross-sentence prosody control is still not yet validated;
 - follow-up reversal/surprise sentence QA with cache/freeze disabled was judged by Owner as having no material problem, with no reported repetition/collapse or obvious delivery defect;
 - short-reaction QA using the target text `……等等，这也能算正常？` failed on the first attempt; this case is not accepted yet and is being treated as a short-utterance / punctuation robustness probe rather than a reason to reject the whole candidate;
-- next diagnostic is to keep the same model/reference/sampling settings and remove only the leading ellipsis in synthesis text (`等等，这也能算正常？`) to isolate punctuation-triggered instability; display text can remain unchanged if a synthesis-text normalization rule is later adopted;
+- removing only the leading ellipsis in synthesis text (`等等，这也能算正常？`) produced a successful generation, which supports a synthesis-text normalization rule that strips leading ellipsis while preserving the display/subtitle text;
+- the successful short reaction still had a slightly overlong internal pause, so punctuation/short-utterance pause shaping remains a minor QA issue rather than a generation failure;
 - this strengthens the current `e5 + e8` candidate, but broader cross-sentence delivery coverage is still pending before canonical promotion;
 - this is still a candidate-quality result, not canonical promotion.
 
