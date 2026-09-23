@@ -15,9 +15,9 @@
   },
   "active_workstream": {
     "id": "G6A_GPT_SOVITS_API_AND_TIMING_PROFILE",
-    "name": "First-E2E asset calibration: GPT-SoVITS candidate runtime/API validation before timing-profile calibration",
+    "name": "GPT-SoVITS candidate runtime/API validation before timing-profile calibration",
     "status": "IN_PROGRESS",
-    "next": "Run the prepared GPT-SoVITS official API determinism smoke with the accepted e5+e8 candidate and Owner-designated reference, then run one-time GPT-SoVITS Voice Timing Profile calibration/held-out validation before any canonical migration."
+    "next": "Run the prepared official API determinism smoke with the accepted e5+e8 candidate; if accepted, run a separate GPT-SoVITS Voice Timing Profile calibration and held-out validation."
   },
   "production": {
     "current_gate": "G6A",
@@ -213,7 +213,7 @@
     "standard": "docs/SRT_AUDIO_TIMING_STANDARD.md",
     "profile_spec": "docs/VOICE_TIMING_PROFILE_SPEC.md",
     "profile": "profiles/voice/VOICE_TIMING_PROFILE_COSYVOICE_300M_V2_1.json",
-    "audio_mode": "EXECUTOR_LOCKED_COSYVOICE_CURRENT_CANONICAL_BASELINE_GPT_SOVITS_MANUAL_QA_PASS_CANDIDATE",
+    "audio_mode": "COSYVOICE_CANONICAL_BASELINE_GPT_SOVITS_MANUAL_QA_PASS_CANDIDATE",
     "ownership": "TIMING_COMPILER_BEFORE_DIRECTOR",
     "routine_recalibration_required": false,
     "candidate_tts_trial": {
@@ -221,10 +221,6 @@
       "model_family": "v2ProPlus",
       "status": "MANUAL_LISTENING_QA_PASS_CANDIDATE_API_DETERMINISM_NEXT",
       "workspace": "C:\\AI\\GPT-SoVITS",
-      "conda_env": "GPTSoVits",
-      "python": "3.10.21",
-      "cuda_gpu_verified": true,
-      "webui_verified": true,
       "candidate": {
         "experiment": "narrator01_v2pp",
         "gpt_weight": "GPT_weights_v2ProPlus/narrator01_v2pp-e5.ckpt",
@@ -235,10 +231,6 @@
         "speed": 1,
         "parallel_infer": false
       },
-      "rejected_current_checkpoints": {
-        "narrator01_v2pp-e10.ckpt": "semantic instability/repetition/collapse in repeated QA",
-        "narrator01_v2pp-e15.ckpt": "abnormal/near-empty inference result in current QA path"
-      },
       "manual_listening_qa": {
         "result": "PASS_CANDIDATE",
         "covered": [
@@ -247,17 +239,7 @@
           "reversal/surprise",
           "short reaction with punctuation caveat",
           "serious closing"
-        ],
-        "known_minor": [
-          "ordinary Chinese comma can produce a slightly long pause",
-          "leading ellipsis can destabilize short-reaction synthesis and should be normalized in synthesis text when needed"
         ]
-      },
-      "runtime_reference_candidate": {
-        "audio_path": "C:\\Users\\34707\\Downloads\\morning.mp3",
-        "transcript": "睡得好吗？希望你今天顺利，别遇到那种一大早就能惹你生气的人。",
-        "role": "OWNER_DESIGNATED_LOCAL_RUNTIME_REFERENCE_FOR_NEXT_API_SMOKE",
-        "note": "Machine-specific runtime input; not portable Skill identity."
       },
       "prepared_tools": [
         "tools/gpt-sovits/PATCH_API_TORCHCODEC.bat",
@@ -265,8 +247,8 @@
         "tools/gpt-sovits/RUN_API_DETERMINISM_SMOKE.bat",
         "tools/gpt-sovits/API_DETERMINISM_SMOKE.py"
       ],
-      "next": "RUN_OFFICIAL_API_DETERMINISM_SMOKE_THEN_LISTEN_RETAINED_RUN_1",
-      "decision_rule": "Do not replace canonical CosyVoice baseline until GPT-SoVITS official API/runtime validation and its own Voice Timing Profile held-out validation pass."
+      "next": "RUN_OFFICIAL_API_DETERMINISM_SMOKE_THEN_LISTEN_RETAINED_SAMPLE",
+      "decision_rule": "Do not replace canonical CosyVoice until GPT-SoVITS official API/runtime validation and its own Voice Timing Profile held-out validation pass."
     }
   },
   "director": {
@@ -336,10 +318,10 @@
     "Normal target is one Showrunner delivery; Owner does not return real SRT for package recompilation."
   ],
   "unknowns": [
-    "GPT-SoVITS representative manual listening QA is PASS_CANDIDATE, but the official API/runtime path has not yet been executed and accepted.",
+    "GPT-SoVITS representative manual listening QA is PASS_CANDIDATE, but official API/runtime validation is not yet accepted.",
     "GPT-SoVITS does not yet have its own frozen Voice Timing Profile; CosyVoice timing coefficients must not be reused.",
-    "No final audio baseline migration has been accepted; CosyVoice remains canonical until API/runtime + timing-profile validation pass.",
-    "The first production-frame snapshot reached 20/44; remaining frame execution is paused behind the current audio/runtime gate.",
+    "CosyVoice remains canonical until API/runtime plus timing-profile validation pass.",
+    "Production frames remain partial at the last snapshot (20/44).",
     "No final-video Candidate E2E PASS exists yet."
   ],
   "owner_intervention_required": false,
