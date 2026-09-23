@@ -14,6 +14,11 @@ Current accepted/active production state:
 Active package:
 `experiments/g6/blind-search-answer/production-package-v2`
 
+Recorded production run:
+`runs/20260923-g6a-cosyvoice-r1/RUN_RECORD.json` → `RETURN`
+
+The generated WAV/timeline/frame binaries remain local runtime artifacts and are not claimed as GitHub-retained files.
+
 Current audio handoff:
 `docs/G6A_AUDIO_QA_AND_TTS_MIGRATION_TRIAL.md`
 
