@@ -1786,3 +1786,18 @@ Next step is bounded Sandbox-first deployment to `minicraft.spikersun.com` on th
 
 Formal checkpoint:
 `docs/REVIEWER_DECISION_K6_VPS_PRODUCTION_DEPLOYMENT_OWNER_CHECKPOINT.md`
+
+
+## K6 VPS Production Deployment — AUTHORIZED
+
+Owner explicitly authorized the VPS deployment phase on 2026-09-23.
+
+Current Gate:
+`K6_VPS_PRODUCTION_DEPLOYMENT`
+
+Mode: Sandbox-first public canary on `https://minicraft.spikersun.com`.
+
+Before any write, Executor must re-read and re-prove current Shared VPS truth. Existing shared 80/443/reverse-proxy/cloudflared/app topology must be preserved; Mini Craft is a project-isolated Compose stack only. Production WordPress image is pinned to `wordpress:7.1.1-php8.3-apache`. PayPal remains Sandbox; real payments/Live/Soft Launch are not authorized.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K6_VPS_PRODUCTION_DEPLOYMENT.md`
