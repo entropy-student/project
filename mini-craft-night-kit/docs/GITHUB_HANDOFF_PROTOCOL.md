@@ -1,7 +1,26 @@
 # Mini Craft Night Kit — GitHub Reviewer / Executor Handoff Protocol
 
 Last reviewed: 2026-09-22  
-Status: **TRIAL APPROVED**
+Status: **PROJECT ADDENDUM / GOVERNANCE-ALIGNED**
+
+## 0. Governance precedence
+
+The canonical Governance source is:
+
+```text
+GitHub: entropy-student/spike.skill
+Path: /vps-project-governance
+```
+
+This document is a **Mini Craft project addendum**, not a competing Governance source.
+
+Where this document repeats role boundaries, PASS/RETURN rules, Handoff ownership, Secret policy,
+Owner-operation minimization, evidence standards or other generic Governance rules, the canonical
+Governance latest controls unless an active Reviewer decision explicitly creates a bounded stricter
+override.
+
+Only Mini Craft-specific additions remain locally authoritative, including the visual-review ZIP
+delivery workflow and this project's exact GitHub paths.
 
 ## 1. Goal
 
@@ -94,17 +113,9 @@ Executor 只能写：
 除非 Reviewer 明确要求，不再让 Owner 逐张下载/上传截图。
 禁止用 Base64 长文本替代正常截图交付。
 
-## 7. Promotion to Global Governance
+## 7. Global Governance relationship
 
-当前先在 Mini Craft 项目试运行。
+The generic Reviewer/Executor/Handoff model has already been promoted into canonical Governance.
 
-满足以下条件后再写入全局 Governance：
-
-- 至少连续 3 个 Gate 顺利；
-- Reviewer 能直接从 GitHub 接管；
-- Executor 不覆盖 Reviewer Truth；
-- Owner 不需要搬运长日志；
-- Secret / evidence boundary 无事故；
-- 历史记录可追踪。
-
-成功后建立 Governance Change Gate，将其推广到其他项目。
+Do not maintain a second copy here. Future cross-project improvements must go through a separate
+Governance Change Gate. Mini Craft-only workflow details remain in this addendum.
