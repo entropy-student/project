@@ -921,3 +921,57 @@ Current:
 `G6A_FIRST_E2E_ASSET_CALIBRATION = READY_NOT_EXECUTED`
 
 The G6A stop is calibration-only and must not become a routine per-episode Owner approval gate.
+
+
+---
+
+## 2026-09-23 — G6A real-audio execution + listening QA + GPT-SoVITS candidate trial
+
+G6A moved from READY to real execution.
+
+Executed facts:
+- 43 voiced CosyVoice production units + 1 silent reaction unit were generated;
+- Runtime Timeline Resolver ran against real normalized speech durations;
+- runtime subtitles / timeline / shot timeline were produced;
+- resulting narration master duration was approximately 143.0936s;
+- first asset snapshot reported 20 / 44 production frames.
+
+Owner listening QA returned the master for:
+- multiple hard joins with no breathing gap;
+- one abrupt interruption / tail-cut risk;
+- one overlong reaction pause;
+- unclear articulation;
+- mispronunciation of “正确的官网”;
+- incorrect numeric reading in the boss-phone-number line;
+- inaccurate “AI” pronunciation;
+- one locally crowded/overlapped phrase.
+
+A targeted CosyVoice repair candidate was prepared:
+- preserve good units;
+- regenerate only failed units;
+- add semantic breathing gaps;
+- shorten the episode-specific silent reaction hold;
+- normalize synthesis-only number / abbreviation pronunciation;
+- add edge-energy and master-listening QA.
+
+Owner also judged the overall cloned voice insufficiently human, somewhat noisy/grainy in voiced regions, and emotionally flat.
+
+Decision:
+- do not immediately replace the canonical audio path;
+- trial GPT-SoVITS locally as a candidate voice-quality replacement;
+- require a representative A/B PASS before changing the canonical Story Showrunner audio adapter or Voice Timing Profile.
+
+Local GPT-SoVITS state:
+- workspace: `C:\AI\GPT-SoVITS`;
+- Conda env: `GPTSoVits`, Python 3.10.21;
+- CUDA / RTX 4050 recognized;
+- pretrained models + G2PW downloaded;
+- FFmpeg/CMake available;
+- Windows compatibility path uses standard jieba, pyopenjtalk-plus and prebuilt OpenCC;
+- WebUI is not yet accepted; latest isolated-environment blockers are missing transitive dependencies (`shellingham`, `rapidfuzz`, `platformdirs`).
+
+Current:
+`G6A IN_PROGRESS / AUDIO_QA_RETURN / GPT-SOVITS_CANDIDATE_NOT_PROVEN / FINAL_RENDER_BLOCKED`.
+
+Detailed handoff:
+`docs/G6A_AUDIO_QA_AND_TTS_MIGRATION_TRIAL.md`.
