@@ -375,3 +375,33 @@ Prepared next-gate helpers:
 - `tools/gpt-sovits/API_DETERMINISM_SMOKE.py`
 
 No full-episode regeneration is authorized before API/runtime and timing-profile validation pass.
+
+
+## 13. Asset-generation timing policy — SRT1 / SRT2 / SRT3
+
+Owner decision on 2026-09-23:
+
+The current phase is still **material / asset generation**. Audio duration does not need to match the planned duration exactly at this stage, but the actual generated duration must be measured and recorded precisely.
+
+Working timing layers:
+
+```text
+SRT1 = planned/compiler timing
+SRT2 = actual GPT-SoVITS generated-audio timing
+SRT3 = final post-assembly timing after redundant breath-gap cleanup
+```
+
+Rules for current SRT2 stage:
+- do not force a sentence into an exact planned number of seconds;
+- do not compress or time-stretch voiced speech simply to satisfy SRT1;
+- record every generated unit's actual duration precisely;
+- use actual recorded duration as runtime timing truth for material assembly;
+- accept occasional overlong internal breath/punctuation pauses as a known material-stage issue when speech itself is otherwise usable.
+
+Final cleanup:
+- after the first video assembly, perform a dedicated final timing pass;
+- trim redundant breath gaps / overlong **non-semantic** pauses where appropriate;
+- do not remove authored semantic pauses or HARD_ANCHOR meaning;
+- after that cleanup, regenerate final subtitle/timeline timestamps as SRT3.
+
+This is a project-level E2E validation decision. Do not promote it into the portable canonical Skill until the final-video E2E validates the workflow.
