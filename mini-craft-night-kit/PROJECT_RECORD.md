@@ -1465,3 +1465,10 @@ Target production WordPress image: `wordpress:7.1.1-php8.3-apache`.
 ## K6 VPS Production Deployment Owner Checkpoint
 
 Next phase is Sandbox-first production deployment to `https://minicraft.spikersun.com` on the shared Hostinger VPS. It requires explicit Owner authorization before any VPS/reverse-proxy write. Live PayPal/real-money sales remain separately blocked.
+
+
+## K6 VPS Production Deployment — authorized
+
+Owner authorized deployment. Current target is a Sandbox-first public canary at `https://minicraft.spikersun.com` on the existing shared Hostinger VPS.
+
+The deployment must first revalidate shared-host truth, then use a project-isolated WordPress/MariaDB Compose stack under the current `/srv` contract, reuse current shared ingress rather than replacing it, restore the accepted K5 RC, migrate URLs, establish DNS/HTTPS, and verify public Checkout with PayPal still in Sandbox. Real-money payment and Soft Launch remain separately blocked.
