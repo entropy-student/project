@@ -3423,7 +3423,7 @@ NEXT=STOP_AT_REVIEWER
 
 - Local canonical workspace document folders established: `docs/current`, `docs/deployment`, and `docs/archive`.
 - Nine historical local documentation copies were moved into `docs/archive/legacy-local-copy`; source/destination hashes matched after each move. No duplicate or temporary file deletion was justified or performed.
-- Shared-root direct Mini Craft loose documents: 9 before (in the two identified historical project folders), 0 after. The unrelated shared VPS handoff file was not touched.
+- Loose Mini Craft documents in two root-level historical project folders: 9 before, 0 after. The shared root itself had no Mini Craft document as a direct child; its sole direct document-like file is unrelated. The unrelated shared VPS handoff file was not touched.
 - K4/K5 deliverables, rollback SQL, K5 backups/config/manifest, runtime artifacts, active runtime directory, and canonical Git worktree were not moved or modified.
 - Read-only verification: WordPress container Up; MariaDB Healthy; localhost:8093 returned HTTP 200 when bypassing the host proxy. Canonical Git repo HEAD and dirty count remained unchanged (HEAD `8daab71da0d6ab8651d11e114781b4a0651f0ad1`, 14 pre-existing dirty entries).
 - K5 backup, config, and manifest hashes were checked before/after; unchanged. No secrets or config contents were added to GitHub. Docker/VPS/site/commerce mutations: 0.
