@@ -1612,3 +1612,23 @@ Growth framework comes from the Mini Craft Growth Playbook and Cross-Border Grow
 
 Formal decision:
 `docs/REVIEWER_DECISION_K4_5_GROWTH_SEO_READINESS_AUDIT.md`
+
+
+## K4.5 Growth / SEO Readiness Audit — FORMAL PASS
+
+Executor commit `f69ea6e3f2ee58c5bcb55d0c5dc33981a6f8b7a4` is accepted.
+
+Accepted readiness counts: P0=5, P1=7, P2=5, Defer=4. Dominant constraint is production origin/product truth/measurement/legal-delivery readiness, not SEO content volume.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_5_GROWTH_SEO_READINESS_AUDIT_PASS.md`
+
+## K4.6 Growth Foundation Spec — AUTHORIZED
+
+Current Gate:
+`K4_6_GROWTH_FOUNDATION_SPEC`
+
+Create only a lightweight 05_growth operating specification: Growth System, Unit Economics template, Event Taxonomy, UTM Standard, and evidence-backed CRO Backlog. No site/account/analytics/SEO implementation yet.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K4_6_GROWTH_FOUNDATION_SPEC.md`
