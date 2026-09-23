@@ -233,6 +233,7 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - short-reaction QA using the target text `……等等，这也能算正常？` failed on the first attempt; this case is not accepted yet and is being treated as a short-utterance / punctuation robustness probe rather than a reason to reject the whole candidate;
 - removing only the leading ellipsis in synthesis text (`等等，这也能算正常？`) produced a successful generation, which supports a synthesis-text normalization rule that strips leading ellipsis while preserving the display/subtitle text;
 - the successful short reaction still had a slightly overlong internal pause, so punctuation/short-utterance pause shaping remains a minor QA issue rather than a generation failure;
+- removing the internal comma entirely (`等等这也能算正常？`) eliminated the pause altogether, confirming the desired delivery sits between the current comma realization (too long) and no-punctuation realization (too short/no pause);
 - this strengthens the current `e5 + e8` candidate, but broader cross-sentence delivery coverage is still pending before canonical promotion;
 - this is still a candidate-quality result, not canonical promotion.
 
