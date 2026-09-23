@@ -3468,3 +3468,14 @@ Result: `RETURN_REVIEWER_HOSTINGER_CONNECTOR_UNAVAILABLE`. Official Hostinger re
 - No Hostinger VPS list/details/metrics/firewall/SSH-key/actions/Docker Manager read tool was callable. Therefore expected VM identity, provider state, metrics/uptime, provider TCP/22, attached SSH-key metadata, action history, Docker projects/containers, and SSH failure-domain classification remain `NOT_VERIFIED`; no conclusion about VPS health is made.
 - No SSH probe was repeated. No Hostinger control-plane API call, VPS power action, firewall/key/Docker/DNS mutation, payment or Live action occurred. `HOSTINGER_CONTROL_PLANE_WRITES=0`; `VPS_POWER_ACTIONS=0`; `FIREWALL_WRITES=0`; `SSH_KEY_WRITES=0`; `DOCKER_PROJECT_WRITES=0`; `RECOVERY_MODE_ACTIONS=0`; `PAYMENT_ACTIONS=0`; `LIVE_ACTIONS=0`.
 - No Owner browser login is required according to the local CLI OAuth status. Stopped at Reviewer because the authenticated official MCP is not callable from this active task; do not substitute a manual API client or AI Builder tool. A resumed execution needs the official Hostinger VPS read tools to be present in its callable tool inventory.
+
+
+## K6R2 Hostinger Control-Plane Retry After Owner Login — 2026-09-23
+
+Owner confirmed the Hostinger browser login is complete and requested a retry. The official Hostinger MCP entry remains present in local Codex CLI configuration. A fresh sanitized CLI check could not positively classify the authentication state; this check did not expose credentials or OAuth artifacts. The active Codex Executor tool inventory still has no official Hostinger VPS READ tools (only unrelated Hostinger AI Builder operations, which were not called). Therefore no provider inventory was possible and no VPS state is inferred.
+
+- Result remains `RETURN_REVIEWER_HOSTINGER_CONNECTOR_UNAVAILABLE` for this active Executor session.
+- No SSH retry; no manual API/HTTP substitute; no AI Builder call.
+- VPS/provider reads performed: none. VM identity/state, metrics, firewall, attached keys, action history, and Docker Manager projects remain unverified.
+- No Hostinger control-plane, VPS, Docker, firewall, SSH-key, DNS, payment, or Live writes/actions occurred.
+- Next permitted step: Reviewer makes the official Hostinger VPS READ tool surface available to the active Executor session; then resume this same Gate without repeating SSH.
