@@ -277,3 +277,18 @@ Allowed remote writes are restricted to:
 - disposable project-scoped restore canaries.
 
 G7 private application deployment remains HOLD until G6 Reviewer PASS.
+
+
+## Owner approval before VPS writes — 2026-09-23
+
+Owner instruction:
+
+Before any formal deployment or any write to the VPS, Executor must notify the Owner and wait for explicit approval.
+
+Current G6 authorization is therefore read-only preflight only until the Owner approves the first remote write.
+
+Required pause result:
+
+`RETURN_G6_OWNER_APPROVAL_REQUIRED_BEFORE_VPS_WRITE`
+
+This Owner checkpoint overrides any broader write permission in earlier G6 wording.
