@@ -14,14 +14,21 @@
   },
   "final_goal": "Reusable, provider-neutral story visual asset system that searches/reuses/derives/composites accepted assets before generating new images.",
   "current_gate": {
-    "id": "P0_RESEARCH_AND_PROBLEM_DEFINITION",
-    "status": "IN_PROGRESS",
-    "next": "Define the controlled three-style benchmark, minimal asset schema, and measurement plan."
+    "id": "G1_STYLE_AND_REUSE_BENCHMARK",
+    "status": "READY_NOT_EXECUTED",
+    "previous_gate": "P0_RESEARCH_AND_PROBLEM_DEFINITION",
+    "previous_result": "PASS",
+    "next": "Run G1A early-discrimination benchmark: 5 tasks × 3 style profiles under controlled provider/model/settings, then Reviewer evaluates survivors before G1B."
   },
   "style": {
     "locked": false,
-    "current_hypothesis": "LIMITED_2D_STORY_COMIC_CUTOUT_FRIENDLY",
-    "benchmark_required": true
+    "current_hypothesis": "LIMITED_2D_STORY_COMIC",
+    "benchmark_required": true,
+    "candidates": [
+      "STYLE_A_LIMITED_2D_STORY_COMIC",
+      "STYLE_B_MONOCHROME_STORYBOARD_PLUS",
+      "STYLE_C_SIMPLIFIED_ANIME_CEL"
+    ]
   },
   "cost_truth": {
     "documented": "No verified evidence that semantic art style alone lowers billed image-output tokens at fixed model/quality/size.",
@@ -39,11 +46,32 @@
     "status": "BLOCKED_UNTIL_THIS_PROJECT_PILOT_PASS"
   },
   "unknowns": [
-    "Best audience-facing style among reuse-friendly candidates.",
-    "Actual provider-specific cost delta between candidate styles after controlling for size/quality.",
-    "First-pass acceptance and retry rates by style.",
-    "Minimum useful reusable asset set for one recurring IP.",
-    "Threshold at which embedding retrieval adds value beyond structured tags."
+    "Which of the three style candidates best clears the quality floor with the lowest retry/call burden.",
+    "Actual provider-specific billed usage/cost delta under controlled settings.",
+    "How well each style survives derive/edit while preserving character and environment continuity.",
+    "Minimum reusable asset set needed before reuse rate materially lowers new-generation demand.",
+    "Whether structured metadata remains sufficient after the library grows."
   ],
-  "owner_intervention_required": false
+  "owner_intervention_required": false,
+  "benchmark": {
+    "spec": "docs/G1_STYLE_AND_REUSE_BENCHMARK_SPEC.md",
+    "prompt_profiles": "prompts/STYLE_PROFILES_V0_1.md",
+    "asset_schema": "schemas/visual_asset.schema.json",
+    "staged": true,
+    "g1a_tasks": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B10"
+    ],
+    "g1b_tasks": [
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B09"
+    ],
+    "provider_locked": false
+  }
 }
