@@ -1828,3 +1828,16 @@ Formal decision:
 ## K6 resumed
 
 The temporary cleanup pause is lifted. The Owner's earlier explicit authorization for `K6_VPS_PRODUCTION_DEPLOYMENT` remains valid; no second authorization is required. Resume from K6 Phase A read-only Shared VPS preflight before any mutation.
+
+
+## K6 Phase A — SSH transport RETURN accepted
+
+Executor commit `82962230c984767a65bbd675df2c2b9698cb5496` correctly stopped. TCP reached the approved SSH endpoint, but the remote side closed during key exchange before presenting a host key. Therefore host-key drift and Shared VPS drift are not proven; remote baseline is simply unavailable.
+
+Current Gate:
+`K6R1_SSH_TRANSPORT_DIAGNOSIS`
+
+The next Gate performs at most three bounded strict SSH/client-isolation attempts. It never weakens host-key checking or changes credentials. If SSH recovers and the recorded host key matches, it completes the original Phase A read-only inventory and stops. If the server repeatedly closes before presenting a host key, the next action becomes a minimal Hostinger-console status check by Owner, not blind SSH retries.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K6R1_SSH_TRANSPORT_DIAGNOSIS.md`
