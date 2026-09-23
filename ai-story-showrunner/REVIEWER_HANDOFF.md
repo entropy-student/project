@@ -1,7 +1,7 @@
 # Story Showrunner Validation Workspace — REVIEWER HANDOFF
 
 Date: 2026-09-23  
-Status: `CURRENT TRUTH ONLY / G6A IN_PROGRESS / AUDIO QA RETURN / GPT-SOVITS MANUAL QA PASS_CANDIDATE / API DETERMINISM NEXT / MIGRATION NOT YET CANONICAL`
+Status: `CURRENT TRUTH ONLY / G6A IN_PROGRESS / GPT-SOVITS API SMOKE PASS_CANDIDATE / OWNER LISTEN ACCEPTED / MATERIAL TIMING RECORD-EXACT / MIGRATION NOT YET CANONICAL`
 
 Historical chronology belongs in:
 - `PROJECT_RECORD.md`
@@ -242,6 +242,29 @@ Local GPT-SoVITS fine-tune status on 2026-09-23:
 - manual candidate listening QA is sufficient to move to Voice Timing Profile calibration and automation integration; canonical promotion still requires runtime/adapter validation rather than further ad-hoc sentence tuning.
 - this strengthens the current `e5 + e8` candidate, but broader cross-sentence delivery coverage is still pending before canonical promotion;
 - this is still a candidate-quality result, not canonical promotion.
+
+### Asset-generation timing policy — Owner decision
+
+Current phase is still **asset generation / calibration**, not final edit lock.
+
+For this phase:
+- do **not** force GPT-SoVITS speech to hit an exact planned duration;
+- do **not** time-stretch or compress voiced speech merely to match the planned SRT;
+- every generated Speech Unit must record its **actual measured duration precisely**;
+- the runtime timeline must be derived from those recorded durations;
+- occasional long internal breath/pause remains a known quality issue but is not repaired during material generation unless it becomes a synthesis failure;
+- after the first video assembly, create a third/final timing pass that may trim redundant breath gaps / overlong non-semantic pauses and then regenerate the final subtitle/timeline timestamps.
+
+Working three-layer interpretation:
+
+```text
+SRT1 = planned / compiler timing
+SRT2 = actual generated-audio timing, measured precisely; current material-generation authority
+SRT3 = post-assembly final timing after breath-gap cleanup; final delivery authority
+```
+
+Important:
+SRT2 does **not** need to match SRT1 precisely. The recording of SRT2 durations **does** need to be precise.
 
 Current technical next action:
 
