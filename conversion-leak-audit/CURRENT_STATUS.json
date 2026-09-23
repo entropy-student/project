@@ -19,7 +19,7 @@
     "G4_WORDPRESS_SCANNER_TOP3_LOCAL_INTEGRATION": "PASS",
     "G4_5_VISUAL_FUNCTIONAL_ACCEPTANCE": "PASS",
     "G5_FULL_FIX_QUEUE_LLM_DOGFOOD": "PASS",
-    "G6_VPS_ONBOARDING_STORAGE": "READ_ONLY_PREFLIGHT_OWNER_APPROVAL_REQUIRED_BEFORE_WRITE",
+    "G6_VPS_ONBOARDING_STORAGE": "READ_ONLY_PREFLIGHT_PASS_AWAITING_OWNER_WRITE_APPROVAL",
     "G7_VPS_PRIVATE_DEPLOYMENT": "HOLD",
     "G8_DOMAIN_HTTPS": "HOLD",
     "G9_PAYMENT_CONTROLLED_GOLIVE": "HOLD_REAL_PROVIDER",
@@ -70,7 +70,7 @@
     "public_production_scanner": "HOLD",
     "g4_scope": "LOCAL_ONLY_NO_PAYMENT_NO_VPS_NO_PRODUCTION_SECRET"
   },
-  "next_action": "CODEX_RUN_G6_READ_ONLY_PREFLIGHT_THEN_STOP_FOR_OWNER_APPROVAL_BEFORE_ANY_VPS_WRITE",
+  "next_action": "OWNER_APPROVE_OR_REJECT_G6_STAGE_A_B_VPS_WRITES",
   "reviewer_reconciliation": {
     "date": "2026-09-22",
     "status": "RECONCILED",
@@ -135,7 +135,7 @@
     "real_provider_canary": "DEFERRED_BEFORE_PRODUCTION"
   },
   "g6": {
-    "status": "READ_ONLY_PREFLIGHT_OWNER_APPROVAL_REQUIRED_BEFORE_WRITE",
+    "status": "READ_ONLY_PREFLIGHT_PASS_AWAITING_OWNER_WRITE_APPROVAL",
     "contract": "docs/G6_EXECUTION_CONTRACT.md",
     "scope": "VPS_ONBOARDING_STORAGE_BACKUP_RESTORE_ONLY",
     "branch": "codex/g6-vps-onboarding-storage",
@@ -143,7 +143,10 @@
     "shared_infra_changes": "FORBIDDEN",
     "merge_to_main": "HOLD_UNTIL_REVIEWER_PASS",
     "owner_approval_before_vps_write": "REQUIRED",
-    "formal_deployment_owner_approval": "REQUIRED"
+    "formal_deployment_owner_approval": "REQUIRED",
+    "read_only_preflight": "PASS",
+    "write_approval_decision_doc": "docs/REVIEWER_DECISION_G6_PREFLIGHT_WRITE_APPROVAL_REQUEST.md",
+    "unapproved_image_pull": "FORBIDDEN"
   },
   "post_g5_gate_order": {
     "decision_doc": "docs/REVIEWER_DECISION_POST_G5_GATE_REORDER.md",
