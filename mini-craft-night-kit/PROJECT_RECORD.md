@@ -1414,3 +1414,14 @@ Four supplier-offer leads were documented. A ORFON ND766 and C Yuhan MWK-001 hav
 ## K4.9 Supplier Contact Owner Checkpoint
 
 Next action requires explicit Owner authorization because it would contact external suppliers. Recommended first bounded inquiry set: A + C; optional B. Inquiry is information-only; no sample purchase/payment/binding commitment is authorized.
+
+
+## Launch-path correction
+
+Owner has explicitly chosen to launch the platform first and treat supplier selection, sourcing, SEO expansion and profit optimization as post-launch operations.
+
+Supplier contact is deferred. K4.8 remains optional sourcing research only.
+
+Current Gate: `K5_RELEASE_CANDIDATE_QA`.
+
+Launch path is now: K5 RC QA → VPS deployment → production canary on `minicraft.spikersun.com` → Owner uploads/approves real product data → production payment/email/domain checks → Soft Launch → operations.
