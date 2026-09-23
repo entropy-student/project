@@ -1405,3 +1405,12 @@ Current Gate: `K4_8_FIRST_SKU_PRODUCT_TRUTH_DISCOVERY`.
 Reason: the brand model is now resolved as multi-category, but the current Night Kit remains a concept shell without a concrete supplier/SKU. Product truth is the next P0 dependency before production SEO/feed/schema/analytics launch work can be trusted.
 
 The Gate will shortlist 3–5 real candidate supplier/SKU offers and stop before supplier contact or sample purchase.
+
+
+## K4.8 First SKU Product Truth Discovery — PASS
+
+Four supplier-offer leads were documented. A ORFON ND766 and C Yuhan MWK-001 have the best public listing completeness, but all candidates still lack verified US landed cost, media rights, supplier-specific remedy terms, and sample validation.
+
+## K4.9 Supplier Contact Owner Checkpoint
+
+Next action requires explicit Owner authorization because it would contact external suppliers. Recommended first bounded inquiry set: A + C; optional B. Inquiry is information-only; no sample purchase/payment/binding commitment is authorized.
