@@ -9,11 +9,12 @@ Read in this order:
 
 1. `../REVIEWER_HANDOFF.md` — Reviewer current project truth.
 2. `../CURRENT_STATUS.json` — machine-readable mirror.
-3. `G6R_CANDIDATE_RUNTIME_RECONCILIATION.md` — active reconciliation gate.
-4. `../../spike.skill/story-showrunner/SKILL.md` — portable Candidate entrypoint.
-5. Candidate core contracts under `entropy-student/spike.skill/story-showrunner/references/`.
-6. `../EXECUTION_EVIDENCE.md` — accepted/reviewable execution evidence when auditing facts.
-7. `../PROJECT_RECORD.md` — chronology and historical decisions.
+3. `G6A_AUDIO_QA_AND_TTS_MIGRATION_TRIAL.md` — active G6A audio execution, listening QA, repair and candidate TTS trial.
+4. `G6R_CANDIDATE_RUNTIME_RECONCILIATION.md` — accepted runtime reconciliation gate.
+5. `../../spike.skill/story-showrunner/SKILL.md` — portable Candidate entrypoint.
+6. Candidate core contracts under `entropy-student/spike.skill/story-showrunner/references/`.
+7. `../EXECUTION_EVIDENCE.md` — accepted/reviewable execution evidence when auditing facts.
+8. `../PROJECT_RECORD.md` — chronology and historical decisions.
 
 ## Current project contracts still active
 
