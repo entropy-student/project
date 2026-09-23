@@ -3441,3 +3441,17 @@ Connection evidence: TCP connection to the approved SSH endpoint was established
 Phase A fields remain `UNVERIFIED_REMOTE_KEX_CLOSED`: hostname; OS/kernel; CPU/RAM/disk; Docker/Compose versions; containers; networks; published ports; 80/443 owner; UFW; reverse proxy/Caddy/cloudflared; `/srv/apps`, `/srv/data`, `/srv/backups`; Mini Craft path/container/network collision; resource headroom; protected-project state.
 
 No Phase B/C/D action began. VPS writes=0; Docker writes=0; no directories, containers, networks, uploads, routes, DNS, firewall, proxy, or deployment files were changed. This return does not claim shared-host drift as a confirmed fact; it records that the required fresh baseline cannot be established safely. STOP_AT_REVIEWER.
+
+
+## K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY — 2026-09-23
+
+Result: `RETURN_OWNER_HOSTINGER_CONSOLE_CHECK_REQUIRED`. This is a bounded SSH availability return, not a claim of host-key, identity, or Shared VPS configuration drift.
+
+- Canonical Governance was read from `entropy-student/spike.skill/vps-project-governance`: core v0.1.6, SSH/Delegated Secret Operations rev2, Target Host Reality rev2, Storage Layout rev1, and Governance Handoff/source policy. Project Gate decision and governance reconciliation were read from current GitHub. Historical `K6R1_SSH_TRANSPORT_DIAGNOSIS` was treated as superseded, not executed.
+- The only available Shared VPS handoff was read at local `SHARED_VPS_HANDOFF.md`; it records the existing `ops@2.24.193.133:22` route, shared identity reference, known-host pins, and a 2026-09-19 read-only factual refresh. Its older Governance citation does not override current canonical Governance.
+- Local checks: `IDENTITY_REFERENCE_CHECK=PASS`; recorded client public fingerprint matched (`PUBLIC_FINGERPRINT_MATCH=YES`); all recorded target pins were found in normal `known_hosts` (`KNOWN_HOSTS_PIN_CHECK=PASS`). Private key contents were not read or emitted.
+- Exactly one strict SSH process was launched using the recorded identity and known_hosts, `BatchMode=yes`, `IdentitiesOnly=yes`, `StrictHostKeyChecking=yes`, port 22, `ConnectTimeout=10`, and `ConnectionAttempts=1`. Native exit code was 255. The remote closed during key exchange before presenting a host key: `SSH_HOST_KEY_PRESENTED=NO`; `SSH_HOST_KEY_MATCH=NOT_APPLICABLE`; `SSH_CONNECTION_CLASSIFICATION=REMOTE_CLOSED_PRE_HOST_KEY`.
+- No authenticated session or remote command was obtained. Phase B was not run. Host/OS/resources, Docker/Compose, containers/networks/ports, 80/443 owner, UFW, Caddy/cloudflared, /srv inventories/collisions, and protected-project health remain `UNVERIFIED_REMOTE_KEX_CLOSED`; no material Shared VPS drift is asserted.
+- No retry, alternate SSH client/account/key, proxy workaround, relaxed host-key policy, or known_hosts change. No SSH/sshd/sudo/UFW/Docker/Caddy/cloudflared/DNS/deployment mutation. `VPS_ACTIONS=0`; `DOCKER_ACTIONS=0`; `SHARED_INFRA_WRITES=0`; `REAL_PAYMENT_ACTIONS=0`; `LIVE_ACTIONS=0`.
+- Owner checkpoint is limited to Hostinger console status: confirm the VPS is Running; if web/serial console is available, report whether ssh/sshd is active, whether port 22 is listening, and whether an obvious provider/network/security block is shown. No changes or reboot are requested.
+- Stopped at Reviewer. No Mini Craft deployment or later K6 phase began.
