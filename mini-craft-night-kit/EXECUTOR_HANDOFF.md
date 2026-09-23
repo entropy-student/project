@@ -1743,3 +1743,51 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 Owner's login confirmation did not add the official Hostinger VPS READ APIs to this active Executor session. The fresh sanitized local CLI check confirmed an MCP entry but could not positively determine its auth state; no credential or OAuth data was inspected or emitted. No provider reads were made. Do not retry SSH or substitute manual API calls. Resume only after the official read tools are callable in the active task.
+
+
+## K6R3 Shared VPS Read-only Preflight Completion — 2026-09-24
+
+```text
+GATE=K6R3_SHARED_VPS_READONLY_PREFLIGHT_COMPLETION
+RESULT=PASS_CANDIDATE_K6R3_SHARED_VPS_READONLY_PREFLIGHT_COMPLETION
+GOVERNANCE_SOURCE_READ=PASS_CURRENT_GITHUB_CANONICAL
+PROJECT_AUTHORITY_READ=PASS_CURRENT_GITHUB
+LOCAL_SHARED_VPS_HANDOFF_READ=PASS
+LOCAL_TRUST_PREFLIGHT=PASS
+SSH_STRICT_HOST_KEY_CHECK=PASS
+SSH_INVOCATIONS=3_READ_ONLY_HELPER_FOLLOWUPS
+SSH_NATIVE_EXIT_STATUSES=20,21,0
+REMOTE_USER=ops
+HOSTNAME=srv1970241
+OS=Ubuntu_24.04.5_LTS
+KERNEL=Linux_6.8.0-139-generic_x86_64
+CPU_CORES=2
+RAM=7.8GiB_TOTAL;2.3GiB_USED;5.5GiB_AVAILABLE;2GiB_SWAP
+ROOT_DISK=96G_TOTAL;8.7G_USED;88G_AVAILABLE;10_PERCENT_USED
+DOCKER_VERSION=29.8.0
+COMPOSE_VERSION=v5.5.1
+CONTAINERS=6_APPLICATION_CONTAINERS_HEALTHY;CADDY_UP;CLOUDFLARED_UP;ALL_RESTART_COUNTS_0
+NETWORKS=bridge,dujiao-next-internal,host,none,spikersun-edge,spikersun-private,unified-pay-internal,xianyu_xianyu-network
+CURRENT_HOST_PORTS=22_SSH;80_443_SHARED_CADDY
+UFW=ACTIVE_DEFAULT_DENY_ALLOW_22_80_443_IPV4_IPV6
+CURRENT_80_443_OWNER=spikersun-edge-caddy-1
+CADDY_CONFIG_SOURCE=/srv/infra/edge/Caddyfile_MOUNT_READ_ONLY
+CLOUDFLARED=RUNNING_ON_spikersun-private_NO_HEALTHCHECK
+SRV_APPS=dujiao-next,unified-pay,xianyu,xianyu.pre-x6-20260911-0729_UNCLASSIFIED_UNINSPECTED
+SRV_DATA=dujiao-next,unified-pay,xianyu
+SRV_BACKUPS=dujiao-next,shared-infra,unified-pay,xianyu
+MINICRAFT_PATH_COLLISION=NO
+MINICRAFT_CONTAINER_COLLISION=NO
+MINICRAFT_NETWORK_COLLISION=NO
+MINICRAFT_HOST_PORT_COLLISION=NO
+RESOURCE_HEADROOM=5.5GiB_RAM;88G_ROOT_DISK_FREE;2_CPU_CORES_INSTANTANEOUS_LOAD_NOT_MEASURED
+EXISTING_PROJECTS_PROTECTED=YES_READ_ONLY
+REMOTE_WRITES=0
+DOCKER_WRITES=0
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+Two bounded read-command helpers returned remote statuses 20 and 21 due to command-format issues; the same recorded strict SSH path was used for read-only follow-ups, whose final Caddy metadata command exited 0. No connection failure or host-key mismatch occurred. The extra historical-looking Xianyu app-root entry remains unclassified and untouched for Reviewer assessment. K6 deployment was not started.

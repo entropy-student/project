@@ -3479,3 +3479,51 @@ Owner confirmed the Hostinger browser login is complete and requested a retry. T
 - VPS/provider reads performed: none. VM identity/state, metrics, firewall, attached keys, action history, and Docker Manager projects remain unverified.
 - No Hostinger control-plane, VPS, Docker, firewall, SSH-key, DNS, payment, or Live writes/actions occurred.
 - Next permitted step: Reviewer makes the official Hostinger VPS READ tool surface available to the active Executor session; then resume this same Gate without repeating SSH.
+
+
+## K6R3 Shared VPS Read-only Preflight Completion — 2026-09-24
+
+Result: `PASS_CANDIDATE_K6R3_SHARED_VPS_READONLY_PREFLIGHT_COMPLETION`. This is a read-only Phase A inventory candidate; it is not deployment authorization or Reviewer PASS.
+
+### Authority and transport
+
+- Read current canonical `entropy-student/spike.skill/vps-project-governance/vps-project-governance/` sources: `SKILL.md` (`5e6ba08305ad802e5f6ce732d8ca731bc316b141`), `GOVERNANCE_HANDOFF.md` (`41392d5235888faf8c7874b217990a63ceedbf82`), `SSH_AND_DELEGATED_SECRET_OPERATIONS.md` (`a0b5e2ad0bcb02184478ad660cd2f33375c59198`), `TARGET_HOST_REALITY_CONTRACT.md` (`84a0f35dab5397b381bae79ad5f2b1fcda6ea7f3`), `STORAGE_LAYOUT_CONTRACT.md` (`04831d59e08a2d91dbe35bb9b9c18d2ba1d77b58`), and `GOVERNANCE_SOURCE_POLICY.md` (`7d1897b6a032a5de0686ff6704c8854f54699ab4`).
+- Read current Mini Craft Reviewer Handoff, Project Record, Storage Manifest, K5 PASS decision, K6 deployment decision, and K6R3 decision from GitHub. The recorded current project namespaces are `/srv/apps/mini-craft-night-kit`, `/srv/data/mini-craft-night-kit`, and `/srv/backups/mini-craft-night-kit`.
+- Read the unique local `C:\Users\34707\Documents\ChatGPT\VPS基建\SHARED_VPS_HANDOFF.md`. The pre-connect check confirmed the recorded identity reference, public fingerprint, and normal `known_hosts` pins. Private-key contents were not read.
+- SSH used only the recorded `ops` endpoint, identity and normal `known_hosts`, with `BatchMode=yes`, `IdentitiesOnly=yes`, `StrictHostKeyChecking=yes`, a bounded connect timeout, and one connection attempt per invocation. Three strict read-only invocations were needed to correct two remote inventory-helper command-format errors; remote native exit statuses were `20`, `21`, then `0`. No alternate client/key/account, trust relaxation, or retry after a connection failure occurred. The first two statuses are command/helper failures, not SSH transport or host-key failures; the final targeted Caddy metadata read completed with status 0.
+
+### Fresh host and capacity facts
+
+- `REMOTE_USER=ops`; `HOSTNAME=srv1970241`; `OS=Ubuntu 24.04.5 LTS`; `KERNEL=Linux 6.8.0-139-generic x86_64`.
+- `CPU_CORES=2`; RAM total `7.8 GiB`, used `2.3 GiB`, available `5.5 GiB`; swap `2 GiB`.
+- Root and `/srv`: `96G` total, `8.7G` used, `88G` available (`10%` used). Docker storage summary: images `3.234 GB`, containers `22.62 MB`, build cache `1.929 GB`, volumes `0`. Instantaneous CPU load was not separately measured.
+- Docker `29.8.0`; Compose `v5.5.1`.
+
+### Docker, networks, ports, and shared ingress
+
+- Container readback (all restart counts `0`):
+  - `dujiao-next-app-1`, `dujiao-next-postgres-1`, `dujiao-next-redis-1`: running and healthy.
+  - `unified-pay-app-1`, `unified-pay-db-1`: running and healthy.
+  - `xianyu-xianyu-app-1`: running and healthy.
+  - `spikersun-private-cloudflared-1`: running; no container healthcheck configured; on `spikersun-private`.
+  - `spikersun-edge-caddy-1`: running; no container healthcheck configured; on `spikersun-edge`.
+- Docker networks present: `bridge`, `dujiao-next-internal`, `host`, `none`, `spikersun-edge`, `spikersun-private`, `unified-pay-internal`, `xianyu_xianyu-network`. No Mini Craft network was present. Application container/network metadata was inspected read-only; no network membership was changed.
+- Host listeners: SSH service owns TCP 22; Docker-published shared Caddy owns TCP 80 and 443 on IPv4 and IPv6. No other published host ports were observed.
+- UFW is active; inbound default is deny; allow rules are present for TCP 22, 80, and 443 on IPv4/IPv6.
+- Caddy runs as `caddy:2-alpine`, with command `caddy run --config /etc/caddy/Caddyfile --adapter caddyfile`; configuration source is host `/srv/infra/edge/Caddyfile` mounted at `/etc/caddy/Caddyfile`, with config/data mounts under `/srv/infra/edge/`. Caddyfile contents were not read.
+- Shared cloudflared container is running without a healthcheck and is attached to `spikersun-private`. No tunnel credential or configuration value was read.
+
+### Namespaces and drift note
+
+- `/srv/apps` entries observed: `dujiao-next`, `unified-pay`, `xianyu`, and `xianyu.pre-x6-20260911-0729`.
+- `/srv/data`: `dujiao-next`, `unified-pay`, `xianyu`.
+- `/srv/backups`: `dujiao-next`, `shared-infra`, `unified-pay`, `xianyu`.
+- All three Mini Craft paths in the Storage Manifest are absent. No Mini Craft container or network collision was found. No existing project was modified.
+- `xianyu.pre-x6-20260911-0729` is an unclassified existing app-root entry. Its purpose and contents were not inspected; it has no matching running container in the enumerated container inventory and does not collide with Mini Craft namespaces. It is surfaced for Reviewer assessment and was left untouched.
+- Available headroom is `5.5 GiB` RAM and `88G` root-disk free; current topology shows no Mini Craft path/container/network/host-port collision. The extra unclassified Xianyu path is not treated as a Mini Craft conflict.
+
+### Safety and stopping point
+
+- `REMOTE_WRITES=0`; no directories, containers, networks, image operations, deployment, restores, routes, DNS, UFW, SSH, Caddy, cloudflared, or shared infrastructure were changed.
+- No Secret, private key, credential value, business record, PayPal Live setting, order, or payment was read or changed. `PAYMENT_ACTIONS=0`; `LIVE_ACTIONS=0`.
+- K6 deployment has not started. Stop at Reviewer for independent acceptance of this Phase A candidate.
