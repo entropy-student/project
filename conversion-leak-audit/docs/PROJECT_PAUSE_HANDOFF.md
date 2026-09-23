@@ -142,3 +142,35 @@ If unique local-only evidence is discovered, do not delete it. First summarize i
 No Executor work is authorized while project status is `PAUSED_BY_OWNER`.
 
 Owner must explicitly reopen the project before any new Gate execution.
+
+
+## Local cleanup status — partial/tool-blocked
+
+A bounded local cleanup attempt was run after the project pause.
+
+Result:
+
+`RETURN_LOCAL_CLEANUP_TOOL_BLOCKED`
+
+Completed:
+- removed verified CLA runtime `VPS基建\g4-5-owner-visual-review-runtime`;
+- removed `workspaces\g45-temp-20260923`;
+- stopped CLA local containers/networks/listeners;
+- VPS actions: 0.
+
+Still present locally:
+- five G4–G6 workspace clones;
+- CLA `_project-artifacts/conversion-leak-audit` screenshots/review packages/archives;
+- three confirmed CLA-owned temp directories.
+
+Left untouched because ownership/activity is unresolved:
+- `.tmp-cdp-test2`;
+- `.tmp-k4-detail-browser-desktop`;
+- `.tmp-k4-detail-browser-mobile`;
+- `%TEMP%\studio-siteurl-prepend-G4l7Ps`.
+
+The remaining verified CLA duplicates may be removed later only from an execution environment that supports safe recursive deletion. Unknown temp directories must remain untouched unless ownership is proven.
+
+Canonical Git checkout remains:
+
+`C:\Users\34707\Documents\ChatGPT\VPS基建\project-github-sync\conversion-leak-audit`
