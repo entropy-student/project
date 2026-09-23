@@ -323,7 +323,10 @@
     "status": "CANONICAL_SIMPLE",
     "standard": "docs/OUTPUT_RECORD_STANDARD.md",
     "root": "outputs/",
-    "rule": "one episode INDEX.md + one RUN_RECORD.json per meaningful retained production run"
+    "rule": "one episode INDEX.md + one RUN_RECORD.json per meaningful retained production run",
+    "latest_run_record": "outputs/blind-search-answer/runs/20260923-g6a-cosyvoice-r1/RUN_RECORD.json",
+    "latest_run_status": "RETURN",
+    "binary_retention_note": "Real audio/timeline/frame binaries are local runtime artifacts; GitHub currently retains metadata/evidence, not those binaries."
   },
   "review_takeover": {
     "date": "2026-09-23",
