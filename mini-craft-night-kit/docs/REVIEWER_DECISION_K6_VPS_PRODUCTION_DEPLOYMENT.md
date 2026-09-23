@@ -4,6 +4,21 @@ Date: 2026-09-23
 Status: AUTHORIZED
 Owner authorization: explicit in chat ("开始")
 
+## Governance authority notice
+
+This file remains authoritative for **Mini Craft-specific deployment facts and permissions** only.
+
+For any rule duplicated by the canonical VPS Governance (SSH recovery, Shared Infra classification,
+Storage Layout, Target Host Reality, Secret handling, deployment-manifest invariants, evidence,
+resource/disk rules, rollback and Owner boundaries), the canonical
+`entropy-student/spike.skill/vps-project-governance` latest controls unless an active Reviewer
+decision explicitly sets a bounded stricter override.
+
+Current execution is further narrowed by:
+`docs/REVIEWER_DECISION_K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY.md`.
+
+Do not execute historical overlapping wording in this file as a competing Governance contract.
+
 ## Objective
 
 Deploy the accepted Mini Craft Release Candidate to the existing shared Hostinger VPS as a Sandbox-first public canary.
