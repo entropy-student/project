@@ -998,3 +998,48 @@ Current decision:
 `GPT-SoVITS = CANDIDATE_READY_FOR_5_CASE_A_B`.
 
 CosyVoice remains the project baseline until explicit A/B acceptance.
+
+
+---
+
+## 2026-09-23 — GPT-SoVITS fine-tune QA candidate + automation gate
+
+The local GPT-SoVITS experiment advanced beyond installation into completed fine-tuning and representative listening QA.
+
+Training/runtime compatibility work:
+- Windows/TorchCodec reference-audio paths were moved to the already-proven librosa loader where required;
+- single-GPU Windows SoVITS/GPT training paths were corrected to avoid unnecessary DDP/Gloo process behavior;
+- GPT bucket sampling was made safe when torch.distributed is not initialized;
+- Rich/GBK teardown noise was removed from the GPT training path.
+
+Fine-tune result:
+- experiment: `narrator01_v2pp`;
+- SoVITS retained candidate: `narrator01_v2pp_e8_s248.pth`;
+- GPT e15 rejected in current QA path after abnormal/near-empty output;
+- GPT e10 rejected after repeated semantic instability/repetition/collapse;
+- GPT e5 retained as current candidate after repeated successful inference.
+
+Current candidate settings:
+`e5 + e8 / temperature 0.8 / top_k 15 / top_p 1 / speed 1 / parallel false`.
+
+Representative Owner listening QA covered neutral, curiosity/suspicion, reversal/surprise, short reaction and serious closing. Result:
+`PASS_CANDIDATE`.
+
+Known minor:
+ordinary Chinese comma may pause slightly long; this is accepted rather than introducing systematic post-processing.
+
+Governance decision:
+- manual QA PASS_CANDIDATE does not promote GPT-SoVITS to canonical;
+- next gate is official API determinism/runtime validation;
+- if that passes, run a separate GPT-SoVITS Voice Timing Profile calibration + held-out validation;
+- only then decide whether to migrate the canonical audio baseline.
+
+Prepared API helpers live under:
+`tools/gpt-sovits/`.
+
+Owner-designated local runtime reference for the next smoke:
+`C:\Users\34707\Downloads\morning.mp3`
+with transcript:
+`睡得好吗？希望你今天顺利，别遇到那种一大早就能惹你生气的人。`
+
+This local path is runtime configuration, not portable Skill identity.
