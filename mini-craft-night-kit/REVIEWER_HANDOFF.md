@@ -1893,3 +1893,18 @@ Owner should only confirm VPS Running state, provider console availability, ssh/
 
 Formal decision:
 `docs/REVIEWER_DECISION_K6R2_OWNER_HOSTINGER_CONSOLE_CHECK.md`
+
+
+## K6R2 — Hostinger control-plane fallback before Owner console
+
+The prior Owner Web/Serial Console checkpoint is superseded for current execution. Owner terminal operation is not yet required.
+
+Current Gate:
+`K6R2_HOSTINGER_CONTROL_PLANE_FALLBACK`
+
+Reason: canonical Governance minimizes Owner technical operation, and Hostinger now provides an official Connector/MCP compatible with OpenAI Codex. Executor should first use this provider control plane read-only to inspect VM status, metrics, firewall/22 state, attached SSH-key metadata, action history and Docker Manager project/container state. If Connector auth is not already available, the only permitted Owner action is browser OAuth/consent; no terminal commands or API-token pasting.
+
+This control plane is diagnostic only and does not replace the governed SSH path for secret-safe deployment without a later Reviewer decision.
+
+Formal decision:
+`docs/REVIEWER_DECISION_K6R2_HOSTINGER_CONTROL_PLANE_FALLBACK.md`
