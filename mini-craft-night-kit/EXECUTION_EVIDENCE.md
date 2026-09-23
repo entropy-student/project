@@ -3336,3 +3336,19 @@ The first accessibility snapshot came from an already-open, stale Product tab an
 The logged-in page exposed the `admin` toolbar and an `Edit product` link only. No product save, media upload, field edit, order-admin access, cart action, or checkout submission was tested. Product gallery thumbnails were present but not clicked. The existing JPY 1 / stock 8 / `MCK-LOCAL-TEST-001` values were observed and left unchanged as local QA data.
 
 All listed routes returned HTTP 200 through direct loopback requests. Docker reported the designated 8093 WordPress container running and MariaDB healthy. WordPress CLI is not installed in the container; plugin/theme drift, Gutenberg validity, JavaScript/PHP application logs, PayPal sandbox state, responsive breakpoints and remaining admin capabilities were not verified. The deployment manifest and new DB/wp-content/config backups were deliberately not created while the K4 product-display conflict remains unresolved. No site, Docker, product, media, cart, order, payment, PayPal, VPS or secret state was changed.
+
+## K5R1 Related Products Baseline Repair — 2026-09-23
+
+- Gate: `K5R1_RELATED_PRODUCTS_BASELINE_REPAIR`
+- Result: `PASS_CANDIDATE_K5R1_RELATED_PRODUCTS_BASELINE_REPAIR`
+- Runtime: local Docker/MariaDB recovery site at `http://localhost:8093/`; WordPress container running, MariaDB healthy; WordPress 7.1.1, WooCommerce 10.0.4, Kadence theme.
+- Legacy products before and after: ID 222 `draft`; ID 224 `draft`; ID 117 `draft`. Each retains catalog visibility `visible`; draft post status is the customer-visibility gate. No product was deleted or status-edited.
+- Related source: WooCommerce native `woocommerce_after_single_product_summary` hook at priority 20. Product 223 has no `woocommerce/related-products` block, no legacy IDs in saved content, and no Kadence template override for related/single-product output.
+- Root cause: stale WooCommerce transient `wc_related_223` contained cached IDs `[117, 222, 224]`. WooCommerce 10.0.4 source confirms `wc_get_related_products()` caches by product ID in this transient for up to one day. The anonymous baseline already suppressed draft products; an authenticated/admin view could expose them from the stale list.
+- Repair: deleted only `wc_related_223` using WordPress `delete_transient()`. The next product-page request recomputed the related IDs as an empty list. No broad transient/database cleanup, template edit, filter, block edit, or theme change was used.
+- Fresh anonymous verification: Product HTTP 200; USB-C Cable, Universal Charger, Remote Control absent. Shop HTTP 200; Mini Craft Night Kit present and all three legacy titles absent. Home, Shop, Product HTTP 200.
+- Product Gallery smoke: clicked a gallery thumbnail twice in the existing browser session; the active main image remained full-size and the thumbnail strip remained intact. No gallery/layout changes.
+- Product 223 saved-content SHA-256 remained `7a8dee19692b87d364f51cccbcc7edcafd779de12e17bfd750e453a3d423d446`. Product title/price/stock/SKU/category were not edited (visible values remained `¥1`, stock `8`, SKU `MCK-LOCAL-TEST-001`). Home was not edited.
+- Safety: no order, payment, PayPal, Live, VPS, SEO, analytics, or email actions. No secrets were read or emitted.
+- Local rollback/diagnostic baseline retained at `C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-k3r4-mariadb-recovery\\.artifacts\\k5r1-related-products-baseline-repair\\rollback\\before.json` (cache values are reproducible; only the one named related-products transient was cleared).
+- Cleanup: temporary PHP helpers removed from host and container `/tmp`; no shared-root temporary directories created; no visual ZIP required because no layout/block/template changes.
