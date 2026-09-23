@@ -1,7 +1,7 @@
 # Story Showrunner Validation Workspace — REVIEWER HANDOFF
 
 Date: 2026-09-23  
-Status: `CURRENT TRUTH ONLY / TAKEOVER REVIEW RECONCILED`
+Status: `CURRENT TRUTH ONLY / G6A IN_PROGRESS / AUDIO QA RETURN / TTS CANDIDATE TRIAL`
 
 Historical chronology belongs in:
 - `PROJECT_RECORD.md`
@@ -53,7 +53,7 @@ P0 / G1 / G2 / G2.5 / G3 / G3R / G4 / G5
 = ACCEPTED WITH THEIR ORIGINAL VALIDATION SCOPE
 
 G6R = PASS
-G6A First-E2E Asset Calibration Gate = READY_NOT_EXECUTED
+G6A First-E2E Asset Calibration Gate = IN_PROGRESS / AUDIO_QA_RETURN / FRAME_ASSETS_PARTIAL
 G7 Final End-to-End Validation = BLOCKED_BY_G6A
 ```
 
@@ -183,16 +183,36 @@ Normal technical reconciliation remains Reviewer/maintainer work.
 
 ## 12. Immediate next action
 
-Run:
+G6A has now been partially executed.
 
-`G6A_FIRST_E2E_ASSET_CALIBRATION`
+Current facts:
 
-using:
+- real CosyVoice production TTS executed;
+- Runtime Timeline Resolver executed against real durations;
+- runtime master duration is approximately 143.0936s;
+- Owner listening QA returned the master for breathing-gap, cut-tail, pronunciation, articulation and prosody issues;
+- a targeted CosyVoice repair candidate exists but is not yet accepted;
+- first production-frame snapshot reached 20 / 44;
+- final render remains blocked.
 
-`experiments/g6/blind-search-answer/production-package-v2/ANTIGRAVITY_ASSET_GATE_TASK.md`
+A local GPT-SoVITS candidate trial is now in progress because the remaining complaint is not only timing/joins but also synthetic timbre, voiced noise and weak emotion.
 
-This gate may generate real TTS + resolved timeline + 44 production frames, then stop for one calibration review before final FFmpeg assembly.
+Current technical next action:
 
-The Asset review is a **FIRST_E2E_CALIBRATION_EXCEPTION**, not a permanent per-episode Owner gate.
+```text
+finish GPT-SoVITS isolated-environment dependency sync
+→ launch WebUI
+→ run a 5-case A/B against current CosyVoice
+→ choose audio baseline
+→ repair/regenerate only failed units
+→ regenerate runtime timeline
+→ resume G6A frame gate
+```
+
+Current audio-trial handoff:
+
+`docs/G6A_AUDIO_QA_AND_TTS_MIGRATION_TRIAL.md`
+
+CosyVoice remains the current canonical timing/voice baseline until the A/B trial passes. Do not mutate the portable Skill merely because the candidate is installed.
 
 Do not promote the Skill to CANONICAL until final-video E2E PASS.
