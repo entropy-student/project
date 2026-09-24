@@ -1887,3 +1887,30 @@ COMMIT=942e5e647fe1349a77250bef2e5f4da0271c390b
 OWNER_ACTION=NONE_NOW;FUTURE_EXACT_SECRET_AUTHORIZATION_ONLY_AFTER_REVIEWER_GATE
 NEXT=STOP_AT_REVIEWER
 ```
+
+## K6 Phase C1 Secret Provisioning — Reviewer return (2026-09-24)
+
+```text
+GATE=K6_PHASE_C1_SECRET_PROVISIONING_AND_RECOVERY
+RESULT=RETURN_REVIEWER_C1_REMOTE_ACK_REJECTED_PREWRITE
+SUMMARY=DPAPI CurrentUser pending recovery round-trip passed, but the remote protocol acknowledgement was rejected before any target filesystem mutation; strict read-only readback confirmed all target paths absent. Stopped without retry.
+EVIDENCE=EXECUTION_EVIDENCE.md (K6 C1 section)
+REMOTE_WRITES=0
+VPS_PERSISTENT_WRITES=0
+REMOTE_TARGET_PATHS_CREATED=0
+DPAPI_PENDING=RETAINED_ENCRYPTED;NOT_PROMOTED;NOT_DELETED;1686_BYTES;CURRENTUSER_ACL_VERIFIED
+DPAPI_PENDING_PATH=%LOCALAPPDATA%\MiniCraftNightKit\secret-recovery\k6-c1-mini-craft-night-kit-srv1970241.pending.dpapi
+REMOTE_FAILURE=ACK_REJECTED_CRLF_VS_LF;EXIT_76
+REMOTE_READBACK=EXIT_0;PROJECT_PATH_ABSENT;SECRET_DIR_ABSENT;ALLOWLIST_0_OF_10
+RETRY=NO_REVIEWER_DECISION_REQUIRED
+COMPOSE_OR_IMAGE_PULL=0
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+SECRET_VALUES_OR_HASHES_EXPOSED=0
+EVIDENCE_COMMIT=UNKNOWN
+OWNER_ACTION=NONE_PENDING_REVIEWER_DECISION
+NEXT=STOP_AT_REVIEWER
+```
+
+The exact encrypted pending artifact remains only on the protected Owner Windows profile. No payload was decrypted after the failure; no remote path or secret file was created. Do not retry or remove/promote the pending artifact until Reviewer issues an exact recovery decision.
