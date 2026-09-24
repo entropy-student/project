@@ -16,14 +16,15 @@ MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
 SECRET_AUTHORIZATION=OWNER_EXACT_TEN_FILE_DELEGATION_GRANTED_2026-09-24
-OWNER_ACTION=NONE_NOW
+EXECUTOR_STATUS=NOT_STARTED_AWAITING_OWNER_DIRECTED_EXTERNAL_AGENT
+OWNER_ACTION=SEND_C1_DECISION_TO_EXTERNAL_EXECUTOR
 ```
 
 Formal C0 Reviewer PASS: `docs/REVIEWER_DECISION_K6_C0_PASS_C1_SECRET_OWNER_CHECKPOINT.md`. The Executor measured 198,537,216 physical bytes in the accepted local MariaDB datadir and performed a strict read-only VPS preflight. The Reviewer independently checked SSH trust metadata and read back `srv1970241` root and RAM capacity without remote writes. The 2,693,949,314-byte (~2.51 GiB) planning increment includes both images, two archive copies, wp-content, bounded logs and 3× measured DB datadir for data/restore workspace. Projected root use was ~11.68%, below the 60% stop line. The 3× reserve is a planning assumption; fresh prewrite checks and growth monitoring are mandatory.
 
 The Executor's reported `REVIEWER_HANDOFF.md` drift is corrected: this file's top CURRENT REVIEWER STATUS already pointed to C0 before the present update. Older markers below are historical and superseded. The C0 candidate was otherwise consistent with the authorized read-only Gate. No Mini Craft VPS namespace or deployment exists; no Secret value or recovery artifact was created.
 
-Owner explicitly accepted the exact ten-file Secret delegation in chat on 2026-09-24 (“我授权，开始吧。”), replying to the C0 Reviewer authorization checkpoint. Formal bounded execution decision: `docs/REVIEWER_DECISION_K6_C1_SECRET_PROVISIONING_AUTHORIZED.md`. Current Gate is `K6_PHASE_C1_SECRET_PROVISIONING_AND_RECOVERY`. This permits only the exact new project Secret directory/files and protected Owner-host DPAPI recovery artifact after fresh host/trust/capacity/collision preflight. It does not authorize Compose start, DB restore, ingress/DNS, PayPal Live, real payment or launch. Executor must return to Reviewer after redacted evidence; C1 has not yet been executed.
+Owner explicitly accepted the exact ten-file Secret delegation in chat on 2026-09-24 (“我授权，开始吧。”), replying to the C0 Reviewer authorization checkpoint. Formal bounded execution decision: `docs/REVIEWER_DECISION_K6_C1_SECRET_PROVISIONING_AUTHORIZED.md`. Current Gate is `K6_PHASE_C1_SECRET_PROVISIONING_AND_RECOVERY`. This permits only the exact new project Secret directory/files and protected Owner-host DPAPI recovery artifact after fresh host/trust/capacity/collision preflight. It does not authorize Compose start, DB restore, ingress/DNS, PayPal Live, real payment or launch. Executor must return to Reviewer after redacted evidence; C1 has not yet been executed. Owner subsequently directed this Codex task to act only as Reviewer/Planner and not call any execution agent or subagent. The briefly started subagent was stopped. Formal role-boundary and read-only stop-state audit: `docs/REVIEWER_DECISION_K6_C1_EXECUTION_HANDOFF_ONLY.md`. At that audit, GitHub Executor files had no C1 result, the target project data/Secret paths were absent, and the Owner Windows DPAPI recovery leaf was absent. C1 remains authorized but awaits an external Execution Agent started by the Owner; this Reviewer task will only review its return.
 
 K5 RC, K6R3 read-only preflight and Phase B local package/R1 remain PASS. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
 
