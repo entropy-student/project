@@ -1914,3 +1914,29 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The exact encrypted pending artifact remains only on the protected Owner Windows profile. No payload was decrypted after the failure; no remote path or secret file was created. Do not retry or remove/promote the pending artifact until Reviewer issues an exact recovery decision.
+
+## K6 C1R1 ACK Protocol Reconciliation — 2026-09-24
+
+```text
+GATE=K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION
+RESULT=PASS_CANDIDATE_K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION
+SUMMARY=Corrected the synthetic-only ACK rehearsal transport and verified exact LF/CRLF acceptance plus malformed/truncated/extra-byte rejection over strict SSH; remote target paths stayed absent.
+EVIDENCE=EXECUTION_EVIDENCE.md (K6 C1R1 section)
+LOCAL_HELPER=mini-craft-night-kit-workspace/artifacts/gates/k6-phase-c1r1-ack-protocol-reconciliation/helpers/ack-protocol-rehearsal.ps1
+LOCAL_HELPER_SHA256=E2D7FC41BF14AE0740DC668A3E3D43A4969F2D1CEAC3FE64E698B2DBB0B2975A
+PROTOCOL_CASES=5_OF_5_PASS
+REMOTE_IDENTITY=ops@srv1970241;STRICT_PINNED_SSH
+TARGET_PATHS=ABSENT_BEFORE_AND_AFTER_ALL_CASES
+DPAPI_PENDING=RETAINED_UNCHANGED;NOT_OPENED;NOT_DECRYPTED;NOT_PROMOTED;NOT_DELETED
+REMOTE_WRITES=0
+VPS_WRITES=0
+C1_INSTALLER_INVOKED=NO
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+SECRET_VALUES_OR_HASHES_EXPOSED=0
+EVIDENCE_COMMIT=c0320e2e02a9e6277a17fd45d27bc28303efd31e
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+The initial synthetic run exposed a local harness stdin collision and failed closed. Only the test harness was corrected; the five-case strict SSH rehearsal then passed. No real Secret action or write retry is authorized by this Gate.
