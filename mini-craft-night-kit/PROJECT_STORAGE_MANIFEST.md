@@ -1,8 +1,8 @@
 # Mini Craft Night Kit — PROJECT STORAGE MANIFEST
 
-Status: K6 PHASE C1 EXACT SECRET GATE AUTHORIZED / REMOTE STORAGE NOT CREATED
+Status: K6 C1 ACK REJECTED PREWRITE / REMOTE STORAGE NOT CREATED / ENCRYPTED PENDING RETAINED
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6_PHASE_C1_SECRET_PROVISIONING_AND_RECOVERY`
+Current Gate: `K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
@@ -82,7 +82,7 @@ The proposed host `secrets/` directory is `root:root` mode `0700`; individual fi
 
 Provisioning must be exact-allowlist, cryptographic-RNG based, atomic exclusive create/fail-on-existing, no value or value-hash output, and no overwrite absent a separate rotation Gate. Default Secret authority remains Owner-only. On 2026-09-24 the Owner explicitly accepted the exact ten-file project/host/path/format/no-overwrite/DPAPI scope documented in `docs/REVIEWER_DECISION_K6_C1_SECRET_PROVISIONING_AUTHORIZED.md`; C1 execution remains pending and no target Secret or recovery artifact exists yet.
 
-Proposed first encrypted recovery copy: a DPAPI `CurrentUser` pending artifact under `%LOCALAPPDATA%\MiniCraftNightKit\secret-recovery\` on the verified Owner Windows host, outside Git/review bundles. The future authorized Gate must stream protected bytes over the verified channel, encrypt in memory, prove immediate decrypt/byte-identity round-trip, complete target provisioning and runtime read-back, then promote pending to final with host-local path/ACL verification. This limited-failure-domain copy is bound to that Windows profile and does not survive simultaneous loss of the VPS and that profile. **No real Secret, DPAPI artifact, recovery directory or round-trip was created in R1.**
+First off-host recovery design is DPAPI `CurrentUser` under the verified Owner Windows profile, outside Git/review bundles. The C1 attempt generated the ten intended values only in target process memory and created `%LOCALAPPDATA%\MiniCraftNightKit\secret-recovery\k6-c1-mini-craft-night-kit-srv1970241.pending.dpapi` (1,686 bytes). Immediate in-memory DPAPI byte-identity round-trip passed. The Windows CRLF acknowledgement was rejected by the remote LF-only parser before any target path/file write. Reviewer read-only check found `/srv/data/mini-craft-night-kit` absent; the Owner recovery leaf is protected with an Owner-only ACL. The pending artifact was **not** promoted, deleted, copied or decrypted in Reviewer audit. It is **not** a final deployed Secret recovery copy. Retain it unchanged during the local-only C1R1 protocol Gate. A later write retry needs fresh explicit Owner authorization and a separate Reviewer disposition decision. Profile-bound recovery does not survive simultaneous loss of both VPS and Owner Windows profile.
 
 Default metadata target:
 
@@ -206,7 +206,7 @@ PROJECT_STORAGE_MANIFEST_EXISTS=YES
 DURABLE_DATA_PATHS_EXPLICIT=YES
 SECRET_PATHS_EXPLICIT_METADATA_ONLY=YES
 SECRET_RUNTIME_ACCESS_DEFINED=PROPOSED_ROOT_33_0440_AND_ROOT_ROOT_0400; TARGET_READBACK_PENDING
-SECRET_RECOVERY_POLICY_DEFINED=DPAPI_CURRENTUSER_OWNER_AUTHORIZED; ARTIFACT_ROUNDTRIP_PENDING
+SECRET_RECOVERY_POLICY_DEFINED=DPAPI_PENDING_ROUNDTRIP_PASS; FINAL_ARTIFACT_NOT_CREATED; RETRY_AUTH_PENDING
 BACKUP_PATH_EXPLICIT=YES
 RESTORE_METHOD_DEFINED=YES
 ANONYMOUS_DURABLE_VOLUME=NO
