@@ -3613,3 +3613,120 @@ PAYMENT_ACTIONS=0
 LIVE_ACTIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## K6_PHASE_C0_PREWRITE_READONLY_CAPACITY — Executor Candidate (2026-09-24)
+
+```text
+GATE=K6_PHASE_C0_PREWRITE_READONLY_CAPACITY
+RESULT=PASS_CANDIDATE_K6_PHASE_C0_PREWRITE_READONLY_CAPACITY
+SCOPE=LOCAL_DB_FOOTPRINT_PLUS_FRESH_STRICT_VPS_READ_ONLY_CAPACITY_AND_SECRET_PLAN
+REMOTE_WRITES=0
+DOCKER_WRITES=0
+SECRET_VALUE_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+### Authority and handoff reconciliation
+
+Read the current canonical VPS governance and its SSH/secret, target-host reality, and storage addenda; Mini Craft Reviewer Handoff, Project Record, Storage Manifest, K5 PASS, K6 deployment decision, K6R3 accepted preflight, Phase B/R1 PASS and current C0 decision; and the unique local `SHARED_VPS_HANDOFF.md`.
+
+Document drift observed: GitHub `REVIEWER_HANDOFF.md` still ends at the K6R2/R1 checkpoint, while `PROJECT_RECORD.md`, `PROJECT_STORAGE_MANIFEST.md`, and the current C0 Reviewer decision identify C0 as current. No Reviewer-owned file was changed. This candidate follows the explicit C0 decision and current storage manifest; Reviewer should reconcile the handoff pointer before authorizing any later write.
+
+### Local database footprint (read-only)
+
+The accepted local MariaDB container was running/healthy in Compose project `mini-craft-k3r4-mariadb-recovery`. Docker metadata mapped its named volume to `/var/lib/mysql`. Read-only `du` calls inside that existing container completed with native exit code 0:
+
+- Physical allocated datadir: `198,537,216 bytes`.
+- Apparent datadir size: `198,069,542 bytes`.
+- Accepted K5 logical SQL backup: `5,286,165 bytes` (recorded earlier; this is **not** treated as restored database size).
+- No SQL query, dump, restore, volume mutation, or site mutation occurred.
+
+The physical measurement includes the MariaDB datadir rather than a claim that the SQL archive equals the restored footprint.
+
+### Fresh target read-only preflight
+
+Exactly one bounded canonical SSH read-only invocation succeeded with the recorded `ops@2.24.193.133:22`, identity, normal `known_hosts`, and strict `BatchMode=yes`, `IdentitiesOnly=yes`, `StrictHostKeyChecking=yes`. Local key material was not read. No alternate client, identity, or trust bypass was used.
+
+- Host identity: `srv1970241`; Ubuntu 24.04.5 LTS; kernel `6.8.0-139-generic x86_64`; uptime 1 week 6 days 16 hours 29 minutes.
+- CPU: 2 cores. RAM: 8,326,627,328 bytes total; 5,874,204,672 bytes available; swap 2,147,479,552 total.
+- Root filesystem: 102,888,095,744 bytes total; 9,328,168,960 used; 93,543,149,568 available (about 9.1% used).
+- Docker 29.8.0; Compose v5.5.1. Docker metadata: 7 images / 3.234 GB; 8 running containers / 22.84 MB; 0 local volumes reported; 10 active build-cache records / 1.929 GB.
+- Existing projects and health: Dujiao-Next app/Postgres/Redis healthy; Unified Pay app/DB healthy; Xianyu app healthy; shared Caddy and cloudflared running. No Mini Craft container, network, volume, or namespace path exists.
+- Networks: `bridge`, `dujiao-next-internal`, `host`, `none`, `spikersun-edge`, `spikersun-private`, `unified-pay-internal`, `xianyu_xianyu-network`.
+- TCP 22 is owned by SSH; TCP 80/443 by Docker-published shared Caddy. UFW active, inbound default deny, explicit 22/80/443 allow rules for IPv4/IPv6.
+- Caddy is attached to `spikersun-edge`; config source `/srv/infra/edge/Caddyfile` is mounted read-only. cloudflared is running on `spikersun-private`; no command/environment/credential values were read.
+- `/srv/apps/mini-craft-night-kit`, `/srv/data/mini-craft-night-kit`, and `/srv/backups/mini-craft-night-kit` are absent. No Mini Craft host-port, container, network, or volume collision.
+- Target image inventory does not yet contain `wordpress:7.1.1-php8.3-apache` or `mariadb:11.4.7`; later pull space is included below. No shared project state was changed.
+
+### Pre-first-write disk and RAM envelope
+
+This is a conservative planning envelope from the accepted R1 package metadata and fresh target disk baseline. Image figures use the measured local on-disk sizes for the pinned candidate tags (rounded upward); the target does not currently have those images. The DB/restore-workspace reserve is 3× the measured full local MariaDB datadir. That multiplier is an explicit conservative engineering reserve, not a mathematical guarantee; the later write Gate must repeat the measurements, verify exact image digests/sizes, and stop if observed inputs exceed this envelope.
+
+| Incremental peak term | Reserved bytes |
+|---|---:|
+| WordPress candidate image, rounded upward | 1,120,000,000 |
+| MariaDB candidate image, rounded upward | 457,000,000 |
+| Two staged/retained copies of DB + wp-content archives | 238,099,266 |
+| Expanded wp-content | 220,323,840 |
+| Bounded logs (two services × 10 MB × 3 files; rounded upward) | 62,914,560 |
+| DB data + restore working-space envelope (3 × 198,537,216) | 595,611,648 |
+| **Projected incremental peak** | **2,693,949,314 (~2.51 GiB)** |
+
+- Current root used + projected increment: `12,022,118,274 bytes`, about `11.68%` of the `102,888,095,744-byte` root filesystem.
+- 60% stop threshold: `61,732,857,446 bytes`; remaining margin from projected peak to threshold: about `49,710,739,172 bytes`.
+- Current available RAM less the required 512 MiB WordPress tmpfs reserve: `5,337,333,760 bytes` (~4.97 GiB), before the new services' runtime working set. The later Gate must recheck RAM and include actual service headroom.
+- Existing target Docker/image/cache usage is already included in current root used; it is not added a second time.
+
+```text
+LOCAL_DB_PHYSICAL_BYTES=198537216
+LOCAL_DB_APPARENT_BYTES=198069542
+TARGET_ROOT_USED_BYTES=9328168960
+TARGET_ROOT_FREE_BYTES=93543149568
+PROJECTED_INCREMENTAL_PEAK_BYTES=2693949314
+PROJECTED_ROOT_USED_BYTES=12022118274
+PROJECTED_ROOT_USED_PERCENT=11.68
+STOP_THRESHOLD_PERCENT=60
+TMPFS_RESERVE_BYTES=536870912
+RAM_AVAILABLE_AFTER_TMPFS_BYTES=5337333760
+CAPACITY_BOUND=PASS_CANDIDATE_WITH_3X_DATADIR_RESERVE;RECHECK_BEFORE_ANY_WRITE
+```
+
+### Secret authorization plan — metadata only, not authorization
+
+Exact future allowlist under `/srv/data/mini-craft-night-kit/secrets/` (10 files; no other file permitted):
+
+1. `db-app-password` — MariaDB + WordPress
+2. `db-root-password` — MariaDB only
+3. `wordpress-auth-key`
+4. `wordpress-secure-auth-key`
+5. `wordpress-logged-in-key`
+6. `wordpress-nonce-key`
+7. `wordpress-auth-salt`
+8. `wordpress-secure-auth-salt`
+9. `wordpress-logged-in-salt`
+10. `wordpress-nonce-salt`
+
+Proposed target metadata, pending a separate exact Owner authorization and target read-back: directory `root:root 0700`; `db-root-password` `root:root 0400`; the application password and eight WordPress keys/salts `root:33 0440`. The MariaDB entrypoint root reads the two DB files; WordPress entrypoint root reads its configured files and runtime UID/GID 33:33 reads only the app password and eight WordPress key/salt files. Compose file mounts remain read-only with `create_host_path: false`; no WP access to the DB-root file. Actual target ACLs/readability remain unverified.
+
+Proposed non-secret generation metadata for Reviewer approval: use the target OS CSPRNG; newline-free lowercase hex; 32 random bytes (256 bits) for each DB password and 64 random bytes (512 bits) for each WordPress key/salt. Create exclusively/atomically and fail closed if any allowlisted destination already exists; never overwrite or rotate in this Gate. Emit only filenames, owner/group/mode, and pass/fail—never values or value hashes.
+
+Future recovery/rollback boundary (not performed): after separate explicit authorization, create a DPAPI CurrentUser encrypted **pending** recovery artifact on the verified Owner Windows profile; prove immediate decrypt/byte-identity round-trip and local ACL/path metadata; provision only the exact allowlist; verify remote owner/group/modes and expected runtime read access plus DB-root exclusion; promote pending recovery to final only after all checks pass. Any collision, access mismatch, or failed round-trip stops before promotion and invokes the separately reviewed rollback. The DPAPI artifact is profile-bound and does not survive simultaneous loss of that profile and VPS; Reviewer must accept that limitation or require another independently protected recovery domain.
+
+Exact authorization text to present only in a future Owner checkpoint (not granted by this C0 result):
+
+> I authorize creation of exactly the ten listed Mini Craft Secret files, for project `mini-craft-night-kit` on Hostinger host `srv1970241`, only under `/srv/data/mini-craft-night-kit/secrets/`, using the specified CSPRNG formats and proposed owner/group/modes. Refuse the entire operation if any target exists; do not overwrite or rotate. Use only the stated read-only runtime mounts. Create and verify a DPAPI CurrentUser pending recovery artifact on my Windows profile, and promote it only after target metadata/runtime-access verification succeeds. No additional Secret, public route, payment, Live, or deployment action is authorized by this statement.
+
+```text
+SECRET_AUTHORIZATION=NOT_GRANTED
+SECRET_VALUES_READ_OR_CREATED=NO
+DPAPI_ARTIFACT=NOT_CREATED
+FUTURE_OWNER_AUTHORIZATION_CHECKPOINT=PREPARED_EXACT_10_FILE_ALLOWLIST;HOST;PATH;FORMAT;MODES;NO_OVERWRITE;DPAPI_PENDING_ROUNDTRIP
+VPS_WRITES=0
+REMOTE_WRITES=0
+STOP_AT_REVIEWER=YES
+```
+
+No VPS write, Docker pull/start/restore, directory creation, route/DNS/firewall change, Secret operation, payment, or PayPal Live action occurred in this Gate.
