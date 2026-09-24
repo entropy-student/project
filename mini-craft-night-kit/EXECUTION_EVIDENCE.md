@@ -3849,3 +3849,36 @@ PAYMENT_ACTIONS=0
 LIVE_ACTIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL — Executor return (2026-09-24, Asia/Shanghai)
+
+Reviewer authority: `docs/REVIEWER_DECISION_K6_C1R2_PASS_C1R3_PENDING_REUSE_SEAL.md`. This Gate requires the existing pending artifact's exact payload serialization to be specified from non-secret source/evidence before a compatible parser/transport rehearsal is built.
+
+**Fail-closed result:** `RETURN_REVIEWER_C1R3_ORIGINAL_PENDING_SERIALIZATION_UNKNOWN`.
+
+The reviewed C1 evidence says that the target generated the ten intended values in memory and an in-memory stream was DPAPI-protected as a pending artifact; it records a byte-identity DPAPI round-trip, but does not specify the serialized payload schema (encoding/BOM, field order, delimiters or length framing, metadata binding, and exact parser contract). The C1 authorization decision specifies the ten filenames, per-value format/length and target permissions, not the bytes/schema of the already-created pending payload. The C1R1/C1R2 retained helpers cover only synthetic ACK framing and do not contain the original C1 payload serializer/parser. The scoped local K6 C1 artifact inventory contains those C1R1/C1R2 helpers only; the original C1 transaction was inline and was not retained as reviewable source. Therefore a compatible pending-reuse parser cannot be established without opening/decrypting the protected artifact, which this Gate explicitly forbids. No new serialization format was guessed or substituted.
+
+Metadata-only local read-back: pending artifact exists, size 1,686 bytes; the recovery leaf has inheritance protected and one explicit Owner FullControl allow rule; the file inherits the leaf ACL. Artifact bytes were not opened, decrypted, hashed, copied, renamed, promoted or deleted.
+
+No C1R3 helper or fixture was created; no synthetic transport/SSH probe was run because the required exact payload parser could not be specified. No SSH invocation, remote target read-back, remote temporary resource, Docker/Compose action, VPS/shared-infrastructure write, Secret action, payment or Live action occurred in this Gate. Earlier C1R2 PASS evidence remains historical and is not represented as a fresh C1R3 transport result.
+
+```text
+GATE=K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL
+RESULT=RETURN_REVIEWER_C1R3_ORIGINAL_PENDING_SERIALIZATION_UNKNOWN
+ORIGINAL_PENDING_SERIALIZATION=UNKNOWN_NON_SECRET_SOURCE_NOT_FOUND
+C1R1_R2_HELPERS=ACK_PARSER_ONLY_NO_PENDING_PAYLOAD_PARSER
+LOCAL_PENDING_METADATA=EXISTS;1686_BYTES;OWNER_ONLY_LEAF_ACL_PASS
+PENDING_CONTENT_ACCESSED=NO
+LOCAL_HELPER_CREATED=NO
+SYNTHETIC_TRANSPORT=NOT_RUN_FAIL_CLOSED
+SSH_INVOCATIONS=0
+REMOTE_WRITES=0
+VPS_WRITES=0
+SHARED_INFRA_WRITES=0
+SECRET_VALUES_OR_HASHES_EXPOSED=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
