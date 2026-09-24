@@ -1816,3 +1816,30 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The only attempted Docker command was a read-only `docker version` preflight; it exited 1 because `npipe:////./pipe/dockerDesktopLinuxEngine` was not found. Per the Reviewer decision, I did not start Docker Desktop, switch runtimes, or proceed without proving isolation. No fixture, container, volume, network, Compose/package edit, or local helper was created. Detailed sanitized evidence is appended in `EXECUTION_EVIDENCE.md`.
+
+
+## K6_PHASE_B_R1_PACKAGE_RECONCILIATION — Docker-available retry (2026-09-24)
+
+```text
+GATE=K6_PHASE_B_R1_PACKAGE_RECONCILIATION
+RESULT=PASS_CANDIDATE_K6_PHASE_B_R1_PACKAGE_RECONCILIATION
+LOCAL_DOCKER=AVAILABLE;CLIENT_SERVER_29.7.2;COMPOSE_V5.4.0
+PRODUCTION_COMPOSE_RENDER=PASS_EXIT_0
+WP_TMPFS_NESTED_WP_CONTENT_BIND=PASS_START_RESTART_FORCE_RECREATE
+SYNTHETIC_SECRET_READABILITY=PASS_NONROOT_33_33;READ_ONLY_MOUNTS
+PROJECT_LOG_ROTATION=PASS_JSON_FILE_10M_X_3_BOTH_SERVICES
+CAPACITY_BOUND=ABOUT_2.1GB_QUANTIFIABLE;DB_RESTORE_SIZE_UNKNOWN;STOP_BEFORE_WRITE_AT_60_PERCENT
+K5_BACKUP_HASHES=UNCHANGED
+ACTIVE_SITE_HTTP=200
+R1_DOCKER_RESOURCES_AFTER_CLEANUP=0_CONTAINERS;0_NETWORKS;0_VOLUMES
+R1_TEMP_DIRECTORY=CLEANED
+REAL_SECRET_ACTIONS=0
+VPS_WRITES=0
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+Detailed redacted facts and artifact hashes are appended in `EXECUTION_EVIDENCE.md`. Local package execution record: `mini-craft-night-kit-workspace/artifacts/gates/k6-phase-b-r1-package-reconciliation/execution-record.md`. The production Compose and manifest remain local candidates; no Phase C or VPS action was performed.
