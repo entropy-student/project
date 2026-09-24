@@ -8,16 +8,19 @@ This section supersedes older `CURRENT_GATE` markers below. Governance rules com
 K5_RELEASE_CANDIDATE=PASS
 K6_DEPLOYMENT=OWNER_AUTHORIZED_SANDBOX_FIRST
 K6R3_SHARED_VPS_READONLY_PREFLIGHT=PASS
-CURRENT_GATE=K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL
+K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL=RETURN_STORAGE_LAYOUT_UNRESOLVED
+CURRENT_GATE=K6_PHASE_B_R1_PACKAGE_RECONCILIATION
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
 OWNER_ACTION=NONE_NOW
 ```
 
-Formal Reviewer acceptance: `docs/REVIEWER_DECISION_K6R3_PASS_K6_PHASE_B_PACKAGE_SEAL.md`. The Executor's full K6 Phase A inventory was independently checked via strict, read-only SSH from the recorded Windows host. On 2026-09-24 the target was `ops@srv1970241`; existing apps were healthy, Caddy owned 80/443, UFW allowed only the existing 22/80/443 inbound ports, root disk had 88G free, RAM had 5.5 GiB available, and no Mini Craft VPS namespace/container/port collision existed. Two intermediate read-helper format errors were disclosed and bounded; final and independent read-back succeeded. No remote write, Secret read or payment occurred. The earlier K6R1 pre-host-key failure is historical; its exact cause remains UNKNOWN.
+Formal Phase B Reviewer decision: `docs/REVIEWER_DECISION_K6_PHASE_B_RETURN_PACKAGE_RECONCILIATION.md`. The local candidate passed static Compose render and the Reviewer independently matched all three K5 backup hashes. Its Executor return is accepted as a valid stop, **not** as Phase B PASS. The current production Compose references eight WordPress key/salt files absent from the prior Storage Manifest; the Manifest now lists all ten planned Secret paths and consumers but leaves effective runtime permissions and encrypted recovery proof pending. The WordPress root tmpfs/nested wp-content bind has not been run or restarted; service log rotation is not defined; MariaDB image/restore footprint remains incomplete. Executor Evidence/Handoff drafts are local only and have not been committed to GitHub.
 
-Next Gate is **local-only** K6 Phase B package seal: verify accepted K5 backups/hashes, correct the production WordPress image to `wordpress:7.1.1-php8.3-apache`, render/validate the explicit production Compose manifest, freeze transfer/Secret metadata and backup/restore/rollback plans, and return to Reviewer. This does not authorize VPS writes, public route, DNS, Secret provisioning, PayPal Live or real sales. The dated Phase A baseline must be rechecked before a later consequential write if material drift occurs. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
+Next Gate `K6_PHASE_B_R1_PACKAGE_RECONCILIATION` is local-only: disposable isolated runtime rehearsal of the tmpfs/nested bind and non-production Secret readability; project-local bounded logging config; exact metadata/recovery plan; capacity bound; redacted Executor Evidence/Handoff submission. The formal decision contains the complete Executor prompt and STOP conditions. No VPS write, production Secret action, Shared Infra change, route/DNS change, PayPal Live, real payment, or commercial launch is authorized by this return. The existing Sandbox-first K6 Owner authorization remains recorded; Reviewer must accept R1 and recheck target-host state before deciding a remote-write Gate.
+
+K6R3 formal PASS remains `docs/REVIEWER_DECISION_K6R3_PASS_K6_PHASE_B_PACKAGE_SEAL.md`: strict read-only SSH confirmed the expected shared host, healthy existing services, 88G root free, 5.5 GiB RAM available, Caddy ownership of 80/443, and no Mini Craft collision on 2026-09-24. This dated snapshot is not a deployment read-back. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
 
 Last reviewed: 2026-09-24  
 Maintainer: Reviewer
