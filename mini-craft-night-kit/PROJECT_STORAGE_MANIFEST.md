@@ -1,8 +1,8 @@
 # Mini Craft Night Kit — PROJECT STORAGE MANIFEST
 
-Status: K6 PHASE B R1 LOCAL PACKAGE PASS / REMOTE STORAGE NOT CREATED
+Status: K6 PHASE C0 READ-ONLY CAPACITY PASS / REMOTE STORAGE NOT CREATED
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6_PHASE_C0_PREWRITE_READONLY_CAPACITY`
+Current Gate: `K6_PHASE_C1_SECRET_OWNER_AUTHORIZATION_CHECKPOINT`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
@@ -179,7 +179,9 @@ No broad Docker prune.
 
 ## 11. Resource footprint / remote reality
 
-A bounded Reviewer SSH read-back on 2026-09-24 found the recorded host reachable, 88G free on the 96G root filesystem, and no Mini Craft project namespaces. The full K6R3 Phase A read-only host inventory was accepted by Reviewer on 2026-09-24: 5.5 GiB RAM available, 88G root free, existing shared services protected and no Mini Craft namespace collision. Production package footprint and before/after deployment delta remain pending; this snapshot does not authorize a write.
+The K6R3 dated read-only baseline has been refreshed by C0 Executor and independent Reviewer strict SSH probes on 2026-09-24. Reviewer read-back confirmed `srv1970241`, root total 102,888,095,744 bytes, used 9,329,029,120 bytes, free 93,542,289,408 bytes, and RAM available 5,876,936,704 bytes. No Mini Craft namespace existed in the C0 Executor inventory. These are dated snapshots, not permission to write.
+
+The accepted local MariaDB datadir occupied 198,537,216 physical bytes. A planning reserve of 3× that size (595,611,648 bytes) covers proposed DB data plus restore workspace; it is an engineering assumption, not a guaranteed maximum. Together with 1,120,000,000 bytes WordPress image, 457,000,000 bytes MariaDB image, 238,099,266 bytes for two archive copies, 220,323,840 bytes expanded wp-content and 62,914,560 bytes bounded logs, the projected incremental peak is 2,693,949,314 bytes (~2.51 GiB). The Executor snapshot projected root use of ~11.68%, below the 60% stop line. Re-measure all inputs before the first write and stop if actual growth exceeds the envelope. Reserve 512 MiB WordPress tmpfs against RAM headroom.
 
 Before the first K6 deployment write, record:
 
@@ -190,11 +192,11 @@ Before the first K6 deployment write, record:
 - before/after deployment delta.
 
 ```text
-EXPECTED_INITIAL_FOOTPRINT=ABOUT_2.1_GB_QUANTIFIABLE_EXCLUDING_RESTORED_DB_AND_RESTORE_WORKSPACE
-RESOURCE_HEADROOM=K6R3_DATED_BASELINE_ONLY; FRESH_PREWRITE_CHECK_AND_DB_BOUND_PENDING
+EXPECTED_INITIAL_FOOTPRINT=2693949314_BYTES_PLANNING_ENVELOPE_INCLUDING_3X_LOCAL_DATADIR
+RESOURCE_HEADROOM=C0_READONLY_BASELINE_PASS_2026-09-24; FRESH_PREWRITE_RECHECK_REQUIRED
 ```
 
-Before the first target write, stop if fresh usage is at/above 60%, projected peak reaches 60%, or any required capacity term (especially restored MariaDB size and restore working space) remains unknown. Include the 512 MiB WordPress tmpfs in RAM headroom, not durable disk. If headroom cannot be proven safe, stop before write.
+Before the first target write, stop if fresh usage is at/above 60%, projected peak reaches 60%, or any required capacity term (including observed MariaDB restore growth and working space) is unknown or exceeds the accepted planning envelope. Include the 512 MiB WordPress tmpfs in RAM headroom, not durable disk. If headroom cannot be proven safe, stop before write.
 
 ## 12. Governance acceptance markers
 
