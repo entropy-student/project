@@ -1,8 +1,8 @@
 # Mini Craft Night Kit — PROJECT STORAGE MANIFEST
 
-Status: PRE-DEPLOYMENT FROZEN PLAN / K6R3 READ-ONLY HOST PREFLIGHT PASS / REMOTE STORAGE NOT CREATED
+Status: PRE-DEPLOYMENT PLAN / K6 PHASE B REVIEWER RETURN / REMOTE STORAGE NOT CREATED
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL`
+Current Gate: `K6_PHASE_B_R1_PACKAGE_RECONCILIATION`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
@@ -54,12 +54,22 @@ Anonymous durable volumes are forbidden.
 
 No Secret value may enter this manifest, GitHub, ordinary Evidence, chat, or logs.
 
-Planned Secret references:
+Planned Secret references required by the current production Compose candidate (paths and purposes only; none exist on the VPS yet):
 
-```text
-/srv/data/mini-craft-night-kit/secrets/db-app-password
-/srv/data/mini-craft-night-kit/secrets/db-root-password
-```
+| Host file under `/srv/data/mini-craft-night-kit/secrets/` | Runtime consumer | Purpose |
+|---|---|---|
+| `db-app-password` | MariaDB, WordPress | Application database password |
+| `db-root-password` | MariaDB only | Database root password |
+| `wordpress-auth-key` | WordPress only | WordPress AUTH_KEY |
+| `wordpress-secure-auth-key` | WordPress only | WordPress SECURE_AUTH_KEY |
+| `wordpress-logged-in-key` | WordPress only | WordPress LOGGED_IN_KEY |
+| `wordpress-nonce-key` | WordPress only | WordPress NONCE_KEY |
+| `wordpress-auth-salt` | WordPress only | WordPress AUTH_SALT |
+| `wordpress-secure-auth-salt` | WordPress only | WordPress SECURE_AUTH_SALT |
+| `wordpress-logged-in-salt` | WordPress only | WordPress LOGGED_IN_SALT |
+| `wordpress-nonce-salt` | WordPress only | WordPress NONCE_SALT |
+
+All ten are planned read-only, `create_host_path: false` file binds under `/run/secrets/` with the matching basename. The host Secret directory target is restrictive project-only access; files must be fail-on-existing and must never be committed or emitted in Evidence. Exact effective runtime uid/gid, host owner/group/mode, non-root WordPress read access, and an encrypted off-host recovery destination/procedure are **PENDING K6 Phase B R1 verification**. The generic minimum-access policy below is not evidence that those requirements are met.
 
 Default metadata target:
 
@@ -70,7 +80,7 @@ Default metadata target:
 
 The restored WordPress database may itself contain application/provider credential material (including Sandbox configuration). Therefore database dumps and production database files are sensitive deployment/recovery artifacts and must never be committed to GitHub or copied into ordinary review bundles.
 
-Any additional Secret file required by the final rendered Compose/config must be added here by metadata only before the first deployment write.
+Any later Secret file required by the final rendered Compose/config must be added here by metadata only before the first deployment write.
 
 ## 5. Backup layout
 
