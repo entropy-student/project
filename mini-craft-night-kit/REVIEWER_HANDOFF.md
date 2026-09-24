@@ -8,19 +8,22 @@ This section supersedes older `CURRENT_GATE` markers below. Governance rules com
 K5_RELEASE_CANDIDATE=PASS
 K6_DEPLOYMENT=OWNER_AUTHORIZED_SANDBOX_FIRST
 K6R3_SHARED_VPS_READONLY_PREFLIGHT=PASS
-K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL=RETURN_STORAGE_LAYOUT_UNRESOLVED
-CURRENT_GATE=K6_PHASE_B_R1_PACKAGE_RECONCILIATION
+K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL=PASS_CLOSED_BY_R1
+K6_PHASE_B_R1_PACKAGE_RECONCILIATION=PASS
+CURRENT_GATE=K6_PHASE_C0_PREWRITE_READONLY_CAPACITY
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
 OWNER_ACTION=NONE_NOW
 ```
 
-Formal Phase B Reviewer decision: `docs/REVIEWER_DECISION_K6_PHASE_B_RETURN_PACKAGE_RECONCILIATION.md`. The local candidate passed static Compose render and the Reviewer independently matched all three K5 backup hashes. Its Executor return is accepted as a valid stop, **not** as Phase B PASS. The current production Compose references eight WordPress key/salt files absent from the prior Storage Manifest; the Manifest now lists all ten planned Secret paths and consumers but leaves effective runtime permissions and encrypted recovery proof pending. The WordPress root tmpfs/nested wp-content bind has not been run or restarted; service log rotation is not defined; MariaDB image/restore footprint remains incomplete. Executor Evidence/Handoff drafts are local only and have not been committed to GitHub.
+Formal R1 Reviewer PASS: `docs/REVIEWER_DECISION_K6_PHASE_B_R1_PASS_PHASE_C0_PREWRITE_READONLY.md`. The prior Phase B RETURN is closed by the R1 local package reconciliation; its history remains in `docs/REVIEWER_DECISION_K6_PHASE_B_RETURN_PACKAGE_RECONCILIATION.md`. The Reviewer independently matched the K5 backup and candidate package hashes, rendered the exact production Compose with no published ports and project-local bounded logging, and confirmed no remaining R1-labelled Docker containers/networks/volumes. Executor GitHub Evidence/Handoff records the isolated first-start, restart and force-recreate rehearsal of the 512 MiB WordPress tmpfs and persistent nested wp-content bind, synthetic non-root Secret-file readability, exact cleanup and local site regression. R1 passed only as a local package/rehearsal Gate.
 
-Next Gate `K6_PHASE_B_R1_PACKAGE_RECONCILIATION` is local-only: disposable isolated runtime rehearsal of the tmpfs/nested bind and non-production Secret readability; project-local bounded logging config; exact metadata/recovery plan; capacity bound; redacted Executor Evidence/Handoff submission. The formal decision contains the complete Executor prompt and STOP conditions. No VPS write, production Secret action, Shared Infra change, route/DNS change, PayPal Live, real payment, or commercial launch is authorized by this return. The existing Sandbox-first K6 Owner authorization remains recorded; Reviewer must accept R1 and recheck target-host state before deciding a remote-write Gate.
+The Reviewer-owned Storage Manifest now records all ten planned Secret files, proposed Linux ownership/modes, DPAPI CurrentUser recovery plan, and capacity stop conditions. No real Secret or encrypted recovery artifact exists yet; actual target permissions/readability and DPAPI round-trip are pending explicit Owner-authorized Secret work. The currently quantifiable disk peak is about 2.1 GB plus **unknown** restored MariaDB and restore working-space use. A fresh target-host check and a bounded DB capacity measurement are required before the first VPS write; 60% projected usage or an unknown required term is a stop.
 
-K6R3 formal PASS remains `docs/REVIEWER_DECISION_K6R3_PASS_K6_PHASE_B_PACKAGE_SEAL.md`: strict read-only SSH confirmed the expected shared host, healthy existing services, 88G root free, 5.5 GiB RAM available, Caddy ownership of 80/443, and no Mini Craft collision on 2026-09-24. This dated snapshot is not a deployment read-back. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
+Current Gate `K6_PHASE_C0_PREWRITE_READONLY_CAPACITY` is read-only local and VPS metadata preflight plus exact future Secret authorization preparation. The formal R1 decision contains its Executor prompt. No VPS write, Docker pull/start/restore, production Secret action, Shared Infra mutation, route/DNS change, PayPal Live, real payment or commercial launch is authorized by this Gate. The Owner's earlier Sandbox-first K6 deployment authorization remains recorded, but it does not implicitly authorize delegated Secret generation. No Owner action is requested now.
+
+K6R3 read-only Shared VPS preflight PASS remains historical and dated 2026-09-24. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
 
 Last reviewed: 2026-09-24  
 Maintainer: Reviewer
