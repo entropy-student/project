@@ -1940,3 +1940,33 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 The initial synthetic run exposed a local harness stdin collision and failed closed. Only the test harness was corrected; the five-case strict SSH rehearsal then passed. No real Secret action or write retry is authorized by this Gate.
+
+## K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL — Executor Handoff (2026-09-24)
+
+```text
+GATE=K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL
+RESULT=PASS_CANDIDATE_K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL
+SUMMARY=Sealed and exercised the same PowerShell sender/remote ACK parser path in synthetic no-write mode over strict pinned SSH; no C1 Secret retry or target write occurred.
+LOCAL_HELPER=mini-craft-night-kit-workspace/artifacts/gates/k6-phase-c1r2-installer-transport-seal/helpers/c1r2-installer-transport-seal.ps1
+LOCAL_HELPER_SHA256=851C0E35E726676BCBD89FC7BBD8864F1C8DC70281CB85BD372ED07E0401C617
+ACK_CASES=5_OF_5_EXPECTED_RESULTS;REMOTE_EXITS=0,0,76,76,76
+REMOTE_IDENTITY=ops@srv1970241;STRICT_PINNED_SSH
+REMOTE_TARGET_PATHS=ABSENT_BEFORE_AND_AFTER_EACH_CASE
+REMOTE_TEMP_RESOURCES=0
+C1_WRITE_BRANCH=NOT_PRESENT_FAIL_CLOSED
+DPAPI_PENDING=RETAINED;METADATA_ONLY;1686_BYTES;CONTENT_UNREAD
+REMOTE_WRITES=0
+VPS_WRITES=0
+SHARED_INFRA_WRITES=0
+SECRET_VALUES_OR_HASHES_EXPOSED=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+```
+
+Detailed redacted protocol evidence is in `EXECUTION_EVIDENCE.md` (K6 C1R2 section). The helper is intentionally retained as the reviewed Gate source; no temporary helper or remote resource remains. C1 real-write retry is not authorized by C1R2 and requires a separate Reviewer decision plus fresh Owner authorization.
+
+```text
+EVIDENCE_COMMIT=687ff6e00cb8932d96fdf4c6bca278f8e16f7b3c
+```
