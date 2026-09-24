@@ -1,0 +1,73 @@
+{
+  "date": "2026-09-24",
+  "planner": "Daily Topic / Publishing Planner v0.2",
+  "public_signal_scan": [
+    {
+      "cluster": "GPT-6 Sol/Luna release",
+      "date": "2026-09-23",
+      "canonical_source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "decision": "REJECT_HOT_OVERRIDE",
+      "gate_notes": "Fresh and high-interest, but the strongest durable audience translation currently overlaps the 2026-09-23 capability-cost viability topic (D3 angle/human-payoff proximity). Avoid back-to-back model-launch coverage."
+    },
+    {
+      "cluster": "Claude novel enzyme system / AI-assisted biology discovery",
+      "date": "2026-09-23",
+      "canonical_source": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+      "decision": "REJECT_HOT_OVERRIDE",
+      "gate_notes": "Mechanism Integrity and Non-trivial Payoff are promising, but Human Relevance and general Bilibili Audience Fit are weaker than today's planned felt-but-unexplained topic; scientific validation story would also require more domain-specific evidence before scheduling."
+    },
+    {
+      "cluster": "UN Security Council AI risk discussion",
+      "date": "2026-09-23",
+      "decision": "REJECT_HOT_OVERRIDE",
+      "gate_notes": "High salience but too broad for One Mechanism; risks becoming generic AI-risk commentary rather than a bounded human problem."
+    }
+  ],
+  "duplicate_gates": {
+    "D1_signal": "PASS; same-event coverage clustered",
+    "D2_topic": "PASS for selected evergreen",
+    "D3_angle": "PASS for selected evergreen; GPT-6 candidate rejected partly for proximity to 2026-09-23 cost/viability angle",
+    "D4_story_visual_motif": "PASS; selected topic has no locked/published motif collision in registry"
+  },
+  "selected": {
+    "topic_id": "same-prompt-different-answer",
+    "topic": "为什么同一句Prompt，AI每次回答都可能不一样？",
+    "lane": "EVERGREEN",
+    "business_job": "DISCOVERY",
+    "editorial_mode": "STORY_MODEL",
+    "target_duration": "3–5 min",
+    "hot_override": false,
+    "gates": {
+      "Human Relevance": "PASS",
+      "Mechanism Integrity": "PASS",
+      "One Mechanism": "PASS",
+      "Storyability": "PASS",
+      "Non-trivial Payoff": "PASS",
+      "Audience Fit": "PASS",
+      "D1-D4 Duplicate": "PASS"
+    },
+    "payoff": "生成模型不是固定查表式答案机；同一输入可以在概率生成与上下文条件下产生不同输出。"
+  },
+  "rolling_schedule": {
+    "start": "2026-09-24",
+    "end": "2026-09-30",
+    "mix": "5 STORY_MODEL / 2 STORY_ACTION",
+    "quality_gate_over_quota": true,
+    "added_tail_slot": {
+      "date": "2026-09-30",
+      "topic_id": "vision-small-detail-miss",
+      "topic": "为什么AI能看懂一张图，却可能看漏一个很小的关键细节？",
+      "lane": "EVERGREEN",
+      "business_job": "TRUST",
+      "editorial_mode": "STORY_ACTION",
+      "target_duration": "3–5 min",
+      "status": "planned"
+    }
+  },
+  "governance": {
+    "locked_or_published_modified": false,
+    "auto_published": false,
+    "entered_g4_plus": false,
+    "daily_production_capability": "UNPROVEN"
+  }
+}
