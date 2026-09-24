@@ -3766,3 +3766,40 @@ LIVE_ACTIONS=0
 SECRET_VALUES_OR_HASHES_EXPOSED=0
 STOP_AT_REVIEWER=YES
 ```
+
+## K6 C1R1 ACK Protocol Reconciliation — 2026-09-24 (Asia/Shanghai)
+
+Reviewer decision: `docs/REVIEWER_DECISION_K6_C1_RETURN_C1R1_ACK_PROTOCOL.md`. This was a local-only protocol rehearsal plus bounded strict-SSH read-only checks. The prior C1 ACK helper was inline and no persisted ACK/parser source was found in the scoped K6 artifact inventory; the new local helper is synthetic-only and never invokes the C1 installer.
+
+Local source: `mini-craft-night-kit-workspace/artifacts/gates/k6-phase-c1r1-ack-protocol-reconciliation/helpers/ack-protocol-rehearsal.ps1`; PowerShell 7.6.5 parse validation passed; source SHA-256 `E2D7FC41BF14AE0740DC668A3E3D43A4969F2D1CEAC3FE64E698B2DBB0B2975A` (5,960 bytes). The parser accepts only the complete fixed ASCII status token followed by exactly LF or CRLF, compares the complete raw byte stream, and rejects malformed, truncated, or additional bytes. No payload/frame bytes or credential material are printed.
+
+The first synthetic attempt failed closed because the harness piped its decoded script over the same SSH stdin used for the test frame. The harness was corrected so the non-secret script is decoded through command substitution and stdin carries only the frame. The corrected real Windows PowerShell → strict SSH → target-parser run passed all five cases: valid LF, valid CRLF, malformed token rejected, missing terminator rejected, extra byte rejected. Each SSH process exit code and exact redacted parser result was checked. SSH used the recorded `ops` identity, `BatchMode`, `IdentitiesOnly`, strict pinned host-key checking and the normal `known_hosts` file; local public fingerprint and pin checks passed.
+
+Every remote case verified host `srv1970241` and user `ops`, then checked the project data directory, its secrets child and each of the ten allowlisted files were absent before and after parsing. The remote test only ran identity/path checks and in-memory byte parsing; it did not create files/directories, invoke the C1 installer, start/pull Docker, or change shared infrastructure.
+
+The previously retained DPAPI pending artifact was checked only by path, size and ACL metadata: it remains at `%LOCALAPPDATA%\\MiniCraftNightKit\\secret-recovery\\k6-c1-mini-craft-night-kit-srv1970241.pending.dpapi`, 1,686 bytes; the recovery leaf remains inheritance-protected with the current Owner as its sole FullControl principal, and the file inherits that leaf rule. It was not opened, decrypted, hashed, copied, renamed, promoted or deleted.
+
+```text
+GATE=K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION
+RESULT=PASS_CANDIDATE_K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION
+ACK_PARSER=EXACT_TOKEN_PLUS_LF_OR_CRLF_ONLY
+LF_VALID=PASS
+CRLF_VALID=PASS
+MALFORMED_TOKEN=REJECTED_AS_EXPECTED
+TRUNCATED_FRAME=REJECTED_AS_EXPECTED
+EXTRA_BYTE=REJECTED_AS_EXPECTED
+STRICT_SSH_IDENTITY_AND_PIN=PASS
+REMOTE_IDENTITY=ops@srv1970241
+REMOTE_TARGET_PATHS=ABSENT_BEFORE_AND_AFTER_ALL_5_CASES
+REMOTE_ALLOWLIST_FILES=0_OF_10
+DPAPI_PENDING=RETAINED_UNCHANGED;METADATA_ONLY;1686_BYTES;OWNER_LEAF_ACL_PASS
+DPAPI_PAYLOAD_READ_OR_DECRYPTED=NO
+C1_INSTALLER_INVOKED=NO
+REMOTE_WRITES=0
+VPS_WRITES=0
+DOCKER_OR_SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+SECRET_VALUES_OR_HASHES_EXPOSED=0
+STOP_AT_REVIEWER=YES
+```
