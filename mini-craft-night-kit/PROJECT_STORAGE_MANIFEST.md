@@ -1,8 +1,8 @@
 # Mini Craft Night Kit — PROJECT STORAGE MANIFEST
 
-Status: K6 C1R1 SYNTHETIC ACK PASS / C1 INSTALLER UNSEALED / REMOTE STORAGE NOT CREATED / ENCRYPTED PENDING RETAINED
+Status: K6 C1R2 SYNTHETIC TRANSPORT PASS / PENDING-REUSE INSTALLER UNSEALED / REMOTE STORAGE NOT CREATED / ENCRYPTED PENDING RETAINED
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL`
+Current Gate: `K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
