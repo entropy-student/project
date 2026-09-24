@@ -3803,3 +3803,49 @@ LIVE_ACTIONS=0
 SECRET_VALUES_OR_HASHES_EXPOSED=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## K6 Phase C1R2 Installer Transport Seal — 2026-09-24 (Asia/Shanghai)
+
+Reviewer authority: `docs/REVIEWER_DECISION_K6_C1R1_PASS_C1R2_INSTALLER_SEAL.md`. This Gate was local-helper creation plus five bounded strict-SSH synthetic no-write protocol cases only. It did not resume C1 Secret provisioning.
+
+A minimal PowerShell 7 helper was created under the canonical local workspace Gate artifacts:
+
+`C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace\\artifacts\\gates\\k6-phase-c1r2-installer-transport-seal\\helpers\\c1r2-installer-transport-seal.ps1`
+
+The helper is 8,091 bytes; SHA-256 `851C0E35E726676BCBD89FC7BBD8864F1C8DC70281CB85BD372ED07E0401C617`. PowerShell parser validation passed. The same embedded remote transaction parser and PowerShell sender were exercised together: the remote first verifies the pinned target identity and absent Mini Craft paths, emits a fixed readiness marker, then parses the complete raw ACK byte stream; the local sender waits for readiness before sending only the synthetic fixed token frame. Only exact token+LF or token+CRLF is accepted. The transaction checks target-path absence both before and after parsing, then exits through synthetic-no-write mode. No remote temp file or resource is created. The sealed helper contains no real-write branch and fails closed outside synthetic-no-write mode; a real C1 retry remains a separate Reviewer Gate with fresh Owner authorization.
+
+Host-local preflight: Windows Owner-host PowerShell Core 7.6.5; recorded identity files present; public fingerprint matched the Shared VPS Handoff; normal `known_hosts` target pin present. Each SSH case used the recorded `ops@2.24.193.133` identity and strict host-key checking (`BatchMode=yes`, `IdentitiesOnly=yes`, `StrictHostKeyChecking=yes`, explicit `UserKnownHostsFile`, bounded connect/keepalive). All five remote executions verified `ops@srv1970241`.
+
+| Synthetic frame | Result | Remote exit |
+|---|---|---:|
+| Exact ACK + LF | Accepted | 0 |
+| Exact ACK + CRLF | Accepted | 0 |
+| Malformed token | Rejected as expected | 76 |
+| Truncated frame | Rejected as expected | 76 |
+| Extra byte | Rejected as expected | 76 |
+
+All five cases independently reported the Mini Craft data/secrets paths and exact ten-file allowlist absent before and after parsing. Remote temp resources=0; remote/VPS/shared-infrastructure writes=0. The Owner-profile pending DPAPI artifact was not opened, decrypted, hashed, copied, renamed, promoted or deleted. Before/after metadata-only checks both showed the expected 1,686-byte file and protected Owner-only recovery-leaf ACL; file inherits that leaf ACL. No secret value or value hash was accessed or exposed.
+
+```text
+GATE=K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL
+RESULT=PASS_CANDIDATE_K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL
+POWERSHELL_PARSE=PASS
+HELPER_SHA256=851C0E35E726676BCBD89FC7BBD8864F1C8DC70281CB85BD372ED07E0401C617
+PRODUCTION_INTENDED_ACK_PATH=SYNTHETIC_NO_WRITE_SAME_PARSER_AND_SENDER
+LF=PASS;CRLF=PASS;MALFORMED=REJECTED;TRUNCATED=REJECTED;EXTRA_BYTE=REJECTED
+SSH_IDENTITY_AND_HOST_PIN=PASS
+REMOTE_IDENTITY=ops@srv1970241
+REMOTE_TARGET_PATHS=ABSENT_BEFORE_AND_AFTER_EACH_CASE
+REMOTE_TEMP_RESOURCES=0
+C1_WRITE_BRANCH=NOT_PRESENT_FAIL_CLOSED
+DPAPI_PENDING=RETAINED;METADATA_ONLY;1686_BYTES;OWNER_ACL_PASS;CONTENT_UNREAD
+SECRET_VALUES_OR_HASHES_EXPOSED=0
+REMOTE_WRITES=0
+VPS_WRITES=0
+SHARED_INFRA_WRITES=0
+DOCKER_OR_COMPOSE_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
