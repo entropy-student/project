@@ -3730,3 +3730,39 @@ STOP_AT_REVIEWER=YES
 ```
 
 No VPS write, Docker pull/start/restore, directory creation, route/DNS/firewall change, Secret operation, payment, or PayPal Live action occurred in this Gate.
+
+## K6 Phase C1 Secret Provisioning — prewrite acknowledgement failure (2026-09-24, Asia/Shanghai)
+
+This Gate had explicit Owner delegation and the current Reviewer authorization. Strict SSH target/host trust, local Owner Windows profile and DPAPI CurrentUser readiness, fresh target capacity/collision checks, and the non-secret production Compose validation had passed. The authorized remote transaction generated the allowlisted values only in the bounded target-side process memory and transported the framed payload directly into the local DPAPI CurrentUser pending workflow; no value or value hash was exposed to agent-visible output, command arguments, environment, plaintext files, logs, GitHub, or chat.
+
+The local pending artifact was written under the protected Owner profile and its immediate in-memory DPAPI round-trip passed. The protocol acknowledgement was then rejected before any remote target directory/file creation: Windows standard-input line writing supplied CRLF while the remote acknowledgement parser required the exact LF-framed token. The bounded remote command exited 76 with ACK_REJECTED; it did not proceed to target writes. A fresh strict read-only target readback exited 0 and confirmed the project data path, secrets directory, all ten allowlisted target files, Mini Craft containers, and Mini Craft networks are absent. Existing shared workloads remained unchanged.
+
+The encrypted pending artifact is intentionally retained and not promoted or deleted: %LOCALAPPDATA%\MiniCraftNightKit\secret-recovery\k6-c1-mini-craft-night-kit-srv1970241.pending.dpapi (1,686 bytes; protected current-user ACL; DPAPI byte-identity round-trip passed). No decrypt/readback of its payload was performed after the failed transaction. No retry was attempted. Reviewer must decide whether to authorize a corrected bounded transaction and how to reconcile/reuse or dispose of this exact pending artifact.
+
+```text
+GATE=K6_PHASE_C1_SECRET_PROVISIONING_AND_RECOVERY
+RESULT=RETURN_REVIEWER_C1_REMOTE_ACK_REJECTED_PREWRITE
+OWNER_DELEGATION=EXACT_TEN_FILE_SCOPE_GRANTED
+STRICT_SSH_TARGET=PASS
+LOCAL_OWNER_PROFILE_AND_DPAPI=PASS
+SYNTHETIC_DPAPI_WORKFLOW=PASS
+REAL_PAYLOAD_DPAPI_PENDING_ROUNDTRIP=PASS
+REMOTE_ACK_PROTOCOL=FAIL_CRLF_NOT_ACCEPTED_BY_LF_PARSER
+REMOTE_COMMAND_EXIT=76
+REMOTE_TARGET_PREWRITE_FAILURE=CONFIRMED
+REMOTE_READBACK_EXIT=0
+REMOTE_PROJECT_DATA_PATH=ABSENT
+REMOTE_SECRETS_DIRECTORY=ABSENT
+REMOTE_ALLOWLIST_FILES=0_OF_10
+MINICRAFT_CONTAINERS_OR_NETWORKS=NONE
+PENDING_ARTIFACT=RETAINED_ENCRYPTED_NOT_PROMOTED_NOT_DELETED
+RETRY=NOT_ATTEMPTED
+REMOTE_WRITES=0
+VPS_PERSISTENT_WRITES=0
+COMPOSE_START_OR_IMAGE_PULL=0
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+SECRET_VALUES_OR_HASHES_EXPOSED=0
+STOP_AT_REVIEWER=YES
+```
