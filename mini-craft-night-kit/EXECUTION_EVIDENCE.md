@@ -3559,3 +3559,57 @@ STOP_AT_REVIEWER=YES
 Preflight attempted the installed Docker CLI's read-only `docker version` query. The client was present, but it could not reach `npipe:////./pipe/dockerDesktopLinuxEngine`; Windows reported that the system could not find the file specified. The command exited non-zero (1). Because the Reviewer decision requires an isolated local Compose rehearsal and forbids substituting another runtime when isolation is unavailable, execution stopped before container/volume/network inventory, package mutation, fixture creation, or any Docker write. Docker Desktop was not started, and no existing project/runtime was touched.
 
 No production or Sandbox credential material was read, created, copied, or emitted. This is a preflight return, not a result for tmpfs/bind precedence, WordPress startup, Secret readability, logging rotation, or restored database capacity. Resume only after the Reviewer supplies an approved path to an available isolated local Docker Engine; then rerun the bounded R1 checks from preflight.
+
+
+## K6_PHASE_B_R1_PACKAGE_RECONCILIATION — Docker-available retry (2026-09-24)
+
+The prior Docker-engine-unavailable return is retained as historical evidence. After Owner reported Docker was started, a fresh local preflight succeeded and this bounded retry completed. This is an Executor candidate only; it does not authorize or perform Phase C or any VPS write.
+
+### Package and Compose reconciliation
+
+- Current local candidate package: `mini-craft-night-kit-workspace/artifacts/gates/k6-phase-b-local-deployment-package-seal/`; the active local runtime and K5 package were not used as rehearsal mounts.
+- Docker client/server: 29.7.2; Compose: v5.4.0.
+- Production candidate images remain `wordpress:7.1.1-php8.3-apache` and `mariadb:11.4.7`.
+- Explicit production Compose renders (`config --quiet`, then `config --format json`) completed with exit 0. Corrected semantic assertions passed: both services use project-local `json-file` rotation (`max-size=10m`, `max-file=3`), no host port is published, the WordPress root uses a 512 MiB tmpfs, and pinned tags match the package.
+- Candidate Compose SHA-256: `C52E1C088D05300C93139CF87A04D4C7CA2E5D8412FEE6C788CB97ABDABF0B2B`.
+- Local deployment manifest SHA-256: `321C8E6ECC7CCB5AF058DE011C12966AA9DE3AD5928BEA936779E9E75D77FC63`.
+- The current active-runtime Compose file was not edited; post-run SHA-256 recorded for reference: `F442BDECE127DABF5238482BF8BE02AE2DE88A1B9B459987B93EFC0D939E101A`.
+
+### Disposable local runtime rehearsal
+
+- Isolated Compose project: `mck-k6-phase-b-r1-rehearsal-20260924`. Preflight found no same-name containers, network, or volumes. The rehearsal used only its two disposable containers and private default network; no host port, external network, or persistent volume was created.
+- WordPress image was `wordpress:7.1.1-php8.3-apache`, linux/amd64, repo digest `sha256:51464c8fdb100c5cd2ebfaec1834cf111d993bc4929ef2330c1cc721eda0fc30`. MariaDB was `mariadb:11.4.7`, linux/amd64, image ID `sha256:39596f079862334be04f4231664862e55d4febe54309cc62f750f2297de85b06`.
+- Runtime mount inspection confirmed `/var/www/html` on a 512 MiB tmpfs and one nested writable `wp-content` bind. First initialization succeeded; the expected fresh-site root response was HTTP 302 to setup and `/wp-admin/install.php` returned 200. MariaDB reached healthy state.
+- Restart and forced WordPress recreate both reset the synthetic root-tmpfs marker, reinitialized core files, and preserved host/container-created markers in the nested `wp-content` bind. This exercises the image's declared-volume/tmpfs/bind precedence without K5 data.
+- Only synthetic, non-production fixture files were mounted. WordPress runtime UID/GID 33:33 read the application-password fixture and eight key/salt fixtures, but could not see the DB-root fixture. MariaDB saw only its two intended fixtures. Secret-file binds were read-only. A POSIX-mode check confirmed `root:33 0440` readability to UID 33 and `root:root 0400` non-readability to UID 33. No production or Sandbox credential was read, generated, copied, logged, or output.
+- Both running test services were inspected with the selected bounded log policy. No Docker daemon-wide logging setting changed.
+
+### Capacity, recovery metadata, and cleanup
+
+- K5 backup hashes were rechecked and unchanged: post-cleanup SQL `BB6A9F56C532C395B89089FC460FB5F20A038A012C84DDD210DCCF5E1AB4C602`; `wp-content` archive `543239EFEBE20915F3A8E96B65986CB4A5EB0B187E7E24C9E7286A7126E41D08`; local-only config backup `496A407429FF680EE5321B812182ECA68BBDE7FB629545441917F60091AC231C`. The config backup remains local-only; backup contents were not read for secrets.
+- Docker's conservative local displayed image sizes were WordPress 1.12 GB and MariaDB 457 MB. Including two transfer-package copies, expanded `wp-content`, those image bounds, and the 60 MiB combined log cap, the currently quantifiable peak is approximately 2.1 GB. Restored MariaDB footprint and restore working space remain UNKNOWN; SQL dump size is not used as an expansion estimate.
+- Manifest capacity guard: a future target write must stop before the first write if fresh target usage is already 60% or projected usage reaches 60%, or any required capacity term (especially restored DB footprint) is unknown. The 512 MiB tmpfs is included in memory headroom, not treated as durable disk. Fresh target capacity and protected restore rehearsal remain required in a separately reviewed write Gate.
+- Recovery metadata now records the proposed exact owner/group/mode, read-only consumers, fail-if-existing boundary, and a Windows DPAPI CurrentUser pending-artifact/round-trip procedure. This is metadata only: no DPAPI artifact, recovery directory, or real secret was created; target Linux ACL/mode application and actual DPAPI round-trip remain unverified for a later authorized Secret Gate.
+- Exact Compose teardown exited 0. Follow-up label inventory found zero rehearsal containers, networks, and volumes. The disposable `rehearsal` directory (458 files; 14,883,682 bytes) was removed. The pulled WordPress image remains in local cache; no image or shared-volume pruning occurred.
+- Regression: `http://localhost:8093/` returned HTTP 200. Existing Mini Craft WordPress containers remained up and MariaDB containers healthy; unrelated existing containers remained up. No VPS/SSH, DNS, shared ingress, firewall, order, payment, or Live action occurred.
+- Two read-only PowerShell verification wrappers required correction: an unset process-scoped rehearsal path made one Compose inventory call fail interpolation, and an array/null formatter initially miscounted absent published ports. Neither changed state. Re-running with the explicit scoped path and a null-safe rendered-config assertion confirmed the intended results; final Compose render/assertions exited 0.
+
+```text
+GATE=K6_PHASE_B_R1_PACKAGE_RECONCILIATION
+RESULT=PASS_CANDIDATE_K6_PHASE_B_R1_PACKAGE_RECONCILIATION
+TMPFS_NESTED_BIND_REHEARSAL=PASS
+SYNTHETIC_SECRET_FILE_READABILITY=PASS
+PERMISSIONS_RECOVERY_METADATA=RECORDED;DPAPI_ROUNDTRIP_PENDING_FUTURE_AUTHORIZED_GATE
+PROJECT_LOG_ROTATION=PASS;10M_X_3_PER_SERVICE
+CAPACITY_BOUND=DEFINED;RESTORED_DB_FOOTPRINT_UNKNOWN;STOP_BEFORE_WRITE_AT_60_PERCENT
+K5_BACKUP_HASHES=UNCHANGED
+ACTIVE_LOCAL_SITE=HTTP_200
+REHEARSAL_CONTAINERS_NETWORKS_VOLUMES=0
+REHEARSAL_TEMP_DIRECTORY=CLEANED
+VPS_WRITES=0
+SHARED_INFRA_WRITES=0
+SECRET_VALUE_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
