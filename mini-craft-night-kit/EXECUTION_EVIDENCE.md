@@ -3811,7 +3811,7 @@ Reviewer authority: `docs/REVIEWER_DECISION_K6_C1R1_PASS_C1R2_INSTALLER_SEAL.md`
 
 A minimal PowerShell 7 helper was created under the canonical local workspace Gate artifacts:
 
-`C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\mini-craft-night-kit-workspace\\artifacts\\gates\\k6-phase-c1r2-installer-transport-seal\\helpers\\c1r2-installer-transport-seal.ps1`
+`C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts\gates\k6-phase-c1r2-installer-transport-seal\helpers\c1r2-installer-transport-seal.ps1`
 
 The helper is 8,091 bytes; SHA-256 `851C0E35E726676BCBD89FC7BBD8864F1C8DC70281CB85BD372ED07E0401C617`. PowerShell parser validation passed. The same embedded remote transaction parser and PowerShell sender were exercised together: the remote first verifies the pinned target identity and absent Mini Craft paths, emits a fixed readiness marker, then parses the complete raw ACK byte stream; the local sender waits for readiness before sending only the synthetic fixed token frame. Only exact token+LF or token+CRLF is accepted. The transaction checks target-path absence both before and after parsing, then exits through synthetic-no-write mode. No remote temp file or resource is created. The sealed helper contains no real-write branch and fails closed outside synthetic-no-write mode; a real C1 retry remains a separate Reviewer Gate with fresh Owner authorization.
 
