@@ -3527,3 +3527,35 @@ Result: `PASS_CANDIDATE_K6R3_SHARED_VPS_READONLY_PREFLIGHT_COMPLETION`. This is 
 - `REMOTE_WRITES=0`; no directories, containers, networks, image operations, deployment, restores, routes, DNS, UFW, SSH, Caddy, cloudflared, or shared infrastructure were changed.
 - No Secret, private key, credential value, business record, PayPal Live setting, order, or payment was read or changed. `PAYMENT_ACTIONS=0`; `LIVE_ACTIONS=0`.
 - K6 deployment has not started. Stop at Reviewer for independent acceptance of this Phase A candidate.
+
+## K6_PHASE_B_R1_PACKAGE_RECONCILIATION — 2026-09-24
+
+```text
+GATE=K6_PHASE_B_R1_PACKAGE_RECONCILIATION
+RESULT=RETURN_REVIEWER_LOCAL_DOCKER_ENGINE_UNAVAILABLE
+LOCAL_CANDIDATE_PACKAGE=EXISTS
+ACTIVE_RUNTIME_PATH=EXISTS_NOT_TOUCHED
+DOCKER_CLI=29.7.2
+DOCKER_ENGINE=UNAVAILABLE
+DOCKER_VERSION_COMMAND_EXIT=1
+DOCKER_ERROR_CLASS=DOCKER_DESKTOP_LINUX_ENGINE_NAMED_PIPE_NOT_FOUND
+ISOLATED_CONTAINER_INVENTORY=NOT_OBTAINED
+TMPFS_NESTED_BIND_REHEARSAL=NOT_RUN
+WORDPRESS_START_RESTART_RECREATE=NOT_RUN
+SYNTHETIC_SECRET_READABILITY=NOT_RUN
+SECRET_VALUES_READ_OR_CREATED=NO
+PACKAGE_COMPOSE_OR_METADATA_EDIT=0
+LOG_ROTATION_CONFIG=NOT_CHANGED
+CAPACITY_BOUND_RECONCILIATION=NOT_COMPLETED
+K5_BACKUP_BYTES=NOT_TOUCHED
+VPS_WRITES=0
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+TEMP_FILES_OR_HELPERS_CREATED=0
+STOP_AT_REVIEWER=YES
+```
+
+Preflight attempted the installed Docker CLI's read-only `docker version` query. The client was present, but it could not reach `npipe:////./pipe/dockerDesktopLinuxEngine`; Windows reported that the system could not find the file specified. The command exited non-zero (1). Because the Reviewer decision requires an isolated local Compose rehearsal and forbids substituting another runtime when isolation is unavailable, execution stopped before container/volume/network inventory, package mutation, fixture creation, or any Docker write. Docker Desktop was not started, and no existing project/runtime was touched.
+
+No production or Sandbox credential material was read, created, copied, or emitted. This is a preflight return, not a result for tmpfs/bind precedence, WordPress startup, Secret readability, logging rotation, or restored database capacity. Resume only after the Reviewer supplies an approved path to an available isolated local Docker Engine; then rerun the bounded R1 checks from preflight.
