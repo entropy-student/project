@@ -12,21 +12,22 @@ K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL=PASS_CLOSED_BY_R1
 K6_PHASE_B_R1_PACKAGE_RECONCILIATION=PASS
 K6_PHASE_C0_PREWRITE_READONLY_CAPACITY=PASS
 K6_PHASE_C1_SECRET_PROVISIONING_AND_RECOVERY=RETURN_C1_ACK_PROTOCOL_PREWRITE
-CURRENT_GATE=K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION
+K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION=PASS_SYNTHETIC_ONLY
+CURRENT_GATE=K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
 SECRET_AUTHORIZATION=PRIOR_EXACT_DELEGATION_HISTORICAL; FRESH_WRITE_RETRY_AUTH_REQUIRED
 DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
-EXECUTOR_STATUS=C1_STOPPED; C1R1_AWAITING_OWNER_DIRECTED_EXTERNAL_AGENT
+EXECUTOR_STATUS=C1R2_AWAITING_OWNER_DIRECTED_EXTERNAL_AGENT
 OWNER_ACTION=NONE_NOW
 ```
 
-Formal C1 Reviewer RETURN: `docs/REVIEWER_DECISION_K6_C1_RETURN_C1R1_ACK_PROTOCOL.md`. The external Executor's DPAPI pending round-trip passed, but Windows CRLF acknowledgement was rejected by the remote LF-only parser (exit 76) before any VPS project directory/file creation. Executor stopped without retry. Reviewer independently confirmed `/srv/data/mini-craft-night-kit` absent via strict read-only SSH. On the Owner Windows profile, the 1,686-byte encrypted pending artifact exists in the protected `secret-recovery` leaf; the leaf has Owner-only ACL with inheritance disabled. Reviewer did not decrypt or modify it. No Mini Craft service or public route is accepted as deployed.
+Formal C1R1 Reviewer PASS (synthetic protocol only): `docs/REVIEWER_DECISION_K6_C1R1_PASS_C1R2_INSTALLER_SEAL.md`. The Reviewer inspected and independently reran the non-secret ACK helper (SHA-256 `E2D7FC41BF14AE0740DC668A3E3D43A4969F2D1CEAC3FE64E698B2DBB0B2975A`): LF and CRLF accepted; malformed, truncated and extra-byte frames rejected; strict SSH target-path checks remained absent before/after all five cases. No C1 installer or real Secret was invoked. The Owner-profile encrypted pending artifact remains 1,686 bytes under the protected Owner-only recovery leaf; Reviewer checked metadata only.
 
-The prior exact ten-file Owner delegation is recorded in `docs/REVIEWER_DECISION_K6_C1_SECRET_PROVISIONING_AUTHORIZED.md`, but the C1 RETURN ends the write attempt. A later production-write retry requires fresh explicit Owner authorization under canonical Governance. Pending artifact disposition is **retain unchanged**: no decrypt, promotion, deletion, copy or substitution in the next Gate. Current `K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION` allows only non-secret ACK framing/parser repair with synthetic fixtures and bounded remote read-only protocol checks. The formal RETURN decision contains the exact external Executor prompt. No Owner action is needed for C1R1.
+The C1 write attempt remains `RETURN_C1_ACK_PROTOCOL_PREWRITE` (formal decision `docs/REVIEWER_DECISION_K6_C1_RETURN_C1R1_ACK_PROTOCOL.md`). Its inline installer source was not persisted; the C1R1 helper is synthetic-only and separate. Current Gate `K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL` is local-only: seal the actual production-intended ACK code path and prove it in synthetic no-write mode. The full external Executor prompt is in the C1R1 PASS decision. Pending ciphertext must remain unchanged and unread. No VPS/Secret retry is authorized; a later production-write retry needs fresh explicit Owner authorization after Reviewer acceptance of C1R2.
 
-This Codex task remains Reviewer/Planner only per Owner direction; it will not invoke an execution agent/subagent or perform C1 writes. K5 RC, K6R3 preflight, Phase B R1 and C0 remain PASS. The C0 ~2.51 GiB capacity envelope and ~11.68% projected root use are planning facts requiring fresh prewrite recheck. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
+This Codex task remains Reviewer/Planner only per Owner direction; it will not call an execution agent/subagent or perform C1 writes. K5 RC, K6R3 preflight, Phase B R1 and C0 remain PASS. The C0 ~2.51 GiB capacity envelope and ~11.68% projected root use are planning facts requiring fresh prewrite recheck. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
 
 Last reviewed: 2026-09-24  
 Maintainer: Reviewer
