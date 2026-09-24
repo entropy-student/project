@@ -13,21 +13,22 @@ K6_PHASE_B_R1_PACKAGE_RECONCILIATION=PASS
 K6_PHASE_C0_PREWRITE_READONLY_CAPACITY=PASS
 K6_PHASE_C1_SECRET_PROVISIONING_AND_RECOVERY=RETURN_C1_ACK_PROTOCOL_PREWRITE
 K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION=PASS_SYNTHETIC_ONLY
-CURRENT_GATE=K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL
+K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL=PASS_SYNTHETIC_NO_WRITE
+CURRENT_GATE=K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
 SECRET_AUTHORIZATION=PRIOR_EXACT_DELEGATION_HISTORICAL; FRESH_WRITE_RETRY_AUTH_REQUIRED
 DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
-EXECUTOR_STATUS=C1R2_AWAITING_OWNER_DIRECTED_EXTERNAL_AGENT
+EXECUTOR_STATUS=C1R3_AWAITING_OWNER_DIRECTED_EXTERNAL_AGENT
 OWNER_ACTION=NONE_NOW
 ```
 
-Formal C1R1 Reviewer PASS (synthetic protocol only): `docs/REVIEWER_DECISION_K6_C1R1_PASS_C1R2_INSTALLER_SEAL.md`. The Reviewer inspected and independently reran the non-secret ACK helper (SHA-256 `E2D7FC41BF14AE0740DC668A3E3D43A4969F2D1CEAC3FE64E698B2DBB0B2975A`): LF and CRLF accepted; malformed, truncated and extra-byte frames rejected; strict SSH target-path checks remained absent before/after all five cases. No C1 installer or real Secret was invoked. The Owner-profile encrypted pending artifact remains 1,686 bytes under the protected Owner-only recovery leaf; Reviewer checked metadata only.
+Formal C1R2 Reviewer PASS (synthetic no-write transport only): `docs/REVIEWER_DECISION_K6_C1R2_PASS_C1R3_PENDING_REUSE_SEAL.md`. The Reviewer inspected and independently reran the local helper (SHA-256 `851C0E35E726676BCBD89FC7BBD8864F1C8DC70281CB85BD372ED07E0401C617`): LF/CRLF accepted; malformed/truncated/extra-byte frames rejected; strict SSH target paths remained absent. The helper has **no real write branch**, so the real C1 installer is not yet sealed. The Owner-profile DPAPI pending artifact remains 1,686 bytes under a protected Owner-only recovery leaf; only metadata was checked.
 
-The C1 write attempt remains `RETURN_C1_ACK_PROTOCOL_PREWRITE` (formal decision `docs/REVIEWER_DECISION_K6_C1_RETURN_C1R1_ACK_PROTOCOL.md`). Its inline installer source was not persisted; the C1R1 helper is synthetic-only and separate. Current Gate `K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL` is local-only: seal the actual production-intended ACK code path and prove it in synthetic no-write mode. The full external Executor prompt is in the C1R1 PASS decision. Pending ciphertext must remain unchanged and unread. No VPS/Secret retry is authorized; a later production-write retry needs fresh explicit Owner authorization after Reviewer acceptance of C1R2.
+The original C1 Secret attempt remains `RETURN_C1_ACK_PROTOCOL_PREWRITE`. The Reviewer plans to reuse its target-generated, encrypted pending values rather than generate a second set, but a pending-reuse transfer runs Windows → VPS and was not exercised by the ACK-only helper. Current `K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL` is local-only synthetic/no-write validation of the exact proposed reuse payload parser and transport. The full external Executor prompt is in the C1R2 PASS decision. Pending ciphertext must remain unread and unchanged. A real pending decrypt/Secret installation retry requires a fresh explicit Owner authorization after C1R3 review.
 
-This Codex task remains Reviewer/Planner only per Owner direction; it will not call an execution agent/subagent or perform C1 writes. K5 RC, K6R3 preflight, Phase B R1 and C0 remain PASS. The C0 ~2.51 GiB capacity envelope and ~11.68% projected root use are planning facts requiring fresh prewrite recheck. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
+This Codex task remains Reviewer/Planner only; it will not call an execution agent/subagent or perform VPS/Secret writes. K5 RC, K6R3 preflight, Phase B R1 and C0 remain PASS. The C0 ~2.51 GiB capacity envelope and ~11.68% projected root use require fresh prewrite recheck. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
 
 Last reviewed: 2026-09-24  
 Maintainer: Reviewer
