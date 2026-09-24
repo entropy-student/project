@@ -11,19 +11,19 @@ K6R3_SHARED_VPS_READONLY_PREFLIGHT=PASS
 K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL=PASS_CLOSED_BY_R1
 K6_PHASE_B_R1_PACKAGE_RECONCILIATION=PASS
 K6_PHASE_C0_PREWRITE_READONLY_CAPACITY=PASS
-CURRENT_GATE=K6_PHASE_C1_SECRET_OWNER_AUTHORIZATION_CHECKPOINT
+CURRENT_GATE=K6_PHASE_C1_SECRET_PROVISIONING_AND_RECOVERY
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
-SECRET_AUTHORIZATION=NOT_GRANTED
-OWNER_ACTION=DECIDE_EXACT_TEN_FILE_SECRET_DELEGATION
+SECRET_AUTHORIZATION=OWNER_EXACT_TEN_FILE_DELEGATION_GRANTED_2026-09-24
+OWNER_ACTION=NONE_NOW
 ```
 
 Formal C0 Reviewer PASS: `docs/REVIEWER_DECISION_K6_C0_PASS_C1_SECRET_OWNER_CHECKPOINT.md`. The Executor measured 198,537,216 physical bytes in the accepted local MariaDB datadir and performed a strict read-only VPS preflight. The Reviewer independently checked SSH trust metadata and read back `srv1970241` root and RAM capacity without remote writes. The 2,693,949,314-byte (~2.51 GiB) planning increment includes both images, two archive copies, wp-content, bounded logs and 3× measured DB datadir for data/restore workspace. Projected root use was ~11.68%, below the 60% stop line. The 3× reserve is a planning assumption; fresh prewrite checks and growth monitoring are mandatory.
 
 The Executor's reported `REVIEWER_HANDOFF.md` drift is corrected: this file's top CURRENT REVIEWER STATUS already pointed to C0 before the present update. Older markers below are historical and superseded. The C0 candidate was otherwise consistent with the authorized read-only Gate. No Mini Craft VPS namespace or deployment exists; no Secret value or recovery artifact was created.
 
-Current checkpoint `K6_PHASE_C1_SECRET_OWNER_AUTHORIZATION_CHECKPOINT` requires the Owner's explicit decision on exactly ten new project Secret files, target `srv1970241`, exclusive/no-overwrite creation, proposed Linux permissions, and profile-bound DPAPI CurrentUser encrypted recovery. The full reviewable authorization text and conditional C1 execution boundary are in the C0 PASS decision. The earlier Sandbox-first K6 deployment authorization does not itself delegate Secret creation. Until this decision, C1 must not start; no VPS write, Compose start, database restore, ingress/DNS change, PayPal Live, real payment or launch is authorized.
+Owner explicitly accepted the exact ten-file Secret delegation in chat on 2026-09-24 (“我授权，开始吧。”), replying to the C0 Reviewer authorization checkpoint. Formal bounded execution decision: `docs/REVIEWER_DECISION_K6_C1_SECRET_PROVISIONING_AUTHORIZED.md`. Current Gate is `K6_PHASE_C1_SECRET_PROVISIONING_AND_RECOVERY`. This permits only the exact new project Secret directory/files and protected Owner-host DPAPI recovery artifact after fresh host/trust/capacity/collision preflight. It does not authorize Compose start, DB restore, ingress/DNS, PayPal Live, real payment or launch. Executor must return to Reviewer after redacted evidence; C1 has not yet been executed.
 
 K5 RC, K6R3 read-only preflight and Phase B local package/R1 remain PASS. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
 
