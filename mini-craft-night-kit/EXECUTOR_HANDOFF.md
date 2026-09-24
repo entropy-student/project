@@ -1843,3 +1843,47 @@ NEXT=STOP_AT_REVIEWER
 ```
 
 Detailed redacted facts and artifact hashes are appended in `EXECUTION_EVIDENCE.md`. Local package execution record: `mini-craft-night-kit-workspace/artifacts/gates/k6-phase-b-r1-package-reconciliation/execution-record.md`. The production Compose and manifest remain local candidates; no Phase C or VPS action was performed.
+
+
+## K6_PHASE_C0_PREWRITE_READONLY_CAPACITY — Executor Handoff (2026-09-24)
+
+```text
+GATE=K6_PHASE_C0_PREWRITE_READONLY_CAPACITY
+RESULT=PASS_CANDIDATE_K6_PHASE_C0_PREWRITE_READONLY_CAPACITY
+LOCAL_DB_DATADIR_PHYSICAL=198537216_BYTES
+LOCAL_DB_DATADIR_APPARENT=198069542_BYTES
+VPS_IDENTITY=ops@srv1970241;STRICT_RECORDED_HOST_KEY
+VPS_READONLY_PROBE=ONE_INVOCATION_EXIT_0
+VPS_OS=UBUNTU_24.04.5;KERNEL_6.8.0-139
+VPS_CPU_RAM=2_CORES;8.33GB_TOTAL;5.87GB_AVAILABLE
+VPS_ROOT=102.89GB_TOTAL;9.33GB_USED;93.54GB_FREE
+DOCKER=29.8.0;COMPOSE=v5.5.1
+MINICRAFT_NAMESPACE_COLLISION=NO
+SHARED_SERVICES=HEALTHY;CADDY_80_443;CLOUDFLARED_RUNNING
+PROJECTED_INCREMENTAL_PEAK=2693949314_BYTES_ABOUT_2.51_GIB
+PROJECTED_ROOT_USED=ABOUT_11.68_PERCENT
+CAPACITY_RESERVE=3X_MEASURED_FULL_DATADIR;ENGINEERING_ENVELOPE_NOT_GUARANTEE
+TMPFS_RESERVE=512_MIB;RAM_AFTER_TMPFS=ABOUT_4.97_GIB_BEFORE_SERVICE_WORKING_SET
+SECRET_ALLOWLIST=EXACTLY_10_PATHS;METADATA_PLAN_ONLY
+SECRET_AUTHORIZATION=NOT_GRANTED
+SECRET_VALUES=NOT_READ_CREATED_OR_TRANSFERRED
+REVIEWER_HANDOFF_DOCUMENT_DRIFT=YES;NO_REVIEWER_FILE_EDITED
+REMOTE_WRITES=0
+DOCKER_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+The capacity estimate counts both pinned candidate images, two staged/retained backup copies, expanded `wp-content`, bounded logs, and a 3× full-datadir DB/restore reserve. At the fresh read, projected root use is about 11.68%, below the 60% stop line. The 3× reserve and rounded image figures are explicit planning assumptions, not hard guarantees; any later first-write Gate must freshly remeasure and refuse to write if exact image/storage inputs or restore-workspace bound exceed this envelope.
+
+The future Secret plan names exactly ten files under `/srv/data/mini-craft-night-kit/secrets/`, proposed modes/owners and consumers, newline-free CSPRNG hex formats, exclusive create/fail-on-existing, no overwrite, read-only runtime mounts, and DPAPI CurrentUser pending → immediate round-trip → target verification → final promotion. No Owner Secret authorization is granted in C0; no Secret or recovery artifact was created. Reviewer must accept the recovery failure-domain limitation or require an independent recovery domain before any future Secret Gate.
+
+Document drift: GitHub `REVIEWER_HANDOFF.md` does not yet point to C0, although the current formal C0 decision, Project Record, and Storage Manifest do. Reviewer reconciliation is requested before any later write. Full redacted measurements, arithmetic, and the proposed exact authorization wording are in the C0 section of `EXECUTION_EVIDENCE.md`.
+
+```text
+EVIDENCE=EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+COMMIT=942e5e647fe1349a77250bef2e5f4da0271c390b
+OWNER_ACTION=NONE_NOW;FUTURE_EXACT_SECRET_AUTHORIZATION_ONLY_AFTER_REVIEWER_GATE
+NEXT=STOP_AT_REVIEWER
+```
