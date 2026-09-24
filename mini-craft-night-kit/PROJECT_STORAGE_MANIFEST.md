@@ -1,8 +1,8 @@
 # Mini Craft Night Kit — PROJECT STORAGE MANIFEST
 
-Status: PRE-DEPLOYMENT PLAN / K6 PHASE B REVIEWER RETURN / REMOTE STORAGE NOT CREATED
+Status: K6 PHASE B R1 LOCAL PACKAGE PASS / REMOTE STORAGE NOT CREATED
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6_PHASE_B_R1_PACKAGE_RECONCILIATION`
+Current Gate: `K6_PHASE_C0_PREWRITE_READONLY_CAPACITY`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
@@ -69,7 +69,20 @@ Planned Secret references required by the current production Compose candidate (
 | `wordpress-logged-in-salt` | WordPress only | WordPress LOGGED_IN_SALT |
 | `wordpress-nonce-salt` | WordPress only | WordPress NONCE_SALT |
 
-All ten are planned read-only, `create_host_path: false` file binds under `/run/secrets/` with the matching basename. The host Secret directory target is restrictive project-only access; files must be fail-on-existing and must never be committed or emitted in Evidence. Exact effective runtime uid/gid, host owner/group/mode, non-root WordPress read access, and an encrypted off-host recovery destination/procedure are **PENDING K6 Phase B R1 verification**. The generic minimum-access policy below is not evidence that those requirements are met.
+All ten are planned read-only, `create_host_path: false` file binds under `/run/secrets/` with the matching basename. The R1 local disposable rehearsal verified the mount allowlist and synthetic-file read access; it did not create or inspect real target Secret files.
+
+Proposed **target Linux** metadata, pending an explicitly authorized Secret Gate and target-host read-back:
+
+| File(s) | Host owner:group / mode | Allowed runtime reader |
+|---|---|---|
+| `db-app-password` and all eight `wordpress-*-key` / `wordpress-*-salt` files | `root:33` / `0440` | WordPress `www-data` UID/GID 33:33; MariaDB entrypoint root also reads `db-app-password` |
+| `db-root-password` | `root:root` / `0400` | MariaDB entrypoint root only |
+
+The proposed host `secrets/` directory is `root:root` mode `0700`; individual file binds do not require WordPress to traverse that host directory. The synthetic rehearsal proved `root:33 0440` can be read by UID 33 and `root:root 0400` cannot. Windows bind ACLs are not proof of target Linux modes. Actual target identity, file metadata, WordPress/MariaDB access and unrelated-service exclusion remain **UNVERIFIED**.
+
+Provisioning must be exact-allowlist, cryptographic-RNG based, atomic exclusive create/fail-on-existing, no value or value-hash output, and no overwrite absent a separate rotation Gate. Default Secret authority remains Owner-only; delegated generation requires the Owner's explicit project/host/file/purpose/recovery authorization before any Secret write.
+
+Proposed first encrypted recovery copy: a DPAPI `CurrentUser` pending artifact under `%LOCALAPPDATA%\MiniCraftNightKit\secret-recovery\` on the verified Owner Windows host, outside Git/review bundles. The future authorized Gate must stream protected bytes over the verified channel, encrypt in memory, prove immediate decrypt/byte-identity round-trip, complete target provisioning and runtime read-back, then promote pending to final with host-local path/ACL verification. This limited-failure-domain copy is bound to that Windows profile and does not survive simultaneous loss of the VPS and that profile. **No real Secret, DPAPI artifact, recovery directory or round-trip was created in R1.**
 
 Default metadata target:
 
@@ -177,11 +190,11 @@ Before the first K6 deployment write, record:
 - before/after deployment delta.
 
 ```text
-EXPECTED_INITIAL_FOOTPRINT=PENDING_K6_PHASE_B_PACKAGE_SEAL
-RESOURCE_HEADROOM=K6R3_HOST_BASELINE_PASS; DEPLOYMENT_DELTA_PENDING
+EXPECTED_INITIAL_FOOTPRINT=ABOUT_2.1_GB_QUANTIFIABLE_EXCLUDING_RESTORED_DB_AND_RESTORE_WORKSPACE
+RESOURCE_HEADROOM=K6R3_DATED_BASELINE_ONLY; FRESH_PREWRITE_CHECK_AND_DB_BOUND_PENDING
 ```
 
-If headroom cannot be proven safe, stop before write.
+Before the first target write, stop if fresh usage is at/above 60%, projected peak reaches 60%, or any required capacity term (especially restored MariaDB size and restore working space) remains unknown. Include the 512 MiB WordPress tmpfs in RAM headroom, not durable disk. If headroom cannot be proven safe, stop before write.
 
 ## 12. Governance acceptance markers
 
@@ -190,8 +203,8 @@ STORAGE_LAYOUT_CONTRACT_READ=YES
 PROJECT_STORAGE_MANIFEST_EXISTS=YES
 DURABLE_DATA_PATHS_EXPLICIT=YES
 SECRET_PATHS_EXPLICIT_METADATA_ONLY=YES
-SECRET_RUNTIME_ACCESS_DEFINED=PLANNED_MINIMUM_ACCESS; FINAL_RENDER_READBACK_REQUIRED
-SECRET_RECOVERY_POLICY_DEFINED=YES_SEPARATE_FROM_ORDINARY_BACKUP
+SECRET_RUNTIME_ACCESS_DEFINED=PROPOSED_ROOT_33_0440_AND_ROOT_ROOT_0400; TARGET_READBACK_PENDING
+SECRET_RECOVERY_POLICY_DEFINED=DPAPI_CURRENTUSER_PLAN_ONLY; AUTHORIZATION_AND_ARTIFACT_ROUNDTRIP_PENDING
 BACKUP_PATH_EXPLICIT=YES
 RESTORE_METHOD_DEFINED=YES
 ANONYMOUS_DURABLE_VOLUME=NO
