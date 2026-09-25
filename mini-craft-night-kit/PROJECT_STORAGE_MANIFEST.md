@@ -1,8 +1,8 @@
 # Mini Craft Night Kit — PROJECT STORAGE MANIFEST
 
-Status: K6 C1R4R1 PASS (Owner selected fresh regeneration) / C1R5 authorized not yet executed / remote storage not created / old encrypted pending retained
+Status: C1R5 historical transaction RETURN for source-auditability / C1R5R1 RETURN accepted / current Secret state retained / C1R5R2 runtime-access requalification active
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6_PHASE_C1R5_FRESH_SECRET_REGENERATION_AND_PROVISIONING`
+Current Gate: `K6_PHASE_C1R5R2_CURRENT_STATE_REQUALIFICATION`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
@@ -54,7 +54,29 @@ Anonymous durable volumes are forbidden.
 
 No Secret value may enter this manifest, GitHub, ordinary Evidence, chat, or logs.
 
-Planned Secret references required by the current production Compose candidate (paths and purposes only; none exist on the VPS yet):
+### Current Secret-state supersession — 2026-09-25
+
+The historical C1R5 transaction remains `RETURN_HISTORICAL_SOURCE_AUDITABILITY_INCOMPLETE` because the exact executed non-secret helper source was deleted and could not be recovered. This does **not** by itself establish Secret compromise.
+
+Current independently read-back state:
+
+```text
+TARGET_SECRET_FILES=10_EXACT_ALLOWLIST
+SECRET_DIR=root:root_0700
+APP_AND_WORDPRESS_FILES=root:33_0440_X9
+DB_ROOT_FILE=root:root_0400_X1
+UNRELATED_RUNNING_SERVICE_SECRET_MOUNTS=0
+NEW_FINAL_DPAPI_RECOVERY=EXISTS_1686_BYTES_OWNER_ONLY_ACL
+OLD_C1_PENDING=EXISTS_METADATA_ONLY_NO_CONTENT_ACCESS
+SECRET_VALUE_OR_HASH_EXPOSURE=0
+SECRET_ROTATION_REQUIRED=NO_CURRENT_EVIDENCE
+CURRENT_REMAINING_GAP=WORDPRESS_EFFECTIVE_IN_CONTAINER_READABILITY
+```
+
+The new final DPAPI recovery artifact is recorded by metadata only in Evidence; its plaintext/ciphertext content is not part of this manifest. C1R5R2 is authorized only to perform bounded no-value runtime-access validation with disposable isolated containers. It does not authorize Secret regeneration, rotation, overwrite, deletion or recovery-content access.
+
+
+Current Secret references required by the production Compose candidate (paths and purposes only; exact ten files now exist on the VPS and are metadata-verified):
 
 | Host file under `/srv/data/mini-craft-night-kit/secrets/` | Runtime consumer | Purpose |
 |---|---|---|
@@ -71,14 +93,14 @@ Planned Secret references required by the current production Compose candidate (
 
 All ten are planned read-only, `create_host_path: false` file binds under `/run/secrets/` with the matching basename. The R1 local disposable rehearsal verified the mount allowlist and synthetic-file read access; it did not create or inspect real target Secret files.
 
-Proposed **target Linux** metadata, pending an explicitly authorized Secret Gate and target-host read-back:
+Current **target Linux** metadata, confirmed by strict target-host read-back:
 
 | File(s) | Host owner:group / mode | Allowed runtime reader |
 |---|---|---|
 | `db-app-password` and all eight `wordpress-*-key` / `wordpress-*-salt` files | `root:33` / `0440` | WordPress `www-data` UID/GID 33:33; MariaDB entrypoint root also reads `db-app-password` |
 | `db-root-password` | `root:root` / `0400` | MariaDB entrypoint root only |
 
-The proposed host `secrets/` directory is `root:root` mode `0700`; individual file binds do not require WordPress to traverse that host directory. The synthetic rehearsal proved `root:33 0440` can be read by UID 33 and `root:root 0400` cannot. Windows bind ACLs are not proof of target Linux modes. Actual target identity, file metadata, WordPress/MariaDB access and unrelated-service exclusion remain **UNVERIFIED**.
+The host `secrets/` directory is confirmed `root:root` mode `0700`. Strict read-back confirmed nine allowlisted files at `root:33 0440` and `db-root-password` at `root:root 0400`; exact allowlist count is 10. Unrelated running services mount none of the Mini Craft Secret paths. Effective in-container WordPress UID/GID 33:33 readability remains the only current Secret-state verification gap and is the purpose of C1R5R2.
 
 Provisioning must be exact-allowlist, cryptographic-RNG based, atomic exclusive create/fail-on-existing, no value or value-hash output, and no overwrite absent a separate rotation Gate. Default Secret authority remains Owner-only. On 2026-09-24 the Owner explicitly accepted the exact ten-file project/host/path/format/no-overwrite/DPAPI scope documented in `docs/REVIEWER_DECISION_K6_C1_SECRET_PROVISIONING_AUTHORIZED.md`. C1 attempted a prewrite transaction, created only the encrypted Owner-profile pending recovery artifact, and returned before any target directory or Secret file creation. That earlier write authorization is historical after RETURN. C1R4 was subsequently Owner-authorized for bounded in-memory inspection and returned because the payload contains two undocumented non-record boundary lines. The conditional C1R5 write authorization expired on that RETURN; any later Secret generation, transfer or write requires a fresh explicit Owner authorization.
 
