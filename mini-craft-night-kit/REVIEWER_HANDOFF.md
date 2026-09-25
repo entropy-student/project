@@ -1,8 +1,8 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
-## CURRENT REVIEWER STATUS — 2026-09-24
+## CURRENT REVIEWER STATUS — 2026-09-25
 
-This section supersedes older `CURRENT_GATE` markers below. Governance rules come from the latest canonical `entropy-student/spike.skill/vps-project-governance`; project facts come from accepted Reviewer decisions and fresh evidence.
+This section supersedes older `CURRENT_GATE` markers below. Governance comes from the latest canonical `entropy-student/spike.skill/vps-project-governance`; project facts come from accepted Reviewer decisions and fresh evidence.
 
 ```text
 K5_RELEASE_CANDIDATE=PASS
@@ -14,23 +14,25 @@ K6_PHASE_C0_PREWRITE_READONLY_CAPACITY=PASS
 K6_PHASE_C1_SECRET_PROVISIONING_AND_RECOVERY=RETURN_C1_ACK_PROTOCOL_PREWRITE
 K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION=PASS_SYNTHETIC_ONLY
 K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL=PASS_SYNTHETIC_NO_WRITE
-CURRENT_GATE=K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL
+K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL=RETURN_ORIGINAL_PENDING_SERIALIZATION_UNKNOWN
+CURRENT_GATE=K6_PHASE_C1R4_PENDING_RECOVERY_LOCAL_SEAL
+CURRENT_GATE_STATUS=AWAIT_FRESH_OWNER_SECRET_HANDLING_AUTHORIZATION
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
-SECRET_AUTHORIZATION=PRIOR_EXACT_DELEGATION_HISTORICAL; FRESH_WRITE_RETRY_AUTH_REQUIRED
+SECRET_AUTHORIZATION=PRIOR_EXACT_DELEGATION_HISTORICAL; FRESH_C1R4_READ_AND_FUTURE_WRITE_RETRY_AUTH_REQUIRED
 DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
-EXECUTOR_STATUS=C1R3_AWAITING_OWNER_DIRECTED_EXTERNAL_AGENT
-OWNER_ACTION=NONE_NOW
+EXECUTOR_STATUS=STOPPED_AT_REVIEWER; C1R4_NOT_DISPATCHED
+OWNER_ACTION=AUTHORIZE_BOUNDED_C1R4_IN_MEMORY_DPAPI_READ_AND_CONDITIONAL_C1R5_EXACT_WRITE_OR_DECLINE
 ```
 
-Formal C1R2 Reviewer PASS (synthetic no-write transport only): `docs/REVIEWER_DECISION_K6_C1R2_PASS_C1R3_PENDING_REUSE_SEAL.md`. The Reviewer inspected and independently reran the local helper (SHA-256 `851C0E35E726676BCBD89FC7BBD8864F1C8DC70281CB85BD372ED07E0401C617`): LF/CRLF accepted; malformed/truncated/extra-byte frames rejected; strict SSH target paths remained absent. The helper has **no real write branch**, so the real C1 installer is not yet sealed. The Owner-profile DPAPI pending artifact remains 1,686 bytes under a protected Owner-only recovery leaf; only metadata was checked.
+Formal C1R3 Reviewer RETURN and consolidated next package: `docs/REVIEWER_DECISION_K6_C1R3_RETURN_C1R4_CONSOLIDATED_PENDING_RECOVERY.md`. The original pending byte schema was not retained in non-sensitive evidence. C1R3 correctly did not decrypt the artifact or attempt SSH/Secret transfer; it produced no helper and made no remote write. C1R2's ACK synthetic PASS remains component evidence only. The existing 1,686-byte pending artifact remains encrypted on the protected Owner Windows profile and is not a final recovery copy. The last independent target-path absence check was C1R2; a later write needs fresh read-only preflight.
 
-The original C1 Secret attempt remains `RETURN_C1_ACK_PROTOCOL_PREWRITE`. The Reviewer plans to reuse its target-generated, encrypted pending values rather than generate a second set, but a pending-reuse transfer runs Windows → VPS and was not exercised by the ACK-only helper. Current `K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL` is local-only synthetic/no-write validation of the exact proposed reuse payload parser and transport. The full external Executor prompt is in the C1R2 PASS decision. Pending ciphertext must remain unread and unchanged. A real pending decrypt/Secret installation retry requires a fresh explicit Owner authorization after C1R3 review.
+C1R4 combines in-memory schema/compatibility validation, synthetic pending-reuse transport, and read-only target/capacity checks into one **local/no-write** Gate. It requires fresh explicit Owner Secret-handling authorization before decrypting pending content. The Reviewer proposes one conditional Owner authorization for a later exact ten-file C1R5 write only after formal C1R4 Reviewer PASS. A C1R4 RETURN, prerequisite failure, ambiguity or target drift cancels it. No C1R4 or C1R5 execution has been dispatched by this Reviewer/Planner task.
 
-This Codex task remains Reviewer/Planner only; it will not call an execution agent/subagent or perform VPS/Secret writes. K5 RC, K6R3 preflight, Phase B R1 and C0 remain PASS. The C0 ~2.51 GiB capacity envelope and ~11.68% projected root use require fresh prewrite recheck. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
+This task remains Reviewer/Planner only: no Executor/subagent invocation and no Secret/VPS write. K5 RC, K6R3, Phase B R1 and C0 remain PASS; C0 capacity assumptions need a fresh read-only prewrite check. The local non-main Git checkout remains stale/dirty relative to GitHub `main`; do not overwrite it.
 
-Last reviewed: 2026-09-24  
+Last reviewed: 2026-09-25  
 Maintainer: Reviewer
 
 ## CURRENT AUTHORITATIVE GOVERNANCE OVERRIDE — 2026-09-23
