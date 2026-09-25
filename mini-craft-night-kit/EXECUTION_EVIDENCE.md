@@ -4003,3 +4003,60 @@ STOP_AT_REVIEWER=YES
 No Mini Craft containers, database, or wp-content were created/restored. No payment, Live, shared-ingress, DNS, firewall, or other VPS mutation occurred. The only authorized VPS writes were the ten allowlisted secret files and their two containing directories. No next Gate was started.
 
 LOCAL_HELPER_CLEANUP=PASS; one-time local source removed after evidence publication; final DPAPI recovery retained locally.
+
+
+---
+
+## K6_PHASE_C1R5R1_POSTWRITE_EVIDENCE_RECONCILIATION — 2026-09-25
+
+Result: RETURN_C1R5R1_EXECUTED_HELPER_SOURCE_UNRECOVERABLE. This entry records bounded metadata-only checks; it does not assert C1R5R1 PASS.
+
+### Authority and source reads
+- Read the current Reviewer Handoff, Project Storage Manifest, current R1 Reviewer Decision, R1 execution pack, latest Evidence/Handoff, and canonical VPS Project Governance v0.1.6 with active SSH / target-host / storage addenda.
+- SHARED_VPS_HANDOFF_SOURCE_READ=YES. Read the unique local Shared VPS Handoff at C:\Users\34707\Documents\ChatGPT\VPS基建\SHARED_VPS_HANDOFF.md before the strict SSH check.
+- No Reviewer-owned file or storage manifest was modified.
+
+### Executed helper source recovery
+- Required executed helper SHA-256: 808760C349D83492AF54E6EFC2E76E32231C30D74DD88F2705656C6C0724F083.
+- The recorded local helper path under mini-craft-night-kit-workspace\artifacts\gates\k6-phase-c1r5-fresh-secret-regeneration-and-provisioning\helpers\c1r5-secret-transaction.ps1 is absent.
+- Searched the exact expected path/name in the current Gate artifacts, retained project artifacts, local GitHub-sync worktree, local temp location, and Mini Craft archive. A metadata/hash-only scan of four retained PowerShell candidates found no matching hash. The project Git worktree has no tracked copy or path history; exact GitHub filename search returned no source.
+- EXECUTED_HELPER_SOURCE_RECOVERED=NO; EXECUTED_HELPER_SHA_MATCH=UNVERIFIED; STATIC_HELPER_REVIEW=BLOCKED_SOURCE_UNRECOVERABLE. No reconstructed source was substituted or retained.
+
+### Owner-host SSH and recovery metadata
+- Identity reference exists; public-key fingerprint matched the previously recorded fingerprint SHA256:qFlRXelvzDEFpatrcX7T4dUBKPAC7YqFqNkyFZh5rYw. Private key content was not read.
+- Normal known_hosts contained three pinned host-key algorithms; their fingerprints matched the previously recorded pins. StrictHostKeyChecking remained enabled; no trust file was changed.
+- The one strict SSH read-only audit reached ops@srv1970241 with sudo -n available. SSH transport and pinned host identity succeeded. The remote audit returned native status 2 because the nine host-path UID 33 permission probes failed; this was not an SSH transport failure.
+- Recovery directory: %LOCALAPPDATA%\MiniCraftNightKit\secret-recovery. Metadata-only ACL check: owner-only FullControl DACL, inheritance protected.
+- New final artifact: k6-c1r5-mini-craft-night-kit-srv1970241-20260925T144404Z-a93f21724d554fde90d91b949d8acc6e.final.dpapi. Exists; 1,686 bytes; created/last-write 2026-09-25T14:44:08.4373453Z; Owner-only FullControl ACE inherited from the protected recovery directory.
+- Historical C1 pending: k6-c1-mini-craft-night-kit-srv1970241.pending.dpapi. Exists; 1,686 bytes; created 2026-09-24T04:32:45.2646290Z; last-write 2026-09-24T04:32:45.2712493Z; Owner-only FullControl ACE inherited from the protected recovery directory. Only filesystem metadata was queried; no content comparison is claimed.
+- No recovery payload was opened, decrypted, hashed, copied, renamed, promoted, modified, or deleted.
+
+### VPS Secret metadata and bounded access checks
+- Exact target directory /srv/data/mini-craft-night-kit/secrets: root:root 0700. Exact allowlist count=10 and exact basenames matched the R2 pack.
+- Metadata-only file inventory: db-app-password root:33 0440 size 64; db-root-password root:root 0400 size 64; eight WordPress key/salt files root:33 0440 size 128 each. No file contents, values, or hashes were read.
+- UID 33 test-read checks against the host source paths failed for all nine WordPress-permitted files. The parent Mini Craft data directory is root:root 0700, so host-path access is blocked before the file ACL is reached. This does not establish the result of a container single-file bind mount; effective in-container access remains UNVERIFIED.
+- UID 33 was unable to read db-root-password; host root read-permission checks for db-app-password and db-root-password passed. These are access-permission probes only; no file was opened/read.
+- Sealed production Compose source (SHA256 C52E1C088D05300C93139CF87A04D4C7CA2E5D8412FEE6C788CB97ABDABF0B2B) was inspected locally without starting services: it maps nine read-only individual secret files to WordPress and maps db-root-password only to MariaDB. This is configuration evidence, not runtime read proof.
+
+### Docker isolation and runtime boundary
+- Read-only Docker metadata showed 8 existing running containers, 0 Mini Craft Compose containers, and 0 Mini Craft Compose networks.
+- Docker mount metadata was inspected for each of the 8 running containers. None mounted /srv/data/mini-craft-night-kit or a descendant; unrelated Mini Craft secret mount count=0.
+- Existing shared edge/private networks, Caddy, and cloudflared were present. No container, network, service, or shared infrastructure was changed.
+
+### Boundary and disposition
+EXECUTED_HELPER_SOURCE_RECOVERED=NO
+EXECUTED_HELPER_SHA_MATCH=UNVERIFIED
+STATIC_HELPER_REVIEW=BLOCKED_SOURCE_UNRECOVERABLE
+TARGET_SECRET_METADATA_READBACK=PASS
+RUNTIME_ACCESS_AND_UNRELATED_MOUNT_EXCLUSION=PARTIAL;UNRELATED_MOUNT_EXCLUSION=PASS;WORDPRESS_EFFECTIVE_RUNTIME_READ=UNVERIFIED
+NEW_FINAL_RECOVERY_METADATA_READBACK=PASS
+OLD_PENDING_METADATA_READBACK=PASS;CONTENT_UNCHANGED_COMPARISON=NOT_AVAILABLE;NO_ACTION_TAKEN
+SHARED_VPS_HANDOFF_SOURCE_READ=YES
+SECRET_VALUE_OR_HASH_ACCESS=0
+RECOVERY_CONTENT_ACCESS=0
+REMOTE_WRITES=0
+SERVICE_STARTS=0
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+STOP_AT_REVIEWER=YES
