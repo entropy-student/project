@@ -2065,4 +2065,4 @@ NEXT=STOP_AT_REVIEWER
 STOP_AT_REVIEWER=YES
 ```
 
-The temporary local helper was used only for this Gate and is to be removed after evidence publication. The new encrypted final recovery remains local under the Owner profile's protected LocalAppData directory. Do not start Mini Craft or enter any deployment/service-start phase without a subsequent Reviewer decision.
+The temporary local helper was used only for this Gate and was removed after evidence publication. The new encrypted final recovery remains local under the Owner profile's protected LocalAppData directory. Do not start Mini Craft or enter any deployment/service-start phase without a subsequent Reviewer decision.
