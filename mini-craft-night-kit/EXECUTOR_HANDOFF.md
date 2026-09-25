@@ -2096,3 +2096,36 @@ NEXT=STOP_AT_REVIEWER
 STOP_AT_REVIEWER=YES
 
 Reviewer note: the direct UID 33 host-path read probes fail because the protected data parent is root:root 0700. The sealed Compose maps each allowed file individually read-only and excludes db-root from WordPress, but effective in-container read access was not tested because starting a container is outside this Gate. No service/container was started to simulate it.
+
+
+---
+
+## K6_PHASE_C1R5R2_CURRENT_STATE_REQUALIFICATION
+
+GATE=K6_PHASE_C1R5R2_CURRENT_STATE_REQUALIFICATION
+RESULT=PASS_CANDIDATE_K6_PHASE_C1R5R2_CURRENT_STATE_REQUALIFICATION
+SUMMARY=Current exact Secret metadata, effective container-reader access boundaries, unrelated-service exclusion, cleanup, and local recovery metadata were requalified without reading Secret/recovery content. Historical C1R5 helper-source auditability remains unrecoverable and is not upgraded by this result.
+TARGET_SECRET_METADATA_READBACK=PASS
+WORDPRESS_UID33_EFFECTIVE_READ_9_OF_9=PASS
+WORDPRESS_DB_ROOT_NOT_MOUNTED=PASS
+MARIADB_REQUIRED_SECRET_ACCESS=PASS
+UNRELATED_RUNNING_SERVICE_SECRET_MOUNTS=0
+DISPOSABLE_VALIDATION_NETWORK=NONE
+DISPOSABLE_VALIDATION_PORTS=NONE
+DISPOSABLE_VALIDATION_PERSISTENT_STATE=0
+VALIDATION_RESOURCES_AFTER_CLEANUP=0
+NEW_FINAL_RECOVERY_METADATA_READBACK=PASS
+OLD_PENDING_METADATA_UNCHANGED=PASS
+SECRET_VALUE_OR_HASH_ACCESS=0
+RECOVERY_CONTENT_ACCESS=0
+MINICRAFT_PRODUCTION_SERVICE_STARTS=0
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+REMOTE_VALIDATION_IMAGE=redis:7-alpine (pre-existing local image; no pull/build; application services not started)
+REMOTE_VALIDATION_EXIT=SSH 0; both permission-check processes exited 0; post-cleanup inventories matched
+LOCAL_RECOVERY_CHECK=metadata-only; final and historical pending sizes/timestamps/Owner-only ACL verified
+EVIDENCE=EXECUTION_EVIDENCE.md (commit 4fa9b2d7ef74e0bbfb7fc2db7b6194775202a36b)
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
