@@ -19,7 +19,7 @@ K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL=RETURN_ORIGINAL_PENDING_SERIALIZATION
 K6_PHASE_C1R4_PENDING_RECOVERY_LOCAL_SEAL=RETURN_PENDING_PAYLOAD_SCHEMA_AMBIGUOUS
 K6_PHASE_C1R4R1_PENDING_DISPOSITION_OWNER_CHECKPOINT=PASS_OWNER_SELECTED_FRESH_REGENERATION
 CURRENT_GATE=K6_PHASE_C1R5_FRESH_SECRET_REGENERATION_AND_PROVISIONING
-CURRENT_GATE_STATUS=DISPATCHED_AWAIT_EXECUTOR_TRANSPORT
+CURRENT_GATE_STATUS=DISPATCHED_AWAIT_INDEPENDENT_EXECUTOR
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
@@ -27,12 +27,12 @@ OLD_DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
 OLD_VALUES_REQUIRED=NO
 C1R5_OWNER_AUTHORIZATION=FRESH_EXPLICIT_BOUNDED
 EXECUTOR_STATUS=DISPATCH_RECORDED_GITHUB_ISSUE_13_NO_HOST_EXECUTION_YET
-OWNER_ACTION=CONNECT_EXECUTOR_CHANNEL_IF_AVAILABLE
+OWNER_ACTION=NONE_UNTIL_EXECUTOR_REQUIRES_OWNER_ONLY_CHECKPOINT
 ```
 
 Formal authorization: `docs/REVIEWER_DECISION_K6_C1R4R1_PASS_C1R5_FRESH_SECRET_REGENERATION_AUTHORIZED.md`.  
 Execution package: `review-packets/K6_C1R5_FRESH_SECRET_REGENERATION_EXECUTION_PACK.md`.
-Executor dispatch record: GitHub issue #13 (`[Executor] Mini Craft K6 C1R5 fresh Secret regeneration`).
+Executor dispatch record: GitHub issue #13 (`[Executor] Mini Craft K6 C1R5 fresh Secret regeneration`). Reviewer must not execute this Gate; an independent Executor with real Owner-host/VPS access must perform it and return Evidence.
 
 Owner selected the fresh-regeneration path. C1R5 is conditionally split inside one bounded Gate: Phase A must seal a new canonical serialization/parser using synthetic data and Owner-host DPAPI rehearsal; only Phase A PASS activates the already granted Phase B authorization to generate and install the exact ten fresh Secrets. Any Phase A failure, target drift, collision or ambiguity cancels real-write authority and returns to Reviewer.
 
