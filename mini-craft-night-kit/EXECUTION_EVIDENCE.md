@@ -3882,3 +3882,71 @@ LIVE_ACTIONS=0
 OWNER_ACTION=NONE
 NEXT=STOP_AT_REVIEWER
 ```
+
+
+## K6 Phase C1R4 Pending Recovery Local Seal — RETURN (2026-09-25, Asia/Shanghai)
+
+Reviewer authority: `docs/REVIEWER_DECISION_K6_C1R3_RETURN_C1R4_CONSOLIDATED_PENDING_RECOVERY.md`. Owner's explicit chat authorization was received for the bounded C1R4 in-memory DPAPI CurrentUser inspection and the conditional C1R5 scope. C1R4 local inspection proceeded. Under the decision, because C1R4 returns, the conditional C1R5 authorization expires; no C1R5 action was taken.
+
+```text
+GATE=K6_PHASE_C1R4_PENDING_RECOVERY_LOCAL_SEAL
+RESULT=RETURN_K6_C1R4_PENDING_PAYLOAD_SCHEMA_AMBIGUOUS
+OWNER_C1R4_AUTHORIZATION=GRANTED
+CONDITIONAL_C1R5_AUTHORIZATION=EXPIRED_ON_C1R4_RETURN
+```
+
+### Owner-profile pending payload inspection
+
+The existing protected pending artifact was read only in the current Owner Windows profile and decrypted in process memory with DPAPI CurrentUser. No plaintext file, environment variable, command-line argument, transcript, log, GitHub content, value output, or value hash was created. The decrypted and ciphertext byte arrays, character buffer, and temporary value buffers are zeroed in the helper's finally path. The pending file remains at its original path, size 1,686 bytes, protected Owner-only recovery-leaf ACL; it was not modified, promoted, copied, moved, or deleted.
+
+Safe metadata findings:
+
+- Encoding UTF-8, no BOM; LF line endings; terminal LF present.
+- Twelve parseable records in the expected order: project/host binding followed by the ten authorized secret field names.
+- Both project and host binding checks passed.
+- The ten allowlisted fields were each present once; required lowercase-hex lengths and pairwise uniqueness checks passed.
+- The physical payload also contains two non-record text lines at positions 1 and 14 (lengths 16 and 20). Their syntax/role is not specified by the retained non-secret source; they are not recognized framing or registered schema records.
+- The helper therefore reports `STRUCTURE_VALID=False` and exits 23 (`RETURN_AMBIGUOUS`). It does not silently discard, reinterpret, or normalize those lines. Exact serialization/framing is not sealed, so no payload parser/sender or synthetic transport rehearsal was approved or run.
+
+This is a schema/provenance return, not evidence of invalid credential values. No real pending bytes or Secret values were sent to the VPS.
+
+### Fresh strict read-only target and package checks
+
+One corrected, bounded strict-SSH read-only probe used the recorded `ops@2.24.193.133` identity, explicit normal known_hosts, `BatchMode=yes`, `IdentitiesOnly=yes`, `StrictHostKeyChecking=yes`, no agent forwarding, and bounded connection/command time. The remote identity and pinned host matched: `ops@srv1970241`. A first local probe draft exited early because of a local shell-string newline serialization error; it performed no write. The corrected probe completed with native exit 0.
+
+- Host: Ubuntu 24.04, kernel 6.8.0-139-generic; 2 vCPU.
+- RAM: 8,326,627,328 bytes total; 5,862,903,808 bytes available at probe time.
+- Root and `/srv/data`: 102,888,095,744 bytes total; 93,532,176,384 bytes available.
+- Docker 29.8.0; Compose v5.5.1; `sudo -n` passed.
+- Existing application containers reported healthy; shared Caddy and private cloudflared containers remained up. Caddy owns host TCP 80/443; UFW is active with the existing 22/80/443 allow rules. Existing `spikersun-edge` and `spikersun-private` networks were observed unchanged.
+- `/srv/apps/mini-craft-night-kit`, `/srv/data/mini-craft-night-kit`, and `/srv/backups/mini-craft-night-kit` were absent. No Mini Craft Compose-labelled container or network collision was reported.
+- The sealed local production Compose rendered successfully with only non-secret validation placeholders for the two required database-name/user interpolation inputs. Rendered images were `wordpress:7.1.1-php8.3-apache` and `mariadb:11.4.7`; no host ports are published; the database network is internal; WordPress joins the existing external `spikersun-edge`; all ten unique authorized secret targets are mounted read-only (the DB app password target is mounted into both services). The temporary placeholder env file was removed after validation. Rendered JSON was not printed or persisted.
+- Existing local K5 compressed backups were only statted, not changed: post-cleanup SQL 5,286,165 bytes and wp-content archive 113,763,468 bytes. This is a compressed-input reference only, not an estimate of expanded runtime usage.
+
+### Local Gate helpers and safety
+
+Retained reviewable local-only helper sources under:
+
+`C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts\gates\k6-phase-c1r4-pending-recovery-local-seal\helpers\`
+
+- `c1r4-pending-recovery-seal.ps1` — SHA-256 `7FCB2F9A25D5741FCBC1ACFC7C619D1728EE73AFE37E31382BEAF79BA99E78AF`; PowerShell parse errors=0; deliberately fails closed on the observed ambiguous framing (native exit 23).
+- `c1r4-readonly-vps-probe.ps1` — SHA-256 `E8F8082609EC33975F30CBAF74DB464A61FA6CE35EAAF654BE2C161227D7B24D`; PowerShell parse errors=0; corrected strict read-only probe succeeded.
+- Synthetic framing/identity/collision rehearsal was not run because the exact pending payload schema could not be sealed. There is no C1 write branch in these helpers.
+
+```text
+PENDING_PROMOTED=NO
+PENDING_DELETED=NO
+PENDING_MODIFIED_BY_GATE=NO
+REAL_PENDING_BYTES_SENT=NO
+SYNTHETIC_TRANSPORT_REHEARSAL=NOT_RUN_FAIL_CLOSED_SCHEMA_UNRESOLVED
+REMOTE_WRITES=0
+VPS_WRITES=0
+SHARED_INFRA_WRITES=0
+DOCKER_OR_COMPOSE_MUTATIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+SECRET_VALUES_OR_HASHES_EXPOSED=0
+STOP_AT_REVIEWER=YES
+```
+
+No subsequent Gate is started. Reviewer must decide how to establish/provide the exact non-secret serialization source or disposition the retained pending artifact before any C1R4 retry. Because this result is RETURN, the conditional C1R5 authorization no longer applies.
