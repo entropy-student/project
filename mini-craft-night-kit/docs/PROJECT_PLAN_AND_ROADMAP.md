@@ -1,7 +1,7 @@
 # Mini Craft Night Kit — PROJECT PLAN & ROADMAP
 
-Last updated: 2026-09-23  
-Status: **ACTIVE — K6R1 SSH RECOVERY**
+Last updated: 2026-09-25  
+Status: **ACTIVE — K6 C1R5 FRESH SECRET REGENERATION**
 
 ## 0. Authority and current override
 
@@ -12,8 +12,10 @@ Current accepted execution state:
 
 ```text
 K0-K5=PASS
-K6=OWNER_AUTHORIZED_SANDBOX_FIRST
-CURRENT_GATE=K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY
+K6=AUTHORIZED_IN_PROGRESS_NOT_DEPLOYED
+CURRENT_GATE=K6_PHASE_C1R5_FRESH_SECRET_REGENERATION_AND_PROVISIONING
+C1R5_OWNER_AUTHORIZATION=GRANTED
+OLD_DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
 PUBLIC_ORIGIN=https://minicraft.spikersun.com
 PAYPAL_LIVE=NO
 REAL_PAYMENT_AUTHORIZED=NO
@@ -69,13 +71,12 @@ K3 PayPal Sandbox                 PASS
 K4 Conversion/Trust               PASS for current local-test state
 K4.5/K4.6 Growth readiness/spec   PASS
 K5 Release Candidate QA           PASS
-K6 VPS Deployment                 AUTHORIZED / IN PROGRESS
-K6R1 SSH recovery                 CURRENT
+K6 VPS Deployment                 AUTHORIZED / IN PROGRESS / NOT DEPLOYED
+K6 Secret provisioning C1R5       CURRENT / AUTHORIZED
 K7 Production Canary              NOT STARTED
 ```
 
-Current next action is the bounded K6R1 governed SSH recovery/read-only continuity probe.
-Do not replay K0–K5.
+Current next action is C1R5: seal a fresh canonical Secret serialization/parser with synthetic data, then conditionally provision the exact ten fresh Secret files and verify the new encrypted recovery artifact. Mini Craft deployment/start remains a later K6 Gate. Do not replay K0–K5.
 
 ## 4. Execution Gates
 
