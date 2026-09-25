@@ -2,12 +2,12 @@
 
 ## CURRENT REVIEWER STATUS — 2026-09-25
 
-This section supersedes older `CURRENT_GATE` markers below. Governance comes from the latest canonical `entropy-student/spike.skill/vps-project-governance`; project facts come from accepted Reviewer decisions and fresh accepted Evidence.
+This section supersedes older `CURRENT_GATE` markers below. Governance comes from canonical `entropy-student/spike.skill/vps-project-governance` latest; project facts come from accepted Reviewer decisions and fresh accepted Evidence.
 
 ```text
 REVIEWER_TAKEOVER_RECONCILIATION=PASS
-K5_RELEASE_CANDIDATE=PASS
-K6_DEPLOYMENT=OWNER_AUTHORIZED_SANDBOX_FIRST
+K0_K5=PASS
+K6_DEPLOYMENT=AUTHORIZED_NOT_STARTED
 K6R3_SHARED_VPS_READONLY_PREFLIGHT=PASS
 K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL=PASS_CLOSED_BY_R1
 K6_PHASE_B_R1_PACKAGE_RECONCILIATION=PASS
@@ -17,24 +17,25 @@ K6_PHASE_C1R1_ACK_PROTOCOL_RECONCILIATION=PASS_SYNTHETIC_ONLY
 K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL=PASS_SYNTHETIC_NO_WRITE
 K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL=RETURN_ORIGINAL_PENDING_SERIALIZATION_UNKNOWN
 K6_PHASE_C1R4_PENDING_RECOVERY_LOCAL_SEAL=RETURN_PENDING_PAYLOAD_SCHEMA_AMBIGUOUS
-CURRENT_GATE=K6_PHASE_C1R4R1_PENDING_DISPOSITION_OWNER_CHECKPOINT
-CURRENT_GATE_STATUS=AWAIT_OWNER_DECISION
+K6_PHASE_C1R4R1_PENDING_DISPOSITION_OWNER_CHECKPOINT=PASS_OWNER_SELECTED_FRESH_REGENERATION
+CURRENT_GATE=K6_PHASE_C1R5_FRESH_SECRET_REGENERATION_AND_PROVISIONING
+CURRENT_GATE_STATUS=AUTHORIZED_AWAIT_EXECUTOR
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
-C1R5_AUTHORIZATION=EXPIRED_ON_C1R4_RETURN
-DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
-EXECUTOR_STATUS=STOPPED_AT_REVIEWER
-OWNER_ACTION=CHOOSE_FRESH_REGENERATION_OR_FURTHER_PENDING_RECOVERY
+OLD_DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
+OLD_VALUES_REQUIRED=NO
+C1R5_OWNER_AUTHORIZATION=FRESH_EXPLICIT_BOUNDED
+EXECUTOR_STATUS=NOT_YET_EXECUTED_C1R5
+OWNER_ACTION=NONE
 ```
 
-Formal takeover decision: `docs/REVIEWER_DECISION_K6_C1R4_RETURN_REVIEWER_TAKEOVER.md`.
+Formal authorization: `docs/REVIEWER_DECISION_K6_C1R4R1_PASS_C1R5_FRESH_SECRET_REGENERATION_AUTHORIZED.md`.  
+Execution package: `review-packets/K6_C1R5_FRESH_SECRET_REGENERATION_EXECUTION_PACK.md`.
 
-The Reviewer accepts the C1R4 Executor RETURN as correct fail-closed behavior. Owner-authorized in-memory inspection validated project/host binding and all ten allowlisted fields but found two undocumented non-record boundary lines, so exact pending serialization remains unsealed. No real pending bytes were transferred. Fresh strict read-only checks passed against `ops@srv1970241`; the three Mini Craft VPS namespaces remained absent, no Mini Craft container/network existed, capacity remained ample, and the sealed production Compose rendered successfully. C1R4 made no VPS, Docker, Shared Infra, payment or Live mutation and exposed no Secret value/hash.
+Owner selected the fresh-regeneration path. C1R5 is conditionally split inside one bounded Gate: Phase A must seal a new canonical serialization/parser using synthetic data and Owner-host DPAPI rehearsal; only Phase A PASS activates the already granted Phase B authorization to generate and install the exact ten fresh Secrets. Any Phase A failure, target drift, collision or ambiguity cancels real-write authority and returns to Reviewer.
 
-The previous conditional C1R5 write authorization expired on C1R4 RETURN. This Reviewer recommends the lower-complexity path: keep the old pending artifact encrypted and untouched, then—only after fresh Owner authorization—generate a fresh exact ten-value set under a newly sealed canonical serialization/parser and run a new bounded provisioning transaction. The obsolete pending artifact is not deleted during takeover; any later deletion remains an Owner checkpoint.
-
-No Executor is dispatched from this takeover. The local non-main Git checkout is historical/stale relative to GitHub `main`; do not overwrite it.
+The old ambiguous DPAPI pending artifact remains encrypted and untouched and is not part of the C1R5 data path. C1R5 does not authorize Mini Craft service start, DB/wp-content restore, Shared Infra changes, public routing, PayPal Live, real payment or launch.
 
 Last reviewed: 2026-09-25  
 Maintainer: Reviewer
