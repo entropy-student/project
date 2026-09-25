@@ -41,10 +41,11 @@ WordPress
 
 ## 当前 Gate
 
-`K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY`
+`K6_PHASE_C1R4R1_PENDING_DISPOSITION_OWNER_CHECKPOINT`
 
-K0–K5 已完成。K6 已获 Owner 授权，但当前先恢复既有 Shared VPS SSH Contract 并完成一次
-只读动态 continuity probe；本 Gate 不部署。
+K0–K5 已完成。K6 尚未在 VPS 上开始部署。C1R4 已正式 RETURN：旧 DPAPI pending 中的 10 个 allowlisted Secret 字段与 project/host binding 均通过内存校验，但还存在两条未被非秘密来源定义的边界行，因此 Reviewer 不允许继续复用该 payload。
+
+当前只需要 Owner 选择后续 Secret 路线：**fresh regeneration（Reviewer 推荐）**，或继续恢复旧 pending。旧 pending 目前保持加密、未晋升、未删除；没有 VPS/支付/Live 写入。
 
 ## 文档索引
 
