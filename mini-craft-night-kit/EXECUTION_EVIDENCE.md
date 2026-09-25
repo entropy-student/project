@@ -3950,3 +3950,54 @@ STOP_AT_REVIEWER=YES
 ```
 
 No subsequent Gate is started. Reviewer must decide how to establish/provide the exact non-secret serialization source or disposition the retained pending artifact before any C1R4 retry. Because this result is RETURN, the conditional C1R5 authorization no longer applies.
+
+
+## K6_PHASE_C1R5_FRESH_SECRET_REGENERATION_AND_PROVISIONING — Execution Evidence (2026-09-25)
+
+Authority: the current C1R5 pre-execution governance reconciliation, Revision 2 execution pack, current project handoff, and explicit bounded Owner authorization. This later authorized C1R5 execution supersedes the earlier C1R4 return for current execution only; prior history is retained unchanged.
+
+### Phase A — serializer/parser and DPAPI rehearsal
+
+- Local PowerShell helper parsed with zero parser errors; executed helper SHA-256: `808760C349D83492AF54E6EFC2E76E32231C30D74DD88F2705656C6C0724F083`.
+- Canonical schema and synthetic validation: 15/15 cases passed, including canonical LF and uniform CRLF, wrong project/host binding, missing/duplicate/extra/reordered fields, invalid hex/length, blank/trailing data, BOM, mixed line endings, and absent terminal LF.
+- CurrentUser DPAPI synthetic round-trip passed.
+- Strict pinned SSH synthetic transport passed and its fixed acknowledgment confirmed no remote namespace/container writes.
+- Native PowerShell exit code: 0. No generated Secret value or Secret-value hash was emitted.
+
+### Target and package preflight
+
+- Strict SSH used the recorded `ops@2.24.193.133:22` identity and normal known_hosts with BatchMode, IdentitiesOnly, StrictHostKeyChecking=yes, agent forwarding disabled, and bounded timeouts. Identity and host pins matched; native SSH exit code: 0.
+- Fresh pre-write host/capacity/runtime and namespace collision checks passed for `srv1970241`; accepted Ubuntu 24.04, Docker 29.8.0, Compose 5.5.1, and the sealed deployment package remained in force.
+- The local production Compose was re-rendered using only non-secret validation placeholders. Sealed compose/manifest hashes matched. WordPress and MariaDB image tags matched the approved package; no host ports were published.
+- Compose secret mount validation matched the exact allowlist and targets: 9 read-only WordPress mounts and 2 read-only MariaDB mounts; the root DB secret is not mounted into WordPress. No unrelated container inspect/config/environment data was read.
+
+### Fresh generation, pending recovery, and provisioning
+
+- Exactly ten fresh values were generated using the approved CSPRNG path in the target process memory. The canonical payload was streamed over the strict SSH process channel only; it was not placed in command arguments, environment variables, files, logs, or GitHub.
+- Before the remote write acknowledgment, a new unique CurrentUser DPAPI pending recovery was created locally with CreateNew. The encrypted bytes were read back from disk, compared in memory, decrypted from the persisted bytes, and validated for project/host binding, exact ten-field cardinality/order, lowercase-hex lengths, and uniqueness. Owner-only recovery directory/file ACL checks passed.
+- Only after pending readback passed, exactly the ten authorized files were created under `/srv/data/mini-craft-night-kit/secrets` using exclusive/no-follow creation. Directories are root:root 0700; nine files are root:33 0440; `db-root-password` is root:root 0400. No newline was added. Remote verification checked exact inventory, metadata, format, and pairwise uniqueness without returning file contents or hashes.
+- Runtime access/exclusion was verified statically from the sealed read-only Compose mount mapping and target ownership/modes; no Mini Craft service was started.
+- An independent strict read-only metadata-only post-check returned native exit 0: exact ten filenames and required permissions; Mini Craft container count=0; Mini Craft database-network count=0; services started=NO.
+- After remote verification, the new DPAPI pending file was promoted to a final recovery artifact. Final artifact size=1,686 bytes; persisted location is under the Owner profile's protected `%LOCALAPPDATA%\\MiniCraftNightKit\\secret-recovery\\` directory; Owner-only ACL verified. The previous C1 pending artifact was not accessed, read, modified, reused, moved, or deleted.
+- The independent verifier's first local draft piped its base64-decoded Python body to Bash and exited 2; it performed no writes. The corrected read-only verifier piped to Python and passed (SSH exit 0).
+
+```text
+PHASE_A_SYNTHETIC_CASES=15_OF_15
+DPAPI_PENDING_DISK_READBACK_AND_ROUNDTRIP=PASS
+FRESH_SECRET_VALUES_GENERATED=10
+REMOTE_SECRET_FILES_CREATED_AND_VERIFIED=10
+REMOTE_SECRET_FILE_PERMISSIONS=ROOT_33_0440_X9;ROOT_0400_X1
+RUNTIME_ACCESS=PASS_STATIC_COMPOSE_BIND_AND_MODE;SERVICE_NOT_STARTED
+NEW_C1R5_RECOVERY=PROMOTED_FINAL;OWNER_ONLY_ACL
+OLD_C1_PENDING=NOT_ACCESSED
+SECRET_VALUES_OR_HASHES_EXPOSED=0
+MINICRAFT_SERVICE_STARTS=0
+UNRELATED_CONTAINER_CONFIG_OR_ENV_READS=0
+SHARED_INFRA_WRITES=0
+DOCKER_OR_COMPOSE_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+No Mini Craft containers, database, or wp-content were created/restored. No payment, Live, shared-ingress, DNS, firewall, or other VPS mutation occurred. The only authorized VPS writes were the ten allowlisted secret files and their two containing directories. No next Gate was started.
