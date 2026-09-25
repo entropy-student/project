@@ -18,15 +18,17 @@ K6_PHASE_C1R2_INSTALLER_TRANSPORT_SEAL=PASS_SYNTHETIC_NO_WRITE
 K6_PHASE_C1R3_PENDING_REUSE_TRANSPORT_SEAL=RETURN_ORIGINAL_PENDING_SERIALIZATION_UNKNOWN
 K6_PHASE_C1R4_PENDING_RECOVERY_LOCAL_SEAL=RETURN_PENDING_PAYLOAD_SCHEMA_AMBIGUOUS
 K6_PHASE_C1R4R1_PENDING_DISPOSITION_OWNER_CHECKPOINT=PASS_OWNER_SELECTED_FRESH_REGENERATION
-CURRENT_GATE=K6_PHASE_C1R5R1_POSTWRITE_EVIDENCE_RECONCILIATION
-CURRENT_GATE_STATUS=RETURN_C1R5_EVIDENCE_CHAIN_INCOMPLETE
+K6_PHASE_C1R5_FRESH_SECRET_REGENERATION_AND_PROVISIONING=RETURN_HISTORICAL_SOURCE_AUDITABILITY_INCOMPLETE
+K6_PHASE_C1R5R1_POSTWRITE_EVIDENCE_RECONCILIATION=RETURN_ACCEPTED_EXECUTED_HELPER_SOURCE_UNRECOVERABLE
+CURRENT_GATE=K6_PHASE_C1R5R2_CURRENT_STATE_REQUALIFICATION
+CURRENT_GATE_STATUS=AUTHORIZED_AWAIT_EXECUTOR
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
 OLD_DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
 OLD_VALUES_REQUIRED=NO
 C1R5_OWNER_AUTHORIZATION=FRESH_EXPLICIT_BOUNDED
-EXECUTOR_STATUS=C1R5_PASS_CANDIDATE_REVIEWED_RETURNED_TO_C1R5R1
+EXECUTOR_STATUS=C1R5R1_RETURN_REVIEWED_C1R5R2_READY
 OWNER_ACTION=NONE
 ```
 
@@ -34,7 +36,7 @@ Formal authorization: `docs/REVIEWER_DECISION_K6_C1R4R1_PASS_C1R5_FRESH_SECRET_R
 Execution package: `review-packets/K6_C1R5_FRESH_SECRET_REGENERATION_EXECUTION_PACK.md`.
 Executor dispatch record: GitHub issue #13 (`[Executor] Mini Craft K6 C1R5 fresh Secret regeneration`). Reviewer must not execute this Gate; Codex or another Executor acting in the Execution Agent role, with the required Owner-host/VPS execution boundary, must perform it and return Evidence.
 
-Owner selected the fresh-regeneration path. C1R5 is conditionally split inside one bounded Gate: Phase A must seal a new canonical serialization/parser using synthetic data and Owner-host DPAPI rehearsal; only Phase A PASS activates the already granted Phase B authorization to generate and install the exact ten fresh Secrets. Any Phase A failure, target drift, collision or ambiguity cancels real-write authority and returns to Reviewer.
+Owner selected the fresh-regeneration path. C1R5 executed and produced the exact ten target Secret files plus a new final DPAPI recovery artifact, but Reviewer did not formally PASS the historical transaction because the exact executed helper source was deleted and could not be recovered. C1R5R1 independently confirmed current target metadata, recovery metadata, Shared VPS trust, unrelated-service mount exclusion, and zero Secret/recovery content access. The remaining current-state gap is effective in-container runtime readability. C1R5R2 therefore performs a bounded disposable no-value runtime-access requalification; no Secret rewrite/rotation is authorized or currently required.
 
 The old ambiguous DPAPI pending artifact remains encrypted and untouched and is not part of the C1R5 data path. C1R5 does not authorize Mini Craft service start, DB/wp-content restore, Shared Infra changes, public routing, PayPal Live, real payment or launch.
 
