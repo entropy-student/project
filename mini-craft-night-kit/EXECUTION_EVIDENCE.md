@@ -4001,3 +4001,5 @@ STOP_AT_REVIEWER=YES
 ```
 
 No Mini Craft containers, database, or wp-content were created/restored. No payment, Live, shared-ingress, DNS, firewall, or other VPS mutation occurred. The only authorized VPS writes were the ten allowlisted secret files and their two containing directories. No next Gate was started.
+
+LOCAL_HELPER_CLEANUP=PASS; one-time local source removed after evidence publication; final DPAPI recovery retained locally.
