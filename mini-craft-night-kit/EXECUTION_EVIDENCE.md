@@ -4060,3 +4060,68 @@ SHARED_INFRA_WRITES=0
 PAYMENT_ACTIONS=0
 LIVE_ACTIONS=0
 STOP_AT_REVIEWER=YES
+
+
+---
+
+## K6_PHASE_C1R5R2_CURRENT_STATE_REQUALIFICATION — EXECUTION RESULT
+
+Execution date: 2026-09-26 (Asia/Shanghai)  
+Result: `PASS_CANDIDATE_K6_PHASE_C1R5R2_CURRENT_STATE_REQUALIFICATION`
+
+### Authority and boundary
+
+- Re-read the current Reviewer handoff, C1R5R1-return/C1R5R2 decision, C1R5R2 execution pack, latest Evidence and Executor Handoff, current Shared VPS Handoff, and canonical VPS Project Governance v0.1.6 plus active SSH, target-host, storage, and source-policy references.
+- Used the registered `ops@2.24.193.133:22` identity and normal `known_hosts` with strict host-key checking. Target identity/trust matched the recorded handoff; the bounded SSH command exited 0.
+- No Secret or recovery value was read, printed, hashed, copied, changed, or deleted. No recovery content was opened/decrypted/hashed.
+- No production WordPress/MariaDB service, database restore, Shared Infra, DNS, payment, or Live action occurred.
+
+### Target Secret metadata-only recheck
+
+- Exact allowlist inventory: 10 regular files, no extra/missing names.
+- Secret directory: `root:root 0700`.
+- `db-app-password`: `root:33 0440`, 64 bytes.
+- Eight WordPress key/salt files: `root:33 0440`, 128 bytes each.
+- `db-root-password`: `root:root 0400`, 64 bytes.
+- Metadata matched the accepted manifest. Only directory entries and filesystem metadata were queried; Secret file contents were not opened.
+- VPS initially had no Mini Craft production containers. Existing local validation image `redis:7-alpine` was already present; WordPress/MariaDB production images were not pulled or built.
+
+### Disposable effective-access checks
+
+A bounded remote verifier ran two short-lived containers from the already-present local image, overriding its entrypoint with the POSIX shell (no Redis service started). Both used network mode `none`, no published ports, read-only root filesystem, dropped capabilities, no-new-privileges, small CPU/memory/PID bounds, tmpfs-only writable scratch/data paths, and exact individual read-only secret-file binds. Container mount configuration was inspected by metadata; the checks inside the containers used only identity checks and `test -r` / path-presence checks.
+
+- WordPress access-boundary test ran as UID/GID 33:33; all nine approved WordPress files were readable. The expected bind allowlist matched exactly and `db-root-password` was neither mounted nor present in the WordPress secret path. Process exit status was 0.
+- MariaDB access-boundary test ran as UID/GID 0:0; only `db-app-password` and `db-root-password` were bound read-only, and both passed `test -r`. Process exit status was 0. This was an access-boundary check, not a MariaDB application startup.
+- Unrelated running containers: 8 before and after; their IDs, names, running/health status and mount metadata matched. None mounted the Mini Craft secret directory.
+- Both uniquely named verifier containers were removed. No validation container remained. Docker network IDs were unchanged (8); Docker volume inventory remained unchanged (0). No port bindings or persistent volume mounts were used.
+- A first no-write inventory implementation used a multi-container inspect template that returned a nonzero status before any verifier container was created. It was replaced with per-container mount-metadata inspection; the repeated read-only preflight passed before the bounded tests began. No target state was changed by the failed preflight.
+
+### Local recovery metadata-only readback
+
+- New final artifact `k6-c1r5-mini-craft-night-kit-srv1970241-20260925T144404Z-a93f21724d554fde90d91b949d8acc6e.final.dpapi`: present, 1,686 bytes; created/written `2026-09-25T14:44:08.4373453Z`; recovery directory DACL inheritance is protected and directory/file access remains Owner-only.
+- Historical C1 pending artifact `k6-c1-mini-craft-night-kit-srv1970241.pending.dpapi`: present, 1,686 bytes; created `2026-09-24T04:32:45.2646290Z`, written `2026-09-24T04:32:45.2712493Z`; Owner-only ACL remains. These metadata match the prior recorded baseline. Neither artifact's content or hash was accessed.
+
+### Gate result
+
+```text
+TARGET_SECRET_METADATA_READBACK=PASS
+WORDPRESS_UID33_EFFECTIVE_READ_9_OF_9=PASS
+WORDPRESS_DB_ROOT_NOT_MOUNTED=PASS
+MARIADB_REQUIRED_SECRET_ACCESS=PASS
+UNRELATED_RUNNING_SERVICE_SECRET_MOUNTS=0
+DISPOSABLE_VALIDATION_NETWORK=NONE
+DISPOSABLE_VALIDATION_PORTS=NONE
+DISPOSABLE_VALIDATION_PERSISTENT_STATE=0
+VALIDATION_RESOURCES_AFTER_CLEANUP=0
+NEW_FINAL_RECOVERY_METADATA_READBACK=PASS
+OLD_PENDING_METADATA_UNCHANGED=PASS
+SECRET_VALUE_OR_HASH_ACCESS=0
+RECOVERY_CONTENT_ACCESS=0
+MINICRAFT_PRODUCTION_SERVICE_STARTS=0
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+This current-state qualification does not repair or upgrade the historical C1R5 executed-helper-source auditability RETURN.
