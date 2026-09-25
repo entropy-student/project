@@ -1,0 +1,110 @@
+{
+  "date": "2026-09-25",
+  "planner_version": "0.2",
+  "selected": {
+    "topic_id": "confident-but-wrong",
+    "topic": "为什么AI明明说得特别自信，事实却可能是错的？",
+    "lane": "EVERGREEN",
+    "business_job": "TRUST",
+    "editorial_mode": "STORY_MODEL",
+    "target_duration": "3–5 min",
+    "hot_override": false
+  },
+  "hot_review": [
+    {
+      "cluster": "Australia AI-agent government-portal incident",
+      "freshness": "2026-09-24",
+      "gates": {
+        "evidence": "PASS",
+        "human_relevance": "PASS",
+        "mechanism_integrity": "PASS",
+        "one_mechanism": "PASS",
+        "storyability": "PASS",
+        "non_trivial_payoff": "PASS",
+        "audience_fit": "PASS",
+        "duplicate": "FAIL_D3"
+      },
+      "decision": "REJECT_HOT_OVERRIDE",
+      "reason": "Durable agent-control angle overlaps the already scheduled permission-boundary topic.",
+      "sources": [
+        "Reuters 2026-09-24",
+        "TIME 2026-09-24"
+      ]
+    },
+    {
+      "cluster": "Gemini 3.8 Live with Live Avatar",
+      "freshness": "2026-09-24",
+      "gates": {
+        "evidence": "PASS",
+        "human_relevance": "PASS",
+        "mechanism_integrity": "PASS",
+        "one_mechanism": "PASS",
+        "storyability": "PASS",
+        "non_trivial_payoff": "PASS",
+        "audience_fit": "PASS",
+        "duplicate": "FAIL_D3"
+      },
+      "decision": "REJECT_HOT_OVERRIDE",
+      "reason": "Strongest durable social-presence/trust angle overlaps the recently scheduled authenticity-amplification topic.",
+      "sources": [
+        "Google 2026-09-24",
+        "Google Cloud 2026-09-24",
+        "Cao 2025 HCI study"
+      ]
+    },
+    {
+      "cluster": "Claude ART biology discovery",
+      "freshness": "2026-09-23",
+      "gates": {
+        "evidence": "PASS",
+        "human_relevance": "FAIL",
+        "mechanism_integrity": "PASS",
+        "one_mechanism": "PASS",
+        "storyability": "PASS",
+        "non_trivial_payoff": "PASS",
+        "audience_fit": "WEAK",
+        "duplicate": "PASS"
+      },
+      "decision": "REJECT_HOT_OVERRIDE",
+      "reason": "High scientific significance but weak immediate relevance for the channel's general AI audience.",
+      "sources": [
+        "Anthropic 2026-09-23"
+      ]
+    },
+    {
+      "cluster": "Gemini 4 launch speculation",
+      "freshness": "2026-09-24",
+      "gates": {
+        "evidence": "FAIL_FIRST_PARTY_RELEASE"
+      },
+      "decision": "REJECT",
+      "reason": "No verified launch or concrete first-party product change."
+    }
+  ],
+  "evergreen_gate": {
+    "topic_id": "confident-but-wrong",
+    "human_relevance": "PASS",
+    "mechanism_integrity": "PASS",
+    "one_mechanism": "PASS",
+    "storyability": "PASS",
+    "non_trivial_payoff": "PASS",
+    "audience_fit": "PASS",
+    "duplicate": "PASS",
+    "payoff": "语言表达的流畅与坚定，不是事实置信度的可靠显示器。"
+  },
+  "rolling_schedule": {
+    "horizon": "2026-09-25..2026-10-01",
+    "composition": {
+      "STORY_MODEL": 5,
+      "STORY_ACTION": 2
+    },
+    "quality_gate_over_quota": true,
+    "tail_added": "2026-10-01 bigger-model-not-always-better"
+  },
+  "governance": {
+    "locked_or_published_modified": false,
+    "auto_published": false,
+    "entered_g4_plus": false,
+    "daily_production_capability": "UNPROVEN"
+  }
+}
