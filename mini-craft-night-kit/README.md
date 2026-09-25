@@ -41,11 +41,13 @@ WordPress
 
 ## 当前 Gate
 
-`K6_PHASE_C1R4R1_PENDING_DISPOSITION_OWNER_CHECKPOINT`
+`K6_PHASE_C1R5_FRESH_SECRET_REGENERATION_AND_PROVISIONING`
 
-K0–K5 已完成。K6 尚未在 VPS 上开始部署。C1R4 已正式 RETURN：旧 DPAPI pending 中的 10 个 allowlisted Secret 字段与 project/host binding 均通过内存校验，但还存在两条未被非秘密来源定义的边界行，因此 Reviewer 不允许继续复用该 payload。
+Owner 已选择 **A / fresh regeneration**。旧 DPAPI pending 保持加密、不删除，也不再要求复用其中的旧值。
 
-当前只需要 Owner 选择后续 Secret 路线：**fresh regeneration（Reviewer 推荐）**，或继续恢复旧 pending。旧 pending 目前保持加密、未晋升、未删除；没有 VPS/支付/Live 写入。
+当前 C1R5 已获 bounded Owner authorization：先用 synthetic fixture 封死新的 canonical serialization/parser；该阶段 PASS 后，才允许生成并写入既定的 10 个 fresh Secrets，验证权限/读取边界，并建立新的最终 DPAPI 恢复副本。
+
+**Mini Craft 仍未开始 VPS 部署**；本 Gate 不启动容器、不恢复数据库、不改 Shared Infra、不启用 PayPal Live、不做真实支付。
 
 ## 文档索引
 
