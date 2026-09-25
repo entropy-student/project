@@ -2066,3 +2066,33 @@ STOP_AT_REVIEWER=YES
 ```
 
 The temporary local helper was used only for this Gate and was removed after evidence publication. The new encrypted final recovery remains local under the Owner profile's protected LocalAppData directory. Do not start Mini Craft or enter any deployment/service-start phase without a subsequent Reviewer decision.
+
+
+---
+
+## K6_PHASE_C1R5R1_POSTWRITE_EVIDENCE_RECONCILIATION
+
+GATE=K6_PHASE_C1R5R1_POSTWRITE_EVIDENCE_RECONCILIATION
+RESULT=RETURN_C1R5R1_EXECUTED_HELPER_SOURCE_UNRECOVERABLE
+SUMMARY=Read-only reconciliation completed. The exact executed helper bytes could not be recovered, so static review and the candidate PASS criteria cannot be satisfied. Secret/recovery contents were not accessed; no remote writes or service starts occurred.
+EXECUTED_HELPER_SOURCE_RECOVERED=NO
+EXECUTED_HELPER_SHA_MATCH=UNVERIFIED
+STATIC_HELPER_REVIEW=BLOCKED_SOURCE_UNRECOVERABLE
+TARGET_SECRET_METADATA_READBACK=PASS
+RUNTIME_ACCESS_AND_UNRELATED_MOUNT_EXCLUSION=PARTIAL;UNRELATED_MOUNT_EXCLUSION=PASS;WP_UID33_EFFECTIVE_READ=UNVERIFIED
+NEW_FINAL_RECOVERY_METADATA_READBACK=PASS
+OLD_PENDING_METADATA_READBACK=PASS;CONTENT_COMPARISON=NOT_AVAILABLE;NO_ACTION_TAKEN
+SHARED_VPS_HANDOFF_SOURCE_READ=YES
+SECRET_VALUE_OR_HASH_ACCESS=0
+RECOVERY_CONTENT_ACCESS=0
+REMOTE_WRITES=0
+SERVICE_STARTS=0
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+EVIDENCE=EXECUTION_EVIDENCE.md (K6 C1R5R1 section; commit cf286eaec992e90b2b7ee1394cc3a576fb162c37)
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+
+Reviewer note: the direct UID 33 host-path read probes fail because the protected data parent is root:root 0700. The sealed Compose maps each allowed file individually read-only and excludes db-root from WordPress, but effective in-container read access was not tested because starting a container is outside this Gate. No service/container was started to simulate it.
