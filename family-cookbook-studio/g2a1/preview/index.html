@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src blob: data:; style-src 'unsafe-inline'; script-src 'unsafe-inline';">
+  <title>Family Cookbook Studio — local preview</title>
+  <style>
+    :root { color-scheme: light; font: 16px/1.45 Georgia,serif; --accent:#9a563f; --paper:#fffdf8; --ink:#30251f; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#eee9e1; }
+    .controls { display:flex; flex-wrap:wrap; gap:1rem; align-items:end; padding:1rem; background:#fff; font:14px/1.4 system-ui,sans-serif; }
+    label { display:grid; gap:.3rem; }
+    input,select { min-width:12rem; padding:.55rem; }
+    input[type=file] { min-width:17rem; }
+    .book { display:grid; grid-template-columns:repeat(2,minmax(280px,1fr)); gap:1rem; max-width:1100px; margin:2rem auto; padding:0 1rem; }
+    .page { min-height:600px; padding:2rem; background:var(--paper); box-shadow:0 10px 30px #31261d22; }
+    .cover { display:grid; place-items:center; text-align:center; border:1px solid #e7dbcf; }
+    .cover h1 { color:var(--accent); font-size:2.5rem; line-height:1.08; }
+    .cover img { width:70%; max-height:230px; object-fit:cover; }
+    .spread h2 { color:var(--accent); }
+    .spread h3 { margin:1.2rem 0 .35rem; font-size:1rem; text-transform:uppercase; letter-spacing:.08em; }
+    .spread img { width:100%; max-height:140px; object-fit:cover; }
+    .spread li { margin:.35rem 0; }
+    @media(max-width:700px) { .book { grid-template-columns:1fr; margin:1rem auto; } .page { min-height:480px; } }
+  </style>
+</head>
+<body>
+  <section class="controls" aria-label="Local preview inputs">
+    <label>Family name <input id="family" value="The Rivera Family"></label>
+    <label>Cookbook title <input id="title" value="Recipes We Keep"></label>
+    <label>Style <select id="style"><option value="terracotta">Terracotta</option><option value="sage">Sage</option><option value="blue">Blue</option></select></label>
+    <label>Optional local image <input id="local-image" type="file" accept="image/*"></label>
+  </section>
+  <main id="book" class="book" data-style="terracotta">
+    <section class="page cover" aria-label="Cookbook cover preview">
+      <img id="cover-image" alt="Optional locally selected image" hidden>
+      <div><p id="cover-family">The Rivera Family</p><h1 id="cover-title">Recipes We Keep</h1><p>A small preview</p></div>
+    </section>
+    <section class="page spread" aria-label="Sample recipe spread preview">
+      <h2>Sunday Tomato Sauce</h2>
+      <p>From the sample recipe card</p>
+      <img id="spread-image" alt="Same local preview image" hidden>
+      <h3>Ingredients</h3><ul><li>1/2 cup olive oil</li><li>2 tbsp tomato paste</li><li>1.5 kg ripe tomatoes</li></ul>
+      <h3>Method</h3><ol><li>Warm the oil and stir in the paste.</li><li>Simmer for 45 min, then season to taste.</li></ol>
+      <p>This preview does not transcribe, upload, or make a downloadable cookbook.</p>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const net = {fetch:0,xhr:0,beacon:0,websocket:0};
+      window.fetch = (...args) => { net.fetch++; return Promise.reject(new Error('Network disabled in preview')); };
+      XMLHttpRequest.prototype.open = function(){ net.xhr++; throw new Error('Network disabled in preview'); };
+      navigator.sendBeacon = function(){ net.beacon++; return false; };
+      window.WebSocket = function(){ net.websocket++; throw new Error('Network disabled in preview'); };
+      const family = document.querySelector('#family');
+      const title = document.querySelector('#title');
+      const style = document.querySelector('#style');
+      const book = document.querySelector('#book');
+      const coverFamily = document.querySelector('#cover-family');
+      const coverTitle = document.querySelector('#cover-title');
+      const fileInput = document.querySelector('#local-image');
+      const images = [document.querySelector('#cover-image'), document.querySelector('#spread-image')];
+      let imageUrl = null;
+      const updateText = () => { coverFamily.textContent = family.value; coverTitle.textContent = title.value; };
+      family.addEventListener('input', updateText);
+      title.addEventListener('input', updateText);
+      style.addEventListener('change', () => {
+        book.dataset.style = style.value;
+        document.documentElement.style.setProperty('--accent', ({terracotta:'#9a563f',sage:'#526d57',blue:'#45677d'})[style.value]);
+      });
+      fileInput.addEventListener('change', () => {
+        if (imageUrl) URL.revokeObjectURL(imageUrl);
+        const file = fileInput.files[0];
+        imageUrl = file ? URL.createObjectURL(file) : null;
+        images.forEach(img => { img.hidden = !imageUrl; img.src = imageUrl || ''; });
+      });
+      window.__previewEvidence = () => ({
+        documentUrl: location.href, title: title.value, family: family.value, style: style.value,
+        previewSections: [...document.querySelectorAll('main > section')].map(x => x.getAttribute('aria-label')),
+        localFileName: fileInput.files[0]?.name ?? null,
+        imageSources: images.filter(x => !x.hidden).map(x => x.src),
+        localObjectUrl: Boolean(imageUrl), networkAttempts: {...net},
+        resourceEntries: performance.getEntriesByType('resource').map(x => x.name),
+        downloadLinks: document.querySelectorAll('a[download]').length,
+        forms: document.forms.length
+      });
+    })();
+  </script>
+</body>
+</html>

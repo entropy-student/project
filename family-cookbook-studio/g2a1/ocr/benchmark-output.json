@@ -1,0 +1,110 @@
+{
+  "gate": "G2A1",
+  "status": "BLOCKED",
+  "blocker": "RETURN_G2A1_OCR_ENVIRONMENT_BLOCKED",
+  "fixture_dataset": {
+    "count": 20,
+    "source": "synthetic only",
+    "rendered_pages": 20,
+    "renderer": "local Chrome 153.0.8010.54 headless screenshot",
+    "classes": [
+      "clear printed recipe",
+      "neat handwriting font",
+      "script/cursive font",
+      "skew",
+      "shadow",
+      "low contrast",
+      "ingredients + instructions mixed layout",
+      "margin note",
+      "ambiguous abbreviation",
+      "multiline recipe",
+      "critical fractions/quantity",
+      "temperature °F and °C",
+      "timing min and hr",
+      "tsp/tbsp",
+      "metric g/ml",
+      "English/French mixed-language"
+    ],
+    "required_values_present_in_ground_truth": [
+      "1/2", "1/4", "1.5", "tsp", "tbsp", "cup", "g", "ml", "°F", "°C", "min", "hr"
+    ],
+    "limitations": [
+      "All fixtures are synthetic typography, not genuine handwriting.",
+      "The 20 generated PNGs are local generated outputs; committed metadata and renderer reproduce them.",
+      "OCR engines did not process any fixture."
+    ]
+  },
+  "runtime": {
+    "python": "3.10.11",
+    "paddleocr_requested": "3.7.0",
+    "paddlepaddle_requested": "3.3.1",
+    "paddle_installed": false,
+    "paddle_model_requested": {"detector": "PP-OCRv5_server_det", "recognizer": "PP-OCRv5_server_rec", "device": "cpu"},
+    "trocr_model_id_requested": "microsoft/trocr-base-handwritten",
+    "transformers_requested": "5.17.0",
+    "trocr_installed_or_loaded": false,
+    "model_cache_present": false,
+    "execution_device": null,
+    "installation_attempt": {
+      "command": "python -m pip install paddlepaddle==3.3.1 paddleocr==3.7.0 pillow",
+      "observed": "dependency resolution reached PaddlePaddle Windows wheel download (104.8 MB); no completion or transfer progress for approximately 20 minutes; installer processes were stopped",
+      "exit_status": "interrupted by executor after stall; no inference started"
+    }
+  },
+  "paddle_metrics": {
+    "fixture_count": 20,
+    "pages_processed": 0,
+    "raw_ocr_error_lines": null,
+    "critical_field_errors": null,
+    "missing_lines": null,
+    "suspicious_regions": null,
+    "latency_ms_per_page": null,
+    "confidence_and_coordinates": null
+  },
+  "trocr_metrics": {
+    "fallback_invocations": 0,
+    "fallback_rate": null,
+    "resolved": null,
+    "unresolved": null,
+    "paddle_trocr_conflicts": null,
+    "source_crop_tests": 0,
+    "reason": "PaddleOCR primary outputs do not exist; TrOCR was not installed or called"
+  },
+  "routing_rules_implemented_and_unit_tested": [
+    {"rule": "Paddle line confidence < 0.88", "action": "TrOCR source-line crop; absent score is UNKNOWN"},
+    {"rule": "critical field confidence < 0.93", "action": "TrOCR source-line crop"},
+    {"rule": "tsp/tbsp abbreviation", "action": "TrOCR source-line cross-check"},
+    {"rule": "fraction token", "action": "TrOCR source-line cross-check; malformed/out-of-range values remain USER_CONFIRM_REQUIRED"},
+    {"rule": "temperature °F/°C token", "action": "TrOCR source-line cross-check; extreme temperature remains USER_CONFIRM_REQUIRED"},
+    {"rule": "timing min/hr token", "action": "TrOCR source-line cross-check; >60 min or >24 hr remains USER_CONFIRM_REQUIRED"},
+    {"rule": "two-digit/large tsp or tbsp quantity", "action": "TrOCR crop and fail closed if still suspicious"},
+    {"rule": "quantity and unit split across adjacent OCR lines", "action": "crop both lines and flag quantity_unit_separation_failed"},
+    {"rule": "ambiguous c./T./t./pkg./scant/heaping abbreviation", "action": "TrOCR source-line crop"},
+    {"rule": "missing Ingredients/Method section or fewer than two quantity-unit lines", "action": "page-level USER_CONFIRM_REQUIRED"},
+    {"rule": "PaddleOCR and TrOCR disagree", "action": "USER_CONFIRM_REQUIRED; no third recognizer"}
+  ],
+  "user_confirmation": {
+    "total": null,
+    "average_per_recipe_page": null,
+    "pages_without_confirmation_ratio": null,
+    "mvp_acceptability": "UNKNOWN; no OCR outcomes or Reviewer threshold were measured"
+  },
+  "local_resources": {
+    "cpu": "AMD Ryzen 5 7640HS, 6 cores / 12 logical processors",
+    "system_ram_gib": 15.28,
+    "ram_available_at_initial_ocr_probe_gib": 0.96,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "gpu_vram_mib": 6141,
+    "gpu_vram_free_at_probe_mib": 5923,
+    "c_drive_free_gib": 153.53,
+    "ocr_cpu_usage": null,
+    "ocr_gpu_usage": null,
+    "ocr_ram_peak": null,
+    "ocr_vram_peak": null,
+    "ocr_latency": null,
+    "interpretation": "Host hardware was observed, but no OCR process ran; inference resource cost and throughput remain UNKNOWN. Package/model download and local execution still have nonzero storage, bandwidth, and compute costs."
+  },
+  "model_api_tokens": 0,
+  "cloud_inference": false,
+  "raw_transcription_corrected_by_executor": false
+}

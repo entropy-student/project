@@ -1,0 +1,20 @@
+{
+  "fixture_render": {"exit_status": 0, "generated_pages": 20, "source": "synthetic SVG to PNG using local Chrome 153.0.8010.54"},
+  "routing_schema_unit_tests": {"command": "python -m unittest -v test_poc.py", "exit_status": 0, "passed": 5, "failed": 0},
+  "python_syntax_check": {"command": "python -m py_compile routing.py schema.py run_benchmark.py", "exit_status": 0},
+  "browser_local_preview": {
+    "browser": "Chrome/153.0.8010.54",
+    "exit_status": 0,
+    "assertions_passed": 6,
+    "local_file_input": true,
+    "cover_and_sample_spread": true,
+    "network_requests": ["file://<local-preview>/index.html", "blob:<local-object-url>"],
+    "http_requests": 0,
+    "fetch_xhr_beacon_websocket_attempts": 0,
+    "download_links": 0,
+    "forms": 0,
+    "temporary_profile_removed": true
+  },
+  "paddle_trocr_inference": {"status": "BLOCKED", "paddle_pages_processed": 0, "trocr_crops_processed": 0},
+  "wordpress_upload_delivery": {"status": "BLOCKED", "family_cookbook_test_instance": false, "positive_negative_checks": 0}
+}

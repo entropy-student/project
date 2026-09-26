@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+  <rect width="720" height="420" fill="#e7c8a5"/>
+  <rect x="34" y="34" width="652" height="352" rx="18" fill="#f7ebd8" stroke="#98664b" stroke-width="5"/>
+  <path d="M120 300c80-90 140-100 220-20s140 70 250-45" fill="none" stroke="#7d4934" stroke-width="15" stroke-linecap="round"/>
+  <circle cx="230" cy="155" r="54" fill="#c45c3e"/><circle cx="370" cy="170" r="62" fill="#e1a83a"/><circle cx="520" cy="145" r="48" fill="#70864d"/>
+  <text x="360" y="360" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#4b342a">Synthetic local preview art</text>
+</svg>

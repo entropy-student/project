@@ -1,0 +1,5 @@
+# TrOCR-only environment: use a venv with --system-site-packages to reuse the existing CUDA-enabled Torch install.
+transformers==5.17.0
+safetensors>=0.6
+sentencepiece>=0.2
+Pillow>=10,<13

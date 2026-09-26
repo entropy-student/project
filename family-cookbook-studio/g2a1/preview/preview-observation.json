@@ -1,0 +1,47 @@
+{
+  "browser": {
+    "product": "Chrome/153.0.8010.54",
+    "protocol": "1.3"
+  },
+  "page": {
+    "documentUrl": "file://<local-preview>/index.html",
+    "title": "Sunday Table",
+    "family": "Rivera Family",
+    "style": "sage",
+    "previewSections": [
+      "Cookbook cover preview",
+      "Sample recipe spread preview"
+    ],
+    "localFileName": "sample-local-image.svg",
+    "imageSources": [
+      "blob:<local-object-url>",
+      "blob:<local-object-url>"
+    ],
+    "localObjectUrl": true,
+    "networkAttempts": {
+      "fetch": 0,
+      "xhr": 0,
+      "beacon": 0,
+      "websocket": 0
+    },
+    "resourceEntries": [],
+    "downloadLinks": 0,
+    "forms": 0
+  },
+  "devtoolsObservedRequests": [
+    "file://<local-preview>/index.html",
+    "blob:<local-object-url>"
+  ],
+  "assertions": {
+    "twoPreviewSections": true,
+    "localImageRead": true,
+    "noNetworkApiAttempts": true,
+    "noHttpRequests": true,
+    "noDownload": true,
+    "noForm": true,
+    "all": true
+  },
+  "cleanup": {
+    "temporaryBrowserProfileRemoved": true
+  }
+}

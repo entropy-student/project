@@ -1,0 +1,348 @@
+{
+  "dataset": "Family Cookbook Studio G2A1 synthetic fixtures",
+  "count": 20,
+  "privacy": "synthetic only; no customer/family source material",
+  "fixtures": [
+    {
+      "id": "F01",
+      "fixture_class": "clear-print",
+      "render_mode": "print",
+      "effect": "none",
+      "title": "Sunday Tomato Sauce",
+      "lines": [
+        "RECIPE: Sunday Tomato Sauce",
+        "INGREDIENTS",
+        "1/2 tsp salt",
+        "1/4 cup olive oil",
+        "1.5 tbsp tomato paste",
+        "350°F oven",
+        "Bake 15 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F02",
+      "fixture_class": "neat-handwriting",
+      "render_mode": "print",
+      "effect": "hand",
+      "title": "Lemon Loaf",
+      "lines": [
+        "RECIPE: Lemon Loaf",
+        "INGREDIENTS",
+        "180 g flour",
+        "120 ml milk",
+        "2 tbsp lemon juice",
+        "Bake at 180°C for 35 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F03",
+      "fixture_class": "cursive-hard",
+      "render_mode": "script",
+      "effect": "hand",
+      "title": "Grandma Ida Rolls",
+      "lines": [
+        "RECIPE: Grandma Ida Rolls",
+        "INGREDIENTS",
+        "3 cups flour",
+        "1 tsp yeast",
+        "1 hr rise",
+        "Bake 22 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F04",
+      "fixture_class": "skew-phone-photo",
+      "render_mode": "hand",
+      "effect": "skew",
+      "title": "Apple Dumplings",
+      "lines": [
+        "RECIPE: Apple Dumplings",
+        "INGREDIENTS",
+        "1/2 cup sugar",
+        "2 tbsp butter",
+        "1/4 tsp cinnamon",
+        "Bake 25 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F05",
+      "fixture_class": "shadow-phone-photo",
+      "render_mode": "hand",
+      "effect": "shadow",
+      "title": "Sunday Beans",
+      "lines": [
+        "RECIPE: Sunday Beans",
+        "INGREDIENTS",
+        "1.5 cups beans",
+        "750 ml water",
+        "1 tsp salt",
+        "Simmer 1 hr."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F06",
+      "fixture_class": "low-contrast",
+      "render_mode": "print",
+      "effect": "low",
+      "title": "Orange Marmalade",
+      "lines": [
+        "RECIPE: Orange Marmalade",
+        "INGREDIENTS",
+        "500 g oranges",
+        "350 ml water",
+        "2 cups sugar",
+        "Cook 75 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F07",
+      "fixture_class": "mixed-layout",
+      "render_mode": "hand",
+      "effect": "none",
+      "title": "Skillet Cornbread",
+      "lines": [
+        "RECIPE: Skillet Cornbread",
+        "INGREDIENTS",
+        "1 cup cornmeal",
+        "1/2 cup flour",
+        "1 tbsp honey",
+        "METHOD",
+        "Stir dry ingredients, add milk, bake 20 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F08",
+      "fixture_class": "margin-note",
+      "render_mode": "hand",
+      "effect": "note",
+      "title": "Plum Jam",
+      "lines": [
+        "RECIPE: Plum Jam",
+        "INGREDIENTS",
+        "2 kg plums",
+        "1/4 cup water",
+        "1 tsp lemon juice",
+        "METHOD",
+        "Stir often. (note: use the blue pot)"
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F09",
+      "fixture_class": "abbreviation",
+      "render_mode": "script",
+      "effect": "hand",
+      "title": "Quick Gravy",
+      "lines": [
+        "RECIPE: Quick Gravy",
+        "INGREDIENTS",
+        "2 tbsp flour",
+        "1 c milk",
+        "pinch black pepper",
+        "Stir 5 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F10",
+      "fixture_class": "multi-line",
+      "render_mode": "hand",
+      "effect": "none",
+      "title": "Chicken Noodle Soup",
+      "lines": [
+        "RECIPE: Chicken Noodle Soup",
+        "INGREDIENTS",
+        "450 g chicken",
+        "2 cups carrots",
+        "1/2 tsp thyme",
+        "8 cups stock",
+        "METHOD",
+        "Simmer 45 min; add noodles for 8 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F11",
+      "fixture_class": "fraction-critical",
+      "render_mode": "hand",
+      "effect": "none",
+      "title": "Shortbread",
+      "lines": [
+        "RECIPE: Shortbread",
+        "INGREDIENTS",
+        "1/2 tsp vanilla",
+        "1/4 cup sugar",
+        "1.5 cups flour",
+        "Bake 15 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F12",
+      "fixture_class": "quantity-adversarial",
+      "render_mode": "script",
+      "effect": "none",
+      "title": "Cardamom Tea",
+      "lines": [
+        "RECIPE: Cardamom Tea",
+        "INGREDIENTS",
+        "1/2 tsp cardamom",
+        "2 cups water",
+        "METHOD",
+        "Steep 5 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F13",
+      "fixture_class": "temperature-fahrenheit",
+      "render_mode": "print",
+      "effect": "none",
+      "title": "Roast Squash",
+      "lines": [
+        "RECIPE: Roast Squash",
+        "INGREDIENTS",
+        "1 tbsp oil",
+        "350°F oven",
+        "Roast 40 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F14",
+      "fixture_class": "temperature-celsius",
+      "render_mode": "print",
+      "effect": "none",
+      "title": "Baked Pears",
+      "lines": [
+        "RECIPE: Baked Pears",
+        "INGREDIENTS",
+        "2 pears",
+        "180°C oven",
+        "Bake 25 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F15",
+      "fixture_class": "timing-short",
+      "render_mode": "hand",
+      "effect": "none",
+      "title": "Garlic Toast",
+      "lines": [
+        "RECIPE: Garlic Toast",
+        "INGREDIENTS",
+        "2 tbsp butter",
+        "Toast 15 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F16",
+      "fixture_class": "timing-long",
+      "render_mode": "hand",
+      "effect": "none",
+      "title": "Slow Onion Soup",
+      "lines": [
+        "RECIPE: Slow Onion Soup",
+        "INGREDIENTS",
+        "3 onions",
+        "Simmer 75 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F17",
+      "fixture_class": "unit-confusion",
+      "render_mode": "script",
+      "effect": "hand",
+      "title": "Herb Dressing",
+      "lines": [
+        "RECIPE: Herb Dressing",
+        "INGREDIENTS",
+        "1 tsp dried dill",
+        "1 tbsp vinegar",
+        "2 tbsp oil",
+        "Mix 2 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F18",
+      "fixture_class": "metric-critical",
+      "render_mode": "print",
+      "effect": "none",
+      "title": "Berry Syrup",
+      "lines": [
+        "RECIPE: Berry Syrup",
+        "INGREDIENTS",
+        "250 g berries",
+        "120 ml water",
+        "1/4 cup sugar",
+        "Cook 12 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F19",
+      "fixture_class": "mixed-language",
+      "render_mode": "hand",
+      "effect": "none",
+      "title": "Bilingual Crêpes",
+      "lines": [
+        "RECIPE: Bilingual Crêpes",
+        "INGREDIENTS",
+        "1 cup flour / farine",
+        "1/2 tsp salt / sel",
+        "2 eggs / oeufs",
+        "Mélanger; cook 2 min per side."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    },
+    {
+      "id": "F20",
+      "fixture_class": "ingredient-step-interleave",
+      "render_mode": "hand",
+      "effect": "note",
+      "title": "Aunt May Casserole",
+      "lines": [
+        "RECIPE: Aunt May Casserole",
+        "INGREDIENTS",
+        "2 cups rice",
+        "1 can tomatoes",
+        "1 tbsp oil",
+        "METHOD",
+        "Wash rice. (margin: rinse twice)",
+        "Bake at 350°F for 35 min."
+      ],
+      "synthetic": true,
+      "source": "generated SVG fixture; no customer material"
+    }
+  ]
+}
