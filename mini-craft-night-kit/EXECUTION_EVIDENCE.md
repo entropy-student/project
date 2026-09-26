@@ -4125,3 +4125,70 @@ STOP_AT_REVIEWER=YES
 ```
 
 This current-state qualification does not repair or upgrade the historical C1R5 executed-helper-source auditability RETURN.
+
+---
+
+## K6_PHASE_D_PRIVATE_RUNTIME_DEPLOYMENT_AND_RESTORE — EXECUTION RESULT
+
+Execution date: 2026-09-26 (Asia/Shanghai)  
+Result: RETURN_REVIEWER_IMAGE_ACQUISITION_AUTHORIZATION_REQUIRED
+
+### Authority and bounded scope
+
+- Re-read the current Reviewer handoff, Project Storage Manifest, K6 C1R5R2 PASS / Phase D decision, Phase D Execution Pack, latest Evidence and Executor Handoff, local Shared VPS Handoff, and canonical VPS Project Governance v0.1.6 and active addenda.
+- Used only the recorded ops@2.24.193.133:22 identity, normal known_hosts, and strict host-key verification. The single bounded read-only SSH audit reached ops@srv1970241; native SSH exit code was 0.
+- No project directories, files, images, containers, networks, or runtime services were created or changed. No image was pulled or built. No SQL/wp-content package was transferred and no restore or URL migration was attempted.
+
+### Fresh target read-only preflight
+
+- Host identity: srv1970241, Ubuntu 24.04.5 LTS, kernel 6.8.0-139-generic, 2 vCPU.
+- RAM: 8,131,472 kB total; 5,736,896 kB available at the snapshot.
+- Root filesystem: 102,888,095,744 bytes total; 9,362,104,320 used; 93,509,214,208 available; 10% reported used.
+- Docker 29.8.0; Compose v5.5.1. Docker reported 8 existing running containers, all existing application containers healthy; Caddy and cloudflared were up. No Mini Craft Compose container/network was present.
+- Existing networks include the previously recorded spikersun-edge (same inspected ID b7d77d484427...); no network mutation was performed.
+- Host TCP 80/443 remain owned by spikersun-edge-caddy-1; current UFW is active with the existing 22/80/443 rules. Caddy's read-only mount metadata identifies /srv/infra/edge/Caddyfile as its read-only Caddyfile source and /srv/infra/edge/config / data as its mounted state paths. Shared cloudflared remains running. No shared ingress/configuration was changed.
+- Exact Mini Craft app, mysql, wp-content, and backup target paths were absent. The existing /srv/data/mini-craft-night-kit/secrets tree was present.
+- A first unprivileged existence test could not traverse the root-only project data parent and was inconclusive; it was not treated as evidence that Secrets were missing. Follow-up checks used sudo -n and confirmed metadata without opening file content.
+- Secret metadata-only readback: directory root:root 0700; exact 10-file allowlist; nine runtime files root:33 0440; DB root file root:root 0400. Names/count/modes/sizes match the accepted manifest. No Secret values or hashes were read or emitted.
+- Accepted K5 SQL and wp-content archive hashes each matched their sealed expected hashes locally. The canonical production Compose file matched its previously sealed hash. Hash values are intentionally omitted here.
+- Target image inspection returned native status 1 for both wordpress:7.1.1-php8.3-apache and mariadb:11.4.7: neither accepted image is cached on the VPS. The sealed deployment material does not provide an explicitly authorized exact immutable acquisition path for both images. Per the Phase D decision/pack, no pull/build may be inferred; execution stops for Reviewer direction before any write.
+
+### Gate disposition
+
+    FRESH_SHARED_VPS_PREFLIGHT=PASS_HOST_AND_SHARED_BASELINE
+    TARGET_HOST_IDENTITY=PASS
+    RESOURCE_HEADROOM=PASS_AT_SNAPSHOT;DEPLOYMENT_NOT_STARTED
+    SECRET_STATE_PREDEPLOY_READBACK=PASS_METADATA_ONLY
+    ACCEPTED_K5_SQL_PACKAGE_HASH=PASS_LOCAL_MATCH
+    ACCEPTED_K5_WP_CONTENT_PACKAGE_HASH=PASS_LOCAL_MATCH
+    CANONICAL_COMPOSE_PACKAGE_HASH=PASS_LOCAL_MATCH
+    TARGET_WORDPRESS_IMAGE=CACHE_MISS;NO_PULL
+    TARGET_MARIADB_IMAGE=CACHE_MISS;NO_PULL
+    IMAGE_ACQUISITION_AUTHORIZATION=REVIEWER_REQUIRED
+    CANONICAL_COMPOSE_RENDER=NOT_RUN;STOPPED_BEFORE_WRITE
+    APPS_PATH=NOT_CREATED
+    DATA_MYSQL_PATH=NOT_CREATED
+    DATA_WP_CONTENT_PATH=NOT_CREATED
+    BACKUP_PATH=NOT_CREATED
+    ACCEPTED_K5_SQL_TRANSFER=NOT_STARTED
+    ACCEPTED_K5_WP_CONTENT_TRANSFER=NOT_STARTED
+    MARIADB_RESTORE=NOT_STARTED
+    WP_CONTENT_RESTORE=NOT_STARTED
+    URL_MIGRATION=NOT_STARTED
+    DB_PUBLIC_PORT=NONE
+    WORDPRESS_HOST_PORT=NONE
+    PUBLIC_INGRESS_CHANGE=0
+    PUBLIC_ROUTE_ENABLED=NO
+    UNRELATED_SERVICES_CHANGED=NO
+    ROLLBACK_READY=NOT_APPLICABLE;NO_TARGET_MUTATION
+    RESOURCE_DELTA_RECORDED=NO_CHANGE
+    REMOTE_TEMP_CLEANUP=NOT_APPLICABLE;NO_TEMPORARY_REMOTE_ARTIFACTS
+    SECRET_VALUE_OR_HASH_ACCESS=0
+    REMOTE_WRITES=0
+    DOCKER_WRITES=0
+    SHARED_INFRA_WRITES=0
+    PAYMENT_ACTIONS=0
+    LIVE_ACTIONS=0
+    STOP_AT_REVIEWER=YES
+
+Reviewer action required before retry: explicitly decide an immutable, verifiable acquisition method for the two missing approved images (or supply another already-sealed image package/path). Do not pull/build, transfer, create directories, or start services until that decision is recorded. No Owner Secret action is requested.
