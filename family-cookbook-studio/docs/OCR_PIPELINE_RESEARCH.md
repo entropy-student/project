@@ -34,7 +34,7 @@ Sources:
 
 Use only as a G2A1 benchmark candidate. It is not accepted production architecture.
 
-### B. PaddleOCR — self-host/open-source benchmark candidate
+### B. PaddleOCR — FIRST self-host/open-source benchmark candidate
 
 PaddleOCR's current OCR pipeline documentation describes recognition across printed and handwritten text and multilingual document OCR.
 
@@ -44,7 +44,20 @@ Source:
 Potential advantage: self-hosting/data-path control.  
 Unknown until benchmark: accuracy on cursive family recipe handwriting, operational footprint and whether the chosen model fits the eventual runtime.
 
-### C. Tesseract — printed-text baseline, not primary handwriting choice
+### C. Microsoft TrOCR — SECOND local handwriting benchmark candidate
+
+Microsoft TrOCR provides transformer-based optical character recognition models, including handwritten checkpoints. It is accepted for G2A1 as a second local handwriting candidate so that difficult fields can be compared against PaddleOCR without immediately requiring a paid cloud/VLM path.
+
+Reference:
+- https://huggingface.co/microsoft/trocr-base-handwritten
+
+Unknown until benchmark:
+- whole-page/layout behavior versus cropped line/region recognition;
+- accuracy on recipe-specific fractions, temperatures and abbreviations;
+- runtime footprint on the actual available hardware;
+- language coverage beyond the chosen checkpoint.
+
+### D. Tesseract — printed-text baseline, not primary handwriting choice
 
 Tesseract's own FAQ says it can be used for handwriting but will not work very well because it is designed for printed text.
 
@@ -53,7 +66,7 @@ Source:
 
 Use as a baseline/control for clean printed recipes, not as an assumed primary handwriting engine.
 
-### D. VLM-assisted transcription — candidate
+### E. VLM-assisted transcription — exception fallback candidate
 
 A multimodal model may help with difficult handwriting and recipe context, but it introduces:
 
@@ -129,30 +142,35 @@ Before OCR, test bounded preprocessing:
 
 Keep the original image immutable; preprocessing outputs are derived artifacts.
 
-## 7. Recommended initial architecture hypothesis
+## 7. Accepted benchmark architecture
 
-Not yet accepted:
+The Owner has accepted this **validation order**:
 
 ```text
 original image
 → quality/preprocess
-→ primary handwriting OCR
-→ structured extraction
-→ critical-token QA
+→ PaddleOCR primary benchmark
+→ structured extraction + critical-token QA
+→ if ambiguous: TrOCR / second local pass
 → uncertainty queue
-→ optional second-pass/VLM only for ambiguous regions
+→ optional VLM/vision only for remaining ambiguous regions
 → user/reviewer correction
 → approved canonical recipe
 ```
 
-This avoids paying a high-cost model for every field while keeping a fallback for difficult handwriting.
+Tesseract remains a printed-text control.
+
+The objective is to keep routine processing local/open-source and potentially 0 model Token, while reserving paid model inference for exceptional hard regions only if evidence supports it.
 
 ## 8. Current decision
 
-No OCR provider is selected yet.
+**Test order is selected; production OCR provider is not.**
 
-G2A1 must produce evidence before Reviewer chooses:
-- primary OCR;
-- fallback path;
+G2A1 must still produce evidence before Reviewer chooses:
+- whether PaddleOCR is good enough to be primary;
+- whether TrOCR materially improves difficult handwriting;
+- whether a VLM fallback is needed at all;
 - confidence/review thresholds;
-- whether any provider is allowed to receive customer images.
+- manual correction burden;
+- whether any external provider may receive customer images;
+- expected compute/API cost per order.
