@@ -1,0 +1,7248 @@
+{
+  "gate": "G2A1-R2",
+  "status": "MEASURED",
+  "primary_engine": "PaddleOCR",
+  "primary_engine_version": "3.7.0",
+  "paddlex_version": "3.7.0",
+  "paddlepaddle_installed": null,
+  "paddle_runtime_engine": "transformers",
+  "transformers_version": "5.10.0",
+  "torch_version": "2.8.0+cpu",
+  "paddle_models": {
+    "detector": "PP-OCRv5_server_det",
+    "recognizer": "PP-OCRv5_server_rec",
+    "model_revision": "PaddleX/PaddleOCR release family 3.7; package source does not publish a Hub revision; downloaded weight hashes recorded below.",
+    "device": "CPU"
+  },
+  "trocr": {
+    "model_id": "microsoft/trocr-small-handwritten",
+    "model_load_seconds": 3.803,
+    "revision": "959398e1e35ce99c83e60f83b35c1187d4508a0b",
+    "resolved_model_commit": "959398e1e35ce99c83e60f83b35c1187d4508a0b",
+    "device": "CPU",
+    "weight_inventory": {
+      "weight_file_count": 1,
+      "weight_bytes": 245839136,
+      "weight_files": [
+        {
+          "name": "model.safetensors",
+          "bytes": 245839136,
+          "sha256": "aff90cf2fb583df6bc7122b62eaafbbaa5d87a7b9d8cf77472eff747934fa7ef"
+        }
+      ]
+    }
+  },
+  "runtime": {
+    "runner": {
+      "timestamp_utc": "2026-09-26T18:31:31.067394+00:00",
+      "runner": {
+        "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "image": "ubuntu24",
+        "image_version": "20260920.314.1",
+        "name": "GitHub Actions 1000000082",
+        "arch": "x86_64"
+      },
+      "cpu": {
+        "model": "AMD EPYC 7763 64-Core Processor",
+        "logical_processors": 4
+      },
+      "ram": {
+        "total_bytes": 16766414848,
+        "available_before_bytes": 15809798144,
+        "swap_total_before_bytes": 3221221376,
+        "swap_free_before_bytes": 3221221376,
+        "effective_headroom_after_preflight_bytes": 19031019520
+      },
+      "disk": {
+        "root_total_bytes": 154894188544,
+        "root_free_before_bytes": 92343398400,
+        "root_free_after_preflight_bytes": 92343398400
+      },
+      "python": {
+        "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+        "architecture": "64bit"
+      },
+      "docker": {
+        "server_version": {
+          "exit": 0,
+          "stdout": "28.0.4",
+          "stderr": ""
+        },
+        "compose": {
+          "exit": 0,
+          "stdout": "2.38.2",
+          "stderr": ""
+        },
+        "info": {
+          "exit": 0,
+          "stdout": "Ubuntu 24.04.5 LTS / x86_64",
+          "stderr": ""
+        }
+      },
+      "gpu": {
+        "error": "FileNotFoundError: [Errno 2] No such file or directory: 'nvidia-smi'"
+      },
+      "network": {
+        "pypi_paddleocr": {
+          "reachable": true,
+          "status": 200
+        },
+        "pypi_transformers": {
+          "reachable": true,
+          "status": 200
+        },
+        "pytorch_cpu_wheels": {
+          "reachable": true,
+          "status": 200
+        },
+        "huggingface_model": {
+          "reachable": true,
+          "status": 200
+        },
+        "zenodo_dataset": {
+          "reachable": true,
+          "status": 200
+        },
+        "paddle_model_source": {
+          "reachable": true,
+          "status": 403
+        },
+        "docker_registry": {
+          "reachable": true,
+          "status": 401
+        },
+        "wordpress_plugin_directory": {
+          "reachable": true,
+          "status": 200
+        }
+      },
+      "temporary_swap": {
+        "attempted": false,
+        "bytes": 0,
+        "path": null
+      },
+      "required_network_reachable": true,
+      "resource_blocked": false
+    },
+    "initialization_seconds": 10.975,
+    "paddle_inference_seconds_total": 176.684,
+    "paddle_pages_processed": 28,
+    "ocr_process_cpu_seconds": 408.451,
+    "ocr_process_ram_start_bytes": 450240512,
+    "ocr_process_ram_peak_sampled_bytes": 3881517056,
+    "ocr_process_ram_delta_bytes": 1149591552,
+    "system_ram_available_start_bytes": 15396311040,
+    "system_ram_available_min_bytes_sampled": 12352163840,
+    "system_ram_available_end_bytes": 14676201472,
+    "cpu_count_logical": 4,
+    "root_disk_free_at_model_start_bytes": 90135986176,
+    "root_disk_free_at_model_end_bytes": 89714991104,
+    "model_weight_bytes_total": 418275740,
+    "gpu": {
+      "available": false,
+      "vram_bytes": null,
+      "reason": "GitHub hosted Ubuntu CPU runner"
+    },
+    "paddle_model_cache": {
+      "weight_file_count": 2,
+      "weight_bytes": 172436604,
+      "weight_files": [
+        {
+          "name": "model.safetensors",
+          "bytes": 87994336,
+          "sha256": "06e7a44aa5c4146531e88703140e0f7329910b92f84f8bf2756bfd37cec5cb0a"
+        },
+        {
+          "name": "model.safetensors",
+          "bytes": 84442268,
+          "sha256": "da94c5dd42c88b00c44081942b157bee8eda9ccd0481dbd0af3824f6c241aa91"
+        }
+      ]
+    },
+    "model_api_tokens": 0,
+    "cloud_inference": false
+  },
+  "metrics_by_fixture_class": {
+    "SYNTHETIC_TYPOGRAPHY": {
+      "pages_processed": 20,
+      "recognized_lines": 117,
+      "raw_ocr_error_lines": 44,
+      "missing_lines": 24,
+      "critical_field_errors": 13,
+      "suspicious_regions": 49,
+      "user_confirm_without_trocr_total": 58,
+      "user_confirm_required_total": 58,
+      "confirmations_per_page": 2.9,
+      "pages_without_confirmation_ratio": 0,
+      "average_paddle_latency_ms": 8685.29
+    },
+    "GENUINE_HANDWRITING": {
+      "pages_processed": 8,
+      "recognized_lines": 10,
+      "raw_ocr_error_lines": 18,
+      "missing_lines": 8,
+      "critical_field_errors": 0,
+      "suspicious_regions": 11,
+      "user_confirm_without_trocr_total": 11,
+      "user_confirm_required_total": 11,
+      "confirmations_per_page": 1.375,
+      "pages_without_confirmation_ratio": 0,
+      "average_paddle_latency_ms": 372.33
+    }
+  },
+  "total": {
+    "pages_processed": 28,
+    "recognized_lines": 127,
+    "raw_ocr_error_lines": 62,
+    "missing_lines": 32,
+    "critical_field_errors": 13,
+    "suspicious_regions": 60,
+    "trocr_fallback_count": 60,
+    "trocr_fallback_rate": 0.9643,
+    "trocr_calls_per_page": 2.1429,
+    "trocr_resolved_count": 0,
+    "trocr_unresolved_count": 60,
+    "engine_disagreement_count": 60,
+    "USER_CONFIRM_REQUIRED": 69,
+    "user_confirm_without_trocr_total": 69,
+    "user_confirm_reduced_by_trocr": 0,
+    "confirmations_per_page": 2.464,
+    "pages_without_confirmation": 0,
+    "pages_without_confirmation_ratio": 0
+  },
+  "fallbacks": [
+    {
+      "fixture": "F01",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F01-line-2.png",
+      "source_crop_sha256": "c5fe28509f8980e16766bd0a28bb93ccb2806fb73bde59536864653e8ce221db",
+      "paddle_result": {
+        "text": "1/2 tsp salt",
+        "confidence": 0.9571619629859924,
+        "bbox": [
+          106,
+          365,
+          250,
+          403
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "100 000",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 279.51
+    },
+    {
+      "fixture": "F01",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F01-line-3.png",
+      "source_crop_sha256": "c0bd532e5b0e284b7d0166a585e9e6eed13a420c0acc41de05ca932eb4da3593",
+      "paddle_result": {
+        "text": "1/4 cup olive oil",
+        "confidence": 0.9740403294563293,
+        "bbox": [
+          106,
+          437,
+          316,
+          475
+        ]
+      },
+      "routing_reason": [
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "asynchronous",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 284.39
+    },
+    {
+      "fixture": "F01",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F01-line-4.png",
+      "source_crop_sha256": "35b6db6d7f5070489c8b52956267f35b64b161bec201fefcf5c0e0af26123d56",
+      "paddle_result": {
+        "text": "1.5 tbsp tomato paste",
+        "confidence": 0.9879727363586426,
+        "bbox": [
+          106,
+          510,
+          377,
+          548
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "# Indianapolis .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 296.36
+    },
+    {
+      "fixture": "F01",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F01-line-6.png",
+      "source_crop_sha256": "f797b9876e5e047356b03b86cb1de637f762d61fa17364f54ad2d57bf6d7d2ad",
+      "paddle_result": {
+        "text": "Bake 15 min.",
+        "confidence": 0.9807562232017517,
+        "bbox": [
+          106,
+          655,
+          277,
+          686
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "in the following",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 296.8
+    },
+    {
+      "fixture": "F02",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F02-line-3.png",
+      "source_crop_sha256": "021cf995de1193bbafd6b714126b1c60b42fdb9a67663890510ec93d63811a26",
+      "paddle_result": {
+        "text": "120 ml milk",
+        "confidence": 0.9094534516334534,
+        "bbox": [
+          107,
+          439,
+          265,
+          470
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93"
+      ],
+      "trocr_result": "was distinguished",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 272.98
+    },
+    {
+      "fixture": "F02",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F02-line-4.png",
+      "source_crop_sha256": "ef397b776b6bdc84d46c83983386740a42758b0c52bd548c15217a7e931845bf",
+      "paddle_result": {
+        "text": "2 tbsp lemon juice",
+        "confidence": 0.9559307098388672,
+        "bbox": [
+          105,
+          511,
+          341,
+          545
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "interest-engineering .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 319.08
+    },
+    {
+      "fixture": "F02",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F02-line-5.png",
+      "source_crop_sha256": "77cf6d881aa466fbc92a2b76aaa53fd4124fe283d8f1dd766b005d2a6a2115f0",
+      "paddle_result": {
+        "text": "Bake at 180C for 35 min.",
+        "confidence": 0.8867208361625671,
+        "bbox": [
+          107,
+          582,
+          438,
+          614
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93",
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "# Management",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 273.31
+    },
+    {
+      "fixture": "F03",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F03-line-3.png",
+      "source_crop_sha256": "2502cd6e0a2f223e9bf8e825f1074bd7bba0a11dc49f8688eb239e42a4aecc74",
+      "paddle_result": {
+        "text": "1 tsp yeast",
+        "confidence": 0.9244310259819031,
+        "bbox": [
+          105,
+          438,
+          247,
+          477
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93",
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "# Mississippi",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 272.01
+    },
+    {
+      "fixture": "F03",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F03-line-4.png",
+      "source_crop_sha256": "9ccedb41182762019f272fb5f4c5b6053ced97eef7240cc34ad3818e29530d9c",
+      "paddle_result": {
+        "text": "1 hr rise",
+        "confidence": 0.9056005477905273,
+        "bbox": [
+          107,
+          510,
+          215,
+          543
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93",
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "10 000",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 271.54
+    },
+    {
+      "fixture": "F03",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F03-line-5.png",
+      "source_crop_sha256": "bb567f06aea40ed10c24d5887c5cef3fd66ed2f0440516505efbf4ed5811cee8",
+      "paddle_result": {
+        "text": "Bake 22 min.",
+        "confidence": 0.9374460577964783,
+        "bbox": [
+          107,
+          583,
+          278,
+          614
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "Mississippi",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 241.56
+    },
+    {
+      "fixture": "F04",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F04-line-2.png",
+      "source_crop_sha256": "e3e5bd6fac12e6f7480654a1534622f187330c17b4ed5d47456977a2e18e3a9b",
+      "paddle_result": {
+        "text": "1/2 cup sugar",
+        "confidence": 0.9546486735343933,
+        "bbox": [
+          84,
+          389,
+          261,
+          430
+        ]
+      },
+      "routing_reason": [
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "a brief",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 273.34
+    },
+    {
+      "fixture": "F04",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F04-line-3.png",
+      "source_crop_sha256": "6478730b25ade02ab6aeb2ba272af56e1dd63f7f2a3ab26e8755ffc4c64e1ba9",
+      "paddle_result": {
+        "text": "2 tbsp butter",
+        "confidence": 0.9815292954444885,
+        "bbox": [
+          86,
+          458,
+          253,
+          503
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "2 September",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 270.8
+    },
+    {
+      "fixture": "F04",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F04-line-4.png",
+      "source_crop_sha256": "bcdcba0859e5e8aadc982341675ed1b8849864f8e76aa545e3be1c0383371a79",
+      "paddle_result": {
+        "text": "1/4 tsp cinnamon",
+        "confidence": 0.9945704340934753,
+        "bbox": [
+          92,
+          528,
+          313,
+          574
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "a descriptive group ,",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 319.39
+    },
+    {
+      "fixture": "F04",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F04-line-5.png",
+      "source_crop_sha256": "e7a2bbdb8b17c95d72d3de76f4fdc8f24d6ec97b2eac86ae8edbb115d8174852",
+      "paddle_result": {
+        "text": "Bake 25 min.",
+        "confidence": 0.9395070672035217,
+        "bbox": [
+          95,
+          602,
+          269,
+          644
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "# Mississippi",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 269.89
+    },
+    {
+      "fixture": "F05",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F05-line-2.png",
+      "source_crop_sha256": "33efa548877f319e3232b6dfd548eefa3e3c922e4bc91a215f7ecd35dbac2e7a",
+      "paddle_result": {
+        "text": "1.5",
+        "confidence": 0.9952216148376465,
+        "bbox": [
+          107,
+          368,
+          154,
+          399
+        ]
+      },
+      "routing_reason": [
+        "quantity_unit_separation_failed"
+      ],
+      "trocr_result": "raised",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 241.8
+    },
+    {
+      "fixture": "F05",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F05-line-3.png",
+      "source_crop_sha256": "a4b48d5250c6efbb6d9ad569ed4e201faf2ac4b6654651cec05a485b765d757c",
+      "paddle_result": {
+        "text": "cups beans",
+        "confidence": 0.9846930503845215,
+        "bbox": [
+          151,
+          368,
+          294,
+          403
+        ]
+      },
+      "routing_reason": [
+        "quantity_unit_separation_failed"
+      ],
+      "trocr_result": "impressions",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 270.57
+    },
+    {
+      "fixture": "F05",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F05-line-6.png",
+      "source_crop_sha256": "4651dce90e3aee96f1545b7a530a5e49d3254bea8633859bf59838ff2f115fd2",
+      "paddle_result": {
+        "text": "1 tsp salt",
+        "confidence": 0.9456714391708374,
+        "bbox": [
+          105,
+          509,
+          226,
+          550
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "trespass .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 270.86
+    },
+    {
+      "fixture": "F05",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F05-line-7.png",
+      "source_crop_sha256": "4294890c0cf3db6e62202d878645ad7fa76ce4376b80327a08c89ca9cb7f531e",
+      "paddle_result": {
+        "text": "Simmer 1 hr.",
+        "confidence": 0.9568443894386292,
+        "bbox": [
+          107,
+          583,
+          272,
+          614
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "pessimistic",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 241.81
+    },
+    {
+      "fixture": "F06",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F06-line-3.png",
+      "source_crop_sha256": "758111914b04648e4c08d3c4b05f10ccecba4c7401e0cd4df3bb24697e267db6",
+      "paddle_result": {
+        "text": "350 ml water",
+        "confidence": 0.9206299781799316,
+        "bbox": [
+          105,
+          437,
+          279,
+          472
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93"
+      ],
+      "trocr_result": "administrative",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 244.01
+    },
+    {
+      "fixture": "F07",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F07-line-4.png",
+      "source_crop_sha256": "da7f74bb9867d51505d204fde7b8000d59ce7e625ab0d4583ee9f58783062604",
+      "paddle_result": {
+        "text": "1 tbsp honey",
+        "confidence": 0.9354925751686096,
+        "bbox": [
+          106,
+          509,
+          271,
+          549
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "a business",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 272.11
+    },
+    {
+      "fixture": "F07",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F07-line-5.png",
+      "source_crop_sha256": "8838a42769054433cf5db18501c59859047b3944d1e2094eef065e0128c9437a",
+      "paddle_result": {
+        "text": "IMIETHOD",
+        "confidence": 0.8308924436569214,
+        "bbox": [
+          108,
+          584,
+          256,
+          612
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Mississippi",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 241.02
+    },
+    {
+      "fixture": "F07",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F07-line-6.png",
+      "source_crop_sha256": "23536e2d6d8bc49cf516523c6aad813885914cb59c5e0962ab8eb0264939a91f",
+      "paddle_result": {
+        "text": "Stir dry ingredients, add milk, bake 20 min.",
+        "confidence": 0.9664604067802429,
+        "bbox": [
+          108,
+          654,
+          651,
+          688
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "early immigrants and health-threatening",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 374.28
+    },
+    {
+      "fixture": "F08",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F08-line-3.png",
+      "source_crop_sha256": "ecff9b79bce4fdcb514d213d68813f9aa2bd89ec308089651fcbf2fcd5ef5a81",
+      "paddle_result": {
+        "text": "1/4 cup water",
+        "confidence": 0.995086669921875,
+        "bbox": [
+          106,
+          437,
+          284,
+          477
+        ]
+      },
+      "routing_reason": [
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "What is a successful campaign .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 371.53
+    },
+    {
+      "fixture": "F08",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F08-line-4.png",
+      "source_crop_sha256": "e4807345c1aad7c9120e20ccc9b0d23af44a0598f8e0b867f4c80a4a0308bd0f",
+      "paddle_result": {
+        "text": "1 tsp lemon juice",
+        "confidence": 0.9957186579704285,
+        "bbox": [
+          108,
+          511,
+          325,
+          546
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "a b c d e f g h i",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 449.19
+    },
+    {
+      "fixture": "F09",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F09-line-1.png",
+      "source_crop_sha256": "65b95e1d8096363c31d27602faaa23c2225bdc0459f082779c8e1a32637a6a94",
+      "paddle_result": {
+        "text": "Stir 5 min.",
+        "confidence": 0.9194478988647461,
+        "bbox": [
+          106,
+          583,
+          244,
+          614
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93",
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "successful",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 242.91
+    },
+    {
+      "fixture": "F10",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F10-line-4.png",
+      "source_crop_sha256": "1661be41b799cc01afb2b4fffe7dd9f6831a77c03ff3ededfccb8993868b0f3b",
+      "paddle_result": {
+        "text": "1/2 tsp thyme",
+        "confidence": 0.9939095377922058,
+        "bbox": [
+          106,
+          509,
+          282,
+          549
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "a statement",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 270.91
+    },
+    {
+      "fixture": "F10",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F10-line-7.png",
+      "source_crop_sha256": "b3eaadd226ab77b8798c0ab10aefe8d9875134d38de4ded20e88b17b5b9503a4",
+      "paddle_result": {
+        "text": "Simmer 45 min; add noodles for 8 min.",
+        "confidence": 0.9583982229232788,
+        "bbox": [
+          107,
+          726,
+          600,
+          759
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "immunontization of the identification of",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 399.89
+    },
+    {
+      "fixture": "F11",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F11-line-2.png",
+      "source_crop_sha256": "6bb2014d3eb577b0757ed96b2718d3bfafdd6d67f5a4f09fb0206d598d404f3f",
+      "paddle_result": {
+        "text": "1/2 tsp vanilla",
+        "confidence": 0.9896091818809509,
+        "bbox": [
+          107,
+          367,
+          289,
+          401
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "4 References",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 299.73
+    },
+    {
+      "fixture": "F11",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F11-line-3.png",
+      "source_crop_sha256": "a8c88a325e169e7f3dfca2f73fd7cd0e965529c79286fc358f01d1a3d96aa7c7",
+      "paddle_result": {
+        "text": "1/4 cup sugar",
+        "confidence": 0.9707193374633789,
+        "bbox": [
+          106,
+          436,
+          282,
+          478
+        ]
+      },
+      "routing_reason": [
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "a b c d e f g h (",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 447.81
+    },
+    {
+      "fixture": "F11",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F11-line-5.png",
+      "source_crop_sha256": "8b5d717960e0351864e9229c6f11caaa53af58eb1337bc6bd285ee21f11bfdcc",
+      "paddle_result": {
+        "text": "Bake 15 min.",
+        "confidence": 0.9599296450614929,
+        "bbox": [
+          106,
+          582,
+          278,
+          615
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "Mississippi",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 242.58
+    },
+    {
+      "fixture": "F12",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F12-line-2.png",
+      "source_crop_sha256": "8f53b605d2762e26720dfff849e432b1d995618a0b5081cd2c6dda0e32ae2037",
+      "paddle_result": {
+        "text": "1/2 tsp cardamom",
+        "confidence": 0.9742758870124817,
+        "bbox": [
+          107,
+          366,
+          334,
+          401
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "displaystyle -",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 299.81
+    },
+    {
+      "fixture": "F12",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F12-line-3.png",
+      "source_crop_sha256": "8fb0f23f9d96318eebf82522100325c07373003ade246db358b85556c81abe82",
+      "paddle_result": {
+        "text": "2 cups water",
+        "confidence": 0.9235732555389404,
+        "bbox": [
+          105,
+          439,
+          271,
+          475
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93"
+      ],
+      "trocr_result": "a retrospective",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 272.64
+    },
+    {
+      "fixture": "F12",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F12-line-5.png",
+      "source_crop_sha256": "1198d9146b330e8fc22a73c0fa2b9ea4c6907eae76565f0379bcd332008f2600",
+      "paddle_result": {
+        "text": "Steep 5 min.",
+        "confidence": 0.9148516654968262,
+        "bbox": [
+          105,
+          581,
+          270,
+          619
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93",
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "Mississippi .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 269.39
+    },
+    {
+      "fixture": "F13",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F13-line-2.png",
+      "source_crop_sha256": "839c301cd21d53fae1b92c54d0e4ff64a99878f52071572067f5dc9e493f7e14",
+      "paddle_result": {
+        "text": "1 tbsp oil",
+        "confidence": 0.9608979225158691,
+        "bbox": [
+          106,
+          366,
+          229,
+          402
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "IT recognizes",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 273.04
+    },
+    {
+      "fixture": "F13",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F13-line-4.png",
+      "source_crop_sha256": "fa75d6ef119be312c89544b9b17319771e640712171e3202de6d7c67722c9481",
+      "paddle_result": {
+        "text": "Roast 40 min.",
+        "confidence": 0.9646360874176025,
+        "bbox": [
+          108,
+          513,
+          284,
+          540
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "transe-design .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 345.84
+    },
+    {
+      "fixture": "F14",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F14-line-2.png",
+      "source_crop_sha256": "5c5d63c6a93a7ee12eb84d9aa5d5ba640a5fa024442c8ff6fd24363df0a7a8e2",
+      "paddle_result": {
+        "text": "2 pears",
+        "confidence": 0.8146530389785767,
+        "bbox": [
+          103,
+          366,
+          202,
+          402
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Professor",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 243.64
+    },
+    {
+      "fixture": "F14",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F14-line-4.png",
+      "source_crop_sha256": "cffd869b1828c04d0673d3e8d3eec62574bb9e3a228a5edbdd53fe4ce3e4fc56",
+      "paddle_result": {
+        "text": "Bake 25 min.",
+        "confidence": 0.9682809710502625,
+        "bbox": [
+          107,
+          513,
+          276,
+          541
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "# Marshall",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 270.69
+    },
+    {
+      "fixture": "F15",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F15-line-2.png",
+      "source_crop_sha256": "baa70eb1f2a55b24409db60c33b75d0912a7949840b4407f413347f21f0f1612",
+      "paddle_result": {
+        "text": "2 tbsp butter",
+        "confidence": 0.9891207814216614,
+        "bbox": [
+          105,
+          366,
+          269,
+          401
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "a single statement",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 298.91
+    },
+    {
+      "fixture": "F15",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F15-line-3.png",
+      "source_crop_sha256": "2b7c582b807824db1a32a39417210a8eb666c79c3e8b2114ee56e406a879d178",
+      "paddle_result": {
+        "text": "Toast 15 min.",
+        "confidence": 0.9748231172561646,
+        "bbox": [
+          106,
+          439,
+          281,
+          470
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "displaystyle",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 272.91
+    },
+    {
+      "fixture": "F17",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F17-line-2.png",
+      "source_crop_sha256": "cf33f83d0fd8f0bf9d74ab60149814b8cd5ec0ec99d6a18eb7d4572b2119d867",
+      "paddle_result": {
+        "text": "1 tsp dried dill",
+        "confidence": 0.9841998815536499,
+        "bbox": [
+          106,
+          363,
+          294,
+          404
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "100 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 3882.88
+    },
+    {
+      "fixture": "F17",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F17-line-3.png",
+      "source_crop_sha256": "dc1ff2de444c1f7149fa12c59f9a3742424381e21003f88cb3af57dc0b2820dc",
+      "paddle_result": {
+        "text": "1 tbsp vinegar",
+        "confidence": 0.9910590052604675,
+        "bbox": [
+          105,
+          436,
+          290,
+          477
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "a b c d e f",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 372.37
+    },
+    {
+      "fixture": "F17",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F17-line-4.png",
+      "source_crop_sha256": "dba4f7e94a26993d27fe1d1b34786d93471c4edfa73b1809189a9616984e917a",
+      "paddle_result": {
+        "text": "2 tbsp oil",
+        "confidence": 0.9356311559677124,
+        "bbox": [
+          104,
+          510,
+          229,
+          546
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "microscopic",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 242.21
+    },
+    {
+      "fixture": "F18",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F18-line-4.png",
+      "source_crop_sha256": "4c2d22232c4dd0906862253303bec3eff26c863684bf1de4f88e2c9d0842454f",
+      "paddle_result": {
+        "text": "1/4 cup sugar",
+        "confidence": 0.9578055739402771,
+        "bbox": [
+          107,
+          510,
+          281,
+          548
+        ]
+      },
+      "routing_reason": [
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "a b c d e f",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 374.74
+    },
+    {
+      "fixture": "F18",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F18-line-5.png",
+      "source_crop_sha256": "c14fbcba7830bdffecbec63ea5224adb2fddda27e5a48f927a69215c97e44df6",
+      "paddle_result": {
+        "text": "Cook 12 min.",
+        "confidence": 0.962583601474762,
+        "bbox": [
+          107,
+          582,
+          281,
+          614
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "in a slightly",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 296.8
+    },
+    {
+      "fixture": "F19",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F19-line-2.png",
+      "source_crop_sha256": "fff00b8d7ef191da1641408539254fb4e2939933ec84ba02ca2129de6a23d127",
+      "paddle_result": {
+        "text": "1 cup fl our / farine",
+        "confidence": 0.928596019744873,
+        "bbox": [
+          107,
+          366,
+          345,
+          401
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93"
+      ],
+      "trocr_result": "___________________________________",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 666.75
+    },
+    {
+      "fixture": "F19",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F19-line-3.png",
+      "source_crop_sha256": "0bf6abaa15f8fb7ed2f5597dc733adbdbce16be88bba6d32bc0062d052974c0f",
+      "paddle_result": {
+        "text": "1/2 tsp salt / sel",
+        "confidence": 0.9950723648071289,
+        "bbox": [
+          105,
+          437,
+          307,
+          475
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "2 References",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 321.46
+    },
+    {
+      "fixture": "F19",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F19-line-5.png",
+      "source_crop_sha256": "94d8c7225f7cfee5e0b067bc6bcf39e043bcf961b3650b9971d8d1cc421a1791",
+      "paddle_result": {
+        "text": "Mélanger; cook 2 min per side.",
+        "confidence": 0.9797328114509583,
+        "bbox": [
+          106,
+          581,
+          500,
+          619
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "\" In other issues - the basic participation of the",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 476.8
+    },
+    {
+      "fixture": "F20",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F20-line-4.png",
+      "source_crop_sha256": "875cc4bcb2857c1af81cadf1419b1c75c4c9af3fe0d0de531914ad74acac3b2a",
+      "paddle_result": {
+        "text": "1 tbsp oil",
+        "confidence": 0.9900076985359192,
+        "bbox": [
+          106,
+          510,
+          228,
+          546
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "in his wife ,",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 319.42
+    },
+    {
+      "fixture": "F20",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F20-line-7.png",
+      "source_crop_sha256": "76062b0275b1aba96c66ca854e85ea4432b32cc0319c4fa21b3606130799bc81",
+      "paddle_result": {
+        "text": "Bake at 350F for 35 min.",
+        "confidence": 0.9477249979972839,
+        "bbox": [
+          107,
+          727,
+          435,
+          758
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "# Jacksonville .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 294.77
+    },
+    {
+      "fixture": "G01",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G01-line-0.png",
+      "source_crop_sha256": "e4582afff194693c2da61cc212c774a245b0c1cb61a96a1d63379b6210837fcd",
+      "paddle_result": {
+        "text": "Nong Khiaw Chao ist en Ort in cer Proviz Luang Prabang",
+        "confidence": 0.7693599462509155,
+        "bbox": [
+          0,
+          0,
+          523,
+          42
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Nong Khildd Chao . ist-en Oct en der Proviz Leuang Praburg",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 778.56
+    },
+    {
+      "fixture": "G02",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G02-line-0.png",
+      "source_crop_sha256": "009970ca2f4277fd22817f7a61cfd005e11e86210ae78b4255a65a14470e2a97",
+      "paddle_result": {
+        "text": "Leicter (Schigotyp)",
+        "confidence": 0.6455281972885132,
+        "bbox": [
+          0,
+          0,
+          249,
+          65
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Leichther rsdnigopathy )",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 448.66
+    },
+    {
+      "fixture": "G03",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G03-line-0.png",
+      "source_crop_sha256": "b6b6174ca7662ec98d2fda5b7de4d41fbf665e4f4de5fd5d6119a124e8f14342",
+      "paddle_result": {
+        "text": "Fugasche ist der fetdispse lcenrmigepafg",
+        "confidence": 0.6201397776603699,
+        "bbox": [
+          0,
+          2,
+          722,
+          54
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Flugouche ist der Feste , disperse ( teilcen-formige , partikel forming",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 836.65
+    },
+    {
+      "fixture": "G04",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G04-line-0.png",
+      "source_crop_sha256": "f3da55942246dead24a422e185017eadfcbcf4ea481c641de9f7ccdbf2e0199c",
+      "paddle_result": {
+        "text": "Process Ceigene Schribwise",
+        "confidence": 0.7464364767074585,
+        "bbox": [
+          0,
+          0,
+          263,
+          29
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Process Cedgene Schreibweise . '",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 502.84
+    },
+    {
+      "fixture": "G04",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G04-line-1.png",
+      "source_crop_sha256": "fc940cbcfaba179e9b3ead076bda3d109c398e20780d6e9416b18ff9eea2de95",
+      "paddle_result": {
+        "text": "PRocEss) ist cine",
+        "confidence": 0.8274699449539185,
+        "bbox": [
+          277,
+          0,
+          468,
+          29
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "PROCESS ) ist eine c",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 423.77
+    },
+    {
+      "fixture": "G04",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G04-line-2.png",
+      "source_crop_sha256": "194b9db7250feb633c3c7a0990a0324629977d9e5bd63c9f21f98efb81e59109",
+      "paddle_result": {
+        "text": "Crossmeoiale",
+        "confidence": 0.7384569048881531,
+        "bbox": [
+          468,
+          8,
+          578,
+          28
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "cross-reliable",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 295.9
+    },
+    {
+      "fixture": "G05",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/genuine-handwriting/G05.png",
+      "source_crop_sha256": "d3673b28c3a8ec8ab5b669be79fdd2121127ff5a5b8a1573d6a8a7c1745436c0",
+      "paddle_result": {
+        "text": "",
+        "confidence": null,
+        "bbox": null
+      },
+      "routing_reason": [
+        "paddle_missing_text_on_known_handwriting_crop"
+      ],
+      "trocr_result": "Das Schless-s , Auslant-s ,rude s oder Ringel-sist eine",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 837.01
+    },
+    {
+      "fixture": "G06",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G06-line-0.png",
+      "source_crop_sha256": "fc6e2a48c8a3556db63234155adbf5bd482c2fa25e0fd54981dee85067877902",
+      "paddle_result": {
+        "text": "Leisng,als Vobeeitng ein Spkr",
+        "confidence": 0.7038831114768982,
+        "bbox": [
+          0,
+          0,
+          488,
+          60
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Leistung , als vorbereitung einer Spiter",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 554.43
+    },
+    {
+      "fixture": "G07",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G07-line-0.png",
+      "source_crop_sha256": "15018c056bac692c2afadb1ad8fa20157c2c7cd676c36e6a1bedb51f85221fe0",
+      "paddle_result": {
+        "text": "Birferentsaheio",
+        "confidence": 0.6011489629745483,
+        "bbox": [
+          0,
+          0,
+          162,
+          50
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Bargerentsaheid",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 375.71
+    },
+    {
+      "fixture": "G08",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G08-line-0.png",
+      "source_crop_sha256": "03f760fc3a420d478cbd6f06c41ab59c223802bab26470388662260f9eafdba0",
+      "paddle_result": {
+        "text": "Gereralplan Ost (Gp) werden cine",
+        "confidence": 0.740704357624054,
+        "bbox": [
+          242,
+          0,
+          638,
+          40
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "generalization Act CGROI werden eine",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 399.78
+    },
+    {
+      "fixture": "G08",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G08-line-1.png",
+      "source_crop_sha256": "27d7e0bb7652f6726238eb95f0b4bf2e0a994841a79dde34c5fba3476fde9832",
+      "paddle_result": {
+        "text": "Onter dem  Begif",
+        "confidence": 0.8036263585090637,
+        "bbox": [
+          0,
+          3,
+          216,
+          35
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Unter dem Begriff",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 342.92
+    }
+  ],
+  "fixtures": [
+    {
+      "fixture": "F01",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F01.png",
+      "source_image_sha256": "678b43bb9ae181acdc88323e39871a425aff8af93e9d834bcd7642f976f28c68",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Sunday Tomato Sauce\nINGREDIENTS\n1/2 tsp salt\n1/4 cup olive oil\n1.5 tbsp tomato paste\n350Foven\nBake 15 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Sunday Tomato Sauce",
+          "confidence": 0.9802325367927551,
+          "bbox": [
+            108,
+            222,
+            550,
+            256
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9995128512382507,
+          "bbox": [
+            108,
+            295,
+            335,
+            325
+          ]
+        },
+        {
+          "text": "1/2 tsp salt",
+          "confidence": 0.9571619629859924,
+          "bbox": [
+            106,
+            365,
+            250,
+            403
+          ]
+        },
+        {
+          "text": "1/4 cup olive oil",
+          "confidence": 0.9740403294563293,
+          "bbox": [
+            106,
+            437,
+            316,
+            475
+          ]
+        },
+        {
+          "text": "1.5 tbsp tomato paste",
+          "confidence": 0.9879727363586426,
+          "bbox": [
+            106,
+            510,
+            377,
+            548
+          ]
+        },
+        {
+          "text": "350Foven",
+          "confidence": 0.9446560144424438,
+          "bbox": [
+            105,
+            581,
+            259,
+            618
+          ]
+        },
+        {
+          "text": "Bake 15 min.",
+          "confidence": 0.9807562232017517,
+          "bbox": [
+            106,
+            655,
+            277,
+            686
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          222,
+          550,
+          256
+        ],
+        [
+          108,
+          295,
+          335,
+          325
+        ],
+        [
+          106,
+          365,
+          250,
+          403
+        ],
+        [
+          106,
+          437,
+          316,
+          475
+        ],
+        [
+          106,
+          510,
+          377,
+          548
+        ],
+        [
+          105,
+          581,
+          259,
+          618
+        ],
+        [
+          106,
+          655,
+          277,
+          686
+        ]
+      ],
+      "paddle_confidences": [
+        0.9802325367927551,
+        0.9995128512382507,
+        0.9571619629859924,
+        0.9740403294563293,
+        0.9879727363586426,
+        0.9446560144424438,
+        0.9807562232017517
+      ],
+      "paddle_latency_ms": 8796.99,
+      "line_metrics": {
+        "expected_line_count": 7,
+        "recognized_line_count": 7,
+        "exact_missing_lines": [
+          "350°f oven"
+        ],
+        "exact_extra_lines": [
+          "350foven"
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 5,
+        "critical_field_errors": 1,
+        "critical_field_error_values": [
+          "350°F"
+        ]
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 4,
+      "user_confirm_without_trocr_count": 4,
+      "user_confirm_required_count": 4,
+      "schema_probe": {
+        "fixture_id": "F01",
+        "source_image": "synthetic/F01.png",
+        "raw_ocr": "RECIPE: Sunday Tomato Sauce\nINGREDIENTS\n1/2 tsp salt\n1/4 cup olive oil\n1.5 tbsp tomato paste\n350Foven\nBake 15 min.",
+        "normalized_transcription": "RECIPE: Sunday Tomato Sauce\nINGREDIENTS\n1/2 tsp salt\n1/4 cup olive oil\n1.5 tbsp tomato paste\n350Foven\nBake 15 min.",
+        "recipe_schema": {
+          "title": "Sunday Tomato Sauce",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "1/2 tsp salt",
+              "quantity": "1/2",
+              "unit": "tsp",
+              "ingredient": "salt",
+              "confidence": 0.9571619629859924,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  106,
+                  365,
+                  250,
+                  403
+                ]
+              }
+            },
+            {
+              "original_text": "1/4 cup olive oil",
+              "quantity": "1/4",
+              "unit": "cup",
+              "ingredient": "olive oil",
+              "confidence": 0.9740403294563293,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  106,
+                  437,
+                  316,
+                  475
+                ]
+              }
+            },
+            {
+              "original_text": "1.5 tbsp tomato paste",
+              "quantity": "1.5",
+              "unit": "tbsp",
+              "ingredient": "tomato paste",
+              "confidence": 0.9879727363586426,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  106,
+                  510,
+                  377,
+                  548
+                ]
+              }
+            },
+            {
+              "original_text": "350Foven",
+              "quantity": "350",
+              "unit": null,
+              "ingredient": "Foven",
+              "confidence": 0.9446560144424438,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  105,
+                  581,
+                  259,
+                  618
+                ]
+              }
+            },
+            {
+              "original_text": "Bake 15 min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9807562232017517,
+              "source_span": {
+                "line_index": 6,
+                "bbox": [
+                  106,
+                  655,
+                  277,
+                  686
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "15 min",
+              "confidence": 0.9807562232017517,
+              "source_span": {
+                "line_index": 6,
+                "bbox": [
+                  106,
+                  655,
+                  277,
+                  686
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 6,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F02",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F02.png",
+      "source_image_sha256": "c7efb8b25fb9e88a61994af82b8e4c225500851a77404571a3c9244aeebaab38",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Lemon Loaf\nINGREDIENTS\n180 g flour\n120 ml milk\n2 tbsp lemon juice\nBake at 180C for 35 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Lemon Loaf",
+          "confidence": 0.9642881751060486,
+          "bbox": [
+            108,
+            222,
+            416,
+            252
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9996484518051147,
+          "bbox": [
+            108,
+            295,
+            335,
+            325
+          ]
+        },
+        {
+          "text": "180 g flour",
+          "confidence": 0.9328065514564514,
+          "bbox": [
+            106,
+            366,
+            252,
+            401
+          ]
+        },
+        {
+          "text": "120 ml milk",
+          "confidence": 0.9094534516334534,
+          "bbox": [
+            107,
+            439,
+            265,
+            470
+          ]
+        },
+        {
+          "text": "2 tbsp lemon juice",
+          "confidence": 0.9559307098388672,
+          "bbox": [
+            105,
+            511,
+            341,
+            545
+          ]
+        },
+        {
+          "text": "Bake at 180C for 35 min.",
+          "confidence": 0.8867208361625671,
+          "bbox": [
+            107,
+            582,
+            438,
+            614
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          222,
+          416,
+          252
+        ],
+        [
+          108,
+          295,
+          335,
+          325
+        ],
+        [
+          106,
+          366,
+          252,
+          401
+        ],
+        [
+          107,
+          439,
+          265,
+          470
+        ],
+        [
+          105,
+          511,
+          341,
+          545
+        ],
+        [
+          107,
+          582,
+          438,
+          614
+        ]
+      ],
+      "paddle_confidences": [
+        0.9642881751060486,
+        0.9996484518051147,
+        0.9328065514564514,
+        0.9094534516334534,
+        0.9559307098388672,
+        0.8867208361625671
+      ],
+      "paddle_latency_ms": 8698.93,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 6,
+        "exact_missing_lines": [
+          "bake at 180°c for 35 min."
+        ],
+        "exact_extra_lines": [
+          "bake at 180c for 35 min."
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 5,
+        "critical_field_errors": 1,
+        "critical_field_error_values": [
+          "180°C"
+        ]
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 3,
+      "user_confirm_without_trocr_count": 3,
+      "user_confirm_required_count": 3,
+      "schema_probe": {
+        "fixture_id": "F02",
+        "source_image": "synthetic/F02.png",
+        "raw_ocr": "RECIPE: Lemon Loaf\nINGREDIENTS\n180 g flour\n120 ml milk\n2 tbsp lemon juice\nBake at 180C for 35 min.",
+        "normalized_transcription": "RECIPE: Lemon Loaf\nINGREDIENTS\n180 g flour\n120 ml milk\n2 tbsp lemon juice\nBake at 180C for 35 min.",
+        "recipe_schema": {
+          "title": "Lemon Loaf",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "180 g flour",
+              "quantity": "180",
+              "unit": "g",
+              "ingredient": "flour",
+              "confidence": 0.9328065514564514,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  106,
+                  366,
+                  252,
+                  401
+                ]
+              }
+            },
+            {
+              "original_text": "120 ml milk",
+              "quantity": "120",
+              "unit": "ml",
+              "ingredient": "milk",
+              "confidence": 0.9094534516334534,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  107,
+                  439,
+                  265,
+                  470
+                ]
+              }
+            },
+            {
+              "original_text": "2 tbsp lemon juice",
+              "quantity": "2",
+              "unit": "tbsp",
+              "ingredient": "lemon juice",
+              "confidence": 0.9559307098388672,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  105,
+                  511,
+                  341,
+                  545
+                ]
+              }
+            },
+            {
+              "original_text": "Bake at 180C for 35 min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.8867208361625671,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  107,
+                  582,
+                  438,
+                  614
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "35 min",
+              "confidence": 0.8867208361625671,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  107,
+                  582,
+                  438,
+                  614
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F03",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F03.png",
+      "source_image_sha256": "a764c9257e13dd7740c291caeaf34863f08c115e17cac57ab6c52eb012cd92cb",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Grandma Ida Rolls\nINGREDIENTS\n3 cups flour\n1 tsp yeast\n1 hr rise\nBake 22 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Grandma Ida Rolls",
+          "confidence": 0.9844006896018982,
+          "bbox": [
+            108,
+            222,
+            504,
+            252
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9997053742408752,
+          "bbox": [
+            109,
+            295,
+            335,
+            324
+          ]
+        },
+        {
+          "text": "3 cups flour",
+          "confidence": 0.9520545601844788,
+          "bbox": [
+            105,
+            366,
+            262,
+            401
+          ]
+        },
+        {
+          "text": "1 tsp yeast",
+          "confidence": 0.9244310259819031,
+          "bbox": [
+            105,
+            438,
+            247,
+            477
+          ]
+        },
+        {
+          "text": "1 hr rise",
+          "confidence": 0.9056005477905273,
+          "bbox": [
+            107,
+            510,
+            215,
+            543
+          ]
+        },
+        {
+          "text": "Bake 22 min.",
+          "confidence": 0.9374460577964783,
+          "bbox": [
+            107,
+            583,
+            278,
+            614
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          222,
+          504,
+          252
+        ],
+        [
+          109,
+          295,
+          335,
+          324
+        ],
+        [
+          105,
+          366,
+          262,
+          401
+        ],
+        [
+          105,
+          438,
+          247,
+          477
+        ],
+        [
+          107,
+          510,
+          215,
+          543
+        ],
+        [
+          107,
+          583,
+          278,
+          614
+        ]
+      ],
+      "paddle_confidences": [
+        0.9844006896018982,
+        0.9997053742408752,
+        0.9520545601844788,
+        0.9244310259819031,
+        0.9056005477905273,
+        0.9374460577964783
+      ],
+      "paddle_latency_ms": 8870.1,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 6,
+        "exact_missing_lines": [],
+        "exact_extra_lines": [],
+        "raw_line_errors": 0
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 4,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 3,
+      "user_confirm_without_trocr_count": 3,
+      "user_confirm_required_count": 3,
+      "schema_probe": {
+        "fixture_id": "F03",
+        "source_image": "synthetic/F03.png",
+        "raw_ocr": "RECIPE: Grandma Ida Rolls\nINGREDIENTS\n3 cups flour\n1 tsp yeast\n1 hr rise\nBake 22 min.",
+        "normalized_transcription": "RECIPE: Grandma Ida Rolls\nINGREDIENTS\n3 cups flour\n1 tsp yeast\n1 hr rise\nBake 22 min.",
+        "recipe_schema": {
+          "title": "Grandma Ida Rolls",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "3 cups flour",
+              "quantity": "3",
+              "unit": "cup",
+              "ingredient": "s flour",
+              "confidence": 0.9520545601844788,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  105,
+                  366,
+                  262,
+                  401
+                ]
+              }
+            },
+            {
+              "original_text": "1 tsp yeast",
+              "quantity": "1",
+              "unit": "tsp",
+              "ingredient": "yeast",
+              "confidence": 0.9244310259819031,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  105,
+                  438,
+                  247,
+                  477
+                ]
+              }
+            },
+            {
+              "original_text": "1 hr rise",
+              "quantity": "1",
+              "unit": "hr",
+              "ingredient": "rise",
+              "confidence": 0.9056005477905273,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  107,
+                  510,
+                  215,
+                  543
+                ]
+              }
+            },
+            {
+              "original_text": "Bake 22 min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9374460577964783,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  107,
+                  583,
+                  278,
+                  614
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "1 hr",
+              "confidence": 0.9056005477905273,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  107,
+                  510,
+                  215,
+                  543
+                ]
+              }
+            },
+            {
+              "original_text": "22 min",
+              "confidence": 0.9374460577964783,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  107,
+                  583,
+                  278,
+                  614
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F04",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F04.png",
+      "source_image_sha256": "8580817a7574f714bfa753ff8262f01e2a48ea4d8eda75da112947f494120d1c",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Apple Dumplings\nINGREDIENTS\n1/2 cup sugar\n2 tbsp butter\n1/4 tsp cinnamon\nBake 25 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Apple Dumplings",
+          "confidence": 0.9474931955337524,
+          "bbox": [
+            77,
+            232,
+            459,
+            286
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9993479251861572,
+          "bbox": [
+            81,
+            311,
+            311,
+            354
+          ]
+        },
+        {
+          "text": "1/2 cup sugar",
+          "confidence": 0.9546486735343933,
+          "bbox": [
+            84,
+            389,
+            261,
+            430
+          ]
+        },
+        {
+          "text": "2 tbsp butter",
+          "confidence": 0.9815292954444885,
+          "bbox": [
+            86,
+            458,
+            253,
+            503
+          ]
+        },
+        {
+          "text": "1/4 tsp cinnamon",
+          "confidence": 0.9945704340934753,
+          "bbox": [
+            92,
+            528,
+            313,
+            574
+          ]
+        },
+        {
+          "text": "Bake 25 min.",
+          "confidence": 0.9395070672035217,
+          "bbox": [
+            95,
+            602,
+            269,
+            644
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          77,
+          232,
+          459,
+          286
+        ],
+        [
+          81,
+          311,
+          311,
+          354
+        ],
+        [
+          84,
+          389,
+          261,
+          430
+        ],
+        [
+          86,
+          458,
+          253,
+          503
+        ],
+        [
+          92,
+          528,
+          313,
+          574
+        ],
+        [
+          95,
+          602,
+          269,
+          644
+        ]
+      ],
+      "paddle_confidences": [
+        0.9474931955337524,
+        0.9993479251861572,
+        0.9546486735343933,
+        0.9815292954444885,
+        0.9945704340934753,
+        0.9395070672035217
+      ],
+      "paddle_latency_ms": 8636.28,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 6,
+        "exact_missing_lines": [],
+        "exact_extra_lines": [],
+        "raw_line_errors": 0
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 4,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 4,
+      "user_confirm_without_trocr_count": 4,
+      "user_confirm_required_count": 4,
+      "schema_probe": {
+        "fixture_id": "F04",
+        "source_image": "synthetic/F04.png",
+        "raw_ocr": "RECIPE: Apple Dumplings\nINGREDIENTS\n1/2 cup sugar\n2 tbsp butter\n1/4 tsp cinnamon\nBake 25 min.",
+        "normalized_transcription": "RECIPE: Apple Dumplings\nINGREDIENTS\n1/2 cup sugar\n2 tbsp butter\n1/4 tsp cinnamon\nBake 25 min.",
+        "recipe_schema": {
+          "title": "Apple Dumplings",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "1/2 cup sugar",
+              "quantity": "1/2",
+              "unit": "cup",
+              "ingredient": "sugar",
+              "confidence": 0.9546486735343933,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  84,
+                  389,
+                  261,
+                  430
+                ]
+              }
+            },
+            {
+              "original_text": "2 tbsp butter",
+              "quantity": "2",
+              "unit": "tbsp",
+              "ingredient": "butter",
+              "confidence": 0.9815292954444885,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  86,
+                  458,
+                  253,
+                  503
+                ]
+              }
+            },
+            {
+              "original_text": "1/4 tsp cinnamon",
+              "quantity": "1/4",
+              "unit": "tsp",
+              "ingredient": "cinnamon",
+              "confidence": 0.9945704340934753,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  92,
+                  528,
+                  313,
+                  574
+                ]
+              }
+            },
+            {
+              "original_text": "Bake 25 min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9395070672035217,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  95,
+                  602,
+                  269,
+                  644
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "25 min",
+              "confidence": 0.9395070672035217,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  95,
+                  602,
+                  269,
+                  644
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F05",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F05.png",
+      "source_image_sha256": "730fed2e78d0c9f2a213231a8bc0445b3db20a8e8aeda5ef4a2120459d29d136",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Sunday Beans\nINGREDIENTS\n1.5\ncups beans\nml water\n750\n1 tsp salt\nSimmer 1 hr.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Sunday Beans",
+          "confidence": 0.9793344736099243,
+          "bbox": [
+            107,
+            222,
+            440,
+            258
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9736597537994385,
+          "bbox": [
+            108,
+            297,
+            334,
+            324
+          ]
+        },
+        {
+          "text": "1.5",
+          "confidence": 0.9952216148376465,
+          "bbox": [
+            107,
+            368,
+            154,
+            399
+          ]
+        },
+        {
+          "text": "cups beans",
+          "confidence": 0.9846930503845215,
+          "bbox": [
+            151,
+            368,
+            294,
+            403
+          ]
+        },
+        {
+          "text": "ml water",
+          "confidence": 0.9422533512115479,
+          "bbox": [
+            159,
+            439,
+            277,
+            471
+          ]
+        },
+        {
+          "text": "750",
+          "confidence": 0.9967295527458191,
+          "bbox": [
+            108,
+            440,
+            162,
+            470
+          ]
+        },
+        {
+          "text": "1 tsp salt",
+          "confidence": 0.9456714391708374,
+          "bbox": [
+            105,
+            509,
+            226,
+            550
+          ]
+        },
+        {
+          "text": "Simmer 1 hr.",
+          "confidence": 0.9568443894386292,
+          "bbox": [
+            107,
+            583,
+            272,
+            614
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          107,
+          222,
+          440,
+          258
+        ],
+        [
+          108,
+          297,
+          334,
+          324
+        ],
+        [
+          107,
+          368,
+          154,
+          399
+        ],
+        [
+          151,
+          368,
+          294,
+          403
+        ],
+        [
+          159,
+          439,
+          277,
+          471
+        ],
+        [
+          108,
+          440,
+          162,
+          470
+        ],
+        [
+          105,
+          509,
+          226,
+          550
+        ],
+        [
+          107,
+          583,
+          272,
+          614
+        ]
+      ],
+      "paddle_confidences": [
+        0.9793344736099243,
+        0.9736597537994385,
+        0.9952216148376465,
+        0.9846930503845215,
+        0.9422533512115479,
+        0.9967295527458191,
+        0.9456714391708374,
+        0.9568443894386292
+      ],
+      "paddle_latency_ms": 8709.32,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 8,
+        "exact_missing_lines": [
+          "1.5 cups beans",
+          "750 ml water"
+        ],
+        "exact_extra_lines": [
+          "1.5",
+          "cups beans",
+          "ml water",
+          "750"
+        ],
+        "raw_line_errors": 6
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 4,
+        "critical_field_errors": 2,
+        "critical_field_error_values": [
+          "1.5 cups",
+          "750 ml"
+        ]
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        },
+        {
+          "rule": "recipe_layout_has_fewer_than_two_quantity_unit_lines",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 4,
+      "user_confirm_without_trocr_count": 4,
+      "user_confirm_required_count": 4,
+      "schema_probe": {
+        "fixture_id": "F05",
+        "source_image": "synthetic/F05.png",
+        "raw_ocr": "RECIPE: Sunday Beans\nINGREDIENTS\n1.5\ncups beans\nml water\n750\n1 tsp salt\nSimmer 1 hr.",
+        "normalized_transcription": "RECIPE: Sunday Beans\nINGREDIENTS\n1.5\ncups beans\nml water\n750\n1 tsp salt\nSimmer 1 hr.",
+        "recipe_schema": {
+          "title": "Sunday Beans",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "1.5",
+              "quantity": "1.5",
+              "unit": null,
+              "ingredient": "",
+              "confidence": 0.9952216148376465,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  107,
+                  368,
+                  154,
+                  399
+                ]
+              }
+            },
+            {
+              "original_text": "cups beans",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9846930503845215,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  151,
+                  368,
+                  294,
+                  403
+                ]
+              }
+            },
+            {
+              "original_text": "ml water",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9422533512115479,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  159,
+                  439,
+                  277,
+                  471
+                ]
+              }
+            },
+            {
+              "original_text": "750",
+              "quantity": "750",
+              "unit": null,
+              "ingredient": "",
+              "confidence": 0.9967295527458191,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  108,
+                  440,
+                  162,
+                  470
+                ]
+              }
+            },
+            {
+              "original_text": "1 tsp salt",
+              "quantity": "1",
+              "unit": "tsp",
+              "ingredient": "salt",
+              "confidence": 0.9456714391708374,
+              "source_span": {
+                "line_index": 6,
+                "bbox": [
+                  105,
+                  509,
+                  226,
+                  550
+                ]
+              }
+            },
+            {
+              "original_text": "Simmer 1 hr.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9568443894386292,
+              "source_span": {
+                "line_index": 7,
+                "bbox": [
+                  107,
+                  583,
+                  272,
+                  614
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "1 hr",
+              "confidence": 0.9568443894386292,
+              "source_span": {
+                "line_index": 7,
+                "bbox": [
+                  107,
+                  583,
+                  272,
+                  614
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 2,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 3,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 4,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 7,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F06",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F06.png",
+      "source_image_sha256": "15a6fa77933c745840ea7b320eb6d9b17aef7921a064544ca44c88d330e027c3",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Orange Marmalade\nINGREDIENTS\n5oogoranges\n350 ml water\n2cupssugar\nCook75min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Orange Marmalade",
+          "confidence": 0.9729802012443542,
+          "bbox": [
+            109,
+            223,
+            508,
+            254
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9995697140693665,
+          "bbox": [
+            108,
+            295,
+            335,
+            325
+          ]
+        },
+        {
+          "text": "5oogoranges",
+          "confidence": 0.95516037940979,
+          "bbox": [
+            103,
+            364,
+            289,
+            408
+          ]
+        },
+        {
+          "text": "350 ml water",
+          "confidence": 0.9206299781799316,
+          "bbox": [
+            105,
+            437,
+            279,
+            472
+          ]
+        },
+        {
+          "text": "2cupssugar",
+          "confidence": 0.9876077771186829,
+          "bbox": [
+            103,
+            511,
+            269,
+            549
+          ]
+        },
+        {
+          "text": "Cook75min.",
+          "confidence": 0.9821901321411133,
+          "bbox": [
+            106,
+            583,
+            281,
+            614
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          109,
+          223,
+          508,
+          254
+        ],
+        [
+          108,
+          295,
+          335,
+          325
+        ],
+        [
+          103,
+          364,
+          289,
+          408
+        ],
+        [
+          105,
+          437,
+          279,
+          472
+        ],
+        [
+          103,
+          511,
+          269,
+          549
+        ],
+        [
+          106,
+          583,
+          281,
+          614
+        ]
+      ],
+      "paddle_confidences": [
+        0.9729802012443542,
+        0.9995697140693665,
+        0.95516037940979,
+        0.9206299781799316,
+        0.9876077771186829,
+        0.9821901321411133
+      ],
+      "paddle_latency_ms": 8852.66,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 6,
+        "exact_missing_lines": [
+          "500 g oranges",
+          "2 cups sugar",
+          "cook 75 min."
+        ],
+        "exact_extra_lines": [
+          "5oogoranges",
+          "2cupssugar",
+          "cook75min."
+        ],
+        "raw_line_errors": 6
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 4,
+        "critical_field_errors": 3,
+        "critical_field_error_values": [
+          "500 g",
+          "2 cups",
+          "75 min"
+        ]
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        },
+        {
+          "rule": "recipe_layout_has_fewer_than_two_quantity_unit_lines",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 1,
+      "user_confirm_without_trocr_count": 3,
+      "user_confirm_required_count": 3,
+      "schema_probe": {
+        "fixture_id": "F06",
+        "source_image": "synthetic/F06.png",
+        "raw_ocr": "RECIPE: Orange Marmalade\nINGREDIENTS\n5oogoranges\n350 ml water\n2cupssugar\nCook75min.",
+        "normalized_transcription": "RECIPE: Orange Marmalade\nINGREDIENTS\n5oogoranges\n350 ml water\n2cupssugar\nCook75min.",
+        "recipe_schema": {
+          "title": "Orange Marmalade",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "5oogoranges",
+              "quantity": "5",
+              "unit": null,
+              "ingredient": "oogoranges",
+              "confidence": 0.95516037940979,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  103,
+                  364,
+                  289,
+                  408
+                ]
+              }
+            },
+            {
+              "original_text": "350 ml water",
+              "quantity": "350",
+              "unit": "ml",
+              "ingredient": "water",
+              "confidence": 0.9206299781799316,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  105,
+                  437,
+                  279,
+                  472
+                ]
+              }
+            },
+            {
+              "original_text": "2cupssugar",
+              "quantity": "2",
+              "unit": "cup",
+              "ingredient": "ssugar",
+              "confidence": 0.9876077771186829,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  103,
+                  511,
+                  269,
+                  549
+                ]
+              }
+            },
+            {
+              "original_text": "Cook75min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9821901321411133,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  106,
+                  583,
+                  281,
+                  614
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 2,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F07",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F07.png",
+      "source_image_sha256": "4bb0564f3447510c2ba79310bd07064fed4ad74ae11c8b717a3a7e9c643ae98a",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Skillet Cornbread\nINGREDIENTS\n1 cup cornmeal\n1/2cupflour\n1 tbsp honey\nIMIETHOD\nStir dry ingredients, add milk, bake 20 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Skillet Cornbread",
+          "confidence": 0.9880668520927429,
+          "bbox": [
+            110,
+            224,
+            485,
+            251
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9995368719100952,
+          "bbox": [
+            109,
+            297,
+            334,
+            324
+          ]
+        },
+        {
+          "text": "1 cup cornmeal",
+          "confidence": 0.9572188258171082,
+          "bbox": [
+            108,
+            366,
+            303,
+            401
+          ]
+        },
+        {
+          "text": "1/2cupflour",
+          "confidence": 0.9962834715843201,
+          "bbox": [
+            104,
+            435,
+            277,
+            478
+          ]
+        },
+        {
+          "text": "1 tbsp honey",
+          "confidence": 0.9354925751686096,
+          "bbox": [
+            106,
+            509,
+            271,
+            549
+          ]
+        },
+        {
+          "text": "IMIETHOD",
+          "confidence": 0.8308924436569214,
+          "bbox": [
+            108,
+            584,
+            256,
+            612
+          ]
+        },
+        {
+          "text": "Stir dry ingredients, add milk, bake 20 min.",
+          "confidence": 0.9664604067802429,
+          "bbox": [
+            108,
+            654,
+            651,
+            688
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          110,
+          224,
+          485,
+          251
+        ],
+        [
+          109,
+          297,
+          334,
+          324
+        ],
+        [
+          108,
+          366,
+          303,
+          401
+        ],
+        [
+          104,
+          435,
+          277,
+          478
+        ],
+        [
+          106,
+          509,
+          271,
+          549
+        ],
+        [
+          108,
+          584,
+          256,
+          612
+        ],
+        [
+          108,
+          654,
+          651,
+          688
+        ]
+      ],
+      "paddle_confidences": [
+        0.9880668520927429,
+        0.9995368719100952,
+        0.9572188258171082,
+        0.9962834715843201,
+        0.9354925751686096,
+        0.8308924436569214,
+        0.9664604067802429
+      ],
+      "paddle_latency_ms": 9160.18,
+      "line_metrics": {
+        "expected_line_count": 7,
+        "recognized_line_count": 7,
+        "exact_missing_lines": [
+          "1/2 cup flour",
+          "method"
+        ],
+        "exact_extra_lines": [
+          "1/2cupflour",
+          "imiethod"
+        ],
+        "raw_line_errors": 4
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 4,
+        "critical_field_errors": 1,
+        "critical_field_error_values": [
+          "1/2 cup"
+        ]
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 3,
+      "user_confirm_without_trocr_count": 3,
+      "user_confirm_required_count": 3,
+      "schema_probe": {
+        "fixture_id": "F07",
+        "source_image": "synthetic/F07.png",
+        "raw_ocr": "RECIPE: Skillet Cornbread\nINGREDIENTS\n1 cup cornmeal\n1/2cupflour\n1 tbsp honey\nIMIETHOD\nStir dry ingredients, add milk, bake 20 min.",
+        "normalized_transcription": "RECIPE: Skillet Cornbread\nINGREDIENTS\n1 cup cornmeal\n1/2cupflour\n1 tbsp honey\nIMIETHOD\nStir dry ingredients, add milk, bake 20 min.",
+        "recipe_schema": {
+          "title": "Skillet Cornbread",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "1 cup cornmeal",
+              "quantity": "1",
+              "unit": "cup",
+              "ingredient": "cornmeal",
+              "confidence": 0.9572188258171082,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  108,
+                  366,
+                  303,
+                  401
+                ]
+              }
+            },
+            {
+              "original_text": "1/2cupflour",
+              "quantity": "1/2",
+              "unit": "cup",
+              "ingredient": "flour",
+              "confidence": 0.9962834715843201,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  104,
+                  435,
+                  277,
+                  478
+                ]
+              }
+            },
+            {
+              "original_text": "1 tbsp honey",
+              "quantity": "1",
+              "unit": "tbsp",
+              "ingredient": "honey",
+              "confidence": 0.9354925751686096,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  106,
+                  509,
+                  271,
+                  549
+                ]
+              }
+            },
+            {
+              "original_text": "IMIETHOD",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.8308924436569214,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  108,
+                  584,
+                  256,
+                  612
+                ]
+              }
+            },
+            {
+              "original_text": "Stir dry ingredients, add milk, bake 20 min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9664604067802429,
+              "source_span": {
+                "line_index": 6,
+                "bbox": [
+                  108,
+                  654,
+                  651,
+                  688
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "20 min",
+              "confidence": 0.9664604067802429,
+              "source_span": {
+                "line_index": 6,
+                "bbox": [
+                  108,
+                  654,
+                  651,
+                  688
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          },
+          {
+            "field": "line",
+            "line_index": 5,
+            "reason": "low_ocr_confidence"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 6,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F08",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F08.png",
+      "source_image_sha256": "2783a469171d2eaccb0af88235dd13da13c055580c668a4825af9a41a1126b85",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE:Plum Jam\nINGREDIENTS\n2 kg plums\n1/4 cup water\n1 tsp lemon juice\nMETHOD\nStir often. (note: use the blue pot)\nbluepot",
+      "paddle_lines": [
+        {
+          "text": "RECIPE:Plum Jam",
+          "confidence": 0.987334668636322,
+          "bbox": [
+            108,
+            223,
+            382,
+            253
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9996845722198486,
+          "bbox": [
+            109,
+            296,
+            334,
+            323
+          ]
+        },
+        {
+          "text": "2 kg plums",
+          "confidence": 0.9419096112251282,
+          "bbox": [
+            105,
+            365,
+            252,
+            403
+          ]
+        },
+        {
+          "text": "1/4 cup water",
+          "confidence": 0.995086669921875,
+          "bbox": [
+            106,
+            437,
+            284,
+            477
+          ]
+        },
+        {
+          "text": "1 tsp lemon juice",
+          "confidence": 0.9957186579704285,
+          "bbox": [
+            108,
+            511,
+            325,
+            546
+          ]
+        },
+        {
+          "text": "METHOD",
+          "confidence": 0.999514639377594,
+          "bbox": [
+            108,
+            584,
+            256,
+            612
+          ]
+        },
+        {
+          "text": "Stir often. (note: use the blue pot)",
+          "confidence": 0.9632987976074219,
+          "bbox": [
+            107,
+            653,
+            529,
+            691
+          ]
+        },
+        {
+          "text": "bluepot",
+          "confidence": 0.9968295693397522,
+          "bbox": [
+            917,
+            847,
+            1011,
+            888
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          223,
+          382,
+          253
+        ],
+        [
+          109,
+          296,
+          334,
+          323
+        ],
+        [
+          105,
+          365,
+          252,
+          403
+        ],
+        [
+          106,
+          437,
+          284,
+          477
+        ],
+        [
+          108,
+          511,
+          325,
+          546
+        ],
+        [
+          108,
+          584,
+          256,
+          612
+        ],
+        [
+          107,
+          653,
+          529,
+          691
+        ],
+        [
+          917,
+          847,
+          1011,
+          888
+        ]
+      ],
+      "paddle_confidences": [
+        0.987334668636322,
+        0.9996845722198486,
+        0.9419096112251282,
+        0.995086669921875,
+        0.9957186579704285,
+        0.999514639377594,
+        0.9632987976074219,
+        0.9968295693397522
+      ],
+      "paddle_latency_ms": 8830.51,
+      "line_metrics": {
+        "expected_line_count": 7,
+        "recognized_line_count": 8,
+        "exact_missing_lines": [
+          "recipe: plum jam"
+        ],
+        "exact_extra_lines": [
+          "recipe:plum jam",
+          "bluepot"
+        ],
+        "raw_line_errors": 3
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 2,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 2,
+      "user_confirm_without_trocr_count": 2,
+      "user_confirm_required_count": 2,
+      "schema_probe": {
+        "fixture_id": "F08",
+        "source_image": "synthetic/F08.png",
+        "raw_ocr": "RECIPE:Plum Jam\nINGREDIENTS\n2 kg plums\n1/4 cup water\n1 tsp lemon juice\nMETHOD\nStir often. (note: use the blue pot)\nbluepot",
+        "normalized_transcription": "RECIPE:Plum Jam\nINGREDIENTS\n2 kg plums\n1/4 cup water\n1 tsp lemon juice\nMETHOD\nStir often. (note: use the blue pot)\nbluepot",
+        "recipe_schema": {
+          "title": "Plum Jam",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "2 kg plums",
+              "quantity": "2",
+              "unit": null,
+              "ingredient": "kg plums",
+              "confidence": 0.9419096112251282,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  105,
+                  365,
+                  252,
+                  403
+                ]
+              }
+            },
+            {
+              "original_text": "1/4 cup water",
+              "quantity": "1/4",
+              "unit": "cup",
+              "ingredient": "water",
+              "confidence": 0.995086669921875,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  106,
+                  437,
+                  284,
+                  477
+                ]
+              }
+            },
+            {
+              "original_text": "1 tsp lemon juice",
+              "quantity": "1",
+              "unit": "tsp",
+              "ingredient": "lemon juice",
+              "confidence": 0.9957186579704285,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  108,
+                  511,
+                  325,
+                  546
+                ]
+              }
+            }
+          ],
+          "steps": [
+            {
+              "original_text": "Stir often. (note: use the blue pot)",
+              "normalized_text": "Stir often. (note: use the blue pot)",
+              "confidence": 0.9632987976074219,
+              "source_span": {
+                "line_index": 6,
+                "bbox": [
+                  107,
+                  653,
+                  529,
+                  691
+                ]
+              }
+            },
+            {
+              "original_text": "bluepot",
+              "normalized_text": "bluepot",
+              "confidence": 0.9968295693397522,
+              "source_span": {
+                "line_index": 7,
+                "bbox": [
+                  917,
+                  847,
+                  1011,
+                  888
+                ]
+              }
+            }
+          ],
+          "temperature": [],
+          "timing": [],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 2,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F09",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F09.png",
+      "source_image_sha256": "2d8f05f53ad9e8c954ae2687bde4b9d649b0560b8123ae824da3c9e475d69c40",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "pinch black pepper\nStir 5 min.",
+      "paddle_lines": [
+        {
+          "text": "pinch black pepper",
+          "confidence": 0.9739955067634583,
+          "bbox": [
+            105,
+            510,
+            349,
+            547
+          ]
+        },
+        {
+          "text": "Stir 5 min.",
+          "confidence": 0.9194478988647461,
+          "bbox": [
+            106,
+            583,
+            244,
+            614
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          105,
+          510,
+          349,
+          547
+        ],
+        [
+          106,
+          583,
+          244,
+          614
+        ]
+      ],
+      "paddle_confidences": [
+        0.9739955067634583,
+        0.9194478988647461
+      ],
+      "paddle_latency_ms": 8138.95,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 2,
+        "exact_missing_lines": [
+          "recipe: quick gravy",
+          "ingredients",
+          "2 tbsp flour",
+          "1 c milk"
+        ],
+        "exact_extra_lines": [],
+        "raw_line_errors": 4
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 2,
+        "critical_field_errors": 1,
+        "critical_field_error_values": [
+          "2 tbsp"
+        ]
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_ingredients_section",
+          "critical": true
+        },
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        },
+        {
+          "rule": "recipe_layout_has_fewer_than_two_quantity_unit_lines",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 1,
+      "user_confirm_without_trocr_count": 4,
+      "user_confirm_required_count": 4,
+      "schema_probe": {
+        "fixture_id": "F09",
+        "source_image": "synthetic/F09.png",
+        "raw_ocr": "pinch black pepper\nStir 5 min.",
+        "normalized_transcription": "pinch black pepper\nStir 5 min.",
+        "recipe_schema": {
+          "title": null,
+          "source/person": null,
+          "ingredients": [],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "5 min",
+              "confidence": 0.9194478988647461,
+              "source_span": {
+                "line_index": 1,
+                "bbox": [
+                  106,
+                  583,
+                  244,
+                  614
+                ]
+              }
+            }
+          ],
+          "notes": [
+            {
+              "original_text": "pinch black pepper",
+              "confidence": 0.9739955067634583,
+              "source_span": {
+                "line_index": 0,
+                "bbox": [
+                  105,
+                  510,
+                  349,
+                  547
+                ]
+              }
+            },
+            {
+              "original_text": "Stir 5 min.",
+              "confidence": 0.9194478988647461,
+              "source_span": {
+                "line_index": 1,
+                "bbox": [
+                  106,
+                  583,
+                  244,
+                  614
+                ]
+              }
+            }
+          ]
+        },
+        "uncertainties": [],
+        "corrections": [],
+        "approval_state": "UNREVIEWED"
+      }
+    },
+    {
+      "fixture": "F10",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F10.png",
+      "source_image_sha256": "385932956c597fcd68ea7769ff6216f3fd918ab131da465994bcadab4fecb4e1",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Chicken Noodle Soup\nINGREDIENTS\n450 g chicken\n2 cups carrots\n1/2 tsp thyme\n8 cups stock\nMETHOD\nSimmer 45 min; add noodles for 8 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Chicken Noodle Soup",
+          "confidence": 0.9933879971504211,
+          "bbox": [
+            108,
+            220,
+            546,
+            257
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9997167587280273,
+          "bbox": [
+            110,
+            298,
+            333,
+            322
+          ]
+        },
+        {
+          "text": "450 g chicken",
+          "confidence": 0.9736437201499939,
+          "bbox": [
+            106,
+            366,
+            287,
+            401
+          ]
+        },
+        {
+          "text": "2 cups carrots",
+          "confidence": 0.9824427962303162,
+          "bbox": [
+            104,
+            439,
+            285,
+            476
+          ]
+        },
+        {
+          "text": "1/2 tsp thyme",
+          "confidence": 0.9939095377922058,
+          "bbox": [
+            106,
+            509,
+            282,
+            549
+          ]
+        },
+        {
+          "text": "8 cups stock",
+          "confidence": 0.9814610481262207,
+          "bbox": [
+            103,
+            581,
+            268,
+            620
+          ]
+        },
+        {
+          "text": "METHOD",
+          "confidence": 0.9993082880973816,
+          "bbox": [
+            108,
+            656,
+            255,
+            685
+          ]
+        },
+        {
+          "text": "Simmer 45 min; add noodles for 8 min.",
+          "confidence": 0.9583982229232788,
+          "bbox": [
+            107,
+            726,
+            600,
+            759
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          220,
+          546,
+          257
+        ],
+        [
+          110,
+          298,
+          333,
+          322
+        ],
+        [
+          106,
+          366,
+          287,
+          401
+        ],
+        [
+          104,
+          439,
+          285,
+          476
+        ],
+        [
+          106,
+          509,
+          282,
+          549
+        ],
+        [
+          103,
+          581,
+          268,
+          620
+        ],
+        [
+          108,
+          656,
+          255,
+          685
+        ],
+        [
+          107,
+          726,
+          600,
+          759
+        ]
+      ],
+      "paddle_confidences": [
+        0.9933879971504211,
+        0.9997167587280273,
+        0.9736437201499939,
+        0.9824427962303162,
+        0.9939095377922058,
+        0.9814610481262207,
+        0.9993082880973816,
+        0.9583982229232788
+      ],
+      "paddle_latency_ms": 8962.31,
+      "line_metrics": {
+        "expected_line_count": 8,
+        "recognized_line_count": 8,
+        "exact_missing_lines": [],
+        "exact_extra_lines": [],
+        "raw_line_errors": 0
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 6,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 2,
+      "user_confirm_without_trocr_count": 2,
+      "user_confirm_required_count": 2,
+      "schema_probe": {
+        "fixture_id": "F10",
+        "source_image": "synthetic/F10.png",
+        "raw_ocr": "RECIPE: Chicken Noodle Soup\nINGREDIENTS\n450 g chicken\n2 cups carrots\n1/2 tsp thyme\n8 cups stock\nMETHOD\nSimmer 45 min; add noodles for 8 min.",
+        "normalized_transcription": "RECIPE: Chicken Noodle Soup\nINGREDIENTS\n450 g chicken\n2 cups carrots\n1/2 tsp thyme\n8 cups stock\nMETHOD\nSimmer 45 min; add noodles for 8 min.",
+        "recipe_schema": {
+          "title": "Chicken Noodle Soup",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "450 g chicken",
+              "quantity": "450",
+              "unit": "g",
+              "ingredient": "chicken",
+              "confidence": 0.9736437201499939,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  106,
+                  366,
+                  287,
+                  401
+                ]
+              }
+            },
+            {
+              "original_text": "2 cups carrots",
+              "quantity": "2",
+              "unit": "cup",
+              "ingredient": "s carrots",
+              "confidence": 0.9824427962303162,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  104,
+                  439,
+                  285,
+                  476
+                ]
+              }
+            },
+            {
+              "original_text": "1/2 tsp thyme",
+              "quantity": "1/2",
+              "unit": "tsp",
+              "ingredient": "thyme",
+              "confidence": 0.9939095377922058,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  106,
+                  509,
+                  282,
+                  549
+                ]
+              }
+            },
+            {
+              "original_text": "8 cups stock",
+              "quantity": "8",
+              "unit": "cup",
+              "ingredient": "s stock",
+              "confidence": 0.9814610481262207,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  103,
+                  581,
+                  268,
+                  620
+                ]
+              }
+            }
+          ],
+          "steps": [
+            {
+              "original_text": "Simmer 45 min; add noodles for 8 min.",
+              "normalized_text": "Simmer 45 min; add noodles for 8 min.",
+              "confidence": 0.9583982229232788,
+              "source_span": {
+                "line_index": 7,
+                "bbox": [
+                  107,
+                  726,
+                  600,
+                  759
+                ]
+              }
+            }
+          ],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "45 min",
+              "confidence": 0.9583982229232788,
+              "source_span": {
+                "line_index": 7,
+                "bbox": [
+                  107,
+                  726,
+                  600,
+                  759
+                ]
+              }
+            },
+            {
+              "original_text": "8 min",
+              "confidence": 0.9583982229232788,
+              "source_span": {
+                "line_index": 7,
+                "bbox": [
+                  107,
+                  726,
+                  600,
+                  759
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [],
+        "corrections": [],
+        "approval_state": "UNREVIEWED"
+      }
+    },
+    {
+      "fixture": "F11",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F11.png",
+      "source_image_sha256": "942a449f45b5d9fa11c5638634cb3bb162603e9ced0848867d325d123be53d10",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Shortread\nINGREDIENTS\n1/2 tsp vanilla\n1/4 cup sugar\n1.5 cups flour\nBake 15 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Shortread",
+          "confidence": 0.9843125343322754,
+          "bbox": [
+            109,
+            224,
+            394,
+            251
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9996713995933533,
+          "bbox": [
+            108,
+            295,
+            335,
+            325
+          ]
+        },
+        {
+          "text": "1/2 tsp vanilla",
+          "confidence": 0.9896091818809509,
+          "bbox": [
+            107,
+            367,
+            289,
+            401
+          ]
+        },
+        {
+          "text": "1/4 cup sugar",
+          "confidence": 0.9707193374633789,
+          "bbox": [
+            106,
+            436,
+            282,
+            478
+          ]
+        },
+        {
+          "text": "1.5 cups flour",
+          "confidence": 0.9723116755485535,
+          "bbox": [
+            107,
+            510,
+            285,
+            546
+          ]
+        },
+        {
+          "text": "Bake 15 min.",
+          "confidence": 0.9599296450614929,
+          "bbox": [
+            106,
+            582,
+            278,
+            615
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          109,
+          224,
+          394,
+          251
+        ],
+        [
+          108,
+          295,
+          335,
+          325
+        ],
+        [
+          107,
+          367,
+          289,
+          401
+        ],
+        [
+          106,
+          436,
+          282,
+          478
+        ],
+        [
+          107,
+          510,
+          285,
+          546
+        ],
+        [
+          106,
+          582,
+          278,
+          615
+        ]
+      ],
+      "paddle_confidences": [
+        0.9843125343322754,
+        0.9996713995933533,
+        0.9896091818809509,
+        0.9707193374633789,
+        0.9723116755485535,
+        0.9599296450614929
+      ],
+      "paddle_latency_ms": 8694.91,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 6,
+        "exact_missing_lines": [
+          "recipe: shortbread"
+        ],
+        "exact_extra_lines": [
+          "recipe: shortread"
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 4,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 3,
+      "user_confirm_without_trocr_count": 3,
+      "user_confirm_required_count": 3,
+      "schema_probe": {
+        "fixture_id": "F11",
+        "source_image": "synthetic/F11.png",
+        "raw_ocr": "RECIPE: Shortread\nINGREDIENTS\n1/2 tsp vanilla\n1/4 cup sugar\n1.5 cups flour\nBake 15 min.",
+        "normalized_transcription": "RECIPE: Shortread\nINGREDIENTS\n1/2 tsp vanilla\n1/4 cup sugar\n1.5 cups flour\nBake 15 min.",
+        "recipe_schema": {
+          "title": "Shortread",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "1/2 tsp vanilla",
+              "quantity": "1/2",
+              "unit": "tsp",
+              "ingredient": "vanilla",
+              "confidence": 0.9896091818809509,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  107,
+                  367,
+                  289,
+                  401
+                ]
+              }
+            },
+            {
+              "original_text": "1/4 cup sugar",
+              "quantity": "1/4",
+              "unit": "cup",
+              "ingredient": "sugar",
+              "confidence": 0.9707193374633789,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  106,
+                  436,
+                  282,
+                  478
+                ]
+              }
+            },
+            {
+              "original_text": "1.5 cups flour",
+              "quantity": "1.5",
+              "unit": "cup",
+              "ingredient": "s flour",
+              "confidence": 0.9723116755485535,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  107,
+                  510,
+                  285,
+                  546
+                ]
+              }
+            },
+            {
+              "original_text": "Bake 15 min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9599296450614929,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  106,
+                  582,
+                  278,
+                  615
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "15 min",
+              "confidence": 0.9599296450614929,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  106,
+                  582,
+                  278,
+                  615
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "title",
+            "line_index": 0,
+            "reason": "recognized_title_missing_or_differs_from_fixture_reference"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F12",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F12.png",
+      "source_image_sha256": "9f47070289fe9d12435dc7584abd8b72a17c90e41abfe094d661923d9bad86f6",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Cardamom Tea\nINGREDIENTS\n1/2 tsp cardamom\n2 cups water\nMETHOD\nSteep 5 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Cardamom Tea",
+          "confidence": 0.981165885925293,
+          "bbox": [
+            109,
+            224,
+            453,
+            251
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9996793270111084,
+          "bbox": [
+            109,
+            297,
+            334,
+            324
+          ]
+        },
+        {
+          "text": "1/2 tsp cardamom",
+          "confidence": 0.9742758870124817,
+          "bbox": [
+            107,
+            366,
+            334,
+            401
+          ]
+        },
+        {
+          "text": "2 cups water",
+          "confidence": 0.9235732555389404,
+          "bbox": [
+            105,
+            439,
+            271,
+            475
+          ]
+        },
+        {
+          "text": "METHOD",
+          "confidence": 0.9676486849784851,
+          "bbox": [
+            108,
+            512,
+            256,
+            540
+          ]
+        },
+        {
+          "text": "Steep 5 min.",
+          "confidence": 0.9148516654968262,
+          "bbox": [
+            105,
+            581,
+            270,
+            619
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          109,
+          224,
+          453,
+          251
+        ],
+        [
+          109,
+          297,
+          334,
+          324
+        ],
+        [
+          107,
+          366,
+          334,
+          401
+        ],
+        [
+          105,
+          439,
+          271,
+          475
+        ],
+        [
+          108,
+          512,
+          256,
+          540
+        ],
+        [
+          105,
+          581,
+          270,
+          619
+        ]
+      ],
+      "paddle_confidences": [
+        0.981165885925293,
+        0.9996793270111084,
+        0.9742758870124817,
+        0.9235732555389404,
+        0.9676486849784851,
+        0.9148516654968262
+      ],
+      "paddle_latency_ms": 8851.85,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 6,
+        "exact_missing_lines": [],
+        "exact_extra_lines": [],
+        "raw_line_errors": 0
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 3,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 3,
+      "user_confirm_without_trocr_count": 3,
+      "user_confirm_required_count": 3,
+      "schema_probe": {
+        "fixture_id": "F12",
+        "source_image": "synthetic/F12.png",
+        "raw_ocr": "RECIPE: Cardamom Tea\nINGREDIENTS\n1/2 tsp cardamom\n2 cups water\nMETHOD\nSteep 5 min.",
+        "normalized_transcription": "RECIPE: Cardamom Tea\nINGREDIENTS\n1/2 tsp cardamom\n2 cups water\nMETHOD\nSteep 5 min.",
+        "recipe_schema": {
+          "title": "Cardamom Tea",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "1/2 tsp cardamom",
+              "quantity": "1/2",
+              "unit": "tsp",
+              "ingredient": "cardamom",
+              "confidence": 0.9742758870124817,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  107,
+                  366,
+                  334,
+                  401
+                ]
+              }
+            },
+            {
+              "original_text": "2 cups water",
+              "quantity": "2",
+              "unit": "cup",
+              "ingredient": "s water",
+              "confidence": 0.9235732555389404,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  105,
+                  439,
+                  271,
+                  475
+                ]
+              }
+            }
+          ],
+          "steps": [
+            {
+              "original_text": "Steep 5 min.",
+              "normalized_text": "Steep 5 min.",
+              "confidence": 0.9148516654968262,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  105,
+                  581,
+                  270,
+                  619
+                ]
+              }
+            }
+          ],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "5 min",
+              "confidence": 0.9148516654968262,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  105,
+                  581,
+                  270,
+                  619
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [],
+        "corrections": [],
+        "approval_state": "UNREVIEWED"
+      }
+    },
+    {
+      "fixture": "F13",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F13.png",
+      "source_image_sha256": "2035a11091fa8c67920d87e9345b363894236836c9b2779a0b1e382efb21d8e1",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Roast Squash\nINGREDIENTS\n1 tbsp oil\n350°Foven\nRoast 40 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Roast Squash",
+          "confidence": 0.9670506715774536,
+          "bbox": [
+            108,
+            222,
+            430,
+            256
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9995603561401367,
+          "bbox": [
+            108,
+            295,
+            335,
+            325
+          ]
+        },
+        {
+          "text": "1 tbsp oil",
+          "confidence": 0.9608979225158691,
+          "bbox": [
+            106,
+            366,
+            229,
+            402
+          ]
+        },
+        {
+          "text": "350°Foven",
+          "confidence": 0.9201134443283081,
+          "bbox": [
+            105,
+            437,
+            259,
+            472
+          ]
+        },
+        {
+          "text": "Roast 40 min.",
+          "confidence": 0.9646360874176025,
+          "bbox": [
+            108,
+            513,
+            284,
+            540
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          222,
+          430,
+          256
+        ],
+        [
+          108,
+          295,
+          335,
+          325
+        ],
+        [
+          106,
+          366,
+          229,
+          402
+        ],
+        [
+          105,
+          437,
+          259,
+          472
+        ],
+        [
+          108,
+          513,
+          284,
+          540
+        ]
+      ],
+      "paddle_confidences": [
+        0.9670506715774536,
+        0.9995603561401367,
+        0.9608979225158691,
+        0.9201134443283081,
+        0.9646360874176025
+      ],
+      "paddle_latency_ms": 8537.35,
+      "line_metrics": {
+        "expected_line_count": 5,
+        "recognized_line_count": 5,
+        "exact_missing_lines": [
+          "350°f oven"
+        ],
+        "exact_extra_lines": [
+          "350°foven"
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 3,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        },
+        {
+          "rule": "recipe_layout_has_fewer_than_two_quantity_unit_lines",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 2,
+      "user_confirm_without_trocr_count": 2,
+      "user_confirm_required_count": 2,
+      "schema_probe": {
+        "fixture_id": "F13",
+        "source_image": "synthetic/F13.png",
+        "raw_ocr": "RECIPE: Roast Squash\nINGREDIENTS\n1 tbsp oil\n350°Foven\nRoast 40 min.",
+        "normalized_transcription": "RECIPE: Roast Squash\nINGREDIENTS\n1 tbsp oil\n350°Foven\nRoast 40 min.",
+        "recipe_schema": {
+          "title": "Roast Squash",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "1 tbsp oil",
+              "quantity": "1",
+              "unit": "tbsp",
+              "ingredient": "oil",
+              "confidence": 0.9608979225158691,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  106,
+                  366,
+                  229,
+                  402
+                ]
+              }
+            },
+            {
+              "original_text": "350°Foven",
+              "quantity": "350",
+              "unit": "°F",
+              "ingredient": "oven",
+              "confidence": 0.9201134443283081,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  105,
+                  437,
+                  259,
+                  472
+                ]
+              }
+            },
+            {
+              "original_text": "Roast 40 min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9646360874176025,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  108,
+                  513,
+                  284,
+                  540
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "40 min",
+              "confidence": 0.9646360874176025,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  108,
+                  513,
+                  284,
+                  540
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 4,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F14",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F14.png",
+      "source_image_sha256": "d02ca60276bf197a737aa4eabfbdf24b7738c0eb335e2a81a9ed4e91d291dda7",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Baked Pears\nINGREDIENTS\n2 pears\n180°℃ 0ven\nBake 25 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Baked Pears",
+          "confidence": 0.9799531698226929,
+          "bbox": [
+            108,
+            223,
+            415,
+            253
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9996276497840881,
+          "bbox": [
+            109,
+            298,
+            333,
+            322
+          ]
+        },
+        {
+          "text": "2 pears",
+          "confidence": 0.8146530389785767,
+          "bbox": [
+            103,
+            366,
+            202,
+            402
+          ]
+        },
+        {
+          "text": "180°℃ 0ven",
+          "confidence": 0.8803154230117798,
+          "bbox": [
+            107,
+            439,
+            260,
+            470
+          ]
+        },
+        {
+          "text": "Bake 25 min.",
+          "confidence": 0.9682809710502625,
+          "bbox": [
+            107,
+            513,
+            276,
+            541
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          223,
+          415,
+          253
+        ],
+        [
+          109,
+          298,
+          333,
+          322
+        ],
+        [
+          103,
+          366,
+          202,
+          402
+        ],
+        [
+          107,
+          439,
+          260,
+          470
+        ],
+        [
+          107,
+          513,
+          276,
+          541
+        ]
+      ],
+      "paddle_confidences": [
+        0.9799531698226929,
+        0.9996276497840881,
+        0.8146530389785767,
+        0.8803154230117798,
+        0.9682809710502625
+      ],
+      "paddle_latency_ms": 8618.47,
+      "line_metrics": {
+        "expected_line_count": 5,
+        "recognized_line_count": 5,
+        "exact_missing_lines": [
+          "180°c oven"
+        ],
+        "exact_extra_lines": [
+          "180°℃ 0ven"
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 2,
+        "critical_field_errors": 1,
+        "critical_field_error_values": [
+          "180°C"
+        ]
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        },
+        {
+          "rule": "recipe_layout_has_fewer_than_two_quantity_unit_lines",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 2,
+      "user_confirm_without_trocr_count": 2,
+      "user_confirm_required_count": 2,
+      "schema_probe": {
+        "fixture_id": "F14",
+        "source_image": "synthetic/F14.png",
+        "raw_ocr": "RECIPE: Baked Pears\nINGREDIENTS\n2 pears\n180°℃ 0ven\nBake 25 min.",
+        "normalized_transcription": "RECIPE: Baked Pears\nINGREDIENTS\n2 pears\n180°℃ 0ven\nBake 25 min.",
+        "recipe_schema": {
+          "title": "Baked Pears",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "2 pears",
+              "quantity": "2",
+              "unit": null,
+              "ingredient": "pears",
+              "confidence": 0.8146530389785767,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  103,
+                  366,
+                  202,
+                  402
+                ]
+              }
+            },
+            {
+              "original_text": "180°℃ 0ven",
+              "quantity": "180",
+              "unit": null,
+              "ingredient": "°℃ 0ven",
+              "confidence": 0.8803154230117798,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  107,
+                  439,
+                  260,
+                  470
+                ]
+              }
+            },
+            {
+              "original_text": "Bake 25 min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9682809710502625,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  107,
+                  513,
+                  276,
+                  541
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "25 min",
+              "confidence": 0.9682809710502625,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  107,
+                  513,
+                  276,
+                  541
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 2,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          },
+          {
+            "field": "line",
+            "line_index": 2,
+            "reason": "low_ocr_confidence"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 3,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 4,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F15",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F15.png",
+      "source_image_sha256": "762bb2ad122f302a61e0ee33152241ddbab1bcf52086744b63927a45a0fc6eba",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Garlic Toast\nINGREDIENTS\n2 tbsp butter\nToast 15 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Garlic Toast",
+          "confidence": 0.9864329099655151,
+          "bbox": [
+            108,
+            223,
+            413,
+            253
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9997339248657227,
+          "bbox": [
+            109,
+            296,
+            334,
+            324
+          ]
+        },
+        {
+          "text": "2 tbsp butter",
+          "confidence": 0.9891207814216614,
+          "bbox": [
+            105,
+            366,
+            269,
+            401
+          ]
+        },
+        {
+          "text": "Toast 15 min.",
+          "confidence": 0.9748231172561646,
+          "bbox": [
+            106,
+            439,
+            281,
+            470
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          223,
+          413,
+          253
+        ],
+        [
+          109,
+          296,
+          334,
+          324
+        ],
+        [
+          105,
+          366,
+          269,
+          401
+        ],
+        [
+          106,
+          439,
+          281,
+          470
+        ]
+      ],
+      "paddle_confidences": [
+        0.9864329099655151,
+        0.9997339248657227,
+        0.9891207814216614,
+        0.9748231172561646
+      ],
+      "paddle_latency_ms": 8443.24,
+      "line_metrics": {
+        "expected_line_count": 4,
+        "recognized_line_count": 4,
+        "exact_missing_lines": [],
+        "exact_extra_lines": [],
+        "raw_line_errors": 0
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 2,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        },
+        {
+          "rule": "recipe_layout_has_fewer_than_two_quantity_unit_lines",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 2,
+      "user_confirm_without_trocr_count": 2,
+      "user_confirm_required_count": 2,
+      "schema_probe": {
+        "fixture_id": "F15",
+        "source_image": "synthetic/F15.png",
+        "raw_ocr": "RECIPE: Garlic Toast\nINGREDIENTS\n2 tbsp butter\nToast 15 min.",
+        "normalized_transcription": "RECIPE: Garlic Toast\nINGREDIENTS\n2 tbsp butter\nToast 15 min.",
+        "recipe_schema": {
+          "title": "Garlic Toast",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "2 tbsp butter",
+              "quantity": "2",
+              "unit": "tbsp",
+              "ingredient": "butter",
+              "confidence": 0.9891207814216614,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  105,
+                  366,
+                  269,
+                  401
+                ]
+              }
+            },
+            {
+              "original_text": "Toast 15 min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9748231172561646,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  106,
+                  439,
+                  281,
+                  470
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "15 min",
+              "confidence": 0.9748231172561646,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  106,
+                  439,
+                  281,
+                  470
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 3,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F16",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F16.png",
+      "source_image_sha256": "2268765e2fe7d720c804befe7be6ff4ab260a3ee281676838a34dbccf5aa313f",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "",
+      "paddle_lines": [],
+      "paddle_coordinates": [],
+      "paddle_confidences": [],
+      "paddle_latency_ms": 7938.93,
+      "line_metrics": {
+        "expected_line_count": 4,
+        "recognized_line_count": 0,
+        "exact_missing_lines": [
+          "recipe: slow onion soup",
+          "ingredients",
+          "3 onions",
+          "simmer 75 min."
+        ],
+        "exact_extra_lines": [],
+        "raw_line_errors": 4
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 1,
+        "critical_field_errors": 1,
+        "critical_field_error_values": [
+          "75 min"
+        ]
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_ingredients_section",
+          "critical": true
+        },
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        },
+        {
+          "rule": "recipe_layout_has_fewer_than_two_quantity_unit_lines",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 0,
+      "user_confirm_without_trocr_count": 4,
+      "user_confirm_required_count": 4,
+      "schema_probe": {
+        "fixture_id": "F16",
+        "source_image": "synthetic/F16.png",
+        "raw_ocr": "",
+        "normalized_transcription": "",
+        "recipe_schema": {
+          "title": null,
+          "source/person": null,
+          "ingredients": [],
+          "steps": [],
+          "temperature": [],
+          "timing": [],
+          "notes": []
+        },
+        "uncertainties": [],
+        "corrections": [],
+        "approval_state": "UNREVIEWED"
+      }
+    },
+    {
+      "fixture": "F17",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F17.png",
+      "source_image_sha256": "2c54dec3e13a36da5c972372a8ee648fa1ab9a58dde3d300fdc1f59ea90e4710",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Herb Dressing\nINGREDIENTS\n1 tsp dried dill\n1 tbsp vinegar\n2 tbsp oil\nMix2min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Herb Dressing",
+          "confidence": 0.9883419871330261,
+          "bbox": [
+            108,
+            221,
+            445,
+            257
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9997057318687439,
+          "bbox": [
+            108,
+            295,
+            335,
+            325
+          ]
+        },
+        {
+          "text": "1 tsp dried dill",
+          "confidence": 0.9841998815536499,
+          "bbox": [
+            106,
+            363,
+            294,
+            404
+          ]
+        },
+        {
+          "text": "1 tbsp vinegar",
+          "confidence": 0.9910590052604675,
+          "bbox": [
+            105,
+            436,
+            290,
+            477
+          ]
+        },
+        {
+          "text": "2 tbsp oil",
+          "confidence": 0.9356311559677124,
+          "bbox": [
+            104,
+            510,
+            229,
+            546
+          ]
+        },
+        {
+          "text": "Mix2min.",
+          "confidence": 0.9939440488815308,
+          "bbox": [
+            107,
+            584,
+            249,
+            612
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          221,
+          445,
+          257
+        ],
+        [
+          108,
+          295,
+          335,
+          325
+        ],
+        [
+          106,
+          363,
+          294,
+          404
+        ],
+        [
+          105,
+          436,
+          290,
+          477
+        ],
+        [
+          104,
+          510,
+          229,
+          546
+        ],
+        [
+          107,
+          584,
+          249,
+          612
+        ]
+      ],
+      "paddle_confidences": [
+        0.9883419871330261,
+        0.9997057318687439,
+        0.9841998815536499,
+        0.9910590052604675,
+        0.9356311559677124,
+        0.9939440488815308
+      ],
+      "paddle_latency_ms": 8677.31,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 6,
+        "exact_missing_lines": [
+          "mix 2 min."
+        ],
+        "exact_extra_lines": [
+          "mix2min."
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 4,
+        "critical_field_errors": 1,
+        "critical_field_error_values": [
+          "2 min"
+        ]
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 3,
+      "user_confirm_without_trocr_count": 3,
+      "user_confirm_required_count": 3,
+      "schema_probe": {
+        "fixture_id": "F17",
+        "source_image": "synthetic/F17.png",
+        "raw_ocr": "RECIPE: Herb Dressing\nINGREDIENTS\n1 tsp dried dill\n1 tbsp vinegar\n2 tbsp oil\nMix2min.",
+        "normalized_transcription": "RECIPE: Herb Dressing\nINGREDIENTS\n1 tsp dried dill\n1 tbsp vinegar\n2 tbsp oil\nMix2min.",
+        "recipe_schema": {
+          "title": "Herb Dressing",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "1 tsp dried dill",
+              "quantity": "1",
+              "unit": "tsp",
+              "ingredient": "dried dill",
+              "confidence": 0.9841998815536499,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  106,
+                  363,
+                  294,
+                  404
+                ]
+              }
+            },
+            {
+              "original_text": "1 tbsp vinegar",
+              "quantity": "1",
+              "unit": "tbsp",
+              "ingredient": "vinegar",
+              "confidence": 0.9910590052604675,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  105,
+                  436,
+                  290,
+                  477
+                ]
+              }
+            },
+            {
+              "original_text": "2 tbsp oil",
+              "quantity": "2",
+              "unit": "tbsp",
+              "ingredient": "oil",
+              "confidence": 0.9356311559677124,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  104,
+                  510,
+                  229,
+                  546
+                ]
+              }
+            },
+            {
+              "original_text": "Mix2min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9939440488815308,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  107,
+                  584,
+                  249,
+                  612
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F18",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F18.png",
+      "source_image_sha256": "ac06160f139da5e76bcda84ad1ff326e9e3712d0379e0494ebaaa8325ce8e3b7",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Berry Syrup\nINGREDIENTS\n250 g berries\n120 ml water\n1/4 cup sugar\nCook 12 min.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Berry Syrup",
+          "confidence": 0.9864588379859924,
+          "bbox": [
+            108,
+            220,
+            413,
+            259
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9996097683906555,
+          "bbox": [
+            108,
+            295,
+            335,
+            325
+          ]
+        },
+        {
+          "text": "250 g berries",
+          "confidence": 0.9851649403572083,
+          "bbox": [
+            106,
+            366,
+            275,
+            401
+          ]
+        },
+        {
+          "text": "120 ml water",
+          "confidence": 0.9498202204704285,
+          "bbox": [
+            107,
+            438,
+            279,
+            472
+          ]
+        },
+        {
+          "text": "1/4 cup sugar",
+          "confidence": 0.9578055739402771,
+          "bbox": [
+            107,
+            510,
+            281,
+            548
+          ]
+        },
+        {
+          "text": "Cook 12 min.",
+          "confidence": 0.962583601474762,
+          "bbox": [
+            107,
+            582,
+            281,
+            614
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          220,
+          413,
+          259
+        ],
+        [
+          108,
+          295,
+          335,
+          325
+        ],
+        [
+          106,
+          366,
+          275,
+          401
+        ],
+        [
+          107,
+          438,
+          279,
+          472
+        ],
+        [
+          107,
+          510,
+          281,
+          548
+        ],
+        [
+          107,
+          582,
+          281,
+          614
+        ]
+      ],
+      "paddle_confidences": [
+        0.9864588379859924,
+        0.9996097683906555,
+        0.9851649403572083,
+        0.9498202204704285,
+        0.9578055739402771,
+        0.962583601474762
+      ],
+      "paddle_latency_ms": 8604.9,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 6,
+        "exact_missing_lines": [],
+        "exact_extra_lines": [],
+        "raw_line_errors": 0
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 4,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 2,
+      "user_confirm_without_trocr_count": 2,
+      "user_confirm_required_count": 2,
+      "schema_probe": {
+        "fixture_id": "F18",
+        "source_image": "synthetic/F18.png",
+        "raw_ocr": "RECIPE: Berry Syrup\nINGREDIENTS\n250 g berries\n120 ml water\n1/4 cup sugar\nCook 12 min.",
+        "normalized_transcription": "RECIPE: Berry Syrup\nINGREDIENTS\n250 g berries\n120 ml water\n1/4 cup sugar\nCook 12 min.",
+        "recipe_schema": {
+          "title": "Berry Syrup",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "250 g berries",
+              "quantity": "250",
+              "unit": "g",
+              "ingredient": "berries",
+              "confidence": 0.9851649403572083,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  106,
+                  366,
+                  275,
+                  401
+                ]
+              }
+            },
+            {
+              "original_text": "120 ml water",
+              "quantity": "120",
+              "unit": "ml",
+              "ingredient": "water",
+              "confidence": 0.9498202204704285,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  107,
+                  438,
+                  279,
+                  472
+                ]
+              }
+            },
+            {
+              "original_text": "1/4 cup sugar",
+              "quantity": "1/4",
+              "unit": "cup",
+              "ingredient": "sugar",
+              "confidence": 0.9578055739402771,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  107,
+                  510,
+                  281,
+                  548
+                ]
+              }
+            },
+            {
+              "original_text": "Cook 12 min.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.962583601474762,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  107,
+                  582,
+                  281,
+                  614
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "12 min",
+              "confidence": 0.962583601474762,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  107,
+                  582,
+                  281,
+                  614
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F19",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F19.png",
+      "source_image_sha256": "36ee67684f181a8609059835fefc256ca71b34c1b4196d9eea8ffe3d4d63feff",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Bilingual Crêpes\nINGREDIENTS\n1 cup fl our / farine\n1/2 tsp salt / sel\n2 eggs / oeufs\nMélanger; cook 2 min per side.",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Bilingual Crêpes",
+          "confidence": 0.988391637802124,
+          "bbox": [
+            108,
+            220,
+            476,
+            257
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9997695684432983,
+          "bbox": [
+            108,
+            295,
+            335,
+            325
+          ]
+        },
+        {
+          "text": "1 cup fl our / farine",
+          "confidence": 0.928596019744873,
+          "bbox": [
+            107,
+            366,
+            345,
+            401
+          ]
+        },
+        {
+          "text": "1/2 tsp salt / sel",
+          "confidence": 0.9950723648071289,
+          "bbox": [
+            105,
+            437,
+            307,
+            475
+          ]
+        },
+        {
+          "text": "2 eggs / oeufs",
+          "confidence": 0.943636953830719,
+          "bbox": [
+            104,
+            509,
+            285,
+            547
+          ]
+        },
+        {
+          "text": "Mélanger; cook 2 min per side.",
+          "confidence": 0.9797328114509583,
+          "bbox": [
+            106,
+            581,
+            500,
+            619
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          220,
+          476,
+          257
+        ],
+        [
+          108,
+          295,
+          335,
+          325
+        ],
+        [
+          107,
+          366,
+          345,
+          401
+        ],
+        [
+          105,
+          437,
+          307,
+          475
+        ],
+        [
+          104,
+          509,
+          285,
+          547
+        ],
+        [
+          106,
+          581,
+          500,
+          619
+        ]
+      ],
+      "paddle_confidences": [
+        0.988391637802124,
+        0.9997695684432983,
+        0.928596019744873,
+        0.9950723648071289,
+        0.943636953830719,
+        0.9797328114509583
+      ],
+      "paddle_latency_ms": 8696.11,
+      "line_metrics": {
+        "expected_line_count": 6,
+        "recognized_line_count": 6,
+        "exact_missing_lines": [
+          "1 cup flour / farine"
+        ],
+        "exact_extra_lines": [
+          "1 cup fl our / farine"
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 3,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [
+        {
+          "rule": "missing_instructions_section",
+          "critical": true
+        }
+      ],
+      "suspicious_regions": 3,
+      "user_confirm_without_trocr_count": 3,
+      "user_confirm_required_count": 3,
+      "schema_probe": {
+        "fixture_id": "F19",
+        "source_image": "synthetic/F19.png",
+        "raw_ocr": "RECIPE: Bilingual Crêpes\nINGREDIENTS\n1 cup fl our / farine\n1/2 tsp salt / sel\n2 eggs / oeufs\nMélanger; cook 2 min per side.",
+        "normalized_transcription": "RECIPE: Bilingual Crêpes\nINGREDIENTS\n1 cup fl our / farine\n1/2 tsp salt / sel\n2 eggs / oeufs\nMélanger; cook 2 min per side.",
+        "recipe_schema": {
+          "title": "Bilingual Crêpes",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "1 cup fl our / farine",
+              "quantity": "1",
+              "unit": "cup",
+              "ingredient": "fl our / farine",
+              "confidence": 0.928596019744873,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  107,
+                  366,
+                  345,
+                  401
+                ]
+              }
+            },
+            {
+              "original_text": "1/2 tsp salt / sel",
+              "quantity": "1/2",
+              "unit": "tsp",
+              "ingredient": "salt / sel",
+              "confidence": 0.9950723648071289,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  105,
+                  437,
+                  307,
+                  475
+                ]
+              }
+            },
+            {
+              "original_text": "2 eggs / oeufs",
+              "quantity": "2",
+              "unit": null,
+              "ingredient": "eggs / oeufs",
+              "confidence": 0.943636953830719,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  104,
+                  509,
+                  285,
+                  547
+                ]
+              }
+            },
+            {
+              "original_text": "Mélanger; cook 2 min per side.",
+              "quantity": null,
+              "unit": null,
+              "ingredient": null,
+              "confidence": 0.9797328114509583,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  106,
+                  581,
+                  500,
+                  619
+                ]
+              }
+            }
+          ],
+          "steps": [],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "2 min",
+              "confidence": 0.9797328114509583,
+              "source_span": {
+                "line_index": 5,
+                "bbox": [
+                  106,
+                  581,
+                  500,
+                  619
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 4,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          },
+          {
+            "field": "ingredient",
+            "line_index": 5,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "F20",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "input": "synthetic/F20.png",
+      "source_image_sha256": "d85c438f2dfa679430bfd1c5c1abf88019feb6665913f7772220ca9106f31e05",
+      "preprocessing": {
+        "source_size_px": [
+          1280,
+          1600
+        ],
+        "preprocessed_size_px": [
+          1280,
+          1600
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "RECIPE: Aunt May Casserole\nINGREDIENTS\n2 cups rice\n1 can tomatoes\n1 tbsp oil\nMETHOD\nWash rice. (margin: rinse twice)\nBake at 350F for 35 min.\nblue pot",
+      "paddle_lines": [
+        {
+          "text": "RECIPE: Aunt May Casserole",
+          "confidence": 0.9885730147361755,
+          "bbox": [
+            108,
+            222,
+            524,
+            256
+          ]
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": 0.9996824860572815,
+          "bbox": [
+            109,
+            296,
+            334,
+            323
+          ]
+        },
+        {
+          "text": "2 cups rice",
+          "confidence": 0.9649946689605713,
+          "bbox": [
+            105,
+            368,
+            247,
+            400
+          ]
+        },
+        {
+          "text": "1 can tomatoes",
+          "confidence": 0.9610103964805603,
+          "bbox": [
+            106,
+            440,
+            299,
+            471
+          ]
+        },
+        {
+          "text": "1 tbsp oil",
+          "confidence": 0.9900076985359192,
+          "bbox": [
+            106,
+            510,
+            228,
+            546
+          ]
+        },
+        {
+          "text": "METHOD",
+          "confidence": 0.9995102882385254,
+          "bbox": [
+            108,
+            584,
+            256,
+            612
+          ]
+        },
+        {
+          "text": "Wash rice. (margin: rinse twice)",
+          "confidence": 0.9602171182632446,
+          "bbox": [
+            106,
+            655,
+            508,
+            689
+          ]
+        },
+        {
+          "text": "Bake at 350F for 35 min.",
+          "confidence": 0.9477249979972839,
+          "bbox": [
+            107,
+            727,
+            435,
+            758
+          ]
+        },
+        {
+          "text": "blue pot",
+          "confidence": 0.9475502967834473,
+          "bbox": [
+            917,
+            847,
+            1011,
+            888
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          108,
+          222,
+          524,
+          256
+        ],
+        [
+          109,
+          296,
+          334,
+          323
+        ],
+        [
+          105,
+          368,
+          247,
+          400
+        ],
+        [
+          106,
+          440,
+          299,
+          471
+        ],
+        [
+          106,
+          510,
+          228,
+          546
+        ],
+        [
+          108,
+          584,
+          256,
+          612
+        ],
+        [
+          106,
+          655,
+          508,
+          689
+        ],
+        [
+          107,
+          727,
+          435,
+          758
+        ],
+        [
+          917,
+          847,
+          1011,
+          888
+        ]
+      ],
+      "paddle_confidences": [
+        0.9885730147361755,
+        0.9996824860572815,
+        0.9649946689605713,
+        0.9610103964805603,
+        0.9900076985359192,
+        0.9995102882385254,
+        0.9602171182632446,
+        0.9477249979972839,
+        0.9475502967834473
+      ],
+      "paddle_latency_ms": 8986.54,
+      "line_metrics": {
+        "expected_line_count": 8,
+        "recognized_line_count": 9,
+        "exact_missing_lines": [
+          "bake at 350°f for 35 min."
+        ],
+        "exact_extra_lines": [
+          "bake at 350f for 35 min.",
+          "blue pot"
+        ],
+        "raw_line_errors": 3
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 4,
+        "critical_field_errors": 1,
+        "critical_field_error_values": [
+          "350°F"
+        ]
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 2,
+      "user_confirm_without_trocr_count": 2,
+      "user_confirm_required_count": 2,
+      "schema_probe": {
+        "fixture_id": "F20",
+        "source_image": "synthetic/F20.png",
+        "raw_ocr": "RECIPE: Aunt May Casserole\nINGREDIENTS\n2 cups rice\n1 can tomatoes\n1 tbsp oil\nMETHOD\nWash rice. (margin: rinse twice)\nBake at 350F for 35 min.\nblue pot",
+        "normalized_transcription": "RECIPE: Aunt May Casserole\nINGREDIENTS\n2 cups rice\n1 can tomatoes\n1 tbsp oil\nMETHOD\nWash rice. (margin: rinse twice)\nBake at 350F for 35 min.\nblue pot",
+        "recipe_schema": {
+          "title": "Aunt May Casserole",
+          "source/person": null,
+          "ingredients": [
+            {
+              "original_text": "2 cups rice",
+              "quantity": "2",
+              "unit": "cup",
+              "ingredient": "s rice",
+              "confidence": 0.9649946689605713,
+              "source_span": {
+                "line_index": 2,
+                "bbox": [
+                  105,
+                  368,
+                  247,
+                  400
+                ]
+              }
+            },
+            {
+              "original_text": "1 can tomatoes",
+              "quantity": "1",
+              "unit": null,
+              "ingredient": "can tomatoes",
+              "confidence": 0.9610103964805603,
+              "source_span": {
+                "line_index": 3,
+                "bbox": [
+                  106,
+                  440,
+                  299,
+                  471
+                ]
+              }
+            },
+            {
+              "original_text": "1 tbsp oil",
+              "quantity": "1",
+              "unit": "tbsp",
+              "ingredient": "oil",
+              "confidence": 0.9900076985359192,
+              "source_span": {
+                "line_index": 4,
+                "bbox": [
+                  106,
+                  510,
+                  228,
+                  546
+                ]
+              }
+            }
+          ],
+          "steps": [
+            {
+              "original_text": "Wash rice. (margin: rinse twice)",
+              "normalized_text": "Wash rice. (margin: rinse twice)",
+              "confidence": 0.9602171182632446,
+              "source_span": {
+                "line_index": 6,
+                "bbox": [
+                  106,
+                  655,
+                  508,
+                  689
+                ]
+              }
+            },
+            {
+              "original_text": "Bake at 350F for 35 min.",
+              "normalized_text": "Bake at 350F for 35 min.",
+              "confidence": 0.9477249979972839,
+              "source_span": {
+                "line_index": 7,
+                "bbox": [
+                  107,
+                  727,
+                  435,
+                  758
+                ]
+              }
+            },
+            {
+              "original_text": "blue pot",
+              "normalized_text": "blue pot",
+              "confidence": 0.9475502967834473,
+              "source_span": {
+                "line_index": 8,
+                "bbox": [
+                  917,
+                  847,
+                  1011,
+                  888
+                ]
+              }
+            }
+          ],
+          "temperature": [],
+          "timing": [
+            {
+              "original_text": "35 min",
+              "confidence": 0.9477249979972839,
+              "source_span": {
+                "line_index": 7,
+                "bbox": [
+                  107,
+                  727,
+                  435,
+                  758
+                ]
+              }
+            }
+          ],
+          "notes": []
+        },
+        "uncertainties": [
+          {
+            "field": "ingredient",
+            "line_index": 3,
+            "reason": "quantity_unit_or_ingredient_not_deterministically_parsed"
+          }
+        ],
+        "corrections": [],
+        "approval_state": "USER_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "fixture": "G01",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "input": "./images/lines/0103-001.png",
+      "source_image_sha256": "c7a689d2466195886214d5681228ed0e76c0f8b0822cbcbdde81a4f93ccb9910",
+      "preprocessing": {
+        "source_size_px": [
+          524,
+          46
+        ],
+        "preprocessed_size_px": [
+          524,
+          46
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "Nong Khiaw Chao ist en Ort in cer Proviz Luang Prabang",
+      "paddle_lines": [
+        {
+          "text": "Nong Khiaw Chao ist en Ort in cer Proviz Luang Prabang",
+          "confidence": 0.7693599462509155,
+          "bbox": [
+            0,
+            0,
+            523,
+            42
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          0,
+          0,
+          523,
+          42
+        ]
+      ],
+      "paddle_confidences": [
+        0.7693599462509155
+      ],
+      "paddle_latency_ms": 438.82,
+      "line_metrics": {
+        "expected_line_count": 1,
+        "recognized_line_count": 1,
+        "exact_missing_lines": [
+          "nong khiaw (lao: ist ein ort in der provinz luang prabang"
+        ],
+        "exact_extra_lines": [
+          "nong khiaw chao ist en ort in cer proviz luang prabang"
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 0,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 1,
+      "user_confirm_without_trocr_count": 1,
+      "user_confirm_required_count": 1,
+      "schema_probe": null
+    },
+    {
+      "fixture": "G02",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "input": "./images/lines/0105-001.png",
+      "source_image_sha256": "70dbd8c472df00f0f0b27fa6b31475088399089eb91dcfb0251814d82f86e18b",
+      "preprocessing": {
+        "source_size_px": [
+          249,
+          69
+        ],
+        "preprocessed_size_px": [
+          249,
+          69
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "Leicter (Schigotyp)",
+      "paddle_lines": [
+        {
+          "text": "Leicter (Schigotyp)",
+          "confidence": 0.6455281972885132,
+          "bbox": [
+            0,
+            0,
+            249,
+            65
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          0,
+          0,
+          249,
+          65
+        ]
+      ],
+      "paddle_confidences": [
+        0.6455281972885132
+      ],
+      "paddle_latency_ms": 213.61,
+      "line_metrics": {
+        "expected_line_count": 1,
+        "recognized_line_count": 1,
+        "exact_missing_lines": [
+          "leichter (schiffstyp)"
+        ],
+        "exact_extra_lines": [
+          "leicter (schigotyp)"
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 0,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 1,
+      "user_confirm_without_trocr_count": 1,
+      "user_confirm_required_count": 1,
+      "schema_probe": null
+    },
+    {
+      "fixture": "G03",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "input": "./images/lines/0106-000.png",
+      "source_image_sha256": "a0ae3d8a49d70b2eed6a3b28542b41f74c7680f1a49429fc6f90faf293ff0fe9",
+      "preprocessing": {
+        "source_size_px": [
+          722,
+          62
+        ],
+        "preprocessed_size_px": [
+          722,
+          62
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "Fugasche ist der fetdispse lcenrmigepafg",
+      "paddle_lines": [
+        {
+          "text": "Fugasche ist der fetdispse lcenrmigepafg",
+          "confidence": 0.6201397776603699,
+          "bbox": [
+            0,
+            2,
+            722,
+            54
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          0,
+          2,
+          722,
+          54
+        ]
+      ],
+      "paddle_confidences": [
+        0.6201397776603699
+      ],
+      "paddle_latency_ms": 414.47,
+      "line_metrics": {
+        "expected_line_count": 1,
+        "recognized_line_count": 1,
+        "exact_missing_lines": [
+          "flugasche ist der feste, disperse (teilchenförmige, partikelförmige,"
+        ],
+        "exact_extra_lines": [
+          "fugasche ist der fetdispse lcenrmigepafg"
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 0,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 1,
+      "user_confirm_without_trocr_count": 1,
+      "user_confirm_required_count": 1,
+      "schema_probe": null
+    },
+    {
+      "fixture": "G04",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "input": "./images/lines/0107-000.png",
+      "source_image_sha256": "83f85c8036f0648c3f764f6be090d9afc51fdc6e44406a57a16d05a6f9d1b937",
+      "preprocessing": {
+        "source_size_px": [
+          580,
+          29
+        ],
+        "preprocessed_size_px": [
+          580,
+          29
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "Process Ceigene Schribwise\nPRocEss) ist cine\nCrossmeoiale",
+      "paddle_lines": [
+        {
+          "text": "Process Ceigene Schribwise",
+          "confidence": 0.7464364767074585,
+          "bbox": [
+            0,
+            0,
+            263,
+            29
+          ]
+        },
+        {
+          "text": "PRocEss) ist cine",
+          "confidence": 0.8274699449539185,
+          "bbox": [
+            277,
+            0,
+            468,
+            29
+          ]
+        },
+        {
+          "text": "Crossmeoiale",
+          "confidence": 0.7384569048881531,
+          "bbox": [
+            468,
+            8,
+            578,
+            28
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          0,
+          0,
+          263,
+          29
+        ],
+        [
+          277,
+          0,
+          468,
+          29
+        ],
+        [
+          468,
+          8,
+          578,
+          28
+        ]
+      ],
+      "paddle_confidences": [
+        0.7464364767074585,
+        0.8274699449539185,
+        0.7384569048881531
+      ],
+      "paddle_latency_ms": 699.51,
+      "line_metrics": {
+        "expected_line_count": 1,
+        "recognized_line_count": 3,
+        "exact_missing_lines": [
+          "process (eigene schreibweise process) ist eine crossmediale"
+        ],
+        "exact_extra_lines": [
+          "process ceigene schribwise",
+          "process) ist cine",
+          "crossmeoiale"
+        ],
+        "raw_line_errors": 4
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 0,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 3,
+      "user_confirm_without_trocr_count": 3,
+      "user_confirm_required_count": 3,
+      "schema_probe": null
+    },
+    {
+      "fixture": "G05",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "input": "./images/lines/0112-000.png",
+      "source_image_sha256": "d3673b28c3a8ec8ab5b669be79fdd2121127ff5a5b8a1573d6a8a7c1745436c0",
+      "preprocessing": {
+        "source_size_px": [
+          622,
+          62
+        ],
+        "preprocessed_size_px": [
+          622,
+          62
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "",
+      "paddle_lines": [],
+      "paddle_coordinates": [],
+      "paddle_confidences": [],
+      "paddle_latency_ms": 191.8,
+      "line_metrics": {
+        "expected_line_count": 1,
+        "recognized_line_count": 0,
+        "exact_missing_lines": [
+          "das schluss-s, auslaut-s, runde s oder ringel-s ist eine"
+        ],
+        "exact_extra_lines": [],
+        "raw_line_errors": 1
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 0,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 1,
+      "user_confirm_without_trocr_count": 1,
+      "user_confirm_required_count": 1,
+      "schema_probe": null
+    },
+    {
+      "fixture": "G06",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "input": "./images/lines/0114-001.png",
+      "source_image_sha256": "b42dc5e9db95e85ae3b84084ad16b1caa991c5d170fc209a7a7f8fead3b8429f",
+      "preprocessing": {
+        "source_size_px": [
+          491,
+          62
+        ],
+        "preprocessed_size_px": [
+          491,
+          62
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "Leisng,als Vobeeitng ein Spkr",
+      "paddle_lines": [
+        {
+          "text": "Leisng,als Vobeeitng ein Spkr",
+          "confidence": 0.7038831114768982,
+          "bbox": [
+            0,
+            0,
+            488,
+            60
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          0,
+          0,
+          488,
+          60
+        ]
+      ],
+      "paddle_confidences": [
+        0.7038831114768982
+      ],
+      "paddle_latency_ms": 308.34,
+      "line_metrics": {
+        "expected_line_count": 1,
+        "recognized_line_count": 1,
+        "exact_missing_lines": [
+          "leistung, als vorbereitung einer später"
+        ],
+        "exact_extra_lines": [
+          "leisng,als vobeeitng ein spkr"
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 0,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 1,
+      "user_confirm_without_trocr_count": 1,
+      "user_confirm_required_count": 1,
+      "schema_probe": null
+    },
+    {
+      "fixture": "G07",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "input": "./images/lines/0116-001.png",
+      "source_image_sha256": "82a2d020eddc685c1cf41fd39e80706ad0f20cb128e7204ea57b8275ec989d7f",
+      "preprocessing": {
+        "source_size_px": [
+          165,
+          50
+        ],
+        "preprocessed_size_px": [
+          165,
+          50
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "Birferentsaheio",
+      "paddle_lines": [
+        {
+          "text": "Birferentsaheio",
+          "confidence": 0.6011489629745483,
+          "bbox": [
+            0,
+            0,
+            162,
+            50
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          0,
+          0,
+          162,
+          50
+        ]
+      ],
+      "paddle_confidences": [
+        0.6011489629745483
+      ],
+      "paddle_latency_ms": 185.12,
+      "line_metrics": {
+        "expected_line_count": 1,
+        "recognized_line_count": 1,
+        "exact_missing_lines": [
+          "bürgerentscheid"
+        ],
+        "exact_extra_lines": [
+          "birferentsaheio"
+        ],
+        "raw_line_errors": 2
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 0,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 1,
+      "user_confirm_without_trocr_count": 1,
+      "user_confirm_required_count": 1,
+      "schema_probe": null
+    },
+    {
+      "fixture": "G08",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "input": "./images/lines/0118-000.png",
+      "source_image_sha256": "6733b48cd5b1df1feda0a6dbe076190603b4bb729d363a44f2cb5e04e6bebd66",
+      "preprocessing": {
+        "source_size_px": [
+          638,
+          46
+        ],
+        "preprocessed_size_px": [
+          638,
+          46
+        ],
+        "operation": "LAB-lightness CLAHE clipLimit=2.0 tileGrid=8x8",
+        "source_immutable": true
+      },
+      "paddle_full_page_raw": "Gereralplan Ost (Gp) werden cine\nOnter dem  Begif",
+      "paddle_lines": [
+        {
+          "text": "Gereralplan Ost (Gp) werden cine",
+          "confidence": 0.740704357624054,
+          "bbox": [
+            242,
+            0,
+            638,
+            40
+          ]
+        },
+        {
+          "text": "Onter dem  Begif",
+          "confidence": 0.8036263585090637,
+          "bbox": [
+            0,
+            3,
+            216,
+            35
+          ]
+        }
+      ],
+      "paddle_coordinates": [
+        [
+          242,
+          0,
+          638,
+          40
+        ],
+        [
+          0,
+          3,
+          216,
+          35
+        ]
+      ],
+      "paddle_confidences": [
+        0.740704357624054,
+        0.8036263585090637
+      ],
+      "paddle_latency_ms": 526.97,
+      "line_metrics": {
+        "expected_line_count": 1,
+        "recognized_line_count": 2,
+        "exact_missing_lines": [
+          "unter dem begriff generalplan ost (gpo) werden eine"
+        ],
+        "exact_extra_lines": [
+          "gereralplan ost (gp) werden cine",
+          "onter dem begif"
+        ],
+        "raw_line_errors": 3
+      },
+      "critical_metrics": {
+        "expected_critical_field_count": 0,
+        "critical_field_errors": 0,
+        "critical_field_error_values": []
+      },
+      "page_structure_issues": [],
+      "suspicious_regions": 2,
+      "user_confirm_without_trocr_count": 2,
+      "user_confirm_required_count": 2,
+      "schema_probe": null
+    }
+  ]
+}
