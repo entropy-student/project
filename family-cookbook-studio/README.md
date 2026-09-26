@@ -73,15 +73,17 @@ MVP OCR 架构已经收束为 **PaddleOCR 主力 + TrOCR 兜底 + 用户确认�
 
 ## 当前 Gate
 
-当前进入 **G2A1 — Input / OCR / Reusable Component Feasibility PoC**。
+第一轮 G2A1 已执行并由 Reviewer 判定 **RETURN**：routing/schema 与静态 0-Token 预览有部分有效证据，但 PaddleOCR/TrOCR 没有真正完成推理，Family Cookbook 专用 WordPress/WooCommerce 测试站也未建立。
 
-先验证：
+当前进入 **G2A1-R1 — OCR Runtime + WordPress Testbed Remediation / Completion**。
 
-1. PaddleOCR 主识别 + TrOCR 疑难区域兜底是否足够可靠，以及用户最终需要确认多少不确定字段；
-2. 配方字段能否稳定结构化且保留原文 provenance；
-3. 低置信字段能否 fail-closed 地进入人工/用户确认；
-4. WordPress/WooCommerce 的订单绑定上传和私有文件交付能否复用；
-5. 付款前预览能否保持浏览器本地、零模型 Token。
+本轮只补未完成证据：
+
+1. 真正跑通 PaddleOCR 主识别 + TrOCR 疑难区域兜底，并测量用户最终确认负担；
+2. 增加少量公开/开放的真实手写样本，避免把字体模拟当作手写证明；
+3. 建立 Family Cookbook 专用本地 WordPress + WooCommerce + Kadence 测试站；
+4. 验证订单绑定上传和私有文件交付的正/反权限；
+5. 保留第一轮已经通过的 routing/schema 和静态 0-Token preview 证据。
 
 G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
 
@@ -92,7 +94,8 @@ G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、�
 - [docs/PROJECT_CHARTER.md](./docs/PROJECT_CHARTER.md) — 初始立项基线
 - [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md) — 当前技术路线
 - [docs/OCR_PIPELINE_RESEARCH.md](./docs/OCR_PIPELINE_RESEARCH.md) — OCR/手写识别候选与验证原则
-- [docs/G2A1_INPUT_OCR_COMPONENT_POC.md](./docs/G2A1_INPUT_OCR_COMPONENT_POC.md) — **当前 Gate**
+- [docs/G2A1_INPUT_OCR_COMPONENT_POC.md](./docs/G2A1_INPUT_OCR_COMPONENT_POC.md) — 原始 G2A1 Gate
+- [docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md](./docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md) — **当前 G2A1-R1 Gate**
 - [docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md](./docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md) — 下一 Gate
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 获客/验证计划
 - [PROJECT_RECORD.md](./PROJECT_RECORD.md) — legacy compatibility pointer only
