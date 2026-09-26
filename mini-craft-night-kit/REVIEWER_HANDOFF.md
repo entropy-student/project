@@ -1,13 +1,13 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
-## CURRENT REVIEWER STATUS — 2026-09-25
+## CURRENT REVIEWER STATUS — 2026-09-26
 
 This section supersedes older `CURRENT_GATE` markers below. Governance comes from canonical `entropy-student/spike.skill/vps-project-governance` latest; project facts come from accepted Reviewer decisions and fresh accepted Evidence.
 
 ```text
 REVIEWER_TAKEOVER_RECONCILIATION=PASS
 K0_K5=PASS
-K6_DEPLOYMENT=AUTHORIZED_NOT_STARTED
+K6_DEPLOYMENT=AUTHORIZED_PRIVATE_RUNTIME_IN_PROGRESS
 K6R3_SHARED_VPS_READONLY_PREFLIGHT=PASS
 K6_PHASE_B_LOCAL_DEPLOYMENT_PACKAGE_SEAL=PASS_CLOSED_BY_R1
 K6_PHASE_B_R1_PACKAGE_RECONCILIATION=PASS
@@ -38,7 +38,10 @@ SSH_TRANSPORT_RECOVERED=YES
 SSH_TRUST=PASS
 CURRENT_GATE=K6_PHASE_D_R6R2_REMOTE_IDENTITY_RECONCILIATION_AND_BOOTSTRAP_RESUME
 CURRENT_GATE_STATUS=AUTHORIZED_AWAIT_EXECUTOR
-MINICRAFT_REMOTE_DEPLOYMENT_STARTED=NO
+MINICRAFT_REMOTE_DEPLOYMENT_STARTED=YES_PRIVATE_RUNTIME
+PRIVATE_RUNTIME_PUBLIC_INGRESS=NO
+MARIADB_RESTORE_STATE=PASS_52_TABLES
+WORDPRESS_RUNTIME_STATE=RUNNING_CORE_PRESENT_BOOTSTRAP_VALIDATION_PENDING
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
 OLD_DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
@@ -48,15 +51,15 @@ EXECUTOR_STATUS=D_R6R1_RETURN_REVIEWED_D_R6R2_READY
 OWNER_ACTION=NONE
 ```
 
-Formal authorization: `docs/REVIEWER_DECISION_K6_C1R4R1_PASS_C1R5_FRESH_SECRET_REGENERATION_AUTHORIZED.md`.  
-Execution package: `review-packets/K6_C1R5_FRESH_SECRET_REGENERATION_EXECUTION_PACK.md`.
-Executor dispatch record: GitHub issue #13 (`[Executor] Mini Craft K6 C1R5 fresh Secret regeneration`). Reviewer must not execute this Gate; Codex or another Executor acting in the Execution Agent role, with the required Owner-host/VPS execution boundary, must perform it and return Evidence.
+Current Gate decision: `docs/REVIEWER_DECISION_K6_D_R6R1_RETURN_D_R6R2_IDENTITY_RECONCILIATION_AND_RESUME.md`.  
+Current Execution Pack: `review-packets/K6_D_R6R2_REMOTE_IDENTITY_RECONCILIATION_AND_BOOTSTRAP_RESUME.md`.
+Executor dispatch record: GitHub issue #14 (`[Executor] Mini Craft K6 Phase D private deployment`).
 
-Owner selected the fresh-regeneration path. C1R5 executed and produced the exact ten target Secret files plus a new final DPAPI recovery artifact, but Reviewer did not formally PASS the historical transaction because the exact executed helper source was deleted and could not be recovered. C1R5R1 independently confirmed current target metadata, recovery metadata, Shared VPS trust, unrelated-service mount exclusion, and zero Secret/recovery content access. The remaining current-state gap is effective in-container runtime readability. C1R5R2 therefore performs a bounded disposable no-value runtime-access requalification; no Secret rewrite/rotation is authorized or currently required.
+Current accepted deployment facts: the ten-Secret current state is qualified for K6 deployment; the accepted K5 MariaDB restore now contains the exact expected 52-table root/app-visible set with `wp_options` present; wp-content is restored; the digest-pinned WordPress/MariaDB private runtime exists with no host ports; WordPress runtime core is present; SSH transport and host-key trust recovered in D-R6R1. The only current precondition gap is a correct pre-sudo proof that the authenticated SSH session user is `ops`, followed by D-R6 bootstrap / installed-state / scalar-origin / private-app validation. Full serialized URL migration, Shared Ingress, PayPal Live, real payment and launch remain unauthorized.
 
-The old ambiguous DPAPI pending artifact remains encrypted and untouched and is not part of the C1R5 data path. C1R5 does not authorize Mini Craft service start, DB/wp-content restore, Shared Infra changes, public routing, PayPal Live, real payment or launch.
+The historical C1R5 helper-source auditability limitation and old encrypted C1 pending artifact remain recorded, but they no longer block the qualified current Secret state.
 
-Last reviewed: 2026-09-25  
+Last reviewed: 2026-09-26  
 Maintainer: Reviewer
 
 ## CURRENT AUTHORITATIVE GOVERNANCE OVERRIDE — 2026-09-23
