@@ -1,0 +1,48 @@
+services:
+  db:
+    image: mariadb:11.4
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: ${FCS_DB_PASSWORD:?runner-only DB password required}
+      MARIADB_ROOT_PASSWORD: ${FCS_DB_ROOT_PASSWORD:?runner-only DB root password required}
+    networks: [fcs-local]
+    volumes:
+      - dbdata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  wordpress:
+    image: wordpress:6.8-php8.3-apache
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: ${FCS_DB_PASSWORD:?runner-only DB password required}
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_CONFIG_EXTRA: |
+        define('FCS_PRIVATE_DIR', '/tmp/family-cookbook-private');
+        define('WP_ENVIRONMENT_TYPE', 'local');
+    ports:
+      - "127.0.0.1:8871:80"
+    networks: [fcs-local]
+    volumes:
+      - wpdata:/var/www/html
+      - ./proof-adapter:/var/www/html/wp-content/plugins/family-cookbook-proof:ro
+      - ./artifacts:/fcs-out
+      - ./bootstrap.php:/fcs-tests/bootstrap.php:ro
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1/wp-login.php >/dev/null"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+networks:
+  fcs-local:
+    driver: bridge
+volumes:
+  dbdata:
+  wpdata:

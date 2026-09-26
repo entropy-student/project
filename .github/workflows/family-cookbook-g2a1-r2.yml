@@ -1,0 +1,277 @@
+name: Family Cookbook G2A1-R2 isolated runner
+
+on:
+  push:
+    branches:
+      - codex/family-cookbook-g2a1-input-ocr-component-feasibility
+
+permissions:
+  contents: read
+
+jobs:
+  g2a1-r2:
+    if: contains(github.event.head_commit.message, '[g2a1-r2-run]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      G2A1_R2_ARTIFACT_DIR: ${{ runner.temp }}/g2a1-r2-artifacts
+      FCS_WP_BASE_URL: http://127.0.0.1:8871
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    steps:
+      - name: Hosted runner resource and network preflight
+        id: preflight
+        shell: bash
+        run: |
+          mkdir -p "$G2A1_R2_ARTIFACT_DIR"
+          cat > "$RUNNER_TEMP/g2a1-r2-preflight.py" <<'PY'
+          import datetime, json, os, platform, shutil, socket, subprocess, sys, urllib.error, urllib.request
+          GiB = 1024 ** 3
+          def run(args):
+              try:
+                  p = subprocess.run(args, capture_output=True, text=True, timeout=20)
+                  return {"exit": p.returncode, "stdout": p.stdout.strip()[:1000], "stderr": p.stderr.strip()[:1000]}
+              except Exception as e:
+                  return {"error": type(e).__name__ + ": " + str(e)}
+          mem = {}
+          try:
+              for row in open("/proc/meminfo"):
+                  k, v = row.split(":", 1)
+                  if k in {"MemTotal", "MemAvailable", "SwapTotal", "SwapFree"}:
+                      mem[k] = int(v.strip().split()[0]) * 1024
+          except Exception:
+              pass
+          cpu_model = "unknown"
+          try:
+              for row in open("/proc/cpuinfo"):
+                  if row.lower().startswith("model name"):
+                      cpu_model = row.split(":", 1)[1].strip()
+                      break
+          except Exception:
+              pass
+          urls = {
+              "pypi_paddleocr": "https://pypi.org/pypi/paddleocr/3.7.0/json",
+              "pypi_transformers": "https://pypi.org/pypi/transformers/5.10.0/json",
+              "pytorch_cpu_wheels": "https://download.pytorch.org/whl/cpu/",
+              "huggingface_model": "https://huggingface.co/api/models/microsoft/trocr-small-handwritten/revision/959398e1e35ce99c83e60f83b35c1187d4508a0b",
+              "zenodo_dataset": "https://zenodo.org/api/records/18301532",
+              "paddle_model_source": "https://paddle-model-ecology.bj.bcebos.com/",
+              "docker_registry": "https://registry-1.docker.io/v2/",
+              "wordpress_plugin_directory": "https://downloads.wordpress.org/",
+          }
+          network = {}
+          for key, url in urls.items():
+              try:
+                  req = urllib.request.Request(url, method="GET", headers={"User-Agent": "G2A1-R2-preflight"})
+                  with urllib.request.urlopen(req, timeout=15) as r:
+                      network[key] = {"reachable": True, "status": r.status}
+              except urllib.error.HTTPError as e:
+                  network[key] = {"reachable": e.code in (401, 403, 404), "status": e.code}
+              except Exception as e:
+                  network[key] = {"reachable": False, "error": type(e).__name__ + ": " + str(e)[:200]}
+          disk = shutil.disk_usage("/")
+          out = {
+              "timestamp_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              "runner": {"os": platform.platform(), "image": os.environ.get("ImageOS"), "image_version": os.environ.get("ImageVersion"), "name": os.environ.get("RUNNER_NAME"), "arch": platform.machine()},
+              "cpu": {"model": cpu_model, "logical_processors": os.cpu_count()},
+              "ram": {"total_bytes": mem.get("MemTotal"), "available_before_bytes": mem.get("MemAvailable"), "swap_total_before_bytes": mem.get("SwapTotal"), "swap_free_before_bytes": mem.get("SwapFree")},
+              "disk": {"root_total_bytes": disk.total, "root_free_before_bytes": disk.free},
+              "python": {"version": sys.version, "architecture": platform.architecture()[0]},
+              "docker": {"server_version": run(["docker", "version", "--format", "{{.Server.Version}}"]), "compose": run(["docker", "compose", "version", "--short"]), "info": run(["docker", "info", "--format", "{{.OperatingSystem}} / {{.Architecture}}"])},
+              "gpu": run(["nvidia-smi", "--query-gpu=name,memory.total,memory.free", "--format=csv,noheader,nounits"]),
+              "network": network,
+              "temporary_swap": {"attempted": False, "bytes": 0, "path": None}
+          }
+          available = mem.get("MemAvailable", 0)
+          if available and available < 6 * GiB and mem.get("MemTotal", 0) >= 12 * GiB:
+              swap_path = os.path.join(os.environ["RUNNER_TEMP"], "g2a1-r2-temporary.swap")
+              p = subprocess.run(["sudo", "bash", "-lc", f"fallocate -l 8G '{swap_path}' && chmod 600 '{swap_path}' && mkswap '{swap_path}' >/dev/null && swapon '{swap_path}'"], capture_output=True, text=True)
+              out["temporary_swap"] = {"attempted": True, "bytes": 8 * GiB if p.returncode == 0 else 0, "path": swap_path if p.returncode == 0 else None, "exit": p.returncode, "error": p.stderr.strip()[:500] or None}
+              if p.returncode == 0:
+                  for row in open("/proc/meminfo"):
+                      k, v = row.split(":", 1)
+                      if k in {"MemAvailable", "SwapTotal", "SwapFree"}:
+                          mem[k] = int(v.strip().split()[0]) * 1024
+                  out["ram"]["available_after_swap_bytes"] = mem.get("MemAvailable")
+                  out["ram"]["swap_total_after_bytes"] = mem.get("SwapTotal")
+                  out["ram"]["swap_free_after_bytes"] = mem.get("SwapFree")
+          out["disk"]["root_free_after_preflight_bytes"] = shutil.disk_usage("/").free
+          required_network = ["pypi_paddleocr", "pypi_transformers", "pytorch_cpu_wheels", "huggingface_model", "zenodo_dataset", "paddle_model_source", "docker_registry"]
+          out["required_network_reachable"] = all(network.get(k, {}).get("reachable") for k in required_network)
+          effective_headroom = mem.get("MemAvailable", 0) + mem.get("SwapFree", 0)
+          out["ram"]["effective_headroom_after_preflight_bytes"] = effective_headroom
+          out["resource_blocked"] = out["ram"]["total_bytes"] is None or out["ram"]["total_bytes"] < 8 * GiB or effective_headroom < 6 * GiB or out["disk"]["root_free_before_bytes"] < 12 * GiB
+          path = os.path.join(os.environ["G2A1_R2_ARTIFACT_DIR"], "runner-preflight.json")
+          with open(path, "w", encoding="utf-8") as f:
+              json.dump(out, f, indent=2)
+              f.write("\n")
+          print(json.dumps({k: out[k] for k in ("runner", "cpu", "ram", "disk", "python", "docker", "gpu", "required_network_reachable", "temporary_swap", "resource_blocked")}, indent=2))
+          if out["resource_blocked"]:
+              print("RETURN_G2A1_R2_ACTIONS_RESOURCE_BLOCKED")
+              raise SystemExit(78)
+          PY
+          python3 "$RUNNER_TEMP/g2a1-r2-preflight.py"
+      - name: Checkout execution branch
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Create ephemeral test credentials
+        shell: bash
+        run: |
+          python3 - <<'PY' >> "$GITHUB_ENV"
+          import secrets
+          for name in ("FCS_DB_PASSWORD", "FCS_DB_ROOT_PASSWORD", "FCS_WP_ADMIN_PASSWORD", "FCS_USER_A_PASSWORD", "FCS_USER_B_PASSWORD"):
+              print(f"{name}={secrets.token_urlsafe(32)}")
+          PY
+          echo "COMPOSE_PROJECT_NAME=family-cookbook-g2a1-r2-${GITHUB_RUN_ID}" >> "$GITHUB_ENV"
+      - name: Prepare runner-local browser
+        id: browser
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/fcs-browser"
+          npm install --prefix "$RUNNER_TEMP/fcs-browser" --no-audit --no-fund playwright@1.55.0
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo "CHROME_PATH=$(command -v google-chrome)" >> "$GITHUB_ENV"
+          elif command -v chromium >/dev/null 2>&1; then
+            echo "CHROME_PATH=$(command -v chromium)" >> "$GITHUB_ENV"
+          else
+            "$RUNNER_TEMP/fcs-browser/node_modules/.bin/playwright" install --with-deps chromium
+            chrome_path=$(NODE_PATH="$RUNNER_TEMP/fcs-browser/node_modules" node -e "console.log(require('playwright').chromium.executablePath())")
+            echo "CHROME_PATH=$chrome_path" >> "$GITHUB_ENV"
+          fi
+          echo "Playwright and Chromium ready; browser path value intentionally omitted from logs."
+      - name: Install pinned local OCR runtime
+        shell: bash
+        run: |
+          python3 -m venv "$RUNNER_TEMP/fcs-ocr-venv"
+          source "$RUNNER_TEMP/fcs-ocr-venv/bin/activate"
+          python -m pip install --disable-pip-version-check pip==25.2
+          python -m pip install --disable-pip-version-check torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --disable-pip-version-check -r family-cookbook-studio/g2a1/r2/requirements-ocr.txt
+          python -m pip check
+          python - <<'PY'
+          import importlib.metadata as m, json
+          names=("paddleocr","paddlex","paddlepaddle","transformers","torch","numpy","opencv-contrib-python","Pillow","psutil","safetensors","sentencepiece")
+          out={}
+          for name in names:
+              try: out[name]=m.version(name)
+              except m.PackageNotFoundError: out[name]=None
+          print(json.dumps(out,indent=2))
+          PY
+      - name: Render carried synthetic typography and fetch public handwriting subset
+        shell: bash
+        run: |
+          export FCS_SYNTHETIC_DIR="$RUNNER_TEMP/g2a1-r2-artifacts/ocr/synthetic-fixtures"
+          export FCS_GENUINE_DIR="$RUNNER_TEMP/g2a1-r2-artifacts/ocr/genuine-handwriting"
+          mkdir -p "$FCS_SYNTHETIC_DIR" "$FCS_GENUINE_DIR"
+          node family-cookbook-studio/g2a1/ocr/render-fixtures.mjs "$FCS_SYNTHETIC_DIR"
+          source "$RUNNER_TEMP/fcs-ocr-venv/bin/activate"
+          python family-cookbook-studio/g2a1/r2/download_handwriting.py
+      - name: Attempt PaddleOCR Transformers inference
+        id: ocr_transformers
+        continue-on-error: true
+        shell: bash
+        run: |
+          source "$RUNNER_TEMP/fcs-ocr-venv/bin/activate"
+          export FCS_SYNTHETIC_DIR="$RUNNER_TEMP/g2a1-r2-artifacts/ocr/synthetic-fixtures"
+          export FCS_GENUINE_DIR="$RUNNER_TEMP/g2a1-r2-artifacts/ocr/genuine-handwriting"
+          export FCS_PADDLE_ENGINE=transformers
+          set +e
+          python family-cookbook-studio/g2a1/r2/run_ocr.py > "$G2A1_R2_ARTIFACT_DIR/ocr/transformers-route.log" 2>&1
+          status=$?
+          set -e
+          tail -n 80 "$G2A1_R2_ARTIFACT_DIR/ocr/transformers-route.log"
+          exit "$status"
+      - name: Bounded PaddlePaddle runtime fallback if Transformers engine cannot run
+        if: steps.ocr_transformers.outcome == 'failure'
+        shell: bash
+        run: |
+          source "$RUNNER_TEMP/fcs-ocr-venv/bin/activate"
+          python -m pip install --disable-pip-version-check paddlepaddle==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
+          export FCS_SYNTHETIC_DIR="$RUNNER_TEMP/g2a1-r2-artifacts/ocr/synthetic-fixtures"
+          export FCS_GENUINE_DIR="$RUNNER_TEMP/g2a1-r2-artifacts/ocr/genuine-handwriting"
+          export FCS_PADDLE_ENGINE=paddle
+          python family-cookbook-studio/g2a1/r2/run_ocr.py > "$G2A1_R2_ARTIFACT_DIR/ocr/paddle-runtime-route.log" 2>&1
+          tail -n 80 "$G2A1_R2_ARTIFACT_DIR/ocr/paddle-runtime-route.log"
+      - name: Copy genuine handwriting source metadata
+        if: always()
+        shell: bash
+        run: |
+          source_path="$G2A1_R2_ARTIFACT_DIR/ocr/genuine-handwriting/genuine-handwriting-sources.json"
+          if [ -f "$source_path" ]; then cp "$source_path" "$G2A1_R2_ARTIFACT_DIR/ocr/genuine-handwriting-sources.json"; fi
+      - name: Start ephemeral Family Cookbook WordPress and WooCommerce testbed
+        id: start_wp
+        if: always() && steps.preflight.outcome == 'success' && steps.browser.outcome == 'success'
+        shell: bash
+        run: |
+          wpdir=family-cookbook-studio/g2a1/r2/wp
+          mkdir -p "$wpdir/proof-adapter/preview" "$wpdir/artifacts" "$G2A1_R2_ARTIFACT_DIR/wp"
+          cp family-cookbook-studio/g2a1/preview/index.html "$wpdir/proof-adapter/preview/index.html"
+          cp family-cookbook-studio/g2a1/preview/sample-local-image.svg "$wpdir/proof-adapter/preview/sample-local-image.svg"
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" up -d
+          for attempt in $(seq 1 90); do
+            if curl -fsS "$FCS_WP_BASE_URL/wp-login.php" >/dev/null; then break; fi
+            if [ "$attempt" = 90 ]; then docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" logs --tail=100; exit 1; fi
+            sleep 5
+          done
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'curl -fsSL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o /tmp/wp-cli.phar && php /tmp/wp-cli.phar --info >/dev/null'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T \
+            -e FCS_ADMIN_PASSWORD="$FCS_WP_ADMIN_PASSWORD" wordpress sh -lc 'php /tmp/wp-cli.phar --path=/var/www/html core install --url=http://127.0.0.1:8871 --title="Family Cookbook G2A1 local testbed" --admin_user=fcs-admin --admin_password="$FCS_ADMIN_PASSWORD" --admin_email=fcs-admin@example.invalid --skip-email >/dev/null'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --path=/var/www/html option update permalink_structure "/%postname%/" >/dev/null && php /tmp/wp-cli.phar --path=/var/www/html rewrite flush >/dev/null'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --path=/var/www/html plugin install woocommerce --activate --quiet'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --path=/var/www/html theme install kadence --activate --quiet'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --path=/var/www/html plugin activate family-cookbook-proof --quiet'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T \
+            -e FCS_USER_A_PASSWORD="$FCS_USER_A_PASSWORD" -e FCS_USER_B_PASSWORD="$FCS_USER_B_PASSWORD" \
+            wordpress php /tmp/wp-cli.phar --path=/var/www/html eval-file /fcs-tests/bootstrap.php
+      - name: Verify Kadence preview, order-bound uploads and private delivery in browser
+        if: always() && steps.start_wp.outcome == 'success'
+        shell: bash
+        run: |
+          wpdir=family-cookbook-studio/g2a1/r2/wp
+          export FCS_WP_IDS="$GITHUB_WORKSPACE/$wpdir/artifacts/wp-test-ids.json"
+          export FCS_SYNTHETIC_IMAGE="$G2A1_R2_ARTIFACT_DIR/ocr/synthetic-fixtures/F01.png"
+          export NODE_PATH="$RUNNER_TEMP/fcs-browser/node_modules"
+          node "$wpdir/verify_wp.mjs"
+          cp "$wpdir/artifacts/wp-test-ids.json" "$G2A1_R2_ARTIFACT_DIR/wp/wp-test-ids.json"
+          docker image inspect wordpress:6.8-php8.3-apache mariadb:11.4 --format '{{json .RepoTags}} {{.Id}} {{.Size}}' > "$G2A1_R2_ARTIFACT_DIR/wp/docker-image-footprint.txt"
+      - name: Destroy only this ephemeral testbed and runner swap
+        if: always()
+        shell: bash
+        run: |
+          wpdir=family-cookbook-studio/g2a1/r2/wp
+          project="${COMPOSE_PROJECT_NAME:-family-cookbook-g2a1-r2-${GITHUB_RUN_ID}}"
+          cleanup_exit=0
+          if [ -f "$wpdir/docker-compose.yml" ]; then
+            docker compose -f "$wpdir/docker-compose.yml" -p "$project" down -v --remove-orphans || cleanup_exit=$?
+          fi
+          containers=$(docker ps -aq --filter "label=com.docker.compose.project=$project" 2>/dev/null || true)
+          volumes=$(docker volume ls -q --filter "label=com.docker.compose.project=$project" 2>/dev/null || true)
+          networks=$(docker network ls -q --filter "label=com.docker.compose.project=$project" 2>/dev/null || true)
+          if [ -n "$containers$volumes$networks" ]; then cleanup_exit=1; fi
+          swap_removed=true
+          if [ -f "$RUNNER_TEMP/g2a1-r2-temporary.swap" ]; then
+            if sudo swapoff "$RUNNER_TEMP/g2a1-r2-temporary.swap"; then
+              sudo rm -f "$RUNNER_TEMP/g2a1-r2-temporary.swap"
+            else
+              swap_removed=false
+              cleanup_exit=1
+            fi
+          fi
+          mkdir -p "$G2A1_R2_ARTIFACT_DIR"
+          python3 - "$G2A1_R2_ARTIFACT_DIR/cleanup.json" "$project" "$cleanup_exit" "$swap_removed" "$containers" "$volumes" "$networks" <<'PY'
+          import json,sys
+          path, project, exit_code, swap_removed, containers, volumes, networks = sys.argv[1:]
+          data = {"compose_project": project, "compose_down_exit": int(exit_code), "swap_removed": swap_removed == "true", "remaining_containers": containers.split(), "remaining_volumes": volumes.split(), "remaining_networks": networks.split()}
+          with open(path, "w", encoding="utf-8") as f: json.dump(data, f, indent=2); f.write("\n")
+          print(json.dumps(data))
+          PY
+          exit "$cleanup_exit"
+      - name: Upload compact isolated-runner evidence artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: family-cookbook-g2a1-r2-${{ github.run_id }}
+          path: ${{ runner.temp }}/g2a1-r2-artifacts/
+          if-no-files-found: warn
+          retention-days: 1

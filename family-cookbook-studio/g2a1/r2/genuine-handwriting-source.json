@@ -1,0 +1,14 @@
+{
+  "dataset": "ScaDS.AI German Line- and Word-Level Handwriting Dataset",
+  "version": "1.0",
+  "doi": "10.5281/zenodo.18301532",
+  "source_url": "https://zenodo.org/records/18301532",
+  "archive_url": "https://zenodo.org/records/18301532/files/scadsai_german_handwriting_line_word_level_v01.tar.gz?download=1",
+  "archive_bytes": 243800000,
+  "archive_md5": "28270d614da0ea402be665eee73162b7",
+  "dataset_license": "CC BY 4.0",
+  "source_text_note": "The dataset card says the handwritten lines transcribe German Wikipedia excerpts. Underlying text retains CC BY-SA 4.0; runtime metadata records the matched source URL where available.",
+  "sample_count_target": 8,
+  "privacy": "Public/open benchmark subset; no customer/family material. Only line crops and transcription metadata are selected in the ephemeral runner; author demographic fields are excluded.",
+  "selection": "Deterministic first eligible line per distinct page identifier after sorting by archive-relative image path; maximum 8."
+}
