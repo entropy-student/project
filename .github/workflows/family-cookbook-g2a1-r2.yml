@@ -254,6 +254,8 @@ jobs:
           export FCS_WP_IDS="$GITHUB_WORKSPACE/$wpdir/artifacts/wp-test-ids.json"
           export FCS_SYNTHETIC_IMAGE="$G2A1_R2_ARTIFACT_DIR/ocr/synthetic-fixtures/F01.png"
           export NODE_PATH="$RUNNER_TEMP/fcs-browser/node_modules"
+          mkdir -p "$GITHUB_WORKSPACE/node_modules"
+          ln -s "$RUNNER_TEMP/fcs-browser/node_modules/playwright" "$GITHUB_WORKSPACE/node_modules/playwright"
           node "$wpdir/verify_wp.mjs"
           cp "$wpdir/artifacts/wp-test-ids.json" "$G2A1_R2_ARTIFACT_DIR/wp/wp-test-ids.json"
           docker image inspect wordpress:6.8-php8.3-apache mariadb:11.4 --format '{{json .RepoTags}} {{.Id}} {{.Size}}' > "$G2A1_R2_ARTIFACT_DIR/wp/docker-image-footprint.txt"
