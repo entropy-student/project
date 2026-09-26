@@ -66,8 +66,8 @@ P0  Governance Intake / Truth Reconciliation             ✅ PASS
 G1  Product / Offer Baseline                            ✅ PASS (Owner decisions; not transaction proof)
 G2A1 Frontend + Reusable Component Feasibility PoC      ✅ PASS
 G2A1R1 Evidence Closure                                 ⏹ CLOSED — executor RETURN produced final technical finding
-G2A2 MVP Product Contract Freeze                        ← CURRENT
-G2B  Local AI/PDF Solution Proof                        ⏳ HOLD
+G2A2 MVP Product Contract Freeze                        ✅ PASS
+G2B  Local AI/PDF Solution Proof                        ← CURRENT
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
@@ -82,6 +82,7 @@ Current Reviewer decisions:
 - `RETURN_G2A1_EVIDENCE_CLOSURE_REQUIRED_2026-09-26`
 - `PASS_G2A1_COMPONENT_FEASIBILITY_WITH_GUEST_PATH_REJECTION_2026-09-27`
 - `OWNER_DECISION_MVP_AUTHENTICATED_ACCOUNT_REQUIRED_2026-09-27`
+- `PASS_G2A2_MVP_PRODUCT_CONTRACT_FREEZE_2026-09-27`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -108,7 +109,7 @@ Important limitation: the Owner reports demand as already validated, but the und
 - Repeatability/economics: unknown.
 - Production website: not built/deployed.
 
-## 6. Current Gate — G2A2 MVP Product Contract Freeze
+## 6. Current Gate — G2B Local AI/PDF Solution Proof
 
 Current Reviewer decision: [docs/REVIEWER_DECISION_G2A1_PASS.md](./docs/REVIEWER_DECISION_G2A1_PASS.md)
 
@@ -141,17 +142,33 @@ The Owner selected the recommended MVP access model:
 - guest/no-account private fulfillment is out of MVP scope;
 - the rejected guest bearer-link plugin paths do not need replacement before G2B/G3 for the MVP.
 
-### Remaining G2A2 work
+### G2A2 result
 
-G2A2 now freezes the remaining exact product contract before AI→PDF implementation:
+G2A2 is **PASS**.
 
-- free-preview fields and preview pages;
-- paid photo count and file limits;
-- exact structured question schema;
-- exact magazine page count and page-by-page content map;
-- proof/revision policy;
-- deterministic QA;
-- customer photo/data retention and deletion baseline.
+Canonical frozen product contract:
+- [docs/MVP_PRODUCT_CONTRACT.md](./docs/MVP_PRODUCT_CONTRACT.md)
+
+Key frozen decisions:
+- 12 total pages;
+- 12–25 source photos;
+- up to 3 must-use;
+- ~10–14 selected;
+- six required short prompts;
+- fixed emotional spine + two dynamic modules;
+- three style presets on one page architecture;
+- no AI-generated imagery;
+- one bounded revision batch;
+- account-required private workspace;
+- source/intermediate deletion within 24 hours after final approval/delivery;
+- final PDF retained for 72 hours.
+
+### Current authorization
+
+G2B is now CURRENT under:
+- [docs/G2B_LOCAL_AI_PDF_SOLUTION_PROOF.md](./docs/G2B_LOCAL_AI_PDF_SOLUTION_PROOF.md)
+
+G2B is local/test Solution Proof only. Payment, PayPal, production deployment and G3 remain forbidden.
 
 ### Rollback
 
@@ -178,16 +195,14 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 - archived details of the Owner-reported demand validation;
 - exact buyer segment within the US market;
-- final page count and paid photo-count limit (must be frozen in G2A2);
-- final question set/content schema (must be frozen in G2A2);
-- included revision/regeneration count (must be frozen in G2A2);
+
 - seller merchant/bank account country;
 - PayPal merchant/account eligibility, settlement currency behavior and actual fees for the eventual seller account;
 - generator/model/provider selection;
 - real per-order AI/render/storage cost;
 - storage, access control and deletion policy;
 - final subjective visual/product foundation after G2A2;
-- exact account UX details (automatic account creation / login-link experience) within the accepted authenticated-account requirement;
+- exact account authentication implementation (magic link vs standard WooCommerce password setup), provided it preserves the frozen no-separate-precheckout-registration product requirement;
 - exact PDF render engine;
 - actual production hosting;
 - refund/cancellation handling;
@@ -219,9 +234,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: collect Owner decisions using `docs/G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md`, then freeze `docs/MVP_PRODUCT_CONTRACT.md`.
-- Executor next action: none until G2A2 PASS creates the bounded G2B implementation Gate.
-- Owner intervention required: **YES at G2A2 acceptance** for the remaining subjective product decisions; the account-vs-guest decision is already resolved.
+- Reviewer next action: dispatch/review G2B using `docs/G2B_LOCAL_AI_PDF_SOLUTION_PROOF.md`.
+- Executor next action: run the bounded local/test AI→12-page PDF Solution Proof, submit branch + commit + PR, and stop at Reviewer.
+- Owner intervention required: **NO at G2B start** unless a protected model credential or other Owner-only input becomes necessary.
 
 ## 13. Status Summary
 
@@ -229,10 +244,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - Final goal: PayPal-paid personalized birthday magazine PDF workflow.
 - G2A1: PASS.
 - G2A1R1: closed; its Executor RETURN is preserved as the evidence that the current guest plugin links are bearer-replayable and therefore rejected for strict guest-private use.
-- G2A2: CURRENT.
-- Authenticated-account-required is now fixed for MVP; guest/no-account private fulfillment is out of scope.
-- G2A2 R2 research converts the market evidence into seven explicit Owner decisions: 12 vs 16 pages; photo input/curation; six prompts; fixed spine + dynamic modules; revision policy; retention; style-preset count.
-- Reviewer recommendations currently favor: 12 total pages; 12–25 source photos with up to 3 must-use; ~10–14 selected; six short prompts; fixed emotional spine + 2 dynamic modules; one bounded revision batch; 30-day source retention + 90-day final PDF; 3 style presets on one shared layout system.
-- These are recommendations, not frozen facts, until Owner explicitly approves them.
-- Next: Owner decisions → `MVP_PRODUCT_CONTRACT.md` → G2A2 PASS → G2B local AI/PDF proof.
+- G2A2: PASS; `MVP_PRODUCT_CONTRACT.md` is frozen.
+- Privacy retention is frozen at 24h for source/intermediate assets and 72h for final PDF.
+- G2B: CURRENT.
+- Current goal: prove one realistic synthetic intake can become a grounded, coherent 12-page PDF through the bounded AI/content + deterministic layout pipeline.
+- Next after G2B PASS: G3A WooCommerce commerce loop.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
