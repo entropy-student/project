@@ -1,5 +1,6 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
+global $wpdb;
 if (!class_exists('WooCommerce') || !function_exists('wc_create_order')) {
     fwrite(STDERR, "WooCommerce is not active\n");
     exit(2);
