@@ -1,3 +1,7 @@
+> **Governance status: CURRENT SUPPORTING PRODUCT-FLOW DESIGN.**  
+> This document contains detailed design hypotheses. Accepted decisions, implementation status, current Gate and UNKNOWNs remain controlled by [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md).  
+> It is not evidence that payment, AI generation or PDF delivery is implemented.
+
 # 两步式全 AI 生日杂志：产品与生成流程
 
 更新时间：2026-09-26
