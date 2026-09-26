@@ -1,3 +1,8 @@
+> **Governance status: SUPPORTING VALIDATION PLAN.**  
+> Metrics and experiments defined here are plans, not observed results unless separately evidenced.  
+> The existing browser prototype is acknowledged by the current Handoff; real payment, AI production, delivery, repeatability and economics remain unproven.  
+> Current authority: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md).
+
 # 获客与验证计划：Birthday Magazine Studio
 
 依据：[Acquisition Growth Radar](https://github.com/entropy-student/spike.skill/tree/main/acquisition-growth-radar)。采用 Evidence → Bottleneck → Lever → Experiment → Decision；明确区分 Owner 决策、市场线索和本项目成交。
