@@ -63,6 +63,7 @@ for ($i = 1; $i <= count($objects); $i++) { $pdf .= sprintf("%010d 00000 n \n", 
 $pdf .= "trailer\n<< /Size " . (count($objects) + 1) . " /Root 1 0 R >>\nstartxref\n" . $xref . "\n%%EOF\n";
 $pdf_path = $root . DIRECTORY_SEPARATOR . $file_id . '.pdf';
 file_put_contents($pdf_path, $pdf);
+if (!@chown($pdf_path, 'www-data')) { throw new RuntimeException('Unable to assign synthetic PDF to the web runtime user'); }
 @chmod($pdf_path, 0600);
 $order = wc_get_order($order_a);
 $files = $order->get_meta('_fcs_g2a1_private_files', true);
