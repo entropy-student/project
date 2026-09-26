@@ -1,0 +1,1358 @@
+{
+  "manifest_version": "ASSET_OUTPUT_MANIFEST_V1",
+  "episode_id": "ep-agent-permission-boundary-20260926",
+  "run_id": "20260926-1522-images-r1",
+  "batch_status": "HOLD_OWNER_REVIEW",
+  "created_at": "2026-09-26T16:11:20+08:00",
+  "package_counts": {
+    "visual_beats": 71,
+    "blueprints": 71,
+    "execution_rows": 71
+  },
+  "execution_mode_counts": {
+    "GENERATE": 71
+  },
+  "result_counts": {
+    "accepted": 15,
+    "rejected_final": 0,
+    "not_generated": 56,
+    "rejected_superseded_attempts": 7
+  },
+  "rows": [
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB001",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB001.png",
+        "candidate_id": "exec-92720e12-f2b0-483e-922e-b1bb2b70cc5e",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "7cec574495f38620829d059c3abe13a446681c4d9b6d01954ace6fae1f44fece",
+        "byte_size": 2721760,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "V2 主角表演和外卖袋、手机层级符合要求；手机显示抽象 UI，不出现额外可读字。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED",
+        "superseded_rejected_attempts": [
+          {
+            "candidate_id": "exec-ebe01c4f-30f3-46ff-bed6-80638320d68d",
+            "status": "REJECTED_RETRY",
+            "reason": "Phone/status not visible enough."
+          }
+        ]
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB001.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB002",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB002.png",
+        "candidate_id": "exec-5ae06bfc-667d-476e-9116-f75cd9da6bee",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "cf1017d3e340dbfaa45ee868c001562a386bda25d9cc4039db1727f4aa71e0bb",
+        "byte_size": 2618311,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "主角被四张待办卡围住，白暖背景与指定留白清楚；卡片无字。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED"
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB002.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB003",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB003.png",
+        "candidate_id": "exec-aedc414c-47a5-404e-9932-50dc4697fe0e",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "69f43f4133b91ab0b208f76688c679ca7226fed38924a53df5073ef90f661a8f",
+        "byte_size": 2626437,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "手机与四张抽象任务卡均清楚可见；主角身份及指定构图通过。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED",
+        "superseded_rejected_attempts": [
+          {
+            "candidate_id": "exec-3dfb358f-d496-4bb2-a89f-a5de51294136",
+            "status": "REJECTED_RETRY",
+            "reason": "Phone was missing."
+          }
+        ]
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB003.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB004",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB004.png",
+        "candidate_id": "exec-9db0419b-5363-4651-832a-798d8c65e7f2",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "8d43652d49f33b1ef8b58d0145020280b1bba846b41dd061046804bd09fc8c25",
+        "byte_size": 2490371,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "主角在卡片中显得 overwhelmed，表演、景别、简洁背景通过。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED"
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB004.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB005",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB005.png",
+        "candidate_id": "exec-2c327714-cddb-442c-8567-b053bde0ae53",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "19599af8c6f7ed2c5497c1bfc44c5116ef1a92d1f1b9ed6b28422af9b66c189b",
+        "byte_size": 2768485,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "抽象确认 UI，无人脸/机器人；任务卡推向手机，构图与表演通过。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED",
+        "superseded_rejected_attempts": [
+          {
+            "candidate_id": "exec-407e125b-72f9-40d6-8e6d-c942d8232e58",
+            "status": "REJECTED_RETRY",
+            "reason": "Phone UI depicted a face/robot."
+          }
+        ]
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB005.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB006",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB006.png",
+        "candidate_id": "exec-65d42515-7fb8-4810-98ca-2990f4ba017d",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "c9e41f7923cd125308eee1cda689de36a38bbed001ebc8bae047ba488c420ad3",
+        "byte_size": 2666793,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "手机呈现简洁抽象接受/绿色勾选状态；无额外可读文字。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED"
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB006.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB007",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB007.png",
+        "candidate_id": "exec-cffaaf1f-133c-4e69-a37f-eb23d4c52346",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "b707d5687d8c44106b81cf10b6c12773741f47521f1f5cd97f1f6a9a9424280c",
+        "byte_size": 2243785,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "白色简洁背景；包裹、日历、购物袋次序和主角兴奋表演清楚。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED",
+        "superseded_rejected_attempts": [
+          {
+            "candidate_id": "exec-453e9afd-11d4-4535-a6fa-3a0964d1dc28",
+            "status": "REJECTED_RETRY",
+            "reason": "Room/background was too detailed and cluttered."
+          }
+        ]
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB007.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB008",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB008.png",
+        "candidate_id": "exec-7a41ddbc-2b3e-40c5-8fd5-ed7df701ff1d",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "fe03dea9ef669b87d59b65ae142200acce12a4cbc49c00f621cb5de5f38a3383",
+        "byte_size": 2713105,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "包裹/时间卡与主角准备出门的状态易读；门框仅为轻微环境线索。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED"
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB008.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB009",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB009.png",
+        "candidate_id": "exec-5de42661-4344-4cc3-8bb6-a35985a948f3",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "0e5fc168d46417af227d9fb6eb9163b822c4189d450f287d81526c2c0356cc77",
+        "byte_size": 2569843,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "日历会议块与要求道具可辨；无可读文字，焦点未被背景分散。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED"
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB009.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB010",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB010.png",
+        "candidate_id": "exec-fae8dee8-a307-4faf-bd00-6e30ee5e2856",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "205649342ffac37a834618cc104556f57c96b38fdb3a9fdd7c98db9740d3bc4b",
+        "byte_size": 2407808,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "包内仅有一瓶泵头瓶可辨，必要包裹/日历道具保留；构图简洁。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED",
+        "superseded_rejected_attempts": [
+          {
+            "candidate_id": "exec-6fedec68-ccfd-4e44-96f1-023d5be94edd",
+            "status": "REJECTED_RETRY",
+            "reason": "Shopping contents/background were overfull."
+          }
+        ]
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB010.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB011",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB011.png",
+        "candidate_id": "exec-b5fc6310-81e7-4d8c-bbc1-e1637c02abba",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "79b7a7602648a8fec4f730ee1fc711dbbaf96477e5bfb37fd121300ed118eff4",
+        "byte_size": 2650817,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "抽象几何设备 UI，无人形或脸；卡片和主角表演符合本 Beat。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED",
+        "superseded_rejected_attempts": [
+          {
+            "candidate_id": "exec-45ab2efe-d552-4d63-bac6-fa663942b9cf",
+            "status": "REJECTED_RETRY",
+            "reason": "AI was depicted as a humanoid robot."
+          }
+        ]
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB011.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB012",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB012.png",
+        "candidate_id": "exec-93bb88c5-bcd0-4c1e-80e6-282ae1cb073d",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "fa07655b0256731f894ba041800d63a47097b96b53a9fd9695c2c6d13c2ee14b",
+        "byte_size": 2926437,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "设备抽象接收卡片，无脸；角色及卡片关系、留白通过。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED",
+        "superseded_rejected_attempts": [
+          {
+            "candidate_id": "exec-ea695862-ff6e-4b0d-8e4d-1f3c0b5068d1",
+            "status": "REJECTED_RETRY",
+            "reason": "Phone UI depicted a face."
+          }
+        ]
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB012.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB013",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB013.png",
+        "candidate_id": "exec-7e793786-d2d7-456b-bd3c-e7dfe2408ad4",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "8bfc4cd0e615060efa86612b8ea24f86615d0b20a3245d6814103f96b8ca8a47",
+        "byte_size": 2844932,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "通知具体内容保持 withheld；仅有通用朋友头像轮廓，没有可读通知文字。",
+        "exact_required_text": [],
+        "native_text_result": "NOT_REQUIRED"
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB013.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB014",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB014.png",
+        "candidate_id": "exec-a7863433-1c52-4cdd-8031-1977b48263d8",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "07508057153bde0db30e59d977c5368b51b3923c5a7c6266fc1e52b481c997dc",
+        "byte_size": 2813680,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "IMAGE_NATIVE：屏幕原生生成文字逐字核对为“中午一起吃饭？”；无拒绝状态或额外可读字。",
+        "exact_required_text": [
+          "中午一起吃饭？"
+        ],
+        "native_text_result": "PASS_EXACT"
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB014.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "中午一起吃饭？"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB015",
+      "execution_mode": "GENERATE",
+      "status": "ACCEPTED",
+      "frame": {
+        "path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB015.png",
+        "candidate_id": "exec-9c44508b-bac5-40f5-be5e-205f770ebabf",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "cc67ccaa4012c4be26ef36d12d7d52864b091db026d3f61d6dd0a9b19050e768",
+        "byte_size": 2939668,
+        "normalization": "full-frame resize to 1920x1080; no crop; no text overlay"
+      },
+      "qa": {
+        "status": "ACCEPTED",
+        "checks": {
+          "primary_focus": "PASS",
+          "character_identity_and_performance": "PASS",
+          "shot_size": "PASS",
+          "pov_and_camera": "PASS",
+          "required_props": "PASS",
+          "background_mode": "PASS",
+          "text_policy": "PASS",
+          "withheld_information": "PASS",
+          "full_frame_16_9": "PASS",
+          "no_composite_or_overlay": "PASS"
+        },
+        "review_note": "IMAGE_NATIVE：屏幕原生生成文字逐字核对为“已下单”；订单卡覆盖邀请状态且无拒绝提示。",
+        "exact_required_text": [
+          "已下单"
+        ],
+        "native_text_result": "PASS_EXACT"
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB015.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "已下单"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB016",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB016.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB017",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB017.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB018",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB018.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB019",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB019.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "已拒绝"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB020",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB020.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB021",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB021.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB022",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB022.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB023",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB023.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB024",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB024.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB025",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB025.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "20元"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB026",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB026.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "20元"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB027",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB027.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB028",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB028.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "07:30"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB029",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB029.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "07:30"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB030",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB030.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "0元",
+        "20元"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB031",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB031.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "07:30"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB032",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB032.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "20元"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB033",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB033.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB034",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB034.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB035",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB035.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB036",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB036.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB037",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB037.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB038",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB038.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB039",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB039.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB040",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB040.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB041",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB041.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "20元"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB042",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB042.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "20元"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB043",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB043.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "20元"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB044",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB044.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB045",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB045.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB046",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB046.png",
+      "text_render_mode": "IMAGE_NATIVE",
+      "exact_required_text": [
+        "07:30"
+      ]
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB047",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB047.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB048",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB048.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB049",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB049.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB050",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB050.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB051",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB051.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB052",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB052.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB053",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB053.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB054",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB054.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB055",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB055.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB056",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB056.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB057",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB057.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB058",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB058.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB059",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB059.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB060",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB060.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB061",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB061.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB062",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB062.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB063",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB063.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB064",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB064.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB065",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB065.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB066",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB066.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB067",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB067.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB068",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB068.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB069",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB069.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB070",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB070.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    },
+    {
+      "visual_beat_id": "ep-agent-permission-boundary-20260926_VB071",
+      "execution_mode": "GENERATE",
+      "status": "NOT_GENERATED",
+      "frame": null,
+      "qa": {
+        "status": "NOT_RUN",
+        "reason": "Generation paused at owner request after VB015; awaiting overall review."
+      },
+      "planned_frame_path": "outputs/ep-agent-permission-boundary-20260926/runs/20260926-1522-images-r1/frames/ep-agent-permission-boundary-20260926_VB071.png",
+      "text_render_mode": "NONE",
+      "exact_required_text": []
+    }
+  ]
+}
