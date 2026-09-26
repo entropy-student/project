@@ -1,4 +1,9 @@
 services:
+  mailpit:
+    image: axllent/mailpit:v1.31.2
+    ports:
+      - "127.0.0.1:8128:8025"
+
   db:
     image: mariadb:11.4
     environment:
@@ -18,6 +23,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      mailpit:
+        condition: service_started
     ports:
       - "127.0.0.1:8127:80"
     environment:
@@ -29,9 +36,11 @@ services:
         define('WP_DEBUG', true);
         define('WP_DEBUG_LOG', true);
         define('WP_DEBUG_DISPLAY', false);
+        define('BMS_G2A1R1_MAILPIT', true);
     volumes:
       - wp_data:/var/www/html
       - ./preview-plugin:/var/www/html/wp-content/plugins/birthday-magazine-poc:ro
+      - ./mailpit-plugin:/var/www/html/wp-content/mu-plugins:ro
 
   wpcli:
     image: wordpress:cli-php8.3
