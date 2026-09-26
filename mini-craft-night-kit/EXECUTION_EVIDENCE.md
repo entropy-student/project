@@ -4841,3 +4841,55 @@ Reviewer follow-up is required to resolve the disposable helper's official-entry
 - Safety: no Secret value/hash access or output; no PayPal Live, payment, order, webhook, public-ingress, DNS, Shared Infra, Compose, image-build, or unrelated-project mutation. Authorized writes were limited to the fresh local-only DB backup, the two exact serialized-safe URL migrations, and temporary PHAR staging/removal.
 - Diagnostic note: one read-only WP-CLI table-count eval initially omitted explicit global `$wpdb` binding and failed in the CLI process; the corrected read-only probe passed. This did not restart or alter the live WordPress service; the application container log check remained at zero PHP fatals.
 - Required boundary: `STOP_AT_REVIEWER=YES`; no serialized-migration follow-on, public ingress, webhook, Live, or payment Gate was started.
+
+
+## K6_PHASE_F_PUBLIC_SANDBOX_INGRESS_READINESS_AND_CHANGE_PLAN — RETURN (2026-09-27)
+
+```text
+GATE=K6_PHASE_F_PUBLIC_SANDBOX_INGRESS_READINESS_AND_CHANGE_PLAN
+RESULT=RETURN_REVIEWER_SHARED_INGRESS_CONFIG_DRIFT
+SUMMARY=Read-only continuity and edge reachability passed, but the active Caddy Admin API config contains an edge-test.spikersun.com static route that is absent from the Caddyfile used by the current startup command. The exact static response body was not retained as a reconstructable source artifact, so a Caddyfile reload plan cannot yet prove preservation of the unrelated route. No unique safe ingress changeset was frozen; no writes were performed.
+REMOTE_IDENTITY=ops@srv1970241;SSH_HOST_KEY_MATCH=YES
+WORDPRESS_RUNTIME_CONTINUITY=RUNNING;IMAGE_DIGEST=ACCEPTED;WORDPRESS_RESTART_COUNT=0;STABLE=YES
+MARIADB_HEALTH=HEALTHY;MARIADB_RESTART_COUNT=0;STABLE=YES
+HOME_SITEURL=PASS_TARGET;OLD_ORIGIN_A_EXCLUDING_GUID=0;OLD_ORIGIN_B_EXCLUDING_GUID=0
+WORDPRESS_HOST_PORT=NONE;DB_PUBLIC_PORT=NONE;CURRENT_MINICRAFT_PUBLIC_INGRESS=NONE
+CURRENT_80_443_OWNER=spikersun-edge-caddy-1
+SHARED_CADDY_STATE=RUNNING;IMAGE=caddy:2-alpine;VERSION=v2.11.4;RESTARTS=0
+SHARED_CADDY_CONFIG_SOURCE=/srv/infra/edge/Caddyfile -> /etc/caddy/Caddyfile (read-only mount);COMPOSE=/srv/infra/edge/compose.yaml
+SHARED_CADDY_NETWORKS=spikersun-edge
+ACTIVE_CADDY_HOST_ROUTES=edge-test.spikersun.com;localhost;NO_MINICRAFT_ROUTE
+CADDYFILE_HOST_ROUTES=localhost
+ACTIVE_EDGE_TEST_ROUTE=STATIC_RESPONSE;STATUS=200;BODY_BYTES=30;BODY_SHA256=2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824
+CLOUDFLARED_STATE=RUNNING;REMOTE_MANAGED_TUNNEL;LOCAL_CONFIG=NONE;NETWORK=spikersun-private
+MINICRAFT_WORDPRESS_CONTAINER=mini-craft-night-kit-wordpress-1
+MINICRAFT_EDGE_NETWORK_MEMBERSHIP=YES;NETWORK=spikersun-edge;ALIASES=wordpress
+MINICRAFT_EDGE_UPSTREAM=wordpress:80
+EDGE_TO_MINICRAFT_PRIVATE_REACHABILITY=PASS;HTTP=200;BOUNDED;NO_ROUTE_OR_NETWORK_CHANGE
+CURRENT_MINICRAFT_DNS_EXISTS=NO;A=NXDOMAIN;AAAA=NXDOMAIN;CNAME=NXDOMAIN (independent Google DNS-over-HTTPS query)
+CURRENT_MINICRAFT_DNS_TYPE=NONE
+CURRENT_MINICRAFT_DNS_TARGET=NONE
+CURRENT_MINICRAFT_HTTP_STATE=UNREACHABLE_NO_PUBLIC_DNS_ROUTE
+CURRENT_MINICRAFT_HTTPS_STATE=UNREACHABLE_NO_PUBLIC_DNS_ROUTE_OR_CERT
+DNS_RESOLVER_NOTE=Local/1.1.1.1/8.8.8.8 resolver path returned synthetic benchmark sinkhole answers; public Google DoH independently returned NXDOMAIN, so synthetic answers were not treated as DNS targets.
+CADDY_CHANGE_REQUIRED=YES;OBJECT=/srv/infra/edge/Caddyfile;SAFE_CONTENT_NOT_FROZEN_DUE_ACTIVE_CONFIG_DRIFT
+CLOUDFLARED_CHANGE_REQUIRED=NO;DIRECT_CADDY_INGRESS_DOES_NOT_REQUIRE_TUNNEL_ROUTE
+DNS_CHANGE_REQUIRED=YES;CANDIDATE=A minicraft -> 2.24.193.133;PROXY_POLICY_REQUIRES_REVIEW;TTL=Auto
+DOCKER_NETWORK_CHANGE_REQUIRED=NO;EXISTING_EDGE_MEMBERSHIP_AND_UPSTREAM_REACHABILITY_PASS
+COMPOSE_CHANGE_REQUIRED=NO_FOR_UPSTREAM_TOPOLOGY;CADDY_STARTUP_SOURCE_RECONCILIATION_REQUIRED_BEFORE_SAFE_RELOAD
+PUBLIC_INGRESS_CHANGESET=NOT_READY;CADDY_UNRELATED_ROUTE_PRESERVATION_UNPROVEN
+ROLLBACK_PLAN=NOT_READY_PENDING_CADDY_SOURCE_RECONCILIATION
+PRODUCT_223_PUBLIC_STATE=publish;catalog_visible;currently_purchasable;test SKU;future ingress would expose it unless separately gated by Owner/Reviewer
+PPCP_ACTIVE=YES;PPCP_MERCHANT_CONNECTED=YES;PPCP_SANDBOX_ENABLED=YES;PPCP_LIVE_ENABLED=NO;READ=AUTHORITATIVE_LOCAL_PPCP_COMMON_STATE;NO_PROVIDER_API_CALL
+UNRELATED_SERVICES_CHANGED=NO
+SHARED_INFRA_WRITES=0;PUBLIC_INGRESS_CHANGE=0;PAYMENT_ACTIONS=0;PAYPAL_LIVE=NO;SECRET_VALUE_OR_HASH_ACCESS=0
+OWNER_CHECKPOINT_REQUIRED=YES;NO_ACTION_REQUESTED_IN_THIS_READ_ONLY_GATE
+TEMP_FILES_CREATED=0;TEMP_FILES_REMAINING=0;LOCAL_TEMP_CLEANUP=PASS
+EVIDENCE=EXECUTION_EVIDENCE.md;this section
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+The intended topology, if a later Reviewer-authorized Gate resolves the source drift, is a single Mini Craft hostname route to `wordpress:80` over existing `spikersun-edge`, plus a Cloudflare DNS record. Cloudflared, Docker network, and WordPress Compose changes are not indicated by the current readback. Do not apply this candidate until the active `edge-test.spikersun.com` behavior is represented in the durable Caddy source and the DNS proxy policy / public exposure of Product 223 test data are explicitly reconciled.
+
+Caddy references consulted for future planning: [Admin API](https://caddyserver.com/docs/api), [Automatic HTTPS](https://caddyserver.com/docs/automatic-https). Cloudflare tunnel mode reference: [run parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/).
