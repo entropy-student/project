@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     env:
-      G2A1_R2_ARTIFACT_DIR: ${{ runner.temp }}/g2a1-r2-artifacts
       FCS_WP_BASE_URL: http://127.0.0.1:8871
       HF_HUB_DISABLE_TELEMETRY: "1"
     steps:
@@ -22,6 +21,7 @@ jobs:
         id: preflight
         shell: bash
         run: |
+          export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
           mkdir -p "$G2A1_R2_ARTIFACT_DIR"
           cat > "$RUNNER_TEMP/g2a1-r2-preflight.py" <<'PY'
           import datetime, json, os, platform, shutil, socket, subprocess, sys, urllib.error, urllib.request
@@ -172,6 +172,7 @@ jobs:
         continue-on-error: true
         shell: bash
         run: |
+          export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
           source "$RUNNER_TEMP/fcs-ocr-venv/bin/activate"
           export FCS_SYNTHETIC_DIR="$RUNNER_TEMP/g2a1-r2-artifacts/ocr/synthetic-fixtures"
           export FCS_GENUINE_DIR="$RUNNER_TEMP/g2a1-r2-artifacts/ocr/genuine-handwriting"
@@ -186,6 +187,7 @@ jobs:
         if: steps.ocr_transformers.outcome == 'failure'
         shell: bash
         run: |
+          export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
           source "$RUNNER_TEMP/fcs-ocr-venv/bin/activate"
           python -m pip install --disable-pip-version-check paddlepaddle==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
           export FCS_SYNTHETIC_DIR="$RUNNER_TEMP/g2a1-r2-artifacts/ocr/synthetic-fixtures"
@@ -197,6 +199,7 @@ jobs:
         if: always()
         shell: bash
         run: |
+          export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
           source_path="$G2A1_R2_ARTIFACT_DIR/ocr/genuine-handwriting/genuine-handwriting-sources.json"
           if [ -f "$source_path" ]; then cp "$source_path" "$G2A1_R2_ARTIFACT_DIR/ocr/genuine-handwriting-sources.json"; fi
       - name: Start ephemeral Family Cookbook WordPress and WooCommerce testbed
@@ -204,6 +207,7 @@ jobs:
         if: always() && steps.preflight.outcome == 'success' && steps.browser.outcome == 'success'
         shell: bash
         run: |
+          export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
           wpdir=family-cookbook-studio/g2a1/r2/wp
           mkdir -p "$wpdir/proof-adapter/preview" "$wpdir/artifacts" "$G2A1_R2_ARTIFACT_DIR/wp"
           cp family-cookbook-studio/g2a1/preview/index.html "$wpdir/proof-adapter/preview/index.html"
@@ -228,6 +232,7 @@ jobs:
         if: always() && steps.start_wp.outcome == 'success'
         shell: bash
         run: |
+          export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
           wpdir=family-cookbook-studio/g2a1/r2/wp
           export FCS_WP_IDS="$GITHUB_WORKSPACE/$wpdir/artifacts/wp-test-ids.json"
           export FCS_SYNTHETIC_IMAGE="$G2A1_R2_ARTIFACT_DIR/ocr/synthetic-fixtures/F01.png"
@@ -239,6 +244,7 @@ jobs:
         if: always()
         shell: bash
         run: |
+          export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
           wpdir=family-cookbook-studio/g2a1/r2/wp
           project="${COMPOSE_PROJECT_NAME:-family-cookbook-g2a1-r2-${GITHUB_RUN_ID}}"
           cleanup_exit=0
