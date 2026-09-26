@@ -4192,3 +4192,62 @@ Result: RETURN_REVIEWER_IMAGE_ACQUISITION_AUTHORIZATION_REQUIRED
     STOP_AT_REVIEWER=YES
 
 Reviewer action required before retry: explicitly decide an immutable, verifiable acquisition method for the two missing approved images (or supply another already-sealed image package/path). Do not pull/build, transfer, create directories, or start services until that decision is recorded. No Owner Secret action is requested.
+
+
+## K6 Phase D-R1 — Image Acquisition Seal / Private Deployment Resume (2026-09-26)
+
+GATE=K6_PHASE_D_R1_IMAGE_ACQUISITION_SEAL_AND_PRIVATE_DEPLOYMENT_RESUME
+RESULT=RETURN_REVIEWER_K6_D_R1_COMPOSE_SOURCE_HASH_MISMATCH
+
+### Image resolution and acquisition
+
+- WordPress official repository `docker.io/library/wordpress`, requested tag `7.1.1-php8.3-apache`: top-level OCI index `sha256:51464c8fdb100c5cd2ebfaec1834cf111d993bc4929ef2330c1cc721eda0fc30`; unique `linux/amd64` child `sha256:f5413918c7858c97bb7d2b65f68d3ed38a97472deba9eb58eb3e1ab1eb2c4beb`. Child manifest digest response matched.
+- MariaDB official repository `docker.io/library/mariadb`, requested tag `11.4.7`: top-level OCI index `sha256:39596f079862334be04f4231664862e55d4febe54309cc62f750f2297de85b06`; unique `linux/amd64` child `sha256:b105d14ee1f4688769a57d432a9b52179e4d95f4495783ca8a41f3c783eab03c`. Child manifest digest response matched.
+- Both exact child digests were pulled only after both read-only resolutions passed. No tag-only pull, build, or additional image acquisition occurred.
+- Local image identity checks matched each exact child digest, with `OS=linux`, `Architecture=amd64`. Bounded disposable no-network/no-port/no-persistent-state probes passed: WordPress `7.1.1` / PHP `8.3.33`; MariaDB `11.4.7`.
+- Disposable probe containers were auto-removed. Mini Craft application containers, networks, and volumes were not created. A bounded check found WP-CLI absent in the WordPress image; no migration tool was installed or migration attempted.
+
+### Compose seal reconciliation — blocking return
+
+The K6 Phase B execution record seals `compose.production.yaml` at SHA-256 `03DCB12E3B8FCFC1A58329CCACE3949DEEAB64DA292AF885FA8817A16DA829BF`. The only local K6B source candidate was `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts\gates\k6-phase-b-local-deployment-package-seal\compose.production.yaml`; its observed SHA-256 was `C52E1C088D05300C93139CF87A04D4C7CA2E5D8412FEE6C788CB97ABDABF0B2B`. No exact-hash copy was found in the scoped Mini Craft workspace/archive. This is a material canonical-source integrity mismatch.
+- A candidate digest-pinned Compose was mechanically derived and rendered locally with explicit project/file selection. The render resolved exactly two services, the two approved digests, and zero host ports; after normalization, only the two image references differed from the current local candidate.
+- Because the source candidate did not match its sealed hash, that candidate was **not accepted or used**. No remote Compose command was run. The temporary candidate Compose on VPS was removed; no WordPress/MariaDB application service was started.
+
+### Accepted backup transfer and current remote state
+
+- Accepted K5 SQL (`5,286,165` bytes) and wp-content archive (`113,763,468` bytes) revalidated against K5 manifest locally and after transfer; transfer matches passed. Only the accepted SQL/wp-content recovery inputs and non-secret manifests were staged.
+- SQL header metadata identifies database `wordpress`. A project-scoped non-secret DB-user candidate `mini_craft_app` was documented locally but **not applied**; no `.env` was created.
+- Project app/mysql/wp-content directories created during staging were removed while empty after the source mismatch. Current remote residuals are only the accepted recovery inputs/manifests under `/srv/backups/mini-craft-night-kit`; files are root-owned, SQL/archive mode `0600`, manifests mode `0640`. The existing Secret tree remains at its original path.
+- Fresh post-pull prewrite snapshot: target `ops@srv1970241`, Ubuntu 24.04, Docker `29.8.0`, Compose `5.5.1`, 2 vCPU, RAM available `5,922,300 kB`, root filesystem available `91,942,862,848` bytes. Existing eight shared containers remained healthy; existing `spikersun-edge` ID unchanged. After staging, root filesystem available `91,823,329,280` bytes.
+- Final read-only check: Mini Craft container count `0`; Docker network count `8` (unchanged); Docker volume count `0`; app/mysql/wp-content paths absent; backups path retained. Existing Secret tree metadata (10 exact files, owner/group/mode/size) matched prewrite readback; no Secret content or hash was accessed.
+
+### Gate boundary and next decision
+
+```text
+IMAGE_RESOLUTION_AND_DIGEST_SEAL=PASS
+EXACT_DIGEST_PULLS=PASS
+DIGEST_PLATFORM_VERSION_VERIFICATION=PASS
+RESOLVED_COMPOSE_LOCAL_RENDER=PASS
+CANONICAL_COMPOSE_SOURCE_HASH_MATCH=FAIL
+COMPOSE_USED_FOR_DEPLOYMENT=NO
+ACCEPTED_K5_SQL_TRANSFER=PASS
+ACCEPTED_K5_WP_CONTENT_TRANSFER=PASS
+MARIADB_RESTORE=NOT_STARTED
+WP_CONTENT_RESTORE=NOT_STARTED
+URL_MIGRATION=NOT_STARTED
+WORDPRESS_HEALTH=NOT_STARTED
+MARIADB_HEALTH=NOT_STARTED
+PAYPAL_STATE_READBACK=NOT_STARTED
+PUBLIC_INGRESS_CHANGE=0
+PUBLIC_ROUTE_ENABLED=NO
+UNRELATED_SERVICES_CHANGED=NO
+SECRET_VALUE_OR_HASH_ACCESS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+SHARED_INFRA_WRITES=0
+DOCKER_APPLICATION_WRITES=0
+REMOTE_WRITES=PROJECT_SCOPED_ARTIFACT_STAGING_ONLY
+STOP_AT_REVIEWER=YES
+```
+
+Reviewer action required: reconcile the current K6B Compose source against the accepted seal—restore the exact sealed artifact or issue an updated accepted source/hash and deployment instruction. Do not resume runtime creation, restore, or URL migration until the Compose source identity is resolved.
