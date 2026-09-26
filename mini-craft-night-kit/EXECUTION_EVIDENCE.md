@@ -4574,3 +4574,67 @@ STOP_AT_REVIEWER=YES
 ```
 
 The strict SSH transport succeeded once with the recorded account and matching pinned host key. The remote probe printed the hostname, but its username check used UID 0 explicitly, so it could not certify the effective SSH user. The probe exited before Docker/application checks and made no remote changes. The one-attempt limit is exhausted; no retry or cleanup was performed. Reviewer direction is required before any further remote operation.
+
+
+## K6_PHASE_D_R6R2_REMOTE_IDENTITY_RECONCILIATION_AND_BOOTSTRAP_RESUME — RETURN (2026-09-26)
+
+Authority reread from current GitHub canonical versions: VPS Project Governance v0.1.6 and active references/addenda; Mini Craft Reviewer Handoff, Storage Manifest, R6R2 Decision and Execution Pack, original D-R6 Decision/Pack, latest Evidence/Handoff; and the unique local Shared VPS Handoff. Local identity reference, public fingerprint, and normal known_hosts pin set had already passed read-only verification. One strict SSH invocation was made; no retry or alternate trust path.
+
+```text
+SSH_NATIVE_EXIT=0
+SSH_HOST_KEY_PRESENTED=YES
+SSH_HOST_KEY_MATCH=YES
+REMOTE_PRE_SUDO_WHOAMI=ops
+REMOTE_PRE_SUDO_ID_UN=ops
+REMOTE_PRE_SUDO_UID_NONZERO=YES
+REMOTE_HOSTNAME=srv1970241
+D_R6_READINESS=PASS
+ROOT_TABLE_COUNT=52;ROOT_TABLE_SET_MATCH=YES
+APP_TABLE_COUNT=52;APP_TABLE_SET_MATCH=YES
+WP_OPTIONS_PRESENT=YES
+WORDPRESS_RUNTIME_CORE=PASS
+WP_CONTENT_BIND=PASS
+WP_SECRET_ALLOWLIST=PASS_9_OF_9;DB_ROOT_NOT_MOUNTED
+DB_SECRET_ALLOWLIST=PASS_2_OF_2
+WP_TMPFS_512M=PASS
+DB_NETWORK_PRIVATE=PASS
+WORDPRESS_BOOTSTRAP=PASS
+WORDPRESS_INSTALLED_STATE=YES
+WOOCOMMERCE_CORE_STATE=PASS
+HOME_SITEURL_ROW_CARDINALITY=2
+HOME_SITEURL_PRESTATE=LOCALHOST_BOTH
+HOME_SITEURL_SCALAR_UPDATE=COMMITTED_EXACTLY_TWO_ROWS
+HOME_SITEURL_TRANSACTION=COMMITTED_AND_POSTREAD_VERIFIED
+FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
+WORDPRESS_PRIVATE_PRIMARY_ROUTES=FAIL
+PRIVATE_ROUTE_STATUS_SUMMARY=/:200;/shop/:200;/product/mini-craft-night-kit/:200;/cart/:200;/checkout/:302;/my-account/:200;/wp-json/:200
+WP_CONTENT_MEDIA_STATE=PASS
+PPCP_ACTIVE=YES
+PAYPAL_MODE=UNVERIFIED
+PAYPAL_LIVE=UNVERIFIED
+WORDPRESS_RECENT_FATALS=0
+WORDPRESS_RESTART_COUNT=0;STABLE=YES
+MARIADB_HEALTH=HEALTHY
+DB_PUBLIC_PORT=NONE
+WORDPRESS_HOST_PORT=NONE
+CADDY_STATE=UP
+CLOUDFLARED_STATE=UP
+CURRENT_80_443_OWNER=CADDY
+UFW_STATE=ACTIVE
+MINICRAFT_DOMAIN_IN_CADDY=NO;SHARED_CADDY_WILDCARD_PRESENT=NO
+UNRELATED_SERVICES_CHANGED=NO
+PUBLIC_INGRESS_CHANGE=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+REMOTE_TMPFS_DB_AUTH_CLEANUP=PASS
+LOCAL_SSH_DIAGNOSTIC_TEMP_CLEANUP=PASS
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+RESULT=RETURN_REVIEWER_D_R6R2_PRIVATE_APP_VALIDATION_FAILED
+STOP_AT_REVIEWER=YES
+```
+
+The exact-two-row scalar update was the only database write. Both values were verified after commit. No serialized content was migrated. Private GET probes did not follow redirects: six primary routes returned 200; Checkout returned 302 and was not classified as the expected same-path canonical HTTPS redirect. The redirect target was not retained or emitted. PPCP was active, but the bounded known-setting marker probe did not establish Sandbox mode; consequently neither Sandbox nor Live-disabled state is claimed as verified. These two validation gaps caused the RETURN. No further remote command, retry, lifecycle action, payment, or public-ingress action was performed.
+
+DB authentication used only the existing mounted database credentials through short-lived mode-0600 option files in the MariaDB container's verified /dev/shm tmpfs; those files were removed and absence checked. No credential value or hash was inspected for reporting, emitted, or recorded. The one-time local non-secret executor and stderr sink are absent/cleaned.
+
