@@ -4251,3 +4251,55 @@ STOP_AT_REVIEWER=YES
 ```
 
 Reviewer action required: reconcile the current K6B Compose source against the accepted seal—restore the exact sealed artifact or issue an updated accepted source/hash and deployment instruction. Do not resume runtime creation, restore, or URL migration until the Compose source identity is resolved.
+
+
+---
+
+## K6_PHASE_D_R2_COMPOSE_SOT_RECONCILIATION_AND_PRIVATE_RESTORE — Executor return (2026-09-26)
+
+```text
+GATE=K6_PHASE_D_R2_COMPOSE_SOT_RECONCILIATION_AND_PRIVATE_RESTORE
+RESULT=RETURN_D_R2_MARIADB_RESTORE_INCOMPLETE
+CANONICAL_SOURCE_SHA=C52E1C088D05300C93139CF87A04D4C7CA2E5D8412FEE6C788CB97ABDABF0B2B
+STALE_03DC_RECORD_IGNORED=YES
+RESOLVED_COMPOSE_SHA=85ABEAAE1C75D775937EA2DDD7395E39F364044CC03DCF317861FDED2110EA8C
+SEMANTIC_DIFF_IMAGE_REFS_ONLY=PASS;WORDPRESS_AND_MARIADB_ONLY
+RESOLVED_COMPOSE_RENDER=PASS;TWO_SERVICES;NO_HOST_PORTS;DB_NETWORK_INTERNAL;EDGE_EXTERNAL
+FRESH_SHARED_VPS_PREFLIGHT=PASS;STRICT_RECORDED_HOST_KEY;HOST=srv1970241
+ROOT_FILESYSTEM_BEFORE=102888095744_TOTAL;11049127936_USED;91822190592_AVAILABLE;11_PERCENT
+STAGED_K5_SQL_HASH=PASS;BB6A9F56C532C395B89089FC460FB5F20A038A012C84DDD210DCCF5E1AB4C602
+STAGED_K5_WP_CONTENT_HASH=PASS;543239EFEBE20915F3A8E96B65986CB4A5EB0B187E7E24C9E7286A7126E41D08
+BACKUP_RETRANSFER=NO
+IMAGE_DIGESTS=PASS;WORDPRESS=f5413918c7858c97bb7d2b65f68d3ed38a97472deba9eb58eb3e1ab1eb2c4beb;MARIADB=b105d14ee1f4688769a57d432a9b52179e4d95f4495783ca8a41f3c783eab03c
+PROJECT_PATHS_CREATED=YES;/srv/apps/mini-craft-night-kit;/srv/data/mini-craft-night-kit/mysql;/srv/data/mini-craft-night-kit/wp-content
+NON_SECRET_COMPOSE_ENV=INSTALLED;DATABASE=wordpress;APP_USER=mini_craft_app
+WP_CONTENT_RESTORE=PASS;FILES=10972;APPARENT_BYTES=207282778;OWNER=33:33;UPLOADS_PRESENT=YES
+SQL_RESTORE=NOT_ACCEPTABLE;INIT_SCRIPT_INVOKED_AND_MARIADB_HEALTHY;APPLICATION_SCHEMA_TABLES_VISIBLE=0;WP_OPTIONS_TABLE=ABSENT
+WP_RUNTIME=CONTAINER_HEALTHY_BUT_INSTALL_REDIRECT_302_TO_WP_ADMIN_INSTALL;APPLICATION_READY=NO
+HOME_SITEURL_SCALAR_UPDATE=NOT_EXECUTED;REASON=WP_OPTIONS_ABSENT
+FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
+MARIADB_STATE=STOPPED_AFTER_FAILED_RESTORE_VERIFICATION
+WORDPRESS_STATE=STOPPED_AFTER_FAILED_RESTORE_VERIFICATION
+HOST_PORTS=NONE;PUBLIC_ROUTE_ENABLED=NO
+NETWORK=MINICRAFT_INTERNAL_DATABASE_NETWORK_CREATED;SHARED_EDGE_MEMBERSHIP_ONLY;NO_SHARED_NETWORK_CONFIGURATION_CHANGE
+DOCKER_VOLUMES_CREATED=0
+UNRELATED_SERVICES_CHANGED=NO;ORIGINAL_8_SHARED_CONTAINERS_UNCHANGED
+SECRET_METADATA=UNCHANGED;10_FILES;NINE_ROOT_33_MODE_0440;ONE_ROOT_ROOT_MODE_0400;NO_CONTENT_OR_HASH_ACCESS
+K5_RECOVERY_SOURCES=RETAINED_AND_HASH_MATCHING
+REMOTE_TEMP_SQL=REMOVED;REMOTE_HELPER=REMOVED;HOST_TMP_FILES=0
+ROLLBACK_READY=PARTIAL;ONLY_MINI_CRAFT_CONTAINERS_STOPPED;K5_SOURCES_AND_SECRET_TREE_RETAINED;PARTIAL_DB_STATE_PRESERVED_FOR_REVIEW
+PUBLIC_INGRESS_CHANGE=0
+PAYPAL_MODE=NOT_RECONFIGURED;HISTORICAL_SANDBOX_STATE_NOT_REQUALIFIED_IN_THIS_FAILED_RESTORE
+PAYPAL_LIVE=NO
+PAYMENT_ACTIONS=0
+VPS_WRITES=YES;PROJECT_SCOPED_ONLY
+SHARED_INFRA_WRITES=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+STOP_AT_REVIEWER=YES
+```
+
+The accepted SQL and wp-content package were reused from the already staged, hash-matching recovery inputs. The SQL package structurally contains 52 table-creation statements and 36 insert statements; only statement counts were checked. MariaDB’s official initialization log was processed through a field-filtering classifier (no raw log lines emitted): it recorded the restore script as invoked and no error line, and the service healthcheck passed. Nevertheless, the WordPress runtime’s database connection reported the selected `wordpress` schema with zero visible tables, and `wp_options` was absent. This fails the required restore verification; container health alone was not treated as application restore success.
+
+No URL option was changed, no full serialized URL migration was attempted, and no public ingress or shared service configuration was modified. The incomplete Mini Craft containers are stopped (not removed); the partial project data remains preserved, with the accepted K5 sources and unchanged Secret tree available for Reviewer-directed recovery. The exact cause of the import/schema discrepancy is unresolved and requires Reviewer direction before any restore retry.
+
+Local non-secret Gate artifacts: `mini-craft-night-kit-workspace/artifacts/gates/k6-phase-d-r2-compose-sot-reconciliation-and-private-restore/` (resolved Compose retained; temporary PHP helper removed).
