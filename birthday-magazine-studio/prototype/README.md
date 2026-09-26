@@ -1,3 +1,5 @@
+> **Current governance note:** This prototype is a visual/interaction reference, not the current MVP input contract. The current free-preview target is `name / age / style + optional ONE browser-local cover photo`. The prototype's older "up to six photos + memory" free step must not be copied into the production MVP unless G2A2 explicitly changes that decision.
+
 # Good Issue — Birthday Magazine Studio prototype
 
 This is a browser-only prototype for the two steps being explored:

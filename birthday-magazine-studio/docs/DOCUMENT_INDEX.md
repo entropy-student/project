@@ -17,7 +17,9 @@
 | `WORDPRESS_STACK_RESEARCH.md` | Theme/plugin research | Candidate research only; no architecture approval |
 | `G1_US_FIRST_EXPERIMENT.md` | US-first offer/experiment support | Supporting design; Handoff defines current Gate |
 | `TECHNICAL_ROUTE.md` | Reuse-vs-custom architecture / implementation sequence | **Current supporting architecture** |
-| `G2A_FRONTEND_COMPONENT_POC.md` | Current frontend/component PoC execution contract | **CURRENT GATE CONTRACT** |
+| `G2A_FRONTEND_COMPONENT_POC.md` | Legacy combined G2A pointer | **SUPERSEDED — DO NOT EXECUTE** |
+| `G2A1_COMPONENT_FEASIBILITY_POC.md` | Frontend + reusable component feasibility | **CURRENT GATE CONTRACT** |
+| `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **NEXT / HOLD** |
 | `G1_TWO_STEP_AI_PRODUCT_FLOW.md` | Two-step product-flow design | Current supporting design where consistent with Handoff |
 | `ACQUISITION_GROWTH_PLAN.md` | Validation/acquisition plan | Supporting plan; not evidence of actual transactions |
 | `../prototype/` | Browser sample | Prototype evidence only; not production |

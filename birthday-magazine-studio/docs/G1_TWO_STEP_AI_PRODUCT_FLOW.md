@@ -158,9 +158,13 @@ OpenAI 当前 API 定价页中，GPT-6 Luna 的标准短上下文价列为每百
 | 正式 AI 生成 | 付款和订单资料完整后，后台生成；当前尚未实现 |
 | WordPress/PDF/文件访问 | 候选已调研，尚未部署或集成 |
 
-## 推荐下一步
+## 当前执行顺序
 
-1. 冻结免费的本地预览规格（封面 + 1–2 个样例页面、上传图片不上服务器）。
-2. 定义付费后问卷、照片数量、AI 生成输出结构和 QA 条件。
-3. 先按 Mini Craft 路径完成 WooCommerce 本地订单闭环与 PayPal Sandbox；再把“已付款 entitlement → 唯一生成任务 → 私有 proof → final PDF”接通。
-4. 记录每单 API 用量、重试和存储成本；再决定额外重新生成规则以及开放哪些国际市场。
+本文件的旧“推荐下一步”已被 Reviewer Gate 顺序收敛为：
+
+1. **G2A1**：先验证前端、Storelly 本地预览、订单绑定上传和私有文件交付这些成熟组件是否真的可复用。
+2. **G2A2**：冻结免费输入、付费照片数量、问卷、页数、逐页内容、修改次数、QA 和数据处理。
+3. **G2B**：使用合成素材实现 AI → 页面 → PDF 本地 Solution Proof。
+4. **G3A**：验证 WooCommerce 本地 commerce loop。
+5. **G3B**：按 Mini Craft 路径验证 PayPal Sandbox，并接通 paid entitlement → generation job → private delivery。
+6. 后续再进入 bounded Live Canary 与真实经济数据验证。
