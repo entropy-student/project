@@ -2226,3 +2226,26 @@ Reviewer decision needed: diagnose/authorize a bounded SQL restore retry or othe
 ### K6 D-R2 cleanup follow-up
 
 The temporary non-secret PHP helper was removed from the stopped WordPress container using one brief start of that Mini Craft container, root-owned deletion, and immediate stop. In-container absence and a subsequent layer diff with no helper entry were verified. MariaDB remained stopped. Final state remains both Mini Craft containers exited and no host ports.
+
+## K6_PHASE_D_R3_DB_RESTORE_DIAGNOSIS_AND_CONDITIONAL_RETRY — STOP_AT_REVIEWER (2026-09-26)
+
+```text
+GATE=K6_PHASE_D_R3_DB_RESTORE_DIAGNOSIS_AND_CONDITIONAL_RETRY
+RESULT=RETURN_REVIEWER_D_R3_SCHEMA_OR_DUMP_DRIFT
+SUMMARY=K5 SQL hash and structure matched the accepted source, and root/app both confirmed the existing wordpress schema is empty. The dump contains an unguarded CREATE DATABASE wordpress while that schema already exists; no reviewed safe way to skip/alter that statement is authorized, so no import or grant change was attempted.
+K5_SQL_HASH=PASS;BB6A9F56C532C395B89089FC460FB5F20A038A012C84DDD210DCCF5E1AB4C602
+DUMP_TABLES=52;CREATE_DATABASE=wordpress_UNGUARDED;USE=wordpress;INSERTS=36;DROP_TABLE_IF_EXISTS=52_MATCHING_TARGETS;CROSS_SCHEMA_DDL=NONE;ACCOUNT_OR_DATABASE_DESTRUCTIVE_STATEMENTS=NONE
+ROOT_WORDPRESS_TABLES=0;WP_OPTIONS=ABSENT
+APP_USER=mini_craft_app@%;APP_WORDPRESS_TABLES=0;WP_OPTIONS=ABSENT;EXISTING_SCHEMA_PRIVILEGES_PRESENT
+RESTORE_PATH=NOT_EXECUTED;IMPORT_RETRIES=0;DB_PERMISSION_MUTATION=0
+MARIADB=RUNNING_HEALTHY_AT_RETURN;WORDPRESS=STOPPED
+POST_RETURN_CONTAINER_OPERATIONS=0
+HOME_SITEURL_SCALAR_UPDATE=NOT_EXECUTED
+FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
+SECRET_OUTPUT_OR_HASH=0;AUTH=EXISTING_FILE_IN_MEMORY_VIA_TMPFS_OPTION_FILE;TMPFS_FILE_CLEANUP=PASS
+SHARED_INFRA_WRITES=0;PUBLIC_INGRESS_CHANGE=0;PAYMENT_ACTIONS=0;PAYPAL_LIVE=NO
+EVIDENCE=EXECUTION_EVIDENCE.md (D-R3 section)
+EVIDENCE_COMMIT=9b9fc283293079d65cdcdad4f857723acdc0ecf0
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
