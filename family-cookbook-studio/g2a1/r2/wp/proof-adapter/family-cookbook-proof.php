@@ -65,7 +65,14 @@ final class FCS_G2A1_Proof_Adapter {
 
         $files = $request->get_file_params();
         $file = $files['file'] ?? null;
-        if (!is_array($file) || ($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
+        if (!is_array($file)) {
+            return new WP_Error('fcs_file_required', 'One upload file is required.', ['status' => 400]);
+        }
+        $upload_error = (int) ($file['error'] ?? UPLOAD_ERR_NO_FILE);
+        if (in_array($upload_error, [UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE], true)) {
+            return new WP_Error('fcs_file_too_large', 'Maximum file size is 2 MiB.', ['status' => 413]);
+        }
+        if ($upload_error !== UPLOAD_ERR_OK) {
             return new WP_Error('fcs_file_required', 'One upload file is required.', ['status' => 400]);
         }
         $size = (int) ($file['size'] ?? 0);
