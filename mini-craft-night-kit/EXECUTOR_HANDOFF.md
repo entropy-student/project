@@ -2547,3 +2547,14 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Counters: `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`, `PAYMENT_ACTIONS=0`, `PAYPAL_LIVE=NO`, `SECRET_VALUE_OR_HASH_ACCESS=0`.
 - Evidence section appended to `EXECUTION_EVIDENCE.md`. Request Reviewer direction on the helper failure before any follow-up; do not proceed to ingress mutation.
 - `STOP_AT_REVIEWER=YES`.
+
+
+## Current Executor Handoff — K6 Phase F-R1R1
+
+- Gate: `K6_PHASE_F_R1R1_NATIVE_READONLY_CADDY_SOURCE_RECONCILIATION`
+- Result: `RETURN_REVIEWER_F_R1R1_READONLY_PROBE_FAILED`.
+- Exactly one strict SSH session succeeded; host-key trust and pre-sudo identity `ops@srv1970241` passed. Caddy, WordPress and MariaDB were running with accepted restart counts (0), and MariaDB was healthy.
+- The first port metadata probe failed at `WP_PORTS`: `docker inspect --format` returned native exit 64. The gate's no-reconnect rule was honored; later probes were not run.
+- Fresh public Google DoH A/AAAA/CNAME checks returned NXDOMAIN (DNS status 3). Caddy startup/autosave/Admin API reconciliation, route reconstruction, candidate adapt, and indexing read remain unverified.
+- No Caddy, Docker, DNS, app, product, indexing, payment, Secret, or Shared Infrastructure mutation occurred. No remote/local persistent temporary file was created.
+- Evidence appended to `EXECUTION_EVIDENCE.md`; Reviewer action is needed before another Gate. `STOP_AT_REVIEWER=YES`.
