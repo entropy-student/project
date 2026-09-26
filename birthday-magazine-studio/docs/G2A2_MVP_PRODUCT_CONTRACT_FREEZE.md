@@ -1,7 +1,7 @@
 # G2A2 — MVP Product Contract Freeze
 
 > Reviewer / Owner decision gate  
-> Status: CURRENT — G2A1 PASS; Owner fixed authenticated-account MVP on 2026-09-27  
+> Status: PASS — frozen on 2026-09-27  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)
 
 ## Goal
@@ -19,15 +19,13 @@ G2B must not start while the core output and intake schema are still moving.
 - Storelly remains rejected.
 - Vanquish Upload Files / Attach Me may continue only on their registered-account paths unless a later Gate replaces them.
 
-## Working hypotheses to review
+## Frozen contract
 
-These are not yet final:
-- 12-page US Letter PDF;
-- 8–12 paid-intake photos;
-- 6 structured questions;
-- one free cover + 1–2 spread preview;
-- fixed deterministic page templates;
-- customer original photos as primary visual material.
+Canonical artifact:
+
+`MVP_PRODUCT_CONTRACT.md`
+
+The earlier working hypotheses and R1/R2 research remain provenance only. The frozen MVP contract now controls G2B.
 
 ## Must Freeze
 
@@ -102,3 +100,6 @@ It must be explicit enough that G2B can implement a synthetic fixture end-to-end
 PASS_G2A2_MVP_PRODUCT_CONTRACT_FREEZE
 CURRENT_GATE=G2B_LOCAL_AI_PDF_SOLUTION_PROOF
 ```
+
+Reviewer decision:
+- `REVIEWER_DECISION_G2A2_PASS.md`
