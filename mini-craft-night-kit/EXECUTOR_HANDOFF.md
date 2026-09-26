@@ -2222,3 +2222,7 @@ STOP_AT_REVIEWER=YES
 ```
 
 Reviewer decision needed: diagnose/authorize a bounded SQL restore retry or other supported import procedure. Do not update `home/siteurl`, run full serialized migration, start public ingress, or enter the next Gate until the application schema restore is verified.
+
+### K6 D-R2 cleanup follow-up
+
+The temporary non-secret PHP helper was removed from the stopped WordPress container using one brief start of that Mini Craft container, root-owned deletion, and immediate stop. In-container absence and a subsequent layer diff with no helper entry were verified. MariaDB remained stopped. Final state remains both Mini Craft containers exited and no host ports.
