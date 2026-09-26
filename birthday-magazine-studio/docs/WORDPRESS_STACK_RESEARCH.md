@@ -76,3 +76,26 @@ WooCommerce 的下载品可在付款后给客户订单页、邮件和账户下�
 - [WordPress.org — Vanquish Upload Files](https://wordpress.org/plugins/vanquish-upload-files-for-woocommerce/)
 - [WooCommerce — Digital/Downloadable Product Guide](https://woocommerce.com/document/digital-downloadable-product-handling/)
 - [Blocksy — Starter Sites](https://creativethemes.com/blocksy/starter-sites/)
+
+
+## 2026-09-26 增补：美国 PDF 试点的逐单交付
+
+前文的插件候选用于比较自助产品编辑器和实体照片书生产。本项目首轮已确定美国英语 + 电子 PDF，且 Owner 报告需求已验证。短期不需要让顾客在线设计整本杂志；更小的验证链路是“付款 → 订单专属照片/问题采集 → 后台人工/AI 制作 → 买家看 proof → 最终 PDF”。
+
+| 试点角色 | 候选/做法 | 选择理由 | 已知限制 |
+|---|---|---|---|
+| 主题 | [Blocksy](https://wordpress.org/themes/blocksy/) 免费版 | WordPress.org 标注免费，页面显示 300,000+ 活跃安装及 WooCommerce 支持 | 具体 Starter Site 和付费功能逐项核对；不包含杂志排版系统 |
+| 商店 | [WooCommerce](https://wordpress.org/plugins/woocommerce/) | WordPress.org 开源免费核心，支持商品、订单和数字品 | 每位客户的内容生产和 PDF 绑定仍需人工或衔接 |
+| 上传方案 A | [PPOM](https://wordpress.org/plugins/woocommerce-product-addon/) | WordPress.org 开源、20,000+ 活跃安装，免费插件页面列出文件上传字段、大小/文件类型限制、进度和缩略图 | 需在暂存环境确认每张照片如何映射到订单；主要适用于下单前收集资料 |
+| 上传方案 B | [Vanquish Upload Files](https://wordpress.org/plugins/vanquish-upload-files-for-woocommerce/) | 免费版可在订单页提交素材，支持订单关联；每字段一个文件，支持多个字段 | 页面显示 20+ 活跃安装；需验证访客订单链接、订单绑定、访问控制和移动端。使用前先暂存核验 |
+| 逐单文件 | [Vanquish Attach Me](https://wordpress.org/plugins/vanquish-attach-me-for-woocommerce/) 或 WooCommerce 逐单下载权限 | Attach Me 免费版主张使用受订单权限检查的私有链接，并可把文件放进订单邮件；原生下载品支持付款后邮件和下载页面 | Attach Me 页面显示少于 10 个活跃安装，客户审批属于 Premium；不得仅凭描述视为已安全/兼容，需在暂存站验 guest order。WooCommerce 原生商品文件适合静态文件，不会为客户自动生成 PDF |
+| 支付 | WooCommerce Stripe Gateway | 官方文档称扩展没有开通/月费；标准 Stripe 费率另算 | 必须先确认卖家收款主体所在国家与开户资格，不能只以美国客户市场推断 |
+| 邮件 | Resend 免费档 | 当前价格页列 3,000 封/月、100 封/日 | 需设置发信域名、SPF/DKIM 并验证 WooCommerce 发信接入 |
+
+**建议：** 上传 PoC 先比较 PPOM 与 Vanquish Upload，只留一款；逐单 proof/final 另验证附件访问权限。Vanquish 的低安装量是主要风险，不应跳过兼容和访客权限验证。即使自动化邮件失败，试点仍可由后台逐单发送私有文件，不用先开发新系统。
+
+WooCommerce 的下载品在付款后可出现在订单页、邮件或账户下载页，但只会交付已配置的下载文件。可参阅 [WooCommerce Digital/Downloadable Product Guide](https://woocommerce.com/document/digital-downloadable-product-handling/)。美国销售税计算工具不判断商户义务，也不会申报/代缴，见 [WooCommerce Tax Guide](https://woocommerce.com/document/woocommerce-shipping-and-tax/woocommerce-tax/)。
+
+托管价格仅作估算：Bluehost 当前官网列举的 Starter 首期价与续订价分别为 US$3.99 和 US$9.99/月（36 个月期限），Business 为 US$6.99 和 US$13.99/月；结账条款会变，暂不视为已选供应商或最终预算。见 [官方 WordPress hosting prices](https://www.bluehost.com/pricing/wordpress-hosting)。
+
+核心成本公式、隐私原则和开发前决策门已写入 [G1 剩余调研](./G1_REMAINING_RESEARCH.md)。
