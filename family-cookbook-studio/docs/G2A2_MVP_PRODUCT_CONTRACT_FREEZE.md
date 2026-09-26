@@ -56,7 +56,7 @@ G2A2 still freezes:
 ### Transcription fidelity
 - what counts as critical field;
 - OCR confidence/uncertainty threshold;
-- when second-pass OCR/VLM is allowed;
+- exact triggers for the TrOCR fallback pass and for `USER_CONFIRM_REQUIRED`;
 - what is never auto-corrected;
 - exact user/reviewer confirmation behavior;
 - whether original transcription and normalized version are both visible.
@@ -108,7 +108,7 @@ G2A2 still freezes:
 - deletion policy;
 - access roles;
 - analytics exclusions;
-- third-party OCR/VLM/storage disclosure;
+- storage/processing disclosure and any later third-party processing if architecture changes;
 - whether original images remain downloadable to buyer.
 
 ## Required artifact
