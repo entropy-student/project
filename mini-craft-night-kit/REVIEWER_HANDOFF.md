@@ -41,7 +41,11 @@ D_R6_IDENTITY_READINESS_BOOTSTRAP=PASS_ACCEPTED
 HOME_SITEURL_SCALAR_UPDATE=PASS_COMMITTED_EXACTLY_TWO_ROWS
 K6_PHASE_D_R6R3_PRIVATE_APP_VALIDATION_RECONCILIATION=RETURN_EXECUTOR_RESULT_UNAVAILABLE
 D_R6R3_REMOTE_PAYLOAD_WRITE_SCOPE=ZERO_READ_ONLY_ONLY
-CURRENT_GATE=K6_PHASE_D_R6R3R1_EXECUTION_WRAPPER_RECOVERY_AND_PRIVATE_VALIDATION_RESUME
+K6_PHASE_D_R6R3R1_EXECUTION_WRAPPER_RECOVERY_AND_PRIVATE_VALIDATION_RESUME=REVIEWER_PASS_BY_ACCEPTED_HISTORICAL_AND_FRESH_NO_DRIFT
+D_R6_PRIVATE_RUNTIME_VALIDATION=PASS
+WORDPRESS_PRIVATE_APP_VALIDATION=PASS
+PAYPAL_SANDBOX_LOCAL_CONFIG_STATE=PASS
+CURRENT_GATE=K6_PHASE_E_SERIALIZED_SAFE_URL_MIGRATION
 CURRENT_GATE_STATUS=AUTHORIZED_AWAIT_EXECUTOR
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=YES_PRIVATE_RUNTIME
 PRIVATE_RUNTIME_PUBLIC_INGRESS=NO
@@ -52,15 +56,15 @@ REAL_PAYMENT=NO
 OLD_DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
 OLD_VALUES_REQUIRED=NO
 C1R5_OWNER_AUTHORIZATION=FRESH_EXPLICIT_BOUNDED
-EXECUTOR_STATUS=D_R6R3_RETURN_REVIEWED_D_R6R3R1_READY
+EXECUTOR_STATUS=D_R6R3R1_REVIEWED_PASS_PHASE_E_READY
 OWNER_ACTION=NONE
 ```
 
-Current Gate decision: `docs/REVIEWER_DECISION_K6_D_R6R3_RETURN_D_R6R3R1_WRAPPER_RECOVERY_AND_RESUME.md`.  
-Current Execution Pack: `review-packets/K6_D_R6R3R1_EXECUTION_WRAPPER_RECOVERY_AND_PRIVATE_VALIDATION_RESUME.md`.
+Current Gate decision: `docs/REVIEWER_DECISION_K6_D_R6R3R1_PASS_E_SERIALIZED_SAFE_URL_MIGRATION.md`.  
+Current Execution Pack: `review-packets/K6_E_SERIALIZED_SAFE_URL_MIGRATION.md`.
 Executor dispatch record: GitHub issue #14 (`[Executor] Mini Craft K6 Phase D private deployment`).
 
-Current accepted deployment facts: the ten-Secret current state is qualified for K6 deployment; the accepted K5 MariaDB restore contains the exact expected 52-table root/app-visible set with `wp_options` present; wp-content is restored; the digest-pinned WordPress/MariaDB private runtime exists with no host ports; SSH transport/trust and pre-sudo `ops@srv1970241` identity are proven; WordPress bootstrap/installed-state pass; `home` and `siteurl` were transactionally updated from `http://localhost:8093` to `https://minicraft.spikersun.com` and post-read verified. D-R6R3 attempted that read-only reconciliation but its local execution wrapper returned no inspectable SSH output/native exit. The submitted remote payload contained zero write commands, so no consequential-write ambiguity exists. D-R6R3R1 first seals local native-process observability without network access, then conditionally resumes only the anonymous empty-cart Checkout redirect and current PPCP Sandbox/Live-disabled read-only checks. Full serialized URL migration, Shared Ingress, PayPal Live, real payment and launch remain unauthorized.
+Current accepted deployment facts: the ten-Secret current state is qualified for K6 deployment; the accepted K5 MariaDB restore contains the exact expected 52-table root/app-visible set with `wp_options` present; wp-content is restored; the digest-pinned WordPress/MariaDB private runtime exists with no host ports; SSH transport/trust and pre-sudo `ops@srv1970241` identity are proven; WordPress bootstrap/installed-state pass; `home` and `siteurl` were transactionally updated from `http://localhost:8093` to `https://minicraft.spikersun.com` and post-read verified. D-R6R3R1 sealed local wrapper observability, reconfirmed private runtime continuity, proved the anonymous empty-cart Checkout redirect is the accepted same-origin Cart redirect, and freshly proved PPCP active/connected/Sandbox YES/Live NO. The current onboarding endpoint did not emit a confirmable completion boolean, but accepted K3R9/K3R11 evidence proved onboarding completed and no material-drift evidence exists; Reviewer therefore closes D-R6 private runtime validation as PASS. Phase E now performs the serialized-safe migration of the two accepted historical origins while the site remains private. Full serialized URL migration, Shared Ingress, PayPal Live, real payment and launch remain unauthorized.
 
 The historical C1R5 helper-source auditability limitation and old encrypted C1 pending artifact remain recorded, but they no longer block the qualified current Secret state.
 
