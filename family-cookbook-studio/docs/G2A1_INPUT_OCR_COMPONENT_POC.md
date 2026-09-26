@@ -10,7 +10,7 @@ Before polishing UI, connecting payment or building the full cookbook generator,
 
 This Gate must answer:
 
-1. which OCR/handwriting route is viable;
+1. whether the accepted PaddleOCR-primary + TrOCR-fallback route is viable without adding more OCR providers/models;
 2. whether critical recipe fields can be structured with provenance;
 3. whether ambiguity fails closed instead of being guessed;
 4. whether order-bound image upload can be reused;
@@ -29,14 +29,14 @@ Minimum classes:
 - fractions/units/temperature/time;
 - one mixed-language sample only if relevant to intended scope.
 
-Run the accepted benchmark order:
-1. **PaddleOCR** — first open-source/self-host candidate;
-2. **Microsoft TrOCR** — second local handwriting candidate/fallback benchmark;
-3. **Tesseract** — printed-text control only;
-4. optional managed/cloud handwriting OCR comparator if credentials are already safely available and no purchase is required;
-5. optional VLM/vision path only on difficult/ambiguous regions.
+Validate only this accepted MVP route:
+1. run **PaddleOCR** on each full-page fixture;
+2. apply deterministic checks for low confidence and critical values (fractions, quantities, units, temperatures, timing);
+3. crop only suspicious lines/regions and run **Microsoft TrOCR** on those;
+4. when results still disagree/remain uncertain, mark `USER_CONFIRM_REQUIRED` and preserve the source crop;
+5. measure how often TrOCR resolves the ambiguity and how often user confirmation is still required.
 
-A managed/cloud candidate is no longer required for PASS if the local benchmark provides sufficient evidence. Do not block G2A1 merely because cloud credentials are absent.
+Do **not** add or benchmark Tesseract, cloud OCR or VLM/vision in the default Gate. If this route proves insufficient, return evidence to Reviewer instead of silently expanding the architecture.
 
 Record:
 - exact transcription;
@@ -116,8 +116,7 @@ Using a synthetic PDF/text fixture:
 - local/test WordPress/WooCommerce;
 - free/open-source components;
 - public/synthetic recipe images;
-- bounded cloud OCR benchmark if credentials are already safely available and no paid purchase/real customer data is required;
-- local model/open-source OCR;
+- PaddleOCR + Microsoft TrOCR local/open-source OCR only;
 - minimal glue code;
 - screenshots/network/structured benchmark output;
 - exact version/source recording.
@@ -128,6 +127,7 @@ Using a synthetic PDF/text fixture:
 - real payment;
 - paid plugin/provider purchase without Owner checkpoint;
 - production account/Secret exposure;
+- additional OCR engines, managed/cloud OCR or VLM/vision without a new Reviewer decision;
 - domain/VPS/public deployment;
 - full production cookbook generator;
 - physical print order;
@@ -151,8 +151,12 @@ For each candidate/component:
 
 G2A1 PASS requires:
 
-- PaddleOCR and TrOCR have both been exercised on the fixture set unless a precise technical blocker is evidenced;
-- one preferred OCR path and one fallback/review strategy are evidence-backed, or a precise RETURN identifies why not;
+- PaddleOCR has been exercised as the full-page primary engine;
+- TrOCR has been exercised specifically on PaddleOCR's suspicious/ambiguous regions;
+- routing criteria to TrOCR are explicit and evidence-backed;
+- unresolved disagreements fail closed to `USER_CONFIRM_REQUIRED`;
+- the resulting manual-confirmation burden is measured;
+- the two-engine route is either evidence-backed as sufficient for MVP or a precise RETURN explains why it is not;
 - recipe schema/provenance mapping works on fixtures;
 - critical ambiguity fails closed;
 - browser-local zero-token preview is feasible;
