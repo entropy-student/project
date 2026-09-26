@@ -4820,3 +4820,24 @@ STOP_AT_REVIEWER=YES
 ```
 
 Reviewer follow-up is required to resolve the disposable helper's official-entrypoint/core initialization constraint while preserving the read-only wp-content bind. No public ingress, webhook/provider action, payment, or Live action was entered.
+
+
+## K6 Phase E R1 — In-place WP-CLI PHAR serialized URL migration
+
+- Gate: `K6_PHASE_E_R1_IN_PLACE_WPCLI_PHAR_SERIALIZED_MIGRATION`
+- Result: `PASS_CANDIDATE_K6_PHASE_E_R1_IN_PLACE_WPCLI_PHAR_SERIALIZED_MIGRATION` (Executor candidate; Reviewer decision remains authoritative).
+- Date: 2026-09-26 UTC.
+- Strict SSH: accepted identity/trust; remote identity `ops@srv1970241`; native SSH exit 0.
+- Fresh preflight: WordPress image exact accepted digest `sha256:f5413918c7858c97bb7d2b65f68d3ed38a97472deba9eb58eb3e1ab1eb2c4beb`; exact cached WP-CLI image digest `sha256:aa31002b5ae67cfff25817c8f4379b0e84aa4f8cc9637c83e16757d435adaf49`, pull not required; WordPress running/restart count 0; MariaDB healthy/restart count 0; both host-published ports none; home/siteurl already target; 52-table baseline and safe disk/RAM headroom confirmed.
+- WP-CLI staging: extracted only `/usr/local/bin/wp` from the exact cached image. PHAR SHA-512 matched the frozen value `be928f6b8ca1e8dfb9d2f4b75a13aa4aee0896f8a9a0a1c45cd5d2c98605e6172e6d014dda2e27f88c98befc16c040cbb2bd1bfa121510ea5cdf5f6a30fe8832`; in-container SHA-512 matched; version `WP-CLI 2.12.0`. All WP-CLI migration invocations ran as `www-data (33:33)` with `--path=/var/www/html`. No second WordPress runtime was created and the live container was not restarted/recreated.
+- Dry-run A (`http://localhost:8093` → target): 36 replacements. Dry-run B (`https://email-rich-barbie-merchants.trycloudflare.com` → target): 30 replacements. Reports exposed only table/column/count metadata, not row values.
+- Pre-migration DB backup (local VPS only; SQL content not uploaded): `/srv/backups/mini-craft-night-kit/k6-e-r1-pre-serialized-migration-20260926T154330Z.sql`; 5,199,823 bytes; SHA-256 `3ae2ca76a81c338d44cdc82dfe1624f639ef0c4c1809ca7f1f17a87dd1cd49aa`; readable dump structure verified at 52 tables before migration.
+- Migration: exact A replacement completed once with 36 replacements; exact B replacement completed once with 30 replacements. Both native command exits were 0 and the SSH session remained alive. No rollback was needed.
+- Post-validation: dry-run A=0 and B=0; GUID mutations=0; table count=52 and sorted table-set SHA-256 unchanged at `bc587c6ed1e25c04a74d549a939602146735c791c452d1c1093f55280000150d`; `wp_options` present; home and siteurl both equal `https://minicraft.spikersun.com`.
+- WordPress: bootstrap and installed-state PASS; Home, Shop, Product, Cart, My Account, and `/wp-json/` returned HTTP 200; empty Checkout returned HTTP 302 to canonical `https://minicraft.spikersun.com/cart/` (expected behavior; redirect not followed; no cart/session mutation); media file present and private HTTP read returned 200; WooCommerce active/core state PASS.
+- PPCP: authoritative `GET /wc/v3/wc_paypal/common` via in-process REST request under an existing administrator context returned HTTP 200; allowlisted state only: active=YES, merchant connected=YES, Sandbox=YES, Live=NO. No provider API request, credential-bearing value, or raw response was emitted. An initial no-user REST context returned 401; the same authoritative route was then read with the required administrator context and yielded the accepted state markers.
+- Runtime closure: recent WordPress-container PHP fatal count=0; WordPress restart count=0/stable; MariaDB healthy; no WordPress/DB host ports; shared edge and cloudflared remained up; Caddy config had no Mini Craft route; public ingress unchanged/absent; unrelated services unchanged.
+- Cleanup: live-container temporary PHAR absent; host temporary PHAR absent; gate-scoped temporary directory removed when empty; extraction container absent; exact WP-CLI image remains cached. No broad prune.
+- Safety: no Secret value/hash access or output; no PayPal Live, payment, order, webhook, public-ingress, DNS, Shared Infra, Compose, image-build, or unrelated-project mutation. Authorized writes were limited to the fresh local-only DB backup, the two exact serialized-safe URL migrations, and temporary PHAR staging/removal.
+- Diagnostic note: one read-only WP-CLI table-count eval initially omitted explicit global `$wpdb` binding and failed in the CLI process; the corrected read-only probe passed. This did not restart or alter the live WordPress service; the application container log check remained at zero PHP fatals.
+- Required boundary: `STOP_AT_REVIEWER=YES`; no serialized-migration follow-on, public ingress, webhook, Live, or payment Gate was started.
