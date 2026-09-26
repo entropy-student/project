@@ -1,3 +1,7 @@
+> **Governance status: RESEARCH SNAPSHOT.**  
+> Evidence/research provenance is preserved here, but this file is not the current Gate or project truth.  
+> Current authority: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md).
+
 # G1 桌面调研：生日纪念杂志需求与购买线索
 
 调研日期：2026-09-26  
