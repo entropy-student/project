@@ -2312,3 +2312,29 @@ STOP_AT_REVIEWER=YES
 ```
 
 The first read-only diagnostic draft had a local Python syntax error and executed no Docker command. The first checker also used a raw-byte-only tmpfs parser and produced a false-negative on Docker's accepted `512m` notation; the corrected strict read-only check converted it to 536,870,912 bytes and passed. No target mutation occurred. Reviewer clarification is needed because the runtime core is already present and the decision's only recreate path is conditional on its absence.
+
+---
+
+## K6_PHASE_D_R6_BOOTSTRAP_RECONCILIATION_AND_PRIVATE_APP_VALIDATION — STOP_AT_REVIEWER
+
+```text
+GATE=K6_PHASE_D_R6_BOOTSTRAP_RECONCILIATION_AND_PRIVATE_APP_VALIDATION
+RESULT=RETURN_SSH_CONNECTION_REQUIRED
+SUMMARY=Local identity and known_hosts metadata matched, but the canonical strict SSH call exited 255 and its stderr was not retained; remote Phase A could not be confirmed, so execution stopped before bootstrap or any write.
+SSH_CANONICAL_PROBE=NATIVE_EXIT_255;FAILURE_CLASS=UNCLASSIFIED_STDERR_NOT_RETAINED
+PHASE_A=NOT_CONFIRMED
+WORDPRESS_BOOTSTRAP=NOT_RUN
+HOME_SITEURL_SCALAR_UPDATE=NOT_RUN
+WORDPRESS_RECREATE_RESTART=0
+DB_IMPORT_OR_MUTATION=0
+SECRET_VALUE_OUTPUT_HASH_ROTATION_OR_OVERWRITE=0
+SHARED_INFRA_WRITES=0
+REMOTE_WRITE_COMMANDS_INVOKED=0
+PAYMENT_ACTIONS=0
+POST_RETURN_REMOTE_OPERATIONS=0
+EVIDENCE=EXECUTION_EVIDENCE.md;commit 39a3027ad1959412c211eec23a1c5d58f341050f
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+No alternate SSH client/key, relaxed host-key policy, retry, container lifecycle action, or cleanup was performed.
