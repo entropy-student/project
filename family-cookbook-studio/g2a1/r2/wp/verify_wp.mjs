@@ -86,7 +86,7 @@ try {
   result.preview.server_upload_requests = requests.filter(x => x.method !== 'GET' && /upload|ocr|model/i.test(x.url)).length;
   result.preview.model_calls = 0;
   result.preview.token_usage = 0;
-  result.preview.browser_local = result.preview.image_sources_are_blob && result.preview.new_requests_after_file_selection === 0 && result.preview.server_upload_requests === 0;
+  result.preview.browser_local = result.preview.image_sources_are_blob && result.preview.new_requests_after_local_file_selection === 0 && result.preview.server_upload_requests === 0;
   await previewPage.setViewportSize({ width: 390, height: 844 });
   const mobileBox = await previewPage.locator('iframe').evaluate(frame => ({
     viewport: frame.contentWindow.innerWidth,
