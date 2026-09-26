@@ -5,79 +5,103 @@
 
 ## Current decision
 
+Owner corrected the project goal on 2026-09-22:
+
+> Final product is a plugin/tool like the referenced video whose core purpose is batch image generation and automatic download.
+
+Therefore the former video-pipeline / Remotion roadmap is superseded.
+
+Current state:
+
 ```text
 P0_PROJECT_INTAKE_GOVERNANCE = PASS
-P0A_ARCHITECTURE_SAFETY_FREEZE = PASS
-G1_LOCAL_PLUMBING_DRY_RUN = RELEASED TO EXECUTOR
+P0A_PLUGIN_ARCHITECTURE_SAFETY_FREEZE = PASS
+G1_PLUGIN_CORE_STATIC_IMPLEMENTATION = PASS
+G1_5_BROWSER_LOAD_DRY_RUN = PARTIAL OWNER EVIDENCE
 ```
 
-## Why G1 is zero-quota
+## Implementation
 
-This is a browser-automation project. Governance requires a central fail-closed safe mode before the first real action.
+Branch:
 
-Therefore G1 proves the plumbing without clicking the ChatGPT submit button or generating an image.
+`story-image-runner/plugin-v1`
 
-Only after Reviewer accepts G1 may G1.5 authorize one real image.
+The extension is now pure MV3 and does not require a Local Bridge for V1.
 
-## Frozen G1 architecture
+Implemented:
+
+- side-panel batch UI;
+- TXT / JSON prompt import;
+- local persistent queue;
+- Start / Pause / Stop / Retry;
+- deterministic filenames;
+- owned ChatGPT tab;
+- prompt submit adapter;
+- fresh-image detection;
+- automatic download;
+- new-chat-every-N;
+- typed failures;
+- rate-limit pause;
+- Live mode safety switch.
+
+## Independent static checks
 
 ```text
-CLI
-→ localhost bridge
-→ validated queue/state
-→ extension polling/heartbeat
-→ browser readiness state
-→ dry-run result
+JavaScript syntax checks = PASS
+npm test = 11/11 PASS
+extension static check = PASS
+real image generations during implementation = 0
 ```
 
-G1 does not yet need a working ChatGPT DOM submit adapter.
+## Current Owner checkpoint
 
-## Reviewer acceptance focus
+Load the unpacked extension in Chrome / Edge with **Live generation OFF**.
 
-G1 PASS requires independent evidence for:
+If that passes, Reviewer can authorize exactly one real image Canary.
 
-- `SAFE_MODE=true` default;
-- live submission impossible in safe mode;
-- bridge bound only to loopback;
-- schema validation;
-- path traversal rejection;
-- duplicate-job rejection;
-- abort clears or marks queued/in-flight dry-run state safely;
-- extension/bridge heartbeat has stale detection;
-- restart does not silently mark unfinished work successful;
-- no cookie/token/session export;
-- tests pass;
-- no real image-generation action occurred.
+No Codex work is currently required unless the browser-runtime test returns a concrete defect.
 
-## Current Executor entry
 
-`docs/G1_EXECUTION_CONTRACT.md`
+## Browser evidence now observed
 
-Executor must return:
+Owner-provided runtime evidence:
 
 ```text
-GATE=G1_LOCAL_PLUMBING_DRY_RUN
-RESULT=PASS_CANDIDATE_G1_LOCAL_PLUMBING_DRY_RUN | RETURN_<PRECISE_REASON>
-SUMMARY=<short>
-EVIDENCE=EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
-COMMIT=<sha>
-OWNER_ACTION=NONE
-NEXT=STOP_AT_REVIEWER
+background runtime = 0.1.2 observed during live test
+Storage = PASS
+queue write/read = PASS
+queue observed = 7 total / 6 pending
+Live = ON
+ChatGPT content-script = READY
+automatic task navigation = OBSERVED
+final generated image completion = NOT YET VERIFIED
+automatic download = NOT YET VERIFIED
 ```
 
-Reviewer will then independently decide PASS / RETURN.
+The 7-job queue came from the older per-line parsing behavior and must not be treated as intended V0.1.3 grouping evidence.
 
-## Protected boundaries
+V0.1.3 has since changed prompt import behavior to:
+```text
+single textarea = 1 prompt by default
+optional blank-line split
+optional per-line split
+queue preview
+MAX_QUEUE_JOBS = 500
+```
 
-No:
+## Deferred backlog
 
-- real prompt submission;
-- image quota consumption;
-- reference-image upload to ChatGPT;
-- cookie/session extraction;
-- rate-limit bypass;
-- anti-bot bypass;
-- multi-account rotation;
-- concurrency > 1;
-- mass generation;
-- VPS or production deployment.
+Canonical detail:
+`docs/CAPABILITY_BOUNDARIES_AND_DEFERRED_BACKLOG.md`
+
+Deferred and not currently authorized:
+```text
+multiple images/copies per prompt
+reference-image attachment from repository/URL/local source
+binary image-format validation / normalization
+interruption reconciliation before retry
+long-run stress validation
+flexible output-location workflow
+```
+
+Current action: documentation only. Resume controlled Canary when Owner requests.
