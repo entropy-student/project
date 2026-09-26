@@ -2506,3 +2506,17 @@ STOP_AT_REVIEWER=YES
 ```
 
 Reviewer follow-up: resolve the disposable helper's official-entrypoint/core initialization constraint while preserving the current wp-content bind as read-only. No public ingress, serialized URL migration, Provider webhook work, payment, or Live action was entered.
+
+
+## Current Executor Handoff — K6 Phase E R1
+
+- Current Gate: `K6_PHASE_E_R1_IN_PLACE_WPCLI_PHAR_SERIALIZED_MIGRATION`
+- Executor result: `PASS_CANDIDATE_K6_PHASE_E_R1_IN_PLACE_WPCLI_PHAR_SERIALIZED_MIGRATION`
+- Exact-origin serialized-safe migrations completed once each: localhost origin=36; Quick Tunnel origin=30; post-migration dry-runs for both=0.
+- Fresh local-only pre-migration DB backup is retained on VPS; path, bytes and SHA-256 are recorded in `EXECUTION_EVIDENCE.md`. The SQL backup itself was not uploaded to GitHub.
+- Table set remains 52/52 with unchanged table-set digest; home/siteurl remain the canonical HTTPS target; GUIDs were excluded.
+- Private route smoke: Home/Shop/Product/Cart/My Account/wp-json and media PASS; empty Checkout has expected canonical Cart redirect. WooCommerce PASS. PPCP authoritative local state: active, connected, Sandbox; Live disabled.
+- WordPress/MariaDB stayed running without restart; no host ports or public ingress. Temporary PHAR/extraction artifacts were removed; cached exact WP-CLI image retained.
+- Safety counters: `PAYMENT_ACTIONS=0`, `LIVE_ACTIONS=0`, `SECRET_VALUE_OR_HASH_ACCESS=0`, `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`.
+- Next: Reviewer review only. `STOP_AT_REVIEWER=YES`. Do not start a public-ingress, webhook, Live, or payment Gate without a new Reviewer decision.
+- Evidence commit: `4491c7a4de2dda38af917c778f4ca683e7090059`.
