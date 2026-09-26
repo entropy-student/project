@@ -2520,3 +2520,17 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Safety counters: `PAYMENT_ACTIONS=0`, `LIVE_ACTIONS=0`, `SECRET_VALUE_OR_HASH_ACCESS=0`, `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`.
 - Next: Reviewer review only. `STOP_AT_REVIEWER=YES`. Do not start a public-ingress, webhook, Live, or payment Gate without a new Reviewer decision.
 - Evidence commit: `4491c7a4de2dda38af917c778f4ca683e7090059`.
+
+
+## Current Executor Handoff — K6 Phase F
+
+- Gate: `K6_PHASE_F_PUBLIC_SANDBOX_INGRESS_READINESS_AND_CHANGE_PLAN`
+- Result: `RETURN_REVIEWER_SHARED_INGRESS_CONFIG_DRIFT`; read-only continuity and shared-edge-to-WordPress private reachability passed, but no exact safe public-ingress changeset was frozen.
+- Current Caddy startup source is `/srv/infra/edge/Caddyfile` (mounted read-only into `spikersun-edge-caddy-1`). That file contains only the localhost block, while the active Caddy API/autosave also contains `edge-test.spikersun.com` as a static-response route. The response was recorded only as status/length/digest metadata, not as a recoverable source block. A config reload from the current Caddyfile could therefore remove unrelated active behavior.
+- Mini Craft WordPress is already on `spikersun-edge`, alias `wordpress`; bounded in-network probe to `wordpress:80` returned 200. No Docker network or app Compose delta is needed for reachability.
+- Public DNS A/AAAA/CNAME for the hostname returned NXDOMAIN via independent Google DoH. Public HTTP/HTTPS are not reachable. Direct future DNS-to-Caddy is a candidate only; proxy policy remains for Reviewer reconciliation.
+- Product 223 remains published, visible, and purchasable test data. A future route would expose it; no product state was changed.
+- PayPal local state remains active/connected/Sandbox, Live disabled. No provider call or commerce action occurred.
+- Counters: `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`, `PAYMENT_ACTIONS=0`, `SECRET_VALUE_OR_HASH_ACCESS=0`, `UNRELATED_SERVICES_CHANGED=NO`.
+- Recommended next Reviewer decision: reconcile the active edge-test route into the durable Caddy source (or approve another exact persistence mechanism), decide DNS proxy policy, and explicitly address exposure of the published test SKU before any future ingress-write Gate.
+- `STOP_AT_REVIEWER=YES`; no public route, DNS, Caddy, tunnel, firewall, or Compose change was made.
