@@ -1,3 +1,7 @@
+> **Governance status: SUPPORTING PRODUCT / EXPERIMENT DESIGN.**  
+> Use this for the US-first offer design only where it is consistent with the current Reviewer Handoff. It does not itself authorize implementation or live payment.  
+> Current authority: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md).
+
 # G1 两步式 Offer 与 AI 付费试点
 
 状态：**Owner 已确认价格和产品生成方向；体验和交易待实现/验证**  
