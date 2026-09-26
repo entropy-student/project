@@ -2,8 +2,8 @@
 
 > Maintainer: Reviewer / Architect / Gatekeeper only  
 > Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1  
-> Executor facts: `EXECUTOR_HANDOFF.md` (not created yet; no execution Gate has started)  
-> Detailed evidence: `EXECUTION_EVIDENCE.md` (not created yet; no execution Gate has started)  
+> Executor facts: `EXECUTOR_HANDOFF.md`  
+> Detailed evidence: `EXECUTION_EVIDENCE.md`  
 > Last reviewed: 2026-09-26
 
 ## 1. Project Goal
@@ -63,7 +63,8 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 ```text
 P0  Governance Intake / Truth Reconciliation             ✅ PASS
 G1  Product / Offer Baseline                            ✅ PASS (Owner decisions; not transaction proof)
-G2A1 Frontend + Reusable Component Feasibility PoC      ↩ RETURN — evidence closure required
+G2A1 Frontend + Reusable Component Feasibility PoC      ↩ RETURN
+G2A1R1 Evidence Closure                                 ← CURRENT / AUTHORIZED
 G2A2 MVP Product Contract Freeze                        ⏳ HOLD
 G2B  Local AI/PDF Solution Proof                        ⏳ HOLD
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
@@ -104,9 +105,11 @@ Important limitation: the Owner reports demand as already validated, but the und
 - Repeatability/economics: unknown.
 - Production website: not built/deployed.
 
-## 6. Current Gate — G2A1 RETURN / Evidence Closure Required
+## 6. Current Gate — G2A1R1 Evidence Closure
 
 Reviewer decision: [docs/REVIEWER_DECISION_G2A1_RETURN.md](./docs/REVIEWER_DECISION_G2A1_RETURN.md)
+
+Current execution contract: [docs/G2A1R1_EVIDENCE_CLOSURE.md](./docs/G2A1R1_EVIDENCE_CLOSURE.md)
 
 Original execution contract: [docs/G2A1_COMPONENT_FEASIBILITY_POC.md](./docs/G2A1_COMPONENT_FEASIBILITY_POC.md)
 
@@ -141,11 +144,31 @@ name / age / style
 
 The existing Good Issue prototype's "up to six photos + memory" free step is reference behavior only and is not the current MVP requirement.
 
-### Next action
+### Current authorization
 
-Reviewer will authorize only a narrow **G2A1R1 evidence-closure** retry covering the unresolved checks listed above.
+G2A1R1 is now authorized and limited to the unresolved evidence closure:
 
-`G2A2_MVP_PRODUCT_CONTRACT_FREEZE` remains HOLD until G2A1 receives an explicit Reviewer PASS.
+- guest upload;
+- guest private delivery;
+- completed byte-level download + hash;
+- durable screenshots;
+- project-scoped cleanup/read-back;
+- final Evidence/Handoff reconciliation.
+
+### Mandatory GitHub handoff
+
+Every Executor Gate in this project must leave a durable GitHub handoff unless a Gate explicitly says otherwise:
+
+- use a dedicated branch;
+- commit intended project-local changes/evidence;
+- push the branch to GitHub;
+- open a PR targeting `main`;
+- do **not** merge the PR;
+- return branch + final commit SHA + PR URL/number.
+
+Reviewer performs the final review/merge. Local-only or uncommitted results are not sufficient for PASS.
+
+`G2A2_MVP_PRODUCT_CONTRACT_FREEZE` remains HOLD until G2A1/G2A1R1 receives an explicit Reviewer PASS.
 
 ### Rollback
 
@@ -214,15 +237,16 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: prepare/authorize a narrow G2A1R1 evidence-closure retry only; do not enter G2A2.
-- Executor next action: none until Reviewer issues the G2A1R1 bounded prompt.
-- Owner intervention required: **NO** for the current RETURN/remediation planning. No account/payment/Secret action is required.
+- Reviewer next action: wait for the G2A1R1 GitHub PR, then independently review and issue PASS/RETURN.
+- Executor next action: execute only `docs/G2A1R1_EVIDENCE_CLOSURE.md`, commit/push to its own branch, open a PR, and stop at Reviewer.
+- Owner intervention required: **NO**. No account/payment/Secret action is required.
 
 ## 13. Status Summary
 
 - Overall progress: product direction, clickable sample, commerce baseline, PayPal path and free/paid Token boundary are fixed; production system does not yet exist.
 - Final goal: PayPal-paid personalized birthday magazine PDF workflow.
-- Current Gate: G2A1 RETURN — evidence closure required.
-- This Reviewer round accepted the useful partial PoC facts but rejected overall PASS because guest flows, completed download, durable screenshots, cleanup read-back and final repo-state reconciliation are incomplete.
-- Next: narrow G2A1R1 evidence closure only. G2A2 remains HOLD.
+- Current Gate: G2A1R1 evidence closure — authorized.
+- Accepted G2A1 findings are preserved; only unresolved guest/download/screenshot/cleanup/repository-state evidence may be touched.
+- Executor submission to GitHub is now an explicit project requirement: dedicated branch + commit + push + PR, with Reviewer responsible for merge.
+- Next: review the G2A1R1 PR. G2A2 remains HOLD.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
