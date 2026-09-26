@@ -2272,3 +2272,43 @@ NEXT=STOP_AT_REVIEWER
 STOP_AT_REVIEWER=YES
 
 The accepted K5 SQL source remained unchanged. The in-memory filtered stream removed only the unguarded CREATE DATABASE wordpress statement and was piped directly to MariaDB; there was no --force, database recreation, second import, or serialized URL migration. MariaDB is healthy with exact root/app table sets. After the authorized private WordPress start, the first bootstrap command failed because the required core file was reported absent. Execution stopped immediately; no post-failure VPS command or container cleanup was run. Reviewer direction is required before further diagnosis/recovery.
+
+---
+
+## K6_PHASE_D_R5_WORDPRESS_CORE_RUNTIME_DIAGNOSIS_AND_CONDITIONAL_RECREATE — STOP_AT_REVIEWER (2026-09-26)
+
+```text
+GATE=K6_PHASE_D_R5_WORDPRESS_CORE_RUNTIME_DIAGNOSIS_AND_CONDITIONAL_RECREATE
+RESULT=RETURN_REVIEWER_D_R5_RUNTIME_CORE_PRESENT_BEFORE_RECREATE_RECONCILIATION_REQUIRED
+SUMMARY=Fresh strict read-only inspection found the accepted WordPress digest, linux/amd64 platform, entrypoint/command, 512MiB tmpfs, wp-content bind, nine RO Secret mounts without db-root, and healthy private runtime. Source and runtime core files are present before any recreate, so the conditional recreate is not authorized by its trigger; post-bootstrap/URL checks were not run pending Reviewer reconciliation.
+WORDPRESS_IMAGE_DIGEST=PASS
+WORDPRESS_ENTRYPOINT_COMMAND=PASS
+WORDPRESS_TMPFS_MOUNT=PASS;512M=536870912_BYTES
+WORDPRESS_WP_CONTENT_BIND=PASS
+WORDPRESS_SECRET_MOUNTS=PASS;9_OF_9_RO;DB_ROOT=NOT_MOUNTED
+SOURCE_CORE_FILES=PASS
+PRE_RECREATE_RUNTIME_CORE=PRESENT
+WORDPRESS_RECREATE_COUNT=0
+WORDPRESS_INSTALL_REDIRECT=NOT_CHECKED
+HOME_SITEURL_SCALAR_UPDATE=NOT_EXECUTED
+FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
+WORDPRESS_INTERNAL_PRIMARY_ROUTES=NOT_CHECKED
+WOOCOMMERCE_CORE_STATE=NOT_CHECKED
+MARIADB_RESTORE_STATE=PRIOR_ACCEPTED_52_TABLES;NOT_REQUERIED
+WORDPRESS=RUNNING;RESTARTS=0;HOST_PORTS=NONE
+MARIADB=RUNNING;HEALTHY
+VPS_WRITES=0
+DOCKER_MUTATIONS=0
+SHARED_INFRA_WRITES=0
+PUBLIC_INGRESS_CHANGE=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+PAYPAL_LIVE=NO
+PAYMENT_ACTIONS=0
+POST_RETURN_VPS_OPERATIONS=0
+EVIDENCE=EXECUTION_EVIDENCE.md;K6 D-R5 section;commit 53282b94d84b60a03a65c86cffed150218b49617
+OWNER_ACTION=NONE
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+The first read-only diagnostic draft had a local Python syntax error and executed no Docker command. The first checker also used a raw-byte-only tmpfs parser and produced a false-negative on Docker's accepted `512m` notation; the corrected strict read-only check converted it to 536,870,912 bytes and passed. No target mutation occurred. Reviewer clarification is needed because the runtime core is already present and the decision's only recreate path is conditional on its absence.
