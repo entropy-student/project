@@ -21,7 +21,10 @@ const result = {
   delivery: {},
   cleanup: 'compose down -v scheduled by workflow',
 };
-const track = page => page.on('request', req => requests.push({ method: req.method(), url: req.url() }));
+const track = page => page.on('request', req => {
+  const url = req.url();
+  if (/^https?:\/\//i.test(url)) requests.push({ method: req.method(), url });
+});
 async function login(context, username, password) {
   const page = await context.newPage();
   track(page);
@@ -170,7 +173,12 @@ try {
     result.delivery.positive_pass && result.delivery.anonymous_status >= 400 &&
     result.delivery.unrelated_user_status === 403 && result.delivery.unrelated_order_status === 404 &&
     result.delivery.direct_raw_public_url_status === 404;
-  result.network = { requests: requests.map(x => ({ method: x.method, path: new URL(x.url).pathname })), image_uploads_before_payment: requests.filter(x => x.method !== 'GET' && /upload/i.test(x.url)).length };
+  const postPaymentUploadRequests = requests.filter(x => x.method !== 'GET' && x.url.includes('/uploads')).length;
+  result.network = {
+    requests: requests.map(x => ({ method: x.method, path: new URL(x.url).pathname })),
+    image_uploads_before_payment: result.preview.server_upload_requests,
+    post_payment_upload_requests: postPaymentUploadRequests
+  };
   result.status = result.preview.all_assertions_pass && result.upload.all_access_assertions_pass && result.delivery.all_access_assertions_pass ? 'PASS' : 'FAIL';
   await mkdir(dirname(outPath), { recursive: true });
   await (await import('node:fs/promises')).writeFile(outPath, JSON.stringify(result, null, 2) + '\n');
