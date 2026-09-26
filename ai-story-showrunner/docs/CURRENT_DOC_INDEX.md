@@ -20,6 +20,7 @@ Read in this order:
 
 ## Current project contracts still active
 
+- `STORY_EVENT_FRAME_PRODUCTION_PATCH_20260926.md` — Owner-approved G4/G5 production gates for story events, physical POV, V2/prop continuity, complete-image execution, and story-level QA. Read this before compiling or executing new image packages; its explicit Owner overrides supersede conflicting optional defaults in older copies.
 - `G4_DIRECTOR_COMPILER_CONTRACT.md`
 - `G4_DIRECTOR_LANGUAGE_RULES.md`
 - `G4_VIEWPOINT_GRAMMAR.md`

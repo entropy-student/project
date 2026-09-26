@@ -303,3 +303,7 @@ Required corrections:
 All other Beat POVs remain unchanged.
 
 This is a bounded POV patch, not a G4 architecture rewrite.
+
+## 2026-09-26 physical-viewpoint production gate
+
+The mode name alone does not establish a valid camera. Apply the screen-facing, character-gaze and camera-position check in `STORY_EVENT_FRAME_PRODUCTION_PATCH_20260926.md` to every new story-video package. Return any frame in which a visible character is said to read a screen that actually faces only the viewer.

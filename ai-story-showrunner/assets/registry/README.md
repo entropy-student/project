@@ -88,3 +88,5 @@ It must NOT be cut out and assembled with other assets to manufacture a final fr
 
 Only `ACCEPTED` assets are reusable.
 Rejected/drifted frames must never become future reference truth.
+
+For new story-video runs, also apply `docs/STORY_EVENT_FRAME_PRODUCTION_PATCH_20260926.md`: a frame needs story-level acceptance and an actually readable binary at `file_path` before it may be used across runs or as a `DERIVE_EDIT` source. Local-only frames may be recorded for run review, but their Registry entries must declare `storage_status: LOCAL_ONLY` and `reuse_eligible: false` until published to the declared storage location. Do not infer binary availability from `qa_status` alone. Existing rows are historical records and are not retroactively promoted by this note.

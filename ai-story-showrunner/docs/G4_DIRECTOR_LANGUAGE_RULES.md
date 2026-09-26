@@ -363,3 +363,7 @@ Visual Intention says what the audience must experience now.
 Director grammar decides staging and camera.
 Visual Beat turns movement into meaningful still states.
 Production SRT supplies the spoken clock; Director grammar decides how justified visual states breathe inside that clock.
+
+## 2026-09-26 story-event production patch
+
+For new story-video production packages, also apply `STORY_EVENT_FRAME_PRODUCTION_PATCH_20260926.md` before locking Visual Beats. Its Owner-approved story-event gate returns Beats that merely illustrate a concept with floating cards, paths, arrows or rule diagrams. Keep the locked script and spoken timing authority unchanged.

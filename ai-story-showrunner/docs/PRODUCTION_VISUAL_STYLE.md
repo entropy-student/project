@@ -281,3 +281,7 @@ Hard failures:
 - wine-red collared top replaced by hoodie or other costume.
 
 Any such frame is rejected before it may become a continuity source.
+
+## 2026-09-26 episode identity and production-style note
+
+The old dark-hair/wine-red costume descriptions above remain historical project calibration for V1. For `ep-agent-permission-boundary-20260926`, the Owner's original `CHAR_IP_001 V2` four-view in its handoff package overrides those V1 appearance details. Identity and rendering style are separate: the V2 sheet locks the person; the episode Style Bible locks a consistent restrained paper-line treatment across person, phone, UI and props. Apply `STORY_EVENT_FRAME_PRODUCTION_PATCH_20260926.md` before accepting any new story frame.

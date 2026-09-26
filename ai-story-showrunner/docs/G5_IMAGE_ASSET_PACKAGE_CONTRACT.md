@@ -374,3 +374,7 @@ Requires at least one full episode where:
 8. executor package requires no creative improvisation.
 
 Actual full-episode image generation is downstream evidence; it is not required to define the G5 contract.
+
+## 2026-09-26 Owner production override
+
+Apply `STORY_EVENT_FRAME_PRODUCTION_PATCH_20260926.md` when compiling new story-video image packages. A planned forward `DERIVE_EDIT` source is usable only after the source full image is story-QA-accepted and its binary is accessible. Use the declared `GENERATE` fallback for incompatible POV/geometry/source. `COMPOSITE_CROP` and post-production text overlay are forbidden in this Owner pipeline even where the older Candidate contract permits them.

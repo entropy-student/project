@@ -465,3 +465,7 @@ Validated on Search Answer:
 
 Result:
 `PASS / READY_CANONICAL`.
+
+## 2026-09-26 Owner production override
+
+For new story-video packages under `STORY_EVENT_FRAME_PRODUCTION_PATCH_20260926.md`, the Owner's `ABSTRACT_EXPLANATORY_GRAPHICS=FORBIDDEN` supersedes this document's older `INFOGRAPHIC_LAST` allowance. Real diegetic phone UI or documents remain valid when part of an observable event. The same patch also replaces optional crop and post-overlay defaults with complete-image `GENERATE`/`DERIVE_EDIT` and `IMAGE_NATIVE`/`NONE` for the current Owner pipeline.
