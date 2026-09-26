@@ -2,9 +2,9 @@
 
 ## 项目状态
 
-**G1：Owner 报告需求已验证；美国英语数字 PDF 的具体 Offer、成交和单位经济待验证。建站尚未开始。**
+**G1：需求由 Owner 确认已验证；价格已定 US$39.99；采用免费零 AI Token 预览 + 付费后全 AI 制作。网站和生成系统尚未开发。**
 
-Owner 已确认需求存在，并选择美国英语市场、首轮电子 PDF。项目库尚未归档需求验证的样本/渠道/具体证据，也没有本项目真实订单；这不影响继续完成产品规格和网站链路调研。
+Owner 已确认美国优先、英语首发、US$39.99 测试价，不设预设预算/订单上限，并选择付款前零 AI Token 的本地模板预览、付款后全 AI 生成。需求验证详情尚未归档；本项目真实支付、AI 生成和交付尚未验证。
 
 ## 项目目标
 
@@ -13,20 +13,20 @@ Owner 已确认需求存在，并选择美国英语市场、首轮电子 PDF。�
 最终体验目标：
 
 ~~~text
-选择杂志方案
-→ 上传照片并回答问题
-→ 系统整理素材、生成杂志
-→ 在线查看并确认预览
-→ 下单支付
-→ 自动交付电子版，或由供应链印刷并寄送实体版
+浏览器本地零 AI Token 预览
+→ 支付 US$39.99
+→ 上传完整照片并回答问题
+→ 服务端全 AI 生成与自动检查
+→ 查看个性化 proof
+→ 安全交付最终电子 PDF
 ~~~
 
-上述是长期目标。首轮试点暂以人工/AI 辅助制作、客户确认 PDF proof 和逐单交付验证，不代表全自动生成、支付或实体履约已实现。
+当前目标是两步式全 AI 电子版流程；以上是产品目标，不代表支付、模型生成、PDF QA 或安全交付已经实现。实体印刷留待后续。
 
 ## 当前项目边界
 
 - 当前项目只做“生日纪念杂志”。家庭食谱书是相邻想法，暂不纳入本项目。
-- 先把产品样刊、具体 Offer、真实成交和逐单成本做清楚，再决定需要开发多少自动化。
+- Offer 的试点价已由 Owner 定为 US$39.99；先验证免费本地预览和付费后生成链路，逐单记录模型与支付成本。
 - WordPress + WooCommerce 是建站候选路线，不是已批准或已实施的生产方案。
 - 新增 [产品、交付、经济性与 WordPress MVP 调研](./docs/G1_REMAINING_RESEARCH.md)。
 - 插件候选细节见 [WordPress 模板与插件候选](./docs/WORDPRESS_STACK_RESEARCH.md)。
@@ -37,8 +37,9 @@ Owner 已确认需求存在，并选择美国英语市场、首轮电子 PDF。�
 - [PROJECT_RECORD.md](./PROJECT_RECORD.md) — 项目事实、决策、阶段状态和下一步
 - [docs/PROJECT_CHARTER.md](./docs/PROJECT_CHARTER.md) — 立项目标、范围、验收条件、阶段门与风险
 - [docs/G1_DESK_RESEARCH.md](./docs/G1_DESK_RESEARCH.md) — 美国英语市场公开线索、证据强弱、反例与访谈提纲
-- [docs/G1_US_FIRST_EXPERIMENT.md](./docs/G1_US_FIRST_EXPERIMENT.md) — 美国数字 PDF Offer 和首轮付费试点草案
-- [docs/G1_REMAINING_RESEARCH.md](./docs/G1_REMAINING_RESEARCH.md) — 产品规格、价格假设、人工交付、成本和 WordPress MVP
+- [docs/G1_US_FIRST_EXPERIMENT.md](./docs/G1_US_FIRST_EXPERIMENT.md) — 美国优先、海外拓展的数字 PDF 付费试点方案
+- [docs/G1_REMAINING_RESEARCH.md](./docs/G1_REMAINING_RESEARCH.md) — 产品、价格、成本和 WordPress MVP 调研
+- [docs/G1_TWO_STEP_AI_PRODUCT_FLOW.md](./docs/G1_TWO_STEP_AI_PRODUCT_FLOW.md) — 免费零 Token 预览、付款后全 AI 生成方案
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 证据主干、当前瓶颈和获客最小实验
 - [docs/WORDPRESS_STACK_RESEARCH.md](./docs/WORDPRESS_STACK_RESEARCH.md) — 可复用的免费 WordPress 主题、模板和插件候选
 

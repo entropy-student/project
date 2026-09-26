@@ -14,7 +14,7 @@ WordPress 有免费的电商模板、订单插件和上传/编辑组件可复用
 → 逐单 PDF 自动交付 / 实体成书寄送
 ```
 
-比较现实的路线是：免费主题与 WooCommerce 承接站点和订单；一款组件负责素材采集/画布预览；杂志内容生成、版面编排、单订单 PDF 授权与生产履约仍须通过 PoC 确认（可能需要小型定制开发或云服务）。如果为验证市场先人工/AI 辅助制作，可暂缓搭完整生成系统。
+Owner 已选择付款前免费无 Token 预览、付款后全 AI 生成。免费主题与 WooCommerce 可承接展示、支付和订单；照片采集可复用插件；但内容生成、固定模板编排、PDF QA、单订单权限和后台任务仍需 PoC 与少量 glue code/worker。后台人工制作只作为异常回退，不是标准履约目标。
 
 ## 能力比较
 
@@ -24,7 +24,7 @@ WordPress 有免费的电商模板、订单插件和上传/编辑组件可复用
 | [WooCommerce](https://wordpress.org/plugins/woocommerce/) | 免费开源核心；另有付费扩展 | 核心不解决逐单杂志照片问卷采集 | 建商品、购物车、订单等 | 不负责个性化杂志预览 | 是；可扩展支付网关 | 静态下载文件可以付款后授权；逐单生成 PDF 并安全挂到对应订单还需衔接 | 可靠的店铺/订单候选；支付方式依赖商户国家与网关，可复用现有能力 |
 | [Printcart Photobook](https://wordpress.org/plugins/printcart-photobook/) | 插件在 WordPress.org 免费；必须连接 Printcart Cloud；云端商业费用/生产价格需单独确认 | 是，编辑器内上传与摆放图片 | 有封面、内页画布、分页布局；不从人物问答自动写杂志内容 | 有在线设计、保存与校样流程 | 桥接 WooCommerce 产品/订单 | 插件称可经云端渲染 CMYK 文件并供生产履约；地址数据流与具体地区/费用需向供应商确认 | 最接近现成“照片书画布 + 印刷”流程；不是故事杂志自动生成器。用户图像会送到 Printcart Cloud；订单个人信息也会同步。调研时版本 1.2.0、活跃安装少于 10、尚无评价，生产级依赖需做完整实测 |
 | [Storelly Product Builder](https://wordpress.org/plugins/storelly-product-builder-for-woocommerce/) | WordPress.org 免费开源基础版；本地运行的商品选项、上传和画布编辑可免费用；生产级印刷 PDF/订单同步属于可选 Cloud 服务，需要付费计划 | 是，可传图 | 有商品选项、文字/图片画布、报价和 Woo 购物车流程；不从问答生成完整故事/多页杂志 | 有实时画布预览 | 与 WooCommerce 集成 | 普通 Woo 下载仍可配置；Storelly Cloud 印刷渲染/同步需付费服务 | 更适合自托管做商品定制或验证单页个性化画布；多页杂志生成与履约没有被验证。调研时版本 1.7.1、活跃安装少于 10、暂无评价，生态成熟度有限 |
-| [Vanquish Upload Files for WooCommerce](https://wordpress.org/plugins/vanquish-upload-files-for-woocommerce/) | 免费开源上传插件；也有独立 Premium 版本 | 是，上传可附在商品/购物车/订单等流程；免费版为每个上传字段一个文件，可设置多个字段 | 不生成/排版产品 | 不负责成品预览 | 通过 WooCommerce 订单 | 不负责文件生产/交付 | 可作为人工/AI 辅助 MVP 的订单素材采集候选；帮助把素材与订单关联，但需验证图片数量配置、访客流程与移动端体验 |
+| [Vanquish Upload Files for WooCommerce](https://wordpress.org/plugins/vanquish-upload-files-for-woocommerce/) | 免费开源上传插件；也有独立 Premium 版本 | 是，上传可附在商品/购物车/订单等流程；免费版为每个上传字段一个文件，可设置多个字段 | 不生成/排版产品 | 不负责成品预览 | 通过 WooCommerce 订单 | 不负责文件生产/交付 | 可作为付款后订单素材采集候选；帮助把素材与订单关联，但需验证图片数量配置、访客流程与移动端体验 |
 
 ## 推荐候选组合（不是最终选型）
 
@@ -63,7 +63,7 @@ WooCommerce 的下载品可在付款后给客户订单页、邮件和账户下�
 - 先复用 WordPress + WooCommerce 这类成熟核心；主题先在测试站对比，不急于安装付费扩展。
 - G1 需求实验不需要做全自动杂志编辑器；可用表单/订单上传和后台人工生产验证一单。
 - 若确定 WooCommerce 且要试在线画布：PoC 优先分别测试 Storelly（自托管基础画布）和 Printcart（多页照片书 + Cloud）。不要一开始同时生产安装多个上传/产品设计插件。
-- 若只需要上传资料供人工制作：Vanquish 是精简候选；需设多个上传字段并验证照片数量和上传失败恢复。
+- 付费后 AI 素材采集可比较 PPOM 和 Vanquish Upload；若自动生成暂时失败，Vanquish 仍可支撑后台人工回退。需设多个上传字段并验证照片数量和上传失败恢复。
 - 正式接单前，任何候选必须通过完整的匿名/账户下单、支付成功/失败、订单关联、预览、下载/印刷、取消退款、手机浏览器测试。
 - 因订单中可能含他人照片和家庭信息，先写清使用授权、访问权限、保留和删除方式；涉及第三方云前读其条款/隐私政策。
 
@@ -80,7 +80,7 @@ WooCommerce 的下载品可在付款后给客户订单页、邮件和账户下�
 
 ## 2026-09-26 增补：美国 PDF 试点的逐单交付
 
-前文的插件候选用于比较自助产品编辑器和实体照片书生产。本项目首轮已确定美国英语 + 电子 PDF，且 Owner 报告需求已验证。短期不需要让顾客在线设计整本杂志；更小的验证链路是“付款 → 订单专属照片/问题采集 → 后台人工/AI 制作 → 买家看 proof → 最终 PDF”。
+前文的插件候选用于比较自助产品编辑器和实体照片书生产。本项目首轮为美国优先、英文数字 PDF，Owner 报告需求已验证。当前方案是“免费本地预览 → 付款 → 订单专属照片/问题采集 → AI 生成与程序化排版 → 自动 QA → 买家看 proof → final PDF”。
 
 | 试点角色 | 候选/做法 | 选择理由 | 已知限制 |
 |---|---|---|---|
@@ -99,3 +99,37 @@ WooCommerce 的下载品在付款后可出现在订单页、邮件或账户下�
 托管价格仅作估算：Bluehost 当前官网列举的 Starter 首期价与续订价分别为 US$3.99 和 US$9.99/月（36 个月期限），Business 为 US$6.99 和 US$13.99/月；结账条款会变，暂不视为已选供应商或最终预算。见 [官方 WordPress hosting prices](https://www.bluehost.com/pricing/wordpress-hosting)。
 
 核心成本公式、隐私原则和开发前决策门已写入 [G1 剩余调研](./G1_REMAINING_RESEARCH.md)。
+
+
+## 2026-09-26 增补：US$39.99 两步式全 AI 产品流
+
+Owner 已将首测价定为 US$39.99，不要求预设试点预算或订单量上限，并希望美国优先、覆盖其他海外市场。这个决策取代前文“人工/AI 制作、$69”的试点建议。新的体验候选为：
+
+~~~text
+浏览器本地固定模板免费预览，不请求任何 AI API
+→ 用户支付 US$39.99
+→ 订单后上传全套照片并回答问题
+→ 服务端按已支付订单创建 AI 生产任务
+→ LLM 生成内容 + 程序化模板排版 + PDF QA
+→ 私有 proof / final PDF 逐单交付
+~~~
+
+### “零 Token”实现含义
+
+预览只用本地浏览器 DOM/Canvas 和预先设计的模板，把用户选择的视觉风格、少量文字、可选一张照片即时合成封面及样例页；照片留在本地浏览器。此阶段不请求 LLM、视觉识别、图像生成 API。托管带宽与客户端计算仍有成本；若传照片到服务器或调模型，即不再是严格零模型费用预览。
+
+付费后让 LLM 生成结构化文案/故事，模板引擎负责稳定版式和用户照片布局，后台渲染 PDF。支付事件以服务端确认结果触发任务，一个订单绑定一个唯一任务，避免重复 Webhook/刷新造成重复 Token 费。AI 与 PDF 生成并非仅安装 WooCommerce 插件即可完成，仍需定制端点/后台 worker 或自动化服务。
+
+### 参考 Conversion Leak Audit
+
+- [README](https://github.com/entropy-student/project/blob/main/conversion-leak-audit/README.md) 的免费扫描核心是确定性规则、原则上零 LLM Token；LLM 仅用于解释结构化 issue。
+- [Architecture](https://github.com/entropy-student/project/blob/main/conversion-leak-audit/docs/ARCHITECTURE.md) 定义了 WordPress 与后台任务服务边界。
+- Conversion Leak Audit 当前 README 仍标注真实支付后续处理。因此本项目可以复用“两步价值 + 模型成本边界”和 WordPress/服务端分层思路，但不能把它当成已在线运行、可直接复用的收费模块。
+
+### 价格成本样例
+
+若商户所在地和卡类型适用 Stripe 美国国内卡 2.9% + $0.30，US$39.99 收款手续费约 $1.46，扣后约 $38.53；跨境卡和币种转换可能有额外费率。见 [Stripe pricing](https://stripe.com/pricing)。
+
+当前 OpenAI API pricing 页列 GPT-6 Luna 标准短上下文输入/输出分别为每百万 Tokens $0.05/$0.25；例如一单 20k 输入 + 10k 输出约 $0.0035 文本费用。视觉输入、反复生成、AI 图像生成、PDF 服务器成本不含在此示例内，不能据此确认全单毛利。见 [OpenAI API pricing](https://developers.openai.com/api/docs/pricing)。初版建议用客户照片和模板，不给每一页另造 AI 插画；若加入图像生成，另估预算：[GPT-Image-1 Mini model pricing](https://developers.openai.com/api/docs/models/gpt-image-1-mini)。
+
+完整国家/币种、收款主体国家和 US$39.99 是否含一次免费 AI 再生成，仍是待定项。完整流程与核算方法见 [两步式全 AI 产品流程](./G1_TWO_STEP_AI_PRODUCT_FLOW.md)。
