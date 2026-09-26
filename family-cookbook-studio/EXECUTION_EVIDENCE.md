@@ -188,3 +188,83 @@ Structured measurements are in `g2a1/r1/preflight.json`.
 ### Gate assessment
 
 `RETURN_G2A1_R1_RESOURCE_BLOCKED` — R1 cannot PASS. The PaddleOCR/TrOCR inference evidence, genuine-handwriting subset and Family-specific WP/Woo/Kadence preview/upload/private-delivery evidence remain outstanding. Reviewer should resume this same branch only when a fresh preflight shows enough safe host RAM to load/run the two OCR engines and an isolated WP+Woo+database testbed without stopping unrelated services. No architecture change is requested.
+
+## G2A1-R2 — Isolated GitHub Actions Runner
+
+Execution record appended; prior RETURN sections and R1 evidence above remain intact.
+
+### Provenance and run history
+
+- CARRIED_FORWARD_FROM=b1bf844096fed4761372f3beea6f9f2d7d081643: accepted 20 synthetic typography fixtures/renderer, deterministic routing and provenance/schema implementation, unit tests 5/5, disagreement fail-closed behavior, static browser-local zero-network/zero-token preview.
+- CARRIED_FORWARD_FROM=f79891f20c973e93586e41319c0abb7e78b3af4c: Windows host 0.62 GiB available-RAM blocker and decision to leave unrelated WordPress/MariaDB services untouched.
+- Bounded workflow: .github/workflows/family-cookbook-g2a1-r2.yml; workflow blob SHA 4401f38ccade5634ad6e96acf199ae05fdb9a531 at this evidence draft. Branch-scoped, guarded by [g2a1-r2-run], permissions contents: read, no repository Secrets, workflow does not commit.
+- Actions run history (all on isolated hosted Ubuntu; skipped rows are unmarked intermediate code commits):
+  - 36258313310 — workflow validation blocked by runner.temp in job-level expressions; fixed to use shell $RUNNER_TEMP.
+  - 36258483569 — initial OCR import path and root WP-CLI invocation incompatible. Early revision wrote runner-only dummy test values to the Actions environment summary; actual values are intentionally not reproduced here. Not a repository Secret or real credential. Later revision uses a mode-0600 masked runner-temp file and cleanup verified removal.
+  - 36259393875 — PaddleOCR official CPU-runtime route completed inference; Route A lacked torchvision. WP plugin-install stage failed. Cleanup code in that revision did not source runtime compose variables; later corrected. Runner was ephemeral.
+  - 36260579694 — PaddlePaddle fallback benchmark ran. Transformers tokenization failed because protobuf and tiktoken were missing. WP 6.8 was incompatible with current WooCommerce (minimum WP 7.0). Cleanup succeeded.
+  - 36261369003 — skipped (no execution marker).
+  - 36261384623 — PaddleOCR Transformers route succeeded. WP core/plugin/theme installed; dummy setup stopped because the WP-CLI eval script lacked global $wpdb. Cleanup succeeded.
+  - 36261864126 — Transformers route and WP bootstrap succeeded; browser could not resolve Playwright from temporary ESM package path. Cleanup succeeded.
+  - 36262311531 — Transformers route succeeded; browser checks ran and recorded upload/delivery outcomes. Bounded harness/adapter defects found: a blob: URL request counted as HTTP, PHP upload-size errors mapped to 400, and CLI-created 0600 PDF was unreadable by the web user. Later revisions fix all three.
+  - 36262839382 and 36262840477 — skipped (unmarked intermediate commits).
+  - 36262841714 — job conclusion failure only because preview assertion read a misspelled/undefined count field. Actual run recorded PaddleOCR Transformers success; WP 7.1.2 / WooCommerce 11.1.2 / Kadence 1.5.2; passing upload and private-delivery positive/negative checks; preview used two blob: image URLs with HTTP request count unchanged (17 before/17 after selection), but aggregate harness boolean was false. Cleanup succeeded.
+  - 36263385997 — latest marked rerun with corrected property name; last polled status was in_progress at PaddleOCR Transformers step. Conclusion was not yet available. Do not report this run as successful.
+- Run 36262841714 uploaded artifact 10913315438, family-cookbook-g2a1-r2-36262841714, 1,321,797 bytes, SHA-256 22fd40d543f9e0aba794062167d55d7f730673edd51e81a6e6bb75116a10b45c. Artifact metadata and download reference were read. Selected compact JSON sections were independently parsed from workflow log markers and are committed below; ZIP was not unpacked locally. Workflow logs include full selected JSON before upload.
+
+### Runner preflight and compute
+
+NEW_PROVEN_ACTIONS — run 36262841714, Ubuntu hosted runner:
+
+- Ubuntu 24.04.5, runner image 20260920.314.1, Python 3.12.3 x64; AMD EPYC 7763, 4 logical CPUs.
+- RAM 16,766,414,848 bytes total; 15,809,798,144 bytes available before model work. Runner had 3 GiB swap available; no new swap created. resource_blocked=false.
+- Root filesystem free before OCR: 92,343,398,400 bytes; after OCR model load: 89,714,991,104 bytes. This includes runtime/model writes; no cache committed.
+- Docker 28.0.4; Compose 2.38.2. GPU absent; VRAM N/A.
+- PyPI, PyTorch CPU wheels, Hugging Face, Zenodo, Docker Registry and WordPress download endpoints were reachable for the workflow. Paddle model source preflight GET returned 403, but the supported Transformers route retrieved the models and ran.
+- OCR initialization 10.975 s; Paddle inference 176.684 s for 28 pages; OCR-process CPU 408.451 s; process RAM start 450,240,512 bytes, peak sampled 3,881,517,056 bytes, delta 1,149,591,552 bytes; system available RAM minimum sampled 12,352,163,840 bytes.
+- Model weights in runner temp: 418,275,740 bytes total (Paddle models 172,436,604 bytes; TrOCR 245,839,136 bytes). CPU only; no cloud inference. Model/API Token=0. Hosted Actions compute consumed CPU, memory, disk and runner time; account charge/quota valuation was not exposed and remains UNKNOWN. No paid cloud/GPU resource was started.
+
+### PaddleOCR runtime and benchmark
+
+NEW_PROVEN_ACTIONS:
+
+- PaddleOCR 3.7.0 + PaddleX 3.7.0, official Transformers inference engine; Transformers 5.10.0; Torch 2.8.0+cpu; TorchVision 0.23.0; protobuf 6.33.3; tiktoken 0.14.0. PaddlePaddle was not installed for this successful Route A run; official CPU fallback was skipped.
+- PaddleOCR is the sole full-page primary. PP-OCRv5 server detector/recognizer, CPU; model family PaddleX/PaddleOCR release 3.7 (package source exposes no separate Hub revision). Model file names and hashes are in g2a1/r2/results/36262841714-ocr-benchmark.json.
+- TrOCR only: microsoft/trocr-small-handwritten, revision/commit 959398e1e35ce99c83e60f83b35c1187d4508a0b, CPU; model.safetensors 245,839,136 bytes, SHA-256 aff90cf2fb583df6bc7122b62eaafbbaa5d87a7b9d8cf77472eff747934fa7ef. Mean fallback crop latency 406.89 ms / 60 calls; per-call records are committed.
+- Genuine-handwriting set: 8 images from ScaDS.AI German Line- and Word-Level Handwriting Dataset v1.0, DOI 10.5281/zenodo.18301532; dataset CC BY 4.0; source transcriptions from Wikipedia CC BY-SA 4.0. Public/open, non-customer data; demographic columns excluded. Archive MD5 and sample IDs G01–G08 are in source metadata. These are handwritten images, not script-font renders.
+- Total: 28 full-page inputs, 127 recognized lines; 62 raw erroneous lines, 32 missing lines, 13 critical-field errors (synthetic recipe fixtures), 60 suspicious regions.
+- SYNTHETIC_TYPOGRAPHY: 20 pages, 117 recognized lines; 44 raw erroneous lines; 24 missing lines; 13 critical-field errors; 49 suspicious regions; 58 confirmations; 2.90 confirmations/page; zero pages without confirmation; mean Paddle latency 8,685.29 ms/page.
+- GENUINE_HANDWRITING: 8 pages, 10 recognized lines; 18 raw erroneous lines; 8 missing lines; 11 suspicious regions; 11 confirmations; 1.375 confirmations/page; zero pages without confirmation; mean Paddle latency 372.33 ms/page. Recipe critical-field accuracy is not applicable to these non-recipe line/word samples.
+- Per-fixture full-page raw OCR, line text/confidence/bounding coordinates, source hashes, preprocessing, missing/extra lines, critical-field outcomes, routing, schema probe and latency are in committed benchmark JSON. Raw OCR and normalized transcription are distinct; no correction overwrote raw OCR.
+
+### Routing, TrOCR fallback and confirmation burden
+
+NEW_PROVEN_ACTIONS:
+
+- 60 deterministic suspicious crop/line fallbacks from 28 pages; 27/28 pages had at least one fallback (96.43% page fallback rate), 2.1429 crop calls/page.
+- Each crop's relative source path/hash, Paddle result/confidence/coordinates, TrOCR result, reason, latency, resolution and confirmation flag are in 36262841714-trocr-fallback-results.json.
+- TrOCR resolved 0/60; unresolved 60/60; engine disagreements 60/60. TrOCR reduced manual confirmations by 0.
+- USER_CONFIRM_REQUIRED=69, 2.464 items/page; zero pages without confirmation (0%). Synthetic typography accounts for 58; genuine-handwriting samples account for 11.
+- The paired route is not enough for an OCR MVP that should reduce manual review on this fixture set: 13 critical-field errors, all pages still require confirmation, and TrOCR resolved none. Evidence supports RETURN_G2A1_R2_OCR_ROUTE_INSUFFICIENT. No third OCR/VLM was added; reviewer decision required.
+
+### Recipe schema / provenance
+
+CARRIED_FORWARD: accepted provenance/schema implementation and unit tests 5/5 remain intact. NEW_PROVEN_ACTIONS: each measured fixture JSON carries source image identifier/hash, raw full-page OCR, line text/confidence/coordinates, normalized transcription, schema probe, uncertainty and approval state. The benchmark keeps raw_ocr alongside normalized_transcription; normalization does not overwrite raw OCR. Uncertain/suspicious critical fields route to uncertainty and/or USER_CONFIRM_REQUIRED, not guessed corrections.
+
+### Family Cookbook WordPress / WooCommerce / Kadence
+
+NEW_PROVEN_ACTIONS — run 36262841714:
+
+- Ephemeral local Compose namespace family-cookbook-g2a1-r2-36262841714; WordPress 7.1.2 (wordpress:7.1.2-php8.3-apache), WooCommerce 11.1.2, MariaDB 11.4.13, Kadence free 1.5.2, Chromium 153.0.8010.52 / Playwright 1.55.0. Local-only port 8871. No public domain/VPS, real payment/provider, real order or customer.
+- Preview shortcode integrated the carried preview. Family/title/style bindings passed; image source was blob:, local object URL true, browser fetch/XHR/beacon/WebSocket attempts all 0, model/OCR/token calls 0. HTTP request count before/after local file selection 17/17 (delta 0); no server upload after selection. Aggregate assertion failed only because a later field-name typo returned false; corrected in the latest rerun source. Mobile iframe/document width 300/300 at 390px outer viewport; no horizontal overflow. Two preview sections, no download link/form.
+- Order-bound upload adapter: minimal project-local proof adapter (CUSTOM; WooCommerce order ownership, order-bound metadata and private file storage), no external upload plugin. Synthetic PNG 39,666 bytes; MIME and SHA-256 recorded. User A/order A upload 201 PASS; same user read 200 PASS. User B/order B own upload 201. Anonymous 401; user B accessing order A 403; unrelated order 404; unsupported text 415; 2 MiB+ upload 413 after mapping PHP upload-size error. Mobile form 390px viewport/document with no horizontal overflow. Files live outside document root.
+- Private delivery: synthetic PDF 607 bytes. Intended user/order 200 PASS, %PDF-1.4, SHA-256 6bff45561968b5a7a5a210f6be80c518178787772c0bccbb3906779ed598cc9e. Anonymous 401; unrelated user 403; unrelated order 404; direct public raw URL 404. Private path outside document root; fixture mode 0600 and owned by the web runtime.
+- Detailed versions and browser request paths: 36262841714-wp-test-summary.json. Dummy WooCommerce orders were pending; no payment occurred.
+- Cleanup JSON: compose_down_exit=0, no remaining containers/volumes/networks, credentials_file_removed=true, swap_removed=true. No local Windows workload or other project touched.
+
+### R2 conclusion
+
+RETURN_G2A1_R2_OCR_ROUTE_INSUFFICIENT
+
+NEW_PROVEN_ACTIONS: PaddleOCR Transformers full-page inference; actual suspicious-crop TrOCR calls; public handwriting subset; local Kadence/browser preview measurements; Family-specific order-bound upload and private-delivery access checks. UNKNOWN: representative handwriting/language/recipe accuracy beyond these fixtures, production latency/economics, hosted Actions billing/quota valuation. BLOCKED for PASS: the OCR-route review criterion; TrOCR resolved no routed cases and did not reduce confirmation burden. As checked at 2026-09-26 19:09 UTC, marked run 36263385997 remained in_progress at step 8 (PaddleOCR Transformers inference); conclusion, remaining job steps and final artifacts were not yet available. This run is not represented as successful. Run 36262841714 is the completed benchmark source used for the OCR insufficiency determination. No main merge; no G2A2.
+
