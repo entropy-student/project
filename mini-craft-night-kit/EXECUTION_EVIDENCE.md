@@ -4682,3 +4682,63 @@ STOP_AT_REVIEWER=YES
 
 The submitted remote payload contained only read-only container/network metadata, bounded WordPress option-status comparisons, one anonymous private Checkout GET with redirect following disabled, and allowlisted PPCP REST GET state extraction; it contained no DB write, lifecycle operation, cart/session/order/payment action, Provider request, Secret inspection/hash, or infrastructure mutation. Because the execution result was not observable, none of those read results is claimed. No local diagnostic file or remote temporary file was intentionally created, so no post-return cleanup was run.
 
+
+
+## K6_PHASE_D_R6R3R1_EXECUTION_WRAPPER_RECOVERY_AND_PRIVATE_VALIDATION_RESUME — RETURN (2026-09-26)
+
+Authority reread from current GitHub: Reviewer Handoff, Storage Manifest, current D-R6R3R1 decision and pack, original D-R6R3 decision and pack, latest Evidence/Handoff, canonical Governance v0.1.6 and active SSH/Storage/Target Host addenda. The unique local Shared VPS Handoff was read. No Secret or private-key content was accessed.
+
+```text
+LOCAL_WRAPPER_STDOUT_CAPTURE=PASS
+LOCAL_WRAPPER_STDERR_CAPTURE=PASS
+LOCAL_WRAPPER_NATIVE_NONZERO_EXIT_CAPTURE=PASS_EXPECTED_7
+LOCAL_OPENSSH_EXECUTABLE=C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe
+LOCAL_OPENSSH_VERSION_CAPTURE=PASS;OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2
+LOCAL_OPENSSH_VERSION_NATIVE_EXIT=PASS;0
+SSH_NATIVE_EXIT=0
+SSH_HOST_KEY_PRESENTED=YES
+SSH_HOST_KEY_MATCH=YES
+SSH_FAILURE_CLASS=NONE
+REMOTE_IDENTITY=ops@srv1970241;PRE_SUDO_WHOAMI=ops;ID_UN=ops;UID_NONZERO=YES
+WORDPRESS_RUNTIME_CONTINUITY=RUNNING;PROJECT_CONTAINER_COUNT=2
+WORDPRESS_RESTART_COUNT=0;STABLE=YES
+WORDPRESS_RUNTIME_CORE=PASS
+MARIADB_HEALTH=HEALTHY
+HOME_SITEURL_READBACK=PASS_TARGET
+WORDPRESS_HOST_PORT=NONE
+DB_PUBLIC_PORT=NONE
+MINICRAFT_PUBLIC_INGRESS=NONE
+UNRELATED_SERVICES_CHANGED=NO;EIGHT_ACCEPTED_BASELINE_CONTAINERS_UP;SHARED_NETWORKS_PRESENT
+CHECKOUT_PRIVATE_STATUS=302
+CHECKOUT_REDIRECT_TARGET=https://minicraft.spikersun.com/cart/
+CHECKOUT_EMPTY_CART_BEHAVIOR=PASS_EXPECTED_CART_REDIRECT
+PPCP_STATE_READ_METHOD=ACCEPTED_REST_DO_REQUEST_GET_COMMON_AND_ONBOARDING
+PPCP_ACTIVE=YES
+PPCP_MERCHANT_CONNECTED=YES
+PPCP_SANDBOX_ENABLED=YES
+PPCP_ONBOARDING_COMPLETED=UNVERIFIED
+PPCP_LIVE_ENABLED=NO
+PPCP_STATE_RESULT=UNAVAILABLE
+WORDPRESS_PRIVATE_APP_VALIDATION=NOT_CLOSED
+D_R6_PRIVATE_RUNTIME_VALIDATION=NOT_CLOSED
+PAYPAL_SANDBOX_LOCAL_CONFIG_STATE=PARTIAL;ONBOARDING_UNVERIFIED
+FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
+REMOTE_WRITES=0
+DB_WRITES=0
+WORDPRESS_RESTART_RECREATE=0
+CART_SESSION_SETUP_ACTIONS=0
+ORDER_ACTIONS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+SHARED_INFRA_WRITES=0
+SSH_RAW_STDERR_RECORDED=NO;IN_MEMORY_CLASSIFICATION_ONLY
+LOCAL_TEMP_CLEANUP=PASS_NO_DISK_TEMP_CREATED
+REMOTE_POST_RETURN_ACTIONS=0
+STOP_AT_REVIEWER=YES
+RESULT=RETURN_REVIEWER_D_R6R3R1_PPCP_MODE_READBACK_UNAVAILABLE
+```
+
+Phase 0 passed before the sole strict SSH invocation. The request used the recorded identity and normal known_hosts with strict checking; the presented host key matched the accepted pin. The one private anonymous Checkout GET did not follow redirects and returned the accepted same-canonical-origin Cart redirect. No cart/session setup, order, payment, provider request, or state write was performed.
+
+The accepted PPCP common-state route returned connected=YES and Sandbox markers=YES; however, the bounded authoritative onboarding GET did not yield a confirmed `completed` boolean. This Gate therefore cannot close private application validation. No retry, alternative PPCP probe, or further remote operation was performed after the RETURN.
