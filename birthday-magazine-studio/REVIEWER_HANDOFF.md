@@ -36,13 +36,19 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Current prototype boundaries: no real payment, no AI/model API, no server upload/storage, no order database, no email delivery, no production PDF generator.
 
 ### Production architecture
-- Storefront/CMS: `UNKNOWN`. WordPress + WooCommerce remains a researched candidate, not an accepted production architecture.
-- Generation service/worker: `UNKNOWN`.
+- Storefront/CMS: **WordPress + WooCommerce — ACCEPTED**.
+- Canonical commerce/order system: **WooCommerce**.
+- Payment: **PayPal via the official WooCommerce PayPal Payments plugin — ACCEPTED**.
+- Payment implementation reference: follow the Mini Craft sequence: local WooCommerce commerce loop first → PayPal Sandbox connection/checkout/capture/callback/refund validation → bounded Live/real-payment Canary later. Do not hand-code PayPal API or introduce a second order system unless a later Reviewer Gate explicitly changes this.
+- Payment evidence boundary: Mini Craft is an implementation/reference path only; its current state does not prove Birthday Magazine Live payment.
+- Free-value path: deterministic browser-local preview only; **0 LLM / vision / image-generation Token**.
+- Paid entitlement boundary: model generation is permitted only after server-side WooCommerce/PayPal paid state is confirmed **and** required intake is complete.
+- Generation service/worker: separate server-side asynchronous job boundary; exact runtime/provider = `UNKNOWN`.
+- Generation idempotency: one paid order → at most one active canonical generation job; duplicate callback/refresh must not duplicate model spend.
 - PDF rendering engine: `UNKNOWN`.
 - Data/persistence: `UNKNOWN`.
 - Object/file storage: `UNKNOWN`.
 - Auth/order-private access: `UNKNOWN`.
-- Payment provider: `UNKNOWN`; must not be selected until seller merchant/account country is known.
 - Deployment target: `UNKNOWN`.
 - Shared VPS dependency: none currently accepted.
 - Target-host execution boundary: no target-host or production write is authorized or claimed.
@@ -54,8 +60,9 @@ P0  Governance Intake / Truth Reconciliation             ✅ PASS
 G1  Product / Offer Baseline                            ✅ PASS (Owner decisions; not transaction proof)
 G2A Interactive Sample Review + MVP Spec Freeze          ← CURRENT
 G2B Local AI/PDF Solution Proof                         ⏳ HOLD
-G3  Staging Storefront + Test Payment + Private Flow    ⏳ HOLD
-G4  Bounded Live Transaction Canary                     ⏳ HOLD
+G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
+G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
+G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
 ```
@@ -63,6 +70,7 @@ G6  Production Hardening / Scale Decision               ⏳ HOLD
 Current Reviewer decisions:
 - `PASS_P0_GOVERNANCE_NORMALIZATION_2026-09-26`
 - `PASS_G1_PRODUCT_OFFER_BASELINE_OWNER_DECISIONS_2026-09-26`
+- `PASS_ARCH_WOOCOMMERCE_PAYPAL_AND_TOKEN_BOUNDARY_2026-09-26`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -74,8 +82,10 @@ Important limitation: the Owner reports demand as already validated, but the und
 - First paid format: digital PDF.
 - Test price: **US$39.99**.
 - Owner does not require a preset total pilot budget cap or order-count cap.
-- Pre-payment preview: browser-local deterministic preview; no model API call.
-- Paid production target: confirmed payment + complete intake → personalized content generation → deterministic layout/PDF → QA → private proof → final PDF delivery.
+- Pre-payment preview: browser-local deterministic preview; **zero model API calls / zero model Token**.
+- Commerce/order baseline: **WordPress + WooCommerce**.
+- Payment baseline: **official WooCommerce PayPal Payments**; Sandbox validation precedes any Live payment.
+- Paid production target: confirmed WooCommerce/PayPal paid state + complete intake → one idempotent generation job → personalized content generation → deterministic layout/PDF → QA → private proof → final PDF delivery.
 - Family recipe book: out of scope.
 - Physical printing: deferred.
 
@@ -143,7 +153,10 @@ Documentation/prototype-only changes are reversible through Git. No production r
 - The current sample does not charge money or call an AI generation API.
 - The current sample does not constitute production payment, generation, PDF delivery or market validation.
 - US-first, English-first, digital PDF, US$39.99, zero-token preview and post-payment AI direction are Owner-confirmed.
-- Existing WordPress/plugin documents are research snapshots, not architecture approval.
+- WordPress + WooCommerce is now the accepted commerce baseline.
+- PayPal through the official WooCommerce PayPal Payments plugin is now the accepted payment path, using Mini Craft as the implementation reference.
+- The free path must remain deterministic and zero-model-token; paid AI spend is gated by confirmed payment entitlement plus complete intake.
+- Other WordPress/plugin research remains candidate research unless separately accepted.
 - There is no current production deployment.
 
 ## 8. UNKNOWN / Open Risks
@@ -154,7 +167,7 @@ Documentation/prototype-only changes are reversible through Git. No production r
 - final question set/content schema;
 - included revision/regeneration count;
 - seller merchant/bank account country;
-- payment provider and settlement currency behavior;
+- PayPal merchant/account eligibility, settlement currency behavior and actual fees for the eventual seller account;
 - generator/model/provider selection;
 - real per-order AI/render/storage cost;
 - storage, access control and deletion policy;
@@ -194,9 +207,9 @@ Documentation/prototype-only changes are reversible through Git. No production r
 
 ## 13. Status Summary
 
-- Overall progress: product direction and clickable sample exist; production system does not.
-- Final goal: paid personalized birthday magazine PDF workflow.
+- Overall progress: product direction, clickable sample, commerce baseline, PayPal path and free/paid Token boundary are fixed; production system does not yet exist.
+- Final goal: PayPal-paid personalized birthday magazine PDF workflow.
 - Current Gate: G2A interactive sample review + MVP spec freeze.
-- This round completed: governance intake, source-of-truth reconciliation, document classification.
-- Next: review/freeze the actual MVP, then local AI/PDF solution proof.
+- This round completed: governance normalization plus architecture decision for WordPress/WooCommerce/PayPal and zero-token-free / paid-AI boundary.
+- Next: review/freeze the actual MVP, then local AI/PDF solution proof, then WooCommerce commerce loop and PayPal Sandbox.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.

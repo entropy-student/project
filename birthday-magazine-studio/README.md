@@ -14,7 +14,10 @@
 - 首轮产品为数字 PDF；
 - 测试价 **US$39.99**；
 - 付款前使用浏览器本地、零模型 API 调用的确定性预览；
-- 付款并提交完整素材后，目标流程才进入个性化 AI 内容生成、确定性排版、QA、私有 proof 和 final PDF 交付；
+- 商店与订单采用 **WordPress + WooCommerce**；
+- 支付采用 **PayPal（官方 WooCommerce PayPal Payments）**，实现路径参考 Mini Craft：本地订单闭环 → Sandbox → 后续真实 Canary；
+- 免费层严格 **0 模型 Token**；只有服务端确认 PayPal/WooCommerce 已付款且资料完整后，才允许创建唯一 AI generation job；
+- 付费后进入个性化 AI 内容生成、确定性排版、QA、私有 proof 和 final PDF 交付；
 - 家庭食谱书不属于本项目；
 - 实体印刷后置。
 
