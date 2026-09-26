@@ -2534,3 +2534,16 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Counters: `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`, `PAYMENT_ACTIONS=0`, `SECRET_VALUE_OR_HASH_ACCESS=0`, `UNRELATED_SERVICES_CHANGED=NO`.
 - Recommended next Reviewer decision: reconcile the active edge-test route into the durable Caddy source (or approve another exact persistence mechanism), decide DNS proxy policy, and explicitly address exposure of the published test SKU before any future ingress-write Gate.
 - `STOP_AT_REVIEWER=YES`; no public route, DNS, Caddy, tunnel, firewall, or Compose change was made.
+
+
+## Current Executor Handoff — K6 Phase F-R1
+
+- Gate: `K6_PHASE_F_R1_SHARED_INGRESS_CONFIG_SOURCE_RECONCILIATION`
+- Result: `RETURN_REVIEWER_F_R1_READONLY_EXECUTION_HELPER_ERROR`.
+- Canonical strict SSH trust and pre-sudo identity (`ops@srv1970241`) passed. Fresh read-only runtime/network checks reached Caddy metadata; the remote-check helper then raised `AttributeError` at that stage (native SSH result 71).
+- No current Caddy persistence/autosave reconciliation or candidate adaptation is claimed. Existing active-route preservation is not re-certified, and the public-ingress changeset is not ready.
+- Prior accepted topology facts remain historical only; this Gate did not infer fresh DNS/indexing state from them.
+- No Caddy, autosave, Admin API load/reload, cloudflared, DNS, firewall, Docker network/Compose, WordPress, product, indexing, or payment mutation occurred.
+- Counters: `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`, `PAYMENT_ACTIONS=0`, `PAYPAL_LIVE=NO`, `SECRET_VALUE_OR_HASH_ACCESS=0`.
+- Evidence section appended to `EXECUTION_EVIDENCE.md`. Request Reviewer direction on the helper failure before any follow-up; do not proceed to ingress mutation.
+- `STOP_AT_REVIEWER=YES`.
