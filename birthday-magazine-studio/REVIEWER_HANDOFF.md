@@ -219,7 +219,7 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: complete evidence-led G2A2 product design using `docs/G2A2_PRODUCT_RESEARCH_2026-09-27.md` as supporting research, then freeze `docs/MVP_PRODUCT_CONTRACT.md`.
+- Reviewer next action: collect Owner decisions using `docs/G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md`, then freeze `docs/MVP_PRODUCT_CONTRACT.md`.
 - Executor next action: none until G2A2 PASS creates the bounded G2B implementation Gate.
 - Owner intervention required: **YES at G2A2 acceptance** for the remaining subjective product decisions; the account-vs-guest decision is already resolved.
 
@@ -231,6 +231,8 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - G2A1R1: closed; its Executor RETURN is preserved as the evidence that the current guest plugin links are bearer-replayable and therefore rejected for strict guest-private use.
 - G2A2: CURRENT.
 - Authenticated-account-required is now fixed for MVP; guest/no-account private fulfillment is out of scope.
-- Current G2A2 research finding: the strongest market gap is between cheap/high-effort Canva templates and expensive/manual done-for-you magazine services; adjacent photo-book products validate guided prompts, automatic curation and proof-before-final.
-- Next: Owner + Reviewer choose the evidence-backed MVP page/photo/question/revision contract; only then authorize G2B local AI/PDF proof.
+- G2A2 R2 research converts the market evidence into seven explicit Owner decisions: 12 vs 16 pages; photo input/curation; six prompts; fixed spine + dynamic modules; revision policy; retention; style-preset count.
+- Reviewer recommendations currently favor: 12 total pages; 12–25 source photos with up to 3 must-use; ~10–14 selected; six short prompts; fixed emotional spine + 2 dynamic modules; one bounded revision batch; 30-day source retention + 90-day final PDF; 3 style presets on one shared layout system.
+- These are recommendations, not frozen facts, until Owner explicitly approves them.
+- Next: Owner decisions → `MVP_PRODUCT_CONTRACT.md` → G2A2 PASS → G2B local AI/PDF proof.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
