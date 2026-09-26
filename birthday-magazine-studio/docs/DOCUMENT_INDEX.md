@@ -22,7 +22,10 @@
 | `REVIEWER_DECISION_G2A1_RETURN.md` | Earlier Reviewer return | Historical; superseded by final PASS decision |
 | `G2A1R1_EVIDENCE_CLOSURE.md` | G2A1 evidence-closure execution contract | Executed / closed |
 | `G2A1_COMPONENT_FEASIBILITY_POC.md` | Frontend + reusable component feasibility | Executed / **PASS at parent Gate** |
-| `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **CURRENT GATE** |
+| `REVIEWER_DECISION_G2A2_PASS.md` | Final Reviewer decision for G2A2 | **CURRENT REVIEW DECISION — PASS** |
+| `MVP_PRODUCT_CONTRACT.md` | Frozen MVP product contract | **AUTHORITATIVE PRODUCT CONTRACT FOR G2B** |
+| `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | Executed / **PASS** |
+| `G2B_LOCAL_AI_PDF_SOLUTION_PROOF.md` | Local AI → 12-page magazine → PDF proof | **CURRENT GATE CONTRACT** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
 | `G1_TWO_STEP_AI_PRODUCT_FLOW.md` | Two-step product-flow design | Current supporting design where consistent with Handoff |
