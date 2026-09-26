@@ -2160,3 +2160,27 @@ NEXT=STOP_AT_REVIEWER
 STOP_AT_REVIEWER=YES
 
 Reviewer checkpoint: record an exact immutable, verifiable acquisition path for both accepted images, or provide an already-sealed image package/path. Keep the current Secrets unchanged. No VPS write or deployment step should resume until a subsequent Reviewer decision resolves image acquisition.
+
+
+## K6 Phase D-R1 handoff — STOP_AT_REVIEWER (2026-09-26)
+
+GATE=K6_PHASE_D_R1_IMAGE_ACQUISITION_SEAL_AND_PRIVATE_DEPLOYMENT_RESUME
+RESULT=RETURN_REVIEWER_K6_D_R1_COMPOSE_SOURCE_HASH_MISMATCH
+
+The official WordPress and MariaDB tags each resolved to one exact linux/amd64 child digest; exact digest pulls, local identity/platform checks, no-network version probes, and local resolved-Compose render passed. No build, tag-only pull, extra image, or application-service start occurred.
+
+Blocking reconciliation:
+- K6B execution record expected Compose source SHA-256: `03DCB12E3B8FCFC1A58329CCACE3949DEEAB64DA292AF885FA8817A16DA829BF`.
+- Only scoped local candidate observed: `C52E1C088D05300C93139CF87A04D4C7CA2E5D8412FEE6C788CB97ABDABF0B2B`.
+- No exact-seal copy found in the scoped Mini Craft workspace/archive. Candidate resolved Compose was not deployed and was removed from VPS. No remote compose render/start, SQL restore, wp-content restore, URL migration, or application validation occurred.
+- WP-CLI is absent from the approved WordPress image; migration tool not installed; URL migration not attempted.
+
+Completed bounded writes before the source mismatch was detected: created project-scoped staging paths and transferred the accepted K5 SQL/wp-content artifacts plus non-secret manifests to `/srv/backups/mini-craft-night-kit`. Both transferred recovery artifacts matched their accepted K5 hashes. Empty app/mysql/wp-content directories were removed. Current residual target state: only the verified, root-owned recovery artifacts/manifests in the project backup path; existing Secret tree unchanged. No `.env` was created and no DB identifier candidate was applied.
+
+Fresh end state: no Mini Craft container; Docker networks remain 8 and volumes 0; shared containers/network/ingress unchanged; no public route; no Secret values/hashes accessed; no payment/Live action. Docker changes were limited to pulling the two exact approved image digests.
+
+Evidence: `EXECUTION_EVIDENCE.md` appended with digest, transfer, prewrite, cleanup, and return details. Local gate artifacts are under `C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace\artifacts\gates\k6-phase-d-r1-image-acquisition-seal-and-private-deployment-resume\`; the resolved Compose candidate is explicitly marked HOLD / DO NOT DEPLOY.
+
+REVIEWER_ACTION=Reconcile the K6B Compose source: restore the exact sealed source or approve a new source/hash and procedure.
+OWNER_ACTION=NONE
+STOP_AT_REVIEWER=YES
