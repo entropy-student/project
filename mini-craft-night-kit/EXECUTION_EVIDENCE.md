@@ -4893,3 +4893,56 @@ STOP_AT_REVIEWER=YES
 The intended topology, if a later Reviewer-authorized Gate resolves the source drift, is a single Mini Craft hostname route to `wordpress:80` over existing `spikersun-edge`, plus a Cloudflare DNS record. Cloudflared, Docker network, and WordPress Compose changes are not indicated by the current readback. Do not apply this candidate until the active `edge-test.spikersun.com` behavior is represented in the durable Caddy source and the DNS proxy policy / public exposure of Product 223 test data are explicitly reconciled.
 
 Caddy references consulted for future planning: [Admin API](https://caddyserver.com/docs/api), [Automatic HTTPS](https://caddyserver.com/docs/automatic-https). Cloudflare tunnel mode reference: [run parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/).
+
+
+## K6_PHASE_F_R1_SHARED_INGRESS_CONFIG_SOURCE_RECONCILIATION — RETURN (2026-09-27)
+
+```text
+GATE=K6_PHASE_F_R1_SHARED_INGRESS_CONFIG_SOURCE_RECONCILIATION
+RESULT=RETURN_REVIEWER_F_R1_READONLY_EXECUTION_HELPER_ERROR
+SUMMARY=Canonical strict SSH trust and pre-sudo identity passed, and the fresh read-only runtime/network checks reached the Caddy metadata stage. The local remote-check helper then raised AttributeError at caddy_metadata (native SSH result 71). Caddy persistence/autosave reconciliation and in-memory candidate adaptation were not completed, so no readiness or route-preservation claim is made.
+SSH_ATTEMPTS=3;ALL_STRICT_CANONICAL;NO_TRUST_RELAXATION
+SSH_HOST_KEY_MATCH=YES
+REMOTE_IDENTITY=ops@srv1970241
+REMOTE_PRE_SUDO_WHOAMI=ops
+REMOTE_PRE_SUDO_ID_UN=ops
+REMOTE_PRE_SUDO_UID_NONZERO=YES
+REMOTE_PRE_SUDO_HOSTNAME=srv1970241
+FRESH_RUNTIME_NETWORK_CHECKS=PASS_TO_CADDY_METADATA;WORDPRESS_AND_MARIADB_RUNNING;NO_APP_HOST_PORTS;EDGE_TO_WORDPRESS_BOUNDED_PROBE=HTTP_200
+CADDY_START_MODE=NOT_VERIFIED
+CADDY_PERSIST_CONFIG=NOT_VERIFIED
+CADDY_AUTOSAVE_PATH=PRIOR_ACCEPTED_PATH_NOT_REFRESHED
+CADDY_AUTOSAVE_EXISTS=NOT_VERIFIED
+CADDY_AUTOSAVE_BYTES=NOT_VERIFIED
+CADDY_AUTOSAVE_MTIME=NOT_VERIFIED
+CADDY_AUTOSAVE_SHA256=NOT_VERIFIED
+CADDY_ACTIVE_CONFIG_SHA256=NOT_VERIFIED
+AUTOSAVE_MATCHES_ACTIVE_HTTP_ROUTES=NOT_VERIFIED
+LOCALHOST_ROUTE_PRESERVED=NOT_REVERIFIED
+EDGE_TEST_ROUTE_RECOVERABLE=NOT_VERIFIED_CURRENT_GATE
+EDGE_TEST_ROUTE_FINGERPRINT=PRIOR_ACCEPTED_SHA256_2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824;CURRENT_RECONCILIATION_NOT_COMPLETED
+MINICRAFT_EDGE_UPSTREAM=wordpress:80;PRIOR_ACCEPTED
+EDGE_TO_MINICRAFT_PRIVATE_REACHABILITY=PASS;FRESH_BOUNDED_HTTP_200
+CANDIDATE_CADDYFILE_ADAPT=NOT_RUN
+CANDIDATE_CADDYFILE_SHA256=NOT_CREATED
+CANDIDATE_EXISTING_ROUTE_PARITY=NOT_VERIFIED
+CANDIDATE_MINICRAFT_ROUTE=NOT_CREATED
+DNS_CANARY_POLICY=A_DNS_ONLY_TO_2.24.193.133
+CURRENT_MINICRAFT_DNS=PRIOR_ACCEPTED_NXDOMAIN;NOT_REFRESHED_THIS_GATE
+CANARY_INDEXING_STATE=NOT_CHECKED
+PRODUCT_223_CLASSIFICATION=SANDBOX_CANARY_ONLY_BLOCKS_SOFT_LAUNCH;PRIOR_ACCEPTED;UNCHANGED
+PUBLIC_INGRESS_CHANGESET=NOT_READY
+ROLLBACK_PLAN=NOT_FINALIZED
+OWNER_CHECKPOINT_REQUIRED=YES
+SHARED_INFRA_WRITES=0
+PUBLIC_INGRESS_CHANGE=0
+PAYMENT_ACTIONS=0
+PAYPAL_LIVE=NO
+SECRET_VALUE_OR_HASH_ACCESS=0
+UNRELATED_SERVICES_CHANGED=NO
+LOCAL_TEMP_CLEANUP=PASS_NO_PERSISTENT_TEMP_CREATED
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+No Caddyfile/autosave/Admin API load or reload, DNS, cloudflared, firewall, Docker network/Compose, product, indexing, payment, or other shared-infrastructure mutation occurred. Stop for Reviewer direction on the read-only helper failure; do not represent this as Caddy configuration drift or a completed candidate.
