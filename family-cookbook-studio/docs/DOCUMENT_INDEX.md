@@ -23,4 +23,5 @@
 - The two-engine OCR architecture is accepted, but its performance is not proven. G2A1 execution evidence must prove sufficiency; otherwise return to Reviewer instead of adding providers/models ad hoc.
 - Future prototypes demonstrate interaction/technical feasibility only unless a later Gate proves production behavior.
 - `EXECUTOR_HANDOFF.md` and `EXECUTION_EVIDENCE.md` are created by the Execution Agent when execution begins; they record facts, not architecture decisions.
+- Current G2A1 Executor delivery is GitHub-backed: work/evidence must be committed to the dedicated Gate branch and returned with branch + HEAD SHA; local-only/chat-only execution is not accepted as Gate delivery.
 - Real customer recipe images, family stories, names, addresses, payment credentials, Secrets and private order identifiers must not be stored in ordinary project documentation.
