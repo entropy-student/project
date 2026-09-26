@@ -35,6 +35,7 @@
 
 - [PROJECT_RECORD.md](./PROJECT_RECORD.md) — 项目长期事实、决策、阶段状态和下一步
 - [docs/PROJECT_CHARTER.md](./docs/PROJECT_CHARTER.md) — 立项目标、范围、验收条件、阶段门与风险
+- [docs/G1_DESK_RESEARCH.md](./docs/G1_DESK_RESEARCH.md) — 公开线索、证据强弱、反例与访谈提纲
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 证据主干、当前瓶颈和获客最小实验
 - [docs/WORDPRESS_STACK_RESEARCH.md](./docs/WORDPRESS_STACK_RESEARCH.md) — 可复用的免费 WordPress 主题、模板和插件候选
 
