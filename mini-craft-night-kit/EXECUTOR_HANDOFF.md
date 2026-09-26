@@ -2338,3 +2338,34 @@ STOP_AT_REVIEWER=YES
 ```
 
 No alternate SSH client/key, relaxed host-key policy, retry, container lifecycle action, or cleanup was performed.
+
+## K6_PHASE_D_R6R1_SSH_TRANSPORT_RECOVERY_AND_BOOTSTRAP_RESUME — STOP_AT_REVIEWER (2026-09-26)
+
+```text
+GATE=K6_PHASE_D_R6R1_SSH_TRANSPORT_RECOVERY_AND_BOOTSTRAP_RESUME
+RESULT=RETURN_REVIEWER_D_R6R1_REMOTE_IDENTITY_PROBE_INVALID
+SUMMARY=The single strict SSH attempt succeeded and the host key matched, but the remote identity helper queried UID 0 rather than the effective SSH user. D-R6 checks were not run; no remote writes or lifecycle actions occurred.
+IDENTITY_REFERENCE_CHECK=PASS
+PUBLIC_FINGERPRINT_MATCH=PASS
+KNOWN_HOSTS_PIN_CHECK=PASS
+SSH_NATIVE_EXIT=0
+SSH_FAILURE_CLASS=NONE
+SSH_HOST_KEY_PRESENTED=YES
+SSH_HOST_KEY_MATCH=YES
+SSH_AUTHENTICATED_TARGET=ops@2.24.193.133
+REMOTE_HOSTNAME=srv1970241
+REMOTE_IDENTITY=UNVERIFIED;PROBE_USED_UID_0_LOOKUP
+D_R6_READINESS=NOT_RUN
+WORDPRESS_BOOTSTRAP=NOT_RUN
+HOME_SITEURL_SCALAR_UPDATE=NOT_RUN
+REMOTE_WRITES=0
+DOCKER_ACTIONS=0
+SHARED_INFRA_WRITES=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+Reviewer action: issue a bounded follow-up authorization for identity verification and D-R6 resume. The R6R1 one-attempt allowance was used; do not retry under this Gate.
