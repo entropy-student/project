@@ -64,5 +64,6 @@ Return this Gate for a bounded rerun in an environment that can finish local Pad
 - Delivery: Family-specific private PDF positive/negative checks were not run.
 - Blocker: latest measured available host RAM was 0.62 GiB while unrelated WordPress/MariaDB stacks were active. No unrelated process/container was stopped, and no new test stack/model load was started.
 - Cleanup: no new package cache, model weights, containers, orders, uploads or PDF test artifacts were created. Existing unrelated containers were left untouched.
-- Git delivery: preflight evidence and structured artifact are being committed on the same branch. Final exact HEAD will be independently read back from GitHub and returned with this handoff; main remains unmerged.
+- R1 evidence snapshot commit: `1483671c78b831686175c2cd35542087ad1baca3` (parent `b1bf844096fed4761372f3beea6f9f2d7d081643`), containing this remediation evidence and `g2a1/r1/preflight.json`.
+- GitHub read-back immediately after that evidence commit showed this branch at `1483671c78b831686175c2cd35542087ad1baca3`; no `main` merge/rebase occurred. The final branch ref is read back again after this Handoff update and returned below.
 - Recommended Reviewer decision: `RETURN_G2A1_R1_RESOURCE_BLOCKED`; keep the current OCR architecture and resume on this branch after fresh safe resource capacity is available. Stop at Reviewer; do not enter G2A2.
