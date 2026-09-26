@@ -53,7 +53,8 @@ SERIALIZED_OLD_ORIGIN_A_POST=0
 SERIALIZED_OLD_ORIGIN_B_POST=0
 GUID_MUTATIONS=0
 K6_PHASE_F_PUBLIC_SANDBOX_INGRESS_READINESS_AND_CHANGE_PLAN=RETURN_SHARED_INGRESS_CONFIG_DRIFT
-CURRENT_GATE=K6_PHASE_F_R1_SHARED_INGRESS_CONFIG_SOURCE_RECONCILIATION
+K6_PHASE_F_R1_SHARED_INGRESS_CONFIG_SOURCE_RECONCILIATION=RETURN_READONLY_EXECUTION_HELPER_ERROR
+CURRENT_GATE=K6_PHASE_F_R1R1_NATIVE_READONLY_CADDY_SOURCE_RECONCILIATION
 CURRENT_GATE_STATUS=AUTHORIZED_AWAIT_EXECUTOR
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=YES_PRIVATE_RUNTIME
 PRIVATE_RUNTIME_PUBLIC_INGRESS=NO
@@ -64,15 +65,15 @@ REAL_PAYMENT=NO
 OLD_DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
 OLD_VALUES_REQUIRED=NO
 C1R5_OWNER_AUTHORIZATION=FRESH_EXPLICIT_BOUNDED
-EXECUTOR_STATUS=PHASE_F_RETURN_REVIEWED_F_R1_READY
+EXECUTOR_STATUS=F_R1_RETURN_REVIEWED_F_R1R1_READY
 OWNER_ACTION=NONE
 ```
 
-Current Gate decision: `docs/REVIEWER_DECISION_K6_F_RETURN_F_R1_SHARED_INGRESS_CONFIG_SOURCE_RECONCILIATION.md`.  
-Current Execution Pack: `review-packets/K6_F_R1_SHARED_INGRESS_CONFIG_SOURCE_RECONCILIATION.md`.
+Current Gate decision: `docs/REVIEWER_DECISION_K6_F_R1_RETURN_F_R1R1_NATIVE_READONLY_RECONCILIATION.md`.  
+Current Execution Pack: `review-packets/K6_F_R1R1_NATIVE_READONLY_CADDY_SOURCE_RECONCILIATION.md`.
 Executor dispatch record: GitHub issue #14 (`[Executor] Mini Craft K6 Phase D private deployment`).
 
-Current accepted deployment facts: the ten-Secret current state is qualified for K6 deployment; the accepted K5 MariaDB restore contains the exact expected 52-table root/app-visible set with `wp_options` present; wp-content is restored; the digest-pinned WordPress/MariaDB private runtime exists with no host ports; SSH transport/trust and pre-sudo `ops@srv1970241` identity are proven; WordPress bootstrap/installed-state pass; `home` and `siteurl` were transactionally updated from `http://localhost:8093` to `https://minicraft.spikersun.com` and post-read verified. D-R6R3R1 sealed local wrapper observability, reconfirmed private runtime continuity, proved the anonymous empty-cart Checkout redirect is the accepted same-origin Cart redirect, and freshly proved PPCP active/connected/Sandbox YES/Live NO. The current onboarding endpoint did not emit a confirmable completion boolean, but accepted K3R9/K3R11 evidence proved onboarding completed and no material-drift evidence exists; Reviewer therefore closed D-R6 private runtime validation as PASS. Phase E-R1 then completed the serialized-safe migration of both accepted historical origins with exact dry-run-to-write count parity (36 and 30), zero residual matches, GUID exclusion, unchanged 52-table set, fresh local recovery backup, and no public ingress. Phase F correctly returned because active Caddy contains edge-test.spikersun.com while the startup Caddyfile does not; reloading the current durable source could remove unrelated behavior. F-R1 now reconciles Caddy startup source, active Admin config, and autosave in a read-only Gate, then freezes one semantically equivalent candidate Caddyfile and rollback plan. Shared Ingress mutation, DNS mutation, PayPal Live, real payment and launch remain unauthorized.
+Current accepted deployment facts: the ten-Secret current state is qualified for K6 deployment; the accepted K5 MariaDB restore contains the exact expected 52-table root/app-visible set with `wp_options` present; wp-content is restored; the digest-pinned WordPress/MariaDB private runtime exists with no host ports; SSH transport/trust and pre-sudo `ops@srv1970241` identity are proven; WordPress bootstrap/installed-state pass; `home` and `siteurl` were transactionally updated from `http://localhost:8093` to `https://minicraft.spikersun.com` and post-read verified. D-R6R3R1 sealed local wrapper observability, reconfirmed private runtime continuity, proved the anonymous empty-cart Checkout redirect is the accepted same-origin Cart redirect, and freshly proved PPCP active/connected/Sandbox YES/Live NO. The current onboarding endpoint did not emit a confirmable completion boolean, but accepted K3R9/K3R11 evidence proved onboarding completed and no material-drift evidence exists; Reviewer therefore closed D-R6 private runtime validation as PASS. Phase E-R1 then completed the serialized-safe migration of both accepted historical origins with exact dry-run-to-write count parity (36 and 30), zero residual matches, GUID exclusion, unchanged 52-table set, fresh local recovery backup, and no public ingress. Phase F correctly returned because active Caddy contains edge-test.spikersun.com while the startup Caddyfile does not; reloading the current durable source could remove unrelated behavior. F-R1 encountered a read-only helper AttributeError before Caddy metadata reconciliation; no Shared Infra writes occurred and this is not new Caddy drift evidence. F-R1R1 replaces that helper with direct docker-inspect/native JSON parsing, then resumes the same read-only startup-source / active-config / autosave reconciliation and candidate adaptation. Shared Ingress mutation, DNS mutation, PayPal Live, real payment and launch remain unauthorized.
 
 The historical C1R5 helper-source auditability limitation and old encrypted C1 pending artifact remain recorded, but they no longer block the qualified current Secret state.
 
