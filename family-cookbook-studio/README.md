@@ -34,24 +34,38 @@
 ## 当前技术方向
 
 ```text
-WordPress / WooCommerce
+WordPress + WooCommerce
+    ↓
+Kadence first PoC
+(Brandy / Blocksy fallback)
+    ↓
+FREE: browser-local preview
+0 model Token / no real OCR
     ↓
 paid order + complete intake
     ↓
 private recipe-image upload
     ↓
-OCR / handwriting recognition
+OpenCV/library preprocessing
     ↓
-recipe schema extraction
+PaddleOCR first
+    ↓
+TrOCR second local pass when ambiguous
+    ↓
+optional bounded VLM only for unresolved regions
+    ↓
+recipe schema + provenance
     ↓
 uncertainty + human/user review
     ↓
-deterministic cookbook layout
+deterministic HTML/CSS cookbook layout
     ↓
 PDF QA
     ↓
 private proof / final delivery
 ```
+
+当前默认目标不是“每单调用大模型”，而是让常规订单尽可能依赖本地/开源 OCR 与规则完成，因此普通付费路径也可能保持 **0 model Token**；是否需要 VLM 以及每单实际成本必须由 G2A1 证据决定。
 
 详细复用边界见 [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md)。
 
@@ -61,7 +75,7 @@ private proof / final delivery
 
 先验证：
 
-1. 手写食谱图像在不同 OCR 路线下的真实转录质量；
+1. PaddleOCR / TrOCR 在真实难度手写食谱上的转录质量，并以 Tesseract 作为印刷体控制组；
 2. 配方字段能否稳定结构化且保留原文 provenance；
 3. 低置信字段能否 fail-closed 地进入人工/用户确认；
 4. WordPress/WooCommerce 的订单绑定上传和私有文件交付能否复用；
