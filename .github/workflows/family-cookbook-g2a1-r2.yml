@@ -152,12 +152,12 @@ jobs:
           python3 -m venv "$RUNNER_TEMP/fcs-ocr-venv"
           source "$RUNNER_TEMP/fcs-ocr-venv/bin/activate"
           python -m pip install --disable-pip-version-check pip==25.2
-          python -m pip install --disable-pip-version-check torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --disable-pip-version-check torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu
           python -m pip install --disable-pip-version-check -r family-cookbook-studio/g2a1/r2/requirements-ocr.txt
           python -m pip check
           python - <<'PY'
           import importlib.metadata as m, json
-          names=("paddleocr","paddlex","paddlepaddle","transformers","torch","numpy","opencv-contrib-python","Pillow","psutil","safetensors","sentencepiece")
+          names=("paddleocr","paddlex","paddlepaddle","transformers","torch","torchvision","numpy","opencv-contrib-python","Pillow","psutil","safetensors","sentencepiece")
           out={}
           for name in names:
               try: out[name]=m.version(name)
@@ -228,12 +228,18 @@ jobs:
             sleep 5
           done
           docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'curl -fsSL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o /tmp/wp-cli.phar && php /tmp/wp-cli.phar --allow-root --info >/dev/null'
+          echo "wp_stage=core_install"
           docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T \
-            -e FCS_ADMIN_PASSWORD="$FCS_WP_ADMIN_PASSWORD" wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html core install --url=http://127.0.0.1:8871 --title="Family Cookbook G2A1 local testbed" --admin_user=fcs-admin --admin_password="$FCS_ADMIN_PASSWORD" --admin_email=fcs-admin@example.invalid --skip-email >/dev/null'
-          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html option update permalink_structure "/%postname%/" >/dev/null && php /tmp/wp-cli.phar --allow-root --path=/var/www/html rewrite flush >/dev/null'
-          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html plugin install woocommerce --activate --quiet'
-          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html theme install kadence --activate --quiet'
-          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html plugin activate family-cookbook-proof --quiet'
+            -e FCS_ADMIN_PASSWORD="$FCS_WP_ADMIN_PASSWORD" wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html core install --url=http://127.0.0.1:8871 --title="Family Cookbook G2A1 local testbed" --admin_user=fcs-admin --admin_password="$FCS_ADMIN_PASSWORD" --admin_email=fcs-admin@example.invalid --skip-email'
+          echo "wp_stage=permalinks"
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html option update permalink_structure "/%postname%/" && php /tmp/wp-cli.phar --allow-root --path=/var/www/html rewrite flush'
+          echo "wp_stage=woocommerce_plugin_install"
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html plugin install woocommerce --activate'
+          echo "wp_stage=kadence_theme_install"
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html theme install kadence --activate'
+          echo "wp_stage=proof_adapter_activate"
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html plugin activate family-cookbook-proof'
+          echo "wp_stage=dummy_users_orders_and_pdf"
           docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T \
             -e FCS_USER_A_PASSWORD="$FCS_USER_A_PASSWORD" -e FCS_USER_B_PASSWORD="$FCS_USER_B_PASSWORD" \
             wordpress php /tmp/wp-cli.phar --allow-root --path=/var/www/html eval-file /fcs-tests/bootstrap.php
@@ -259,6 +265,10 @@ jobs:
           wpdir=family-cookbook-studio/g2a1/r2/wp
           project="family-cookbook-g2a1-r2-${GITHUB_RUN_ID}"
           cleanup_exit=0
+          if [ -f "$RUNNER_TEMP/fcs-test-secrets.env" ]; then
+            set +x
+            source "$RUNNER_TEMP/fcs-test-secrets.env"
+          fi
           if [ -f "$wpdir/docker-compose.yml" ]; then
             docker compose -f "$wpdir/docker-compose.yml" -p "$project" down -v --remove-orphans || cleanup_exit=$?
           fi
@@ -287,6 +297,19 @@ jobs:
           print(json.dumps(data))
           PY
           exit "$cleanup_exit"
+      - name: Emit JSON evidence for independent read-back
+        if: always()
+        shell: bash
+        run: |
+          export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
+          for relative in runner-preflight.json ocr/genuine-handwriting-sources.json ocr/ocr-benchmark.json ocr/trocr-fallback-results.json wp/wp-test-summary.json wp/wp-test-ids.json cleanup.json; do
+            path="$G2A1_R2_ARTIFACT_DIR/$relative"
+            if [ -f "$path" ]; then
+              printf '\n---BEGIN_JSON:%s---\n' "$relative"
+              cat "$path"
+              printf '\n---END_JSON:%s---\n' "$relative"
+            fi
+          done
       - name: Upload compact isolated-runner evidence artifacts
         if: always()
         uses: actions/upload-artifact@v7

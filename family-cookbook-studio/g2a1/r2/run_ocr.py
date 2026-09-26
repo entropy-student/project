@@ -324,6 +324,7 @@ def main() -> None:
     stop_monitor.set()
     thread.join(timeout=2)
     fallback_done = [x for x in fallback_rows if x["trocr_result"] is not None]
+    fallback_fixture_ids = {x["fixture"] for x in fallback_done}
     user_confirm_total = sum(x["user_confirm_required_count"] for x in page_rows)
     no_confirm_pages = sum(x["user_confirm_required_count"] == 0 for x in page_rows)
     pages_by_class = {}
@@ -397,7 +398,8 @@ def main() -> None:
             "critical_field_errors": sum(x["critical_metrics"]["critical_field_errors"] for x in page_rows),
             "suspicious_regions": sum(x["suspicious_regions"] for x in page_rows),
             "trocr_fallback_count": len(fallback_done),
-            "trocr_fallback_rate": round(len(fallback_done) / len(page_rows), 4) if page_rows else None,
+            "trocr_fallback_rate": round(len(fallback_fixture_ids) / len(page_rows), 4) if page_rows else None,
+            "trocr_calls_per_page": round(len(fallback_done) / len(page_rows), 4) if page_rows else None,
             "trocr_resolved_count": sum(bool(x["resolved"]) for x in fallback_done),
             "trocr_unresolved_count": sum(bool(x["USER_CONFIRM_REQUIRED"]) for x in fallback_done),
             "engine_disagreement_count": sum(x.get("resolution_reason") == "engine_disagreement" for x in fallback_done),

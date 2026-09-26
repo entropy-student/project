@@ -1,5 +1,6 @@
 # Pinned R2 CPU runtime: PaddleOCR uses its official Transformers inference engine.
 torch==2.8.0
+torchvision==0.23.0
 paddleocr==3.7.0
 paddlex==3.7.0
 transformers==5.10.0
