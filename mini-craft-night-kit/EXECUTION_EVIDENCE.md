@@ -4307,3 +4307,86 @@ Local non-secret Gate artifacts: `mini-craft-night-kit-workspace/artifacts/gates
 ### K6 D-R2 post-return helper cleanup verification (2026-09-26)
 
 A stopped-container layer diff initially showed the non-secret temporary PHP helper as an added path. To avoid leaving it in the stopped container, only the Mini Craft WordPress container was briefly started; the helper was removed as container root, its in-container existence check passed absent, and the container was immediately stopped. A second Docker layer diff reported no entry for the helper. MariaDB remained stopped throughout this cleanup. Final state: both Mini Craft containers exited, both port-binding sets empty, eight pre-existing shared containers still running, and no additional temp SQL/helper file remains on the VPS.
+
+## K6_PHASE_D_R3_DB_RESTORE_DIAGNOSIS_AND_CONDITIONAL_RETRY — RETURN (2026-09-26)
+
+Authority: current K6 D-R3 Reviewer decision and execution pack; canonical VPS Project Governance v0.1.6 with active SSH, Target Host Reality, Storage, and Governance Source Policy addenda. Current Shared VPS Handoff was read from its unique local path. Strict pinned SSH connected as `ops@srv1970241`; no host-key relaxation or trust-file change.
+
+### Preflight and accepted recovery source
+
+- MariaDB and WordPress were both stopped at Gate entry; the staged database dump and wp-content archive remain in the existing project backup namespace.
+- Staged SQL: `/srv/backups/mini-craft-night-kit/database-post-cleanup.sql`; 5,286,165 bytes; SHA-256 `BB6A9F56C532C395B89089FC460FB5F20A038A012C84DDD210DCCF5E1AB4C602`, matching the accepted K5 SQL source. No retransmission or wp-content action.
+- Disk snapshot: root 102,888,095,744 bytes total, 11,454,128,128 used, 91,417,190,400 available (12%).
+- Only the existing Mini Craft MariaDB container was started via the explicitly selected project Compose service; native start exit 0 and health `running|healthy`. WordPress remained exited (previous exit 137); MariaDB has no published host port (`3306/tcp:null`). No image pull, rebuild, recreate, DB reset, or other service start.
+
+### Metadata-only dump structure
+
+The accepted SQL was parsed in process; no INSERT row contents were emitted.
+
+```text
+SQL_HASH=PASS
+DUMP_EXPECTED_TABLE_COUNT=52
+DUMP_EXPECTED_TABLE_NAMES=wp_actionscheduler_actions,wp_actionscheduler_claims,wp_actionscheduler_groups,wp_actionscheduler_logs,wp_commentmeta,wp_comments,wp_kb_optimizer,wp_kb_optimizer_viewport_hashes,wp_links,wp_options,wp_postmeta,wp_posts,wp_term_relationships,wp_term_taxonomy,wp_termmeta,wp_terms,wp_usermeta,wp_users,wp_wc_admin_note_actions,wp_wc_admin_notes,wp_wc_category_lookup,wp_wc_customer_lookup,wp_wc_download_log,wp_wc_order_addresses,wp_wc_order_coupon_lookup,wp_wc_order_operational_data,wp_wc_order_product_lookup,wp_wc_order_stats,wp_wc_order_tax_lookup,wp_wc_orders,wp_wc_orders_meta,wp_wc_product_attributes_lookup,wp_wc_product_download_directories,wp_wc_product_meta_lookup,wp_wc_rate_limits,wp_wc_reserved_stock,wp_wc_tax_rate_classes,wp_wc_webhooks,wp_woocommerce_api_keys,wp_woocommerce_attribute_taxonomies,wp_woocommerce_downloadable_product_permissions,wp_woocommerce_log,wp_woocommerce_order_itemmeta,wp_woocommerce_order_items,wp_woocommerce_payment_tokenmeta,wp_woocommerce_payment_tokens,wp_woocommerce_sessions,wp_woocommerce_shipping_zone_locations,wp_woocommerce_shipping_zone_methods,wp_woocommerce_shipping_zones,wp_woocommerce_tax_rate_locations,wp_woocommerce_tax_rates
+CREATE_DATABASE_COUNT=1
+CREATE_DATABASE_TARGET=wordpress
+CREATE_DATABASE_IF_NOT_EXISTS=NO
+USE_COUNT=1
+USE_TARGET=wordpress
+SCHEMA_QUALIFIED_DDL=NONE
+CREATE_TABLE_TARGETS=UNQUALIFIED
+INSERT_STATEMENT_COUNT=36
+DROP_TABLE_IF_EXISTS_COUNT=52
+DROP_TABLE_TARGET_SET_MATCHES_CREATE=YES
+DROP_TABLE_TARGETS=UNQUALIFIED;ALL_MATCH_EXPECTED_52_TABLES
+DROP_DATABASE=0
+DROP_USER=0
+ALTER_USER=0
+GRANT=0
+REVOKE=0
+CREATE_USER=0
+SET_PASSWORD=0
+SET_GLOBAL=0
+```
+
+The 52 `DROP TABLE IF EXISTS` statements are unqualified and their target set exactly matches the 52 expected CREATE TABLE names. No database/account mutation or cross-schema DDL was found. The dump has one **unguarded** `CREATE DATABASE wordpress` statement.
+
+### Root / app-user readback
+
+Authentication used the existing mounted Secret files only in process memory to create a root-only mode 0600 client option file under container `/dev/shm`; `/dev/shm` was verified as tmpfs. The option file was verified absent before exit. No credential value, hash, argv, environment variable, or log content was emitted or recorded.
+
+- Root/admin query passed. The only non-system schema is `wordpress`; its table count is 0, its table-name set is empty, and `wp_options` is absent.
+- Existing `mini_craft_app@%` account is present. Metadata reports global `USAGE` and an existing schema-level privilege set on `wordpress` (including SELECT/INSERT/UPDATE/DELETE/CREATE/ALTER/DROP); no missing schema grant explains visibility.
+- App-user authentication/query passed against `wordpress`; it also sees 0 tables and no `wp_options`.
+- Therefore the authorized permission-repair branch does not apply; both identities see the same empty target.
+
+### Branch result and stop boundary
+
+```text
+RESULT=RETURN_REVIEWER_D_R3_SCHEMA_OR_DUMP_DRIFT
+ROOT_WORDPRESS_TABLE_SET=EMPTY
+APP_WORDPRESS_TABLE_SET=EMPTY
+WP_OPTIONS=ABSENT
+RESTORE_PATH=NOT_EXECUTED
+DATABASE_IMPORT_RETRIES=0
+DB_PERMISSION_MUTATION=0
+WORDPRESS_START=0
+HOME_SITEURL_SCALAR_UPDATE=NOT_EXECUTED
+FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
+```
+
+The existing `wordpress` schema conflicts with the dump's unguarded `CREATE DATABASE wordpress`. The reviewed import path does not authorize altering/filtering the accepted dump stream, ignoring the database-exists error with a force mode, or dropping/recreating the schema. This is therefore an import-path ambiguity; no import was attempted. The 52 table-level DROP statements were not executed.
+
+Per the Gate's RETURN rule, all remote container operations stopped immediately after classification. **MariaDB is left running and healthy; WordPress remains stopped.** No post-RETURN container cleanup/check was run. No URL option was changed.
+
+Earlier bounded read-only probes had nonzero exits caused by a wrong container-name probe, a permission-denied non-root SQL-file read, and a Python syntax error in a metadata-only scanner draft; none made a database or host mutation. Corrected strict probes completed successfully. These failures are retained here for transparent execution history.
+
+```text
+PUBLIC_INGRESS_CHANGE=0
+SHARED_INFRA_WRITES=0
+SECRET_VALUE_OUTPUT=0
+SECRET_VALUE_HASHING=0
+SECRET_FILE_READ=IN_MEMORY_AUTH_ONLY_AS_REVIEWER_AUTHORIZED
+PAYMENT_ACTIONS=0
+PAYPAL_LIVE=NO
+STOP_AT_REVIEWER=YES
+```
