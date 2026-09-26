@@ -4303,3 +4303,7 @@ The accepted SQL and wp-content package were reused from the already staged, has
 No URL option was changed, no full serialized URL migration was attempted, and no public ingress or shared service configuration was modified. The incomplete Mini Craft containers are stopped (not removed); the partial project data remains preserved, with the accepted K5 sources and unchanged Secret tree available for Reviewer-directed recovery. The exact cause of the import/schema discrepancy is unresolved and requires Reviewer direction before any restore retry.
 
 Local non-secret Gate artifacts: `mini-craft-night-kit-workspace/artifacts/gates/k6-phase-d-r2-compose-sot-reconciliation-and-private-restore/` (resolved Compose retained; temporary PHP helper removed).
+
+### K6 D-R2 post-return helper cleanup verification (2026-09-26)
+
+A stopped-container layer diff initially showed the non-secret temporary PHP helper as an added path. To avoid leaving it in the stopped container, only the Mini Craft WordPress container was briefly started; the helper was removed as container root, its in-container existence check passed absent, and the container was immediately stopped. A second Docker layer diff reported no entry for the helper. MariaDB remained stopped throughout this cleanup. Final state: both Mini Craft containers exited, both port-binding sets empty, eight pre-existing shared containers still running, and no additional temp SQL/helper file remains on the VPS.
