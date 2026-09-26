@@ -2,7 +2,7 @@
 
 Status: C1R5 historical source-auditability limitation retained / C1R5R2 PASS / current Secret state qualified for K6 deployment
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6_PHASE_F_PUBLIC_SANDBOX_INGRESS_READINESS_AND_CHANGE_PLAN`
+Current Gate: `K6_PHASE_F_R1_SHARED_INGRESS_CONFIG_SOURCE_RECONCILIATION`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
