@@ -36,26 +36,29 @@ K6_PHASE_D_R6_BOOTSTRAP_RECONCILIATION_AND_PRIVATE_APP_VALIDATION=RETURN_SSH_CON
 K6_PHASE_D_R6R1_SSH_TRANSPORT_RECOVERY_AND_BOOTSTRAP_RESUME=RETURN_REMOTE_IDENTITY_PROBE_INVALID
 SSH_TRANSPORT_RECOVERED=YES
 SSH_TRUST=PASS
-CURRENT_GATE=K6_PHASE_D_R6R2_REMOTE_IDENTITY_RECONCILIATION_AND_BOOTSTRAP_RESUME
+K6_PHASE_D_R6R2_REMOTE_IDENTITY_RECONCILIATION_AND_BOOTSTRAP_RESUME=RETURN_PRIVATE_APP_VALIDATION_FAILED
+D_R6_IDENTITY_READINESS_BOOTSTRAP=PASS_ACCEPTED
+HOME_SITEURL_SCALAR_UPDATE=PASS_COMMITTED_EXACTLY_TWO_ROWS
+CURRENT_GATE=K6_PHASE_D_R6R3_PRIVATE_APP_VALIDATION_RECONCILIATION
 CURRENT_GATE_STATUS=AUTHORIZED_AWAIT_EXECUTOR
 MINICRAFT_REMOTE_DEPLOYMENT_STARTED=YES_PRIVATE_RUNTIME
 PRIVATE_RUNTIME_PUBLIC_INGRESS=NO
 MARIADB_RESTORE_STATE=PASS_52_TABLES
-WORDPRESS_RUNTIME_STATE=RUNNING_CORE_PRESENT_BOOTSTRAP_VALIDATION_PENDING
+WORDPRESS_RUNTIME_STATE=RUNNING_CORE_PRESENT_BOOTSTRAP_PASS_PRIVATE_VALIDATION_RECONCILIATION_PENDING
 PAYPAL_LIVE=NO
 REAL_PAYMENT=NO
 OLD_DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
 OLD_VALUES_REQUIRED=NO
 C1R5_OWNER_AUTHORIZATION=FRESH_EXPLICIT_BOUNDED
-EXECUTOR_STATUS=D_R6R1_RETURN_REVIEWED_D_R6R2_READY
+EXECUTOR_STATUS=D_R6R2_RETURN_REVIEWED_D_R6R3_READY
 OWNER_ACTION=NONE
 ```
 
-Current Gate decision: `docs/REVIEWER_DECISION_K6_D_R6R1_RETURN_D_R6R2_IDENTITY_RECONCILIATION_AND_RESUME.md`.  
-Current Execution Pack: `review-packets/K6_D_R6R2_REMOTE_IDENTITY_RECONCILIATION_AND_BOOTSTRAP_RESUME.md`.
+Current Gate decision: `docs/REVIEWER_DECISION_K6_D_R6R2_RETURN_D_R6R3_PRIVATE_APP_VALIDATION_RECONCILIATION.md`.  
+Current Execution Pack: `review-packets/K6_D_R6R3_PRIVATE_APP_VALIDATION_RECONCILIATION.md`.
 Executor dispatch record: GitHub issue #14 (`[Executor] Mini Craft K6 Phase D private deployment`).
 
-Current accepted deployment facts: the ten-Secret current state is qualified for K6 deployment; the accepted K5 MariaDB restore now contains the exact expected 52-table root/app-visible set with `wp_options` present; wp-content is restored; the digest-pinned WordPress/MariaDB private runtime exists with no host ports; WordPress runtime core is present; SSH transport and host-key trust recovered in D-R6R1. The only current precondition gap is a correct pre-sudo proof that the authenticated SSH session user is `ops`, followed by D-R6 bootstrap / installed-state / scalar-origin / private-app validation. Full serialized URL migration, Shared Ingress, PayPal Live, real payment and launch remain unauthorized.
+Current accepted deployment facts: the ten-Secret current state is qualified for K6 deployment; the accepted K5 MariaDB restore contains the exact expected 52-table root/app-visible set with `wp_options` present; wp-content is restored; the digest-pinned WordPress/MariaDB private runtime exists with no host ports; SSH transport/trust and pre-sudo `ops@srv1970241` identity are proven; WordPress bootstrap/installed-state pass; `home` and `siteurl` were transactionally updated from `http://localhost:8093` to `https://minicraft.spikersun.com` and post-read verified. D-R6R3 only needs read-only reconciliation of the anonymous empty-cart Checkout redirect and current PPCP Sandbox/Live-disabled local state. Full serialized URL migration, Shared Ingress, PayPal Live, real payment and launch remain unauthorized.
 
 The historical C1R5 helper-source auditability limitation and old encrypted C1 pending artifact remain recorded, but they no longer block the qualified current Secret state.
 
