@@ -16,11 +16,11 @@ GUEST_PRIVATE_DELIVERY=POSITIVE_PASS / NEGATIVE_FAIL
 BYTE_DOWNLOAD_HASH=PASS
 DURABLE_SCREENSHOTS=PASS
 CLEANUP_READBACK=PASS
-HANDOFF_RECONCILED=PENDING_GITHUB_SUBMISSION
+HANDOFF_RECONCILED=PASS
 
 GIT_BRANCH=codex/birthday-magazine-g2a1r1-evidence-closure
-GIT_COMMIT=PENDING
-GITHUB_PR=PENDING
+GIT_COMMIT=5ae191b61e2323657c422a22b927cd3845fc5ec3 (pushed evidence commit; latest reconciliation is the PR head)
+GITHUB_PR=22 https://github.com/entropy-student/project/pull/22
 
 FORBIDDEN_ACTIONS=0
 G2A2_STARTED=NO
@@ -31,7 +31,7 @@ Both guest order pages passed the wrong-email and unrelated-order visibility che
 
 Local Mailpit v1.31.2 was added to the disposable Compose stack. Its UI binds only to `127.0.0.1:8128`; SMTP is not published to the host. The test PHPMailer helper targets only `mailpit:1025`. A synthetic mail probe was captured and cleared; WooCommerce's guest email verification compared the entered billing email and generated no email (capture count stayed zero during verification).
 
-The project Compose containers, volumes, and network are gone; pre-execution Docker inventory counts were restored, and the exact temporary package and diagnostic directories were removed. Git commit, push, and pull request creation remain before this handoff is fully reconciled. No secret, order key, cookie, token, signed URL, real customer data, or real email is recorded in this handoff.
+The project Compose containers, volumes, and network are gone; pre-execution Docker inventory counts were restored, and the exact temporary package and diagnostic directories were removed. Evidence commit `5ae191b61e2323657c422a22b927cd3845fc5ec3` was pushed to the stated branch and PR #22 was opened against `main`; it remains open and unmerged. This documentation reconciliation is being pushed as a follow-up commit on the same PR. No secret, order key, cookie, token, signed URL, real customer data, or real email is recorded in this handoff.
 
 ## Earlier G2A1 feasibility handoff — preserved as history, superseded above
 

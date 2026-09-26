@@ -6,6 +6,8 @@
 **R1 closure date:** 2026-09-27
 **Original G2A1 branch:** `codex/birthday-magazine-g2a1-component-feasibility`
 **R1 closure branch:** `codex/birthday-magazine-g2a1r1-evidence-closure`
+**Pushed evidence commit:** `5ae191b61e2323657c422a22b927cd3845fc5ec3` (ancestor of the current PR head)
+**Reviewer PR:** [#22 — G2A1R1 guest evidence closure](https://github.com/entropy-student/project/pull/22), open against `main`, unmerged
 **Environment:** disposable local Docker Compose stack at `http://127.0.0.1:8127`; WordPress 7.0.4, PHP 8.3.33, MariaDB 11.4.13, WooCommerce 11.1.2; local Mailpit v1.31.2 added for G2A1R1.
 **Scope:** synthetic inputs, no external payment, no customer data, no AI/API credentials, no production or public host.
 
