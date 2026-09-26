@@ -1,3 +1,7 @@
+> **Governance status: RESEARCH SNAPSHOT.**  
+> This file intentionally preserves older recommendations and later Owner updates for provenance. Do not treat superseded recommendations as current authorization.  
+> Current authority: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md).
+
 # G1 剩余调研：产品规格、履约、经济性与 WordPress MVP
 
 调研日期：2026-09-26  
