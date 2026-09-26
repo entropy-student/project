@@ -33,12 +33,17 @@ These are **not** final:
 - digital-only vs print option.
 
 ### Free layer
+Already accepted baseline:
+- browser-local preview;
+- **0 model Token**;
+- **no real OCR/model inference before payment**;
+- optional local image may be previewed without upload.
+
+G2A2 still freezes:
 - exact fields before payment;
-- whether one local image is allowed;
-- preview pages;
-- watermark/export restriction;
-- zero-model-token boundary;
-- whether any real OCR sample exists pre-payment.
+- whether one local image is included in the final MVP UX;
+- exact preview pages;
+- watermark/export restriction.
 
 ### Paid intake
 - required vs optional fields;
