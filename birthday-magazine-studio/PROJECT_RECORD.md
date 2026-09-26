@@ -8,10 +8,11 @@ Last updated: 2026-09-26
 PROJECT_STATUS=G1_PUBLIC_RESEARCH_PARTIAL
 CURRENT_GATE=G1_PROBLEM_AND_TRANSACTION_EVIDENCE
 G0_PROJECT_CHARTER=RECORDED
-G1_DESK_RESEARCH=PARTIAL
-G1_CUSTOMER_INTERVIEWS=NOT_STARTED
+G1_DESK_RESEARCH=PARTIAL_US_UK_ENGLISH
+G1_PRIMARY_CUSTOMER_INTERVIEWS=NOT_STARTED
 G1_OWN_TRANSACTION_TEST=NOT_STARTED
-G1_REAL_INPUT_NEEDED=TARGET_MARKET_AND_CUSTOMER_ACCESS
+G1_EXPERIMENT_REGION=NOT_SELECTED
+G1_REAL_INPUT_NEEDED=RECRUITED_BUYERS_AND_ONE_TEST_REGION
 PRODUCT_BUILD_STARTED=NO
 WORDPRESS_THEME_SELECTED=NO
 PLUGIN_STACK_SELECTED=NO
@@ -22,7 +23,7 @@ CURRENT_PRODUCT_SCOPE=BIRTHDAY_MEMORIAL_MAGAZINE
 FAMILY_RECIPE_BOOK=ADJACENT_IDEA_PARKED
 ```
 
-G0 立项记录完成。G1 已完成公开资料桌面调研，发现相近生日杂志商品和“照片书制作耗时”的问题线索；但本项目的真实买家访谈、样刊 solution proof 和交易实验均未开始。完整证据与限制见 `docs/G1_DESK_RESEARCH.md`。
+G0 立项记录已完成。Owner 已将 G1 调研范围定为 **美国/英国英语市场**。公开桌面研究发现相近商品、替代方案和真实顾客反馈，也发现 DIY 免费/低价模板偏好及个性化错误风险；这些只能指导访谈，不能替代本项目真实买家证据。详见 `docs/G1_DESK_RESEARCH.md`。
 
 ## Final Goal
 
@@ -30,46 +31,47 @@ G0 立项记录完成。G1 已完成公开资料桌面调研，发现相近生�
 
 ## Current Stage
 
-**G1 — Problem Evidence / Transaction Evidence：桌面研究部分完成，买家验证未完成。**
+**G1 — Problem Evidence / Transaction Evidence：US/UK 英语市场桌面研究部分完成；真实买家访谈和本项目交易未开始。**
 
-目前的外部资料支持“市场已有相近产品和服务流程”，并非本产品需求或付费意愿证明。下一阶段需选定首发市场/语言，访谈近期真实送礼者，展示样刊并测试有成本的购买行为。
+已有竞品购买评论提示成品是否按确认内容正确交付很重要；也有 DIY 使用者明确想找免费模板。这意味着待验证的并非单一“不会 Canva”问题，且服务型 Offer 必须相对 DIY 方案证明额外价值。
 
 ## Validation Spine
 
-- Problem Evidence：**部分**。有竞争商品和制作耗时线索；目标人群、实际触发场景和主要购买障碍未确认。
-- Solution Proof：**未验证**。竞争者有人工制作、预览/改稿等流程；本项目自己的问答/照片到杂志样刊尚未制作。
+- Problem Evidence：**部分公开线索**。有生日杂志/照片书商品和评论，尚无目标买家访谈来确认场景与首要问题。
+- Solution Proof：**竞品流程有参考，本项目样品未制作**。
 - Attention / Interest / Intent：本项目 **未测**。
 - Transaction：本项目 **未测**，没有真实订单或付费预约。
-- Repeatability / Economics：**未知**；尚无逐单制作工时、印刷运费、退款和 CAC 数据。
-- 当前最大瓶颈：Problem Evidence + 本项目交易行为，不是网站模板或代码。
+- Repeatability / Economics：**未知**，没有制作工时、印刷/邮寄、退款或 CAC 数据。
+- 当前瓶颈：确定单一测试市场和 Offer 差异，并取得目标买家的真实行为证据；不是网站模板或代码。
 
 ## Decisions and Constraints
 
-- 先验证需求与样刊，再批准完整建站/开发；G1 成功不等于 PMF。
-- 第一批验证允许后台人工/AI 辅助制作，不承诺未经验证的“全自动”和交付时效。
-- WooCommerce、主题、插件、支付网关和印刷服务仍是候选；不安装、不购买服务，直到对应 PoC 获批。
-- 竞品页面上的价格、评价和销量表述是市场线索，不是独立审计的交易数据；不同国家的价格不可直接横比。
-- 公开访谈贴、评论、旧调查用于提出/反驳问题假设，不代表目标买家样本或市场规模。
-- 首发国家/语言与客户招募需要真实输入；尚未确定，故支付渠道和价格也不定。
+- 调研市场范围：美国/英国英语市场（Owner 已确认）；首轮交易实验仍需选一个国家。
+- 先验证买家行为与样刊，再批准完整建站/开发；G1 通过不等于 PMF。
+- 真实早期订单可以人工/AI 辅助制作，但必须把预览确认、错误返工和交期记录下来。
+- WooCommerce、主题、插件、支付网关和印刷服务仍是候选。
+- 竞品评价用于发现质量/信任风险；不同渠道、地区、产品价格不可直接横比。
+- 首发实验国家未定；电子版/实体版优先级、价格、制作成本和退款规则也未定。
 - 家庭食谱书保持范围外，需独立立项。
 
 ## Next Action
 
-1. Owner 确定首发市场/网站语言及第一类生日送礼场景；
-2. 联系具备近期生日送礼经历的真实买家，按 `docs/G1_DESK_RESEARCH.md` 访谈提纲收集行为证据；
-3. 准备完整样刊和单一 Offer，在实验前确定测试价格、渠道、投入上限与 KEEP / ITERATE / KILL 门槛；
-4. 只有 G1 有足够证据后，才制作/验证本项目样刊流程并进入 G2。
+1. 从美国或英国中选一个首测国家（尤其实体版需先确定实际可履约区域）；
+2. 招募有近期生日送礼经历的英语买家，按 `docs/G1_DESK_RESEARCH.md` 访谈提纲询问过去真实行为与替代方案；
+3. 做出可展示样刊并提出单一 Offer，预先确定价格、样本来源、实验预算上限和 KEEP / ITERATE / KILL 门槛；
+4. 观察实际预约/付款，再决定是否进入 G2 样刊与生产流程验证。
 
 ## Open Owner Input
 
-**真实用户验证的首发市场/语言是什么？** 这会决定访问对象、当地替代方案和可测试价格。数字版/实体版优先级与价格门槛可在单 Offer 实验启动前一起设定。
+**美国和英国中，第一轮真实买家/付款实验先做哪一个？** 如果实体印刷是首发内容，还要确认哪个国家能保证可接受的生产与配送时效。
 
 ## Decision Log
 
 | Date | Decision / fact | Status |
 |---|---|---|
 | 2026-09-26 | 建立 Birthday Magazine Studio 独立目录和项目章程 | Recorded |
-| 2026-09-26 | 当前范围为生日纪念杂志；家庭食谱书暂不纳入 | Provisional boundary |
-| 2026-09-26 | G1 公开资料显示相近竞品存在，照片书创建有耗时/优先级线索 | Partial desk evidence; not demand proof |
-| 2026-09-26 | 本项目访谈、样刊和真实交易实验未开始 | Open |
-| 2026-09-26 | 继续 G1，暂不进入完整建站和规模化投放 | Current gate |
+| 2026-09-26 | 当前范围限定为生日纪念杂志；家庭食谱书暂不纳入 | Provisional boundary |
+| 2026-09-26 | G1 桌面研究发现相近 Offer、DIY 替代、买家反馈及质量风险 | Partial evidence; not own demand proof |
+| 2026-09-26 | Owner 指定 G1 调研市场范围为 US/UK English | Recorded |
+| 2026-09-26 | 本项目真实访谈和真实交易实验未开始，首测国家仍未定 | Open |
+| 2026-09-26 | 继续 G1；未批准完整建站、真实支付或规模化投放 | Current gate |
