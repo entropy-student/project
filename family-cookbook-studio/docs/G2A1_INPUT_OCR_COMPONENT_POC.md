@@ -29,11 +29,14 @@ Minimum classes:
 - fractions/units/temperature/time;
 - one mixed-language sample only if relevant to intended scope.
 
-Compare at least:
-- one handwriting-capable managed/cloud OCR;
-- one open-source/self-host candidate;
-- optionally one VLM-assisted path for difficult cases;
-- Tesseract may be used as a printed-text control.
+Run the accepted benchmark order:
+1. **PaddleOCR** — first open-source/self-host candidate;
+2. **Microsoft TrOCR** — second local handwriting candidate/fallback benchmark;
+3. **Tesseract** — printed-text control only;
+4. optional managed/cloud handwriting OCR comparator if credentials are already safely available and no purchase is required;
+5. optional VLM/vision path only on difficult/ambiguous regions.
+
+A managed/cloud candidate is no longer required for PASS if the local benchmark provides sufficient evidence. Do not block G2A1 merely because cloud credentials are absent.
 
 Record:
 - exact transcription;
@@ -79,9 +82,12 @@ Using synthetic/local images:
 - title/family name/style;
 - optional one local image;
 - immediate cover + sample recipe spread;
+- **0 model Token**;
 - no upload before payment;
 - no OCR/model request;
 - no downloadable full cookbook.
+
+Use **Kadence as the first WordPress/theme shell PoC**. Brandy and Blocksy are accepted fallbacks if a concrete blocker appears. Do not purchase Pro functionality.
 
 Record browser/network evidence.
 
@@ -145,6 +151,7 @@ For each candidate/component:
 
 G2A1 PASS requires:
 
+- PaddleOCR and TrOCR have both been exercised on the fixture set unless a precise technical blocker is evidenced;
 - one preferred OCR path and one fallback/review strategy are evidence-backed, or a precise RETURN identifies why not;
 - recipe schema/provenance mapping works on fixtures;
 - critical ambiguity fails closed;
