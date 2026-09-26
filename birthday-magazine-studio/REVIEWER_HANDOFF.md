@@ -43,9 +43,10 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Payment evidence boundary: Mini Craft is an implementation/reference path only; its current state does not prove Birthday Magazine Live payment.
 - Free-value path: deterministic browser-local preview only; **0 LLM / vision / image-generation Token**.
 - Paid entitlement boundary: model generation is permitted only after server-side WooCommerce/PayPal paid state is confirmed **and** required intake is complete.
-- Frontend foundation: G2A PoC compares **Kadence Jewelry Shop + Storelly**, **Blocksy Modern Shop + Storelly**, and the existing **Good Issue** prototype as the custom-reference baseline.
-- Post-payment photo intake: Vanquish Upload Files is the first PoC candidate; not accepted until guest/order/private-access behavior is verified.
-- Private proof/final attachment: Vanquish Attach Me / Woo order-bound private delivery is the first PoC path; not accepted until access-control behavior is verified.
+- Frontend foundation: **Good Issue-style preview inside WordPress + WooCommerce is the preferred feasibility candidate** based on G2A1 partial evidence. This is not yet the final G2A2 visual/product freeze.
+- Storelly: **REJECTED for the current free-preview path** in the tested runtime because the product page fatally failed and its image path is server-upload based rather than browser-local.
+- Post-payment photo intake: Vanquish Upload Files registered-account path has partial PASS evidence; **guest path remains unverified**, so the component is not yet fully accepted.
+- Private proof/final attachment: Vanquish Attach Me registered-account authorization/direct-URL denial has partial PASS evidence; **guest flow and completed byte-level download remain unverified**, so the component is not yet fully accepted.
 - Background jobs: use the WordPress/WooCommerce Action Scheduler pattern first; do not introduce Redis/Celery/RabbitMQ without an observed need.
 - Generation service/worker: project-specific asynchronous generation boundary; exact runtime/provider = `UNKNOWN`.
 - Generation idempotency: one paid order → at most one active canonical generation job; duplicate callback/refresh must not duplicate model spend.
@@ -62,7 +63,7 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 ```text
 P0  Governance Intake / Truth Reconciliation             ✅ PASS
 G1  Product / Offer Baseline                            ✅ PASS (Owner decisions; not transaction proof)
-G2A1 Frontend + Reusable Component Feasibility PoC      ← CURRENT
+G2A1 Frontend + Reusable Component Feasibility PoC      ↩ RETURN — evidence closure required
 G2A2 MVP Product Contract Freeze                        ⏳ HOLD
 G2B  Local AI/PDF Solution Proof                        ⏳ HOLD
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
@@ -76,6 +77,7 @@ Current Reviewer decisions:
 - `PASS_P0_GOVERNANCE_NORMALIZATION_2026-09-26`
 - `PASS_G1_PRODUCT_OFFER_BASELINE_OWNER_DECISIONS_2026-09-26`
 - `PASS_ARCH_WOOCOMMERCE_PAYPAL_AND_TOKEN_BOUNDARY_2026-09-26`
+- `RETURN_G2A1_EVIDENCE_CLOSURE_REQUIRED_2026-09-26`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -102,20 +104,31 @@ Important limitation: the Owner reports demand as already validated, but the und
 - Repeatability/economics: unknown.
 - Production website: not built/deployed.
 
-## 6. Current Gate — G2A1 Frontend + Reusable Component Feasibility PoC
+## 6. Current Gate — G2A1 RETURN / Evidence Closure Required
 
-Formal execution contract: [docs/G2A1_COMPONENT_FEASIBILITY_POC.md](./docs/G2A1_COMPONENT_FEASIBILITY_POC.md)
+Reviewer decision: [docs/REVIEWER_DECISION_G2A1_RETURN.md](./docs/REVIEWER_DECISION_G2A1_RETURN.md)
 
-### Goal
+Original execution contract: [docs/G2A1_COMPONENT_FEASIBILITY_POC.md](./docs/G2A1_COMPONENT_FEASIBILITY_POC.md)
 
-Before polishing the UI or building AI/PDF, prove what can actually be reused safely:
+### Reviewer result
 
-1. frontend foundation: Kadence vs Blocksy vs Good Issue ported into WordPress;
-2. zero-token/browser-local free preview: Storelly vs Good Issue fallback;
-3. order-bound photo upload: Vanquish Upload Files or equivalent candidate;
-4. private proof/final delivery: Vanquish Attach Me / Woo order-bound candidate.
+G2A1 is **RETURN**, not PASS.
 
-The PoC should be minimal. Do not build three full websites.
+Accepted partial facts:
+- Route C / Good Issue-in-WordPress browser-local preview is feasible and currently preferred.
+- Storelly is rejected for the current free-preview boundary.
+- Vanquish Upload Files registered-account order binding/access control passed partial checks.
+- Vanquish Attach Me registered-account authorization/direct-file denial passed partial checks.
+
+Blocking gaps:
+- guest upload verification;
+- guest private-delivery verification;
+- completed authorized byte-level download;
+- durable screenshot artifacts;
+- cleanup read-back;
+- Executor Handoff/Evidence reconciliation with final Git state.
+
+G2A2 remains unauthorized.
 
 ### Current free-preview boundary
 
@@ -128,13 +141,11 @@ name / age / style
 
 The existing Good Issue prototype's "up to six photos + memory" free step is reference behavior only and is not the current MVP requirement.
 
-### Next Gate
+### Next action
 
-After G2A1 PASS:
+Reviewer will authorize only a narrow **G2A1R1 evidence-closure** retry covering the unresolved checks listed above.
 
-`G2A2_MVP_PRODUCT_CONTRACT_FREEZE`
-
-G2A2 freezes page count, photo count, exact question schema, page map, proof/revision policy, QA and data handling before G2B is authorized.
+`G2A2_MVP_PRODUCT_CONTRACT_FREEZE` remains HOLD until G2A1 receives an explicit Reviewer PASS.
 
 ### Rollback
 
@@ -169,9 +180,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - generator/model/provider selection;
 - real per-order AI/render/storage cost;
 - storage, access control and deletion policy;
-- final frontend foundation after G2A;
-- whether Storelly satisfies the local zero-token preview requirement without unacceptable cloud/paid dependency;
-- whether Vanquish upload/attachment plugins pass guest-order and private-access tests;
+- final visual/product foundation after G2A2 (Route C is only the current technical preference);
+- whether Vanquish Upload Files passes the guest-order flow;
+- whether Vanquish Attach Me passes guest delivery and completed byte-level download;
 - exact PDF render engine;
 - actual production hosting;
 - refund/cancellation handling;
@@ -203,15 +214,15 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: dispatch/review G2A1 using `docs/G2A1_COMPONENT_FEASIBILITY_POC.md`.
-- Executor next action: run the minimal component feasibility probes, capture evidence, update `EXECUTION_EVIDENCE.md` + `EXECUTOR_HANDOFF.md`, and stop at Reviewer.
-- Owner intervention required: **NO during G2A1**. After G2A1 technical PASS, G2A2 requires Owner approval of subjective visual/product/revision decisions. No account/payment/Secret action is required now.
+- Reviewer next action: prepare/authorize a narrow G2A1R1 evidence-closure retry only; do not enter G2A2.
+- Executor next action: none until Reviewer issues the G2A1R1 bounded prompt.
+- Owner intervention required: **NO** for the current RETURN/remediation planning. No account/payment/Secret action is required.
 
 ## 13. Status Summary
 
 - Overall progress: product direction, clickable sample, commerce baseline, PayPal path and free/paid Token boundary are fixed; production system does not yet exist.
 - Final goal: PayPal-paid personalized birthday magazine PDF workflow.
-- Current Gate: G2A1 frontend + reusable component feasibility PoC.
-- This review corrected four execution gaps: free-preview input drift, missing upload/private-delivery component tests, unresolved MVP content contract before G2B, and ambiguity around Good Issue as a standalone frontend.
-- Next: G2A1 component feasibility → G2A2 MVP product contract freeze → G2B local AI/PDF solution proof.
+- Current Gate: G2A1 RETURN — evidence closure required.
+- This Reviewer round accepted the useful partial PoC facts but rejected overall PASS because guest flows, completed download, durable screenshots, cleanup read-back and final repo-state reconciliation are incomplete.
+- Next: narrow G2A1R1 evidence closure only. G2A2 remains HOLD.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
