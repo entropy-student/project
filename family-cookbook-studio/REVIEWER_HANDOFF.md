@@ -37,8 +37,9 @@ Governance rules come from GitHub `entropy-student/spike.skill/vps-project-gover
 - Frontend/theme PoC order: **Kadence first**, with **Brandy** and **Blocksy** as accepted free/open WordPress fallback candidates. Final production theme/visual treatment is not yet frozen.
 - Post-payment intake: order-bound private image upload pattern; exact plugin/component = POC.
 - Product core: project-specific OCR/handwriting recognition → recipe schema extraction → uncertainty review → deterministic layout/PDF.
-- OCR validation order: **PaddleOCR first**, **Microsoft TrOCR second/local fallback candidate**, **Tesseract only as printed-text control**; managed cloud OCR may be used as a benchmark comparator when safely available.
-- Paid compute policy: local/open-source processing first. VLM/vision is an **exception fallback for ambiguous regions only**, not the default full-page path, unless G2A1 evidence proves otherwise.
+- MVP OCR architecture: **PaddleOCR = primary engine; Microsoft TrOCR = fallback engine for low-confidence/critical ambiguous regions; user confirmation = final fail-closed fallback**.
+- **Tesseract, managed/cloud OCR and VLM/vision are not part of the MVP OCR architecture.** They may be revisited only if G2A1 proves the accepted two-engine route is insufficient.
+- Paid compute policy: local/open-source OCR first and by default only. The intended MVP OCR path consumes **0 model/API Token**; exact CPU/GPU cost and manual-confirmation burden remain to be measured.
 - PDF output: deterministic HTML/CSS or equivalent templates; exact render engine = UNKNOWN.
 - Private proof/final delivery: Woo order-bound access pattern; exact plugin/component = POC.
 - Background work: WordPress/WooCommerce Action Scheduler pattern first for orchestration; OCR/render worker runtime = UNKNOWN.
@@ -80,7 +81,8 @@ Current Reviewer decisions:
 - `PASS_G1_CORE_PRODUCT_BOUNDARY_2026-09-26`
 - `PASS_ARCH_REUSE_COMMERCE_CUSTOMIZE_RECIPE_ENGINE_2026-09-26`
 - `ACCEPT_FREE_PREVIEW_ZERO_TOKEN_BASELINE_2026-09-26`
-- `ACCEPT_OCR_BENCHMARK_ORDER_PADDLE_TROCR_TESSERACT_2026-09-26`
+- `SUPERSEDED_OCR_BENCHMARK_ORDER_PADDLE_TROCR_TESSERACT_2026-09-26`
+- `ACCEPT_MVP_OCR_ARCH_PADDLE_PRIMARY_TROCR_FALLBACK_USER_CONFIRM_2026-09-26`
 - `ACCEPT_THEME_POC_SHORTLIST_KADENCE_BRANDY_BLOCKSY_2026-09-26`
 
 Important limitation: no current repository evidence proves willingness-to-pay, OCR accuracy, private upload behavior, payment, PDF quality, repeatability, production hosting or print fulfillment.
@@ -102,9 +104,9 @@ Important limitation: no current repository evidence proves willingness-to-pay, 
 
 ### Compute / Token boundary
 - Free visitor path: browser-local style/title/family-name preview + optional one local image; **0 model Token and no real OCR**.
-- Paid processing: OpenCV/library preprocessing + local/open-source OCR first; this path may also be **0 model Token**.
-- VLM/vision model calls, if later accepted, are restricted to difficult/ambiguous regions or a separately approved fallback path.
-- Exact paid-order model/API cost remains UNKNOWN until G2A1 benchmark evidence exists.
+- Paid processing: OpenCV/library preprocessing → PaddleOCR primary → rule/confidence checks → TrOCR only on suspicious regions → user confirmation if still uncertain.
+- MVP OCR/model API Token cost target: **0**. Compute still consumes local CPU/GPU time.
+- No cloud OCR or VLM/vision fallback is in MVP scope.
 
 ### Evidence status
 - Real handwriting OCR benchmark: not run.
@@ -123,22 +125,23 @@ Formal contract: [docs/G2A1_INPUT_OCR_COMPONENT_POC.md](./docs/G2A1_INPUT_OCR_CO
 
 Using only synthetic/public/non-customer fixtures, prove:
 
-1. which handwriting OCR route gives usable transcription;
+1. whether the accepted PaddleOCR-primary + TrOCR-fallback route gives usable transcription with an acceptable user-confirmation burden;
 2. whether recipe fields can be structured without losing source provenance;
 3. whether ambiguous values can be automatically flagged instead of guessed;
 4. whether order-bound private upload and private final-file delivery can reuse the same component patterns tested by Birthday Magazine;
 5. whether a zero-model browser-local product preview remains feasible.
 
-### Required OCR candidate order
+### Accepted MVP OCR route to validate
 
-G2A1 should test in this order:
-1. PaddleOCR as the first self-host/open-source candidate;
-2. Microsoft TrOCR as a second local handwriting candidate / fallback benchmark;
-3. Tesseract as printed-text control only;
-4. optional managed handwriting OCR comparator if credentials are already safely available;
-5. optional VLM/vision only for ambiguous-region fallback testing.
+G2A1 is no longer a broad OCR bake-off. Validate this minimal architecture only:
 
-This ordering is an accepted **test strategy**, not evidence that any OCR engine has passed.
+1. **PaddleOCR** processes the full recipe image/page as the primary OCR engine.
+2. Deterministic checks identify low-confidence or critical suspicious values such as fractions, quantities, units, temperatures and timing.
+3. **TrOCR** is invoked only for those suspicious cropped regions/lines.
+4. If the two passes still disagree or remain uncertain, **ask the user/reviewer to confirm against the source crop**.
+5. Never add a third OCR/model merely to force an automatic answer.
+
+Tesseract, cloud OCR and VLM/vision are explicitly deferred from MVP and are not required for G2A1 PASS.
 
 ### Required OCR fixture set
 
@@ -173,9 +176,9 @@ All G2A1 work is local/test-only and Git-reversible. No production resource, rea
 - handwriting/language coverage;
 - exact correction UI;
 - image preprocessing path;
-- OCR/provider/model selection;
-- whether recipe structuring uses deterministic parsing, LLM/VLM, or hybrid;
-- per-order OCR/model/render cost;
+- whether the accepted PaddleOCR + TrOCR route meets the required accuracy/manual-review threshold;
+- exact deterministic recipe-structuring/parser implementation;
+- per-order local compute/render cost and manual-confirmation burden;
 - file storage/access/deletion policy;
 - final production WordPress theme selection among the accepted PoC shortlist, plus exact upload/private-delivery components;
 - payment provider/account eligibility;
@@ -217,7 +220,7 @@ All G2A1 work is local/test-only and Git-reversible. No production resource, rea
 
 ## 13. Status Summary
 
-- Overall progress: governance baseline, product scope, free/paid compute boundary, OCR test order, theme PoC shortlist and reuse-vs-custom boundary are explicit; implementation has not started.
+- Overall progress: governance baseline, product scope, free/paid compute boundary, **two-engine MVP OCR architecture**, theme PoC shortlist and reuse-vs-custom boundary are explicit; implementation has not started.
 - Final goal: private, reliable family recipe intake → faithful transcription/structuring → proof → cookbook PDF → later optional print.
 - Current Gate: G2A1 input/OCR/component feasibility.
 - Next: G2A1 → G2A2 exact MVP contract → G2B local OCR-to-PDF proof.
