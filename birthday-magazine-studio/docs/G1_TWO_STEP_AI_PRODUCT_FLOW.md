@@ -17,6 +17,8 @@
 | 产品形态 | 生日纪念杂志电子 PDF |
 | 生产方式 | 目标为全 AI 自动生成；只有付款后才调用生成模型 |
 | 预览方式 | 付款前提供不调用 AI 模型的免费预览 |
+| 商店 / 订单 | **WordPress + WooCommerce** |
+| 支付 | **PayPal，使用官方 WooCommerce PayPal Payments；实现顺序参考 Mini Craft** |
 
 US$39.99 是 Owner 指定的测试价，不是竞品推导的价格判断。预算/订单上限按 Owner 指示不设硬值，但每笔订单仍须限制意外重复生成并记录实际成本。
 
@@ -32,9 +34,12 @@ US$39.99 是 Owner 指定的测试价，不是竞品推导的价格判断。预�
 ~~~text
 商品页
 → 免费预览（固定模板 + 浏览器本地照片/文字；不请求 AI）
-→ 用户确认视觉风格并支付 US$39.99
+→ WooCommerce Checkout
+→ PayPal 支付 US$39.99
+→ 服务端确认 PayPal/WooCommerce 已付款状态
 → 订单空间上传完整照片、回答问题
-→ 服务端确认付款与资料完整
+→ 服务端确认「已付款 + 资料完整 + 无重复任务」
+→ 创建唯一 generation job
 → AI 编写/整理内容 + 系统模板排版 + PDF 生成与自动检查
 → 买家查看该订单的个性化 proof
 → 按已公布的修改政策确认/请求修改
@@ -62,7 +67,20 @@ US$39.99 是 Owner 指定的测试价，不是竞品推导的价格判断。预�
 
 ## 第二步：付款后的 AI 正式制作
 
-付款由服务端/支付 Webhook 确认；仅当订单已付且必填资料完整时才建立生成任务。不得让前端“成功页”直接携带 API Key 或决定付款成功。
+付款采用 **WooCommerce → 官方 WooCommerce PayPal Payments → PayPal**。实现顺序参考 Mini Craft：先验证 WooCommerce 本地订单闭环，再验证 PayPal Sandbox checkout/capture/callback/refund，最后才允许进入 bounded Live Canary。
+
+仅当服务端确认 WooCommerce/PayPal 已付款状态，且必填资料完整时，才允许建立生成任务。不得让浏览器成功页、return URL 或单次前端状态直接决定付款成功。
+
+核心授权条件：
+
+~~~text
+GENERATION_ALLOWED =
+  payment_entitlement_confirmed
+  AND intake_complete
+  AND canonical_generation_job_absent
+~~~
+
+免费预览、未付款订单、付款失败/取消订单均不得触发任何 LLM、视觉或图像生成调用。
 
 | 子步骤 | 自动化工作 | AI/API 成本 |
 |---|---|---|
@@ -92,7 +110,7 @@ US$39.99 是 Owner 指定的测试价，不是竞品推导的价格判断。预�
 
 ### 收款费
 
-若卖家商户在美国、交易适用 Stripe 标准美国国内卡费率，US$39.99 的 2.9% + US$0.30 约为 **US$1.46**，收款后约 **US$38.53**，还未扣 AI、托管、存储、税、退款和获客费用。Stripe 当前公开页面还列有国际卡附加费及货币转换附加费；费用取决于商户账户所在国家、支付方式和币种：[Stripe Pricing](https://stripe.com/pricing)。
+支付渠道已固定为 **PayPal**。实际手续费、跨境费、币种转换费与结算条件取决于最终 PayPal 商户账户所在国家/地区及交易类型，因此当前**不写死费率**。试点必须按真实订单记录 PayPal 实扣手续费，不用 Stripe 或其他渠道的费率代替。
 
 ### 文本 Token 示例（仅用于数量级判断，不是供应商选型）
 
@@ -108,9 +126,11 @@ OpenAI 当前 API 定价页中，GPT-6 Luna 的标准短上下文价列为每百
 
 总预算/订单数不封顶，但要按订单看到收入、模型实际用量和毛利；连续出现异常的单笔生成费用时，先暂停该生成任务并排查调用链，避免程序错误造成 Token 消耗失控。
 
-## 现有独立站 WordPress 候选如何适配
+## WordPress + WooCommerce + PayPal 实现基线
 
-- WordPress + WooCommerce 负责品牌站、产品页、结账、订单、支付状态和下载记录。
+- **WordPress + WooCommerce 已从候选升级为本项目 accepted commerce baseline**，负责品牌站、产品页、Checkout、订单、支付状态和下载记录。
+- **支付固定使用官方 WooCommerce PayPal Payments**；不手写 PayPal API，不引入第二套 canonical order system。
+- 支付 Gate 参考 Mini Craft 的顺序：WooCommerce 本地 commerce loop → PayPal Sandbox → order/provider correlation → callback/webhook → refund → 后续 bounded Live Canary。
 - 免费 preview 可作为独立前端页面/轻型自定义插件，前端模板合成并不需要 AI 插件。
 - 订单支付后触发后台 generation job；生成和 PDF 渲染属于耗时工作，建议经服务端队列/worker处理，不把全部工作塞进一次 WordPress 前端请求。
 - 输入照片应绑定订单并私有存储。前面调研的 PPOM、Vanquish Upload Files 和订单附件插件只是候选，必须检查访客订单权限、文件可发现性、Webhook 幂等和实际 PDF 下载授权。
@@ -133,7 +153,7 @@ OpenAI 当前 API 定价页中，GPT-6 Luna 的标准短上下文价列为每百
 | 目标国家 | 美国优先；其他海外国家需要再列允许地区清单 |
 | 首发语言 | 英语 |
 | 修改政策 | 是否含额外免费 AI 再生成/客户更改要求，待定 |
-| 商户注册/收款国家 | 待提供，支付网关、账户费率和结算仍不能最终确定 |
+| 商户注册/收款国家 | 待提供；PayPal 已定，但账户资格、实际费率、结算币种仍需按最终商户账户确认 |
 | 免费预览 | 前端固定模板本地生成；不请求任何 AI Provider；未实现 |
 | 正式 AI 生成 | 付款和订单资料完整后，后台生成；当前尚未实现 |
 | WordPress/PDF/文件访问 | 候选已调研，尚未部署或集成 |
@@ -142,5 +162,5 @@ OpenAI 当前 API 定价页中，GPT-6 Luna 的标准短上下文价列为每百
 
 1. 冻结免费的本地预览规格（封面 + 1–2 个样例页面、上传图片不上服务器）。
 2. 定义付费后问卷、照片数量、AI 生成输出结构和 QA 条件。
-3. 实现一笔订单的服务端支付事件 → 生成任务 → 私有 proof → 最终 PDF 下载最小闭环。
+3. 先按 Mini Craft 路径完成 WooCommerce 本地订单闭环与 PayPal Sandbox；再把“已付款 entitlement → 唯一生成任务 → 私有 proof → final PDF”接通。
 4. 记录每单 API 用量、重试和存储成本；再决定额外重新生成规则以及开放哪些国际市场。
