@@ -4506,3 +4506,39 @@ STOP_AT_REVIEWER=YES
 ```
 
 No post-classification remote operation or cleanup was performed. No Secret/config/file contents were read or emitted.
+
+---
+
+## K6_PHASE_D_R6_BOOTSTRAP_RECONCILIATION_AND_PRIVATE_APP_VALIDATION — RETURN (2026-09-26)
+
+Authority re-read: canonical `entropy-student/spike.skill/vps-project-governance` (`GOVERNANCE_HANDOFF.md`, `SKILL.md`, Governance v0.1.6, Governance Source Policy, SSH/Delegated Secret Operations rev2, Target Host Reality rev2, Storage Layout rev1); current Mini Craft `REVIEWER_HANDOFF.md`, `PROJECT_STORAGE_MANIFEST.md`, D-R6 Reviewer Decision and Execution Pack, latest Evidence/Handoff; and the unique local `SHARED_VPS_HANDOFF.md`.
+
+Local SSH contract checks passed without reading private-key contents:
+`IDENTITY_REFERENCE_CHECK=PASS`
+`PUBLIC_FINGERPRINT_MATCH=PASS`
+`KNOWN_HOSTS_PIN_CHECK=PASS`
+
+A canonical strict SSH command was invoked for the bounded read-only Phase A, using the recorded `ops@2.24.193.133:22` identity, normal `known_hosts`, BatchMode, IdentitiesOnly, StrictHostKeyChecking, and bounded timeout. Native SSH exit status was 255. The wrapper had redirected SSH stderr, so the failure class and whether the remote read-only script began cannot be established from retained output. No alternate key/client, relaxed trust, or retry was attempted.
+
+```text
+RESULT=RETURN_SSH_CONNECTION_REQUIRED
+SSH_CANONICAL_PROBE=NATIVE_EXIT_255
+SSH_FAILURE_CLASS=UNCLASSIFIED_STDERR_NOT_RETAINED
+PHASE_A=NOT_CONFIRMED
+WORDPRESS/MARIADB_FRESH_STATE=NOT_CONFIRMED
+DATABASE_ROOT_APP_TABLE_RECHECK=NOT_CONFIRMED
+WORDPRESS_BOOTSTRAP=NOT_RUN
+HOME_SITEURL_SCALAR_UPDATE=NOT_RUN
+PRIVATE_ROUTE_VALIDATION=NOT_RUN
+WORDPRESS_RECREATE_RESTART=0
+DATABASE_IMPORT_OR_MUTATION=0
+SECRET_VALUE_OUTPUT_HASH_ROTATION_OR_OVERWRITE=0
+SHARED_INFRA_WRITES=0
+REMOTE_WRITE_COMMANDS_INVOKED=0
+PAYMENT_ACTIONS=0
+PAYPAL_LIVE=NO_ACTION
+POST_RETURN_REMOTE_OPERATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+The remote payload contained only bounded read-only identity/container/network/UFW/Caddy-metadata and SQL SELECT checks; no lifecycle or write command was included. Because no successful remote result was received, no runtime, DB, bootstrap, or application PASS is claimed. Per the Gate stop rule, no further remote operation was made.
