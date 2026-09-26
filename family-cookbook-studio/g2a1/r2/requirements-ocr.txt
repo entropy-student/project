@@ -10,3 +10,5 @@ Pillow==11.3.0
 psutil==7.0.0
 safetensors==0.7.0
 sentencepiece==0.2.0
+protobuf==6.33.3
+tiktoken==0.14.0
