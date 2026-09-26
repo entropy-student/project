@@ -18,7 +18,8 @@
 | `G1_US_FIRST_EXPERIMENT.md` | US-first offer/experiment support | Supporting design; Handoff defines current Gate |
 | `TECHNICAL_ROUTE.md` | Reuse-vs-custom architecture / implementation sequence | **Current supporting architecture** |
 | `G2A_FRONTEND_COMPONENT_POC.md` | Legacy combined G2A pointer | **SUPERSEDED — DO NOT EXECUTE** |
-| `G2A1_COMPONENT_FEASIBILITY_POC.md` | Frontend + reusable component feasibility | **CURRENT GATE CONTRACT** |
+| `REVIEWER_DECISION_G2A1_RETURN.md` | Reviewer decision on G2A1 evidence | **CURRENT REVIEW DECISION — RETURN** |
+| `G2A1_COMPONENT_FEASIBILITY_POC.md` | Frontend + reusable component feasibility | Executed; overall PASS not granted |
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **NEXT / HOLD** |
 | `G1_TWO_STEP_AI_PRODUCT_FLOW.md` | Two-step product-flow design | Current supporting design where consistent with Handoff |
 | `ACQUISITION_GROWTH_PLAN.md` | Validation/acquisition plan | Supporting plan; not evidence of actual transactions |
