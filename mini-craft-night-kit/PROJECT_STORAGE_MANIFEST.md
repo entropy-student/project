@@ -2,7 +2,7 @@
 
 Status: C1R5 historical source-auditability limitation retained / C1R5R2 PASS / current Secret state qualified for K6 deployment
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6_PHASE_D_R6R2_REMOTE_IDENTITY_RECONCILIATION_AND_BOOTSTRAP_RESUME`
+Current Gate: `K6_PHASE_D_R6R3_PRIVATE_APP_VALIDATION_RECONCILIATION`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
@@ -158,7 +158,7 @@ Restore sequence must be validated in a bounded K6/K7 recovery check:
 8. verify unrelated shared services are unchanged.
 
 `RESTORE_METHOD_DEFINED=YES`
-`RESTORE_REHEARSAL=K6_PRIVATE_RESTORE_IN_PROGRESS;MARIADB_52_TABLES_PASS;WP_CONTENT_PASS;WORDPRESS_CORE_PRESENT;PRIVATE_APP_VALIDATION_PENDING;FULL_SERIALIZED_MIGRATION_PENDING`
+`RESTORE_REHEARSAL=K6_PRIVATE_RESTORE_IN_PROGRESS;MARIADB_52_TABLES_PASS;WP_CONTENT_PASS;WORDPRESS_BOOTSTRAP_PASS;HOME_SITEURL_TARGET_PASS;PRIVATE_APP_VALIDATION_RECONCILIATION_PENDING;FULL_SERIALIZED_MIGRATION_PENDING`
 
 ## 7. Retention
 
