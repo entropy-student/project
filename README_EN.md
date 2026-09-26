@@ -8,7 +8,7 @@
 
 [中文](./README.md)
 
-![Projects](https://img.shields.io/badge/projects-7-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-8-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-Chinese%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -25,7 +25,8 @@
 | 🎬 **Visual Narrative Animation Lab** | Turns narration into Visual Beats and develops a reusable hand-drawn narrative-video production and automation workflow | Content Production / AI Workflow | **Prototype** | [Open](./visual-narrative-animation-lab/) |
 | 🔎 **Conversion Leak Audit** | Scans public storefronts and produces evidence-backed conversion-leak findings and a prioritized fix queue | Diagnostic Product / Commerce Tool | **Local Integration Next** | [Open](./conversion-leak-audit/) |
 | 🎨 **Mini Craft Night Kit** | Uses WordPress + Kadence + WooCommerce to build a sellable single-product commerce site quickly | Ecommerce / Physical Product | **Kadence PoC** | [Open](./mini-craft-night-kit/) |
-| 🎁 **Birthday Magazine Studio** | Turns a gift-giver’s photos and memories into a personalized birthday magazine that can be previewed and delivered | Personalized Gift / Publishing | **G1 Research** | [Open](./birthday-magazine-studio/) |
+| 🎁 **Birthday Magazine Studio** | Turns a gift-giver’s photos and memories into a personalized birthday magazine that can be previewed and delivered | Personalized Gift / Publishing | **G2A1 Component PoC** | [Open](./birthday-magazine-studio/) |
+| 🍲 **Family Cookbook Studio** | Faithfully turns handwritten family recipes, old recipe cards, and memories into a reviewable, deliverable family cookbook | Personalized Publishing / Family Archive | **G2A1 OCR PoC** | [Open](./family-cookbook-studio/) |
 | 🎭 **AI Story Showrunner** | Translates AI changes into human stories and orchestrates topic, story, script, directing, image, render, and feedback workers | Content Operating System / Orchestration | **G1 Contracts** | [Open](./ai-story-showrunner/) |
 
 ---
@@ -39,9 +40,9 @@ Real project
     ↓
 Independent project directory
     ↓
-README / status / architecture
+REVIEWER_HANDOFF current project truth
     ↓
-PROJECT_RECORD long-term handoff
+docs / current Gate / Evidence
     ↓
 Code / config / deployment assets
     ↓
@@ -54,15 +55,17 @@ Continuous iteration
 
 ```text
 project-name/
-├── README.md           # Primary overview, usage, current status
-├── README_EN.md        # English overview when useful
-├── CHANGELOG.md        # Version changes
-├── PROJECT_RECORD.md   # Long-term decisions, progress, next step, handoff
-├── docs/               # Architecture and deeper references
-├── src/ / cmd/ ...     # Source code
-├── config/             # Non-secret configuration
-├── deploy/ / railway/  # Project-specific deployment assets
-└── assets/             # Images and presentation resources
+├── 00_START_HERE.md        # Optional navigation; not a second truth source
+├── README.md               # Project overview and navigation
+├── REVIEWER_HANDOFF.md     # Canonical current Reviewer/project truth
+├── PROJECT_RECORD.md       # Historical/compatibility pointer where needed
+├── EXECUTOR_HANDOFF.md     # Execution facts once execution Gates begin
+├── EXECUTION_EVIDENCE.md   # Redacted detailed evidence
+├── docs/                   # Architecture, current Gates, research, references
+├── src/ / cmd/ ...         # Source code
+├── config/                 # Non-secret configuration
+├── deploy/                 # Project-specific deployment assets
+└── assets/                 # Images and presentation resources
 ```
 
 Not every project needs every directory, but project-specific runtime files must stay inside that project's directory.
@@ -85,21 +88,23 @@ Not every project needs every directory, but project-specific runtime files must
 Recommended reading order:
 
 ```text
-README.md
+REVIEWER_HANDOFF.md
    ↓
-PROJECT_RECORD.md
+docs/DOCUMENT_INDEX.md (when present)
    ↓
-docs/
+current Gate contract / latest accepted Evidence
    ↓
-code / deployment configuration
+README / code / deployment configuration
 ```
 
-`PROJECT_RECORD.md` should always make four things clear:
+`REVIEWER_HANDOFF.md` should always make four things clear:
 
 1. the final goal;
-2. what has already been completed;
-3. the current blocker or stage;
-4. the next action.
+2. which Gates/baselines are accepted;
+3. the current Gate, UNKNOWNs, and risks;
+4. the next Reviewer, Executor, and Owner actions.
+
+Older `PROJECT_RECORD.md` files may remain as historical records or compatibility pointers, but they should not compete with `REVIEWER_HANDOFF.md` as a second current truth source.
 
 ---
 
@@ -138,7 +143,7 @@ instead of rebuilding payment infrastructure.
 Project files and deployment assets should stay self-contained.
 
 ### 2. Record before forgetting
-Important decisions, status, and next steps belong in `PROJECT_RECORD.md`.
+Important decisions, current status, current Gate, and next steps belong in the single `REVIEWER_HANDOFF.md`. Execution facts and detailed evidence belong in `EXECUTOR_HANDOFF.md` and `EXECUTION_EVIDENCE.md`.
 
 ### 3. Reuse infrastructure
 Shared capabilities such as payments and entitlement should be built once and reused.
