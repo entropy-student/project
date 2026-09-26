@@ -1,6 +1,6 @@
 # Family Cookbook Studio — OCR / Handwriting Pipeline Research
 
-> Status: RESEARCH SNAPSHOT / CANDIDATES ONLY  
+> Status: RESEARCH SNAPSHOT / MVP ROUTE ACCEPTED, PERFORMANCE UNPROVEN  
 > Date: 2026-09-26  
 > Current Gate authority: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)
 
@@ -22,9 +22,9 @@ accuracy on our fixture mix
 + self-host/managed tradeoff
 ```
 
-## 2. Candidate families
+## 2. Accepted MVP pair and deferred alternatives
 
-### A. Google Cloud Vision handwriting OCR — benchmark candidate
+### A. Google Cloud Vision handwriting OCR — DEFERRED / NOT MVP
 
 Official Google documentation explicitly supports handwriting extraction via `DOCUMENT_TEXT_DETECTION`, returning document hierarchy such as pages, blocks, paragraphs and words.
 
@@ -32,9 +32,9 @@ Sources:
 - https://docs.cloud.google.com/vision/docs/handwriting
 - https://docs.cloud.google.com/vision/docs/ocr
 
-Use only as a G2A1 benchmark candidate. It is not accepted production architecture.
+Do not implement or benchmark this in the default G2A1 path. Revisit only if the accepted local two-engine route fails.
 
-### B. PaddleOCR — FIRST self-host/open-source benchmark candidate
+### B. PaddleOCR — ACCEPTED MVP PRIMARY
 
 PaddleOCR's current OCR pipeline documentation describes recognition across printed and handwritten text and multilingual document OCR.
 
@@ -44,7 +44,7 @@ Source:
 Potential advantage: self-hosting/data-path control.  
 Unknown until benchmark: accuracy on cursive family recipe handwriting, operational footprint and whether the chosen model fits the eventual runtime.
 
-### C. Microsoft TrOCR — SECOND local handwriting benchmark candidate
+### C. Microsoft TrOCR — ACCEPTED MVP FALLBACK
 
 Microsoft TrOCR provides transformer-based optical character recognition models, including handwritten checkpoints. It is accepted for G2A1 as a second local handwriting candidate so that difficult fields can be compared against PaddleOCR without immediately requiring a paid cloud/VLM path.
 
@@ -57,16 +57,16 @@ Unknown until benchmark:
 - runtime footprint on the actual available hardware;
 - language coverage beyond the chosen checkpoint.
 
-### D. Tesseract — printed-text baseline, not primary handwriting choice
+### D. Tesseract — DEFERRED / NOT MVP
 
 Tesseract's own FAQ says it can be used for handwriting but will not work very well because it is designed for printed text.
 
 Source:
 - https://tesseract-ocr.github.io/tessdoc/FAQ.html
 
-Use as a baseline/control for clean printed recipes, not as an assumed primary handwriting engine.
+Keep only as historical research context. Do not add it to the MVP implementation or G2A1 unless the Reviewer explicitly reopens the test scope.
 
-### E. VLM-assisted transcription — exception fallback candidate
+### E. VLM-assisted transcription — DEFERRED / NOT MVP
 
 A multimodal model may help with difficult handwriting and recipe context, but it introduces:
 
@@ -142,35 +142,31 @@ Before OCR, test bounded preprocessing:
 
 Keep the original image immutable; preprocessing outputs are derived artifacts.
 
-## 7. Accepted benchmark architecture
-
-The Owner has accepted this **validation order**:
+## 7. Accepted MVP OCR architecture
 
 ```text
 original image
 → quality/preprocess
-→ PaddleOCR primary benchmark
-→ structured extraction + critical-token QA
-→ if ambiguous: TrOCR / second local pass
-→ uncertainty queue
-→ optional VLM/vision only for remaining ambiguous regions
-→ user/reviewer correction
+→ PaddleOCR full-page primary
+→ critical-token + confidence QA
+→ suspicious region only → TrOCR fallback
+→ still uncertain / disagreement
+→ user/reviewer confirmation against source crop
 → approved canonical recipe
 ```
 
-Tesseract remains a printed-text control.
-
-The objective is to keep routine processing local/open-source and potentially 0 model Token, while reserving paid model inference for exceptional hard regions only if evidence supports it.
+The architecture deliberately stops here. It does not add Tesseract, cloud OCR or a VLM as a third automatic guesser.
 
 ## 8. Current decision
 
-**Test order is selected; production OCR provider is not.**
+**Architecture is selected; performance is not yet proven.**
 
-G2A1 must still produce evidence before Reviewer chooses:
-- whether PaddleOCR is good enough to be primary;
-- whether TrOCR materially improves difficult handwriting;
-- whether a VLM fallback is needed at all;
-- confidence/review thresholds;
-- manual correction burden;
-- whether any external provider may receive customer images;
-- expected compute/API cost per order.
+G2A1 now answers only:
+- is PaddleOCR good enough as the primary engine on the target fixture mix;
+- does TrOCR reduce manual confirmation on PaddleOCR's difficult regions;
+- what triggers should route a region to TrOCR;
+- how often the user still needs to confirm a critical field;
+- latency and local CPU/GPU footprint;
+- whether this simple two-engine route is sufficient for MVP.
+
+If it is insufficient, return evidence to Reviewer. Do not expand the stack automatically.
