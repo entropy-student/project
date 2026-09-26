@@ -54,7 +54,7 @@ Anonymous durable volumes are forbidden.
 
 No Secret value may enter this manifest, GitHub, ordinary Evidence, chat, or logs.
 
-### Current Secret-state supersession — 2026-09-25
+### Current Secret-state supersession — 2026-09-26
 
 The historical C1R5 transaction remains `RETURN_HISTORICAL_SOURCE_AUDITABILITY_INCOMPLETE` because the exact executed non-secret helper source was deleted and could not be recovered. This does **not** by itself establish Secret compromise.
 
@@ -73,7 +73,7 @@ SECRET_ROTATION_REQUIRED=NO_CURRENT_EVIDENCE
 CURRENT_SECRET_STATE_QUALIFIED_FOR_K6_DEPLOYMENT=YES
 ```
 
-The new final DPAPI recovery artifact is recorded by metadata only in Evidence; its plaintext/ciphertext content is not part of this manifest. C1R5R2 is authorized only to perform bounded no-value runtime-access validation with disposable isolated containers. It does not authorize Secret regeneration, rotation, overwrite, deletion or recovery-content access.
+The new final DPAPI recovery artifact is recorded by metadata only in Evidence; its plaintext/ciphertext content is not part of this manifest. C1R5R2 has PASSed current-state requalification, including effective WordPress UID/GID 33:33 access to its nine allowed Secret mounts, MariaDB access to its required DB Secrets, and unrelated-service mount exclusion. No Secret regeneration, rotation, overwrite, deletion or recovery-content access is currently authorized.
 
 
 Current Secret references required by the production Compose candidate (paths and purposes only; exact ten files now exist on the VPS and are metadata-verified):
@@ -91,7 +91,7 @@ Current Secret references required by the production Compose candidate (paths an
 | `wordpress-logged-in-salt` | WordPress only | WordPress LOGGED_IN_SALT |
 | `wordpress-nonce-salt` | WordPress only | WordPress NONCE_SALT |
 
-All ten are planned read-only, `create_host_path: false` file binds under `/run/secrets/` with the matching basename. The R1 local disposable rehearsal verified the mount allowlist and synthetic-file read access; it did not create or inspect real target Secret files.
+All ten are current read-only, `create_host_path: false` file binds under `/run/secrets/` with the matching basename. Target-host metadata and C1R5R2 disposable runtime validation verified the exact mount allowlist and effective no-value read boundaries.
 
 Current **target Linux** metadata, confirmed by strict target-host read-back:
 
@@ -100,7 +100,7 @@ Current **target Linux** metadata, confirmed by strict target-host read-back:
 | `db-app-password` and all eight `wordpress-*-key` / `wordpress-*-salt` files | `root:33` / `0440` | WordPress `www-data` UID/GID 33:33; MariaDB entrypoint root also reads `db-app-password` |
 | `db-root-password` | `root:root` / `0400` | MariaDB entrypoint root only |
 
-The host `secrets/` directory is confirmed `root:root` mode `0700`. Strict read-back confirmed nine allowlisted files at `root:33 0440` and `db-root-password` at `root:root 0400`; exact allowlist count is 10. Unrelated running services mount none of the Mini Craft Secret paths. Effective in-container WordPress UID/GID 33:33 readability remains the only current Secret-state verification gap and is the purpose of C1R5R2.
+The host `secrets/` directory is confirmed `root:root` mode `0700`. Strict read-back confirmed nine allowlisted files at `root:33 0440` and `db-root-password` at `root:root 0400`; exact allowlist count is 10. C1R5R2 proved WordPress UID/GID 33:33 can read all nine intended mounts, WordPress does not receive `db-root-password`, MariaDB can read its required DB Secrets, and unrelated running services mount none of the Mini Craft Secret paths.
 
 Provisioning must be exact-allowlist, cryptographic-RNG based, atomic exclusive create/fail-on-existing, no value or value-hash output, and no overwrite absent a separate rotation Gate. Default Secret authority remains Owner-only. On 2026-09-24 the Owner explicitly accepted the exact ten-file project/host/path/format/no-overwrite/DPAPI scope documented in `docs/REVIEWER_DECISION_K6_C1_SECRET_PROVISIONING_AUTHORIZED.md`. C1 attempted a prewrite transaction, created only the encrypted Owner-profile pending recovery artifact, and returned before any target directory or Secret file creation. That earlier write authorization is historical after RETURN. C1R4 was subsequently Owner-authorized for bounded in-memory inspection and returned because the payload contains two undocumented non-record boundary lines. The conditional C1R5 write authorization expired on that RETURN; any later Secret generation, transfer or write requires a fresh explicit Owner authorization.
 
@@ -158,7 +158,7 @@ Restore sequence must be validated in a bounded K6/K7 recovery check:
 8. verify unrelated shared services are unchanged.
 
 `RESTORE_METHOD_DEFINED=YES`
-`RESTORE_REHEARSAL=K6_OR_K7_PENDING`
+`RESTORE_REHEARSAL=K6_PRIVATE_RESTORE_IN_PROGRESS;MARIADB_52_TABLES_PASS;WP_CONTENT_PASS;WORDPRESS_CORE_PRESENT;PRIVATE_APP_VALIDATION_PENDING;FULL_SERIALIZED_MIGRATION_PENDING`
 
 ## 7. Retention
 
@@ -171,9 +171,7 @@ Restore sequence must be validated in a bounded K6/K7 recovery check:
 
 Shared Caddy, shared cloudflared, host 80/443, shared Docker networks and Shared Infra storage are not Mini Craft project data.
 
-If current topology is confirmed, the WordPress HTTP-facing service may join the existing `spikersun-edge` network through an explicitly authorized Shared Infra membership/config change.
-
-MariaDB must never join `spikersun-edge`.
+Current private deployment has WordPress joined to the existing `spikersun-edge` network as service membership only; no shared-network configuration/recreation occurred. This does not create public ingress by itself. MariaDB remains on the project-private DB network and must never join `spikersun-edge`.
 
 ## 9. Migration unit
 
@@ -227,8 +225,8 @@ STORAGE_LAYOUT_CONTRACT_READ=YES
 PROJECT_STORAGE_MANIFEST_EXISTS=YES
 DURABLE_DATA_PATHS_EXPLICIT=YES
 SECRET_PATHS_EXPLICIT_METADATA_ONLY=YES
-SECRET_RUNTIME_ACCESS_DEFINED=PROPOSED_ROOT_33_0440_AND_ROOT_ROOT_0400; TARGET_READBACK_PENDING
-SECRET_RECOVERY_POLICY_DEFINED=DPAPI_PENDING_ROUNDTRIP_PASS; FINAL_ARTIFACT_NOT_CREATED; RETRY_AUTH_PENDING
+SECRET_RUNTIME_ACCESS_DEFINED=PASS_TARGET_METADATA_AND_C1R5R2_EFFECTIVE_RUNTIME_ACCESS
+SECRET_RECOVERY_POLICY_DEFINED=PASS_NEW_FINAL_DPAPI_METADATA_VERIFIED;HISTORICAL_OLD_PENDING_RETAINED_ENCRYPTED
 BACKUP_PATH_EXPLICIT=YES
 RESTORE_METHOD_DEFINED=YES
 ANONYMOUS_DURABLE_VOLUME=NO
