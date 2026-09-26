@@ -116,8 +116,10 @@ Goal: maximum reuse of a proven WooCommerce-friendly theme and visual-product-bu
 ### B — Blocksy Modern Shop + Storelly
 Goal: lighter store shell with the same preview-product-builder experiment.
 
-### C — Existing Good Issue prototype
+### C — Existing Good Issue prototype ported into WordPress
 Goal: preserve the best current editorial UX and measure how much custom WordPress adaptation it would require.
+
+This route is **not** permission to run a separate standalone production frontend. WordPress + WooCommerce remains the accepted commerce architecture.
 
 Decision is based on implementation cost and product fit, not visual preference alone.
 
@@ -140,7 +142,9 @@ Each route must be judged on:
 ## 8. Development Order
 
 ```text
-G2A  Frontend foundation + component PoC + MVP UI freeze
+G2A1 Frontend + reusable component feasibility
+→
+G2A2 Exact MVP product contract freeze
 →
 G2B  Local AI → magazine pages → PDF solution proof
 →
@@ -175,4 +179,6 @@ Kadence Jewelry Shop + Storelly
 
 This is not final theme selection. It is the first PoC candidate because it maximizes reuse while still allowing the Good Issue editorial identity to be overlaid.
 
-Final frontend foundation is selected only after G2A comparison evidence.
+Final frontend foundation is selected only after G2A1 evidence.
+
+Before G2B, G2A2 must additionally freeze the exact page count, paid photo count, question schema, page-by-page output map, proof/revision policy, deterministic QA and customer-data handling.
