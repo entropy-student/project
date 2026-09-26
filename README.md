@@ -25,7 +25,7 @@
 | 🎬 **Visual Narrative Animation Lab（画面叙事动画实验室）** | 从口播/配音提炼 Visual Beats，建立可复用的手绘叙事动画生产与自动化流水线 | Content Production / AI Workflow | **Prototype** | [进入](./visual-narrative-animation-lab/) |
 | 🔎 **Conversion Leak Audit（独立站转化漏损诊断）** | 扫描公开独立站，基于事实与可信规则输出免费 Top 3 与后续 Fix Queue | Diagnostic Product / Commerce Tool | **Local Integration Next** | [进入](./conversion-leak-audit/) |
 | 🎨 **Mini Craft Night Kit** | 用成熟 WordPress + Kadence + WooCommerce 快速构建可销售的单品电商站 | Ecommerce / Physical Product | **Kadence PoC** | [进入](./mini-craft-night-kit/) |
-| 🎁 **Birthday Magazine Studio（生日纪念杂志）** | 将送礼者提供的照片和回忆变成可预览、可交付的个性化生日杂志 | Personalized Gift / Publishing | **Discovery** | [进入](./birthday-magazine-studio/) |
+| 🎁 **Birthday Magazine Studio（生日纪念杂志）** | 将送礼者提供的照片和回忆变成可预览、可交付的个性化生日杂志 | Personalized Gift / Publishing | **G1 Research** | [进入](./birthday-magazine-studio/) |
 | 🎭 **AI Story Showrunner（AI故事总导演系统）** | 将 AI 热点/概念转译为普通人可看的故事，并统一编排选题、故事、文案、分镜、生图、视频与反馈 Worker | Content Operating System / Orchestration | **G1 Contracts** | [进入](./ai-story-showrunner/) |
 
 ---
