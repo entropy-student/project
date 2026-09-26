@@ -1,0 +1,1453 @@
+{
+  "model_id": "microsoft/trocr-small-handwritten",
+  "revision": "959398e1e35ce99c83e60f83b35c1187d4508a0b",
+  "fallback_count": 60,
+  "fallbacks": [
+    {
+      "fixture": "F01",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F01-line-2.png",
+      "source_crop_sha256": "c5fe28509f8980e16766bd0a28bb93ccb2806fb73bde59536864653e8ce221db",
+      "paddle_result": {
+        "text": "1/2 tsp salt",
+        "confidence": 0.9571619629859924,
+        "bbox": [
+          106,
+          365,
+          250,
+          403
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "100 000",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 279.51
+    },
+    {
+      "fixture": "F01",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F01-line-3.png",
+      "source_crop_sha256": "c0bd532e5b0e284b7d0166a585e9e6eed13a420c0acc41de05ca932eb4da3593",
+      "paddle_result": {
+        "text": "1/4 cup olive oil",
+        "confidence": 0.9740403294563293,
+        "bbox": [
+          106,
+          437,
+          316,
+          475
+        ]
+      },
+      "routing_reason": [
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "asynchronous",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 284.39
+    },
+    {
+      "fixture": "F01",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F01-line-4.png",
+      "source_crop_sha256": "35b6db6d7f5070489c8b52956267f35b64b161bec201fefcf5c0e0af26123d56",
+      "paddle_result": {
+        "text": "1.5 tbsp tomato paste",
+        "confidence": 0.9879727363586426,
+        "bbox": [
+          106,
+          510,
+          377,
+          548
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "# Indianapolis .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 296.36
+    },
+    {
+      "fixture": "F01",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F01-line-6.png",
+      "source_crop_sha256": "f797b9876e5e047356b03b86cb1de637f762d61fa17364f54ad2d57bf6d7d2ad",
+      "paddle_result": {
+        "text": "Bake 15 min.",
+        "confidence": 0.9807562232017517,
+        "bbox": [
+          106,
+          655,
+          277,
+          686
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "in the following",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 296.8
+    },
+    {
+      "fixture": "F02",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F02-line-3.png",
+      "source_crop_sha256": "021cf995de1193bbafd6b714126b1c60b42fdb9a67663890510ec93d63811a26",
+      "paddle_result": {
+        "text": "120 ml milk",
+        "confidence": 0.9094534516334534,
+        "bbox": [
+          107,
+          439,
+          265,
+          470
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93"
+      ],
+      "trocr_result": "was distinguished",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 272.98
+    },
+    {
+      "fixture": "F02",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F02-line-4.png",
+      "source_crop_sha256": "ef397b776b6bdc84d46c83983386740a42758b0c52bd548c15217a7e931845bf",
+      "paddle_result": {
+        "text": "2 tbsp lemon juice",
+        "confidence": 0.9559307098388672,
+        "bbox": [
+          105,
+          511,
+          341,
+          545
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "interest-engineering .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 319.08
+    },
+    {
+      "fixture": "F02",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F02-line-5.png",
+      "source_crop_sha256": "77cf6d881aa466fbc92a2b76aaa53fd4124fe283d8f1dd766b005d2a6a2115f0",
+      "paddle_result": {
+        "text": "Bake at 180C for 35 min.",
+        "confidence": 0.8867208361625671,
+        "bbox": [
+          107,
+          582,
+          438,
+          614
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93",
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "# Management",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 273.31
+    },
+    {
+      "fixture": "F03",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F03-line-3.png",
+      "source_crop_sha256": "2502cd6e0a2f223e9bf8e825f1074bd7bba0a11dc49f8688eb239e42a4aecc74",
+      "paddle_result": {
+        "text": "1 tsp yeast",
+        "confidence": 0.9244310259819031,
+        "bbox": [
+          105,
+          438,
+          247,
+          477
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93",
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "# Mississippi",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 272.01
+    },
+    {
+      "fixture": "F03",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F03-line-4.png",
+      "source_crop_sha256": "9ccedb41182762019f272fb5f4c5b6053ced97eef7240cc34ad3818e29530d9c",
+      "paddle_result": {
+        "text": "1 hr rise",
+        "confidence": 0.9056005477905273,
+        "bbox": [
+          107,
+          510,
+          215,
+          543
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93",
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "10 000",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 271.54
+    },
+    {
+      "fixture": "F03",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F03-line-5.png",
+      "source_crop_sha256": "bb567f06aea40ed10c24d5887c5cef3fd66ed2f0440516505efbf4ed5811cee8",
+      "paddle_result": {
+        "text": "Bake 22 min.",
+        "confidence": 0.9374460577964783,
+        "bbox": [
+          107,
+          583,
+          278,
+          614
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "Mississippi",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 241.56
+    },
+    {
+      "fixture": "F04",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F04-line-2.png",
+      "source_crop_sha256": "e3e5bd6fac12e6f7480654a1534622f187330c17b4ed5d47456977a2e18e3a9b",
+      "paddle_result": {
+        "text": "1/2 cup sugar",
+        "confidence": 0.9546486735343933,
+        "bbox": [
+          84,
+          389,
+          261,
+          430
+        ]
+      },
+      "routing_reason": [
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "a brief",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 273.34
+    },
+    {
+      "fixture": "F04",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F04-line-3.png",
+      "source_crop_sha256": "6478730b25ade02ab6aeb2ba272af56e1dd63f7f2a3ab26e8755ffc4c64e1ba9",
+      "paddle_result": {
+        "text": "2 tbsp butter",
+        "confidence": 0.9815292954444885,
+        "bbox": [
+          86,
+          458,
+          253,
+          503
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "2 September",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 270.8
+    },
+    {
+      "fixture": "F04",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F04-line-4.png",
+      "source_crop_sha256": "bcdcba0859e5e8aadc982341675ed1b8849864f8e76aa545e3be1c0383371a79",
+      "paddle_result": {
+        "text": "1/4 tsp cinnamon",
+        "confidence": 0.9945704340934753,
+        "bbox": [
+          92,
+          528,
+          313,
+          574
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "a descriptive group ,",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 319.39
+    },
+    {
+      "fixture": "F04",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F04-line-5.png",
+      "source_crop_sha256": "e7a2bbdb8b17c95d72d3de76f4fdc8f24d6ec97b2eac86ae8edbb115d8174852",
+      "paddle_result": {
+        "text": "Bake 25 min.",
+        "confidence": 0.9395070672035217,
+        "bbox": [
+          95,
+          602,
+          269,
+          644
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "# Mississippi",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 269.89
+    },
+    {
+      "fixture": "F05",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F05-line-2.png",
+      "source_crop_sha256": "33efa548877f319e3232b6dfd548eefa3e3c922e4bc91a215f7ecd35dbac2e7a",
+      "paddle_result": {
+        "text": "1.5",
+        "confidence": 0.9952216148376465,
+        "bbox": [
+          107,
+          368,
+          154,
+          399
+        ]
+      },
+      "routing_reason": [
+        "quantity_unit_separation_failed"
+      ],
+      "trocr_result": "raised",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 241.8
+    },
+    {
+      "fixture": "F05",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F05-line-3.png",
+      "source_crop_sha256": "a4b48d5250c6efbb6d9ad569ed4e201faf2ac4b6654651cec05a485b765d757c",
+      "paddle_result": {
+        "text": "cups beans",
+        "confidence": 0.9846930503845215,
+        "bbox": [
+          151,
+          368,
+          294,
+          403
+        ]
+      },
+      "routing_reason": [
+        "quantity_unit_separation_failed"
+      ],
+      "trocr_result": "impressions",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 270.57
+    },
+    {
+      "fixture": "F05",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F05-line-6.png",
+      "source_crop_sha256": "4651dce90e3aee96f1545b7a530a5e49d3254bea8633859bf59838ff2f115fd2",
+      "paddle_result": {
+        "text": "1 tsp salt",
+        "confidence": 0.9456714391708374,
+        "bbox": [
+          105,
+          509,
+          226,
+          550
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "trespass .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 270.86
+    },
+    {
+      "fixture": "F05",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F05-line-7.png",
+      "source_crop_sha256": "4294890c0cf3db6e62202d878645ad7fa76ce4376b80327a08c89ca9cb7f531e",
+      "paddle_result": {
+        "text": "Simmer 1 hr.",
+        "confidence": 0.9568443894386292,
+        "bbox": [
+          107,
+          583,
+          272,
+          614
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "pessimistic",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 241.81
+    },
+    {
+      "fixture": "F06",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F06-line-3.png",
+      "source_crop_sha256": "758111914b04648e4c08d3c4b05f10ccecba4c7401e0cd4df3bb24697e267db6",
+      "paddle_result": {
+        "text": "350 ml water",
+        "confidence": 0.9206299781799316,
+        "bbox": [
+          105,
+          437,
+          279,
+          472
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93"
+      ],
+      "trocr_result": "administrative",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 244.01
+    },
+    {
+      "fixture": "F07",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F07-line-4.png",
+      "source_crop_sha256": "da7f74bb9867d51505d204fde7b8000d59ce7e625ab0d4583ee9f58783062604",
+      "paddle_result": {
+        "text": "1 tbsp honey",
+        "confidence": 0.9354925751686096,
+        "bbox": [
+          106,
+          509,
+          271,
+          549
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "a business",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 272.11
+    },
+    {
+      "fixture": "F07",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F07-line-5.png",
+      "source_crop_sha256": "8838a42769054433cf5db18501c59859047b3944d1e2094eef065e0128c9437a",
+      "paddle_result": {
+        "text": "IMIETHOD",
+        "confidence": 0.8308924436569214,
+        "bbox": [
+          108,
+          584,
+          256,
+          612
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Mississippi",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 241.02
+    },
+    {
+      "fixture": "F07",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F07-line-6.png",
+      "source_crop_sha256": "23536e2d6d8bc49cf516523c6aad813885914cb59c5e0962ab8eb0264939a91f",
+      "paddle_result": {
+        "text": "Stir dry ingredients, add milk, bake 20 min.",
+        "confidence": 0.9664604067802429,
+        "bbox": [
+          108,
+          654,
+          651,
+          688
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "early immigrants and health-threatening",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 374.28
+    },
+    {
+      "fixture": "F08",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F08-line-3.png",
+      "source_crop_sha256": "ecff9b79bce4fdcb514d213d68813f9aa2bd89ec308089651fcbf2fcd5ef5a81",
+      "paddle_result": {
+        "text": "1/4 cup water",
+        "confidence": 0.995086669921875,
+        "bbox": [
+          106,
+          437,
+          284,
+          477
+        ]
+      },
+      "routing_reason": [
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "What is a successful campaign .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 371.53
+    },
+    {
+      "fixture": "F08",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F08-line-4.png",
+      "source_crop_sha256": "e4807345c1aad7c9120e20ccc9b0d23af44a0598f8e0b867f4c80a4a0308bd0f",
+      "paddle_result": {
+        "text": "1 tsp lemon juice",
+        "confidence": 0.9957186579704285,
+        "bbox": [
+          108,
+          511,
+          325,
+          546
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "a b c d e f g h i",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 449.19
+    },
+    {
+      "fixture": "F09",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F09-line-1.png",
+      "source_crop_sha256": "65b95e1d8096363c31d27602faaa23c2225bdc0459f082779c8e1a32637a6a94",
+      "paddle_result": {
+        "text": "Stir 5 min.",
+        "confidence": 0.9194478988647461,
+        "bbox": [
+          106,
+          583,
+          244,
+          614
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93",
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "successful",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 242.91
+    },
+    {
+      "fixture": "F10",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F10-line-4.png",
+      "source_crop_sha256": "1661be41b799cc01afb2b4fffe7dd9f6831a77c03ff3ededfccb8993868b0f3b",
+      "paddle_result": {
+        "text": "1/2 tsp thyme",
+        "confidence": 0.9939095377922058,
+        "bbox": [
+          106,
+          509,
+          282,
+          549
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "a statement",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 270.91
+    },
+    {
+      "fixture": "F10",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F10-line-7.png",
+      "source_crop_sha256": "b3eaadd226ab77b8798c0ab10aefe8d9875134d38de4ded20e88b17b5b9503a4",
+      "paddle_result": {
+        "text": "Simmer 45 min; add noodles for 8 min.",
+        "confidence": 0.9583982229232788,
+        "bbox": [
+          107,
+          726,
+          600,
+          759
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "immunontization of the identification of",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 399.89
+    },
+    {
+      "fixture": "F11",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F11-line-2.png",
+      "source_crop_sha256": "6bb2014d3eb577b0757ed96b2718d3bfafdd6d67f5a4f09fb0206d598d404f3f",
+      "paddle_result": {
+        "text": "1/2 tsp vanilla",
+        "confidence": 0.9896091818809509,
+        "bbox": [
+          107,
+          367,
+          289,
+          401
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "4 References",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 299.73
+    },
+    {
+      "fixture": "F11",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F11-line-3.png",
+      "source_crop_sha256": "a8c88a325e169e7f3dfca2f73fd7cd0e965529c79286fc358f01d1a3d96aa7c7",
+      "paddle_result": {
+        "text": "1/4 cup sugar",
+        "confidence": 0.9707193374633789,
+        "bbox": [
+          106,
+          436,
+          282,
+          478
+        ]
+      },
+      "routing_reason": [
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "a b c d e f g h (",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 447.81
+    },
+    {
+      "fixture": "F11",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F11-line-5.png",
+      "source_crop_sha256": "8b5d717960e0351864e9229c6f11caaa53af58eb1337bc6bd285ee21f11bfdcc",
+      "paddle_result": {
+        "text": "Bake 15 min.",
+        "confidence": 0.9599296450614929,
+        "bbox": [
+          106,
+          582,
+          278,
+          615
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "Mississippi",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 242.58
+    },
+    {
+      "fixture": "F12",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F12-line-2.png",
+      "source_crop_sha256": "8f53b605d2762e26720dfff849e432b1d995618a0b5081cd2c6dda0e32ae2037",
+      "paddle_result": {
+        "text": "1/2 tsp cardamom",
+        "confidence": 0.9742758870124817,
+        "bbox": [
+          107,
+          366,
+          334,
+          401
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "displaystyle -",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 299.81
+    },
+    {
+      "fixture": "F12",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F12-line-3.png",
+      "source_crop_sha256": "8fb0f23f9d96318eebf82522100325c07373003ade246db358b85556c81abe82",
+      "paddle_result": {
+        "text": "2 cups water",
+        "confidence": 0.9235732555389404,
+        "bbox": [
+          105,
+          439,
+          271,
+          475
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93"
+      ],
+      "trocr_result": "a retrospective",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 272.64
+    },
+    {
+      "fixture": "F12",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F12-line-5.png",
+      "source_crop_sha256": "1198d9146b330e8fc22a73c0fa2b9ea4c6907eae76565f0379bcd332008f2600",
+      "paddle_result": {
+        "text": "Steep 5 min.",
+        "confidence": 0.9148516654968262,
+        "bbox": [
+          105,
+          581,
+          270,
+          619
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93",
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "Mississippi .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 269.39
+    },
+    {
+      "fixture": "F13",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F13-line-2.png",
+      "source_crop_sha256": "839c301cd21d53fae1b92c54d0e4ff64a99878f52071572067f5dc9e493f7e14",
+      "paddle_result": {
+        "text": "1 tbsp oil",
+        "confidence": 0.9608979225158691,
+        "bbox": [
+          106,
+          366,
+          229,
+          402
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "IT recognizes",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 273.04
+    },
+    {
+      "fixture": "F13",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F13-line-4.png",
+      "source_crop_sha256": "fa75d6ef119be312c89544b9b17319771e640712171e3202de6d7c67722c9481",
+      "paddle_result": {
+        "text": "Roast 40 min.",
+        "confidence": 0.9646360874176025,
+        "bbox": [
+          108,
+          513,
+          284,
+          540
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "transe-design .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 345.84
+    },
+    {
+      "fixture": "F14",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F14-line-2.png",
+      "source_crop_sha256": "5c5d63c6a93a7ee12eb84d9aa5d5ba640a5fa024442c8ff6fd24363df0a7a8e2",
+      "paddle_result": {
+        "text": "2 pears",
+        "confidence": 0.8146530389785767,
+        "bbox": [
+          103,
+          366,
+          202,
+          402
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Professor",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 243.64
+    },
+    {
+      "fixture": "F14",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F14-line-4.png",
+      "source_crop_sha256": "cffd869b1828c04d0673d3e8d3eec62574bb9e3a228a5edbdd53fe4ce3e4fc56",
+      "paddle_result": {
+        "text": "Bake 25 min.",
+        "confidence": 0.9682809710502625,
+        "bbox": [
+          107,
+          513,
+          276,
+          541
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "# Marshall",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 270.69
+    },
+    {
+      "fixture": "F15",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F15-line-2.png",
+      "source_crop_sha256": "baa70eb1f2a55b24409db60c33b75d0912a7949840b4407f413347f21f0f1612",
+      "paddle_result": {
+        "text": "2 tbsp butter",
+        "confidence": 0.9891207814216614,
+        "bbox": [
+          105,
+          366,
+          269,
+          401
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "a single statement",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 298.91
+    },
+    {
+      "fixture": "F15",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F15-line-3.png",
+      "source_crop_sha256": "2b7c582b807824db1a32a39417210a8eb666c79c3e8b2114ee56e406a879d178",
+      "paddle_result": {
+        "text": "Toast 15 min.",
+        "confidence": 0.9748231172561646,
+        "bbox": [
+          106,
+          439,
+          281,
+          470
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "displaystyle",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 272.91
+    },
+    {
+      "fixture": "F17",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F17-line-2.png",
+      "source_crop_sha256": "cf33f83d0fd8f0bf9d74ab60149814b8cd5ec0ec99d6a18eb7d4572b2119d867",
+      "paddle_result": {
+        "text": "1 tsp dried dill",
+        "confidence": 0.9841998815536499,
+        "bbox": [
+          106,
+          363,
+          294,
+          404
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "100 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 3882.88
+    },
+    {
+      "fixture": "F17",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F17-line-3.png",
+      "source_crop_sha256": "dc1ff2de444c1f7149fa12c59f9a3742424381e21003f88cb3af57dc0b2820dc",
+      "paddle_result": {
+        "text": "1 tbsp vinegar",
+        "confidence": 0.9910590052604675,
+        "bbox": [
+          105,
+          436,
+          290,
+          477
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "a b c d e f",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 372.37
+    },
+    {
+      "fixture": "F17",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F17-line-4.png",
+      "source_crop_sha256": "dba4f7e94a26993d27fe1d1b34786d93471c4edfa73b1809189a9616984e917a",
+      "paddle_result": {
+        "text": "2 tbsp oil",
+        "confidence": 0.9356311559677124,
+        "bbox": [
+          104,
+          510,
+          229,
+          546
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "microscopic",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 242.21
+    },
+    {
+      "fixture": "F18",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F18-line-4.png",
+      "source_crop_sha256": "4c2d22232c4dd0906862253303bec3eff26c863684bf1de4f88e2c9d0842454f",
+      "paddle_result": {
+        "text": "1/4 cup sugar",
+        "confidence": 0.9578055739402771,
+        "bbox": [
+          107,
+          510,
+          281,
+          548
+        ]
+      },
+      "routing_reason": [
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "a b c d e f",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 374.74
+    },
+    {
+      "fixture": "F18",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F18-line-5.png",
+      "source_crop_sha256": "c14fbcba7830bdffecbec63ea5224adb2fddda27e5a48f927a69215c97e44df6",
+      "paddle_result": {
+        "text": "Cook 12 min.",
+        "confidence": 0.962583601474762,
+        "bbox": [
+          107,
+          582,
+          281,
+          614
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "in a slightly",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 296.8
+    },
+    {
+      "fixture": "F19",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F19-line-2.png",
+      "source_crop_sha256": "fff00b8d7ef191da1641408539254fb4e2939933ec84ba02ca2129de6a23d127",
+      "paddle_result": {
+        "text": "1 cup fl our / farine",
+        "confidence": 0.928596019744873,
+        "bbox": [
+          107,
+          366,
+          345,
+          401
+        ]
+      },
+      "routing_reason": [
+        "critical_field_confidence_below_0.93"
+      ],
+      "trocr_result": "___________________________________",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 666.75
+    },
+    {
+      "fixture": "F19",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F19-line-3.png",
+      "source_crop_sha256": "0bf6abaa15f8fb7ed2f5597dc733adbdbce16be88bba6d32bc0062d052974c0f",
+      "paddle_result": {
+        "text": "1/2 tsp salt / sel",
+        "confidence": 0.9950723648071289,
+        "bbox": [
+          105,
+          437,
+          307,
+          475
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk",
+        "fraction_critical_value_crosscheck"
+      ],
+      "trocr_result": "2 References",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 321.46
+    },
+    {
+      "fixture": "F19",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F19-line-5.png",
+      "source_crop_sha256": "94d8c7225f7cfee5e0b067bc6bcf39e043bcf961b3650b9971d8d1cc421a1791",
+      "paddle_result": {
+        "text": "Mélanger; cook 2 min per side.",
+        "confidence": 0.9797328114509583,
+        "bbox": [
+          106,
+          581,
+          500,
+          619
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "\" In other issues - the basic participation of the",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 476.8
+    },
+    {
+      "fixture": "F20",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F20-line-4.png",
+      "source_crop_sha256": "875cc4bcb2857c1af81cadf1419b1c75c4c9af3fe0d0de531914ad74acac3b2a",
+      "paddle_result": {
+        "text": "1 tbsp oil",
+        "confidence": 0.9900076985359192,
+        "bbox": [
+          106,
+          510,
+          228,
+          546
+        ]
+      },
+      "routing_reason": [
+        "tsp_tbsp_confusion_risk"
+      ],
+      "trocr_result": "in his wife ,",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 319.42
+    },
+    {
+      "fixture": "F20",
+      "fixture_class": "SYNTHETIC_TYPOGRAPHY",
+      "source_crop": "ocr/fallback-crops/F20-line-7.png",
+      "source_crop_sha256": "76062b0275b1aba96c66ca854e85ea4432b32cc0319c4fa21b3606130799bc81",
+      "paddle_result": {
+        "text": "Bake at 350F for 35 min.",
+        "confidence": 0.9477249979972839,
+        "bbox": [
+          107,
+          727,
+          435,
+          758
+        ]
+      },
+      "routing_reason": [
+        "timing_critical_value_crosscheck"
+      ],
+      "trocr_result": "# Jacksonville .",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 294.77
+    },
+    {
+      "fixture": "G01",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G01-line-0.png",
+      "source_crop_sha256": "e4582afff194693c2da61cc212c774a245b0c1cb61a96a1d63379b6210837fcd",
+      "paddle_result": {
+        "text": "Nong Khiaw Chao ist en Ort in cer Proviz Luang Prabang",
+        "confidence": 0.7693599462509155,
+        "bbox": [
+          0,
+          0,
+          523,
+          42
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Nong Khildd Chao . ist-en Oct en der Proviz Leuang Praburg",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 778.56
+    },
+    {
+      "fixture": "G02",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G02-line-0.png",
+      "source_crop_sha256": "009970ca2f4277fd22817f7a61cfd005e11e86210ae78b4255a65a14470e2a97",
+      "paddle_result": {
+        "text": "Leicter (Schigotyp)",
+        "confidence": 0.6455281972885132,
+        "bbox": [
+          0,
+          0,
+          249,
+          65
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Leichther rsdnigopathy )",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 448.66
+    },
+    {
+      "fixture": "G03",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G03-line-0.png",
+      "source_crop_sha256": "b6b6174ca7662ec98d2fda5b7de4d41fbf665e4f4de5fd5d6119a124e8f14342",
+      "paddle_result": {
+        "text": "Fugasche ist der fetdispse lcenrmigepafg",
+        "confidence": 0.6201397776603699,
+        "bbox": [
+          0,
+          2,
+          722,
+          54
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Flugouche ist der Feste , disperse ( teilcen-formige , partikel forming",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 836.65
+    },
+    {
+      "fixture": "G04",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G04-line-0.png",
+      "source_crop_sha256": "f3da55942246dead24a422e185017eadfcbcf4ea481c641de9f7ccdbf2e0199c",
+      "paddle_result": {
+        "text": "Process Ceigene Schribwise",
+        "confidence": 0.7464364767074585,
+        "bbox": [
+          0,
+          0,
+          263,
+          29
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Process Cedgene Schreibweise . '",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 502.84
+    },
+    {
+      "fixture": "G04",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G04-line-1.png",
+      "source_crop_sha256": "fc940cbcfaba179e9b3ead076bda3d109c398e20780d6e9416b18ff9eea2de95",
+      "paddle_result": {
+        "text": "PRocEss) ist cine",
+        "confidence": 0.8274699449539185,
+        "bbox": [
+          277,
+          0,
+          468,
+          29
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "PROCESS ) ist eine c",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 423.77
+    },
+    {
+      "fixture": "G04",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G04-line-2.png",
+      "source_crop_sha256": "194b9db7250feb633c3c7a0990a0324629977d9e5bd63c9f21f98efb81e59109",
+      "paddle_result": {
+        "text": "Crossmeoiale",
+        "confidence": 0.7384569048881531,
+        "bbox": [
+          468,
+          8,
+          578,
+          28
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "cross-reliable",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 295.9
+    },
+    {
+      "fixture": "G05",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/genuine-handwriting/G05.png",
+      "source_crop_sha256": "d3673b28c3a8ec8ab5b669be79fdd2121127ff5a5b8a1573d6a8a7c1745436c0",
+      "paddle_result": {
+        "text": "",
+        "confidence": null,
+        "bbox": null
+      },
+      "routing_reason": [
+        "paddle_missing_text_on_known_handwriting_crop"
+      ],
+      "trocr_result": "Das Schless-s , Auslant-s ,rude s oder Ringel-sist eine",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 837.01
+    },
+    {
+      "fixture": "G06",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G06-line-0.png",
+      "source_crop_sha256": "fc6e2a48c8a3556db63234155adbf5bd482c2fa25e0fd54981dee85067877902",
+      "paddle_result": {
+        "text": "Leisng,als Vobeeitng ein Spkr",
+        "confidence": 0.7038831114768982,
+        "bbox": [
+          0,
+          0,
+          488,
+          60
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Leistung , als vorbereitung einer Spiter",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 554.43
+    },
+    {
+      "fixture": "G07",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G07-line-0.png",
+      "source_crop_sha256": "15018c056bac692c2afadb1ad8fa20157c2c7cd676c36e6a1bedb51f85221fe0",
+      "paddle_result": {
+        "text": "Birferentsaheio",
+        "confidence": 0.6011489629745483,
+        "bbox": [
+          0,
+          0,
+          162,
+          50
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Bargerentsaheid",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 375.71
+    },
+    {
+      "fixture": "G08",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G08-line-0.png",
+      "source_crop_sha256": "03f760fc3a420d478cbd6f06c41ab59c223802bab26470388662260f9eafdba0",
+      "paddle_result": {
+        "text": "Gereralplan Ost (Gp) werden cine",
+        "confidence": 0.740704357624054,
+        "bbox": [
+          242,
+          0,
+          638,
+          40
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "generalization Act CGROI werden eine",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 399.78
+    },
+    {
+      "fixture": "G08",
+      "fixture_class": "GENUINE_HANDWRITING",
+      "source_crop": "ocr/fallback-crops/G08-line-1.png",
+      "source_crop_sha256": "27d7e0bb7652f6726238eb95f0b4bf2e0a994841a79dde34c5fba3476fde9832",
+      "paddle_result": {
+        "text": "Onter dem  Begif",
+        "confidence": 0.8036263585090637,
+        "bbox": [
+          0,
+          3,
+          216,
+          35
+        ]
+      },
+      "routing_reason": [
+        "paddle_confidence_below_0.88"
+      ],
+      "trocr_result": "Unter dem Begriff",
+      "resolved": false,
+      "USER_CONFIRM_REQUIRED": true,
+      "resolution_reason": "engine_disagreement",
+      "latency_ms": 342.92
+    }
+  ]
+}
