@@ -47,7 +47,7 @@ private proof / final delivery
 | Optional story/context intake | Order-bound fields / thin project plugin | ACCEPTED PATTERN | Small |
 | Background orchestration | Action Scheduler pattern | ACCEPTED PATTERN | Job definitions |
 | Image preprocessing | OpenCV/library-backed rotate/deskew/crop/contrast/quality checks | ACCEPTED DIRECTION | Yes |
-| Handwriting OCR | **PaddleOCR first → TrOCR fallback benchmark → Tesseract print control** | POC | Adapter |
+| Handwriting OCR | **PaddleOCR primary + TrOCR ambiguous-region fallback** | ACCEPTED MVP ARCH / POC | Thin adapter |
 | Recipe extraction | Structured schema + provenance | CUSTOM CORE | Yes |
 | Uncertainty policy | confidence/rules + review queue | CUSTOM CORE | Yes |
 | Correction/review UI | order/private review surface | CUSTOM CORE | Yes |
@@ -92,18 +92,17 @@ private source image
 → local/library image preprocessing
 → PaddleOCR primary attempt
 → deterministic critical-token/schema checks
-→ if ambiguous: TrOCR/second local pass
-→ if still ambiguous: optional bounded VLM/vision region fallback
-→ if still uncertain: user/reviewer confirmation
+→ if ambiguous: crop suspicious region + TrOCR fallback
+→ if still uncertain/disagrees: user/reviewer confirmation
 → approved canonical recipe
 → deterministic HTML/CSS → PDF
 ```
 
 Token policy:
 - browser-local free preview: **0 model Token**;
-- ordinary paid path can remain **0 model Token** if local OCR + rules are sufficient;
-- VLM/vision Token is allowed only as a bounded ambiguity fallback after G2A1 proves value/cost/privacy;
-- exact per-order Token/API cost is not yet known and must come from benchmark evidence.
+- MVP paid OCR path: **0 model/API Token** by design;
+- local CPU/GPU/runtime cost is still real and must be benchmarked;
+- cloud OCR and VLM/vision are outside MVP unless a later Gate explicitly reopens the architecture.
 
 ## 4. Canonical Recipe Data Model
 
@@ -179,14 +178,14 @@ ocr_adapter(image)
   }
 ```
 
-G2A1 comparison order:
-1. **PaddleOCR** — primary open-source/self-host candidate;
-2. **Microsoft TrOCR** — second local handwriting candidate / fallback benchmark;
-3. **Tesseract** — printed-text baseline/control only;
-4. managed handwriting OCR — optional comparator when credentials/cost boundary safely permit;
-5. VLM-assisted transcription — optional ambiguous-region fallback only.
+Accepted MVP OCR contract:
+1. **PaddleOCR** — the only full-page primary OCR engine.
+2. Deterministic confidence/critical-value rules decide whether a region is suspicious.
+3. **Microsoft TrOCR** — fallback only for suspicious cropped lines/regions.
+4. **User/reviewer confirmation** — final fallback when OCR remains uncertain or engines disagree.
+5. No third OCR/model is added merely to automate the last uncertain cases.
 
-This is a benchmark order, not a production selection. G2A1 evidence decides the actual primary/fallback route.
+Explicitly deferred from MVP: Tesseract, managed/cloud OCR, VLM/vision OCR. G2A1 validates whether this two-engine contract is sufficient; it is not a multi-provider bake-off.
 
 ## 7. Frontend / Theme Baseline
 
@@ -240,7 +239,8 @@ family-cookbook-core
 ├─ paid-entitlement guard
 ├─ processing-job idempotency
 ├─ image preprocessing
-├─ ocr adapters
+├─ PaddleOCR primary adapter
+├─ TrOCR fallback adapter
 ├─ recipe schema extraction
 ├─ provenance mapping
 ├─ uncertainty detection
@@ -279,6 +279,7 @@ G6 production hardening / physical print decision
 - open-ended drag/drop editor;
 - automatic recipe “improvement”;
 - broad multilingual promise before benchmark;
+- third OCR engine / cloud OCR / VLM OCR unless the two-engine route fails evidence;
 - AI-generated food imagery;
 - Redis/Celery/RabbitMQ until observed queue load requires them;
 - custom payment layer;
