@@ -1,9 +1,14 @@
 # G2A1 Execution Evidence — Frontend and Reusable Component Feasibility
 
-**Gate:** `G2A1_FRONTEND_AND_REUSABLE_COMPONENT_FEASIBILITY_POC`
-**Execution date:** 2026-09-26
-**Branch:** `codex/birthday-magazine-g2a1-component-feasibility`
-**Environment:** disposable local Docker Compose stack at `http://127.0.0.1:8127`; WordPress 7.0.4, PHP 8.3.33, MariaDB 11.4.13, WooCommerce 11.1.2.
+**Original Gate:** `G2A1_FRONTEND_AND_REUSABLE_COMPONENT_FEASIBILITY_POC`
+**Original execution date:** 2026-09-26
+**Current closure Gate:** `G2A1R1_EVIDENCE_CLOSURE`
+**R1 closure date:** 2026-09-27
+**Original G2A1 branch:** `codex/birthday-magazine-g2a1-component-feasibility`
+**R1 closure branch:** `codex/birthday-magazine-g2a1r1-evidence-closure`
+**Pushed evidence commit:** `5ae191b61e2323657c422a22b927cd3845fc5ec3` (ancestor of the current PR head)
+**Reviewer PR:** [#22 — G2A1R1 guest evidence closure](https://github.com/entropy-student/project/pull/22), open against `main`, unmerged
+**Environment:** disposable local Docker Compose stack at `http://127.0.0.1:8127`; WordPress 7.0.4, PHP 8.3.33, MariaDB 11.4.13, WooCommerce 11.1.2; local Mailpit v1.31.2 added for G2A1R1.
 **Scope:** synthetic inputs, no external payment, no customer data, no AI/API credentials, no production or public host.
 
 ## Result summary
@@ -15,6 +20,22 @@
 | Upload Files | Registered-account order binding, two one-file slots, and the 375px account upload passed. Guest order page could not be fully verified because WooCommerce requires email verification and this local environment has no working mail transport. Return the guest path for Reviewer decision. |
 | Attach Me | Registered order access control passed positive and negative checks; direct uploads URL was denied. Guest order delivery was not fully verified because the same WooCommerce email verification step could not be completed. Return the guest path for Reviewer decision. |
 | Commerce | Each preview CTA reached the $39.99 WooCommerce product, add-to-cart and cart. Checkout rendered but had no payment method configured. No payment was attempted or submitted. |
+
+## Current G2A1R1 closure result — supersedes the earlier guest-path gaps below
+
+The original G2A1 findings remain historical context. This section records the later guest-order checks and controls the current handoff. The Gate remains open for Reviewer because both plugins' guest download links were replayable from an unrelated guest context.
+
+| Check | Latest result | Evidence |
+|---|---|---|
+| Local email capture | **PASS** | Mailpit `axllent/mailpit:v1.31.2` (MIT; image digest `sha256:74d609a42ec279aa63c6b4622a6fa9b5408d1ad5b1d76a1c4be40a265ce0863d`). The service UI binds to `127.0.0.1:8128`; SMTP port 1025 has no host port mapping and is reachable by Compose services only. A synthetic `.invalid` `wp_mail()` probe was captured and the inbox was cleared. Guest verification began and ended with zero captured messages: this WooCommerce 11.1.2 flow compares the entered billing email on the order-received page and does not send a verification email/code. The local-only PHPMailer helper points to `mailpit:1025`; no external SMTP provider or relay was configured, and no production mail was sent. |
+| Guest upload positive | **PASS** | A verified synthetic guest selected `synthetic-cover.png` in the order page at a 375px viewport. The browser sent the upload to the local WordPress `admin-ajax.php` path (three observed AJAX responses were HTTP 200); the file then appeared in that guest order's plugin metadata and order page. Stored size was 19,575 bytes under `wp-content/uploads/wcuf/{order}/{line}/`. The persisted result is shown in the guest upload screenshot. |
+| Guest upload negative and raw file | **PARTIAL / RETURN** | A wrong email remained at the verification form; an unrelated guest order showed no upload record; raw storage URL returned HTTP 403. However, replaying the plugin's secure download link from the unrelated guest context returned HTTP 200. The link is a bearer capability after issuance, so the required unrelated-context denial did not pass. The secure URL is omitted from this document. |
+| Guest private delivery positive | **PASS** | The synthetic text fixture was attached to the guest order through the Attach Me HPOS order panel. A verified guest order page displayed the attachment, and an actual download returned HTTP 200. Downloaded size was 112 bytes; SHA-256 `BD0BB9457A549F5C96A149308A8888E3B4B19FAB77311E4D0F72CC35FFE0A115` matched the committed `poc/g2a1/fixtures/synthetic-proof.txt`. |
+| Guest private delivery negative and raw file | **PARTIAL / RETURN** | The unrelated guest order page did not list the attachment and the raw protected storage URL returned HTTP 403. Replaying the Attach Me download link in the unrelated guest context returned HTTP 200, so the required unrelated-context denial did not pass. No signed URL, order key, cookie, or token is included here. |
+| Browser-local preview | **PASS; existing accepted result re-read** | Fresh run with the optional synthetic cover showed all preview images using `blob:` sources, no HTTP request or POST after selection, no external origin, and the preview CTA reached the dummy WooCommerce product, cart, and checkout routes. No model/API call was made. |
+| Durable screenshots | **PASS** | `docs/evidence/g2a1r1/good-issue-wordpress-desktop.png`, `good-issue-wordpress-375px.png`, `guest-upload-result-375px.png`, and `guest-private-delivery-result-375px.png`. Guest screenshots use synthetic data and mask the email value. |
+
+**Current component disposition:** `ORDER_UPLOAD=RETURN` and `PRIVATE_DELIVERY=RETURN` for the strict guest-context boundary. The plugins did bind the uploaded file and attachment to their orders, and raw storage URLs failed closed. The reproducible cross-context replay of each issued guest download link is a material limitation. Do not describe either plugin as accepted for guest delivery on this evidence.
 
 ## Test object inventory
 
@@ -92,7 +113,7 @@ All three routes used the same minimal WordPress page content and Good Issue-sty
 | Storage/URL | Files were stored on the local WordPress server under `wp-content/uploads/wcuf/{order_id}/{product-line}/`. Secure links were enabled (`vanupfi_secure_links=1`) with `order_placed` association. The generated parent `.htaccess` denied direct access; a raw file URL returned HTTP 403. Authorized order page used the plugin’s order access path. |
 | Positive access | Customer A’s Order A page displayed both files. Customer B’s Order B page displayed its own uploaded file. |
 | Negative access | Customer B requested Order A and received WooCommerce “Invalid order”. A request without the order key did not reveal Order A file content. Raw static uploads URL returned 403. |
-| Guest behavior | Guest Order 130 reached WooCommerce’s email-verification gate (“verify the email address associated with the order”). No email service was available; no verification email was sent and guest upload could not be completed. This remains `RETURN` for guest-path approval. A guest order key is a bearer credential; the email-verification gate is an additional WooCommerce control before the page is reached. |
+| Guest behavior | **Historical initial G2A1 probe; superseded by the G2A1R1 closure section above.** That probe stopped at WooCommerce's guest email-comparison form before local mail capture was added. |
 | Network | Order files were intentionally uploaded to the local WordPress instance. No third-party cloud destination was configured; Dropbox/S3/Google Drive are Premium choices and were not enabled. |
 | Limitations | Two separate fields are needed for two free uploads. We did not test physical iOS/Android picker behavior, large uploads, every MIME edge case, or guest verification delivery. The plugin exposes separate Free/Premium capability boundaries rather than requiring a custom upload system for the registered-account path. |
 | Cleanup | Order files and test orders live only in the disposable project-scoped DB/files volumes, scheduled for removal at the end of this Gate. Synthetic fixtures remain under the PoC directory. |
@@ -109,7 +130,7 @@ All three routes used the same minimal WordPress page content and Good Issue-sty
 | Negative access | The same authorization check returned `false` for unrelated customer B. B could not view Order A through WooCommerce. |
 | Storage/URL | Fixture stored under `wp-content/uploads/vanquish-attach-me/128/{unguessable-folder}/synthetic-proof-….txt`; the folder `.htaccess` denies all direct requests. Raw storage URL returned HTTP 403. Customer access routes through the plugin download handler with entitlement checking; it is not merely a hidden `/uploads/...` link. No signed bearer URL is reproduced here. |
 | Download verification | Authorized UI link was visible and source/access checks were positive; the browser download event did not complete in this harness, so content delivery was not confirmed by a completed browser download. Reviewer should distinguish the access decision from a confirmed downloaded-byte response. |
-| Guest behavior | Guest Order 130 would first require WooCommerce email verification. No SMTP/sendmail service was available, so a guest attachment flow was not verified. Treat guest delivery as `RETURN`; the signed guest link is a bearer credential once issued. |
+| Guest behavior | **Historical initial G2A1 probe; superseded by the G2A1R1 closure section above.** The later verified guest download succeeded, but the issued guest download link replayed successfully in an unrelated guest context, so the current result remains `RETURN`. |
 | Free boundary | Free order attachments and protected order access worked. Customer approval and availability/expiry/download-limit controls are Premium. Free files can be kept local and are not sent to an external service unless the optional Freemius opt-in/licensing flow is enabled; opt-in was skipped. |
 | Cleanup | Attachment and metadata are confined to the disposable project-scoped WordPress/DB volumes and will be removed with this stack. |
 
@@ -120,19 +141,34 @@ All three routes used the same minimal WordPress page content and Good Issue-sty
 - The free preview used a browser `blob:` URL and made no photo upload request. Storelly’s source path is server-upload based; it did not pass the current photo-local criterion even without an external cloud request.
 - Vanquish Upload Files intentionally sent order fixtures to the local WordPress host. Vanquish Attach Me stored its fixture in the local order-bound protected folder. Neither was configured for external cloud storage.
 - Optional plugin telemetry/licensing opt-ins were declined/skipped; no plugin account or Storelly Cloud connection was made.
-- WooCommerce local mail transport was unavailable (sendmail connection refused). No customer/guest email was sent.
+- The original G2A1 run had no local mail transport (sendmail connection refused); G2A1R1 added a loopback-only Mailpit capture sink. The guest order verification flow itself sent no message, and the inbox was empty after the flow. No customer/guest email was sent externally.
 - Protected static URL probes returned HTTP 403 for the Order B Upload Files fixture and the Order A Attach Me fixture. Attach Me's `Delivery::can_access()` returned `owner_allowed=true` for Order A customer A and `unrelated_allowed=false` for customer B.
 
-## Cleanup and rollback
+## Original G2A1 cleanup plan — historical, superseded by the R1 read-back below
 
 - Active stack is the project-scoped Compose project `birthday-magazine-g2a1`; cleanup command is `docker compose -p birthday-magazine-g2a1 -f birthday-magazine-studio/poc/g2a1/compose.yaml down --volumes`.
 - Remove only the exact temporary plugin/theme ZIPs and WooCommerce split download parts under `birthday-magazine-studio/poc/g2a1/packages/` after retaining source/version/hash evidence. Do not use global Docker prune or remove any other project’s resources.
 - Disposable users, orders, uploaded files, local options and dummy product are in this stack’s data volumes and are removed by project-scoped `down --volumes`.
 - Keep only the small PoC source and synthetic fixtures in the repository for Reviewer inspection. No changes were made to `REVIEWER_HANDOFF.md` and no commit was created.
 
-## Reviewer decision required
+## G2A1R1 cleanup and final runtime read-back
+
+- Executed `docker compose -p birthday-magazine-g2a1r1 -f birthday-magazine-studio/poc/g2a1/compose.yaml down --volumes` after capturing evidence. Docker confirmed removal of the three project containers, both named project volumes, and the default network.
+- Read-back after cleanup: `birthday-magazine-g2a1r1` containers/volumes/networks = `0/0/0`; the earlier typo-scoped project `birthday-magazine-g2a1` also has `0/0/0` resources.
+- Docker inventory returned to the pre-execution counts: 40 containers, 87 volumes, and 21 networks. The pre-execution inventory digest was `95F7B566D566F6298A4ECC9E346EE00ED127CE5BAA60BFAD97CDFA660414AE61`; no broad Docker prune command was run, and cleanup targeted only this PoC's Compose labels.
+- `poc/g2a1/.tmp-g2a1r1/` (including extracted source, browser profiles/screens, private seed data, and generated diagnostics) and `poc/g2a1/packages/` (temporary ZIPs) were removed. The durable evidence screenshots and deliberate local Mailpit Compose/MU-plugin wiring remain.
+- Mailpit inbox was empty (`total=0`) immediately before teardown. No production or external mail provider was configured.
+- No VPS, public domain, Cloudflare, shared infrastructure, payment, AI/API, or paid-plugin actions were used. `REVIEWER_HANDOFF.md` was not changed.
+
+## Original G2A1 reviewer prompts — historical, superseded by the R1 return below
 
 1. Decide whether Route C is preferred for continued WordPress/WooCommerce MVP work, noting the exact A/B starter-site imports were intentionally not run.
 2. Decide whether Upload Files is acceptable for registered-account uploads while the guest flow remains unverified, or return for a test environment with local email capture.
 3. Decide whether Attach Me is acceptable for registered-account private delivery while the guest flow and completed file download remain unverified, or return for a test environment with local email capture and byte-level download confirmation.
 4. Keep this Gate separate from G2A2. This evidence is not a Reviewer PASS and does not freeze product specifications.
+
+## Current G2A1R1 reviewer decision required
+
+1. Decide whether to reject or replace Vanquish Upload Files for guest orders because its issued secure file link returned HTTP 200 when replayed from an unrelated guest context.
+2. Decide whether to reject or replace Vanquish Attach Me for guest private delivery because its issued attachment link also returned HTTP 200 when replayed from an unrelated guest context, despite the raw storage URL returning HTTP 403.
+3. Keep this Gate at Reviewer. Do not start G2A2 until the Reviewer resolves the two guest-link access-control failures.
