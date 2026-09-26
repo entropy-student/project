@@ -4542,3 +4542,35 @@ STOP_AT_REVIEWER=YES
 ```
 
 The remote payload contained only bounded read-only identity/container/network/UFW/Caddy-metadata and SQL SELECT checks; no lifecycle or write command was included. Because no successful remote result was received, no runtime, DB, bootstrap, or application PASS is claimed. Per the Gate stop rule, no further remote operation was made.
+
+## K6_PHASE_D_R6R1_SSH_TRANSPORT_RECOVERY_AND_BOOTSTRAP_RESUME — STOP_AT_REVIEWER (2026-09-26)
+
+```text
+GATE=K6_PHASE_D_R6R1_SSH_TRANSPORT_RECOVERY_AND_BOOTSTRAP_RESUME
+RESULT=RETURN_REVIEWER_D_R6R1_REMOTE_IDENTITY_PROBE_INVALID
+LOCAL_IDENTITY_REFERENCE_CHECK=PASS
+LOCAL_PUBLIC_FINGERPRINT_MATCH=PASS
+LOCAL_KNOWN_HOSTS_PIN_CHECK=PASS
+SSH_CANONICAL_PROBE=NATIVE_EXIT_0;EXACTLY_ONE_ATTEMPT
+SSH_FAILURE_CLASS=NONE
+SSH_HOST_KEY_PRESENTED=YES
+SSH_HOST_KEY_MATCH=YES
+SSH_AUTHENTICATED_TARGET=ops@2.24.193.133
+REMOTE_HOSTNAME=srv1970241
+REMOTE_IDENTITY_VERIFICATION=INCOMPLETE
+PROBE_IMPLEMENTATION_NOTE=Username field queried the name for UID 0 rather than the effective SSH process identity; reported root@srv1970241 is not accepted as proof of the SSH user's identity.
+D_R6_READINESS=NOT_RUN
+WORDPRESS_BOOTSTRAP=NOT_RUN
+HOME_SITEURL_SCALAR_UPDATE=NOT_RUN
+REMOTE_APPLICATION_OR_DOCKER_CHECKS=0
+REMOTE_WRITES=0
+CONTAINER_LIFECYCLE_ACTIONS=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+SHARED_INFRA_WRITES=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+POST_RETURN_REMOTE_OPERATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+The strict SSH transport succeeded once with the recorded account and matching pinned host key. The remote probe printed the hostname, but its username check used UID 0 explicitly, so it could not certify the effective SSH user. The probe exited before Docker/application checks and made no remote changes. The one-attempt limit is exhausted; no retry or cleanup was performed. Reviewer direction is required before any further remote operation.
