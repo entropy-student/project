@@ -4390,3 +4390,56 @@ PAYMENT_ACTIONS=0
 PAYPAL_LIVE=NO
 STOP_AT_REVIEWER=YES
 ```
+
+
+## K6_PHASE_D_R4_DETERMINISTIC_FILTERED_IMPORT_RETRY — RETURN_D_R4_WORDPRESS_CORE_FILES_MISSING (2026-09-26)
+
+Authority read before execution: canonical VPS Project Governance v0.1.6 and active SSH/Secret, Target Host Reality, Storage Layout, and Governance Source Policy addenda; current Mini Craft Reviewer Handoff, Storage Manifest, D-R4 Reviewer Decision and Execution Pack, latest Evidence/Handoff, and the unique local Shared VPS Handoff. Strict recorded SSH identity/known_hosts fingerprint checks passed; one bounded strict SSH session was used for the fresh probe and execution. SSH login was ops; privileged probe/runner executed through sudo -n.
+
+### Fresh pre-import state and immutable source
+
+- Target: srv1970241 / Ubuntu 24.04; root filesystem 12% used at preflight.
+- At entry: existing MariaDB container running/healthy; WordPress stopped; MariaDB published-port binding 3306/tcp=null; WordPress 80/tcp=null; WordPress attached to the existing Mini Craft database and shared edge networks as previously configured. Shared Caddy remained the only host 80/443 owner; no shared network or ingress configuration was changed.
+- Accepted K5 SQL source /srv/backups/mini-craft-night-kit/database-post-cleanup.sql: 5,286,165 bytes; SHA-256 BB6A9F56C532C395B89089FC460FB5F20A038A012C84DDD210DCCF5E1AB4C602 (PASS). The source was opened read-only and not modified.
+- Deterministic lexical scan: 246 source statements; exactly one unguarded CREATE DATABASE wordpress; one USE wordpress; 52 CREATE TABLE targets; 52 DROP TABLE IF EXISTS targets exactly matching the CREATE set; 36 INSERT statements; zero prohibited account/database statements; zero schema-qualified DDL. INSERT values/content were not emitted.
+- The in-memory filtered byte stream was formed by removing exactly the statement byte span, then independently reparsed. All retained statement byte slices matched source byte-for-byte and in order; CREATE/DROP table sets, INSERT count and USE wordpress remained unchanged; no new statement was introduced. Filtered length 5,286,040 bytes; SHA-256 78d0d25abceabeec37a663fca482d2ba03ea62d7345be0fd83999a47c21d17a8. The stream existed only in runner memory and was piped directly to the MariaDB client; no derived SQL file was persisted.
+
+### Single import and verification
+
+Immediately before import, root and app identities again saw wordpress = 0 tables; wp_options absent; only non-system schema was wordpress. Existing DB Secret files were used only in process memory to create mode-0600 client option files on MariaDB /dev/shm for authentication. Secret values were not emitted, hashed, logged, or recorded; the temporary option files were removed and absence verified after the DB readback.
+
+FILTERED_STATEMENT_REMOVED=CREATE_DATABASE_WORDPRESS_EXACTLY_ONE
+FILTERED_STREAM_INVARIANTS=PASS
+FILTERED_STREAM_SHA256=78d0d25abceabeec37a663fca482d2ba03ea62d7345be0fd83999a47c21d17a8
+IMPORT_RETRY_COUNT=1
+IMPORT_NATIVE_EXIT=0
+POSTIMPORT_ROOT_TABLE_COUNT=52
+POSTIMPORT_ROOT_TABLE_SET_MATCH=PASS
+POSTIMPORT_APP_TABLE_COUNT=52
+POSTIMPORT_APP_TABLE_SET_MATCH=PASS
+WP_OPTIONS_PRESENT=YES
+NON_SYSTEM_SCHEMA_SET_MATCH=PASS
+MARIADB_HEALTH=PASS
+
+No --force, database drop/recreate, datadir reset, second import, or source SQL mutation occurred.
+
+### WordPress continuation and stop boundary
+
+After DB verification, the existing private WordPress service alone was started with the explicit production Compose file (compose start wordpress; native command exit 0). It remained running, restart count 0, with no host-port binding; MariaDB remained running/healthy, with no published port. The first WordPress bootstrap probe exited 255 with a PHP fatal: wp-load.php could not require /var/www/html/wp-includes/version.php because the file was reported absent. The command sequence stopped there; no follow-up route probe, file inspection, cleanup, or container stop was performed after the failure.
+
+RESULT=RETURN_D_R4_WORDPRESS_CORE_FILES_MISSING
+WORDPRESS_BOOTSTRAP=FAIL;NATIVE_EXIT=255
+INSTALL_REDIRECT=NOT_CHECKED
+HOME_SITEURL_SCALAR_UPDATE=NOT_EXECUTED
+FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
+MARIADB=RUNNING_HEALTHY
+WORDPRESS=RUNNING_BUT_BOOTSTRAP_FAILED
+PUBLIC_INGRESS_CHANGE=0
+SHARED_INFRA_WRITES=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+PAYPAL_LIVE=NO
+PAYMENT_ACTIONS=0
+POST_RETURN_VPS_OPERATIONS=0
+STOP_AT_REVIEWER=YES
+
+No public route, DNS, Caddy, cloudflared, UFW, SSH, Docker daemon, or other-project change was made. No PayPal action or payment occurred. Reviewer direction is required before further WordPress inspection or recovery.
