@@ -10,7 +10,7 @@
 
 - Final goal: let a buyer turn photos and structured answers into a polished, personalized birthday magazine PDF without designing it manually.
 - Accepted product direction: browser-local zero-model-cost preview before payment; full personalized production only after confirmed payment and complete intake.
-- Current business goal: choose the lowest-custom-work WordPress frontend foundation and freeze the MVP UI/component path before AI/PDF implementation.
+- Current business goal: first prove which WordPress/frontend/upload/private-delivery components are safely reusable; then freeze the exact MVP product contract before AI/PDF implementation.
 - Current scope: birthday magazine only. Family recipe book remains a separate parked idea.
 
 ## 2. Authority / Source of Truth
@@ -62,8 +62,9 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 ```text
 P0  Governance Intake / Truth Reconciliation             ✅ PASS
 G1  Product / Offer Baseline                            ✅ PASS (Owner decisions; not transaction proof)
-G2A Frontend Foundation + Component PoC + MVP UI Freeze ← CURRENT
-G2B Local AI/PDF Solution Proof                         ⏳ HOLD
+G2A1 Frontend + Reusable Component Feasibility PoC      ← CURRENT
+G2A2 MVP Product Contract Freeze                        ⏳ HOLD
+G2B  Local AI/PDF Solution Proof                        ⏳ HOLD
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
@@ -101,61 +102,43 @@ Important limitation: the Owner reports demand as already validated, but the und
 - Repeatability/economics: unknown.
 - Production website: not built/deployed.
 
-## 6. Current Gate — G2A Frontend Foundation + Component PoC + MVP UI Freeze
+## 6. Current Gate — G2A1 Frontend + Reusable Component Feasibility PoC
 
-Formal execution contract: [docs/G2A_FRONTEND_COMPONENT_POC.md](./docs/G2A_FRONTEND_COMPONENT_POC.md)
+Formal execution contract: [docs/G2A1_COMPONENT_FEASIBILITY_POC.md](./docs/G2A1_COMPONENT_FEASIBILITY_POC.md)
 
 ### Goal
 
-Compare three local/test-only routes and select the lowest-custom-work foundation that preserves the core birthday-magazine experience:
+Before polishing the UI or building AI/PDF, prove what can actually be reused safely:
 
-1. Kadence Jewelry Shop + Storelly;
-2. Blocksy Modern Shop + Storelly;
-3. existing Good Issue prototype as the custom-reference baseline.
+1. frontend foundation: Kadence vs Blocksy vs Good Issue ported into WordPress;
+2. zero-token/browser-local free preview: Storelly vs Good Issue fallback;
+3. order-bound photo upload: Vanquish Upload Files or equivalent candidate;
+4. private proof/final delivery: Vanquish Attach Me / Woo order-bound candidate.
 
-### Critical experience to preserve
+The PoC should be minimal. Do not build three full websites.
+
+### Current free-preview boundary
 
 ```text
-simple inputs
-→ immediate cover + 1–2 spread magazine preview
-→ zero model Token
-→ clear US$39.99 unlock path
-→ WooCommerce-compatible checkout path
+name / age / style
++ optional ONE local cover photo
+→ immediate cover + 1–2 spread preview
+→ 0 model Token
 ```
 
-### Allowed scope
+The existing Good Issue prototype's "up to six photos + memory" free step is reference behavior only and is not the current MVP requirement.
 
-- local/test WordPress PoC;
-- free/open-source theme/plugin installation needed for comparison;
-- synthetic/demo photos only;
-- minimal CSS/JS adaptation;
-- desktop + 375px screenshots;
-- component-fit and custom-code comparison;
-- Reviewer documentation updates.
+### Next Gate
 
-### Forbidden scope
+After G2A1 PASS:
 
-- PayPal connection or real payment;
-- AI/model API calls;
-- production customer uploads;
-- Secret entry;
-- paid plugin purchase;
-- VPS/domain/public production deployment;
-- full 12-page generation engine.
+`G2A2_MVP_PRODUCT_CONTRACT_FREEZE`
 
-### Acceptance criteria
-
-1. the three routes have comparable evidence, or a route is specifically proven infeasible;
-2. selected foundation preserves zero-token local preview;
-3. selected foundation remains WooCommerce-compatible;
-4. selected foundation can carry the Good Issue editorial visual language;
-5. custom-code and plugin-lock-in tradeoffs are explicit;
-6. mobile 375px behavior is verified;
-7. no payment/AI/customer-data production action occurs.
+G2A2 freezes page count, photo count, exact question schema, page map, proof/revision policy, QA and data handling before G2B is authorized.
 
 ### Rollback
 
-All G2A changes are local/test and Git-reversible. No production resource is in scope.
+All G2A1 changes are local/test and Git-reversible. No production resource is in scope.
 
 ## 7. Confirmed Facts
 
@@ -178,9 +161,9 @@ All G2A changes are local/test and Git-reversible. No production resource is in 
 
 - archived details of the Owner-reported demand validation;
 - exact buyer segment within the US market;
-- final page count and photo-count limit;
-- final question set/content schema;
-- included revision/regeneration count;
+- final page count and paid photo-count limit (must be frozen in G2A2);
+- final question set/content schema (must be frozen in G2A2);
+- included revision/regeneration count (must be frozen in G2A2);
 - seller merchant/bank account country;
 - PayPal merchant/account eligibility, settlement currency behavior and actual fees for the eventual seller account;
 - generator/model/provider selection;
@@ -220,15 +203,15 @@ All G2A changes are local/test and Git-reversible. No production resource is in 
 
 ## 12. Next Step
 
-- Reviewer next action: dispatch/review G2A using `docs/G2A_FRONTEND_COMPONENT_POC.md`.
-- Executor next action: build the three local PoCs, capture comparable evidence, update `EXECUTION_EVIDENCE.md` + `EXECUTOR_HANDOFF.md`, and stop at Reviewer.
-- Owner intervention required: **YES only after technical comparison**, to approve the chosen visual foundation before G2B. No account/payment/Secret action is required now.
+- Reviewer next action: dispatch/review G2A1 using `docs/G2A1_COMPONENT_FEASIBILITY_POC.md`.
+- Executor next action: run the minimal component feasibility probes, capture evidence, update `EXECUTION_EVIDENCE.md` + `EXECUTOR_HANDOFF.md`, and stop at Reviewer.
+- Owner intervention required: **NO during G2A1**. After G2A1 technical PASS, G2A2 requires Owner approval of subjective visual/product/revision decisions. No account/payment/Secret action is required now.
 
 ## 13. Status Summary
 
 - Overall progress: product direction, clickable sample, commerce baseline, PayPal path and free/paid Token boundary are fixed; production system does not yet exist.
 - Final goal: PayPal-paid personalized birthday magazine PDF workflow.
-- Current Gate: G2A frontend foundation + component PoC + MVP UI freeze.
-- This round completed: reusable technical route frozen; generic commerce/upload/payment/queue/delivery capabilities are assigned to mature WordPress/WooCommerce components where possible; custom work is restricted to the magazine-generation core.
-- Next: run the three-route local frontend/component PoC, select the foundation, then enter G2B local AI/PDF solution proof.
+- Current Gate: G2A1 frontend + reusable component feasibility PoC.
+- This review corrected four execution gaps: free-preview input drift, missing upload/private-delivery component tests, unresolved MVP content contract before G2B, and ambiguity around Good Issue as a standalone frontend.
+- Next: G2A1 component feasibility → G2A2 MVP product contract freeze → G2B local AI/PDF solution proof.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
