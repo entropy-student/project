@@ -1,0 +1,91 @@
+{
+  "timestamp_utc": "2026-09-26T18:31:31.067394+00:00",
+  "runner": {
+    "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "image": "ubuntu24",
+    "image_version": "20260920.314.1",
+    "name": "GitHub Actions 1000000082",
+    "arch": "x86_64"
+  },
+  "cpu": {
+    "model": "AMD EPYC 7763 64-Core Processor",
+    "logical_processors": 4
+  },
+  "ram": {
+    "total_bytes": 16766414848,
+    "available_before_bytes": 15809798144,
+    "swap_total_before_bytes": 3221221376,
+    "swap_free_before_bytes": 3221221376,
+    "effective_headroom_after_preflight_bytes": 19031019520
+  },
+  "disk": {
+    "root_total_bytes": 154894188544,
+    "root_free_before_bytes": 92343398400,
+    "root_free_after_preflight_bytes": 92343398400
+  },
+  "python": {
+    "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "architecture": "64bit"
+  },
+  "docker": {
+    "server_version": {
+      "exit": 0,
+      "stdout": "28.0.4",
+      "stderr": ""
+    },
+    "compose": {
+      "exit": 0,
+      "stdout": "2.38.2",
+      "stderr": ""
+    },
+    "info": {
+      "exit": 0,
+      "stdout": "Ubuntu 24.04.5 LTS / x86_64",
+      "stderr": ""
+    }
+  },
+  "gpu": {
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: 'nvidia-smi'"
+  },
+  "network": {
+    "pypi_paddleocr": {
+      "reachable": true,
+      "status": 200
+    },
+    "pypi_transformers": {
+      "reachable": true,
+      "status": 200
+    },
+    "pytorch_cpu_wheels": {
+      "reachable": true,
+      "status": 200
+    },
+    "huggingface_model": {
+      "reachable": true,
+      "status": 200
+    },
+    "zenodo_dataset": {
+      "reachable": true,
+      "status": 200
+    },
+    "paddle_model_source": {
+      "reachable": true,
+      "status": 403
+    },
+    "docker_registry": {
+      "reachable": true,
+      "status": 401
+    },
+    "wordpress_plugin_directory": {
+      "reachable": true,
+      "status": 200
+    }
+  },
+  "temporary_swap": {
+    "attempted": false,
+    "bytes": 0,
+    "path": null
+  },
+  "required_network_reachable": true,
+  "resource_blocked": false
+}
