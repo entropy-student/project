@@ -4742,3 +4742,81 @@ RESULT=RETURN_REVIEWER_D_R6R3R1_PPCP_MODE_READBACK_UNAVAILABLE
 Phase 0 passed before the sole strict SSH invocation. The request used the recorded identity and normal known_hosts with strict checking; the presented host key matched the accepted pin. The one private anonymous Checkout GET did not follow redirects and returned the accepted same-canonical-origin Cart redirect. No cart/session setup, order, payment, provider request, or state write was performed.
 
 The accepted PPCP common-state route returned connected=YES and Sandbox markers=YES; however, the bounded authoritative onboarding GET did not yield a confirmed `completed` boolean. This Gate therefore cannot close private application validation. No retry, alternative PPCP probe, or further remote operation was performed after the RETURN.
+
+
+## K6_PHASE_E_SERIALIZED_SAFE_URL_MIGRATION — RETURN (2026-09-26)
+
+Authority re-read from current GitHub: canonical VPS Project Governance v0.1.6 and active SSH/target/storage references, current Mini Craft Reviewer Handoff and Storage Manifest, Phase E Reviewer Decision and Execution Pack, latest Evidence/Handoff, and the unique local Shared VPS Handoff. No Secret values, hashes, private-key contents, or credential-bearing config values were accessed.
+
+Fresh strict SSH continuity probe:
+```text
+SSH_NATIVE_EXIT=0
+SSH_HOST_KEY_MATCH=YES
+REMOTE_IDENTITY=ops@srv1970241
+WORDPRESS_RUNTIME=RUNNING;RESTART_COUNT=0
+MARIADB_RUNTIME=RUNNING;HEALTH=HEALTHY;RESTART_COUNT=0
+WORDPRESS_HOST_PORT=NONE
+DB_PUBLIC_PORT=NONE
+ROOT_DISK_USED_PERCENT=12
+ROOT_DISK_AVAILABLE_BYTES=91357675520
+RAM_AVAILABLE_BYTES=5611958272
+MINICRAFT_PUBLIC_INGRESS=NONE
+```
+
+Image/tool seal:
+```text
+APP_IMAGE_IDENTITY=PASS_EXACT_FROZEN_LINUX_AMD64_DIGEST
+APP_IMAGE_CONFIG_REF_AND_REPODIGEST=PASS
+WPCLI_IMAGE=docker.io/library/wordpress@sha256:aa31002b5ae67cfff25817c8f4379b0e84aa4f8cc9637c83e16757d435adaf49
+WPCLI_IMAGE_PULL=PULLED_EXACT_DIGEST;PULL_NATIVE_RESULT=SUCCESS
+WPCLI_IMAGE_IDENTITY=PASS_EXACT_LINUX_AMD64_REPODIGEST
+```
+
+An initial Executor-side app-digest literal omitted four characters from the GitHub-frozen digest; the exact comparison correctly stopped before helper creation. It was corrected to the full 64-hex Reviewer value. Fresh container config and RepoDigest then matched the frozen digest exactly; this was a command-copy error, not runtime image drift. No app image was pulled or changed.
+
+A disposable extraction attempt successfully copied only `/usr/local/bin/wp` from the exact WP-CLI image. A disposable WordPress helper was then started from the accepted app image on the Mini Craft database-private network, with no host port, a 512MiB docroot tmpfs, the current wp-content bind read-only, and the nine intended WordPress secret file mounts read-only (the command did not include db-root). The official entrypoint did not reach the bounded core-ready check; the helper attempt returned before WP-CLI/DB validation. The helper, extraction container, and project-scoped temporary binary/path were removed. Final read-only reconciliation confirmed:
+```text
+EXTRACTION_CONTAINER=PRESENT_NONE
+MIGRATION_HELPER=PRESENT_NONE
+PROJECT_TEMP_TOOL_PATH=PRESENT_NONE
+WORDPRESS_RUNTIME=RUNNING;RESTART_COUNT=0
+MARIADB_RUNTIME=RUNNING;HEALTH=HEALTHY
+HOST_PORT_BINDINGS=NONE
+```
+
+No WP-CLI command was run against the database. The following were therefore not reached and are not claimed:
+```text
+WPCLI_VERSION=UNVERIFIED_HELPER_NOT_READY
+MIGRATION_HELPER=RETURN_CORE_READY_TIMEOUT
+OLD_ORIGIN_A_DRYRUN_COUNT=NOT_RUN
+OLD_ORIGIN_B_DRYRUN_COUNT=NOT_RUN
+PRE_MIGRATION_BACKUP=NOT_CREATED_NOT_REACHED
+OLD_ORIGIN_A_REPLACED=NOT_RUN
+OLD_ORIGIN_B_REPLACED=NOT_RUN
+POST_MIGRATION_OLD_ORIGIN_A=NOT_RUN
+POST_MIGRATION_OLD_ORIGIN_B=NOT_RUN
+HOME_SITEURL=NOT_REVERIFIED_THIS_GATE;D_R6_ACCEPTED_TARGET_REMAINS_BASELINE
+WORDPRESS_PRIVATE_ROUTES=NOT_RUN
+PPCP_STATE=NOT_REQUERIED;ACCEPTED_D_R6R3R1_BASELINE_REMAINS
+WORDPRESS_RECENT_FATALS=NOT_RECHECKED
+```
+
+The D-R6 accepted 52-table baseline was not re-imported or rewritten. Since helper readiness failed, no search-replace dry-run, pre-migration backup, or migration was attempted:
+```text
+MARIADB_TABLE_SET=UNCHANGED_BY_THIS_GATE;NO_DB_COMMANDS
+GUID_MUTATIONS=0
+DB_WRITES=0
+WORDPRESS_RESTART_RECREATE=0
+PUBLIC_INGRESS_CHANGE=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+SHARED_INFRA_WRITES=0
+TEMP_HELPERS_CLEANED=PASS
+CACHED_WPCLI_IMAGE=RETAINED_AS_AUTHORIZED
+FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
+RESULT=RETURN_REVIEWER_E_MIGRATION_HELPER_INITIALIZATION_FAILED
+STOP_AT_REVIEWER=YES
+```
+
+Reviewer follow-up is required to resolve the disposable helper's official-entrypoint/core initialization constraint while preserving the read-only wp-content bind. No public ingress, webhook/provider action, payment, or Live action was entered.
