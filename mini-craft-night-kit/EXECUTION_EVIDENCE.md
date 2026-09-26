@@ -4443,3 +4443,66 @@ POST_RETURN_VPS_OPERATIONS=0
 STOP_AT_REVIEWER=YES
 
 No public route, DNS, Caddy, cloudflared, UFW, SSH, Docker daemon, or other-project change was made. No PayPal action or payment occurred. Reviewer direction is required before further WordPress inspection or recovery.
+
+---
+
+## K6_PHASE_D_R5_WORDPRESS_CORE_RUNTIME_DIAGNOSIS_AND_CONDITIONAL_RECREATE — RETURN (2026-09-26)
+
+Authority read: canonical GitHub `entropy-student/spike.skill/vps-project-governance` v0.1.6 and current active addenda (Governance Handoff, SSH/Delegated Secret Operations rev2, Target Host Reality rev2, Storage Layout rev1, Governance Source Policy rev1); Mini Craft current Reviewer Handoff, Storage Manifest, D-R5 Decision/Execution Pack, latest Evidence/Handoff, and unique local Shared VPS Handoff. The recorded identity/public fingerprint and normal known_hosts pin matched. Strict SSH to `ops@2.24.193.133:22` succeeded; remote identity was `ops@srv1970241`, Ubuntu 24.04.5 LTS. No trust change or alternate client/key was used.
+
+### Read-only runtime diagnosis
+
+The explicit production Compose file was rendered/read in memory for metadata-only inspection; resolved config environment values were not emitted. The container/image/mount state was read through `sudo -n docker`; no start/stop/recreate/pull/build or database query/import occurred.
+
+```text
+WORDPRESS_IMAGE_REF=docker.io/library/wordpress@sha256:f5413918c7858c97bb7d2b65f68d3ed38a97472deba9eb58eb3e1ab1eb2c4beb
+WORDPRESS_IMAGE_DIGEST=PASS
+WORDPRESS_PLATFORM=linux/amd64
+WORDPRESS_ENTRYPOINT=["docker-entrypoint.sh"]
+WORDPRESS_COMMAND=["apache2-foreground"]
+WORDPRESS_ENTRYPOINT_COMMAND=PASS
+WORDPRESS_TMPFS_SPEC=rw,nosuid,nodev,size=512m
+WORDPRESS_TMPFS_SIZE_BYTES=536870912
+WORDPRESS_TMPFS_MOUNT=PASS
+WORDPRESS_WP_CONTENT_BIND=PASS;/srv/data/mini-craft-night-kit/wp-content -> /var/www/html/wp-content
+WORDPRESS_SECRET_MOUNTS=PASS;9_OF_9_READ_ONLY
+WORDPRESS_DB_ROOT_MOUNTED=NO
+WORDPRESS_CONTAINER=RUNNING;RESTARTS=0;HOST_PORTS=NONE
+MARIADB_CONTAINER=RUNNING;HEALTHY
+/usr/src/wordpress/wp-includes/version.php=PRESENT;1103_BYTES;0644;33:33
+/usr/src/wordpress/index.php=PRESENT;405_BYTES;0644;33:33
+/var/www/html/wp-includes/version.php=PRESENT;1103_BYTES;0644;33:33
+/var/www/html/index.php=PRESENT;405_BYTES;0644;33:33
+/var/www/html/wp-content=PRESENT;DIRECTORY;33:33
+WORDPRESS_RECREATE_COUNT=0
+STARTUP_LOG_CLASSIFICATION=NO_MATCHES_FOR_PHP_FATAL_ENTRYPOINT_COPY_PERMISSION_DENIED_INSTALLER_OR_DB_APACHE_ERROR
+```
+
+The first diagnostic draft exited before executing its Python probe because of a syntax error (SSH exit 1; no Docker command ran). A subsequent read-only checker initially classified the accepted `512m` tmpfs notation as mismatch because it expected a raw byte count (checker exit 43); a corrected unit-aware probe converted it to exactly 536,870,912 bytes and exited 0. This was an executor-side false-negative, not target runtime drift. The corrected strict read-only probe and separate host identity probe exited 0.
+
+### Branch decision / stop
+
+Fresh read-back differs from D-R4's first failed bootstrap observation: the official image source core and both runtime core files are now present, while image digest, linux/amd64 platform, entrypoint/command, tmpfs, wp-content bind, nine read-only Secret mounts, no-db-root boundary, no-host-port boundary, running WordPress and healthy MariaDB all match the accepted contract. The runtime core is present **before any recreate**, so the D-R5 conditional “recreate only if runtime core is missing/incomplete” is not triggered. No WordPress recreate was performed.
+
+The D-R5 Decision/Pack gives post-bootstrap URL/route/WooCommerce checks only after its authorized conditional recreate path. Since that precondition no longer holds, this Executor did not run WordPress bootstrap/installer checks, did not update `home` or `siteurl`, and did not query or modify the accepted database. These remaining actions need Reviewer reconciliation for the newly observed state.
+
+```text
+RESULT=RETURN_REVIEWER_D_R5_RUNTIME_CORE_PRESENT_BEFORE_RECREATE_RECONCILIATION_REQUIRED
+WORDPRESS_INSTALL_REDIRECT=NOT_CHECKED
+HOME_SITEURL_SCALAR_UPDATE=NOT_EXECUTED
+WORDPRESS_INTERNAL_PRIMARY_ROUTES=NOT_CHECKED
+WOOCOMMERCE_CORE_STATE=NOT_CHECKED
+MARIADB_RESTORE_STATE=PRIOR_ACCEPTED_52_TABLES;NOT_REQUERIED
+FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
+VPS_WRITES=0
+DOCKER_MUTATIONS=0
+SHARED_INFRA_WRITES=0
+PUBLIC_INGRESS_CHANGE=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+PAYPAL_LIVE=NO
+PAYMENT_ACTIONS=0
+POST_RETURN_VPS_OPERATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+No post-classification remote operation or cleanup was performed. No Secret/config/file contents were read or emitted.
