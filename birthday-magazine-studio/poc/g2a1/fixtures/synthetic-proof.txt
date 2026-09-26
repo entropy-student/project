@@ -1,0 +1,2 @@
+Synthetic proof fixture for G2A1 local test only.
+No customer content, identity data, or real order evidence.
