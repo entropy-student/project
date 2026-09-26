@@ -18,9 +18,10 @@
 | `G1_US_FIRST_EXPERIMENT.md` | US-first offer/experiment support | Supporting design; Handoff defines current Gate |
 | `TECHNICAL_ROUTE.md` | Reuse-vs-custom architecture / implementation sequence | **Current supporting architecture** |
 | `G2A_FRONTEND_COMPONENT_POC.md` | Legacy combined G2A pointer | **SUPERSEDED — DO NOT EXECUTE** |
-| `REVIEWER_DECISION_G2A1_RETURN.md` | Reviewer decision on G2A1 evidence | RETURN decision / accepted partial facts |
-| `G2A1R1_EVIDENCE_CLOSURE.md` | Narrow G2A1 evidence-closure execution contract | **CURRENT GATE CONTRACT — AUTHORIZED** |
-| `G2A1_COMPONENT_FEASIBILITY_POC.md` | Frontend + reusable component feasibility | Executed; overall PASS not granted |
+| `REVIEWER_DECISION_G2A1_PASS.md` | Final Reviewer decision for G2A1 | **CURRENT REVIEW DECISION — PASS** |
+| `REVIEWER_DECISION_G2A1_RETURN.md` | Earlier Reviewer return | Historical; superseded by final PASS decision |
+| `G2A1R1_EVIDENCE_CLOSURE.md` | G2A1 evidence-closure execution contract | Executed / closed |
+| `G2A1_COMPONENT_FEASIBILITY_POC.md` | Frontend + reusable component feasibility | Executed / **PASS at parent Gate** |
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **NEXT / HOLD** |
 | `G1_TWO_STEP_AI_PRODUCT_FLOW.md` | Two-step product-flow design | Current supporting design where consistent with Handoff |
 | `ACQUISITION_GROWTH_PLAN.md` | Validation/acquisition plan | Supporting plan; not evidence of actual transactions |
