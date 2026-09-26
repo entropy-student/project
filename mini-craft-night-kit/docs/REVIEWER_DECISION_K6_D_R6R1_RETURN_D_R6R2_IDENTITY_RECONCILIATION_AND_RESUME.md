@@ -67,12 +67,14 @@ Use the same canonical strict SSH contract:
 - StrictHostKeyChecking=yes
 - bounded timeout
 
-At the very beginning of the remote payload, **before any sudo**:
+At the very beginning of the remote payload, **before any sudo and before entering any sudo-owned wrapper/subshell/helper**:
 
 1. run `whoami`;
 2. run `id -un`;
 3. run `id -u`;
 4. run `hostname`.
+
+These four commands must execute as the authenticated SSH session itself. Do not prefix them with `sudo`, do not evaluate them inside a root shell, and do not derive the login identity from UID 0 metadata. Emit only the bounded identity markers needed for Evidence.
 
 Require:
 
@@ -107,10 +109,16 @@ If Phase A passes, continue the already-authorized D-R6 workflow in the same Gat
 2. bounded WordPress bootstrap;
 3. WordPress installed-state true;
 4. no PHP fatal;
-5. update exactly scalar `home` and `siteurl` to:
-   `https://minicraft.spikersun.com`;
-6. verify exact values;
-7. private/internal route validation:
+5. before any scalar DB write, use the existing application DB credential through the already-reviewed tmpfs-only client-option pattern; Secret values must not enter argv/env/logs;
+6. lock/read exactly the two `wp_options` rows `home` and `siteurl` and require exact cardinality=2;
+7. accepted pre-state is either:
+   - both values = `http://localhost:8093`; or
+   - both values already = `https://minicraft.spikersun.com`.
+   A mixed or unexpected pre-state -> `RETURN_REVIEWER_D_R6R2_ORIGIN_STATE_DRIFT` before write;
+8. if both are already target, perform no write and record `HOME_SITEURL_SCALAR_UPDATE=ALREADY_TARGET_NO_WRITE`;
+9. otherwise update exactly those two rows inside one DB transaction, verify both exact target values before commit, then commit. Any pre-commit mismatch/nonzero -> rollback and RETURN;
+10. no broad search/replace and no serialized-field mutation;
+11. private/internal route validation:
    - /
    - /shop/
    - /product/mini-craft-night-kit/
@@ -118,22 +126,29 @@ If Phase A passes, continue the already-authorized D-R6 workflow in the same Gat
    - /checkout/
    - /my-account/
    - /wp-json/
-8. verify wp-content/media state;
-9. verify WooCommerce core state;
-10. verify PayPal remains Sandbox and Live disabled, metadata/config-state only;
-11. verify WordPress restart count stable and recent fatal classification clean;
-12. retain:
+12. verify wp-content/media state;
+13. verify WooCommerce core state;
+14. verify PayPal remains Sandbox and Live disabled using boolean/state metadata only; do not emit provider credentials/options;
+15. verify WordPress restart count stable and recent fatal classification clean;
+16. retain:
    `FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED`.
 
 ## SSH invocation scope
 
 The new Gate authorizes one fresh canonical strict SSH session/invocation for identity proof plus the conditional D-R6 resume payload.
 
-If transport fails before authenticated identity is proven:
+The SSH wrapper must retain only a local temporary stderr diagnostic long enough to classify failure, then remove it within the same bounded wrapper; raw stderr is not committed.
+
+If transport fails before any DB write:
 - record redacted classification;
 - RETURN;
 - do not use alternate key/account/trust;
 - do not retry inside this Gate.
+
+If transport becomes ambiguous after the scalar DB transaction may have begun or committed, return:
+`RETURN_REVIEWER_D_R6R2_REMOTE_WRITE_OUTCOME_AMBIGUOUS`
+
+Do not retry or attempt a compensating write. The next Reviewer Gate must first perform read-only reconciliation.
 
 ## Hard boundaries
 
@@ -148,6 +163,7 @@ No:
 - full serialized URL migration;
 - Caddy/cloudflared/DNS/UFW/Docker-daemon/shared-network mutation;
 - host port/public ingress;
+- following redirects out to the public Internet during private-route validation;
 - Secret content/hash/rotation/overwrite;
 - PayPal Live/payment/refund;
 - unrelated project changes.
@@ -169,9 +185,12 @@ REMOTE_HOSTNAME=srv1970241
 D_R6_READINESS=PASS
 WORDPRESS_BOOTSTRAP=PASS
 WORDPRESS_INSTALLED_STATE=PASS
-HOME_SITEURL_SCALAR_UPDATE=PASS
+HOME_SITEURL_ROW_CARDINALITY=2
+HOME_SITEURL_PRESTATE=LOCAL_OR_ALREADY_TARGET
+HOME_SITEURL_SCALAR_UPDATE=PASS_OR_ALREADY_TARGET_NO_WRITE
+HOME_SITEURL_TRANSACTION=PASS
 FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
-WORDPRESS_PRIVATE_PRIMARY_ROUTES=PASS
+WORDPRESS_PRIVATE_PRIMARY_ROUTES=PASS_PRIVATE_NO_PUBLIC_FOLLOW
 WP_CONTENT_MEDIA_STATE=PASS
 WOOCOMMERCE_CORE_STATE=PASS
 PAYPAL_MODE=SANDBOX
