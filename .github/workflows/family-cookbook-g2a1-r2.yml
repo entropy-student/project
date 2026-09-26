@@ -118,12 +118,18 @@ jobs:
       - name: Create ephemeral test credentials
         shell: bash
         run: |
-          python3 - <<'PY' >> "$GITHUB_ENV"
-          import secrets
+          umask 077
+          python3 - <<'PY' > "$RUNNER_TEMP/fcs-test-secrets.env"
+          import secrets, shlex
           for name in ("FCS_DB_PASSWORD", "FCS_DB_ROOT_PASSWORD", "FCS_WP_ADMIN_PASSWORD", "FCS_USER_A_PASSWORD", "FCS_USER_B_PASSWORD"):
-              print(f"{name}={secrets.token_urlsafe(32)}")
+              print(f"export {name}={shlex.quote(secrets.token_urlsafe(32))}")
           PY
-          echo "COMPOSE_PROJECT_NAME=family-cookbook-g2a1-r2-${GITHUB_RUN_ID}" >> "$GITHUB_ENV"
+          chmod 600 "$RUNNER_TEMP/fcs-test-secrets.env"
+          set +x
+          source "$RUNNER_TEMP/fcs-test-secrets.env"
+          for name in FCS_DB_PASSWORD FCS_DB_ROOT_PASSWORD FCS_WP_ADMIN_PASSWORD FCS_USER_A_PASSWORD FCS_USER_B_PASSWORD; do echo "::add-mask::${!name}"; done
+          unset FCS_DB_PASSWORD FCS_DB_ROOT_PASSWORD FCS_WP_ADMIN_PASSWORD FCS_USER_A_PASSWORD FCS_USER_B_PASSWORD
+          echo "Generated and masked five runner-only dummy credentials in a mode-0600 temporary file."
       - name: Prepare runner-local browser
         id: browser
         shell: bash
@@ -207,6 +213,9 @@ jobs:
         if: always() && steps.preflight.outcome == 'success' && steps.browser.outcome == 'success'
         shell: bash
         run: |
+          set +x
+          source "$RUNNER_TEMP/fcs-test-secrets.env"
+          export COMPOSE_PROJECT_NAME="family-cookbook-g2a1-r2-${GITHUB_RUN_ID}"
           export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
           wpdir=family-cookbook-studio/g2a1/r2/wp
           mkdir -p "$wpdir/proof-adapter/preview" "$wpdir/artifacts" "$G2A1_R2_ARTIFACT_DIR/wp"
@@ -218,20 +227,22 @@ jobs:
             if [ "$attempt" = 90 ]; then docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" logs --tail=100; exit 1; fi
             sleep 5
           done
-          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'curl -fsSL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o /tmp/wp-cli.phar && php /tmp/wp-cli.phar --info >/dev/null'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'curl -fsSL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o /tmp/wp-cli.phar && php /tmp/wp-cli.phar --allow-root --info >/dev/null'
           docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T \
-            -e FCS_ADMIN_PASSWORD="$FCS_WP_ADMIN_PASSWORD" wordpress sh -lc 'php /tmp/wp-cli.phar --path=/var/www/html core install --url=http://127.0.0.1:8871 --title="Family Cookbook G2A1 local testbed" --admin_user=fcs-admin --admin_password="$FCS_ADMIN_PASSWORD" --admin_email=fcs-admin@example.invalid --skip-email >/dev/null'
-          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --path=/var/www/html option update permalink_structure "/%postname%/" >/dev/null && php /tmp/wp-cli.phar --path=/var/www/html rewrite flush >/dev/null'
-          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --path=/var/www/html plugin install woocommerce --activate --quiet'
-          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --path=/var/www/html theme install kadence --activate --quiet'
-          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --path=/var/www/html plugin activate family-cookbook-proof --quiet'
+            -e FCS_ADMIN_PASSWORD="$FCS_WP_ADMIN_PASSWORD" wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html core install --url=http://127.0.0.1:8871 --title="Family Cookbook G2A1 local testbed" --admin_user=fcs-admin --admin_password="$FCS_ADMIN_PASSWORD" --admin_email=fcs-admin@example.invalid --skip-email >/dev/null'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html option update permalink_structure "/%postname%/" >/dev/null && php /tmp/wp-cli.phar --allow-root --path=/var/www/html rewrite flush >/dev/null'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html plugin install woocommerce --activate --quiet'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html theme install kadence --activate --quiet'
+          docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T wordpress sh -lc 'php /tmp/wp-cli.phar --allow-root --path=/var/www/html plugin activate family-cookbook-proof --quiet'
           docker compose -f "$wpdir/docker-compose.yml" -p "$COMPOSE_PROJECT_NAME" exec -T \
             -e FCS_USER_A_PASSWORD="$FCS_USER_A_PASSWORD" -e FCS_USER_B_PASSWORD="$FCS_USER_B_PASSWORD" \
-            wordpress php /tmp/wp-cli.phar --path=/var/www/html eval-file /fcs-tests/bootstrap.php
+            wordpress php /tmp/wp-cli.phar --allow-root --path=/var/www/html eval-file /fcs-tests/bootstrap.php
       - name: Verify Kadence preview, order-bound uploads and private delivery in browser
         if: always() && steps.start_wp.outcome == 'success'
         shell: bash
         run: |
+          set +x
+          source "$RUNNER_TEMP/fcs-test-secrets.env"
           export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
           wpdir=family-cookbook-studio/g2a1/r2/wp
           export FCS_WP_IDS="$GITHUB_WORKSPACE/$wpdir/artifacts/wp-test-ids.json"
@@ -246,7 +257,7 @@ jobs:
         run: |
           export G2A1_R2_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r2-artifacts"
           wpdir=family-cookbook-studio/g2a1/r2/wp
-          project="${COMPOSE_PROJECT_NAME:-family-cookbook-g2a1-r2-${GITHUB_RUN_ID}}"
+          project="family-cookbook-g2a1-r2-${GITHUB_RUN_ID}"
           cleanup_exit=0
           if [ -f "$wpdir/docker-compose.yml" ]; then
             docker compose -f "$wpdir/docker-compose.yml" -p "$project" down -v --remove-orphans || cleanup_exit=$?
@@ -264,11 +275,14 @@ jobs:
               cleanup_exit=1
             fi
           fi
+          credential_file_removed=false
+          credential_file="$RUNNER_TEMP/fcs-test-secrets.env"
+          if rm -f "$credential_file" && [ ! -e "$credential_file" ]; then credential_file_removed=true; else cleanup_exit=1; fi
           mkdir -p "$G2A1_R2_ARTIFACT_DIR"
-          python3 - "$G2A1_R2_ARTIFACT_DIR/cleanup.json" "$project" "$cleanup_exit" "$swap_removed" "$containers" "$volumes" "$networks" <<'PY'
+          python3 - "$G2A1_R2_ARTIFACT_DIR/cleanup.json" "$project" "$cleanup_exit" "$swap_removed" "$credential_file_removed" "$containers" "$volumes" "$networks" <<'PY'
           import json,sys
-          path, project, exit_code, swap_removed, containers, volumes, networks = sys.argv[1:]
-          data = {"compose_project": project, "compose_down_exit": int(exit_code), "swap_removed": swap_removed == "true", "remaining_containers": containers.split(), "remaining_volumes": volumes.split(), "remaining_networks": networks.split()}
+          path, project, exit_code, swap_removed, credential_file_removed, containers, volumes, networks = sys.argv[1:]
+          data = {"compose_project": project, "compose_down_exit": int(exit_code), "swap_removed": swap_removed == "true", "credentials_file_removed": credential_file_removed == "true", "remaining_containers": containers.split(), "remaining_volumes": volumes.split(), "remaining_networks": networks.split()}
           with open(path, "w", encoding="utf-8") as f: json.dump(data, f, indent=2); f.write("\n")
           print(json.dumps(data))
           PY

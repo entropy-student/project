@@ -7,6 +7,7 @@ import json
 import os
 import re
 import shutil
+import sys
 import tempfile
 import threading
 import time
@@ -21,10 +22,10 @@ from paddleocr import PaddleOCR
 from PIL import Image
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 
+OCR_MODULE_DIR = Path(__file__).resolve().parents[1] / "ocr"
+sys.path.insert(0, str(OCR_MODULE_DIR))
 from routing import detect_page_structure, resolve_fallback, route_page
 from schema import build_record
-
-ROOT = Path(__file__).resolve().parents[1] / "ocr"
 SYNTHETIC_DIR = Path(os.environ["FCS_SYNTHETIC_DIR"])
 GENUINE_DIR = Path(os.environ["FCS_GENUINE_DIR"])
 ARTIFACT_DIR = Path(os.environ["G2A1_R2_ARTIFACT_DIR"])
