@@ -20,11 +20,13 @@ Correctly prove the effective SSH login identity before sudo, then resume the al
 
 Use the existing strict SSH contract only.
 
-At remote payload start, before any sudo:
+At remote payload start, before any sudo and before any sudo-owned wrapper/subshell/helper:
 - `whoami`
 - `id -un`
 - `id -u`
 - `hostname`
+
+Run these directly as the authenticated SSH session. Never prefix them with sudo and never derive login identity by looking up UID 0.
 
 Require:
 - whoami = ops
@@ -74,22 +76,44 @@ Do not recreate/restart.
 
 ## Phase D — exact scalar update
 
-Only after bootstrap PASS:
-- update wp_options home;
-- update wp_options siteurl;
-- target = `https://minicraft.spikersun.com`.
+Only after bootstrap PASS.
 
-Exact predicates only.
+Credential boundary:
+- use `db-app-password` only through the already-reviewed tmpfs-only MariaDB client option-file pattern;
+- no Secret in argv, env, stdout/stderr, logs, Evidence or host plaintext temp files;
+- verify tmpfs client option file absent after the bounded DB operation.
+
+Prewrite:
+1. lock/select exactly the two `wp_options` rows `home` and `siteurl`;
+2. require exact cardinality = 2;
+3. accepted pre-state:
+   - both = `http://localhost:8093`; or
+   - both already = `https://minicraft.spikersun.com`.
+4. mixed/unexpected pre-state -> `RETURN_REVIEWER_D_R6R2_ORIGIN_STATE_DRIFT` before write.
+
+If both already equal target:
+- no DB write;
+- record `HOME_SITEURL_SCALAR_UPDATE=ALREADY_TARGET_NO_WRITE`.
+
+Otherwise:
+- begin one DB transaction;
+- update only the exact `home` and `siteurl` rows to `https://minicraft.spikersun.com`;
+- verify exactly two intended rows and exact target values before commit;
+- commit only after verification;
+- any pre-commit mismatch/native failure -> rollback and RETURN.
+
 No broad SQL replacement.
-No serialized migration.
+No serialized-field mutation.
+No full serialized migration.
 
 Record:
 `FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED`
 
 ## Phase E — private app validation
 
-Using private/in-container/Docker-network access only:
+Using private/in-container/Docker-network access only. Do not require public DNS/HTTPS to be live and do not follow redirects to the public Internet.
 
+Probe:
 - /
 - /shop/
 - /product/mini-craft-night-kit/
@@ -97,9 +121,11 @@ Using private/in-container/Docker-network access only:
 - /checkout/
 - /my-account/
 - /wp-json/
+
+Use the canonical Host header where needed. A bounded 2xx response or an expected 3xx canonical redirect to `https://minicraft.spikersun.com` is acceptable for private-route reachability when there is no installer redirect, PHP fatal, or unexpected external target. Record status/redirect class rather than fetching the public destination.
 - wp-content/media state;
 - WooCommerce core state;
-- PayPal Sandbox / Live disabled metadata state;
+- PayPal Sandbox / Live disabled boolean/config-state metadata only; never emit credential-bearing option contents;
 - recent filtered PHP fatal classification;
 - WordPress restart count stable;
 - MariaDB healthy;
@@ -109,9 +135,17 @@ Using private/in-container/Docker-network access only:
 
 One fresh canonical strict SSH invocation/session is authorized for the entire Gate.
 
-If the connection itself fails:
+Capture SSH stderr only in a local non-secret temporary diagnostic sink for bounded classification; raw stderr must not be committed and the local sink must be removed within the same wrapper.
+
+If the connection fails before any DB write:
 - return precise transport classification;
 - no second attempt inside this Gate.
+
+If the SSH outcome becomes ambiguous after the scalar DB transaction may have started or committed:
+- return `RETURN_REVIEWER_D_R6R2_REMOTE_WRITE_OUTCOME_AMBIGUOUS`;
+- do not retry;
+- do not compensate;
+- leave read-only reconciliation to the next Reviewer Gate.
 
 ## Forbidden
 
@@ -124,6 +158,7 @@ No:
 - broad SQL replace;
 - serialized migration;
 - Shared Infra/DNS/public ingress mutation;
+- following private-route redirects out to the public Internet;
 - host ports;
 - Secret content/hash/rotation/overwrite;
 - PayPal Live/payment/refund.
@@ -149,7 +184,10 @@ WP_OPTIONS_PRESENT=
 WORDPRESS_RUNTIME_CORE=
 WORDPRESS_BOOTSTRAP=
 WORDPRESS_INSTALLED_STATE=
+HOME_SITEURL_ROW_CARDINALITY=
+HOME_SITEURL_PRESTATE=
 HOME_SITEURL_SCALAR_UPDATE=
+HOME_SITEURL_TRANSACTION=
 FULL_SERIALIZED_URL_MIGRATION=DEFERRED_NOT_WAIVED
 WORDPRESS_PRIVATE_PRIMARY_ROUTES=
 WP_CONTENT_MEDIA_STATE=
@@ -164,6 +202,8 @@ PUBLIC_INGRESS_CHANGE=0
 UNRELATED_SERVICES_CHANGED=
 SECRET_VALUE_OR_HASH_ACCESS=0
 SHARED_INFRA_WRITES=0
+LOCAL_SSH_DIAGNOSTIC_TEMP_CLEANUP=
+REMOTE_TMPFS_DB_AUTH_CLEANUP=
 STOP_AT_REVIEWER=YES
 ```
 
