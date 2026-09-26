@@ -4394,7 +4394,7 @@ STOP_AT_REVIEWER=YES
 
 ## K6_PHASE_D_R4_DETERMINISTIC_FILTERED_IMPORT_RETRY — RETURN_D_R4_WORDPRESS_CORE_FILES_MISSING (2026-09-26)
 
-Authority read before execution: canonical VPS Project Governance v0.1.6 and active SSH/Secret, Target Host Reality, Storage Layout, and Governance Source Policy addenda; current Mini Craft Reviewer Handoff, Storage Manifest, D-R4 Reviewer Decision and Execution Pack, latest Evidence/Handoff, and the unique local Shared VPS Handoff. Strict recorded SSH identity/known_hosts fingerprint checks passed; one bounded strict SSH session was used for the fresh probe and execution. SSH login was ops; privileged probe/runner executed through sudo -n.
+Authority read before execution: canonical VPS Project Governance v0.1.6 and active SSH/Secret, Target Host Reality, Storage Layout, and Governance Source Policy addenda; current Mini Craft Reviewer Handoff, Storage Manifest, D-R4 Reviewer Decision and Execution Pack, latest Evidence/Handoff, and the unique local Shared VPS Handoff. Strict recorded SSH identity/known_hosts fingerprint checks passed; each remote command used a bounded strict SSH session with the same recorded identity and pinned known_hosts; no trust or key changes occurred. SSH login was ops; privileged probe/runner executed through sudo -n.
 
 ### Fresh pre-import state and immutable source
 
