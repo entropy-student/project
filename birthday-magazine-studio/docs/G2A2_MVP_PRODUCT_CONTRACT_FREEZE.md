@@ -1,7 +1,7 @@
 # G2A2 — MVP Product Contract Freeze
 
 > Reviewer / Owner decision gate  
-> Status: HOLD — starts only after G2A1 PASS  
+> Status: CURRENT — G2A1 PASS; Owner fixed authenticated-account MVP on 2026-09-27  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)
 
 ## Goal
@@ -9,6 +9,15 @@
 Freeze the exact paid MVP contract before any AI→PDF implementation.
 
 G2B must not start while the core output and intake schema are still moving.
+
+## Accepted before this Gate
+
+- Customer access model: **authenticated customer account required**.
+- Guest/no-account private upload, proof and final delivery are out of MVP scope.
+- Good Issue-style preview inside WordPress + WooCommerce is the accepted technical foundation candidate.
+- Free preview remains browser-local and zero-model-token.
+- Storelly remains rejected.
+- Vanquish Upload Files / Attach Me may continue only on their registered-account paths unless a later Gate replaces them.
 
 ## Working hypotheses to review
 
@@ -28,6 +37,12 @@ These are not yet final:
 - preview pages shown;
 - watermark/export restriction;
 - zero-model-token boundary.
+
+### Account / workspace
+- account creation/login experience;
+- order ↔ authenticated customer workspace binding;
+- account recovery path;
+- confirm no guest private upload/proof/final-delivery path in MVP.
 
 ### Paid intake
 - required vs optional fields;
