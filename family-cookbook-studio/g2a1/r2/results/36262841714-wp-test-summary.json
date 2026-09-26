@@ -1,0 +1,728 @@
+{
+  "status": "FAIL",
+  "environment": "localhost ephemeral GitHub Actions container network",
+  "versions": {
+    "wordpress": "7.1.2",
+    "woocommerce": "11.1.2",
+    "mariadb": "11.4.13-MariaDB-ubu2404",
+    "kadence": "1.5.2"
+  },
+  "browser": {
+    "chromium": "153.0.8010.52",
+    "playwright": "1.55.0"
+  },
+  "dummy_orders": {
+    "order_a_id": 11,
+    "order_b_id": 12
+  },
+  "preview": {
+    "url": "http://127.0.0.1:8871/fcs-local-preview/",
+    "evidence": {
+      "documentUrl": "http://127.0.0.1:8871/wp-content/plugins/family-cookbook-proof/preview/index.html",
+      "title": "Recipes We Keep — Test",
+      "family": "Synthetic Family",
+      "style": "sage",
+      "previewSections": [
+        "Cookbook cover preview",
+        "Sample recipe spread preview"
+      ],
+      "localFileName": "F01.png",
+      "imageSources": [
+        "blob:http://127.0.0.1:8871/6d150e0e-680e-4e84-8646-bb75624007ae",
+        "blob:http://127.0.0.1:8871/6d150e0e-680e-4e84-8646-bb75624007ae"
+      ],
+      "localObjectUrl": true,
+      "networkAttempts": {
+        "fetch": 0,
+        "xhr": 0,
+        "beacon": 0,
+        "websocket": 0
+      },
+      "resourceEntries": [],
+      "downloadLinks": 0,
+      "forms": 0
+    },
+    "input_bindings_pass": true,
+    "network_requests_before_file_selection": 17,
+    "network_requests_after_file_selection": 17,
+    "new_requests_after_local_file_selection": 0,
+    "browser_version": "153.0.8010.52",
+    "image_sources_are_blob": true,
+    "server_upload_requests": 0,
+    "model_calls": 0,
+    "token_usage": 0,
+    "browser_local": false,
+    "mobile": {
+      "outer_viewport_width": 390,
+      "iframe_viewport_width": 300,
+      "iframe_document_width": 300,
+      "responsive_no_horizontal_overflow": true
+    },
+    "all_assertions_pass": false
+  },
+  "upload": {
+    "anonymous_status": 401,
+    "mobile": {
+      "viewport_width": 390,
+      "document_width": 390,
+      "responsive_no_horizontal_overflow": true
+    },
+    "positive": {
+      "status": 201,
+      "access": "PASS",
+      "order_id": 11,
+      "mime": "image/png",
+      "bytes": 39666,
+      "sha256": "678b43bb9ae181acdc88323e39871a425aff8af93e9d834bcd7642f976f28c68",
+      "storage": "outside_document_root"
+    },
+    "positive_pass": true,
+    "own_access": {
+      "status": 200,
+      "access": "PASS",
+      "sha256": "678b43bb9ae181acdc88323e39871a425aff8af93e9d834bcd7642f976f28c68"
+    },
+    "own_access_pass": true,
+    "unrelated_order_status": 404,
+    "unsupported_type_status": 415,
+    "over_limit_status": 413,
+    "unrelated_user_status": 403,
+    "user_b_own_order_positive": {
+      "status": 201,
+      "order_id": 12
+    },
+    "all_access_assertions_pass": true
+  },
+  "delivery": {
+    "anonymous_status": 401,
+    "positive": {
+      "status": 200,
+      "access": "PASS",
+      "mime": "application/pdf",
+      "bytes": 607,
+      "sha256": "6bff45561968b5a7a5a210f6be80c518178787772c0bccbb3906779ed598cc9e",
+      "pdf_magic": "%PDF-1.4"
+    },
+    "positive_pass": true,
+    "unrelated_order_status": 404,
+    "unrelated_user_status": 403,
+    "direct_raw_public_url_status": 404,
+    "private_storage_outside_document_root": "container /tmp outside /var/www/html document root",
+    "all_access_assertions_pass": true
+  },
+  "cleanup": "compose down -v scheduled by workflow",
+  "network": {
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/fcs-local-preview/"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/global.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/header.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/content.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/woocommerce.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/footer.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery-migrate.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/js/navigation.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/family-cookbook-proof/preview/index.html"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/wp-emoji-release.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-login.php"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/css/dashicons.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/css/buttons.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/css/forms.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/css/l10n.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/css/dist/base-styles/admin-schemes.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/css/wp-tooltip.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/css/login.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/clipboard.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery-migrate.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/zxcvbn-async.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/dist/hooks.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/dist/i18n.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/js/password-strength-meter.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/underscore.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/wp-util.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/dist/dom-ready.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/dist/a11y.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/js/user-profile.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/wp-tooltip.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/images/wordpress-logo-gray.svg"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/zxcvbn.min.js"
+      },
+      {
+        "method": "POST",
+        "path": "/wp-login.php"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/profile.php"
+      },
+      {
+        "method": "GET",
+        "path": "/my-account/"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/css/select2.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/global.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/header.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/content.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/woocommerce.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/woocommerce-account.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/footer.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery-migrate.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/account-i18n.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/avatar/3e5e168892fd7ed2f235553fe0f17b388c3ee01328b4976516ec66c45316fead"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/js/navigation.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/fcs-order-proof/"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/wp-emoji-release.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/global.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/header.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/content.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/woocommerce.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/footer.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery-migrate.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/js/navigation.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/wp-emoji-release.min.js"
+      },
+      {
+        "method": "POST",
+        "path": "/wp-json/family-cookbook/v1/orders/11/uploads"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-json/family-cookbook/v1/orders/11/files/0cec67f2-3b45-41ce-9586-c8dc1aa17bcd"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-json/family-cookbook/v1/orders/11/files/e99e165e-4478-43e5-ba1e-a8ea15b817e5"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-json/family-cookbook/v1/orders/12/files/e99e165e-4478-43e5-ba1e-a8ea15b817e5"
+      },
+      {
+        "method": "POST",
+        "path": "/wp-json/family-cookbook/v1/orders/11/uploads"
+      },
+      {
+        "method": "POST",
+        "path": "/wp-json/family-cookbook/v1/orders/11/uploads"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-login.php"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/css/dashicons.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/css/buttons.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/css/forms.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/css/l10n.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/css/dist/base-styles/admin-schemes.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/css/wp-tooltip.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/css/login.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/clipboard.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery-migrate.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/zxcvbn-async.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/dist/hooks.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/dist/i18n.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/js/password-strength-meter.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/underscore.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/wp-util.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/dist/dom-ready.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/dist/a11y.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/js/user-profile.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/wp-tooltip.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/images/wordpress-logo-gray.svg"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/zxcvbn.min.js"
+      },
+      {
+        "method": "POST",
+        "path": "/wp-login.php"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-admin/profile.php"
+      },
+      {
+        "method": "GET",
+        "path": "/my-account/"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/css/select2.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/global.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/header.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/content.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/woocommerce.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/woocommerce-account.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/footer.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery-migrate.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/account-i18n.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/avatar/13d791ac23983cf0824eb9e0d3faef8d7ed3989d8c8f4a1cf2c225764ffe87b2"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/js/navigation.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/fcs-order-proof/"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/wp-emoji-release.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/global.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/header.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/content.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/woocommerce.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/css/footer.min.css"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/jquery/jquery-migrate.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/themes/kadence/assets/js/navigation.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-includes/js/wp-emoji-release.min.js"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-json/family-cookbook/v1/orders/11/files/0cec67f2-3b45-41ce-9586-c8dc1aa17bcd"
+      },
+      {
+        "method": "POST",
+        "path": "/wp-json/family-cookbook/v1/orders/11/uploads"
+      },
+      {
+        "method": "POST",
+        "path": "/wp-json/family-cookbook/v1/orders/12/uploads"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-json/family-cookbook/v1/orders/12/files/undefined"
+      },
+      {
+        "method": "GET",
+        "path": "/wp-json/family-cookbook/v1/orders/12/files/0cec67f2-3b45-41ce-9586-c8dc1aa17bcd"
+      }
+    ],
+    "image_uploads_before_payment": 0,
+    "post_payment_upload_requests": 5
+  }
+}
