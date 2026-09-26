@@ -1,8 +1,8 @@
 # Mini Craft Night Kit — PROJECT STORAGE MANIFEST
 
-Status: C1R5 historical transaction RETURN for source-auditability / C1R5R1 RETURN accepted / current Secret state retained / C1R5R2 runtime-access requalification active
+Status: C1R5 historical source-auditability limitation retained / C1R5R2 PASS / current Secret state qualified for K6 deployment
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K6_PHASE_C1R5R2_CURRENT_STATE_REQUALIFICATION`
+Current Gate: `K6_PHASE_D_PRIVATE_RUNTIME_DEPLOYMENT_AND_RESTORE`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.
@@ -70,7 +70,7 @@ NEW_FINAL_DPAPI_RECOVERY=EXISTS_1686_BYTES_OWNER_ONLY_ACL
 OLD_C1_PENDING=EXISTS_METADATA_ONLY_NO_CONTENT_ACCESS
 SECRET_VALUE_OR_HASH_EXPOSURE=0
 SECRET_ROTATION_REQUIRED=NO_CURRENT_EVIDENCE
-CURRENT_REMAINING_GAP=WORDPRESS_EFFECTIVE_IN_CONTAINER_READABILITY
+CURRENT_SECRET_STATE_QUALIFIED_FOR_K6_DEPLOYMENT=YES
 ```
 
 The new final DPAPI recovery artifact is recorded by metadata only in Evidence; its plaintext/ciphertext content is not part of this manifest. C1R5R2 is authorized only to perform bounded no-value runtime-access validation with disposable isolated containers. It does not authorize Secret regeneration, rotation, overwrite, deletion or recovery-content access.
