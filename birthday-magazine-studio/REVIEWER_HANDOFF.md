@@ -11,7 +11,7 @@
 - Final goal: let a buyer turn photos and structured answers into a polished, personalized birthday magazine PDF without designing it manually.
 - Accepted product direction: browser-local zero-model-cost preview before payment; full personalized production only after confirmed payment and complete intake.
 - Current business goal: first prove which WordPress/frontend/upload/private-delivery components are safely reusable; then freeze the exact MVP product contract before AI/PDF implementation.
-- Current scope: birthday magazine only. Family recipe book remains a separate parked idea.
+- Current scope: birthday magazine only. Family Cookbook Studio is now a separate active project at `../family-cookbook-studio/` and remains out of scope here.
 
 ## 2. Authority / Source of Truth
 
@@ -91,7 +91,7 @@ Important limitation: the Owner reports demand as already validated, but the und
 - Commerce/order baseline: **WordPress + WooCommerce**.
 - Payment baseline: **official WooCommerce PayPal Payments**; Sandbox validation precedes any Live payment.
 - Paid production target: confirmed WooCommerce/PayPal paid state + complete intake → one idempotent generation job → personalized content generation → deterministic layout/PDF → QA → private proof → final PDF delivery.
-- Family recipe book: out of scope.
+- Family Cookbook Studio: separate project; out of scope for Birthday Magazine Studio.
 - Physical printing: deferred.
 
 ### Evidence status
