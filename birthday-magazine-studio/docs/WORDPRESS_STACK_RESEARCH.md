@@ -1,3 +1,7 @@
+> **Governance status: CANDIDATE RESEARCH ONLY.**  
+> No theme, plugin stack, payment gateway, hosting provider or production architecture is approved by this document.  
+> Current authority: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md).
+
 # WordPress 模板与插件候选（调研快照）
 
 调研日期：2026-09-26。插件版本、活跃安装量、服务价格和功能边界会变化；进入 PoC 前应再次核对官方页面、隐私政策、服务条款和结账/履约实测结果。
