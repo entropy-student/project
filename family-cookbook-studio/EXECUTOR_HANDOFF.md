@@ -67,3 +67,24 @@ Return this Gate for a bounded rerun in an environment that can finish local Pad
 - R1 evidence snapshot commit: `1483671c78b831686175c2cd35542087ad1baca3` (parent `b1bf844096fed4761372f3beea6f9f2d7d081643`), containing this remediation evidence and `g2a1/r1/preflight.json`.
 - GitHub read-back immediately after that evidence commit showed this branch at `1483671c78b831686175c2cd35542087ad1baca3`; no `main` merge/rebase occurred. The final branch ref is read back again after this Handoff update and returned below.
 - Recommended Reviewer decision: `RETURN_G2A1_R1_RESOURCE_BLOCKED`; keep the current OCR architecture and resume on this branch after fresh safe resource capacity is available. Stop at Reviewer; do not enter G2A2.
+
+## G2A1-R2 — Isolated GitHub Actions Runner
+
+- Gate: G2A1-R2 — Isolated GitHub Actions Runner Completion.
+- Execution state: RETURN_G2A1_R2_OCR_ROUTE_INSUFFICIENT (Reviewer decision requested). Prior RETURN_G2A1_OCR_ENVIRONMENT_BLOCKED and RETURN_G2A1_R1_RESOURCE_BLOCKED history is preserved.
+- Branch: codex/family-cookbook-g2a1-input-ocr-component-feasibility.
+- Completed benchmark/testbed evidence: Actions run 36262841714, commit 9e803d04e40c7359096be10d3777a209f11161e4. This job concluded failure only on a preview harness field-name typo; it recorded real OCR outputs, full WordPress versions, and passing upload/private-delivery checks. Corrected final rerun 36263385997 was still in_progress at step 8 (PaddleOCR Transformers inference) at 2026-09-26 19:09 UTC; its conclusion and remaining steps were unavailable. It is not counted as a successful run. The completed benchmark/testbed evidence from run 36262841714 is sufficient to request Reviewer decision on measured OCR-route insufficiency.
+- Actual completed scope:
+  - Bounded, marker-guarded hosted GitHub Actions workflow and resource preflight. No repository Secrets. Random dummy credentials were generated and masked on-runner and removed. No Windows OCR/WP load; unrelated projects untouched.
+  - PaddleOCR 3.7.0 full-page CPU inference with Transformers engine on 20 synthetic typography pages and 8 public genuine-handwriting samples. Benchmark: 62 erroneous lines, 32 missing lines, 13 critical-field errors, 60 suspicious regions.
+  - TrOCR small handwritten model called on only 60 routed crops; 0 resolved, 60 unresolved, 60 disagreements. Manual confirmation: 69 / 28 pages = 2.464/page; no page without confirmation. TrOCR reduced confirmations by 0.
+  - Family-specific ephemeral WordPress 7.1.2 + WooCommerce 11.1.2 + MariaDB 11.4.13 + free Kadence 1.5.2 created. Local preview used blob image, HTTP request delta 0 after file selection, zero OCR/model/token call. The completed run's aggregate assertion was false from a misspelled property; corrected in the latest rerun source.
+  - Project-local order-bound adapter proved own-order upload/read, user B's own-order upload, anonymous/unrelated user/order denial, unsupported-type and over-size rejection, and responsive mobile width.
+  - Synthetic PDF delivery positive/negative checks passed, including raw URL denial. Cleanup removed containers, volumes, network, test credential file and temporary swap.
+- OCR conclusion: dual OCR path runs technically but measured evidence is insufficient for an MVP that reduces review burden. TrOCR resolved none of the routed cases; all 28 pages still required confirmation. OCR architecture unchanged; no third model.
+- Preview result: measured browser blob source, no HTTP request delta after local file selection, zero OCR/model/token calls in run 36262841714. Run 36262841714 measured the preview request delta and browser-local path; the aggregate boolean was false from a property-name defect. The corrected assertion is present in source and was being rerun in Actions run 36263385997, which remained in progress at the recorded status check.
+- Upload result: positive and negative HTTP checks passed in run 36262841714. Custom adapter, private outside-document-root storage.
+- Delivery result: positive and negative checks passed in run 36262841714; raw URL returned 404.
+- Blocker: RETURN_G2A1_R2_OCR_ROUTE_INSUFFICIENT due critical-field errors and zero TrOCR resolution/manual-review reduction. Latest marked run 36263385997 was in_progress at OCR step 8 at the recorded status check; no success is claimed. The completed run 36262841714 independently shows OCR-route insufficiency.
+- Cleanup: completed run 36262841714 had Compose down exit 0, no containers/volumes/networks, credentials file removed and no swap left. Earlier run-specific bounded workflow defects/fixes are listed in EXECUTION_EVIDENCE.md.
+- Recommended Reviewer decision: RETURN_G2A1_R2_OCR_ROUTE_INSUFFICIENT; retain PaddleOCR → deterministic suspicious routing → TrOCR crop fallback → USER_CONFIRM_REQUIRED unchanged and decide if measured burden meets product scope. Do not enter G2A2 from Executor.
