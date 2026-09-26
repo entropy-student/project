@@ -111,6 +111,32 @@ Using a synthetic PDF/text fixture:
 - no public raw file URL as the access-control mechanism;
 - record version/source and cleanup.
 
+## Git / Delivery Contract
+
+Execution branch:
+
+`codex/family-cookbook-g2a1-input-ocr-component-feasibility`
+
+Required behavior:
+- create/use this dedicated branch for G2A1 writes;
+- before changing files, read the current branch state and avoid overwriting unrelated work;
+- commit all Gate-scoped implementation, test/fixture metadata, benchmark artifacts that belong in Git, and required handoff/evidence documents;
+- required committed project documents:
+  - `family-cookbook-studio/EXECUTION_EVIDENCE.md`
+  - `family-cookbook-studio/EXECUTOR_HANDOFF.md`
+- supporting benchmark files may be committed under a clearly named project-local G2A1 path if useful;
+- do not commit Secrets, customer/private data, model caches, huge binaries, generated dependency/vendor trees or disposable runtime files;
+- after the final commit, read back the branch HEAD from GitHub;
+- final response must include:
+  - `BRANCH=<exact branch>`
+  - `HEAD_COMMIT=<40-char SHA>`
+  - Gate result;
+- **do not merge to `main`**;
+- **do not start G2A2**;
+- stop at Reviewer.
+
+A local-only result, uncommitted evidence, or a chat-only summary is not sufficient delivery.
+
 ## Allowed
 
 - local/test WordPress/WooCommerce;
@@ -166,15 +192,20 @@ G2A1 PASS requires:
 
 ## Output
 
-Executor creates/updates:
+Executor must create/update and commit:
 - `EXECUTOR_HANDOFF.md`
 - `EXECUTION_EVIDENCE.md`
+- all bounded G2A1 PoC/supporting artifacts needed for Reviewer verification
 
-Return:
+Successful return format:
 
 ```text
 PASS_CANDIDATE_G2A1_INPUT_OCR_COMPONENT_FEASIBILITY
-STOP_AT_REVIEWER: YES
+BRANCH=codex/family-cookbook-g2a1-input-ocr-component-feasibility
+HEAD_COMMIT=<40-char git commit sha>
+GITHUB_DELIVERY=COMMITTED
+MAIN_MERGED=NO
+STOP_AT_REVIEWER=YES
 ```
 
-or a precise `RETURN_*`.
+Failure/blocked return must use a precise `RETURN_*` and must still commit the evidence/handoff when repository writes are available, then return branch + HEAD SHA. If GitHub write/commit itself is unavailable, return a precise delivery blocker rather than claiming completion.
