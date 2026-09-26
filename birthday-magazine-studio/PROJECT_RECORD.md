@@ -4,66 +4,65 @@ Last updated: 2026-09-26
 
 ## Current Truth
 
-```text
-PROJECT_STATUS=G1_PUBLIC_RESEARCH_PARTIAL
-CURRENT_GATE=G1_PROBLEM_AND_TRANSACTION_EVIDENCE
-G0_PROJECT_CHARTER=RECORDED
-G1_DESK_RESEARCH=PARTIAL_US_UK_ENGLISH
-G1_PRIMARY_CUSTOMER_INTERVIEWS=NOT_STARTED
-G1_OWN_TRANSACTION_TEST=NOT_STARTED
-G1_EXPERIMENT_REGION=NOT_SELECTED
-G1_REAL_INPUT_NEEDED=RECRUITED_BUYERS_AND_ONE_TEST_REGION
-PRODUCT_BUILD_STARTED=NO
-WORDPRESS_THEME_SELECTED=NO
-PLUGIN_STACK_SELECTED=NO
-PRODUCTION_DEPLOYMENT=NO
-LIVE_PAYMENT=NO
-PHYSICAL_FULFILLMENT=NOT_VERIFIED
-CURRENT_PRODUCT_SCOPE=BIRTHDAY_MEMORIAL_MAGAZINE
-FAMILY_RECIPE_BOOK=ADJACENT_IDEA_PARKED
-```
+| Field | Value |
+|---|---|
+| PROJECT_STATUS | G1_US_DESK_RESEARCH_COMPLETE_CUSTOMER_VALIDATION_PENDING |
+| CURRENT_GATE | G1_PROBLEM_AND_TRANSACTION_EVIDENCE |
+| G0_PROJECT_CHARTER | RECORDED |
+| G1_DESK_RESEARCH | US_ENGLISH_COMPLETE |
+| G1_PRIMARY_CUSTOMER_INTERVIEWS | NOT_STARTED |
+| G1_OWN_TRANSACTION_TEST | NOT_STARTED |
+| G1_EXPERIMENT_REGION | US |
+| G1_REAL_INPUT_NEEDED | QUALIFIED_US_BUYERS_AND_OWNER_APPROVED_OFFER_FORMAT_PRICE_BUDGET |
+| PRODUCT_BUILD_STARTED | NO |
+| WORDPRESS_THEME_SELECTED | NO |
+| PLUGIN_STACK_SELECTED | NO |
+| PRODUCTION_DEPLOYMENT | NO |
+| LIVE_PAYMENT | NO |
+| PHYSICAL_FULFILLMENT | NOT_VERIFIED |
+| CURRENT_PRODUCT_SCOPE | BIRTHDAY_MEMORIAL_MAGAZINE |
+| FAMILY_RECIPE_BOOK | ADJACENT_IDEA_PARKED |
 
-G0 立项记录已完成。Owner 已将 G1 调研范围定为 **美国/英国英语市场**。公开桌面研究发现相近商品、替代方案和真实顾客反馈，也发现 DIY 免费/低价模板偏好及个性化错误风险；这些只能指导访谈，不能替代本项目真实买家证据。详见 `docs/G1_DESK_RESEARCH.md`。
+G0 立项已完成。Owner 已指定 **美国英语市场** 为首轮验证区。当前完成的是公开资料调研；目标用户访谈、本项目订单和实际履约均未开始。美国同类商品、价格、打印渠道及自动履约线索见 [G1 桌面调研](docs/G1_DESK_RESEARCH.md)；访谈和付费试点草案见 [美国首轮实验方案](docs/G1_US_FIRST_EXPERIMENT.md)。
 
 ## Final Goal
 
-让送礼者上传照片并回答关于寿星的问题，收到一本可预览、可确认的个性化生日纪念杂志；支付后自动交付电子成品，实体版须先验证印刷质量、成本、配送区域、数据流和交期。
+让送礼者上传照片并回答关于寿星的问题，收到一本可预览、可确认的个性化生日纪念杂志；支付后自动交付电子成品。实体版须先验证印刷质量、单位成本、配送区域、数据流、交期及每单个性化文件的履约方式。
 
 ## Current Stage
 
-**G1 — Problem Evidence / Transaction Evidence：US/UK 英语市场桌面研究部分完成；真实买家访谈和本项目交易未开始。**
+**G1 — 美国英语市场桌面研究完成；真实买家问题验证与本项目交易验证待做。**
 
-已有竞品购买评论提示成品是否按确认内容正确交付很重要；也有 DIY 使用者明确想找免费模板。这意味着待验证的并非单一“不会 Canva”问题，且服务型 Offer 必须相对 DIY 方案证明额外价值。
+本轮公开研究找到低价数码封面、8 页实体杂志、美国个性化杂志服务的顾客评价，以及支持 WooCommerce 的按需印刷渠道。它们能帮助定义差异和风险，但不证明我们的需求、价格或转化。最关键的待验证区别仍是：买家是否愿意为省去挑照片、组织故事和排版而付款，同时保留预览确认权。
 
 ## Validation Spine
 
-- Problem Evidence：**部分公开线索**。有生日杂志/照片书商品和评论，尚无目标买家访谈来确认场景与首要问题。
-- Solution Proof：**竞品流程有参考，本项目样品未制作**。
+- Problem Evidence：**有公开线索，未访谈目标买家**。
+- Solution Proof：**有竞品流程参考；本项目样刊未制作**。
 - Attention / Interest / Intent：本项目 **未测**。
-- Transaction：本项目 **未测**，没有真实订单或付费预约。
-- Repeatability / Economics：**未知**，没有制作工时、印刷/邮寄、退款或 CAC 数据。
-- 当前瓶颈：确定单一测试市场和 Offer 差异，并取得目标买家的真实行为证据；不是网站模板或代码。
+- Transaction：本项目 **未测**，无实际订单或付费预约。
+- Repeatability / Economics：**未知**；无逐单工时、印刷/邮寄、返工、退款或 CAC 数据。
+- 当前瓶颈：取得美国真实买家对具体 Offer 的行为证据，并验证可交付样刊和单位成本；不是 WordPress 主题选型。
 
 ## Decisions and Constraints
 
-- 调研市场范围：美国/英国英语市场（Owner 已确认）；首轮交易实验仍需选一个国家。
-- 先验证买家行为与样刊，再批准完整建站/开发；G1 通过不等于 PMF。
-- 真实早期订单可以人工/AI 辅助制作，但必须把预览确认、错误返工和交期记录下来。
-- WooCommerce、主题、插件、支付网关和印刷服务仍是候选。
-- 竞品评价用于发现质量/信任风险；不同渠道、地区、产品价格不可直接横比。
-- 首发实验国家未定；电子版/实体版优先级、价格、制作成本和退款规则也未定。
+- 首轮验证地区：**美国**；语言：英语（Owner 于 2026-09-26 确认）。
+- 先验证买家行为与可交付样品，再批准完整建站/开发；G1 通过不等于 PMF。
+- 早期付费试点可人工/AI 辅助制作；要记录实际制作工时、确认/修改轮次、错误、交期、印刷与邮费。
+- Lulu 官方资料显示可接 WooCommerce 并做按需印刷履约；每单独立定制 PDF 如何映射到订单、实际页数限制、US ZIP 运费及成本尚待样单验证。不能将“支持自动印刷”误写为“我们的每单个性化流程已自动化”。
+- WooCommerce、主题、其他插件、支付网关与印刷服务都仍未做最终选型。
 - 家庭食谱书保持范围外，需独立立项。
 
 ## Next Action
 
-1. 从美国或英国中选一个首测国家（尤其实体版需先确定实际可履约区域）；
-2. 招募有近期生日送礼经历的英语买家，按 `docs/G1_DESK_RESEARCH.md` 访谈提纲询问过去真实行为与替代方案；
-3. 做出可展示样刊并提出单一 Offer，预先确定价格、样本来源、实验预算上限和 KEEP / ITERATE / KILL 门槛；
-4. 观察实际预约/付款，再决定是否进入 G2 样刊与生产流程验证。
+1. 锁定首轮试点形式（实体 / 电子）和样刊规格；若选实体，先用目标美国地址验证样单成本、页数、色彩及交期。
+2. 定下可公开的单一 Offer、价格、退款/取消条款、预算上限和实验判断门槛。
+3. 招募美国近期生日送礼者，先询问真实过往行为，再展示样刊；用实际付款/交付记录验证，不以口头赞美代替成交。
+4. 只有在样刊、单位成本和订单流程成立后，再进入 WordPress 实施与自动化验证。
 
 ## Open Owner Input
 
-**美国和英国中，第一轮真实买家/付款实验先做哪一个？** 如果实体印刷是首发内容，还要确认哪个国家能保证可接受的生产与配送时效。
+首轮付费试点选 **实体杂志** 还是 **电子 PDF**？确定形式后，还需在接受首位真实订单前锁定试点售价和最大测试预算。
 
 ## Decision Log
 
@@ -71,7 +70,7 @@ G0 立项记录已完成。Owner 已将 G1 调研范围定为 **美国/英国英
 |---|---|---|
 | 2026-09-26 | 建立 Birthday Magazine Studio 独立目录和项目章程 | Recorded |
 | 2026-09-26 | 当前范围限定为生日纪念杂志；家庭食谱书暂不纳入 | Provisional boundary |
-| 2026-09-26 | G1 桌面研究发现相近 Offer、DIY 替代、买家反馈及质量风险 | Partial evidence; not own demand proof |
-| 2026-09-26 | Owner 指定 G1 调研市场范围为 US/UK English | Recorded |
-| 2026-09-26 | 本项目真实访谈和真实交易实验未开始，首测国家仍未定 | Open |
-| 2026-09-26 | 继续 G1；未批准完整建站、真实支付或规模化投放 | Current gate |
+| 2026-09-26 | 完成美国英语市场公开桌面研究；真实买家和本项目成交仍未验证 | Research complete; validation pending |
+| 2026-09-26 | Owner 将首轮验证市场定为美国英语市场 | Recorded |
+| 2026-09-26 | Lulu POD + WooCommerce 是可研究的自动履约候选，但每单定制文件流尚未验证 | Candidate only |
+| 2026-09-26 | 网站开发、主题/插件选型、真实支付和实体履约仍未开始 | Current gate |

@@ -98,3 +98,26 @@
 - [Wanapix UK — Personalised photo magazine](https://wanapix.co.uk/personalised-photo-magazine-16-pgs)：英国自助照片杂志定价、编辑和评价。
 - [Reddit — Birthday magazine template discussion](https://www.reddit.com/r/Gifts/comments/1o422tr/birthday_magazine/)：显示部分用户偏好免费/DIY。
 - [Reddit — Birthday magazine Canva template](https://www.reddit.com/r/Gifts/comments/1jwrewt)：个人模板销售与送礼故事，单一自推广个案。
+
+
+## 美国首轮市场补充（Owner 已选定 US English）
+
+调研与价格快照日期：2026-09-26。页面价格、促销、评分会变化；以下数值只用于竞争定位和供应链初筛，不是本项目定价结论。
+
+| 方案 / 来源 | 当前可见内容 | 对本项目的启示 | 限制 |
+|---|---|---|---|
+| [Etsy 个性化数码杂志封面](https://www.etsy.com/listing/1682864935/custom-magazine-cover-digital-file) | 页面标价 US$10.99；买家上传 1 张照片并填写个性化文字；注明是数码文件、不寄实体 | 低价替代品可以只卖“封面”，我们需要验证整本故事杂志和代整理服务能否支持溢价 | 不是整本杂志；Etsy 页面价格和销量会变化；不能当作本项目的价格锚点 |
+| [Etsy 定制印刷生日杂志](https://www.etsy.com/listing/4466470457/custom-birthday-magazine-printed-shipped) | 页面展示 8 页 A4 实体杂志，买家下单后通过消息交素材；当时促销价约 US$20.87（原价显示约 US$41.76），页面提供预览与修改；卖家位于英国，可寄美国；商品页 1 条评价，约 3.9k 为店铺总销售 | 直接竞品展示了“买家交资料—商家排版—预览修改—跨境寄送”的手工流程；订单后沟通可能增加提交摩擦 | 价格是动态促销快照，不是稳定成交价；店铺总销售不可归于此单品；英国卖家不等于美国本地履约 |
+| [Magazine of You 顾客评价](https://www.trustpilot.com/review/magazineofyou.com) | Trustpilot 页面当时显示 56 条评价、4.5/5；可见反馈里既有满意评价，也有错拼姓名、错误订单、确认内容未出现在成品等问题 | 个性化产品应设计姓名/图片/内容核对、预览确认和订单版本追踪，控制礼物交付错误 | 单个品牌评价是质量风险线索，不是市场错误率或普遍需求证据 |
+| [Lulu 杂志按需印刷](https://www.lulu.com/create/magazines) | 官网称可单本起印，US Letter 彩色杂志标价从 US$8.54 起；价格取决于规格/页数，邮费另算 | 可作为美国样刊和实体履约候选，先用实际规格与美国地址下单算清成本 | “起价”不是目标规格落地成本；页面所示不同产品规格有页数限制，需用定价器或样单确认 |
+| [Lulu Direct + WooCommerce](https://www.lulu.com/sell/sell-on-your-site/woocommerce) | 官方支持 WooCommerce 店铺连接、按需印刷、自动打印/包装/寄送；商户分别收顾客货款并向 Lulu 支付印刷及邮费 | 与原始 WooCommerce 独立站方向兼容，可作为后续自动发货候选 | 文档说明的是连接店铺产品和自动履约；每位顾客生成不同 PDF 后如何传入正确订单、规格/页数和审核流程尚未验证，不能假定全自动成立 |
+| [MagCloud 杂志规格/价格](https://www.magcloud.com/help/faq/item/1107) | 官方列出标准杂志按页计价约 US$0.20/页，装订费另按类型；8 页起可用的格式见其规格页 | 可作为低页数实体样刊的价格比较对象 | 本轮未确认 WooCommerce 直连和每单个性化文件自动履约；应先做手工样单对比 |
+
+### US 首轮判断
+
+1. 目前可测试的定位是“替送礼者组织照片与回忆、完成杂志排版，并在印刷前给买家确认”，不是泛泛地“帮不会用 Canva 的人做设计”。
+2. 有价格跨度很大的替代品：约 US$10.99 的单封面数字文件、动态约 US$20.87 的 8 页跨境实体商品、另有自助照片杂志。它们产品结构和服务不同，不能直接推导我们的售价。
+3. 首轮建议先用单个样刊和人工辅助流程验证真实交易，再决定自动化。实体样刊须先算定制规格 + 印刷 + 美国运费 + 支付费 + 返工时间；自动发货暂不能承诺。
+4. 供应链优先验证 Lulu（WooCommerce 集成候选）与 MagCloud（小页数计价候选）的实际样单。尤其核实 Lulu 的可用页数和单个订单的动态 PDF 传递方法。
+5. US English 桌面研究已完成；没有代表性访谈、本项目订单、客户获客成本或重复购买数据。G1 仍未通过。
+

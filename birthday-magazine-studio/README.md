@@ -2,7 +2,7 @@
 
 ## 项目状态
 
-**G1 / 桌面调研部分完成，真实买家验证待做**
+**G1 / 美国英语桌面调研完成，真实买家验证待做**
 
 这是一个个性化礼物产品项目。立项记录已建立；目前没有开始网站开发、上线或真实支付，也没有把任何主题、插件或印刷服务定为最终选型。
 
@@ -35,7 +35,8 @@
 
 - [PROJECT_RECORD.md](./PROJECT_RECORD.md) — 项目长期事实、决策、阶段状态和下一步
 - [docs/PROJECT_CHARTER.md](./docs/PROJECT_CHARTER.md) — 立项目标、范围、验收条件、阶段门与风险
-- [docs/G1_DESK_RESEARCH.md](./docs/G1_DESK_RESEARCH.md) — 公开线索、证据强弱、反例与访谈提纲
+- [docs/G1_DESK_RESEARCH.md](./docs/G1_DESK_RESEARCH.md) — 美国英语市场公开线索、证据强弱、反例与访谈提纲
+- [docs/G1_US_FIRST_EXPERIMENT.md](./docs/G1_US_FIRST_EXPERIMENT.md) — 美国首轮访谈、样刊和付费试点草案
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 证据主干、当前瓶颈和获客最小实验
 - [docs/WORDPRESS_STACK_RESEARCH.md](./docs/WORDPRESS_STACK_RESEARCH.md) — 可复用的免费 WordPress 主题、模板和插件候选
 
