@@ -6,8 +6,8 @@ Last updated: 2026-09-26
 
 | Field | Value |
 |---|---|
-| PROJECT_STATUS | G1_TWO_STEP_AI_OFFER_DECIDED_IMPLEMENTATION_PENDING |
-| CURRENT_GATE | G1_TWO_STEP_AI_PREVIEW_AND_GENERATION_POC |
+| PROJECT_STATUS | G1_INTERACTIVE_SAMPLE_AVAILABLE_PRODUCTION_BUILD_PENDING |
+| CURRENT_GATE | G1_SAMPLE_REVIEW_THEN_PRODUCTION_POC |
 | G0_PROJECT_CHARTER | RECORDED |
 | G1_DEMAND_VALIDATION | OWNER_REPORTED_VALIDATED_DETAILS_NOT_ARCHIVED |
 | G1_OFFER_PRICE | USD_39_99_OWNER_CONFIRMED |
@@ -18,11 +18,11 @@ Last updated: 2026-09-26
 | G1_FIRST_PILOT_FORMAT | DIGITAL_PDF |
 | G1_PREVIEW_MODE | BROWSER_LOCAL_TEMPLATE_NO_AI_API_CALL |
 | G1_PAID_PRODUCTION_MODE | FULL_AI_AFTER_PAYMENT_AND_COMPLETE_INTAKE |
-| G1_PRODUCT_SAMPLE | NOT_STARTED |
+| G1_PRODUCT_SAMPLE | INTERACTIVE_BROWSER_SAMPLE_CREATED_OWNER_REVIEW_PENDING |
 | G1_OWN_TRANSACTION_TEST | NOT_STARTED |
 | G1_REPEATABILITY_AND_ECONOMICS | UNKNOWN |
 | SELLER_MERCHANT_COUNTRY | UNKNOWN |
-| PRODUCT_BUILD_STARTED | NO |
+| PRODUCT_BUILD_STARTED | PROTOTYPE_ONLY |
 | WORDPRESS_THEME_SELECTED | NO |
 | PLUGIN_STACK_SELECTED | NO |
 | PRODUCTION_DEPLOYMENT | NO |
@@ -31,7 +31,7 @@ Last updated: 2026-09-26
 | CURRENT_PRODUCT_SCOPE | BIRTHDAY_MEMORIAL_MAGAZINE |
 | FAMILY_RECIPE_BOOK | ADJACENT_IDEA_PARKED |
 
-Owner 已确认：首测价 US$39.99；不设置预设预算和订单量上限；美国优先并面向其他海外市场；首发英语；付款前预览不调用模型 API；付款并提交完整素材后全 AI 生成。具体海外国家、卖家收款主体国家、货币/支付网关、额外 AI 修改政策仍未确定。网站、付费、生成任务和 PDF 交付都尚未实现。
+Owner 已确认：首测价 US$39.99；不设置预设预算和订单量上限；美国优先并面向其他海外市场；首发英语；付款前预览不调用模型 API；付款并提交完整素材后全 AI 生成。已制作[可点击两步样板](./prototype/index.html)，展示本地零模型调用预览和模拟付款后的问答、生成、校对、PDF 保存界面。真实网站、支付、生成任务和 PDF 自动交付均尚未实现。具体海外国家、卖家收款主体国家、货币/支付网关、额外 AI 修改政策仍未确定。
 
 需求存在由 Owner 报告为已验证，样本/渠道/行为记录尚未归档。首笔本项目交易、AI 成品接受度、单笔模型成本和整体单位经济仍未知。
 
@@ -41,18 +41,18 @@ Owner 已确认：首测价 US$39.99；不设置预设预算和订单量上限�
 
 ## Current Stage
 
-**G1 — 需求存在由 Owner 确认；价格、海外拓展意向和两步式全 AI 方向已确认；当前进入零 Token 预览与付费生成 PoC 规格阶段。**
+**G1 — 需求存在由 Owner 确认；价格、海外拓展意向和两步式全 AI 方向已确认；零 Token 预览及付款后制作的交互样板已完成，等待评审后再进入生产 PoC。**
 
 以下仍未验证：首测国家列表与卖家收款国是否匹配；客户是否按 US$39.99 付款；免费预览是否促成购买；正式成品是否符合期望；支付费、AI 视觉/文本调用、生成重试、存储和获客后的单笔利润。
 
 ## Validation Spine
 
 - Problem Evidence：**Owner 报告已验证；摘要待归档**。
-- Solution Proof：**两步式产品方案已定义；预览与 PDF 样刊未实现**。
+- Solution Proof：**可点击的两步式浏览器样板已实现；无真实支付、模型调用或客户样刊**。
 - Attention / Interest / Intent：具体产品预览和 Offer **未测**。
 - Transaction：**未测**；没有本项目已记录实付订单。
 - Repeatability / Economics：**未知**；API 用量、修订、退款、获客费用未测。
-- 当前瓶颈：实现并验证“零模型费用预览 → 已付款订单触发生成 → 私有 proof/PDF 交付”最小链路，不是人工制作 SOP 或主题选型。
+- 当前瓶颈：样板可供评审，但“零模型费用预览 → 实际付款 → 已付款触发生成 → 私有 proof/PDF 交付”仍未接通或验证。
 
 ## Decisions and Constraints
 
@@ -70,9 +70,9 @@ Owner 已确认：首测价 US$39.99；不设置预设预算和订单量上限�
 
 ## Next Action
 
-1. 冻结免费预览输入范围：本地照片、称呼/年龄、静态模板、低清水印页，以及购买 CTA。
-2. 设计付费后的完整问卷、图片限制、AI 输出 JSON/页面映射和质量检查标准。
-3. 做支付状态驱动的后台生成 PoC：已付且资料完整才生成；生成失败保留任务状态并可恢复。
+1. 评审[交互样板](./prototype/index.html)中的免费预览和付费后体验。
+2. 冻结 MVP 的页面、问卷、图片限制、AI 输出格式和质量检查标准。
+3. 做支付状态驱动的后台生成 PoC：只有真实支付成功且资料完整才生成；失败任务可恢复。
 4. 在正式支付集成前确认卖家收款主体国家与首批允许销售的海外国家。
 5. 记录从付款到 proof、PDF 交付、API 用量和订单接受情况；开发是否扩展不以主观评价替代行为数据。
 
@@ -96,4 +96,5 @@ Owner 已确认：首测价 US$39.99；不设置预设预算和订单量上限�
 | 2026-09-26 | 付款前提供不调用模型 API 的本地模板预览 | Owner confirmed direction |
 | 2026-09-26 | 付款后由 AI 完成实际内容制作与 PDF 生成 | Owner confirmed direction |
 | 2026-09-26 | 目标拓展美国以外海外市场；首批国家待列 | Owner input; country list pending |
-| 2026-09-26 | 网站、支付、AI 生成、私有 PDF 交付均未开始 | Current state |
+| 2026-09-26 | 创建免费预览及付款后制作的交互式浏览器样板；只演示流程，不调用模型、不收款 | Prototype created; owner review pending |
+| 2026-09-26 | 生产 WordPress 站点、真实支付、AI 生成、私有 PDF 自动交付均未开始 | Current state |

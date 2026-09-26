@@ -2,9 +2,9 @@
 
 ## 项目状态
 
-**G1：需求由 Owner 确认已验证；价格已定 US$39.99；采用免费零 AI Token 预览 + 付费后全 AI 制作。网站和生成系统尚未开发。**
+**G1：需求由 Owner 确认已验证；价格已定 US$39.99；两步式交互样板已完成。生产网站、真实支付和 AI 生成系统尚未开发。**
 
-Owner 已确认美国优先、英语首发、US$39.99 测试价，不设预设预算/订单上限，并选择付款前零 AI Token 的本地模板预览、付款后全 AI 生成。需求验证详情尚未归档；本项目真实支付、AI 生成和交付尚未验证。
+Owner 已确认美国优先、英语首发、US$39.99 测试价，不设预设预算/订单上限，并选择付款前零 AI Token 的本地模板预览、付款后全 AI 生成。已制作可点击的浏览器样板展示两步体验；样板中的付款、AI 制作和 PDF 下载都是模拟流程。需求验证详情尚未归档；本项目真实支付、AI 生成和交付尚未验证。
 
 ## 项目目标
 
@@ -31,6 +31,7 @@ Owner 已确认美国优先、英语首发、US$39.99 测试价，不设预设�
 - 新增 [产品、交付、经济性与 WordPress MVP 调研](./docs/G1_REMAINING_RESEARCH.md)。
 - 插件候选细节见 [WordPress 模板与插件候选](./docs/WORDPRESS_STACK_RESEARCH.md)。
 - 获客验证逻辑见 [获客验证计划](./docs/ACQUISITION_GROWTH_PLAN.md)。
+- 交互样板见 [prototype/index.html](./prototype/index.html)；范围与限制见 [prototype/README.md](./prototype/README.md)。
 
 ## 文档索引
 
