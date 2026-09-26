@@ -10,7 +10,7 @@
 
 - Final goal: let a buyer turn photos and structured answers into a polished, personalized birthday magazine PDF without designing it manually.
 - Accepted product direction: browser-local zero-model-cost preview before payment; full personalized production only after confirmed payment and complete intake.
-- Current business goal: freeze the MVP specification and prove that the current interactive sample represents the intended buying/production experience before any production build.
+- Current business goal: choose the lowest-custom-work WordPress frontend foundation and freeze the MVP UI/component path before AI/PDF implementation.
 - Current scope: birthday magazine only. Family recipe book remains a separate parked idea.
 
 ## 2. Authority / Source of Truth
@@ -43,7 +43,11 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Payment evidence boundary: Mini Craft is an implementation/reference path only; its current state does not prove Birthday Magazine Live payment.
 - Free-value path: deterministic browser-local preview only; **0 LLM / vision / image-generation Token**.
 - Paid entitlement boundary: model generation is permitted only after server-side WooCommerce/PayPal paid state is confirmed **and** required intake is complete.
-- Generation service/worker: separate server-side asynchronous job boundary; exact runtime/provider = `UNKNOWN`.
+- Frontend foundation: G2A PoC compares **Kadence Jewelry Shop + Storelly**, **Blocksy Modern Shop + Storelly**, and the existing **Good Issue** prototype as the custom-reference baseline.
+- Post-payment photo intake: Vanquish Upload Files is the first PoC candidate; not accepted until guest/order/private-access behavior is verified.
+- Private proof/final attachment: Vanquish Attach Me / Woo order-bound private delivery is the first PoC path; not accepted until access-control behavior is verified.
+- Background jobs: use the WordPress/WooCommerce Action Scheduler pattern first; do not introduce Redis/Celery/RabbitMQ without an observed need.
+- Generation service/worker: project-specific asynchronous generation boundary; exact runtime/provider = `UNKNOWN`.
 - Generation idempotency: one paid order → at most one active canonical generation job; duplicate callback/refresh must not duplicate model spend.
 - PDF rendering engine: `UNKNOWN`.
 - Data/persistence: `UNKNOWN`.
@@ -58,7 +62,7 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 ```text
 P0  Governance Intake / Truth Reconciliation             ✅ PASS
 G1  Product / Offer Baseline                            ✅ PASS (Owner decisions; not transaction proof)
-G2A Interactive Sample Review + MVP Spec Freeze          ← CURRENT
+G2A Frontend Foundation + Component PoC + MVP UI Freeze ← CURRENT
 G2B Local AI/PDF Solution Proof                         ⏳ HOLD
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
@@ -97,55 +101,61 @@ Important limitation: the Owner reports demand as already validated, but the und
 - Repeatability/economics: unknown.
 - Production website: not built/deployed.
 
-## 6. Current Gate — G2A Interactive Sample Review + MVP Spec Freeze
+## 6. Current Gate — G2A Frontend Foundation + Component PoC + MVP UI Freeze
+
+Formal execution contract: [docs/G2A_FRONTEND_COMPONENT_POC.md](./docs/G2A_FRONTEND_COMPONENT_POC.md)
 
 ### Goal
 
-Review the existing browser prototype and freeze the exact MVP product contract before authorizing AI/PDF implementation or store/payment work.
+Compare three local/test-only routes and select the lowest-custom-work foundation that preserves the core birthday-magazine experience:
+
+1. Kadence Jewelry Shop + Storelly;
+2. Blocksy Modern Shop + Storelly;
+3. existing Good Issue prototype as the custom-reference baseline.
+
+### Critical experience to preserve
+
+```text
+simple inputs
+→ immediate cover + 1–2 spread magazine preview
+→ zero model Token
+→ clear US$39.99 unlock path
+→ WooCommerce-compatible checkout path
+```
 
 ### Allowed scope
 
-- inspect and revise the browser-only prototype;
-- freeze page count, photo-count range, required questions and content sections;
-- freeze the boundary between free preview, paid intake, private proof and final PDF;
-- define deterministic PDF QA checks;
-- define revision/regeneration policy for the US$39.99 offer;
-- define minimum privacy/retention/deletion requirements for customer photos and answers;
-- use synthetic/test assets only;
-- update Reviewer-owned project documentation.
+- local/test WordPress PoC;
+- free/open-source theme/plugin installation needed for comparison;
+- synthetic/demo photos only;
+- minimal CSS/JS adaptation;
+- desktop + 375px screenshots;
+- component-fit and custom-code comparison;
+- Reviewer documentation updates.
 
 ### Forbidden scope
 
-- live payment or buyer charge;
-- production payment-provider activation;
-- real customer photo collection;
-- production AI/model calls on customer data;
-- WordPress/hosting/VPS production deployment;
-- Secret creation or entry;
-- paid plugin/service purchase;
-- treating any current research candidate as an approved architecture.
+- PayPal connection or real payment;
+- AI/model API calls;
+- production customer uploads;
+- Secret entry;
+- paid plugin purchase;
+- VPS/domain/public production deployment;
+- full 12-page generation engine.
 
 ### Acceptance criteria
 
-1. Reviewer walkthrough of the current interactive sample is completed.
-2. Exact MVP content specification is frozen.
-3. Exact free-preview vs paid-value boundary is frozen.
-4. Exact paid intake requirements are frozen.
-5. PDF/QA acceptance checks are written.
-6. Included revision/regeneration policy is frozen.
-7. Customer data handling baseline is written.
-8. G2B can be expressed as one bounded, test-fixture-only execution Gate.
-
-### Evidence required
-
-- reviewed prototype behavior/screens;
-- frozen supporting MVP specification;
-- explicit remaining UNKNOWN list;
-- no claim of payment, AI generation or delivery unless separately evidenced.
+1. the three routes have comparable evidence, or a route is specifically proven infeasible;
+2. selected foundation preserves zero-token local preview;
+3. selected foundation remains WooCommerce-compatible;
+4. selected foundation can carry the Good Issue editorial visual language;
+5. custom-code and plugin-lock-in tradeoffs are explicit;
+6. mobile 375px behavior is verified;
+7. no payment/AI/customer-data production action occurs.
 
 ### Rollback
 
-Documentation/prototype-only changes are reversible through Git. No production resource is in scope.
+All G2A changes are local/test and Git-reversible. No production resource is in scope.
 
 ## 7. Confirmed Facts
 
@@ -156,6 +166,11 @@ Documentation/prototype-only changes are reversible through Git. No production r
 - WordPress + WooCommerce is now the accepted commerce baseline.
 - PayPal through the official WooCommerce PayPal Payments plugin is now the accepted payment path, using Mini Craft as the implementation reference.
 - The free path must remain deterministic and zero-model-token; paid AI spend is gated by confirmed payment entitlement plus complete intake.
+- The reuse-vs-custom technical route is documented in `docs/TECHNICAL_ROUTE.md`.
+- Kadence Jewelry Shop + Storelly is the first PoC candidate, not a final selection.
+- Blocksy Modern Shop + Storelly is the comparison backup.
+- Existing Good Issue remains the editorial/custom-reference baseline.
+- Vanquish Upload Files and Vanquish Attach Me remain PoC candidates, not accepted production dependencies.
 - Other WordPress/plugin research remains candidate research unless separately accepted.
 - There is no current production deployment.
 
@@ -171,7 +186,11 @@ Documentation/prototype-only changes are reversible through Git. No production r
 - generator/model/provider selection;
 - real per-order AI/render/storage cost;
 - storage, access control and deletion policy;
-- actual production architecture and hosting;
+- final frontend foundation after G2A;
+- whether Storelly satisfies the local zero-token preview requirement without unacceptable cloud/paid dependency;
+- whether Vanquish upload/attachment plugins pass guest-order and private-access tests;
+- exact PDF render engine;
+- actual production hosting;
 - refund/cancellation handling;
 - real transaction conversion and acquisition cost.
 
@@ -201,15 +220,15 @@ Documentation/prototype-only changes are reversible through Git. No production r
 
 ## 12. Next Step
 
-- Reviewer next action: perform G2A prototype walkthrough and freeze the detailed MVP specification.
-- Executor next action: none until G2A PASS produces a bounded G2B prompt.
-- Owner intervention required: **YES, at G2A acceptance** for subjective product/visual approval and the final included revision policy. No technical setup is required from Owner now.
+- Reviewer next action: dispatch/review G2A using `docs/G2A_FRONTEND_COMPONENT_POC.md`.
+- Executor next action: build the three local PoCs, capture comparable evidence, update `EXECUTION_EVIDENCE.md` + `EXECUTOR_HANDOFF.md`, and stop at Reviewer.
+- Owner intervention required: **YES only after technical comparison**, to approve the chosen visual foundation before G2B. No account/payment/Secret action is required now.
 
 ## 13. Status Summary
 
 - Overall progress: product direction, clickable sample, commerce baseline, PayPal path and free/paid Token boundary are fixed; production system does not yet exist.
 - Final goal: PayPal-paid personalized birthday magazine PDF workflow.
-- Current Gate: G2A interactive sample review + MVP spec freeze.
-- This round completed: governance normalization plus architecture decision for WordPress/WooCommerce/PayPal and zero-token-free / paid-AI boundary.
-- Next: review/freeze the actual MVP, then local AI/PDF solution proof, then WooCommerce commerce loop and PayPal Sandbox.
+- Current Gate: G2A frontend foundation + component PoC + MVP UI freeze.
+- This round completed: reusable technical route frozen; generic commerce/upload/payment/queue/delivery capabilities are assigned to mature WordPress/WooCommerce components where possible; custom work is restricted to the magazine-generation core.
+- Next: run the three-route local frontend/component PoC, select the foundation, then enter G2B local AI/PDF solution proof.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.

@@ -31,10 +31,14 @@
 
 当前样板是浏览器演示：不真实收款、不调用 AI 生成模型、不建立订单数据库、不自动交付生产 PDF。
 
+当前技术原则：**网站和交易尽量复用 WordPress/WooCommerce 成熟组件，只自研生日杂志生成核心。** 当前 G2A 正在比较 Kadence+Storelly、Blocksy+Storelly 和 Good Issue custom 三条前端路径。
+
 ## 文档
 
 - [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — **唯一当前 Reviewer / 项目真相**
 - [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — 所有文档的角色和权威等级
+- [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md) — **当前技术路线：哪些复用、哪些自研**
+- [docs/G2A_FRONTEND_COMPONENT_POC.md](./docs/G2A_FRONTEND_COMPONENT_POC.md) — **当前执行 Gate：三方案前端/组件 PoC**
 - [docs/G1_TWO_STEP_AI_PRODUCT_FLOW.md](./docs/G1_TWO_STEP_AI_PRODUCT_FLOW.md) — 两步式产品流支持设计
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 获客/验证计划
 - [docs/G1_DESK_RESEARCH.md](./docs/G1_DESK_RESEARCH.md) — 市场研究快照
