@@ -2,8 +2,8 @@
 
 > Maintainer: Reviewer / Architect / Gatekeeper only  
 > Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1  
-> Latest Executor facts: branch `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, `EXECUTOR_HANDOFF.md`, HEAD `b1bf844096fed4761372f3beea6f9f2d7d081643`  
-> Latest detailed evidence: same branch `EXECUTION_EVIDENCE.md`; Reviewer accepted partial facts and returned the Gate  
+> Latest Executor facts: branch `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, `EXECUTOR_HANDOFF.md`, HEAD `f79891f20c973e93586e41319c0abb7e78b3af4c`  
+> Latest detailed evidence: same branch `EXECUTION_EVIDENCE.md` + `g2a1/r1/preflight.json`; Reviewer accepted the resource-blocked return  
 > Last reviewed: 2026-09-26
 
 ## 1. Project Goal
@@ -67,7 +67,8 @@ No model may silently replace an uncertain quantity, unit, temperature, cooking 
 P0   Governance Intake / Project Truth Bootstrap          ✅ PASS
 G1   Core Product Boundary                               ✅ PASS (concept baseline only)
 G2A1 Input + OCR + Reusable Component Feasibility PoC    ↩ RETURNED (partial evidence accepted)
-G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ← CURRENT
+G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ↩ RETURNED (resource blocked)
+G2A1-R2 Isolated GitHub Actions Runner Completion         ← CURRENT
 G2A2 MVP Product Contract Freeze                         ⏳ HOLD
 G2B  Local OCR → Structured Recipe → PDF Solution Proof  ⏳ HOLD
 G3A  WordPress + WooCommerce Local Commerce Loop         ⏳ HOLD
@@ -88,8 +89,11 @@ Current Reviewer decisions:
 - `RETURN_G2A1_OCR_ENVIRONMENT_AND_TESTBED_BLOCKED_2026-09-26`
 - `ACCEPT_G2A1_PARTIAL_ROUTING_SCHEMA_STATIC_PREVIEW_EVIDENCE_2026-09-26`
 - `OPEN_G2A1_R1_ENVIRONMENT_REMEDIATION_COMPLETION_2026-09-26`
+- `RETURN_G2A1_R1_RESOURCE_BLOCKED_2026-09-27`
+- `ACCEPT_G2A1_R1_RESOURCE_PREFLIGHT_EVIDENCE_2026-09-27`
+- `OPEN_G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION_2026-09-27`
 
-Important limitation: the first G2A1 execution did **not** run PaddleOCR or TrOCR inference and did **not** exercise a Family Cookbook WordPress/WooCommerce testbed. OCR accuracy, fallback value, upload/private-delivery behavior, payment, PDF quality, repeatability, production hosting and print fulfillment remain unproven.
+Important limitation: two local attempts have still not run PaddleOCR/TrOCR inference or the Family Cookbook WordPress/WooCommerce testbed. R1 additionally proved the current Windows workstation is unsafe for this Gate at only 0.62 GiB available RAM while unrelated workloads are active. OCR accuracy, fallback value, upload/private-delivery behavior, payment, PDF quality, repeatability, production hosting and print fulfillment remain unproven.
 
 ## 5. Accepted Baseline
 
@@ -122,12 +126,13 @@ Important limitation: the first G2A1 execution did **not** run PaddleOCR or TrOC
 - Physical printing: not tested.
 - Economics: unknown.
 
-## 6. Current Gate — G2A1-R1 OCR Runtime + WordPress Testbed Remediation / Completion
+## 6. Current Gate — G2A1-R2 Isolated GitHub Actions Runner Completion
 
 Original G2A1 contract: [docs/G2A1_INPUT_OCR_COMPONENT_POC.md](./docs/G2A1_INPUT_OCR_COMPONENT_POC.md)  
-Current remediation contract: [docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md](./docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md)
+R1 remediation contract: [docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md](./docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md)  
+Current R2 contract: [docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md](./docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md)
 
-### Reviewer review of returned execution
+### Reviewer review of returned executions
 
 Reviewer independently read back the branch, final HEAD, evidence, handoff, benchmark JSON and core routing/schema/benchmark code.
 
@@ -147,15 +152,26 @@ Reasons Gate cannot PASS:
 - Family Cookbook WordPress/Kadence testbed did not exist;
 - order-bound upload/private delivery were not exercised.
 
+R1 follow-up evidence at `f79891f20c973e93586e41319c0abb7e78b3af4c` is also accepted:
+- available host RAM fell from 1.67 → 1.23 → **0.62 GiB** during read-only preflight;
+- unrelated WordPress/MariaDB workloads were active and correctly left untouched;
+- GPU VRAM and disk availability do not remove the host-RAM safety blocker;
+- no new model/testbed load was started;
+- this is a resource/environment return, not an OCR-architecture failure.
+
+Reviewer decision: **do not retry G2A1 on the current workstation.** The remaining PoC moves to an isolated GitHub Actions hosted runner.
+
+The repository is public and already has successful Actions run history. Exact runner capacity/quota/permissions still require execution-time preflight.
+
 The next run must complete only the blocked evidence, not re-run accepted work without reason.
 
-### G2A1-R1 remediation goals
+### G2A1-R2 goals
 
 1. get PaddleOCR primary inference running without changing OCR product architecture;
 2. run TrOCR only on real routed suspicious crops and measure its value;
 3. add a small public/open genuine-handwriting subset so typography is not mistaken for handwriting proof;
 4. measure OCR accuracy, critical-field errors, routing/fallback and `USER_CONFIRM_REQUIRED` burden;
-5. create a dedicated local Family Cookbook WordPress + WooCommerce + Kadence testbed;
+5. create a dedicated **ephemeral GitHub Actions** Family Cookbook WordPress + WooCommerce + Kadence testbed;
 6. prove order-bound upload and private delivery positive/negative access behavior;
 7. preserve all accepted partial evidence from the first RETURN.
 
@@ -171,11 +187,13 @@ G2A1 is no longer a broad OCR bake-off. Validate this minimal architecture only:
 
 Tesseract, cloud OCR and VLM/vision are explicitly deferred from MVP and are not required for G2A1 PASS.
 
-### Runtime remediation note
+### Runtime / environment note
 
-The first attempt stalled on a PaddlePaddle wheel download. Current PaddleOCR documentation supports a Transformers inference engine, so G2A1-R1 may prefer that route while keeping **PaddleOCR as the primary OCR product**. If needed, the official Windows PaddlePaddle/CUDA 12.6 package channel is an allowed fallback within the same architecture.
+The current Windows workstation is no longer an authorized execution target for the remaining G2A1 inference/testbed work.
 
-For TrOCR, Reviewer authorizes `microsoft/trocr-small-handwritten` first to reduce download/runtime footprint because TrOCR is only the fallback path.
+R2 uses an isolated GitHub Actions hosted Ubuntu runner. Current PaddleOCR documentation supports a Transformers inference engine, so R2 should prefer that route while keeping **PaddleOCR as the primary OCR product**. CPU inference is acceptable for PoC.
+
+For TrOCR, Reviewer continues to authorize `microsoft/trocr-small-handwritten` as the bounded fallback model.
 
 ### Required OCR fixture set
 
@@ -263,16 +281,16 @@ All G2A1 work is local/test-only and Git-reversible. The Git branch/commit is th
 
 ## 12. Next Step
 
-- Reviewer decision: `RETURN_G2A1_OCR_ENVIRONMENT_AND_TESTBED_BLOCKED_2026-09-26`.
-- Executor next action: continue the **same branch** and execute [docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md](./docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md).
-- Do not merge/rebase unrelated Mini Craft-only `main` drift merely to continue this Gate; read current Reviewer truth from `main` first.
-- Return branch + final HEAD SHA + `PASS_CANDIDATE_G2A1_R1_*` or precise `RETURN_*`, do not merge `main`, and stop at Reviewer.
-- Owner intervention required: **NO** for this remediation unless a genuinely Owner-only blocker (paid purchase, account/identity/Secret action) appears.
+- Reviewer decision: accept `RETURN_G2A1_R1_RESOURCE_BLOCKED` at `f79891f20c973e93586e41319c0abb7e78b3af4c`.
+- Executor next action: continue the **same branch** and execute [docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md](./docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md).
+- Use GitHub Actions hosted runner; do not retry model/testbed load on the current Windows workstation.
+- Return branch + final HEAD SHA + Actions run ID + `PASS_CANDIDATE_G2A1_R2_*` or precise `RETURN_*`; do not merge `main`; stop at Reviewer.
+- Owner intervention required: **NO** unless Actions is unavailable due billing/quota/account restriction or another genuinely Owner-only checkpoint appears.
 
 ## 13. Status Summary
 
-- Overall progress: G2A1 produced valid partial PoC code/evidence but returned on OCR runtime + missing Family WP testbed; no architecture change is needed.
+- Overall progress: G2A1 produced valid partial PoC evidence; R1 proved the current workstation is resource-blocked. No OCR architecture change is needed.
 - Final goal: private, reliable family recipe intake → faithful transcription/structuring → proof → cookbook PDF → later optional print.
-- Current Gate: **G2A1-R1 environment remediation/completion**.
+- Current Gate: **G2A1-R2 isolated GitHub Actions runner completion**.
 - Next after PASS: G2A2 exact MVP contract → G2B local OCR-to-PDF proof.
 - Attention: never treat clean OCR demos, model self-confidence or a visually nice PDF as proof that recipe facts are correct.
