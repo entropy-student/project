@@ -155,9 +155,24 @@ The benchmark should include a small but deliberately mixed fixture set:
 
 Do not benchmark only clean screenshots.
 
+### Git / execution delivery contract
+
+G2A1 must be executed on a dedicated branch:
+
+`codex/family-cookbook-g2a1-input-ocr-component-feasibility`
+
+Executor must:
+- branch from the current repository baseline before Gate writes;
+- commit all allowed PoC code, fixture metadata, benchmark outputs, `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md` back to that branch;
+- return the exact branch name and final HEAD commit SHA;
+- ensure Reviewer can reproduce/read the evidence from GitHub without depending on the Executor's local workspace;
+- **not merge to `main`**, not open the next Gate, and stop at Reviewer.
+
+If the exact branch already exists, classify/read its current state first and continue only if it is the active G2A1 branch; do not overwrite unrelated work.
+
 ### Rollback
 
-All G2A1 work is local/test-only and Git-reversible. No production resource, real payment, customer file or Secret is in scope.
+All G2A1 work is local/test-only and Git-reversible. The Git branch/commit is the execution rollback boundary. No production resource, real payment, customer file or Secret is in scope.
 
 ## 7. Confirmed Facts
 
@@ -215,7 +230,7 @@ All G2A1 work is local/test-only and Git-reversible. No production resource, rea
 ## 12. Next Step
 
 - Reviewer next action: dispatch/review G2A1 via `docs/G2A1_INPUT_OCR_COMPONENT_POC.md`.
-- Executor next action: run the bounded local benchmark and component probes, then create/update `EXECUTION_EVIDENCE.md` + `EXECUTOR_HANDOFF.md`, return `PASS_CANDIDATE_*`, and stop at Reviewer.
+- Executor next action: execute G2A1 on `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, commit all permitted code/evidence to GitHub, return branch + final HEAD SHA + `PASS_CANDIDATE_*` or precise `RETURN_*`, do not merge `main`, and stop at Reviewer.
 - Owner intervention required: **NO during G2A1**. Owner decisions become necessary at G2A2 for price/package/language/revision/visual and fidelity-policy tradeoffs.
 
 ## 13. Status Summary
