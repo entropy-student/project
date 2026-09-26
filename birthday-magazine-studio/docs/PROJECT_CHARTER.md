@@ -1,3 +1,7 @@
+> **Governance status: HISTORICAL INITIAL CHARTER.**  
+> This document preserves the initial project framing and may contain assumptions superseded by later Owner decisions.  
+> Current stage, Gate, accepted decisions and UNKNOWNs live only in [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md).
+
 # 项目立项书：Birthday Magazine Studio（生日纪念杂志）
 
 立项日期：2026-09-26  
