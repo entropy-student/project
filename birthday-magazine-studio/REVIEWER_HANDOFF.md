@@ -43,10 +43,11 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Payment evidence boundary: Mini Craft is an implementation/reference path only; its current state does not prove Birthday Magazine Live payment.
 - Free-value path: deterministic browser-local preview only; **0 LLM / vision / image-generation Token**.
 - Paid entitlement boundary: model generation is permitted only after server-side WooCommerce/PayPal paid state is confirmed **and** required intake is complete.
-- Frontend foundation: **Good Issue-style preview inside WordPress + WooCommerce is the preferred feasibility candidate** based on G2A1 partial evidence. This is not yet the final G2A2 visual/product freeze.
-- Storelly: **REJECTED for the current free-preview path** in the tested runtime because the product page fatally failed and its image path is server-upload based rather than browser-local.
-- Post-payment photo intake: Vanquish Upload Files registered-account path has partial PASS evidence; **guest path remains unverified**, so the component is not yet fully accepted.
-- Private proof/final attachment: Vanquish Attach Me registered-account authorization/direct-URL denial has partial PASS evidence; **guest flow and completed byte-level download remain unverified**, so the component is not yet fully accepted.
+- Frontend foundation: **Good Issue-style preview inside WordPress + WooCommerce is the accepted technical foundation candidate** from G2A1. Final subjective visual/product freeze remains G2A2.
+- Storelly: **REJECTED for the current free-preview path**.
+- Post-payment photo intake: Vanquish Upload Files is a **registered-account reuse candidate**. Its guest-issued secure file link replayed outside the intended guest context, so the guest-private path is **REJECTED AS-IS**.
+- Private proof/final attachment: Vanquish Attach Me is a **registered-account reuse candidate**. Actual authorized download/hash passed, but its guest-issued attachment link replayed outside the intended guest context, so strict guest-private delivery is **REJECTED AS-IS**.
+- Guest access model: whether the MVP requires authenticated accounts or guest/no-account fulfillment is a **G2A2 product decision**.
 - Background jobs: use the WordPress/WooCommerce Action Scheduler pattern first; do not introduce Redis/Celery/RabbitMQ without an observed need.
 - Generation service/worker: project-specific asynchronous generation boundary; exact runtime/provider = `UNKNOWN`.
 - Generation idempotency: one paid order → at most one active canonical generation job; duplicate callback/refresh must not duplicate model spend.
@@ -63,9 +64,9 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 ```text
 P0  Governance Intake / Truth Reconciliation             ✅ PASS
 G1  Product / Offer Baseline                            ✅ PASS (Owner decisions; not transaction proof)
-G2A1 Frontend + Reusable Component Feasibility PoC      ↩ RETURN
-G2A1R1 Evidence Closure                                 ← CURRENT / AUTHORIZED
-G2A2 MVP Product Contract Freeze                        ⏳ HOLD
+G2A1 Frontend + Reusable Component Feasibility PoC      ✅ PASS
+G2A1R1 Evidence Closure                                 ⏹ CLOSED — executor RETURN produced final technical finding
+G2A2 MVP Product Contract Freeze                        ⏳ HOLD / NOT STARTED
 G2B  Local AI/PDF Solution Proof                        ⏳ HOLD
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
@@ -79,6 +80,7 @@ Current Reviewer decisions:
 - `PASS_G1_PRODUCT_OFFER_BASELINE_OWNER_DECISIONS_2026-09-26`
 - `PASS_ARCH_WOOCOMMERCE_PAYPAL_AND_TOKEN_BOUNDARY_2026-09-26`
 - `RETURN_G2A1_EVIDENCE_CLOSURE_REQUIRED_2026-09-26`
+- `PASS_G2A1_COMPONENT_FEASIBILITY_WITH_GUEST_PATH_REJECTION_2026-09-27`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -105,70 +107,39 @@ Important limitation: the Owner reports demand as already validated, but the und
 - Repeatability/economics: unknown.
 - Production website: not built/deployed.
 
-## 6. Current Gate — G2A1R1 Evidence Closure
+## 6. Latest Reviewer Decision — G2A1 PASS / G2A2 Not Started
 
-Reviewer decision: [docs/REVIEWER_DECISION_G2A1_RETURN.md](./docs/REVIEWER_DECISION_G2A1_RETURN.md)
+Current Reviewer decision: [docs/REVIEWER_DECISION_G2A1_PASS.md](./docs/REVIEWER_DECISION_G2A1_PASS.md)
 
-Current execution contract: [docs/G2A1R1_EVIDENCE_CLOSURE.md](./docs/G2A1R1_EVIDENCE_CLOSURE.md)
+Earlier RETURN decision: [docs/REVIEWER_DECISION_G2A1_RETURN.md](./docs/REVIEWER_DECISION_G2A1_RETURN.md)
+
+Closure execution contract: [docs/G2A1R1_EVIDENCE_CLOSURE.md](./docs/G2A1R1_EVIDENCE_CLOSURE.md)
 
 Original execution contract: [docs/G2A1_COMPONENT_FEASIBILITY_POC.md](./docs/G2A1_COMPONENT_FEASIBILITY_POC.md)
 
 ### Reviewer result
 
-G2A1 is **RETURN**, not PASS.
+G2A1 is now **PASS**.
 
-Accepted partial facts:
-- Route C / Good Issue-in-WordPress browser-local preview is feasible and currently preferred.
-- Storelly is rejected for the current free-preview boundary.
-- Vanquish Upload Files registered-account order binding/access control passed partial checks.
-- Vanquish Attach Me registered-account authorization/direct-file denial passed partial checks.
+Reason:
+- the technical frontend/free-preview question is answered;
+- Storelly is explicitly rejected;
+- registered-account reuse behavior is evidenced;
+- guest positive flows were proven;
+- guest bearer-link replay was reproducibly proven, so the current guest plugin paths are explicitly rejected rather than left UNKNOWN;
+- download/hash, screenshots, cleanup/read-back and GitHub handoff are complete.
 
-Blocking gaps:
-- guest upload verification;
-- guest private-delivery verification;
-- completed authorized byte-level download;
-- durable screenshot artifacts;
-- cleanup read-back;
-- Executor Handoff/Evidence reconciliation with final Git state.
+The G2A1R1 Executor `RETURN` remains a valid historical execution fact. Reviewer does not reinterpret the failed guest negative checks as PASS; instead, those failures become the technical basis for rejecting the guest plugin paths.
 
-G2A2 remains unauthorized.
+### Product decision deferred to G2A2
 
-### Current free-preview boundary
+G2A2 must choose:
+- authenticated customer account required; or
+- guest/no-account fulfillment required.
 
-```text
-name / age / style
-+ optional ONE local cover photo
-→ immediate cover + 1–2 spread preview
-→ 0 model Token
-```
+If guest/no-account is required, a later bounded technical Gate must select or implement a guest-safe private access mechanism before production delivery.
 
-The existing Good Issue prototype's "up to six photos + memory" free step is reference behavior only and is not the current MVP requirement.
-
-### Current authorization
-
-G2A1R1 is now authorized and limited to the unresolved evidence closure:
-
-- guest upload;
-- guest private delivery;
-- completed byte-level download + hash;
-- durable screenshots;
-- project-scoped cleanup/read-back;
-- final Evidence/Handoff reconciliation.
-
-### Mandatory GitHub handoff
-
-Every Executor Gate in this project must leave a durable GitHub handoff unless a Gate explicitly says otherwise:
-
-- use a dedicated branch;
-- commit intended project-local changes/evidence;
-- push the branch to GitHub;
-- open a PR targeting `main`;
-- do **not** merge the PR;
-- return branch + final commit SHA + PR URL/number.
-
-Reviewer performs the final review/merge. Local-only or uncommitted results are not sufficient for PASS.
-
-`G2A2_MVP_PRODUCT_CONTRACT_FREEZE` remains HOLD until G2A1/G2A1R1 receives an explicit Reviewer PASS.
+G2A2 is **not started in this Reviewer round**.
 
 ### Rollback
 
@@ -203,9 +174,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - generator/model/provider selection;
 - real per-order AI/render/storage cost;
 - storage, access control and deletion policy;
-- final visual/product foundation after G2A2 (Route C is only the current technical preference);
-- whether Vanquish Upload Files passes the guest-order flow;
-- whether Vanquish Attach Me passes guest delivery and completed byte-level download;
+- final subjective visual/product foundation after G2A2;
+- MVP customer access model: authenticated account required vs guest/no-account;
+- if guest/no-account is selected, replacement/wrapper guest-safe upload/private-delivery access mechanism;
 - exact PDF render engine;
 - actual production hosting;
 - refund/cancellation handling;
@@ -237,16 +208,16 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: wait for the G2A1R1 GitHub PR, then independently review and issue PASS/RETURN.
-- Executor next action: execute only `docs/G2A1R1_EVIDENCE_CLOSURE.md`, commit/push to its own branch, open a PR, and stop at Reviewer.
-- Owner intervention required: **NO**. No account/payment/Secret action is required.
+- Reviewer next action: none in G2A1; stop at Reviewer with G2A2 still HOLD.
+- Executor next action: none.
+- Owner intervention required: **NO for this closure**. The next product-spec round will require Owner input on account-required vs guest/no-account experience, along with the other G2A2 product decisions.
 
 ## 13. Status Summary
 
 - Overall progress: product direction, clickable sample, commerce baseline, PayPal path and free/paid Token boundary are fixed; production system does not yet exist.
 - Final goal: PayPal-paid personalized birthday magazine PDF workflow.
-- Current Gate: G2A1R1 evidence closure — authorized.
-- Accepted G2A1 findings are preserved; only unresolved guest/download/screenshot/cleanup/repository-state evidence may be touched.
-- Executor submission to GitHub is now an explicit project requirement: dedicated branch + commit + push + PR, with Reviewer responsible for merge.
-- Next: review the G2A1R1 PR. G2A2 remains HOLD.
+- G2A1: PASS.
+- G2A1R1: closed; its Executor RETURN is preserved as the evidence that the current guest plugin links are bearer-replayable and therefore rejected for strict guest-private use.
+- G2A2: HOLD / not started.
+- Next product question, when authorized: freeze the MVP contract including whether customers must authenticate or may remain guest/no-account.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
