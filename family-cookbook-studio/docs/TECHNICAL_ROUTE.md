@@ -40,14 +40,14 @@ private proof / final delivery
 |---|---|---|---|
 | Site shell / responsive pages | WordPress | ACCEPTED | Low |
 | Store / product / cart / order | WooCommerce | ACCEPTED | Low |
-| Theme / visual foundation | Reuse Birthday Magazine PoC learnings; exact theme TBD | POC | Visual adaptation |
+| Theme / visual foundation | **Kadence first PoC**; Brandy / Blocksy fallbacks | ACCEPTED POC SHORTLIST | Visual adaptation |
 | Free preview | Browser-local deterministic template | ACCEPTED PATTERN | Small |
 | Payment | WooCommerce-compatible Provider; reuse Birthday/Mini Craft sequence | UNKNOWN / HOLD | No custom payment API unless later required |
 | Post-payment recipe-image intake | Order-bound upload component | POC | Small mapping glue |
 | Optional story/context intake | Order-bound fields / thin project plugin | ACCEPTED PATTERN | Small |
 | Background orchestration | Action Scheduler pattern | ACCEPTED PATTERN | Job definitions |
-| Image preprocessing | Rotate/deskew/crop/contrast/quality checks | CUSTOM CORE / library-backed | Yes |
-| Handwriting OCR | Benchmark provider/open-source candidates | POC | Adapter |
+| Image preprocessing | OpenCV/library-backed rotate/deskew/crop/contrast/quality checks | ACCEPTED DIRECTION | Yes |
+| Handwriting OCR | **PaddleOCR first → TrOCR fallback benchmark → Tesseract print control** | POC | Adapter |
 | Recipe extraction | Structured schema + provenance | CUSTOM CORE | Yes |
 | Uncertainty policy | confidence/rules + review queue | CUSTOM CORE | Yes |
 | Correction/review UI | order/private review surface | CUSTOM CORE | Yes |
@@ -75,7 +75,7 @@ style / title / family name
 
 This only previews the artifact style. It must not pretend that the user's handwritten recipe has already been accurately transcribed.
 
-If later evidence shows that conversion requires a free real OCR sample, open a separate cost/privacy experiment instead of silently weakening this boundary.
+**Accepted MVP boundary:** no real OCR/model inference occurs before payment. Any future free OCR sample requires a separate Reviewer/Owner experiment and must not silently change this rule.
 
 Paid processing starts only when:
 
@@ -84,6 +84,26 @@ payment_entitlement_confirmed
 AND intake_complete
 AND canonical_processing_job_absent
 ```
+
+Default paid compute path:
+
+```text
+private source image
+→ local/library image preprocessing
+→ PaddleOCR primary attempt
+→ deterministic critical-token/schema checks
+→ if ambiguous: TrOCR/second local pass
+→ if still ambiguous: optional bounded VLM/vision region fallback
+→ if still uncertain: user/reviewer confirmation
+→ approved canonical recipe
+→ deterministic HTML/CSS → PDF
+```
+
+Token policy:
+- browser-local free preview: **0 model Token**;
+- ordinary paid path can remain **0 model Token** if local OCR + rules are sufficient;
+- VLM/vision Token is allowed only as a bounded ambiguity fallback after G2A1 proves value/cost/privacy;
+- exact per-order Token/API cost is not yet known and must come from benchmark evidence.
 
 ## 4. Canonical Recipe Data Model
 
@@ -159,15 +179,36 @@ ocr_adapter(image)
   }
 ```
 
-G2A1 may compare:
-- handwriting-capable cloud OCR;
-- PaddleOCR/other self-hosted OCR;
-- VLM-assisted transcription;
-- hybrid/reconciliation approach.
+G2A1 comparison order:
+1. **PaddleOCR** — primary open-source/self-host candidate;
+2. **Microsoft TrOCR** — second local handwriting candidate / fallback benchmark;
+3. **Tesseract** — printed-text baseline/control only;
+4. managed handwriting OCR — optional comparator when credentials/cost boundary safely permit;
+5. VLM-assisted transcription — optional ambiguous-region fallback only.
 
-Tesseract can remain a printed-text baseline but should not be assumed as the primary handwriting engine.
+This is a benchmark order, not a production selection. G2A1 evidence decides the actual primary/fallback route.
 
-## 7. Reuse from Birthday Magazine Studio
+## 7. Frontend / Theme Baseline
+
+Accepted free/open WordPress PoC shortlist:
+
+1. **Kadence — first PoC choice**: warm editorial/lifestyle structure suits family memory + recipe storytelling.
+2. **Brandy — fallback**: stronger ecommerce/product-page orientation.
+3. **Blocksy — fallback**: cleaner modern/editorial presentation with strong WooCommerce compatibility.
+
+Rules:
+- use free/open functionality first;
+- do not purchase Pro templates/plugins in G2A1;
+- theme choice is a shell, not the personalized cookbook generator;
+- the actual cookbook preview/generation surface remains project-specific HTML/CSS/JS;
+- final visual style remains a G2A2 Owner decision after the technical PoC.
+
+Reference pages:
+- https://wordpress.org/themes/kadence/
+- https://wordpress.org/themes/brandy/
+- https://wordpress.org/themes/blocksy/
+
+## 8. Reuse from Birthday Magazine Studio
 
 Reuse only where the capability is generic:
 
@@ -189,7 +230,7 @@ Do **not** reuse as if proven:
 - Birthday privacy/retention policy;
 - Birthday plugin candidates without Family Cookbook's own access/upload tests.
 
-## 8. Custom Product Core
+## 9. Custom Product Core
 
 Keep the project-specific code intentionally small and separable:
 
@@ -211,7 +252,7 @@ family-cookbook-core
 └─ proof/final attachment
 ```
 
-## 9. Development Order
+## 10. Development Order
 
 ```text
 G2A1 OCR + input + reusable-component feasibility
@@ -231,7 +272,7 @@ G5 acquisition / repeatability / economics
 G6 production hardening / physical print decision
 ```
 
-## 10. Explicitly Deferred
+## 11. Explicitly Deferred
 
 - physical print/POD;
 - unlimited recipes/pages;
@@ -243,7 +284,7 @@ G6 production hardening / physical print decision
 - custom payment layer;
 - Shared VPS deployment before local solution proof.
 
-## 11. Shared-Core Rule
+## 12. Shared-Core Rule
 
 Birthday Magazine Studio and Family Cookbook Studio may eventually share:
 
