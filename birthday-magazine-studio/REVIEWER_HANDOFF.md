@@ -219,7 +219,7 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: execute G2A2 product-contract freeze using `docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md`.
+- Reviewer next action: complete evidence-led G2A2 product design using `docs/G2A2_PRODUCT_RESEARCH_2026-09-27.md` as supporting research, then freeze `docs/MVP_PRODUCT_CONTRACT.md`.
 - Executor next action: none until G2A2 PASS creates the bounded G2B implementation Gate.
 - Owner intervention required: **YES at G2A2 acceptance** for the remaining subjective product decisions; the account-vs-guest decision is already resolved.
 
@@ -231,5 +231,6 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - G2A1R1: closed; its Executor RETURN is preserved as the evidence that the current guest plugin links are bearer-replayable and therefore rejected for strict guest-private use.
 - G2A2: CURRENT.
 - Authenticated-account-required is now fixed for MVP; guest/no-account private fulfillment is out of scope.
-- Next: freeze the remaining MVP contract (photos/questions/pages/revision/QA/data handling), then authorize G2B local AI/PDF proof.
+- Current G2A2 research finding: the strongest market gap is between cheap/high-effort Canva templates and expensive/manual done-for-you magazine services; adjacent photo-book products validate guided prompts, automatic curation and proof-before-final.
+- Next: Owner + Reviewer choose the evidence-backed MVP page/photo/question/revision contract; only then authorize G2B local AI/PDF proof.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
