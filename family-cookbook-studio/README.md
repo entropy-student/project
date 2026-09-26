@@ -48,11 +48,13 @@ private recipe-image upload
     ↓
 OpenCV/library preprocessing
     ↓
-PaddleOCR first
+PaddleOCR primary
     ↓
-TrOCR second local pass when ambiguous
+critical-value / confidence checks
     ↓
-optional bounded VLM only for unresolved regions
+TrOCR only on suspicious regions
+    ↓
+still uncertain → user confirmation
     ↓
 recipe schema + provenance
     ↓
@@ -65,7 +67,7 @@ PDF QA
 private proof / final delivery
 ```
 
-当前默认目标不是“每单调用大模型”，而是让常规订单尽可能依赖本地/开源 OCR 与规则完成，因此普通付费路径也可能保持 **0 model Token**；是否需要 VLM 以及每单实际成本必须由 G2A1 证据决定。
+MVP OCR 架构已经收束为 **PaddleOCR 主力 + TrOCR 兜底 + 用户确认最终兜底**。Tesseract、云 OCR、GPT/Gemini 类视觉模型都不进入 MVP 默认路线。OCR/model API Token 目标为 **0**；实际还需测量的是本地 CPU/GPU 成本和用户需要确认多少次。
 
 详细复用边界见 [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md)。
 
@@ -75,7 +77,7 @@ private proof / final delivery
 
 先验证：
 
-1. PaddleOCR / TrOCR 在真实难度手写食谱上的转录质量，并以 Tesseract 作为印刷体控制组；
+1. PaddleOCR 主识别 + TrOCR 疑难区域兜底是否足够可靠，以及用户最终需要确认多少不确定字段；
 2. 配方字段能否稳定结构化且保留原文 provenance；
 3. 低置信字段能否 fail-closed 地进入人工/用户确认；
 4. WordPress/WooCommerce 的订单绑定上传和私有文件交付能否复用；
