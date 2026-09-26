@@ -2,8 +2,8 @@
 
 > Maintainer: Reviewer / Architect / Gatekeeper only  
 > Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1  
-> Executor facts: `EXECUTOR_HANDOFF.md` (not created yet; no execution Gate has started)  
-> Detailed evidence: `EXECUTION_EVIDENCE.md` (not created yet; no execution Gate has started)  
+> Latest Executor facts: branch `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, `EXECUTOR_HANDOFF.md`, HEAD `b1bf844096fed4761372f3beea6f9f2d7d081643`  
+> Latest detailed evidence: same branch `EXECUTION_EVIDENCE.md`; Reviewer accepted partial facts and returned the Gate  
 > Last reviewed: 2026-09-26
 
 ## 1. Project Goal
@@ -66,7 +66,8 @@ No model may silently replace an uncertain quantity, unit, temperature, cooking 
 ```text
 P0   Governance Intake / Project Truth Bootstrap          ✅ PASS
 G1   Core Product Boundary                               ✅ PASS (concept baseline only)
-G2A1 Input + OCR + Reusable Component Feasibility PoC    ← CURRENT
+G2A1 Input + OCR + Reusable Component Feasibility PoC    ↩ RETURNED (partial evidence accepted)
+G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ← CURRENT
 G2A2 MVP Product Contract Freeze                         ⏳ HOLD
 G2B  Local OCR → Structured Recipe → PDF Solution Proof  ⏳ HOLD
 G3A  WordPress + WooCommerce Local Commerce Loop         ⏳ HOLD
@@ -84,8 +85,11 @@ Current Reviewer decisions:
 - `SUPERSEDED_OCR_BENCHMARK_ORDER_PADDLE_TROCR_TESSERACT_2026-09-26`
 - `ACCEPT_MVP_OCR_ARCH_PADDLE_PRIMARY_TROCR_FALLBACK_USER_CONFIRM_2026-09-26`
 - `ACCEPT_THEME_POC_SHORTLIST_KADENCE_BRANDY_BLOCKSY_2026-09-26`
+- `RETURN_G2A1_OCR_ENVIRONMENT_AND_TESTBED_BLOCKED_2026-09-26`
+- `ACCEPT_G2A1_PARTIAL_ROUTING_SCHEMA_STATIC_PREVIEW_EVIDENCE_2026-09-26`
+- `OPEN_G2A1_R1_ENVIRONMENT_REMEDIATION_COMPLETION_2026-09-26`
 
-Important limitation: no current repository evidence proves willingness-to-pay, OCR accuracy, private upload behavior, payment, PDF quality, repeatability, production hosting or print fulfillment.
+Important limitation: the first G2A1 execution did **not** run PaddleOCR or TrOCR inference and did **not** exercise a Family Cookbook WordPress/WooCommerce testbed. OCR accuracy, fallback value, upload/private-delivery behavior, payment, PDF quality, repeatability, production hosting and print fulfillment remain unproven.
 
 ## 5. Accepted Baseline
 
@@ -109,29 +113,53 @@ Important limitation: no current repository evidence proves willingness-to-pay, 
 - No cloud OCR or VLM/vision fallback is in MVP scope.
 
 ### Evidence status
-- Real handwriting OCR benchmark: not run.
-- Real structured recipe pipeline: not implemented.
-- Real PDF generator: not implemented.
+- G2A1 execution branch/head reviewed: `codex/family-cookbook-g2a1-input-ocr-component-feasibility@b1bf844096fed4761372f3beea6f9f2d7d081643`.
+- **Accepted partial evidence:** 20 synthetic fixture definitions/renderer; deterministic routing + provenance/schema unit tests (5/5); static browser-local preview with local blob input and no HTTP/model call.
+- **Not accepted as OCR proof:** PaddleOCR pages processed = 0; TrOCR crops processed = 0; all OCR error/fallback/manual-confirmation metrics remain UNKNOWN.
+- **Blocked/unproven:** Kadence-integrated Family test site, order-bound upload, private delivery.
+- Real structured OCR→recipe→PDF pipeline: not implemented.
 - Real payment: not tested.
-- Real customer private file delivery: not tested.
 - Physical printing: not tested.
 - Economics: unknown.
 
-## 6. Current Gate — G2A1 Input / OCR / Reusable Component Feasibility PoC
+## 6. Current Gate — G2A1-R1 OCR Runtime + WordPress Testbed Remediation / Completion
 
-Formal contract: [docs/G2A1_INPUT_OCR_COMPONENT_POC.md](./docs/G2A1_INPUT_OCR_COMPONENT_POC.md)
+Original G2A1 contract: [docs/G2A1_INPUT_OCR_COMPONENT_POC.md](./docs/G2A1_INPUT_OCR_COMPONENT_POC.md)  
+Current remediation contract: [docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md](./docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md)
 
-### Goal
+### Reviewer review of returned execution
 
-Using only synthetic/public/non-customer fixtures, prove:
+Reviewer independently read back the branch, final HEAD, evidence, handoff, benchmark JSON and core routing/schema/benchmark code.
 
-1. whether the accepted PaddleOCR-primary + TrOCR-fallback route gives usable transcription with an acceptable user-confirmation burden;
-2. whether recipe fields can be structured without losing source provenance;
-3. whether ambiguous values can be automatically flagged instead of guessed;
-4. whether order-bound private upload and private final-file delivery can reuse the same component patterns tested by Birthday Magazine;
-5. whether a zero-model browser-local product preview remains feasible.
+Decision: **RETURN accepted. Architecture remains unchanged.**
 
-### Accepted MVP OCR route to validate
+Accepted carry-forward facts:
+- 20 synthetic fixtures and deterministic renderer exist;
+- routing/schema tests passed 5/5;
+- fail-closed disagreement behavior exists;
+- static browser-local preview proved no HTTP/model call;
+- no real payment/customer data/third OCR/VLM occurred.
+
+Reasons Gate cannot PASS:
+- PaddleOCR inference never ran;
+- TrOCR fallback inference never ran;
+- OCR quality, critical-field error, fallback resolution and manual-confirmation burden are UNKNOWN;
+- Family Cookbook WordPress/Kadence testbed did not exist;
+- order-bound upload/private delivery were not exercised.
+
+The next run must complete only the blocked evidence, not re-run accepted work without reason.
+
+### G2A1-R1 remediation goals
+
+1. get PaddleOCR primary inference running without changing OCR product architecture;
+2. run TrOCR only on real routed suspicious crops and measure its value;
+3. add a small public/open genuine-handwriting subset so typography is not mistaken for handwriting proof;
+4. measure OCR accuracy, critical-field errors, routing/fallback and `USER_CONFIRM_REQUIRED` burden;
+5. create a dedicated local Family Cookbook WordPress + WooCommerce + Kadence testbed;
+6. prove order-bound upload and private delivery positive/negative access behavior;
+7. preserve all accepted partial evidence from the first RETURN.
+
+### Accepted MVP OCR route — unchanged
 
 G2A1 is no longer a broad OCR bake-off. Validate this minimal architecture only:
 
@@ -143,12 +171,18 @@ G2A1 is no longer a broad OCR bake-off. Validate this minimal architecture only:
 
 Tesseract, cloud OCR and VLM/vision are explicitly deferred from MVP and are not required for G2A1 PASS.
 
+### Runtime remediation note
+
+The first attempt stalled on a PaddlePaddle wheel download. Current PaddleOCR documentation supports a Transformers inference engine, so G2A1-R1 may prefer that route while keeping **PaddleOCR as the primary OCR product**. If needed, the official Windows PaddlePaddle/CUDA 12.6 package channel is an allowed fallback within the same architecture.
+
+For TrOCR, Reviewer authorizes `microsoft/trocr-small-handwritten` first to reduce download/runtime footprint because TrOCR is only the fallback path.
+
 ### Required OCR fixture set
 
 The benchmark should include a small but deliberately mixed fixture set:
 - clear printed/typed recipe;
-- neat Latin-script handwriting;
-- difficult/cursive handwriting;
+- synthetic handwriting-like typography;
+- **5–10 public/open genuine-handwriting samples with source/license recorded**;
 - photographed notebook page with skew/shadow;
 - recipe containing fractions, temperatures, units and timing values;
 - at least one non-English/mixed-language sample if the initial product may support it.
@@ -229,14 +263,16 @@ All G2A1 work is local/test-only and Git-reversible. The Git branch/commit is th
 
 ## 12. Next Step
 
-- Reviewer next action: dispatch/review G2A1 via `docs/G2A1_INPUT_OCR_COMPONENT_POC.md`.
-- Executor next action: execute G2A1 on `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, commit all permitted code/evidence to GitHub, return branch + final HEAD SHA + `PASS_CANDIDATE_*` or precise `RETURN_*`, do not merge `main`, and stop at Reviewer.
-- Owner intervention required: **NO during G2A1**. Owner decisions become necessary at G2A2 for price/package/language/revision/visual and fidelity-policy tradeoffs.
+- Reviewer decision: `RETURN_G2A1_OCR_ENVIRONMENT_AND_TESTBED_BLOCKED_2026-09-26`.
+- Executor next action: continue the **same branch** and execute [docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md](./docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md).
+- Do not merge/rebase unrelated Mini Craft-only `main` drift merely to continue this Gate; read current Reviewer truth from `main` first.
+- Return branch + final HEAD SHA + `PASS_CANDIDATE_G2A1_R1_*` or precise `RETURN_*`, do not merge `main`, and stop at Reviewer.
+- Owner intervention required: **NO** for this remediation unless a genuinely Owner-only blocker (paid purchase, account/identity/Secret action) appears.
 
 ## 13. Status Summary
 
-- Overall progress: governance baseline, product scope, free/paid compute boundary, **two-engine MVP OCR architecture**, theme PoC shortlist and reuse-vs-custom boundary are explicit; implementation has not started.
+- Overall progress: G2A1 produced valid partial PoC code/evidence but returned on OCR runtime + missing Family WP testbed; no architecture change is needed.
 - Final goal: private, reliable family recipe intake → faithful transcription/structuring → proof → cookbook PDF → later optional print.
-- Current Gate: G2A1 input/OCR/component feasibility.
-- Next: G2A1 → G2A2 exact MVP contract → G2B local OCR-to-PDF proof.
+- Current Gate: **G2A1-R1 environment remediation/completion**.
+- Next after PASS: G2A2 exact MVP contract → G2B local OCR-to-PDF proof.
 - Attention: never treat clean OCR demos, model self-confidence or a visually nice PDF as proof that recipe facts are correct.
