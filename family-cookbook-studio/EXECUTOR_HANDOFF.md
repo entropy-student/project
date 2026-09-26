@@ -48,3 +48,21 @@
 ## Recommended Reviewer decision
 
 Return this Gate for a bounded rerun in an environment that can finish local PaddleOCR/TrOCR dependency and checkpoint setup and exposes a dedicated Family Cookbook WordPress/WooCommerce test instance. Do not add a third OCR/VLM and do not open G2A2. Current recommendation: `RETURN_G2A1_OCR_ENVIRONMENT_BLOCKED`.
+
+
+## G2A1-R1 Remediation Update — 2026-09-27
+
+- Gate: `G2A1-R1 — OCR Runtime + WordPress Testbed Remediation / Completion`
+- Execution state: `RETURN_G2A1_R1_RESOURCE_BLOCKED`
+- Branch: `codex/family-cookbook-g2a1-input-ocr-component-feasibility`
+- Branch HEAD at preflight: `b1bf844096fed4761372f3beea6f9f2d7d081643` (latest `main` Reviewer Handoff and R1 Contract re-read at `96b05c00ad8e5601dd4cef428709086ef1eb2991`; no merge/rebase).
+- Carried-forward source: `b1bf844096fed4761372f3beea6f9f2d7d081643`; accepted prior evidence remains unchanged and the original `RETURN_G2A1_OCR_ENVIRONMENT_BLOCKED` history is preserved.
+- New preflight: Windows 11, Python 3.10.11 x64, RAM 15.28 GiB total / 0.62 GiB available at latest sample; RTX 4050 with 5923/6141 MiB VRAM free; C: 152.7 GiB free; Torch 2.14.0+cu126 / CUDA 12.6. Package and Hugging Face metadata reachable, but OCR dependencies/models are not installed/cached.
+- OCR conclusion: official PaddleOCR Transformers engine route is documented, but no PaddleOCR full-page inference or TrOCR crop inference ran. TrOCR small model revision and remote weight size are recorded as metadata only. Genuine handwriting results and all quality/fallback/confirmation metrics remain UNKNOWN.
+- Preview: static browser-local preview is carried forward; Kadence + WordPress integration was not exercised.
+- Upload: Family-specific order-bound upload positive/negative checks were not run.
+- Delivery: Family-specific private PDF positive/negative checks were not run.
+- Blocker: latest measured available host RAM was 0.62 GiB while unrelated WordPress/MariaDB stacks were active. No unrelated process/container was stopped, and no new test stack/model load was started.
+- Cleanup: no new package cache, model weights, containers, orders, uploads or PDF test artifacts were created. Existing unrelated containers were left untouched.
+- Git delivery: preflight evidence and structured artifact are being committed on the same branch. Final exact HEAD will be independently read back from GitHub and returned with this handoff; main remains unmerged.
+- Recommended Reviewer decision: `RETURN_G2A1_R1_RESOURCE_BLOCKED`; keep the current OCR architecture and resume on this branch after fresh safe resource capacity is available. Stop at Reviewer; do not enter G2A2.

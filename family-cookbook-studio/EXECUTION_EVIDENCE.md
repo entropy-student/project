@@ -133,3 +133,58 @@ Network/browser evidence in `g2a1/preview/preview-observation.json` records:
 - `OBSERVED` The interrupted temporary Python environment and incomplete Git clone directories remain local because Windows execution policy rejected recursive deletion outside the current workspace. Their clone/install processes were stopped; no credentials or model weights were written there. Neither directory is in the GitHub commit.
 - GitHub branch changes use GitHub Git Data API commits after the full local smart-clone stalled at a zero-byte pack; the branch starts from the read-back baseline above.
 - `MAIN_MERGED=NO`. `EXECUTOR_HANDOFF.md` and all evidence/artifacts are committed to the dedicated branch; final branch HEAD is independently read back and reported in the Executor return.
+
+
+## G2A1-R1 — OCR runtime + Family WordPress testbed remediation preflight
+
+> Evidence committed: 2026-09-27 (Asia/Shanghai); measured preflight snapshots: 2026-09-26 23:49–23:56 (Asia/Shanghai)  
+> Execution state: `RETURN_G2A1_R1_RESOURCE_BLOCKED`  
+> `CARRIED_FORWARD_FROM=b1bf844096fed4761372f3beea6f9f2d7d081643`  
+> Branch at start: `codex/family-cookbook-g2a1-input-ocr-component-feasibility@b1bf844096fed4761372f3beea6f9f2d7d081643`  
+> Latest `main` Reviewer / R1 snapshot before Git write: `96b05c00ad8e5601dd4cef428709086ef1eb2991`; it was not merged or rebased.
+
+### Source-of-truth read
+
+- `PROVEN` Read GitHub canonical Governance from `entropy-student/spike.skill/vps-project-governance`: `SKILL.md` (blob `5e6ba08305ad802e5f6ce732d8ca731bc316b141`), `GOVERNANCE_HANDOFF.md` (blob `d290694148348a2e02e5143415bd277b11f5fba7`), and `references/GOVERNANCE_SOURCE_POLICY.md` (blob `7d1897b6a032a5de0686ff6704c8854f54699ab4`). Current core is v0.1.6 and Source Policy rev1.
+- `PROVEN` Read latest `main` Reviewer Handoff, Document Index, R1 Contract, original G2A1 contract and Technical Route at `331547fb123bb91afbb07720aae7e3fc0b2b26d2`, then read the existing execution branch at `b1bf844096fed4761372f3beea6f9f2d7d081643`, including its full `g2a1/**` tree. Immediately before writing, `main` advanced; its latest Reviewer Handoff and R1 Contract were re-read at `96b05c00ad8e5601dd4cef428709086ef1eb2991` (blobs `c7d66853c42f23821d3f7600b216739c24218944` and `5bc788b528d10714a034c039753e0a190053128e`). R1 remains current and authorizes the same branch. Branch and main were not synchronized because the R1 contract says not to merge/rebase unrelated main drift.
+
+### Carried-forward accepted evidence
+
+The following was not rerun or relabeled as new R1 evidence; it remains accepted from `b1bf844096fed4761372f3beea6f9f2d7d081643`:
+
+- `CARRIED_FORWARD` 20 synthetic typography fixture definitions and deterministic renderer;
+- `CARRIED_FORWARD` deterministic suspicious routing and provenance/schema unit tests (5/5), including raw OCR retention and disagreement fail-closed behavior;
+- `CARRIED_FORWARD` static browser-local preview, local blob image, zero HTTP/model requests, and no full cookbook download.
+
+The carried-forward pages are synthetic typography, not genuine handwriting. The prior `RETURN_G2A1_OCR_ENVIRONMENT_BLOCKED` remains intact above.
+
+### New read-only runtime preflight
+
+Structured measurements are in `g2a1/r1/preflight.json`.
+
+- `NEW_PROVEN` Windows 11 Home, Python 3.10.11 64-bit, AMD Ryzen 5 7640HS / 12 logical processors, 15.28 GiB installed RAM, C: free 152.7 GiB.
+- `NEW_PROVEN` Available RAM samples during read-only preflight were 1.67 GiB (23:49), 1.23 GiB (23:53), and 0.62 GiB (23:56). These are separate snapshots; no causal attribution is made.
+- `NEW_PROVEN` RTX 4050 Laptop GPU: 6141 MiB VRAM, 5923 MiB free and 0% utilization at 23:53; existing system Torch is 2.14.0+cu126 and reports CUDA 12.6 available.
+- `NEW_PROVEN` Docker 29.7.2 client/daemon are available. Read-only inventory showed multiple already-running unrelated WordPress/MariaDB services; no project service was stopped, started, inspected for private data, or modified.
+- `NEW_PROVEN` No PaddleOCR, PaddlePaddle or Transformers Python package is installed. `.paddleocr` and `.paddlex` caches are absent. Hugging Face cache is 15.2 MiB and contains only `FunAudioLLM/Fun-ASR-Nano-2512`; the target OCR/TrOCR weights are not cached.
+- `NEW_PROVEN` PyPI PaddleOCR/Transformers metadata and Hugging Face model metadata endpoints returned HTTP 200. The TrOCR weight endpoint answered HEAD 200 with `Content-Length=245933041`; no weight payload was downloaded. Docker registry `/v2/` returned 401; no registry authentication was attempted.
+
+### OCR route status
+
+- `OBSERVED` Current official PaddleOCR docs support `engine="transformers"` and `PaddleOCR(...).predict(...)`; the docs show PP-OCRv5 server detection/recognition as supported options. The detailed inference-engine page specifies Transformers `>=5.10.0`. References: [Quick Start](https://www.paddleocr.ai/main/en/quick_start.html), [Inference Engine](https://www.paddleocr.ai/main/en/version3.x/inference_deployment/local_inference/inference_engine.html), [OCR Pipeline](https://www.paddleocr.ai/main/en/version3.x/pipeline_usage/OCR.html).
+- `BLOCKED` Route A was not installed or executed. PaddleOCR/Transformers exact installed versions and Paddle model revision/hash are therefore `UNKNOWN`. The previous benchmark runner still requires review/update to the current engine API; no runtime compatibility is claimed.
+- `OBSERVED` The authorized TrOCR candidate is `microsoft/trocr-small-handwritten`; Hugging Face metadata currently reports revision `b4648cfa171985a6745f37ddd637e98c0da958ac`, weight file `pytorch_model.bin`, 245,933,041 bytes. This is metadata/HEAD only: model not downloaded/loaded, device not selected, fallback latency not measured. Source: [model card](https://huggingface.co/microsoft/trocr-small-handwritten).
+- `BLOCKED` Inference was deliberately not started at the latest 0.62 GiB available host RAM while unrelated project containers remained active. No user process was killed. Route architecture remains PaddleOCR → deterministic routing → suspicious crop → TrOCR → `USER_CONFIRM_REQUIRED`.
+- R1 Paddle page count is 0 because no inference was started, not because there were zero errors. Raw OCR errors, missing lines, critical-field errors, suspicious regions, fallback resolution/conflict, confirmation burden, latency and runtime resource peaks are all `UNKNOWN`. R1 TrOCR calls: 0. No third OCR/VLM used. Model/API Token usage: 0. Local compute cost remains unmeasured and nonzero by design.
+- `BLOCKED` No genuine-handwriting image subset was acquired. Genuine handwriting count is 0 in this R1 attempt; no license/source claims are made. The carried synthetic script-font set is not genuine handwriting.
+
+### Family Cookbook WordPress / WooCommerce testbed
+
+- `BLOCKED` A dedicated Family Cookbook WordPress/WooCommerce instance was not created. No Family-specific WordPress, WooCommerce, or Kadence version is claimed.
+- `BLOCKED` Kadence-integrated browser-local preview, dummy order creation, upload positive/negative tests, synthetic PDF private-delivery positive/negative tests and mobile upload behavior were not run. Existing static preview remains only `CARRIED_FORWARD`; it is not WP integration evidence.
+- Reason: with only 0.62 GiB available system RAM at the latest sample and unrelated WP/database services active, starting model loading or another PHP + database stack without a validated resource limit could exhaust host RAM and affect other projects. Disk and GPU headroom do not resolve the host-RAM constraint. The existing stacks were left unchanged.
+- No local containers, package environments, target models, synthetic orders, uploads or PDF files were created in this R1 attempt; no cleanup was needed. Prior cleanup notes remain preserved in the original section.
+
+### Gate assessment
+
+`RETURN_G2A1_R1_RESOURCE_BLOCKED` — R1 cannot PASS. The PaddleOCR/TrOCR inference evidence, genuine-handwriting subset and Family-specific WP/Woo/Kadence preview/upload/private-delivery evidence remain outstanding. Reviewer should resume this same branch only when a fresh preflight shows enough safe host RAM to load/run the two OCR engines and an isolated WP+Woo+database testbed without stopping unrelated services. No architecture change is requested.
