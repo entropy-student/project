@@ -10,13 +10,16 @@ import { claimCanonicalJob as claimCanonicalFileJob } from "./idempotency.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
-const G2BR1_MODE = process.env.BMS_G2BR1_MODE === "1";
-const G2BR1_CONTENT_FILE = process.env.BMS_G2BR1_CONTENT_FILE;
-const G2BR1_STATUS_FILE = process.env.BMS_G2BR1_STATUS_FILE;
-const G2BR1_IDEMPOTENCY_FILE = process.env.BMS_G2BR1_IDEMPOTENCY_FILE;
+const REAL_AI_MODE = process.env.BMS_REAL_AI_MODE === "1" || process.env.BMS_G2BR1_MODE === "1";
+const GATE_ID = process.env.BMS_REAL_AI_GATE_ID || (process.env.BMS_G2BR1_MODE === "1" ? "G2BR1_REAL_AI_GENERATION_CLOSURE" : "G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE");
+const GATE_LABEL = GATE_ID.startsWith("G2BR2") ? "G2BR2" : "G2BR1";
+const NAMESPACE = process.env.BMS_REAL_AI_NAMESPACE || (process.env.BMS_G2BR1_MODE === "1" ? "g2br1" : "g2br2");
+const REAL_AI_CONTENT_FILE = process.env.BMS_REAL_AI_CONTENT_FILE || process.env.BMS_G2BR1_CONTENT_FILE;
+const REAL_AI_STATUS_FILE = process.env.BMS_REAL_AI_STATUS_FILE || process.env.BMS_G2BR1_STATUS_FILE;
+const REAL_AI_IDEMPOTENCY_FILE = process.env.BMS_REAL_AI_IDEMPOTENCY_FILE || process.env.BMS_G2BR1_IDEMPOTENCY_FILE;
 const FIXTURES = path.join(ROOT, "fixtures");
 const PHOTO_DIR = path.join(FIXTURES, "photos");
-const ARTIFACTS = G2BR1_MODE ? path.join(ROOT, "artifacts", "g2br1") : path.join(ROOT, "artifacts");
+const ARTIFACTS = REAL_AI_MODE ? path.join(ROOT, "artifacts", NAMESPACE) : path.join(ROOT, "artifacts");
 const SCREENSHOTS = path.join(ARTIFACTS, "screenshots");
 const RUNTIME = path.join(ROOT, ".runtime");
 const PAGE_SECTIONS = [
@@ -29,7 +32,7 @@ const PRESETS = ["bold-editorial", "soft-warm", "retro-playful"];
 const MAX_COPY_CHARS = 520;
 
 const input = await readJson(path.join(FIXTURES, "intake.json"));
-const referenceContent = G2BR1_MODE ? null : await readJson(path.join(FIXTURES, "reference-content.json"));
+const referenceContent = REAL_AI_MODE ? null : await readJson(path.join(FIXTURES, "reference-content.json"));
 const failures = [];
 const browserPath = await findBrowser();
 const browser = await chromium.launch({ headless: true, ...(browserPath ? { executablePath: browserPath } : {}) });
@@ -159,7 +162,7 @@ function validateContent(content, data, assignments) {
   if (content.recipient?.name !== data.recipient.name || content.recipient?.age !== data.recipient.age || content.recipient?.birthday !== data.recipient.birthday) errors.push("RECIPIENT_IDENTITY_MISMATCH");
   if (content.recipient?.relationship !== data.buyerRelationship || content.tone !== data.tone || content.stylePreset !== data.stylePreset) errors.push("RELATIONSHIP_TONE_OR_STYLE_MISMATCH");
   if (!Array.isArray(content.groundedFacts) || content.groundedFacts.length === 0) errors.push("GROUNDED_FACTS_MISSING");
-  if (G2BR1_MODE) {
+  if (REAL_AI_MODE) {
     const citedUnits = [
       ...(content.coverHeadlines || []), content.openingNote, content.profile, content.featureMemory,
       ...(content.dynamicModules || []), content.whyTheyMatter, content.currentEra,
@@ -176,7 +179,7 @@ function validateContent(content, data, assignments) {
   for (const ref of sourceRefsIn(content)) if (!allowedRefs.has(ref)) errors.push("SOURCE_REF_INVALID:" + ref);
   for (const item of content.groundedFacts || []) {
     if (!item.sourceRefs?.length) errors.push("FACT_CLAIM_WITHOUT_SOURCE");
-    if (G2BR1_MODE && !(item.supportingQuotes || []).length) errors.push("FACT_CLAIM_WITHOUT_SUPPORTING_QUOTE");
+    if (REAL_AI_MODE && !(item.supportingQuotes || []).length) errors.push("FACT_CLAIM_WITHOUT_SUPPORTING_QUOTE");
     const validSources = item.sourceRefs.map(ref => sourceValue(data, ref)).filter(value => typeof value === "string");
     if (item.sourceRefs.some(ref => ref.startsWith("answers.")) && !(item.supportingQuotes || []).length) errors.push("FACT_CLAIM_WITHOUT_SUPPORTING_QUOTE");
     for (const quote of item.supportingQuotes || []) {
@@ -187,7 +190,7 @@ function validateContent(content, data, assignments) {
   for (const caption of content.captions || []) {
     const photo = data.photos.find(item => item.id === caption.photoId);
     if (!photo) errors.push("CAPTION_PHOTO_UNKNOWN:" + caption.photoId);
-    else if (G2BR1_MODE && !caption.sourceRefs?.includes(photo.sourceField)) errors.push("CAPTION_SOURCE_MISMATCH:" + caption.photoId);
+    else if (REAL_AI_MODE && !caption.sourceRefs?.includes(photo.sourceField)) errors.push("CAPTION_SOURCE_MISMATCH:" + caption.photoId);
   }
   const contentStrings = [
     ...(content.coverHeadlines || []).map(item => item.text),
@@ -707,11 +710,11 @@ async function writeReferenceArtifacts({ pages, selection, content, intakeErrors
   }
   const pdfChecks = pdfPageChecks(pages, input, selection);
   const negativePass = mutationProof.every(item => item.rejected);
-  const realAiPass = G2BR1_MODE && aiStatus.realAiCall === "PASS" && aiStatus.realModelRunCount >= 1;
+  const realAiPass = REAL_AI_MODE && aiStatus.realAiCall === "PASS" && aiStatus.realModelRunCount >= 1;
   const qa = {
-    gate: G2BR1_MODE ? "G2BR1_REAL_AI_GENERATION_CLOSURE" : "G2B_LOCAL_AI_PDF_SOLUTION_PROOF",
-    mode: G2BR1_MODE ? "REAL_CODEX_SYNTHETIC_CONTENT" : "LOCAL_SYNTHETIC_REFERENCE_RENDER",
-    overall: intakeErrors.length === 0 && contentErrors.length === 0 && pdfChecks.length === 0 && browserQA.pageCount === 12 && browserQA.consistentIdentity && browserQA.imageResults.every(item => item.loaded) && browserQA.overflow.length === 0 && browserQA.pageOverflow.length === 0 && mobileReadback?.viewportWidth === 375 && !mobileReadback.horizontalOverflow && !mobileReadback.textOverflow && styleProof.result === "PASS_SHARED_ARCHITECTURE" && negativePass && pdfPageCount === 12 && letterSize && stats.size > 0 && (!G2BR1_MODE || realAiPass) ? (G2BR1_MODE ? "PASS_G2BR1_REAL_AI_RENDER_PIPELINE" : "PASS_REFERENCE_PIPELINE_ONLY") : "RETURN_TEST_FAILURE",
+    gate: REAL_AI_MODE ? GATE_ID : "G2B_LOCAL_AI_PDF_SOLUTION_PROOF",
+    mode: REAL_AI_MODE ? "REAL_CODEX_SYNTHETIC_CONTENT" : "LOCAL_SYNTHETIC_REFERENCE_RENDER",
+    overall: intakeErrors.length === 0 && contentErrors.length === 0 && pdfChecks.length === 0 && browserQA.pageCount === 12 && browserQA.consistentIdentity && browserQA.imageResults.every(item => item.loaded) && browserQA.overflow.length === 0 && browserQA.pageOverflow.length === 0 && mobileReadback?.viewportWidth === 375 && !mobileReadback.horizontalOverflow && !mobileReadback.textOverflow && styleProof.result === "PASS_SHARED_ARCHITECTURE" && negativePass && pdfPageCount === 12 && letterSize && stats.size > 0 && (!REAL_AI_MODE || realAiPass) ? (REAL_AI_MODE ? `PASS_${GATE_LABEL}_REAL_AI_RENDER_PIPELINE` : "PASS_REFERENCE_PIPELINE_ONLY") : "RETURN_TEST_FAILURE",
     intakeValidation: { result: intakeErrors.length === 0 ? "PASS" : "FAIL", errors: intakeErrors, photoCount: input.photos.length, requiredAnswers: 6, mustUseCount: input.photos.filter(photo => photo.mustUse).length },
     structuredContentValidation: { result: contentErrors.length === 0 ? (realAiPass ? "PASS" : "PASS_REFERENCE_FIXTURE_ONLY") : "FAIL", origin: content.origin || "provider-generated structured content", errors: contentErrors },
     dynamicModules: { result: content.dynamicModules?.length === 2 && new Set(content.dynamicModules.map(module => module.name)).size === 2 ? (realAiPass ? "PASS" : "PASS_REFERENCE_FIXTURE_ONLY") : "FAIL", count: content.dynamicModules?.length || 0, names: (content.dynamicModules || []).map(module => module.name) },
@@ -728,7 +731,7 @@ async function writeReferenceArtifacts({ pages, selection, content, intakeErrors
     realModelRunIdempotency: idempotency.result === "PASS" ? "PASS" : "PENDING_DUPLICATE_PROBE",
     network: { localServer: "127.0.0.1 only", localRendererRequestCount: rendererRequestCount, externalBrowserRequestCount: externalRequestCount, codexExecRunCount: aiStatus.realModelRunCount || 0, modelRoute: realAiPass ? "ChatGPT-authenticated Codex CLI remote inference" : "no real model route" },
     screenshots: screenshotStats,
-    limitations: G2BR1_MODE ? [
+    limitations: REAL_AI_MODE ? [
       "The synthetic PNGs are deterministic scene illustrations, not photographs of a person.",
       "Photo selection reused accepted fixture metadata and did not prove visual-semantic photo understanding.",
       "No WordPress/WooCommerce commerce loop or order integration was run in this Gate.",
@@ -750,15 +753,15 @@ async function writeReferenceArtifacts({ pages, selection, content, intakeErrors
     playwright: { version: "1.62.1", license: "Apache-2.0" },
     pdfLib: { version: "1.17.1", license: "MIT" },
     browser: { executable: browserPath || "Playwright bundled Chromium", version: browserVersion },
-    network: G2BR1_MODE
-      ? "npm dependencies were resolved from npm during setup; one intended Codex ChatGPT-authenticated model run occurred, while all browser renderer requests were loopback-only."
+    network: REAL_AI_MODE
+      ? "npm dependencies were resolved from npm during setup; Codex ChatGPT-authenticated model run(s) occurred, while all browser renderer requests were loopback-only."
       : "npm dependencies were resolved from npm during setup; the proof runtime made no AI or non-loopback browser request."
   });
   const hashEntries = [
     { file: "proof-magazine-soft-warm.pdf", sizeBytes: stats.size, sha256: sha256(pdfBytes) },
     ...screenshotStats
   ];
-  if (G2BR1_MODE) {
+  if (REAL_AI_MODE) {
     for (const name of ["generated-content.json", "content-schema.json"]) {
       const bytes = await fs.readFile(path.join(ARTIFACTS, name));
       hashEntries.push({ file: name, sizeBytes: bytes.length, sha256: sha256(bytes) });
@@ -771,9 +774,9 @@ async function writeReferenceArtifacts({ pages, selection, content, intakeErrors
 async function main() {
   await fs.mkdir(ARTIFACTS, { recursive: true });
   await fs.mkdir(SCREENSHOTS, { recursive: true });
-  if (!G2BR1_MODE) await fs.mkdir(RUNTIME, { recursive: true });
+  if (!REAL_AI_MODE) await fs.mkdir(RUNTIME, { recursive: true });
 
-  if (!G2BR1_MODE) await generateSyntheticPhotos();
+  if (!REAL_AI_MODE) await generateSyntheticPhotos();
   const intakeErrors = await validateIntake(input);
   invariant(intakeErrors.length === 0, "RETURN_INTAKE_VALIDATION_FAILED:" + intakeErrors.join(","));
 
@@ -784,13 +787,13 @@ async function main() {
   let content;
   let aiStatus;
   let idempotency;
-  if (G2BR1_MODE) {
-    invariant(G2BR1_CONTENT_FILE && G2BR1_STATUS_FILE && G2BR1_IDEMPOTENCY_FILE, "RETURN_G2BR1_GENERATED_CONTENT_REQUIRED");
-    content = await readJson(G2BR1_CONTENT_FILE);
+  if (REAL_AI_MODE) {
+    invariant(REAL_AI_CONTENT_FILE && REAL_AI_STATUS_FILE && REAL_AI_IDEMPOTENCY_FILE, "RETURN_REAL_AI_GENERATED_CONTENT_REQUIRED");
+    content = await readJson(REAL_AI_CONTENT_FILE);
     content.origin = "provider-generated structured content via Codex ChatGPT login";
-    aiStatus = await readJson(G2BR1_STATUS_FILE);
-    idempotency = await readJson(G2BR1_IDEMPOTENCY_FILE);
-    invariant(aiStatus.gate === "G2BR1_REAL_AI_GENERATION_CLOSURE" && aiStatus.realAiCall === "PASS" && aiStatus.apiKeyUsed === false, "RETURN_G2BR1_CODEX_GENERATION_NOT_PROVEN");
+    aiStatus = await readJson(REAL_AI_STATUS_FILE);
+    idempotency = await readJson(REAL_AI_IDEMPOTENCY_FILE);
+    invariant(aiStatus.gate === GATE_ID && aiStatus.realAiCall === "PASS" && aiStatus.apiKeyUsed === false, "RETURN_REAL_AI_CODEX_GENERATION_NOT_PROVEN");
   } else {
     // The claim is written before any possible provider call. A duplicate receives the existing canonical record.
     const firstClaim = await claimCanonicalJob(input.orderKey);
@@ -843,9 +846,9 @@ async function main() {
   }
 
   const expectedAssignments = selection.assignments;
-  if (G2BR1_MODE) {
+  if (REAL_AI_MODE) {
     const canonicalAssignments = assignments => JSON.stringify([...assignments].sort((a, b) => a.page - b.page).map(item => ({ page: item.page, photoId: item.photoId })));
-    invariant(canonicalAssignments(content.photoPageAssignments || []) === canonicalAssignments(expectedAssignments), "RETURN_G2BR1_PHOTO_ASSIGNMENT_MISMATCH");
+    invariant(canonicalAssignments(content.photoPageAssignments || []) === canonicalAssignments(expectedAssignments), "RETURN_REAL_AI_PHOTO_ASSIGNMENT_MISMATCH");
   } else {
     invariant(JSON.stringify(referenceContent.photoPageAssignments) === JSON.stringify(expectedAssignments), "REFERENCE_PHOTO_MAP_DIFFERS_FROM_DETERMINISTIC_SELECTION");
     content.photoPageAssignments = expectedAssignments;
@@ -875,9 +878,9 @@ async function main() {
   // Chrome embeds wall-clock metadata; normalize it so identical fixtures/renderers produce stable PDF bytes.
   const normalizedPdf = await PDFDocument.load(await fs.readFile(pdfPath));
   const fixedPdfDate = new Date("2026-09-27T00:00:00.000Z");
-  normalizedPdf.setTitle(G2BR1_MODE ? "Birthday Magazine synthetic G2BR1 Codex proof" : "Birthday Magazine synthetic G2B proof");
+  normalizedPdf.setTitle(REAL_AI_MODE ? `Birthday Magazine synthetic ${GATE_LABEL} Codex proof` : "Birthday Magazine synthetic G2B proof");
   normalizedPdf.setAuthor("Birthday Magazine Studio");
-  normalizedPdf.setSubject(G2BR1_MODE ? "Synthetic intake rendered from Codex generated content" : "Synthetic renderer reference; not AI-generated content");
+  normalizedPdf.setSubject(REAL_AI_MODE ? "Synthetic intake rendered from Codex generated content" : "Synthetic renderer reference; not AI-generated content");
   normalizedPdf.setCreationDate(fixedPdfDate);
   normalizedPdf.setModificationDate(fixedPdfDate);
   await fs.writeFile(pdfPath, await normalizedPdf.save({ useObjectStreams: false }));
@@ -889,17 +892,17 @@ async function main() {
   const openedPdf = await PDFDocument.load(pdfBytes);
   invariant(openedPdf.getPageCount() === 12 && pdfBytes.length > 0, "RETURN_PDF_OPEN_OR_PAGE_COUNT_FAILED");
   const grounding = groundingAudit(content, input);
-  invariant(grounding.result === (G2BR1_MODE ? "PASS" : "PASS_REFERENCE_FIXTURE_ONLY"), "RETURN_GROUNDING_AUDIT_FAILED");
+  invariant(grounding.result === (REAL_AI_MODE ? "PASS" : "PASS_REFERENCE_FIXTURE_ONLY"), "RETURN_GROUNDING_AUDIT_FAILED");
   const qa = await writeReferenceArtifacts({
     pages, selection, content, intakeErrors, contentErrors, grounding, browserQA, styleProof, pdfPath, screenshots, idempotency,
     aiStatus, schemaHash, architectureHash, browserVersion: browser.version(), baseUrl
   });
-  invariant(qa.overall === (G2BR1_MODE ? "PASS_G2BR1_REAL_AI_RENDER_PIPELINE" : "PASS_REFERENCE_PIPELINE_ONLY"), "RETURN_DETERMINISTIC_QA_FAILED");
+  invariant(qa.overall === (REAL_AI_MODE ? `PASS_${GATE_LABEL}_REAL_AI_RENDER_PIPELINE` : "PASS_REFERENCE_PIPELINE_ONLY"), "RETURN_DETERMINISTIC_QA_FAILED");
   await writeJson(path.join(ARTIFACTS, "run-summary.json"), {
-    gate: G2BR1_MODE ? "G2BR1_REAL_AI_GENERATION_CLOSURE" : "G2B_LOCAL_AI_PDF_SOLUTION_PROOF",
-    result: G2BR1_MODE ? "IN_PROGRESS_PENDING_IDEMPOTENCY_DUPLICATE_PROBE" : "RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED",
-    pipelineImplementation: G2BR1_MODE ? "PASS_REAL_CODEX_RENDER_PIPELINE" : "PASS_REFERENCE_RENDER_PIPELINE",
-    realAiCall: G2BR1_MODE ? "PASS" : "BLOCKED",
+    gate: REAL_AI_MODE ? GATE_ID : "G2B_LOCAL_AI_PDF_SOLUTION_PROOF",
+    result: REAL_AI_MODE ? "IN_PROGRESS_PENDING_IDEMPOTENCY_DUPLICATE_PROBE" : "RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED",
+    pipelineImplementation: REAL_AI_MODE ? "PASS_REAL_CODEX_RENDER_PIPELINE" : "PASS_REFERENCE_RENDER_PIPELINE",
+    realAiCall: REAL_AI_MODE ? "PASS" : "BLOCKED",
     pdf: "proof-magazine-soft-warm.pdf",
     screenshots,
     qa: "qa-report.json",
@@ -917,7 +920,7 @@ async function main() {
     sha256: sha256(pdfBytes),
     externalBrowserRequests: externalRequestCount,
     screenshots: screenshots.length,
-    gate: G2BR1_MODE ? "G2BR1_REAL_AI_GENERATION_CLOSURE" : "G2B_LOCAL_AI_PDF_SOLUTION_PROOF"
+    gate: REAL_AI_MODE ? GATE_ID : "G2B_LOCAL_AI_PDF_SOLUTION_PROOF"
   }, null, 2) + "\n");
 }
 

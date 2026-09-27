@@ -1,5 +1,55 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Current Gate — G2BR2 final result — RETURN
+
+- **Gate:** `G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE`
+- **Branch:** `codex/birthday-magazine-g2br2-host-codex-closure`
+- **Base:** GitHub `main` at `d3249013f01fdc60b2fc728d0a8f197255643182`
+- **PR:** [#43 — Prepare G2BR2 host Codex launch path](https://github.com/entropy-student/project/pull/43), open against `main`, unmerged
+- **Result:** `RETURN_CODEX_CHATGPT_LOGIN_REQUIRED`
+- **Stop point:** `STOP_AT_REVIEWER=YES`; no more model runs and no G3.
+
+### Final execution record
+
+```text
+Attempt 1 = RETURN_CODEX_EXEC_FAILED / WEBSOCKET_FAILURE / TRANSIENT_RUNTIME
+Attempt 2 = RETURN_CODEX_CHATGPT_LOGIN_REQUIRED / HTTP-only custom provider / HTTP 401 AUTHENTICATION
+Host codex login status before attempt 2 = Logged in using ChatGPT
+Codex CLI = 0.149.1
+Real model runs = 2 / 2 consumed
+Successful structured responses = 0
+schemaConstrained = true
+apiKeyUsed = false
+retryCategory after attempt 2 = null
+```
+
+The Owner reported that `codex login status` immediately before attempt 2 returned `Logged in using ChatGPT`. The configured custom provider nevertheless returned HTTP 401. This reports the observed CLI preflight and provider response separately; it does not claim that the inference request authenticated successfully.
+
+### Pipeline closure
+
+```text
+grounding = NOT RUN
+actual-AI PDF = NOT RUN
+deterministic AI QA = NOT RUN
+G3_STARTED = NO
+```
+
+There is no successful structured model output, so the real-AI grounding audit and renderer/PDF/QA path did not run. The human-authored `poc/g2b/fixtures/reference-content.json` was not used as AI output. The accepted reference baseline remains historical evidence only.
+
+### Transport and evidence
+
+- Attempt 2 used `providerId=g2br2_chatgpt_http`, `transport=HTTP_ONLY_RESPONSES`, `configScope=PER_INVOCATION_CODEX_EXEC_OVERRIDES`, `requiresOpenAIAuth=true`, `supportsWebSockets=false`, and `wireApi=responses`.
+- This was the last authorized model invocation. The two-run cap is exhausted; do not retry, select an API key, or purchase credits.
+- The latest sanitized `poc/g2b/artifacts/g2br2/model-execution-status.json` and canonical `jobs/<sha256>.json` are included with the attempt 1/2 diagnostics and aggregate counts. Synthetic prompt and schema artifacts remain available. They contain no token, session identifier, cookie, auth header or raw provider log.
+- The custom provider was configured with per-invocation CLI overrides; no global Codex config was edited. No G2BR1 historical evidence, MVP contract, page architecture or renderer code was changed by this closure update.
+- `EXECUTION_EVIDENCE.md` records the detailed result and source artifact paths. Reviewer should make the next gate decision; this handoff does not choose a recovery path.
+
+### GitHub state and forbidden actions
+
+- Branch: `codex/birthday-magazine-g2br2-host-codex-closure`; final evidence commit is the current branch head.
+- Existing PR: [#43](https://github.com/entropy-student/project/pull/43), targets `main`, open and unmerged; updated with the final run evidence and handoff.
+- No API key, extra credit purchase/reset, payment, PayPal, real customer data, production email, public deployment, VPS, Cloudflare/Shared Infra change or G3 work occurred.
+
 ## Current Gate — G2BR1 Real AI Generation Closure
 
 - **Gate:** G2BR1_REAL_AI_GENERATION_CLOSURE

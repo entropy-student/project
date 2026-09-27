@@ -1,0 +1,47 @@
+{
+  "orderKey": "synthetic-order-g2br2-0001",
+  "canonical": true,
+  "status": "failed",
+  "createdBy": "g2br2-codex-chatgpt",
+  "gate": "G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE",
+  "fixtureId": "synthetic-mira-vale-2026-09",
+  "codexExecRunCount": 2,
+  "successfulGenerationCount": 0,
+  "retryCount": 1,
+  "retryCategory": null,
+  "modelRuns": [
+    {
+      "runNumber": 1,
+      "executionMode": "CODEX_HOST_WINDOWS_CHATGPT_LOGIN",
+      "codexCliVersion": "0.149.1",
+      "status": "FAILED",
+      "result": "RETURN_CODEX_EXEC_FAILED",
+      "providerDiagnostic": {
+        "kind": "WEBSOCKET_FAILURE",
+        "safeSummary": "WebSocket transport or upgrade failed.",
+        "exitCode": 1
+      }
+    },
+    {
+      "runNumber": 2,
+      "executionMode": "CODEX_HOST_WINDOWS_CHATGPT_LOGIN",
+      "codexCliVersion": "0.149.1",
+      "providerId": "g2br2_chatgpt_http",
+      "transport": "HTTP_ONLY_RESPONSES",
+      "configScope": "PER_INVOCATION_CODEX_EXEC_OVERRIDES",
+      "requiresOpenAIAuth": true,
+      "supportsWebSockets": false,
+      "wireApi": "responses",
+      "status": "FAILED",
+      "result": "RETURN_CODEX_CHATGPT_LOGIN_REQUIRED",
+      "providerDiagnostic": {
+        "kind": "AUTHENTICATION",
+        "httpStatus": 401,
+        "safeSummary": "Codex returned HTTP 401.",
+        "exitCode": 1
+      }
+    }
+  ],
+  "lastFailureCode": "RETURN_CODEX_CHATGPT_LOGIN_REQUIRED",
+  "lastRetryReason": "TRANSIENT_RUNTIME"
+}

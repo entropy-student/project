@@ -1,0 +1,25 @@
+{
+  "gate": "G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE",
+  "result": "RETURN_CODEX_CHATGPT_LOGIN_REQUIRED",
+  "executionMode": "CODEX_HOST_WINDOWS_CHATGPT_LOGIN",
+  "codexCliVersion": "0.149.1",
+  "realModelRunCount": 2,
+  "successfulGenerationCount": 0,
+  "schemaConstrained": true,
+  "apiKeyUsed": false,
+  "providerId": "g2br2_chatgpt_http",
+  "transport": "HTTP_ONLY_RESPONSES",
+  "configScope": "PER_INVOCATION_CODEX_EXEC_OVERRIDES",
+  "requiresOpenAIAuth": true,
+  "supportsWebSockets": false,
+  "wireApi": "responses",
+  "retryCategory": null,
+  "providerDiagnostic": {
+    "kind": "AUTHENTICATION",
+    "httpStatus": 401,
+    "safeSummary": "Codex returned HTTP 401.",
+    "exitCode": 1
+  },
+  "outputSha256": null,
+  "sessionOrAccountIdentifiersRecorded": false
+}

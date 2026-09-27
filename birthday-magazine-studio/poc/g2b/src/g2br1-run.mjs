@@ -12,7 +12,13 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
 const FIXTURES = path.join(ROOT, "fixtures");
 const BASELINE_ARTIFACTS = path.join(ROOT, "artifacts");
-const ARTIFACTS = path.join(BASELINE_ARTIFACTS, "g2br1");
+const G2BR2_MODE = process.env.BMS_G2BR2_HOST_MODE === "1";
+const NAMESPACE = G2BR2_MODE ? "g2br2" : "g2br1";
+const GATE_ID = G2BR2_MODE ? "G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE" : "G2BR1_REAL_AI_GENERATION_CLOSURE";
+const GATE_LABEL = G2BR2_MODE ? "G2BR2" : "G2BR1";
+const EXECUTION_MODE = G2BR2_MODE ? "CODEX_HOST_WINDOWS_CHATGPT_LOGIN" : "CODEX_CHATGPT_LOGIN";
+const REAL_AI_QA_PASS = G2BR2_MODE ? "PASS_G2BR2_REAL_AI_RENDER_PIPELINE" : "PASS_G2BR1_REAL_AI_RENDER_PIPELINE";
+const ARTIFACTS = path.join(BASELINE_ARTIFACTS, NAMESPACE);
 const JOBS = path.join(ARTIFACTS, "jobs");
 const INPUT_FILE = path.join(FIXTURES, "intake.json");
 const BASELINE_QA = path.join(BASELINE_ARTIFACTS, "qa-report.json");
@@ -22,8 +28,8 @@ const PROMPT_FILE = path.join(ARTIFACTS, "synthetic-generation-prompt.txt");
 const STATUS_FILE = path.join(ARTIFACTS, "model-execution-status.json");
 const IDEMPOTENCY_FILE = path.join(ARTIFACTS, "idempotency-report.json");
 const QA_FILE = path.join(ARTIFACTS, "qa-report.json");
-const MAX_MODEL_RUNS = 3;
-const JOB_KEY = "synthetic-order-g2b-0001";
+const MAX_MODEL_RUNS = G2BR2_MODE ? 2 : 3;
+const JOB_KEY = G2BR2_MODE ? "synthetic-order-g2br2-0001" : "synthetic-order-g2b-0001";
 const MODEL_EXECUTABLE = process.env.BMS_CODEX_EXECUTABLE || "codex";
 
 async function readJson(file) { return JSON.parse(await fs.readFile(file, "utf8")); }
@@ -43,10 +49,13 @@ function runCodexReadOnly(args) {
   if (result.error || result.status !== 0) return { ok: false };
   return { ok: true, text: [result.stdout, result.stderr].filter(Boolean).join("\n").trim() };
 }
-function retryCategory(code) {
-  if (code === "RETURN_G2BR1_MODEL_OUTPUT_SCHEMA_FAILED" || code === "RETURN_G2BR1_GROUNDING_FAILED") return "SCHEMA_OR_OUTPUT_VALIDATION";
-  if (code === "RETURN_G2BR1_RENDER_QA_FAILED") return "RUNTIME";
-  if (code === "RETURN_CODEX_EXEC_FAILED") return "TRANSIENT_RUNTIME";
+function retryCategory(code, diagnostic) {
+  if (code.endsWith("MODEL_OUTPUT_SCHEMA_FAILED") || code.endsWith("GROUNDING_FAILED")) return "SCHEMA_OR_OUTPUT_VALIDATION";
+  if (code.endsWith("RENDER_QA_FAILED")) return G2BR2_MODE ? null : "RUNTIME";
+  if (code === "RETURN_CODEX_EXEC_FAILED") {
+    if (!G2BR2_MODE) return "TRANSIENT_RUNTIME";
+    if (["HTTP_TRANSIENT", "DNS_FAILURE", "TLS_FAILURE", "WEBSOCKET_FAILURE", "TIMEOUT", "CONNECTION_FAILURE"].includes(diagnostic?.kind)) return "TRANSIENT_RUNTIME";
+  }
   return null;
 }
 
@@ -84,6 +93,10 @@ async function duplicateProbe() {
 }
 
 async function runGeneration({ retry = false } = {}) {
+  const g2br2HttpOnlyRetry = G2BR2_MODE && retry;
+  if (g2br2HttpOnlyRetry && process.env.BMS_G2BR2_HTTP_ONLY_RETRY !== "1") {
+    throw new Error("RETURN_G2BR2_HTTP_ONLY_RETRY_LAUNCHER_REQUIRED");
+  }
   await fs.mkdir(ARTIFACTS, { recursive: true });
   const { intake } = await loadBaseline();
   const login = runCodexReadOnly(["login", "status"]);
@@ -91,7 +104,7 @@ async function runGeneration({ retry = false } = {}) {
   const version = runCodexReadOnly(["--version"]);
   if (!version.ok || !/^codex-cli\s+\S+/.test(version.text)) throw new Error("RETURN_CODEX_CLI_UNAVAILABLE");
 
-  const existing = await claimCanonicalJob(JOBS, JOB_KEY, { createdBy: "g2br1-codex-chatgpt" });
+  const existing = await claimCanonicalJob(JOBS, JOB_KEY, { createdBy: `${NAMESPACE}-codex-chatgpt` });
   let job = existing.record;
   if (!existing.created) {
     if (!retry || job.status !== "failed" || !job.retryCategory || job.codexExecRunCount >= MAX_MODEL_RUNS) {
@@ -113,7 +126,7 @@ async function runGeneration({ retry = false } = {}) {
   } else {
     job = {
       ...job,
-      gate: "G2BR1_REAL_AI_GENERATION_CLOSURE",
+      gate: GATE_ID,
       fixtureId: intake.fixtureId,
       codexExecRunCount: 0,
       successfulGenerationCount: 0,
@@ -138,7 +151,7 @@ async function runGeneration({ retry = false } = {}) {
   await fs.writeFile(PROMPT_FILE, prompt, "utf8");
   const attemptNumber = job.codexExecRunCount + 1;
   const attemptFile = path.join(ARTIFACTS, `generated-content-attempt-${attemptNumber}.json`);
-  const codexContext = await fs.mkdtemp(path.join(os.tmpdir(), "birthday-magazine-g2br1-codex-"));
+  const codexContext = await fs.mkdtemp(path.join(os.tmpdir(), `birthday-magazine-${NAMESPACE}-codex-`));
   let outputHash = null;
   let modelMetadata = null;
   try {
@@ -147,16 +160,30 @@ async function runGeneration({ retry = false } = {}) {
       workingDirectory: codexContext,
       schemaPath: SCHEMA_FILE,
       outputPath: attemptFile,
+      httpOnlyChatGPT: g2br2HttpOnlyRetry,
       onSpawn: async () => {
         job.codexExecRunCount = attemptNumber;
-        job.modelRuns = [...(job.modelRuns || []), { runNumber: attemptNumber, executionMode: "CODEX_CHATGPT_LOGIN", codexCliVersion: version.text.replace(/^codex-cli\s+/, ""), status: "STARTED" }];
+        job.modelRuns = [...(job.modelRuns || []), {
+          runNumber: attemptNumber,
+          executionMode: EXECUTION_MODE,
+          codexCliVersion: version.text.replace(/^codex-cli\s+/, ""),
+          ...(g2br2HttpOnlyRetry ? {
+            providerId: "g2br2_chatgpt_http",
+            transport: "HTTP_ONLY_RESPONSES",
+            configScope: "PER_INVOCATION_CODEX_EXEC_OVERRIDES",
+            requiresOpenAIAuth: true,
+            supportsWebSockets: false,
+            wireApi: "responses"
+          } : {}),
+          status: "STARTED"
+        }];
         await saveCanonicalJob(existing.file, job);
       }
     });
     const response = await provider.generateStructured({ prompt, schema: CONTENT_SCHEMA });
     const responseBytes = await fs.readFile(attemptFile);
     outputHash = sha256(responseBytes);
-    if (response.content?.photoPageAssignments?.length !== 12) throw Object.assign(new Error("RETURN_G2BR1_MODEL_OUTPUT_SCHEMA_FAILED"), { returnCode: "RETURN_G2BR1_MODEL_OUTPUT_SCHEMA_FAILED" });
+    if (response.content?.photoPageAssignments?.length !== 12) throw Object.assign(new Error(`RETURN_${GATE_LABEL}_MODEL_OUTPUT_SCHEMA_FAILED`), { returnCode: `RETURN_${GATE_LABEL}_MODEL_OUTPUT_SCHEMA_FAILED` });
     modelMetadata = response.metadata;
     await fs.copyFile(attemptFile, OUTPUT_FILE);
 
@@ -171,9 +198,9 @@ async function runGeneration({ retry = false } = {}) {
     };
     await writeJson(IDEMPOTENCY_FILE, idempotencyPending);
     const status = {
-      gate: "G2BR1_REAL_AI_GENERATION_CLOSURE",
+      gate: GATE_ID,
       result: "PASS",
-      executionMode: "CODEX_CHATGPT_LOGIN",
+      executionMode: EXECUTION_MODE,
       authentication: "ChatGPT login; API key not used",
       codexCliVersion: version.text.replace(/^codex-cli\s+/, ""),
       modelIdentifier: modelMetadata.modelIdentifier,
@@ -187,6 +214,14 @@ async function runGeneration({ retry = false } = {}) {
       outputSha256: outputHash,
       outputOrigin: "direct codex exec --output-last-message response; no reference fixture fallback",
       apiKeyUsed: false,
+      ...(g2br2HttpOnlyRetry ? {
+        providerId: "g2br2_chatgpt_http",
+        transport: "HTTP_ONLY_RESPONSES",
+        configScope: "PER_INVOCATION_CODEX_EXEC_OVERRIDES",
+        requiresOpenAIAuth: true,
+        supportsWebSockets: false,
+        wireApi: "responses"
+      } : {}),
       extraCreditsPurchased: false,
       resetCreditsConsumed: false,
       sessionOrAccountIdentifiersRecorded: false,
@@ -198,18 +233,30 @@ async function runGeneration({ retry = false } = {}) {
       cwd: ROOT,
       env: {
         ...sanitizedEnvironment(),
-        BMS_G2BR1_MODE: "1",
-        BMS_G2BR1_CONTENT_FILE: OUTPUT_FILE,
-        BMS_G2BR1_STATUS_FILE: STATUS_FILE,
-        BMS_G2BR1_IDEMPOTENCY_FILE: IDEMPOTENCY_FILE
+        BMS_REAL_AI_MODE: "1",
+        BMS_REAL_AI_GATE_ID: GATE_ID,
+        BMS_REAL_AI_NAMESPACE: NAMESPACE,
+        BMS_REAL_AI_CONTENT_FILE: OUTPUT_FILE,
+        BMS_REAL_AI_STATUS_FILE: STATUS_FILE,
+        BMS_REAL_AI_IDEMPOTENCY_FILE: IDEMPOTENCY_FILE
       },
       encoding: "utf8",
       windowsHide: true,
       timeout: 180_000
     });
-    if (renderer.error || renderer.status !== 0) throw Object.assign(new Error("RETURN_G2BR1_RENDER_QA_FAILED"), { returnCode: "RETURN_G2BR1_RENDER_QA_FAILED" });
+    if (renderer.error || renderer.status !== 0) {
+      const outputValidationFailed = /RETURN_GROUNDING_OR_CONTENT_SCHEMA_FAILED|RETURN_REAL_AI_PHOTO_ASSIGNMENT_MISMATCH/.test(`${renderer.stderr || ""}\n${renderer.stdout || ""}`);
+      if (outputValidationFailed) {
+        const returnCode = `RETURN_${GATE_LABEL}_MODEL_OUTPUT_SCHEMA_FAILED`;
+        throw Object.assign(new Error(returnCode), {
+          returnCode,
+          providerDiagnostic: { kind: "OUTPUT_SCHEMA_OR_CONSTRAINT", safeSummary: "Generated content failed grounding or photo-mapping validation." }
+        });
+      }
+      throw Object.assign(new Error(`RETURN_${GATE_LABEL}_RENDER_QA_FAILED`), { returnCode: `RETURN_${GATE_LABEL}_RENDER_QA_FAILED` });
+    }
     const qa = await readJson(QA_FILE);
-    if (qa.overall !== "PASS_G2BR1_REAL_AI_PIPELINE" || qa.aiStructuredGeneration?.realAiCall !== "PASS" || qa.grounding?.result !== "PASS" || qa.pdf?.pageCount !== 12) throw Object.assign(new Error("RETURN_G2BR1_RENDER_QA_FAILED"), { returnCode: "RETURN_G2BR1_RENDER_QA_FAILED" });
+    if (qa.overall !== REAL_AI_QA_PASS || qa.aiStructuredGeneration?.realAiCall !== "PASS" || qa.grounding?.result !== "PASS" || qa.pdf?.pageCount !== 12) throw Object.assign(new Error(`RETURN_${GATE_LABEL}_RENDER_QA_FAILED`), { returnCode: `RETURN_${GATE_LABEL}_RENDER_QA_FAILED` });
 
     const pdfBytes = await fs.readFile(path.join(ARTIFACTS, "proof-magazine-soft-warm.pdf"));
     job.status = "completed";
@@ -233,9 +280,9 @@ async function runGeneration({ retry = false } = {}) {
     if (finalQA.idempotency?.result !== "PASS" || finalQA.idempotency?.duplicateInvocationCodexExecRunCount !== 0) throw Object.assign(new Error("RETURN_IDEMPOTENCY_DUPLICATE_PROBE_FAILED"), { returnCode: "RETURN_IDEMPOTENCY_DUPLICATE_PROBE_FAILED" });
 
     const summary = {
-      gate: "G2BR1_REAL_AI_GENERATION_CLOSURE",
-      result: "PASS_CANDIDATE_G2BR1_REAL_AI_GENERATION_CLOSURE",
-      executionMode: "CODEX_CHATGPT_LOGIN",
+      gate: GATE_ID,
+      result: `PASS_CANDIDATE_${GATE_ID}`,
+      executionMode: EXECUTION_MODE,
       modelIdentifier: modelMetadata.modelIdentifier,
       modelRunCount: job.codexExecRunCount,
       generatedContent: "generated-content.json",
@@ -248,8 +295,8 @@ async function runGeneration({ retry = false } = {}) {
     process.stdout.write(JSON.stringify(summary, null, 2) + "\n");
   } catch (error) {
     job.status = "failed";
-    job.lastFailureCode = error.returnCode || "RETURN_G2BR1_EXECUTION_FAILED";
-    job.retryCategory = retryCategory(job.lastFailureCode);
+    job.lastFailureCode = error.returnCode || `RETURN_${GATE_LABEL}_EXECUTION_FAILED`;
+    job.retryCategory = retryCategory(job.lastFailureCode, error.providerDiagnostic);
     const failedRun = (job.modelRuns || []).find(item => item.runNumber === job.codexExecRunCount);
     if (failedRun) {
       failedRun.status = "FAILED";
@@ -258,14 +305,22 @@ async function runGeneration({ retry = false } = {}) {
     }
     await saveCanonicalJob(existing.file, job).catch(() => {});
     await writeJson(STATUS_FILE, {
-      gate: "G2BR1_REAL_AI_GENERATION_CLOSURE",
+      gate: GATE_ID,
       result: job.lastFailureCode,
-      executionMode: "CODEX_CHATGPT_LOGIN",
+      executionMode: EXECUTION_MODE,
       codexCliVersion: version.text.replace(/^codex-cli\s+/, ""),
       realModelRunCount: job.codexExecRunCount || 0,
       successfulGenerationCount: 0,
       schemaConstrained: true,
       apiKeyUsed: false,
+      ...(g2br2HttpOnlyRetry ? {
+        providerId: "g2br2_chatgpt_http",
+        transport: "HTTP_ONLY_RESPONSES",
+        configScope: "PER_INVOCATION_CODEX_EXEC_OVERRIDES",
+        requiresOpenAIAuth: true,
+        supportsWebSockets: false,
+        wireApi: "responses"
+      } : {}),
       retryCategory: job.retryCategory,
       providerDiagnostic: error.providerDiagnostic || null,
       outputSha256: outputHash,
@@ -283,6 +338,6 @@ async function main() {
 }
 
 main().catch(error => {
-  process.stderr.write((error.message || "RETURN_G2BR1_EXECUTION_FAILED") + "\n");
+  process.stderr.write((error.message || `RETURN_${GATE_LABEL}_EXECUTION_FAILED`) + "\n");
   process.exitCode = 1;
 });
