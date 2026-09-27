@@ -5869,3 +5869,98 @@ STOP_AT_REVIEWER=YES
 ```
 
 Executor note: all gate probes were read-only. No Caddy source/config, Compose file, container lifecycle, DNS, indexing, payment, Secret, or unrelated service mutation was performed. Recreate and rollback sequences are plans only; shared Caddy ownership of ports 80/443 requires an acknowledged brief shared-edge interruption if a future Reviewer-authorized recreate is executed.
+
+
+## K6_PHASE_G_R4_PUBLIC_SANDBOX_INGRESS_ACTIVATION — Executor continuation readback (2026-09-27)
+
+```text
+GATE=K6_PHASE_G_R4_SHARED_CADDY_SERVICE_RECREATE_AND_PUBLIC_SANDBOX_ACTIVATION
+RESULT=PASS_CANDIDATE_K6_PHASE_G_R4_SHARED_CADDY_SERVICE_RECREATE_AND_PUBLIC_SANDBOX_ACTIVATION
+OWNER_AUTHORIZATION=AUTHORIZE_K6_PHASE_G_R4_SHARED_CADDY_SERVICE_RECREATE
+
+# DNS was created by Owner before this continuation; Executor did not create/save/retry it.
+DNS_RECORD_CREATION_BY_EXECUTOR=0
+DNS_RECORD_TYPE=A
+DNS_RECORD_NAME=minicraft.spikersun.com
+DNS_RECORD_TARGET=2.24.193.133
+DNS_PROXY_STATE=DNS_ONLY
+DNS_EXACT_RECORD_COUNT=1
+DNS_RECORD_COUNT_SOURCE=OWNER_REPORTED_CLOUDFLARE_SCREENSHOT
+CLOUDFLARE_DASHBOARD_AUTOMATION_READBACK=UNAVAILABLE_COMPUTER_USE_BACKEND
+DNS_ACTIVATION=PASS_OWNER_SCREENSHOT_PLUS_PUBLIC_READBACK
+PUBLIC_DNS_A=2.24.193.133; cloudflare-dns.com=1 answer; dns.google=1 answer
+PUBLIC_DNS_AAAA=ABSENT; both DoH resolvers returned 0 answers
+PUBLIC_DNS_CNAME=ABSENT; both DoH resolvers returned 0 answers
+
+# Exact-IP HTTPS probes retained SNI and normal TLS validation; no TLS bypass and no redirect follow.
+PUBLIC_TLS=PASS; ssl_verify_result=0
+PUBLIC_HOME=PASS; HTTP=200
+PUBLIC_SHOP=PASS; HTTP=200
+PUBLIC_PRODUCT_223=PASS; HTTP=200
+PUBLIC_CART=PASS; HTTP=200
+PUBLIC_CHECKOUT=PASS_ACCEPTED_SEMANTICS; HTTP=302; safe Location=https://minicraft.spikersun.com/cart/
+PUBLIC_MY_ACCOUNT=PASS; HTTP=200
+PUBLIC_WP_JSON=PASS; HTTP=200; application/json; valid WordPress API root JSON
+PUBLIC_MEDIA=PASS; /wp-content/uploads/2021/12/homepod.jpg; HTTP=200; 33533 bytes
+PUBLIC_WOOCOMMERCE=PASS; read-only Store API returned exactly one matching product, ID=223
+PUBLIC_PPCP_SANDBOX=PASS; local authoritative state readback HTTP=200
+PPCP_STATE_READ_METHOD=WordPress REST GET /wc/v3/wc_paypal/common; only allowlisted booleans emitted
+PPCP_ACTIVE=YES
+PPCP_MERCHANT_CONNECTED=YES
+PPCP_SANDBOX_ENABLED=YES
+PPCP_LIVE_ENABLED=NO
+PAYPAL_LIVE=NO
+
+# Fresh direct-native strict SSH readbacks after the Owner's DNS action.
+SSH_NETWORK_INVOCATIONS=2; both successful read-only invocations, no retry
+REMOTE_IDENTITY=ops@srv1970241
+WORDPRESS_RUNTIME_CONTINUITY=PASS; running; restart_count=0
+MARIADB_HEALTH=PASS; running; healthy; restart_count=0
+WORDPRESS_HOST_PORT=NONE
+DB_PUBLIC_PORT=NONE
+CADDY_RUNTIME=PASS; running; container_id=793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2
+CADDY_RESTART_COUNT=0
+HOST_CADDYFILE=199 bytes; SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+NEW_CONTAINER_MOUNTED_CADDYFILE_BYTES=199
+NEW_CONTAINER_MOUNTED_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+ACTIVE_CADDY_HOSTS=localhost,edge-test.spikersun.com,minicraft.spikersun.com
+ACTIVE_MINICRAFT_UPSTREAM=wordpress:80
+POST_PUBLIC_LOCALHOST=PASS; active route present; canonical HTTP-to-HTTPS redirect behavior retained
+POST_PUBLIC_EDGE_TEST=PASS; HTTPS=200; body_bytes=30; SHA256=2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824
+POST_PUBLIC_MINICRAFT_ROUTE=PASS; public HTTPS route served successfully
+UNRELATED_CONTAINER_IDS_UNCHANGED=PASS; pre/post-recreate inventory comparison completed during the single recreate transaction; no later container lifecycle action
+CURRENT_NON_CADDY_CONTAINER_INVENTORY_SHA256=69752ac7788b8c3414f0a2da50e1ac63689baa737d162168fad16d685f774aa6
+INDEXING_PRE_BLOG_PUBLIC=0
+INDEXING_WRITE_REQUIRED=NO
+INDEXING_POST_BLOG_PUBLIC=0; fresh strict-SSH readback
+
+# Exact execution history, including corrected non-material helper false negatives.
+CADDY_OLD_CONTAINER_ID=9b52c3dbb414dd504de899afef42ad1018cdfe11f677c3f6b6da7d3d85f8ee3e
+CADDY_NEW_CONTAINER_ID=793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2
+CADDY_ONLY_RECREATE=PASS; exactly one sealed recreate invocation; no second recreate
+LEGACY_ROLLBACK_BACKUP_PATH=/srv/backups/mini-craft-night-kit/manifests/k6-g-r4-legacy-active-Caddyfile-20260927T130651Z.bak
+LEGACY_ROLLBACK_BACKUP_FINAL_STATE=PASS; 153 bytes; SHA256=126292f6bc2a77929539704a84c5d7a4ab3364ec39364a14abafda176b631837; one artifact path, initially copied from stale host view then repaired in-place from mounted legacy bytes
+CADDYFILE_WRITE_HISTORY=target install; helper-triggered host-only legacy restore stopped before recreate; exact target reapplied atomically; final host and container-mounted target hashes match
+EXECUTOR_PROBE_DEVIATION=Initial localhost helper expected HTTP 200; fresh behavior was canonical HTTP 308 to HTTPS, so helper initiated a legacy restore and then failed before any further lifecycle action. Read-only reconciliation proved the running container still had the target candidate active/mounted. A separate later probe had a curl flag typo and was read-only. No blind recreate or DNS retry followed.
+CADDY_RELOAD=NOT_USED; sealed transaction used exactly one Caddy-service recreate
+COMPOSE_FILE_MUTATION=NO
+NETWORK_RECREATE=NO
+DOCKER_DAEMON_MUTATION=NO
+UNRELATED_CONTAINER_RECREATE=NO
+UNRELATED_DNS_CHANGED=NO
+DNS_SCOPE=EXACT_ONE_A_RECORD_ONLY
+SHARED_INFRA_SCOPE=EXACT_CADDYFILE_AND_CADDY_SERVICE_ONLY
+PUBLIC_SANDBOX_INGRESS=ACTIVE
+PUBLIC_INGRESS_CHANGE=1
+REAL_PAYMENT_ACTIONS=0
+SANDBOX_BUYER_PAYMENT_ACTIONS=0
+ORDER_CREATION=0
+AUTHORIZATION_CAPTURE_REFUND_WEBHOOK_ACTIONS=0
+PAYMENT_ACTIONS=0
+PAYPAL_LIVE=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+SECRET_VALUE_OR_HASH_ACCESS=0
+SHARED_INFRA_WRITES=1_BOUNDED_CADDY_CHANGE
+DNS_OWNER_WRITE=1_EXACT_A_RECORD
+STOP_AT_REVIEWER=YES
+```
