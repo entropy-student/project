@@ -2794,3 +2794,14 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Evidence append commit: `11d0f7d61de83ee75d64aef862e4b9924b5bb485`. No Reviewer-owned file or infrastructure was changed.
 
 `STOP_AT_REVIEWER=YES`
+
+
+## K7 R1 — Single Resend test sent; delivery confirmation pending (2026-09-28)
+
+- Result: `RETURN_RESEND_DELIVERY_AND_OWNER_ARRIVAL_CONFIRMATION_REQUIRED`; `STOP_AT_REVIEWER=YES`.
+- The Owner-selected recipient was checked in the WordPress UI; the address was not recorded. Exactly one test-send action returned the plugin success message. No retry occurred.
+- The Resend Dashboard opened to sign-in; no login/authentication was attempted. Provider-side Delivered status and recipient mailbox arrival remain unverified. Await Owner confirmation or authenticated read-only evidence; do not resend.
+- API key value/hash was not accessed. No order, cart, payment, refund, Product 223, or infrastructure action occurred.
+- Evidence commit: `458473dfc3ee74915c2d179335ef7f383ab78a95`.
+
+`STOP_AT_REVIEWER=YES`
