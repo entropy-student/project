@@ -390,4 +390,4 @@ Audit:
 Reviewer result:
 `PASS_TOPIC_SYSTEM_CONFIG_SYNC / RUNTIME_PROOF_PENDING_NEXT_DAILY_RUN / G6A_UNCHANGED`.
 
-Portable Candidate topic sync is prepared on `codex/story-showrunner-topic-system-full-sync`; record the final commit after merge. The live scheduled task is updated, but the next real Daily Radar artifact is still required as runtime proof.
+Portable Candidate topic sync is confirmed on `entropy-student/spike.skill/main@2796982ed9447ea0283253762ea59cf604566ccb`. The live scheduled task is updated, but the next real Daily Radar artifact is still required as runtime proof.
