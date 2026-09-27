@@ -30,6 +30,8 @@ jobs:
           service_account: family-cookbook-ocr@family-cookbook-ocr-test.iam.gserviceaccount.com
           create_credentials_file: true
           export_environment_variables: true
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/cloud-platform
 
       - name: Install bounded R3B client dependencies
         shell: bash
@@ -47,6 +49,7 @@ jobs:
         env:
           G2A1_R3B_ARTIFACT_DIR: ${{ runner.temp }}/g2a1-r3b-artifacts
           G2A1_R3B_DATA_DIR: ${{ runner.temp }}/g2a1-r3b-data
+          GOOGLE_OAUTH_ACCESS_TOKEN: ${{ steps.google-auth.outputs.access_token }}
           GOOGLE_CLOUD_PROJECT: family-cookbook-ocr-test
           GOOGLE_DOC_AI_LOCATION: us
           GOOGLE_DOC_AI_PROCESSOR_ID: ffb2298b379880ec
