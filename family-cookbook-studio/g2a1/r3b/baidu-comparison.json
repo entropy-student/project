@@ -1,0 +1,38 @@
+{
+  "provider": "BAIDU_HANDWRITING_OCR",
+  "status": "complete",
+  "baseline": {
+    "manual_edit_fields": 13,
+    "manual_edit_chars": 69,
+    "critical_field_errors": 1,
+    "silent_critical_errors": 0,
+    "confirmed_hallucinations": 0
+  },
+  "candidate": {
+    "manual_edit_fields": 12,
+    "manual_edit_chars": 100,
+    "critical_field_errors": 0,
+    "silent_critical_errors": 0,
+    "confirmed_hallucinations": 0
+  },
+  "manual_edit_fields_reduced": 1,
+  "manual_edit_chars_reduced": -31,
+  "critical_facts_recovered": 1,
+  "newly_missing_previously_correct_facts": [],
+  "improved_sample_ids": [
+    "GH04",
+    "GH05",
+    "GH09"
+  ],
+  "worsened_sample_ids": [
+    "GH02",
+    "GH03",
+    "GH06",
+    "GH07",
+    "GH08",
+    "GH10",
+    "GH11"
+  ],
+  "material_improvement": false,
+  "reason": "no material improvement under the recorded whole-transcript replacement rule; critical-fact recovery is useful only as a bounded second opinion"
+}
