@@ -92,6 +92,6 @@ Earlier Topic OS rollback branches remain preserved as deeper rollback points.
 
 Static/contracts coverage is complete. The live scheduled task prompt has been updated in place, but the first real post-sync Daily Radar run has not yet occurred in this audit. Do not claim runtime execution proof until a new `daily/YYYY-MM-DD.json` contains Human Process / Meaning / D5 evidence from the synchronized task.
 
-Portable Candidate sync is prepared on guarded branch `codex/story-showrunner-topic-system-full-sync`; final merged commit must be recorded after merge.
+Portable Candidate Topic sync is confirmed on `entropy-student/spike.skill/main` at `2796982ed9447ea0283253762ea59cf604566ccb`.
 
 No G6A production state is reopened or modified.
