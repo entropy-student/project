@@ -10,3 +10,6 @@ Safety:
 - no Google billing activation;
 - no customer/private data;
 - no secret values stored here.
+
+
+Retry note: rerun after Free-mode 429; benchmark now honors Retry-After/exponential backoff and still stops on payment-required.
