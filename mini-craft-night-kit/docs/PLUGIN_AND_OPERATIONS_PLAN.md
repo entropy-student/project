@@ -46,7 +46,15 @@ MVP 默认候选：
 - 使用 SMTP / transactional provider；
 - 不依赖默认 PHP mail 作为正式生产方案。
 
-具体插件在 K5 前确定，优先免费、轻量、可维护方案。
+当前已选定并进入生产准备的方案：
+- Provider：Resend；
+- WordPress integration：官方 Resend 插件；
+- sending domain：`minicraft.spikersun.com`（Verified / Sending enabled）；
+- sender convention：`support@minicraft.spikersun.com`；
+- API key：Owner 直接录入 WordPress，禁止进入 GitHub/聊天/Evidence；
+- 当前仍需完成 exactly-one delivery qualification，PASS 前不得把邮件链路视为正式就绪。
+
+不再并行安装 WP Mail SMTP / Easy WP SMTP 等第二套邮件路由器，除非后续独立 Gate 证明 Resend 方案不满足需求。
 
 ### SEO
 目标：
