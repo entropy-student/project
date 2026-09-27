@@ -27,9 +27,10 @@ Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取；G6R run
 ## 一句话定位
 
 ```text
-现实变化 / 热点信号
-→ 普通人会遇到什么冲突
-→ 背后的 AI 机制是什么
+大众兴趣 X / 现实变化
+→ 找到一个反常现象与值得追问的 WHY
+→ 明确背后的 Human Tension
+→ 找出 AI 改变/放大的人的过程与机制
 → 把机制变成故事里的世界规则
 → 结构化故事
 → 口播 / Production SRT（Voice Timing Profile）
@@ -42,7 +43,7 @@ Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取；G6R run
 
 核心不是“给 AI 概念套故事”，而是：
 
-> **现实变化 → 人类冲突 → 故事 → AI 规律 → 观众知道该怎么看 / 怎么做。**
+> **X → Paradox → WHY → Human Tension → AI 机制 → 故事 → 观众形成自己的理解 / 判断。**
 
 ## 为什么需要这个项目
 
@@ -106,7 +107,23 @@ Worker 不应该互相自由调用，也不应该各自维护一份“当前真�
 - 太专业：直接从 OpenAI / MCP / Agent 等名词进入；
 - 太低级：停留在“GPT 可以帮你写作业”。
 
-每期必须经过一层 Audience Translation：
+每期都必须通过 Human-world Translation，但 v0.2 不再要求选题首先来自 AI。
+
+默认优先：
+
+```text
+Human-interest X / observable situation
+                ↓
+      paradox / WHY / tension
+                ↓
+  AI changes one human process
+                ↓
+        causal mechanism
+                ↓
+             Story
+```
+
+强 AI 热点仍允许兼容路径：
 
 ```text
 Company / Model / Protocol / Feature
@@ -118,9 +135,9 @@ Company / Model / Protocol / Feature
              Story
 ```
 
-默认采用：
+默认仍采用：
 
-> **第三层进入（人的处境） → 第二层展开（社会/能力变化） → 第一层解释（技术机制）。**
+> **人的处境先进入 → 故事里经历变化 → 技术机制后解释。**
 
 ## 与现有项目的关系
 
