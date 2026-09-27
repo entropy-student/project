@@ -2613,3 +2613,16 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - No candidate was created/adapted from verified evidence. The bounded payload had no write actions; no Caddy, DNS, network, Compose, app, product, payment or Secret write was authorized or present. Remote execution outcome is explicitly unverified.
 - The local one-use PowerShell wrapper was deleted and its absence verified. GitHub Evidence update commit: `6a8863672d5b75ca4dafb96f8b0fa917cc4dc77e`.
 - Next: Reviewer review and a new decision if recovery is desired; this Gate is not retried here. `STOP_AT_REVIEWER=YES`.
+
+
+## Current Executor Handoff — K6 Phase F-R1R5R1
+
+- Gate: `K6_PHASE_F_R1R5R1_NO_STDIN_TRANSPORT_AND_BEHAVIORAL_RESUME`.
+- Result: `RETURN_REVIEWER_F_R1R5R1_REMOTE_COMMAND_TRANSPORT_CANARY_FAILED`; `STOP_AT_REVIEWER=YES`.
+- Canonical GitHub Governance, current project Reviewer Handoff/Storage Manifest/decision/pack, prior F-R1R5 decision/pack, latest Evidence/Handoff, and the unique local Shared VPS Handoff were read.
+- Local no-stdin seal passed: exact OpenSSH 9.5p2 version output and native exit were captured; stdin redirection was disabled; identity public fingerprint and all three known_hosts pins matched; fresh A/AAAA/CNAME DNS checks were NXDOMAIN.
+- One SSH network invocation was made using strict pinned options, `-n -T`, and the read-only remote command as the final argument. Native exit was 255; stdout/stderr capture worked, stderr was nonempty but retained only as a redacted classification. The remote marker/identity was not received, so host-key match and remote execution are unverified.
+- Per the Gate, SSH #2 was not run. No Caddy, Docker, WordPress, MariaDB, DNS, Shared Infra, payment, or Secret action occurred; no candidate was created. Temporary files were not created.
+- The first local capture rehearsals found a PowerShell 5.1 `ProcessStartInfo.ArgumentList` incompatibility and a null DNS-answer count handling issue. The capture implementation and parser were corrected and the full local seal passed before the sole network invocation.
+- Evidence appended to `EXECUTION_EVIDENCE.md`; evidence commit: `f72cbd5df3c215ac09133eddb1da5b1e085dcce4`.
+- Next: Reviewer review; do not attempt SSH #2 or continue the Caddy reconciliation without a new Reviewer decision. No owner action requested. `STOP_AT_REVIEWER=YES`.
