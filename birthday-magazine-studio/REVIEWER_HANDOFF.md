@@ -68,7 +68,7 @@ G2A1 Frontend + Reusable Component Feasibility PoC      ✅ PASS
 G2A1R1 Evidence Closure                                 ⏹ CLOSED — executor RETURN produced final technical finding
 G2A2 MVP Product Contract Freeze                        ✅ PASS
 G2B  Local AI/PDF Solution Proof                        ↩ RETURN — real AI proof missing
-G2BR1 Real AI Generation Closure                        ← CURRENT / BLOCKED_BY_OWNER_CHECKPOINT
+G2BR1 Real AI Generation Closure                        ← CURRENT / OWNER AUTHORIZED / CREDENTIAL REQUIRED
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
@@ -85,6 +85,7 @@ Current Reviewer decisions:
 - `OWNER_DECISION_MVP_AUTHENTICATED_ACCOUNT_REQUIRED_2026-09-27`
 - `PASS_G2A2_MVP_PRODUCT_CONTRACT_FREEZE_2026-09-27`
 - `RETURN_G2B_REAL_AI_PROOF_REQUIRED_2026-09-27`
+- `OWNER_AUTHORIZED_G2BR1_MAX_3_SYNTHETIC_AI_CALLS_2026-09-27`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -199,9 +200,11 @@ Current narrow Gate:
 
 Status:
 - authorized in scope;
-- **blocked until Owner provides protected provider credential/runtime and explicitly approves the bounded synthetic model-call test**.
+- Owner has explicitly approved the bounded synthetic-only real-AI test;
+- call ceiling: **maximum three provider requests total** for the existing synthetic fixture;
+- blocked only until an approved provider/model credential is available through a protected runtime mechanism.
 
-Recommended call ceiling: maximum three provider requests for one synthetic fixture, with retries only for provider/schema/transient failure.
+No credential may be placed in chat, repository files, screenshots or evidence.
 
 G3A/G3B remain unauthorized.
 
@@ -269,9 +272,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: wait for Owner checkpoint, then dispatch/review only `docs/G2BR1_REAL_AI_GENERATION_CLOSURE.md`.
-- Executor next action: none until Owner checkpoint is satisfied.
-- Owner intervention required: **YES** — select/authorize one provider/model, make the credential available through a protected runtime mechanism, and approve the bounded synthetic-only live model calls. Never paste the key into chat or repository files.
+- Reviewer next action: dispatch/review only `docs/G2BR1_REAL_AI_GENERATION_CLOSURE.md`.
+- Executor next action: run G2BR1 once an approved provider/model credential is available through a protected runtime mechanism; max 3 provider requests; stop at Reviewer.
+- Owner intervention required: **ONLY if protected credential/provider runtime is not already available to the Executor**. The bounded-call authorization itself is complete. Never paste the key into chat or repository files.
 
 ## 13. Status Summary
 
@@ -282,7 +285,7 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - G2A2: PASS; `MVP_PRODUCT_CONTRACT.md` is frozen.
 - Privacy retention is frozen at 24h for source/intermediate assets and 72h for final PDF.
 - G2B: RETURN; partial local renderer/PDF/QA evidence is accepted.
-- G2BR1: CURRENT but BLOCKED_BY_OWNER_CHECKPOINT.
+- G2BR1: CURRENT; Owner authorization complete; protected provider/model credential still required at runtime.
 - Current unresolved proof: actual model structured output → grounding → existing renderer → 12-page PDF/QA, plus non-zero provider-spend idempotency.
 - Next after G2BR1/G2B PASS: G3A WooCommerce commerce loop.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.

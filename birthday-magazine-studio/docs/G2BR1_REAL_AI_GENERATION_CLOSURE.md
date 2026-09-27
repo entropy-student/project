@@ -1,7 +1,7 @@
 # G2BR1 — Real AI Generation Closure
 
 > Reviewer execution contract  
-> Status: BLOCKED_BY_OWNER_CHECKPOINT — authorized only after protected provider credential + bounded call approval  
+> Status: OWNER AUTHORIZED — blocked only on protected provider/model credential availability  
 > Parent Gate: `G2B_LOCAL_AI_PDF_SOLUTION_PROOF`  
 > Accepted partial evidence: PR #30 / merged G2B reference pipeline
 
@@ -20,13 +20,13 @@ existing synthetic intake
 
 Do not rebuild already accepted reference-pipeline work.
 
-## Owner-only checkpoint before execution
+## Owner authorization / remaining prerequisite
 
-Required:
+Owner authorization is **complete** for the bounded synthetic-only model calls.
 
-- one approved provider/model/runtime;
-- protected credential available to the Executor runtime;
-- explicit approval for the bounded synthetic-only model calls.
+Remaining prerequisite:
+
+- one approved provider/model/runtime credential must be available to the Executor through a protected runtime mechanism.
 
 Never store or print the credential.
 

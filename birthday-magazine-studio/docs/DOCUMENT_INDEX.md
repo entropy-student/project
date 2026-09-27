@@ -27,7 +27,8 @@
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | Executed / **PASS** |
 | `REVIEWER_DECISION_G2B_RETURN.md` | Reviewer decision on G2B PR #30 | **CURRENT G2B DECISION — RETURN** |
 | `G2B_LOCAL_AI_PDF_SOLUTION_PROOF.md` | Local AI → 12-page magazine → PDF proof | Executed / partial evidence accepted / overall RETURN |
-| `G2BR1_REAL_AI_GENERATION_CLOSURE.md` | Narrow real-AI proof closure | **CURRENT GATE CONTRACT — BLOCKED_BY_OWNER_CHECKPOINT** |
+| `OWNER_DECISION_G2BR1_BOUNDED_AI_CALLS.md` | Owner authorization for bounded real-AI closure | **APPROVED — MAX 3 SYNTHETIC CALLS** |
+| `G2BR1_REAL_AI_GENERATION_CLOSURE.md` | Narrow real-AI proof closure | **CURRENT GATE CONTRACT — OWNER AUTHORIZED / CREDENTIAL REQUIRED** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
 | `G1_TWO_STEP_AI_PRODUCT_FLOW.md` | Two-step product-flow design | Current supporting design where consistent with Handoff |
