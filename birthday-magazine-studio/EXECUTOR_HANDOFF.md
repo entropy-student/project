@@ -46,7 +46,7 @@ Before final verification, the existing local volume was corrected to materializ
 
 The runtime was then removed with the G3A-scoped Compose down --volumes --remove-orphans. Read-back confirms no G3A containers, volumes or network remain; temporary ZIP files were removed; unrelated Docker identity fingerprints are unchanged, including Mini Craft (8 containers, 9 volumes, 4 networks). Detailed screenshots and sanitized records are listed in EXECUTION_EVIDENCE.md and poc/g3a/artifacts/evidence-manifest.json.
 
-Branch: codex/birthday-magazine-g3a-woocommerce-commerce-account-loop, based on latest fetched main 52ae9f2c1b810d8d61b6b64a42c115b95b93832c. GitHub commit and PR details will be added after publication. PR must remain unmerged. Reviewer is the next decision point; do not start G3B.
+Branch: codex/birthday-magazine-g3a-woocommerce-commerce-account-loop; execution base 52ae9f2c1b810d8d61b6b64a42c115b95b93832c. Current main at PR creation was 782ea659040b60bda5f05a841c11b9c793d73c1a; intervening commits touched only Mini Craft files. Initial evidence commit fbd92b493ab98b2533ccf137206e54b2bbf926d3 is pushed; this PR/handoff reconciliation is a follow-up commit on the same branch. Reviewer PR [#49](https://github.com/entropy-student/project/pull/49) is open and unmerged (GitHub mergeable=true). Reviewer is the next decision point; do not start G3B.
 
 # Executor Handoff — Birthday Magazine Studio
 

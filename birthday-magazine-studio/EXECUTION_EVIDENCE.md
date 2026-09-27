@@ -101,7 +101,12 @@ No Secret, password, cookie, order key, reset token, or real customer informatio
 
 ### GitHub review handoff
 
-Branch codex/birthday-magazine-g3a-woocommerce-commerce-account-loop was created from the latest fetched main above. Commit/PR details are recorded here after publication. Do not merge; Reviewer is the next decision point.
+- **Execution base:** 52ae9f2c1b810d8d61b6b64a42c115b95b93832c. The branch was advanced to this fetched main before commit; it contains only Mini Craft updates relative to the initial 688afdf4 execution base.
+- **Current PR base:** main at 782ea659040b60bda5f05a841c11b9c793d73c1a. The four intervening main commits touched only Mini Craft files; Birthday Magazine Reviewer/G3A contract files did not change. GitHub reports this PR mergeable.
+- **Initial evidence commit:** fbd92b493ab98b2533ccf137206e54b2bbf926d3. This file records the PR in a follow-up commit on the same branch.
+- **Reviewer PR:** [#49 — G3A: prove local WooCommerce commerce and account loop](https://github.com/entropy-student/project/pull/49), open and unmerged.
+
+Do not merge; Reviewer is the next decision point.
 
 # Birthday Magazine Studio — Execution Evidence
 
