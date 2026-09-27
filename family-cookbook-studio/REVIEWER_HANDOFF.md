@@ -75,7 +75,7 @@ G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ↩ RETURNED (resource 
 G2A1-R2 Isolated GitHub Actions Runner Completion         ↩ RETURNED (WP/component feasibility accepted; OCR scope not calibrated)
 G2A1-D1 Target Language + OCR Acceptance Calibration      ✅ OWNER DECISIONS RESOLVED
 G2A1-R3A Free/Local Primary Benchmark                    ✅ PASS — PP-OCRv6_medium
-G2A1-R3B Bounded API Fallback Benchmark                  ↩ RETURNED / GOOGLE CREDENTIAL SETUP REQUIRED
+G2A1-R3B Bounded API Fallback Benchmark                  ↩ RETURNED / GOOGLE BILLING ENABLEMENT REQUIRED
 G2A2 MVP Product Contract Freeze                         ⏳ HOLD
 G2B  Local OCR → Structured Recipe → PDF Solution Proof  ⏳ HOLD
 G3A  WordPress + WooCommerce Local Commerce Loop         ⏳ HOLD
@@ -115,6 +115,9 @@ Current Reviewer decisions:
 - `RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED_2026-09-27`
 - `ACCEPT_G2A1_R3B_CLIENT_SCORER_BUDGET_PREFLIGHT_EVIDENCE_2026-09-27`
 - `OPEN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_OWNER_ACTION_2026-09-27`
+- `ACCEPT_G2A1_R3B_WIF_AUTH_CONFIGURATION_2026-09-27`
+- `RETURN_G2A1_R3B_GOOGLE_BILLING_DISABLED_2026-09-27`
+- `OPEN_G2A1_R3B_GOOGLE_BILLING_OWNER_ACTION_2026-09-27`
 
 Important limitation: R3A now selects PP-OCRv6_medium as the local primary, but API fallback value remains unproven. R3A's genuine-handwriting set is small and historical, so modern household handwriting generalization remains UNKNOWN. Payment, full OCR→PDF output quality, repeatability, production hosting and print fulfillment remain unproven.
 
@@ -247,9 +250,24 @@ R3B preflight run `36297499256` is accepted:
 
 Reviewer decision: **accept `RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED`.**
 
+Google provider setup has now advanced beyond the original credential blocker:
+
+- Workload Identity Federation provider created for `entropy-student/project`;
+- dedicated service account: `family-cookbook-ocr@family-cookbook-ocr-test.iam.gserviceaccount.com`;
+- GitHub branch/ref restricted WIF binding is active;
+- workflow uses `google-github-actions/auth@v3` with `id-token: write`;
+- processor metadata GET = 200;
+- processor version metadata GET = 200;
+- processor type = `OCR_PROCESSOR`;
+- default processor version = `pretrained-ocr-v2.1-2024-08-07`.
+
+Diagnostic run `36301652196` reached the first real `:process` call. Google returned HTTP 403 with `reason=BILLING_DISABLED`.
+
+Therefore the current blocker is **billing enablement only**, not WIF/IAM/processor setup.
+
 Current Owner action guide: [docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md](./docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md)
 
-After Google provider setup + four GitHub Actions Secrets are configured, continue the same R3B workflow/branch. Do not reinterpret this preflight-only run as `FALLBACK=NONE`.
+After Billing is enabled for `family-cookbook-ocr-test`, continue the same R3B workflow/branch. Do not reinterpret the 403/no-output run as `FALLBACK=NONE`.
 
 Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted and must not be rerun.
 
@@ -310,18 +328,19 @@ Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted
 
 - G2A1-D1 Owner decisions are resolved.
 - R3A is formally PASS with `PP-OCRv6_medium` as the sole local primary.
-- Current Gate: **G2A1-R3B — RETURNED for Google credential/provider setup**.
-- Owner action: create/confirm Enterprise Document OCR processor + dedicated test service account, then configure the four GitHub Actions Secrets documented in `G2A1_R3B_GOOGLE_PROVIDER_SETUP.md`.
-- Current GitHub connector cannot manage Actions Secrets; Secret values must be entered by Owner in GitHub settings.
-- Do not configure Mistral yet; it is needed only if Google is actually tested and insufficient.
-- After setup, rerun/continue the same R3B Gate.
+- Current Gate: **G2A1-R3B — RETURNED because Google Billing is disabled**.
+- WIF authentication, service account access and Document OCR processor metadata are proven working.
+- Owner action: enable/link Billing for project `family-cookbook-ocr-test`.
+- The benchmark's own authorized cost guard remains USD 0.20; current planned Google test is USD 0.0165 list-price equivalent.
+- Do not configure Mistral yet; it is needed only if Google completes and is insufficient.
+- After Billing enablement, rerun/continue the same R3B Gate.
 - G2A2 remains HOLD until R3B selects one fallback or proves FALLBACK=NONE.
 
 ## 13. Status Summary
 
 - Overall progress: reusable commerce/input/delivery feasibility is proven; OCR has real benchmark evidence but requires target-language/semantic-threshold calibration.
 - Final goal: private, reliable family recipe intake → faithful transcription/structuring → proof → cookbook PDF → later optional print.
-- Current Gate: **G2A1-R3B Google provider setup blocker**.
+- Current Gate: **G2A1-R3B Google Billing blocker**.
 - Accepted local primary: **PP-OCRv6_medium**.
 - Next after Owner approval: test the 11 hard cases with specialized API fallback → select one fallback or NONE → close G2A1 → G2A2 exact MVP contract.
 - Attention: never treat clean OCR demos, model self-confidence or a visually nice PDF as proof that recipe facts are correct.
