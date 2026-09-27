@@ -126,3 +126,16 @@ G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、�
 - UNKNOWN 明确写 UNKNOWN；
 - Secret、支付凭据、客户照片、家庭信息和真实订单私密数据不得进入普通仓库文档；
 - 未来进入 Shared VPS 前必须先建立 `PROJECT_STORAGE_MANIFEST.md` 并满足 Storage Layout Contract。
+
+
+### R3B current provider probe — Baidu Handwriting OCR
+
+Before paying Google's account-level Billing prepayment, the current R3B Gate will benchmark **Baidu Handwriting OCR** on the same 11 public hard handwriting crops.
+
+Boundary:
+- free test quota only;
+- no automatic paid mode;
+- GitHub Secrets only for API Key / Secret Key;
+- same semantic fidelity + manual-edit scoring;
+- Google remains a swappable deferred adapter;
+- Mistral Free mode remains deferred after persistent HTTP 429.
