@@ -48,7 +48,7 @@ private recipe-image upload
     ↓
 OpenCV/library preprocessing
     ↓
-PaddleOCR primary
+PP-OCRv6_medium primary
     ↓
 critical-value / confidence checks
     ↓
@@ -67,7 +67,7 @@ PDF QA
 private proof / final delivery
 ```
 
-OCR 架构原则已经收束为 **一个主力 + 最多一个兜底/二次识别 + 用户确认最终兜底**。PaddleOCR 仍是主力候选；R2 实测的 `trocr-small-handwritten` 没有降低任何确认量，因此不再作为已接受的 MVP 兜底。下一步在首发语言冻结后优先寻找 PaddleOCR 同生态的语言专用/局部二次识别方案，避免增加维护栈。
+OCR 架构目前已经收束为 **PP-OCRv6_medium 免费本地主力 + 最多一个按需 API 兜底 + 一次统一人工 Review**。R3A 已正式选择 PP-OCRv6_medium；PaddleOCR-VL-1.6 和 TrOCR-small 均不进入主路径。API 兜底只处理主力仍解决不了的 hard handwriting 长尾。
 
 详细复用边界见 [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md)。
 
@@ -84,7 +84,9 @@ G2A1-R2 已完成真实 Actions PoC：
 
 G2A1-D1 已决策完成：**English-first、not English-only；OCR 完成后只进行一次统一 Review，所有不确定字段集中高亮并支持手动修改。**
 
-当前进入 **G2A1-R3A — Free/Local Primary Benchmark**：只比较 PP-OCRv6_medium 与 PaddleOCR-VL-1.6，先选出一个免费本地主力；API 兜底留到 R3B，并在任何凭据/付费调用前重新经过 Owner checkpoint。
+G2A1-R3A 已 PASS：**PP-OCRv6_medium** 被 Reviewer 接受为唯一免费本地主力；20 张合成食谱页 77/77 关键事实正确、零人工修改，PaddleOCR-VL-1.6 因漏温度字段且运行更重而被淘汰为主力。
+
+当前进入 **G2A1-R3B — Bounded API Fallback Owner Checkpoint**：只考虑 11 个真实历史手写 hard cases。Reviewer 建议先测 Google Enterprise Document OCR；只有 Google 改善不足时再测 Mistral OCR 4.1。Gemini 暂不默认进入测试。
 
 G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
 
@@ -99,7 +101,8 @@ G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、�
 - [docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md](./docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md) — G2A1-R1（资源阻塞 RETURN）
 - [docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md](./docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md) — G2A1-R2（组件证据已接受）
 - [docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md](./docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md) — Owner 决策已完成
-- [docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md](./docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md) — **当前 R3A Gate**
+- [docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md](./docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md) — R3A PASS / R3B framework
+- [docs/G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md](./docs/G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md) — **当前 Owner checkpoint**
 - [docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md](./docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md) — 下一 Gate
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 获客/验证计划
 - [PROJECT_RECORD.md](./PROJECT_RECORD.md) — legacy compatibility pointer only
