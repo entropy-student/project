@@ -28,6 +28,8 @@ The follow-up invocation reused the failed canonical synthetic job and was rejec
 
 Reviewer should assess the attached implementation and failure evidence, including whether a separately authorized runtime follow-up is needed to reach the Codex inference route. This handoff does not make a PASS decision and does not choose that next step.
 
+GitHub: branch codex/birthday-magazine-g2br1-real-ai-closure; initial implementation commit 8de30bfd295a916e8f620fe290b418490746b66d; [PR #40](https://github.com/entropy-student/project/pull/40) targets main and is open/unmerged. The current PR head carries the reconciled Evidence and Handoff.
+
 ## Historical G2B baseline — preserved
 
 **Gate:** G2B_LOCAL_AI_PDF_SOLUTION_PROOF  

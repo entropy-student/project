@@ -49,6 +49,13 @@ The branch has no G2BR1 generated JSON, grounding report, QA report, PDF or scre
 
 No payment, PayPal, API key, AI imagery, real customer data, production email, VPS/public deployment, Cloudflare/Shared Infra change, paid purchase, or G3 work occurred. The product contract and Reviewer-owned handoff were not edited.
 
+### GitHub review handoff
+
+- Branch: codex/birthday-magazine-g2br1-real-ai-closure, based on main commit c22f1478973bcee11097c2473ee726925613fc81.
+- Initial implementation/evidence commit: 8de30bfd295a916e8f620fe290b418490746b66d.
+- PR: [#40 — G2BR1 bounded Codex execution return](https://github.com/entropy-student/project/pull/40), open against main and unmerged. The PR head contains the final Evidence/Handoff reconciliation.
+- Reviewer remains the next decision point; no merge or G3 work is authorized in this execution.
+
 ## Historical Gate — G2B Local AI/PDF Solution Proof (accepted partial baseline)
 
 **Gate:** G2B_LOCAL_AI_PDF_SOLUTION_PROOF  
