@@ -1,7 +1,34 @@
-# G3B PayPal Sandbox paid entitlement and refund — Owner checkpoint return
+# G3B PayPal Sandbox paid entitlement and refund — updated Owner payment return
+
+**Latest result:** `RETURN_OWNER_SANDBOX_PAYMENT_STATE_REVIEW_REQUIRED`
+**Latest read-back:** 2026-09-27 UTC
+**Execution branch:** codex/birthday-magazine-g3b-paypal-sandbox-entitlement
+**Base:** latest GitHub `main` at `e7a4c53c69d1a69953017c00daad928988c78dc9`
+**Stop point:** `STOP_AT_OWNER_CHECKPOINT=YES`; no entitlement or refund phase started.
+
+This continuation supersedes the earlier Seller-auth checkpoint below. The Owner reports completing login and payment with a PayPal Sandbox personal test account. The PPCP admin surface displayed “Connected to PayPal” and “Business | Sandbox”; the PPCP system-status report showed Onboarded, Webhook status, and Webhook delivery host as healthy. `PAYPAL_LIVE_ENABLED=no` remained set. No Client ID, Secret, token, cookie, authorization header, Buyer credentials, or provider payload was read or recorded.
+
+The checkout used the native WooCommerce USD 39.99 virtual Birthday Magazine product (ID 15). The Sandbox Web SDK v6 core/payment-method resources loaded and the visible `paypal-button` custom element mounted. The checkout button interaction progressed through PPCP's secure-browser handoff. A later safe WooCommerce read-back showed synthetic order #30 at `processing`, `paid=true`, USD 39.99, payment method `ppcp-gateway`; the Owner separately confirmed the Sandbox Buyer login/payment. No provider transaction/capture identifier or raw callback payload was inspected, so provider capture count/correlation is **not independently verified**. The WooCommerce status report's webhook receipt and delivery-host flags were both `yes`; the configured WordPress origin remained HTTPS. The event type and body were not read.
+
+This is not a G3B PASS candidate. The paid-state observation is recorded, but paid-entitlement evaluation, deferred generation-ready job creation/idempotency, and refund were not run. The generation feature flag remains disabled; the dedicated generation-job post count and Action Scheduler generation-action count both read zero. Product model calls remain zero. No agent Buyer login/approval or explicit capture/refund command was performed. No further PayPal interaction was attempted after the paid-order read-back.
+
+Sanitized machine-readable evidence: [poc/g3b/artifacts/post-owner-sandbox-payment.json](poc/g3b/artifacts/post-owner-sandbox-payment.json). The earlier Seller-checkpoint evidence and screenshots remain below as history; its “not connected / unpaid” statements describe that earlier timestamp only.
+
+No new durable screenshot of the PayPal handoff/approval surface was committed. Existing synthetic checkout screenshots remain the pre-submission visual baseline; the continuation evidence is the sanitized PPCP status/DOM summary and WooCommerce order read-back. No PayPal account page, approval URL, or tokenized query string was saved.
+
+---
+
+## Initial Seller checkpoint — historical, superseded by the continuation above
+
+**Historical result:** RETURN_OWNER_PAYPAL_SANDBOX_MERCHANT_AUTH_REQUIRED
+**Historical base:** bd8764de926329680d71443ae7b15061954b98ab
+
+The statements in this historical section describe the state before the Owner completed Sandbox Seller connection and Buyer payment.
+
+### Initial Seller-checkpoint detail
 
 **Gate:** G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND
-**Result:** RETURN_OWNER_PAYPAL_SANDBOX_MERCHANT_AUTH_REQUIRED
+**Historical result:** RETURN_OWNER_PAYPAL_SANDBOX_MERCHANT_AUTH_REQUIRED
 **Execution branch:** codex/birthday-magazine-g3b-paypal-sandbox-entitlement
 **Base:** latest fetched GitHub main, bd8764de926329680d71443ae7b15061954b98ab
 **Stop point:** STOP_AT_OWNER_CHECKPOINT=YES. The Seller login, OAuth consent, and Sandbox merchant authorization belong to the Owner.
