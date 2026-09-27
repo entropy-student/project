@@ -2690,3 +2690,17 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - DNS mutation and all SSH/VPS/Shared Infra/public-ingress/payment actions remained zero.
 - GitHub Evidence commit: `e47f31b29d82022220700e895246dc96de267255`.
 - `STOP_AT_REVIEWER=YES`.
+
+
+## K6 Phase G-R2 Public Sandbox Ingress Activation Resume — RETURN
+
+`GATE=K6_PHASE_G_R2_PUBLIC_SANDBOX_INGRESS_ACTIVATION_RESUME`  
+`RESULT=RETURN_REVIEWER_G_CADDY_BINDMOUNT_ATOMIC_REPLACEMENT_NOT_VISIBLE`
+
+- Strict SSH and fresh runtime/PPCP checks passed. The exact canonical Caddy candidate (199 bytes, SHA-256 `cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8`) reconstructed and passed adapt plus route-semantic checks.
+- Created only the project-scoped rollback directory and a 0600 Caddyfile backup; backup SHA matches the 76-byte current baseline.
+- Stopped before Caddyfile write/reload: the source is mounted as a read-only individual-file bind at `/etc/caddy/Caddyfile`; atomic host-path replacement cannot be relied on to refresh the container’s mounted inode. No in-scope safe alternative was authorized.
+- `blog_public=0`; indexing write was unnecessary. DNS record creation was not reached. Caddyfile/active config remain at baseline; Caddy reload, DNS, payment, and Live actions = 0.
+- Evidence commit: `c1c4623f83e9ea1e8e911e4fbffbe9d225a542b2`. Await Reviewer reconciliation.
+
+`STOP_AT_REVIEWER=YES`
