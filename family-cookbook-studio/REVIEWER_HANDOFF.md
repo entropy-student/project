@@ -2,8 +2,8 @@
 
 > Maintainer: Reviewer / Architect / Gatekeeper only  
 > Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1  
-> Latest Executor facts: branch `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, `EXECUTOR_HANDOFF.md`, HEAD `ad58cfe3b3fbfcca6a6f1ee3e929754c2c3b14e5`  
-> Latest detailed evidence: same branch `EXECUTION_EVIDENCE.md`; R3A Actions run `36289130217` independently reviewed  
+> Latest Executor facts: branch `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, `EXECUTOR_HANDOFF.md`, HEAD `dd9c07bbe64a3076bcfd38d27259ff56c2ed013a`  
+> Latest detailed evidence: same branch `EXECUTION_EVIDENCE.md`; R3B preflight Actions run `36297499256` independently reviewed  
 > Last reviewed: 2026-09-26
 
 ## 1. Project Goal
@@ -75,7 +75,7 @@ G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ↩ RETURNED (resource 
 G2A1-R2 Isolated GitHub Actions Runner Completion         ↩ RETURNED (WP/component feasibility accepted; OCR scope not calibrated)
 G2A1-D1 Target Language + OCR Acceptance Calibration      ✅ OWNER DECISIONS RESOLVED
 G2A1-R3A Free/Local Primary Benchmark                    ✅ PASS — PP-OCRv6_medium
-G2A1-R3B Bounded API Fallback Benchmark                  ← CURRENT / READY_FOR_EXECUTOR
+G2A1-R3B Bounded API Fallback Benchmark                  ↩ RETURNED / GOOGLE CREDENTIAL SETUP REQUIRED
 G2A2 MVP Product Contract Freeze                         ⏳ HOLD
 G2B  Local OCR → Structured Recipe → PDF Solution Proof  ⏳ HOLD
 G3A  WordPress + WooCommerce Local Commerce Loop         ⏳ HOLD
@@ -112,6 +112,9 @@ Current Reviewer decisions:
 - `OPEN_G2A1_R3B_BOUNDED_API_FALLBACK_OWNER_CHECKPOINT_2026-09-27`
 - `OWNER_APPROVE_G2A1_R3B_PUBLIC_HARD_CASE_API_TEST_BUDGET_USD_0_20_2026-09-27`
 - `OPEN_G2A1_R3B_GOOGLE_FIRST_MISTRAL_SECOND_EXECUTION_2026-09-27`
+- `RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED_2026-09-27`
+- `ACCEPT_G2A1_R3B_CLIENT_SCORER_BUDGET_PREFLIGHT_EVIDENCE_2026-09-27`
+- `OPEN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_OWNER_ACTION_2026-09-27`
 
 Important limitation: R3A now selects PP-OCRv6_medium as the local primary, but API fallback value remains unproven. R3A's genuine-handwriting set is small and historical, so modern household handwriting generalization remains UNKNOWN. Payment, full OCR→PDF output quality, repeatability, production hosting and print fulfillment remain unproven.
 
@@ -216,7 +219,7 @@ The 11 fallback samples are all hard genuine/historical handwriting cases. API f
 
 ### Current R3B execution
 
-Owner checkpoint is resolved.
+Owner API-spend/data authorization remains valid, but execution is currently returned for Google provider setup.
 
 Owner authorized:
 - 11 public/non-private R3A hard cases only;
@@ -230,7 +233,23 @@ Owner authorized:
 
 Formal execution contract: [docs/G2A1_R3B_API_FALLBACK_BENCHMARK.md](./docs/G2A1_R3B_API_FALLBACK_BENCHMARK.md)
 
-If required provider credentials/setup are missing, Executor must return the precise credential/setup blocker rather than requesting Secret values in evidence/chat.
+R3B preflight run `36297499256` is accepted:
+- workflow conclusion: success;
+- fixed 11-case dataset validated;
+- Google client and semantic scoring implementation present;
+- budget guard: USD 0.0605 worst-case estimate < USD 0.20 cap;
+- Google credentials/project/location/processor ID absent;
+- Mistral API key absent;
+- external API calls attempted: 0;
+- actual estimated provider cost: USD 0.00;
+- Secret exposure: none;
+- fallback remains `UNKNOWN`.
+
+Reviewer decision: **accept `RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED`.**
+
+Current Owner action guide: [docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md](./docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md)
+
+After Google provider setup + four GitHub Actions Secrets are configured, continue the same R3B workflow/branch. Do not reinterpret this preflight-only run as `FALLBACK=NONE`.
 
 Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted and must not be rerun.
 
@@ -291,18 +310,18 @@ Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted
 
 - G2A1-D1 Owner decisions are resolved.
 - R3A is formally PASS with `PP-OCRv6_medium` as the sole local primary.
-- Current Gate: **G2A1-R3B bounded API fallback benchmark — READY_FOR_EXECUTOR**.
-- Owner authorized Google-first / Mistral-second testing on only the 11 public hard cases, budget cap **USD 0.20**.
-- If Google materially improves fidelity/edit burden, stop without Mistral.
-- If credentials/provider setup are missing, return a precise Owner blocker; never expose Secret values.
-- Do not rerun WordPress/WooCommerce/Kadence/upload/private-delivery.
+- Current Gate: **G2A1-R3B — RETURNED for Google credential/provider setup**.
+- Owner action: create/confirm Enterprise Document OCR processor + dedicated test service account, then configure the four GitHub Actions Secrets documented in `G2A1_R3B_GOOGLE_PROVIDER_SETUP.md`.
+- Current GitHub connector cannot manage Actions Secrets; Secret values must be entered by Owner in GitHub settings.
+- Do not configure Mistral yet; it is needed only if Google is actually tested and insufficient.
+- After setup, rerun/continue the same R3B Gate.
 - G2A2 remains HOLD until R3B selects one fallback or proves FALLBACK=NONE.
 
 ## 13. Status Summary
 
 - Overall progress: reusable commerce/input/delivery feasibility is proven; OCR has real benchmark evidence but requires target-language/semantic-threshold calibration.
 - Final goal: private, reliable family recipe intake → faithful transcription/structuring → proof → cookbook PDF → later optional print.
-- Current Gate: **G2A1-R3B bounded API fallback benchmark**.
+- Current Gate: **G2A1-R3B Google provider setup blocker**.
 - Accepted local primary: **PP-OCRv6_medium**.
 - Next after Owner approval: test the 11 hard cases with specialized API fallback → select one fallback or NONE → close G2A1 → G2A2 exact MVP contract.
 - Attention: never treat clean OCR demos, model self-confidence or a visually nice PDF as proof that recipe facts are correct.
