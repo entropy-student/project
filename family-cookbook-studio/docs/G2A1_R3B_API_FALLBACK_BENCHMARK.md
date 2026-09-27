@@ -1,7 +1,7 @@
 # G2A1-R3B — Bounded API Fallback Benchmark
 
 > Reviewer execution contract  
-> Status: **CURRENT / READY_FOR_EXECUTOR**  
+> Status: **RETURNED / GOOGLE PROVIDER SETUP REQUIRED**  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)  
 > Owner approval: **GRANTED 2026-09-27**  
 > Accepted primary: `PP-OCRv6_medium`  
@@ -359,3 +359,29 @@ When GitHub remains writable, commit the non-secret evidence/handoff before RETU
 - G2A2.
 
 Stop at Reviewer.
+
+
+---
+
+## 18. Latest Reviewer Return
+
+Accepted execution:
+
+- branch HEAD: `dd9c07bbe64a3076bcfd38d27259ff56c2ed013a`
+- Actions run: `36297499256`
+- conclusion: `success`
+- Google client implemented: YES
+- scoring implemented: YES
+- Google API called: NO
+- actual API cost: USD 0.00
+- fallback: `UNKNOWN`
+
+Reviewer decision:
+
+`RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED`
+
+Owner setup guide:
+
+[G2A1_R3B_GOOGLE_PROVIDER_SETUP.md](./G2A1_R3B_GOOGLE_PROVIDER_SETUP.md)
+
+After setup, continue this same Gate; do not open a new OCR architecture Gate.
