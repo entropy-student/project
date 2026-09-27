@@ -6240,3 +6240,56 @@ SECRET_VALUE_OR_HASH_ACCESS=0
 ```
 
 The Owner-selected recipient field was checked in the WordPress Resend UI without recording the address. One click produced the plugin success message “Test email sent!”. The Resend Dashboard link led to a sign-in page; no authentication was attempted. No second send was made. Provider-side Delivered status and mailbox arrival remain unverified; await Owner confirmation/read-only dashboard evidence and do not resend.
+
+
+
+## K7 R1 — Email PASS / Canary populated Checkout reconciliation (2026-09-28)
+
+```text
+GATE=K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+RESULT=PASS_CANDIDATE_K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+OWNER_AUTHORIZATION=AUTHORIZE_K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+EMAIL_TEST_SEND_COUNT=1
+RESEND_PROVIDER_STATUS=DELIVERED
+OWNER_RECIPIENT_ARRIVAL=YES
+EMAIL_TEST=DELIVERED
+EMAIL_READINESS=PASS
+BLIND_RESEND=NO
+RESEND_REVERIFICATION=NOT_REPEATED_PER_REVIEWER_DECISION
+RESEND_API_KEY_VALUE_OR_HASH_ACCESS=0
+CANARY_PRODUCT=CREATED_EXACT_SPEC
+CANARY_PRODUCT_ID=1224
+CANARY_PRODUCT_STATUS=PUBLISHED
+CANARY_PRODUCT_HIDDEN=YES
+CANARY_PRODUCT_TYPE=SIMPLE
+CANARY_PRODUCT_VIRTUAL=YES
+CANARY_PRODUCT_DOWNLOADABLE=NO
+CANARY_PRODUCT_PRICE=JPY_500
+CANARY_PRODUCT_SOLD_INDIVIDUALLY=YES
+CANARY_PRODUCT_MANAGE_STOCK=NO
+CANARY_PRODUCT_DESCRIPTION=EXACT_REVIEWER_APPROVED_CONTROLLED_CANARY_DISCLOSURE
+CANARY_PRODUCT_PUBLISH_ACTION_THIS_RESUME=0_EXISTING_SINGLE_PRODUCT_RECONCILED
+PRODUCT_223_MUTATION=0
+STORE_TAX_ENABLED=NO
+CANARY_TAX_CONTROL=NOT_APPLICABLE_WHILE_GLOBAL_TAX_DISABLED
+CART_SESSION_MUTATION=1_CANARY_PRODUCT_QUANTITY_1
+CANARY_ITEM_TOTAL_JPY=500
+CANARY_SHIPPING_JPY=0_NO_SHIPPING_FOR_VIRTUAL_PRODUCT
+CANARY_TAX_JPY=0_GLOBAL_TAX_DISABLED_ACCEPTED_BASELINE
+CANARY_ORDER_TOTAL_JPY=500
+PUBLIC_POPULATED_CHECKOUT=PASS
+PAYPAL_METHOD_PRESENT=YES
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+SANDBOX_BUYER_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+PAYPAL_LIVE=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+UNRELATED_PRODUCT_OR_INFRASTRUCTURE_MUTATIONS=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+EVIDENCE_GITHUB_READBACK=PASS
+HANDOFF_GITHUB_READBACK=PASS
+STOP_AT_REVIEWER=YES
+```
+
+Read-only UI reconciliation found the already-existing single published Canary product (ID 1224) matching the approved title, Simple/Virtual/Downloadable, JPY 500, sold-individually and unmanaged-stock settings, hidden catalog visibility, and approved truthful description. No second product was created and Product 223 was untouched. The initially empty cart was populated once with this Canary item; Checkout displayed quantity 1, item/subtotal/total JPY 500, with no shipping or tax charge rows (virtual product; global tax remains disabled per the accepted Reviewer decision). PayPal was visible. The final order/payment control was not activated. Email delivery/arrival facts are carried forward from the current Reviewer decision; no Resend send or verification was repeated. The Checkout browser tab was retained for Reviewer handoff.
