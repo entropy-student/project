@@ -388,4 +388,6 @@ Audit:
 `docs/TOPIC_SYSTEM_FULL_SYNC_AUDIT_20260927.md`.
 
 Reviewer result:
-`PASS_TOPIC_SYSTEM_FULL_SYNC_CANDIDATE / G6A_UNCHANGED`.
+`PASS_TOPIC_SYSTEM_FULL_SYNC / G6A_UNCHANGED`.
+
+Portable Candidate topic sync merged at `entropy-student/spike.skill@2796982ed9447ea0283253762ea59cf604566ccb`.
