@@ -1,0 +1,118 @@
+{
+  "provider": "Google Enterprise Document OCR",
+  "status": "NOT_RUN",
+  "api_called": false,
+  "sample_count": 11,
+  "samples": [
+    {
+      "sample_id": "GH02",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "ppocrv6_output": "Tate Lalf a ponnd of the fost fording ottma",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    },
+    {
+      "sample_id": "GH03",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "ppocrv6_output": "To make npoitty big bisket cake!",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    },
+    {
+      "sample_id": "GH04",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "ppocrv6_output": "Take & eggs & a ponnd of good butter broken m bits\n& a pouno of fine sugar beaten fime; bent Ahiese",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    },
+    {
+      "sample_id": "GH05",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "ppocrv6_output": "To make gigur bread:",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    },
+    {
+      "sample_id": "GH06",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "ppocrv6_output": "Take a pound & halfe of Treakle, & 3 goarters of\nslow tver",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    },
+    {
+      "sample_id": "GH07",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "ppocrv6_output": "To make gimmals:",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    },
+    {
+      "sample_id": "GH08",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "ppocrv6_output": "Take aponnd of ion\ntogether, you may",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    },
+    {
+      "sample_id": "GH09",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "ppocrv6_output": "to maky fayd burts",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    },
+    {
+      "sample_id": "GH10",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "ppocrv6_output": "to make y blacky Larh\nmalligo",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    },
+    {
+      "sample_id": "GH11",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "ppocrv6_output": "maky the red hack Layle",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    },
+    {
+      "sample_id": "GH12",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "ppocrv6_output": "to maks ths whith tunk Lay de\nginth of creame, 4 or o whihs of g\nTdelle",
+      "google_api_status": "not_called",
+      "google_raw_output": "",
+      "google_confidence": null,
+      "google_bbox_layout": [],
+      "google_latency_ms": null
+    }
+  ]
+}

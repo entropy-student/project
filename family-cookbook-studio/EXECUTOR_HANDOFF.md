@@ -106,3 +106,22 @@ Return this Gate for a bounded rerun in an environment that can finish local Pad
 - Review burden applies to full synthetic pages; handwriting corrections are separate crop-level data. WordPress/WooCommerce/Kadence evidence remains carried forward from R2 and was not rerun in this OCR-only gate. Existing RETURN history remains preserved above.
 - Recommended Reviewer decision: accept the R3A primary-selection candidate `PP-OCRv6_medium` for the current English-first MVP benchmark, retaining unified user correction/approval for critical and uncertain content; assess GH04, partial transcript scope, and the limited historical handwriting sample before a formal PASS. Require Owner checkpoint before any R3B cloud/API fallback work.
 - Stop at Reviewer: `YES`; no G2A2, main merge, or production action.
+
+
+## G2A1-R3B — Bounded API Fallback Benchmark
+
+- Gate: G2A1-R3B — Bounded API Fallback Benchmark.
+- Execution state: RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED; the workflow completed its no-secret preflight successfully, but this is not an API benchmark result.
+- Branch: codex/family-cookbook-g2a1-input-ocr-component-feasibility.
+- Carried forward from 58030c1f7d611c5672bdeb0359d2df933704b9a2: Reviewer-accepted PRIMARY=PP-OCRv6_medium, fixed 11-case GH02–GH12 set, baseline 13 manual-edit fields / 69 characters / 1 critical error, and all earlier Gate/RETURN history.
+- Actions input HEAD: 5febf66502c9bf9ef12c1a47926cb78180bb3f55; Actions run: 36297499256, conclusion success; hosted Ubuntu 24.04.5. Workflow installed pinned dependencies, passed pip check and Python syntax compilation, validated the fixed corpus, and wrote compact preflight/results artifacts.
+- Implemented: Google Enterprise Document OCR client and Google-first/Mistral-only-if-insufficient dispatch; fixed dataset mapping; reuse of the R3A semantic/manual-edit scorer; conservative budget guard; Secret-presence-only preflight. Google client: YES; scoring implemented: YES; scoring executed: NO because the run exited at credential preflight.
+- Secret presence: Google credentials/project/location/processor and MISTRAL_API_KEY were all absent. No credential value was exposed.
+- OCR/API outcome: GOOGLE_API_CALLED=NO; MISTRAL_TESTED=NO; request attempts 0; provider OCR cost $0.00; token cost 0. Max planned API page-list-price spend if fully exercised is $0.0605 against the authorized $0.20 ceiling.
+- Hard-case edit burden after API: UNKNOWN; PP baseline remains 13 fields / 69 characters. Critical errors, hallucinations, latencies, and provider comparison remain UNKNOWN.
+- Selection: PRIMARY=PP-OCRv6_medium; FALLBACK=UNKNOWN. Do not interpret the absence of calls as evidence for FALLBACK=NONE.
+- Artifacts committed under g2a1/r3b/: provider preflight, 11 not-called Google rows, not-run comparison, decision, and cost summary. There is no Mistral artifact because Phase B did not run. Artifact source: run 36297499256, archive digest sha256:4cfe44a32bc385f84d45023ec8effd52bc592df53bb1eebf2fc754828ba06ca9.
+- Blocker: Owner/provider setup must add the exact Google Document AI test credentials/configuration as GitHub Actions Secrets through GitHub's protected settings, then a separately authorized marked rerun can test Google; do not send Secret values in chat. If Google is insufficient, only then evaluate Mistral under the same cap.
+- Cleanup: Actions runner temp data and venv were deleted; temporary local downloaded artifact ZIP was deleted. No source crops, model cache, API responses, or credentials were retained.
+- Main merged: NO. G2A2 entered: NO. Stop at Reviewer: YES.
+- Recommended Reviewer decision: RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED for provider setup; do not decide API fallback selection yet. The final branch HEAD is in the post-commit GitHub read-back / Executor return.

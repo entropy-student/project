@@ -351,3 +351,49 @@ Review burden is separated by input type. The `LIGHT_REVIEW` page classification
 ### R3A conclusion
 
 `PASS_CANDIDATE_G2A1_R3A_LOCAL_PRIMARY_SELECTION` — recommend `PP-OCRv6_medium` as the single free/local primary and reject `PaddleOCR-VL-1.6` as primary for the current English-first MVP benchmark. Preserve user review for critical and uncertain fields. API fallback was not tested; `R3B_OWNER_CHECKPOINT=REQUIRED`. Stop at Reviewer; do not enter G2A2.
+
+
+
+## G2A1-R3B — Bounded API Fallback Benchmark
+
+> Execution date: 2026-09-27 (Asia/Shanghai)  
+> Execution state: RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED  
+> CARRIED_FORWARD_FROM=58030c1f7d611c5672bdeb0359d2df933704b9a2 (R3A accepted evidence and PP-OCRv6 primary selection remain intact).  
+> Branch: codex/family-cookbook-g2a1-input-ocr-component-feasibility  
+> Actions input commit: 5febf66502c9bf9ef12c1a47926cb78180bb3f55; run: 36297499256; workflow conclusion: success (preflight completed, no provider OCR call).  
+> Previous G2A1 / R1 / R2 / R3A sections and RETURN history above are preserved.
+
+### CARRIED_FORWARD
+
+- CARRIED_FORWARD: Reviewer has formally accepted PP-OCRv6_medium as primary. The 11-case fixed public English handwriting set is GH02–GH12; accepted PP baseline is 13 manual edit fields, 69 edited characters, 1 critical-field error, 0 silent critical errors, and 0 confirmed hallucinations.
+- CARRIED_FORWARD: R3A's 20 synthetic-page results, local-primary comparison, and WordPress/WooCommerce/preview evidence were not rerun in this OCR-only gate.
+
+### NEW_PROVEN_R3B
+
+- NEW_PROVEN_R3B: Read the current canonical Governance and R3B owner/checkpoint/benchmark docs before execution. Main Reviewer/G2A1 source snapshot read: 544f246d0ff16dc213fb0b9524f12e5f61cfba58. No main merge or rebase was performed.
+- NEW_PROVEN_R3B: Workflow .github/workflows/family-cookbook-g2a1-r3b.yml ran on GitHub-hosted ubuntu-24.04; workflow file blob f884ca1c3113ac20da35abc44ce4a868c757bfbb. Job r3b and all six named steps completed successfully. Actions run: [36297499256](https://github.com/entropy-student/project/actions/runs/36297499256); compact artifact ID 10924181714, 3,121 bytes, archive SHA-256 4cfe44a32bc385f84d45023ec8effd52bc592df53bb1eebf2fc754828ba06ca9.
+- NEW_PROVEN_R3B: Runner: Ubuntu 24.04.5 / image ubuntu24 20260920.314.1, x86_64, AMD EPYC 7763, 4 logical CPUs; Python 3.12.3; RAM 16,766,414,848 bytes total / 15,685,505,024 available; swap 3,221,221,376 bytes total and free; root disk 154,894,188,544 bytes total / 92,206,063,616 free. GPU was not used.
+- NEW_PROVEN_R3B: Exact installed client packages: google-auth==2.40.3, requests==2.34.2, Pillow==11.3.0; workflow installed pip==25.2. Dependency install and pip check succeeded; Python py_compile succeeded for the R3B runner.
+- NEW_PROVEN_R3B: Preflight validated exactly 11 unique fixed IDs GH02–GH12, their English genuine-handwriting classification/source mapping, PP output mapping, and accepted baseline totals (13 fields / 69 characters). Reusable R3A semantic/manual-edit scorer integration is implemented in g2a1/r3b/run_benchmark.py.
+- NEW_PROVEN_R3B: Workflow artifact outputs copied into g2a1/r3b/: provider-preflight.json, google-results.json, google-comparison.json, final-fallback-decision.json, and cost-summary.json. No Mistral result/comparison file was fabricated.
+- NEW_PROVEN_R3B: Runner cleanup step completed: temporary source-data directory and venv were removed. The downloaded compact Actions artifact was read locally and its temporary ZIP was deleted. No source image/crop, model cache, credential, or provider response was retained.
+
+### Budget and Secret preflight
+
+- NEW_PROVEN_R3B: Maximum planned calls were 24 including two Google processor/version metadata GETs: 11 Google OCR pages and up to 11 Mistral OCR 4.1 pages only if Google proved insufficient. Conservative page-list-price maximum was Google $0.0165 + Mistral $0.0440 = $0.0605, under the Owner-authorized $0.20 cap. Prices: [Google Document AI](https://cloud.google.com/products/document-ai/pricing), [Mistral OCR 4.1](https://docs.mistral.ai/models/ocr-4-1). No free tier was assumed.
+- NEW_PROVEN_R3B: Presence-only preflight reported all five configured inputs absent: Google service-account JSON, Google project, location, processor ID, and MISTRAL_API_KEY. No values were output or saved.
+- NEW_PROVEN_R3B: google-results.json reports api_called=false, 11 records marked not_called; no source image download/crop preparation ran. Provider OCR requests attempted: 0; estimated provider OCR page cost: $0.00; model/API token cost: 0. Owner/account billing readback was not performed.
+- NEW_PROVEN_R3B: Google client and scoring path are present in the committed runner; this Actions execution exercised dependency installation, syntax check, fixed-set validation, budget guard, and Secret-presence preflight. Google authentication, processor discovery, OCR, and semantic scoring were not executed.
+
+### UNKNOWN
+
+- UNKNOWN: Google output, confidence/bounding layout, latency, semantic critical errors, supported-fact/hallucination comparison, review edits, and materiality decision: no Google OCR API request ran.
+- UNKNOWN: Mistral OCR 4.1 output and value: Google was not tested, so Phase B was not entered.
+- UNKNOWN: Provider-account invoice/billing readback and GitHub Actions account-side quota valuation. The quoted $0.0605 is a conservative maximum plan, not a charge.
+
+### BLOCKED
+
+- BLOCKED: The Google API route is stopped before request because its credential Secret and processor configuration are absent. This is an Owner/provider-setup checkpoint, not an OCR quality result. Exact return: RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED.
+- BLOCKED: Selection remains PRIMARY=PP-OCRv6_medium, FALLBACK=UNKNOWN. Neither GOOGLE_ENTERPRISE_DOCUMENT_OCR nor FALLBACK=NONE can be concluded from a no-call run.
+- Secret values were not exposed. No customer/private recipe, production write, payment, Mistral/Gemini/OpenAI/Claude call, third OCR, main merge, or G2A2 work occurred.
+- Cleanup: hosted runner data and dependencies removed; this local artifact inspection ZIP was deleted; no model or customer artifacts were created.

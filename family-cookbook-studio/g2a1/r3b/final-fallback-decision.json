@@ -1,0 +1,19 @@
+{
+  "primary": "PP-OCRv6_medium",
+  "fallback": "UNKNOWN",
+  "selection_status": "RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED",
+  "google_tested": false,
+  "google_material_improvement": null,
+  "mistral_tested": false,
+  "mistral_material_improvement": null,
+  "baseline_manual_edit_fields": 13,
+  "final_manual_edit_fields": null,
+  "baseline_manual_edit_chars": 69,
+  "final_manual_edit_chars": null,
+  "baseline_critical_errors": 1,
+  "final_critical_errors": null,
+  "new_silent_critical_errors": null,
+  "new_hallucinations": null,
+  "estimated_api_cost_usd": 0.0,
+  "reason": "RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED"
+}
