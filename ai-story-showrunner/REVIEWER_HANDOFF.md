@@ -294,3 +294,30 @@ Current audio-trial handoff:
 CosyVoice remains the current canonical timing/voice baseline until the A/B trial passes. Do not mutate the portable Skill merely because the candidate is installed.
 
 Do not promote the Skill to CANONICAL until final-video E2E PASS.
+
+
+## Topic Supply v0.2 — 2026-09-27
+
+Owner accepted the Topic Supply rebaseline after direct GitHub review.
+
+Decision:
+- preserve the existing HOT / EVERGREEN, Human Relevance, Mechanism Integrity, One Mechanism, Storyability, Controlling Question, Idea vs Counter-Idea and climax-proves-meaning contracts;
+- change the default discovery entry from `AI Signal / AI Problem → Audience Translation` to `Human-interest X → Observed Paradox → WHY → Human Tension → AI Changed Process → Mechanism`;
+- retain the old AI-first path as a valid compatibility/fallback route for strong AI signals and explicit Owner AI topics;
+- do not retroactively rewrite existing Topic Registry, Calendar, Daily snapshots or validation episodes;
+- add v0.2 TopicOpportunity / Registry fields as backward-compatible optional fields;
+- no change to current G6A production execution, audio, visual or timing gates.
+
+Canonical topic docs:
+- `docs/TOPIC_OPERATING_SYSTEM.md` v0.2;
+- `docs/CONTENT_STRATEGY_AND_CONVERSION.md`;
+- `docs/PIPELINE_AND_GATES.md`;
+- `docs/DAILY_TOPIC_AUTOMATION_V2.md` v0.2.1.
+
+Rollback protection:
+- pre-change main SHA: `16e2c86039a26175f99204239c19c1bdf35f4a10`;
+- rollback branch: `rollback/ai-story-showrunner-topic-os-v01-20260927`;
+- implementation branch: `codex/ai-story-showrunner-topic-os-v02`.
+
+Reviewer assessment:
+`PASS_TOPIC_SUPPLY_V0_2_CONTRACT / G6A_UNCHANGED`.
