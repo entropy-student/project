@@ -16,19 +16,19 @@
 | `G1_REMAINING_RESEARCH.md` | Product/economics/WordPress research | Research snapshot; contains superseded recommendations |
 | `WORDPRESS_STACK_RESEARCH.md` | Theme/plugin research | Candidate research only; no architecture approval |
 | `G1_US_FIRST_EXPERIMENT.md` | US-first offer/experiment support | Supporting design; Handoff defines current Gate |
-| `TECHNICAL_ROUTE.md` | Reuse-vs-custom architecture / implementation sequence | **Current supporting architecture** |
+| `TECHNICAL_ROUTE.md` | Reuse-vs-custom architecture / implementation sequence | Current supporting architecture; Handoff/current Gate wins on stage/status |
 | `G2A_FRONTEND_COMPONENT_POC.md` | Legacy combined G2A pointer | **SUPERSEDED — DO NOT EXECUTE** |
 | `REVIEWER_DECISION_G2A1_PASS.md` | Final Reviewer decision for G2A1 | **CURRENT REVIEW DECISION — PASS** |
 | `REVIEWER_DECISION_G2A1_RETURN.md` | Earlier Reviewer return | Historical; superseded by final PASS decision |
 | `G2A1R1_EVIDENCE_CLOSURE.md` | G2A1 evidence-closure execution contract | Executed / closed |
 | `G2A1_COMPONENT_FEASIBILITY_POC.md` | Frontend + reusable component feasibility | Executed / **PASS at parent Gate** |
 | `REVIEWER_DECISION_G2A2_PASS.md` | Final Reviewer decision for G2A2 | **CURRENT REVIEW DECISION — PASS** |
-| `MVP_PRODUCT_CONTRACT.md` | Frozen MVP product contract | **AUTHORITATIVE PRODUCT CONTRACT FOR G2B** |
+| `MVP_PRODUCT_CONTRACT.md` | Frozen MVP product contract | **AUTHORITATIVE MVP PRODUCT CONTRACT** |
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | Executed / **PASS** |
 | `REVIEWER_DECISION_G2B_RETURN.md` | Earlier Reviewer decision on G2B PR #30 | Historical partial RETURN; superseded for content/rendering by G2BR3 PASS |
 | `G2B_LOCAL_AI_PDF_SOLUTION_PROOF.md` | Original local AI → 12-page magazine → PDF proof | Historical partial execution; combined G2B content/rendering PASS is completed by G2BR3 |
 | `OWNER_DECISION_G2BR1_BOUNDED_AI_CALLS.md` | Owner authorization for bounded real-AI closure | **APPROVED — MAX 3 SYNTHETIC CALLS** |
-| `REVIEWER_DECISION_G2BR1_CODEX_PLUS_ROUTE.md` | Reviewer/Owner decision to use ChatGPT-authenticated Codex for G2BR1 | **CURRENT EXECUTION ROUTE** |
+| `REVIEWER_DECISION_G2BR1_CODEX_PLUS_ROUTE.md` | Historical Reviewer/Owner route decision for G2BR1 | Historical; G2BR1 ultimately RETURN and G2BR3 superseded it for content/rendering proof |
 | `G2BR1_REAL_AI_GENERATION_CLOSURE.md` | Narrow real-AI proof closure | Executed / **RETURN — NESTED CODEX TRANSPORT FAILED** |
 | `REVIEWER_DECISION_G2BR1_RETURN.md` | Reviewer decision on PR #40 | **CURRENT G2BR1 DECISION — RETURN** |
 | `OWNER_DECISION_G2BR2_MAX2_HOST_CODEX_RUNS.md` | Owner authorization for G2BR2 host-context Codex runs | **APPROVED — MAX 2 REAL-MODEL RUNS** |
@@ -39,7 +39,9 @@
 | `REVIEWER_DECISION_G2BR3_PASS.md` | Reviewer decision on PR #46 | **CURRENT G2BR3 / G2B CONTENT-RENDERING DECISION — PASS** |
 | `G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP.md` | Docker/MariaDB local WordPress + WooCommerce commerce/account loop | Executed / **PASS** |
 | `REVIEWER_DECISION_G3A_PASS.md` | Reviewer decision on PR #49 | **CURRENT G3A DECISION — PASS** |
-| `G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND.md` | Official PayPal Sandbox + paid entitlement/idempotency + refund | **CURRENT GATE CONTRACT — AUTHORIZED UNTIL OWNER PAYPAL CHECKPOINT** |
+| `G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND.md` | Parent PayPal Sandbox + paid entitlement/idempotency + refund contract | Executed partially / **INTERIM RETURN** |
+| `REVIEWER_DECISION_G3B_INTERIM_RETURN.md` | Reviewer decision on PR #51 | **CURRENT G3B DECISION — RETURN / RECONCILIATION REQUIRED** |
+| `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` | Existing Sandbox payment reconciliation + entitlement/idempotency + refund closure | **CURRENT GATE CONTRACT — READY FOR EXECUTION / NO SECOND PAYMENT** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
@@ -54,3 +56,18 @@
 - Prototype code demonstrates intended interaction only unless a later Gate independently proves production behavior.
 - `EXECUTOR_HANDOFF.md` and `EXECUTION_EVIDENCE.md` should be created/updated by the Execution Agent when the first execution Gate begins; they must not become architecture decision documents.
 - Secret values, customer private data, payment credentials and tokens must never be stored in these documents.
+
+
+## Current working set
+
+For the current project state, a new Reviewer/Executor should normally need only:
+
+1. `../REVIEWER_HANDOFF.md`
+2. `../EXECUTOR_HANDOFF.md`
+3. `../EXECUTION_EVIDENCE.md`
+4. `MVP_PRODUCT_CONTRACT.md`
+5. `REVIEWER_DECISION_G3B_INTERIM_RETURN.md`
+6. `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md`
+7. `G3A_MINICRAFT_LESSONS_REFERENCE.md` only when a PayPal/runtime issue resembles an already-seen Mini Craft failure
+
+Older Gate contracts and research remain in place for provenance and must not be treated as the current execution package.

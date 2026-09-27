@@ -1,16 +1,16 @@
 # Birthday Magazine Studio — REVIEWER HANDOFF
 
 > Maintainer: Reviewer / Architect / Gatekeeper only  
-> Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1  
+> Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1 + Production Provider Canary/Recovery Contract rev2  
 > Executor facts: `EXECUTOR_HANDOFF.md`  
 > Detailed evidence: `EXECUTION_EVIDENCE.md`  
-> Last reviewed: 2026-09-27
+> Last reviewed: 2026-09-28
 
 ## 1. Project Goal
 
 - Final goal: let a buyer turn photos and structured answers into a polished, personalized birthday magazine PDF without designing it manually.
 - Accepted product direction: browser-local zero-model-cost preview before payment; full personalized production only after confirmed payment and complete intake.
-- Current business goal: prove the local WordPress + WooCommerce commerce/account loop, then PayPal Sandbox + paid entitlement, while production AI provider integration remains deferred until the Owner supplies the interface.
+- Current business goal: reconcile the already-observed PayPal Sandbox payment without replay, close paid-entitlement/idempotency + Sandbox refund, then keep Live payment and production AI provider as later Gates.
 - Current scope: birthday magazine only. Family Cookbook Studio is now a separate active project at `../family-cookbook-studio/` and remains out of scope here.
 
 ## 2. Authority / Source of Truth
@@ -30,10 +30,12 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 
 ## 3. Current Architecture
 
-### Current implemented artifact
-- Runtime/framework: static browser-only HTML/CSS/JS prototype at `prototype/index.html`.
-- Current prototype capabilities: local preview, simulated checkout, simulated post-payment intake/generation/proof/delivery flow.
-- Current prototype boundaries: no real payment, no AI/model API, no server upload/storage, no order database, no email delivery, no production PDF generator.
+### Current implemented / proven artifacts
+- Static browser prototype: `prototype/index.html`; simulation only.
+- G2B local Solution Proof: synthetic intake → real interactive-model structured content → grounding → deterministic 12-page US Letter PDF → QA.
+- G3A local commerce proof: isolated Docker Compose + WordPress + WooCommerce + MariaDB + Mailpit, including account-bound private workspace authorization.
+- G3B Sandbox proof package: isolated Docker/MariaDB runtime + official WooCommerce PayPal Payments + temporary HTTPS origin. PR #51 records one Owner Sandbox Buyer payment followed by WooCommerce `processing/paid` read-back.
+- None of the above is a production deployment.
 
 ### Production architecture
 - Storefront/CMS: **WordPress + WooCommerce — ACCEPTED**.
@@ -51,10 +53,10 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Background jobs: use the WordPress/WooCommerce Action Scheduler pattern first; do not introduce Redis/Celery/RabbitMQ without an observed need.
 - Generation service/worker: project-specific asynchronous generation boundary; exact runtime/provider = `UNKNOWN`.
 - Generation idempotency: one paid order → at most one active canonical generation job; duplicate callback/refresh must not duplicate model spend.
-- PDF rendering engine: `UNKNOWN`.
-- Data/persistence: **G3A local proof uses MariaDB**. Final production persistence topology remains `UNKNOWN`.
+- PDF rendering engine: **Solution Proof uses pdf-lib 1.17.1**; final production render engine remains `UNKNOWN`.
+- Data/persistence: **G3A/G3B local proof uses MariaDB**. Final production persistence topology remains `UNKNOWN`.
 - Object/file storage: `UNKNOWN`.
-- Auth/order-private access: `UNKNOWN`.
+- Auth/order-private access: account + WooCommerce-order ownership is accepted and locally proven in G3A; exact production login mechanism (magic link vs standard Woo password setup) remains `UNKNOWN`.
 - Deployment target: production `UNKNOWN`; G3 local/Sandbox proof uses isolated Docker Compose + WordPress + MariaDB + Mailpit. G3B may temporarily expose only the local runtime through a bounded HTTPS Sandbox origin.
 - Shared VPS dependency: none currently accepted.
 - Target-host execution boundary: no target-host or production write is authorized or claimed.
@@ -72,7 +74,8 @@ G2BR1 Real AI Generation Closure                        ↩ RETURN — nested Co
 G2BR2 Host Codex Transport + Real-AI Closure             ↩ RETURN — WebSocket failure + HTTP 401
 G2BR3 Direct Codex Agent Real-AI Content/PDF Proof       ✅ PASS
 G3A WordPress + WooCommerce Commerce Loop               ✅ PASS
-G3B PayPal Sandbox + Paid Entitlement Flow              ← CURRENT / AUTHORIZED UNTIL OWNER PAYPAL CHECKPOINT
+G3B PayPal Sandbox + Paid Entitlement Flow              ↩ RETURN — Sandbox payment observed; provider correlation + entitlement/refund incomplete
+G3BR1 Sandbox Reconciliation + Entitlement/Refund       ← CURRENT / READY_FOR_EXECUTION / NO SECOND PAYMENT
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -96,6 +99,7 @@ Current Reviewer decisions:
 - `PASS_G2BR3_DIRECT_AGENT_REAL_AI_CONTENT_RENDER_PROOF_2026-09-27`
 - `PASS_G2B_CONTENT_RENDERING_SOLUTION_PROOF_2026-09-27`
 - `PASS_G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_ACCOUNT_LOOP_2026-09-27`
+- `RETURN_G3B_PROVIDER_CAPTURE_CORRELATION_AND_REMAINDER_REQUIRED_2026-09-28`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -116,8 +120,10 @@ Important limitation: the Owner reports demand as already validated, but the und
 
 ### Evidence status
 - Browser prototype: exists and is clearly labeled as a simulation.
-- Real customer payment: not tested in this project.
 - Real-AI content/rendering Solution Proof: proven on the frozen synthetic fixture via G2BR3; unattended production provider integration remains unproven.
+- WooCommerce commerce/account/private-workspace loop: proven locally via G3A.
+- PayPal Sandbox: merchant connection and one Owner Sandbox Buyer payment are evidenced at the WooCommerce side; exact provider capture cardinality/correlation is not yet independently proven.
+- Real customer / real-money payment: **not tested**.
 - Private production PDF delivery: not implemented/proven.
 - Repeatability/economics: unknown.
 - Production website: not built/deployed.
@@ -299,46 +305,83 @@ Verified:
 Decision:
 - [docs/REVIEWER_DECISION_G3A_PASS.md](./docs/REVIEWER_DECISION_G3A_PASS.md)
 
-### Current Gate — G3B PayPal Sandbox + Paid Entitlement + Refund
+### G3B Reviewer interim result
+
+G3B is **RETURN**, not PASS.
+
+PR #51 is accepted and merged as durable interim evidence.
+
+Accepted:
+- official WooCommerce PayPal Payments 4.1.3;
+- Sandbox merchant connection;
+- Sandbox=YES / Live=NO;
+- temporary HTTPS Sandbox origin;
+- PayPal Sandbox checkout component rendered;
+- Owner reported one Sandbox Buyer payment;
+- WooCommerce read-back: synthetic order #30 = `processing`, `paid=true`, USD 39.99, `ppcp-gateway`;
+- PPCP webhook receipt/delivery-host health was reported;
+- generation/model counters remained zero;
+- no Live PayPal, real customer data, production AI call or VPS/production-domain action.
+
+Still missing:
+- exact provider-side capture count and provider↔Woo correlation;
+- callback/webhook event correlation;
+- paid/intake-incomplete entitlement check;
+- exactly-one deferred generation-ready job after intake completion;
+- duplicate entitlement evaluation;
+- one Sandbox refund and refund correlation;
+- refund-driven entitlement revocation/action cancellation.
+
+Decision:
+- [docs/REVIEWER_DECISION_G3B_INTERIM_RETURN.md](./docs/REVIEWER_DECISION_G3B_INTERIM_RETURN.md)
+
+Safety rule:
+- **do not create another Sandbox payment/capture for reconciliation**;
+- Provider success/paid evidence must be reconciled read-only before any replay.
+
+### Current Gate — G3BR1 Sandbox Payment Reconciliation + Entitlement + Refund Closure
 
 Contract:
-- [docs/G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND.md](./docs/G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND.md)
+- [docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](./docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md)
 
 Status:
-- **CURRENT / AUTHORIZED TO EXECUTE UNTIL OWNER PAYPAL CHECKPOINT**;
-- recreate and reconfirm the accepted G3A Docker/MariaDB baseline;
-- install only the official WooCommerce PayPal Payments plugin;
-- use Sandbox only; Live must remain off;
-- establish one bounded temporary HTTPS public Sandbox origin before end-to-end client-token/webhook acceptance;
-- stop for Owner at Sandbox merchant authentication/consent/credential entry;
-- stop for Owner at Sandbox buyer login/approval;
-- after one Sandbox capture, prove paid-but-intake-incomplete => zero generation jobs;
-- after marking synthetic intake complete, create exactly one canonical deferred generation-ready job;
-- duplicate entitlement evaluation must not create a second job;
-- no real model/provider call in G3B;
-- perform one WooCommerce-initiated Sandbox refund and revoke/cancel deferred generation entitlement;
-- no real money, real customer data, production domain cutover or VPS write.
+- **CURRENT / READY_FOR_EXECUTION**;
+- start from the already-observed Sandbox payment/order #30;
+- fresh-read runtime/tunnel state before any write;
+- use a verified read-only provider/query path;
+- require exact one completed Sandbox capture correlated to order/amount/currency;
+- no second payment/capture;
+- if correlation passes, prove paid+intake-incomplete => 0 jobs;
+- then mark only synthetic intake complete and prove exactly 1 deferred generation-ready job;
+- duplicate entitlement evaluation must remain exactly 1;
+- model calls remain 0;
+- then perform exactly one official WooCommerce-initiated Sandbox refund;
+- verify refund correlation and revoke/cancel deferred generation entitlement;
+- G4 / Live remains HOLD.
 
-G4 remains HOLD until G3B Reviewer decision.
+G4 remains HOLD until G3BR1 closes parent G3B with a Reviewer PASS.
 
-### Rollback
+### Current Gate rollback / recovery
 
-All G2A1 changes are local/test and Git-reversible. No production resource is in scope.
+- G3BR1 must operate on the already-observed Sandbox transaction; payment replay is not a rollback strategy.
+- Before any refund/mutation, use fresh read-only reconciliation and exact correlation.
+- The disposable G3B runtime can be reconstructed from committed project-local Docker/WordPress artifacts if needed; do not reuse Mini Craft state.
+- Temporary HTTPS origin and WordPress URL rebound are reversible and must be restored/stopped at Gate cleanup.
+- No production resource is in scope.
 
 ## 7. Confirmed Facts
 
-- The project directory contains a browser-only interactive sample and supporting research.
-- The current sample does not charge money or call an AI generation API.
-- The current sample does not constitute production payment, generation, PDF delivery or market validation.
+- The project directory contains the original browser prototype plus accepted G2B/G3A/G3B local/Sandbox proof artifacts and supporting research.
+- The browser sample itself does not charge money or call an AI API; separate G3B Sandbox evidence now exists, but no Live/real-money payment has occurred.
+- The current proofs do not constitute production payment, unattended production generation, production PDF delivery or independently archived market validation.
 - US-first, English-first, digital PDF, US$39.99, zero-token preview and post-payment AI direction are Owner-confirmed.
 - WordPress + WooCommerce is now the accepted commerce baseline.
 - PayPal through the official WooCommerce PayPal Payments plugin is now the accepted payment path, using Mini Craft as the implementation reference.
 - The free path must remain deterministic and zero-model-token; paid AI spend is gated by confirmed payment entitlement plus complete intake.
 - The reuse-vs-custom technical route is documented in `docs/TECHNICAL_ROUTE.md`.
-- Kadence Jewelry Shop + Storelly is the first PoC candidate, not a final selection.
-- Blocksy Modern Shop + Storelly is the comparison backup.
-- Existing Good Issue remains the editorial/custom-reference baseline.
-- Vanquish Upload Files and Vanquish Attach Me remain PoC candidates, not accepted production dependencies.
+- Good Issue-style WordPress preview is the accepted frontend feasibility foundation from G2A1.
+- Storelly is rejected for the browser-local free-preview path; Kadence/Blocksy named starter-site combinations were not accepted as the current product foundation.
+- Vanquish Upload Files and Vanquish Attach Me are registered-account reuse candidates only; their guest bearer-link paths are rejected for strict private MVP use.
 - Other WordPress/plugin research remains candidate research unless separately accepted.
 - Mini Craft's accepted commerce/payment history is an implementation reference for G3A/G3B: Docker/MariaDB is preferred over Studio/SQLite, commerce is proven before PPCP, and public HTTPS origin requirements are deferred to G3B.
 - There is no current production deployment.
@@ -352,12 +395,12 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - PayPal merchant/account eligibility, settlement currency behavior and actual fees for the eventual seller account;
 - production generator/model/provider selection remains UNKNOWN; G2BR1 uses ChatGPT-authenticated Codex only as a bounded Solution Proof path;
 - real per-order AI/render/storage cost;
-- storage, access control and deletion policy;
+- production storage topology and implementation; account/order access policy is accepted and locally proven, while the 24h/72h deletion windows are frozen in the MVP contract;
 - final subjective visual/product foundation after G2A2;
 - exact account authentication implementation (magic link vs standard WooCommerce password setup), provided it preserves the frozen no-separate-precheckout-registration product requirement;
 - exact PDF render engine;
 - actual production hosting;
-- refund/cancellation handling;
+- production refund/cancellation policy; Sandbox refund behavior remains to be closed in G3BR1;
 - real transaction conversion and acquisition cost.
 
 ## 9. Owner-only Checkpoints
@@ -371,24 +414,27 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 10. Resource Baseline
 
-- Current prototype: static files in GitHub; no server runtime baseline.
-- Root disk / VPS: N/A for current Gate.
-- Project source/data/backups: no production data exists.
-- Production image / BuildKit / browser runtime: N/A.
+- Static prototype and proof source/artifacts are in GitHub.
+- G3A proved an isolated project-scoped Docker/MariaDB/Mailpit runtime and scoped cleanup.
+- At the PR #51 checkpoint, the disposable G3B Docker runtime and temporary HTTPS tunnel were intentionally left active; **fresh read-back is required before the next write because runtime/tunnel liveness can drift**.
+- Root disk / VPS: N/A for current Gate; no VPS deployment is authorized.
+- Production data: none.
 - If Shared VPS is selected later, Storage Layout Contract rev1 and `PROJECT_STORAGE_MANIFEST.md` become mandatory before deployment.
 
 ## 11. Rollback / Recovery
 
-- Current rollback point: Git history.
-- No production release/image exists.
-- No customer database or recovery pair exists.
-- No Secret recovery artifact exists because no production Secret is authorized.
+- Code/document rollback point: Git history.
+- G3B runtime is disposable/local; any reconstruction must use committed project-local Compose/scripts rather than Mini Craft resources.
+- Temporary HTTPS origin is test-only and must be stopped/restored after G3B closure.
+- No production release/image or production customer database exists.
+- Sandbox credentials remain Owner-controlled and must not be exported into repository evidence.
 
 ## 12. Next Step
 
-- Reviewer next action: dispatch/review only `docs/G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND.md`.
-- Executor next action: execute G3B until the first defined Owner PayPal checkpoint; do not enter Live, real payment or production model-provider work.
-- Owner intervention required: **YES, only when PayPal Sandbox seller authorization/credential entry or Sandbox buyer approval is reached.** Do not paste credentials/secrets into chat or GitHub. Production AI interface details remain deferred until the Owner supplies them.
+- Reviewer next action: dispatch/review only `docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md`.
+- Executor next action: reconcile the already-observed Sandbox payment read-only first; **do not create another payment/capture**. Only after exact correlation may it continue local entitlement/idempotency and one bounded Sandbox refund.
+- Owner intervention required: **NO at the start of G3BR1**. Stop only if PayPal requires new Owner authentication/Secret action or another explicitly Owner-only boundary. Do not paste credentials/secrets into chat or GitHub.
+- Production AI interface details remain deferred until the Owner supplies them.
 
 ## 13. Status Summary
 
@@ -404,5 +450,6 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - G2BR3: PASS; one direct interactive-Agent generation passed schema, grounding, modules, 12-page PDF and deterministic QA.
 - Current unresolved production boundary: unattended provider/runtime + provider-spend idempotency + per-order provider cost.
 - G3A: PASS — local Docker/MariaDB WooCommerce commerce/account/private-workspace loop.
-- G3B: CURRENT — official PayPal Sandbox + paid entitlement/idempotency + refund, authorized until Owner PayPal checkpoint.
+- G3B: RETURN — one Sandbox payment is observed at WooCommerce, but provider capture correlation, entitlement/idempotency and refund are incomplete.
+- G3BR1: CURRENT — reconcile the existing payment, then close entitlement/idempotency + one Sandbox refund; no second payment.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
