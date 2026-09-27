@@ -1,0 +1,56 @@
+name: Family Cookbook G2A1-R3B bounded API fallback benchmark
+
+on:
+  push:
+    branches:
+      - codex/family-cookbook-g2a1-input-ocr-component-feasibility
+
+permissions:
+  contents: read
+
+jobs:
+  r3b:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/codex/family-cookbook-g2a1-input-ocr-component-feasibility' && contains(github.event.head_commit.message, '[g2a1-r3b-run]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout the triggering branch commit
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Install bounded R3B client dependencies
+        shell: bash
+        run: |
+          python3 -m venv "$RUNNER_TEMP/g2a1-r3b-venv"
+          source "$RUNNER_TEMP/g2a1-r3b-venv/bin/activate"
+          python -m pip install --disable-pip-version-check pip==25.2
+          python -m pip install --disable-pip-version-check -r family-cookbook-studio/g2a1/r3b/requirements-r3b.txt
+          python -m pip check
+          python -m py_compile family-cookbook-studio/g2a1/r3b/run_benchmark.py
+          python -c "import importlib.metadata as m, json; print(json.dumps({p:m.version(p) for p in ('google-auth','requests','Pillow')},sort_keys=True))"
+
+      - name: Run fixed 11-case preflight and sequential provider benchmark
+        shell: bash
+        env:
+          G2A1_R3B_ARTIFACT_DIR: ${{ runner.temp }}/g2a1-r3b-artifacts
+          G2A1_R3B_DATA_DIR: ${{ runner.temp }}/g2a1-r3b-data
+          GOOGLE_DOC_AI_CREDENTIALS_JSON: ${{ secrets.GOOGLE_DOC_AI_CREDENTIALS_JSON }}
+          GOOGLE_CLOUD_PROJECT: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
+          GOOGLE_DOC_AI_LOCATION: ${{ secrets.GOOGLE_DOC_AI_LOCATION }}
+          GOOGLE_DOC_AI_PROCESSOR_ID: ${{ secrets.GOOGLE_DOC_AI_PROCESSOR_ID }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+        run: |
+          mkdir -p "$G2A1_R3B_ARTIFACT_DIR" "$G2A1_R3B_DATA_DIR"
+          source "$RUNNER_TEMP/g2a1-r3b-venv/bin/activate"
+          python family-cookbook-studio/g2a1/r3b/run_benchmark.py
+
+      - name: Upload compact R3B structured outputs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: family-cookbook-g2a1-r3b-${{ github.run_id }}
+          path: ${{ runner.temp }}/g2a1-r3b-artifacts/*.json
+          if-no-files-found: error
+          retention-days: 1

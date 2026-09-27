@@ -1,0 +1,10 @@
+{
+  "gate": "G2A1-R3B",
+  "purpose": "Trigger one bounded credential-presence and Google-first benchmark run on the fixed 11-case R3A fallback set.",
+  "provider_order": ["Google Enterprise Document OCR", "Mistral OCR 4.1 only if Google is insufficient"],
+  "max_ocr_pages": 22,
+  "estimated_max_list_price_usd": 0.0605,
+  "budget_cap_usd": 0.2,
+  "api_token_target": 0,
+  "customer_or_private_data": false
+}
