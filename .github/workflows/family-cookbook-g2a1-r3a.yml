@@ -1,0 +1,170 @@
+name: Family Cookbook G2A1-R3A local primary benchmark
+
+on:
+  push:
+    branches:
+      - codex/family-cookbook-g2a1-input-ocr-component-feasibility
+
+permissions:
+  contents: read
+
+jobs:
+  r3a:
+    if: contains(github.event.head_commit.message, '[g2a1-r3a-run]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      CUDA_VISIBLE_DEVICES: ""
+    steps:
+      - name: Hosted runner resource and public-source preflight
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/g2a1-r3a-artifacts"
+          python3 - <<'PY'
+          import json, os, platform, shutil, subprocess, sys, urllib.error, urllib.request
+          GiB=1024**3; mem={}
+          for row in open("/proc/meminfo"):
+              k,v=row.split(":",1)
+              if k in {"MemTotal","MemAvailable","SwapTotal","SwapFree"}: mem[k]=int(v.strip().split()[0])*1024
+          urls={"pypi":"https://pypi.org/pypi/paddleocr/3.7.0/json","torch_cpu":"https://download.pytorch.org/whl/cpu/","hf_vl":"https://huggingface.co/api/models/PaddlePaddle/PaddleOCR-VL-1.6","commons":"https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg","image":"https://upload.wikimedia.org/wikipedia/commons/e/e0/17th-18th_century_recipe_book_Wellcome_L0074537.jpg"}
+          network={}
+          for key,url in urls.items():
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(url,headers={"User-Agent":"FamilyCookbookStudio-G2A1-R3A/1.0"}),timeout=25) as r: network[key]={"reachable":True,"status":r.status}
+              except urllib.error.HTTPError as e: network[key]={"reachable":e.code in (401,403,404),"status":e.code}
+              except Exception as e: network[key]={"reachable":False,"error":type(e).__name__+": "+str(e)[:160]}
+          disk=shutil.disk_usage("/"); cpu="unknown"
+          for row in open("/proc/cpuinfo"):
+              if row.lower().startswith("model name"): cpu=row.split(":",1)[1].strip(); break
+          def cmd(args):
+              try:
+                  p=subprocess.run(args,capture_output=True,text=True,timeout=10); return {"exit":p.returncode,"stdout":p.stdout.strip()[:300]}
+              except Exception as e:return {"error":type(e).__name__+": "+str(e)[:160]}
+          out={"runner":{"os":platform.platform(),"image":os.getenv("ImageOS"),"image_version":os.getenv("ImageVersion"),"name":os.getenv("RUNNER_NAME"),"arch":platform.machine()},
+            "cpu":{"model":cpu,"logical_processors":os.cpu_count()},"ram":{"total_bytes":mem.get("MemTotal"),"available_bytes":mem.get("MemAvailable"),"swap_total_bytes":mem.get("SwapTotal"),"swap_free_bytes":mem.get("SwapFree")},
+            "disk":{"root_total_bytes":disk.total,"root_free_bytes":disk.free},"python":{"version":sys.version,"architecture":platform.architecture()[0]},"gpu":cmd(["nvidia-smi","--query-gpu=name,memory.total,memory.free","--format=csv,noheader,nounits"]),
+            "network":network,"api_tokens":0,"repository_secrets_used":False}
+          out["resource_blocked"]=mem.get("MemTotal",0)<8*GiB or mem.get("MemAvailable",0)+mem.get("SwapFree",0)<6*GiB or disk.free<16*GiB
+          out["network_blocked"]=not all(network.get(k,{}).get("reachable") for k in urls)
+          out["status"]="resource_blocked" if out["resource_blocked"] else ("source_blocked" if out["network_blocked"] else "ready")
+          json.dump(out,open(os.path.join(os.environ["RUNNER_TEMP"],"g2a1-r3a-artifacts","runner-preflight.json"),"w"),indent=2)
+          print(json.dumps(out,indent=2))
+          if out["resource_blocked"]: raise SystemExit(78)
+          if out["network_blocked"]: raise SystemExit(79)
+          PY
+      - name: Checkout triggering execution-branch commit
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Install local Chromium for synthetic fixture renderer
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/fcs-r3a-browser"
+          npm install --prefix "$RUNNER_TEMP/fcs-r3a-browser" --no-audit --no-fund playwright@1.55.0
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo "CHROME_PATH=$(command -v google-chrome)" >> "$GITHUB_ENV"
+          elif command -v chromium >/dev/null 2>&1; then
+            echo "CHROME_PATH=$(command -v chromium)" >> "$GITHUB_ENV"
+          else
+            "$RUNNER_TEMP/fcs-r3a-browser/node_modules/.bin/playwright" install --with-deps chromium
+            chrome_path=$(NODE_PATH="$RUNNER_TEMP/fcs-r3a-browser/node_modules" node -e "console.log(require('playwright').chromium.executablePath())")
+            echo "CHROME_PATH=$chrome_path" >> "$GITHUB_ENV"
+          fi
+      - name: Install pinned PaddleOCR Transformers CPU runtime
+        shell: bash
+        run: |
+          python3 -m venv "$RUNNER_TEMP/fcs-r3a-venv"
+          source "$RUNNER_TEMP/fcs-r3a-venv/bin/activate"
+          python -m pip install --disable-pip-version-check pip==25.2
+          python -m pip install --disable-pip-version-check torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --disable-pip-version-check -r family-cookbook-studio/g2a1/r2/requirements-ocr.txt
+          python -m pip check
+      - name: Render the 20 carried synthetic recipe pages
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/g2a1-r3a-artifacts/rendered" "$RUNNER_TEMP/g2a1-r3a-data"
+          node family-cookbook-studio/g2a1/ocr/render-fixtures.mjs "$RUNNER_TEMP/g2a1-r3a-artifacts/rendered"
+      - name: Prepare identical synthetic, public handwriting and language probes
+        shell: bash
+        run: |
+          source "$RUNNER_TEMP/fcs-r3a-venv/bin/activate"
+          export G2A1_R3A_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r3a-artifacts"
+          export G2A1_R3A_DATA_DIR="$RUNNER_TEMP/g2a1-r3a-data"
+          export G2A1_R3A_SYNTHETIC_DIR="$RUNNER_TEMP/g2a1-r3a-artifacts/rendered"
+          python family-cookbook-studio/g2a1/r3a/prepare_corpus.py
+      - name: Run PP-OCRv6_medium on all shared inputs
+        id: ppocr
+        continue-on-error: true
+        shell: bash
+        run: |
+          source "$RUNNER_TEMP/fcs-r3a-venv/bin/activate"
+          export G2A1_R3A_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r3a-artifacts"
+          set +e
+          python family-cookbook-studio/g2a1/r3a/run_candidate.py --candidate ppocrv6 > "$RUNNER_TEMP/g2a1-r3a-artifacts/ppocrv6.log" 2>&1
+          code=$?
+          echo "$code" > "$RUNNER_TEMP/g2a1-r3a-artifacts/ppocrv6.exit"
+          tail -n 80 "$RUNNER_TEMP/g2a1-r3a-artifacts/ppocrv6.log"
+          exit "$code"
+      - name: Run PaddleOCR-VL-1.6 on all shared inputs
+        id: vl
+        continue-on-error: true
+        shell: bash
+        run: |
+          source "$RUNNER_TEMP/fcs-r3a-venv/bin/activate"
+          export G2A1_R3A_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r3a-artifacts"
+          set +e
+          python family-cookbook-studio/g2a1/r3a/run_candidate.py --candidate vl > "$RUNNER_TEMP/g2a1-r3a-artifacts/paddleocr-vl.log" 2>&1
+          code=$?
+          echo "$code" > "$RUNNER_TEMP/g2a1-r3a-artifacts/paddleocr-vl.exit"
+          tail -n 80 "$RUNNER_TEMP/g2a1-r3a-artifacts/paddleocr-vl.log"
+          exit "$code"
+      - name: Compute semantic score and review-burden payload
+        if: always()
+        shell: bash
+        run: |
+          export G2A1_R3A_ARTIFACT_DIR="$RUNNER_TEMP/g2a1-r3a-artifacts"
+          python family-cookbook-studio/g2a1/r3a/score_benchmark.py
+      - name: Require both model runs to complete
+        if: always()
+        shell: bash
+        run: |
+          python3 - "$RUNNER_TEMP/g2a1-r3a-artifacts" <<'PY'
+          import json, pathlib, sys
+          root=pathlib.Path(sys.argv[1])
+          bad=[]
+          for fn,name in (("ppocrv6-results.json","PP-OCRv6_medium"),("paddleocr-vl-results.json","PaddleOCR-VL-1.6")):
+              p=root/fn
+              if not p.exists(): bad.append(name+": no result artifact")
+              elif json.loads(p.read_text()).get("runtime",{}).get("status")!="complete": bad.append(name+": runtime not complete")
+          if bad: print("CANDIDATE_RUNTIME_INCOMPLETE: "+"; ".join(bad)); raise SystemExit(1)
+          print("Both candidates processed every shared input.")
+          PY
+      - name: Print compact evidence JSON
+        if: always()
+        shell: bash
+        run: |
+          for f in runner-preflight.json prepared-corpus.json ppocrv6-results.json paddleocr-vl-results.json semantic-score.json review-burden.json comparison.json fallback-evaluation-set.json benchmark-summary.json; do
+            p="$RUNNER_TEMP/g2a1-r3a-artifacts/$f"
+            if [ -f "$p" ]; then printf '\n---BEGIN_JSON:%s---\n' "$f"; cat "$p"; printf '\n---END_JSON:%s---\n' "$f"; fi
+          done
+      - name: Upload small R3A structured outputs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: family-cookbook-g2a1-r3a-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/g2a1-r3a-artifacts/runner-preflight.json
+            ${{ runner.temp }}/g2a1-r3a-artifacts/prepared-corpus.json
+            ${{ runner.temp }}/g2a1-r3a-artifacts/ppocrv6-results.json
+            ${{ runner.temp }}/g2a1-r3a-artifacts/paddleocr-vl-results.json
+            ${{ runner.temp }}/g2a1-r3a-artifacts/semantic-score.json
+            ${{ runner.temp }}/g2a1-r3a-artifacts/review-burden.json
+            ${{ runner.temp }}/g2a1-r3a-artifacts/comparison.json
+            ${{ runner.temp }}/g2a1-r3a-artifacts/fallback-evaluation-set.json
+            ${{ runner.temp }}/g2a1-r3a-artifacts/benchmark-summary.json
+            ${{ runner.temp }}/g2a1-r3a-artifacts/*.log
+            ${{ runner.temp }}/g2a1-r3a-artifacts/*.exit
+          if-no-files-found: warn
+          retention-days: 1

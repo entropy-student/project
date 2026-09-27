@@ -1,0 +1,56 @@
+{
+  "dataset": "Public historical handwritten recipe-book image crops",
+  "privacy": "Historic public collection material; no customer or private household data.",
+  "attribution": "Wellcome Library, London, via Wikimedia Commons. CC BY 4.0. Crops are modifications; originals are not committed.",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "sources": [
+    {
+      "source_id": "wellcome-L0074537",
+      "title": "17th-18th century recipe book Wellcome L0074537",
+      "source_url": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "source_reference": "Wellcome MS 7721/30; ca. 1675–1800; Almonds Jumbals, biscuit cake, ginger bread, gimmalls",
+      "license": "CC BY 4.0",
+      "expected_bytes": 7416162,
+      "expected_sha1": "ebccb978f58cf4f478fda5830c4773f859d254a0",
+      "image_dimensions_px": [
+        6644,
+        4664
+      ],
+      "sample_ids": [
+        "GH01",
+        "GH02",
+        "GH03",
+        "GH04",
+        "GH05",
+        "GH06",
+        "GH07",
+        "GH08"
+      ]
+    },
+    {
+      "source_id": "wellcome-L0074536",
+      "title": "17th century recipe book Wellcome L0074536",
+      "source_url": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "source_reference": "Wellcome MS 3769/15; 1651; handwritten tart recipes, Jane Parker (fl. 1651)",
+      "license": "CC BY 4.0",
+      "expected_bytes": 7237794,
+      "expected_sha1": "adad5b883f88a4ea45a43dc21436bda0b39c957c",
+      "image_dimensions_px": [
+        6666,
+        4290
+      ],
+      "sample_ids": [
+        "GH09",
+        "GH10",
+        "GH11",
+        "GH12"
+      ]
+    }
+  ],
+  "limitations": [
+    "12 line/crop samples originate from only two historical manuscripts; they are not modern family-card handwriting.",
+    "GH04/GH06/GH08 are manual best-effort annotations; GH08 confidence is low. The handwriting score is exploratory, not a representative estimate for contemporary users."
+  ]
+}

@@ -1,0 +1,652 @@
+{
+  "gate": "G2A1-R3A",
+  "corpus_version": "1.0",
+  "privacy": "Public/open or synthetic only; no customer or private family data.",
+  "preprocessing": "No image enhancement. Both candidates consume byte-identical source PNG/JPEG inputs.",
+  "synthetic_typography": [
+    {
+      "sample_id": "F01",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "clear-print",
+      "render_mode": "print",
+      "effect": "none",
+      "image_path": "synthetic/F01.png",
+      "ground_truth_lines": [
+        "RECIPE: Sunday Tomato Sauce",
+        "INGREDIENTS",
+        "1/2 tsp salt",
+        "1/4 cup olive oil",
+        "1.5 tbsp tomato paste",
+        "350°F oven",
+        "Bake 15 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F02",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "neat-handwriting",
+      "render_mode": "print",
+      "effect": "hand",
+      "image_path": "synthetic/F02.png",
+      "ground_truth_lines": [
+        "RECIPE: Lemon Loaf",
+        "INGREDIENTS",
+        "180 g flour",
+        "120 ml milk",
+        "2 tbsp lemon juice",
+        "Bake at 180°C for 35 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F03",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "cursive-hard",
+      "render_mode": "script",
+      "effect": "hand",
+      "image_path": "synthetic/F03.png",
+      "ground_truth_lines": [
+        "RECIPE: Grandma Ida Rolls",
+        "INGREDIENTS",
+        "3 cups flour",
+        "1 tsp yeast",
+        "1 hr rise",
+        "Bake 22 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F04",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "skew-phone-photo",
+      "render_mode": "hand",
+      "effect": "skew",
+      "image_path": "synthetic/F04.png",
+      "ground_truth_lines": [
+        "RECIPE: Apple Dumplings",
+        "INGREDIENTS",
+        "1/2 cup sugar",
+        "2 tbsp butter",
+        "1/4 tsp cinnamon",
+        "Bake 25 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F05",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "shadow-phone-photo",
+      "render_mode": "hand",
+      "effect": "shadow",
+      "image_path": "synthetic/F05.png",
+      "ground_truth_lines": [
+        "RECIPE: Sunday Beans",
+        "INGREDIENTS",
+        "1.5 cups beans",
+        "750 ml water",
+        "1 tsp salt",
+        "Simmer 1 hr."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F06",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "low-contrast",
+      "render_mode": "print",
+      "effect": "low",
+      "image_path": "synthetic/F06.png",
+      "ground_truth_lines": [
+        "RECIPE: Orange Marmalade",
+        "INGREDIENTS",
+        "500 g oranges",
+        "350 ml water",
+        "2 cups sugar",
+        "Cook 75 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F07",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "mixed-layout",
+      "render_mode": "hand",
+      "effect": "none",
+      "image_path": "synthetic/F07.png",
+      "ground_truth_lines": [
+        "RECIPE: Skillet Cornbread",
+        "INGREDIENTS",
+        "1 cup cornmeal",
+        "1/2 cup flour",
+        "1 tbsp honey",
+        "METHOD",
+        "Stir dry ingredients, add milk, bake 20 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F08",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "margin-note",
+      "render_mode": "hand",
+      "effect": "note",
+      "image_path": "synthetic/F08.png",
+      "ground_truth_lines": [
+        "RECIPE: Plum Jam",
+        "INGREDIENTS",
+        "2 kg plums",
+        "1/4 cup water",
+        "1 tsp lemon juice",
+        "METHOD",
+        "Stir often. (note: use the blue pot)"
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F09",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "abbreviation",
+      "render_mode": "script",
+      "effect": "hand",
+      "image_path": "synthetic/F09.png",
+      "ground_truth_lines": [
+        "RECIPE: Quick Gravy",
+        "INGREDIENTS",
+        "2 tbsp flour",
+        "1 c milk",
+        "pinch black pepper",
+        "Stir 5 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F10",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "multi-line",
+      "render_mode": "hand",
+      "effect": "none",
+      "image_path": "synthetic/F10.png",
+      "ground_truth_lines": [
+        "RECIPE: Chicken Noodle Soup",
+        "INGREDIENTS",
+        "450 g chicken",
+        "2 cups carrots",
+        "1/2 tsp thyme",
+        "8 cups stock",
+        "METHOD",
+        "Simmer 45 min; add noodles for 8 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F11",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "fraction-critical",
+      "render_mode": "hand",
+      "effect": "none",
+      "image_path": "synthetic/F11.png",
+      "ground_truth_lines": [
+        "RECIPE: Shortbread",
+        "INGREDIENTS",
+        "1/2 tsp vanilla",
+        "1/4 cup sugar",
+        "1.5 cups flour",
+        "Bake 15 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F12",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "quantity-adversarial",
+      "render_mode": "script",
+      "effect": "none",
+      "image_path": "synthetic/F12.png",
+      "ground_truth_lines": [
+        "RECIPE: Cardamom Tea",
+        "INGREDIENTS",
+        "1/2 tsp cardamom",
+        "2 cups water",
+        "METHOD",
+        "Steep 5 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F13",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "temperature-fahrenheit",
+      "render_mode": "print",
+      "effect": "none",
+      "image_path": "synthetic/F13.png",
+      "ground_truth_lines": [
+        "RECIPE: Roast Squash",
+        "INGREDIENTS",
+        "1 tbsp oil",
+        "350°F oven",
+        "Roast 40 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F14",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "temperature-celsius",
+      "render_mode": "print",
+      "effect": "none",
+      "image_path": "synthetic/F14.png",
+      "ground_truth_lines": [
+        "RECIPE: Baked Pears",
+        "INGREDIENTS",
+        "2 pears",
+        "180°C oven",
+        "Bake 25 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F15",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "timing-short",
+      "render_mode": "hand",
+      "effect": "none",
+      "image_path": "synthetic/F15.png",
+      "ground_truth_lines": [
+        "RECIPE: Garlic Toast",
+        "INGREDIENTS",
+        "2 tbsp butter",
+        "Toast 15 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F16",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "timing-long",
+      "render_mode": "hand",
+      "effect": "none",
+      "image_path": "synthetic/F16.png",
+      "ground_truth_lines": [
+        "RECIPE: Slow Onion Soup",
+        "INGREDIENTS",
+        "3 onions",
+        "Simmer 75 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F17",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "unit-confusion",
+      "render_mode": "script",
+      "effect": "hand",
+      "image_path": "synthetic/F17.png",
+      "ground_truth_lines": [
+        "RECIPE: Herb Dressing",
+        "INGREDIENTS",
+        "1 tsp dried dill",
+        "1 tbsp vinegar",
+        "2 tbsp oil",
+        "Mix 2 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F18",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "metric-critical",
+      "render_mode": "print",
+      "effect": "none",
+      "image_path": "synthetic/F18.png",
+      "ground_truth_lines": [
+        "RECIPE: Berry Syrup",
+        "INGREDIENTS",
+        "250 g berries",
+        "120 ml water",
+        "1/4 cup sugar",
+        "Cook 12 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F19",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "mixed-language",
+      "render_mode": "hand",
+      "effect": "none",
+      "image_path": "synthetic/F19.png",
+      "ground_truth_lines": [
+        "RECIPE: Bilingual Crêpes",
+        "INGREDIENTS",
+        "1 cup flour / farine",
+        "1/2 tsp salt / sel",
+        "2 eggs / oeufs",
+        "Mélanger; cook 2 min per side."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    },
+    {
+      "sample_id": "F20",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "fixture_class": "ingredient-step-interleave",
+      "render_mode": "hand",
+      "effect": "note",
+      "image_path": "synthetic/F20.png",
+      "ground_truth_lines": [
+        "RECIPE: Aunt May Casserole",
+        "INGREDIENTS",
+        "2 cups rice",
+        "1 can tomatoes",
+        "1 tbsp oil",
+        "METHOD",
+        "Wash rice. (margin: rinse twice)",
+        "Bake at 350°F for 35 min."
+      ],
+      "source": "generated SVG fixture; no customer material",
+      "english_primary_score": true
+    }
+  ],
+  "genuine_handwriting": [
+    {
+      "sample_id": "GH01",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074537",
+      "crop": [
+        1320,
+        470,
+        2480,
+        700
+      ],
+      "ground_truth": "Almonds Jumbals",
+      "recipe_context": "title",
+      "annotation_confidence": "high",
+      "language": "English",
+      "image_path": "handwriting/GH01.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+    },
+    {
+      "sample_id": "GH02",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074537",
+      "crop": [
+        700,
+        650,
+        3500,
+        870
+      ],
+      "ground_truth": "Take half a pound of the best Jordine Almonds",
+      "recipe_context": "Almonds Jumbals",
+      "annotation_confidence": "medium",
+      "language": "English",
+      "image_path": "handwriting/GH02.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+    },
+    {
+      "sample_id": "GH03",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074537",
+      "crop": [
+        1030,
+        2380,
+        3000,
+        2580
+      ],
+      "ground_truth": "To make a pritty big bisket cake",
+      "recipe_context": "bisket cake title",
+      "annotation_confidence": "high",
+      "language": "English",
+      "image_path": "handwriting/GH03.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+    },
+    {
+      "sample_id": "GH04",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074537",
+      "crop": [
+        700,
+        2570,
+        3500,
+        2810
+      ],
+      "ground_truth": "Take 8 eggs & a pound of good butter broken in bits",
+      "recipe_context": "bisket cake opening",
+      "annotation_confidence": "medium",
+      "language": "English",
+      "image_path": "handwriting/GH04.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+    },
+    {
+      "sample_id": "GH05",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074537",
+      "crop": [
+        4250,
+        480,
+        5600,
+        700
+      ],
+      "ground_truth": "To make ginger bread",
+      "recipe_context": "title",
+      "annotation_confidence": "high",
+      "language": "English",
+      "image_path": "handwriting/GH05.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+    },
+    {
+      "sample_id": "GH06",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074537",
+      "crop": [
+        3650,
+        760,
+        6550,
+        990
+      ],
+      "ground_truth": "Take a pound & halfe of Treacle & 3 quarters of a",
+      "recipe_context": "ginger bread opening",
+      "annotation_confidence": "medium",
+      "language": "English",
+      "image_path": "handwriting/GH06.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+    },
+    {
+      "sample_id": "GH07",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074537",
+      "crop": [
+        4230,
+        2400,
+        5600,
+        2620
+      ],
+      "ground_truth": "To make gimmalls",
+      "recipe_context": "title",
+      "annotation_confidence": "high",
+      "language": "English",
+      "image_path": "handwriting/GH07.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+    },
+    {
+      "sample_id": "GH08",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074537",
+      "crop": [
+        3700,
+        2590,
+        6540,
+        2820
+      ],
+      "ground_truth": "Take a pound of flower",
+      "recipe_context": "gimmalls opening",
+      "annotation_confidence": "low",
+      "language": "English",
+      "image_path": "handwriting/GH08.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+    },
+    {
+      "sample_id": "GH09",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074536",
+      "crop": [
+        730,
+        320,
+        2350,
+        520
+      ],
+      "ground_truth": "To make Layd tartes",
+      "recipe_context": "title",
+      "annotation_confidence": "high",
+      "language": "English",
+      "image_path": "handwriting/GH09.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg"
+    },
+    {
+      "sample_id": "GH10",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074536",
+      "crop": [
+        900,
+        560,
+        3000,
+        820
+      ],
+      "ground_truth": "to make ye blacke tarte",
+      "recipe_context": "title",
+      "annotation_confidence": "high",
+      "language": "English",
+      "image_path": "handwriting/GH10.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg"
+    },
+    {
+      "sample_id": "GH11",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074536",
+      "crop": [
+        3980,
+        250,
+        6000,
+        520
+      ],
+      "ground_truth": "to make the red tarte Layde",
+      "recipe_context": "title",
+      "annotation_confidence": "high",
+      "language": "English",
+      "image_path": "handwriting/GH11.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg"
+    },
+    {
+      "sample_id": "GH12",
+      "sample_class": "GENUINE_HANDWRITING",
+      "source_id": "wellcome-L0074536",
+      "crop": [
+        0,
+        2310,
+        2100,
+        2680
+      ],
+      "ground_truth": "to make the white tarte Layde",
+      "recipe_context": "title",
+      "annotation_confidence": "medium",
+      "language": "English",
+      "image_path": "handwriting/GH12.jpg",
+      "english_primary_score": true,
+      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg"
+    }
+  ],
+  "multilingual_probes": [
+    {
+      "sample_id": "ML01",
+      "sample_class": "MULTILINGUAL_PROBE",
+      "language": "French",
+      "text_lines": [
+        "RECETTE: Tarte aux pommes",
+        "INGRÉDIENTS",
+        "2 pommes",
+        "1 tasse de farine",
+        "Cuire 30 min."
+      ],
+      "ground_truth": "RECETTE: Tarte aux pommes\nINGRÉDIENTS\n2 pommes\n1 tasse de farine\nCuire 30 min.",
+      "image_path": "multilingual/ML01.png",
+      "english_primary_score": false,
+      "synthetic": true,
+      "source": "Generated DejaVu Sans probe; not included in English scoring."
+    },
+    {
+      "sample_id": "ML02",
+      "sample_class": "MULTILINGUAL_PROBE",
+      "language": "German",
+      "text_lines": [
+        "REZEPT: Apfelkuchen",
+        "ZUTATEN",
+        "2 Äpfel",
+        "1 Tasse Mehl",
+        "Bei 180°C 30 min backen."
+      ],
+      "ground_truth": "REZEPT: Apfelkuchen\nZUTATEN\n2 Äpfel\n1 Tasse Mehl\nBei 180°C 30 min backen.",
+      "image_path": "multilingual/ML02.png",
+      "english_primary_score": false,
+      "synthetic": true,
+      "source": "Generated DejaVu Sans probe; not included in English scoring."
+    },
+    {
+      "sample_id": "ML03",
+      "sample_class": "MULTILINGUAL_PROBE",
+      "language": "Spanish",
+      "text_lines": [
+        "RECETA: Tarta de manzana",
+        "INGREDIENTES",
+        "2 manzanas",
+        "1 taza de harina",
+        "Hornear 30 min."
+      ],
+      "ground_truth": "RECETA: Tarta de manzana\nINGREDIENTES\n2 manzanas\n1 taza de harina\nHornear 30 min.",
+      "image_path": "multilingual/ML03.png",
+      "english_primary_score": false,
+      "synthetic": true,
+      "source": "Generated DejaVu Sans probe; not included in English scoring."
+    }
+  ]
+}
