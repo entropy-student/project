@@ -1,0 +1,33 @@
+{
+  "capturedAtUtc": "2026-09-27T15:21:02.2128468Z",
+  "scope": "local Docker host before G3B writes",
+  "project": "birthday-magazine-g3b",
+  "docker": {
+    "client": "29.7.2",
+    "server": "29.7.2",
+    "compose": "5.4.0"
+  },
+  "dockerObjects": {
+    "containers": 40,
+    "containersSha256": "4d0950db9139660b59563987a0f89fdec72d7189be7bf7d90808b86ea94ff10f",
+    "volumes": 87,
+    "volumesSha256": "738b1d73bacdcbb9e78eeaacd7a1491af248eb8768f78fdbc1f9f90a401988a3",
+    "networks": 21,
+    "networksSha256": "a05476a7a22863d4930703f2a25b7040bd7802edcb476e347e9c96f4746e5970",
+    "miniCraftContainers": 8,
+    "miniCraftVolumes": 9,
+    "miniCraftNetworks": 4
+  },
+  "diskC": {
+    "freeBytes": 166955257856,
+    "usedBytes": 343712784384,
+    "totalBytes": 510668042240
+  },
+  "dockerSystemDf": [
+    "TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE",
+    "Images          44        14        17.27GB   8.613GB (49%)",
+    "Containers      40        12        288.4MB   171.6MB (59%)",
+    "Local Volumes   87        32        5.011GB   2.406GB (48%)",
+    "Build Cache     0         0         0B        0B"
+  ]
+}

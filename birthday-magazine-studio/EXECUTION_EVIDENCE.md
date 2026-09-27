@@ -1,3 +1,64 @@
+# G3B PayPal Sandbox paid entitlement and refund — Owner checkpoint return
+
+**Gate:** G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND
+**Result:** RETURN_OWNER_PAYPAL_SANDBOX_MERCHANT_AUTH_REQUIRED
+**Execution branch:** codex/birthday-magazine-g3b-paypal-sandbox-entitlement
+**Base:** latest fetched GitHub main, ca8dc4e483ccf92b04f9a50e5b1db910214a7390
+**Stop point:** STOP_AT_OWNER_CHECKPOINT=YES. The Seller login, OAuth consent, and Sandbox merchant authorization belong to the Owner.
+
+This is a readiness return, not a completed G3B payment or entitlement proof. Work stopped at the PPCP Seller-authorization control, before any PayPal account login, connection, capture, refund, paid order state, entitlement, or generation-ready job.
+
+## Completed before the Owner checkpoint
+
+| Area | Result | Evidence |
+|---|---|---|
+| Latest project baseline | PASS | Branch fast-forwarded to main at ca8dc4e. The required Birthday Magazine G3B and product-contract files are unchanged from the previously read c450624 base. The new main commits touched Mini Craft files only; no Mini Craft runtime or files were modified by this execution. |
+| Project-isolated runtime | PASS | Docker Compose project birthday-magazine-g3b, with four project containers, two project volumes, and one project network. WordPress 7.1.1 / PHP 8.3.33, WooCommerce 11.1.2, MariaDB 11.4.7, Mailpit 1.31.2. WordPress and Mailpit bind to loopback ports 8137 and 8138. MariaDB and SMTP have no host port. See poc/g3b/artifacts/runtime-setup.json and ppcp-install.json. |
+| Mini Craft isolation readback | PASS | Before/after inventory count evidence has Mini Craft at 8 containers, 9 volumes, and 4 networks. No Mini Craft container, volume, database, PayPal configuration, or credential was used or modified. |
+| WooCommerce baseline | PASS | G3A-derived pre-install smoke and full post-PPCP regression passed. Synthetic Birthday Magazine product ID 15 is a simple virtual USD 39.99 product. Synthetic order remains on-hold and unpaid. Buyer A owner access passed; unrelated buyer and guest workspace access were denied. Generation job and model-call counters remained zero. See journey-report.json and post-ppcp-runtime-regression.json. |
+| Official PayPal Payments plugin | PASS | Exactly one PayPal plugin is installed and active: WooCommerce PayPal Payments 4.1.3, downloaded from the official WordPress.org plugin ZIP. The package was 3,309,347 bytes; SHA-256 179e6fa9ede40fb2b05a3ac06c08a47710536e554c171db6e4d1b777d94abb97. Plugin header license is GPL-2.0 and readme says GPLv2. This is the free official package; no paid product, add-on, or license was bought. See ppcp-install.json. |
+| Sandbox and Live guard | PASS for readiness only | PPCP Sandbox Mode is selected. Merchant is not connected, no Client ID or Client Secret is present, and the runtime PAYPAL_LIVE_ENABLED value is no. The WooCommerce settings page has no fatal error and displays Activate PayPal Payments. That button is the Owner-only Seller authorization boundary; it was not clicked. See ppcp-settings-health.json, ppcp-settings-public-health.json, and the direct-settings screenshots. |
+| Temporary HTTPS origin | PASS for readiness only | A Cloudflare Quick Tunnel exposes only the synthetic local G3B site at https://tutorials-queries-refined-grad.trycloudflare.com. WordPress home and site URL were rebound to this temporary HTTPS origin. No Cloudflare account, production domain, VPS, or Shared Infra setting was changed. The tunnel is active at handoff so the Owner can reach the Seller checkpoint. |
+| Public origin commerce path | PASS, no submission | HTTPS Good Issue preview, 375px preview, WooCommerce product, cart, and checkout rendered. Preview had no horizontal overflow at 375px. The public cart accepted the synthetic virtual item; the WooCommerce session cookie was Secure and HttpOnly. Checkout was opened but never submitted. See public-origin-health.json and screenshots prefixed public-. |
+| Public origin PPCP settings | PASS for readiness only | A short-lived synthetic inspector administrator logged in over HTTPS; its WordPress auth cookie was Secure/HttpOnly. The account was deleted and read-back found zero matching accounts. The PPCP panel rendered, Sandbox was selected, and Activate PayPal Payments remained visible. No connection control was activated. See ppcp-settings-public-health.json and ppcp-settings-direct-public.png. |
+| Plugin network observation | Recorded | During the direct settings-page load, observed GET resources included Google Fonts CSS, PayPal static scripts from www.paypalobjects.com, a t.paypal.com tracking pixel, and two www.sandbox.paypal.com merchantboarding script requests that returned 302. Only host/path/method/status and query parameter names are recorded; query values, cookies, and credentials are not retained. No Seller OAuth, client-token, capture, or webhook action was performed. |
+
+## Remaining G3B proof — not run
+
+The Owner checkpoint was reached before Seller authorization. Therefore no Sandbox merchant connection, checkout button/client-token validation, webhook delivery, Sandbox buyer login or approval, capture, paid WooCommerce state, paid entitlement evaluation, canonical deferred generation-ready job, duplicate entitlement evaluation, or WooCommerce-initiated refund was run. There is no paid order, no entitlement, and no deferred generation action to revoke. The currently observed synthetic order is still unpaid/on-hold. G3B is not PASS_CANDIDATE.
+
+Counters at the checkpoint: generation jobs=0; model calls=0; real payment/capture/refund=0; PayPal Live=disabled; merchant connected=no. No AI, LLM, vision, image API, API key, real customer data, production email, production domain, or real payment was used.
+
+## Owner checkpoint and local runtime state
+
+The Owner must perform any Sandbox Seller login, OAuth consent, or merchant account authorization directly in the WooCommerce admin. Do not send a password, Client ID, Client Secret, token, cookie, or OAuth code to chat or commit it to GitHub. The admin URL is the temporary origin above followed by /wp-admin/. If the synthetic local WordPress admin password is unavailable, reset it locally with the G3B-scoped WP-CLI; do not persist the new password in repository files. After Seller authorization, stop and request Reviewer/Owner direction before any Buyer approval or payment attempt.
+
+The project Compose stack and Quick Tunnel remain active for this checkpoint; this is intentional and not a cleanup PASS. Downloaded PPCP ZIP and extracted plugin package remain only under the project-scoped poc/g3b/.tmp directory and are excluded from Git. No global Docker prune was used. Project-scoped full teardown is deferred until Owner/Reviewer no longer need the runtime.
+
+### Persistent G3B screenshots
+
+- poc/g3b/artifacts/screenshots/good-issue-preview-desktop.png
+- poc/g3b/artifacts/screenshots/good-issue-preview-375.png
+- poc/g3b/artifacts/screenshots/woocommerce-product.png
+- poc/g3b/artifacts/screenshots/checkout-ready.png
+- poc/g3b/artifacts/screenshots/order-confirmation.png
+- poc/g3b/artifacts/screenshots/woocommerce-admin-order.png
+- poc/g3b/artifacts/screenshots/public-good-issue-preview-desktop.png
+- poc/g3b/artifacts/screenshots/public-good-issue-preview-375.png
+- poc/g3b/artifacts/screenshots/public-woocommerce-product.png
+- poc/g3b/artifacts/screenshots/public-woocommerce-cart.png
+- poc/g3b/artifacts/screenshots/public-woocommerce-checkout.png
+- poc/g3b/artifacts/ppcp-settings-direct.png
+- poc/g3b/artifacts/ppcp-settings-direct-public.png
+
+All screenshots use synthetic data. Authentication values, password/reset links, Client ID/Secret, bearer tokens, cookies, order keys, and OAuth codes are not included.
+
+## GitHub submission
+
+The branch is based on latest main ca8dc4e483ccf92b04f9a50e5b1db910214a7390. Final commit and PR details are recorded after submission. The PR must remain open and unmerged for Reviewer assessment.
+
+---
+
 ## Current Gate — G3A WordPress / WooCommerce commerce and account loop
 
 - **Gate:** G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP

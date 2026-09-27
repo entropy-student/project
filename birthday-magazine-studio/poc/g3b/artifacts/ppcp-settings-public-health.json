@@ -1,0 +1,103 @@
+{
+  "gate": "G3B_PUBLIC_PPCP_SETTINGS_HEALTH",
+  "originHost": "tutorials-queries-refined-grad.trycloudflare.com",
+  "originProtocol": "https:",
+  "checks": {
+    "publicLogin": {
+      "result": "PASS",
+      "authenticationCookieProtection": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Lax",
+        "cookieNameOrValueRecorded": false
+      }
+    },
+    "ppcpSettings": {
+      "result": "PASS",
+      "pageTitle": "WooCommerce settings (PPCP panel rendered; standard settings-page title)",
+      "activationButtonVisible": true,
+      "sandboxModeSelected": true,
+      "fatalErrorVisible": false,
+      "ownerOAuthActionPerformed": false,
+      "merchantConnected": false
+    }
+  },
+  "externalRequests": [
+    {
+      "host": "fonts.googleapis.com",
+      "path": "/css2",
+      "method": "GET",
+      "resourceType": "stylesheet",
+      "queryParameterNames": [
+        "display",
+        "family",
+        "ver"
+      ],
+      "status": 200
+    },
+    {
+      "host": "t.paypal.com",
+      "path": "/ts",
+      "method": "GET",
+      "resourceType": "image",
+      "queryParameterNames": [
+        "event_name",
+        "msg",
+        "nojs"
+      ],
+      "status": 200
+    },
+    {
+      "host": "www.paypalobjects.com",
+      "path": "/isu/partner.js",
+      "method": "GET",
+      "resourceType": "script",
+      "queryParameterNames": [],
+      "status": 200
+    },
+    {
+      "host": "www.paypalobjects.com",
+      "path": "/isu/rampConfig.js",
+      "method": "GET",
+      "resourceType": "script",
+      "queryParameterNames": [],
+      "status": 200
+    },
+    {
+      "host": "www.paypalobjects.com",
+      "path": "/isu/signup.js",
+      "method": "GET",
+      "resourceType": "script",
+      "queryParameterNames": [],
+      "status": 200
+    },
+    {
+      "host": "www.paypalobjects.com",
+      "path": "/merchant-library/merchant-configurator.js",
+      "method": "GET",
+      "resourceType": "script",
+      "queryParameterNames": [
+        "ver"
+      ],
+      "status": 200
+    },
+    {
+      "host": "www.sandbox.paypal.com",
+      "path": "/webapps/merchantboarding/js/lib/lightbox/partner.js",
+      "method": "GET",
+      "resourceType": "script",
+      "queryParameterNames": [],
+      "status": 302
+    },
+    {
+      "host": "www.sandbox.paypal.com",
+      "path": "/webapps/merchantboarding/js/lib/lightbox/signup.js",
+      "method": "GET",
+      "resourceType": "script",
+      "queryParameterNames": [],
+      "status": 302
+    }
+  ],
+  "result": "PASS",
+  "assessment": "PPCP panel visible over public HTTPS; Sandbox selected; Activate PayPal Payments remains the Owner-only Seller authorization boundary. No connection control was activated."
+}

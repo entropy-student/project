@@ -1,4 +1,54 @@
-## Current Gate — G3A WordPress / WooCommerce commerce and account loop — PASS_CANDIDATE
+# Executor Handoff — Birthday Magazine Studio
+
+## Current Gate — G3B PayPal Sandbox paid entitlement and refund — Owner checkpoint
+
+```text
+GATE=G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND
+RESULT=RETURN_OWNER_PAYPAL_SANDBOX_MERCHANT_AUTH_REQUIRED
+G3A_BASELINE=PASS_REUSED
+OFFICIAL_PPCP=4.1.3_INSTALLED
+PPCP_SANDBOX_MODE=ON
+PAYPAL_LIVE_ENABLED=NO
+MERCHANT_CONNECTED=NO
+PUBLIC_HTTPS_ORIGIN=READY
+PUBLIC_WOOCOMMERCE_PATH=PASS_NO_SUBMISSION
+SELLER_LOGIN_OAUTH=OWNER_CHECKPOINT_REQUIRED
+BUYER_APPROVAL=NOT_RUN
+CAPTURE=NOT_RUN
+PAID_ENTITLEMENT=NOT_RUN
+GENERATION_READY_JOB=NOT_RUN
+REFUND=NOT_RUN
+GENERATION_JOB_COUNT=0
+MODEL_CALL_COUNT=0
+REAL_PAYMENT=0
+FORBIDDEN_ACTIONS=0
+STOP_AT_OWNER_CHECKPOINT=YES
+```
+
+### What is ready
+
+- Project-isolated Docker/MariaDB/Mailpit runtime remains active. It has four G3B containers, two G3B volumes, and one G3B network; ports are loopback-only except the temporary HTTPS Quick Tunnel.
+- The official free WordPress.org WooCommerce PayPal Payments 4.1.3 package is installed and active. Package SHA-256: 179e6fa9ede40fb2b05a3ac06c08a47710536e554c171db6e4d1b777d94abb97. No premium add-on or purchase was used.
+- Sandbox Mode is visibly selected. The account is not connected; no Client ID/Secret exists. PAYPAL_LIVE_ENABLED=NO.
+- Temporary origin: https://tutorials-queries-refined-grad.trycloudflare.com. HTTPS preview, public product/cart/checkout and PPCP settings page were verified. Checkout was not submitted.
+- The synthetic product is USD 39.99 and virtual. The existing synthetic test order remains on-hold/unpaid. The generation gate is closed; generation jobs and model calls both remain zero.
+- G3B artifacts and screenshots are under birthday-magazine-studio/poc/g3b/. See EXECUTION_EVIDENCE.md and ppcp-install.json.
+
+### Owner-only checkpoint
+
+Open the temporary origin at /wp-admin/ and perform Seller Sandbox login, OAuth consent, and merchant authorization yourself. Do not send passwords, Client ID/Secret, tokens, cookies, or OAuth codes in chat or GitHub. If the local synthetic admin password is unavailable, reset it locally using the G3B-scoped WP-CLI; keep the new password outside the repository. The synthetic inspector account used for public settings evidence was deleted.
+
+Do not proceed to Sandbox Buyer approval, capture, paid entitlement, generation-ready action, or refund until the Owner/Reviewer explicitly directs the next step. No PayPal connection control was clicked in this execution.
+
+The local Compose stack and Quick Tunnel intentionally remain active for the checkpoint. PPCP ZIP/extraction fragments remain in the G3B-only ignored temporary directory; full runtime teardown is deferred. Do not stop Mini Craft or run a global Docker prune.
+
+### GitHub state
+
+Base is latest main ca8dc4e483ccf92b04f9a50e5b1db910214a7390. Commit and PR are recorded after push. PR must target main and remain unmerged. Reviewer/Owner is the next decision point; G3B has not passed and G3C/G4 work has not started.
+
+---
+
+## Historical current Gate — G3A WordPress / WooCommerce commerce and account loop — PASS_CANDIDATE
 
 GATE=G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP
 RESULT=PASS_CANDIDATE_G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP

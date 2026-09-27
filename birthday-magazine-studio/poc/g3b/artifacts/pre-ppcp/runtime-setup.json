@@ -1,0 +1,54 @@
+{
+  "wordpress": "7.1.1",
+  "phpCli": "8.3.33",
+  "woocommerce": "11.1.2",
+  "mailpit": "1.31.2",
+  "mariadbServer": "11.4.7-MariaDB-ubu2404",
+  "product": {
+    "id": 15,
+    "name": "Birthday Magazine — G3B Synthetic Proof",
+    "type": "simple",
+    "price": "39.99",
+    "regularPrice": "39.99",
+    "virtual": true,
+    "downloadable": false,
+    "manageStock": false,
+    "taxStatus": "none",
+    "needsShipping": false,
+    "currency": "USD"
+  },
+  "pages": {
+    "shop": 6,
+    "cart": 7,
+    "checkout": 8,
+    "account": 9
+  },
+  "pageUrls": {
+    "shop": "http://127.0.0.1:8137/shop/",
+    "cart": "http://127.0.0.1:8137/cart/",
+    "checkout": "http://127.0.0.1:8137/checkout/",
+    "account": "http://127.0.0.1:8137/my-account/"
+  },
+  "previewPage": 16,
+  "woocommercePackage": {
+    "version": "11.1.2",
+    "source": "https://downloads.wordpress.org/plugin/woocommerce.11.1.2.zip",
+    "sha256": "9de9350a1cf5671b9960afb3151f40f7980e223217a441bf2ea5921b5fce8e9e",
+    "license": "GPL-3.0-or-later",
+    "packageRemovedAfterInstall": true,
+    "containerTemporaryCopyRemoved": true
+  },
+  "settings": {
+    "guestCheckout": "no",
+    "checkoutAccountCreation": "yes",
+    "separateMyAccountRegistration": "no",
+    "storeComingSoon": "no",
+    "storePagesOnly": "no",
+    "localOnly": "true",
+    "generationEnabled": "false",
+    "cheque": {
+      "enabled": "yes",
+      "title": "Local test only — no payment"
+    }
+  }
+}

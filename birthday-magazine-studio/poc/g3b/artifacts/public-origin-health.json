@@ -1,0 +1,43 @@
+{
+  "gate": "G3B_PUBLIC_ORIGIN_READINESS",
+  "originHost": "tutorials-queries-refined-grad.trycloudflare.com",
+  "protocol": "https:",
+  "checks": {
+    "preview": {
+      "result": "PASS",
+      "httpStatus": 200,
+      "secureContext": true
+    },
+    "preview375": {
+      "result": "PASS",
+      "viewport": 375,
+      "documentWidth": 375
+    },
+    "product": {
+      "result": "PASS",
+      "httpStatus": 200,
+      "price": "USD 39.99",
+      "virtual": true
+    },
+    "cart": {
+      "result": "PASS",
+      "httpStatus": 200,
+      "itemVisible": true,
+      "sessionCookieProtection": {
+        "secure": true,
+        "httpOnly": true,
+        "sameSite": "Lax",
+        "cookieNameOrValueRecorded": false
+      }
+    },
+    "checkout": {
+      "result": "PASS",
+      "httpStatus": 200,
+      "submitPerformed": false
+    }
+  },
+  "externalRequestHostnames": [
+    "www.paypal.com"
+  ],
+  "result": "PASS"
+}
