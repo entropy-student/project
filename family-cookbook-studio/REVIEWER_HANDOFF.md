@@ -75,7 +75,7 @@ G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ↩ RETURNED (resource 
 G2A1-R2 Isolated GitHub Actions Runner Completion         ↩ RETURNED (WP/component feasibility accepted; OCR scope not calibrated)
 G2A1-D1 Target Language + OCR Acceptance Calibration      ✅ OWNER DECISIONS RESOLVED
 G2A1-R3A Free/Local Primary Benchmark                    ✅ PASS — PP-OCRv6_medium
-G2A1-R3B Bounded API Fallback Benchmark                  ↩ RETURNED / GOOGLE BILLING OWNER ACTION
+G2A1-R3B Bounded API Fallback Benchmark                  ← CURRENT / BAIDU CREDENTIAL REQUIRED
 G2A2 MVP Product Contract Freeze                         ⏳ HOLD
 G2B  Local OCR → Structured Recipe → PDF Solution Proof  ⏳ HOLD
 G3A  WordPress + WooCommerce Local Commerce Loop         ⏳ HOLD
@@ -122,6 +122,7 @@ Current Reviewer decisions:
 - `OPEN_G2A1_R3B_MISTRAL_OCR_4_1_FIRST_2026-09-27`
 - `RETURN_G2A1_R3B_MISTRAL_FREE_MODE_RATE_LIMIT_BLOCKED_2026-09-27`
 - `RESTORE_G2A1_R3B_GOOGLE_WIF_PATH_2026-09-27`
+- `OPEN_G2A1_R3B_BAIDU_HANDWRITING_FREE_QUOTA_TEST_2026-09-27`
 
 Important limitation: R3A now selects PP-OCRv6_medium as the local primary, but API fallback value remains unproven. R3A's genuine-handwriting set is small and historical, so modern household handwriting generalization remains UNKNOWN. Payment, full OCR→PDF output quality, repeatability, production hosting and print fulfillment remain unproven.
 
@@ -282,11 +283,13 @@ Mistral Free-mode probe facts:
 
 Owner preference is to switch back to Google rather than enable paid Mistral access merely for this benchmark.
 
-Current Owner action: enable/link Billing for `family-cookbook-ocr-test`, then rerun the restored Google WIF R3B workflow.
+Current Owner action: create/verify a Baidu OCR application with Handwriting OCR enabled, then store only `BAIDU_OCR_API_KEY` and `BAIDU_OCR_SECRET_KEY` in GitHub Actions Secrets.
 
-Google setup/history: [docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md](./docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md)
+Baidu setup guide: [docs/G2A1_R3B_BAIDU_PROVIDER_SETUP.md](./docs/G2A1_R3B_BAIDU_PROVIDER_SETUP.md)
 
-Do not interpret either provider blocker as `FALLBACK=NONE`.
+The Baidu Gate is free-quota-only. If free quota/permission is unavailable, stop rather than enabling paid mode.
+
+Google remains a technically proven deferred adapter. Do not interpret Google/Mistral provider blockers as `FALLBACK=NONE`.
 
 Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted and must not be rerun.
 
@@ -347,20 +350,20 @@ Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted
 
 - G2A1-D1 Owner decisions are resolved.
 - R3A is formally PASS with `PP-OCRv6_medium` as the sole local primary.
-- Current Gate: **G2A1-R3B — Google Billing owner action**.
-- Mistral Free mode is blocked by persistent HTTP 429 before any successful OCR page; this is an availability/rate-limit blocker, not a quality failure.
-- Google WIF/service-account/processor integration is already proven.
-- Owner preference is to use Google rather than enable paid Mistral access for this benchmark.
-- Owner action: activate/link Google Cloud Billing for `family-cookbook-ocr-test`.
-- After Billing propagation, rerun the restored Google WIF R3B workflow.
-- The authorized benchmark spend cap remains USD 0.20.
+- Current Gate: **G2A1-R3B — Baidu Handwriting OCR free-quota benchmark; credential required**.
+- PP-OCRv6_medium remains the accepted local primary.
+- Google is technically ready but deferred because current Billing activation requests a USD 30 prepayment.
+- Mistral Free mode is blocked by persistent HTTP 429 before any successful OCR page.
+- Owner action: create a Baidu OCR app with Handwriting OCR access and configure `BAIDU_OCR_API_KEY` + `BAIDU_OCR_SECRET_KEY` as GitHub Actions Secrets.
+- Baidu is authorized for free test quota only; no pay-as-you-go/resource purchase.
+- Same 11 public hard cases only.
 - G2A2 remains HOLD until R3B selects one fallback or proves FALLBACK=NONE.
 
 ## 13. Status Summary
 
 - Overall progress: reusable commerce/input/delivery feasibility is proven; OCR has real benchmark evidence but requires target-language/semantic-threshold calibration.
 - Final goal: private, reliable family recipe intake → faithful transcription/structuring → proof → cookbook PDF → later optional print.
-- Current Gate: **G2A1-R3B Google Billing activation**.
+- Current Gate: **G2A1-R3B Baidu free-quota credential setup**.
 - Accepted local primary: **PP-OCRv6_medium**.
 - Next after Owner approval: test the 11 hard cases with specialized API fallback → select one fallback or NONE → close G2A1 → G2A2 exact MVP contract.
 - Attention: never treat clean OCR demos, model self-confidence or a visually nice PDF as proof that recipe facts are correct.
