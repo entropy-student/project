@@ -2573,3 +2573,18 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Evidence section appended; evidence commit: `16e2c86039a26175f99204239c19c1bdf35f4a10`.
 - Next: Reviewer review and a corrected bounded reconciliation Gate if authorized. `STOP_AT_REVIEWER=YES`.
 
+
+
+## Current Executor Handoff — K6 Phase F-R1R3
+
+- Gate: `K6_PHASE_F_R1R3_ACTIVE_CADDY_ROUTE_RECOVERY_AND_CANDIDATE_ADAPT`.
+- Result: `RETURN_REVIEWER_F_R1R3_ACTIVE_CONFIG_READ_FAILED`.
+- Exactly one canonical strict SSH session completed. Host-key trust passed; pre-sudo identity was `ops@srv1970241`.
+- Caddy and Mini Craft WordPress were running, MariaDB was healthy, and all restart counts remained 0 across two read-only samples.
+- Fresh Google DoH A/AAAA/CNAME queries returned NXDOMAIN. The durable `/srv/infra/edge/Caddyfile` was read only: 76 bytes, SHA-256 `12fac82e3b1b9733029aa820c4794ccb9359ae494863dd6815f7e29b636d8beb`, host label `localhost`. Its content was not emitted or changed.
+- The bounded Admin API GET to `http://127.0.0.1:2019/config/` was unavailable; HTTP/error detail was not retained. The required active-route reads therefore did not complete. No active route semantics were inferred, no candidate was created/adapted, and no follow-up SSH was attempted.
+- No Caddy, DNS, cloudflared, firewall, Docker network/Compose, application, product, indexing, payment, Secret, or other Shared Infrastructure mutation occurred. No persistent local or remote temporary files were created.
+- Safety: `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`, `PAYMENT_ACTIONS=0`, `PAYPAL_LIVE=NO` (accepted prior state; not rechecked), `SECRET_VALUE_OR_HASH_ACCESS=0`.
+- Detailed redacted evidence appended to `EXECUTION_EVIDENCE.md`; evidence commit: `4fd89c171b6e415bd86039057a1c20666ae040de`.
+- Next: Reviewer review; do not retry this Gate or perform any ingress mutation without a new Reviewer decision. `STOP_AT_REVIEWER=YES`.
+
