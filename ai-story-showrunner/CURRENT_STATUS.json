@@ -358,14 +358,21 @@
     "skill_promotion": "BLOCKED_UNTIL_FINAL_VIDEO_E2E_PASS"
   },
   "editorial_baseline": {
-    "topic_operating_system": "v0.2",
+    "topic_operating_system": "v0.2.1",
     "topic_entry_default": "HUMAN_WORLD_FIRST",
-    "topic_formula": "X -> Paradox -> WHY -> Human Tension -> AI Changed Process -> Mechanism -> Story",
+    "topic_formula": "X -> Human Process -> Paradox -> WHY -> Human Tension/Meaning -> AI Changed Process -> Mechanism -> Story",
     "ai_first_compatibility_route": true,
     "backward_compatible_with_existing_topic_artifacts": true,
     "historical_topic_rewrite": false,
     "production_g6a_impact": "NONE",
     "rollback_branch": "rollback/ai-story-showrunner-topic-os-v01-20260927",
-    "rollback_base_sha": "16e2c86039a26175f99204239c19c1bdf35f4a10"
+    "rollback_base_sha": "16e2c86039a26175f99204239c19c1bdf35f4a10",
+    "human_process_family": true,
+    "meaning_fingerprint": true,
+    "meaning_duplicate_gate": "D5",
+    "meaning_validation": "5 domains x 10 candidates; 50 raw -> 43 coarse meaning fingerprints; 5 distinct story-premise tests remained distinct",
+    "validation_doc": "docs/TOPIC_OS_V021_MEANING_DEDUP_VALIDATION.md",
+    "rollback_branch_v02": "rollback/ai-story-showrunner-topic-os-v02-before-meaning-20260927",
+    "rollback_base_sha_v02": "080b3cea54e640c75d7f11b265c8fa6397661192"
   }
 }
