@@ -135,7 +135,18 @@ def main():
  for name,result in results.items():
   if result is None:semantic[name]={"status":"runtime_blocked","sample_assessments":[]};continue
   preds={x["sample_id"]:x for x in result.get("samples",[])}
-  for pred in result.get("samples",[]): pred["semantic_fields"]=facts(pred.get("raw_output",""))
+  for pred in result.get("samples",[]):
+   spec=specs[pred["sample_id"]]
+   expected=spec.get("ground_truth_lines") or ([spec.get("ground_truth","")] if spec.get("ground_truth") else [])
+   pred["ground_truth"]="\n".join(expected)
+   pred["sample_class"]=spec["sample_class"]
+   pred["language"]=spec.get("language")
+   pred["annotation_confidence"]=spec.get("annotation_confidence")
+   pred["semantic_fields"]=facts(pred.get("raw_output",""))
+   if spec.get("sample_class")=="GENUINE_HANDWRITING":
+    provenance=pred.setdefault("source_provenance",{})
+    provenance["source_crop"]=spec.get("crop")
+    provenance["annotation_coverage"]=spec.get("annotation_coverage","complete")
   rows=[assess(specs[sid],p) for sid,p in preds.items() if specs[sid]["sample_class"]!="MULTILINGUAL_PROBE" ]
   (ART/("ppocrv6-results.json" if name=="PP-OCRv6_medium" else "paddleocr-vl-results.json")).write_text(json.dumps(result,ensure_ascii=False,indent=2)+chr(10),encoding="utf-8")
   pages=[x for x in rows if x["sample_class"]=="SYNTHETIC_TYPOGRAPHY"]
@@ -163,17 +174,28 @@ def main():
    "handwriting_scored_count":sum(x["char_error_rate"] is not None for x in hand),
    "handwriting_partial_annotation_count":sum(x["char_error_rate"] is None for x in hand),
    "handwriting_CER_by_sample":{x["sample_id"]:x["char_error_rate"] for x in hand},"sample_assessments":rows}
+  # Full-page recipe UX burden is scored on the 20 synthetic recipe pages.
+  # Genuine-handwriting crops have separate correction burden; they are not full pages.
   edit=sum(x["manual_edit_field_count"] for x in pages); whole=sum(x["whole_line_retype_count"] for x in pages)
   reups=sum(x["reupload_required"] for x in pages); mean=edit/max(len(pages),1)
   if not reups and whole/max(len(pages),1)<=.05 and mean<=2: cls="LIGHT_REVIEW"
   elif reups/max(len(pages),1)<=.20 and whole/max(len(pages),1)<=.20 and mean<=8: cls="MODERATE_REVIEW"
   else:cls="HEAVY_RETRANSCRIPTION"
-  burden[name]={"recipe_pages":len(pages),"total_manual_edit_fields":edit,"manual_edit_fields_per_page":round(mean,3),
+  hand_edits=sum(x["manual_edit_field_count"] for x in hand)
+  hand_whole=sum(x["whole_line_retype_count"] for x in hand)
+  hand_reuploads=sum(x["reupload_required"] for x in hand)
+  burden[name]={"recipe_pages":len(pages),"review_classification_scope":"20 complete synthetic recipe pages; handwriting crop edits are reported separately.",
+   "total_manual_edit_fields":edit,"manual_edit_fields_per_page":round(mean,3),
    "total_manual_edit_chars":sum(x["manual_edit_chars"] for x in pages),"critical_fields_manually_changed":sum(x["critical_fields_manually_changed"] for x in pages),
    "pages_with_zero_edit":sum(not x["manual_edit_field_count"] for x in pages),
    "pages_with_zero_edit_ratio":round(sum(not x["manual_edit_field_count"] for x in pages)/max(len(pages),1),4),
    "pages_with_light_edits":sum(0<x["manual_edit_field_count"]<=2 and not x["whole_line_retype_required"] and not x["reupload_required"] for x in pages),
    "whole_line_retypes":whole,"reupload_pages":reups,"review_classification":cls,
+   "genuine_handwriting_review":{"crops":len(hand),"complete_transcript_crops":sum(x["annotation_coverage"]!="partial" for x in hand),
+    "partial_transcript_crops":sum(x["annotation_coverage"]=="partial" for x in hand),
+    "manual_edit_fields":hand_edits,"manual_edit_chars":sum(x["manual_edit_chars"] for x in hand),
+    "critical_fields_manually_changed":sum(x["critical_fields_manually_changed"] for x in hand),
+    "whole_line_retypes":hand_whole,"reupload_crops":hand_reuploads,"review_payloads":hand},
    "classification_rules":{"LIGHT_REVIEW":"0 reuploads, <=5% whole-line retypes, <=2 edit fields/page","MODERATE_REVIEW":"<=20% reuploads, <=20% whole-line retypes, <=8 edits/page","HEAVY_RETRANSCRIPTION":"otherwise"},
    "review_payloads":pages}
   fallback[name]=[{"sample_id":x["sample_id"],"crop_id":specs[x["sample_id"]]["sample_id"] if x["sample_class"]=="GENUINE_HANDWRITING" else None,"source_reference":specs[x["sample_id"]].get("source_reference"),
@@ -185,11 +207,11 @@ def main():
  if len(available)==2:
   def order(n):
    s=semantic[n];b=burden[n];r=results[n]["runtime"]
-   return (s["silent_critical_error_count"],s["unsupported_hallucination_count"],s["missing_critical_field_count"],b["total_manual_edit_fields"],b["whole_line_retypes"],b["reupload_pages"],1-s["english_handwriting_score"],1-s["synthetic_exact_line_accuracy"],r["inference_elapsed_seconds"],0 if n=="PP-OCRv6_medium" else 1)
+   return (s["silent_critical_error_count"],s["unsupported_hallucination_count"],s["missing_critical_field_count"],b["total_manual_edit_fields"],b["whole_line_retypes"],b["reupload_pages"],b["genuine_handwriting_review"]["manual_edit_fields"],b["genuine_handwriting_review"]["whole_line_retypes"],1-s["english_handwriting_score"],1-s["synthetic_exact_line_accuracy"],r["inference_elapsed_seconds"],0 if n=="PP-OCRv6_medium" else 1)
   primary=min(available,key=order); rejected=next(x for x in available if x!=primary)
   insufficient=all(burden[x]["review_classification"]=="HEAVY_RETRANSCRIPTION" for x in available)
  else:primary=rejected=None;insufficient=True
- comp={"priority_order":["silent critical semantic errors","unsupported hallucinations","missing critical fields","manual edit burden","whole-line retranscription","reupload rate","genuine handwriting","synthetic recipe","multilingual notes","latency","resource footprint"],
+ comp={"priority_order":["silent critical semantic errors","unsupported hallucinations","missing critical fields","manual edit burden","whole-line retranscription","reupload rate","genuine-handwriting edit burden","genuine handwriting","synthetic recipe","multilingual notes","latency","resource footprint"],
   "candidates":{},"recommended_primary":primary,"rejected_primary":rejected,
   "recommendation_status":"LOCAL_PRIMARY_INSUFFICIENT" if insufficient else ("SELECTION_CANDIDATE" if primary else "RUNTIME_BLOCKED"),
   "reason":"Lexicographic priority follows the contract; PP-OCRv6_medium breaks exact ties as the preferred deterministic baseline.",
@@ -201,6 +223,9 @@ def main():
    "hallucinations":s.get("unsupported_hallucination_count"),"unverified_partial_handwriting_content":s.get("unverified_partial_handwriting_content_count"),"missing_critical_fields":s.get("missing_critical_field_count"),
    "manual_edit_fields":b.get("total_manual_edit_fields"),"manual_edit_chars":b.get("total_manual_edit_chars"),
    "whole_line_retypes":b.get("whole_line_retypes"),"reupload_pages":b.get("reupload_pages"),
+   "handwriting_manual_edit_fields":b.get("genuine_handwriting_review",{}).get("manual_edit_fields"),
+   "handwriting_manual_edit_chars":b.get("genuine_handwriting_review",{}).get("manual_edit_chars"),
+   "handwriting_whole_line_retypes":b.get("genuine_handwriting_review",{}).get("whole_line_retypes"),
    "english_handwriting_score":s.get("english_handwriting_score"),"handwriting_scored_samples":s.get("handwriting_scored_count"),"handwriting_partial_annotation_samples":s.get("handwriting_partial_annotation_count"),"synthetic_recipe_score":s.get("synthetic_semantic_accuracy"),
    "multilingual_probe_notes":[{"sample_id":x["sample_id"],"language":x.get("language"),"raw_output":x.get("raw_output"),"blank":not bool(x.get("raw_output","").strip())} for x in (r["samples"] if r else []) if x.get("sample_class")=="MULTILINGUAL_PROBE"],
    "latency":r["runtime"].get("inference_elapsed_seconds") if r else None,

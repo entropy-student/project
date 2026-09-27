@@ -1,0 +1,143 @@
+{
+  "primary": "PP-OCRv6_medium",
+  "count": 11,
+  "samples": [
+    {
+      "sample_id": "GH02",
+      "crop_id": "GH02",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "Tate Lalf a ponnd of the fost fording ottma",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH03",
+      "crop_id": "GH03",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "To make npoitty big bisket cake!",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH04",
+      "crop_id": "GH04",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "Take & eggs & a ponnd of good butter broken m bits\n& a pouno of fine sugar beaten fime; bent Ahiese",
+      "semantic_issue": [
+        "critical_error"
+      ],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH05",
+      "crop_id": "GH05",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "To make gigur bread:",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH06",
+      "crop_id": "GH06",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "Take a pound & halfe of Treakle, & 3 goarters of\nslow tver",
+      "semantic_issue": [
+        "unverified_extra_content"
+      ],
+      "risk_type": [
+        "manual_review",
+        "partial_ground_truth_scope"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH07",
+      "crop_id": "GH07",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "To make gimmals:",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review",
+        "partial_ground_truth_scope"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH08",
+      "crop_id": "GH08",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "Take aponnd of ion\ntogether, you may",
+      "semantic_issue": [
+        "unverified_extra_content"
+      ],
+      "risk_type": [
+        "manual_review",
+        "partial_ground_truth_scope"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH09",
+      "crop_id": "GH09",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "primary_output": "to maky fayd burts",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH10",
+      "crop_id": "GH10",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "primary_output": "to make y blacky Larh\nmalligo",
+      "semantic_issue": [
+        "unverified_extra_content"
+      ],
+      "risk_type": [
+        "manual_review",
+        "partial_ground_truth_scope"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH11",
+      "crop_id": "GH11",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "primary_output": "maky the red hack Layle",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH12",
+      "crop_id": "GH12",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "primary_output": "to maks ths whith tunk Lay de\nginth of creame, 4 or o whihs of g\nTdelle",
+      "semantic_issue": [
+        "unverified_extra_content"
+      ],
+      "risk_type": [
+        "manual_review",
+        "partial_ground_truth_scope"
+      ],
+      "manual_correction_required": true
+    }
+  ],
+  "api_called": false
+}

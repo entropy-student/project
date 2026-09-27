@@ -1,0 +1,4121 @@
+{
+  "gate": "G2A1-R3A",
+  "candidate": {
+    "candidate": "PaddleOCR-VL-1.6",
+    "engine": "PaddleOCRVL Transformers",
+    "detection_model": null,
+    "recognition_model": null,
+    "pipeline_version": "v1.6",
+    "package": "paddleocr==3.7.0",
+    "model_revision": "official named release; each downloaded checkpoint SHA-256 and byte size recorded in runtime inventory"
+  },
+  "runtime": {
+    "status": "complete",
+    "runner": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "device": "CPU",
+    "gpu_available": false,
+    "versions": {
+      "paddleocr": "3.7.0",
+      "paddlex": "3.7.0",
+      "paddlepaddle": null,
+      "transformers": "5.10.0",
+      "torch": "2.8.0+cpu"
+    },
+    "initialization_seconds": 24.201,
+    "inference_elapsed_seconds": 520.06,
+    "pages_or_crops_processed": 35,
+    "requested": 35,
+    "cpu_seconds": 1040.5,
+    "average_cpu_cores": 2.001,
+    "process_rss_start_bytes": 213733376,
+    "process_rss_peak_sampled_bytes": 3915350016,
+    "system_ram_available_min_sampled_bytes": 13842776064,
+    "model_storage_before_bytes": 164762132,
+    "model_storage_after_bytes": 2216902931,
+    "model_storage_delta_bytes": 2052140799,
+    "model_weight_inventory": [
+      {
+        "path": ".paddlex/official_models/PP-OCRv6_medium_rec_safetensors/model.safetensors",
+        "bytes": 76741720,
+        "sha256": "5f43c16f2a684b1d2284662178bdb604febd3d6bfdb5ca73828d08d0f7c0c3e9"
+      },
+      {
+        "path": ".paddlex/official_models/PP-OCRv6_medium_det_safetensors/model.safetensors",
+        "bytes": 88020412,
+        "sha256": "bd393266c02e1a680b1b34c301d5d0d81e6290440b7f8ab0f5d5032276b17eb1"
+      },
+      {
+        "path": ".paddlex/official_models/PP-DocLayoutV3_safetensors/model.safetensors",
+        "bytes": 133270468,
+        "sha256": "5ea422c6cc5fe759a47e1357c35639b58173508e025a3131cbe4b6ac59e2b85e"
+      },
+      {
+        "path": ".paddlex/official_models/PaddleOCR-VL-1.6/model.safetensors",
+        "bytes": 1917255968,
+        "sha256": "85a479d506a11e724e7285d395c551be69f41dbc16b6342d3cacfb189aed71db"
+      },
+      {
+        "path": ".paddlex/official_models/PaddleOCR-VL-1.6/tokenizer.model",
+        "bytes": 1614363,
+        "sha256": "34ef7db83df785924fb83d7b887b6e822a031c56e15cff40aaf9b982988180df"
+      }
+    ],
+    "model_hash_basis": "SHA-256 per downloaded model weight file; see inventory",
+    "api_tokens": 0,
+    "api_calls": 0
+  },
+  "sample_count": 35,
+  "samples": [
+    {
+      "sample_id": "F01",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Sunday Tomato Sauce\nINGREDIENTS\n1/2 tsp salt\n1/4 cup olive oil\n1.5 tbsp tomato paste\n350°F oven\nBake 15 min.",
+      "raw_output": "RECIPE: Sunday Tomato Sauce\nINGREDIENTS\n1/2 tsp salt\n1/4 cup olive oil\n1.5 tbsp tomato paste\n350 $ ^{\\circ} $F oven\nBake 15 min.",
+      "normalized_output": "RECIPE: Sunday Tomato Sauce\nINGREDIENTS\n1/2 tsp salt\n1/4 cup olive oil\n1.5 tbsp tomato paste\n350 $ ^{\\circ} $F oven\nBake 15 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "raw": "1/2 tsp"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.25,
+          "unit": "cup",
+          "ingredient": "olive",
+          "raw": "1/4 cup"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.5,
+          "unit": "tbsp",
+          "ingredient": "tomato",
+          "raw": "1.5 tbsp"
+        },
+        {
+          "kind": "timing",
+          "value": 15.0,
+          "unit": "min",
+          "raw": "15 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Sunday Tomato Sauce",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            553,
+            259
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            294,
+            338,
+            328
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/2 tsp salt",
+          "confidence": null,
+          "source_coordinates": [
+            108,
+            367,
+            250,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/4 cup olive oil",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            439,
+            318,
+            475
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1.5 tbsp tomato paste",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            512,
+            378,
+            548
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "350 $ ^{\\circ} $F oven",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            583,
+            260,
+            617
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Bake 15 min.",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            655,
+            280,
+            690
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            553,
+            259
+          ],
+          [
+            106,
+            294,
+            338,
+            328
+          ],
+          [
+            108,
+            367,
+            250,
+            404
+          ],
+          [
+            107,
+            439,
+            318,
+            475
+          ],
+          [
+            107,
+            512,
+            378,
+            548
+          ],
+          [
+            105,
+            583,
+            260,
+            617
+          ],
+          [
+            106,
+            655,
+            280,
+            690
+          ]
+        ],
+        "input_path": "synthetic/F01.png",
+        "input_sha256": "678b43bb9ae181acdc88323e39871a425aff8af93e9d834bcd7642f976f28c68"
+      },
+      "latency_ms": 18465.7,
+      "error": null
+    },
+    {
+      "sample_id": "F02",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Lemon Loaf\nINGREDIENTS\n180 g flour\n120 ml milk\n2 tbsp lemon juice\nBake at 180°C for 35 min.",
+      "raw_output": "RECIPE: Lemon Loaf\nINGREDIENTS\n180 g flour\n120 ml milk\n2 tbsp lemon juice\nBake at  $ 180^{\\circ} $C for 35 min.",
+      "normalized_output": "RECIPE: Lemon Loaf\nINGREDIENTS\n180 g flour\n120 ml milk\n2 tbsp lemon juice\nBake at $ 180^{\\circ} $C for 35 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 180.0,
+          "unit": "g",
+          "ingredient": "flour",
+          "raw": "180 g"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 120.0,
+          "unit": "ml",
+          "ingredient": "milk",
+          "raw": "120 ml"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "tbsp",
+          "ingredient": "lemon",
+          "raw": "2 tbsp"
+        },
+        {
+          "kind": "timing",
+          "value": 35.0,
+          "unit": "min",
+          "raw": "35 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Lemon Loaf",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            420,
+            257
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            294,
+            338,
+            328
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "180 g flour",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            367,
+            253,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "120 ml milk",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            439,
+            266,
+            474
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 tbsp lemon juice",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            511,
+            343,
+            549
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Bake at  $ 180^{\\circ} $C for 35 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            583,
+            440,
+            618
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            420,
+            257
+          ],
+          [
+            106,
+            294,
+            338,
+            328
+          ],
+          [
+            107,
+            367,
+            253,
+            404
+          ],
+          [
+            107,
+            439,
+            266,
+            474
+          ],
+          [
+            105,
+            511,
+            343,
+            549
+          ],
+          [
+            105,
+            583,
+            440,
+            618
+          ]
+        ],
+        "input_path": "synthetic/F02.png",
+        "input_sha256": "c7efb8b25fb9e88a61994af82b8e4c225500851a77404571a3c9244aeebaab38"
+      },
+      "latency_ms": 15671.38,
+      "error": null
+    },
+    {
+      "sample_id": "F03",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Grandma Ida Rolls\nINGREDIENTS\n3 cups flour\n1 tsp yeast\n1 hr rise\nBake 22 min.",
+      "raw_output": "RECIPE: Grandma Ida Rolls\nINGREDIENTS\n3 cups flour\n1 tsp yeast\n1 hr rise\nBake 22 min.",
+      "normalized_output": "RECIPE: Grandma Ida Rolls\nINGREDIENTS\n3 cups flour\n1 tsp yeast\n1 hr rise\nBake 22 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 3.0,
+          "unit": "cup",
+          "ingredient": "flour",
+          "raw": "3 cups"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "ingredient": "yeast",
+          "raw": "1 tsp"
+        },
+        {
+          "kind": "timing",
+          "value": 1.0,
+          "unit": "hr",
+          "raw": "1 hr"
+        },
+        {
+          "kind": "timing",
+          "value": 22.0,
+          "unit": "min",
+          "raw": "22 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Grandma Ida Rolls",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            509,
+            258
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            294,
+            340,
+            329
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "3 cups flour",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            367,
+            264,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 tsp yeast",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            441,
+            248,
+            476
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 hr rise",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            511,
+            218,
+            546
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Bake 22 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            583,
+            280,
+            618
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            509,
+            258
+          ],
+          [
+            105,
+            294,
+            340,
+            329
+          ],
+          [
+            105,
+            367,
+            264,
+            404
+          ],
+          [
+            106,
+            441,
+            248,
+            476
+          ],
+          [
+            107,
+            511,
+            218,
+            546
+          ],
+          [
+            105,
+            583,
+            280,
+            618
+          ]
+        ],
+        "input_path": "synthetic/F03.png",
+        "input_sha256": "a764c9257e13dd7740c291caeaf34863f08c115e17cac57ab6c52eb012cd92cb"
+      },
+      "latency_ms": 15031.81,
+      "error": null
+    },
+    {
+      "sample_id": "F04",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Apple Dumplings\nINGREDIENTS\n1/2 cup sugar\n2 tbsp butter\n1/4 tsp cinnamon\nBake 25 min.",
+      "raw_output": "RECIPE: Apple Dumplings\nINGREDIENTS\n1/2 cup sugar\n2 tbsp butter\n1/4 tsp cinnamon\nBake 25 min.",
+      "normalized_output": "RECIPE: Apple Dumplings\nINGREDIENTS\n1/2 cup sugar\n2 tbsp butter\n1/4 tsp cinnamon\nBake 25 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.5,
+          "unit": "cup",
+          "ingredient": "sugar",
+          "raw": "1/2 cup"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "tbsp",
+          "ingredient": "butter",
+          "raw": "2 tbsp"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.25,
+          "unit": "tsp",
+          "ingredient": "cinnamon",
+          "raw": "1/4 tsp"
+        },
+        {
+          "kind": "timing",
+          "value": 25.0,
+          "unit": "min",
+          "raw": "25 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Apple Dumplings",
+          "confidence": null,
+          "source_coordinates": [
+            77,
+            232,
+            462,
+            287
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            81,
+            310,
+            315,
+            358
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/2 cup sugar",
+          "confidence": null,
+          "source_coordinates": [
+            86,
+            391,
+            261,
+            430
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 tbsp butter",
+          "confidence": null,
+          "source_coordinates": [
+            88,
+            461,
+            253,
+            502
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/4 tsp cinnamon",
+          "confidence": null,
+          "source_coordinates": [
+            93,
+            531,
+            316,
+            575
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Bake 25 min.",
+          "confidence": null,
+          "source_coordinates": [
+            96,
+            603,
+            270,
+            646
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            77,
+            232,
+            462,
+            287
+          ],
+          [
+            81,
+            310,
+            315,
+            358
+          ],
+          [
+            86,
+            391,
+            261,
+            430
+          ],
+          [
+            88,
+            461,
+            253,
+            502
+          ],
+          [
+            93,
+            531,
+            316,
+            575
+          ],
+          [
+            96,
+            603,
+            270,
+            646
+          ]
+        ],
+        "input_path": "synthetic/F04.png",
+        "input_sha256": "8580817a7574f714bfa753ff8262f01e2a48ea4d8eda75da112947f494120d1c"
+      },
+      "latency_ms": 15225.31,
+      "error": null
+    },
+    {
+      "sample_id": "F05",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Sunday Beans\nINGREDIENTS\n1.5 cups beans\n750 ml water\n1 tsp salt\nSimmer 1 hr.",
+      "raw_output": "RECIPE: Sunday Beans\nINGREDIENTS\n1.5 cups beans\n750 ml water\n1 tsp salt\nSimmer 1 hr.",
+      "normalized_output": "RECIPE: Sunday Beans\nINGREDIENTS\n1.5 cups beans\n750 ml water\n1 tsp salt\nSimmer 1 hr.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.5,
+          "unit": "cup",
+          "ingredient": "beans",
+          "raw": "1.5 cups"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 750.0,
+          "unit": "ml",
+          "ingredient": "water",
+          "raw": "750 ml"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "raw": "1 tsp"
+        },
+        {
+          "kind": "timing",
+          "value": 1.0,
+          "unit": "hr",
+          "raw": "1 hr"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Sunday Beans",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            444,
+            259
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            294,
+            339,
+            328
+          ],
+          "block_label": "paragraph_title"
+        },
+        {
+          "text": "1.5 cups beans",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            366,
+            297,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "750 ml water",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            438,
+            279,
+            474
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 tsp salt",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            511,
+            227,
+            548
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Simmer 1 hr.",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            583,
+            275,
+            618
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            444,
+            259
+          ],
+          [
+            105,
+            294,
+            339,
+            328
+          ],
+          [
+            106,
+            366,
+            297,
+            404
+          ],
+          [
+            106,
+            438,
+            279,
+            474
+          ],
+          [
+            107,
+            511,
+            227,
+            548
+          ],
+          [
+            106,
+            583,
+            275,
+            618
+          ]
+        ],
+        "input_path": "synthetic/F05.png",
+        "input_sha256": "730fed2e78d0c9f2a213231a8bc0445b3db20a8e8aeda5ef4a2120459d29d136"
+      },
+      "latency_ms": 15298.12,
+      "error": null
+    },
+    {
+      "sample_id": "F06",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Orange Marmalade\nINGREDIENTS\n500 g oranges\n350 ml water\n2 cups sugar\nCook 75 min.",
+      "raw_output": "RECIPE: Orange Marmalade\nINGREDIENTS\n500 g oranges\n350 ml water\n2 cups sugar\nCook 75 min.",
+      "normalized_output": "RECIPE: Orange Marmalade\nINGREDIENTS\n500 g oranges\n350 ml water\n2 cups sugar\nCook 75 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 500.0,
+          "unit": "g",
+          "ingredient": "oranges",
+          "raw": "500 g"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 350.0,
+          "unit": "ml",
+          "ingredient": "water",
+          "raw": "350 ml"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "cup",
+          "ingredient": "sugar",
+          "raw": "2 cups"
+        },
+        {
+          "kind": "timing",
+          "value": 75.0,
+          "unit": "min",
+          "raw": "75 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Orange Marmalade",
+          "confidence": null,
+          "source_coordinates": [
+            104,
+            221,
+            514,
+            259
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            293,
+            340,
+            329
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "500 g oranges",
+          "confidence": null,
+          "source_coordinates": [
+            104,
+            366,
+            289,
+            405
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "350 ml water",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            438,
+            280,
+            474
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 cups sugar",
+          "confidence": null,
+          "source_coordinates": [
+            104,
+            511,
+            273,
+            549
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Cook 75 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            582,
+            284,
+            618
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            104,
+            221,
+            514,
+            259
+          ],
+          [
+            105,
+            293,
+            340,
+            329
+          ],
+          [
+            104,
+            366,
+            289,
+            405
+          ],
+          [
+            105,
+            438,
+            280,
+            474
+          ],
+          [
+            104,
+            511,
+            273,
+            549
+          ],
+          [
+            105,
+            582,
+            284,
+            618
+          ]
+        ],
+        "input_path": "synthetic/F06.png",
+        "input_sha256": "15a6fa77933c745840ea7b320eb6d9b17aef7921a064544ca44c88d330e027c3"
+      },
+      "latency_ms": 15483.1,
+      "error": null
+    },
+    {
+      "sample_id": "F07",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Skillet Cornbread\nINGREDIENTS\n1 cup cornmeal\n1/2 cup flour\n1 tbsp honey\nMETHOD\nStir dry ingredients, add milk, bake 20 min.",
+      "raw_output": "RECIPE: Skillet Cornbread\nINGREDIENTS\n1 cup cornmeal\n1/2 cup flour\n1 tbsp honey\nMETHOD\nStir dry ingredients, add milk, bake 20 min.",
+      "normalized_output": "RECIPE: Skillet Cornbread\nINGREDIENTS\n1 cup cornmeal\n1/2 cup flour\n1 tbsp honey\nMETHOD\nStir dry ingredients, add milk, bake 20 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "cup",
+          "ingredient": "cornmeal",
+          "raw": "1 cup"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.5,
+          "unit": "cup",
+          "ingredient": "flour",
+          "raw": "1/2 cup"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "tbsp",
+          "ingredient": "honey",
+          "raw": "1 tbsp"
+        },
+        {
+          "kind": "timing",
+          "value": 20.0,
+          "unit": "min",
+          "raw": "20 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Skillet Cornbread",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            221,
+            491,
+            258
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            294,
+            339,
+            329
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 cup cornmeal",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            367,
+            306,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/2 cup flour",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            438,
+            276,
+            476
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 tbsp honey",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            511,
+            273,
+            549
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "METHOD",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            582,
+            260,
+            617
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Stir dry ingredients, add milk, bake 20 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            654,
+            654,
+            693
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            221,
+            491,
+            258
+          ],
+          [
+            106,
+            294,
+            339,
+            329
+          ],
+          [
+            107,
+            367,
+            306,
+            404
+          ],
+          [
+            107,
+            438,
+            276,
+            476
+          ],
+          [
+            107,
+            511,
+            273,
+            549
+          ],
+          [
+            106,
+            582,
+            260,
+            617
+          ],
+          [
+            105,
+            654,
+            654,
+            693
+          ]
+        ],
+        "input_path": "synthetic/F07.png",
+        "input_sha256": "4bb0564f3447510c2ba79310bd07064fed4ad74ae11c8b717a3a7e9c643ae98a"
+      },
+      "latency_ms": 18196.55,
+      "error": null
+    },
+    {
+      "sample_id": "F08",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Plum Jam\nINGREDIENTS\n2 kg plums\n1/4 cup water\n1 tsp lemon juice\nMETHOD\nStir often. (note: use the blue pot)",
+      "raw_output": "RECIPE: Plum Jam\nINGREDIENTS\n2 kg plums\n1/4 cup water\n1 tsp lemon juice\nMETHOD\nStir often. (note: use the blue pot)\nblue pot",
+      "normalized_output": "RECIPE: Plum Jam\nINGREDIENTS\n2 kg plums\n1/4 cup water\n1 tsp lemon juice\nMETHOD\nStir often. (note: use the blue pot)\nblue pot",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "g",
+          "ingredient": "plums",
+          "raw": "2 kg"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.25,
+          "unit": "cup",
+          "ingredient": "water",
+          "raw": "1/4 cup"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "ingredient": "lemon",
+          "raw": "1 tsp"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Plum Jam",
+          "confidence": null,
+          "source_coordinates": [
+            104,
+            221,
+            387,
+            259
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            104,
+            293,
+            340,
+            330
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 kg plums",
+          "confidence": null,
+          "source_coordinates": [
+            104,
+            365,
+            255,
+            406
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/4 cup water",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            438,
+            286,
+            478
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 tsp lemon juice",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            509,
+            329,
+            550
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "METHOD",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            581,
+            262,
+            619
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Stir often. (note: use the blue pot)",
+          "confidence": null,
+          "source_coordinates": [
+            104,
+            654,
+            532,
+            694
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "blue pot",
+          "confidence": null,
+          "source_coordinates": [
+            918,
+            850,
+            1011,
+            888
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            104,
+            221,
+            387,
+            259
+          ],
+          [
+            104,
+            293,
+            340,
+            330
+          ],
+          [
+            104,
+            365,
+            255,
+            406
+          ],
+          [
+            106,
+            438,
+            286,
+            478
+          ],
+          [
+            105,
+            509,
+            329,
+            550
+          ],
+          [
+            105,
+            581,
+            262,
+            619
+          ],
+          [
+            104,
+            654,
+            532,
+            694
+          ],
+          [
+            918,
+            850,
+            1011,
+            888
+          ]
+        ],
+        "input_path": "synthetic/F08.png",
+        "input_sha256": "2783a469171d2eaccb0af88235dd13da13c055580c668a4825af9a41a1126b85"
+      },
+      "latency_ms": 19934.16,
+      "error": null
+    },
+    {
+      "sample_id": "F09",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Quick Gravy\nINGREDIENTS\n2 tbsp flour\n1 c milk\npinch black pepper\nStir 5 min.",
+      "raw_output": "RECIPE: Quick Gravy\nINGREDIENTS\n2 tbsp flour\n1 c milk\npinch black pepper\nStir 5 min.",
+      "normalized_output": "RECIPE: Quick Gravy\nINGREDIENTS\n2 tbsp flour\n1 c milk\npinch black pepper\nStir 5 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "tbsp",
+          "ingredient": "flour",
+          "raw": "2 tbsp"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "cup",
+          "ingredient": "milk",
+          "raw": "1 c"
+        },
+        {
+          "kind": "temperature",
+          "value": 1.0,
+          "scale": "C",
+          "raw": "1 c"
+        },
+        {
+          "kind": "timing",
+          "value": 5.0,
+          "unit": "min",
+          "raw": "5 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Quick Gravy",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            427,
+            260
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            294,
+            339,
+            329
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 tbsp flour",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            366,
+            258,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 c milk",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            439,
+            217,
+            474
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "pinch black pepper",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            511,
+            351,
+            550
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Stir 5 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            583,
+            245,
+            618
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            427,
+            260
+          ],
+          [
+            105,
+            294,
+            339,
+            329
+          ],
+          [
+            105,
+            366,
+            258,
+            404
+          ],
+          [
+            106,
+            439,
+            217,
+            474
+          ],
+          [
+            105,
+            511,
+            351,
+            550
+          ],
+          [
+            105,
+            583,
+            245,
+            618
+          ]
+        ],
+        "input_path": "synthetic/F09.png",
+        "input_sha256": "2d8f05f53ad9e8c954ae2687bde4b9d649b0560b8123ae824da3c9e475d69c40"
+      },
+      "latency_ms": 14869.27,
+      "error": null
+    },
+    {
+      "sample_id": "F10",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Chicken Noodle Soup\nINGREDIENTS\n450 g chicken\n2 cups carrots\n1/2 tsp thyme\n8 cups stock\nMETHOD\nSimmer 45 min; add noodles for 8 min.",
+      "raw_output": "RECIPE: Chicken Noodle Soup\nINGREDIENTS\n450 g chicken\n2 cups carrots\n1/2 tsp thyme\n8 cups stock\nMETHOD\nSimmer 45 min; add noodles for 8 min.",
+      "normalized_output": "RECIPE: Chicken Noodle Soup\nINGREDIENTS\n450 g chicken\n2 cups carrots\n1/2 tsp thyme\n8 cups stock\nMETHOD\nSimmer 45 min; add noodles for 8 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 450.0,
+          "unit": "g",
+          "ingredient": "chicken",
+          "raw": "450 g"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "cup",
+          "ingredient": "carrots",
+          "raw": "2 cups"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "thyme",
+          "raw": "1/2 tsp"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 8.0,
+          "unit": "cup",
+          "ingredient": "stock",
+          "raw": "8 cups"
+        },
+        {
+          "kind": "timing",
+          "value": 45.0,
+          "unit": "min",
+          "raw": "45 min"
+        },
+        {
+          "kind": "timing",
+          "value": 8.0,
+          "unit": "min",
+          "raw": "8 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Chicken Noodle Soup",
+          "confidence": null,
+          "source_coordinates": [
+            104,
+            221,
+            551,
+            260
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            293,
+            339,
+            329
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "450 g chicken",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            367,
+            289,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 cups carrots",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            440,
+            288,
+            476
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/2 tsp thyme",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            510,
+            284,
+            549
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "8 cups stock",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            583,
+            269,
+            619
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "METHOD",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            654,
+            261,
+            689
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Simmer 45 min; add noodles for 8 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            727,
+            602,
+            764
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            104,
+            221,
+            551,
+            260
+          ],
+          [
+            105,
+            293,
+            339,
+            329
+          ],
+          [
+            105,
+            367,
+            289,
+            404
+          ],
+          [
+            105,
+            440,
+            288,
+            476
+          ],
+          [
+            107,
+            510,
+            284,
+            549
+          ],
+          [
+            105,
+            583,
+            269,
+            619
+          ],
+          [
+            105,
+            654,
+            261,
+            689
+          ],
+          [
+            105,
+            727,
+            602,
+            764
+          ]
+        ],
+        "input_path": "synthetic/F10.png",
+        "input_sha256": "385932956c597fcd68ea7769ff6216f3fd918ab131da465994bcadab4fecb4e1"
+      },
+      "latency_ms": 20458.33,
+      "error": null
+    },
+    {
+      "sample_id": "F11",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Shortbread\nINGREDIENTS\n1/2 tsp vanilla\n1/4 cup sugar\n1.5 cups flour\nBake 15 min.",
+      "raw_output": "RECIPE: Shortbread\nINGREDIENTS\n1/2 tsp vanilla\n1/4 cup sugar\n1.5 cups flour\nBake 15 min.",
+      "normalized_output": "RECIPE: Shortbread\nINGREDIENTS\n1/2 tsp vanilla\n1/4 cup sugar\n1.5 cups flour\nBake 15 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "vanilla",
+          "raw": "1/2 tsp"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.25,
+          "unit": "cup",
+          "ingredient": "sugar",
+          "raw": "1/4 cup"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.5,
+          "unit": "cup",
+          "ingredient": "flour",
+          "raw": "1.5 cups"
+        },
+        {
+          "kind": "timing",
+          "value": 15.0,
+          "unit": "min",
+          "raw": "15 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Shortbread",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            221,
+            400,
+            258
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            294,
+            339,
+            328
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/2 tsp vanilla",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            366,
+            291,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/4 cup sugar",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            440,
+            282,
+            477
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1.5 cups flour",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            510,
+            287,
+            548
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Bake 15 min.",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            583,
+            279,
+            618
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            221,
+            400,
+            258
+          ],
+          [
+            106,
+            294,
+            339,
+            328
+          ],
+          [
+            107,
+            366,
+            291,
+            404
+          ],
+          [
+            107,
+            440,
+            282,
+            477
+          ],
+          [
+            107,
+            510,
+            287,
+            548
+          ],
+          [
+            106,
+            583,
+            279,
+            618
+          ]
+        ],
+        "input_path": "synthetic/F11.png",
+        "input_sha256": "942a449f45b5d9fa11c5638634cb3bb162603e9ced0848867d325d123be53d10"
+      },
+      "latency_ms": 15799.69,
+      "error": null
+    },
+    {
+      "sample_id": "F12",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Cardamom Tea\nINGREDIENTS\n1/2 tsp cardamom\n2 cups water\nMETHOD\nSteep 5 min.",
+      "raw_output": "RECIPE: Cardamom Tea\nINGREDIENTS\n1/2 tsp cardamom\n2 cups water\nMETHOD\nSteep 5 min.",
+      "normalized_output": "RECIPE: Cardamom Tea\nINGREDIENTS\n1/2 tsp cardamom\n2 cups water\nMETHOD\nSteep 5 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "cardamom",
+          "raw": "1/2 tsp"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "cup",
+          "ingredient": "water",
+          "raw": "2 cups"
+        },
+        {
+          "kind": "timing",
+          "value": 5.0,
+          "unit": "min",
+          "raw": "5 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Cardamom Tea",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            459,
+            258
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            294,
+            339,
+            329
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/2 tsp cardamom",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            367,
+            338,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 cups water",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            440,
+            273,
+            476
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "METHOD",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            510,
+            261,
+            545
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Steep 5 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            583,
+            270,
+            620
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            459,
+            258
+          ],
+          [
+            105,
+            294,
+            339,
+            329
+          ],
+          [
+            106,
+            367,
+            338,
+            404
+          ],
+          [
+            105,
+            440,
+            273,
+            476
+          ],
+          [
+            105,
+            510,
+            261,
+            545
+          ],
+          [
+            105,
+            583,
+            270,
+            620
+          ]
+        ],
+        "input_path": "synthetic/F12.png",
+        "input_sha256": "9f47070289fe9d12435dc7584abd8b72a17c90e41abfe094d661923d9bad86f6"
+      },
+      "latency_ms": 15026.44,
+      "error": null
+    },
+    {
+      "sample_id": "F13",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Roast Squash\nINGREDIENTS\n1 tbsp oil\n350°F oven\nRoast 40 min.",
+      "raw_output": "RECIPE: Roast Squash\nINGREDIENTS\n1 tbsp oil\n350 $ ^{\\circ} $F oven\nRoast 40 min.",
+      "normalized_output": "RECIPE: Roast Squash\nINGREDIENTS\n1 tbsp oil\n350 $ ^{\\circ} $F oven\nRoast 40 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "tbsp",
+          "ingredient": "oil",
+          "raw": "1 tbsp"
+        },
+        {
+          "kind": "timing",
+          "value": 40.0,
+          "unit": "min",
+          "raw": "40 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Roast Squash",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            434,
+            258
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            294,
+            338,
+            328
+          ],
+          "block_label": "paragraph_title"
+        },
+        {
+          "text": "1 tbsp oil",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            367,
+            230,
+            403
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "350 $ ^{\\circ} $F oven",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            439,
+            259,
+            473
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Roast 40 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            511,
+            286,
+            546
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            434,
+            258
+          ],
+          [
+            105,
+            294,
+            338,
+            328
+          ],
+          [
+            107,
+            367,
+            230,
+            403
+          ],
+          [
+            105,
+            439,
+            259,
+            473
+          ],
+          [
+            105,
+            511,
+            286,
+            546
+          ]
+        ],
+        "input_path": "synthetic/F13.png",
+        "input_sha256": "2035a11091fa8c67920d87e9345b363894236836c9b2779a0b1e382efb21d8e1"
+      },
+      "latency_ms": 13493.79,
+      "error": null
+    },
+    {
+      "sample_id": "F14",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Baked Pears\nINGREDIENTS\n2 pears\n180°C oven\nBake 25 min.",
+      "raw_output": "RECIPE: Baked Pears\nINGREDIENTS\n2 pears\n180°C oven\nBake 25 min.",
+      "normalized_output": "RECIPE: Baked Pears\nINGREDIENTS\n2 pears\n180°C oven\nBake 25 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "count",
+          "ingredient": "pears",
+          "raw": "2 pears"
+        },
+        {
+          "kind": "temperature",
+          "value": 180.0,
+          "scale": "C",
+          "raw": "180°C"
+        },
+        {
+          "kind": "timing",
+          "value": 25.0,
+          "unit": "min",
+          "raw": "25 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Baked Pears",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            419,
+            257
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            294,
+            338,
+            328
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 pears",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            368,
+            204,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "180°C oven",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            439,
+            262,
+            473
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Bake 25 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            511,
+            279,
+            546
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            419,
+            257
+          ],
+          [
+            105,
+            294,
+            338,
+            328
+          ],
+          [
+            105,
+            368,
+            204,
+            404
+          ],
+          [
+            107,
+            439,
+            262,
+            473
+          ],
+          [
+            105,
+            511,
+            279,
+            546
+          ]
+        ],
+        "input_path": "synthetic/F14.png",
+        "input_sha256": "d02ca60276bf197a737aa4eabfbdf24b7738c0eb335e2a81a9ed4e91d291dda7"
+      },
+      "latency_ms": 13637.34,
+      "error": null
+    },
+    {
+      "sample_id": "F15",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Garlic Toast\nINGREDIENTS\n2 tbsp butter\nToast 15 min.",
+      "raw_output": "RECIPE: Garlic Toast\nINGREDIENTS\n2 tbsp butter\nToast 15 min.",
+      "normalized_output": "RECIPE: Garlic Toast\nINGREDIENTS\n2 tbsp butter\nToast 15 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "tbsp",
+          "ingredient": "butter",
+          "raw": "2 tbsp"
+        },
+        {
+          "kind": "timing",
+          "value": 15.0,
+          "unit": "min",
+          "raw": "15 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Garlic Toast",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            417,
+            258
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            294,
+            339,
+            329
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 tbsp butter",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            367,
+            271,
+            403
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Toast 15 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            439,
+            282,
+            474
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            417,
+            258
+          ],
+          [
+            105,
+            294,
+            339,
+            329
+          ],
+          [
+            105,
+            367,
+            271,
+            403
+          ],
+          [
+            105,
+            439,
+            282,
+            474
+          ]
+        ],
+        "input_path": "synthetic/F15.png",
+        "input_sha256": "762bb2ad122f302a61e0ee33152241ddbab1bcf52086744b63927a45a0fc6eba"
+      },
+      "latency_ms": 11071.88,
+      "error": null
+    },
+    {
+      "sample_id": "F16",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Slow Onion Soup\nINGREDIENTS\n3 onions\nSimmer 75 min.",
+      "raw_output": "RECIPE: Slow Onion Soup\nINGREDIENTS\n3 onions\nSimmer 75 min.",
+      "normalized_output": "RECIPE: Slow Onion Soup\nINGREDIENTS\n3 onions\nSimmer 75 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 3.0,
+          "unit": "count",
+          "ingredient": "onions",
+          "raw": "3 onions"
+        },
+        {
+          "kind": "timing",
+          "value": 75.0,
+          "unit": "min",
+          "raw": "75 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Slow Onion Soup",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            492,
+            259
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            294,
+            339,
+            328
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "3 onions",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            368,
+            221,
+            401
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Simmer 75 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            439,
+            313,
+            474
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            492,
+            259
+          ],
+          [
+            105,
+            294,
+            339,
+            328
+          ],
+          [
+            105,
+            368,
+            221,
+            401
+          ],
+          [
+            105,
+            439,
+            313,
+            474
+          ]
+        ],
+        "input_path": "synthetic/F16.png",
+        "input_sha256": "2268765e2fe7d720c804befe7be6ff4ab260a3ee281676838a34dbccf5aa313f"
+      },
+      "latency_ms": 10580.41,
+      "error": null
+    },
+    {
+      "sample_id": "F17",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Herb Dressing\nINGREDIENTS\n1 tsp dried dill\n1 tbsp vinegar\n2 tbsp oil\nMix 2 min.",
+      "raw_output": "RECIPE: Herb Dressing\nINGREDIENTS\n1 tsp dried dill\n1 tbsp vinegar\n2 tbsp oil\nMix 2 min.",
+      "normalized_output": "RECIPE: Herb Dressing\nINGREDIENTS\n1 tsp dried dill\n1 tbsp vinegar\n2 tbsp oil\nMix 2 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "tsp",
+          "ingredient": "dried",
+          "raw": "1 tsp"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "tbsp",
+          "ingredient": "vinegar",
+          "raw": "1 tbsp"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "tbsp",
+          "ingredient": "oil",
+          "raw": "2 tbsp"
+        },
+        {
+          "kind": "timing",
+          "value": 2.0,
+          "unit": "min",
+          "raw": "2 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Herb Dressing",
+          "confidence": null,
+          "source_coordinates": [
+            104,
+            222,
+            449,
+            260
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            293,
+            340,
+            329
+          ],
+          "block_label": "paragraph_title"
+        },
+        {
+          "text": "1 tsp dried dill",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            365,
+            296,
+            405
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 tbsp vinegar",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            438,
+            292,
+            478
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 tbsp oil",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            509,
+            233,
+            549
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Mix 2 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            582,
+            253,
+            619
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            104,
+            222,
+            449,
+            260
+          ],
+          [
+            105,
+            293,
+            340,
+            329
+          ],
+          [
+            106,
+            365,
+            296,
+            405
+          ],
+          [
+            106,
+            438,
+            292,
+            478
+          ],
+          [
+            105,
+            509,
+            233,
+            549
+          ],
+          [
+            105,
+            582,
+            253,
+            619
+          ]
+        ],
+        "input_path": "synthetic/F17.png",
+        "input_sha256": "2c54dec3e13a36da5c972372a8ee648fa1ab9a58dde3d300fdc1f59ea90e4710"
+      },
+      "latency_ms": 14815.15,
+      "error": null
+    },
+    {
+      "sample_id": "F18",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Berry Syrup\nINGREDIENTS\n250 g berries\n120 ml water\n1/4 cup sugar\nCook 12 min.",
+      "raw_output": "RECIPE: Berry Syrup\nINGREDIENTS\n250 g berries\n120 ml water\n1/4 cup sugar\nCook 12 min.",
+      "normalized_output": "RECIPE: Berry Syrup\nINGREDIENTS\n250 g berries\n120 ml water\n1/4 cup sugar\nCook 12 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 250.0,
+          "unit": "g",
+          "ingredient": "berries",
+          "raw": "250 g"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 120.0,
+          "unit": "ml",
+          "ingredient": "water",
+          "raw": "120 ml"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.25,
+          "unit": "cup",
+          "ingredient": "sugar",
+          "raw": "1/4 cup"
+        },
+        {
+          "kind": "timing",
+          "value": 12.0,
+          "unit": "min",
+          "raw": "12 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Berry Syrup",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            222,
+            418,
+            261
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            294,
+            339,
+            329
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "250 g berries",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            366,
+            277,
+            405
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "120 ml water",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            439,
+            279,
+            474
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/4 cup sugar",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            511,
+            283,
+            549
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Cook 12 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            583,
+            283,
+            618
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            222,
+            418,
+            261
+          ],
+          [
+            105,
+            294,
+            339,
+            329
+          ],
+          [
+            105,
+            366,
+            277,
+            405
+          ],
+          [
+            107,
+            439,
+            279,
+            474
+          ],
+          [
+            107,
+            511,
+            283,
+            549
+          ],
+          [
+            105,
+            583,
+            283,
+            618
+          ]
+        ],
+        "input_path": "synthetic/F18.png",
+        "input_sha256": "ac06160f139da5e76bcda84ad1ff326e9e3712d0379e0494ebaaa8325ce8e3b7"
+      },
+      "latency_ms": 15844.98,
+      "error": null
+    },
+    {
+      "sample_id": "F19",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Bilingual Crêpes\nINGREDIENTS\n1 cup flour / farine\n1/2 tsp salt / sel\n2 eggs / oeufs\nMélanger; cook 2 min per side.",
+      "raw_output": "RECIPE: Bilingual Crêpes\nINGREDIENTS\n1 cup flour / farine\n1/2 tsp salt / sel\n2 eggs / oeufs\nMélanger; cook 2 min per side.",
+      "normalized_output": "RECIPE: Bilingual Crêpes\nINGREDIENTS\n1 cup flour / farine\n1/2 tsp salt / sel\n2 eggs / oeufs\nMélanger; cook 2 min per side.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "cup",
+          "ingredient": "flour",
+          "raw": "1 cup"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 0.5,
+          "unit": "tsp",
+          "ingredient": "salt",
+          "raw": "1/2 tsp"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "count",
+          "ingredient": "eggs",
+          "raw": "2 eggs"
+        },
+        {
+          "kind": "timing",
+          "value": 2.0,
+          "unit": "min",
+          "raw": "2 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Bilingual Crêpes",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            221,
+            479,
+            260
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            294,
+            339,
+            329
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 cup flour / farine",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            367,
+            347,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1/2 tsp salt / sel",
+          "confidence": null,
+          "source_coordinates": [
+            107,
+            439,
+            308,
+            475
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 eggs / oeufs",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            511,
+            287,
+            548
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Mélanger; cook 2 min per side.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            582,
+            500,
+            621
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            221,
+            479,
+            260
+          ],
+          [
+            106,
+            294,
+            339,
+            329
+          ],
+          [
+            107,
+            367,
+            347,
+            404
+          ],
+          [
+            107,
+            439,
+            308,
+            475
+          ],
+          [
+            105,
+            511,
+            287,
+            548
+          ],
+          [
+            105,
+            582,
+            500,
+            621
+          ]
+        ],
+        "input_path": "synthetic/F19.png",
+        "input_sha256": "36ee67684f181a8609059835fefc256ca71b34c1b4196d9eea8ffe3d4d63feff"
+      },
+      "latency_ms": 16046.33,
+      "error": null
+    },
+    {
+      "sample_id": "F20",
+      "sample_class": "SYNTHETIC_TYPOGRAPHY",
+      "language": null,
+      "annotation_confidence": null,
+      "ground_truth": "RECIPE: Aunt May Casserole\nINGREDIENTS\n2 cups rice\n1 can tomatoes\n1 tbsp oil\nMETHOD\nWash rice. (margin: rinse twice)\nBake at 350°F for 35 min.",
+      "raw_output": "RECIPE: Aunt May Casserole\nINGREDIENTS\n2 cups rice\n1 can tomatoes\n1 tbsp oil\nMETHOD\nWash rice. (margin: rinse twice)\nBake at  $ 350^{\\circ} $F for 35 min.\nblue pot",
+      "normalized_output": "RECIPE: Aunt May Casserole\nINGREDIENTS\n2 cups rice\n1 can tomatoes\n1 tbsp oil\nMETHOD\nWash rice. (margin: rinse twice)\nBake at $ 350^{\\circ} $F for 35 min.\nblue pot",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 2.0,
+          "unit": "cup",
+          "ingredient": "rice",
+          "raw": "2 cups"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "can",
+          "ingredient": "tomatoes",
+          "raw": "1 can"
+        },
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 1.0,
+          "unit": "tbsp",
+          "ingredient": "oil",
+          "raw": "1 tbsp"
+        },
+        {
+          "kind": "timing",
+          "value": 35.0,
+          "unit": "min",
+          "raw": "35 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECIPE: Aunt May Casserole",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            221,
+            528,
+            259
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            293,
+            339,
+            329
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 cups rice",
+          "confidence": null,
+          "source_coordinates": [
+            104,
+            366,
+            250,
+            404
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 can tomatoes",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            440,
+            302,
+            474
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 tbsp oil",
+          "confidence": null,
+          "source_coordinates": [
+            106,
+            510,
+            232,
+            548
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "METHOD",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            581,
+            261,
+            618
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Wash rice. (margin: rinse twice)",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            654,
+            512,
+            693
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Bake at  $ 350^{\\circ} $F for 35 min.",
+          "confidence": null,
+          "source_coordinates": [
+            105,
+            726,
+            438,
+            763
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "blue pot",
+          "confidence": null,
+          "source_coordinates": [
+            918,
+            851,
+            1011,
+            888
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "generated SVG fixture; no customer material",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            105,
+            221,
+            528,
+            259
+          ],
+          [
+            105,
+            293,
+            339,
+            329
+          ],
+          [
+            104,
+            366,
+            250,
+            404
+          ],
+          [
+            106,
+            440,
+            302,
+            474
+          ],
+          [
+            106,
+            510,
+            232,
+            548
+          ],
+          [
+            105,
+            581,
+            261,
+            618
+          ],
+          [
+            105,
+            654,
+            512,
+            693
+          ],
+          [
+            105,
+            726,
+            438,
+            763
+          ],
+          [
+            918,
+            851,
+            1011,
+            888
+          ]
+        ],
+        "input_path": "synthetic/F20.png",
+        "input_sha256": "d85c438f2dfa679430bfd1c5c1abf88019feb6665913f7772220ca9106f31e05"
+      },
+      "latency_ms": 22217.33,
+      "error": null
+    },
+    {
+      "sample_id": "GH01",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "high",
+      "ground_truth": "Almonds Jumbals",
+      "raw_output": "Almonds Aumbals",
+      "normalized_output": "Almonds Aumbals",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "Almonds Aumbals",
+          "confidence": null,
+          "source_coordinates": [
+            68,
+            56,
+            1081,
+            197
+          ],
+          "block_label": "paragraph_title"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "source_id": "wellcome-L0074537",
+        "source_crop": [
+          1320,
+          470,
+          2480,
+          700
+        ],
+        "model_source_coordinates": [
+          [
+            68,
+            56,
+            1081,
+            197
+          ]
+        ],
+        "input_path": "handwriting/GH01.jpg",
+        "input_sha256": "a7476b1cefdcdb05bfa83b06356e49a3d9e1789f6cb419436a52c6b48458c75b",
+        "annotation_coverage": "complete"
+      },
+      "latency_ms": 3931.44,
+      "error": null
+    },
+    {
+      "sample_id": "GH02",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "medium",
+      "ground_truth": "Take half a pound of the best Jordine Almonds",
+      "raw_output": "Take half a pound of the best for�ing offmond",
+      "normalized_output": "Take half a pound of the best for�ing offmond",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "Take half a pound of the best for�ing offmond",
+          "confidence": null,
+          "source_coordinates": [
+            0,
+            0,
+            2800,
+            219
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "source_id": "wellcome-L0074537",
+        "source_crop": [
+          700,
+          650,
+          3500,
+          870
+        ],
+        "model_source_coordinates": [
+          [
+            0,
+            0,
+            2800,
+            219
+          ]
+        ],
+        "input_path": "handwriting/GH02.jpg",
+        "input_sha256": "51bc1abe430669ef02134976d02e4d8c0ffbf1ef763db0f9b4a28128ec4e1ac1",
+        "annotation_coverage": "complete"
+      },
+      "latency_ms": 20143.35,
+      "error": null
+    },
+    {
+      "sample_id": "GH03",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "high",
+      "ground_truth": "To make a pritty big bisket cake",
+      "raw_output": "To make a party big basket cake:",
+      "normalized_output": "To make a party big basket cake:",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "To make a party big basket cake:",
+          "confidence": null,
+          "source_coordinates": [
+            5,
+            0,
+            1970,
+            200
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "source_id": "wellcome-L0074537",
+        "source_crop": [
+          1030,
+          2380,
+          3000,
+          2580
+        ],
+        "model_source_coordinates": [
+          [
+            5,
+            0,
+            1970,
+            200
+          ]
+        ],
+        "input_path": "handwriting/GH03.jpg",
+        "input_sha256": "378a8358ee359b5857400cffd67c175b33c52abe103d7a62f7726e0c31be36d1",
+        "annotation_coverage": "complete"
+      },
+      "latency_ms": 10220.74,
+      "error": null
+    },
+    {
+      "sample_id": "GH04",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "medium-low",
+      "ground_truth": "Take 8 eggs & a pound of good butter broken in bits\n& a pound of fine sugar beaten fine; beat these",
+      "raw_output": "Take 8 eggs & a pound of good butter broken in bits\n& a pound of fine sugar beaten time; bent these",
+      "normalized_output": "Take 8 eggs & a pound of good butter broken in bits\n& a pound of fine sugar beaten time; bent these",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "quantity_unit_ingredient",
+          "quantity": 8.0,
+          "unit": "count",
+          "ingredient": "eggs",
+          "raw": "8 eggs"
+        }
+      ],
+      "lines": [
+        {
+          "text": "Take 8 eggs & a pound of good butter broken in bits",
+          "confidence": null,
+          "source_coordinates": [
+            1,
+            0,
+            2800,
+            239
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "& a pound of fine sugar beaten time; bent these",
+          "confidence": null,
+          "source_coordinates": [
+            1,
+            0,
+            2800,
+            239
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "source_id": "wellcome-L0074537",
+        "source_crop": [
+          700,
+          2570,
+          3500,
+          2810
+        ],
+        "model_source_coordinates": [
+          [
+            1,
+            0,
+            2800,
+            239
+          ],
+          [
+            1,
+            0,
+            2800,
+            239
+          ]
+        ],
+        "input_path": "handwriting/GH04.jpg",
+        "input_sha256": "f932e6d4ed51081533649d21a15317837059424b2df8ea0709579e2d450e6e82",
+        "annotation_coverage": "complete"
+      },
+      "latency_ms": 24471.82,
+      "error": null
+    },
+    {
+      "sample_id": "GH05",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "high",
+      "ground_truth": "To make ginger bread",
+      "raw_output": "To make ginger bread:",
+      "normalized_output": "To make ginger bread:",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "To make ginger bread:",
+          "confidence": null,
+          "source_coordinates": [
+            4,
+            69,
+            1272,
+            220
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "source_id": "wellcome-L0074537",
+        "source_crop": [
+          4250,
+          480,
+          5600,
+          700
+        ],
+        "model_source_coordinates": [
+          [
+            4,
+            69,
+            1272,
+            220
+          ]
+        ],
+        "input_path": "handwriting/GH05.jpg",
+        "input_sha256": "44e03d9f4b9463a16145e6c4dd8d194dc9d8990f514509740efc4e35d1c6269c",
+        "annotation_coverage": "complete"
+      },
+      "latency_ms": 4665.37,
+      "error": null
+    },
+    {
+      "sample_id": "GH06",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "medium",
+      "ground_truth": "Take a pound & halfe of Treacle & 3 quarters of a",
+      "raw_output": "Take a pound & half a of Treakle, & 3 quarters of a",
+      "normalized_output": "Take a pound & half a of Treakle, & 3 quarters of a",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "Take a pound & half a of Treakle, & 3 quarters of a",
+          "confidence": null,
+          "source_coordinates": [
+            0,
+            0,
+            2891,
+            230
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "source_id": "wellcome-L0074537",
+        "source_crop": [
+          3650,
+          760,
+          6550,
+          990
+        ],
+        "model_source_coordinates": [
+          [
+            0,
+            0,
+            2891,
+            230
+          ]
+        ],
+        "input_path": "handwriting/GH06.jpg",
+        "input_sha256": "6506d889e1a61e402a94d774293aa7c48ab6844398efc34ea99404099f8d066b",
+        "annotation_coverage": "partial"
+      },
+      "latency_ms": 21416.86,
+      "error": null
+    },
+    {
+      "sample_id": "GH07",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "high",
+      "ground_truth": "To make gimmalls",
+      "raw_output": "To make gimmacts:\nI Hower, half a po",
+      "normalized_output": "To make gimmacts:\nI Hower, half a po",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "To make gimmacts:",
+          "confidence": null,
+          "source_coordinates": [
+            66,
+            0,
+            1370,
+            219
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "I Hower, half a po",
+          "confidence": null,
+          "source_coordinates": [
+            66,
+            0,
+            1370,
+            219
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "source_id": "wellcome-L0074537",
+        "source_crop": [
+          4230,
+          2400,
+          5600,
+          2620
+        ],
+        "model_source_coordinates": [
+          [
+            66,
+            0,
+            1370,
+            219
+          ],
+          [
+            66,
+            0,
+            1370,
+            219
+          ]
+        ],
+        "input_path": "handwriting/GH07.jpg",
+        "input_sha256": "27469ca14eadf15df86bb3ff499f3600493e35c6a630f07399a77efe5c40f84c",
+        "annotation_coverage": "partial"
+      },
+      "latency_ms": 7891.63,
+      "error": null
+    },
+    {
+      "sample_id": "GH08",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "low",
+      "ground_truth": "Take a pound of flower",
+      "raw_output": "Take a pound of honey, a sweet butter, 3 years being finely beaten, a lump of sweet butter together, you may",
+      "normalized_output": "Take a pound of honey, a sweet butter, 3 years being finely beaten, a lump of sweet butter together, you may",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "Take a pound of honey, a sweet butter, 3 years being finely beaten, a lump of sweet butter together, you may",
+          "confidence": null,
+          "source_coordinates": [
+            0,
+            0,
+            2837,
+            227
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "source_id": "wellcome-L0074537",
+        "source_crop": [
+          3700,
+          2590,
+          6540,
+          2820
+        ],
+        "model_source_coordinates": [
+          [
+            0,
+            0,
+            2837,
+            227
+          ]
+        ],
+        "input_path": "handwriting/GH08.jpg",
+        "input_sha256": "4eb7eeb7112c5ab13e903430c5b1614c6d9347ece336b5e39e04c4046ebbf61b",
+        "annotation_coverage": "partial"
+      },
+      "latency_ms": 21065.85,
+      "error": null
+    },
+    {
+      "sample_id": "GH09",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "high",
+      "ground_truth": "To make Layd tartes",
+      "raw_output": "to make layed hurts",
+      "normalized_output": "to make layed hurts",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "to make layed hurts",
+          "confidence": null,
+          "source_coordinates": [
+            16,
+            29,
+            1145,
+            199
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+        "source_id": "wellcome-L0074536",
+        "source_crop": [
+          730,
+          320,
+          2350,
+          520
+        ],
+        "model_source_coordinates": [
+          [
+            16,
+            29,
+            1145,
+            199
+          ]
+        ],
+        "input_path": "handwriting/GH09.jpg",
+        "input_sha256": "b16ac606117d09cb4b2692010623c719d84652714d8c8cd6b9f1bc276b544d83",
+        "annotation_coverage": "complete"
+      },
+      "latency_ms": 4867.63,
+      "error": null
+    },
+    {
+      "sample_id": "GH10",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "high",
+      "ground_truth": "to make ye blacke tarte",
+      "raw_output": "to make y blacks arrive",
+      "normalized_output": "to make y blacks arrive",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "to make y blacks arrive",
+          "confidence": null,
+          "source_coordinates": [
+            12,
+            1,
+            1365,
+            212
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+        "source_id": "wellcome-L0074536",
+        "source_crop": [
+          900,
+          560,
+          3000,
+          820
+        ],
+        "model_source_coordinates": [
+          [
+            12,
+            1,
+            1365,
+            212
+          ]
+        ],
+        "input_path": "handwriting/GH10.jpg",
+        "input_sha256": "6495b33e6f7540452ea9aa6f6f95fb77f7811b3188960f6feb595a3759c9a995",
+        "annotation_coverage": "partial"
+      },
+      "latency_ms": 7727.36,
+      "error": null
+    },
+    {
+      "sample_id": "GH11",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "high",
+      "ground_truth": "to make the red tarte Layde",
+      "raw_output": "to make the red turtle layide",
+      "normalized_output": "to make the red turtle layide",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "to make the red turtle layide",
+          "confidence": null,
+          "source_coordinates": [
+            0,
+            46,
+            1497,
+            241
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+        "source_id": "wellcome-L0074536",
+        "source_crop": [
+          3980,
+          250,
+          6000,
+          520
+        ],
+        "model_source_coordinates": [
+          [
+            0,
+            46,
+            1497,
+            241
+          ]
+        ],
+        "input_path": "handwriting/GH11.jpg",
+        "input_sha256": "6bf702f74cb6c51a5b2513df712d0f9aa5ef0d3723aef9349bc985d33a3f3ec6",
+        "annotation_coverage": "complete"
+      },
+      "latency_ms": 7516.86,
+      "error": null
+    },
+    {
+      "sample_id": "GH12",
+      "sample_class": "GENUINE_HANDWRITING",
+      "language": "English",
+      "annotation_confidence": "medium",
+      "ground_truth": "to make the white tarte Layde",
+      "raw_output": "to make this while hurt the layde\nyards of cream, or so, whiles of",
+      "normalized_output": "to make this while hurt the layde\nyards of cream, or so, whiles of",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [],
+      "lines": [
+        {
+          "text": "to make this while hurt the layde",
+          "confidence": null,
+          "source_coordinates": [
+            2,
+            0,
+            2100,
+            370
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "yards of cream, or so, whiles of",
+          "confidence": null,
+          "source_coordinates": [
+            2,
+            0,
+            2100,
+            370
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+        "source_id": "wellcome-L0074536",
+        "source_crop": [
+          0,
+          2310,
+          2100,
+          2680
+        ],
+        "model_source_coordinates": [
+          [
+            2,
+            0,
+            2100,
+            370
+          ],
+          [
+            2,
+            0,
+            2100,
+            370
+          ]
+        ],
+        "input_path": "handwriting/GH12.jpg",
+        "input_sha256": "0d5a15b224f66c92daeed6abc0045e3a992aada23febc978810098be53f5f906",
+        "annotation_coverage": "partial"
+      },
+      "latency_ms": 27245.32,
+      "error": null
+    },
+    {
+      "sample_id": "ML01",
+      "sample_class": "MULTILINGUAL_PROBE",
+      "language": "French",
+      "annotation_confidence": null,
+      "ground_truth": "RECETTE: Tarte aux pommes\nINGRÉDIENTS\n2 pommes\n1 tasse de farine\nCuire 30 min.",
+      "raw_output": "RECETTE: Tarte aux pommes\nINGRÉDIENTS\n2 pommes\n1 tasse de farine\nCuire 30 min.",
+      "normalized_output": "RECETTE: Tarte aux pommes\nINGRÉDIENTS\n2 pommes\n1 tasse de farine\nCuire 30 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "timing",
+          "value": 30.0,
+          "unit": "min",
+          "raw": "30 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECETTE: Tarte aux pommes",
+          "confidence": null,
+          "source_coordinates": [
+            53,
+            42,
+            731,
+            95
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGRÉDIENTS",
+          "confidence": null,
+          "source_coordinates": [
+            56,
+            140,
+            381,
+            198
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 pommes",
+          "confidence": null,
+          "source_coordinates": [
+            54,
+            251,
+            309,
+            306
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 tasse de farine",
+          "confidence": null,
+          "source_coordinates": [
+            55,
+            356,
+            453,
+            409
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Cuire 30 min.",
+          "confidence": null,
+          "source_coordinates": [
+            52,
+            461,
+            375,
+            514
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "Generated DejaVu Sans probe; not included in English scoring.",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            53,
+            42,
+            731,
+            95
+          ],
+          [
+            56,
+            140,
+            381,
+            198
+          ],
+          [
+            54,
+            251,
+            309,
+            306
+          ],
+          [
+            55,
+            356,
+            453,
+            409
+          ],
+          [
+            52,
+            461,
+            375,
+            514
+          ]
+        ],
+        "input_path": "multilingual/ML01.png",
+        "input_sha256": "36b4518db14ab8e4b38db9f52ba4e77dd4aa8feb51c7a689549034ad521135e1"
+      },
+      "latency_ms": 13659.82,
+      "error": null
+    },
+    {
+      "sample_id": "ML02",
+      "sample_class": "MULTILINGUAL_PROBE",
+      "language": "German",
+      "annotation_confidence": null,
+      "ground_truth": "REZEPT: Apfelkuchen\nZUTATEN\n2 Äpfel\n1 Tasse Mehl\nBei 180°C 30 min backen.",
+      "raw_output": "REZEPT: Apfelkuchen\nZUTATEN\n2 Äpfel\n1 Tasse Mehl\nBei  $ 180^{\\circ} $C 30 min backen.",
+      "normalized_output": "REZEPT: Apfelkuchen\nZUTATEN\n2 Äpfel\n1 Tasse Mehl\nBei $ 180^{\\circ} $C 30 min backen.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "timing",
+          "value": 30.0,
+          "unit": "min",
+          "raw": "30 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "REZEPT: Apfelkuchen",
+          "confidence": null,
+          "source_coordinates": [
+            53,
+            40,
+            553,
+            96
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "ZUTATEN",
+          "confidence": null,
+          "source_coordinates": [
+            53,
+            145,
+            275,
+            198
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 Äpfel",
+          "confidence": null,
+          "source_coordinates": [
+            54,
+            245,
+            227,
+            306
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 Tasse Mehl",
+          "confidence": null,
+          "source_coordinates": [
+            55,
+            355,
+            360,
+            409
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Bei  $ 180^{\\circ} $C 30 min backen.",
+          "confidence": null,
+          "source_coordinates": [
+            52,
+            460,
+            663,
+            515
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "Generated DejaVu Sans probe; not included in English scoring.",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            53,
+            40,
+            553,
+            96
+          ],
+          [
+            53,
+            145,
+            275,
+            198
+          ],
+          [
+            54,
+            245,
+            227,
+            306
+          ],
+          [
+            55,
+            355,
+            360,
+            409
+          ],
+          [
+            52,
+            460,
+            663,
+            515
+          ]
+        ],
+        "input_path": "multilingual/ML02.png",
+        "input_sha256": "3407b4d2e91e320aaf995827a3ff208f16fc7e75163bd3440ca543915ce9e611"
+      },
+      "latency_ms": 14264.49,
+      "error": null
+    },
+    {
+      "sample_id": "ML03",
+      "sample_class": "MULTILINGUAL_PROBE",
+      "language": "Spanish",
+      "annotation_confidence": null,
+      "ground_truth": "RECETA: Tarta de manzana\nINGREDIENTES\n2 manzanas\n1 taza de harina\nHornear 30 min.",
+      "raw_output": "RECETA: Tarta de manzana\nINGREDIENTES\n2 manzanas\n1 taza de harina\nHornear 30 min.",
+      "normalized_output": "RECETA: Tarta de manzana\nINGREDIENTES\n2 manzanas\n1 taza de harina\nHornear 30 min.",
+      "normalization": "NFC and horizontal whitespace collapse only; raw_output retained",
+      "semantic_fields": [
+        {
+          "kind": "timing",
+          "value": 30.0,
+          "unit": "min",
+          "raw": "30 min"
+        }
+      ],
+      "lines": [
+        {
+          "text": "RECETA: Tarta de manzana",
+          "confidence": null,
+          "source_coordinates": [
+            56,
+            43,
+            684,
+            91
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "INGREDIENTES",
+          "confidence": null,
+          "source_coordinates": [
+            57,
+            146,
+            407,
+            195
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "2 manzanas",
+          "confidence": null,
+          "source_coordinates": [
+            55,
+            253,
+            345,
+            300
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "1 taza de harina",
+          "confidence": null,
+          "source_coordinates": [
+            57,
+            358,
+            439,
+            407
+          ],
+          "block_label": "text"
+        },
+        {
+          "text": "Hornear 30 min.",
+          "confidence": null,
+          "source_coordinates": [
+            56,
+            463,
+            439,
+            513
+          ],
+          "block_label": "text"
+        }
+      ],
+      "source_provenance": {
+        "source_reference": "Generated DejaVu Sans probe; not included in English scoring.",
+        "source_id": null,
+        "source_crop": null,
+        "model_source_coordinates": [
+          [
+            56,
+            43,
+            684,
+            91
+          ],
+          [
+            57,
+            146,
+            407,
+            195
+          ],
+          [
+            55,
+            253,
+            345,
+            300
+          ],
+          [
+            57,
+            358,
+            439,
+            407
+          ],
+          [
+            56,
+            463,
+            439,
+            513
+          ]
+        ],
+        "input_path": "multilingual/ML03.png",
+        "input_sha256": "138e49973240444c6fafff99d515ddbf8a2998e06b7107284c7140d3ca7bf124"
+      },
+      "latency_ms": 13803.52,
+      "error": null
+    }
+  ]
+}

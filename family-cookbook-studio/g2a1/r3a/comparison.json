@@ -1,0 +1,256 @@
+{
+  "priority_order": [
+    "silent critical semantic errors",
+    "unsupported hallucinations",
+    "missing critical fields",
+    "manual edit burden",
+    "whole-line retranscription",
+    "reupload rate",
+    "genuine-handwriting edit burden",
+    "genuine handwriting",
+    "synthetic recipe",
+    "multilingual notes",
+    "latency",
+    "resource footprint"
+  ],
+  "candidates": {
+    "PP-OCRv6_medium": {
+      "semantic_critical_errors": 1,
+      "synthetic_semantic_critical_errors": 0,
+      "genuine_handwriting_semantic_critical_errors": 1,
+      "silent_critical_errors": 0,
+      "hallucinations": 0,
+      "unverified_partial_handwriting_content": 5,
+      "missing_critical_fields": 1,
+      "manual_edit_fields": 0,
+      "manual_edit_chars": 0,
+      "whole_line_retypes": 0,
+      "reupload_pages": 0,
+      "handwriting_manual_edit_fields": 13,
+      "handwriting_manual_edit_chars": 69,
+      "handwriting_whole_line_retypes": 0,
+      "english_handwriting_score": 0.8273,
+      "handwriting_scored_samples": 7,
+      "handwriting_partial_annotation_samples": 5,
+      "synthetic_recipe_score": 1.0,
+      "multilingual_probe_notes": [
+        {
+          "sample_id": "ML01",
+          "language": "French",
+          "raw_output": "RECETTE: Tarte aux pommes\nINGRÉDIENTS\n2 pommes\n1 tasse de farine\nCuire 30 min.",
+          "blank": false
+        },
+        {
+          "sample_id": "ML02",
+          "language": "German",
+          "raw_output": "REZEPT: Apfelkuchen\nZUTATEN\n2 Äpfel\n1 Tasse Mehl\nBei 180°C 30 min backen.",
+          "blank": false
+        },
+        {
+          "sample_id": "ML03",
+          "language": "Spanish",
+          "raw_output": "RECETA: Tarta de manzana\nINGREDIENTES\n2 manzanas\n1 taza de harina\nHornear 30 min.",
+          "blank": false
+        }
+      ],
+      "latency": 133.675,
+      "peak_ram": 2019479552,
+      "model_size": 164762132,
+      "install_complexity": "Pinned PaddleOCR + Transformers CPU packages; PaddleOCR-VL additionally uses the official doc-parser extra; no PaddlePaddle runtime wheel",
+      "runtime_complexity": "PaddleOCR Transformers",
+      "review_classification": "LIGHT_REVIEW",
+      "runtime_status": "complete"
+    },
+    "PaddleOCR-VL-1.6": {
+      "semantic_critical_errors": 4,
+      "synthetic_semantic_critical_errors": 4,
+      "genuine_handwriting_semantic_critical_errors": 0,
+      "silent_critical_errors": 0,
+      "hallucinations": 0,
+      "unverified_partial_handwriting_content": 5,
+      "missing_critical_fields": 4,
+      "manual_edit_fields": 8,
+      "manual_edit_chars": 24,
+      "whole_line_retypes": 0,
+      "reupload_pages": 0,
+      "handwriting_manual_edit_fields": 11,
+      "handwriting_manual_edit_chars": 123,
+      "handwriting_whole_line_retypes": 1,
+      "english_handwriting_score": 0.8998,
+      "handwriting_scored_samples": 7,
+      "handwriting_partial_annotation_samples": 5,
+      "synthetic_recipe_score": 0.9481,
+      "multilingual_probe_notes": [
+        {
+          "sample_id": "ML01",
+          "language": "French",
+          "raw_output": "RECETTE: Tarte aux pommes\nINGRÉDIENTS\n2 pommes\n1 tasse de farine\nCuire 30 min.",
+          "blank": false
+        },
+        {
+          "sample_id": "ML02",
+          "language": "German",
+          "raw_output": "REZEPT: Apfelkuchen\nZUTATEN\n2 Äpfel\n1 Tasse Mehl\nBei  $ 180^{\\circ} $C 30 min backen.",
+          "blank": false
+        },
+        {
+          "sample_id": "ML03",
+          "language": "Spanish",
+          "raw_output": "RECETA: Tarta de manzana\nINGREDIENTES\n2 manzanas\n1 taza de harina\nHornear 30 min.",
+          "blank": false
+        }
+      ],
+      "latency": 520.06,
+      "peak_ram": 3915350016,
+      "model_size": 2052140799,
+      "install_complexity": "Pinned PaddleOCR + Transformers CPU packages; PaddleOCR-VL additionally uses the official doc-parser extra; no PaddlePaddle runtime wheel",
+      "runtime_complexity": "PaddleOCRVL Transformers",
+      "review_classification": "LIGHT_REVIEW",
+      "runtime_status": "complete"
+    }
+  },
+  "recommended_primary": "PP-OCRv6_medium",
+  "rejected_primary": "PaddleOCR-VL-1.6",
+  "recommendation_status": "SELECTION_CANDIDATE",
+  "reason": "Lexicographic priority follows the contract; PP-OCRv6_medium breaks exact ties as the preferred deterministic baseline.",
+  "remaining_high_risk_cases": [
+    {
+      "sample_id": "GH02",
+      "crop_id": "GH02",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "Tate Lalf a ponnd of the fost fording ottma",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH03",
+      "crop_id": "GH03",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "To make npoitty big bisket cake!",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH04",
+      "crop_id": "GH04",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "Take & eggs & a ponnd of good butter broken m bits\n& a pouno of fine sugar beaten fime; bent Ahiese",
+      "semantic_issue": [
+        "critical_error"
+      ],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH05",
+      "crop_id": "GH05",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "To make gigur bread:",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH06",
+      "crop_id": "GH06",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "Take a pound & halfe of Treakle, & 3 goarters of\nslow tver",
+      "semantic_issue": [
+        "unverified_extra_content"
+      ],
+      "risk_type": [
+        "manual_review",
+        "partial_ground_truth_scope"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH07",
+      "crop_id": "GH07",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "To make gimmals:",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review",
+        "partial_ground_truth_scope"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH08",
+      "crop_id": "GH08",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "primary_output": "Take aponnd of ion\ntogether, you may",
+      "semantic_issue": [
+        "unverified_extra_content"
+      ],
+      "risk_type": [
+        "manual_review",
+        "partial_ground_truth_scope"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH09",
+      "crop_id": "GH09",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "primary_output": "to maky fayd burts",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH10",
+      "crop_id": "GH10",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "primary_output": "to make y blacky Larh\nmalligo",
+      "semantic_issue": [
+        "unverified_extra_content"
+      ],
+      "risk_type": [
+        "manual_review",
+        "partial_ground_truth_scope"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH11",
+      "crop_id": "GH11",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "primary_output": "maky the red hack Layle",
+      "semantic_issue": [],
+      "risk_type": [
+        "manual_review"
+      ],
+      "manual_correction_required": true
+    },
+    {
+      "sample_id": "GH12",
+      "crop_id": "GH12",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "primary_output": "to maks ths whith tunk Lay de\nginth of creame, 4 or o whihs of g\nTdelle",
+      "semantic_issue": [
+        "unverified_extra_content"
+      ],
+      "risk_type": [
+        "manual_review",
+        "partial_ground_truth_scope"
+      ],
+      "manual_correction_required": true
+    }
+  ],
+  "api_fallback_tested": false,
+  "third_candidate_tested": false
+}

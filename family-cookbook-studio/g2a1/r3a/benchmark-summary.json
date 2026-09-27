@@ -1,0 +1,1623 @@
+{
+  "gate": "G2A1-R3A",
+  "semantic": {
+    "PP-OCRv6_medium": {
+      "status": "complete",
+      "sample_count": 32,
+      "synthetic_recipe_pages": 20,
+      "genuine_handwriting_crops": 12,
+      "expected_critical_fact_count": 77,
+      "genuine_handwriting_expected_critical_fact_count": 1,
+      "semantic_critical_error_count": 1,
+      "synthetic_critical_field_error_types": {},
+      "genuine_handwriting_critical_field_error_types": {
+        "missing_quantity_unit_ingredient": 1
+      },
+      "missing_ingredient_lines": 0,
+      "missing_steps": 0,
+      "silent_critical_error_count": 0,
+      "missing_critical_field_count": 1,
+      "missing_recipe_lines": 0,
+      "blank_results": 0,
+      "unsupported_hallucination_count": 0,
+      "unverified_partial_handwriting_content_count": 5,
+      "synthetic_semantic_critical_error_count": 0,
+      "genuine_handwriting_semantic_critical_error_count": 1,
+      "genuine_handwriting_critical_errors_by_sample": {
+        "GH04": [
+          {
+            "expected": {
+              "kind": "quantity_unit_ingredient",
+              "quantity": 8.0,
+              "unit": "count",
+              "ingredient": "eggs",
+              "raw": "8 eggs"
+            },
+            "recognized_same_kind": [],
+            "error_type": "missing_quantity_unit_ingredient"
+          }
+        ]
+      },
+      "format_only_observations": 0,
+      "synthetic_semantic_accuracy": 1.0,
+      "synthetic_exact_line_accuracy": 1.0,
+      "english_handwriting_score": 0.8273,
+      "handwriting_scored_count": 7,
+      "handwriting_partial_annotation_count": 5
+    },
+    "PaddleOCR-VL-1.6": {
+      "status": "complete",
+      "sample_count": 32,
+      "synthetic_recipe_pages": 20,
+      "genuine_handwriting_crops": 12,
+      "expected_critical_fact_count": 77,
+      "genuine_handwriting_expected_critical_fact_count": 1,
+      "semantic_critical_error_count": 4,
+      "synthetic_critical_field_error_types": {
+        "missing_temperature": 4
+      },
+      "genuine_handwriting_critical_field_error_types": {},
+      "missing_ingredient_lines": 0,
+      "missing_steps": 0,
+      "silent_critical_error_count": 0,
+      "missing_critical_field_count": 4,
+      "missing_recipe_lines": 0,
+      "blank_results": 0,
+      "unsupported_hallucination_count": 0,
+      "unverified_partial_handwriting_content_count": 5,
+      "synthetic_semantic_critical_error_count": 4,
+      "genuine_handwriting_semantic_critical_error_count": 0,
+      "genuine_handwriting_critical_errors_by_sample": {},
+      "format_only_observations": 0,
+      "synthetic_semantic_accuracy": 0.9481,
+      "synthetic_exact_line_accuracy": 0.9683,
+      "english_handwriting_score": 0.8998,
+      "handwriting_scored_count": 7,
+      "handwriting_partial_annotation_count": 5
+    }
+  },
+  "review": {
+    "PP-OCRv6_medium": {
+      "recipe_pages": 20,
+      "review_classification_scope": "20 complete synthetic recipe pages; handwriting crop edits are reported separately.",
+      "total_manual_edit_fields": 0,
+      "manual_edit_fields_per_page": 0.0,
+      "total_manual_edit_chars": 0,
+      "critical_fields_manually_changed": 0,
+      "pages_with_zero_edit": 20,
+      "pages_with_zero_edit_ratio": 1.0,
+      "pages_with_light_edits": 0,
+      "whole_line_retypes": 0,
+      "reupload_pages": 0,
+      "review_classification": "LIGHT_REVIEW",
+      "genuine_handwriting_review": {
+        "crops": 12,
+        "complete_transcript_crops": 7,
+        "partial_transcript_crops": 5,
+        "manual_edit_fields": 13,
+        "manual_edit_chars": 69,
+        "critical_fields_manually_changed": 1,
+        "whole_line_retypes": 0,
+        "reupload_crops": 0,
+        "review_payloads": [
+          {
+            "sample_id": "GH01",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "Almonds Jumbals",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [],
+            "format_only_observations": [],
+            "manual_edit_field_count": 0,
+            "manual_edit_chars": 0,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "Almonds Jumbals",
+                "recognized": "Almonds Jumbals",
+                "confidence": 0.966046154499054,
+                "similarity": 1.0,
+                "char_edits": 0
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.0,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 1.0
+          },
+          {
+            "sample_id": "GH02",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "Tate Lalf a ponnd of the fost fording ottma",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 14,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "Take half a pound of the best Jordine Almonds",
+                "recognized": "Tate Lalf a ponnd of the fost fording ottma",
+                "confidence": 0.7630779147148132,
+                "similarity": 0.727,
+                "char_edits": 14
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.3111,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH03",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "To make npoitty big bisket cake!",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 3,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "To make a pritty big bisket cake",
+                "recognized": "To make npoitty big bisket cake!",
+                "confidence": 0.9209945201873779,
+                "similarity": 0.921,
+                "char_edits": 3
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.0938,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH04",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "Take & eggs & a ponnd of good butter broken m bits\n& a pouno of fine sugar beaten fime; bent Ahiese",
+            "highlighted_fields": [
+              {
+                "type": "semantic_critical_mismatch",
+                "expected": {
+                  "kind": "quantity_unit_ingredient",
+                  "quantity": 8.0,
+                  "unit": "count",
+                  "ingredient": "eggs",
+                  "raw": "8 eggs"
+                }
+              }
+            ],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              },
+              {
+                "type": "line_text",
+                "line_index": 1
+              },
+              {
+                "type": "quantity_unit_ingredient",
+                "critical": true,
+                "expected": {
+                  "kind": "quantity_unit_ingredient",
+                  "quantity": 8.0,
+                  "unit": "count",
+                  "ingredient": "eggs",
+                  "raw": "8 eggs"
+                }
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 3,
+            "manual_edit_chars": 10,
+            "critical_fields_manually_changed": 1,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "Take 8 eggs & a pound of good butter broken in bits",
+                "recognized": "Take & eggs & a ponnd of good butter broken m bits",
+                "confidence": 0.937541663646698,
+                "similarity": 0.926,
+                "char_edits": 5
+              },
+              {
+                "line_index": 1,
+                "ground_truth": "& a pound of fine sugar beaten fine; beat these",
+                "recognized": "& a pouno of fine sugar beaten fime; bent Ahiese",
+                "confidence": 0.9372090697288513,
+                "similarity": 0.899,
+                "char_edits": 5
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [
+              {
+                "kind": "quantity_unit_ingredient",
+                "quantity": 8.0,
+                "unit": "count",
+                "ingredient": "eggs",
+                "raw": "8 eggs"
+              }
+            ],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [
+              {
+                "expected": {
+                  "kind": "quantity_unit_ingredient",
+                  "quantity": 8.0,
+                  "unit": "count",
+                  "ingredient": "eggs",
+                  "raw": "8 eggs"
+                },
+                "recognized_same_kind": [],
+                "error_type": "missing_quantity_unit_ingredient"
+              }
+            ],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [
+              {
+                "expected": {
+                  "kind": "quantity_unit_ingredient",
+                  "quantity": 8.0,
+                  "unit": "count",
+                  "ingredient": "eggs",
+                  "raw": "8 eggs"
+                },
+                "recognized_same_kind": [],
+                "error_type": "missing_quantity_unit_ingredient"
+              }
+            ],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.1075,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH05",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "To make gigur bread:",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 2,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "To make ginger bread",
+                "recognized": "To make gigur bread:",
+                "confidence": 0.969250500202179,
+                "similarity": 0.923,
+                "char_edits": 2
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.1,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH06",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "Take a pound & halfe of Treakle, & 3 goarters of\nslow tver",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 5,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "Take a pound & halfe of Treacle & 3 quarters of a",
+                "recognized": "Take a pound & halfe of Treakle, & 3 goarters of",
+                "confidence": 0.9681264758110046,
+                "similarity": 0.909,
+                "char_edits": 5
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [
+              {
+                "text": "slow tver",
+                "confidence": 0.7945888638496399,
+                "source_coordinates": [
+                  2147,
+                  136,
+                  2754,
+                  230
+                ]
+              }
+            ],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": null,
+            "unverified_extra_content": [
+              {
+                "kind": "unannotated_output_line",
+                "text": "slow tver"
+              }
+            ],
+            "annotation_coverage": "partial",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH07",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "To make gimmals:",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 1,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "To make gimmalls",
+                "recognized": "To make gimmals:",
+                "confidence": 0.9710743427276611,
+                "similarity": 0.968,
+                "char_edits": 1
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": null,
+            "unverified_extra_content": [],
+            "annotation_coverage": "partial",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH08",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "Take aponnd of ion\ntogether, you may",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 7,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "Take a pound of flower",
+                "recognized": "Take aponnd of ion",
+                "confidence": 0.8997381925582886,
+                "similarity": 0.75,
+                "char_edits": 7
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [
+              {
+                "text": "together, you may",
+                "confidence": 0.9677033424377441,
+                "source_coordinates": [
+                  1676,
+                  76,
+                  2635,
+                  230
+                ]
+              }
+            ],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": null,
+            "unverified_extra_content": [
+              {
+                "kind": "unannotated_output_line",
+                "text": "together, you may"
+              }
+            ],
+            "annotation_coverage": "partial",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH09",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "to maky fayd burts",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 5,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "To make Layd tartes",
+                "recognized": "to maky fayd burts",
+                "confidence": 0.9160353541374207,
+                "similarity": 0.757,
+                "char_edits": 5
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.2632,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH10",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "to make y blacky Larh\nmalligo",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 5,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "to make ye blacke tarte",
+                "recognized": "to make y blacky Larh",
+                "confidence": 0.9230318665504456,
+                "similarity": 0.818,
+                "char_edits": 5
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [
+              {
+                "text": "malligo",
+                "confidence": 0.9668327569961548,
+                "source_coordinates": [
+                  1376,
+                  41,
+                  1784,
+                  231
+                ]
+              }
+            ],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": null,
+            "unverified_extra_content": [
+              {
+                "kind": "unannotated_output_line",
+                "text": "malligo"
+              }
+            ],
+            "annotation_coverage": "partial",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH11",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "maky the red hack Layle",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 9,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "to make the red tarte Layde",
+                "recognized": "maky the red hack Layle",
+                "confidence": 0.7648640275001526,
+                "similarity": 0.72,
+                "char_edits": 9
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.3333,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH12",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "to maks ths whith tunk Lay de\nginth of creame, 4 or o whihs of g\nTdelle",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 8,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "to make the white tarte Layde",
+                "recognized": "to maks ths whith tunk Lay de",
+                "confidence": 0.8653932809829712,
+                "similarity": 0.759,
+                "char_edits": 8
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [
+              {
+                "text": "ginth of creame, 4 or o whihs of g",
+                "confidence": 0.8845656514167786,
+                "source_coordinates": [
+                  0,
+                  153,
+                  2100,
+                  350
+                ]
+              },
+              {
+                "text": "Tdelle",
+                "confidence": 0.3321857154369354,
+                "source_coordinates": [
+                  12,
+                  303,
+                  827,
+                  370
+                ]
+              }
+            ],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": null,
+            "unverified_extra_content": [
+              {
+                "kind": "unannotated_output_line",
+                "text": "ginth of creame, 4 or o whihs of g"
+              },
+              {
+                "kind": "unannotated_output_line",
+                "text": "Tdelle"
+              }
+            ],
+            "annotation_coverage": "partial",
+            "exact_line_accuracy": 0.0
+          }
+        ]
+      },
+      "classification_rules": {
+        "LIGHT_REVIEW": "0 reuploads, <=5% whole-line retypes, <=2 edit fields/page",
+        "MODERATE_REVIEW": "<=20% reuploads, <=20% whole-line retypes, <=8 edits/page",
+        "HEAVY_RETRANSCRIPTION": "otherwise"
+      }
+    },
+    "PaddleOCR-VL-1.6": {
+      "recipe_pages": 20,
+      "review_classification_scope": "20 complete synthetic recipe pages; handwriting crop edits are reported separately.",
+      "total_manual_edit_fields": 8,
+      "manual_edit_fields_per_page": 0.4,
+      "total_manual_edit_chars": 24,
+      "critical_fields_manually_changed": 4,
+      "pages_with_zero_edit": 16,
+      "pages_with_zero_edit_ratio": 0.8,
+      "pages_with_light_edits": 4,
+      "whole_line_retypes": 0,
+      "reupload_pages": 0,
+      "review_classification": "LIGHT_REVIEW",
+      "genuine_handwriting_review": {
+        "crops": 12,
+        "complete_transcript_crops": 7,
+        "partial_transcript_crops": 5,
+        "manual_edit_fields": 11,
+        "manual_edit_chars": 123,
+        "critical_fields_manually_changed": 0,
+        "whole_line_retypes": 1,
+        "reupload_crops": 0,
+        "review_payloads": [
+          {
+            "sample_id": "GH01",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "Almonds Aumbals",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 1,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "Almonds Jumbals",
+                "recognized": "Almonds Aumbals",
+                "confidence": null,
+                "similarity": 0.933,
+                "char_edits": 1
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.0667,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH02",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "Take half a pound of the best for�ing offmond",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 7,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "Take half a pound of the best Jordine Almonds",
+                "recognized": "Take half a pound of the best for�ing offmond",
+                "confidence": null,
+                "similarity": 0.867,
+                "char_edits": 7
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.1556,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH03",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "To make a party big basket cake:",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 4,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "To make a pritty big bisket cake",
+                "recognized": "To make a party big basket cake:",
+                "confidence": null,
+                "similarity": 0.921,
+                "char_edits": 4
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.125,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH04",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "Take 8 eggs & a pound of good butter broken in bits\n& a pound of fine sugar beaten time; bent these",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [
+              {
+                "type": "critical_fact",
+                "fact": {
+                  "kind": "quantity_unit_ingredient",
+                  "quantity": 8.0,
+                  "unit": "count",
+                  "ingredient": "eggs",
+                  "raw": "8 eggs"
+                }
+              }
+            ],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 1
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 3,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "Take 8 eggs & a pound of good butter broken in bits",
+                "recognized": "Take 8 eggs & a pound of good butter broken in bits",
+                "confidence": null,
+                "similarity": 1.0,
+                "char_edits": 0
+              },
+              {
+                "line_index": 1,
+                "ground_truth": "& a pound of fine sugar beaten fine; beat these",
+                "recognized": "& a pound of fine sugar beaten time; bent these",
+                "confidence": null,
+                "similarity": 0.932,
+                "char_edits": 3
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [
+              {
+                "kind": "quantity_unit_ingredient",
+                "quantity": 8.0,
+                "unit": "count",
+                "ingredient": "eggs",
+                "raw": "8 eggs"
+              }
+            ],
+            "recognized_critical_facts": [
+              {
+                "kind": "quantity_unit_ingredient",
+                "quantity": 8.0,
+                "unit": "count",
+                "ingredient": "eggs",
+                "raw": "8 eggs"
+              }
+            ],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.0323,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.5
+          },
+          {
+            "sample_id": "GH05",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "To make ginger bread:",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [],
+            "format_only_observations": [],
+            "manual_edit_field_count": 0,
+            "manual_edit_chars": 0,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "To make ginger bread",
+                "recognized": "To make ginger bread:",
+                "confidence": null,
+                "similarity": 1.0,
+                "char_edits": 0
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.0,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 1.0
+          },
+          {
+            "sample_id": "GH06",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "Take a pound & half a of Treakle, & 3 quarters of a",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 3,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "Take a pound & halfe of Treacle & 3 quarters of a",
+                "recognized": "Take a pound & half a of Treakle, & 3 quarters of a",
+                "confidence": null,
+                "similarity": 0.945,
+                "char_edits": 3
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": null,
+            "unverified_extra_content": [],
+            "annotation_coverage": "partial",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH07",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "To make gimmacts:\nI Hower, half a po",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 2,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "To make gimmalls",
+                "recognized": "To make gimmacts:",
+                "confidence": null,
+                "similarity": 0.875,
+                "char_edits": 2
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [
+              {
+                "text": "I Hower, half a po",
+                "confidence": null,
+                "source_coordinates": [
+                  66,
+                  0,
+                  1370,
+                  219
+                ],
+                "block_label": "text"
+              }
+            ],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": null,
+            "unverified_extra_content": [
+              {
+                "kind": "unannotated_output_line",
+                "text": "I Hower, half a po"
+              }
+            ],
+            "annotation_coverage": "partial",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH08",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "Take a pound of honey, a sweet butter, 3 years being finely beaten, a lump of sweet butter together, you may",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 82,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": true,
+            "whole_line_retype_count": 1,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "Take a pound of flower",
+                "recognized": "Take a pound of honey, a sweet butter, 3 years being finely beaten, a lump of sweet butter together, you may",
+                "confidence": null,
+                "similarity": 0.317,
+                "char_edits": 82
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": null,
+            "unverified_extra_content": [
+              {
+                "kind": "unverified_ingredient_token",
+                "value": "butter"
+              },
+              {
+                "kind": "unverified_ingredient_token",
+                "value": "honey"
+              }
+            ],
+            "annotation_coverage": "partial",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH09",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "to make layed hurts",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 4,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "To make Layd tartes",
+                "recognized": "to make layed hurts",
+                "confidence": null,
+                "similarity": 0.842,
+                "char_edits": 4
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.2105,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH10",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "to make y blacks arrive",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 6,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "to make ye blacke tarte",
+                "recognized": "to make y blacks arrive",
+                "confidence": null,
+                "similarity": 0.826,
+                "char_edits": 6
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": null,
+            "unverified_extra_content": [],
+            "annotation_coverage": "partial",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH11",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "to make the red turtle layide",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 3,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "to make the red tarte Layde",
+                "recognized": "to make the red turtle layide",
+                "confidence": null,
+                "similarity": 0.929,
+                "char_edits": 3
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": 0.1111,
+            "unverified_extra_content": [],
+            "annotation_coverage": "complete",
+            "exact_line_accuracy": 0.0
+          },
+          {
+            "sample_id": "GH12",
+            "sample_class": "GENUINE_HANDWRITING",
+            "recognized_text": "to make this while hurt the layde\nyards of cream, or so, whiles of",
+            "highlighted_fields": [],
+            "visual_confirm_only_fields": [],
+            "manual_edit_fields": [
+              {
+                "type": "line_text",
+                "line_index": 0
+              }
+            ],
+            "format_only_observations": [],
+            "manual_edit_field_count": 1,
+            "manual_edit_chars": 8,
+            "critical_fields_manually_changed": 0,
+            "whole_line_retype_required": false,
+            "whole_line_retype_count": 0,
+            "reupload_required": false,
+            "line_pairs": [
+              {
+                "line_index": 0,
+                "ground_truth": "to make the white tarte Layde",
+                "recognized": "to make this while hurt the layde",
+                "confidence": null,
+                "similarity": 0.806,
+                "char_edits": 8
+              }
+            ],
+            "missing_lines": [],
+            "extra_lines": [
+              {
+                "text": "yards of cream, or so, whiles of",
+                "confidence": null,
+                "source_coordinates": [
+                  2,
+                  0,
+                  2100,
+                  370
+                ],
+                "block_label": "text"
+              }
+            ],
+            "expected_critical_facts": [],
+            "recognized_critical_facts": [],
+            "semantic_critical_errors": [],
+            "silent_critical_errors": [],
+            "missing_critical_fields": [],
+            "unsupported_hallucinations": [],
+            "char_error_rate": null,
+            "unverified_extra_content": [
+              {
+                "kind": "unannotated_output_line",
+                "text": "yards of cream, or so, whiles of"
+              },
+              {
+                "kind": "unverified_ingredient_token",
+                "value": "cream"
+              }
+            ],
+            "annotation_coverage": "partial",
+            "exact_line_accuracy": 0.0
+          }
+        ]
+      },
+      "classification_rules": {
+        "LIGHT_REVIEW": "0 reuploads, <=5% whole-line retypes, <=2 edit fields/page",
+        "MODERATE_REVIEW": "<=20% reuploads, <=20% whole-line retypes, <=8 edits/page",
+        "HEAVY_RETRANSCRIPTION": "otherwise"
+      }
+    }
+  },
+  "comparison": {
+    "priority_order": [
+      "silent critical semantic errors",
+      "unsupported hallucinations",
+      "missing critical fields",
+      "manual edit burden",
+      "whole-line retranscription",
+      "reupload rate",
+      "genuine-handwriting edit burden",
+      "genuine handwriting",
+      "synthetic recipe",
+      "multilingual notes",
+      "latency",
+      "resource footprint"
+    ],
+    "candidates": {
+      "PP-OCRv6_medium": {
+        "semantic_critical_errors": 1,
+        "synthetic_semantic_critical_errors": 0,
+        "genuine_handwriting_semantic_critical_errors": 1,
+        "silent_critical_errors": 0,
+        "hallucinations": 0,
+        "unverified_partial_handwriting_content": 5,
+        "missing_critical_fields": 1,
+        "manual_edit_fields": 0,
+        "manual_edit_chars": 0,
+        "whole_line_retypes": 0,
+        "reupload_pages": 0,
+        "handwriting_manual_edit_fields": 13,
+        "handwriting_manual_edit_chars": 69,
+        "handwriting_whole_line_retypes": 0,
+        "english_handwriting_score": 0.8273,
+        "handwriting_scored_samples": 7,
+        "handwriting_partial_annotation_samples": 5,
+        "synthetic_recipe_score": 1.0,
+        "multilingual_probe_notes": [
+          {
+            "sample_id": "ML01",
+            "language": "French",
+            "raw_output": "RECETTE: Tarte aux pommes\nINGRÉDIENTS\n2 pommes\n1 tasse de farine\nCuire 30 min.",
+            "blank": false
+          },
+          {
+            "sample_id": "ML02",
+            "language": "German",
+            "raw_output": "REZEPT: Apfelkuchen\nZUTATEN\n2 Äpfel\n1 Tasse Mehl\nBei 180°C 30 min backen.",
+            "blank": false
+          },
+          {
+            "sample_id": "ML03",
+            "language": "Spanish",
+            "raw_output": "RECETA: Tarta de manzana\nINGREDIENTES\n2 manzanas\n1 taza de harina\nHornear 30 min.",
+            "blank": false
+          }
+        ],
+        "latency": 133.675,
+        "peak_ram": 2019479552,
+        "model_size": 164762132,
+        "install_complexity": "Pinned PaddleOCR + Transformers CPU packages; PaddleOCR-VL additionally uses the official doc-parser extra; no PaddlePaddle runtime wheel",
+        "runtime_complexity": "PaddleOCR Transformers",
+        "review_classification": "LIGHT_REVIEW",
+        "runtime_status": "complete"
+      },
+      "PaddleOCR-VL-1.6": {
+        "semantic_critical_errors": 4,
+        "synthetic_semantic_critical_errors": 4,
+        "genuine_handwriting_semantic_critical_errors": 0,
+        "silent_critical_errors": 0,
+        "hallucinations": 0,
+        "unverified_partial_handwriting_content": 5,
+        "missing_critical_fields": 4,
+        "manual_edit_fields": 8,
+        "manual_edit_chars": 24,
+        "whole_line_retypes": 0,
+        "reupload_pages": 0,
+        "handwriting_manual_edit_fields": 11,
+        "handwriting_manual_edit_chars": 123,
+        "handwriting_whole_line_retypes": 1,
+        "english_handwriting_score": 0.8998,
+        "handwriting_scored_samples": 7,
+        "handwriting_partial_annotation_samples": 5,
+        "synthetic_recipe_score": 0.9481,
+        "multilingual_probe_notes": [
+          {
+            "sample_id": "ML01",
+            "language": "French",
+            "raw_output": "RECETTE: Tarte aux pommes\nINGRÉDIENTS\n2 pommes\n1 tasse de farine\nCuire 30 min.",
+            "blank": false
+          },
+          {
+            "sample_id": "ML02",
+            "language": "German",
+            "raw_output": "REZEPT: Apfelkuchen\nZUTATEN\n2 Äpfel\n1 Tasse Mehl\nBei  $ 180^{\\circ} $C 30 min backen.",
+            "blank": false
+          },
+          {
+            "sample_id": "ML03",
+            "language": "Spanish",
+            "raw_output": "RECETA: Tarta de manzana\nINGREDIENTES\n2 manzanas\n1 taza de harina\nHornear 30 min.",
+            "blank": false
+          }
+        ],
+        "latency": 520.06,
+        "peak_ram": 3915350016,
+        "model_size": 2052140799,
+        "install_complexity": "Pinned PaddleOCR + Transformers CPU packages; PaddleOCR-VL additionally uses the official doc-parser extra; no PaddlePaddle runtime wheel",
+        "runtime_complexity": "PaddleOCRVL Transformers",
+        "review_classification": "LIGHT_REVIEW",
+        "runtime_status": "complete"
+      }
+    },
+    "recommended_primary": "PP-OCRv6_medium",
+    "rejected_primary": "PaddleOCR-VL-1.6",
+    "recommendation_status": "SELECTION_CANDIDATE",
+    "reason": "Lexicographic priority follows the contract; PP-OCRv6_medium breaks exact ties as the preferred deterministic baseline.",
+    "remaining_high_risk_cases": [
+      {
+        "sample_id": "GH02",
+        "crop_id": "GH02",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "primary_output": "Tate Lalf a ponnd of the fost fording ottma",
+        "semantic_issue": [],
+        "risk_type": [
+          "manual_review"
+        ],
+        "manual_correction_required": true
+      },
+      {
+        "sample_id": "GH03",
+        "crop_id": "GH03",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "primary_output": "To make npoitty big bisket cake!",
+        "semantic_issue": [],
+        "risk_type": [
+          "manual_review"
+        ],
+        "manual_correction_required": true
+      },
+      {
+        "sample_id": "GH04",
+        "crop_id": "GH04",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "primary_output": "Take & eggs & a ponnd of good butter broken m bits\n& a pouno of fine sugar beaten fime; bent Ahiese",
+        "semantic_issue": [
+          "critical_error"
+        ],
+        "risk_type": [
+          "manual_review"
+        ],
+        "manual_correction_required": true
+      },
+      {
+        "sample_id": "GH05",
+        "crop_id": "GH05",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "primary_output": "To make gigur bread:",
+        "semantic_issue": [],
+        "risk_type": [
+          "manual_review"
+        ],
+        "manual_correction_required": true
+      },
+      {
+        "sample_id": "GH06",
+        "crop_id": "GH06",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "primary_output": "Take a pound & halfe of Treakle, & 3 goarters of\nslow tver",
+        "semantic_issue": [
+          "unverified_extra_content"
+        ],
+        "risk_type": [
+          "manual_review",
+          "partial_ground_truth_scope"
+        ],
+        "manual_correction_required": true
+      },
+      {
+        "sample_id": "GH07",
+        "crop_id": "GH07",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "primary_output": "To make gimmals:",
+        "semantic_issue": [],
+        "risk_type": [
+          "manual_review",
+          "partial_ground_truth_scope"
+        ],
+        "manual_correction_required": true
+      },
+      {
+        "sample_id": "GH08",
+        "crop_id": "GH08",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+        "primary_output": "Take aponnd of ion\ntogether, you may",
+        "semantic_issue": [
+          "unverified_extra_content"
+        ],
+        "risk_type": [
+          "manual_review",
+          "partial_ground_truth_scope"
+        ],
+        "manual_correction_required": true
+      },
+      {
+        "sample_id": "GH09",
+        "crop_id": "GH09",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+        "primary_output": "to maky fayd burts",
+        "semantic_issue": [],
+        "risk_type": [
+          "manual_review"
+        ],
+        "manual_correction_required": true
+      },
+      {
+        "sample_id": "GH10",
+        "crop_id": "GH10",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+        "primary_output": "to make y blacky Larh\nmalligo",
+        "semantic_issue": [
+          "unverified_extra_content"
+        ],
+        "risk_type": [
+          "manual_review",
+          "partial_ground_truth_scope"
+        ],
+        "manual_correction_required": true
+      },
+      {
+        "sample_id": "GH11",
+        "crop_id": "GH11",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+        "primary_output": "maky the red hack Layle",
+        "semantic_issue": [],
+        "risk_type": [
+          "manual_review"
+        ],
+        "manual_correction_required": true
+      },
+      {
+        "sample_id": "GH12",
+        "crop_id": "GH12",
+        "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+        "primary_output": "to maks ths whith tunk Lay de\nginth of creame, 4 or o whihs of g\nTdelle",
+        "semantic_issue": [
+          "unverified_extra_content"
+        ],
+        "risk_type": [
+          "manual_review",
+          "partial_ground_truth_scope"
+        ],
+        "manual_correction_required": true
+      }
+    ],
+    "api_fallback_tested": false,
+    "third_candidate_tested": false
+  }
+}

@@ -433,9 +433,9 @@
       "source_id": "wellcome-L0074537",
       "crop": [
         700,
-        2540,
+        2570,
         3500,
-        2750
+        2810
       ],
       "ground_truth": "Take 8 eggs & a pound of good butter broken in bits\n& a pound of fine sugar beaten fine; beat these",
       "recipe_context": "bisket cake opening",
@@ -665,5 +665,6 @@
       "synthetic": true,
       "source": "Generated DejaVu Sans probe; not included in English scoring."
     }
-  ]
+  ],
+  "r3a_input_set_note": "Final annotated corpus uses the same GH04 input crop (2800x240, SHA-256 f932e6d4...) consumed by both candidates in successful Actions run 36289130217; two-line ground truth and partial transcript coverage flags were corrected after the run. Both candidate inputs were byte-identical (35/35 SHA-256 matches)."
 }

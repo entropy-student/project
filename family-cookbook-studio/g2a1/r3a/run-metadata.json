@@ -1,0 +1,75 @@
+{
+  "gate": "G2A1-R3A — Free / Local Primary Benchmark",
+  "selected_evidence_run": {
+    "id": 36289130217,
+    "run_attempt": 1,
+    "head_sha": "e9897c20dbe62fabd3a7e83f6de04966c28675dc",
+    "status": "completed",
+    "conclusion": "success",
+    "workflow_path": ".github/workflows/family-cookbook-g2a1-r3a.yml",
+    "workflow_blob_sha": "223ca8213c0ea110eaa31efb6de23de20a95ce40",
+    "artifact_id": 10921757339,
+    "artifact_name": "family-cookbook-g2a1-r3a-36289130217",
+    "artifact_size_bytes": 60650,
+    "artifact_sha256": "1c0fc7e1dc319da4d7ec133311982fc84febdbd0d20a0858a8e2bcf20d78be4a",
+    "all_steps_success": true
+  },
+  "actions_attempts": [
+    {
+      "id": 36288635585,
+      "head_sha": "ee611efe5c91f25d288c91c78a7eae2517b37318",
+      "status": "completed",
+      "conclusion": "failure",
+      "note": "PaddleOCR-VL initialization blocked before model inference by missing official doc-parser optional dependency; PP-OCRv6 completed; fixed by adding official extra."
+    },
+    {
+      "id": 36289130217,
+      "head_sha": "e9897c20dbe62fabd3a7e83f6de04966c28675dc",
+      "status": "completed",
+      "conclusion": "success",
+      "candidate_inputs": {
+        "ppocrv6": 35,
+        "paddleocr_vl": 35,
+        "sha256_mismatches": 0
+      }
+    },
+    {
+      "id": 36290381171,
+      "head_sha": "3058603e6620617520335d06857e384b6eaf045d",
+      "status": "in_progress",
+      "conclusion": null,
+      "active_step": "Run PaddleOCR-VL-1.6 on all shared inputs",
+      "last_observed_at": "2026-09-27 04:21:21 UTC",
+      "note": "Not included in selected scoring set; its GH04 crop bounds differed from successful run 2 and no conclusion/artifact was available at last read."
+    }
+  ],
+  "posthoc_scoring": {
+    "script": "family-cookbook-studio/g2a1/r3a/score_benchmark.py",
+    "method": "deterministic scoring only over run 2 raw OCR outputs; no OCR/model imports, no inference",
+    "host_os": "Windows local PowerShell",
+    "powershell": "7.6.5",
+    "python": "3.10.11",
+    "why": "corrected GH04 two-line transcript and marked five partial transcript crops as unverified after run 2; GH04 input coordinates in final corpus were reset to run 2's byte-identical input crop so both candidates remain measured on the final labeled input set."
+  },
+  "api_tokens": 0,
+  "api_calls": 0,
+  "repository_secrets_used": false,
+  "third_candidate_tested": false,
+  "paid_api_used": false,
+  "input_corpus": {
+    "synthetic_typography": 20,
+    "genuine_english_handwriting": 12,
+    "multilingual_probes": 3,
+    "total": 35,
+    "handwriting_complete_transcripts": 7,
+    "handwriting_partial_transcripts": 5,
+    "same_input_sha256_for_both_candidates": true
+  },
+  "selection": {
+    "recommended_primary": "PP-OCRv6_medium",
+    "rejected_primary": "PaddleOCR-VL-1.6",
+    "review_classification": "LIGHT_REVIEW"
+  },
+  "stop_at_reviewer": true,
+  "main_merged": false
+}

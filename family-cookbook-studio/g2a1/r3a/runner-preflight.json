@@ -1,0 +1,57 @@
+{
+  "runner": {
+    "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "image": "ubuntu24",
+    "image_version": "20260920.314.1",
+    "name": "GitHub Actions 1000000085",
+    "arch": "x86_64"
+  },
+  "cpu": {
+    "model": "AMD EPYC 9V74 80-Core Processor",
+    "logical_processors": 4
+  },
+  "ram": {
+    "total_bytes": 16766406656,
+    "available_bytes": 15782260736,
+    "swap_total_bytes": 3221221376,
+    "swap_free_bytes": 3221221376
+  },
+  "disk": {
+    "root_total_bytes": 154894188544,
+    "root_free_bytes": 92343398400
+  },
+  "python": {
+    "version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "architecture": "64bit"
+  },
+  "gpu": {
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: 'nvidia-smi'"
+  },
+  "network": {
+    "pypi": {
+      "reachable": true,
+      "status": 200
+    },
+    "torch_cpu": {
+      "reachable": true,
+      "status": 200
+    },
+    "hf_vl": {
+      "reachable": true,
+      "status": 200
+    },
+    "commons": {
+      "reachable": true,
+      "status": 200
+    },
+    "image": {
+      "reachable": true,
+      "status": 200
+    }
+  },
+  "api_tokens": 0,
+  "repository_secrets_used": false,
+  "resource_blocked": false,
+  "network_blocked": false,
+  "status": "ready"
+}
