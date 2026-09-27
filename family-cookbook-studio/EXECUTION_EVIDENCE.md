@@ -426,3 +426,61 @@ Interpretation:
 - Mistral OCR 4.1 is not rejected for recognition quality; Free-mode OCR availability/rate limit prevented evaluation.
 - Do not classify this as `FALLBACK=NONE`.
 - Google Document AI technical integration remains viable and is restored as the next R3B execution path after Billing activation.
+
+
+## G2A1-R3B Baidu Handwriting OCR — Reviewer Evidence
+
+Actions run: `36305680927`  
+Trigger HEAD: `2f06f8b069395ca2bd750e2911fcbcf7a23c0758`
+
+### Provider execution
+- Baidu API Key present: YES (value never exposed)
+- Baidu Secret Key present: YES (value never exposed)
+- OAuth access token acquisition: PASS
+- fixed public hard cases: 11
+- attempted pages: 11
+- successful pages: 11
+- paid mode authorized: NO
+- free-path only: YES
+
+### Whole-transcript comparison
+PP-OCRv6 baseline:
+- manual edit fields: 13
+- manual edit chars: 69
+- critical field errors: 1
+- silent critical errors: 0
+- confirmed hallucinations: 0
+
+Baidu candidate:
+- manual edit fields: 12
+- manual edit chars: 100
+- critical field errors: 0
+- silent critical errors: 0
+- confirmed hallucinations: 0
+
+Improved samples: GH04, GH05, GH09.  
+Worsened samples: GH02, GH03, GH06, GH07, GH08, GH10, GH11.
+
+### Critical evidence
+GH04 ground truth begins `Take 8 eggs...`.
+
+PP-OCRv6:
+`Take & eggs ...`
+
+Baidu:
+`Take 8 eggs ...`
+
+Therefore Baidu recovered the only critical recipe fact missed by PP-OCRv6 in the accepted hard-case benchmark.
+
+### Reviewer interpretation
+Baidu is **not accepted as a whole-transcript canonical fallback**, because total edit burden worsened (69 → 100 chars) and 7/11 cases regressed.
+
+Baidu **is accepted as a bounded critical-field second opinion**:
+- invoke only on semantically high-risk quantity/unit/temperature/time/critical ingredient crops;
+- preserve PP-OCRv6 raw/canonical candidate;
+- store Baidu output separately with provider provenance;
+- never silently overwrite the primary transcript;
+- recovered/conflicting critical values are highlighted in the one consolidated manual-edit review.
+
+Canonical transcript fallback: `NONE`  
+Critical second opinion: `BAIDU_HANDWRITING_OCR`.
