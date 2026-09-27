@@ -2810,12 +2810,40 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 
 ## Current Executor Handoff — K7 R1 Canary populated Checkout (2026-09-28)
 
-- Result: `PASS_CANDIDATE_K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION`; `STOP_AT_REVIEWER=YES`.
-- Reviewer accepted the single Resend qualification email as Delivered and Owner-confirmed received: send count 1; no resend or repeated Resend verification was performed. No API-key value/hash was accessed.
-- Reconciled the existing exact hidden Canary product, ID 1224; it is published once, Simple/Virtual, JPY 500, downloadable off, sold individually, stock management off, and carries the approved controlled-canary disclosure. No duplicate product was published; Product 223 was not changed.
-- Populated the previously empty cart once with the Canary product at quantity 1. Public Checkout showed the item and total at JPY 500, no shipping/tax charge rows (zero under the virtual-product and accepted store-tax-disabled state), and PayPal visible.
-- Stopped before the final Place order/PayPal action. Order creation, real/Sandbox payment, refund, and Live actions are all zero. Soft Launch remains unauthorized.
-- Checkout tab is retained for Reviewer handoff. Detailed redacted facts are in `EXECUTION_EVIDENCE.md`.
-- Evidence commit: `55d0a98ffb8f1248b5e3ab528ba667e2b9daf1f8`. Handoff commit and GitHub readbacks are recorded after this append. No Reviewer-owned file or local worktree was modified.
+```text
+GATE=K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+RESULT=PASS_CANDIDATE_K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+EMAIL_TEST_SEND_COUNT=1
+RESEND_PROVIDER_STATUS=DELIVERED
+OWNER_RECIPIENT_ARRIVAL=YES
+EMAIL_TEST=DELIVERED
+EMAIL_READINESS=PASS
+BLIND_RESEND=NO
+CANARY_PRODUCT=CREATED_EXACT_SPEC
+CANARY_PRODUCT_ID=1224
+CANARY_PRODUCT_HIDDEN=YES
+PRODUCT_223_MUTATION=0
+STORE_TAX_ENABLED=NO
+CART_SESSION_MUTATION=1_CANARY_QUANTITY_1
+CANARY_ITEM_TOTAL_JPY=500
+CANARY_SHIPPING_JPY=0
+CANARY_TAX_JPY=0
+CANARY_ORDER_TOTAL_JPY=500
+PUBLIC_POPULATED_CHECKOUT=PASS
+PAYPAL_METHOD_PRESENT=YES
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+SANDBOX_BUYER_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+PAYPAL_LIVE=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+- Reviewer accepted the unique Resend qualification email as Delivered and Owner-confirmed received. No resend or repeated Resend verification was performed; no API-key value/hash was accessed.
+- Reconciled the already-published exact hidden Canary product (ID 1224). No duplicate product was published, and Product 223 was untouched.
+- Populated the previously empty cart once with the Canary product at quantity 1. Checkout showed JPY 500 item/subtotal/total, with zero shipping and tax charges under the virtual-product and accepted store-tax-disabled state; PayPal was visible.
+- Stopped before the final Place order/PayPal action. No order, payment, refund, or Live action occurred. Soft Launch remains unauthorized.
+- Checkout tab is retained for Reviewer handoff. Evidence commit: `6fd55bba67ea1998526d35d2042da073be149b06`. GitHub Evidence and Handoff readbacks are verified after these writes. No Reviewer-owned file or local worktree was modified.
 
 `STOP_AT_REVIEWER=YES`
