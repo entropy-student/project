@@ -5189,3 +5189,48 @@ STOP_AT_REVIEWER=YES
 ```
 
 The Admin response remained in the remote process memory and was not emitted or saved. No Caddyfile write, Admin API load/adapt, reload, restart, route/network/DNS mutation, candidate file, payment action, or additional SSH invocation occurred. The local one-use PowerShell SSH wrapper was deleted after the session. Restart counts were not read correctly by the state-only probe and are explicitly left unverified; no second SSH session was attempted.
+
+
+## K6_PHASE_F_R1R5_BEHAVIORAL_EDGE_TEST_PRESERVATION_AND_CANDIDATE_ADAPT — RETURN (2026-09-27)
+
+```text
+GATE=K6_PHASE_F_R1R5_BEHAVIORAL_EDGE_TEST_PRESERVATION_AND_CANDIDATE_ADAPT
+RESULT=RETURN_REVIEWER_F_R1R5_SSH_WRAPPER_INPUT_PIPE_CLOSED
+SUMMARY=One strict SSH native process was started, but its stdin pipe was already closed when the local wrapper attempted to send the bounded read-only payload. The wrapper therefore did not capture native exit status or stderr, and no remote identity or remote payload completion is claimed. No retry was made.
+LOCAL_SHARED_VPS_HANDOFF=READ_UNIQUE_ROOT_FILE
+IDENTITY_REFERENCE_CHECK=PASS_PATH_EXISTS
+PUBLIC_FINGERPRINT_MATCH=YES
+KNOWN_HOSTS_PIN_CHECK=PASS_ALL_3_RECORDED_PINS_PRESENT
+CURRENT_MINICRAFT_DNS=NXDOMAIN;GOOGLE_DOH_A_AAAA_CNAME_STATUS=3;ANSWERS=0
+SSH_ATTEMPTS=1
+SSH_NATIVE_EXIT=UNAVAILABLE_WRAPPER_INPUT_PIPE_CLOSED_BEFORE_EXIT_CAPTURE
+SSH_FAILURE_CLASS=LOCAL_WRAPPER_INPUT_PIPE_CLOSED_REMOTE_CAUSE_UNVERIFIED
+SSH_HOST_KEY_PRESENTED=UNVERIFIED
+SSH_HOST_KEY_MATCH=UNVERIFIED
+REMOTE_PRE_SUDO_IDENTITY=UNVERIFIED
+REMOTE_PAYLOAD_EXECUTION=UNVERIFIED
+CADDY_RUNTIME_CONTINUITY=NOT_OBTAINED
+WORDPRESS_RUNTIME_CONTINUITY=NOT_OBTAINED
+MARIADB_HEALTH=NOT_OBTAINED
+DURABLE_CADDYFILE_SHA256=NOT_READ_THIS_GATE
+CONTAINER_ADMIN_CONFIG_GET=NOT_OBTAINED
+CURRENT_ACTIVE_CONFIG_SHA256=NOT_OBTAINED
+EDGE_TEST_CURRENT_HTTPS_STATUS=NOT_OBTAINED
+EDGE_TEST_CURRENT_BODY_BYTES=NOT_OBTAINED
+EDGE_TEST_CURRENT_BODY_SHA256=NOT_OBTAINED
+EDGE_TEST_CURRENT_HTTP_BEHAVIOR=NOT_OBTAINED
+CANDIDATE_CADDYFILE_BYTES=NOT_CREATED
+CANDIDATE_CADDYFILE_SHA256=NOT_CREATED
+CANDIDATE_CADDYFILE_ADAPT=NOT_RUN
+LOCAL_HELPER_CLEANUP=PASS;HELPER_DELETED_AND_ABSENCE_VERIFIED
+REMOTE_WRITES=0;NO_WRITE_COMMAND_AUTHORIZED_OR_PRESENT_IN_BOUNDED_PAYLOAD
+SHARED_INFRA_WRITES=0
+PUBLIC_INGRESS_CHANGE=0
+PAYMENT_ACTIONS=0
+PAYPAL_LIVE=NO_ACCEPTED_BASELINE_NOT_RECHECKED
+SECRET_VALUE_OR_HASH_ACCESS=0
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+The attempt ended at the local PowerShell/native-process transport boundary. Since the native exit and stderr were not captured, the remote cause and whether any read-only payload bytes arrived are unknown. The bounded payload contained only identity reads, Docker/Caddy read-only inspection, local loopback HTTP probes, and Caddy adapt-only; it contained no Caddy/DNS/network/application/payment/Secret writes. The temporary local wrapper was removed and verified absent. No second SSH invocation or post-failure remote action occurred.
