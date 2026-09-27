@@ -54,3 +54,9 @@ jobs:
           path: ${{ runner.temp }}/g2a1-r3b-artifacts/*.json
           if-no-files-found: error
           retention-days: 1
+
+      - name: Remove ephemeral R3B runtime data
+        if: always()
+        shell: bash
+        run: |
+          rm -rf -- "$RUNNER_TEMP/g2a1-r3b-data" "$RUNNER_TEMP/g2a1-r3b-venv"
