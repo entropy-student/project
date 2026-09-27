@@ -16,7 +16,8 @@
 | `G2A1_INPUT_OCR_COMPONENT_POC.md` | Original input/OCR/reusable-component feasibility Gate | **RETURNED; partial evidence accepted** |
 | `G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md` | OCR runtime + Family WP/Woo testbed remediation/completion | **RETURNED; local resource blocked** |
 | `G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md` | OCR + Family WP/Woo PoC on isolated GitHub Actions runner | **RETURNED; component feasibility accepted, OCR observations accepted** |
-| `G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md` | Target language + review UX decision; R3 benchmark scope | **OWNER DECISIONS RESOLVED / R3 SPEC** |
+| `G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md` | Target language + review UX decision | **OWNER DECISIONS RESOLVED** |
+| `G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md` | Free/local primary selection then bounded API fallback selection | **CURRENT R3 CONTRACT; R3A ACTIVE** |
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **NEXT / HOLD** |
 | `ACQUISITION_GROWTH_PLAN.md` | Demand/acquisition validation plan | Supporting plan; not transaction evidence |
 
