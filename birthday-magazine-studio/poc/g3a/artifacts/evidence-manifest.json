@@ -1,0 +1,176 @@
+{
+  "gate": "G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP",
+  "capturedAtUtc": "2026-09-27T14:31:16.2836683Z",
+  "syntheticEvidenceOnly": true,
+  "fileCount": 26,
+  "files": [
+    {
+      "path": "final-state.json",
+      "sizeBytes": 977,
+      "sha256": "059064d0383fb6c58ec284dab8fd02d609e03071c278bf5da9e431d62eb5e911"
+    },
+    {
+      "path": "host-inventory-baseline.json",
+      "sizeBytes": 908,
+      "sha256": "8c4a622af63f219cae30bd001b215b31550076f65ddea1017f614dceb7cb53a2"
+    },
+    {
+      "path": "host-inventory-before-cleanup.json",
+      "sizeBytes": 1746,
+      "sha256": "1e614b723a483776645ee98ef7d3d671777c6139b6a07cc5f9cd4df4671c6c5e"
+    },
+    {
+      "path": "host-inventory-readback.json",
+      "sizeBytes": 1118,
+      "sha256": "fff13f5db10106cc3d33d1210c8f3be2d4c9d3a62d1fb717fb1555b3fc2d24eb"
+    },
+    {
+      "path": "journey-report.json",
+      "sizeBytes": 9431,
+      "sha256": "7787792958504ea1e9b816ece56b3105dd28f4dd8a66d08828147a3c9d5a1b02"
+    },
+    {
+      "path": "runtime-health.json",
+      "sizeBytes": 1749,
+      "sha256": "8500121df2ca6b83e9b5ada1f941d1ae1561f7feac6e799f811b32c69ad054c7"
+    },
+    {
+      "path": "runtime-setup.json",
+      "sizeBytes": 4528,
+      "sha256": "889bbbc4610cc789e0018776774f5ae148c7a777a8a0ee8a1214f7a8aa32e3d5"
+    },
+    {
+      "path": "screenshots/buyer-a-order-details.png",
+      "sizeBytes": 129078,
+      "sha256": "5a805bd7e7b7f018fd6ae39716e0f165e1cbad8f50248a168e4b2ff61180d737",
+      "width": 1440,
+      "height": 1722
+    },
+    {
+      "path": "screenshots/buyer-a-orders.png",
+      "sizeBytes": 80147,
+      "sha256": "37c7cc31e886796898f69da989acc55874ee87768577f10eba24797be64da728",
+      "width": 1440,
+      "height": 1284
+    },
+    {
+      "path": "screenshots/buyer-a-workspace.png",
+      "sizeBytes": 26423,
+      "sha256": "d1dbdc35271446b33286588a414f7209660d36fbd4977ebcef3290496825c4ec",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "path": "screenshots/buyer-b-order-denied.png",
+      "sizeBytes": 68822,
+      "sha256": "a4e212416be6ba85105150dba9fe68c0c4f7620c6f48af133ae34efb572404ca",
+      "width": 1440,
+      "height": 1284
+    },
+    {
+      "path": "screenshots/buyer-b-orders.png",
+      "sizeBytes": 70193,
+      "sha256": "76f8eae78097175a1f7f6c9a729517991900f0e7b02b17469418384ff16b1111",
+      "width": 1440,
+      "height": 1284
+    },
+    {
+      "path": "screenshots/buyer-b-workspace-denied.png",
+      "sizeBytes": 8813,
+      "sha256": "ae726102d47b74ffacbf04380ab2f012542b2fed0bb2da892f854415f812fc2f",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "path": "screenshots/cart-empty-after-remove.png",
+      "sizeBytes": 62498,
+      "sha256": "2fdf77144a1df4c545998cc8a2748919e0a44fd4958080ae33c9eb1b81bcba77",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "path": "screenshots/cart-quantity-1.png",
+      "sizeBytes": 83366,
+      "sha256": "58c7a44f4199a6f748f3c1bf0a34b2a945aa63afed228be6d300974c6a37f7b6",
+      "width": 1440,
+      "height": 1265
+    },
+    {
+      "path": "screenshots/cart-quantity-2.png",
+      "sizeBytes": 88542,
+      "sha256": "bdcb8b4f1bb38135768326bd9bf70b10e6d9c341ddb152c0059adf92349cbd8b",
+      "width": 1440,
+      "height": 1347
+    },
+    {
+      "path": "screenshots/checkout-before-validation.png",
+      "sizeBytes": 124268,
+      "sha256": "69e68e20ed8b3fa1b23c8b5ddc2fec61296f30d7edeee1e88a322f7b6e40847d",
+      "width": 1440,
+      "height": 1994
+    },
+    {
+      "path": "screenshots/checkout-ready.png",
+      "sizeBytes": 138880,
+      "sha256": "7c262892fa50380d0522504b4428d23d36702ea4956d80f23f16a87abc76e0fb",
+      "width": 1440,
+      "height": 1994
+    },
+    {
+      "path": "screenshots/checkout-validation.png",
+      "sizeBytes": 186233,
+      "sha256": "63c8efd3743e48274d44f0a3d0b58d331effc97f3dba844f29f130c6b248d526",
+      "width": 1440,
+      "height": 2475
+    },
+    {
+      "path": "screenshots/good-issue-preview-375.png",
+      "sizeBytes": 192366,
+      "sha256": "73114c1a0264bba224c7c68a866e5433dce78d358e14e5900da542a70eb28893",
+      "width": 375,
+      "height": 2890
+    },
+    {
+      "path": "screenshots/good-issue-preview-desktop.png",
+      "sizeBytes": 374784,
+      "sha256": "178068fef28b5ca4acba3758d82ced11d274331a1f9e16e161068fbd6c2d57a3",
+      "width": 1440,
+      "height": 2627
+    },
+    {
+      "path": "screenshots/guest-workspace-denied.png",
+      "sizeBytes": 8366,
+      "sha256": "df3de24e8b2dd06788e18007bc95e8013c09f5f80529e4f2513b60b4613182b3",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "path": "screenshots/mailpit-inbox.png",
+      "sizeBytes": 111548,
+      "sha256": "eb68cb02642f9d8200e2749885ee9c66f45b09147d542d5956131e3951eaf9e1",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "path": "screenshots/order-confirmation.png",
+      "sizeBytes": 62881,
+      "sha256": "eeba44c17a8b97f5acf1881a20b8eb2ae61e5fdcdbd4c1ebbb9dfc59622841cc",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "path": "screenshots/woocommerce-admin-order.png",
+      "sizeBytes": 139513,
+      "sha256": "35308fee01c547c209051f1888c3d4b799fe50b70d08133b403e856b0b31b3ff",
+      "width": 1440,
+      "height": 1483
+    },
+    {
+      "path": "screenshots/woocommerce-product.png",
+      "sizeBytes": 115677,
+      "sha256": "004f0225cef4e2c55193a36734cff78b8eba5744990af95751d4cea90f12b7bd",
+      "width": 1440,
+      "height": 1372
+    }
+  ]
+}

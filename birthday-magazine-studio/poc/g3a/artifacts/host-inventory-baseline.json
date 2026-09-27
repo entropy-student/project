@@ -1,0 +1,25 @@
+{
+  "capturedAtUtc": "2026-09-27T12:53:35.6206393Z",
+  "excludedProject": "birthday-magazine-g3a",
+  "unrelated": {
+    "containers": 40,
+    "containersSha256": "7af0347982177faf71746b6550f301e9a9c1edc178c83c185311814a0b993dac",
+    "volumes": 87,
+    "volumesSha256": "738b1d73bacdcbb9e78eeaacd7a1491af248eb8768f78fdbc1f9f90a401988a3",
+    "networks": 21,
+    "networksSha256": "632fa437aa4e6b919f83d5a60212f670122be6e7ec71c1611b4e9f858fad77be"
+  },
+  "miniCraft": {
+    "containers": 8,
+    "containersSha256": "5fb4634fb437a741448db758102f59b57709d9027c895a3a7527d6e19ad3b726",
+    "volumes": 9,
+    "volumesSha256": "5b39b7c9854fcd3ce24452f0950679627c175a76f58c3162fb2a447fddb7c650",
+    "networks": 4,
+    "networksSha256": "a09ca62fb6b57c00b1a99dba37bb41b7d325c6f074ebb7fc3a0a3c1781891c69"
+  },
+  "g3aRuntime": {
+    "containers": 4,
+    "volumes": 2,
+    "networks": 1
+  }
+}

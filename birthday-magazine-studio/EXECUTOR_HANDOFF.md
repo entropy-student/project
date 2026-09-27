@@ -1,3 +1,53 @@
+## Current Gate — G3A WordPress / WooCommerce commerce and account loop — PASS_CANDIDATE
+
+GATE=G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP
+RESULT=PASS_CANDIDATE_G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP
+
+DOCKER_WORDPRESS_RUNTIME=PASS
+MARIADB_RUNTIME=PASS
+MAILPIT_LOCAL_CAPTURE=PASS
+WOOCOMMERCE_PRODUCT_USD_39_99=PASS
+PRODUCT_VIRTUAL=PASS
+PREVIEW_TO_NATIVE_COMMERCE_PATH=PASS
+ADD_TO_CART=PASS
+CART_UPDATE_REMOVE=PASS
+CHECKOUT_VALIDATION=PASS
+CHECKOUT_SUBMISSION=PASS
+LOCAL_OFFLINE_ORDER_CREATED=PASS
+ORDER_PAID_STATE=NO
+ORDER_STATUS_ON_HOLD_OR_EQUIVALENT=PASS
+CHECKOUT_ACCOUNT_CREATE_OR_ATTACH=PASS
+ACCOUNT_EMAIL_LOCAL_CAPTURE=PASS
+OWNER_ORDER_VISIBILITY=PASS
+UNRELATED_ACCOUNT_ORDER_DENIAL=PASS
+ORDER_BOUND_WORKSPACE=PASS
+WORKSPACE_DIRECT_URL_REPLAY_BY_OTHER_USER=DENIED
+GUEST_PRIVATE_WORKSPACE=DENIED
+UNPAID_GENERATION_GATE_CLOSED=PASS
+GENERATION_JOB_COUNT=0
+MODEL_CALL_COUNT=0
+PAYPAL_PLUGIN_INSTALLED=NO
+PAYPAL_CONNECTED=NO
+REAL_PAYMENT=NO
+G3B_STARTED=NO
+TARGET_HOST_WRITE=NO
+CLEANUP_READBACK=PASS
+STOP_AT_REVIEWER=YES
+
+The local isolated stack used WordPress 7.1.1 / PHP 8.3.33, WooCommerce 11.1.2, MariaDB 11.4.7, Mailpit 1.31.2, WP-CLI 2.12.0, Docker 29.7.2 and Compose 5.4.0. Component sources, image digests, licenses/free boundaries, and local port/network exposure are in poc/g3a/artifacts/runtime-setup.json and runtime-health.json.
+
+Good Issue-style preview was reused from the accepted G2A1 plugin. Its CTA entered the native WooCommerce product/cart/checkout path. Product ID 14 is a simple USD 39.99 Virtual product with no shipping or stock semantics. WooCommerce core Check payments was the only enabled gateway and displayed “Local test only — no payment”. Synthetic Order 21 remains on-hold and unpaid.
+
+Checkout created Buyer A’s synthetic account without a separate registration step. Mailpit captured the setup message locally; no message body or reset token was saved. Buyer A could see their order and open the order-bound workspace. Buyer B’s order list omitted it; the WooCommerce direct order view showed only “Invalid order.” with no tested private fields. Buyer B direct workspace access and guest direct access returned HTTP 403.
+
+The G3A local-only and generation-disabled constants were verified. All 12 generation checkpoints and the model-call counter stayed at zero. No PayPal/PPCP plugin, PayPal connection, real payment, model call, public deployment, target-host write or G3B work occurred.
+
+Before final verification, the existing local volume was corrected to materialize the two runtime constants and switch WooCommerce from Coming soon to local live visibility. The final browser suite was rerun after these corrections and avatar external requests were disabled. Earlier error-page output was not used as access-control evidence.
+
+The runtime was then removed with the G3A-scoped Compose down --volumes --remove-orphans. Read-back confirms no G3A containers, volumes or network remain; temporary ZIP files were removed; unrelated Docker identity fingerprints are unchanged, including Mini Craft (8 containers, 9 volumes, 4 networks). Detailed screenshots and sanitized records are listed in EXECUTION_EVIDENCE.md and poc/g3a/artifacts/evidence-manifest.json.
+
+Branch: codex/birthday-magazine-g3a-woocommerce-commerce-account-loop; execution base 52ae9f2c1b810d8d61b6b64a42c115b95b93832c. Current main at PR creation was 782ea659040b60bda5f05a841c11b9c793d73c1a; intervening commits touched only Mini Craft files. Initial evidence commit fbd92b493ab98b2533ccf137206e54b2bbf926d3 is pushed; this PR/handoff reconciliation is a follow-up commit on the same branch. Reviewer PR [#49](https://github.com/entropy-student/project/pull/49) is open and unmerged (GitHub mergeable=true). Reviewer is the next decision point; do not start G3B.
+
 # Executor Handoff — Birthday Magazine Studio
 
 ## Current Gate — G2BR3 Direct Codex Agent Real AI Proof — PASS_CANDIDATE
