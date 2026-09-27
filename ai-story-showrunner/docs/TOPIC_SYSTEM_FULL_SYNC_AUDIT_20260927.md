@@ -1,6 +1,6 @@
 # Topic System Full-Sync Audit — 2026-09-27
 
-Status: PASS
+Status: CONFIG_SYNC_PASS / NEXT_SCHEDULED_RUN_PROOF_PENDING
 Scope: Topic discovery, TopicOpportunity, Evergreen supply, dedup, Daily Radar, Calendar/Registry handoff, scheduled task, portable Story Showrunner Candidate.
 
 ## 1. Canonical logic under audit
@@ -88,8 +88,10 @@ Earlier Topic OS rollback branches remain preserved as deeper rollback points.
 
 ## 6. Reviewer decision
 
-`PASS_TOPIC_SYSTEM_FULL_SYNC`
+`PASS_TOPIC_SYSTEM_CONFIG_SYNC / RUNTIME_PROOF_PENDING_NEXT_DAILY_RUN`
 
-Portable Candidate sync merged to `entropy-student/spike.skill@2796982ed9447ea0283253762ea59cf604566ccb`.
+Static/contracts coverage is complete. The live scheduled task prompt has been updated in place, but the first real post-sync Daily Radar run has not yet occurred in this audit. Do not claim runtime execution proof until a new `daily/YYYY-MM-DD.json` contains Human Process / Meaning / D5 evidence from the synchronized task.
+
+Portable Candidate Topic sync is confirmed on `entropy-student/spike.skill/main` at `2796982ed9447ea0283253762ea59cf604566ccb`.
 
 No G6A production state is reopened or modified.
