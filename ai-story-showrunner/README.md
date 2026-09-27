@@ -19,7 +19,7 @@ G7 = BLOCKED_BY_G6A — Final-video End-to-End Validation
 - 3–5 分钟标准目标；
 - 第一人称固定 IP；
 - STORY_MODEL / STORY_ACTION；
-- Daily Topic Planner v0.2 已启用；
+- Daily Topic Planner v0.2.2 已启用；
 - Production throughput 仍为 UNPROVEN。
 
 Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取；G6R runtime reconciliation 已 PASS；第一轮真实 CosyVoice + Runtime Timeline 已执行但音频 listening QA RETURN；GPT-SoVITS 本地 WebUI 已成功打开，下一步仅做 5-case A/B 决定音频 baseline。画面已到 20/44，最终渲染继续阻断。**
@@ -108,7 +108,7 @@ Worker 不应该互相自由调用，也不应该各自维护一份“当前真�
 - 太专业：直接从 OpenAI / MCP / Agent 等名词进入；
 - 太低级：停留在“GPT 可以帮你写作业”。
 
-每期都必须通过 Human-world Translation，但 v0.2 不再要求选题首先来自 AI。
+每期都必须通过 Human-world Translation；Topic OS v0.2.1 不再要求选题首先来自 AI，并新增 Human Process / Meaning 去重。
 
 默认优先：
 
