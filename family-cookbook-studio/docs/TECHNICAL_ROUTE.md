@@ -302,3 +302,21 @@ Birthday Magazine Studio and Family Cookbook Studio may eventually share:
 - QA helpers.
 
 Do not create a shared platform yet. Extraction is authorized only after both projects independently prove stable contracts, because premature sharing would couple two moving product schemas.
+
+
+## 13. R3C internal-only experiment
+
+A bounded R3C benchmark temporarily evaluates the Owner's existing ChatGPT-plan Codex vision capability on the same 11 public hard handwriting cases.
+
+This does **not** change the accepted production architecture yet.
+
+Rules:
+- ChatGPT-authenticated Codex CLI only;
+- no OpenAI API key / API billing;
+- no Sub2API;
+- no customer/private images;
+- isolated crop-only working directories;
+- structured JSON output via `codex exec --output-schema`;
+- production/customer-facing use remains forbidden until a later explicit architecture review.
+
+If R3C performs strongly, it may be retained as an **Owner/internal diagnostic second opinion** while the customer-facing OCR provider abstraction remains PP-OCRv6 + bounded provider adapter.
