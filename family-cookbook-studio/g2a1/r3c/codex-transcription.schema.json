@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "sample_id": {
+      "type": "string"
+    },
+    "transcription": {
+      "type": "string"
+    },
+    "uncertain_segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "critical_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "quantity",
+              "fraction",
+              "unit",
+              "temperature",
+              "time",
+              "ingredient_association",
+              "other"
+            ]
+          },
+          "value": {
+            "type": "string"
+          },
+          "certainty": {
+            "type": "string",
+            "enum": [
+              "certain",
+              "uncertain"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "value",
+          "certainty"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "sample_id",
+    "transcription",
+    "uncertain_segments",
+    "critical_candidates"
+  ],
+  "additionalProperties": false
+}
