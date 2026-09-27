@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "jobKey": "synthetic-order-g2b-0001",
+  "firstInvocation": "CREATED_CANONICAL_ACTIVE_JOB",
+  "duplicateInvocationWhileActive": "DUPLICATE_REJECTED",
+  "canonicalJobs": 1,
+  "maxActiveCanonicalJobs": 1,
+  "providerSpendAttempts": 0,
+  "evidence": "The job claim is created atomically with exclusive file creation before the provider boundary; duplicate claim is denied while the first record is active."
+}

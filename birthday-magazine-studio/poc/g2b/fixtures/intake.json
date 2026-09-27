@@ -1,0 +1,45 @@
+{
+  "fixtureId": "synthetic-mira-vale-2026-09",
+  "orderKey": "synthetic-order-g2b-0001",
+  "asOfDate": "2026-09-27",
+  "recipient": {
+    "name": "Mira Vale",
+    "birthday": "2001-08-14",
+    "age": 25,
+    "pronouns": "she/her"
+  },
+  "buyerRelationship": "older sister",
+  "tone": "balanced",
+  "stylePreset": "soft-warm",
+  "answers": {
+    "q1": "Mira alphabetizes the spice shelf without thinking, remembers the tiny details people mention once, and can tell when someone at a table has not found their way into the conversation yet. On road trips she builds a hand-written playlist before anyone asks.",
+    "q2": "My favorite memory is a rainy Saturday at the Harbor Street book market. The lights flickered, so we carried our paper bags to the window seat at Dot Cafe, split a cinnamon roll, and watched the rain clear. Mira folded the empty receipt into tiny boats while we waited.",
+    "q3": "I admire that Mira makes room for people in practical ways: she asks the quieter person a real question, remembers the answer, and calls when she says she will. Her kindness is steady enough that people can lean on it.",
+    "q4": "After the receipt boats at Dot Cafe, we started calling ourselves the tiny boat committee. At Saturday pancakes, the first pancake is always the cook's, even if it comes out lopsided. Those two rules can rescue almost any ordinary morning.",
+    "q5": "Right now Mira goes to ceramics at Farrow Studio every Wednesday, tends tomato pots on the kitchen-window sill, and keeps adding songs to the playlist she takes on Sunday walks. She likes the North Loop farmers market for the flowers and the slow start to the weekend.",
+    "q6": "For this birthday I want Mira to hear that the care she gives everyone else deserves to find its way back to her. I hope 25 brings slow mornings, music for every walk, clay under her fingernails, and plenty of room around the table. I am proud to be her sister, and I love the life we keep making in small pieces."
+  },
+  "quickFacts": {
+    "favoriteFood": "maple-oat pancakes",
+    "favoritePlace": "North Loop farmers market",
+    "currentObsession": "Wednesday ceramics at Farrow Studio"
+  },
+  "photos": [
+    { "id": "photo-01", "file": "photos/photo-01.png", "scene": "rain over Harbor Street book market", "tags": ["memory", "book-market", "rain"], "sourceField": "answers.q2", "evidenceCue": "rainy Saturday at the Harbor Street book market", "selectionScore": 10, "pageHint": 4, "mustUse": true },
+    { "id": "photo-02", "file": "photos/photo-02.png", "scene": "Dot Cafe window seat and cinnamon roll", "tags": ["memory", "cafe", "book-market"], "sourceField": "answers.q2", "evidenceCue": "window seat at Dot Cafe", "selectionScore": 9, "pageHint": 5, "mustUse": true },
+    { "id": "photo-03", "file": "photos/photo-03.png", "scene": "receipt folded into a tiny paper boat", "tags": ["memory", "inside-joke", "lore"], "sourceField": "answers.q4", "evidenceCue": "tiny boat committee", "selectionScore": 8, "pageHint": 6, "mustUse": false },
+    { "id": "photo-04", "file": "photos/photo-04.png", "scene": "hands shaping a bowl on a pottery wheel", "tags": ["cover", "ceramics", "current-era"], "sourceField": "answers.q5", "evidenceCue": "ceramics at Farrow Studio every Wednesday", "selectionScore": 10, "pageHint": 1, "mustUse": true },
+    { "id": "photo-05", "file": "photos/photo-05.png", "scene": "small tomato pots on a sunny kitchen sill", "tags": ["current-era", "gardening"], "sourceField": "answers.q5", "evidenceCue": "tomato pots on the kitchen-window sill", "selectionScore": 8, "pageHint": 8, "mustUse": false },
+    { "id": "photo-06", "file": "photos/photo-06.png", "scene": "a record and handwritten Sunday-walk playlist", "tags": ["current-era", "playlist", "music"], "sourceField": "answers.q5", "evidenceCue": "playlist she takes on Sunday walks", "selectionScore": 8, "pageHint": 9, "mustUse": false },
+    { "id": "photo-07", "file": "photos/photo-07.png", "scene": "a lopsided first pancake on a plate", "tags": ["favorites", "lore", "food"], "sourceField": "answers.q4", "evidenceCue": "the first pancake is always the cook's", "selectionScore": 3, "pageHint": 10, "mustUse": false },
+    { "id": "photo-08", "file": "photos/photo-08.png", "scene": "the North Loop flower stall at morning", "tags": ["current-era", "market", "flowers"], "sourceField": "answers.q5", "evidenceCue": "North Loop farmers market", "selectionScore": 1, "pageHint": 12, "mustUse": false },
+    { "id": "photo-09", "file": "photos/photo-09.png", "scene": "a neatly labeled spice shelf", "tags": ["profile", "ritual"], "sourceField": "answers.q1", "evidenceCue": "alphabetizes the spice shelf", "selectionScore": 7, "pageHint": 3, "mustUse": false },
+    { "id": "photo-10", "file": "photos/photo-10.png", "scene": "extra chair pulled up to a dinner table", "tags": ["relationships", "care"], "sourceField": "answers.q3", "evidenceCue": "makes room for people in practical ways", "selectionScore": 7, "pageHint": 7, "mustUse": false },
+    { "id": "photo-11", "file": "photos/photo-11.png", "scene": "a paper shopping bag beside a rainy street", "tags": ["memory", "rain"], "sourceField": "answers.q2", "evidenceCue": "carried our paper bags", "selectionScore": 0, "pageHint": 4, "mustUse": false },
+    { "id": "photo-12", "file": "photos/photo-12.png", "scene": "flowers wrapped for the walk home", "tags": ["back-cover", "market", "flowers"], "sourceField": "answers.q5", "evidenceCue": "market for the flowers", "selectionScore": 6.5, "pageHint": 12, "mustUse": false },
+    { "id": "photo-13", "file": "photos/photo-13.png", "scene": "quiet morning light across an open notebook", "tags": ["opening", "morning"], "sourceField": "answers.q6", "evidenceCue": "slow mornings", "selectionScore": 5, "pageHint": 2, "mustUse": false },
+    { "id": "photo-14", "file": "photos/photo-14.png", "scene": "a footpath with a small music player", "tags": ["current-era", "walk", "playlist"], "sourceField": "answers.q5", "evidenceCue": "Sunday walks", "selectionScore": 5, "pageHint": 10, "mustUse": false },
+    { "id": "photo-15", "file": "photos/photo-15.png", "scene": "a stack of market books and a bookmark", "tags": ["memory", "book-market"], "sourceField": "answers.q2", "evidenceCue": "Harbor Street book market", "selectionScore": 2, "pageHint": 5, "mustUse": false },
+    { "id": "photo-16", "file": "photos/photo-16.png", "scene": "a handmade cup beside a birthday card", "tags": ["letter", "birthday", "ceramics"], "sourceField": "answers.q6", "evidenceCue": "clay under her fingernails", "selectionScore": 4.5, "pageHint": 11, "mustUse": false }
+  ]
+}

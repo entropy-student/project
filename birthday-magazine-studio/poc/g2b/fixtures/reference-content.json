@@ -1,0 +1,89 @@
+{
+  "origin": "human-authored synthetic renderer reference; not AI output",
+  "recipient": { "name": "Mira Vale", "age": 25, "birthday": "2001-08-14", "relationship": "older sister" },
+  "tone": "balanced",
+  "stylePreset": "soft-warm",
+  "coverHeadlines": [
+    { "text": "THE TINY BOAT COMMITTEE", "sourceRefs": ["answers.q4"] },
+    { "text": "A little clay, a lot of care", "sourceRefs": ["answers.q5", "answers.q3"] },
+    { "text": "A life in little details", "sourceRefs": ["answers.q1"] }
+  ],
+  "openingNote": {
+    "text": "Mira notices the person just outside the conversation, then finds a small way to bring them in. This issue follows the details her sister loves: a rainy book market, receipt-boat jokes, and the rituals that make an ordinary Saturday feel kept.",
+    "sourceRefs": ["answers.q1", "answers.q2", "answers.q4"]
+  },
+  "profile": {
+    "headline": "Care, in the details",
+    "text": "Mira alphabetizes the spice shelf, remembers the small details people mention once, and builds a hand-written playlist before a road trip. She makes attention feel like a place people can rest.",
+    "sourceRefs": ["answers.q1"]
+  },
+  "featureMemory": {
+    "headline": "A rainy Saturday, folded small",
+    "text": "At the Harbor Street book market, a flicker of lights sent Mira and her sister toward the window seat at Dot Cafe. They split a cinnamon roll, waited for the rain to pass, and folded an empty receipt into tiny boats. The scene stayed because nobody hurried it along.",
+    "sourceRefs": ["answers.q2"]
+  },
+  "dynamicModules": [
+    {
+      "name": "The Lore / inside jokes",
+      "headline": "Minutes from the tiny boat committee",
+      "text": "The committee has two standing rules: receipts may become boats, and the first pancake belongs to the cook. Lopsided is an approved shape. Ordinary mornings are allowed to become traditions.",
+      "sourceRefs": ["answers.q4"]
+    },
+    {
+      "name": "Current Obsessions",
+      "headline": "This week's small orbit",
+      "text": "Wednesday ceramics at Farrow Studio. Tomato pots on the kitchen-window sill. New songs for the Sunday-walk playlist. Three current rituals, each with room to grow at its own pace.",
+      "sourceRefs": ["answers.q5"]
+    }
+  ],
+  "whyTheyMatter": {
+    "headline": "The kind of kindness that remembers",
+    "text": "Mira asks the quieter person a real question, remembers the answer, and calls when she says she will. Her kindness is steady enough that people can lean on it.",
+    "sourceRefs": ["answers.q3"]
+  },
+  "currentEra": {
+    "headline": "A life in the making",
+    "text": "Right now: clay at Farrow Studio on Wednesdays, tomatoes by the kitchen window, and a playlist that grows before each Sunday walk. The North Loop market gives the weekend a slower beginning.",
+    "sourceRefs": ["answers.q5"]
+  },
+  "birthdayLetter": {
+    "headline": "A note for 25",
+    "text": "May this year bring slow mornings, music for every walk, clay under your fingernails, and room around the table. The care you give everyone else deserves to find its way back to you. I am proud to be your sister, and I love the life we keep making in small pieces.",
+    "sourceRefs": ["answers.q6", "recipient.age", "buyerRelationship"]
+  },
+  "backCoverLine": { "text": "Keep the little things close.", "sourceRefs": [] },
+  "captions": [
+    { "photoId": "photo-01", "text": "Rain at Harbor Street, the start of one long afternoon.", "sourceRefs": ["answers.q2"] },
+    { "photoId": "photo-02", "text": "A window seat at Dot Cafe, and nowhere else to be.", "sourceRefs": ["answers.q2"] },
+    { "photoId": "photo-03", "text": "A receipt, a boat, and a committee of two.", "sourceRefs": ["answers.q4"] },
+    { "photoId": "photo-04", "text": "Clay after a Wednesday at Farrow Studio.", "sourceRefs": ["answers.q5"] },
+    { "photoId": "photo-05", "text": "Tomatoes leaning toward the kitchen window.", "sourceRefs": ["answers.q5"] },
+    { "photoId": "photo-06", "text": "Sunday walks have their own soundtrack.", "sourceRefs": ["answers.q5"] },
+    { "photoId": "photo-09", "text": "A shelf that knows where everything belongs.", "sourceRefs": ["answers.q1"] },
+    { "photoId": "photo-10", "text": "There is always room for one more chair.", "sourceRefs": ["answers.q3"] },
+    { "photoId": "photo-12", "text": "A slower start to the weekend.", "sourceRefs": ["answers.q5"] },
+    { "photoId": "photo-13", "text": "A slow morning, just as wished for.", "sourceRefs": ["answers.q6"] },
+    { "photoId": "photo-14", "text": "Music for a Sunday walk.", "sourceRefs": ["answers.q5"] },
+    { "photoId": "photo-16", "text": "A small reminder of what she hopes for next.", "sourceRefs": ["answers.q6"] }
+  ],
+  "groundedFacts": [
+    { "text": "Mira alphabetizes the spice shelf.", "sourceRefs": ["answers.q1"], "supportingQuotes": ["alphabetizes the spice shelf"] },
+    { "text": "The memory took place at the Harbor Street book market on a rainy Saturday.", "sourceRefs": ["answers.q2"], "supportingQuotes": ["rainy Saturday at the Harbor Street book market"] },
+    { "text": "Mira and her sister went to the window seat at Dot Cafe and split a cinnamon roll.", "sourceRefs": ["answers.q2"], "supportingQuotes": ["window seat at Dot Cafe, split a cinnamon roll"] },
+    { "text": "Mira folded the empty receipt into tiny boats.", "sourceRefs": ["answers.q2"], "supportingQuotes": ["folded the empty receipt into tiny boats"] },
+    { "text": "The siblings call themselves the tiny boat committee.", "sourceRefs": ["answers.q4"], "supportingQuotes": ["calling ourselves the tiny boat committee"] },
+    { "text": "At Saturday pancakes, the first pancake belongs to the cook.", "sourceRefs": ["answers.q4"], "supportingQuotes": ["the first pancake is always the cook's"] },
+    { "text": "Mira attends ceramics at Farrow Studio every Wednesday.", "sourceRefs": ["answers.q5"], "supportingQuotes": ["ceramics at Farrow Studio every Wednesday"] },
+    { "text": "Mira tends tomato pots on the kitchen-window sill.", "sourceRefs": ["answers.q5"], "supportingQuotes": ["tomato pots on the kitchen-window sill"] },
+    { "text": "Mira adds songs to the playlist she takes on Sunday walks.", "sourceRefs": ["answers.q5"], "supportingQuotes": ["playlist she takes on Sunday walks"] },
+    { "text": "Mira is 25 on the fixture's reference date.", "sourceRefs": ["recipient.age", "asOfDate"], "supportingQuotes": [] }
+  ],
+  "photoPageAssignments": [
+    { "page": 1, "photoId": "photo-04" }, { "page": 2, "photoId": "photo-13" },
+    { "page": 3, "photoId": "photo-09" }, { "page": 4, "photoId": "photo-01" },
+    { "page": 5, "photoId": "photo-02" }, { "page": 6, "photoId": "photo-03" },
+    { "page": 7, "photoId": "photo-10" }, { "page": 8, "photoId": "photo-05" },
+    { "page": 9, "photoId": "photo-06" }, { "page": 10, "photoId": "photo-14" },
+    { "page": 11, "photoId": "photo-16" }, { "page": 12, "photoId": "photo-12" }
+  ]
+}

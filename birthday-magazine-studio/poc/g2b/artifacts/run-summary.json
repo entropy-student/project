@@ -1,0 +1,21 @@
+{
+  "gate": "G2B_LOCAL_AI_PDF_SOLUTION_PROOF",
+  "result": "RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED",
+  "pipelineImplementation": "PASS_REFERENCE_RENDER_PIPELINE",
+  "realAiCall": "BLOCKED",
+  "pdf": "proof-magazine-soft-warm.pdf",
+  "screenshots": [
+    "cover-bold-editorial-desktop.png",
+    "cover-soft-warm-desktop.png",
+    "feature-memory-desktop.png",
+    "current-era-desktop.png",
+    "birthday-letter-desktop.png",
+    "cover-soft-warm-375px.png",
+    "12-page-contact-sheet.png",
+    "cover-retro-playful-desktop.png"
+  ],
+  "qa": "qa-report.json",
+  "grounding": "grounding-report.json",
+  "idempotency": "idempotency-report.json",
+  "cleanup": "project-local runtime job record removed after report; no server/container or secret created"
+}

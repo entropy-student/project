@@ -1,0 +1,11 @@
+{
+  "result": "RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED",
+  "pipelineImplementation": "REFERENCE_RENDER_PATH_AVAILABLE",
+  "realAiCall": "BLOCKED",
+  "providerAdapter": "ChatCompletionsAdapter behind the vendor-neutral ContentProvider interface",
+  "reason": "The current project handoff and G2B authorization provide no approved protected model credential/runtime for this Gate.",
+  "liveCallAttempted": false,
+  "apiRequests": 0,
+  "fallbackUsed": "human-authored synthetic renderer reference fixture only",
+  "fallbackIsNotAiProof": true
+}

@@ -1,0 +1,616 @@
+{
+  "gate": "G2B_LOCAL_AI_PDF_SOLUTION_PROOF",
+  "mode": "LOCAL_SYNTHETIC_REFERENCE_RENDER",
+  "overall": "PASS_REFERENCE_PIPELINE_ONLY",
+  "intakeValidation": {
+    "result": "PASS",
+    "errors": [],
+    "photoCount": 16,
+    "requiredAnswers": 6,
+    "mustUseCount": 3
+  },
+  "structuredContentValidation": {
+    "result": "PASS_REFERENCE_FIXTURE_ONLY",
+    "origin": "human-authored synthetic renderer reference; not AI output",
+    "errors": []
+  },
+  "dynamicModules": {
+    "result": "PASS_REFERENCE_FIXTURE_ONLY",
+    "count": 2,
+    "names": [
+      "The Lore / inside jokes",
+      "Current Obsessions"
+    ]
+  },
+  "aiStructuredGeneration": {
+    "result": "RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED",
+    "pipelineImplementation": "REFERENCE_RENDER_PATH_AVAILABLE",
+    "realAiCall": "BLOCKED",
+    "providerAdapter": "ChatCompletionsAdapter behind the vendor-neutral ContentProvider interface",
+    "reason": "The current project handoff and G2B authorization provide no approved protected model credential/runtime for this Gate.",
+    "liveCallAttempted": false,
+    "apiRequests": 0,
+    "fallbackUsed": "human-authored synthetic renderer reference fixture only",
+    "fallbackIsNotAiProof": true
+  },
+  "grounding": {
+    "result": "PASS_REFERENCE_FIXTURE_ONLY",
+    "contentOrigin": "human-authored synthetic renderer reference; not AI output",
+    "factualClaimCount": 10,
+    "exactSourceQuoteCount": 9,
+    "allStructuredSourceRefsResolve": true,
+    "claimQuotesMatchSourceText": true,
+    "ageDerivedFromBirthdayOnFixtureDate": true,
+    "auditScope": "Structural provenance and exact supporting-quote checks on human-authored reference content; it is not a live-AI semantic entailment proof.",
+    "errors": []
+  },
+  "photoMapping": {
+    "result": "PASS_METADATA_ONLY",
+    "sourcePhotoCount": 16,
+    "selectedUniquePhotoCount": 12,
+    "selectedPhotoIds": [
+      "photo-01",
+      "photo-04",
+      "photo-02",
+      "photo-03",
+      "photo-05",
+      "photo-06",
+      "photo-09",
+      "photo-10",
+      "photo-12",
+      "photo-13",
+      "photo-14",
+      "photo-16"
+    ],
+    "mustUseIds": [
+      "photo-01",
+      "photo-02",
+      "photo-04"
+    ],
+    "assignments": [
+      {
+        "page": 1,
+        "photoId": "photo-04"
+      },
+      {
+        "page": 2,
+        "photoId": "photo-13"
+      },
+      {
+        "page": 3,
+        "photoId": "photo-09"
+      },
+      {
+        "page": 4,
+        "photoId": "photo-01"
+      },
+      {
+        "page": 5,
+        "photoId": "photo-02"
+      },
+      {
+        "page": 6,
+        "photoId": "photo-03"
+      },
+      {
+        "page": 7,
+        "photoId": "photo-10"
+      },
+      {
+        "page": 8,
+        "photoId": "photo-05"
+      },
+      {
+        "page": 9,
+        "photoId": "photo-06"
+      },
+      {
+        "page": 10,
+        "photoId": "photo-14"
+      },
+      {
+        "page": 11,
+        "photoId": "photo-16"
+      },
+      {
+        "page": 12,
+        "photoId": "photo-12"
+      }
+    ],
+    "selectionMethod": "Synthetic metadata cues + deterministic score/rank; no visual model or human-photo semantics."
+  },
+  "pageContract": {
+    "result": "PASS",
+    "expectedPageCount": 12,
+    "requiredSections": [
+      "Front Cover",
+      "Opening Note",
+      "Who They Are",
+      "Feature Memory",
+      "Feature Memory",
+      "Dynamic Module A",
+      "Why They Matter",
+      "Photo Story / Current Era",
+      "Photo Story / Current Era",
+      "Dynamic Module B",
+      "Birthday Letter / Next Chapter",
+      "Back Cover"
+    ],
+    "pageErrors": [],
+    "architectureSha256": "fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8"
+  },
+  "stylePresets": {
+    "result": "PASS_SHARED_ARCHITECTURE",
+    "variants": [
+      {
+        "name": "bold-editorial",
+        "pageCount": 12,
+        "paper": "#f7f4eb",
+        "ink": "#15223a",
+        "accent": "#cc4d32",
+        "displayFont": "Georgia,serif",
+        "frameTreatment": "solid",
+        "layouts": [
+          "cover",
+          "standard",
+          "standard",
+          "memory",
+          "memory",
+          "module",
+          "standard",
+          "photo-story",
+          "photo-story",
+          "module",
+          "letter",
+          "back"
+        ],
+        "pageArchitectureSha256": "fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8"
+      },
+      {
+        "name": "soft-warm",
+        "pageCount": 12,
+        "paper": "#f7efe2",
+        "ink": "#3f4039",
+        "accent": "#aa654f",
+        "displayFont": "Georgia,serif",
+        "frameTreatment": "double",
+        "layouts": [
+          "cover",
+          "standard",
+          "standard",
+          "memory",
+          "memory",
+          "module",
+          "standard",
+          "photo-story",
+          "photo-story",
+          "module",
+          "letter",
+          "back"
+        ],
+        "pageArchitectureSha256": "fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8"
+      },
+      {
+        "name": "retro-playful",
+        "pageCount": 12,
+        "paper": "#fbf0d5",
+        "ink": "#244f4b",
+        "accent": "#d35442",
+        "displayFont": "Georgia,serif",
+        "frameTreatment": "dashed",
+        "layouts": [
+          "cover",
+          "standard",
+          "standard",
+          "memory",
+          "memory",
+          "module",
+          "standard",
+          "photo-story",
+          "photo-story",
+          "module",
+          "letter",
+          "back"
+        ],
+        "pageArchitectureSha256": "fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8"
+      }
+    ],
+    "architectureHash": "fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8",
+    "contentStructureChangesBetweenPresets": false
+  },
+  "browserReadback": {
+    "result": "PASS",
+    "pageCount": 12,
+    "identities": [
+      {
+        "page": 1,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Front Cover"
+      },
+      {
+        "page": 2,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Opening Note"
+      },
+      {
+        "page": 3,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Who They Are"
+      },
+      {
+        "page": 4,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Feature Memory"
+      },
+      {
+        "page": 5,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Feature Memory"
+      },
+      {
+        "page": 6,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Dynamic Module A"
+      },
+      {
+        "page": 7,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Why They Matter"
+      },
+      {
+        "page": 8,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Photo Story / Current Era"
+      },
+      {
+        "page": 9,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Photo Story / Current Era"
+      },
+      {
+        "page": 10,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Dynamic Module B"
+      },
+      {
+        "page": 11,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Birthday Letter / Next Chapter"
+      },
+      {
+        "page": 12,
+        "name": "Mira Vale",
+        "age": 25,
+        "birthday": "2001-08-14",
+        "section": "Back Cover"
+      }
+    ],
+    "imageResults": [
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-04.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-13.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-09.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-01.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-02.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-03.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-10.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-05.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-06.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-14.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-16.png",
+        "loaded": true
+      },
+      {
+        "src": "http://127.0.0.1:56519/photos/photo-12.png",
+        "loaded": true
+      }
+    ],
+    "overflow": [],
+    "pageOverflow": [],
+    "consistentIdentity": true,
+    "sectionsMatch": true
+  },
+  "mobile375": {
+    "result": "PASS",
+    "viewportWidth": 375,
+    "documentWidth": 375,
+    "pageWidth": 375,
+    "pageHeight": 485,
+    "horizontalOverflow": false,
+    "textOverflow": false
+  },
+  "deterministicQaMutationChecks": {
+    "result": "PASS",
+    "rejectedCount": 15,
+    "total": 15,
+    "checks": [
+      {
+        "case": "missing provider credential fails closed",
+        "rejected": true,
+        "reasons": [
+          "RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED"
+        ]
+      },
+      {
+        "case": "missing required answer",
+        "rejected": true,
+        "reasons": [
+          "ANSWER_Q6_REQUIRED",
+          "PHOTO_CUE_UNGROUNDED:photo-13",
+          "PHOTO_CUE_UNGROUNDED:photo-16"
+        ]
+      },
+      {
+        "case": "11 source photos",
+        "rejected": true,
+        "reasons": [
+          "PHOTO_COUNT_BELOW_12"
+        ]
+      },
+      {
+        "case": "26 source photos",
+        "rejected": true,
+        "reasons": [
+          "PHOTO_COUNT_ABOVE_25",
+          "MUST_USE_ABOVE_3"
+        ]
+      },
+      {
+        "case": "unsupported image extension",
+        "rejected": true,
+        "reasons": [
+          "PHOTO_TYPE_UNSUPPORTED:photo-01"
+        ]
+      },
+      {
+        "case": "four must-use photos",
+        "rejected": true,
+        "reasons": [
+          "MUST_USE_ABOVE_3"
+        ]
+      },
+      {
+        "case": "duplicate dynamic module",
+        "rejected": true,
+        "reasons": [
+          "DYNAMIC_MODULE_DUPLICATE"
+        ]
+      },
+      {
+        "case": "unsupported dynamic module",
+        "rejected": true,
+        "reasons": [
+          "DYNAMIC_MODULE_UNSUPPORTED"
+        ]
+      },
+      {
+        "case": "missing source quote",
+        "rejected": true,
+        "reasons": [
+          "FACT_QUOTE_NOT_IN_SOURCE"
+        ]
+      },
+      {
+        "case": "must-use photo omitted from page mapping",
+        "rejected": true,
+        "reasons": [
+          "PHOTO_PAGE_ASSIGNMENT_MISSING:4",
+          "PHOTO_PAGE_ASSIGNMENT_COUNT_INVALID",
+          "MUST_USE_NOT_MAPPED:photo-01"
+        ]
+      },
+      {
+        "case": "unknown photo mapped",
+        "rejected": true,
+        "reasons": [
+          "PHOTO_MAPPING_UNKNOWN_ID:photo-missing",
+          "MUST_USE_NOT_MAPPED:photo-04"
+        ]
+      },
+      {
+        "case": "bounded copy exceeded",
+        "rejected": true,
+        "reasons": [
+          "COPY_LENGTH_LIMIT_EXCEEDED"
+        ]
+      },
+      {
+        "case": "required page removed",
+        "rejected": true,
+        "reasons": [
+          "PAGE_COUNT_NOT_12",
+          "REQUIRED_PAGE_SECTION_MISSING_OR_OUT_OF_ORDER"
+        ]
+      },
+      {
+        "case": "browser text overflow measurement",
+        "rejected": true,
+        "reasons": [
+          "SCROLL_HEIGHT_EXCEEDS_BOUND"
+        ]
+      },
+      {
+        "case": "broken image detected",
+        "rejected": true,
+        "reasons": [
+          "IMAGE_NATURAL_WIDTH_ZERO"
+        ]
+      }
+    ]
+  },
+  "pdf": {
+    "result": "PASS",
+    "file": "proof-magazine-soft-warm.pdf",
+    "pageCount": 12,
+    "expectedPageSize": "US Letter (612 × 792 pt)",
+    "pageSizes": [
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      },
+      {
+        "widthPoints": 612,
+        "heightPoints": 792
+      }
+    ],
+    "sizeBytes": 376319,
+    "sha256": "82647bf4bc8b178dca8597b1cd25d7f6c96782d223a47904780481a68426205b",
+    "parsedWith": "pdf-lib 1.17.1"
+  },
+  "idempotency": {
+    "result": "PASS",
+    "jobKey": "synthetic-order-g2b-0001",
+    "firstInvocation": "CREATED_CANONICAL_ACTIVE_JOB",
+    "duplicateInvocationWhileActive": "DUPLICATE_REJECTED",
+    "canonicalJobs": 1,
+    "maxActiveCanonicalJobs": 1,
+    "providerSpendAttempts": 0,
+    "evidence": "The job claim is created atomically with exclusive file creation before the provider boundary; duplicate claim is denied while the first record is active."
+  },
+  "network": {
+    "localServer": "127.0.0.1 only",
+    "localRendererRequestCount": 93,
+    "externalBrowserRequestCount": 0,
+    "aiApiRequests": 0
+  },
+  "screenshots": [
+    {
+      "file": "screenshots/cover-bold-editorial-desktop.png",
+      "sizeBytes": 48322,
+      "sha256": "be8a34876fc8e8efcfd72a60dbe5b5fdc855f01cf80c610b9bc4a65fa01e8835"
+    },
+    {
+      "file": "screenshots/cover-soft-warm-desktop.png",
+      "sizeBytes": 48668,
+      "sha256": "47c98a8cdb5e6a581f28a0b3a259f7647c027ca81f796150501478fa63ee3b2f"
+    },
+    {
+      "file": "screenshots/feature-memory-desktop.png",
+      "sizeBytes": 73731,
+      "sha256": "773ddfd74e12c0d969c2d8cc83e71fe6eadbdd36b6e1ae676f4d7594e61a5f6b"
+    },
+    {
+      "file": "screenshots/current-era-desktop.png",
+      "sizeBytes": 61914,
+      "sha256": "ed3bde3d2a7856fb6a5e673baf1f8212a38cfdd0519d73816654fb1d13f1610c"
+    },
+    {
+      "file": "screenshots/birthday-letter-desktop.png",
+      "sizeBytes": 64966,
+      "sha256": "474ac5a89e4f031f6f580c17665faf56e4a7c09b9dbad2038840a5c99becbeda"
+    },
+    {
+      "file": "screenshots/cover-soft-warm-375px.png",
+      "sizeBytes": 20208,
+      "sha256": "4eaed907ee07144359e2911cb5026ba587167ba33ca1a23d87f7487d15bcf77f"
+    },
+    {
+      "file": "screenshots/12-page-contact-sheet.png",
+      "sizeBytes": 129394,
+      "sha256": "846fffd1e6ec31f59cd65a85cc43477a4c813e27c7722e57358a76fd8e2a3f0a"
+    },
+    {
+      "file": "screenshots/cover-retro-playful-desktop.png",
+      "sizeBytes": 59322,
+      "sha256": "be2e64215249d0828d4b300b1b9eb79fa35d8b403b4b77ffaac2e1ec7c2f0144"
+    }
+  ],
+  "limitations": [
+    "No real model call occurred; the magazine copy is a human-authored synthetic renderer fixture.",
+    "The synthetic PNGs are deterministic scene illustrations, not photographs of a person.",
+    "Photo selection used fixture metadata and did not prove visual-semantic photo understanding.",
+    "No WordPress/WooCommerce commerce loop or order integration was run in this Gate."
+  ]
+}
