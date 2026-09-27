@@ -1,7 +1,7 @@
 # G2A1-R3 — OCR Architecture Benchmark
 
 > Reviewer execution contract  
-> Status: **CURRENT / R3A READY_FOR_EXECUTOR**  
+> Status: **R3A PASS / R3B OWNER CHECKPOINT**  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)  
 > Owner decisions resolved in: [G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md](./G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md)
 
@@ -28,7 +28,7 @@ R3 is split into two bounded phases so paid-provider credentials are not require
 
 ---
 
-## 2. R3A — Free / Local Primary Benchmark — CURRENT
+## 2. R3A — Free / Local Primary Benchmark — PASS
 
 Benchmark exactly these two primary candidates:
 
@@ -44,30 +44,32 @@ Benchmark exactly these two primary candidates:
 
 Do not add more local OCR candidates in R3A.
 
-### R3A output
-Select exactly one:
-- `PRIMARY=PP-OCRv6_medium`, or
-- `PRIMARY=PaddleOCR-VL-1.6`, or
-- precise RETURN if neither is viable.
+### R3A Reviewer result
 
-No API fallback is called in R3A.
+```text
+PASS_G2A1_R3A_LOCAL_PRIMARY_SELECTION
+PRIMARY=PP-OCRv6_medium
+SECOND_LOCAL_PRIMARY=PaddleOCR-VL-1.6_REJECTED
+ACTIONS_RUN_ID=36289130217
+EVIDENCE_HEAD=ad58cfe3b3fbfcca6a6f1ee3e929754c2c3b14e5
+```
+
+No API fallback was called in R3A.
 
 ---
 
-## 3. R3B — Bounded API Fallback Benchmark — HOLD
+## 3. R3B — Bounded API Fallback Benchmark — OWNER CHECKPOINT
 
-R3B starts only after Reviewer accepts the R3A primary.
+Current checkpoint: [G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md](./G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md)
 
-Use only the R3A primary's unresolved/high-risk pages or crops.
+Use only the 11 PP-OCRv6 unresolved/high-risk handwriting cases from `g2a1/r3a/fallback-evaluation-set.json`.
 
-Benchmark at most:
-1. Mistral OCR 4.1
-2. Google Enterprise Document OCR
-3. Gemini 3.8 Flash as a general multimodal challenger
+Reviewer recommended sequence:
+1. Google Enterprise Document OCR;
+2. only if insufficient, Mistral OCR 4.1;
+3. Gemini 3.8 Flash remains reserve.
 
-R3B requires an Owner checkpoint before any credential entry, billing/account action, paid API request, or Secret use.
-
-Do not silently substitute another provider.
+R3B requires explicit Owner approval before credential entry, billing/account action, paid API request, or Secret use.
 
 R3B selects exactly one fallback or concludes no API fallback is needed.
 
