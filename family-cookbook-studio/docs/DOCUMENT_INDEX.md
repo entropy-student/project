@@ -21,7 +21,7 @@
 | `G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md` | External OCR credential/budget/data boundary | **OWNER APPROVED** |
 | `G2A1_R3B_API_FALLBACK_BENCHMARK.md` | Google-first / Mistral-second hard-case fallback benchmark | **RETURNED; Google credential required** |
 | `G2A1_R3B_GOOGLE_PROVIDER_SETUP.md` | Google Document AI WIF/processor setup history | **DEFERRED; technical integration proven, Billing prepayment not accepted for current test** |
-| `G2A1_R3B_MISTRAL_PROVIDER_SETUP.md` | Mistral Studio/API-key setup + provider abstraction rule | **CURRENT OWNER ACTION** |
+| `G2A1_R3B_MISTRAL_PROVIDER_SETUP.md` | Mistral Studio/API-key setup + Free-mode probe | **DEFERRED; persistent HTTP 429 before OCR** |
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **NEXT / HOLD** |
 | `ACQUISITION_GROWTH_PLAN.md` | Demand/acquisition validation plan | Supporting plan; not transaction evidence |
 
@@ -40,6 +40,7 @@
 - R3B credential preflight at `dd9c07bbe64a3076bcfd38d27259ff56c2ed013a` originally returned for absent Google credentials.
 - WIF has since replaced the blocked JSON-key approach. Processor metadata is proven accessible.
 - Diagnostic run `36301652196` reached Document AI `:process` and returned `BILLING_DISABLED`; `FALLBACK=UNKNOWN` remains correct.
-- Owner declined the account-level USD 30 Google Billing prepayment for this bounded benchmark; Google is deferred, not rejected.
-- Current R3B action is to configure `MISTRAL_API_KEY` and run Mistral OCR 4.1 on the same fixed 11 hard cases.
+- Mistral Free-mode probe is blocked by persistent HTTP 429 even after bounded backoff; no OCR quality result exists.
+- Owner preference is to return to Google rather than enable paid Mistral access.
+- Current R3B action is Google Billing activation for `family-cookbook-ocr-test`, followed by the restored WIF benchmark.
 - Real customer recipe images, family stories, names, addresses, payment credentials, Secrets and private order identifiers must not be stored in ordinary project documentation.
