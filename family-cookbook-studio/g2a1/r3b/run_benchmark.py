@@ -348,62 +348,147 @@ def google_process(crops, token, project, location, processor_id, version_id):
 
 
 def mistral_process(crops, api_key):
-    rows, attempted = {}, 0
+    rows = {}
+    attempted_http_requests = 0
+    successful_pages = 0
+
     for sample in SAMPLES:
         sid = sample["sample_id"]
         data_url = "data:image/jpeg;base64," + base64.b64encode(crops[sid]["bytes"]).decode("ascii")
         payload = {
-            "model": "mistral-ocr-4-1", "document": {"type": "image_url", "image_url": data_url},
-            "include_blocks": True, "confidence_scores_granularity": "block",
+            "model": "mistral-ocr-4-1",
+            "document": {"type": "image_url", "image_url": data_url},
+            "include_blocks": True,
+            "confidence_scores_granularity": "block",
         }
-        start = time.perf_counter()
-        attempted += 1
-        try:
-            response = requests.post("https://api.mistral.ai/v1/ocr",
-                headers={"Authorization": "Bearer " + api_key, "Content-Type": "application/json"},
-                json=payload, timeout=(15, 90))
-            elapsed = round((time.perf_counter() - start) * 1000, 2)
-            if response.status_code != 200:
-                error_payload = {}
-                try:
-                    body = response.json()
-                    message = body.get("message") or body.get("detail") or body.get("error") or ""
-                    error_payload = {
-                        "mistral_error_message": str(message)[:500],
-                        "payment_required": response.status_code == 402,
-                    }
-                except Exception:
-                    error_payload = {"payment_required": response.status_code == 402}
-                rows[sid] = {"api_status": response.status_code, "latency_ms": elapsed,
-                             "raw_output": "", "recognized_lines": [], "layout": [], "error_type": "http_error",
-                             **error_payload}
+
+        response = None
+        elapsed = None
+        retry_log = []
+
+        for retry_index in range(4):
+            start = time.perf_counter()
+            attempted_http_requests += 1
+            try:
+                response = requests.post(
+                    "https://api.mistral.ai/v1/ocr",
+                    headers={"Authorization": "Bearer " + api_key, "Content-Type": "application/json"},
+                    json=payload,
+                    timeout=(15, 90),
+                )
+                elapsed = round((time.perf_counter() - start) * 1000, 2)
+            except Exception as error:
+                rows[sid] = {
+                    "api_status": "transport_error",
+                    "latency_ms": round((time.perf_counter() - start) * 1000, 2),
+                    "raw_output": "",
+                    "recognized_lines": [],
+                    "layout": [],
+                    "error_type": type(error).__name__,
+                    "retry_log": retry_log,
+                }
+                return {
+                    "status": "provider_call_blocked",
+                    "rows": rows,
+                    "attempted_pages": len(rows),
+                    "attempted_http_requests": attempted_http_requests,
+                    "successful_pages": successful_pages,
+                }
+
+            if response.status_code != 429:
                 break
-            body = response.json()
-            pages = body.get("pages", [])
-            raw = "\n".join(page.get("markdown", "") for page in pages).strip()
-            blocks, lines = [], []
-            for page in pages:
-                for block in page.get("blocks") or []:
-                    content = block.get("content", "")
-                    blocks.append({"content": content, "bbox": block.get("bbox"), "label": block.get("label"),
-                                   "confidence_scores": block.get("confidence_scores")})
-                    lines.extend({"text": line.strip(), "confidence": None} for line in content.splitlines() if line.strip())
-            if not lines:
-                lines = [{"text": line.strip(), "confidence": None} for line in raw.splitlines() if line.strip()]
-            rows[sid] = {
-                "api_status": 200, "raw_output": raw, "mistral_raw_output": raw,
-                "recognized_lines": lines, "layout": blocks, "mistral_bbox_layout": blocks,
-                "mistral_confidence": [b["confidence_scores"] for b in blocks if b.get("confidence_scores") is not None],
-                "latency_ms": elapsed, "mistral_latency_ms": elapsed,
-                "mistral_api_status": 200, "mistral_model": body.get("model", "mistral-ocr-4-1"),
-                "usage_info": body.get("usage_info"),
-            }
-        except Exception as error:
-            rows[sid] = {"api_status": "transport_error", "latency_ms": round((time.perf_counter() - start) * 1000, 2),
-                         "raw_output": "", "recognized_lines": [], "layout": [], "error_type": type(error).__name__}
+
+            retry_after_raw = response.headers.get("Retry-After")
+            try:
+                retry_after = float(retry_after_raw) if retry_after_raw else None
+            except ValueError:
+                retry_after = None
+
+            wait_seconds = min(90.0, max(15.0, retry_after if retry_after is not None else 15.0 * (2 ** retry_index)))
+            retry_log.append({
+                "attempt": retry_index + 1,
+                "status": 429,
+                "retry_after_header_present": bool(retry_after_raw),
+                "wait_seconds": wait_seconds,
+            })
+
+            if retry_index < 3:
+                time.sleep(wait_seconds)
+
+        if response is None:
             break
-    return {"status": "complete" if len(rows) == EXPECTED_COUNT and all(r["api_status"] == 200 for r in rows.values()) else "provider_call_blocked",
-            "rows": rows, "attempted_pages": attempted}
+
+        if response.status_code != 200:
+            error_payload = {}
+            try:
+                body = response.json()
+                message = body.get("message") or body.get("detail") or body.get("error") or ""
+                error_payload = {
+                    "mistral_error_message": str(message)[:500],
+                    "payment_required": response.status_code == 402,
+                }
+            except Exception:
+                error_payload = {"payment_required": response.status_code == 402}
+            rows[sid] = {
+                "api_status": response.status_code,
+                "latency_ms": elapsed,
+                "raw_output": "",
+                "recognized_lines": [],
+                "layout": [],
+                "error_type": "http_error",
+                "retry_log": retry_log,
+                **error_payload,
+            }
+            break
+
+        successful_pages += 1
+        body = response.json()
+        pages = body.get("pages", [])
+        raw = "\n".join(page.get("markdown", "") for page in pages).strip()
+        blocks, lines = [], []
+        for page in pages:
+            for block in page.get("blocks") or []:
+                content = block.get("content", "")
+                blocks.append({
+                    "content": content,
+                    "bbox": block.get("bbox"),
+                    "label": block.get("label"),
+                    "confidence_scores": block.get("confidence_scores"),
+                })
+                lines.extend({
+                    "text": line.strip(),
+                    "confidence": None,
+                } for line in content.splitlines() if line.strip())
+        if not lines:
+            lines = [{"text": line.strip(), "confidence": None} for line in raw.splitlines() if line.strip()]
+
+        rows[sid] = {
+            "api_status": 200,
+            "raw_output": raw,
+            "mistral_raw_output": raw,
+            "recognized_lines": lines,
+            "layout": blocks,
+            "mistral_bbox_layout": blocks,
+            "mistral_confidence": [b["confidence_scores"] for b in blocks if b.get("confidence_scores") is not None],
+            "latency_ms": elapsed,
+            "mistral_latency_ms": elapsed,
+            "mistral_api_status": 200,
+            "mistral_model": body.get("model", "mistral-ocr-4-1"),
+            "usage_info": body.get("usage_info"),
+            "retry_log": retry_log,
+        }
+
+        # Be conservative with Free-mode OCR rate limits even after a success.
+        if sid != SAMPLES[-1]["sample_id"]:
+            time.sleep(6)
+
+    return {
+        "status": "complete" if len(rows) == EXPECTED_COUNT and all(r["api_status"] == 200 for r in rows.values()) else "provider_call_blocked",
+        "rows": rows,
+        "attempted_pages": len(rows),
+        "attempted_http_requests": attempted_http_requests,
+        "successful_pages": successful_pages,
+    }
 
 
 def provider_result(provider, result, crops, other_rows=None):
