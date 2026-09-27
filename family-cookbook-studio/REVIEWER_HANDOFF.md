@@ -71,8 +71,8 @@ G1   Core Product Boundary                               ✅ PASS (concept basel
 G2A1 Input + OCR + Reusable Component Feasibility PoC    ↩ RETURNED (partial evidence accepted)
 G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ↩ RETURNED (resource blocked)
 G2A1-R2 Isolated GitHub Actions Runner Completion         ↩ RETURNED (WP/component feasibility accepted; OCR scope not calibrated)
-G2A1-D1 Target Language + OCR Acceptance Calibration      ← CURRENT / OWNER CHECKPOINT
-G2A1-R3 Target-Language Semantic OCR Calibration          ⏳ HOLD
+G2A1-D1 Target Language + OCR Acceptance Calibration      ✅ OWNER DECISIONS RESOLVED
+G2A1-R3 OCR Architecture Benchmark                        ← CURRENT / READY_FOR_EXECUTOR
 G2A2 MVP Product Contract Freeze                         ⏳ HOLD
 G2B  Local OCR → Structured Recipe → PDF Solution Proof  ⏳ HOLD
 G3A  WordPress + WooCommerce Local Commerce Loop         ⏳ HOLD
@@ -101,6 +101,9 @@ Current Reviewer decisions:
 - `RETURN_G2A1_R2_OCR_SCOPE_NOT_CALIBRATED_2026-09-27`
 - `DEPRECATE_TROCR_SMALL_AS_MVP_FALLBACK_CURRENT_EVIDENCE_2026-09-27`
 - `OPEN_G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE_2026-09-27`
+- `ACCEPT_ENGLISH_FIRST_NOT_ENGLISH_ONLY_2026-09-27`
+- `ACCEPT_SINGLE_CONSOLIDATED_OCR_REVIEW_WITH_MANUAL_EDIT_2026-09-27`
+- `OPEN_G2A1_R3_FREE_LOCAL_PRIMARY_BOUNDED_API_FALLBACK_BENCHMARK_2026-09-27`
 
 Important limitation: R2 now proves the reusable WordPress/WooCommerce/Kadence preview/upload/private-delivery feasibility and provides real OCR measurements. However, target language and acceptable confirmation burden were never frozen before OCR benchmarking, so R2 cannot support a general production OCR PASS/FAIL decision. Payment, full OCR→PDF output quality, repeatability, production hosting and print fulfillment remain unproven.
 
@@ -164,21 +167,31 @@ Why the broad OCR conclusion is premature:
 - the tested TrOCR model/configuration and Paddle recognition setup were not aligned to a frozen target language;
 - exact-string critical mismatches overcount semantic failures such as `350°F → 350F` or `1/2 cup → 1/2cup`.
 
-### Owner checkpoint
+### Owner decisions resolved
 
-Reviewer recommendation:
+Owner decisions:
+- **English-first, not English-only**. English is the initial benchmark/product UX priority, while multilingual input remains allowed where the chosen OCR stack supports it.
+- **One consolidated user confirmation stage**. After OCR + fallback complete, present all uncertain/high-risk fields together, allow manual edits, then one final approval action.
+- Recognition quality must make this a light proof/correction step rather than manual retranscription.
+- No silently accepted wrong quantity/unit/temperature/time.
+- The earlier suggested hard limit of ≤2 confirmations/page is not frozen; R3 measures actual edit burden.
 
-- **first MVP language: English-only**;
-- semantic fidelity threshold:
-  - 0 silently accepted wrong quantity/unit/temperature/time;
-  - average `USER_CONFIRM_REQUIRED` ≤ 2 per recipe page;
-  - normal confirmation is tap/short correction, not whole-recipe retyping;
-  - blank/severe failures fail closed;
-  - punctuation/spacing/degree-symbol formatting differences do not count as critical semantic errors when value/unit remain recoverable.
+### G2A1-R3 scope
 
-After Owner approval, open **G2A1-R3 — Target-Language Semantic OCR Calibration**.
+R3 is an OCR-only architecture benchmark. Reusable WordPress/Woo/Kadence/upload/private-delivery evidence is already accepted and must not be rerun.
 
-R3 is OCR-only. WordPress/Woo/Kadence/upload/private-delivery are already accepted for this Gate.
+Benchmark a bounded shortlist:
+
+**Free/local primary**
+1. PP-OCRv6_medium — preferred baseline.
+2. PaddleOCR-VL-1.6 — challenger for photographed/warped/complex documents.
+
+**Paid/API fallback**
+1. Mistral OCR 4.1.
+2. Google Enterprise Document OCR.
+3. Gemini 3.8 Flash as a general multimodal challenger, with hallucination/fidelity risk explicitly penalized.
+
+Select exactly one primary and at most one fallback after evidence. Prefer sending only suspicious pages/crops to the fallback.
 
 ## 7. Confirmed Facts
 
@@ -190,10 +203,10 @@ R3 is OCR-only. WordPress/Woo/Kadence/upload/private-delivery are already accept
 
 ## 8. UNKNOWN / Open Risks
 
-- **first target market and language — CURRENT OWNER CHECKPOINT; Reviewer recommends English-only MVP**;
+- first product/benchmark language is **English-first, not English-only**; multilingual guarantees beyond tested languages remain open;
 - test price and exact paid package;
 - exact number of recipes/pages/photos per product;
-- **acceptable OCR/manual-review threshold — CURRENT OWNER CHECKPOINT; Reviewer recommends 0 silent wrong critical facts and ≤2 confirmations/page average**;
+- OCR UX is one consolidated review/approval stage with manual editing; exact acceptable edit burden will be calibrated by R3 rather than frozen as a per-page popup count;
 - handwriting/language coverage;
 - exact correction UI;
 - image preprocessing path;
@@ -235,18 +248,17 @@ R3 is OCR-only. WordPress/Woo/Kadence/upload/private-delivery are already accept
 
 ## 12. Next Step
 
-- Reviewer accepts the R2 component evidence and OCR observations at branch HEAD `1d2abddc6e0ea58ec55c75a29033fe1233a34ada`.
-- Current state is **Owner checkpoint G2A1-D1**; do not dispatch another Executor yet.
-- Owner must approve or change:
-  1. first MVP language/market scope;
-  2. OCR UX acceptance threshold.
-- Reviewer recommendation: **English-only MVP + 0 silently wrong critical facts + average ≤2 confirmation points per recipe page**.
-- After approval, Reviewer opens a narrow OCR-only G2A1-R3.
+- G2A1-D1 Owner decisions are resolved.
+- Current Gate: **G2A1-R3 OCR Architecture Benchmark**.
+- Executor should benchmark the bounded primary/fallback shortlist on English-first recipe-like handwriting plus a small multilingual probe.
+- R3 selects one free/local primary + at most one paid/API fallback and measures the one-stage manual correction burden.
+- Do not rerun WordPress/WooCommerce/Kadence/upload/private-delivery.
+- Stop at Reviewer; G2A2 remains HOLD until R3 closes G2A1.
 
 ## 13. Status Summary
 
 - Overall progress: reusable commerce/input/delivery feasibility is proven; OCR has real benchmark evidence but requires target-language/semantic-threshold calibration.
 - Final goal: private, reliable family recipe intake → faithful transcription/structuring → proof → cookbook PDF → later optional print.
-- Current Gate: **G2A1-D1 Owner checkpoint**.
-- Next after Owner approval: G2A1-R3 OCR-only semantic calibration → close G2A1 → G2A2 exact MVP contract.
+- Current Gate: **G2A1-R3 OCR architecture benchmark**.
+- Next: evidence-backed primary/fallback selection → close G2A1 → G2A2 exact MVP contract.
 - Attention: never treat clean OCR demos, model self-confidence or a visually nice PDF as proof that recipe facts are correct.
