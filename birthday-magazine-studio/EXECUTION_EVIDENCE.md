@@ -62,7 +62,9 @@ poc/g2b/artifacts/qa-report.json records PDF page sizes, file size/hash, browser
 
 ### Git submission state
 
-Implementation commit and PR details will be recorded here after the authorized push and PR creation. PR targets `main` and must remain unmerged.
+Pushed implementation commit: 8b39e1ab9261d4bcf610f04add5059c4d791f4c4 on codex/birthday-magazine-g2b-local-ai-pdf-proof.
+Reviewer PR: [#30 — G2B local AI-to-PDF solution proof](https://github.com/entropy-student/project/pull/30), open against main and unmerged.
+This Evidence/Handoff reconciliation is included as a follow-up commit on the same PR.
 
 ---
 

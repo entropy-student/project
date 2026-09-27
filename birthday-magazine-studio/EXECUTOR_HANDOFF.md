@@ -31,7 +31,8 @@ QA reports 15/15 negative mutation cases rejected, all twelve page sections and 
 
 Screenshots, PDF, fixtures and JSON reports are retained under birthday-magazine-studio/poc/g2b/. The local registry/server/browser and project-local `node_modules` were removed/stopped. No Docker, WordPress, payment, email, AI endpoint, public service, production environment or G3 work was used. package-lock.json pins Playwright 1.62.1 (Apache-2.0) and pdf-lib 1.17.1 (MIT).
 
-GitHub submission details will be reconciled after the authorized commit and PR creation. The PR must target main and remain open/unmerged.
+Pushed implementation commit: 8b39e1ab9261d4bcf610f04add5059c4d791f4c4 on codex/birthday-magazine-g2b-local-ai-pdf-proof.
+Reviewer PR: [#30 — G2B local AI-to-PDF solution proof](https://github.com/entropy-student/project/pull/30), open against main and unmerged. The final Evidence/Handoff reconciliation is being committed as a follow-up on this same PR.
 
 ## Historical G2A1R1 closure — preserved
 
