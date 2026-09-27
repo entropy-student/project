@@ -5688,3 +5688,39 @@ STOP_AT_REVIEWER=YES
 ```
 
 The single strict SSH invocation verified the recorded remote identity and fresh container/runtime continuity, then stopped before any write at a fail-closed mount-baseline predicate. The helper coupled mounted-content comparison to equality of host/container inode numbers, although the Gate requires each inode to be compared with its own prewrite value. Because the helper emitted no separate mounted hash/inode values, this run does not establish whether content differed or the cross-namespace inode comparison alone failed; no actual Caddy drift is asserted. The existing rollback backup was read-only verified. No PPCP/indexing check, Caddyfile write, reload, DNS action, or payment action was reached. No second SSH was attempted.
+
+## K6_PHASE_G_R3R2_STALE_BIND_MOUNT_RECONCILIATION_AND_RECREATE_PLAN_SEAL — Executor Return
+
+GATE=K6_PHASE_G_R3R2_STALE_BIND_MOUNT_RECONCILIATION_AND_RECREATE_PLAN_SEAL
+RESULT=RETURN_REVIEWER_G_R3R2_READONLY_HELPER_ERROR
+SUMMARY=The single strict SSH session reached the target with pinned host-key verification, but the read-only remote Python helper stopped before emitting identity evidence or performing Caddy/Compose probes. Its local helper contract treated the (stdout, stderr, exit) tuple as bytes and raised AttributeError. No retry was made; this does not establish Caddy mount or application drift.
+
+LOCAL_IDENTITY_REFERENCE_CHECK=PASS
+LOCAL_PUBLIC_FINGERPRINT_MATCH=PASS_SHA256_qFlRXelvzDEFpatrcX7T4dUBKPAC7YqFqNkyFZh5rYw
+LOCAL_KNOWN_HOSTS_PIN_CHECK=PASS_3_REGISTERED_KEY_LINES
+SSH_NETWORK_INVOCATIONS=1
+SSH_STRICT_PINNED_HOST_KEY=YES_REMOTE_COMMAND_REACHED
+SSH_NATIVE_EXIT=1_REMOTE_HELPER_ERROR
+REMOTE_IDENTITY=NOT_RECORDED_HELPER_FAILED_BEFORE_EMIT
+REMOTE_CADDYFILE_RECONCILIATION=NOT_REACHED
+LEGACY_MOUNTED_TO_ACTIVE_SEMANTIC_PARITY=NOT_CHECKED
+ACTIVE_USER_ROUTE_INVENTORY_COMPLETE=NO
+TARGET_PRESERVES_ALL_UNRELATED_ACTIVE_ROUTES=NOT_CHECKED
+CADDY_COMPOSE_SOURCE_IDENTIFIED=NOT_CHECKED
+CADDY_CERT_STATE_PERSISTENCE=NOT_CHECKED
+CADDY_CONFIG_STATE_PERSISTENCE=NOT_CHECKED
+RECREATE_PLAN=NOT_SEALED
+ROLLBACK_PLAN=NOT_SEALED
+CADDYFILE_WRITE=0
+CADDY_BACKUP_WRITE=0
+CADDY_RELOAD=0
+CADDY_RESTART=0
+CADDY_RECREATE=0
+COMPOSE_NETWORK_DOCKER_DAEMON_WRITES=0
+DNS_WRITES=0
+INDEXING_WRITE=0
+PAYMENT_ACTIONS=0
+SECRET_VALUE_OUTPUT=0
+LOCAL_TEMP_FILES_CREATED=0
+STOP_AT_REVIEWER=YES
+
