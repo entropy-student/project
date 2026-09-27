@@ -40,7 +40,7 @@ STOP_AT_OWNER_CHECKPOINT=YES
 
 ### GitHub state
 
-Base: latest main `e7a4c53c69d1a69953017c00daad928988c78dc9`. Continue on `codex/birthday-magazine-g3b-paypal-sandbox-entitlement`; update existing [PR #51](https://github.com/entropy-student/project/pull/51), keep it open and unmerged. The previous commits are rebased onto this main. This continuation is evidence-only; Reviewer/Owner must decide whether further G3B steps are authorized.
+Base: latest main `452348ccf5691507c8b9b08481695662b3241bc9`. Continue on `codex/birthday-magazine-g3b-paypal-sandbox-entitlement`; update existing [PR #51](https://github.com/entropy-student/project/pull/51), keep it open and unmerged. The previous commits are rebased onto this main. This continuation is evidence-only; Reviewer/Owner must decide whether further G3B steps are authorized.
 
 ---
 

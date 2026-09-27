@@ -3,7 +3,7 @@
 **Latest result:** `RETURN_OWNER_SANDBOX_PAYMENT_STATE_REVIEW_REQUIRED`
 **Latest read-back:** 2026-09-27 UTC
 **Execution branch:** codex/birthday-magazine-g3b-paypal-sandbox-entitlement
-**Base:** latest GitHub `main` at `e7a4c53c69d1a69953017c00daad928988c78dc9`
+**Base:** latest GitHub `main` at `452348ccf5691507c8b9b08481695662b3241bc9`
 **Stop point:** `STOP_AT_OWNER_CHECKPOINT=YES`; no entitlement or refund phase started.
 
 This continuation supersedes the earlier Seller-auth checkpoint below. The Owner reports completing login and payment with a PayPal Sandbox personal test account. The PPCP admin surface displayed “Connected to PayPal” and “Business | Sandbox”; the PPCP system-status report showed Onboarded, Webhook status, and Webhook delivery host as healthy. `PAYPAL_LIVE_ENABLED=no` remained set. No Client ID, Secret, token, cookie, authorization header, Buyer credentials, or provider payload was read or recorded.
