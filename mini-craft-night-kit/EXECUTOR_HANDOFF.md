@@ -2683,6 +2683,9 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 
 ## K6 Phase G-R1R1 DNS Control-Path Evidence Persistence — PASS_CANDIDATE
 
+`GATE=K6_PHASE_G_R1R1_DNS_CONTROL_PATH_EVIDENCE_PERSISTENCE`
+`RESULT=PASS_CANDIDATE_K6_PHASE_G_R1R1_DNS_CONTROL_PATH_EVIDENCE_PERSISTENCE`
+
 - R1 PASS candidate persisted; browser-only/read-only verification had qualified the authenticated Cloudflare DNS control path.
 - DNS mutation and all SSH/VPS/Shared Infra/public-ingress/payment actions remained zero.
 - GitHub Evidence commit: `e47f31b29d82022220700e895246dc96de267255`.
