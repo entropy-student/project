@@ -28,7 +28,7 @@
 | `REVIEWER_DECISION_G2B_RETURN.md` | Earlier Reviewer decision on G2B PR #30 | Historical partial RETURN; superseded for content/rendering by G2BR3 PASS |
 | `G2B_LOCAL_AI_PDF_SOLUTION_PROOF.md` | Original local AI → 12-page magazine → PDF proof | Historical partial execution; combined G2B content/rendering PASS is completed by G2BR3 |
 | `OWNER_DECISION_G2BR1_BOUNDED_AI_CALLS.md` | Owner authorization for bounded real-AI closure | **APPROVED — MAX 3 SYNTHETIC CALLS** |
-| `REVIEWER_DECISION_G2BR1_CODEX_PLUS_ROUTE.md` | Reviewer/Owner decision to use ChatGPT-authenticated Codex for G2BR1 | **CURRENT EXECUTION ROUTE** |
+| `REVIEWER_DECISION_G2BR1_CODEX_PLUS_ROUTE.md` | Historical Reviewer/Owner route decision for G2BR1 | Historical; G2BR1 ultimately RETURN and G2BR3 superseded it for content/rendering proof |
 | `G2BR1_REAL_AI_GENERATION_CLOSURE.md` | Narrow real-AI proof closure | Executed / **RETURN — NESTED CODEX TRANSPORT FAILED** |
 | `REVIEWER_DECISION_G2BR1_RETURN.md` | Reviewer decision on PR #40 | **CURRENT G2BR1 DECISION — RETURN** |
 | `OWNER_DECISION_G2BR2_MAX2_HOST_CODEX_RUNS.md` | Owner authorization for G2BR2 host-context Codex runs | **APPROVED — MAX 2 REAL-MODEL RUNS** |
