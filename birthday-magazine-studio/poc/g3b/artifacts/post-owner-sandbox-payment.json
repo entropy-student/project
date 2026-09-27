@@ -1,0 +1,69 @@
+{
+  "gate": "G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND",
+  "result": "RETURN_OWNER_SANDBOX_PAYMENT_STATE_REVIEW_REQUIRED",
+  "capturedAtUtc": "2026-09-27T17:50:09Z",
+  "branch": "codex/birthday-magazine-g3b-paypal-sandbox-entitlement",
+  "baseMain": "452348ccf5691507c8b9b08481695662b3241bc9",
+  "merchant": {
+    "connectedUiVisible": true,
+    "sandboxMode": true,
+    "sandboxEvidence": [
+      "PPCP admin displayed Connected to PayPal and Business | Sandbox",
+      "Checkout loaded www.sandbox.paypal.com Web SDK v6 resources"
+    ],
+    "payPalLiveEnabled": false,
+    "payPalLiveEnabledRuntimeValue": "no",
+    "credentialsOrSessionValuesReadOrRecorded": false
+  },
+  "checkout": {
+    "path": "native WooCommerce checkout",
+    "productId": 15,
+    "total": "39.99",
+    "currency": "USD",
+    "paymentMethod": "ppcp-gateway",
+    "clientTokenFunctionalPath": "INFERRED_PASS_FROM_SANDBOX_V6_RENDER_AND_CHECKOUT_PROGRESSION",
+    "clientTokenResponseStatusCaptured": false,
+    "clientTokenBodyRead": false,
+    "paypalButtonRendered": true,
+    "paypalWebSdkResources": [
+      "www.sandbox.paypal.com/web-sdk/v6/core",
+      "www.sandbox.paypal.com/web-sdk/v6.64.0/paypal-payments"
+    ],
+    "agentStartedCheckoutFlow": true
+  },
+  "webhook": {
+    "onboardedStatus": "YES",
+    "receiptStatus": "YES",
+    "deliveryHostStatus": "YES",
+    "siteOriginScheme": "https",
+    "eventTypeOrPayloadRead": false
+  },
+  "ownerReportedSandboxBuyerLoginAndPayment": true,
+  "wooOrderReadback": {
+    "orderId": 30,
+    "createdUtc": "2026-09-27T17:40:41Z",
+    "status": "processing",
+    "paid": true,
+    "total": "39.99",
+    "currency": "USD",
+    "paymentMethod": "ppcp-gateway"
+  },
+  "providerCaptureCountAndCorrelation": "NOT_INDEPENDENTLY_VERIFIED",
+  "agentEnteredBuyerCredentialsOrApproved": false,
+  "agentIssuedExplicitCaptureCommand": false,
+  "agentIssuedRefundCommand": false,
+  "newDurablePayPalScreenshotSaved": false,
+  "paidEntitlementEvaluation": "NOT_RUN",
+  "generationReadyJobEvaluation": "NOT_RUN",
+  "generationEnabled": false,
+  "generationJobPosts": 0,
+  "actionSchedulerGenerationActions": 0,
+  "modelCalls": 0,
+  "forbiddenActions": 0,
+  "stopAtOwnerCheckpoint": true,
+  "limitations": [
+    "PPCP status flags are read from the WooCommerce system status report; no raw webhook was retained.",
+    "Client-token body/status was not inspected. Functional path is inferred from the rendered Sandbox SDK/button and paid WooCommerce order read-back.",
+    "WooCommerce paid state and Owner report do not by themselves prove provider-side capture count or transaction correlation."
+  ]
+}

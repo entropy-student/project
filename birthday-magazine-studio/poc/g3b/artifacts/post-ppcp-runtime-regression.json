@@ -1,0 +1,284 @@
+{
+  "gate": "G3B_POST_PPCP_RUNTIME_REGRESSION",
+  "result": "PASS_CANDIDATE",
+  "startedAtUtc": "2026-09-27T15:56:57.700Z",
+  "runtime": {
+    "wordpress": "7.1.1",
+    "php": "8.3.33",
+    "woocommerce": "11.1.2",
+    "mariadb": "11.4.7-MariaDB-ubu2404",
+    "mailpit": "1.31.2"
+  },
+  "checks": {
+    "syntheticUsers": {
+      "result": "PASS",
+      "evidence": {
+        "checkoutCreatesBuyerA": true,
+        "buyerBCreatedWithCustomerRole": true
+      }
+    },
+    "previewToNativeCommerce": {
+      "result": "PASS",
+      "evidence": {
+        "ctaPath": "Good Issue preview → published WooCommerce product permalink",
+        "productId": 15
+      }
+    },
+    "previewMobile375": {
+      "result": "PASS",
+      "evidence": {
+        "viewport": 375,
+        "document": 375
+      }
+    },
+    "cartInitial": {
+      "result": "PASS",
+      "evidence": {
+        "productRows": 1,
+        "lineSubtotals": [
+          "$39.99"
+        ]
+      }
+    },
+    "cartUpdateRemove": {
+      "result": "PASS",
+      "evidence": {
+        "quantityOneSubtotal": "USD 39.99",
+        "quantityTwoSubtotal": "USD 79.98",
+        "removeResult": "cart empty"
+      }
+    },
+    "checkoutValidation": {
+      "result": "PASS",
+      "evidence": {
+        "invalidFieldsBefore": 0,
+        "invalidFieldsAfter": 0,
+        "validationNotice": 1,
+        "orderCountBefore": 1,
+        "orderCountAfter": 1
+      }
+    },
+    "checkoutSubmission": {
+      "result": "PASS",
+      "evidence": {
+        "orderId": 17,
+        "source": "previous browser checkout submission retained in this disposable runtime",
+        "accountCreateControlPresent": false,
+        "accountCreationRequiredByGuestDisabledSetting": true,
+        "paymentMethod": "woocommerce core cheque / local test only",
+        "confirmationRefresh": "completed"
+      }
+    },
+    "unpaidOrder": {
+      "result": "PASS",
+      "evidence": {
+        "status": "on-hold",
+        "paid": false,
+        "total": "39.99",
+        "currency": "USD"
+      }
+    },
+    "checkoutAccountCreation": {
+      "result": "PASS",
+      "evidence": {
+        "customerId": 3,
+        "accountCreatedAtCheckout": true,
+        "myAccountPreRegistrationEnabled": false
+      }
+    },
+    "ownerOrderVisibility": {
+      "result": "PASS",
+      "evidence": {
+        "orderVisibleInOrders": true,
+        "orderDetailPageVisible": true
+      }
+    },
+    "orderBoundWorkspace": {
+      "result": "PASS",
+      "evidence": {
+        "orderId": "17",
+        "ownerId": "3",
+        "ownerRouteHttp": 200
+      }
+    },
+    "unrelatedOrderDenial": {
+      "result": "PASS",
+      "evidence": {
+        "orderVisibleInBList": false,
+        "orderDetailsVisible": false,
+        "detailMarkers": {
+          "fullProductTitle": false,
+          "buyerAEmail": false,
+          "buyerAAddress": false,
+          "orderTotal": false
+        },
+        "wooCoreResponse": "Invalid order.",
+        "invalidOrderPageHttp": 200,
+        "directWorkspaceHttp": 403
+      }
+    },
+    "guestWorkspaceDenial": {
+      "result": "PASS",
+      "evidence": {
+        "directWorkspaceHttp": 403,
+        "bearerUrlAccepted": false
+      }
+    },
+    "woocommerceAdminOrderEvidence": {
+      "result": "PASS",
+      "evidence": {
+        "orderId": 17,
+        "status": "on-hold",
+        "privateUrlNotRecorded": true
+      }
+    },
+    "officialPpcpOnly": {
+      "result": "PASS",
+      "evidence": {
+        "matchingPluginCount": 1
+      }
+    },
+    "generationJobCount": {
+      "result": "PASS",
+      "evidence": {
+        "checkpoint": "final-readback",
+        "generationJobCounter": 0,
+        "generationSchedulerActions": 0,
+        "generationCronEvents": 0,
+        "modelCallCounter": 0
+      }
+    },
+    "modelCallCount": {
+      "result": "PASS",
+      "evidence": {
+        "counter": 0,
+        "providerRequests": 0
+      }
+    }
+  },
+  "jobSnapshots": [
+    {
+      "checkpoint": "invalid-checkout-rejected",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "unpaid-order-created",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "order-confirmation-refreshed",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "checkout-account-created",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "buyer-a-account-open",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "buyer-a-order-details-open",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "buyer-a-workspace-open",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "buyer-a-workspace-refreshed",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "buyer-a-workspace-revisited",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "buyer-b-order-denial",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "guest-workspace-denial",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    },
+    {
+      "checkpoint": "final-readback",
+      "generationJobCounter": 0,
+      "generationSchedulerActions": 0,
+      "generationCronEvents": 0,
+      "modelCallCounter": 0
+    }
+  ],
+  "mailpit": {
+    "service": "Mailpit local container, SMTP bound only to Compose network on port 1025; host SMTP port not published",
+    "messagesAtVerification": 18,
+    "buyerAMessages": 3,
+    "accountSetupEmail": "CAPTURED",
+    "accountEmailSubjects": [
+      "[Birthday Magazine G3B Synthetic Local] Password Changed",
+      "Your Birthday Magazine G3B Synthetic Local account has been created!"
+    ],
+    "recipientDomainRecorded": "birthday.invalid",
+    "accountMessageBodyRead": false,
+    "messageBodyOrResetTokenPersisted": false
+  },
+  "network": {
+    "externalHosts": [
+      "www.paypal.com"
+    ],
+    "modelProviderRequestCount": 0
+  },
+  "forbiddenActions": {
+    "paypalPluginInstalled": true,
+    "paypalConnected": false,
+    "realPayment": false,
+    "productModelCalls": 0,
+    "g3bStarted": true,
+    "targetHostWrite": false
+  },
+  "order": {
+    "id": 17,
+    "status": "on-hold",
+    "paid": false,
+    "total": "39.99",
+    "currency": "USD",
+    "customerId": 3,
+    "buyerEmailDomain": "birthday.invalid",
+    "workspaceOrderId": "17",
+    "workspaceOwnerId": "3"
+  },
+  "completedAtUtc": "2026-09-27T15:58:15.876Z"
+}

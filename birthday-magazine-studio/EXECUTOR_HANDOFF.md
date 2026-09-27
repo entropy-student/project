@@ -1,4 +1,98 @@
-## Current Gate — G3A WordPress / WooCommerce commerce and account loop — PASS_CANDIDATE
+# Executor Handoff — Birthday Magazine Studio
+
+## Current Gate — G3B continuation after Owner Sandbox Buyer payment
+
+```text
+GATE=G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND
+RESULT=RETURN_OWNER_SANDBOX_PAYMENT_STATE_REVIEW_REQUIRED
+G3A_BASELINE=PASS_REUSED
+OFFICIAL_PPCP=4.1.3_INSTALLED
+PPCP_MERCHANT_CONNECTED=YES
+PPCP_SANDBOX_MODE=YES
+PAYPAL_LIVE_ENABLED=NO
+PPCP_CLIENT_TOKEN_PATH=FUNCTIONAL_RENDER_AND_CHECKOUT_PROGRESSION
+PAYPAL_CHECKOUT_BUTTON=RENDERED
+HTTPS_WEBHOOK_DELIVERY_HOST=YES
+PPCP_WEBHOOK_RECEIPT_STATUS=YES
+OWNER_SANDBOX_BUYER_PAYMENT=REPORTED_COMPLETE
+WOOCOMMERCE_ORDER=30_PROCESSING_PAID_USD_39_99
+PROVIDER_CAPTURE_COUNT_AND_CORRELATION=NOT_INDEPENDENTLY_VERIFIED
+PAID_ENTITLEMENT_EVALUATION=NOT_RUN
+GENERATION_READY_JOB=NOT_RUN
+REFUND=NOT_RUN
+GENERATION_ENABLED=NO
+GENERATION_JOB_COUNT=0
+MODEL_CALL_COUNT=0
+FORBIDDEN_ACTIONS=0
+STOP_AT_OWNER_CHECKPOINT=YES
+```
+
+### Latest evidence and boundary
+
+- The Owner reports completing login and payment with a PayPal Sandbox personal test account. The PPCP admin displayed “Connected to PayPal” and “Business | Sandbox”; WooCommerce's PPCP system-status report showed Onboarded, Webhook status, and Webhook delivery host as healthy. The runtime still reports `PAYPAL_LIVE_ENABLED=no`.
+- Native checkout used the synthetic Birthday Magazine product ID 15 at USD 39.99. Sandbox Web SDK v6 resources loaded and the visible `paypal-button` custom element mounted. PPCP's secure-browser handoff appeared. Safe WooCommerce read-back showed order #30, `processing`, paid, USD 39.99, `ppcp-gateway`. No provider transaction/capture identifier or raw webhook payload was inspected; provider capture count/correlation is not independently verified.
+- No agent Buyer credentials/login/approval, explicit capture command, or refund command was used. After the paid-order read-back, no further PayPal interaction occurred. Do not run another checkout, capture, or refund in this continuation.
+- The plugin status report showed webhook receipt and delivery-host flags as `yes`; the WordPress origin was HTTPS. The event type/body was not read. The client-token response body was never read; functional success is evidenced by the Sandbox v6 checkout component rendering and progression to the WooCommerce paid order.
+- No new durable screenshot of the PayPal handoff/approval surface was saved. Existing synthetic screenshots are the pre-submission baseline; no account page or tokenized approval URL was retained.
+- Paid-entitlement evaluation, deferred generation-ready job creation/idempotency, and refund are not run. `BMS_G3A_GENERATION_ENABLED=false`; generation-job post count=0; Action Scheduler generation-hook count=0; model calls=0.
+- Machine-readable sanitized evidence: `poc/g3b/artifacts/post-owner-sandbox-payment.json`. No Client ID, Secret, token, cookie, authorization header, Buyer credentials, transaction identifier, or raw provider payload is retained.
+- The isolated Compose runtime and temporary HTTPS origin remain active at this Owner checkpoint. Do not stop Mini Craft or use global Docker cleanup.
+
+### GitHub state
+
+Base: latest main `452348ccf5691507c8b9b08481695662b3241bc9`. Continue on `codex/birthday-magazine-g3b-paypal-sandbox-entitlement`; update existing [PR #51](https://github.com/entropy-student/project/pull/51), keep it open and unmerged. The previous commits are rebased onto this main. This continuation is evidence-only; Reviewer/Owner must decide whether further G3B steps are authorized.
+
+---
+
+## Initial Seller checkpoint — historical, superseded
+
+```text
+GATE=G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND
+RESULT=RETURN_OWNER_PAYPAL_SANDBOX_MERCHANT_AUTH_REQUIRED
+G3A_BASELINE=PASS_REUSED
+OFFICIAL_PPCP=4.1.3_INSTALLED
+PPCP_SANDBOX_MODE=ON
+PAYPAL_LIVE_ENABLED=NO
+MERCHANT_CONNECTED=NO
+PUBLIC_HTTPS_ORIGIN=READY
+PUBLIC_WOOCOMMERCE_PATH=PASS_NO_SUBMISSION
+SELLER_LOGIN_OAUTH=OWNER_CHECKPOINT_REQUIRED
+BUYER_APPROVAL=NOT_RUN
+CAPTURE=NOT_RUN
+PAID_ENTITLEMENT=NOT_RUN
+GENERATION_READY_JOB=NOT_RUN
+REFUND=NOT_RUN
+GENERATION_JOB_COUNT=0
+MODEL_CALL_COUNT=0
+REAL_PAYMENT=0
+FORBIDDEN_ACTIONS=0
+STOP_AT_OWNER_CHECKPOINT=YES
+```
+
+### What is ready
+
+- Project-isolated Docker/MariaDB/Mailpit runtime remains active. It has four G3B containers, two G3B volumes, and one G3B network; ports are loopback-only except the temporary HTTPS Quick Tunnel.
+- The official free WordPress.org WooCommerce PayPal Payments 4.1.3 package is installed and active. Package SHA-256: 179e6fa9ede40fb2b05a3ac06c08a47710536e554c171db6e4d1b777d94abb97. No premium add-on or purchase was used.
+- Sandbox Mode is visibly selected. The account is not connected; no Client ID/Secret exists. PAYPAL_LIVE_ENABLED=NO.
+- Temporary origin: https://tutorials-queries-refined-grad.trycloudflare.com. HTTPS preview, public product/cart/checkout and PPCP settings page were verified. Checkout was not submitted.
+- The synthetic product is USD 39.99 and virtual. The existing synthetic test order remains on-hold/unpaid. The generation gate is closed; generation jobs and model calls both remain zero.
+- G3B artifacts and screenshots are under birthday-magazine-studio/poc/g3b/. See EXECUTION_EVIDENCE.md and ppcp-install.json.
+
+### Owner-only checkpoint
+
+Open the temporary origin at /wp-admin/ and perform Seller Sandbox login, OAuth consent, and merchant authorization yourself. Do not send passwords, Client ID/Secret, tokens, cookies, or OAuth codes in chat or GitHub. If the local synthetic admin password is unavailable, reset it locally using the G3B-scoped WP-CLI; keep the new password outside the repository. The synthetic inspector account used for public settings evidence was deleted.
+
+Do not proceed to Sandbox Buyer approval, capture, paid entitlement, generation-ready action, or refund until the Owner/Reviewer explicitly directs the next step. No PayPal connection control was clicked in this execution.
+
+The local Compose stack and Quick Tunnel intentionally remain active for the checkpoint. PPCP ZIP/extraction fragments remain in the G3B-only ignored temporary directory; full runtime teardown is deferred. Do not stop Mini Craft or run a global Docker prune.
+
+### GitHub state
+
+Base is latest main bd8764de926329680d71443ae7b15061954b98ab. G3B evidence commit 790bd614b07189c63c1e79055aab8a98129db64e is pushed. Reviewer PR #51 (https://github.com/entropy-student/project/pull/51) targets main and remains open/unmerged. This Handoff reconciliation is being pushed as a follow-up commit on the same PR. Reviewer/Owner is the next decision point; G3B has not passed and G3C/G4 work has not started.
+
+---
+
+## Historical current Gate — G3A WordPress / WooCommerce commerce and account loop — PASS_CANDIDATE
 
 GATE=G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP
 RESULT=PASS_CANDIDATE_G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP

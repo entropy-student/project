@@ -1,0 +1,85 @@
+{
+  "capturedAtUtc": "2026-09-27T15:51:59.192Z",
+  "requestedRoute": "/wp-admin/admin.php?page=wc-settings&tab=checkout&section=ppcp-gateway",
+  "finalPath": "/wp-admin/admin.php",
+  "pageTitle": "WooCommerce settings ‹ Birthday Magazine G3B Synthetic Local — WordPress",
+  "ppcpTitleVisible": true,
+  "fatalErrorVisible": false,
+  "connectControlVisible": true,
+  "activationButtonVisible": true,
+  "sandboxToggleBefore": "false",
+  "sandboxToggleAfter": "true",
+  "sandboxModeSelected": true,
+  "sandboxControlVisible": true,
+  "liveControlVisible": false,
+  "controlLabels": [
+    "Skip to main content",
+    "Skip to toolbar",
+    "Dashboard",
+    "Home",
+    "Updates 1",
+    "Posts",
+    "All Posts",
+    "Add Post",
+    "Categories",
+    "Tags",
+    "Media",
+    "Library",
+    "Add Media File",
+    "Pages",
+    "All Pages",
+    "Add Page",
+    "Comments",
+    "WooCommerce",
+    "Home 3",
+    "Orders",
+    "Customers",
+    "Coupons",
+    "Reports",
+    "Settings",
+    "Status",
+    "Extensions",
+    "Products",
+    "All Products",
+    "Add new product",
+    "Brands"
+  ],
+  "fields": [
+    {
+      "name": "",
+      "type": "button",
+      "label": "Collapse Main menu"
+    },
+    {
+      "name": "_wpnonce",
+      "type": "hidden",
+      "label": "",
+      "checked": false
+    },
+    {
+      "name": "_wp_http_referer",
+      "type": "hidden",
+      "label": "",
+      "checked": false
+    }
+  ],
+  "toggles": [
+    {
+      "role": "checkbox",
+      "label": "",
+      "checked": "true"
+    },
+    {
+      "role": "checkbox",
+      "label": "",
+      "checked": "false"
+    }
+  ],
+  "requestHosts": [
+    "fonts.googleapis.com",
+    "www.paypalobjects.com"
+  ],
+  "liveEnabled": false,
+  "merchantConnected": false,
+  "ownerOAuthActionPerformed": false
+}
