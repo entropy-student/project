@@ -2626,3 +2626,6 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - The first local capture rehearsals found a PowerShell 5.1 `ProcessStartInfo.ArgumentList` incompatibility and a null DNS-answer count handling issue. The capture implementation and parser were corrected and the full local seal passed before the sole network invocation.
 - Evidence appended to `EXECUTION_EVIDENCE.md`; evidence commit: `f72cbd5df3c215ac09133eddb1da5b1e085dcce4`.
 - Next: Reviewer review; do not attempt SSH #2 or continue the Caddy reconciliation without a new Reviewer decision. No owner action requested. `STOP_AT_REVIEWER=YES`.
+
+
+- Evidence transcription correction commit: `a807eb754a92917ed7efc2196fa1d3e423983215`; SSH option is lowercase `-n` (stdin disabled) with `-T`. The earlier uppercase `-N` marker was a casing typo only; execution facts are unchanged.
