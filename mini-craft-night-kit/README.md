@@ -41,13 +41,25 @@ WordPress
 
 ## 当前 Gate
 
-`K6_PHASE_C1R5_FRESH_SECRET_REGENERATION_AND_PROVISIONING`
+`K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION`
 
-Owner 已选择 **A / fresh regeneration**。旧 DPAPI pending 保持加密、不删除，也不再要求复用其中的旧值。
+当前状态：
 
-当前 C1R5 已获 bounded Owner authorization：先用 synthetic fixture 封死新的 canonical serialization/parser；该阶段 PASS 后，才允许生成并写入既定的 10 个 fresh Secrets，验证权限/读取边界，并建立新的最终 DPAPI 恢复副本。
+- K0–K5：PASS；
+- K6 VPS Deployment：**PASS**；
+- `https://minicraft.spikersun.com`：公网 Sandbox ingress ACTIVE；
+- PayPal：Sandbox accepted baseline，**Live=NO**；
+- Resend sending domain `minicraft.spikersun.com`：Verified / Sending enabled；
+- 官方 Resend WordPress 插件：Active；
+- Owner 已在 WordPress 中直接录入 Resend API key，站点 UI 显示 connected；Secret 未进入 GitHub/聊天；
+- Canary 商品：已准备草稿，尚未发布；
+- Product 223：未修改；
+- 邮件真实投递验证：待完成；
+- populated Checkout ¥500/运费0/税0/总额¥500 + PayPal method：待验证；
+- 真实订单/支付/refund：均为 0；
+- Soft Launch：未授权。
 
-**Mini Craft 仍未开始 VPS 部署**；本 Gate 不启动容器、不恢复数据库、不改 Shared Infra、不启用 PayPal Live、不做真实支付。
+当前无需 Owner 操作。Executor 继续同一个 K7 R1 Gate；只有新的 Owner-only 身份/支付/Secret 交互才再次中断 Owner。
 
 ## 文档索引
 
