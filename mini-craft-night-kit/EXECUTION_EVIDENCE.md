@@ -5353,3 +5353,71 @@ STOP_AT_REVIEWER=YES
 ```
 
 The initial local capture rehearsal exposed that PowerShell's Stop error preference treats OpenSSH version text on native stderr as a terminating error. This was corrected locally by capturing under Continue, then the full direct-native seal passed; no network call occurred during the failed rehearsal. Both SSH invocations used the accepted strict pinned contract and no stdin. SSH #2 reached the remote read-only script and stopped at candidate adapt because stderr was non-empty; its raw contents were not emitted or persisted. SSH budget is exhausted. All local stdout/stderr temp captures were deleted and verified absent. No remote or Shared Infra state was changed; no retry, reload, write, DNS, payment, or lifecycle action occurred.
+
+
+## K6_PHASE_F_R1R5R3_ADAPT_WARNING_CLASSIFICATION_AND_CANDIDATE_SEAL — STOP_AT_REVIEWER
+
+```text
+GATE=K6_PHASE_F_R1R5R3_ADAPT_WARNING_CLASSIFICATION_AND_CANDIDATE_SEAL
+RESULT=RETURN_REVIEWER_F_R1R5R3_CANDIDATE_RECONSTRUCTION_DRIFT
+SUMMARY=One strict pinned SSH invocation succeeded and the bounded frozen read-back matched: target identity, DNS NXDOMAIN, durable Caddyfile hash, active Caddy config hash, active route absence, and edge-test body fingerprint. The in-memory candidate had the expected 264-byte length but its SHA-256 did not match the Reviewer-frozen original candidate hash. Per Gate, execution stopped immediately before caddy adapt/fmt or semantic candidate work. This is an executor candidate-reconstruction mismatch; no new Caddy/runtime/DNS drift is inferred.
+
+GOVERNANCE_SOURCE=entropy-student/spike.skill/vps-project-governance latest
+GOVERNANCE_SKILL_BLOB=5e6ba08305ad802e5f6ce732d8ca731bc316b141
+GOVERNANCE_HANDOFF_BLOB=d290694148348a2e02e5143415bd277b11f5fba7
+SSH_CONTRACT_BLOB=a0b5e2ad0bcb02184478ad660cd2f33375c59198
+PROJECT_DECISION_BLOB=7df87e211eef60d62f62532456c83bcecb796f4a
+EXECUTION_PACK_BLOB=7afc575e1832b2ada43ae20274c8bb63827305fb
+SHARED_VPS_HANDOFF_SOURCE_READ=YES
+
+IDENTITY_REFERENCE_CHECK=PASS
+PUBLIC_FINGERPRINT_MATCH=PASS
+KNOWN_HOSTS_PIN_CHECK=PASS
+SSH_NETWORK_INVOCATIONS=1
+SSH_NATIVE_EXIT=20_REMOTE_BOUNDED_RETURN
+SSH_HOST_KEY_MATCH=YES_BY_STRICT_PINNED_SUCCESS
+REMOTE_IDENTITY=ops@srv1970241
+REMOTE_WRITES=0
+
+CURRENT_MINICRAFT_DNS=NXDOMAIN
+DURABLE_CADDYFILE_SHA256=12fac82e3b1b9733029aa820c4794ccb9359ae494863dd6815f7e29b636d8beb
+CONTAINER_ADMIN_CONFIG_GET=PASS
+CURRENT_ACTIVE_CONFIG_BYTES=610
+CURRENT_ACTIVE_CONFIG_SHA256=206997c24f7e52efec7f7a8d241afe6c8d16b5b23e54fd799da0f3a94a9dd9cd
+CURRENT_ACTIVE_LOCALHOST_ROUTE=FOUND
+CURRENT_ACTIVE_EDGE_TEST_ROUTE=FOUND
+CURRENT_ACTIVE_MINICRAFT_ROUTE=ABSENT
+EDGE_TEST_CURRENT_STATUS=200
+EDGE_TEST_CURRENT_BODY_BYTES=30
+EDGE_TEST_CURRENT_BODY_SHA256=2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824
+
+ORIGINAL_CANDIDATE_BYTES=264
+ORIGINAL_CANDIDATE_EXPECTED_SHA256=ab67b8fca129b5f41f18740997794e05bb37037e58455d2e4524b64543f05e93
+ORIGINAL_CANDIDATE_OBSERVED_SHA256=b3531c1d7efb1b7e6e8e5cc83b39c5e58b61c66bcf386343dfa028d80dab2047
+ORIGINAL_CANDIDATE_RECONSTRUCTION=DRIFT
+ORIGINAL_ADAPT_NATIVE_EXIT=NOT_RUN
+ORIGINAL_ADAPT_STDOUT_JSON=NOT_RUN
+ADAPT_WARNING_CLASS=NOT_RUN
+CANONICAL_CANDIDATE=NOT_CREATED
+LOCALHOST_DURABLE_BASELINE_PRESERVED=NOT_VALIDATED
+EDGE_TEST_BEHAVIORAL_PARITY=NOT_VALIDATED
+CANDIDATE_MINICRAFT_ROUTE=NOT_VALIDATED
+PUBLIC_INGRESS_CHANGESET=NOT_READY
+ROLLBACK_PLAN=NOT_FINALIZED
+OWNER_CHECKPOINT_REQUIRED=YES
+
+LOCAL_TEMP_CLEANUP=PASS
+CADDYFILE_WRITE=0
+CADDY_ADAPT_FMT=0
+CADDY_LOAD_RELOAD_RESTART=0
+SHARED_INFRA_WRITES=0
+DNS_WRITES=0
+PUBLIC_INGRESS_CHANGE=0
+PAYMENT_ACTIONS=0
+PAYPAL_LIVE=NO_ACCEPTED_BASELINE_NOT_RECHECKED
+SECRET_VALUE_OR_HASH_ACCESS=0
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+The candidate byte count matched but the frozen SHA-256 did not. No adaptation or formatting was attempted; the specific reconstruction difference remains unclassified. The single SSH session ended with the remote bounded RETURN code after emitting the above metadata. No raw SSH stderr, active Caddy JSON, candidate body, or Secret material was retained in evidence. No retry or post-return remote action was performed.
