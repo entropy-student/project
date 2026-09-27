@@ -2723,3 +2723,10 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Execution evidence commit: `58cea3ec568d920c6808b87e84a8fff35c7b72c6`.
 - `STOP_AT_REVIEWER=YES`. Do not continue this Gate without Reviewer reconciliation.
 
+
+## K6_PHASE_G_R3R2R1_NATIVE_READONLY_STALE_BIND_MOUNT_RECONCILIATION
+
+- Result: `RETURN_REVIEWER_G_R3R2R1_MOUNT_METADATA_PARSER_ERROR`. One strict SSH proved the correct remote identity and confirmed different host/container Caddyfile content (76 vs 153 bytes). Direct Docker inspect showed the expected read-only bind. A case-sensitive JSON-key extraction bug then produced a false mount-drift marker and stopped the remaining read-only checks; this is not evidence of mount-source drift.
+- No retry. No Caddy, Compose, Docker/network, DNS, indexing, payment, or Secret action occurred. Stale single-file bind is confirmed; route parity, complete active-route inventory, Compose hash and `/data` persistence remain unverified.
+- Detailed evidence commit: `2bbc43eda8c9ccd321f251c9db64e885bcedf833`.
+- `STOP_AT_REVIEWER=YES`; await Reviewer reconciliation.
