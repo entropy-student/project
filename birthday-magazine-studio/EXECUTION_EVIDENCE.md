@@ -1,4 +1,72 @@
-# G2A1 Execution Evidence — Frontend and Reusable Component Feasibility
+# Birthday Magazine Studio — Execution Evidence
+
+## Current Gate — G2B Local AI/PDF Solution Proof
+
+**Gate:** G2B_LOCAL_AI_PDF_SOLUTION_PROOF  
+**Execution date:** 2026-09-27  
+**Branch:** codex/birthday-magazine-g2b-local-ai-pdf-proof  
+**Base:** GitHub main at 77186cac9b01009c401be23e27c998c2b27ee339  
+**Result:** RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED  
+**Stop point:** STOP_AT_REVIEWER=YES; G3A/G3B not started.
+
+### Result separation
+
+| Boundary | Result | Evidence |
+|---|---|---|
+| Synthetic intake validation | **PASS** | poc/g2b/artifacts/qa-report.json |
+| Deterministic reference render pipeline | **PASS — renderer reference only** | 12-page PDF and browser/PDF QA below |
+| Real structured AI generation | **BLOCKED** | No approved protected provider credential/runtime is supplied by the current project handoff/G2B authorization. No model request was made. |
+| Grounding | **PASS — human-authored reference fixture only** | 10 fact records; 9 exact source excerpts plus age/date arithmetic; this is not a live-AI grounding result. |
+| Metadata photo mapping / must-use | **PASS — metadata only** | 16 source PNGs, 12 unique selected/mapped, all 3 must-use images included. No visual-semantic model was used. |
+| Two dynamic modules | **PASS — reference fixture only** | The Lore / inside jokes and Current Obsessions; distinct and supported by Q4/Q5 fixture text. |
+| PDF and deterministic QA | **PASS — reference pipeline only** | 12 pages, each US Letter 612 × 792 pt; 376,319 bytes; opens with pdf-lib; SHA-256 82647bf4bc8b178dca8597b1cd25d7f6c96782d223a47904780481a68426205b. Two consecutive renders produced the same size and hash. |
+| Local idempotency boundary | **PASS** | One canonical active synthetic job; duplicate rejected before provider boundary; model spend attempts = 0. |
+
+The content fixture at poc/g2b/fixtures/reference-content.json is explicitly human-authored and synthetic. It proves the renderer's downstream input contract only; it is **not** AI-generated content and must not be presented as AI proof.
+
+### Intake, content and photo evidence
+
+- poc/g2b/fixtures/intake.json contains fictional recipient Mira Vale, age 25 on fixture date 2026-09-27, an older-sister relationship, balanced tone, optional pronouns, six complete narrative answers, quick facts, style soft-warm, 16 non-private PNG scene fixtures, and 3 must-use markers.
+- Required factual fields, six answers, photo count/type/bytes, age/date consistency, evidence cues and must-use limit passed. Incomplete answers, 11/26 photos, unsupported type and four must-use markers fail closed. The runner validates intake before claiming a generation job or approaching a provider.
+- The selected set is 12 unique images. Must-use IDs photo-01, photo-02, photo-04 are all assigned. P4–P5 use Q2-linked metadata; P8–P9 use Q5-linked metadata. P10's Current Obsessions module uses the Q5-linked Sunday-walk/music image.
+- The PNG images are deterministic geometric illustrations generated from local SVG scene markup with Playwright. They contain no people or private/customer photos and are not AI-generated. The deterministic metadata cues prove supported-file selection/mapping, not photographic visual understanding.
+- Grounding audit checks every structured source reference, exact supporting excerpts, age/birthday arithmetic, and module source eligibility. The audit is limited to the human-authored reference content; semantic entailment of future model prose still needs actual model output review.
+
+### Page, style, PDF and QA evidence
+
+The one shared page schema rendered the frozen map: P1 cover; P2 opening note; P3 profile; P4–P5 memory; P6 module A; P7 why they matter; P8–P9 current-era photo story; P10 module B; P11 birthday letter; P12 back cover. No contents page or extra page was added.
+
+Bold Editorial, Soft / Warm, and Retro / Playful use the same page-layout hash fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8; browser read-back found distinct palette/frame variables and identical 12-page layout order. The complete PDF uses Soft / Warm.
+
+Deterministic QA passed all 15 negative mutation checks, including missing required answer, photo count/type/must-use limits, duplicate/unsupported module, unsupported source quote, omitted must-use image, unknown photo ID, missing page, overlong copy, browser-measured text overflow, broken image detection and missing provider credential fail-closed behavior. Actual browser read-back found 12 required sections, consistent name/age/birthday, all images loaded, no clipping/overflow, and no duplicate unique photo assignments.
+
+poc/g2b/artifacts/qa-report.json records PDF page sizes, file size/hash, browser results, negative checks, style proof, local network counts and limitations. The browser ran against a short-lived 127.0.0.1 server: 93 local renderer requests, 0 external browser requests, 0 AI API requests.
+
+### Durable artifacts
+
+- PDF: poc/g2b/artifacts/proof-magazine-soft-warm.pdf
+- Contact sheet: poc/g2b/artifacts/screenshots/12-page-contact-sheet.png
+- Desktop: cover-soft-warm-desktop.png, feature-memory-desktop.png, current-era-desktop.png, birthday-letter-desktop.png
+- 375px: cover-soft-warm-375px.png (375px document/page width; no horizontal or text overflow)
+- Other preset covers: cover-bold-editorial-desktop.png, cover-retro-playful-desktop.png
+- Reports: qa-report.json, grounding-report.json, idempotency-report.json, style-proof.json, ai-provider-status.json, dependency-report.json, artifact-hashes.json, run-summary.json
+- Fixture and provider contract: poc/g2b/fixtures/, poc/g2b/src/provider.mjs
+
+### Runtime, dependency and cleanup evidence
+
+- Node.js 24.19.0; Playwright 1.62.1 (Apache-2.0); pdf-lib 1.17.1 (MIT); Google Chrome 153.0.8010.54. Exact npm package versions are pinned in package.json / package-lock.json.
+- Playwright printed the actual PDF as US Letter; pdf-lib parsed it and independently read all 12 page sizes. No PDF screenshot was substituted for the PDF.
+- Dependency installation contacted npm for the pinned open-source packages. The proof runtime made no request to an AI/model endpoint or any non-loopback browser origin.
+- Temporary local job registry, loopback HTTP server, browser process, and project-local `node_modules` were removed/stopped after capture. No Docker container, WordPress runtime, email, payment, public route or service was created. Generated synthetic fixture PNGs, PDF, screenshots and reports are deliberate retained evidence.
+- No secrets, real customer data, payment data or external provider calls were used. MVP_PRODUCT_CONTRACT.md and REVIEWER_HANDOFF.md were not modified.
+
+### Git submission state
+
+Implementation commit and PR details will be recorded here after the authorized push and PR creation. PR targets `main` and must remain unmerged.
+
+---
+
+# G2A1 Execution Evidence — Frontend and Reusable Component Feasibility (historical, preserved)
 
 **Original Gate:** `G2A1_FRONTEND_AND_REUSABLE_COMPONENT_FEASIBILITY_POC`
 **Original execution date:** 2026-09-26

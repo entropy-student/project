@@ -1,0 +1,47 @@
+[
+  {
+    "file": "proof-magazine-soft-warm.pdf",
+    "sizeBytes": 376319,
+    "sha256": "82647bf4bc8b178dca8597b1cd25d7f6c96782d223a47904780481a68426205b"
+  },
+  {
+    "file": "screenshots/cover-bold-editorial-desktop.png",
+    "sizeBytes": 48322,
+    "sha256": "be8a34876fc8e8efcfd72a60dbe5b5fdc855f01cf80c610b9bc4a65fa01e8835"
+  },
+  {
+    "file": "screenshots/cover-soft-warm-desktop.png",
+    "sizeBytes": 48668,
+    "sha256": "47c98a8cdb5e6a581f28a0b3a259f7647c027ca81f796150501478fa63ee3b2f"
+  },
+  {
+    "file": "screenshots/feature-memory-desktop.png",
+    "sizeBytes": 73731,
+    "sha256": "773ddfd74e12c0d969c2d8cc83e71fe6eadbdd36b6e1ae676f4d7594e61a5f6b"
+  },
+  {
+    "file": "screenshots/current-era-desktop.png",
+    "sizeBytes": 61914,
+    "sha256": "ed3bde3d2a7856fb6a5e673baf1f8212a38cfdd0519d73816654fb1d13f1610c"
+  },
+  {
+    "file": "screenshots/birthday-letter-desktop.png",
+    "sizeBytes": 64966,
+    "sha256": "474ac5a89e4f031f6f580c17665faf56e4a7c09b9dbad2038840a5c99becbeda"
+  },
+  {
+    "file": "screenshots/cover-soft-warm-375px.png",
+    "sizeBytes": 20208,
+    "sha256": "4eaed907ee07144359e2911cb5026ba587167ba33ca1a23d87f7487d15bcf77f"
+  },
+  {
+    "file": "screenshots/12-page-contact-sheet.png",
+    "sizeBytes": 129394,
+    "sha256": "846fffd1e6ec31f59cd65a85cc43477a4c813e27c7722e57358a76fd8e2a3f0a"
+  },
+  {
+    "file": "screenshots/cover-retro-playful-desktop.png",
+    "sizeBytes": 59322,
+    "sha256": "be2e64215249d0828d4b300b1b9eb79fa35d8b403b4b77ffaac2e1ec7c2f0144"
+  }
+]

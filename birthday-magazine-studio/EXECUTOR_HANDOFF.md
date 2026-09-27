@@ -1,6 +1,41 @@
-# Executor Handoff — G2A1 Component Feasibility
+# Executor Handoff — Birthday Magazine Studio
 
-## Latest G2A1R1 closure update — controls this handoff
+## Current Gate — G2B Local AI/PDF Solution Proof
+
+**Gate:** G2B_LOCAL_AI_PDF_SOLUTION_PROOF  
+**Branch:** codex/birthday-magazine-g2b-local-ai-pdf-proof  
+**Base commit:** 77186cac9b01009c401be23e27c998c2b27ee339 (GitHub main read at preflight)  
+**Result:** RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED  
+**Stop point:** STOP_AT_REVIEWER=YES; do not enter G3A/G3B.
+
+- INTAKE_VALIDATION=PASS
+- PIPELINE_IMPLEMENTATION=PASS_REFERENCE_RENDER_PIPELINE
+- AI_STRUCTURED_GENERATION=BLOCKED_NO_APPROVED_PROTECTED_CREDENTIAL
+- GROUNDING_AUDIT=PASS_REFERENCE_FIXTURE_ONLY
+- PHOTO_MAPPING=PASS_METADATA_ONLY
+- MUST_USE=PASS
+- DYNAMIC_MODULES=PASS_REFERENCE_FIXTURE_ONLY
+- PAGE_COUNT_12=PASS
+- PDF_RENDER=PASS_US_LETTER
+- DETERMINISTIC_QA=PASS_REFERENCE_PIPELINE_ONLY
+- IDEMPOTENCY=PASS_LOCAL_SYNTHETIC_JOB_BOUNDARY
+- FORBIDDEN_ACTIONS=0
+- G3_STARTED=NO
+- STOP_AT_REVIEWER=YES
+
+The actual magazine text in poc/g2b/fixtures/reference-content.json is a human-authored synthetic renderer fixture. No live AI request occurred, so there is no model-generated content and this is not full AI Solution Proof. The project handoff/G2B authorization supplies no approved protected model credential/runtime. The vendor-neutral ContentProvider interface and configurable Chat Completions JSON Schema adapter are implemented; its credential guard fails closed.
+
+The local reference pipeline produced poc/g2b/artifacts/proof-magazine-soft-warm.pdf: 12 US Letter pages, 376,319 bytes, SHA-256 82647bf4bc8b178dca8597b1cd25d7f6c96782d223a47904780481a68426205b. Two consecutive renders produced the same PDF size and SHA-256. Intake uses 16 synthetic geometric PNG scene illustrations, maps 12 unique images, and honors all three must-use inputs. Photo selection is metadata-only and is not a vision/semantic photo proof. The module fixture selects The Lore / inside jokes and Current Obsessions.
+
+QA reports 15/15 negative mutation cases rejected, all twelve page sections and image requests valid, consistent synthetic identity, no overflow, no broken image, 375px width without overflow, and 3 visual presets sharing one page-layout hash. PDF was parsed with pdf-lib 1.17.1 and every page measured 612 × 792 pt. Idempotency created one canonical active job and rejected its duplicate before any provider request; provider spend attempts and AI API requests were zero.
+
+Screenshots, PDF, fixtures and JSON reports are retained under birthday-magazine-studio/poc/g2b/. The local registry/server/browser and project-local `node_modules` were removed/stopped. No Docker, WordPress, payment, email, AI endpoint, public service, production environment or G3 work was used. package-lock.json pins Playwright 1.62.1 (Apache-2.0) and pdf-lib 1.17.1 (MIT).
+
+GitHub submission details will be reconciled after the authorized commit and PR creation. The PR must target main and remain open/unmerged.
+
+## Historical G2A1R1 closure — preserved
+
+## G2A1R1 closure facts — historical
 
 **Gate:** `G2A1R1_EVIDENCE_CLOSURE`
 **Branch:** `codex/birthday-magazine-g2a1r1-evidence-closure`

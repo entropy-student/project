@@ -1,0 +1,12 @@
+{
+  "name": "birthday-magazine-g2b-proof",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "proof": "node src/proof.mjs"
+  },
+  "dependencies": {
+    "pdf-lib": "1.17.1",
+    "playwright": "1.62.1"
+  }
+}

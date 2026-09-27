@@ -1,0 +1,11 @@
+{
+  "result": "PASS_REFERENCE_FIXTURE_ONLY",
+  "contentOrigin": "human-authored synthetic renderer reference; not AI output",
+  "factualClaimCount": 10,
+  "exactSourceQuoteCount": 9,
+  "allStructuredSourceRefsResolve": true,
+  "claimQuotesMatchSourceText": true,
+  "ageDerivedFromBirthdayOnFixtureDate": true,
+  "auditScope": "Structural provenance and exact supporting-quote checks on human-authored reference content; it is not a live-AI semantic entailment proof.",
+  "errors": []
+}
