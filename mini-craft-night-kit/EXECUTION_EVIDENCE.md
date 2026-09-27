@@ -6210,3 +6210,33 @@ STOP_AT_REVIEWER=YES
 ```
 
 The existing single Canary draft was published once after the Reviewer-approved fields were read back. WordPress assigned its default Uncategorized product category on publication; the product remains catalog-hidden. The configured test-recipient field contains only a local placeholder, which is not an Owner-controlled real mailbox. No recipient was guessed, no admin-email setting was changed, and no test email was sent. Resume after Owner directly selects/enters an Owner-controlled real mailbox in the Resend test-email UI and confirms that destination; do not send the address or any API key in chat.
+
+
+## K7 R1 Resend Test — Single Send Awaiting Delivery Confirmation (2026-09-28)
+
+```text
+GATE=K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+RESULT=RETURN_RESEND_DELIVERY_AND_OWNER_ARRIVAL_CONFIRMATION_REQUIRED
+OWNER_RESEND_KEY_DIRECT_ENTRY=CONFIRMED_BY_OWNER
+RESEND_API_KEY_VALUE_OR_HASH_ACCESS=0
+RESEND_SITE_CONNECTION=CONNECTED_VISIBLE_STATE
+RESEND_SENDER=OWNER_CONFIGURED_AND_VISIBLE
+OWNER_CONTROLLED_RECIPIENT=OWNER_SELECTED_IN_WORDPRESS_UI;ADDRESS_NOT_RECORDED
+WORDPRESS_EMAIL_SEND_PATH=PASS_PLUGIN_SUCCESS_MESSAGE
+RESEND_ACCEPTED=PLUGIN_REPORTED_TEST_EMAIL_SENT
+RESEND_DELIVERED=NOT_INDEPENDENTLY_VERIFIED
+OWNER_RECIPIENT_ARRIVAL=NOT_CONFIRMED
+EMAIL_TEST_SEND_COUNT=1
+BLIND_RESEND=FORBIDDEN
+EMAIL_READINESS=PENDING_PROVIDER_DELIVERY_AND_OWNER_ARRIVAL_CONFIRMATION
+ORDER_CREATION=0
+CART_SESSION_MUTATION=0
+REAL_PAYMENT_ACTIONS=0
+SANDBOX_BUYER_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+PRODUCT_223_MUTATION=0
+SOFT_LAUNCH_AUTHORIZED=NO
+SECRET_VALUE_OR_HASH_ACCESS=0
+```
+
+The Owner-selected recipient field was checked in the WordPress Resend UI without recording the address. One click produced the plugin success message “Test email sent!”. The Resend Dashboard link led to a sign-in page; no authentication was attempted. No second send was made. Provider-side Delivered status and mailbox arrival remain unverified; await Owner confirmation/read-only dashboard evidence and do not resend.
