@@ -68,7 +68,7 @@ G2A1 Frontend + Reusable Component Feasibility PoC      ✅ PASS
 G2A1R1 Evidence Closure                                 ⏹ CLOSED — executor RETURN produced final technical finding
 G2A2 MVP Product Contract Freeze                        ✅ PASS
 G2B  Local AI/PDF Solution Proof                        ↩ RETURN — real AI proof missing
-G2BR1 Real AI Generation Closure                        ← CURRENT / OWNER AUTHORIZED / CREDENTIAL REQUIRED
+G2BR1 Real AI Generation Closure                        ← CURRENT / OWNER AUTHORIZED / LOCAL CODEX LOGIN REQUIRED
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
@@ -86,6 +86,7 @@ Current Reviewer decisions:
 - `PASS_G2A2_MVP_PRODUCT_CONTRACT_FREEZE_2026-09-27`
 - `RETURN_G2B_REAL_AI_PROOF_REQUIRED_2026-09-27`
 - `OWNER_AUTHORIZED_G2BR1_MAX_3_SYNTHETIC_AI_CALLS_2026-09-27`
+- `OWNER_SELECTED_G2BR1_CODEX_PLUS_ROUTE_2026-09-27`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -200,11 +201,12 @@ Current narrow Gate:
 
 Status:
 - authorized in scope;
-- Owner has explicitly approved the bounded synthetic-only real-AI test;
-- call ceiling: **maximum three provider requests total** for the existing synthetic fixture;
-- blocked only until an approved provider/model credential is available through a protected runtime mechanism.
+- Owner selected the **ChatGPT-authenticated Codex/Plus route** for G2BR1;
+- run ceiling: **maximum three real-model runs total** for the existing synthetic fixture;
+- no separate OpenAI API purchase is required for this closure;
+- remaining execution prerequisite is a local Codex client signed in with the Owner's ChatGPT account.
 
-No credential may be placed in chat, repository files, screenshots or evidence.
+Do not export/copy ChatGPT auth tokens or session state into chat, GitHub, screenshots or evidence.
 
 G3A/G3B remain unauthorized.
 
@@ -236,7 +238,7 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 - seller merchant/bank account country;
 - PayPal merchant/account eligibility, settlement currency behavior and actual fees for the eventual seller account;
-- production generator/model/provider selection; G2BR1 only needs one Owner-approved provider/model for bounded Solution Proof;
+- production generator/model/provider selection remains UNKNOWN; G2BR1 uses ChatGPT-authenticated Codex only as a bounded Solution Proof path;
 - real per-order AI/render/storage cost;
 - storage, access control and deletion policy;
 - final subjective visual/product foundation after G2A2;
@@ -273,8 +275,8 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 ## 12. Next Step
 
 - Reviewer next action: dispatch/review only `docs/G2BR1_REAL_AI_GENERATION_CLOSURE.md`.
-- Executor next action: run G2BR1 once an approved provider/model credential is available through a protected runtime mechanism; max 3 provider requests; stop at Reviewer.
-- Owner intervention required: **ONLY if protected credential/provider runtime is not already available to the Executor**. The bounded-call authorization itself is complete. Never paste the key into chat or repository files.
+- Executor next action: on the Owner's local machine, use Codex signed in with ChatGPT to run the bounded G2BR1 closure; max 3 real-model runs; stop at Reviewer.
+- Owner intervention required: **only to complete ChatGPT sign-in in the local Codex client if it is not already signed in**. No API key is required for the preferred route.
 
 ## 13. Status Summary
 
@@ -285,7 +287,7 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - G2A2: PASS; `MVP_PRODUCT_CONTRACT.md` is frozen.
 - Privacy retention is frozen at 24h for source/intermediate assets and 72h for final PDF.
 - G2B: RETURN; partial local renderer/PDF/QA evidence is accepted.
-- G2BR1: CURRENT; Owner authorization complete; protected provider/model credential still required at runtime.
+- G2BR1: CURRENT; Owner selected the Codex Plus route; local ChatGPT-authenticated Codex runtime is the remaining execution prerequisite.
 - Current unresolved proof: actual model structured output → grounding → existing renderer → 12-page PDF/QA, plus non-zero provider-spend idempotency.
 - Next after G2BR1/G2B PASS: G3A WooCommerce commerce loop.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
