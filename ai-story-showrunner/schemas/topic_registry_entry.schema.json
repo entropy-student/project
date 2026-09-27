@@ -106,6 +106,48 @@
         "object",
         "null"
       ]
+    },
+    "topic_entry_mode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "HUMAN_WORLD_FIRST",
+        "AI_SIGNAL_TRANSLATED",
+        "EXPLICIT_OWNER_TOPIC",
+        null
+      ]
+    },
+    "x_domain": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed_paradox": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "why_question": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "human_tension": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ai_changed_process": {
+      "type": [
+        "string",
+        "null"
+      ]
     }
   }
 }
