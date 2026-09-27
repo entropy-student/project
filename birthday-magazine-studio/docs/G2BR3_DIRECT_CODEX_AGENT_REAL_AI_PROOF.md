@@ -1,7 +1,7 @@
 # G2BR3 — Direct Codex Agent Real-AI Content → PDF Proof
 
 > Reviewer execution contract  
-> Status: READY_FOR_OWNER_AUTHORIZATION  
+> Status: OWNER AUTHORIZED — 1 PRIMARY + MAX 1 CORRECTION PASS  
 > Parent: G2B Local AI/PDF Solution Proof  
 > Accepted prior evidence: PR #30, PR #40, PR #43
 
@@ -39,11 +39,11 @@ The Agent must itself produce the model-generated content. It must not call nest
 
 Those remain a later production-provider/runtime integration Gate.
 
-## Owner authorization required
+## Owner authorization
 
-Before execution, Owner must explicitly authorize the direct-agent proof.
+Owner authorization is **complete**.
 
-Recommended bound:
+Authorized bound:
 
 - one synthetic fixture;
 - one primary direct-agent generation;
@@ -51,6 +51,8 @@ Recommended bound:
 - no API key;
 - no extra credit purchase;
 - no real customer data.
+
+Production AI API/provider integration is explicitly deferred until the Owner supplies that interface later.
 
 ## Execution requirements
 
