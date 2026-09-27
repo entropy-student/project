@@ -93,4 +93,4 @@ The existing scheduled task is updated in place; do not create a duplicate daily
 - Do not retroactively rewrite existing Calendar / Registry / Daily snapshots.
 - Existing AI-first candidates remain valid if they pass the full gates.
 - The new human-world-first entry is the default discovery preference, not a ban on AI-first topics.
-- Current scheduled execution outside GitHub is not modified by this document write alone; runtime automation should consume this contract on its next maintained update.
+- The existing ChatGPT scheduled task `AI选题雷达` was synchronized in place on 2026-09-27 to read the latest repository contracts first and execute Human-world-first + D1–D5. Future contract changes must update the same task in place rather than creating duplicates.
