@@ -15,13 +15,14 @@ K0-K5=PASS
 K6_VPS_DEPLOYMENT=PASS
 PUBLIC_SANDBOX_INGRESS=ACTIVE
 CURRENT_GATE=K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
-CURRENT_GATE_STATUS=AUTHORIZED_RESUME_AFTER_OWNER_RESEND_KEY_ENTRY
+CURRENT_GATE_STATUS=AUTHORIZED_RESUME_CANARY_PUBLISH_AND_CHECKOUT
 PUBLIC_ORIGIN=https://minicraft.spikersun.com
 RESEND_DOMAIN_VERIFIED=YES
 WORDPRESS_RESEND_PLUGIN=ACTIVE
 OWNER_RESEND_API_KEY_DIRECT_ENTRY=COMPLETED
 CANARY_PRODUCT_STATE=DRAFT_PREPARED_NOT_PUBLISHED
-EMAIL_TEST=NOT_YET_SENT
+EMAIL_TEST=DELIVERED
+EMAIL_READINESS=PASS
 PUBLIC_POPULATED_CHECKOUT=NOT_YET_VALIDATED
 PAYPAL_LIVE=NO
 REAL_PAYMENT_AUTHORIZED=NO
@@ -221,7 +222,7 @@ Resume after Owner's direct Resend API-key entry. Do not repeat Resend DNS/domai
 Required remaining proof:
 - official Resend plugin connected without exposing the key;
 - sender `Mini Craft <support@minicraft.spikersun.com>`;
-- exactly one non-sensitive test email delivered to an Owner-controlled real recipient;
+- transactional email qualification PASS (exactly one test email, provider delivered, Owner received);
 - exact hidden virtual Canary product at JPY500, no shipping and effective tax JPY0;
 - populated Checkout total JPY500 and PayPal method visible;
 - zero order/payment/refund actions.
