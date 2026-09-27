@@ -42,7 +42,7 @@ Governance rules come from GitHub `entropy-student/spike.skill/vps-project-gover
 - `PaddleOCR-VL-1.6` is rejected as primary for the current MVP evidence: four missed synthetic temperatures plus materially higher CPU/RAM/storage cost.
 - `microsoft/trocr-small-handwritten` remains deprecated.
 - Canonical whole-transcript API fallback is **NONE**. Baidu Handwriting OCR is retained only as a second-opinion signal on high-risk critical crops; it must never wholesale-replace the primary transcript.
-- Tesseract, managed/cloud OCR and VLM/vision remain outside MVP scope unless a later Reviewer decision explicitly reopens them.
+- Tesseract and general VLM/vision remain outside the accepted production MVP path. R3C temporarily reopens **ChatGPT-plan Codex vision for internal benchmarking only**; no production use is authorized by that experiment.
 - Paid compute policy: local/open-source PP-OCRv6 processes all pages first. External OCR, if retained, is used only for bounded high-risk pages/crops. API cost is therefore expected to be sparse rather than per-page by default.
 - PDF output: deterministic HTML/CSS or equivalent templates; exact render engine = UNKNOWN.
 - Private proof/final delivery: Woo order-bound access pattern; exact plugin/component = POC.
@@ -76,7 +76,8 @@ G2A1-R2 Isolated GitHub Actions Runner Completion         ✅ COMPONENT FEASIBIL
 G2A1-D1 Target Language + OCR Acceptance Calibration      ✅ OWNER DECISIONS RESOLVED
 G2A1-R3A Free/Local Primary Benchmark                    ✅ PASS — PP-OCRv6_medium
 G2A1-R3B Bounded API / Critical Second-Opinion Benchmark ✅ PASS — Baidu critical-field second opinion only
-G2A2 MVP Product Contract Freeze                         ← CURRENT
+G2A1-R3C ChatGPT-Plan Codex Vision Internal Benchmark    ← CURRENT / READY_FOR_LOCAL_CODEX
+G2A2 MVP Product Contract Freeze                         ⏳ HOLD / resumes after R3C
 G2B  Local OCR → Structured Recipe → PDF Solution Proof  ⏳ HOLD
 G3A  WordPress + WooCommerce Local Commerce Loop         ⏳ HOLD
 G3B  Payment Sandbox + Paid Entitlement Flow             ⏳ HOLD
@@ -127,6 +128,8 @@ Current Reviewer decisions:
 - `REJECT_BAIDU_AS_WHOLE_TRANSCRIPT_REPLACEMENT_2026-09-27`
 - `PASS_G2A1_INPUT_OCR_COMPONENT_FEASIBILITY_2026-09-27`
 - `OPEN_G2A2_MVP_PRODUCT_CONTRACT_FREEZE_2026-09-27`
+- `OWNER_APPROVE_G2A1_R3C_CHATGPT_PLAN_CODEX_VISION_INTERNAL_BENCHMARK_2026-09-27`
+- `PAUSE_G2A2_FOR_BOUNDED_R3C_2026-09-27`
 
 Important limitation: G2A1 now proves the bounded OCR/input/component architecture, not universal handwriting accuracy. The genuine-handwriting benchmark is small and historical, so modern household handwriting generalization remains UNKNOWN. Payment, full OCR→PDF output quality, repeatability, production hosting and print fulfillment remain unproven.
 
@@ -161,7 +164,7 @@ Important limitation: G2A1 now proves the bounded OCR/input/component architectu
 - Physical printing: not tested.
 - Economics: unknown.
 
-## 6. Current Gate — G2A2 MVP Product Contract Freeze
+## 6. Current Gate — G2A1-R3C ChatGPT-Plan Codex Vision Internal Benchmark
 
 Historical G2A1/R1/R2 contracts remain preserved.  
 Current Owner checkpoint: [docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md](./docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md)
@@ -413,7 +416,7 @@ Critical second opinion: `BAIDU_HANDWRITING_OCR`.
 - Accepted OCR architecture: **PP-OCRv6_medium primary + Baidu Handwriting OCR critical-field second opinion + one consolidated manual-edit Review**.
 - Baidu is not a whole-transcript replacement.
 - Google remains a technically viable deferred adapter; Mistral Free mode remains availability-blocked.
-- Current Gate: **G2A2 MVP Product Contract Freeze**.
+- Current Gate: **G2A1-R3C ChatGPT-plan Codex Vision Internal Benchmark**.
 - Next Owner/Reviewer work is to freeze price/package/input caps/review/revision/output/data-retention decisions before G2B implementation.
 - G2A2 remains HOLD until R3B selects one fallback or proves FALLBACK=NONE.
 
@@ -425,3 +428,24 @@ Critical second opinion: `BAIDU_HANDWRITING_OCR`.
 - Accepted local primary: **PP-OCRv6_medium**.
 - Next after Owner approval: test the 11 hard cases with specialized API fallback → select one fallback or NONE → close G2A1 → G2A2 exact MVP contract.
 - Attention: never treat clean OCR demos, model self-confidence or a visually nice PDF as proof that recipe facts are correct.
+
+
+### R3C scope
+
+Formal contract: [docs/G2A1_R3C_CODEX_PLUS_VISION_INTERNAL_BENCHMARK.md](./docs/G2A1_R3C_CODEX_PLUS_VISION_INTERNAL_BENCHMARK.md)
+
+Owner approved a bounded internal benchmark using the same 11 public R3A/R3B hard cases.
+
+R3C rules:
+- use the Owner's already ChatGPT-authenticated Codex CLI session;
+- no `OPENAI_API_KEY`;
+- no API billing;
+- no Sub2API;
+- no customer/private data;
+- each crop runs in an isolated temporary directory so Codex cannot read ground truth or prior OCR outputs;
+- use `codex exec --output-schema` and local image-view capability;
+- compare against the accepted PP-OCRv6 and Baidu evidence with the same scorer.
+
+A positive result can justify **internal difficult-case inspection only**. It does not authorize Codex CLI, ChatGPT credentials, or Sub2API in the customer-facing production path.
+
+G2A2 is temporarily HOLD until Reviewer closes R3C.
