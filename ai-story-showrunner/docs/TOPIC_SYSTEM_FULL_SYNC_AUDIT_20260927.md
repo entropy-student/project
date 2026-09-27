@@ -1,6 +1,6 @@
 # Topic System Full-Sync Audit — 2026-09-27
 
-Status: PASS_CANDIDATE_FOR_MERGE
+Status: PASS
 Scope: Topic discovery, TopicOpportunity, Evergreen supply, dedup, Daily Radar, Calendar/Registry handoff, scheduled task, portable Story Showrunner Candidate.
 
 ## 1. Canonical logic under audit
@@ -88,6 +88,8 @@ Earlier Topic OS rollback branches remain preserved as deeper rollback points.
 
 ## 6. Reviewer decision
 
-`PASS_TOPIC_SYSTEM_FULL_SYNC_CANDIDATE`
+`PASS_TOPIC_SYSTEM_FULL_SYNC`
+
+Portable Candidate sync merged to `entropy-student/spike.skill@2796982ed9447ea0283253762ea59cf604566ccb`.
 
 No G6A production state is reopened or modified.
