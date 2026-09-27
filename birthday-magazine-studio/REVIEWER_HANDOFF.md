@@ -75,7 +75,7 @@ G2BR2 Host Codex Transport + Real-AI Closure             ↩ RETURN — WebSocke
 G2BR3 Direct Codex Agent Real-AI Content/PDF Proof       ✅ PASS
 G3A WordPress + WooCommerce Commerce Loop               ✅ PASS
 G3B PayPal Sandbox + Paid Entitlement Flow              ↩ RETURN — Sandbox payment observed; provider correlation + entitlement/refund incomplete
-G3BR1 Sandbox Reconciliation + Entitlement/Refund       ← CURRENT / READY_FOR_EXECUTION / NO SECOND PAYMENT
+G3BR1 Sandbox Reconciliation + Entitlement/Refund       ← CURRENT / AUTHORIZED THROUGH ENTITLEMENT / OWNER REFUND CHECKPOINT
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -355,7 +355,8 @@ Status:
 - then mark only synthetic intake complete and prove exactly 1 deferred generation-ready job;
 - duplicate entitlement evaluation must remain exactly 1;
 - model calls remain 0;
-- then perform exactly one official WooCommerce-initiated Sandbox refund;
+- then **STOP_AT_OWNER_REFUND_CHECKPOINT** before any refund;
+- only after fresh Owner authorization, perform exactly one official WooCommerce-initiated Sandbox refund;
 - verify refund correlation and revoke/cancel deferred generation entitlement;
 - G4 / Live remains HOLD.
 
@@ -433,7 +434,7 @@ G4 remains HOLD until G3BR1 closes parent G3B with a Reviewer PASS.
 
 - Reviewer next action: dispatch/review only `docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md`.
 - Executor next action: reconcile the already-observed Sandbox payment read-only first; **do not create another payment/capture**. Only after exact correlation may it continue local entitlement/idempotency and one bounded Sandbox refund.
-- Owner intervention required: **NO at the start of G3BR1**. Stop only if PayPal requires new Owner authentication/Secret action or another explicitly Owner-only boundary. Do not paste credentials/secrets into chat or GitHub.
+- Owner intervention required: **NO at the start of G3BR1**. After payment reconciliation + entitlement/idempotency PASS, Executor must stop at `RETURN_OWNER_SANDBOX_REFUND_AUTH_REQUIRED`. Refund may proceed only after fresh explicit Owner authorization. Also stop for any new PayPal authentication/Secret action. Do not paste credentials/secrets into chat or GitHub.
 - Production AI interface details remain deferred until the Owner supplies them.
 
 ## 13. Status Summary
@@ -451,5 +452,5 @@ G4 remains HOLD until G3BR1 closes parent G3B with a Reviewer PASS.
 - Current unresolved production boundary: unattended provider/runtime + provider-spend idempotency + per-order provider cost.
 - G3A: PASS — local Docker/MariaDB WooCommerce commerce/account/private-workspace loop.
 - G3B: RETURN — one Sandbox payment is observed at WooCommerce, but provider capture correlation, entitlement/idempotency and refund are incomplete.
-- G3BR1: CURRENT — reconcile the existing payment, then close entitlement/idempotency + one Sandbox refund; no second payment.
+- G3BR1: CURRENT — reconcile the existing payment, prove entitlement/idempotency, then stop for Owner authorization before one Sandbox refund; no second payment.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
