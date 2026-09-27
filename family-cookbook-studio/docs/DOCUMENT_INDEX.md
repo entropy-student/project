@@ -17,7 +17,8 @@
 | `G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md` | OCR runtime + Family WP/Woo testbed remediation/completion | **RETURNED; local resource blocked** |
 | `G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md` | OCR + Family WP/Woo PoC on isolated GitHub Actions runner | **RETURNED; component feasibility accepted, OCR observations accepted** |
 | `G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md` | Target language + review UX decision | **OWNER DECISIONS RESOLVED** |
-| `G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md` | Free/local primary selection then bounded API fallback selection | **CURRENT R3 CONTRACT; R3A ACTIVE** |
+| `G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md` | Free/local primary selection then bounded API fallback selection | **R3A PASS; R3B CHECKPOINT** |
+| `G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md` | External OCR credential/budget/data boundary | **CURRENT OWNER CHECKPOINT** |
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **NEXT / HOLD** |
 | `ACQUISITION_GROWTH_PLAN.md` | Demand/acquisition validation plan | Supporting plan; not transaction evidence |
 
@@ -31,5 +32,6 @@
 - G2A1-R1 returned at `f79891f20c973e93586e41319c0abb7e78b3af4c` because the user workstation had only 0.62 GiB available RAM with unrelated workloads active.
 - G2A1-R2 evidence at `1d2abddc6e0ea58ec55c75a29033fe1233a34ada` proves WP/Woo/Kadence preview/upload/private-delivery feasibility and provides real OCR observations. The tested TrOCR-small fallback is deprecated; broader OCR product sufficiency is not decided until target language and semantic UX threshold are frozen.
 - G2A1-D1 is resolved: English-first/not-English-only + one consolidated manual-edit review stage.
-- Current execution work is G2A1-R3 OCR architecture benchmarking; do not repeat already accepted WordPress/component feasibility.
+- G2A1-R3A PASS: `PP-OCRv6_medium` is the accepted local primary; PaddleOCR-VL-1.6 is rejected as primary.
+- Current state is the R3B Owner checkpoint. No external OCR credential/API work may begin until Owner approval.
 - Real customer recipe images, family stories, names, addresses, payment credentials, Secrets and private order identifiers must not be stored in ordinary project documentation.
