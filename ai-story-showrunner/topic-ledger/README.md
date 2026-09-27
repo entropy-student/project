@@ -12,7 +12,7 @@
 
 ## 三者区别
 
-`Daily Radar` 回答：今天发生了什么、哪些信号值得看？
+`Daily Radar` 回答：今天大家在关心什么、出现了哪些人类生活/文化/平台/AI 信号，以及其中哪些值得转成 WHY？
 
 `Topic Registry` 回答：这个机制/人类问题/回报过去是否已经讲过？用了什么故事母题？
 
@@ -22,9 +22,16 @@
 
 ## Canonical fingerprint
 
-核心：`mechanism + human_problem + audience_payoff`
+v0.2 发现层：
+`x_domain + observed_paradox + why_question + human_tension + ai_changed_process`
 
-表层：`story_motif + hook_pattern + visual_motif`
+原核心判重层继续保留：
+`mechanism + human_problem + audience_payoff`
+
+表层：
+`story_motif + hook_pattern + visual_motif`
+
+历史 registry entry 不追溯补字段；新 entry 有信息时再记录 v0.2 字段。
 
 ## Status
 
