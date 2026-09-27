@@ -1,4 +1,4 @@
-# Worker Adapter Plan v0.1
+# Worker Adapter Plan v0.1.1
 
 ## 1. Principle
 
@@ -20,7 +20,9 @@ Stage Requirement → Capability Match → Adapter Feasibility → Output Contra
 
 在当前 `entropy-student/spike.skill` root / recursive path scan 中，没有发现独立命名的 AI topic selector、历史选题账本、daily AI topic radar 或 general content topic opportunity Skill。
 
-当前状态：`TOPIC_WORKER = TO_DEFINE_OR_LOCATE_ELSEWHERE`。
+当前状态：`TOPIC_WORKER = SHOWRUNNER_CONTRACT_FIRST + PORTABLE_CANDIDATE_TOPIC_PROVIDER`。
+
+项目侧 canonical Topic contract 已升级到 Topic OS v0.2.1；portable `story-showrunner` Candidate 的 AI Topic Provider 必须同步 Human-world-first / Human Process / Meaning D5 规则，但仍不是一个独立的通用“选题 Skill”。
 
 这不证明用户其他仓库 / 历史文件中绝对不存在，只证明当前 canonical spike.skill 扫描未发现。
 
@@ -117,11 +119,11 @@ v3.4 已具备：具体事件优先、narrator 是当事人不是导师、thesis
 
 由于当前 canonical Skill 未发现，Topic Worker 暂不直接新建完整 Skill。
 
-先把 `docs/CONTENT_STRATEGY_AND_CONVERSION.md` 与 `schemas/topic_opportunity.schema.json` 作为 Topic Contract。
+以 `docs/TOPIC_OPERATING_SYSTEM.md`、`docs/CONTENT_STRATEGY_AND_CONVERSION.md`、`docs/DAILY_TOPIC_AUTOMATION_V2.md` 与 `schemas/topic_opportunity.schema.json` 共同作为 Topic Contract。
 
 下一步 G2 MVP 时，由 Showrunner 自身按此 Contract 生成候选并验证。
 
-只有当至少 3 个真实 episode 证明 contract 稳定、输入来源稳定、reject reasons 重复、历史账本确实需要独立运行，才考虑抽成 reusable Topic Skill。
+Topic OS v0.2.1 已完成 50-candidate cross-domain Meaning stress test，但这只证明合同方向，不等于独立 Topic Skill 已验证。只有真实发布/学习循环证明输入来源、去重与选题质量长期稳定后，才考虑抽成独立 reusable Topic Skill。
 
 避免“还没验证就先造 Skill”。
 
