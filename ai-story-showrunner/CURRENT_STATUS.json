@@ -374,6 +374,15 @@
     "validation_doc": "docs/TOPIC_OS_V021_MEANING_DEDUP_VALIDATION.md",
     "rollback_branch_v02": "rollback/ai-story-showrunner-topic-os-v02-before-meaning-20260927",
     "rollback_base_sha_v02": "080b3cea54e640c75d7f11b265c8fa6397661192",
-    "daily_topic_planner": "v0.2.2"
+    "daily_topic_planner": "v0.2.2",
+    "topic_system_full_sync": "PASS_CANDIDATE_2026-09-27",
+    "evergreen_bank": "v0.2.1_HUMAN_WORLD_FIRST_WITH_AI_RESERVE",
+    "worker_contract": "v0.2.1_TOPIC_FIELDS_SYNCED",
+    "live_daily_automation": "SYNCED_IN_PLACE_HUMAN_WORLD_D1_D5_2026-09-27",
+    "portable_candidate_topic_layer": "SYNC_BRANCH_PREPARED_FOR_MERGE",
+    "full_sync_audit": "docs/TOPIC_SYSTEM_FULL_SYNC_AUDIT_20260927.md",
+    "historical_daily_rewrite": false,
+    "daily_2026_09_27_note": "Generated before live automation prompt sync; historical D1-D4/AI-first run, not v0.2.1 execution proof.",
+    "full_sync_rollback_branch": "rollback/ai-story-showrunner-topic-system-pre-full-sync-20260927"
   }
 }
