@@ -75,7 +75,7 @@ G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ↩ RETURNED (resource 
 G2A1-R2 Isolated GitHub Actions Runner Completion         ↩ RETURNED (WP/component feasibility accepted; OCR scope not calibrated)
 G2A1-D1 Target Language + OCR Acceptance Calibration      ✅ OWNER DECISIONS RESOLVED
 G2A1-R3A Free/Local Primary Benchmark                    ✅ PASS — PP-OCRv6_medium
-G2A1-R3B Bounded API Fallback Benchmark                  ← CURRENT / MISTRAL CREDENTIAL REQUIRED
+G2A1-R3B Bounded API Fallback Benchmark                  ↩ RETURNED / GOOGLE BILLING OWNER ACTION
 G2A2 MVP Product Contract Freeze                         ⏳ HOLD
 G2B  Local OCR → Structured Recipe → PDF Solution Proof  ⏳ HOLD
 G3A  WordPress + WooCommerce Local Commerce Loop         ⏳ HOLD
@@ -120,6 +120,8 @@ Current Reviewer decisions:
 - `OPEN_G2A1_R3B_GOOGLE_BILLING_OWNER_ACTION_2026-09-27`
 - `DEFER_GOOGLE_DOCUMENT_AI_DUE_TO_USD30_BILLING_PREPAYMENT_FRICTION_2026-09-27`
 - `OPEN_G2A1_R3B_MISTRAL_OCR_4_1_FIRST_2026-09-27`
+- `RETURN_G2A1_R3B_MISTRAL_FREE_MODE_RATE_LIMIT_BLOCKED_2026-09-27`
+- `RESTORE_G2A1_R3B_GOOGLE_WIF_PATH_2026-09-27`
 
 Important limitation: R3A now selects PP-OCRv6_medium as the local primary, but API fallback value remains unproven. R3A's genuine-handwriting set is small and historical, so modern household handwriting generalization remains UNKNOWN. Payment, full OCR→PDF output quality, repeatability, production hosting and print fulfillment remain unproven.
 
@@ -267,17 +269,24 @@ Diagnostic run `36301652196` reached the first real `:process` call. Google retu
 
 Therefore Google technical integration is viable; the remaining Google blocker is account-level Billing activation, not WIF/IAM/processor setup.
 
-Owner has chosen **not to pay the USD 30 one-time billing prepayment solely for this 11-case benchmark**. Google Document AI is therefore deferred, not rejected.
+Owner initially chose not to pay the USD 30 one-time billing prepayment solely for this 11-case benchmark and briefly tested Mistral Free mode instead. That Free-mode test is now blocked by persistent HTTP 429 rate limiting before any OCR result, so Google Document AI is restored as the preferred completion path.
 
 Current Owner action guide: [docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md](./docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md)
 
-R3B now proceeds with **Mistral OCR 4.1 first** on the same 11 public hard cases. Google remains a future fallback adapter and can be re-enabled later without changing product architecture.
+Mistral Free-mode probe facts:
+- Actions run `36303206653`: first OCR request returned HTTP 429 `Rate limit exceeded`;
+- retry/backoff run `36303291445`: retries at 15s, 30s, 60s and 90s still returned HTTP 429;
+- HTTP 402 Payment Required was not observed;
+- successful Mistral OCR pages = 0;
+- no OCR quality conclusion is possible; `FALLBACK` remains `UNKNOWN`.
 
-Current Owner action: create a Mistral Studio API key and store it only as GitHub Actions Secret `MISTRAL_API_KEY`.
+Owner preference is to switch back to Google rather than enable paid Mistral access merely for this benchmark.
 
-Setup guide: [docs/G2A1_R3B_MISTRAL_PROVIDER_SETUP.md](./docs/G2A1_R3B_MISTRAL_PROVIDER_SETUP.md)
+Current Owner action: enable/link Billing for `family-cookbook-ocr-test`, then rerun the restored Google WIF R3B workflow.
 
-Do not reinterpret the Google 403/no-output run as `FALLBACK=NONE`.
+Google setup/history: [docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md](./docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md)
+
+Do not interpret either provider blocker as `FALLBACK=NONE`.
 
 Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted and must not be rerun.
 
@@ -338,19 +347,20 @@ Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted
 
 - G2A1-D1 Owner decisions are resolved.
 - R3A is formally PASS with `PP-OCRv6_medium` as the sole local primary.
-- Current Gate: **G2A1-R3B — Mistral OCR 4.1 first; credential required**.
-- Google WIF/service-account/processor integration is proven, but Google is deferred because this Billing account demands a USD 30 prepayment.
-- Owner action: create a Mistral Studio API key and add only `MISTRAL_API_KEY` to GitHub Actions Secrets.
-- R3B will run Mistral on exactly the same 11 public hard cases and choose either `FALLBACK=MISTRAL_OCR_4_1` or `FALLBACK=NONE`.
-- The authorized API-spend cap remains USD 0.20.
-- Google may be revisited later through the provider adapter without changing primary OCR/review/product flow.
+- Current Gate: **G2A1-R3B — Google Billing owner action**.
+- Mistral Free mode is blocked by persistent HTTP 429 before any successful OCR page; this is an availability/rate-limit blocker, not a quality failure.
+- Google WIF/service-account/processor integration is already proven.
+- Owner preference is to use Google rather than enable paid Mistral access for this benchmark.
+- Owner action: activate/link Google Cloud Billing for `family-cookbook-ocr-test`.
+- After Billing propagation, rerun the restored Google WIF R3B workflow.
+- The authorized benchmark spend cap remains USD 0.20.
 - G2A2 remains HOLD until R3B selects one fallback or proves FALLBACK=NONE.
 
 ## 13. Status Summary
 
 - Overall progress: reusable commerce/input/delivery feasibility is proven; OCR has real benchmark evidence but requires target-language/semantic-threshold calibration.
 - Final goal: private, reliable family recipe intake → faithful transcription/structuring → proof → cookbook PDF → later optional print.
-- Current Gate: **G2A1-R3B Mistral credential setup**.
+- Current Gate: **G2A1-R3B Google Billing activation**.
 - Accepted local primary: **PP-OCRv6_medium**.
 - Next after Owner approval: test the 11 hard cases with specialized API fallback → select one fallback or NONE → close G2A1 → G2A2 exact MVP contract.
 - Attention: never treat clean OCR demos, model self-confidence or a visually nice PDF as proof that recipe facts are correct.
