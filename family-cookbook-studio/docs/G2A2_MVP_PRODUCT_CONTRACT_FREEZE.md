@@ -1,7 +1,7 @@
 # G2A2 — MVP Product Contract Freeze
 
 > Reviewer / Owner decision gate  
-> Status: **CURRENT — G2A1 PASS confirmed 2026-09-27**  
+> Status: **HOLD — bounded R3C internal Codex vision benchmark runs first**  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)
 
 ## Goal
