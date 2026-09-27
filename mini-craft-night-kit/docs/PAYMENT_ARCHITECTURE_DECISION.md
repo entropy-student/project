@@ -135,13 +135,29 @@ PayPal / Alipay / other providers
 
 ## 7. Current Payment Gate
 
-K0 不做支付。
+Current state (2026-09-28):
 
-Payment 决策实际执行在 K3：
+```text
+K3_PAYPAL_SANDBOX=PASS
+K6_PUBLIC_SANDBOX_DEPLOYMENT=PASS
+PPCP_ACCEPTED_BASELINE=ACTIVE_CONNECTED_SANDBOX_YES_LIVE_NO
+PRODUCT_223_CANARY_CLASSIFICATION=NOT_SUITABLE_REQUIRE_SEPARATE_HIDDEN_CANARY_SKU
+CURRENT_GATE=K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+PAYPAL_LIVE=NO
+REAL_PAYMENT_ACTIONS=0
+SOFT_LAUNCH_AUTHORIZED=NO
+```
 
-1. WooCommerce commerce loop 先跑通；
-2. PayPal Sandbox；
-3. webhook / order state；
-4. refund；
-5. Owner 批准一个低金额 production canary；
-6. 再开放正式支付。
+The production-canary sequence remains:
+
+1. finish K7 R1 hidden Canary fixture + populated Checkout + transactional-email readiness;
+2. Reviewer seals exact one-order amount/currency and refund path;
+3. Owner separately authorizes the bounded production canary;
+4. Owner completes any required PayPal Live merchant login/authorization;
+5. exactly one low-value order/payment;
+6. reconcile Provider + WooCommerce + email;
+7. exactly one full refund/cancel path;
+8. reconcile all states and return to the sealed safe state;
+9. Soft Launch remains a separate authorization.
+
+No blind replay after an ambiguous payment result.
