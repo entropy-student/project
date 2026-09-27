@@ -67,11 +67,11 @@ G1  Product / Offer Baseline                            ✅ PASS (Owner decision
 G2A1 Frontend + Reusable Component Feasibility PoC      ✅ PASS
 G2A1R1 Evidence Closure                                 ⏹ CLOSED — executor RETURN produced final technical finding
 G2A2 MVP Product Contract Freeze                        ✅ PASS
-G2B  Local AI/PDF Solution Proof                        ↩ RETURN — real AI proof missing
+G2B  Local AI/PDF Solution Proof                        ✅ PASS — real-AI content/rendering proven; production provider deferred
 G2BR1 Real AI Generation Closure                        ↩ RETURN — nested Codex transport failed
 G2BR2 Host Codex Transport + Real-AI Closure             ↩ RETURN — WebSocket failure + HTTP 401
-G2BR3 Direct Codex Agent Real-AI Content/PDF Proof        ← CURRENT / OWNER AUTHORIZED
-G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
+G2BR3 Direct Codex Agent Real-AI Content/PDF Proof       ✅ PASS
+G3A WordPress + WooCommerce Commerce Loop               ← CURRENT / READY_FOR_EXECUTION
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
@@ -93,6 +93,8 @@ Current Reviewer decisions:
 - `OWNER_AUTHORIZED_G2BR2_MAX_2_HOST_CODEX_RUNS_2026-09-27`
 - `RETURN_G2BR2_CODEX_SUBSCRIPTION_PROGRAMMATIC_PATH_UNPROVEN_2026-09-27`
 - `OWNER_AUTHORIZED_G2BR3_DIRECT_AGENT_PROOF_2026-09-27`
+- `PASS_G2BR3_DIRECT_AGENT_REAL_AI_CONTENT_RENDER_PROOF_2026-09-27`
+- `PASS_G2B_CONTENT_RENDERING_SOLUTION_PROOF_2026-09-27`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -114,7 +116,7 @@ Important limitation: the Owner reports demand as already validated, but the und
 ### Evidence status
 - Browser prototype: exists and is clearly labeled as a simulation.
 - Real customer payment: not tested in this project.
-- Real AI generation pipeline: not implemented/proven.
+- Real-AI content/rendering Solution Proof: proven on the frozen synthetic fixture via G2BR3; unattended production provider integration remains unproven.
 - Private production PDF delivery: not implemented/proven.
 - Repeatability/economics: unknown.
 - Production website: not built/deployed.
@@ -175,30 +177,35 @@ Key frozen decisions:
 
 ### G2B Reviewer result
 
-G2B is **RETURN**, not PASS.
+G2B **content/rendering Solution Proof is PASS**.
 
-PR #30 partial evidence is accepted and merged.
+PR #30 remains the accepted partial/reference baseline. PR #46 / G2BR3 supplies the previously missing real-model content/rendering evidence.
 
-Accepted without broad rerun:
+Accepted across the combined evidence:
 - synthetic intake validation;
 - metadata photo mapping and all must-use handling;
-- provider abstraction and credential fail-closed behavior;
+- unchanged structured-content schema;
+- real interactive-model structured generation;
+- grounding/hallucination audit on actual model-authored output;
+- exactly two supported dynamic modules;
 - shared 12-page deterministic architecture;
 - three style presets;
 - actual 12-page US Letter PDF render/open verification;
+- 375px/browser overflow verification;
 - deterministic QA and negative mutation checks;
-- local canonical-job claim/idempotency boundary;
-- durable synthetic artifacts and cleanup;
-- no forbidden G3/payment/production actions.
+- durable artifacts and cleanup;
+- no forbidden payment/production actions.
 
-Still missing:
-- real AI structured generation;
-- grounding/hallucination audit on actual model output;
-- actual model dynamic-module selection;
-- 12-page render/QA from actual model output;
-- provider-spend idempotency with a non-zero model call.
+Explicitly deferred rather than misclassified as PASS:
+- unattended production provider/runtime;
+- remote provider authentication;
+- remote provider-spend idempotency;
+- per-order production provider cost.
 
-The human-authored reference fixture remains renderer evidence only.
+The human-authored reference fixture remains renderer baseline evidence only and was not used as the G2BR3 AI-output fallback.
+
+Current PASS decision:
+- [docs/REVIEWER_DECISION_G2BR3_PASS.md](./docs/REVIEWER_DECISION_G2BR3_PASS.md)
 
 ### G2BR1 Reviewer result
 
@@ -249,22 +256,47 @@ Reviewer interpretation:
 Current decision:
 - [docs/REVIEWER_DECISION_G2BR2_RETURN.md](./docs/REVIEWER_DECISION_G2BR2_RETURN.md)
 
-### Current Gate — G2BR3 Direct Codex Agent Real-AI Content → PDF Proof
+### G2BR3 Reviewer result
+
+G2BR3 is **PASS**.
+
+PR #46 is accepted and merged.
+
+Verified:
+- one primary direct interactive-Agent generation and zero correction generations;
+- unchanged accepted schema and unchanged synthetic intake;
+- schema validation PASS with zero errors;
+- grounding PASS with 12 claims and 17 exact intake excerpts;
+- exactly two distinct supported dynamic modules;
+- actual model-authored content rendered to a 12-page US Letter PDF;
+- browser read-back, 375px checks and 15/15 negative mutations passed;
+- reference fixture fallback was not used;
+- no API key, nested Codex execution, extra-credit purchase, real customer data or G3 action occurred.
+
+Provider-job/spend idempotency was explicitly NOT TESTED and is deferred to the production provider integration boundary. The exact self-reported model identifier is not independently verified and is not part of the PASS basis.
+
+Decision:
+- [docs/REVIEWER_DECISION_G2BR3_PASS.md](./docs/REVIEWER_DECISION_G2BR3_PASS.md)
+
+### Current Gate — G3A WordPress + WooCommerce Commerce Loop
 
 Contract:
-- [docs/G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md](./docs/G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md)
+- [docs/G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP.md](./docs/G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP.md)
 
 Status:
-- **OWNER AUTHORIZED**;
-- use the already-authenticated interactive Codex Agent itself to author the real model JSON;
-- no nested `codex exec`;
-- no API key;
-- reuse the existing schema, grounding, renderer and QA;
-- one primary generation + at most one correction pass if schema/grounding validation fails;
-- this Gate proves real-AI content/rendering quality only;
-- production AI API/provider integration is deferred until the Owner supplies the interface later.
+- **CURRENT / READY_FOR_EXECUTION**;
+- local/disposable WordPress + WooCommerce only;
+- frozen US$39.99 Birthday Magazine product;
+- native cart/checkout/order/account loop;
+- authenticated customer order/workspace ownership;
+- local/offline test order only;
+- unpaid/test order must keep generation entitlement closed;
+- no PayPal connection;
+- no real payment;
+- no model/provider call;
+- no target-host/public/VPS write.
 
-G3A/G3B remain unauthorized until G2BR3 Reviewer decision.
+G3B remains HOLD until G3A Reviewer decision.
 
 ### Rollback
 
@@ -330,9 +362,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: dispatch/review only `docs/G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md`.
-- Executor next action: execute G2BR3 using the interactive Codex Agent itself; no nested Codex CLI.
-- Owner intervention required: **NO** for this proof unless a new boundary is hit. Production AI interface details will be supplied later by the Owner.
+- Reviewer next action: dispatch/review only `docs/G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP.md`.
+- Executor next action: execute the local/test WordPress + WooCommerce commerce/account loop; do not enter PayPal Sandbox or model-provider integration.
+- Owner intervention required: **NO** for G3A unless a new external account, purchase, Secret or irreversible boundary is hit. Production AI interface details remain deferred until the Owner supplies them.
 
 ## 13. Status Summary
 
@@ -342,10 +374,11 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - G2A1R1: closed; its Executor RETURN is preserved as the evidence that the current guest plugin links are bearer-replayable and therefore rejected for strict guest-private use.
 - G2A2: PASS; `MVP_PRODUCT_CONTRACT.md` is frozen.
 - Privacy retention is frozen at 24h for source/intermediate assets and 72h for final PDF.
-- G2B: RETURN; partial local renderer/PDF/QA evidence is accepted.
+- G2B: PASS for the real-AI content/rendering Solution Proof; unattended production provider integration is deferred.
 - G2BR1: RETURN; three nested Codex CLI attempts failed before model output and the approved 3-run cap is exhausted.
 - G2BR2: RETURN; two host-context Codex attempts failed before model output (WebSocket failure, then HTTP 401).
-- G2BR3: CURRENT and Owner-authorized for one primary direct-agent generation plus at most one schema/grounding correction pass.
-- Current unresolved proof: actual model structured output → grounding → existing renderer → 12-page PDF/QA, plus non-zero provider-spend idempotency.
-- Next after G2BR1/G2B PASS: G3A WooCommerce commerce loop.
+- G2BR3: PASS; one direct interactive-Agent generation passed schema, grounding, modules, 12-page PDF and deterministic QA.
+- Current unresolved production boundary: unattended provider/runtime + provider-spend idempotency + per-order provider cost.
+- G3A: CURRENT — local WordPress + WooCommerce commerce/account loop.
+- G3B: HOLD — PayPal Sandbox + paid entitlement after G3A PASS.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
