@@ -54,7 +54,7 @@ WordPress
 - Owner 已在 WordPress 中直接录入 Resend API key，站点 UI 显示 connected；Secret 未进入 GitHub/聊天；
 - Canary 商品：已准备草稿，尚未发布；
 - Product 223：未修改；
-- 邮件真实投递验证：待完成；
+- 邮件真实投递验证：**PASS**（单封测试邮件 Provider=Delivered，Owner 已确认收到）；
 - populated Checkout ¥500/运费0/税0/总额¥500 + PayPal method：待验证；
 - 真实订单/支付/refund：均为 0；
 - Soft Launch：未授权。
