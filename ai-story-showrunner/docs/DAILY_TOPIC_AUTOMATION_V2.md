@@ -1,4 +1,4 @@
-# Daily Topic / Publishing Planner v0.2.1 — ACTIVE
+# Daily Topic / Publishing Planner v0.2.2 — ACTIVE
 
 > Activated after explicit G3R PASS on 2026-09-20.
 >
@@ -26,12 +26,13 @@
 
 1. Fetch and verify current public **human-interest + AI/domain signals**. Human-interest discovery may include food, relationships, work, consumption, entertainment, personality/identity labels, learning, games, travel and other audience-relevant X domains; do not require every candidate to originate from AI news.
 2. Cluster duplicate coverage of the same event / human phenomenon.
-3. For each candidate, first attempt `X → Observed Paradox → WHY → Human Tension → AI Changed Process`. Strong AI-first signals may use the compatibility route `AI Signal → Audience Translation → Human Problem`.
-4. Run Native X Interest / WHY-Paradox / Human Tension / Changed Process pre-gates, then Human Relevance / Mechanism Integrity / One Mechanism / Storyability / Non-trivial Payoff / Audience Fit gates.
-5. Run semantic duplicate gates against Topic Registry and recent story/visual motifs.
-6. If a qualified HOT candidate exists, it may override the nearest unlocked `planned` slot.
-7. Otherwise select a non-duplicate Evergreen candidate.
-8. Maintain today + next 6 days.
+3. For each candidate, first attempt `X → Human Process Family → Observed Paradox → WHY → Human Tension / Meaning Fingerprint → AI Changed Process`. Strong AI-first signals may use the compatibility route `AI Signal → Audience Translation → Human Problem`.
+4. Run Native X Interest / Human Process / WHY-Paradox / Human Tension / Changed Process pre-gates, then Human Relevance / Mechanism Integrity / One Mechanism / Storyability / Non-trivial Payoff / Audience Fit gates.
+5. Normalize a `meaning_fingerprint` from Human Tension + Controlling Question, then run D1–D5 duplicate gates against Topic Registry; D5 explicitly checks cross-domain Meaning Duplicate.
+6. Run recent story/visual motif repetition checks.
+7. If a qualified HOT candidate exists, it may override the nearest unlocked `planned` slot.
+8. Otherwise select a non-duplicate Evergreen candidate.
+9. Maintain today + next 6 days.
 
 ## 4. Editorial Mode
 
