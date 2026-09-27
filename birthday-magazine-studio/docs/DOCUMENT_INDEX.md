@@ -29,7 +29,9 @@
 | `G2B_LOCAL_AI_PDF_SOLUTION_PROOF.md` | Local AI → 12-page magazine → PDF proof | Executed / partial evidence accepted / overall RETURN |
 | `OWNER_DECISION_G2BR1_BOUNDED_AI_CALLS.md` | Owner authorization for bounded real-AI closure | **APPROVED — MAX 3 SYNTHETIC CALLS** |
 | `REVIEWER_DECISION_G2BR1_CODEX_PLUS_ROUTE.md` | Reviewer/Owner decision to use ChatGPT-authenticated Codex for G2BR1 | **CURRENT EXECUTION ROUTE** |
-| `G2BR1_REAL_AI_GENERATION_CLOSURE.md` | Narrow real-AI proof closure | **CURRENT GATE CONTRACT — OWNER AUTHORIZED / LOCAL CODEX LOGIN REQUIRED** |
+| `G2BR1_REAL_AI_GENERATION_CLOSURE.md` | Narrow real-AI proof closure | Executed / **RETURN — NESTED CODEX TRANSPORT FAILED** |
+| `REVIEWER_DECISION_G2BR1_RETURN.md` | Reviewer decision on PR #40 | **CURRENT G2BR1 DECISION — RETURN** |
+| `G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md` | Host-context Codex transport + real-AI closure | **CURRENT GATE CONTRACT — BLOCKED BY OWNER ADDITIONAL RUN AUTHORIZATION** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
 | `G1_TWO_STEP_AI_PRODUCT_FLOW.md` | Two-step product-flow design | Current supporting design where consistent with Handoff |
