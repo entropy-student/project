@@ -69,7 +69,8 @@ G2A1R1 Evidence Closure                                 ⏹ CLOSED — executor 
 G2A2 MVP Product Contract Freeze                        ✅ PASS
 G2B  Local AI/PDF Solution Proof                        ↩ RETURN — real AI proof missing
 G2BR1 Real AI Generation Closure                        ↩ RETURN — nested Codex transport failed
-G2BR2 Host Codex Transport + Real-AI Closure             ← CURRENT / OWNER AUTHORIZED / MAX 2 HOST RUNS
+G2BR2 Host Codex Transport + Real-AI Closure             ↩ RETURN — WebSocket failure + HTTP 401
+G2BR3 Direct Codex Agent Real-AI Content/PDF Proof        ← CURRENT / READY_FOR_OWNER_AUTHORIZATION
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
@@ -90,6 +91,7 @@ Current Reviewer decisions:
 - `OWNER_SELECTED_G2BR1_CODEX_PLUS_ROUTE_2026-09-27`
 - `RETURN_G2BR1_NESTED_CODEX_TRANSPORT_FAILED_2026-09-27`
 - `OWNER_AUTHORIZED_G2BR2_MAX_2_HOST_CODEX_RUNS_2026-09-27`
+- `RETURN_G2BR2_CODEX_SUBSCRIPTION_PROGRAMMATIC_PATH_UNPROVEN_2026-09-27`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -221,23 +223,51 @@ Reviewer interpretation:
 Current decision:
 - [docs/REVIEWER_DECISION_G2BR1_RETURN.md](./docs/REVIEWER_DECISION_G2BR1_RETURN.md)
 
-### Current Gate — G2BR2 Host Codex Transport + Real-AI Closure
+### G2BR2 Reviewer result
+
+G2BR2 is **RETURN**, not PASS.
+
+PR #43 is accepted and merged as durable RETURN evidence.
+
+Accepted:
+- host ChatGPT login preflight passed;
+- attempt 1 failed with `WEBSOCKET_FAILURE`;
+- attempt 2 used an HTTP-only custom provider and failed with HTTP 401 `AUTHENTICATION`;
+- authorized model runs are exhausted at 2 / 2;
+- successful structured responses = 0;
+- no actual-AI grounding/PDF/QA was claimed;
+- no reference fixture fallback was misrepresented as AI output;
+- no API key, extra credit purchase, payment, customer data, VPS/public deployment or G3 work occurred.
+
+Reviewer interpretation:
+- the Owner's Plus/Codex account itself is not proven unusable;
+- the specific programmatic subscription path `harness → codex exec → ChatGPT-subscription inference` remains unproven;
+- the accepted G2B schema/renderer/PDF baseline remains valid;
+- do not spend more time on Codex CLI transport for this Solution Proof.
+
+Current decision:
+- [docs/REVIEWER_DECISION_G2BR2_RETURN.md](./docs/REVIEWER_DECISION_G2BR2_RETURN.md)
+
+### Current Gate — G2BR3 Direct Codex Agent Real-AI Content → PDF Proof
 
 Contract:
-- [docs/G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md](./docs/G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md)
+- [docs/G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md](./docs/G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md)
 
 Status:
-- **OWNER AUTHORIZED**;
-- maximum **2 additional real-model runs total**;
-- launch the existing Codex harness from the Owner's host Windows process/terminal context, not from an Agent-spawned child shell inside Codex;
-- first run is primary; second is retry-only for transport/schema/transient failure;
-- do not rebuild G2B/G2BR1 accepted work;
-- no separate API purchase is required;
-- do not purchase extra Codex credits.
+- **READY_FOR_OWNER_AUTHORIZATION**;
+- use the already-authenticated interactive Codex Agent itself to author the real model JSON;
+- no nested `codex exec`;
+- no API key;
+- reuse the existing schema, grounding, renderer and QA;
+- this Gate proves real-AI content/rendering quality only;
+- unattended production-provider/runtime integration remains a later Gate.
 
-Do not export/copy ChatGPT auth tokens or session state into chat, GitHub, screenshots or evidence.
+Recommended bound:
+- one synthetic fixture;
+- one primary direct-agent generation;
+- at most one correction pass if schema/grounding validation fails.
 
-G3A/G3B remain unauthorized.
+G3A/G3B remain unauthorized until G2BR3 Reviewer decision.
 
 ### Rollback
 
@@ -303,9 +333,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: dispatch/review only `docs/G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md`.
-- Executor next action: prepare the fresh G2BR2 branch/artifact namespace and a minimal host launcher, but do not consume a real-model run from inside the Codex Agent sandbox. The actual `codex exec` must be launched by the Owner from host Windows context.
-- Owner intervention required: **YES, one bounded manual host launch** after Executor preparation. Authorization for max 2 real-model runs is already complete.
+- Reviewer next action: wait for Owner authorization, then dispatch/review only `docs/G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md`.
+- Executor next action: none until the Owner authorizes the direct-agent proof.
+- Owner intervention required: **YES** — authorize one primary direct-agent generation and at most one correction pass. No API key or extra credit purchase is required.
 
 ## 13. Status Summary
 
@@ -317,7 +347,8 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - Privacy retention is frozen at 24h for source/intermediate assets and 72h for final PDF.
 - G2B: RETURN; partial local renderer/PDF/QA evidence is accepted.
 - G2BR1: RETURN; three nested Codex CLI attempts failed before model output and the approved 3-run cap is exhausted.
-- G2BR2: CURRENT and Owner-authorized for maximum 2 additional host-context real-model runs.
+- G2BR2: RETURN; two host-context Codex attempts failed before model output (WebSocket failure, then HTTP 401).
+- G2BR3: CURRENT; direct interactive Codex Agent real-AI content/PDF proof, awaiting Owner authorization.
 - Current unresolved proof: actual model structured output → grounding → existing renderer → 12-page PDF/QA, plus non-zero provider-spend idempotency.
 - Next after G2BR1/G2B PASS: G3A WooCommerce commerce loop.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
