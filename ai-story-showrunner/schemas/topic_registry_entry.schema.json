@@ -148,6 +148,18 @@
         "string",
         "null"
       ]
+    },
+    "human_process_family": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "meaning_fingerprint": {
+      "type": [
+        "string",
+        "null"
+      ]
     }
   }
 }

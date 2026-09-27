@@ -29,9 +29,10 @@ Read in this order:
 - `SRT_AUDIO_TIMING_STANDARD.md`
 - `VOICE_TIMING_PROFILE_SPEC.md`
 - `OUTPUT_RECORD_STANDARD.md`
-- `TOPIC_OPERATING_SYSTEM.md` — v0.2 human-world-first / WHY-first Topic Supply baseline.
+- `TOPIC_OPERATING_SYSTEM.md` — v0.2.1 human-world-first / WHY-first Topic Supply baseline with Human Process + Meaning Duplicate.
 - `CONTENT_STRATEGY_AND_CONVERSION.md`
-- `DAILY_TOPIC_AUTOMATION_V2.md` — v0.2.1 planner contract consuming Topic OS v0.2.
+- `DAILY_TOPIC_AUTOMATION_V2.md` — v0.2.2 planner contract consuming Topic OS v0.2.1.
+- `TOPIC_OS_V021_MEANING_DEDUP_VALIDATION.md` — 5×10 cross-domain stress-test evidence for Human Process / Meaning dedup.
 
 When a portable Candidate contract conflicts with a historical project copy, the current Reviewer Handoff decides project truth and the Candidate Skill repository is the target portable contract.
 

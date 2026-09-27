@@ -321,3 +321,43 @@ Rollback protection:
 
 Reviewer assessment:
 `PASS_TOPIC_SUPPLY_V0_2_CONTRACT / G6A_UNCHANGED`.
+
+
+## Topic Supply v0.2.1 — Human Process + Meaning Dedup — 2026-09-27
+
+Owner accepted the second Topic Supply patch after two stress tests.
+
+Problem found in v0.2:
+- one X domain can contain many real topic families, so `x_domain` alone is too coarse;
+- different X domains can hide the same semantic thesis/tension and bypass topic/angle dedup.
+
+Accepted additions:
+- `human_process_family` — what the human is actually doing;
+- `meaning_fingerprint` — normalized `human_tension + controlling_question` key used for semantic dedup, not a locked thesis;
+- `D5 Meaning Duplicate` — cross-domain duplicate gate.
+
+Validation:
+- single-domain Food decomposition showed many different Human Process families;
+- cross-domain test: 5 domains × 10 candidates = 50 raw candidates;
+- first semantic pass produced 43 coarse Meaning fingerprints;
+- clear collisions were detected across food/personality/entertainment, cooking/work/gaming, meal/dating/work planning, and relationship/work writing;
+- five deliberately different Meaning families were expanded into Story Premises and remained distinct.
+
+Preserved:
+- HOT / EVERGREEN;
+- AI-first compatibility route;
+- Controlling Question First;
+- Idea vs Counter-Idea;
+- Climax proves meaning;
+- existing Calendar / Registry / Daily snapshots;
+- current G6A production line.
+
+Evidence:
+`docs/TOPIC_OS_V021_MEANING_DEDUP_VALIDATION.md`.
+
+Rollback:
+- v0.2 snapshot branch: `rollback/ai-story-showrunner-topic-os-v02-before-meaning-20260927`;
+- base SHA: `080b3cea54e640c75d7f11b265c8fa6397661192`.
+
+Reviewer decision:
+`PASS_TOPIC_SUPPLY_V0_2_1_MEANING_DEDUP / G6A_UNCHANGED`.

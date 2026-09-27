@@ -1,4 +1,4 @@
-# Topic Operating System v0.2
+# Topic Operating System v0.2.1
 
 ## 1. Purpose
 
@@ -6,7 +6,7 @@
 
 1. 选题从哪里来；
 2. 如何先从普通人已经关心的世界里找到值得追问的 WHY，而不是只从 AI 名词/新闻出发；
-3. 如何避免 Topic / Angle / Story Motif 重复。
+3. 如何避免 Topic / Angle / Meaning / Story Motif 重复。
 
 本系统的目标不是“每天随机生成一个 AI 概念”，而是：
 
@@ -31,8 +31,10 @@ v0.2 默认优先路径：
 ```text
 大众兴趣 X / 现实生活现象
 → Observed Paradox（本应 A，却出现 B）
+→ Human Process Family（人在这里原本做什么）
 → WHY（为什么会这样）
 → Human Tension（两种都合理的力量发生冲突）
+→ Meaning Fingerprint（这期真正探索的矛盾，不是最终答案）
 → AI Changed Process（AI 改变/压缩/放大了哪个人的过程）
 → AI / Domain Mechanism
 → Human Stakes
@@ -41,13 +43,15 @@ v0.2 默认优先路径：
 
 内部短口令：
 
-> **X → Paradox → WHY → Human Tension → AI Mechanism → Story**
+> **X → Human Process → Paradox → WHY → Human Tension / Meaning → AI Mechanism → Story**
 
 关键约束：
 
 - X 必须在没有 AI 术语时仍值得普通人关心；
 - WHY 必须是真问题，不是知识标题换成问号；
+- Human Process Family 用来区分“同一个 X 下面，人究竟在做哪一类事情”，例如 taste formation / skill learning / relationship negotiation / memory / judgment；
 - Human Tension 不是预设结论，而是可被故事测试的矛盾；
+- Meaning Fingerprint 是 `Human Tension + Controlling Question` 的稳定语义指纹，用于跨 X 去重，不等于最终 thesis；
 - AI 仍必须进入因果链，不能只是热点标签或装饰；
 - 现有 `Controlling Question First → Idea vs Counter-Idea → Climax proves` 规则继续有效，不在 Topic Stage 把立意写死。
 
@@ -162,8 +166,10 @@ Evergreen 不等于“百科概念”。
 RAW HUMAN / AI SIGNALS
 → NORMALIZE / CLUSTER
 → X DOMAIN / HUMAN SITUATION
+→ HUMAN PROCESS FAMILY
 → OBSERVED PARADOX
 → WHY + HUMAN TENSION
+→ MEANING FINGERPRINT
 → AI CHANGED PROCESS / DOMAIN MECHANISM
 → CANONICAL TOPIC CANDIDATE
 → HARD GATES
@@ -188,15 +194,19 @@ RAW HUMAN / AI SIGNALS
 1. **Native X Interest** — 暂时不谈 AI，这个生活领域/现象本身有人关心吗？
 2. **WHY / Paradox** — 是否存在“本来应该 A，为什么却 B”或“解决了 A，为什么又失去 B”的认知缺口？
 3. **Human Tension** — 背后是否至少有两种都说得通的力量，而不是一边天然正确、一边天然愚蠢？
-4. **Changed Process** — 能否指出 AI 改变、压缩、替代或放大了哪个原本属于人的过程？
+4. **Human Process Family** — 能否明确“这个 X 里人在做哪一类事情”，避免只按领域名生成题目？
+5. **Changed Process** — 能否指出 AI 改变、压缩、替代或放大了哪个原本属于人的过程？
+6. **Meaning Distinctness** — 与近期候选相比，这期探索的核心张力 / controlling question 是否真的不同？
 
 推荐先写：
 
 ```text
 X:
+Human Process Family:
 Observed Paradox:
 WHY:
 Human Tension:
+Meaning Fingerprint:
 Controlling Question Seed:
 Human Process Before AI:
 AI Changed Process:
@@ -298,6 +308,32 @@ Berger & Milkman 2012：surprisingness、interestingness、practical utility，�
 
 相同老板+秘书、老师+学生、左右对比、同一个办公室、同一种误会→解释结构等都要记录。
 
+### D5 — Meaning Duplicate
+
+跨领域也要判断“故事灵魂”是否重复。
+
+Canonical comparison:
+```text
+human_process_family
++ human_tension
++ controlling_question_seed
+≈ meaning_fingerprint
+```
+
+Example:
+- 美食：最优推荐减少探索；
+- 购物：最优推荐减少探索；
+- 音乐：最优推荐减少探索。
+
+即使 X、标题、AI 表层场景不同，如果最终都在问同一个问题：
+`OPTIMIZATION_VS_EXPLORATION`
+则视为 Meaning Duplicate。
+
+处理：
+- 同一近期内容窗口内默认只保留 storyability / evidence / reach 最强者；
+- 其余候选 HOLD / REVISIT，不因换领域自动视为新题；
+- 如果 human process、stakes、counter-idea 或最终 controlling question 发生实质变化，可标记 `MEANING_REVISIT_ALLOWED`。
+
 ---
 
 ## 8. Topic Fingerprint
@@ -308,9 +344,11 @@ topic_id
 aliases
 topic_entry_mode
 x_domain
+human_process_family
 observed_paradox
 why_question
 human_tension
+meaning_fingerprint
 ai_changed_process
 mechanism_family
 mechanism
@@ -331,7 +369,21 @@ status
 revisit_reason
 performance
 
-核心判重键：mechanism + human_problem + audience_payoff。
+两层核心判重：
+
+```text
+Topic fingerprint
+= mechanism + human_process_family + human_problem + audience_payoff
+
+Meaning fingerprint
+= human_tension + controlling_question_seed
+```
+
+`meaning_fingerprint` 是第二层的规范化短键，例如：
+- `OPTIMIZATION_VS_EXPLORATION`
+- `GUIDANCE_VS_SKILL_FORMATION`
+- `CORRECTNESS_VS_AUTHENTIC_EXPRESSION`
+- `EFFICIENCY_VS_SERENDIPITY`
 
 额外表层判重：story_motif + hook_pattern + visual_motif。
 
@@ -409,7 +461,8 @@ v0.1 的 AI 机制家族池继续保留，作为 **Mechanism Supply**；v0.2 在
 
 ```text
 Human Interest Domain
-× Human Tension
+× Human Process Family
+× Human Tension / Meaning
 × AI Changed Process
 × Mechanism Family
 ```
@@ -515,11 +568,31 @@ Acceptance:
 
 ---
 
-## 19. v0.2 Backward Compatibility / Rollback
+## 19. v0.2.1 Human Process + Meaning Dedup
+
+Stress-test evidence before promotion:
+- 5 X domains × 10 candidates = 50 raw candidates；
+- after Meaning Fingerprint comparison, 43 coarse meaning fingerprints remained；
+- clear cross-domain collisions included:
+  - food / personality-career / entertainment recommendation → `OPTIMIZATION_VS_EXPLORATION`；
+  - cooking / junior-work automation / game copilot → `GUIDANCE_VS_SKILL_FORMATION`；
+  - meal planning / dating planning / work scheduling → `EFFICIENCY_VS_SERENDIPITY`；
+  - relationship replies / work emails → `CORRECTNESS_VS_AUTHENTIC_EXPRESSION`；
+- five deliberately different Meaning families were expanded into full Story Premises and remained narratively distinct.
+
+Reviewer interpretation:
+> X 只是舞台；Human Process 决定“人在做什么”；Meaning Fingerprint 决定“这一期真正探索什么”。
+
+Validation record: `docs/TOPIC_OS_V021_MEANING_DEDUP_VALIDATION.md`.
+
+---
+
+## 20. v0.2.1 Backward Compatibility / Rollback
 
 - 已有 `topic-ledger/topic-registry.jsonl`、Calendar、Daily snapshots 和历史 TopicOpportunity **不追溯改写**；
 - 旧的 `AI Signal → Audience Translation → Human Problem` 路径仍是合法 fallback，尤其适用于强 AI 热点或 Owner 明确指定的 AI 题；
-- 新字段以 backward-compatible 方式加入 Schema，历史 artifact 不因缺少 v0.2 字段而失效；
+- 新字段 `human_process_family` / `meaning_fingerprint` 以 backward-compatible optional field 加入 Schema，历史 artifact 不因缺少这些字段而失效；
 - G3+ 的 Controlling Question / Idea vs Counter-Idea / Story / Writer / Director 规则保持不变；
 - 本次变更只升级 Topic Supply / Topic Opportunity 的发现入口，不修改当前 G6A 生产执行线；
-- 回滚基线：GitHub branch `rollback/ai-story-showrunner-topic-os-v01-20260927`，基于变更前 main `16e2c86039a26175f99204239c19c1bdf35f4a10`。
+- v0.1 回滚基线仍保留：`rollback/ai-story-showrunner-topic-os-v01-20260927`；
+- v0.2 → v0.2.1 回滚基线：`rollback/ai-story-showrunner-topic-os-v02-before-meaning-20260927`，基于 `080b3cea54e640c75d7f11b265c8fa6397661192`。

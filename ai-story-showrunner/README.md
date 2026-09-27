@@ -19,7 +19,7 @@ G7 = BLOCKED_BY_G6A — Final-video End-to-End Validation
 - 3–5 分钟标准目标；
 - 第一人称固定 IP；
 - STORY_MODEL / STORY_ACTION；
-- Daily Topic Planner v0.2 已启用；
+- Daily Topic Planner v0.2.2 已启用；
 - Production throughput 仍为 UNPROVEN。
 
 Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取；G6R runtime reconciliation 已 PASS；第一轮真实 CosyVoice + Runtime Timeline 已执行但音频 listening QA RETURN；GPT-SoVITS 本地 WebUI 已成功打开，下一步仅做 5-case A/B 决定音频 baseline。画面已到 20/44，最终渲染继续阻断。**
@@ -28,8 +28,9 @@ Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取；G6R run
 
 ```text
 大众兴趣 X / 现实变化
+→ 明确这里的人在做什么（Human Process Family）
 → 找到一个反常现象与值得追问的 WHY
-→ 明确背后的 Human Tension
+→ 明确背后的 Human Tension / Meaning Fingerprint
 → 找出 AI 改变/放大的人的过程与机制
 → 把机制变成故事里的世界规则
 → 结构化故事
@@ -43,7 +44,7 @@ Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取；G6R run
 
 核心不是“给 AI 概念套故事”，而是：
 
-> **X → Paradox → WHY → Human Tension → AI 机制 → 故事 → 观众形成自己的理解 / 判断。**
+> **X → Human Process → Paradox → WHY → Meaning → AI 机制 → 故事 → 观众形成自己的理解 / 判断。**
 
 ## 为什么需要这个项目
 
@@ -107,14 +108,18 @@ Worker 不应该互相自由调用，也不应该各自维护一份“当前真�
 - 太专业：直接从 OpenAI / MCP / Agent 等名词进入；
 - 太低级：停留在“GPT 可以帮你写作业”。
 
-每期都必须通过 Human-world Translation，但 v0.2 不再要求选题首先来自 AI。
+每期都必须通过 Human-world Translation；Topic OS v0.2.1 不再要求选题首先来自 AI，并新增 Human Process / Meaning 去重。
 
 默认优先：
 
 ```text
 Human-interest X / observable situation
                 ↓
+      human process family
+                ↓
       paradox / WHY / tension
+                ↓
+      meaning fingerprint
                 ↓
   AI changes one human process
                 ↓

@@ -1,4 +1,4 @@
-# Content Strategy & Conversion Contract v0.2
+# Content Strategy & Conversion Contract v0.2.1
 
 > **G3R STATUS: PASS.** Bilibili-first content strategy is canonical for the current editorial baseline.
 
@@ -18,8 +18,9 @@
 
 ```text
 大众兴趣 X / 现实变化
+→ Human Process Family
 → 反常现象 / WHY
-→ Human Tension
+→ Human Tension / Meaning Fingerprint
 → AI 改变或放大的人的过程
 → 人类冲突与故事推进
 → AI机制自然显现
@@ -131,9 +132,11 @@ signal:
 topic_entry_mode:
 x_domain:
 native_interest:
+human_process_family:
 observed_paradox:
 why_question:
 human_tension:
+meaning_fingerprint:
 controlling_question_seed:
 human_process_before_ai:
 ai_changed_process:
@@ -198,7 +201,15 @@ UNKNOWN
 
 背后是否存在两种都合理的力量，可以被故事真正测试，而不是预先写死结论。
 
-### PRE-GATE 0D — Changed Process
+### PRE-GATE 0D — Human Process Family
+
+是否能明确这个 X 里“人在做什么”。同一个 X 必须允许分出不同 process，例如美食可分为 taste formation / skill learning / family transmission / social coordination / bodily sensing / evaluation 等。
+
+### PRE-GATE 0E — Meaning Distinctness
+
+将 `human_tension + controlling_question_seed` 规范化成 `meaning_fingerprint`，并对照近期 Topic Registry。跨 X 但同 Meaning 的候选不得自动视为新题。
+
+### PRE-GATE 0F — Changed Process
 
 是否能指出 AI 改变、压缩、替代或放大了哪一个原本属于人的过程。
 
