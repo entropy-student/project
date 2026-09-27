@@ -25,8 +25,8 @@
 | `REVIEWER_DECISION_G2A2_PASS.md` | Final Reviewer decision for G2A2 | **CURRENT REVIEW DECISION — PASS** |
 | `MVP_PRODUCT_CONTRACT.md` | Frozen MVP product contract | **AUTHORITATIVE PRODUCT CONTRACT FOR G2B** |
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | Executed / **PASS** |
-| `REVIEWER_DECISION_G2B_RETURN.md` | Reviewer decision on G2B PR #30 | **CURRENT G2B DECISION — RETURN** |
-| `G2B_LOCAL_AI_PDF_SOLUTION_PROOF.md` | Local AI → 12-page magazine → PDF proof | Executed / partial evidence accepted / overall RETURN |
+| `REVIEWER_DECISION_G2B_RETURN.md` | Earlier Reviewer decision on G2B PR #30 | Historical partial RETURN; superseded for content/rendering by G2BR3 PASS |
+| `G2B_LOCAL_AI_PDF_SOLUTION_PROOF.md` | Original local AI → 12-page magazine → PDF proof | Historical partial execution; combined G2B content/rendering PASS is completed by G2BR3 |
 | `OWNER_DECISION_G2BR1_BOUNDED_AI_CALLS.md` | Owner authorization for bounded real-AI closure | **APPROVED — MAX 3 SYNTHETIC CALLS** |
 | `REVIEWER_DECISION_G2BR1_CODEX_PLUS_ROUTE.md` | Reviewer/Owner decision to use ChatGPT-authenticated Codex for G2BR1 | **CURRENT EXECUTION ROUTE** |
 | `G2BR1_REAL_AI_GENERATION_CLOSURE.md` | Narrow real-AI proof closure | Executed / **RETURN — NESTED CODEX TRANSPORT FAILED** |
@@ -35,7 +35,9 @@
 | `G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md` | Host-context Codex transport + real-AI closure | Executed / **RETURN** |
 | `REVIEWER_DECISION_G2BR2_RETURN.md` | Reviewer decision on PR #43 | **CURRENT G2BR2 DECISION — RETURN** |
 | `OWNER_DECISION_G2BR3_DIRECT_AGENT_PROOF.md` | Owner authorization for direct interactive Codex Agent proof | **APPROVED — 1 PRIMARY + MAX 1 CORRECTION** |
-| `G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md` | Direct interactive Codex Agent real-AI content → PDF proof | **CURRENT GATE CONTRACT — OWNER AUTHORIZED** |
+| `G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md` | Direct interactive Codex Agent real-AI content → PDF proof | Executed / **PASS** |
+| `REVIEWER_DECISION_G2BR3_PASS.md` | Reviewer decision on PR #46 | **CURRENT G2BR3 / G2B CONTENT-RENDERING DECISION — PASS** |
+| `G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP.md` | Local WordPress + WooCommerce commerce/account loop | **CURRENT GATE CONTRACT — READY FOR EXECUTION** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
 | `G1_TWO_STEP_AI_PRODUCT_FLOW.md` | Two-step product-flow design | Current supporting design where consistent with Handoff |
