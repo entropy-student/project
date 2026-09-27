@@ -361,3 +361,33 @@ Rollback:
 
 Reviewer decision:
 `PASS_TOPIC_SUPPLY_V0_2_1_MEANING_DEDUP / G6A_UNCHANGED`.
+
+
+## Topic System Full Sync Audit — 2026-09-27
+
+Owner requested a complete re-check of Topic selection, Topic Bank, Daily periodic update and all related paths after Topic OS v0.2.1.
+
+Drift found:
+- Evergreen Bank remained AI-first;
+- project Topic Worker contract still emitted old fields;
+- Worker Adapter plan had stale Topic Worker state;
+- live scheduled task `AI选题雷达` still used AI-only discovery + D1–D4;
+- portable `story-showrunner` AI Topic Provider / pipeline still used v0.1 AI-first logic.
+
+Corrections:
+- Evergreen Bank upgraded to Human-world-first + preserved AI mechanism reserve;
+- Topic Worker contract synchronized to Human Process / Meaning / D1–D5;
+- actual scheduled task updated in place, no duplicate task created;
+- portable Candidate Topic layer synchronized on its own guarded branch;
+- historical Daily snapshots / Registry / Calendar entries intentionally preserved.
+
+Special note:
+`topic-ledger/daily/2026-09-27.json` is the last known pre-sync scheduled-task run. It remains historical evidence and must not be presented as Topic OS v0.2.1 execution proof.
+
+Audit:
+`docs/TOPIC_SYSTEM_FULL_SYNC_AUDIT_20260927.md`.
+
+Reviewer result:
+`PASS_TOPIC_SYSTEM_FULL_SYNC / G6A_UNCHANGED`.
+
+Portable Candidate topic sync merged at `entropy-student/spike.skill@2796982ed9447ea0283253762ea59cf604566ccb`.
