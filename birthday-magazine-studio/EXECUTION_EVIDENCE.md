@@ -1,3 +1,108 @@
+## Current Gate — G3A WordPress / WooCommerce commerce and account loop
+
+- **Gate:** G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP
+- **Execution date:** 2026-09-27
+- **Branch:** codex/birthday-magazine-g3a-woocommerce-commerce-account-loop
+- **Base:** latest fetched GitHub main at 52ae9f2c1b810d8d61b6b64a42c115b95b93832c
+- **Result:** PASS_CANDIDATE_G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP; Reviewer decision required; not a formal PASS.
+- **Stop point:** STOP_AT_REVIEWER=YES; G3B_STARTED=NO.
+
+STATUS CHECKLIST
+
+DOCKER_WORDPRESS_RUNTIME=PASS
+MARIADB_RUNTIME=PASS
+MAILPIT_LOCAL_CAPTURE=PASS
+WOOCOMMERCE_PRODUCT_USD_39_99=PASS
+PRODUCT_VIRTUAL=PASS
+PREVIEW_TO_NATIVE_COMMERCE_PATH=PASS
+ADD_TO_CART=PASS
+CART_UPDATE_REMOVE=PASS
+CHECKOUT_VALIDATION=PASS
+CHECKOUT_SUBMISSION=PASS
+LOCAL_OFFLINE_ORDER_CREATED=PASS
+ORDER_PAID_STATE=NO
+ORDER_STATUS_ON_HOLD_OR_EQUIVALENT=PASS
+CHECKOUT_ACCOUNT_CREATE_OR_ATTACH=PASS
+ACCOUNT_EMAIL_LOCAL_CAPTURE=PASS
+OWNER_ORDER_VISIBILITY=PASS
+UNRELATED_ACCOUNT_ORDER_DENIAL=PASS
+ORDER_BOUND_WORKSPACE=PASS
+WORKSPACE_DIRECT_URL_REPLAY_BY_OTHER_USER=DENIED
+GUEST_PRIVATE_WORKSPACE=DENIED
+UNPAID_GENERATION_GATE_CLOSED=PASS
+GENERATION_JOB_COUNT=0
+MODEL_CALL_COUNT=0
+PAYPAL_PLUGIN_INSTALLED=NO
+PAYPAL_CONNECTED=NO
+REAL_PAYMENT=NO
+G3B_STARTED=NO
+TARGET_HOST_WRITE=NO
+CLEANUP_READBACK=PASS
+STOP_AT_REVIEWER=YES
+
+### Isolated runtime and components
+
+The proof used the project-scoped Compose project birthday-magazine-g3a:
+
+- Docker client/server 29.7.2; Compose 5.4.0.
+- WordPress 7.1.1, PHP 8.3.33; WP-CLI 2.12.0.
+- WooCommerce 11.1.2, installed from the official WordPress ZIP (GPL-3.0-or-later, SHA-256 9de9350a1cf5671b9960afb3151f40f7980e223217a441bf2ea5921b5fce8e9e). The 18,005,609-byte ZIP and its container copy were removed after install.
+- MariaDB 11.4.7-MariaDB-ubu2404 (community server, GPL-2.0).
+- Mailpit v1.31.2 (MIT).
+- WordPress and WP-CLI images are official open-source images; immutable image IDs/digests and source/license notes are in poc/g3a/artifacts/runtime-setup.json.
+
+The Good Issue-style G2A1 preview (0.1.0, GPL-2.0-or-later) was mounted read-only. New local-only code is limited to the order-bound workspace placeholder plugin and Mailpit MU plugin (each 0.1.0, GPL-2.0-or-later). WooCommerce core, WordPress, MariaDB and Mailpit were free/open-source components; no paid plugin or service was used.
+
+The site and Mailpit UI were bound only to 127.0.0.1:8127 and 127.0.0.1:8128. MariaDB 3306 and SMTP 1025 were private to birthday-magazine-g3a_private and not published to the host. WordPress preview/product and Mailpit message API returned HTTP 200 at pre-cleanup health read-back. Mailpit readyz exited 0. No browser request reached an external host in the final run.
+
+### Commerce journey
+
+Product ID 14, “Birthday Magazine — G3A Synthetic Proof”, was a simple USD 39.99 product, Virtual, not Downloadable, with stock management off, tax status none for this local proof, and needs_shipping=false. Its product page showed $39.99 and the native WooCommerce Add to cart control.
+
+The existing preview CTA led to the published WooCommerce product permalink. The Good Issue-style preview passed desktop and 375px width checks; the 375px document width was exactly 375px. Cart checks passed at quantity 1 ($39.99), quantity 2 ($79.98), and remove-to-empty. Empty checkout submission produced the WooCommerce validation notice and did not add an order.
+
+Only WooCommerce core Check payments was enabled, titled “Local test only — no payment”. The synthetic checkout created Order 21, total USD 39.99, using cheque; it remains on-hold and is_paid=false. No manual paid-state mutation occurred. The final verification reused this one stored browser-submitted order to avoid creating duplicates; confirmation refresh was also checked.
+
+### Accounts, email and workspace authorization
+
+Guest checkout was disabled. Checkout account creation was enabled, separate My Account registration was disabled, and WooCommerce created/bound Buyer A’s synthetic customer account during checkout. Buyer B was a separate synthetic customer. All test emails use birthday.invalid.
+
+Mailpit captured the account setup email locally (and the final test inbox contains only synthetic local messages). The account message body/reset token was not read or written to GitHub. No real SMTP provider or external email was configured.
+
+The small workspace placeholder binds the order ID and authenticated customer ID in order metadata. Buyer A saw the order in My Account and received HTTP 200 for their workspace. Buyer B’s order list omitted it; WooCommerce core showed “Invalid order.” at HTTP 200 on a direct order-details URL, with no tested Buyer A email/address/product title/total markers. Buyer B’s direct workspace request and a guest direct workspace request both returned HTTP 403. The URL is not a bearer credential.
+
+No photo storage, final PDF delivery, payment entitlement, or generation implementation was added.
+
+### Generation and payment boundary
+
+BMS_G3A_LOCAL_ONLY=true and BMS_G3A_GENERATION_ENABLED=false were explicitly verified in the final runtime. The generation counter, matching Action Scheduler actions, WP-Cron generation events, and model-call counter were all zero at 12 checkpoints, including invalid checkout, unpaid order, confirmation refresh, account creation, Buyer A account/order/workspace open-refresh-revisit, Buyer B denial, guest denial, and final read-back.
+
+The only enabled gateway was cheque; no PayPal/PPCP plugin file was installed, woocommerce_ppcp_settings was absent, and no connected PayPal account/provider or real payment was used. No model provider was installed or invoked. G3B was not started.
+
+### Corrections made before final evidence
+
+The final pre-cleanup audit found that the existing disposable WordPress volume had been initialized before its Compose extra constants were applied. A guest HTTP 403 from that state was a WordPress error page and was not accepted as authorization evidence. The local config was corrected, and configure-g3a.cjs now writes both local-only constants before enabling the plugin.
+
+The same audit found WooCommerce still in Coming soon / store pages only mode, so the public product route showed a placeholder. The configure script now sets both visibility options to no; the final browser run confirmed the real product price and Add to cart control. One intermediate run also observed a default Gravatar request; local avatars were disabled and the final browser report records an empty external-host list. The full browser suite was rerun after these corrections and all checks passed.
+
+### Durable artifacts and cleanup
+
+poc/g3a/artifacts/journey-report.json contains all 17 final checks and 12 zero-count generation snapshots. final-state.json is the sanitized product/order/gateway/flag read-back. runtime-health.json records versions, health, network exposure and local HTTP checks. host-inventory-before-cleanup.json and host-inventory-readback.json record the scoped inventory and cleanup comparison. evidence-manifest.json lists file hashes, sizes and screenshot dimensions.
+
+Synthetic screenshots are under poc/g3a/artifacts/screenshots/: Good Issue desktop/375px, WooCommerce product, cart states, checkout validation/ready/confirmation, Mailpit inbox, Buyer A orders/order details/workspace, Buyer B orders/order denial/workspace denial, guest denial, and WooCommerce admin order.
+
+Cleanup executed only:
+
+    docker compose -p birthday-magazine-g3a -f birthday-magazine-studio/poc/g3a/compose.yaml down --volumes --remove-orphans
+
+Read-back found 0 G3A containers, 0 G3A volumes and 0 G3A networks; the .tmp directory and WooCommerce ZIP were absent. The 40 unrelated container identities, 87 unrelated volume names and 21 unrelated network identities had identical before/after SHA-256 fingerprints. Mini Craft counts remained 8 containers, 9 volumes and 4 networks; those objects are included in the unchanged global fingerprints. No global prune command was used. Docker image cache was left intact.
+
+No Secret, password, cookie, order key, reset token, or real customer information is in the committed evidence. MVP_PRODUCT_CONTRACT.md and Reviewer-owned REVIEWER_HANDOFF.md were not changed. The disposable runtime and its synthetic customer/order database were removed after evidence capture.
+
+### GitHub review handoff
+
+Branch codex/birthday-magazine-g3a-woocommerce-commerce-account-loop was created from the latest fetched main above. Commit/PR details are recorded here after publication. Do not merge; Reviewer is the next decision point.
+
 # Birthday Magazine Studio — Execution Evidence
 
 ## Current Gate — G2BR3 Direct Codex Agent Real AI Proof

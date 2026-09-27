@@ -1,0 +1,61 @@
+{
+  "capturedAtUtc": "2026-09-27T14:15:57.892552Z",
+  "excludedProject": "birthday-magazine-g3a",
+  "g3a": {
+    "containers": [
+      {
+        "id": "c32ee29296c5",
+        "name": "birthday-magazine-g3a-db-1",
+        "status": "Up About an hour (healthy)",
+        "ports": []
+      },
+      {
+        "id": "8aa692ebbda8",
+        "name": "birthday-magazine-g3a-mailpit-1",
+        "status": "Up About an hour (healthy)",
+        "ports": [
+          "8025/tcp -> 127.0.0.1:8128"
+        ]
+      },
+      {
+        "id": "3cbb1ff61a33",
+        "name": "birthday-magazine-g3a-wordpress-1",
+        "status": "Up 51 minutes",
+        "ports": [
+          "80/tcp -> 127.0.0.1:8127"
+        ]
+      },
+      {
+        "id": "6ed2250f1438",
+        "name": "birthday-magazine-g3a-wpcli-1",
+        "status": "Up 51 minutes",
+        "ports": []
+      }
+    ],
+    "volumes": [
+      "birthday-magazine-g3a_database",
+      "birthday-magazine-g3a_wordpress"
+    ],
+    "networks": [
+      {
+        "id": "a4256506f8e2",
+        "name": "birthday-magazine-g3a_private"
+      }
+    ]
+  },
+  "unrelated": {
+    "containers": 40,
+    "containersIdentitySha256": "36b8c3205cfbfd6880748604fddef373f6153551ce4da66511044150a84c7586",
+    "containersStateSha256": "02b3fb240abde216a0308eadfbfacaa1e3ccd5fae70a66368704f33e5eec1e7f",
+    "volumes": 87,
+    "volumesSha256": "5dce3d73d220057ede74a1b5252b0b2214d509b09831345bb2d82f5f71d5bb63",
+    "networks": 21,
+    "networksSha256": "94833d5222f011172b2486fb4ba679e9d5e36b6e7c5e582aacef7ffb6678108d"
+  },
+  "miniCraft": {
+    "containers": 8,
+    "volumes": 9,
+    "networks": 4,
+    "includedInGlobalUnrelatedIdentityFingerprint": true
+  }
+}

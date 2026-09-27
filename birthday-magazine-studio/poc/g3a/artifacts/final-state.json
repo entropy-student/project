@@ -1,0 +1,45 @@
+{
+  "product": {
+    "id": 14,
+    "type": "simple",
+    "price": "39.99",
+    "currency": "USD",
+    "virtual": true,
+    "needsShipping": false,
+    "stockManaged": false
+  },
+  "order": {
+    "id": 21,
+    "status": "on-hold",
+    "paid": false,
+    "total": "39.99",
+    "currency": "USD",
+    "customerId": 3,
+    "paymentMethod": "cheque",
+    "workspaceOrderId": "21",
+    "workspaceOwnerId": "3"
+  },
+  "account": {
+    "checkoutAccountCreation": "yes",
+    "guestCheckout": "no",
+    "separateRegistration": "no"
+  },
+  "gateway": {
+    "enabledIds": [
+      "cheque"
+    ],
+    "chequeTitle": "Local test only — no payment",
+    "paypalSettingsPresent": false
+  },
+  "paypalInstalledPlugins": [],
+  "generation": {
+    "localOnlyDefined": true,
+    "localOnly": true,
+    "generationFlagDefined": true,
+    "generationEnabled": false,
+    "counter": 0,
+    "actionScheduler": 0,
+    "cron": 0,
+    "modelCalls": 0
+  }
+}

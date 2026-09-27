@@ -1,0 +1,62 @@
+{
+  "capturedAtUtc": "2026-09-27T13:58:17.5500367Z",
+  "docker": {
+    "client": "29.7.2",
+    "server": "29.7.2",
+    "compose": "5.4.0"
+  },
+  "runtime": {
+    "wordpress": {
+      "version": "7.1.1",
+      "php": "8.3.33",
+      "containerStatus": "Up 51 minutes",
+      "hostPublishedPort": "127.0.0.1:8127 -> 80/tcp",
+      "previewHttp": 200,
+      "curlExit": 0
+    },
+    "wpCli": {
+      "version": "2.12.0",
+      "image": "wordpress:cli-php8.3",
+      "containerStatus": "Up 51 minutes"
+    },
+    "woocommerce": "11.1.2",
+    "mariadb": {
+      "server": "11.4.7-MariaDB-ubu2404",
+      "containerStatus": "Up About an hour (healthy)",
+      "hostPublishedPort": "none"
+    },
+    "mailpit": {
+      "version": "1.31.2",
+      "containerStatus": "Up About an hour (healthy)",
+      "hostPublishedPort": "127.0.0.1:8128 -> 8025/tcp",
+      "messagesApiHttp": 200,
+      "curlExit": 0,
+      "readyzExit": 0
+    }
+  },
+  "exposure": {
+    "bindAddress": "127.0.0.1",
+    "databaseHostPortPublished": false,
+    "smtpHostPortPublished": false,
+    "composeNetwork": "birthday-magazine-g3a_private",
+    "externalBrowserHosts": []
+  },
+  "productModelCalls": 0,
+  "sourceEvidence": "journey-report.json and browser network capture",
+  "finalPreCleanup": {
+    "capturedAtUtc": "2026-09-27T14:15:58.4870582Z",
+    "wordpressPreviewHttp": 200,
+    "productHttp": 200,
+    "mailpitMessagesApiHttp": 200,
+    "workspaceLocalOnly": true,
+    "generationEnabled": false,
+    "woocommerceComingSoon": "no",
+    "woocommerceStorePagesOnly": "no",
+    "externalAvatars": "disabled",
+    "enabledPaymentGateways": [
+      "cheque"
+    ],
+    "generationJobs": 0,
+    "modelCalls": 0
+  }
+}

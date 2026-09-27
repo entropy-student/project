@@ -1,0 +1,32 @@
+{
+  "capturedAtUtc": "2026-09-27T14:17:35.7200852Z",
+  "project": "birthday-magazine-g3a",
+  "projectContainersRemaining": 0,
+  "projectVolumesRemaining": 0,
+  "projectNetworksRemaining": 0,
+  "temporaryWooZipExists": false,
+  "projectTempDirectoryExists": false,
+  "duplicateDebugScreenshotExists": false,
+  "unrelated": {
+    "containers": 40,
+    "containersIdentitySha256": "36b8c3205cfbfd6880748604fddef373f6153551ce4da66511044150a84c7586",
+    "volumes": 87,
+    "volumesSha256": "5dce3d73d220057ede74a1b5252b0b2214d509b09831345bb2d82f5f71d5bb63",
+    "networks": 21,
+    "networksSha256": "94833d5222f011172b2486fb4ba679e9d5e36b6e7c5e582aacef7ffb6678108d"
+  },
+  "miniCraft": {
+    "containers": 8,
+    "volumes": 9,
+    "networks": 4,
+    "includedInGlobalUnrelatedIdentityFingerprint": true
+  },
+  "checks": {
+    "projectScopedResourcesRemoved": true,
+    "temporaryPackagesCleaned": true,
+    "unrelatedDockerIdentitiesUnchanged": true,
+    "miniCraftCountsUnchanged": true,
+    "cleanupReadback": true,
+    "miniCraftIdentityCoveredByUnchangedGlobalFingerprint": true
+  }
+}
