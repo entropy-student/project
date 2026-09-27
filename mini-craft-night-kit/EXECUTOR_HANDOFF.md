@@ -2751,3 +2751,22 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Execution history records a helper false negative (localhost HTTP was expected to be 200 but correctly returned the canonical HTTPS redirect) and a read-only curl flag typo. The first condition triggered a host-only legacy restore attempt that stopped before any second recreate; read-only reconciliation showed the running container retained the target candidate, which was then reapplied to the host. The one rollback artifact path was repaired in place and its final 153-byte mounted-legacy hash is verified. These details are in the redacted Evidence; no blind retry occurred.
 - Evidence append/readback: commit `db5592df7501ac90d3506ca49af6ab4660e1a8a7`; `GITHUB_EVIDENCE_READBACK=PASS`. No Reviewer-owned file was modified.
 - Next: Reviewer review only; public Sandbox canary is active, but Soft Launch remains unauthorized. `STOP_AT_REVIEWER=YES`.
+
+
+## Current Executor Handoff — K7 Production Canary Readiness Seal (2026-09-27)
+
+- Gate: `K7_PRODUCTION_CANARY_READINESS_SEAL`.
+- Result: `RETURN_REVIEWER_K7_CHECKOUT_PPCP_AND_CANARY_TOTAL_RECONCILIATION_REQUIRED`; `STOP_AT_REVIEWER=YES`.
+- Current GitHub authority, K7 pack, K6 G-R4 PASS, project/payment architecture decisions, canonical VPS/payment Governance, and Shared VPS handoff were read. K6 public Sandbox ingress remains accepted; no K6 QA was replayed.
+- One strict pinned SSH session reached `ops@srv1970241`. Read-only product facts: Product 223 is published/visible/purchasable, simple, JPY 1, stock-managed quantity 8, physical/shipping-required, taxable while store-wide tax is disabled. Accepted project truth still has supplier/product truth unverified. Classification: `NOT_SUITABLE_REQUIRE_SEPARATE_HIDDEN_CANARY_SKU`.
+- Current public empty Checkout returned the accepted same-origin Cart redirect. No populated public cart/Checkout was observed because browser automation was unavailable; no cart/session was created. Historical K5 populated Checkout is local QA evidence only.
+- Read-only PHP CLI metadata returned Woo email enabled flags (new order admin, customer processing, customer refunded); no transport plugin was detected and a PHPMailer init hook exists, but delivery is unverified: `EMAIL_READINESS=BLOCKED`. No message was sent.
+- PPCP active/connected/Sandbox YES/Live NO is carried forward from the same-day accepted K6 G-R4 readback. This Gate's separate local REST read probe exhausted the CLI memory limit before extracting state; the remote helper exited 255 after identity and safe metadata markers. This was not a live WordPress service restart. No retry was made.
+- Proposed design only: separate hidden, truthful canary SKU, quantity 1; JPY 500 is a proposed gross cap, not a sealed checkout total. Exact amount remains unsealed until SKU truth and shipping/checkout total are known. A distinct consenting buyer is required. WooCommerce Admin `Refund via PayPal` is the proposed one-time full-refund path after provider/local reconciliation.
+- The official PPCP automatic connection path requires Owner-interactive PayPal login/consent to the intended verified Live merchant; no manual credential copying. Any webhook change remains a separate Reviewer-authorized operation.
+- No product/order/payment/refund/email/provider action, no cart/session state change, and no DNS/Caddy/Compose/VPS write occurred. No Secret/credential value was emitted. `SOFT_LAUNCH_AUTHORIZED=NO`.
+- GitHub Evidence appended and committed: `5f399c7d420662e1422c768db9fffcfe8623c406`. Evidence/Handoff readback is being verified; no Reviewer-owned file was modified.
+- Next: Reviewer review and direction for populated Checkout readback, truthful canary SKU/shipping total, and email transport qualification. Do not enable Live or execute a payment canary.
+
+`STOP_AT_REVIEWER=YES`
+
