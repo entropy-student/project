@@ -1,32 +1,8 @@
 {
   "gate": "G2A1-R3B",
-  "run_id": "36297499256",
-  "run_attempt": "1",
-  "head_sha": "5febf66502c9bf9ef12c1a47926cb78180bb3f55",
-  "runner": {
-    "os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
-    "runner_name": "GitHub Actions 1000000087",
-    "image_os": "ubuntu24",
-    "image_version": "20260920.314.1",
-    "architecture": "x86_64",
-    "cpu_model": "AMD EPYC 7763 64-Core Processor",
-    "logical_processors": 4,
-    "ram_bytes": {
-      "MemTotal": 16766414848,
-      "MemAvailable": 15685505024,
-      "SwapTotal": 3221221376,
-      "SwapFree": 3221221376
-    },
-    "root_disk_total_bytes": 154894188544,
-    "root_disk_free_bytes": 92206063616,
-    "gpu": "not used; API client only",
-    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
-    "packages": {
-      "google-auth": "2.40.3",
-      "requests": "2.34.2",
-      "Pillow": "11.3.0"
-    }
-  },
+  "provider": "BAIDU_HANDWRITING_OCR",
+  "run_id": "36305680927",
+  "head_sha": "2f06f8b069395ca2bd750e2911fcbcf7a23c0758",
   "dataset": {
     "count": 11,
     "sample_ids": [
@@ -46,34 +22,18 @@
     "baseline_manual_edit_chars": 69
   },
   "secret_presence_only": {
-    "google_credentials": false,
-    "google_project": false,
-    "google_location": false,
-    "google_processor_id": false,
-    "mistral_api_key": false
+    "baidu_api_key": true,
+    "baidu_secret_key": true
   },
-  "google_configuration_complete": false,
-  "mistral_configuration_present": false,
-  "planned_requests": {
-    "max_total_including_two_google_metadata_gets": 24,
-    "google_ocr_pages": 11,
-    "mistral_ocr_pages_only_if_google_insufficient": 11
+  "free_path_only": true,
+  "documented_personal_free_calls_per_month": 500,
+  "max_calls_this_benchmark": 11,
+  "paid_mode_authorized": false,
+  "token_status": {
+    "ok": true,
+    "expires_in": 2592000
   },
-  "cost": {
-    "planned_requests_max": 24,
-    "planned_google_ocr_pages": 11,
-    "planned_mistral_ocr_pages_if_google_insufficient": 11,
-    "google_list_price_usd_per_1000_pages": 1.5,
-    "mistral_ocr_4_1_standard_api_usd_per_1000_pages": 4.0,
-    "google_estimated_max_usd": 0.0165,
-    "mistral_estimated_max_usd": 0.044,
-    "estimated_max_total_usd": 0.0605,
-    "budget_cap_usd": 0.2,
-    "budget_guard": true,
-    "method": "Conservative public standard list price; no free tier/credit assumed; one OCR page per crop; no retries. Two Google metadata GETs are not billable pages.",
-    "actual_provider_billing_readback": "UNKNOWN",
-    "api_requests_attempted": 0,
-    "estimated_attempted_page_cost_usd": 0.0
-  },
-  "model_api_token_cost": 0
+  "runtime_status": "complete",
+  "attempted_pages": 11,
+  "successful_pages": 11
 }
