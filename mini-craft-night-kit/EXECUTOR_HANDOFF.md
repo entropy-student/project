@@ -2667,3 +2667,15 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - No Caddyfile/candidate disk write, `/load`, reload, restart, DNS, network, Compose, indexing, product, payment, or Secret action occurred. Remote/shared/public/payment writes = 0. Local temporary capture files were removed and verified absent.
 - Redacted Evidence commit: `7e73ba1542c7e142a9323c99b8c9d3a876833bdb`. No Reviewer-owned file was changed.
 - Next: stop for Reviewer acceptance. Do not execute ingress mutation in this Gate.
+
+
+## K6 Phase G Public Sandbox Ingress Activation — RETURN (2026-09-27)
+
+- Result: `RETURN_OWNER_DNS_EXECUTION_PATH_REQUIRED`; stopped at Phase 0 before any VPS, Caddy, indexing, or DNS write.
+- The active tool list has no Cloudflare DNS connector/MCP. The read-only browser inventory failed twice and returned no available browser/app session. Locally, `cloudflared` exists, but official Cloudflare documentation says `cloudflared tunnel route dns` creates a Tunnel CNAME, not the required DNS-only A record; `wrangler` and a Cloudflare CLI were not found. No credential values or environment values were read.
+- Public DNS A/AAAA/CNAME queries freshly returned NXDOMAIN. This is public resolver evidence, not an authenticated Cloudflare zone read-back; no exact record ID/rollback handle can currently be obtained.
+- No SSH was attempted. Caddy backup/write/reload = 0; indexing write = 0; DNS writes = 0; VPS/Shared Infra/public ingress writes = 0; payments = 0; no Secret value/hash access. PayPal Live remains an accepted baseline, not freshly rechecked in this stopped Gate.
+- Owner checkpoint: make an existing authenticated official Cloudflare DNS control path available for the `spikersun.com` zone. Do not send or paste credentials. Resume Phase G only after that path can read the exact record state and support create/delete of the exact A record.
+- Evidence appended and read-back verified in `EXECUTION_EVIDENCE.md`; current evidence commit: `833ff1733b534e9a42936be4ec6e380ee7106aa5`.
+
+`STOP_AT_REVIEWER=YES`
