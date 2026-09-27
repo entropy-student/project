@@ -364,8 +364,19 @@ def mistral_process(crops, api_key):
                 json=payload, timeout=(15, 90))
             elapsed = round((time.perf_counter() - start) * 1000, 2)
             if response.status_code != 200:
+                error_payload = {}
+                try:
+                    body = response.json()
+                    message = body.get("message") or body.get("detail") or body.get("error") or ""
+                    error_payload = {
+                        "mistral_error_message": str(message)[:500],
+                        "payment_required": response.status_code == 402,
+                    }
+                except Exception:
+                    error_payload = {"payment_required": response.status_code == 402}
                 rows[sid] = {"api_status": response.status_code, "latency_ms": elapsed,
-                             "raw_output": "", "recognized_lines": [], "layout": [], "error_type": "http_error"}
+                             "raw_output": "", "recognized_lines": [], "layout": [], "error_type": "http_error",
+                             **error_payload}
                 break
             body = response.json()
             pages = body.get("pages", [])
@@ -625,16 +636,25 @@ def main():
         write_json("mistral-results.json", mistral_artifact)
 
         if mistral["status"] != "complete":
+            payment_required = any(
+                row.get("api_status") == 402 or row.get("payment_required") is True
+                for row in mistral["rows"].values()
+            )
+            selection_status = (
+                "RETURN_G2A1_R3B_MISTRAL_PAYMENT_REQUIRED"
+                if payment_required else "RETURN_G2A1_R3B_ACTIONS_BLOCKED"
+            )
             write_json("mistral-comparison.json", {
                 "status": "INCOMPLETE",
                 "request_count_attempted": mistral["attempted_pages"],
+                "payment_required": payment_required,
                 "baseline_manual_edit_fields": 13,
                 "baseline_manual_edit_chars": 69,
             })
             decision = {
                 "primary": "PP-OCRv6_medium",
                 "fallback": "UNKNOWN",
-                "selection_status": "RETURN_G2A1_R3B_ACTIONS_BLOCKED",
+                "selection_status": selection_status,
                 "google_tested": False,
                 "google_material_improvement": None,
                 "mistral_tested": mistral["attempted_pages"] > 0,
