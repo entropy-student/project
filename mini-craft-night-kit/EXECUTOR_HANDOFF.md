@@ -2805,3 +2805,17 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Evidence commit: `458473dfc3ee74915c2d179335ef7f383ab78a95`.
 
 `STOP_AT_REVIEWER=YES`
+
+
+
+## Current Executor Handoff — K7 R1 Canary populated Checkout (2026-09-28)
+
+- Result: `PASS_CANDIDATE_K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION`; `STOP_AT_REVIEWER=YES`.
+- Reviewer accepted the single Resend qualification email as Delivered and Owner-confirmed received: send count 1; no resend or repeated Resend verification was performed. No API-key value/hash was accessed.
+- Reconciled the existing exact hidden Canary product, ID 1224; it is published once, Simple/Virtual, JPY 500, downloadable off, sold individually, stock management off, and carries the approved controlled-canary disclosure. No duplicate product was published; Product 223 was not changed.
+- Populated the previously empty cart once with the Canary product at quantity 1. Public Checkout showed the item and total at JPY 500, no shipping/tax charge rows (zero under the virtual-product and accepted store-tax-disabled state), and PayPal visible.
+- Stopped before the final Place order/PayPal action. Order creation, real/Sandbox payment, refund, and Live actions are all zero. Soft Launch remains unauthorized.
+- Checkout tab is retained for Reviewer handoff. Detailed redacted facts are in `EXECUTION_EVIDENCE.md`.
+- Evidence commit: `55d0a98ffb8f1248b5e3ab528ba667e2b9daf1f8`. Handoff commit and GitHub readbacks are recorded after this append. No Reviewer-owned file or local worktree was modified.
+
+`STOP_AT_REVIEWER=YES`
