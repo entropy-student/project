@@ -23,7 +23,8 @@
 | `G2A1_R3B_GOOGLE_PROVIDER_SETUP.md` | Google Document AI WIF/processor setup history | **DEFERRED; technical integration proven, Billing prepayment not accepted for current test** |
 | `G2A1_R3B_MISTRAL_PROVIDER_SETUP.md` | Mistral Studio/API-key setup + Free-mode probe | **DEFERRED; persistent HTTP 429 before OCR** |
 | `G2A1_R3B_BAIDU_PROVIDER_SETUP.md` | Baidu Handwriting OCR free-quota setup/history | **PROVEN / 11 OF 11 CALLS SUCCESSFUL** |
-| `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **CURRENT GATE** |
+| `G2A1_R3C_CODEX_PLUS_VISION_INTERNAL_BENCHMARK.md` | ChatGPT-plan Codex vision benchmark on the same 11 public hard cases | **CURRENT GATE** |
+| `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **HOLD until R3C closes** |
 | `ACQUISITION_GROWTH_PLAN.md` | Demand/acquisition validation plan | Supporting plan; not transaction evidence |
 
 ## Governance rules
@@ -48,3 +49,8 @@
 - Final G2A1 OCR contract: PP-OCRv6_medium primary + Baidu critical-field second opinion + one consolidated manual-edit review.
 - G2A1 is PASS. Current Gate is G2A2 MVP Product Contract Freeze.
 - Real customer recipe images, family stories, names, addresses, payment credentials, Secrets and private order identifiers must not be stored in ordinary project documentation.
+
+
+### R3C authority note
+
+R3C is an internal-only evidence Gate. It does not reopen customer-data processing or production-provider authorization. The accepted production OCR path remains PP-OCRv6 + Baidu critical-field second opinion until Reviewer explicitly changes it after R3C evidence.
