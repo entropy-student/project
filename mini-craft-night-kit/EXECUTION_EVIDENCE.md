@@ -6167,3 +6167,46 @@ STOP_AT_REVIEWER=YES
 ```
 
 Resend returned four verification records; all now read back as verified: DKIM TXT at `resend._domainkey.minicraft`, SPF MX and TXT at `send.minicraft`, and CNAME at `rsend.minicraft`. The existing public Mini Craft A record was left unchanged. WordPress Admin currently presents its login page; no credentials were requested or entered. No canary product/plugin, email, cart/session, order, or payment action occurred. Resume this same Gate after Owner signs in directly to the existing WordPress Admin browser tab; do not send credentials or the Resend API key in chat.
+
+
+## K7 R1 Canary Fixture and Resend — Owner Recipient Checkpoint (2026-09-28)
+
+```text
+GATE=K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+RESULT=RETURN_OWNER_CONTROLLED_TEST_RECIPIENT_REQUIRED
+OWNER_AUTHORIZATION=AUTHORIZE_K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+OWNER_RESEND_KEY_DIRECT_ENTRY=CONFIRMED_BY_OWNER
+RESEND_SITE_CONNECTION=CONNECTED_VISIBLE_STATE
+RESEND_API_KEY_VALUE_OR_HASH_ACCESS=0
+RESEND_SENDER=OWNER_REPORTED_CONFIGURED
+CANARY_PRODUCT_ID=1224
+CANARY_PRODUCT=CREATED_EXACT_REVIEWER_APPROVED_SPEC
+CANARY_PRODUCT_STATUS=PUBLISHED
+CANARY_PRODUCT_CATALOG_VISIBILITY=HIDDEN
+CANARY_PRODUCT_TYPE=SIMPLE
+CANARY_PRODUCT_VIRTUAL=YES
+CANARY_PRODUCT_DOWNLOADABLE=NO
+CANARY_PRODUCT_PRICE=JPY_500
+CANARY_PRODUCT_SOLD_INDIVIDUALLY=YES
+CANARY_PRODUCT_MANAGE_STOCK=NO
+CANARY_PRODUCT_DEFAULT_CATEGORY=UNCATEGORIZED_AUTO_ASSIGNED;CATALOG_VISIBILITY_REMAINS_HIDDEN
+CANARY_TAX_CONTROL=NOT_APPLICABLE_WHILE_GLOBAL_TAX_DISABLED
+CANARY_EXPECTED_TAX_JPY=0_PENDING_POPULATED_CHECKOUT_READBACK
+RESEND_TEST_RECIPIENT_STATE=LOCALHOST_PLACEHOLDER_NOT_QUALIFIED_AS_OWNER_CONTROLLED
+EMAIL_TEST=NOT_SENT
+EMAIL_READINESS=BLOCKED_OWNER_CONTROLLED_REAL_RECIPIENT_REQUIRED
+WORDPRESS_ADMIN_EMAIL_SETTING_MUTATION=0
+PRODUCT_223_MUTATION=0
+CART_SESSION_MUTATION=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+SANDBOX_BUYER_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+PAYPAL_LIVE=NO_ACCEPTED_BASELINE_CARRIED_FORWARD
+SOFT_LAUNCH_AUTHORIZED=NO
+SECRET_VALUE_OR_HASH_ACCESS=0
+DNS_VPS_CADDY_SHARED_INFRA_WRITES=0
+STOP_AT_REVIEWER=YES
+```
+
+The existing single Canary draft was published once after the Reviewer-approved fields were read back. WordPress assigned its default Uncategorized product category on publication; the product remains catalog-hidden. The configured test-recipient field contains only a local placeholder, which is not an Owner-controlled real mailbox. No recipient was guessed, no admin-email setting was changed, and no test email was sent. Resume after Owner directly selects/enters an Owner-controlled real mailbox in the Resend test-email UI and confirms that destination; do not send the address or any API key in chat.
