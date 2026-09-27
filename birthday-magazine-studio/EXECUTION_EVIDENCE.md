@@ -10,6 +10,8 @@
 
 This G3BR1 continuation uses only existing synthetic paid WooCommerce order #30. No second Sandbox payment, capture, Live payment, real-money payment, refund, or product model call was made. The G3B Compose runtime, temporary HTTPS origin, and Sandbox setting remain in place for the Owner checkpoint. Mini Craft resources were not accessed or changed.
 
+After branch creation, GitHub `main` advanced from `290a731` to `bb90fa0` through Mini Craft-only commits. A fresh diff confirmed no Birthday Magazine files changed on `main`; this branch's merge base remains `290a731`, and PR #54 contains only the intended 19 Birthday Magazine G3BR1 files.
+
 ## Phase A — fresh runtime and local order read-back
 
 - Fresh Compose read-back found all four `birthday-magazine-g3b` project containers running; MariaDB and Mailpit were healthy. The only project volumes were `birthday-magazine-g3b_database` and `birthday-magazine-g3b_wordpress`; network was `birthday-magazine-g3b_private`.
