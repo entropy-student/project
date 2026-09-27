@@ -52,9 +52,11 @@ PP-OCRv6_medium primary
     ↓
 critical-value / confidence checks
     ↓
-at most one target-language fallback / second pass
+Baidu Handwriting OCR on critical-risk crops only
     ↓
-still uncertain → user confirmation
+preserve both outputs; no wholesale overwrite
+    ↓
+single consolidated manual-edit review
     ↓
 recipe schema + provenance
     ↓
@@ -67,7 +69,7 @@ PDF QA
 private proof / final delivery
 ```
 
-OCR 架构目前已经收束为 **PP-OCRv6_medium 免费本地主力 + 最多一个按需 API 兜底 + 一次统一人工 Review**。R3A 已正式选择 PP-OCRv6_medium；PaddleOCR-VL-1.6 和 TrOCR-small 均不进入主路径。API 兜底只处理主力仍解决不了的 hard handwriting 长尾。
+OCR 架构已经正式收束为 **PP-OCRv6_medium 免费本地主力 + 百度手写 OCR 关键字段二次意见 + 一次统一人工 Review**。百度不会替换整段主文本：它只处理数量、单位、温度、时间等高风险 crop，并把结果作为第二意见保留。R3B 中百度成功跑完 11/11 个 hard cases，找回了 PP-OCRv6 唯一漏掉的关键事实 `8 eggs`；但整段文字总体修改量反而更高，所以 canonical transcript fallback 保持 `NONE`。
 
 详细复用边界见 [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md)。
 
@@ -92,7 +94,7 @@ R3B 曾尝试 **Mistral OCR 4.1 Free mode**，但首个 OCR 请求以及 15s/30s
 
 Owner 决定不为本轮测试启用付费 Mistral，当前已恢复 **Google Document AI + WIF** 路线。Google 仅剩 Billing 激活 blocker；完成后继续相同 11 个公开 hard cases 的 R3B benchmark。
 
-G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
+**G2A1 已正式 PASS。当前进入 G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
 
 ## 文档
 
@@ -139,3 +141,15 @@ Boundary:
 - same semantic fidelity + manual-edit scoring;
 - Google remains a swappable deferred adapter;
 - Mistral Free mode remains deferred after persistent HTTP 429.
+
+
+### G2A1 final OCR decision
+
+Actions run `36305680927` completed Baidu Handwriting OCR on all 11 fixed public hard cases.
+
+- PP-OCRv6 baseline: 13 edit fields / 69 edit chars / 1 critical miss.
+- Baidu whole-text candidate: 12 edit fields / 100 edit chars / 0 critical misses.
+- Baidu recovered GH04 `8 eggs`.
+- Because 7/11 samples regressed in ordinary transcription, Baidu is **not** the canonical transcript fallback.
+- Accepted use: **critical-field second opinion only**.
+- Canonical transcript remains PP-OCRv6 + provenance + one consolidated manual review.
