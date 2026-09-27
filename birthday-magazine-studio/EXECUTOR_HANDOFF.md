@@ -1,5 +1,49 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Current Gate — G3BR1 Phase A-D, stopped before refund
+
+```text
+GATE=G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND
+RESULT=RETURN_OWNER_SANDBOX_REFUND_AUTH_REQUIRED
+EXECUTION_BRANCH=codex/birthday-magazine-g3br1-sandbox-reconciliation-entitlement
+BASE_MAIN=290a73131a4d0ace487d2c1986a94145f03ee277
+PHASE_A_RUNTIME_AND_ORDER_READBACK=PASS
+PROVIDER_QUERY_SEMANTICS=READ_ONLY_VERIFIED
+PROVIDER_CAPTURE_CARDINALITY=1
+PROVIDER_CAPTURE_COMPLETED=PASS
+ORDER_AMOUNT_CURRENCY_CORRELATION=PASS
+DUPLICATE_CAPTURE=NO
+CALLBACK_WEBHOOK_CORRELATION=PASS_ORDER_APPROVAL_EVENT_LINKED_TO_SAME_PROVIDER_ORDER
+PAID_INTAKE_INCOMPLETE_JOB_COUNT=0
+PAID_INTAKE_COMPLETE_CANONICAL_JOB_COUNT=1
+DEFERRED_GENERATION_ACTION_COUNT=0
+ENTITLEMENT_REEVALUATION_IDEMPOTENCY=PASS
+MODEL_CALL_COUNT=0
+REFUND_ALREADY_EXISTS=NO
+REFUND_EXECUTED=NO
+G3B_PR_51=MERGED_HISTORICAL_INTERIM_RETURN
+G3BR1_NEW_PR=PENDING
+G3B_RUNTIME_AND_TEMP_HTTPS=RETAINED_FOR_OWNER_CHECKPOINT
+STOP_AT_OWNER_CHECKPOINT=YES
+```
+
+### Latest G3BR1 facts
+
+- Reused only the existing synthetic order #30. Fresh Phase A read-back found PPCP 4.1.3 Sandbox connected, Live disabled, Woo order `processing` and paid at USD 39.99, with no refund. The provider returned exactly one `COMPLETED` capture; a local read-back found only one Woo order with that transaction ID, #30. Capture ID hash matched the Woo transaction hash and provider order ID hash matched Woo order metadata. Provider amount/currency, capture amount/currency, and Woo order amount/currency all match.
+- The PPCP-stored webhook event ID hash matched the provider event record. It was a verified `CHECKOUT.ORDER.APPROVED` event whose resource ID matched the same provider order. That record was not a simulated event; the event itself did not carry a Woo custom ID and was not a capture-completed event. Correlation is therefore at the same PayPal-order level, with capture exactness established by the provider order and Woo transaction IDs.
+- The PPCP debug log did not retain event-ID/handler-success lines in the receipt window; see `poc/g3br1/artifacts/webhook-log-scan.json`. Correlation is proven from the verified receipt and provider event/order/capture IDs; the log does not independently prove handler response success.
+- Paid with incomplete synthetic intake created 0 canonical jobs/actions and 0 model calls. After marking only order #30 complete, a CLI-only adapter persisted exactly one unique `generation-ready-deferred` job ledger entry. Five evaluations (initial, workspace-refresh label, order-revisit label, explicit re-evaluation, duplicate local event replay) left one job. No dispatch action was queued; deferred scheduler/cron counts stayed 0 and no model/provider was invoked. The refresh/revisit labels exercised the shared local evaluator, not browser navigation.
+- `poc/g3br1/artifacts/` contains sanitized runtime, provider reconciliation, Phase C, Phase D, and final local read-back JSON. The read-only helper and local adapter scripts are under `poc/g3br1/scripts/`. No raw provider payload, Client ID/Secret, bearer token, cookie, Buyer credential, or Authorization header is in the repository.
+- The G3B Compose runtime and temporary HTTPS origin remain active for the Owner checkpoint. G3BR1 `/tmp` helper copies were removed from the WP-CLI container. No global Docker cleanup was used, and Mini Craft resources were not touched.
+
+### Required stop and next handoff
+
+Do not execute any refund yet. The only next authorization needed for Phase E is fresh explicit Owner authorization for one WooCommerce-initiated Sandbox refund on existing order #30. Do not create another payment/capture, use Live PayPal, call a model/provider, or modify G3B PR #51. Continue only through the new G3BR1 PR; do not merge it. Reviewer receives the sanitized evidence before any later Gate.
+
+Machine-readable execution evidence: [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md). G3BR1 details: [G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md), [payment-reconciliation.json](poc/g3br1/artifacts/payment-reconciliation.json), [phase-d-entitlement-idempotency.json](poc/g3br1/artifacts/phase-d-entitlement-idempotency.json).
+
+---
+
 ## Current Gate — G3B continuation after Owner Sandbox Buyer payment
 
 ```text

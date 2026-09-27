@@ -1,0 +1,50 @@
+{
+  "gate": "G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND",
+  "verifiedAtUtc": "2026-09-27T18:47:50Z",
+  "providerQueriesExecutedAtVerification": 0,
+  "verification": "PROVIDER_QUERY_SEMANTICS=READ_ONLY_VERIFIED",
+  "officialPpcpVersion": "4.1.3",
+  "woocommerceOrderQuery": {
+    "entryPoint": "WooCommerce\\PayPalCommerce\\ApiClient\\Endpoint\\OrderEndpoint::order(WC_Order)",
+    "providerOperation": "GET /v2/checkout/orders/{order_id}",
+    "localEffect": "reads WooCommerce order metadata and returns a PayPal Order entity; no WooCommerce order save or payment-state mutation",
+    "captureIsSeparate": "OrderEndpoint::capture() uses POST /v2/checkout/orders/{order_id}/capture and will not be called",
+    "environmentSelection": "PPCP api.host resolves from its stored Sandbox environment; fresh read-back selected Sandbox host and not production host",
+    "activeRequestArgumentFilter": "PPCP ApiModule adds only the partner attribution header; it does not change method or URL",
+    "sourceSha256": {
+      "modules/ppcp-api-client/src/Endpoint/OrderEndpoint.php": "b31362d5e170f6a43dafcab76096dbc48e849b399fbed89873bd293234a8790c",
+      "modules/ppcp-api-client/src/Endpoint/RequestTrait.php": "f32797d548f89900cfbeb2c73f56f36e1918667537af87e66d34a8ce7eda3df3",
+      "modules/ppcp-api-client/src/ApiModule.php": "9c62e32d905cb4ca309e3c8cc4de92c04a812a39415950a59ed76d4b390c5a98"
+    }
+  },
+  "webhookEventQuery": {
+    "providerOperation": "GET /v1/notifications/webhooks-events/{event_id}",
+    "purpose": "read back the exact already-received event ID held by PPCP so event type, capture ID, PayPal order ID, and amount/currency can be correlated in memory",
+    "nonMutatingBoundary": "The official PayPal event self link is GET; the separate /resend action is POST and will not be called. The helper uses only wp_remote_get with no body and emits allowlisted fields and hashes only.",
+    "localEffect": "reads ppcp-last-webhook option and does not update WordPress or WooCommerce state",
+    "callbackVerification": "IncomingWebhookEndpoint registers a POST route with verify_request as permission_callback; signature verification defaults on unless PAYPAL_WEBHOOK_REQUEST_VERIFICATION is explicitly false, and is forced on in production. Storage::save runs only after permission verification in process_request. The reconciliation helper fails closed when verification is disabled.",
+    "simulationExclusion": "Configured simulation event type is CHECKOUT.ORDER.APPROVED; simulation start is disabled in the installed plugin; the helper hashes the stored simulation ID and checks it does not equal the stored event ID before accepting capture webhook correlation.",
+    "requestBoundary": "The helper calls wp_remote_get with method GET, no body, no redirect, a bounded response size, and an allowlisted sanitized output. Active http_request_args and pre_http_request filters were verified empty before query execution. It does not call the /resend route.",
+    "sourceSha256": {
+      "modules/ppcp-webhooks/src/Status/WebhookSimulation.php": "0fb592cd04d494a635b2b8cce0d8dcf6025c8838db220acda00c55a393acb743",
+      "modules/ppcp-webhooks/services.php": "0db9eb6ab627edb94e8b0d7449dc3e7a345689a39793b635f98070b8a9b8bcb7"
+    },
+    "officialReference": "https://developer.paypal.com/api/rest/webhooks/rest/",
+    "sourceSha256": {
+      "modules/ppcp-webhooks/src/WebhookEventStorage.php": "e666371ffbe14816a29da58639073b942db73f8c5f37c2fbb42ef911d398ac79",
+      "modules/ppcp-webhooks/src/IncomingWebhookEndpoint.php": "a1a8b6a2d57bab03b97ec31d96d20e6b95d8b0749653c3f1b76e1d0e09a9c16b",
+      "modules/ppcp-webhooks/src/Handler/PaymentCaptureCompleted.php": "bc67d91785c9f7a4e3f7642792c8fbeb74412d97d7cebd9956fc7ce14b65624e"
+    }
+  },
+  "authenticationSupport": {
+    "service": "The official PPCP bearer service reuses its cached token when valid; if expired, it may POST to /v1/oauth2/token using the connected Sandbox merchant credentials to obtain an access token.",
+    "boundary": "This authentication-only request does not create or authorize a PayPal payment/order, capture, cancel, refund, or mutate WooCommerce payment state. The helper never outputs or persists the token in its evidence; the plugin may update its normal bearer cache if refresh is needed.",
+    "sourceSha256": {
+      "modules/ppcp-api-client/src/Authentication/PayPalBearer.php": "c7f18cdfad18674fdef002caf47ae06f22df4e49525199380934c3597ee6b0b1"
+    }
+  },
+  "secretHandling": "No Client ID, Client Secret, access token, cookie, authorization header, buyer credential, or raw provider response will be emitted or retained.",
+  "helperSha256": "a6b6a2baaa4863afc38bed3650f123827aad2f38a5b2a42a6e1f5801cc9b564c",
+  "mutationMethodsCalled": [],
+  "captureRefundCancelCreateCalls": 0
+}

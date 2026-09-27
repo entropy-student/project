@@ -1,4 +1,53 @@
-# G3B PayPal Sandbox paid entitlement and refund — updated Owner payment return
+# G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D execution
+
+**Latest result:** `RETURN_OWNER_SANDBOX_REFUND_AUTH_REQUIRED`
+**Phase status:** A-D PASS; stopped before Phase E refund.
+**Execution branch:** `codex/birthday-magazine-g3br1-sandbox-reconciliation-entitlement`
+**Base:** latest GitHub `main` at `290a73131a4d0ace487d2c1986a94145f03ee277`
+**Previous G3B PR:** #51 was already merged as historical interim RETURN evidence; this Gate uses a new branch and PR.
+**Stop point:** `STOP_AT_OWNER_CHECKPOINT=YES`; no refund was executed.
+
+This G3BR1 continuation uses only existing synthetic paid WooCommerce order #30. No second Sandbox payment, capture, Live payment, real-money payment, refund, or product model call was made. The G3B Compose runtime, temporary HTTPS origin, and Sandbox setting remain in place for the Owner checkpoint. Mini Craft resources were not accessed or changed.
+
+## Phase A — fresh runtime and local order read-back
+
+- Fresh Compose read-back found all four `birthday-magazine-g3b` project containers running; MariaDB and Mailpit were healthy. The only project volumes were `birthday-magazine-g3b_database` and `birthday-magazine-g3b_wordpress`; network was `birthday-magazine-g3b_private`.
+- Runtime versions: Docker Engine 29.7.2, WordPress 7.1.1, PHP 8.3.33, WooCommerce 11.1.2, official WooCommerce PayPal Payments 4.1.3, MariaDB 11.4.7, and Mailpit 1.31.2. PPCP source/package/hash are recorded in the accepted G3B `poc/g3b/artifacts/ppcp-install.json` (SHA-256 `179e6fa9ede40fb2b05a3ac06c08a47710536e554c171db6e4d1b777d94abb97`).
+- The temporary HTTPS origin returned HTTP 200; local HTTP on port 8137 redirects to HTTPS (301). One `cloudflared` process was present. `PAYPAL_LIVE_ENABLED=no`; PPCP connection state was Sandbox connected, not Production.
+- Order #30 exists, Woo status `processing`, `paid=true`, total USD 39.99, method `ppcp-gateway`, PPCP mode `sandbox`, and refund count 0. Before Phase C, canonical generation jobs, generation scheduler actions/cron, G3A job counter, and model-call counter were all 0.
+- Durable Phase A read-back: [poc/g3br1/artifacts/phase-a-runtime-readback.json](poc/g3br1/artifacts/phase-a-runtime-readback.json).
+
+## Phase B — read-only provider reconciliation
+
+`PROVIDER_QUERY_SEMANTICS=READ_ONLY_VERIFIED` was established before querying. The official PPCP `OrderEndpoint::order()` path is GET-only; capture is a separate POST method and was not called. The event detail endpoint was queried using GET for the exact event ID already stored by PPCP; `/resend` was not used. The two explicit provider read operations were GETs. PPCP may reuse its cached bearer or perform its normal authentication-only `/v1/oauth2/token` POST if the cache is expired; this cannot create/authorize a payment/order, capture, cancel, refund, or change WooCommerce payment state. Webhook verification was enabled, the stored event was not a configured simulation event, and no active `http_request_args` / `pre_http_request` override was present. Source hashes and the sanitized pre-query semantics record are in [poc/g3br1/artifacts/read-only-query-semantics.json](poc/g3br1/artifacts/read-only-query-semantics.json). The helper emitted no raw provider body, credentials, token, cookie, or unredacted provider identifiers.
+
+The provider returned one completed order with one purchase unit and exactly one `COMPLETED` capture. A local transaction-ID read-back found exactly one Woo order candidate, #30. Woo order #30's provider-order metadata hash matched the provider order ID hash (`ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d`); the one capture ID hash (`cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9`) matched Woo's transaction ID hash. Provider order, capture, and Woo total were each USD 39.99. `DUPLICATE_CAPTURE=NO`; `REFUND_ALREADY_EXISTS=NO`. The local candidate count is saved in [poc/g3br1/artifacts/woo-transaction-candidate-readback.json](poc/g3br1/artifacts/woo-transaction-candidate-readback.json).
+
+The exact PPCP-stored event ID hash (`c07c00099b4f95784c2706837a00523415fbe91f0e710ab103d458978e2c6611`) matched the provider's event detail. Its event type was `CHECKOUT.ORDER.APPROVED`, resource type `checkout-order`, and resource ID hash matched the same provider order ID. The event itself had no Woo order-matching custom ID, and it was not a `PAYMENT.CAPTURE.COMPLETED` webhook; the exact callback-to-order link is the matching provider order resource ID, then the current provider order's single capture-to-Woo transaction match. `CALLBACK_WEBHOOK_CORRELATION=PASS` on that basis; no claim is made that a capture-completed webhook was stored.
+
+PPCP's retained debug log did not contain event-ID/handler-success lines within the receipt window, so the log does not independently prove handler response success. The sanitized scan result is [poc/g3br1/artifacts/webhook-log-scan.json](poc/g3br1/artifacts/webhook-log-scan.json); no raw log line or event ID was printed or retained.
+
+Sanitized provider facts: [poc/g3br1/artifacts/payment-reconciliation.json](poc/g3br1/artifacts/payment-reconciliation.json). The exact hashed payment-evidence input consumed by Phase C is preserved at [poc/g3br1/artifacts/payment-reconciliation-phase-c-input.json](poc/g3br1/artifacts/payment-reconciliation-phase-c-input.json); its SHA-256 matches the value stored on order #30 and reported in the Phase C artifact.
+
+## Phase C — paid, intake incomplete
+
+Only order #30 received the synthetic G3BR1 correlation and intake metadata. Intake was read back as `incomplete`; paid entitlement evaluated ineligible. Canonical generation-ready jobs=0, deferred generation Action Scheduler actions=0, generation cron events=0, model calls=0, and refunds=0. See [poc/g3br1/artifacts/phase-c-intake-incomplete.json](poc/g3br1/artifacts/phase-c-intake-incomplete.json).
+
+## Phase D — intake complete and idempotency
+
+Order #30's synthetic intake was marked `complete`. The CLI-only local adapter persisted one canonical `generation-ready-deferred` ledger record in WordPress option `bms_g3br1_canonical_generation_jobs`, uniquely keyed by `order-30`; its job ID and payment reference identifiers are stored as hashes. Five local evaluations ran: initial completion, workspace-refresh reason, order-revisit reason, explicit re-evaluation, and duplicate local event replay. The first created the record; the other four found the same record. The reason labels exercise the common local evaluator; they are not browser page-navigation evidence.
+
+The adapter did not queue an Action Scheduler or cron dispatch because the existing G3A generation feature remains disabled. Deferred generation action count=0 (within the contract maximum of 1), canonical job count remained 1, model/provider invocation=0, refunds=0. This proves local entitlement-record idempotency only; it does not prove production dispatch or model-spend behavior. See [poc/g3br1/artifacts/phase-d-entitlement-idempotency.json](poc/g3br1/artifacts/phase-d-entitlement-idempotency.json), scripts under `poc/g3br1/scripts/`, and [poc/g3br1/artifacts/final-local-readback.json](poc/g3br1/artifacts/final-local-readback.json).
+
+## Checkpoint, cleanup, and forbidden actions
+
+All G3BR1 phases A-D passed and the Owner refund checkpoint is reached. `REFUND_EXECUTED=NO`. Do not execute Phase E until the Owner gives fresh explicit authorization for this exact Sandbox refund. Model calls stayed 0. No real money, Live PayPal, second order/payment/capture, AI/provider call, credential/API key, or Mini Craft resource was used.
+
+Temporary G3BR1 helper copies were removed from the scoped WP-CLI container `/tmp`. The four G3B containers, two project volumes, project network, and temporary HTTPS tunnel are intentionally retained because the refund Owner checkpoint still depends on this runtime. No broad Docker cleanup was run.
+
+---
+
+## Historical G3B evidence — updated Owner payment return
 
 **Latest result:** `RETURN_OWNER_SANDBOX_PAYMENT_STATE_REVIEW_REQUIRED`
 **Latest read-back:** 2026-09-27 UTC

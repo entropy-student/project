@@ -1,0 +1,6 @@
+{
+  "order30Exists": true,
+  "transactionIdSha256": "cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9",
+  "wooOrdersMatchingTransactionId": 1,
+  "matchingWooOrderIds": [30]
+}

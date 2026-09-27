@@ -1,0 +1,44 @@
+{
+  "gate": "G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND",
+  "providerQueried": false,
+  "sandboxConnected": true,
+  "liveEnabled": false,
+  "officialPpcpActive": true,
+  "order30": {
+    "exists": true,
+    "status": "processing",
+    "paid": true,
+    "total": "39.99",
+    "currency": "USD",
+    "paymentMode": "sandbox",
+    "refundCount": 0,
+    "intakeState": "complete",
+    "providerCorrelationVerified": true,
+    "providerOrderIdSha256": "ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d",
+    "captureIdSha256": "cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9",
+    "paymentEvidenceSha256": "3379700319602f62507e85b2254bb1b40125ccde691ed35b86decc24dc09e5cd",
+    "wooOrdersMatchingTransactionId": 1,
+    "matchingWooOrderIds": [30]
+  },
+  "canonicalJobCount": 1,
+  "canonicalJobs": [
+    {
+      "canonicalJobIdSha256": "97982be532f0a8c4fbae30333e4c08c852a76e1129ee8596116c906eecd7e1b9",
+      "orderId": 30,
+      "state": "generation-ready-deferred",
+      "providerOrderIdSha256": "ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d",
+      "captureIdSha256": "cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9",
+      "createdAtUtc": "2026-09-27T18:56:27+00:00",
+      "dispatchQueued": false,
+      "modelProviderInvoked": false
+    }
+  ],
+  "g3aGenerationJobCounter": 0,
+  "deferredGenerationActionCount": 0,
+  "deferredGenerationCronCount": 0,
+  "entitlementEvaluationCount": 6,
+  "modelCallCount": 0,
+  "modelProviderInvoked": false,
+  "refundAlreadyExists": false,
+  "readAtUtc": "2026-09-27T18:57:44+00:00"
+}

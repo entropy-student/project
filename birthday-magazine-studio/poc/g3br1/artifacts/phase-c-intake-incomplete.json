@@ -1,0 +1,18 @@
+{
+  "gate": "G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND",
+  "phase": "C",
+  "result": "PASS",
+  "orderId": 30,
+  "paid": true,
+  "intakeState": "incomplete",
+  "providerCorrelationVerified": true,
+  "paymentEvidenceFile": "payment-reconciliation-phase-c-input.json",
+  "paymentEvidenceSha256": "3379700319602f62507e85b2254bb1b40125ccde691ed35b86decc24dc09e5cd",
+  "eligible": false,
+  "canonicalJobCount": 0,
+  "deferredGenerationActionCount": 0,
+  "deferredGenerationCronCount": 0,
+  "modelCallCount": 0,
+  "refundCount": 0,
+  "modelProviderInvoked": false
+}

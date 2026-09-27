@@ -1,0 +1,11 @@
+{
+  "ppcpLogFilesScanned": 1,
+  "exactStoredEventIdLogOccurrences": 0,
+  "eventTypesMatchedByLog": [],
+  "handlerDispatchLinesWithin15SecondsOfReceipt": 0,
+  "handlerSuccessLinesWithin15SecondsOfReceipt": 0,
+  "orderProcessedAfterApprovalLinesWithin15SecondsOfReceipt": 0,
+  "failureLinesContainingExactStoredEventId": 0,
+  "rawIdsOrLogLinesEmitted": false,
+  "interpretation": "PPCP debug log does not independently evidence handler dispatch/success. Callback correlation is based on signature-verified receipt storage, exact provider event ID read-back, event resource ID matching the exact provider order, and the same order's single completed capture matching Woo transaction ID."
+}
