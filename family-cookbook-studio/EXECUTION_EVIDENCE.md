@@ -397,3 +397,8 @@ Review burden is separated by input type. The `LIGHT_REVIEW` page classification
 - BLOCKED: Selection remains PRIMARY=PP-OCRv6_medium, FALLBACK=UNKNOWN. Neither GOOGLE_ENTERPRISE_DOCUMENT_OCR nor FALLBACK=NONE can be concluded from a no-call run.
 - Secret values were not exposed. No customer/private recipe, production write, payment, Mistral/Gemini/OpenAI/Claude call, third OCR, main merge, or G2A2 work occurred.
 - Cleanup: hosted runner data and dependencies removed; this local artifact inspection ZIP was deleted; no model or customer artifacts were created.
+
+
+### Final main source recheck
+
+- NEW_PROVEN_R3B: At final readback, GitHub main HEAD was 0da0ff21823d6cade2b34d9ab623fc2be92e85a8. The latest main copies of REVIEWER_HANDOFF.md, DOCUMENT_INDEX.md, G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md, G2A1_R3B_API_FALLBACK_BENCHMARK.md, and G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md were re-read; their blob SHAs were respectively 1c26dbd2fbf4a8163a5adb1faafd16b8d1bcad10, 1f5bbe96dac1e85fb86e900f71bb28e78ce2c995, d781f7386e94daf96d50f6a94a82190e15a9c090, ab439a912bc3cf7c7545c95d5ef445560418b359, and 6814a660428aea27e152eefb0f5fb9ef00efb864. They match the R3B source snapshot; this Gate branch was not merged/rebased.
