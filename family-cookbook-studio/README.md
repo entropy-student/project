@@ -86,7 +86,7 @@ G2A1-D1 已决策完成：**English-first、not English-only；OCR 完成后只�
 
 G2A1-R3A 已 PASS：**PP-OCRv6_medium** 被 Reviewer 接受为唯一免费本地主力；20 张合成食谱页 77/77 关键事实正确、零人工修改，PaddleOCR-VL-1.6 因漏温度字段且运行更重而被淘汰为主力。
 
-当前进入 **G2A1-R3B — Bounded API Fallback Owner Checkpoint**：只考虑 11 个真实历史手写 hard cases。Reviewer 建议先测 Google Enterprise Document OCR；只有 Google 改善不足时再测 Mistral OCR 4.1。Gemini 暂不默认进入测试。
+G2A1-R3B Owner checkpoint 已批准。当前执行只使用 11 个公开历史手写 hard cases：**先测 Google Enterprise Document OCR；只有 Google 改善不足时才测 Mistral OCR 4.1；总真实 API 测试预算 ≤ $0.20；Gemini 不进入本 Gate；不使用任何客户/私人图片。**
 
 G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
 
@@ -102,7 +102,8 @@ G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、�
 - [docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md](./docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md) — G2A1-R2（组件证据已接受）
 - [docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md](./docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md) — Owner 决策已完成
 - [docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md](./docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md) — R3A PASS / R3B framework
-- [docs/G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md](./docs/G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md) — **当前 Owner checkpoint**
+- [docs/G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md](./docs/G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md) — Owner 已批准
+- [docs/G2A1_R3B_API_FALLBACK_BENCHMARK.md](./docs/G2A1_R3B_API_FALLBACK_BENCHMARK.md) — **当前 R3B Gate**
 - [docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md](./docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md) — 下一 Gate
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 获客/验证计划
 - [PROJECT_RECORD.md](./PROJECT_RECORD.md) — legacy compatibility pointer only
