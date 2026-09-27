@@ -2,8 +2,8 @@
 
 > Maintainer: Reviewer / Architect / Gatekeeper only  
 > Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1  
-> Latest Executor facts: branch `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, `EXECUTOR_HANDOFF.md`, HEAD `dd9c07bbe64a3076bcfd38d27259ff56c2ed013a`  
-> Latest detailed evidence: same branch `EXECUTION_EVIDENCE.md`; R3B preflight Actions run `36297499256` independently reviewed  
+> Latest Executor facts: branch `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, `EXECUTOR_HANDOFF.md`, HEAD `ee62f3da8db16c0928d7474fd759b02f0eade198`  
+> Latest detailed evidence: same branch `EXECUTION_EVIDENCE.md`; Baidu R3B Actions run `36305680927` independently reviewed  
 > Last reviewed: 2026-09-26
 
 ## 1. Project Goal
@@ -37,11 +37,11 @@ Governance rules come from GitHub `entropy-student/spike.skill/vps-project-gover
 - Frontend/theme PoC order: **Kadence first**, with **Brandy** and **Blocksy** as accepted free/open WordPress fallback candidates. Final production theme/visual treatment is not yet frozen.
 - Post-payment intake: order-bound private image upload pattern; exact plugin/component = POC.
 - Product core: project-specific OCR/handwriting recognition → recipe schema extraction → uncertainty review → deterministic layout/PDF.
-- MVP OCR architecture principle: **PP-OCRv6_medium primary → deterministic critical-risk checks → at most one bounded API fallback → one consolidated manual-edit review**.
+- MVP OCR architecture principle: **PP-OCRv6_medium primary → deterministic critical-risk checks → Baidu Handwriting OCR only as a bounded critical-field second opinion → one consolidated manual-edit review**.
 - **PP-OCRv6_medium is now the accepted free/local primary.**
 - `PaddleOCR-VL-1.6` is rejected as primary for the current MVP evidence: four missed synthetic temperatures plus materially higher CPU/RAM/storage cost.
 - `microsoft/trocr-small-handwritten` remains deprecated.
-- API fallback remains optional pending R3B evidence; if no specialized API materially improves the 11 hard cases, fallback will be NONE.
+- Canonical whole-transcript API fallback is **NONE**. Baidu Handwriting OCR is retained only as a second-opinion signal on high-risk critical crops; it must never wholesale-replace the primary transcript.
 - Tesseract, managed/cloud OCR and VLM/vision remain outside MVP scope unless a later Reviewer decision explicitly reopens them.
 - Paid compute policy: local/open-source PP-OCRv6 processes all pages first. External OCR, if retained, is used only for bounded high-risk pages/crops. API cost is therefore expected to be sparse rather than per-page by default.
 - PDF output: deterministic HTML/CSS or equivalent templates; exact render engine = UNKNOWN.
@@ -70,13 +70,13 @@ No model may silently replace an uncertain quantity, unit, temperature, cooking 
 ```text
 P0   Governance Intake / Project Truth Bootstrap          ✅ PASS
 G1   Core Product Boundary                               ✅ PASS (concept baseline only)
-G2A1 Input + OCR + Reusable Component Feasibility PoC    ↩ RETURNED (partial evidence accepted)
-G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ↩ RETURNED (resource blocked)
-G2A1-R2 Isolated GitHub Actions Runner Completion         ↩ RETURNED (WP/component feasibility accepted; OCR scope not calibrated)
+G2A1 Input + OCR + Reusable Component Feasibility PoC    ✅ PASS
+G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ↩ RETURNED (resource blocked; superseded by Actions)
+G2A1-R2 Isolated GitHub Actions Runner Completion         ✅ COMPONENT FEASIBILITY ACCEPTED
 G2A1-D1 Target Language + OCR Acceptance Calibration      ✅ OWNER DECISIONS RESOLVED
 G2A1-R3A Free/Local Primary Benchmark                    ✅ PASS — PP-OCRv6_medium
-G2A1-R3B Bounded API Fallback Benchmark                  ← CURRENT / BAIDU CREDENTIAL REQUIRED
-G2A2 MVP Product Contract Freeze                         ⏳ HOLD
+G2A1-R3B Bounded API / Critical Second-Opinion Benchmark ✅ PASS — Baidu critical-field second opinion only
+G2A2 MVP Product Contract Freeze                         ← CURRENT
 G2B  Local OCR → Structured Recipe → PDF Solution Proof  ⏳ HOLD
 G3A  WordPress + WooCommerce Local Commerce Loop         ⏳ HOLD
 G3B  Payment Sandbox + Paid Entitlement Flow             ⏳ HOLD
@@ -123,8 +123,12 @@ Current Reviewer decisions:
 - `RETURN_G2A1_R3B_MISTRAL_FREE_MODE_RATE_LIMIT_BLOCKED_2026-09-27`
 - `RESTORE_G2A1_R3B_GOOGLE_WIF_PATH_2026-09-27`
 - `OPEN_G2A1_R3B_BAIDU_HANDWRITING_FREE_QUOTA_TEST_2026-09-27`
+- `PASS_G2A1_R3B_BAIDU_CRITICAL_SECOND_OPINION_2026-09-27`
+- `REJECT_BAIDU_AS_WHOLE_TRANSCRIPT_REPLACEMENT_2026-09-27`
+- `PASS_G2A1_INPUT_OCR_COMPONENT_FEASIBILITY_2026-09-27`
+- `OPEN_G2A2_MVP_PRODUCT_CONTRACT_FREEZE_2026-09-27`
 
-Important limitation: R3A now selects PP-OCRv6_medium as the local primary, but API fallback value remains unproven. R3A's genuine-handwriting set is small and historical, so modern household handwriting generalization remains UNKNOWN. Payment, full OCR→PDF output quality, repeatability, production hosting and print fulfillment remain unproven.
+Important limitation: G2A1 now proves the bounded OCR/input/component architecture, not universal handwriting accuracy. The genuine-handwriting benchmark is small and historical, so modern household handwriting generalization remains UNKNOWN. Payment, full OCR→PDF output quality, repeatability, production hosting and print fulfillment remain unproven.
 
 ## 5. Accepted Baseline
 
@@ -157,7 +161,7 @@ Important limitation: R3A now selects PP-OCRv6_medium as the local primary, but 
 - Physical printing: not tested.
 - Economics: unknown.
 
-## 6. Current Gate — G2A1-D1 Target Language + OCR Acceptance Calibration
+## 6. Current Gate — G2A2 MVP Product Contract Freeze
 
 Historical G2A1/R1/R2 contracts remain preserved.  
 Current Owner checkpoint: [docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md](./docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md)
@@ -293,6 +297,61 @@ Google remains a technically proven deferred adapter. Do not interpret Google/Mi
 
 Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted and must not be rerun.
 
+### R3B Baidu Reviewer decision
+
+Reviewer independently checked:
+- branch HEAD `ee62f3da8db16c0928d7474fd759b02f0eade198`;
+- Actions run `36305680927`;
+- fixed 11-case public handwriting set;
+- 11/11 successful Baidu Handwriting OCR calls;
+- comparison, decision and GH04 critical-recovery evidence committed on the execution branch.
+
+Accepted observations:
+
+PP-OCRv6 baseline:
+- manual edit fields: 13;
+- manual edit chars: 69;
+- critical field errors: 1;
+- silent critical errors: 0;
+- confirmed hallucinations: 0.
+
+Baidu candidate:
+- manual edit fields: 12;
+- manual edit chars: 100;
+- critical field errors: 0;
+- silent critical errors: 0;
+- confirmed hallucinations: 0;
+- improved samples: GH04, GH05, GH09;
+- worsened samples: GH02, GH03, GH06, GH07, GH08, GH10, GH11.
+
+Critical evidence:
+- GH04 ground truth begins `Take 8 eggs...`;
+- PP-OCRv6 read `Take & eggs...`;
+- Baidu read `Take 8 eggs...`.
+
+Reviewer decision:
+1. **Reject Baidu as a canonical whole-transcript fallback** because overall edit burden worsened (69 → 100 chars) and 7/11 samples regressed.
+2. **Accept Baidu Handwriting OCR as a bounded critical-field second opinion** because it recovered the only benchmark critical recipe fact missed by PP-OCRv6 with no new silent critical errors or confirmed hallucinations in this set.
+3. Primary raw/canonical candidate remains PP-OCRv6. Baidu output is stored separately with provider provenance and used only on quantity/unit/temperature/time/other critical-risk crops.
+4. Missing/conflicting critical facts are highlighted in the single consolidated user review; Baidu may suggest but never silently overwrite.
+
+Final OCR contract:
+
+```text
+PP-OCRv6_medium
+→ deterministic semantic critical-risk checks
+→ high-risk critical crop only: Baidu Handwriting OCR second opinion
+→ preserve both outputs/provenance
+→ single consolidated manual-edit Review
+→ approved canonical recipe
+```
+
+Canonical transcript fallback: `NONE`  
+Critical second opinion: `BAIDU_HANDWRITING_OCR`.
+
+**G2A1 is formally PASS.**
+
+
 ## 7. Confirmed Facts
 
 - The Owner wants a product that turns family handwritten recipes into a formal cookbook artifact.
@@ -310,7 +369,7 @@ Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted
 - handwriting/language coverage;
 - exact correction UI;
 - image preprocessing path;
-- whether a bounded specialized OCR API materially improves PP-OCRv6's 11 hard handwriting cases;
+- exact routing threshold for when a critical crop invokes Baidu second opinion;
 - exact deterministic recipe-structuring/parser implementation;
 - per-order local compute/render cost and manual-confirmation burden;
 - file storage/access/deletion policy;
@@ -350,20 +409,19 @@ Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted
 
 - G2A1-D1 Owner decisions are resolved.
 - R3A is formally PASS with `PP-OCRv6_medium` as the sole local primary.
-- Current Gate: **G2A1-R3B — Baidu Handwriting OCR free-quota benchmark; credential required**.
-- PP-OCRv6_medium remains the accepted local primary.
-- Google is technically ready but deferred because current Billing activation requests a USD 30 prepayment.
-- Mistral Free mode is blocked by persistent HTTP 429 before any successful OCR page.
-- Owner action: create a Baidu OCR app with Handwriting OCR access and configure `BAIDU_OCR_API_KEY` + `BAIDU_OCR_SECRET_KEY` as GitHub Actions Secrets.
-- Baidu is authorized for free test quota only; no pay-as-you-go/resource purchase.
-- Same 11 public hard cases only.
+- G2A1 is formally PASS.
+- Accepted OCR architecture: **PP-OCRv6_medium primary + Baidu Handwriting OCR critical-field second opinion + one consolidated manual-edit Review**.
+- Baidu is not a whole-transcript replacement.
+- Google remains a technically viable deferred adapter; Mistral Free mode remains availability-blocked.
+- Current Gate: **G2A2 MVP Product Contract Freeze**.
+- Next Owner/Reviewer work is to freeze price/package/input caps/review/revision/output/data-retention decisions before G2B implementation.
 - G2A2 remains HOLD until R3B selects one fallback or proves FALLBACK=NONE.
 
 ## 13. Status Summary
 
 - Overall progress: reusable commerce/input/delivery feasibility is proven; OCR has real benchmark evidence but requires target-language/semantic-threshold calibration.
 - Final goal: private, reliable family recipe intake → faithful transcription/structuring → proof → cookbook PDF → later optional print.
-- Current Gate: **G2A1-R3B Baidu free-quota credential setup**.
+- Current Gate: **G2A2 MVP Product Contract Freeze**.
 - Accepted local primary: **PP-OCRv6_medium**.
 - Next after Owner approval: test the 11 hard cases with specialized API fallback → select one fallback or NONE → close G2A1 → G2A2 exact MVP contract.
 - Attention: never treat clean OCR demos, model self-confidence or a visually nice PDF as proof that recipe facts are correct.
