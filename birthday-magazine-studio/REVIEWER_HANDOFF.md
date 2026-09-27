@@ -70,7 +70,7 @@ G2A2 MVP Product Contract Freeze                        ✅ PASS
 G2B  Local AI/PDF Solution Proof                        ↩ RETURN — real AI proof missing
 G2BR1 Real AI Generation Closure                        ↩ RETURN — nested Codex transport failed
 G2BR2 Host Codex Transport + Real-AI Closure             ↩ RETURN — WebSocket failure + HTTP 401
-G2BR3 Direct Codex Agent Real-AI Content/PDF Proof        ← CURRENT / READY_FOR_OWNER_AUTHORIZATION
+G2BR3 Direct Codex Agent Real-AI Content/PDF Proof        ← CURRENT / OWNER AUTHORIZED
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
@@ -92,6 +92,7 @@ Current Reviewer decisions:
 - `RETURN_G2BR1_NESTED_CODEX_TRANSPORT_FAILED_2026-09-27`
 - `OWNER_AUTHORIZED_G2BR2_MAX_2_HOST_CODEX_RUNS_2026-09-27`
 - `RETURN_G2BR2_CODEX_SUBSCRIPTION_PROGRAMMATIC_PATH_UNPROVEN_2026-09-27`
+- `OWNER_AUTHORIZED_G2BR3_DIRECT_AGENT_PROOF_2026-09-27`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -254,18 +255,14 @@ Contract:
 - [docs/G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md](./docs/G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md)
 
 Status:
-- **READY_FOR_OWNER_AUTHORIZATION**;
+- **OWNER AUTHORIZED**;
 - use the already-authenticated interactive Codex Agent itself to author the real model JSON;
 - no nested `codex exec`;
 - no API key;
 - reuse the existing schema, grounding, renderer and QA;
+- one primary generation + at most one correction pass if schema/grounding validation fails;
 - this Gate proves real-AI content/rendering quality only;
-- unattended production-provider/runtime integration remains a later Gate.
-
-Recommended bound:
-- one synthetic fixture;
-- one primary direct-agent generation;
-- at most one correction pass if schema/grounding validation fails.
+- production AI API/provider integration is deferred until the Owner supplies the interface later.
 
 G3A/G3B remain unauthorized until G2BR3 Reviewer decision.
 
@@ -333,9 +330,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: wait for Owner authorization, then dispatch/review only `docs/G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md`.
-- Executor next action: none until the Owner authorizes the direct-agent proof.
-- Owner intervention required: **YES** — authorize one primary direct-agent generation and at most one correction pass. No API key or extra credit purchase is required.
+- Reviewer next action: dispatch/review only `docs/G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md`.
+- Executor next action: execute G2BR3 using the interactive Codex Agent itself; no nested Codex CLI.
+- Owner intervention required: **NO** for this proof unless a new boundary is hit. Production AI interface details will be supplied later by the Owner.
 
 ## 13. Status Summary
 
@@ -348,7 +345,7 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - G2B: RETURN; partial local renderer/PDF/QA evidence is accepted.
 - G2BR1: RETURN; three nested Codex CLI attempts failed before model output and the approved 3-run cap is exhausted.
 - G2BR2: RETURN; two host-context Codex attempts failed before model output (WebSocket failure, then HTTP 401).
-- G2BR3: CURRENT; direct interactive Codex Agent real-AI content/PDF proof, awaiting Owner authorization.
+- G2BR3: CURRENT and Owner-authorized for one primary direct-agent generation plus at most one schema/grounding correction pass.
 - Current unresolved proof: actual model structured output → grounding → existing renderer → 12-page PDF/QA, plus non-zero provider-spend idempotency.
 - Next after G2BR1/G2B PASS: G3A WooCommerce commerce loop.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
