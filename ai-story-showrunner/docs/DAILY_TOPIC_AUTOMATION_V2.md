@@ -83,7 +83,7 @@ Production throughput remains:
 
 ## 8. Automation State
 
-`DAILY_TOPIC_PLANNER_V0_2 = ACTIVE`
+`DAILY_TOPIC_PLANNER_V0_2_2 = ACTIVE`
 
 The existing scheduled task is updated in place; do not create a duplicate daily planner task.
 
