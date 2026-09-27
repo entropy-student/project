@@ -5646,3 +5646,45 @@ STOP_AT_REVIEWER=YES
 ```
 
 The only VPS writes were creation of the project-scoped `manifests` backup directory and the restrictive pre-change Caddyfile backup. Fresh reconciliation confirmed the durable Caddyfile and active config remained at their accepted baseline, `blog_public=0`, and the backup hash matched the baseline. The exact canonical candidate was reconstructed and adapt/semantic checks passed. No Caddyfile write or reload was attempted: Docker reports a read-only bind mount of the individual Caddyfile into `/etc/caddy/Caddyfile`; relying on atomic host-path replacement to refresh that mounted file would risk reloading the old inode. No authorized safe mechanism in this Gate resolves that conflict, so execution stopped before Caddy/indexing/DNS mutation. The initial helper error was reconciled read-only; it did not cause an application or Shared Infra change.
+
+
+## K6 Phase G-R3 Same-Inode Caddyfile Write + Public Sandbox Ingress Resume — RETURN (2026-09-27)
+
+```text
+GATE=K6_PHASE_G_R3_SAME_INODE_CADDYFILE_WRITE_AND_PUBLIC_SANDBOX_INGRESS_RESUME
+RESULT=RETURN_REVIEWER_G_CADDY_MOUNT_BASELINE_RECONCILIATION_UNRESOLVED
+REMOTE_EMITTED_RESULT=RETURN_REVIEWER_G_CADDY_MOUNT_BASELINE_DRIFT
+SSH_NETWORK_INVOCATIONS=1
+SSH_NATIVE_EXIT=42
+SSH_HOST_KEY_MATCH=YES_BY_STRICT_PINNED_SUCCESS
+REMOTE_IDENTITY=ops@srv1970241
+CLOUDFLARE_SESSION_PREWRITE=PASS
+CLOUDFLARE_ZONE=spikersun.com
+PREWRITE_MINICRAFT_A_AAAA_CNAME=ABSENT
+CADDY_RUNTIME=RUNNING;RESTART_COUNT=0
+WORDPRESS_RUNTIME=RUNNING;RESTART_COUNT=0
+MARIADB_HEALTH=HEALTHY;RESTART_COUNT=0
+WORDPRESS_HOST_PORT=NONE
+DB_PUBLIC_PORT=NONE
+PREWRITE_DURABLE_CADDYFILE=PASS;76_BYTES;SHA256_12fac82e3b1b9733029aa820c4794ccb9359ae494863dd6815f7e29b636d8beb
+PREWRITE_ROLLBACK_BACKUP=PASS;SHA256_12fac82e3b1b9733029aa820c4794ccb9359ae494863dd6815f7e29b636d8beb
+CADDY_MOUNT_BASELINE_CHECK=FAIL_CLOSED;SUBCHECK_NOT_SEPARATELY_EMITTED
+CADDY_MOUNT_CHECK_LIMITATION=LOCAL_HELPER_BUNDLED_MOUNTED_HASH_AND_CROSS_NAMESPACE_INODE_EQUALITY;GATE_REQUIRES_EACH_INODE_TO_REMAIN_EQUAL_TO_ITS_OWN_PREWRITE_VALUE;NO INDIVIDUAL CONTAINER HASH OR INODE WAS EMITTED
+PPCP_READBACK=NOT_REACHED
+INDEXING_READBACK=NOT_REACHED
+CADDYFILE_WRITE=0
+CADDY_RELOAD=0
+INDEXING_WRITE=0
+DNS_WRITES=0
+PUBLIC_INGRESS_CHANGE=0
+PAYMENT_ACTIONS=0
+LIVE_ACTIONS=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+SHARED_INFRA_WRITES=0
+VPS_WRITES=0
+LOCAL_TEMP_CLEANUP=PASS;NO_TEMP_FILES_CREATED
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+The single strict SSH invocation verified the recorded remote identity and fresh container/runtime continuity, then stopped before any write at a fail-closed mount-baseline predicate. The helper coupled mounted-content comparison to equality of host/container inode numbers, although the Gate requires each inode to be compared with its own prewrite value. Because the helper emitted no separate mounted hash/inode values, this run does not establish whether content differed or the cross-namespace inode comparison alone failed; no actual Caddy drift is asserted. The existing rollback backup was read-only verified. No PPCP/indexing check, Caddyfile write, reload, DNS action, or payment action was reached. No second SSH was attempted.
