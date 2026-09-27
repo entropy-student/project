@@ -1,4 +1,4 @@
-"""Mistral-first, 11-case R3B OCR fallback benchmark; never prints or persists credentials."""
+"""Google-first, 11-case R3B OCR fallback benchmark; never prints or persists credentials."""
 from __future__ import annotations
 
 import base64
@@ -348,147 +348,51 @@ def google_process(crops, token, project, location, processor_id, version_id):
 
 
 def mistral_process(crops, api_key):
-    rows = {}
-    attempted_http_requests = 0
-    successful_pages = 0
-
+    rows, attempted = {}, 0
     for sample in SAMPLES:
         sid = sample["sample_id"]
         data_url = "data:image/jpeg;base64," + base64.b64encode(crops[sid]["bytes"]).decode("ascii")
         payload = {
-            "model": "mistral-ocr-4-1",
-            "document": {"type": "image_url", "image_url": data_url},
-            "include_blocks": True,
-            "confidence_scores_granularity": "block",
+            "model": "mistral-ocr-4-1", "document": {"type": "image_url", "image_url": data_url},
+            "include_blocks": True, "confidence_scores_granularity": "block",
         }
-
-        response = None
-        elapsed = None
-        retry_log = []
-
-        for retry_index in range(4):
-            start = time.perf_counter()
-            attempted_http_requests += 1
-            try:
-                response = requests.post(
-                    "https://api.mistral.ai/v1/ocr",
-                    headers={"Authorization": "Bearer " + api_key, "Content-Type": "application/json"},
-                    json=payload,
-                    timeout=(15, 90),
-                )
-                elapsed = round((time.perf_counter() - start) * 1000, 2)
-            except Exception as error:
-                rows[sid] = {
-                    "api_status": "transport_error",
-                    "latency_ms": round((time.perf_counter() - start) * 1000, 2),
-                    "raw_output": "",
-                    "recognized_lines": [],
-                    "layout": [],
-                    "error_type": type(error).__name__,
-                    "retry_log": retry_log,
-                }
-                return {
-                    "status": "provider_call_blocked",
-                    "rows": rows,
-                    "attempted_pages": len(rows),
-                    "attempted_http_requests": attempted_http_requests,
-                    "successful_pages": successful_pages,
-                }
-
-            if response.status_code != 429:
+        start = time.perf_counter()
+        attempted += 1
+        try:
+            response = requests.post("https://api.mistral.ai/v1/ocr",
+                headers={"Authorization": "Bearer " + api_key, "Content-Type": "application/json"},
+                json=payload, timeout=(15, 90))
+            elapsed = round((time.perf_counter() - start) * 1000, 2)
+            if response.status_code != 200:
+                rows[sid] = {"api_status": response.status_code, "latency_ms": elapsed,
+                             "raw_output": "", "recognized_lines": [], "layout": [], "error_type": "http_error"}
                 break
-
-            retry_after_raw = response.headers.get("Retry-After")
-            try:
-                retry_after = float(retry_after_raw) if retry_after_raw else None
-            except ValueError:
-                retry_after = None
-
-            wait_seconds = min(90.0, max(15.0, retry_after if retry_after is not None else 15.0 * (2 ** retry_index)))
-            retry_log.append({
-                "attempt": retry_index + 1,
-                "status": 429,
-                "retry_after_header_present": bool(retry_after_raw),
-                "wait_seconds": wait_seconds,
-            })
-
-            if retry_index < 3:
-                time.sleep(wait_seconds)
-
-        if response is None:
-            break
-
-        if response.status_code != 200:
-            error_payload = {}
-            try:
-                body = response.json()
-                message = body.get("message") or body.get("detail") or body.get("error") or ""
-                error_payload = {
-                    "mistral_error_message": str(message)[:500],
-                    "payment_required": response.status_code == 402,
-                }
-            except Exception:
-                error_payload = {"payment_required": response.status_code == 402}
+            body = response.json()
+            pages = body.get("pages", [])
+            raw = "\n".join(page.get("markdown", "") for page in pages).strip()
+            blocks, lines = [], []
+            for page in pages:
+                for block in page.get("blocks") or []:
+                    content = block.get("content", "")
+                    blocks.append({"content": content, "bbox": block.get("bbox"), "label": block.get("label"),
+                                   "confidence_scores": block.get("confidence_scores")})
+                    lines.extend({"text": line.strip(), "confidence": None} for line in content.splitlines() if line.strip())
+            if not lines:
+                lines = [{"text": line.strip(), "confidence": None} for line in raw.splitlines() if line.strip()]
             rows[sid] = {
-                "api_status": response.status_code,
-                "latency_ms": elapsed,
-                "raw_output": "",
-                "recognized_lines": [],
-                "layout": [],
-                "error_type": "http_error",
-                "retry_log": retry_log,
-                **error_payload,
+                "api_status": 200, "raw_output": raw, "mistral_raw_output": raw,
+                "recognized_lines": lines, "layout": blocks, "mistral_bbox_layout": blocks,
+                "mistral_confidence": [b["confidence_scores"] for b in blocks if b.get("confidence_scores") is not None],
+                "latency_ms": elapsed, "mistral_latency_ms": elapsed,
+                "mistral_api_status": 200, "mistral_model": body.get("model", "mistral-ocr-4-1"),
+                "usage_info": body.get("usage_info"),
             }
+        except Exception as error:
+            rows[sid] = {"api_status": "transport_error", "latency_ms": round((time.perf_counter() - start) * 1000, 2),
+                         "raw_output": "", "recognized_lines": [], "layout": [], "error_type": type(error).__name__}
             break
-
-        successful_pages += 1
-        body = response.json()
-        pages = body.get("pages", [])
-        raw = "\n".join(page.get("markdown", "") for page in pages).strip()
-        blocks, lines = [], []
-        for page in pages:
-            for block in page.get("blocks") or []:
-                content = block.get("content", "")
-                blocks.append({
-                    "content": content,
-                    "bbox": block.get("bbox"),
-                    "label": block.get("label"),
-                    "confidence_scores": block.get("confidence_scores"),
-                })
-                lines.extend({
-                    "text": line.strip(),
-                    "confidence": None,
-                } for line in content.splitlines() if line.strip())
-        if not lines:
-            lines = [{"text": line.strip(), "confidence": None} for line in raw.splitlines() if line.strip()]
-
-        rows[sid] = {
-            "api_status": 200,
-            "raw_output": raw,
-            "mistral_raw_output": raw,
-            "recognized_lines": lines,
-            "layout": blocks,
-            "mistral_bbox_layout": blocks,
-            "mistral_confidence": [b["confidence_scores"] for b in blocks if b.get("confidence_scores") is not None],
-            "latency_ms": elapsed,
-            "mistral_latency_ms": elapsed,
-            "mistral_api_status": 200,
-            "mistral_model": body.get("model", "mistral-ocr-4-1"),
-            "usage_info": body.get("usage_info"),
-            "retry_log": retry_log,
-        }
-
-        # Be conservative with Free-mode OCR rate limits even after a success.
-        if sid != SAMPLES[-1]["sample_id"]:
-            time.sleep(6)
-
-    return {
-        "status": "complete" if len(rows) == EXPECTED_COUNT and all(r["api_status"] == 200 for r in rows.values()) else "provider_call_blocked",
-        "rows": rows,
-        "attempted_pages": len(rows),
-        "attempted_http_requests": attempted_http_requests,
-        "successful_pages": successful_pages,
-    }
+    return {"status": "complete" if len(rows) == EXPECTED_COUNT and all(r["api_status"] == 200 for r in rows.values()) else "provider_call_blocked",
+            "rows": rows, "attempted_pages": attempted}
 
 
 def provider_result(provider, result, crops, other_rows=None):
@@ -570,28 +474,6 @@ def write_not_run_outputs(state, preflight):
     write_json("cost-summary.json", preflight["cost"])
 
 
-def write_mistral_not_run_outputs(state, preflight):
-    samples = [{
-        "sample_id": row["sample_id"], "source_reference": row["source_reference"],
-        "ppocrv6_output": row["primary_output"], "mistral_api_status": "not_called",
-        "mistral_raw_output": "", "mistral_confidence": None, "mistral_bbox_layout": [], "mistral_latency_ms": None,
-    } for row in SAMPLES]
-    write_json("mistral-results.json", {"provider": "Mistral OCR 4.1", "status": "NOT_RUN",
-                                        "api_called": False, "sample_count": EXPECTED_COUNT, "samples": samples})
-    write_json("mistral-comparison.json", {"status": "NOT_RUN", "reason": state,
-                                           "baseline_manual_edit_fields": 13, "baseline_manual_edit_chars": 69})
-    write_json("final-fallback-decision.json", {
-        "primary": "PP-OCRv6_medium", "fallback": "UNKNOWN", "selection_status": state,
-        "google_tested": False, "google_material_improvement": None, "mistral_tested": False,
-        "mistral_material_improvement": None, "baseline_manual_edit_fields": 13,
-        "final_manual_edit_fields": None, "baseline_manual_edit_chars": 69,
-        "final_manual_edit_chars": None, "baseline_critical_errors": 1,
-        "final_critical_errors": None, "new_silent_critical_errors": None, "new_hallucinations": None,
-        "estimated_api_cost_usd": preflight["cost"]["estimated_attempted_page_cost_usd"], "reason": state,
-    })
-    write_json("cost-summary.json", preflight["cost"])
-
-
 def append_identity(row, sample, crop):
     row.update({"sample_id": sample["sample_id"], "source_reference": sample["source_reference"],
                 "ppocrv6_output": sample["primary_output"], "input_crop_sha256": crop["sha256"]})
@@ -607,228 +489,285 @@ def main():
     DATA.mkdir(parents=True, exist_ok=True)
     dataset = validate_inputs()
     flags = {
-        "google_credentials": False,
-        "google_project": False,
-        "google_location": False,
-        "google_processor_id": False,
+        "google_credentials": bool(os.getenv("GOOGLE_OAUTH_ACCESS_TOKEN") or os.getenv("GOOGLE_APPLICATION_CREDENTIALS") or os.getenv("GOOGLE_GHA_CREDS_PATH")),
+        "google_project": bool(os.getenv("GOOGLE_CLOUD_PROJECT")),
+        "google_location": bool(os.getenv("GOOGLE_DOC_AI_LOCATION")),
+        "google_processor_id": bool(os.getenv("GOOGLE_DOC_AI_PROCESSOR_ID")),
         "mistral_api_key": bool(os.getenv("MISTRAL_API_KEY")),
     }
-
-    # R3B has been explicitly switched to Mistral-first because Google Document AI
-    # requires Billing activation with an account-level USD 30 prepayment. Google
-    # remains a validated future adapter but is not called in this Gate.
-    cost = {
-        "planned_requests_max": EXPECTED_COUNT,
-        "planned_google_ocr_pages": 0,
-        "planned_mistral_ocr_pages": EXPECTED_COUNT,
-        "google_deferred_reason": "BILLING_PREPAYMENT_FRICTION",
-        "mistral_ocr_4_1_standard_api_usd_per_1000_pages": MISTRAL_RATE,
-        "mistral_estimated_max_usd": round(EXPECTED_COUNT * MISTRAL_RATE / 1000, 6),
-        "estimated_max_total_usd": round(EXPECTED_COUNT * MISTRAL_RATE / 1000, 6),
-        "budget_cap_usd": COST_CAP,
-        "budget_guard": (EXPECTED_COUNT * MISTRAL_RATE / 1000) <= COST_CAP,
-        "method": "Mistral OCR 4.1 standard list price; Free mode may cover usage. No retries assumed.",
-        "actual_provider_billing_readback": "UNKNOWN",
-        "api_requests_attempted": 0,
-        "estimated_attempted_page_cost_usd": 0.0,
-    }
-    preflight = {
-        "gate": "G2A1-R3B",
-        "provider_order": ["MISTRAL_OCR_4_1"],
-        "google_status": "DEFERRED_DUE_TO_BILLING_PREPAYMENT_FRICTION",
-        "run_id": os.getenv("GITHUB_RUN_ID"),
-        "run_attempt": os.getenv("GITHUB_RUN_ATTEMPT"),
-        "head_sha": os.getenv("GITHUB_SHA"),
-        "runner": runner_facts(),
-        "dataset": dataset,
-        "secret_presence_only": {"mistral_api_key": flags["mistral_api_key"]},
-        "mistral_configuration_present": flags["mistral_api_key"],
-        "planned_requests": {"mistral_ocr_pages": EXPECTED_COUNT},
-        "cost": cost,
-        "model_api_token_cost": 0,
-    }
+    google_config = all(flags[key] for key in ("google_credentials", "google_project", "google_location", "google_processor_id"))
+    cost = cost_plan()
+    preflight = preflight_record(dataset, flags, google_config, cost)
     write_json("provider-preflight.json", preflight)
-    print(json.dumps({
-        "gate": "G2A1-R3B",
-        "run_id": preflight["run_id"],
-        "fixed_samples": EXPECTED_COUNT,
-        "provider": "MISTRAL_OCR_4_1",
-        "mistral_config_present": flags["mistral_api_key"],
-        "estimated_max_cost_usd": cost["estimated_max_total_usd"],
-        "token_cost": 0,
-    }, sort_keys=True))
-
+    print(json.dumps({"gate": "G2A1-R3B", "run_id": preflight["run_id"], "fixed_samples": EXPECTED_COUNT,
+                      "google_config_present": google_config, "mistral_config_present": flags["mistral_api_key"],
+                      "estimated_max_cost_usd": cost["estimated_max_total_usd"], "token_cost": 0}, sort_keys=True))
     if not cost["budget_guard"]:
-        write_mistral_not_run_outputs("RETURN_G2A1_R3B_BUDGET_CHECKPOINT_REQUIRED", preflight)
+        write_not_run_outputs("RETURN_G2A1_R3B_BUDGET_CHECKPOINT_REQUIRED", preflight)
         return
-
-    if not flags["mistral_api_key"]:
-        write_mistral_not_run_outputs("RETURN_G2A1_R3B_MISTRAL_CREDENTIAL_REQUIRED", preflight)
+    if not flags["google_credentials"]:
+        write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED", preflight)
         return
-
+    if not google_config:
+        write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
+        return
     try:
         scorer = load_r3a_scorer()
         baseline_summary = baseline(scorer)
         if (baseline_summary["manual_edit_fields"], baseline_summary["manual_edit_chars"],
             baseline_summary["critical_field_errors"], baseline_summary["silent_critical_errors"],
             baseline_summary["confirmed_hallucinations"]) != (13, 69, 1, 0, 0):
-            write_mistral_not_run_outputs("RETURN_G2A1_R3B_ACTIONS_BLOCKED", preflight)
+            write_not_run_outputs("RETURN_G2A1_R3B_ACTIONS_BLOCKED", preflight)
             return
-
+        try:
+            token = os.getenv("GOOGLE_OAUTH_ACCESS_TOKEN")
+            if token:
+                preflight["google_auth_mode"] = "WORKLOAD_IDENTITY_FEDERATION_ACCESS_TOKEN"
+                preflight["google_adc_project_detected"] = os.getenv("GOOGLE_CLOUD_PROJECT")
+            else:
+                credentials, detected_project = google.auth.default(
+                    scopes=["https://www.googleapis.com/auth/cloud-platform"])
+                credentials.refresh(Request())
+                token = credentials.token
+                preflight["google_auth_mode"] = "WORKLOAD_IDENTITY_FEDERATION_ADC"
+                preflight["google_adc_project_detected"] = detected_project
+            if not token:
+                raise RuntimeError("missing_google_access_token")
+        except Exception:
+            write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
+            return
+        project, location, processor_id = (
+            os.environ["GOOGLE_CLOUD_PROJECT"], os.environ["GOOGLE_DOC_AI_LOCATION"],
+            os.environ["GOOGLE_DOC_AI_PROCESSOR_ID"])
+        if not re.fullmatch(r"[A-Za-z0-9-]+", project) or not re.fullmatch(r"[a-z0-9-]+", location) or not re.fullmatch(r"[A-Za-z0-9-]+", processor_id):
+            write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
+            return
+        root = f"projects/{project}/locations/{location}/processors/{processor_id}"
+        api_root = f"https://{location}-documentai.googleapis.com/v1"
+        headers = {"Authorization": "Bearer " + token}
+        try:
+            processor_response = requests.get(api_root + "/" + quote(root, safe="/"), headers=headers, timeout=(15, 35))
+        except requests.RequestException as error:
+            preflight["google_metadata_error_type"] = type(error).__name__
+            preflight["cost"] = cost
+            write_json("provider-preflight.json", preflight)
+            write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
+            return
+        cost["api_requests_attempted"] = 1
+        preflight["google_processor_metadata_status"] = processor_response.status_code
+        if processor_response.status_code != 200:
+            preflight["cost"] = cost
+            write_json("provider-preflight.json", preflight)
+            write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
+            return
+        processor = processor_response.json()
+        version_name = processor.get("defaultProcessorVersion", "")
+        version_id = version_name.rsplit("/", 1)[-1]
+        if (processor.get("type") != "OCR_PROCESSOR" or processor.get("state") != "ENABLED"
+                or not version_id or not version_name.endswith("/" + version_id)):
+            preflight["google_processor_type"] = processor.get("type")
+            preflight["google_processor_state"] = processor.get("state")
+            preflight["cost"] = cost
+            write_json("provider-preflight.json", preflight)
+            write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
+            return
+        try:
+            version_response = requests.get(api_root + "/" + quote(version_name, safe="/"), headers=headers, timeout=(15, 35))
+        except requests.RequestException as error:
+            preflight["google_metadata_error_type"] = type(error).__name__
+            preflight["cost"] = cost
+            write_json("provider-preflight.json", preflight)
+            write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
+            return
+        cost["api_requests_attempted"] = 2
+        preflight["google_processor_version_metadata_status"] = version_response.status_code
+        if version_response.status_code != 200 or version_response.json().get("state") != "DEPLOYED":
+            preflight["cost"] = cost
+            write_json("provider-preflight.json", preflight)
+            write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
+            return
+        preflight.update({
+            "google_processor_type": "OCR_PROCESSOR", "google_processor_version": version_id,
+            "google_handwriting_capability": "Enterprise Document OCR officially supports handwritten text",
+            "google_handwriting_input_hint": "No handwriting-specific input hint in the current v1 OCR config; English language hint used",
+            "google_language_hint": "en",
+        })
         crops, source_checks = prepare_crops()
         preflight["public_source_integrity"] = source_checks
-        preflight["crop_inputs"] = {
-            sid: {key: value for key, value in crop.items() if key != "bytes"}
-            for sid, crop in crops.items()
-        }
-
-        mistral = mistral_process(crops, os.environ["MISTRAL_API_KEY"])
-        cost["api_requests_attempted"] = mistral["attempted_pages"]
-        cost["estimated_attempted_page_cost_usd"] = round(
-            mistral["attempted_pages"] * MISTRAL_RATE / 1000, 6)
+        preflight["crop_inputs"] = {sid: {key: value for key, value in crop.items() if key != "bytes"} for sid, crop in crops.items()}
+        google = google_process(crops, token, project, location, processor_id, version_id)
+        cost["api_requests_attempted"] = 2 + google["attempted_pages"]
+        cost["estimated_attempted_page_cost_usd"] = round(google["attempted_pages"] * GOOGLE_RATE / 1000, 6)
         preflight["cost"] = cost
-        preflight["mistral_runtime_status"] = mistral["status"]
+        preflight["google_runtime_status"] = google["status"]
         write_json("provider-preflight.json", preflight)
-
-        mistral_artifact, mistral_rows = provider_result("Mistral OCR 4.1", mistral, crops)
-        for row in mistral_artifact["samples"]:
-            result = mistral_rows.get(row["sample_id"])
+        google_artifact, google_rows = provider_result("Google Enterprise Document OCR", google, crops)
+        for row in google_artifact["samples"]:
+            result = google_rows.get(row["sample_id"])
             if result and result.get("api_status") == 200:
-                scored = scorer.assess(
-                    SPECS[row["sample_id"]],
-                    {"raw_output": result["raw_output"], "lines": result["recognized_lines"]},
-                )
+                spec = SPECS[row["sample_id"]]
+                scored = scorer.assess(spec, {"raw_output": result["raw_output"], "lines": result["recognized_lines"]})
                 baseline_row = BASELINE_ROWS[row["sample_id"]]
                 row["review_score"] = scored
                 row["semantic_comparison"] = {
                     "semantic_critical_errors": scored["semantic_critical_errors"],
-                    "missing_critical_fields": [
-                        e for e in scored["semantic_critical_errors"]
-                        if e["error_type"].startswith("missing_")
-                    ],
+                    "missing_critical_fields": [e for e in scored["semantic_critical_errors"] if e["error_type"].startswith("missing_")],
                     "unsupported_hallucinations": scored["unsupported_hallucinations"],
                     "unverified_extra_content": scored["unverified_extra_content"],
                 }
                 row["manual_edit_comparison"] = {
                     "baseline_manual_edit_fields": baseline_row["manual_edit_field_count"],
-                    "mistral_manual_edit_fields": scored["manual_edit_field_count"],
+                    "google_manual_edit_fields": scored["manual_edit_field_count"],
                     "baseline_manual_edit_chars": baseline_row["manual_edit_chars"],
-                    "mistral_manual_edit_chars": scored["manual_edit_chars"],
+                    "google_manual_edit_chars": scored["manual_edit_chars"],
                     "whole_line_retype": scored["whole_line_retype_required"],
                     "reupload_required": scored["reupload_required"],
                 }
-
-        write_json("mistral-results.json", mistral_artifact)
-
-        if mistral["status"] != "complete":
-            payment_required = any(
-                row.get("api_status") == 402 or row.get("payment_required") is True
-                for row in mistral["rows"].values()
-            )
-            selection_status = (
-                "RETURN_G2A1_R3B_MISTRAL_PAYMENT_REQUIRED"
-                if payment_required else "RETURN_G2A1_R3B_ACTIONS_BLOCKED"
-            )
-            write_json("mistral-comparison.json", {
-                "status": "INCOMPLETE",
-                "request_count_attempted": mistral["attempted_pages"],
-                "payment_required": payment_required,
-                "baseline_manual_edit_fields": 13,
-                "baseline_manual_edit_chars": 69,
-            })
-            decision = {
-                "primary": "PP-OCRv6_medium",
-                "fallback": "UNKNOWN",
-                "selection_status": selection_status,
-                "google_tested": False,
-                "google_material_improvement": None,
-                "mistral_tested": mistral["attempted_pages"] > 0,
-                "mistral_material_improvement": None,
-                "baseline_manual_edit_fields": 13,
-                "final_manual_edit_fields": None,
-                "baseline_manual_edit_chars": 69,
-                "final_manual_edit_chars": None,
-                "baseline_critical_errors": 1,
-                "final_critical_errors": None,
-                "new_silent_critical_errors": None,
-                "new_hallucinations": None,
-                "estimated_api_cost_usd": cost["estimated_attempted_page_cost_usd"],
-                "reason": "Mistral did not complete all 11 fixed samples.",
-            }
+        write_json("google-results.json", google_artifact)
+        if google["status"] != "complete":
+            write_json("google-comparison.json", {"status": "INCOMPLETE", "request_count_attempted": google["attempted_pages"],
+                                                   "baseline_manual_edit_fields": 13, "baseline_manual_edit_chars": 69})
+            decision = {"primary": "PP-OCRv6_medium", "fallback": "UNKNOWN",
+                        "selection_status": "RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED",
+                        "google_tested": google["attempted_pages"] > 0, "google_material_improvement": None, "mistral_tested": False,
+                        "baseline_manual_edit_fields": 13, "final_manual_edit_fields": None,
+                        "baseline_manual_edit_chars": 69, "final_manual_edit_chars": None,
+                        "baseline_critical_errors": 1, "final_critical_errors": None,
+                        "new_silent_critical_errors": None, "new_hallucinations": None,
+                        "estimated_api_cost_usd": cost["estimated_attempted_page_cost_usd"],
+                        "reason": "Google did not complete all 11 fixed samples; Mistral not called."}
             write_json("final-fallback-decision.json", decision)
             write_json("cost-summary.json", cost)
             return
-
-        mistral_assessments = score_rows(scorer, mistral_rows)
-        mistral_summary = summarize(mistral_assessments)
-        mistral_comparison = compare_summary("MISTRAL_OCR_4_1", mistral_summary, baseline_summary)
-        write_json("mistral-comparison.json", mistral_comparison)
-
-        if mistral_comparison["material_improvement"]:
-            fallback = "MISTRAL_OCR_4_1"
-            final_summary = mistral_summary
-            reason = mistral_comparison["reason"]
+        google_assessments = score_rows(scorer, google_rows)
+        google_summary = summarize(google_assessments)
+        google_comparison = compare_summary("GOOGLE_ENTERPRISE_DOCUMENT_OCR", google_summary, baseline_summary)
+        write_json("google-comparison.json", google_comparison)
+        if google_comparison["material_improvement"]:
+            final_provider, final_comparison, mistral_tested = "GOOGLE_ENTERPRISE_DOCUMENT_OCR", google_comparison, False
+        elif not flags["mistral_api_key"]:
+            decision = {"primary": "PP-OCRv6_medium", "fallback": "UNKNOWN",
+                        "selection_status": "RETURN_G2A1_R3B_MISTRAL_CREDENTIAL_REQUIRED",
+                        "google_tested": True, "google_material_improvement": False, "mistral_tested": False,
+                        "mistral_material_improvement": None, "baseline_manual_edit_fields": 13,
+                        "final_manual_edit_fields": google_summary["manual_edit_fields"],
+                        "baseline_manual_edit_chars": 69, "final_manual_edit_chars": google_summary["manual_edit_chars"],
+                        "baseline_critical_errors": 1, "final_critical_errors": google_summary["critical_field_errors"],
+                        "new_silent_critical_errors": google_summary["silent_critical_errors"],
+                        "new_hallucinations": google_summary["confirmed_hallucinations"],
+                        "estimated_api_cost_usd": cost["estimated_attempted_page_cost_usd"],
+                        "reason": "Google was insufficient; Mistral credential is absent and no second provider was called."}
+            write_json("final-fallback-decision.json", decision)
+            write_json("cost-summary.json", cost)
+            return
         else:
-            fallback = "NONE"
-            final_summary = baseline_summary
-            reason = "Mistral OCR 4.1 did not materially improve the 11 hard cases without added fidelity risk."
-
+            mistral = mistral_process(crops, os.environ["MISTRAL_API_KEY"])
+            cost["api_requests_attempted"] = 2 + google["attempted_pages"] + mistral["attempted_pages"]
+            cost["estimated_attempted_page_cost_usd"] = round(
+                google["attempted_pages"] * GOOGLE_RATE / 1000 + mistral["attempted_pages"] * MISTRAL_RATE / 1000, 6)
+            preflight["cost"] = cost
+            preflight["mistral_runtime_status"] = mistral["status"]
+            write_json("provider-preflight.json", preflight)
+            mistral_artifact, mistral_rows = provider_result("Mistral OCR 4.1", mistral, crops, google_rows)
+            for row in mistral_artifact["samples"]:
+                result = mistral_rows.get(row["sample_id"])
+                if result and result.get("api_status") == 200:
+                    scored = scorer.assess(SPECS[row["sample_id"]], {"raw_output": result["raw_output"], "lines": result["recognized_lines"]})
+                    baseline_row = BASELINE_ROWS[row["sample_id"]]
+                    row["review_score"] = scored
+                    row["semantic_comparison"] = {
+                        "semantic_critical_errors": scored["semantic_critical_errors"],
+                        "missing_critical_fields": [e for e in scored["semantic_critical_errors"] if e["error_type"].startswith("missing_")],
+                        "unsupported_hallucinations": scored["unsupported_hallucinations"],
+                        "unverified_extra_content": scored["unverified_extra_content"],
+                    }
+                    row["manual_edit_comparison"] = {
+                        "baseline_manual_edit_fields": baseline_row["manual_edit_field_count"],
+                        "mistral_manual_edit_fields": scored["manual_edit_field_count"],
+                        "baseline_manual_edit_chars": baseline_row["manual_edit_chars"],
+                        "mistral_manual_edit_chars": scored["manual_edit_chars"],
+                        "whole_line_retype": scored["whole_line_retype_required"],
+                        "reupload_required": scored["reupload_required"],
+                    }
+            write_json("mistral-results.json", mistral_artifact)
+            if mistral["status"] != "complete":
+                write_json("mistral-comparison.json", {"status": "INCOMPLETE", "request_count_attempted": mistral["attempted_pages"],
+                                                       "baseline_manual_edit_fields": google_summary["manual_edit_fields"],
+                                                       "baseline_manual_edit_chars": google_summary["manual_edit_chars"]})
+                decision = {"primary": "PP-OCRv6_medium", "fallback": "UNKNOWN",
+                            "selection_status": "RETURN_G2A1_R3B_ACTIONS_BLOCKED",
+                            "google_tested": True, "google_material_improvement": False, "mistral_tested": False,
+                            "baseline_manual_edit_fields": 13, "final_manual_edit_fields": None,
+                            "baseline_manual_edit_chars": 69, "final_manual_edit_chars": None,
+                            "baseline_critical_errors": 1, "final_critical_errors": None,
+                            "new_silent_critical_errors": None, "new_hallucinations": None,
+                            "estimated_api_cost_usd": cost["estimated_attempted_page_cost_usd"],
+                            "reason": "Mistral did not complete all 11 fixed samples."}
+                write_json("final-fallback-decision.json", decision)
+                write_json("cost-summary.json", cost)
+                return
+            mistral_assessments = score_rows(scorer, mistral_rows)
+            mistral_summary = summarize(mistral_assessments)
+            mistral_comparison = compare_summary("MISTRAL_OCR_4_1", mistral_summary, baseline_summary)
+            mistral_comparison["google_material_improvement"] = False
+            mistral_comparison["google_manual_edit_fields"] = google_summary["manual_edit_fields"]
+            mistral_comparison["google_manual_edit_chars"] = google_summary["manual_edit_chars"]
+            write_json("mistral-comparison.json", mistral_comparison)
+            if mistral_comparison["material_improvement"]:
+                final_provider, final_comparison, mistral_tested = "MISTRAL_OCR_4_1", mistral_comparison, True
+            else:
+                final_provider, final_comparison, mistral_tested = "NONE", mistral_comparison, True
+        final_summary = (google_summary if final_provider == "GOOGLE_ENTERPRISE_DOCUMENT_OCR"
+                         else mistral_summary if final_provider == "MISTRAL_OCR_4_1" else baseline_summary)
         decision = {
-            "primary": "PP-OCRv6_medium",
-            "fallback": fallback,
-            "selection_status": "complete",
-            "google_tested": False,
-            "google_material_improvement": None,
-            "google_status": "DEFERRED_DUE_TO_BILLING_PREPAYMENT_FRICTION",
-            "mistral_tested": True,
-            "mistral_material_improvement": mistral_comparison["material_improvement"],
-            "baseline_manual_edit_fields": 13,
-            "final_manual_edit_fields": final_summary["manual_edit_fields"],
-            "baseline_manual_edit_chars": 69,
-            "final_manual_edit_chars": final_summary["manual_edit_chars"],
-            "baseline_critical_errors": 1,
-            "final_critical_errors": final_summary["critical_field_errors"],
+            "primary": "PP-OCRv6_medium", "fallback": final_provider, "selection_status": "complete",
+            "google_tested": True, "google_material_improvement": google_comparison["material_improvement"],
+            "mistral_tested": mistral_tested,
+            "mistral_material_improvement": final_provider == "MISTRAL_OCR_4_1" if mistral_tested else None,
+            "baseline_manual_edit_fields": 13, "final_manual_edit_fields": final_summary["manual_edit_fields"],
+            "baseline_manual_edit_chars": 69, "final_manual_edit_chars": final_summary["manual_edit_chars"],
+            "baseline_critical_errors": 1, "final_critical_errors": final_summary["critical_field_errors"],
             "new_silent_critical_errors": final_summary["silent_critical_errors"],
             "new_hallucinations": final_summary["confirmed_hallucinations"],
             "estimated_api_cost_usd": cost["estimated_attempted_page_cost_usd"],
-            "reason": reason,
+            "reason": final_comparison["reason"] if final_provider != "NONE" else
+                      "Google and Mistral did not materially improve the 11 hard cases without added fidelity risk.",
         }
         write_json("final-fallback-decision.json", decision)
         write_json("cost-summary.json", cost)
-        print(json.dumps({
-            "execution_status": "complete",
-            "fallback": fallback,
-            "mistral_material_improvement": mistral_comparison["material_improvement"],
-            "manual_edit_fields": final_summary["manual_edit_fields"],
-            "manual_edit_chars": final_summary["manual_edit_chars"],
-            "estimated_api_cost_usd": decision["estimated_api_cost_usd"],
-        }, sort_keys=True))
+        print(json.dumps({"execution_status": "complete", "fallback": final_provider,
+                          "google_material_improvement": google_comparison["material_improvement"],
+                          "mistral_tested": mistral_tested, "manual_edit_fields": final_summary["manual_edit_fields"],
+                          "manual_edit_chars": final_summary["manual_edit_chars"],
+                          "estimated_api_cost_usd": decision["estimated_api_cost_usd"]}, sort_keys=True))
     except Exception as error:
+        # Exception strings may contain request metadata; record only the type and preserve API outputs.
         preflight["execution_error_type"] = type(error).__name__
         write_json("provider-preflight.json", preflight)
-        write_json("final-fallback-decision.json", {
-            "primary": "PP-OCRv6_medium",
-            "fallback": "UNKNOWN",
-            "selection_status": "RETURN_G2A1_R3B_ACTIONS_BLOCKED",
-            "google_tested": False,
-            "mistral_tested": bool((ART / "mistral-results.json").exists()),
-            "baseline_manual_edit_fields": 13,
-            "final_manual_edit_fields": None,
-            "baseline_manual_edit_chars": 69,
-            "final_manual_edit_chars": None,
-            "baseline_critical_errors": 1,
-            "final_critical_errors": None,
-            "new_silent_critical_errors": None,
-            "new_hallucinations": None,
-            "estimated_api_cost_usd": cost["estimated_attempted_page_cost_usd"],
-            "reason": "benchmark stopped after an execution exception",
-            "error_type": type(error).__name__,
-        })
-        write_json("cost-summary.json", cost)
-        print(json.dumps({
-            "execution_status": "RETURN_G2A1_R3B_ACTIONS_BLOCKED",
-            "error_type": type(error).__name__,
-        }, sort_keys=True))
+        if not (ART / "google-results.json").exists():
+            write_not_run_outputs("RETURN_G2A1_R3B_ACTIONS_BLOCKED", preflight)
+        else:
+            if not (ART / "google-comparison.json").exists():
+                write_json("google-comparison.json", {
+                    "status": "INCOMPLETE", "reason": "scoring_or_execution_exception",
+                    "error_type": type(error).__name__,
+                })
+            write_json("final-fallback-decision.json", {
+                "primary": "PP-OCRv6_medium", "fallback": "UNKNOWN",
+                "selection_status": "RETURN_G2A1_R3B_ACTIONS_BLOCKED",
+                "google_tested": True, "google_material_improvement": None,
+                "mistral_tested": bool((ART / "mistral-results.json").exists()),
+                "mistral_material_improvement": None, "baseline_manual_edit_fields": 13,
+                "final_manual_edit_fields": None, "baseline_manual_edit_chars": 69,
+                "final_manual_edit_chars": None, "baseline_critical_errors": 1,
+                "final_critical_errors": None, "new_silent_critical_errors": None,
+                "new_hallucinations": None, "estimated_api_cost_usd": cost["estimated_attempted_page_cost_usd"],
+                "reason": "benchmark stopped after an execution exception; existing provider outputs are preserved.",
+                "error_type": type(error).__name__,
+            })
+            write_json("cost-summary.json", cost)
+        print(json.dumps({"execution_status": "RETURN_G2A1_R3B_ACTIONS_BLOCKED",
+                          "error_type": type(error).__name__}, sort_keys=True))
         raise SystemExit(1)
 
 
