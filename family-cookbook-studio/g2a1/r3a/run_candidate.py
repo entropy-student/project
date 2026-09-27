@@ -49,6 +49,12 @@ def lines_from(obj,candidate):
   if not lines and isinstance(data.get("markdown"),str):
    lines=[{"text":x,"confidence":None,"source_coordinates":None} for x in data["markdown"].splitlines() if x.strip()]
  return lines,data
+def exception_chain(exc):
+ chain=[]; seen=set(); current=exc
+ while current is not None and id(current) not in seen:
+  seen.add(id(current)); chain.append(type(current).__name__+": "+str(current)[:700])
+  current=current.__cause__ or current.__context__
+ return chain
 def weight_inventory():
  files=[]
  for root in (Path.home()/".paddlex",Path.home()/".cache"/"huggingface",Path.home()/".paddleocr"):
@@ -80,7 +86,7 @@ def main(key):
    from paddleocr import PaddleOCRVL
    model=PaddleOCRVL(pipeline_version="v1.6",engine="transformers",device="cpu")
  except Exception as exc:
-  result={"gate":"G2A1-R3A","candidate":spec,"runtime":{"status":"runtime_blocked","initialization_error":type(exc).__name__+": "+str(exc)[:1000],
+  result={"gate":"G2A1-R3A","candidate":spec,"runtime":{"status":"runtime_blocked","initialization_error":type(exc).__name__+": "+str(exc)[:1000],"exception_chain":exception_chain(exc),
      "python":sys.version,"runner":platform.platform(),"api_tokens":0,"api_calls":0},"sample_count":0,"samples":[]}
   file="ppocrv6-results.json" if key=="ppocrv6" else "paddleocr-vl-results.json"
   (ART/file).write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
