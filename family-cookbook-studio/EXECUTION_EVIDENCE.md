@@ -402,3 +402,27 @@ Review burden is separated by input type. The `LIGHT_REVIEW` page classification
 ### Final main source recheck
 
 - NEW_PROVEN_R3B: At final readback, GitHub main HEAD was 0da0ff21823d6cade2b34d9ab623fc2be92e85a8. The latest main copies of REVIEWER_HANDOFF.md, DOCUMENT_INDEX.md, G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md, G2A1_R3B_API_FALLBACK_BENCHMARK.md, and G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md were re-read; their blob SHAs were respectively 1c26dbd2fbf4a8163a5adb1faafd16b8d1bcad10, 1f5bbe96dac1e85fb86e900f71bb28e78ce2c995, d781f7386e94daf96d50f6a94a82190e15a9c090, ab439a912bc3cf7c7545c95d5ef445560418b359, and 6814a660428aea27e152eefb0f5fb9ef00efb864. They match the R3B source snapshot; this Gate branch was not merged/rebased.
+
+
+## G2A1-R3B Mistral Free-Mode Probe — 2026-09-27
+
+Status: `RETURN_G2A1_R3B_MISTRAL_FREE_MODE_RATE_LIMIT_BLOCKED`
+
+Accepted Reviewer facts:
+- Actions run: `36303206653` initial Mistral-first probe.
+- Retry/backoff Actions run: `36303291445`.
+- Fixed hard-case set: 11 public/non-private handwriting crops.
+- `MISTRAL_API_KEY` presence: YES; secret value not exposed.
+- First Mistral OCR request returned HTTP 429 `Rate limit exceeded`.
+- Backoff retry sequence: 15s, 30s, 60s, 90s; all attempts remained HTTP 429.
+- HTTP 402 Payment Required: NOT observed.
+- Successful Mistral OCR pages: 0.
+- OCR result/scoring evidence: none; `FALLBACK` remains `UNKNOWN`.
+- No customer/private data used.
+- Standard-list-price equivalent for one attempted page was estimated as USD 0.004, but actual provider billing readback is UNKNOWN and no successful OCR page was processed.
+- Owner preference is to return to Google rather than enable paid Mistral access merely to complete this benchmark.
+
+Interpretation:
+- Mistral OCR 4.1 is not rejected for recognition quality; Free-mode OCR availability/rate limit prevented evaluation.
+- Do not classify this as `FALLBACK=NONE`.
+- Google Document AI technical integration remains viable and is restored as the next R3B execution path after Billing activation.
