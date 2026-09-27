@@ -2765,7 +2765,7 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Proposed design only: separate hidden, truthful canary SKU, quantity 1; JPY 500 is a proposed gross cap, not a sealed checkout total. Exact amount remains unsealed until SKU truth and shipping/checkout total are known. A distinct consenting buyer is required. WooCommerce Admin `Refund via PayPal` is the proposed one-time full-refund path after provider/local reconciliation.
 - The official PPCP automatic connection path requires Owner-interactive PayPal login/consent to the intended verified Live merchant; no manual credential copying. Any webhook change remains a separate Reviewer-authorized operation.
 - No product/order/payment/refund/email/provider action, no cart/session state change, and no DNS/Caddy/Compose/VPS write occurred. No Secret/credential value was emitted. `SOFT_LAUNCH_AUTHORIZED=NO`.
-- GitHub Evidence appended and committed: `5f399c7d420662e1422c768db9fffcfe8623c406`. Evidence/Handoff readback is being verified; no Reviewer-owned file was modified.
+- GitHub Evidence final append/readback commit: `69500c70f54a21e8fe1677d0943450e1b5692ff4`; prior first append: `5f399c7d420662e1422c768db9fffcfe8623c406`. Both Evidence and Handoff were fetched from GitHub; each K7 section appears exactly once and the required result/STOP markers read back. No Reviewer-owned file was modified.
 - Next: Reviewer review and direction for populated Checkout readback, truthful canary SKU/shipping total, and email transport qualification. Do not enable Live or execute a payment canary.
 
 `STOP_AT_REVIEWER=YES`
