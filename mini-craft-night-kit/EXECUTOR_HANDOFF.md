@@ -2602,3 +2602,14 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - No Caddyfile/Admin load/adapt/reload/restart, DNS, cloudflared, firewall, network, Compose, application, product, indexing, payment, or Secret mutation occurred. No remote temp artifact was created. The one-use local PowerShell SSH wrapper was deleted and locally verified absent.
 - Counters: `SSH_ATTEMPTS=1`, `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`, `PAYMENT_ACTIONS=0`, `SECRET_VALUE_OR_HASH_ACCESS=0`.
 - Fresh evidence appended to `EXECUTION_EVIDENCE.md`. `STOP_AT_REVIEWER=YES`; no retry or ingress mutation.
+
+
+## Current Executor Handoff — K6 Phase F-R1R5
+
+- Gate: `K6_PHASE_F_R1R5_BEHAVIORAL_EDGE_TEST_PRESERVATION_AND_CANDIDATE_ADAPT`.
+- Result: `RETURN_REVIEWER_F_R1R5_SSH_WRAPPER_INPUT_PIPE_CLOSED`; `STOP_AT_REVIEWER=YES`.
+- Local identity-file path and public fingerprint matched the Shared VPS Handoff; all three recorded host-key pins were present in normal `known_hosts`. Fresh Google DoH A/AAAA/CNAME checks were NXDOMAIN.
+- Exactly one strict SSH native process was started. The child stdin pipe was closed before the local wrapper could send the read-only payload; native exit status and stderr were not captured. Consequently host-key presentation/match, remote identity, remote payload execution and all fresh remote runtime/Caddy evidence remain unverified. No retry was made.
+- No candidate was created/adapted from verified evidence. The bounded payload had no write actions; no Caddy, DNS, network, Compose, app, product, payment or Secret write was authorized or present. Remote execution outcome is explicitly unverified.
+- The local one-use PowerShell wrapper was deleted and its absence verified. GitHub Evidence update commit: `6a8863672d5b75ca4dafb96f8b0fa917cc4dc77e`.
+- Next: Reviewer review and a new decision if recovery is desired; this Gate is not retried here. `STOP_AT_REVIEWER=YES`.
