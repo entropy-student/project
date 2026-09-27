@@ -1,0 +1,46 @@
+{
+  "orderKey": "synthetic-order-g2b-0001",
+  "canonical": true,
+  "status": "failed",
+  "createdBy": "g2br1-codex-chatgpt",
+  "gate": "G2BR1_REAL_AI_GENERATION_CLOSURE",
+  "fixtureId": "synthetic-mira-vale-2026-09",
+  "codexExecRunCount": 3,
+  "successfulGenerationCount": 0,
+  "retryCount": 2,
+  "retryCategory": "TRANSIENT_RUNTIME",
+  "modelRuns": [
+    {
+      "runNumber": 1,
+      "executionMode": "CODEX_CHATGPT_LOGIN",
+      "codexCliVersion": "0.155.0-alpha.16.3",
+      "status": "FAILED",
+      "result": "RETURN_CODEX_EXEC_FAILED",
+      "providerDiagnostic": "NOT_RETAINED_BY_INITIAL_WRAPPER"
+    },
+    {
+      "runNumber": 2,
+      "executionMode": "CODEX_CHATGPT_LOGIN",
+      "codexCliVersion": "0.155.0-alpha.16.3",
+      "status": "FAILED",
+      "result": "RETURN_CODEX_EXEC_FAILED",
+      "providerDiagnostic": {
+        "exitCode": 1,
+        "kind": "NETWORK_OR_TRANSIENT"
+      }
+    },
+    {
+      "runNumber": 3,
+      "executionMode": "CODEX_CHATGPT_LOGIN",
+      "codexCliVersion": "0.149.1",
+      "status": "FAILED",
+      "result": "RETURN_CODEX_EXEC_FAILED",
+      "providerDiagnostic": {
+        "exitCode": 1,
+        "kind": "NETWORK_OR_TRANSIENT"
+      }
+    }
+  ],
+  "lastFailureCode": "RETURN_CODEX_EXEC_FAILED",
+  "lastRetryReason": "TRANSIENT_RUNTIME"
+}

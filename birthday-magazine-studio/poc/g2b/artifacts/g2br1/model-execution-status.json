@@ -1,0 +1,55 @@
+{
+  "gate": "G2BR1_REAL_AI_GENERATION_CLOSURE",
+  "result": "RETURN_CODEX_EXEC_FAILED",
+  "executionMode": "CODEX_CHATGPT_LOGIN",
+  "codexCliVersion": "0.149.1",
+  "realModelRunCount": 3,
+  "codexExecInvocationCount": 3,
+  "successfulGenerationCount": 0,
+  "successfulStructuredResponseCount": 0,
+  "realAiCall": "NO_SUCCESSFUL_RESPONSE",
+  "schemaConstrained": true,
+  "apiKeyUsed": false,
+  "retryCategory": "TRANSIENT_RUNTIME",
+  "providerDiagnostic": {
+    "kind": "NETWORK_OR_TRANSIENT",
+    "exitCode": 1
+  },
+  "outputSha256": null,
+  "sessionOrAccountIdentifiersRecorded": false,
+  "attempts": [
+    {
+      "runNumber": 1,
+      "executionMode": "CODEX_CHATGPT_LOGIN",
+      "codexCliVersion": "0.155.0-alpha.16.3",
+      "status": "FAILED",
+      "result": "RETURN_CODEX_EXEC_FAILED",
+      "providerDiagnostic": "NOT_RETAINED_BY_INITIAL_WRAPPER"
+    },
+    {
+      "runNumber": 2,
+      "executionMode": "CODEX_CHATGPT_LOGIN",
+      "codexCliVersion": "0.155.0-alpha.16.3",
+      "status": "FAILED",
+      "result": "RETURN_CODEX_EXEC_FAILED",
+      "providerDiagnostic": {
+        "exitCode": 1,
+        "kind": "NETWORK_OR_TRANSIENT"
+      }
+    },
+    {
+      "runNumber": 3,
+      "executionMode": "CODEX_CHATGPT_LOGIN",
+      "codexCliVersion": "0.149.1",
+      "status": "FAILED",
+      "result": "RETURN_CODEX_EXEC_FAILED",
+      "providerDiagnostic": {
+        "exitCode": 1,
+        "kind": "NETWORK_OR_TRANSIENT"
+      }
+    }
+  ],
+  "retryCount": 2,
+  "modelIdentifier": null,
+  "modelIdentifierSource": "not_exposed_by_failed_codex_exec"
+}

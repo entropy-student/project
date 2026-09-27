@@ -1,6 +1,62 @@
 # Birthday Magazine Studio — Execution Evidence
 
-## Current Gate — G2B Local AI/PDF Solution Proof
+## Current Gate — G2BR1 Real AI Generation Closure
+
+- **Gate:** G2BR1_REAL_AI_GENERATION_CLOSURE
+- **Execution date:** 2026-09-27
+- **Branch:** codex/birthday-magazine-g2br1-real-ai-closure
+- **Base:** GitHub main at c22f1478973bcee11097c2473ee726925613fc81
+- **Result:** RETURN_CODEX_EXEC_FAILED
+**Stop point:** STOP_AT_REVIEWER=YES; G3 not started.
+
+### Result separation
+
+| Boundary | Result | Evidence |
+|---|---|---|
+| Existing G2B intake, photos, schema and renderer | **REUSED** | No fixture or renderer rebuild; accepted baseline remains under poc/g2b/fixtures/ and poc/g2b/src/proof.mjs. |
+| ChatGPT login preflight | **PASS** | Both local Codex CLI installations reported ChatGPT login. A first wrapper preflight issue (login text was on stderr) was corrected before any model process started. |
+| Codex execution | **RETURN_CODEX_EXEC_FAILED** | Three codex exec child processes started, each exited with code 1; the 3-attempt cap is exhausted. |
+| Structured AI output | **NOT PRODUCED** | Successful structured responses = 0; no generated-content.json was created. |
+| Grounding and dynamic modules | **NOT RUN** | No successful AI JSON existed to audit. |
+| Actual AI PDF and deterministic QA | **NOT RUN** | No G2BR1 PDF or G2BR1 screenshots were produced. The prior G2B reference PDF is not AI output and is not counted here. |
+| Duplicate-generation guard | **PASS — failed-job duplicate path only** | A later invocation was rejected before a fourth codex exec; the canonical record remained at 3 invocations and 0 successful generations. This does not pass the overall G2BR1 Gate. |
+
+### Codex attempt record
+
+- Authentication mode was the local ChatGPT login; OPENAI_API_KEY was absent, no API key or account/session identifier was written, and no extra credits were purchased or reset.
+- Attempt 1 used Codex CLI 0.155.0-alpha.16.3; it exited nonzero. The initial wrapper did not retain diagnostic output.
+- Attempt 2 used Codex CLI 0.155.0-alpha.16.3; it exited 1. The sanitized diagnostic classifier recorded NETWORK_OR_TRANSIENT.
+- Attempt 3 used Codex CLI 0.149.1; it exited 1. The sanitized diagnostic classifier recorded NETWORK_OR_TRANSIENT.
+- No model identifier was exposed because no Codex process returned a final response.
+- The safe diagnostic is a category, not a verified root cause. A TCP check to chatgpt.com:443 succeeded, which does not establish connectivity to the Codex inference route.
+- The initial runner preflight rejection was corrected before model execution and did not start a model process. The three process starts above are the complete bounded attempt count.
+- No retry remains within this Gate. No purchase or reset was made.
+
+### Local implementation and durable evidence
+
+The branch adds the Codex provider wrapper, G2BR1 orchestration runner, shared canonical-job helper, and G2BR1-mode renderer path. The runner sends the synthetic prompt under --output-schema, strips API-key/endpoint overrides from the child environment, rejects duplicate canonical jobs before provider construction, and never falls back to the human-authored reference fixture for a G2BR1 pass.
+
+Sanitized files retained under poc/g2b/artifacts/g2br1/:
+
+- content-schema.json and synthetic-generation-prompt.txt — inputs to the attempted structured generation.
+- model-execution-status.json — CLI versions, invocation count, sanitized outcomes and no-output status.
+- jobs/<sha256>.json — one synthetic canonical job, three failed process attempts, zero successful generations.
+- idempotency-report.json — follow-up duplicate rejected before a fourth Codex process.
+
+The branch has no G2BR1 generated JSON, grounding report, QA report, PDF or screenshots because the provider did not return structured content. The G2B human-authored reference JSON and PDF remain only historical baseline evidence below.
+
+### Forbidden-action record
+
+No payment, PayPal, API key, AI imagery, real customer data, production email, VPS/public deployment, Cloudflare/Shared Infra change, paid purchase, or G3 work occurred. The product contract and Reviewer-owned handoff were not edited.
+
+### GitHub review handoff
+
+- Branch: codex/birthday-magazine-g2br1-real-ai-closure, based on main commit c22f1478973bcee11097c2473ee726925613fc81.
+- Initial implementation/evidence commit: 8de30bfd295a916e8f620fe290b418490746b66d.
+- PR: [#40 — G2BR1 bounded Codex execution return](https://github.com/entropy-student/project/pull/40), open against main and unmerged. The PR head contains the final Evidence/Handoff reconciliation.
+- Reviewer remains the next decision point; no merge or G3 work is authorized in this execution.
+
+## Historical Gate — G2B Local AI/PDF Solution Proof (accepted partial baseline)
 
 **Gate:** G2B_LOCAL_AI_PDF_SOLUTION_PROOF  
 **Execution date:** 2026-09-27  

@@ -1,0 +1,12 @@
+{
+  "result": "PASS_DUPLICATE_REJECTED_BEFORE_CODEX_EXEC",
+  "jobKey": "synthetic-order-g2b-0001",
+  "canonicalJobs": 1,
+  "firstInvocationStatus": "failed",
+  "successfulGenerationForJob": 0,
+  "codexExecRunCountForCanonicalJob": 3,
+  "duplicateInvocation": "REJECTED_BEFORE_CODEX_EXEC",
+  "duplicateInvocationCodexExecRunCount": 0,
+  "maxAllowedRealModelRuns": 3,
+  "rejectionReason": "RETURN_CODEX_EXEC_FAILED"
+}
