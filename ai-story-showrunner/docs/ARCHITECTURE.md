@@ -136,9 +136,15 @@ episodes/<episode_id>/
 不是一个名词，而是：
 
 ```text
-Signal
+Topic Entry Mode
++ X Domain
++ Human Process Family
++ Observed Paradox / WHY
++ Human Tension
++ Meaning Fingerprint
 + Why Now
 + Human Problem / Stakes
++ AI/Domain Changed Process
 + Causal Mechanism
 + Curiosity Gap
 + Story Seed
@@ -231,11 +237,13 @@ BLOCKED_BY_REAL_INPUT
 
 负责“讲什么”。默认先读取当日 Topic Calendar；只有用户显式覆盖时才跳过日历：
 
-- signal intake；
-- history / duplication check；
+- human-interest + domain signal intake；
+- X Domain / Human Process decomposition；
+- paradox / WHY discovery；
+- Human Tension / Meaning Fingerprint；
+- history / D1–D5 duplication check；
 - why-now；
-- audience translation；
-- human tension；
+- audience translation / changed-process mapping；
 - knowledge core；
 - topic hard-gate / ranking / rejection；
 - DISCOVERY / TRUST / SOLUTION content job；
@@ -278,18 +286,33 @@ Antigravity 是受限 Executor，不得倒过来决定故事、镜头、角色�
 
 This is a reusable boundary between domain research and story construction.
 
-Generic input:
+Generic input may start from either side:
 ```text
+Human-interest situation / X
+or
 Domain signal / concept / event
 ```
 
-Generic output:
+Default generic output:
+```text
+X / Human Situation
+→ Human Process Family
+→ Paradox / WHY
+→ Human Tension / Meaning Fingerprint
+→ Domain Changed Process
+→ Human Consequence / Stakes
+→ Causal Mechanism
+→ Storyable Situation
+```
+
+Strong domain-first signals use the compatibility route:
 ```text
 Domain Change / Rule
+→ Audience Translation
+→ Human Process / WHY / Meaning
 → Human Consequence
-→ Conflict
-→ Storyable Situation
 → Causal Mechanism
+→ Storyable Situation
 ```
 
 The core does not assume AI.
