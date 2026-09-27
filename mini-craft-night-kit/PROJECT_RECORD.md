@@ -65,11 +65,16 @@ Target Host Reality, Secret, Storage, deployment-manifest, Evidence, rollback, r
 Owner-operation rules, canonical Governance controls unless a current Reviewer decision explicitly
 sets a bounded stricter override.
 
-Formal reconciliation:
+Formal governance reconciliation:
 `docs/REVIEWER_DECISION_K6_GOVERNANCE_RECONCILIATION_PASS.md`.
 
+Latest project-document reconciliation:
+`docs/REVIEWER_DECISION_K7_R1_OWNER_KEY_ENTRY_CONFIRMED_AND_PROJECT_DOC_RECONCILIATION.md`.
 
-## Current Truth
+
+## Historical Local-Phase Truth — retained for chronology
+
+The block below describes the earlier local/K4-era state and is **not** the current project status. Use the top `CURRENT PROJECT STATUS` block and `REVIEWER_HANDOFF.md` for current truth.
 
 ```text
 STRATEGIC_PIVOT_TO_KADENCE_SINGLE_PRODUCT=APPROVED
