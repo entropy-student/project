@@ -22,6 +22,7 @@
 | `G2A1_R3B_API_FALLBACK_BENCHMARK.md` | Google-first / Mistral-second hard-case fallback benchmark | **RETURNED; Google credential required** |
 | `G2A1_R3B_GOOGLE_PROVIDER_SETUP.md` | Google Document AI WIF/processor setup history | **DEFERRED; technical integration proven, Billing prepayment not accepted for current test** |
 | `G2A1_R3B_MISTRAL_PROVIDER_SETUP.md` | Mistral Studio/API-key setup + Free-mode probe | **DEFERRED; persistent HTTP 429 before OCR** |
+| `G2A1_R3B_BAIDU_PROVIDER_SETUP.md` | Baidu Handwriting OCR free-quota credential setup | **CURRENT OWNER ACTION** |
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **NEXT / HOLD** |
 | `ACQUISITION_GROWTH_PLAN.md` | Demand/acquisition validation plan | Supporting plan; not transaction evidence |
 
@@ -42,5 +43,6 @@
 - Diagnostic run `36301652196` reached Document AI `:process` and returned `BILLING_DISABLED`; `FALLBACK=UNKNOWN` remains correct.
 - Mistral Free-mode probe is blocked by persistent HTTP 429 even after bounded backoff; no OCR quality result exists.
 - Owner preference is to return to Google rather than enable paid Mistral access.
-- Current R3B action is Google Billing activation for `family-cookbook-ocr-test`, followed by the restored WIF benchmark.
+- Before Google Billing activation, Owner authorized Baidu Handwriting OCR free-quota benchmarking on the same fixed 11 cases.
+- Current R3B action is to configure Baidu API Key + Secret Key in GitHub Actions Secrets; paid Baidu mode is not authorized.
 - Real customer recipe images, family stories, names, addresses, payment credentials, Secrets and private order identifiers must not be stored in ordinary project documentation.
