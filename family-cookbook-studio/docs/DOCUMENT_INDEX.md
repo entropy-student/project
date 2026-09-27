@@ -17,13 +17,13 @@
 | `G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md` | OCR runtime + Family WP/Woo testbed remediation/completion | **RETURNED; local resource blocked** |
 | `G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md` | OCR + Family WP/Woo PoC on isolated GitHub Actions runner | **RETURNED; component feasibility accepted, OCR observations accepted** |
 | `G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md` | Target language + review UX decision | **OWNER DECISIONS RESOLVED** |
-| `G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md` | Free/local primary selection then bounded API fallback selection | **R3A PASS; R3B CHECKPOINT** |
+| `G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md` | Local primary + bounded second-opinion selection | **PASS** |
 | `G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md` | External OCR credential/budget/data boundary | **OWNER APPROVED** |
-| `G2A1_R3B_API_FALLBACK_BENCHMARK.md` | Google-first / Mistral-second hard-case fallback benchmark | **RETURNED; Google credential required** |
+| `G2A1_R3B_API_FALLBACK_BENCHMARK.md` | Hard-case provider benchmark history | **PASS via Baidu critical-second-opinion decision** |
 | `G2A1_R3B_GOOGLE_PROVIDER_SETUP.md` | Google Document AI WIF/processor setup history | **DEFERRED; technical integration proven, Billing prepayment not accepted for current test** |
 | `G2A1_R3B_MISTRAL_PROVIDER_SETUP.md` | Mistral Studio/API-key setup + Free-mode probe | **DEFERRED; persistent HTTP 429 before OCR** |
-| `G2A1_R3B_BAIDU_PROVIDER_SETUP.md` | Baidu Handwriting OCR free-quota credential setup | **CURRENT OWNER ACTION** |
-| `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **NEXT / HOLD** |
+| `G2A1_R3B_BAIDU_PROVIDER_SETUP.md` | Baidu Handwriting OCR free-quota setup/history | **PROVEN / 11 OF 11 CALLS SUCCESSFUL** |
+| `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **CURRENT GATE** |
 | `ACQUISITION_GROWTH_PLAN.md` | Demand/acquisition validation plan | Supporting plan; not transaction evidence |
 
 ## Governance rules
@@ -43,6 +43,8 @@
 - Diagnostic run `36301652196` reached Document AI `:process` and returned `BILLING_DISABLED`; `FALLBACK=UNKNOWN` remains correct.
 - Mistral Free-mode probe is blocked by persistent HTTP 429 even after bounded backoff; no OCR quality result exists.
 - Owner preference is to return to Google rather than enable paid Mistral access.
-- Before Google Billing activation, Owner authorized Baidu Handwriting OCR free-quota benchmarking on the same fixed 11 cases.
-- Current R3B action is to configure Baidu API Key + Secret Key in GitHub Actions Secrets; paid Baidu mode is not authorized.
+- Baidu Handwriting OCR free-quota benchmark completed on all 11 fixed hard cases in Actions run `36305680927`.
+- Baidu is rejected as whole-transcript replacement but accepted as critical-field second opinion: it recovered GH04 `8 eggs` while whole-transcript edit burden worsened.
+- Final G2A1 OCR contract: PP-OCRv6_medium primary + Baidu critical-field second opinion + one consolidated manual-edit review.
+- G2A1 is PASS. Current Gate is G2A2 MVP Product Contract Freeze.
 - Real customer recipe images, family stories, names, addresses, payment credentials, Secrets and private order identifiers must not be stored in ordinary project documentation.
