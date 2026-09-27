@@ -1,7 +1,7 @@
 # G2A1-R3B — Bounded API Fallback Owner Checkpoint
 
 > Reviewer / Owner checkpoint  
-> Status: **CURRENT / OWNER APPROVAL REQUIRED**  
+> Status: **OWNER APPROVED 2026-09-27 / EXECUTION MOVED TO R3B BENCHMARK**  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)  
 > Accepted R3A primary: `PP-OCRv6_medium`  
 > R3A evidence branch HEAD: `ad58cfe3b3fbfcca6a6f1ee3e929754c2c3b14e5`  
@@ -78,9 +78,9 @@ Use only if both specialized OCR options fail to materially reduce edit burden a
 
 Reason: it is a general multimodal generative model, so Preserve-don't-invent risk is higher than with specialized OCR.
 
-## 4. Owner Approval Requested
+## 4. Owner Approval — GRANTED 2026-09-27
 
-Approval authorizes only:
+Owner explicitly approved the bounded scope below. Authorization covers only:
 
 - creation/use of test-only provider credentials;
 - public/non-private R3A handwriting samples only;
@@ -118,9 +118,11 @@ FALLBACK=NONE
 ARCHITECTURE=PP-OCRv6_medium + single consolidated manual review
 ```
 
-## 6. Stop Boundary
+## 6. Execution Handoff
 
-No R3B Executor dispatch until Owner explicitly approves this checkpoint.
+Execution contract: [G2A1_R3B_API_FALLBACK_BENCHMARK.md](./G2A1_R3B_API_FALLBACK_BENCHMARK.md)
+
+The Owner checkpoint is resolved. Executor may proceed within the approved data/provider/budget/Secret boundaries.
 
 No:
 - production data;
