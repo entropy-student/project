@@ -22,16 +22,21 @@
 
 ## Canonical fingerprint
 
-v0.2 发现层：
-`x_domain + observed_paradox + why_question + human_tension + ai_changed_process`
+v0.2.1 发现层：
+`x_domain + human_process_family + observed_paradox + why_question + human_tension + ai_changed_process`
 
-原核心判重层继续保留：
-`mechanism + human_problem + audience_payoff`
+Topic 核心判重层：
+`mechanism + human_process_family + human_problem + audience_payoff`
+
+Meaning 判重层：
+`meaning_fingerprint ≈ human_tension + controlling_question_seed`
 
 表层：
 `story_motif + hook_pattern + visual_motif`
 
-历史 registry entry 不追溯补字段；新 entry 有信息时再记录 v0.2 字段。
+Meaning Duplicate 是跨领域去重：例如“美食推荐减少探索 / 购物推荐减少探索 / 音乐推荐减少探索”可以共享同一个 `OPTIMIZATION_VS_EXPLORATION` 指纹。
+
+历史 registry entry 不追溯补字段；新 entry 有信息时记录 v0.2.1 字段。
 
 ## Status
 
