@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "project": "ai-story-showrunner",
-  "updated_at": "2026-09-23",
+  "updated_at": "2026-09-27",
   "role": "VALIDATION_RUNTIME_WORKSPACE",
   "canonical_truth": {
     "handoff": "REVIEWER_HANDOFF.md",
@@ -356,5 +356,16 @@
     "historical_gates": "P0-G5 accepted within their original validation scope; not reinterpreted as production E2E proof.",
     "handoff_drift": "FOUND_AND_RECONCILED_IN_THIS_CHANGESET",
     "skill_promotion": "BLOCKED_UNTIL_FINAL_VIDEO_E2E_PASS"
+  },
+  "editorial_baseline": {
+    "topic_operating_system": "v0.2",
+    "topic_entry_default": "HUMAN_WORLD_FIRST",
+    "topic_formula": "X -> Paradox -> WHY -> Human Tension -> AI Changed Process -> Mechanism -> Story",
+    "ai_first_compatibility_route": true,
+    "backward_compatible_with_existing_topic_artifacts": true,
+    "historical_topic_rewrite": false,
+    "production_g6a_impact": "NONE",
+    "rollback_branch": "rollback/ai-story-showrunner-topic-os-v01-20260927",
+    "rollback_base_sha": "16e2c86039a26175f99204239c19c1bdf35f4a10"
   }
 }
