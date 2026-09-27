@@ -379,10 +379,11 @@
     "evergreen_bank": "v0.2.1_HUMAN_WORLD_FIRST_WITH_AI_RESERVE",
     "worker_contract": "v0.2.1_TOPIC_FIELDS_SYNCED",
     "live_daily_automation": "PROMPT_SYNCED_IN_PLACE_HUMAN_WORLD_D1_D5_AWAITING_NEXT_REAL_RUN",
-    "portable_candidate_topic_layer": "SYNC_PREPARED_ON_GUARDED_BRANCH_AWAITING_MERGE",
+    "portable_candidate_topic_layer": "SYNCED_TO_SPIKE_SKILL_MAIN",
     "full_sync_audit": "docs/TOPIC_SYSTEM_FULL_SYNC_AUDIT_20260927.md",
     "historical_daily_rewrite": false,
     "daily_2026_09_27_note": "Generated before live automation prompt sync; historical D1-D4/AI-first run, not v0.2.1 execution proof.",
-    "full_sync_rollback_branch": "rollback/ai-story-showrunner-topic-system-pre-full-sync-20260927"
+    "full_sync_rollback_branch": "rollback/ai-story-showrunner-topic-system-pre-full-sync-20260927",
+    "portable_candidate_topic_commit": "2796982ed9447ea0283253762ea59cf604566ccb"
   }
 }
