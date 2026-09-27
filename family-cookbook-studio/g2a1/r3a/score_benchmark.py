@@ -92,6 +92,12 @@ def assess(spec,pred):
  actual_food={x for x in re.findall(r"[a-z]+",canon(raw)) if x in FOOD}
  hallucinations=[{"kind":"unsupported_ingredient","value":x} for x in sorted(actual_food-expected_food)]
  hallucinations += [{"kind":"unsupported_critical_fact","value":x} for x in hallucinated_facts]
+ unverified_extra_content=[]
+ if spec.get("annotation_coverage")=="partial":
+  unverified_extra_content=[{"kind":"unannotated_output_line","text":x.get("text","")} for x in extras]
+  unverified_extra_content += [{"kind":"unverified_ingredient_token","value":x} for x in sorted(actual_food-expected_food)]
+  unverified_extra_content += [{"kind":"unverified_critical_fact","value":x} for x in hallucinated_facts]
+  hallucinations=[]
  edits=[];edit_chars=0;whole=[];format_only=[]
  for p in pairs:
   if canon(p["ground_truth"])!=canon(p["recognized"]):
@@ -115,7 +121,9 @@ def assess(spec,pred):
   "line_pairs":pairs,"missing_lines":missing,"extra_lines":extras,"expected_critical_facts":ef,
   "recognized_critical_facts":af,"semantic_critical_errors":errors,"silent_critical_errors":silent,
   "missing_critical_fields":errors,"unsupported_hallucinations":hallucinations,
-  "char_error_rate":round(char_errors/max(char_count,1),4),
+  "char_error_rate":None if spec.get("annotation_coverage")=="partial" else round(char_errors/max(char_count,1),4),
+  "unverified_extra_content":unverified_extra_content,
+  "annotation_coverage":spec.get("annotation_coverage","complete"),
   "exact_line_accuracy":round(sum(canon(x)==canon(y["text"]) for x,y in zip(expected,lines))/max(len(expected),1),4)}
 def load_result(file):
  p=ART/file
@@ -134,18 +142,26 @@ def main():
   hand=[x for x in rows if x["sample_class"]=="GENUINE_HANDWRITING"]
   facts_n=sum(len(x["expected_critical_facts"]) for x in pages)
   semantic[name]={"status":result["runtime"]["status"],"sample_count":len(rows),"synthetic_recipe_pages":len(pages),"genuine_handwriting_crops":len(hand),
-   "expected_critical_fact_count":facts_n,"semantic_critical_error_count":sum(len(x["semantic_critical_errors"]) for x in pages),
-   "critical_field_error_types":{t:sum(1 for row in pages for e in row["semantic_critical_errors"] if e.get("error_type")==t) for t in sorted({e.get("error_type") for row in pages for e in row["semantic_critical_errors"]})},
+   "expected_critical_fact_count":facts_n,"genuine_handwriting_expected_critical_fact_count":sum(len(x["expected_critical_facts"]) for x in hand),
+   "semantic_critical_error_count":sum(len(x["semantic_critical_errors"]) for x in rows),
+   "synthetic_critical_field_error_types":{t:sum(1 for row in pages for e in row["semantic_critical_errors"] if e.get("error_type")==t) for t in sorted({e.get("error_type") for row in pages for e in row["semantic_critical_errors"]})},
+   "genuine_handwriting_critical_field_error_types":{t:sum(1 for row in hand for e in row["semantic_critical_errors"] if e.get("error_type")==t) for t in sorted({e.get("error_type") for row in hand for e in row["semantic_critical_errors"]})},
    "missing_ingredient_lines":sum(1 for row in pages for m in row["missing_lines"] if QTY.search(m["ground_truth"]) or COUNT.search(m["ground_truth"]) or m["ground_truth"].casefold().startswith("pinch ")),
    "missing_steps":sum(1 for row in pages for m in row["missing_lines"] if any(v in m["ground_truth"].casefold() for v in ("bake","cook","stir","simmer","mix","add","roast","boil","fold","pour","knead","serve","combine","heat","whisk"))),
-   "silent_critical_error_count":sum(len(x["silent_critical_errors"]) for x in pages),
-   "missing_critical_field_count":sum(len(x["missing_critical_fields"]) for x in pages),
+   "silent_critical_error_count":sum(len(x["silent_critical_errors"]) for x in rows),
+   "missing_critical_field_count":sum(len(x["missing_critical_fields"]) for x in rows),
    "missing_recipe_lines":sum(len(x["missing_lines"]) for x in pages),"blank_results":sum(not x["recognized_text"].strip() for x in rows),
    "unsupported_hallucination_count":sum(len(x["unsupported_hallucinations"]) for x in rows),
+   "unverified_partial_handwriting_content_count":sum(len(x.get("unverified_extra_content",[])) for x in hand),
+   "synthetic_semantic_critical_error_count":sum(len(x["semantic_critical_errors"]) for x in pages),
+   "genuine_handwriting_semantic_critical_error_count":sum(len(x["semantic_critical_errors"]) for x in hand),
+   "genuine_handwriting_critical_errors_by_sample":{x["sample_id"]:x["semantic_critical_errors"] for x in hand if x["semantic_critical_errors"]},
    "format_only_observations":sum(len(x.get("format_only_observations",[])) for x in pages),
    "synthetic_semantic_accuracy":round(1-sum(len(x["semantic_critical_errors"]) for x in pages)/max(facts_n,1),4),
    "synthetic_exact_line_accuracy":round(sum(x["exact_line_accuracy"] for x in pages)/max(len(pages),1),4),
-   "english_handwriting_score":round(1-sum(x["char_error_rate"] for x in hand)/max(len(hand),1),4),
+   "english_handwriting_score":round(1-sum(x["char_error_rate"] for x in hand if x["char_error_rate"] is not None)/max(sum(x["char_error_rate"] is not None for x in hand),1),4),
+   "handwriting_scored_count":sum(x["char_error_rate"] is not None for x in hand),
+   "handwriting_partial_annotation_count":sum(x["char_error_rate"] is None for x in hand),
    "handwriting_CER_by_sample":{x["sample_id"]:x["char_error_rate"] for x in hand},"sample_assessments":rows}
   edit=sum(x["manual_edit_field_count"] for x in pages); whole=sum(x["whole_line_retype_count"] for x in pages)
   reups=sum(x["reupload_required"] for x in pages); mean=edit/max(len(pages),1)
@@ -161,8 +177,8 @@ def main():
    "classification_rules":{"LIGHT_REVIEW":"0 reuploads, <=5% whole-line retypes, <=2 edit fields/page","MODERATE_REVIEW":"<=20% reuploads, <=20% whole-line retypes, <=8 edits/page","HEAVY_RETRANSCRIPTION":"otherwise"},
    "review_payloads":pages}
   fallback[name]=[{"sample_id":x["sample_id"],"crop_id":specs[x["sample_id"]]["sample_id"] if x["sample_class"]=="GENUINE_HANDWRITING" else None,"source_reference":specs[x["sample_id"]].get("source_reference"),
-    "primary_output":x["recognized_text"],"semantic_issue":[k for k,v in (("critical_error",x["semantic_critical_errors"]),("missing_line",x["missing_lines"]),("hallucination",x["unsupported_hallucinations"])) if v],
-    "risk_type":["manual_review"],"manual_correction_required":True} for x in rows if x["manual_edit_field_count"] or x["reupload_required"] or x["unsupported_hallucinations"]]
+    "primary_output":x["recognized_text"],"semantic_issue":[k for k,v in (("critical_error",x["semantic_critical_errors"]),("missing_line",x["missing_lines"]),("hallucination",x["unsupported_hallucinations"]),("unverified_extra_content",x.get("unverified_extra_content",[]))) if v],
+    "risk_type":["manual_review"]+(["partial_ground_truth_scope"] if x.get("annotation_coverage")=="partial" else []),"manual_correction_required":True} for x in rows if x["manual_edit_field_count"] or x["reupload_required"] or x["unsupported_hallucinations"] or x.get("unverified_extra_content")]
  (ART/"semantic-score.json").write_text(json.dumps(semantic,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
  (ART/"review-burden.json").write_text(json.dumps(burden,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
  available=[x for x in results if results[x] and results[x]["runtime"]["status"]=="complete"]
@@ -180,16 +196,17 @@ def main():
   "remaining_high_risk_cases":fallback.get(primary,[]) if primary else [],"api_fallback_tested":False,"third_candidate_tested":False}
  for n in ("PP-OCRv6_medium","PaddleOCR-VL-1.6"):
   s=semantic.get(n,{});b=burden.get(n,{});r=results[n]
-  comp["candidates"][n]={"semantic_critical_errors":s.get("semantic_critical_error_count"),"silent_critical_errors":s.get("silent_critical_error_count"),
-   "hallucinations":s.get("unsupported_hallucination_count"),"missing_critical_fields":s.get("missing_critical_field_count"),
+  comp["candidates"][n]={"semantic_critical_errors":s.get("semantic_critical_error_count"),"synthetic_semantic_critical_errors":s.get("synthetic_semantic_critical_error_count"),
+   "genuine_handwriting_semantic_critical_errors":s.get("genuine_handwriting_semantic_critical_error_count"),"silent_critical_errors":s.get("silent_critical_error_count"),
+   "hallucinations":s.get("unsupported_hallucination_count"),"unverified_partial_handwriting_content":s.get("unverified_partial_handwriting_content_count"),"missing_critical_fields":s.get("missing_critical_field_count"),
    "manual_edit_fields":b.get("total_manual_edit_fields"),"manual_edit_chars":b.get("total_manual_edit_chars"),
    "whole_line_retypes":b.get("whole_line_retypes"),"reupload_pages":b.get("reupload_pages"),
-   "english_handwriting_score":s.get("english_handwriting_score"),"synthetic_recipe_score":s.get("synthetic_semantic_accuracy"),
+   "english_handwriting_score":s.get("english_handwriting_score"),"handwriting_scored_samples":s.get("handwriting_scored_count"),"handwriting_partial_annotation_samples":s.get("handwriting_partial_annotation_count"),"synthetic_recipe_score":s.get("synthetic_semantic_accuracy"),
    "multilingual_probe_notes":[{"sample_id":x["sample_id"],"language":x.get("language"),"raw_output":x.get("raw_output"),"blank":not bool(x.get("raw_output","").strip())} for x in (r["samples"] if r else []) if x.get("sample_class")=="MULTILINGUAL_PROBE"],
    "latency":r["runtime"].get("inference_elapsed_seconds") if r else None,
    "peak_ram":r["runtime"].get("process_rss_peak_sampled_bytes") if r else None,
    "model_size":r["runtime"].get("model_storage_delta_bytes") if r else None,
-   "install_complexity":"Pinned PaddleOCR + Transformers CPU packages; no PaddlePaddle runtime wheel",
+   "install_complexity":"Pinned PaddleOCR + Transformers CPU packages; PaddleOCR-VL additionally uses the official doc-parser extra; no PaddlePaddle runtime wheel",
    "runtime_complexity":r["candidate"].get("engine") if r else None,
    "review_classification":b.get("review_classification"),"runtime_status":r["runtime"]["status"] if r else "runtime_blocked"}
  (ART/"comparison.json").write_text(json.dumps(comp,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")

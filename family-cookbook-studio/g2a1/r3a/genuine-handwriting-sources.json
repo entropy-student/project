@@ -52,5 +52,17 @@
   "limitations": [
     "12 line/crop samples originate from only two historical manuscripts; they are not modern family-card handwriting.",
     "GH04/GH06/GH08 are manual best-effort annotations; GH08 confidence is low. The handwriting score is exploratory, not a representative estimate for contemporary users."
-  ]
+  ],
+  "annotation_update": "GH04 originally covered a two-line source crop while only one line was transcribed; the crop and transcript were corrected after visual review. The item remains medium-low confidence for the second-line terminal verb.",
+  "coverage_summary": {
+    "complete_transcription_samples": 7,
+    "partial_transcription_samples": [
+      "GH06",
+      "GH07",
+      "GH08",
+      "GH10",
+      "GH12"
+    ],
+    "rule": "partial-crop OCR outside the hand transcription is reported as unverified content, not a confirmed hallucination; such samples are excluded from aggregate CER."
+  }
 }

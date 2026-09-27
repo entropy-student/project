@@ -384,7 +384,8 @@
       "image_path": "handwriting/GH01.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "annotation_coverage": "complete"
     },
     {
       "sample_id": "GH02",
@@ -403,7 +404,8 @@
       "image_path": "handwriting/GH02.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "annotation_coverage": "complete"
     },
     {
       "sample_id": "GH03",
@@ -422,7 +424,8 @@
       "image_path": "handwriting/GH03.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "annotation_coverage": "complete"
     },
     {
       "sample_id": "GH04",
@@ -430,18 +433,24 @@
       "source_id": "wellcome-L0074537",
       "crop": [
         700,
-        2570,
+        2540,
         3500,
-        2810
+        2750
       ],
-      "ground_truth": "Take 8 eggs & a pound of good butter broken in bits",
+      "ground_truth": "Take 8 eggs & a pound of good butter broken in bits\n& a pound of fine sugar beaten fine; beat these",
       "recipe_context": "bisket cake opening",
-      "annotation_confidence": "medium",
+      "annotation_confidence": "medium-low",
       "language": "English",
       "image_path": "handwriting/GH04.jpg",
       "english_primary_score": true,
-      "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+      "transcription_method": "Executor visually reviewed both complete lines in the public source crop; historic spellings retained. Final verb on line 2 remains medium-low confidence.",
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "ground_truth_lines": [
+        "Take 8 eggs & a pound of good butter broken in bits",
+        "& a pound of fine sugar beaten fine; beat these"
+      ],
+      "annotation_note": "Crop scope corrected after visual review: the source contains two lines; sugar is present in the image and is not a hallucination.",
+      "annotation_coverage": "complete"
     },
     {
       "sample_id": "GH05",
@@ -460,7 +469,8 @@
       "image_path": "handwriting/GH05.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "annotation_coverage": "complete"
     },
     {
       "sample_id": "GH06",
@@ -479,7 +489,8 @@
       "image_path": "handwriting/GH06.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "annotation_coverage": "partial"
     },
     {
       "sample_id": "GH07",
@@ -498,7 +509,8 @@
       "image_path": "handwriting/GH07.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "annotation_coverage": "partial"
     },
     {
       "sample_id": "GH08",
@@ -517,7 +529,8 @@
       "image_path": "handwriting/GH08.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th-18th_century_recipe_book_Wellcome_L0074537.jpg",
+      "annotation_coverage": "partial"
     },
     {
       "sample_id": "GH09",
@@ -536,7 +549,8 @@
       "image_path": "handwriting/GH09.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "annotation_coverage": "complete"
     },
     {
       "sample_id": "GH10",
@@ -555,7 +569,8 @@
       "image_path": "handwriting/GH10.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "annotation_coverage": "partial"
     },
     {
       "sample_id": "GH11",
@@ -574,7 +589,8 @@
       "image_path": "handwriting/GH11.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "annotation_coverage": "complete"
     },
     {
       "sample_id": "GH12",
@@ -593,7 +609,8 @@
       "image_path": "handwriting/GH12.jpg",
       "english_primary_score": true,
       "transcription_method": "Executor visual transcription; historical spelling retained; source description cross-check for recipe titles.",
-      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg"
+      "source_reference": "https://commons.wikimedia.org/wiki/File:17th_century_recipe_book_Wellcome_L0074536.jpg",
+      "annotation_coverage": "partial"
     }
   ],
   "multilingual_probes": [
