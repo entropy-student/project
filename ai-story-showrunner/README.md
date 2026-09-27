@@ -28,8 +28,9 @@ Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取；G6R run
 
 ```text
 大众兴趣 X / 现实变化
+→ 明确这里的人在做什么（Human Process Family）
 → 找到一个反常现象与值得追问的 WHY
-→ 明确背后的 Human Tension
+→ 明确背后的 Human Tension / Meaning Fingerprint
 → 找出 AI 改变/放大的人的过程与机制
 → 把机制变成故事里的世界规则
 → 结构化故事
@@ -43,7 +44,7 @@ Owner 当前执行线：**`story-showrunner` Candidate 已完成抽取；G6R run
 
 核心不是“给 AI 概念套故事”，而是：
 
-> **X → Paradox → WHY → Human Tension → AI 机制 → 故事 → 观众形成自己的理解 / 判断。**
+> **X → Human Process → Paradox → WHY → Meaning → AI 机制 → 故事 → 观众形成自己的理解 / 判断。**
 
 ## 为什么需要这个项目
 
@@ -114,7 +115,11 @@ Worker 不应该互相自由调用，也不应该各自维护一份“当前真�
 ```text
 Human-interest X / observable situation
                 ↓
+      human process family
+                ↓
       paradox / WHY / tension
+                ↓
+      meaning fingerprint
                 ↓
   AI changes one human process
                 ↓
