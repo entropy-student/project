@@ -1,7 +1,7 @@
 # G2A1-R3B — Google Document AI Provider Setup
 
 > Owner setup guide  
-> Status: **CURRENT BLOCKER / OWNER ACTION REQUIRED**  
+> Status: **WIF/PROCESSOR SETUP COMPLETE / BILLING OWNER ACTION REQUIRED**  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)  
 > Returned execution HEAD: `dd9c07bbe64a3076bcfd38d27259ff56c2ed013a`  
 > Returned Actions run: `36297499256`  
@@ -180,3 +180,50 @@ Do not:
 - use customer/private recipes;
 - enable Gemini/general VLM;
 - deploy production infrastructure.
+
+
+---
+
+## 11. 2026-09-27 WIF Update
+
+The organization blocks long-lived service-account key creation via:
+
+`iam.disableServiceAccountKeyCreation`
+
+This policy was **not** weakened.
+
+Instead, GitHub Actions now uses Workload Identity Federation:
+
+- provider: `projects/72948840060/locations/global/workloadIdentityPools/github-actions/providers/entropy-student-project`
+- service account: `family-cookbook-ocr@family-cookbook-ocr-test.iam.gserviceaccount.com`
+- allowed repository: `entropy-student/project`
+- allowed branch: `refs/heads/codex/family-cookbook-g2a1-input-ocr-component-feasibility`
+- workflow permission: `id-token: write`
+- authentication action: `google-github-actions/auth@v3`
+
+The previous JSON-key GitHub Secret route is superseded and should not be used.
+
+## 12. Current Verified Blocker — Billing
+
+Actions run `36301652196` proved:
+
+- WIF access-token authentication works;
+- processor metadata HTTP 200;
+- default processor-version metadata HTTP 200;
+- processor is `OCR_PROCESSOR`;
+- first real OCR `:process` request reached Google Document AI.
+
+The first process request returned:
+
+- HTTP 403;
+- status `PERMISSION_DENIED`;
+- ErrorInfo reason `BILLING_DISABLED`;
+- service `documentai.googleapis.com`.
+
+Current Owner action:
+
+**Enable/link Google Cloud Billing for project `family-cookbook-ocr-test`.**
+
+After Billing is enabled, allow a few minutes for propagation and rerun the same R3B workflow.
+
+No IAM escalation is currently justified.
