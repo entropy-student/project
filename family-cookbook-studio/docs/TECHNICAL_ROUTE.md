@@ -47,7 +47,7 @@ private proof / final delivery
 | Optional story/context intake | Order-bound fields / thin project plugin | ACCEPTED PATTERN | Small |
 | Background orchestration | Action Scheduler pattern | ACCEPTED PATTERN | Job definitions |
 | Image preprocessing | OpenCV/library-backed rotate/deskew/crop/contrast/quality checks | ACCEPTED DIRECTION | Yes |
-| Handwriting OCR | **PaddleOCR primary; at most one target-language fallback/second pass; user confirmation final fallback** | PRIMARY ACCEPTED / FALLBACK REOPENED | Thin adapter |
+| Handwriting OCR | **PP-OCRv6_medium primary; at most one bounded specialized API fallback; one consolidated manual-edit review** | PRIMARY PASS / API FALLBACK PENDING | Thin adapter |
 | Recipe extraction | Structured schema + provenance | CUSTOM CORE | Yes |
 | Uncertainty policy | confidence/rules + review queue | CUSTOM CORE | Yes |
 | Correction/review UI | order/private review surface | CUSTOM CORE | Yes |
@@ -90,7 +90,7 @@ Default paid compute path:
 ```text
 private source image
 → local/library image preprocessing
-→ target-language PaddleOCR primary attempt
+→ PP-OCRv6_medium primary
 → deterministic semantic critical-value/schema checks
 → if ambiguous: at most one bounded target-language fallback/second pass
 → if still uncertain/disagrees: user/reviewer confirmation
@@ -178,14 +178,14 @@ ocr_adapter(image)
   }
 ```
 
-Current OCR contract after R2:
-1. **PaddleOCR** remains the full-page primary candidate.
-2. Target language must be frozen before final OCR qualification.
+Current OCR contract after R3A:
+1. **PP-OCRv6_medium** is the accepted full-page free/local primary.
+2. Product scope is English-first, not English-only.
 3. Deterministic rules score **semantic critical facts**, not typography alone.
-4. Only **one** bounded fallback/second pass may be used.
-5. The tested `microsoft/trocr-small-handwritten` configuration is deprecated because it reduced confirmations by 0 in R2.
-6. Reviewer preference is a language-specific PaddleOCR recognition/crop second pass when feasible, to avoid a second framework/runtime.
-7. **User/reviewer confirmation** remains the final fail-closed fallback.
+4. Only **one** bounded specialized API fallback may be retained, and only for high-risk pages/crops.
+5. `PaddleOCR-VL-1.6` is rejected as primary; `microsoft/trocr-small-handwritten` remains deprecated.
+6. R3B evaluates whether Google Enterprise Document OCR materially reduces the 11 hard-case edit burden; Mistral OCR 4.1 is second-line benchmark only if needed.
+7. **One consolidated user review with manual editing** remains the final fail-closed stage.
 
 Explicitly deferred from MVP: broad multi-provider OCR bake-offs, cloud OCR and VLM/vision OCR.
 
