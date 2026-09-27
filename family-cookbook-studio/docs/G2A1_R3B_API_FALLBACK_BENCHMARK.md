@@ -1,7 +1,7 @@
 # G2A1-R3B — Bounded API Fallback Benchmark
 
 > Reviewer execution contract  
-> Status: **RETURNED / GOOGLE PROVIDER SETUP REQUIRED**  
+> Status: **CURRENT / MISTRAL-FIRST / CREDENTIAL REQUIRED**  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)  
 > Owner approval: **GRANTED 2026-09-27**  
 > Accepted primary: `PP-OCRv6_medium`  
@@ -385,3 +385,29 @@ Owner setup guide:
 [G2A1_R3B_GOOGLE_PROVIDER_SETUP.md](./G2A1_R3B_GOOGLE_PROVIDER_SETUP.md)
 
 After setup, continue this same Gate; do not open a new OCR architecture Gate.
+
+
+---
+
+## 19. Provider Order Override — 2026-09-27
+
+Owner chose not to activate Google Cloud Billing because the available Billing account requires a USD 30 one-time prepayment for an 11-case benchmark.
+
+This is a **provider-friction decision**, not a technical rejection of Google Document AI.
+
+Current R3B provider order is now:
+
+1. **Mistral OCR 4.1**
+2. no second provider in this Gate
+3. Google Document AI remains a future adapter
+
+Current expected result is exactly one of:
+
+- `FALLBACK=MISTRAL_OCR_4_1`
+- `FALLBACK=NONE`
+
+The same fixed 11 public hard cases, semantic fidelity rules, Preserve-don't-invent invariant, and USD 0.20 budget cap remain unchanged.
+
+Current setup guide:
+
+[G2A1_R3B_MISTRAL_PROVIDER_SETUP.md](./G2A1_R3B_MISTRAL_PROVIDER_SETUP.md)
