@@ -375,7 +375,7 @@
     "rollback_branch_v02": "rollback/ai-story-showrunner-topic-os-v02-before-meaning-20260927",
     "rollback_base_sha_v02": "080b3cea54e640c75d7f11b265c8fa6397661192",
     "daily_topic_planner": "v0.2.2",
-    "topic_system_full_sync": "CONFIG_SYNC_PASS_RUNTIME_PROOF_PENDING_NEXT_DAILY_RUN",
+    "topic_system_full_sync": "CONFIG_SYNC_PASS_MANUAL_RUNTIME_PASS_SCHEDULED_TRIGGER_PENDING",
     "evergreen_bank": "v0.2.1_HUMAN_WORLD_FIRST_WITH_AI_RESERVE",
     "worker_contract": "v0.2.1_TOPIC_FIELDS_SYNCED",
     "live_daily_automation": "PROMPT_SYNCED_IN_PLACE_HUMAN_WORLD_D1_D5_AWAITING_NEXT_REAL_RUN",
@@ -384,6 +384,9 @@
     "historical_daily_rewrite": false,
     "daily_2026_09_27_note": "Generated before live automation prompt sync; historical D1-D4/AI-first run, not v0.2.1 execution proof.",
     "full_sync_rollback_branch": "rollback/ai-story-showrunner-topic-system-pre-full-sync-20260927",
-    "portable_candidate_topic_commit": "2796982ed9447ea0283253762ea59cf604566ccb"
+    "portable_candidate_topic_commit": "2796982ed9447ea0283253762ea59cf604566ccb",
+    "manual_topic_runtime_proof": "PASS_MANUAL_RUNTIME_TOPIC_OS_V0_2_1",
+    "manual_topic_runtime_proof_artifact": "topic-ledger/daily/2026-09-27-v021-runtime-proof.json",
+    "scheduled_topic_runtime_proof": "PENDING_NEXT_REAL_SCHEDULED_RUN"
   }
 }
