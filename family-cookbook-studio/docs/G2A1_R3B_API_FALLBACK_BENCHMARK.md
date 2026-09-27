@@ -1,7 +1,7 @@
 # G2A1-R3B — Bounded API Fallback Benchmark
 
 > Reviewer execution contract  
-> Status: **CURRENT / MISTRAL-FIRST / CREDENTIAL REQUIRED**  
+> Status: **RETURNED / GOOGLE BILLING OWNER ACTION**  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)  
 > Owner approval: **GRANTED 2026-09-27**  
 > Accepted primary: `PP-OCRv6_medium`  
@@ -411,3 +411,30 @@ The same fixed 11 public hard cases, semantic fidelity rules, Preserve-don't-inv
 Current setup guide:
 
 [G2A1_R3B_MISTRAL_PROVIDER_SETUP.md](./G2A1_R3B_MISTRAL_PROVIDER_SETUP.md)
+
+
+---
+
+## 20. Mistral Free-Mode Probe Result / Google Restored — 2026-09-27
+
+Mistral Free mode was tested only to avoid the account-level Google Billing prepayment requirement.
+
+Observed:
+- Actions run `36303206653`: first OCR request returned HTTP 429 `Rate limit exceeded`.
+- Actions run `36303291445`: 15s → 30s → 60s → 90s backoff still returned HTTP 429.
+- HTTP 402 Payment Required was not observed.
+- successful Mistral OCR pages: 0.
+- Mistral recognition quality remains unevaluated.
+- `FALLBACK=UNKNOWN`.
+
+Owner preference: do not enable paid Mistral access for this benchmark; return to Google Document AI.
+
+The execution branch has been restored to the Google WIF benchmark path.
+
+Current blocker:
+`BILLING_DISABLED` on Google Document AI `:process`.
+
+Current Owner action:
+enable/link Billing for `family-cookbook-ocr-test`, then rerun the same R3B Google WIF workflow.
+
+The USD 0.20 benchmark spend cap remains in force.
