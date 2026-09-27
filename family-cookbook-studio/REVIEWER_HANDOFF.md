@@ -2,8 +2,8 @@
 
 > Maintainer: Reviewer / Architect / Gatekeeper only  
 > Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1  
-> Latest Executor facts: branch `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, `EXECUTOR_HANDOFF.md`, HEAD `1d2abddc6e0ea58ec55c75a29033fe1233a34ada`  
-> Latest detailed evidence: same branch `EXECUTION_EVIDENCE.md`; Actions evidence runs `36262841714` and `36263385997` independently reviewed  
+> Latest Executor facts: branch `codex/family-cookbook-g2a1-input-ocr-component-feasibility`, `EXECUTOR_HANDOFF.md`, HEAD `ad58cfe3b3fbfcca6a6f1ee3e929754c2c3b14e5`  
+> Latest detailed evidence: same branch `EXECUTION_EVIDENCE.md`; R3A Actions run `36289130217` independently reviewed  
 > Last reviewed: 2026-09-26
 
 ## 1. Project Goal
@@ -37,11 +37,13 @@ Governance rules come from GitHub `entropy-student/spike.skill/vps-project-gover
 - Frontend/theme PoC order: **Kadence first**, with **Brandy** and **Blocksy** as accepted free/open WordPress fallback candidates. Final production theme/visual treatment is not yet frozen.
 - Post-payment intake: order-bound private image upload pattern; exact plugin/component = POC.
 - Product core: project-specific OCR/handwriting recognition → recipe schema extraction → uncertainty review → deterministic layout/PDF.
-- MVP OCR architecture principle: **one primary OCR → deterministic critical-risk checks → at most one bounded fallback/second pass → user confirmation as final fail-closed fallback**.
-- **PaddleOCR remains the primary candidate. The tested `microsoft/trocr-small-handwritten` configuration is deprecated as MVP fallback because R2 showed no confirmation reduction. Exact fallback is reopened until target language is frozen.**
-- Reviewer preference is to keep any fallback inside the PaddleOCR/language-specific recognition stack when feasible, minimizing runtime and maintenance complexity.
+- MVP OCR architecture principle: **PP-OCRv6_medium primary → deterministic critical-risk checks → at most one bounded API fallback → one consolidated manual-edit review**.
+- **PP-OCRv6_medium is now the accepted free/local primary.**
+- `PaddleOCR-VL-1.6` is rejected as primary for the current MVP evidence: four missed synthetic temperatures plus materially higher CPU/RAM/storage cost.
+- `microsoft/trocr-small-handwritten` remains deprecated.
+- API fallback remains optional pending R3B evidence; if no specialized API materially improves the 11 hard cases, fallback will be NONE.
 - Tesseract, managed/cloud OCR and VLM/vision remain outside MVP scope unless a later Reviewer decision explicitly reopens them.
-- Paid compute policy: local/open-source OCR first and by default only. MVP model/API Token target remains **0**.
+- Paid compute policy: local/open-source PP-OCRv6 processes all pages first. External OCR, if retained, is used only for bounded high-risk pages/crops. API cost is therefore expected to be sparse rather than per-page by default.
 - PDF output: deterministic HTML/CSS or equivalent templates; exact render engine = UNKNOWN.
 - Private proof/final delivery: Woo order-bound access pattern; exact plugin/component = POC.
 - Background work: WordPress/WooCommerce Action Scheduler pattern first for orchestration; OCR/render worker runtime = UNKNOWN.
@@ -72,8 +74,8 @@ G2A1 Input + OCR + Reusable Component Feasibility PoC    ↩ RETURNED (partial e
 G2A1-R1 OCR Runtime + WP Testbed Remediation/Completion  ↩ RETURNED (resource blocked)
 G2A1-R2 Isolated GitHub Actions Runner Completion         ↩ RETURNED (WP/component feasibility accepted; OCR scope not calibrated)
 G2A1-D1 Target Language + OCR Acceptance Calibration      ✅ OWNER DECISIONS RESOLVED
-G2A1-R3A Free/Local Primary Benchmark                    ← CURRENT / READY_FOR_EXECUTOR
-G2A1-R3B Bounded API Fallback Benchmark                  ⏳ HOLD / OWNER API CHECKPOINT
+G2A1-R3A Free/Local Primary Benchmark                    ✅ PASS — PP-OCRv6_medium
+G2A1-R3B Bounded API Fallback Benchmark                  ← CURRENT / OWNER API CHECKPOINT
 G2A2 MVP Product Contract Freeze                         ⏳ HOLD
 G2B  Local OCR → Structured Recipe → PDF Solution Proof  ⏳ HOLD
 G3A  WordPress + WooCommerce Local Commerce Loop         ⏳ HOLD
@@ -105,8 +107,11 @@ Current Reviewer decisions:
 - `ACCEPT_ENGLISH_FIRST_NOT_ENGLISH_ONLY_2026-09-27`
 - `ACCEPT_SINGLE_CONSOLIDATED_OCR_REVIEW_WITH_MANUAL_EDIT_2026-09-27`
 - `OPEN_G2A1_R3_FREE_LOCAL_PRIMARY_BOUNDED_API_FALLBACK_BENCHMARK_2026-09-27`
+- `PASS_G2A1_R3A_LOCAL_PRIMARY_SELECTION_PP_OCRV6_MEDIUM_2026-09-27`
+- `REJECT_PADDLEOCR_VL_1_6_AS_PRIMARY_2026-09-27`
+- `OPEN_G2A1_R3B_BOUNDED_API_FALLBACK_OWNER_CHECKPOINT_2026-09-27`
 
-Important limitation: R2 now proves the reusable WordPress/WooCommerce/Kadence preview/upload/private-delivery feasibility and provides real OCR measurements. However, target language and acceptable confirmation burden were never frozen before OCR benchmarking, so R2 cannot support a general production OCR PASS/FAIL decision. Payment, full OCR→PDF output quality, repeatability, production hosting and print fulfillment remain unproven.
+Important limitation: R3A now selects PP-OCRv6_medium as the local primary, but API fallback value remains unproven. R3A's genuine-handwriting set is small and historical, so modern household handwriting generalization remains UNKNOWN. Payment, full OCR→PDF output quality, repeatability, production hosting and print fulfillment remain unproven.
 
 ## 5. Accepted Baseline
 
@@ -177,26 +182,48 @@ Owner decisions:
 - No silently accepted wrong quantity/unit/temperature/time.
 - The earlier suggested hard limit of ≤2 confirmations/page is not frozen; R3 measures actual edit burden.
 
-### G2A1-R3 scope
+### G2A1-R3A Reviewer decision
 
-Formal contract: [docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md](./docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md)
+Reviewer independently checked:
+- branch HEAD `ad58cfe3b3fbfcca6a6f1ee3e929754c2c3b14e5`;
+- Actions run `36289130217` and all job steps;
+- identical-input SHA evidence for both candidates;
+- semantic score, review burden, comparison and 11-case fallback set.
 
-R3 is split:
+Decision: **PASS G2A1-R3A.**
 
-**R3A — CURRENT**
-- PP-OCRv6_medium vs PaddleOCR-VL-1.6;
-- same English-first corpus + small multilingual probe;
-- semantic recipe-fact scoring;
-- select exactly one free/local primary;
-- no API keys or paid calls.
+Accepted primary: **PP-OCRv6_medium**.
 
-**R3B — HOLD**
-- only after R3A primary is accepted;
-- benchmark Mistral OCR 4.1, Google Enterprise Document OCR, and Gemini 3.8 Flash only on unresolved/high-risk material;
-- requires Owner checkpoint before credentials/billing/paid API use;
-- select at most one fallback or conclude no API fallback is needed.
+Key evidence:
+- 20/20 synthetic recipe pages zero manual edits;
+- 77/77 synthetic critical facts correct;
+- 0 silent critical errors;
+- 0 confirmed hallucinations;
+- one genuine-handwriting critical miss: GH04 `8 eggs`;
+- complete-handwriting score 82.73% across 7 fully transcribed crops;
+- runtime about 133.7 s / 35 inputs, ~2.02 GB sampled RSS, ~165 MB model storage.
 
-Reusable WordPress/Woo/Kadence/upload/private-delivery evidence is accepted and must not be rerun.
+PaddleOCR-VL-1.6 is rejected as primary:
+- four missing synthetic temperatures;
+- ~520 s / 35 inputs;
+- ~3.92 GB RSS;
+- ~2.05 GB model storage;
+- its higher 7-crop handwriting score does not override recipe critical-fidelity priority.
+
+The 11 fallback samples are all hard genuine/historical handwriting cases. API fallback is therefore a long-tail quality optimization, not the normal processing path.
+
+### Current R3B Owner checkpoint
+
+Formal checkpoint: [docs/G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md](./docs/G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md)
+
+Reviewer recommends sequential testing:
+1. Google Enterprise Document OCR first;
+2. Mistral OCR 4.1 only if Google does not materially reduce edit burden;
+3. Gemini 3.8 Flash stays reserve unless both specialized OCR paths fail.
+
+No R3B execution until Owner approves credential/account/API use.
+
+Reusable WordPress/Woo/Kadence/upload/private-delivery evidence remains accepted and must not be rerun.
 
 ## 7. Confirmed Facts
 
@@ -215,7 +242,7 @@ Reusable WordPress/Woo/Kadence/upload/private-delivery evidence is accepted and 
 - handwriting/language coverage;
 - exact correction UI;
 - image preprocessing path;
-- whether target-language PaddleOCR + one bounded low-maintenance second pass meets the approved semantic fidelity/manual-review threshold;
+- whether a bounded specialized OCR API materially improves PP-OCRv6's 11 hard handwriting cases;
 - exact deterministic recipe-structuring/parser implementation;
 - per-order local compute/render cost and manual-confirmation burden;
 - file storage/access/deletion policy;
@@ -254,17 +281,19 @@ Reusable WordPress/Woo/Kadence/upload/private-delivery evidence is accepted and 
 ## 12. Next Step
 
 - G2A1-D1 Owner decisions are resolved.
-- Current Gate: **G2A1-R3A free/local primary benchmark**.
-- Executor benchmarks PP-OCRv6_medium vs PaddleOCR-VL-1.6 only.
-- No provider Secret, billing or API call is needed in R3A.
-- After Reviewer accepts one local primary, R3B reaches an Owner checkpoint before any external API credential/spend.
+- R3A is formally PASS with `PP-OCRv6_medium` as the sole local primary.
+- Current Gate: **G2A1-R3B Owner API checkpoint**.
+- Reviewer recommends Google Enterprise Document OCR first; Mistral OCR 4.1 only if Google is insufficient; Gemini remains reserve.
+- R3B uses only the 11 public/non-private hard cases.
+- Proposed total external API test budget cap: **USD 0.20**.
 - Do not rerun WordPress/WooCommerce/Kadence/upload/private-delivery.
-- Stop at Reviewer; G2A2 remains HOLD until R3 closes G2A1.
+- G2A2 remains HOLD until R3B either selects one fallback or proves FALLBACK=NONE.
 
 ## 13. Status Summary
 
 - Overall progress: reusable commerce/input/delivery feasibility is proven; OCR has real benchmark evidence but requires target-language/semantic-threshold calibration.
 - Final goal: private, reliable family recipe intake → faithful transcription/structuring → proof → cookbook PDF → later optional print.
-- Current Gate: **G2A1-R3 OCR architecture benchmark**.
-- Next: evidence-backed primary/fallback selection → close G2A1 → G2A2 exact MVP contract.
+- Current Gate: **G2A1-R3B bounded API fallback Owner checkpoint**.
+- Accepted local primary: **PP-OCRv6_medium**.
+- Next after Owner approval: test the 11 hard cases with specialized API fallback → select one fallback or NONE → close G2A1 → G2A2 exact MVP contract.
 - Attention: never treat clean OCR demos, model self-confidence or a visually nice PDF as proof that recipe facts are correct.
