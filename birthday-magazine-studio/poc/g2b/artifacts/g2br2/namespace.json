@@ -1,0 +1,12 @@
+{
+  "gate": "G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE",
+  "namespace": "g2br2",
+  "jobKey": "synthetic-order-g2br2-0001",
+  "artifactDirectory": "artifacts/g2br2",
+  "canonicalJobsDirectory": "artifacts/g2br2/jobs",
+  "maxAdditionalHostModelRuns": 2,
+  "modelRunsConsumedAtPreparation": 0,
+  "canonicalJobCreatedAtPreparation": false,
+  "realModelCallPerformedAtPreparation": false,
+  "requiresOwnerHostWindowsLaunch": true
+}

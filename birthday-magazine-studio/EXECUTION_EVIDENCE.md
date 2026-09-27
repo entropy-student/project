@@ -1,5 +1,61 @@
 # Birthday Magazine Studio — Execution Evidence
 
+## Current Gate Preparation — G2BR2 Host Codex Transport Closure
+
+- **Gate:** `G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE`
+- **Preparation date:** 2026-09-27
+- **Branch:** `codex/birthday-magazine-g2br2-host-codex-closure`
+- **Base:** started from `dbc2da3383707615b04503be6d8bcc2fe1ac97bb`; rebased onto latest GitHub `main` at `d3249013f01fdc60b2fc728d0a8f197255643182` before submission.
+- **Result:** `PREPARED_FOR_OWNER_HOST_LAUNCH` — this is not a Gate PASS or PASS_CANDIDATE.
+- **Stop point:** `STOP_AT_OWNER_HOST_LAUNCH=YES`; no G3 work.
+
+### Preparation facts
+
+- Reused the accepted G2B/G2BR1 synthetic intake, `CONTENT_SCHEMA`, provider prompt, canonical-job helper, grounding checks, deterministic page renderer, PDF generation and QA.
+- Added a G2BR2 mode to the existing runner. It routes content, status, QA and canonical jobs to `artifacts/g2br2/`, uses the distinct key `synthetic-order-g2br2-0001`, and caps the new namespace at two model runs. The G2BR1 artifacts/job record remain untouched.
+- The renderer change is limited to selecting the real-AI artifact namespace and gate metadata; the product schema, page architecture, page content/layout logic and styles are unchanged.
+- Added `run-g2br2-host.ps1`. It resolves the installed `node.exe` and `codex.exe`, selects the G2BR2 namespace, and invokes the existing runner. It contains no credential and does not export or print Codex auth state. `-RetryFailed` passes the existing harness retry flag.
+- Added `artifacts/g2br2/namespace.json`; at preparation it records zero consumed model runs and no canonical job created.
+- Installed the already-pinned npm dependencies from `package-lock.json` with `npm ci --ignore-scripts --no-audit --no-fund` so the host launch can use the existing renderer. No package or product dependency was added.
+
+### Model and host execution boundary
+
+```text
+Codex Agent real model runs: 0
+G2BR2 Codex exec processes: 0
+G2BR2 model runs consumed: 0 / 2
+API key used: NO
+Extra credits purchased: NO
+Owner host launch: REQUIRED
+```
+
+The G2BR2 runner was not invoked from the Codex Agent. No login status or `codex exec` command was run during preparation. ChatGPT authentication, host execution identity, and any real model response remain unverified until Owner launches the command from Windows PowerShell.
+
+### Owner host launch
+
+- Open **Windows Terminal → PowerShell** on the Owner's Windows host, outside the Codex Agent terminal.
+- Working directory: `birthday-magazine-studio/poc/g2b/` in this branch worktree.
+- Command: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\run-g2br2-host.ps1`
+
+### Preparation validation
+
+- `node --check src/g2br1-run.mjs`: PASS.
+- `node --check src/codex-provider.mjs`: PASS.
+- `node --check src/proof.mjs`: PASS.
+- Windows PowerShell parser: PASS; launcher was parsed but not executed.
+- G2BR2 namespace JSON parse: PASS; `artifacts/g2br2/jobs/` is not created yet.
+- `npm ls --depth=0`: PASS; `pdf-lib@1.17.1` and `playwright@1.62.1` match the existing lockfile.
+- `git diff --check`: PASS. No changes to `MVP_PRODUCT_CONTRACT.md` or `REVIEWER_HANDOFF.md`.
+- The G2BR1 artifacts and canonical job were not changed. No runner invocation was made.
+
+No AI, payment, PayPal, customer data, public deployment, VPS, Cloudflare, Shared Infra, purchase, or G3 action occurred. `MVP_PRODUCT_CONTRACT.md` and `REVIEWER_HANDOFF.md` were not modified. G2BR1's failure evidence remains preserved below.
+
+### GitHub review handoff
+
+- Branch: `codex/birthday-magazine-g2br2-host-codex-closure`, rebased onto `d3249013f01fdc60b2fc728d0a8f197255643182` before submission.
+- Commit and PR details will be recorded after submission; the PR must remain open and unmerged.
+- Reviewer is the next decision point after the Owner host launch produces sanitized evidence. Do not enter G3.
+
 ## Current Gate — G2BR1 Real AI Generation Closure
 
 - **Gate:** G2BR1_REAL_AI_GENERATION_CLOSURE

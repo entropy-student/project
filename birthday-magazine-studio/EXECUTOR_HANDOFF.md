@@ -1,5 +1,42 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Current Gate — G2BR2 Host Codex Transport Closure — preparation only
+
+- **Gate:** `G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE`
+- **Branch:** `codex/birthday-magazine-g2br2-host-codex-closure`
+- **Base commit:** started from `dbc2da3383707615b04503be6d8bcc2fe1ac97bb`; rebased onto latest GitHub `main` at `d3249013f01fdc60b2fc728d0a8f197255643182` before submission
+- **Result:** `PREPARED_FOR_OWNER_HOST_LAUNCH`; no model result or Gate PASS is claimed.
+- **Stop point:** `STOP_AT_OWNER_HOST_LAUNCH=YES`.
+
+### Actual preparation actions
+
+- Added G2BR2 namespacing to the existing G2BR1 runner and proof artifact routing; accepted G2B schema, renderer/page architecture, style presets, QA logic and fixture were reused.
+- Added `poc/g2b/artifacts/g2br2/namespace.json` for fresh canonical job/artifact state; G2BR2 uses key `synthetic-order-g2br2-0001` and maximum two model runs.
+- Added `poc/g2b/run-g2br2-host.ps1`, which invokes only the existing runner after selecting G2BR2 mode and resolving local Node/Codex executables. It accepts an optional `-RetryFailed` flag for the contract's single bounded retry.
+- Installed only lockfile-pinned local renderer dependencies with `npm ci --ignore-scripts --no-audit --no-fund`.
+- Updated Codex failure recording to retain a safe category and optional HTTP status only. Raw stderr/stdout, URLs, headers, cookies, session values and auth state are not persisted.
+- Did **not** launch the runner, query Codex login status, start `codex exec`, or consume any model run. Owner-host identity/login remain unverified pending the manual host command.
+
+### Owner action
+
+Open **Windows Terminal → PowerShell** on the Windows host, enter the branch worktree directory `birthday-magazine-studio/poc/g2b/`, and run:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\run-g2br2-host.ps1
+```
+
+This is the primary run. Do not use the Codex Agent terminal for this command. The contract permits at most one retry, only when the recorded category is transport, schema or transient; the runner rejects any third model run. No API key or additional credit is used.
+
+### Validation / outstanding
+
+- `node --check` for the existing runner, Codex provider, and proof renderer: PASS.
+- PowerShell parser and G2BR2 namespace JSON parse: PASS. The launcher was parsed, not executed.
+- Pinned local renderer dependencies (`pdf-lib@1.17.1`, `playwright@1.62.1`) resolve; `git diff --check` PASS.
+- `MVP_PRODUCT_CONTRACT.md` and `REVIEWER_HANDOFF.md` are unchanged; G2BR1 artifacts/job state are unchanged.
+- No runner invocation or `codex exec` process was started.
+- Successful real structured response, grounding, render/PDF/QA and duplicate guard: pending Owner host launch.
+- This handoff contains no Reviewer decision and does not authorize G3.
+
 ## Current Gate — G2BR1 Real AI Generation Closure
 
 - **Gate:** G2BR1_REAL_AI_GENERATION_CLOSURE
