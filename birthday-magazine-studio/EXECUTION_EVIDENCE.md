@@ -5,6 +5,7 @@
 **Execution branch:** `codex/birthday-magazine-g3br1-sandbox-reconciliation-entitlement`
 **Base:** latest GitHub `main` at `290a73131a4d0ace487d2c1986a94145f03ee277`
 **Previous G3B PR:** #51 was already merged as historical interim RETURN evidence; this Gate uses a new branch and PR.
+**GitHub submission:** [PR #54](https://github.com/entropy-student/project/pull/54), open to `main`, not merged. Initial evidence commit: `a557801f0fc2bc7237d215bb4e9420a3d165961e`.
 **Stop point:** `STOP_AT_OWNER_CHECKPOINT=YES`; no refund was executed.
 
 This G3BR1 continuation uses only existing synthetic paid WooCommerce order #30. No second Sandbox payment, capture, Live payment, real-money payment, refund, or product model call was made. The G3B Compose runtime, temporary HTTPS origin, and Sandbox setting remain in place for the Owner checkpoint. Mini Craft resources were not accessed or changed.
