@@ -2653,3 +2653,17 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - No Caddyfile/candidate file write, Caddy load/reload/restart, DNS/ingress/shared-infrastructure mutation, payment, or Secret access occurred. Remote writes = 0. Local SSH capture files were deleted and verified absent.
 - Detailed redacted evidence was appended in GitHub commit `1d99cb663f6202e3567d2fbc777703bcc3c42668`. No Reviewer-owned document was modified.
 - Next: Reviewer review only. No second SSH or mutation in this Gate.
+
+
+## Current Executor Handoff — K6 Phase F-R1R5R4
+
+- Gate: `K6_PHASE_F_R1R5R4_CANONICAL_SEMANTIC_CANDIDATE_SEAL`.
+- Result: `PASS_CANDIDATE_K6_PHASE_F_R1R5R4_CANONICAL_SEMANTIC_CANDIDATE_SEAL`; `STOP_AT_REVIEWER=YES`.
+- Exactly one strict direct-native SSH invocation succeeded; strict pinned host-key trust and remote identity `ops@srv1970241` passed. Local A/AAAA/CNAME DNS-over-HTTPS checks confirmed NXDOMAIN.
+- Fresh frozen checks passed: durable Caddyfile SHA-256 `12fac82e3b1b9733029aa820c4794ccb9359ae494863dd6815f7e29b636d8beb`; container-loopback Admin GET; active config SHA-256 `206997c24f7e52efec7f7a8d241afe6c8d16b5b23e54fd799da0f3a94a9dd9cd`; localhost and edge-test routes found; Mini Craft route absent; edge-test static response 200 / 30 bytes / accepted SHA-256.
+- The active edge-test `static_response` JSON contains no explicit headers. No response-observed header was inferred or added.
+- Source candidate: 212 bytes, diagnostic SHA-256 `a7fb63a5f343a75ce5049a7c0fad2bcb8d39efa7f1f08e832a98330c8b8834d9`. `caddy fmt -` exited 0 and produced the 199-byte canonical candidate, SHA-256 `cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8`. Canonical `caddy adapt` exited 0, emitted valid JSON and empty stderr. Localhost baseline, edge-test response semantics, Mini Craft `wordpress:80` reverse proxy and exact hostname scope all passed.
+- `PUBLIC_INGRESS_CHANGESET=READY`; `ROLLBACK_PLAN=PASS`; `OWNER_CHECKPOINT_REQUIRED=YES`. This seals the exact candidate for a separate mutation Gate only.
+- No Caddyfile/candidate disk write, `/load`, reload, restart, DNS, network, Compose, indexing, product, payment, or Secret action occurred. Remote/shared/public/payment writes = 0. Local temporary capture files were removed and verified absent.
+- Redacted Evidence commit: `7e73ba1542c7e142a9323c99b8c9d3a876833bdb`. No Reviewer-owned file was changed.
+- Next: stop for Reviewer acceptance. Do not execute ingress mutation in this Gate.
