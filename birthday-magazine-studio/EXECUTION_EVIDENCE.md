@@ -3,7 +3,7 @@
 **Gate:** G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND
 **Result:** RETURN_OWNER_PAYPAL_SANDBOX_MERCHANT_AUTH_REQUIRED
 **Execution branch:** codex/birthday-magazine-g3b-paypal-sandbox-entitlement
-**Base:** latest fetched GitHub main, ca8dc4e483ccf92b04f9a50e5b1db910214a7390
+**Base:** latest fetched GitHub main, bd8764de926329680d71443ae7b15061954b98ab
 **Stop point:** STOP_AT_OWNER_CHECKPOINT=YES. The Seller login, OAuth consent, and Sandbox merchant authorization belong to the Owner.
 
 This is a readiness return, not a completed G3B payment or entitlement proof. Work stopped at the PPCP Seller-authorization control, before any PayPal account login, connection, capture, refund, paid order state, entitlement, or generation-ready job.
@@ -12,7 +12,7 @@ This is a readiness return, not a completed G3B payment or entitlement proof. Wo
 
 | Area | Result | Evidence |
 |---|---|---|
-| Latest project baseline | PASS | Branch fast-forwarded to main at ca8dc4e. The required Birthday Magazine G3B and product-contract files are unchanged from the previously read c450624 base. The new main commits touched Mini Craft files only; no Mini Craft runtime or files were modified by this execution. |
+| Latest project baseline | PASS | Branch is based on main at bd8764de. The required Birthday Magazine G3B and product-contract files are unchanged from the previously read c450624 base. The intervening main commits touched Mini Craft files only; no Mini Craft runtime or files were modified by this execution. |
 | Project-isolated runtime | PASS | Docker Compose project birthday-magazine-g3b, with four project containers, two project volumes, and one project network. WordPress 7.1.1 / PHP 8.3.33, WooCommerce 11.1.2, MariaDB 11.4.7, Mailpit 1.31.2. WordPress and Mailpit bind to loopback ports 8137 and 8138. MariaDB and SMTP have no host port. See poc/g3b/artifacts/runtime-setup.json and ppcp-install.json. |
 | Mini Craft isolation readback | PASS | Before/after inventory count evidence has Mini Craft at 8 containers, 9 volumes, and 4 networks. No Mini Craft container, volume, database, PayPal configuration, or credential was used or modified. |
 | WooCommerce baseline | PASS | G3A-derived pre-install smoke and full post-PPCP regression passed. Synthetic Birthday Magazine product ID 15 is a simple virtual USD 39.99 product. Synthetic order remains on-hold and unpaid. Buyer A owner access passed; unrelated buyer and guest workspace access were denied. Generation job and model-call counters remained zero. See journey-report.json and post-ppcp-runtime-regression.json. |
@@ -55,7 +55,7 @@ All screenshots use synthetic data. Authentication values, password/reset links,
 
 ## GitHub submission
 
-The branch is based on latest main ca8dc4e483ccf92b04f9a50e5b1db910214a7390. Final commit and PR details are recorded after submission. The PR must remain open and unmerged for Reviewer assessment.
+The branch is based on latest main bd8764de926329680d71443ae7b15061954b98ab. G3B evidence commit 790bd614b07189c63c1e79055aab8a98129db64e is on codex/birthday-magazine-g3b-paypal-sandbox-entitlement. Reviewer PR #51 (https://github.com/entropy-student/project/pull/51) targets main and remains open/unmerged. This Evidence/Handoff reconciliation is being pushed as a follow-up commit on the same PR.
 
 ---
 

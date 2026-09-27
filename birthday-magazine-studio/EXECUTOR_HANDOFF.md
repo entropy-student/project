@@ -44,7 +44,7 @@ The local Compose stack and Quick Tunnel intentionally remain active for the che
 
 ### GitHub state
 
-Base is latest main ca8dc4e483ccf92b04f9a50e5b1db910214a7390. Commit and PR are recorded after push. PR must target main and remain unmerged. Reviewer/Owner is the next decision point; G3B has not passed and G3C/G4 work has not started.
+Base is latest main bd8764de926329680d71443ae7b15061954b98ab. G3B evidence commit 790bd614b07189c63c1e79055aab8a98129db64e is pushed. Reviewer PR #51 (https://github.com/entropy-student/project/pull/51) targets main and remains open/unmerged. This Handoff reconciliation is being pushed as a follow-up commit on the same PR. Reviewer/Owner is the next decision point; G3B has not passed and G3C/G4 work has not started.
 
 ---
 
