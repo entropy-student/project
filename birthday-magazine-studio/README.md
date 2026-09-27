@@ -2,65 +2,99 @@
 
 > **Current project truth:** [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md)  
 > **Start here:** [00_START_HERE.md](./00_START_HERE.md)  
-> **Document roles:** [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md)
+> **Document authority:** [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md)
 
 ## 产品目标
 
-让送礼者用照片和结构化问答，获得一份完整、可送出的个性化生日纪念杂志 PDF；用户不需要自己从空白画布构思、写作和排版。
+让送礼者上传照片并回答结构化问题，获得一份完整、可送出的个性化生日纪念杂志 PDF，而不需要自己完成写作和排版。
 
-当前 Owner 已确认的产品方向摘要：
+已冻结的 MVP 方向：
 
 - 美国优先、英语首发；
-- 首轮产品为数字 PDF；
+- 数字 PDF；
 - 测试价 **US$39.99**；
-- 付款前使用浏览器本地、零模型 API 调用的确定性预览；
-- 商店与订单采用 **WordPress + WooCommerce**；
-- 支付采用 **PayPal（官方 WooCommerce PayPal Payments）**，实现路径参考 Mini Craft：本地订单闭环 → Sandbox → 后续真实 Canary；
-- 免费层严格 **0 模型 Token**；只有服务端确认 PayPal/WooCommerce 已付款且资料完整后，才允许创建唯一 AI generation job；
-- 付费后进入个性化 AI 内容生成、确定性排版、QA、私有 proof 和 final PDF 交付；
-- 家庭食谱书不属于本项目；
-- 实体印刷后置。
+- 付款前浏览器本地确定性预览，**0 模型调用**；
+- WordPress + WooCommerce 为 canonical commerce/order system；
+- 官方 WooCommerce PayPal Payments 为首个支付路径；
+- authenticated customer account 为 MVP 私有访问模型；
+- 服务端确认 paid + intake complete 后，才允许创建唯一 generation-ready job；
+- AI 负责基于用户资料生成结构化文案；确定性模板负责 12 页排版/PDF；
+- 实体印刷后置；
+- 生产 AI API/provider 由 Owner 后续提供接口后单独接入。
 
-**以上只是产品方向摘要。当前 Gate、已验证事实、UNKNOWN 和下一步只以 `REVIEWER_HANDOFF.md` 为准。**
+## 当前进展
 
-## 当前已有
+| Gate | 状态 |
+|---|---|
+| P0 Governance / Truth Reconciliation | PASS |
+| G1 Product / Offer Baseline | PASS |
+| G2A1 Frontend / component feasibility | PASS |
+| G2A2 MVP Product Contract | PASS |
+| G2B Real-AI content → 12-page PDF Solution Proof | PASS |
+| G3A WooCommerce commerce/account/private-workspace loop | PASS |
+| G3B PayPal Sandbox + paid entitlement + refund | **INTERIM RETURN** |
+| G3BR1 Payment reconciliation + entitlement/refund closure | **CURRENT** |
+| G4 Live PayPal Canary | HOLD |
+| G5 Acquisition / economics | HOLD |
+| G6 Production hardening / scale | HOLD |
 
-- [可点击浏览器样板](./prototype/index.html)
-- [样板边界说明](./prototype/README.md)
-- 市场、产品流、获客、WordPress/插件等调研资料
+G3B 已经观察到一笔 **PayPal Sandbox** 测试支付后 WooCommerce 订单进入 paid/processing，但 provider-side capture 数量与 provider↔Woo 关联尚未独立闭环。因此当前规则是：
 
-当前样板是浏览器演示：不真实收款、不调用 AI 生成模型、不建立订单数据库、不自动交付生产 PDF。
+```text
+已有 Sandbox payment
+→ 只读 reconciliation
+→ 不允许第二笔 payment/capture
+→ correlation PASS 后验证 entitlement/idempotency
+→ 一次 Sandbox refund
+```
 
-当前技术原则：**网站和交易尽量复用 WordPress/WooCommerce 成熟组件，只自研生日杂志生成核心。**
+这不是 Live/真钱支付证据。
 
-当前 Gate 是 **G2A1**：先验证 Kadence / Blocksy / Good Issue-in-WordPress 的前端底座，以及 Storelly 免费预览、订单绑定照片上传、私有文件交付这些现成组件是否真的能复用。G2A1 通过后，再进入 **G2A2** 冻结页数、照片数、问卷、修改和 QA，之后才做 AI→PDF。
+## 已证明的技术能力
 
-## 文档
+- Good Issue-style free preview 可在 WordPress/WooCommerce 中复用；
+- WooCommerce USD 39.99 virtual product/cart/checkout/account loop；
+- checkout-created/attached customer account；
+- order-bound private workspace：owner 可访问，unrelated account / guest 直链拒绝；
+- 真实交互式 AI 内容可通过 schema + grounding，进入确定性 12 页 US Letter PDF pipeline；
+- PayPal Sandbox merchant connection、HTTPS test origin 和 Sandbox checkout path 已进入实际测试；
+- 未付款状态不会创建 generation job；
+- 当前测试流程的产品模型调用数保持 0。
 
-- [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — **唯一当前 Reviewer / 项目真相**
-- [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — 所有文档的角色和权威等级
-- [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md) — **当前技术路线：哪些复用、哪些自研**
-- [docs/G2A1_COMPONENT_FEASIBILITY_POC.md](./docs/G2A1_COMPONENT_FEASIBILITY_POC.md) — **当前执行 Gate：组件可行性 PoC**
-- [docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md](./docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md) — 下一 Gate：MVP 产品规格冻结
-- [docs/G2A_FRONTEND_COMPONENT_POC.md](./docs/G2A_FRONTEND_COMPONENT_POC.md) — 已废弃的旧 G2A 指针
-- [docs/G1_TWO_STEP_AI_PRODUCT_FLOW.md](./docs/G1_TWO_STEP_AI_PRODUCT_FLOW.md) — 两步式产品流支持设计
-- [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 获客/验证计划
-- [docs/G1_DESK_RESEARCH.md](./docs/G1_DESK_RESEARCH.md) — 市场研究快照
-- [docs/G1_REMAINING_RESEARCH.md](./docs/G1_REMAINING_RESEARCH.md) — 产品/经济性/实现候选研究
-- [docs/WORDPRESS_STACK_RESEARCH.md](./docs/WORDPRESS_STACK_RESEARCH.md) — WordPress 候选研究
-- [docs/PROJECT_CHARTER.md](./docs/PROJECT_CHARTER.md) — 初始立项历史基线
-- [PROJECT_RECORD.md](./PROJECT_RECORD.md) — legacy compatibility pointer only
+## 尚未证明 / 后置
+
+- 当前已发生 Sandbox payment 的 provider-side exact capture correlation；
+- paid + intake-complete exactly-one generation-ready job 与重复事件幂等；
+- Sandbox refund + entitlement revoke；
+- PayPal Live / real-money Canary；
+- unattended production AI provider 与 provider-spend idempotency；
+- 生产对象存储、最终私有 proof/final PDF delivery；
+- 生产部署与恢复；
+- 真实获客转化与单位经济性。
+
+## 当前工作文档
+
+- [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — **唯一当前项目真相**
+- [EXECUTOR_HANDOFF.md](./EXECUTOR_HANDOFF.md) — Executor 实际执行事实
+- [EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) — 详细脱敏证据
+- [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — 所有文档角色与状态
+- [docs/MVP_PRODUCT_CONTRACT.md](./docs/MVP_PRODUCT_CONTRACT.md) — 冻结 MVP 产品合同
+- [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md) — 支持性技术路线
+- [docs/REVIEWER_DECISION_G3B_INTERIM_RETURN.md](./docs/REVIEWER_DECISION_G3B_INTERIM_RETURN.md) — 当前 G3B Reviewer 判断
+- [docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](./docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md) — **当前执行 Gate**
+
+其他研究、历史 Gate 与旧方案保留用于 provenance，但不与 Handoff 竞争当前真相。
 
 ## 治理
 
-本项目采用 [VPS Project Governance v0.1.6](https://github.com/entropy-student/spike.skill/tree/main/vps-project-governance)。
+本项目采用 GitHub canonical [VPS Project Governance v0.1.6](https://github.com/entropy-student/spike.skill/tree/main/vps-project-governance) 及当前 active addenda。
 
 关键规则：
 
 - `REVIEWER_HANDOFF.md` 是唯一当前项目真相；
 - `PASS_CANDIDATE != PASS`；
-- 研究/计划不能冒充已完成事实；
-- UNKNOWN 明确写 UNKNOWN，不猜；
-- Executor 不自行扩大 Gate；
-- Secret / Token / Cookie / 支付凭据 / 客户私密数据不进入普通仓库文档；
-- 未来若进入 Shared VPS，必须先遵守 Storage Layout Contract 并建立 `PROJECT_STORAGE_MANIFEST.md`。
+- Reviewer 独立验收，Executor 不自行进入下一 Gate；
+- UNKNOWN 明确保留，不靠猜测填补；
+- Provider 已出现成功迹象后禁止盲目再支付/重放，先只读 reconciliation；
+- Secret / password / token / cookie / raw payment payload 不进入普通仓库文档；
+- Shared VPS 部署前必须建立 Storage Manifest，并单独经过 Shared Infra / deployment Gate。
