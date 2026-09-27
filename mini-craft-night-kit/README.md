@@ -72,7 +72,7 @@ WordPress
 - `PROJECT_STORAGE_MANIFEST.md` — Shared VPS 项目存储/恢复地图
 - `docs/GITHUB_HANDOFF_PROTOCOL.md` — Mini Craft 专属交接补充规则
 
-## 当前预计周期
+## 原始 Roadmap 工期估计（历史参考）
 
 若无外部账号审核阻塞：
 
