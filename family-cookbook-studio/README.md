@@ -86,7 +86,9 @@ G2A1-D1 已决策完成：**English-first、not English-only；OCR 完成后只�
 
 G2A1-R3A 已 PASS：**PP-OCRv6_medium** 被 Reviewer 接受为唯一免费本地主力；20 张合成食谱页 77/77 关键事实正确、零人工修改，PaddleOCR-VL-1.6 因漏温度字段且运行更重而被淘汰为主力。
 
-G2A1-R3B 的 Google 认证已从被组织策略禁止的 JSON Key 改为 **GitHub OIDC + Google Workload Identity Federation**，WIF、Service Account、Document OCR processor 和 processor version 元数据均已验证成功。当前唯一 blocker 是 **Google Cloud Billing 未启用**：真实 `:process` 请求已到达 Document AI，但返回 `BILLING_DISABLED`。启用项目 Billing 后继续同一个 R3B Gate；FALLBACK 仍为 UNKNOWN，暂时不要配置 Mistral。
+G2A1-R3B 的 Google 技术接入已经证明可行：GitHub OIDC + Workload Identity Federation、Service Account、Document OCR processor 与 processor version 均验证通过，真实 `:process` 请求只因 Billing 未启用而被拒绝。由于当前 Billing 账户要求 **USD 30 一次性预付款**，本轮不为 11 个测试样本启用该预付。
+
+当前 R3B 已切换为 **Mistral OCR 4.1 first**：仍只测试相同的 11 个公开 hard cases，最终只会选择 `MISTRAL_OCR_4_1` 或 `NONE`。Google 保留为以后可切换的 provider adapter。
 
 G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
 
@@ -104,7 +106,8 @@ G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、�
 - [docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md](./docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md) — R3A PASS / R3B framework
 - [docs/G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md](./docs/G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md) — Owner 已批准
 - [docs/G2A1_R3B_API_FALLBACK_BENCHMARK.md](./docs/G2A1_R3B_API_FALLBACK_BENCHMARK.md) — R3B 执行契约（Google credential RETURN）
-- [docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md](./docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md) — **当前 Owner 配置步骤**
+- [docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md](./docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md) — Google 技术接入记录（当前 deferred）
+- [docs/G2A1_R3B_MISTRAL_PROVIDER_SETUP.md](./docs/G2A1_R3B_MISTRAL_PROVIDER_SETUP.md) — **当前 Owner 配置步骤**
 - [docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md](./docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md) — 下一 Gate
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 获客/验证计划
 - [PROJECT_RECORD.md](./PROJECT_RECORD.md) — legacy compatibility pointer only
