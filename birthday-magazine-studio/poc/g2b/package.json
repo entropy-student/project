@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "proof": "node src/proof.mjs"
+    "proof": "node src/proof.mjs",
+    "proof:g2br1": "node src/g2br1-run.mjs",
+    "proof:g2br1:duplicate": "node src/g2br1-run.mjs --duplicate-check"
   },
   "dependencies": {
     "pdf-lib": "1.17.1",

@@ -1,6 +1,34 @@
 # Executor Handoff — Birthday Magazine Studio
 
-## Current Gate — G2B Local AI/PDF Solution Proof
+## Current Gate — G2BR1 Real AI Generation Closure
+
+- **Gate:** G2BR1_REAL_AI_GENERATION_CLOSURE
+- **Branch:** codex/birthday-magazine-g2br1-real-ai-closure
+- **Base commit:** c22f1478973bcee11097c2473ee726925613fc81 (latest GitHub main before handoff)
+- **Result:** RETURN_CODEX_EXEC_FAILED
+**Stop point:** STOP_AT_REVIEWER=YES; do not enter G3.
+
+- ACCEPTED_G2B_BASELINE=REUSED
+- CHATGPT_LOGIN_PREFLIGHT=PASS
+- CODEX_EXEC_INVOCATIONS=3_OF_3
+- AI_STRUCTURED_GENERATION=RETURN_CODEX_EXEC_FAILED
+- SUCCESSFUL_STRUCTURED_RESPONSES=0
+- GROUNDING_AUDIT=NOT_RUN_NO_AI_OUTPUT
+- DYNAMIC_MODULES=NOT_RUN_NO_AI_OUTPUT
+- ACTUAL_AI_PDF=NOT_RUN_NO_AI_OUTPUT
+- DETERMINISTIC_QA=NOT_RUN_NO_AI_OUTPUT
+- IDEMPOTENCY=PASS_DUPLICATE_REJECTED_BEFORE_FOURTH_CODEX_EXEC
+- FORBIDDEN_ACTIONS=0
+- G3_STARTED=NO
+- STOP_AT_REVIEWER=YES
+
+Three Codex CLI child processes were started with the signed-in ChatGPT route and each exited with code 1. Attempts 1–2 used CLI 0.155.0-alpha.16.3; attempt 3 used CLI 0.149.1. The later two have only a sanitized NETWORK_OR_TRANSIENT classification; the precise cause is not known. The successful response count is zero, and the run cap is exhausted. No human reference fixture was substituted.
+
+The follow-up invocation reused the failed canonical synthetic job and was rejected before a fourth Codex process. This proves the duplicate guard after a failed generation; it does not prove idempotency after a successful generation or satisfy the overall Gate.
+
+Reviewer should assess the attached implementation and failure evidence, including whether a separately authorized runtime follow-up is needed to reach the Codex inference route. This handoff does not make a PASS decision and does not choose that next step.
+
+## Historical G2B baseline — preserved
 
 **Gate:** G2B_LOCAL_AI_PDF_SOLUTION_PROOF  
 **Branch:** codex/birthday-magazine-g2b-local-ai-pdf-proof  
