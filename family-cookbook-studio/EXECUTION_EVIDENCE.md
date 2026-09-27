@@ -268,3 +268,86 @@ RETURN_G2A1_R2_OCR_ROUTE_INSUFFICIENT
 
 NEW_PROVEN_ACTIONS: PaddleOCR Transformers full-page inference; actual suspicious-crop TrOCR calls; public handwriting subset; local Kadence/browser preview measurements; Family-specific order-bound upload and private-delivery access checks. UNKNOWN: representative handwriting/language/recipe accuracy beyond these fixtures, production latency/economics, hosted Actions billing/quota valuation. BLOCKED for PASS: the OCR-route review criterion; TrOCR resolved no routed cases and did not reduce confirmation burden. As checked at 2026-09-26 19:09 UTC, marked run 36263385997 remained in_progress at step 8 (PaddleOCR Transformers inference); conclusion, remaining job steps and final artifacts were not yet available. This run is not represented as successful. Run 36262841714 is the completed benchmark source used for the OCR insufficiency determination. No main merge; no G2A2.
 
+
+## G2A1-R3A — Free / Local Primary Benchmark
+
+> Evidence snapshot: 2026-09-27 (UTC)  
+> Execution state: `PASS_CANDIDATE_G2A1_R3A_LOCAL_PRIMARY_SELECTION`  
+> Scope: OCR-only. WordPress, WooCommerce, Kadence, preview, upload, and delivery were not rerun; existing accepted evidence and the R2 RETURN history remain unchanged.  
+> Main baseline read before R3A: `2f41e5d8382426023688cdc4b41f70161c5f30cb`; no merge/rebase was performed.  
+> Benchmark outputs / source adjustments commit: `2a9f242defc3f80f2e1b720b2db03a256c765070` (parent `3058603e6620617520335d06857e384b6eaf045d`).
+
+### Provenance and Actions
+
+- `CARRIED_FORWARD` The earlier `RETURN_G2A1_OCR_ENVIRONMENT_BLOCKED`, `RETURN_G2A1_R1_RESOURCE_BLOCKED`, and `RETURN_G2A1_R2_OCR_ROUTE_INSUFFICIENT` sections above are preserved. Previously accepted R2 WP/Woo/Kadence, browser-local preview, upload, and private-delivery evidence were not repeated because R3A is OCR-only.
+- `NEW_PROVEN_R3A` Workflow `.github/workflows/family-cookbook-g2a1-r3a.yml`, workflow blob `223ca8213c0ea110eaa31efb6de23de20a95ce40`; branch-scoped, guarded by `[g2a1-r3a-run]`, `permissions: contents: read`. No repository Secrets, paid service, or API token was used.
+- `NEW_PROVEN_R3A` Actions run [36289130217](https://github.com/entropy-student/project/actions/runs/36289130217), input commit `e9897c20dbe62fabd3a7e83f6de04966c28675dc`, conclusion `success`; all model, scoring, completion-gate, log, and artifact-upload steps succeeded. Artifact `family-cookbook-g2a1-r3a-36289130217`, ID `10921757339`, 60,650 bytes, SHA-256 `1c0fc7e1dc319da4d7ec133311982fc84febdbd0d20a0858a8e2bcf20d78be4a`.
+- `NEW_PROVEN_R3A` Both candidates processed 35/35 inputs (20 synthetic recipe pages, 12 public genuine handwriting crops, 3 multilingual probes). Comparison of per-sample input SHA-256 values found 0 mismatches across all 35 IDs.
+- `OBSERVED` Attempt 1, run 36288635585, failed because PaddleOCR-VL lacked the official optional `doc-parser` dependency; the dependency was added through the official PaddleOCR package extra before the successful run. It is not counted as a candidate result.
+- `UNKNOWN` Attempt 3, run 36290381171, was still `in_progress` at 2026-09-27 04:23:38 UTC; its active step was PaddleOCR-VL inference, with no final logs/artifact yet. It is excluded from the selected measurements. The final corpus uses the same GH04 crop bounds/hash consumed by both candidates in successful run 2; the two-line transcription and partial-coverage annotations were corrected after run 2. This keeps both models' measured input bytes identical to the final labeled corpus.
+- `NEW_PROVEN_R3A` To correct the post-run annotation scope, the checked-in deterministic `score_benchmark.py` was rerun over run 2's raw Actions outputs using local Python 3.10.11 / PowerShell 7.6.5. This was scoring only: the script uses standard-library text/semantic comparison and performed no OCR/model import or inference. Scored raw rows retain the original `raw_output`; normalized output and semantic facts are separate. The revised labels do not alter either engine's raw transcription or its input bytes.
+- Structured, reviewed outputs are committed under `g2a1/r3a/`: `ppocrv6-results.json`, `paddleocr-vl-results.json`, `semantic-score.json`, `review-burden.json`, `comparison.json`, `fallback-evaluation-set.json`, `benchmark-summary.json`, `runner-preflight.json`, and `run-metadata.json`. Runner-only `prepared-corpus.json`, downloaded source images, model cache/weights, logs, and runtime files were not committed.
+
+### Runner and exact model/runtime evidence
+
+- `NEW_PROVEN_R3A` GitHub hosted Ubuntu 24.04.5 runner image `20260920.314.1`, Linux x86_64, GitHub runner `1000000085`; AMD EPYC 9V74, 4 logical CPUs; Python 3.12.3 x64; RAM 16,766,406,656 bytes total / 15,782,260,736 available at preflight; 3 GiB existing swap; root free disk 92,343,398,400 bytes. No GPU or VRAM was available. PyPI, CPU Torch wheel, Hugging Face, Wikimedia source/image endpoints were reachable. Preflight status was `ready`.
+- `NEW_PROVEN_R3A` Both candidates ran CPU-only through official PaddleOCR Transformers inference: PaddleOCR 3.7.0, PaddleX 3.7.0, Transformers 5.10.0, Torch 2.8.0+cpu; PaddlePaddle was not installed. PP-OCRv6 initialization was 15.768 s, inference 133.675 s / 35 inputs, process CPU 267.630 s, sampled peak RSS 2,019,479,552 bytes, model storage 164,762,132 bytes. Model files: PP-OCRv6_medium_rec 76,741,720 bytes, SHA-256 `5f43c16f2a684b1d2284662178bdb604febd3d6bfdb5ca73828d08f0d7c0c3e9`; det 88,020,412 bytes, SHA-256 `bd393266c02e1a680b1b34c301d5d0d81e6290440b7f8ab0f5d5032276b17eb1`.
+- `NEW_PROVEN_R3A` PaddleOCR-VL-1.6 used the official `doc-parser` extra and Transformers engine on CPU. Initialization was 24.201 s, inference 520.060 s / 35 inputs, process CPU 1,040.500 s, sampled peak RSS 3,915,350,016 bytes, model storage delta 2,052,140,799 bytes. Files: PP-DocLayoutV3 133,270,468 bytes / SHA-256 `5ea422c6cc5fe759a47e1357c35639b58173508e025a3131cbe4b6ac59e2b85e`; PaddleOCR-VL-1.6 1,917,255,968 bytes / SHA-256 `85a479d506a11e724e7285d395c551be69f41dbc16b6342d3cacfb189aed71db`; tokenizer 1,614,363 bytes / SHA-256 `34ef7db83df785924fb83d7b887b6e822a031c56e15cff40aaf9b982988180df`.
+- Local compute is not zero-cost: PaddleOCR-VL used about 3.89× PP-OCRv6 inference time, 1.90× peak RSS, and 12.45× model storage in this run. No API/model tokens, network inference, GPU, or VRAM were used. Run-time/model source downloads and hosted CPU/RAM/disk/time are the measured local/runner costs; Actions account billing valuation remains `UNKNOWN`.
+
+### Fixture sources and scope
+
+- `NEW_PROVEN_R3A` Shared corpus: 20 synthetic typography recipe pages covering critical quantities/fractions/units, temperatures/times, skew, shadow, low contrast, multiline and mixed layouts; 12 genuine English handwriting image crops; and 3 generated French/German/Spanish probes excluded from English scoring. Synthetic typography is not genuine handwriting.
+- `NEW_PROVEN_R3A` The handwriting crops come from two public historic Wellcome Library recipe manuscripts via Wikimedia Commons, with source references and crop/sample IDs in `corpus.json` and `genuine-handwriting-sources.json`. Metadata records CC BY 4.0, original dimensions/checksums, provenance, and non-customer/non-private status. The original large scans and crop images are not committed.
+- `OBSERVED` Seven handwriting crops have complete visual transcriptions and five (`GH06`, `GH07`, `GH08`, `GH10`, `GH12`) have partial transcript coverage. Partial crops are excluded from aggregate CER and any extra OCR text is `unverified_extra_content`, not a confirmed hallucination. These two historic manuscripts are not representative evidence for modern family-card handwriting.
+
+### Semantic fidelity, hallucination, and missing content
+
+| Metric | PP-OCRv6_medium | PaddleOCR-VL-1.6 |
+|---|---:|---:|
+| Full inputs processed | 35 / 35 | 35 / 35 |
+| Synthetic recipe critical facts | 77 | 77 |
+| Synthetic semantic critical errors | 0 | 4 |
+| Missing critical fields (synthetic + complete handwriting) | 1 | 4 |
+| Silent critical semantic errors | 0 | 0 |
+| Missing recipe lines / blank English results | 0 / 0 | 0 / 0 |
+| Confirmed unsupported hallucinations | 0 | 0 |
+| Partial-handwriting extra content, unverified | 5 | 5 |
+| Synthetic semantic accuracy | 100% | 94.81% |
+| Synthetic exact-line accuracy | 100% | 96.83% |
+| English handwriting score (7 complete crops only) | 82.73% | 89.98% |
+
+- `NEW_PROVEN_R3A` PP-OCRv6's one missing critical fact is the handwritten quantity `8 eggs` in GH04; it is highlighted as a missing quantity/ingredient association, not silently normalized or guessed. It had no synthetic critical-field errors.
+- `NEW_PROVEN_R3A` PaddleOCR-VL's four critical errors are missing temperatures on synthetic pages F01, F02, F13, and F20. No other measured critical fact was silently changed. Its complete-handwriting CER score was higher, but this small historic sample has seven fully transcribed crops only.
+- `NEW_PROVEN_R3A` No unsupported ingredient/fact was confirmed against fully annotated source images. Five partial crops per engine contain output beyond the transcription scope; those remain unverified and are not called hallucinations.
+- `NEW_PROVEN_R3A` The three generated multilingual probes returned nonblank text for both models. This is only a multilingual stability smoke probe; it does not establish language parity or real-world multilingual accuracy.
+
+### Single-page review burden
+
+Review burden is separated by input type. The `LIGHT_REVIEW` page classification applies to 20 full synthetic recipe pages. Handwriting crop corrections are reported separately so crop edit counts are not presented as whole-page UX.
+
+| Review measurement | PP-OCRv6_medium | PaddleOCR-VL-1.6 |
+|---|---:|---:|
+| Synthetic recipe pages with zero edits | 20 / 20 (100%) | 16 / 20 (80%) |
+| Synthetic manual edit fields / characters | 0 / 0 | 8 / 24 |
+| Synthetic critical fields changed by user | 0 | 4 |
+| Synthetic whole-line retypes / reuploads | 0 / 0 | 0 / 0 |
+| Full-page review class | LIGHT_REVIEW | LIGHT_REVIEW |
+| Complete handwriting crops: edit fields / characters (7) | 8 / 43 | 6 / 22 |
+| All handwriting crops: edit fields / characters (includes 5 partial transcripts) | 13 / 69 | 11 / 123 |
+| Handwriting critical fields changed | 1 | 0 |
+| Handwriting whole-line retypes | 0 | 1 (GH08) |
+
+- `NEW_PROVEN_R3A` The final primary's R3B fallback-evaluation set contains 11 unresolved/manual-review sample IDs (including GH04 and partial-scope items). It is an evaluation input only; no API fallback was invoked. API fallback remains untested and requires the requested Owner checkpoint before R3B.
+- Selection is based on the required fidelity priority, not output appearance: `PP-OCRv6_medium` is recommended primary; `PaddleOCR-VL-1.6` is rejected as primary because it missed four synthetic temperatures and cost substantially more CPU/RAM/storage. PaddleOCR-VL's better handwriting score is retained in the comparison for Reviewer judgment. Residual risk is the GH04 missing quantity and limited historical handwriting coverage.
+
+### Cleanup and remaining unknowns
+
+- `PROVEN` Completed run 2 used an ephemeral hosted runner and its short-lived artifact; no original images, model cache/weights, Python dependencies, private data, credentials, or temporary prepared corpus were committed. Artifact retention was one day.
+- `UNKNOWN` Run 3 was still active at the timestamp above; its eventual conclusion and runner cleanup are not claimed. Run 2 is the complete, selected inference evidence.
+- `UNKNOWN` Modern household handwriting performance, broader handwriting generalization, non-English accuracy parity, production hardware costs, and Actions account cost/quota valuation.
+- `PROVEN` No cloud/API OCR or VLM, third local OCR candidate, payment, production write, customer data, WordPress/WooCommerce execution, or main merge occurred in R3A.
+
+### R3A conclusion
+
+`PASS_CANDIDATE_G2A1_R3A_LOCAL_PRIMARY_SELECTION` — recommend `PP-OCRv6_medium` as the single free/local primary and reject `PaddleOCR-VL-1.6` as primary for the current English-first MVP benchmark. Preserve user review for critical and uncertain fields. API fallback was not tested; `R3B_OWNER_CHECKPOINT=REQUIRED`. Stop at Reviewer; do not enter G2A2.
