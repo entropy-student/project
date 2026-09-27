@@ -5006,3 +5006,64 @@ STOP_AT_REVIEWER=YES
 ```
 
 The failure is limited to the read-only inspect-format probe; it is not evidence of port/config drift. No Caddy/Admin API/autosave read, candidate adaptation, indexing probe, or follow-up SSH was performed. No service, config, DNS, product, payment, Secret, or Shared Infrastructure state was changed.
+
+
+## K6_PHASE_F_R1R2_CADDY_ONLY_READONLY_SOURCE_RECONCILIATION — RETURN (2026-09-27)
+
+```text
+GATE=K6_PHASE_F_R1R2_CADDY_ONLY_READONLY_SOURCE_RECONCILIATION
+RESULT=RETURN_REVIEWER_F_R1R2_READONLY_PROBE_FAILED
+SUMMARY=One canonical strict SSH session succeeded and pre-sudo identity matched ops@srv1970241. Fresh Caddy/WordPress/MariaDB continuity passed (all running, restart count 0; MariaDB healthy), and fresh Google DoH A/AAAA/CNAME checks returned NXDOMAIN. The read-only helper stopped while parsing docker inspect Entrypoint/Cmd JSON because its schema check assumed both values were arrays; the raw field shape was not retained, so the exact nullable/non-array field is UNKNOWN. The session ended at that point; the one-SSH limit was honored. No same-session parser fallback was run after the helper had already exited. No Caddyfile, autosave, Admin API config, route semantics, candidate adapt, edge probe, or indexing read is claimed.
+SSH_ATTEMPTS=1
+SSH_NATIVE_EXIT=42;REMOTE_PYTHON_HELPER_FAIL_CLOSED
+SSH_HOST_KEY_MATCH=YES;STRICT_KNOWN_HOSTS_HANDSHAKE_ESTABLISHED
+REMOTE_PRE_SUDO_WHOAMI=ops
+REMOTE_PRE_SUDO_ID_UN=ops
+REMOTE_PRE_SUDO_UID_NONZERO=YES
+REMOTE_PRE_SUDO_HOSTNAME=srv1970241
+REMOTE_IDENTITY=ops@srv1970241
+CADDY_RUNTIME_CONTINUITY=PASS;running;restart_count=0
+WORDPRESS_RUNTIME_CONTINUITY=PASS;running;restart_count=0
+MARIADB_HEALTH=PASS;running;healthy;restart_count=0
+CURRENT_MINICRAFT_DNS=NXDOMAIN;Google_DoH_A_AAAA_CNAME_status=3
+CURRENT_MINICRAFT_CADDY_ROUTE=NOT_READ
+CADDY_START_MODE=NOT_READ
+CADDY_PERSIST_CONFIG=NOT_READ
+CADDY_CONFIG_DIR=NOT_READ
+CADDY_AUTOSAVE_PATH=NOT_READ
+CADDY_AUTOSAVE_EXISTS=NOT_READ
+CADDY_AUTOSAVE_BYTES=NOT_READ
+CADDY_AUTOSAVE_MTIME=NOT_READ
+CADDY_AUTOSAVE_SHA256=NOT_READ
+CADDY_ACTIVE_CONFIG_SHA256=NOT_READ
+AUTOSAVE_MATCHES_ACTIVE_HTTP_ROUTES=NOT_RUN
+LOCALHOST_ROUTE_PRESERVED=NOT_RUN
+EDGE_TEST_ROUTE_RECOVERABLE=NOT_RUN
+EDGE_TEST_ROUTE_FINGERPRINT=NOT_RUN
+CANDIDATE_CADDYFILE_ADAPT=NOT_RUN
+CANDIDATE_CADDYFILE_BYTES=NOT_CREATED
+CANDIDATE_CADDYFILE_SHA256=NOT_CREATED
+CANDIDATE_EXISTING_ROUTE_PARITY=NOT_RUN
+CANDIDATE_MINICRAFT_ROUTE=NOT_RUN
+MINICRAFT_EDGE_UPSTREAM=wordpress:80;PRIOR_ACCEPTED;NOT_RECHECKED
+EDGE_TO_MINICRAFT_PRIVATE_REACHABILITY=NOT_RUN
+CANARY_INDEXING_STATE=NOT_CHECKED
+DNS_CANARY_POLICY=A_DNS_ONLY_TO_2.24.193.133
+PRODUCT_223_CLASSIFICATION=SANDBOX_CANARY_ONLY_BLOCKS_SOFT_LAUNCH;PRIOR_ACCEPTED;NOT_MODIFIED
+PUBLIC_INGRESS_CHANGESET=NOT_READY
+ROLLBACK_PLAN=NOT_FINALIZED
+OWNER_CHECKPOINT_REQUIRED=YES
+WP_DB_HOST_PORT_PROBES=0;NOT_RUN
+SHARED_INFRA_WRITES=0
+PUBLIC_INGRESS_CHANGE=0
+PAYMENT_ACTIONS=0
+PAYPAL_LIVE=NO
+SECRET_VALUE_OR_HASH_ACCESS=0
+UNRELATED_SERVICES_CHANGED=NO
+LOCAL_TEMP_CLEANUP=PASS_NO_DISK_TEMP_CREATED
+REMOTE_TEMP_FILES_CREATED=0
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+No Caddy, autosave, Admin API load/reload, DNS, cloudflared, firewall, Docker network/Compose, application, product, indexing, payment, Secret, or other Shared Infrastructure mutation occurred. The failure is an Executor read-only metadata-parser assumption, not evidence of Caddy, port, DNS, or application drift. The session was not retried.
