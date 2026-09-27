@@ -1,7 +1,7 @@
 # Birthday Magazine Studio — REVIEWER HANDOFF
 
 > Maintainer: Reviewer / Architect / Gatekeeper only  
-> Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1  
+> Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1 + Production Provider Canary/Recovery Contract rev2  
 > Executor facts: `EXECUTOR_HANDOFF.md`  
 > Detailed evidence: `EXECUTION_EVIDENCE.md`  
 > Last reviewed: 2026-09-28
@@ -361,9 +361,13 @@ Status:
 
 G4 remains HOLD until G3BR1 closes parent G3B with a Reviewer PASS.
 
-### Rollback
+### Current Gate rollback / recovery
 
-All G2A1 changes are local/test and Git-reversible. No production resource is in scope.
+- G3BR1 must operate on the already-observed Sandbox transaction; payment replay is not a rollback strategy.
+- Before any refund/mutation, use fresh read-only reconciliation and exact correlation.
+- The disposable G3B runtime can be reconstructed from committed project-local Docker/WordPress artifacts if needed; do not reuse Mini Craft state.
+- Temporary HTTPS origin and WordPress URL rebound are reversible and must be restored/stopped at Gate cleanup.
+- No production resource is in scope.
 
 ## 7. Confirmed Facts
 
@@ -375,10 +379,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - PayPal through the official WooCommerce PayPal Payments plugin is now the accepted payment path, using Mini Craft as the implementation reference.
 - The free path must remain deterministic and zero-model-token; paid AI spend is gated by confirmed payment entitlement plus complete intake.
 - The reuse-vs-custom technical route is documented in `docs/TECHNICAL_ROUTE.md`.
-- Kadence Jewelry Shop + Storelly is the first PoC candidate, not a final selection.
-- Blocksy Modern Shop + Storelly is the comparison backup.
-- Existing Good Issue remains the editorial/custom-reference baseline.
-- Vanquish Upload Files and Vanquish Attach Me remain PoC candidates, not accepted production dependencies.
+- Good Issue-style WordPress preview is the accepted frontend feasibility foundation from G2A1.
+- Storelly is rejected for the browser-local free-preview path; Kadence/Blocksy named starter-site combinations were not accepted as the current product foundation.
+- Vanquish Upload Files and Vanquish Attach Me are registered-account reuse candidates only; their guest bearer-link paths are rejected for strict private MVP use.
 - Other WordPress/plugin research remains candidate research unless separately accepted.
 - Mini Craft's accepted commerce/payment history is an implementation reference for G3A/G3B: Docker/MariaDB is preferred over Studio/SQLite, commerce is proven before PPCP, and public HTTPS origin requirements are deferred to G3B.
 - There is no current production deployment.
