@@ -1,7 +1,7 @@
 # Mini Craft Night Kit — PROJECT PLAN & ROADMAP
 
-Last updated: 2026-09-25  
-Status: **ACTIVE — K6 C1R5 FRESH SECRET REGENERATION**
+Last updated: 2026-09-28  
+Status: **ACTIVE — K7 R1 CANARY FIXTURE + RESEND EMAIL FOUNDATION**
 
 ## 0. Authority and current override
 
@@ -12,11 +12,17 @@ Current accepted execution state:
 
 ```text
 K0-K5=PASS
-K6=AUTHORIZED_IN_PROGRESS_NOT_DEPLOYED
-CURRENT_GATE=K6_PHASE_C1R5_FRESH_SECRET_REGENERATION_AND_PROVISIONING
-C1R5_OWNER_AUTHORIZATION=GRANTED
-OLD_DPAPI_PENDING=RETAIN_ENCRYPTED_UNPROMOTED_UNDELETED
+K6_VPS_DEPLOYMENT=PASS
+PUBLIC_SANDBOX_INGRESS=ACTIVE
+CURRENT_GATE=K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+CURRENT_GATE_STATUS=AUTHORIZED_RESUME_AFTER_OWNER_RESEND_KEY_ENTRY
 PUBLIC_ORIGIN=https://minicraft.spikersun.com
+RESEND_DOMAIN_VERIFIED=YES
+WORDPRESS_RESEND_PLUGIN=ACTIVE
+OWNER_RESEND_API_KEY_DIRECT_ENTRY=COMPLETED
+CANARY_PRODUCT_STATE=DRAFT_PREPARED_NOT_PUBLISHED
+EMAIL_TEST=NOT_YET_SENT
+PUBLIC_POPULATED_CHECKOUT=NOT_YET_VALIDATED
 PAYPAL_LIVE=NO
 REAL_PAYMENT_AUTHORIZED=NO
 SOFT_LAUNCH=NO
@@ -68,15 +74,15 @@ K0 Kadence PoC                    PASS
 K1 UI/Growth Brand Adaptation     PASS
 K2 WooCommerce Commerce Loop      PASS
 K3 PayPal Sandbox                 PASS
-K4 Conversion/Trust               PASS for current local-test state
+K4 Conversion/Trust               PASS
 K4.5/K4.6 Growth readiness/spec   PASS
 K5 Release Candidate QA           PASS
-K6 VPS Deployment                 AUTHORIZED / IN PROGRESS / NOT DEPLOYED
-K6 Secret provisioning C1R5       CURRENT / AUTHORIZED
-K7 Production Canary              NOT STARTED
+K6 VPS Deployment                 PASS
+K7 Production Canary readiness    RETURN / remediation in progress
+K7 R1 Canary + Resend foundation  CURRENT / AUTHORIZED
 ```
 
-Current next action is C1R5: seal a fresh canonical Secret serialization/parser with synthetic data, then conditionally provision the exact ten fresh Secret files and verify the new encrypted recovery artifact. Mini Craft deployment/start remains a later K6 Gate. Do not replay K0–K5.
+Current next action: finish the K7 R1 preparation without any real payment — verify the connected Resend sender and one delivery test, publish the exact hidden virtual JPY500 Canary fixture under the accepted tax-disabled equivalence, then prove populated Checkout total JPY500 with PayPal method visible. No order submit, PayPal Live, payment or refund is authorized.
 
 ## 4. Execution Gates
 
@@ -208,10 +214,16 @@ order
 
 ## 6. Current Next Action
 
-`K6R1_GOVERNANCE_ALIGNED_SSH_RECOVERY`
+`K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION`
 
-Use the already validated Shared VPS SSH contract exactly once. If strict SSH recovers, refresh only
-the dynamic Shared VPS facts required by K6 and stop at Reviewer. If the same pre-host-key close
-repeats, stop at the minimal Hostinger-console Owner checkpoint.
+Resume after Owner's direct Resend API-key entry. Do not repeat Resend DNS/domain setup.
 
-Do not deploy in K6R1.
+Required remaining proof:
+- official Resend plugin connected without exposing the key;
+- sender `Mini Craft <support@minicraft.spikersun.com>`;
+- exactly one non-sensitive test email delivered to an Owner-controlled real recipient;
+- exact hidden virtual Canary product at JPY500, no shipping and effective tax JPY0;
+- populated Checkout total JPY500 and PayPal method visible;
+- zero order/payment/refund actions.
+
+Then STOP_AT_REVIEWER.
