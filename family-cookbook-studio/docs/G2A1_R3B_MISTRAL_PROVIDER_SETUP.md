@@ -1,7 +1,7 @@
 # G2A1-R3B — Mistral OCR 4.1 Provider Setup
 
 > Owner setup guide  
-> Status: **CURRENT OWNER ACTION**  
+> Status: **DEFERRED / FREE-MODE OCR RATE-LIMIT BLOCKED**  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)  
 > Current provider order: **Mistral OCR 4.1 first**  
 > Google status: **DEFERRED_DUE_TO_BILLING_PREPAYMENT_FRICTION**
@@ -140,3 +140,21 @@ Do not:
 - add another OCR provider;
 - use private/customer data;
 - enter G2A2 before Reviewer closes R3B.
+
+
+---
+
+## 8. Probe Result
+
+Mistral API key configuration succeeded, but the OCR benchmark could not begin:
+
+- initial run: HTTP 429 `Rate limit exceeded`;
+- backoff run: 15s, 30s, 60s, 90s retries all remained HTTP 429;
+- HTTP 402 Payment Required was not observed;
+- successful OCR pages: 0.
+
+Therefore this is not a recognition-quality decision.
+
+Owner preference is to stop Free-mode retries and return to Google Document AI rather than enable paid Mistral access for this Gate.
+
+Keep the provider adapter abstraction; Mistral may be retested later if plan limits change.
