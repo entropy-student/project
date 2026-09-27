@@ -47,7 +47,7 @@ private proof / final delivery
 | Optional story/context intake | Order-bound fields / thin project plugin | ACCEPTED PATTERN | Small |
 | Background orchestration | Action Scheduler pattern | ACCEPTED PATTERN | Job definitions |
 | Image preprocessing | OpenCV/library-backed rotate/deskew/crop/contrast/quality checks | ACCEPTED DIRECTION | Yes |
-| Handwriting OCR | **PaddleOCR primary + TrOCR ambiguous-region fallback** | ACCEPTED MVP ARCH / POC | Thin adapter |
+| Handwriting OCR | **PaddleOCR primary; at most one target-language fallback/second pass; user confirmation final fallback** | PRIMARY ACCEPTED / FALLBACK REOPENED | Thin adapter |
 | Recipe extraction | Structured schema + provenance | CUSTOM CORE | Yes |
 | Uncertainty policy | confidence/rules + review queue | CUSTOM CORE | Yes |
 | Correction/review UI | order/private review surface | CUSTOM CORE | Yes |
@@ -90,9 +90,9 @@ Default paid compute path:
 ```text
 private source image
 → local/library image preprocessing
-→ PaddleOCR primary attempt
-→ deterministic critical-token/schema checks
-→ if ambiguous: crop suspicious region + TrOCR fallback
+→ target-language PaddleOCR primary attempt
+→ deterministic semantic critical-value/schema checks
+→ if ambiguous: at most one bounded target-language fallback/second pass
 → if still uncertain/disagrees: user/reviewer confirmation
 → approved canonical recipe
 → deterministic HTML/CSS → PDF
@@ -178,14 +178,16 @@ ocr_adapter(image)
   }
 ```
 
-Accepted MVP OCR contract:
-1. **PaddleOCR** — the only full-page primary OCR engine.
-2. Deterministic confidence/critical-value rules decide whether a region is suspicious.
-3. **Microsoft TrOCR** — fallback only for suspicious cropped lines/regions.
-4. **User/reviewer confirmation** — final fallback when OCR remains uncertain or engines disagree.
-5. No third OCR/model is added merely to automate the last uncertain cases.
+Current OCR contract after R2:
+1. **PaddleOCR** remains the full-page primary candidate.
+2. Target language must be frozen before final OCR qualification.
+3. Deterministic rules score **semantic critical facts**, not typography alone.
+4. Only **one** bounded fallback/second pass may be used.
+5. The tested `microsoft/trocr-small-handwritten` configuration is deprecated because it reduced confirmations by 0 in R2.
+6. Reviewer preference is a language-specific PaddleOCR recognition/crop second pass when feasible, to avoid a second framework/runtime.
+7. **User/reviewer confirmation** remains the final fail-closed fallback.
 
-Explicitly deferred from MVP: Tesseract, managed/cloud OCR, VLM/vision OCR. G2A1 validates whether this two-engine contract is sufficient; it is not a multi-provider bake-off.
+Explicitly deferred from MVP: broad multi-provider OCR bake-offs, cloud OCR and VLM/vision OCR.
 
 ## 7. Frontend / Theme Baseline
 
@@ -240,7 +242,7 @@ family-cookbook-core
 ├─ processing-job idempotency
 ├─ image preprocessing
 ├─ PaddleOCR primary adapter
-├─ TrOCR fallback adapter
+├─ bounded target-language fallback/second-pass adapter (TBD after language freeze)
 ├─ recipe schema extraction
 ├─ provenance mapping
 ├─ uncertainty detection
