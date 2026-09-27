@@ -1,15 +1,55 @@
-# Topic Operating System v0.1
+# Topic Operating System v0.2
 
 ## 1. Purpose
 
-在进入 G3 Writer 之前，先解决两个基础问题：
+在进入 G3 Writer 之前，先解决三个基础问题：
 
 1. 选题从哪里来；
-2. 如何避免 Topic / Angle / Story Motif 重复。
+2. 如何先从普通人已经关心的世界里找到值得追问的 WHY，而不是只从 AI 名词/新闻出发；
+3. 如何避免 Topic / Angle / Story Motif 重复。
 
 本系统的目标不是“每天随机生成一个 AI 概念”，而是：
 
 > **持续捕获真实需求与新鲜信号，并从一个有历史、有去重、有反馈的内容资产池里选择下一期。**
+
+### v0.2 Entry Principle — Human-world-first
+
+v0.2 不推翻 HOT / EVERGREEN，也不推翻 Human Relevance / Mechanism / Storyability；只把 **Topic Supply 的第一入口往人类世界前移一层**。
+
+旧的默认路径：
+
+```text
+AI Signal / AI Problem
+→ Audience Translation
+→ Human Problem
+→ Mechanism
+→ Story
+```
+
+v0.2 默认优先路径：
+
+```text
+大众兴趣 X / 现实生活现象
+→ Observed Paradox（本应 A，却出现 B）
+→ WHY（为什么会这样）
+→ Human Tension（两种都合理的力量发生冲突）
+→ AI Changed Process（AI 改变/压缩/放大了哪个人的过程）
+→ AI / Domain Mechanism
+→ Human Stakes
+→ Story
+```
+
+内部短口令：
+
+> **X → Paradox → WHY → Human Tension → AI Mechanism → Story**
+
+关键约束：
+
+- X 必须在没有 AI 术语时仍值得普通人关心；
+- WHY 必须是真问题，不是知识标题换成问号；
+- Human Tension 不是预设结论，而是可被故事测试的矛盾；
+- AI 仍必须进入因果链，不能只是热点标签或装饰；
+- 现有 `Controlling Question First → Idea vs Counter-Idea → Climax proves` 规则继续有效，不在 Topic Stage 把立意写死。
 
 ---
 
@@ -119,10 +159,13 @@ Evergreen 不等于“百科概念”。
 
 ## 4. Topic Pipeline
 
-RAW SIGNALS
+RAW HUMAN / AI SIGNALS
 → NORMALIZE / CLUSTER
+→ X DOMAIN / HUMAN SITUATION
+→ OBSERVED PARADOX
+→ WHY + HUMAN TENSION
+→ AI CHANGED PROCESS / DOMAIN MECHANISM
 → CANONICAL TOPIC CANDIDATE
-→ AUDIENCE TRANSLATION
 → HARD GATES
 → DUPLICATE GATES
 → REACH + ASSET EVALUATION
@@ -137,6 +180,29 @@ RAW SIGNALS
 ## 5. What Is a “Good Topic”?
 
 不要用单一总分先决定。
+
+### v0.2 Pre-Gates — 先判断“值不值得成为故事问题”
+
+在旧 Hard Gates 之前先检查：
+
+1. **Native X Interest** — 暂时不谈 AI，这个生活领域/现象本身有人关心吗？
+2. **WHY / Paradox** — 是否存在“本来应该 A，为什么却 B”或“解决了 A，为什么又失去 B”的认知缺口？
+3. **Human Tension** — 背后是否至少有两种都说得通的力量，而不是一边天然正确、一边天然愚蠢？
+4. **Changed Process** — 能否指出 AI 改变、压缩、替代或放大了哪个原本属于人的过程？
+
+推荐先写：
+
+```text
+X:
+Observed Paradox:
+WHY:
+Human Tension:
+Controlling Question Seed:
+Human Process Before AI:
+AI Changed Process:
+```
+
+这些字段用于选题发现与故事潜力判断，不替代后续事实核验，也不允许提前锁死观点答案。
 
 ### Hard Gates
 
@@ -240,6 +306,12 @@ Berger & Milkman 2012：surprisingness、interestingness、practical utility，�
 
 topic_id
 aliases
+topic_entry_mode
+x_domain
+observed_paradox
+why_question
+human_tension
+ai_changed_process
 mechanism_family
 mechanism
 human_problem_family
@@ -331,7 +403,24 @@ Any candidate passes ALL hard gates + audience fit + duplicate gate + can publis
 
 ## 13. Evergreen Topic Map
 
-长期常规池先围绕以下机制家族建立：
+v0.1 的 AI 机制家族池继续保留，作为 **Mechanism Supply**；v0.2 在它前面增加 **Human-world Supply**。
+
+长期选题优先通过以下组合扩展：
+
+```text
+Human Interest Domain
+× Human Tension
+× AI Changed Process
+× Mechanism Family
+```
+
+例如：
+- 美食 × 最优/探索 × 推荐筛选 × ranking/recommendation；
+- 恋爱 × 正确表达/真实暴露 × 语言生成 × generative assistance；
+- MBTI × 被理解/被定义 × 个性分析 × classification/inference；
+- 工作 × 效率/掌控 × Agent 代办 × delegation/guardrails。
+
+原有机制家族继续有效：
 1. Context / Memory / Retrieval
 2. Reasoning / Hallucination / Uncertainty
 3. Tools / API / MCP / Interoperability
@@ -423,3 +512,14 @@ Acceptance:
 - automation design frozen，但不要求本 Gate 就开启 scheduled execution。
 
 完成 G2.5 后再进入 Writer。
+
+---
+
+## 19. v0.2 Backward Compatibility / Rollback
+
+- 已有 `topic-ledger/topic-registry.jsonl`、Calendar、Daily snapshots 和历史 TopicOpportunity **不追溯改写**；
+- 旧的 `AI Signal → Audience Translation → Human Problem` 路径仍是合法 fallback，尤其适用于强 AI 热点或 Owner 明确指定的 AI 题；
+- 新字段以 backward-compatible 方式加入 Schema，历史 artifact 不因缺少 v0.2 字段而失效；
+- G3+ 的 Controlling Question / Idea vs Counter-Idea / Story / Writer / Director 规则保持不变；
+- 本次变更只升级 Topic Supply / Topic Opportunity 的发现入口，不修改当前 G6A 生产执行线；
+- 回滚基线：GitHub branch `rollback/ai-story-showrunner-topic-os-v01-20260927`，基于变更前 main `16e2c86039a26175f99204239c19c1bdf35f4a10`。

@@ -1,6 +1,6 @@
 # Current Documentation Index
 
-Date: 2026-09-23  
+Date: 2026-09-27  
 Purpose: prevent historical validation documents from being mistaken for current runtime authority.
 
 ## Current operational truth
@@ -29,8 +29,9 @@ Read in this order:
 - `SRT_AUDIO_TIMING_STANDARD.md`
 - `VOICE_TIMING_PROFILE_SPEC.md`
 - `OUTPUT_RECORD_STANDARD.md`
+- `TOPIC_OPERATING_SYSTEM.md` — v0.2 human-world-first / WHY-first Topic Supply baseline.
 - `CONTENT_STRATEGY_AND_CONVERSION.md`
-- `DAILY_TOPIC_AUTOMATION_V2.md`
+- `DAILY_TOPIC_AUTOMATION_V2.md` — v0.2.1 planner contract consuming Topic OS v0.2.
 
 When a portable Candidate contract conflicts with a historical project copy, the current Reviewer Handoff decides project truth and the Candidate Skill repository is the target portable contract.
 

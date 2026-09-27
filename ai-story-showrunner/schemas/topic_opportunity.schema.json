@@ -212,6 +212,38 @@
             "PASS",
             "RETURN"
           ]
+        },
+        "native_interest": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "why_paradox": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "human_tension": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "changed_process": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN",
+            "NOT_APPLICABLE"
+          ]
         }
       }
     },
@@ -270,6 +302,66 @@
           "minLength": 1
         }
       }
+    },
+    "topic_entry_mode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "HUMAN_WORLD_FIRST",
+        "AI_SIGNAL_TRANSLATED",
+        "EXPLICIT_OWNER_TOPIC",
+        null
+      ]
+    },
+    "x_domain": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "native_interest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observed_paradox": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "why_question": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "human_tension": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "controlling_question_seed": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "human_process_before_ai": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ai_changed_process": {
+      "type": [
+        "string",
+        "null"
+      ]
     }
   }
 }

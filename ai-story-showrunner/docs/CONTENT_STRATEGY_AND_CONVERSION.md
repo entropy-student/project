@@ -17,13 +17,25 @@
 核心内容公式：
 
 ```text
-现实变化 / AI Signal
-→ 普通人处境
-→ 人类冲突
-→ 故事推进
+大众兴趣 X / 现实变化
+→ 反常现象 / WHY
+→ Human Tension
+→ AI 改变或放大的人的过程
+→ 人类冲突与故事推进
 → AI机制自然显现
-→ 观众获得判断 / 方法
+→ 观众获得新的理解 / 判断 / 方法
 ```
+
+对于强 AI 热点仍允许兼容路径：
+
+```text
+AI Signal
+→ Audience Translation
+→ Human Problem
+→ Story
+```
+
+但默认优先从“人的生活为什么会这样”进入，而不是从“还有哪个 AI 概念没讲”进入。
 
 不是：
 
@@ -116,6 +128,15 @@ AI概念
 ```yaml
 topic_id:
 signal:
+topic_entry_mode:
+x_domain:
+native_interest:
+observed_paradox:
+why_question:
+human_tension:
+controlling_question_seed:
+human_process_before_ai:
+ai_changed_process:
 why_now:
 human_problem:
 human_stakes:
@@ -164,6 +185,24 @@ UNKNOWN
 ## 5. Hard Gates Before Scoring
 
 以下任一失败，Topic 直接 RETURN，不参与“高分补偿”。
+
+### PRE-GATE 0A — Native X Interest
+
+暂时拿掉 AI 后，X / 人类处境本身是否值得普通人关心。
+
+### PRE-GATE 0B — WHY / Paradox
+
+是否存在一个真实的预期落差、矛盾或“我一直遇到但没想明白”的为什么。
+
+### PRE-GATE 0C — Human Tension
+
+背后是否存在两种都合理的力量，可以被故事真正测试，而不是预先写死结论。
+
+### PRE-GATE 0D — Changed Process
+
+是否能指出 AI 改变、压缩、替代或放大了哪一个原本属于人的过程。
+
+> 对 Owner 明确指定的纯 AI 题 / 强 AI 热点，0A–0D 可由 Audience Translation 补齐，但不能省略 Human Relevance、Mechanism Integrity 与 Storyability。
 
 ### GATE A — Human Relevance
 
