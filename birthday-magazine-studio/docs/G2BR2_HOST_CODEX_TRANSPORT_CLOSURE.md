@@ -1,7 +1,7 @@
 # G2BR2 — Host Codex Transport and Real-AI Closure
 
 > Reviewer execution contract  
-> Status: BLOCKED_BY_OWNER_ADDITIONAL_RUN_AUTHORIZATION  
+> Status: OWNER AUTHORIZED — MAX 2 HOST-CONTEXT REAL-MODEL RUNS  
 > Parent: G2B Local AI/PDF Solution Proof  
 > Accepted prior evidence: PR #30 + PR #40
 
@@ -33,17 +33,16 @@ Codex Agent sandbox → nested codex exec → network/transient failure
 
 G2BR2 changes only the **transport launch context**. It must not redesign the product, schema, renderer, styles or QA.
 
-## Owner checkpoint
+## Owner authorization
 
-Before any new real-model run:
+Owner authorization is **complete**.
 
-- Owner must explicitly authorize an additional bounded run count.
-- No automatic purchase of credits is allowed.
-- If available ChatGPT/Codex plan allowance is exhausted, stop with `RETURN_CODEX_PLAN_LIMIT_REACHED`.
-
-Recommended ceiling: **maximum 2 additional real-model runs total**:
+Authorized ceiling: **maximum 2 additional real-model runs total**:
 1. primary host-context run;
 2. one retry only for transport/schema/transient failure.
+
+No automatic purchase of credits is allowed.
+If available ChatGPT/Codex plan allowance is exhausted, stop with `RETURN_CODEX_PLAN_LIMIT_REACHED`.
 
 ## Execution requirements
 
