@@ -2679,3 +2679,11 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Evidence appended and read-back verified in `EXECUTION_EVIDENCE.md`; current evidence commit: `833ff1733b534e9a42936be4ec6e380ee7106aa5`.
 
 `STOP_AT_REVIEWER=YES`
+
+
+## K6 Phase G-R1R1 DNS Control-Path Evidence Persistence — PASS_CANDIDATE
+
+- R1 PASS candidate persisted; browser-only/read-only verification had qualified the authenticated Cloudflare DNS control path.
+- DNS mutation and all SSH/VPS/Shared Infra/public-ingress/payment actions remained zero.
+- GitHub Evidence commit: `e47f31b29d82022220700e895246dc96de267255`.
+- `STOP_AT_REVIEWER=YES`.
