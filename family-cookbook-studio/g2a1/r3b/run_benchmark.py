@@ -476,7 +476,7 @@ def main():
     DATA.mkdir(parents=True, exist_ok=True)
     dataset = validate_inputs()
     flags = {
-        "google_credentials": bool(os.getenv("GOOGLE_APPLICATION_CREDENTIALS") or os.getenv("GOOGLE_GHA_CREDS_PATH")),
+        "google_credentials": bool(os.getenv("GOOGLE_OAUTH_ACCESS_TOKEN") or os.getenv("GOOGLE_APPLICATION_CREDENTIALS") or os.getenv("GOOGLE_GHA_CREDS_PATH")),
         "google_project": bool(os.getenv("GOOGLE_CLOUD_PROJECT")),
         "google_location": bool(os.getenv("GOOGLE_DOC_AI_LOCATION")),
         "google_processor_id": bool(os.getenv("GOOGLE_DOC_AI_PROCESSOR_ID")),
@@ -507,12 +507,19 @@ def main():
             write_not_run_outputs("RETURN_G2A1_R3B_ACTIONS_BLOCKED", preflight)
             return
         try:
-            credentials, detected_project = google.auth.default(
-                scopes=["https://www.googleapis.com/auth/cloud-platform"])
-            credentials.refresh(Request())
-            token = credentials.token
-            preflight["google_auth_mode"] = "WORKLOAD_IDENTITY_FEDERATION"
-            preflight["google_adc_project_detected"] = detected_project
+            token = os.getenv("GOOGLE_OAUTH_ACCESS_TOKEN")
+            if token:
+                preflight["google_auth_mode"] = "WORKLOAD_IDENTITY_FEDERATION_ACCESS_TOKEN"
+                preflight["google_adc_project_detected"] = os.getenv("GOOGLE_CLOUD_PROJECT")
+            else:
+                credentials, detected_project = google.auth.default(
+                    scopes=["https://www.googleapis.com/auth/cloud-platform"])
+                credentials.refresh(Request())
+                token = credentials.token
+                preflight["google_auth_mode"] = "WORKLOAD_IDENTITY_FEDERATION_ADC"
+                preflight["google_adc_project_detected"] = detected_project
+            if not token:
+                raise RuntimeError("missing_google_access_token")
         except Exception:
             write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
             return
