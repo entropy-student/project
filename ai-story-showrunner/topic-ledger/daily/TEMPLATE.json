@@ -16,7 +16,18 @@
       "hard_gate_status": "PENDING",
       "reach_notes": [],
       "asset_notes": [],
-      "recommended_action": "HOLD"
+      "recommended_action": "HOLD",
+      "topic_entry_mode": "",
+      "x_domain": "",
+      "human_process_family": "",
+      "observed_paradox": "",
+      "why_question": "",
+      "human_tension": "",
+      "meaning_fingerprint": "",
+      "controlling_question_seed": "",
+      "ai_changed_process": "",
+      "meaning_registry_matches": [],
+      "meaning_duplicate_status": "UNKNOWN"
     }
   ],
   "evergreen_fallback": [],
