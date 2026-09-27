@@ -5790,3 +5790,81 @@ SECRET_VALUE_OUTPUT=0
 LOCAL_WORKTREE_TOUCHED=NO
 STOP_AT_REVIEWER=YES
 
+## K6_PHASE_G_R3R2R2_READONLY_REMAINDER_AND_RECREATE_PLAN_SEAL — Executor Candidate (2026-09-27)
+
+```text
+GATE=K6_PHASE_G_R3R2R2_READONLY_REMAINDER_AND_RECREATE_PLAN_SEAL
+RESULT=PASS_CANDIDATE_K6_PHASE_G_R3R2R2_READONLY_REMAINDER_AND_RECREATE_PLAN_SEAL
+GOVERNANCE_SOURCE_READ=GitHub canonical v0.1.6 latest + active addenda
+PROJECT_AUTHORITY_READ=YES
+SHARED_VPS_HANDOFF_SOURCE_READ=YES
+LOCAL_WORKTREE_TOUCHED=NO
+
+LOCAL_IDENTITY_REFERENCE_CHECK=PASS
+LOCAL_PUBLIC_FINGERPRINT_MATCH=PASS
+LOCAL_KNOWN_HOSTS_PIN_CHECK=PASS
+SSH_NETWORK_INVOCATIONS=1
+SSH_NATIVE_EXIT=0
+SSH_HOST_KEY_MATCH=YES_BY_STRICT_PINNED_SUCCESS
+REMOTE_IDENTITY=ops@srv1970241
+REMOTE_UID_NONZERO=YES
+
+STALE_SINGLE_FILE_BIND_MOUNT=ACCEPTED_FROM_2bbc43e
+LEGACY_MOUNTED_CADDYFILE_BYTES=153
+LEGACY_MOUNTED_CADDYFILE_SHA256=126292f6bc2a77929539704a84c5d7a4ab3364ec39364a14abafda176b631837
+LEGACY_MOUNTED_TO_ACTIVE_SEMANTIC_PARITY=PASS
+LEGACY_EDGE_ROLLBACK_BYTES=153
+LEGACY_EDGE_ROLLBACK_SHA256=126292f6bc2a77929539704a84c5d7a4ab3364ec39364a14abafda176b631837
+LEGACY_EDGE_ROLLBACK_ADAPT=PASS
+CONTAINER_ADMIN_CONFIG_GET=PASS
+ACTIVE_USER_ROUTE_INVENTORY_COMPLETE=YES
+ACTIVE_ROUTE_HOSTS=edge-test.spikersun.com,localhost
+ACTIVE_ROUTE_COUNTS=legacy:2;active:2
+ACTIVE_USER_ROUTE_INVENTORY=edge-test.spikersun.com: subroute + static_response(status=200, body_bytes=30); localhost: subroute + static_response(status=200, body_bytes=24)
+TARGET_CANONICAL_CANDIDATE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+TARGET_PRESERVES_ALL_UNRELATED_ACTIVE_ROUTES=PASS
+TARGET_PRESERVATION_BASIS=Fresh complete active hostname inventory is exactly localhost and edge-test.spikersun.com; the sealed candidate's accepted localhost baseline and edge-test behavior cover both; Mini Craft is the only added hostname.
+
+CADDY_COMPOSE_SHA256=22abbe0b6eee42edee068605b19a4c7168284446bbf723715ff3a27c360cfef5
+CADDY_COMPOSE_SOURCE_IDENTIFIED=PASS
+CADDY_COMPOSE_PROJECT=spikersun-edge
+CADDY_SERVICE_NAME=caddy
+CADDY_IMAGE=caddy:2-alpine
+CADDY_PUBLISHED_PORTS=80/tcp,443/tcp
+CADDY_NETWORKS=spikersun-edge
+CADDYFILE_COMPOSE_BIND=bind:/srv/infra/edge/Caddyfile -> /etc/caddy/Caddyfile:READ_ONLY
+CADDY_DATA_MOUNT=bind:/srv/infra/edge/data -> /data:RW; source directory exists
+CADDY_CONFIG_MOUNT=bind:/srv/infra/edge/config -> /config:RW
+CADDY_CERT_STATE_PERSISTENCE=PASS
+CADDY_STARTUP_COMMAND=caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
+CADDY_CONFIG_STATE_PERSISTENCE=NOT_REQUIRED_BY_STARTUP_PATH
+CADDY_RECREATE_DOES_NOT_REQUIRE_COMPOSE_MUTATION=YES
+RECREATE_SCOPE=EXACT_CADDY_SERVICE_ONLY
+RECREATE_PLAN_COMMAND=sudo -n docker compose -p spikersun-edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never caddy
+SHARED_EDGE_BRIEF_DOWNTIME_REQUIRED=YES
+ACTIVE_CADDY_USER_ROUTES=edge-test.spikersun.com; localhost is local-only
+ROLLBACK_PLAN=SEALED
+ROLLBACK_BEFORE_DNS=restore exact 153-byte legacy mounted candidate to existing host Caddyfile, recreate only Caddy, read back legacy routes; DNS remains absent
+ROLLBACK_AFTER_DNS=delete exact Mini Craft A and verify absent, restore legacy Caddyfile, recreate only Caddy, read back legacy routes
+
+CADDYFILE_WRITE=0
+CADDY_BACKUP_WRITE=0
+CADDY_RELOAD=0
+CADDY_RESTART=0
+CADDY_RECREATE=0
+DOCKER_DAEMON_MUTATION=NO
+NETWORK_RECREATE=NO
+COMPOSE_FILE_MUTATION=NO
+UNRELATED_CONTAINER_RECREATE=NO
+DNS_WRITES=0
+INDEXING_WRITE=0
+PAYMENT_ACTIONS=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+SHARED_INFRA_WRITES=0
+PUBLIC_INGRESS_CHANGE=0
+LOCAL_TEMP_FILES_CREATED=0
+OWNER_CHECKPOINT_REQUIRED=YES
+STOP_AT_REVIEWER=YES
+```
+
+Executor note: all gate probes were read-only. No Caddy source/config, Compose file, container lifecycle, DNS, indexing, payment, Secret, or unrelated service mutation was performed. Recreate and rollback sequences are plans only; shared Caddy ownership of ports 80/443 requires an acknowledged brief shared-edge interruption if a future Reviewer-authorized recreate is executed.
