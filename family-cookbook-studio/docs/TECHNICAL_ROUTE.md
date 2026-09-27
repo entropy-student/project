@@ -47,7 +47,7 @@ private proof / final delivery
 | Optional story/context intake | Order-bound fields / thin project plugin | ACCEPTED PATTERN | Small |
 | Background orchestration | Action Scheduler pattern | ACCEPTED PATTERN | Job definitions |
 | Image preprocessing | OpenCV/library-backed rotate/deskew/crop/contrast/quality checks | ACCEPTED DIRECTION | Yes |
-| Handwriting OCR | **PP-OCRv6_medium primary; at most one bounded specialized API fallback; one consolidated manual-edit review** | PRIMARY PASS / API FALLBACK PENDING | Thin adapter |
+| Handwriting OCR | **PP-OCRv6_medium primary + Baidu Handwriting OCR critical-field second opinion + one consolidated manual-edit review** | G2A1 PASS | Thin adapter |
 | Recipe extraction | Structured schema + provenance | CUSTOM CORE | Yes |
 | Uncertainty policy | confidence/rules + review queue | CUSTOM CORE | Yes |
 | Correction/review UI | order/private review surface | CUSTOM CORE | Yes |
@@ -92,8 +92,9 @@ private source image
 → local/library image preprocessing
 → PP-OCRv6_medium primary
 → deterministic semantic critical-value/schema checks
-→ if ambiguous: at most one bounded target-language fallback/second pass
-→ if still uncertain/disagrees: user/reviewer confirmation
+→ if critical-risk crop: Baidu Handwriting OCR second opinion
+→ preserve PP + Baidu separately; never wholesale overwrite
+→ if still uncertain/disagrees: one consolidated user review
 → approved canonical recipe
 → deterministic HTML/CSS → PDF
 ```
@@ -178,15 +179,17 @@ ocr_adapter(image)
   }
 ```
 
-Current OCR contract after R3A:
+Current OCR contract after G2A1:
 1. **PP-OCRv6_medium** is the accepted full-page free/local primary.
 2. Product scope is English-first, not English-only.
 3. Deterministic rules score **semantic critical facts**, not typography alone.
-4. Only **one** bounded specialized API fallback may be retained, and only for high-risk pages/crops.
-5. `PaddleOCR-VL-1.6` is rejected as primary; `microsoft/trocr-small-handwritten` remains deprecated.
-6. R3B evaluates whether Google Enterprise Document OCR materially reduces the 11 hard-case edit burden; Mistral OCR 4.1 is second-line benchmark only if needed.
-7. **One consolidated user review with manual editing** remains the final fail-closed stage.
-8. API fallback must sit behind an `OCRFallbackProvider` adapter and emit a canonical result schema. Mistral and Google must remain swappable adapters rather than business-flow dependencies.
+4. **Baidu Handwriting OCR** is accepted only as a bounded second opinion for high-risk quantity/unit/temperature/time/critical-field crops.
+5. Baidu output must never wholesale-replace the PP transcript. Raw outputs and provider provenance remain separate.
+6. On the 11 hard cases, Baidu recovered the only critical fact missed by PP-OCRv6 (`8 eggs`) but worsened whole-transcript edit burden, so canonical transcript fallback remains `NONE`.
+7. `PaddleOCR-VL-1.6` is rejected as primary; `microsoft/trocr-small-handwritten` remains deprecated.
+8. Google Document AI remains a technically viable deferred provider adapter; Mistral Free mode remains availability-blocked by persistent HTTP 429.
+9. **One consolidated user review with manual editing** remains the final fail-closed stage.
+10. External OCR providers sit behind an `OCRFallbackProvider` / second-opinion adapter and emit the canonical result schema; business flow remains provider-swappable.
 
 Explicitly deferred from MVP: broad multi-provider OCR bake-offs, cloud OCR and VLM/vision OCR.
 
@@ -243,7 +246,7 @@ family-cookbook-core
 ├─ processing-job idempotency
 ├─ image preprocessing
 ├─ PaddleOCR primary adapter
-├─ bounded target-language fallback/second-pass adapter (TBD after language freeze)
+├─ Baidu critical-field second-opinion adapter
 ├─ recipe schema extraction
 ├─ provenance mapping
 ├─ uncertainty detection
@@ -282,7 +285,7 @@ G6 production hardening / physical print decision
 - open-ended drag/drop editor;
 - automatic recipe “improvement”;
 - broad multilingual promise before benchmark;
-- third OCR engine / cloud OCR / VLM OCR unless the two-engine route fails evidence;
+- additional OCR/cloud/VLM providers beyond the accepted PP-OCRv6 + Baidu critical-second-opinion route unless new evidence justifies reopening architecture;
 - AI-generated food imagery;
 - Redis/Celery/RabbitMQ until observed queue load requires them;
 - custom payment layer;
