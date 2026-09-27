@@ -2629,3 +2629,15 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 
 
 - Evidence transcription correction commit: `a807eb754a92917ed7efc2196fa1d3e423983215`; SSH option is lowercase `-n` (stdin disabled) with `-T`. The earlier uppercase `-N` marker was a casing typo only; execution facts are unchanged.
+
+
+## Current Executor Handoff — K6 Phase F-R1R5R2
+
+- Gate: `K6_PHASE_F_R1R5R2_DIRECT_NATIVE_SSH_TRANSPORT_RECOVERY_AND_BEHAVIORAL_RESUME`.
+- Result: `RETURN_REVIEWER_F_R1R5R2_CANDIDATE_ADAPT_WARNING`; `STOP_AT_REVIEWER=YES`.
+- Local direct-native `ssh.exe -V` capture seal passed after correcting PowerShell's stderr error preference. SSH #1 used only `whoami`, returned native exit 0 and exact identity `ops` under strict pinned host-key verification.
+- SSH #2 used one Base64 launcher argument with stdin disabled. It confirmed `ops@srv1970241`, Caddy/WordPress running (restart count 0), MariaDB healthy (restart count 0), Mini Craft DNS NXDOMAIN, and the exact frozen durable Caddyfile and active Caddy-config hashes. Current active config contains localhost and edge-test routes, with no Mini Craft route.
+- Fresh edge-test HTTPS was 200 with the accepted 30-byte SHA-256 fingerprint; HTTP redirected same-origin to HTTPS. Primary JSON extraction identified one static response. An in-memory 264-byte candidate was sent to adapt-only validation; adapt returned non-empty stderr. The helper did not classify its materiality and failed closed. Candidate adapt, semantic parity, ingress changeset readiness, and rollback-plan PASS are therefore **not claimed**.
+- No third SSH, Caddyfile write, Admin API load, reload/restart, DNS/cloudflared/firewall/network/Compose change, public ingress, payment, or Secret access occurred. Remote writes = 0. All local SSH capture temp files were deleted and verified absent.
+- Evidence commit: `a30d53428d11f8a0fa9c014d581205a7a9cf59db`. This Handoff update is the current Executor Handoff record; see its commit SHA in the tool response / Git history.
+- Next: Reviewer review only. SSH budget is exhausted for this Gate; no reconnect or mutation. `STOP_AT_REVIEWER=YES`.
