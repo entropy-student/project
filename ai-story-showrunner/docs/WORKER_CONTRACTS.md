@@ -1,4 +1,4 @@
-# Worker Contracts v0.2
+# Worker Contracts v0.2.1
 
 ## 1. Contract Philosophy
 
@@ -25,8 +25,9 @@ Worker 输出必须可被 Showrunner 验证。
 ## 2. Topic Worker
 
 ### Input
-- signal set；
-- content history；
+- human-interest / platform / cultural / AI-domain signal set；
+- Evergreen Bank；
+- Topic Registry / content history；
 - audience scope；
 - freshness window。
 
@@ -35,6 +36,17 @@ Worker 输出必须可被 Showrunner 验证。
 ```yaml
 topic_id:
 signal:
+topic_entry_mode:
+x_domain:
+native_interest:
+human_process_family:
+observed_paradox:
+why_question:
+human_tension:
+meaning_fingerprint:
+controlling_question_seed:
+human_process_before_ai:
+ai_changed_process:
 why_now:
 human_problem:
 human_stakes:
@@ -57,13 +69,18 @@ risks:
 ```
 
 ### Required Gate Discipline
-先过 Human Relevance / Mechanism Integrity / Storyability / One Mechanism / Non-Trivial Payoff，再做候选比较。高“流量分”不能补偿 Hard Gate 失败。
+默认先尝试：
+`X → Human Process → Paradox → WHY → Human Tension / Meaning → AI Changed Process`。
+
+先过 Native X Interest / Human Process / WHY-Paradox / Human Tension / Changed Process，再过 Human Relevance / Mechanism Integrity / Storyability / One Mechanism / Non-Trivial Payoff；随后执行 D1–D5，其中 D5 必须跨 X 检查 Meaning Duplicate。高“流量分”不能补偿 Hard Gate 失败。
 
 ### Forbidden
 - 只返回 `MCP`、`Agent`、`OpenAI 新功能`；
 - 用“预计会爆”代替可解释维度；
 - 因 conversion adjacency 高就强行进入 SOLUTION；
-- 把单一公司新闻直接当完整选题。
+- 把单一公司新闻直接当完整选题；
+- 因 X 不同就忽略相同的 Meaning Fingerprint；
+- 把 `meaning_fingerprint` 当成预设 thesis，反过来强迫故事证明它。
 
 ---
 
