@@ -2558,3 +2558,18 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Fresh public Google DoH A/AAAA/CNAME checks returned NXDOMAIN (DNS status 3). Caddy startup/autosave/Admin API reconciliation, route reconstruction, candidate adapt, and indexing read remain unverified.
 - No Caddy, Docker, DNS, app, product, indexing, payment, Secret, or Shared Infrastructure mutation occurred. No remote/local persistent temporary file was created.
 - Evidence appended to `EXECUTION_EVIDENCE.md`; Reviewer action is needed before another Gate. `STOP_AT_REVIEWER=YES`.
+
+
+## Current Executor Handoff — K6 Phase F-R1R2
+
+- Gate: `K6_PHASE_F_R1R2_CADDY_ONLY_READONLY_SOURCE_RECONCILIATION`
+- Result: `RETURN_REVIEWER_F_R1R2_READONLY_PROBE_FAILED`.
+- Exactly one canonical strict SSH session succeeded; strict host-key trust and pre-sudo identity `ops@srv1970241` passed.
+- Fresh continuity: shared Caddy and Mini Craft WordPress running with restart count 0; MariaDB healthy with restart count 0. Fresh Google DoH A/AAAA/CNAME checks returned NXDOMAIN. No WordPress/DB host-port probe was run.
+- The read-only helper stopped at Caddy Entrypoint/Cmd JSON shape validation because it assumed both fields were arrays. The raw field shape was not retained; exact nullable/non-array field is UNKNOWN. The SSH session ended, so no retry or second connection was made; same-session parser fallback was not reached after helper termination.
+- Caddy startup mode/persistence/config directory, autosave, active Admin API config, route reconciliation, candidate Caddyfile/adapt, edge-to-upstream probe, and indexing state remain NOT_READ/NOT_RUN. No readiness changeset is claimed.
+- No Caddy/Caddyfile/autosave/Admin API, DNS, cloudflared, UFW, Docker network/Compose, app, product, indexing, Secret, or payment mutation occurred. No persistent temporary file was created.
+- Safety: `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`, `PAYMENT_ACTIONS=0`, `PAYPAL_LIVE=NO`, `SECRET_VALUE_OR_HASH_ACCESS=0`.
+- Evidence section appended; evidence commit: `16e2c86039a26175f99204239c19c1bdf35f4a10`.
+- Next: Reviewer review and a corrected bounded reconciliation Gate if authorized. `STOP_AT_REVIEWER=YES`.
+
