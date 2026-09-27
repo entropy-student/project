@@ -15,11 +15,18 @@ explicit user topic
 If no topic is specified, load today's Calendar item automatically.
 
 ### Input
+- 普通人已经关心的生活领域 / X（美食、关系、工作、消费、娱乐、人格标签、学习等）；
+- 社会 / 文化 / 平台热点与用户讨论；
 - domain news / product changes；
 - 技术概念；
 - 用户评论 / 问题；
 - 平台趋势；
 - 历史选题缺口。
+
+默认优先寻找：
+`X → Observed Paradox → WHY → Human Tension`。
+
+AI / Domain Signal 仍可直接进入，但必须随后完成人类问题翻译。
 
 ### Output
 `SignalPackage`
@@ -34,7 +41,14 @@ If no topic is specified, load today's Calendar item automatically.
 不是输出“今天讲 MCP”，而是结构化 TopicOpportunity：
 
 ```text
-Why Now
+Topic Entry Mode
+× X Domain / Native Interest
+× Observed Paradox / WHY
+× Human Tension
+× Controlling Question Seed
+× Human Process Before AI
+× AI Changed Process
+× Why Now
 × Human Problem / Stakes
 × Causal Mechanism
 × Curiosity Gap
@@ -48,6 +62,18 @@ Why Now
 ```
 
 ### Required Tests
+
+#### Native-interest Test
+暂时不谈 AI，这个 X / 人类处境本身仍值得看。
+
+#### WHY / Paradox Test
+能否写成一个真实的“本来应该 A，为什么却 B？”；如果一句百科定义就能回答，优先退回重做。
+
+#### Human-tension Test
+问题背后至少有两种都说得通的力量；Topic Stage 只锁问题与张力，不锁最终观点答案。
+
+#### Changed-process Test
+必须能指出 AI 改变、压缩、替代或放大了哪个原本属于人的过程。对纯 AI 题可通过 Audience Translation 得到等价的人类过程。
 
 #### No-name Test
 删掉 OpenAI / Anthropic / MCP / Agent 等专有名词，故事仍值得看。
