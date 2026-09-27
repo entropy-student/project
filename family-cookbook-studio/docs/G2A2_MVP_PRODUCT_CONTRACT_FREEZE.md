@@ -1,7 +1,7 @@
 # G2A2 — MVP Product Contract Freeze
 
 > Reviewer / Owner decision gate  
-> Status: HOLD — starts only after G2A1 PASS  
+> Status: **CURRENT — G2A1 PASS confirmed 2026-09-27**  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)
 
 ## Goal
@@ -56,7 +56,7 @@ G2A2 still freezes:
 ### Transcription fidelity
 - what counts as critical field;
 - OCR confidence/uncertainty threshold;
-- exact triggers for the TrOCR fallback pass and for `USER_CONFIRM_REQUIRED`;
+- exact triggers for Baidu critical-field second opinion and for consolidated review highlighting;
 - what is never auto-corrected;
 - exact user/reviewer confirmation behavior;
 - whether original transcription and normalized version are both visible.
