@@ -313,8 +313,21 @@ def google_process(crops, token, project, location, processor_id, version_id):
             response = requests.post(url, headers=headers, json=payload, timeout=(15, 90))
             elapsed = round((time.perf_counter() - start) * 1000, 2)
             if response.status_code != 200:
+                error_payload = {}
+                try:
+                    body = response.json()
+                    err = body.get("error", {}) if isinstance(body, dict) else {}
+                    error_payload = {
+                        "google_error_code": err.get("code"),
+                        "google_error_status": err.get("status"),
+                        "google_error_message": str(err.get("message", ""))[:800],
+                        "google_error_details": err.get("details", [])[:3] if isinstance(err.get("details", []), list) else [],
+                    }
+                except Exception:
+                    error_payload = {"google_error_status": "NON_JSON_ERROR"}
                 rows[sid] = {"api_status": response.status_code, "latency_ms": elapsed,
-                             "raw_output": "", "recognized_lines": [], "layout": [], "error_type": "http_error"}
+                             "raw_output": "", "recognized_lines": [], "layout": [], "error_type": "http_error",
+                             **error_payload}
                 break
             document = response.json().get("document", {})
             raw, lines, pages = google_text_and_layout(document)
