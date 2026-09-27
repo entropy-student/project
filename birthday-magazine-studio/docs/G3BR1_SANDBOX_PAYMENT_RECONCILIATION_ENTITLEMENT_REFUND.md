@@ -1,7 +1,7 @@
 # G3BR1 — Sandbox Payment Reconciliation + Entitlement + Refund Closure
 
 > Reviewer execution contract  
-> Status: CURRENT / READY_FOR_EXECUTION  
+> Status: CURRENT / AUTHORIZED THROUGH PHASE D / OWNER REFUND CHECKPOINT REQUIRED  
 > Parent Gate: G3B  
 > Accepted input: PR #51 interim RETURN evidence  
 > Rule: **NO SECOND SANDBOX PAYMENT**
@@ -20,7 +20,8 @@ existing Woo paid order #30
 → mark synthetic intake complete
 → exactly 1 canonical deferred generation-ready job
 → repeated entitlement evaluation => still exactly 1
-→ one WooCommerce-initiated Sandbox refund
+→ STOP_AT_OWNER_REFUND_CHECKPOINT
+→ after fresh Owner authorization: one WooCommerce-initiated Sandbox refund
 → provider refund correlation
 → revoke entitlement + cancel deferred generation action
 → model calls remain 0
@@ -101,9 +102,29 @@ Requirements:
 
 This proves local entitlement idempotency only, not production model-spend idempotency.
 
+## Owner checkpoint before Phase E
+
+After Phase B-D PASS, **stop before any refund action** and return:
+
+`RETURN_OWNER_SANDBOX_REFUND_AUTH_REQUIRED`
+
+At this checkpoint provide only non-secret read-back:
+
+- provider/Woo payment correlation = PASS;
+- provider capture cardinality = 1;
+- paid + intake incomplete job count = 0;
+- paid + intake complete canonical job count = 1;
+- entitlement re-evaluation idempotency = PASS;
+- model calls = 0;
+- refund already exists = NO.
+
+Do not click or invoke refund until the Owner gives a fresh explicit authorization for this exact Sandbox refund.
+
+This checkpoint is required by the Production Provider Canary/Recovery governance boundary: refund is a consequential Provider action and is not implicitly authorized by earlier Seller/Buyer approval.
+
 ## Phase E — one Sandbox refund
 
-Only after Phase B-D PASS:
+Only after Phase B-D PASS **and fresh Owner authorization**:
 
 1. initiate exactly one refund from WooCommerce through official PPCP;
 2. amount must not exceed captured amount;
@@ -146,6 +167,7 @@ After evidence:
 - DEFERRED_GENERATION_ACTION_COUNT_MAX=1
 - ENTITLEMENT_REEVALUATION_IDEMPOTENCY=PASS
 - MODEL_CALL_COUNT=0
+- OWNER_SANDBOX_REFUND_AUTH=PASS
 - SANDBOX_REFUND=PASS
 - REFUND_CORRELATION=PASS
 - DUPLICATE_REFUND=NO
@@ -161,6 +183,7 @@ After evidence:
 
 Return without replay if:
 
+- Phase B-D reaches refund boundary without fresh Owner authorization: `RETURN_OWNER_SANDBOX_REFUND_AUTH_REQUIRED`;
 - provider query/correlation is ambiguous;
 - more than one capture/payment is found;
 - payment amount/currency/order mismatch exists;
@@ -172,4 +195,4 @@ Return without replay if:
 
 ## Handoff
 
-Update `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`; commit/push; PR to `main`; do not merge; `STOP_AT_REVIEWER`.
+Before the refund checkpoint, update `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`, commit/push, open/update PR to `main`, and stop at Owner. After fresh Owner authorization, resume the same branch/PR for Phase E, cleanup and final `STOP_AT_REVIEWER`.
