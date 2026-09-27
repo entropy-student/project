@@ -5305,3 +5305,8 @@ STOP_AT_REVIEWER=YES
 ```
 
 The no-stdin local seal passed before any network SSH. SSH #1 used the recorded identity/known_hosts with strict checking, `-n -T`, and the remote command as its final argument. Native exit 255 and nonempty stderr were captured, but no transport marker or remote identity was received; host-key match therefore remains unverified. Per Gate, SSH #2 was not attempted. No Caddy/Docker/application/DNS write or candidate operation occurred. The initial local wrapper rehearsals exposed a Windows PowerShell 5.1 argument API mismatch and a null-answer counting issue; both were corrected and revalidated locally before the single network attempt.
+
+
+### K6 F-R1R5R1 evidence transcription correction
+
+The prior marker `SSH_STANDARD_INPUT=DISABLED_WITH_-N` used incorrect option casing. The actual SSH #1 native argv used lowercase `-n` together with `-T`; SSH stdin was disabled and no stdin pipe was opened. No network invocation count, exit status, return classification, or remote-state claim changes.
