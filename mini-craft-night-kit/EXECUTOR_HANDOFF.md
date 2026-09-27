@@ -2704,3 +2704,14 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Evidence commit: `c1c4623f83e9ea1e8e911e4fbffbe9d225a542b2`. Await Reviewer reconciliation.
 
 `STOP_AT_REVIEWER=YES`
+
+
+## Current Executor Handoff — K6 Phase G-R3
+
+- Gate: `K6_PHASE_G_R3_SAME_INODE_CADDYFILE_WRITE_AND_PUBLIC_SANDBOX_INGRESS_RESUME`
+- Result: `RETURN_REVIEWER_G_CADDY_MOUNT_BASELINE_RECONCILIATION_UNRESOLVED`; `STOP_AT_REVIEWER=YES`.
+- One canonical strict SSH transaction verified `ops@srv1970241`, Caddy/WordPress running, MariaDB healthy, and no WordPress/DB host-published ports. The authenticated Cloudflare DNS page showed the exact Mini Craft A/AAAA/CNAME tuple absent.
+- The remote fail-closed prewrite guard returned `RETURN_REVIEWER_G_CADDY_MOUNT_BASELINE_DRIFT`. Its helper coupled mounted-file hash validation to equality of host/container inode numbers and did not emit the individual mounted hash/inode facts; the Gate only requires each inode to remain equal to its own prewrite value. Therefore this result is classified as unresolved helper reconciliation, not asserted as actual Caddy drift.
+- No Caddyfile write, Caddy reload, indexing write, DNS mutation, PPCP readback, payment, or Secret access occurred. `SSH_NETWORK_INVOCATIONS=1`; no second SSH was made.
+- Detailed redacted evidence: `EXECUTION_EVIDENCE.md`, commit `fe5da8e99acdeaae926ef25ecc2bfc3e156a40db`.
+- Next: Reviewer reconciliation only. No retry or public-ingress continuation in this Gate.
