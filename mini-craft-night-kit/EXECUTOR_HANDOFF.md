@@ -2588,3 +2588,17 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Detailed redacted evidence appended to `EXECUTION_EVIDENCE.md`; evidence commit: `4fd89c171b6e415bd86039057a1c20666ae040de`.
 - Next: Reviewer review; do not retry this Gate or perform any ingress mutation without a new Reviewer decision. `STOP_AT_REVIEWER=YES`.
 
+
+
+## Current Executor Handoff — K6 Phase F-R1R4
+
+- Gate: `K6_PHASE_F_R1R4_CONTAINER_LOOPBACK_CADDY_ADMIN_RECOVERY_AND_CANDIDATE_ADAPT`.
+- Result: `RETURN_REVIEWER_F_R1R4_EDGE_TEST_NOT_RECONSTRUCTABLE`; stop at Reviewer.
+- Exactly one canonical strict SSH session succeeded. Pinned host-key trust passed; pre-sudo identity was `ops@srv1970241` (UID 1000).
+- Fresh public Google DoH A/AAAA/CNAME checks were NXDOMAIN. Caddy, WordPress and MariaDB were running over two samples; MariaDB health was healthy. The helper did not correctly capture restart counts, so restart-count stability is not claimed.
+- Durable `/srv/infra/edge/Caddyfile` remained 76 bytes with frozen SHA-256 `12fac82e3b1b9733029aa820c4794ccb9359ae494863dd6815f7e29b636d8beb`.
+- Correct container-loopback Admin GET inside `spikersun-edge-caddy-1` succeeded: active config 610 bytes, SHA-256 `206997c24f7e52efec7f7a8d241afe6c8d16b5b23e54fd799da0f3a94a9dd9cd`. Generic traversal found localhost and edge-test routes; Mini Craft was absent.
+- The bounded in-memory reconstructor could not safely classify the fresh edge-test route shape. It therefore returned before candidate creation/adaptation. Raw config and response body were not emitted or retained after the session. This is a conservative route-reconstruction RETURN, not evidence of new Caddy or DNS drift.
+- No Caddyfile/Admin load/adapt/reload/restart, DNS, cloudflared, firewall, network, Compose, application, product, indexing, payment, or Secret mutation occurred. No remote temp artifact was created. The one-use local PowerShell SSH wrapper was deleted and locally verified absent.
+- Counters: `SSH_ATTEMPTS=1`, `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`, `PAYMENT_ACTIONS=0`, `SECRET_VALUE_OR_HASH_ACCESS=0`.
+- Fresh evidence appended to `EXECUTION_EVIDENCE.md`. `STOP_AT_REVIEWER=YES`; no retry or ingress mutation.
