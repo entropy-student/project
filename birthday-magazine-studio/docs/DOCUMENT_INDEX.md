@@ -37,7 +37,9 @@
 | `OWNER_DECISION_G2BR3_DIRECT_AGENT_PROOF.md` | Owner authorization for direct interactive Codex Agent proof | **APPROVED — 1 PRIMARY + MAX 1 CORRECTION** |
 | `G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md` | Direct interactive Codex Agent real-AI content → PDF proof | Executed / **PASS** |
 | `REVIEWER_DECISION_G2BR3_PASS.md` | Reviewer decision on PR #46 | **CURRENT G2BR3 / G2B CONTENT-RENDERING DECISION — PASS** |
-| `G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP.md` | Docker/MariaDB local WordPress + WooCommerce commerce/account loop | **CURRENT GATE CONTRACT — READY FOR EXECUTION** |
+| `G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_LOOP.md` | Docker/MariaDB local WordPress + WooCommerce commerce/account loop | Executed / **PASS** |
+| `REVIEWER_DECISION_G3A_PASS.md` | Reviewer decision on PR #49 | **CURRENT G3A DECISION — PASS** |
+| `G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND.md` | Official PayPal Sandbox + paid entitlement/idempotency + refund | **CURRENT GATE CONTRACT — AUTHORIZED UNTIL OWNER PAYPAL CHECKPOINT** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
