@@ -127,3 +127,22 @@ Return this Gate for a bounded rerun in an environment that can finish local Pad
 - Recommended Reviewer decision: RETURN_G2A1_R3B_GOOGLE_CREDENTIAL_REQUIRED for provider setup; do not decide API fallback selection yet. The final branch HEAD is in the post-commit GitHub read-back / Executor return.
 
 - Final source recheck: GitHub main HEAD was 0da0ff21823d6cade2b34d9ab623fc2be92e85a8. Latest Family Cookbook Reviewer Handoff, Document Index, R3B Owner Checkpoint, R3B Benchmark, and R3 architecture docs were re-read; their blob SHAs match the initial R3B truth snapshot. The execution branch remains separate; no merge/rebase.
+
+
+## G2A1-R3B Mistral Free-Mode Return — 2026-09-27
+
+```text
+RETURN_G2A1_R3B_MISTRAL_FREE_MODE_RATE_LIMIT_BLOCKED
+
+ACTIONS_RUN_ID=36303291445
+MISTRAL_API_KEY_PRESENT=YES
+MISTRAL_OCR_SUCCESSFUL_PAGES=0
+HTTP_402_PAYMENT_REQUIRED=NO
+HTTP_429_RATE_LIMIT=YES
+FALLBACK=UNKNOWN
+SECRET_VALUE_EXPOSED=NO
+MAIN_MERGED=NO
+STOP_AT_REVIEWER=YES
+```
+
+Reviewer direction: stop Mistral Free-mode retries; restore Google WIF path and wait for Google Billing activation.
