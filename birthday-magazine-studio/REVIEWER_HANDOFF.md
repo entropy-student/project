@@ -10,7 +10,7 @@
 
 - Final goal: let a buyer turn photos and structured answers into a polished, personalized birthday magazine PDF without designing it manually.
 - Accepted product direction: browser-local zero-model-cost preview before payment; full personalized production only after confirmed payment and complete intake.
-- Current business goal: first prove which WordPress/frontend/upload/private-delivery components are safely reusable; then freeze the exact MVP product contract before AI/PDF implementation.
+- Current business goal: prove the local WordPress + WooCommerce commerce/account loop, then PayPal Sandbox + paid entitlement, while production AI provider integration remains deferred until the Owner supplies the interface.
 - Current scope: birthday magazine only. Family Cookbook Studio is now a separate active project at `../family-cookbook-studio/` and remains out of scope here.
 
 ## 2. Authority / Source of Truth
@@ -121,7 +121,7 @@ Important limitation: the Owner reports demand as already validated, but the und
 - Repeatability/economics: unknown.
 - Production website: not built/deployed.
 
-## 6. Current Gate — G2BR1 Real AI Generation Closure
+## 6. Gate Results and Current Gate
 
 Current Reviewer decision: [docs/REVIEWER_DECISION_G2A1_PASS.md](./docs/REVIEWER_DECISION_G2A1_PASS.md)
 
