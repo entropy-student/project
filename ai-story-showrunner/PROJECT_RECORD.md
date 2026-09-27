@@ -1153,3 +1153,15 @@ Audit doc:
 Rollback anchors:
 - project: `rollback/ai-story-showrunner-topic-system-pre-full-sync-20260927`;
 - portable skill: `rollback/story-showrunner-topic-system-pre-full-sync-20260927`.
+
+
+### 2026-09-27 — Full-sync merge reconciliation
+
+Portable Candidate Topic sync confirmed at `entropy-student/spike.skill@2796982ed9447ea0283253762ea59cf604566ccb`.
+
+The live ChatGPT task `AI选题雷达` has been updated in place to read repository SSOT first and run Human-world-first + Human Process + Meaning + D1–D5.
+
+Important evidence boundary:
+- contract/config coverage = PASS;
+- first real post-sync Daily Radar execution = PENDING;
+- do not use the pre-sync `topic-ledger/daily/2026-09-27.json` as v0.2.1 runtime proof.
