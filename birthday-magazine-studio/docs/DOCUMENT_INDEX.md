@@ -32,7 +32,9 @@
 | `G2BR1_REAL_AI_GENERATION_CLOSURE.md` | Narrow real-AI proof closure | Executed / **RETURN — NESTED CODEX TRANSPORT FAILED** |
 | `REVIEWER_DECISION_G2BR1_RETURN.md` | Reviewer decision on PR #40 | **CURRENT G2BR1 DECISION — RETURN** |
 | `OWNER_DECISION_G2BR2_MAX2_HOST_CODEX_RUNS.md` | Owner authorization for G2BR2 host-context Codex runs | **APPROVED — MAX 2 REAL-MODEL RUNS** |
-| `G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md` | Host-context Codex transport + real-AI closure | **CURRENT GATE CONTRACT — OWNER AUTHORIZED** |
+| `G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md` | Host-context Codex transport + real-AI closure | Executed / **RETURN** |
+| `REVIEWER_DECISION_G2BR2_RETURN.md` | Reviewer decision on PR #43 | **CURRENT G2BR2 DECISION — RETURN** |
+| `G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF.md` | Direct interactive Codex Agent real-AI content → PDF proof | **CURRENT GATE CONTRACT — READY FOR OWNER AUTHORIZATION** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
 | `G1_TWO_STEP_AI_PRODUCT_FLOW.md` | Two-step product-flow design | Current supporting design where consistent with Handoff |
