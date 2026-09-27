@@ -1,7 +1,7 @@
 # G2A1-R3B — Bounded API Fallback Benchmark
 
 > Reviewer execution contract  
-> Status: **RETURNED / GOOGLE BILLING OWNER ACTION**  
+> Status: **CURRENT / BAIDU FREE-QUOTA BENCHMARK**  
 > Parent truth: [../REVIEWER_HANDOFF.md](../REVIEWER_HANDOFF.md)  
 > Owner approval: **GRANTED 2026-09-27**  
 > Accepted primary: `PP-OCRv6_medium`  
@@ -438,3 +438,27 @@ Current Owner action:
 enable/link Billing for `family-cookbook-ocr-test`, then rerun the same R3B Google WIF workflow.
 
 The USD 0.20 benchmark spend cap remains in force.
+
+
+---
+
+## 21. Baidu Free-Quota Override — 2026-09-27
+
+Before paying the account-level Google Cloud Billing prepayment, Owner authorized one more zero-paid-provider path:
+
+`Baidu Handwriting OCR`
+
+Scope:
+- same fixed 11 public hard handwriting crops;
+- API Key/Secret Key via GitHub Actions Secrets;
+- no customer/private data;
+- free test quota only;
+- no automatic pay-as-you-go/resource purchase;
+- no additional provider in this Gate.
+
+Current expected result:
+- `FALLBACK=BAIDU_HANDWRITING_OCR`;
+- `FALLBACK=NONE`;
+- or precise free-quota/permission/provider RETURN.
+
+Google remains a future adapter and Mistral remains deferred after Free-mode HTTP 429.
