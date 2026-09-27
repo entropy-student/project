@@ -2730,3 +2730,12 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - No retry. No Caddy, Compose, Docker/network, DNS, indexing, payment, or Secret action occurred. Stale single-file bind is confirmed; route parity, complete active-route inventory, Compose hash and `/data` persistence remain unverified.
 - Detailed evidence commit: `2bbc43eda8c9ccd321f251c9db64e885bcedf833`.
 - `STOP_AT_REVIEWER=YES`; await Reviewer reconciliation.
+
+## K6_PHASE_G_R3R2R2_READONLY_REMAINDER_AND_RECREATE_PLAN_SEAL
+
+- Result: `PASS_CANDIDATE_K6_PHASE_G_R3R2R2_READONLY_REMAINDER_AND_RECREATE_PLAN_SEAL`. One canonical strict SSH invocation verified `ops@srv1970241`; no mount reconciliation was repeated.
+- The accepted 153-byte mounted Caddyfile/hash was adapted and its localhost + edge-test route semantics matched the fresh Admin API config. The complete active user-route inventory is `edge-test.spikersun.com` and `localhost`; the sealed target candidate preserves both and adds only Mini Craft.
+- Compose source SHA-256: `22abbe0b6eee42edee068605b19a4c7168284446bbf723715ff3a27c360cfef5`. Rendered service is `caddy` in `spikersun-edge`, with 80/443, existing `spikersun-edge` network, readonly Caddyfile bind, persistent writable `/data` bind, and `/config` bind. Certificate persistence is PASS; config persistence is not required by the explicit Caddyfile startup path.
+- Sealed plan: recreate only `caddy` using the explicit Compose file/project and `--no-deps --force-recreate --pull never`; shared-edge brief downtime is required. Rollback is sealed for both pre-DNS and post-DNS cases.
+- No Caddyfile/backup write, reload, restart, recreate, Compose/network/daemon, DNS, indexing, payment, or Secret action occurred. GitHub Evidence commit: `a282fb763c27e695abe8ebf61db5d6ccb4f86b1b`.
+- `STOP_AT_REVIEWER=YES`; no recreate or next Gate is authorized by this candidate.
