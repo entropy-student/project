@@ -244,6 +244,23 @@
             "RETURN",
             "NOT_APPLICABLE"
           ]
+        },
+        "human_process": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "meaning_distinctness": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "RETURN",
+            "REVISIT_ALLOWED",
+            "NOT_APPLICABLE"
+          ]
         }
       }
     },
@@ -362,6 +379,20 @@
         "string",
         "null"
       ]
+    },
+    "human_process_family": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Normalized family for what the human is doing in this topic, e.g. TASTE_FORMATION, SKILL_LEARNING, RELATIONSHIP_NEGOTIATION."
+    },
+    "meaning_fingerprint": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Normalized semantic key derived from human tension + controlling question; used for cross-domain meaning dedup, not as a locked thesis."
     }
   }
 }
