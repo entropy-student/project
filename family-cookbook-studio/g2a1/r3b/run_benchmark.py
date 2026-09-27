@@ -20,7 +20,7 @@ from urllib.parse import quote
 import requests
 from PIL import Image
 from google.auth.transport.requests import Request
-from google.oauth2 import service_account
+import google.auth
 
 ROOT = Path(__file__).resolve().parents[3]
 R3A = ROOT / "family-cookbook-studio" / "g2a1" / "r3a"
@@ -476,7 +476,7 @@ def main():
     DATA.mkdir(parents=True, exist_ok=True)
     dataset = validate_inputs()
     flags = {
-        "google_credentials": bool(os.getenv("GOOGLE_DOC_AI_CREDENTIALS_JSON")),
+        "google_credentials": bool(os.getenv("GOOGLE_APPLICATION_CREDENTIALS") or os.getenv("GOOGLE_GHA_CREDS_PATH")),
         "google_project": bool(os.getenv("GOOGLE_CLOUD_PROJECT")),
         "google_location": bool(os.getenv("GOOGLE_DOC_AI_LOCATION")),
         "google_processor_id": bool(os.getenv("GOOGLE_DOC_AI_PROCESSOR_ID")),
@@ -507,19 +507,12 @@ def main():
             write_not_run_outputs("RETURN_G2A1_R3B_ACTIONS_BLOCKED", preflight)
             return
         try:
-            credential_info = json.loads(os.environ["GOOGLE_DOC_AI_CREDENTIALS_JSON"])
-        except (TypeError, ValueError):
-            write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
-            return
-        if credential_info.get("type") != "service_account" or not all(
-                credential_info.get(key) for key in ("client_email", "private_key", "token_uri")):
-            write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
-            return
-        try:
-            credentials = service_account.Credentials.from_service_account_info(
-                credential_info, scopes=["https://www.googleapis.com/auth/cloud-platform"])
+            credentials, detected_project = google.auth.default(
+                scopes=["https://www.googleapis.com/auth/cloud-platform"])
             credentials.refresh(Request())
             token = credentials.token
+            preflight["google_auth_mode"] = "WORKLOAD_IDENTITY_FEDERATION"
+            preflight["google_adc_project_detected"] = detected_project
         except Exception:
             write_not_run_outputs("RETURN_G2A1_R3B_GOOGLE_PROVIDER_SETUP_BLOCKED", preflight)
             return
