@@ -1,7 +1,7 @@
 # G2BR1 — Real AI Generation Closure
 
 > Reviewer execution contract  
-> Status: OWNER AUTHORIZED — blocked only on protected provider/model credential availability  
+> Status: OWNER AUTHORIZED — preferred path is ChatGPT-authenticated Codex CLI; local signed-in Codex runtime required  
 > Parent Gate: `G2B_LOCAL_AI_PDF_SOLUTION_PROOF`  
 > Accepted partial evidence: PR #30 / merged G2B reference pipeline
 
@@ -20,40 +20,59 @@ existing synthetic intake
 
 Do not rebuild already accepted reference-pipeline work.
 
-## Owner authorization / remaining prerequisite
+## Owner authorization / execution path
 
-Owner authorization is **complete** for the bounded synthetic-only model calls.
+Owner authorization is **complete**.
 
-Remaining prerequisite:
+### Preferred G2BR1 path — ChatGPT Plus / Codex
 
-- one approved provider/model/runtime credential must be available to the Executor through a protected runtime mechanism.
+Run the real-model generation in a local Codex CLI/client signed in with the Owner's ChatGPT account.
 
-Never store or print the credential.
-
-Existing optional runtime interface:
+Required pattern:
 
 ```text
-BMS_AI_CALL_APPROVED=true
-BMS_AI_CHAT_COMPLETIONS_URL=<protected runtime value>
-BMS_AI_MODEL=<approved model>
-BMS_AI_API_KEY=<protected secret>
+existing synthetic intake
+→ codex exec
+→ --output-schema <content-schema.json>
+→ generated structured JSON
+→ existing grounding / renderer / QA pipeline
 ```
 
-Equivalent protected injection is acceptable.
+No OpenAI API key is required for this route.
 
-No `.env` file should be committed.
+The implementation should add the smallest possible `CodexExecProvider` (or equivalent wrapper) that:
+- launches one `codex exec` process;
+- supplies only the synthetic intake/prompt;
+- constrains final output with the existing content JSON Schema;
+- writes model output to a dedicated generated JSON artifact;
+- never falls back to `reference-content.json` for PASS;
+- can be blocked by the existing canonical-job/idempotency guard before launching Codex.
 
-## Call limit
+Use a read-only/suitably restricted Codex permission profile for the model-generation subprocess where practical; the subprocess only needs to read synthetic prompt/schema inputs and emit its final JSON output.
+
+### API path — fallback only
+
+The existing Chat Completions adapter may remain as an alternative, but G2BR1 does not require purchasing API usage if the Codex Plus path succeeds.
+
+Never store or print credentials or ChatGPT session tokens.
+
+## Run limit
 
 Unless Owner explicitly approves otherwise:
 
 - one fixture;
-- maximum three provider requests total;
-- retries only for provider/schema/transient failure;
+- maximum **three real-model runs total**;
+- preferred mode: Codex CLI signed in with ChatGPT;
+- retries only for schema/runtime/transient failure;
 - no exploratory model bakeoff;
-- no real customer data.
+- no real customer data;
+- do not automatically purchase extra Codex credits.
 
-Record request count and reason for any retry without recording secrets or private authorization headers.
+Record model-run count and reason for any retry without recording auth/session secrets.
+
+If available plan allowance is exhausted, return:
+
+`RETURN_CODEX_PLAN_LIMIT_REACHED`
 
 ## Reuse accepted work
 
@@ -72,10 +91,12 @@ Use the existing G2B harness as the baseline.
 ## Must prove
 
 ### 1. Real structured generation
-- provider request count >= 1;
+- real model run count >= 1;
+- preferred evidence: successful ChatGPT-authenticated `codex exec`;
 - no human reference fixture fallback;
 - model output conforms to `CONTENT_SCHEMA`;
-- exact provider/model identifier recorded, but no credential.
+- execution mode + model identifier recorded where the client exposes it;
+- no API key or ChatGPT auth token recorded.
 
 ### 2. Grounding
 On actual model output:
@@ -107,23 +128,23 @@ Use actual provider-generated structured content to produce:
 - no text clipping/overflow;
 - no fallback to `reference-content.json`.
 
-### 5. Provider-spend idempotency
-Prove the local canonical-job boundary prevents a duplicate invocation from creating a second provider spend.
+### 5. Real-model-run idempotency
+Prove the local canonical-job boundary prevents a duplicate invocation from launching a second paid/allowance-consuming model run.
 
-Required evidence:
+Preferred Codex evidence:
 
 ```text
 canonical_jobs=1
 successful_generation_for_job=1
-duplicate_invocation_rejected_before_provider_call=PASS
-provider_request_count_for_canonical_job=1
+duplicate_invocation_rejected_before_codex_exec=PASS
+codex_exec_run_count_for_canonical_job=1
 ```
 
-If a retry is required due provider/schema failure, distinguish:
+If a retry is required due schema/runtime/transient failure, distinguish:
 - retry within the same canonical job;
 - duplicate job invocation.
 
-Do not claim duplicate-spend proof merely from zero provider calls.
+Do not claim this proof merely from zero model runs.
 
 ## Accepted limitations
 
@@ -142,10 +163,10 @@ Retain sanitized:
 
 - actual model-generated structured JSON;
 - grounding report;
-- AI provider status report;
+- sanitized model-execution status report;
 - actual-AI 12-page PDF;
 - QA report;
-- provider request-count/idempotency evidence;
+- Codex/model-run-count + idempotency evidence;
 - screenshots/contact sheet if output materially changed.
 
 Do not commit:
@@ -190,11 +211,11 @@ GROUNDING_AUDIT=PASS
 DYNAMIC_MODULES=PASS
 ACTUAL_AI_PDF_12_PAGES=PASS
 DETERMINISTIC_QA=PASS
-PROVIDER_SPEND_IDEMPOTENCY=PASS
+REAL_MODEL_RUN_IDEMPOTENCY=PASS
 
-PROVIDER=<sanitized provider name>
-MODEL=<model identifier>
-PROVIDER_REQUEST_COUNT=<integer>
+EXECUTION_MODE=CODEX_CHATGPT_LOGIN
+MODEL=<model identifier if exposed>
+MODEL_RUN_COUNT=<integer>
 
 GIT_BRANCH=<branch>
 GIT_COMMIT=<final sha>
@@ -205,7 +226,15 @@ G3_STARTED=NO
 STOP_AT_REVIEWER=YES
 ```
 
-If provider access still cannot be safely supplied:
+If the local Codex client is not signed in with ChatGPT:
+
+`RETURN_CODEX_CHATGPT_LOGIN_REQUIRED`
+
+If the available Codex plan allowance is exhausted:
+
+`RETURN_CODEX_PLAN_LIMIT_REACHED`
+
+If falling back to the API path and provider access cannot be safely supplied:
 
 `RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED`
 
