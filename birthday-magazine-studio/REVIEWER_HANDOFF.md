@@ -4,7 +4,7 @@
 > Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1  
 > Executor facts: `EXECUTOR_HANDOFF.md`  
 > Detailed evidence: `EXECUTION_EVIDENCE.md`  
-> Last reviewed: 2026-09-26
+> Last reviewed: 2026-09-27
 
 ## 1. Project Goal
 
@@ -68,7 +68,8 @@ G2A1 Frontend + Reusable Component Feasibility PoC      ✅ PASS
 G2A1R1 Evidence Closure                                 ⏹ CLOSED — executor RETURN produced final technical finding
 G2A2 MVP Product Contract Freeze                        ✅ PASS
 G2B  Local AI/PDF Solution Proof                        ↩ RETURN — real AI proof missing
-G2BR1 Real AI Generation Closure                        ← CURRENT / OWNER AUTHORIZED / LOCAL CODEX LOGIN REQUIRED
+G2BR1 Real AI Generation Closure                        ↩ RETURN — nested Codex transport failed
+G2BR2 Host Codex Transport + Real-AI Closure             ← CURRENT / BLOCKED_BY_OWNER_ADDITIONAL_RUN_AUTHORIZATION
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
@@ -87,6 +88,7 @@ Current Reviewer decisions:
 - `RETURN_G2B_REAL_AI_PROOF_REQUIRED_2026-09-27`
 - `OWNER_AUTHORIZED_G2BR1_MAX_3_SYNTHETIC_AI_CALLS_2026-09-27`
 - `OWNER_SELECTED_G2BR1_CODEX_PLUS_ROUTE_2026-09-27`
+- `RETURN_G2BR1_NESTED_CODEX_TRANSPORT_FAILED_2026-09-27`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -194,17 +196,42 @@ Still missing:
 
 The human-authored reference fixture remains renderer evidence only.
 
-### Current authorization
+### G2BR1 Reviewer result
 
-Current narrow Gate:
-- [docs/G2BR1_REAL_AI_GENERATION_CLOSURE.md](./docs/G2BR1_REAL_AI_GENERATION_CLOSURE.md)
+G2BR1 is **RETURN**, not PASS.
+
+PR #40 is accepted and merged as durable RETURN evidence.
+
+Accepted:
+- ChatGPT login preflight passed;
+- three authorized Codex child-process attempts started;
+- all three failed before any structured model response;
+- later failures were categorized only as NETWORK_OR_TRANSIENT;
+- no reference fixture fallback was misrepresented as AI output;
+- no grounding, actual-AI PDF or actual-AI QA was claimed;
+- duplicate invocation after the failed job was rejected before a fourth Codex process;
+- no forbidden G3/payment/customer/API-key work occurred.
+
+Reviewer interpretation:
+- the accepted G2B schema/renderer/PDF baseline is not invalidated;
+- the failing topology was Codex Agent command sandbox → nested codex exec;
+- the exact transport/network root cause remains UNKNOWN.
+
+Current decision:
+- [docs/REVIEWER_DECISION_G2BR1_RETURN.md](./docs/REVIEWER_DECISION_G2BR1_RETURN.md)
+
+### Current Gate — G2BR2 Host Codex Transport + Real-AI Closure
+
+Contract:
+- [docs/G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md](./docs/G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md)
 
 Status:
-- authorized in scope;
-- Owner selected the **ChatGPT-authenticated Codex/Plus route** for G2BR1;
-- run ceiling: **maximum three real-model runs total** for the existing synthetic fixture;
-- no separate OpenAI API purchase is required for this closure;
-- remaining execution prerequisite is a local Codex client signed in with the Owner's ChatGPT account.
+- **BLOCKED_BY_OWNER_ADDITIONAL_RUN_AUTHORIZATION**;
+- prior 3-run Owner allowance is exhausted;
+- recommended next ceiling: maximum 2 additional real-model runs;
+- launch the existing Codex harness from the Owner's host Windows process/terminal context, not from an Agent-spawned child shell inside Codex;
+- do not rebuild G2B/G2BR1 accepted work;
+- no separate API purchase is required for this host-context follow-up.
 
 Do not export/copy ChatGPT auth tokens or session state into chat, GitHub, screenshots or evidence.
 
@@ -274,9 +301,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: dispatch/review only `docs/G2BR1_REAL_AI_GENERATION_CLOSURE.md`.
-- Executor next action: on the Owner's local machine, use Codex signed in with ChatGPT to run the bounded G2BR1 closure; max 3 real-model runs; stop at Reviewer.
-- Owner intervention required: **only to complete ChatGPT sign-in in the local Codex client if it is not already signed in**. No API key is required for the preferred route.
+- Reviewer next action: wait for Owner authorization of an additional bounded G2BR2 run count, then dispatch/review only `docs/G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md`.
+- Executor next action: none until that additional run authorization is explicit.
+- Owner intervention required: **YES** — approve an additional bounded G2BR2 model-run count. Recommended: maximum 2 additional runs. No API key or credit purchase is required.
 
 ## 13. Status Summary
 
@@ -287,7 +314,8 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - G2A2: PASS; `MVP_PRODUCT_CONTRACT.md` is frozen.
 - Privacy retention is frozen at 24h for source/intermediate assets and 72h for final PDF.
 - G2B: RETURN; partial local renderer/PDF/QA evidence is accepted.
-- G2BR1: CURRENT; Owner selected the Codex Plus route; local ChatGPT-authenticated Codex runtime is the remaining execution prerequisite.
+- G2BR1: RETURN; three nested Codex CLI attempts failed before model output and the approved 3-run cap is exhausted.
+- G2BR2: CURRENT but blocked on explicit Owner authorization for additional bounded model runs.
 - Current unresolved proof: actual model structured output → grounding → existing renderer → 12-page PDF/QA, plus non-zero provider-spend idempotency.
 - Next after G2BR1/G2B PASS: G3A WooCommerce commerce loop.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
