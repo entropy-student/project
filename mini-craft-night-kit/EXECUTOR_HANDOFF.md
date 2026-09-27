@@ -2641,3 +2641,15 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - No third SSH, Caddyfile write, Admin API load, reload/restart, DNS/cloudflared/firewall/network/Compose change, public ingress, payment, or Secret access occurred. Remote writes = 0. All local SSH capture temp files were deleted and verified absent.
 - Evidence commit: `a30d53428d11f8a0fa9c014d581205a7a9cf59db`. This Handoff update is the current Executor Handoff record; see its commit SHA in the tool response / Git history.
 - Next: Reviewer review only. SSH budget is exhausted for this Gate; no reconnect or mutation. `STOP_AT_REVIEWER=YES`.
+
+
+## Current Executor Handoff — K6 Phase F-R1R5R3
+
+- Gate: `K6_PHASE_F_R1R5R3_ADAPT_WARNING_CLASSIFICATION_AND_CANDIDATE_SEAL`.
+- Result: `RETURN_REVIEWER_F_R1R5R3_CANDIDATE_RECONSTRUCTION_DRIFT`; `STOP_AT_REVIEWER=YES`.
+- One canonical strict direct-native SSH invocation succeeded. Identity and pinned host key matched; the remote identity was `ops@srv1970241`. Local Cloudflare DoH A/AAAA/CNAME lookups all reported NXDOMAIN.
+- Fresh read-only frozen checks passed: durable Caddyfile SHA-256 `12fac82e3b1b9733029aa820c4794ccb9359ae494863dd6815f7e29b636d8beb`; container-loopback Caddy Admin GET; active config 610 bytes / SHA-256 `206997c24f7e52efec7f7a8d241afe6c8d16b5b23e54fd799da0f3a94a9dd9cd`; localhost and edge-test routes present; Mini Craft route absent; edge-test static response 200 / 30 bytes / accepted body SHA-256.
+- The in-memory reconstructed candidate was 264 bytes, but observed SHA-256 `b3531c1d7efb1b7e6e8e5cc83b39c5e58b61c66bcf386343dfa028d80dab2047` differed from the frozen expected `ab67b8fca129b5f41f18740997794e05bb37037e58455d2e4524b64543f05e93`. Per Gate, execution stopped before `caddy adapt`, `caddy fmt`, or semantic validation. The cause is unresolved and must not be guessed or retried without Reviewer direction.
+- No Caddyfile/candidate file write, Caddy load/reload/restart, DNS/ingress/shared-infrastructure mutation, payment, or Secret access occurred. Remote writes = 0. Local SSH capture files were deleted and verified absent.
+- Detailed redacted evidence was appended in GitHub commit `1d99cb663f6202e3567d2fbc777703bcc3c42668`. No Reviewer-owned document was modified.
+- Next: Reviewer review only. No second SSH or mutation in this Gate.
