@@ -51,8 +51,9 @@ No API key, additional credits, real customer data, payment, PayPal, production 
 ### GitHub review handoff
 
 - Branch: `codex/birthday-magazine-g2br3-direct-agent-proof`, from `491a7eab7721bd9876e1ebc1292cfc382949c061`.
-- Evidence commit: current PR head; see GitHub branch/PR for the final SHA.
-- PR: to be opened against `main` from this branch; final number and URL will be recorded in the follow-up reconciliation commit.
+- Evidence commit: `0b5c3ef4ff2e6581efc021fa2c62700d1f44af2b`.
+- Reviewer PR: [#46 — G2BR3 direct interactive Codex Agent real AI proof](https://github.com/entropy-student/project/pull/46), open against `main`, unmerged. The final Evidence/Handoff reconciliation is pushed as a follow-up commit on this PR.
+- GitHub `main` advanced from the execution base `491a7eab7721bd9876e1ebc1292cfc382949c061` to `da09dd1b0e83e614c18980ca043ffab359cd963a` while this run was in progress; the intervening commits concern unrelated mini-craft documentation. PR #46 targets `main`.
 - Reviewer is the next decision point. This execution does not make the formal Gate decision or start G3.
 
 

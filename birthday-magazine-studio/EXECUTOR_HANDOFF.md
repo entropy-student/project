@@ -28,7 +28,7 @@ The existing grounding validator, deterministic renderer, PDF pipeline and QA pa
 
 Artifacts: `poc/g2b/artifacts/g2br3/` (generated JSON, schema/grounding/QA reports, provenance/status, PDF, screenshots/contact sheet, dependency report and hashes). Detailed results and limitations are in `EXECUTION_EVIDENCE.md`.
 
-Branch `codex/birthday-magazine-g2br3-direct-agent-proof` is based on GitHub `main` at `491a7eab7721bd9876e1ebc1292cfc382949c061`. The evidence branch is prepared for push; the PR to `main` will be opened after the evidence commit and its URL added to this handoff in the final reconciliation commit. Reviewer is the next decision point. Do not enter G3.
+Branch `codex/birthday-magazine-g2br3-direct-agent-proof` is based on GitHub `main` at `491a7eab7721bd9876e1ebc1292cfc382949c061`. The evidence commit `0b5c3ef4ff2e6581efc021fa2c62700d1f44af2b` is pushed. Reviewer PR [#46](https://github.com/entropy-student/project/pull/46) is open against `main` and unmerged; this final handoff reconciliation is being pushed as a follow-up on the same PR. Reviewer is the next decision point. Do not enter G3.
 
 ## Current Gate — G2BR2 final result — RETURN
 
