@@ -82,7 +82,9 @@ G2A1-R2 已完成真实 Actions PoC：
 - OCR 已完成真实推理，但当前混合语言测试集和未冻结的 UX 门槛不足以支持最终产品级 PASS/FAIL；
 - TrOCR-small 当前配置已被淘汰为 MVP fallback。
 
-当前进入 **G2A1-D1 — Target Language + OCR Acceptance Calibration**，这是 Owner 决策点，不再重复网站测试。
+G2A1-D1 已决策完成：**English-first、not English-only；OCR 完成后只进行一次统一 Review，所有不确定字段集中高亮并支持手动修改。**
+
+当前进入 **G2A1-R3A — Free/Local Primary Benchmark**：只比较 PP-OCRv6_medium 与 PaddleOCR-VL-1.6，先选出一个免费本地主力；API 兜底留到 R3B，并在任何凭据/付费调用前重新经过 Owner checkpoint。
 
 G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
 
@@ -96,7 +98,8 @@ G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、�
 - [docs/G2A1_INPUT_OCR_COMPONENT_POC.md](./docs/G2A1_INPUT_OCR_COMPONENT_POC.md) — 原始 G2A1 Gate
 - [docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md](./docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md) — G2A1-R1（资源阻塞 RETURN）
 - [docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md](./docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md) — G2A1-R2（组件证据已接受）
-- [docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md](./docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md) — **当前 Owner checkpoint**
+- [docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md](./docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md) — Owner 决策已完成
+- [docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md](./docs/G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md) — **当前 R3A Gate**
 - [docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md](./docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md) — 下一 Gate
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 获客/验证计划
 - [PROJECT_RECORD.md](./PROJECT_RECORD.md) — legacy compatibility pointer only
