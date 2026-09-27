@@ -34,6 +34,7 @@ Read in this order:
 - `DAILY_TOPIC_AUTOMATION_V2.md` — v0.2.2 planner contract consuming Topic OS v0.2.1.
 - `TOPIC_OS_V021_MEANING_DEDUP_VALIDATION.md` — 5×10 cross-domain stress-test evidence for Human Process / Meaning dedup.
 - `TOPIC_SYSTEM_FULL_SYNC_AUDIT_20260927.md` — full audit of Topic contracts, Evergreen Bank, Worker contract, live scheduled task, and portable Candidate sync.
+- `../topic-ledger/daily/2026-09-27-v021-runtime-proof.json` — manual real-signal runtime proof for Human Process / Meaning / D1–D5; scheduled-trigger proof still pending.
 - `WORKER_CONTRACTS.md` — current Topic Worker and downstream structured handoff contract.
 - `WORKER_ADAPTER_PLAN.md` — current worker routing/admission state.
 

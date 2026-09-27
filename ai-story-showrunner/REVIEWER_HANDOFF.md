@@ -391,3 +391,27 @@ Reviewer result:
 `PASS_TOPIC_SYSTEM_CONFIG_SYNC / RUNTIME_PROOF_PENDING_NEXT_DAILY_RUN / G6A_UNCHANGED`.
 
 Portable Candidate topic sync is confirmed on `entropy-student/spike.skill/main@2796982ed9447ea0283253762ea59cf604566ccb`. The live scheduled task is updated, but the next real Daily Radar artifact is still required as runtime proof.
+
+
+## Topic Runtime Proof v0.2.1 — 2026-09-27
+
+A manual real-signal Daily Radar validation was executed after the full-sync.
+
+Artifact:
+`topic-ledger/daily/2026-09-27-v021-runtime-proof.json`
+
+Result:
+`PASS_MANUAL_RUNTIME_TOPIC_OS_V0_2_1`
+
+Key proof:
+- Human-world-first generation executed;
+- Human Process + Meaning fields populated;
+- D1–D5 executed;
+- D5 blocked a current Shopping-Agent HOT candidate because it collapsed to existing `DELEGATION_VS_CONTROL`;
+- insufficient-evidence candidates returned HOLD instead of being forced through;
+- best clean validation candidate: Learning / `SKILL_LEARNING` / `GUIDANCE_VS_SKILL_FORMATION`.
+
+No Calendar/Registry mutation was performed in proof mode.
+
+Current evidence boundary:
+`CONFIG_SYNC_PASS / MANUAL_RUNTIME_PASS / SCHEDULED_TRIGGER_PROOF_PENDING / G6A_UNCHANGED`.
