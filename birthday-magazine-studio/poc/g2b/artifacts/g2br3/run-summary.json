@@ -1,0 +1,24 @@
+{
+  "gate": "G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF",
+  "result": "PASS_CANDIDATE_G2BR3_DIRECT_AGENT_REAL_AI_PROOF",
+  "pipelineImplementation": "PASS_DIRECT_AGENT_RENDER_PIPELINE",
+  "realAiCall": "PASS",
+  "pdf": "proof-magazine-soft-warm.pdf",
+  "screenshots": [
+    "cover-bold-editorial-desktop.png",
+    "cover-soft-warm-desktop.png",
+    "feature-memory-desktop.png",
+    "current-era-desktop.png",
+    "birthday-letter-desktop.png",
+    "cover-soft-warm-375px.png",
+    "12-page-contact-sheet.png",
+    "cover-retro-playful-desktop.png"
+  ],
+  "qa": "qa-report.json",
+  "grounding": "grounding-report.json",
+  "idempotency": "NOT_TESTED_DIRECT_AGENT_NO_PROVIDER_BOUNDARY",
+  "cleanup": "Short-lived loopback browser server closed; no canonical provider job was created; no container, secret, or persistent service was created.",
+  "realModelRunCount": 1,
+  "successfulGenerationCount": 1,
+  "correctionGenerationCount": 0
+}

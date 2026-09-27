@@ -1,0 +1,112 @@
+[
+  {
+    "file": "ai-provider-status.json",
+    "sizeBytes": 1380,
+    "sha256": "f76fe2cbb53eeef43ba75c50d383f55631b7b03e25622e97dcf920c741045ec9"
+  },
+  {
+    "file": "content-schema.json",
+    "sizeBytes": 5193,
+    "sha256": "b2f0426371bd06dc35d2317944d9158188ee5bcbfd1835c4a26187376e24a8f9"
+  },
+  {
+    "file": "dependency-report.json",
+    "sizeBytes": 476,
+    "sha256": "118d8b5b0db4e7cd172236d248e38868daf218e32b4ed6959aa453e3ca53e546"
+  },
+  {
+    "file": "generated-content.json",
+    "sizeBytes": 9005,
+    "sha256": "8922801ca193a97fa853e091e8de489da0dbf11438a206e96daa688d71f99bab"
+  },
+  {
+    "file": "generation-provenance.json",
+    "sizeBytes": 730,
+    "sha256": "3793cf2819636cab8f50e6f2814c5a859457702a5f106c96263bf1e5fc4969d0"
+  },
+  {
+    "file": "grounding-report.json",
+    "sizeBytes": 4433,
+    "sha256": "37759df6bd51ac6e135631f1d96547120f91abdc74184fca4181107b05df2bc9"
+  },
+  {
+    "file": "idempotency-report.json",
+    "sizeBytes": 373,
+    "sha256": "a18076726ffbd316d526858508eddf8be7da5713435693b9e9c9e34d86b1f1e3"
+  },
+  {
+    "file": "model-execution-status.json",
+    "sizeBytes": 1380,
+    "sha256": "f76fe2cbb53eeef43ba75c50d383f55631b7b03e25622e97dcf920c741045ec9"
+  },
+  {
+    "file": "proof-magazine-soft-warm.pdf",
+    "sizeBytes": 379787,
+    "sha256": "a3ed604ae21119d9a073474463dd11d898329b826ce3ed9215a6f59e972f044a"
+  },
+  {
+    "file": "qa-report.json",
+    "sizeBytes": 22143,
+    "sha256": "b9a28a45fb8098cfe7f737f5255b2bb5805a1c0363e55c26112802df611861c9"
+  },
+  {
+    "file": "run-summary.json",
+    "sizeBytes": 956,
+    "sha256": "d7426e0f56ec98afa77656048e85c573c8980648df2c863f1587d35ba40c68c4"
+  },
+  {
+    "file": "screenshots/12-page-contact-sheet.png",
+    "sizeBytes": 139713,
+    "sha256": "b46b8b4644857c74df04baa698f53917434b820ad17bc09444ae1b607878bdd9"
+  },
+  {
+    "file": "screenshots/birthday-letter-desktop.png",
+    "sizeBytes": 76323,
+    "sha256": "3a4a1533bab92cc0d972be8872212845f0ccdf04e2873d868eef6d9fe3d858e0"
+  },
+  {
+    "file": "screenshots/cover-bold-editorial-desktop.png",
+    "sizeBytes": 56399,
+    "sha256": "699a4550ce811b7d74e49056f72bb14fdffc9504f908638327180ed602eacaa9"
+  },
+  {
+    "file": "screenshots/cover-retro-playful-desktop.png",
+    "sizeBytes": 67155,
+    "sha256": "5ea4fb356698b5386d30f8b8493e5fa2612dc804501596046f8f99c957464b39"
+  },
+  {
+    "file": "screenshots/cover-soft-warm-375px.png",
+    "sizeBytes": 24305,
+    "sha256": "47ef46bc5b163fc9e8a0d19028519a256719d2d128d672d4450e9f498001d8f5"
+  },
+  {
+    "file": "screenshots/cover-soft-warm-desktop.png",
+    "sizeBytes": 57308,
+    "sha256": "5e10d6c47bb1bde18e90d7b506ff057f0f4162f329009159a8f4401893feefd0"
+  },
+  {
+    "file": "screenshots/current-era-desktop.png",
+    "sizeBytes": 74981,
+    "sha256": "f858207fd28709061ae6c05cc1f004fcaafb4162db8703231615b826bf239d72"
+  },
+  {
+    "file": "screenshots/feature-memory-desktop.png",
+    "sizeBytes": 74565,
+    "sha256": "5f74f19ac9fe6e159b4e31c9101980e1feb2c2f5666dd559f7d656143e5cd2fe"
+  },
+  {
+    "file": "structured-schema-report.json",
+    "sizeBytes": 302,
+    "sha256": "84ee5d31d20128bac2aa6279d88284a7b1512938ceba4134de26616f0897e7cb"
+  },
+  {
+    "file": "style-proof.json",
+    "sizeBytes": 2084,
+    "sha256": "674a820a3619632ed9e0b9455b19494abdaeba8af479a76a9fb76e8c14305258"
+  },
+  {
+    "file": "synthetic-intake.json",
+    "sizeBytes": 6689,
+    "sha256": "8f01111a51d12ac77d15998687077429eb870bee6a74b09314dd58fffaf964ce"
+  }
+]

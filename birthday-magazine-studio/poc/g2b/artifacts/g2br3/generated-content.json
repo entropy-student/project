@@ -1,0 +1,152 @@
+{
+  "recipient": {
+    "name": "Mira Vale",
+    "age": 25,
+    "birthday": "2001-08-14",
+    "relationship": "older sister"
+  },
+  "tone": "balanced",
+  "stylePreset": "soft-warm",
+  "groundedFacts": [
+    {
+      "text": "Mira alphabetizes the spice shelf and remembers details people mention once.",
+      "sourceRefs": ["answers.q1"],
+      "supportingQuotes": ["alphabetizes the spice shelf without thinking", "remembers the tiny details people mention once"]
+    },
+    {
+      "text": "Mira notices when someone at a table has not found their way into the conversation yet.",
+      "sourceRefs": ["answers.q1"],
+      "supportingQuotes": ["can tell when someone at a table has not found their way into the conversation yet"]
+    },
+    {
+      "text": "On road trips, Mira builds a hand-written playlist before anyone asks.",
+      "sourceRefs": ["answers.q1"],
+      "supportingQuotes": ["On road trips she builds a hand-written playlist before anyone asks"]
+    },
+    {
+      "text": "A rainy Saturday memory began at the Harbor Street book market; after the lights flickered, the sisters carried their paper bags to Dot Cafe's window seat.",
+      "sourceRefs": ["answers.q2"],
+      "supportingQuotes": ["rainy Saturday at the Harbor Street book market", "The lights flickered, so we carried our paper bags to the window seat at Dot Cafe"]
+    },
+    {
+      "text": "At Dot Cafe, they split a cinnamon roll, watched the rain clear, and Mira folded the empty receipt into tiny boats.",
+      "sourceRefs": ["answers.q2"],
+      "supportingQuotes": ["split a cinnamon roll, and watched the rain clear", "Mira folded the empty receipt into tiny boats while we waited"]
+    },
+    {
+      "text": "The sisters call themselves the tiny boat committee.",
+      "sourceRefs": ["answers.q4", "buyerRelationship"],
+      "supportingQuotes": ["we started calling ourselves the tiny boat committee"]
+    },
+    {
+      "text": "At Saturday pancakes, the first pancake belongs to the cook, even if it is lopsided.",
+      "sourceRefs": ["answers.q4"],
+      "supportingQuotes": ["At Saturday pancakes, the first pancake is always the cook's, even if it comes out lopsided"]
+    },
+    {
+      "text": "Mira asks the quieter person a real question, remembers the answer, and calls when she says she will.",
+      "sourceRefs": ["answers.q3"],
+      "supportingQuotes": ["she asks the quieter person a real question, remembers the answer, and calls when she says she will"]
+    },
+    {
+      "text": "Mira goes to ceramics at Farrow Studio every Wednesday and tends tomato pots on the kitchen-window sill.",
+      "sourceRefs": ["answers.q5"],
+      "supportingQuotes": ["goes to ceramics at Farrow Studio every Wednesday", "tends tomato pots on the kitchen-window sill"]
+    },
+    {
+      "text": "Mira adds songs to the playlist she takes on Sunday walks.",
+      "sourceRefs": ["answers.q5"],
+      "supportingQuotes": ["keeps adding songs to the playlist she takes on Sunday walks"]
+    },
+    {
+      "text": "Mira likes the North Loop farmers market for the flowers and a slow start to the weekend.",
+      "sourceRefs": ["answers.q5"],
+      "supportingQuotes": ["She likes the North Loop farmers market for the flowers and the slow start to the weekend"]
+    },
+    {
+      "text": "Mira is 25 on the fixture date, and her sister hopes the care she gives others returns to her.",
+      "sourceRefs": ["recipient.age", "answers.q6"],
+      "supportingQuotes": ["For this birthday I want Mira to hear that the care she gives everyone else deserves to find its way back to her", "I hope 25 brings slow mornings"]
+    }
+  ],
+  "coverHeadlines": [
+    {"text": "Mira Vale, an instinct for making room", "sourceRefs": ["answers.q1", "answers.q3"]},
+    {"text": "The tiny boat committee meets in these pages", "sourceRefs": ["answers.q4"]},
+    {"text": "Twenty-five, with clay under her fingernails", "sourceRefs": ["recipient.age", "answers.q6"]}
+  ],
+  "openingNote": {
+    "text": "Mira, this issue gathers the small things you do that stay with people: a shelf in order, a detail remembered, a quieter voice invited in. I am proud to be your sister, and I hope your care finds its way back to you.",
+    "sourceRefs": ["answers.q1", "answers.q3", "answers.q6"]
+  },
+  "profile": {
+    "headline": "The care tucked into small details",
+    "text": "Mira alphabetizes the spice shelf and remembers tiny details people mention once. At a table, she notices who has not found their way into the conversation yet.",
+    "sourceRefs": ["answers.q1"]
+  },
+  "featureMemory": {
+    "headline": "A Saturday that turned paper into boats",
+    "text": "Rain met the Harbor Street book market on a Saturday. When the lights flickered, you carried the paper bags to a window seat at Dot Cafe, split a cinnamon roll, and waited for the rain to clear. Mira folded the empty receipt into tiny boats while you waited. The memory now has a name between you: the tiny boat committee.",
+    "sourceRefs": ["answers.q2", "answers.q4"]
+  },
+  "dynamicModules": [
+    {
+      "name": "The Lore / inside jokes",
+      "headline": "Rules for a small boat committee",
+      "text": "An empty receipt becomes tiny boats; Saturday begins with the first pancake belonging to its cook, even when it is lopsided. These are your two ordinary-morning rules, and together they can rescue almost any ordinary morning.",
+      "sourceRefs": ["answers.q2", "answers.q4"]
+    },
+    {
+      "name": "Current Obsessions",
+      "headline": "The week, in clay and green",
+      "text": "Wednesday ceramics at Farrow Studio, tomato pots on the kitchen-window sill, and new songs for Sunday walks make up Mira's current rhythm. The North Loop farmers market is for flowers and a slow weekend start.",
+      "sourceRefs": ["answers.q5"]
+    }
+  ],
+  "whyTheyMatter": {
+    "headline": "Care with follow-through",
+    "text": "Mira makes room in practical ways: she asks the quieter person a real question, remembers the answer, and calls when she says she will. Her kindness is steady enough that people can lean on it; this is care with follow-through.",
+    "sourceRefs": ["answers.q3"]
+  },
+  "currentEra": {
+    "headline": "A present tense made of Wednesdays and walks",
+    "text": "Mira goes to ceramics at Farrow Studio every Wednesday. Tomato pots sit on the kitchen-window sill. She keeps adding songs to the playlist she takes on Sunday walks. At the North Loop farmers market, she likes the flowers and the slow start to the weekend.",
+    "sourceRefs": ["answers.q5"]
+  },
+  "birthdayLetter": {
+    "headline": "May your care come back around",
+    "text": "For this birthday, I hope the care you give everyone else finds its way back to you. May 25 bring slow mornings, music for every walk, clay under your fingernails, and room around the table. I am proud to be your sister. I love the life we keep making in small pieces.",
+    "sourceRefs": ["recipient.age", "answers.q6"]
+  },
+  "backCoverLine": {
+    "text": "Keep making a life in small pieces.",
+    "sourceRefs": ["answers.q6"]
+  },
+  "captions": [
+    {"photoId": "photo-04", "text": "Clay, shaped one Wednesday at a time.", "sourceRefs": ["answers.q5", "answers.q6"]},
+    {"photoId": "photo-13", "text": "Slow mornings are on the birthday wish list.", "sourceRefs": ["answers.q6"]},
+    {"photoId": "photo-09", "text": "Every spice has a place on Mira's shelf.", "sourceRefs": ["answers.q1"]},
+    {"photoId": "photo-01", "text": "Rain at Harbor Street made the market memory.", "sourceRefs": ["answers.q2"]},
+    {"photoId": "photo-02", "text": "A window seat at Dot Cafe, with cinnamon roll to share.", "sourceRefs": ["answers.q2"]},
+    {"photoId": "photo-03", "text": "The tiny boat committee has a calling card.", "sourceRefs": ["answers.q4"]},
+    {"photoId": "photo-10", "text": "There is room for one more voice at the table.", "sourceRefs": ["answers.q3"]},
+    {"photoId": "photo-05", "text": "Tomato pots keep the kitchen sill in season.", "sourceRefs": ["answers.q5"]},
+    {"photoId": "photo-06", "text": "New songs join the playlist for Sunday walks.", "sourceRefs": ["answers.q5"]},
+    {"photoId": "photo-14", "text": "Music accompanies Sunday walks.", "sourceRefs": ["answers.q5"]},
+    {"photoId": "photo-16", "text": "Clay under fingernails, and a life made in small pieces.", "sourceRefs": ["answers.q6"]},
+    {"photoId": "photo-12", "text": "North Loop flowers and a slower weekend start.", "sourceRefs": ["answers.q5"]}
+  ],
+  "photoPageAssignments": [
+    {"page": 1, "photoId": "photo-04"},
+    {"page": 2, "photoId": "photo-13"},
+    {"page": 3, "photoId": "photo-09"},
+    {"page": 4, "photoId": "photo-01"},
+    {"page": 5, "photoId": "photo-02"},
+    {"page": 6, "photoId": "photo-03"},
+    {"page": 7, "photoId": "photo-10"},
+    {"page": 8, "photoId": "photo-05"},
+    {"page": 9, "photoId": "photo-06"},
+    {"page": 10, "photoId": "photo-14"},
+    {"page": 11, "photoId": "photo-16"},
+    {"page": 12, "photoId": "photo-12"}
+  ]
+}

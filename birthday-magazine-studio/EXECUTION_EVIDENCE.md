@@ -1,5 +1,62 @@
 # Birthday Magazine Studio — Execution Evidence
 
+## Current Gate — G2BR3 Direct Codex Agent Real AI Proof
+
+- **Gate:** `G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF`
+- **Execution date:** 2026-09-27
+- **Branch:** `codex/birthday-magazine-g2br3-direct-agent-proof`
+- **Base:** latest GitHub `main` at `491a7eab7721bd9876e1ebc1292cfc382949c061`
+- **Result:** `PASS_CANDIDATE_G2BR3_DIRECT_AGENT_REAL_AI_PROOF`; Reviewer decision required; this is not a formal PASS.
+- **Stop point:** `STOP_AT_REVIEWER=YES`; `G3_STARTED=NO`.
+
+### Direct model generation and provenance
+
+The current interactive Codex Agent authored `poc/g2b/artifacts/g2br3/generated-content.json` directly from the synthetic intake and the existing `CONTENT_SCHEMA`. There was exactly one primary generation and zero correction generations. The first JSON Schema validation passed with zero errors, so the authorized correction was not used. The historical `reference-content.json` was not opened/read, copied, adapted, or used as fallback. The strict content JSON contains no provenance-only extra fields; `model-execution-status.json` and `generation-provenance.json` record the required flags and bind provenance to the content SHA-256.
+
+```text
+MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT=YES
+REFERENCE_FIXTURE_FALLBACK=NO
+REAL_MODEL_RUN_COUNT=1
+SUCCESSFUL_GENERATION_COUNT=1
+CORRECTION_GENERATION_COUNT=0
+API_KEY_USED=NO
+NESTED_CODEX_EXEC_USED=NO
+G3_STARTED=NO
+```
+
+The current authenticated ChatGPT interactive session authored the content. The project did not invoke a model-provider API or nested Codex process. Production provider integration remains deferred for a later Owner decision.
+
+### Validation, grounding and modules
+
+- `synthetic-intake.json` snapshots the accepted G2B fictional Mira Vale fixture: six completed narrative answers, 16 deterministic synthetic illustration files, and three must-use IDs (`photo-01`, `photo-02`, `photo-04`). The product contract was not changed.
+- `content-schema.json` is exported from the existing `src/provider.mjs` `CONTENT_SCHEMA`. `structured-schema-report.json` records `PASS`, 0 errors, and the SHA-256 of the generated content.
+- `grounding-report.json` records 12 grounded fact claims, 17 exact intake excerpts, resolving source references, and the birthday/age check. Every content unit carries sourceRefs; the executor reviewed the synthetic prose against those cited answers.
+- Exactly two distinct supported modules passed: The Lore / inside jokes (Q2/Q4) and Current Obsessions (Q5).
+- `photoMapping=PASS_METADATA_ONLY`: 12 unique images were selected from 16 using the accepted deterministic synthetic metadata ranking. All three must-use photos are assigned. This is not a visual-semantic photo understanding claim.
+
+### Renderer, PDF and deterministic QA
+
+The existing page architecture and renderer produced `proof-magazine-soft-warm.pdf`: 12 US Letter pages (612 × 792 points each), 379,787 bytes, SHA-256 `a3ed604ae21119d9a073474463dd11d898329b826ce3ed9215a6f59e972f044a`. `pdf-lib` opened the PDF and read 12 pages. Browser read-back found all required page sections, consistent recipient fields, every image loaded, no measured text overflow, and no page overflow. The 375px viewport has no horizontal or text overflow. All 15 existing negative QA mutations were rejected.
+
+Bold Editorial, Soft / Warm, and Retro / Playful retain the same page-architecture hash `fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8`. The browser renderer made 93 loopback requests and 0 external browser requests. Screenshots and a 12-page contact sheet are committed under `poc/g2b/artifacts/g2br3/screenshots/`.
+
+`idempotency-report.json` is explicitly `NOT_TESTED_DIRECT_AGENT_NO_PROVIDER_BOUNDARY`: this proof did not create a provider job or test production provider spend idempotency. No idempotency PASS is claimed for G2BR3.
+
+### Durable artifacts and runtime
+
+The `poc/g2b/artifacts/g2br3/` directory contains the generated content, synthetic intake snapshot, schema snapshot, schema/grounding/QA reports, provenance/status, idempotency limitation, PDF, screenshots, style proof, dependency report, run summary, and SHA-256 manifest. Dependencies/runtime: Node.js 24.19.0; Playwright 1.62.1 (Apache-2.0); pdf-lib 1.17.1 (MIT); Chrome 153.0.8010.54.
+
+No API key, additional credits, real customer data, payment, PayPal, production provider, public deployment, VPS, Cloudflare/Shared Infra change, or G3 work occurred. `MVP_PRODUCT_CONTRACT.md` and Reviewer-owned `REVIEWER_HANDOFF.md` are unchanged. The only shared-pipeline code change adds G2BR3 provenance labeling so the accepted validator/renderer can classify direct interactive Agent output accurately; schema, renderer layout and page architecture were not changed.
+
+### GitHub review handoff
+
+- Branch: `codex/birthday-magazine-g2br3-direct-agent-proof`, from `491a7eab7721bd9876e1ebc1292cfc382949c061`.
+- Evidence commit: current PR head; see GitHub branch/PR for the final SHA.
+- PR: to be opened against `main` from this branch; final number and URL will be recorded in the follow-up reconciliation commit.
+- Reviewer is the next decision point. This execution does not make the formal Gate decision or start G3.
+
+
+
 ## Current Gate — G2BR2 final host result
 
 - **Gate:** `G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE`

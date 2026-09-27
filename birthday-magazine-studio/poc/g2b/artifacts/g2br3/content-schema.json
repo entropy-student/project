@@ -1,0 +1,271 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "recipient",
+    "tone",
+    "stylePreset",
+    "groundedFacts",
+    "coverHeadlines",
+    "openingNote",
+    "profile",
+    "featureMemory",
+    "dynamicModules",
+    "whyTheyMatter",
+    "currentEra",
+    "birthdayLetter",
+    "backCoverLine",
+    "captions",
+    "photoPageAssignments"
+  ],
+  "properties": {
+    "recipient": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "age",
+        "birthday",
+        "relationship"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer"
+        },
+        "birthday": {
+          "type": "string"
+        },
+        "relationship": {
+          "type": "string"
+        }
+      }
+    },
+    "tone": {
+      "type": "string",
+      "enum": [
+        "heartfelt",
+        "playful",
+        "balanced"
+      ]
+    },
+    "stylePreset": {
+      "type": "string",
+      "enum": [
+        "bold-editorial",
+        "soft-warm",
+        "retro-playful"
+      ]
+    },
+    "groundedFacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "coverHeadlines": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 3,
+      "items": {
+        "$ref": "#/$defs/copy"
+      }
+    },
+    "openingNote": {
+      "$ref": "#/$defs/copy"
+    },
+    "profile": {
+      "$ref": "#/$defs/feature"
+    },
+    "featureMemory": {
+      "$ref": "#/$defs/feature"
+    },
+    "dynamicModules": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/module"
+      }
+    },
+    "whyTheyMatter": {
+      "$ref": "#/$defs/feature"
+    },
+    "currentEra": {
+      "$ref": "#/$defs/feature"
+    },
+    "birthdayLetter": {
+      "$ref": "#/$defs/feature"
+    },
+    "backCoverLine": {
+      "$ref": "#/$defs/copy"
+    },
+    "captions": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 14,
+      "items": {
+        "$ref": "#/$defs/caption"
+      }
+    },
+    "photoPageAssignments": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 14,
+      "items": {
+        "$ref": "#/$defs/photoAssignment"
+      }
+    }
+  },
+  "$defs": {
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "sourceRefs"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "headline",
+        "text",
+        "sourceRefs"
+      ],
+      "properties": {
+        "headline": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "module": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "headline",
+        "text",
+        "sourceRefs"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "The Lore / inside jokes",
+            "Favorites",
+            "Playlist",
+            "Travel",
+            "Then & Now",
+            "Year in Review",
+            "Current Obsessions",
+            "Mini Timeline"
+          ]
+        },
+        "headline": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "caption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "photoId",
+        "text",
+        "sourceRefs"
+      ],
+      "properties": {
+        "photoId": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "photoAssignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page",
+        "photoId"
+      ],
+      "properties": {
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "photoId": {
+          "type": "string"
+        }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "sourceRefs",
+        "supportingQuotes"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "supportingQuotes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

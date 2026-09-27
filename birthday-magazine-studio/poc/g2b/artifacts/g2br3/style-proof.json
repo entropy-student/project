@@ -1,0 +1,81 @@
+{
+  "result": "PASS_SHARED_ARCHITECTURE",
+  "variants": [
+    {
+      "name": "bold-editorial",
+      "pageCount": 12,
+      "paper": "#f7f4eb",
+      "ink": "#15223a",
+      "accent": "#cc4d32",
+      "displayFont": "Georgia,serif",
+      "frameTreatment": "solid",
+      "layouts": [
+        "cover",
+        "standard",
+        "standard",
+        "memory",
+        "memory",
+        "module",
+        "standard",
+        "photo-story",
+        "photo-story",
+        "module",
+        "letter",
+        "back"
+      ],
+      "pageArchitectureSha256": "fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8"
+    },
+    {
+      "name": "soft-warm",
+      "pageCount": 12,
+      "paper": "#f7efe2",
+      "ink": "#3f4039",
+      "accent": "#aa654f",
+      "displayFont": "Georgia,serif",
+      "frameTreatment": "double",
+      "layouts": [
+        "cover",
+        "standard",
+        "standard",
+        "memory",
+        "memory",
+        "module",
+        "standard",
+        "photo-story",
+        "photo-story",
+        "module",
+        "letter",
+        "back"
+      ],
+      "pageArchitectureSha256": "fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8"
+    },
+    {
+      "name": "retro-playful",
+      "pageCount": 12,
+      "paper": "#fbf0d5",
+      "ink": "#244f4b",
+      "accent": "#d35442",
+      "displayFont": "Georgia,serif",
+      "frameTreatment": "dashed",
+      "layouts": [
+        "cover",
+        "standard",
+        "standard",
+        "memory",
+        "memory",
+        "module",
+        "standard",
+        "photo-story",
+        "photo-story",
+        "module",
+        "letter",
+        "back"
+      ],
+      "pageArchitectureSha256": "fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8"
+    }
+  ],
+  "architectureHash": "fb70862addef3f032be9319d345a98f638bd057c415f24c3c12bd4a21a309ea8",
+  "contentStructureChangesBetweenPresets": false,
+  "contentSchemaSha256": "f11cc13e04c6053223e2cea9398d08fd17f7c05d49924a386332da1946e73fdc",
+  "differences": "CSS palette, font stack, and graphic frame variables only."
+}

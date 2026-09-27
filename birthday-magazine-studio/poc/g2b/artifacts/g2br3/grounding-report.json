@@ -1,0 +1,128 @@
+{
+  "result": "PASS",
+  "contentOrigin": "interactive Codex Agent direct model output",
+  "factualClaimCount": 12,
+  "exactSourceQuoteCount": 17,
+  "allStructuredSourceRefsResolve": true,
+  "claimQuotesMatchSourceText": true,
+  "ageDerivedFromBirthdayOnFixtureDate": true,
+  "citedFacts": [
+    {
+      "text": "Mira alphabetizes the spice shelf and remembers details people mention once.",
+      "sourceRefs": [
+        "answers.q1"
+      ],
+      "supportingQuotes": [
+        "alphabetizes the spice shelf without thinking",
+        "remembers the tiny details people mention once"
+      ]
+    },
+    {
+      "text": "Mira notices when someone at a table has not found their way into the conversation yet.",
+      "sourceRefs": [
+        "answers.q1"
+      ],
+      "supportingQuotes": [
+        "can tell when someone at a table has not found their way into the conversation yet"
+      ]
+    },
+    {
+      "text": "On road trips, Mira builds a hand-written playlist before anyone asks.",
+      "sourceRefs": [
+        "answers.q1"
+      ],
+      "supportingQuotes": [
+        "On road trips she builds a hand-written playlist before anyone asks"
+      ]
+    },
+    {
+      "text": "A rainy Saturday memory began at the Harbor Street book market; after the lights flickered, the sisters carried their paper bags to Dot Cafe's window seat.",
+      "sourceRefs": [
+        "answers.q2"
+      ],
+      "supportingQuotes": [
+        "rainy Saturday at the Harbor Street book market",
+        "The lights flickered, so we carried our paper bags to the window seat at Dot Cafe"
+      ]
+    },
+    {
+      "text": "At Dot Cafe, they split a cinnamon roll, watched the rain clear, and Mira folded the empty receipt into tiny boats.",
+      "sourceRefs": [
+        "answers.q2"
+      ],
+      "supportingQuotes": [
+        "split a cinnamon roll, and watched the rain clear",
+        "Mira folded the empty receipt into tiny boats while we waited"
+      ]
+    },
+    {
+      "text": "The sisters call themselves the tiny boat committee.",
+      "sourceRefs": [
+        "answers.q4",
+        "buyerRelationship"
+      ],
+      "supportingQuotes": [
+        "we started calling ourselves the tiny boat committee"
+      ]
+    },
+    {
+      "text": "At Saturday pancakes, the first pancake belongs to the cook, even if it is lopsided.",
+      "sourceRefs": [
+        "answers.q4"
+      ],
+      "supportingQuotes": [
+        "At Saturday pancakes, the first pancake is always the cook's, even if it comes out lopsided"
+      ]
+    },
+    {
+      "text": "Mira asks the quieter person a real question, remembers the answer, and calls when she says she will.",
+      "sourceRefs": [
+        "answers.q3"
+      ],
+      "supportingQuotes": [
+        "she asks the quieter person a real question, remembers the answer, and calls when she says she will"
+      ]
+    },
+    {
+      "text": "Mira goes to ceramics at Farrow Studio every Wednesday and tends tomato pots on the kitchen-window sill.",
+      "sourceRefs": [
+        "answers.q5"
+      ],
+      "supportingQuotes": [
+        "goes to ceramics at Farrow Studio every Wednesday",
+        "tends tomato pots on the kitchen-window sill"
+      ]
+    },
+    {
+      "text": "Mira adds songs to the playlist she takes on Sunday walks.",
+      "sourceRefs": [
+        "answers.q5"
+      ],
+      "supportingQuotes": [
+        "keeps adding songs to the playlist she takes on Sunday walks"
+      ]
+    },
+    {
+      "text": "Mira likes the North Loop farmers market for the flowers and a slow start to the weekend.",
+      "sourceRefs": [
+        "answers.q5"
+      ],
+      "supportingQuotes": [
+        "She likes the North Loop farmers market for the flowers and the slow start to the weekend"
+      ]
+    },
+    {
+      "text": "Mira is 25 on the fixture date, and her sister hopes the care she gives others returns to her.",
+      "sourceRefs": [
+        "recipient.age",
+        "answers.q6"
+      ],
+      "supportingQuotes": [
+        "For this birthday I want Mira to hear that the care she gives everyone else deserves to find its way back to her",
+        "I hope 25 brings slow mornings"
+      ]
+    }
+  ],
+  "auditScope": "Actual interactive Codex Agent output: schema/provenance checks verify every copy unit has valid sourceRefs and each listed factual claim has an exact intake excerpt; executor reviewed the synthetic copy against its cited intake passages.",
+  "errors": []
+}

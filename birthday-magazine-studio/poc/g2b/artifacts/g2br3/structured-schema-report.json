@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "validator": "python-jsonschema 4.26.0 / Draft202012Validator",
+  "schemaFile": "content-schema.json",
+  "contentFile": "generated-content.json",
+  "contentSha256": "8922801ca193a97fa853e091e8de489da0dbf11438a206e96daa688d71f99bab",
+  "errorCount": 0,
+  "errors": []
+}
