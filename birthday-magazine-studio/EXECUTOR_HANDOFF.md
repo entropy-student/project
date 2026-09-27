@@ -1,50 +1,54 @@
 # Executor Handoff — Birthday Magazine Studio
 
-## Current Gate — G2BR2 HTTP-only final host retry
+## Current Gate — G2BR2 final result — RETURN
 
 - **Gate:** `G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE`
 - **Branch:** `codex/birthday-magazine-g2br2-host-codex-closure`
 - **Base:** GitHub `main` at `d3249013f01fdc60b2fc728d0a8f197255643182`
-- **PR:** [#43 — Prepare G2BR2 host Codex launch path](https://github.com/entropy-student/project/pull/43), open against `main` and unmerged
-- **Current result:** `PREPARED_FOR_OWNER_HTTP_ONLY_RETRY`; no Gate PASS is claimed.
-- **Stop point:** `STOP_AT_OWNER_HOST_LAUNCH=YES`; do not enter G3.
+- **PR:** [#43 — Prepare G2BR2 host Codex launch path](https://github.com/entropy-student/project/pull/43), open against `main`, unmerged
+- **Result:** `RETURN_CODEX_CHATGPT_LOGIN_REQUIRED`
+- **Stop point:** `STOP_AT_REVIEWER=YES`; no more model runs and no G3.
 
-### First Owner-host run
+### Final execution record
 
 ```text
-G2BR2 model runs consumed: 1 / 2
-Result: RETURN_CODEX_EXEC_FAILED
-providerDiagnostic.kind: WEBSOCKET_FAILURE
-retryCategory: TRANSIENT_RUNTIME
-successfulGenerationCount: 0
+Attempt 1 = RETURN_CODEX_EXEC_FAILED / WEBSOCKET_FAILURE / TRANSIENT_RUNTIME
+Attempt 2 = RETURN_CODEX_CHATGPT_LOGIN_REQUIRED / HTTP-only custom provider / HTTP 401 AUTHENTICATION
+Host codex login status before attempt 2 = Logged in using ChatGPT
+Codex CLI = 0.149.1
+Real model runs = 2 / 2 consumed
+Successful structured responses = 0
+schemaConstrained = true
+apiKeyUsed = false
+retryCategory after attempt 2 = null
 ```
 
-The failed canonical job and sanitized status are in `poc/g2b/artifacts/g2br2/`. Its synthetic key is `synthetic-order-g2br2-0001`. No model response exists, so G2BR2 grounding, PDF rendering and AI QA remain unrun.
+The Owner reported that `codex login status` immediately before attempt 2 returned `Logged in using ChatGPT`. The configured custom provider nevertheless returned HTTP 401. This reports the observed CLI preflight and provider response separately; it does not claim that the inference request authenticated successfully.
 
-### Repair applied
+### Pipeline closure
 
-- The existing G2BR2 retry now uses a custom provider ID `g2br2_chatgpt_http` against `https://chatgpt.com/backend-api/codex` with `requires_openai_auth=true`, `supports_websockets=false`, and `wire_api="responses"`.
-- The provider selection is injected only into that one `codex exec` process through `-c` overrides when G2BR2 runs with `--retry-failed`. The launcher adds a retry-only process environment marker, and the runner fails closed if a retry bypasses that launcher.
-- The provider uses the host's existing Codex ChatGPT login. API-key environment variables remain removed. `--ignore-user-config` remains enabled; Codex CLI help confirms this suppresses user `config.toml` while retaining auth from `CODEX_HOME`. The temporary `-c` values do not modify global or project config.
-- The normal G2BR2 path and all G2BR1 history/configuration remain unchanged. G2B/G2BR1 intake, schema, renderer, page architecture, grounding/QA code and canonical-job helper are reused without redesign.
-- Current Codex CLI 0.149.1 `exec --help` accepts `-c/--config`. Codex docs describe one-run nested-key overrides. The selected custom ChatGPT HTTP provider shape is documented in [OpenAI Codex issue #13041](https://github.com/openai/codex/issues/13041); see also [Codex advanced config](https://learn.chatgpt.com/docs/config-file/config-advanced) and [config reference](https://learn.chatgpt.com/docs/config-file/config-reference).
-
-### Final authorized Owner action
-
-One model run remains in this Gate. Do not run it from Codex Agent. On the same Windows host, open **Windows Terminal → PowerShell**, change to `birthday-magazine-studio/poc/g2b/` in this branch worktree, then execute this one command:
-
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\run-g2br2-host.ps1 -RetryFailed
+```text
+grounding = NOT RUN
+actual-AI PDF = NOT RUN
+deterministic AI QA = NOT RUN
+G3_STARTED = NO
 ```
 
-This runs the eligible failed canonical job once using the temporary HTTP-only provider config. The harness enforces the two-run ceiling. Stop after this command and return its sanitized G2BR2 status/job artifacts for Reviewer review. Do not enter G3.
+There is no successful structured model output, so the real-AI grounding audit and renderer/PDF/QA path did not run. The human-authored `poc/g2b/fixtures/reference-content.json` was not used as AI output. The accepted reference baseline remains historical evidence only.
 
-### Validation and boundaries
+### Transport and evidence
 
-- This code repair is checked with Node syntax checks, PowerShell parser validation, artifact safety review and `git diff --check`. The G2BR2 launcher/runner is not executed by the Agent and no real model request is made in this turn.
-- The first-run schema, synthetic prompt, sanitized status and canonical job are retained as durable artifacts.
-- `MVP_PRODUCT_CONTRACT.md`, `REVIEWER_HANDOFF.md`, G2BR1 artifacts and user-level Codex config are unchanged.
-- No API key, credit purchase/reset, payment, PayPal, customer data, public deployment, VPS, Cloudflare/Shared Infra change or G3 work occurred.
+- Attempt 2 used `providerId=g2br2_chatgpt_http`, `transport=HTTP_ONLY_RESPONSES`, `configScope=PER_INVOCATION_CODEX_EXEC_OVERRIDES`, `requiresOpenAIAuth=true`, `supportsWebSockets=false`, and `wireApi=responses`.
+- This was the last authorized model invocation. The two-run cap is exhausted; do not retry, select an API key, or purchase credits.
+- The latest sanitized `poc/g2b/artifacts/g2br2/model-execution-status.json` and canonical `jobs/<sha256>.json` are included with the attempt 1/2 diagnostics and aggregate counts. Synthetic prompt and schema artifacts remain available. They contain no token, session identifier, cookie, auth header or raw provider log.
+- The custom provider was configured with per-invocation CLI overrides; no global Codex config was edited. No G2BR1 historical evidence, MVP contract, page architecture or renderer code was changed by this closure update.
+- `EXECUTION_EVIDENCE.md` records the detailed result and source artifact paths. Reviewer should make the next gate decision; this handoff does not choose a recovery path.
+
+### GitHub state and forbidden actions
+
+- Branch: `codex/birthday-magazine-g2br2-host-codex-closure`; final evidence commit is the current branch head.
+- Existing PR: [#43](https://github.com/entropy-student/project/pull/43), targets `main`, open and unmerged; updated with the final run evidence and handoff.
+- No API key, extra credit purchase/reset, payment, PayPal, real customer data, production email, public deployment, VPS, Cloudflare/Shared Infra change or G3 work occurred.
 
 ## Current Gate — G2BR1 Real AI Generation Closure
 
