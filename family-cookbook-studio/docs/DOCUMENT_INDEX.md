@@ -19,7 +19,8 @@
 | `G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md` | Target language + review UX decision | **OWNER DECISIONS RESOLVED** |
 | `G2A1_R3_OCR_ARCHITECTURE_BENCHMARK.md` | Free/local primary selection then bounded API fallback selection | **R3A PASS; R3B CHECKPOINT** |
 | `G2A1_R3B_API_FALLBACK_OWNER_CHECKPOINT.md` | External OCR credential/budget/data boundary | **OWNER APPROVED** |
-| `G2A1_R3B_API_FALLBACK_BENCHMARK.md` | Google-first / Mistral-second hard-case fallback benchmark | **CURRENT GATE CONTRACT** |
+| `G2A1_R3B_API_FALLBACK_BENCHMARK.md` | Google-first / Mistral-second hard-case fallback benchmark | **RETURNED; Google credential required** |
+| `G2A1_R3B_GOOGLE_PROVIDER_SETUP.md` | Owner setup instructions for Google Document AI + GitHub Actions Secrets | **CURRENT OWNER ACTION** |
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **NEXT / HOLD** |
 | `ACQUISITION_GROWTH_PLAN.md` | Demand/acquisition validation plan | Supporting plan; not transaction evidence |
 
@@ -35,5 +36,6 @@
 - G2A1-D1 is resolved: English-first/not-English-only + one consolidated manual-edit review stage.
 - G2A1-R3A PASS: `PP-OCRv6_medium` is the accepted local primary; PaddleOCR-VL-1.6 is rejected as primary.
 - R3B Owner approval is granted: 11 public hard cases only, Google first, Mistral only if needed, total API test budget ≤ USD 0.20.
-- Current execution contract is `G2A1_R3B_API_FALLBACK_BENCHMARK.md`.
+- R3B preflight at `dd9c07bbe64a3076bcfd38d27259ff56c2ed013a` returned only because Google provider credentials/config are absent; no API call occurred and `FALLBACK=UNKNOWN`.
+- Current Owner action is `G2A1_R3B_GOOGLE_PROVIDER_SETUP.md`; after setup, continue the same R3B benchmark.
 - Real customer recipe images, family stories, names, addresses, payment credentials, Secrets and private order identifiers must not be stored in ordinary project documentation.
