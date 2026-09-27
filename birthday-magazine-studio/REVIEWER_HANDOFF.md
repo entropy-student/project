@@ -69,7 +69,7 @@ G2A1R1 Evidence Closure                                 ⏹ CLOSED — executor 
 G2A2 MVP Product Contract Freeze                        ✅ PASS
 G2B  Local AI/PDF Solution Proof                        ↩ RETURN — real AI proof missing
 G2BR1 Real AI Generation Closure                        ↩ RETURN — nested Codex transport failed
-G2BR2 Host Codex Transport + Real-AI Closure             ← CURRENT / BLOCKED_BY_OWNER_ADDITIONAL_RUN_AUTHORIZATION
+G2BR2 Host Codex Transport + Real-AI Closure             ← CURRENT / OWNER AUTHORIZED / MAX 2 HOST RUNS
 G3A WordPress + WooCommerce Commerce Loop               ⏳ HOLD
 G3B PayPal Sandbox + Paid Entitlement Flow              ⏳ HOLD
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
@@ -89,6 +89,7 @@ Current Reviewer decisions:
 - `OWNER_AUTHORIZED_G2BR1_MAX_3_SYNTHETIC_AI_CALLS_2026-09-27`
 - `OWNER_SELECTED_G2BR1_CODEX_PLUS_ROUTE_2026-09-27`
 - `RETURN_G2BR1_NESTED_CODEX_TRANSPORT_FAILED_2026-09-27`
+- `OWNER_AUTHORIZED_G2BR2_MAX_2_HOST_CODEX_RUNS_2026-09-27`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -226,12 +227,13 @@ Contract:
 - [docs/G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md](./docs/G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md)
 
 Status:
-- **BLOCKED_BY_OWNER_ADDITIONAL_RUN_AUTHORIZATION**;
-- prior 3-run Owner allowance is exhausted;
-- recommended next ceiling: maximum 2 additional real-model runs;
+- **OWNER AUTHORIZED**;
+- maximum **2 additional real-model runs total**;
 - launch the existing Codex harness from the Owner's host Windows process/terminal context, not from an Agent-spawned child shell inside Codex;
+- first run is primary; second is retry-only for transport/schema/transient failure;
 - do not rebuild G2B/G2BR1 accepted work;
-- no separate API purchase is required for this host-context follow-up.
+- no separate API purchase is required;
+- do not purchase extra Codex credits.
 
 Do not export/copy ChatGPT auth tokens or session state into chat, GitHub, screenshots or evidence.
 
@@ -301,9 +303,9 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 
 ## 12. Next Step
 
-- Reviewer next action: wait for Owner authorization of an additional bounded G2BR2 run count, then dispatch/review only `docs/G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md`.
-- Executor next action: none until that additional run authorization is explicit.
-- Owner intervention required: **YES** — approve an additional bounded G2BR2 model-run count. Recommended: maximum 2 additional runs. No API key or credit purchase is required.
+- Reviewer next action: dispatch/review only `docs/G2BR2_HOST_CODEX_TRANSPORT_CLOSURE.md`.
+- Executor next action: prepare the fresh G2BR2 branch/artifact namespace and a minimal host launcher, but do not consume a real-model run from inside the Codex Agent sandbox. The actual `codex exec` must be launched by the Owner from host Windows context.
+- Owner intervention required: **YES, one bounded manual host launch** after Executor preparation. Authorization for max 2 real-model runs is already complete.
 
 ## 13. Status Summary
 
@@ -315,7 +317,7 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - Privacy retention is frozen at 24h for source/intermediate assets and 72h for final PDF.
 - G2B: RETURN; partial local renderer/PDF/QA evidence is accepted.
 - G2BR1: RETURN; three nested Codex CLI attempts failed before model output and the approved 3-run cap is exhausted.
-- G2BR2: CURRENT but blocked on explicit Owner authorization for additional bounded model runs.
+- G2BR2: CURRENT and Owner-authorized for maximum 2 additional host-context real-model runs.
 - Current unresolved proof: actual model structured output → grounding → existing renderer → 12-page PDF/QA, plus non-zero provider-spend idempotency.
 - Next after G2BR1/G2B PASS: G3A WooCommerce commerce loop.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
