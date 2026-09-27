@@ -94,7 +94,7 @@ R3B 曾尝试 **Mistral OCR 4.1 Free mode**，但首个 OCR 请求以及 15s/30s
 
 Owner 决定不为本轮测试启用付费 Mistral，当前已恢复 **Google Document AI + WIF** 路线。Google 仅剩 Billing 激活 blocker；完成后继续相同 11 个公开 hard cases 的 R3B benchmark。
 
-**G2A1 已正式 PASS。当前进入 G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
+G2A1 的生产 OCR 结论已经 PASS，但 Owner 新批准了一个很小的 **R3C 内部实验**：用 ChatGPT 登录的 Codex CLI 对完全相同的 11 个公开 hard cases 做视觉转写，判断“我们自己的 Plus/Codex 能力”是否适合作为内部疑难 case 二次意见。R3C 不用 API Key、不用 Sub2API、不碰客户数据。**G2A2 暂停到 R3C 评审结束后继续。**
 
 ## 文档
 
@@ -112,7 +112,8 @@ Owner 决定不为本轮测试启用付费 Mistral，当前已恢复 **Google Do
 - [docs/G2A1_R3B_API_FALLBACK_BENCHMARK.md](./docs/G2A1_R3B_API_FALLBACK_BENCHMARK.md) — R3B 执行契约（Google credential RETURN）
 - [docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md](./docs/G2A1_R3B_GOOGLE_PROVIDER_SETUP.md) — Google 技术接入记录（当前 deferred）
 - [docs/G2A1_R3B_MISTRAL_PROVIDER_SETUP.md](./docs/G2A1_R3B_MISTRAL_PROVIDER_SETUP.md) — **当前 Owner 配置步骤**
-- [docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md](./docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md) — 下一 Gate
+- [docs/G2A1_R3C_CODEX_PLUS_VISION_INTERNAL_BENCHMARK.md](./docs/G2A1_R3C_CODEX_PLUS_VISION_INTERNAL_BENCHMARK.md) — **当前 R3C Gate**
+- [docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md](./docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md) — R3C 后恢复
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 获客/验证计划
 - [PROJECT_RECORD.md](./PROJECT_RECORD.md) — legacy compatibility pointer only
 
