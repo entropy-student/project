@@ -1091,3 +1091,42 @@ Compatibility:
 Rollback:
 - pre-change main SHA `16e2c86039a26175f99204239c19c1bdf35f4a10`;
 - branch `rollback/ai-story-showrunner-topic-os-v01-20260927`.
+
+
+## 2026-09-27 — Topic OS v0.2.1 Human Process + Meaning Dedup
+
+Trigger:
+After v0.2 human-world-first adoption, Owner identified that Food and Shopping could still converge on the same underlying meaning. The question became whether one X domain has enough distinct topics and whether cross-domain semantic repetition could be detected.
+
+Validation:
+1. Food was decomposed into 50 candidate topics across different human processes.
+2. Five domains (Food / Relationships / MBTI-Personality / Work / Entertainment-Games) generated 10 candidates each.
+3. 50 raw candidates reduced to 43 coarse Meaning fingerprints on the first semantic pass.
+4. Cross-domain collisions proved that different X/title/mechanism surfaces can still share one underlying meaning.
+5. Five deliberately different Meaning families were expanded into full Story Premises and remained distinct.
+
+Accepted model:
+```text
+X Domain
+→ Human Process Family
+→ Observed Paradox
+→ WHY
+→ Human Tension
+→ Meaning Fingerprint
+→ AI Changed Process
+→ Mechanism
+→ Story
+```
+
+Dedup becomes:
+`D1 Signal / D2 Topic / D3 Angle / D4 Story-Visual Motif / D5 Meaning`.
+
+Important:
+`meaning_fingerprint` is for semantic dedup only; it does not lock a thesis. Downstream Controlling Question / Idea vs Counter-Idea / climax meaning rules remain unchanged.
+
+Evidence:
+`docs/TOPIC_OS_V021_MEANING_DEDUP_VALIDATION.md`.
+
+Rollback:
+`rollback/ai-story-showrunner-topic-os-v02-before-meaning-20260927`
+at `080b3cea54e640c75d7f11b265c8fa6397661192`.
