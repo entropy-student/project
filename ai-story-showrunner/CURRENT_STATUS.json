@@ -373,6 +373,7 @@
     "meaning_validation": "5 domains x 10 candidates; 50 raw -> 43 coarse meaning fingerprints; 5 distinct story-premise tests remained distinct",
     "validation_doc": "docs/TOPIC_OS_V021_MEANING_DEDUP_VALIDATION.md",
     "rollback_branch_v02": "rollback/ai-story-showrunner-topic-os-v02-before-meaning-20260927",
-    "rollback_base_sha_v02": "080b3cea54e640c75d7f11b265c8fa6397661192"
+    "rollback_base_sha_v02": "080b3cea54e640c75d7f11b265c8fa6397661192",
+    "daily_topic_planner": "v0.2.2"
   }
 }
