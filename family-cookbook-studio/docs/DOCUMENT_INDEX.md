@@ -16,7 +16,7 @@
 | `G2A1_INPUT_OCR_COMPONENT_POC.md` | Original input/OCR/reusable-component feasibility Gate | **RETURNED; partial evidence accepted** |
 | `G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md` | OCR runtime + Family WP/Woo testbed remediation/completion | **RETURNED; local resource blocked** |
 | `G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md` | OCR + Family WP/Woo PoC on isolated GitHub Actions runner | **RETURNED; component feasibility accepted, OCR observations accepted** |
-| `G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md` | Target language + semantic OCR/UX threshold decision | **CURRENT OWNER CHECKPOINT** |
+| `G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md` | Target language + review UX decision; R3 benchmark scope | **OWNER DECISIONS RESOLVED / R3 SPEC** |
 | `G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md` | Exact MVP contract freeze | **NEXT / HOLD** |
 | `ACQUISITION_GROWTH_PLAN.md` | Demand/acquisition validation plan | Supporting plan; not transaction evidence |
 
@@ -29,5 +29,6 @@
 - G2A1 returned execution at `codex/family-cookbook-g2a1-input-ocr-component-feasibility@b1bf844096fed4761372f3beea6f9f2d7d081643`; Reviewer accepted only the bounded partial evidence documented in `REVIEWER_HANDOFF.md`.
 - G2A1-R1 returned at `f79891f20c973e93586e41319c0abb7e78b3af4c` because the user workstation had only 0.62 GiB available RAM with unrelated workloads active.
 - G2A1-R2 evidence at `1d2abddc6e0ea58ec55c75a29033fe1233a34ada` proves WP/Woo/Kadence preview/upload/private-delivery feasibility and provides real OCR observations. The tested TrOCR-small fallback is deprecated; broader OCR product sufficiency is not decided until target language and semantic UX threshold are frozen.
-- Current G2A1-D1 is Owner decision-only. Do not dispatch another Executor until it is resolved.
+- G2A1-D1 is resolved: English-first/not-English-only + one consolidated manual-edit review stage.
+- Current execution work is G2A1-R3 OCR architecture benchmarking; do not repeat already accepted WordPress/component feasibility.
 - Real customer recipe images, family stories, names, addresses, payment credentials, Secrets and private order identifiers must not be stored in ordinary project documentation.
