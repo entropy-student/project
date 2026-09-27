@@ -1,4 +1,4 @@
-# Pipeline & Gates v0.6
+# Pipeline & Gates v0.6.1
 
 ## Stage 0 — Topic Resolution / Signal Intake
 
@@ -43,8 +43,10 @@ AI / Domain Signal 仍可直接进入，但必须随后完成人类问题翻译�
 ```text
 Topic Entry Mode
 × X Domain / Native Interest
+× Human Process Family
 × Observed Paradox / WHY
 × Human Tension
+× Meaning Fingerprint
 × Controlling Question Seed
 × Human Process Before AI
 × AI Changed Process
@@ -72,6 +74,12 @@ Topic Entry Mode
 #### Human-tension Test
 问题背后至少有两种都说得通的力量；Topic Stage 只锁问题与张力，不锁最终观点答案。
 
+#### Human-process Test
+必须明确这个故事里“人原本在做什么”；X Domain 不能替代 Human Process。
+
+#### Meaning-distinctness Test
+将 `human_tension + controlling_question_seed` 规范化为 `meaning_fingerprint`，对照近期 Registry；跨领域但同一意义问题时返回去重处理。
+
 #### Changed-process Test
 必须能指出 AI 改变、压缩、替代或放大了哪个原本属于人的过程。对纯 AI 题可通过 Audience Translation 得到等价的人类过程。
 
@@ -95,6 +103,9 @@ Topic Entry Mode
 
 #### Storyability Test
 必须能形成欲望、阻碍、后果、Gap/转折和可视化动作。
+
+#### Meaning Duplicate Test
+如果只是换 X / 标题，但 `meaning_fingerprint` 与近期内容相同，默认 `RETURN_TOPIC_MEANING_DUPLICATE`；只有 stakes / process / counter-idea / controlling question 实质不同才允许 revisit。
 
 #### Commercial Adjacency Test
 记录未来是否自然靠近真实需求，但该字段**不得作为硬广授权**。
