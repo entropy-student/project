@@ -86,7 +86,7 @@ G2A1-D1 已决策完成：**English-first、not English-only；OCR 完成后只�
 
 G2A1-R3A 已 PASS：**PP-OCRv6_medium** 被 Reviewer 接受为唯一免费本地主力；20 张合成食谱页 77/77 关键事实正确、零人工修改，PaddleOCR-VL-1.6 因漏温度字段且运行更重而被淘汰为主力。
 
-G2A1-R3B Owner checkpoint 已批准，但第一次 API preflight 已 RETURN：代码、11 个样本、评分器和预算 guard 均通过，**Google credential / project / location / processor ID 尚未配置，因此没有发生任何 API 调用，FALLBACK 仍为 UNKNOWN。** 当前只需完成 Google Document AI provider + GitHub Actions Secrets 配置，然后继续同一个 R3B Gate；暂时不要配置 Mistral。
+G2A1-R3B 的 Google 认证已从被组织策略禁止的 JSON Key 改为 **GitHub OIDC + Google Workload Identity Federation**，WIF、Service Account、Document OCR processor 和 processor version 元数据均已验证成功。当前唯一 blocker 是 **Google Cloud Billing 未启用**：真实 `:process` 请求已到达 Document AI，但返回 `BILLING_DISABLED`。启用项目 Billing 后继续同一个 R3B Gate；FALLBACK 仍为 UNKNOWN，暂时不要配置 Mistral。
 
 G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
 
