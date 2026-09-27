@@ -33,6 +33,9 @@ Read in this order:
 - `CONTENT_STRATEGY_AND_CONVERSION.md`
 - `DAILY_TOPIC_AUTOMATION_V2.md` — v0.2.2 planner contract consuming Topic OS v0.2.1.
 - `TOPIC_OS_V021_MEANING_DEDUP_VALIDATION.md` — 5×10 cross-domain stress-test evidence for Human Process / Meaning dedup.
+- `TOPIC_SYSTEM_FULL_SYNC_AUDIT_20260927.md` — full audit of Topic contracts, Evergreen Bank, Worker contract, live scheduled task, and portable Candidate sync.
+- `WORKER_CONTRACTS.md` — current Topic Worker and downstream structured handoff contract.
+- `WORKER_ADAPTER_PLAN.md` — current worker routing/admission state.
 
 When a portable Candidate contract conflicts with a historical project copy, the current Reviewer Handoff decides project truth and the Candidate Skill repository is the target portable contract.
 

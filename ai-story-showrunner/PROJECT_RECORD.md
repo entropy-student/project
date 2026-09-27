@@ -1130,3 +1130,26 @@ Evidence:
 Rollback:
 `rollback/ai-story-showrunner-topic-os-v02-before-meaning-20260927`
 at `080b3cea54e640c75d7f11b265c8fa6397661192`.
+
+
+## 2026-09-27 — Topic System Full Sync Audit
+
+After Topic OS v0.2.1 was accepted, Owner requested a full consistency audit covering topic selection, topic bank, recurring Daily Radar and related portable contracts.
+
+Material finding:
+the core Topic OS had been upgraded, but several surrounding execution surfaces still encoded the old AI-first model. The most important drift was the real scheduled `AI选题雷达` task, whose prompt still required latest AI signals and only D1–D4.
+
+Full sync performed:
+- Human-world Evergreen Bank added while preserving legacy AI mechanism seeds;
+- Topic Worker structured contract updated;
+- Worker Adapter state updated;
+- live scheduled task updated in place to read repository SSOT and run Human Process / Meaning / D1–D5;
+- portable Story Showrunner Candidate Topic Provider / AI Domain Adapter / Pipeline synchronized;
+- historical runtime artifacts left untouched.
+
+Audit doc:
+`docs/TOPIC_SYSTEM_FULL_SYNC_AUDIT_20260927.md`.
+
+Rollback anchors:
+- project: `rollback/ai-story-showrunner-topic-system-pre-full-sync-20260927`;
+- portable skill: `rollback/story-showrunner-topic-system-pre-full-sync-20260927`.
