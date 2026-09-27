@@ -186,6 +186,7 @@ Current OCR contract after R3A:
 5. `PaddleOCR-VL-1.6` is rejected as primary; `microsoft/trocr-small-handwritten` remains deprecated.
 6. R3B evaluates whether Google Enterprise Document OCR materially reduces the 11 hard-case edit burden; Mistral OCR 4.1 is second-line benchmark only if needed.
 7. **One consolidated user review with manual editing** remains the final fail-closed stage.
+8. API fallback must sit behind an `OCRFallbackProvider` adapter and emit a canonical result schema. Mistral and Google must remain swappable adapters rather than business-flow dependencies.
 
 Explicitly deferred from MVP: broad multi-provider OCR bake-offs, cloud OCR and VLM/vision OCR.
 
