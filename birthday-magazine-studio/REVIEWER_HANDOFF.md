@@ -52,10 +52,10 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Generation service/worker: project-specific asynchronous generation boundary; exact runtime/provider = `UNKNOWN`.
 - Generation idempotency: one paid order → at most one active canonical generation job; duplicate callback/refresh must not duplicate model spend.
 - PDF rendering engine: `UNKNOWN`.
-- Data/persistence: `UNKNOWN`.
+- Data/persistence: **G3A local proof uses MariaDB**. Final production persistence topology remains `UNKNOWN`.
 - Object/file storage: `UNKNOWN`.
 - Auth/order-private access: `UNKNOWN`.
-- Deployment target: `UNKNOWN`.
+- Deployment target: production `UNKNOWN`; G3A local runtime is fixed to isolated Docker Compose + WordPress + MariaDB + Mailpit.
 - Shared VPS dependency: none currently accepted.
 - Target-host execution boundary: no target-host or production write is authorized or claimed.
 
@@ -285,16 +285,16 @@ Contract:
 
 Status:
 - **CURRENT / READY_FOR_EXECUTION**;
-- local/disposable WordPress + WooCommerce only;
-- frozen US$39.99 Birthday Magazine product;
+- runtime is fixed to isolated **Docker Compose + WordPress + MariaDB + Mailpit**; do not use WordPress Studio/SQLite;
+- frozen **USD 39.99 virtual** Birthday Magazine product;
 - native cart/checkout/order/account loop;
-- authenticated customer order/workspace ownership;
-- local/offline test order only;
-- unpaid/test order must keep generation entitlement closed;
-- no PayPal connection;
-- no real payment;
-- no model/provider call;
-- no target-host/public/VPS write.
+- checkout must create or attach the authenticated customer account without separate pre-checkout registration;
+- buyer A owns the order/workspace; unrelated buyer B must be denied, including direct URL replay;
+- local core offline gateway only; resulting order remains unpaid/on-hold or equivalent;
+- unpaid/test order, account creation, workspace refresh and duplicate page revisit must create zero generation jobs;
+- WooCommerce PayPal Payments must **not** be installed in G3A;
+- no public tunnel/origin, PayPal, real payment, model/provider call or target-host/VPS write.
+- Mini Craft lessons reference: [docs/G3A_MINICRAFT_LESSONS_REFERENCE.md](./docs/G3A_MINICRAFT_LESSONS_REFERENCE.md).
 
 G3B remains HOLD until G3A Reviewer decision.
 
@@ -317,6 +317,7 @@ All G2A1 changes are local/test and Git-reversible. No production resource is in
 - Existing Good Issue remains the editorial/custom-reference baseline.
 - Vanquish Upload Files and Vanquish Attach Me remain PoC candidates, not accepted production dependencies.
 - Other WordPress/plugin research remains candidate research unless separately accepted.
+- Mini Craft's accepted commerce/payment history is an implementation reference for G3A/G3B: Docker/MariaDB is preferred over Studio/SQLite, commerce is proven before PPCP, and public HTTPS origin requirements are deferred to G3B.
 - There is no current production deployment.
 
 ## 8. UNKNOWN / Open Risks
