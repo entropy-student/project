@@ -88,7 +88,9 @@ G2A1-R3A 已 PASS：**PP-OCRv6_medium** 被 Reviewer 接受为唯一免费本地
 
 G2A1-R3B 的 Google 技术接入已经证明可行：GitHub OIDC + Workload Identity Federation、Service Account、Document OCR processor 与 processor version 均验证通过，真实 `:process` 请求只因 Billing 未启用而被拒绝。由于当前 Billing 账户要求 **USD 30 一次性预付款**，本轮不为 11 个测试样本启用该预付。
 
-当前 R3B 已切换为 **Mistral OCR 4.1 first**：仍只测试相同的 11 个公开 hard cases，最终只会选择 `MISTRAL_OCR_4_1` 或 `NONE`。Google 保留为以后可切换的 provider adapter。
+R3B 曾尝试 **Mistral OCR 4.1 Free mode**，但首个 OCR 请求以及 15s/30s/60s/90s 退避重试都返回 HTTP 429，成功 OCR 页数为 0；没有出现 402 Payment Required，因此这是 Free-mode availability/rate-limit blocker，不是识别质量结论。
+
+Owner 决定不为本轮测试启用付费 Mistral，当前已恢复 **Google Document AI + WIF** 路线。Google 仅剩 Billing 激活 blocker；完成后继续相同 11 个公开 hard cases 的 R3B benchmark。
 
 G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
 
