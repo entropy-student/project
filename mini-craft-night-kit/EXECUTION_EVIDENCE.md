@@ -5842,6 +5842,7 @@ CADDY_RECREATE_DOES_NOT_REQUIRE_COMPOSE_MUTATION=YES
 RECREATE_SCOPE=EXACT_CADDY_SERVICE_ONLY
 RECREATE_PLAN_COMMAND=sudo -n docker compose -p spikersun-edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never caddy
 SHARED_EDGE_BRIEF_DOWNTIME_REQUIRED=YES
+RECREATE_PLAN=SEALED
 ACTIVE_CADDY_USER_ROUTES=edge-test.spikersun.com; localhost is local-only
 ROLLBACK_PLAN=SEALED
 ROLLBACK_BEFORE_DNS=restore exact 153-byte legacy mounted candidate to existing host Caddyfile, recreate only Caddy, read back legacy routes; DNS remains absent
