@@ -2770,3 +2770,15 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 
 `STOP_AT_REVIEWER=YES`
 
+
+
+## Current Executor Handoff — K7 R1 Canary Fixture and Resend Email Foundation (2026-09-27)
+
+- Result: `RETURN_OWNER_WORDPRESS_ADMIN_SESSION_REQUIRED`; `STOP_AT_REVIEWER=YES`.
+- Created the authorized Resend sending domain `minicraft.spikersun.com` (sending enabled, receiving disabled) and added only its four service-returned Cloudflare verification records. Resend readback reports the domain and all four records verified. The existing Mini Craft DNS-only A record to `2.24.193.133` was not modified.
+- Public home read-only check passed. K6 deployment/ingress and PPCP Sandbox/Live status remain accepted same-day K6 G-R4 carry-forward facts; no separate fresh PPCP readback was completed in this partial run.
+- WordPress Admin currently shows the login page. No Owner credential was requested or entered. Canary product creation, plugin installation, API-key setup, email send, cart/session mutation, order, payment, refund, and Product 223 change were not performed.
+- Resume this same Gate after Owner signs in directly in the existing WordPress Admin browser tab. If the Resend plugin requires an API key, Owner must create a sending-only key scoped to this domain and paste it directly into the plugin; never send it in chat.
+- Evidence append/readback commit: `4d2934b2bae6b73c3fdaa85b2c9f8a4aa52a4d29`. No Reviewer-owned file was modified.
+
+`STOP_AT_REVIEWER=YES`
