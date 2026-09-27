@@ -1,5 +1,35 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Current Gate — G2BR3 Direct Codex Agent Real AI Proof — PASS_CANDIDATE
+
+```text
+GATE=G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF
+RESULT=PASS_CANDIDATE_G2BR3_DIRECT_AGENT_REAL_AI_PROOF
+DIRECT_AGENT_REAL_AI_CONTENT=PASS
+STRUCTURED_SCHEMA=PASS
+GROUNDING_AUDIT=PASS
+DYNAMIC_MODULES=PASS
+PHOTO_MAPPING=PASS_METADATA_ONLY
+MUST_USE=PASS
+ACTUAL_AI_PDF_12_PAGES=PASS
+DETERMINISTIC_QA=PASS
+MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT=YES
+REFERENCE_FIXTURE_FALLBACK=NO
+API_KEY_USED=NO
+REAL_MODEL_RUNS=1
+CORRECTION_GENERATIONS=0
+G3_STARTED=NO
+STOP_AT_REVIEWER=YES
+```
+
+One synthetic Mira Vale fixture was used. The current interactive Codex Agent authored `poc/g2b/artifacts/g2br3/generated-content.json` directly from that intake and the existing `CONTENT_SCHEMA`; the first schema validation passed, so no correction generation was used. The historical `reference-content.json` was not read or used. No API key, nested `codex exec`, extra credits, real customer data, or production provider was used.
+
+The existing grounding validator, deterministic renderer, PDF pipeline and QA passed. The output is a 12-page US Letter PDF. Three style presets share the existing page architecture; the 375px browser check passed. Photo selection is synthetic metadata-only. Provider-job idempotency was not tested and is explicitly not claimed for this Gate; production AI/provider integration remains deferred.
+
+Artifacts: `poc/g2b/artifacts/g2br3/` (generated JSON, schema/grounding/QA reports, provenance/status, PDF, screenshots/contact sheet, dependency report and hashes). Detailed results and limitations are in `EXECUTION_EVIDENCE.md`.
+
+Branch `codex/birthday-magazine-g2br3-direct-agent-proof` is based on GitHub `main` at `491a7eab7721bd9876e1ebc1292cfc382949c061`. The evidence commit `0b5c3ef4ff2e6581efc021fa2c62700d1f44af2b` is pushed. Reviewer PR [#46](https://github.com/entropy-student/project/pull/46) is open against `main` and unmerged; this final handoff reconciliation is being pushed as a follow-up on the same PR. Reviewer is the next decision point. Do not enter G3.
+
 ## Current Gate — G2BR2 final result — RETURN
 
 - **Gate:** `G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE`

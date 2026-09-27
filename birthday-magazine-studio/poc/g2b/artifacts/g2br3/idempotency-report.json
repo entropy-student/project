@@ -1,0 +1,7 @@
+{
+  "gate": "G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF",
+  "result": "NOT_TESTED_DIRECT_AGENT_NO_PROVIDER_BOUNDARY",
+  "canonicalProviderJobCreated": false,
+  "providerSpendIdempotencyClaimed": false,
+  "note": "This direct interactive model-authored content proof did not invoke a production provider or create a provider job. Idempotency remains outside this Gate proof."
+}

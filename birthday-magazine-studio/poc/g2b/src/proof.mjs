@@ -12,7 +12,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
 const REAL_AI_MODE = process.env.BMS_REAL_AI_MODE === "1" || process.env.BMS_G2BR1_MODE === "1";
 const GATE_ID = process.env.BMS_REAL_AI_GATE_ID || (process.env.BMS_G2BR1_MODE === "1" ? "G2BR1_REAL_AI_GENERATION_CLOSURE" : "G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE");
-const GATE_LABEL = GATE_ID.startsWith("G2BR2") ? "G2BR2" : "G2BR1";
+const GATE_LABEL = GATE_ID.match(/^(G2BR\d+)/)?.[1] || "G2BR1";
 const NAMESPACE = process.env.BMS_REAL_AI_NAMESPACE || (process.env.BMS_G2BR1_MODE === "1" ? "g2br1" : "g2br2");
 const REAL_AI_CONTENT_FILE = process.env.BMS_REAL_AI_CONTENT_FILE || process.env.BMS_G2BR1_CONTENT_FILE;
 const REAL_AI_STATUS_FILE = process.env.BMS_REAL_AI_STATUS_FILE || process.env.BMS_G2BR1_STATUS_FILE;
@@ -30,6 +30,7 @@ const PAGE_SECTIONS = [
 const MODULES = ["The Lore / inside jokes", "Favorites", "Playlist", "Travel", "Then & Now", "Year in Review", "Current Obsessions", "Mini Timeline"];
 const PRESETS = ["bold-editorial", "soft-warm", "retro-playful"];
 const MAX_COPY_CHARS = 520;
+const DIRECT_AGENT_ORIGIN = "interactive Codex Agent direct model output";
 
 const input = await readJson(path.join(FIXTURES, "intake.json"));
 const referenceContent = REAL_AI_MODE ? null : await readJson(path.join(FIXTURES, "reference-content.json"));
@@ -158,7 +159,7 @@ function validateContent(content, data, assignments) {
     "quickFacts.favoriteFood", "quickFacts.favoritePlace", "quickFacts.currentObsession",
     "answers.q1", "answers.q2", "answers.q3", "answers.q4", "answers.q5", "answers.q6"
   ]);
-  if (content.origin && content.origin !== "human-authored synthetic renderer reference; not AI output" && !content.origin.includes("provider")) errors.push("CONTENT_ORIGIN_UNDECLARED");
+  if (content.origin && content.origin !== "human-authored synthetic renderer reference; not AI output" && content.origin !== DIRECT_AGENT_ORIGIN && !content.origin.includes("provider")) errors.push("CONTENT_ORIGIN_UNDECLARED");
   if (content.recipient?.name !== data.recipient.name || content.recipient?.age !== data.recipient.age || content.recipient?.birthday !== data.recipient.birthday) errors.push("RECIPIENT_IDENTITY_MISMATCH");
   if (content.recipient?.relationship !== data.buyerRelationship || content.tone !== data.tone || content.stylePreset !== data.stylePreset) errors.push("RELATIONSHIP_TONE_OR_STYLE_MISMATCH");
   if (!Array.isArray(content.groundedFacts) || content.groundedFacts.length === 0) errors.push("GROUNDED_FACTS_MISSING");
@@ -569,7 +570,7 @@ function groundingAudit(content, data) {
   const errors = validateContent(content, data, content.photoPageAssignments || []);
   const quoteCount = (content.groundedFacts || []).reduce((total, claim) => total + (claim.supportingQuotes || []).length, 0);
   const groundedClaims = (content.groundedFacts || []).length;
-  const realModelOutput = content.origin === "provider-generated structured content via Codex ChatGPT login";
+  const realModelOutput = content.origin === "provider-generated structured content via Codex ChatGPT login" || content.origin === DIRECT_AGENT_ORIGIN;
   return {
     result: errors.length === 0 ? (realModelOutput ? "PASS" : "PASS_REFERENCE_FIXTURE_ONLY") : "FAIL",
     contentOrigin: content.origin,
@@ -580,7 +581,7 @@ function groundingAudit(content, data) {
     ageDerivedFromBirthdayOnFixtureDate: ageOnDate(data.recipient.birthday, data.asOfDate) === data.recipient.age,
     citedFacts: (content.groundedFacts || []).map(claim => ({ text: claim.text, sourceRefs: claim.sourceRefs, supportingQuotes: claim.supportingQuotes })),
     auditScope: realModelOutput
-      ? "Actual Codex output: schema/provenance checks verify every copy unit has valid sourceRefs and each listed factual claim has an exact intake excerpt; executor reviewed the synthetic copy against its cited intake passages."
+      ? "Actual interactive Codex Agent output: schema/provenance checks verify every copy unit has valid sourceRefs and each listed factual claim has an exact intake excerpt; executor reviewed the synthetic copy against its cited intake passages."
       : "Structural provenance and exact supporting-quote checks on human-authored reference content; it is not a live-AI semantic entailment proof.",
     errors
   };
@@ -713,7 +714,7 @@ async function writeReferenceArtifacts({ pages, selection, content, intakeErrors
   const realAiPass = REAL_AI_MODE && aiStatus.realAiCall === "PASS" && aiStatus.realModelRunCount >= 1;
   const qa = {
     gate: REAL_AI_MODE ? GATE_ID : "G2B_LOCAL_AI_PDF_SOLUTION_PROOF",
-    mode: REAL_AI_MODE ? "REAL_CODEX_SYNTHETIC_CONTENT" : "LOCAL_SYNTHETIC_REFERENCE_RENDER",
+    mode: REAL_AI_MODE ? (aiStatus.MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT === "YES" ? "DIRECT_INTERACTIVE_CODEX_AGENT_SYNTHETIC_CONTENT" : "REAL_CODEX_SYNTHETIC_CONTENT") : "LOCAL_SYNTHETIC_REFERENCE_RENDER",
     overall: intakeErrors.length === 0 && contentErrors.length === 0 && pdfChecks.length === 0 && browserQA.pageCount === 12 && browserQA.consistentIdentity && browserQA.imageResults.every(item => item.loaded) && browserQA.overflow.length === 0 && browserQA.pageOverflow.length === 0 && mobileReadback?.viewportWidth === 375 && !mobileReadback.horizontalOverflow && !mobileReadback.textOverflow && styleProof.result === "PASS_SHARED_ARCHITECTURE" && negativePass && pdfPageCount === 12 && letterSize && stats.size > 0 && (!REAL_AI_MODE || realAiPass) ? (REAL_AI_MODE ? `PASS_${GATE_LABEL}_REAL_AI_RENDER_PIPELINE` : "PASS_REFERENCE_PIPELINE_ONLY") : "RETURN_TEST_FAILURE",
     intakeValidation: { result: intakeErrors.length === 0 ? "PASS" : "FAIL", errors: intakeErrors, photoCount: input.photos.length, requiredAnswers: 6, mustUseCount: input.photos.filter(photo => photo.mustUse).length },
     structuredContentValidation: { result: contentErrors.length === 0 ? (realAiPass ? "PASS" : "PASS_REFERENCE_FIXTURE_ONLY") : "FAIL", origin: content.origin || "provider-generated structured content", errors: contentErrors },
@@ -728,8 +729,8 @@ async function writeReferenceArtifacts({ pages, selection, content, intakeErrors
     deterministicQaMutationChecks: { result: negativePass ? "PASS" : "FAIL", rejectedCount: mutationProof.filter(item => item.rejected).length, total: mutationProof.length, checks: mutationProof },
     pdf: { result: pdfPageCount === 12 && letterSize && stats.size > 0 ? "PASS" : "FAIL", file: path.relative(ARTIFACTS, pdfPath).replaceAll("\\", "/"), pageCount: pdfPageCount, expectedPageSize: "US Letter (612 × 792 pt)", pageSizes: pdfPageSizes, sizeBytes: stats.size, sha256: sha256(pdfBytes), parsedWith: "pdf-lib 1.17.1" },
     idempotency: idempotency,
-    realModelRunIdempotency: idempotency.result === "PASS" ? "PASS" : "PENDING_DUPLICATE_PROBE",
-    network: { localServer: "127.0.0.1 only", localRendererRequestCount: rendererRequestCount, externalBrowserRequestCount: externalRequestCount, codexExecRunCount: aiStatus.realModelRunCount || 0, modelRoute: realAiPass ? "ChatGPT-authenticated Codex CLI remote inference" : "no real model route" },
+    realModelRunIdempotency: aiStatus.MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT === "YES" ? "NOT_TESTED_DIRECT_AGENT_NO_PROVIDER_BOUNDARY" : (idempotency.result === "PASS" ? "PASS" : "PENDING_DUPLICATE_PROBE"),
+    network: { localServer: "127.0.0.1 only", localRendererRequestCount: rendererRequestCount, externalBrowserRequestCount: externalRequestCount, codexExecRunCount: 0, interactiveAgentModelRunCount: aiStatus.MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT === "YES" ? (aiStatus.realModelRunCount || 0) : 0, modelRoute: aiStatus.MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT === "YES" ? "interactive Codex Agent direct model output; no project provider request" : (realAiPass ? "ChatGPT-authenticated Codex CLI remote inference" : "no real model route") },
     screenshots: screenshotStats,
     limitations: REAL_AI_MODE ? [
       "The synthetic PNGs are deterministic scene illustrations, not photographs of a person.",
@@ -754,7 +755,9 @@ async function writeReferenceArtifacts({ pages, selection, content, intakeErrors
     pdfLib: { version: "1.17.1", license: "MIT" },
     browser: { executable: browserPath || "Playwright bundled Chromium", version: browserVersion },
     network: REAL_AI_MODE
-      ? "npm dependencies were resolved from npm during setup; Codex ChatGPT-authenticated model run(s) occurred, while all browser renderer requests were loopback-only."
+      ? (aiStatus.MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT === "YES"
+        ? "npm dependencies were resolved from npm during setup; content was authored by the interactive Codex Agent, while all browser renderer requests were loopback-only."
+        : "npm dependencies were resolved from npm during setup; Codex ChatGPT-authenticated model run(s) occurred, while all browser renderer requests were loopback-only.")
       : "npm dependencies were resolved from npm during setup; the proof runtime made no AI or non-loopback browser request."
   });
   const hashEntries = [
@@ -790,8 +793,10 @@ async function main() {
   if (REAL_AI_MODE) {
     invariant(REAL_AI_CONTENT_FILE && REAL_AI_STATUS_FILE && REAL_AI_IDEMPOTENCY_FILE, "RETURN_REAL_AI_GENERATED_CONTENT_REQUIRED");
     content = await readJson(REAL_AI_CONTENT_FILE);
-    content.origin = "provider-generated structured content via Codex ChatGPT login";
     aiStatus = await readJson(REAL_AI_STATUS_FILE);
+    content.origin = aiStatus.MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT === "YES" && aiStatus.REFERENCE_FIXTURE_FALLBACK === "NO"
+      ? DIRECT_AGENT_ORIGIN
+      : "provider-generated structured content via Codex ChatGPT login";
     idempotency = await readJson(REAL_AI_IDEMPOTENCY_FILE);
     invariant(aiStatus.gate === GATE_ID && aiStatus.realAiCall === "PASS" && aiStatus.apiKeyUsed === false, "RETURN_REAL_AI_CODEX_GENERATION_NOT_PROVEN");
   } else {
@@ -900,8 +905,8 @@ async function main() {
   invariant(qa.overall === (REAL_AI_MODE ? `PASS_${GATE_LABEL}_REAL_AI_RENDER_PIPELINE` : "PASS_REFERENCE_PIPELINE_ONLY"), "RETURN_DETERMINISTIC_QA_FAILED");
   await writeJson(path.join(ARTIFACTS, "run-summary.json"), {
     gate: REAL_AI_MODE ? GATE_ID : "G2B_LOCAL_AI_PDF_SOLUTION_PROOF",
-    result: REAL_AI_MODE ? "IN_PROGRESS_PENDING_IDEMPOTENCY_DUPLICATE_PROBE" : "RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED",
-    pipelineImplementation: REAL_AI_MODE ? "PASS_REAL_CODEX_RENDER_PIPELINE" : "PASS_REFERENCE_RENDER_PIPELINE",
+    result: REAL_AI_MODE ? (aiStatus.MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT === "YES" ? "PASS_CANDIDATE_G2BR3_DIRECT_AGENT_REAL_AI_PROOF" : "IN_PROGRESS_PENDING_IDEMPOTENCY_DUPLICATE_PROBE") : "RETURN_AI_PROVIDER_CREDENTIAL_REQUIRED",
+    pipelineImplementation: REAL_AI_MODE ? (aiStatus.MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT === "YES" ? "PASS_DIRECT_AGENT_RENDER_PIPELINE" : "PASS_REAL_CODEX_RENDER_PIPELINE") : "PASS_REFERENCE_RENDER_PIPELINE",
     realAiCall: REAL_AI_MODE ? "PASS" : "BLOCKED",
     pdf: "proof-magazine-soft-warm.pdf",
     screenshots,

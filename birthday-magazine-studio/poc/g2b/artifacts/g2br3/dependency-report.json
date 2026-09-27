@@ -1,0 +1,16 @@
+{
+  "node": "v24.19.0",
+  "playwright": {
+    "version": "1.62.1",
+    "license": "Apache-2.0"
+  },
+  "pdfLib": {
+    "version": "1.17.1",
+    "license": "MIT"
+  },
+  "browser": {
+    "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "version": "153.0.8010.54"
+  },
+  "network": "npm dependencies were resolved from npm during setup; content was authored by the interactive Codex Agent, while all browser renderer requests were loopback-only."
+}

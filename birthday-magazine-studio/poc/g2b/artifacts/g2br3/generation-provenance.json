@@ -1,0 +1,14 @@
+{
+  "gate": "G2BR3_DIRECT_CODEX_AGENT_REAL_AI_PROOF",
+  "MODEL_AUTHORED_BY_INTERACTIVE_CODEX_AGENT": "YES",
+  "REFERENCE_FIXTURE_FALLBACK": "NO",
+  "contentFile": "generated-content.json",
+  "contentSha256": "8922801ca193a97fa853e091e8de489da0dbf11438a206e96daa688d71f99bab",
+  "primaryGenerationCount": 1,
+  "correctionGenerationCount": 0,
+  "authoringContext": "Current interactive Codex Agent using the authenticated ChatGPT session; content was directly authored in this task from the synthetic intake and existing CONTENT_SCHEMA.",
+  "referenceContentFixture": "Not opened, read, copied, adapted, or used as fallback.",
+  "apiKeyUsed": false,
+  "nestedCodexExecUsed": false,
+  "projectProviderApiRequests": 0
+}
