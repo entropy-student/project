@@ -5,6 +5,8 @@
 - **Gate:** `G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE`
 - **Branch:** `codex/birthday-magazine-g2br2-host-codex-closure`
 - **Base commit:** started from `dbc2da3383707615b04503be6d8bcc2fe1ac97bb`; rebased onto latest GitHub `main` at `d3249013f01fdc60b2fc728d0a8f197255643182` before submission
+- **Preparation commit:** `6c59b1c0c557aa5f60273f80d03d0a187f38b2cf`
+- **PR:** [#43 — Prepare G2BR2 host Codex launch path](https://github.com/entropy-student/project/pull/43), open against `main` and unmerged
 - **Result:** `PREPARED_FOR_OWNER_HOST_LAUNCH`; no model result or Gate PASS is claimed.
 - **Stop point:** `STOP_AT_OWNER_HOST_LAUNCH=YES`.
 

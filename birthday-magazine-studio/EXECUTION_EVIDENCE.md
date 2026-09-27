@@ -53,7 +53,8 @@ No AI, payment, PayPal, customer data, public deployment, VPS, Cloudflare, Share
 ### GitHub review handoff
 
 - Branch: `codex/birthday-magazine-g2br2-host-codex-closure`, rebased onto `d3249013f01fdc60b2fc728d0a8f197255643182` before submission.
-- Commit and PR details will be recorded after submission; the PR must remain open and unmerged.
+- Preparation commit: `6c59b1c0c557aa5f60273f80d03d0a187f38b2cf`.
+- Reviewer PR: [#43 — Prepare G2BR2 host Codex launch path](https://github.com/entropy-student/project/pull/43), open against `main`, unmerged. The documentation reconciliation is a follow-up commit on the same PR.
 - Reviewer is the next decision point after the Owner host launch produces sanitized evidence. Do not enter G3.
 
 ## Current Gate — G2BR1 Real AI Generation Closure
