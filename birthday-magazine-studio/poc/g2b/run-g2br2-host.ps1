@@ -11,11 +11,15 @@ if (-not $codex) { Write-Error 'RETURN_CODEX_CLI_UNAVAILABLE'; exit 2 }
 
 $env:BMS_G2BR2_HOST_MODE = '1'
 $env:BMS_CODEX_EXECUTABLE = $codex.Source
+Remove-Item Env:BMS_G2BR2_HTTP_ONLY_RETRY -ErrorAction SilentlyContinue
 $runner = Join-Path $PSScriptRoot 'src\g2br1-run.mjs'
 if (-not (Test-Path -LiteralPath $runner -PathType Leaf)) { Write-Error 'RETURN_EXISTING_G2B_HARNESS_UNAVAILABLE'; exit 2 }
 
 $runnerArgs = @($runner)
-if ($RetryFailed) { $runnerArgs += '--retry-failed' }
+if ($RetryFailed) {
+  $env:BMS_G2BR2_HTTP_ONLY_RETRY = '1'
+  $runnerArgs += '--retry-failed'
+}
 & $node.Source @runnerArgs
 $runnerExitCode = $LASTEXITCODE
 if ($runnerExitCode -ne 0) { exit $runnerExitCode }

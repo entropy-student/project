@@ -1,0 +1,18 @@
+{
+  "gate": "G2BR2_HOST_CODEX_TRANSPORT_AND_REAL_AI_CLOSURE",
+  "result": "RETURN_CODEX_EXEC_FAILED",
+  "executionMode": "CODEX_HOST_WINDOWS_CHATGPT_LOGIN",
+  "codexCliVersion": "0.149.1",
+  "realModelRunCount": 1,
+  "successfulGenerationCount": 0,
+  "schemaConstrained": true,
+  "apiKeyUsed": false,
+  "retryCategory": "TRANSIENT_RUNTIME",
+  "providerDiagnostic": {
+    "kind": "WEBSOCKET_FAILURE",
+    "safeSummary": "WebSocket transport or upgrade failed.",
+    "exitCode": 1
+  },
+  "outputSha256": null,
+  "sessionOrAccountIdentifiersRecorded": false
+}

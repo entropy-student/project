@@ -52,12 +52,13 @@ function codexFailureCode(diagnostic) {
 }
 
 export class CodexExecProvider {
-  constructor({ executable, workingDirectory, schemaPath, outputPath, onSpawn }) {
+  constructor({ executable, workingDirectory, schemaPath, outputPath, onSpawn, httpOnlyChatGPT = false }) {
     this.executable = executable || "codex";
     this.workingDirectory = workingDirectory;
     this.schemaPath = schemaPath;
     this.outputPath = outputPath;
     this.onSpawn = onSpawn;
+    this.httpOnlyChatGPT = httpOnlyChatGPT;
   }
 
   async generateStructured({ prompt, schema }) {
@@ -75,6 +76,16 @@ export class CodexExecProvider {
       "--output-last-message", this.outputPath,
       "--json", "--color", "never", "-"
     ];
+    if (this.httpOnlyChatGPT) {
+      args.splice(1, 0,
+        "-c", 'model_provider="g2br2_chatgpt_http"',
+        "-c", 'model_providers.g2br2_chatgpt_http.name="G2BR2 ChatGPT HTTP"',
+        "-c", 'model_providers.g2br2_chatgpt_http.base_url="https://chatgpt.com/backend-api/codex"',
+        "-c", "model_providers.g2br2_chatgpt_http.requires_openai_auth=true",
+        "-c", "model_providers.g2br2_chatgpt_http.supports_websockets=false",
+        "-c", 'model_providers.g2br2_chatgpt_http.wire_api="responses"'
+      );
+    }
     const env = { ...process.env };
     for (const name of ["OPENAI_API_KEY", "OPENAI_BASE_URL", "OPENAI_CUSTOM_HEADERS", "OPENAI_ORG_ID", "OPENAI_PROJECT_ID"]) delete env[name];
 

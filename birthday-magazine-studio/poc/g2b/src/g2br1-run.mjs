@@ -93,6 +93,10 @@ async function duplicateProbe() {
 }
 
 async function runGeneration({ retry = false } = {}) {
+  const g2br2HttpOnlyRetry = G2BR2_MODE && retry;
+  if (g2br2HttpOnlyRetry && process.env.BMS_G2BR2_HTTP_ONLY_RETRY !== "1") {
+    throw new Error("RETURN_G2BR2_HTTP_ONLY_RETRY_LAUNCHER_REQUIRED");
+  }
   await fs.mkdir(ARTIFACTS, { recursive: true });
   const { intake } = await loadBaseline();
   const login = runCodexReadOnly(["login", "status"]);
@@ -156,9 +160,23 @@ async function runGeneration({ retry = false } = {}) {
       workingDirectory: codexContext,
       schemaPath: SCHEMA_FILE,
       outputPath: attemptFile,
+      httpOnlyChatGPT: g2br2HttpOnlyRetry,
       onSpawn: async () => {
         job.codexExecRunCount = attemptNumber;
-        job.modelRuns = [...(job.modelRuns || []), { runNumber: attemptNumber, executionMode: EXECUTION_MODE, codexCliVersion: version.text.replace(/^codex-cli\s+/, ""), status: "STARTED" }];
+        job.modelRuns = [...(job.modelRuns || []), {
+          runNumber: attemptNumber,
+          executionMode: EXECUTION_MODE,
+          codexCliVersion: version.text.replace(/^codex-cli\s+/, ""),
+          ...(g2br2HttpOnlyRetry ? {
+            providerId: "g2br2_chatgpt_http",
+            transport: "HTTP_ONLY_RESPONSES",
+            configScope: "PER_INVOCATION_CODEX_EXEC_OVERRIDES",
+            requiresOpenAIAuth: true,
+            supportsWebSockets: false,
+            wireApi: "responses"
+          } : {}),
+          status: "STARTED"
+        }];
         await saveCanonicalJob(existing.file, job);
       }
     });
@@ -196,6 +214,14 @@ async function runGeneration({ retry = false } = {}) {
       outputSha256: outputHash,
       outputOrigin: "direct codex exec --output-last-message response; no reference fixture fallback",
       apiKeyUsed: false,
+      ...(g2br2HttpOnlyRetry ? {
+        providerId: "g2br2_chatgpt_http",
+        transport: "HTTP_ONLY_RESPONSES",
+        configScope: "PER_INVOCATION_CODEX_EXEC_OVERRIDES",
+        requiresOpenAIAuth: true,
+        supportsWebSockets: false,
+        wireApi: "responses"
+      } : {}),
       extraCreditsPurchased: false,
       resetCreditsConsumed: false,
       sessionOrAccountIdentifiersRecorded: false,
@@ -287,6 +313,14 @@ async function runGeneration({ retry = false } = {}) {
       successfulGenerationCount: 0,
       schemaConstrained: true,
       apiKeyUsed: false,
+      ...(g2br2HttpOnlyRetry ? {
+        providerId: "g2br2_chatgpt_http",
+        transport: "HTTP_ONLY_RESPONSES",
+        configScope: "PER_INVOCATION_CODEX_EXEC_OVERRIDES",
+        requiresOpenAIAuth: true,
+        supportsWebSockets: false,
+        wireApi: "responses"
+      } : {}),
       retryCategory: job.retryCategory,
       providerDiagnostic: error.providerDiagnostic || null,
       outputSha256: outputHash,
