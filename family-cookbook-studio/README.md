@@ -52,7 +52,7 @@ PaddleOCR primary
     ↓
 critical-value / confidence checks
     ↓
-TrOCR only on suspicious regions
+at most one target-language fallback / second pass
     ↓
 still uncertain → user confirmation
     ↓
@@ -67,7 +67,7 @@ PDF QA
 private proof / final delivery
 ```
 
-MVP OCR 架构已经收束为 **PaddleOCR 主力 + TrOCR 兜底 + 用户确认最终兜底**。Tesseract、云 OCR、GPT/Gemini 类视觉模型都不进入 MVP 默认路线。OCR/model API Token 目标为 **0**；实际还需测量的是本地 CPU/GPU 成本和用户需要确认多少次。
+OCR 架构原则已经收束为 **一个主力 + 最多一个兜底/二次识别 + 用户确认最终兜底**。PaddleOCR 仍是主力候选；R2 实测的 `trocr-small-handwritten` 没有降低任何确认量，因此不再作为已接受的 MVP 兜底。下一步在首发语言冻结后优先寻找 PaddleOCR 同生态的语言专用/局部二次识别方案，避免增加维护栈。
 
 详细复用边界见 [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md)。
 
@@ -77,15 +77,12 @@ MVP OCR 架构已经收束为 **PaddleOCR 主力 + TrOCR 兜底 + 用户确认�
 
 G2A1-R1 再次 RETURN：本机最新只剩 **0.62 GiB 可用 RAM**，且其他项目 WordPress/数据库仍在运行，因此 Reviewer 不再允许继续在当前 Windows 主机硬跑。
 
-当前进入 **G2A1-R2 — Isolated GitHub Actions Runner Completion**，把剩余 PoC 搬到隔离的一次性 GitHub Actions runner。
+G2A1-R2 已完成真实 Actions PoC：
+- WordPress + WooCommerce + Kadence、0-Token 浏览器本地预览、订单绑定上传、私密交付的可行性证据已被 Reviewer 接受；
+- OCR 已完成真实推理，但当前混合语言测试集和未冻结的 UX 门槛不足以支持最终产品级 PASS/FAIL；
+- TrOCR-small 当前配置已被淘汰为 MVP fallback。
 
-本轮只补未完成证据：
-
-1. 真正跑通 PaddleOCR 主识别 + TrOCR 疑难区域兜底，并测量用户最终确认负担；
-2. 增加少量公开/开放的真实手写样本，避免把字体模拟当作手写证明；
-3. 在隔离 Actions runner 上建立一次性的 Family Cookbook WordPress + WooCommerce + Kadence 测试站；
-4. 验证订单绑定上传和私有文件交付的正/反权限；
-5. 保留第一轮已经通过的 routing/schema 和静态 0-Token preview 证据。
+当前进入 **G2A1-D1 — Target Language + OCR Acceptance Calibration**，这是 Owner 决策点，不再重复网站测试。
 
 G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、食谱数量、输入格式、校对策略、修改规则、QA 和数据保留，再进入本地 OCR→PDF Solution Proof。
 
@@ -98,7 +95,8 @@ G2A1 通过后，进入 **G2A2 MVP Product Contract Freeze**，冻结页数、�
 - [docs/OCR_PIPELINE_RESEARCH.md](./docs/OCR_PIPELINE_RESEARCH.md) — OCR/手写识别候选与验证原则
 - [docs/G2A1_INPUT_OCR_COMPONENT_POC.md](./docs/G2A1_INPUT_OCR_COMPONENT_POC.md) — 原始 G2A1 Gate
 - [docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md](./docs/G2A1_R1_ENVIRONMENT_REMEDIATION_AND_COMPLETION.md) — G2A1-R1（资源阻塞 RETURN）
-- [docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md](./docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md) — **当前 G2A1-R2 Gate**
+- [docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md](./docs/G2A1_R2_ISOLATED_ACTIONS_RUNNER_COMPLETION.md) — G2A1-R2（组件证据已接受）
+- [docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md](./docs/G2A1_D1_TARGET_LANGUAGE_OCR_ACCEPTANCE.md) — **当前 Owner checkpoint**
 - [docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md](./docs/G2A2_MVP_PRODUCT_CONTRACT_FREEZE.md) — 下一 Gate
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 获客/验证计划
 - [PROJECT_RECORD.md](./PROJECT_RECORD.md) — legacy compatibility pointer only
