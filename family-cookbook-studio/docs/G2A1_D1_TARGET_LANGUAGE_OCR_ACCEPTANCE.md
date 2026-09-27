@@ -111,42 +111,50 @@ Reviewer preference for lowest development cost:
 - stay inside the PaddleOCR ecosystem if possible;
 - use a language-specific recognition model and/or crop/preprocessing second pass before introducing a separate model family.
 
-## 4. Owner decision required
+## 4. Owner decision — RESOLVED 2026-09-27
 
 ### Decision A — first language / market
 
-Reviewer recommendation:
+**English-first, not English-only.**
 
-**English-only MVP first.**
+Meaning:
+- storefront/product UX and benchmark priority start with English;
+- multilingual input is allowed where the selected OCR stack supports it;
+- non-English accuracy is not marketed as equally guaranteed until language-specific evidence exists;
+- the technical architecture should prefer a multilingual main engine rather than creating a separate stack per language.
 
-Reason:
-- creates a coherent benchmark boundary;
-- PaddleOCR provides English-specific recognition options;
-- genuine benchmark fixtures can be selected from English handwriting/recipe sources;
-- avoids treating mixed German/French/English results as one product-quality number;
-- minimizes OCR, QA and correction-UI complexity.
+### Decision B — review / correction UX
 
-This recommendation is about technical/product-scope clarity, not a claim that English has the best market demand.
+**One consolidated user confirmation stage per order/proof cycle.**
 
-### Decision B — OCR UX acceptance threshold
+The user should not receive repeated popup-style confirmations during OCR.
 
-Reviewer recommended MVP threshold:
+Flow:
 
-1. **0 silently accepted wrong critical facts** for quantity, unit, temperature and timing;
-2. average `USER_CONFIRM_REQUIRED` **≤ 2 per recipe page** on target-language recipe-like handwriting;
-3. confirmation should normally be a tap/short correction against the source crop, not whole-recipe retranscription;
-4. severe recognition failure/blank-page cases must fail closed and ask for a better image or manual correction;
-5. exact typography/punctuation/spacing differences do not count as critical semantic errors when the underlying value and unit are preserved.
+```text
+OCR + fallback complete
+→ build one proof/review screen
+→ highlight all uncertain / high-risk fields
+→ user can manually edit any field
+→ one final Confirm / Approve action
+```
 
-This threshold is a product/UX boundary, not an OCR benchmark convention.
+Severe unreadable-page cases may fail closed earlier and ask for a better image; this is an intake-quality exception, not a second proof cycle.
 
-## 5. Next Gate after Owner approval
+Primary product requirement:
+- recognition must be strong enough that the review screen is a quick verification/correction step, not manual retranscription;
+- no silently accepted wrong quantity, unit, temperature or timing;
+- exact typography/spacing differences do not count as semantic errors when the underlying fact is preserved.
+
+The previous proposed hard threshold of `≤2 confirmations/page` is **not frozen**. R3 will measure edit burden empirically and Reviewer will judge whether the single review step remains lightweight.
+
+## 5. Next Gate
 
 Open:
 
-`G2A1-R3 — Target-Language Semantic OCR Calibration`
+`G2A1-R3 — OCR Architecture Benchmark: Free Local Primary + Bounded API Fallback`
 
-R3 must be OCR-only.
+R3 is OCR-only and is a **selection benchmark**, not another broad product implementation.
 
 Do **not** repeat:
 - WordPress;
@@ -156,13 +164,35 @@ Do **not** repeat:
 - upload;
 - private delivery.
 
-R3 should:
-- use the selected target language;
-- use recipe-like genuine handwriting fixtures in that language;
-- configure PaddleOCR for that language;
-- score **semantic critical-field correctness**, not only exact strings;
-- benchmark one bounded low-maintenance fallback/second-pass strategy;
-- measure confirmation burden against the approved UX threshold;
-- stop at Reviewer.
+R3 should benchmark:
 
-No execution prompt should be dispatched until this Owner checkpoint is resolved.
+### Free/local primary candidates
+1. **PP-OCRv6_medium** — preferred baseline; Apache 2.0, single model supports 50 languages.
+2. **PaddleOCR-VL-1.6** — challenger where photographed/warped/complex documents may benefit from the 0.9B document VLM; treat hallucination/fidelity risk explicitly.
+
+Do not add EasyOCR as a serious handwriting candidate because its own roadmap still lists handwriting support as future work.
+
+### Bounded paid/API fallback candidates
+1. **Mistral OCR 4.1** — specialized OCR API, confidence/bbox support, 170 languages, current list price $4/1000 pages.
+2. **Google Enterprise Document OCR** — explicitly supports handwritten text in 200+ languages; current list price $1.50/1000 pages for the primary volume tier.
+3. **Gemini 3.8 Flash** — general multimodal VLM challenger only; include because it can interpret image crops and emit structured output, but penalize hallucination/normalization risk under Preserve-don't-invent.
+
+Fallback should receive only suspicious pages/crops whenever practical to reduce cost and data exposure.
+
+R3 must select:
+- one free/local primary;
+- at most one API fallback;
+- one single consolidated user review/approval stage.
+
+Selection criteria:
+- semantic critical-field fidelity;
+- silent-error rate;
+- manual edit burden in the one review stage;
+- handwriting robustness;
+- multilingual usefulness;
+- latency;
+- cost;
+- privacy/data exposure;
+- integration/maintenance cost.
+
+Stop at Reviewer after evidence-backed selection.
