@@ -2782,3 +2782,15 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - Evidence append/readback commit: `4d2934b2bae6b73c3fdaa85b2c9f8a4aa52a4d29`. No Reviewer-owned file was modified.
 
 `STOP_AT_REVIEWER=YES`
+
+
+## K7 R1 — Canary product / safe recipient checkpoint (2026-09-28)
+
+- Result: `RETURN_OWNER_CONTROLLED_TEST_RECIPIENT_REQUIRED`; `STOP_AT_REVIEWER=YES`.
+- Owner confirmed direct Resend API-key entry and connection; no key value/hash was accessed. Sender configuration is Owner-reported.
+- Published the existing exact Reviewer-approved Canary draft once: product ID `1224`, Simple, Virtual, JPY 500, stock management off, sold individually, catalog-hidden. WordPress auto-assigned its default Uncategorized category; catalog visibility remains Hidden. Product 223 was not modified.
+- The Resend test-recipient field contains a local placeholder, not a qualified Owner-controlled real mailbox. No destination was guessed, no site admin-email setting was changed, and no test email was sent.
+- Resume this same Gate after Owner directly enters/selects and confirms an Owner-controlled real recipient in the Resend test-email UI. Do not share the address or API key in chat.
+- Evidence append commit: `11d0f7d61de83ee75d64aef862e4b9924b5bb485`. No Reviewer-owned file or infrastructure was changed.
+
+`STOP_AT_REVIEWER=YES`
