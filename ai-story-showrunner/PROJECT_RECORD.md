@@ -1050,3 +1050,44 @@ This local path is runtime configuration, not portable Skill identity.
 ## 2026-09-23 — Asset-stage timing decision
 
 Current material-generation rule: planned duration is guidance, not a hard synthesis target. Generated Speech Units must keep natural voiced delivery, while their actual durations are measured and recorded precisely. Working layers: SRT1 = planned timing; SRT2 = actual generated-audio timing and current material-stage authority; SRT3 = final post-assembly timing after redundant breath-gap cleanup. This remains a project-level validation rule until final-video E2E.
+
+
+## 2026-09-27 — Topic Supply v0.2 Human-world-first Rebaseline
+
+Trigger:
+Owner found that the existing AI-first topic supply could produce correct AI explainers but did not reliably generate broader寓言式 stories such as “美食 + AI：推荐越来越准，为什么反而越来越不知道自己喜欢什么”.
+
+GitHub review result:
+- the existing Story/Writer layer already had the right protections: Controlling Question First, Idea vs Counter-Idea, thesis delay and `Climax proves → narrator lightly names`;
+- therefore the change belongs upstream in G2.5 Topic Supply, not in G3 Writer;
+- the current Topic OS was Human-relevant but still predominantly `AI-first / Human-translated`.
+
+Accepted change:
+```text
+OLD DEFAULT
+AI Signal / AI Problem
+→ Audience Translation
+→ Human Problem
+→ Mechanism
+→ Story
+
+NEW DEFAULT
+Human-interest X
+→ Observed Paradox
+→ WHY
+→ Human Tension
+→ AI Changed Process
+→ Mechanism
+→ Story
+```
+
+Compatibility:
+- HOT / EVERGREEN stay;
+- AI-first remains a valid fallback;
+- existing ledger/history is not rewritten;
+- schema additions are optional/backward-compatible;
+- G6A execution is unaffected.
+
+Rollback:
+- pre-change main SHA `16e2c86039a26175f99204239c19c1bdf35f4a10`;
+- branch `rollback/ai-story-showrunner-topic-os-v01-20260927`.
