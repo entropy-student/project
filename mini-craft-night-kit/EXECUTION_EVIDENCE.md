@@ -5310,3 +5310,46 @@ The no-stdin local seal passed before any network SSH. SSH #1 used the recorded 
 ### K6 F-R1R5R1 evidence transcription correction
 
 The prior marker `SSH_STANDARD_INPUT=DISABLED_WITH_-N` used incorrect option casing. The actual SSH #1 native argv used lowercase `-n` together with `-T`; SSH stdin was disabled and no stdin pipe was opened. No network invocation count, exit status, return classification, or remote-state claim changes.
+
+
+## K6_PHASE_F_R1R5R2_DIRECT_NATIVE_SSH_TRANSPORT_RECOVERY_AND_BEHAVIORAL_RESUME — STOP_AT_REVIEWER
+
+```text
+GATE=K6_PHASE_F_R1R5R2_DIRECT_NATIVE_SSH_TRANSPORT_RECOVERY_AND_BEHAVIORAL_RESUME
+RESULT=RETURN_REVIEWER_F_R1R5R2_CANDIDATE_ADAPT_WARNING
+SUMMARY=Direct-native SSH transport recovery succeeded. Frozen runtime, DNS, Caddyfile and active-config checks passed; edge-test behavior matched the accepted fingerprint. Candidate Caddyfile was built in memory, but caddy adapt emitted non-empty stderr. The bounded helper failed closed without classifying whether that stderr was material, so candidate adaptation/parity and ingress readiness are not claimed.
+
+LOCAL_DIRECT_NATIVE_SSH_SEAL=PASS;LOCAL_OPENSSH_VERSION_CAPTURE=PASS;LOCAL_OPENSSH_VERSION_NATIVE_EXIT=PASS
+SSH_NETWORK_INVOCATIONS=2
+SSH1_NATIVE_EXIT=0;SSH1_HOST_KEY_MATCH=YES_BY_STRICT_PINNED_SUCCESS;SSH1_REMOTE_COMMAND=WHOAMI_ONLY;SSH1_REMOTE_IDENTITY=ops
+REMOTE_LAUNCHER_ARG_COUNT=1;REMOTE_LAUNCHER_TOTAL_CMDLINE_CHARS=22152
+SSH2_NATIVE_EXIT=20;SSH2_HOST_KEY_MATCH=YES_BY_STRICT_PINNED_SUCCESS;SSH2_REMOTE_IDENTITY=ops@srv1970241
+SSH2_FAILURE_CLASS=REMOTE_CANDIDATE_ADAPT_WARNING_RETURN
+
+CADDY_RUNTIME_CONTINUITY=PASS;CADDY_RESTART_COUNT=0
+WORDPRESS_RUNTIME_CONTINUITY=PASS;WORDPRESS_RESTART_COUNT=0
+MARIADB_HEALTH=PASS;MARIADB_RESTART_COUNT=0
+CURRENT_MINICRAFT_DNS=NXDOMAIN
+DURABLE_CADDYFILE_SHA256=12fac82e3b1b9733029aa820c4794ccb9359ae494863dd6815f7e29b636d8beb
+CONTAINER_ADMIN_CONFIG_GET=PASS
+CURRENT_ACTIVE_CONFIG_SHA256=206997c24f7e52efec7f7a8d241afe6c8d16b5b23e54fd799da0f3a94a9dd9cd
+CURRENT_ACTIVE_LOCALHOST_ROUTE=FOUND;CURRENT_ACTIVE_EDGE_TEST_ROUTE=FOUND;CURRENT_ACTIVE_MINICRAFT_ROUTE=ABSENT
+EDGE_TEST_RECOVERY_METHOD=PRIMARY_JSON_STATIC_RESPONSE
+EDGE_TEST_CURRENT_HTTPS_STATUS=200;EDGE_TEST_CURRENT_BODY_BYTES=30;EDGE_TEST_CURRENT_BODY_SHA256=2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824
+EDGE_TEST_CURRENT_HTTP_BEHAVIOR=HTTP_TO_HTTPS_SAME_ORIGIN_REDIRECT
+EDGE_TEST_CONFIGURED_HEADER_NAMES=content-type (observed response header; active configured-header source not independently established)
+CANDIDATE_CADDYFILE_BYTES=264;CANDIDATE_CADDYFILE_SHA256=ab67b8fca129b5f41f18740997794e05bb37037e58455d2e4524b64543f05e93
+CANDIDATE_CADDYFILE_ADAPT=RETURN_NONEMPTY_STDERR_UNCLASSIFIED
+LOCALHOST_DURABLE_BASELINE_PRESERVED=NOT_SEMANTICALLY_VALIDATED
+EDGE_TEST_BEHAVIORAL_PARITY=NOT_CONFIRMED
+CANDIDATE_MINICRAFT_ROUTE=NOT_CONFIRMED;MINICRAFT_EDGE_UPSTREAM=wordpress:80 (candidate text only; adaptation not accepted)
+PUBLIC_INGRESS_CHANGESET=NOT_READY;ROLLBACK_PLAN=NOT_FINALIZED;OWNER_CHECKPOINT_REQUIRED=YES
+
+REMOTE_WRITES=0;SHARED_INFRA_WRITES=0;PUBLIC_INGRESS_CHANGE=0;CADDYFILE_WRITE=0;CADDY_LOAD_RELOAD_RESTART=0;DNS_WRITES=0
+PAYMENT_ACTIONS=0;PAYPAL_LIVE=NO_ACCEPTED_BASELINE_NOT_RECHECKED;SECRET_VALUE_OR_HASH_ACCESS=0
+LOCAL_TEMP_CLEANUP=PASS;NO_SSH_STDIN;NO_CUSTOM_PROCESS_WRAPPER;NO_SCP_SFTP;NO_THIRD_SSH
+NEXT=STOP_AT_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+The initial local capture rehearsal exposed that PowerShell's Stop error preference treats OpenSSH version text on native stderr as a terminating error. This was corrected locally by capturing under Continue, then the full direct-native seal passed; no network call occurred during the failed rehearsal. Both SSH invocations used the accepted strict pinned contract and no stdin. SSH #2 reached the remote read-only script and stopped at candidate adapt because stderr was non-empty; its raw contents were not emitted or persisted. SSH budget is exhausted. All local stdout/stderr temp captures were deleted and verified absent. No remote or Shared Infra state was changed; no retry, reload, write, DNS, payment, or lifecycle action occurred.
