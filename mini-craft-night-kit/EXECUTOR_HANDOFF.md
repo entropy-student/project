@@ -2715,3 +2715,11 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - No Caddyfile write, Caddy reload, indexing write, DNS mutation, PPCP readback, payment, or Secret access occurred. `SSH_NETWORK_INVOCATIONS=1`; no second SSH was made.
 - Detailed redacted evidence: `EXECUTION_EVIDENCE.md`, commit `fe5da8e99acdeaae926ef25ecc2bfc3e156a40db`.
 - Next: Reviewer reconciliation only. No retry or public-ingress continuation in this Gate.
+
+## K6_PHASE_G_R3R2_STALE_BIND_MOUNT_RECONCILIATION_AND_RECREATE_PLAN_SEAL
+
+- Result: `RETURN_REVIEWER_G_R3R2_READONLY_HELPER_ERROR`. The one strict pinned SSH session reached the target, but a Python tuple/bytes adapter error stopped the remote read-only helper before it emitted identity or reached Caddy/Compose probes.
+- SSH network invocations: 1; no retry. Caddyfile/backup/reload/restart/recreate, Compose/network/daemon, DNS, indexing, payment, and Secret-output actions: 0. This is an Executor helper failure, not evidence of infrastructure drift.
+- Execution evidence commit: `58cea3ec568d920c6808b87e84a8fff35c7b72c6`.
+- `STOP_AT_REVIEWER=YES`. Do not continue this Gate without Reviewer reconciliation.
+
