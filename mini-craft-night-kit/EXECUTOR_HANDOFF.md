@@ -2948,3 +2948,35 @@ STOP_AT_REVIEWER=YES
 - Reviewer reconciled the prior over-conservative Secret-risk stop; prior Owner authorization remains valid.
 - The official PPCP wizard is waiting at “Connect to PayPal.” Owner must complete the official PayPal sign-in/authorization directly in the current Admin tab; do not send credentials, 2FA, tokens or codes in chat. Resume the same Gate after Owner confirmation.
 - Sandbox connection is currently disconnected for the official restart-onboarding flow; Live is not connected. No webhook, order/payment/refund, Product, currency, email or infrastructure action occurred; no Secret or identifier value was persisted.
+
+
+## Current Executor Handoff — K7 R2R1 R1 Webhook Read-only Reconciliation (2026-09-28)
+
+```text
+GATE=K7_R2R1_R1_WEBHOOK_READONLY_RECONCILIATION
+RESULT=PASS_CANDIDATE_K7_R2R1_R1_WEBHOOK_READONLY_RECONCILIATION
+PPCP_PLUGIN_VERSION=4.1.3
+PAYPAL_LIVE_CONNECTED=PASS
+PAYPAL_ACCOUNT_TYPE=BUSINESS
+WEBHOOK_URL_EXACT_MATCH=PASS
+WEBHOOK_SUBSCRIPTIONS_PRESENT=YES
+WEBHOOK_STATUS_READBACK=SYSTEM_STATUS_DASH_NOT_AVAILABLE
+EXISTING_LOGS_INSPECTED=YES;NO_AUTHORITATIVE_RECEIPT_SUCCESS_MARKER
+LOGGING_ENABLED_BY_THIS_GATE=NO
+UNSIGNED_ENDPOINT_PROBE_COUNT=1
+UNSIGNED_ENDPOINT_HTTP_STATUS=401
+UNSIGNED_ENDPOINT_REACHABLE=PASS
+UNSIGNED_ENDPOINT_FAIL_CLOSED=PASS
+RESUBSCRIBE_ACTIONS=0
+NEW_SIMULATION_ACTIONS=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+CAPTURE_ACTIONS=0
+REFUND_ACTIONS=0
+PAYPAL_SETTINGS_WRITES=0
+SECRET_VALUES_EMITTED=0
+EVIDENCE_GITHUB_COMMIT=f8e62e3c0f00897ad944f6753cd5a9a1670503ac
+STOP_AT_REVIEWER=YES
+```
+
+Read-only reconciliation only. PPCP 4.1.3 is connected as Business | Live; the configured Notification URL exactly matches the public current-origin endpoint, and subscribed events are present. WooCommerce System Status does not expose a positive receipt-health value (dash), and inspected existing PPCP logs contain no authoritative success marker. A single unsigned synthetic request passed TLS and was rejected with HTTP 401. The known webhook Simulation result remains void and was not rerun. No Provider, payment, order, refund, settings, logging, Secret, or infrastructure action occurred. Evidence was appended in commit `f8e62e3c0f00897ad944f6753cd5a9a1670503ac`; fresh GitHub readback is the remaining persistence check.
