@@ -1,5 +1,45 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — TARGET HOST ACCESS RECOVERY BEFORE CANARY CONTAINMENT — 2026-09-29
+
+```text
+K9B_R2R2A_PRODUCT_1224_PUBLIC_EXPOSURE_CONTAINMENT=RETURN_TARGET_HOST_EXECUTION_UNAVAILABLE
+
+SSH_NETWORK_INVOCATIONS=2
+SSH_NATIVE_EXIT=255_BOTH
+REMOTE_OUTPUT_RECEIVED=NO
+REMOTE_IDENTITY=UNPROVEN
+SSH_HOST_KEY_MATCH=UNPROVEN
+
+PRODUCT_1224_STATUS_WRITE_ATTEMPTED=NO
+PRODUCT_1224_CONTAINMENT=NOT_COMPLETE
+
+PUBLIC_ORIGIN_HEALTH=PASS_HTTP_200
+PUBLIC_SHOP_CONTAINS_1224=NO
+UNAUTHENTICATED_STORE_API_SEARCH_RETURNS_1224=YES
+
+CURRENT_GATE=K9B_R2R2A_R1_TARGET_HOST_ACCESS_RECOVERY
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_TRANSPORT_DIAGNOSTICS
+
+REMOTE_APPLICATION_WRITE_AUTHORIZED=NO
+LOCAL_FILESYSTEM_DELETION_AUTHORIZED=NO
+LOCAL_DOCKER_MUTATION_AUTHORIZED=NO
+K9C_AUTHORIZED=NO
+```
+
+The prior Product 1224 containment Gate failed correctly before any write because strict SSH closed before target identity/read-back. Do not retry the product mutation until strict target-host execution is re-established.
+
+R1 is transport-only: inspect local SSH baseline, known-host/key public metadata, DNS/TCP reachability, then perform at most two strict identity-only SSH attempts. No host-key bypass, password fallback, server SSH changes, product writes, cleanup or Docker mutation.
+
+If strict SSH remains unavailable, return with a precise transport/config/host-key class. A later Owner-local Hostinger-console or authenticated WordPress Admin checkpoint may be designed separately; credentials must not be requested in chat.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9B_R2R2A_RETURN_TARGET_ACCESS_RECOVERY.md`
+
+Execution pack:
+`review-packets/K9B_R2R2A_R1_TARGET_HOST_ACCESS_RECOVERY.md`
+
+
 ## CURRENT REVIEWER UPDATE — DOCKER COUNT RESOLVED / PRODUCT 1224 EXPOSURE CONTAINMENT — 2026-09-29
 
 ```text
