@@ -1,7 +1,7 @@
 # Mini Craft Night Kit — PROJECT PLAN & ROADMAP
 
 Last updated: 2026-09-28  
-Status: **ACTIVE — K7 R2R1 PAYPAL LIVE CONNECTION + WEBHOOK OWNER CHECKPOINT**
+Status: **PAYMENT INFRASTRUCTURE READY — FIRST LIVE TRANSACTION CANARY DEFERRED**
 
 ## 0. Authority and current override
 
@@ -11,27 +11,25 @@ They defer to canonical `entropy-student/spike.skill/vps-project-governance` lat
 Current accepted execution state:
 
 ```text
-K0-K5=PASS
-K6_VPS_DEPLOYMENT=PASS
-PUBLIC_SANDBOX_INGRESS=ACTIVE
+K0-K6=PASS
 K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION=PASS
-K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT=RETURN_PROVIDER_IDENTITY_OR_PERMISSION_UNRESOLVED
-CURRENT_GATE=K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY
-CURRENT_GATE_STATUS=OWNER_AUTHORIZED
+K7_R2R2_R2_BOUNDED_USD_STORE_MIGRATION_AND_CANARY_SEAL=PASS
+K7_R3D_PRODUCTION_PAYMENT_READINESS_WITH_DEFERRED_FIRST_LIVE_CANARY=PASS
+
 PUBLIC_ORIGIN=https://minicraft.spikersun.com
-RESEND_DOMAIN_VERIFIED=YES
-WORDPRESS_RESEND_PLUGIN=ACTIVE
-OWNER_RESEND_API_KEY_DIRECT_ENTRY=COMPLETED
-CANARY_PRODUCT_STATE=DRAFT_PREPARED_NOT_PUBLISHED
-EMAIL_TEST=DELIVERED
-EMAIL_READINESS=PASS
-PUBLIC_POPULATED_CHECKOUT=NOT_YET_VALIDATED
-PAYPAL_LIVE=NO
-REAL_PAYMENT_AUTHORIZED=NO
+WOOCOMMERCE_STORE_CURRENCY=USD
+PRODUCT_223_PURCHASABLE=NO
+PRODUCT_1224_PRICE_USD=1.00
+CANARY_ORDER_TOTAL_USD=1.00
+PAYPAL_METHOD_PRESENT=YES
+
+K7_PAYMENT_INFRASTRUCTURE_READINESS=PASS_WITH_DEFERRED_FIRST_LIVE_TRANSACTION_CANARY
+REAL_MONEY_END_TO_END_VALIDATION=DEFERRED_NOT_PASS
+FIRST_LIVE_TRANSACTION_CANARY=ARMED_FOR_FUTURE_REAL_TRANSACTION
+
+CURRENT_PAYMENT_GATE=NONE_WAITING_FOR_FUTURE_REAL_TRANSACTION_TRIGGER
+OWNER_ACTION=NONE
 SOFT_LAUNCH=NO
-PRODUCTION_TRANSACTION_CURRENCY=USD
-REAL_PAYMENT_CANARY_CURRENCY=USD
-REAL_PAYMENT_CANARY_AMOUNT_USD=UNSEALED
 ```
 
 The detailed K0–K7 descriptions below are roadmap/history, not competing Governance contracts.
@@ -76,20 +74,21 @@ Owner 已确认：
 ## 3. Current Position
 
 ```text
-K0 Kadence PoC                    PASS
-K1 UI/Growth Brand Adaptation     PASS
-K2 WooCommerce Commerce Loop      PASS
-K3 PayPal Sandbox                 PASS
-K4 Conversion/Trust               PASS
-K4.5/K4.6 Growth readiness/spec   PASS
-K5 Release Candidate QA           PASS
-K6 VPS Deployment                 PASS
-K7 Production Canary readiness    IN PROGRESS
-K7 R1 Canary + Resend foundation  PASS
-K7 R2 PayPal production preflight CURRENT / READ-ONLY
+K0 Kadence PoC                      PASS
+K1 UI/Growth Brand Adaptation       PASS
+K2 WooCommerce Commerce Loop        PASS
+K3 PayPal Sandbox                   PASS
+K4 Conversion/Trust                 PASS
+K4.5/K4.6 Growth readiness/spec     PASS
+K5 Release Candidate QA             PASS
+K6 VPS Deployment                   PASS
+K7 R1 Canary + Resend foundation    PASS
+K7 USD migration / Canary seal      PASS
+K7 Payment infrastructure readiness PASS_WITH_DEFERRED_FIRST_LIVE_TRANSACTION_CANARY
+Real-money E2E                       DEFERRED_NOT_PASS
 ```
 
-Current next action: finish the K7 R1 preparation without any real payment — verify the connected Resend sender and one delivery test, publish the exact hidden virtual JPY500 Canary fixture under the accepted tax-disabled equivalence, then prove populated Checkout total JPY500 with PayPal method visible. No order submit, PayPal Live, payment or refund is authorized.
+No payment execution Gate is currently active. The next trigger is the first future real PayPal transaction, which becomes the bounded first-live Canary. Soft Launch remains separately unauthorized.
 
 ## 4. Execution Gates
 
@@ -221,16 +220,19 @@ order
 
 ## 6. Current Next Action
 
-`K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY`
+No immediate payment action.
 
-Owner authorization granted:
+```text
+NEXT_TRIGGER=FIRST_FUTURE_REAL_PAYPAL_TRANSACTION
+OWNER_ACTION=NONE
+```
 
-`AUTHORIZE_K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY`
+When a real PayPal transaction first occurs, treat it as `FIRST_LIVE_TRANSACTION_CANARY` and reconcile:
 
-This Gate connects the intended Live PayPal merchant through official PPCP onboarding and repairs/tests the production webhook if needed. It does **not** authorize an order, buyer action, payment, capture, refund or Soft Launch.
+- Provider paid state;
+- WooCommerce order/payment transition;
+- signed webhook effect;
+- transaction email;
+- exact USD amount/currency/order identity.
 
-Expected production webhook target:
-
-`https://minicraft.spikersun.com/wp-json/paypal/v1/incoming`
-
-After Live identity/webhook PASS, the Canary must first be rebased and revalidated in USD. Reviewer will then separately request authorization for exactly one real USD payment at the sealed amount plus exactly one full refund.
+Do not retry payment blindly. Any mismatch opens a bounded recovery Case. Refund remains separately Owner-authorized. Soft Launch is not authorized by this payment-readiness closeout.
