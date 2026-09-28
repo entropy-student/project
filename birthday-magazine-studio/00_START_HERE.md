@@ -8,16 +8,15 @@ This file is navigation only. It is **not** a second project truth source.
 2. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — document roles and authority.
 3. [EXECUTOR_HANDOFF.md](./EXECUTOR_HANDOFF.md) — latest Executor execution facts.
 4. [EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) — detailed sanitized evidence.
-5. Current-Gate contract referenced by the Handoff.
+5. Current/next Gate material referenced by the Handoff.
 6. Historical research/prototype documents only when needed.
 
 ## Current snapshot
 
 - P0 / G1 / G2A1 / G2A2 / G2B / G3A: accepted PASS at their defined scope.
-- G3B: **interim RETURN** after one Sandbox payment was observed in WooCommerce; exact provider capture/order correlation, paid-entitlement idempotency and refund are not yet closed.
-- Current Gate: **G3BR1 — Sandbox Payment Reconciliation + Entitlement + Refund Closure**.
-- No second Sandbox payment is allowed for reconciliation.
-- PayPal Live, real-money Canary, production AI provider, production private delivery and production deployment remain unproven / not authorized.
+- **G3B / G3BR1: PASS** — PayPal Sandbox capture correlation, paid-entitlement 0→1 behavior, one Owner-authorized full Sandbox refund, entitlement revocation, and scoped cleanup are closed.
+- **G4 Live PayPal Canary: HOLD / NOT AUTHORIZED**.
+- PayPal Live, real-money payment, production AI provider, production private delivery and production deployment remain unproven.
 
 ## Source-of-truth rule
 
