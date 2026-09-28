@@ -1,5 +1,37 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K7 R2R2 SECRET-RISK RECONCILED / SAFE RESUME — 2026-09-28
+
+```text
+K7_R2R2_SECRET_RISK_RETURN=RECONCILED_FAIL_CLOSED_STOP
+ACTUAL_SECRET_COMPROMISE=NO_EVIDENCE
+CREDENTIAL_ROTATION_REQUIRED=NO
+OWNER_REAUTHORIZATION_REQUIRED=NO
+CURRENT_GATE=K7_R2R2_R1_SAFE_CURRENCY_PREFLIGHT_AND_CONDITIONAL_USD_CANARY_REBASE
+CURRENT_GATE_STATUS=AUTHORIZED_RESUME
+REAL_PAYMENT_CANARY_CURRENCY=USD
+REAL_PAYMENT_CANARY_AMOUNT_USD=1.00
+REAL_PAYMENT_AUTHORIZED=NO
+REFUND_AUTHORIZED=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+OWNER_ACTION=NONE
+```
+
+Safe resume rule:
+
+- do not use PPCP detailed logs for Phase A;
+- use existing verified SSH/runtime read-only path for exact WooCommerce currency/Product facts;
+- carry forward formally accepted K7 R2R1 PayPal Live/Business/current-origin webhook PASS unless material drift appears;
+- if store currency != USD, RETURN before any write;
+- if store currency == USD, Reviewer authorizes only the bounded Product 1224 price rebase to USD 1.00 + populated Checkout validation; no order/payment/refund.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K7_R2R2_SECRET_RISK_RECONCILED_SAFE_RESUME.md`
+
+Execution Pack:
+`review-packets/K7_R2R2_R1_SAFE_CURRENCY_PREFLIGHT_AND_CONDITIONAL_USD_CANARY_REBASE.md`
+
+
 ## CURRENT REVIEWER UPDATE — USD 1.00 CANARY AMOUNT SEALED — 2026-09-28
 
 ```text
