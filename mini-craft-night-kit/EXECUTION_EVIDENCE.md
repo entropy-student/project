@@ -6910,3 +6910,77 @@ STOP_AT_REVIEWER=YES
 ```
 
 The archive barrier did not pass: the shared sync repository has no upstream configured, the local root is an unborn Git repository, the local Mini Craft Evidence and Handoff blobs differ from GitHub, and one untracked rollback metadata artifact remains unclassified (content not opened or uploaded). The other 28 Mini Craft untracked screenshot paths are already represented on GitHub. Docker Desktop's Linux engine was unavailable, so exact local Docker ownership/inventory could not be proven. No local file, Git state, Docker resource, production service, product, currency, payment, or refund was changed. Secure recovery remains protected. No K9C work was started.
+
+
+## K9B-R1 Project-Scoped Archive Barrier Reconciliation — Executor Return (2026-09-28)
+
+```text
+GATE=K9B_R1_PROJECT_SCOPED_ARCHIVE_BARRIER_RECONCILIATION
+RESULT=RETURN_K9B_R1_SENSITIVE_LOCAL_ONLY_DISCOVERED
+GITHUB_MAIN_CURRENT_READBACK=PASS
+GITHUB_MAIN_SHA=0fa277532c20b240667bcba4c40b587865f873db
+TARGET_WINDOWS_HOST_EXECUTION_PROVEN=PASS
+MINICRAFT_TRACKED_DIRTY_PATHS=mini-craft-night-kit/EXECUTION_EVIDENCE.md; mini-craft-night-kit/EXECUTOR_HANDOFF.md
+MINICRAFT_TRACKED_DIRTY_CLASSIFICATIONS=both_STALE_LOCAL_COPY_SUPERSEDED_BY_GITHUB
+LOCAL_EVIDENCE_DIFF=338_INSERTIONS_0_DELETIONS; K4_LINES_ALREADY_PRESENT_ON_GITHUB; OLD_K6R1_PASS_CANDIDATE_SUPERSEDED_BY_CURRENT_GITHUB_RETURN
+LOCAL_HANDOFF_DIFF=156_INSERTIONS_0_DELETIONS; K4_LINES_ALREADY_PRESENT_ON_GITHUB; OLD_K6R1_PASS_CANDIDATE_SUPERSEDED_BY_CURRENT_GITHUB_RETURN
+MINICRAFT_UNTRACKED_ITEM_COUNT=29
+MINICRAFT_SCREENSHOT_COUNT=28
+MINICRAFT_SCREENSHOT_ARCHIVE_STATUS=DUPLICATE_EVIDENCE_ALREADY_ARCHIVED_28_OF_28_EXACT_PATH_SIZE_GIT_BLOB_MATCH
+ROLLBACK_METADATA_PATH=mini-craft-night-kit/.artifacts/k4-strict-storefront-cleanup/rollback-point.json
+ROLLBACK_METADATA_FILENAME=rollback-point.json
+ROLLBACK_METADATA_EXTENSION=.json
+ROLLBACK_METADATA_BYTES=54911
+ROLLBACK_METADATA_CREATED_UTC=2026-09-22T19:27:27Z
+ROLLBACK_METADATA_LASTWRITE_UTC=2026-09-22T19:27:27Z
+ROLLBACK_METADATA_PARENT=mini-craft-night-kit/.artifacts/k4-strict-storefront-cleanup
+ROLLBACK_METADATA_PARENT_CHILD_COUNT=1
+ROLLBACK_METADATA_TYPE=REGULAR_UTF8_JSON_NON_REPARSE
+ROLLBACK_METADATA_CLASSIFICATION=SENSITIVE_LOCAL_ONLY_KEEP
+ROLLBACK_METADATA_REASON=PROVIDER_AND_BUSINESS_ROLLBACK_STATE_PRESENT; VALUES_NOT_EMITTED; NO_FILE_HASH_COMPUTED; NOT_ARCHIVED
+MINICRAFT_UNIQUE_NONSECRET_CONTINUITY_FILES=NONE
+ARCHIVE_GITHUB_COMMITS=NONE
+MINICRAFT_SENSITIVE_ITEMS_ARCHIVED_TO_GITHUB=0
+MINICRAFT_UNKNOWN_ITEMS=0
+LOCAL_DELETE_MANIFEST_READY=NO_GATE_RETURN_SENSITIVE_LOCAL_ONLY
+LOCAL_FILESYSTEM_DELETE_PATH_COUNT=0
+LOCAL_DOCKER_CLEANUP=DEFERRED_DAEMON_UNAVAILABLE
+LOCAL_DOCKER_RESOURCE_DELETIONS=0
+SHARED_GIT_SETTINGS_MUTATION=0
+LOCAL_GIT_WORKTREE_WRITES=0
+LOCAL_SECURE_RECOVERY=RETAINED_PROTECTED_EXCEPTION
+STOP_AT_REVIEWER=YES
+```
+
+The two worktree-dirty tracked documents contain no unique continuity change to archive: their K4 additions are already represented in current GitHub, while their older K6R1 PASS-candidate block is superseded by the current GitHub K6R1 RETURN record. The 28 untracked screenshots match GitHub main one-for-one by exact relative path, byte size, and Git blob SHA; none was re-uploaded. The single rollback JSON was classified as sensitive local-only after bounded in-memory structure review because provider/business rollback state is present. Its values and digest were not emitted, no file hash was computed, and it remains local. No local deletion or Docker operation was performed.
+
+| Path | Bytes | Git blob | Classification |
+|---|---:|---|---|
+| `docs/ui-k4-detail-polish/home-desktop-1440.png` | 1436411 | `8e5c18970cfd8fdcb78de6f2494a307bf094a762` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-detail-polish/home-mobile-390.png` | 740543 | `3f46bac2af6ca2069e0831ad215be04046f1e7f2` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-final-density-polish/home-desktop-1440.png` | 1355475 | `cdc6db802199aee50446becb0cb8817f0ce3b58c` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-final-density-polish/home-mobile-390.png` | 1224560 | `3312c3f3d3af383958633c0d10b73289f3144cfb` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/desktop/01-home.png` | 2264692 | `6c65abde39455f1657f0c90fe98e19a1eb4e563c` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/desktop/02-shop.png` | 289658 | `41f83288935513f7362e2016767f1190c80e9417` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/desktop/03-product.png` | 664555 | `77344db2915b6e680439796dded051e683475875` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/desktop/04-faq.png` | 130970 | `c8f72fe9ba78ca4cf12cc3bf0039409af138e6b5` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/desktop/05-shipping-returns.png` | 196849 | `252c0ad41fd4bc38f4057aded3e2f7d9cc43f91a` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/desktop/06-contact.png` | 166556 | `faa8c96de7f078d5d9f8f20e751c7e8b07da22b9` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/desktop/07-cart.png` | 52506 | `160711e2752ad50bf24c7697d4126c8333c96241` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/desktop/08-checkout.png` | 52506 | `160711e2752ad50bf24c7697d4126c8333c96241` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/desktop/10-account.png` | 62121 | `c9bf3228f17dd4b965d0d9f09da68e390000e5c8` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/mobile/01-home.png` | 1321582 | `688495941473125b292448e5e5c191de08db9ed4` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/mobile/02-shop.png` | 334672 | `de7a94fd32f99e4d17ff64cafea9c0f1903e25d1` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/mobile/03-product.png` | 468037 | `97b9613cc33b28b23c63de182d68e6a603078886` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/mobile/04-faq.png` | 86110 | `c29a1728ccdf80c45b1daccd9293ccbe4cfc8978` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/mobile/05-shipping-returns.png` | 137796 | `5ec06fc3f25f6ba7d9402b21a8269d9a4a81838b` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/mobile/06-contact.png` | 130974 | `6c063a0378b0ec19e1177a75a2372ff69f2b3425` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/mobile/07-cart.png` | 35419 | `748f2fedcb5685687d82e6bc1cbff7829ed21342` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/mobile/08-checkout.png` | 35419 | `748f2fedcb5685687d82e6bc1cbff7829ed21342` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/mobile/10-account.png` | 37019 | `afa81dd43ce17ec0f7b9e0aafc017e0975e99d09` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/product-gallery/desktop-product-after-thumbnail.png` | 664594 | `2030e1cfc7ea96afcc6893e89abfac049e571ec1` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/product-gallery/desktop-product-initial.png` | 664555 | `77344db2915b6e680439796dded051e683475875` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/product-gallery/mobile-product-after-thumbnail.png` | 468037 | `97b9613cc33b28b23c63de182d68e6a603078886` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-full-visual-audit/product-gallery/mobile-product-initial.png` | 468037 | `97b9613cc33b28b23c63de182d68e6a603078886` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-visual-review-capture/home-desktop-1440.png` | 1352552 | `f336e411df7b5d0b0a833e18b8f9260bf23035c1` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+| `docs/ui-k4-visual-review-capture/home-mobile-390.png` | 1225094 | `e94171d49e90a26ba04a7295955f39474d93ca9b` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
