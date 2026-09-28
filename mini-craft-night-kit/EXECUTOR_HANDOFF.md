@@ -3002,3 +3002,37 @@ STOP_AT_REVIEWER=YES
 - Result: `RETURN_SECRET_RISK`; Phase A currency preflight was not completed. No product, store-currency, cart/checkout, PayPal-settings, payment, webhook, or infrastructure write occurred.
 - The pre-existing Admin tab was on a PPCP detailed-log view whose accessibility surface exposed transient sensitive-looking authorization/nonce fields. Values were not copied into project files or repeated; this record does not claim compromise or determine rotation. Stop for Reviewer reconciliation before resuming the Gate.
 - Evidence append commit: `f5fd113a56704defa7b7a18b14044559785a08b7`. `STOP_AT_REVIEWER=YES`.
+
+### Current Executor Handoff — K7 R2R2 R1 safe currency preflight (2026-09-28)
+
+```text
+GATE=K7_R2R2_R1_SAFE_CURRENCY_PREFLIGHT_AND_CONDITIONAL_USD_CANARY_REBASE
+RESULT=RETURN_CURRENCY_REBASE_IMPACT_REVIEW_REQUIRED
+REMOTE_IDENTITY=ops@srv1970241
+SSH_NETWORK_INVOCATIONS=1
+READONLY_RUNTIME_PATH=WORDPRESS_SHORTINIT_WPDB_SELECT
+WOOCOMMERCE_STORE_CURRENCY=JPY
+PRODUCT_1224_CURRENT_NUMERIC_PRICE=500
+PRODUCT_1224_CURRENT_STATUS_VISIBILITY=publish/HIDDEN
+PRODUCT_1224_TYPE=simple
+PRODUCT_1224_VIRTUAL=yes
+PRODUCT_1224_DOWNLOADABLE=no
+PRODUCT_1224_SOLD_INDIVIDUALLY=yes
+PRODUCT_1224_MANAGE_STOCK=no
+PRODUCT_223_CURRENT_NUMERIC_PRICE=1
+PRODUCT_223_CURRENT_STATUS_VISIBILITY=publish/VISIBLE
+PRODUCT_223_CATALOG_ROLE=PUBLIC_CATALOG
+GLOBAL_CURRENCY_SWITCH_WOULD_REINTERPRET_UNRELATED_PRICES=YES
+SAFE_USD_CANARY_ROUTE_CANDIDATE=KEEP_GLOBAL_JPY_REVIEW_SEPARATE_ISOLATED_USD_CANARY_STORE_DESIGN_ONLY
+PRODUCT_1224_MUTATION=0
+PRODUCT_223_MUTATION=0
+STORE_CURRENCY_MUTATION=0
+CART_CHECKOUT_MUTATION=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+EVIDENCE_COMMIT=f93ea95945f683e75b5409feffef5fedac971335
+STOP_AT_REVIEWER=YES
+```
+
+Phase A completed using the exact allowlisted read-only fields via WordPress SHORTINIT/WPDB SELECT. The store is JPY, so the conditional USD branch was not entered. No Product, currency, cart/checkout, order, payment, webhook, PPCP settings, VPS, or Shared Infra writes occurred. K7 R2R1 accepted PayPal Live/webhook state was carried forward without reopening PPCP settings or logs. Reviewer impact review is required before any USD canary path is designed or changed.
