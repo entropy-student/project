@@ -67,9 +67,8 @@ G3B Sandbox 闭环已经通过：
 
 ## 尚未证明 / 后置
 
-- PayPal Live / real-money transaction；
+- PayPal Live / real-money transaction Canary；
 - production concurrent/atomic job idempotency；
-- PayPal Live / real-money Canary；
 - unattended production AI provider 与 provider-spend idempotency；
 - 生产对象存储、最终私有 proof/final PDF delivery；
 - 生产部署与恢复；
