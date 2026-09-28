@@ -1,5 +1,27 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K7 R2R1 R1 READ-ONLY DISPATCH — 2026-09-28
+
+```text
+CURRENT_GATE=K7_R2R1_R1_WEBHOOK_READONLY_RECONCILIATION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_AWAIT_EXECUTOR
+OWNER_ACTION=NONE
+PAYPAL_LIVE_UI=PASS_OWNER_EVIDENCE
+WEBHOOK_NOTIFICATION_URL=https://minicraft.spikersun.com/wp-json/paypal/v1/incoming
+WEBHOOK_SIMULATION_RESULT=VOID_UPSTREAM_PLUGIN_BUG
+RESUBSCRIBE_AUTHORIZED_IN_THIS_SUBGATE=NO
+NEW_SIMULATION_AUTHORIZED=NO
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+SOFT_LAUNCH_AUTHORIZED=NO
+```
+
+Execution Pack:
+`review-packets/K7_R2R1_R1_WEBHOOK_READONLY_RECONCILIATION.md`
+
+This sub-Gate is read-only. It may inspect current Live/Webhook status, existing logs, and perform at most one unsigned synthetic endpoint reachability negative-test. It may not repair any failure, mutate PayPal settings, resubscribe, simulate again, create an order, pay, capture, refund, or change Shared Infra.
+
+
 ## CURRENT REVIEWER UPDATE — WEBHOOK SIMULATION RECONCILIATION — 2026-09-28
 
 This section supersedes the prior assumption that the WooCommerce PayPal Payments `Simulate webhooks` button could provide authoritative webhook-health evidence.
