@@ -3122,3 +3122,41 @@ UNKNOWN_PATH_COUNT=0
 EVIDENCE_COMMIT=4644c9891fee02931c8b1143359d03d857a4e5e5
 STOP_AT_REVIEWER=YES
 ```
+
+## Current Executor Handoff — K9A-R1 Exact Empty .tmp Cleanup and Regression (2026-09-28)
+
+```text
+GATE=K9A_R1_EXACT_EMPTY_TMP_CLEANUP_AND_REGRESSION
+RESULT=PASS_CANDIDATE_K9A_R1_EXACT_EMPTY_TMP_CLEANUP_AND_REGRESSION
+REMOTE_IDENTITY=ops@srv1970241
+TARGET_PATH=/srv/apps/mini-craft-night-kit/.tmp
+PREDELETE_INVARIANTS=PASS
+DELETE_COMMAND=EXACT_RMDIR
+DELETED_PATH_COUNT=1
+TARGET_PATH_EXISTS_AFTER=NO
+WORDPRESS_STATE=RUNNING
+MARIADB_STATE=RUNNING_HEALTHY
+RESTART_COUNTS_UNCHANGED=YES
+PUBLIC_ORIGIN_HEALTH=PASS
+PRODUCT_223_PURCHASABLE=NO
+PRODUCT_1224_STATE=HIDDEN_USD_1.00_CANARY
+WOOCOMMERCE_STORE_CURRENCY=USD
+OTHER_DELETE_ACTIONS=0
+BACKUP_DELETE_ACTIONS=0
+DURABLE_DELETE_ACTIONS=0
+SECRET_ACCESS_ACTIONS=0
+DOCKER_RESOURCE_DELETE_ACTIONS=0
+SHARED_INFRA_WRITES=0
+PRODUCT_CURRENCY_PAYPAL_MUTATIONS=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+EVIDENCE_GITHUB_COMMIT=53b33668db914e78278acba1a70d25fbb8117431
+EVIDENCE_GITHUB_READBACK=PASS
+LOCAL_WORKTREE_TOUCHED=NO
+STOP_AT_REVIEWER=YES
+```
+
+Only the exact authorized empty `.tmp` directory was removed. Fresh target-host read-back confirmed absence; WordPress/MariaDB runtime and restart counts stayed unchanged, and the public origin passed. Product 223 remains non-purchasable. Product 1224 was verified via Store API visibility filtering and Shop search as hidden, with numeric price 1 in USD. The first post-delete helper used the wrong Store API minor-unit assumption; bounded read-only reconciliation corrected that representation issue, with no extra write or business action.
+
+No backup, durable data, Secret, Docker resource, product, currency, PayPal setting, or Shared Infra object was changed. Reviewer-owned files were not modified. K9B was not started.
