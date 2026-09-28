@@ -1,5 +1,45 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — PRODUCT 1224 CONTAINMENT SUPERSEDED AS K9B BLOCKER / RESUME K9B-R3 — 2026-09-29
+
+```text
+K9B_R2R2A_R3_RESULT=RETURN_K9B_R2R2A_R3_STATUS_UPDATE_NOT_COMMITTED
+PRODUCT_1224_STATUS=Published
+PRODUCT_1224_PRICE_USD=1.00
+PRODUCT_1224_CATALOG_VISIBILITY=Hidden
+PRODUCT_MUTATION_COMMITTED=NO
+
+PRODUCT_1224_NEW_EXPOSURE_DRIFT_PROVEN=NO
+K9B_R2R2A_CONTAINMENT_REQUIREMENT=SUPERSEDED_AS_K9B_CLOSEOUT_BLOCKER
+FURTHER_PRODUCT_1224_STATUS_RETRY_IN_K9B=NO
+
+CURRENT_GATE=K9B_R3_FINAL_LOCAL_FILESYSTEM_AND_DOCKER_VOLUME_DECOMMISSION
+CURRENT_GATE_STATUS=AUTHORIZED_CONDITIONAL_FINAL_LOCAL_CLEANUP
+
+MINICRAFT_DOCKER_CONTAINERS_CURRENT=0
+MINICRAFT_DOCKER_NETWORKS_CURRENT=0
+MINICRAFT_DOCKER_VOLUMES_CURRENT=9
+MINICRAFT_CUSTOM_IMAGE_TAGS_CURRENT=0
+
+LOCAL_PROTECTED_RECOVERY=KEEP
+SHARED_GIT_CACHE_EXCEPTION=KEEP
+SHARED_UPSTREAM_IMAGES=KEEP
+K9C_AUTHORIZED=NO
+```
+
+Reviewer correction: the Product 1224 containment premise is not proven as a new regression. The accepted K7/K8 baseline intentionally retained Product 1224 as a Published/Hidden/USD 1.00 Canary, and accepted K9A evidence already showed that an explicit `catalog_visibility=hidden` Store API probe returns it while visible/catalog surfaces do not. K9B-R2R1 did not persist the exact Store API query that triggered the later observation. Do not continue status-write retries inside K9B.
+
+Product 1224 remains a known hidden Canary fixture. Its future exposure/hardening must be handled by a dedicated payment/launch Gate before real commerce activation. Soft Launch remains unauthorized.
+
+K9B-R3 resumes the Owner-requested local closeout: verify production recovery coverage, delete exact obsolete dedicated Mini Craft local paths and exact unreferenced Mini Craft Docker volumes, while preserving protected recovery and shared-worktree exceptions.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9B_R2R2A_R3_RETURN_CONTAINMENT_SUPERSEDED_RESUME_K9B_R3.md`
+
+Execution pack:
+`review-packets/K9B_R3_FINAL_LOCAL_FILESYSTEM_AND_DOCKER_VOLUME_DECOMMISSION.md`
+
+
 ## CURRENT REVIEWER UPDATE — QUICK EDIT RETRY FOR PRODUCT 1224 / PPCP SNAPSHOT ASSESSED — 2026-09-29
 
 ```text
