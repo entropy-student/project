@@ -7202,3 +7202,47 @@ REVIEWER_ASSESSMENT_REQUIRED=YES
 ```
 
 When attaching to the already-open browser tab, its initial accessibility snapshot included unrelated PPCP log-page text before navigation away. No log values are reproduced here or in the gate record; the page was not inspected further. Reviewer assessment is requested; no credential rotation or other PayPal action was performed.
+
+
+## K9B-R2R2A-R3 — Authenticated WordPress Admin Quick Edit containment — RETURN (2026-09-29)
+
+```text
+GATE=K9B_R2R2A_R3_AUTHENTICATED_WP_ADMIN_QUICK_EDIT_CONTAINMENT
+RESULT=RETURN_K9B_R2R2A_R3_STATUS_UPDATE_NOT_COMMITTED
+EXECUTION_BOUNDARY=OWNER_AUTHENTICATED_WORDPRESS_ADMIN
+PPCP_LOG_PAGE_OPEN=NO
+PPCP_LOGS_ACCESSED=NO
+PRODUCT_ID=1224
+PRE_STATUS=Published
+PRE_PRICE_USD=1.00
+PRE_CATALOG_VISIBILITY=Hidden
+QUICK_EDIT_PRECHECK=PASS
+QUICK_EDIT_STATUS_SELECTED=Draft
+QUICK_EDIT_OTHER_FIELDS_CHANGED=NO
+AUTHORIZED_QUICK_EDIT_UPDATE_CLICK_ATTEMPT_COUNT=1
+UPDATE_COMMIT=NO
+POST_SAVE_UI=NO_ROW_REFRESH
+PRODUCTS_LIST_READBACK_RELOAD_COUNT=1
+POST_STATUS=Published
+POST_PRICE_DISPLAY=$1
+POST_CATALOG_VISIBILITY=NOT_RECHECKED_AFTER_RELOAD
+PUBLIC_VALIDATION=NOT_RUN_STATUS_NOT_DRAFT
+NON_TARGET_UI_NAVIGATION=WOOCOMMERCE_PAYMENT_SETTINGS; NO_SETTINGS_WRITE; RETURNED_TO_PRODUCTS_LIST
+PRODUCT_223_MUTATION=0
+PAYPAL_MUTATION=0
+WEBHOOK_MUTATION=0
+EMAIL_MUTATION=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+FILESYSTEM_MUTATION=0
+DOCKER_MUTATION=0
+K9B_CLEANUP_RESUMED=NO
+K9C_ENTERED=NO
+FIRST_LIVE_TRANSACTION_CANARY=ARMED_DORMANT
+EVIDENCE_GITHUB_READBACK=PENDING
+HANDOFF_GITHUB_READBACK=PENDING
+STOP_AT_REVIEWER=YES
+```
+
+The Products list preflight identified Product 1224 as Published at USD 1.00; the authenticated Quick Edit form showed catalog visibility Hidden. Only the Status selector was changed to Draft. One Update control invocation was made; the row did not refresh. A single read-only reload of the Products list then showed the server state still Published at the displayed $1 price. No second save was attempted, and public validation was skipped because Draft was not proven. A transient non-target navigation to WooCommerce payment settings occurred during UI targeting; no setting was changed, no PPCP log page was opened, and execution returned to the Products list. No other product or business action occurred.
