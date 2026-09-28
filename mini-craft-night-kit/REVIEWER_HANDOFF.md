@@ -1,5 +1,44 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K8 PLATFORM-FIRST / POST-LAUNCH EDIT WINDOW — 2026-09-28
+
+```text
+K8A_PRODUCTION_OFFER_SELECTION_OWNER_CHECKPOINT=SUPERSEDED_AS_PRELAUNCH_BLOCKER
+PROJECT_STAGE=PUBLIC_PLATFORM_OPERATIONAL_PRECOMMERCE
+PUBLIC_PLATFORM_STATUS=ONLINE
+PRODUCT_SELECTION=DEFERRED_TO_PRE_COMMERCE_ACTIVATION
+
+PRODUCT_223=PUBLIC_CONCEPT_SHELL
+PRODUCT_223_PRICE=EMPTY
+PRODUCT_223_PURCHASABLE=NO
+PRODUCT_1224=HIDDEN_USD_1_00_CANARY
+
+OWNER_POST_LAUNCH_CONTENT_EDIT_WINDOW=OPEN
+REAL_COMMERCE_ENABLED=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+
+CURRENT_GATE=NONE_OWNER_EDIT_WINDOW
+NEXT_TRIGGER=OWNER_READY_TO_ACTIVATE_REAL_PRODUCT_FOR_SALE
+OWNER_ACTION=OPTIONAL_CONTENT_MEDIA_PAGE_EDITS
+```
+
+Owner has explicitly chosen platform-first sequencing. The site may remain publicly online while product selection, real product upload, cover/media replacement and page edits continue later. Product selection is no longer a precondition for the public platform to remain online.
+
+Protected boundary until the future commerce-activation Gate:
+- no live sale price / purchasable production offer;
+- no PayPal Live setting change;
+- no hidden Canary Product 1224 mutation;
+- no global currency change;
+- no real test order/payment/refund;
+- no unsupported product/shipping/return claims;
+- no Soft Launch.
+
+When Owner says `OWNER_READY_TO_ACTIVATE_REAL_PRODUCT_FOR_SALE`, Reviewer will seal the actual product truth and open the bounded sales-activation Gate.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K8_PLATFORM_FIRST_POST_LAUNCH_EDIT_WINDOW.md`
+
+
 ## CURRENT REVIEWER UPDATE — K8A PRODUCTION OFFER SELECTION — 2026-09-28
 
 ```text
