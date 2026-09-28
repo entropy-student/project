@@ -58,3 +58,55 @@ GPT-SoVITS timing calibration
 ```
 
 CosyVoice remains the current canonical timing baseline until the GPT-SoVITS runtime/adapter path passes. Do not reuse CosyVoice timing coefficients for GPT-SoVITS.
+
+
+## SRT1 → SRT2 batch material executor
+
+Reusable helper added for the current material-generation workflow:
+
+```text
+GPT_SOVITS_SRT_BATCH_EXECUTOR.py
+RUN_GPT_SOVITS_SRT_BATCH.bat
+SRT_BATCH_EXECUTOR.md
+SYNTHESIS_MAP_EXAMPLE.json
+EXECUTOR_AGENT_TASK.md
+```
+
+Pipeline:
+
+```text
+planned SRT1
+→ one cue = one TTS unit
+→ GPT-SoVITS API
+→ units/*.wav
+→ exact actual durations
+→ SRT2_ACTUAL.srt
+→ narration_master.wav
+```
+
+Fastest manual use:
+
+1. start `START_GPT_SOVITS_API.bat`;
+2. keep the API window open;
+3. double-click `RUN_GPT_SOVITS_SRT_BATCH.bat`, or drag the planned SRT onto it;
+4. provide accepted reference audio + exact transcript.
+
+Default behavior:
+- display text is never silently rewritten;
+- synthesis-only changes require an explicit synthesis map;
+- completed matching units are resume-safe;
+- one technical retry, no aesthetic retry loop;
+- generated duration is SRT2 timing truth;
+- planned inter-cue gaps are preserved;
+- no time-stretch to match SRT1.
+
+This is an SRT-only material helper. If a full Speech Unit + TTS Manifest package exists, prefer the canonical Runtime Timeline Resolver path.
+
+Detailed contract:
+`SRT_BATCH_EXECUTOR.md`.
+
+Reusable Agent handoff:
+`EXECUTOR_AGENT_TASK.md`.
+
+Runtime evidence status:
+`STATIC_INTEGRATION_ONLY / LOCAL_FULL_EPISODE_RUN_PENDING`.
