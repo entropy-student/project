@@ -1,5 +1,41 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K9 CLOSEOUT / VPS HYGIENE FIRST — 2026-09-28
+
+```text
+PROJECT_STAGE=PUBLIC_PLATFORM_OPERATIONAL_PRECOMMERCE
+K9_CLOSEOUT_PLAN=AUTHORIZED
+
+CURRENT_GATE=K9A_VPS_PROJECT_HYGIENE_CLOSEOUT
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_PROJECT_LOCAL_CLEANUP
+
+NEXT_GATE_AFTER_REVIEWER_PASS=K9B_LOCAL_WORKSPACE_GITHUB_ARCHIVE_AND_DECOMMISSION
+LOCAL_ORDINARY_PROJECT_FILES_TARGET=ZERO
+LOCAL_SECURE_SECRET_RECOVERY_ARTIFACT=KEEP_UNLESS_SEPARATE_SECURE_RECOVERY_MIGRATION_IS_PROVEN
+
+BACKUP_DELETE_AUTHORIZED=NO
+DURABLE_DATA_DELETE_AUTHORIZED=NO
+SECRET_DELETE_AUTHORIZED=NO
+DOCKER_RESOURCE_DELETE_AUTHORIZED_K9A=NO
+SHARED_INFRA_MUTATION_AUTHORIZED=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+```
+
+K9 is intentionally split by target/rollback domain:
+
+1. K9A cleans only exact project-owned disposable file residue on the VPS. Active app files, `/srv/data/mini-craft-night-kit`, all required backups, current Docker resources and Shared Infra are protected.
+2. After Reviewer PASS, K9B will archive any remaining reconstructible local source/docs to GitHub, prove there are no unpushed/unique non-secret files, decommission Mini Craft local runtime/workspaces, and target zero ordinary local project files.
+3. The Owner-profile DPAPI Secret recovery artifact must not be uploaded to GitHub or deleted merely for cleanliness. A truly zero-local-file state requires a separate secure recovery migration.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9_CLOSEOUT_HYGIENE_AND_ARCHIVAL_PLAN.md`
+
+Current execution pack:
+`review-packets/K9A_VPS_PROJECT_HYGIENE_CLOSEOUT.md`
+
+Governance review found a reusable closeout gap. A non-active CANDIDATE proposal has been added to canonical Governance; active v0.1.6 is unchanged.
+
+
 ## CURRENT REVIEWER UPDATE — K8 PLATFORM-FIRST / POST-LAUNCH EDIT WINDOW — 2026-09-28
 
 ```text
