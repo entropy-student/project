@@ -1,7 +1,7 @@
-# G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E execution
+# G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E cleanup closure
 
-**Current result:** `RETURN_G3BR1_CLEANUP_READBACK_FAILED`
-**Phase status:** A-D accepted; Phase E full Sandbox refund, reconciliation, and entitlement revocation passed. Cleanup is incomplete because the execution policy blocked removal of the project-local temporary `.tmp` directory.
+**Current result:** `PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE`
+**Phase status:** Payment/refund/entitlement was accepted by Reviewer; cleanup-only closure passed. This run performed no payment, provider, order, Docker-start, tunnel-start, or model actions.
 **Execution branch:** `codex/birthday-magazine-g3br1-sandbox-reconciliation-entitlement`
 **Phase A-D base:** latest GitHub `main` at `290a73131a4d0ace487d2c1986a94145f03ee277`
 **Phase E latest main:** `8a4e02e60188bb004fb8a212b45b2aa5d57aab42`, merged into this branch by `4ab613db5fe0c3421faa8daeffb921695a14a327`.
@@ -58,9 +58,15 @@ Read-only official PPCP order GET then found exactly one completed USD 39.99 pro
 
 The prepared local handler preserved the canonical audit record, changed job state to `cancelled`, set entitlement to `revoked`, and left deferred generation actions=0, cron=0, model provider invoked=false, and model calls=0. Final local read-back passed; see [phase-e-entitlement-revocation.json](poc/g3br1/artifacts/phase-e-entitlement-revocation.json) and [phase-e-final-local-readback.json](poc/g3br1/artifacts/phase-e-final-local-readback.json). Execution scripts and helper hashes are retained under `poc/g3br1/scripts/` and `poc/g3br1/artifacts/`.
 
-Cleanup restored the local WordPress URL, stopped the tunnel, and removed all four `birthday-magazine-g3b` containers, both project volumes, and the project network using only project-scoped Compose `down --volumes --remove-orphans`. Post-cleanup container/volume/network inventory fingerprints exactly match the pre-teardown unrelated-resource fingerprints; Mini Craft counts remain 8/9/4. No global prune or image prune was used. However, the execution environment rejected PowerShell recursive deletion commands, so the ignored `poc/g3b/.tmp/` directory remains with 1,075 files (12,890,802 bytes), including one PPCP ZIP and temporary extraction/log files. The remaining temp files were not added to Git. `CLEANUP_READBACK=INCOMPLETE`; see [phase-e-cleanup-before.json](poc/g3br1/artifacts/phase-e-cleanup-before.json), [phase-e-cleanup-after.json](poc/g3br1/artifacts/phase-e-cleanup-after.json), [phase-e-cleanup-readback.json](poc/g3br1/artifacts/phase-e-cleanup-readback.json), [phase-e-temp-cleanup.json](poc/g3br1/artifacts/phase-e-temp-cleanup.json), and [phase-e-tunnel-cleanup.json](poc/g3br1/artifacts/phase-e-tunnel-cleanup.json).
+At the initial Phase E handoff, cleanup had restored the local WordPress URL, stopped the tunnel, and removed all four `birthday-magazine-g3b` containers, both project volumes, and the project network using only project-scoped Compose `down --volumes --remove-orphans`. Unrelated Docker inventory fingerprints matched before/after and Mini Craft counts were 8/9/4. PowerShell deletion of the ignored `poc/g3b/.tmp/` was blocked, leaving 1,075 files (12,890,802 bytes) at that point; the temporary files were not committed. That intermediate cleanup status is superseded by the cleanup-only closure below. Historical details remain in [phase-e-cleanup-before.json](poc/g3br1/artifacts/phase-e-cleanup-before.json), [phase-e-cleanup-after.json](poc/g3br1/artifacts/phase-e-cleanup-after.json), [phase-e-cleanup-readback.json](poc/g3br1/artifacts/phase-e-cleanup-readback.json), [phase-e-temp-cleanup.json](poc/g3br1/artifacts/phase-e-temp-cleanup.json), and [phase-e-tunnel-cleanup.json](poc/g3br1/artifacts/phase-e-tunnel-cleanup.json).
 
-No second payment/capture/refund, Live PayPal, real money, model/provider call, secret disclosure, or Mini Craft resource change occurred. The final result remains RETURN because required temporary-package cleanup could not be completed. Reviewer should decide the next step; do not rerun or retry the refund.
+No second payment/capture/refund, Live PayPal, real money, model/provider call, secret disclosure, or Mini Craft resource change occurred. At the end of the Phase E handoff the result was RETURN; the following cleanup-only closure supersedes that cleanup status. Do not rerun or retry the refund.
+
+## Cleanup-only closure
+
+Preflight resolved Git root and the exact target `birthday-magazine-studio/poc/g3b/.tmp/`, confirmed it was inside the repo, confirmed no path component was a symlink/junction/reparse point, and confirmed `git check-ignore` returned ignored. The only deletion was that exact directory, performed with Python `shutil.rmtree` after the same guards were repeated in the Python process. No wildcard or parent-directory deletion was used.
+
+Read-back: `TMP_DIRECTORY_EXISTS=NO`; `TMP_FILE_COUNT=0`; `PROJECT_G3B_CONTAINERS=0`; `PROJECT_G3B_VOLUMES=0`; `PROJECT_G3B_NETWORKS=0`; `PROJECT_TUNNEL_COUNT=0`; Mini Craft counts remain 8/9/4 and its inventory is included in unchanged unrelated-resource fingerprints; unrelated container/volume/network fingerprints match the pre-Phase-E snapshot. No stopped resource was started. `PAYPAL_ACTIONS_THIS_RUN=0`; `MODEL_CALL_COUNT=0`. Full path-guard and read-back record: [cleanup-closure-readback.json](poc/g3br1/artifacts/cleanup-closure-readback.json).
 ---
 
 ## Historical G3B evidence — updated Owner payment return
