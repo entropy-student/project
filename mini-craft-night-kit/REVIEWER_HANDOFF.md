@@ -1,5 +1,51 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — HOSTINGER CONSOLE RECOVERY BARRIER FOR FINAL LOCAL CLEANUP — 2026-09-29
+
+```text
+K9B_R3_RESULT=RETURN_K9B_R3_LOCAL_CLASSIFICATION_UNRESOLVED
+LOCAL_FILESYSTEM_DELETIONS=0
+DOCKER_VOLUME_DELETIONS=0
+VPS_MUTATIONS=0
+
+MINICRAFT_DOCKER_CONTAINERS_CURRENT=0
+MINICRAFT_DOCKER_NETWORKS_CURRENT=0
+MINICRAFT_DOCKER_VOLUMES_CURRENT=9
+MINICRAFT_VOLUME_REFERENCES=0_FOR_ALL_9
+
+PROTECTED_ROLLBACK_METADATA=RETAINED
+PROTECTED_DPAPI_RECOVERY=RETAINED
+
+CURRENT_GATE=K9B_R3R1_HOSTINGER_CONSOLE_REMOTE_RECOVERY_BARRIER
+CURRENT_GATE_STATUS=OWNER_LOCAL_READONLY_CHECKPOINT
+
+SSH_RETRY_AUTHORIZED=NO
+LOCAL_DELETE_AUTHORIZED=NO
+DOCKER_VOLUME_DELETE_AUTHORIZED=NO
+K9C_AUTHORIZED=NO
+```
+
+Repeated strict SSH failure is no longer the path for this recovery check.
+
+Historical accepted Evidence already proves that Mini Craft DB/wp-content recovery inputs and manifest backups were staged under `/srv/backups/mini-craft-night-kit`, including a later K7 52-table DB backup. Because K9B-R3 intends irreversible local deletion, one fresh target-host existence check is still required.
+
+Use the Hostinger browser console on the known production VPS and run only the read-only metadata block in the current execution pack. The checkpoint proves:
+- target host identity;
+- project backup root;
+- database recovery file;
+- wp-content recovery file;
+- manifest/deployment recovery file;
+- current production mysql and wp-content durable directories.
+
+No file contents are read.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9B_R3_RETURN_HOSTINGER_CONSOLE_RECOVERY_BARRIER.md`
+
+Execution pack:
+`review-packets/K9B_R3R1_HOSTINGER_CONSOLE_REMOTE_RECOVERY_BARRIER.md`
+
+
 ## CURRENT REVIEWER UPDATE — PRODUCT 1224 CONTAINMENT SUPERSEDED AS K9B BLOCKER / RESUME K9B-R3 — 2026-09-29
 
 ```text
