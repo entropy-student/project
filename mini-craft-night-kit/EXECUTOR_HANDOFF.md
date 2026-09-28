@@ -3160,3 +3160,32 @@ STOP_AT_REVIEWER=YES
 Only the exact authorized empty `.tmp` directory was removed. Fresh target-host read-back confirmed absence; WordPress/MariaDB runtime and restart counts stayed unchanged, and the public origin passed. Product 223 remains non-purchasable. Product 1224 was verified via Store API visibility filtering and Shop search as hidden, with numeric price 1 in USD. The first post-delete helper used the wrong Store API minor-unit assumption; bounded read-only reconciliation corrected that representation issue, with no extra write or business action.
 
 No backup, durable data, Secret, Docker resource, product, currency, PayPal setting, or Shared Infra object was changed. Reviewer-owned files were not modified. K9B was not started.
+
+
+## K9B Local Workspace GitHub Archive and Decommission — Executor Return (2026-09-28)
+
+```text
+GATE=K9B_LOCAL_WORKSPACE_GITHUB_ARCHIVE_AND_DECOMMISSION
+RESULT=RETURN_K9B_GITHUB_ARCHIVE_BARRIER_FAILED
+GITHUB_MAIN_CURRENT_READBACK=PASS
+GITHUB_MAIN_SHA=fcb2471a7753f394ff8e6b85d2671bf051a3edb6
+LOCAL_UNPUSHED_COMMITS=UNPROVEN_NO_UPSTREAM
+LOCAL_GIT_BOUNDARY=SHARED_PROJECT_REPOSITORY_PLUS_UNBORN_WORKSPACE_ROOT
+LOCAL_TRACKED_DIRTY_FILES=4_SHARED_REPO; 2_MINICRAFT
+LOCAL_UNTRACKED_FILES=4144_SHARED_REPO; 29_MINICRAFT
+LOCAL_MINICRAFT_UNTRACKED=28_SCREENSHOTS_ALREADY_ON_GITHUB; 1_UNKNOWN_ROLLBACK_METADATA_RETAINED
+LOCAL_DOCKER=UNAVAILABLE_NO_RESOURCE_INVENTORY
+LOCAL_FILESYSTEM_DELETIONS=0
+LOCAL_DOCKER_RESOURCE_DELETIONS=0
+LOCAL_SECURE_RECOVERY=RETAINED_PROTECTED_EXCEPTION
+PRODUCTION_READONLY_CHECK=PASS_HOME_200_PRODUCT_223_NOT_PURCHASABLE_PRODUCT_1224_HIDDEN_USD_1.00
+VPS_MUTATIONS=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+LOCAL_WORKTREE_TOUCHED=NO
+EVIDENCE_GITHUB_COMMIT=468f481a03f50e0610cab42aea4b17e395489bf5
+EVIDENCE_GITHUB_READBACK=PASS
+STOP_AT_REVIEWER=YES
+```
+
+No local cleanup was performed because the archive barrier is not satisfied. The unknown artifact and all shared/dirty local state remain untouched; Docker inventory could not be proven while the local daemon is unavailable. Secure recovery remains retained. K9C was not started.
