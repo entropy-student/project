@@ -32,23 +32,27 @@
 | G2A2 MVP Product Contract | PASS |
 | G2B Real-AI content → 12-page PDF Solution Proof | PASS |
 | G3A WooCommerce commerce/account/private-workspace loop | PASS |
-| G3B PayPal Sandbox + paid entitlement + refund | **INTERIM RETURN** |
-| G3BR1 Payment reconciliation + entitlement/refund closure | **CURRENT** |
+| G3B PayPal Sandbox + paid entitlement + refund | **PASS** |
+| G3BR1 Payment reconciliation + entitlement/refund closure | **PASS** |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
 
-G3B 已经观察到一笔 **PayPal Sandbox** 测试支付后 WooCommerce 订单进入 paid/processing，但 provider-side capture 数量与 provider↔Woo 关联尚未独立闭环。因此当前规则是：
+G3B Sandbox 闭环已经通过：
 
 ```text
-已有 Sandbox payment
-→ 只读 reconciliation
-→ 不允许第二笔 payment/capture
-→ correlation PASS 后验证 entitlement/idempotency
-→ 一次 Sandbox refund
+1 completed USD 39.99 Sandbox capture
+→ Woo/provider correlation PASS
+→ paid + intake incomplete => 0 job
+→ intake complete => exactly 1 deferred job
+→ repeated evaluation => still 1
+→ one Owner-authorized full Sandbox refund
+→ provider/Woo refund correlation PASS
+→ entitlement revoked / canonical job cancelled
+→ scoped cleanup PASS
 ```
 
-这不是 Live/真钱支付证据。
+这仍然**不是 Live/真钱支付证据**。G4 Live PayPal Canary 目前保持 HOLD。
 
 ## 已证明的技术能力
 
@@ -63,9 +67,8 @@ G3B 已经观察到一笔 **PayPal Sandbox** 测试支付后 WooCommerce 订单�
 
 ## 尚未证明 / 后置
 
-- 当前已发生 Sandbox payment 的 provider-side exact capture correlation；
-- paid + intake-complete exactly-one generation-ready job 与重复事件幂等；
-- Sandbox refund + entitlement revoke；
+- PayPal Live / real-money transaction；
+- production concurrent/atomic job idempotency；
 - PayPal Live / real-money Canary；
 - unattended production AI provider 与 provider-spend idempotency；
 - 生产对象存储、最终私有 proof/final PDF delivery；
@@ -80,8 +83,8 @@ G3B 已经观察到一笔 **PayPal Sandbox** 测试支付后 WooCommerce 订单�
 - [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — 所有文档角色与状态
 - [docs/MVP_PRODUCT_CONTRACT.md](./docs/MVP_PRODUCT_CONTRACT.md) — 冻结 MVP 产品合同
 - [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md) — 支持性技术路线
-- [docs/REVIEWER_DECISION_G3B_INTERIM_RETURN.md](./docs/REVIEWER_DECISION_G3B_INTERIM_RETURN.md) — 当前 G3B Reviewer 判断
-- [docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](./docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md) — **当前执行 Gate**
+- [docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md](./docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md) — **当前 G3B Reviewer PASS 判断**
+- [docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](./docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md) — 已完成的 Sandbox closure contract
 
 其他研究、历史 Gate 与旧方案保留用于 provenance，但不与 Handoff 竞争当前真相。
 
