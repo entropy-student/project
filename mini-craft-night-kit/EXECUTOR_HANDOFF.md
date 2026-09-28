@@ -3306,3 +3306,33 @@ STOP_AT_REVIEWER=YES
 ```
 
 The browser attach snapshot included unrelated PPCP log-page text before navigation away. No log values are reproduced or persisted in project files. Reviewer assessment is required; no PayPal action was taken.
+
+
+## K9B-R2R2A-R3 Product 1224 Quick Edit containment — execution return (2026-09-29)
+
+```text
+GATE=K9B_R2R2A_R3_AUTHENTICATED_WP_ADMIN_QUICK_EDIT_CONTAINMENT
+RESULT=RETURN_K9B_R2R2A_R3_STATUS_UPDATE_NOT_COMMITTED
+PRODUCT_ID=1224
+PRE_STATUS=Published
+PRE_PRICE_USD=1.00
+PRE_CATALOG_VISIBILITY=Hidden
+QUICK_EDIT_STATUS_SELECTED=Draft
+AUTHORIZED_UPDATE_CLICK_ATTEMPTS=1
+FRESH_PRODUCTS_LIST_READBACK=Published
+POST_PRICE_DISPLAY=$1
+PUBLIC_VALIDATION=NOT_RUN_STATUS_NOT_DRAFT
+PPCP_LOG_PAGE_OPEN=NO
+PPCP_LOGS_ACCESSED=NO
+PRODUCT_223_MUTATION=0
+PAYPAL_WEBHOOK_EMAIL_ORDER_PAYMENT_REFUND_MUTATIONS=0
+FILESYSTEM_DOCKER_MUTATION=0
+K9B_CLEANUP_RESUMED=NO
+K9C_ENTERED=NO
+FIRST_LIVE_TRANSACTION_CANARY=ARMED_DORMANT
+EVIDENCE_GITHUB_COMMIT=01637c44ca7ed7aadb0f086b2fa4b3d158fdf621
+EVIDENCE_GITHUB_READBACK=PASS
+STOP_AT_REVIEWER=YES
+```
+
+The Quick Edit form had the guarded preflight values and only Status was changed in the form. One Update control invocation was made; no row refresh occurred. After one read-only Products-list reload, Product 1224 remained Published at the displayed $1 price, so no public validation was run and no second save was attempted. A transient navigation to WooCommerce payment settings during UI targeting caused no setting write; PPCP logs were not opened. K9B cleanup remains paused and K9C was not entered.
