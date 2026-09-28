@@ -6844,3 +6844,69 @@ STOP_AT_REVIEWER=YES
 Target-host read-back proved the exact authorized directory existed, was empty, was not a mountpoint, and had no Mini Craft runtime mount or Compose reference. WordPress and MariaDB were running before the action; restart counts were 0. One `sudo -n rmdir -- /srv/apps/mini-craft-night-kit/.tmp` completed, and immediate target-host read-back proved the path absent. Fresh runtime regression kept both services healthy with restart counts unchanged, and a TLS-verified public Home GET returned HTTP 200.
 
 Product regression used only public read-only WooCommerce Store API and Shop search requests. Product 223 reported non-purchasable. For Product 1224, Store API `catalog_visibility=hidden` returned the exact product while `catalog_visibility=visible` did not; the Shop search HTML contained no product card. Direct public API price metadata reported numeric `1`, currency `USD`, and `currency_minor_unit=0`; the numeric amount remains USD 1.00. The initial helper expected a two-decimal minor-unit encoding (`100`) and returned a false mismatch; bounded read-only inspection of the returned metadata corrected that parser assumption without any additional VPS write or business action. No order, payment, refund, product, currency, backup, Secret, Docker, or Shared Infra action occurred.
+
+
+## K9B Local Workspace GitHub Archive and Decommission — Executor Return (2026-09-28)
+
+```text
+GATE=K9B_LOCAL_WORKSPACE_GITHUB_ARCHIVE_AND_DECOMMISSION
+RESULT=RETURN_K9B_GITHUB_ARCHIVE_BARRIER_FAILED
+TARGET_WINDOWS_HOST_EXECUTION_PROVEN=PASS
+LOCAL_ROOT=C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建
+HOST_MACHINE=码头整来的薯条
+HOST_CURRENT_USER=码头整来的薯条\\34707
+POWERSHELL_VERSION=7.6.5
+KNOWN_CANDIDATE_COUNT=10
+DISCOVERED_ADDITIONAL_CANDIDATE_COUNT=1
+GITHUB_MAIN_CURRENT_READBACK=PASS
+GITHUB_MAIN_SHA=fcb2471a7753f394ff8e6b85d2671bf051a3edb6
+GIT_REPOSITORY_BOUNDARY_PROVEN=FAIL_SHARED_REPO_AND_UNBORN_ROOT_REPO
+ROOT_REPOSITORY_HEAD=UNBORN_NO_COMMIT
+ROOT_REPOSITORY_STATUS_ENTRIES=92844
+SHARED_SYNC_REPOSITORY=project-github-sync; origin=entropy-student/project
+SHARED_SYNC_BRANCH=review/g6a-gpt-sovits-api-verification-20260923
+SHARED_SYNC_HEAD=8daab71da0d6ab8651d11e114781b4a0651f0ad1
+SHARED_SYNC_UPSTREAM=NONE
+LOCAL_UNPUSHED_COMMITS=UNPROVEN_NO_UPSTREAM
+LOCAL_TRACKED_DIRTY_FILES_BEFORE=4_SHARED_SYNC_REPO; MINI_CRAFT_SUBTREE=2
+LOCAL_UNTRACKED_FILES_BEFORE=4144_SHARED_SYNC_REPO; MINI_CRAFT_SUBTREE=29
+LOCAL_EVIDENCE_GITHUB_BLOB_MATCH=NO
+LOCAL_HANDOFF_GITHUB_BLOB_MATCH=NO
+LOCAL_UNTRACKED_UNIQUE_NONSECRET_FILES=UNRESOLVED
+LOCAL_UNIQUE_NONSECRET_ARTIFACTS_ARCHIVED_TO_GITHUB=0
+LOCAL_SENSITIVE_FILES_ARCHIVED_TO_GITHUB=0
+MINICRAFT_UNTRACKED_SCREENSHOTS_ALREADY_ON_GITHUB=28
+MINICRAFT_UNKNOWN_LOCAL_ARTIFACT_COUNT=1_METADATA_ONLY_ROLLBACK_POINT_RETAINED
+LOCAL_BROWSER_PROFILE_DIRECT_PROCESS_REFERENCES=0
+LOCAL_DOCKER_DAEMON=UNAVAILABLE
+LOCAL_DOCKER_RESOURCE_INVENTORY=UNPROVEN
+LOCAL_DOCKER_CONTAINERS_REMOVED=0
+LOCAL_DOCKER_NETWORKS_REMOVED=0
+LOCAL_DOCKER_VOLUMES_REMOVED=0
+LOCAL_DOCKER_IMAGES_REMOVED=0
+BROAD_PRUNE_USED=NO
+ROOT_FILESYSTEM_USED_BYTES_AT_RESUME=347177754624
+ROOT_FILESYSTEM_FREE_BYTES_AT_RESUME=163490287616
+PROJECT_NAMESPACE_BYTES_BEFORE=4179910236_RECORDED_LOGICAL_CANDIDATE_TOTAL
+PROJECT_NAMESPACE_BYTES_AFTER=NOT_REMEASURED_NO_LOCAL_FILESYSTEM_MUTATION
+LOCAL_FILESYSTEM_DELETE_PATH_COUNT=0
+LOCAL_FILESYSTEM_DELETED_BYTES=0
+DELETE_CANDIDATE_COUNT=0_ARCHIVE_BARRIER_FAILED
+UNKNOWN_PATH_COUNT=1_KNOWN_ARTIFACT; OTHER_UNPUSHED_STATE_UNPROVEN
+LOCAL_SECURE_RECOVERY=RETAINED_PROTECTED_EXCEPTION; 2_FILES_3372_BYTES_METADATA_ONLY
+LOCAL_ORDINARY_MINI_CRAFT_PROJECT_FILES=REMAINS
+LOCAL_MINI_CRAFT_RUNTIME=NOT_DECOMMISSIONED
+LOCAL_REMAINING_EXCEPTIONS=SHARED_GIT_WORKTREE; LOCAL_TRACKED_DIRTY_FILES; 29_MINICRAFT_UNTRACKED_ITEMS_INCLUDING_1_UNKNOWN; DOCKER_DAEMON_UNAVAILABLE; SECURE_RECOVERY_RETAINED
+PUBLIC_ORIGIN_HEALTH=PASS_HTTP_200_TLS_VERIFIED
+PRODUCT_223_PURCHASABLE=NO; STORE_API_PRICE=0_USD
+PRODUCT_1224_STATE=HIDDEN_CANARY; HIDDEN_FILTER_COUNT=1; PRICE=1_USD; CURRENCY=USD
+WOOCOMMERCE_STORE_CURRENCY=USD
+VPS_MUTATIONS=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+LOCAL_GIT_MUTATION=0
+LOCAL_WORKTREE_TOUCHED_BY_GATE=NO
+STOP_AT_REVIEWER=YES
+```
+
+The archive barrier did not pass: the shared sync repository has no upstream configured, the local root is an unborn Git repository, the local Mini Craft Evidence and Handoff blobs differ from GitHub, and one untracked rollback metadata artifact remains unclassified (content not opened or uploaded). The other 28 Mini Craft untracked screenshot paths are already represented on GitHub. Docker Desktop's Linux engine was unavailable, so exact local Docker ownership/inventory could not be proven. No local file, Git state, Docker resource, production service, product, currency, payment, or refund was changed. Secure recovery remains protected. No K9C work was started.
