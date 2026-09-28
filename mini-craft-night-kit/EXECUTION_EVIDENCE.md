@@ -6984,3 +6984,120 @@ The two worktree-dirty tracked documents contain no unique continuity change to 
 | `docs/ui-k4-full-visual-audit/product-gallery/mobile-product-initial.png` | 468037 | `97b9613cc33b28b23c63de182d68e6a603078886` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
 | `docs/ui-k4-visual-review-capture/home-desktop-1440.png` | 1352552 | `f336e411df7b5d0b0a833e18b8f9260bf23035c1` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
 | `docs/ui-k4-visual-review-capture/home-mobile-390.png` | 1225094 | `e94171d49e90a26ba04a7295955f39474d93ca9b` | `DUPLICATE_EVIDENCE_ALREADY_ARCHIVED` |
+
+
+---
+
+## K9B-R2 partial execution and K9B-R2R1 read-only reconciliation (2026-09-29)
+
+```text
+GATE=K9B_R2_LOCAL_FILESYSTEM_AND_DOCKER_DECOMMISSION_WITH_PROTECTED_RECOVERY_EXCEPTIONS
+RESULT=RETURN_K9B_R2_LOCAL_CLASSIFICATION_UNRESOLVED
+
+SCREENSHOT_DUPLICATE_DELETE_COUNT=28
+SCREENSHOT_DUPLICATE_DELETED_BYTES=16067299
+LOCAL_UNTRACKED_MINICRAFT_GIT_ARTIFACTS=0
+TRACKED_SHARED_GIT_FILE_MUTATIONS_BY_K9B_R2=0
+TRACKED_MINICRAFT_DIRTY_FILES_CURRENT=2 (EXECUTION_EVIDENCE.md, EXECUTOR_HANDOFF.md; pre-existing and unchanged by cleanup/reconciliation)
+
+ROLLBACK_METADATA_RELOCATED=YES
+ROLLBACK_METADATA_SOURCE_EXISTS_AFTER=NO
+ROLLBACK_METADATA_TARGET_EXISTS_AFTER=YES
+ROLLBACK_METADATA_TARGET_BYTES=54911
+ROLLBACK_METADATA_CONTENT_READ=0
+ROLLBACK_METADATA_HASH_ACTIONS=0
+
+MINICRAFT_DOCKER_CONTAINERS_REMOVED=8
+MINICRAFT_DOCKER_CONTAINERS_CURRENT=0
+MINICRAFT_DOCKER_NETWORKS_REMOVED=4
+MINICRAFT_DOCKER_NETWORKS_CURRENT=0
+MINICRAFT_DOCKER_VOLUMES_REMOVED=0
+MINICRAFT_DOCKER_VOLUMES_RETAINED=9_CURRENT_READBACK
+MINICRAFT_DOCKER_VOLUME_COUNT_RECONCILIATION=PRIOR_EXECUTION_REPORTED_10; FRESH_READBACK_IDENTIFIED_9; ONE_COUNT_DIFFERENCE_UNRESOLVED
+MINICRAFT_DOCKER_VOLUMES_RETAINED_WITH_REASON=
+  mini-craft-k3r4-db-data — preserve historical DB/recovery state; contents not inspected
+  mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-db-data — preserve recovery DB state; contents not inspected
+  mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-wp-content — preserve uploads/wp-content recovery state; contents not inspected
+  mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-wp-data — preserve recovery WordPress state; contents not inspected
+  mini-craft-k3r4-wp-data — preserve historical WordPress state; contents not inspected
+  mini-craft-kadence-poc_db_data — preserve potential unique DB state; contents not inspected
+  mini-craft-kadence-poc_uploads — preserve potential unique uploads state; contents not inspected
+  mini-craft-kadence-poc_wp_core — preserve WordPress continuity state
+  mini-craft-night-kit_db_data — preserve current project DB/recovery state; contents not inspected
+SHARED_DOCKER_IMAGES_REMOVED=0
+SHARED_UPSTREAM_IMAGES_RETAINED=wordpress:6.8.2-php8.3-apache,mariadb:11.4.7
+NON_MINICRAFT_DOCKER_RESOURCES_TOUCHED=0
+BROAD_PRUNE_USED=NO
+DOCKER_RESOURCE_DELETES_DURING_R2R1=0
+
+REMAINING_LOCAL_MINICRAFT_PATHS=
+  C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace
+  C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery
+  C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-docker-mariadb
+  C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-kadence-poc
+  C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit
+  C:\Users\34707\Documents\ChatGPT\VPS基建\_project-artifacts\mini-craft-night-kit
+  C:\Users\34707\Documents\ChatGPT\VPS基建\.tmp-cdp-test2
+  C:\Users\34707\Documents\ChatGPT\VPS基建\project-github-sync
+  %LOCALAPPDATA%\MiniCraftNightKit\protected-recovery\k4-strict-storefront-cleanup\rollback-point.json
+  %LOCALAPPDATA%\MiniCraftNightKit\secret-recovery\k6-c1-mini-craft-night-kit-srv1970241.pending.dpapi
+  %LOCALAPPDATA%\MiniCraftNightKit\protected-recovery
+  %LOCALAPPDATA%\MiniCraftNightKit\secret-recovery
+REMAINING_LOCAL_PATH_CLASSIFICATIONS=
+  mini-craft-night-kit-workspace=LOCAL_CONTINUITY_KEEP_PENDING_FURTHER_REVIEW
+  mini-craft-k3r4-mariadb-recovery=PROTECTED_RECOVERY_KEEP
+  mini-craft-k3r4-docker-mariadb=LOCAL_CONTINUITY_KEEP_PENDING_FURTHER_REVIEW
+  mini-craft-kadence-poc=PROTECTED_RECOVERY_KEEP (contains .env by filename metadata; contents not read)
+  mini-craft-night-kit=PROTECTED_RECOVERY_KEEP (contains .env by filename metadata; contents not read)
+  _project-artifacts\mini-craft-night-kit=LOCAL_CONTINUITY_KEEP_PENDING_FURTHER_REVIEW (ZIP/manifest continuity retained)
+  .tmp-cdp-test2=LOCAL_CONTINUITY_KEEP_PENDING_FURTHER_REVIEW (browser/CDP-like state; no active process reference found; contents not inspected)
+  project-github-sync=SHARED_GIT_CACHE_EXCEPTION
+  protected-recovery\k4-strict-storefront-cleanup\rollback-point.json=PROTECTED_RECOVERY_KEEP (54911 bytes; content/hash untouched)
+  secret-recovery\k6-c1-mini-craft-night-kit-srv1970241.pending.dpapi=PROTECTED_RECOVERY_KEEP (1686 bytes; content/hash untouched)
+  %LOCALAPPDATA%\MiniCraftNightKit\protected-recovery=PROTECTED_RECOVERY_KEEP
+  %LOCALAPPDATA%\MiniCraftNightKit\secret-recovery=PROTECTED_RECOVERY_KEEP
+ABSENT_LOCAL_PATHS=g4-5-owner-visual-review-runtime,.tmp-k4-detail-browser-desktop,.tmp-k4-detail-browser-mobile
+UNKNOWN_LOCAL_PATH_COUNT=0 (within the enumerated Mini Craft paths)
+
+GATE=K9B_R2R1_PARTIAL_EXECUTION_EVIDENCE_PERSISTENCE_AND_REMAINING_STATE_RECONCILIATION
+RESULT=RETURN_K9B_R2R1_REMAINING_STATE_RECONCILIATION_UNRESOLVED
+WINDOWS_OWNER_HOST_EXECUTION=PASS
+WINDOWS_MACHINE_NAME=码头整来的薯条
+WINDOWS_CURRENT_USER=34707
+POWERSHELL_VERSION=7.6.5
+SCREENSHOT_DUPLICATE_PATHS_ABSENT=28_OF_28
+MINICRAFT_UNTRACKED_FILES=0
+KNOWN_TRACKED_DIRTY_FILES_UNCHANGED=YES
+ADDITIONAL_TRACKED_MINICRAFT_DIRTY_FILES=0
+ROLLBACK_METADATA_SOURCE_EXISTS_AFTER=NO
+ROLLBACK_METADATA_TARGET_EXISTS_AFTER=YES
+ROLLBACK_METADATA_TARGET_BYTES=54911
+ROLLBACK_METADATA_CONTENT_READ=0
+ROLLBACK_METADATA_HASH_ACTIONS=0
+DOCKER_CONTEXT=desktop-linux
+DOCKER_SERVER_VERSION=29.7.2
+MINICRAFT_CONTAINERS_CURRENT=0
+MINICRAFT_NETWORKS_CURRENT=0
+MINICRAFT_VOLUMES_CURRENT=9
+MINICRAFT_CUSTOM_IMAGE_TAGS_CURRENT=0
+VOLUME_COUNT_DISCREPANCY=PRIOR_REPORTED_10_VS_FRESH_IDENTIFIED_9; UNRESOLVED_FOR_REVIEWER
+
+PUBLIC_ORIGIN_HEALTH=PASS_HTTP_200
+PRODUCT_223_PURCHASABLE=NO
+PRODUCT_1224_STATE=HIDDEN_USD_1.00_CANARY; ABSENT_FROM_PUBLIC_SHOP_HTML; PUBLIC_STORE_API_SEARCH_RETURNS_ID_1224
+PRODUCT_1224_PUBLIC_SEARCH_VISIBILITY=REVIEW_REQUIRED_READ_ONLY_OBSERVATION
+WOOCOMMERCE_STORE_CURRENCY=USD
+WORDPRESS_STATE=RUNNING
+WORDPRESS_RESTART_COUNT=0
+MARIADB_STATE=RUNNING_HEALTHY
+MARIADB_RESTART_COUNT=0
+PRODUCTION_REGRESSION=PARTIAL; Product 1224 was absent from /shop/ HTML but returned by unauthenticated Store API search; no mutation attempted
+VPS_MUTATIONS=0
+LOCAL_FILESYSTEM_DELETES_DURING_R2R1=0
+LOCAL_DOCKER_DELETES_DURING_R2R1=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+SOFT_LAUNCH_AUTHORIZED=NO
+K9C_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
