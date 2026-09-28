@@ -3399,3 +3399,17 @@ STOP_AT_REVIEWER=YES
 ```
 
 The single sealed metadata-only console block confirmed the target hostname, project recovery files, and current production data directories. No SSH or write/deletion action occurred. GitHub Evidence was freshly read back before this handoff update.
+
+
+## K9B-R3R2 final local closeout — 2026-09-29
+
+GATE=GATE=K9B_R3R2_FINAL_LOCAL_FILESYSTEM_AND_DOCKER_VOLUME_DELETION
+RESULT=RETURN_K9B_R3R2_EXACT_PATH_DELETION_BLOCKED_BY_EXECUTION_POLICY
+Docker: all 9 exact authorized Mini Craft volumes were removed and read back absent; Mini Craft containers/networks/custom image tags remain 0; no prune or non-Mini-Craft Docker resource changes.
+Local filesystem: the 7 exact candidate directories remain. The recursive exact-path deletion command was rejected by execution policy before launch; no alternate deletion path was attempted. Protected rollback/DPAPI recovery and shared Git cache remain untouched.
+Production read-only: home/shop HTTP 200; Product 223 is not purchasable. Public Store API direct Product 1224 endpoint returns HTTP 200 and purchasable=true; no product/admin mutation was made.
+Evidence: commit 98e680a0788d7024e38224d0f017e7a370555887.
+VPS_MUTATIONS=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+STOP_AT_REVIEWER=YES
