@@ -6641,3 +6641,18 @@ STOP_AT_REVIEWER=YES
 ```
 
 Phase A found exactly two published products: Product 223 was the sole visible numeric-priced product at the test-only JPY 1 value; hidden Product 1224 was JPY 500. The project-local logical DB backup was created before business writes, with 52-table structure matching and restrictive mode 0600. The approved sequence removed only Product 223's price fields, changed the store currency once to USD, and rebased only Product 1224 to USD 1.00. Fresh WooCommerce read-back shows Product 223 remains publish/visible but unpriced and not purchasable; Product 1224 remains publish/hidden and retains the approved Canary semantics. Public Product 223 has no price or purchase path. The populated Checkout shows only Product 1224 ×1, USD 1.00 total, no shipping/tax, and PayPal visible. No order or payment flow was submitted. Three helper failures were all before business writes; two exact tmpfs auth artifacts were removed and verified absent. No database dump digest or credential material was emitted.
+
+
+### Evidence correction — K7_R2R2_R2_BOUNDED_USD_STORE_MIGRATION_AND_CANARY_SEAL
+
+The initial appended result section mistakenly stated `SSH_NETWORK_INVOCATIONS=5`. The authoritative execution sequence contains **11** strict SSH network invocations (read-only Phase A; failed backup preflight; backup namespace readback; successful backup; temporary-auth readback; exact cleanup; PHP parse-only failure; container/host-path guard failure; successful bounded mutation; overly strict read-only final validator; corrected read-only final validator). This supersedes only the SSH invocation count. No business-state write occurred in any failed/prewrite attempt; the authorized C1→C2→C3 transaction committed once. All other recorded Gate facts remain unchanged.
+
+```text
+GATE=K7_R2R2_R2_BOUNDED_USD_STORE_MIGRATION_AND_CANARY_SEAL
+EVIDENCE_CORRECTION=SSH_NETWORK_INVOCATIONS
+SSH_NETWORK_INVOCATIONS=11
+CORRECTION_SUPERSEDES=INITIAL_VALUE_5
+BUSINESS_STATE_COMMIT_COUNT=1
+PREWRITE_HELPER_FAILURES=3;NO_BUSINESS_WRITE
+STOP_AT_REVIEWER=YES
+```
