@@ -6408,3 +6408,56 @@ STOP_AT_REVIEWER=YES
 - PPCP's official Disconnect flow was used with the preserve-settings option to restart the connection wizard. The wizard now shows “Complete Your Payment Setup” with “Connect to PayPal”; the Owner's official PayPal login/OAuth/consent has not started. Sandbox is disconnected while awaiting that Owner action; Live is not connected.
 - No Client ID or merchant identifier was copied into evidence. No Secret, token, hash, password, Cookie/session or authorization code was accessed. No webhook action, order, buyer action, payment, capture, refund, product/store-currency, email, DNS, Caddy or VPS mutation occurred.
 - Owner checkpoint: in the current WordPress Admin tab, click the official “Connect to PayPal” control and complete PayPal's own sign-in/authorization directly. Do not send credentials, 2FA, tokens or codes in chat. After the flow returns to WordPress, tell Executor it is complete so the same Gate can resume with fresh read-only verification.
+
+
+## K7 R2R1 R1 — PayPal Live/Webhook Read-only Reconciliation — PASS CANDIDATE (2026-09-28)
+
+```text
+GATE=K7_R2R1_R1_WEBHOOK_READONLY_RECONCILIATION
+RESULT=PASS_CANDIDATE_K7_R2R1_R1_WEBHOOK_READONLY_RECONCILIATION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_AWAIT_EXECUTOR
+AUTHORITATIVE_SOURCES_READ=REVIEWER_HANDOFF;PROJECT_RECORD;PROJECT_STORAGE_MANIFEST;EXECUTION_EVIDENCE;EXECUTOR_HANDOFF;REVIEWER_DECISION_K7_R2R1_WEBHOOK_SIMULATION_VOID_READONLY_RECONCILIATION;EXECUTION_PACK_K7_R2R1_R1;CANONICAL_VPS_GOVERNANCE_V0.1.6;PRODUCTION_PROVIDER_CANARY_AND_RECOVERY_CONTRACT_REV2;FRESH_WORDPRESS_ADMIN_PLUGIN_LIST;FRESH_PPCP_SETTINGS;WOOCOMMERCE_SYSTEM_STATUS;EXISTING_WOOCOMMERCE_LOG_INDEX_AND_PPCP_LOG
+PREFLIGHT_REAL_PAYMENT_ACTIONS=0
+PREFLIGHT_REFUND_ACTIONS=0
+PREFLIGHT_RESUBSCRIBE_ACTIONS=0
+PREFLIGHT_NEW_SIMULATION_ACTIONS=0
+PREFLIGHT_PAYPAL_SETTINGS_WRITES=0
+PPCP_PLUGIN_VERSION=4.1.3
+PAYPAL_LIVE_CONNECTED=PASS
+PAYPAL_ACCOUNT_TYPE=BUSINESS
+PPCP_CURRENT_ENVIRONMENT=LIVE
+WEBHOOK_NOTIFICATION_URL=https://minicraft.spikersun.com/wp-json/paypal/v1/incoming
+WEBHOOK_URL_EXACT_MATCH=PASS
+WEBHOOK_SUBSCRIPTIONS_PRESENT=YES;16_EVENT_LABELS_VISIBLE
+WEBHOOK_STATUS_READBACK=SYSTEM_STATUS_FIELD_PRESENT_VALUE_DASH_NOT_AVAILABLE
+WEBHOOK_DELIVERY_HOST_READBACK=SYSTEM_STATUS_FIELD_PRESENT_NONASSERTIVE_ICON_ONLY
+EXISTING_LOGS_INSPECTED=YES;LATEST_PPCP_LOG_INDEXED_2026-09-28_12KB;12_WEBHOOK_RELATED_LINES_CLASSIFIED;NO_SUCCESS_FAILURE_OR_SIMULATION_MARKER
+LOGGING_CURRENT_STATE=DISABLED
+LOGGING_ENABLED_BY_THIS_GATE=NO
+WEBHOOK_SIMULATION_RESULT=VOID_UPSTREAM_PLUGIN_BUG;NOT_USED_AS_HEALTH_EVIDENCE
+UNSIGNED_ENDPOINT_PROBE_COUNT=1
+UNSIGNED_ENDPOINT_PROBE_NATIVE_EXIT=0
+UNSIGNED_ENDPOINT_HTTP_STATUS=401
+UNSIGNED_ENDPOINT_TLS_VERIFY_RESULT=0
+UNSIGNED_ENDPOINT_RESPONSE_CLASSIFICATION=UNAUTHENTICATED_REQUEST_REJECTED
+UNSIGNED_ENDPOINT_RESPONSE_BODY=NOT_RETAINED
+UNSIGNED_ENDPOINT_REACHABLE=PASS
+UNSIGNED_ENDPOINT_FAIL_CLOSED=PASS
+MATERIAL_DRIFT_FOUND=NO
+DOCUMENTATION_STALENESS=PROJECT_RECORD_AND_STORAGE_MANIFEST_GATE_LABELS_PREDEDATE_CURRENT_REVIEWER_HANDOFF;SUPERSEDED_BY_CURRENT_REVIEWER_HANDOFF_AND_DECISION
+RESUBSCRIBE_ACTIONS=0
+NEW_SIMULATION_ACTIONS=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+CAPTURE_ACTIONS=0
+REFUND_ACTIONS=0
+PAYPAL_SETTINGS_WRITES=0
+SECRET_VALUES_EMITTED=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+SOFT_LAUNCH_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+The fresh WordPress plugin list reports WooCommerce PayPal Payments 4.1.3. The settings page showed a connected Business | Live account, the exact current-origin Notification URL, and the subscribed-event list. WooCommerce System Status exposes a webhook status row but its value is a dash (no receipt-health assertion); the existing latest PPCP log was inspected without enabling Logging and supplied no authoritative webhook receipt-success marker. Exactly one unsigned synthetic `{}` POST was sent to the public endpoint with normal TLS verification, no cookies/tokens/signature headers, and no response body retained: native curl exit 0, TLS verify result 0, HTTP 401 (unauthenticated request rejected). No Provider/settings/logging/business or infrastructure mutation occurred. The accepted prior simulation remains void under the documented upstream plugin bug and was not repeated.
+
+The current Reviewer Handoff and Gate decision authorize this read-only Gate. Project Record and Storage Manifest retain older Gate labels; they are not current state authority and were not edited.
