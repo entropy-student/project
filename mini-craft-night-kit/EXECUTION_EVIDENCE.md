@@ -7246,3 +7246,13 @@ STOP_AT_REVIEWER=YES
 ```
 
 The Products list preflight identified Product 1224 as Published at USD 1.00; the authenticated Quick Edit form showed catalog visibility Hidden. Only the Status selector was changed to Draft. One Update control invocation was made; the row did not refresh. A single read-only reload of the Products list then showed the server state still Published at the displayed $1 price. No second save was attempted, and public validation was skipped because Draft was not proven. A transient non-target navigation to WooCommerce payment settings occurred during UI targeting; no setting was changed, no PPCP log page was opened, and execution returned to the Products list. No other product or business action occurred.
+
+
+### K9B-R2R2A-R3 — GitHub persistence audit
+
+```text
+EVIDENCE_GATE_SECTION_COMMIT=c5aa3ea5c03f12b84b644c2e41d655ec4273b7a0
+EVIDENCE_GITHUB_READBACK=PASS
+EVIDENCE_GATE_SECTION_OCCURRENCES=1
+STOP_AT_REVIEWER=YES
+```
