@@ -6461,3 +6461,17 @@ STOP_AT_REVIEWER=YES
 The fresh WordPress plugin list reports WooCommerce PayPal Payments 4.1.3. The settings page showed a connected Business | Live account, the exact current-origin Notification URL, and the subscribed-event list. WooCommerce System Status exposes a webhook status row but its value is a dash (no receipt-health assertion); the existing latest PPCP log was inspected without enabling Logging and supplied no authoritative webhook receipt-success marker. Exactly one unsigned synthetic `{}` POST was sent to the public endpoint with normal TLS verification, no cookies/tokens/signature headers, and no response body retained: native curl exit 0, TLS verify result 0, HTTP 401 (unauthenticated request rejected). No Provider/settings/logging/business or infrastructure mutation occurred. The accepted prior simulation remains void under the documented upstream plugin bug and was not repeated.
 
 The current Reviewer Handoff and Gate decision authorize this read-only Gate. Project Record and Storage Manifest retain older Gate labels; they are not current state authority and were not edited.
+
+
+## K7 R2R1 R1 — GitHub Persistence Read-back
+
+```text
+GATE=K7_R2R1_R1_WEBHOOK_READONLY_RECONCILIATION
+GITHUB_EVIDENCE_GATE_SECTION_COMMIT=f8e62e3c0f00897ad944f6753cd5a9a1670503ac
+GITHUB_HANDOFF_GATE_SECTION_COMMIT=e83fb4d6f61a6b3015267f7d9e0f8375ac242ed1
+GITHUB_EVIDENCE_READBACK=PASS
+GITHUB_HANDOFF_READBACK=PASS
+LOCAL_WORKTREE_TOUCHED=NO
+STOP_AT_REVIEWER=YES
+```
+
