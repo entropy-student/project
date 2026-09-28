@@ -55,11 +55,9 @@ WordPress
 - 真实订单 / payment / refund：0；
 - Soft Launch：未授权。
 
-当前等待 Owner 授权一个**不包含付款**的 PayPal Live 连接 + webhook recovery Gate。Owner 完成 PayPal 登录/OAuth 后，Executor 只核对 Live merchant/binding/permission 与当前域名 webhook；必要时最多一次官方 Resubscribe + 一次 simulation。真实 ¥500 支付仍需后续独立授权。
+Owner 已授权这个**不包含付款**的 PayPal Live 连接 + webhook recovery Gate。Owner 完成 PayPal 登录/OAuth 后，Executor 只核对 Live merchant/binding/permission 与当前域名 webhook；必要时最多一次官方 Resubscribe + 一次 simulation。最终市场/真实 Canary 币种已改为 **USD**；历史 JPY500 仅保留为 K7 R1 结账验证证据，不再作为真实付款金额。具体 USD Canary 金额尚未封板，不会擅自猜测。
 
-Required marker:
-
-`AUTHORIZE_K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY`
+Authorization: `AUTHORIZE_K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY` — **GRANTED**
 
 ## 文档索引
 
