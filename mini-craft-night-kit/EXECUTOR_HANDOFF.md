@@ -3291,3 +3291,18 @@ STOP_AT_REVIEWER=YES
 ```
 
 One authorized Update was attempted. WordPress reported a connection loss; a fresh Admin read-back confirmed Product 1224 remains Published. No retry was made. The status containment is incomplete; do not resume K9B cleanup or enter K9C.
+
+
+## Redacted execution-boundary note — K9B-R2R2A-R2 (2026-09-29)
+
+```text
+INITIAL_BROWSER_TAB_SNAPSHOT_INCLUDED_UNRELATED_PPCP_LOG_TEXT=YES
+PPCP_LOG_PAGE_FURTHER_INSPECTION=NO
+PPCP_LOG_VALUES_REPRODUCED_IN_PROJECT_EVIDENCE=NO
+REVIEWER_ASSESSMENT_REQUIRED=YES
+EVIDENCE_GITHUB_COMMIT=8a2e75598c9652796561fc18d7703aa6ccd6e888
+EVIDENCE_GITHUB_READBACK=PASS
+STOP_AT_REVIEWER=YES
+```
+
+The browser attach snapshot included unrelated PPCP log-page text before navigation away. No log values are reproduced or persisted in project files. Reviewer assessment is required; no PayPal action was taken.
