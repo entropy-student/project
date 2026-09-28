@@ -41,22 +41,25 @@ WordPress
 
 ## 当前 Gate
 
-`K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT`
+`K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY`
 
 当前状态：
 
-- K0–K5：PASS；
-- K6 VPS Deployment：**PASS**；
-- K7 R1 Canary fixture + Resend email foundation：**PASS**；
-- Canary 商品：ID `1224`，Hidden / Virtual / JPY500；
-- populated Checkout：商品 ¥500、运费 ¥0、税 ¥0、总额 ¥500，PayPal method 可见；
-- Resend 邮件链路：**PASS**（唯一测试邮件 Provider Delivered + Owner 收到）；
-- Product 223：未修改；
-- PayPal：当前仍为 Sandbox，**Live=NO**；
-- 真实订单 / payment / refund：均为 0；
+- K0–K6：PASS；
+- K7 R1 Canary fixture + Resend email foundation：PASS；
+- K7 R2 Production Canary preflight：**RETURN**，原因是 Production PayPal merchant identity/permission 与 production webhook 尚未封板；
+- 当前 PPCP：Sandbox active，Live=NO；
+- Canary：Product 1224 / qty1 / JPY500；
+- 当前 PPCP webhook 仍显示旧 origin，不能直接进入真实付款；
+- 邮件链路：PASS；
+- 真实订单 / payment / refund：0；
 - Soft Launch：未授权。
 
-当前正在做最后一个真实支付前只读 preflight：冻结 PayPal Production 的 merchant/application/permission/webhook identity、Live 切换路径、buyer separation、预期订单状态、退款路径和 no-blind-replay 规则。当前无需 Owner 操作。
+当前等待 Owner 授权一个**不包含付款**的 PayPal Live 连接 + webhook recovery Gate。Owner 完成 PayPal 登录/OAuth 后，Executor 只核对 Live merchant/binding/permission 与当前域名 webhook；必要时最多一次官方 Resubscribe + 一次 simulation。真实 ¥500 支付仍需后续独立授权。
+
+Required marker:
+
+`AUTHORIZE_K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY`
 
 ## 文档索引
 
