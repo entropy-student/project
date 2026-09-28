@@ -17,7 +17,7 @@ PUBLIC_SANDBOX_INGRESS=ACTIVE
 K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION=PASS
 K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT=RETURN_PROVIDER_IDENTITY_OR_PERMISSION_UNRESOLVED
 CURRENT_GATE=K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY
-CURRENT_GATE_STATUS=AWAIT_OWNER_AUTHORIZATION
+CURRENT_GATE_STATUS=OWNER_AUTHORIZED
 PUBLIC_ORIGIN=https://minicraft.spikersun.com
 RESEND_DOMAIN_VERIFIED=YES
 WORDPRESS_RESEND_PLUGIN=ACTIVE
@@ -29,6 +29,9 @@ PUBLIC_POPULATED_CHECKOUT=NOT_YET_VALIDATED
 PAYPAL_LIVE=NO
 REAL_PAYMENT_AUTHORIZED=NO
 SOFT_LAUNCH=NO
+PRODUCTION_TRANSACTION_CURRENCY=USD
+REAL_PAYMENT_CANARY_CURRENCY=USD
+REAL_PAYMENT_CANARY_AMOUNT_USD=UNSEALED
 ```
 
 The detailed K0–K7 descriptions below are roadmap/history, not competing Governance contracts.
@@ -220,7 +223,7 @@ order
 
 `K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY`
 
-Await Owner authorization:
+Owner authorization granted:
 
 `AUTHORIZE_K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY`
 
@@ -230,4 +233,4 @@ Expected production webhook target:
 
 `https://minicraft.spikersun.com/wp-json/paypal/v1/incoming`
 
-After Live identity/webhook PASS, Reviewer will separately request the exact one-order JPY500 payment + full-refund authorization.
+After Live identity/webhook PASS, the Canary must first be rebased and revalidated in USD. Reviewer will then separately request authorization for exactly one real USD payment at the sealed amount plus exactly one full refund.
