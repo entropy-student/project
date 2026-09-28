@@ -7328,3 +7328,41 @@ STOP_AT_REVIEWER=YES
 ```
 
 The current Windows host was verified locally. The recorded SSH identity and pinned host-key metadata matched the Shared VPS handoff, but one strict direct-native SSH invocation exited 255 because the server closed the connection before identity or remote command output. No retry was made. Consequently, current VPS backup namespace and its database, wp-content, and deployment/release coverage could not be freshly proven; no Docker volume or local directory was deleted. All nine named Mini Craft volumes had zero current-container references across the fresh 32-container inventory, but their current-recovery-copy status remains unproven until backup coverage can be read back. The Owner-protected rollback metadata and DPAPI artifact remain present and untouched. Public Home and Shop returned HTTP 200; Product 223 was non-purchasable. Product 1224 remains at the Reviewer-accepted Published/Hidden/USD 1.00 baseline; its direct public Store API response is the already-known purchasable hidden-canary behavior and was not changed.
+
+
+## K9B-R3R1 Hostinger Console Remote Recovery Barrier — PASS CANDIDATE (2026-09-29)
+
+```text
+GATE=K9B_R3R1_HOSTINGER_CONSOLE_REMOTE_RECOVERY_BARRIER
+RESULT=PASS_CANDIDATE_K9B_R3R1_HOSTINGER_CONSOLE_REMOTE_RECOVERY_BARRIER
+EXECUTION_BOUNDARY=HOSTINGER_BROWSER_TERMINAL
+TARGET_HOST_EXECUTION_PROVEN=PASS
+HOST=srv1970241
+USER=root
+REMOTE_IDENTITY=root@srv1970241
+SSH_NETWORK_INVOCATIONS=0
+PROJECT_BACKUP_ROOT_PRESENT=YES
+DATABASE_BACKUP_DIRECTORY_PRESENT=YES
+MANIFESTS_DIRECTORY_PRESENT=YES
+DATABASE_RECOVERY_FILE_PRESENT=YES
+WP_CONTENT_RECOVERY_FILE_PRESENT=YES
+MANIFEST_OR_DEPLOYMENT_RECOVERY_FILE_PRESENT=YES
+CURRENT_WP_CONTENT_PRESENT=YES
+CURRENT_MYSQL_PRESENT=YES
+FILE=/srv/backups/mini-craft-night-kit/database/k7-r2-r2-pre-usd-store-migration-20260928T062916Z.sql|BYTES=5566583|MODE=600
+FILE=/srv/backups/mini-craft-night-kit/manifests/k6-g-pre-public-ingress-Caddyfile-20260927T082846Z.bak|BYTES=76|MODE=600
+FILE=/srv/backups/mini-craft-night-kit/manifests/k6-g-r4-legacy-active-Caddyfile-20260927T130651Z.bak|BYTES=153|MODE=600
+FILE=/srv/backups/mini-craft-night-kit/manifests/k6-er1-pre-serialized-migration-20260926T154330Z.sql|BYTES=5199823|MODE=600
+FILE=/srv/backups/mini-craft-night-kit/manifests/resolved-deployment-manifest.md|BYTES=2107|MODE=640
+FILE=/srv/backups/mini-craft-night-kit/wp-content/post-cleanup.tar.gz|BYTES=113736468|MODE=600
+FILE=/srv/backups/mini-craft-night-kit/database-post-cleanup.sql|BYTES=5286165|MODE=600
+FILE=/srv/backups/mini-craft-night-kit/k5-deployment-manifest.toml|BYTES=5257|MODE=640
+VPS_WRITES=0
+LOCAL_FILESYSTEM_DELETIONS=0
+DOCKER_VOLUME_DELETIONS=0
+DATABASE_CONTENT_READ=0
+SECRET_ACCESS=0
+STOP_AT_REVIEWER=YES
+```
+
+The single authorized read-only command block was run once in Hostinger Browser Terminal on the target VPS; it reported HOST=srv1970241 and USER=root. Required database, wp-content, and deployment/manifest recovery artifacts and the current production data directories are present. Only directory/file existence and file path, byte-size, and mode metadata were recorded; no backup content, database content, or Secret was read. No SSH, VPS write, local deletion, or Docker action occurred.
