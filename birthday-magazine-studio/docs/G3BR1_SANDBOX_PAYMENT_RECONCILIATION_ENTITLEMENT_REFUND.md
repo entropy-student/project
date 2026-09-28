@@ -1,7 +1,7 @@
 # G3BR1 — Sandbox Payment Reconciliation + Entitlement + Refund Closure
 
 > Reviewer execution contract  
-> Status: CURRENT / AUTHORIZED THROUGH PHASE D / OWNER REFUND CHECKPOINT REQUIRED  
+> Status: CURRENT / OWNER REFUND AUTHORIZED — PHASE E READY  
 > Parent Gate: G3B  
 > Accepted input: PR #51 interim RETURN evidence  
 > Rule: **NO SECOND SANDBOX PAYMENT**
@@ -118,7 +118,7 @@ At this checkpoint provide only non-secret read-back:
 - model calls = 0;
 - refund already exists = NO.
 
-Do not click or invoke refund until the Owner gives a fresh explicit authorization for this exact Sandbox refund.
+Fresh Owner authorization for this exact Sandbox refund is now **RECORDED** in `OWNER_DECISION_G3BR1_SANDBOX_REFUND_AUTHORIZED.md`.
 
 This checkpoint is required by the Production Provider Canary/Recovery governance boundary: refund is a consequential Provider action and is not implicitly authorized by earlier Seller/Buyer approval.
 
