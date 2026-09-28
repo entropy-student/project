@@ -1,5 +1,45 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K7 R2R2 R1 RETURN / BOUNDED USD STORE MIGRATION — 2026-09-28
+
+```text
+K7_R2R2_R1_SAFE_CURRENCY_PREFLIGHT=RETURN_CURRENCY_REBASE_IMPACT_REVIEW_REQUIRED_ACCEPTED
+WOOCOMMERCE_STORE_CURRENCY=JPY
+PRODUCT_223_PRICE=1_JPY_TEST_ONLY
+PRODUCT_223_STATUS_VISIBILITY=publish/VISIBLE
+PRODUCT_1224_PRICE=500_JPY
+PRODUCT_1224_STATUS_VISIBILITY=publish/HIDDEN
+GLOBAL_CURRENCY_SWITCH_WOULD_REINTERPRET_UNRELATED_PRICES=YES
+
+HISTORICAL_TRUTH=K2_EXPLICITLY_MARKS_JPY_1_AND_JPY_SITE_CURRENCY_AS_TEST_ONLY
+PRODUCTION_TRANSACTION_CURRENCY=USD
+REAL_PAYMENT_CANARY_AMOUNT_USD=1.00
+
+CURRENT_GATE=K7_R2R2_R2_BOUNDED_USD_STORE_MIGRATION_AND_CANARY_SEAL
+CURRENT_GATE_STATUS=AUTHORIZED_REVERSIBLE_NONPAYMENT_MIGRATION
+REAL_PAYMENT_AUTHORIZED=NO
+REFUND_AUTHORIZED=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+OWNER_ACTION=NONE
+```
+
+Reviewer design:
+
+- no separate second USD store;
+- before changing currency, remove Product 223's historical test price and prove it is non-purchasable;
+- keep Product 223 as the existing published concept shell with title/content/media/status/visibility unchanged;
+- migrate WooCommerce global currency JPY -> USD;
+- rebase hidden Canary Product 1224 to USD 1.00;
+- validate exact USD 1.00 Checkout + PayPal visibility without submitting an order;
+- if any post-write invariant fails, restore Product 223 price tuple, Product 1224 price tuple and global JPY currency from the exact pre-gate snapshot.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K7_R2R2_R1_RETURN_USD_STORE_MIGRATION_PATH.md`
+
+Execution Pack:
+`review-packets/K7_R2R2_R2_BOUNDED_USD_STORE_MIGRATION_AND_CANARY_SEAL.md`
+
+
 ## CURRENT REVIEWER UPDATE — K7 R2R2 SECRET-RISK RECONCILED / SAFE RESUME — 2026-09-28
 
 ```text
