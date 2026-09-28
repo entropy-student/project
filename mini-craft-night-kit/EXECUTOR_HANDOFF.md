@@ -2891,3 +2891,60 @@ SOFT_LAUNCH_AUTHORIZED=NO
 STOP_AT_REVIEWER=YES
 ```
 
+
+
+## K7 R2R1 — PayPal Live Connection / Webhook Recovery — RETURN
+
+```text
+GATE=K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY
+RESULT=RETURN_SECRET_RISK
+PPCP_ACTIVE=YES
+PPCP_PLUGIN_VERSION=4.1.3
+PPCP_CURRENT_ENVIRONMENT=SANDBOX
+PAYPAL_LIVE=NO
+PPCP_CLIENT_ID_FIELD_INCLUDED_IN_AX_SNAPSHOT=YES_VALUE_NOT_RETAINED
+PPCP_SECRET_OR_TOKEN_VALUE_OR_HASH_ACCESS=0
+PPCP_IDENTIFIER_VALUE_PERSISTED=NO
+OWNER_PAYPAL_LOGIN_OAUTH_CONSENT=NOT_STARTED
+WEBHOOK_RESUBSCRIBE=0
+WEBHOOK_SIMULATION=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+PRODUCT_1224_MUTATION=0
+PRODUCT_223_MUTATION=0
+STORE_CURRENCY_MUTATION=0
+EMAIL_RESEND=0
+DNS_CADDY_VPS_MUTATION=0
+SOFT_LAUNCH_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+The PPCP settings accessibility snapshot incidentally included the displayed Client ID field together with other connection metadata. No identifier value was copied into project files, logs or chat, and no Secret/token value or hash was accessed. Because the Gate forbids credential reads, execution stopped before disconnect, Live onboarding, OAuth, webhook changes or any business action. Reviewer reconciliation is required before resuming.
+
+
+## Current Executor Handoff — K7 R2R1 PayPal Owner login checkpoint (2026-09-28)
+
+```text
+GATE=K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY
+RESULT=RETURN_OWNER_PAYPAL_INTERACTIVE_LOGIN_REQUIRED
+PPCP_PRE_TRANSITION_ENVIRONMENT=SANDBOX
+SANDBOX_CONNECTION_DISCONNECTED=YES_OFFICIAL_RESTART_CONNECTION_WIZARD
+PPCP_CURRENT_ENVIRONMENT=UNCONNECTED_ONBOARDING_PENDING
+PAYPAL_LIVE=NO
+LIVE_MERCHANT_CONNECTION=NOT_ESTABLISHED
+OWNER_PAYPAL_LOGIN_OAUTH_CONSENT=REQUIRED_NOT_STARTED
+WEBHOOK_RESUBSCRIBE=0
+WEBHOOK_SIMULATION=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+EVIDENCE_COMMIT=78e902af67a5219430cd552c7aa1d87d0241e1cb
+STOP_AT_OWNER_CHECKPOINT=YES
+STOP_AT_REVIEWER=YES
+```
+
+- Reviewer reconciled the prior over-conservative Secret-risk stop; prior Owner authorization remains valid.
+- The official PPCP wizard is waiting at “Connect to PayPal.” Owner must complete the official PayPal sign-in/authorization directly in the current Admin tab; do not send credentials, 2FA, tokens or codes in chat. Resume the same Gate after Owner confirmation.
+- Sandbox connection is currently disconnected for the official restart-onboarding flow; Live is not connected. No webhook, order/payment/refund, Product, currency, email or infrastructure action occurred; no Secret or identifier value was persisted.

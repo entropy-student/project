@@ -143,7 +143,8 @@ K6_PUBLIC_SANDBOX_DEPLOYMENT=PASS
 PPCP_ACCEPTED_BASELINE=ACTIVE_CONNECTED_SANDBOX_YES_LIVE_NO
 PRODUCT_223_CANARY_CLASSIFICATION=NOT_SUITABLE_REQUIRE_SEPARATE_HIDDEN_CANARY_SKU
 K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION=PASS
-CURRENT_GATE=K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT
+K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT=RETURN_PROVIDER_IDENTITY_OR_PERMISSION_UNRESOLVED
+CURRENT_GATE=K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY
 PAYPAL_LIVE=NO
 REAL_PAYMENT_ACTIONS=0
 SOFT_LAUNCH_AUTHORIZED=NO
@@ -152,7 +153,8 @@ SOFT_LAUNCH_AUTHORIZED=NO
 The production-canary sequence remains:
 
 1. K7 R1 hidden Canary fixture + populated Checkout + transactional-email readiness: PASS;
-2. K7 R2 freezes exact Production PayPal identity/permission/webhook/Live path and one-order/refund contract;
+2. K7 R2 returned because Production merchant identity/permission and production webhook could not be proven from Sandbox state;
+3. K7 R2R1 connects the intended Live merchant and seals/repairs the production webhook without creating an order or payment;
 3. Owner separately authorizes the bounded production canary;
 4. Owner completes any required PayPal Live merchant login/authorization;
 5. exactly one low-value order/payment;
@@ -162,3 +164,18 @@ The production-canary sequence remains:
 9. Soft Launch remains a separate authorization.
 
 No blind replay after an ambiguous payment result.
+
+
+## 8. Production Currency Override — 2026-09-28
+
+Owner changed the intended final market and real Production transaction currency to USD.
+
+```text
+PRODUCTION_TRANSACTION_CURRENCY=USD
+REAL_PAYMENT_CANARY_CURRENCY=USD
+REAL_PAYMENT_CANARY_AMOUNT_USD=UNSEALED
+HISTORICAL_K7_R1_CANARY=JPY500_RETAINED_AS_CHECKOUT_MECHANICS_EVIDENCE_ONLY
+JPY500_REAL_PAYMENT_AUTHORIZATION=NO
+```
+
+The exact USD Canary amount must be sealed and Checkout revalidated before any real-money authorization. No amount is inferred from the prior JPY500 fixture.

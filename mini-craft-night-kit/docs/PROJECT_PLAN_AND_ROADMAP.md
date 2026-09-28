@@ -1,7 +1,7 @@
 # Mini Craft Night Kit — PROJECT PLAN & ROADMAP
 
 Last updated: 2026-09-28  
-Status: **ACTIVE — K7 R2 PAYPAL PRODUCTION CANARY PREFLIGHT**
+Status: **ACTIVE — K7 R2R1 PAYPAL LIVE CONNECTION + WEBHOOK OWNER CHECKPOINT**
 
 ## 0. Authority and current override
 
@@ -15,8 +15,9 @@ K0-K5=PASS
 K6_VPS_DEPLOYMENT=PASS
 PUBLIC_SANDBOX_INGRESS=ACTIVE
 K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION=PASS
-CURRENT_GATE=K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT
-CURRENT_GATE_STATUS=AUTHORIZED_READONLY_AWAIT_EXECUTOR
+K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT=RETURN_PROVIDER_IDENTITY_OR_PERMISSION_UNRESOLVED
+CURRENT_GATE=K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY
+CURRENT_GATE_STATUS=OWNER_AUTHORIZED
 PUBLIC_ORIGIN=https://minicraft.spikersun.com
 RESEND_DOMAIN_VERIFIED=YES
 WORDPRESS_RESEND_PLUGIN=ACTIVE
@@ -28,6 +29,9 @@ PUBLIC_POPULATED_CHECKOUT=NOT_YET_VALIDATED
 PAYPAL_LIVE=NO
 REAL_PAYMENT_AUTHORIZED=NO
 SOFT_LAUNCH=NO
+PRODUCTION_TRANSACTION_CURRENCY=USD
+REAL_PAYMENT_CANARY_CURRENCY=USD
+REAL_PAYMENT_CANARY_AMOUNT_USD=UNSEALED
 ```
 
 The detailed K0–K7 descriptions below are roadmap/history, not competing Governance contracts.
@@ -217,21 +221,16 @@ order
 
 ## 6. Current Next Action
 
-`K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT`
+`K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY`
 
-Read-only only. Freeze the exact Production PayPal Canary contract before asking Owner for real-money authorization:
+Owner authorization granted:
 
-- fresh PPCP Sandbox/Live state;
-- merchant/application/product-permission identity map;
-- Live enablement + Owner OAuth/login path;
-- webhook/callback model;
-- buyer account separation;
-- Product 1224 / qty1 / JPY500;
-- expected WooCommerce order/payment/email state;
-- exact full JPY500 refund path;
-- provider-fee recovery status if safely observable;
-- max one order / one buyer approval / one payment / one refund;
-- no blind replay;
-- exact future Owner authorization package.
+`AUTHORIZE_K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY`
 
-No Live/order/payment/refund action in this Gate.
+This Gate connects the intended Live PayPal merchant through official PPCP onboarding and repairs/tests the production webhook if needed. It does **not** authorize an order, buyer action, payment, capture, refund or Soft Launch.
+
+Expected production webhook target:
+
+`https://minicraft.spikersun.com/wp-json/paypal/v1/incoming`
+
+After Live identity/webhook PASS, the Canary must first be rebased and revalidated in USD. Reviewer will then separately request authorization for exactly one real USD payment at the sealed amount plus exactly one full refund.

@@ -116,3 +116,57 @@ GPT-SoVITS 5-case A/B
 → 重新解析 Runtime Timeline
 → 再决定是否恢复剩余画面生产
 ```
+
+
+## 7. SRT1 一键生成音频 + SRT2
+
+如果已有 planned SRT1，不需要在 WebUI 里逐条手工复制。
+
+先启动 API：
+
+```text
+tools/gpt-sovits/START_GPT_SOVITS_API.bat
+```
+
+保持窗口开启，然后双击：
+
+```text
+tools/gpt-sovits/RUN_GPT_SOVITS_SRT_BATCH.bat
+```
+
+或者把 SRT1 文件直接拖到这个 BAT 上。
+
+脚本会要求：
+- SRT1 路径；
+- 已通过试听的参考音频；
+- 参考音频准确文本。
+
+输出：
+
+```text
+tts/units/*.wav
+tts/narration_master.wav
+tts/tts_execution_report.json
+timing/SRT1_PLANNED.srt
+timing/SRT2_ACTUAL.srt
+timing/SRT2_TIMELINE.json
+```
+
+核心规则：
+
+```text
+SRT1 = planned timing
+SRT2 = GPT-SoVITS 实际生成时长
+SRT3 = 后续首版视频拼接后清理冗余非语义停顿的最终时间
+```
+
+不要为了让 SRT2 对齐 SRT1 去拉伸、压缩或截断正常语音。
+
+如果字幕显示文本和合成文本需要分离，例如 `AI → A I`，使用：
+`tools/gpt-sovits/SYNTHESIS_MAP_EXAMPLE.json`。
+
+完整说明：
+`tools/gpt-sovits/SRT_BATCH_EXECUTOR.md`。
+
+交给执行 Agent 时可直接使用：
+`tools/gpt-sovits/EXECUTOR_AGENT_TASK.md`。
