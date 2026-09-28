@@ -3269,3 +3269,25 @@ STOP_AT_REVIEWER=YES
 ```
 
 Product 1224 status was not changed because the fresh strict SSH transport could not produce target-host identity. No additional SSH was attempted after the two bounded read-only failures. The public Shop page does not list the Canary, but anonymous Store API search still returns it. Product status is therefore not represented as freshly verified or contained. K9B local/Docker cleanup remains paused; K9C is unauthorized.
+
+
+## K9B-R2R2A-R2 Product 1224 Admin containment — execution return (2026-09-29)
+
+```text
+GATE=K9B_R2R2A_R2_AUTHENTICATED_WP_ADMIN_PRODUCT_1224_CONTAINMENT
+RESULT=RETURN_K9B_R2R2A_R2_STATUS_UPDATE_NOT_COMMITTED
+ADMIN_PRECHECK=PASS_PUBLISHED_USD_1.00_CATALOG_HIDDEN
+SAVE_UPDATE_CLICK_COUNT=1
+SAVE_RESULT=CONNECTION_LOST
+FRESH_ADMIN_READBACK=STILL_PUBLISHED_USD_1.00_CATALOG_HIDDEN
+PUBLIC_VALIDATION=NOT_RUN_STATUS_NOT_DRAFT
+NO_SECOND_SAVE=YES
+PRODUCT_223_MUTATION=0
+PAYPAL_WEBHOOK_EMAIL_ORDER_PAYMENT_REFUND_MUTATIONS=0
+FILESYSTEM_DOCKER_MUTATION=0
+EVIDENCE_GITHUB_COMMIT=97a1f02c67d1c363da830e5b1398341e4a64d79a
+EVIDENCE_GITHUB_READBACK=PASS
+STOP_AT_REVIEWER=YES
+```
+
+One authorized Update was attempted. WordPress reported a connection loss; a fresh Admin read-back confirmed Product 1224 remains Published. No retry was made. The status containment is incomplete; do not resume K9B cleanup or enter K9C.
