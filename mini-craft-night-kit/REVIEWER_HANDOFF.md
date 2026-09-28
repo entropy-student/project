@@ -1,5 +1,28 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — HOSTINGER OWNER LOGIN CHECKPOINT SATISFIED — 2026-09-29
+
+```text
+CURRENT_GATE=K9B_R3R1_HOSTINGER_CONSOLE_REMOTE_RECOVERY_BARRIER
+CURRENT_GATE_STATUS=OWNER_LOGIN_CHECKPOINT_SATISFIED_RESUME_READONLY_CONSOLE
+
+HOSTINGER_OWNER_AUTHENTICATED_SESSION=AVAILABLE
+TARGET_VPS_PANEL_VISIBLE=YES
+TARGET_VPS_PANEL_NAME=srv1970241.hstgr.cloud
+TARGET_VPS_STATUS=RUNNING_VISIBLE_IN_OWNER_PANEL
+
+SSH_RETRY_AUTHORIZED=NO
+VPS_WRITE_AUTHORIZED=NO
+LOCAL_DELETE_AUTHORIZED=NO
+DOCKER_VOLUME_DELETE_AUTHORIZED=NO
+K9C_AUTHORIZED=NO
+```
+
+Owner has completed the Hostinger authentication checkpoint and the target VPS management card is visible in the authenticated Hostinger panel. Resume the existing K9B-R3R1 Gate through Hostinger Browser Terminal / Web Console only.
+
+Do not retry SSH. Do not perform any write. Run only the previously sealed metadata-only recovery-barrier command block, persist Evidence/Handoff, and stop at Reviewer.
+
+
 ## CURRENT REVIEWER UPDATE — HOSTINGER CONSOLE RECOVERY BARRIER FOR FINAL LOCAL CLEANUP — 2026-09-29
 
 ```text
