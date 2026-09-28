@@ -1,5 +1,43 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — R3R1 PASS / FINAL LOCAL DELETION AUTHORIZED — 2026-09-29
+
+```text
+K9B_R3R1_HOSTINGER_CONSOLE_REMOTE_RECOVERY_BARRIER=PASS
+
+REMOTE_IDENTITY=root@srv1970241
+PROJECT_BACKUP_ROOT_PRESENT=YES
+DATABASE_RECOVERY_FILE_PRESENT=YES
+WP_CONTENT_RECOVERY_FILE_PRESENT=YES
+MANIFEST_OR_DEPLOYMENT_RECOVERY_FILE_PRESENT=YES
+CURRENT_WP_CONTENT_PRESENT=YES
+CURRENT_MYSQL_PRESENT=YES
+
+CURRENT_GATE=K9B_R3R2_FINAL_LOCAL_FILESYSTEM_AND_DOCKER_VOLUME_DELETION
+CURRENT_GATE_STATUS=AUTHORIZED_FINAL_PROJECT_LOCAL_DECOMMISSION
+
+MINICRAFT_DOCKER_CONTAINERS_CURRENT=0
+MINICRAFT_DOCKER_NETWORKS_CURRENT=0
+MINICRAFT_DOCKER_VOLUMES_CURRENT=9
+MINICRAFT_CUSTOM_IMAGE_TAGS_CURRENT=0
+
+LOCAL_PROTECTED_RECOVERY=KEEP
+SHARED_GIT_CACHE_EXCEPTION=KEEP
+SHARED_UPSTREAM_IMAGES=KEEP
+K9C_AUTHORIZED=NO
+```
+
+R3R1 formally passes. Fresh Hostinger-console read-back confirms remote database, wp-content, deployment/manifest recovery classes and current production durable mysql/wp-content paths exist. This satisfies the recovery barrier for deleting historical local Mini Craft runtimes.
+
+K9B-R3R2 may now remove the nine exact Mini Craft Docker volumes and exact dedicated local Mini Craft runtime/workspace/artifact/temp paths after fresh local ownership/reference checks. No broad Docker prune, no shared Git mutation, no protected recovery deletion, and no Product 1224 retry.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9B_R3R1_PASS_R3R2_FINAL_LOCAL_DELETION.md`
+
+Execution pack:
+`review-packets/K9B_R3R2_FINAL_LOCAL_FILESYSTEM_AND_DOCKER_VOLUME_DELETION.md`
+
+
 ## CURRENT REVIEWER UPDATE — HOSTINGER OWNER LOGIN CHECKPOINT SATISFIED — 2026-09-29
 
 ```text
