@@ -1,5 +1,48 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — DOCKER COUNT RESOLVED / PRODUCT 1224 EXPOSURE CONTAINMENT — 2026-09-29
+
+```text
+K9B_R2R1_RESULT=RETURN_K9B_R2R1_REMAINING_STATE_RECONCILIATION_UNRESOLVED
+
+DOCKER_VOLUME_COUNT_DISCREPANCY=RESOLVED
+CURRENT_EXACT_MINICRAFT_VOLUME_COUNT=9
+HISTORICAL_EXPECTED_VOLUME_COUNT=9
+PRIOR_REPORTED_10=SUPERSEDED_AS_COUNTING_ERROR
+MISSING_VOLUME_EVIDENCE=NO
+VOLUME_DELETE_EVIDENCE=NO
+
+PRODUCT_1224_STATUS=publish
+PRODUCT_1224_CATALOG_VISIBILITY=hidden
+PRODUCT_1224_PRICE_USD=1.00
+PRODUCT_1224_PURCHASABLE=YES
+PRODUCT_1224_PUBLIC_SHOP_HTML=ABSENT
+PRODUCT_1224_UNAUTHENTICATED_STORE_API_SEARCH=RETURNS_ID_1224
+
+REAL_COMMERCE_ENABLED=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+
+CURRENT_GATE=K9B_R2R2A_PRODUCT_1224_PUBLIC_EXPOSURE_CONTAINMENT
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_SAFETY_REDUCTION
+
+LOCAL_FILESYSTEM_DELETION_AUTHORIZED=NO
+LOCAL_DOCKER_MUTATION_AUTHORIZED=NO
+K9C_AUTHORIZED=NO
+```
+
+The Docker 10→9 discrepancy is resolved by stronger exact read-back plus historical topology: 2 K3R4 control volumes + 3 recovery volumes + 3 Kadence PoC volumes + 1 old-project DB volume = 9. No known tenth volume exists and no volume deletion was recorded.
+
+Product 1224 is catalog-hidden but anonymously discoverable via Store API while remaining purchasable. This conflicts with the Owner's platform-first / real-commerce-disabled boundary.
+
+K9B cleanup is paused. Current bounded safety Gate changes only Product 1224 status from `publish` to `draft`, preserving price/configuration while making the Canary dormant and non-public. Future real Canary reactivation requires a separate dedicated payment Gate.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9B_R2R1_RETURN_RECONCILED_DOCKER_COUNT_RESOLVED_CANARY_CONTAINMENT.md`
+
+Execution pack:
+`review-packets/K9B_R2R2A_PRODUCT_1224_PUBLIC_EXPOSURE_CONTAINMENT.md`
+
+
 ## CURRENT REVIEWER UPDATE — K9B-R2 PARTIAL EXECUTION / EVIDENCE RECONCILIATION — 2026-09-28
 
 ```text
