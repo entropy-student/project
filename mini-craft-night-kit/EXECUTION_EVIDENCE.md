@@ -6475,3 +6475,33 @@ LOCAL_WORKTREE_TOUCHED=NO
 STOP_AT_REVIEWER=YES
 ```
 
+
+
+## K7 R2R2 — Sanitized stop before currency preflight (2026-09-28)
+
+```text
+GATE=K7_R2R2_USD_CANARY_REBASE_AND_FINAL_PREPAYMENT_SEAL
+RESULT=RETURN_SECRET_RISK
+PHASE_A_CURRENCY_PREFLIGHT=NOT_COMPLETED
+PPCP_LIVE_STATE=NOT_RECHECKED_THIS_GATE
+WP_ADMIN_SESSION=AUTHENTICATED_READ_ONLY_PAGE
+SENSITIVE_LOG_FIELD_VALUES_SURFACED_TO_EXECUTION_CONTEXT=YES
+SENSITIVE_VALUES_COPIED_OR_PERSISTED=NO
+CREDENTIAL_COMPROMISE=NOT_DETERMINED_REVIEWER_RECONCILIATION_REQUIRED
+PRODUCT_1224_MUTATION=0
+PRODUCT_223_MUTATION=0
+STORE_CURRENCY_MUTATION=0
+CART_CHECKOUT_MUTATION=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+BUYER_APPROVAL_ACTIONS=0
+CAPTURE_ACTIONS=0
+REFUND_ACTIONS=0
+WEBHOOK_ACTIONS=0
+PAYPAL_SETTINGS_WRITES=0
+DNS_CADDY_VPS_SHARED_INFRA_WRITES=0
+SOFT_LAUNCH_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+The Admin tab was already on a detailed PPCP log view. Its accessibility surface exposed transient sensitive-looking authorization/nonce fields, so execution halted before opening currency, product, cart, checkout, or fresh PPCP settings pages. No field value or hash was copied into Evidence, Handoff, or chat; no business or infrastructure mutation occurred. Reviewer should determine whether any credential-risk follow-up is warranted; this record does not assert compromise or prescribe rotation.
