@@ -164,3 +164,18 @@ The production-canary sequence remains:
 9. Soft Launch remains a separate authorization.
 
 No blind replay after an ambiguous payment result.
+
+
+## 8. Production Currency Override — 2026-09-28
+
+Owner changed the intended final market and real Production transaction currency to USD.
+
+```text
+PRODUCTION_TRANSACTION_CURRENCY=USD
+REAL_PAYMENT_CANARY_CURRENCY=USD
+REAL_PAYMENT_CANARY_AMOUNT_USD=UNSEALED
+HISTORICAL_K7_R1_CANARY=JPY500_RETAINED_AS_CHECKOUT_MECHANICS_EVIDENCE_ONLY
+JPY500_REAL_PAYMENT_AUTHORIZATION=NO
+```
+
+The exact USD Canary amount must be sealed and Checkout revalidated before any real-money authorization. No amount is inferred from the prior JPY500 fixture.
