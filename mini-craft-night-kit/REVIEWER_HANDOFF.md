@@ -1,5 +1,34 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — WEBHOOK SIMULATION RECONCILIATION — 2026-09-28
+
+This section supersedes the prior assumption that the WooCommerce PayPal Payments `Simulate webhooks` button could provide authoritative webhook-health evidence.
+
+```text
+PAYPAL_LIVE_UI=PASS_OWNER_EVIDENCE
+PAYPAL_ACCOUNT_TYPE=BUSINESS
+WEBHOOK_NOTIFICATION_URL=https://minicraft.spikersun.com/wp-json/paypal/v1/incoming
+WEBHOOK_SUBSCRIPTIONS_PRESENT=YES
+WEBHOOK_RESUBSCRIBE_USED=NO
+WEBHOOK_SIMULATION_USED=1
+WEBHOOK_SIMULATION_RESULT=VOID_UPSTREAM_PLUGIN_BUG
+CURRENT_GATE=K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY
+CURRENT_GATE_STATUS=READONLY_RECONCILIATION_REQUIRED
+BLIND_SIMULATION_RETRY=FORBIDDEN
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+SOFT_LAUNCH_AUTHORIZED=NO
+OWNER_ACTION=NONE
+```
+
+Upstream `woocommerce/woocommerce-paypal-payments#4627` remains open. Current stable source identifies 4.1.3 and still shows `WebhookSimulation::start()` returning immediately under the historical 3.3.1 disable guard. The Owner-observed `Waiting for the webhook to arrive...` flow therefore does not establish success or failure.
+
+Current Reviewer decision:
+`docs/REVIEWER_DECISION_K7_R2R1_WEBHOOK_SIMULATION_VOID_READONLY_RECONCILIATION.md`.
+
+Executor is authorized only for the bounded read-only reconciliation defined there. No further Owner action is required at this checkpoint.
+
+
 ## REVIEWER TAKEOVER RECONCILIATION — 2026-09-28
 
 This section records the current Reviewer takeover under canonical VPS Project Governance v0.1.6. It does not reopen accepted Gates and does not authorize any new production/payment action.
