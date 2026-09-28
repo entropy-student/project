@@ -31,6 +31,8 @@ Read in this order:
 - `SRT_AUDIO_TIMING_STANDARD.md`
 - `VOICE_TIMING_PROFILE_SPEC.md`
 - `OUTPUT_RECORD_STANDARD.md`
+- `REFERENCE_LIBRARY_PRODUCTION_WORKFLOW.md` — Agent A/B library lookup, target-mode selection, post-production catalog and continuity-group rules; use with `../assets/reference-library/README.md`.
+- `STORY_EVENT_FRAME_PRODUCTION_PATCH_20260926.md` — Owner image-production override for real story events, physical viewpoint, full-frame-only execution, QA and episode review examples.
 - `TOPIC_OPERATING_SYSTEM.md` — v0.2.1 human-world-first / WHY-first Topic Supply baseline with Human Process + Meaning Duplicate.
 - `CONTENT_STRATEGY_AND_CONVERSION.md`
 - `DAILY_TOPIC_AUTOMATION_V2.md` — v0.2.2 planner contract consuming Topic OS v0.2.1.
