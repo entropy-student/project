@@ -1,0 +1,132 @@
+# K9A-R1 — Exact Empty .tmp Cleanup and Regression
+
+Status: AUTHORIZED_MINIMAL_REVERSIBLE_CLEANUP
+Date: 2026-09-28
+
+Read first:
+- current REVIEWER_HANDOFF.md
+- docs/REVIEWER_DECISION_K9A_RETURN_RECONCILED_R1_EXACT_EMPTY_TMP_CLEANUP.md
+- latest EXECUTION_EVIDENCE.md
+- latest EXECUTOR_HANDOFF.md
+- canonical Governance latest
+- Target Host Reality Contract
+
+## Scope
+
+Exactly one path may be removed:
+
+```text
+/srv/apps/mini-craft-night-kit/.tmp
+```
+
+No other path is authorized for deletion.
+
+## Fresh pre-delete checks
+
+On the verified target host prove:
+
+```text
+TARGET_HOST_IDENTITY=PASS
+TARGET_PATH_EXISTS=YES
+TARGET_IS_DIRECTORY=YES
+TARGET_DIRECTORY_EMPTY=YES
+TARGET_IS_MOUNTPOINT=NO
+TARGET_RUNTIME_REFERENCE=ABSENT
+TARGET_COMPOSE_REFERENCE=ABSENT
+WORDPRESS_STATE=RUNNING
+MARIADB_STATE=RUNNING_HEALTHY
+```
+
+If any value differs: RETURN and do not delete.
+
+Do not reopen broad inventory. Do not use brittle equality assertions on unrelated runtime fields.
+
+## Authorized write
+
+Use an exact empty-directory removal only:
+
+```bash
+rmdir -- /srv/apps/mini-craft-night-kit/.tmp
+```
+
+No `rm -r`, no wildcard, no parent deletion.
+
+## Immediate read-back
+
+Prove:
+
+```text
+TARGET_PATH_EXISTS_AFTER=NO
+DELETE_TARGET_COUNT=1
+DELETED_PATH_COUNT=1
+```
+
+## Regression
+
+Freshly verify:
+
+- WordPress running;
+- MariaDB healthy;
+- restart counts unchanged;
+- public origin healthy;
+- Product 223 remains non-purchasable;
+- Product 1224 remains hidden USD 1.00 Canary;
+- WooCommerce currency USD.
+
+No cart/order/payment/refund action is needed.
+
+## Forbidden
+
+```text
+OTHER_FILE_DELETE=0
+BACKUP_DELETE=0
+DURABLE_DELETE=0
+SECRET_ACCESS=0
+DOCKER_RESOURCE_DELETE=0
+DOCKER_PRUNE=0
+SHARED_INFRA_WRITE=0
+PRODUCT_MUTATION=0
+CURRENCY_MUTATION=0
+PAYPAL_MUTATION=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+```
+
+## Evidence
+
+```text
+GATE=K9A_R1_EXACT_EMPTY_TMP_CLEANUP_AND_REGRESSION
+REMOTE_IDENTITY=
+TARGET_HOST_EXECUTION_PROVEN=
+TARGET_PATH_EXISTS_BEFORE=
+TARGET_DIRECTORY_EMPTY_BEFORE=
+TARGET_IS_MOUNTPOINT_BEFORE=
+TARGET_RUNTIME_REFERENCE_BEFORE=
+TARGET_COMPOSE_REFERENCE_BEFORE=
+DELETE_COMMAND=
+DELETED_PATH_COUNT=
+TARGET_PATH_EXISTS_AFTER=
+DELETED_BYTES=4096_DIRECTORY_ALLOCATION_OR_ACTUAL_FS_DELTA
+WORDPRESS_STATE=
+MARIADB_STATE=
+RESTART_COUNTS_UNCHANGED=
+PUBLIC_ORIGIN_HEALTH=
+PRODUCT_223_PURCHASABLE=
+PRODUCT_1224_STATE=
+WOOCOMMERCE_STORE_CURRENCY=
+OTHER_DELETE_ACTIONS=0
+BACKUP_DELETE_ACTIONS=0
+DURABLE_DELETE_ACTIONS=0
+SECRET_ACCESS_ACTIONS=0
+DOCKER_RESOURCE_DELETE_ACTIONS=0
+SHARED_INFRA_WRITES=0
+STOP_AT_REVIEWER=YES
+```
+
+## Success
+
+```text
+PASS_CANDIDATE_K9A_R1_EXACT_EMPTY_TMP_CLEANUP_AND_REGRESSION
+STOP_AT_REVIEWER=YES
+```
