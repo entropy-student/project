@@ -6293,3 +6293,47 @@ STOP_AT_REVIEWER=YES
 ```
 
 Read-only UI reconciliation found the already-existing single published Canary product (ID 1224) matching the approved title, Simple/Virtual/Downloadable, JPY 500, sold-individually and unmanaged-stock settings, hidden catalog visibility, and approved truthful description. No second product was created and Product 223 was untouched. The initially empty cart was populated once with this Canary item; Checkout displayed quantity 1, item/subtotal/total JPY 500, with no shipping or tax charge rows (virtual product; global tax remains disabled per the accepted Reviewer decision). PayPal was visible. The final order/payment control was not activated. Email delivery/arrival facts are carried forward from the current Reviewer decision; no Resend send or verification was repeated. The Checkout browser tab was retained for Reviewer handoff.
+
+
+## K7 R2 — PayPal Production Canary Preflight — RETURN
+
+```text
+GATE=K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT
+RESULT=RETURN_PROVIDER_IDENTITY_OR_PERMISSION_UNRESOLVED
+
+PPCP_ACTIVE=YES
+PPCP_PLUGIN_VERSION=4.1.3
+PPCP_CURRENT_ENVIRONMENT=SANDBOX
+PPCP_SANDBOX_ENABLED=YES
+PPCP_LIVE_ENABLED=NO
+PAYPAL_LIVE=NO
+
+CANARY_PRODUCT_ID=1224
+CANARY_QUANTITY=1
+CANARY_AMOUNT_JPY=500
+PAYPAL_METHOD_PRESENT=YES
+
+LIVE_MERCHANT_CONNECTION=UNPROVEN
+LIVE_MERCHANT_BINDING=UNPROVEN
+LIVE_PRODUCT_PERMISSION=UNPROVEN
+LIVE_CREDENTIAL_PRESENCE_STATE=UNPROVEN_NO_SECRET_ACCESS
+
+CURRENT_PPCP_WEBHOOK_PATH=/wp-json/paypal/v1/incoming
+CURRENT_PPCP_WEBHOOK_ORIGIN=OLD_ORIGIN_NOT_ACCEPTABLE_FOR_PRODUCTION
+PRODUCTION_WEBHOOK_PATH=UNRESOLVED
+WEBHOOK_LIVE_CREATE_OR_UPDATE_BEHAVIOR=UNRESOLVED
+WEBHOOK_MUTATION=0
+
+PAYPAL_LIVE_ENABLEMENT_PATH=NOT_SEALED
+EXPECTED_ORDER_STATE=NOT_SEALED
+REFUND_PATH=NOT_SEALED
+PAYPAL_FEE_RECOVERY_STATUS=UNKNOWN_REQUIRES_OWNER_AWARENESS
+
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+SOFT_LAUNCH_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
