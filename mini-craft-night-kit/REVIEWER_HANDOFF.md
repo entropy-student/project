@@ -1,5 +1,34 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K9A PASS / K9B LOCAL ARCHIVE AND DECOMMISSION — 2026-09-28
+
+```text
+K9A_R1_EXACT_EMPTY_TMP_CLEANUP_AND_REGRESSION=PASS
+K9A_VPS_PROJECT_HYGIENE_CLOSEOUT=PASS
+
+VPS_CLEANUP_TARGET=/srv/apps/mini-craft-night-kit/.tmp
+VPS_DELETED_PATH_COUNT=1
+VPS_PRODUCTION_REGRESSION=PASS
+
+CURRENT_GATE=K9B_LOCAL_WORKSPACE_GITHUB_ARCHIVE_AND_DECOMMISSION
+CURRENT_GATE_STATUS=AUTHORIZED_CONDITIONAL_LOCAL_DECOMMISSION
+
+LOCAL_ORDINARY_MINI_CRAFT_PROJECT_FILES_TARGET=ZERO
+LOCAL_SECURE_SECRET_RECOVERY=KEEP_UNLESS_SEPARATE_SECURE_RECOVERY_MIGRATION
+SOFT_LAUNCH_AUTHORIZED=NO
+```
+
+K9B must first pass a GitHub archive barrier on the real Owner Windows host. Only after proving current Git boundaries, zero unpushed unique non-secret state after any required archive, and zero sensitive upload to GitHub may local Mini Craft workspaces/runtime be deleted.
+
+Local Docker cleanup is exact-project-resource only; no broad prune. Shared resources and secure DPAPI recovery remain protected.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9A_PASS_AND_K9B_LOCAL_DECOMMISSION.md`
+
+Execution pack:
+`review-packets/K9B_LOCAL_WORKSPACE_GITHUB_ARCHIVE_AND_DECOMMISSION.md`
+
+
 ## CURRENT REVIEWER UPDATE — K9A RETURN RECONCILED / K9A-R1 EXACT TMP CLEANUP — 2026-09-28
 
 ```text
