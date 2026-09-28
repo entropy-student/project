@@ -3213,3 +3213,29 @@ STOP_AT_REVIEWER=YES
 ```
 
 The dirty local Evidence/Handoff additions are superseded by current GitHub truth; no local-only continuity change was archived. All 28 screenshot duplicates were verified against GitHub by exact blob and size. The rollback JSON contains protected provider/business rollback state and remains local; no values or digest were emitted. No deletion, Docker operation, or shared Git metadata change occurred.
+
+
+## K9B-R2 partial execution / K9B-R2R1 reconciliation — 2026-09-29
+
+- K9B-R2 remains `RETURN_K9B_R2_LOCAL_CLASSIFICATION_UNRESOLVED`; its reported actions are now documented in GitHub Evidence: 28 duplicate screenshots removed (16,067,299 bytes), protected rollback metadata relocated (54,911 bytes; content/hash untouched), 8 Mini Craft containers and 4 networks removed; no volumes were removed.
+- Fresh local Docker readback finds 0 Mini Craft containers, 0 networks, 9 retained Mini Craft volumes (each named and reasoned in Evidence), and no custom Mini Craft image tags. The earlier execution report said 10 retained volumes; one-volume count discrepancy remains unresolved. Shared upstream images remain; no non-Mini-Craft Docker resource or broad prune was touched.
+- The rollback metadata source is absent and protected LocalAppData target remains present at 54,911 bytes. The 28 screenshot paths are absent; Mini Craft untracked files are 0. The two known tracked dirty files remain unchanged; no other tracked Mini Craft file became dirty.
+- Remaining local Mini Craft paths and classifications are enumerated in Evidence. No file or Docker resource was deleted in R2R1. Protected recovery and shared Git worktree are retained.
+- Production read-only checks: origin HTTP 200; Product 223 non-purchasable; WooCommerce USD; WordPress running and MariaDB healthy, both restart counts 0. Product 1224 is absent from public `/shop/` HTML, but an unauthenticated Store API search returned ID 1224; this and the volume-count discrepancy are surfaced for Reviewer reconciliation, not changed.
+
+```text
+GATE=K9B_R2R1_PARTIAL_EXECUTION_EVIDENCE_PERSISTENCE_AND_REMAINING_STATE_RECONCILIATION
+RESULT=RETURN_K9B_R2R1_REMAINING_STATE_RECONCILIATION_UNRESOLVED
+K9B_R2_PRIOR_RESULT=RETURN_K9B_R2_LOCAL_CLASSIFICATION_UNRESOLVED
+EVIDENCE_GITHUB_COMMIT=d083dfde567a11c30d72630ffa64c6950dfdcd3e
+EVIDENCE_GITHUB_READBACK=PASS
+VOLUME_COUNT_DISCREPANCY=PRIOR_REPORTED_10_VS_FRESH_IDENTIFIED_9; UNRESOLVED
+PRODUCT_1224_PUBLIC_STORE_API_SEARCH_VISIBILITY=REVIEW_REQUIRED
+LOCAL_FILESYSTEM_DELETES_DURING_R2R1=0
+LOCAL_DOCKER_DELETES_DURING_R2R1=0
+VPS_MUTATIONS=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+K9C_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
