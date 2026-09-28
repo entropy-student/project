@@ -1165,3 +1165,34 @@ Important evidence boundary:
 - contract/config coverage = PASS;
 - first real post-sync Daily Radar execution = PENDING;
 - do not use the pre-sync `topic-ledger/daily/2026-09-27.json` as v0.2.1 runtime proof.
+
+
+## 2026-09-28 — GPT-SoVITS SRT1 → SRT2 reusable helper
+
+Owner accepted filling the remaining thin automation seam between a planned SRT and material-stage GPT-SoVITS output.
+
+Implemented reusable helper:
+`SRT1 → per-cue GPT-SoVITS WAV → exact duration measurement → SRT2 → narration master`.
+
+Files live under `tools/gpt-sovits/`:
+- `GPT_SOVITS_SRT_BATCH_EXECUTOR.py`
+- `RUN_GPT_SOVITS_SRT_BATCH.bat`
+- `SRT_BATCH_EXECUTOR.md`
+- `SYNTHESIS_MAP_EXAMPLE.json`
+- `EXECUTOR_AGENT_TASK.md`
+
+Design choices:
+- default `display_text == synthesis_text`;
+- any pronunciation-only rewrite must be explicit through synthesis map;
+- resume only when text/reference/candidate configuration signature still matches;
+- preserve non-negative SRT1 inter-cue gaps because an SRT-only input cannot distinguish HARD_ANCHOR from ELASTIC slack;
+- use actual generated WAV duration as SRT2 speech truth;
+- no voiced time-stretch to satisfy SRT1;
+- final SRT3 cleanup remains a later post-assembly step;
+- full Speech Unit + TTS Manifest packages still use the canonical Runtime Timeline Resolver.
+
+Current evidence:
+`STATIC_INTEGRATION_READY / LOCAL_RUNTIME_PENDING`.
+
+Rollback:
+`rollback/ai-story-showrunner-gpt-sovits-srt-executor-pre-20260928`.
