@@ -39,25 +39,30 @@ WordPress
 - 旧 01–05 保留作为视觉/文案/素材参考，不继续扩展 06–19；
 - 本地 Release Candidate 通过前不部署 VPS。
 
-## 当前 Gate
+## 当前状态
 
-`K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY`
+支付基础设施已经完成 Production readiness 封板：
 
-当前状态：
+```text
+K7_PAYMENT_INFRASTRUCTURE_READINESS=PASS_WITH_DEFERRED_FIRST_LIVE_TRANSACTION_CANARY
+REAL_MONEY_END_TO_END_VALIDATION=DEFERRED_NOT_PASS
+FIRST_LIVE_TRANSACTION_CANARY=ARMED_FOR_FUTURE_REAL_TRANSACTION
+```
 
-- K0–K6：PASS；
-- K7 R1 Canary fixture + Resend email foundation：PASS；
-- K7 R2 Production Canary preflight：**RETURN**，原因是 Production PayPal merchant identity/permission 与 production webhook 尚未封板；
-- 当前 PPCP：Sandbox active，Live=NO；
-- Canary：Product 1224 / qty1 / JPY500；
-- 当前 PPCP webhook 仍显示旧 origin，不能直接进入真实付款；
-- 邮件链路：PASS；
-- 真实订单 / payment / refund：0；
+当前生产基线：
+
+- WooCommerce 币种：USD；
+- Product 223：发布但无价格、不可购买；
+- 隐藏 Canary Product 1224：USD 1.00；
+- Canary Checkout：数量 1，总额 USD 1.00，运费/税费均为 0，PayPal 可见；
+- PayPal Live / 当前 origin webhook / Resend 邮件基础：已有 accepted PASS；
+- WordPress / MariaDB / 项目数据库备份：正常；
+- 当前订单 / 真实付款 / 退款：0；
 - Soft Launch：未授权。
 
-Owner 已授权这个**不包含付款**的 PayPal Live 连接 + webhook recovery Gate。Owner 完成 PayPal 登录/OAuth 后，Executor 只核对 Live merchant/binding/permission 与当前域名 webhook；必要时最多一次官方 Resubscribe + 一次 simulation。最终市场/真实 Canary 币种已改为 **USD**；历史 JPY500 仅保留为 K7 R1 结账验证证据，不再作为真实付款金额。具体 USD Canary 金额尚未封板，不会擅自猜测。
+因为当前无法完成 Owner-controlled 真钱支付，真实端到端验证被明确延期，而不是伪造 PASS。第一笔未来真实 PayPal 交易将自动成为 `FIRST_LIVE_TRANSACTION_CANARY`；届时必须核对 Provider、WooCommerce、签名 webhook 和交易邮件，任何不一致先开 bounded recovery Case，禁止盲目重付。退款仍需单独 Owner 授权。
 
-Authorization: `AUTHORIZE_K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY` — **GRANTED**
+当前无需 Owner 操作，也没有正在执行的 payment Gate。
 
 ## 文档索引
 
