@@ -3336,3 +3336,41 @@ STOP_AT_REVIEWER=YES
 ```
 
 The Quick Edit form had the guarded preflight values and only Status was changed in the form. One Update control invocation was made; no row refresh occurred. After one read-only Products-list reload, Product 1224 remained Published at the displayed $1 price, so no public validation was run and no second save was attempted. A transient navigation to WooCommerce payment settings during UI targeting caused no setting write; PPCP logs were not opened. K9B cleanup remains paused and K9C was not entered.
+
+
+## K9B-R3 Final Local Filesystem and Docker Volume Decommission — RETURN (2026-09-29)
+
+```text
+GATE=K9B_R3_FINAL_LOCAL_FILESYSTEM_AND_DOCKER_VOLUME_DECOMMISSION
+RESULT=RETURN_K9B_R3_LOCAL_CLASSIFICATION_UNRESOLVED
+TARGET_WINDOWS_HOST_EXECUTION_PROVEN=PASS
+CURRENT_GITHUB_MINICRAFT_READBACK=PASS
+SSH_NETWORK_INVOCATIONS=1
+SSH_NATIVE_EXIT=255
+SSH_FAILURE=CONNECTION_CLOSED_BEFORE_REMOTE_OUTPUT
+REMOTE_IDENTITY=UNPROVEN
+PRODUCTION_VPS_BACKUP_NAMESPACE_PRESENT=UNPROVEN
+DATABASE_WP_CONTENT_DEPLOYMENT_BACKUP_COVERAGE=UNPROVEN
+PROTECTED_ROLLBACK_METADATA=RETAINED_METADATA_ONLY_54911_BYTES
+PROTECTED_DPAPI_RECOVERY=RETAINED_METADATA_ONLY_1686_BYTES
+MINICRAFT_DOCKER_CONTAINERS_CURRENT=0
+MINICRAFT_DOCKER_NETWORKS_CURRENT=0
+MINICRAFT_DOCKER_CUSTOM_IMAGE_TAGS_CURRENT=0
+MINICRAFT_DOCKER_VOLUMES_CURRENT=9
+MINICRAFT_VOLUME_CONTAINER_REFERENCES=0_FOR_ALL_9
+MINICRAFT_VOLUMES_DELETED=0
+LOCAL_FILESYSTEM_DELETED_PATHS=0
+PUBLIC_ORIGIN_HEALTH=PASS_HOME_AND_SHOP_HTTP_200
+PRODUCT_223_PURCHASABLE=NO
+PRODUCT_1224=ACCEPTED_PUBLISHED_HIDDEN_USD_1.00_BASELINE; NO_MUTATION
+VPS_MUTATIONS=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+K9C_AUTHORIZED=NO
+EVIDENCE_GITHUB_COMMIT=48506264e7a433a794e2ea9c50815fbeb976e997
+EVIDENCE_GITHUB_READBACK=PENDING
+STOP_AT_REVIEWER=YES
+```
+
+A single strict SSH read-only attempt closed before remote output. No blind retry was made. The current VPS backup namespaces and recovery coverage therefore remain unproven, so all nine exact volumes and all candidate directories were retained without content inspection or deletion. Fresh local Docker inspection found no Mini Craft containers, networks, or custom image tags; all nine volumes had zero current container references. Owner-protected rollback and DPAPI artifacts remain present and untouched. Public Home/Shop were HTTP 200 and Product 223 was non-purchasable. Product 1224 remains at the Reviewer-accepted Published/Hidden/USD 1.00 baseline; no product or production state was changed. K9C was not entered.
+
