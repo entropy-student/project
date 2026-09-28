@@ -6785,3 +6785,62 @@ STOP_AT_REVIEWER=YES
 ```
 
 Read-only inventory identified one empty, unmounted, project-owned `.tmp` directory with no active runtime or Compose reference. The final pre-delete shell stopped on an Executor-side runtime-field assertion before `rmdir`; no VPS deletion or other write was performed. The candidate is retained for Reviewer reconciliation. All data, Secret, backup, runtime and Shared Infrastructure namespaces remain untouched.
+
+## K9A-R1 Exact Empty .tmp Cleanup and Regression — Executor Candidate (2026-09-28)
+
+```text
+GATE=K9A_R1_EXACT_EMPTY_TMP_CLEANUP_AND_REGRESSION
+RESULT=PASS_CANDIDATE_K9A_R1_EXACT_EMPTY_TMP_CLEANUP_AND_REGRESSION
+REMOTE_IDENTITY=ops@srv1970241
+TARGET_HOST_EXECUTION_PROVEN=PASS
+STRICT_SSH_TRUST=PASS_BY_PINNED_HOSTKEY_AND_NATIVE_EXIT_0
+SSH_NETWORK_INVOCATIONS=1
+NATIVE_EXIT=0
+TARGET_PATH=/srv/apps/mini-craft-night-kit/.tmp
+TARGET_PATH_EXISTS_BEFORE=YES
+TARGET_IS_DIRECTORY_BEFORE=YES
+TARGET_DIRECTORY_EMPTY_BEFORE=YES
+TARGET_IS_MOUNTPOINT_BEFORE=NO
+TARGET_RUNTIME_REFERENCE_BEFORE=ABSENT
+TARGET_COMPOSE_REFERENCE_BEFORE=ABSENT
+TARGET_DIRECTORY_METADATA_BEFORE=directory;owner=root:root;mode=0755;stat_size_bytes=4096
+WORDPRESS_STATE_BEFORE=RUNNING
+WORDPRESS_RESTART_COUNT_BEFORE=0
+MARIADB_STATE_BEFORE=RUNNING_HEALTHY
+MARIADB_RESTART_COUNT_BEFORE=0
+DELETE_COMMAND=EXACT_RMDIR
+DELETED_PATH_COUNT=1
+TARGET_PATH_EXISTS_AFTER=NO
+WORDPRESS_STATE=RUNNING
+MARIADB_STATE=RUNNING_HEALTHY
+RESTART_COUNTS_UNCHANGED=YES
+PUBLIC_ORIGIN_HEALTH=PASS_HTTP_200_TLS_VERIFIED
+PRODUCT_223_PURCHASABLE=NO
+PRODUCT_1224_STATE=HIDDEN_USD_1.00_CANARY
+PRODUCT_1224_CATALOG_VISIBILITY_READBACK=STORE_API_HIDDEN_FILTER_MATCH_1_VISIBLE_FILTER_MATCH_0;SHOP_SEARCH_PRODUCT_CARD_COUNT_0
+PRODUCT_1224_STORE_API_PRICE=1
+PRODUCT_1224_STORE_API_CURRENCY=USD
+PRODUCT_1224_STORE_API_CURRENCY_MINOR_UNIT=0
+PRODUCT_1224_DIRECT_ENDPOINT_PURCHASABLE=YES_HIDDEN_CATALOG_CANARY
+WOOCOMMERCE_STORE_CURRENCY=USD
+POSTDELETE_INITIAL_HELPER_CLASS=PRICE_ENCODING_ASSUMPTION_MISMATCH;NO_PRODUCT_DRIFT
+POSTDELETE_READONLY_RECONCILIATION=PASS
+OTHER_DELETE_ACTIONS=0
+BACKUP_DELETE_ACTIONS=0
+DURABLE_DELETE_ACTIONS=0
+SECRET_ACCESS_ACTIONS=0
+DOCKER_RESOURCE_DELETE_ACTIONS=0
+DOCKER_PRUNE_ACTIONS=0
+SHARED_INFRA_WRITES=0
+PRODUCT_MUTATION=0
+CURRENCY_MUTATION=0
+PAYPAL_MUTATION=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+Target-host read-back proved the exact authorized directory existed, was empty, was not a mountpoint, and had no Mini Craft runtime mount or Compose reference. WordPress and MariaDB were running before the action; restart counts were 0. One `sudo -n rmdir -- /srv/apps/mini-craft-night-kit/.tmp` completed, and immediate target-host read-back proved the path absent. Fresh runtime regression kept both services healthy with restart counts unchanged, and a TLS-verified public Home GET returned HTTP 200.
+
+Product regression used only public read-only WooCommerce Store API and Shop search requests. Product 223 reported non-purchasable. For Product 1224, Store API `catalog_visibility=hidden` returned the exact product while `catalog_visibility=visible` did not; the Shop search HTML contained no product card. Direct public API price metadata reported numeric `1`, currency `USD`, and `currency_minor_unit=0`; the numeric amount remains USD 1.00. The initial helper expected a two-decimal minor-unit encoding (`100`) and returned a false mismatch; bounded read-only inspection of the returned metadata corrected that parser assumption without any additional VPS write or business action. No order, payment, refund, product, currency, backup, Secret, Docker, or Shared Infra action occurred.
