@@ -2980,3 +2980,18 @@ STOP_AT_REVIEWER=YES
 ```
 
 Read-only reconciliation only. PPCP 4.1.3 is connected as Business | Live; the configured Notification URL exactly matches the public current-origin endpoint, and subscribed events are present. WooCommerce System Status does not expose a positive receipt-health value (dash), and inspected existing PPCP logs contain no authoritative success marker. A single unsigned synthetic request passed TLS and was rejected with HTTP 401. The known webhook Simulation result remains void and was not rerun. No Provider, payment, order, refund, settings, logging, Secret, or infrastructure action occurred. Evidence was appended in commit `f8e62e3c0f00897ad944f6753cd5a9a1670503ac`; fresh GitHub readback is the remaining persistence check.
+
+
+### K7 R2R1 R1 — Persistence Audit Linkage
+
+```text
+GATE=K7_R2R1_R1_WEBHOOK_READONLY_RECONCILIATION
+GITHUB_EVIDENCE_GATE_SECTION_COMMIT=f8e62e3c0f00897ad944f6753cd5a9a1670503ac
+GITHUB_EVIDENCE_READBACK=PASS
+GITHUB_HANDOFF_GATE_SECTION_COMMIT=e83fb4d6f61a6b3015267f7d9e0f8375ac242ed1
+GITHUB_HANDOFF_READBACK=PASS
+LATEST_EVIDENCE_SYNC_COMMIT=a8103f6e0ef3662abec7871b72a44354121c1b0d
+LOCAL_WORKTREE_TOUCHED=NO
+STOP_AT_REVIEWER=YES
+```
+
