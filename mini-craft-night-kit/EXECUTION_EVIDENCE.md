@@ -7189,3 +7189,16 @@ STOP_AT_REVIEWER=YES
 ```
 
 The authenticated Admin precheck matched Product 1224 (Published, USD 1.00, catalog Hidden). The standard status selector was set to Draft and Update was clicked exactly once. WordPress displayed a connection-lost warning; after a fresh page reload, the server read-back remained Published with price and catalog visibility unchanged. No second save was attempted. Public endpoint validation was not run because the required Draft state was not committed. No other product, payment, infrastructure, filesystem, or Docker action occurred.
+
+
+## Redacted execution-boundary note — K9B-R2R2A-R2 (2026-09-29)
+
+```text
+INITIAL_BROWSER_TAB_SNAPSHOT_INCLUDED_UNRELATED_PPCP_LOG_TEXT=YES
+PPCP_LOG_PAGE_FURTHER_INSPECTION=NO
+PPCP_LOG_VALUES_REPRODUCED_IN_PROJECT_EVIDENCE=NO
+PPCP_LOG_VALUES_PERSISTED_TO_GITHUB=NO
+REVIEWER_ASSESSMENT_REQUIRED=YES
+```
+
+When attaching to the already-open browser tab, its initial accessibility snapshot included unrelated PPCP log-page text before navigation away. No log values are reproduced here or in the gate record; the page was not inspected further. Reviewer assessment is requested; no credential rotation or other PayPal action was performed.
