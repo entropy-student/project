@@ -6367,3 +6367,44 @@ STOP_AT_REVIEWER=YES
 ```
 
 The PPCP settings accessibility snapshot incidentally included the displayed Client ID field together with other connection metadata. No identifier value was copied into project files, logs or chat, and no Secret/token value or hash was accessed. Because the Gate forbids credential reads, execution stopped before disconnect, Live onboarding, OAuth, webhook changes or any business action. Reviewer reconciliation is required before resuming.
+
+
+## K7 R2R1 — Owner PayPal interactive login checkpoint (2026-09-28)
+
+```text
+GATE=K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY
+RESULT=RETURN_OWNER_PAYPAL_INTERACTIVE_LOGIN_REQUIRED
+RESUME_STATUS=STOP_AT_OWNER_CHECKPOINT
+PPCP_ACTIVE=YES
+PPCP_PLUGIN_VERSION=4.1.3_ACCEPTED_CARRY_FORWARD
+PPCP_PRE_TRANSITION_ENVIRONMENT=SANDBOX
+PPCP_CURRENT_ENVIRONMENT=UNCONNECTED_ONBOARDING_PENDING
+SANDBOX_CONNECTION_DISCONNECTED=YES_OFFICIAL_RESTART_CONNECTION_WIZARD
+PAYPAL_LIVE=NO
+LIVE_MERCHANT_CONNECTION=NOT_ESTABLISHED
+LIVE_MERCHANT_BINDING=UNPROVEN
+LIVE_PRODUCT_PERMISSION=UNPROVEN
+LIVE_CREDENTIAL_PRESENCE_STATE=UNPROVEN_NO_SECRET_ACCESS
+OWNER_PAYPAL_LOGIN_OAUTH_CONSENT=REQUIRED_NOT_STARTED
+PPCP_ONBOARDING_WIZARD=CONNECT_TO_PAYPAL_OWNER_CHECKPOINT
+WEBHOOK_RESUBSCRIBE=0
+WEBHOOK_SIMULATION=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+AUTH_CAPTURE_ACTIONS=0
+REFUND_ACTIONS=0
+PRODUCT_1224_MUTATION=0
+PRODUCT_223_MUTATION=0
+STORE_CURRENCY_MUTATION=0
+EMAIL_RESEND=0
+DNS_CADDY_VPS_MUTATION=0
+SECRET_VALUE_OR_HASH_ACCESS=0
+SOFT_LAUNCH_AUTHORIZED=NO
+STOP_AT_OWNER_CHECKPOINT=YES
+STOP_AT_REVIEWER=YES
+```
+
+- Reviewer reconciliation was applied; no credential rotation or reauthorization was requested.
+- PPCP's official Disconnect flow was used with the preserve-settings option to restart the connection wizard. The wizard now shows “Complete Your Payment Setup” with “Connect to PayPal”; the Owner's official PayPal login/OAuth/consent has not started. Sandbox is disconnected while awaiting that Owner action; Live is not connected.
+- No Client ID or merchant identifier was copied into evidence. No Secret, token, hash, password, Cookie/session or authorization code was accessed. No webhook action, order, buyer action, payment, capture, refund, product/store-currency, email, DNS, Caddy or VPS mutation occurred.
+- Owner checkpoint: in the current WordPress Admin tab, click the official “Connect to PayPal” control and complete PayPal's own sign-in/authorization directly. Do not send credentials, 2FA, tokens or codes in chat. After the flow returns to WordPress, tell Executor it is complete so the same Gate can resume with fresh read-only verification.
