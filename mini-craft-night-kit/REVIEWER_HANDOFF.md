@@ -1,5 +1,46 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K9B RETURN RECONCILED / PROJECT-SCOPED ARCHIVE BARRIER — 2026-09-28
+
+```text
+K9B_RESULT=RETURN_K9B_GITHUB_ARCHIVE_BARRIER_FAILED
+LOCAL_FILESYSTEM_DELETE_PATH_COUNT=0
+LOCAL_DOCKER_RESOURCE_DELETIONS=0
+PARTIAL_LOCAL_DECOMMISSION_STATE=NO
+
+MINICRAFT_TRACKED_DIRTY_FILE_COUNT=2
+MINICRAFT_UNTRACKED_ITEM_COUNT=29
+MINICRAFT_UNTRACKED_SCREENSHOTS_ALREADY_ON_GITHUB=28
+MINICRAFT_UNKNOWN_ARTIFACT_COUNT=1
+LOCAL_DOCKER_DAEMON=UNAVAILABLE
+LOCAL_SECURE_RECOVERY=RETAINED_PROTECTED_EXCEPTION
+
+CURRENT_GATE=K9B_R1_PROJECT_SCOPED_ARCHIVE_BARRIER_RECONCILIATION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_CLASSIFICATION_AND_NONSECRET_ARCHIVE_ONLY
+LOCAL_FILESYSTEM_DELETION_AUTHORIZED=NO
+LOCAL_DOCKER_DELETION_AUTHORIZED=NO
+SHARED_GIT_METADATA_MUTATION_AUTHORIZED=NO
+```
+
+The prior barrier was too broad because it required whole shared-repository cleanliness/upstream proof. Do not repair or normalize shared Git topology for Mini Craft closeout.
+
+R1 is Mini Craft subtree only:
+- identify/classify the 2 tracked dirty files;
+- classify the 28 already-archived screenshots;
+- classify the single rollback metadata artifact;
+- archive only unique non-secret continuity material if any;
+- produce an exact deletion manifest;
+- perform zero deletion.
+
+Docker cleanup is deferred while the local daemon is unavailable. Do not manually delete Docker internal storage.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9B_RETURN_RECONCILED_R1_PROJECT_SCOPED_ARCHIVE_BARRIER.md`
+
+Execution pack:
+`review-packets/K9B_R1_PROJECT_SCOPED_ARCHIVE_BARRIER_RECONCILIATION.md`
+
+
 ## CURRENT REVIEWER UPDATE — K9A PASS / K9B LOCAL ARCHIVE AND DECOMMISSION — 2026-09-28
 
 ```text
