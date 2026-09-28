@@ -1,0 +1,16 @@
+{
+  "gate": "G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND",
+  "handlerPreparedAtUtc": "2026-09-28T02:00:33Z",
+  "invocationNotExecutedAtPreparation": true,
+  "invocationMarkerAbsentAtPreparation": true,
+  "nativeRefundPath": "WooCommerce wc_create_refund(refund_payment=true) -> wc_refund_payment -> official PPCP PayPalGateway::process_refund -> RefundProcessor",
+  "ppcpRefundWrite": "one PaymentsEndpoint::refund POST; no direct API call from project helper",
+  "providerReadback": "official PPCP OrderEndpoint::order GET only; mutationCalls=0",
+  "revocationHandlerProviderCalls": 0,
+  "phpLint": "PASS for all three scripts under PHP 8.3.33",
+  "scriptsSha256": {
+    "phase-e-execute-one-refund.php": "c367a0d535f130e4a99f9c0543c1116435d7a6fe5aa311b745a3c7ee98ee0fb1",
+    "phase-e-provider-refund-readback.php": "d87b4a37b7694c68abe9acc437787d66755dff73030f86906a5b54f1a3d60dee",
+    "phase-e-revoke-entitlement.php": "7379e3cd806e2d5adfaf01ec89a236899eb44903b827cb8490416edaaf60aa7b"
+  }
+}

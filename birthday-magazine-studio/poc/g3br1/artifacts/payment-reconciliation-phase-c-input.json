@@ -1,0 +1,66 @@
+{
+  "gate": "G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND",
+  "queryResult": "READ_ONLY_RECONCILIATION_COMPLETE",
+  "querySemantics": "READ_ONLY_VERIFIED",
+  "providerQueryCount": 2,
+  "mutationCalls": 0,
+  "environment": {
+    "sandboxConnected": true,
+    "liveEnabled": false,
+    "apiHostSandbox": true,
+    "apiHostProduction": false,
+    "webhookVerificationEnabled": true
+  },
+  "woocommerce": {
+    "orderId": 30,
+    "exists": true,
+    "status": "processing",
+    "paid": true,
+    "total": "39.99",
+    "currency": "USD",
+    "paymentMethod": "ppcp-gateway",
+    "paymentMode": "sandbox",
+    "transactionIdSha256": "cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9",
+    "providerOrderIdMetaSha256": "ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d",
+    "refundCount": 0
+  },
+  "providerOrder": {
+    "idSha256": "ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d",
+    "idMatchesWooMeta": true,
+    "status": "COMPLETED",
+    "purchaseUnitCount": 1,
+    "purchaseUnitAmount": "39.99",
+    "purchaseUnitCurrency": "USD",
+    "purchaseUnitCustomIdMatchesWooOrder": true,
+    "captureCount": 1,
+    "completedCaptureCount": 1,
+    "captureIdSha256": "cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9",
+    "captureStatus": "COMPLETED",
+    "captureAmount": "39.99",
+    "captureCurrency": "USD",
+    "woocommerceTransactionIdMatchesSingleCapture": true
+  },
+  "providerWebhookEvent": {
+    "idMatchesStoredReceipt": true,
+    "idSha256": "c07c00099b4f95784c2706837a00523415fbe91f0e710ab103d458978e2c6611",
+    "eventType": "CHECKOUT.ORDER.APPROVED",
+    "resourceType": "checkout-order",
+    "resourceStatus": "APPROVED",
+    "resourceIdSha256": "ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d",
+    "resourceIdMatchesProviderOrder": true,
+    "customIdMatchesWooOrder": false,
+    "createdAtUtc": "2026-09-27T17:40:42.376Z",
+    "storedAtUtc": "2026-09-27T17:41:21+00:00",
+    "simulationEvent": false,
+    "callbackCorrelationBasis": "Verified PPCP receipt event ID matched provider event ID; the CHECKOUT.ORDER.APPROVED resource ID matched the exact provider order ID. The order contains the single completed capture whose ID matches the WooCommerce transaction ID. No PAYMENT.CAPTURE.COMPLETED webhook was the stored last event."
+  },
+  "reconciliation": {
+    "captureCardinalityOne": true,
+    "exactlyOneCompletedCapture": true,
+    "amountCurrencyCorrelation": true,
+    "noDuplicateCapture": true,
+    "callbackWebhookCorrelation": true,
+    "refundAlreadyExists": false
+  },
+  "secretsOrRawPayloadsRetained": false
+}

@@ -1,0 +1,50 @@
+{
+  "gate": "G3BR1_CLEANUP_ONLY_CLOSURE",
+  "capturedAtUtc": "2026-09-28T02:51:16.1688522Z",
+  "preflight": {
+    "gitRepoRoot": "C:/Users/34707/Documents/ChatGPT/VPS基建/workspaces/birthday-magazine-studio-g2br2",
+    "expectedAbsolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-studio-g2br2\\birthday-magazine-studio\\poc\\g3b\\.tmp",
+    "resolvedAbsolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-studio-g2br2\\birthday-magazine-studio\\poc\\g3b\\.tmp",
+    "relativePath": "birthday-magazine-studio/poc/g3b/.tmp",
+    "exactTarget": "PASS",
+    "insideRepo": "PASS",
+    "symlinkJunctionReparseComponents": [],
+    "gitCheckIgnore": "IGNORED",
+    "wildcardDelete": "NO",
+    "parentDirectoryDelete": "NO"
+  },
+  "deletion": {
+    "method": "Python shutil.rmtree after in-script repetition of exact-path, repo-containment, reparse-point, and git-ignore guards",
+    "result": "PASS"
+  },
+  "readback": {
+    "tmpDirectoryExists": false,
+    "tmpFileCount": 0,
+    "projectG3BContainers": 0,
+    "projectG3BVolumes": 0,
+    "projectG3BNetworks": 0,
+    "projectTunnelCount": 0,
+    "unrelatedContainerCount": 40,
+    "unrelatedContainerFingerprint": "ee052601e5a3252b8a8ba8a1747a398c21dda43c1c3c3ab68ec75b317c2ff1d1",
+    "unrelatedVolumeCount": 87,
+    "unrelatedVolumeFingerprint": "cb212d3fb35ca20dfeff6e44ea46f75f89b52ff09cfa526327cba4e71bc04c0d",
+    "unrelatedNetworkCount": 21,
+    "unrelatedNetworkFingerprint": "17564f2676bcb9181a92bc11093d20d57a87b752492eccf07190b2e451661ac2",
+    "miniCraftCounts": {
+      "containers": 8,
+      "volumes": 9,
+      "networks": 4
+    },
+    "miniCraftCountsExpected": {
+      "containers": 8,
+      "volumes": 9,
+      "networks": 4
+    },
+    "minicraftFingerprintUnchanged": true,
+    "unrelatedResourceFingerprintUnchanged": true,
+    "noResourcesStarted": "PASS",
+    "paypalActionsThisRun": 0,
+    "modelCallCount": 0
+  },
+  "pass": true
+}

@@ -1,0 +1,56 @@
+{
+  "gate": "G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND",
+  "providerQueried": false,
+  "modelProviderInvoked": false,
+  "sandboxConnected": true,
+  "liveEnabled": false,
+  "officialPpcpActive": true,
+  "order30": {
+    "exists": true,
+    "status": "refunded",
+    "paid": false,
+    "total": "39.99",
+    "currency": "USD",
+    "paymentMode": "sandbox",
+    "refundCount": 1,
+    "totalRefunded": "39.99",
+    "paymentTransactionIdSha256": "cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9",
+    "providerOrderIdSha256": "ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d",
+    "captureIdSha256": "cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9",
+    "entitlementState": "revoked"
+  },
+  "wooRefunds": [
+    {
+      "amount": "39.99",
+      "currency": "USD",
+      "refundedPaymentFlag": true
+    }
+  ],
+  "canonicalJobCount": 1,
+  "canonicalJob": {
+    "idSha256": "97982be532f0a8c4fbae30333e4c08c852a76e1129ee8596116c906eecd7e1b9",
+    "state": "cancelled",
+    "entitlementState": "revoked",
+    "dispatchQueued": false,
+    "modelProviderInvoked": false
+  },
+  "refundInvocation": {
+    "markerExists": true,
+    "state": "woocommerce-returned-success",
+    "invocationCount": 1,
+    "orderId": 30,
+    "amount": "39.99",
+    "currency": "USD",
+    "refundPayment": true,
+    "path": "woocommerce_wc_create_refund_official_ppcp_gateway",
+    "executedHelperSha256": "c367a0d535f130e4a99f9c0543c1116435d7a6fe5aa311b745a3c7ee98ee0fb1",
+    "markerValid": true,
+    "invokedAtUtc": null,
+    "returnedAtUtc": "2026-09-28T10:00:52+08:00"
+  },
+  "deferredGenerationActionCount": 0,
+  "deferredGenerationCronCount": 0,
+  "modelCallCount": 0,
+  "readAtUtc": "2026-09-28T10:05:07+08:00",
+  "refundRevocationLocalPass": true
+}

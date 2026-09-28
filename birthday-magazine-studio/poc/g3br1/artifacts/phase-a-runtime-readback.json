@@ -1,0 +1,27 @@
+{
+  "gate": "G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND",
+  "evidenceRecordedAtUtc": "2026-09-27T18:59:50Z",
+  "dockerEngine": "29.7.2",
+  "composeProject": "birthday-magazine-g3b",
+  "composeFile": "poc/g3b/compose.yaml",
+  "containers": [
+    { "name": "birthday-magazine-g3b-db-1", "image": "mariadb:11.4.7", "state": "running", "health": "healthy" },
+    { "name": "birthday-magazine-g3b-mailpit-1", "image": "axllent/mailpit:v1.31.2", "state": "running", "health": "healthy" },
+    { "name": "birthday-magazine-g3b-wordpress-1", "image": "wordpress:7.1.1-php8.3-apache", "state": "running" },
+    { "name": "birthday-magazine-g3b-wpcli-1", "image": "wordpress:cli-php8.3", "state": "running" }
+  ],
+  "projectVolumes": ["birthday-magazine-g3b_database", "birthday-magazine-g3b_wordpress"],
+  "projectNetwork": "birthday-magazine-g3b_private",
+  "temporaryTunnelProcessCount": 1,
+  "publicHttpsOriginStatus": 200,
+  "localHttpOriginStatus": 301,
+  "wordpress": "7.1.1",
+  "php": "8.3.33",
+  "woocommerce": "11.1.2",
+  "officialWooCommercePayPalPayments": "4.1.3",
+  "mariadb": "11.4.7-MariaDB-ubu2404",
+  "mailpit": "1.31.2",
+  "payPalSandbox": true,
+  "payPalLiveEnabled": false,
+  "miniCraftResourcesUsedOrChanged": false
+}

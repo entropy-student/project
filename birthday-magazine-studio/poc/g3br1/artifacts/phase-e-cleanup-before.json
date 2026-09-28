@@ -1,0 +1,54 @@
+{
+  "capturedAtUtc": "2026-09-28T02:07:46Z",
+  "scope": "Docker inventory immediately before project-scoped G3B teardown",
+  "target": {
+    "composeProject": "birthday-magazine-g3b",
+    "containers": [
+      "8d1c5814b40719f6d62bc16ce02854fafd101a5ff387c1298f29956435b8de4a|birthday-magazine-g3b-wpcli-1|wordpress:cli-php8.3|running",
+      "8cf7a9e7670f82f73a555380c5aa672f2c6c090bff8e8ceaa42a70fa5b1208f9|birthday-magazine-g3b-wordpress-1|wordpress:7.1.1-php8.3-apache|running",
+      "32ddefe940dc54dc0ed17a04d91fb511d8c4cd4821215c3ba6308d4fe535e373|birthday-magazine-g3b-db-1|mariadb:11.4.7|running",
+      "ac1e90a80f64142661d330e09d86d309886255de065de753b571c7e501679b02|birthday-magazine-g3b-mailpit-1|axllent/mailpit:v1.31.2|running"
+    ],
+    "volumes": [
+      "birthday-magazine-g3b_database|local",
+      "birthday-magazine-g3b_wordpress|local"
+    ],
+    "networks": [
+      "2ed1d8fa5b84|birthday-magazine-g3b_private|bridge|local"
+    ]
+  },
+  "hostInventory": {
+    "containers": 44,
+    "volumes": 89,
+    "networks": 22
+  },
+  "unrelated": {
+    "containers": {
+      "count": 40,
+      "sha256": "ee052601e5a3252b8a8ba8a1747a398c21dda43c1c3c3ab68ec75b317c2ff1d1"
+    },
+    "volumes": {
+      "count": 87,
+      "sha256": "cb212d3fb35ca20dfeff6e44ea46f75f89b52ff09cfa526327cba4e71bc04c0d"
+    },
+    "networks": {
+      "count": 21,
+      "sha256": "17564f2676bcb9181a92bc11093d20d57a87b752492eccf07190b2e451661ac2"
+    }
+  },
+  "miniCraft": {
+    "containers": {
+      "count": 8,
+      "sha256": "e9984e0cbf8581dea13d2740cdd25993d4d2084883be13652d0b28735d3d056e"
+    },
+    "volumes": {
+      "count": 9,
+      "sha256": "a1fce51eb62c569073b34ba23022a315d6543c338ccec1f799a951ebbfa67b8e"
+    },
+    "networks": {
+      "count": 4,
+      "sha256": "1ea2f9ea29df0dd1f8476f3b9c6b311b0f3ed3ea1d4e3d791eaf99727cfde3d8"
+    }
+  },
+  "broadPrune": "NO"
+}

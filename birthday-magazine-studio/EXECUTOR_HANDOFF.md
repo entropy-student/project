@@ -1,5 +1,114 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Current Gate — G3BR1 cleanup-only closure
+
+```text
+GATE=G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND
+RESULT=PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE
+EXECUTION_BRANCH=codex/birthday-magazine-g3br1-sandbox-reconciliation-entitlement
+LATEST_MAIN=8a4e02e60188bb004fb8a212b45b2aa5d57aab42
+LATEST_MAIN_MERGE=4ab613db5fe0c3421faa8daeffb921695a14a327
+PHASE_A_D=REVIEWER_ACCEPTED
+SANDBOX=YES
+LIVE=NO
+ORDER=30
+PROVIDER_CAPTURE_CARDINALITY=1
+PROVIDER_CAPTURE_COMPLETED=PASS
+ORDER_AMOUNT_CURRENCY_CORRELATION=PASS
+DUPLICATE_CAPTURE=NO
+CALLBACK_WEBHOOK_CORRELATION=PASS_ORDER_APPROVAL_EVENT_LINKED_TO_SAME_PROVIDER_ORDER
+PAID_INTAKE_INCOMPLETE_JOB_COUNT=0
+PAID_INTAKE_COMPLETE_CANONICAL_JOB_COUNT=1
+ENTITLEMENT_REEVALUATION_IDEMPOTENCY=PASS
+REFUND_PRECHECK_COUNT=0
+REFUND_EXECUTED=YES
+REFUND_AMOUNT=39.99_USD
+SANDBOX_REFUND=PASS
+WOO_REFUND_RECORD_COUNT=1
+PROVIDER_REFUND_CARDINALITY=1
+PROVIDER_REFUND_COMPLETED=PASS
+REFUND_CORRELATION=PASS
+DUPLICATE_REFUND=NO
+REFUND_REVOKES_ENTITLEMENT=PASS
+CANONICAL_JOB_COUNT=1
+CANONICAL_JOB_STATE=cancelled
+GENERATION_ENTITLEMENT=revoked
+DEFERRED_GENERATION_ACTION_AFTER_REFUND=0
+DEFERRED_GENERATION_CRON_AFTER_REFUND=0
+MODEL_CALL_COUNT=0
+G3B_CONTAINERS_VOLUMES_NETWORKS=0_0_0
+UNRELATED_DOCKER_FINGERPRINTS=UNCHANGED
+MINI_CRAFT_COUNTS=8_CONTAINERS_9_VOLUMES_4_NETWORKS_UNCHANGED
+TMP_DIRECTORY_EXISTS=NO
+TMP_FILE_COUNT=0
+PROJECT_G3B_CONTAINERS=0
+PROJECT_G3B_VOLUMES=0
+PROJECT_G3B_NETWORKS=0
+PROJECT_TUNNEL_COUNT=0
+MINICRAFT_FINGERPRINT_UNCHANGED=PASS
+UNRELATED_RESOURCE_FINGERPRINT_UNCHANGED=PASS
+PAYPAL_ACTIONS_THIS_RUN=0
+MODEL_CALL_COUNT_THIS_RUN=0
+CLEANUP_READBACK=PASS
+G3BR1_PR=54_OPEN_UNMERGED
+G3BR1_PR_URL=https://github.com/entropy-student/project/pull/54
+STOP_AT_REVIEWER=YES
+```
+
+The preceding G3BR1 Phase E evidence records exactly one Owner-authorized full Sandbox refund call through WooCommerce native refund and the official PPCP gateway, followed by successful provider/Woo correlation and entitlement revocation. Reviewer has accepted `PAYMENT_REFUND_ENTITLEMENT=PASS`. This cleanup-only run did not query PayPal/provider or modify any WooCommerce order.
+
+The exact ignored `birthday-magazine-studio/poc/g3b/.tmp/` path was preflighted: resolved equal to the authorized target inside the Git root; no symlink/junction/reparse point in its path; `git check-ignore` confirmed ignored. Python `shutil.rmtree` removed only that path after repeating these guards. Read-back confirms the directory and its files are gone. G3B containers/volumes/network and the temporary tunnel remain at zero; no stopped resource was started. Mini Craft counts remain 8/9/4, and unrelated container, volume, and network fingerprints match the saved pre-teardown snapshot.
+
+Machine-readable cleanup closure is [cleanup-closure-readback.json](poc/g3br1/artifacts/cleanup-closure-readback.json); the full history and Phase E evidence are in [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md). This run's PayPal actions=0 and model calls=0. No payment/refund retry is permitted. PR #54 remains open and unmerged; Reviewer is the next decision point.
+
+---
+
+## Historical Phase A-D handoff — superseded by Phase E above
+
+```text
+GATE=G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND
+RESULT=RETURN_OWNER_SANDBOX_REFUND_AUTH_REQUIRED
+EXECUTION_BRANCH=codex/birthday-magazine-g3br1-sandbox-reconciliation-entitlement
+BASE_MAIN=290a73131a4d0ace487d2c1986a94145f03ee277
+PHASE_A_RUNTIME_AND_ORDER_READBACK=PASS
+PROVIDER_QUERY_SEMANTICS=READ_ONLY_VERIFIED
+PROVIDER_CAPTURE_CARDINALITY=1
+PROVIDER_CAPTURE_COMPLETED=PASS
+ORDER_AMOUNT_CURRENCY_CORRELATION=PASS
+DUPLICATE_CAPTURE=NO
+CALLBACK_WEBHOOK_CORRELATION=PASS_ORDER_APPROVAL_EVENT_LINKED_TO_SAME_PROVIDER_ORDER
+PAID_INTAKE_INCOMPLETE_JOB_COUNT=0
+PAID_INTAKE_COMPLETE_CANONICAL_JOB_COUNT=1
+DEFERRED_GENERATION_ACTION_COUNT=0
+ENTITLEMENT_REEVALUATION_IDEMPOTENCY=PASS
+MODEL_CALL_COUNT=0
+REFUND_ALREADY_EXISTS=NO
+REFUND_EXECUTED=NO
+G3B_PR_51=MERGED_HISTORICAL_INTERIM_RETURN
+G3BR1_NEW_PR=54_OPEN_UNMERGED
+G3BR1_PR_URL=https://github.com/entropy-student/project/pull/54
+G3BR1_INITIAL_EVIDENCE_COMMIT=a557801f0fc2bc7237d215bb4e9420a3d165961e
+G3B_RUNTIME_AND_TEMP_HTTPS=RETAINED_FOR_OWNER_CHECKPOINT
+STOP_AT_OWNER_CHECKPOINT=YES
+```
+
+### Latest G3BR1 facts
+
+- Reused only the existing synthetic order #30. Fresh Phase A read-back found PPCP 4.1.3 Sandbox connected, Live disabled, Woo order `processing` and paid at USD 39.99, with no refund. The provider returned exactly one `COMPLETED` capture; a local read-back found only one Woo order with that transaction ID, #30. Capture ID hash matched the Woo transaction hash and provider order ID hash matched Woo order metadata. Provider amount/currency, capture amount/currency, and Woo order amount/currency all match.
+- The PPCP-stored webhook event ID hash matched the provider event record. It was a verified `CHECKOUT.ORDER.APPROVED` event whose resource ID matched the same provider order. That record was not a simulated event; the event itself did not carry a Woo custom ID and was not a capture-completed event. Correlation is therefore at the same PayPal-order level, with capture exactness established by the provider order and Woo transaction IDs.
+- The PPCP debug log did not retain event-ID/handler-success lines in the receipt window; see `poc/g3br1/artifacts/webhook-log-scan.json`. Correlation is proven from the verified receipt and provider event/order/capture IDs; the log does not independently prove handler response success.
+- Paid with incomplete synthetic intake created 0 canonical jobs/actions and 0 model calls. After marking only order #30 complete, a CLI-only adapter persisted exactly one unique `generation-ready-deferred` job ledger entry. Five evaluations (initial, workspace-refresh label, order-revisit label, explicit re-evaluation, duplicate local event replay) left one job. No dispatch action was queued; deferred scheduler/cron counts stayed 0 and no model/provider was invoked. The refresh/revisit labels exercised the shared local evaluator, not browser navigation.
+- `poc/g3br1/artifacts/` contains sanitized runtime, provider reconciliation, Phase C, Phase D, and final local read-back JSON. The read-only helper and local adapter scripts are under `poc/g3br1/scripts/`. No raw provider payload, Client ID/Secret, bearer token, cookie, Buyer credential, or Authorization header is in the repository.
+- The G3B Compose runtime and temporary HTTPS origin remain active for the Owner checkpoint. G3BR1 `/tmp` helper copies were removed from the WP-CLI container. No global Docker cleanup was used, and Mini Craft resources were not touched.
+
+### Phase A-D stop (historical)
+
+Owner authorization is now used for exactly one full refund on order #30. Phase E is complete with RETURN because temporary-package cleanup could not be closed. Do not retry/refund again, create another payment/capture, use Live PayPal, call a model/provider, or modify G3B PR #51. Do not merge PR #54. Reviewer receives the updated sanitized evidence before any later Gate.
+
+Machine-readable execution evidence: [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md). G3BR1 details: [G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md), [payment-reconciliation.json](poc/g3br1/artifacts/payment-reconciliation.json), [phase-d-entitlement-idempotency.json](poc/g3br1/artifacts/phase-d-entitlement-idempotency.json).
+
+---
+
 ## Current Gate — G3B continuation after Owner Sandbox Buyer payment
 
 ```text

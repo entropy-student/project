@@ -1,0 +1,34 @@
+{
+  "scope": "Birthday Magazine G3B project temp only",
+  "tempPath": "poc/g3b/.tmp",
+  "files": 1075,
+  "totalBytes": 12890802,
+  "extensions": {
+    "": 7,
+    ".js": 62,
+    ".zip": 1,
+    ".css": 36,
+    ".json": 4,
+    ".log": 2,
+    ".md": 2,
+    ".otf": 12,
+    ".php": 849,
+    ".png": 4,
+    ".svg": 94,
+    ".txt": 2
+  },
+  "zipCount": 1,
+  "zipFiles": [
+    {
+      "name": "woocommerce-paypal-payments.4.1.3.zip",
+      "bytes": 3309347
+    }
+  ],
+  "action": "removal blocked by execution policy; directory remains",
+  "externalResourcesTouched": false,
+  "tunnelLogsPresent": true,
+  "temporaryPpcpPackagePresent": true,
+  "postCleanupDirectoryExists": true,
+  "postCleanupFileCount": 1075,
+  "cleanupReadback": "INCOMPLETE"
+}

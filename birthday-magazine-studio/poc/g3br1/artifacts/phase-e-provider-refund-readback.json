@@ -1,0 +1,56 @@
+{
+  "gate": "G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND",
+  "querySemantics": "READ_ONLY_VERIFIED",
+  "readOnlyOperation": "official_ppcp_OrderEndpoint_order_GET",
+  "mutationCalls": 0,
+  "orderId": 30,
+  "readAtUtc": "2026-09-28T10:01:25+08:00",
+  "sandbox": true,
+  "liveDisabled": true,
+  "providerOrder": {
+    "idSha256": "ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d",
+    "idMatchesWooMeta": true,
+    "status": "COMPLETED",
+    "purchaseUnitCount": 1,
+    "purchaseUnitAmounts": [
+      {
+        "value": "39.99",
+        "currency": "USD"
+      }
+    ],
+    "captureCount": 1,
+    "captures": [
+      {
+        "idSha256": "cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9",
+        "status": "REFUNDED",
+        "amount": "39.99",
+        "currency": "USD"
+      }
+    ]
+  },
+  "providerRefunds": [
+    {
+      "idSha256": "57abea21ce775d7c4368fc3dba897e5ecd5ea86bcf60d4d0073867c6ff3c781a",
+      "status": "COMPLETED",
+      "amount": "39.99",
+      "currency": "USD"
+    }
+  ],
+  "providerRefundCardinality": 1,
+  "providerRefundCompleted": true,
+  "wooRefundRecordCount": 1,
+  "wooRefunds": [
+    {
+      "amount": "39.99",
+      "currency": "USD",
+      "refundedPaymentFlag": true
+    }
+  ],
+  "refundAmountCurrencyCorrelation": true,
+  "refundIdMatchesPpcpStoredIds": true,
+  "refundCorrelation": true,
+  "duplicateRefund": false,
+  "refundRevocationPreconditions": true,
+  "queryResult": "READ_ONLY_REFUND_READBACK_COMPLETE",
+  "capturedAtUtc": "2026-09-28T02:01:27Z"
+}

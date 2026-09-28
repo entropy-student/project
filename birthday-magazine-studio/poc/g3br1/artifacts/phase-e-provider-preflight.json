@@ -1,0 +1,85 @@
+{
+  "gate": "G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND",
+  "querySemantics": "READ_ONLY_VERIFIED",
+  "providerQueryCount": 2,
+  "providerQueryCountScope": "two explicit GET operations per invocation; excludes a possible PPCP bearer refresh and internal read retry",
+  "orderId": 30,
+  "mutationCalls": 0,
+  "sandboxConnected": true,
+  "liveEnabled": false,
+  "apiHostSandbox": true,
+  "apiHostProduction": false,
+  "webhookVerificationEnabled": true,
+  "woocommerce": {
+    "exists": true,
+    "status": "processing",
+    "paid": true,
+    "total": "39.99",
+    "currency": "USD",
+    "paymentMethod": "ppcp-gateway",
+    "paymentMode": "sandbox",
+    "transactionIdSha256": "cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9",
+    "providerOrderIdMetaSha256": "ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d",
+    "refundCount": 0
+  },
+  "storedWebhook": {
+    "present": true,
+    "eventIdSha256": "c07c00099b4f95784c2706837a00523415fbe91f0e710ab103d458978e2c6611",
+    "receivedAtUtc": "2026-09-28T01:41:21+08:00",
+    "simulationOptionPresent": false,
+    "simulationEventIdSha256": null,
+    "storedEventMatchesSimulation": false
+  },
+  "providerOrder": {
+    "idSha256": "ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d",
+    "idMatchesWooMeta": true,
+    "status": "COMPLETED",
+    "purchaseUnitCount": 1,
+    "purchaseUnitAmounts": [
+      {
+        "value": "39.99",
+        "currency": "USD"
+      }
+    ],
+    "purchaseUnitCustomIdMatchesWooOrder": true,
+    "captureCount": 1,
+    "completedCaptureCount": 1,
+    "captures": [
+      {
+        "idSha256": "cac2a5b8a6b86df1e6e086815dcb0d5ea73f52249da10050ad443afc0da3b3f9",
+        "status": "COMPLETED",
+        "amount": "39.99",
+        "currency": "USD"
+      }
+    ],
+    "woocommerceTransactionIdMatchesSingleCapture": true
+  },
+  "eventHttpStatus": 200,
+  "providerWebhookEvent": {
+    "idMatchesStoredReceipt": true,
+    "idSha256": "c07c00099b4f95784c2706837a00523415fbe91f0e710ab103d458978e2c6611",
+    "eventType": "CHECKOUT.ORDER.APPROVED",
+    "resourceType": "checkout-order",
+    "resourceStatus": "APPROVED",
+    "resourceIdSha256": "ab113fb4abe10a9970a51daf45612cb65399f36e8d01676b72af8b61d752558d",
+    "resourceIdMatchesProviderOrder": true,
+    "captureIdSha256": null,
+    "captureMatchesProviderOrder": false,
+    "orderIdSha256": null,
+    "orderIdMatchesProviderOrder": true,
+    "customIdMatchesWooOrder": false,
+    "purchaseUnitCount": 1,
+    "amount": null,
+    "currency": "",
+    "createdAtUtc": "2026-09-27T17:40:42.376Z"
+  },
+  "reconciliation": {
+    "captureCardinalityOne": true,
+    "exactlyOneCompletedCapture": true,
+    "amountCurrencyCorrelation": true,
+    "noDuplicateCapture": true,
+    "callbackWebhookCorrelation": true
+  },
+  "queryResult": "READ_ONLY_RECONCILIATION_COMPLETE",
+  "capturedAtUtc": "2026-09-28T02:00:04Z"
+}
