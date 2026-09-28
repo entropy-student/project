@@ -41,7 +41,8 @@
 | `REVIEWER_DECISION_G3A_PASS.md` | Reviewer decision on PR #49 | **CURRENT G3A DECISION — PASS** |
 | `G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_REFUND.md` | Parent PayPal Sandbox + paid entitlement/idempotency + refund contract | Executed partially / **INTERIM RETURN** |
 | `REVIEWER_DECISION_G3B_INTERIM_RETURN.md` | Reviewer decision on PR #51 | **CURRENT G3B DECISION — RETURN / RECONCILIATION REQUIRED** |
-| `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` | Existing Sandbox payment reconciliation + entitlement/idempotency + refund closure | **CURRENT GATE CONTRACT — READY FOR EXECUTION / NO SECOND PAYMENT** |
+| `OWNER_DECISION_G3BR1_SANDBOX_REFUND_AUTHORIZED.md` | Owner authorization for exactly one full Sandbox refund of Woo order #30 | **APPROVED — ONE REFUND ONLY** |
+| `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` | Existing Sandbox payment reconciliation + entitlement/idempotency + refund closure | **CURRENT GATE CONTRACT — PHASE E READY** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
