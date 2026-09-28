@@ -6741,3 +6741,47 @@ STOP_AT_REVIEWER=YES
 ```
 
 Runtime values above came from a strict pinned direct-native read-only SSH check and exact WordPress SHORTINIT/WPDB field reads; the public Product 223 page and a single ephemeral Canary-only Cart/Checkout session were inspected over validated HTTPS without any payment control. Store tax remained disabled; Product 1224 is virtual. The DB backup was checked only for existence and non-sensitive metadata. Accepted Live/webhook and email PASS states were carried forward without reopening PPCP detailed logs or resending email. No order, buyer action, payment, capture, refund, Provider mutation, product/currency/email change, or Shared Infra write occurred. Real transaction outcomes remain explicitly deferred and are not PASS.
+
+
+## K9A VPS Project Hygiene Closeout — 2026-09-28
+
+```text
+GATE=K9A_VPS_PROJECT_HYGIENE_CLOSEOUT
+RESULT=RETURN_K9A_CLEANUP_EXECUTION_PREFLIGHT_FAILED
+REMOTE_IDENTITY=ops@srv1970241
+TARGET_HOST_EXECUTION_PROVEN=PASS
+STRICT_SSH_TRUST=PASS_BY_PINNED_HOSTKEY_AND_EXIT0
+NATIVE_EXIT=0_FOR_READONLY_IDENTITY_AND_INVENTORY;1_FOR_FINAL_PREDELETE_HELPER
+ROOT_USED_BYTES_BEFORE=11514396672
+ROOT_FREE_BYTES_BEFORE=91356921856
+PROJECT_NAMESPACE_BYTES_BEFORE=536017117
+DELETE_CANDIDATE_COUNT=1
+CLEANUP_CANDIDATE_METADATA_ONLY=/srv/apps/mini-craft-night-kit/.tmp|empty_directory|root:root|mode_0755|stat_size_4096|apparent_size_0|allocated_size_4096
+CANDIDATE_CLASS=DISPOSABLE_EMPTY_PROJECT_TEMP_DIRECTORY
+CANDIDATE_RUNTIME_REFERENCE=ABSENT
+CANDIDATE_COMPOSE_REFERENCE=ABSENT
+DELETED_PATH_COUNT=0
+DELETED_BYTES=0
+DELETE_COMMAND_EXECUTED=NO
+UNKNOWN_PATH_COUNT=0
+UNKNOWN_PATHS_METADATA_ONLY=NONE
+BACKUP_DELETE_ACTIONS=0
+DURABLE_DELETE_ACTIONS=0
+SECRET_ACCESS_ACTIONS=0
+SECRET_VALUE_OR_HASH_OUTPUT=0
+DB_CONTENT_OR_DUMP_CONTENT_READ=0
+DOCKER_PRUNE_ACTIONS=0
+DOCKER_RESOURCE_DELETE_ACTIONS=0
+SHARED_INFRA_WRITES=0
+ROOT_USED_BYTES_AFTER=11514613760
+ROOT_FREE_BYTES_AFTER=91356704768
+PROJECT_NAMESPACE_BYTES_AFTER=536017117
+WORDPRESS_STATE=RUNNING
+MARIADB_STATE=RUNNING_HEALTHY
+RESTART_COUNTS=UNCHANGED_FROM_READONLY_INSPECT
+PUBLIC_ORIGIN_HEALTH=NOT_CHECKED_NO_DELETE
+PRODUCTION_REGRESSION=NOT_RUN_NO_DELETE
+STOP_AT_REVIEWER=YES
+```
+
+Read-only inventory identified one empty, unmounted, project-owned `.tmp` directory with no active runtime or Compose reference. The final pre-delete shell stopped on an Executor-side runtime-field assertion before `rmdir`; no VPS deletion or other write was performed. The candidate is retained for Reviewer reconciliation. All data, Secret, backup, runtime and Shared Infrastructure namespaces remain untouched.
