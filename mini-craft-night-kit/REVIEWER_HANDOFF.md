@@ -1,5 +1,34 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — USD 1.00 CANARY AMOUNT SEALED — 2026-09-28
+
+```text
+CURRENT_GATE=K7_R2R2_USD_CANARY_REBASE_AND_FINAL_PREPAYMENT_SEAL
+CURRENT_GATE_STATUS=AUTHORIZED_NONPAYMENT_PREFLIGHT_AND_CONDITIONAL_CANARY_REBASE
+PRODUCTION_TRANSACTION_CURRENCY=USD
+REAL_PAYMENT_CANARY_CURRENCY=USD
+REAL_PAYMENT_CANARY_AMOUNT_USD=1.00
+REAL_PAYMENT_CANARY_GROSS=USD_1_00
+REAL_PAYMENT_AUTHORIZED=NO
+REFUND_AUTHORIZED=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+OWNER_ACTION=NONE
+```
+
+Critical guard:
+
+- first perform a read-only WooCommerce currency/product-price impact preflight;
+- if the current global WooCommerce store currency is already USD, Executor may mutate only hidden Canary Product 1224 price to 1.00 and revalidate populated Checkout;
+- if the current global store currency is not USD, Executor must RETURN before any Product, Cart/Checkout, or store-currency mutation;
+- global store-currency change is not authorized in this Gate because it may reinterpret unrelated production product prices.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K7_R2R2_USD1_CANARY_AMOUNT_SEALED.md`
+
+Execution Pack:
+`review-packets/K7_R2R2_USD1_CANARY_REBASE_AND_FINAL_PREPAYMENT_SEAL.md`
+
+
 ## CURRENT REVIEWER UPDATE — K7 R2R1 PASS / USD CANARY AMOUNT CHECKPOINT — 2026-09-28
 
 ```text
