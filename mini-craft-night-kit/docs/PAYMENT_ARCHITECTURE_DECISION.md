@@ -179,3 +179,31 @@ JPY500_REAL_PAYMENT_AUTHORIZATION=NO
 ```
 
 The exact USD Canary amount must be sealed and Checkout revalidated before any real-money authorization. No amount is inferred from the prior JPY500 fixture.
+
+
+## 9. Current Production Payment Readiness — 2026-09-28
+
+```text
+WOOCOMMERCE_STORE_CURRENCY=USD
+PRODUCT_223_PURCHASABLE=NO
+PRODUCT_1224_HIDDEN_CANARY_PRICE_USD=1.00
+CANARY_ORDER_TOTAL_USD=1.00
+PAYPAL_METHOD_PRESENT=YES
+
+PAYPAL_LIVE_CONNECTED=PASS_CARRIED_FORWARD_ACCEPTED
+WEBHOOK_CURRENT_ORIGIN_REGISTRATION=PASS_CARRIED_FORWARD_ACCEPTED
+TRANSACTIONAL_EMAIL_FOUNDATION=PASS_CARRIED_FORWARD_ACCEPTED
+
+K7_PAYMENT_INFRASTRUCTURE_READINESS=PASS_WITH_DEFERRED_FIRST_LIVE_TRANSACTION_CANARY
+REAL_MONEY_END_TO_END_VALIDATION=DEFERRED_NOT_PASS
+FIRST_LIVE_TRANSACTION_CANARY=ARMED_FOR_FUTURE_REAL_TRANSACTION
+CURRENT_PAYMENT_GATE=NONE_WAITING_FOR_FUTURE_REAL_TRANSACTION_TRIGGER
+```
+
+Because an Owner-controlled real PayPal transaction cannot currently be completed, infrastructure readiness is closed with an explicit deferred real-money limitation.
+
+The first future real PayPal transaction becomes the controlled live Canary. It must be reconciled across Provider state, WooCommerce order/payment state, signed webhook effect and transaction email before any retry. Any mismatch opens a bounded recovery Case.
+
+Refund is not implied by the future payment and remains a separate Owner-authorized action.
+
+Soft Launch remains separate and unauthorized.
