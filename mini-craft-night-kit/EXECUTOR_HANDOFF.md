@@ -3108,3 +3108,17 @@ STOP_AT_REVIEWER=YES
 ```
 
 One ephemeral anonymous cart session was used solely to inspect the Canary Cart/Checkout; no order or payment action was submitted. Accepted PayPal/webhook and email evidence was carried forward without reopening PPCP logs or resending email. No Reviewer-owned file or local worktree was changed.
+
+
+## K9A VPS Project Hygiene Closeout — RETURN — 2026-09-28
+
+Read-only target-host inventory passed for `ops@srv1970241`. One empty project-owned `/srv/apps/mini-craft-night-kit/.tmp` directory was classified DISPOSABLE (4,096-byte directory allocation; no contents, mount, runtime/Compose reference). The final pre-delete shell failed closed on an Executor-side runtime-field assertion before `rmdir`; zero paths were deleted. No data, Secret, backup, Docker resource, or Shared Infra changes occurred. WordPress remained running, MariaDB healthy, and restart counts unchanged in read-only inspection. Public/product regression checks were not run because no cleanup completed.
+
+```text
+GATE=K9A_VPS_PROJECT_HYGIENE_CLOSEOUT
+RESULT=RETURN_K9A_CLEANUP_EXECUTION_PREFLIGHT_FAILED
+DELETED_PATH_COUNT=0
+UNKNOWN_PATH_COUNT=0
+EVIDENCE_COMMIT=4644c9891fee02931c8b1143359d03d857a4e5e5
+STOP_AT_REVIEWER=YES
+```
