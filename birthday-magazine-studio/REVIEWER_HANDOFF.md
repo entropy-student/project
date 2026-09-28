@@ -10,7 +10,7 @@
 
 - Final goal: let a buyer turn photos and structured answers into a polished, personalized birthday magazine PDF without designing it manually.
 - Accepted product direction: browser-local zero-model-cost preview before payment; full personalized production only after confirmed payment and complete intake.
-- Current business goal: reconcile the already-observed PayPal Sandbox payment without replay, close paid-entitlement/idempotency + Sandbox refund, then keep Live payment and production AI provider as later Gates.
+- Current business goal: preserve the now-passed PayPal Sandbox payment/entitlement/refund baseline and decide separately whether/when to enter a bounded Live PayPal Canary. Production AI provider integration remains deferred.
 - Current scope: birthday magazine only. Family Cookbook Studio is now a separate active project at `../family-cookbook-studio/` and remains out of scope here.
 
 ## 2. Authority / Source of Truth
@@ -34,7 +34,7 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Static browser prototype: `prototype/index.html`; simulation only.
 - G2B local Solution Proof: synthetic intake → real interactive-model structured content → grounding → deterministic 12-page US Letter PDF → QA.
 - G3A local commerce proof: isolated Docker Compose + WordPress + WooCommerce + MariaDB + Mailpit, including account-bound private workspace authorization.
-- G3B Sandbox proof package: isolated Docker/MariaDB runtime + official WooCommerce PayPal Payments + temporary HTTPS origin. PR #51 records one Owner Sandbox Buyer payment followed by WooCommerce `processing/paid` read-back.
+- G3B Sandbox proof package: isolated Docker/MariaDB runtime + official WooCommerce PayPal Payments + temporary HTTPS origin. PR #54 closes the full Sandbox loop: existing payment reconciliation, paid-entitlement/idempotency, one Owner-authorized full refund, entitlement revocation, and scoped cleanup.
 - None of the above is a production deployment.
 
 ### Production architecture
@@ -74,8 +74,8 @@ G2BR1 Real AI Generation Closure                        ↩ RETURN — nested Co
 G2BR2 Host Codex Transport + Real-AI Closure             ↩ RETURN — WebSocket failure + HTTP 401
 G2BR3 Direct Codex Agent Real-AI Content/PDF Proof       ✅ PASS
 G3A WordPress + WooCommerce Commerce Loop               ✅ PASS
-G3B PayPal Sandbox + Paid Entitlement Flow              ↩ RETURN — Sandbox payment observed; provider correlation + entitlement/refund incomplete
-G3BR1 Sandbox Reconciliation + Entitlement/Refund       ← CURRENT / OWNER REFUND AUTHORIZED / PHASE E READY
+G3B PayPal Sandbox + Paid Entitlement Flow              ✅ PASS — capture correlation + entitlement/idempotency + refund/revocation
+G3BR1 Sandbox Reconciliation + Entitlement/Refund       ✅ PASS — closes parent G3B
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -101,6 +101,8 @@ Current Reviewer decisions:
 - `PASS_G3A_WORDPRESS_WOOCOMMERCE_COMMERCE_ACCOUNT_LOOP_2026-09-27`
 - `RETURN_G3B_PROVIDER_CAPTURE_CORRELATION_AND_REMAINDER_REQUIRED_2026-09-28`
 - `OWNER_AUTHORIZED_G3BR1_ONE_SANDBOX_FULL_REFUND_ORDER_30_2026-09-28`
+- `PASS_G3BR1_SANDBOX_RECONCILIATION_ENTITLEMENT_REFUND_2026-09-28`
+- `PASS_G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_FLOW_2026-09-28`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -123,7 +125,7 @@ Important limitation: the Owner reports demand as already validated, but the und
 - Browser prototype: exists and is clearly labeled as a simulation.
 - Real-AI content/rendering Solution Proof: proven on the frozen synthetic fixture via G2BR3; unattended production provider integration remains unproven.
 - WooCommerce commerce/account/private-workspace loop: proven locally via G3A.
-- PayPal Sandbox: merchant connection and one Owner Sandbox Buyer payment are evidenced at the WooCommerce side; exact provider capture cardinality/correlation is not yet independently proven.
+- PayPal Sandbox: **PASS** for one bounded synthetic transaction lifecycle — one completed USD 39.99 capture correlated to Woo order #30, paid-entitlement 0→1 behavior, one Owner-authorized full refund, provider/Woo refund correlation, entitlement revocation, and scoped cleanup.
 - Real customer / real-money payment: **not tested**.
 - Private production PDF delivery: not implemented/proven.
 - Repeatability/economics: unknown.
@@ -306,63 +308,44 @@ Verified:
 Decision:
 - [docs/REVIEWER_DECISION_G3A_PASS.md](./docs/REVIEWER_DECISION_G3A_PASS.md)
 
-### G3B Reviewer interim result
+### G3B / G3BR1 Reviewer final result
 
-G3B is **RETURN**, not PASS.
+G3B and its reconciliation closure G3BR1 are **PASS** at Sandbox scope.
 
-PR #51 is accepted and merged as durable interim evidence.
+PR #54 is accepted and merged.
 
-Accepted:
-- official WooCommerce PayPal Payments 4.1.3;
-- Sandbox merchant connection;
-- Sandbox=YES / Live=NO;
-- temporary HTTPS Sandbox origin;
-- PayPal Sandbox checkout component rendered;
-- Owner reported one Sandbox Buyer payment;
-- WooCommerce read-back: synthetic order #30 = `processing`, `paid=true`, USD 39.99, `ppcp-gateway`;
-- PPCP webhook receipt/delivery-host health was reported;
-- generation/model counters remained zero;
-- no Live PayPal, real customer data, production AI call or VPS/production-domain action.
+Verified:
+- official WooCommerce PayPal Payments 4.1.3 in Sandbox;
+- exactly one completed provider capture correlated to Woo order #30 at USD 39.99;
+- no duplicate capture;
+- paid + intake incomplete => 0 canonical generation-ready jobs;
+- intake complete => exactly 1 canonical deferred job;
+- repeated bounded local entitlement evaluation retained exactly 1 job;
+- model calls remained 0;
+- exactly one Owner-authorized full USD 39.99 Sandbox refund through WooCommerce + official PPCP;
+- provider refund cardinality 1, status COMPLETED;
+- Woo/provider refund correlation PASS;
+- duplicate refund NO;
+- canonical job preserved as audit record and moved to `cancelled`;
+- entitlement moved to `revoked`;
+- deferred generation action/cron = 0;
+- G3B Docker/tunnel/temp resources removed;
+- Mini Craft/unrelated resource fingerprints unchanged.
 
-Still missing:
-- exact provider-side capture count and provider↔Woo correlation;
-- callback/webhook event correlation;
-- paid/intake-incomplete entitlement check;
-- exactly-one deferred generation-ready job after intake completion;
-- duplicate entitlement evaluation;
-- one Sandbox refund and refund correlation;
-- refund-driven entitlement revocation/action cancellation.
+Scope limitation:
+- local serial/replay entitlement idempotency is proven;
+- production concurrent/atomic job creation and remote model-spend idempotency remain unproven;
+- Live/real-money payment is not proven.
 
 Decision:
-- [docs/REVIEWER_DECISION_G3B_INTERIM_RETURN.md](./docs/REVIEWER_DECISION_G3B_INTERIM_RETURN.md)
+- [docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md](./docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md)
 
-Safety rule:
-- **do not create another Sandbox payment/capture for reconciliation**;
-- Provider success/paid evidence must be reconciled read-only before any replay.
-
-### Current Gate — G3BR1 Sandbox Payment Reconciliation + Entitlement + Refund Closure
-
-Contract:
-- [docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](./docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md)
+### Next Gate — G4 Bounded Live PayPal Transaction Canary
 
 Status:
-- **CURRENT / READY_FOR_EXECUTION**;
-- start from the already-observed Sandbox payment/order #30;
-- fresh-read runtime/tunnel state before any write;
-- use a verified read-only provider/query path;
-- require exact one completed Sandbox capture correlated to order/amount/currency;
-- no second payment/capture;
-- if correlation passes, prove paid+intake-incomplete => 0 jobs;
-- then mark only synthetic intake complete and prove exactly 1 deferred generation-ready job;
-- duplicate entitlement evaluation must remain exactly 1;
-- model calls remain 0;
-- Phase A-D Reviewer checkpoint is accepted;
-- Owner has now explicitly authorized exactly one full Sandbox refund for WooCommerce order #30 through official PPCP;
-- perform that one refund only; no retry/replay if the result is ambiguous;
-- verify refund correlation and revoke/cancel deferred generation entitlement;
-- G4 / Live remains HOLD.
-
-G4 remains HOLD until G3BR1 closes parent G3B with a Reviewer PASS.
+- **HOLD / NOT AUTHORIZED**;
+- no Live merchant enablement, real-money payment, real refund, production-domain cutover or production deployment is authorized by the G3B PASS;
+- G4 requires a separate bounded Reviewer contract and fresh Owner authorization before execution.
 
 ### Current Gate rollback / recovery
 
@@ -403,7 +386,7 @@ G4 remains HOLD until G3BR1 closes parent G3B with a Reviewer PASS.
 - exact account authentication implementation (magic link vs standard WooCommerce password setup), provided it preserves the frozen no-separate-precheckout-registration product requirement;
 - exact PDF render engine;
 - actual production hosting;
-- production refund/cancellation policy; Sandbox refund behavior remains to be closed in G3BR1;
+- production refund/cancellation policy; Sandbox refund mechanics are proven, but Live/real-money refund behavior remains unproven;
 - real transaction conversion and acquisition cost.
 
 ## 9. Owner-only Checkpoints
@@ -419,7 +402,7 @@ G4 remains HOLD until G3BR1 closes parent G3B with a Reviewer PASS.
 
 - Static prototype and proof source/artifacts are in GitHub.
 - G3A proved an isolated project-scoped Docker/MariaDB/Mailpit runtime and scoped cleanup.
-- At the PR #51 checkpoint, the disposable G3B Docker runtime and temporary HTTPS tunnel were intentionally left active; **fresh read-back is required before the next write because runtime/tunnel liveness can drift**.
+- G3B cleanup is complete: project containers/volumes/network = 0, temporary tunnel = 0, ignored project `.tmp` removed, unrelated/Mini Craft fingerprints unchanged.
 - Root disk / VPS: N/A for current Gate; no VPS deployment is authorized.
 - Production data: none.
 - If Shared VPS is selected later, Storage Layout Contract rev1 and `PROJECT_STORAGE_MANIFEST.md` become mandatory before deployment.
@@ -434,9 +417,9 @@ G4 remains HOLD until G3BR1 closes parent G3B with a Reviewer PASS.
 
 ## 12. Next Step
 
-- Reviewer next action: dispatch/review only `docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md`.
-- Executor next action: reconcile the already-observed Sandbox payment read-only first; **do not create another payment/capture**. Only after exact correlation may it continue local entitlement/idempotency and one bounded Sandbox refund.
-- Owner intervention required: **NO for Phase E unless a new Owner-only PayPal authentication/Secret boundary appears.** The one full Sandbox refund for order #30 is explicitly authorized. A second refund or refund retry is not authorized.
+- G3B/G3BR1 are closed with Reviewer PASS.
+- G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED**.
+- Before any Live or real-money action, Reviewer must define a bounded G4 contract and the Owner must explicitly authorize that consequential test.
 - Production AI interface details remain deferred until the Owner supplies them.
 
 ## 13. Status Summary
@@ -453,6 +436,7 @@ G4 remains HOLD until G3BR1 closes parent G3B with a Reviewer PASS.
 - G2BR3: PASS; one direct interactive-Agent generation passed schema, grounding, modules, 12-page PDF and deterministic QA.
 - Current unresolved production boundary: unattended provider/runtime + provider-spend idempotency + per-order provider cost.
 - G3A: PASS — local Docker/MariaDB WooCommerce commerce/account/private-workspace loop.
-- G3B: RETURN — one Sandbox payment is observed at WooCommerce, but provider capture correlation, entitlement/idempotency and refund are incomplete.
-- G3BR1: CURRENT — Phase A-D accepted; exactly one full Sandbox refund for order #30 is Owner-authorized for Phase E. No second payment/capture/refund.
+- G3B: PASS — bounded PayPal Sandbox payment/capture correlation, paid-entitlement/idempotency, one full refund, entitlement revocation and cleanup are closed.
+- G3BR1: PASS — reconciliation/refund closure completed; parent G3B closed.
+- G4: HOLD — Live/real-money Canary requires a new contract + fresh Owner authorization.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
