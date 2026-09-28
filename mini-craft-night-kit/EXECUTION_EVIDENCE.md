@@ -7366,3 +7366,54 @@ STOP_AT_REVIEWER=YES
 ```
 
 The single authorized read-only command block was run once in Hostinger Browser Terminal on the target VPS; it reported HOST=srv1970241 and USER=root. Required database, wp-content, and deployment/manifest recovery artifacts and the current production data directories are present. Only directory/file existence and file path, byte-size, and mode metadata were recorded; no backup content, database content, or Secret was read. No SSH, VPS write, local deletion, or Docker action occurred.
+
+
+## K9B-R3R2 Final Local Filesystem and Docker Volume Deletion — 2026-09-29
+
+GATE=GATE=K9B_R3R2_FINAL_LOCAL_FILESYSTEM_AND_DOCKER_VOLUME_DELETION
+RESULT=RETURN_K9B_R3R2_EXACT_PATH_DELETION_BLOCKED_BY_EXECUTION_POLICY
+TARGET_WINDOWS_HOST_EXECUTION_PROVEN=PASS
+CURRENT_GITHUB_MINICRAFT_READBACK=PASS
+
+DOCKER_VOLUME_NAMES_DELETED=mini-craft-k3r4-db-data, mini-craft-k3r4-wp-data, mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-db-data, mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-wp-content, mini-craft-k3r4-mariadb-recovery_mini-craft-k3r4-recovery-wp-data, mini-craft-kadence-poc_db_data, mini-craft-kadence-poc_uploads, mini-craft-kadence-poc_wp_core, mini-craft-night-kit_db_data
+DOCKER_VOLUME_DELETE_COUNT=9
+DOCKER_VOLUMES_AFTER=78
+AUTHORIZED_MINICRAFT_VOLUMES_REMAINING=0
+MINICRAFT_CONTAINERS_CURRENT=0
+MINICRAFT_NETWORKS_CURRENT=0
+MINICRAFT_CUSTOM_IMAGE_TAGS_CURRENT=0
+SHARED_UPSTREAM_IMAGES=RETAINED
+BROAD_PRUNE_USED=NO
+NON_MINICRAFT_DOCKER_RESOURCES_TOUCHED=0
+
+DEDICATED_PATHS_DELETED=NONE
+DEDICATED_PATHS_RETAINED_WITH_REASON=C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit-workspace; C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-mariadb-recovery; C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-k3r4-docker-mariadb; C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-kadence-poc; C:\Users\34707\Documents\ChatGPT\VPS基建\mini-craft-night-kit; C:\Users\34707\Documents\ChatGPT\VPS基建\_project-artifacts\mini-craft-night-kit; C:\Users\34707\Documents\ChatGPT\VPS基建\.tmp-cdp-test2 — exact recursive deletion command was rejected before launch by execution policy; no alternate deletion method attempted.
+ACTIVE_PROCESS_PATH_OR_ARGUMENT_REFERENCES=0
+DOCKER_BIND_REFERENCES_TO_TARGET_PATHS=0
+TARGET_ROOT_REPARSE_POINTS=0
+LOCAL_FILESYSTEM_DELETED_BYTES=0
+LOCAL_UNTRACKED_MINICRAFT_GIT_ARTIFACTS=7_EXACT_TARGET_DIRECTORIES_REMAIN
+LOCAL_PROTECTED_ROLLBACK_METADATA=RETAINED
+LOCAL_DPAPI_RECOVERY=RETAINED
+SHARED_GIT_CACHE_EXCEPTION=RETAINED
+SHARED_CACHE_TRACKED_DIRTY_FILES=2_PRESERVED
+SHARED_CACHE_UNTRACKED_FILES=0
+
+PUBLIC_HOME_HTTP=200
+PUBLIC_SHOP_HTTP=200
+PUBLIC_ORIGIN_HEALTH=PASS
+PUBLIC_SHOP_CONTAINS_1224=NO
+PRODUCT_223_PUBLIC_STORE_API_HTTP=200
+PRODUCT_223_PURCHASABLE=NO
+PRODUCT_1224_DIRECT_STORE_API_HTTP=200
+PRODUCT_1224_PUBLIC_PURCHASABLE=YES
+PRODUCT_1224_PUBLIC_CURRENCY=USD
+PRODUCT_1224_CATALOG_SEARCH_RESULT=ABSENT
+PRODUCT_1224_ADMIN_STATUS_AND_CATALOG_VISIBILITY=NOT_READ_IN_THIS_GATE
+WOOCOMMERCE_STORE_CURRENCY=USD_ACCEPTED_CARRY_FORWARD_AND_PUBLIC_API_CURRENCY_CONFIRMED
+
+VPS_MUTATIONS=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+PRODUCT_MUTATIONS=0
+STOP_AT_REVIEWER=YES
