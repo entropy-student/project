@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "project": "ai-story-showrunner",
-  "updated_at": "2026-09-27",
+  "updated_at": "2026-09-28",
   "role": "VALIDATION_RUNTIME_WORKSPACE",
   "canonical_truth": {
     "handoff": "REVIEWER_HANDOFF.md",
@@ -195,6 +195,18 @@
         "synthetic_final_total_duration_sec": 147.247618,
         "creative_fields_changed": false
       }
+    },
+    "gpt_sovits_srt2_batch_executor": {
+      "status": "STATIC_INTEGRATION_READY_LOCAL_RUNTIME_PENDING",
+      "script": "tools/gpt-sovits/GPT_SOVITS_SRT_BATCH_EXECUTOR.py",
+      "launcher": "tools/gpt-sovits/RUN_GPT_SOVITS_SRT_BATCH.bat",
+      "guide": "tools/gpt-sovits/SRT_BATCH_EXECUTOR.md",
+      "agent_task": "tools/gpt-sovits/EXECUTOR_AGENT_TASK.md",
+      "synthesis_map_example": "tools/gpt-sovits/SYNTHESIS_MAP_EXAMPLE.json",
+      "flow": "SRT1 -> per-cue GPT-SoVITS WAV -> precise actual durations -> SRT2 -> narration_master",
+      "scope": "MATERIAL_STAGE_SRT2_HELPER",
+      "full_manifest_resolver_replacement": false,
+      "local_full_episode_runtime_proof": "PENDING"
     }
   },
   "accepted_gates": [
