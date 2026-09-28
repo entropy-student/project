@@ -1,5 +1,38 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — AUTHENTICATED WORDPRESS ADMIN FALLBACK FOR PRODUCT 1224 — 2026-09-29
+
+```text
+SSH_TARGET_HOST_ACCESS=UNAVAILABLE
+OWNER_AUTHENTICATED_WORDPRESS_ADMIN_SESSION=AVAILABLE
+
+CURRENT_GATE=K9B_R2R2A_R2_AUTHENTICATED_WP_ADMIN_PRODUCT_1224_CONTAINMENT
+CURRENT_GATE_STATUS=AUTHORIZED_OWNER_AUTHENTICATED_APPLICATION_MUTATION
+
+AUTHORIZED_PRODUCT=1224
+AUTHORIZED_MUTATION=STATUS_PUBLISH_TO_DRAFT_ONLY
+
+PRODUCT_223_MUTATION_AUTHORIZED=NO
+PAYPAL_MUTATION_AUTHORIZED=NO
+ORDER_PAYMENT_REFUND_AUTHORIZED=NO
+FILESYSTEM_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+K9C_AUTHORIZED=NO
+```
+
+Owner has an authenticated WordPress Admin session in the Codex embedded browser. This is now the approved fallback execution boundary for Product 1224 containment only.
+
+Before mutation, confirm Product 1224 is Published, USD 1.00, catalog visibility Hidden. Then change only status to Draft and save once. Post-validate the same price/visibility in Admin and prove the product is no longer exposed through Shop, unauthenticated Store API search/direct endpoint, or public permalink.
+
+Do not request/share credentials and do not use this application-level boundary for server/filesystem/Docker actions.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9B_R2R2A_R2_AUTHENTICATED_WP_ADMIN_CONTAINMENT.md`
+
+Execution pack:
+`review-packets/K9B_R2R2A_R2_AUTHENTICATED_WP_ADMIN_PRODUCT_1224_CONTAINMENT.md`
+
+
 ## CURRENT REVIEWER UPDATE — TARGET HOST ACCESS RECOVERY BEFORE CANARY CONTAINMENT — 2026-09-29
 
 ```text
