@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "canonicalJobCount": 1,
+  "canonicalJobState": "cancelled",
+  "generationEntitlement": "revoked",
+  "deferredGenerationActionCount": 0,
+  "deferredGenerationCronCount": 0,
+  "modelCallCount": 0,
+  "modelProviderInvoked": false,
+  "auditRecordPreserved": true,
+  "readAtUtc": "2026-09-28T10:01:52+08:00"
+}

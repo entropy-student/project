@@ -1,0 +1,13 @@
+{
+  "home": "http://127.0.0.1:8137 restored; HTTP 200 verified",
+  "temporaryTunnel": "stopped; 0 project cloudflared process",
+  "projectContainers": true,
+  "projectVolumes": true,
+  "projectNetworks": true,
+  "unrelatedContainerFingerprint": true,
+  "unrelatedVolumeFingerprint": true,
+  "unrelatedNetworkFingerprint": true,
+  "temporaryPackages": "NOT CLEANED; execution policy blocked deletion; poc/g3b/.tmp remains",
+  "broadPrune": "NO",
+  "overall": "INCOMPLETE"
+}

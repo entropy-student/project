@@ -1,6 +1,59 @@
 # Executor Handoff — Birthday Magazine Studio
 
-## Current Gate — G3BR1 Phase A-D, stopped before refund
+## Current Gate — G3BR1 Phase E complete; cleanup return to Reviewer
+
+```text
+GATE=G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND
+RESULT=RETURN_G3BR1_CLEANUP_READBACK_FAILED
+EXECUTION_BRANCH=codex/birthday-magazine-g3br1-sandbox-reconciliation-entitlement
+LATEST_MAIN=8a4e02e60188bb004fb8a212b45b2aa5d57aab42
+LATEST_MAIN_MERGE=4ab613db5fe0c3421faa8daeffb921695a14a327
+PHASE_A_D=REVIEWER_ACCEPTED
+SANDBOX=YES
+LIVE=NO
+ORDER=30
+PROVIDER_CAPTURE_CARDINALITY=1
+PROVIDER_CAPTURE_COMPLETED=PASS
+ORDER_AMOUNT_CURRENCY_CORRELATION=PASS
+DUPLICATE_CAPTURE=NO
+CALLBACK_WEBHOOK_CORRELATION=PASS_ORDER_APPROVAL_EVENT_LINKED_TO_SAME_PROVIDER_ORDER
+PAID_INTAKE_INCOMPLETE_JOB_COUNT=0
+PAID_INTAKE_COMPLETE_CANONICAL_JOB_COUNT=1
+ENTITLEMENT_REEVALUATION_IDEMPOTENCY=PASS
+REFUND_PRECHECK_COUNT=0
+REFUND_EXECUTED=YES
+REFUND_AMOUNT=39.99_USD
+SANDBOX_REFUND=PASS
+WOO_REFUND_RECORD_COUNT=1
+PROVIDER_REFUND_CARDINALITY=1
+PROVIDER_REFUND_COMPLETED=PASS
+REFUND_CORRELATION=PASS
+DUPLICATE_REFUND=NO
+REFUND_REVOKES_ENTITLEMENT=PASS
+CANONICAL_JOB_COUNT=1
+CANONICAL_JOB_STATE=cancelled
+GENERATION_ENTITLEMENT=revoked
+DEFERRED_GENERATION_ACTION_AFTER_REFUND=0
+DEFERRED_GENERATION_CRON_AFTER_REFUND=0
+MODEL_CALL_COUNT=0
+G3B_CONTAINERS_VOLUMES_NETWORKS=0_0_0
+UNRELATED_DOCKER_FINGERPRINTS=UNCHANGED
+MINI_CRAFT_COUNTS=8_CONTAINERS_9_VOLUMES_4_NETWORKS_UNCHANGED
+TEMP_PACKAGE_CLEANUP=INCOMPLETE_EXECUTION_POLICY_BLOCKED_RECURSIVE_DELETE
+G3BR1_PR=54_OPEN_UNMERGED
+G3BR1_PR_URL=https://github.com/entropy-student/project/pull/54
+STOP_AT_REVIEWER=YES
+```
+
+Phase E consumed exactly one Owner-authorized full Sandbox refund call through WooCommerce's native `wc_create_refund(refund_payment=true)` and the official PPCP gateway. The subsequent read-only provider GET found one completed USD 39.99 refund correlated to one Woo refund record. No retry was made. The canonical audit entry remains and is now `cancelled` with revoked entitlement. Deferred action and cron counts are zero; no model provider was invoked.
+
+Cleanup restored WordPress `home`/`siteurl` to localhost, confirmed HTTP 200, stopped the temporary HTTPS tunnel, and removed only the Birthday Magazine G3B Compose containers, volumes, and network. Before/after fingerprints for unrelated containers, volumes, and networks match; Mini Craft counts are unchanged. The remaining ignored `birthday-magazine-studio/poc/g3b/.tmp/` contains 1,075 temporary files including the PPCP archive/extraction and tunnel logs. Native recursive deletion was rejected by the execution policy, so this requirement remains incomplete and the result is RETURN. That directory was not added to Git.
+
+Machine-readable current evidence is in [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md), especially `poc/g3br1/artifacts/phase-e-*.json`; scripts are under `poc/g3br1/scripts/`. No payment/refund retry is permitted. No model call, Live payment, real money, or Mini Craft modification occurred. PR #54 is updated by the new branch commit and remains unmerged; Reviewer is the next decision point.
+
+---
+
+## Historical Phase A-D handoff — superseded by Phase E above
 
 ```text
 GATE=G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND
@@ -38,9 +91,9 @@ STOP_AT_OWNER_CHECKPOINT=YES
 - `poc/g3br1/artifacts/` contains sanitized runtime, provider reconciliation, Phase C, Phase D, and final local read-back JSON. The read-only helper and local adapter scripts are under `poc/g3br1/scripts/`. No raw provider payload, Client ID/Secret, bearer token, cookie, Buyer credential, or Authorization header is in the repository.
 - The G3B Compose runtime and temporary HTTPS origin remain active for the Owner checkpoint. G3BR1 `/tmp` helper copies were removed from the WP-CLI container. No global Docker cleanup was used, and Mini Craft resources were not touched.
 
-### Required stop and next handoff
+### Phase A-D stop (historical)
 
-Do not execute any refund yet. The only next authorization needed for Phase E is fresh explicit Owner authorization for one WooCommerce-initiated Sandbox refund on existing order #30. Do not create another payment/capture, use Live PayPal, call a model/provider, or modify G3B PR #51. Continue only through the new G3BR1 PR; do not merge it. Reviewer receives the sanitized evidence before any later Gate.
+Owner authorization is now used for exactly one full refund on order #30. Phase E is complete with RETURN because temporary-package cleanup could not be closed. Do not retry/refund again, create another payment/capture, use Live PayPal, call a model/provider, or modify G3B PR #51. Do not merge PR #54. Reviewer receives the updated sanitized evidence before any later Gate.
 
 Machine-readable execution evidence: [EXECUTION_EVIDENCE.md](EXECUTION_EVIDENCE.md). G3BR1 details: [G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md), [payment-reconciliation.json](poc/g3br1/artifacts/payment-reconciliation.json), [phase-d-entitlement-idempotency.json](poc/g3br1/artifacts/phase-d-entitlement-idempotency.json).
 

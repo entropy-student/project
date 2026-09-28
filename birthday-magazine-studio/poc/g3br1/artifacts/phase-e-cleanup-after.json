@@ -1,0 +1,45 @@
+{
+  "capturedAtUtc": "2026-09-28T02:15:45.4142100Z",
+  "scope": "Docker read-back after project-scoped G3B teardown",
+  "target": {
+    "composeProject": "birthday-magazine-g3b",
+    "containers": 0,
+    "volumes": 0,
+    "networks": 0
+  },
+  "hostInventory": {
+    "containers": 40,
+    "volumes": 87,
+    "networks": 21
+  },
+  "unrelated": {
+    "containers": {
+      "count": 40,
+      "sha256": "ee052601e5a3252b8a8ba8a1747a398c21dda43c1c3c3ab68ec75b317c2ff1d1"
+    },
+    "volumes": {
+      "count": 87,
+      "sha256": "cb212d3fb35ca20dfeff6e44ea46f75f89b52ff09cfa526327cba4e71bc04c0d"
+    },
+    "networks": {
+      "count": 21,
+      "sha256": "17564f2676bcb9181a92bc11093d20d57a87b752492eccf07190b2e451661ac2"
+    }
+  },
+  "miniCraft": {
+    "containers": {
+      "count": 8,
+      "sha256": "e9984e0cbf8581dea13d2740cdd25993d4d2084883be13652d0b28735d3d056e"
+    },
+    "volumes": {
+      "count": 9,
+      "sha256": "a1fce51eb62c569073b34ba23022a315d6543c338ccec1f799a951ebbfa67b8e"
+    },
+    "networks": {
+      "count": 4,
+      "sha256": "1ea2f9ea29df0dd1f8476f3b9c6b311b0f3ed3ea1d4e3d791eaf99727cfde3d8"
+    }
+  },
+  "broadPrune": "NO",
+  "dockerImagePrune": "NO"
+}

@@ -1,16 +1,18 @@
-# G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D execution
+# G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E execution
 
-**Latest result:** `RETURN_OWNER_SANDBOX_REFUND_AUTH_REQUIRED`
-**Phase status:** A-D PASS; stopped before Phase E refund.
+**Current result:** `RETURN_G3BR1_CLEANUP_READBACK_FAILED`
+**Phase status:** A-D accepted; Phase E full Sandbox refund, reconciliation, and entitlement revocation passed. Cleanup is incomplete because the execution policy blocked removal of the project-local temporary `.tmp` directory.
 **Execution branch:** `codex/birthday-magazine-g3br1-sandbox-reconciliation-entitlement`
-**Base:** latest GitHub `main` at `290a73131a4d0ace487d2c1986a94145f03ee277`
+**Phase A-D base:** latest GitHub `main` at `290a73131a4d0ace487d2c1986a94145f03ee277`
+**Phase E latest main:** `8a4e02e60188bb004fb8a212b45b2aa5d57aab42`, merged into this branch by `4ab613db5fe0c3421faa8daeffb921695a14a327`.
 **Previous G3B PR:** #51 was already merged as historical interim RETURN evidence; this Gate uses a new branch and PR.
 **GitHub submission:** [PR #54](https://github.com/entropy-student/project/pull/54), open to `main`, not merged. Initial evidence commit: `a557801f0fc2bc7237d215bb4e9420a3d165961e`.
-**Stop point:** `STOP_AT_OWNER_CHECKPOINT=YES`; no refund was executed.
+**Refund:** Exactly one full USD 39.99 Sandbox refund was invoked for order #30 through WooCommerce native refund and official PPCP; provider and Woo records correlate.
+**Stop point:** `STOP_AT_REVIEWER=YES`; no retry or further refund was attempted.
 
-This G3BR1 continuation uses only existing synthetic paid WooCommerce order #30. No second Sandbox payment, capture, Live payment, real-money payment, refund, or product model call was made. The G3B Compose runtime, temporary HTTPS origin, and Sandbox setting remain in place for the Owner checkpoint. Mini Craft resources were not accessed or changed.
+This G3BR1 continuation used only existing synthetic WooCommerce order #30. No second Sandbox payment/capture/refund, Live payment, real-money payment, or product model call was made. Mini Craft resources were not accessed or changed.
 
-After branch creation, GitHub `main` advanced from `290a731` to `bb90fa0` through Mini Craft-only commits. A fresh diff confirmed no Birthday Magazine files changed on `main`; this branch's merge base remains `290a731`, and PR #54 contains only the intended 19 Birthday Magazine G3BR1 files.
+At initial PR submission, GitHub `main` had advanced from `290a731` to `bb90fa0` through Mini Craft-only commits; the branch was then based on `290a731`. The latest Phase E sync is recorded above. The intervening `main` updates contain no Birthday Magazine changes.
 
 ## Phase A — fresh runtime and local order read-back
 
@@ -42,12 +44,23 @@ Order #30's synthetic intake was marked `complete`. The CLI-only local adapter p
 
 The adapter did not queue an Action Scheduler or cron dispatch because the existing G3A generation feature remains disabled. Deferred generation action count=0 (within the contract maximum of 1), canonical job count remained 1, model/provider invocation=0, refunds=0. This proves local entitlement-record idempotency only; it does not prove production dispatch or model-spend behavior. See [poc/g3br1/artifacts/phase-d-entitlement-idempotency.json](poc/g3br1/artifacts/phase-d-entitlement-idempotency.json), scripts under `poc/g3br1/scripts/`, and [poc/g3br1/artifacts/final-local-readback.json](poc/g3br1/artifacts/final-local-readback.json).
 
-## Checkpoint, cleanup, and forbidden actions
+## Phase A-D checkpoint (historical)
 
-All G3BR1 phases A-D passed and the Owner refund checkpoint is reached. `REFUND_EXECUTED=NO`. Do not execute Phase E until the Owner gives fresh explicit authorization for this exact Sandbox refund. Model calls stayed 0. No real money, Live PayPal, second order/payment/capture, AI/provider call, credential/API key, or Mini Craft resource was used.
+At the end of Phase A-D, the Owner refund checkpoint was reached and no refund had been executed. That historical checkpoint was superseded by the Owner's explicit Phase E authorization recorded on latest `main`.
 
-Temporary G3BR1 helper copies were removed from the scoped WP-CLI container `/tmp`. The four G3B containers, two project volumes, project network, and temporary HTTPS tunnel are intentionally retained because the refund Owner checkpoint still depends on this runtime. No broad Docker cleanup was run.
+## Phase E — one authorized full Sandbox refund and revocation
 
+Fresh preflight confirmed Sandbox=YES, Live=NO, order #30 existed and remained correlated to the single completed USD 39.99 capture, refund count=0, canonical job count=1 in `generation-ready-deferred`, and model calls=0. The existing G3B runtime was healthy. The temporary HTTPS tunnel had expired; its local-only Cloudflare process was stopped after the native WooCommerce refund flow was prepared. WordPress `home` and `siteurl` were restored to `http://127.0.0.1:8137` and local HTTP returned 200.
+
+The one refund call used `wc_create_refund(refund_payment=true)` on order #30, which invokes the official active PPCP gateway's native refund handler. It returned a WooCommerce refund object for USD 39.99. No direct PayPal REST refund call was used. The one-shot helper wrote an invocation marker before calling the gateway and disallows retries. No refund call was made after this invocation.
+
+Read-only official PPCP order GET then found exactly one completed USD 39.99 provider refund and one capture now in `REFUNDED` state. The provider refund ID hash matched the PPCP-stored Woo refund correlation; Woo held exactly one USD 39.99 refund record with `refundedPaymentFlag=true`. `DUPLICATE_REFUND=NO`; refund amount/currency and provider/Woo correlation passed. See [phase-e-provider-refund-readback.json](poc/g3br1/artifacts/phase-e-provider-refund-readback.json) and [phase-e-local-refund-readback.json](poc/g3br1/artifacts/phase-e-local-refund-readback.json).
+
+The prepared local handler preserved the canonical audit record, changed job state to `cancelled`, set entitlement to `revoked`, and left deferred generation actions=0, cron=0, model provider invoked=false, and model calls=0. Final local read-back passed; see [phase-e-entitlement-revocation.json](poc/g3br1/artifacts/phase-e-entitlement-revocation.json) and [phase-e-final-local-readback.json](poc/g3br1/artifacts/phase-e-final-local-readback.json). Execution scripts and helper hashes are retained under `poc/g3br1/scripts/` and `poc/g3br1/artifacts/`.
+
+Cleanup restored the local WordPress URL, stopped the tunnel, and removed all four `birthday-magazine-g3b` containers, both project volumes, and the project network using only project-scoped Compose `down --volumes --remove-orphans`. Post-cleanup container/volume/network inventory fingerprints exactly match the pre-teardown unrelated-resource fingerprints; Mini Craft counts remain 8/9/4. No global prune or image prune was used. However, the execution environment rejected PowerShell recursive deletion commands, so the ignored `poc/g3b/.tmp/` directory remains with 1,075 files (12,890,802 bytes), including one PPCP ZIP and temporary extraction/log files. The remaining temp files were not added to Git. `CLEANUP_READBACK=INCOMPLETE`; see [phase-e-cleanup-before.json](poc/g3br1/artifacts/phase-e-cleanup-before.json), [phase-e-cleanup-after.json](poc/g3br1/artifacts/phase-e-cleanup-after.json), [phase-e-cleanup-readback.json](poc/g3br1/artifacts/phase-e-cleanup-readback.json), [phase-e-temp-cleanup.json](poc/g3br1/artifacts/phase-e-temp-cleanup.json), and [phase-e-tunnel-cleanup.json](poc/g3br1/artifacts/phase-e-tunnel-cleanup.json).
+
+No second payment/capture/refund, Live PayPal, real money, model/provider call, secret disclosure, or Mini Craft resource change occurred. The final result remains RETURN because required temporary-package cleanup could not be completed. Reviewer should decide the next step; do not rerun or retry the refund.
 ---
 
 ## Historical G3B evidence — updated Owner payment return
