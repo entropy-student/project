@@ -3036,3 +3036,26 @@ STOP_AT_REVIEWER=YES
 ```
 
 Phase A completed using the exact allowlisted read-only fields via WordPress SHORTINIT/WPDB SELECT. The store is JPY, so the conditional USD branch was not entered. No Product, currency, cart/checkout, order, payment, webhook, PPCP settings, VPS, or Shared Infra writes occurred. K7 R2R1 accepted PayPal Live/webhook state was carried forward without reopening PPCP settings or logs. Reviewer impact review is required before any USD canary path is designed or changed.
+
+
+## K7_R2R2_R2_BOUNDED_USD_STORE_MIGRATION_AND_CANARY_SEAL — PASS CANDIDATE (2026-09-28)
+
+- USD migration completed in the authorized order after the pre-migration snapshot and protected project-local DB backup.
+- Product 223's test price fields are unset; the published visible concept shell remains non-purchasable. Product 1224 remains hidden and is USD 1.00.
+- Frontend Product 223 has no price/purchase path. Cart and Checkout contain only Product 1224 ×1; total USD 1.00, shipping/tax 0, PayPal method visible. No order, buyer approval, payment, or refund was submitted.
+- WordPress stayed running (restart count 0); MariaDB stayed healthy (restart count 0). No PPCP settings, Shared Infra, DNS, or unrelated product writes. PayPal Live PASS is carried forward from accepted K7 R2R1 evidence; no PPCP settings/logs were reopened.
+- One project-local DB backup: `/srv/backups/mini-craft-night-kit/database/k7-r2r2-r2-pre-usd-store-migration-20260928T062916Z.sql` (5,566,583 bytes, mode 0600, 52 tables; auth temp files verified removed).
+- Three implementation/precondition helper failures were confirmed before business writes; the bounded transaction committed once only after fresh guards. No blind business-write retry occurred.
+- Evidence and this handoff were appended through GitHub API and fresh-read back. No local worktree changes; Reviewer-owned files were not modified.
+
+```text
+GATE=K7_R2R2_R2_BOUNDED_USD_STORE_MIGRATION_AND_CANARY_SEAL
+RESULT=PASS_CANDIDATE_K7_R2R2_R2_BOUNDED_USD_STORE_MIGRATION_AND_CANARY_SEAL
+EVIDENCE_GITHUB_READBACK=PASS
+HANDOFF_GITHUB_READBACK=PASS
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+SOFT_LAUNCH_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
