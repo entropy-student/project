@@ -3059,3 +3059,8 @@ REFUND_ACTIONS=0
 SOFT_LAUNCH_AUTHORIZED=NO
 STOP_AT_REVIEWER=YES
 ```
+
+
+### Evidence correction — K7_R2R2_R2_BOUNDED_USD_STORE_MIGRATION_AND_CANARY_SEAL
+
+- Corrected the initial SSH network invocation count from 5 to 11 by append-only audit note in Evidence; the bounded business-state transaction still committed once after all prewrite failures were reconciled.
