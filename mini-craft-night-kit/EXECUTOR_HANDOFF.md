@@ -3189,3 +3189,27 @@ STOP_AT_REVIEWER=YES
 ```
 
 No local cleanup was performed because the archive barrier is not satisfied. The unknown artifact and all shared/dirty local state remain untouched; Docker inventory could not be proven while the local daemon is unavailable. Secure recovery remains retained. K9C was not started.
+
+
+## K9B-R1 Project-Scoped Archive Barrier Reconciliation — Executor Return (2026-09-28)
+
+```text
+GATE=K9B_R1_PROJECT_SCOPED_ARCHIVE_BARRIER_RECONCILIATION
+RESULT=RETURN_K9B_R1_SENSITIVE_LOCAL_ONLY_DISCOVERED
+MINICRAFT_TRACKED_DIRTY_FILES=2; BOTH_STALE_LOCAL_COPY_SUPERSEDED_BY_GITHUB
+MINICRAFT_UNTRACKED_ITEMS=29
+MINICRAFT_SCREENSHOTS=28; EXACT_GITHUB_PATH_SIZE_BLOB_MATCH=28_OF_28
+ROLLBACK_METADATA=54911_BYTES; SENSITIVE_LOCAL_ONLY_KEEP; NOT_ARCHIVED
+MINICRAFT_UNIQUE_NONSECRET_CONTINUITY_FILES=NONE
+MINICRAFT_UNKNOWN_ITEMS=0
+LOCAL_FILESYSTEM_DELETIONS=0
+LOCAL_DOCKER_CLEANUP=DEFERRED_DAEMON_UNAVAILABLE
+LOCAL_DOCKER_DELETIONS=0
+SHARED_GIT_SETTINGS_MUTATION=0
+LOCAL_SECURE_RECOVERY=RETAINED_PROTECTED_EXCEPTION
+EVIDENCE_GITHUB_COMMIT=9fc0a6dc057445addac2dc93ec13571dfa2b0d5b
+EVIDENCE_GITHUB_READBACK=PASS
+STOP_AT_REVIEWER=YES
+```
+
+The dirty local Evidence/Handoff additions are superseded by current GitHub truth; no local-only continuity change was archived. All 28 screenshot duplicates were verified against GitHub by exact blob and size. The rollback JSON contains protected provider/business rollback state and remains local; no values or digest were emitted. No deletion, Docker operation, or shared Git metadata change occurred.
