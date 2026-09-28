@@ -415,3 +415,41 @@ No Calendar/Registry mutation was performed in proof mode.
 
 Current evidence boundary:
 `CONFIG_SYNC_PASS / MANUAL_RUNTIME_PASS / SCHEDULED_TRIGGER_PROOF_PENDING / G6A_UNCHANGED`.
+
+
+## GPT-SoVITS SRT1 → SRT2 Batch Helper — 2026-09-28
+
+Owner approved adding a reusable material-stage batch helper so an Executor Agent can take a locked planned SRT directly to GPT-SoVITS audio + SRT2.
+
+Added:
+- `tools/gpt-sovits/GPT_SOVITS_SRT_BATCH_EXECUTOR.py`
+- `tools/gpt-sovits/RUN_GPT_SOVITS_SRT_BATCH.bat`
+- `tools/gpt-sovits/SRT_BATCH_EXECUTOR.md`
+- `tools/gpt-sovits/SYNTHESIS_MAP_EXAMPLE.json`
+- `tools/gpt-sovits/EXECUTOR_AGENT_TASK.md`
+
+Contract:
+```text
+SRT1 planned
+→ one SRT cue = one material-stage TTS unit
+→ GPT-SoVITS API
+→ unit WAVs
+→ exact actual durations
+→ SRT2_ACTUAL.srt
+→ narration_master.wav
+→ execution report
+```
+
+Important boundaries:
+- display/subtitle text is locked;
+- synthesis-only rewriting is explicit via map, never silent;
+- no time-stretch/compression to force SRT1 duration;
+- matching PASS units are resume-safe;
+- one technical retry by default, no aesthetic retry loop;
+- SRT2 is material-stage timing, not final SRT3;
+- this helper does not replace the richer Speech Unit + TTS Manifest + Runtime Timeline Resolver path when that package exists.
+
+Evidence state:
+`STATIC_INTEGRATION_READY / LOCAL_FULL_EPISODE_RUNTIME_PENDING`.
+
+Do not claim local Windows/API execution PASS until the helper is run against a real episode.
