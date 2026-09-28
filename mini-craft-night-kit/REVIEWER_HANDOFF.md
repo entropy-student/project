@@ -1,5 +1,40 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## REVIEWER TAKEOVER RECONCILIATION — 2026-09-28
+
+This section records the current Reviewer takeover under canonical VPS Project Governance v0.1.6. It does not reopen accepted Gates and does not authorize any new production/payment action.
+
+```text
+REVIEWER_TAKEOVER=PASS
+GOVERNANCE_SOURCE=entropy-student/spike.skill/vps-project-governance latest
+PROJECT_FACT_SOURCE=current REVIEWER_HANDOFF + fresh accepted Evidence + current Reviewer decision
+MATERIAL_DRIFT_FOUND=NO
+K0_K6=PASS_RETAINED
+K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION=PASS_RETAINED
+K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT=RETURN_PROVIDER_IDENTITY_OR_PERMISSION_UNRESOLVED_RETAINED
+CURRENT_GATE=K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY
+CURRENT_GATE_STATUS=AWAIT_OWNER_PAYPAL_INTERACTIVE_LOGIN
+PPCP_CURRENT_ENVIRONMENT=UNCONNECTED_ONBOARDING_PENDING
+PAYPAL_LIVE=NO
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+SOFT_LAUNCH_AUTHORIZED=NO
+OWNER_ACTION=CLICK_CONNECT_TO_PAYPAL_AND_COMPLETE_PROVIDER_LOGIN_CONSENT
+```
+
+Takeover reconciliation reviewed the current project README, this Handoff, Project Storage Manifest, the accepted K7 R2R1 Owner-login decision, the current K7 R2R1 Execution Pack, Executor dispatch Issue #14, and the latest project commits. The accepted checkpoint evidence remains commit `78e902af67a5219430cd552c7aa1d87d0241e1cb` with Handoff commit `8a4e02e60188bb004fb8a212b45b2aa5d57aab42`; later documentation-only synchronization commits introduce no material project-state drift.
+
+Reviewer decision:
+
+- do not rerun accepted K0–K6 or K7 R1 Gates absent material drift;
+- retain the existing Owner authorization for K7 R2R1;
+- stop at the current Owner-only PayPal interactive login/OAuth/consent checkpoint;
+- after Owner completion, resume the same Gate with fresh read-only Live merchant/binding/permission/webhook verification;
+- if and only if the webhook is unhealthy/wrong, the already-authorized bounded recovery permits at most one official PPCP Resubscribe and one simulation/test;
+- order creation, buyer payment, capture, refund, Product mutation, real webhook replay, Secret output and Soft Launch remain unauthorized;
+- real Production Canary currency remains USD and the exact USD Canary amount remains unsealed.
+
+
 ## CURRENT REVIEWER STATUS — 2026-09-28
 
 This section supersedes older `CURRENT_GATE` markers below. Governance comes from canonical `entropy-student/spike.skill/vps-project-governance` latest; project facts come from accepted Reviewer decisions and fresh accepted Evidence.
