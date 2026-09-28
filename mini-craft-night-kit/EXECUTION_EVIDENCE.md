@@ -6337,3 +6337,33 @@ SOFT_LAUNCH_AUTHORIZED=NO
 STOP_AT_REVIEWER=YES
 ```
 
+
+
+## K7 R2R1 — PayPal Live Connection / Webhook Recovery — RETURN
+
+```text
+GATE=K7_R2R1_PAYPAL_LIVE_CONNECTION_AND_WEBHOOK_RECOVERY
+RESULT=RETURN_SECRET_RISK
+PPCP_ACTIVE=YES
+PPCP_PLUGIN_VERSION=4.1.3
+PPCP_CURRENT_ENVIRONMENT=SANDBOX
+PAYPAL_LIVE=NO
+PPCP_CLIENT_ID_FIELD_INCLUDED_IN_AX_SNAPSHOT=YES_VALUE_NOT_RETAINED
+PPCP_SECRET_OR_TOKEN_VALUE_OR_HASH_ACCESS=0
+PPCP_IDENTIFIER_VALUE_PERSISTED=NO
+OWNER_PAYPAL_LOGIN_OAUTH_CONSENT=NOT_STARTED
+WEBHOOK_RESUBSCRIBE=0
+WEBHOOK_SIMULATION=0
+ORDER_CREATION=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+PRODUCT_1224_MUTATION=0
+PRODUCT_223_MUTATION=0
+STORE_CURRENCY_MUTATION=0
+EMAIL_RESEND=0
+DNS_CADDY_VPS_MUTATION=0
+SOFT_LAUNCH_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+The PPCP settings accessibility snapshot incidentally included the displayed Client ID field together with other connection metadata. No identifier value was copied into project files, logs or chat, and no Secret/token value or hash was accessed. Because the Gate forbids credential reads, execution stopped before disconnect, Live onboarding, OAuth, webhook changes or any business action. Reviewer reconciliation is required before resuming.
