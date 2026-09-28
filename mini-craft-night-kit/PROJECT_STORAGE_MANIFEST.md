@@ -1,8 +1,8 @@
 # Mini Craft Night Kit — PROJECT STORAGE MANIFEST
 
-Status: K6 VPS Deployment PASS / K7 R1 in progress / C1R5 historical auditability limitation retained / current Secret state qualified
+Status: K6 VPS Deployment PASS / K7 R1 PASS / K7 R2 read-only preflight in progress / C1R5 historical auditability limitation retained / current Secret state qualified
 Governance: canonical `entropy-student/spike.skill/vps-project-governance` latest
-Current Gate: `K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION`
+Current Gate: `K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT`
 
 This manifest records deployment/storage truth only. It contains no Secret values.
 It does not authorize a VPS write.

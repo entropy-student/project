@@ -142,7 +142,8 @@ K3_PAYPAL_SANDBOX=PASS
 K6_PUBLIC_SANDBOX_DEPLOYMENT=PASS
 PPCP_ACCEPTED_BASELINE=ACTIVE_CONNECTED_SANDBOX_YES_LIVE_NO
 PRODUCT_223_CANARY_CLASSIFICATION=NOT_SUITABLE_REQUIRE_SEPARATE_HIDDEN_CANARY_SKU
-CURRENT_GATE=K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
+K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION=PASS
+CURRENT_GATE=K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT
 PAYPAL_LIVE=NO
 REAL_PAYMENT_ACTIONS=0
 SOFT_LAUNCH_AUTHORIZED=NO
@@ -150,8 +151,8 @@ SOFT_LAUNCH_AUTHORIZED=NO
 
 The production-canary sequence remains:
 
-1. finish K7 R1 hidden Canary fixture + populated Checkout + transactional-email readiness;
-2. Reviewer seals exact one-order amount/currency and refund path;
+1. K7 R1 hidden Canary fixture + populated Checkout + transactional-email readiness: PASS;
+2. K7 R2 freezes exact Production PayPal identity/permission/webhook/Live path and one-order/refund contract;
 3. Owner separately authorizes the bounded production canary;
 4. Owner completes any required PayPal Live merchant login/authorization;
 5. exactly one low-value order/payment;

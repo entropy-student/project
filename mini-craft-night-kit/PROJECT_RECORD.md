@@ -38,15 +38,16 @@ REAL_PAYMENT_ACTIONS=0
 REFUND_ACTIONS=0
 SOFT_LAUNCH_AUTHORIZED=NO
 
-CURRENT_GATE=K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
-CURRENT_GATE_STATUS=AUTHORIZED_RESUME_CANARY_PUBLISH_AND_CHECKOUT
+K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION=PASS
+CURRENT_GATE=K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_AWAIT_EXECUTOR
 OWNER_ACTION=NONE
 ```
 
-Current Reviewer decision: `docs/REVIEWER_DECISION_K7_R1_OWNER_KEY_ENTRY_CONFIRMED_AND_PROJECT_DOC_RECONCILIATION.md`.  
-Current Execution Pack: `review-packets/K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION_EXECUTION.md`.
+Current Reviewer decision: `docs/REVIEWER_DECISION_K7_R1_PASS_K7_R2_PRODUCTION_CANARY_PREFLIGHT.md`.  
+Current Execution Pack: `review-packets/K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT.md`.
 
-Next: Executor resumes the same K7 R1 Gate to publish the exact hidden Canary fixture and validate populated Checkout. Email qualification is PASS; no order or payment is authorized.
+Next: K7 R2 read-only preflight freezes PayPal Production merchant/application/permission/webhook identity, Live enablement path, expected order state, full-refund path and no-blind-replay rules. No Live/order/payment/refund is authorized.
 
 ## CURRENT AUTHORITATIVE GOVERNANCE OVERRIDE — 2026-09-28
 

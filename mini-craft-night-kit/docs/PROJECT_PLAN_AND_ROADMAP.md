@@ -1,7 +1,7 @@
 # Mini Craft Night Kit — PROJECT PLAN & ROADMAP
 
 Last updated: 2026-09-28  
-Status: **ACTIVE — K7 R1 CANARY FIXTURE + RESEND EMAIL FOUNDATION**
+Status: **ACTIVE — K7 R2 PAYPAL PRODUCTION CANARY PREFLIGHT**
 
 ## 0. Authority and current override
 
@@ -14,8 +14,9 @@ Current accepted execution state:
 K0-K5=PASS
 K6_VPS_DEPLOYMENT=PASS
 PUBLIC_SANDBOX_INGRESS=ACTIVE
-CURRENT_GATE=K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION
-CURRENT_GATE_STATUS=AUTHORIZED_RESUME_CANARY_PUBLISH_AND_CHECKOUT
+K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION=PASS
+CURRENT_GATE=K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_AWAIT_EXECUTOR
 PUBLIC_ORIGIN=https://minicraft.spikersun.com
 RESEND_DOMAIN_VERIFIED=YES
 WORDPRESS_RESEND_PLUGIN=ACTIVE
@@ -79,8 +80,9 @@ K4 Conversion/Trust               PASS
 K4.5/K4.6 Growth readiness/spec   PASS
 K5 Release Candidate QA           PASS
 K6 VPS Deployment                 PASS
-K7 Production Canary readiness    RETURN / remediation in progress
-K7 R1 Canary + Resend foundation  CURRENT / AUTHORIZED
+K7 Production Canary readiness    IN PROGRESS
+K7 R1 Canary + Resend foundation  PASS
+K7 R2 PayPal production preflight CURRENT / READ-ONLY
 ```
 
 Current next action: finish the K7 R1 preparation without any real payment — verify the connected Resend sender and one delivery test, publish the exact hidden virtual JPY500 Canary fixture under the accepted tax-disabled equivalence, then prove populated Checkout total JPY500 with PayPal method visible. No order submit, PayPal Live, payment or refund is authorized.
@@ -215,16 +217,21 @@ order
 
 ## 6. Current Next Action
 
-`K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION`
+`K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT`
 
-Resume after Owner's direct Resend API-key entry. Do not repeat Resend DNS/domain setup.
+Read-only only. Freeze the exact Production PayPal Canary contract before asking Owner for real-money authorization:
 
-Required remaining proof:
-- official Resend plugin connected without exposing the key;
-- sender `Mini Craft <support@minicraft.spikersun.com>`;
-- transactional email qualification PASS (exactly one test email, provider delivered, Owner received);
-- exact hidden virtual Canary product at JPY500, no shipping and effective tax JPY0;
-- populated Checkout total JPY500 and PayPal method visible;
-- zero order/payment/refund actions.
+- fresh PPCP Sandbox/Live state;
+- merchant/application/product-permission identity map;
+- Live enablement + Owner OAuth/login path;
+- webhook/callback model;
+- buyer account separation;
+- Product 1224 / qty1 / JPY500;
+- expected WooCommerce order/payment/email state;
+- exact full JPY500 refund path;
+- provider-fee recovery status if safely observable;
+- max one order / one buyer approval / one payment / one refund;
+- no blind replay;
+- exact future Owner authorization package.
 
-Then STOP_AT_REVIEWER.
+No Live/order/payment/refund action in this Gate.

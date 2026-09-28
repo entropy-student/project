@@ -41,25 +41,22 @@ WordPress
 
 ## 当前 Gate
 
-`K7_R1_CANARY_FIXTURE_AND_RESEND_EMAIL_FOUNDATION`
+`K7_R2_PAYPAL_PRODUCTION_CANARY_PREFLIGHT`
 
 当前状态：
 
 - K0–K5：PASS；
 - K6 VPS Deployment：**PASS**；
-- `https://minicraft.spikersun.com`：公网 Sandbox ingress ACTIVE；
-- PayPal：Sandbox accepted baseline，**Live=NO**；
-- Resend sending domain `minicraft.spikersun.com`：Verified / Sending enabled；
-- 官方 Resend WordPress 插件：Active；
-- Owner 已在 WordPress 中直接录入 Resend API key，站点 UI 显示 connected；Secret 未进入 GitHub/聊天；
-- Canary 商品：已准备草稿，尚未发布；
+- K7 R1 Canary fixture + Resend email foundation：**PASS**；
+- Canary 商品：ID `1224`，Hidden / Virtual / JPY500；
+- populated Checkout：商品 ¥500、运费 ¥0、税 ¥0、总额 ¥500，PayPal method 可见；
+- Resend 邮件链路：**PASS**（唯一测试邮件 Provider Delivered + Owner 收到）；
 - Product 223：未修改；
-- 邮件真实投递验证：**PASS**（单封测试邮件 Provider=Delivered，Owner 已确认收到）；
-- populated Checkout ¥500/运费0/税0/总额¥500 + PayPal method：待验证；
-- 真实订单/支付/refund：均为 0；
+- PayPal：当前仍为 Sandbox，**Live=NO**；
+- 真实订单 / payment / refund：均为 0；
 - Soft Launch：未授权。
 
-当前无需 Owner 操作。Executor 继续同一个 K7 R1 Gate；只有新的 Owner-only 身份/支付/Secret 交互才再次中断 Owner。
+当前正在做最后一个真实支付前只读 preflight：冻结 PayPal Production 的 merchant/application/permission/webhook identity、Live 切换路径、buyer separation、预期订单状态、退款路径和 no-blind-replay 规则。当前无需 Owner 操作。
 
 ## 文档索引
 
