@@ -1,5 +1,47 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2A Runtime Network Drift / M2A-R3 Read-only Reconciliation Open — 2026-09-29
+
+```text
+LATEST_M2A_RESULT=RETURN_PREFLIGHT_DRIFT
+
+TARGET_HOST=srv1970241
+CURRENT_COMPOSE_SHA256=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8
+EXISTING_BACKUP_SHA256=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8
+
+COMPOSE_SOURCE_DRIFT=NO_PROVEN_DRIFT
+WORDPRESS_RUNTIME_NETWORKS=mini-craft-night-kit-database+spikersun-edge+spikersun-private
+MARIADB_RUNTIME_NETWORKS=mini-craft-night-kit-database
+RUNTIME_NETWORK_DRIFT=YES_UNEXPLAINED
+
+CURRENT_GATE=M2A_R3_RUNTIME_NETWORK_MEMBERSHIP_RECONCILIATION
+CURRENT_GATE_STATUS=READ_ONLY_ONLY
+M2A_WRITE_AUTHORIZATION=SUSPENDED_PENDING_R3
+
+TARGET_ARCHITECTURE=DIRECT_TUNNEL_TO_MINICRAFT_APP
+CURRENT_PUBLIC_PATH=DNS_A_TO_CADDY
+CADDY_ROLLBACK_ROUTE_RETAINED=YES
+
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+PROJECT_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+The current Compose source and its pre-change backup remain byte-identical, but the live WordPress container is already attached to `spikersun-private`. Because source and runtime no longer agree, M2A writes are suspended until the origin and exact alias of the runtime-only network membership are reconciled.
+
+No cause is assumed. M2A-R3 is read-only and inspects container/network metadata plus retained Docker event history if available. It must determine whether the extra membership came from a direct runtime network attach, a Compose-managed recreate, a previously accepted operation, or remains unresolved.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2A_R3_RUNTIME_NETWORK_DRIFT_RECONCILIATION.md`
+
+Execution packet:
+`review-packets/M2A_R3_RUNTIME_NETWORK_MEMBERSHIP_RECONCILIATION.md`
+
 ## CURRENT REVIEWER UPDATE — M2A Hash Baseline Corrected / M2A Reauthorized — 2026-09-29
 
 ```text
