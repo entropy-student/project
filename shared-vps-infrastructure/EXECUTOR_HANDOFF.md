@@ -31,7 +31,7 @@ Await Reviewer direction. Do not continue M1 or enter a later Gate.
 - Gate: `M1_R1_TARGET_HOST_ACCESS_RECOVERY_AND_M1_RESUME`
 - Scope: read-only target-host recovery and M1 resume.
 - Result: `RETURN_TARGET_HOST_EXECUTION_UNAVAILABLE`
-- Evidence commit: `237ae48553744c61eda62c3fa0a77c5555a7fced`
+- Evidence commit: `0f9f5674dfa4202d1ac67b71bf2af6e6a3cad8e8`
 
 ### Actual execution
 
