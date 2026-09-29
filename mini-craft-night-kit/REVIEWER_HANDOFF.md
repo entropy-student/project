@@ -1,5 +1,39 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K9C FACTS ACCEPTED / R1 AUDIT-REFERENCE REPAIR REQUIRED — 2026-09-29
+
+```text
+K9C_FACTUAL_RECONCILIATION=ACCEPTED_PENDING_REFERENCE_REPAIR
+K9C_FINAL_CLOSEOUT_RECONCILIATION=RETURN_K9C_DOCUMENT_REFERENCE_INTEGRITY_REPAIR_REQUIRED
+
+CURRENT_GATE=K9C_R1_DOCUMENT_REFERENCE_INTEGRITY_REPAIR
+CURRENT_GATE_STATUS=AUTHORIZED_DOCUMENTATION_ONLY
+
+RUNTIME_RECHECK_REQUIRED=NO
+K9A_REPLAY_REQUIRED=NO
+K9B_REPLAY_REQUIRED=NO
+ACTIVE_GOVERNANCE_CHANGE_AUTHORIZED=NO
+```
+
+Independent GitHub review found one historical audit-pointer corruption in the latest Executor Handoff update: the K6 Phase E R1 section now points to the K9C Evidence commit instead of its original K6 Evidence commit.
+
+Verified correct historical K6 Phase E R1 Evidence commit:
+`4491c7a4de2dda38af917c778f4ca683e7090059`
+
+Current final K9C Evidence commit:
+`4c4cb32697d90efe0f7918b69bba990bf0d5e3dd`
+
+Current K9C report commit:
+`dcd97541fd3b7fb0e5111fd6cc118648cdefd313`
+
+Only `EXECUTOR_HANDOFF.md` requires two heading-scoped pointer repairs. No runtime/project state is re-opened.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9C_RETURN_R1_DOCUMENT_REFERENCE_INTEGRITY_REPAIR.md`
+
+Governance closeout Candidate has also captured this newly observed cumulative-handoff reference-integrity edge case and remains CANDIDATE / NOT ACTIVE pending final K9 closure.
+
+
 ## CURRENT REVIEWER UPDATE — K9B FORMAL PASS / K9C FINAL RECONCILIATION OPEN — 2026-09-29
 
 ```text
