@@ -3403,7 +3403,7 @@ The single sealed metadata-only console block confirmed the target hostname, pro
 
 ## K9B-R3R2 final local closeout — 2026-09-29
 
-GATE=GATE=K9B_R3R2_FINAL_LOCAL_FILESYSTEM_AND_DOCKER_VOLUME_DELETION
+GATE=K9B_R3R2_FINAL_LOCAL_FILESYSTEM_AND_DOCKER_VOLUME_DELETION
 RESULT=RETURN_K9B_R3R2_EXACT_PATH_DELETION_BLOCKED_BY_EXECUTION_POLICY
 Docker: all 9 exact authorized Mini Craft volumes were removed and read back absent; Mini Craft containers/networks/custom image tags remain 0; no prune or non-Mini-Craft Docker resource changes.
 Local filesystem: the 7 exact candidate directories remain. The recursive exact-path deletion command was rejected by execution policy before launch; no alternate deletion path was attempted. Protected rollback/DPAPI recovery and shared Git cache remain untouched.
@@ -3412,4 +3412,24 @@ Evidence: commit 98e680a0788d7024e38224d0f017e7a370555887.
 VPS_MUTATIONS=0
 REAL_PAYMENT_ACTIONS=0
 REFUND_ACTIONS=0
+STOP_AT_REVIEWER=YES
+
+
+## K9B-R3R4 final read-only closeout — 2026-09-29
+
+GATE=K9B_R3R4_FINAL_READONLY_LOCAL_CLOSEOUT_VERIFICATION
+RESULT=PASS_CANDIDATE_K9B_R3R4_FINAL_READONLY_LOCAL_CLOSEOUT_VERIFICATION
+All seven exact local paths are absent; Mini Craft Docker containers, networks, volumes and custom images are zero.
+Protected rollback and both DPAPI recovery artifacts remain in Codex LocalCache with expected metadata only; no content/hash/decryption/copy/move/delete was performed.
+Shared project-github-sync remains present, with zero untracked Mini Craft artifacts and two known tracked dirty entries carried forward.
+Public Home/Shop are HTTP 200; Product 223 is non-purchasable; USD is confirmed by public Store API. Product 1224 remains the Reviewer-accepted Published/Hidden/USD 1.00 baseline and was not read or modified.
+EVIDENCE_GITHUB_COMMIT=de8fb9dee5d1afe7ff9b144838ff4bb58ab267a2
+EVIDENCE_GITHUB_READBACK=PASS
+LOCAL_FILESYSTEM_MUTATIONS=0
+DOCKER_MUTATIONS=0
+VPS_MUTATIONS=0
+PRODUCT_MUTATIONS=0
+REAL_PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+K9C_ENTERED=NO
 STOP_AT_REVIEWER=YES
