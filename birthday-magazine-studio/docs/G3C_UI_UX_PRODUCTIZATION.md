@@ -1,18 +1,18 @@
 # G3C — UI/UX Productization + Owner Visual Freeze
 
 > Governance: VPS Project Governance v0.1.6 + current active addenda  
-> Reviewer status: **CURRENT GATE / AUTHORIZED FOR PROJECT-LOCAL REVERSIBLE EXECUTION**  
+> Reviewer status: **CURRENT GATE / TEMPLATE SELECTION OPEN — IMPLEMENTATION NOT YET AUTHORIZED**  
 > Opened: 2026-09-29  
 > Production / Live payment authority: **NONE**
 
 ## 1. Goal
 
-Turn the accepted Birthday Magazine MVP into a WordPress-visible product experience that the Owner can review visually before UI freeze.
+First select a concrete free/open-source-compatible WordPress starter template, then turn the accepted Birthday Magazine MVP into a WordPress-visible product experience that the Owner can review visually before UI freeze.
 
-The accepted route is hybrid:
+The accepted route remains hybrid, but the starter shell is **not yet selected**:
 
-- **Kadence Theme + free “Single Product” starter template** = editable WordPress site shell;
-- **Good Issue-style browser-local Free Preview** = custom core conversion interaction;
+- **Concrete starter template: OPEN / requires Owner selection after research**;
+- **Good Issue-style browser-local Free Preview** = accepted custom core conversion interaction;
 - **WooCommerce** = canonical product/cart/checkout/account system;
 - existing G3A/G3B payment/account/private-workspace boundaries must not be weakened.
 
@@ -50,10 +50,10 @@ Material drift in the accepted product/payment/privacy contract must return to R
 
 ## 4. Allowed scope
 
-Executor may:
+Before Owner template selection, Executor may perform **research/read-only comparison only**. After explicit Owner selection and Reviewer implementation authorization, Executor may:
 
 - create or reconstruct an isolated local WordPress + WooCommerce runtime;
-- install/activate the free Kadence theme and the selected free “Single Product” starter/site shell;
+- install/activate the selected free theme/starter template and only its required free/open-source dependencies;
 - implement project-local WordPress code/CSS/blocks/shortcodes needed to integrate the Good Issue preview;
 - adapt Header/Footer, typography, spacing, product sections, trust/FAQ/testimonial/sample sections and responsive layout;
 - reuse synthetic G2A/G3 fixtures where appropriate;
@@ -103,7 +103,7 @@ The free preview may use browser-local `blob:`/equivalent local object URLs, but
 
 Technical evidence must show:
 
-- selected Kadence shell is actually active in the local WordPress runtime;
+- the Owner-selected concrete starter shell is actually active in the local WordPress runtime;
 - the Birthday Magazine product page renders successfully on desktop and 375px mobile;
 - Good Issue preview is visibly integrated in the product page, not replaced by a static mock;
 - selecting the synthetic preview image results in browser-local rendering and **zero photo upload/network POST caused by selection**;
