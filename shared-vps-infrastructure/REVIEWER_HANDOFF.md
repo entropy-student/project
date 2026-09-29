@@ -1,5 +1,42 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M1 PASS / M2A Private Network Preparation Open — 2026-09-29
+
+```text
+M1_MINICRAFT_TUNNEL_ARCHITECTURE_CONFIRMATION=PASS
+TARGET_ARCHITECTURE=DIRECT_TUNNEL_TO_MINICRAFT_APP
+
+TUNNEL=spikersun-shared-private
+MINICRAFT_FUTURE_PRIVATE_ALIAS=mini-craft-night-kit-wordpress
+MINICRAFT_FUTURE_ORIGIN=http://mini-craft-night-kit-wordpress:80
+MARIADB_PRIVATE_NETWORK_ATTACHMENT=NO
+
+CURRENT_GATE=M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_WRITE
+
+CURRENT_PUBLIC_PATH=DNS_A_TO_CADDY
+CURRENT_CADDY_ROUTE_RETAINED_AS_ROLLBACK=YES
+
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+SHARED_NETWORK_RECREATE_AUTHORIZED=NO
+WORDPRESS_PROJECT_NETWORK_MEMBERSHIP_CHANGE=AUTHORIZED_EXACT
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+M1 is formally closed. Authenticated Cloudflare readback proved the existing Shared VPS pattern is direct Tunnel-to-app alias: Dujiao, Unified Pay and Xianyu all use direct origin services behind `spikersun-shared-private`.
+
+M2A authorizes only project-local preparation required for the future Tunnel origin: attach WordPress to the existing `spikersun-private` network with unique alias `mini-craft-night-kit-wordpress`. The existing `spikersun-edge` membership and Caddy route remain unchanged, and MariaDB stays isolated.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M1_R4_PASS_M1_ARCHITECTURE_SEALED_M2A_AUTHORIZED.md`
+
+Execution packet:
+`review-packets/M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION.md`
+
 ## CURRENT REVIEWER UPDATE — M1-R3 RETURN Accepted / M1-R4 Cloudflare Read-only Checkpoint Open — 2026-09-29
 
 ```text
