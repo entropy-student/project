@@ -365,3 +365,64 @@ The two target-host rounds used the same WordPress container ID and both reporte
 
 Both canonical Compose and the existing backup freshly matched the accepted SHA-256. The running Compose project/config labels matched the canonical project directory and file. The environment-file enumeration then failed on a shell syntax error and the terminal session ended. Consequently the environment source/variable-name inventory and unmodified Compose validation were not completed. No source edit, backup operation, Compose validation, recreate, or other mutation occurred. Conditional M2A execution was not entered.
 
+
+
+## Gate: M2A-R5 Parser-independent Stable Baseline and Conditional Execution — 2026-09-30
+
+```text
+GATE=M2A_R5_PARSER_INDEPENDENT_STABLE_BASELINE_AND_CONDITIONAL_EXECUTION
+RESULT=RETURN_PREFLIGHT_DRIFT
+ACCESS_PATH=HOSTINGER_WEB_TERMINAL
+TARGET_HOST=srv1970241
+TARGET_HOST_EXECUTION_PROVEN=PASS
+CONSOLE_USER=root
+CANONICAL_PROJECT_DIR=/srv/apps/mini-craft-night-kit
+
+PREWRITE_READ_ROUNDS=2
+READ_ROUND_INTERVAL_SECONDS=3
+READ_ROUNDS_SEMANTICALLY_EQUAL=YES
+WORDPRESS_CONTAINER_ID_UNCHANGED=YES
+WORDPRESS_CONTAINER_ID=ea7cbd0f89569f3e1083268f38374182558cf9de6c6fd038ed1684ff5557d457c
+WORDPRESS_RESTART_COUNT_A_B=0
+WORDPRESS_NETWORKS_A_B=mini-craft-night-kit-database+spikersun-edge
+WORDPRESS_ALIASES_BY_NETWORK_A_B=mini-craft-night-kit-database:[mini-craft-night-kit-wordpress-1,wordpress];spikersun-edge:[mini-craft-night-kit-wordpress-1,wordpress]
+WORDPRESS_PRIVATE_ENDPOINT_A_B=ABSENT
+SPIKERSUN_PRIVATE_WORDPRESS_ENDPOINT_A_B=ABSENT
+SPIKERSUN_PRIVATE_TARGET_ALIAS_COLLISIONS_A_B=0
+SPIKERSUN_PRIVATE_ENDPOINTS_A_B=dujiao-next-app-1;spikersun-private-cloudflared-1;unified-pay-app-1;xianyu-xianyu-app-1
+MARIADB_NETWORKS_A_B=mini-craft-night-kit-database
+MARIADB_HEALTH_A_B=healthy
+
+SEALED_COMPOSE_SHA256=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8
+OBSERVED_COMPOSE_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+OBSERVED_EXISTING_BACKUP_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+COMPOSE_EQUALS_EXISTING_BACKUP=YES
+COMPOSE_AND_BACKUP_SEALS=FAIL
+UNMODIFIED_COMPOSE_VALIDATION=NOT_RUN_PREWRITE_HASH_MISMATCH
+COMPOSE_ENV_RESOLUTION=NOT_TESTED
+CADDY_PUBLIC_REGRESSION=NOT_RUN
+
+M2A_COMPOSE_WRITE=0
+WORDPRESS_RECREATE=0
+NETWORK_CONNECT_DISCONNECT=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+DATABASE_MUTATIONS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+CLEANUP_ACTIONS=0
+SSH_NETWORK_INVOCATIONS=0
+SECRET_CONTENT_READS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
+
+### R5 fail-closed result
+
+Hostinger Web Terminal confirmed the target host. Two independent reads parsed raw `docker inspect` and `docker network inspect` JSON with Python; both rounds agreed on the WordPress container ID, DB+edge networks, per-network aliases, absence from `spikersun-private`, zero target-alias collisions, and healthy MariaDB isolated to the project database network.
+
+The canonical Compose file and the existing pre-M2A backup were each freshly hashed. They match each other, but both produce `85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c`, not the R5 sealed digest `85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8`. Therefore execution stopped before unmodified Compose validation, backup use, source edit, or any runtime operation. No environment values or Secret values were read or emitted. No M2A mutation occurred.
