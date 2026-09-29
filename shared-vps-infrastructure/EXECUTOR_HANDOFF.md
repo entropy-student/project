@@ -197,3 +197,31 @@ PAYMENT_ACTIONS=0
 SECRET_VALUES_EMITTED=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — M2A-R7 Explicit Non-secret Compose Environment and Conditional Execution — 2026-09-30
+
+- Gate: `M2A_R7_EXPLICIT_NONSECRET_COMPOSE_ENV_AND_CONDITIONAL_EXECUTION`
+- Result: `PASS_CANDIDATE_M2A_R7_EXPLICIT_NONSECRET_COMPOSE_ENV_AND_CONDITIONAL_EXECUTION`
+- Used Hostinger Web Terminal on `srv1970241`; no SSH retry.
+- Fresh prewrite matched the corrected Compose/backup SHA and accepted network/runtime baseline. Compose source contained exactly two interpolation variables: `MARIADB_DATABASE=wordpress` and `MARIADB_USER=mini_craft_app` (non-secret values only). No `.env` read. Unmodified and edited quiet Compose validations passed.
+- Reused the existing rollback backup; changed only the canonical Compose file to add WordPress to existing `spikersun-private` using alias `mini-craft-night-kit-wordpress`; MariaDB remained DB-network-only. Recreated only WordPress, without dependencies, pull, or build.
+- Post-readback: WordPress running, restart count 0; alias matched exactly one endpoint owned by WordPress; MariaDB healthy/private; private origin HTTP 200; existing Caddy Home/Shop/REST each HTTP 200.
+- No M2B, DNS, Tunnel, Cloudflare, Caddy, payment, Secret, database-content, or cleanup action. No Reviewer-owned files changed.
+- Evidence commit: `ba9a601a440554a334d94b4e27e0c99d1dbd5b63`
+- STOP_AT_REVIEWER=YES
+
+```text
+M2A_COMPOSE_WRITE=1
+WORDPRESS_ONLY_RECREATE=1
+NEW_BACKUP_CREATED=0
+SHARED_NETWORK_DEFINITION_MUTATION=0
+MARIADB_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_READ_OR_EMITTED=0
+M2B_ENTERED=NO
+STOP_AT_REVIEWER=YES
+```
