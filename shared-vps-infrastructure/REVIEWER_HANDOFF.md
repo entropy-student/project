@@ -1,5 +1,31 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — Documentation Consolidation R1 PASS — 2026-09-29
+
+```text
+SHARED_VPS_DOCUMENT_CONSOLIDATION_R1=PASS
+EXECUTOR_COMMIT=cf353a45d7c6fc71fcbc80905376fe8596f3e0b7
+REVIEWER_DECISION=docs/REVIEWER_DECISION_DOCUMENT_CONSOLIDATION_R1_PASS.md
+
+VPS_HEALTH=PASS
+DISK_PRESSURE=NO
+
+XIANYU=ACTIVE_HEALTHY
+DUJIAO_NEXT=ACTIVE_HEALTHY
+UNIFIED_PAY=ACTIVE_HEALTHY_RUNTIME_WITH_LIFECYCLE_REVIEW
+MINI_CRAFT_NIGHT_KIT=K9_CLOSED_RUNTIME_RETAINED
+
+CURRENT_GATE=NONE_DOCUMENTATION_CONSOLIDATION_CLOSED
+CLEANUP_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+PROVIDER_MUTATION_AUTHORIZED=NO
+```
+
+Independent GitHub review verified the Executor documentation commit changed exactly 14 files (11 additions, 3 modifications), preserved historical material, created no competing `CURRENT_STATE.md`, corrected Unified Pay current deployment truth, and left Mini Craft K9 current handoff unchanged.
+
+Future VPS work must open a new bounded Gate. Preferred order: Unified Pay lifecycle decision, bounded Xianyu hygiene where evidence is sufficient, then a final Shared VPS maintenance baseline.
+
 ## CURRENT REVIEWER UPDATE — Portfolio Reconciliation R1 Accepted — 2026-09-29
 
 ```text
