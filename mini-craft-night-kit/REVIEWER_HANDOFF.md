@@ -1,5 +1,35 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — PROTECTED RECOVERY VIRTUALIZATION PASS / VERIFY SEVEN EXACT PATHS — 2026-09-29
+
+```text
+K9B_R3R3_R1_PROTECTED_RECOVERY_VIRTUALIZATION_METADATA_SEAL=PASS
+
+PROTECTED_ROLLBACK_METADATA=RETAINED_CODEX_LOCALCACHE;54911_BYTES
+DPAPI_PENDING_RECOVERY=RETAINED_CODEX_LOCALCACHE;1686_BYTES
+DPAPI_FINAL_RECOVERY=RETAINED_CODEX_LOCALCACHE;1686_BYTES
+
+PROTECTED_RECOVERY_DELETION_PROVEN=NO
+PROTECTED_RECOVERY_MISSING_PROVEN=NO
+PROTECTED_RECOVERY_VIRTUALIZATION_CONFIRMED=YES
+
+CURRENT_GATE=K9B_R3R3_R2_OWNER_EXACT_PATH_POSTDELETE_VERIFICATION
+CURRENT_GATE_STATUS=OWNER_LOCAL_READONLY_VERIFY_THEN_EXACT_REMAINDER_DELETE
+
+DOCKER_CLOSEOUT=PASS
+K9C_AUTHORIZED=NO
+```
+
+Owner read-only metadata found all three protected artifacts under the OpenAI Codex packaged-app LocalCache namespace with exact expected byte sizes. No content/hash/decryption/move/delete occurred.
+
+The prior ordinary `%LOCALAPPDATA%` absence was a path-context mismatch, not a deletion event.
+
+Next: read-only Test-Path against the seven exact approved local paths. If all are absent, perform no further deletion. If any remain, Owner may delete only the exact remaining allowlisted paths. Protected Codex LocalCache recovery and shared Git remain untouched.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9B_R3R3_R1_PASS_PROTECTED_RECOVERY_VIRTUALIZATION_SEAL.md`
+
+
 ## CURRENT REVIEWER UPDATE — PROTECTED RECOVERY FOUND UNDER CODEX LOCALCACHE VIRTUALIZATION — 2026-09-29
 
 ```text
