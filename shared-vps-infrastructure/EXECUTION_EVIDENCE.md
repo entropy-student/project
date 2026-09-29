@@ -97,3 +97,62 @@ Read the current Shared VPS `SHARED_VPS_HANDOFF.md`, `REVIEWER_HANDOFF.md`, this
 The Owner-local bootstrap handoff, referenced identity file, public-key fingerprint, and all three normal known_hosts pins passed local metadata checks. One direct-native strict SSH invocation was made to `ops@2.24.193.133:22` with BatchMode, IdentitiesOnly, StrictHostKeyChecking, explicit normal UserKnownHostsFile, ConnectionAttempts=1, bounded ConnectTimeout, no agent forwarding, no proxy, and no TTY. The server closed the connection before any remote identity output. No retry or alternate access path was used. Host-key negotiation/remote command execution is not claimed as proven.
 
 Because `whoami=ops`, `id -un=ops`, non-root UID, and `hostname=srv1970241` were not returned, target-host execution is unproven. M1 phases B-I were not started; no runtime or architecture findings are claimed. Current browser tabs included Hostinger but no Cloudflare Dashboard session. The architecture remains unresolved. This result is the precise fail-closed RETURN required by M1-R1.
+
+## Gate: M1-R4 Cloudflare Read-only Session and Architecture Seal — 2026-09-29
+
+```text
+GATE=M1_R4_CLOUDFLARE_READONLY_SESSION_AND_ARCHITECTURE_SEAL
+RESULT=PASS_CANDIDATE_M1_R4_CLOUDFLARE_READONLY_SESSION_AND_ARCHITECTURE_SEAL
+CLOUDFLARE_DASHBOARD_SESSION=AUTHENTICATED
+CLOUDFLARE_ZONE=spikersun.com
+TUNNEL=spikersun-shared-private
+TUNNEL_STATE=HEALTHY
+CONNECTED_CONNECTORS=1
+CLOUDFLARED_MODE=REMOTE_MANAGED_TOKEN
+CLOUDFLARED_IMAGE=cloudflare/cloudflared:2026.8.3
+CLOUDFLARED_NETWORK=spikersun-private
+TOKEN_OR_ENV_READ=NO
+
+SHOP_PUBLIC_HOSTNAME=shop.spikersun.com
+SHOP_TUNNEL_ORIGIN_SERVICE=http://dujiao-next-app:8080
+DUJIAO_TUNNEL_PATTERN=DIRECT_TO_APP_ALIAS
+PAY_PUBLIC_HOSTNAME=pay.spikersun.com
+PAY_TUNNEL_ORIGIN_SERVICE=http://unified-pay-app:8080
+XIANYU_PUBLIC_HOSTNAME=xianyu.spikersun.com
+XIANYU_TUNNEL_ORIGIN_SERVICE=http://xianyu-app:8090
+
+MINICRAFT_CURRENT_NETWORKS=mini-craft-night-kit-database+spikersun-edge
+MINICRAFT_CURRENT_ALIASES=container-name+wordpress
+MINICRAFT_CURRENT_PRIVATE_ALIAS=ABSENT
+MINICRAFT_ALIAS_COLLISION=GENERIC_APP_ALREADY_USED_BY_DUJIAO_AND_UNIFIED_PAY
+MINICRAFT_COMPOSE_CURRENT_NETWORKS=spikersun-edge_EXTERNAL+mini-craft-night-kit-database_INTERNAL
+SPIKERSUN_PRIVATE_EXTERNAL_REUSE=SUPPORTED_BY_CURRENT_COMPOSE_STRUCTURE
+MINICRAFT_FUTURE_PRIVATE_ALIAS=mini-craft-night-kit-wordpress
+MARIADB_PRIVATE_NETWORK_ATTACHMENT=NO
+
+TEMP_TUNNEL_CANARY_FEASIBLE=YES_CONDITIONALLY
+ORIGIN_SERVICE_PATTERN=DIRECT_TUNNEL_TO_PROJECT_UNIQUE_APP_ALIAS
+ORIGIN_SERVICE_CANDIDATE=http://mini-craft-night-kit-wordpress:80
+ORIGIN_HOST_HEADER_REQUIREMENT=minicraft.spikersun.com; VERIFY_OR_SET_EXPLICITLY_IN_M2B
+CANARY_SAFE_SCOPE=TEMPORARY_FRESH_ABSENT_HOSTNAME_ONLY; KEEP_CANONICAL_CADDY_ROUTE
+COOKIE_SESSION_LIMITATION=TEMP_HOST_COOKIE_SESSION_ISOLATED; DOES_NOT_PROVE_CANONICAL_SESSION_CONTINUITY
+TARGET_ARCHITECTURE=DIRECT_TUNNEL_TO_MINICRAFT_APP
+
+M2A_PRIVATE_NETWORK_PREPARATION=ADD_EXISTING_EXTERNAL_NETWORK_TO_WORDPRESS_ONLY; UNIQUE_ALIAS; KEEP_MARIADB_ISOLATED
+M2B_TEMP_TUNNEL_CANARY=FRESH_ABSENT_TEMP_HOST_TO_PRIVATE_APP_ALIAS; VERIFY_CANONICAL_HOST_HEADER_AND_PUBLIC_BEHAVIOR
+M2C_PRODUCTION_HOSTNAME_CUTOVER=REVIEWER_AUTHORIZED_TUNNEL_ROUTE_AND_EXACT_DNS_CUTOVER; KEEP_CADDY_ROUTE_AS_ROLLBACK
+M2D_PUBLIC_REGRESSION_AND_OBSERVATION=VERIFY_DNS_TLS_APP_ROUTES_AND_UNRELATED_CADDY_ROUTES; CADDY_ROLLBACK_REMAINS
+M2E_RETIRE_OLD_MINICRAFT_CADDY_ROUTE=ONLY_AFTER_M2D_REVIEWER_ACCEPTANCE_AND_SEPARATE_EXPLICIT_GATE
+ROLLBACK_BEFORE_M2E=RESTORE_MINICRAFT_DNS_TO_CADDY_ORIGIN; RESTORE_TUNNEL_ROUTE_STATE; KEEP_CADDY_ROUTE_UNCHANGED
+
+CLOUDFLARE_MUTATIONS=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+CADDY_MUTATIONS=0
+PROJECT_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
+
+Read-only provenance: authenticated Cloudflare One Dashboard route table; accepted M1-R3 target-host output and current Mini Craft/Dujiao handoffs; Cloudflare official Tunnel origin-parameter documentation (httpHostHeader setting remains empty by default and is not changed in this Gate). No Tunnel route detail was edited or saved.
