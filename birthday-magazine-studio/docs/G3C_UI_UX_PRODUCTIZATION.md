@@ -50,6 +50,8 @@ Material drift in the accepted product/payment/privacy contract must return to R
 
 ## 4. Allowed scope
 
+Executor must use `docs/G3C_EXECUTION_PACKET.md` as the exact implementation package and reusable-asset map.
+
 Executor may now:
 
 - create or reconstruct an isolated local WordPress + WooCommerce runtime;
