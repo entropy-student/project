@@ -142,3 +142,32 @@ PAYMENT_ACTIONS=0
 SECRET_VALUES_EMITTED=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — M2A-R5 Parser-independent Stable Baseline and Conditional Execution — 2026-09-30
+
+- Result: `RETURN_PREFLIGHT_DRIFT`; no conditional M2A write was entered.
+- Used the accepted Hostinger Web Terminal only; target host `srv1970241` was confirmed. No SSH was attempted.
+- Two parser-independent raw-JSON read rounds were semantically equal: WordPress ID unchanged; networks were only `mini-craft-night-kit-database` + `spikersun-edge`; no WordPress endpoint existed on `spikersun-private`; target alias collision count was 0; MariaDB remained healthy on the project DB network only.
+- Current Compose and the existing pre-M2A backup matched each other at SHA-256 `85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c`, but not the R5 sealed SHA-256 `85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8`. Stopped before unmodified Compose validation, backup use, or any write.
+- Compose environment resolution was not tested; no environment or Secret values were read or emitted.
+- Evidence commit: `e262acc51c61a87b9c0decae7d2be0574ca1bc1a`
+
+```text
+PREWRITE_READ_ROUNDS=2
+STABLE_PREWRITE_RUNTIME=PASS
+COMPOSE_AND_BACKUP_SEALS=FAIL
+UNMODIFIED_COMPOSE_VALIDATION=NOT_RUN_PREWRITE_HASH_MISMATCH
+M2A_COMPOSE_WRITE=0
+WORDPRESS_RECREATE=0
+NETWORK_CONNECT_DISCONNECT=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
