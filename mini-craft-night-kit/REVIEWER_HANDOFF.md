@@ -1,5 +1,54 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — K9C PASS / K9 CLOSED / GOVERNANCE REV1 PROMOTED — 2026-09-29
+
+```text
+K9A_VPS_PROJECT_HYGIENE_CLOSEOUT=PASS
+K9B_LOCAL_WORKSPACE_GITHUB_ARCHIVE_AND_DECOMMISSION=PASS
+K9C_FINAL_CLOSEOUT_RECONCILIATION=PASS
+K9_CLOSEOUT=PASS
+
+CURRENT_GATE=NONE_K9_CLOSED
+
+PROJECT_STAGE=PUBLIC_PLATFORM_OPERATIONAL_PRECOMMERCE
+PUBLIC_PLATFORM_STATUS=ONLINE
+REAL_COMMERCE_ENABLED=NO
+SOFT_LAUNCH_AUTHORIZED=NO
+
+PAYMENT_INFRASTRUCTURE=PASS_WITH_DEFERRED_FIRST_LIVE_TRANSACTION_CANARY
+REAL_MONEY_END_TO_END_VALIDATION=DEFERRED_NOT_PASS
+FIRST_LIVE_TRANSACTION_CANARY=ARMED_FOR_FUTURE_REAL_TRANSACTION
+
+LOCAL_ORDINARY_PROJECT_FILES=ZERO
+LOCAL_PROJECT_RUNTIME=DECOMMISSIONED
+LOCAL_PROJECT_DOCKER_CONTAINERS=0
+LOCAL_PROJECT_DOCKER_NETWORKS=0
+LOCAL_PROJECT_DOCKER_VOLUMES=0
+LOCAL_PROJECT_CUSTOM_IMAGES=0
+
+LOCAL_PROTECTED_RECOVERY=RETAINED_CODEX_LOCALCACHE
+SHARED_GIT_CACHE_EXCEPTION=RETAINED
+LOCAL_UNTRACKED_MINICRAFT_GIT_ARTIFACTS=0
+
+GITHUB_CANONICAL_ARCHIVE=PASS
+VPS_PROJECT_NAMESPACE_HYGIENE=PASS
+PRODUCTION_RUNTIME=UNCHANGED_HEALTHY
+```
+
+K9C report and Evidence were accepted after the narrow audit-reference repair commit `252222437a267458a5789c90d90d5177ac913c32` was independently verified.
+
+Final K9 Reviewer decision:
+`docs/REVIEWER_DECISION_K9C_PASS_K9_CLOSEOUT_COMPLETE.md`
+
+Governance outcome:
+- Project Closeout and Workstation Hygiene Candidate completed real-project validation on Mini Craft K9.
+- Reviewer promoted it to operational addendum rev1 in canonical `entropy-student/spike.skill/vps-project-governance`.
+- Core Governance remains v0.1.6.
+- Future Mini Craft work is a new bounded Change/Activation Gate from this closed baseline; K9 is not replayed unless material drift requires it.
+
+Deferred—not failed—future obligations remain: first real transaction Canary, signed webhook/provider-paid/Woo paid/email reconciliation, any bounded refund, real product/supplier selection, Product 1224 launch-hardening disposition, and Soft Launch authorization.
+
+
 ## CURRENT REVIEWER UPDATE — K9C FACTS ACCEPTED / R1 AUDIT-REFERENCE REPAIR REQUIRED — 2026-09-29
 
 ```text
