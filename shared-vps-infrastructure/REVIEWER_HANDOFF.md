@@ -1,5 +1,53 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2A-R5 RETURN Accepted / M2A-R6 Canonical Hash Correction Open — 2026-09-30
+
+```text
+M2A_R5_RESULT=RETURN_PREFLIGHT_DRIFT
+M2A_R5_RETURN_ACCEPTED=YES
+
+ROOT_CAUSE=REVIEWER_HASH_TRANSCRIPTION_ERROR
+R5_PREFLIGHT_DRIFT_REAL=NO
+CURRENT_COMPOSE_DRIFT=NO_PROVEN_DRIFT
+
+CANONICAL_PRE_M2A_COMPOSE_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+CANONICAL_PRE_M2A_BACKUP_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+SUPERSEDED_INCORRECT_HASH=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8
+
+R5_STABLE_PREWRITE_RUNTIME=PASS
+WORDPRESS_NETWORKS=mini-craft-night-kit-database+spikersun-edge
+WORDPRESS_PRIVATE_ENDPOINT=ABSENT
+TARGET_ALIAS_COLLISIONS=0
+MARIADB_NETWORKS=mini-craft-night-kit-database
+MARIADB_HEALTH=healthy
+
+CURRENT_GATE=M2A_R6_CANONICAL_HASH_CORRECTION_AND_CONDITIONAL_EXECUTION
+CURRENT_GATE_STATUS=CONDITIONAL_BOUNDED_WRITE
+
+TARGET_ARCHITECTURE=DIRECT_TUNNEL_TO_MINICRAFT_APP
+TARGET_ALIAS=mini-craft-night-kit-wordpress
+CURRENT_PUBLIC_PATH=DNS_A_TO_CADDY
+CADDY_ROLLBACK_ROUTE_RETAINED=YES
+
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+SHARED_NETWORK_RECREATE_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+Independent review found the exact R5 observed source/backup hash matches the accepted historical K6 D-R2 `RESOLVED_COMPOSE_SHA` after case normalization. The later Shared VPS Reviewer seal beginning `85abae...` was a transcription error and is superseded. Historical Evidence is preserved rather than rewritten.
+
+R5's parser-independent two-round runtime preflight is accepted as stable. R6 therefore requires only a compact fresh runtime/hash check plus unmodified Compose validation before executing the already-reviewed M2A network addition.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2A_R5_RETURN_R6_CANONICAL_HASH_CORRECTION_AND_EXECUTION.md`
+
+Execution packet:
+`review-packets/M2A_R6_CANONICAL_HASH_CORRECTION_AND_CONDITIONAL_EXECUTION.md`
+
 ## CURRENT REVIEWER UPDATE — M2A-R4 RETURN Accepted / M2A-R5 Parser-independent Conditional Execution Open — 2026-09-30
 
 ```text
