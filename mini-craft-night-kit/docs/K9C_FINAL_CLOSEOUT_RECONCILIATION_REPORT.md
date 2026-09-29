@@ -1,5 +1,7 @@
 # K9C Final Closeout Reconciliation Report
 
+RESULT=PASS_CANDIDATE_K9C_FINAL_CLOSEOUT_RECONCILIATION
+
 As of 2026-09-29. This is a documentation and read-only reconciliation only. Runtime and real-money claims below distinguish accepted prior evidence from checks performed in this Gate.
 
 ## Final project state
