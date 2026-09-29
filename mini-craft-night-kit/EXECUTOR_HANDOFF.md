@@ -3433,3 +3433,16 @@ REAL_PAYMENT_ACTIONS=0
 REFUND_ACTIONS=0
 K9C_ENTERED=NO
 STOP_AT_REVIEWER=YES
+
+
+
+## K9C Final Closeout Reconciliation — 2026-09-29
+
+- Result: `PASS_CANDIDATE_K9C_FINAL_CLOSEOUT_RECONCILIATION`; STOP_AT_REVIEWER=YES.
+- Reconciled accepted K0–K9B truth, read-only workstation/Docker/recovery metadata, and public Home/Shop/Product 223 checks. All seven ordinary local paths absent; project Docker residue 0; protected recovery and shared Git cache retained as intentional exceptions.
+- Production remains `PUBLIC_PLATFORM_OPERATIONAL_PRECOMMERCE`; real commerce and Soft Launch remain unauthorized. K7 infrastructure is ready with the first real-money end-to-end Canary deferred, not passed.
+- Governance closeout contract remains Candidate, not active. Candidate validation/edge-case capture complete and eligible only for Reviewer decision; no governance mutation.
+- Report: `mini-craft-night-kit/docs/K9C_FINAL_CLOSEOUT_RECONCILIATION_REPORT.md` (GitHub commit `5e6f9c0e536ae8828bea4cc02badea825c6ad0be`).
+- Evidence commit: `d24bc90234e7daf21550efdc3f8ba5a9a91965c2`.
+- Local/Docker/VPS/Product/payment/refund/active-Governance mutations: all 0.
+
