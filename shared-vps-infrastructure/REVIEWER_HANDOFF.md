@@ -1,5 +1,37 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M1-R3 RETURN Accepted / M1-R4 Cloudflare Read-only Checkpoint Open — 2026-09-29
+
+```text
+M1_R3_RESULT=RETURN_OWNER_CLOUDFLARE_READONLY_SESSION_REQUIRED
+M1_R3_RETURN_ACCEPTED=YES
+
+TARGET_HOST_EXECUTION_PROVEN=PASS
+TARGET_ARCHITECTURE=UNRESOLVED
+
+CURRENT_GATE=M1_R4_CLOUDFLARE_READONLY_SESSION_AND_ARCHITECTURE_SEAL
+CURRENT_GATE_STATUS=OWNER_ACCOUNT_AUTH_CHECKPOINT_THEN_READONLY
+
+OWNER_ACTION_REQUIRED=CLOUDFLARE_DASHBOARD_LOGIN_ONLY
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+PROJECT_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+Accepted R3 host-side facts: Mini Craft WordPress is on its project database network plus `spikersun-edge`; MariaDB remains only on the project DB network; Mini Craft has no current alias on `spikersun-private`; generic `app` is already used by Dujiao and Unified Pay on `spikersun-private`; a future Mini Craft private-network alias must therefore be project-unique. cloudflared is running on `spikersun-private` with image `cloudflare/cloudflared:2026.8.3`, restart count 0, and no token/environment value read.
+
+The only remaining blocker to sealing M1 is authenticated read-only Cloudflare control-plane evidence for the Dujiao public-hostname origin target and resulting Tunnel architecture. Owner login authorizes no DNS/Tunnel write.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M1_R3_RETURN_R4_CLOUDFLARE_READONLY_SESSION.md`
+
+Execution packet:
+`review-packets/M1_R4_CLOUDFLARE_READONLY_SESSION_AND_ARCHITECTURE_SEAL.md`
+
 ## CURRENT REVIEWER UPDATE — M1-R2 PASS / M1-R3 Architecture Completion Open — 2026-09-29
 
 ```text
