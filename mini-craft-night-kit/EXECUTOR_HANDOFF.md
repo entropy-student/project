@@ -2519,7 +2519,7 @@ Reviewer follow-up: resolve the disposable helper's official-entrypoint/core ini
 - WordPress/MariaDB stayed running without restart; no host ports or public ingress. Temporary PHAR/extraction artifacts were removed; cached exact WP-CLI image retained.
 - Safety counters: `PAYMENT_ACTIONS=0`, `LIVE_ACTIONS=0`, `SECRET_VALUE_OR_HASH_ACCESS=0`, `SHARED_INFRA_WRITES=0`, `PUBLIC_INGRESS_CHANGE=0`.
 - Next: Reviewer review only. `STOP_AT_REVIEWER=YES`. Do not start a public-ingress, webhook, Live, or payment Gate without a new Reviewer decision.
-- Evidence commit: `4491c7a4de2dda38af917c778f4ca683e7090059`.
+- Evidence commit: `4c4cb32697d90efe0f7918b69bba990bf0d5e3dd`.
 
 
 ## Current Executor Handoff — K6 Phase F
@@ -3442,7 +3442,7 @@ STOP_AT_REVIEWER=YES
 - Reconciled accepted K0–K9B truth, read-only workstation/Docker/recovery metadata, and public Home/Shop/Product 223 checks. All seven ordinary local paths absent; project Docker residue 0; protected recovery and shared Git cache retained as intentional exceptions.
 - Production remains `PUBLIC_PLATFORM_OPERATIONAL_PRECOMMERCE`; real commerce and Soft Launch remain unauthorized. K7 infrastructure is ready with the first real-money end-to-end Canary deferred, not passed.
 - Governance closeout contract remains Candidate, not active. Candidate validation/edge-case capture complete and eligible only for Reviewer decision; no governance mutation.
-- Report: `mini-craft-night-kit/docs/K9C_FINAL_CLOSEOUT_RECONCILIATION_REPORT.md` (GitHub commit `5e6f9c0e536ae8828bea4cc02badea825c6ad0be`).
+- Report: `mini-craft-night-kit/docs/K9C_FINAL_CLOSEOUT_RECONCILIATION_REPORT.md` (GitHub commit `dcd97541fd3b7fb0e5111fd6cc118648cdefd313`).
 - Evidence commit: `d24bc90234e7daf21550efdc3f8ba5a9a91965c2`.
 - Local/Docker/VPS/Product/payment/refund/active-Governance mutations: all 0.
 
