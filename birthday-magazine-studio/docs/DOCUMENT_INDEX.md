@@ -45,6 +45,7 @@
 | `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` | Existing Sandbox payment reconciliation + entitlement/idempotency + refund closure | Executed / **PASS** |
 | `REVIEWER_DECISION_G3BR1_G3B_PASS.md` | Final Reviewer decision closing G3BR1 and parent G3B | **CURRENT G3B DECISION — PASS** |
 | `G3C_UI_UX_PRODUCTIZATION.md` | Current UI/UX productization contract | **CURRENT GATE — ASTRA BESTSELLING AUTHOR SELECTED; LOCAL IMPLEMENTATION AUTHORIZED** |
+| `G3C_EXECUTION_PACKET.md` | Exact G3C Executor package and reusable-asset map | **CURRENT EXECUTION PACKAGE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
@@ -70,8 +71,9 @@ For the current project state, a new Reviewer/Executor should normally need only
 3. `../EXECUTION_EVIDENCE.md`
 4. `MVP_PRODUCT_CONTRACT.md`
 5. `G3C_UI_UX_PRODUCTIZATION.md` — current execution contract
-6. `REVIEWER_DECISION_G3BR1_G3B_PASS.md`
-7. `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` for closed Sandbox proof details
-8. `G3A_MINICRAFT_LESSONS_REFERENCE.md` only when a PayPal/runtime issue resembles an already-seen Mini Craft failure
+6. `G3C_EXECUTION_PACKET.md` — exact implementation package
+7. `REVIEWER_DECISION_G3BR1_G3B_PASS.md`
+8. `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` for closed Sandbox proof details
+9. `G3A_MINICRAFT_LESSONS_REFERENCE.md` only when a PayPal/runtime issue resembles an already-seen Mini Craft failure
 
 Older Gate contracts and research remain in place for provenance and must not be treated as the current execution package.
