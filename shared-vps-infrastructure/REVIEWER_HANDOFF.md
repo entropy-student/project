@@ -44,6 +44,19 @@ Reviewer decision:
 Execution packet:
 `review-packets/M1_R3_MINICRAFT_TUNNEL_ARCHITECTURE_COMPLETION.md`
 
+### Deferred SSH stability follow-up
+
+```text
+SSH_STABILITY_FOLLOWUP=DEFERRED_AFTER_MINICRAFT_INGRESS_MIGRATION
+CURRENT_IMPACT=AUTOMATION_AND_REMOTE_MAINTENANCE_RELIABILITY_ONLY
+CURRENT_WEBSITE_IMPACT=NONE_PROVEN
+SSH_SERVER_SIDE_HEALTH=PASS
+SSH_ROOT_CAUSE=INSUFFICIENT_EVIDENCE
+SSH_REPAIR_AUTHORIZED=NO
+```
+
+The intermittent direct-SSH pre-identity closure is recorded for a separate bounded investigation after the Mini Craft ingress migration is stable. It must not be silently forgotten, but it does not block the current read-only M1 architecture completion. No SSH configuration change is authorized from this note.
+
 ## CURRENT REVIEWER UPDATE — M1-R1 RETURN Accepted / M1-R2 Owner Console Recovery Open — 2026-09-29
 
 ```text
