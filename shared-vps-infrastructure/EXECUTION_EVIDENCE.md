@@ -194,3 +194,97 @@ STOP_AT_REVIEWER=YES
 ```
 
 The authenticated Hostinger Web Terminal proved the target host and current runtime facts. The fresh shell comparison against the accepted Compose SHA returned PREWRITE_COMPOSE_HASH_MATCH=NO; execution stopped before backup or any write. The observed current SHA was not separately transcribed into this record, so this section makes no claim about its exact differing value. Fresh read-only HTTP checks returned 200 for Home, Shop, and /wp-json/. No M2A network preparation was performed.
+
+
+## Gate: M2A-R3 Runtime Network Membership Reconciliation — 2026-09-29
+
+```text
+GATE=M2A_R3_RUNTIME_NETWORK_MEMBERSHIP_RECONCILIATION
+RESULT=PASS_CANDIDATE_M2A_R3_RUNTIME_NETWORK_MEMBERSHIP_RECONCILIATION
+ACCESS_PATH=HOSTINGER_WEB_TERMINAL
+TARGET_HOST=srv1970241
+TARGET_HOST_EXECUTION_PROVEN=PASS
+TARGET_READBACK_TIME_INITIAL=2026-09-29T12:14:03Z
+CONSOLE_USER=root
+
+WORDPRESS_CONTAINER=mini-craft-night-kit-wordpress-1
+WORDPRESS_CONTAINER_ID_PREFIX=ea7cbd0f8956
+WORDPRESS_CREATED=2026-09-26T05:35:54.189065444Z
+WORDPRESS_STARTED_AT=2026-09-26T09:46:27.389343631Z
+WORDPRESS_RESTART_COUNT=0
+COMPOSE_PROJECT_LABEL=mini-craft-night-kit
+COMPOSE_SERVICE_LABEL=wordpress
+COMPOSE_CONFIG_SOURCE_LABEL=/srv/apps/mini-craft-night-kit/compose.production.yaml
+
+CURRENT_COMPOSE_SHA256=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8
+CURRENT_COMPOSE_BYTES=4966
+CURRENT_COMPOSE_OWNER_GROUP_MODE=root:root:0644
+CURRENT_COMPOSE_MTIME_UTC=2026-09-26T05:32:19.703022564Z
+COMPOSE_WORDPRESS_NETWORK_DECLARATIONS=edge+database
+COMPOSE_EDGE_NETWORK=spikersun-edge_EXTERNAL
+COMPOSE_DATABASE_NETWORK=mini-craft-night-kit-database_INTERNAL
+COMPOSE_PRIVATE_NETWORK_DECLARATION=ABSENT
+
+WORDPRESS_NETWORKS_FINAL_REPEATED_READBACK=mini-craft-night-kit-database+spikersun-edge
+WORDPRESS_PRIVATE_ALIAS_PRESENT=NO
+WORDPRESS_PRIVATE_ALIAS_VALUE=NONE_IN_FINAL_REPEATED_READBACK
+INITIAL_INSPECT_PRIVATE_MEMBERSHIP=YES_CONTRADICTED_BY_LATER_READBACK
+INITIAL_PRIVATE_ALIASES=mini-craft-night-kit-wordpress-1+wordpress
+TARGET_ALIAS=mini-craft-night-kit-wordpress
+TARGET_ALIAS_PRESENT=NO
+TARGET_ALIAS_COLLISIONS=0_IN_INSPECTED_PRIVATE_NETWORK_ALIAS_METADATA
+
+MARIADB_NETWORKS=mini-craft-night-kit-database
+MARIADB_HEALTH=HEALTHY
+SPIKERSUN_PRIVATE_LATER_NETWORK_INSPECT=WORDPRESS_ENDPOINT_ABSENT
+SPIKERSUN_PRIVATE_LATER_CONTAINER_LIST=dujiao-next-app-1+unified-pay-app-1+xianyu-xianyu-app-1+spikersun-private-cloudflared-1
+FINAL_WORDPRESS_CONTAINER_INSPECT=PRIVATE_ENDPOINT_ABSENT
+FINAL_READBACK_OBSERVATION_CONFLICT=YES
+
+DOCKER_EVENTS_WINDOW=2026-09-29T11:00:00Z_TO_INITIAL_READBACK
+DOCKER_EVENTS_MATCHING_WORDPRESS_OR_SPIKERSUN_PRIVATE=NONE_RETURNED
+DOCKER_EVENTS_LAST_TWO_HOURS_MATCHING=NONE_RETURNED
+DOCKER_EVENT_HISTORY_PROVES_ORIGIN=NO
+RUNTIME_NETWORK_DRIFT_CLASS=UNRESOLVED
+PRIVATE_ORIGIN_REACHABILITY=NOT_TESTABLE
+PRIVATE_ORIGIN_PROBE_REASON=NO_SUITABLE_EXISTING_PRIVATE_NETWORK_NAMESPACE_TOOL; NO_DISPOSABLE_CONTAINER_CREATED
+SOURCE_RUNTIME_RECONCILIATION_REQUIRED=YES
+
+PUBLIC_HOME_HTTP=200
+PUBLIC_SHOP_HTTP=200
+PUBLIC_WP_REST_HTTP=200
+
+M2A_COMPOSE_WRITE=0
+WORDPRESS_RECREATE=0
+NETWORK_CONNECT_DISCONNECT=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+DATABASE_MUTATIONS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+CLEANUP_ACTIONS=0
+SECRET_CONTENT_READS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
+
+### Sources and reconciliation
+
+Read the latest canonical Governance handoff and required Governance contracts; Shared VPS Reviewer Handoff, M2A-R3 Reviewer Decision and execution packet, current Shared VPS Evidence/Handoff, and Mini Craft Reviewer Handoff and Project Storage Manifest from GitHub. Used the accepted Hostinger Web Terminal path only; no SSH was attempted.
+
+The Compose source remains byte-identical to the corrected accepted seal. Its WordPress service declares only the external `spikersun-edge` and internal project database network; MariaDB remains on the database network only. Runtime labels identify the same project, service, and canonical Compose path.
+
+Within the target-host read-only session, an initial `docker inspect` showed a `spikersun-private` endpoint for the WordPress container, with aliases `mini-craft-night-kit-wordpress-1` and `wordpress`; it did not show the exact target alias `mini-craft-night-kit-wordpress`. A later `docker network inspect spikersun-private` listed Dujiao, Unified Pay, Xianyu, and cloudflared, but no WordPress. The WordPress endpoint inspection and repeated final container/network readbacks also showed no private endpoint. The final stable network list matches the current Compose declarations, but the conflicting earlier observation and the accepted Reviewer Handoff's prior runtime statement remain unexplained.
+
+Filtered Docker-event queries for the bounded current window and the last two hours returned no matching event rows. This does not establish whether a direct network attach, Compose-managed recreate, previously accepted operation, or transient/readback inconsistency caused the discrepancy. Therefore the packet classification is `UNRESOLVED`; no method or join time is asserted.
+
+A private-origin HTTP/DNS probe was not possible using an appropriate already-running private-network namespace. The existing cloudflared container had no shell executable and the Dujiao app container had no Node executable; no disposable container was created. Public Home, Shop, and WP REST checks returned HTTP 200.
+
+### Minimal reconciliation plan (not executed)
+
+Keep all runtime and source state unchanged. Reviewer should reconcile the conflicting runtime observations and decide whether a fresh bounded M2A prewrite is authorized. If reauthorized, recheck the exact source/runtime state, then make only the reviewed WordPress Compose network declaration with the unique alias, validate, recreate only WordPress, verify the private endpoint and origin, confirm MariaDB remains isolated, and recheck the existing Caddy public routes. M2B remains out of scope.
+
