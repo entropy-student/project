@@ -58,3 +58,16 @@ STOP_AT_REVIEWER=YES
 ```
 
 Await Reviewer direction. Do not retry SSH or resume M1 phases without a new Reviewer decision.
+
+## Current Task Update — M1-R4 Cloudflare Read-only Session and Architecture Seal
+
+- Gate: `M1_R4_CLOUDFLARE_READONLY_SESSION_AND_ARCHITECTURE_SEAL`
+- Result: `PASS_CANDIDATE_M1_R4_CLOUDFLARE_READONLY_SESSION_AND_ARCHITECTURE_SEAL`
+- Cloudflare Dashboard was authenticated; the `spikersun-shared-private` Tunnel showed one connected connector.
+- Read-only route mapping: `shop.spikersun.com -> http://dujiao-next-app:8080` (Dujiao direct-to-app alias); `pay.spikersun.com -> http://unified-pay-app:8080`.
+- Mini Craft architecture sealed as `DIRECT_TUNNEL_TO_MINICRAFT_APP`, using future project-unique private alias `mini-craft-night-kit-wordpress`; MariaDB remains off `spikersun-private`.
+- A temporary-host Tunnel canary is conditionally feasible after M2A network preparation; preserve/explicitly verify canonical origin Host header. Temporary-host cookies/sessions do not prove canonical-host session continuity.
+- M2A–M2D proceed as separately reviewed bounded units; retain the existing Mini Craft Caddy route through M2D. M2E retirement requires M2D Reviewer acceptance and its own explicit Gate.
+- No Cloudflare, VPS, Docker, Caddy, Compose, WordPress, payment, or Secret mutation/read occurred. No SSH was attempted.
+- Evidence commit: `36be2833cb0c4e1743f149f1d9b0c610b54d6e37`
+- STOP_AT_REVIEWER=YES
