@@ -24,3 +24,37 @@ STOP_AT_REVIEWER=YES
 ```
 
 Await Reviewer direction. Do not continue M1 or enter a later Gate.
+
+
+## Current Task Update — M1-R1 Target-host Access Recovery
+
+- Gate: `M1_R1_TARGET_HOST_ACCESS_RECOVERY_AND_M1_RESUME`
+- Scope: read-only target-host recovery and M1 resume.
+- Result: `RETURN_TARGET_HOST_EXECUTION_UNAVAILABLE`
+- Evidence commit: `237ae48553744c61eda62c3fa0a77c5555a7fced`
+
+### Actual execution
+
+- Read current canonical Governance and the current M1/Shared VPS/project source files from GitHub.
+- Verified the Owner-local handoff, identity-file presence, client public-key fingerprint, and all three normal `known_hosts` pins locally; no key or trust file was changed.
+- Made exactly one direct-native strict SSH invocation to `ops@2.24.193.133:22`. The server closed the connection (native exit 255) before any remote identity output.
+- Did not retry SSH or use Hostinger Terminal as an alternate path. Target identity and host-key negotiation remain unproven.
+- M1 phases B-I were not started. No fresh VPS/runtime/ingress findings are claimed. Current architecture remains `UNRESOLVED`.
+- No Cloudflare Dashboard session was present in the current browser tabs.
+- No VPS, Docker, Cloudflare, Caddy, project-runtime, payment, cleanup, or Secret-content mutation/read occurred.
+
+```text
+SSH_NETWORK_INVOCATIONS=1
+SSH_NATIVE_EXIT=255
+TARGET_HOST_EXECUTION_PROVEN=NO
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+CADDY_MUTATIONS=0
+PROJECT_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
+
+Await Reviewer direction. Do not retry SSH or resume M1 phases without a new Reviewer decision.
