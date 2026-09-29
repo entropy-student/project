@@ -1,5 +1,44 @@
 # Mini Craft Night Kit — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — DOCKER CLOSEOUT PASS / OWNER MANUAL EXACT-PATH DELETE CHECKPOINT — 2026-09-29
+
+```text
+K9B_R3R2_RESULT=RETURN_K9B_R3R2_EXACT_PATH_DELETION_BLOCKED_BY_EXECUTION_POLICY
+
+K9B_R3R2_DOCKER_VOLUME_SUBGATE=PASS
+DOCKER_VOLUME_DELETE_COUNT=9
+AUTHORIZED_MINICRAFT_VOLUMES_REMAINING=0
+MINICRAFT_CONTAINERS_CURRENT=0
+MINICRAFT_NETWORKS_CURRENT=0
+MINICRAFT_CUSTOM_IMAGE_TAGS_CURRENT=0
+
+K9B_R3R2_FILESYSTEM_SUBGATE=RETURN_EXECUTION_POLICY_BLOCKED
+DEDICATED_PATHS_DELETED=0
+PARTIAL_FILESYSTEM_DELETION_STATE=NO
+
+CURRENT_GATE=K9B_R3R3_OWNER_MANUAL_EXACT_PATH_DELETION_CHECKPOINT
+CURRENT_GATE_STATUS=AWAIT_OWNER_LOCAL_IRREVERSIBLE_ACTION
+
+EXECUTOR_FILESYSTEM_DELETE_AUTHORIZED=NO
+OWNER_MANUAL_DELETE_AUTHORIZED=YES_EXACT_PATHS_ONLY
+K9C_AUTHORIZED=NO
+```
+
+The Executor execution policy blocked the exact recursive deletion before launch. Do not bypass that policy with another shell/tool.
+
+Owner may manually delete the seven exact Reviewer-allowlisted Mini Craft paths through Windows File Explorer. Protected LocalAppData recovery, shared project-github-sync, shared Git metadata and unrelated projects remain protected.
+
+After Owner confirms deletion, Executor performs read-only path-absence verification, Docker zero-state read-back, protected-recovery read-back and public production regression, then persists Evidence/Handoff and stops at Reviewer.
+
+Product 1224 direct Store API behavior remains the accepted Hidden Canary baseline and is not reopened in this Gate.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_K9B_R3R2_PARTIAL_PASS_R3R3_OWNER_MANUAL_EXACT_PATH_DELETION.md`
+
+Checkpoint pack:
+`review-packets/K9B_R3R3_OWNER_MANUAL_EXACT_PATH_DELETION_CHECKPOINT.md`
+
+
 ## CURRENT REVIEWER UPDATE — R3R1 PASS / FINAL LOCAL DELETION AUTHORIZED — 2026-09-29
 
 ```text
