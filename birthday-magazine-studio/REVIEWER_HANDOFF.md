@@ -45,7 +45,7 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Payment evidence boundary: Mini Craft is an implementation/reference path only; its current state does not prove Birthday Magazine Live payment.
 - Free-value path: deterministic browser-local preview only; **0 LLM / vision / image-generation Token**.
 - Paid entitlement boundary: model generation is permitted only after server-side WooCommerce/PayPal paid state is confirmed **and** required intake is complete.
-- Frontend foundation: **Good Issue-style preview inside WordPress + WooCommerce is the accepted technical foundation candidate** from G2A1. Final subjective visual/product freeze remains G2A2.
+- Frontend foundation: **hybrid route accepted for G3C** — use **Kadence Theme + Kadence “Single Product” starter template** as the editable WordPress visual/site shell, while preserving the custom Good Issue-style browser-local Free Preview as the core conversion component. The shell may control Header/Footer, typography, spacing, standard content sections, trust/FAQ/testimonial blocks and overall visual system; it must not replace or weaken the accepted preview/payment/private-workspace boundaries. Final visual freeze still requires Owner review.
 - Storelly: **REJECTED for the current free-preview path**.
 - Post-payment photo intake: Vanquish Upload Files is a **registered-account reuse candidate**. Its guest-issued secure file link replayed outside the intended guest context, so the guest-private path is **REJECTED AS-IS**.
 - Private proof/final attachment: Vanquish Attach Me is a **registered-account reuse candidate**. Actual authorized download/hash passed, but its guest-issued attachment link replayed outside the intended guest context, so strict guest-private delivery is **REJECTED AS-IS**.
@@ -103,6 +103,7 @@ Current Reviewer decisions:
 - `OWNER_AUTHORIZED_G3BR1_ONE_SANDBOX_FULL_REFUND_ORDER_30_2026-09-28`
 - `PASS_G3BR1_SANDBOX_RECONCILIATION_ENTITLEMENT_REFUND_2026-09-28`
 - `PASS_G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_FLOW_2026-09-28`
+- `OWNER_SELECTED_G3C_KADENCE_SINGLE_PRODUCT_SHELL_2026-09-29`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -366,7 +367,7 @@ Status:
 - The free path must remain deterministic and zero-model-token; paid AI spend is gated by confirmed payment entitlement plus complete intake.
 - The reuse-vs-custom technical route is documented in `docs/TECHNICAL_ROUTE.md`.
 - Good Issue-style WordPress preview is the accepted frontend feasibility foundation from G2A1.
-- Storelly is rejected for the browser-local free-preview path; Kadence/Blocksy named starter-site combinations were not accepted as the current product foundation.
+- Storelly is rejected for the browser-local free-preview path. **Owner selected Kadence Theme + the concrete free “Single Product” starter template as the G3C site shell on 2026-09-29.** Blocksy/other starter sites remain unselected alternatives. The Good Issue preview remains the custom core interaction inside that shell.
 - Vanquish Upload Files and Vanquish Attach Me are registered-account reuse candidates only; their guest bearer-link paths are rejected for strict private MVP use.
 - Other WordPress/plugin research remains candidate research unless separately accepted.
 - Mini Craft's accepted commerce/payment history is an implementation reference for G3A/G3B: Docker/MariaDB is preferred over Studio/SQLite, commerce is proven before PPCP, and public HTTPS origin requirements are deferred to G3B.
@@ -418,8 +419,9 @@ Status:
 ## 12. Next Step
 
 - G3B/G3BR1 are closed with Reviewer PASS.
-- G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED**.
-- Before any Live or real-money action, Reviewer must define a bounded G4 contract and the Owner must explicitly authorize that consequential test.
+- **Next productization step: G3C UI/UX productization using Kadence Theme + Kadence Single Product starter as the editable shell, with the Good Issue Free Preview retained as the custom core conversion component.**
+- G3C should produce a WordPress-visible preview for Owner visual review before final UI freeze.
+- G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED** until G3C visual/product review is complete and a separate bounded G4 contract is approved.
 - Production AI interface details remain deferred until the Owner supplies them.
 
 ## 13. Status Summary
