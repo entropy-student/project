@@ -34,6 +34,7 @@
 | G3A WooCommerce commerce/account/private-workspace loop | PASS |
 | G3B PayPal Sandbox + paid entitlement + refund | **PASS** |
 | G3BR1 Payment reconciliation + entitlement/refund closure | **PASS** |
+| G3C UI/UX productization + Owner visual freeze | **CURRENT** |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
@@ -52,7 +53,7 @@ G3B Sandbox 闭环已经通过：
 → scoped cleanup PASS
 ```
 
-这仍然**不是 Live/真钱支付证据**。G4 Live PayPal Canary 目前保持 HOLD。
+这仍然**不是 Live/真钱支付证据**。当前先进入 G3C：使用 Kadence Theme + “Single Product” starter 作为可编辑 WordPress 外壳，并保留 Good Issue 浏览器本地预览作为核心转化组件；待 Owner 完成视觉确认后再冻结 UI。G4 Live PayPal Canary 继续保持 HOLD。
 
 ## 已证明的技术能力
 
