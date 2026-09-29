@@ -15,7 +15,7 @@ This file is navigation only. It is **not** a second project truth source.
 
 - P0 / G1 / G2A1 / G2A2 / G2B / G3A: accepted PASS at their defined scope.
 - **G3B / G3BR1: PASS** — PayPal Sandbox capture correlation, paid-entitlement 0→1 behavior, one Owner-authorized full Sandbox refund, entitlement revocation, and scoped cleanup are closed.
-- **G3C Template Selection + UI/UX Productization: CURRENT** — no starter template is frozen; Good Issue browser-local preview remains the core conversion component; template selection and later visual freeze both require Owner review.
+- **G3C UI/UX Productization: CURRENT** — **Astra “Bestselling Author” selected** as the concrete free starter shell; Good Issue browser-local preview remains the core conversion component; Owner visual freeze is still pending.
 - **G4 Live PayPal Canary: HOLD / NOT AUTHORIZED**.
 - PayPal Live, real-money payment, production AI provider, production private delivery and production deployment remain unproven.
 
