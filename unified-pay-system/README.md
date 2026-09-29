@@ -4,7 +4,7 @@
 
 **一次部署，多产品复用。**
 
-[English](./README_EN.md) · [项目记录](./PROJECT_RECORD.md) · [共享支付架构](./docs/SHARED_PAYMENT_HUB.md)
+[English](./README_EN.md) · [项目记录](./PROJECT_RECORD.md) · [共享支付架构](./docs/SHARED_PAYMENT_HUB.md) · [当前运行状态](./REVIEWER_HANDOFF.md)
 
 </div>
 
@@ -70,18 +70,17 @@ GPT View+ ───────┐
 - Merchant Profile / Provider Credential Rotation
 - Background Worker
 
-## 当前生产路线
+## 当前 Shared VPS Runtime（2026-09-29 accepted baseline）
 
-```text
-GMPay Edge ✅
-TRON / USDT ✅
-Supabase PostgreSQL ✅
-Railway Service ✅ 已创建
-Railway Build ⏳ 排错中
-公网域名 ⏳
-GMPay Webhook ⏳
-真实小额 E2E ⏳
-```
+- 部署位置：Shared VPS；app 与 PostgreSQL runtime 当前 healthy。
+- 公网 health/readiness：`https://pay.spikersun.com/health` 与 `/ready` 均为 HTTP 200；根路径当前为 404。
+- 生命周期：`FROZEN_BACKUP_OR_WARM_STANDBY_PENDING_OWNER_DECISION`。
+- 下游业务依赖：`UNKNOWN`；health/readiness 本身不证明业务调用方。
+- Provider fresh flags：`UNKNOWN`。
+- Real commerce enablement：`NOT_INFERRED`。
+- 精确 Tunnel route metadata：尚未验证；按 `CLOUDFLARE_REMOTE_MANAGED_TUNNEL_LIKELY_UNVERIFIED` 记录。
+
+当前唯一项目状态入口：[REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md)。Railway 构建/公网域名计划保留为历史审计材料，不再代表当前部署路线；详见 [PROJECT_RECORD.md](./PROJECT_RECORD.md)。
 
 ## 目录
 
@@ -115,6 +114,6 @@ unified-pay-system/
 
 这些信息必须只存在于 Railway / Secret Manager 等运行环境中。
 
-## 当前入口
+## 当前部署入口
 
-生产部署以本目录的 `Dockerfile + bundle/ + config/` 为唯一当前入口。`_archive/` 仅用于保留历史部署中间产物。
+当前 Shared VPS runtime 是已接受的部署事实；项目当前生命周期和依赖状态以 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) 为唯一 current truth。`Dockerfile + bundle/ + config/` 与 `_archive/` 保留作可重建源码/历史部署材料，不声明为唯一当前生产路径。

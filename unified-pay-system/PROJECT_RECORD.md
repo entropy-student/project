@@ -1,6 +1,6 @@
 # Unified Pay System — Project Record
 
-> 这是本项目的长期项目记录。继续开发前优先查看本文件与 README。
+> 本文件保留架构决策与历史兼容记录。当前运行和生命周期真相以 [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) 为唯一入口。
 
 ## 项目定位
 
@@ -19,6 +19,27 @@ Unified Pay System 被正式定义为**共享支付中台 / 内部 Payment-as-a-
   ↓
 统一 License / Entitlement / Fulfillment
 ```
+
+## Current Shared VPS runtime and lifecycle — accepted baseline 2026-09-29
+
+Current project truth is centralized in [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md); this section is a concise pointer, not a competing detailed state record.
+
+```text
+RUNTIME_STATE=ACTIVE_HEALTHY
+APP_HEALTH=PASS
+POSTGRES_HEALTH=PASS
+PUBLIC_HEALTH_AND_READY=HTTP_200
+PUBLIC_ROOT=HTTP_404
+HISTORICAL_ROLE=FROZEN_BACKUP
+CURRENT_LIFECYCLE_ROLE=FROZEN_BACKUP_OR_WARM_STANDBY_PENDING_OWNER_DECISION
+DOWNSTREAM_BUSINESS_DEPENDENCY=UNKNOWN
+PROVIDER_FLAGS_FRESH_STATE=UNKNOWN
+DB_BUSINESS_AGGREGATE=UNKNOWN
+REAL_COMMERCE_ENABLEMENT=NOT_INFERRED
+INGRESS_OWNER=CLOUDFLARE_REMOTE_MANAGED_TUNNEL_LIKELY_UNVERIFIED
+```
+
+A healthy runtime and public health/readiness endpoint do not prove an active downstream business dependency. No shutdown, Provider mutation or backup deletion is authorized by this documentation update.
 
 ## 2026-09-08 关键决策
 
@@ -89,7 +110,10 @@ fulfillment: license
 price: 上线前最终确认
 ```
 
-## 当前生产状态
+## Historical production checklist — 2026-09-08 snapshot (AUDIT_HISTORY)
+
+> The table below is retained as a historical snapshot; it is not current deployment truth. See the accepted Shared VPS runtime/lifecycle section above and the canonical Reviewer Handoff.
+
 
 | 环节 | 状态 |
 |---|---|
@@ -109,7 +133,10 @@ price: 上线前最终确认
 | Real low-value E2E | ⏳ |
 | GPT View+ automatic entitlement | ⏳ |
 
-## 当前 Railway 资源
+## Historical Railway resources — superseded as current deployment truth
+
+> These resource coordinates preserve the historical Railway deployment plan; the current runtime is on Shared VPS.
+
 
 ```text
 Project: unified-pay
@@ -140,7 +167,10 @@ Project root: unified-pay-system/
 - CHECKOUT_TOKEN_SECRET
 - LICENSE_ENCRYPTION_KEY
 
-## 下一步
+## Historical next-step plan — superseded for current deployment
+
+> The following checklist is preserved as audit history and is not an instruction to deploy the current runtime to Railway.
+
 
 1. 让 Railway 以 `unified-pay-system/` 为完整构建上下文重新部署。
 2. 配置运行时 Secret。

@@ -8,7 +8,7 @@
 
 [English](./README_EN.md)
 
-![Projects](https://img.shields.io/badge/projects-8-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-11-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-中文%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -21,10 +21,13 @@
 | Project | 主要解决什么问题 | 类型 | 状态 | 入口 |
 |---|---|---|---:|---|
 | 🎧 **Music Taste Analyzer（音乐口味分析器）** | 用户主动授权后读取私人歌单，并生成可解释的音乐口味画像 | App / Tool | Active | [进入](./music-taste-analyzer/) |
-| 💳 **Unified Pay System（统一支付中台）** | 一次部署，多产品共享支付、验单、退款、对账与权益履约能力 | Shared Infrastructure | **Deploying** | [进入](./unified-pay-system/) |
+| 💳 **Unified Pay System（统一支付中台）** | 一次部署，多产品共享支付、验单、退款、对账与权益履约能力 | Shared Infrastructure | **Standby Runtime / Lifecycle Review** | [进入](./unified-pay-system/) |
+| 🧰 **Shared VPS Infrastructure** | Shared Hostinger VPS 环境与跨项目资产索引 | Platform Infrastructure | **Active** | [进入](./shared-vps-infrastructure/) |
+| 🐟 **Xianyu** | Shared VPS 上运行的自动化应用 | Automation / Runtime | **Active Runtime** | [进入](./xianyu/) |
+| 🛒 **Dujiao-Next** | Shared VPS 商城运行时与已关闭项目阶段 | Commerce Runtime | **Project Stage Closed / Runtime Active** | [进入](./dujiao-next/) |
 | 🎬 **Visual Narrative Animation Lab（画面叙事动画实验室）** | 从口播/配音提炼 Visual Beats，建立可复用的手绘叙事动画生产与自动化流水线 | Content Production / AI Workflow | **Prototype** | [进入](./visual-narrative-animation-lab/) |
 | 🔎 **Conversion Leak Audit（独立站转化漏损诊断）** | 扫描公开独立站，基于事实与可信规则输出免费 Top 3 与后续 Fix Queue | Diagnostic Product / Commerce Tool | **Local Integration Next** | [进入](./conversion-leak-audit/) |
-| 🎨 **Mini Craft Night Kit** | 用成熟 WordPress + Kadence + WooCommerce 快速构建可销售的单品电商站 | Ecommerce / Physical Product | **Kadence PoC** | [进入](./mini-craft-night-kit/) |
+| 🎨 **Mini Craft Night Kit** | 用成熟 WordPress + Kadence + WooCommerce 快速构建可销售的单品电商站 | Ecommerce / Physical Product | **Public Pre-Commerce / K9 Closed** | [进入](./mini-craft-night-kit/) |
 | 🎁 **Birthday Magazine Studio（生日纪念杂志）** | 将送礼者提供的照片和回忆变成可预览、可交付的个性化生日杂志 | Personalized Gift / Publishing | **G2A1 Component PoC** | [进入](./birthday-magazine-studio/) |
 | 🍲 **Family Cookbook Studio（家庭食谱成书）** | 将家庭手写食谱、旧菜谱卡和相关记忆保真整理成可校对、可交付的家庭食谱书 | Personalized Publishing / Family Archive | **G2A1 OCR PoC** | [进入](./family-cookbook-studio/) |
 | 🎭 **AI Story Showrunner（AI故事总导演系统）** | 将 AI 热点/概念转译为普通人可看的故事，并统一编排选题、故事、文案、分镜、生图、视频与反馈 Worker | Content Operating System / Orchestration | **G1 Contracts** | [进入](./ai-story-showrunner/) |
