@@ -4,7 +4,7 @@
 > Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1 + Production Provider Canary/Recovery Contract rev2  
 > Executor facts: `EXECUTOR_HANDOFF.md`  
 > Detailed evidence: `EXECUTION_EVIDENCE.md`  
-> Last reviewed: 2026-09-29
+> Last reviewed: 2026-09-30
 
 ## 1. Project Goal
 
@@ -76,7 +76,8 @@ G2BR3 Direct Codex Agent Real-AI Content/PDF Proof       ✅ PASS
 G3A WordPress + WooCommerce Commerce Loop               ✅ PASS
 G3B PayPal Sandbox + Paid Entitlement Flow              ✅ PASS — capture correlation + entitlement/idempotency + refund/revocation
 G3BR1 Sandbox Reconciliation + Entitlement/Refund       ✅ PASS — closes parent G3B
-G3C UI/UX Productization + Owner Visual Freeze          ⏳ CURRENT — Astra Bestselling Author selected; Good Issue preview preserved
+G3C UI/UX Productization                               ↩ RETURN — Block Editor catalog did not expose selected starter
+G3CR1 Bestselling Author Elementor Closure               ⏳ CURRENT — same selected template; free Elementor path check
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -107,6 +108,8 @@ Current Reviewer decisions:
 - `OWNER_CORRECTED_G3C_TEMPLATE_SELECTION_OPEN_2026-09-29`
 - `OWNER_SELECTED_G3C_ASTRA_BESTSELLING_AUTHOR_2026-09-29`
 - `REVIEWER_OPENED_G3C_UI_UX_PRODUCTIZATION_2026-09-29`
+- `RETURN_G3C_BLOCK_EDITOR_STARTER_NOT_FOUND_2026-09-30`
+- `REVIEWER_OPENED_G3CR1_ELEMENTOR_CLOSURE_2026-09-30`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -422,11 +425,12 @@ Status:
 ## 12. Next Step
 
 - G3B/G3BR1 are closed with Reviewer PASS.
-- **Current Gate: G3C UI/UX productization using Astra Theme + the concrete free “Bestselling Author” starter template as the editable shell, with the Good Issue Free Preview retained as the custom core conversion component.**
-- Execution contract: `docs/G3C_UI_UX_PRODUCTIZATION.md`.
-- Exact Executor package: `docs/G3C_EXECUTION_PACKET.md`.
-- Local reversible implementation is now authorized within that contract/package.
-- G3C must produce a WordPress-visible preview for Owner visual review before final UI freeze; technical PASS_CANDIDATE does not replace Owner visual approval.
+- **PR #59 is accepted as a narrow G3C RETURN for the Block Editor catalogue path only.** It proves the selected Bestselling Author starter was not exposed under Block Editor in Starter Templates 4.7.7; it does not prove the free Elementor path is unavailable.
+- **Current closure Gate: G3CR1 Bestselling Author Elementor Closure.**
+- Reviewer decision: `docs/REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md`.
+- Execution contract: `docs/G3CR1_BESTSELLING_AUTHOR_ELEMENTOR_CLOSURE.md`.
+- If exact free Elementor import succeeds, continue the existing G3C productization in the same bounded run; if it fails or requires paid components, return and reopen template selection.
+- Owner visual freeze remains pending.
 - G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED** until G3C visual/product review is complete and a separate bounded G4 contract is approved.
 - Production AI interface details remain deferred until the Owner supplies them.
 
@@ -446,6 +450,7 @@ Status:
 - G3A: PASS — local Docker/MariaDB WooCommerce commerce/account/private-workspace loop.
 - G3B: PASS — bounded PayPal Sandbox payment/capture correlation, paid-entitlement/idempotency, one full refund, entitlement revocation and cleanup are closed.
 - G3BR1: PASS — reconciliation/refund closure completed; parent G3B closed.
-- G3C: CURRENT — Astra Bestselling Author selected; local WordPress UI/UX productization is authorized. Good Issue preview remains preserved; Owner visual freeze is still pending.
+- G3C: RETURN on the Block Editor importer path; no product page was built and no visual freeze occurred.
+- G3CR1: CURRENT — verify the same Owner-selected Astra Bestselling Author template through Elementor Free; only if that exact free path succeeds may productization continue. Good Issue preview remains preserved; Owner visual freeze is pending.
 - G4: HOLD — Live/real-money Canary requires G3C completion, a new contract + fresh Owner authorization.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
