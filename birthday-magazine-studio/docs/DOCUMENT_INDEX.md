@@ -44,7 +44,7 @@
 | `OWNER_DECISION_G3BR1_SANDBOX_REFUND_AUTHORIZED.md` | Historical Owner authorization for exactly one full Sandbox refund of Woo order #30 | Executed once / closed |
 | `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` | Existing Sandbox payment reconciliation + entitlement/idempotency + refund closure | Executed / **PASS** |
 | `REVIEWER_DECISION_G3BR1_G3B_PASS.md` | Final Reviewer decision closing G3BR1 and parent G3B | **CURRENT G3B DECISION — PASS** |
-| `G3C_UI_UX_PRODUCTIZATION.md` | Current template-selection + UI/UX productization contract | **CURRENT GATE — TEMPLATE OPEN; IMPLEMENT ONLY AFTER OWNER SELECTION** |
+| `G3C_UI_UX_PRODUCTIZATION.md` | Current UI/UX productization contract | **CURRENT GATE — ASTRA BESTSELLING AUTHOR SELECTED; LOCAL IMPLEMENTATION AUTHORIZED** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
