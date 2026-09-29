@@ -4,7 +4,7 @@
 > Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1 + Production Provider Canary/Recovery Contract rev2  
 > Executor facts: `EXECUTOR_HANDOFF.md`  
 > Detailed evidence: `EXECUTION_EVIDENCE.md`  
-> Last reviewed: 2026-09-28
+> Last reviewed: 2026-09-29
 
 ## 1. Project Goal
 
@@ -76,6 +76,7 @@ G2BR3 Direct Codex Agent Real-AI Content/PDF Proof       ✅ PASS
 G3A WordPress + WooCommerce Commerce Loop               ✅ PASS
 G3B PayPal Sandbox + Paid Entitlement Flow              ✅ PASS — capture correlation + entitlement/idempotency + refund/revocation
 G3BR1 Sandbox Reconciliation + Entitlement/Refund       ✅ PASS — closes parent G3B
+G3C UI/UX Productization + Owner Visual Freeze          ⏳ CURRENT — Kadence Single Product shell + Good Issue preview
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -104,6 +105,7 @@ Current Reviewer decisions:
 - `PASS_G3BR1_SANDBOX_RECONCILIATION_ENTITLEMENT_REFUND_2026-09-28`
 - `PASS_G3B_PAYPAL_SANDBOX_PAID_ENTITLEMENT_FLOW_2026-09-28`
 - `OWNER_SELECTED_G3C_KADENCE_SINGLE_PRODUCT_SHELL_2026-09-29`
+- `REVIEWER_OPENED_G3C_UI_UX_PRODUCTIZATION_2026-09-29`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -419,8 +421,9 @@ Status:
 ## 12. Next Step
 
 - G3B/G3BR1 are closed with Reviewer PASS.
-- **Next productization step: G3C UI/UX productization using Kadence Theme + Kadence Single Product starter as the editable shell, with the Good Issue Free Preview retained as the custom core conversion component.**
-- G3C should produce a WordPress-visible preview for Owner visual review before final UI freeze.
+- **Current Gate: G3C UI/UX productization using Kadence Theme + Kadence Single Product starter as the editable shell, with the Good Issue Free Preview retained as the custom core conversion component.**
+- Execution contract: `docs/G3C_UI_UX_PRODUCTIZATION.md`.
+- G3C must produce a WordPress-visible preview for Owner visual review before final UI freeze; technical PASS_CANDIDATE does not replace Owner visual approval.
 - G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED** until G3C visual/product review is complete and a separate bounded G4 contract is approved.
 - Production AI interface details remain deferred until the Owner supplies them.
 
@@ -440,5 +443,6 @@ Status:
 - G3A: PASS — local Docker/MariaDB WooCommerce commerce/account/private-workspace loop.
 - G3B: PASS — bounded PayPal Sandbox payment/capture correlation, paid-entitlement/idempotency, one full refund, entitlement revocation and cleanup are closed.
 - G3BR1: PASS — reconciliation/refund closure completed; parent G3B closed.
-- G4: HOLD — Live/real-money Canary requires a new contract + fresh Owner authorization.
+- G3C: CURRENT — local WordPress UI/UX productization; Kadence Single Product shell selected, Good Issue preview preserved, Owner visual freeze pending.
+- G4: HOLD — Live/real-money Canary requires G3C completion, a new contract + fresh Owner authorization.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
