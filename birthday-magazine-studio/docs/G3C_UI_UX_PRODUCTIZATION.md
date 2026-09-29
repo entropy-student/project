@@ -22,7 +22,7 @@ This Gate is productization, not production deployment.
 
 Produce a local/disposable WordPress implementation that visibly demonstrates:
 
-1. a coherent Birthday Magazine product page using the selected Kadence shell;
+1. a coherent Birthday Magazine product page using the selected Astra Bestselling Author shell;
 2. the Good Issue Free Preview embedded as the central conversion component;
 3. desktop and 375px mobile behavior;
 4. CTA continuity into the existing WooCommerce product/cart path;
@@ -150,7 +150,7 @@ Examples of precise failure:
 
 ```text
 RETURN_PREFLIGHT_DRIFT
-RETURN_KADENCE_SHELL_IMPORT_FAILED
+RETURN_STARTER_IMPORT_FAILED
 RETURN_FREE_PREVIEW_NETWORK_UPLOAD_REGRESSION
 RETURN_FREE_PREVIEW_MODEL_CALL_REGRESSION
 RETURN_WOOCOMMERCE_PATH_REGRESSION
