@@ -424,7 +424,8 @@ Status:
 - G3B/G3BR1 are closed with Reviewer PASS.
 - **Current Gate: G3C UI/UX productization using Astra Theme + the concrete free “Bestselling Author” starter template as the editable shell, with the Good Issue Free Preview retained as the custom core conversion component.**
 - Execution contract: `docs/G3C_UI_UX_PRODUCTIZATION.md`.
-- Local reversible implementation is now authorized within that contract.
+- Exact Executor package: `docs/G3C_EXECUTION_PACKET.md`.
+- Local reversible implementation is now authorized within that contract/package.
 - G3C must produce a WordPress-visible preview for Owner visual review before final UI freeze; technical PASS_CANDIDATE does not replace Owner visual approval.
 - G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED** until G3C visual/product review is complete and a separate bounded G4 contract is approved.
 - Production AI interface details remain deferred until the Owner supplies them.
