@@ -93,3 +93,28 @@ PAYMENT_ACTIONS=0
 SECRET_VALUES_EMITTED=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — M2A-R3 Runtime Network Membership Reconciliation — 2026-09-29
+
+- Gate: `M2A_R3_RUNTIME_NETWORK_MEMBERSHIP_RECONCILIATION`
+- Result: `PASS_CANDIDATE_M2A_R3_RUNTIME_NETWORK_MEMBERSHIP_RECONCILIATION`
+- Scope: read-only Hostinger Web Terminal reconciliation; no SSH and no runtime/source/control-plane mutation.
+- Compose SHA remains the accepted `85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8`; current Compose declares WordPress on `spikersun-edge` and the project DB network, with MariaDB only on the DB network.
+- Runtime reads conflicted: one initial inspect showed WordPress on `spikersun-private` with aliases `mini-craft-night-kit-wordpress-1` and `wordpress` (not the target alias); subsequent network inspect and repeated container/network readbacks showed no WordPress private endpoint. Filtered Docker event queries returned no matching events, so provenance and cause remain unproven.
+- Final readback: `WORDPRESS_PRIVATE_ALIAS_PRESENT=NO`; `TARGET_ALIAS_PRESENT=NO`; `PRIVATE_ORIGIN_REACHABILITY=NOT_TESTABLE`; `RUNTIME_NETWORK_DRIFT_CLASS=UNRESOLVED`.
+- Public Home, Shop, and REST checks returned HTTP 200. MariaDB remained healthy and isolated on the project database network.
+- Minimal reconciliation plan recorded in Evidence only; not executed. M2A write authorization remains suspended pending Reviewer decision; M2B not entered.
+- Evidence commit: `4e9ece3d65445f64d6b994547ab9c77d4555271d`
+
+```text
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
