@@ -1,3 +1,65 @@
+# G3C UI/UX productization — execution closeout
+
+```text
+GATE=G3C_UI_UX_PRODUCTIZATION
+RESULT=RETURN_STARTER_IMPORT_FAILED
+EXECUTION_BRANCH=codex/birthday-magazine-g3c-ui-ux-productization
+BASE_MAIN=782a9f191175994536828f0a8b7798e09a3ce513
+ASTRA_THEME=INSTALLED
+BESTSELLING_AUTHOR_STARTER=NOT_IMPORTED
+GOOD_ISSUE_PREVIEW_INTEGRATED=NOT_RUN
+FREE_PREVIEW_MODEL_CALLS=0
+FREE_PREVIEW_SERVER_PHOTO_UPLOADS=0_THIS_RUN; PHOTO_NETWORK_TEST=NOT_RUN
+WOO_COMMERCE_PATH=NOT_RUN
+USD_39_99_PRODUCT=PREPARED; CTA_TO_PRODUCT=NOT_RUN
+DESKTOP_PRODUCT_UI=NOT_RUN
+MOBILE_375_UI=NOT_RUN
+ACCOUNT_PRIVATE_REGRESSION=NOT_RUN
+SANDBOX_PAYMENT_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+PRODUCTION_AI_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+CLEANUP_READBACK=PASS
+OWNER_VISUAL_FREEZE=PENDING
+STOP_AT_REVIEWER=YES
+```
+
+## Gate result and blocker
+
+The selected exact template could not be imported from the installed official Starter Templates library. The current official [Bestselling Author template page](https://wpastra.com/templates/bestselling-author-02/) identifies the template as free and Gutenberg compatible. Local installed Starter Templates 4.7.7 fetched its catalog successfully. With **Build with Templates → Block Editor**, exact search `Bestselling Author`, and both Popular and Latest checked, the UI returned: `Your search - Bestselling Author - did not match any Starter Templates.` The sanitized inspection contains no candidate match. No other template was imported, and no hand-built lookalike landing page was substituted. Therefore product-page implementation and the dependent visual, preview, Woo path, and workspace validations stopped at the required template-import boundary.
+
+- Durable importer screenshot: [starter-template-importer.png](poc/g3c/artifacts/screenshots/starter-template-importer.png).
+- UI/network inspection: [starter-template-importer-inspection.json](poc/g3c/artifacts/reports/starter-template-importer-inspection.json).
+- Result record: [starter-import-result.json](poc/g3c/artifacts/reports/starter-import-result.json).
+- The inspector selected the template builder, Gutenberg, and Latest; the AI builder was not selected and import was not performed.
+- The importer’s catalog calls to `websitedemos.net` returned HTTP 200. `startertemplates.com` and Google Fonts requests were also observed in the WordPress admin. No synthetic or customer photo was selected during this importer check, so this is not a photo-upload Network proof.
+- Official package evidence says the template is Free; this result is an importer availability failure, not a paid-only finding.
+
+## Local runtime and installed components
+
+The disposable runtime was project-isolated and bound to loopback: WordPress `127.0.0.1:8147`, Mailpit `127.0.0.1:8148`, MariaDB without a host port. Versions: WordPress 7.1.1, PHP 8.3.33, MariaDB 11.4.7, Mailpit 1.31.2, WooCommerce 11.1.2, Astra 4.13.11, and Starter Templates 4.7.7. The WooCommerce product was created as a local synthetic simple virtual product, USD 39.99, with no stock/shipping semantics. Its record existed, but the requested product landing page CTA and WooCommerce browser path were not tested.
+
+- WooCommerce package: official WordPress.org package, GPL-3.0-or-later, SHA-256 `9de9350a1cf5671b9960afb3151f40f7980e223217a441bf2ea5921b5fce8e9e`.
+- Astra: official WordPress.org free theme, GPL-2.0-or-later, SHA-256 `d5af1b30c58584aa1370067211992060d0c621f062f7291fa381d02cb7dacbb6`; Astra Pro was not used.
+- Starter Templates: official WordPress.org free plugin, GPL-2.0-or-later, SHA-256 `4954aea052dac10d7a45857fd620783666419a2e00ee1471ecb8bdf3095e48c4`; the package was installed and the template directory inspected, but no starter site imported.
+- G3C preview plugin copied/adapted from G2A1 (`0.2.0`); commerce/workspace plugin copied/adapted from G3A (`0.1.0`). Historical G2A1 and G3A files were not modified.
+- Runtime package/source/version and product evidence: [runtime-setup.json](poc/g3c/artifacts/reports/runtime-setup.json) and [runtime-final-readback.json](poc/g3c/artifacts/reports/runtime-final-readback.json).
+- The initial WP-CLI check did not see the two G3C runtime constants because of a Compose environment mismatch. They were explicitly persisted and read back as `BMS_G3C_LOCAL_ONLY=true` and `BMS_G3C_GENERATION_ENABLED=false`; the first and corrected read-backs remain recorded.
+
+## Validation status
+
+The Good Issue preview source was copied into this Gate, but it was not embedded in a product page or exercised in a browser. Consequently `blob:` preview behavior, mobile preview use, photo Network behavior, and absence of photo POSTs were not claimed as tested. No model/provider call was made; no AI builder was used. No order, payment, checkout submission, or refund was performed. The product record is not evidence of the required CTA-to-product/cart/checkout path. Desktop/mobile product screenshots, preview screenshots, CTA screenshots, and account/private-workspace regression were not produced because the selected starter import did not complete. The importer blocker screenshot is the only UI screenshot for this Gate.
+
+## Cleanup and forbidden-action read-back
+
+The ignored exact G3C `.tmp` directory was path-checked inside this repository, verified ignored and not a symlink/reparse point, and its two expected files were removed by exact path. Only `docker compose -p birthday-magazine-g3c -f birthday-magazine-studio/poc/g3c/compose.yaml down --volumes --remove-orphans` was used for runtime teardown. No global prune was used. Final project containers, volumes, and networks are all zero. The stable unrelated resource fingerprint is unchanged: 32 containers, 78 volumes, and 17 networks before and after (container uptime/status is excluded from the identity fingerprint). See [cleanup-readback.json](poc/g3c/artifacts/reports/cleanup-readback.json), [docker-inventory-before.json](poc/g3c/artifacts/reports/docker-inventory-before.json), and [docker-inventory-after.json](poc/g3c/artifacts/reports/docker-inventory-after.json).
+
+Forbidden action counts: PayPal/payment 0; real-money 0; production AI 0; shared infrastructure changes 0; production deployment 0; global Docker prune 0. G3C disposable Docker resources and ignored temporary credentials/cache were cleaned. Pulled Docker image cache was left intact; no global image cleanup was attempted.
+
+The product UI is not ready for Owner visual freeze. `OWNER_VISUAL_FREEZE=PENDING`; Reviewer should decide how to proceed with the unavailable template. This run stops at Reviewer and does not enter G4.
+
+---
+
 # G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E cleanup closure
 
 **Current result:** `PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE`
