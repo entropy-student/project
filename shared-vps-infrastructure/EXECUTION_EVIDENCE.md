@@ -426,3 +426,52 @@ STOP_AT_REVIEWER=YES
 Hostinger Web Terminal confirmed the target host. Two independent reads parsed raw `docker inspect` and `docker network inspect` JSON with Python; both rounds agreed on the WordPress container ID, DB+edge networks, per-network aliases, absence from `spikersun-private`, zero target-alias collisions, and healthy MariaDB isolated to the project database network.
 
 The canonical Compose file and the existing pre-M2A backup were each freshly hashed. They match each other, but both produce `85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c`, not the R5 sealed digest `85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8`. Therefore execution stopped before unmodified Compose validation, backup use, source edit, or any runtime operation. No environment values or Secret values were read or emitted. No M2A mutation occurred.
+
+
+## Gate: M2A-R6 Canonical Hash Correction and Conditional Execution — 2026-09-30
+
+```text
+GATE=M2A_R6_CANONICAL_HASH_CORRECTION_AND_CONDITIONAL_EXECUTION
+RESULT=RETURN_COMPOSE_ENV_RESOLUTION_UNAVAILABLE
+ACCESS_PATH=HOSTINGER_WEB_TERMINAL
+TARGET_HOST=srv1970241
+TARGET_HOST_EXECUTION_PROVEN=PASS
+CONSOLE_USER=root
+
+OBSERVED_COMPOSE_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+OBSERVED_BACKUP_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+COMPOSE_EQUALS_BACKUP=YES
+
+WORDPRESS_NETWORKS=mini-craft-night-kit-database+spikersun-edge
+WORDPRESS_PRIVATE_ENDPOINT=ABSENT
+TARGET_ALIAS_COLLISIONS=0
+MARIADB_NETWORKS=mini-craft-night-kit-database
+MARIADB_HEALTH=healthy
+
+COMPOSE_ENV_RESOLUTION=FAIL
+UNMODIFIED_COMPOSE_VALIDATION=FAIL
+FAILURE_CLASS=ENV_RESOLUTION_UNAVAILABLE
+M2A_WRITE_ENTERED=NO
+CADDY_PUBLIC_REGRESSION=NOT_RUN
+
+COMPOSE_WRITE=0
+BACKUP_CREATION=0
+WORDPRESS_RECREATE=0
+NETWORK_CONNECT_DISCONNECT=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+DATABASE_MUTATIONS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+CLEANUP_ACTIONS=0
+SSH_NETWORK_INVOCATIONS=0
+ENVIRONMENT_VALUES_EMITTED=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
+
+The compact fresh prewrite matched the corrected R6 source/backup seal and accepted runtime baseline. The unmodified canonical Compose validation was attempted from `/srv/apps/mini-craft-night-kit` using `docker compose -p mini-craft-night-kit -f /srv/apps/mini-craft-night-kit/compose.production.yaml config --quiet`; its bounded non-sensitive result classified environment resolution as unavailable. Per the Gate, execution stopped before using the backup, editing Compose, or recreating WordPress. No raw validation output or environment/Secret value was emitted.
