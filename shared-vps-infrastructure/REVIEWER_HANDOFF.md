@@ -1,5 +1,49 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M1-R2 PASS / M1-R3 Architecture Completion Open — 2026-09-29
+
+```text
+M1_R2_OWNER_CONSOLE_CHECKPOINT=PASS
+
+TARGET_HOST=srv1970241
+TARGET_HOST_EXECUTION_PROVEN=PASS
+CONSOLE_USER=root
+
+SSH_SERVICE_ACTIVE=YES
+SSH_PORT22_LISTENING=YES
+SSH_SERVER_SIDE_HEALTH=PASS
+SSH_ROOT_CAUSE=INSUFFICIENT_EVIDENCE
+SSH_DIRECT_PATH=INTERMITTENT_UNAVAILABLE
+SSH_REPAIR_AUTHORIZED=NO
+DIRECT_SSH_RETRY_AUTHORIZED=NO
+
+CURRENT_GATE=M1_R3_MINICRAFT_TUNNEL_ARCHITECTURE_COMPLETION
+CURRENT_GATE_STATUS=READONLY_RECONCILIATION
+
+TARGET_ARCHITECTURE=UNRESOLVED
+MINI_CRAFT_K9_REOPENED=NO
+
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+PROJECT_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+Reviewer clarification: the accepted Hostinger provider-console checkpoint proves the target host even though the console user is root. The normal `ops@srv1970241` identity requirement belongs to the SSH connection contract; it is not a universal requirement for all target-host evidence.
+
+Accepted fresh topology facts include Mini Craft WordPress on its project DB network plus `spikersun-edge`, MariaDB on the project DB network only, `spikersun-private` carrying Unified Pay/Dujiao/Xianyu/cloudflared, Mini Craft Compose source at `/srv/apps/mini-craft-night-kit/compose.production.yaml`, and restart count 0 for relevant containers.
+
+M1-R3 finishes only the unresolved architecture facts, including exact aliases/Compose network feasibility and the remote-managed Cloudflare Tunnel public-hostname origin mapping. No SSH repair or ingress mutation occurs in R3.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M1_R2_PASS_R3_ARCHITECTURE_COMPLETION.md`
+
+Execution packet:
+`review-packets/M1_R3_MINICRAFT_TUNNEL_ARCHITECTURE_COMPLETION.md`
+
 ## CURRENT REVIEWER UPDATE — M1-R1 RETURN Accepted / M1-R2 Owner Console Recovery Open — 2026-09-29
 
 ```text
