@@ -34,7 +34,7 @@
 | G3A WooCommerce commerce/account/private-workspace loop | PASS |
 | G3B PayPal Sandbox + paid entitlement + refund | **PASS** |
 | G3BR1 Payment reconciliation + entitlement/refund closure | **PASS** |
-| G3C template selection + UI/UX productization | **CURRENT — template OPEN** |
+| G3C UI/UX productization + Owner visual freeze | **CURRENT — Astra Bestselling Author selected** |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
@@ -53,7 +53,7 @@ G3B Sandbox 闭环已经通过：
 → scoped cleanup PASS
 ```
 
-这仍然**不是 Live/真钱支付证据**。当前先进入 G3C：**重新筛选并由 Owner 选择具体免费/开源兼容的 WordPress starter template**，同时保留 Good Issue 浏览器本地预览作为核心转化组件；模板未选定前不执行最终 UI 外壳，之后再做 Owner 视觉确认并冻结 UI。G4 Live PayPal Canary 继续保持 HOLD。
+这仍然**不是 Live/真钱支付证据**。当前 G3C 已选定 **Astra Theme + 免费 “Bestselling Author” starter template** 作为可编辑 WordPress 外壳，同时保留 Good Issue 浏览器本地预览作为核心转化组件；现在进入本地可逆实现，完成后由 Owner 视觉确认并冻结 UI。G4 Live PayPal Canary 继续保持 HOLD。
 
 ## 已证明的技术能力
 
