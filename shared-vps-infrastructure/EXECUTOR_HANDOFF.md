@@ -171,3 +171,29 @@ PAYMENT_ACTIONS=0
 SECRET_VALUES_EMITTED=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — M2A-R6 Canonical Hash Correction and Conditional Execution — 2026-09-30
+
+- Result: `RETURN_COMPOSE_ENV_RESOLUTION_UNAVAILABLE`; no M2A write was entered.
+- Used Hostinger Web Terminal only; target host `srv1970241` was confirmed. No SSH retry.
+- Fresh Compose and existing backup both matched the corrected SHA-256 `85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c`.
+- Compact runtime readback matched the accepted baseline: WordPress remained on DB + edge only, no private endpoint, zero target-alias collisions; MariaDB remained healthy on DB network only.
+- Unmodified Compose validation from the canonical project directory returned environment-resolution failure. No environment values, Secrets, or raw error output were emitted.
+- Stopped before backup use, Compose edit, WordPress recreate, or public regression. M2B was not entered.
+- Evidence commit: `f6d45a6a62205ddaece57736f704d993b95ccff9`
+
+```text
+COMPOSE_ENV_RESOLUTION=FAIL
+UNMODIFIED_COMPOSE_VALIDATION=FAIL
+COMPOSE_WRITE=0
+WORDPRESS_RECREATE=0
+NETWORK_CONNECT_DISCONNECT=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
