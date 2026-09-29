@@ -1,5 +1,42 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M1-R1 RETURN Accepted / M1-R2 Owner Console Recovery Open — 2026-09-29
+
+```text
+M1_R1_RESULT=RETURN_TARGET_HOST_EXECUTION_UNAVAILABLE
+M1_R1_RETURN_ACCEPTED=YES
+
+SSH_CLIENT_TRUST_PREFLIGHT=PASS
+SSH_NETWORK_INVOCATIONS=1
+SSH_NATIVE_EXIT=255
+REMOTE_IDENTITY=UNPROVEN
+DIRECT_SSH_RETRY_AUTHORIZED=NO
+
+CURRENT_GATE=M1_R2_OWNER_HOSTINGER_CONSOLE_READONLY_RECOVERY
+CURRENT_GATE_STATUS=OWNER_LOCAL_READONLY_CHECKPOINT
+
+TARGET_ARCHITECTURE=UNRESOLVED
+MINI_CRAFT_K9_REOPENED=NO
+
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+PROJECT_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+Independent GitHub review accepted M1-R1 as a correct fail-closed return. Local SSH trust metadata passed, but the sole strict SSH connection was closed before any remote identity output. Because this pre-identity failure has now repeated, blind direct-SSH retry is no longer authorized.
+
+The next bounded recovery path is the already-authenticated Hostinger Web Terminal / provider console. Owner performs one prepared read-only command block. The checkpoint proves target identity, classifies fresh server-side SSH health, and collects safe M1 host-topology facts. It does not repair SSH and does not perform ingress migration.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M1_R1_RETURN_R2_OWNER_CONSOLE_READONLY_RECOVERY.md`
+
+Execution packet:
+`review-packets/M1_R2_OWNER_HOSTINGER_CONSOLE_READONLY_RECOVERY.md`
+
 ## CURRENT REVIEWER UPDATE — M1 RETURN Accepted / M1-R1 Target-host Recovery Open — 2026-09-29
 
 ```text
