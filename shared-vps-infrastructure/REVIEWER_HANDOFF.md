@@ -1,5 +1,52 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2A-R6 RETURN Accepted / M2A-R7 Explicit Non-secret Compose Env Open — 2026-09-30
+
+```text
+M2A_R6_RESULT=RETURN_COMPOSE_ENV_RESOLUTION_UNAVAILABLE
+M2A_R6_RETURN_ACCEPTED=YES
+
+TARGET_HOST=srv1970241
+CANONICAL_PRE_M2A_COMPOSE_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+CANONICAL_PRE_M2A_BACKUP_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+
+WORDPRESS_NETWORKS=mini-craft-night-kit-database+spikersun-edge
+WORDPRESS_PRIVATE_ENDPOINT=ABSENT
+TARGET_ALIAS_COLLISIONS=0
+MARIADB_NETWORKS=mini-craft-night-kit-database
+MARIADB_HEALTH=healthy
+
+CURRENT_GATE=M2A_R7_EXPLICIT_NONSECRET_COMPOSE_ENV_AND_CONDITIONAL_EXECUTION
+CURRENT_GATE_STATUS=CONDITIONAL_BOUNDED_WRITE
+
+HISTORICAL_INTERPOLATION_INPUTS=DATABASE_NAME+APP_DATABASE_USER
+HISTORICAL_DATABASE_VALUE=wordpress
+HISTORICAL_APP_USER_VALUE=mini_craft_app
+
+TARGET_ARCHITECTURE=DIRECT_TUNNEL_TO_MINICRAFT_APP
+TARGET_ALIAS=mini-craft-night-kit-wordpress
+CURRENT_PUBLIC_PATH=DNS_A_TO_CADDY
+CADDY_ROLLBACK_ROUTE_RETAINED=YES
+
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+SHARED_NETWORK_RECREATE_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+R6 proved the corrected source/backup hash and runtime baseline, then returned only because the normal Compose invocation could not resolve required interpolation inputs.
+
+Accepted historical K6 Evidence states the production Compose requires exactly two non-secret interpolation inputs: database name and application database user, with accepted deployed values `wordpress` and `mini_craft_app`. R7 must derive the exact variable names from the current Compose source, prove they map to exactly those two semantics, and then supply only those two non-secret values directly to the Compose process. Historical env-file content must not be read or recreated.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2A_R6_RETURN_R7_EXPLICIT_NONSECRET_ENV_EXECUTION.md`
+
+Execution packet:
+`review-packets/M2A_R7_EXPLICIT_NONSECRET_COMPOSE_ENV_AND_CONDITIONAL_EXECUTION.md`
+
 ## CURRENT REVIEWER UPDATE — M2A-R5 RETURN Accepted / M2A-R6 Canonical Hash Correction Open — 2026-09-30
 
 ```text
