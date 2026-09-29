@@ -156,3 +156,41 @@ STOP_AT_REVIEWER=YES
 ```
 
 Read-only provenance: authenticated Cloudflare One Dashboard route table; accepted M1-R3 target-host output and current Mini Craft/Dujiao handoffs; Cloudflare official Tunnel origin-parameter documentation (httpHostHeader setting remains empty by default and is not changed in this Gate). No Tunnel route detail was edited or saved.
+
+
+## Gate: M2A Mini Craft Private Network Preparation — 2026-09-29 prewrite RETURN
+
+```text
+GATE=M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION
+RESULT=RETURN_PREFLIGHT_DRIFT
+OWNER_ACTION_TIME_CONFIRMATION=CONFIRMED
+TARGET_HOST=srv1970241
+ACCESS_PATH=HOSTINGER_WEB_TERMINAL
+TARGET_HOST_EXECUTION_PROVEN=PASS
+COMPOSE_FILE=/srv/apps/mini-craft-night-kit/compose.production.yaml
+PREWRITE_COMPOSE_SHA256_EXPECTED=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf31786f1dded2110e8
+PREWRITE_COMPOSE_HASH_MATCH=NO
+PREWRITE_COMPOSE_BACKUP_CREATED=NO
+COMPOSE_FILE_MUTATION=0
+WORDPRESS_RECREATE=0
+MARIADB_CHANGE=0
+SHARED_NETWORK_MUTATIONS=0
+WORDPRESS_PREWRITE_NETWORKS=mini-craft-night-kit-database+spikersun-edge
+MARIADB_PREWRITE_NETWORKS=mini-craft-night-kit-database
+TARGET_ALIAS_COLLISIONS=0
+WORDPRESS_PREWRITE_RUNNING=YES
+MARIADB_PREWRITE_HEALTHY=YES
+PUBLIC_HOME_HTTP=200
+PUBLIC_SHOP_HTTP=200
+PUBLIC_WP_REST_HTTP=200
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+CADDY_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
+
+The authenticated Hostinger Web Terminal proved the target host and current runtime facts. The fresh shell comparison against the accepted Compose SHA returned PREWRITE_COMPOSE_HASH_MATCH=NO; execution stopped before backup or any write. The observed current SHA was not separately transcribed into this record, so this section makes no claim about its exact differing value. Fresh read-only HTTP checks returned 200 for Home, Shop, and /wp-json/. No M2A network preparation was performed.
