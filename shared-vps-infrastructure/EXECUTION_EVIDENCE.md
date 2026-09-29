@@ -288,3 +288,80 @@ A private-origin HTTP/DNS probe was not possible using an appropriate already-ru
 
 Keep all runtime and source state unchanged. Reviewer should reconcile the conflicting runtime observations and decide whether a fresh bounded M2A prewrite is authorized. If reauthorized, recheck the exact source/runtime state, then make only the reviewed WordPress Compose network declaration with the unique alias, validate, recreate only WordPress, verify the private endpoint and origin, confirm MariaDB remains isolated, and recheck the existing Caddy public routes. M2B remains out of scope.
 
+
+
+## Gate: M2A-R4 Stable Baseline and Conditional Execution — 2026-09-29
+
+```text
+GATE=M2A_R4_STABLE_BASELINE_AND_CONDITIONAL_EXECUTION
+RESULT=RETURN_RUNTIME_READBACK_UNSTABLE
+ACCESS_PATH=HOSTINGER_WEB_TERMINAL
+TARGET_HOST=srv1970241
+TARGET_HOST_EXECUTION_PROVEN=PASS
+CANONICAL_PROJECT_DIR=/srv/apps/mini-craft-night-kit
+PREWRITE_READ_ROUNDS=2
+READ_ROUND_INTERVAL_SECONDS=3
+
+WORDPRESS_CONTAINER=mini-craft-night-kit-wordpress-1
+READ_A_WORDPRESS_CONTAINER_ID=ea7cbd0f89569f3e1083268f38374182558cf9de6c6fd038ed1684ff5557d457c
+READ_B_WORDPRESS_CONTAINER_ID=ea7cbd0f89569f3e1083268f38374182558cf9de6c6fd038ed1684ff5557d457c
+WORDPRESS_CONTAINER_ID_UNCHANGED=YES
+READ_A_WORDPRESS_NETWORKS_RAW=+mini-craft-night-kit-database+spikersun-edge
+READ_B_WORDPRESS_NETWORKS_RAW=+mini-craft-night-kit-database+spikersun-edge
+READ_A_WORDPRESS_PRIVATE_ENDPOINT=NO
+READ_B_WORDPRESS_PRIVATE_ENDPOINT=NO
+READ_A_PRIVATE_NETWORK_WORDPRESS_ENDPOINT=NO
+READ_B_PRIVATE_NETWORK_WORDPRESS_ENDPOINT=NO
+READ_A_TARGET_ALIAS_COLLISIONS=0
+READ_B_TARGET_ALIAS_COLLISIONS=0
+TARGET_ALIAS=mini-craft-night-kit-wordpress
+WORDPRESS_ALIASES_BY_NETWORK_CAPTURE=FAILED_TEMPLATE_PARSE
+READ_A_MARIADB_NETWORKS_RAW=+mini-craft-night-kit-database
+READ_B_MARIADB_NETWORKS_RAW=+mini-craft-night-kit-database
+READ_A_MARIADB_HEALTH=healthy
+READ_B_MARIADB_HEALTH=healthy
+
+STABLE_PREWRITE_RUNTIME=NOT_PROVEN
+STABILITY_PREDICATE_FAILURE=NETWORK_NAME_NORMALIZATION_INCLUDED_LEADING_EMPTY_DELIMITER; WP_ALIAS_TEMPLATE_PARSE_FAILED
+RETURN_RUNTIME_READBACK_UNSTABLE=EMITTED_FAIL_CLOSED
+CURRENT_COMPOSE_SHA256=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8
+EXISTING_BACKUP_SHA256=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8
+COMPOSE_AND_BACKUP_SEALS=PASS
+COMPOSE_FILE_META=compose.production.yaml;root:root;0644;4966_bytes;mtime_2026-09-26T05:32:19.703022564Z
+BACKUP_FILE_META=/srv/backups/mini-craft-night-kit/manifests/m2a-pre-private-network-20260929T111649Z.compose.bak;root:root;0644;4966_bytes;mtime_2026-09-26T05:32:19.703022564Z
+COMPOSE_PROJECT_LABEL=mini-craft-night-kit
+COMPOSE_CONFIG_SOURCE_LABEL=/srv/apps/mini-craft-night-kit/compose.production.yaml
+
+ENVIRONMENT_FILE_ENUMERATION=FAILED_SHELL_SYNTAX
+ENVIRONMENT_VARIABLE_NAMES_READ=NO
+ENVIRONMENT_VALUES_READ=NO
+CANONICAL_UNMODIFIED_COMPOSE_VALIDATION=NOT_RUN
+COMPOSE_ENV_RESOLUTION=NOT_PROVEN
+HOSTINGER_TERMINAL_SESSION=ENDED_AFTER_PREFLIGHT_SCRIPT_ERROR
+
+M2A_COMPOSE_WRITE=0
+WORDPRESS_RECREATE=0
+NETWORK_CONNECT_DISCONNECT=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+DATABASE_MUTATIONS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+CLEANUP_ACTIONS=0
+SSH_NETWORK_INVOCATIONS=0
+SECRET_CONTENT_READS=0
+SECRET_VALUES_EMITTED=0
+PUBLIC_CADDY_REGRESSION=NOT_RUN
+STOP_AT_REVIEWER=YES
+```
+
+### R4 fail-closed result
+
+The two target-host rounds used the same WordPress container ID and both reported no WordPress private endpoint from the container/network membership checks; both reported zero matches for the requested alias, and MariaDB reported healthy. The raw network-name normalization emitted a leading empty delimiter, so the exact sealed-network comparison did not pass. The per-network alias extraction returned a Go-template parse error, leaving that required evidence incomplete. The preflight therefore emitted `RETURN_RUNTIME_READBACK_UNSTABLE`; this records failure to prove the exact R4 stability predicate, not a claim that a contradictory live endpoint was observed.
+
+Both canonical Compose and the existing backup freshly matched the accepted SHA-256. The running Compose project/config labels matched the canonical project directory and file. The environment-file enumeration then failed on a shell syntax error and the terminal session ended. Consequently the environment source/variable-name inventory and unmodified Compose validation were not completed. No source edit, backup operation, Compose validation, recreate, or other mutation occurred. Conditional M2A execution was not entered.
+
