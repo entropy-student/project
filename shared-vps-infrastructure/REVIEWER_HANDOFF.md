@@ -1,5 +1,39 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M1 RETURN Accepted / M1-R1 Target-host Recovery Open — 2026-09-29
+
+```text
+M1_RESULT=RETURN_TARGET_HOST_EXECUTION_UNAVAILABLE
+M1_RETURN_ACCEPTED=YES
+M1_RUNTIME_DRIFT_PROVEN=NO
+M1_MUTATIONS=0
+
+CURRENT_GATE=M1_R1_TARGET_HOST_ACCESS_RECOVERY_AND_M1_RESUME
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+SHARED_VPS_HANDOFF=CREATED_CANONICAL_METADATA_PARTIAL
+MINI_CRAFT_K9_REOPENED=NO
+TARGET_ARCHITECTURE=UNRESOLVED_PENDING_M1_R1
+
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+PROJECT_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+Independent GitHub review accepted the Executor's fail-closed M1 RETURN. The failure was execution-boundary only: no target-host command was sent and phases B-I were not started.
+
+Governance gap repaired: canonical `SHARED_VPS_HANDOFF.md` now exists. Its exact SSH identity-file reference and expected host-key fingerprints remain pending promotion from the previously accepted Owner-workstation local bootstrap handoff. M1-R1 is authorized to recover that already-proven trust metadata, make one strict read-only SSH attempt, and if target identity passes continue original M1 B-I in the same bounded read-only evidence domain.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M1_RETURN_R1_TARGET_HOST_ACCESS_RECOVERY.md`
+
+Execution packet:
+`review-packets/M1_R1_TARGET_HOST_ACCESS_RECOVERY_AND_M1_RESUME.md`
+
 ## CURRENT REVIEWER UPDATE — Mini Craft Tunnel Architecture M1 Open — 2026-09-29
 
 ```text
