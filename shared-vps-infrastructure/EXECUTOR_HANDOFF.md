@@ -118,3 +118,27 @@ PAYMENT_ACTIONS=0
 SECRET_VALUES_EMITTED=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — M2A-R4 Stable Baseline and Conditional Execution — 2026-09-29
+
+- Gate: `M2A_R4_STABLE_BASELINE_AND_CONDITIONAL_EXECUTION`
+- Result: `RETURN_RUNTIME_READBACK_UNSTABLE`; conditional M2A execution did not start.
+- Used Hostinger Web Terminal only; target host `srv1970241` was confirmed; no SSH retry.
+- Two reads reported the same WordPress container ID, no private endpoint, zero target-alias matches, and healthy MariaDB. However network normalization emitted a leading empty delimiter and alias extraction failed, so the exact stability predicate was not proven.
+- Canonical Compose and existing backup both freshly matched `85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8`.
+- Environment-file enumeration failed with shell syntax error; environment resolution and unmodified Compose validation were not completed. Terminal session ended. No Compose edit, backup, recreate, or other mutation occurred.
+- Evidence commit: `ca34c98560b292aff0f391eaf76a0fe304c75872`
+
+```text
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+WORDPRESS_RECREATE=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
