@@ -1,5 +1,43 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2A-R4 RETURN Accepted / M2A-R5 Parser-independent Conditional Execution Open — 2026-09-30
+
+```text
+M2A_R4_RESULT=RETURN_RUNTIME_READBACK_UNSTABLE
+M2A_R4_RETURN_ACCEPTED=YES
+
+R4_RUNTIME_CHANGE_PROVEN=NO
+R4_RUNTIME_INSTABILITY_PROVEN=NO
+R4_EVIDENCE_EXTRACTION_INCOMPLETE=YES
+R4_FAILURE_CLASS=PARSER_AND_SHELL_EVIDENCE_EXTRACTION_FAILURE
+
+CURRENT_GATE=M2A_R5_PARSER_INDEPENDENT_STABLE_BASELINE_AND_CONDITIONAL_EXECUTION
+CURRENT_GATE_STATUS=CONDITIONAL_BOUNDED_WRITE
+
+SEALED_PRE_M2A_COMPOSE_SHA256=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8
+TARGET_ALIAS=mini-craft-night-kit-wordpress
+CURRENT_PUBLIC_PATH=DNS_A_TO_CADDY
+CADDY_ROLLBACK_ROUTE_RETAINED=YES
+
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+SHARED_NETWORK_RECREATE_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+R4's two runtime rounds were materially consistent: same WordPress container ID, no private endpoint in either view, zero target-alias collisions, and healthy MariaDB. The Gate returned because formatting/template parsing failed to prove the exact predicate and because a later shell syntax error prevented Compose environment resolution/validation. This is accepted as an evidence-extraction failure, not proof of live runtime instability.
+
+R5 removes the fragile parsing methods. Network/alias evidence must come from raw Docker JSON parsed with an already-installed JSON parser. Compose validation must run from the canonical project directory using the normal project environment resolution, without enumerating or outputting environment values.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2A_R4_RETURN_R5_PARSER_INDEPENDENT_CONDITIONAL_EXECUTION.md`
+
+Execution packet:
+`review-packets/M2A_R5_PARSER_INDEPENDENT_STABLE_BASELINE_AND_CONDITIONAL_EXECUTION.md`
+
 ## CURRENT REVIEWER UPDATE — M2A-R3 PASS / M2A-R4 Stable Conditional Execution Open — 2026-09-29
 
 ```text
