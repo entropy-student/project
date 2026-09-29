@@ -1,5 +1,43 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2A RETURN Accepted / M2A-R1 Compose Reconciliation Open — 2026-09-29
+
+```text
+M2A_RESULT=RETURN_PREFLIGHT_DRIFT
+M2A_RETURN_ACCEPTED=YES
+M2A_MUTATIONS=0
+
+CURRENT_GATE=M2A_R1_COMPOSE_BASELINE_RECONCILIATION
+CURRENT_GATE_STATUS=READ_ONLY_ONLY
+
+EXPECTED_HISTORICAL_COMPOSE_SHA256=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf31786f1dded2110e8
+CURRENT_COMPOSE_SHA256=UNKNOWN_PENDING_R1
+M2A_WRITE_AUTHORIZATION=SUSPENDED
+
+TARGET_ARCHITECTURE=DIRECT_TUNNEL_TO_MINICRAFT_APP
+CURRENT_PUBLIC_PATH=DNS_A_TO_CADDY
+CURRENT_CADDY_ROUTE_RETAINED_AS_ROLLBACK=YES
+
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+PROJECT_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+Independent review accepted the fail-closed M2A return. The expected Compose hash is historically grounded in the accepted K6 resolved deployment source, and later accepted Evidence does not record an authorized Mini Craft Compose mutation. Therefore the mismatch must be classified before M2A can resume.
+
+M2A-R1 is read-only and must capture the exact current Compose hash plus safe non-secret semantics, then classify the drift as byte-only/non-semantic, previously accepted semantic change, material unexplained drift, or unresolved.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2A_RETURN_R1_COMPOSE_BASELINE_RECONCILIATION.md`
+
+Execution packet:
+`review-packets/M2A_R1_COMPOSE_BASELINE_RECONCILIATION.md`
+
 ## CURRENT REVIEWER UPDATE — M2A Prewrite Accepted / Bounded Write Authorized — 2026-09-29
 
 ```text
