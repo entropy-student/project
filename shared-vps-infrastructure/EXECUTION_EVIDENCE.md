@@ -475,3 +475,83 @@ STOP_AT_REVIEWER=YES
 ```
 
 The compact fresh prewrite matched the corrected R6 source/backup seal and accepted runtime baseline. The unmodified canonical Compose validation was attempted from `/srv/apps/mini-craft-night-kit` using `docker compose -p mini-craft-night-kit -f /srv/apps/mini-craft-night-kit/compose.production.yaml config --quiet`; its bounded non-sensitive result classified environment resolution as unavailable. Per the Gate, execution stopped before using the backup, editing Compose, or recreating WordPress. No raw validation output or environment/Secret value was emitted.
+
+
+## Gate: M2A-R7 Explicit Non-secret Compose Environment and Conditional Execution — 2026-09-30
+
+```text
+GATE=M2A_R7_EXPLICIT_NONSECRET_COMPOSE_ENV_AND_CONDITIONAL_EXECUTION
+RESULT=PASS_CANDIDATE_M2A_R7_EXPLICIT_NONSECRET_COMPOSE_ENV_AND_CONDITIONAL_EXECUTION
+ACCESS_PATH=HOSTINGER_WEB_TERMINAL
+TARGET_HOST=srv1970241
+TARGET_HOST_EXECUTION_PROVEN=PASS
+
+PREWRITE_CANONICAL_COMPOSE_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+PREWRITE_EXISTING_BACKUP_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+EXISTING_BACKUP_REUSED=/srv/backups/mini-craft-night-kit/manifests/m2a-pre-private-network-20260929T111649Z.compose.bak
+NEW_BACKUP_CREATED=NO
+
+PREWRITE_WORDPRESS_NETWORKS=mini-craft-night-kit-database+spikersun-edge
+PREWRITE_WORDPRESS_PRIVATE_ENDPOINT=ABSENT
+PREWRITE_TARGET_ALIAS_COLLISIONS=0
+PREWRITE_MARIADB_NETWORKS=mini-craft-night-kit-database
+PREWRITE_MARIADB_HEALTH=healthy
+
+INTERPOLATION_INPUT_COUNT=2
+INTERPOLATION_VARIABLES=MARIADB_DATABASE+MARIADB_USER
+DATABASE_NAME_VARIABLE=MARIADB_DATABASE
+DATABASE_NAME_VALUE=wordpress
+APP_DATABASE_USER_VARIABLE=MARIADB_USER
+APP_DATABASE_USER_VALUE=mini_craft_app
+ENV_FILE_READ=NO
+OTHER_ENVIRONMENT_VALUES_READ_OR_EMITTED=0
+UNMODIFIED_COMPOSE_VALIDATION=PASS
+COMPOSE_VALIDATION_MODE=EXPLICIT_TWO_NONSECRET_VALUES; ENV_FILE=/dev/null; QUIET
+
+COMPOSE_CANDIDATE_BYTES=5122
+COMPOSE_CANDIDATE_SHA256=25931b1de6ee1814e012a246355c315b20f242649e2f658b3322b956f215e869
+COMPOSE_EDIT_SCOPE=WORDPRESS_PRIVATE_NETWORK_MEMBERSHIP_AND_ALIAS_ONLY; EXTERNAL_NETWORK_DECLARATION_ONLY
+COMPOSE_FILE_METADATA_PRESERVED=YES
+COMPOSE_EDIT_WRITE=PASS
+EDITED_COMPOSE_VALIDATION=PASS
+POSTWRITE_COMPOSE_SHA256=25931b1de6ee1814e012a246355c315b20f242649e2f658b3322b956f215e869
+
+WORDPRESS_ONLY_RECREATE=PASS
+WORDPRESS_RESTART_COUNT=0
+WORDPRESS_STATE=RUNNING
+WORDPRESS_NETWORKS=mini-craft-night-kit-database+spikersun-edge+spikersun-private
+WORDPRESS_TARGET_ALIAS=mini-craft-night-kit-wordpress
+TARGET_ALIAS_MATCHING_ENDPOINT_COUNT=1
+TARGET_ALIAS_OWNED_BY_WORDPRESS=YES
+WORDPRESS_PUBLISHED_PORTS=NONE
+
+MARIADB_STATE=RUNNING_HEALTHY
+MARIADB_NETWORKS=mini-craft-night-kit-database
+MARIADB_PRIVATE_ENDPOINT=ABSENT
+MARIADB_PUBLISHED_PORTS=NONE
+PRIVATE_ORIGIN_HTTP=200
+PUBLIC_HOME_HTTP=200
+PUBLIC_SHOP_HTTP=200
+PUBLIC_WP_JSON_HTTP=200
+EXISTING_CADDY_PUBLIC_PATH=PASS
+
+M2B_ENTERED=NO
+SHARED_NETWORK_DEFINITION_MUTATION=0
+MARIADB_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_READ_OR_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
+
+### R7 execution record
+
+Read the current Shared VPS Reviewer Handoff, R6 Reviewer Decision, R7 execution packet, original M2A execution packet, latest Shared VPS Evidence/Handoff, and current canonical VPS Project Governance. Used the already authenticated Hostinger Web Terminal only; no SSH retry was made.
+
+The fresh compact prewrite matched the corrected Compose and existing-backup digest and the accepted runtime predicates. A source-only scan of the canonical Compose found exactly two interpolation names: `MARIADB_DATABASE` (the database name) and `MARIADB_USER` (the application database user). Only the Reviewer-accepted non-secret values `wordpress` and `mini_craft_app` were passed to the Compose process. The historical `.env` file was neither read nor changed; the unmodified Compose passed quiet validation with an empty env-file plus those explicit process values.
+
+Reused the exact existing rollback backup; created no new backup. Updated only `/srv/apps/mini-craft-night-kit/compose.production.yaml`: WordPress now uses the existing `spikersun-private` external network with the unique requested alias while retaining its DB and edge networks; MariaDB remains on the project database network only. The edited Compose passed quiet validation. The one requested WordPress-only recreate completed successfully, with no dependency recreate, pull, or build. Fresh runtime readback showed WordPress running with restart count 0, the target alias matching exactly one private-network endpoint owned by WordPress, and MariaDB healthy and absent from the shared private network. A bounded private-origin GET returned HTTP 200. Existing public Caddy Home, Shop, and REST paths each returned HTTP 200 with normal TLS verification. No M2B action was started.
+
+No payment/provider, DNS, Cloudflare, Caddy, database-content, Secret, or cleanup action occurred. No Reviewer-owned file was changed.
