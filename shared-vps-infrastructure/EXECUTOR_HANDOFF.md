@@ -71,3 +71,25 @@ Await Reviewer direction. Do not retry SSH or resume M1 phases without a new Rev
 - No Cloudflare, VPS, Docker, Caddy, Compose, WordPress, payment, or Secret mutation/read occurred. No SSH was attempted.
 - Evidence commit: `36be2833cb0c4e1743f149f1d9b0c610b54d6e37`
 - STOP_AT_REVIEWER=YES
+
+
+## Current Task Update — M2A Prewrite Drift RETURN — 2026-09-29
+
+- Gate: M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION
+- Result: RETURN_PREFLIGHT_DRIFT
+- Fresh Hostinger Web Terminal target-host check passed for srv1970241; the immediate Compose hash comparison returned NO against the Reviewer-accepted baseline.
+- Stopped before creating a backup or changing Compose/runtime. WordPress recreate=0; Shared Network/MariaDB/Caddy/Cloudflare/DNS/payment mutations=0.
+- Read-only Home, Shop, and WP REST checks were HTTP 200; target alias collision count=0; MariaDB remained healthy on the project database network only.
+- Evidence commit: 83ba42bc92947ed1a95d1302784cde8193c95b3d
+- Await Reviewer reconciliation of the Compose baseline. Do not retry M2A writes until a fresh decision/baseline is provided.
+
+```text
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+WORDPRESS_RECREATE=0
+SHARED_NETWORK_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
