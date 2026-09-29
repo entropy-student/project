@@ -1,5 +1,50 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2A-R3 PASS / M2A-R4 Stable Conditional Execution Open — 2026-09-29
+
+```text
+M2A_R3_RUNTIME_NETWORK_MEMBERSHIP_RECONCILIATION=PASS
+RUNTIME_NETWORK_DRIFT_CLASS=UNRESOLVED
+
+COMPOSE_SHA256=85abaeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fdded2110e8
+COMPOSE_PRIVATE_NETWORK_DECLARATION=ABSENT
+
+FINAL_WORDPRESS_NETWORKS=mini-craft-night-kit-database+spikersun-edge
+FINAL_WORDPRESS_PRIVATE_ENDPOINT=ABSENT
+TARGET_ALIAS_PRESENT=NO
+
+MARIADB_NETWORKS=mini-craft-night-kit-database
+MARIADB_HEALTH=HEALTHY
+
+CURRENT_GATE=M2A_R4_STABLE_BASELINE_AND_CONDITIONAL_EXECUTION
+CURRENT_GATE_STATUS=CONDITIONAL_BOUNDED_WRITE
+
+TARGET_ARCHITECTURE=DIRECT_TUNNEL_TO_MINICRAFT_APP
+TARGET_ALIAS=mini-craft-night-kit-wordpress
+CURRENT_PUBLIC_PATH=DNS_A_TO_CADDY
+CADDY_ROLLBACK_ROUTE_RETAINED=YES
+
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+SHARED_NETWORK_RECREATE_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+R3 found one contradictory initial read of a WordPress private-network endpoint, but all later repeated container/network reads showed the endpoint absent, matching the sealed Compose source. Docker event history did not establish a cause, so provenance remains unresolved.
+
+R4 therefore requires a stronger same-session double read from both container and network views before any write. Only if the runtime remains stable may the original M2A network addition proceed.
+
+R4 also repairs the prior Compose validation gap by requiring validation from the canonical project working directory/environment resolution without emitting environment or Secret values.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2A_R3_PASS_R4_STABLE_BASELINE_CONDITIONAL_EXECUTION.md`
+
+Execution packet:
+`review-packets/M2A_R4_STABLE_BASELINE_AND_CONDITIONAL_EXECUTION.md`
+
 ## CURRENT REVIEWER UPDATE — M2A Runtime Network Drift / M2A-R3 Read-only Reconciliation Open — 2026-09-29
 
 ```text
