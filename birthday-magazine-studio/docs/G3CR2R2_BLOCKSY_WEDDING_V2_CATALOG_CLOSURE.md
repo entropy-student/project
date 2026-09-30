@@ -1,10 +1,14 @@
 # G3CR2R2 — Blocksy Wedding v2 Dashboard Catalogue Closure
 
 > Governance: VPS Project Governance v0.1.6 + current active addenda  
-> Reviewer status: **CURRENT / PROJECT-LOCAL REVERSIBLE CLOSURE AUTHORIZED**  
+> Reviewer status: **EXECUTED — EXECUTOR RETURN, REVIEWER DEPENDENCY PASS; DO NOT RE-EXECUTE**  
 > Production / Live payment authority: **NONE**
 
-## 1. Goal
+## 0. Reviewer closure
+
+PR #62 returned because the v2 record used `builder=""` rather than the literal string `gutenberg`. Reviewer source inspection established that Blocksy Companion 2.1.57 intentionally treats blank/falsy builder as Gutenberg across the active UI/filter/CLI code paths. Dependency mapping is therefore closed PASS. Current execution is `G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY.md`.
+
+## 1. Historical Goal
 
 Resolve the Blocksy Wedding dependency question using the **same v2 starter catalogue consumed by the current Blocksy dashboard UI**.
 
