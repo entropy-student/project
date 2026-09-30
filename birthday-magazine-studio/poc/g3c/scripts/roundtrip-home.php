@@ -1,0 +1,2 @@
+<?php
+$c=get_post_field('post_content',858);$s=serialize_blocks(parse_blocks($c));echo "original=".strlen($c)." serialized=".strlen($s)."\n";echo "originalRendered=".strlen(do_blocks($c))." serializedRendered=".strlen(do_blocks($s))."\n";echo "renderHash=".hash('sha256',do_blocks($c))."\n".hash('sha256',do_blocks($s))."\n";echo "topBlocks=".count(parse_blocks($c))." serializedTop=".count(parse_blocks($s))."\n";

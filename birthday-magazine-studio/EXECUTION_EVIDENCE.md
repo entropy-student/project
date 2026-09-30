@@ -683,3 +683,46 @@ All three routes used the same minimal WordPress page content and Good Issue-sty
 1. Decide whether to reject or replace Vanquish Upload Files for guest orders because its issued secure file link returned HTTP 200 when replayed from an unrelated guest context.
 2. Decide whether to reject or replace Vanquish Attach Me for guest private delivery because its issued attachment link also returned HTTP 200 when replayed from an unrelated guest context, despite the raw storage URL returning HTTP 403.
 3. Keep this Gate at Reviewer. Do not start G2A2 until the Reviewer resolves the two guest-link access-control failures.
+
+## G3C Blocksy Wedding UI/UX productization — current execution evidence
+
+**Gate:** `G3C_BLOCKSY_WEDDING_PRODUCTIZATION`
+**Base:** GitHub `main` at `636e1109e031f1c77704f2b88b83ca5dd771e46b`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**Current evidence status:** `RETURN_OWNER_SCREENSHOT_ARCHIVE_NOT_INSPECTED` — the product/runtime checks below passed, but the Owner's updated screenshot archive is not available to the Executor for inspection. This is not a PASS_CANDIDATE.
+
+### Runtime and dependencies
+
+- Project-local Compose stack `birthday-magazine-g3c` is retained for Owner editing at `http://127.0.0.1:8189/`; wp-admin is `http://127.0.0.1:8189/wp-admin/`.
+- WordPress 7.1.1; PHP 8.3.33; MariaDB 11.4.7; WooCommerce 11.1.2; Blocksy 2.1.57; Blocksy Companion 2.1.57. The retained Starter Site is Wedding imported with Gutenberg.
+- Active free components: Simply Gallery Block 3.4.3, Stackable 3.20.2, WPForms Lite 2.0.2.1, G3A commerce/workspace plugin 0.1.0, G3C Good Issue preview plugin 0.2.0, and local Mailpit MU plugin 0.1.0.
+- No Elementor, HT Slider, or WooCommerce PayPal Payments plugin is installed/active. WordPress and Mailpit host ports bind to `127.0.0.1`; Compose uses the project network `birthday-magazine-g3c_private` and named volumes `birthday-magazine-g3c_database` / `birthday-magazine-g3c_wordpress`.
+- Runtime read-back: four project containers remain up; MariaDB and Mailpit report healthy. Teardown is intentionally not performed because Owner visual review needs the site online. No global Docker cleanup was run.
+
+### Product page and editor
+
+- Home is WordPress page 858, still a Gutenberg page with 36 blocks and the Good Issue preview shortcode. The content presents the Birthday Magazine product, sample story/gallery, 12-page US Letter digital PDF, steps, US$39.99 offer, and contract-bounded FAQ.
+- Final desktop homepage was inspected in the local browser after the last Hero/header changes. The site identity, Home / What You Get navigation, sample magazine cover, and `Create a Free Preview` CTA were visible.
+- Removed the imported Wedding swan block and the old off-canvas Wedding text/logo item. Read-back now finds zero references to `footer-logo.svg` or `logo-dark.svg` in the home page, Blocksy theme mods, or post content: `KNOWN_LOGO_404S_RESOLVED=PASS`.
+- `bms-owner` is an Administrator. Runtime capability checks passed for editing page text, replacing images (`upload_files`), reordering the Gutenberg blocks, and editing Blocksy global styles (`edit_theme_options`). No credential is included here. The one-time local setup credential remains in ignored `poc/g3c/.tmp/local-owner-admin.json`; Owner can set a private password using the command template in `poc/g3c/README.md`.
+
+### Free preview and WooCommerce
+
+- The G3C preview reuses the G2A1 Good Issue browser-local component. A synthetic selected photo previously produced a browser `blob:` object URL; `preview.js` uses `URL.createObjectURL` and static inspection found no `fetch`, `XMLHttpRequest`, `FormData`, `sendBeacon`, or AJAX photo-submit path. The displayed copy states the photo stays in this browser. `FREE_PREVIEW_MODEL_CALLS=0`, `FREE_PREVIEW_SERVER_PHOTO_UPLOADS=0`, and `FREE_PREVIEW_EXTERNAL_IMAGE_POSTS=0`.
+- The browser automation surface did not provide a Network-panel export; therefore the no-photo-upload result is supported by the observed blob URL and source inspection, not by a committed HAR. This limitation is retained for Reviewer.
+- Product 1113 is a simple virtual WooCommerce product at USD 39.99. `Add to cart` worked; Cart showed one item at USD 39.99; Checkout loaded with required billing fields and the local-only `Local test only — no payment` offline method; account registration is required at checkout and generated username/password are configured. My Account login page loaded. No checkout submission or payment occurred.
+- The native path remains `Product → Cart → Checkout → My Account`; the homepage preview CTA and offer link point to WooCommerce product 1113. The order/cart implementation remains WooCommerce; no parallel order system was introduced.
+
+### Private workspace regression and boundaries
+
+- Reused the G3A workspace plugin; synthetic fixture order 1131 remained unpaid. Buyer A opened the workspace successfully (HTTP 200); Buyer B replay and guest direct replay were denied (HTTP 403 each). The fixture is not a paid order.
+- Generation jobs and model calls remained zero. PayPal Sandbox actions, PayPal Live actions, real-money actions, production AI calls, production deployment, shared-infrastructure mutations, and paid purchases were all zero.
+- Checkout was not submitted. The runtime remains local and available; no cleanup teardown was run.
+
+### Screenshot handoff limitation
+
+- PNG files currently in the local `poc/g3c/artifacts/screenshots/` folder are from before the final Hero/header/logo corrections. They are intentionally not committed or cited as current-state proof.
+- The Owner reports that the updated PNGs are in a local archive and will send that archive directly to the Reviewer. The Executor did not inspect that archive. Thus current-state desktop/mobile screenshot evidence is an Owner-to-Reviewer handoff item; 375px layout is not marked PASS by the Executor.
+- Required filenames are documented in `poc/g3c/artifacts/screenshots/README.md`. Please review the Owner-supplied archive before deciding the visual freeze.
+
+Machine-readable current reports: `poc/g3c/artifacts/reports/runtime-setup.json`, `productization.json`, and `verification-g3c.json`.

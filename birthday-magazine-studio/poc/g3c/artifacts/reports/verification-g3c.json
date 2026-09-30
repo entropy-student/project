@@ -1,0 +1,94 @@
+{
+  "gate": "G3C_BLOCKSY_WEDDING_PRODUCTIZATION",
+  "executionBranch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
+  "baseMain": "636e1109e031f1c77704f2b88b83ca5dd771e46b",
+  "result": "RETURN_OWNER_SCREENSHOT_ARCHIVE_NOT_INSPECTED",
+  "frontend": {
+    "theme": "Blocksy 2.1.57",
+    "starter": "Wedding",
+    "builder": "Gutenberg",
+    "homepage": "PASS",
+    "homePageId": 858,
+    "gutenbergBlocks": 36,
+    "goodIssuePreviewIntegrated": true,
+    "knownLogo404sResolved": true,
+    "logoReferencesRemainingInHomeThemeModsOrPostContent": 0
+  },
+  "freePreview": {
+    "modelCalls": 0,
+    "serverPhotoUploads": 0,
+    "externalImagePosts": 0,
+    "syntheticPhotoPreviewPreviouslyObservedAsBlobUrl": true,
+    "previewImplementationUsesObjectUrl": true,
+    "previewCodeOutboundRequestPrimitivesFound": [],
+    "browserNetworkPanelCapture": "not available in current CUA evidence surface; code and blob URL were checked"
+  },
+  "woocommerce": {
+    "version": "11.1.2",
+    "currency": "USD",
+    "productId": 1113,
+    "productPrice": "39.99",
+    "productVirtual": true,
+    "addToCart": "PASS",
+    "cartRead": "PASS",
+    "checkoutLoads": "PASS",
+    "checkoutAccountRequired": "PASS",
+    "myAccountLoginPage": "PASS",
+    "localOfflineGatewayVisible": true,
+    "checkoutSubmitted": false,
+    "paypalActions": 0,
+    "realMoneyActions": 0
+  },
+  "privateWorkspaceRegression": {
+    "syntheticFixtureOrder": 1131,
+    "buyerAOwnWorkspace": "HTTP 200 / PASS",
+    "buyerBReplay": "HTTP 403 / DENIED",
+    "guestReplay": "HTTP 403 / DENIED",
+    "generationJobs": 0,
+    "modelCalls": 0
+  },
+  "ownerEditing": {
+    "role": "administrator",
+    "pageEditor": "Gutenberg",
+    "canEditText": true,
+    "canReplaceImages": true,
+    "canReorderBlocks": true,
+    "canEditBlocksyGlobalStyle": true
+  },
+  "screenshots": {
+    "currentDesktopHomepageObservedInBrowser": true,
+    "current375ViewportIndependentlyVerified": false,
+    "ownerWillSendUpdatedScreenshotArchiveDirectlyToReviewer": true,
+    "archiveAvailableToExecutor": false,
+    "repoDirectoryHasOlderScreenshots": true,
+    "olderScreenshotsCapturedBeforeFinalHeaderAndHeroCorrections": true,
+    "olderScreenshotsCommittedAsCurrentEvidence": false,
+    "requiredScreenshotNames": [
+      "desktop-full-page.png",
+      "desktop-hero.png",
+      "desktop-preview.png",
+      "desktop-offer-faq.png",
+      "mobile-375-hero.png",
+      "mobile-375-preview.png",
+      "woo-product-or-cart.png",
+      "wp-admin-gutenberg-home.png"
+    ]
+  },
+  "forbiddenActions": {
+    "paypalSandboxActions": 0,
+    "paypalLiveActions": 0,
+    "realMoneyActions": 0,
+    "productionAiCalls": 0,
+    "productionDeployment": 0,
+    "sharedInfrastructureMutations": 0,
+    "paidPurchases": 0,
+    "elementorInstalled": false,
+    "htSliderInstalled": false
+  },
+  "cleanup": {
+    "composeDown": false,
+    "runtimeRetainedForOwnerReview": true,
+    "temporaryWpCliScriptCopiesRemoved": true
+  },
+  "stopAtReviewer": true
+}

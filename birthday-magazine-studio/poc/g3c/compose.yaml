@@ -1,0 +1,80 @@
+name: birthday-magazine-g3c
+
+services:
+  db:
+    image: mariadb:11.4.7
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "yes"
+      MARIADB_DATABASE: wordpress
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - private
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  wordpress:
+    image: wordpress:7.1.1-php8.3-apache
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ""
+      WORDPRESS_DB_NAME: wordpress
+    ports:
+      - "127.0.0.1:8189:80"
+    volumes:
+      - wordpress:/var/www/html
+      - ./wordpress/.htaccess:/var/www/html/.htaccess:ro
+      - ./preview-plugin:/var/www/html/wp-content/plugins/bms-g3c-preview:ro
+      - ./commerce-workspace-plugin:/var/www/html/wp-content/plugins/bms-g3a-commerce-loop:ro
+      - ./mailpit-plugin:/var/www/html/wp-content/mu-plugins:ro
+    networks:
+      - private
+
+  wpcli:
+    image: wordpress:cli-php8.3
+    user: "33:33"
+    depends_on:
+      db:
+        condition: service_healthy
+      wordpress:
+        condition: service_started
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["sleep infinity"]
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ""
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress:/var/www/html
+      - ./wordpress/.htaccess:/var/www/html/.htaccess:ro
+      - ./preview-plugin:/var/www/html/wp-content/plugins/bms-g3c-preview:ro
+      - ./commerce-workspace-plugin:/var/www/html/wp-content/plugins/bms-g3a-commerce-loop:ro
+      - ./mailpit-plugin:/var/www/html/wp-content/mu-plugins:ro
+    networks:
+      - private
+
+  mailpit:
+    image: axllent/mailpit:v1.31.2
+    ports:
+      - "127.0.0.1:8190:8025"
+    networks:
+      - private
+
+volumes:
+  database:
+    name: birthday-magazine-g3c_database
+  wordpress:
+    name: birthday-magazine-g3c_wordpress
+
+networks:
+  private:
+    name: birthday-magazine-g3c_private
+    driver: bridge

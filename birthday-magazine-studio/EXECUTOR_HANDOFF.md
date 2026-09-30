@@ -479,3 +479,29 @@ Concrete return reasons: `RETURN_STORELLY_PREVIEW_NOT_BROWSER_LOCAL` (and a runt
 2. Decide whether to accept Upload Files for registered-account flows and return only the guest flow, or require a local email-capture run before acceptance.
 3. Decide whether Attach Me meets the private proof-delivery bar for registered orders and whether guest delivery plus an actual completed byte download must be rerun before acceptance.
 4. Decide if the exact A/B starter-site imports need their own bounded follow-up evidence. Do not continue to G2A2 in this execution.
+
+## G3C Blocksy Wedding productization — current handoff
+
+**Gate:** `G3C_BLOCKSY_WEDDING_PRODUCTIZATION`
+**Suggested Reviewer status:** `RETURN_OWNER_SCREENSHOT_ARCHIVE_NOT_INSPECTED`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**Stop:** `STOP_AT_REVIEWER=YES`; do not enter G4.
+
+The local site is ready for Owner editing and remains running:
+
+- Site: http://127.0.0.1:8189/
+- WordPress admin: http://127.0.0.1:8189/wp-admin/
+- Local password reset template: in `poc/g3c/README.md`; it is a command template only. Do not place the Owner's chosen password in GitHub or chat.
+
+Current technical read-back:
+
+- Blocksy 2.1.57 / Wedding / Gutenberg and WooCommerce 11.1.2 remain active; Product 1113 is virtual at USD 39.99.
+- The corrected homepage is editable as Gutenberg page 858. `bms-owner` has Administrator permissions for content, media replacement, block ordering, and Blocksy global styles.
+- Product → Cart → Checkout and My Account paths were observed. Checkout has the required-account setting and only the local offline test method; it was not submitted.
+- The preview remains Good Issue-style and browser-local (`blob:` object URL) with no detected photo-submit API path. No AI/model request was made.
+- Buyer A workspace access passed; Buyer B and guest direct replay were denied. Logo references are removed from homepage content, Blocksy theme mods, and post content.
+- Compose runtime is retained. No PayPal, real money, production AI, production deployment, shared infrastructure, paid plugin, or teardown action occurred.
+
+Screenshot status is deliberately separate from the old PNGs in the working folder. Those older files predate the final Hero/header/icon corrections and were excluded from the PR. The Owner has the updated screenshot archive and will upload it to the Reviewer directly. The Executor did not inspect it, so the 375px visual result and durable screenshot evidence remain for Reviewer verification. Required names are listed in `poc/g3c/artifacts/screenshots/README.md`.
+
+Machine-readable read-back is in `poc/g3c/artifacts/reports/verification-g3c.json` plus `runtime-setup.json` and `productization.json`. The precise limitation is that this handoff does not claim `PASS_CANDIDATE` until the Reviewer has the current screenshot archive.
