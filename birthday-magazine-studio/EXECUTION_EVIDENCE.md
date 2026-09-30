@@ -689,7 +689,7 @@ All three routes used the same minimal WordPress page content and Good Issue-sty
 **Gate:** `G3C_BLOCKSY_WEDDING_PRODUCTIZATION`
 **Base:** GitHub `main` at `636e1109e031f1c77704f2b88b83ca5dd771e46b`
 **Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
-**Current evidence status:** `RETURN_OWNER_SCREENSHOT_ARCHIVE_NOT_INSPECTED` — the product/runtime checks below passed, but the Owner's updated screenshot archive is not available to the Executor for inspection. This is not a PASS_CANDIDATE.
+**Current execution status:** `RETURN_GITHUB_SUBMISSION_UNAVAILABLE` — local implementation and reports are committed, but current network transport cannot reach GitHub to push the branch or open a PR. Independently, the Owner's updated screenshot archive is not available to the Executor for inspection, so this is not a PASS_CANDIDATE.
 
 ### Runtime and dependencies
 
@@ -726,3 +726,8 @@ All three routes used the same minimal WordPress page content and Good Issue-sty
 - Required filenames are documented in `poc/g3c/artifacts/screenshots/README.md`. Please review the Owner-supplied archive before deciding the visual freeze.
 
 Machine-readable current reports: `poc/g3c/artifacts/reports/runtime-setup.json`, `productization.json`, and `verification-g3c.json`.
+
+### GitHub submission status
+
+- Local execution commit `75bcf66` was created on the dedicated G3C branch. `git push -u origin codex/birthday-magazine-g3c-blocksy-wedding-productization` returned a connection failure to `github.com:443`; the GitHub MCP transport also failed to reach its backend. The branch is not confirmed on GitHub and no PR has been opened.
+- Do not treat this local commit as a GitHub submission or Reviewer-ready PR. Retry push/PR creation when GitHub transport is available. No merge was attempted.

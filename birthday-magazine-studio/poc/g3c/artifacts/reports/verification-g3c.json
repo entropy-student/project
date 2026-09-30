@@ -2,7 +2,13 @@
   "gate": "G3C_BLOCKSY_WEDDING_PRODUCTIZATION",
   "executionBranch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
   "baseMain": "636e1109e031f1c77704f2b88b83ca5dd771e46b",
-  "result": "RETURN_OWNER_SCREENSHOT_ARCHIVE_NOT_INSPECTED",
+  "result": "RETURN_GITHUB_SUBMISSION_UNAVAILABLE",
+  "githubSubmission": {
+    "localCommit": "75bcf66",
+    "push": "BLOCKED_CONNECTIVITY_TO_GITHUB_443",
+    "pullRequest": "NOT_CREATED",
+    "merge": false
+  },
   "frontend": {
     "theme": "Blocksy 2.1.57",
     "starter": "Wedding",

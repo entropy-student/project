@@ -483,7 +483,7 @@ Concrete return reasons: `RETURN_STORELLY_PREVIEW_NOT_BROWSER_LOCAL` (and a runt
 ## G3C Blocksy Wedding productization — current handoff
 
 **Gate:** `G3C_BLOCKSY_WEDDING_PRODUCTIZATION`
-**Suggested Reviewer status:** `RETURN_OWNER_SCREENSHOT_ARCHIVE_NOT_INSPECTED`
+**Current handoff status:** `RETURN_GITHUB_SUBMISSION_UNAVAILABLE`
 **Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
 **Stop:** `STOP_AT_REVIEWER=YES`; do not enter G4.
 
@@ -505,3 +505,5 @@ Current technical read-back:
 Screenshot status is deliberately separate from the old PNGs in the working folder. Those older files predate the final Hero/header/icon corrections and were excluded from the PR. The Owner has the updated screenshot archive and will upload it to the Reviewer directly. The Executor did not inspect it, so the 375px visual result and durable screenshot evidence remain for Reviewer verification. Required names are listed in `poc/g3c/artifacts/screenshots/README.md`.
 
 Machine-readable read-back is in `poc/g3c/artifacts/reports/verification-g3c.json` plus `runtime-setup.json` and `productization.json`. The precise limitation is that this handoff does not claim `PASS_CANDIDATE` until the Reviewer has the current screenshot archive.
+
+GitHub submission is also pending: local commit `75bcf66` exists, but `git push` and the GitHub connector both failed to connect to GitHub. No PR exists yet. Retry the push and open the PR after network connectivity returns; do not merge.
