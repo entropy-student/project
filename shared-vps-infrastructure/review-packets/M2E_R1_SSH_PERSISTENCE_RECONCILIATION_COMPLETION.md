@@ -1,0 +1,126 @@
+# M2E-R1 — SSH Persistence Reconciliation Completion
+
+## Gate
+
+```text
+M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION
+READ_ONLY_ONLY=YES
+NORMAL_ACCESS_PATH=STRICT_SSH
+STOP_AT_REVIEWER=YES
+```
+
+## Read first
+
+Read:
+
+```text
+shared-vps-infrastructure/SHARED_VPS_HANDOFF.md
+shared-vps-infrastructure/REVIEWER_HANDOFF.md
+shared-vps-infrastructure/docs/REVIEWER_DECISION_S1_PASS_M2E_R1_SSH_RECONCILIATION.md
+```
+
+Use the canonical SSH contract in `SHARED_VPS_HANDOFF.md`.
+
+Do not use Hostinger Web Terminal unless a future Reviewer Gate explicitly declares SSH unavailable and authorizes fallback.
+
+## Connection
+
+Connect as:
+
+```text
+ops@2.24.193.133:22
+```
+
+using the canonical identity reference, known_hosts and strict options.
+
+Use bounded `sudo docker ...` read-only commands where Docker metadata requires privilege. Direct Docker socket access is not expected.
+
+## Read-only checks
+
+Capture only safe metadata:
+
+```text
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+
+CADDY_CONTAINER_ID=
+CADDY_CONTAINER_NAME=
+CADDY_STATE=
+CADDY_RESTART_COUNT=
+
+MOUNT_TYPE=
+MOUNT_SOURCE=
+MOUNT_DESTINATION=
+MOUNT_RW=
+MOUNT_PROPAGATION=
+
+HOST_CADDYFILE_BYTES=
+HOST_CADDYFILE_SHA256=
+HOST_SOURCE_MINICRAFT_MATCHER=
+
+CONTAINER_CADDYFILE_BYTES=
+CONTAINER_CADDYFILE_SHA256=
+CONTAINER_MOUNTED_FILE_MINICRAFT_MATCHER=
+
+ACTIVE_ADMIN_CONFIG_MINICRAFT_MATCHER=
+CADDY_STARTUP_CONFIG_SOURCE=
+```
+
+No broad raw Docker inspect JSON and no environment values.
+
+Fresh public checks:
+
+```text
+MINICRAFT_HOME_HTTP=
+MINICRAFT_HOME_TLS_VERIFY=
+MINICRAFT_SHOP_HTTP=
+MINICRAFT_SHOP_TLS_VERIFY=
+MINICRAFT_WP_REST_HTTP=
+MINICRAFT_WP_REST_TLS_VERIFY=
+```
+
+## Expected classification
+
+If fresh facts match the prior readback:
+
+```text
+CADDY_MOUNT_DIVERGENCE_CLASS=SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE
+RESTART_REINTRODUCTION_RISK=YES
+PLAIN_RESTART_SUFFICIENT=NO
+RECREATE_REQUIRED=YES
+MINIMAL_RECONCILIATION_PLAN=RECREATE_ONLY_EXISTING_SHARED_CADDY_CONTAINER_OR_SERVICE_FROM_CANONICAL_DEPLOYMENT_DEFINITION_TO_REBIND_CURRENT_HOST_CADDYFILE_THEN_REGRESSION_VERIFY
+```
+
+Do not execute the plan.
+
+## Hard boundary
+
+```text
+CADDYFILE_WRITES=0
+CADDY_RELOADS=0
+CADDY_RESTARTS=0
+CADDY_RECREATES=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+SSH_REPAIR_MUTATIONS=0
+PAYMENT_ACTIONS=0
+```
+
+## Evidence
+
+If GitHub is available, append once to Evidence and Executor Handoff and fresh-read. If GitHub transport fails, return the complete bounded result; Reviewer can persist it.
+
+## Result
+
+```text
+PASS_CANDIDATE_M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION
+CADDY_MOUNT_DIVERGENCE_CLASS=<classification>
+RESTART_REINTRODUCTION_RISK=<YES|NO|UNRESOLVED>
+PLAIN_RESTART_SUFFICIENT=<YES|NO|UNRESOLVED>
+RECREATE_REQUIRED=<YES|NO|UNRESOLVED>
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
