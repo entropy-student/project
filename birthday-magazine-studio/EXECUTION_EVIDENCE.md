@@ -1,3 +1,40 @@
+# G3CR2R1 — Blocksy Wedding Gutenberg Variant Dependency Closure
+
+**Current result:** `RETURN_G3CR2R1_VARIANT_METADATA_UNAVAILABLE`
+**Execution branch:** `codex/birthday-magazine-g3cr2r1-variant-closure`
+**Base GitHub main:** `36d3bec39b7dc73aea60267bdd236dce9eae2cc4`
+**Stop point:** Phase A; no Starter import or WooCommerce canary.
+
+## Phase A — exact builder-specific metadata
+
+A fresh isolated `birthday-magazine-g3cr2` Compose runtime was created from the project-local G3CR2 Compose source, reusing the accepted G3A commerce/workspace and Mailpit source mounts read-only. Runtime versions: Docker Engine 29.7.2, Compose 5.4.0, WordPress 7.1.1, PHP 8.3.33, WP-CLI 2.12.0, MariaDB 11.4.7, and Mailpit 1.31.2.
+
+Official WordPress.org Blocksy Theme 2.1.57 and Blocksy Companion 2.1.57 packages were installed and activated. Their package sources, license headers, and SHA-256 hashes are recorded in `poc/g3cr2/artifacts/reports/runtime-versions.json`; the hashes match the packages previously read from the official WordPress.org distribution.
+
+The exact read-only call was run twice with `demo=Wedding`, `builder=gutenberg`, and `field=all`:
+
+```php
+\Blocksy\Plugin::instance()->demo->fetch_single_demo([
+    'demo' => 'Wedding',
+    'builder' => 'gutenberg',
+    'field' => 'all'
+])
+```
+
+Both executions returned Boolean `false`. In the installed Companion source, `DemoInstall::fetch_single_demo()` calls Blocksy's remote importer metadata helper, JSON-decodes its response, and returns `false` for a falsy decoded body. Therefore the exact query did not provide usable metadata; the evidence cannot distinguish an absent catalog record from an empty or invalid remote response. `returned_demo`, `returned_builder`, `returned_plugins`, and the pro/free marker are recorded as absent/null. This is not evidence that Elementor, HT Slider, or paid dependencies are required or excluded. See `poc/g3cr2/artifacts/reports/wedding-gutenberg-variant-metadata.json` and `exact-api-source-semantics.json`.
+
+The first wrapper treated a non-error Boolean `false` as invocation success; that preliminary status was corrected. A separate diagnostic invocation had a PHP namespace-escaping parse error before the function could run. The final sanitized read-back reflects the two actual method calls and their false result. No catalog merge command was used as variant-dependency proof.
+
+Per the Gate boundary, execution stopped before Starter import. WooCommerce, Elementor, HT Slider, any Wedding dependency, product/cart/checkout/account probes, and workspace regression were not installed or run. No screenshots are claimed because the Starter was not imported. No PayPal, payment, model, public-origin, paid-purchase, production, or Shared Infrastructure action occurred.
+
+## Cleanup and read-back
+
+Only `docker compose -p birthday-magazine-g3cr2 -f birthday-magazine-studio/poc/g3cr2/compose.yaml down --volumes --remove-orphans` was used. The exact ignored `poc/g3cr2/.tmp/` package directory was removed after resolving and checking that exact path, confirming it was inside the Git repository, confirming it was not a reparse point, and confirming `git check-ignore`. Project resources went from 0/0/0 before start to 4 containers / 2 volumes / 1 network while active and back to 0/0/0. Ports 8167/8168 have no listener. The unrelated Docker fingerprint is identical before, during, and after (32 containers / 78 volumes / 17 networks; SHA-256 `1714129c68bb74ff03bd018e86067179798b2efc432c153b42f499a24b4c678a`). Temporary package files are gone. No global prune was used.
+
+Machine-readable reports and repeatable read-back/cleanup scripts are under `poc/g3cr2/`. Reviewer is the next decision point. Do not install Elementor/HT Slider or enter full G3C/G4 without a later Gate.
+
+---
+
 # G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E cleanup closure
 
 **Current result:** `PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE`

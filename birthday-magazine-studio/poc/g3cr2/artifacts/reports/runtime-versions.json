@@ -1,0 +1,96 @@
+{
+  "capturedAtUtc": "2026-09-30T06:48:00Z",
+  "gate": "G3CR2R1_BLOCKSY_WEDDING_VARIANT_DEPENDENCY_CLOSURE",
+  "git": {
+    "baseMain": "36d3bec39b7dc73aea60267bdd236dce9eae2cc4",
+    "branch": "codex/birthday-magazine-g3cr2r1-variant-closure",
+    "worktreeWasCleanBeforeExecution": true
+  },
+  "docker": {
+    "engine": "29.7.2",
+    "compose": "5.4.0",
+    "project": "birthday-magazine-g3cr2",
+    "wordpressImage": "wordpress:7.1.1-php8.3-apache",
+    "wordpress": "7.1.1",
+    "php": "8.3.33",
+    "wpCliImage": "wordpress:cli-php8.3",
+    "wpCli": "2.12.0",
+    "mariadbImage": "mariadb:11.4.7",
+    "mariadb": "11.4.7-MariaDB-ubu2404",
+    "mailpitImage": "axllent/mailpit:v1.31.2"
+  },
+  "blocksy": {
+    "source": "https://downloads.wordpress.org/theme/blocksy.2.1.57.zip",
+    "wordpressOrgApi": "https://api.wordpress.org/themes/info/1.2/?action=theme_information&request%5Bslug%5D=blocksy",
+    "license": "GNU General Public License v2 or later",
+    "version": "2.1.57",
+    "sha256": "077ba9e5001d01b08a06360e0e0cb4659842c7c5af7eaaa58b92945e5982173d",
+    "installed": true,
+    "active": true
+  },
+  "blocksyCompanion": {
+    "source": "https://downloads.wordpress.org/plugin/blocksy-companion.2.1.57.zip",
+    "wordpressOrgApi": "https://api.wordpress.org/plugins/info/1.2/?action=plugin_information&request%5Bslug%5D=blocksy-companion",
+    "license": "GPLv2 or later",
+    "version": "2.1.57",
+    "sha256": "f77f6738f71f9c18020f576676d6fc829d70323c712af09ad290d2bab6c55072",
+    "installed": true,
+    "active": true
+  },
+  "dependencyQuery": {
+    "method": "\\Blocksy\\Plugin::instance()->demo->fetch_single_demo",
+    "arguments": {
+      "demo": "Wedding",
+      "builder": "gutenberg",
+      "field": "all"
+    },
+    "resultType": "boolean",
+    "result": false,
+    "querySuccess": false,
+    "requiredMetadataFields": "absent",
+    "dependencyClassification": "UNRESOLVED",
+    "returnCode": "RETURN_G3CR2R1_VARIANT_METADATA_UNAVAILABLE"
+  },
+  "phaseStatus": {
+    "exactVariantQuery": "RETURNED_FALSE_NO_METADATA",
+    "starterImport": "NOT_RUN_STOPPED_AFTER_PHASE_A",
+    "woocommerceInstall": "NOT_RUN_STOPPED_AFTER_PHASE_A",
+    "productCartCheckoutAccount": "NOT_RUN_STOPPED_AFTER_PHASE_A",
+    "privateWorkspaceRegression": "NOT_RUN_STOPPED_AFTER_PHASE_A",
+    "screenshots": "NOT_APPLICABLE_STARTER_IMPORT_NOT_RUN"
+  },
+  "pluginReadback": {
+    "blocksy": "active-2.1.57",
+    "blocksyCompanion": "active-2.1.57",
+    "elementor": "not-installed",
+    "htSliderForElementor": "not-installed",
+    "woocommerce": "not-installed"
+  },
+  "cleanup": {
+    "projectScopedComposeDownVolumesRemoveOrphans": true,
+    "projectResourcesAfter": {
+      "containers": 0,
+      "volumes": 0,
+      "networks": 0
+    },
+    "temporaryPackagesRemoved": true,
+    "temporaryPathWasExactIgnoredNonReparseTarget": true,
+    "ports8167And8168ListenersAfter": 0,
+    "unrelatedResourceFingerprintBeforeAndAfter": "1714129c68bb74ff03bd018e86067179798b2efc432c153b42f499a24b4c678a",
+    "unrelatedResourcesUnchanged": true,
+    "globalPrune": false
+  },
+  "forbiddenActions": {
+    "elementorInstall": 0,
+    "htSliderInstall": 0,
+    "starterImport": 0,
+    "woocommerceInstall": 0,
+    "paypalActions": 0,
+    "realMoneyActions": 0,
+    "modelCalls": 0,
+    "productionDeployment": 0,
+    "sharedInfrastructureMutations": 0,
+    "paidPurchases": 0,
+    "globalDockerPrune": 0
+  }
+}
