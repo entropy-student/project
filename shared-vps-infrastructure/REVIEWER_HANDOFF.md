@@ -1,5 +1,50 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2B Browser Context RETURN Accepted / M2B-R1 Recovery Open — 2026-09-30
+
+```text
+M2B_RESULT=RETURN_CLOUDFLARE_BROWSER_CONTEXT_UNVERIFIED
+M2B_RETURN_ACCEPTED=YES
+
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+M2B_PROVIDER_STATE_DRIFT_PROVEN=NO
+
+M2B_OWNER_AUTHORIZATION_REMAINS_VALID=YES
+M2B_WRITE_AUTHORIZATION=SUSPENDED_PENDING_BROWSER_CONTEXT_RECOVERY
+
+CURRENT_GATE=M2B_R1_CLOUDFLARE_BROWSER_CONTEXT_RECOVERY_AND_RESUME
+CURRENT_GATE_STATUS=OWNER_BROWSER_CHECKPOINT_THEN_CONDITIONAL_RESUME
+
+TUNNEL=spikersun-shared-private
+TEMP_HOSTNAME=minicraft-m2b-canary.spikersun.com
+ORIGIN_SERVICE=http://mini-craft-night-kit-wordpress:80
+ORIGIN_HTTP_HOST_HEADER=minicraft.spikersun.com
+
+CURRENT_PRODUCTION_HOST=minicraft.spikersun.com
+CURRENT_PRODUCTION_PATH=DNS_A_TO_CADDY
+
+PRODUCTION_DNS_MUTATION_AUTHORIZED=NO
+PRODUCTION_TUNNEL_HOSTNAME_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+M2C_AUTHORIZED=NO
+```
+
+The attempted M2B run stopped before Cloudflare preflight because browser control could not reliably establish the active Dashboard page/URL. No provider mutation or provider-state claim was made, and canonical Evidence/Handoff were intentionally not changed by the Executor.
+
+Owner authorization for the bounded M2B temporary canary remains valid, but write authorization is suspended until browser context is re-established.
+
+Owner must manually open/sign into Cloudflare Dashboard, navigate to Tunnel `spikersun-shared-private`, open its Public Hostnames / hostname-routes view, and leave that page open. After that, the Executor must first prove the authenticated Tunnel-page context before resuming the already-authorized M2B packet.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2B_RETURN_R1_BROWSER_CONTEXT_RECOVERY.md`
+
+Recovery packet:
+`review-packets/M2B_R1_CLOUDFLARE_BROWSER_CONTEXT_RECOVERY_AND_RESUME.md`
+
 ## CURRENT REVIEWER UPDATE — M2B Temporary Tunnel Canary Authorized — 2026-09-30
 
 ```text
