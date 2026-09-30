@@ -51,19 +51,26 @@ Current project/runtime detail belongs in `REVIEWER_HANDOFF.md` and `SHARED_VPS_
 
 ## 5. Connection recovery
 
-Preferred:
+Normal path:
 
 1. Read this canonical handoff.
-2. For the still-unpromoted exact identity/host-key fields, read the previously accepted Owner-workstation local Shared VPS handoff at `$HOME/Documents/ChatGPT/VPS基建/SHARED_VPS_HANDOFF.md` if present.
-3. Verify identity-file existence and public fingerprint without reading private-key contents.
-4. Verify the normal `known_hosts` pins.
-5. Attempt one bounded strict read-only SSH probe.
-6. Promote exact non-secret trust metadata here only after Reviewer acceptance.
+2. Verify the canonical identity-file reference exists without reading private-key contents.
+3. Derive and compare the public-key fingerprint.
+4. Verify the canonical expected host-key fingerprints against the normal known_hosts file.
+5. Run a bounded strict SSH identity probe as `ops@2.24.193.133:22`.
+6. Compare host/user/OS with the accepted baseline.
+7. Use reviewed `sudo docker ...` commands when Docker metadata/action is authorized; direct docker-socket access for `ops` is not assumed.
 
-If the local bootstrap handoff is missing/unusable:
+If canonical trust metadata is missing or cannot be validated:
 
 ```text
 RETURN_SSH_CONNECTION_REQUIRED
+```
+
+If the identity/key/known_hosts trust tuple drifts:
+
+```text
+RETURN_SSH_TRUST_DRIFT
 ```
 
 If strict SSH cannot prove target-host identity:
@@ -74,7 +81,7 @@ RETURN_TARGET_HOST_EXECUTION_UNAVAILABLE
 
 Provider-panel recovery route: authenticated Hostinger Browser Terminal / Web Console, bounded metadata/read-only unless a separate mutation Gate authorizes more.
 
-This provider-panel route is **fallback/recovery only**. It is not the normal management path. Normal Shared VPS management should use the verified strict SSH contract whenever that contract is available.
+This provider-panel route is **fallback/recovery only**. It is not the normal management path. Normal Shared VPS management uses the verified strict SSH contract above.
 
 ## 6. Change boundaries
 
