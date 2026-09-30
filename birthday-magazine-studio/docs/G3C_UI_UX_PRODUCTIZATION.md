@@ -1,161 +1,130 @@
-# G3C — UI/UX Productization + Owner Visual Freeze
+# G3C — Blocksy Wedding UI/UX Productization + Owner Visual Freeze
 
 > Governance: VPS Project Governance v0.1.6 + current active addenda  
-> Reviewer status: **CURRENT GATE / PROJECT-LOCAL REVERSIBLE IMPLEMENTATION AUTHORIZED**  
-> Opened: 2026-09-29  
+> Reviewer status: **CURRENT / PROJECT-LOCAL REVERSIBLE IMPLEMENTATION AUTHORIZED**  
 > Production / Live payment authority: **NONE**
 
 ## 1. Goal
 
-Using the Owner-selected **Astra Theme + free “Bestselling Author” starter template**, turn the accepted Birthday Magazine MVP into a WordPress-visible product experience that the Owner can review visually before UI freeze.
+Turn the accepted Birthday Magazine MVP into a local WordPress product experience using the now-proven frontend foundation:
 
-The accepted route is hybrid:
+- **Blocksy 2.1.57**
+- **Blocksy Companion 2.1.57**
+- **Wedding Gutenberg starter**
+- **Good Issue browser-local Free Preview**
+- **WooCommerce 11.1.2**
+- accepted authenticated-account/private-workspace boundaries.
 
-- **Astra Theme + free “Bestselling Author” starter template** = Owner-selected editable WordPress shell;
-- **Good Issue-style browser-local Free Preview** = accepted custom core conversion interaction;
-- **WooCommerce** = canonical product/cart/checkout/account system;
-- existing G3A/G3B payment/account/private-workspace boundaries must not be weakened.
+G3CR2R3 has already proven the Wedding Gutenberg shell is importable, Gutenberg-editable and compatible with Product / Cart / Checkout / My Account / private workspace.
 
-This Gate is productization, not production deployment.
+This Gate is now about productization and Owner visual editing, not template compatibility research.
 
-## 2. Required outcome
+## 2. Exact execution package
 
-Produce a local/disposable WordPress implementation that visibly demonstrates:
+Executor must use:
 
-1. a coherent Birthday Magazine product page using the selected Astra Bestselling Author shell;
-2. the Good Issue Free Preview embedded as the central conversion component;
-3. desktop and 375px mobile behavior;
-4. CTA continuity into the existing WooCommerce product/cart path;
-5. no pre-payment model/API invocation;
-6. no preview-photo upload to the server before payment;
-7. no regression of the authenticated-account/private-workspace product contract;
-8. screenshots and a reproducible local read-back suitable for Owner visual review.
+`G3C_BLOCKSY_WEDDING_EXECUTION_PACKET.md`
 
-Technical completion ends at **PASS_CANDIDATE**. Final visual freeze requires explicit Owner review/approval.
+The old Astra-specific `G3C_EXECUTION_PACKET.md` is historical only.
 
-## 3. Preflight
+## 3. Required outcome
 
-Before any write:
+Produce a local G3C runtime that demonstrates:
 
-- read current `REVIEWER_HANDOFF.md`, this contract, `MVP_PRODUCT_CONTRACT.md`, and accepted G3A/G3B decisions;
-- verify current repository files/branch and record the exact baseline;
-- confirm no G4 Live payment authorization exists;
-- confirm no production target or Shared VPS write is in scope;
-- classify any reusable local G3A/G3B runtime artifact before reuse;
-- if a local WordPress runtime is reconstructed, keep it project-scoped and disposable;
-- use only synthetic fixtures/test accounts;
-- record disk/Docker baseline when Docker is used.
+1. Birthday Magazine visual/content adaptation using the Wedding shell with minimal structural modification;
+2. real Good Issue browser-local preview embedded as the central pre-payment activation experience;
+3. native US$39.99 WooCommerce path;
+4. desktop + 375px mobile usability;
+5. authenticated private-workspace regression;
+6. zero pre-payment photo upload and zero model calls;
+7. removal/replacement of the two stale imported logo references observed in G3CR2R3;
+8. direct Owner Administrator access to edit the main page through WordPress/Gutenberg.
 
-Material drift in the accepted product/payment/privacy contract must return to Reviewer before implementation.
+Technical success is only `PASS_CANDIDATE`. Final visual freeze requires explicit Owner review.
 
-## 4. Allowed scope
+## 4. Minimal-modification principle
 
-Executor must use `docs/G3C_EXECUTION_PACKET.md` as the exact implementation package and reusable-asset map.
+Prefer adapting the existing Wedding Gutenberg blocks over rebuilding the site.
 
-Executor may now:
+Reuse:
 
-- create or reconstruct an isolated local WordPress + WooCommerce runtime;
-- install/activate Astra Theme + the concrete free “Bestselling Author” starter template and only its required free/open-source dependencies;
-- implement project-local WordPress code/CSS/blocks/shortcodes needed to integrate the Good Issue preview;
-- adapt Header/Footer, typography, spacing, product sections, trust/FAQ/testimonial/sample sections and responsive layout;
-- reuse synthetic G2A/G3 fixtures where appropriate;
-- use local test customer/account/order fixtures only when required for regression;
-- capture sanitized screenshots and deterministic browser/network evidence;
-- add/update project-local source, Evidence and Executor Handoff;
-- clean up only exact project-scoped disposable runtime objects after evidence capture.
+- photo-led hero;
+- memories/story rhythm;
+- image galleries;
+- event/milestone emotional framing;
+- responsive structure.
 
-## 5. Forbidden scope
+Replace wedding semantics with Birthday Magazine semantics only where needed.
 
-Executor must not:
+The site should feel like a personalized photo/story gift, not a generic store.
 
-- enable PayPal Live or perform a real-money transaction/refund;
-- rotate/enter/export Provider Secrets;
-- start G4, G5 or G6;
-- deploy to production or a Shared VPS;
-- modify Shared Infrastructure, Caddy, Cloudflare production routing, SSH, firewall or host 80/443;
-- use real customer photos, identity data, email or order data;
-- call a production AI/LLM/vision/image provider;
-- introduce model calls into the free preview;
-- replace WooCommerce as the canonical order system;
-- replace the authenticated-account MVP access model with guest bearer links;
-- purchase paid themes/plugins/services;
-- use broad Docker/system prune.
-
-If any forbidden dependency becomes necessary, stop with a precise `RETURN_*`.
-
-## 6. Non-regression invariants
-
-The implementation must preserve:
+## 5. Frozen invariants
 
 ```text
 FREE_PREVIEW_MODEL_CALLS=0
 FREE_PREVIEW_SERVER_PHOTO_UPLOADS=0
+FREE_PREVIEW_EXTERNAL_IMAGE_POSTS=0
 WOO_COMMERCE_CANONICAL_ORDER_SYSTEM=YES
+USD_39_99_PRODUCT_PATH=YES
 AUTHENTICATED_ACCOUNT_MVP=YES
 GUEST_BEARER_PRIVATE_DELIVERY=NO
-LIVE_PAYPAL_ACTIONS=0
+PAYPAL_ACTIONS=0
 REAL_MONEY_ACTIONS=0
+PRODUCTION_AI_CALLS=0
 PRODUCTION_DEPLOYMENT=0
 SHARED_INFRA_MUTATIONS=0
 ```
 
-The free preview may use browser-local `blob:`/equivalent local object URLs, but selecting a preview image must not POST/upload that image to WordPress or another origin.
+## 6. Owner editing requirement
 
-## 7. Acceptance criteria
+G3C must leave the primary page editable in WordPress/Gutenberg.
 
-Technical evidence must show:
+At the Owner checkpoint:
 
-- Astra Theme + the concrete free “Bestselling Author” starter shell is actually active in the local WordPress runtime;
-- the Birthday Magazine product page renders successfully on desktop and 375px mobile;
-- Good Issue preview is visibly integrated in the product page, not replaced by a static mock;
-- selecting the synthetic preview image results in browser-local rendering and **zero photo upload/network POST caused by selection**;
-- preview flow makes **zero model/API calls**;
-- CTA reaches the intended WooCommerce product/cart/checkout path without introducing a second commerce system;
-- key page sections and responsive layout have no material overflow/fatal error;
-- any account/private-workspace regression probe used remains owner-bound and denies unrelated access as defined by the accepted MVP contract;
-- screenshots/evidence use only synthetic/redacted data;
-- project-local cleanup and resource delta are recorded;
-- G4/Live/production mutations remain zero.
+- Owner role = Administrator;
+- main page opens in Gutenberg;
+- Owner can edit text;
+- Owner can replace images;
+- Owner can reorder blocks;
+- Owner can adjust Blocksy global styling;
+- local site and wp-admin URLs are reported;
+- no persistent password is stored in GitHub/evidence/chat;
+- a local-only password set/reset command is supplied if required.
 
-## 8. Owner visual checkpoint
+WordPress Studio is not required for this Gate.
 
-After technical `PASS_CANDIDATE_G3C_UI_UX_PRODUCTIZATION`:
+## 7. Owner visual checkpoint
 
-- present the actual page/screenshots to the Owner;
-- Owner may request visual/copy/layout changes without reopening G1–G3B;
-- technical security/payment/privacy invariants remain fixed while subjective UI is iterated;
-- only explicit Owner visual acceptance allows Reviewer to freeze G3C.
+After technical PASS_CANDIDATE:
 
-Owner is not asked to inspect logs or decide technical correctness.
+- keep the project-scoped G3C runtime available for Owner review;
+- present actual page/screenshots and local edit URL;
+- Owner may directly edit the page or request Agent changes;
+- visual/copy iterations do not reopen G1–G3B unless they alter frozen product/security/payment boundaries.
 
-## 9. Rollback
+Only explicit Owner acceptance freezes G3C.
 
-- source/document rollback: Git history;
-- local WordPress/Docker runtime: disposable project-scoped teardown only;
-- no production state exists to roll back;
-- preserve only reviewed source/evidence needed to reproduce the G3C result;
-- never delete shared Docker/network/image resources by broad cleanup.
+## 8. Forbidden scope
 
-## 10. Executor return
+No:
 
-Success:
+- PayPal Sandbox/Live action;
+- real money;
+- production AI/model call;
+- production deployment;
+- Shared VPS/Caddy/Cloudflare mutation;
+- paid plugin/theme purchase;
+- Elementor / HT Slider;
+- G4/G5/G6;
+- broad Docker/system prune.
+
+## 9. Success return
 
 ```text
-PASS_CANDIDATE_G3C_UI_UX_PRODUCTIZATION
+PASS_CANDIDATE_G3C_BLOCKSY_WEDDING_PRODUCTIZATION
 OWNER_VISUAL_FREEZE=PENDING
-STOP_AT_REVIEWER: YES
+G3C_RUNTIME_RETAINED_FOR_OWNER_REVIEW=YES
+STOP_AT_REVIEWER=YES
 ```
 
-Examples of precise failure:
-
-```text
-RETURN_PREFLIGHT_DRIFT
-RETURN_STARTER_IMPORT_FAILED
-RETURN_FREE_PREVIEW_NETWORK_UPLOAD_REGRESSION
-RETURN_FREE_PREVIEW_MODEL_CALL_REGRESSION
-RETURN_WOOCOMMERCE_PATH_REGRESSION
-RETURN_PRIVATE_ACCESS_REGRESSION
-RETURN_TEST_FAILURE
-```
-
-Do not enter G4 after technical success. Stop at Reviewer/Owner visual checkpoint.
+Do not enter G4 after success.
