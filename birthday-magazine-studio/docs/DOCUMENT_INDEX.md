@@ -46,8 +46,11 @@
 | `REVIEWER_DECISION_G3BR1_G3B_PASS.md` | Final Reviewer decision closing G3BR1 and parent G3B | **CURRENT G3B DECISION — PASS** |
 | `G3C_UI_UX_PRODUCTIZATION.md` | Parent UI/UX productization contract | **PARENT GATE — BLOCK EDITOR PATH RETURN; CLOSED BY G3CR1 IF SUCCESSFUL** |
 | `REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md` | Reviewer decision on PR #59 | **CURRENT G3C RETURN DECISION — BLOCK EDITOR ONLY** |
-| `G3CR1_BESTSELLING_AUTHOR_ELEMENTOR_CLOSURE.md` | Exact same-template Elementor Free closure | **CURRENT CLOSURE GATE** |
-| `G3C_EXECUTION_PACKET.md` | Exact G3C Executor package and reusable-asset map | **CURRENT EXECUTION PACKAGE** |
+| `G3CR1_BESTSELLING_AUTHOR_ELEMENTOR_CLOSURE.md` | Historical Astra Elementor closure | **SUPERSEDED BEFORE EXECUTION** |
+| `OWNER_DECISION_G3C_BLOCKSY_WEDDING.md` | Owner-selected replacement visual starter | **CURRENT OWNER DECISION** |
+| `BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md` | Pre-execution Blocksy/Wedding research proof | **CURRENT SUPPORTING PROOF** |
+| `G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md` | Wedding/Gutenberg import + WooCommerce compatibility canary | **CURRENT EXECUTION GATE** |
+| `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED THEME-SPECIFIC PACKAGE — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
@@ -72,11 +75,12 @@ For the current project state, a new Reviewer/Executor should normally need only
 2. `../EXECUTOR_HANDOFF.md`
 3. `../EXECUTION_EVIDENCE.md`
 4. `MVP_PRODUCT_CONTRACT.md`
-5. `REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md` — current Reviewer decision
-6. `G3CR1_BESTSELLING_AUTHOR_ELEMENTOR_CLOSURE.md` — current closure contract
-7. `G3C_EXECUTION_PACKET.md` — parent productization requirements
-8. `REVIEWER_DECISION_G3BR1_G3B_PASS.md`
-9. `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` for closed Sandbox proof details
-10. `G3A_MINICRAFT_LESSONS_REFERENCE.md` only when a PayPal/runtime issue resembles an already-seen Mini Craft failure
+5. `OWNER_DECISION_G3C_BLOCKSY_WEDDING.md` — current Owner template decision
+6. `BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md` — why the canary is authorized
+7. `G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md` — current execution contract
+8. `REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md` — historical Astra RETURN provenance
+9. `REVIEWER_DECISION_G3BR1_G3B_PASS.md`
+10. `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` for closed Sandbox proof details
+11. `G3A_MINICRAFT_LESSONS_REFERENCE.md` only when a PayPal/runtime issue resembles an already-seen Mini Craft failure
 
 Older Gate contracts and research remain in place for provenance and must not be treated as the current execution package.
