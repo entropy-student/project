@@ -1,5 +1,66 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2E Active Runtime PASS / Restart Persistence NOT PROVEN / M2E-R1 Read-only Reconciliation Open — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+M2B_TEMPORARY_TUNNEL_CANARY=PASS
+M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER=PASS
+M2D_PUBLIC_REGRESSION_AND_OBSERVATION=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=NOT_PROVEN
+M2E_FORMAL_PASS=NO
+MIGRATION_M1_TO_M2E_COMPLETE=NO
+
+HOST_CADDYFILE=/srv/infra/edge/Caddyfile
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_BYTES=143
+
+CONTAINER_CADDYFILE=/etc/caddy/Caddyfile
+CONTAINER_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+CONTAINER_CADDYFILE_BYTES=199
+
+ACTIVE_ADMIN_CONFIG_MINICRAFT_ROUTE=ABSENT
+CONTAINER_MOUNTED_FILE_MINICRAFT_ROUTE=PRESENT_STALE
+RESTART_REINTRODUCTION_RISK=YES_CANDIDATE_PENDING_R1_PROOF
+
+ROLLBACK_COPY=/srv/infra/edge/Caddyfile.m2e-prewrite-20260930T091701Z.bak
+ROLLBACK_COPY_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+
+CURRENT_GATE=M2E_R1_CADDY_MOUNT_PERSISTENCE_RECONCILIATION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_MUTATION_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RECREATE_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+SSH_REPAIR_AUTHORIZED=NO
+```
+
+Independent review accepted the M2E execution's current-runtime facts but does not accept final M2E PASS because restart persistence is not proven.
+
+The host source `/srv/infra/edge/Caddyfile` and active Caddy Admin config no longer contain the Mini Craft route, and production/regression checks passed. However, the running container's mounted `/etc/caddy/Caddyfile` still has the exact prewrite 199-byte baseline. A future Caddy restart may therefore reintroduce the retired route.
+
+M2E-R1 is strictly read-only. It must prove the exact Docker mount source/type, startup config source, host/container file identity, and classify why the mounted path is stale. It must return only a minimal reconciliation plan; no restart/recreate/write is authorized yet.
+
+The 30-byte temporary diagnostic scratch created during M2E was removed in the same Gate and is recorded as a noncompromising execution deviation with no residual proven.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2E_PARTIAL_PASS_R1_CADDY_MOUNT_PERSISTENCE_RECONCILIATION.md`
+
+Execution packet:
+`review-packets/M2E_R1_CADDY_MOUNT_PERSISTENCE_RECONCILIATION.md`
+
 ## CURRENT REVIEWER UPDATE — M2E Legacy Mini Craft Caddy Route Retirement Authorized — 2026-09-30
 
 ```text
