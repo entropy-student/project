@@ -252,3 +252,32 @@ SECRET_VALUES_EMITTED=0
 M2C_ENTERED=NO
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — M2C Production Hostname Tunnel Cutover — 2026-09-30
+
+- Gate: M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER
+- Result: PASS_CANDIDATE_M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER
+- Replaced only minicraft.spikersun.com A -> 2.24.193.133 (DNS-only, TTL Auto) with one route on spikersun-shared-private.
+- Route: minicraft.spikersun.com -> http://mini-craft-night-kit-wordpress:80; HTTP Host Header is minicraft.spikersun.com. Cloudflare created the required proxied Tunnel CNAME to ed47dfe3-e529-46be-a4de-f14ddc05136e.cfargotunnel.com.
+- Fresh control-plane readback confirmed the canonical route and DNS; xianyu/pay/shop route mappings remained unchanged.
+- Anonymous normal-TLS Home, Shop, and /wp-json/ checks each returned HTTP 200; TLS verification result=0.
+- Caddy route retained untouched as rollback; no rollback was needed. No VPS/Docker/Compose/WordPress/MariaDB/payment/Secret changes. M2D/E not entered.
+- Evidence commit: b7a4b7c4c0a0a7450cdae0330647ca4d4a31b326
+
+```text
+PRODUCTION_INGRESS=CLOUDFLARE_TUNNEL_DIRECT_TO_MINICRAFT_APP
+DNS_MUTATIONS=2
+TUNNEL_ROUTE_MUTATIONS=1
+CADDY_MUTATIONS=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+WORDPRESS_MUTATIONS=0
+MARIADB_MUTATIONS=0
+PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+M2D_ENTERED=NO
+M2E_ENTERED=NO
+STOP_AT_REVIEWER=YES
+```
