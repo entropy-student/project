@@ -555,3 +555,68 @@ The fresh compact prewrite matched the corrected Compose and existing-backup dig
 Reused the exact existing rollback backup; created no new backup. Updated only `/srv/apps/mini-craft-night-kit/compose.production.yaml`: WordPress now uses the existing `spikersun-private` external network with the unique requested alias while retaining its DB and edge networks; MariaDB remains on the project database network only. The edited Compose passed quiet validation. The one requested WordPress-only recreate completed successfully, with no dependency recreate, pull, or build. Fresh runtime readback showed WordPress running with restart count 0, the target alias matching exactly one private-network endpoint owned by WordPress, and MariaDB healthy and absent from the shared private network. A bounded private-origin GET returned HTTP 200. Existing public Caddy Home, Shop, and REST paths each returned HTTP 200 with normal TLS verification. No M2B action was started.
 
 No payment/provider, DNS, Cloudflare, Caddy, database-content, Secret, or cleanup action occurred. No Reviewer-owned file was changed.
+
+## Gate: M2B Temporary Tunnel Canary — 2026-09-30
+
+```text
+GATE=M2B_TEMPORARY_TUNNEL_CANARY
+RESULT=PASS_CANDIDATE_M2B_TEMPORARY_TUNNEL_CANARY
+M2B_R1_BROWSER_CONTEXT_RECOVERY=PASS
+CLOUDFLARE_DASHBOARD_CONTEXT=VERIFIED
+AUTHENTICATED_SESSION=YES
+TUNNEL=spikersun-shared-private
+TUNNEL_HEALTH=HEALTHY
+
+PREFLIGHT_TEMP_PUBLIC_HOSTNAME=ABSENT
+PREFLIGHT_TEMP_DNS=ABSENT
+PRODUCTION_MINICRAFT_DNS=A_2.24.193.133_DNS_ONLY
+EXISTING_TUNNEL_ROUTES_PREWRITE=PASS
+
+TEMP_HOSTNAME=minicraft-m2b-canary.spikersun.com
+TEMP_PUBLIC_HOSTNAME_TUNNEL=spikersun-shared-private
+TEMP_ORIGIN_SERVICE=http://mini-craft-night-kit-wordpress:80
+TEMP_ORIGIN_HTTP_HOST_HEADER=minicraft.spikersun.com
+TEMP_DNS_TYPE=CNAME
+TEMP_DNS_TARGET=ed47dfe3-e529-46be-a4de-f14ddc05136e.cfargotunnel.com
+TEMP_ROUTE_CONFIG_READBACK=PASS
+
+TEMP_HOME_HTTP=200
+TEMP_SHOP_HTTP=200
+TEMP_WP_REST_HTTP=200
+TEMP_TLS_VALID=YES
+TEMP_TLS_VERIFY_RESULT=0
+
+PRODUCTION_HOME_HTTP=200
+PRODUCTION_SHOP_HTTP=200
+PRODUCTION_WP_REST_HTTP=200
+PRODUCTION_DNS_A_TO_CADDY_UNCHANGED=YES
+
+TEMP_ROUTE_CLEANUP=PASS
+TEMP_PUBLIC_HOSTNAME_PRESENT=NO
+TEMP_DNS_PRESENT=NO
+PRODUCTION_MINICRAFT_DNS_POST_CLEANUP=A_2.24.193.133_DNS_ONLY
+EXISTING_TUNNEL_ROUTES_UNCHANGED=PASS
+
+CLOUDFLARE_MUTATIONS=TEMP_ROUTE_CREATE_AND_DELETE_ONLY
+DNS_MUTATIONS=TEMP_CNAME_CREATE_AND_DELETE_ONLY
+CADDY_MUTATIONS=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+WORDPRESS_MUTATIONS=0
+MARIADB_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+M2C_ENTERED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Execution notes
+
+The current GitHub M2B-R1 recovery decision and execution packet were read before resuming. The authenticated Cloudflare Tunnel page showed the expected tunnel and the original three routes. Before the write, the exact temporary route and DNS hostname were absent; the production Mini Craft DNS record remained DNS-only A `2.24.193.133`.
+
+Created only the authorized temporary published-application route. The creation receipt showed the required Tunnel CNAME was auto-created. Fresh route edit readback confirmed the exact origin service and HTTP Host Header. The three pre-existing route mappings remained unchanged.
+
+Normal-TLS HTTPS checks (no cookies or credentials) returned HTTP 200 for temporary Home, Shop, and `/wp-json/`; TLS verification succeeded. Production Home, Shop, and REST also returned HTTP 200. The production DNS record remained unchanged.
+
+Mandatory cleanup removed the temporary route and its associated CNAME. After page refresh, the Tunnel route list contained only the three original routes. Fresh exact DNS-zone readback found zero records for the temporary hostname and confirmed the production Mini Craft A record remained `2.24.193.133`, DNS-only. No M2C action followed.

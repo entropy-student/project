@@ -1,5 +1,116 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2C Production Tunnel Cutover Authorized — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+M2B_TEMPORARY_TUNNEL_CANARY=PASS
+
+OWNER_EXPLICITLY_AUTHORIZES_M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER=YES
+
+CURRENT_GATE=M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_PRODUCTION_PROVIDER_WRITE
+
+PRODUCTION_HOST=minicraft.spikersun.com
+CURRENT_EXPECTED_DNS=A_2.24.193.133_DNS_ONLY
+TARGET_TUNNEL=spikersun-shared-private
+TARGET_ORIGIN=http://mini-craft-night-kit-wordpress:80
+TARGET_ORIGIN_HTTP_HOST_HEADER=minicraft.spikersun.com
+
+PRODUCTION_DNS_MUTATION_AUTHORIZED=MINICRAFT_CANONICAL_CUTOVER_ONLY
+PRODUCTION_TUNNEL_HOSTNAME_MUTATION_AUTHORIZED=MINICRAFT_CANONICAL_CUTOVER_ONLY
+ROLLBACK_A_RECORD_RESTORE_AUTHORIZED=YES_IF_REQUIRED
+
+CADDY_ROUTE_RETAINED_AS_ROLLBACK=YES
+CADDY_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+WORDPRESS_MUTATION_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+M2D_AUTHORIZED=NO
+M2E_AUTHORIZED=NO
+```
+
+Owner explicitly authorized the canonical Mini Craft production hostname cutover.
+
+Before mutation, the Executor must fresh-read and seal the exact existing DNS-only A record, including TTL, verify authenticated Cloudflare/Tunnel context, confirm the canonical hostname is absent from Tunnel routes, verify the M2B temp hostname remains absent, verify Tunnel health and current production Home/Shop/REST, and prove xianyu/pay/shop routes unchanged.
+
+The bounded production transaction is:
+
+```text
+seal exact old A
+-> delete only that A
+-> create minicraft.spikersun.com on spikersun-shared-private
+-> origin http://mini-craft-night-kit-wordpress:80
+-> HTTP Host Header minicraft.spikersun.com
+-> fresh-read route/DNS
+-> validate TLS + Home/Shop/REST
+```
+
+If any post-delete action is ambiguous, do not blindly retry. Fresh-read state first. Any failed control-plane or public validation requires immediate rollback to the exact sealed A record. No second cutover attempt is allowed after rollback in this Gate.
+
+A successful M2C leaves the existing Caddy route untouched as rollback infrastructure. M2D and M2E remain unauthorized.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2C_OWNER_AUTHORIZED_PRODUCTION_TUNNEL_CUTOVER.md`
+
+Execution packet:
+`review-packets/M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER_EXECUTION.md`
+
+## CURRENT REVIEWER UPDATE — M2B Formal PASS / M2C Production Cutover Owner Checkpoint — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+M2B_TEMPORARY_TUNNEL_CANARY=PASS
+
+TEMP_CANARY_HOME_HTTP=200
+TEMP_CANARY_SHOP_HTTP=200
+TEMP_CANARY_WP_REST_HTTP=200
+TEMP_CANARY_TLS_VALID=YES
+TEMP_ROUTE_CLEANUP=PASS
+TEMP_PUBLIC_HOSTNAME_PRESENT=NO
+TEMP_DNS_PRESENT=NO
+
+PRODUCTION_HOST=minicraft.spikersun.com
+CURRENT_PRODUCTION_DNS=A_2.24.193.133_DNS_ONLY
+CURRENT_PRODUCTION_PATH=DNS_A_TO_CADDY
+PRODUCTION_HOME_HTTP=200
+PRODUCTION_SHOP_HTTP=200
+PRODUCTION_WP_REST_HTTP=200
+
+TARGET_TUNNEL=spikersun-shared-private
+TARGET_ORIGIN=http://mini-craft-night-kit-wordpress:80
+TARGET_ORIGIN_HTTP_HOST_HEADER=minicraft.spikersun.com
+CADDY_ROUTE_RETAINED_AS_ROLLBACK=YES
+
+CURRENT_GATE=M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=OWNER_CONFIRMATION_REQUIRED
+
+PRODUCTION_DNS_MUTATION_AUTHORIZED=NO
+PRODUCTION_TUNNEL_HOSTNAME_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+M2D_AUTHORIZED=NO
+M2E_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Independent review accepted Evidence commit `cb3835f621c444d7aa0b731c3d023bd00ada075e` and Executor Handoff commit `4a3a86e02b50903522dae7db195d8e766998bc87`. M2B is formally closed.
+
+The temporary hostname proved the direct Tunnel-to-Mini-Craft path, including the required origin HTTP Host Header, and was then fully removed. The production hostname remains unchanged on its DNS-only A-to-Caddy path.
+
+The next step, M2C, is the canonical production hostname cutover. It will replace the current canonical Mini Craft DNS-only A record with the Tunnel-backed canonical hostname route while retaining the existing Caddy route untouched as rollback infrastructure. This production DNS/Tunnel mutation requires a new explicit Owner confirmation.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2B_PASS_M2C_PRODUCTION_CUTOVER_OWNER_CHECKPOINT.md`
+
+Checkpoint packet:
+`review-packets/M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER_OWNER_CHECKPOINT.md`
+
 ## CURRENT REVIEWER UPDATE — M2B Browser Context RETURN Accepted / M2B-R1 Recovery Open — 2026-09-30
 
 ```text
