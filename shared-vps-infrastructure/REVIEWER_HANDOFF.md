@@ -1,5 +1,50 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2B Temporary Tunnel Canary Authorized — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+
+CURRENT_GATE=M2B_TEMPORARY_TUNNEL_CANARY
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_PROVIDER_WRITE
+OWNER_EXPLICITLY_AUTHORIZES_M2B_TEMPORARY_CLOUDFLARE_TUNNEL_CANARY=YES
+
+TUNNEL=spikersun-shared-private
+TEMP_HOSTNAME=minicraft-m2b-canary.spikersun.com
+ORIGIN_SERVICE=http://mini-craft-night-kit-wordpress:80
+ORIGIN_HTTP_HOST_HEADER=minicraft.spikersun.com
+
+CURRENT_PRODUCTION_HOST=minicraft.spikersun.com
+CURRENT_PRODUCTION_PATH=DNS_A_TO_CADDY
+CURRENT_CADDY_ROUTE_RETAINED_AS_ROLLBACK=YES
+
+CLOUDFLARE_MUTATION_AUTHORIZED=TEMP_ROUTE_CREATE_AND_DELETE_ONLY
+DNS_MUTATION_AUTHORIZED=TEMP_RECORD_CREATE_AND_DELETE_ONLY
+PRODUCTION_DNS_MUTATION_AUTHORIZED=NO
+PRODUCTION_TUNNEL_HOSTNAME_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+M2C_AUTHORIZED=NO
+```
+
+Owner explicitly confirmed M2B. This Gate is an ephemeral temporary-host canary only.
+
+The exact temporary hostname is `minicraft-m2b-canary.spikersun.com`. It may be created only on the existing `spikersun-shared-private` Tunnel, with origin `http://mini-craft-night-kit-wordpress:80` and explicit origin HTTP Host Header `minicraft.spikersun.com`.
+
+The production `minicraft.spikersun.com` DNS-A-to-Caddy path must remain untouched. After canary evidence is collected, the temporary Tunnel route and its temporary DNS record must be removed even on success, and their absence must be fresh-readback proven.
+
+No M2C production cutover is authorized.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2B_OWNER_AUTHORIZED_TEMPORARY_TUNNEL_CANARY.md`
+
+Execution packet:
+`review-packets/M2B_TEMPORARY_TUNNEL_CANARY_EXECUTION.md`
+
 ## CURRENT REVIEWER UPDATE — M2A Formal PASS / M2B Temporary Tunnel Canary Owner Checkpoint — 2026-09-30
 
 ```text
