@@ -281,3 +281,32 @@ M2D_ENTERED=NO
 M2E_ENTERED=NO
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — M2D-R1 Hostinger Terminal Context Recovery and Public Regression Observation — 2026-09-30
+
+- Gate: M2D_R1_HOSTINGER_TERMINAL_CONTEXT_RECOVERY_AND_OBSERVATION_RESTART
+- Result: PASS_CANDIDATE_M2D_PUBLIC_REGRESSION_AND_OBSERVATION
+- Rebound the already-open Hostinger Web Terminal and verified hostname srv1970241; no direct SSH was used.
+- Completed three distinct read-only checkpoints over more than 20 minutes: T0 runtime readback 07:55:27 UTC, T+5 08:06:35 UTC, T+10 08:15:53 UTC.
+- At each checkpoint, the canonical Tunnel route and CNAME remained correct, the former A record and M2B temporary hostname remained absent, and xianyu/pay/shop routes were unchanged.
+- Home, Shop, and /wp-json/ each returned HTTP 200 with TLS verify result 0. WordPress stayed running with restart count 0 and the required private alias; MariaDB stayed healthy and DB-network-only. The Caddy rollback matcher/hash remained unchanged.
+- Evidence commit: f55be4e2b9bddfd28b04be3b736716054c58cfc0
+- No Cloudflare, DNS, Tunnel, Caddy, VPS, Docker, Compose, WordPress, MariaDB, or payment mutations. M2E was not entered.
+
+```text
+OBSERVATION_CHECKPOINTS=3
+PRODUCTION_INGRESS_STABLE=PASS
+PUBLIC_HOME_STABLE=PASS
+PUBLIC_SHOP_STABLE=PASS
+PUBLIC_WP_REST_STABLE=PASS
+TLS_STABLE=PASS
+EXISTING_TUNNEL_ROUTES_UNCHANGED=PASS
+WORDPRESS_RUNTIME_HEALTH=PASS
+MARIADB_ISOLATION=PASS
+CADDY_ROLLBACK_ROUTE_RETAINED=PASS
+M2B_TEMP_HOSTNAME_ABSENT=PASS
+MUTATIONS=0
+M2E_ENTERED=NO
+STOP_AT_REVIEWER=YES
+```
