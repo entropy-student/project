@@ -1,5 +1,60 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2C Formal PASS / M2D Read-only Observation Open — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+M2B_TEMPORARY_TUNNEL_CANARY=PASS
+M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER=PASS
+
+PRODUCTION_HOST=minicraft.spikersun.com
+PRODUCTION_INGRESS=CLOUDFLARE_TUNNEL_DIRECT_TO_MINICRAFT_APP
+PRODUCTION_TUNNEL=spikersun-shared-private
+PRODUCTION_ORIGIN=http://mini-craft-night-kit-wordpress:80
+PRODUCTION_ORIGIN_HTTP_HOST_HEADER=minicraft.spikersun.com
+
+OLD_CANONICAL_A_RECORD=ABSENT
+CANONICAL_TUNNEL_DNS=CNAME_PROXIED_AUTO
+PUBLIC_HOME_HTTP=200
+PUBLIC_SHOP_HTTP=200
+PUBLIC_WP_REST_HTTP=200
+TLS_VALID=YES
+
+EXISTING_XIANYU_PAY_SHOP_ROUTES_UNCHANGED=PASS
+CADDY_ROUTE_RETAINED_AS_ROLLBACK=YES
+
+CURRENT_GATE=M2D_PUBLIC_REGRESSION_AND_OBSERVATION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+WORDPRESS_MUTATION_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+M2E_AUTHORIZED=NO
+```
+
+Independent review accepted Evidence commit `b7a4b7c4c0a0a7450cdae0330647ca4d4a31b326` and Executor Handoff commit `c1f6d9dd9e6c5846ac075deb908212acba2a000e`. M2C is formally closed.
+
+The canonical Mini Craft hostname is now served by the existing Cloudflare Tunnel directly to `mini-craft-night-kit-wordpress:80` with the canonical Host Header. The former DNS-only A record is absent. Public Home, Shop and REST all returned HTTP 200 with successful TLS verification. Existing xianyu/pay/shop Tunnel routes remained unchanged.
+
+The old Mini Craft Caddy route remains untouched as rollback infrastructure.
+
+M2D is now authorized as a strictly read-only three-checkpoint observation at approximately T0, T+5 minutes and T+10 minutes. It verifies DNS/Tunnel stability, Home/Shop/REST/TLS, WordPress/MariaDB runtime health, existing route integrity, absence of the M2B temporary hostname, and continued presence of the Caddy rollback route.
+
+M2D does not authorize rollback or Caddy retirement. M2E remains separately gated.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2C_PASS_M2D_READONLY_OBSERVATION_AUTHORIZED.md`
+
+Execution packet:
+`review-packets/M2D_PUBLIC_REGRESSION_AND_OBSERVATION.md`
+
 ## CURRENT REVIEWER UPDATE — M2C Production Tunnel Cutover Authorized — 2026-09-30
 
 ```text
