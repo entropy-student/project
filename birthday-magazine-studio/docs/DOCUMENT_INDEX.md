@@ -49,7 +49,9 @@
 | `G3CR1_BESTSELLING_AUTHOR_ELEMENTOR_CLOSURE.md` | Historical Astra Elementor closure | **SUPERSEDED BEFORE EXECUTION** |
 | `OWNER_DECISION_G3C_BLOCKSY_WEDDING.md` | Owner-selected replacement visual starter | **CURRENT OWNER DECISION** |
 | `BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md` | Pre-execution Blocksy/Wedding research proof | **CURRENT SUPPORTING PROOF** |
-| `G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md` | Wedding/Gutenberg import + WooCommerce compatibility canary | **CURRENT EXECUTION GATE** |
+| `G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md` | Wedding/Gutenberg import + WooCommerce compatibility canary | **RETURN — dependency list ambiguity accepted** |
+| `REVIEWER_DECISION_G3CR2_RETURN.md` | Reviewer decision on PR #60 | **CURRENT G3CR2 DECISION — RETURN ACCEPTED** |
+| `G3CR2R1_BLOCKSY_WEDDING_VARIANT_DEPENDENCY_CLOSURE.md` | Exact Wedding:gutenberg dependency closure + resume canary | **CURRENT EXECUTION GATE** |
 | `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED THEME-SPECIFIC PACKAGE — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
@@ -77,8 +79,10 @@ For the current project state, a new Reviewer/Executor should normally need only
 4. `MVP_PRODUCT_CONTRACT.md`
 5. `OWNER_DECISION_G3C_BLOCKSY_WEDDING.md` — current Owner template decision
 6. `BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md` — why the canary is authorized
-7. `G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md` — current execution contract
-8. `REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md` — historical Astra RETURN provenance
+7. `REVIEWER_DECISION_G3CR2_RETURN.md` — current Reviewer decision
+8. `G3CR2R1_BLOCKSY_WEDDING_VARIANT_DEPENDENCY_CLOSURE.md` — current execution contract
+9. `G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md` — parent canary contract / RETURN provenance
+10. `REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md` — historical Astra RETURN provenance
 9. `REVIEWER_DECISION_G3BR1_G3B_PASS.md`
 10. `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` for closed Sandbox proof details
 11. `G3A_MINICRAFT_LESSONS_REFERENCE.md` only when a PayPal/runtime issue resembles an already-seen Mini Craft failure
