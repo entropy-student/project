@@ -19,22 +19,21 @@ Last accepted server-side read-only baseline: 2026-09-29.
 
 ```text
 CLIENT_PUBLIC_KEY_FINGERPRINT=SHA256:qFlRXelvzDEFpatrcX7T4dUBKPAC7YqFqNkyFZh5rYw
-IDENTITY_FILE_REFERENCE=PENDING_PROMOTION_FROM_ACCEPTED_OWNER_LOCAL_HANDOFF
-EXPECTED_HOST_KEY_FINGERPRINTS=PENDING_PROMOTION_FROM_ACCEPTED_OWNER_LOCAL_HANDOFF
-KNOWN_HOSTS_REFERENCE=OWNER_NORMAL_KNOWN_HOSTS
-STRICT_OPTIONS=BatchMode=yes;IdentitiesOnly=yes;StrictHostKeyChecking=yes
+IDENTITY_FILE_REFERENCE=C:\Users\34707\.ssh\xianyu_hostinger_codex_ed25519
+EXPECTED_HOST_KEY_FINGERPRINTS=SHA256:yr2b1z2fZmMU+8IwnTB8M94H1VlO+U3CIZk1S3FOa+o;SHA256:L7lXm/ssbbeeHG6OlRis2dreMW+SGzeJoMeGu6xzngw;SHA256:QS8B89XaTDpt3s+74W55W4jQzrjwfrEc/Q0FfWp8uZc
+KNOWN_HOSTS_REFERENCE=C:\Users\34707\.ssh\known_hosts
+STRICT_OPTIONS=BatchMode=yes;IdentitiesOnly=yes;StrictHostKeyChecking=yes;UserKnownHostsFile=C:\Users\34707\.ssh\known_hosts;ConnectionAttempts=1;ConnectTimeout=10;ForwardAgent=no
 ```
 
-The exact private-key path/value is intentionally not stored here. Historical accepted Mini Craft Evidence proves that an Owner-workstation Shared VPS handoff existed and that its identity reference, client public fingerprint and three pinned host-key entries were repeatedly verified. M1-R1 may use that historical local handoff only as a bounded bootstrap source to recover the exact non-secret trust metadata.
-
-The local historical handoff is not a competing canonical project truth. After M1-R1 proves the current trust tuple, Reviewer should promote the exact non-secret identity reference / host-key fingerprints here.
+The private-key contents are never stored here. S1 on 2026-09-30 re-verified the existing Owner-workstation identity reference, client public-key fingerprint and all three normal known_hosts pins, then completed exactly one strict SSH probe to ops@srv1970241 with native exit 0. The metadata above is now the canonical non-secret SSH connection contract.
 
 ## 3. Privilege model
 
 ```text
 REMOTE_USER=ops
-PASSWORDLESS_SUDO=PREVIOUSLY_ACCEPTED
-DOCKER_ACCESS=VIA_REVIEWED_REMOTE_COMMANDS
+PASSWORDLESS_SUDO=YES_VERIFIED_2026-09-30
+DIRECT_DOCKER_SOCKET_ACCESS=NO
+DOCKER_ACCESS=VIA_REVIEWED_SUDO_DOCKER_COMMANDS
 ```
 
 Fresh privilege state must be re-read before consequential writes.
@@ -86,13 +85,16 @@ Owner-only remains required for irreversible deletion, account/identity authoriz
 ## 7. Current status
 
 ```text
-SSH_CONNECTION_CONTRACT=PARTIAL_CANONICAL_METADATA_S1_RECOVERY_OPEN
+SSH_CONNECTION_CONTRACT=PASS_VERIFIED_2026-09-30
 NORMAL_MANAGEMENT_PATH=STRICT_SSH
 CANONICAL_REMOTE_USER=ops
-HOST_IDENTITY=ACCEPTED_HISTORICAL_srv1970241
-SSH_SERVER_SIDE_HEALTH=PASS_FROM_M1_R2_BASELINE
-SSH_ROOT_CAUSE=INSUFFICIENT_EVIDENCE_FOR_PRIOR_INTERMITTENT_CLIENT_FAILURES
+TARGET_HOST=srv1970241
+SSH_NATIVE_EXIT=0
+TARGET_HOST_EXECUTION_PROVEN=PASS
+PASSWORDLESS_SUDO=YES
+DIRECT_DOCKER_SOCKET_ACCESS=NO
+DOCKER_ACCESS_METHOD=SUDO_DOCKER
 FALLBACK_RECOVERY_ROUTE=HOSTINGER_WEB_TERMINAL
-CURRENT_GATE=S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT
+HOSTINGER_WEB_TERMINAL_ROLE=FALLBACK_ONLY
 LAST_VERIFIED=2026-09-30
 ```
