@@ -15,8 +15,8 @@ This file is navigation only. It is **not** a second project truth source.
 
 - P0 / G1 / G2A1 / G2A2 / G2B / G3A: accepted PASS at their defined scope.
 - **G3B / G3BR1: PASS** — PayPal Sandbox capture correlation, paid-entitlement 0→1 behavior, one Owner-authorized full Sandbox refund, entitlement revocation, and scoped cleanup are closed.
-- **G3C UI/UX Productization: not complete.** The prior Astra path returned. **Blocksy Wedding is now Owner-selected**, with Gutenberg preferred.
-- **G3CR2 compatibility canary: CURRENT** — fresh isolated Wedding/Gutenberg import + WooCommerce product/cart/checkout/account/private-workspace regression only. Full visual adaptation waits for Reviewer PASS.
+- **G3CR2R3 compatibility canary: PASS** — Blocksy Wedding Gutenberg imported successfully; WooCommerce product/cart/checkout/account/private-workspace compatibility and Gutenberg editability passed.
+- **G3C UI/UX Productization: CURRENT** — adapt Wedding into Birthday Magazine, integrate the Good Issue browser-local preview, and keep the local WordPress runtime available for Owner Administrator/Gutenberg visual editing before freeze.
 - **G4 Live PayPal Canary: HOLD / NOT AUTHORIZED**.
 - PayPal Live, real-money payment, production AI provider, production private delivery and production deployment remain unproven.
 
