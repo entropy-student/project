@@ -1,5 +1,60 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — S1 Formal PASS / Canonical SSH Restored / M2E-R1 Reconciliation Resumes via SSH — 2026-09-30
+
+```text
+S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT=PASS
+
+NORMAL_VPS_MANAGEMENT_PATH=STRICT_SSH
+SSH_NORMAL_PATH=RESTORED
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+SSH_NATIVE_EXIT=0
+TARGET_HOST_EXECUTION_PROVEN=PASS
+SUDO_NONINTERACTIVE_AVAILABLE=YES
+DIRECT_DOCKER_SOCKET_ACCESS=NO
+DOCKER_ACCESS_METHOD=BOUNDED_SUDO_DOCKER
+HOSTINGER_WEB_TERMINAL_ROLE=FALLBACK_RECOVERY_ONLY
+
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=NOT_PROVEN
+M2E_FORMAL_PASS=NO
+
+CURRENT_GATE=M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_RELOAD_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RECREATE_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+SSH_REPAIR_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Reviewer independently persisted the S1 result after the Executor's GitHub transport failure and fresh-read the canonical Evidence/Handoff. The exact non-secret SSH trust tuple is now promoted into `SHARED_VPS_HANDOFF.md`.
+
+The prior `DOCKER_READONLY_ACCESS=NO` finding is not a connection failure. It means the `ops` account does not have direct Docker socket access. Passwordless non-interactive sudo is verified, so reviewed Docker inspection/actions must use bounded `sudo docker ...` commands.
+
+Hostinger Web Terminal is no longer the normal VPS management path. It remains fallback/recovery only.
+
+The unresolved M2E persistence issue is unchanged: current active Caddy and host source have the Mini Craft legacy route removed, while the container-mounted single-file Caddyfile is stale and could reintroduce the matcher on future restart. The next Gate completes that reconciliation through canonical SSH and retrieves the exact Caddy container identity plus fresh mount/config facts. It is strictly read-only.
+
+S1 formal PASS decision:
+`docs/REVIEWER_DECISION_S1_PASS_M2E_R1_SSH_RECONCILIATION.md`
+
+M2E-R1 SSH packet:
+`review-packets/M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION.md`
+
 ## CURRENT REVIEWER UPDATE — SSH-first Management Restored as Governance Direction / S1 SSH Contract Recovery Open — 2026-09-30
 
 ```text
