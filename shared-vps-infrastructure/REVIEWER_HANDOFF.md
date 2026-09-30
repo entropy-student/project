@@ -1,5 +1,65 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2E-R1 GitHub Persistence RETURN Accepted / Missing Caddy Identity Capture Open — 2026-09-30
+
+```text
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=NOT_PROVEN
+M2E_FORMAL_PASS=NO
+
+M2E_R1_R2_RESULT=RETURN_GITHUB_EVIDENCE_PERSISTENCE_UNAVAILABLE
+GITHUB_CONNECTIVITY_RESTORED_AT_REVIEWER=YES
+CANONICAL_M2E_R1_EXECUTION_RECORD_PRESENT=NO
+
+CADDY_MOUNT_DIVERGENCE_CLASS=SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE
+RESTART_REINTRODUCTION_RISK=YES
+PLAIN_RESTART_SUFFICIENT=NO
+RECREATE_OR_RESTART_REQUIRED=RECREATE_REQUIRED
+
+HOST_CADDYFILE=/srv/infra/edge/Caddyfile
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+CONTAINER_CADDYFILE=/etc/caddy/Caddyfile
+CONTAINER_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+
+CURRENT_GATE=M2E_R1_R3_MISSING_CADDY_RUNTIME_IDENTITY_CAPTURE
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_CONTAINER_ID=UNKNOWN_NOT_PERSISTED
+CADDY_CONTAINER_NAME=UNKNOWN_NOT_PERSISTED
+
+CADDY_MUTATION_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RECREATE_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Reviewer-side GitHub access is currently healthy. The prior Executor persistence RETURN is accepted, and the canonical Evidence/Handoff are confirmed to still lack the M2E-R1 execution section.
+
+The only remaining missing runtime fields required before Reviewer can persist the complete M2E-R1 record are the exact current Caddy container ID and name. The stale single-file bind-mount classification and restart risk are otherwise provisionally accepted.
+
+The minimal technical remedy is now classified as Caddy container/service recreate/rebind only; a plain restart is insufficient because it would preserve the stale bind reference. This is analysis only—no recreate is authorized.
+
+R3 is strictly read-only and must capture only the missing Caddy runtime identity from the already-open Hostinger Web Terminal. Executor should not retry GitHub persistence. Once returned, Reviewer will write the complete Evidence/Handoff directly.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2E_R1_R2_RETURN_R3_MISSING_RUNTIME_IDENTITY_CAPTURE.md`
+
+Execution packet:
+`review-packets/M2E_R1_R3_MISSING_CADDY_RUNTIME_IDENTITY_CAPTURE.md`
+
 ## CURRENT REVIEWER UPDATE — M2E-R1 Runtime Facts Provisionally Accepted / GitHub Evidence Persistence Recovery Open — 2026-09-30
 
 ```text
