@@ -752,3 +752,7 @@ Screenshot sizes and SHA-256 checksums are in poc/g3cr2r3/artifacts/reports/evid
 After evidence capture, the exact project-scoped Compose teardown removed this Gate's containers, volumes and network. The exact ignored temporary directory poc/g3cr2r3/.tmp/ was removed after path/reparse-point/ignore checks. Read-back reports target resources 0/0/0 and temporary files 0. Docker inventory before and after had identical counts and fingerprints: containers 32 / 8E1FA69F9ADCAB7C17CAF5CF750AE0E9221189C2C2D6658B6E8FFFC359F3A8AD; volumes 78 / 656EE2DCEF3C4D99314FB8F2B42E8821E522BC93B6E8A27D81DB991517D9C701; networks 17 / 41DF5CE698646B8E44E66A8BBB05337ABB5618DA2E91B9527D9BACC8F5301414. No global prune was run. See cleanup-readback.json, resources-before.json and runtime-health.json.
 
 Forbidden action counts: Elementor 0; HT Slider 0; PayPal 0; real money 0; model calls 0; production deployment 0; shared infrastructure mutations 0; paid purchases 0; global Docker prune 0. FULL_G3C_IMPLEMENTATION=NOT_STARTED. The evidence is a candidate for Reviewer assessment and does not authorize G4.
+
+### GitHub submission
+
+The complete execution artifact commit 553e54deb734c00c75368fad6d0772ca9d4ddeee is on codex/birthday-magazine-g3cr2r3-wedding-woocommerce-canary. PR #63 is open against main and remains unmerged: https://github.com/entropy-student/project/pull/63. The latest-main submission base is 5d3e0b488e63982c91a79146d2bc720037d5caba.

@@ -498,3 +498,11 @@ Screenshots and detailed version/source/hash/network/access/cleanup evidence are
 Cleanup removed only the birthday-magazine-g3cr2r3 Compose project and its ignored temporary working directory. Target containers/volumes/networks and .tmp files read back as zero; unrelated Docker inventory hashes were unchanged. Historical G3A/G3B source/evidence directories were not modified.
 
 Execution artifacts and these append-only Evidence/Handoff updates are being submitted on the branch above for Reviewer assessment. Do not treat this as Reviewer PASS, and do not start another Gate without a new Reviewer decision.
+
+### GitHub submission state
+
+- Execution artifacts commit: 553e54deb734c00c75368fad6d0772ca9d4ddeee.
+- PR #63: https://github.com/entropy-student/project/pull/63, open against main and unmerged.
+- A documentation-only follow-up records this PR linkage on the same branch.
+- Latest-main submission base: 5d3e0b488e63982c91a79146d2bc720037d5caba.
+- Reviewer owns all acceptance and next-Gate decisions.
