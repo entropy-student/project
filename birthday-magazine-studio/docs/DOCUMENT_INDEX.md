@@ -44,7 +44,7 @@
 | `OWNER_DECISION_G3BR1_SANDBOX_REFUND_AUTHORIZED.md` | Historical Owner authorization for exactly one full Sandbox refund of Woo order #30 | Executed once / closed |
 | `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` | Existing Sandbox payment reconciliation + entitlement/idempotency + refund closure | Executed / **PASS** |
 | `REVIEWER_DECISION_G3BR1_G3B_PASS.md` | Final Reviewer decision closing G3BR1 and parent G3B | **CURRENT G3B DECISION — PASS** |
-| `G3C_UI_UX_PRODUCTIZATION.md` | Parent UI/UX productization contract | **PARENT GATE — BLOCK EDITOR PATH RETURN; CLOSED BY G3CR1 IF SUCCESSFUL** |
+| `G3C_UI_UX_PRODUCTIZATION.md` | Blocksy Wedding UI/UX productization + Owner visual freeze | **CURRENT PARENT GATE** |
 | `REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md` | Reviewer decision on PR #59 | **CURRENT G3C RETURN DECISION — BLOCK EDITOR ONLY** |
 | `G3CR1_BESTSELLING_AUTHOR_ELEMENTOR_CLOSURE.md` | Historical Astra Elementor closure | **SUPERSEDED BEFORE EXECUTION** |
 | `OWNER_DECISION_G3C_BLOCKSY_WEDDING.md` | Owner-selected replacement visual starter | **CURRENT OWNER DECISION** |
@@ -55,8 +55,10 @@
 | `REVIEWER_DECISION_G3CR2R1_RETURN.md` | Reviewer decision on PR #61 | **CURRENT G3CR2R1 DECISION — RETURN ACCEPTED** |
 | `G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md` | Current dashboard v2 catalogue dependency closure | **EXECUTOR RETURN / REVIEWER DEPENDENCY PASS** |
 | `REVIEWER_DECISION_G3CR2R2_DEPENDENCY_PASS.md` | Reviewer interpretation of blank builder as Gutenberg | **CURRENT DEPENDENCY DECISION — PASS** |
-| `G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY.md` | Wedding import + WooCommerce/account/private-workspace compatibility | **CURRENT EXECUTION GATE** |
-| `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED THEME-SPECIFIC PACKAGE — DO NOT EXECUTE** |
+| `G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY.md` | Wedding import + WooCommerce/account/private-workspace compatibility | **EXECUTED / PASS** |
+| `REVIEWER_DECISION_G3CR2R3_PASS.md` | Reviewer acceptance of PR #63 compatibility canary | **CURRENT COMPATIBILITY DECISION — PASS** |
+| `G3C_BLOCKSY_WEDDING_EXECUTION_PACKET.md` | Blocksy Wedding + Good Issue productization / Owner edit package | **CURRENT EXECUTION PACKAGE** |
+| `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
@@ -83,8 +85,9 @@ For the current project state, a new Reviewer/Executor should normally need only
 4. `MVP_PRODUCT_CONTRACT.md`
 5. `OWNER_DECISION_G3C_BLOCKSY_WEDDING.md` — current Owner template decision
 6. `BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md` — why the canary is authorized
-7. `REVIEWER_DECISION_G3CR2R2_DEPENDENCY_PASS.md` — current dependency decision
-8. `G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY.md` — current execution contract
+7. `REVIEWER_DECISION_G3CR2R3_PASS.md` — accepted Blocksy/Woo compatibility decision
+8. `G3C_UI_UX_PRODUCTIZATION.md` — current parent Gate
+9. `G3C_BLOCKSY_WEDDING_EXECUTION_PACKET.md` — current execution package
 9. `REVIEWER_DECISION_G3CR2R1_RETURN.md` — prior Reviewer return decision
 10. `G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md` — executed catalogue closure / RETURN provenance
 9. `REVIEWER_DECISION_G3CR2_RETURN.md` — parent G3CR2 return decision
