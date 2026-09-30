@@ -766,3 +766,105 @@ Rebound the already-open authenticated Hostinger Web Terminal in the in-app brow
 At each checkpoint, the authenticated Cloudflare Tunnel route remained on spikersun-shared-private with origin http://mini-craft-night-kit-wordpress:80 and HTTP Host Header minicraft.spikersun.com; the old canonical A record remained absent and the canonical hostname remained on the Tunnel CNAME. The xianyu, pay, and shop routes were unchanged. The M2B temporary hostname was absent from Tunnel routes and DNS. Anonymous normal-TLS Home, Shop, and /wp-json/ checks each returned HTTP 200 with TLS verify result 0.
 
 Fresh target-host readbacks at all checkpoints showed WordPress running with restart count 0, on the database, edge, and private networks with the required private alias. MariaDB remained healthy on the project database network only and absent from spikersun-private. The Mini Craft Caddy rollback matcher remained present and the Caddyfile SHA-256 stayed at the accepted value above. No M2E action followed.
+
+
+## Gate: M2E Retire Legacy Mini Craft Caddy Route — 2026-09-30
+
+```text
+GATE=M2E_RETIRE_LEGACY_MINICRAFT_CADDY_ROUTE
+RESULT=PASS_CANDIDATE_M2E_RETIRE_LEGACY_MINICRAFT_CADDY_ROUTE
+ACCESS_PATH=HOSTINGER_WEB_TERMINAL
+TARGET_HOST=srv1970241
+DIRECT_SSH=NOT_USED
+
+PREWRITE_CADDYFILE=/srv/infra/edge/Caddyfile
+PREWRITE_CADDYFILE_BYTES=199
+PREWRITE_CADDYFILE_MODE_OWNER_GROUP=0644 root:root
+PREWRITE_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+MINICRAFT_BLOCK_COUNT=1
+MINICRAFT_BLOCK_HOST=minicraft.spikersun.com
+MINICRAFT_BLOCK_UPSTREAM=wordpress:80
+MINICRAFT_BLOCK_SHARED_WITH_OTHER_HOSTS=NO
+
+ROLLBACK_COPY=/srv/infra/edge/Caddyfile.m2e-prewrite-20260930T091701Z.bak
+ROLLBACK_COPY_BYTES=199
+ROLLBACK_COPY_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+ROLLBACK_COPY_COUNT=1
+
+CADDYFILE_WRITE_MODE=IN_PLACE_SAME_INODE
+CADDYFILE_POST_BYTES=143
+CADDYFILE_POST_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_INODE_UNCHANGED=PASS
+CANDIDATE_VALIDATION_FROM_STDIN=PASS
+CONTAINER_MOUNTED_PATH_POST_BYTES=199
+CONTAINER_MOUNTED_PATH_POST_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+CONTAINER_MOUNTED_PATH_DIVERGENCE=KNOWN_STALE_SINGLE_FILE_MOUNT
+RELOAD_SOURCE=HOST_CADDYFILE_VIA_STDIN
+CADDY_RELOAD_COUNT=1
+CADDY_RELOAD_EXIT=0
+CADDY_RESTART_COUNT=0
+CADDY_RECREATE_COUNT=0
+CADDY_CONTAINER_ID_UNCHANGED=YES
+CADDY_SERVICE_HEALTH=PASS
+LEGACY_MINICRAFT_CADDY_ROUTE=ABSENT_FROM_ACTIVE_ADMIN_CONFIG_AND_HOST_SOURCE
+
+OTHER_CADDY_SITES_REGRESSION=PASS
+EDGE_TEST_HTTP=200
+EDGE_TEST_TLS_VERIFY_RESULT=0
+EDGE_TEST_BODY_BYTES=30
+EDGE_TEST_BODY_SHA256=2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824
+LOCALHOST_ROUTE=PASS
+
+MINICRAFT_TUNNEL=spikersun-shared-private
+MINICRAFT_TUNNEL_ORIGIN=http://mini-craft-night-kit-wordpress:80
+MINICRAFT_HTTP_HOST_HEADER=minicraft.spikersun.com
+CANONICAL_DNS=CNAME_TO_EXISTING_TUNNEL
+CANONICAL_OLD_A_RECORD=ABSENT
+M2B_TEMP_DNS=ABSENT
+XIANYU_TUNNEL_ORIGIN=http://xianyu-app:8090_UNCHANGED
+PAY_TUNNEL_ORIGIN=http://unified-pay-app:8080_UNCHANGED
+SHOP_TUNNEL_ORIGIN=http://dujiao-next-app:8080_UNCHANGED
+EXISTING_TUNNEL_ROUTES_UNCHANGED=PASS
+
+PUBLIC_HOME_HTTP=200
+PUBLIC_HOME_TLS_VERIFY_RESULT=0
+PUBLIC_SHOP_HTTP=200
+PUBLIC_SHOP_TLS_VERIFY_RESULT=0
+PUBLIC_WP_REST_HTTP=200
+PUBLIC_WP_REST_TLS_VERIFY_RESULT=0
+MINICRAFT_TUNNEL_PRODUCTION_REGRESSION=PASS
+PRODUCTION_INGRESS=CLOUDFLARE_TUNNEL_DIRECT_TO_MINICRAFT_APP
+CADDY_ROLLBACK_COPY=RETAINED
+
+UNPLANNED_DIAGNOSTIC_SCRATCH=/tmp/m2e-edge-body
+UNPLANNED_DIAGNOSTIC_SCRATCH_BYTES=30
+UNPLANNED_DIAGNOSTIC_SCRATCH_REMOVED=YES
+
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+CADDYFILE_WRITE_ACTIONS=1
+CADDY_RELOAD_ACTIONS=1
+CADDY_RESTART_ACTIONS=0
+CADDY_RECREATE_ACTIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+WORDPRESS_MUTATIONS=0
+MARIADB_MUTATIONS=0
+PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+M2D_ENTERED=NO
+M2E_ENTERED=YES
+STOP_AT_REVIEWER=YES
+```
+
+### M2E notes
+
+Fresh-read the M2E Reviewer Decision/Execution Packet and current Shared VPS handoff/evidence before acting. Used the already accepted Hostinger Web Terminal path on srv1970241; no SSH was attempted. Prewrite host Caddyfile and the single rollback copy matched the exact accepted baseline hash. The isolated Mini Craft block was removed from the existing host file using an O_WRONLY, non-creating, non-truncating same-inode write; the candidate was validated through the established stdin path and Caddy was reloaded exactly once from stdin. No restart or recreate occurred.
+
+Post-reload Caddy Admin readback showed only the preserved localhost and edge-test response routes; the Mini Craft matcher was absent. Public Home, Shop, and WP REST were HTTP 200 with normal TLS verification; edge-test retained its exact 30-byte fingerprint. Authenticated Cloudflare readback showed the canonical Tunnel CNAME/route unchanged, all xianyu/pay/shop routes unchanged, and no M2B temporary DNS record.
+
+Important residual: the container's mounted `/etc/caddy/Caddyfile` still reads the prewrite 199-byte baseline hash, while the host source and active Admin configuration contain the 143-byte candidate. The Caddyfile bind mount is therefore stale. The requested stdin reload correctly changed the active configuration without reopening that pathname, but a future Caddy process restart from the stale mounted path could restore the retired matcher. No restart/recreate was attempted because it is explicitly forbidden in this Gate. Reviewer should decide whether a separately authorized mount reconciliation/recreate is required.
+
+A 30-byte edge-test body was briefly written to the exact diagnostic path shown above, then content/size-checked and removed; the path was confirmed absent afterward. No other temporary path was touched.
