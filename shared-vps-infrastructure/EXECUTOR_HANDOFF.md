@@ -348,3 +348,28 @@ SECRET_VALUES_EMITTED=0
 MIGRATION_M1_TO_M2E=COMPLETE_CANDIDATE
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — S1 Restore Canonical Shared VPS SSH Connection Contract — 2026-09-30
+
+- Result: `PASS_CANDIDATE_S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT`.
+- Hostinger Web Terminal was not used.
+- Owner-workstation SSH trust preflight passed: identity file exists; ACL metadata passed; client public-key fingerprint matched `SHA256:qFlRXelvzDEFpatrcX7T4dUBKPAC7YqFqNkyFZh5rYw`; all three expected normal known_hosts pins matched.
+- Exactly one strict SSH invocation was made with BatchMode, IdentitiesOnly, StrictHostKeyChecking, the recorded known_hosts file, one connection attempt, 10-second connect timeout and agent forwarding disabled.
+- SSH exit 0. Remote identity: `ops@srv1970241`; OS: Ubuntu 24.04.5 LTS.
+- Passwordless non-interactive sudo is available.
+- Direct unprivileged Docker read-only access is not available; use reviewed bounded `sudo docker ...` operations in later Gates.
+- No SSH repair, known_hosts/key mutation, VPS/Docker/Caddy/provider/application/payment mutation occurred.
+
+```text
+SSH_NORMAL_PATH=RESTORED
+TARGET_HOST_EXECUTION_PROVEN=PASS
+SSH_NATIVE_EXIT=0
+REMOTE_HOSTNAME=srv1970241
+REMOTE_USER=ops
+SUDO_NONINTERACTIVE_AVAILABLE=YES
+DOCKER_READONLY_ACCESS=NO_DIRECT
+SSH_NETWORK_INVOCATIONS=1
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
