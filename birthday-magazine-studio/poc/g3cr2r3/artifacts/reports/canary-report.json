@@ -1,0 +1,282 @@
+{
+  "gate": "G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY",
+  "startedAtUtc": "2026-09-30T09:27:06.847Z",
+  "checks": {
+    "weddingHomeDesktop": {
+      "result": "PASS",
+      "http": 200,
+      "layout": {
+        "viewport": 1440,
+        "document": 1440
+      },
+      "title": "Birthday Magazine G3CR2R3 Synthetic Local",
+      "backgroundAssetsSettledBeforeCapture": true
+    },
+    "weddingHomeMobile375": {
+      "result": "PASS",
+      "layout": {
+        "viewport": 375,
+        "document": 375
+      }
+    },
+    "weddingGutenbergEditable": {
+      "result": "PASS",
+      "frontId": 858,
+      "postType": "page",
+      "status": "publish",
+      "blockMarkup": true,
+      "parsedBlockCount": 31,
+      "elementorMetaPresent": false,
+      "activeTheme": "blocksy@2.1.57",
+      "activePlugins": [
+        {
+          "slug": "bms-g3a-commerce-loop",
+          "version": "0.1.0",
+          "status": "active"
+        },
+        {
+          "slug": "blocksy-companion",
+          "version": "2.1.57",
+          "status": "active"
+        },
+        {
+          "slug": "simply-gallery-block",
+          "version": "3.4.3",
+          "status": "active"
+        },
+        {
+          "slug": "stackable-ultimate-gutenberg-blocks",
+          "version": "3.20.2",
+          "status": "active"
+        },
+        {
+          "slug": "woocommerce",
+          "version": "11.1.2",
+          "status": "active"
+        },
+        {
+          "slug": "wpforms-lite",
+          "version": "2.0.2.1",
+          "status": "active"
+        }
+      ],
+      "elementorInstalled": false,
+      "htSliderInstalled": false
+    },
+    "gutenbergEditorScreen": {
+      "result": "PASS",
+      "titleInput": false,
+      "editorCanvas": true,
+      "urlPath": "/wp-admin/post.php?post=<synthetic>&action=edit"
+    },
+    "productDesktop": {
+      "result": "PASS",
+      "http": 200,
+      "usd3999Visible": true,
+      "addToCartVisible": true,
+      "layout": {
+        "viewport": 1440,
+        "document": 1440
+      }
+    },
+    "productMobile375": {
+      "result": "PASS",
+      "usd3999Visible": true,
+      "addToCartVisible": true,
+      "layout": {
+        "viewport": 375,
+        "document": 375
+      }
+    },
+    "cart": {
+      "result": "PASS",
+      "itemRows": 1,
+      "initialSubtotal": "$39.99",
+      "quantityUpdateSubtotal": "USD 79.98 desktop / USD 119.97 mobile",
+      "remove": "cart empty",
+      "desktopLayout": {
+        "viewport": 1440,
+        "document": 1440
+      },
+      "mobileControls": {
+        "layout": {
+          "viewport": 375,
+          "document": 375
+        },
+        "quantityEditAndUpdate": "PASS",
+        "updateVisible": true,
+        "removeVisible": true
+      }
+    },
+    "checkout": {
+      "result": "PASS",
+      "route": "/checkout/",
+      "requiredFieldsVisible": true,
+      "createAccountControlVisible": false,
+      "checkoutAccountCreationSetting": true,
+      "guestCheckoutDisabled": true,
+      "accountCreatedAtCheckout": true,
+      "order": {
+        "id": 883,
+        "status": "on-hold",
+        "paid": false,
+        "total": "39.99",
+        "currency": "USD",
+        "ownerId": 4,
+        "emailDomain": "birthday.invalid"
+      },
+      "offlineGatewayOnly": true,
+      "noPayPalVisible": true,
+      "realPayment": false,
+      "layout": {
+        "viewport": 1440,
+        "document": 1440
+      }
+    },
+    "myAccount": {
+      "result": "PASS",
+      "loginFieldsVisible": true,
+      "loginEnabled": true,
+      "layout": {
+        "viewport": 1440,
+        "document": 1440
+      }
+    },
+    "privateWorkspace": {
+      "result": "PASS",
+      "ownerHttp": 200,
+      "unrelatedUserHttp": 403,
+      "guestHttp": 403,
+      "syntheticOrderId": 883,
+      "orderState": "on-hold",
+      "paid": false,
+      "orderTotal": "39.99",
+      "currency": "USD",
+      "modelCalls": 0
+    }
+  },
+  "screenshots": [
+    "wedding-home-desktop.png",
+    "wedding-home-mobile-375.png",
+    "woo-product-desktop.png",
+    "woo-product-mobile-375.png",
+    "woo-cart.png",
+    "woo-checkout.png",
+    "woo-my-account.png"
+  ],
+  "externalHosts": [
+    "fonts.googleapis.com",
+    "fonts.gstatic.com",
+    "startersites.io"
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedResources": [
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/footer-logo.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/logo-dark.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/footer-logo.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/logo-dark.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/logo-dark.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/footer-logo.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/logo-dark.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/footer-logo.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/footer-logo.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/logo-dark.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/footer-logo.svg"
+    },
+    {
+      "status": 404,
+      "host": "127.0.0.1",
+      "path": "/wp-content/uploads/2021/07/logo-dark.svg"
+    }
+  ],
+  "forbiddenActions": {
+    "elementorInstalled": false,
+    "htSliderInstalled": false,
+    "paypalActions": 0,
+    "realMoneyActions": 0,
+    "modelCalls": 0,
+    "productionDeployments": 0,
+    "sharedInfraMutations": 0,
+    "paidPurchases": 0,
+    "globalDockerPrune": 0
+  },
+  "runtime": {
+    "wordpress": "7.1.1",
+    "php": "8.3.33",
+    "mariadb": "11.4.7-MariaDB-ubu2404",
+    "woocommerce": "11.1.2",
+    "blocksy": "2.1.57",
+    "blocksyCompanion": "2.1.57",
+    "activePluginsAfterWoo": [
+      {
+        "slug": "bms-g3a-commerce-loop",
+        "version": "0.1.0"
+      },
+      {
+        "slug": "blocksy-companion",
+        "version": "2.1.57"
+      },
+      {
+        "slug": "simply-gallery-block",
+        "version": "3.4.3"
+      },
+      {
+        "slug": "stackable-ultimate-gutenberg-blocks",
+        "version": "3.20.2"
+      },
+      {
+        "slug": "woocommerce",
+        "version": "11.1.2"
+      },
+      {
+        "slug": "wpforms-lite",
+        "version": "2.0.2.1"
+      }
+    ]
+  },
+  "completedAtUtc": "2026-09-30T09:28:10.695Z"
+}

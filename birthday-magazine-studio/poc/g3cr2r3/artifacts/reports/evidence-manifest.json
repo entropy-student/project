@@ -1,0 +1,84 @@
+{
+  "gate": "G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY",
+  "screenshots": [
+    {
+      "path": "artifacts/screenshots/wedding-home-desktop.png",
+      "bytes": 1185468,
+      "sha256": "53afb6695d425175f18c15d8fc4263ba10bad3ec03563fb2d3be0d2e4972eed8"
+    },
+    {
+      "path": "artifacts/screenshots/wedding-home-mobile-375.png",
+      "bytes": 336055,
+      "sha256": "52faea832b91ea38893ed33719c7f2c8f19f68605b3ddb53a9aa60c84de14a45"
+    },
+    {
+      "path": "artifacts/screenshots/woo-cart.png",
+      "bytes": 44701,
+      "sha256": "93b9aacdb0d11de7f685309b91c1bd56cabeea97608492cd4648894528145588"
+    },
+    {
+      "path": "artifacts/screenshots/woo-checkout.png",
+      "bytes": 51916,
+      "sha256": "27f1154f9ee28f3dea2bef6dd0455309131b35c01858b6d44fb74dbe5ac21b9a"
+    },
+    {
+      "path": "artifacts/screenshots/woo-my-account.png",
+      "bytes": 30340,
+      "sha256": "e170abf4346b83c168da37bfa86318bec323e87efc8fd238fd6524a3a23f8325"
+    },
+    {
+      "path": "artifacts/screenshots/woo-product-desktop.png",
+      "bytes": 75366,
+      "sha256": "d86c9492857ed8d155236d283fc6cc29084617bd5dae21767dda74b0eb9b2177"
+    },
+    {
+      "path": "artifacts/screenshots/woo-product-mobile-375.png",
+      "bytes": 33774,
+      "sha256": "877080cb3040c2420257a35fe5511d69f3bb9647b68f1f5971b6bce8b7c8ccc1"
+    }
+  ],
+  "reports": [
+    {
+      "path": "artifacts/reports/canary-report.json",
+      "bytes": 6792,
+      "sha256": "56e9f2e0f7da5e8ad9de119753c2d14fb62885d232201b4d5dc5ba90430bc621"
+    },
+    {
+      "path": "artifacts/reports/cleanup-readback.json",
+      "bytes": 763,
+      "sha256": "c05c278bc330affd47919f2892d7c68d18f11c318c20413ad4c7ecc422d5c6bd"
+    },
+    {
+      "path": "artifacts/reports/final-runtime-readback.json",
+      "bytes": 873,
+      "sha256": "55dba1a7a85dd7cc11faa5fb94a0631362048a42f6e3abcbcf32a941c67ee6b2"
+    },
+    {
+      "path": "artifacts/reports/import-readback.json",
+      "bytes": 1737,
+      "sha256": "509e502a22ef84c0f2bbeeddb2d8345558ff77a3fd0553da78b83724b275b3e0"
+    },
+    {
+      "path": "artifacts/reports/resources-before.json",
+      "bytes": 602,
+      "sha256": "24bf9beceec4df8e99e4c8b3fbc5ef2b1adc0eb4e18d83d67a0a8ffc8100fbe9"
+    },
+    {
+      "path": "artifacts/reports/runtime-health.json",
+      "bytes": 1971,
+      "sha256": "d0d85aeea7f92aa91c8ea2c2fdd14fd0c8712f53236da66145215ca49aad9af5"
+    },
+    {
+      "path": "artifacts/reports/runtime-install.json",
+      "bytes": 3085,
+      "sha256": "1db0b9e9617fe63b8bee8090f2581407e319f71cd031cc924eb2a7c9657a9b55"
+    },
+    {
+      "path": "artifacts/reports/woocommerce-setup.json",
+      "bytes": 1249,
+      "sha256": "22f606ef568f4eb7f687e3f6532b5bd3983dce0479275b198b13ed550174a3eb"
+    }
+  ],
+  "generatedFromSyntheticOrPublicStarterDemoData": true,
+  "secretOrCredentialFilesCommitted": false
+}

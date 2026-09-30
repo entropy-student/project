@@ -479,3 +479,22 @@ Concrete return reasons: `RETURN_STORELLY_PREVIEW_NOT_BROWSER_LOCAL` (and a runt
 2. Decide whether to accept Upload Files for registered-account flows and return only the guest flow, or require a local email-capture run before acceptance.
 3. Decide whether Attach Me meets the private proof-delivery bar for registered orders and whether guest delivery plus an actual completed byte download must be rerun before acceptance.
 4. Decide if the exact A/B starter-site imports need their own bounded follow-up evidence. Do not continue to G2A2 in this execution.
+
+## G3CR2R3 — Reviewer handoff
+
+**Gate:** G3CR2R3 — Blocksy Wedding import + WooCommerce compatibility canary
+**Result:** PASS_CANDIDATE_G3CR2R3_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY (execution evidence only; Reviewer decision pending)
+**Branch:** codex/birthday-magazine-g3cr2r3-wedding-woocommerce-canary
+**Baseline main at execution start:** 7111910a0fb5e2e4fcfd33a3d9a53618efb4517e
+**Submission base after sync:** 5d3e0b488e63982c91a79146d2bc720037d5caba
+**Stop:** STOP_AT_REVIEWER=YES; G3C visual productization and G4 were not started.
+
+Blocksy Wedding imported through Blocksy > Starter Sites with Gutenberg selected. The actual wizard required only Simply Gallery Block 3.4.3, Stackable 3.20.2, and WPForms Lite 2.0.2.1; Elementor/HT Slider were absent. The published homepage remains a Gutenberg-editable page (31 parsed blocks).
+
+The WooCommerce 11.1.2 canary passed for a USD 39.99 virtual synthetic product, desktop/mobile Product, native Cart add/update/remove, Checkout/account creation, and My Account. The local-only checkout made synthetic order 883 on-hold and unpaid. No PayPal or payment action occurred. Reused G3A workspace access passed: owner 200; unrelated account 403; guest 403. Generation jobs/actions/cron and model calls remained zero.
+
+Screenshots and detailed version/source/hash/network/access/cleanup evidence are under poc/g3cr2r3/artifacts/; the principal report is artifacts/reports/canary-report.json. The imported Wedding theme references two logo SVGs that returned 404, without blocking the tested pages. Google Fonts and startersites.io were the only non-local hosts observed; no AI or payment service was contacted.
+
+Cleanup removed only the birthday-magazine-g3cr2r3 Compose project and its ignored temporary working directory. Target containers/volumes/networks and .tmp files read back as zero; unrelated Docker inventory hashes were unchanged. Historical G3A/G3B source/evidence directories were not modified.
+
+Execution artifacts and these append-only Evidence/Handoff updates are being submitted on the branch above for Reviewer assessment. Do not treat this as Reviewer PASS, and do not start another Gate without a new Reviewer decision.
