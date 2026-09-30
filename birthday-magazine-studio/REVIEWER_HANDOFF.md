@@ -45,7 +45,7 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Payment evidence boundary: Mini Craft is an implementation/reference path only; its current state does not prove Birthday Magazine Live payment.
 - Free-value path: deterministic browser-local preview only; **0 LLM / vision / image-generation Token**.
 - Paid entitlement boundary: model generation is permitted only after server-side WooCommerce/PayPal paid state is confirmed **and** required intake is complete.
-- Frontend foundation: **Astra Theme + concrete free “Bestselling Author” starter template — OWNER SELECTED / FROZEN FOR G3C IMPLEMENTATION**. The custom Good Issue-style browser-local Free Preview remains the accepted core conversion component. The shell must not replace or weaken the accepted preview/payment/private-workspace boundaries. Final visual freeze still requires Owner review after implementation.
+- Frontend foundation: **Blocksy Theme + Wedding starter — OWNER SELECTED on 2026-09-30, Gutenberg preferred**. Full G3C implementation is intentionally held until G3CR2 proves Wedding/Gutenberg importability and WooCommerce/account compatibility in a fresh isolated runtime. The custom Good Issue-style browser-local Free Preview remains the accepted core conversion component. Final visual freeze still requires Owner review after implementation.
 - Storelly: **REJECTED for the current free-preview path**.
 - Post-payment photo intake: Vanquish Upload Files is a **registered-account reuse candidate**. Its guest-issued secure file link replayed outside the intended guest context, so the guest-private path is **REJECTED AS-IS**.
 - Private proof/final attachment: Vanquish Attach Me is a **registered-account reuse candidate**. Actual authorized download/hash passed, but its guest-issued attachment link replayed outside the intended guest context, so strict guest-private delivery is **REJECTED AS-IS**.
@@ -76,8 +76,9 @@ G2BR3 Direct Codex Agent Real-AI Content/PDF Proof       ✅ PASS
 G3A WordPress + WooCommerce Commerce Loop               ✅ PASS
 G3B PayPal Sandbox + Paid Entitlement Flow              ✅ PASS — capture correlation + entitlement/idempotency + refund/revocation
 G3BR1 Sandbox Reconciliation + Entitlement/Refund       ✅ PASS — closes parent G3B
-G3C UI/UX Productization                               ↩ RETURN — Block Editor catalog did not expose selected starter
-G3CR1 Bestselling Author Elementor Closure               ⏳ CURRENT — same selected template; free Elementor path check
+G3C UI/UX Productization                               ↩ RETURN — prior Astra Block Editor path failed; parent implementation not complete
+G3CR1 Bestselling Author Elementor Closure               ⏹ SUPERSEDED BEFORE EXECUTION — Owner changed selected template
+G3CR2 Blocksy Wedding + WooCommerce Canary               ⏳ CURRENT — isolated Wedding/Gutenberg import + Woo compatibility check
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -110,6 +111,8 @@ Current Reviewer decisions:
 - `REVIEWER_OPENED_G3C_UI_UX_PRODUCTIZATION_2026-09-29`
 - `RETURN_G3C_BLOCK_EDITOR_STARTER_NOT_FOUND_2026-09-30`
 - `REVIEWER_OPENED_G3CR1_ELEMENTOR_CLOSURE_2026-09-30`
+- `OWNER_SUPERSEDED_ASTRA_WITH_BLOCKSY_WEDDING_2026-09-30`
+- `REVIEWER_OPENED_G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY_2026-09-30`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -425,11 +428,13 @@ Status:
 ## 12. Next Step
 
 - G3B/G3BR1 are closed with Reviewer PASS.
-- **PR #59 is accepted as a narrow G3C RETURN for the Block Editor catalogue path only.** It proves the selected Bestselling Author starter was not exposed under Block Editor in Starter Templates 4.7.7; it does not prove the free Elementor path is unavailable.
-- **Current closure Gate: G3CR1 Bestselling Author Elementor Closure.**
-- Reviewer decision: `docs/REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md`.
-- Execution contract: `docs/G3CR1_BESTSELLING_AUTHOR_ELEMENTOR_CLOSURE.md`.
-- If exact free Elementor import succeeds, continue the existing G3C productization in the same bounded run; if it fails or requires paid components, return and reopen template selection.
+- **PR #59 remains accepted historical RETURN evidence for the prior Astra Block Editor path.**
+- The Owner has now superseded Astra Bestselling Author with **Blocksy Wedding**, preferring the Gutenberg variant.
+- **Current Gate: G3CR2 Blocksy Wedding + WooCommerce Compatibility Canary.**
+- Owner decision: `docs/OWNER_DECISION_G3C_BLOCKSY_WEDDING.md`.
+- Research proof: `docs/BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md`.
+- Execution contract: `docs/G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md`.
+- Full G3C visual implementation and Good Issue integration remain HOLD until Reviewer accepts the compatibility canary.
 - Owner visual freeze remains pending.
 - G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED** until G3C visual/product review is complete and a separate bounded G4 contract is approved.
 - Production AI interface details remain deferred until the Owner supplies them.
@@ -450,7 +455,8 @@ Status:
 - G3A: PASS — local Docker/MariaDB WooCommerce commerce/account/private-workspace loop.
 - G3B: PASS — bounded PayPal Sandbox payment/capture correlation, paid-entitlement/idempotency, one full refund, entitlement revocation and cleanup are closed.
 - G3BR1: PASS — reconciliation/refund closure completed; parent G3B closed.
-- G3C: RETURN on the Block Editor importer path; no product page was built and no visual freeze occurred.
-- G3CR1: CURRENT — verify the same Owner-selected Astra Bestselling Author template through Elementor Free; only if that exact free path succeeds may productization continue. Good Issue preview remains preserved; Owner visual freeze is pending.
+- G3C: prior Astra Block Editor implementation attempt RETURN; no product page was built and no visual freeze occurred.
+- G3CR1: SUPERSEDED BEFORE EXECUTION by the Owner’s new template choice.
+- G3CR2: CURRENT — prove Blocksy Wedding/Gutenberg import + WooCommerce/account/private-workspace compatibility in a fresh isolated runtime. Good Issue integration and full visual productization are not part of this canary.
 - G4: HOLD — Live/real-money Canary requires G3C completion, a new contract + fresh Owner authorization.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
