@@ -1,5 +1,37 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Current Gate — G3CR2 preflight return
+
+```text
+GATE=G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY
+RESULT=RETURN_PREFLIGHT_DRIFT
+EXECUTION_BRANCH=codex/birthday-magazine-g3cr2-blocksy-wedding-canary
+BASE_MAIN=0b12d7d574d62120a5d714cddeeb349f045a39cc
+DOCKER_CLIENT=29.7.2
+DOCKER_COMPOSE_CLI=5.4.0
+DOCKER_ENGINE=UNAVAILABLE
+PHASE_A_CATALOG=NOT_RUN
+PHASE_B_IMPORT=NOT_RUN
+PHASE_C_WOOCOMMERCE=NOT_RUN
+PRIVATE_WORKSPACE_REGRESSION=NOT_RUN
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+MODEL_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+PAID_PLUGIN_PURCHASES=0
+ELEMENTOR_INSTALL=0
+GLOBAL_DOCKER_PRUNE=0
+PROJECT_RESOURCE_COUNTS=UNKNOWN_ENGINE_UNAVAILABLE
+CLEANUP=NOT_REQUIRED_NO_RUNTIME_CREATED
+STOP_AT_REVIEWER=YES
+```
+
+Docker client is installed, but Docker API commands failed because the Docker Desktop Linux Engine named pipe was unavailable. Ports 8167/8168 had no local listener. The local Docker daemon is shared with other project resources, so the Executor did not start Docker Desktop. No Compose project or WordPress/database resources were created; Docker-side project counts cannot be asserted while the Engine is unreachable.
+
+Exact sanitized preflight evidence: [poc/g3cr2/artifacts/reports/preflight.json](poc/g3cr2/artifacts/reports/preflight.json). No Blocksy package was downloaded, so Wedding/Gutenberg catalog and dependency results remain unknown. No WooCommerce, account, workspace, payment, or UI testing occurred. G3A/G3B source/runtime was not changed. Reviewer is the next decision point; no alternate template/builder or next Gate is authorized.
+
+---
+
 ## Current Gate — G3BR1 cleanup-only closure
 
 ```text

@@ -1,0 +1,44 @@
+{
+  "capturedAtUtc": "2026-09-30T04:23:28Z",
+  "gate": "G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY",
+  "result": "RETURN_PREFLIGHT_DRIFT",
+  "git": {
+    "baseMain": "0b12d7d574d62120a5d714cddeeb349f045a39cc",
+    "branch": "codex/birthday-magazine-g3cr2-blocksy-wedding-canary",
+    "worktreeCleanAtPreflight": true
+  },
+  "docker": {
+    "clientVersion": "29.7.2",
+    "serverVersion": null,
+    "composeCliVersion": "5.4.0",
+    "engineReachable": false,
+    "diagnostic": "Docker API connection failed because the Docker Desktop Linux Engine named pipe was unavailable.",
+    "projectContainersVolumesNetworks": "UNKNOWN_ENGINE_UNAVAILABLE"
+  },
+  "ports": {
+    "8167": "NO_LISTENER_OBSERVED",
+    "8168": "NO_LISTENER_OBSERVED"
+  },
+  "phaseStatus": {
+    "phaseAOfficialBlocksyCatalog": "NOT_RUN",
+    "phaseBWeddingGutenbergImport": "NOT_RUN",
+    "phaseCWooCommerceCanary": "NOT_RUN",
+    "privateWorkspaceRegression": "NOT_RUN"
+  },
+  "actions": {
+    "composeUp": false,
+    "dockerDesktopStart": false,
+    "officialPackageDownloads": 0,
+    "blocksyOrCompanionInstall": 0,
+    "starterImport": 0,
+    "woocommerceProductOrOrderWrites": 0,
+    "paypalActions": 0,
+    "realMoneyActions": 0,
+    "modelCalls": 0,
+    "sharedInfrastructureMutations": 0,
+    "paidPurchases": 0,
+    "elementorInstall": 0,
+    "globalDockerPrune": 0
+  },
+  "cleanup": "NOT_REQUIRED_NO_RUNTIME_CREATED"
+}

@@ -1,3 +1,37 @@
+# G3CR2 Blocksy Wedding WooCommerce canary — preflight closeout
+
+```text
+GATE=G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY
+RESULT=RETURN_PREFLIGHT_DRIFT
+EXECUTION_BRANCH=codex/birthday-magazine-g3cr2-blocksy-wedding-canary
+BASE_MAIN=0b12d7d574d62120a5d714cddeeb349f045a39cc
+DOCKER_CLIENT=29.7.2
+DOCKER_ENGINE=UNAVAILABLE
+PHASE_A_CATALOG=NOT_RUN
+PHASE_B_IMPORT=NOT_RUN
+PHASE_C_WOOCOMMERCE=NOT_RUN
+PRIVATE_WORKSPACE_REGRESSION=NOT_RUN
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+MODEL_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+PAID_PLUGIN_PURCHASES=0
+ELEMENTOR_INSTALL=0
+GLOBAL_DOCKER_PRUNE=0
+CLEANUP=NOT_REQUIRED_NO_RUNTIME_CREATED
+STOP_AT_REVIEWER=YES
+```
+
+The current GitHub `main` was synced to `0b12d7d574d62120a5d714cddeeb349f045a39cc`, and a clean dedicated G3CR2 branch/worktree was created from that baseline. Read-only Docker preflight found Docker CLI 29.7.2 and Compose CLI 5.4.0, but no reachable Docker Engine: requests to the Docker API failed because the Docker Desktop Linux Engine named pipe was unavailable. The assigned loopback ports 8167 and 8168 had no listener.
+
+The host Docker daemon is shared with other project resources. Starting Docker Desktop or its service would cross the Gate's `SHARED_INFRA_MUTATIONS=0` boundary, so no daemon start was attempted. Because the Engine was unreachable, the current Docker-side counts for G3CR2 containers/volumes/networks are `UNKNOWN`, not zero. No G3CR2 container, volume, network, database, or WordPress state was created by this run.
+
+The preflight return occurred before any official package download or installation. Blocksy and Blocksy Companion versions, Wedding/Gutenberg catalog visibility, exact importer dependency list, paid/free dependency classification, and the WooCommerce canary all remain `NOT_RUN` / `UNKNOWN`; this evidence makes no claim that Wedding is unavailable or that any plugin is required. No Elementor or other plugin was installed. No checkout, order, payment, model, screenshot, or private-workspace test was performed. The precise read-back is [preflight.json](poc/g3cr2/artifacts/reports/preflight.json).
+
+No G3A/G3B historical source or runtime was changed. `poc/g3cr2/` contains only this preflight record and return note; it does not contain a Compose runtime yet. Cleanup was not needed because no runtime was started. Reviewer may decide whether to reopen/continue after Docker Engine availability is established; this return does not authorize starting shared Docker infrastructure. G3C visual implementation and G4 remain out of scope.
+
+---
+
 # G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E cleanup closure
 
 **Current result:** `PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE`
