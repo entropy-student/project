@@ -1,5 +1,65 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2D Formal PASS / M2E Caddy Route Retirement Owner Checkpoint — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+M2B_TEMPORARY_TUNNEL_CANARY=PASS
+M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER=PASS
+M2D_PUBLIC_REGRESSION_AND_OBSERVATION=PASS
+
+OBSERVATION_CHECKPOINTS=3
+OBSERVATION_WINDOW=REAL_SPACED_READONLY_CHECKPOINTS_OVER_20_MINUTES
+
+PRODUCTION_HOST=minicraft.spikersun.com
+PRODUCTION_INGRESS=CLOUDFLARE_TUNNEL_DIRECT_TO_MINICRAFT_APP
+PRODUCTION_TUNNEL=spikersun-shared-private
+PRODUCTION_ORIGIN=http://mini-craft-night-kit-wordpress:80
+PRODUCTION_HTTP_HOST_HEADER=minicraft.spikersun.com
+
+PUBLIC_HOME_STABLE=PASS
+PUBLIC_SHOP_STABLE=PASS
+PUBLIC_WP_REST_STABLE=PASS
+TLS_STABLE=PASS
+EXISTING_TUNNEL_ROUTES_UNCHANGED=PASS
+WORDPRESS_RUNTIME_HEALTH=PASS
+MARIADB_ISOLATION=PASS
+M2B_TEMP_HOSTNAME_ABSENT=PASS
+
+LEGACY_MINICRAFT_CADDY_ROUTE=PRESENT
+CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+
+CURRENT_GATE=M2E_RETIRE_LEGACY_MINICRAFT_CADDY_ROUTE_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=OWNER_CONFIRMATION_REQUIRED
+
+CADDY_MUTATION_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+VPS_OTHER_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+WORDPRESS_MUTATION_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+Independent review accepted Evidence commit `f55be4e2b9bddfd28b04be3b736716054c58cfc0` and Executor Handoff commit `ec7005249a37db58bd99ed0ad34358196b80521e`. M2D is formally closed.
+
+Three real read-only checkpoints spanning more than 20 minutes proved the canonical Mini Craft Tunnel ingress remained stable. Home, Shop and REST stayed HTTP 200 with successful TLS verification; WordPress remained running with restart count 0 and the required private alias; MariaDB remained healthy and isolated; xianyu/pay/shop routes remained unchanged; the M2B temporary hostname remained absent.
+
+The legacy Mini Craft Caddy route is now rollback-only and is no longer the production ingress.
+
+The next step, M2E, would remove only that exact Mini Craft Caddy route and reload Caddy after validation. Because this is a Shared Infrastructure write, it requires explicit Owner confirmation. No unrelated Caddy cleanup or infrastructure cleanup is included.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2D_PASS_M2E_CADDY_ROUTE_RETIREMENT_OWNER_CHECKPOINT.md`
+
+Checkpoint packet:
+`review-packets/M2E_RETIRE_LEGACY_MINICRAFT_CADDY_ROUTE_OWNER_CHECKPOINT.md`
+
 ## CURRENT REVIEWER UPDATE — M2D Observation RETURN Accepted / M2D-R1 Hostinger Terminal Recovery Open — 2026-09-30
 
 ```text
