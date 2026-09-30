@@ -1,5 +1,54 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2D Observation RETURN Accepted / M2D-R1 Hostinger Terminal Recovery Open — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+M2B_TEMPORARY_TUNNEL_CANARY=PASS
+M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER=PASS
+
+M2D_RESULT=RETURN_M2D_OBSERVATION_WINDOW_INCOMPLETE
+M2D_RETURN_ACCEPTED=YES
+M2D_REGRESSION_PROVEN=NO
+M2D_OBSERVATION_STARTED=NO
+M2D_T0_COMPLETED=NO
+M2D_MUTATIONS=0
+FAILURE_CLASS=HOSTINGER_BROWSER_TERMINAL_CONTEXT_UNAVAILABLE
+
+CURRENT_GATE=M2D_R1_HOSTINGER_TERMINAL_CONTEXT_RECOVERY_AND_OBSERVATION_RESTART
+CURRENT_GATE_STATUS=OWNER_BROWSER_CHECKPOINT_THEN_READONLY_RESUME
+
+PRODUCTION_HOST=minicraft.spikersun.com
+PRODUCTION_INGRESS=CLOUDFLARE_TUNNEL_DIRECT_TO_MINICRAFT_APP
+PRODUCTION_TUNNEL=spikersun-shared-private
+CADDY_ROUTE_RETAINED_AS_ROLLBACK=YES
+
+DIRECT_SSH_RETRY_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+WORDPRESS_MUTATION_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+M2E_AUTHORIZED=NO
+```
+
+The attempted M2D observation never reached T0 because the existing Hostinger Web Terminal tab could not be reliably bound/read. No target-host command was sent and no runtime fact was claimed. This is an execution-context failure only and does not reopen or invalidate the accepted M2C cutover.
+
+Owner should manually open the Hostinger browser terminal for the target VPS, wait until the shell is visibly interactive, and leave that tab open. The Executor must first prove `TARGET_HOST=srv1970241` from that terminal. If proven, restart the original M2D observation from a fresh T0 and perform real checkpoints at approximately T0, T+5 and T+10 minutes.
+
+No direct SSH retry is authorized. M2D remains strictly read-only. M2E remains unauthorized.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2D_RETURN_R1_HOSTINGER_TERMINAL_CONTEXT_RECOVERY.md`
+
+Recovery packet:
+`review-packets/M2D_R1_HOSTINGER_TERMINAL_CONTEXT_RECOVERY_AND_OBSERVATION_RESTART.md`
+
 ## CURRENT REVIEWER UPDATE — M2C Formal PASS / M2D Read-only Observation Open — 2026-09-30
 
 ```text
