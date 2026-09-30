@@ -9,7 +9,7 @@
 | Xianyu | Application | ACTIVE_RUNTIME | `/srv/apps/xianyu` | `/srv/data/xianyu` | `/srv/backups/xianyu` | app healthy | UNKNOWN | UNKNOWN | [REVIEWER_HANDOFF.md](../xianyu/REVIEWER_HANDOFF.md) |
 | Dujiao-Next | Commerce runtime | ACTIVE_RUNTIME / PROJECT_STAGE_CLOSED | `/srv/apps/dujiao-next` | `/srv/data/dujiao-next` | `/srv/backups/dujiao-next` | app + PostgreSQL + Redis healthy | `shop.spikersun.com` | CF Tunnel likely, unverified | [REVIEWER_HANDOFF.md](../dujiao-next/REVIEWER_HANDOFF.md) |
 | Unified Pay | Payment infrastructure | ACTIVE_RUNTIME / LIFECYCLE_REVIEW | `/srv/apps/unified-pay` | `/srv/data/unified-pay` | `/srv/backups/unified-pay` | app + PostgreSQL healthy | `pay.spikersun.com` | CF Tunnel likely, unverified | [REVIEWER_HANDOFF.md](../unified-pay-system/REVIEWER_HANDOFF.md) |
-| Mini Craft Night Kit | Ecommerce runtime | K9_CLOSED / RUNTIME_RETAINED / PRECOMMERCE | `/srv/apps/mini-craft-night-kit` | `/srv/data/mini-craft-night-kit` | `/srv/backups/mini-craft-night-kit` | WordPress + MariaDB | `minicraft.spikersun.com` | Caddy direct | [REVIEWER_HANDOFF.md](../mini-craft-night-kit/REVIEWER_HANDOFF.md) |
+| Mini Craft Night Kit | Ecommerce runtime | K9_CLOSED / RUNTIME_RETAINED / PRECOMMERCE | `/srv/apps/mini-craft-night-kit` | `/srv/data/mini-craft-night-kit` | `/srv/backups/mini-craft-night-kit` | WordPress + MariaDB | `minicraft.spikersun.com` | Cloudflare Tunnel direct-to-app; legacy Caddy route rollback-only pending M2E | [Shared infra current truth](./REVIEWER_HANDOFF.md) |
 
 ## Lifecycle notes
 
@@ -48,6 +48,8 @@ K9_CLOSEOUT=PASS
 PUBLIC_PLATFORM_STATUS=ONLINE
 REAL_COMMERCE_ENABLED=NO
 SOFT_LAUNCH_AUTHORIZED=NO
+PRODUCTION_INGRESS=CLOUDFLARE_TUNNEL_DIRECT_TO_MINICRAFT_APP
+LEGACY_CADDY_ROUTE=ROLLBACK_ONLY_PENDING_M2E_OWNER_CHECKPOINT
 ```
 
 ## Cleanup rule
