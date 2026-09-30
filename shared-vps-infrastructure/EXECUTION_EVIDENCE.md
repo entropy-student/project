@@ -620,3 +620,77 @@ Created only the authorized temporary published-application route. The creation 
 Normal-TLS HTTPS checks (no cookies or credentials) returned HTTP 200 for temporary Home, Shop, and `/wp-json/`; TLS verification succeeded. Production Home, Shop, and REST also returned HTTP 200. The production DNS record remained unchanged.
 
 Mandatory cleanup removed the temporary route and its associated CNAME. After page refresh, the Tunnel route list contained only the three original routes. Fresh exact DNS-zone readback found zero records for the temporary hostname and confirmed the production Mini Craft A record remained `2.24.193.133`, DNS-only. No M2C action followed.
+
+
+## Gate: M2C Production Hostname Tunnel Cutover — 2026-09-30
+
+GATE=M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER
+RESULT=PASS_CANDIDATE_M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER
+OWNER_AUTHORIZATION=EXPLICIT_M2C_PRODUCTION_CUTOVER_CONFIRMED
+
+PRODUCTION_HOST=minicraft.spikersun.com
+ROLLBACK_DNS_TYPE=A
+ROLLBACK_DNS_CONTENT=2.24.193.133
+ROLLBACK_DNS_PROXY=DNS_ONLY
+ROLLBACK_DNS_TTL=AUTO
+
+PREFLIGHT_CLOUDFLARE_SESSION=AUTHENTICATED
+PREFLIGHT_TUNNEL=spikersun-shared-private_HEALTHY
+PREFLIGHT_CANONICAL_TUNNEL_ROUTE=ABSENT
+PREFLIGHT_M2B_TEMP_ROUTE=ABSENT
+PREFLIGHT_M2B_TEMP_DNS=ABSENT
+PREFLIGHT_PRODUCTION_HOME_HTTP=200
+PREFLIGHT_PRODUCTION_SHOP_HTTP=200
+PREFLIGHT_PRODUCTION_WP_REST_HTTP=200
+PREFLIGHT_EXISTING_ROUTES=PASS
+
+OLD_CANONICAL_A_DELETE_ACTIONS=1
+CANONICAL_TUNNEL_ROUTE_CREATE_ACTIONS=1
+TUNNEL_REQUIRED_DNS_CREATE_ACTIONS=1
+CANONICAL_TUNNEL_DNS_TYPE=CNAME
+CANONICAL_TUNNEL_DNS_TARGET=ed47dfe3-e529-46be-a4de-f14ddc05136e.cfargotunnel.com
+CANONICAL_TUNNEL_DNS_PROXY=PROXIED
+CANONICAL_TUNNEL_DNS_TTL=AUTO
+
+PRODUCTION_TUNNEL=spikersun-shared-private
+PRODUCTION_ORIGIN=http://mini-craft-night-kit-wordpress:80
+PRODUCTION_ORIGIN_HTTP_HOST_HEADER=minicraft.spikersun.com
+PRODUCTION_ROUTE_READBACK=PASS
+PRODUCTION_OLD_A_RECORD=ABSENT
+
+PUBLIC_HOME_HTTP=200
+PUBLIC_HOME_TLS_VERIFY_RESULT=0
+PUBLIC_SHOP_HTTP=200
+PUBLIC_SHOP_TLS_VERIFY_RESULT=0
+PUBLIC_WP_REST_HTTP=200
+PUBLIC_WP_REST_TLS_VERIFY_RESULT=0
+
+EXISTING_XIANYU_ROUTE=http://xianyu-app:8090_UNCHANGED
+EXISTING_PAY_ROUTE=http://unified-pay-app:8080_UNCHANGED
+EXISTING_SHOP_ROUTE=http://dujiao-next-app:8080_UNCHANGED
+EXISTING_TUNNEL_ROUTES_UNCHANGED=PASS
+
+PRODUCTION_INGRESS=CLOUDFLARE_TUNNEL_DIRECT_TO_MINICRAFT_APP
+CADDY_ROUTE_RETAINED_AS_ROLLBACK=YES
+ROLLBACK_PERFORMED=NO
+M2D_ENTERED=NO
+M2E_ENTERED=NO
+
+DNS_MUTATIONS=2
+TUNNEL_ROUTE_MUTATIONS=1
+CADDY_MUTATIONS=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+WORDPRESS_MUTATIONS=0
+MARIADB_MUTATIONS=0
+PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+
+### Execution notes
+
+Using the authenticated Cloudflare Dashboard and the exact rollback tuple confirmed in the Owner checkpoint, removed only the canonical DNS-only A record (minicraft.spikersun.com -> 2.24.193.133, TTL Auto). Created one published-application route on spikersun-shared-private for minicraft.spikersun.com, with origin http://mini-craft-night-kit-wordpress:80 and HTTP Host Header minicraft.spikersun.com. Cloudflare's success receipt reported creation of the required proxied Tunnel CNAME to the existing tunnel target. Fresh DNS readback showed that CNAME and no old A; route detail readback confirmed the exact origin and Host Header. Fresh route-table readback retained the xianyu, pay, and shop mappings unchanged.
+
+Anonymous requests with normal TLS verification returned HTTP 200 for Home, Shop, and /wp-json/; curl exit was 0 and TLS verification result was 0 for all three. No rollback was needed. Caddy remains untouched as rollback infrastructure. No M2D/E action was entered. No payment/provider, VPS, Docker, Compose, WordPress, MariaDB, or Secret action occurred.
