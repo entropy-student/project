@@ -3,10 +3,16 @@
 > Project: Birthday Magazine Studio  
 > Gate: G3C UI/UX Productization + Owner Visual Freeze  
 > Governance: VPS Project Governance v0.1.6 + current active addenda  
-> Status: **AUTHORIZED FOR PROJECT-LOCAL / REVERSIBLE EXECUTION**  
+> Status: **SUPERSEDED — ASTRA-SPECIFIC HISTORICAL PACKET / DO NOT EXECUTE**  
 > G4 Live / real-money authority: **NONE**
 
-## 1. Read order
+## 0. Superseded
+
+The Astra Bestselling Author route was replaced by the Owner-selected Blocksy Wedding route. G3CR2R3 subsequently proved the Wedding Gutenberg shell and WooCommerce compatibility. Current execution authority is `G3C_BLOCKSY_WEDDING_EXECUTION_PACKET.md`.
+
+This file remains historical provenance only.
+
+## 1. Historical read order
 
 Executor must read, in order:
 
