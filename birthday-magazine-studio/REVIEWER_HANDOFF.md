@@ -78,7 +78,8 @@ G3B PayPal Sandbox + Paid Entitlement Flow              ✅ PASS — capture cor
 G3BR1 Sandbox Reconciliation + Entitlement/Refund       ✅ PASS — closes parent G3B
 G3C UI/UX Productization                               ↩ RETURN — prior Astra Block Editor path failed; parent implementation not complete
 G3CR1 Bestselling Author Elementor Closure               ⏹ SUPERSEDED BEFORE EXECUTION — Owner changed selected template
-G3CR2 Blocksy Wedding + WooCommerce Canary               ⏳ CURRENT — isolated Wedding/Gutenberg import + Woo compatibility check
+G3CR2 Blocksy Wedding + WooCommerce Canary               ↩ RETURN — merged CLI dependency list ambiguous
+G3CR2R1 Wedding Gutenberg Variant Dependency Closure      ⏳ CURRENT — builder-specific metadata query, then resume canary if clean
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -113,6 +114,8 @@ Current Reviewer decisions:
 - `REVIEWER_OPENED_G3CR1_ELEMENTOR_CLOSURE_2026-09-30`
 - `OWNER_SUPERSEDED_ASTRA_WITH_BLOCKSY_WEDDING_2026-09-30`
 - `REVIEWER_OPENED_G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY_2026-09-30`
+- `REVIEWER_ACCEPTED_G3CR2_DEPENDENCY_AMBIGUITY_RETURN_2026-09-30`
+- `REVIEWER_OPENED_G3CR2R1_VARIANT_DEPENDENCY_CLOSURE_2026-09-30`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -430,10 +433,11 @@ Status:
 - G3B/G3BR1 are closed with Reviewer PASS.
 - **PR #59 remains accepted historical RETURN evidence for the prior Astra Block Editor path.**
 - The Owner has now superseded Astra Bestselling Author with **Blocksy Wedding**, preferring the Gutenberg variant.
-- **Current Gate: G3CR2 Blocksy Wedding + WooCommerce Compatibility Canary.**
+- **G3CR2 RETURN is accepted. Current Gate: G3CR2R1 Wedding Gutenberg Variant Dependency Closure.**
 - Owner decision: `docs/OWNER_DECISION_G3C_BLOCKSY_WEDDING.md`.
 - Research proof: `docs/BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md`.
-- Execution contract: `docs/G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md`.
+- Reviewer decision: `docs/REVIEWER_DECISION_G3CR2_RETURN.md`.
+- Current closure contract: `docs/G3CR2R1_BLOCKSY_WEDDING_VARIANT_DEPENDENCY_CLOSURE.md`.
 - Full G3C visual implementation and Good Issue integration remain HOLD until Reviewer accepts the compatibility canary.
 - Owner visual freeze remains pending.
 - G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED** until G3C visual/product review is complete and a separate bounded G4 contract is approved.
@@ -457,6 +461,7 @@ Status:
 - G3BR1: PASS — reconciliation/refund closure completed; parent G3B closed.
 - G3C: prior Astra Block Editor implementation attempt RETURN; no product page was built and no visual freeze occurred.
 - G3CR1: SUPERSEDED BEFORE EXECUTION by the Owner’s new template choice.
-- G3CR2: CURRENT — prove Blocksy Wedding/Gutenberg import + WooCommerce/account/private-workspace compatibility in a fresh isolated runtime. Good Issue integration and full visual productization are not part of this canary.
+- G3CR2: RETURN accepted — `wp blocksy demo list` merges builder variants and did not provide builder-specific dependency proof.
+- G3CR2R1: CURRENT — query exact `Wedding:gutenberg` importer metadata; if Elementor/HT Slider are absent, resume the existing Wedding import + WooCommerce compatibility canary.
 - G4: HOLD — Live/real-money Canary requires G3C completion, a new contract + fresh Owner authorization.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
