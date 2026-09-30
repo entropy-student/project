@@ -40,8 +40,8 @@
   "reports": [
     {
       "path": "artifacts/reports/canary-report.json",
-      "bytes": 6792,
-      "sha256": "56e9f2e0f7da5e8ad9de119753c2d14fb62885d232201b4d5dc5ba90430bc621"
+      "bytes": 7074,
+      "sha256": "7030776a96c804bfc11d018d01654ec579b4c5d8af98c144a5966446a4ce3571"
     },
     {
       "path": "artifacts/reports/cleanup-readback.json",
