@@ -225,3 +225,30 @@ SECRET_VALUES_READ_OR_EMITTED=0
 M2B_ENTERED=NO
 STOP_AT_REVIEWER=YES
 ```
+
+## Current Task Update — M2B Temporary Tunnel Canary — 2026-09-30
+
+- Gate: `M2B_TEMPORARY_TUNNEL_CANARY`
+- Result: `PASS_CANDIDATE_M2B_TEMPORARY_TUNNEL_CANARY`
+- Created only `minicraft-m2b-canary.spikersun.com` on `spikersun-shared-private`, origin `http://mini-craft-night-kit-wordpress:80`, Host Header `minicraft.spikersun.com`; Cloudflare created the required Tunnel CNAME.
+- Fresh readback confirmed the route configuration and all three existing xianyu/pay/shop origin mappings unchanged.
+- Temporary Home, Shop, and WP REST returned HTTP 200 with normal TLS verification. Production Home, Shop, and REST remained HTTP 200 and the canonical DNS-only A-to-Caddy record was unchanged.
+- Mandatory cleanup removed the temporary route and its associated CNAME. Fresh Tunnel and DNS readbacks confirmed the temporary hostname absent and all existing routes / production DNS unchanged.
+- No Caddy, VPS, Docker, Compose, WordPress, MariaDB, payment, or M2C action occurred; no Secret values were emitted.
+- Evidence commit: `cb3835f621c444d7aa0b731c3d023bd00ada075e`
+
+```text
+TEMP_ROUTE_CANARY=PASS
+TEMP_ROUTE_CLEANUP=PASS
+PRODUCTION_HOST_UNCHANGED=PASS
+EXISTING_TUNNEL_ROUTES_UNCHANGED=PASS
+CLOUDFLARE_MUTATIONS=TEMP_ROUTE_CREATE_AND_DELETE_ONLY
+DNS_MUTATIONS=TEMP_RECORD_CREATE_AND_DELETE_ONLY
+CADDY_MUTATIONS=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+M2C_ENTERED=NO
+STOP_AT_REVIEWER=YES
+```
