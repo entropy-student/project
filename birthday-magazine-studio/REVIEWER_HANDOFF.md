@@ -45,7 +45,8 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Payment evidence boundary: Mini Craft is an implementation/reference path only; its current state does not prove Birthday Magazine Live payment.
 - Free-value path: deterministic browser-local preview only; **0 LLM / vision / image-generation Token**.
 - Paid entitlement boundary: model generation is permitted only after server-side WooCommerce/PayPal paid state is confirmed **and** required intake is complete.
-- Frontend foundation: **Blocksy Theme + Wedding starter — OWNER SELECTED on 2026-09-30, Gutenberg preferred**. Full G3C implementation is intentionally held until G3CR2 proves Wedding/Gutenberg importability and WooCommerce/account compatibility in a fresh isolated runtime. The custom Good Issue-style browser-local Free Preview remains the accepted core conversion component. Final visual freeze still requires Owner review after implementation.
+- Frontend foundation: **Blocksy Theme + Wedding starter — OWNER SELECTED on 2026-09-30, Gutenberg preferred**. Full G3C implementation is intentionally held until the import/WooCommerce compatibility canary passes. The custom Good Issue-style browser-local Free Preview remains the accepted core conversion component. Final visual freeze still requires Owner review after implementation.
+- Owner visual editing requirement: full G3C must leave the main page directly editable in WordPress/Gutenberg with Owner Administrator access. Credentials must remain outside GitHub/evidence; no persistent password may be committed.
 - Storelly: **REJECTED for the current free-preview path**.
 - Post-payment photo intake: Vanquish Upload Files is a **registered-account reuse candidate**. Its guest-issued secure file link replayed outside the intended guest context, so the guest-private path is **REJECTED AS-IS**.
 - Private proof/final attachment: Vanquish Attach Me is a **registered-account reuse candidate**. Actual authorized download/hash passed, but its guest-issued attachment link replayed outside the intended guest context, so strict guest-private delivery is **REJECTED AS-IS**.
@@ -80,7 +81,8 @@ G3C UI/UX Productization                               ↩ RETURN — prior Astr
 G3CR1 Bestselling Author Elementor Closure               ⏹ SUPERSEDED BEFORE EXECUTION — Owner changed selected template
 G3CR2 Blocksy Wedding + WooCommerce Canary               ↩ RETURN — merged CLI dependency list ambiguous
 G3CR2R1 Wedding Gutenberg Variant Dependency Closure      ↩ RETURN — legacy single-demo endpoint returned false
-G3CR2R2 Wedding v2 Dashboard Catalogue Closure            ⏳ CURRENT — query exact current UI catalogue record, then resume canary if clean
+G3CR2R2 Wedding v2 Dashboard Catalogue Closure            ✅ REVIEWER PASS — blank builder proven to mean Gutenberg
+G3CR2R3 Wedding Import + WooCommerce Canary               ⏳ CURRENT — import + Product/Cart/Checkout/Account/private-workspace regression
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -119,6 +121,8 @@ Current Reviewer decisions:
 - `REVIEWER_OPENED_G3CR2R1_VARIANT_DEPENDENCY_CLOSURE_2026-09-30`
 - `REVIEWER_ACCEPTED_G3CR2R1_VARIANT_METADATA_RETURN_2026-09-30`
 - `REVIEWER_OPENED_G3CR2R2_V2_CATALOG_CLOSURE_2026-09-30`
+- `REVIEWER_PASS_G3CR2R2_WEDDING_GUTENBERG_DEPENDENCY_2026-09-30`
+- `REVIEWER_OPENED_G3CR2R3_IMPORT_WOO_CANARY_2026-09-30`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -436,12 +440,13 @@ Status:
 - G3B/G3BR1 are closed with Reviewer PASS.
 - **PR #59 remains accepted historical RETURN evidence for the prior Astra Block Editor path.**
 - The Owner has now superseded Astra Bestselling Author with **Blocksy Wedding**, preferring the Gutenberg variant.
-- **G3CR2 and G3CR2R1 RETURNS are accepted. Current Gate: G3CR2R2 Wedding v2 Dashboard Catalogue Closure.**
+- **G3CR2R2 dependency question is Reviewer PASS. Current Gate: G3CR2R3 Wedding Import + WooCommerce Compatibility Canary.**
 - Owner decision: `docs/OWNER_DECISION_G3C_BLOCKSY_WEDDING.md`.
 - Research proof: `docs/BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md`.
 - Parent return decision: `docs/REVIEWER_DECISION_G3CR2_RETURN.md`.
 - Latest return decision: `docs/REVIEWER_DECISION_G3CR2R1_RETURN.md`.
-- Current closure contract: `docs/G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md`.
+- Dependency PASS decision: `docs/REVIEWER_DECISION_G3CR2R2_DEPENDENCY_PASS.md`.
+- Current execution contract: `docs/G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY.md`.
 - Full G3C visual implementation and Good Issue integration remain HOLD until Reviewer accepts the compatibility canary.
 - Owner visual freeze remains pending.
 - G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED** until G3C visual/product review is complete and a separate bounded G4 contract is approved.
@@ -467,6 +472,7 @@ Status:
 - G3CR1: SUPERSEDED BEFORE EXECUTION by the Owner’s new template choice.
 - G3CR2: RETURN accepted — `wp blocksy demo list` merges builder variants and did not provide builder-specific dependency proof.
 - G3CR2R1: RETURN accepted — legacy `fetch_single_demo(Wedding,gutenberg,all)` returned false and did not expose dependencies.
-- G3CR2R2: CURRENT — use the current dashboard's `v2/demo/get_all` catalogue, select the individual `Wedding` + `gutenberg` record without merging, inspect its own plugin list, then resume the Wedding import + WooCommerce compatibility canary if clean.
+- G3CR2R2: Reviewer PASS — Blocksy source proves the blank/falsy builder record is the Gutenberg variant; exact dependencies are `simply-gallery-block`, `stackable-ultimate-gutenberg-blocks`, and `wpforms-lite`; Elementor/HT Slider are not Gutenberg dependencies.
+- G3CR2R3: CURRENT — import the accepted Wedding Gutenberg variant and run WooCommerce Product/Cart/Checkout/My Account + private-workspace regression. Also confirm the homepage remains Gutenberg-editable for future Owner visual editing.
 - G4: HOLD — Live/real-money Canary requires G3C completion, a new contract + fresh Owner authorization.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
