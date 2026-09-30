@@ -1,5 +1,57 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2A Formal PASS / M2B Temporary Tunnel Canary Owner Checkpoint — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+M2A_EXECUTION_GATE=M2A_R7_EXPLICIT_NONSECRET_COMPOSE_ENV_AND_CONDITIONAL_EXECUTION
+
+PREWRITE_COMPOSE_SHA256=85abeaae1c75d775937ea2ddd7395e39f364044cc03dcf317861fded2110ea8c
+POSTWRITE_COMPOSE_SHA256=25931b1de6ee1814e012a246355c315b20f242649e2f658b3322b956f215e869
+ROLLBACK_BACKUP=/srv/backups/mini-craft-night-kit/manifests/m2a-pre-private-network-20260929T111649Z.compose.bak
+
+WORDPRESS_NETWORKS=mini-craft-night-kit-database+spikersun-edge+spikersun-private
+WORDPRESS_PRIVATE_ALIAS=mini-craft-night-kit-wordpress
+PRIVATE_ORIGIN=http://mini-craft-night-kit-wordpress:80
+PRIVATE_ORIGIN_HTTP=200
+WORDPRESS_RESTART_COUNT=0
+
+MARIADB_NETWORKS=mini-craft-night-kit-database
+MARIADB_HEALTH=healthy
+MARIADB_PRIVATE_ENDPOINT=ABSENT
+
+CURRENT_PUBLIC_PATH=DNS_A_TO_CADDY
+PUBLIC_HOME_HTTP=200
+PUBLIC_SHOP_HTTP=200
+PUBLIC_WP_REST_HTTP=200
+CURRENT_CADDY_ROUTE_RETAINED_AS_ROLLBACK=YES
+
+CURRENT_GATE=M2B_TEMPORARY_TUNNEL_CANARY_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=OWNER_CONFIRMATION_REQUIRED
+
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_PUBLIC_HOSTNAME_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+CLEANUP_AUTHORIZED=NO
+```
+
+Independent review accepted Evidence commit `ba9a601a440554a334d94b4e27e0c99d1dbd5b63` and Executor Handoff commit `a7e8de2e38ed51f9aa6a022bc31a4b3296684a7d`. M2A is formally closed.
+
+The next step is a temporary-host Tunnel canary only. It will require a fresh absent temporary hostname, existing Tunnel `spikersun-shared-private`, origin `http://mini-craft-night-kit-wordpress:80`, and explicit origin Host header `minicraft.spikersun.com`. The canonical production hostname and current Caddy route must remain untouched.
+
+No M2B mutation is authorized until explicit Owner confirmation.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2A_PASS_M2B_OWNER_CHECKPOINT.md`
+
+Checkpoint packet:
+`review-packets/M2B_TEMPORARY_TUNNEL_CANARY_OWNER_CHECKPOINT.md`
+
 ## CURRENT REVIEWER UPDATE — M2A-R6 RETURN Accepted / M2A-R7 Explicit Non-secret Compose Env Open — 2026-09-30
 
 ```text
