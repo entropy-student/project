@@ -1,5 +1,58 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2E Legacy Mini Craft Caddy Route Retirement Authorized — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+M2B_TEMPORARY_TUNNEL_CANARY=PASS
+M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER=PASS
+M2D_PUBLIC_REGRESSION_AND_OBSERVATION=PASS
+
+OWNER_EXPLICITLY_AUTHORIZES_M2E_RETIRE_LEGACY_MINICRAFT_CADDY_ROUTE=YES
+
+CURRENT_GATE=M2E_RETIRE_LEGACY_MINICRAFT_CADDY_ROUTE
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_SHARED_INFRA_WRITE
+
+PRODUCTION_HOST=minicraft.spikersun.com
+PRODUCTION_INGRESS=CLOUDFLARE_TUNNEL_DIRECT_TO_MINICRAFT_APP
+PRODUCTION_TUNNEL=spikersun-shared-private
+PRODUCTION_ORIGIN=http://mini-craft-night-kit-wordpress:80
+
+LEGACY_MINICRAFT_CADDY_ROUTE=PRESENT
+ACCEPTED_PREWRITE_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+
+CADDY_MUTATION_AUTHORIZED=MINICRAFT_LEGACY_ROUTE_REMOVAL_ONLY
+CADDY_RELOAD_AUTHORIZED=ONE_BOUNDED_RELOAD_AFTER_VALIDATION
+ROLLBACK_CADDY_RESTORE_AUTHORIZED=YES_IF_REQUIRED
+
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+CLOUDflared_MUTATION_AUTHORIZED=NO
+VPS_OTHER_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+WORDPRESS_MUTATION_AUTHORIZED=NO
+MARIADB_CHANGE_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+UNRELATED_CLEANUP_AUTHORIZED=NO
+SSH_REPAIR_AUTHORIZED=NO
+```
+
+Owner explicitly authorized M2E. This is limited to removing the exact legacy Caddy configuration serving `minicraft.spikersun.com`.
+
+Before write, the Executor must prove target host, locate the active Caddy config and existing reload mechanism, require the exact accepted Caddyfile SHA-256, prove the Mini Craft matcher is isolated from all other hostnames, validate current Caddy, create one exact rollback copy in an already-established Shared Infrastructure/Caddy-scoped location, and fresh-check the Tunnel production path.
+
+Only after all prewrite predicates PASS may the Executor remove the Mini Craft route, validate the edited Caddy config, and perform one bounded Caddy reload. Caddy restart/recreate, unrelated route edits, Cloudflare/DNS/Tunnel changes, and other project/infrastructure changes remain forbidden.
+
+If validation/reload/regression fails, restore the exact rollback config, validate, perform one rollback reload, prove prior state, and RETURN. No blind repeated reloads and no second retirement attempt after rollback.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2E_OWNER_AUTHORIZED_RETIRE_LEGACY_MINICRAFT_CADDY_ROUTE.md`
+
+Execution packet:
+`review-packets/M2E_RETIRE_LEGACY_MINICRAFT_CADDY_ROUTE_EXECUTION.md`
+
 ## CURRENT REVIEWER UPDATE — M2D Formal PASS / M2E Caddy Route Retirement Owner Checkpoint — 2026-09-30
 
 ```text
