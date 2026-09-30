@@ -34,8 +34,8 @@
 | G3A WooCommerce commerce/account/private-workspace loop | PASS |
 | G3B PayPal Sandbox + paid entitlement + refund | **PASS** |
 | G3BR1 Payment reconciliation + entitlement/refund closure | **PASS** |
-| G3C UI/UX productization + Owner visual freeze | NOT COMPLETE — prior Astra path returned |
-| G3CR2 Blocksy Wedding + WooCommerce compatibility canary | **CURRENT** |
+| G3CR2R3 Blocksy Wedding + WooCommerce compatibility canary | **PASS** |
+| G3C Blocksy Wedding UI/UX productization + Owner visual freeze | **CURRENT** |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
@@ -54,7 +54,7 @@ G3B Sandbox 闭环已经通过：
 → scoped cleanup PASS
 ```
 
-这仍然**不是 Live/真钱支付证据**。此前 Astra “Bestselling Author” 的 Block Editor 导入路径已经 RETURN。Owner 现已选择 **Blocksy Theme + Wedding starter（优先 Gutenberg）** 作为新的视觉方向。当前先执行一个最小 G3CR2 兼容性 canary，只验证 Wedding 导入与现有 WooCommerce / Account / Private Workspace 是否冲突；通过后才进入完整 UI 改造与 Good Issue 预览整合。G4 Live PayPal Canary 继续保持 HOLD。
+这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前正式进入 G3C：按最小修改原则把 Wedding 改造成 Birthday Magazine、接入 Good Issue 浏览器本地免费预览，并在技术完成后保留本地 WordPress 环境供 Owner 直接以 Administrator 身份在 Gutenberg 中修改页面。G4 Live PayPal Canary 继续保持 HOLD。
 
 ## 已证明的技术能力
 
