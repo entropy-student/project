@@ -4,7 +4,10 @@
   "git": {
     "baseMain": "36d3bec39b7dc73aea60267bdd236dce9eae2cc4",
     "branch": "codex/birthday-magazine-g3cr2r1-variant-closure",
-    "worktreeWasCleanBeforeExecution": true
+    "worktreeWasCleanBeforeExecution": true,
+    "latestMainBeforeSubmission": "f4c2fc6f476f54f71636e240df414f3e66a91a6d",
+    "latestMainMergeCommit": "2bd823715678760aeb0ecbde3b451c8573381943",
+    "pullRequest": "https://github.com/entropy-student/project/pull/61"
   },
   "docker": {
     "engine": "29.7.2",

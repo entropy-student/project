@@ -3,6 +3,8 @@
 **Current result:** `RETURN_G3CR2R1_VARIANT_METADATA_UNAVAILABLE`
 **Execution branch:** `codex/birthday-magazine-g3cr2r1-variant-closure`
 **Base GitHub main:** `36d3bec39b7dc73aea60267bdd236dce9eae2cc4`
+**Latest main before submission:** `f4c2fc6f476f54f71636e240df414f3e66a91a6d` (merged into the branch as `2bd823715678760aeb0ecbde3b451c8573381943`; the intervening changes did not touch `birthday-magazine-studio/`).
+**GitHub PR:** [#61](https://github.com/entropy-student/project/pull/61), open and unmerged.
 **Stop point:** Phase A; no Starter import or WooCommerce canary.
 
 ## Phase A — exact builder-specific metadata

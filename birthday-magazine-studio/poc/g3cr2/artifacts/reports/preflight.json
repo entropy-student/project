@@ -4,6 +4,8 @@
   "git": {
     "githubMain": "36d3bec39b7dc73aea60267bdd236dce9eae2cc4",
     "originMain": "36d3bec39b7dc73aea60267bdd236dce9eae2cc4",
+    "latestMainBeforeSubmission": "f4c2fc6f476f54f71636e240df414f3e66a91a6d",
+    "mainMergeCommit": "2bd823715678760aeb0ecbde3b451c8573381943",
     "initialBranch": "codex/birthday-magazine-g3cr2-blocksy-wedding-canary",
     "cleanBeforeBranchCreation": true,
     "executionBranch": "codex/birthday-magazine-g3cr2r1-variant-closure"
@@ -19,7 +21,7 @@
     "ports8167And8168": "free",
     "unrelatedResourceFingerprintSha256": "1714129c68bb74ff03bd018e86067179798b2efc432c153b42f499a24b4c678a"
   },
-  "previousPr60Read": {
+    "previousPr60Read": {
     "state": "historical_return_evidence",
     "mergedCatalogNotUsedAsBuilderSpecificProof": true
   }
