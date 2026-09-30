@@ -310,3 +310,41 @@ MUTATIONS=0
 M2E_ENTERED=NO
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — M2E Retire Legacy Mini Craft Caddy Route — 2026-09-30
+
+- Gate: `M2E_RETIRE_LEGACY_MINICRAFT_CADDY_ROUTE`
+- Result: `PASS_CANDIDATE_M2E_RETIRE_LEGACY_MINICRAFT_CADDY_ROUTE`
+- Used Hostinger Web Terminal on `srv1970241`; no SSH retry.
+- The prewrite host Caddyfile and the single rollback copy matched the accepted SHA-256 `cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8`. The Mini Craft site block was isolated to `minicraft.spikersun.com` -> `wordpress:80`.
+- Removed only that host-source block using an in-place same-inode write. Postwrite host source is 143 bytes with SHA-256 `f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358`. Candidate validation passed from stdin; the existing stdin reload mechanism succeeded exactly once (exit 0). Caddy container ID stayed unchanged, restart count stayed 0.
+- Fresh active Admin config has no Mini Craft matcher; localhost and edge-test routes remain. Public Home, Shop, and WP REST returned HTTP 200 with TLS verify 0. Edge-test retained HTTP 200 / TLS verify 0 / 30-byte accepted SHA-256.
+- Cloudflare readback: canonical Mini Craft Tunnel CNAME/route remains on `spikersun-shared-private` -> `http://mini-craft-night-kit-wordpress:80`, Host Header `minicraft.spikersun.com`; xianyu/pay/shop routes unchanged; M2B temporary DNS absent.
+- Rollback copy: `/srv/infra/edge/Caddyfile.m2e-prewrite-20260930T091701Z.bak`, 199 bytes, baseline SHA-256 above.
+- Reviewer attention: the container-mounted `/etc/caddy/Caddyfile` remains the stale 199-byte baseline, while host source and active Admin config reflect the 143-byte candidate. The stdin reload updated active Caddy without reopening the mounted pathname, but a future process restart from that stale mount could restore the retired route. No restart/recreate was attempted; any mount reconciliation requires a separate Reviewer-authorized action.
+- One exact 30-byte edge-test diagnostic scratch file was briefly created under `/tmp`, verified against the public response fingerprint, removed, and confirmed absent. No other temp path was touched.
+- Evidence commit: `3426fef884988bc401e80863e7d28ab0a03ef6ce`
+- STOP_AT_REVIEWER=YES
+
+```text
+LEGACY_MINICRAFT_CADDY_ROUTE=ABSENT_FROM_ACTIVE_CONFIG_AND_HOST_SOURCE
+CADDY_RELOAD=PASS
+CADDY_RESTART=0
+CADDY_RECREATE=0
+OTHER_CADDY_SITES_REGRESSION=PASS
+MINICRAFT_TUNNEL_PRODUCTION_REGRESSION=PASS
+CONTAINER_MOUNTED_CONFIG=STALE_BASELINE_REQUIRES_REVIEW
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+WORDPRESS_MUTATIONS=0
+MARIADB_MUTATIONS=0
+PAYMENT_ACTIONS=0
+REFUND_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+MIGRATION_M1_TO_M2E=COMPLETE_CANDIDATE
+STOP_AT_REVIEWER=YES
+```
