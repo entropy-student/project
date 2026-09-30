@@ -1,0 +1,19 @@
+{
+  "ports": {
+    "mailpit": 0,
+    "wordpress": 0
+  },
+  "unrelatedInventorySha256": "8cb238fe6317daace495704fda29a4851aec34b8f1d1722b63ac2a1141c0dbae",
+  "project": "birthday-magazine-g3cr2r2",
+  "projectResourcesBefore": {
+    "containers": 0,
+    "volumes": 0,
+    "networks": 0
+  },
+  "capturedAtUtc": "2026-09-30T07:46:20.6406249Z",
+  "unrelatedResourceCounts": {
+    "networks": 14,
+    "containers": 32,
+    "volumes": 78
+  }
+}

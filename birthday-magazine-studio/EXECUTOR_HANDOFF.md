@@ -1,5 +1,37 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Current Gate — G3CR2R2 Blocksy Wedding v2 Dashboard Catalogue Closure
+
+```text
+GATE=G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE
+RESULT=RETURN_G3CR2R2_WEDDING_GUTENBERG_RECORD_UNAVAILABLE
+BASE_MAIN=b4533ff290c98699fa2b11237c4dc577e0ee7d0e
+EXECUTION_BRANCH=codex/birthday-magazine-g3cr2r2-v2-catalog-closure
+PHASE_A_V2_REQUEST=PASS_HTTP_200_JSON
+WEDDING_VARIANTS=2
+EXACT_WEDDING_BUILDER_GUTENBERG_RECORD=ABSENT
+STARTER_IMPORT=NOT_RUN
+WOOCOMMERCE_CANARY=NOT_RUN
+PRIVATE_WORKSPACE_REGRESSION=NOT_RUN
+ELEMENTOR_INSTALL=0
+HT_SLIDER_INSTALL=0
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+MODEL_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+The v2 endpoint returned HTTP 200 through WordPress `wp_remote_get()`. Its two separate Wedding records have `builder=""` and `builder="elementor"`; there is no exact `builder="gutenberg"` record. The blank builder record's own plugin array is preserved, but was not reclassified as Gutenberg. No record arrays were merged. The exact outcome is `RETURN_G3CR2R2_WEDDING_GUTENBERG_RECORD_UNAVAILABLE`.
+
+Review the sanitized catalogue and all separate Wedding records at `poc/g3cr2r2/artifacts/reports/v2-catalog-response.json` and `poc/g3cr2r2/artifacts/reports/wedding-variants.json`. Runtime/package read-back is `runtime-versions.json`; the Phase A decision is `phase-a-decision.json`; scoped teardown read-back is `cleanup-readback.json`. No Starter import was attempted, so there are no Wedding screenshots and no WooCommerce or workspace regression claims.
+
+The isolated runtime and its temporary package directory were removed. Project containers/volumes/network are zero, loopback ports 8177/8178 have no listeners, temp files are zero, and unrelated Docker inventory counts match their pre-run counts. The initial/final inventory hashes are explicitly marked not comparable; the run used only this Gate's named Compose project and no global cleanup.
+
+Reviewer is the next decision point. No G3C full adaptation or G4 work was started.
+
+---
+
 ## Current Gate — G3BR1 cleanup-only closure
 
 ```text
