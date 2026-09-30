@@ -868,3 +868,48 @@ Post-reload Caddy Admin readback showed only the preserved localhost and edge-te
 Important residual: the container's mounted `/etc/caddy/Caddyfile` still reads the prewrite 199-byte baseline hash, while the host source and active Admin configuration contain the 143-byte candidate. The Caddyfile bind mount is therefore stale. The requested stdin reload correctly changed the active configuration without reopening that pathname, but a future Caddy process restart from the stale mounted path could restore the retired matcher. No restart/recreate was attempted because it is explicitly forbidden in this Gate. Reviewer should decide whether a separately authorized mount reconciliation/recreate is required.
 
 A 30-byte edge-test body was briefly written to the exact diagnostic path shown above, then content/size-checked and removed; the path was confirmed absent afterward. No other temporary path was touched.
+
+
+## Gate: S1 Restore Canonical Shared VPS SSH Connection Contract — 2026-09-30
+
+```text
+GATE=S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT
+RESULT=PASS_CANDIDATE_S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT
+
+SSH_NORMAL_PATH=RESTORED
+IDENTITY_FILE_REFERENCE=C:\Users\34707\.ssh\xianyu_hostinger_codex_ed25519
+IDENTITY_FILE_EXISTS=YES
+IDENTITY_ACL_METADATA=PASS
+CLIENT_PUBLIC_KEY_FINGERPRINT=SHA256:qFlRXelvzDEFpatrcX7T4dUBKPAC7YqFqNkyFZh5rYw
+CLIENT_PUBLIC_KEY_FINGERPRINT_MATCH=YES
+EXPECTED_HOST_KEY_FINGERPRINTS=SHA256:yr2b1z2fZmMU+8IwnTB8M94H1VlO+U3CIZk1S3FOa+o;SHA256:L7lXm/ssbbeeHG6OlRis2dreMW+SGzeJoMeGu6xzngw;SHA256:QS8B89XaTDpt3s+74W55W4jQzrjwfrEc/Q0FfWp8uZc
+KNOWN_HOSTS_REFERENCE=C:\Users\34707\.ssh\known_hosts
+KNOWN_HOSTS_EXPECTED_PINS_MATCH=YES
+STRICT_OPTIONS=BatchMode=yes;IdentitiesOnly=yes;StrictHostKeyChecking=yes;UserKnownHostsFile=C:\Users\34707\.ssh\known_hosts;ConnectionAttempts=1;ConnectTimeout=10;ForwardAgent=no
+
+SSH_NATIVE_EXIT=0
+REMOTE_HOSTNAME=srv1970241
+REMOTE_USER=ops
+REMOTE_OS=Ubuntu 24.04.5 LTS (VERSION_ID=24.04)
+TARGET_HOST_EXECUTION_PROVEN=PASS
+SUDO_NONINTERACTIVE_AVAILABLE=YES
+DOCKER_READONLY_ACCESS=NO_DIRECT
+SSH_NETWORK_INVOCATIONS=1
+HOSTINGER_WEB_TERMINAL_USED=NO
+
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
+
+### S1 notes
+
+Local trust preflight passed before network access. The existing Owner-workstation identity reference was verified without reading or emitting private-key contents; the derived client public-key fingerprint and recorded known_hosts pins matched the accepted trust metadata. Exactly one strict non-interactive SSH invocation was made to ops@2.24.193.133:22 and exited 0. Remote readback proved hostname srv1970241 and user ops on Ubuntu 24.04.5 LTS.
+
+Direct unprivileged Docker read-only access is not available to ops, while non-interactive sudo is available. This does not block the SSH connection contract: future reviewed Docker operations should use bounded `sudo docker ...` commands rather than assuming direct docker-socket membership. No SSH repair or runtime mutation occurred.
