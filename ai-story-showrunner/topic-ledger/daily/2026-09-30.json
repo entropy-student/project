@@ -1,0 +1,271 @@
+{
+  "date": "2026-09-30",
+  "captured_at": "2026-09-30T08:48:35+08:00",
+  "source_status": [
+    {
+      "source": "public_web_human_world",
+      "status": "PASS",
+      "notes": "Scanned consumer shopping, work/small-business, social-media attention and learning signals."
+    },
+    {
+      "source": "public_web_ai_domain",
+      "status": "PASS",
+      "notes": "Verified current agent/product signals and recent research; primary selected evidence includes Sep 23 shopping-agent preprint and Sep 29 consumer AI-shopping report."
+    },
+    {
+      "source": "github_canonical_contracts",
+      "status": "PASS",
+      "notes": "Read latest Topic OS, Daily Planner, Content Strategy, Narrative Style, Registry, Evergreen Bank, Template and Sep/Oct calendars before selection."
+    }
+  ],
+  "hot_signals": [
+    {
+      "cluster_id": "SHOPPING_AI_MEDIATED_DECISION",
+      "summary": "AI is becoming a mainstream product-research layer while controlled shopping-agent research finds vague goals plus information-acquisition costs can cause omission of diagnostic attributes and greater susceptibility to salient price/promotion cues.",
+      "refs": [
+        "turn0news2",
+        "turn2academia2",
+        "turn2academia3"
+      ]
+    },
+    {
+      "cluster_id": "SMALL_BUSINESS_AGENT_DELEGATION",
+      "summary": "Meta launched Muse for Small Business on Sep 29 with broad business connectors and explicit approval before publish/send/spend.",
+      "refs": [
+        "turn1search1"
+      ]
+    },
+    {
+      "cluster_id": "SOCIAL_RECOMMENDATION_ATTENTION",
+      "summary": "Recent research models platform recommendation incentives and attention allocation, but the consumer-facing AI-changed-process story is less direct than the shopping cluster.",
+      "refs": [
+        "turn2academia0"
+      ]
+    }
+  ],
+  "normalized_clusters": [
+    {
+      "cluster_id": "SHOPPING_AI_MEDIATED_DECISION",
+      "d1": "PASS_CLUSTERED",
+      "freshness": "Sep 23-29 2026",
+      "half_life": "MEDIUM",
+      "production_latency_fit": "PASS"
+    },
+    {
+      "cluster_id": "SMALL_BUSINESS_AGENT_DELEGATION",
+      "d1": "PASS_CLUSTERED",
+      "freshness": "Sep 29 2026",
+      "half_life": "SHORT_MEDIUM",
+      "production_latency_fit": "PASS"
+    },
+    {
+      "cluster_id": "SOCIAL_RECOMMENDATION_ATTENTION",
+      "d1": "PASS_CLUSTERED",
+      "freshness": "Sep 14 2026",
+      "half_life": "LONG",
+      "production_latency_fit": "PASS"
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "hot-shopping-agent-promo-cues",
+      "lane": "HOT",
+      "signal_refs": [
+        "turn0news2",
+        "turn2academia2",
+        "turn2academia3"
+      ],
+      "proposed_human_problem": "把商品比较交给AI，本来是为了更理性省事；为什么它也可能被9.9、折扣和显眼促销带偏？",
+      "proposed_mechanism": "When goals are vague and information acquisition is costly, shopping agents may omit diagnostic attributes and rely more on salient pricing/promotional cues; specificity can preserve diagnostic search.",
+      "registry_matches": [],
+      "duplicate_status": "PASS_D1_D4",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "购物是原生大众兴趣",
+        "促销标签是无需AI术语即可理解的反常入口",
+        "Sep 29 consumer report adds current adoption relevance"
+      ],
+      "asset_notes": [
+        "可用超市/电商比价故事",
+        "视觉可围绕显眼折扣牌 vs 被忽略的单位价格/关键属性",
+        "避免复用办公室/老板秘书母题"
+      ],
+      "recommended_action": "HOT_OVERRIDE",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "购物 / 消费",
+      "human_process_family": "DECISION_AND_RESPONSIBILITY",
+      "observed_paradox": "把比较交给AI是为了减少冲动和信息负担，但AI在目标模糊且取信息有成本时也可能抓住最显眼的价格/促销线索而漏掉真正决定性属性。",
+      "why_question": "为什么AI替你挑商品，也会被9.9和促销标签带偏？",
+      "human_tension": "CONVENIENCE_VS_INFORMED_JUDGMENT",
+      "meaning_fingerprint": "CONVENIENCE_VS_INFORMED_JUDGMENT",
+      "controlling_question_seed": "当AI替你压缩购物比较过程时，省掉多少判断步骤之后，你仍然算是在做一个知情选择？",
+      "human_process_before_ai": "人自己搜索、比较单位价格/规格/需求匹配，并承担取舍。",
+      "ai_changed_process": "AI把搜索、比较、筛选压缩成少数推荐甚至一个结论。",
+      "human_problem": "更快得到购买建议，不等于关键属性真的被比较过。",
+      "human_stakes": "花错钱、买到不适合的商品，并把推荐流畅度误当成充分比较。",
+      "ai_mechanism": "search-mediated vulnerability under vague goals and costly information acquisition; salient pricing cues can substitute for diagnostic search.",
+      "story_seed": "主角让AI在两个看似差不多的商品里选更划算的；AI秒选9.9促销款；结账前才发现单位价格/容量或关键规格让另一款更合适；把目标说具体后，AI重新查了被忽略的属性。",
+      "curiosity_gap": "AI不是没有计算能力，为什么还会吃促销标签这一套？",
+      "audience_payoff": "理解委托购物时，目标具体程度会改变AI查哪些信息；不要把显眼推荐等同于充分比较。",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "turn0news2",
+        "turn2academia2",
+        "turn2academia3"
+      ],
+      "uncertainties": [
+        "Shopping-by-algorithm is a Sep 23 preprint and not yet peer reviewed.",
+        "Consumer adoption report is vendor-sponsored/self-reported and should not be generalized globally.",
+        "Do not claim every shopping agent is biased by promotions; effect is conditional on task framing/information costs."
+      ],
+      "meaning_registry_matches": [],
+      "meaning_duplicate_status": "PASS_DISTINCT"
+    },
+    {
+      "candidate_id": "hot-small-business-agent-delegation",
+      "lane": "HOT",
+      "signal_refs": [
+        "turn1search1"
+      ],
+      "proposed_human_problem": "一个人经营小生意时，AI替你做更多事，为什么反而要更清楚哪些动作必须自己确认？",
+      "proposed_mechanism": "agent connectors expand action surface while approval boundaries separate preparation from consequential execution.",
+      "registry_matches": [
+        "tools-do-not-mean-permission",
+        "agent-delegated-workflow"
+      ],
+      "duplicate_status": "FAIL_D3_D5",
+      "hard_gate_status": "PASS_BEFORE_DUPLICATE",
+      "reach_notes": [
+        "小生意/副业有原生兴趣",
+        "Sep 29 launch is fresh"
+      ],
+      "asset_notes": [
+        "容易落到邮件/广告/付款确认故事，但与既有权限边界母题高度重合"
+      ],
+      "recommended_action": "HOLD",
+      "topic_entry_mode": "AI_SIGNAL_COMPATIBILITY",
+      "x_domain": "工作 / 小生意",
+      "human_process_family": "DECISION_AND_RESPONSIBILITY",
+      "observed_paradox": "越能替老板做事越省时间，但越接近发布、发送、花钱越不能把责任一起消失。",
+      "why_question": "为什么AI越能替你经营生意，越需要在少数关键动作前停下来？",
+      "human_tension": "DELEGATION_VS_CONTROL",
+      "meaning_fingerprint": "DELEGATION_VS_CONTROL",
+      "controlling_question_seed": "把执行交出去以后，哪些决定仍必须由承担后果的人确认？",
+      "human_process_before_ai": "经营者亲自跨工具执行营销、财务、沟通与发布。",
+      "ai_changed_process": "Agent连接多个业务工具并准备/执行跨应用任务。",
+      "human_problem": "执行效率与最终授权边界冲突。",
+      "human_stakes": "误发、误花钱、误改业务状态。",
+      "ai_mechanism": "tool connectivity + approval boundaries",
+      "story_seed": "AI把一周营销都准备好，直到真正发布/花预算时停下来找老板确认。",
+      "curiosity_gap": "既然都让AI做了，为什么最后一步还要人？",
+      "audience_payoff": "区分代办能力与责任授权。",
+      "business_job": "TRUST",
+      "editorial_mode": "STORY_ACTION",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "turn1search1"
+      ],
+      "uncertainties": [
+        "Meta first-party launch claims require independent performance evidence for effectiveness."
+      ],
+      "meaning_registry_matches": [
+        "tools-do-not-mean-permission"
+      ],
+      "meaning_duplicate_status": "FAIL_D5_RECENT_MEANING"
+    },
+    {
+      "candidate_id": "human-social-attention-recommendation",
+      "lane": "HOT",
+      "signal_refs": [
+        "turn2academia0"
+      ],
+      "proposed_human_problem": "推荐越来越懂你，为什么平台里看到的内容不一定只是‘你最喜欢的内容’？",
+      "proposed_mechanism": "two-sided platform incentives can make attention allocation optimize ecosystem/revenue objectives rather than pure viewer preference.",
+      "registry_matches": [],
+      "duplicate_status": "PASS",
+      "hard_gate_status": "HOLD_EVIDENCE_TRANSLATION",
+      "reach_notes": [
+        "社交媒体原生兴趣强",
+        "反常性强"
+      ],
+      "asset_notes": [
+        "故事性可行，但当前论文是理论模型，不能直接外推具体平台行为"
+      ],
+      "recommended_action": "HOLD",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "社交媒体",
+      "human_process_family": "ATTENTION_AND_DISCOVERY",
+      "observed_paradox": "推荐越个性化，信息流却不一定等于单纯按个人偏好排序。",
+      "why_question": "为什么推荐算法越懂你，给你的也不一定全是你最想看的？",
+      "human_tension": "RELEVANCE_VS_ATTENTION_AUTONOMY",
+      "meaning_fingerprint": "RELEVANCE_VS_ATTENTION_AUTONOMY",
+      "controlling_question_seed": "当推荐同时服务用户、创作者和平台时，‘最适合我’到底是谁定义的？",
+      "human_process_before_ai": "人主动寻找/关注内容并分配注意力。",
+      "ai_changed_process": "推荐系统大规模预筛和排序内容。",
+      "human_problem": "个性化表象与多方优化目标之间存在落差。",
+      "human_stakes": "注意力自主、内容多样性、创作者曝光。",
+      "ai_mechanism": "multi-objective recommendation / platform attention allocation",
+      "story_seed": "主角以为首页只是‘最懂我’，却发现平台还要同时维持创作者供给与商业目标。",
+      "curiosity_gap": "推荐不是为了让我最满意吗？",
+      "audience_payoff": "理解推荐排序可能同时优化多个目标。",
+      "business_job": "DISCOVERY",
+      "editorial_mode": "STORY_MODEL",
+      "target_duration": "3–5 min",
+      "source_refs": [
+        "turn2academia0"
+      ],
+      "uncertainties": [
+        "Current evidence is a theoretical model, not proof of a named platform's actual ranking policy."
+      ],
+      "meaning_registry_matches": [],
+      "meaning_duplicate_status": "PASS_DISTINCT"
+    }
+  ],
+  "evergreen_fallback": [
+    {
+      "topic_id": "vision-small-detail-miss",
+      "action": "DISPLACED_RETURN_TO_POOL",
+      "reason": "Qualified HOT overrides Sep 30; moved to Oct 4 planned slot."
+    },
+    {
+      "seed": "学习：AI解释得懂不等于自己会做",
+      "human_process_family": "SKILL_LEARNING",
+      "meaning_fingerprint": "GUIDANCE_VS_SKILL_FORMATION",
+      "action": "SCHEDULED_TAIL",
+      "date": "2026-10-05"
+    },
+    {
+      "seed": "旅行：行程越完美为何越像任务",
+      "human_process_family": "ATTENTION_AND_DISCOVERY",
+      "meaning_fingerprint": "EFFICIENCY_VS_SERENDIPITY",
+      "action": "SCHEDULED_TAIL",
+      "date": "2026-10-06"
+    }
+  ],
+  "selected_for_editorial_review": {
+    "candidate_id": "hot-shopping-agent-promo-cues",
+    "topic": "为什么AI替你挑商品，也会被9.9和促销标签带偏？",
+    "lane": "HOT",
+    "business_job": "DISCOVERY",
+    "editorial_mode": "STORY_MODEL",
+    "target_duration": "3–5 min",
+    "hot_override": true
+  },
+  "d5_collisions": [
+    {
+      "candidate_id": "hot-small-business-agent-delegation",
+      "meaning_fingerprint": "DELEGATION_VS_CONTROL",
+      "collides_with": "tools-do-not-mean-permission",
+      "action": "HOLD",
+      "reason": "Different X domain (small business) but same Human Tension + controlling question about consequential actions requiring human authorization."
+    }
+  ],
+  "notes": [
+    "Quality gates outrank 5/2 mode quota.",
+    "No locked/published rows were modified.",
+    "No G4+ production, video generation or publishing performed.",
+    "DAILY_PRODUCTION_CAPABILITY remains UNPROVEN."
+  ]
+}
