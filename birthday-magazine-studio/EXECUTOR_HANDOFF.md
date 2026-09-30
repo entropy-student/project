@@ -483,7 +483,7 @@ Concrete return reasons: `RETURN_STORELLY_PREVIEW_NOT_BROWSER_LOCAL` (and a runt
 ## G3C Blocksy Wedding productization — current handoff
 
 **Gate:** `G3C_BLOCKSY_WEDDING_PRODUCTIZATION`
-**Current handoff status:** `RETURN_GITHUB_SUBMISSION_UNAVAILABLE`
+**Current handoff status:** `RETURN_PR_CREATION_PENDING_OWNER_GITHUB_AUTH`
 **Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
 **Stop:** `STOP_AT_REVIEWER=YES`; do not enter G4.
 
@@ -506,4 +506,4 @@ Screenshot status is deliberately separate from the old PNGs in the working fold
 
 Machine-readable read-back is in `poc/g3c/artifacts/reports/verification-g3c.json` plus `runtime-setup.json` and `productization.json`. The precise limitation is that this handoff does not claim `PASS_CANDIDATE` until the Reviewer has the current screenshot archive.
 
-GitHub submission is also pending: local commit `75bcf66` exists, but `git push` and the GitHub connector both failed to connect to GitHub. No PR exists yet. Retry the push and open the PR after network connectivity returns; do not merge.
+The branch is pushed to GitHub. PR creation is pending: the GitHub connector transport failed, and the browser PR page requires Owner login. The Owner must sign in on the local GitHub tab; then resume opening the PR. No merge occurred.

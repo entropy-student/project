@@ -689,7 +689,7 @@ All three routes used the same minimal WordPress page content and Good Issue-sty
 **Gate:** `G3C_BLOCKSY_WEDDING_PRODUCTIZATION`
 **Base:** GitHub `main` at `636e1109e031f1c77704f2b88b83ca5dd771e46b`
 **Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
-**Current execution status:** `RETURN_GITHUB_SUBMISSION_UNAVAILABLE` — local implementation and reports are committed, but current network transport cannot reach GitHub to push the branch or open a PR. Independently, the Owner's updated screenshot archive is not available to the Executor for inspection, so this is not a PASS_CANDIDATE.
+**Current execution status:** `RETURN_PR_CREATION_PENDING_OWNER_GITHUB_AUTH` — local implementation and reports are committed and the branch is pushed. PR creation remains pending because the GitHub connector transport failed and the browser PR page requires Owner login. Independently, the Owner's updated screenshot archive is not available to the Executor for inspection, so this is not a PASS_CANDIDATE.
 
 ### Runtime and dependencies
 
@@ -729,5 +729,5 @@ Machine-readable current reports: `poc/g3c/artifacts/reports/runtime-setup.json`
 
 ### GitHub submission status
 
-- Local execution commit `75bcf66` was created on the dedicated G3C branch. `git push -u origin codex/birthday-magazine-g3c-blocksy-wedding-productization` returned a connection failure to `github.com:443`; the GitHub MCP transport also failed to reach its backend. The branch is not confirmed on GitHub and no PR has been opened.
-- Do not treat this local commit as a GitHub submission or Reviewer-ready PR. Retry push/PR creation when GitHub transport is available. No merge was attempted.
+- Local execution commits `75bcf66` and `cde069d` are on the dedicated G3C branch. The first `git push` attempt failed to connect to `github.com:443`; a later retry succeeded and confirmed the remote branch was created. The GitHub PR connector still failed to reach its backend. The browser compare page is at [create G3C PR](https://github.com/entropy-student/project/pull/new/codex/birthday-magazine-g3c-blocksy-wedding-productization) and currently requests GitHub login. No PR has been opened yet.
+- The remote branch is available, but no PR exists. Owner must complete GitHub login in the local browser; then resume PR creation. No merge was attempted.

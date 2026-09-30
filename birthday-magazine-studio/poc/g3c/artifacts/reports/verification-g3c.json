@@ -2,11 +2,13 @@
   "gate": "G3C_BLOCKSY_WEDDING_PRODUCTIZATION",
   "executionBranch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
   "baseMain": "636e1109e031f1c77704f2b88b83ca5dd771e46b",
-  "result": "RETURN_GITHUB_SUBMISSION_UNAVAILABLE",
+  "result": "RETURN_PR_CREATION_PENDING_OWNER_GITHUB_AUTH",
   "githubSubmission": {
-    "localCommit": "75bcf66",
-    "push": "BLOCKED_CONNECTIVITY_TO_GITHUB_443",
-    "pullRequest": "NOT_CREATED",
+    "localExecutionCommit": "75bcf66",
+    "branchPush": "PASS",
+    "latestPushedCommitBeforeThisReportUpdate": "cde069d",
+    "pullRequest": "NOT_CREATED_OWNER_LOGIN_REQUIRED",
+    "prCreationLink": "https://github.com/entropy-student/project/pull/new/codex/birthday-magazine-g3c-blocksy-wedding-productization",
     "merge": false
   },
   "frontend": {
