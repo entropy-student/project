@@ -1,35 +1,37 @@
 {
-  "capturedAtUtc": "2026-09-30T04:23:28Z",
+  "capturedAtUtc": "2026-09-30T05:21:14.1295364Z",
   "gate": "G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY",
-  "result": "RETURN_PREFLIGHT_DRIFT",
+  "result": "RETURN_G3CR2_GUTENBERG_DEPENDENCY_AMBIGUOUS",
   "git": {
     "baseMain": "0b12d7d574d62120a5d714cddeeb349f045a39cc",
     "branch": "codex/birthday-magazine-g3cr2-blocksy-wedding-canary",
-    "worktreeCleanAtPreflight": true
+    "worktreeCleanAtPreflight": true,
+    "latestMainFetched": "f6d733811df0793cf6dd181f6482415e43d5bedc",
+    "birthdayMagazineFilesChangedOnMainSinceBase": false
   },
   "docker": {
     "clientVersion": "29.7.2",
-    "serverVersion": null,
+    "serverVersion": "29.7.2",
     "composeCliVersion": "5.4.0",
-    "engineReachable": false,
-    "diagnostic": "Docker API connection failed because the Docker Desktop Linux Engine named pipe was unavailable.",
-    "projectContainersVolumesNetworks": "UNKNOWN_ENGINE_UNAVAILABLE"
+    "engineReachable": true,
+    "diagnostic": "Docker Engine was available on Owner retry. A fresh isolated G3CR2 stack was started for Phase A and removed after the catalog dependency ambiguity was confirmed.",
+    "projectContainersVolumesNetworks": "initial 0/0/0; created 4/2/1; cleanup read-back 0/0/0"
   },
   "ports": {
     "8167": "NO_LISTENER_OBSERVED",
     "8168": "NO_LISTENER_OBSERVED"
   },
   "phaseStatus": {
-    "phaseAOfficialBlocksyCatalog": "NOT_RUN",
-    "phaseBWeddingGutenbergImport": "NOT_RUN",
-    "phaseCWooCommerceCanary": "NOT_RUN",
-    "privateWorkspaceRegression": "NOT_RUN"
+    "phaseAOfficialBlocksyCatalog": "RETURN_G3CR2_GUTENBERG_DEPENDENCY_AMBIGUOUS",
+    "phaseBWeddingGutenbergImport": "NOT_RUN_STOPPED_AFTER_PHASE_A",
+    "phaseCWooCommerceCanary": "NOT_RUN_STOPPED_AFTER_PHASE_A",
+    "privateWorkspaceRegression": "NOT_RUN_STOPPED_AFTER_PHASE_A"
   },
   "actions": {
-    "composeUp": false,
+    "composeUp": true,
     "dockerDesktopStart": false,
-    "officialPackageDownloads": 0,
-    "blocksyOrCompanionInstall": 0,
+    "officialPackageDownloads": 2,
+    "blocksyOrCompanionInstall": 2,
     "starterImport": 0,
     "woocommerceProductOrOrderWrites": 0,
     "paypalActions": 0,
@@ -38,7 +40,43 @@
     "sharedInfrastructureMutations": 0,
     "paidPurchases": 0,
     "elementorInstall": 0,
-    "globalDockerPrune": 0
+    "globalDockerPrune": 0,
+    "wordpressOrgCliAutoDownloadAttempts": 1,
+    "wordpressOrgCliAutoDownloadFailures": 1
   },
-  "cleanup": "NOT_REQUIRED_NO_RUNTIME_CREATED"
+  "cleanup": "PASS_PROJECT_SCOPED_COMPOSE_DOWN_VOLUMES_AND_EXACT_G3CR2_TMP_REMOVAL",
+  "attemptHistory": [
+    {
+      "capturedAtUtc": "2026-09-30T04:23:28Z",
+      "result": "RETURN_PREFLIGHT_DRIFT",
+      "engineReachable": false,
+      "dockerClient": "29.7.2",
+      "compose": "5.4.0",
+      "diagnostic": "Docker Desktop Linux Engine named pipe unavailable",
+      "g3cr2ProjectResources": "UNKNOWN_ENGINE_UNAVAILABLE",
+      "composeUp": false,
+      "packageDownloads": 0
+    },
+    {
+      "capturedAtUtc": "2026-09-30T04:47:16.5085379Z",
+      "event": "Owner retry preflight",
+      "engineReachable": true,
+      "dockerServer": "29.7.2",
+      "g3cr2ResourcesBeforeStart": "0/0/0",
+      "ports8167And8168": "free"
+    }
+  ],
+  "portsAfterCleanup": {
+    "8167": "NO_LISTENER",
+    "8168": "NO_LISTENER"
+  },
+  "evidence": {
+    "runtimeVersions": "runtime-versions.json",
+    "catalogRaw": "blocksy-demo-catalog.raw.json",
+    "catalogAnalysis": "blocksy-demo-catalog-analysis.json",
+    "dependencyBoundary": "dependency-boundary.json",
+    "resourceReadback": "resource-readback.json",
+    "unrelatedFingerprintBefore": "unrelated-resource-fingerprint-before.json",
+    "resultReason": "Importer provides a starter-level plugins field and no builder-specific dependency mapping."
+  }
 }
