@@ -694,3 +694,75 @@ STOP_AT_REVIEWER=YES
 Using the authenticated Cloudflare Dashboard and the exact rollback tuple confirmed in the Owner checkpoint, removed only the canonical DNS-only A record (minicraft.spikersun.com -> 2.24.193.133, TTL Auto). Created one published-application route on spikersun-shared-private for minicraft.spikersun.com, with origin http://mini-craft-night-kit-wordpress:80 and HTTP Host Header minicraft.spikersun.com. Cloudflare's success receipt reported creation of the required proxied Tunnel CNAME to the existing tunnel target. Fresh DNS readback showed that CNAME and no old A; route detail readback confirmed the exact origin and Host Header. Fresh route-table readback retained the xianyu, pay, and shop mappings unchanged.
 
 Anonymous requests with normal TLS verification returned HTTP 200 for Home, Shop, and /wp-json/; curl exit was 0 and TLS verification result was 0 for all three. No rollback was needed. Caddy remains untouched as rollback infrastructure. No M2D/E action was entered. No payment/provider, VPS, Docker, Compose, WordPress, MariaDB, or Secret action occurred.
+
+
+## Gate: M2D-R1 Hostinger Terminal Context Recovery and Public Regression Observation — 2026-09-30
+
+```text
+GATE=M2D_R1_HOSTINGER_TERMINAL_CONTEXT_RECOVERY_AND_OBSERVATION_RESTART
+RESULT=PASS_CANDIDATE_M2D_PUBLIC_REGRESSION_AND_OBSERVATION
+HOSTINGER_TERMINAL_CONTEXT=VERIFIED
+TARGET_HOST=srv1970241
+TARGET_HOST_EXECUTION_PROVEN=PASS
+CONSOLE_USER=root
+DIRECT_SSH=NOT_USED
+OBSERVATION_CHECKPOINTS=3
+T0_RUNTIME_READBACK_UTC=2026-09-30T07:55:27Z
+T0_CHECKPOINT_COMPLETED_UTC=2026-09-30T07:57:29Z
+T_PLUS_5_RUNTIME_READBACK_UTC=2026-09-30T08:06:35Z
+T_PLUS_10_RUNTIME_READBACK_UTC=2026-09-30T08:15:53Z
+OBSERVATION_WINDOW=REAL_SPACED_READONLY_CHECKPOINTS_OVER_20_MINUTES
+
+PRODUCTION_TUNNEL=spikersun-shared-private
+PRODUCTION_ROUTE_ORIGIN=http://mini-craft-night-kit-wordpress:80
+PRODUCTION_HTTP_HOST_HEADER=minicraft.spikersun.com
+CANONICAL_DNS=CNAME_TO_EXISTING_TUNNEL
+OLD_CANONICAL_A_RECORD=ABSENT
+M2B_TEMP_ROUTE=ABSENT
+M2B_TEMP_DNS=ABSENT
+EXISTING_XIANYU_ROUTE=http://xianyu-app:8090_UNCHANGED
+EXISTING_PAY_ROUTE=http://unified-pay-app:8080_UNCHANGED
+EXISTING_SHOP_ROUTE=http://dujiao-next-app:8080_UNCHANGED
+EXISTING_TUNNEL_ROUTES_UNCHANGED=PASS
+
+PUBLIC_HOME_HTTP=200
+PUBLIC_HOME_TLS_VERIFY_RESULT=0
+PUBLIC_SHOP_HTTP=200
+PUBLIC_SHOP_TLS_VERIFY_RESULT=0
+PUBLIC_WP_REST_HTTP=200
+PUBLIC_WP_REST_TLS_VERIFY_RESULT=0
+
+WORDPRESS_STATE=RUNNING
+WORDPRESS_RESTART_COUNT=0
+WORDPRESS_NETWORKS=mini-craft-night-kit-database+spikersun-edge+spikersun-private
+WORDPRESS_PRIVATE_ALIAS=mini-craft-night-kit-wordpress
+MARIADB_STATE=RUNNING_HEALTHY
+MARIADB_NETWORKS=mini-craft-night-kit-database
+MARIADB_ON_SPIKERSUN_PRIVATE=NO
+
+CADDY_MINICRAFT_ROLLBACK_MATCHER=PRESENT
+CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+PRODUCTION_INGRESS_STABLE=PASS
+TLS_STABLE=PASS
+
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+CADDY_MUTATIONS=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+WORDPRESS_MUTATIONS=0
+MARIADB_MUTATIONS=0
+PAYMENT_ACTIONS=0
+M2E_ENTERED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Observation notes
+
+Rebound the already-open authenticated Hostinger Web Terminal in the in-app browser and verified its own identity output (hostname=srv1970241, id -un=root, UID 0). No direct SSH was used. The three observation checkpoints were performed as separate fresh readbacks; T0 runtime readback was at 07:55:27 UTC, T+5 at 08:06:35 UTC, and T+10 at 08:15:53 UTC, spanning over 20 minutes from first to final runtime timestamp. No prior interrupted checkpoint was counted.
+
+At each checkpoint, the authenticated Cloudflare Tunnel route remained on spikersun-shared-private with origin http://mini-craft-night-kit-wordpress:80 and HTTP Host Header minicraft.spikersun.com; the old canonical A record remained absent and the canonical hostname remained on the Tunnel CNAME. The xianyu, pay, and shop routes were unchanged. The M2B temporary hostname was absent from Tunnel routes and DNS. Anonymous normal-TLS Home, Shop, and /wp-json/ checks each returned HTTP 200 with TLS verify result 0.
+
+Fresh target-host readbacks at all checkpoints showed WordPress running with restart count 0, on the database, edge, and private networks with the required private alias. MariaDB remained healthy on the project database network only and absent from spikersun-private. The Mini Craft Caddy rollback matcher remained present and the Caddyfile SHA-256 stayed at the accepted value above. No M2E action followed.
