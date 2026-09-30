@@ -53,7 +53,9 @@
 | `REVIEWER_DECISION_G3CR2_RETURN.md` | Reviewer decision on PR #60 | **CURRENT G3CR2 DECISION — RETURN ACCEPTED** |
 | `G3CR2R1_BLOCKSY_WEDDING_VARIANT_DEPENDENCY_CLOSURE.md` | Legacy exact-variant PHP metadata closure | **RETURN — metadata unavailable** |
 | `REVIEWER_DECISION_G3CR2R1_RETURN.md` | Reviewer decision on PR #61 | **CURRENT G3CR2R1 DECISION — RETURN ACCEPTED** |
-| `G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md` | Current dashboard v2 catalogue dependency closure + resume canary | **CURRENT EXECUTION GATE** |
+| `G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md` | Current dashboard v2 catalogue dependency closure | **EXECUTOR RETURN / REVIEWER DEPENDENCY PASS** |
+| `REVIEWER_DECISION_G3CR2R2_DEPENDENCY_PASS.md` | Reviewer interpretation of blank builder as Gutenberg | **CURRENT DEPENDENCY DECISION — PASS** |
+| `G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY.md` | Wedding import + WooCommerce/account/private-workspace compatibility | **CURRENT EXECUTION GATE** |
 | `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED THEME-SPECIFIC PACKAGE — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
@@ -81,8 +83,10 @@ For the current project state, a new Reviewer/Executor should normally need only
 4. `MVP_PRODUCT_CONTRACT.md`
 5. `OWNER_DECISION_G3C_BLOCKSY_WEDDING.md` — current Owner template decision
 6. `BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md` — why the canary is authorized
-7. `REVIEWER_DECISION_G3CR2R1_RETURN.md` — latest Reviewer return decision
-8. `G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md` — current execution contract
+7. `REVIEWER_DECISION_G3CR2R2_DEPENDENCY_PASS.md` — current dependency decision
+8. `G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY.md` — current execution contract
+9. `REVIEWER_DECISION_G3CR2R1_RETURN.md` — prior Reviewer return decision
+10. `G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md` — executed catalogue closure / RETURN provenance
 9. `REVIEWER_DECISION_G3CR2_RETURN.md` — parent G3CR2 return decision
 10. `G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md` — parent canary contract / RETURN provenance
 11. `REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md` — historical Astra RETURN provenance
