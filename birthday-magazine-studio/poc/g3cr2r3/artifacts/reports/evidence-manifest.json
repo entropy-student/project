@@ -40,43 +40,43 @@
   "reports": [
     {
       "path": "artifacts/reports/canary-report.json",
-      "bytes": 7074,
-      "sha256": "7030776a96c804bfc11d018d01654ec579b4c5d8af98c144a5966446a4ce3571"
+      "bytes": 6792,
+      "sha256": "56e9f2e0f7da5e8ad9de119753c2d14fb62885d232201b4d5dc5ba90430bc621"
     },
     {
       "path": "artifacts/reports/cleanup-readback.json",
-      "bytes": 763,
-      "sha256": "c05c278bc330affd47919f2892d7c68d18f11c318c20413ad4c7ecc422d5c6bd"
+      "bytes": 735,
+      "sha256": "4a29e8acb094a4fdb30fc0b4bb77cc9dd0cfea02239a3546f92042246763ca2f"
     },
     {
       "path": "artifacts/reports/final-runtime-readback.json",
-      "bytes": 873,
-      "sha256": "55dba1a7a85dd7cc11faa5fb94a0631362048a42f6e3abcbcf32a941c67ee6b2"
+      "bytes": 872,
+      "sha256": "9396d5f7b2f074e5ea52e8efb3571014d974f112ea4e7f3c2b0e93d4e09a3eaa"
     },
     {
       "path": "artifacts/reports/import-readback.json",
-      "bytes": 1737,
-      "sha256": "509e502a22ef84c0f2bbeeddb2d8345558ff77a3fd0553da78b83724b275b3e0"
+      "bytes": 1691,
+      "sha256": "2b37d94c380a3fddf464cb514fae7dbfb6f87fb40fa9072fd8c88781a1aa37d8"
     },
     {
       "path": "artifacts/reports/resources-before.json",
-      "bytes": 602,
-      "sha256": "24bf9beceec4df8e99e4c8b3fbc5ef2b1adc0eb4e18d83d67a0a8ffc8100fbe9"
+      "bytes": 579,
+      "sha256": "d063ebf6292ff20822c5b76de624d6ed7af097a11a7079800594768da5091914"
     },
     {
       "path": "artifacts/reports/runtime-health.json",
-      "bytes": 1971,
-      "sha256": "d0d85aeea7f92aa91c8ea2c2fdd14fd0c8712f53236da66145215ca49aad9af5"
+      "bytes": 1913,
+      "sha256": "3a4be81f8a0d0650bc4207e0f7eeefcba0dfd7e3cbef75b47fc4c1f0724e7d40"
     },
     {
       "path": "artifacts/reports/runtime-install.json",
-      "bytes": 3085,
-      "sha256": "1db0b9e9617fe63b8bee8090f2581407e319f71cd031cc924eb2a7c9657a9b55"
+      "bytes": 3002,
+      "sha256": "b9d5c9e4718c31b02db6b5b9bb873517e52e81befe19cc58ba6ad8dfb560e26c"
     },
     {
       "path": "artifacts/reports/woocommerce-setup.json",
-      "bytes": 1249,
-      "sha256": "22f606ef568f4eb7f687e3f6532b5bd3983dce0479275b198b13ed550174a3eb"
+      "bytes": 1199,
+      "sha256": "4ed1073456c59cbb3191c5438e29c15244ebbb2b43485fac228dbe3c01e38a21"
     }
   ],
   "generatedFromSyntheticOrPublicStarterDemoData": true,
