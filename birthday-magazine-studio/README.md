@@ -34,7 +34,8 @@
 | G3A WooCommerce commerce/account/private-workspace loop | PASS |
 | G3B PayPal Sandbox + paid entitlement + refund | **PASS** |
 | G3BR1 Payment reconciliation + entitlement/refund closure | **PASS** |
-| G3C UI/UX productization + Owner visual freeze | **CURRENT — Astra Bestselling Author selected** |
+| G3C UI/UX productization + Owner visual freeze | NOT COMPLETE — prior Astra path returned |
+| G3CR2 Blocksy Wedding + WooCommerce compatibility canary | **CURRENT** |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
@@ -53,7 +54,7 @@ G3B Sandbox 闭环已经通过：
 → scoped cleanup PASS
 ```
 
-这仍然**不是 Live/真钱支付证据**。当前 G3C 已选定 **Astra Theme + 免费 “Bestselling Author” starter template** 作为可编辑 WordPress 外壳，同时保留 Good Issue 浏览器本地预览作为核心转化组件；现在进入本地可逆实现，完成后由 Owner 视觉确认并冻结 UI。G4 Live PayPal Canary 继续保持 HOLD。
+这仍然**不是 Live/真钱支付证据**。此前 Astra “Bestselling Author” 的 Block Editor 导入路径已经 RETURN。Owner 现已选择 **Blocksy Theme + Wedding starter（优先 Gutenberg）** 作为新的视觉方向。当前先执行一个最小 G3CR2 兼容性 canary，只验证 Wedding 导入与现有 WooCommerce / Account / Private Workspace 是否冲突；通过后才进入完整 UI 改造与 Good Issue 预览整合。G4 Live PayPal Canary 继续保持 HOLD。
 
 ## 已证明的技术能力
 
