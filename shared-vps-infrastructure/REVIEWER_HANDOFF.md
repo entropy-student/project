@@ -1,5 +1,69 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2E-R1 Runtime Facts Provisionally Accepted / GitHub Evidence Persistence Recovery Open — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+M2B_TEMPORARY_TUNNEL_CANARY=PASS
+M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER=PASS
+M2D_PUBLIC_REGRESSION_AND_OBSERVATION=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=NOT_PROVEN
+M2E_FORMAL_PASS=NO
+
+M2E_R1_RESULT=RETURN_GITHUB_EVIDENCE_PERSISTENCE_UNAVAILABLE
+M2E_R1_RUNTIME_READONLY_CHECKS=PASS_REPORTED
+M2E_R1_CANONICAL_PERSISTENCE=NOT_COMPLETED
+
+CADDY_MOUNT_DIVERGENCE_CLASS=SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE_REPORTED
+RESTART_REINTRODUCTION_RISK=YES_REPORTED
+
+HOST_CADDYFILE=/srv/infra/edge/Caddyfile
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_BYTES=143
+
+CONTAINER_CADDYFILE=/etc/caddy/Caddyfile
+CONTAINER_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+CONTAINER_CADDYFILE_BYTES=199
+
+MOUNT_TYPE=bind
+MOUNT_SOURCE=/srv/infra/edge/Caddyfile
+MOUNT_DESTINATION=/etc/caddy/Caddyfile
+MOUNT_RW=false
+MOUNT_PROPAGATION=rprivate
+
+CURRENT_GATE=M2E_R1_R2_GITHUB_EVIDENCE_PERSISTENCE_RECOVERY
+CURRENT_GATE_STATUS=AUTHORIZED_DOCUMENTATION_ONLY_WITH_READONLY_MISSING_FIELD_RECOVERY
+
+CADDY_MUTATION_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RECREATE_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+The M2E-R1 target-host readback supports a stale single-file bind-mount explanation: the mount source path is the current host Caddyfile, but the container destination still exposes the old 199-byte configuration while the host path is the 143-byte post-retirement configuration; Caddy startup reads `/etc/caddy/Caddyfile`.
+
+The Executor could not persist the R1 result because GitHub transport failed. Reviewer independently re-read the canonical GitHub files afterward and confirmed that no M2E-R1 execution section was appended.
+
+Formal M2E-R1 PASS is therefore withheld only for canonical evidence persistence and completion of omitted required metadata such as exact Caddy container identity and the precise recreate/restart conclusion.
+
+The recovery Gate is documentation-only. If exact required values were not retained, one bounded Hostinger read-only lookup of only those missing fields is permitted. No Caddy/Docker/provider/runtime write is authorized.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2E_R1_RETURN_R2_GITHUB_EVIDENCE_PERSISTENCE_RECOVERY.md`
+
+Recovery packet:
+`review-packets/M2E_R1_R2_GITHUB_EVIDENCE_PERSISTENCE_RECOVERY.md`
+
 ## CURRENT REVIEWER UPDATE — M2E Active Runtime PASS / Restart Persistence NOT PROVEN / M2E-R1 Read-only Reconciliation Open — 2026-09-30
 
 ```text
