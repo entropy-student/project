@@ -79,7 +79,8 @@ G3BR1 Sandbox Reconciliation + Entitlement/Refund       ✅ PASS — closes pare
 G3C UI/UX Productization                               ↩ RETURN — prior Astra Block Editor path failed; parent implementation not complete
 G3CR1 Bestselling Author Elementor Closure               ⏹ SUPERSEDED BEFORE EXECUTION — Owner changed selected template
 G3CR2 Blocksy Wedding + WooCommerce Canary               ↩ RETURN — merged CLI dependency list ambiguous
-G3CR2R1 Wedding Gutenberg Variant Dependency Closure      ⏳ CURRENT — builder-specific metadata query, then resume canary if clean
+G3CR2R1 Wedding Gutenberg Variant Dependency Closure      ↩ RETURN — legacy single-demo endpoint returned false
+G3CR2R2 Wedding v2 Dashboard Catalogue Closure            ⏳ CURRENT — query exact current UI catalogue record, then resume canary if clean
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -116,6 +117,8 @@ Current Reviewer decisions:
 - `REVIEWER_OPENED_G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY_2026-09-30`
 - `REVIEWER_ACCEPTED_G3CR2_DEPENDENCY_AMBIGUITY_RETURN_2026-09-30`
 - `REVIEWER_OPENED_G3CR2R1_VARIANT_DEPENDENCY_CLOSURE_2026-09-30`
+- `REVIEWER_ACCEPTED_G3CR2R1_VARIANT_METADATA_RETURN_2026-09-30`
+- `REVIEWER_OPENED_G3CR2R2_V2_CATALOG_CLOSURE_2026-09-30`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -433,11 +436,12 @@ Status:
 - G3B/G3BR1 are closed with Reviewer PASS.
 - **PR #59 remains accepted historical RETURN evidence for the prior Astra Block Editor path.**
 - The Owner has now superseded Astra Bestselling Author with **Blocksy Wedding**, preferring the Gutenberg variant.
-- **G3CR2 RETURN is accepted. Current Gate: G3CR2R1 Wedding Gutenberg Variant Dependency Closure.**
+- **G3CR2 and G3CR2R1 RETURNS are accepted. Current Gate: G3CR2R2 Wedding v2 Dashboard Catalogue Closure.**
 - Owner decision: `docs/OWNER_DECISION_G3C_BLOCKSY_WEDDING.md`.
 - Research proof: `docs/BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md`.
-- Reviewer decision: `docs/REVIEWER_DECISION_G3CR2_RETURN.md`.
-- Current closure contract: `docs/G3CR2R1_BLOCKSY_WEDDING_VARIANT_DEPENDENCY_CLOSURE.md`.
+- Parent return decision: `docs/REVIEWER_DECISION_G3CR2_RETURN.md`.
+- Latest return decision: `docs/REVIEWER_DECISION_G3CR2R1_RETURN.md`.
+- Current closure contract: `docs/G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md`.
 - Full G3C visual implementation and Good Issue integration remain HOLD until Reviewer accepts the compatibility canary.
 - Owner visual freeze remains pending.
 - G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED** until G3C visual/product review is complete and a separate bounded G4 contract is approved.
@@ -462,6 +466,7 @@ Status:
 - G3C: prior Astra Block Editor implementation attempt RETURN; no product page was built and no visual freeze occurred.
 - G3CR1: SUPERSEDED BEFORE EXECUTION by the Owner’s new template choice.
 - G3CR2: RETURN accepted — `wp blocksy demo list` merges builder variants and did not provide builder-specific dependency proof.
-- G3CR2R1: CURRENT — query exact `Wedding:gutenberg` importer metadata; if Elementor/HT Slider are absent, resume the existing Wedding import + WooCommerce compatibility canary.
+- G3CR2R1: RETURN accepted — legacy `fetch_single_demo(Wedding,gutenberg,all)` returned false and did not expose dependencies.
+- G3CR2R2: CURRENT — use the current dashboard's `v2/demo/get_all` catalogue, select the individual `Wedding` + `gutenberg` record without merging, inspect its own plugin list, then resume the Wedding import + WooCommerce compatibility canary if clean.
 - G4: HOLD — Live/real-money Canary requires G3C completion, a new contract + fresh Owner authorization.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
