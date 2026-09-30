@@ -1,10 +1,14 @@
 # G3CR2R1 — Blocksy Wedding Gutenberg Variant Dependency Closure
 
 > Governance: VPS Project Governance v0.1.6 + current active addenda  
-> Reviewer status: **CURRENT / PROJECT-LOCAL REVERSIBLE CLOSURE AUTHORIZED**  
+> Reviewer status: **RETURN ACCEPTED / SUPERSEDED BY G3CR2R2 — DO NOT EXECUTE**  
 > Production / Live payment authority: **NONE**
 
-## 1. Goal
+## 0. Superseded
+
+PR #61 executed this closure and returned `RETURN_G3CR2R1_VARIANT_METADATA_UNAVAILABLE`. Reviewer accepted the RETURN. The legacy single-demo PHP path is no longer the active dependency source. Current execution is `G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md`.
+
+## 1. Historical Goal
 
 Resolve the only open question from G3CR2:
 
