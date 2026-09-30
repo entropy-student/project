@@ -75,6 +75,8 @@ RETURN_TARGET_HOST_EXECUTION_UNAVAILABLE
 
 Provider-panel recovery route: authenticated Hostinger Browser Terminal / Web Console, bounded metadata/read-only unless a separate mutation Gate authorizes more.
 
+This provider-panel route is **fallback/recovery only**. It is not the normal management path. Normal Shared VPS management should use the verified strict SSH contract whenever that contract is available.
+
 ## 6. Change boundaries
 
 Shared Caddy, cloudflared/Tunnel, shared networks, host 80/443, SSH, UFW and Docker daemon are Shared Infrastructure and require a Shared Infra Gate.
@@ -84,10 +86,13 @@ Owner-only remains required for irreversible deletion, account/identity authoriz
 ## 7. Current status
 
 ```text
-SSH_CONNECTION_CONTRACT=PARTIAL_CANONICAL_METADATA_M1_R1_RECOVERY_OPEN
+SSH_CONNECTION_CONTRACT=PARTIAL_CANONICAL_METADATA_S1_RECOVERY_OPEN
+NORMAL_MANAGEMENT_PATH=STRICT_SSH
+CANONICAL_REMOTE_USER=ops
 HOST_IDENTITY=ACCEPTED_HISTORICAL_srv1970241
-SSH_SERVER_SIDE_HEALTH=PASS_FROM_R1_BASELINE
+SSH_SERVER_SIDE_HEALTH=PASS_FROM_M1_R2_BASELINE
 SSH_ROOT_CAUSE=INSUFFICIENT_EVIDENCE_FOR_PRIOR_INTERMITTENT_CLIENT_FAILURES
-RECOVERY_ROUTE=HOSTINGER_WEB_TERMINAL
-LAST_VERIFIED=2026-09-29
+FALLBACK_RECOVERY_ROUTE=HOSTINGER_WEB_TERMINAL
+CURRENT_GATE=S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT
+LAST_VERIFIED=2026-09-30
 ```
