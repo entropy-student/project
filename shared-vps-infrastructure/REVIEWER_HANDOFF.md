@@ -1,5 +1,59 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — SSH-first Management Restored as Governance Direction / S1 SSH Contract Recovery Open — 2026-09-30
+
+```text
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=NOT_PROVEN
+M2E_FORMAL_PASS=NO
+
+M2E_R1_R3_HOSTINGER_TERMINAL_CAPTURE=STOPPED_INCOMPLETE
+CADDY_CONTAINER_ID=NOT_CAPTURED
+CADDY_CONTAINER_NAME=NOT_CAPTURED
+HOSTINGER_TERMINAL_COMMAND_EXECUTION=UNPROVEN
+M2E_R1_R3_MUTATIONS=0
+
+MANAGEMENT_PATH_POLICY=SSH_FIRST
+NORMAL_VPS_MANAGEMENT_PATH=STRICT_SSH_ops@srv1970241
+HOSTINGER_WEB_TERMINAL_ROLE=FALLBACK_RECOVERY_ONLY
+
+CURRENT_GATE=S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+SSH_NETWORK_INVOCATIONS_AUTHORIZED=1
+SSH_REPAIR_AUTHORIZED=NO
+HOSTINGER_TERMINAL_USE_AUTHORIZED=NO_FOR_S1
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Governance re-review confirmed that the normal Shared VPS path is the canonical SSH connection contract. Hostinger Web Terminal is a provider-panel recovery route only.
+
+The browser-terminal path originally entered at M1-R2 after a single strict SSH probe failed before remote identity. Subsequent Mini Craft Gates reused that recovery path longer than intended. This is now corrected as execution-path drift; prior accepted target-host facts remain valid because they had target identity/readback, but future ordinary VPS management returns to strict SSH after S1 passes.
+
+The attempted M2E-R1-R3 Hostinger identity capture was stopped. The browser terminal showed a visible `root@srv1970241` prompt, but the bounded collection command was not proven executed and no Caddy container ID/name was accepted. No runtime mutation occurred.
+
+S1 first recovers the already-existing non-secret SSH trust metadata from the accepted Owner-workstation bootstrap handoff, validates the key fingerprint and known_hosts pins locally, then permits exactly one strict non-interactive read-only SSH probe as `ops@2.24.193.133:22`. No blind retry is permitted.
+
+After S1 PASS, the exact non-secret SSH trust metadata will be promoted into `SHARED_VPS_HANDOFF.md`, Hostinger Web Terminal remains fallback only, and the unfinished M2E persistence reconciliation resumes through SSH.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT.md`
+
+Execution packet:
+`review-packets/S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT.md`
+
 ## CURRENT REVIEWER UPDATE — M2E-R1 GitHub Persistence RETURN Accepted / Missing Caddy Identity Capture Open — 2026-09-30
 
 ```text
