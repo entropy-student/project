@@ -373,3 +373,28 @@ SSH_NETWORK_INVOCATIONS=1
 MUTATIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — M2E-R1 SSH Persistence Reconciliation Completion — 2026-10-01
+
+- Result: `PASS_CANDIDATE_M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION`.
+- Used canonical strict SSH only; Hostinger Web Terminal was not used.
+- Remote identity: `ops@srv1970241`; SSH exit 0.
+- Caddy container: `/spikersun-edge-caddy-1`, running, restart count 0.
+- Exact bind mount remains `/srv/infra/edge/Caddyfile -> /etc/caddy/Caddyfile`, read-only, rprivate.
+- Host source is 143 bytes / SHA-256 `f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358`, Mini Craft matcher absent.
+- Container-mounted file is still 199 bytes / SHA-256 `cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8`, Mini Craft matcher present.
+- Active Admin config matcher remains absent.
+- Public Mini Craft Home/Shop/REST remain HTTP 200 with TLS verify 0.
+- Classification: `SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE`; restart reintroduction risk YES; plain restart insufficient; recreate required.
+- Minimal proposal recorded only: recreate the existing shared Caddy service/container from its canonical deployment definition to rebind the current host Caddyfile, then regression-verify.
+- No runtime/provider/application mutation occurred.
+
+```text
+CADDY_MOUNT_DIVERGENCE_CLASS=SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE
+RESTART_REINTRODUCTION_RISK=YES
+PLAIN_RESTART_SUFFICIENT=NO
+RECREATE_REQUIRED=YES
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
