@@ -675,5 +675,5 @@ Three actual scheduled service runs reported overall PASS: 09:21:45Z and 09:26:5
 Mutation accounting: one rollback-copy creation, one monitor-script update, and one exact Caddy stop; one Docker mutation (stop) and three bounded VPS actions total. No Caddy deletion, prune, Cloudflare/DNS/Tunnel/provider/database/payment/Unified Pay mutation, Secret output, or unrelated service action occurred. The existing mktemp/EXIT-trap lifecycle was preserved under the accepted ephemeral-only classification.
 
 GITHUB_EVIDENCE_COMMIT=2fe3b6637741c18be4ea79212050f181b7f1a6a8
-GITHUB_EVIDENCE_FRESH_READBACK=TO_BE_VERIFIED
+GITHUB_EVIDENCE_FRESH_READBACK=PASS
 ```
