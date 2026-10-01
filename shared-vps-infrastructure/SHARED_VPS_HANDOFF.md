@@ -41,8 +41,10 @@ Fresh privilege state must be re-read before consequential writes.
 ## 4. Shared infrastructure inventory
 
 ```text
-HOST_PORT_80_443_OWNER=shared Caddy
-REVERSE_PROXY=Caddy
+CADDY_PRODUCTION_ROLE=RETIRED
+CADDY_RUNTIME_CONTAINER=ABSENT
+CADDY_RECOVERY_ASSETS=IMAGE+COMPOSE+CADDYFILE+DATA+CONFIG_RETAINED
+PRODUCTION_INGRESS=cloudflared / Cloudflare Tunnel direct-to-app for verified routes
 TUNNEL=cloudflared
 SHARED_NETWORKS=spikersun-edge;spikersun-private
 ```
@@ -85,7 +87,7 @@ This provider-panel route is **fallback/recovery only**. It is not the normal ma
 
 ## 6. Change boundaries
 
-Shared Caddy, cloudflared/Tunnel, shared networks, host 80/443, SSH, UFW and Docker daemon are Shared Infrastructure and require a Shared Infra Gate.
+cloudflared/Tunnel, retained Caddy recovery assets, shared networks, host 80/443, SSH, UFW and Docker daemon are Shared Infrastructure and require a Shared Infra Gate.
 
 Owner-only remains required for irreversible deletion, account/identity authorization, Secret authority/rotation, real payment/refund and material production enablement.
 
