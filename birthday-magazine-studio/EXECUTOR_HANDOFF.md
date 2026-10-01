@@ -547,3 +547,23 @@ A project-local CSS file skins WooCommerce routes. Product 1113 remains a virtua
 Current screenshots: `poc/g3c/artifacts/screenshots/g3cr5/` (11 PNG files). Machine evidence and image hashes: `poc/g3c/artifacts/reports/g3cr5-final.json`. Execution details and runtime/dependency read-back are appended to `EXECUTION_EVIDENCE.md`.
 
 The local runtime remains up for Owner review at http://127.0.0.1:8189/ (admin: http://127.0.0.1:8189/wp-admin/). No theme, builder, product, checkout/order system, or homepage content was changed. No PayPal, real payment, model/AI, production deployment, Shared Infrastructure, paid purchase, or G4 action occurred. Owner visual freeze remains pending.
+
+## Current execution append — G3CR6 (2026-10-01)
+
+Supersedes the prior frontend candidate only. Historical Gates and Reviewer decisions remain unchanged.
+
+- Result: `PASS_CANDIDATE_G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN`; formal Reviewer acceptance and Owner visual freeze pending.
+- Authorization: Owner G3CR6 request, main `becb2ab9c644649a07327664cfdb5ae975964ba9` G3CR6 contract, latest Handoff, and supplied Option2 reference ZIP.
+- Continue branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, PR #64 open/unmerged. Pre-run HEAD `b3aff79fd74b0a63bc42ff370c8adb1a5eac82ba`; final execution/evidence commit is the enclosing commit in this branch and returned after push.
+- Changed frontend: editable six-group Home, fictional marketing assets, product copy/image, brand CSS across native Woo pages, browser-local Preview UI/replace/remove/error states. No protected backend or compose change.
+- Backup: `poc/g3c/artifacts/backups/g3cr6/`; rollback helper `scripts/restore-g3cr6.php`; detailed steps in `artifacts/reports/g3cr6-execution-notes.md`.
+- Screenshots: `poc/g3c/artifacts/screenshots/g3cr6/` (19 new PNGs). Reports: `g3cr6-final.json`, `g3cr6-browser.json`, `g3cr6-runtime.json`, workspace guard reports, asset provenance and resource read-back.
+- Versions retained: WP7.1.1, Woo11.1.2, Blocksy/Companion2.1.57, Simply Gallery3.4.3, Stackable3.20.2, WPForms Lite2.0.2.1; existing Playwright Core1.62.1/Edge used locally.
+- Preview select/replace/remove/name/age/styles/invalid/corrupt image tests PASS on desktop/375px, blob-local, separate photo/text frames, no upload/external image POST/model call. Four local static GETs per viewport were recorded, not hidden.
+- Native AddCart/quantity/remove/form pages/CTAs PASS, US$39.99 virtual product intact. No Checkout submission or new order. Owner Administrator/core Gutenberg/media/global-style capabilities PASS.
+- Private guard regression: Owner200, unrelated403, guest403 using unchanged handler/in-memory synthetic identities; independent guest HTTP403. No new authenticated login/session claim and no password/cookie read.
+- Asset-generation calls5 (authorized marketing), runtime product/Preview model calls0. Production AI0, PayPal0, real money0, deployment0, Shared Infra0, G4=0, theme/builder changes0, paid purchase0, prune0, merge0.
+- Runtime retained and healthy: http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/ . Owner account retained; credentials omitted.
+- Pre-existing Owner ZIPs and deleted old screenshots excluded from commit. No Reviewer doc changed. Retained local backup/tools only; no teardown.
+
+Next: Reviewer reviews PR #64 and current screenshots; Owner may inspect/edit local site. `OWNER_VISUAL_FREEZE=PENDING`; `STOP_AT_REVIEWER=YES`. Do not enter G4.

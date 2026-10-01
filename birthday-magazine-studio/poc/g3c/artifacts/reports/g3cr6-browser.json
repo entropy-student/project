@@ -1,0 +1,331 @@
+{
+  "gate": "G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN",
+  "errors": [],
+  "pages": [
+    {
+      "kind": "desktop-home",
+      "width": 1440,
+      "viewport": 1440,
+      "brokenImages": 0
+    },
+    {
+      "kind": "mobile-home",
+      "width": 375,
+      "viewport": 375,
+      "brokenImages": 0
+    },
+    {
+      "kind": "product-1440",
+      "width": 1440,
+      "viewport": 1440,
+      "brokenImages": 0
+    },
+    {
+      "kind": "product-375",
+      "width": 375,
+      "viewport": 375,
+      "brokenImages": 0
+    },
+    {
+      "kind": "cart-1440",
+      "width": 1440,
+      "viewport": 1440,
+      "brokenImages": 0
+    },
+    {
+      "kind": "cart-375",
+      "width": 375,
+      "viewport": 375,
+      "brokenImages": 0
+    },
+    {
+      "kind": "checkout-1440",
+      "width": 1440,
+      "viewport": 1440,
+      "brokenImages": 0
+    },
+    {
+      "kind": "checkout-375",
+      "width": 375,
+      "viewport": 375,
+      "brokenImages": 0
+    },
+    {
+      "kind": "account-1440",
+      "width": 1440,
+      "viewport": 1440,
+      "brokenImages": 0
+    },
+    {
+      "kind": "account-375",
+      "width": 375,
+      "viewport": 375,
+      "brokenImages": 0
+    }
+  ],
+  "preview": [
+    {
+      "viewport": "desktop",
+      "coverFrameSeparate": true,
+      "spreadFrameSeparate": true,
+      "blobImages": true,
+      "width": 1132,
+      "clientWidth": 1132,
+      "workbenchColumns": "386.078px 723.922px",
+      "coverTextContained": true,
+      "coverPhotoFit": "cover",
+      "select": true,
+      "replace": true,
+      "remove": true,
+      "invalidTypeRejected": true,
+      "corruptImageRejected": true,
+      "revokedOldBlob": true,
+      "nameAgeStyleUpdates": true,
+      "localStaticGetRequests": 4,
+      "photoUploadRequests": 0,
+      "externalImageRequests": 0,
+      "modelRequests": 0
+    },
+    {
+      "viewport": "mobile375",
+      "coverFrameSeparate": true,
+      "spreadFrameSeparate": true,
+      "blobImages": true,
+      "width": 343,
+      "clientWidth": 343,
+      "workbenchColumns": "343px",
+      "coverTextContained": true,
+      "coverPhotoFit": "cover",
+      "select": true,
+      "replace": true,
+      "remove": true,
+      "invalidTypeRejected": true,
+      "corruptImageRejected": true,
+      "revokedOldBlob": true,
+      "nameAgeStyleUpdates": true,
+      "localStaticGetRequests": 4,
+      "photoUploadRequests": 0,
+      "externalImageRequests": 0,
+      "modelRequests": 0
+    }
+  ],
+  "network": [
+    {
+      "method": "GET",
+      "scheme": "blob",
+      "origin": "browser-local",
+      "path": "<local-object-url>",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "scheme": "blob",
+      "origin": "browser-local",
+      "path": "<local-object-url>",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "scheme": "blob",
+      "origin": "browser-local",
+      "path": "<local-object-url>",
+      "resourceType": "fetch"
+    },
+    {
+      "method": "GET",
+      "scheme": "http",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/783.ab7283116f3102720a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "scheme": "http",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/328.9e358dc63741a0f66a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "scheme": "http",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/318.1cd39a22ca4e96328011.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "scheme": "http",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/non-critical-styles.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "scheme": "blob",
+      "origin": "browser-local",
+      "path": "<local-object-url>",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "scheme": "blob",
+      "origin": "browser-local",
+      "path": "<local-object-url>",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "scheme": "blob",
+      "origin": "browser-local",
+      "path": "<local-object-url>",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "scheme": "blob",
+      "origin": "browser-local",
+      "path": "<local-object-url>",
+      "resourceType": "fetch"
+    },
+    {
+      "method": "GET",
+      "scheme": "http",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/783.ab7283116f3102720a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "scheme": "http",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/328.9e358dc63741a0f66a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "scheme": "http",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/318.1cd39a22ca4e96328011.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "scheme": "http",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/non-critical-styles.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "scheme": "blob",
+      "origin": "browser-local",
+      "path": "<local-object-url>",
+      "resourceType": "image"
+    }
+  ],
+  "checkoutSubmitted": false,
+  "nativeAddToCart": {
+    "status": 200,
+    "success": true
+  },
+  "cartQuantityUpdate": true,
+  "cartRemove": true,
+  "guestWorkspaceHttpStatus": 403,
+  "screenshots": [
+    {
+      "name": "01-desktop-home.png",
+      "sizeBytes": 1345526,
+      "sha256": "cc10e28153bb0cef9185dbd189742050e798d22046f6a8cafd4599a298ca7dd2"
+    },
+    {
+      "name": "02-desktop-hero.png",
+      "sizeBytes": 569827,
+      "sha256": "5d42e3cefd8b00e1bc4fb9ebd3553e95c07c2c9ab6fab8227da30dae8c4d5803"
+    },
+    {
+      "name": "03-desktop-samples.png",
+      "sizeBytes": 550069,
+      "sha256": "97e3a3c61d0188c1244b4b515b3123c00a227e5bd14e0347faadbb84e4c375d4"
+    },
+    {
+      "name": "04-desktop-preview-empty.png",
+      "sizeBytes": 102609,
+      "sha256": "8f338f4031793ea354ed710a01f90f0a2488a9269f00cb0ebc5b9bf99b27e9e2"
+    },
+    {
+      "name": "05-desktop-preview-photo.png",
+      "sizeBytes": 256750,
+      "sha256": "ea641bd0d415ee625f21da699590476b42a9025f51255baca5e908b97e156c7b"
+    },
+    {
+      "name": "06-desktop-offer-faq.png",
+      "sizeBytes": 45231,
+      "sha256": "1a86b5f3b9d3e9f8379e613ab70d57cbf5123901d07193a6dc65c4af9ac98424"
+    },
+    {
+      "name": "07-mobile-home-375.png",
+      "sizeBytes": 722789,
+      "sha256": "e4d0c92d28f0eab250fad93d5ec74c67b3ec0239c8885473514820599e6ab7d4"
+    },
+    {
+      "name": "08-mobile-hero-375.png",
+      "sizeBytes": 208575,
+      "sha256": "77115132274f32fdd3ceb69d25132c6fd43ebc29192839e4f68671f6e44458db"
+    },
+    {
+      "name": "09-mobile-preview-empty-375.png",
+      "sizeBytes": 66369,
+      "sha256": "ad25aab14397537d96d5b69e884f1dbe65fe62dec20025ea9b3146105e7a565f"
+    },
+    {
+      "name": "10-mobile-preview-photo-375.png",
+      "sizeBytes": 177873,
+      "sha256": "7f21218fd2eacd4e4114ded61fa5f110b00ddf5e3bc1943939267609c3108b47"
+    },
+    {
+      "name": "11-mobile-offer-faq-375.png",
+      "sizeBytes": 36454,
+      "sha256": "b0e35f66a2656da3b824262dc7a15be7ff90c89a5afb5f91bab4ca99fe5046e5"
+    },
+    {
+      "name": "12-desktop-product.png",
+      "sizeBytes": 665635,
+      "sha256": "8e4b802f530a18f2518337582d98bfb757b2f5593d2983fb6a9a2d97502bfb70"
+    },
+    {
+      "name": "13-mobile-product-375.png",
+      "sizeBytes": 313793,
+      "sha256": "ab34564e982cf319bf732db561182f89526e07b4a7c4ca1349fa9b25a93c0666"
+    },
+    {
+      "name": "14-desktop-cart.png",
+      "sizeBytes": 73628,
+      "sha256": "acdec6795bed86e891d517e3b67a3e6f0b6e611f7f0df966afbcf1851a7f84ba"
+    },
+    {
+      "name": "15-mobile-cart-375.png",
+      "sizeBytes": 64391,
+      "sha256": "dcdd8036c136f8b659a0b74b6819e8b983cc69d07280086d14c5617d80747760"
+    },
+    {
+      "name": "16-desktop-checkout.png",
+      "sizeBytes": 99255,
+      "sha256": "1f65d95c9eaf9a2f8a802f991d0a3a1a2b43850c8c2b1d03c969d6648ebc393b"
+    },
+    {
+      "name": "17-mobile-checkout-375.png",
+      "sizeBytes": 84513,
+      "sha256": "e17e932997050025d87da142e33988542857d1146928f6b4d172f65c504778ee"
+    },
+    {
+      "name": "18-desktop-account.png",
+      "sizeBytes": 43194,
+      "sha256": "d90c6ca24969d95dec99d491e895250075e6567dea9cdeb80aa28f791407115e"
+    },
+    {
+      "name": "19-mobile-account-375.png",
+      "sizeBytes": 35524,
+      "sha256": "b38e00a57de99353d3a746a58749b45893448149d77407a07218f8cc07d71cd8"
+    }
+  ]
+}
