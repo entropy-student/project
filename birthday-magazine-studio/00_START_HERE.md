@@ -18,7 +18,8 @@ This file is navigation only. It is **not** a second project truth source.
 - **G3CR2R3 compatibility canary: PASS** — Blocksy Wedding Gutenberg imported successfully; WooCommerce product/cart/checkout/account/private-workspace compatibility and Gutenberg editability passed.
 - **G3C implementation is on PR #64.** Reviewer created the PR and closed the GitHub-auth blocker. Final technical PASS is pending only the current corrected screenshot set and independent 375px verification.
 - **Owner visual review: RETURN** — current 17-screenshot package shows fragmented hierarchy, duplicate content, excessive mobile length, and a real 375px Preview clipping defect.
-- **G3CR4 visual consolidation: CURRENT** — retain the accepted technical stack, simplify the homepage to ~6 major sections, use Good Issue as the visual anchor, reduce sample density, remove excessive whitespace/duplication, and make the mobile Preview a true single-column flow.
+- **G3CR4 visual consolidation: PASS** — homepage is now six primary editable sections; sample density/duplicate content/large spacer issues are corrected; 375px Preview is single-column without detected clipping.
+- **G3CR5 visual finish + Woo continuity: CURRENT** — preserve the homepage, fix selected-photo overlap inside the Preview spread, and visually skin Woo Product/Cart/Checkout/My Account so the purchase/account path feels like the same product.
 - **G4 Live PayPal Canary: HOLD / NOT AUTHORIZED**.
 - PayPal Live, real-money payment, production AI provider, production private delivery and production deployment remain unproven.
 
