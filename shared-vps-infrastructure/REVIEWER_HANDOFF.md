@@ -1,5 +1,33 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M5 Owner Authorized After Dujiao Recheck — 2026-10-01
+
+```text
+OWNER_AUTHORIZES_M5=YES
+DUJIAO_UNIFIED_PAY_HISTORICAL_RELATION=YES
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+DUJIAO_UNIFIED_PAY_BLOCKER_FOR_M5=NO
+
+CURRENT_GATE=M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_PROJECT_RUNTIME_WRITE
+
+UNIFIED_PAY_APP_STOP_AUTHORIZED=YES
+UNIFIED_PAY_APP_START_AUTHORIZED=YES_ROLLBACK_ONLY
+UNIFIED_PAY_DB_STOP_AUTHORIZED=NO
+UNIFIED_PAY_CONTAINER_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_TUNNEL_MUTATION_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+```
+
+Dujiao was rechecked before M5. Its historical Unified Pay architecture/extraction material is audit/design history. Current runtime dependency remains NO: payment channels active=0, channel_clients=0, downstream_order_refs=0, deployed Compose/non-secret source have no Unified Pay reference, and current Secret config key/reference classification found no Unified Pay reference.
+
+Decision:
+docs/REVIEWER_DECISION_M5_OWNER_AUTHORIZED_UNIFIED_PAY_APP_ONLY_STOP.md
+
+Execution packet:
+review-packets/M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION.md
+
 ## CURRENT REVIEWER UPDATE — M4B-R1 Historical Unified Pay Record Reconciliation / M5 Rebased — 2026-10-01
 
 Owner-directed inspection of the historical Unified Pay project-space Evidence materially resolves the two M4B unknowns.
