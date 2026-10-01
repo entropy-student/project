@@ -1,5 +1,19 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — Shared VPS Stable / No Proactive Cleanup — 2026-10-01
+
+```text
+M9_XIANYU_RETENTION_RECONCILIATION=CANCELLED_BEFORE_EXECUTION
+CURRENT_GATE=NONE
+SHARED_VPS_OPERATING_MODE=STABLE_RUN_NO_PROACTIVE_CLEANUP
+ACTIVE_PROJECT_CLEANUP_POLICY=DO_NOT_TOUCH_WITHOUT_NEW_NEED
+```
+
+Owner decided no further cleanup of healthy active projects is necessary. Xianyu/Dujiao/Mini Craft remain untouched. Unified Pay remains retired with destructive cleanup frozen. Future cleanup requires a concrete trigger such as disk pressure, security exposure, broken dependency, or an explicit project-specific request.
+
+Decision:
+docs/REVIEWER_DECISION_M9_CANCELLED_SHARED_VPS_STABLE_STATE.md
+
 ## CURRENT REVIEWER UPDATE — M9 Xianyu Retention Reconciliation Open — 2026-10-01
 
 ```text
