@@ -701,3 +701,76 @@ After removal, Mini Craft Home/Shop/wp-json and Shop public endpoint each return
 GITHUB_EVIDENCE_COMMIT=7787a2e30d4fdea802854e88f30fbb527ead93c5
 GITHUB_EVIDENCE_FRESH_READBACK=PASS
 GITHUB_HANDOFF_FRESH_READBACK=PASS
+
+## Current Executor Handoff — M4A Unified Pay Final Retirement Reconciliation — 2026-10-01
+
+- Gate: `M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION`.
+- Result: `PASS_CANDIDATE_M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION`; reconciliation completed, retirement recommendation remains unresolved.
+- Evidence commit: `29f4cd9edb536af5f6120e071d8e0a69f888e08a`; full-content GitHub fresh read-back PASS before this Handoff append.
+- Access: canonical strict SSH to ops@srv1970241; local key/ACL/fingerprint/known_hosts trust checks passed; seven bounded read-only collection calls all exited 0. No Hostinger Terminal, provider call, runtime mutation or local Git-cache workaround.
+
+### Safe caller and activity result
+
+The audit/client/intent join maps the one historical caller reference to the safe generic registration display name `production-client-a`, active, with 2 payment audits and 1 intent. The other active registration `production-client-b` has 0 audits and 0 intents, classified UNUSED in the inspected durable ledger only. Neither generic registration can be reliably mapped to the canonical `gpt-view-plus` / `GPT View+` public-client entry. There is no applications/apps table or caller app-slug/client-type/environment field in the current schema; Alipay provider app_id is not a product app slug and was not exposed or used as one.
+
+The reservation event/idempotency timestamp is 2026-09-14T16:45:03.217077Z; the sole intent/attempt was created at .222972Z; the ambiguous outcome and update was at .234414Z. Both audit events correlate internally to that same intent. These subsecond records are not new independent activity after the whole-second baseline. Fresh aggregate count of created/updated lifecycle rows after the full .234414Z incident window is 0.
+
+### Local ambiguous evidence and historical boundary
+
+Current ledger: 1 created intent, 1 ambiguous/nonterminal provider-create attempt, generic provider_create_ambiguous failure class; provider events/facts/refunds/refund attempts/outbox all 0. Provider reference/handoff and intent metadata are absent. No request-sent/response/HTTP/transport/retryability columns exist. Therefore neither committed nor non-committed is proven from local evidence.
+
+Current app container was created at 17:50:18 UTC after the incident; its retained log has one later startup-time line and no entries in the 16:40–16:50 incident window. Backup metadata shows real-canary preparation files before the attempt and R6 disabled/final/audit files afterward. That supports historical Canary context, but does not prove internal caller ownership or Provider outcome. No backup contents, raw payloads, private IDs or Secret contents/hashes were read/output. The full safe metadata inventory and counts are recorded in Evidence.
+
+### Proposal and remaining blockers
+
+Fresh read-only metadata preserves app/PostgreSQL healthy state, canonical Compose, local app image, project DB/data/backups and read-only Secret-source mounts. Accepted M3B Dujiao dependency NO and pay Tunnel direct origin are carried forward, not rerun. The accepted app-only stop/observe rollback capability remains ready, but the caller's project ownership and the irreducibly ambiguous Provider create remain unresolved. Reviewer must decide their bounded treatment before proposing an Owner-authorized stop. No stop, deletion, new payment, Provider query or Tunnel change is authorized by this result.
+
+```text
+CALLER_APP_ID=UNKNOWN
+CALLER_DISPLAY_NAME=production-client-a
+CALLER_CLIENT_TYPE=UNKNOWN
+CALLER_STATUS=ACTIVE
+CALLER_ENVIRONMENT=UNKNOWN
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+SECOND_REGISTERED_CLIENT_CLASS=UNUSED
+SECOND_CLIENT_CLASS_SCOPE=CURRENT_PAYMENT_INTENT_AND_AUDIT_LEDGER_ONLY
+LIVE_CALLER_LAST_ACTIVITY=2026-09-14T16:45:03.234414Z
+LIVE_CALLER_ACTIVITY_AFTER_2026_09_14=NO
+UNIFIED_PAY_NEW_BUSINESS_ACTIVITY_SINCE_AMBIGUOUS=NO
+UNIFIED_PAY_LATEST_INDEPENDENT_ACTIVITY=NONE
+REQUEST_SENT=UNKNOWN
+PROVIDER_RESPONSE_RECEIVED=UNKNOWN
+HTTP_STATUS_CLASS=UNKNOWN
+TRANSPORT_ERROR_CLASS=UNKNOWN
+PROVIDER_REFERENCE_PRESENT=NO
+PROVIDER_SUCCESS_SIGNAL_PRESENT=NO
+PROVIDER_FAILURE_SIGNAL_PRESENT=UNKNOWN
+ATTEMPT_RETRYABLE=UNKNOWN
+ATTEMPT_TERMINAL=NO
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+AMBIGUOUS_LOCAL_COMMIT_CLASS=IRREDUCIBLY_AMBIGUOUS
+UNIFIED_PAY_STOP_OBSERVE_ROLLBACK_READY=YES
+UNIFIED_PAY_APP_STOP_OBSERVATION_CANDIDATE=UNRESOLVED
+STOP_OBSERVATION_BLOCKERS=CALLER_PROJECT_OWNERSHIP_UNRESOLVED;PROVIDER_CREATE_IRREDUCIBLY_AMBIGUOUS_LOCALLY
+UNIFIED_PAY_RUNTIME_MUTATIONS=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+SECRET_CONTENT_READS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+FILE_DELETIONS=0
+NETWORK_MUTATIONS=0
+BROAD_PRUNE=NO
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+Handoff persistence is verified by a fresh GitHub full-content read after this commit; its commit/readback result is returned to Reviewer. No Reviewer-owned file or historical Gate reference was modified.
