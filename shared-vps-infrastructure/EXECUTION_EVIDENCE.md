@@ -913,3 +913,71 @@ STOP_AT_REVIEWER=YES
 Local trust preflight passed before network access. The existing Owner-workstation identity reference was verified without reading or emitting private-key contents; the derived client public-key fingerprint and recorded known_hosts pins matched the accepted trust metadata. Exactly one strict non-interactive SSH invocation was made to ops@2.24.193.133:22 and exited 0. Remote readback proved hostname srv1970241 and user ops on Ubuntu 24.04.5 LTS.
 
 Direct unprivileged Docker read-only access is not available to ops, while non-interactive sudo is available. This does not block the SSH connection contract: future reviewed Docker operations should use bounded `sudo docker ...` commands rather than assuming direct docker-socket membership. No SSH repair or runtime mutation occurred.
+
+
+## Gate: M2E-R1 SSH Persistence Reconciliation Completion — 2026-10-01
+
+```text
+GATE=M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION
+RESULT=PASS_CANDIDATE_M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+SSH_NATIVE_EXIT=0
+SSH_NETWORK_INVOCATIONS=1
+HOSTINGER_WEB_TERMINAL_USED=NO
+
+CADDY_CONTAINER_ID=793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+CADDY_STATE=running
+CADDY_RESTART_COUNT=0
+
+MOUNT_TYPE=bind
+MOUNT_SOURCE=/srv/infra/edge/Caddyfile
+MOUNT_DESTINATION=/etc/caddy/Caddyfile
+MOUNT_RW=false
+MOUNT_PROPAGATION=rprivate
+
+HOST_CADDYFILE_BYTES=143
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_SOURCE_MINICRAFT_MATCHER=ABSENT
+
+CONTAINER_CADDYFILE_BYTES=199
+CONTAINER_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+CONTAINER_MOUNTED_FILE_MINICRAFT_MATCHER=PRESENT
+
+ACTIVE_ADMIN_CONFIG_MINICRAFT_MATCHER=ABSENT
+CADDY_STARTUP_CONFIG_SOURCE=/etc/caddy/Caddyfile
+
+MINICRAFT_HOME_HTTP=200
+MINICRAFT_HOME_TLS_VERIFY=0
+MINICRAFT_SHOP_HTTP=200
+MINICRAFT_SHOP_TLS_VERIFY=0
+MINICRAFT_WP_REST_HTTP=200
+MINICRAFT_WP_REST_TLS_VERIFY=0
+
+CADDY_MOUNT_DIVERGENCE_CLASS=SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE
+RESTART_REINTRODUCTION_RISK=YES
+PLAIN_RESTART_SUFFICIENT=NO
+RECREATE_REQUIRED=YES
+MINIMAL_RECONCILIATION_PLAN=RECREATE_ONLY_EXISTING_SHARED_CADDY_CONTAINER_OR_SERVICE_FROM_CANONICAL_DEPLOYMENT_DEFINITION_TO_REBIND_CURRENT_HOST_CADDYFILE_THEN_REGRESSION_VERIFY
+
+CADDYFILE_WRITES=0
+CADDY_RELOADS=0
+CADDY_RESTARTS=0
+CADDY_RECREATES=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+PAYMENT_ACTIONS=0
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+### M2E-R1 SSH reconciliation notes
+
+Fresh readback through the restored canonical SSH path reproduced the previously suspected persistence divergence. The host Caddyfile is the 143-byte post-retirement source with no Mini Craft matcher, while the running container's read-only single-file bind destination still exposes the 199-byte pre-retirement baseline containing the matcher. The active Caddy Admin config remains on the correct post-retirement state.
+
+Because Caddy startup reads `/etc/caddy/Caddyfile`, a plain process/container restart can reintroduce the legacy matcher. A plain restart therefore does not reconcile the stale bind reference. The bounded next-step proposal is to recreate only the existing shared Caddy service/container from its canonical deployment definition so the bind mount is re-established against the current host source, then perform full regression verification. No write action was executed in this Gate.
