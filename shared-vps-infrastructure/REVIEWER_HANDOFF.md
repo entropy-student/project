@@ -1,5 +1,26 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M4A PASS / M4B Final Client Provenance Open — 2026-10-01
+
+```text
+M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION=PASS
+CALLER_DISPLAY_NAME=production-client-a
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+UNIFIED_PAY_NEW_BUSINESS_ACTIVITY_SINCE_AMBIGUOUS=NO
+AMBIGUOUS_LOCAL_COMMIT_CLASS=IRREDUCIBLY_AMBIGUOUS
+
+CURRENT_GATE=M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+```
+
+M4B is the final investigative Gate. It reconstructs the canonical reviewed source bundle and checks bootstrap/seed/client provenance. If provenance remains unknown, no further investigation Gate will be opened; Reviewer will present the residual risk for an Owner stop-observation decision.
+
+Decision:
+docs/REVIEWER_DECISION_M4A_PASS_M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL.md
+
+Execution packet:
+review-packets/M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL.md
+
 ## CURRENT REVIEWER UPDATE — M3E PASS / M4A Unified Pay Final Reconciliation Open — 2026-10-01
 
 ```text
