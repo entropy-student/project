@@ -547,3 +547,57 @@ CADDY_RETIREMENT_SAFE=NO
 MUTATIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+## Current Executor Handoff — M3C Caddy + Unified Pay Retirement Blocker Closure — 2026-10-01
+
+- Gate: `M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE`
+- Result: `PASS_CANDIDATE_M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE`
+- Evidence commit: `af3797e80f4fd2daaaeece5e4a0bfb41087b857e`
+- Access: canonical strict SSH to `ops@srv1970241`; native exit 0.
+
+### Findings
+
+- Fresh DB aggregates show 1 recent caller reference, 2 payment audit events, and 1 created intent / 1 ambiguous provider-create attempt. Both audit events internally correlate to that same intent; no independent later business activity was found. Registration metadata could not safely map the caller to a known internal project or test/canary, so `LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN` and `LIVE_CALLER_RETIREMENT_BLOCKER=YES`.
+- Deployed source screening did not prove an isolated Alipay order/status query path or protected-credential reuse. No Provider query was performed; the ambiguous state remains `UNRESOLVED`.
+- The 5-minute enabled health timer runs a fail-fast oneshot script with a single Caddy-dependent `https://localhost:443` probe. It already checks host/Docker/cloudflared/private-network semantics. A minimal replacement is sealed: retain those checks and replace localhost with verified-TLS public Mini Craft Home/Shop/wp-json and Shop endpoint probes; probe Pay only while Unified Pay remains intentionally active.
+- Unified Pay app-only stop/observe recovery is ready: app and healthy PostgreSQL identities are known; canonical Compose exists and matches runtime labels; current app image is local; data, backup namespace, and mounted Secret sources are present by metadata; exact pay Tunnel route is carried forward from accepted M3B readback. Future observation must preserve DB/data/backups/Secrets/image/Compose/Tunnel and is not authorized by this Gate.
+
+### Gate result fields
+
+```text
+UNIFIED_PAY_LIVE_CALLERS=1
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+LIVE_CALLER_LAST_ACTIVITY=2026-09-14T16:45:03Z
+LIVE_CALLER_ACTIVITY_AFTER_AMBIGUOUS_WINDOW=NO
+LIVE_CALLER_RETIREMENT_BLOCKER=YES
+PROVIDER_QUERY_PATH_PROVEN_READONLY=NO
+PROVIDER_QUERY_PERFORMED=NO
+PROVIDER_QUERY_COUNT=0
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+CADDY_MONITOR_REPLACEMENT_PLAN=SEALED
+CURRENT_CADDY_DEPENDENT_PROBE=https://localhost:443
+CADDY_DEPENDENT_PROBE_REMOVABLE=YES
+UNIFIED_PAY_STOP_OBSERVE_ROLLBACK_READY=YES
+ROLLBACK_RESTART_SOURCE=existing canonical Compose project unified-pay, service app only; current image local
+DATA_PRESERVATION_PLAN=SEALED
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+MONITOR_CONFIG_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+FILE_DELETIONS=0
+NETWORK_MUTATIONS=0
+BROAD_PRUNE=NO
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+Do not stop/remove Unified Pay or Caddy, modify the health monitor, or enter a decommission Gate until Reviewer decision.
