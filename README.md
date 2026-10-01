@@ -8,7 +8,7 @@
 
 [English](./README_EN.md)
 
-![Projects](https://img.shields.io/badge/projects-11-blue?style=flat-square)
+![Projects](https://img.shields.io/badge/projects-12-blue?style=flat-square)
 ![Language](https://img.shields.io/badge/language-中文%20%2B%20English-success?style=flat-square)
 ![Status](https://img.shields.io/badge/status-active-orange?style=flat-square)
 
@@ -31,6 +31,7 @@
 | 🎁 **Birthday Magazine Studio（生日纪念杂志）** | 将送礼者提供的照片和回忆变成可预览、可交付的个性化生日杂志 | Personalized Gift / Publishing | **G2A1 Component PoC** | [进入](./birthday-magazine-studio/) |
 | 🍲 **Family Cookbook Studio（家庭食谱成书）** | 将家庭手写食谱、旧菜谱卡和相关记忆保真整理成可校对、可交付的家庭食谱书 | Personalized Publishing / Family Archive | **G2A1 OCR PoC** | [进入](./family-cookbook-studio/) |
 | 🎭 **AI Story Showrunner（AI故事总导演系统）** | 将 AI 热点/概念转译为普通人可看的故事，并统一编排选题、故事、文案、分镜、生图、视频与反馈 Worker | Content Operating System / Orchestration | **G1 Contracts** | [进入](./ai-story-showrunner/) |
+| 🌐 **VPN Network Optimization（可迁移 VPN 网络优化）** | 优化自建 VPN 的稳定性、尾部延迟与长任务表现，并固化成可迁移到不同 VPS 的标准部署/回滚方案 | Network Infrastructure / VPN | **G1 Foreground-safe Foundation** | [进入](./vpn-network-optimization/) |
 
 ---
 
