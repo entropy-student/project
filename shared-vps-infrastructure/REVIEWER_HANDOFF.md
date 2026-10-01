@@ -1,5 +1,36 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M3D-R1 PASS / M3E Caddy Decommission Owner Checkpoint — 2026-10-01
+
+```text
+M3D_R1_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION=PASS
+
+CADDY_PRODUCTION_ROLE=RETIRED
+CADDY_RUNTIME_STATE=STOPPED_RETAINED_FOR_ROLLBACK
+CADDY_DECOMMISSION_CANDIDATE=YES
+
+PUBLIC_TUNNEL_REGRESSION=PASS
+MONITOR_SCHEDULED_RUNS_PASS=3
+UNIFIED_PAY_MUTATIONS=0
+
+CURRENT_GATE=M3E_CADDY_RUNTIME_DECOMMISSION_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+
+CADDY_CONTAINER_REMOVE_AUTHORIZED=NO
+CADDY_IMAGE_DELETE_AUTHORIZED=NO
+CADDY_CONFIG_DELETE_AUTHORIZED=NO
+CADDY_DATA_DELETE_AUTHORIZED=NO
+SPIKERSUN_EDGE_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_MUTATION_AUTHORIZED=NO
+```
+
+Reviewer accepted Evidence commit 2fe3b6637741c18be4ea79212050f181b7f1a6a8 and Handoff commit a5f01ccd4aea9f0351f20e9aca3c132f4dcc4238.
+
+Caddy is now stopped and has been proven unnecessary for the checked production ingress paths. The next proposed phase removes only the stopped Caddy container while preserving its image, Compose source, config, data and shared network for rollback. Prior Owner authorization explicitly prohibited deletion, so a new deletion checkpoint is required.
+
+Decision:
+docs/REVIEWER_DECISION_M3D_R1_PASS_M3E_CADDY_DECOMMISSION_CHECKPOINT.md
+
 ## CURRENT REVIEWER UPDATE — M3D RETURN Accepted / R1 Resume Authorized — 2026-10-01
 
 ```text
