@@ -4,7 +4,7 @@
 > Governance: `vps-project-governance v0.1.6` + Governance Source Policy rev1 + Production Provider Canary/Recovery Contract rev2  
 > Executor facts: `EXECUTOR_HANDOFF.md`  
 > Detailed evidence: `EXECUTION_EVIDENCE.md`  
-> Last reviewed: 2026-09-30
+> Last reviewed: 2026-10-01
 
 ## 1. Project Goal
 
@@ -45,7 +45,7 @@ Governance rules are sourced from GitHub `entropy-student/spike.skill/vps-projec
 - Payment evidence boundary: Mini Craft is an implementation/reference path only; its current state does not prove Birthday Magazine Live payment.
 - Free-value path: deterministic browser-local preview only; **0 LLM / vision / image-generation Token**.
 - Paid entitlement boundary: model generation is permitted only after server-side WooCommerce/PayPal paid state is confirmed **and** required intake is complete.
-- Frontend foundation: **Blocksy Theme + Wedding Gutenberg starter — OWNER SELECTED / COMPATIBILITY PASS on 2026-09-30**. G3CR2R3 proved importability, Gutenberg editability and WooCommerce/account/private-workspace compatibility. Full G3C productization is now CURRENT. The custom Good Issue-style browser-local Free Preview remains the accepted core conversion component. Final visual freeze still requires Owner review after implementation.
+- Frontend foundation: **Blocksy Theme + Wedding Gutenberg starter — OWNER SELECTED / COMPATIBILITY PASS on 2026-09-30**. G3CR2R3 proved importability, Gutenberg editability and WooCommerce/account/private-workspace compatibility. G3CR4 and G3CR5 passed their bounded visual/regression scopes. The Owner did not accept the G3CR5 appearance as final freeze and on 2026-10-01 selected **Option 2 — Warm Birthday Gift** as the visual north star. **G3CR6 is CURRENT / OWNER AUTHORIZED**: high-fidelity image generation is allowed for frontend assets; user-visible frontend experience (including Free Preview upload UI) may be redesigned; changed frontend behavior requires regression; WooCommerce/payment/order/account/private-workspace/entitlement/database/production-provider backend behavior is protected by default. Final visual freeze remains pending after G3CR6 Reviewer acceptance.
 - Owner visual editing requirement: full G3C must leave the main page directly editable in WordPress/Gutenberg with Owner Administrator access. Credentials must remain outside GitHub/evidence; no persistent password may be committed.
 - Storelly: **REJECTED for the current free-preview path**.
 - Post-payment photo intake: Vanquish Upload Files is a **registered-account reuse candidate**. Its guest-issued secure file link replayed outside the intended guest context, so the guest-private path is **REJECTED AS-IS**.
@@ -87,7 +87,8 @@ G3C Blocksy Wedding UI/UX Productization                  ↩ INTERIM RETURN —
 G3CR3 Current Visual Evidence Closure                     ⏹ SUPERSEDED — Owner supplied current screenshots; visual review returned
 G3CR4 G3C Visual Consolidation                            ✅ PASS — homepage hierarchy + 375px preview corrected
 G3CR5 Visual Finish + WooCommerce Continuity              ✅ PASS — Preview composition + Woo visual continuity accepted
-G3C Owner Visual Checkpoint                               ⏳ CURRENT — Owner reviews local site and accepts freeze or requests bounded edits
+G3C Owner Visual Checkpoint                               ⏹ RESOLVED — Owner chose Option B / further redesign; no visual freeze
+G3CR6 Frontend Experience + Brand Redesign                ⏳ CURRENT — Owner-authorized Warm Birthday Gift redesign; frontend open, backend protected
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -137,6 +138,10 @@ Current Reviewer decisions:
 - `REVIEWER_OPENED_G3CR5_VISUAL_FINISH_WOO_CONTINUITY_2026-10-01`
 - `PASS_G3CR5_VISUAL_FINISH_WOO_CONTINUITY_2026-10-01`
 - `REVIEWER_OPENED_G3C_OWNER_VISUAL_CHECKPOINT_2026-10-01`
+- `OWNER_REQUESTED_G3CR6_FURTHER_VISUAL_REDESIGN_2026-10-01`
+- `OWNER_SELECTED_G3CR6_OPTION2_WARM_BIRTHDAY_GIFT_2026-10-01`
+- `OWNER_AUTHORIZED_G3CR6_HIGH_FIDELITY_IMAGE_GENERATION_2026-10-01`
+- `REVIEWER_OPENED_G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN_2026-10-01`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -461,7 +466,7 @@ Status:
 - Latest return decision: `docs/REVIEWER_DECISION_G3CR2R1_RETURN.md`.
 - Dependency PASS decision: `docs/REVIEWER_DECISION_G3CR2R2_DEPENDENCY_PASS.md`.
 - Current execution contract: `docs/G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY.md`.
-- Full G3C visual implementation and Good Issue integration remain HOLD until Reviewer accepts the compatibility canary.
+- G3CR6 frontend experience / brand redesign is the current execution Gate. The G3CR2R3 compatibility canary and G3CR4/G3CR5 bounded PASS evidence remain historical accepted baselines, subject to fresh regression for any frontend behavior G3CR6 changes.
 - Owner visual freeze remains pending.
 - G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED** until G3C visual/product review is complete and a separate bounded G4 contract is approved.
 - Production AI interface details remain deferred until the Owner supplies them.
@@ -492,6 +497,7 @@ Status:
 - G3CR3: SUPERSEDED — Owner supplied a current 17-screenshot review package directly. Reviewer completed visual review from those screenshots.
 - G3CR4: PASS — homepage consolidated to six primary editable sections; sample density reduced; mobile page materially shortened; 375px Good Issue preview is single-column with no detected clipping/overflow; functional Woo path and Owner editing preserved.
 - G3CR5: PASS — selected-photo Preview uses a dedicated frame with no text overlap on desktop/375px; Product/Cart/Checkout/My Account now share the accepted editorial visual system; homepage regression and Owner editability preserved.
-- G3C Owner Visual Checkpoint: CURRENT — no further technical visual work is authorized by default. Owner must either explicitly accept the current visual freeze or name bounded changes. PR #64 stays open/unmerged; G4 stays HOLD.
+- G3C Owner Visual Checkpoint: RESOLVED — Owner selected the change path rather than accepting visual freeze.
+- G3CR6: CURRENT / OWNER AUTHORIZED — Option 2 Warm Birthday Gift is the visual north star; high-fidelity image generation is authorized; frontend experience may be redesigned including upload/Preview UI; changed frontend behavior must be re-tested; protected backend Woo/payment/order/account/private-workspace/entitlement/database/provider semantics must not be replaced. PR #64 stays open/unmerged; Owner visual freeze remains PENDING; G4 stays HOLD.
 - G4: HOLD — Live/real-money Canary requires G3C completion, a new contract + fresh Owner authorization.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
