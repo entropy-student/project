@@ -8,6 +8,8 @@
 secrets/
 generated/
 logs/
+*.dpapi
+hysteria2-server.yaml
 
 # Local editor / OS noise
 .DS_Store

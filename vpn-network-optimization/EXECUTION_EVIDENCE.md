@@ -2,7 +2,9 @@
 
 > G1 evidence is metadata-only. No private key, password, token, certificate key, or other Secret value is recorded.
 
-## Execution boundary
+The initial G1 sections below preserve historical preflight evidence. Current G2-A deployment and post-deployment read-back are recorded in the later G2-A sections.
+
+## G1 historical execution boundary
 
 ```text
 GATE=G1_FOREGROUND_SAFE_FOUNDATION
@@ -144,7 +146,7 @@ HY2_READY=BLOCKED_WITH_EXACT_REASON
 CLASH_VERGE_INTEGRATION_PLAN_READY=YES
 ```
 
-## G2-A fresh execution evidence (2026-10-01)
+## G2-A pre-authorization read-only evidence (historical; 2026-10-01)
 
 The following is a new read-only G2-A read-back and local template validation. Historical G1 evidence above is unchanged; G1 was not rerun.
 
@@ -225,5 +227,179 @@ SECRET_VALUES_EMITTED=0
 SECRET_VALUES_COMMITTED=0
 HY2_READY=BLOCKED_WITH_EXACT_REASON (Secret authorization and Cloud Firewall read-back)
 G2B_ENTERED=NO
+```
+
+## G2-A completed deployment and verification (2026-10-02)
+
+```text
+GATE=G2A_SIDE_BY_SIDE_HYSTERIA2
+G1_REEXECUTED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+README_MODIFIED=NO
+TARGET_HOST_VERIFIED=YES
+TARGET_PUBLIC_IP=24.199.118.137
+TARGET_HOSTNAME=ubuntu-s-1vcpu-512mb-10gb-sfo3
+TARGET_DO_REGION=sfo3
+TARGET_OS=Ubuntu 24.04.5 LTS
+TARGET_KERNEL=6.8.0-142-generic
+TARGET_WAN=eth0
+FOREGROUND_TASK_INTERRUPTION=NO
+WG_PRESERVED=YES
+WG_SERVICE=enabled+active
+WG_MTU=1420
+WG_LISTEN_PORT=51820/udp; still listening
+WG_ROUTE=10.66.21.0/24 dev wg0; still present
+DEFAULT_ROUTE=24.199.112.1 dev eth0; unchanged
+IPV4_FORWARDING=1; unchanged
+UDP_8443=HYSTERIA_LISTENING
+CURRENT_TRAFFIC_SWITCHED=NO
+WINDOWS_ROUTE_CHANGED=NO
+WINDOWS_WG_CHANGED=NO
+CLASH_PROFILE_IMPORTED_OR_ENABLED=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_ENABLED_OR_CHANGED=NO
+LIVE_SYSTEM_TUNING_APPLIED=NO
+G2B_ENTERED=NO
+STOP_AT_REVIEWER=YES
+```
+
+Host, server, and client read-back:
+
+```text
+HY2_BINARY_VERSION=v2.12.3
+HY2_BINARY_SHA256=8c7a68a906998b747a0db87586e364f995fbfddb95693ae6e2fdb68a6e920d3e
+HY2_BINARY_SHA256_VERIFIED=YES
+HY2_SERVICE=hysteria2-vpn-network-optimization.service
+HY2_SERVICE_ACTIVE=YES
+HY2_SERVICE_ENABLED=YES
+HY2_RUNTIME_ACCOUNT=hy2-vpn; system account; shell=/usr/sbin/nologin; home=/nonexistent
+HY2_UDP_8443_LISTENING=YES; socket owned by Hysteria service PID
+HY2_SERVICE_OWNED_LISTEN_PORTS=8443
+SERVER_YAML_PARSE=PASS (remote PyYAML; auth file matched config in memory)
+SYSTEMD_UNIT_VERIFY=PASS (systemd-analyze verify)
+HYSTERIA_CLI_HELP=PASS
+SERVICE_STDOUT=null
+SERVICE_STDERR=null
+RUNTIME_READ_TLS_KEY_CERT_CONFIG=YES
+RUNTIME_READ_AUTH_FILE=NO
+CLIENT_HANDSHAKE_TESTED=NO
+PERFORMANCE_TESTED=NO
+```
+
+Authorized remote file metadata; Secret values and config contents were not recorded:
+
+| Path | Owner:group | Mode | Bytes | Notes |
+|---|---|---:|---:|---|
+| `/srv/data/vpn-network-optimization/secrets/hy2-auth` | `root:root` | `0600` | 64 | OpenSSL CSPRNG 32-byte hex; value not recorded |
+| `/srv/data/vpn-network-optimization/secrets/server.key` | `root:hy2-vpn` | `0640` | 227 | OpenSSL P-256 private key; value not recorded |
+| `/srv/data/vpn-network-optimization/secrets/server.crt` | `root:root` | `0644` | 644 | Self-signed; SAN `DNS=hy2.sfo3-a.invalid` |
+| `/srv/apps/vpn-network-optimization/config/hysteria2-server.yaml` | `root:hy2-vpn` | `0640` | 271 | Secret-bearing runtime config; excluded from Git |
+| `/usr/local/lib/vpn-network-optimization/hysteria` | `root:root` | `0755` | 23003298 | Official v2.12.3 binary |
+| `/etc/systemd/system/hysteria2-vpn-network-optimization.service` | `root:root` | `0644` | 506 | Independent project unit |
+
+`/srv/data` and `/srv/apps` did not exist on the target. They were created as `root:root 0755`; no pre-existing shared parent directory was modified. Project-specific directories are confined to this project. The rollback helper removes the project unit, runtime config, and binary; it preserves the Secret directory and does not touch WireGuard, routes, NAT, or firewall.
+
+TLS/client metadata:
+
+```text
+TLS_CERT_TYPE=self-signed P-256
+TLS_CERT_SAN=DNS:hy2.sfo3-a.invalid
+TLS_CERT_SHA256_FINGERPRINT=8A:8D:50:5F:DF:80:DB:76:C6:76:39:5A:86:E4:9D:81:8E:A1:5B:76:64:ED:70:30:8C:29:60:9C:23:74:1F:18
+TLS_PRIVATE_KEY_MATCHES_CERT=YES
+TLS_CERT_VALID_NOW=YES
+CLASH_VERGE_VERSION=2.5.6
+MIHOMO_STABLE=Mihomo Meta v1.19.31; HY2+fingerprint parser PASS
+MIHOMO_ALPHA=Mihomo Meta alpha-f103639; HY2+fingerprint parser PASS
+MIHOMO_ACTIVE_CORE_PROCESS=NONE
+CLIENT_CONFIG=config/clash/sfo3-a-hy2.yaml
+CLIENT_CONFIG_SERVER=24.199.118.137:8443
+CLIENT_CONFIG_SNI=hy2.sfo3-a.invalid
+CLIENT_CONFIG_FINGERPRINT_PIN=YES
+CLIENT_AUTH_VALUE=LOCAL_SECRET_INJECTION_REQUIRED_PLACEHOLDER
+CLIENT_CONFIG_PARSE_STABLE_AND_ALPHA=PASS
+CLIENT_CONFIG_IMPORTED_OR_ENABLED=NO
+```
+
+The non-sensitive client fragment contains the VPS IP, UDP port, local SNI, public certificate fingerprint, and auth-injection placeholder only. It passed parser tests with both installed Mihomo cores and was not imported into Clash Verge.
+
+Windows foreground/network read-back:
+
+```text
+WINDOWS_WIREGUARD_MANAGER=Running
+WINDOWS_WIREGUARD_TUNNEL=Running
+WINDOWS_WIREGUARD_ADAPTER=SFO2-A Up
+WINDOWS_DEFAULT_ROUTE_ADAPTERS=SFO2-A,WLAN
+CLASH_VERGE_SERVICE=Running
+WINDOWS_SYSTEM_PROXY_ENABLE=0
+WINDOWS_WINHTTP_PROXY=Direct
+CLASH_OR_MIHOMO_TUN_ADAPTERS=0
+ACTIVE_MIHOMO_CORE_PROCESSES=0
+FOREGROUND_TASK_INTERRUPTION=NO
+```
+
+Linux networking regression read-back:
+
+```text
+UFW=inactive
+CLOUD_FIREWALL=NO_CLOUD_FIREWALL_ATTACHED (Owner-confirmed)
+NAT_MASQUERADE_RULES=1; no rule changed
+ETH0_QDISC=fq_codel
+TCP_CONGESTION_CONTROL=cubic
+TCP_BBR_ACTIVE=NO
+GENERIC_GRO=on
+RX_GRO_LIST=off
+RX_UDP_GRO_FORWARDING=off
+LIVE_QDISC_SYSCTL_BBR_GRO_MTU_CHANGE=NO
+```
+
+The fresh post-deployment read-back found the target default route, `wg0` route, forwarding, UDP 51820 listener, qdisc, congestion control, firewall/NAT count, and offload states unchanged. No client-side Hysteria handshake was attempted; no performance or G2-B test was run.
+
+```text
+MEM_AVAILABLE_BEFORE_DEPLOYMENT_OBSERVATION_KB=292280
+MEM_AVAILABLE_AFTER_DEPLOYMENT_KB=260452
+MEM_AVAILABLE_NET_INTERVAL_CHANGE_KB=-31828 (not attributed solely to HY2)
+HY2_PROCESS_RSS_KB=21596
+CPU_DELTA=NOT_CAPTURED
+```
+
+DPAPI recovery read-back:
+
+```text
+DPAPI_SCOPE=CurrentUser
+DPAPI_PENDING_PATH=%LOCALAPPDATA%\vpn-network-optimization\recovery\hy2-g2a.pending.dpapi
+DPAPI_PENDING_CREATED_AND_BYTE_IDENTITY_ROUNDTRIP=PASS
+DPAPI_FINAL_PATH=%LOCALAPPDATA%\vpn-network-optimization\recovery\hy2-g2a.dpapi
+DPAPI_FINAL_EXISTS=YES
+DPAPI_FINAL_BYTES=1206
+DPAPI_FINAL_BYTE_IDENTITY_ROUNDTRIP=PASS
+DPAPI_RECOVERY_DIR_ACL=inheritance disabled; only current Owner SID
+DPAPI_FINAL_FILE_ACL=inheritance disabled; only current Owner SID
+DPAPI_PENDING_EXISTS_AFTER_PROMOTION=NO
+DPAPI_PAYLOAD=HY2 auth + TLS private key + TLS certificate only; runtime YAML excluded
+RECOVERY_FAILURE_DOMAIN=VPS and this Windows CurrentUser profile lost simultaneously means artifact unrecoverable (Owner-accepted)
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_LOGGED=0
+SECRET_VALUES_COMMITTED=0
+```
+
+Execution notes: the first deployment attempt stopped because `/srv/data` and `/srv/apps` were missing; only the authorized no-login account had been created, with no Secret files or project service paths yet. A later provisioner read-back initially mis-indexed `ss -p` columns. The parser was corrected; an independent fresh read-only verification then passed for service, file permissions, TLS key/certificate match and fingerprint, listeners, runtime access, WireGuard, and routes. The DPAPI pending artifact was promoted only after that successful verification.
+
+```text
+TARGET_HOST_VERIFIED=YES
+YAML_PARSE_VALIDATED=YES
+MIHOMO_HY2_SUPPORT_VERIFIED=YES
+HY2_READY=YES
+HY2_INSTALLED=YES
+HY2_SERVICE_ACTIVE=YES
+HY2_UDP_8443_LISTENING=YES
+CLIENT_CONFIG_READY=YES
+ROLLBACK_READY=YES
+CURRENT_TRAFFIC_SWITCHED=NO
+LIVE_SYSTEM_TUNING_APPLIED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+G2B_ENTERED=NO
+PASS_CANDIDATE=PASS_CANDIDATE_G2A_HY2_SIDE_BY_SIDE
+STOP_AT_REVIEWER=YES
 ```
 
