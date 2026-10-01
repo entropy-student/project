@@ -14,7 +14,7 @@
 
 ## 当前基线
 
-- 当前主力 VPS：DigitalOcean SFO2-A
+- 当前主力 VPS：DigitalOcean `24.199.118.137`；历史本地标签为 `SFO2-A`，fresh DigitalOcean metadata 实际 region 为 `sfo3`
 - 当前公网 IP：`24.199.118.137`
 - 当前主通道：WireGuard
 - 当前客户端：Windows；已安装 Clash Verge（具体版本 / Mihomo 内核版本待 G1 fresh read-back）
@@ -71,8 +71,8 @@
 
 ```text
 P0  研究、范围冻结、立项            ✅
-G1  无干扰基线 + 可迁移第一版       ← CURRENT
-G2  安全窗口验证 + v1 封板           ⏳
+G1  无干扰基线 + 可迁移第一版       ✅ PASS
+G2  安全窗口验证 + v1 封板           ← NEXT
 ```
 
 G2 完成后即视为 MVP 完成。未来更换 VPS 使用同一模板部署并做 Provider Validation，不重新堆叠大量 Gate。
