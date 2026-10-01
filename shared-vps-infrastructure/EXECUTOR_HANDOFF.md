@@ -601,3 +601,45 @@ STOP_AT_REVIEWER=YES
 ```
 
 Do not stop/remove Unified Pay or Caddy, modify the health monitor, or enter a decommission Gate until Reviewer decision.
+
+
+## Current Executor Handoff — M3D Caddy Monitor Migration + Stop Observation — 2026-10-01
+
+- Gate: `M3D_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION`
+- Result: `RETURN_M3D_MONITOR_SIDE_EFFECTS_UNRESOLVED`
+- Evidence commit: `bfdfa18e10bea8727b6f546e5359fac266595e6d`
+- Strict SSH: target identity `srv1970241`, SSH principal `ops@2.24.193.133:22`, native exit 0; privileged read-only metadata inspection used `sudo`.
+
+### Preflight result
+
+- Timer and service files were read-only inspected; timer is active/enabled; the oneshot service is inactive between runs with last result success/exit 0.
+- Monitor script is root:root mode 0750, 3330 bytes, SHA-256 `cc466266a0f7de19badf7cbe6601a4cb01fc8b1ae661e1e68d6346e7ce29daf1`.
+- No external mail/chat/webhook notification, HTTP POST/provider write, or automatic service/container remediation was found.
+- The script does create/write a temporary response-body file under `/tmp` via `mktemp`, then removes it on EXIT. This is a non-logging state-write side effect. The Gate's side-effect screen therefore failed closed before backup or script mutation.
+- Fresh baseline: Caddy container `/spikersun-edge-caddy-1` running, restart count 0; cloudflared running count 1; `spikersun-private` present. Mini Craft Home, Shop, wp-json and `shop.spikersun.com/` each returned HTTP 200 with TLS verify result 0.
+- No rollback copy was created; monitor was not manually run; scheduled observations were not started; Caddy was not stopped. Unified Pay and all other services remain untouched.
+
+### Result fields
+
+```text
+MONITOR_EXTERNAL_NOTIFICATION=NO
+MONITOR_AUTO_REMEDIATION=NO
+MONITOR_NONLOG_STATE_WRITES=YES
+MONITOR_SIDE_EFFECT_SCREEN=BLOCKED
+ROLLBACK_COPY_CREATED=NO
+MONITOR_SCRIPT_MUTATION=0
+MANUAL_MONITOR_RUN=NOT_STARTED
+SCHEDULED_MONITOR_RUNS=0
+CADDY_STATE=running
+CADDY_STOP_ACTIONS=0
+CADDY_DELETIONS=0
+UNIFIED_PAY_MUTATIONS=0
+VPS_RUNTIME_MUTATIONS=0
+DOCKER_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_OUTPUT=0
+STOP_AT_REVIEWER=YES
+```
+
+Reviewer disposition is required for the pre-existing temporary-file lifecycle before M3D can proceed. No next Gate was entered.
