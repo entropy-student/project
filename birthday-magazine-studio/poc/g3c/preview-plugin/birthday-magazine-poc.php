@@ -30,8 +30,19 @@ add_action('wp_enqueue_scripts', function () {
 	if (is_front_page()) {
 		wp_enqueue_style('bms-g3cr4-home', plugins_url('g3cr4-home.css', __FILE__), ['bms-g3c-mobile'], '0.1.0');
 	}
+	wp_enqueue_style('bms-g3cr5-preview', plugins_url('g3cr5-preview.css', __FILE__), ['bms-g3c-mobile'], '0.1.0');
 	wp_enqueue_script('bms-g3c-preview', plugins_url('preview.js', __FILE__), [], '0.2.0', true);
 });
+
+add_action('wp_enqueue_scripts', function () {
+	if (!function_exists('is_woocommerce')) {
+		return;
+	}
+
+	if (is_woocommerce() || is_cart() || is_checkout() || is_account_page()) {
+		wp_enqueue_style('bms-g3cr5-commerce', plugins_url('g3cr5-commerce.css', __FILE__), [], '0.1.0');
+	}
+}, 99);
 
 add_shortcode('bms_preview', function ($atts) {
 	$atts = shortcode_atts(['product_id' => 0], $atts, 'bms_preview');
@@ -95,7 +106,7 @@ add_shortcode('bms_preview', function ($atts) {
 						</div>
 						<div class="bms-spread">
 							<article class="bms-page-sheet"><span class="bms-page-kicker">A VERY GOOD YEAR</span><h3>The story so far.</h3><p data-bms-story>Thirty looks good on you, Taylor. Here’s to everything you’ve made, the people who make you laugh, and the best chapters still ahead.</p><small>04</small></article>
-							<article class="bms-page-sheet bms-photo-sheet"><div class="bms-spread-art" data-bms-spread-art></div><img class="bms-spread-photo" data-bms-image alt="Your local sample spread photo" hidden><span class="bms-page-kicker">A NOTE FOR THE NEXT CHAPTER</span><h3>More life.<br>More stories.</h3><p>Keep making it your own.</p><small>05</small></article>
+							<article class="bms-page-sheet bms-photo-sheet"><div class="bms-spread-photo-frame"><div class="bms-spread-art" data-bms-spread-art></div><img class="bms-spread-photo" data-bms-image alt="Your local sample spread photo" hidden></div><div class="bms-photo-copy"><span class="bms-page-kicker">A NOTE FOR THE NEXT CHAPTER</span><h3>More life.<br>More stories.</h3><p>Keep making it your own.</p><small>05</small></div></article>
 						</div>
 					</div>
 					<div class="bms-preview-foot"><span><b>01 COVER</b> + 01 SAMPLE SPREAD</span><span>INSTANT · NO GENERATION WAIT</span></div>

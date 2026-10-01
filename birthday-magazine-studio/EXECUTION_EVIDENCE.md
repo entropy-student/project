@@ -767,3 +767,50 @@ Fresh synthetic screenshots and the machine read-back are under `poc/g3c/artifac
 | Runtime | Retained for Owner review; no teardown |
 
 Owner visual freeze remains `PENDING`; stop at Reviewer. No Reviewer decision document was modified.
+
+## G3CR5 — visual finish and WooCommerce continuity
+
+**Gate:** `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY`
+**Execution result:** `PASS_CANDIDATE_G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY` — Reviewer decision is pending.
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**PR:** #64, continued on the existing open PR; no merge was performed.
+**Pre-execution HEAD / rollback point:** `084a4308da57fd96f04e757c4072e24243f8dfb8`.
+
+The retained local runtime was used without rebuild or teardown: WordPress 7.1.1, WooCommerce 11.1.2, Blocksy 2.1.57, Blocksy Companion 2.1.57, and G3C preview plugin 0.2.0. Product 1113 still reads USD 39.99, currency USD, virtual=yes. The Home page remains page 858 with Gutenberg blocks; its raw content SHA-256 before and after is unchanged at `d075824113df48fa75a8abd9d783509b0dfc17d97f396a1e523caa7c57735bcb`.
+
+### Preview composition and privacy
+
+The shortcode now wraps the existing preview image/art hooks in a dedicated `.bms-spread-photo-frame` and places the existing copy in a separate `.bms-photo-copy` region. Existing `preview.js` and its browser-local object URL behavior were not changed. The photo fills its dedicated frame with `object-fit: cover`.
+
+In fresh Playwright/Edge contexts at 1440×1000 and 375×812, a synthetic sample image loaded from a `blob:` URL. The image frame and copy are non-overlapping layout siblings; the kicker, “More life. More stories.” headline, body copy, and page number all fit within the copy region at both widths. The spread and document have no measured horizontal overflow. During image selection, browser request events were browser-local blob image reads only (one per photo-loaded preview); HTTP POST/PUT/PATCH count was 0, external HTTP request count was 0, external image request count was 0, and model-provider request count was 0. Blob object identifiers are redacted in the machine report.
+
+### WooCommerce continuity
+
+Added a project-local CSS skin, enqueued only on WooCommerce Product/Cart/Checkout/My Account routes. Native templates, product identity/price/virtual status, cart behavior, checkout settings, and the order system were not replaced. The skin uses the accepted paper/white/ink palette, Georgia editorial headings, blue header links, coral square CTAs, padded white form/cart/order panels, and the existing dark footer. Non-product Woo page titles now start below the sticky Blocksy header.
+
+The native Product Add to Cart returned HTTP 200 with WooCommerce success; the same isolated browser context showed the US$39.99 item in Cart, loaded Checkout with account-required billing fields and the local-only no-payment gateway, and loaded My Account with the native login form. No checkout/order submission was made. At 375px, Product, Cart, Checkout, and My Account each had `documentElement.scrollWidth=375`; core CTAs and visible form controls fit within the viewport. Computed styles confirm the product price/Add to Cart, cart totals/checkout CTA, checkout billing/order panels/CTA, and account form/login CTA use the shared skin. Browser console/page errors: 0.
+
+### Owner editability, screenshots, and boundaries
+
+Fresh WordPress read-back: `bms-owner` role=Administrator; `user_can(edit_post, 858)=true`; page 858 has Gutenberg blocks and `use_block_editor_for_post(858)=true`; upload-files and Blocksy global-style capabilities remain enabled. No password or session material was read or recorded. Home Gutenberg content was not modified.
+
+Eleven current screenshots and a sanitized machine report are saved under:
+
+- `poc/g3c/artifacts/screenshots/g3cr5/` — required files 01–11 (desktop Home/preview/Product/Cart/Checkout/My Account and 375px selected-photo preview plus mobile Woo pages).
+- `poc/g3c/artifacts/reports/g3cr5-final.json` — viewport measurements, overlap checks, sanitized Network read-back, Woo path/skin checks, runtime/version/editor read-back, forbidden-action counts, screenshot byte sizes and SHA-256 inventory.
+
+Runtime read-back after testing: WordPress container is up; MariaDB and Mailpit are up and healthy. Site remains at `http://127.0.0.1:8189/` and wp-admin at `http://127.0.0.1:8189/wp-admin/` for Owner review.
+
+| Check | Result |
+|---|---|
+| Selected photo dedicated frame / no copy overlap | PASS desktop and 375px; `object-fit: cover` |
+| Browser-local preview | `blob:` loaded; 0 server uploads; 0 external HTTP/image requests; 0 model requests |
+| Homepage regression | PASS; six accepted sections; 375px width 375; Hero CTA visible; Home content hash unchanged |
+| Native Woo Product → Cart → Checkout → My Account | PASS; Add to Cart HTTP 200; product remains virtual USD 39.99; no order submission |
+| Woo visual continuity | PASS across Product, Cart, Checkout, and Account computed styles and screenshots |
+| Woo 375px / blocking overflow | PASS / NO; four route document widths are 375 and controls fit |
+| Owner Gutenberg edit access | PASS; Administrator, editable Home, Gutenberg enabled, media and global-style capabilities present |
+| Runtime | Retained for Owner; no rebuild or teardown |
+| Forbidden actions | PayPal 0; real money 0; model/AI 0; production deployment 0; shared infra 0; G4 0; paid purchase 0; global prune 0 |
+
+No `REVIEWER_HANDOFF.md` or Reviewer decision file was edited. `OWNER_VISUAL_FREEZE=PENDING`; stop at Reviewer.

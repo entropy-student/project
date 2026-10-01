@@ -531,3 +531,19 @@ Current evidence:
 - No PayPal, real-money, model/AI, production deployment, shared infrastructure, paid purchase, global prune, or G4 action occurred.
 
 Please review the current screenshot set and the live page, with Owner visual freeze still pending. Earlier G3C handoff paragraphs describe a prior state and are superseded for this Gate by the G3CR4 evidence above. No Reviewer decision file was edited. Runtime teardown was intentionally skipped.
+
+## G3CR5 — current Executor handoff
+
+**Current Gate:** `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY`
+**Execution result:** `PASS_CANDIDATE_G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**PR:** #64; continued without merge.
+**Stop:** `STOP_AT_REVIEWER=YES`; G4 remains unstarted.
+
+The accepted six-section Home page and Gutenberg content are unchanged (page 858 SHA-256 `d075824113df48fa75a8abd9d783509b0dfc17d97f396a1e523caa7c57735bcb`). The Good Issue photo preview now uses a dedicated image frame separate from the spread copy. At desktop 1440px and mobile 375px, the selected synthetic sample stayed in browser-local `blob:` URLs, text/page labels fit without overlap, and photo selection caused 0 upload POST/PUT/PATCH, 0 external HTTP/image requests, and 0 model-provider requests.
+
+A project-local CSS file skins WooCommerce routes. Product 1113 remains a virtual USD 39.99 product. Native Add to Cart succeeded; Cart, Checkout and My Account loaded in the same isolated browser context. No checkout was submitted and no order/payment was created. Product/Cart/Checkout/My Account mobile document widths all stayed at 375px; CTAs and controls fit. Owner `bms-owner` remains Administrator with Home edit, Gutenberg, media-upload, block reorder, and Blocksy global-style access.
+
+Current screenshots: `poc/g3c/artifacts/screenshots/g3cr5/` (11 PNG files). Machine evidence and image hashes: `poc/g3c/artifacts/reports/g3cr5-final.json`. Execution details and runtime/dependency read-back are appended to `EXECUTION_EVIDENCE.md`.
+
+The local runtime remains up for Owner review at http://127.0.0.1:8189/ (admin: http://127.0.0.1:8189/wp-admin/). No theme, builder, product, checkout/order system, or homepage content was changed. No PayPal, real payment, model/AI, production deployment, Shared Infrastructure, paid purchase, or G4 action occurred. Owner visual freeze remains pending.
