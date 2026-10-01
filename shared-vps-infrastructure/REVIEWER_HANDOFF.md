@@ -1,5 +1,44 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2E-R3 Formal PASS / Mini Craft Ingress Migration Closed — 2026-10-01
+
+```text
+M2E_R3_SHARED_CADDY_RECREATE=PASS
+M2E_RESTART_PERSISTENCE=PASS
+LEGACY_MINICRAFT_CADDY_ROUTE=ABSENT
+LEGACY_MINICRAFT_CADDY_ROUTE_REINTRODUCTION_RISK=RESOLVED
+M2E_FORMAL_PASS=YES
+
+M1=PASS
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+M2E=PASS
+
+MIGRATION_M1_TO_M2E=COMPLETE
+CURRENT_GATE=NONE_MIGRATION_CLOSED
+
+PRODUCTION_HOST=minicraft.spikersun.com
+PRODUCTION_INGRESS=CLOUDFLARE_TUNNEL_DIRECT_TO_MINICRAFT_APP
+PRODUCTION_TUNNEL=spikersun-shared-private
+PRODUCTION_ORIGIN=http://mini-craft-night-kit-wordpress:80
+
+CADDY_REQUIRED_FOR_MINICRAFT_PRODUCTION=NO
+```
+
+Reviewer independently accepted Evidence commit `a8873cb195410bef4854be36ea371002ab86af22` and Executor Handoff commit `4d5e6f6e1cac7d70c19e273d3a97220359b6b15a`.
+
+The one authorized Caddy-only recreate returned native exit 0. The Caddy container identity changed, while the immutable image, ports, network, restart policy and three persistent bind mounts remained sealed. The mounted `/etc/caddy/Caddyfile` now equals the current 143-byte host Caddyfile and accepted SHA-256; the retired Mini Craft matcher is absent and config validation passes.
+
+Other-container inventory was identical before and after. Mini Craft Home / Shop / WP REST / TLS and the direct-origin edge-test regression all passed. No Cloudflare, DNS, Tunnel, application, database, payment, pull, build, broad cleanup, Caddyfile write, separate reload or separate restart occurred.
+
+Mini Craft production ingress is now fully on the shared Cloudflare Tunnel/private-network pattern. The legacy Mini Craft Caddy route is retired and its restart reintroduction risk is resolved.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M2E_R3_PASS_MINICRAFT_INGRESS_MIGRATION_COMPLETE.md`
+
+
 ## CURRENT REVIEWER UPDATE — Owner Authorized M2E-R3 Shared Caddy Recreate — 2026-10-01
 
 ```text
