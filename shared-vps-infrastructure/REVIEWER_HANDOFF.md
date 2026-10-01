@@ -1,5 +1,47 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M3B PASS / M3C Retirement Blocker Closure Open — 2026-10-01
+
+```text
+M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION=PASS
+
+UNIFIED_PAY_REGISTERED_ACTIVE_CLIENTS=2
+UNIFIED_PAY_LIVE_CALLERS=1
+DUJIAO_UNIFIED_PAY_DEPENDENCY=NO
+
+PAY_TUNNEL=spikersun-shared-private
+PAY_TUNNEL_ORIGIN=http://unified-pay-app:8080
+PAY_TUNNEL_HTTP_HOST_HEADER=NONE
+
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+
+CADDY_ACTIVE_ROUTE_CONSUMERS=1
+CADDY_PORT_80_443_ACTIVE_DEPENDENCIES=1
+CADDY_RETIREMENT_SAFE=NO
+
+CURRENT_GATE=M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_READONLY_RECONCILIATION
+
+CADDY_STOP_AUTHORIZED=NO
+UNIFIED_PAY_STOP_AUTHORIZED=NO
+UNIFIED_PAY_REMOVE_AUTHORIZED=NO
+MONITOR_CONFIG_MUTATION_AUTHORIZED=NO
+PROVIDER_WRITE_AUTHORIZED=NO
+```
+
+Reviewer accepted M3B Evidence commit `02dfb170b1f8dd6be044b22baa96c3c06ccc44e3` and Executor Handoff commit `00a4663deef7615de9369323a691f27d6d602b06`.
+
+Dujiao is formally cleared of current Unified Pay dependency. The pay hostname is confirmed as direct Tunnel-to-Unified-Pay. Caddy has no production route; its only active blocker is the scheduled localhost:443 health probe.
+
+M3C is narrowed to: classify the one recent caller, perform at most one safely proven Alipay read-only inquiry for the ambiguous create attempt, seal the Caddy monitor replacement, and prove a reversible Unified Pay app stop/observe rollback plan.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M3B_PASS_M3C_RETIREMENT_BLOCKER_CLOSURE.md`
+
+Execution packet:
+`review-packets/M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE.md`
+
+
 ## CURRENT REVIEWER UPDATE — M3A PASS / M3B Dependency Reconciliation Open — 2026-10-01
 
 ```text
