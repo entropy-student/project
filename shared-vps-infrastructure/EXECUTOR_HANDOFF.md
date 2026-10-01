@@ -398,3 +398,35 @@ RECREATE_REQUIRED=YES
 MUTATIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Task Update — M2E-R2 Caddy Recreate Preflight — 2026-10-01
+
+- Gate: `M2E_R2_CADDY_RECREATE_PREFLIGHT`
+- Result: `PASS_CANDIDATE_M2E_R2_CADDY_RECREATE_PREFLIGHT`
+- Target: `ops@srv1970241` through canonical strict SSH; four bounded invocations total. Two command-side read attempts had parser/template errors; no write occurred. A later complete collection and image-tag readback passed.
+- Caddy container remains `/spikersun-edge-caddy-1`, ID `793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2`, running, restart count 0; Docker healthcheck is not configured.
+- Compose identity: project `spikersun-edge`, service `caddy`, working directory `/srv/infra/edge`, canonical file `/srv/infra/edge/compose.yaml`. Compose v5.5.1 quiet validation passed; the project contains only the Caddy service. Runtime and Compose image, ports, network, bind mounts and restart policy matched. The local `caddy:2-alpine` tag resolves to the current immutable image ID.
+- Host Caddyfile remains 143 bytes / SHA-256 `f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358`, Mini Craft matcher absent; host-source Caddy validation passed. `/data` and `/config` are persistent host bind directories.
+- Mini Craft Home, Shop and WP REST returned HTTP 200 with TLS verify result 0. Caddy edge-test direct-origin check returned HTTP 200/TLS 0 and retained its accepted body fingerprint; the hostname did not resolve through current public DNS. The localhost site semantics were validated from the host config; no fresh Admin API read is claimed.
+
+Exact future proposal (not executed):
+
+```sh
+sudo -n docker compose --project-name spikersun-edge --project-directory /srv/infra/edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never --no-build caddy
+```
+
+```text
+RECREATE_SCOPE=CADDY_ONLY
+PULL=NO
+BUILD=NO
+DEPENDENCY_RECREATE=NO
+OTHER_SERVICE_RECREATE=NO
+CADDY_RECREATE_AUTHORIZED=NO
+CADDY_RECREATE_EXECUTED=NO
+MUTATIONS=0
+GITHUB_EVIDENCE_COMMIT=55b7eefd5bf3bce898152904c4921cb92b89396b
+STOP_AT_REVIEWER=YES
+```
+
+Failure proposal only: fresh-read state before any retry; no blind recreate. A separately authorized recovery Gate may reconcile only the Caddy service from the same canonical Compose file, preserving the 143-byte host source/current image and repeating route/TLS regression. Do not restore the stale 199-byte Mini Craft matcher or alter Cloudflare/DNS/Tunnel.
