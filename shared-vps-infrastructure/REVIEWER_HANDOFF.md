@@ -1,5 +1,38 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M4B-R1 Historical Unified Pay Record Reconciliation / M5 Rebased — 2026-10-01
+
+Owner-directed inspection of the historical Unified Pay project-space Evidence materially resolves the two M4B unknowns.
+
+```text
+PRODUCTION_CLIENT_A_PROVENANCE=INTERNAL_FIXED_BOOTSTRAP_CLIENT
+PRODUCTION_CLIENT_B_PROVENANCE=INTERNAL_FIXED_BOOTSTRAP_CLIENT
+EXTERNAL_OR_UNKNOWN_CALLER_BLOCKER=RESOLVED
+
+AMBIGUOUS_INCIDENT_CONTEXT=OWNER_AUTHORIZED_INTERNAL_ALIPAY_CANARY
+AMBIGUOUS_CREATE_EXTERNAL_PROVIDER_REQUEST=NO
+AMBIGUOUS_CREATE_FAILURE_CLASS=LOCAL_HANDOFF_VALIDATION_HTTP_502
+OWNER_PAYMENT_EXECUTED=NO
+PROVIDER_TRANSACTION_CALL_EXECUTED=NO
+REAL_PAYMENT_ACTIONS=0
+
+NEW_INDEPENDENT_BUSINESS_ACTIVITY_AFTER_CANARY=NO
+UNIFIED_PAY_STOP_OBSERVE_ROLLBACK_READY=YES
+UNIFIED_PAY_APP_STOP_CANDIDATE=YES
+RESIDUAL_BLOCKERS_FOR_REVERSIBLE_APP_STOP=NONE
+
+CURRENT_GATE=M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+UNIFIED_PAY_APP_STOP_AUTHORIZED=NO
+```
+
+Historical deployment Evidence shows production-only bootstrap of two fixed client IDs, generation of client_a/client_b runtime credentials on the VPS, and exactly two active fixed clients. The sole ambiguous ledger attempt is the Owner-authorized CNY 0.01 Alipay canary: the adapter generated a browser form locally, no external Alipay transaction API call occurred, local handoff validation returned HTTP 502, no payment handoff/Owner payment/retry/callback/query occurred.
+
+GPT View+ mapping remains unproven, but this is no longer required to classify the current client registrations as internal deployment principals.
+
+Decision:
+docs/REVIEWER_DECISION_M4B_R1_HISTORICAL_RECORD_RECONCILIATION_M5_REBASE.md
+
 ## CURRENT REVIEWER UPDATE — M4B PASS / M5 Unified Pay App-Only Stop Owner Checkpoint — 2026-10-01
 
 ```text
