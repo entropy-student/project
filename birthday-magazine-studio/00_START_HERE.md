@@ -21,7 +21,8 @@ This file is navigation only. It is **not** a second project truth source.
 - **G3CR4 visual consolidation: PASS** — homepage is now six primary editable sections; sample density/duplicate content/large spacer issues are corrected; 375px Preview is single-column without detected clipping.
 - **G3CR5 visual finish + Woo continuity: PASS** — selected-photo Preview no longer overlaps copy; Woo Product/Cart/Checkout/My Account now share the homepage editorial styling on desktop and 375px.
 - **G3C Owner Visual Checkpoint: RESOLVED / OPTION B** — Owner did not accept the G3CR5 visual state as final freeze and requested a stronger redesign.
-- **G3CR6 Frontend Experience + Brand Redesign: CURRENT / OWNER AUTHORIZED** — selected direction is Option 2 “Warm Birthday Gift”; image generation is authorized for high-fidelity frontend assets; user-visible frontend experience (including upload/Preview UI) may be redesigned, while Woo/payment/order/account/private-workspace backend behavior remains protected. PR #64 remains open/unmerged.
+- **G3CR6 Frontend Experience + Brand Redesign: RETURN** — privacy/Woo/375px regression evidence is accepted as baseline, but the submitted frontend remained too close to the prior template composition and did not sufficiently realize the selected Warm Birthday Gift direction.
+- **G3CR6R1 Frontend Composition Redesign: CURRENT** — the old six-section layout and `g3cr4-*` composition are no longer binding. The Executor may rebuild the customer-facing Gutenberg/DOM composition while protected Woo/payment/order/account/private-workspace backend behavior remains unchanged. PR #64 remains open/unmerged.
 - **G4 Live PayPal Canary: HOLD / NOT AUTHORIZED**.
 - PayPal Live, real-money payment, production AI provider, production private delivery and production deployment remain unproven.
 
