@@ -8,7 +8,7 @@
 | Shared VPS Infrastructure | Shared | ACTIVE | `/srv/infra` | Shared infra scoped | Shared infra scoped | cloudflared + monitoring; Caddy runtime retired | multiple | Cloudflare Tunnel direct-to-app for verified routes | [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) |
 | Xianyu | Application | ACTIVE_RUNTIME | `/srv/apps/xianyu` | `/srv/data/xianyu` | `/srv/backups/xianyu` | app healthy | UNKNOWN | UNKNOWN | [REVIEWER_HANDOFF.md](../xianyu/REVIEWER_HANDOFF.md) |
 | Dujiao-Next | Commerce runtime | ACTIVE_RUNTIME / PROJECT_STAGE_CLOSED | `/srv/apps/dujiao-next` | `/srv/data/dujiao-next` | `/srv/backups/dujiao-next` | app + PostgreSQL + Redis healthy | `shop.spikersun.com` | Cloudflare Tunnel direct-to-app | [REVIEWER_HANDOFF.md](../dujiao-next/REVIEWER_HANDOFF.md) |
-| Unified Pay | Payment infrastructure | ACTIVE_RUNTIME / LIFECYCLE_REVIEW | `/srv/apps/unified-pay` | `/srv/data/unified-pay` | `/srv/backups/unified-pay` | app + PostgreSQL healthy | `pay.spikersun.com` | Cloudflare Tunnel -> `http://unified-pay-app:8080` | [REVIEWER_HANDOFF.md](../unified-pay-system/REVIEWER_HANDOFF.md) |
+| Unified Pay | Payment infrastructure | RETIRED_WITH_UNRESOLVED_RECOVERY_ASSET_INCIDENT | `/srv/apps/unified-pay` (empty parent retained) | `/srv/data/unified-pay` (empty parent retained) | `/srv/backups/unified-pay` (empty parent retained) | app + PostgreSQL containers absent; images retained | `pay.spikersun.com` retained but origin unavailable | Cloudflare Tunnel route retained; no live app origin | [REVIEWER_HANDOFF.md](../unified-pay-system/REVIEWER_HANDOFF.md) |
 | Mini Craft Night Kit | Ecommerce runtime | K9_CLOSED / RUNTIME_RETAINED / PRECOMMERCE | `/srv/apps/mini-craft-night-kit` | `/srv/data/mini-craft-night-kit` | `/srv/backups/mini-craft-night-kit` | WordPress + MariaDB | `minicraft.spikersun.com` | Cloudflare Tunnel direct-to-app; legacy Caddy route retired (M2E PASS) | [Shared infra current truth](./REVIEWER_HANDOFF.md) |
 
 ## Lifecycle notes
@@ -29,17 +29,22 @@
 
 ### Unified Pay
 
-Current split truth:
+Current truth:
 
 ```text
-RUNTIME_STATE=ACTIVE_HEALTHY
-PUBLIC_HEALTH_READY=ACTIVE
-DOWNSTREAM_DEPENDENCY=ONE_RECENT_CALLER_CLASS_UNRESOLVED
-HISTORICAL_ROLE=FROZEN_BACKUP
-CURRENT_LIFECYCLE_DECISION=OWNER_DIRECTED_SAFE_DECOMMISSION_PENDING_FINAL_RECONCILIATION
+RUNTIME_STATE=DECOMMISSIONED
+APP_CONTAINER=ABSENT
+POSTGRES_CONTAINER=ABSENT
+APP_IMAGE=RETAINED
+POSTGRES_IMAGE=RETAINED
+EXACT_DB_RECOVERY_SOURCE=NONE
+COMPOSE_RECOVERY_SOURCE=NONE
+SECRET_RECOVERY_SOURCE=WINDOWS_DPAPI
+CURRENT_LIFECYCLE_DECISION=RETIRED_WITH_UNRESOLVED_RECOVERY_ASSET_INCIDENT
+FURTHER_DESTRUCTIVE_CLEANUP=FROZEN
 ```
 
-Do not infer active business dependency from health endpoints alone.
+No current Dujiao or other known production runtime depends on Unified Pay. The unexplained recovery-asset loss is preserved as an incident record; do not continue destructive cleanup for neatness.
 
 ### Mini Craft Night Kit
 
