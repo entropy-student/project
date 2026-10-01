@@ -38,7 +38,8 @@
 | G3C Blocksy Wedding UI/UX productization + Owner visual freeze | INTERIM RETURN — PR #64 open; mobile/current screenshots pending |
 | G3CR3 current visual evidence closure | SUPERSEDED BY OWNER SCREENSHOT REVIEW |
 | G3CR4 G3C visual consolidation | **PASS** |
-| G3CR5 visual finish + WooCommerce continuity | **CURRENT** |
+| G3CR5 visual finish + WooCommerce continuity | **PASS** |
+| G3C Owner visual checkpoint | **CURRENT** |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
@@ -57,7 +58,7 @@ G3B Sandbox 闭环已经通过：
 → scoped cleanup PASS
 ```
 
-这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前 G3CR4 已 PASS：首页已压缩为 6 个主要可编辑区块，重复 Story/过量样张/无意义 Spacer 已处理，375px Preview 已改为单列且未检测到裁切。当前进入 G3CR5：保留首页方向，只修两个收尾问题——上传照片后 Preview spread 的图片/文字碰撞，以及 Product/Cart/Checkout/My Account 的视觉连续性。Woo 功能和支付边界不变，G4 继续 HOLD。G4 Live PayPal Canary 继续保持 HOLD。
+这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前 G3CR4 / G3CR5 均已 PASS：首页结构、375px Preview、上传照片后的 Preview 排版，以及 Product/Cart/Checkout/My Account 的视觉连续性都已通过 Reviewer 验收。现在不再自动开启新的视觉技术 Gate，而是进入 Owner visual checkpoint：Owner 直接查看保留运行的本地站点，选择接受当前视觉封板或提出明确的有限修改。PR #64 保持 open/unmerged，G4 继续 HOLD。G4 Live PayPal Canary 继续保持 HOLD。
 
 ## 已证明的技术能力
 
