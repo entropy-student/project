@@ -296,3 +296,25 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package rat
 - This round completed: official HY2 v2.12.3 deployment on UDP 8443, Secret/TLS provisioning, DPAPI recovery, parser-validated Mihomo client fragment, rollback and regression verification.
 - Next: Owner confirms a safe window; then prove client handshake and compare WireGuard vs HY2 under the same low-impact method.
 - Attention: server-side readiness is accepted; HY2 performance superiority is not yet proven.
+
+
+### G2-B control-path preflight — PASS
+
+Owner/Executor read-back established a safe split control/data path before benchmarking:
+
+- SSH control target: `10.66.21.1:22`
+- SSH control route: existing WireGuard tunnel
+- TCP/22 reachability: PASS
+- SSH host-key trust: PASS (accepted host identity reused without auto-accepting a new key)
+- VPS read-only probe: PASS
+- target hostname: `ubuntu-s-1vcpu-512mb-10gb-sfo3`
+- `wg-quick@wg0`: active
+- `hysteria2-vpn-network-optimization.service`: active
+- UDP 51820 listener: present
+- UDP 8443 listener: present
+
+G2-B should therefore keep:
+- control plane: Codex → WireGuard → `10.66.21.1:22`
+- HY2 data-plane candidate: localhost test proxy → WLAN → `24.199.118.137:8443`
+
+Do not retry public-IP SSH during this Gate unless Reviewer explicitly changes the plan.
