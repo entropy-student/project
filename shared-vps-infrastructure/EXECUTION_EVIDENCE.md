@@ -1862,3 +1862,161 @@ BROAD_PRUNE=NO
 MUTATIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+## M4B Unified Pay Client Provenance Final — 2026-10-01
+
+```text
+GATE=M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL
+RESULT=PASS_CANDIDATE_M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL
+MODE=READ_ONLY_PROVENANCE_PLUS_AUTHORIZED_GITHUB_DOCUMENTATION
+CANONICAL_PROJECT_SOURCE_COMMIT=f1561c097ae84f321fd126b95f43fddd588d562a
+SOURCE_ARCHIVE_SHA256=653b511bd98595d0ad21fbb5729e1a41055a41c59f7b9c4c8b7ca21a791104a8
+SOURCE_ARCHIVE_SHA256_MATCH=YES
+BUNDLE_FRAGMENT_COUNT=16
+BUNDLE_FRAGMENT_SIZE_AND_GIT_BLOB_IDENTITY_MATCH=YES
+BUNDLE_FRAGMENT_ORDER=FILENAME_LEXICAL
+ARCHIVE_MEMBERS=122
+EXTRACTED_REGULAR_FILES=99
+SOURCE_CODE_EXECUTION=NO
+PRODUCTION_BUILD_OR_DEPLOY=NO
+PRODUCTION_CLIENT_A_SOURCE_MATCH_COUNT=0
+PRODUCTION_CLIENT_B_SOURCE_MATCH_COUNT=0
+CLIENT_REGISTRATION_DDL_OR_INSERT_MATCH=ABSENT_IN_RECONSTRUCTED_BUNDLE
+GPT_VIEW_PLUS_CONFIG_AND_EXAMPLE_PRESENT=YES
+GPT_VIEW_PLUS_TO_CURRENT_REGISTRATION_MAPPING=UNPROVEN
+SOURCE_TO_DEPLOYED_RUNTIME_LINEAGE=UNPROVEN
+CREDENTIAL_LITERAL_PRESENT=YES
+CREDENTIAL_LITERAL_VALUES_OUTPUT=0
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+CLIENT_PUBLIC_KEY_FINGERPRINT_MATCH=YES
+KNOWN_HOSTS_EXPECTED_PINS_MATCH=YES
+SSH_NATIVE_EXIT=0
+SSH_NETWORK_INVOCATIONS=1
+DATABASE_TRANSACTION_MODE=READ_ONLY_ROLLBACK
+PRODUCTION_CLIENT_A_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_B_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_A_CREDENTIAL_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_B_CREDENTIAL_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_A_STATUS=ACTIVE
+PRODUCTION_CLIENT_B_STATUS=ACTIVE
+REGISTRATION_SOURCE=UNKNOWN_SCHEMA_NOT_AVAILABLE
+CLIENT_TYPE=UNKNOWN_SCHEMA_NOT_AVAILABLE
+ENVIRONMENT=UNKNOWN_SCHEMA_NOT_AVAILABLE
+SAFE_METADATA_KEYS=NOT_AVAILABLE_NO_REGISTRATION_METADATA_COLUMN
+REGISTRATION_UPDATED_AT=NOT_AVAILABLE_IN_CURRENT_SCHEMA
+REGISTERED_CLIENTS=2
+REGISTERED_ACTIVE_CLIENTS=2
+PRODUCTION_CLIENT_A_AUDIT_EVENTS=2
+PRODUCTION_CLIENT_A_PAYMENT_INTENTS=1
+PRODUCTION_CLIENT_A_LATEST_AUDIT=2026-09-14T16:45:03.234414+00:00
+PRODUCTION_CLIENT_B_AUDIT_EVENTS=0
+PRODUCTION_CLIENT_B_PAYMENT_INTENTS=0
+PRODUCTION_CLIENT_B_LATEST_ACTIVITY=NONE_IN_CURRENT_AUDIT_AND_INTENT_LEDGER
+PAYMENT_INTENTS_CREATED=1
+PROVIDER_CREATE_ATTEMPTS=1
+PROVIDER_CREATE_ATTEMPTS_AMBIGUOUS=1
+PROVIDER_EVENTS=0
+PROVIDER_PAYMENT_FACTS=0
+REFUNDS=0
+OUTBOX_EVENTS=0
+NEW_INDEPENDENT_ACTIVITY_AFTER_AMBIGUOUS_WINDOW=NO_ACCEPTED_M4A_CARRY_FORWARD
+PRODUCTION_CLIENT_A_PROVENANCE=UNKNOWN
+PRODUCTION_CLIENT_B_PROVENANCE=UNKNOWN
+PRODUCTION_CLIENT_B_USAGE_CLASS=UNUSED_IN_CURRENT_LEDGER_NOT_PROVEN_INTERNAL
+AMBIGUOUS_INCIDENT_CONTEXT=UNKNOWN
+AMBIGUOUS_LOCAL_COMMIT_CLASS=IRREDUCIBLY_AMBIGUOUS_ACCEPTED_M4A_CARRY_FORWARD
+UNIFIED_PAY_STOP_OBSERVATION_RESIDUAL_RISK=UNCHANGED
+UNIFIED_PAY_RUNTIME_MUTATIONS=0
+VPS_RUNTIME_MUTATIONS=0
+DOCKER_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+BACKUP_CONTENT_READS=0
+FILE_DELETIONS=0
+BROAD_PRUNE=NO
+MUTATIONS=0
+M4C_CREATED=NO
+STOP_OBSERVATION_EXECUTED=NO
+PERMANENT_DELETION_DECIDED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Scope and authoritative reads
+
+Evidence recorded 2026-10-01 10:31 UTC. Current Reviewer truth and M4B decision/packet authorized the final bounded provenance check. Latest GitHub files were fully read; unchanged historical bodies were verified byte-for-byte against the previous complete reads. Before documentation writes, Reviewer Handoff, Evidence and Executor Handoff were fresh-read again and remained unchanged.
+
+- `shared-vps-infrastructure/SHARED_VPS_HANDOFF.md` (blob `e9e3874fe77935c43072e958b0d47d5dad061135`)
+- `shared-vps-infrastructure/REVIEWER_HANDOFF.md` (blob `bb15a2a34b0ffe96cb1c61581a55ad25a23dc0c5`)
+- `shared-vps-infrastructure/docs/REVIEWER_DECISION_M4A_PASS_M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL.md` (blob `ac0d9d4c527aacc8fe77df702e36036d946411db`)
+- `shared-vps-infrastructure/review-packets/M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL.md` (blob `1c55c9ec083303ee3c18b227bd5b06b97e56b972`)
+- `shared-vps-infrastructure/EXECUTION_EVIDENCE.md` (blob `bad6a0061117237b3d1b711fc66f6c7121b3e167`)
+- `shared-vps-infrastructure/EXECUTOR_HANDOFF.md` (blob `369fe443d28141cb2085df6ad3a99e01f8aaa3ec`)
+- `unified-pay-system/REVIEWER_HANDOFF.md` (blob `7f468262fe16d0bd5895f1a57053159a66ffa09d`)
+- `unified-pay-system/Dockerfile` (blob `8cf2876a5dacf64b46acc26552d0017e1511bbb6`)
+- `unified-pay-system/BUNDLE_SHA256.txt` (blob `7f5fd5e06fe08fbc1bb1fb912823183a601b8bc4`)
+- `unified-pay-system/PROJECT_RECORD.md` (blob `9c3f2fb5a5aa1781a6c06a554d399b74fc84a1b3`)
+- `unified-pay-system/config/apps.gmpay.production.json` (blob `43615784a27ec5664ba88bf2133e0ecb173fef3b`)
+
+Canonical Governance latest was re-read/revalidated, rather than treating the older workstation skill cache as authority:
+
+- `entropy-student/spike.skill/vps-project-governance/GOVERNANCE_HANDOFF.md` (blob `4ea8792cd7d82998432c2997ed71c1ba5d83109e`)
+- `entropy-student/spike.skill/vps-project-governance/SKILL.md` (blob `5e6ba08305ad802e5f6ce732d8ca731bc316b141`)
+- `entropy-student/spike.skill/vps-project-governance/references/GOVERNANCE_SOURCE_POLICY.md` (blob `7d1897b6a032a5de0686ff6704c8854f54699ab4`)
+- `entropy-student/spike.skill/vps-project-governance/references/GOVERNANCE_V0_1_6.md` (blob `af0ba30deb403eedb3bf9cc37cdc1482adefae00`)
+- `entropy-student/spike.skill/vps-project-governance/references/STORAGE_LAYOUT_CONTRACT.md` (blob `04831d59e08a2d91dbe35bb9b9c18d2ba1d77b58`)
+- `entropy-student/spike.skill/vps-project-governance/references/SSH_AND_DELEGATED_SECRET_OPERATIONS.md` (blob `a0b5e2ad0bcb02184478ad660cd2f33375c59198`)
+- `entropy-student/spike.skill/vps-project-governance/references/TARGET_HOST_REALITY_CONTRACT.md` (blob `84a0f35dab5397b381bae79ad5f2b1fcda6ea7f3`)
+
+### Canonical source reconstruction and safe search
+
+Sixteen pinned-commit fragments were concatenated in Dockerfile filename order, with every fragment size and Git blob identity checked. Base64 decoding produced the exact published archive SHA-256. All 122 tar members were checked for path escape and non-regular/link entries before extraction into a new local temporary work area; there are 99 regular files. No package, migration, seed, bootstrap, test, provider adapter, Docker build or deployment code was executed.
+
+The initial local extraction guard rejected the harmless archive root-directory member; the containment check was corrected to permit the root itself while still rejecting escape/link entries. Archive verification and extraction then passed. This was a local helper assertion issue, not production/source baseline drift. Temporary investigation artifacts were retained; no cleanup/delete was performed.
+
+Full recursive hidden-file searches covered production-client-a, production-client-b, gpt-view-plus, GPT View+, client registration, client credential, seed, bootstrap, fixture, migration, canary, real-canary, test client and production client. Exact production-client-a/b matches were zero. Bootstrap, fixture, canary, real-canary and test/production-client phrases also had zero matches; the seed hit was historical handoff discussion, not proof of registration creation. Registration DDL/insert/helper-name searches found no current clients/client_credentials creation logic.
+
+Relevant safe source semantics:
+
+- `package.json:2-3`, `src/config.mjs:44-52,90-100`: archived unified-pay-core Node V0.18, app identities loaded from JSON configuration.
+- `config/apps.gmpay.example.json:3-4,27`, `config/apps.production.json:3-5`, `examples/gpt-view-plus/integration.js:1,5`: GPT View+ / gpt-view-plus public-client example/configuration exists.
+- `scripts/migrate-postgres.mjs:16-33`: ordered SQL migration runner; inspected only, not run.
+- `db/migrations/001_v0_2_state.sql:3`, `db/migrations/002_v0_3_relational.sql:3,39,60`: archived state/checkout_sessions/licenses/audit_logs schema, not the current clients/client_credentials/payment_intents/audit_events registration schema.
+- Current GitHub production configuration contains the GPT View+ app but no reliable link from its slug to either current generic registration.
+- Credential-shaped quoted literals were detected in mock/test source; only presence and safe paths/line metadata were inspected/output. Their values were not emitted or included in GitHub Evidence.
+
+The accepted M4A deployment is the Alipay R6 compiled runtime, whereas this canonical bundle describes Node V0.18. Archive seal PASS does not prove that this bundle generated the current database registrations. Source-to-live lineage remains unproven, not a basis for declaring either client internal or GPT View+.
+
+### Strict SSH and registration provenance
+
+Canonical identity reference, client public fingerprint and all three normal known_hosts pins passed local verification; private-key contents were not read/output. ACL metadata showed protected access for Owner, SYSTEM and Administrators. One strict SSH invocation used the sealed identity/known_hosts, BatchMode, IdentitiesOnly, StrictHostKeyChecking, bounded connection attempt/timeout and no agent forwarding. It proved ops (non-root) on srv1970241 and returned native exit 0.
+
+Via reviewed sudo Docker access, SQL ran in an explicit BEGIN READ ONLY / ROLLBACK transaction. Only safe registration columns, credential creation timestamps/state and aggregate audit/intent counts were returned. No UUID, webhook value, credential hash/prefix/value, customer/order/payment identifier or private payload was selected/output.
+
+Both registrations and their credentials were created simultaneously on 2026-09-13 at 08:33:22.183851 UTC. The current registration schema offers name/status/created_at, but no app mapping, source/creator/environment/type/public-server flag, updated_at or metadata column. Credential timestamp coincidence suggests a common provisioning event only; it does not establish which process or project performed it.
+
+A has the two audit events and one intent from the accepted ambiguous incident. B has no audit or intent activity in the current ledger, but absence of activity does not establish UNUSED_INTERNAL ownership.
+
+### Accepted deployment / Canary timeline comparison
+
+Accepted M4A backup metadata and incident evidence are carried forward, without reading any dump contents or repeating backup investigation:
+
+- 2026-09-14 16:37, 16:39, 16:42 and 16:43 UTC: pre-alipay-real-canary backup generations.
+- 16:45:03.217077: reserve audit; 16:45:03.222972: intent/attempt creation; 16:45:03.234414: ambiguous outcome audit.
+- 17:14: pre-alipay-r6-disabled; 17:29: pre-alipay-r6-final; 17:45: pre-alipay-r6-audit.
+
+Registration/credential creation predates this sequence by more than a day. The nearby backup names suggest a canary preparation window but neither prove the registrations came from that window nor establish that the exact ambiguous attempt was a test rather than production use. No GPT View+ registration timestamp or unambiguous source linkage exists. The accepted no-independent-business-after-incident conclusion is preserved, but Provider truth remains unresolved and no Provider inquiry was performed.
+
+### Final bounded conclusion
+
+PROVENANCE_EVIDENCE: verified canonical source contains GPT View+ config/examples but no production-client-a/b registrations; current database supplies simultaneous creation timestamps only, no ownership/source mapping; A has the single ambiguous incident ledger, B is unused in that ledger. Neither hard-coded test/bootstrap provenance nor an external-production principal is proven. Both provenance classifications and incident context therefore remain UNKNOWN; residual stop-observation risk is UNCHANGED.
+
+This is completion of the authorized investigation, not approval to stop the app or delete data. No additional investigation Gate was created. Reviewer must present the residual risk for the Owner's reversible app-only stop-observation decision. GitHub documentation updates and authorized local temporary archive processing are not production/runtime mutations.
