@@ -643,3 +643,37 @@ STOP_AT_REVIEWER=YES
 ```
 
 Reviewer disposition is required for the pre-existing temporary-file lifecycle before M3D can proceed. No next Gate was entered.
+
+## Gate: M3D_R1_ALLOW_EPHEMERAL_TMP_AND_RESUME — 2026-10-01
+
+```text
+GATE=M3D_R1_ALLOW_EPHEMERAL_TMP_AND_RESUME
+RESULT=PASS_CANDIDATE_M3D_R1_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION
+MONITOR_EPHEMERAL_TMPFILE_LIFECYCLE=ALLOWED
+MONITOR_SOURCE_SHA256_BEFORE=cc466266a0f7de19badf7cbe6601a4cb01fc8b1ae661e1e68d6346e7ce29daf1
+MONITOR_ROLLBACK_PATH=/srv/backups/shared-infra/m3d-r1-monitor-prechange-20261001T091248Z.sh
+MONITOR_ROLLBACK_SHA256=cc466266a0f7de19badf7cbe6601a4cb01fc8b1ae661e1e68d6346e7ce29daf1
+MONITOR_SOURCE_SHA256_AFTER=2e28085921c3a5c930dc40144db3e6717438e10696af7f6b3f63f2ccec31a7cf
+MONITOR_SYNTAX_VALIDATION=PASS
+MONITOR_MANUAL_RUN=PASS
+MONITOR_SCHEDULED_RUNS_PASS_BEFORE_STOP=2
+MONITOR_SCHEDULED_RUNS_PASS_CADDY_STOPPED=1
+MONITOR_SCHEDULED_RUNS_PASS=3
+CADDY_STATE=stopped
+CADDY_CONTAINER_PRESENT=YES
+CADDY_IMAGE_PRESENT=YES
+PUBLIC_TUNNEL_REGRESSION=PASS
+UNIFIED_PAY_MUTATIONS=0
+CADDY_DELETIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+Bounded execution used canonical strict SSH and the existing Shared Infrastructure recovery scope. A complete pre-change copy was verified byte-for-byte (3330 bytes, root:root 0750). The monitor script removed the Caddy container-running dependency and the insecure localhost HTTPS probe; it retains host/Docker/cloudflared checks and now checks cloudflared restart count and `spikersun-private`, plus Mini Craft Home/Shop/wp-json and Shop public HTTPS with normal TLS verification. Timer and service unit files were not modified.
+
+Three actual scheduled service runs reported overall PASS: 09:21:45Z and 09:26:55Z while Caddy was running, then 09:31:59Z while Caddy was stopped. Manual execution passed both before and after the stop. Caddy was stopped once at 09:28:10Z; container and image remain present, restart count 0. All four public endpoints returned HTTP 200 with TLS verify result 0 after stop; cloudflared remained running with restart count 0 and `spikersun-private` remained present.
+
+Mutation accounting: one rollback-copy creation, one monitor-script update, and one exact Caddy stop; one Docker mutation (stop) and three bounded VPS actions total. No Caddy deletion, prune, Cloudflare/DNS/Tunnel/provider/database/payment/Unified Pay mutation, Secret output, or unrelated service action occurred. The existing mktemp/EXIT-trap lifecycle was preserved under the accepted ephemeral-only classification.
+
+GITHUB_EVIDENCE_COMMIT=2fe3b6637741c18be4ea79212050f181b7f1a6a8
+GITHUB_EVIDENCE_FRESH_READBACK=TO_BE_VERIFIED
+```
