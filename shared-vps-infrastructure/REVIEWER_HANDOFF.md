@@ -1,5 +1,33 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M3D RETURN Accepted / R1 Resume Authorized — 2026-10-01
+
+```text
+M3D_RETURN=ACCEPTED_FAIL_CLOSED
+MONITOR_EPHEMERAL_TMPFILE_LIFECYCLE=ALLOWED
+PERSISTENT_STATE_SIDE_EFFECT=NO
+
+OWNER_AUTHORIZES_M3D=YES_CARRIED_FORWARD
+CURRENT_GATE=M3D_R1_ALLOW_EPHEMERAL_TMP_AND_RESUME
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_SHARED_INFRA_WRITE
+
+CADDY_STOP_AUTHORIZED=YES_CONDITIONAL_AFTER_MONITOR_PASS
+CADDY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_MUTATION_AUTHORIZED=NO
+```
+
+Reviewer accepted Evidence commit bfdfa18e10bea8727b6f546e5359fac266595e6d and Handoff commit 2bd13ee288c6968c40fbedbab1b6c97363a04f3a.
+
+The only side effect found is an ephemeral mktemp response-body file under /tmp that is removed by the existing EXIT trap. This is allowed and is not treated as persistent state, external notification or auto-remediation.
+
+M3D resumes from rollback-copy creation; no new Owner checkpoint is required.
+
+Decision:
+docs/REVIEWER_DECISION_M3D_RETURN_R1_ALLOW_EPHEMERAL_TMP_AND_RESUME.md
+
+Execution packet:
+review-packets/M3D_R1_ALLOW_EPHEMERAL_TMP_AND_RESUME.md
+
 ## CURRENT REVIEWER UPDATE — M3D Owner Authorized Caddy Monitor Migration + Stop Observation — 2026-10-01
 
 ```text
