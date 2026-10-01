@@ -1,5 +1,28 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M7 Authorized + Standing Unified Pay Decommission Delegation — 2026-10-01
+
+```text
+OWNER_AUTHORIZES_M7=YES
+OWNER_STANDING_AUTHORIZATION_FOR_UNIFIED_PAY_DECOMMISSION=YES
+REPEATED_OWNER_APPROVAL_REQUIRED_FOR_IN_SCOPE_REVERSIBLE_PROJECT_ONLY_STEPS=NO
+
+CURRENT_GATE=M7_UNIFIED_PAY_POSTGRES_STOP_OBSERVATION
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_PROJECT_RUNTIME_WRITE
+
+UNIFIED_PAY_POSTGRES_STOP_AUTHORIZED=YES
+UNIFIED_PAY_POSTGRES_START_AUTHORIZED=YES_ROLLBACK_ONLY
+UNIFIED_PAY_POSTGRES_CONTAINER_REMOVE_AUTHORIZED=NO_IN_M7
+```
+
+Standing authorization covers later bounded Unified Pay-only decommission actions that do not affect other projects and preserve an adequate recovery path. It does not cover permanent deletion of DB data/backups/Secrets, Tunnel/DNS/shared-infra changes, real payment/provider actions, or any cross-project risk; those remain Owner checkpoints.
+
+Decision:
+docs/REVIEWER_DECISION_M7_OWNER_STANDING_AUTHORIZATION_UNIFIED_PAY_DECOMMISSION.md
+
+Execution packet:
+review-packets/M7_UNIFIED_PAY_POSTGRES_STOP_OBSERVATION.md
+
 ## CURRENT REVIEWER UPDATE — M6 PASS / M7 Unified Pay PostgreSQL Stop Checkpoint — 2026-10-01
 
 ```text
