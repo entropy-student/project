@@ -1,5 +1,43 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M3A PASS / M3B Dependency Reconciliation Open — 2026-10-01
+
+```text
+M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT=PASS
+
+CADDY_RETIREMENT_SAFE=UNRESOLVED
+UNIFIED_PAY_RUNTIME_RETIREMENT_SAFE=NO
+UNIFIED_PAY_DATA_DELETION_SAFE=NO
+UNIFIED_PAY_RECOVERY_BARRIER=UNRESOLVED
+
+CURRENT_GATE=M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_STOP_AUTHORIZED=NO
+CADDY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_STOP_AUTHORIZED=NO
+UNIFIED_PAY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+PROVIDER_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+```
+
+Reviewer accepted M3A Evidence commit `100a0ecb4a047df9968cdae8e1cd909391148f61` and Executor Handoff commit `756a7c1eb6e9ec381a71d019b109377e6eb7ae61`.
+
+M3A completed the assessment but did not prove deletion safe. M3B is narrowed to four unresolved facts: real activity behind the two registered Unified Pay clients, Dujiao's current dependency classification, exact `pay.spikersun.com` Tunnel origin, and read-only reconciliation of the one created/ambiguous payment state. It also resolves whether Caddy's two diagnostic routes have any active consumer.
+
+No shutdown or deletion is authorized.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M3A_PASS_M3B_DEPENDENCY_RECONCILIATION.md`
+
+Execution packet:
+`review-packets/M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION.md`
+
+
 ## CURRENT REVIEWER UPDATE — M3A Caddy + Unified Pay Decommission Assessment Open — 2026-10-01
 
 ```text
