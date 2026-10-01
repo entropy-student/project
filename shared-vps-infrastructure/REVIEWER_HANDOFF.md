@@ -1,5 +1,34 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — Unified Pay Retirement Closed with Unresolved Recovery-Asset Incident — 2026-10-01
+
+```text
+M8_R1_UNIFIED_PAY_RECOVERY_ASSET_DRIFT_FORENSICS=PASS
+RECOVERY_ASSET_DRIFT_CLASS=UNRESOLVED
+DOCKER_RM_CAUSALITY=DISPROVEN
+COMPOSE_RECOVERY_SOURCE=NONE
+DATABASE_EXACT_RECOVERY_SOURCE=NONE
+SECRET_RECOVERY_SOURCE=WINDOWS_DPAPI
+
+UNIFIED_PAY_APP_CONTAINER_PRESENT=NO
+UNIFIED_PAY_POSTGRES_CONTAINER_PRESENT=NO
+UNIFIED_PAY_RUNTIME_DECOMMISSION=COMPLETE
+UNIFIED_PAY_PROJECT_STATUS=RETIRED_WITH_UNRESOLVED_RECOVERY_ASSET_INCIDENT
+KNOWN_PROJECT_REGRESSION=NO
+
+CURRENT_GATE=NONE
+UNIFIED_PAY_FURTHER_DESTRUCTIVE_CLEANUP=FROZEN
+```
+
+Reviewer accepted Evidence 3b92a5a84c6014d4f2db575a7022e93be54745a6 and Handoff fba77a2c6d80021bd81e18e9816a1d914d1163d1.
+
+The exact stopped-container rm is not causal for host bind-path loss. No complete audit trail proves the actual destructive mechanism. Exact DB/Compose recovery bytes are unavailable in searched scopes. Current business impact remains none observed because Unified Pay was already retired and no current Dujiao/other-project dependency exists.
+
+Do not continue destructive cleanup for neatness. Preserve remaining images, DPAPI Secret recovery artifact and all historical evidence.
+
+Decision:
+docs/REVIEWER_DECISION_M8_R1_PASS_UNIFIED_PAY_RETIREMENT_INCIDENT_CLOSURE.md
+
 ## CURRENT REVIEWER UPDATE — M8 RETURN / Recovery Asset Incident Freeze — 2026-10-01
 
 ```text
