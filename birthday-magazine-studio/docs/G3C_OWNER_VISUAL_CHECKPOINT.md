@@ -1,63 +1,55 @@
 # G3C Owner Visual Checkpoint
 
-> Status: **CURRENT — OWNER DECISION REQUIRED**  
+> Status: **RESOLVED — OWNER REQUESTED FURTHER REDESIGN (OPTION B)**  
+> Resolution date: 2026-10-01  
 > PR: #64  
 > Local runtime: retained  
 > G4 authority: NONE
 
-## Purpose
+## Resolution
 
-All currently authorized G3C technical/visual implementation work is now Reviewer PASS.
+G3CR4 and G3CR5 remain valid technical Reviewer PASS decisions at their tested scope.
 
-The remaining step is not another Executor Gate.
+However, the Owner did **not** accept the G3CR5 visual state as the final visual freeze. The Owner judged the site understandable but not yet strong enough visually to present confidently to prospective customers.
 
-The Owner should review the current local site and decide whether the visual product experience is acceptable for freeze.
+The Owner therefore selected the prior checkpoint's **Option B — request further changes**.
 
-## Review locations
+This checkpoint is no longer the current execution state.
 
-```text
-Site:
-http://127.0.0.1:8189/
+Current execution is:
 
-WordPress Admin:
-http://127.0.0.1:8189/wp-admin/
-```
+- `OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md`
+- `G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md`
 
-## What is already accepted
+## Owner-selected direction
 
-- Blocksy Wedding + Gutenberg foundation;
-- six-section homepage;
-- 375px homepage/Preview behavior;
-- browser-local Good Issue preview;
-- selected-photo Preview composition;
-- Woo Product / Cart / Checkout / My Account visual continuity;
-- US$39.99 native Woo path;
-- Owner Administrator/Gutenberg editability;
-- no payment/model/production/shared-infra activity.
+- Visual north star: **Option 2 — Warm Birthday Gift**
+- High-fidelity image generation: **AUTHORIZED for frontend visual assets**
+- Reference imagery: directional, not a pixel-perfect structural contract
+- Frontend experience: may be redesigned, including the upload / Free Preview UI
+- Frontend behavior: may change when useful, but changed behavior requires regression testing
+- Backend business/data layer: protected by default
 
-## Owner choices
+## Preserved accepted baseline
 
-### A. Accept visual freeze
+The redesign does not erase the already-accepted facts that:
 
-Owner explicitly states the current visual direction is accepted.
+- Blocksy Wedding + Gutenberg is the current foundation;
+- browser-local Free Preview behavior has been proven;
+- selected-photo Preview and 375px behavior were technically accepted at G3CR5 scope;
+- Woo Product / Cart / Checkout / My Account use the native WooCommerce path;
+- US$39.99 product path exists;
+- Owner Administrator/Gutenberg editability exists;
+- no Live/real-money/production/G4 authority exists.
 
-Reviewer may then:
+Those areas may require fresh regression evidence if G3CR6 changes the corresponding frontend implementation.
 
-1. mark `OWNER_VISUAL_FREEZE=PASS`;
-2. close parent G3C as PASS;
-3. reconcile PR #64 for merge/closeout as appropriate;
-4. keep G4 HOLD until separately authorized.
+## Next checkpoint
 
-### B. Request bounded edits
+After the G3CR6 Executor returns:
 
-Owner lists specific visual/copy changes.
+1. Reviewer verifies the changed frontend and regression evidence;
+2. Reviewer returns PASS or RETURN for G3CR6;
+3. only after Reviewer PASS does the Owner perform a new visual acceptance/freeze checkpoint.
 
-Reviewer opens only a narrow correction Gate for those named items.
-
-Do not reopen template/theme/builder selection unless Owner explicitly changes direction.
-
-## Important
-
-A Reviewer PASS does not substitute for Owner visual acceptance.
-
-PR #64 must remain open/unmerged until the Owner checkpoint is resolved.
+PR #64 remains open/unmerged. G4 remains HOLD / NOT AUTHORIZED.
