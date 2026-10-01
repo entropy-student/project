@@ -879,3 +879,182 @@ Credential-shaped literals in mock/test source were classified by presence only;
 ### Reviewer checkpoint
 
 Evidence commit: `7ba1d87f39c8677405ee2e61a878f9292e1fdc54`; complete fresh readback PASS with exactly one M4B section. No app stop, permanent deletion decision, M4C or further investigation was initiated. Reviewer/Owner must decide whether to authorize reversible app-only stop observation with the unchanged caller/Provider uncertainty. Stop here.
+
+## M5 Unified Pay App-Only Stop Observation — 2026-10-01
+
+```text
+GATE=M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION
+RESULT=PASS_CANDIDATE_M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION
+CANONICAL_PROJECT_SOURCE_COMMIT=b29607276d9894b4fb38a545393a359f4bae7685
+OWNER_AUTHORIZES_M5=YES
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+LOCAL_SSH_TRUST=PASS
+SSH_NETWORK_INVOCATIONS=6
+SSH_NATIVE_EXIT_FINAL=0
+PRODUCTION_CLIENT_A_PROVENANCE=INTERNAL_FIXED_BOOTSTRAP_CLIENT
+PRODUCTION_CLIENT_B_PROVENANCE=INTERNAL_FIXED_BOOTSTRAP_CLIENT
+AMBIGUOUS_INCIDENT_CONTEXT=OWNER_AUTHORIZED_INTERNAL_ALIPAY_CANARY
+AMBIGUOUS_CREATE_EXTERNAL_PROVIDER_REQUEST=NO_ACCEPTED_REVIEWER_RECONCILIATION
+OWNER_PAYMENT_EXECUTED=NO_ACCEPTED_REVIEWER_RECONCILIATION
+PROVIDER_TRANSACTION_CALL_EXECUTED=NO_ACCEPTED_REVIEWER_RECONCILIATION
+NEW_INDEPENDENT_BUSINESS_ACTIVITY_AFTER_CANARY=NO
+DUJIAO_UNIFIED_PAY_HISTORICAL_RELATION=YES
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+DUJIAO_PAYMENT_CHANNELS_TOTAL=3
+DUJIAO_PAYMENT_CHANNELS_ACTIVE=0
+DUJIAO_CHANNEL_CLIENTS=0
+DUJIAO_DOWNSTREAM_ORDER_REFS=0
+DUJIAO_SECRET_CONFIG_REFERENCE=ABSENT
+DUJIAO_RUNTIME_ENV_REFERENCE=ABSENT
+DUJIAO_NONSECRET_CURRENT_CONFIG_REFERENCE=ABSENT
+UNIFIED_PAY_APP_CONTAINER_ID=0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e
+UNIFIED_PAY_APP_CONTAINER_NAME=/unified-pay-app-1
+UNIFIED_PAY_APP_IMAGE_ID=sha256:78029ea23abde4a44ff4c51a176c549b1be81746e73f9cfe08dbda0550c901cc
+UNIFIED_PAY_COMPOSE_PROJECT=unified-pay
+UNIFIED_PAY_COMPOSE_SERVICE=app
+UNIFIED_PAY_COMPOSE_SOURCE=/srv/apps/unified-pay/docker-compose.prod.yml
+UNIFIED_PAY_COMPOSE_BYTES=5271
+UNIFIED_PAY_COMPOSE_SHA256=deb4f91d39a53df951c3d61c9911baba73b1a06bfd4d9079b7f8932221e3ff44
+COMPOSE_QUIET_VALIDATION_BEFORE_STOP=PASS
+COMPOSE_QUIET_VALIDATION_AFTER_STOP=PASS
+COMPOSE_HASH_UNCHANGED=YES
+UNIFIED_PAY_APP_STATE_BEFORE=running/healthy
+UNIFIED_PAY_APP_STATE=stopped
+UNIFIED_PAY_APP_DOCKER_STATUS=exited
+UNIFIED_PAY_APP_RESTART_COUNT_BEFORE=0
+UNIFIED_PAY_APP_RESTART_COUNT_AFTER=0
+UNIFIED_PAY_APP_CONTAINER_PRESENT=YES
+UNIFIED_PAY_APP_IMAGE_PRESENT=YES
+UNIFIED_PAY_APP_STOP_ACTIONS=1
+UNIFIED_PAY_APP_START_ACTIONS=0
+STOP_REQUEST_UTC=2026-10-01T11:28:42.520507+00:00
+APP_FINISHED_AT=2026-10-01T11:28:42.662747382Z
+COMPOSE_STOP_NATIVE_EXIT=0
+FINAL_READBACK_UTC=2026-10-01T11:34:11.863922+00:00
+OBSERVATION_SECONDS=329.343
+UNIFIED_PAY_POSTGRES_CONTAINER_ID=eeb800570fd41e117a3cb788ef27977749de7f637f86e7379db4cf686547a120
+UNIFIED_PAY_POSTGRES_STATE=healthy
+UNIFIED_PAY_POSTGRES_RESTART_COUNT_BEFORE=0
+UNIFIED_PAY_POSTGRES_RESTART_COUNT_AFTER=0
+UNIFIED_PAY_DB_STOP=NO
+UNIFIED_PAY_DATA_PRESENT=YES
+UNIFIED_PAY_DATA_PRESERVED=YES
+UNIFIED_PAY_BACKUPS_PRESENT=YES
+UNIFIED_PAY_BACKUPS_PRESERVED=YES
+UNIFIED_PAY_SECRET_SOURCE_PRESENT=YES
+UNIFIED_PAY_SECRET_SOURCES_PRESERVED=YES
+UNIFIED_PAY_RECREATE_PATH_PRESERVED=YES
+ALL_APP_MOUNT_SOURCES_PRESERVED=YES
+KNOWN_PROJECT_REGRESSION=NO
+OTHER_CONTAINER_IDENTITIES_STATES_RESTARTS_UNCHANGED=YES
+DUJIAO_APP_POSTGRES_REDIS=running/healthy
+MINICRAFT_WORDPRESS=running
+MINICRAFT_MARIADB=running/healthy
+XIANYU_RUNTIME=running/healthy
+CLOUDFLARED=running
+SPIKERSUN_PRIVATE=PRESENT
+MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+MINICRAFT_WP_JSON=HTTP_200_TLS_VERIFY_0
+SHOP_PUBLIC=HTTP_200_TLS_VERIFY_0
+PAY_HEALTH_BEFORE_STOP=HTTP_200_TLS_VERIFY_0
+PAY_READY_BEFORE_STOP=HTTP_200_TLS_VERIFY_0
+PAY_HEALTH_AFTER_STOP=HTTP_502_TLS_VERIFY_0
+PAY_PUBLIC_ENDPOINT_EXPECTED_UNAVAILABLE=YES
+PAY_FAILURE_CLASS=EXPECTED_STOPPED_TUNNEL_ORIGIN_BAD_GATEWAY
+PAY_TUNNEL_ORIGIN_EXPECTED=http://unified-pay-app:8080_ACCEPTED_UNCHANGED_BASELINE
+MONITOR_SCRIPT_SHA256=2e28085921c3a5c930dc40144db3e6717438e10696af7f6b3f63f2ccec31a7cf
+MONITOR_SCRIPT_UNCHANGED=YES
+MONITOR_MANUAL_RUN=PASS
+MONITOR_MANUAL_RUNS_AFTER_STOP=2
+MONITOR_SCHEDULED_RUNS_PASS_AFTER_STOP=2
+MONITOR_SCHEDULED_RUN_1_START=2026-10-01T11:28:55Z
+MONITOR_SCHEDULED_RUN_1_END=2026-10-01T11:28:57Z
+MONITOR_SCHEDULED_RUN_2_START=2026-10-01T11:34:05Z
+MONITOR_SCHEDULED_RUN_2_END=2026-10-01T11:34:07Z
+MONITOR_LATEST_RESULT=success
+MONITOR_LATEST_EXIT=0
+MONITOR_TIMER_STATE=active
+SAFE_PAYMENT_INTENTS_TOTAL_BEFORE_AFTER=1/1
+SAFE_AUDIT_EVENTS_TOTAL_BEFORE_AFTER=2/2
+SAFE_CREATE_ATTEMPTS_TOTAL=1
+SAFE_AMBIGUOUS_ATTEMPTS_TOTAL=1
+SAFE_PROVIDER_EVENTS_TOTAL=0
+SAFE_PROVIDER_PAYMENT_FACTS_TOTAL=0
+SAFE_REFUNDS_TOTAL=0
+SAFE_OUTBOX_TOTAL=0
+AUDIT_EVENTS_AFTER_STOP=0
+PAYMENT_INTENTS_AFTER_STOP=0
+LATEST_DURABLE_AUDIT_ACTIVITY=2026-09-14T16:45:03.234414+00:00
+LATEST_DURABLE_ACTIVITY_CLASS=ACCEPTED_INTERNAL_CANARY_AMBIGUOUS_LOCAL_HANDOFF_FAILURE
+CREDIBLE_ACTIVE_BUSINESS_CALLER_AFTER_STOP=UNRESOLVED
+CREDIBLE_CALLER_EVIDENCE_FOUND=NO
+REQUEST_ATTRIBUTION_TELEMETRY_AVAILABLE=NO
+APP_EXISTING_POST_STOP_LOG_LINES=0
+RAW_LOG_OUTPUT=NO
+ROLLBACK_USED=NO
+UNIFIED_PAY_CONTAINER_REMOVE=NO
+UNIFIED_PAY_IMAGE_DELETE=NO
+UNIFIED_PAY_COMPOSE_MUTATION=NO
+UNIFIED_PAY_DATA_DELETE=NO
+UNIFIED_PAY_BACKUP_DELETE=NO
+UNIFIED_PAY_SECRET_DELETE=NO
+OTHER_SERVICE_MUTATIONS=0
+CADDY_MUTATIONS=0
+MONITOR_CONFIG_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+CLEANUP_ACTIONS=0
+BROAD_PRUNE=NO
+DOCKER_MUTATION_SCOPE=EXACTLY_ONE_AUTHORIZED_APP_STOP
+PERMANENT_DELETION_ENTERED=NO
+STOP_AT_REVIEWER=YES
+EXECUTION_EVIDENCE_COMMIT=93568e667ac83cecdc582cac3950fb906101b4fc
+EXECUTION_EVIDENCE_FRESH_READBACK=PASS
+```
+
+### Actual bounded execution
+
+Read current canonical M5 Reviewer authorization/packet and the M4B-R1 historical correction. Carry forward the corrected internal fixed-bootstrap and no-external-transaction Canary facts; prior M4B UNKNOWN records remain preserved as history, not current retirement blockers. No Provider inquiry or additional provenance investigation was attempted.
+
+Fresh strict SSH proved ops@srv1970241 with the sealed identity, normal known_hosts pins and strict options. Six invocations total: first read-only helper exited 1 due an inaccurate Dujiao name selector (no write); it was corrected to Compose labels; all subsequent probes, app stop and final readback exited 0. This was not a blind write retry.
+
+Dujiao fresh aggregates remain channels 3/active 0, channel_clients 0, downstream_order_refs 0. The current non-secret deployed config scan, safe runtime-env key/reference classification and approved in-memory protected-config reference classifier found no Unified Pay reference; values were suppressed. Deployed immutable image/state remained unchanged from accepted active-source baseline. DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO.
+
+Executed exactly once, successfully:
+
+```sh
+sudo docker compose --project-directory /srv/apps/unified-pay -p unified-pay -f /srv/apps/unified-pay/docker-compose.prod.yml stop app
+```
+
+The same app container remains present, Docker status exited (normalized stopped), restart 0, immutable local app image preserved. Its retained health field reads unhealthy while exited; this is not a running-app regression. PostgreSQL remains running/healthy, same container ID/restart 0. Canonical Compose quiet validation passed before/after, hash unchanged. All data, backups, nine Secret-source mounts and image/Compose rollback assets remain present. No container/image/network/data/backup/Secret was removed, and no other service was stopped/recreated.
+
+Not executed, rollback-only source:
+
+```sh
+sudo docker compose --project-directory /srv/apps/unified-pay -p unified-pay -f /srv/apps/unified-pay/docker-compose.prod.yml start app
+```
+
+### Observation / regression
+
+Actual stop request 11:28:42.520507 UTC; final readback 11:34:11.863922 UTC, 329.343 seconds. Mini Craft Home/Shop/wp-json and shop.spikersun.com remained HTTP 200, TLS verify 0. Dujiao app/PostgreSQL/Redis, Mini Craft runtime, Xianyu and cloudflared retained IDs/state/restart counts. spikersun-private remains present. Monitor script unchanged; two manual runs passed and two actual scheduled runs passed after app stop (11:28:55–11:28:57 and 11:34:05–11:34:07 UTC), latest success/exit 0, timer active.
+
+Pay /health changed from 200 to expected 502 with TLS verify 0; this is intentionally unavailable stopped Tunnel origin, not a rollback trigger. Accepted Pay route is unchanged by this Gate; no fresh authenticated Cloudflare route readback was claimed. KNOWN_PROJECT_REGRESSION=NO, ROLLBACK_USED=NO.
+
+### Caller telemetry boundary
+
+Post-stop safe read-only ledger shows no new audits or intents, counts unchanged; bounded app logs contain zero post-stop lines, with no raw log output. No attributable inbound business-request counter exists for the stopped app. Therefore CREDIBLE_ACTIVE_BUSINESS_CALLER_AFTER_STOP=UNRESOLVED, not a false NO. No credible business-call evidence was found; infrastructure/health/Tunnel retries were not treated as callers. This short observation does not prove absence of future attempted calls.
+
+### Reviewer checkpoint / preserved recovery
+
+App intentionally remains stopped; PostgreSQL, /srv/data/unified-pay, /srv/backups/unified-pay, Secret sources, local image, stopped container, canonical Compose and accepted Tunnel/DNS metadata remain retained. App start is rollback-only and was not used. No permanent deletion phase was entered. Evidence commit `93568e667ac83cecdc582cac3950fb906101b4fc` has complete fresh readback PASS with exactly one M5 section. Only authorized GitHub Evidence/Handoff appends accompany the single authorized runtime stop. STOP_AT_REVIEWER=YES.
