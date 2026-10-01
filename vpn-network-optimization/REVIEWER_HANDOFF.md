@@ -70,7 +70,10 @@ P0 acceptance covers research/scope only. It does NOT assert fresh server/runtim
 
 Historical performance reference:
 - short WG test: Median ~0.595s / P95 ~0.773s / P99 ~0.985s;
-- 15-minute foreground-load test: 90/90 success, Median ~0.696s / P95 ~1.358s / P99 ~1.872s / >1s 13.
+- 15-minute foreground-load test: 90/90 success, Median ~0.696s / P95 ~1.358s / P99 ~1.872s / >1s 13;
+- 2026-10-01 ~20:00 peak test: 90/90 OpenAI requests succeeded, average ~0.845s, Median ~0.756s, P95 ~1.628s, P99 ~2.190s, >1s 18/90, >1.5s 7/90, >2s 1/90, WG ping no-reply 4/90;
+- same peak sample: client→public VPS ping Median ~160ms / P95 ~187ms; WG tunnel ping Median ~163ms / P95 ~180ms; TCP22 Median ~169ms with isolated ~1.17s tail.
+Interpretation boundary: evidence currently supports “normal baseline RTT with materially worse evening tail/jitter”; it does NOT yet prove whether the root cause is client uplink, international route loss/retransmission, WireGuard/MTU behavior, local bufferbloat, VPS forwarding, or OpenAI/upstream wait. ICMP no-reply is a warning signal, not by itself a transport packet-loss measurement.
 These are historical references, not G1 fresh evidence.
 
 ## 6. Current Gate — G1 Foreground-safe Foundation
@@ -172,7 +175,8 @@ HY2 may be `BLOCKED_WITH_EXACT_REASON` if Cloud Firewall, DNS/certificate, Secre
 - Whether HY2 certificate/auth can be completed without Owner Secret authorization or DNS action.
 - Whether any server-level changes would share a failure domain with other services.
 - Whether current MTU=1280 is still necessary/optimal.
-- Whether long-task bottleneck is client→VPS, VPS→OpenAI, protocol behavior, local bufferbloat, or upstream service behavior.
+- Whether long-task bottleneck is client→VPS, international route jitter/retransmission, WireGuard/MTU behavior, local bufferbloat, VPS forwarding, VPS→OpenAI, or upstream service behavior.
+- Peak-hour evidence shows tail degradation without broad request failure; G1 must preserve this as a diagnosis target rather than assume “high ping” is the root cause.
 
 ## 9. Owner-only Checkpoints
 
