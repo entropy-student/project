@@ -41,7 +41,7 @@ Windows client
             (not deployed/activated as current traffic path yet)
 ```
 
-- VPS: DigitalOcean SFO2-A, historical IP `24.199.118.137`; G1 must fresh-verify identity before any remote write.
+- VPS: DigitalOcean droplet at `24.199.118.137`. Legacy project/client label `SFO2-A`; fresh DigitalOcean metadata identifies the actual provider region as `sfo3`. Treat `SFO2-A` only as the legacy local profile/test label, not as the provider region.
 - Current VPN: WireGuard, historical client MTU 1280.
 - Client: Windows; Clash Verge installed. Exact version/core/TUN state = UNKNOWN until G1 read-back.
 - Hysteria2: NOT YET ACCEPTED AS DEPLOYED.
@@ -52,8 +52,8 @@ Windows client
 
 ```text
 P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
-G1 Foreground-safe Foundation        ← CURRENT
-G2 Safe-window Validation + v1 Seal  ⏳
+G1 Foreground-safe Foundation        ✅ REVIEWER PASS
+G2 Safe-window Validation + v1 Seal  ← NEXT
 ```
 
 P0 acceptance covers research/scope only. It does NOT assert fresh server/runtime state.
@@ -76,7 +76,7 @@ Historical performance reference:
 Interpretation boundary: evidence currently supports “normal baseline RTT with materially worse evening tail/jitter”; it does NOT yet prove whether the root cause is client uplink, international route loss/retransmission, WireGuard/MTU behavior, local bufferbloat, VPS forwarding, or OpenAI/upstream wait. ICMP no-reply is a warning signal, not by itself a transport packet-loss measurement.
 These are historical references, not G1 fresh evidence.
 
-## 6. Current Gate — G1 Foreground-safe Foundation
+## 6. Accepted Gate — G1 Foreground-safe Foundation
 
 ### Goal
 
@@ -165,11 +165,23 @@ HY2 may be `BLOCKED_WITH_EXACT_REASON` if Cloud Firewall, DNS/certificate, Secre
 - VLESS-Reality for reachability/obfuscation needs;
 - additional protocols.
 
+## 7A. Reviewer Decision — G1
+
+- Decision: `PASS_G1_FOREGROUND_SAFE_FOUNDATION`.
+- Accepted execution commit: `75b738726d3325dbb67ee4cbeaf1bad46cf47f78`.
+- GitHub branch reconciliation: current `main` later advanced to `e9b2de0303d3e9c36fb7e025b62e16a11a48ad3a` through unrelated `shared-vps-infrastructure` commits. The G1 commit remains an ancestor of current `main`; no VPN project rollback or overwrite occurred.
+- The Executor's `RETURN_PREFLIGHT_DRIFT` was correct at execution time. Reviewer reconciliation resolves it as documentation/label drift, not wrong-host drift: the exact historical public IP was reached under strict host-key checking, while fresh DigitalOcean metadata identifies the same target as region `sfo3`. Future docs/scripts must not call the provider region `SFO2`.
+- No live VPS/network/client mutation occurred; current WireGuard remained active; foreground tasks were not interrupted.
+- G1 portable templates, preflight, health-check, rollback, and migration scaffolding are accepted.
+- `HY2_READY=BLOCKED_WITH_EXACT_REASON` is accepted under G1 criteria because Secret/TLS/DNS/cloud-firewall enablement was intentionally not authorized in this foreground-safe Gate.
+- YAML parser validation remains outstanding and must be performed before any HY2 deployment.
+- Mihomo active core version remains UNKNOWN; it must be confirmed before importing/enabling the HY2 profile.
+
 ## 8. UNKNOWN / Open Risks
 
-- Exact current Clash Verge version and core.
+- Clash Verge version is fresh-read as 2.5.6; Mihomo binary is present, but active core version remains UNKNOWN.
 - Whether current Windows traffic uses official WireGuard app, Clash, or mixed routing at execution time.
-- Actual SFO2-A live firewall/cloud-firewall policy.
+- Actual DigitalOcean Cloud Firewall policy for the current sfo3 droplet remains UNKNOWN.
 - Current VPS OS/kernel/qdisc/BBR/offload values.
 - Whether UDP 8443 is free end-to-end.
 - Whether HY2 certificate/auth can be completed without Owner Secret authorization or DNS action.
@@ -218,16 +230,17 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package.
 
 ## 12. Next Step
 
-- Reviewer next action: issue one bounded G1 execution prompt.
-- Executor next action: start with target-host and client read-only preflight, then continue only within G1 allowed scope.
+- Reviewer next action: define G2 as a separate safe-window Gate; do not start until Owner confirms foreground tasks can be interrupted/safely switched.
+- Executor next action now: none.
 - Owner intervention required now: NO.
-- If a Secret/DNS/cloud-firewall/client-switch checkpoint appears: YES, only at that exact checkpoint.
+- Before G2 deployment/activation: resolve exact HY2 Secret/TLS strategy, verify Cloud Firewall, validate YAML with a parser, confirm Mihomo active core/version, then authorize only the minimum required writes.
+- G2 will perform bounded HY2 deployment/activation and comparative validation; it must not silently add 3X-UI, VLESS-Reality, broad sysctl tuning, or aggressive fixed-bandwidth settings.
 
 ## 13. Status Summary
 
-- Overall progress: Project initialized; research/scope frozen; no live optimization applied yet.
+- Overall progress: P0 + G1 PASS; portable foundation and read-only baseline accepted; no live optimization applied yet.
 - Final goal: portable VPN optimization v1.
-- Current Gate: G1 Foreground-safe Foundation.
-- This round completed: research, scope, MVP/non-goals, Clash Verge direction, project governance mapping.
-- Next: Executor G1.
-- Attention: foreground tasks are protected; no performance tests or live route changes in G1.
+- Current Gate: none executing; G2 safe-window validation is next.
+- This round completed: target/client preflight, portable templates/scripts, rollback/migration scaffolding, GitHub evidence sync, target-region reconciliation.
+- Next: wait for a safe window, then issue G2.
+- Attention: actual provider region is sfo3; `SFO2-A` is only a legacy local profile/test label.
