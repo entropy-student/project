@@ -1,5 +1,28 @@
 # Unified Pay System — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — Standing Decommission Authorization / M7 Authorized — 2026-10-01
+
+```text
+OWNER_STANDING_AUTHORIZATION_FOR_UNIFIED_PAY_DECOMMISSION=YES
+REPEATED_OWNER_APPROVAL_REQUIRED_FOR_IN_SCOPE_REVERSIBLE_PROJECT_ONLY_STEPS=NO
+
+CURRENT_GATE=SHARED_VPS_M7_UNIFIED_PAY_POSTGRES_STOP_OBSERVATION
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_PROJECT_RUNTIME_WRITE
+
+DB_STOP_AUTHORIZED=YES
+DB_START_AUTHORIZED=YES_ROLLBACK_ONLY
+DB_CONTAINER_REMOVE_AUTHORIZED=NO_IN_M7
+DATA_DELETE_AUTHORIZED=NO
+BACKUP_DELETE_AUTHORIZED=NO
+SECRET_DELETE_AUTHORIZED=NO
+PUBLIC_INGRESS_REMOVAL_AUTHORIZED=NO
+```
+
+Future bounded Unified Pay-only decommission steps may proceed after Reviewer validation without repeated Owner approval if no other project is affected and adequate recovery remains. Permanent data/backup/Secret deletion and Tunnel/DNS/shared-infra changes remain outside the standing authorization.
+
+Canonical decision:
+../shared-vps-infrastructure/docs/REVIEWER_DECISION_M7_OWNER_STANDING_AUTHORIZATION_UNIFIED_PAY_DECOMMISSION.md
+
 ## CURRENT REVIEWER UPDATE — M6 PASS / M7 PostgreSQL Stop Checkpoint — 2026-10-01
 
 ```text
