@@ -1,6 +1,50 @@
-# G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E cleanup closure
+# Execution Evidence — Birthday Magazine Studio
 
-**Current result:** `PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE`
+## Current Gate — G3CR6R1 Frontend Composition Redesign — 2026-10-02
+
+`PASS_CANDIDATE_G3CR6R1_FRONTEND_COMPOSITION_REDESIGN`
+
+Existing PR #64 / `codex/birthday-magazine-g3c-blocksy-wedding-productization`; fresh pre-run HEAD `9f90c1e53058567010fcbd9f505ac99ceaacc6f9`. PR is open and unmerged. Canonical latest Reviewer/return/execution/Owner packets were read in full; scoped rollback was created before changes at `poc/g3c/artifacts/backups/g3cr6r1`, without overwriting G3CR6.
+
+Current rendering is eight Gutenberg chapters, not the historical six-section g3cr4 skeleton: wide gift-editorial Hero; concise value strip; unequal staggered Spread/Cover samples; full-width photo-local Preview; 12-page visual Included story; vertical journey; centered gift offer; separate open FAQ. Footer is editable wp_block1143 with supported Blocksy copyright/placement hooks and no vendor attribution. Product/Cart/Checkout/Account remain native Woo with gift-led presentation; no protected business handler is changed.
+
+Fresh desktop/375 tests pass Preview select/replace/remove/invalid MIME/corrupt image, decoded blob images and old URL revocation. Interaction network capture: model calls0, server photo uploads0, external image POST0. Native Add to Cart, quantity2 / USD79.98, removal, Checkout form load without submit and My Account login form load pass. Order count1→1. Product1113 remains virtual/USD39.99; active plugins/theme unchanged. All10 route/viewport checks have document width equal viewport, no broken images and no blocking horizontal overflow. Mobile viewport375.
+
+Fresh protected source hashes for Compose/commerce workspace/Mailpit/Woo match preflight. Private workspace handler: Owner200/unrelated403/guest403; anonymous HTTP403. In-memory identity tests do not claim authenticated HTTP login. Owner Administrator/edit Home/media/theme-options capabilities and core Gutenberg render roundtrip pass; eight core Groups support section reorder. Gutenberg editor-save behavior was not claimed. Global design tokens use the editable Blocksy palette; supported inline dynamic CSS fixes stale demo-cache colors. No theme/builder switch.
+
+Current full results and evidence boundaries:
+
+- [Execution report](docs/G3CR6R1_EXECUTION_REPORT.md)
+- [Preflight and rollback hashes](poc/g3c/artifacts/reports/g3cr6r1-preflight.json)
+- [Browser request/geometry/screenshot evidence](poc/g3c/artifacts/reports/g3cr6r1-browser.json)
+- [Final machine report](poc/g3c/artifacts/reports/g3cr6r1-final.json)
+- [21 final screenshots](poc/g3c/artifacts/screenshots/g3cr6r1/)
+
+Existing gift-hero, sample-spread and sample-cover adopted; new generated assets0. Legacy model/job option counters are absent: zero-provider conclusion is based on implementation/request capture, not default option values. No customer/credential/production backup data was added. Pre-existing G3CR4 screenshot deletions and unrelated untracked ZIP/screenshots remain unstaged.
+
+```text
+PR_MERGE=0
+THEME_CHANGE=0
+BUILDER_CHANGE=0
+ELEMENTOR_INSTALL=0
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+CHECKOUT_SUBMISSIONS=0
+PRODUCTION_AI_CALLS=0
+PRODUCTION_DEPLOYMENT=0
+SHARED_INFRA_MUTATIONS=0
+PAID_PURCHASES=0
+GLOBAL_DOCKER_PRUNE=0
+G4_ACTIONS=0
+OWNER_VISUAL_FREEZE=PENDING
+STOP_AT_REVIEWER=YES
+```
+
+---
+
+## Historical evidence — G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E cleanup closure
+
+**Historical result:** `PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE`
 **Phase status:** Payment/refund/entitlement was accepted by Reviewer; cleanup-only closure passed. This run performed no payment, provider, order, Docker-start, tunnel-start, or model actions.
 **Execution branch:** `codex/birthday-magazine-g3br1-sandbox-reconciliation-entitlement`
 **Phase A-D base:** latest GitHub `main` at `290a73131a4d0ace487d2c1986a94145f03ee277`

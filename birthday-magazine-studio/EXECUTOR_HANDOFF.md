@@ -1,6 +1,62 @@
 # Executor Handoff — Birthday Magazine Studio
 
-## Current Gate — G3BR1 cleanup-only closure
+## Current Gate — G3CR6R1 Frontend Composition Redesign
+
+```text
+GATE=G3CR6R1_FRONTEND_COMPOSITION_REDESIGN
+RESULT=PASS_CANDIDATE_G3CR6R1_FRONTEND_COMPOSITION_REDESIGN
+EXECUTION_BRANCH=codex/birthday-magazine-g3c-blocksy-wedding-productization
+PRE_RUN_HEAD=9f90c1e53058567010fcbd9f505ac99ceaacc6f9
+PR=64_OPEN_UNMERGED
+LOCAL_SITE_URL=http://127.0.0.1:8189/
+LOCAL_WP_ADMIN_URL=http://127.0.0.1:8189/wp-admin/
+ROLLBACK=poc/g3c/artifacts/backups/g3cr6r1
+HOME_TOP_LEVEL_GUTENBERG_GROUPS=8
+OLD_G3CR4_STRUCTURAL_CLASSES_ACTIVE=0
+NATIVE_WOOCOMMERCE=RETAINED
+PRODUCT=1113_VIRTUAL_USD_39.99
+ORDER_COUNT_BEFORE=1
+ORDER_COUNT_AFTER=1
+PREVIEW_SELECT_REPLACE_REMOVE_INVALID=PASS_DESKTOP_AND_375
+FREE_PREVIEW_MODEL_CALLS=0
+FREE_PREVIEW_SERVER_PHOTO_UPLOADS=0
+FREE_PREVIEW_EXTERNAL_IMAGE_POSTS=0
+SCREENSHOT_COUNT=21
+MOBILE_DOCUMENT_WIDTH=375
+MOBILE_BLOCKING_OVERFLOW=NO
+PROTECTED_BACKEND_HASHES=UNCHANGED
+OWNER_ROLE=ADMINISTRATOR
+OWNER_CAN_EDIT_HOME=YES
+OWNER_CAN_REPLACE_IMAGES=YES
+OWNER_CAN_EDIT_COPY=YES
+OWNER_CAN_REORDER_MAJOR_SECTIONS=YES
+OWNER_CAN_EDIT_GLOBAL_STYLE=YES
+OWNER_VISUAL_FREEZE=PENDING
+PR_MERGE=0
+THEME_CHANGE=0
+BUILDER_CHANGE=0
+ELEMENTOR_INSTALL=0
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+CHECKOUT_SUBMISSIONS=0
+PRODUCTION_AI_CALLS=0
+PRODUCTION_DEPLOYMENT=0
+SHARED_INFRA_MUTATIONS=0
+PAID_PURCHASES=0
+GLOBAL_DOCKER_PRUNE=0
+G4_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+[Execution report](docs/G3CR6R1_EXECUTION_REPORT.md) explains the new gift-editorial Hero, unequal gallery, full-width Preview, 12-page editorial Included section, vertical journey, standalone gift conclusion/FAQ and supported editable Footer. Ordinary Home content remains core Gutenberg; Preview alone is a shortcode. The old six-group count and g3cr4 CSS chain are no longer design constraints.
+
+[Final machine report](poc/g3c/artifacts/reports/g3cr6r1-final.json), [browser/network report](poc/g3c/artifacts/reports/g3cr6r1-browser.json), and [21 screenshots](poc/g3c/artifacts/screenshots/g3cr6r1/) are the current review evidence. Three existing G3CR6 generated assets were adopted; no new images/model calls. Supported Blocksy palette + inline dynamic CSS preserve Owner color editing. Workspace guard proof is handler-level in-memory identity, not authenticated browser session proof; Gutenberg editability is permissions/structure/roundtrip, not an editor-save claim.
+
+Existing PR #64 only; exact submission SHA is reported after GitHub readback. The original G3CR6 rollback and pre-existing unrelated worktree changes are preserved. Do not merge, freeze the visual direction or proceed to G4 without Reviewer/Owner acceptance.
+
+---
+
+## Historical Gate — G3BR1 cleanup-only closure
 
 ```text
 GATE=G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND

@@ -20,12 +20,11 @@
   function clearPhoto() {
     if (photoUrl) URL.revokeObjectURL(photoUrl);
     photoUrl = '';
-    root.dataset.hasPhoto = 'false';
     input.value = '';
     root.querySelectorAll('[data-bms-image]').forEach(img => { img.removeAttribute('src'); img.hidden = true; });
     root.querySelectorAll('[data-bms-art], [data-bms-spread-art]').forEach(art => { art.hidden = false; });
     remove.hidden = true;
-    uploadLabel.textContent = 'Choose their photo';
+    uploadLabel.textContent = 'Choose a photo';
     status.textContent = 'Your preview works without a photo.';
   }
   name.addEventListener('input', update);
@@ -49,7 +48,6 @@
       return;
     }
     if (photoUrl !== candidate) return;
-    root.dataset.hasPhoto = 'true';
     root.querySelectorAll('[data-bms-image]').forEach(img => { img.src = candidate; img.hidden = false; });
     root.querySelectorAll('[data-bms-art], [data-bms-spread-art]').forEach(art => { art.hidden = true; });
     remove.hidden = false;
