@@ -1448,3 +1448,77 @@ The future reversible observation boundary is app-only stop; preserve PostgreSQL
 MUTATIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## M3D Caddy Monitor Migration + Stop Observation — bounded preflight return — 2026-10-01
+
+```text
+GATE=M3D_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION
+RESULT=RETURN_M3D_MONITOR_SIDE_EFFECTS_UNRESOLVED
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+SSH_PRINCIPAL=ops@2.24.193.133:22
+PRIVILEGED_READ_CONTEXT=sudo root
+SSH_NATIVE_EXIT=0
+
+MONITOR_TIMER_PATH=/etc/systemd/system/spikersun-infra-health.timer
+MONITOR_TIMER_SHA256=e2ccc93decf36b667454f497b91be4e74fc83fce13ee18eb142f3495c6618164
+MONITOR_TIMER_BYTES=206
+MONITOR_TIMER_OWNER_MODE=root:root 0644
+MONITOR_TIMER_STATE=active/enabled
+
+MONITOR_SERVICE_PATH=/etc/systemd/system/spikersun-infra-health.service
+MONITOR_SERVICE_SHA256=c2052ff5f6d24a53b22b94a82d5a3a74762079977c41adda80d4f106dc8900bd
+MONITOR_SERVICE_BYTES=233
+MONITOR_SERVICE_OWNER_MODE=root:root 0644
+MONITOR_SERVICE_STATE=inactive/dead between runs; last result=success; last exit=0
+
+MONITOR_SCRIPT=/srv/infra/monitoring/check-shared-infra.sh
+MONITOR_SCRIPT_SHA256=cc466266a0f7de19badf7cbe6601a4cb01fc8b1ae661e1e68d6346e7ce29daf1
+MONITOR_SCRIPT_BYTES=3330
+MONITOR_SCRIPT_OWNER_MODE=root:root 0750
+
+MONITOR_EXTERNAL_NOTIFICATION=NO
+MONITOR_AUTO_REMEDIATION=NO
+MONITOR_HTTP_POST_OR_PROVIDER_WRITE=NO
+MONITOR_NONLOG_STATE_WRITES=YES
+MONITOR_NONLOG_STATE_WRITE_DETAIL=script creates a temporary response-body file with mktemp under /tmp, directs the existing HTTPS probe body into it, and removes it with an EXIT trap; this is outside normal service logging
+MONITOR_SIDE_EFFECT_SCREEN=BLOCKED
+
+CADDY_STATE=running
+CADDY_CONTAINER_ID=82749fff0bcea4538748dbb96d0d616b88617e3b4cc505a9fd70b61b6a789bb1
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+CADDY_RESTART_COUNT=0
+CADDY_IMAGE_ID=sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648
+CADDYFILE_BYTES=143
+CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+
+CLOUDFLARED_RUNNING_COUNT=1
+SPIKERSUN_PRIVATE_PRESENT=YES
+
+PREFLIGHT_MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+PREFLIGHT_MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+PREFLIGHT_MINICRAFT_WP_REST=HTTP_200_TLS_VERIFY_0
+PREFLIGHT_SHOP_HOME=HTTP_200_TLS_VERIFY_0
+
+ROLLBACK_COPY_CREATED=NO
+MONITOR_SCRIPT_MUTATION=0
+MANUAL_MONITOR_RUN=NOT_STARTED
+SCHEDULED_MONITOR_RUNS=0
+CADDY_STOP_ACTIONS=0
+CADDY_DELETIONS=0
+UNIFIED_PAY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+DOCKER_MUTATIONS=0
+VPS_RUNTIME_MUTATIONS=0
+SECRET_VALUES_OUTPUT=0
+BROAD_PRUNE=NO
+STOP_AT_REVIEWER=YES
+```
+
+The bounded side-effect review found no mail/chat/webhook notification, HTTP POST/provider write, or service/container remediation command. It did find the temporary-file create/write/remove lifecycle above. Because the Gate requires a clean pre-write side-effect screen and calls out non-logging state writes, execution stopped before creating a rollback copy or changing the monitor. Caddy remains running; no timer, service, monitoring file, Unified Pay, or production endpoint was changed. Initial public baseline was healthy with normal TLS verification.
