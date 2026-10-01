@@ -53,7 +53,7 @@ Windows client
 ```text
 P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
 G1 Foreground-safe Foundation        ✅ REVIEWER PASS
-G2 Safe-window Validation + v1 Seal  ← NEXT
+G2 Deploy + Safe-window Validation   ← READY / NOT YET EXECUTING
 ```
 
 P0 acceptance covers research/scope only. It does NOT assert fresh server/runtime state.
@@ -216,31 +216,54 @@ G1 rollback principle:
 - No secret value in repo/log/evidence.
 - If a step unexpectedly changes connectivity or a shared service, fail closed and restore only the exact G1 change.
 
-## 11. G2 Preview — Safe-window Validation + v1 Seal
+## 11. G2 — Deploy + Safe-window Validation + v1 Seal
 
-Only after Owner confirms foreground tasks are idle:
+G2 remains one Gate with two bounded checkpoints to avoid Gate sprawl.
 
-- compare current WG and HY2 using the same endpoint/time window;
-- test only the small set of candidate tunings that survived G1 review;
-- include real Codex/image workload only after network validation;
-- select the minimal configuration that improves stability/tail behavior without adding unnecessary complexity;
+### G2-A — Side-by-side HY2 deployment
+
+May run while foreground tasks continue only if all writes remain isolated from the live WireGuard path.
+
+Required sequence:
+- fresh read-only preflight and confirm the accepted sfo3 target;
+- validate the YAML templates with a real parser before deployment;
+- confirm the actual Mihomo core/version and current Hysteria2 support;
+- inspect DigitalOcean Cloud Firewall / UDP 8443 reachability without changing live routing;
+- prefer the minimum private-node TLS design. Current research candidate is self-signed TLS with certificate pinning, avoiding a domain requirement, but Executor must verify compatibility against the installed Hysteria2/Mihomo versions before freezing config;
+- Secret generation/install requires exact Owner authorization and must follow delegated-secret rules;
+- install HY2 as a side-by-side service on UDP 8443 only; do not alter wg0, routes, NAT default policy, system proxy, or current Clash/WireGuard traffic;
+- perform local/service-level health checks only.
+
+G2-A must stop before client traffic switches if foreground tasks are active.
+
+### G2-B — Safe-window comparative validation
+
+Only after Owner explicitly confirms a safe window:
+- import/enable the prepared HY2 profile without deleting the existing WireGuard profile;
+- compare WG and HY2 under the same short, low-impact method;
+- prioritize success rate, Median/P95/P99, >1s tails, timeout/reset, and real long-task behavior over bandwidth screenshots;
+- only if HY2 alone does not explain/improve the tail, test the surviving tuning candidates one at a time (for example MTU or UDP GRO forwarding), with before/after rollback boundaries;
+- do not bundle BBR/fq/GRO/MTU changes into one experiment;
+- select the minimal configuration that improves stability without adding unnecessary complexity;
 - freeze v1 portable deployment and rollback package.
 
-MVP ends after G2. New VPS/provider evaluation later reuses the same package.
+### G2 exit
+
+MVP ends after G2. New VPS/provider evaluation later reuses the same package rather than rebuilding the stack.
 
 ## 12. Next Step
 
-- Reviewer next action: define G2 as a separate safe-window Gate; do not start until Owner confirms foreground tasks can be interrupted/safely switched.
-- Executor next action now: none.
-- Owner intervention required now: NO.
-- Before G2 deployment/activation: resolve exact HY2 Secret/TLS strategy, verify Cloud Firewall, validate YAML with a parser, confirm Mihomo active core/version, then authorize only the minimum required writes.
-- G2 will perform bounded HY2 deployment/activation and comparative validation; it must not silently add 3X-UI, VLESS-Reality, broad sysctl tuning, or aggressive fixed-bandwidth settings.
+- Reviewer next action: issue the bounded G2-A prompt.
+- Executor next action: G2-A only after reading this fresh Handoff; stop at any exact Secret/cloud-firewall/client-switch checkpoint.
+- Owner intervention required before Secret generation/install: YES — exact delegated allowlist authorization is required.
+- Owner safe-window confirmation for client switching/testing: NOT REQUIRED FOR G2-A; REQUIRED BEFORE G2-B.
+- G2 must not silently add 3X-UI, VLESS-Reality, broad sysctl tuning, or aggressive fixed-bandwidth settings.
 
 ## 13. Status Summary
 
 - Overall progress: P0 + G1 PASS; portable foundation and read-only baseline accepted; no live optimization applied yet.
 - Final goal: portable VPN optimization v1.
-- Current Gate: none executing; G2 safe-window validation is next.
+- Current Gate: G2 is defined and ready; no G2 execution has started yet.
 - This round completed: target/client preflight, portable templates/scripts, rollback/migration scaffolding, GitHub evidence sync, target-region reconciliation.
 - Next: wait for a safe window, then issue G2.
 - Attention: actual provider region is sfo3; `SFO2-A` is only a legacy local profile/test label.
