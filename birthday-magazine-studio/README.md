@@ -40,7 +40,8 @@
 | G3CR4 G3C visual consolidation | **PASS** |
 | G3CR5 visual finish + WooCommerce continuity | **PASS** |
 | G3C Owner visual checkpoint | RESOLVED — Owner requested further redesign |
-| G3CR6 Frontend experience + warm-gift brand redesign | **CURRENT / OWNER AUTHORIZED** |
+| G3CR6 Frontend experience + warm-gift brand redesign | RETURN — visual direction underexecuted |
+| G3CR6R1 Frontend composition redesign | **CURRENT** |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
@@ -59,7 +60,7 @@ G3B Sandbox 闭环已经通过：
 → scoped cleanup PASS
 ```
 
-这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前 G3CR4 / G3CR5 均已 PASS：首页结构、375px Preview、上传照片后的 Preview 排版，以及 Product/Cart/Checkout/My Account 的视觉连续性都已通过 Reviewer 验收。Owner 在该 checkpoint 选择了继续修改而不是视觉封板：当前正式进入 **G3CR6 Frontend Experience + Brand Redesign**。视觉方向冻结为 **Option 2 — Warm Birthday Gift**；允许执行 Agent 调用生图模型制作高保真前台资产，并允许重做用户可见的前台体验（包括 Free Preview 上传 UI），但 WooCommerce canonical 订单/结账、支付、账户权限、Private Workspace、entitlement/job 与数据库等后台业务层默认受保护。PR #64 保持 open/unmerged，Owner visual freeze 仍为 PENDING，G4 Live PayPal Canary 继续 HOLD。
+这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前 G3CR4 / G3CR5 均已 PASS：首页结构、375px Preview、上传照片后的 Preview 排版，以及 Product/Cart/Checkout/My Account 的视觉连续性都已通过 Reviewer 验收。Owner 在该 checkpoint 选择了继续修改而不是视觉封板。G3CR6 已执行，但 Reviewer 对 19 张最终截图复核后判定 **RETURN**：功能/隐私/Woo 回归证据可保留，但页面组合仍明显继承 G3CR4/G3CR5 的旧骨架，主要表现为换图与换肤，没有充分执行 **Option 2 — Warm Birthday Gift**。当前进入 **G3CR6R1 Frontend Composition Redesign**：允许重新组织 Gutenberg/DOM 前台结构，旧六段骨架不再是约束；后台 WooCommerce canonical 订单/结账、支付、账户权限、Private Workspace、entitlement/job 与数据库等继续受保护。PR #64 保持 open/unmerged，Owner visual freeze 仍为 PENDING，G4 继续 HOLD。
 
 ## 已证明的技术能力
 
@@ -90,7 +91,9 @@ G3B Sandbox 闭环已经通过：
 - [docs/MVP_PRODUCT_CONTRACT.md](./docs/MVP_PRODUCT_CONTRACT.md) — 冻结 MVP 产品合同
 - [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md) — 支持性技术路线
 - [docs/OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md](./docs/OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md) — **当前 Owner 视觉方向与变更边界**
-- [docs/G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md](./docs/G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md) — **当前执行 Gate**
+- [docs/REVIEWER_DECISION_G3CR6_RETURN.md](./docs/REVIEWER_DECISION_G3CR6_RETURN.md) — G3CR6 Reviewer RETURN
+- [docs/G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md](./docs/G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md) — **当前执行 Gate**
+- [docs/G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md](./docs/G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md) — 已执行 G3CR6 合同
 - [docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md](./docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md) — G3B Reviewer PASS 判断
 - [docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](./docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md) — 已完成的 Sandbox closure contract
 
