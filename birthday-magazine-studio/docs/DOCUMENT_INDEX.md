@@ -65,7 +65,9 @@
 | `REVIEWER_DECISION_G3CR4_PASS.md` | Reviewer acceptance of G3CR4 | **CURRENT G3CR4 DECISION — PASS** |
 | `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY.md` | Preview-photo composition + WooCommerce visual continuity | **EXECUTED / PASS** |
 | `REVIEWER_DECISION_G3CR5_PASS.md` | Reviewer acceptance of G3CR5 | **CURRENT G3CR5 DECISION — PASS** |
-| `G3C_OWNER_VISUAL_CHECKPOINT.md` | Final Owner visual accept/change checkpoint | **CURRENT OWNER CHECKPOINT** |
+| `G3C_OWNER_VISUAL_CHECKPOINT.md` | Owner visual checkpoint after G3CR5 | **RESOLVED — OPTION B / FURTHER REDESIGN REQUESTED** |
+| `OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md` | Owner-selected Option 2 visual direction + frontend/backend change boundary | **CURRENT OWNER DECISION** |
+| `G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md` | Frontend experience + brand redesign execution contract | **CURRENT GATE / OWNER AUTHORIZED** |
 | `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
@@ -95,7 +97,9 @@ For the current project state, a new Reviewer/Executor should normally need only
 6. `BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md` — why the canary is authorized
 7. `REVIEWER_DECISION_G3CR2R3_PASS.md` — accepted Blocksy/Woo compatibility decision
 8. `REVIEWER_DECISION_G3CR5_PASS.md` — accepted visual-finish decision
-9. `G3C_OWNER_VISUAL_CHECKPOINT.md` — current Owner checkpoint
+9. `OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md` — current Owner visual direction and scope boundary
+10. `G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md` — current execution contract
+11. `G3C_OWNER_VISUAL_CHECKPOINT.md` — resolved prior checkpoint provenance
 10. `REVIEWER_DECISION_G3CR4_PASS.md` — accepted homepage visual-consolidation decision
 11. `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY.md` — executed/pass contract
 10. `REVIEWER_DECISION_G3C_OWNER_VISUAL_RETURN.md` — prior visual RETURN provenance
