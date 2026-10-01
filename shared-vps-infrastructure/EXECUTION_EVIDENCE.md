@@ -1679,3 +1679,186 @@ STOP_AT_REVIEWER=YES
 ```
 
 The only consequential action was removal of the already-stopped, freshly identified Caddy container by its exact ID. It was absent on read-back. Its image, canonical Compose source, Caddyfile, data/config directories, shared edge network and the verified monitor rollback copy remain present. Public Tunnel routes and the migrated monitor both passed after removal. No Caddy recreate/rollback was needed; Unified Pay and all other services were untouched.
+
+## M4A Unified Pay Final Retirement Reconciliation — 2026-10-01
+
+```text
+GATE=M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION
+RESULT=PASS_CANDIDATE_M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION
+MODE=READ_ONLY
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+SSH_LOCAL_TRUST_PREFLIGHT=PASS
+SSH_NETWORK_INVOCATIONS=7
+SSH_NATIVE_EXIT_RESULTS=0,0,0,0,0,0,0
+HOSTINGER_WEB_TERMINAL_USED=NO
+RUNTIME_MATERIAL_DRIFT=NO_OBSERVED_IN_CHECKED_BASELINE
+```
+
+### Authoritative sources and evidence boundary
+
+Fully read canonical GitHub Governance SKILL/Handoff, Governance Source Policy rev1, Storage Layout rev1, SSH/Delegated Secret Operations rev2, Target Host Reality rev2 and Production Provider Canary/Recovery rev2. Fully read all M4A required Shared VPS and Unified Pay inputs. Current project-main tree readback: `9810e851c862521c9faff4fac5234357f6c88691`.
+
+Input blob identities:
+- Shared VPS Handoff: `e9e3874fe77935c43072e958b0d47d5dad061135`.
+- Shared Reviewer Handoff: `9dbe89daa34ae12b6680d12837713a6daa2c3c45`.
+- Portfolio: `d217d5c95e8ccee71a5a44dd85670100654ec22a`.
+- M4A decision: `6df2ce10abeb5e557c4310ad45eb029609e041e8`.
+- M4A packet: `de65df62b8d793769999be1ec1cbd9f76dacc1e5`.
+- Pre-append Evidence: `c1586e1e0598726fa7276dbe593b40f1341781ec`.
+- Pre-append Executor Handoff: `44e463fd5bb0ee9f973bd842533b2981207573b7`.
+- Unified Pay Reviewer/Storage/Record: `d7b28e364579485152acedbd204c62e134331d60`, `ef5397c0fb1d64fd4edf2ac77a7df9b85b3e159a`, `9c3f2fb5a5aa1781a6c06a554d399b74fc84a1b3`.
+- Canonical GPT View+ config: `43615784a27ec5664ba88bf2133e0ecb173fef3b`.
+- New Product Onboarding/Shared Payment Hub: `461d3f0a2d6eaf57babe398829e05a1f0457b978`, `42061fb1025784c92c7d68d40b738616190c2e45`.
+
+Supplemental historical reads: canonical Unified Pay Dockerfile; Dujiao Reviewer Handoff; canonical repository path inventory/search for Alipay R4/R5/R6 historical documents. Unified Pay EXECUTION_EVIDENCE.md and EXECUTOR_HANDOFF.md at its own project root returned 404; no records from those nonexistent paths are claimed. Available accepted M3A/M3B/M3C history is in the Shared VPS files above. No local dirty Git cache was used.
+
+Local identity-file presence/ACL metadata, client public-key fingerprint and the three normal known_hosts host pins matched the canonical contract. Seven bounded SSH read-only collection calls exited 0, with ops identity verified before sudo; no connection retry after failure was needed. SQL ran through the existing PostgreSQL container with `BEGIN READ ONLY` and `ROLLBACK`, selecting safe metadata/aggregates only. Existing configured DB role/database names were used inside the container without value output. No Secret file, credential/hash/prefix, customer, order, payment or Provider identifier was output.
+
+### A — caller registration mapping
+
+Joined audit/client and intent/client relationships inside the read-only DB boundary. Safe registration names:
+- `production-client-a`: active; 2 audit events, both payment-intent events; 1 intent.
+- `production-client-b`: active; 0 audit events and 0 intents.
+
+The current public schema has no applications/apps registry, app slug, public/server client-type field or client-environment field. The intent metadata is empty. The canonical config defines `gpt-view-plus` / `GPT View+` as a public client, but neither generic current registration provides a proven relation to that entry. Provider-account app_id is an Alipay application identity, not a product-registration slug; it was not used to invent a caller mapping or emitted.
+
+```text
+REGISTERED_ACTIVE_CLIENTS=2
+RECENT_PAYMENT_AUDIT_EVENTS=2
+RECENT_DISTINCT_CLIENT_REFERENCES=1
+CALLER_APP_ID=UNKNOWN
+CALLER_DISPLAY_NAME=production-client-a
+CALLER_CLIENT_TYPE=UNKNOWN
+CALLER_STATUS=ACTIVE
+CALLER_ENVIRONMENT=UNKNOWN
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+LIVE_CALLER_LAST_ACTIVITY=2026-09-14T16:45:03.234414Z
+LIVE_CALLER_ACTIVITY_AFTER_2026_09_14=NO
+SECOND_REGISTERED_CLIENT_CLASS=UNUSED
+SECOND_CLIENT_CLASS_SCOPE=NO_PAYMENT_INTENT_OR_AUDIT_ACTIVITY_IN_CURRENT_LEDGER
+GPT_VIEW_PLUS_CALLER_MAPPING=UNPROVEN
+```
+
+UNUSED does not prove zero unlogged HTTP requests. The previously accepted one recent caller reference is historical durable activity, not evidence of a currently live simultaneous caller. Generic display names are safe registration labels, not credentials or UUID client identifiers. Current project ownership remains unresolved.
+
+### B — lifecycle aggregates and precise time correlation
+
+| Public lifecycle table | Total rows | Created/processed after 2026-09-14T16:45:03Z |
+|---|---:|---:|
+| payment_intents | 1 | 1 |
+| provider_create_attempts | 1 | 1 |
+| provider_events | 0 | 0 |
+| provider_payment_facts | 0 | 0 |
+| provider_refund_attempts | 0 | 0 |
+| refunds | 0 | 0 |
+| outbox_events | 0 | 0 |
+| audit_events | 2 | 2 |
+| idempotency_records | 1 | 1 |
+
+The whole-second cutoff is not the end of the incident. The reservation audit/idempotency timestamp is 16:45:03.217077Z; the sole intent/create-attempt timestamp is 16:45:03.222972Z; the ambiguous outcome audit and intent/attempt update timestamp is 16:45:03.234414Z. Both audits correlate internally to the same sole attempt's intent. They are not independent later business. The idempotency resource class is create_payment_intent; its timestamp is within that same window, with no later idempotency row. No identifier is persisted.
+
+A separate fresh query counted created/updated lifecycle rows after the complete 16:45:03.234414Z window: 0. Independent audit events after the whole-second cutoff excluding the sole correlated intent: 0. No independent later intent exists.
+
+```text
+PAYMENT_INTENTS_CREATED=1
+PROVIDER_CREATE_ATTEMPTS_AMBIGUOUS=1
+PROVIDER_CREATE_ATTEMPTS_TERMINAL=0
+PROVIDER_EVENTS=0
+PROVIDER_PAYMENT_FACTS=0
+REFUNDS=0
+OUTBOX_EVENTS=0
+LIFECYCLE_ROWS_AFTER_FULL_AMBIGUOUS_WINDOW=0
+UNIFIED_PAY_NEW_BUSINESS_ACTIVITY_SINCE_AMBIGUOUS=NO
+UNIFIED_PAY_LATEST_INDEPENDENT_ACTIVITY=NONE
+PAYMENTS_TABLE=ABSENT
+ENTITLEMENTS_TABLE=ABSENT
+LICENSES_TABLE=ABSENT
+```
+
+NO is bounded to the inspected current Unified Pay PostgreSQL lifecycle ledger. Absent tables are not reported as zero-row tables or proof concerning an external store. Unlogged traffic cannot be measured from the available application logs.
+
+### C — ambiguous attempt local evidence
+
+The sole attempt remains ambiguous and the intent remains created. Both store the generic failure class provider_create_ambiguous. Attempt provider_reference, intent provider_ref/provider_order_ref and handoff are absent; intent metadata is empty. No succeeded/canceled/expired timestamp is recorded. Audit outcome is ambiguous with provider_reference_present=false and reservation create_correlation_present=true. The provider account remains production, active=true, enabled=false, activation_reviewed=true.
+
+There are no dedicated request_sent, response_received, HTTP status, transport-error, retryable or terminal metadata columns. The generic ambiguous code is not a definitive Provider success or rejection.
+
+```text
+REQUEST_SENT=UNKNOWN
+PROVIDER_RESPONSE_RECEIVED=UNKNOWN
+HTTP_STATUS_CLASS=UNKNOWN
+TRANSPORT_ERROR_CLASS=UNKNOWN
+PROVIDER_REFERENCE_PRESENT=NO
+PROVIDER_SUCCESS_SIGNAL_PRESENT=NO
+PROVIDER_FAILURE_SIGNAL_PRESENT=UNKNOWN
+ATTEMPT_RETRYABLE=UNKNOWN
+ATTEMPT_TERMINAL=NO
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+AMBIGUOUS_LOCAL_COMMIT_CLASS=IRREDUCIBLY_AMBIGUOUS
+```
+
+Absence of a stored reference, a roughly millisecond-scale operation, and zero later activity do not prove that a network request was never sent or that a Provider order was not created. No Provider call was authorized or performed.
+
+### D — historical logs and Canary context
+
+Current app container was created at 2026-09-14T17:50:18.057942029Z, after the incident. Its retained json-file log has one timestamped line at 17:50:18.433660292Z. The bounded 16:40–16:50 UTC incident log query returned 0 lines. No historical app/adapter transport log is available from that container; zero log lines do not prove zero activity. No old project app container was present in the current two-container project inventory.
+
+Only metadata was read for 33 existing Unified Pay backup files, not dump contents, archived credentials or backup Compose contents. Relevant sequence:
+
+| Backup filename | Bytes | File mtime UTC |
+|---|---:|---|
+| pre-alipay-r4-db-20260914153000.dump | 36242 | 2026-09-14T15:09:20.520682Z |
+| pre-alipay-r5-20260914170000.dump | 36242 | 2026-09-14T15:45:44.437519Z |
+| pre-alipay-real-canary-20260914T163717Z.dump | 36242 | 2026-09-14T16:37:17.297348Z |
+| pre-alipay-real-canary-20260914T163914Z.dump | 36242 | 2026-09-14T16:39:14.640785Z |
+| pre-alipay-real-canary-20260914T164218Z.dump | 36242 | 2026-09-14T16:42:19.052494Z |
+| pre-alipay-real-canary-20260914T164349Z.dump | 36242 | 2026-09-14T16:43:49.761850Z |
+| pre-alipay-r6-disabled-20260914T171401Z.dump | 37010 | 2026-09-14T17:14:01.818761Z |
+| pre-alipay-r6-final-20260914T172951Z.dump | 37010 | 2026-09-14T17:29:51.799568Z |
+| pre-alipay-r6-audit-20260914T174523Z.dump | 37010 | 2026-09-14T17:45:28.236016Z |
+
+Filename times and filesystem mtimes are separately reported, not assumed identical. Pre-real-canary backups precede the incident; disabled/final/audit backups follow it. This supports a historical Canary-preparation context, but neither filenames nor the generic client name prove that the unique attempt was an internal test. TEST/CANARY versus external production-caller attribution remains UNRESOLVED. The canonical GPT View+ config/architecture docs describe intended onboarding, not a proven relation to the deployed service's generic PostgreSQL registrations; the running /app layout exposes a binary and migrations, not application source providing an additional registration map.
+
+### E — reversible-stop proposal assessment (not executed)
+
+Fresh metadata confirmed Unified Pay app/PostgreSQL running and healthy, restart counts 0; canonical Compose /srv/apps/unified-pay/docker-compose.prod.yml exists; current app image sha256:78029ea23abde4a44ff4c51a176c549b1be81746e73f9cfe08dbda0550c901cc remains local. /srv/data/unified-pay, db, secrets and /srv/backups/unified-pay remain present; all existing app Secret sources remain present and mounted read-only by metadata. No content was read.
+
+Carry forward accepted M3B Dujiao dependency NO and accepted pay Tunnel origin http://unified-pay-app:8080 on spikersun-shared-private. No old Gate was rerun and Caddy was not touched. The accepted app-only rollback barrier is retained: keep PostgreSQL/data/backups/Secrets/image/Compose/Tunnel if a future stop is separately authorized.
+
+```text
+DUJIAO_UNIFIED_PAY_DEPENDENCY=NO_ACCEPTED_CARRY_FORWARD
+UNIFIED_PAY_STOP_OBSERVE_ROLLBACK_READY=YES
+UNIFIED_PAY_APP_STOP_OBSERVATION_CANDIDATE=UNRESOLVED
+STOP_OBSERVATION_BLOCKERS=CALLER_PROJECT_OWNERSHIP_UNRESOLVED;PROVIDER_CREATE_IRREDUCIBLY_AMBIGUOUS_LOCALLY
+APP_STOP_EXECUTED=NO
+```
+
+M4A completed the allowed reconciliation; it did not prove permanent retirement, data deletion or Provider truth safe. Reviewer must decide the bounded treatment of the residual caller/transaction obligations before proposing an Owner-authorized app-stop observation. This result does not authorize shutdown, create/retry/query/cancel/refund, ingress changes or deletion.
+
+### Mutation counters
+
+```text
+UNIFIED_PAY_RUNTIME_MUTATIONS=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+SECRET_CONTENT_READS=0
+SECRET_VALUES_OUTPUT=0
+SECRET_HASH_OUTPUT=0
+BACKUP_MUTATIONS=0
+FILE_DELETIONS=0
+NETWORK_MUTATIONS=0
+BROAD_PRUNE=NO
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
