@@ -61,7 +61,9 @@
 | `REVIEWER_DECISION_G3C_PR64_INTERIM_RETURN.md` | Reviewer interim decision after opening PR #64 | **CURRENT G3C INTERIM DECISION** |
 | `G3CR3_G3C_VISUAL_EVIDENCE_CLOSURE.md` | Screenshot + 375px evidence closure | **SUPERSEDED BY OWNER VISUAL REVIEW** |
 | `REVIEWER_DECISION_G3C_OWNER_VISUAL_RETURN.md` | Reviewer visual decision from Owner's current 17-screenshot package | **CURRENT VISUAL DECISION — RETURN** |
-| `G3CR4_G3C_VISUAL_CONSOLIDATION.md` | Homepage hierarchy/mobile-preview visual consolidation | **CURRENT EXECUTION GATE** |
+| `G3CR4_G3C_VISUAL_CONSOLIDATION.md` | Homepage hierarchy/mobile-preview visual consolidation | **EXECUTED / PASS** |
+| `REVIEWER_DECISION_G3CR4_PASS.md` | Reviewer acceptance of G3CR4 | **CURRENT G3CR4 DECISION — PASS** |
+| `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY.md` | Preview-photo composition + WooCommerce visual continuity | **CURRENT EXECUTION GATE** |
 | `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
@@ -90,8 +92,10 @@ For the current project state, a new Reviewer/Executor should normally need only
 5. `OWNER_DECISION_G3C_BLOCKSY_WEDDING.md` — current Owner template decision
 6. `BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md` — why the canary is authorized
 7. `REVIEWER_DECISION_G3CR2R3_PASS.md` — accepted Blocksy/Woo compatibility decision
-8. `REVIEWER_DECISION_G3C_OWNER_VISUAL_RETURN.md` — current visual Reviewer decision
-9. `G3CR4_G3C_VISUAL_CONSOLIDATION.md` — current execution contract
+8. `REVIEWER_DECISION_G3CR4_PASS.md` — accepted homepage visual-consolidation decision
+9. `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY.md` — current execution contract
+10. `REVIEWER_DECISION_G3C_OWNER_VISUAL_RETURN.md` — prior visual RETURN provenance
+11. `G3CR4_G3C_VISUAL_CONSOLIDATION.md` — executed/pass contract
 10. `REVIEWER_DECISION_G3C_PR64_INTERIM_RETURN.md` — prior interim decision
 11. `G3CR3_G3C_VISUAL_EVIDENCE_CLOSURE.md` — superseded evidence-only closure
 10. `G3C_UI_UX_PRODUCTIZATION.md` — parent Gate
