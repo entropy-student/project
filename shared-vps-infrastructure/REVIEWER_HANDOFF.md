@@ -1,5 +1,37 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M3D Owner Authorized Caddy Monitor Migration + Stop Observation — 2026-10-01
+
+```text
+OWNER_AUTHORIZES_M3D=YES
+OWNER_DIRECTION=PROCEED_AND_REPORT_IF_PROBLEM
+
+CURRENT_GATE=M3D_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_SHARED_INFRA_WRITE
+
+MONITOR_SCRIPT_MUTATION_AUTHORIZED=YES_EXACT_SCOPE
+CADDY_STOP_AUTHORIZED=YES_CONDITIONAL_AFTER_MONITOR_PASS
+CADDY_START_AUTHORIZED=YES_ROLLBACK_ONLY_IF_REGRESSION
+
+CADDY_REMOVE_AUTHORIZED=NO
+CADDY_DELETE_AUTHORIZED=NO
+SPIKERSUN_EDGE_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+```
+
+Before any monitor write, Executor must prove the current monitor has no external notification or auto-remediation side effects. If not proven, fail closed with zero mutations.
+
+If clear, Executor may back up and modify only the Shared Infrastructure monitor script, validate one manual and at least two scheduled runs, then stop Caddy only and perform public/Tunnel regression. Caddy must remain present and recoverable; Unified Pay is untouched.
+
+Decision:
+docs/REVIEWER_DECISION_M3D_OWNER_AUTHORIZED_CADDY_STOP_OBSERVATION.md
+
+Execution packet:
+review-packets/M3D_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION.md
+
 ## CURRENT REVIEWER UPDATE — M3C PASS / M3D Caddy Stop Observation Owner Checkpoint — 2026-10-01
 
 ```text
