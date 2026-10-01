@@ -39,7 +39,8 @@
 | G3CR3 current visual evidence closure | SUPERSEDED BY OWNER SCREENSHOT REVIEW |
 | G3CR4 G3C visual consolidation | **PASS** |
 | G3CR5 visual finish + WooCommerce continuity | **PASS** |
-| G3C Owner visual checkpoint | **CURRENT** |
+| G3C Owner visual checkpoint | RESOLVED — Owner requested further redesign |
+| G3CR6 Frontend experience + warm-gift brand redesign | **CURRENT / OWNER AUTHORIZED** |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
@@ -58,7 +59,7 @@ G3B Sandbox 闭环已经通过：
 → scoped cleanup PASS
 ```
 
-这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前 G3CR4 / G3CR5 均已 PASS：首页结构、375px Preview、上传照片后的 Preview 排版，以及 Product/Cart/Checkout/My Account 的视觉连续性都已通过 Reviewer 验收。现在不再自动开启新的视觉技术 Gate，而是进入 Owner visual checkpoint：Owner 直接查看保留运行的本地站点，选择接受当前视觉封板或提出明确的有限修改。PR #64 保持 open/unmerged，G4 继续 HOLD。G4 Live PayPal Canary 继续保持 HOLD。
+这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前 G3CR4 / G3CR5 均已 PASS：首页结构、375px Preview、上传照片后的 Preview 排版，以及 Product/Cart/Checkout/My Account 的视觉连续性都已通过 Reviewer 验收。Owner 在该 checkpoint 选择了继续修改而不是视觉封板：当前正式进入 **G3CR6 Frontend Experience + Brand Redesign**。视觉方向冻结为 **Option 2 — Warm Birthday Gift**；允许执行 Agent 调用生图模型制作高保真前台资产，并允许重做用户可见的前台体验（包括 Free Preview 上传 UI），但 WooCommerce canonical 订单/结账、支付、账户权限、Private Workspace、entitlement/job 与数据库等后台业务层默认受保护。PR #64 保持 open/unmerged，Owner visual freeze 仍为 PENDING，G4 Live PayPal Canary 继续 HOLD。
 
 ## 已证明的技术能力
 
@@ -88,7 +89,9 @@ G3B Sandbox 闭环已经通过：
 - [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — 所有文档角色与状态
 - [docs/MVP_PRODUCT_CONTRACT.md](./docs/MVP_PRODUCT_CONTRACT.md) — 冻结 MVP 产品合同
 - [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md) — 支持性技术路线
-- [docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md](./docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md) — **当前 G3B Reviewer PASS 判断**
+- [docs/OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md](./docs/OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md) — **当前 Owner 视觉方向与变更边界**
+- [docs/G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md](./docs/G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md) — **当前执行 Gate**
+- [docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md](./docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md) — G3B Reviewer PASS 判断
 - [docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](./docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md) — 已完成的 Sandbox closure contract
 
 其他研究、历史 Gate 与旧方案保留用于 provenance，但不与 Handoff 竞争当前真相。
