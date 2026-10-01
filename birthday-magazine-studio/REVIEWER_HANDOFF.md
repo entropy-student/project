@@ -86,7 +86,8 @@ G3CR2R3 Wedding Import + WooCommerce Canary               ✅ PASS — import, G
 G3C Blocksy Wedding UI/UX Productization                  ↩ INTERIM RETURN — PR created by Reviewer; current mobile/screenshot evidence incomplete
 G3CR3 Current Visual Evidence Closure                     ⏹ SUPERSEDED — Owner supplied current screenshots; visual review returned
 G3CR4 G3C Visual Consolidation                            ✅ PASS — homepage hierarchy + 375px preview corrected
-G3CR5 Visual Finish + WooCommerce Continuity              ⏳ CURRENT — photo-preview composition + Woo visual skin on PR #64
+G3CR5 Visual Finish + WooCommerce Continuity              ✅ PASS — Preview composition + Woo visual continuity accepted
+G3C Owner Visual Checkpoint                               ⏳ CURRENT — Owner reviews local site and accepts freeze or requests bounded edits
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -134,6 +135,8 @@ Current Reviewer decisions:
 - `REVIEWER_OPENED_G3CR4_VISUAL_CONSOLIDATION_2026-10-01`
 - `PASS_G3CR4_VISUAL_CONSOLIDATION_2026-10-01`
 - `REVIEWER_OPENED_G3CR5_VISUAL_FINISH_WOO_CONTINUITY_2026-10-01`
+- `PASS_G3CR5_VISUAL_FINISH_WOO_CONTINUITY_2026-10-01`
+- `REVIEWER_OPENED_G3C_OWNER_VISUAL_CHECKPOINT_2026-10-01`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -488,6 +491,7 @@ Status:
 - G3C: implementation present on PR #64; PR-creation blocker is resolved. Technical PASS remains pending because the final corrected 375px state and durable current screenshots were not independently verified/committed.
 - G3CR3: SUPERSEDED — Owner supplied a current 17-screenshot review package directly. Reviewer completed visual review from those screenshots.
 - G3CR4: PASS — homepage consolidated to six primary editable sections; sample density reduced; mobile page materially shortened; 375px Good Issue preview is single-column with no detected clipping/overflow; functional Woo path and Owner editing preserved.
-- G3CR5: CURRENT — preserve the accepted homepage, fix the selected-photo composition so it never overlaps spread copy, and apply one bounded visual skin to Product/Cart/Checkout/My Account for brand continuity before Owner visual freeze.
+- G3CR5: PASS — selected-photo Preview uses a dedicated frame with no text overlap on desktop/375px; Product/Cart/Checkout/My Account now share the accepted editorial visual system; homepage regression and Owner editability preserved.
+- G3C Owner Visual Checkpoint: CURRENT — no further technical visual work is authorized by default. Owner must either explicitly accept the current visual freeze or name bounded changes. PR #64 stays open/unmerged; G4 stays HOLD.
 - G4: HOLD — Live/real-money Canary requires G3C completion, a new contract + fresh Owner authorization.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
