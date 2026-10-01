@@ -1,5 +1,34 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M3E PASS / M4A Unified Pay Final Reconciliation Open — 2026-10-01
+
+```text
+M3E_CADDY_RUNTIME_DECOMMISSION=PASS
+CADDY_PRODUCTION_ROLE=RETIRED
+CADDY_CONTAINER_PRESENT=NO
+CADDY_IMAGE_PRESENT=YES
+CADDY_RECREATE_PATH_PRESERVED=YES
+PUBLIC_TUNNEL_REGRESSION=PASS
+
+CURRENT_GATE=M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+UNIFIED_PAY_RUNTIME_MUTATIONS=0
+CADDY_RUNTIME_DECOMMISSION_COMPLETE=YES
+```
+
+Reviewer accepted Evidence commit 7787a2e30d4fdea802854e88f30fbb527ead93c5 and Handoff commit a581eedd7bed8577a841099b6af250685806fe4b.
+
+Caddy runtime is fully decommissioned. Retained Caddy image/config/data/network assets are recovery material only and are not part of the active production path.
+
+M4A now focuses exclusively on the remaining Unified Pay caller and ambiguous local payment state before any reversible stop observation is proposed.
+
+Decision:
+docs/REVIEWER_DECISION_M3E_PASS_M4A_UNIFIED_PAY_FINAL_RECONCILIATION.md
+
+Execution packet:
+review-packets/M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION.md
+
 ## CURRENT REVIEWER UPDATE — M3E Owner Authorized Caddy Runtime Decommission — 2026-10-01
 
 ```text
