@@ -456,3 +456,59 @@ DATABASE_MUTATIONS=0
 PAYMENT_ACTIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Executor Handoff — M3A Caddy + Unified Pay Decommission Assessment — 2026-10-01
+
+- Gate: `M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT`
+- Status: read-only assessment complete; stop for Reviewer.
+- Result: `PASS_CANDIDATE_M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT`
+- Evidence commit: `100a0ecb4a047df9968cdae8e1cd909391148f61`
+
+### Findings
+
+```text
+TARGET_HOST_EXECUTION_PROVEN=PASS
+REMOTE_IDENTITY=ops@srv1970241
+CADDY_RUNTIME=running; RESTARTS=0
+CADDY_COMPOSE=/srv/infra/edge/compose.yaml
+CADDY_HOST_CADDYFILE_BYTES=143
+CADDY_HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+CADDY_CURRENT_ROUTES=edge-test.spikersun.com static 200; localhost static 200
+CADDY_PRODUCTION_UPSTREAMS_IN_CURRENT_CONFIG=0
+CADDY_NONPRODUCTION_ROUTE_CONSUMERS=UNRESOLVED
+CADDY_RETIREMENT_SAFE=UNRESOLVED
+
+UNIFIED_PAY_APP=running_healthy
+UNIFIED_PAY_DATABASE=running_healthy
+UNIFIED_PAY_PUBLIC_HEALTH=HTTP_200_TLS_VERIFY_0
+UNIFIED_PAY_ACTIVE_CALLERS=2_REGISTERED_ACTIVE_CLIENTS;LIVE_TRAFFIC_UNMEASURED
+UNIFIED_PAY_PROVIDER=ALIPAY_PRODUCTION_ACTIVE_BUT_DISABLED
+UNIFIED_PAY_UNRESOLVED_TRANSACTION_STATE=1_CREATED_INTENT_PLUS_1_AMBIGUOUS_CREATE_ATTEMPT
+UNIFIED_PAY_EXACT_TUNNEL_ORIGIN=UNRESOLVED
+DUJIAO_DIRECT_UNIFIED_PAY_REFERENCE=NOT_FOUND_IN_DEPLOYED_COMPOSE_SEARCH_OR_SAFE_DB_AGGREGATES
+DUJIAO_DEPENDENCY_FINAL=UNRESOLVED_CONFIG_NOT_READ
+UNIFIED_PAY_RUNTIME_RETIREMENT_SAFE=NO
+UNIFIED_PAY_DATA_DELETION_SAFE=NO
+UNIFIED_PAY_RECOVERY_BARRIER=UNRESOLVED
+```
+
+Unified Pay has 13 DB dump files and 15 Compose snapshots; the newest dump is timestamped after the one observed ambiguous intent/attempt, but no backup contents or restore test were used. Reconstructible source fragments and Dockerfile are present on canonical GitHub. Current secret source files remain on VPS; independent protected Secret recovery was not proven. Do not stop/remove the runtime or delete data, secrets, or backups on this assessment.
+
+Dujiao's three payment channels currently have `is_active=false`; its DB has zero channel-client and downstream-order-reference rows. No current direct Unified Pay reference was found in deployed Compose or safe source search. Its mounted secret config was deliberately not read, so a zero-dependency conclusion is not proven.
+
+Caddy currently has only two static-response routes, no production reverse-proxy upstreams, and no Mini Craft matcher. The diagnostic/localhost route consumer inventory is unresolved; therefore retirement is not yet proven safe.
+
+### Read-only boundaries and execution note
+
+- Strict SSH target identity passed. Three bounded SSH read-only calls completed with native exit 0.
+- Two later bounded read-only command attempts ended with native exit 2 from shell command-construction syntax errors; they made no writes. Earlier public checks had passed: Mini Craft Home/Shop/WP REST, Pay health/readiness and Shop all HTTP 200 with TLS verify result 0.
+- No Cloudflare control-plane read, Secret value, private DB row, log payload, provider call or business identifier was accessed.
+- VPS, Docker, Compose, Caddy, Cloudflare, DNS, Tunnel, database writes, provider/payment actions, backup deletion and cleanup/prune mutations are all 0.
+
+Reviewer decision required on the unresolved dependency/recovery barriers. No retirement action is authorized by this result.
+
+```text
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
