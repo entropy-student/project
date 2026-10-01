@@ -1,5 +1,61 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2E-R2 Formal PASS / Owner Caddy Recreate Checkpoint — 2026-10-01
+
+```text
+S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT=PASS
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+
+M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION=PASS
+M2E_R2_CADDY_RECREATE_PREFLIGHT=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=FAIL_NEEDS_RECREATE
+M2E_FORMAL_PASS=NO
+
+CADDY_COMPOSE_PROJECT=spikersun-edge
+CADDY_COMPOSE_SERVICE=caddy
+CADDY_CANONICAL_COMPOSE_PATH=/srv/infra/edge/compose.yaml
+CADDY_IMAGE_ID=sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_BYTES=143
+HOST_SOURCE_MINICRAFT_MATCHER=ABSENT
+PRE_RECREATE_CADDY_CONFIG_VALID=PASS
+
+CURRENT_GATE=M2E_R3_OWNER_CADDY_RECREATE_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+
+CADDY_RECREATE_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Reviewer independently accepted M2E-R2. Evidence commit `55b7eefd5bf3bce898152904c4921cb92b89396b` and Executor Handoff commit `7053d1559535d21297397e47dedf345b9a6796b4` contain the expected bounded read-only additions. The two non-zero SSH command results were read-only command-construction errors and were superseded by later complete read-back; no ambiguous runtime write exists.
+
+The exact future transaction is sealed but not authorized:
+
+```sh
+sudo -n docker compose --project-name spikersun-edge --project-directory /srv/infra/edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never --no-build caddy
+```
+
+Before any authorized write, Executor must fresh-recheck target identity, canonical Compose validation, the exact 143-byte host Caddyfile/SHA, Mini Craft matcher absence, immutable Caddy image ID, ports/networks/mounts, and regression baseline. Any material drift cancels authorization. No blind second recreate is permitted after an ambiguous outcome.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M2E_R2_PASS_OWNER_CADDY_RECREATE_CHECKPOINT.md`
+
+Owner action required: explicitly authorize or decline this exact bounded Shared Caddy recreate transaction. Until then, no Shared Infrastructure mutation is permitted.
+
+
 ## CURRENT REVIEWER UPDATE — M2E-R1 Formal PASS / M2E-R2 Caddy Recreate Preflight Open — 2026-10-01
 
 ```text
