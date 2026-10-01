@@ -1,5 +1,21 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M9 Xianyu Retention Reconciliation Open — 2026-10-01
+
+```text
+UNIFIED_PAY_PROJECT_STATUS=RETIRED_WITH_UNRESOLVED_RECOVERY_ASSET_INCIDENT
+UNIFIED_PAY_CURRENT_GATE=NONE
+
+CURRENT_GATE=M9_XIANYU_RETENTION_RECONCILIATION
+CURRENT_GATE_STATUS=AUTHORIZED_STRICT_READONLY
+XIANYU_CLEANUP_AUTHORIZED=NO
+```
+
+Shared VPS portfolio has been synchronized to mark Unified Pay retired. The next cleanup target is Xianyu legacy/retention material. M9 is read-only and classifies old source/build trees, slider_debug logs, eight backup generations, legacy network ownership and current ingress before any write/delete Gate.
+
+Execution packet:
+review-packets/M9_XIANYU_RETENTION_RECONCILIATION.md
+
 ## CURRENT REVIEWER UPDATE — Unified Pay Retirement Closed with Unresolved Recovery-Asset Incident — 2026-10-01
 
 ```text
