@@ -33,19 +33,21 @@ Windows client
    │
    ├─ Current production path: WireGuard
    │        ↓
-   │   DigitalOcean SFO2-A
+   │   DigitalOcean sfo3 droplet
    │        ↓
    │   Internet / OpenAI
    │
-   └─ Future candidate: Hysteria2 via Clash Verge
-            (not deployed/activated as current traffic path yet)
+   └─ Side-by-side candidate: Hysteria2 UDP 8443
+            ↓
+       same DigitalOcean sfo3 droplet
+       (server deployed/active; client not imported/enabled; no traffic switched)
 ```
 
 - VPS: DigitalOcean droplet at `24.199.118.137`. Legacy project/client label `SFO2-A`; fresh DigitalOcean metadata identifies the actual provider region as `sfo3`. Treat `SFO2-A` only as the legacy local profile/test label, not as the provider region.
-- Current VPN: WireGuard, historical client MTU 1280.
-- Client: Windows; Clash Verge installed. Exact version/core/TUN state = UNKNOWN until G1 read-back.
-- Hysteria2: NOT YET ACCEPTED AS DEPLOYED.
-- fq / BBR / UDP GRO settings: UNKNOWN until G1 read-only inspection.
+- Current production VPN: WireGuard; fresh active MTU is 1420. Historical 1280 remains only as legacy metadata.
+- Client: Windows; Clash Verge 2.5.6 installed. Mihomo Meta v1.19.31 and alpha-f103639 are present and HY2/fingerprint config-parser compatible; no active Mihomo core/TUN was observed at G2-A completion.
+- Hysteria2: G2-A side-by-side server deployment accepted; official v2.12.3 service active on UDP 8443. Client profile is prepared but not imported/enabled.
+- Current networking baseline: eth0 qdisc fq_codel; TCP CC cubic; BBR inactive; generic GRO on; rx-gro-list off; rx-udp-gro-forwarding off. No live tuning has been applied.
 - Shared infra dependency: none assumed. Any discovered Caddy/80/443/shared firewall dependency must fail closed and be reported before change.
 
 ## 4. Current State
@@ -53,7 +55,8 @@ Windows client
 ```text
 P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
 G1 Foreground-safe Foundation        ✅ REVIEWER PASS
-G2 Deploy + Safe-window Validation   ← READY / NOT YET EXECUTING
+G2-A Side-by-side HY2 Deployment     ✅ REVIEWER PASS
+G2-B Safe-window Validation + Seal   ← NEXT / REQUIRES OWNER SAFE WINDOW
 ```
 
 P0 acceptance covers research/scope only. It does NOT assert fresh server/runtime state.
@@ -177,14 +180,27 @@ HY2 may be `BLOCKED_WITH_EXACT_REASON` if Cloud Firewall, DNS/certificate, Secre
 - YAML parser validation remains outstanding and must be performed before any HY2 deployment.
 - Mihomo active core version remains UNKNOWN; it must be confirmed before importing/enabling the HY2 profile.
 
+## 7B. Reviewer Decision — G2-A
+
+- Decision: `PASS_G2A_HY2_SIDE_BY_SIDE`.
+- Accepted execution commit: `e17929a469a616c299ca22ec094e42f019b90df5`.
+- GitHub fresh read-back: PASS; at review time this commit is current `main` HEAD.
+- Hysteria2 official binary v2.12.3 is installed side-by-side and its dedicated service is enabled/active on UDP 8443.
+- Existing WireGuard remains active on UDP 51820; routes, NAT/firewall state, Windows WireGuard/proxy/TUN state, MTU/qdisc/BBR/GRO baseline, and current foreground traffic were not switched or tuned.
+- Secret authorization and recovery requirements were satisfied: target files use the accepted permissions; Secret values emitted/logged/committed = 0; DPAPI CurrentUser recovery final artifact passed host-local existence, owner-only ACL, and byte-identity round-trip checks.
+- The non-sensitive `config/clash/sfo3-a-hy2.yaml` is parser-valid and pins the deployed certificate fingerprint; its auth remains a local secret-injection placeholder and it has not been imported/enabled.
+- Client handshake and real traffic validation were intentionally not performed in G2-A. Therefore server deployment is accepted, but HY2 performance/reliability is not yet accepted.
+- Resource observation: HY2 RSS was ~21 MiB; the interval MemAvailable delta is not attributed solely to HY2.
+- G2-A execution notes about the missing `/srv/data`/`/srv/apps` parents and the corrected `ss -p` parser are accepted because final independent read-back passed before DPAPI final promotion and no prohibited network change occurred.
+
 ## 8. UNKNOWN / Open Risks
 
-- Clash Verge version is fresh-read as 2.5.6; Mihomo binary is present, but active core version remains UNKNOWN.
+- Clash Verge is 2.5.6; installed Mihomo cores are known and parser-compatible, but no active core was running during G2-A.
 - Whether current Windows traffic uses official WireGuard app, Clash, or mixed routing at execution time.
-- Actual DigitalOcean Cloud Firewall policy for the current sfo3 droplet remains UNKNOWN.
+- DigitalOcean Cloud Firewall: Owner visually confirmed no Cloud Firewall is attached to this droplet.
 - Current VPS OS/kernel/qdisc/BBR/offload values.
-- Whether UDP 8443 is free end-to-end.
-- Whether HY2 certificate/auth can be completed without Owner Secret authorization or DNS action.
+- UDP 8443 is locally bound by the Hysteria2 service; end-to-end client reachability/handshake is still unproven until G2-B.
+- HY2 auth/TLS generation and DPAPI recovery are complete; no public DNS dependency is used. Client-side auth injection and handshake remain to be validated.
 - Whether any server-level changes would share a failure domain with other services.
 - Whether current MTU=1280 is still necessary/optimal.
 - Whether long-task bottleneck is client→VPS, international route jitter/retransmission, WireGuard/MTU behavior, local bufferbloat, VPS forwarding, VPS→OpenAI, or upstream service behavior.
@@ -220,9 +236,9 @@ G1 rollback principle:
 
 G2 remains one Gate with two bounded checkpoints to avoid Gate sprawl.
 
-### G2-A — Side-by-side HY2 deployment
+### G2-A — Side-by-side HY2 deployment — REVIEWER PASS
 
-May run while foreground tasks continue only if all writes remain isolated from the live WireGuard path.
+Completed without switching the live WireGuard path.
 
 Required sequence:
 - fresh read-only preflight and confirm the accepted sfo3 target;
@@ -236,7 +252,7 @@ Required sequence:
 
 G2-A must stop before client traffic switches if foreground tasks are active.
 
-### G2-B — Safe-window comparative validation
+### G2-B — Safe-window comparative validation — NEXT
 
 Only after Owner explicitly confirms a safe window:
 - import/enable the prepared HY2 profile without deleting the existing WireGuard profile;
@@ -253,17 +269,18 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package rat
 
 ## 12. Next Step
 
-- Reviewer next action: issue the bounded G2-A prompt.
-- Executor next action: G2-A only after reading this fresh Handoff; stop at any exact Secret/cloud-firewall/client-switch checkpoint.
-- Owner intervention required before Secret generation/install: YES — exact delegated allowlist authorization is required.
-- Owner safe-window confirmation for client switching/testing: NOT REQUIRED FOR G2-A; REQUIRED BEFORE G2-B.
-- G2 must not silently add 3X-UI, VLESS-Reality, broad sysctl tuning, or aggressive fixed-bandwidth settings.
+- Reviewer next action: issue the bounded G2-B validation prompt after Owner explicitly confirms a safe window.
+- Executor next action now: none until that confirmation.
+- Owner safe-window confirmation for client switching/testing: REQUIRED.
+- G2-B must keep WireGuard as the rollback baseline, inject the existing HY2 auth locally without exposing it, prove a real HY2 handshake first, then run short low-impact same-window comparison.
+- Do not add 3X-UI, VLESS-Reality, broad sysctl tuning, aggressive fixed-bandwidth settings, or bundled multi-variable tuning.
+- If HY2 alone materially improves the accepted tail/stability metrics, seal v1 without unnecessary BBR/GRO/MTU changes. If not, test surviving tuning candidates one at a time with rollback.
 
 ## 13. Status Summary
 
-- Overall progress: P0 + G1 PASS; portable foundation and read-only baseline accepted; no live optimization applied yet.
+- Overall progress: P0 + G1 + G2-A PASS. HY2 is deployed side-by-side; current production traffic remains on WireGuard.
 - Final goal: portable VPN optimization v1.
-- Current Gate: G2 is defined and ready; no G2 execution has started yet.
-- This round completed: target/client preflight, portable templates/scripts, rollback/migration scaffolding, GitHub evidence sync, target-region reconciliation.
-- Next: wait for a safe window, then issue G2.
-- Attention: actual provider region is sfo3; `SFO2-A` is only a legacy local profile/test label.
+- Current Gate: G2-B safe-window validation is next and has not started.
+- This round completed: official HY2 v2.12.3 deployment on UDP 8443, Secret/TLS provisioning, DPAPI recovery, parser-validated Mihomo client fragment, rollback and regression verification.
+- Next: Owner confirms a safe window; then prove client handshake and compare WireGuard vs HY2 under the same low-impact method.
+- Attention: server-side readiness is accepted; HY2 performance superiority is not yet proven.
