@@ -430,3 +430,29 @@ STOP_AT_REVIEWER=YES
 ```
 
 Failure proposal only: fresh-read state before any retry; no blind recreate. A separately authorized recovery Gate may reconcile only the Caddy service from the same canonical Compose file, preserving the 143-byte host source/current image and repeating route/TLS regression. Do not restore the stale 199-byte Mini Craft matcher or alter Cloudflare/DNS/Tunnel.
+
+## Current Task Update — M2E-R3 Shared Caddy Recreate — 2026-10-01
+
+- Result: `PASS_CANDIDATE_M2E_R3_SHARED_CADDY_RECREATE`; owner-authorized exact Caddy-only recreate executed once via canonical strict SSH.
+- Prewrite: fresh sealed checks passed for target, canonical Compose/service, immutable image/tag ID, ports/network/three bind mounts, restart policy, 143-byte host Caddyfile hash and absent Mini Craft matcher, config validation, and all public/direct-origin regression baselines. An earlier read-only preflight stopped on the checker’s port-sort ordering assertion; it made no mutation and a full fresh preflight subsequently passed.
+- Exact command exited 0: `sudo -n docker compose --project-name spikersun-edge --project-directory /srv/infra/edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never --no-build caddy`.
+- Container ID changed from `793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2` to `82749fff0bcea4538748dbb96d0d616b88617e3b4cc505a9fd70b61b6a789bb1`. New Caddy is running with the accepted immutable image ID, ports 80/443, `spikersun-edge`, restart policy `unless-stopped`, and the exact three accepted binds.
+- The new container’s `/etc/caddy/Caddyfile` is 143 bytes and SHA-256 `f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358`, equal to host source; Mini Craft matcher absent; Caddy config validation passed. `/data` and `/config` binds remain present.
+- Mini Craft Home, Shop, and WP REST each returned HTTP 200 / TLS verify 0. Direct-origin edge-test returned HTTP 200 / TLS verify 0 with the accepted 30-byte body SHA-256. Other 9-container inventory count and metadata digest were unchanged.
+- Evidence GitHub commit: `a8873cb195410bef4854be36ea371002ab86af22`; Evidence fresh read-back passed. This Handoff entry is being persisted and will be fresh-read after commit.
+- No Caddyfile write/reload/restart, other service recreate, pull/build, Cloudflare/DNS/Tunnel/application/database/payment action, or prune occurred.
+
+```text
+CADDY_RECREATE_COUNT=1
+RECREATE_NATIVE_EXIT=0
+M2E_RESTART_PERSISTENCE=PASS
+LEGACY_MINICRAFT_CADDY_ROUTE_REINTRODUCTION_RISK=RESOLVED
+OTHER_SERVICE_RECREATES=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+APPLICATION_MUTATIONS=0
+DATABASE_MUTATIONS=0
+PAYMENT_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
