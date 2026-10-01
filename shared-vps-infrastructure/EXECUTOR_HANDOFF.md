@@ -774,3 +774,108 @@ STOP_AT_REVIEWER=YES
 ```
 
 Handoff persistence is verified by a fresh GitHub full-content read after this commit; its commit/readback result is returned to Reviewer. No Reviewer-owned file or historical Gate reference was modified.
+
+## M4B Unified Pay Client Provenance Final — 2026-10-01
+
+```text
+GATE=M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL
+RESULT=PASS_CANDIDATE_M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL
+MODE=READ_ONLY_PROVENANCE_PLUS_AUTHORIZED_GITHUB_DOCUMENTATION
+CANONICAL_PROJECT_SOURCE_COMMIT=f1561c097ae84f321fd126b95f43fddd588d562a
+SOURCE_ARCHIVE_SHA256=653b511bd98595d0ad21fbb5729e1a41055a41c59f7b9c4c8b7ca21a791104a8
+SOURCE_ARCHIVE_SHA256_MATCH=YES
+BUNDLE_FRAGMENT_COUNT=16
+BUNDLE_FRAGMENT_SIZE_AND_GIT_BLOB_IDENTITY_MATCH=YES
+BUNDLE_FRAGMENT_ORDER=FILENAME_LEXICAL
+ARCHIVE_MEMBERS=122
+EXTRACTED_REGULAR_FILES=99
+SOURCE_CODE_EXECUTION=NO
+PRODUCTION_BUILD_OR_DEPLOY=NO
+PRODUCTION_CLIENT_A_SOURCE_MATCH_COUNT=0
+PRODUCTION_CLIENT_B_SOURCE_MATCH_COUNT=0
+CLIENT_REGISTRATION_DDL_OR_INSERT_MATCH=ABSENT_IN_RECONSTRUCTED_BUNDLE
+GPT_VIEW_PLUS_CONFIG_AND_EXAMPLE_PRESENT=YES
+GPT_VIEW_PLUS_TO_CURRENT_REGISTRATION_MAPPING=UNPROVEN
+SOURCE_TO_DEPLOYED_RUNTIME_LINEAGE=UNPROVEN
+CREDENTIAL_LITERAL_PRESENT=YES
+CREDENTIAL_LITERAL_VALUES_OUTPUT=0
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+CLIENT_PUBLIC_KEY_FINGERPRINT_MATCH=YES
+KNOWN_HOSTS_EXPECTED_PINS_MATCH=YES
+SSH_NATIVE_EXIT=0
+SSH_NETWORK_INVOCATIONS=1
+DATABASE_TRANSACTION_MODE=READ_ONLY_ROLLBACK
+PRODUCTION_CLIENT_A_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_B_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_A_CREDENTIAL_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_B_CREDENTIAL_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_A_STATUS=ACTIVE
+PRODUCTION_CLIENT_B_STATUS=ACTIVE
+REGISTRATION_SOURCE=UNKNOWN_SCHEMA_NOT_AVAILABLE
+CLIENT_TYPE=UNKNOWN_SCHEMA_NOT_AVAILABLE
+ENVIRONMENT=UNKNOWN_SCHEMA_NOT_AVAILABLE
+SAFE_METADATA_KEYS=NOT_AVAILABLE_NO_REGISTRATION_METADATA_COLUMN
+REGISTRATION_UPDATED_AT=NOT_AVAILABLE_IN_CURRENT_SCHEMA
+REGISTERED_CLIENTS=2
+REGISTERED_ACTIVE_CLIENTS=2
+PRODUCTION_CLIENT_A_AUDIT_EVENTS=2
+PRODUCTION_CLIENT_A_PAYMENT_INTENTS=1
+PRODUCTION_CLIENT_A_LATEST_AUDIT=2026-09-14T16:45:03.234414+00:00
+PRODUCTION_CLIENT_B_AUDIT_EVENTS=0
+PRODUCTION_CLIENT_B_PAYMENT_INTENTS=0
+PRODUCTION_CLIENT_B_LATEST_ACTIVITY=NONE_IN_CURRENT_AUDIT_AND_INTENT_LEDGER
+PAYMENT_INTENTS_CREATED=1
+PROVIDER_CREATE_ATTEMPTS=1
+PROVIDER_CREATE_ATTEMPTS_AMBIGUOUS=1
+PROVIDER_EVENTS=0
+PROVIDER_PAYMENT_FACTS=0
+REFUNDS=0
+OUTBOX_EVENTS=0
+NEW_INDEPENDENT_ACTIVITY_AFTER_AMBIGUOUS_WINDOW=NO_ACCEPTED_M4A_CARRY_FORWARD
+PRODUCTION_CLIENT_A_PROVENANCE=UNKNOWN
+PRODUCTION_CLIENT_B_PROVENANCE=UNKNOWN
+PRODUCTION_CLIENT_B_USAGE_CLASS=UNUSED_IN_CURRENT_LEDGER_NOT_PROVEN_INTERNAL
+AMBIGUOUS_INCIDENT_CONTEXT=UNKNOWN
+AMBIGUOUS_LOCAL_COMMIT_CLASS=IRREDUCIBLY_AMBIGUOUS_ACCEPTED_M4A_CARRY_FORWARD
+UNIFIED_PAY_STOP_OBSERVATION_RESIDUAL_RISK=UNCHANGED
+UNIFIED_PAY_RUNTIME_MUTATIONS=0
+VPS_RUNTIME_MUTATIONS=0
+DOCKER_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+BACKUP_CONTENT_READS=0
+FILE_DELETIONS=0
+BROAD_PRUNE=NO
+MUTATIONS=0
+M4C_CREATED=NO
+STOP_OBSERVATION_EXECUTED=NO
+PERMANENT_DELETION_DECIDED=NO
+STOP_AT_REVIEWER=YES
+EXECUTION_EVIDENCE_COMMIT=7ba1d87f39c8677405ee2e61a878f9292e1fdc54
+EXECUTION_EVIDENCE_FRESH_READBACK=PASS
+```
+
+### Result and safe provenance basis
+
+Completed the current canonical M4B packet, the final authorized Unified Pay caller-provenance investigation. Sixteen canonical source fragments from commit `f1561c097ae84f321fd126b95f43fddd588d562a` were reconstructed in filename order, every fragment identity checked, and archive seal matched. Extraction was confined to a fresh local temporary work area. All 99 regular files, including hidden files, were searched; no source/package/migration/test/provider code was executed. No production-client-a/b occurrence or current registration-creation logic was found.
+
+GPT View+ / gpt-view-plus exists in `config/apps.gmpay.example.json`, `config/apps.production.json`, `examples/gpt-view-plus/integration.js` and canonical `config/apps.gmpay.production.json`. The sealed bundle is Node V0.18 using config-driven apps and checkout_sessions/licenses/audit_logs migrations. The accepted live Alipay R6 compiled runtime uses clients/client_credentials/payment_intents/audit_events. A reliable source-to-live registration lineage was not established; do not equate the two or infer that current generic registrations belong to GPT View+.
+
+One fresh canonical strict SSH invocation proved ops@srv1970241, native exit 0, after local identity fingerprint, normal host pins and protected ACL metadata verification. SQL used BEGIN READ ONLY / ROLLBACK and only safe schema fields, registration/credential timestamps and aggregate counts. Both clients and their credentials were created simultaneously at 2026-09-13T08:33:22.183851+00:00. There is no source/creator/app mapping, environment/type, updated_at or metadata column to establish ownership. No Secret/credential/hash/prefix/UUID/private payload was returned.
+
+A has the two audit events / one intent ending in the 2026-09-14 16:45:03.234414 UTC ambiguous window. B has zero audit events / intents, which proves unused in this ledger only, not internal ownership. Accepted M4A no later independent business and backup/Canary/R4-R6 metadata were carried forward without rereading dumps. Registrations predate the Sept14 Canary sequence; backup labels and time proximity are insufficient proof that the exact ambiguous attempt was a test. Thus A=UNKNOWN, B=UNKNOWN, incident=UNKNOWN and residual risk=UNCHANGED. Provider state remains unresolved; Provider calls=0.
+
+Credential-shaped literals in mock/test source were classified by presence only; values were not emitted or persisted. Temporary extraction artifacts remain; FILE_DELETIONS=0. The initial local archive root-member guard was corrected before successful extraction, with no runtime/source baseline mutation. Only the two authorized GitHub documentation files were appended; no Reviewer truth or source code was changed.
+
+### Reviewer checkpoint
+
+Evidence commit: `7ba1d87f39c8677405ee2e61a878f9292e1fdc54`; complete fresh readback PASS with exactly one M4B section. No app stop, permanent deletion decision, M4C or further investigation was initiated. Reviewer/Owner must decide whether to authorize reversible app-only stop observation with the unchanged caller/Provider uncertainty. Stop here.
