@@ -17,7 +17,8 @@ This file is navigation only. It is **not** a second project truth source.
 - **G3B / G3BR1: PASS** — PayPal Sandbox capture correlation, paid-entitlement 0→1 behavior, one Owner-authorized full Sandbox refund, entitlement revocation, and scoped cleanup are closed.
 - **G3CR2R3 compatibility canary: PASS** — Blocksy Wedding Gutenberg imported successfully; WooCommerce product/cart/checkout/account/private-workspace compatibility and Gutenberg editability passed.
 - **G3C implementation is on PR #64.** Reviewer created the PR and closed the GitHub-auth blocker. Final technical PASS is pending only the current corrected screenshot set and independent 375px verification.
-- **G3CR3 visual evidence closure: CURRENT** — keep the retained local runtime, capture final desktop/mobile evidence, verify 375px Hero/Preview/no blocking overflow, then return to Reviewer/Owner visual checkpoint.
+- **Owner visual review: RETURN** — current 17-screenshot package shows fragmented hierarchy, duplicate content, excessive mobile length, and a real 375px Preview clipping defect.
+- **G3CR4 visual consolidation: CURRENT** — retain the accepted technical stack, simplify the homepage to ~6 major sections, use Good Issue as the visual anchor, reduce sample density, remove excessive whitespace/duplication, and make the mobile Preview a true single-column flow.
 - **G4 Live PayPal Canary: HOLD / NOT AUTHORIZED**.
 - PayPal Live, real-money payment, production AI provider, production private delivery and production deployment remain unproven.
 
