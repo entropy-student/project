@@ -56,7 +56,7 @@ Windows client
 P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
 G1 Foreground-safe Foundation        ✅ REVIEWER PASS
 G2-A Side-by-side HY2 Deployment     ✅ REVIEWER PASS
-G2-B Safe-window Validation + Seal   ← NEXT / REQUIRES OWNER SAFE WINDOW
+G2-B Safe-window Validation + Seal   ← CURRENT / OWNER SAFE WINDOW CONFIRMED
 ```
 
 P0 acceptance covers research/scope only. It does NOT assert fresh server/runtime state.
@@ -269,9 +269,10 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package rat
 
 ## 12. Next Step
 
-- Reviewer next action: issue the bounded G2-B validation prompt after Owner explicitly confirms a safe window.
-- Executor next action now: none until that confirmation.
-- Owner safe-window confirmation for client switching/testing: REQUIRED.
+- Owner explicitly confirmed a safe window on 2026-10-02: no foreground task needs protection during this G2-B run.
+- Reviewer next action: issue the bounded G2-B validation prompt.
+- Executor next action: perform only the bounded G2-B sequence below and stop at Reviewer.
+- Owner safe-window confirmation for this run: CONFIRMED.
 - G2-B must keep WireGuard as the rollback baseline, inject the existing HY2 auth locally without exposing it, prove a real HY2 handshake first, then run short low-impact same-window comparison.
 - Do not add 3X-UI, VLESS-Reality, broad sysctl tuning, aggressive fixed-bandwidth settings, or bundled multi-variable tuning.
 - If HY2 alone materially improves the accepted tail/stability metrics, seal v1 without unnecessary BBR/GRO/MTU changes. If not, test surviving tuning candidates one at a time with rollback.
