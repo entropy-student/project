@@ -5,10 +5,10 @@
 
 | Project | Role | Lifecycle | Apps path | Data path | Backup path | Runtime | Public host | Ingress | Current truth |
 |---|---|---|---|---|---|---|---|---|---|
-| Shared VPS Infrastructure | Shared | ACTIVE | `/srv/infra` | Shared infra scoped | Shared infra scoped | Caddy + cloudflared | multiple | Mixed | [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) |
+| Shared VPS Infrastructure | Shared | ACTIVE | `/srv/infra` | Shared infra scoped | Shared infra scoped | cloudflared + monitoring; Caddy runtime retired | multiple | Cloudflare Tunnel direct-to-app for verified routes | [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) |
 | Xianyu | Application | ACTIVE_RUNTIME | `/srv/apps/xianyu` | `/srv/data/xianyu` | `/srv/backups/xianyu` | app healthy | UNKNOWN | UNKNOWN | [REVIEWER_HANDOFF.md](../xianyu/REVIEWER_HANDOFF.md) |
-| Dujiao-Next | Commerce runtime | ACTIVE_RUNTIME / PROJECT_STAGE_CLOSED | `/srv/apps/dujiao-next` | `/srv/data/dujiao-next` | `/srv/backups/dujiao-next` | app + PostgreSQL + Redis healthy | `shop.spikersun.com` | CF Tunnel likely, unverified | [REVIEWER_HANDOFF.md](../dujiao-next/REVIEWER_HANDOFF.md) |
-| Unified Pay | Payment infrastructure | ACTIVE_RUNTIME / LIFECYCLE_REVIEW | `/srv/apps/unified-pay` | `/srv/data/unified-pay` | `/srv/backups/unified-pay` | app + PostgreSQL healthy | `pay.spikersun.com` | CF Tunnel likely, unverified | [REVIEWER_HANDOFF.md](../unified-pay-system/REVIEWER_HANDOFF.md) |
+| Dujiao-Next | Commerce runtime | ACTIVE_RUNTIME / PROJECT_STAGE_CLOSED | `/srv/apps/dujiao-next` | `/srv/data/dujiao-next` | `/srv/backups/dujiao-next` | app + PostgreSQL + Redis healthy | `shop.spikersun.com` | Cloudflare Tunnel direct-to-app | [REVIEWER_HANDOFF.md](../dujiao-next/REVIEWER_HANDOFF.md) |
+| Unified Pay | Payment infrastructure | ACTIVE_RUNTIME / LIFECYCLE_REVIEW | `/srv/apps/unified-pay` | `/srv/data/unified-pay` | `/srv/backups/unified-pay` | app + PostgreSQL healthy | `pay.spikersun.com` | Cloudflare Tunnel -> `http://unified-pay-app:8080` | [REVIEWER_HANDOFF.md](../unified-pay-system/REVIEWER_HANDOFF.md) |
 | Mini Craft Night Kit | Ecommerce runtime | K9_CLOSED / RUNTIME_RETAINED / PRECOMMERCE | `/srv/apps/mini-craft-night-kit` | `/srv/data/mini-craft-night-kit` | `/srv/backups/mini-craft-night-kit` | WordPress + MariaDB | `minicraft.spikersun.com` | Cloudflare Tunnel direct-to-app; legacy Caddy route retired (M2E PASS) | [Shared infra current truth](./REVIEWER_HANDOFF.md) |
 
 ## Lifecycle notes
@@ -24,8 +24,8 @@
 
 - R16 ephemeral runtime absent
 - R16/history recovery material retained
-- fresh payment channel state UNKNOWN
-- Unified Pay runtime dependency UNKNOWN
+- payment channels currently inactive
+- Unified Pay runtime dependency NO (M3B)
 
 ### Unified Pay
 
@@ -34,9 +34,9 @@ Current split truth:
 ```text
 RUNTIME_STATE=ACTIVE_HEALTHY
 PUBLIC_HEALTH_READY=ACTIVE
-DOWNSTREAM_DEPENDENCY=UNKNOWN
+DOWNSTREAM_DEPENDENCY=ONE_RECENT_CALLER_CLASS_UNRESOLVED
 HISTORICAL_ROLE=FROZEN_BACKUP
-CURRENT_LIFECYCLE_DECISION=PENDING
+CURRENT_LIFECYCLE_DECISION=OWNER_DIRECTED_SAFE_DECOMMISSION_PENDING_FINAL_RECONCILIATION
 ```
 
 Do not infer active business dependency from health endpoints alone.
