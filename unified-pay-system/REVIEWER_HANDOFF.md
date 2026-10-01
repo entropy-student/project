@@ -1,5 +1,24 @@
 # Unified Pay System — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M4A PASS / M4B Final Client Provenance — 2026-10-01
+
+```text
+M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION=PASS
+CALLER_APP_ID=UNKNOWN
+CALLER_DISPLAY_NAME=production-client-a
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+NEW_BUSINESS_ACTIVITY_SINCE_AMBIGUOUS=NO
+AMBIGUOUS_LOCAL_COMMIT_CLASS=IRREDUCIBLY_AMBIGUOUS
+
+CURRENT_GATE=SHARED_VPS_M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+```
+
+M4B is the final source/bootstrap provenance check. If it remains unresolved, the next step is an Owner decision on reversible app-only stop observation rather than more investigation.
+
+Canonical decision:
+../shared-vps-infrastructure/docs/REVIEWER_DECISION_M4A_PASS_M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL.md
+
 ## CURRENT REVIEWER UPDATE — M4A Final Retirement Reconciliation Open — 2026-10-01
 
 ```text
