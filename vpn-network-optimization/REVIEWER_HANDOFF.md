@@ -252,6 +252,17 @@ Required sequence:
 
 G2-A must stop before client traffic switches if foreground tasks are active.
 
+### G2-B client-route preflight — Owner read-back
+
+Owner-side Windows read-back before G2-B established:
+
+- target VPS `24.199.118.137` currently resolves through the WireGuard adapter `SFO2-A` (ifIndex 13), source `10.66.21.2`;
+- physical WLAN is `Realtek 8852CE WiFi 6E PCI-E NIC`, ifIndex 18, IPv4 `192.168.1.4`, gateway `192.168.1.1`;
+- there is no existing `24.199.118.137/32` host route;
+- both WLAN and WireGuard expose a default route, and Windows route diagnosis selected WireGuard for the VPS IP.
+
+Implication: do not run HY2 through the current default route because that would risk nesting HY2 inside WireGuard and invalidating the comparison. Preferred bounded G2-B method is a temporary ActiveStore-only `24.199.118.137/32` route via WLAN gateway `192.168.1.1` / ifIndex 18, with exact pre/post read-back and exact removal at the end. WireGuard itself must remain running. If route creation requires elevation unavailable to Executor, stop at an Owner checkpoint rather than disabling WireGuard.
+
 ### G2-B — Safe-window comparative validation — NEXT
 
 Only after Owner explicitly confirms a safe window:
