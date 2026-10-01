@@ -1,111 +1,129 @@
 # Story Image Runner — ROADMAP
 
+## Final product
+
+```text
+Prompt list / JSON / TXT
+→ Chrome / Edge extension queue
+→ signed-in ChatGPT
+→ sequential image generation
+→ automatic image downloads
+→ deterministic filenames
+→ progress / pause / retry
+```
+
+The project ends at reliable bulk image generation. Video assembly is out of scope.
+
 ## Current map
 
 ```text
-P0    Project Intake + Governance              PASS
-P0A   Architecture + Safety Freeze             PASS
-G1    Local Plumbing + Dry Run                 NEXT / EXECUTOR READY
-G1.5  Single Real Image Canary                 PENDING
-G2    Bounded 10-Image Batch                   PENDING
-G3    References + Aspect + Resume             PENDING
-G4    Video Project Adapter                    PENDING
-G5    Visual QA + Controlled Regeneration      PENDING
-G6    Remotion / Video Assembly Handoff        PENDING
+P0    Project Intake + Governance          PASS
+P0A   Plugin Architecture + Safety         PASS
+G1    Plugin Core Static Implementation    PASS
+G1.5  Browser Load + Dry Run               PARTIAL OWNER EVIDENCE
+G2    Single Real Image Canary             PENDING
+G3    Bounded 10-Image Batch               PENDING
+G4    Bulk Usability Hardening             PENDING
+G5    Plugin Release Package               PENDING
 ```
 
-## G1 — Local Plumbing + Dry Run
+## G1 — Plugin Core Static Implementation — PASS
 
-Build bridge, CLI, queue, extension shell, heartbeat, validation, SAFE_MODE, abort, tests.
+Delivered:
 
-Real ChatGPT submission: forbidden.
+- Chrome / Edge MV3 extension;
+- side panel;
+- prompt paste + JSON/TXT import;
+- persistent queue;
+- start / pause / stop / retry;
+- new-chat-every-N setting;
+- aspect instruction;
+- background ChatGPT tab ownership;
+- DOM prompt submission adapter;
+- fresh-image detection;
+- automatic downloads;
+- deterministic file naming;
+- Live generation OFF by default;
+- typed error handling.
 
-Acceptance: local plumbing is demonstrably safe and deterministic without image quota use.
+Static evidence: 11/11 tests PASS and extension static check PASS.
 
-## G1.5 — Single Real Image Canary
+## G1.5 — Browser Load + Dry Run
 
-One prompt, one output, one background tab, one expected image.
+Load unpacked extension with Live generation OFF.
 
-Acceptance must prove:
+Acceptance:
 
-- explicit live authorization;
-- account is already signed in by Owner;
-- no cookie export;
-- exactly one submitted job;
+- extension loads without manifest/service-worker errors;
+- toolbar click opens side panel;
+- prompts can be imported;
+- queue persists;
+- Live OFF blocks generation;
+- signed-in ChatGPT tab readiness is visible to the extension;
+- no image generation occurs.
+
+## G2 — Single Real Image Canary
+
+Enable Live generation for exactly one simple task.
+
+Acceptance:
+
+- exactly one prompt submitted;
 - exactly one fresh generated image selected;
-- deterministic output;
-- manifest;
-- checksum/dimensions;
-- non-target generation delta = 0;
-- safe state restored afterward.
+- exactly one image downloaded;
+- deterministic filename;
+- queue marks the task completed;
+- no unrelated browser download renamed;
+- Live generation turned OFF afterward.
 
-## G2 — Bounded 10-Image Batch
+## G3 — Bounded 10-Image Batch
 
-Use 10 deliberately simple independent jobs.
+Run 10 prompts sequentially.
 
-Concurrency remains 1 unless Reviewer changes it.
+Acceptance:
 
-Must prove:
+- 10 intended jobs accounted for;
+- completed/failed cardinality is exact;
+- no duplicate silent submissions;
+- pause/resume behaves correctly;
+- rate limit pauses the run;
+- failures are visible and retryable.
 
-- exact-cardinality outputs;
-- no duplicate shot IDs;
-- no overwrite without explicit policy;
-- typed failure behavior;
-- abort and resume;
-- rate-limit stops rather than hammering;
-- deterministic manifests.
+## G4 — Bulk Usability Hardening
 
-## G3 — References + Aspect + Resume
+Harden for dozens/hundreds of queued tasks:
 
-Add:
+- selector fallbacks from real evidence;
+- long-run service-worker resilience;
+- clearer progress;
+- download fallback reliability;
+- queue export/import if needed;
+- optional per-job custom filenames;
+- optional reference-image support only if still wanted.
 
-- reference-image attachment;
-- supported aspect ratios;
-- robust restart/resume;
-- retry budget by error type;
-- browser-tab lifecycle cleanup.
+## G5 — Plugin Release Package
 
-## G4 — Video Project Adapter
+Freeze V1:
 
-Input becomes video-production data:
+- installable extension folder / ZIP;
+- user instructions;
+- known limitations;
+- version;
+- checksum;
+- release acceptance.
 
-```text
-project_id
-shot_id
-start/end
-prompt
-aspect
-refs
-character identity metadata
-```
 
-Output becomes deterministic shot assets that downstream tooling can consume without manual renaming.
+## Deferred backlog — recorded, not scheduled
 
-## G5 — Visual QA + Controlled Regeneration
-
-Add a separate QA state:
+The following future capabilities are documented but are not part of the currently authorized work:
 
 ```text
-GENERATED != APPROVED
+D1  copies=N / multiple images from one prompt
+D2  real reference-image attachment from GitHub/URL/local source
+D3  true image-format validation and optional PNG normalization
+D4  interrupted-job reconciliation before retry
+D5  long-run batch stress validation: 10 → 50 → 100+
+D6  optional flexible output-location workflow
 ```
 
-QA can flag:
-
-- character mismatch;
-- wrong composition;
-- unwanted text;
-- wrong subject count;
-- missing required prop;
-- aspect mismatch.
-
-Regeneration is bounded and auditable; no unbounded self-loop.
-
-## G6 — Video Assembly Handoff
-
-Emit a stable manifest for Remotion or another renderer:
-
-```text
-shot_id → file → start/end → duration → approval state
-```
-
-Rendering remains a separate subsystem.
+See `CAPABILITY_BOUNDARIES_AND_DEFERRED_BACKLOG.md` for exact current behavior and limitations.
