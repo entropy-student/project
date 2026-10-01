@@ -1342,3 +1342,109 @@ CADDY_RETIREMENT_BLOCKER=active scheduled localhost HTTPS health probe
 ### Execution notes
 
 Cloudflare was read-only; pay origin and route metadata were read back from the authenticated dashboard. Strict SSH local trust preflight matched the recorded client fingerprint and expected host-key pins; successful remote probes proved ops@srv1970241. Several initial read-only command attempts had shell/template parsing errors; no mutation occurred, and the facts above came from subsequent successful bounded read-only queries. No provider query was attempted. No source values, client IDs, names, credentials, request bodies or business identifiers were emitted.
+
+## M3C Caddy + Unified Pay Retirement Blocker Closure — 2026-10-01
+
+```text
+GATE=M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE
+RESULT=PASS_CANDIDATE_M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+SSH_NATIVE_EXIT=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+MONITOR_CONFIG_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+FILE_DELETIONS=0
+NETWORK_MUTATIONS=0
+BROAD_PRUNE=NO
+```
+
+### Recent Unified Pay caller and ambiguous intent
+
+Read-only aggregate SQL was executed through the running PostgreSQL container using its configured runtime DB role. No IDs, client names, transaction identifiers, amounts, payloads, credentials, or customer data were emitted.
+
+```text
+UNIFIED_PAY_REGISTERED_ACTIVE_CLIENTS=2 (accepted M3B baseline)
+UNIFIED_PAY_LIVE_CALLERS=1
+RECENT_PAYMENT_AUDIT_EVENTS=2
+RECENT_DISTINCT_CLIENT_REFERENCES=1
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+LIVE_CALLER_LAST_ACTIVITY=2026-09-14T16:45:03Z
+LIVE_CALLER_ACTIVITY_AFTER_AMBIGUOUS_WINDOW=NO
+LIVE_CALLER_RETIREMENT_BLOCKER=YES
+PAYMENT_INTENTS_CREATED=1
+PAYMENT_INTENT_STATUS_COUNTS=created:1
+PROVIDER_CREATE_ATTEMPTS_AMBIGUOUS=1
+PROVIDER_CREATE_ATTEMPTS_TERMINAL=0
+PROVIDER_EVENTS=0
+PROVIDER_PAYMENT_FACTS=0
+REFUNDS=0
+OUTBOX_EVENTS=0
+```
+
+The two recent payment audit events were internally checked against the single ambiguous attempt's intent reference; both correlate to that same intent. Their precise event times straddle the attempt timestamp by milliseconds, but there is no independent/unlinked subsequent business event. Registration metadata did not safely map the caller to a known internal project or test/canary purpose, so it remains `EXTERNAL_OR_UNKNOWN`; the caller remains a retirement blocker. No raw registration identity was persisted.
+
+### Provider inquiry decision
+
+The deployed adapter/code safety screen found no proven isolated Alipay order/status inquiry path, no safe invocation boundary, and no demonstrated protected-credential reuse for such a query. Therefore the optional Provider inquiry was not called.
+
+```text
+PROVIDER_QUERY_PATH_PROVEN_READONLY=NO
+PROVIDER_QUERY_PERFORMED=NO
+PROVIDER_QUERY_COUNT=0
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+DATABASE_WRITES=0
+```
+
+The ambiguous provider-create remains unresolved; no create/retry/cancel/refund/replay was attempted.
+
+### Caddy monitoring replacement design
+
+Fresh read-only host metadata confirmed the enabled/active `spikersun-infra-health.timer` invokes the oneshot `spikersun-infra-health.service` on a 2-minute boot delay and 5-minute interval. The service is inactive between runs and its last result was successful. The root-owned mode-0750, 3330-byte script is `/srv/infra/monitoring/check-shared-infra.sh`; it uses fail-fast `set -e`, includes host/Docker/cloudflared/private-network checks, and has one Caddy-dependent `https://localhost:443` probe. It does not currently probe Mini Craft, Shop, or Pay public endpoints.
+
+```text
+CADDY_MONITOR_REPLACEMENT_PLAN=SEALED
+CURRENT_CADDY_DEPENDENT_PROBE=https://localhost:443
+REPLACEMENT_PROBES=target host/basic health; Docker daemon availability; cloudflared running/restart state; spikersun-private presence; Mini Craft public Home/Shop/wp-json over verified TLS; Shop public endpoint; Pay endpoint only while Unified Pay remains intentionally active
+CADDY_DEPENDENT_PROBE_REMOVABLE=YES
+MONITOR_ROLLBACK_METHOD=In a separately authorized monitor Gate, preserve exact pre-change allowlisted monitor files in the existing scoped recovery area, verify their hashes, restore those exact files on regression, and daemon-reload only if unit definitions changed; do not restart Caddy.
+```
+
+No timer, service, script, or Caddy configuration was changed.
+
+### Unified Pay reversible stop/observe recovery barrier
+
+Fresh read-only runtime/metadata readback confirmed:
+
+- app: container `unified-pay-app-1`, Compose project `unified-pay`, service `app`, running/healthy, restart count 0, container ID `0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e`;
+- PostgreSQL: `unified-pay-db-1`, service `db`, running/healthy, restart count 0, container ID `eeb800570fd41e117a3cb788ef27977749de7f637f86e7379db4cf686547a120`;
+- canonical Compose source `/srv/apps/unified-pay/docker-compose.prod.yml` exists (5271 bytes, mode 0644) and matches the runtime Compose labels;
+- the current app image remains local: `sha256:78029ea23abde4a44ff4c51a176c549b1be81746e73f9cfe08dbda0550c901cc`;
+- durable PostgreSQL bind data remains at `/srv/data/unified-pay/db`; project data, backup namespace, and secret-source mounts are present. Secret content was not read; mount metadata only showed 7 regular sources at mode 0640 and 2 directories at mode 0750, with no world access;
+- the exact pay Tunnel route is carried forward from accepted M3B readback: `pay.spikersun.com -> spikersun-shared-private -> http://unified-pay-app:8080`, Host Header default/none. No Cloudflare change was made.
+
+```text
+UNIFIED_PAY_STOP_OBSERVE_ROLLBACK_READY=YES
+ROLLBACK_RESTART_SOURCE=Compose=/srv/apps/unified-pay/docker-compose.prod.yml; project=unified-pay; service=app only; current app image locally present; PostgreSQL service/data retained
+DATA_PRESERVATION_PLAN=SEALED
+```
+
+The future reversible observation boundary is app-only stop; preserve PostgreSQL, `/srv/data/unified-pay`, `/srv/backups/unified-pay`, mounted Secret sources, app image, Compose source, and Tunnel route. This Gate did not stop or restart any service and authorizes no later stop by itself.
+
+```text
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
