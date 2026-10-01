@@ -1,5 +1,40 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M3A Caddy + Unified Pay Decommission Assessment Open — 2026-10-01
+
+```text
+MINICRAFT_INGRESS_MIGRATION_M1_TO_M2E=COMPLETE
+
+OWNER_DIRECTION_CADDY=RETIRE_IF_PROVEN_UNUSED
+OWNER_DIRECTION_UNIFIED_PAY=DECOMMISSION_AND_REMOVE_IF_SAFE
+
+CURRENT_GATE=M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_STOP_AUTHORIZED=NO
+CADDY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_STOP_AUTHORIZED=NO
+UNIFIED_PAY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+NETWORK_DELETE_AUTHORIZED=NO
+BROAD_PRUNE_AUTHORIZED=NO
+```
+
+Owner wants Unified Pay safely removed and Caddy retired if the Shared VPS no longer needs it. Current evidence does not yet authorize either deletion: Unified Pay is still an active healthy app + PostgreSQL runtime, `pay.spikersun.com` is live, and Dujiao's current handoff still classifies its Unified Pay runtime dependency as UNKNOWN.
+
+M3A is therefore a read-only dependency/recovery assessment. It must prove current callers, provider/webhook state, safe DB business aggregates, recovery material, Tunnel ownership, Caddy route consumers, `spikersun-edge` consumers and exact rollback boundaries before Reviewer seals any mutation Gate.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT.md`
+
+Execution packet:
+`review-packets/M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT.md`
+
+
 ## CURRENT REVIEWER UPDATE — M2E-R3 Formal PASS / Mini Craft Ingress Migration Closed — 2026-10-01
 
 ```text
