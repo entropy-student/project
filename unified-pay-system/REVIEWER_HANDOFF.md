@@ -1,5 +1,32 @@
 # Unified Pay System — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — RETIRED / Unresolved Recovery-Asset Incident — 2026-10-01
+
+```text
+M8_R1_FORENSICS=PASS
+RECOVERY_ASSET_DRIFT_CLASS=UNRESOLVED
+DOCKER_RM_CAUSALITY=DISPROVEN
+COMPOSE_RECOVERY_SOURCE=NONE
+DATABASE_EXACT_RECOVERY_SOURCE=NONE
+SECRET_RECOVERY_SOURCE=WINDOWS_DPAPI
+
+APP_CONTAINER_PRESENT=NO
+POSTGRES_CONTAINER_PRESENT=NO
+RUNTIME_DECOMMISSION=COMPLETE
+PROJECT_STATUS=RETIRED_WITH_UNRESOLVED_RECOVERY_ASSET_INCIDENT
+KNOWN_PROJECT_REGRESSION=NO
+
+CURRENT_GATE=NONE
+FURTHER_DESTRUCTIVE_CLEANUP=FROZEN
+```
+
+The historical exact DB/Compose state is not currently recoverable from searched sources. This does not create a known production impact because Unified Pay had no current runtime dependency and was already being retired.
+
+Keep remaining images, DPAPI Secret recovery artifact and historical evidence. No further cleanup Gate is open.
+
+Canonical decision:
+../shared-vps-infrastructure/docs/REVIEWER_DECISION_M8_R1_PASS_UNIFIED_PAY_RETIREMENT_INCIDENT_CLOSURE.md
+
 ## CURRENT REVIEWER UPDATE — M8 Recovery Asset Incident / Destructive Freeze — 2026-10-01
 
 ```text
