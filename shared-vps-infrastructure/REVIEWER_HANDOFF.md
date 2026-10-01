@@ -1,5 +1,38 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M3C PASS / M3D Caddy Stop Observation Owner Checkpoint — 2026-10-01
+
+```text
+M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE=PASS
+
+UNIFIED_PAY_LIVE_CALLERS=1
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+LIVE_CALLER_RETIREMENT_BLOCKER=YES
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+UNIFIED_PAY_RETIREMENT_READY=NO
+
+CADDY_MONITOR_REPLACEMENT_PLAN=SEALED
+CADDY_DEPENDENT_PROBE_REMOVABLE=YES
+CADDY_RETIREMENT_READY_FOR_REVERSIBLE_STOP_SEQUENCE=YES
+
+CURRENT_GATE=M3D_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+
+MONITOR_SCRIPT_MUTATION_AUTHORIZED=NO
+CADDY_STOP_AUTHORIZED=NO
+CADDY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_STOP_AUTHORIZED=NO
+```
+
+Reviewer accepted M3C Evidence commit af3797e80f4fd2daaaeece5e4a0bfb41087b857e and Executor Handoff commit 00dfcf9b5375005b05c44665253ba74f9515abf5.
+
+Caddy is ready for a reversible stop-observation sequence after migrating the single localhost:443 monitor dependency. Unified Pay is not ready for shutdown because the recent caller remains external/unknown and the ambiguous provider-create state remains unresolved.
+
+Formal decision:
+docs/REVIEWER_DECISION_M3C_PASS_M3D_CADDY_MONITOR_MIGRATION_STOP_CHECKPOINT.md
+
+Owner action required: explicitly authorize or decline the bounded monitor migration + Caddy stop-observation sequence.
+
 ## CURRENT REVIEWER UPDATE — M3B PASS / M3C Retirement Blocker Closure Open — 2026-10-01
 
 ```text
