@@ -1,0 +1,14 @@
+# WireGuard client template. Keep this file non-secret.
+[Interface]
+Address = {{WG_CLIENT_ADDRESS}}
+# PrivateKey is injected from an external Secret at render time.
+# DNS is intentionally omitted until the client DNS policy is explicitly frozen.
+
+[Peer]
+PublicKey = {{WG_SERVER_PUBLIC_KEY}}
+Endpoint = {{VPS_HOST}}:{{WG_PORT}}
+AllowedIPs = 0.0.0.0/0
+PersistentKeepalive = {{WG_PERSISTENT_KEEPALIVE}}
+# MTU is an environment decision; historical 1280 is not a permanent recommendation.
+# MTU = {{WG_MTU}}
+

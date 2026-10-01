@@ -1,0 +1,15 @@
+# Secrets and generated runtime material
+*.env
+*.key
+*.crt
+*.pem
+*.p12
+*.pfx
+secrets/
+generated/
+logs/
+
+# Local editor / OS noise
+.DS_Store
+Thumbs.db
+

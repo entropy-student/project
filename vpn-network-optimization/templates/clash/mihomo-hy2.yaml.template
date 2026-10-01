@@ -1,0 +1,20 @@
+# Non-sensitive Mihomo/Clash Verge fragment. Import or enable manually only in a safe window.
+# Do not auto-switch the current profile, proxy, system proxy, or TUN.
+proxies:
+  - name: SFO2-A-HY2
+    type: hysteria2
+    server: __VPS_HOST__
+    port: 8443
+    password: __EXTERNAL_SECRET_NOT_IN_REPOSITORY__
+    sni: __DNS_NAME_REQUIRED_FOR_TLS__
+    skip-cert-verify: false
+    alpn:
+      - h3
+
+proxy-groups:
+  - name: VPN-G1-MANUAL
+    type: select
+    proxies:
+      - DIRECT
+      - SFO2-A-HY2
+
