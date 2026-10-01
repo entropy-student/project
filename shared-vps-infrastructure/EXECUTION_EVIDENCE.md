@@ -1246,3 +1246,99 @@ CLEANUP_OR_PRUNE_ACTIONS=0
 MUTATIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## M3B Caddy + Unified Pay Dependency Reconciliation — 2026-10-01
+
+```text
+GATE=M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION
+RESULT=PASS_CANDIDATE_M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+CLOUDFLARE_DASHBOARD_CONTEXT=AUTHENTICATED_READONLY
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+FILE_DELETIONS=0
+NETWORK_MUTATIONS=0
+BROAD_PRUNE=NO
+```
+
+### Unified Pay caller evidence
+
+Fresh read-only PostgreSQL aggregates: 2 active registered clients and 2 active/unrevoked credentials. In the last 30 days, the audit table contained 2 payment-related events associated with 1 distinct client reference; latest event time was 2026-09-14T16:45:03Z. No request/client identity values were emitted. The app's available Docker log window contained one line, with no structured request records or caller fields; logs supplied no additional request counter.
+
+```text
+UNIFIED_PAY_REGISTERED_ACTIVE_CLIENTS=2
+UNIFIED_PAY_LIVE_CALLERS=1
+LIVE_CALLER_EVIDENCE=2 recent payment-related durable audit events; 1 distinct client reference; latest 2026-09-14T16:45:03Z
+```
+
+### Dujiao dependency
+
+Fresh DB aggregates: 3 non-deleted payment channels, 0 active; 0 non-deleted channel_clients; 0 non-deleted downstream_order_refs. The current deployed Compose and non-secret active source search contained no Unified Pay/pay.spikersun.com reference. The mounted config at /srv/data/dujiao-next/secrets/config.yml was parsed in memory with a key/reference-only classifier; no Unified Pay reference was found and no values were emitted. The config file itself was not printed or persisted.
+
+```text
+DUJIAO_UNIFIED_PAY_DEPENDENCY=NO
+DUJIAO_PAYMENT_CHANNELS_TOTAL=3
+DUJIAO_PAYMENT_CHANNELS_ACTIVE=0
+DUJIAO_CHANNEL_CLIENTS=0
+DUJIAO_DOWNSTREAM_ORDER_REFS=0
+DUJIAO_SECRET_CONFIG_REFERENCE=ABSENT
+VALUE_OUTPUT=NO
+```
+
+### Cloudflare Tunnel pay route
+
+Read from the authenticated Cloudflare dashboard's spikersun-shared-private route table and pay route details; no edits were made. The HTTP Host Header field was blank/default (no override). The same route table showed xianyu, pay, shop and canonical Mini Craft routes pointing directly to their app aliases.
+
+```text
+PAY_PUBLIC_HOST=pay.spikersun.com
+PAY_TUNNEL=spikersun-shared-private
+PAY_TUNNEL_ORIGIN=http://unified-pay-app:8080
+PAY_TUNNEL_HTTP_HOST_HEADER=NONE
+```
+
+### Ambiguous provider-create state
+
+Fresh local durable aggregate readback found one created payment intent and one provider-create attempt in ambiguous state (nonterminal); terminal create attempts=0. Provider events=0, provider payment facts=0, refunds=0 and outbox events=0. No already-established safe read-only provider query path was available, so no provider was contacted and the attempt remains unresolved.
+
+```text
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+PAYMENT_INTENTS_CREATED=1
+PROVIDER_CREATE_ATTEMPTS_AMBIGUOUS=1
+PROVIDER_CREATE_ATTEMPTS_TERMINAL=0
+PROVIDER_CREATE_ATTEMPTS_NONTERMINAL=1
+PROVIDER_EVENTS=0
+PROVIDER_PAYMENT_FACTS=0
+REFUNDS=0
+OUTBOX_EVENTS=0
+```
+
+### Caddy active-consumer reconciliation
+
+Fresh runtime/config readback: Caddy is the only container publishing host ports 80/443; its host Caddyfile remains 143 bytes with SHA-256 f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358, contains the static edge-test.spikersun.com and localhost routes, and has no production reverse proxy. edge-test.spikersun.com currently has no public IPv4 DNS answer. No active Compose consumer, Caddy Admin healthcheck, or matching running-container healthcheck was found. Cloudflare Tunnel routes for production apps go directly to app aliases; Mini Craft's membership in spikersun-edge is network membership only.
+
+One active consumer was found: enabled/active spikersun-infra-health.timer schedules spikersun-infra-health.service, whose current monitoring script probes https://localhost (default port 443). The one-shot service was inactive between runs at readback. An unscheduled Xianyu deploy helper also contains loopback default-port probes, but no active scheduler reference was found; it is not counted as a current active consumer.
+
+```text
+CADDY_ACTIVE_ROUTE_CONSUMERS=1
+CADDY_PORT_80_443_ACTIVE_DEPENDENCIES=1
+CADDY_ACTIVE_CONSUMER=spikersun-infra-health.timer -> check-shared-infra.sh -> HTTPS localhost:443
+CADDY_RETIREMENT_SAFE=NO
+CADDY_RETIREMENT_BLOCKER=active scheduled localhost HTTPS health probe
+```
+
+### Execution notes
+
+Cloudflare was read-only; pay origin and route metadata were read back from the authenticated dashboard. Strict SSH local trust preflight matched the recorded client fingerprint and expected host-key pins; successful remote probes proved ops@srv1970241. Several initial read-only command attempts had shell/template parsing errors; no mutation occurred, and the facts above came from subsequent successful bounded read-only queries. No provider query was attempted. No source values, client IDs, names, credentials, request bodies or business identifiers were emitted.
