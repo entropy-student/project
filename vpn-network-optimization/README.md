@@ -70,9 +70,10 @@
 ## 项目阶段
 
 ```text
-P0  研究、范围冻结、立项            ✅
-G1  无干扰基线 + 可迁移第一版       ✅ PASS
-G2  安全窗口验证 + v1 封板           ← NEXT
+P0   研究、范围冻结、立项            ✅
+G1   无干扰基线 + 可迁移第一版       ✅ PASS
+G2-A HY2 旁路部署                    ✅ PASS
+G2-B 安全窗口对比验证 + v1 封板      ← NEXT
 ```
 
 G2 完成后即视为 MVP 完成。未来更换 VPS 使用同一模板部署并做 Provider Validation，不重新堆叠大量 Gate。
@@ -88,3 +89,18 @@ G2 完成后即视为 MVP 完成。未来更换 VPS 使用同一模板部署并�
 ## Secret 规则
 
 任何私钥、密码、Token、HY2 认证值、证书私钥不得进入 GitHub、普通日志、Handoff 或聊天。项目仓库只保留变量名、位置、生成规则与非敏感模板。
+
+
+## G2-A 已接受状态
+
+- DigitalOcean sfo3 目标：`24.199.118.137`
+- 当前生产通道：WireGuard，active MTU 1420
+- Hysteria2：official v2.12.3，独立 systemd 服务，UDP 8443，已启动
+- 当前流量：仍在 WireGuard；HY2 客户端未导入/启用
+- Clash Verge：2.5.6；Mihomo v1.19.31 / alpha-f103639 解析 HY2 + fingerprint 配置通过
+- TLS：自签 P-256 + certificate fingerprint pinning
+- Secret：未进入 GitHub / 聊天 / 普通日志；Windows DPAPI CurrentUser 恢复副本已验证
+- Cloud Firewall：Owner 确认未绑定
+- live BBR/fq/GRO/MTU 调优：未应用
+
+下一步只在 Owner 明确确认安全窗口后进入 G2-B，先证明真实 HY2 client handshake，再同窗口比较 WireGuard 与 HY2 的成功率和 Median/P95/P99/尾部表现。
