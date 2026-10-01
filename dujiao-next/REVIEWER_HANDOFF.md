@@ -1,5 +1,22 @@
 # Dujiao-Next — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — Unified Pay Runtime Dependency Reconciled — 2026-10-01
+
+```text
+PAYMENT_CHANNELS_TOTAL=3
+PAYMENT_CHANNELS_ACTIVE=0
+CHANNEL_CLIENTS=0
+DOWNSTREAM_ORDER_REFS=0
+UNIFIED_PAY_SECRET_CONFIG_REFERENCE=ABSENT
+UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+```
+
+Fresh M3B runtime/config reconciliation supersedes the 2026-09-29 UNKNOWN state. Current deployed Compose and active non-secret source contain no Unified Pay/pay.spikersun.com reference. The mounted runtime config was classified in memory with values suppressed and contains no Unified Pay reference.
+
+Historical Dujiao Unified Pay architecture/extraction documents are retained as audit/design history: Unified Pay was extracted from Dujiao payment-domain work, but the current Dujiao runtime does not call the standalone Unified Pay service.
+
+Current payment-channel mutation remains unauthorized.
+
 ## CURRENT REVIEWER UPDATE — Shared VPS Portfolio Reconciliation R1 — 2026-09-29
 
 ```text
