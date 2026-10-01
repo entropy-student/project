@@ -981,3 +981,101 @@ STOP_AT_REVIEWER=YES
 Fresh readback through the restored canonical SSH path reproduced the previously suspected persistence divergence. The host Caddyfile is the 143-byte post-retirement source with no Mini Craft matcher, while the running container's read-only single-file bind destination still exposes the 199-byte pre-retirement baseline containing the matcher. The active Caddy Admin config remains on the correct post-retirement state.
 
 Because Caddy startup reads `/etc/caddy/Caddyfile`, a plain process/container restart can reintroduce the legacy matcher. A plain restart therefore does not reconcile the stale bind reference. The bounded next-step proposal is to recreate only the existing shared Caddy service/container from its canonical deployment definition so the bind mount is re-established against the current host source, then perform full regression verification. No write action was executed in this Gate.
+
+
+## Gate: M2E-R2 Caddy Recreate Preflight — 2026-10-01
+
+```text
+GATE=M2E_R2_CADDY_RECREATE_PREFLIGHT
+RESULT=PASS_CANDIDATE_M2E_R2_CADDY_RECREATE_PREFLIGHT
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+SSH_LOCAL_TRUST_PREFLIGHT=PASS
+SSH_NETWORK_INVOCATIONS=4
+SSH_NATIVE_REMOTE_COMMAND_RESULTS=72,0,1,0
+
+CADDY_CONTAINER_ID=793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+CADDY_STATE=running
+CADDY_RESTART_COUNT=0
+CADDY_DOCKER_HEALTHCHECK=NONE
+
+CADDY_COMPOSE_PROJECT=spikersun-edge
+CADDY_COMPOSE_SERVICE=caddy
+CADDY_COMPOSE_WORKING_DIR=/srv/infra/edge
+CADDY_CANONICAL_COMPOSE_PATH=/srv/infra/edge/compose.yaml
+CADDY_COMPOSE_FILE_EXISTS=YES
+DOCKER_SERVER_VERSION=29.8.0
+DOCKER_COMPOSE_VERSION=5.5.1
+CANONICAL_COMPOSE_QUIET_VALIDATION=PASS
+CANONICAL_COMPOSE_SERVICES=caddy
+CADDY_IMAGE_REFERENCE=caddy:2-alpine
+CADDY_IMAGE_ID=sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648
+LOCAL_IMAGE_TAG_ID_MATCH=PASS
+CADDY_RESTART_POLICY=unless-stopped
+CADDY_COMPOSE_RUNTIME_SEMANTICS=PASS
+CADDY_PUBLISHED_PORTS=80/tcp,443/tcp
+CADDY_NETWORKS=spikersun-edge
+CADDY_MOUNTS=
+bind:/srv/infra/edge/Caddyfile->/etc/caddy/Caddyfile:RO
+bind:/srv/infra/edge/data->/data:RW
+bind:/srv/infra/edge/config->/config:RW
+CADDY_DATA_BIND_PATH_PRESENT=YES
+CADDY_CONFIG_BIND_PATH_PRESENT=YES
+CADDY_CERT_STATE_PERSISTENCE=PASS
+CADDY_CONFIG_STATE_PERSISTENCE=PASS
+
+HOST_CADDYFILE_BYTES=143
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_MINICRAFT_MATCHER=ABSENT
+PRE_RECREATE_CADDY_CONFIG_VALID=PASS
+CADDY_HOST_CONFIG_ROUTE_SEMANTICS=edge-test.spikersun.com:static_response:200:30 bytes:SHA256 2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824;localhost:static_response:200:24 bytes:SHA256 cdb5952b737f70a8b3138bebd1aa34dc4d9fb99e759155745e1df01689897107
+CADDY_ACTIVE_ADMIN_CONFIG_FRESH_READ=NOT_PERFORMED
+CADDY_SERVICE_HEALTH=PASS_BY_RUNNING_STATE_AND_ORIGIN_REGRESSION
+
+MINICRAFT_HOME_HTTP=200
+MINICRAFT_HOME_TLS_VERIFY_RESULT=0
+MINICRAFT_SHOP_HTTP=200
+MINICRAFT_SHOP_TLS_VERIFY_RESULT=0
+MINICRAFT_WP_REST_HTTP=200
+MINICRAFT_WP_REST_TLS_VERIFY_RESULT=0
+EDGE_TEST_PUBLIC_DNS=ABSENT_OR_UNRESOLVED
+EDGE_TEST_DIRECT_ORIGIN_HTTP=200
+EDGE_TEST_DIRECT_ORIGIN_TLS_VERIFY_RESULT=0
+EDGE_TEST_DIRECT_ORIGIN_BODY_BYTES=30
+EDGE_TEST_DIRECT_ORIGIN_BODY_SHA256=2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824
+
+CADDY_RECREATE_COMMAND_PROPOSAL=sudo -n docker compose --project-name spikersun-edge --project-directory /srv/infra/edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never --no-build caddy
+RECREATE_SCOPE=CADDY_ONLY
+PULL=NO
+BUILD=NO
+DEPENDENCY_RECREATE=NO
+OTHER_SERVICE_RECREATE=NO
+CADDY_RECREATE_AUTHORIZED=NO
+CADDY_RECREATE_EXECUTED=NO
+
+CADDY_RECREATE_FAILURE_RECOVERY_PLAN=Fresh-read container/service state first; no blind repeated recreate. In a separately authorized recovery Gate, use the same canonical Compose source to reconcile only caddy, preserve the 143-byte host Caddyfile and current image ID, then rerun Caddy/Tunnel/public regression; do not restore the stale 199-byte Mini Craft matcher or change Cloudflare/DNS/Tunnel.
+
+PROBE_NOTES=Attempt 1 exited 72 because Docker inspect Go template requested absent optional State.Health; attempt 2 completed the full bounded collection. Attempt 3 exited 1 after directory metadata and quiet Compose validation because a supplemental parser invocation omitted its service argument; no Caddy Admin API facts are claimed. Attempt 4 confirmed local image tag ID equals running immutable image ID. All four SSH invocations used canonical strict options; failures were read-only command-construction errors.
+
+CADDYFILE_WRITES=0
+CADDY_RELOADS=0
+CADDY_RESTARTS=0
+CADDY_RECREATES=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+VPS_MUTATIONS=0
+PAYMENT_ACTIONS=0
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+The current host Caddyfile validated successfully by streaming the host source read-only to the installed Caddy binary. Compose service semantics matched the running container for image reference/immutable image, TCP 80/443, `spikersun-edge`, all three bind mounts, and restart policy. `/srv/infra/edge/data` and `/srv/infra/edge/config` exist on the host root ext4 filesystem; the mounts therefore survive recreation of the Caddy container. Compose declares only the `caddy` service and no dependencies.
+
+The public Mini Craft Tunnel checks passed with normal TLS verification. The Caddy `edge-test` hostname did not resolve in the current public DNS readback, so it was checked against the current public origin IP using a per-request `--resolve` override without disabling TLS verification; it returned the accepted 30-byte fingerprint. The `localhost` route was confirmed in the validated host Caddyfile semantic adaptation; no fresh Admin API read is claimed.
+
+The recreate command above is a proposal only. It was not executed and remains unauthorized pending the Reviewer/Owner checkpoint.
