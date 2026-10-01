@@ -512,3 +512,38 @@ Reviewer decision required on the unresolved dependency/recovery barriers. No re
 MUTATIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Current Executor Handoff — M3B Caddy + Unified Pay Dependency Reconciliation — 2026-10-01
+
+- Gate: M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION
+- Result: PASS_CANDIDATE_M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION
+- Evidence commit: 02dfb170b1f8dd6be044b22baa96c3c06ccc44e3
+
+### Findings
+
+- Unified Pay has 2 active registered clients, but recent durable activity is attributable to 1 distinct client reference: 2 payment-related audit events in the last 30 days, latest 2026-09-14T16:45:03Z. No client identity was emitted. App Docker logs had no structured request/caller telemetry.
+- Dujiao has 3 payment channels, all inactive; channel_clients=0; downstream_order_refs=0. Current deployed Compose/non-secret source and safely parsed secret-mounted config contain no Unified Pay reference. Dujiao Unified Pay dependency: NO.
+- Authenticated Cloudflare route readback: pay.spikersun.com on spikersun-shared-private -> http://unified-pay-app:8080; HTTP Host Header is default/none. Existing xianyu, shop and canonical Mini Craft routes were visible unchanged.
+- Unified Pay local durable state remains unresolved: 1 created intent; 1 ambiguous nonterminal provider-create attempt; provider events/facts/refunds/outbox all 0. No established safe read-only provider query path was used; no provider call or payment action occurred.
+- Caddy has only static edge-test and localhost routes, no production reverse-proxy route. No active healthcheck/Compose consumer for edge-test or Caddy Admin was found, and edge-test currently has no public IPv4 DNS answer.
+- One active scheduled consumer remains: spikersun-infra-health.timer runs a monitoring script that probes https://localhost (default port 443). Therefore CADDY_ACTIVE_ROUTE_CONSUMERS=1, CADDY_PORT_80_443_ACTIVE_DEPENDENCIES=1, and CADDY_RETIREMENT_SAFE=NO. A non-scheduled Xianyu deployment helper also has loopback default-port probes; it was not counted as an active consumer.
+- Mini Craft's membership in spikersun-edge is network membership only; production Cloudflare Tunnel routes point directly to app aliases.
+
+### Safety and disposition
+
+All runtime, Docker, Compose, Caddy, Cloudflare, DNS, Tunnel, database-write, provider, payment, backup, deletion and network mutation counters are 0. No Secret values, client identifiers, names, request bodies, or business identifiers were emitted. Do not retire Caddy until the scheduled monitoring dependency is separately reconciled. Do not stop/remove Unified Pay or resolve the ambiguous attempt by retry. Stop at Reviewer.
+
+```text
+UNIFIED_PAY_REGISTERED_ACTIVE_CLIENTS=2
+UNIFIED_PAY_LIVE_CALLERS=1
+DUJIAO_UNIFIED_PAY_DEPENDENCY=NO
+PAY_TUNNEL_ORIGIN=http://unified-pay-app:8080
+PAY_TUNNEL_HTTP_HOST_HEADER=NONE
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+CADDY_ACTIVE_ROUTE_CONSUMERS=1
+CADDY_PORT_80_443_ACTIVE_DEPENDENCIES=1
+CADDY_RETIREMENT_SAFE=NO
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
