@@ -35,7 +35,8 @@
 | G3B PayPal Sandbox + paid entitlement + refund | **PASS** |
 | G3BR1 Payment reconciliation + entitlement/refund closure | **PASS** |
 | G3CR2R3 Blocksy Wedding + WooCommerce compatibility canary | **PASS** |
-| G3C Blocksy Wedding UI/UX productization + Owner visual freeze | **CURRENT** |
+| G3C Blocksy Wedding UI/UX productization + Owner visual freeze | INTERIM RETURN — PR #64 open; mobile/current screenshots pending |
+| G3CR3 current visual evidence closure | **CURRENT** |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
@@ -54,7 +55,7 @@ G3B Sandbox 闭环已经通过：
 → scoped cleanup PASS
 ```
 
-这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前正式进入 G3C：按最小修改原则把 Wedding 改造成 Birthday Magazine、接入 Good Issue 浏览器本地免费预览，并在技术完成后保留本地 WordPress 环境供 Owner 直接以 Administrator 身份在 Gutenberg 中修改页面。G4 Live PayPal Canary 继续保持 HOLD。
+这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前 G3C 实现已经提交到 PR #64，GitHub PR 创建阻塞已由 Reviewer 解决。功能/桌面路径和 Owner Gutenberg 编辑能力已有证据；现在仅剩 G3CR3：对最终修正版重新生成当前截图并独立验证 375px 移动端 Hero/免费预览/无阻断溢出。通过后进入 Owner 视觉确认。G4 Live PayPal Canary 继续保持 HOLD。
 
 ## 已证明的技术能力
 
