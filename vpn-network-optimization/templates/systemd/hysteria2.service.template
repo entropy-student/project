@@ -7,14 +7,13 @@ After=network-online.target
 Type=simple
 User={{HY2_RUNTIME_USER}}
 Group={{HY2_RUNTIME_USER}}
-ExecStart=/usr/local/bin/hysteria server -c /srv/apps/vpn-network-optimization/config/hysteria2-server.yaml
+ExecStart=/usr/local/lib/vpn-network-optimization/hysteria server -c /srv/apps/vpn-network-optimization/config/hysteria2-server.yaml
 Restart=on-failure
 RestartSec=5s
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/srv/data/vpn-network-optimization
 
 [Install]
 WantedBy=multi-user.target

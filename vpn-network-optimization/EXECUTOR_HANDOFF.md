@@ -2,7 +2,15 @@
 
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
-## Status
+## Current execution status — G2-A
+
+- The latest Owner instruction states G1 has Reviewer PASS. G1 was not rerun; its evidence below is preserved as historical execution evidence.
+- Current Gate: `G2-A — Side-by-side Hysteria2 Deployment`.
+- G2-A stopped before any VPS write at the Secret authorization and Cloud Firewall read-back checkpoints.
+- No VPS, WireGuard, Windows route, Clash profile, proxy, TUN, or live tuning change was made.
+- `REVIEWER_HANDOFF.md` was not modified. G2-B was not entered.
+
+## G1 historical executor status (preserved)
 
 `RETURN_PREFLIGHT_DRIFT` — G1 read-only preflight and project-local foundation completed; stopped before any VPS write or live client change.
 
@@ -78,5 +86,26 @@ Please reconcile the fresh `sfo3` identity/location against the historical `SFO2
 ## Exact return
 
 `RETURN_PREFLIGHT_DRIFT`
+
+## G2-A actual execution facts
+
+- Fresh SSH read-back used strict host-key checking against `24.199.118.137`; public IP, hostname, OS, kernel, WAN route, wg0, UDP listeners, forwarding, local firewall/NAT metadata, and resource usage were inspected read-only.
+- Identity matches the current Owner-accepted baseline: `24.199.118.137`, hostname `ubuntu-s-1vcpu-512mb-10gb-sfo3`; `sfo3` is accepted and `SFO2-A` is a legacy label. The target's DigitalOcean metadata endpoint and cloud-init region query did not return a region value.
+- wg0 remained active/enabled at MTU 1420 and UDP 51820 remained bound. UDP 8443 had no listener. No remote write, package install, systemd unit creation, service start, route/NAT/firewall change, or sysctl/qdisc/GRO/MTU tuning occurred.
+- Fresh HY2-specific read-back found no Hysteria executable, no project HY2 binary/config, no HY2 unit, and none of the declared auth/certificate/key paths on the target.
+- DigitalOcean Cloud Firewall could not be read through an authorized local interface: `doctl` is unavailable and no DigitalOcean API token is present. No firewall rule was changed.
+- Clash Verge 2.5.6 is installed. Installed cores report Mihomo Meta `v1.19.31` and `alpha-f103639`; no Mihomo core process was running at read-back. The Clash Verge service and Windows WireGuard tunnel were running; no Clash/Mihomo TUN adapter was observed, system proxy is disabled, and WinHTTP is direct.
+- Both YAML templates passed the installed Mihomo `-t` parser using both installed cores. The client template's fingerprint field was accepted. Its all-zero fingerprint is a deliberately non-matching parse sentinel, not a certificate fingerprint or handshake result. No Hysteria binary was installed, so Hysteria-specific config validation was not run.
+- The Mihomo fragment now uses `SFO3-A-HY2`, the local SNI `hy2.sfo3-a.invalid`, `skip-cert-verify: true` plus certificate fingerprint pinning, and no public DNS dependency. It is a template only; the sentinel, server placeholder, and auth placeholder must be replaced before use.
+- Rollback now names only the project HY2 unit, config, and binary; its default preserves data/Secrets and does not touch WireGuard, routes, NAT, or firewall. Bash syntax and the dry-run both passed. A systemd-native unit validator was unavailable on this Windows host.
+- No HY2 auth Secret, TLS private key, or self-signed certificate was generated. No value was emitted, logged, or committed. Client runtime configuration and HY2 service are not ready until Owner checkpoints are resolved.
+
+## G2-A current checkpoint
+
+`HY2_READY=BLOCKED_WITH_EXACT_REASON`
+
+- Owner must explicitly authorize the exact Secret paths/modes and generation behavior before auth/certificate material can be created.
+- Owner must inspect the DigitalOcean Cloud Firewall for this droplet and, only if absent, allow inbound UDP 8443 for this droplet only. No other rule or port is in scope.
+- After those checkpoints, validate the rendered Hysteria config and systemd unit before starting only the independent HY2 service; then verify WG and Windows routes remain unchanged.
 
 

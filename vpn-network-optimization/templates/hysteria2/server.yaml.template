@@ -1,22 +1,24 @@
 # Hysteria 2 server template, based on the official v2 configuration shape.
-# This is intentionally not deployable until TLS, DNS/SNI, and auth Secret are authorized.
-listen: {{HY2_LISTEN}}
+# Render only after the Secret checkpoint. The protected runtime config contains the auth value.
+listen: "__HY2_LISTEN__"
 
 tls:
-  cert: {{HY2_CERT_FILE}}
-  key: {{HY2_KEY_FILE}}
+  cert: "__HY2_CERT_FILE__"
+  key: "__HY2_KEY_FILE__"
+  # The self-signed certificate must contain the configured local SNI as a DNS SAN.
+  # The client connects to the VPS IP directly; this .invalid SNI needs no public DNS.
   sniGuard: strict
 
 auth:
   type: password
   password: __EXTERNAL_SECRET_NOT_IN_REPOSITORY__
 
-# No fixed bandwidth / Brutal settings in G1.
+# No fixed bandwidth / Brutal settings in G2-A.
 # If a non-Brutal controller is explicitly selected later, remember it is HY2/QUIC
 # congestion control and is not the VPS kernel's TCP BBR setting.
 # congestion:
 #   type: bbr
 #   bbrProfile: standard
 
-# No obfs, port hopping, masquerade, or 80/443 dependency in the G1 template.
+# No obfs, port hopping, masquerade, or 80/443 dependency in this template.
 
