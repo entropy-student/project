@@ -1,5 +1,47 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — Owner Authorized M2E-R3 Shared Caddy Recreate — 2026-10-01
+
+```text
+M2E_R2_CADDY_RECREATE_PREFLIGHT=PASS
+OWNER_EXPLICITLY_AUTHORIZES_M2E_R3_CADDY_RECREATE=YES
+
+CURRENT_GATE=M2E_R3_SHARED_CADDY_RECREATE
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_SHARED_INFRA_WRITE
+
+CADDY_RECREATE_AUTHORIZED=YES_ONE_BOUNDED_TRANSACTION
+CADDY_RECREATE_MAX_COUNT=1
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO_SEPARATE_ACTION
+CADDYFILE_WRITE_AUTHORIZED=NO
+
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+APPLICATION_MUTATION_AUTHORIZED=NO
+DATABASE_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Owner explicitly approved the exact sealed Shared Caddy recreate proposed by M2E-R2.
+
+Authorized transaction:
+
+```sh
+sudo -n docker compose --project-name spikersun-edge --project-directory /srv/infra/edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never --no-build caddy
+```
+
+The command may run exactly once and only after fresh pre-write invariants match the M2E-R2 seal. Any material drift cancels execution and returns to Reviewer. A non-zero or ambiguous recreate outcome must not be blindly retried; fresh read-only reconciliation is required.
+
+Success remains only `PASS_CANDIDATE` until Reviewer independently accepts post-write Evidence and formally closes M2E.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M2E_R3_OWNER_AUTHORIZED_CADDY_RECREATE.md`
+
+Execution packet:
+`review-packets/M2E_R3_OWNER_AUTHORIZED_CADDY_RECREATE.md`
+
+
 ## CURRENT REVIEWER UPDATE — M2E-R2 Formal PASS / Owner Caddy Recreate Checkpoint — 2026-10-01
 
 ```text
