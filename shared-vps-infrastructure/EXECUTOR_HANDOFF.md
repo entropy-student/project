@@ -677,3 +677,27 @@ Mutation accounting: one rollback-copy creation, one monitor-script update, and 
 GITHUB_EVIDENCE_COMMIT=2fe3b6637741c18be4ea79212050f181b7f1a6a8
 GITHUB_EVIDENCE_FRESH_READBACK=PASS
 ```
+
+## Current Executor Handoff — M3E Caddy Runtime Decommission — 2026-10-01
+
+```text
+GATE=M3E_CADDY_RUNTIME_DECOMMISSION
+RESULT=PASS_CANDIDATE_M3E_CADDY_RUNTIME_DECOMMISSION
+CADDY_CONTAINER_REMOVE_AUTHORIZED=YES_EXACTLY_ONE
+CADDY_CONTAINER_REMOVE_ACTIONS=1
+CADDY_CONTAINER_PRESENT=NO
+CADDY_IMAGE_PRESENT=YES
+CADDY_RECREATE_PATH_PRESERVED=YES
+PUBLIC_TUNNEL_REGRESSION=PASS
+MONITOR_MANUAL_RUN=PASS
+UNIFIED_PAY_MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+Canonical strict SSH fresh-read proved `ops@srv1970241`; all pre-delete invariants passed. Removed only Caddy container `82749fff0bcea4538748dbb96d0d616b88617e3b4cc505a9fd70b61b6a789bb1` with one exact `docker rm` action (exit 0). Fresh read-back confirmed the container is absent and the image, canonical Compose source, Caddyfile, `/srv/infra/edge/data`, `/srv/infra/edge/config`, `spikersun-edge`, and the M3D monitor rollback copy remain present.
+
+After removal, Mini Craft Home/Shop/wp-json and Shop public endpoint each returned HTTP 200 with TLS verify 0. Cloudflared remained running (restart count 0), `spikersun-private` remained present, and one manual monitor run returned overall PASS. No rollback recreate was required. No Unified Pay, Cloudflare/DNS/Tunnel, DB/provider/payment, image/config/data/network, unrelated service, or broad-prune action occurred.
+
+GITHUB_EVIDENCE_COMMIT=7787a2e30d4fdea802854e88f30fbb527ead93c5
+GITHUB_EVIDENCE_FRESH_READBACK=PASS
+GITHUB_HANDOFF_FRESH_READBACK=PASS
