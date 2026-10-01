@@ -1,5 +1,69 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — M2E-R1 Formal PASS / M2E-R2 Caddy Recreate Preflight Open — 2026-10-01
+
+```text
+S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT=PASS
+NORMAL_VPS_MANAGEMENT_PATH=STRICT_SSH
+HOSTINGER_WEB_TERMINAL_ROLE=FALLBACK_RECOVERY_ONLY
+
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION=PASS
+M2E_RESTART_PERSISTENCE=FAIL_NEEDS_RECREATE
+M2E_FORMAL_PASS=NO
+
+CADDY_CONTAINER_ID=793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+CADDY_MOUNT_DIVERGENCE_CLASS=SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE
+RESTART_REINTRODUCTION_RISK=YES
+PLAIN_RESTART_SUFFICIENT=NO
+RECREATE_REQUIRED=YES
+
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_BYTES=143
+HOST_SOURCE_MINICRAFT_MATCHER=ABSENT
+
+CONTAINER_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+CONTAINER_CADDYFILE_BYTES=199
+CONTAINER_MOUNTED_FILE_MINICRAFT_MATCHER=PRESENT
+ACTIVE_ADMIN_CONFIG_MINICRAFT_MATCHER=ABSENT
+
+CURRENT_GATE=M2E_R2_CADDY_RECREATE_PREFLIGHT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_RECREATE_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Reviewer persisted and fresh-read the complete M2E-R1 SSH result after the Executor-side GitHub transport failure. The stale single-file bind-mount condition is now formally accepted rather than provisional.
+
+The current production runtime remains healthy and the Mini Craft matcher is absent from both the host Caddy source and active Admin config. However the existing Caddy container still exposes the old 199-byte file at `/etc/caddy/Caddyfile`, and Caddy startup reads that path. A plain restart can therefore reintroduce the retired matcher.
+
+The smallest technical repair is a Caddy-only recreate/rebind from the canonical deployment definition. That write is not yet authorized.
+
+M2E-R2 is read-only preflight. It must identify the exact Compose project/service/config path, image, ports, networks, mounts and persistence volumes; validate the canonical definition and current 143-byte host Caddy config; seal the exact Caddy-only recreate command with no dependencies/pull/build; and establish public regression plus failure-recovery baselines.
+
+After M2E-R2 PASS, Reviewer will present an explicit Owner checkpoint containing the exact sealed recreate transaction. Only then may the Shared Caddy container be recreated.
+
+M2E-R1 formal PASS decision:
+`docs/REVIEWER_DECISION_M2E_R1_PASS_R2_CADDY_RECREATE_PREFLIGHT.md`
+
+M2E-R2 packet:
+`review-packets/M2E_R2_CADDY_RECREATE_PREFLIGHT.md`
+
 ## CURRENT REVIEWER UPDATE — S1 Formal PASS / Canonical SSH Restored / M2E-R1 Reconciliation Resumes via SSH — 2026-09-30
 
 ```text
