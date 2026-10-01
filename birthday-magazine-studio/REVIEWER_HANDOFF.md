@@ -88,7 +88,8 @@ G3CR3 Current Visual Evidence Closure                     ⏹ SUPERSEDED — Own
 G3CR4 G3C Visual Consolidation                            ✅ PASS — homepage hierarchy + 375px preview corrected
 G3CR5 Visual Finish + WooCommerce Continuity              ✅ PASS — Preview composition + Woo visual continuity accepted
 G3C Owner Visual Checkpoint                               ⏹ RESOLVED — Owner chose Option B / further redesign; no visual freeze
-G3CR6 Frontend Experience + Brand Redesign                ⏳ CURRENT — Owner-authorized Warm Birthday Gift redesign; frontend open, backend protected
+G3CR6 Frontend Experience + Brand Redesign                ↩ RETURN — technical regressions accepted; visual direction underexecuted
+G3CR6R1 Frontend Composition Redesign                      ⏳ CURRENT — rebuild customer-facing composition; old six-section skeleton not binding
 G4  Bounded Live PayPal Transaction Canary              ⏳ HOLD
 G5  Acquisition + Repeatability + Economics             ⏳ HOLD
 G6  Production Hardening / Scale Decision               ⏳ HOLD
@@ -142,6 +143,8 @@ Current Reviewer decisions:
 - `OWNER_SELECTED_G3CR6_OPTION2_WARM_BIRTHDAY_GIFT_2026-10-01`
 - `OWNER_AUTHORIZED_G3CR6_HIGH_FIDELITY_IMAGE_GENERATION_2026-10-01`
 - `REVIEWER_OPENED_G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN_2026-10-01`
+- `RETURN_G3CR6_VISUAL_DIRECTION_UNDEREXECUTED_2026-10-01`
+- `REVIEWER_OPENED_G3CR6R1_FRONTEND_COMPOSITION_REDESIGN_2026-10-01`
 
 Important limitation: the Owner reports demand as already validated, but the underlying sample/channel/behavior evidence has not been archived in this repository. Treat that as an Owner decision/input, not independently verified market or transaction evidence.
 
@@ -466,7 +469,7 @@ Status:
 - Latest return decision: `docs/REVIEWER_DECISION_G3CR2R1_RETURN.md`.
 - Dependency PASS decision: `docs/REVIEWER_DECISION_G3CR2R2_DEPENDENCY_PASS.md`.
 - Current execution contract: `docs/G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY.md`.
-- G3CR6 frontend experience / brand redesign is the current execution Gate. The G3CR2R3 compatibility canary and G3CR4/G3CR5 bounded PASS evidence remain historical accepted baselines, subject to fresh regression for any frontend behavior G3CR6 changes.
+- G3CR6R1 frontend composition redesign is the current execution Gate. G3CR6's technical/privacy/Woo regression evidence remains useful baseline evidence, but the G3CR6 visual result itself is RETURN. The G3CR2R3 compatibility canary and G3CR4/G3CR5 PASS evidence remain accepted at their original tested scopes.
 - Owner visual freeze remains pending.
 - G4 Live PayPal Canary remains **HOLD / NOT AUTHORIZED** until G3C visual/product review is complete and a separate bounded G4 contract is approved.
 - Production AI interface details remain deferred until the Owner supplies them.
@@ -498,6 +501,7 @@ Status:
 - G3CR4: PASS — homepage consolidated to six primary editable sections; sample density reduced; mobile page materially shortened; 375px Good Issue preview is single-column with no detected clipping/overflow; functional Woo path and Owner editing preserved.
 - G3CR5: PASS — selected-photo Preview uses a dedicated frame with no text overlap on desktop/375px; Product/Cart/Checkout/My Account now share the accepted editorial visual system; homepage regression and Owner editability preserved.
 - G3C Owner Visual Checkpoint: RESOLVED — Owner selected the change path rather than accepting visual freeze.
-- G3CR6: CURRENT / OWNER AUTHORIZED — Option 2 Warm Birthday Gift is the visual north star; high-fidelity image generation is authorized; frontend experience may be redesigned including upload/Preview UI; changed frontend behavior must be re-tested; protected backend Woo/payment/order/account/private-workspace/entitlement/database/provider semantics must not be replaced. PR #64 stays open/unmerged; Owner visual freeze remains PENDING; G4 stays HOLD.
+- G3CR6: RETURN — current implementation preserved technical/privacy/Woo boundaries, but visual execution remained too close to the prior G3CR4/G3CR5 composition and did not sufficiently realize the Owner-selected Warm Birthday Gift direction.
+- G3CR6R1: CURRENT — frontend composition may be rebuilt; the previous six-section Gutenberg skeleton and `g3cr4-*` structure are not binding. Customer information/behavior contracts remain required; backend Woo/payment/order/account/private-workspace/entitlement/database/provider semantics remain protected. PR #64 stays open/unmerged; Owner visual freeze remains PENDING; G4 stays HOLD.
 - G4: HOLD — Live/real-money Canary requires G3C completion, a new contract + fresh Owner authorization.
 - Attention: do not let old research, WordPress candidates or simulated checkout be mistaken for production evidence.
