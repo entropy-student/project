@@ -1166,3 +1166,83 @@ STOP_AT_REVIEWER=YES
 ```
 
 The first read-only preflight invocation stopped at a local assertion that compared port summaries in the wrong lexical order; no runtime write occurred. A complete fresh prewrite pass then matched the sealed baseline. The one authorized recreate returned native SSH exit 0. Fresh post-readback confirmed the container identity changed, while its immutable image ID and all sealed runtime semantics remained unchanged; the mounted startup Caddyfile now matches the host source byte-for-byte and validates without the retired Mini Craft matcher. Public Mini Craft and direct-origin edge-test checks passed with normal TLS verification. The bounded non-Caddy container inventory was identical before and after. No Cloudflare, DNS, Tunnel, application, database, payment, pull, build, or cleanup action occurred.
+
+
+## M3A Caddy + Unified Pay Decommission Assessment — 2026-10-01
+
+```text
+GATE=M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT
+RESULT=PASS_CANDIDATE_M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+REMOTE_UID=1000
+STRICT_SSH_TARGET_IDENTITY=PASS
+SSH_NATIVE_EXIT_ZERO_CALLS=3
+SSH_NATIVE_EXIT_TWO_READONLY_COMMAND_SYNTAX_ERRORS=2
+TARGET_HOST_EXECUTION_PROVEN=PASS
+SUDO_NONINTERACTIVE=YES
+DOCKER_READONLY_ACCESS=YES
+```
+
+### Authoritative sources read
+
+- Canonical VPS Project Governance latest: Governance Handoff, Source Policy, v0.1.6, Storage Layout Contract, SSH / Delegated Secret Operations, Target Host Reality Contract, and Production Provider Canary and Recovery Contract.
+- Shared VPS: `SHARED_VPS_HANDOFF.md`, current `REVIEWER_HANDOFF.md`, `SHARED_VPS_PORTFOLIO.md`, M3A Reviewer Decision, M3A Execution Packet, current `EXECUTION_EVIDENCE.md`, and `EXECUTOR_HANDOFF.md`.
+- Unified Pay: current `REVIEWER_HANDOFF.md`, `PROJECT_STORAGE_MANIFEST.md`, `PROJECT_RECORD.md`, GitHub source-bundle directory listing, README, Dockerfile/bundle manifest metadata.
+- Dujiao-Next, Xianyu, and Mini Craft current Reviewer Handoffs.
+
+### Caddy dependency and retirement assessment
+
+- Runtime: `/spikersun-edge-caddy-1`, container ID `82749fff0bcea4538748dbb96d0d616b88617e3b4cc505a9fd70b61b6a789bb1`, `running`, restart count 0; Compose project/service `spikersun-edge/caddy`, canonical file `/srv/infra/edge/compose.yaml`, image `caddy:2-alpine`.
+- Caddy is the current host listener owner for 80/443. It is attached to `spikersun-edge`; the network currently has two endpoints (Caddy and Mini Craft WordPress). Current mounted host source is `/srv/infra/edge/Caddyfile`, 143 bytes, SHA-256 `f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358`.
+- Caddy mounts `/srv/infra/edge/data -> /data` and `/srv/infra/edge/config -> /config` as persistent writable binds; Caddyfile is a read-only bind. Their contents, including certificate material, were not read.
+- Caddy Compose quiet validation passed. Both adapted source config and active Admin config contain only two static-response routes: `edge-test.spikersun.com` (HTTP 200, 30-byte body) and `localhost` (HTTP 200, 24-byte body); no reverse-proxy upstream and no Mini Craft matcher. `edge-test.spikersun.com` did not resolve in the host-side public DNS check. Public Mini Craft is on its accepted direct Tunnel path, not Caddy.
+- Existing M2E prewrite rollback Caddyfile remains present (199 bytes); no Caddy config or runtime change was made.
+- No production application route was found in the current Caddy route set. However, the active diagnostic/test and localhost routes have no independently verified owner/consumer inventory. Therefore `CADDY_RETIREMENT_SAFE=UNRESOLVED`, not YES.
+
+### Unified Pay, Dujiao, ingress and callers
+
+- Unified Pay app and PostgreSQL are both running/healthy, restart count 0, with no host-published ports. Compose project/service source is `/srv/apps/unified-pay/docker-compose.prod.yml`. App is attached to `spikersun-private` (`unified-pay-app` alias) and `unified-pay-internal`; PostgreSQL is only on `unified-pay-internal`. Durable DB path is `/srv/data/unified-pay/db` (about 64 MiB); secret files remain under `/srv/data/unified-pay/secrets` and are mounted read-only. No secret contents or values were read.
+- Public `pay.spikersun.com/health` and `/ready` both returned HTTP 200 with TLS verify result 0. Cloudflared is running on `spikersun-private` in remote-managed `tunnel run --token-file` mode. The exact Cloudflare public-hostname origin target was not available from the VPS-local metadata; no Cloudflare control-plane session/API read was performed. Therefore `UNIFIED_PAY_INGRESS_OWNER=CLOUDFLARE_REMOTE_MANAGED_TUNNEL; ORIGIN_TARGET=UNRESOLVED`.
+- Unified Pay DB safe aggregates only: 2 active client records; 2 active, unrevoked client credentials; 1 production Alipay provider-account row (`active=true`, `enabled=false`, `activation_reviewed=true`); 1 payment intent in `created`; 1 provider-create attempt in `ambiguous` at 2026-09-14 16:45 UTC; 1 idempotency record. Provider events, provider payment facts, refunds, provider refund attempts, and outbox events each count 0. No IDs, payloads, URLs, amounts, or record contents were read.
+- The two active client/credential pairs are registered caller principals; current simultaneous/live traffic was not measured. Thus `UNIFIED_PAY_ACTIVE_CALLERS=2_REGISTERED_ACTIVE_CLIENTS;LIVE_TRAFFIC=UNMEASURED`.
+- Dujiao app/PostgreSQL/Redis are running/healthy with restart count 0. Dujiao app can reach the shared private network, but its current three payment channels are all inactive; `channel_clients=0`, `downstream_order_refs=0`. Safe aggregate historical DB counts: 34 orders (30 canceled, 2 completed, 2 fulfilling) and 20 payments (7 expired, 11 failed, 2 success). No Dujiao Compose/deployed-source reference to Unified Pay was found. The mounted `/srv/data/dujiao-next/secrets/config.yml` was intentionally not read, so the conclusion is no direct dependency evidence found, but absence is not fully proven: `DUJIAO_UNIFIED_PAY_DEPENDENCY=UNRESOLVED`.
+- Xianyu is attached to `spikersun-private`; current Caddy config has no Xianyu matcher. Mini Craft M1–M2E migration is accepted complete, with production ingress direct through `spikersun-shared-private -> http://mini-craft-night-kit-wordpress:80`.
+
+### Data, backup, Secret recovery and reconstruction
+
+- `/srv/backups/unified-pay` contains 33 files: 13 database dumps (469,699 bytes total; newest file metadata 2026-09-14 17:45:28 UTC), 15 Compose snapshots (73,764 bytes total), and 5 other metadata files. The newest dump timestamp is later than the one current created/ambiguous intent-attempt timestamp, but backup contents were not read, hashes were not calculated, and no restore test was performed.
+- GitHub canonical `unified-pay-system/` contains the Dockerfile, bundle manifest and 16 source-bundle fragments; the declared source archive SHA-256 is `653b511bd98595d0ad21fbb5729e1a41055a41c59f7b9c4c8b7ca21a791104a8`. The README describes these as reconstructible source material and states Provider Secrets are not in the source bundle. No bundle was downloaded or decoded.
+- Current VPS secret source directory is present, but no separate protected Secret recovery artifact was found under the Unified Pay backup namespace. Owner-local protected recovery metadata was not independently verified. Database-backup existence and source reconstructibility do not establish a tested end-to-end recovery path.
+- `UNIFIED_PAY_RUNTIME_RETIREMENT_SAFE=NO`: public ingress and two active registered caller principals remain; one payment intent/provider-create attempt is unresolved; exact Tunnel origin and Dujiao's secret-mounted runtime configuration are unproven.
+- `UNIFIED_PAY_DATA_DELETION_SAFE=NO`: durable business/audit/client/provider state exists, including the unresolved intent; preserve DB, secrets and all backups.
+- `UNIFIED_PAY_RECOVERY_BARRIER=UNRESOLVED`: DB dump and reconstructible code exist, but no restore test or independent protected Secret recovery proof is available.
+
+### Minimum-risk phased retirement proposal (not executed)
+
+1. Keep Caddy and Unified Pay running. Reviewer first resolves Caddy test-route ownership and the exact remote-managed `pay` Tunnel target.
+2. In a separate read-only, metadata-only checkpoint, prove or disprove the two registered external client dependencies and Dujiao configuration without exposing secret values. Reconcile the single ambiguous provider-create/payment-intent state through an explicitly authorized read-only provider/local correlation; no replay.
+3. Before any future runtime retirement, obtain a separately authorized and verified DB recovery artifact, preserve the exact source bundle/image/Compose and a protected Secret recovery path, and prove restore/restart recovery. Keep all existing backups.
+4. If callers are proven absent and the ambiguous state is reconciled, use a new Owner-authorized Gate for a reversible app-runtime stop/observation while preserving PostgreSQL, DB, secrets, image, Compose and Tunnel rollback material. A separate Gate is required before any data/Secret/backup deletion.
+5. Assess Caddy in its own bounded Gate after an explicit decision on `edge-test` and localhost consumers; preserve its current config and `/data`/`/config` state, then verify all non-Caddy ingress before any separately authorized stop.
+
+### Mutation counters
+
+```text
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_CONTENT_READS=0
+BACKUP_DELETIONS=0
+CLEANUP_OR_PRUNE_ACTIONS=0
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
