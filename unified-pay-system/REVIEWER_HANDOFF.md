@@ -1,5 +1,29 @@
 # Unified Pay System — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — Owner Directed Safe Decommission / M3A Read-only Assessment — 2026-10-01
+
+```text
+OWNER_DIRECTION=DECOMMISSION_AND_REMOVE_IF_SAFE
+CURRENT_GATE=SHARED_VPS_M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+RUNTIME_STATE=ACTIVE_HEALTHY
+RUNTIME_SHUTDOWN_AUTHORIZED=NO
+PUBLIC_INGRESS_REMOVAL_AUTHORIZED=NO
+CONTAINER_REMOVAL_AUTHORIZED=NO
+APP_SOURCE_DELETE_AUTHORIZED=NO
+DATA_DELETE_AUTHORIZED=NO
+BACKUP_DELETE_AUTHORIZED=NO
+PROVIDER_MUTATION_AUTHORIZED=NO
+SECRET_MUTATION_AUTHORIZED=NO
+```
+
+Owner has selected decommission/removal as the desired lifecycle outcome, but current downstream dependency, provider state, database business aggregate, ingress ownership and recovery barriers are not yet proven. Shared VPS M3A performs those checks read-only before any shutdown or irreversible deletion is proposed.
+
+Canonical M3A decision:
+`../shared-vps-infrastructure/docs/REVIEWER_DECISION_M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT.md`
+
+
 ## CURRENT REVIEWER UPDATE — Shared VPS Portfolio Reconciliation R1 — 2026-09-29
 
 ```text
