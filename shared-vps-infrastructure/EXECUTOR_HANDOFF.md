@@ -1058,3 +1058,106 @@ Post-stop safe read-only ledger shows no new audits or intents, counts unchanged
 ### Reviewer checkpoint / preserved recovery
 
 App intentionally remains stopped; PostgreSQL, /srv/data/unified-pay, /srv/backups/unified-pay, Secret sources, local image, stopped container, canonical Compose and accepted Tunnel/DNS metadata remain retained. App start is rollback-only and was not used. No permanent deletion phase was entered. Evidence commit `93568e667ac83cecdc582cac3950fb906101b4fc` has complete fresh readback PASS with exactly one M5 section. Only authorized GitHub Evidence/Handoff appends accompany the single authorized runtime stop. STOP_AT_REVIEWER=YES.
+
+## M6 Unified Pay App Container Decommission — 2026-10-01
+
+```text
+GATE=M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION
+RESULT=PASS_CANDIDATE_M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION
+OWNER_AUTHORIZES_M6=YES
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+LOCAL_SSH_TRUST=PASS
+SSH_NATIVE_EXIT=0
+CURRENT_PROJECT_SOURCE_COMMIT=UNKNOWN_NOT_REQUIRED_FOR_RUNTIME_GATE
+PREFLIGHT_UTC=2026-10-01T12:24:52.001120+00:00
+APP_CONTAINER_ID=0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e
+APP_CONTAINER_NAME=/unified-pay-app-1
+APP_COMPOSE_PROJECT=unified-pay
+APP_COMPOSE_SERVICE=app
+APP_PRE_STATE=exited
+APP_REMOVAL_COMMAND=docker rm <freshly_verified exact container ID>
+APP_REMOVAL_NATIVE_EXIT=0
+APP_REMOVE_ACTIONS=1
+APP_CONTAINER_PRESENT_AFTER=NO
+APP_IMAGE=sha256:78029ea23abde4a44ff4c51a176c549b1be81746e73f9cfe08dbda0550c901cc
+APP_IMAGE_PRESENT_AFTER=YES
+POSTGRES_CONTAINER_ID=eeb800570fd41e117a3cb788ef27977749de7f637f86e7379db4cf686547a120
+POSTGRES_STATE_BEFORE_AFTER=healthy/healthy
+POSTGRES_RESTART_COUNT_BEFORE_AFTER=0/0
+POSTGRES_STOP_ACTIONS=0
+POSTGRES_REMOVE_ACTIONS=0
+COMPOSE_SOURCE=/srv/apps/unified-pay/docker-compose.prod.yml
+COMPOSE_BYTES=5271
+COMPOSE_SHA256=deb4f91d39a53df951c3d61c9911baba73b1a06bfd4d9079b7f8932221e3ff44
+COMPOSE_QUIET_VALIDATION_BEFORE_AFTER=PASS/PASS
+COMPOSE_MUTATIONS=0
+UNIFIED_PAY_DATA_PRESENT_AFTER=YES
+UNIFIED_PAY_BACKUPS_PRESENT_AFTER=YES
+UNIFIED_PAY_SECRET_SOURCE_PRESENT_AFTER=YES
+APP_SECRET_SOURCE_MOUNT_SOURCE_COUNT=9
+APP_SECRET_SOURCE_CONTENT_READS=0
+APP_IMAGE_DELETE_ACTIONS=0
+COMPOSE_DELETE_ACTIONS=0
+DATA_DELETE_ACTIONS=0
+BACKUP_DELETE_ACTIONS=0
+SECRET_DELETE_ACTIONS=0
+UNIFIED_PAY_TUNNEL_AND_DNS_MUTATIONS=0
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+DUJIAO_NONSECRET_SOURCE_SCAN_FILES=2
+DUJIAO_NONSECRET_REFERENCE_COUNT=0
+DUJIAO_PROTECTED_CONFIG_REFERENCE=ABSENT_VALUE_OUTPUT=NO
+DUJIAO_PAYMENT_CHANNELS_TOTAL=3
+DUJIAO_PAYMENT_CHANNELS_ACTIVE=0
+DUJIAO_CHANNEL_CLIENTS=0
+DUJIAO_DOWNSTREAM_ORDER_REFS=0
+DUJIAO_APP_POST_STATE=running/healthy
+DUJIAO_POSTGRES_POST_STATE=running/healthy
+DUJIAO_REDIS_POST_STATE=running/healthy
+SHOP_PUBLIC=HTTP_200_TLS_VERIFY_0
+MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+MINICRAFT_WP_JSON=HTTP_200_TLS_VERIFY_0
+XIANYU_RUNTIME=running/healthy_SAME_CONTAINER_ID_RESTART_COUNT
+CLOUDFLARED=running_SAME_CONTAINER_ID_RESTART_COUNT
+SPIKERSUN_PRIVATE=PRESENT
+SHARED_MONITOR_PREDELETE=PASS
+SHARED_MONITOR_POSTDELETE_MANUAL=PASS
+KNOWN_PROJECT_REGRESSION=NO
+PAY_PUBLIC_ENDPOINT_EXPECTED_UNAVAILABLE=YES_ACCEPTED_M5_BASELINE_NOT_RECHECKED
+ROLLBACK_USED=NO
+ROLLBACK_RECREATE_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+NON_TARGET_CONTAINER_MUTATIONS=0
+NON_TARGET_DOCKER_RESOURCE_DELETIONS=0
+BROAD_PRUNE=NO
+OTHER_CLEANUP_ACTIONS=0
+MUTATIONS_SCOPE=ONE_AUTHORIZED_STOPPED_APP_CONTAINER_REMOVAL
+STOP_AT_REVIEWER=YES
+EXECUTION_EVIDENCE_COMMIT=5103301aa942ce40e7eac5f5ee9d747026ed3239
+EXECUTION_EVIDENCE_FRESH_READBACK=PASS
+```
+
+### Execution summary
+
+Read the latest canonical M6 packet, Owner authorization, M5 checkpoint and all requested current project/runtime handoffs. Strict SSH local identity/host pins passed; remote identity proved ops@srv1970241. Fresh preflight found the exact authorized App container stopped/exited with its expected Compose project/service identity. PostgreSQL was healthy, local image and canonical production Compose were present, explicit Compose quiet validation passed, and data/backups/Secret sources were present. All nine app Secret source mount paths existed; their contents were not read.
+
+Dujiao fresh checks found no current Unified Pay dependency: two eligible active non-secret files had no reference, protected config classifier returned ABSENT without value output, and safe aggregates were payment channels 3/active 0, channel_clients 0 and downstream refs 0. Dujiao app/PostgreSQL/Redis, Shop, Mini Craft, Xianyu, cloudflared, spikersun-private and the Shared monitor were healthy before action.
+
+Exactly once, removed stopped App container ID `0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e` (name `/unified-pay-app-1`, project `unified-pay`, service `app`) with precise `docker rm <id>`; Docker exit 0. Fresh readback proves that exact container is absent. PostgreSQL remains healthy; App image ID, canonical Compose/hash/validation, data, backups, Secret-source directory and all source mounts remain present. The recreation path is retained but not exercised.
+
+Post-removal Shop and Mini Craft Home/Shop/wp-json returned 200 with TLS verify 0. Dujiao, Xianyu, cloudflared and other named project containers retained IDs/states/restart counts; private network remains present. Shared monitor manual run passed. KNOWN_PROJECT_REGRESSION=NO, ROLLBACK_USED=NO. pay.spikersun.com unavailable remains the accepted expected M5 behavior; this execution made no fresh Cloudflare/DNS/Tunnel read and no route changes.
+
+No PostgreSQL stop/removal, image removal, Compose/data/backup/Secret deletion, DB write, Provider/payment action, network/Tunnel/DNS mutation, prune, cleanup or non-target Docker deletion occurred. One authorized Docker mutation only: remove the stopped App container. Permanent deletion is not included in this Gate.
+
+### Reviewer checkpoint
+
+Evidence commit `5103301aa942ce40e7eac5f5ee9d747026ed3239` has complete fresh GitHub readback PASS and exactly one M6 section. This Executor Handoff is appended once and will be independently fresh-read. Stop here; preserve the remaining recovery stack pending Reviewer decision.
