@@ -731,3 +731,39 @@ Machine-readable current reports: `poc/g3c/artifacts/reports/runtime-setup.json`
 
 - Local execution commits `75bcf66` and `cde069d` are on the dedicated G3C branch. The first `git push` attempt failed to connect to `github.com:443`; a later retry succeeded and confirmed the remote branch was created. The GitHub PR connector still failed to reach its backend. The browser compare page is at [create G3C PR](https://github.com/entropy-student/project/pull/new/codex/birthday-magazine-g3c-blocksy-wedding-productization) and currently requests GitHub login. No PR has been opened yet.
 - The remote branch is available, but no PR exists. Owner must complete GitHub login in the local browser; then resume PR creation. No merge was attempted.
+
+## G3CR4 — G3C visual consolidation execution evidence
+
+**Gate:** `G3CR4_G3C_VISUAL_CONSOLIDATION`
+**Execution result:** `PASS_CANDIDATE_G3CR4_G3C_VISUAL_CONSOLIDATION` — Reviewer decision remains pending.
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**PR:** [#64](https://github.com/entropy-student/project/pull/64), verified open and unmerged before this evidence update.
+**Pre-execution HEAD:** `af04fc8252ad414af53fb24394432de447d69bd1`.
+
+The existing local G3C runtime was retained; it was not rebuilt or torn down. WordPress 7.1.1, WooCommerce 11.1.2, Blocksy 2.1.57, and Blocksy Companion 2.1.57 were read back from the running environment. WordPress, MariaDB, and Mailpit containers remain running; MariaDB and Mailpit are healthy. Elementor and HT Slider are not installed.
+
+Before editing, Home page 858's raw Gutenberg content and the relevant Blocksy theme mods were saved to `poc/g3c/artifacts/backups/g3cr4/home-and-blocksy-before-20261001-141123.json` (504,020 bytes; SHA-256 `225f5f03fdadca990cce5995b0aafa75c71fdf433de465023f50c70b9219d6a7`). `scripts/restore-g3cr4-backup.php` restores those values. The current Home content is six editable top-level Group sections: Hero, three representative magazine samples, Free Preview, What You Get, How It Works, and Offer + FAQ. The page remains a normal Gutenberg page, not an opaque template. `bms-owner` is still an Administrator and can edit the page, replace media, reorder blocks, and edit Blocksy global styles.
+
+The previous long/repetitive page is consolidated: the main flow has three sample blocks (two displayed at once on 375px), repeated story labels are absent, Spacer blocks and mouse/scroll decorations are absent, and the Hero cover loads and is legible. At 1440px the document width is 1440px. At a 375px viewport the document width is 375px; the Preview workbench and spread are single-column, required labels and controls are visible, and measured preview elements have no right-edge clipping or internal horizontal overflow.
+
+The existing Good Issue preview shortcode is present once. Selecting the repository's synthetic sample image produced three loaded `blob:` preview images in both desktop and mobile contexts. After file selection the browser recorded zero POST/PUT requests, zero external image requests, and zero model-provider requests. No image was uploaded to WordPress or a third party.
+
+The Offer CTA resolves to the native WooCommerce product page. Product 1113 is virtual at USD 39.99. Its native Add to Cart returned HTTP 200 with WooCommerce's success response; Cart displayed the product and USD 39.99 total. Checkout rendered its form and My Account rendered the login form. No checkout was submitted and no payment/order was created. The only WooCommerce styling change is the authorized global Footer contrast correction; product/cart/checkout templates were not redesigned.
+
+Private Workspace code and routes were not changed. The already accepted G3C/G3A access evidence is reused for this visual-only regression check: owner access 200, unrelated account 403, guest replay 403. The workspace plugin remains active. This execution did not create or mutate a workspace/order fixture.
+
+Fresh synthetic screenshots and the machine read-back are under `poc/g3c/artifacts/screenshots/g3cr4/` and `poc/g3c/artifacts/reports/g3cr4-final.json` (17 PNG files, each recorded with size and SHA-256). The WP Admin/Gutenberg screenshot was not captured because the isolated browser context had no authenticated session; no password or session credential was read or exposed.
+
+| Check | Result |
+|---|---|
+| Editable Home structure | Six Gutenberg Group sections; three sample blocks; one preview shortcode |
+| 375px layout | Document width 375px; preview single-column; no measured clipping/overflow |
+| Browser-local photo preview | `blob:` images loaded; 0 image-selection POST/PUT; 0 external image posts |
+| Preview model/network calls | 0 model-provider requests |
+| Native WooCommerce path | Product → Cart → Checkout → My Account; USD 39.99 product remains virtual |
+| Owner editing | Administrator; page edit/media upload/block reorder/Blocksy global-style capabilities present |
+| Private workspace | Previously accepted G3C/G3A owner/other-account/guest access result reused; implementation untouched |
+| Forbidden actions | PayPal 0; real money 0; model/AI 0; production deployment 0; shared infra 0; paid purchases 0; global prune 0; G4 0 |
+| Runtime | Retained for Owner review; no teardown |
+
+Owner visual freeze remains `PENDING`; stop at Reviewer. No Reviewer decision document was modified.

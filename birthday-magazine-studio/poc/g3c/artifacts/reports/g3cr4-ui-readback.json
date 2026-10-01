@@ -1,0 +1,221 @@
+{
+  "screenshots": [
+    "01-desktop-full-page.png",
+    "02-desktop-hero.png",
+    "03-desktop-samples.png",
+    "04-desktop-preview.png",
+    "05-desktop-what-how.png",
+    "06-desktop-offer-faq.png",
+    "07-mobile-full-page-375.png",
+    "08-mobile-hero-375.png",
+    "09-mobile-samples-375.png",
+    "10-mobile-preview-375.png",
+    "11-mobile-offer-faq-375.png",
+    "12-desktop-product.png",
+    "13-desktop-cart.png",
+    "14-desktop-preview-with-photo.png",
+    "15-mobile-preview-with-photo-375.png",
+    "16-desktop-checkout.png",
+    "17-desktop-my-account.png"
+  ],
+  "desktop": {
+    "viewport": 1440,
+    "innerWidth": 1440,
+    "documentWidth": 1440,
+    "documentHeight": 4606,
+    "primarySections": 6,
+    "sampleCardsVisible": 3,
+    "sampleCardNodes": 3,
+    "heading": "A Birthday Magazine\nMade About Them",
+    "heroImageLoaded": true,
+    "heroImageBox": {
+      "left": 820.8198852539062,
+      "right": 1264.74267578125,
+      "top": 66.464111328125,
+      "width": 443.92279052734375,
+      "height": 548.57177734375
+    },
+    "heroCtaVisible": true,
+    "heroCtaText": "Create a Free Preview",
+    "previewPresent": true,
+    "previewSingleColumn": false,
+    "spreadSingleColumn": false,
+    "previewRootWidth": 1132,
+    "previewRightEdges": {
+      ".bms-panel-top span": {
+        "left": 496.625,
+        "right": 526.5,
+        "top": 1800.5625,
+        "width": 29.875,
+        "height": 13.046875
+      },
+      ".bms-field label[for='bms-photo']": {
+        "left": 178,
+        "right": 526.5,
+        "top": 2010.6875,
+        "width": 348.5,
+        "height": 14.5
+      },
+      ".bms-preview-heading > span": {
+        "left": 1172.71875,
+        "right": 1263,
+        "top": 1789.5,
+        "width": 90.28125,
+        "height": 21.59375
+      },
+      ".bms-spread": {
+        "left": 827.7022094726562,
+        "right": 1256.1259765625,
+        "top": 1841.6492919921875,
+        "width": 428.42376708984375,
+        "height": 331.623291015625
+      },
+      ".bms-mini-cover": {
+        "left": 605.1456298828125,
+        "right": 798.1668701171875,
+        "top": 1876.1666259765625,
+        "width": 193.021240234375,
+        "height": 262.588623046875
+      },
+      ".bms-upload": {
+        "left": 178,
+        "right": 526.5,
+        "top": 2031.1875,
+        "width": 348.5,
+        "height": 53.296875
+      }
+    },
+    "previewClippedElements": [],
+    "previewInternalOverflow": [],
+    "formVisible": true,
+    "labelsVisible": true,
+    "imageBrokenCount": 0,
+    "weddingTerms": false,
+    "duplicateTerms": false,
+    "spacers": 0,
+    "scrollDecorations": 0
+  },
+  "mobile": {
+    "viewport": 375,
+    "innerWidth": 375,
+    "documentWidth": 375,
+    "documentHeight": 5525,
+    "primarySections": 6,
+    "sampleCardsVisible": 2,
+    "sampleCardNodes": 3,
+    "heading": "A Birthday Magazine\nMade About Them",
+    "heroImageLoaded": true,
+    "heroImageBox": {
+      "left": 47.515926361083984,
+      "right": 327.4840660095215,
+      "top": 476.289794921875,
+      "width": 279.9681396484375,
+      "height": 345.96728515625
+    },
+    "heroCtaVisible": true,
+    "heroCtaText": "Create a Free Preview",
+    "previewPresent": true,
+    "previewSingleColumn": true,
+    "spreadSingleColumn": true,
+    "previewRootWidth": 343,
+    "previewRightEdges": {
+      ".bms-panel-top span": {
+        "left": 316.125,
+        "right": 346,
+        "top": 1823.0625,
+        "width": 29.875,
+        "height": 13.046875
+      },
+      ".bms-field label[for='bms-photo']": {
+        "left": 29,
+        "right": 346,
+        "top": 2033.1875,
+        "width": 317,
+        "height": 14.5
+      },
+      ".bms-preview-heading > span": {
+        "left": 255.71875,
+        "right": 346,
+        "top": 2198.125,
+        "width": 90.28125,
+        "height": 21.59375
+      },
+      ".bms-spread": {
+        "left": 39,
+        "right": 336,
+        "top": 2529.046875,
+        "width": 297,
+        "height": 251.6875
+      },
+      ".bms-mini-cover": {
+        "left": 95.4375,
+        "right": 279.5625,
+        "top": 2251.71875,
+        "width": 184.125,
+        "height": 259.328125
+      },
+      ".bms-upload": {
+        "left": 29,
+        "right": 346,
+        "top": 2053.6875,
+        "width": 317,
+        "height": 53.296875
+      }
+    },
+    "previewClippedElements": [],
+    "previewInternalOverflow": [],
+    "formVisible": true,
+    "labelsVisible": true,
+    "imageBrokenCount": 0,
+    "weddingTerms": false,
+    "duplicateTerms": false,
+    "spacers": 0,
+    "scrollDecorations": 0
+  },
+  "browserLocalPreview": {
+    "desktop": {
+      "blobImageCount": 3,
+      "status": "sample-cover-bold.png · browser-local preview only"
+    },
+    "mobile": {
+      "blobImageCount": 3,
+      "status": "sample-cover-bold.png · browser-local preview only"
+    },
+    "postRequestsAfterPhoto": 0,
+    "externalImageRequests": [],
+    "modelProviderRequests": []
+  },
+  "commerce": {
+    "offerCtaHref": "http://127.0.0.1:8189/product/birthday-magazine/",
+    "productUrl": "http://127.0.0.1:8189/cart/",
+    "productPriceVisible": true,
+    "addToCartVisible": true,
+    "addToCartResponse": {
+      "status": 200,
+      "success": true
+    },
+    "cartUrl": "http://127.0.0.1:8189/cart/",
+    "cartHasProduct": true,
+    "checkoutUrl": "http://127.0.0.1:8189/checkout/",
+    "checkoutFormCount": 1,
+    "accountUrl": "http://127.0.0.1:8189/my-account/",
+    "accountLoginFormCount": 1,
+    "checkoutBodyHasPaymentLabels": false
+  },
+  "errors": [],
+  "previewNetworkPostRequests": [
+    {
+      "method": "POST",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/product/birthday-magazine/",
+      "resourceType": "fetch"
+    },
+    {
+      "method": "POST",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/",
+      "resourceType": "xhr"
+    }
+  ],
+  "totalScreenshotCount": 17
+}

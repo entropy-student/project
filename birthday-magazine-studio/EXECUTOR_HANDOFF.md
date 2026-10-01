@@ -507,3 +507,27 @@ Screenshot status is deliberately separate from the old PNGs in the working fold
 Machine-readable read-back is in `poc/g3c/artifacts/reports/verification-g3c.json` plus `runtime-setup.json` and `productization.json`. The precise limitation is that this handoff does not claim `PASS_CANDIDATE` until the Reviewer has the current screenshot archive.
 
 The branch is pushed to GitHub. PR creation is pending: the GitHub connector transport failed, and the browser PR page requires Owner login. The Owner must sign in on the local GitHub tab; then resume opening the PR. No merge occurred.
+
+## G3CR4 — current Reviewer handoff
+
+**Current Gate:** `G3CR4_G3C_VISUAL_CONSOLIDATION`
+**Execution result:** `PASS_CANDIDATE_G3CR4_G3C_VISUAL_CONSOLIDATION`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**PR:** [#64](https://github.com/entropy-student/project/pull/64), open and unmerged before this update.
+**Stop:** `STOP_AT_REVIEWER=YES`; do not enter G4.
+
+The live site at http://127.0.0.1:8189/ now uses the consolidated six-section Gutenberg Home page. The runtime stays available for Owner review. WP Admin is http://127.0.0.1:8189/wp-admin/. The `bms-owner` Administrator retains Gutenberg page/media/block-order and Blocksy global-style capabilities. No password is included. The optional admin-editor screenshot was not captured because the screenshot browser had no authenticated session.
+
+Current evidence:
+
+- Screenshots: `poc/g3c/artifacts/screenshots/g3cr4/` (17 synthetic PNGs, including desktop/mobile full pages, sections, local-photo preview states, Woo product/cart/checkout/My Account).
+- Machine report: `poc/g3c/artifacts/reports/g3cr4-final.json`.
+- Reversible pre-edit backup: `poc/g3c/artifacts/backups/g3cr4/home-and-blocksy-before-20261001-141123.json`.
+- Editable Home: six Gutenberg Group sections; three samples; one Good Issue preview shortcode.
+- At 375px, preview and spread use one column; document width is 375px; no measured right clipping or internal horizontal overflow.
+- Selected synthetic cover image stayed in a browser `blob:` URL. Image selection produced no POST/PUT, external image request, or model-provider request.
+- Native Woo product 1113 remains virtual at USD 39.99. Product Add to Cart returned WooCommerce success, the Cart displayed the product, and Checkout/My Account pages loaded. No order or payment was submitted.
+- Private Workspace code was not changed; the previously accepted owner 200 / unrelated account 403 / guest 403 evidence is reused.
+- No PayPal, real-money, model/AI, production deployment, shared infrastructure, paid purchase, global prune, or G4 action occurred.
+
+Please review the current screenshot set and the live page, with Owner visual freeze still pending. Earlier G3C handoff paragraphs describe a prior state and are superseded for this Gate by the G3CR4 evidence above. No Reviewer decision file was edited. Runtime teardown was intentionally skipped.
