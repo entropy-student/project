@@ -1296,3 +1296,89 @@ STOP_AT_REVIEWER=YES
 
 The exact stopped PostgreSQL container was removed once after a passing M8 preflight. Native strict SSH exit was 0. Three earlier wrapper parse failures occurred before the removal command and caused no Docker mutation. Post-delete readback proved the database container absent and both images present, but found the canonical Compose source absent, `/srv/data/unified-pay/db` absent, and zero backup files under the existing backup root. No causal attribution was made to the exact container removal; no recovery or further mutation was attempted. This is returned as `RETURN_M8_POSTDELETE_RECOVERY_ASSET_DRIFT`. Unrelated project/public checks remained healthy and no known project regression was observed.
 
+
+## M8-R1 Unified Pay Recovery Asset Drift Forensics — 2026-10-01
+
+```text
+GATE=M8_R1_UNIFIED_PAY_RECOVERY_ASSET_DRIFT_FORENSICS
+RESULT=PASS_CANDIDATE_M8_R1_UNIFIED_PAY_RECOVERY_ASSET_DRIFT_FORENSICS
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+ACCESS_PATH=CANONICAL_STRICT_SSH
+READ_ONLY=YES
+
+APP_ROOT=/srv/apps/unified-pay|dir|root:UNKNOWN|0750|inode=2359336|mtime=ctime=2026-09-14T17:50:17Z|entries=0|bytes=0|mountpoint=NO
+CANONICAL_COMPOSE=/srv/apps/unified-pay/docker-compose.prod.yml|ABSENT
+DATA_ROOT=/srv/data/unified-pay|dir|root:UNKNOWN|0750|inode=2359337|mtime=ctime=2026-09-13T08:33:16.190557397Z|entries=0|bytes=0|mountpoint=NO
+DB_PATH=/srv/data/unified-pay/db|ABSENT
+VPS_SECRET_PATH=/srv/data/unified-pay/secrets|ABSENT
+VPS_SECRET_FILE_COUNT=0
+BACKUP_ROOT=/srv/backups/unified-pay|dir|root:root|0750|inode=2359338|mtime=ctime=2026-09-14T17:45:28.053014896Z|entries=0|bytes=0|mountpoint=NO
+ROOT_FS=/dev/sda1|ext4
+
+COMPOSE_RECOVERY_SOURCE=NONE
+DATABASE_EXACT_RECOVERY_SOURCE=NONE
+SECRET_RECOVERY_SOURCE=WINDOWS_DPAPI
+DPAPI_RECOVERY_EXISTS=YES
+DPAPI_RECOVERY_BYTES=20710
+DPAPI_RECOVERY_SHA256_MATCH=YES
+DPAPI_RECOVERY_DECRYPTED=NO
+
+DB_STORAGE_TYPE=BIND
+DB_BIND_SOURCE=/srv/data/unified-pay/db
+DOCKER_RM_WITH_VOLUME_FLAG_EVIDENCE=NO
+DOCKER_RM_CAUSALITY=DISPROVEN
+OTHER_DESTRUCTIVE_COMMAND_EVIDENCE=UNRESOLVED
+
+VPS_AND_OWNER_WORKSPACE_SEARCH=NO_EXACT_COMPOSE_OR_DATABASE_DUMP_FOUND
+GITHUB_DEPLOYMENT_COMPOSE_OR_DATABASE_DUMP=NOT_FOUND
+GITHUB_UNIFIED_PAY_APP_SOURCE_BUNDLE=NOT_A_DEPLOYMENT_COMPOSE
+OPAQUE_LEGACY_B64_ARTIFACTS_DECODED=NO
+CURRENT_ANONYMOUS_VOLUMES=5
+ANONYMOUS_VOLUME_CONTENTS_READ=NO
+UNIFIED_PAY_VOLUME_ASSOCIATION=NOT_PROVEN
+
+KNOWN_PROJECT_REGRESSION=NO
+Dujiao/Mini_Craft/Xianyu=HEALTHY
+CLOUDFLARED=RUNNING
+SPIKERSUN_PRIVATE=PRESENT
+PUBLIC_SHOP_AND_MINICRAFT_ENDPOINTS=HTTP_200_TLS_VERIFY_0
+SHARED_MONITOR_LATEST_SCHEDULED_RESULT=SUCCESS_EXIT_0
+
+RECOVERY_ASSET_DRIFT_CLASS=UNRESOLVED
+FURTHER_MUTATIONS=0
+VPS_WRITES=0
+DOCKER_MUTATIONS=0
+CONTAINER_STARTS=0
+CONTAINER_CREATES=0
+FILES_CREATED=0
+FILES_MOVED=0
+FILES_DELETED=0
+DIRECTORIES_CREATED=0
+MOUNTS=0
+DATABASE_WRITES=0
+RESTORE_ACTIONS=0
+BACKUP_ACTIONS=0
+SECRET_CONTENT_READS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+PROVIDER_CALLS=0
+PAYMENT_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+### Handoff / interpretation
+
+Fresh strict SSH read-only inspection found the app, data and backup parent directories present but empty; the canonical production Compose, database subdirectory and VPS Secret directory are absent. The checked paths are not mountpoints. No exact Compose or database dump was found in the scoped VPS, Owner-workspace or canonical GitHub searches. GitHub's canonical source archive is application source, not a deployment Compose; opaque historical encoded artifacts were left untouched. No database recovery copy is currently proven.
+
+The Owner-local DPAPI recovery artifact is present at the previously accepted path and matches its sealed size/SHA-256 metadata. It was not decrypted or read. This supports Secret recovery only, not database recovery.
+
+The accepted M8 command was a single exact-container `docker rm` without `-v`. Historical metadata confirms the PostgreSQL data was a host bind mount to `/srv/data/unified-pay/db`; therefore plain container removal is not causal for deletion of that host path. Available sanitized logs show only the two entries corresponding to this exact removal; they do not provide a complete audit trail, so other destructive-command evidence is unresolved.
+
+Parent directory times predate M8 despite accepted M7 evidence that database/backups existed. This discrepancy does not establish deletion, movement, actor, or cause. Five current anonymous Docker volumes have no proven Unified Pay association and were not inspected for contents or treated as recovery assets. Overall classification stays `UNRESOLVED`.
+
+Fresh unrelated-project checks passed: Dujiao app/PostgreSQL/Redis, Mini Craft public endpoints/runtime, Xianyu, cloudflared, private network, Shop and latest scheduled monitor. No recovery, recreate, file, Docker, database, provider, payment, ingress or cleanup action was performed.
+
+Evidence append was committed as `3b92a5a84c6014d4f2db575a7022e93be54745a6`. This Handoff append is separate; both files must be fresh-read before closing. Preserve the incident freeze and stop for Reviewer.
+
