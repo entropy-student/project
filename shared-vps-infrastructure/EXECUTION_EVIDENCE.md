@@ -2243,3 +2243,138 @@ Existing app logs bounded to the post-stop window contained zero captured lines 
 ### Handoff boundary
 
 Only the authorized app stop occurred; all other runtime/configuration, database, Provider/payment, data/backup/Secret deletion and cleanup actions remained forbidden/zero. GitHub documentation appends are separate from the one authorized runtime mutation. App remains stopped with PostgreSQL and full recovery assets preserved. This is a short bounded observation, not proof that no future caller can appear and not permission for permanent deletion. STOP_AT_REVIEWER=YES.
+
+## M6 Unified Pay App Container Decommission — 2026-10-01
+
+```text
+GATE=M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION
+RESULT=PASS_CANDIDATE_M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION
+OWNER_AUTHORIZES_M6=YES
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+LOCAL_SSH_TRUST=PASS
+SSH_NATIVE_EXIT=0
+CURRENT_PROJECT_SOURCE_COMMIT=UNKNOWN_NOT_REQUIRED_FOR_RUNTIME_GATE
+PREFLIGHT_UTC=2026-10-01T12:24:52.001120+00:00
+APP_CONTAINER_ID=0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e
+APP_CONTAINER_NAME=/unified-pay-app-1
+APP_COMPOSE_PROJECT=unified-pay
+APP_COMPOSE_SERVICE=app
+APP_PRE_STATE=exited
+APP_REMOVAL_COMMAND=docker rm <freshly_verified exact container ID>
+APP_REMOVAL_NATIVE_EXIT=0
+APP_REMOVE_ACTIONS=1
+APP_CONTAINER_PRESENT_AFTER=NO
+APP_IMAGE=sha256:78029ea23abde4a44ff4c51a176c549b1be81746e73f9cfe08dbda0550c901cc
+APP_IMAGE_PRESENT_AFTER=YES
+POSTGRES_CONTAINER_ID=eeb800570fd41e117a3cb788ef27977749de7f637f86e7379db4cf686547a120
+POSTGRES_STATE_BEFORE_AFTER=healthy/healthy
+POSTGRES_RESTART_COUNT_BEFORE_AFTER=0/0
+POSTGRES_STOP_ACTIONS=0
+POSTGRES_REMOVE_ACTIONS=0
+COMPOSE_SOURCE=/srv/apps/unified-pay/docker-compose.prod.yml
+COMPOSE_BYTES=5271
+COMPOSE_SHA256=deb4f91d39a53df951c3d61c9911baba73b1a06bfd4d9079b7f8932221e3ff44
+COMPOSE_QUIET_VALIDATION_BEFORE_AFTER=PASS/PASS
+COMPOSE_MUTATIONS=0
+UNIFIED_PAY_DATA_PRESENT_AFTER=YES
+UNIFIED_PAY_BACKUPS_PRESENT_AFTER=YES
+UNIFIED_PAY_SECRET_SOURCE_PRESENT_AFTER=YES
+APP_SECRET_SOURCE_MOUNT_SOURCE_COUNT=9
+APP_SECRET_SOURCE_CONTENT_READS=0
+APP_IMAGE_DELETE_ACTIONS=0
+COMPOSE_DELETE_ACTIONS=0
+DATA_DELETE_ACTIONS=0
+BACKUP_DELETE_ACTIONS=0
+SECRET_DELETE_ACTIONS=0
+UNIFIED_PAY_TUNNEL_AND_DNS_MUTATIONS=0
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+DUJIAO_NONSECRET_SOURCE_SCAN_FILES=2
+DUJIAO_NONSECRET_REFERENCE_COUNT=0
+DUJIAO_PROTECTED_CONFIG_REFERENCE=ABSENT_VALUE_OUTPUT=NO
+DUJIAO_PAYMENT_CHANNELS_TOTAL=3
+DUJIAO_PAYMENT_CHANNELS_ACTIVE=0
+DUJIAO_CHANNEL_CLIENTS=0
+DUJIAO_DOWNSTREAM_ORDER_REFS=0
+DUJIAO_APP_POST_STATE=running/healthy
+DUJIAO_POSTGRES_POST_STATE=running/healthy
+DUJIAO_REDIS_POST_STATE=running/healthy
+SHOP_PUBLIC=HTTP_200_TLS_VERIFY_0
+MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+MINICRAFT_WP_JSON=HTTP_200_TLS_VERIFY_0
+XIANYU_RUNTIME=running/healthy_SAME_CONTAINER_ID_RESTART_COUNT
+CLOUDFLARED=running_SAME_CONTAINER_ID_RESTART_COUNT
+SPIKERSUN_PRIVATE=PRESENT
+SHARED_MONITOR_PREDELETE=PASS
+SHARED_MONITOR_POSTDELETE_MANUAL=PASS
+KNOWN_PROJECT_REGRESSION=NO
+PAY_PUBLIC_ENDPOINT_EXPECTED_UNAVAILABLE=YES_ACCEPTED_M5_BASELINE_NOT_RECHECKED
+ROLLBACK_USED=NO
+ROLLBACK_RECREATE_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+NON_TARGET_CONTAINER_MUTATIONS=0
+NON_TARGET_DOCKER_RESOURCE_DELETIONS=0
+BROAD_PRUNE=NO
+OTHER_CLEANUP_ACTIONS=0
+MUTATIONS_SCOPE=ONE_AUTHORIZED_STOPPED_APP_CONTAINER_REMOVAL
+STOP_AT_REVIEWER=YES
+```
+
+### Authoritative GitHub reads
+
+The complete M6 inputs and current Governance were fetched from canonical GitHub. Full documents identical to prior complete reads were byte-for-byte compared; current Reviewer Hand-off remained unchanged through execution.
+
+- `shared-vps-infrastructure/SHARED_VPS_HANDOFF.md` — blob `e9e3874fe77935c43072e958b0d47d5dad061135`
+- `shared-vps-infrastructure/REVIEWER_HANDOFF.md` — blob `62aba1ce123ab9392a675360659033668dcddd6d`
+- `shared-vps-infrastructure/docs/REVIEWER_DECISION_M5_PASS_M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION_CHECKPOINT.md` — blob `8ef5bca31d386a72e2aa261f3375c2bcf1723a0e`
+- `shared-vps-infrastructure/docs/REVIEWER_DECISION_M6_OWNER_AUTHORIZED_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION.md` — blob `82a4ddab7c3b60fe3377ffceb386970ceeafb819`
+- `shared-vps-infrastructure/review-packets/M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION.md` — blob `7985bc1ef24f523cf87be57905f7296006a1a175`
+- `shared-vps-infrastructure/EXECUTION_EVIDENCE.md` — blob `0b2f0a8f0652a1aa0f846d07aa09c8300ace6d1d`
+- `shared-vps-infrastructure/EXECUTOR_HANDOFF.md` — blob `abc215acb629ab8cc4f2fa59f25c9afc23b6d767`
+- `unified-pay-system/REVIEWER_HANDOFF.md` — blob `d4b7ecd690026c4d6e8bebd41d6a7297c612980f`
+- `unified-pay-system/PROJECT_STORAGE_MANIFEST.md` — blob `ef5397c0fb1d64fd4edf2ac77a7df9b85b3e159a`
+- `unified-pay-system/PROJECT_RECORD.md` — blob `9c3f2fb5a5aa1781a6c06a554d399b74fc84a1b3`
+- `dujiao-next/REVIEWER_HANDOFF.md` — blob `3c2d4e962cd21f900e261793580bc5da2960d150`
+
+Current authorization was explicit in the M6 Reviewer decision and Reviewer Hand-off. M5 was formally accepted with the app stopped, PostgreSQL healthy and recovery assets retained. No permanent deletion was authorized.
+
+### Strict SSH and fresh preflight
+
+Owner workstation strict SSH identity fingerprint and all canonical normal known_hosts pins matched. The SSH invocation proved non-root ops on srv1970241 before reviewed sudo metadata/actions. Native exit was 0.
+
+Fresh preflight confirmed target app container `/unified-pay-app-1`, ID `0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e`, Compose project `unified-pay`, service `app`, status `exited`. Its exited Docker health field reported unhealthy; that is the stopped-container healthcheck state, not a running service, and no running transition occurred. Local image ID matched. PostgreSQL `unified-pay-db-1` was running/healthy, restart 0.
+
+Canonical manifest `/srv/apps/unified-pay/docker-compose.prod.yml` existed at 5271 bytes with the accepted SHA-256. Explicit Compose `config --quiet` passed before deletion. `/srv/data/unified-pay`, `/srv/backups/unified-pay`, and the Secret source directory were present; all nine app Secret-source mount paths existed, read-only mount metadata was checked, and source contents were not read. The app image existed locally.
+
+Dujiao remains independent: deployed non-secret scan examined two eligible files and found no Unified Pay reference; its protected runtime config was classified in memory as no reference, with values suppressed and not persisted. Fresh database aggregate: 3 channels, 0 active, 0 channel clients and 0 downstream order references. Dujiao app/PostgreSQL/Redis were healthy. This is consistent with the accepted M5 runtime dependency NO.
+
+Before deletion, Shop and Mini Craft Home/Shop/wp-json each returned HTTP 200 with TLS verify result 0. Xianyu was running/healthy, cloudflared running, spikersun-private present. Shared monitor timer was active and a manual run passed with the accepted script hash.
+
+### Exactly-one container removal
+
+Fresh identity and all preconditions were rechecked immediately before the action. The only removal command targeted the verified stopped App container ID:
+
+```sh
+sudo docker rm 0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e
+```
+
+Docker returned native exit 0. Fresh lookup by exact ID and name confirmed the App container was absent. There was no retry, compose down, app recreate, PostgreSQL action, image/network/volume deletion, pull/build, prune, data/backup/Secret deletion or unrelated resource mutation.
+
+### Preserved recovery and production regression
+
+After deletion the local app image ID remained present; PostgreSQL remained healthy with the same container ID/restart count. The same Compose file/hash remained and quiet validation passed. Unified Pay data, backup and Secret-source directories plus all nine source mount paths remained present. This preserves the future Compose recreation path; it was not exercised.
+
+Dujiao app/PostgreSQL/Redis, Shop, Mini Craft Home/Shop/wp-json, Xianyu, cloudflared and spikersun-private all passed post-removal checks. Non-target containers retained their accepted IDs, running states and restart counts. Shared monitor manual run passed. No known project regression occurred, so rollback was unused. pay.spikersun.com remains an accepted expected-unavailable baseline while the retained route targets the removed App origin; this Gate did not query or change Cloudflare, DNS or Tunnel.
+
+### Hard-boundary results
+
+Exactly one authorized stopped App container was removed. App image, PostgreSQL, Compose, project data, backups, Secret sources, Tunnel/DNS, networks and every other project resource were preserved. Database writes, Provider calls/mutations, payment actions, Cloudflare/DNS/Tunnel mutations, cleanup/prune and other Docker deletions were zero. Secret values were not emitted. Permanent project/data deletion was not entered. Stop at Reviewer.
