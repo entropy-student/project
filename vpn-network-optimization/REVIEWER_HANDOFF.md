@@ -64,7 +64,7 @@ Accepted source:
 
 ```text
 GATE_ID=G2B_HY2_Handshake_Only_Probe
-STATE=AUTHORIZED_HANDSHAKE_PROBE_PENDING
+STATE=RETURN_TLS_CONNECT_DIAGNOSTIC_REQUIRED
 OBJECTIVE=Run one HY2 handshake-only diagnostic to capture the exact non-secret curl failure fields; do not replay WG/HY2 benchmarks.
 MAX_ENDPOINT_THIS_ROUND=One temporary route + one protected Mihomo runtime + one proxied curl handshake + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -72,15 +72,10 @@ MANDATORY_REVIEW_STOP=YES
 
 ### TARGET_AND_SCOPE
 
-After fresh Owner authorization, allow exactly:
-- Owner PowerShell 7.6.6 / Administrator / High integrity checkpoint;
-- accepted runner/config source only;
-- one exact temporary `24.199.118.137/32` ActiveStore route via WLAN;
-- protected DPAPI Secret read only to construct the temporary Mihomo runtime config;
-- one test-only Mihomo process on localhost port 17890;
-- one proxied curl request to the existing OpenAI models endpoint;
-- emit only these handshake diagnostics: `proxy_used`, curl native exit, HTTP status, runner error classification, and timing fields;
-- mandatory cleanup of Mihomo/runtime config/temporary route and final WireGuard read-back.
+The authorized handshake probe has completed. Current diagnostic scope is read-only:
+- inspect accepted source/config and the retained handshake evidence;
+- perform only non-Secret, read-only server/service/network-state checks;
+- no new local proxy, temporary route, DPAPI Secret read, or HY2 handshake.
 
 Forbidden:
 - no WireGuard 60-sample benchmark;
@@ -144,7 +139,7 @@ Current baseline is clean and restored. The diagnostic checkpoint must always:
 
 ### OWNER_ONLY_ACTIONS
 
-**Authorization status: GRANTED** for exactly one HY2 handshake-only diagnostic. This is separate from the consumed full-run authorization and is consumed only when the handshake probe is actually invoked.
+**Authorization status: CONSUMED.** The one HY2 handshake-only diagnostic was invoked and returned with curl exit 35 / TLS_ERROR. No second handshake is authorized.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
@@ -214,11 +209,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-After Owner authorization, run exactly one HY2 handshake-only diagnostic that captures the missing non-secret curl fields. Do not rerun either 60-sample benchmark.
+Run a read-only server-side diagnostic next: verify Hysteria service active/listening, current unit/config metadata, SNI-guard/auth type shape, firewall state, and binary version without printing Secret material. Use this to separate server/runtime drift from client/UDP-path failure before authorizing any new handshake.
 
 ## OWNER_ACTION_REQUIRED
 
-**Run the prepared one-shot `scripts/g2b-hy2-handshake-checkpoint.ps1` from PowerShell 7.6.6 as Administrator.** No benchmark replay or second handshake is authorized.
+**Run one read-only server-state diagnostic when presented.** No new HY2 handshake, benchmark, Secret read, or network mutation is authorized.
 
 ## EVIDENCE_POINTERS
 
