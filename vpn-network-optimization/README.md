@@ -17,8 +17,8 @@
 - 当前主力 VPS：DigitalOcean `24.199.118.137`；历史本地标签为 `SFO2-A`，fresh DigitalOcean metadata 实际 region 为 `sfo3`
 - 当前公网 IP：`24.199.118.137`
 - 当前主通道：WireGuard（当前生产/回退基线；IPv4 使用两个 /1 默认路由，严格 WFP kill-switch 已解除）
-- 当前客户端：Windows；已安装 Clash Verge（具体版本 / Mihomo 内核版本待 G1 fresh read-back）
-- 当前 WireGuard 历史 MTU：1280（是否继续固定待验证）
+- 当前客户端：Windows；Clash Verge 2.5.6；Mihomo v1.19.31 / alpha-f103639 已验证支持当前 HY2 配置
+- 当前 WireGuard active MTU：1420；历史 1280 仅保留为旧元数据，不是当前运行值
 - 当前主要业务：Codex / OpenAI / AI 生图等长时间任务
 - 最高约束：任何本项目动作不得干扰正在运行的前台任务
 
@@ -29,9 +29,12 @@
 - 2026-10-01 20:00 左右晚高峰 15 分钟：90/90 成功，平均约 0.845s，Median 约 0.756s，P95 约 1.628s，P99 约 2.190s；>1s 为 18/90，>1.5s 为 7/90，>2s 为 1/90；WG Ping 4/90 次无响应
 - 同一晚高峰样本中，本机→VPS 公网 Ping Median 约 160ms、P95 约 187ms；WG 隧道 Ping Median 约 163ms、P95 约 180ms。说明基础 RTT 并未整体失控，当前重点更偏向尾部抖动、间歇性拥塞/重传及上游等待。WG Ping 无响应是路径抖动信号，不单独等同于已证明的传输层丢包率。
 
-## 当前问题假设
+## 当前已知与待验证
 
-现有证据更支持“基础 RTT 尚可，但晚高峰尾部恶化”的方向，而不是单纯的高基础延迟问题。G1 应优先只读检查可能影响 UDP VPN 转发与路径稳定性的因素；不得把该假设写成已证实根因。
+- 已知：同一测试窗口内，WireGuard 与 HY2 均 60/60 成功；HY2 的 Median/P90/P95/P99 与慢请求尾部计数均更好。
+- 已知：此前 HY2 连接失败的根因是 WireGuard Windows 严格 WFP kill-switch；修复后 UDP/8443、TLS、认证与证书 pinning 均通过。
+- 待验证：晚高峰下该优势是否持续，以及 Codex / OpenAI / AI 生图等真实长任务是否实际受益。
+- 待决策：最终 v1 采用 HY2 主通道、备用通道，还是继续以 WireGuard 为主；以及最终 WireGuard 路由 / kill-switch 安全策略。
 
 ## MVP 范围
 
