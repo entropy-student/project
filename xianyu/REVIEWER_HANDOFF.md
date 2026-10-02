@@ -9,7 +9,8 @@
 ~~~text
 MARKET_SELECTION_REBOOT = ACTIVE
 X1_MARKET_DEMAND_DISCOVERY_AND_NORMALIZATION = PASS
-X2_DEMAND_DEPTH_AND_SHORTLIST_EVIDENCE = NEXT
+X2_DEMAND_DEPTH_AND_SHORTLIST_EVIDENCE = PASS
+X3_EVIDENCE_CARDS_COUNTEREVIDENCE_AND_SUPPLY_PATH = NEXT
 
 AUTOMATION_RUNTIME_TRACK = PRESERVED_ACCEPTED_BASELINE
 RUNTIME_MUTATION_THIS_REBOOT = 0
@@ -38,8 +39,9 @@ RUNTIME_MUTATION_THIS_REBOOT = 0
 ### Market selection
 
 - 2026-10 从零重启；历史 shortlist、分数、赢家或“以前推荐过”均无 current authority。
-- X1 已完成当前平台规则快照、市场规模基线、8 个 Discovery Engine 覆盖、50 个 raw ideas、25 个 normalized candidates 和下一轮 demand-depth queue。
-- 当前证据足以证明闲鱼服务/技能市场，以及 AI/技术/办公类服务存在大规模真实交易；尚不足以证明某一个具体 Offer 是最终赢家。
+- X1 已完成当前平台规则快照、市场规模基线、8 个 Discovery Engine 覆盖、50 个 raw ideas 和 25 个 normalized candidates。
+- X2 对 10 个高信息价值需求簇进行了当前规则、平台级交易数据、公开闲鱼商品页、历史真实卖家案例和反方证据的交叉研究，收敛为 8 个 shortlist；没有继承旧赢家。
+- 当前证据足以证明服务/技能市场，以及 AI 编程建站、AI 办公、工作流/智能体、PPT、数据自动化、CAD/建模、求职服务、设计/视频等需求池值得进入下一层深研；仍不足以选最终 Priority Test。
 - 公开网页无法系统提供所有 SKU 的精确订单数；想要、浏览、卖家累计卖出必须分层使用。
 - Supply/Sourcing 在 X1 记为 DEFERRED_CONSTRAINT：未知不淘汰；若只能依靠侵权、盗版、违规数据、不可授权资产或不稳定第三方交付，则后续 KILL。
 
@@ -64,10 +66,10 @@ CLEANUP_AUTHORIZED=NO
 ## CURRENT_GATE
 
 ~~~text
-GATE_ID=X2_DEMAND_DEPTH_AND_SHORTLIST_EVIDENCE
-OBJECTIVE=对 X1 最强需求簇做更深的闲鱼原生需求采样，区分购买结构、价格压缩、竞争集中和免费替代，收敛 5–8 个 shortlist
-MAX_ENDPOINT_THIS_ROUND=SHORTLIST_WITH_CRITICAL_UNKNOWNS_ONLY
-MANDATORY_REVIEW_STOP=YES_BEFORE_FINAL_PRIORITY_TEST
+GATE_ID=X3_EVIDENCE_CARDS_COUNTEREVIDENCE_AND_SUPPLY_PATH
+OBJECTIVE=对 X2 的 8 个 shortlist 补齐 E1–E10、反方证据、合法交付/货源路径、价格与 Support Minutes 假设，收敛到最多 3 个 Top Candidates
+MAX_ENDPOINT_THIS_ROUND=TOP3_WITHOUT_FINAL_PRIORITY_TEST
+MANDATORY_REVIEW_STOP=YES_BEFORE_REAL_LISTING_OR_FINAL_PRIORITY_TEST
 TARGET_AND_SCOPE=XIANYU_MARKET_RESEARCH_ONLY
 RUNTIME_MUTATION=FORBIDDEN
 LISTING_PUBLISH=FORBIDDEN
@@ -75,20 +77,18 @@ REAL_PURCHASE=FORBIDDEN
 ACCOUNT_MUTATION=FORBIDDEN
 ~~~
 
-### X2 demand-depth queue
+### X2 accepted shortlist — not ranked
 
-这是研究队列，不是排名：
+1. Excel / CSV 数据清洗 + 办公自动化
+2. 固定范围的 AI 编程 / 轻量建站 / 微型工具
+3. PPT 结构重构 + 视觉美化
+4. AI Workflow / Agent / 小业务流程自动化
+5. CAD / SolidWorks 合法商业制图与建模
+6. JD 定向简历诊断 + 面试反馈
+7. 电商图片 / SKU 素材标准化
+8. 视频剪辑 / 字幕 / 结构化转写
 
-1. AI 编程 / 轻量建站 / 小业务网站交付
-2. Excel / 数据清洗 / 办公自动化
-3. PPT 重构 + 视觉美化
-4. CAD / SolidWorks 合法商业制图与建模
-5. 电商图片批处理 / 主图 / SKU 素材标准化
-6. JD 定向简历诊断 / 面试反馈
-7. 视频剪辑 / 字幕 / 结构化转写
-8. 个性化旅行攻略 / 行程包
-9. 原创运营表格 / SOP / 模板 + 定制
-10. AI Workflow / Agent / 自动化流程搭建
+X2 淘汰/降级：通用旅游攻略、Generic PDF/模板资料包、泛 SOP/表格包、纯 OCR/纯转写低差异化版本，以及任何搬运、去重过审、盗版、账号共享、作弊、未授权数据方向。
 
 ## CRITICAL_CONSTRAINTS
 
@@ -115,14 +115,14 @@ X1 仅研究/文档变更，可按 Git commit 回退；runtime、数据、账号
 
 ## UNRESOLVED
 
-- Top demand clusters 的 SKU 精确成交无法从公开网页完整获得，需要多样本代理 + 后续真实 Offer 测试。
+- 公开网页无法系统访问闲鱼搜索结果全集，SKU 级成交、询盘、退款和 Support Minutes 仍需账号内样本或 Minimum Validation；因此 X2 shortlist 是需求研究结论，不是最终销量排名。
 - 当前账号对特色服务类目的实际发布资格尚未做账号内验证。
 - shortlist 的货源/交付、版权、人工支持成本尚未逐项证明。
 - runtime 的 public ingress 与 retention-review 继续保持历史 UNKNOWN，不属于当前 Market Gate。
 
 ## NEXT_STEP
 
-执行 X2：扩大每个强需求簇的闲鱼原生样本，建立 demand/competition/price ledger，Quick Kill 后收敛至 5–8 个 shortlist；仍不选最终赢家。
+执行 X3：对 8 个 shortlist 建 E1–E10 Evidence Cards，重点验证真实付款结构、价格带、免费 AI 替代、售前/售后分钟数、合法交付来源与退款争议；收敛到最多 3 个 Top Candidates，仍不实际发布或付款。
 
 ## OWNER_ACTION_REQUIRED
 
@@ -131,5 +131,6 @@ NONE
 ## EVIDENCE_POINTERS
 
 - docs/PRODUCT_SELECTION_RESEARCH_2026-10.md
+- docs/X2_DEMAND_DEPTH_SHORTLIST_2026-10.md
 - EXECUTION_EVIDENCE.md
 - PROJECT_STORAGE_MANIFEST.md（仅 runtime 需要时读）
