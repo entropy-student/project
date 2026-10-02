@@ -523,3 +523,23 @@ INTEGRITY_SID=S-1-16-12288
 Therefore the runner failure `HIGH_INTEGRITY_TOKEN_REQUIRED` is a false negative in the runner's integrity precheck, not a lack of elevation. The script stopped before creating either pending or target artifact (`PENDING_EXISTS=NO`, `TARGET_EXISTS=NO`).
 
 Next action: fix only the integrity-level detection in `realize-owner-dpapi-path.ps1` using the same accepted token-integrity method already used for the corrected G2-B runner; do not weaken other prechecks, do not execute the path runner during the fix, and do not start G2-B.
+
+
+### Canonical Owner DPAPI path realization — PASS
+
+Owner executed the local-only path realization runner from elevated PowerShell 7.6.6. The canonical Owner path is now realized and validated.
+
+```text
+OWNER_WINDOWS_TARGET=CONFIRMED
+DPAPI_SCOPE=CurrentUser
+SOURCE_RETAINED=YES
+SOURCE_TARGET_ENCRYPTED_BYTES=BYTE_IDENTICAL
+TARGET_OWNER_ONLY_ACL=PASS
+TARGET_DPAPI_ROUNDTRIP=PASS
+TARGET_VPNHY2R1_VALIDATION=PASS
+PENDING_EXISTS=NO
+PLAINTEXT_TEMP_FILES_CREATED=0
+SECRET_VALUES_EMITTED=0
+```
+
+Reviewer consequence: the packaged-app AppData path-realization defect is closed. No VPS Secret re-fetch or rotation is required. The virtualized source remains retained for now. G2-B is now ready to proceed to the planned same-window benchmark; no protocol-performance conclusion exists until that benchmark completes.
