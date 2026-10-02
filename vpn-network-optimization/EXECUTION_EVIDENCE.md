@@ -747,3 +747,56 @@ VALIDATION:
 - No network mutation, Secret access, Mihomo start, or benchmark was performed during this diagnostic/repair round.
 
 EXECUTOR_RESULT: PASS_CANDIDATE
+
+
+## G2-B authorized retry after proxy-use validator repair — 2026-10-02
+
+```text
+AUTHORIZED_GATE=G2B_Full_Retry_After_ProxyUse_Repair
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+OWNER_RUNTIME=PowerShell 7.6.6 / Administrator=True / High integrity RID 12288
+ACCEPTED_SOURCE_IDENTITY=PASS
+NETWORK_BASELINE_PREFLIGHT=PASS
+OWNER_TEMP_ROUTE_CREATED=YES
+FORMAL_RUNNER_INVOKED=YES
+AUTHORIZED_RETRY_CONSUMED=YES
+
+WG_SUCCESS=60
+WG_FAILURES=0
+WG_MEDIAN=0.604015
+WG_P90=0.764660
+WG_P95=0.797894
+WG_P99=1.333582
+WG_GT_1S=1
+WG_GT_1_5S=0
+WG_GT_2S=0
+
+CLIENT_SECRET_RUNTIME_CREATED=YES
+CLIENT_SECRET_RUNTIME_OWNER_ONLY_ACL=PASS
+MIHOMO_TEST_PROXY_READY=YES
+RUNNER_FAILED_PHASE=HY2_OUTER_ROUTE_AND_HANDSHAKE
+RUNNER_FAILURE_CODE=HY2_HANDSHAKE_OR_AUTH_FAILED
+HY2_FORMAL_SAMPLES=0
+CURRENT_WINDOW_RESULT=INCONCLUSIVE
+
+TEST_MIHOMO_STOPPED=YES
+CLIENT_SECRET_RUNTIME_DELETED=YES
+PLAINTEXT_SECRET_ARTIFACTS_REMAINING=0
+OWNER_TEMP_ROUTE_REMOVED=YES
+PRODUCTION_WG_RESTORED=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_TEST_RUNTIME_RESIDUE=ABSENT
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+OWNER_CHECKPOINT_RESULT=RETURN_TO_REVIEWER
+NON_SECRET_RESULTS_PATH=C:\Users\34707\AppData\Local\vpn-network-optimization\results\g2b-authorized-20261002T094415Z
+```
+
+Reviewer interpretation boundary:
+- The repaired proxy-use guard did not fail; therefore the request advanced past the `ProxyUsed == 1` assertion.
+- The next assertion failed because the proxied curl sample did not satisfy the runner's success condition `curl exit == 0 && HTTP status == 401`.
+- Current retained console output does not include that handshake sample's exact curl exit code, HTTP status, or error classification. Do not infer TLS/auth/UDP/server root cause yet.
+- Consequential authorization is consumed. No second full retry is authorized.
+- Cleanup is accepted from Owner-reported bounded output as clean; formal G2-B PASS is not possible because HY2 sample count remains 0.
