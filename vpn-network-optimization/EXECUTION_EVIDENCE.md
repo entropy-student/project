@@ -1303,3 +1303,28 @@ Reviewer conclusion:
 - That exactly explains the entire diagnostic chain: production WireGuard remains healthy while raw UDP and Mihomo/HY2 direct outer UDP are locally dropped before WLAN transmission.
 - Hysteria server, UDP/8443 listener, certificate/SNI/auth shape, DigitalOcean Cloud Firewall, VPS host firewall, and ISP/port-specific filtering are no longer the active fault domain.
 - Next phase is a minimal reversible client-side routing/security-semantics repair that keeps WireGuard connected while permitting the HY2 outer path.
+
+
+## WireGuard kill-switch post-repair readback — configuration unchanged — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+WG_ROUTE_DEFAULT_V4_0_0_0_0_0=YES
+WG_ROUTE_SPLIT_V4_0_0_0_0_1=NO
+WG_ROUTE_SPLIT_V4_128_0_0_0_1=NO
+WFP_TARGET_BLOCK_ALL_OUTBOUND_IPV4=YES
+WFP_TARGET_FILTER_TEXT_HAS_WIREGUARD=YES
+WFP_STATE_HAS_WIREGUARD=YES
+WFP_STATE_HAS_BLOCK_ALL_OUTBOUND_IPV4=YES
+WIREGUARD_KILLSWITCH_CONFIRMATION=CONFIRMED
+READ_ONLY_MUTATION=NO
+FINAL_PRODUCTION_WIREGUARD=UNCHANGED
+PROBE_COMPLETED=YES
+CLEANUP_FAILURE_COUNT=0
+```
+
+Reviewer interpretation:
+- The running SFO2-A tunnel still has the original IPv4 `0.0.0.0/0` route.
+- Neither split default `0.0.0.0/1` nor `128.0.0.0/1` is active.
+- WireGuard's WFP `Block all outbound (IPv4)` kill-switch remains active.
+- Therefore the intended repair has not yet been applied to the running tunnel; no HY2 retest should be attempted until the configuration is actually changed and the tunnel reloaded.
