@@ -53,8 +53,8 @@ echo "HY2_NRESTARTS=$nrestarts"
 echo "HY2_SERVICE_USER=$svc_user"
 echo "HY2_SERVICE_GROUP=$svc_group"
 
-listener_count="$(ss -H -lunp 2>/dev/null | awk '$5 ~ /:8443$/ {n++} END {print n+0}')"
-listener_hysteria="$(ss -H -lunp 2>/dev/null | awk '$5 ~ /:8443$/ && /hysteria/ {n++} END {print n+0}')"
+listener_count="$(ss -H -lunp 2>/dev/null | awk '$4 ~ /:8443$/ {n++} END {print n+0}')"
+listener_hysteria="$(ss -H -lunp 2>/dev/null | awk '$4 ~ /:8443$/ && /hysteria/ {n++} END {print n+0}')"
 echo "HY2_UDP_8443_LISTENER_COUNT=$listener_count"
 echo "HY2_UDP_8443_HYSTERIA_COUNT=$listener_hysteria"
 
