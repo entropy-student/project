@@ -686,7 +686,7 @@ function Invoke-CurlSample {
         [Parameter(Mandatory = $true)][DateTime]$TimestampUtc,
         [AllowNull()][string]$ProxyUrl
     )
-    $writeOut = '__G2B__%{http_code}|%{time_namelookup}|%{time_connect}|%{time_appconnect}|%{time_starttransfer}|%{time_total}|%{remote_ip}'
+    $writeOut = '__G2B__%{http_code}|%{time_namelookup}|%{time_connect}|%{time_appconnect}|%{time_starttransfer}|%{time_total}|%{remote_ip}|%{proxy_used}'
     $curlArgs = @('-q', '-4', '--silent', '--max-time', '12', '--connect-timeout', '8',
         '--output', 'NUL', '--write-out', $writeOut)
     if ([string]::IsNullOrEmpty($ProxyUrl)) {
@@ -705,9 +705,10 @@ function Invoke-CurlSample {
     $startTransfer = $null
     $total = $null
     $remoteIp = ''
+    $proxyUsed = $null
     if ($line.StartsWith('__G2B__', [StringComparison]::Ordinal)) {
-        $fields = $line.Substring(7) -split '\|', 7
-        if ($fields.Count -eq 7) {
+        $fields = $line.Substring(7) -split '\|', 8
+        if ($fields.Count -eq 8) {
             $status = $fields[0]
             $nameLookup = Convert-TimeField $fields[1]
             $connect = Convert-TimeField $fields[2]
@@ -715,6 +716,8 @@ function Invoke-CurlSample {
             $startTransfer = Convert-TimeField $fields[4]
             $total = Convert-TimeField $fields[5]
             $remoteIp = $fields[6]
+            if ($fields[7] -eq '1') { $proxyUsed = 1 }
+            elseif ($fields[7] -eq '0') { $proxyUsed = 0 }
         }
     }
     $errorCode = 'NONE'
@@ -734,6 +737,7 @@ function Invoke-CurlSample {
         TimeStartTransfer = $(Format-TimeValue $startTransfer)
         TimeTotal = $(Format-TimeValue $total)
         RemoteIp = $remoteIp
+        ProxyUsed = $proxyUsed
         TotalSeconds = $total
         Error = $errorCode
         Success = $success
@@ -762,10 +766,10 @@ function Invoke-Benchmark {
     for ($sample = 1; $sample -le $script:sampleCount; $sample++) {
         $started = [DateTime]::UtcNow
         $sampleResult = Invoke-CurlSample -TimestampUtc $started -ProxyUrl $ProxyUrl
-        if ([string]::IsNullOrEmpty($ProxyUrl) -and $sampleResult.RemoteIp -eq '127.0.0.1') {
-            throw "$($Name)_UNEXPECTED_LOCAL_PROXY_PATH"
+        if ([string]::IsNullOrEmpty($ProxyUrl) -and $sampleResult.ProxyUsed -ne 0) {
+            throw "$($Name)_UNEXPECTED_PROXY_PATH"
         }
-        if (-not [string]::IsNullOrEmpty($ProxyUrl) -and $sampleResult.RemoteIp -ne '127.0.0.1') {
+        if (-not [string]::IsNullOrEmpty($ProxyUrl) -and $sampleResult.ProxyUsed -ne 1) {
             throw "$($Name)_LOCAL_PROXY_NOT_USED"
         }
         $Rows.Add($sampleResult)
@@ -1066,7 +1070,7 @@ function Write-RowsCsv {
     param([Parameter(Mandatory = $true)][string]$Path, [Parameter(Mandatory = $true)][object[]]$Rows)
     if ($Rows.Count -eq 0) { return }
     $safeRows = @($Rows | Select-Object Timestamp, CurlExit, HttpStatus, TimeNameLookup,
-        TimeConnect, TimeAppConnect, TimeStartTransfer, TimeTotal, RemoteIp, Error)
+        TimeConnect, TimeAppConnect, TimeStartTransfer, TimeTotal, RemoteIp, ProxyUsed, Error)
     $text = (@($safeRows | ConvertTo-Csv -NoTypeInformation) -join [Environment]::NewLine) + [Environment]::NewLine
     $bytes = [Text.UTF8Encoding]::new($false).GetBytes($text)
     try { New-ExclusiveFile -Path $Path -Bytes $bytes }
@@ -1257,7 +1261,7 @@ public static class G2bTokenIntegrityNative {
         Assert-Condition (-not (Test-Path -LiteralPath $resultPath)) 'RESULT_FILE_COLLISION'
     }
     $script:curlPath = (Get-Command curl.exe -ErrorAction Stop).Source
-    $tcpPortUse = @(Get-NetTCPConnection -LocalPort $proxyPort -ErrorAction SilentlyContinue)
+    $tcpPortUse = @(Get-NetTCPConnection -LocalPort $proxyPort -State Listen -ErrorAction SilentlyContinue)
     $udpPortUse = @(Get-NetUDPEndpoint -LocalPort $proxyPort -ErrorAction SilentlyContinue)
     Assert-Condition ($tcpPortUse.Count -eq 0 -and $udpPortUse.Count -eq 0) 'TEST_PROXY_PORT_ALREADY_IN_USE'
 
@@ -1438,7 +1442,7 @@ public static class G2bOwnerRunnerNative {
     $outerRoute = 'WLAN_DIRECT'
     $proxyUrl = "http://127.0.0.1:$proxyPort"
     $handshake = Invoke-CurlSample -TimestampUtc ([DateTime]::UtcNow) -ProxyUrl $proxyUrl
-    Assert-Condition ($handshake.RemoteIp -eq '127.0.0.1') 'HY2_HANDSHAKE_DID_NOT_USE_LOCAL_PROXY'
+    Assert-Condition ($handshake.ProxyUsed -eq 1) 'HY2_HANDSHAKE_DID_NOT_USE_LOCAL_PROXY'
     Assert-Condition ($handshake.Success) 'HY2_HANDSHAKE_OR_AUTH_FAILED'
     $handshakeAuth = 'PASS'
     $handshakePin = 'PASS'
