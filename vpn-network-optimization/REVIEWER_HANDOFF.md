@@ -16,7 +16,8 @@ G1 Foreground-safe Foundation               PASS
 G2-A HY2 side-by-side deployment            PASS
 G2-A DPAPI recovery closure                 PASS
 G2-B Safe-window WG vs HY2 validation       PASS
-G2-C Peak-hour + real workload validation   PENDING
+G2-C VLESS+REALITY side-by-side candidate  IN_PROGRESS
+G2-D Peak-hour + real workload validation   PENDING
 MVP v1 seal                                 PENDING
 ```
 
@@ -63,21 +64,96 @@ Current known components:
 ## CURRENT_GATE
 
 ```text
-GATE_ID=NONE
-STATE=BETWEEN_GATES
-LAST_CLOSED_GATE=G2B_Windows_UDP8443_Egress_Probe
-LAST_GATE_RESULT=PASS
-PROPOSED_NEXT_GATE=G2C_PeakHour_RealWorkload_Validation
-NEXT_GATE_AUTHORIZED=NO
+GATE_ID=G2C_VLESS_REALITY_SIDEBYSIDE
+STATE=AUTHORIZED_READONLY_PREFLIGHT
+OBJECTIVE=Add VLESS+REALITY as the frozen TCP/443 fallback candidate without disturbing WireGuard or HY2.
+MAX_ENDPOINT_THIS_ROUND=Read-only Windows/VPS preflight and implementation/port compatibility decision; no server install, Secret generation, public listener, or client switch yet.
+MANDATORY_REVIEW_STOP=YES
 ```
 
-No Executor work is active. Crossing into G2-C requires a new Owner decision because it is a new Gate.
+### TARGET_AND_SCOPE
+
+This Gate adds one complementary candidate only:
+- candidate protocol: VLESS + REALITY + XTLS Vision over TCP/443;
+- planned server implementation: sing-box, subject to fresh preflight;
+- planned Windows client: existing Clash Verge / Mihomo;
+- WireGuard remains production/rollback;
+- HY2 remains the validated UDP/QUIC performance candidate;
+- no persistent VLESS client/default-route switch in this round.
+
+The protocol candidate set is frozen to WireGuard + HY2 + VLESS/REALITY. Do not add TUIC/AnyTLS/VMess/Trojan/Shadowsocks/MASQUE unless later evidence proves a capability gap not covered by these three.
+
+### APPLICABLE_CRITICAL_CONSTRAINTS
+
+- Do not interrupt current WireGuard connectivity or foreground work.
+- Reuse the accepted strict SSH identity/trust path; do not request or expose the private key.
+- Secret values must not be generated or emitted during this read-only round.
+- TCP/443 ownership must be proven before any later listener is installed.
+- No change to WG/HY2 services, routes, firewall, sysctl, BBR/fq/GRO, DNS, or current client profile.
+
+### PREFLIGHT
+
+Fresh read-back must prove:
+- real Owner Windows runtime and current WireGuard state;
+- existing SSH key/trust metadata is usable through the accepted WireGuard control path;
+- exact VPS identity;
+- TCP/443 listener/ownership state;
+- current WG UDP/51820 and HY2 UDP/8443 health;
+- whether sing-box/Xray/Mihomo already exists on the VPS;
+- time sync, memory, disk, and firewall status sufficient for a later side-by-side service;
+- no target-port/shared-service collision.
+
+### REQUIRED_EVIDENCE
+
+- Windows preflight PASS;
+- strict SSH connection PASS with native exit 0;
+- VPS hostname/OS/arch;
+- TCP_443_FREE=YES/NO plus bounded owner/process metadata if occupied;
+- WG and HY2 service/listener read-back;
+- server-core inventory;
+- time-sync/resource/firewall read-back;
+- READ_ONLY_MUTATION=NO;
+- SECRET_VALUES_EMITTED=0.
+
+### ACCEPTANCE_CRITERIA
+
+PASS_CANDIDATE for preflight only when target identity is unchanged, WireGuard/HY2 are healthy, SSH trust is valid, and TCP/443 has no unreviewed ownership conflict. Any collision/drift returns to Reviewer before a deployment design is sealed.
+
+### ROLLBACK_STATUS_OR_PLAN
+
+Read-only round: no target mutation, so rollback is not applicable. Existing WireGuard + HY2 state must remain unchanged.
+
+### OWNER_ONLY_ACTIONS
+
+Owner authorized entry into the next protocol-selection step on 2026-10-02. This authorization covers this read-only preflight only. A later server install / Secret generation / public TCP listener is a consequential continuation inside G2-C and will be issued only after Reviewer accepts this preflight.
+
+### REVIEWER_TO_EXECUTOR_RELAY
+
+Read only:
+- this Gate;
+- current `SYSTEM_MAP` / `CURRENT_ACCEPTED_STATE`;
+- `scripts/g2c-vless-reality-preflight.ps1`;
+- existing strict SSH pattern from `scripts/g2b-hy2-server-readonly.ps1` only if needed.
+
+Do not traverse historical G2-B diagnostics. Run one bounded read-only Owner checkpoint and return the fixed completion packet.
+
+### EXECUTOR_TO_REVIEWER_RELAY
+
+```text
+结果：PASS_CANDIDATE / RETURN_*
+改动：NONE；只读 Windows + VPS preflight。
+验证：SSH / TCP443 / WG / HY2 / core inventory / time / resources。
+问题：NONE，或精确说明端口、身份、服务或资源冲突。
+回滚：NOT_APPLICABLE_READ_ONLY。
+请 Reviewer 检查：是否可以进入 VLESS+REALITY side-by-side deployment。
+Owner 转交：完整非敏感 checkpoint 输出。
+```
 
 ## CRITICAL_CONSTRAINTS
 
 - Foreground Codex / image-generation work must not be disrupted.
 - WireGuard remains the current production/rollback path until a later accepted Gate changes that role.
-- HY2 is now a validated candidate, not yet the sealed production default.
+- HY2 is now the validated UDP/QUIC performance candidate; VLESS+REALITY is the frozen TCP/443 fallback candidate under G2-C; neither is yet the sealed production default.
 - Current WireGuard routing intentionally uses two `/1` defaults; this removes the strict WireGuard Windows WFP kill-switch. Treat this as an explicit current security/runtime property.
 - Secret values never leave the protected execution boundary.
 - No BBR/fq/GRO/MTU or other live tuning is authorized merely because the protocol comparison passed.
@@ -108,28 +184,21 @@ Rollback/recovery assets:
 
 ## UNRESOLVED
 
+- VLESS+REALITY side-by-side viability: TCP/443 ownership, server-core choice, handshake, and client compatibility remain unvalidated on this VPS.
 - Peak-hour repeatability: whether HY2 retains its same-window advantage during the user's known evening congestion window.
 - Real workload behavior: Codex / OpenAI / image-generation long-task A/B is still untested.
 - Final production role: HY2 primary vs on-demand backup vs WireGuard primary remains undecided.
 - Final WireGuard security policy: whether the split-default/no-strict-kill-switch state is accepted for v1 or replaced by a different final routing design.
 - Optional Linux tuning candidates (BBR/fq/GRO/MTU) remain untested and are not required unless later evidence justifies them.
-- MVP v1 seal remains pending G2-C and final architecture decision.
+- MVP v1 seal remains pending G2-C VLESS+REALITY integration, G2-D peak-hour/real-workload validation, and final architecture decision.
 
 ## NEXT_STEP
 
-Proposed next Gate, not yet authorized:
-
-```text
-GATE_ID=G2C_PeakHour_RealWorkload_Validation
-OBJECTIVE=Test whether the accepted HY2 same-window advantage persists during a peak-hour window and under representative Codex/OpenAI/image-generation workloads, then provide the evidence needed for the v1 production-role decision.
-EARLIEST=Tomorrow / next suitable peak-hour window
-```
-
-The next Gate should reuse the accepted HY2 server, DPAPI recovery, split-default WireGuard state, and tested cleanup path. It must not reopen the closed Windows/WFP root-cause investigation unless contradictory evidence appears.
+Run the read-only G2-C preflight. If it passes, Reviewer will freeze the exact VLESS+REALITY implementation, target/port, Secret/recovery model, rollback plan, and one side-by-side deployment checkpoint. No protocol performance conclusion is made in the preflight.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE now.** When ready tomorrow, Owner may authorize G2-C. No repair or benchmark should run before that new Gate is opened.
+Run the single read-only G2-C preflight checkpoint supplied by Reviewer and return its complete non-secret output.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
