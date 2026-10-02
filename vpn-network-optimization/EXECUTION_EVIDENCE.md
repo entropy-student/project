@@ -1418,3 +1418,28 @@ Reviewer interpretation:
 - HY2 handshake was not attempted, so there is no new HY2 evidence.
 - Cleanup and production WireGuard restoration passed.
 - Next revision changes only the internal pinned-source transport from raw.githubusercontent.com to the GitHub Contents API, retaining the same accepted commit and blob SHA checks.
+
+
+## Post-killswitch HY2 handshake — internal source fetch reset — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+CURL_EXIT=35
+CURL_ERROR=Recv failure: Connection was reset
+CHECKPOINT_RETURN_STAGE=OWNER_AND_SOURCE_PREFLIGHT
+CHECKPOINT_RETURN_CODE=ACCEPTED_SOURCE_DOWNLOAD_FAILED
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_TEST_RUNTIME_RESIDUE=ABSENT
+TEMP_CHECKPOINT_WORKSPACE_REMOVED=YES
+RUNNER_INVOKED=NO
+RUNNER_COMPLETED=NO
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+OWNER_POST_KILLSWITCH_HANDSHAKE_RESULT=RETURN_TO_REVIEWER
+```
+
+Reviewer interpretation:
+- The outer checkpoint itself executed, but its internal exact-source fetch still used raw.githubusercontent.com and was reset.
+- The formal HY2 runner was never invoked, so this is not a handshake failure.
+- Cleanup completed and production WireGuard was restored.
+- Next revision removes raw.githubusercontent.com from the checkpoint's internal dependency fetch and uses the GitHub Contents API while retaining exact blob-SHA verification.
