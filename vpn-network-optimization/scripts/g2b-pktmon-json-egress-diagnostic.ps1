@@ -161,21 +161,13 @@ try {
 
     Start-Sleep -Milliseconds 500
 
-    $jsonText = (& $pktmonPath counters --type all --json 2>&1 | Out-String).Trim()
-    Assert-Check ($LASTEXITCODE -eq 0) 'PKTMON_COUNTERS_JSON_FAILED'
-    Assert-Check (-not [string]::IsNullOrWhiteSpace($jsonText)) 'PKTMON_COUNTERS_JSON_EMPTY'
+    $counterText = (& $pktmonPath counters --type all --include-hidden --drop-reason 2>&1 | Out-String).Trim()
+    Assert-Check ($LASTEXITCODE -eq 0) 'PKTMON_COUNTERS_TEXT_FAILED'
+    Assert-Check (-not [string]::IsNullOrWhiteSpace($counterText)) 'PKTMON_COUNTERS_TEXT_EMPTY'
 
-    try {
-        $null = $jsonText | ConvertFrom-Json -ErrorAction Stop
-    }
-    catch {
-        throw 'PKTMON_COUNTERS_JSON_INVALID'
-    }
-
-    Write-Output 'PKTMON_COUNTERS_JSON_VALID=YES'
-    Write-Output 'PKTMON_COUNTERS_JSON_BEGIN'
-    Write-Output $jsonText
-    Write-Output 'PKTMON_COUNTERS_JSON_END'
+    Write-Output 'PKTMON_COUNTERS_TEXT_BEGIN'
+    Write-Output $counterText
+    Write-Output 'PKTMON_COUNTERS_TEXT_END'
 
     & $pktmonPath stop | Out-Null
     Assert-Check ($LASTEXITCODE -eq 0) 'PKTMON_STOP_FAILED'
@@ -186,7 +178,7 @@ try {
     $pktmonFilterAdded = $false
     Write-Output 'PKTMON_JSON_OBSERVER_STOPPED=YES'
     Write-Output 'PKTMON_PACKET_LOGGING=NO'
-    Write-Output 'PKTMON_JSON_DIAGNOSTIC_COMPLETE=YES'
+    Write-Output 'PKTMON_TEXT_DIAGNOSTIC_COMPLETE=YES'
     $diagnosticCompleted = $true
 }
 catch {
