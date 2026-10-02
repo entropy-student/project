@@ -135,22 +135,21 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Current prepared control checkpoint:
-- `scripts/g2b-raw-udp8443-path-control.ps1`
-- commit: `c749916e9a515d22920ab31d90eea33f1a7066d3`
-- blob: `c54daf710e6b803bddc36b362076dd38eac025fb`
+Current prepared comparison checkpoint:
+- `scripts/g2b-raw-udp-port-compare.ps1`
+- commit: `128a105a4da2fd2893238dc2e317b703a2427385`
+- blob: `186c3ab088a800254bfbce731bddfdc23650827d`
 - keeps production WireGuard ON;
 - creates the exact temporary `24.199.118.137/32` WLAN route;
-- starts one strict-SSH VPS tcpdump observer for the presence of a single inbound UDP/8443 packet, with payload discarded;
-- sends exactly one small raw UDP datagram from Windows using `UdpClient`;
-- does not start Mihomo, does not read DPAPI Secret, and does not run any benchmark;
+- binds each synthetic UDP socket explicitly to WLAN address `192.168.1.4`;
+- sends exactly one 7-byte UDP datagram to 51820 and one 7-byte UDP datagram to 8443;
+- VPS observes only UDP header length 15 on the corresponding destination port, which distinguishes the synthetic 51820 probe from normal WireGuard traffic without inspecting payload;
+- does not start Mihomo, read DPAPI Secret, or run any benchmark;
 - removes the exact temporary route and rechecks production WireGuard.
-
-The previous pktmon result is retained as diagnostic evidence but is not treated as conclusive because its human-readable counters parser may false-negative.
 
 Standing Owner authorization remains valid for further bounded troubleshooting inside this Gate.
 
-Executor should read only this Current Gate and the prepared control checkpoint. Do not alter configuration or replay benchmarks.
+Executor should read only this Current Gate and the prepared comparison checkpoint. Do not alter configuration or replay benchmarks.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
