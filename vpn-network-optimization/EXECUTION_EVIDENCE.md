@@ -608,3 +608,49 @@ EXECUTOR_RESULT=PASS_CANDIDATE_G2B_CLIENTSNAPSHOT_OPTIONAL_PROPERTY_REPAIR
 STOP_BEFORE_OWNER_EXECUTION=YES
 STOP_AT_REVIEWER=YES
 ```
+
+## G2-B runner binding and cleanup no-match repair — 2026-10-02
+
+```text
+AUTHORIZED_GATE=G2B_Runner_Binding_And_Cleanup_NoMatch_Repair
+GOVERNANCE_VERSION=v0.2.5 / ACTIVE_PROVISIONAL (as supplied in the Gate relay)
+PROJECT_REPOSITORY=entropy-student/project
+CANONICAL_GIT_ROOT=C:\Users\34707\Documents\ChatGPT\VPS搭建
+EXECUTION_WORKTREE=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建
+PUSH_TARGET_BRANCH=main
+EXECUTOR_WORKTREE_BRANCH=codex/g2b-runner-binding-cleanup
+PRE_GATE_HEAD=bc593aaab08c6a3eca3334e4eb4d5dc8f099b946
+SOURCE_PROVENANCE=PASS (origin verified; isolated clean worktree; original checkout's untracked results directory preserved and not staged)
+REVIEWER_RELAY_STATE=Production network restored; exact temporary /32 absent; WireGuard active; proxy/TUN off; Mihomo/runtime Secret config absent (relay-reported, not Executor read-back)
+ROOT_CAUSE_1=Mandatory List[object] parameter rejected the initially empty Rows collection before sample 1
+ROOT_CAUSE_2=Get-NetRoute exact no-match raises ObjectNotFound with FQID CmdletizationQuery_NotFound,Get-NetRoute instead of returning an empty collection
+ACTUAL_CHANGES=Added AllowEmptyCollection to Invoke-Benchmark.Rows; exact no-match normalization in Get-ExactTemporaryRoute; branch-specific cleanup failure markers; updated this Evidence section and current Executor Handoff section
+EMPTY_ROWS_PRODUCTION_SHAPE_FIXTURE=PASS
+NONEMPTY_ROWS_FIXTURE=PASS
+WRONG_TYPE_BINDING_FAIL_CLOSED=PASS
+ROUTE_NO_MATCH_FIXTURE=PASS
+ROUTE_ONE_MATCH_FIXTURE=PASS
+ROUTE_QUERY_UNRELATED_ERROR_FAIL_CLOSED=PASS
+ROUTE_NO_MATCH_CLEANUP_FIXTURE=PASS
+ROUTE_REMOVE_THEN_NOMATCH_CLEANUP_FIXTURE=PASS
+OWNER_ROUTE_QUERY_FAILED_FIXTURE=PASS
+OWNER_ROUTE_STATE_INVALID_FIXTURE=PASS
+OWNER_ROUTE_REMOVE_FAILED_FIXTURE=PASS
+OWNER_ROUTE_POSTREMOVE_VERIFY_FAILED_FIXTURE=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS (no Secret values or Secret-bearing artifacts in changed files)
+BENCHMARK_LOGIC_UNCHANGED=YES
+DPAPI_SECRET_HANDLING_UNCHANGED=YES
+MIHOMO_RUNTIME_LOGIC_UNCHANGED=YES
+ROUTE_REMOVAL_SCOPE_UNCHANGED=YES
+FINAL_NETWORK_ACCEPTANCE_UNCHANGED=YES
+BENCHMARK_STARTED=NO
+OWNER_PREFLIGHT_EXECUTED=NO
+SECRET_ACCESSED=NO
+MIHOMO_STARTED=NO
+NETWORK_CHANGED=NO
+REVIEWER_HANDOFF_MODIFIED_BY_EXECUTOR=NO
+ROLLBACK_EFFECT=Revert only this Gate's runner and Executor record changes; preserve Reviewer relay/history, the original checkout's untracked results, and all Windows/VPS network state
+EXECUTOR_RESULT=PASS_CANDIDATE_G2B_RUNNER_BINDING_AND_CLEANUP_NOMATCH_REPAIR
+STOP_AT_REVIEWER=YES
+```

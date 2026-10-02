@@ -561,8 +561,11 @@ function Get-ClientSnapshot {
 }
 
 function Get-ExactTemporaryRoute {
-    $routes = @(Get-NetRoute -AddressFamily IPv4 -PolicyStore ActiveStore `
-        -DestinationPrefix $script:routePrefix -ErrorAction Stop)
+    $routes = Invoke-PrecheckQuery -Subcheck 'OWNER_ROUTE_QUERY_FAILED' `
+        -EmptyResultErrorIds @('CmdletizationQuery_NotFound,Get-NetRoute') -Query {
+            Get-NetRoute -AddressFamily IPv4 -PolicyStore ActiveStore `
+                -DestinationPrefix $script:routePrefix -ErrorAction Stop
+        }
     return ,$routes
 }
 
@@ -753,7 +756,7 @@ function Convert-TimeField {
 function Invoke-Benchmark {
     param(
         [Parameter(Mandatory = $true)][string]$Name,
-        [Parameter(Mandatory = $true)][Collections.Generic.List[object]]$Rows,
+        [Parameter(Mandatory = $true)][AllowEmptyCollection()][Collections.Generic.List[object]]$Rows,
         [AllowNull()][string]$ProxyUrl
     )
     for ($sample = 1; $sample -le $script:sampleCount; $sample++) {
@@ -1521,20 +1524,55 @@ public static class G2bOwnerRunnerNative {
             }
         } catch { Add-CleanupFailure 'RUNTIME_SECRET_SCAN_FAILED' }
 
+        $activeRoutes = $null
         try {
             $activeRoutes = Get-ExactTemporaryRoute
+        } catch {
+            Add-CleanupFailure 'OWNER_ROUTE_QUERY_FAILED'
+        }
+        if ($null -ne $activeRoutes) {
             if ($activeRoutes.Count -eq 0) {
                 $routeRemoved = 'YES'
-            } elseif ($activeRoutes.Count -eq 1 -and
-                [int]$activeRoutes[0].InterfaceIndex -eq $wlanIndex -and
-                [string]$activeRoutes[0].NextHop -eq $wlanGateway) {
-                Remove-NetRoute -InputObject $activeRoutes[0] -Confirm:$false -ErrorAction Stop
-                if ((Get-ExactTemporaryRoute).Count -ne 0) { throw 'OWNER_ROUTE_STILL_PRESENT' }
-                $routeRemoved = 'YES'
             } else {
-                throw 'OWNER_ROUTE_STATE_CHANGED; no route removed'
+                $expectedRoute = $false
+                $routeStateRead = $false
+                try {
+                    $expectedRoute = $activeRoutes.Count -eq 1 -and
+                        [int]$activeRoutes[0].InterfaceIndex -eq $wlanIndex -and
+                        [string]$activeRoutes[0].NextHop -eq $wlanGateway
+                    $routeStateRead = $true
+                } catch {
+                    Add-CleanupFailure 'OWNER_ROUTE_STATE_INVALID'
+                }
+                if ($routeStateRead -and -not $expectedRoute) {
+                    Add-CleanupFailure 'OWNER_ROUTE_STATE_INVALID'
+                }
+                if ($expectedRoute) {
+                    $removeSucceeded = $false
+                    try {
+                        Remove-NetRoute -InputObject $activeRoutes[0] -Confirm:$false -ErrorAction Stop
+                        $removeSucceeded = $true
+                    } catch {
+                        Add-CleanupFailure 'OWNER_ROUTE_REMOVE_FAILED'
+                    }
+                    if ($removeSucceeded) {
+                        $remainingRoutes = $null
+                        try {
+                            $remainingRoutes = Get-ExactTemporaryRoute
+                        } catch {
+                            Add-CleanupFailure 'OWNER_ROUTE_POSTREMOVE_VERIFY_FAILED'
+                        }
+                        if ($null -ne $remainingRoutes) {
+                            if ($remainingRoutes.Count -eq 0) {
+                                $routeRemoved = 'YES'
+                            } else {
+                                Add-CleanupFailure 'OWNER_ROUTE_POSTREMOVE_VERIFY_FAILED'
+                            }
+                        }
+                    }
+                }
             }
-        } catch { Add-CleanupFailure 'OWNER_ROUTE_EXACT_CLEANUP_FAILED' }
+        }
 
         try {
             if ($null -eq $baselineSnapshot) { throw 'BASELINE_SNAPSHOT_MISSING' }
