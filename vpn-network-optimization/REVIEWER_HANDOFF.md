@@ -66,9 +66,9 @@ Current known components:
 
 ```text
 GATE_ID=G2C_VLESS_REALITY_SIDEBYSIDE
-STATE=PREFLIGHT_PASS_DEPLOYMENT_PENDING_OWNER_AUTH
+STATE=PREFLIGHT_PASS_PRIVATE_COMPAT_CANARY_PENDING_OWNER_AUTH
 OBJECTIVE=Add VLESS+REALITY as the frozen TCP/443 fallback candidate without disturbing WireGuard or HY2.
-MAX_ENDPOINT_THIS_ROUND=Read-only preflight completed; next consequential endpoint is one side-by-side VLESS+REALITY deployment checkpoint after explicit Owner authorization.
+MAX_ENDPOINT_THIS_ROUND=Read-only preflight completed; next consequential endpoint is one private WireGuard-only VLESS+REALITY compatibility canary on a non-public test port, followed by mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 ```
 
@@ -195,11 +195,25 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Preflight passed. Reviewer now freezes the exact side-by-side deployment design and prepares one consequential Owner checkpoint. No server/client mutation occurs until Owner explicitly authorizes that checkpoint.
+Proposed next checkpoint, not yet authorized:
+
+```text
+CHECKPOINT=G2C_PRIVATE_REALITY_COMPAT_CANARY
+SERVER_SCOPE=temporary project-local sing-box candidate only
+LISTEN=10.66.21.1:14443 over existing WireGuard control network only
+PUBLIC_TCP_443=UNCHANGED
+CLIENT=existing Windows Mihomo / Clash Verge core
+PURPOSE=prove current Mihomo <-> sing-box VLESS+REALITY+Vision interoperability before any public listener is created
+SECRETS=ephemeral candidate UUID + REALITY keypair generated inside protected target boundary; no values emitted
+CLEANUP=stop/remove temporary process/config/key material after result; preserve WG/HY2
+MANDATORY_REVIEW_STOP=YES
+```
+
+Reason for the extra canary: current REALITY implementations have active cross-core compatibility churn, and unauthenticated REALITY fallback can forward to the configured handshake target. Therefore public TCP/443 deployment is intentionally deferred until compatibility and fallback-safety design are proven.
 
 ## OWNER_ACTION_REQUIRED
 
-Explicitly authorize or decline the prepared G2-C side-by-side deployment checkpoint after Reviewer presents the exact design, rollback, and Secret boundary.
+Explicitly authorize or decline the private G2-C compatibility canary above. This does not authorize public TCP/443 exposure.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
