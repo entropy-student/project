@@ -12,9 +12,9 @@ This section is the canonical resume point. If any older section conflicts with 
 P0                                   PASS
 G1                                   PASS
 G2-A server-side HY2 deployment      PASS
-G2-A DPAPI recovery closure          VIRTUALIZED ARTIFACT VERIFIED METADATA/ACL / ROUNDTRIP PENDING
+G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT BLOCKER                      Realize validated DPAPI artifact into canonical Owner path
+CURRENT_BLOCKER                      PRECHECK_ROUTE_AND_ADAPTERS runner defect
 ```
 
 Current runtime facts:
@@ -32,24 +32,25 @@ Current runtime facts:
 
 DPAPI recovery reality:
 
-- Standard Owner path `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` is absent. Owner found the exact virtualized final artifact at `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi`.
-- Exact Owner read-back now matches the historical G2-A metadata: filename `hy2-g2a.dpapi`, length 1206 bytes, creation/write time 2026-10-02 00:14:04, owner `码头整来的薯条\34707`, inheritance protected, exactly one explicit ACE granting that owner FullControl. This strongly confirms the original G2-A write landed in Codex packaged-app LocalCache rather than the canonical Owner AppData path. Current classification: `PATH_VIRTUALIZATION_CONFIRMED / METADATA+ACL_MATCH / DPAPI_ROUNDTRIP_PENDING`.
-- Do not rotate or regenerate VPS HY2 Secrets merely to repair this path-reality defect.
-- The previous repair runner attempt successfully completed SSH transport from the VPS (`SSH_NATIVE_EXIT_CODE=0`, `REMOTE_TRANSFER_RESULT=PASS`) but failed locally before final promotion with `RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID`; this failure is now treated as secondary until the virtualized artifact is fully inspected.
-- Immediate next action: validate the virtualized artifact with DPAPI CurrentUser unprotect + accepted `VPNHY2R1` parser/byte-identity checks, then realize the same encrypted artifact into the canonical Owner AppData path with owner-only ACL and fresh round-trip. No VPS Secret re-fetch is needed if source validation passes.
+- The original 1206-byte DPAPI artifact was found under Codex packaged-app LocalCache virtualization, fully validated with DPAPI CurrentUser + `VPNHY2R1` + TLS checks, then copied as identical encrypted bytes into the canonical Owner path.
+- Canonical Owner path realization is PASS: Owner Windows target confirmed, Owner-only ACL PASS, DPAPI round-trip PASS, `VPNHY2R1` validation PASS, pending absent, no plaintext temp file, Secret values emitted 0.
+- Do not re-fetch or rotate VPS Secrets. The virtualized source remains retained for now.
+- The AppData/path-virtualization defect is CLOSED.
 
 G2-B benchmark status:
 
 - WireGuard benchmark samples completed: `0`.
 - HY2 benchmark samples completed: `0`.
 - HY2 real client handshake tested in G2-B: `NO`.
+- The first Owner run of `g2b-owner-runner.ps1` passed Administrator/High checks but failed closed at `PRECHECK_ROUTE_AND_ADAPTERS` with `CimJobException` before any benchmark sample.
+- Owner then ran the underlying read-only Windows queries successfully from the same elevated PowerShell 7.6.6 shell: exact /32 route present, WLAN ifIndex 18 Up with IPv4 192.168.1.4 and gateway present, WireGuard `SFO2-A` ifIndex 13 Up.
+- Current interpretation: target network reality is healthy; the blocker is the runner precheck implementation/composition, not route/adapter drift.
 - No G2-B performance conclusion exists yet.
-- Do not claim HY2 is better/worse/equivalent until same-window data exists.
 
 ## 1. Project Goal
 
 - Final goal: 建立一套可迁移、可验证、可回滚的自建 VPN 优化标准，提高 Codex / OpenAI / AI 生图等长任务的稳定性与尾部表现，并可快速复用于不同 VPS。
-- Current goal: 修复并 fresh-verify Owner Windows DPAPI recovery，随后在已确认安全窗口内完成 WireGuard vs Hysteria2 同窗口低干扰 A/B；在 recovery 修复前不得开始 benchmark。
+- Current goal: 修复并审查 `g2b-owner-runner.ps1` 的 `PRECHECK_ROUTE_AND_ADAPTERS` 读状态逻辑，在 Owner 同一 High-integrity PowerShell 上以只读 preflight 证明修复，再进入 WireGuard vs Hysteria2 同窗口低干扰 A/B。
 - Guiding principle: 不复制某一作者的全部参数；以官方文档、可靠实现和本机证据筛选最小有效配置。
 
 ## 2. Authority / Source of Truth
@@ -98,8 +99,8 @@ Windows client
 P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
 G1 Foreground-safe Foundation        ✅ REVIEWER PASS
 G2-A HY2 server deployment           ✅ REVIEWER PASS
-G2-A DPAPI recovery closure          ⚠ PATH VIRTUALIZATION CONFIRMED / VERIFY
-G2-B Safe-window Validation + Seal   ⏸ BLOCKED BEFORE BENCHMARK
+G2-A DPAPI recovery closure          ✅ REVIEWER PASS
+G2-B Safe-window Validation + Seal   ⏸ PRECHECK FIX IN PROGRESS
 ```
 
 P0 acceptance covers research/scope only. It does NOT assert fresh server/runtime state.
@@ -334,27 +335,26 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package rat
 
 ## 12. Next Step
 
-1. Do not rerun the real DPAPI repair runner and do not rotate/regenerate VPS Secrets.
-2. Virtualized artifact validation is COMPLETE: DPAPI CurrentUser unprotect, `VPNHY2R1` parse, TLS key/cert match, SAN match, and pinned fingerprint match all PASS; no VPS Secret was accessed.
-3. `g2b-owner-runner.ps1` independent ACL validator is FIXED and static review PASS; it no longer relies on a fixed ACE count.
-4. Owner now runs `scripts/realize-owner-dpapi-path.ps1` in elevated PowerShell 7.6.6 to copy the already-encrypted validated artifact into canonical path `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` and perform target ACL + DPAPI round-trip read-back.
-5. Do not delete the virtualized source during this step; do not re-fetch Secrets from the VPS.
-6. After canonical-path fresh read-back PASS, resume `g2b-owner-runner.ps1`.
-7. G2-B then performs WG 60×5s → HY2 real handshake → HY2 60×5s → comparison → Secret runtime cleanup → exact temporary route cleanup → production WireGuard read-back.
-8. Do not run MTU/BBR/fq/GRO/sysctl tuning in this round.
+1. Fresh-read the local current `scripts/g2b-owner-runner.ps1`; do not run the full benchmark.
+2. Diagnose the exact `PRECHECK_ROUTE_AND_ADAPTERS` statement/composition that can emit `CimJobException`. The direct Owner-host route/WLAN/WireGuard queries already PASS, so treat this as runner/evidence-helper failure unless new authoritative host evidence proves drift.
+3. Apply the smallest precheck-only fix and add branch-specific sanitized failure codes. Preserve benchmark, DPAPI, Mihomo, route-removal, Secret, and cleanup semantics.
+4. Add or expose a read-only Owner `PreflightOnly` path that executes the exact production precheck code path and stops before DPAPI Secret access, Mihomo start, benchmark traffic, or network mutation.
+5. Before repository mutation, prove canonical Git root/branch/revision and unrelated worktree state. If unrelated changes could contaminate the Gate, isolate project-owned paths; do not stage or alter unrelated work.
+6. Secret-scan and commit the current project-owned runner sources that are required for Reviewer review. At minimum `g2b-owner-runner.ps1`, `realize-owner-dpapi-path.ps1`, and `repair-owner-dpapi-recovery.ps1` must be present in the canonical GitHub project path if they remain part of the accepted/recovery execution chain. Never commit DPAPI ciphertext, runtime Secret YAML, Secret values, LocalCache data, or plaintext recovery material.
+7. Fresh-read the committed scripts from GitHub and record non-secret source identity/evidence in `EXECUTION_EVIDENCE.md` / `EXECUTOR_HANDOFF.md`. Executor must not edit `REVIEWER_HANDOFF.md`.
+8. Stop at Reviewer. Do not execute the full G2-B benchmark in this round.
 
 ## 13. Status Summary
 
-- Overall: P0 PASS, G1 PASS, HY2 server-side G2-A PASS.
-- DPAPI reality: the canonical Owner AppData path is absent, but a matching recovery artifact has been found under Codex packaged-app `LocalCache\Local\...` virtualization.
-- Current classification: `PATH_VIRTUALIZATION_CONFIRMED / VIRTUALIZED ARTIFACT FULLY VALIDATED / CANONICAL PATH REALIZATION PENDING`, not `SECRET LOST`.
-- Current Gate: G2-B remains blocked only until the already-validated virtualized artifact is realized and fresh-read at the canonical Owner path.
-- Formal G2-B samples so far: WG 0 / HY2 0. No protocol-performance conclusion exists.
-- Server state: WireGuard active on UDP 51820; Hysteria2 v2.12.3 active on UDP 8443.
-- Control path: SSH via WireGuard to `10.66.21.1:22` PASS.
-- Candidate data path: WLAN direct to `24.199.118.137:8443` prepared via the Owner-created temporary ActiveStore /32 route.
-- Immediate next action: Owner runs the prepared local-only canonical-path realization runner in elevated PowerShell 7.6.6. The virtualized source has already passed DPAPI/VPNHY2R1/TLS validation, and the independent G2-B ACL validator has been fixed + statically reviewed.
-- No live MTU/BBR/fq/GRO/sysctl tuning has been applied.
+- Overall: P0 PASS, G1 PASS, G2-A HY2 server deployment PASS, DPAPI recovery/path realization PASS.
+- Current Gate: G2-B is blocked before benchmark by a runner-side `PRECHECK_ROUTE_AND_ADAPTERS` failure.
+- Formal G2-B samples: WG 0 / HY2 0; no performance conclusion exists.
+- Owner execution shell: PowerShell 7.6.6, Administrator=True, High integrity RID 12288.
+- Current network reality: exact `24.199.118.137/32 -> 192.168.1.1` WLAN route present; WLAN ifIndex 18 Up with IPv4 `192.168.1.4`; WireGuard `SFO2-A` ifIndex 13 Up.
+- Direct read-only route/adapter/IP queries PASS from the same Owner shell; therefore the current fault domain is the runner precheck implementation/composition.
+- DPAPI canonical Owner path is valid and no recovery rerun/Secret rotation is needed.
+- Immediate next action: bounded diagnostic + smallest precheck fix + GitHub source persistence/reviewability + Owner PreflightOnly checkpoint; full benchmark remains blocked until Reviewer accepts that evidence.
+
 
 
 ### G2-B control-path preflight — PASS
