@@ -1616,3 +1616,17 @@ Reviewer conclusion:
 - Time synchronization is healthy. Root filesystem has about 6.69 GiB free. MemAvailable is about 254 MiB on this small VPS; later deployment must keep the side-by-side service footprint small and include resource read-back.
 - No target mutation occurred and no Secret value was emitted.
 - G2-C may proceed to a separately authorized side-by-side deployment design on TCP/443.
+
+
+## G2-C private REALITY compatibility canary authorization — 2026-10-02
+
+```text
+AUTHORIZED_GATE=G2C_PRIVATE_REALITY_COMPAT_CANARY
+OWNER_AUTHORIZATION=GRANTED
+PUBLIC_TCP443_EXPOSURE=NOT_AUTHORIZED
+MAX_ENDPOINT=temporary 10.66.21.1:14443 canary + one proxied HTTPS handshake + exact cleanup + Reviewer stop
+PINNED_SERVER_CORE=sing-box v1.14.2 stable linux-amd64-glibc
+PINNED_ASSET_SHA256=5c7bc18461827b28d0e5ee7e89d33b276d3ff7c818531104c8e8d26d85b0656e
+```
+
+No consequential execution is claimed by this authorization record. Executor must append the actual runtime Evidence after execution.
