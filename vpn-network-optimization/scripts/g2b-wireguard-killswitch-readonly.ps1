@@ -10,6 +10,7 @@ $wgIfIndex = 13
 $tempRoot = Join-Path $env:TEMP ('g2b-wireguard-killswitch-readonly-' + [guid]::NewGuid().ToString('N'))
 $filtersPath = Join-Path $tempRoot 'filters.xml'
 $statePath = Join-Path $tempRoot 'state.xml'
+$probeCompleted = $false
 $cleanupFailures = [Collections.Generic.List[string]]::new()
 
 function Assert-Check {
@@ -45,9 +46,12 @@ try {
     $hasSplitA = $prefixes -contains '0.0.0.0/1'
     $hasSplitB = $prefixes -contains '128.0.0.0/1'
 
-    Write-Output "WG_ROUTE_DEFAULT_V4_0_0_0_0_0=$(if($hasDefault){'YES'}else{'NO'})"
-    Write-Output "WG_ROUTE_SPLIT_V4_0_0_0_0_1=$(if($hasSplitA){'YES'}else{'NO'})"
-    Write-Output "WG_ROUTE_SPLIT_V4_128_0_0_0_1=$(if($hasSplitB){'YES'}else{'NO'})"
+    $hasDefaultText = if ($hasDefault) { 'YES' } else { 'NO' }
+    $hasSplitAText = if ($hasSplitA) { 'YES' } else { 'NO' }
+    $hasSplitBText = if ($hasSplitB) { 'YES' } else { 'NO' }
+    Write-Output "WG_ROUTE_DEFAULT_V4_0_0_0_0_0=$hasDefaultText"
+    Write-Output "WG_ROUTE_SPLIT_V4_0_0_0_0_1=$hasSplitAText"
+    Write-Output "WG_ROUTE_SPLIT_V4_128_0_0_0_1=$hasSplitBText"
 
     New-Item -ItemType Directory -Path $tempRoot -Force | Out-Null
 
@@ -68,18 +72,15 @@ try {
     $wireGuardInState = $stateText -match '(?i)WireGuard'
     $wireGuardBlockInState = $stateText -match 'Block all outbound \(IPv4\)'
 
-    Write-Output "WFP_TARGET_BLOCK_ALL_OUTBOUND_IPV4=$(
-        if($blockName){'YES'}else{'NO'}
-    )"
-    Write-Output "WFP_TARGET_FILTER_TEXT_HAS_WIREGUARD=$(
-        if($wireGuardInFiltered){'YES'}else{'NO'}
-    )"
-    Write-Output "WFP_STATE_HAS_WIREGUARD=$(
-        if($wireGuardInState){'YES'}else{'NO'}
-    )"
-    Write-Output "WFP_STATE_HAS_BLOCK_ALL_OUTBOUND_IPV4=$(
-        if($wireGuardBlockInState){'YES'}else{'NO'}
-    )"
+    $blockNameText = if ($blockName) { 'YES' } else { 'NO' }
+    $wireGuardInFilteredText = if ($wireGuardInFiltered) { 'YES' } else { 'NO' }
+    $wireGuardInStateText = if ($wireGuardInState) { 'YES' } else { 'NO' }
+    $wireGuardBlockInStateText = if ($wireGuardBlockInState) { 'YES' } else { 'NO' }
+
+    Write-Output "WFP_TARGET_BLOCK_ALL_OUTBOUND_IPV4=$blockNameText"
+    Write-Output "WFP_TARGET_FILTER_TEXT_HAS_WIREGUARD=$wireGuardInFilteredText"
+    Write-Output "WFP_STATE_HAS_WIREGUARD=$wireGuardInStateText"
+    Write-Output "WFP_STATE_HAS_BLOCK_ALL_OUTBOUND_IPV4=$wireGuardBlockInStateText"
 
     if ($hasDefault -and $blockName -and $wireGuardInState -and $wireGuardBlockInState) {
         Write-Output 'WIREGUARD_KILLSWITCH_CONFIRMATION=CONFIRMED'
@@ -93,6 +94,7 @@ try {
 
     Write-Output 'READ_ONLY_MUTATION=NO'
     Write-Output 'SECRET_VALUES_EMITTED=0'
+    $probeCompleted = $true
 }
 catch {
     $message = [string]$_.Exception.Message
@@ -128,8 +130,9 @@ finally {
     }
 }
 
+Write-Output "PROBE_COMPLETED=$probeCompleted"
 Write-Output "CLEANUP_FAILURE_COUNT=$($cleanupFailures.Count)"
-if ($cleanupFailures.Count -gt 0) {
+if (-not $probeCompleted -or $cleanupFailures.Count -gt 0) {
     Write-Output 'OWNER_WIREGUARD_KILLSWITCH_READONLY_RESULT=RETURN_TO_REVIEWER'
     exit 1
 }
