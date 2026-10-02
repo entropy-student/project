@@ -65,126 +65,103 @@ Current known components:
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1
-STATE=AUTHORIZED_EXECUTION
-PREVIOUS_RESULT=RETURN_G2C_PRIVATE_REALITY_HANDSHAKE_CURL_EXIT_35
-OBJECTIVE=Identify the exact REALITY/TLS handshake fault domain without changing protocol architecture or exposing public TCP/443.
-MAX_ENDPOINT_THIS_ROUND=One private 10.66.21.1:14443 diagnostic setup + one proxied HTTPS request with sanitized client/server error classification + exact cleanup + Reviewer stop.
+GATE_ID=G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2
+STATE=PROPOSED_NOT_AUTHORIZED
+PREVIOUS_RESULT=PASS_CANDIDATE_DIAGNOSTIC
+OBJECTIVE=Determine whether sing-box accepted the REALITY client authentication and where the server-side REALITY handshake stopped, before changing any protocol parameter.
+MAX_ENDPOINT_THIS_ROUND=One private 10.66.21.1:14443 setup + one unchanged proxied HTTPS request + sanitized REALITY server-state extraction + exact cleanup + Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
-ESTIMATED_EXECUTION_TIME=15-30 minutes
+ESTIMATED_EXECUTION_TIME=10-20 minutes
 TIMING_OVERRUN_POLICY=record-and-diagnose-at-natural-checkpoint-without-delaying-healthy-progress
 ```
 
-### REVIEWER_CLASSIFICATION_OF_PREVIOUS_RETURN
+### REVIEWER_ACCEPTANCE_OF_R1
 
-Accepted facts from commit `450a3d18ed5575cf5b0e27edd3c4949262b87cd6`:
-- sing-box v1.14.2 identity/hash PASS;
-- server config check PASS;
-- exact private listener `10.66.21.1:14443` PASS;
-- no public 14443 or 443 listener;
-- Mihomo config check PASS and local HTTP proxy `127.0.0.1:17990` ready;
-- exactly one proxied OpenAI HTTPS request was attempted;
-- curl exit 35, HTTP 0, `time_appconnect=0`;
-- benchmark not started;
-- cleanup/read-back passed and WG/HY2/network/system proxy/TUN were preserved;
-- Secret values emitted/committed = 0.
+Commit `e2e89aa920bc06fe417428bffa4842aa5119ceec` is accepted as a **diagnostic PASS**, not protocol PASS.
 
-Reviewer interpretation:
-- basic local proxy readiness, server process startup, private TCP listener creation, and cleanup are proven;
-- end-to-end REALITY compatibility is **not** proven;
-- the failure occurred before the destination TLS app-connect completed;
-- exact cause remains UNKNOWN because curl stderr and both protocol-core error streams were suppressed rather than converted into sanitized diagnostics;
-- do not classify this yet as "sing-box incompatible", "Mihomo bug", "bad SNI", or "network block";
-- current external documentation confirms REALITY interoperability is actively changing, including Mihomo's explicit `support-x25519mlkem768` option and known cross-core compatibility issues, so a fault-domain probe is justified before any config change.
+Accepted R1 facts:
+- private TCP path Windows -> `10.66.21.1:14443`: PASS;
+- VPS -> `www.microsoft.com:443`: TCP PASS, TLS 1.3 PASS;
+- sing-box v1.14.2 candidate/config/private-listener checks: PASS;
+- Mihomo config/local proxy checks: PASS;
+- exactly one request: curl 35 / HTTP 0 / appconnect 0;
+- sanitized client class: `MIHOMO_ERROR_CLASS=TIMEOUT`;
+- curl and sing-box classes remained generic TLS handshake failure;
+- compatibility remains unproven;
+- cleanup/read-back PASS; WG/HY2 and Windows network state preserved;
+- timing: 24m29s inside the 15–30 minute estimate.
+
+Reviewer conclusion:
+- generic network reachability and handshake-target availability are no longer the primary fault domain;
+- R1 narrows the fault to the REALITY handshake path, but does not prove whether the sing-box server authenticated the REALITY ClientHello, fell back to the target, or authenticated it and then stalled during the rewritten TLS handshake;
+- therefore changing `support-x25519mlkem768`, SNI/target, core, or protocol now would still be speculative.
 
 ### TARGET_AND_SCOPE
 
-Diagnostic only. Reuse the same private canary topology:
-- Windows Mihomo v1.19.31 family;
-- temporary sing-box v1.14.2;
-- server bind exactly `10.66.21.1:14443`;
-- local HTTP proxy exactly `127.0.0.1:17990`;
-- no public listener, persistent service, benchmark, route/firewall/TUN/system-proxy change.
+R2 is a single-state diagnostic using the exact same protocol parameters and versions as R1.
 
-Do **not** change protocol parameters in R1 merely to "try something". In particular, preserve the previous VLESS/REALITY/Vision parameters for the one diagnostic request. The purpose is to learn why the exact prior configuration failed.
+Inside the protected sing-box diagnostic log, map only these non-secret state facts:
+- whether REALITY server authentication selected the real client connection (`hs.c.conn == conn`);
+- whether fallback forwarding occurred;
+- negotiated key-share family: `X25519` / `X25519MLKEM768` / UNKNOWN;
+- whether server-side REALITY handshake reached `hs.handshake()`;
+- whether `readClientFinished()` completed;
+- whether `isHandshakeComplete` became true;
+- coarse server error stage/class.
 
-### PREFLIGHT_AND_DIAGNOSTIC
-
-Before the one real request:
-1. fresh-read WG/HY2, private port absence, public 443 absence, and no residue;
-2. prove Windows can establish ordinary TCP to `10.66.21.1:14443` after the temporary listener is ready;
-3. from the VPS, perform a bounded read-only reachability/TLS check to the configured REALITY handshake target `www.microsoft.com:443` with SNI; emit only PASS/FAIL + protocol version/error class, not raw certificate/log payload;
-4. start the same Mihomo/sing-box pair with logs captured only inside the protected runtime boundary.
-
-For the single proxied request:
-- capture curl stderr in memory and map it to a short sanitized error class;
-- capture Mihomo and sing-box error/debug streams in memory or protected temporary files;
-- never persist or emit raw streams;
-- map relevant lines to an allowlist such as:
-  `REALITY_AUTH_OR_VERIFICATION_FAILED`,
-  `KEY_SHARE_OR_MLKEM_MISMATCH`,
-  `SNI_OR_CERT_MISMATCH`,
-  `VLESS_OR_VISION_REJECTED`,
-  `HANDSHAKE_TARGET_UNREACHABLE`,
-  `CONNECTION_RESET_OR_EOF`,
-  `TIMEOUT`,
-  `UNKNOWN_TLS_HANDSHAKE_FAILURE`;
-- emit only the classification and non-secret timing/status markers.
+Do **not** emit ClientShortId, AuthKey, private/public key material, UUID, raw session ID, raw certificates, or raw logs.
 
 ### REQUIRED_EVIDENCE
 
-- previous accepted candidate identities unchanged;
-- handshake-target TCP/TLS read-only check result;
-- Windows -> private listener TCP reachability result;
-- exactly one proxied request;
-- curl exit / HTTP / total-connect-appconnect timing;
-- sanitized `CURL_ERROR_CLASS`;
-- sanitized `MIHOMO_ERROR_CLASS`;
-- sanitized `SING_BOX_ERROR_CLASS`;
-- `REALITY_DIAGNOSTIC_CLASSIFICATION=<one bounded class>` or `UNKNOWN_AFTER_DIAGNOSTIC`;
-- exact cleanup/read-back and WG/HY2 preserved;
-- Secret values emitted/committed = 0;
-- timing fields: `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN`, and cause if needed.
+- previous R1 baseline fresh-read intact;
+- exactly one unchanged proxied request;
+- `REALITY_SERVER_AUTH_ACCEPTED=YES/NO/UNKNOWN`;
+- `REALITY_SERVER_FALLBACK_USED=YES/NO/UNKNOWN`;
+- `REALITY_SERVER_KEY_SHARE=X25519/X25519MLKEM768/UNKNOWN`;
+- `REALITY_SERVER_HANDSHAKE_STAGE=<bounded stage>`;
+- `REALITY_SERVER_HANDSHAKE_COMPLETE=YES/NO/UNKNOWN`;
+- curl/Mihomo/sing-box sanitized classes;
+- exact cleanup and WG/HY2 preservation;
+- Secret emitted/committed = 0;
+- timing record.
 
 ### ACCEPTANCE_CRITERIA
 
-This diagnostic Gate does not PASS protocol compatibility. It PASSes as a diagnostic only if it safely narrows the failure to a reviewable fault domain while preserving cleanup/security boundaries. Reviewer then chooses the smallest repair/protocol-implementation decision.
+R2 diagnostic PASS requires enough state to distinguish at least one of:
+1. **AUTH_REJECT_OR_FALLBACK** — repair authentication/client-hello compatibility;
+2. **AUTH_ACCEPTED_TLS_REWRITE_STALL** — repair target/SNI/TLS-shape compatibility;
+3. **SERVER_HANDSHAKE_COMPLETE_CLIENT_TIMEOUT** — investigate Mihomo client verification/flow;
+4. **UNKNOWN_AFTER_R2** — then Reviewer may choose a controlled implementation A/B rather than more blind parameter edits.
+
+No protocol compatibility PASS is possible in this Gate.
 
 ### OWNER_ONLY_ACTIONS
 
-**AUTHORIZED by Owner on 2026-10-03 for G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1.**
-
-Authorization covers exactly:
-- one private diagnostic setup on `10.66.21.1:14443`;
-- one Windows->private-listener TCP reachability check;
-- one VPS->`www.microsoft.com:443` bounded TLS reachability check;
-- one proxied OpenAI HTTPS request through the unchanged VLESS+REALITY+Vision parameters;
-- protected capture/classification of curl/Mihomo/sing-box error streams;
-- exact cleanup/read-back and Evidence persistence.
-
-It does **not** authorize public TCP/443 exposure, persistent service installation, benchmark/performance testing, protocol-parameter changes, or expansion to another protocol/core.
+**NOT YET AUTHORIZED.** R1 consumed its one-request authorization. R2 requires one fresh private diagnostic request. Public TCP/443, persistent deployment, performance benchmark, and protocol changes remain unauthorized.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Owner authorization is now active. Start only from:
-- this Gate;
-- the accepted execution section for commit `450a3d18ed5575cf5b0e27edd3c4949262b87cd6`;
-- `scripts/g2c-private-reality-canary.ps1`;
-- current timing rules.
+After Owner authorization:
+- fresh-read this Gate;
+- reuse `scripts/g2c-private-reality-canary.ps1` from diagnostic implementation commit `c45a09688ed6eb48ac885f1f85a3b9c98f649923`;
+- make only the smallest sanitizer/state-extraction change;
+- keep protocol fields byte-for-byte equivalent in meaning;
+- one request only;
+- persist Evidence + Executor Handoff, commit, STOP.
 
-Do not re-open G2-B history. Do not change REALITY parameters in R1. Instrument/classify the failing handshake, clean up, persist Evidence + Executor Handoff, and STOP.
+Do not add `support-x25519mlkem768` yet. Mihomo documents that option for current REALITY compatibility, but the exact sing-box-server failure mode has not been proven and the current server implementation accepts both X25519 and X25519MLKEM768 paths; changing it before observing server auth state would confound diagnosis.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
 结果：PASS_CANDIDATE_DIAGNOSTIC / RETURN_*
-改动：仅诊断增强 + 临时私有 canary；协议参数未变。
-验证：handshake target / private TCP / one proxied request / sanitized core error classes / cleanup。
-问题：明确 fault-domain classification，或 UNKNOWN_AFTER_DIAGNOSTIC。
-回滚：临时进程、Secret config、binary/workspace 全部清理；14443 absent；443 unchanged；WG/HY2 preserved。
-请 Reviewer 检查：是否已有足够证据决定最小修复。
+改动：仅增加 sing-box REALITY server-state 脱敏提取；协议参数未变。
+验证：one request / auth accepted? / fallback? / key-share / handshake stage+complete / cleanup。
+问题：AUTH_REJECT_OR_FALLBACK / AUTH_ACCEPTED_TLS_REWRITE_STALL / SERVER_HANDSHAKE_COMPLETE_CLIENT_TIMEOUT / UNKNOWN_AFTER_R2。
+回滚：所有临时运行产物清理；14443 absent；443 unchanged；WG/HY2 preserved。
+请 Reviewer 检查：是否足以进入单变量修复或 implementation A/B。
 Owner 转交：NONE，除非真实 Owner host 不可访问。
-耗时：预计 15-30 分钟；实际 <elapsed>；超时 YES/NO；原因 <NONE/brief cause>。
+耗时：预计 10-20 分钟；实际 <elapsed>；超时 YES/NO；原因 <NONE/brief cause>。
 ```
 
 ## ROUND_TIMING_OBSERVABILITY
@@ -204,9 +181,9 @@ Rules:
 
 Current next Executor round:
 ```text
-ROUND=G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1
-ESTIMATED_EXECUTION_TIME=15-30 minutes
-ESTIMATE_SCOPE=same private canary topology + handshake-target check + one request with sanitized client/server error classification + cleanup + Evidence/Handoff commit
+ROUND=G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2
+ESTIMATED_EXECUTION_TIME=10-20 minutes
+ESTIMATE_SCOPE=minimal protected server-log state sanitizer + one unchanged private request + cleanup + Evidence/Handoff commit
 OWNER_WAIT_EXCLUDED=YES
 ```
 
@@ -245,7 +222,7 @@ Rollback/recovery assets:
 
 ## UNRESOLVED
 
-- VLESS+REALITY compatibility: private listener/config validation passed, but the first real Mihomo -> sing-box REALITY request failed before TLS app-connect (curl 35); exact handshake fault domain remains unresolved.
+- VLESS+REALITY compatibility: private listener/config validation and target TLS reachability passed; repeated one-request evidence shows curl 35 and Mihomo TIMEOUT before app-connect. R2 must determine server auth/fallback/handshake state before any parameter change.
 - Peak-hour repeatability: whether HY2 retains its same-window advantage during the user's known evening congestion window.
 - Real workload behavior: Codex / OpenAI / image-generation long-task A/B is still untested.
 - Final production role: HY2 primary vs on-demand backup vs WireGuard primary remains undecided.
@@ -255,19 +232,19 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Executor proceeds with **G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1** using the current Gate. Keep the exact previous protocol parameters unchanged, add only sanitized diagnostic instrumentation, run one private diagnostic request, clean up, persist Evidence + Executor Handoff, then STOP for Reviewer.
+Await Owner authorization for **G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2**. This is intended to be the last unchanged-parameter diagnostic before selecting a repair.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Owner has authorized this diagnostic round. No Administrator PowerShell is required unless a specific required operation independently proves it needs elevation. Public TCP/443 remains unauthorized.
+Authorize one additional private diagnostic request on `10.66.21.1:14443` for server-state classification only. No public TCP/443, persistent deployment, benchmark, or parameter change.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Use the authorized relay in `CURRENT_GATE`. Do not modify protocol parameters, do not benchmark, and do not expand scope.
+No active Executor run until Owner authorizes R2.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Use the fixed packet in `CURRENT_GATE`, including the 15–30 minute estimate and actual timing fields.
+Use the fixed R2 packet in `CURRENT_GATE` after authorization.
 
 ## EVIDENCE_POINTERS
 
