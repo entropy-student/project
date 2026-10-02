@@ -198,11 +198,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-After fresh Owner authorization, run one Windows UDP/8443 egress + HY2 handshake probe. This determines whether the packet leaves the Owner host before moving diagnosis to router/ISP/upstream path.
+First fresh-read the local `pktmon status` and `pktmon filter list` output to classify the current Packet Monitor state safely. Then repair the checkpoint preflight and continue the standing-authorized Windows UDP/8443 egress probe without asking for another authorization.
 
 ## OWNER_ACTION_REQUIRED
 
-**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected and run the prepared checkpoint when presented.
+**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected. Next action is a read-only `pktmon status` / `pktmon filter list` check; do not rerun the egress checkpoint until its preflight parser is repaired.
 
 ## EVIDENCE_POINTERS
 
