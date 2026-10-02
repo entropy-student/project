@@ -95,10 +95,33 @@ function Download-ExactFile {
         [Parameter(Mandatory=$true)][string]$RelativePath,
         [Parameter(Mandatory=$true)][string]$Destination
     )
-    $curl = (Get-Command curl.exe -ErrorAction Stop).Source
-    $url = "https://raw.githubusercontent.com/entropy-student/project/$script:acceptedCommit/vpn-network-optimization/$RelativePath"
-    & $curl -fsSL --retry 2 --connect-timeout 10 --max-time 60 -o $Destination $url
-    if ($LASTEXITCODE -ne 0) { throw 'ACCEPTED_SOURCE_DOWNLOAD_FAILED' }
+
+    $encodedPath = ($RelativePath -split '/' | ForEach-Object { [uri]::EscapeDataString($_) }) -join '/'
+    $url = "https://api.github.com/repos/entropy-student/project/contents/vpn-network-optimization/$encodedPath" +
+        "?ref=$script:acceptedCommit"
+
+    try {
+        $response = Invoke-RestMethod -Uri $url -Headers @{
+            'Accept' = 'application/vnd.github+json'
+            'User-Agent' = 'vpn-network-optimization-checkpoint'
+        } -Method Get -TimeoutSec 60 -ErrorAction Stop
+    }
+    catch {
+        throw 'ACCEPTED_SOURCE_API_DOWNLOAD_FAILED'
+    }
+
+    Assert-Checkpoint ($null -ne $response) 'ACCEPTED_SOURCE_API_RESPONSE_EMPTY'
+    Assert-Checkpoint ([string]$response.encoding -eq 'base64') 'ACCEPTED_SOURCE_API_ENCODING_INVALID'
+    Assert-Checkpoint (-not [string]::IsNullOrWhiteSpace([string]$response.content)) 'ACCEPTED_SOURCE_API_CONTENT_EMPTY'
+
+    try {
+        $bytes = [Convert]::FromBase64String(([string]$response.content -replace '\\s',''))
+        [IO.File]::WriteAllBytes($Destination, $bytes)
+    }
+    catch {
+        throw 'ACCEPTED_SOURCE_API_DECODE_FAILED'
+    }
+
     Assert-Checkpoint (Test-Path -LiteralPath $Destination -PathType Leaf) 'ACCEPTED_SOURCE_DOWNLOAD_MISSING'
 }
 
