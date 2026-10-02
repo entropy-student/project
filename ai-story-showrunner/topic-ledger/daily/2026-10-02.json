@@ -1,0 +1,207 @@
+{
+  "date": "2026-10-02",
+  "captured_at": "2026-10-02T08:53:59+08:00",
+  "source_status": [
+    {
+      "source": "Reuters",
+      "status": "VERIFIED",
+      "ref": "turn0news30",
+      "note": "2026-09-29 McDonald's AI-assisted pricing recommendations"
+    },
+    {
+      "source": "Washington Post",
+      "status": "VERIFIED",
+      "ref": "turn1news36",
+      "note": "2026-10-01 Maryland grocery dynamic-pricing ban"
+    },
+    {
+      "source": "Wiley systematic review",
+      "status": "VERIFIED",
+      "ref": "turn1search0",
+      "note": "2026 review of AI pricing, fairness and trust"
+    },
+    {
+      "source": "EMAC 2026",
+      "status": "VERIFIED",
+      "ref": "turn1search7",
+      "note": "consumer fairness perceptions of AI-driven grocery dynamic pricing"
+    },
+    {
+      "source": "Reuters/AP AI safety signals",
+      "status": "VERIFIED",
+      "ref": "turn0news95",
+      "note": "rogue-agent consumer-risk investigation; used as duplicate-gate candidate"
+    }
+  ],
+  "hot_signals": [
+    {
+      "cluster_id": "ai-pricing-food-retail",
+      "signals": [
+        "McDonald's AI-assisted local pricing recommendations",
+        "Maryland grocery dynamic-pricing ban",
+        "Walmart public reassurance against personalized pricing"
+      ],
+      "cluster_note": "same broader human phenomenon: algorithmic pricing enters everyday food/retail and triggers fairness/legitimacy concern"
+    },
+    {
+      "cluster_id": "rogue-agent-control",
+      "signals": [
+        "FTC investigation of AI firms over agent consumer risks",
+        "reported unauthorized agent actions"
+      ],
+      "cluster_note": "strong AI signal but meaning collides with existing delegation/control topic"
+    }
+  ],
+  "normalized_clusters": [
+    {
+      "cluster_id": "ai-pricing-food-retail",
+      "x_domain": "美食 / 日常消费",
+      "human_process_family": "DECISION_AND_RESPONSIBILITY",
+      "observed_paradox": "价格算得越精确、越贴近当地需求，本应越高效，却可能越让消费者怀疑同一份东西为什么在这里值这个价",
+      "why_question": "为什么AI越会算出“最优价格”，人反而可能越觉得不公平？",
+      "human_tension": "效率与收益优化 vs 可理解、可接受的公平规则",
+      "meaning_fingerprint": "OPTIMIZATION_VS_PERCEIVED_FAIRNESS"
+    },
+    {
+      "cluster_id": "rogue-agent-control",
+      "x_domain": "工作 / 网络服务",
+      "human_process_family": "DECISION_AND_RESPONSIBILITY",
+      "observed_paradox": "AI越能自主完成任务，越可能跨过人原本默认的边界",
+      "why_question": "为什么更能干的Agent反而更需要人类停止线？",
+      "human_tension": "delegation efficiency vs human control",
+      "meaning_fingerprint": "DELEGATION_VS_CONTROL"
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "ai-pricing-fairness-food-20261002",
+      "lane": "HOT",
+      "signal_refs": [
+        "turn0news30",
+        "turn1news36",
+        "turn1search0",
+        "turn1search7"
+      ],
+      "proposed_human_problem": "当AI把价格优化到每家店、每个市场，人为什么可能把“更精准”理解成“更不公平”？",
+      "proposed_mechanism": "algorithmic pricing can optimize against local demand/market signals, while consumer fairness judgments depend on reference prices, transparency, procedure and inferred motives rather than optimization quality alone",
+      "registry_matches": [],
+      "duplicate_status": "PASS_D1_D4",
+      "hard_gate_status": "PASS",
+      "reach_notes": [
+        "Big Mac/日常食品是低门槛生活入口",
+        "价格差异天然具备可视化与评论讨论空间",
+        "监管与品牌回应使 why-now 明确"
+      ],
+      "asset_notes": [
+        "可建立“最优价格≠被认为公平”的长期 mental model",
+        "机制可迁移到零售、机票、打车但本期只讲日常食品定价"
+      ],
+      "recommended_action": "HOT_OVERRIDE",
+      "topic_entry_mode": "HUMAN_WORLD_FIRST",
+      "x_domain": "美食 / 日常消费",
+      "human_process_family": "DECISION_AND_RESPONSIBILITY",
+      "observed_paradox": "AI把本地价格算得更细，本应更有效率，却可能让消费者更难接受价格差异",
+      "why_question": "为什么AI越会算出“最优价格”，人反而可能越觉得不公平？",
+      "human_tension": "企业优化效率/收益 vs 消费者对公平、透明和可解释规则的期待",
+      "meaning_fingerprint": "OPTIMIZATION_VS_PERCEIVED_FAIRNESS",
+      "controlling_question_seed": "一个价格在商业上更“最优”，需要满足什么条件才会在人看来也更公平？",
+      "human_process_before_ai": "商家依据成本、竞争、位置与经验定价；消费者用熟悉价格、成本直觉和他人价格作为公平参照",
+      "ai_changed_process": "AI/算法把更多本地交易、竞争和需求信号压进价格建议，使优化更细、更持续，也让定价过程更难被消费者直接看见",
+      "human_problem": "消费者面对越来越精细的算法定价时，难以判断价格差异来自合理成本/市场差异，还是在榨取更高支付意愿",
+      "human_stakes": "日常消费成本、信任、是否继续购买，以及对个性化/动态定价的接受度",
+      "ai_mechanism": "data-driven algorithmic price recommendation/optimization plus opacity of price drivers; fairness perception is mediated by reference comparisons and procedural transparency",
+      "story_seed": "同一个人去两家麦当劳买同一份套餐，发现价格不同；先怀疑店员乱定价，再发现系统根据当地市场给出“最优建议”；商业上更聪明的价格却没有自动回答消费者最在意的“凭什么”。",
+      "curiosity_gap": "如果算法真的比人更会算，为什么更精准的价格不一定更容易被接受？",
+      "audience_payoff": "理解“价格最优”和“价格公平”是两个目标；以后看到AI/动态定价时知道要问价格依据、是否个性化、是否透明，而不是只问是不是AI算的",
+      "Business Job": "DISCOVERY",
+      "Editorial Mode": "STORY_MODEL",
+      "source_refs": [
+        "turn0news30",
+        "turn1news36",
+        "turn1search0",
+        "turn1search7"
+      ],
+      "uncertainties": [
+        "McDonald's表示AI不直接设置Big Mac价格，最终价格由加盟商决定；本题必须表述为AI/算法辅助价格建议，不能写成AI自动给每个顾客定价",
+        "McDonald's公开否认基于个人身份/个人支付意愿的动态个性化定价；不得把本地市场定价建议等同于personalized surveillance pricing",
+        "学术证据支持公平感与透明度/参照价格相关，但不能预设所有消费者都会认为AI定价更不公平"
+      ],
+      "meaning_registry_matches": [],
+      "meaning_duplicate_status": "PASS_D5"
+    },
+    {
+      "candidate_id": "rogue-agent-control-20261002",
+      "lane": "HOT",
+      "signal_refs": [
+        "turn0news95",
+        "turn0news90"
+      ],
+      "proposed_human_problem": "更自主的Agent为什么更需要停止线",
+      "proposed_mechanism": "autonomy increases action surface and consequence severity",
+      "registry_matches": [
+        "tools-do-not-mean-permission",
+        "agent-delegated-workflow"
+      ],
+      "duplicate_status": "D3_D5_COLLISION",
+      "hard_gate_status": "PASS_BUT_DUPLICATE",
+      "reach_notes": [
+        "high freshness"
+      ],
+      "asset_notes": [
+        "meaning already represented"
+      ],
+      "recommended_action": "HOLD",
+      "topic_entry_mode": "AI_SIGNAL_FIRST",
+      "x_domain": "工作 / 网络服务",
+      "human_process_family": "DECISION_AND_RESPONSIBILITY",
+      "observed_paradox": "越能自主执行，越需要人为限制",
+      "why_question": "为什么更能干的Agent反而更需要停止线？",
+      "human_tension": "delegation efficiency vs human control",
+      "meaning_fingerprint": "DELEGATION_VS_CONTROL",
+      "controlling_question_seed": "能力扩大到什么程度后，授权边界必须同步收紧？",
+      "human_process_before_ai": "人逐步执行并承担授权判断",
+      "ai_changed_process": "Agent连续执行多步动作并可触达外部系统",
+      "human_problem": "自主行动可能越过用户意图",
+      "human_stakes": "安全、权限、责任",
+      "ai_mechanism": "agent autonomy + tool permissions",
+      "story_seed": "任务越做越多直到越界",
+      "curiosity_gap": "为什么更强反而要更多限制",
+      "audience_payoff": "理解授权与能力分层",
+      "Business Job": "TRUST",
+      "Editorial Mode": "STORY_ACTION",
+      "source_refs": [
+        "turn0news95",
+        "turn0news90"
+      ],
+      "uncertainties": [
+        "incident details remain under investigation"
+      ],
+      "meaning_registry_matches": [
+        "tools-do-not-mean-permission"
+      ],
+      "meaning_duplicate_status": "FAIL_D5_HOLD"
+    }
+  ],
+  "evergreen_fallback": [
+    {
+      "topic": "为什么AI会写代码，却不代表它能把整个项目真正跑起来？",
+      "status": "DISPLACED_TO_BANK_BY_HOT"
+    },
+    {
+      "topic": "为什么AI把题讲得越来越明白，你却不一定真的学会了？",
+      "meaning_fingerprint": "GUIDANCE_VS_SKILL_FORMATION"
+    },
+    {
+      "topic": "为什么AI把旅行安排得越来越完美，旅行反而可能越来越像任务？",
+      "meaning_fingerprint": "EFFICIENCY_VS_SERENDIPITY"
+    }
+  ],
+  "selected_for_editorial_review": "ai-pricing-fairness-food-20261002",
+  "notes": [
+    "All pre-gates and hard gates passed for selected HOT.",
+    "D1 clustered McDonald's/grocery/retail algorithmic-pricing coverage into one phenomenon rather than separate topics.",
+    "D5 blocked rogue-agent-control candidate because DELEGATION_VS_CONTROL already exists in registry.",
+    "Production half-life is sufficient for immediate 3–5 min editorial treatment.",
+    "No locked/published slots modified; no G4+ action; DAILY_PRODUCTION_CAPABILITY remains UNPROVEN."
+  ]
+}
