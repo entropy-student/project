@@ -71,7 +71,9 @@
 | `REVIEWER_DECISION_G3CR6_RETURN.md` | Reviewer decision on G3CR6 | **CURRENT G3CR6 DECISION — RETURN** |
 | `G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md` | Frontend composition correction; old six-section skeleton not binding | **EXECUTED / PASS** |
 | `REVIEWER_DECISION_G3CR6R1_PASS.md` | Reviewer decision on G3CR6R1 | **CURRENT G3CR6R1 DECISION — PASS** |
-| `G3C_OWNER_VISUAL_CHECKPOINT_R2.md` | Owner visual accept / bounded polish checkpoint after G3CR6R1 | **CURRENT OWNER CHECKPOINT** |
+| `G3C_OWNER_VISUAL_CHECKPOINT_R2.md` | Owner checkpoint after G3CR6R1 | **RESOLVED — BOUNDED PREVIEW POLISH REQUESTED** |
+| `REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md` | Product-opportunity / Activation review of Free Preview | **CURRENT REVIEW DECISION** |
+| `G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md` | Bounded Free Preview framing/Aha correction | **CURRENT GATE** |
 | `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
@@ -103,7 +105,9 @@ For the current project state, a new Reviewer/Executor should normally need only
 8. `REVIEWER_DECISION_G3CR5_PASS.md` — accepted visual-finish decision
 9. `OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md` — current Owner visual direction and scope boundary
 10. `REVIEWER_DECISION_G3CR6R1_PASS.md` — accepted G3CR6R1 composition decision
-11. `G3C_OWNER_VISUAL_CHECKPOINT_R2.md` — current Owner visual checkpoint
+11. `REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md` — current product/Activation decision
+12. `G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md` — current execution Gate
+13. `G3C_OWNER_VISUAL_CHECKPOINT_R2.md` — resolved checkpoint provenance
 12. `G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md` — executed/pass contract
 13. `REVIEWER_DECISION_G3CR6_RETURN.md` — prior G3CR6 visual RETURN
 14. `G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md` — executed G3CR6 provenance
