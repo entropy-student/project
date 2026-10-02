@@ -403,3 +403,20 @@ PASS_CANDIDATE=PASS_CANDIDATE_G2A_HY2_SIDE_BY_SIDE
 STOP_AT_REVIEWER=YES
 ```
 
+
+## Post-G2-A Owner host reality correction — packaged-app virtualization (2026-10-02)
+
+The earlier G2-A DPAPI block above is preserved as historical execution evidence, but it is not sufficient by itself to prove the canonical Owner Windows path was realized.
+
+Owner fresh read-back later established:
+
+- canonical path `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` was absent;
+- canonical recovery directory was absent;
+- recursive search under ordinary `C:\Users\34707\AppData\Local` did not find `hy2-g2a*.dpapi`;
+- Codex packaged-app storage exists at `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0`;
+- a matching `hy2-g2a*.dpapi` artifact was found under `...\LocalCache\Local\vpn-network-optimization\recovery\`;
+- the corresponding virtualized project and recovery directories exist.
+
+Current interpretation: this is consistent with Windows packaged-app path virtualization. The historical `DPAPI_FINAL_EXISTS=YES` must therefore not be read as proof that the canonical Owner AppData path was written. Exact virtualized-artifact metadata, ACL, DPAPI round-trip, and canonical-path reconciliation remain pending.
+
+During a later repair attempt, SSH transfer from the VPS succeeded but local finalization failed before promotion with `RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID`; cleanup left no canonical base/recovery/pending/final paths. Because a virtualized artifact has now been found, do not rotate/regenerate VPS Secrets or rerun the real repair until the virtualized artifact is validated.
