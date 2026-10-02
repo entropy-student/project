@@ -115,7 +115,7 @@ function Download-ExactFile {
     Assert-Checkpoint (-not [string]::IsNullOrWhiteSpace([string]$response.content)) 'ACCEPTED_SOURCE_API_CONTENT_EMPTY'
 
     try {
-        $bytes = [Convert]::FromBase64String(([string]$response.content -replace '\\s',''))
+        $bytes = [Convert]::FromBase64String(([string]$response.content -replace '\s',''))
         [IO.File]::WriteAllBytes($Destination, $bytes)
     }
     catch {
