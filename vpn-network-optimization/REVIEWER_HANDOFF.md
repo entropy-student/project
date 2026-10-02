@@ -49,10 +49,10 @@ Latest accepted G2-B facts:
 - Latest WG sample: Median 0.604015s, P90 0.764660s, P95 0.797894s, P99 1.333582s, >1s 1, >1.5s 0, >2s 0.
 - Runtime Secret config creation and owner-only ACL validation passed.
 - Mihomo test proxy reached READY.
-- The latest run passed the repaired `proxy_used=1` proxy-path assertion, then returned on the next assertion with `HY2_HANDSHAKE_OR_AUTH_FAILED` before HY2 sample 1.
-- Therefore the request reached the local proxy path, but the proxied curl sample did not satisfy `curl exit == 0 && HTTP status == 401`.
-- The retained console output did not include that sample's exact curl exit code, HTTP status, or classified error; root cause is still UNKNOWN.
+- The latest handshake-only probe proved `proxy_used=1` and failed with curl exit 35 / `TLS_ERROR`, HTTP `000`, `appconnect=0`; no target HTTPS TLS session was established.
 - Cleanup passed: Mihomo stopped, runtime Secret config deleted, plaintext Secret artifacts 0, temporary route removed, production WireGuard restored, final test residue absent.
+- Fresh server-side read-only diagnostics then proved Hysteria service active+enabled, ExecMainStatus 0, NRestarts 0, one Hysteria UDP 8443 listener, intact strict-SNI/password-auth config shape, matching certificate fingerprint/SAN, and no host UFW/nft/iptables rule explicitly blocking UDP 8443.
+- The remaining primary fault domain is client-to-server HY2/UDP initialization or a provider/network-path issue outside the VPS host firewall.
 - No HY2 benchmark sample or protocol-performance conclusion exists yet.
 
 Accepted source:
@@ -63,91 +63,100 @@ Accepted source:
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G2B_HY2_Server_ReadOnly_State_Diagnostic
-STATE=OWNER_READ_ONLY_ACTION_PENDING
-OBJECTIVE=Fresh-read the Hysteria2 server/service/listener/config-shape/firewall state without Secret output or any new HY2 handshake.
-MAX_ENDPOINT_THIS_ROUND=One SSH read-only probe over the accepted WireGuard control path, persist sanitized output, then mandatory Reviewer stop.
+GATE_ID=G2B_HY2_UDP_Arrival_Probe
+STATE=WAIT_OWNER_AUTH
+OBJECTIVE=Determine whether one HY2 handshake sends UDP/8443 packets to the VPS and whether the VPS emits UDP/8443 response traffic.
+MAX_ENDPOINT_THIS_ROUND=One server-side read-only packet-presence observer + one existing handshake-only client probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 ```
 
 ### TARGET_AND_SCOPE
 
-Allowed:
-- Owner PowerShell 7.6.6 invokes one SSH read-only probe to `10.66.21.1:22` over WireGuard;
-- verify target hostname, Hysteria service active/enabled state, process restart count, UDP 8443 listener, binary version;
-- inspect only non-Secret config shape: listen port, TLS cert/key path presence, `sniGuard`, auth type, and boolean auth-format validity;
-- inspect host firewall/service state without modifying it.
+After fresh Owner authorization, allow exactly:
+- keep production WireGuard **ON**; it remains the ChatGPT/SSH control path;
+- strict SSH to `10.66.21.1:22` using the accepted `HostKeyAlias=24.199.118.137`;
+- start temporary read-only packet-presence observers on VPS `eth0` for UDP destination/source port 8443; no payload dump and no persistent pcap;
+- locally create the same exact temporary `24.199.118.137/32` WLAN route;
+- read the protected DPAPI Secret only inside the existing handshake-only runtime boundary;
+- start one temporary Mihomo instance;
+- send exactly one HY2 handshake request;
+- retain only non-Secret packet-presence/count result plus existing handshake diagnostic fields;
+- mandatory cleanup and WireGuard restoration/read-back.
 
 Forbidden:
-- no new HY2 handshake;
-- no Mihomo start;
-- no DPAPI Secret read;
-- no temporary route;
-- no benchmark;
+- no 60-sample benchmark;
+- no second handshake;
+- no packet payload/hex dump or persistent capture file;
 - no service restart/reload;
-- no firewall change;
-- no raw config, password, Secret hash, certificate private key, or raw logs.
+- no firewall/cloud-firewall change;
+- no HY2/server/client configuration change;
+- no Secret value/hash/log output;
+- no MTU/BBR/fq/GRO/sysctl tuning.
 
 ### APPLICABLE_CRITICAL_CONSTRAINTS
 
-- The handshake-probe authorization is consumed.
-- Production WireGuard is restored and remains the control path.
-- SSH host-key trust is reused strictly; no auto-accept.
-- Sanitized read-only output only.
-- Any target/host-key mismatch returns immediately.
+- Previous handshake authorization is consumed.
+- Production WireGuard must remain ON throughout.
+- The public VPS /32 data route is temporary and applies only to the HY2 data plane.
+- Server observer is read-only and temporary.
+- Client handshake authorization is consumed only if the actual one-shot handshake runner is invoked.
+- Any preflight failure before the handshake does not authorize improvisation or a second attempt.
 
 ### REQUIRED_EVIDENCE
 
-- target hostname;
-- Hysteria service active/enabled;
-- ExecMainStatus and restart count;
-- UDP 8443 listener count;
-- Hysteria binary version;
-- config listen/SNI-guard/auth-type shape;
-- boolean auth-format-valid;
-- non-Secret firewall summary relevant to UDP 8443;
-- SSH native exit code.
+- server observer ready before client handshake;
+- `UDP_8443_INBOUND_SEEN=YES/NO`;
+- `UDP_8443_OUTBOUND_SEEN=YES/NO`;
+- one handshake only;
+- `proxy_used / curl exit / HTTP status / error`;
+- no benchmark;
+- observer terminated;
+- temporary route removed;
+- Mihomo/runtime config removed;
+- production WireGuard restored;
+- Secret values emitted/committed = 0.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires:
-- accepted target reached through strict SSH trust;
-- service active and UDP 8443 listening;
-- config shape matches accepted G2-A design;
-- no host-firewall evidence of UDP 8443 being blocked;
-- no mutation and no Secret output.
+Diagnostic classification:
+- inbound **NO** → packet does not reach VPS: client/WLAN/provider/cloud-firewall path becomes primary fault domain;
+- inbound **YES**, outbound **NO** → VPS/Hysteria receive-side/runtime becomes primary fault domain;
+- inbound **YES**, outbound **YES** → bidirectional UDP reaches the host; client/Mihomo/HY2 TLS/auth handling becomes primary fault domain.
 
-If this passes, the next fault domain is client-to-server UDP/HY2 initialization or Mihomo-specific behavior. If it fails, repair only the proven server/runtime drift.
+This Gate does not itself PASS G2-B.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Read-only Gate; rollback not applicable. Any attempted write is a Gate violation and must stop.
+Current baseline is clean. After the one probe:
+- terminate server observers;
+- stop Mihomo;
+- delete runtime Secret config;
+- remove exact temporary route;
+- verify production WireGuard remains active and public exit restored.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the prepared read-only server diagnostic from PowerShell 7.6.6. No new consequential authorization is required because this Gate performs no write, Secret read, or handshake.
+**Fresh Owner authorization required** for exactly one UDP-arrival + HY2-handshake probe. Keep WireGuard VPN on.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Prepared read-only diagnostic:
-- `scripts/g2b-hy2-server-readonly.ps1`
-- commit: `7d86841d6f3406af0d99e5730bb369e8d693d162`
-- blob: `e7e406a88d6438703d1b9469ec6347087d480817`
-- strict SSH to `10.66.21.1:22` through existing WireGuard;
-- outputs only sanitized service/listener/config-shape/firewall fields;
-- no Secret read/output, no service restart, no handshake, no mutation.
+Prepare one atomic Owner checkpoint using:
+1. this Current Gate;
+2. the accepted strict SSH alias pattern from `repair-owner-dpapi-recovery.ps1`;
+3. the existing `g2b-owner-runner.ps1 -HandshakeOnly` path;
+4. existing handshake checkpoint cleanup logic.
 
-Read only this Current Gate and the prepared read-only diagnostic script. Do not load historical benchmark Evidence or Governance.
+Do not reread full Governance or historical benchmark evidence. Do not alter configuration.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
 结果：PASS_CANDIDATE / RETURN_*
-服务器：service / UDP8443 / version
-配置：listen / sniGuard / auth-shape
-防火墙：一句话
-验证：SSH exit + no mutation/no Secret
-Owner 转交：NONE
+UDP：inbound YES/NO；outbound YES/NO
+握手：proxy_used / curl exit / HTTP status / error
+验证：one handshake / no benchmark / observer stopped
+回滚：route / Mihomo / runtime / WireGuard
+Owner 转交：NONE / 最小必要动作
 ```
 
 ## CRITICAL_CONSTRAINTS
@@ -186,11 +195,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-Run the prepared read-only server-state diagnostic. Use it to separate server/runtime drift from client/UDP-path or Mihomo-specific failure before any new handshake.
+After fresh Owner authorization, run one UDP-arrival + handshake probe. Keep WireGuard on. Use packet presence to determine whether the failure is before the VPS, on the VPS receive path, or after bidirectional UDP is established.
 
 ## OWNER_ACTION_REQUIRED
 
-**Run the prepared read-only server-state diagnostic from PowerShell 7.6.6.** No new HY2 handshake, benchmark, Secret read, or network mutation is authorized.
+**Authorize one UDP-arrival + HY2 handshake probe** if you want to continue. Keep the current WireGuard VPN connected.
 
 ## EVIDENCE_POINTERS
 
@@ -202,6 +211,7 @@ Run the prepared read-only server-state diagnostic. Use it to separate server/ru
 - Commit `3c381726f38950579bceb0f258ba46cc83c68328` — diagnostic/repair evidence record.
 - Commit `165fc79b906dd6de858fdb6c3521e95f7b749136` — proxy-use repair acceptance.
 - Commit `e9cb20b9acfc3ffae30b27fe7d1cfd5b46181478` — latest Owner G2-B return persisted to Evidence.
-- Commit `e683604b5c8e1e4a49af472d2b3e21cfeba6383b` — current diagnostic Gate narrowed to handshake/auth only.
+- Commit `e683604b5c8e1e4a49af472d2b3e21cfeba6383b` — handshake/auth diagnostic Gate.
+- Commit `dea461dcd25dd2497204f49c700cd05609634f04` — healthy HY2 server read-only state persisted.
 
 Historical Reviewer narrative before this compact-dashboard takeover remains available in Git history. It is intentionally not duplicated here.
