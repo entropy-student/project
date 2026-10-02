@@ -37,6 +37,19 @@ $script:httpStatus = $null
 $script:curlTotal = $null
 $script:curlConnect = $null
 $script:curlAppConnect = $null
+$script:curlErrorClass = 'NOT_CAPTURED'
+$script:mihomoErrorClass = 'NOT_CAPTURED'
+$script:singBoxErrorClass = 'NOT_CAPTURED'
+$script:handshakeTargetTcp = 'NOT_RUN'
+$script:handshakeTargetTls = 'NOT_RUN'
+$script:handshakeTargetTlsVersion = 'NOT_AVAILABLE'
+$script:privateListenerTcpReachable = $false
+$script:requestCount = 0
+$script:curlStdoutTask = $null
+$script:curlStderrTask = $null
+$script:mihomoCapture = $null
+$script:singBoxDiagnosticReadback = $false
+$script:singBoxDiagnosticAttempted = $false
 $script:singBoxVersion = $null
 $script:singBoxAssetVerified = $false
 $script:serverConfigChecked = $false
@@ -73,6 +86,22 @@ function Assert-G2c {
         [Parameter(Mandatory = $true)][string]$Code
     )
     if (-not $Condition) { throw $Code }
+}
+
+function Get-G2cSanitizedErrorClass {
+    param([AllowEmptyString()][string]$Text, [int]$ExitCode = 0, [switch]$RequestSucceeded)
+    $value = if ($null -eq $Text) { '' } else { $Text.ToLowerInvariant() }
+    if ($value -match '(x25519.?mlkem|ml.?kem|key.?share|hybrid.?key)') { return 'KEY_SHARE_OR_MLKEM_MISMATCH' }
+    if ($value -match '(invalid|unknown|rejected|failed).{0,40}(short.?id|reality|authentication)|((short.?id|reality|authentication).{0,40}(invalid|unknown|reject|fail))') { return 'REALITY_AUTH_OR_VERIFICATION_FAILED' }
+    if ($value -match '(x509|certificate|cert verify|unknown ca|hostname.{0,20}mismatch|server.?name.{0,20}mismatch|sni.{0,20}mismatch)') { return 'SNI_OR_CERT_MISMATCH' }
+    if ($value -match '(vless|vision|xtls-rprx-vision|flow).{0,40}(invalid|reject|unsupported|mismatch|fail)|(invalid|unknown).{0,30}(uuid|user)') { return 'VLESS_OR_VISION_REJECTED' }
+    if ($value -match '(www\.microsoft\.com|handshake target).{0,60}(refused|unreachable|timeout|timed out|failed)|((refused|unreachable).{0,60}(www\.microsoft\.com|handshake target))') { return 'HANDSHAKE_TARGET_UNREACHABLE' }
+    if ($value -match '(connection reset|reset by peer|unexpected eof|\beof\b|broken pipe|remote host closed)') { return 'CONNECTION_RESET_OR_EOF' }
+    if ($ExitCode -eq 28 -or $value -match '(timed out|timeout|deadline exceeded)') { return 'TIMEOUT' }
+    if ($RequestSucceeded -and [string]::IsNullOrWhiteSpace($value)) { return 'NONE_OBSERVED' }
+    if ($value -match '(tls.{0,20}handshake|ssl_connect|curl: \(35\)|handshake failure)' -or $ExitCode -eq 35) { return 'UNKNOWN_TLS_HANDSHAKE_FAILURE' }
+    if ([string]::IsNullOrWhiteSpace($value)) { return 'UNKNOWN_TLS_HANDSHAKE_FAILURE' }
+    return 'UNKNOWN_TLS_HANDSHAKE_FAILURE'
 }
 
 function Get-G2cOptionalProperty {
@@ -251,6 +280,43 @@ if systemctl is-active --quiet hysteria2-vpn-network-optimization.service; then 
 ss -H -lun | awk '`$4 ~ /:51820$/ {a++} `$4 ~ /:8443$/ {b++} END {printf "UDP_51820_LISTENERS=%d\nUDP_8443_LISTENERS=%d\n", a+0, b+0}'
 ss -H -ltn | awk '`$4 ~ /:14443$/ {a++} `$4 ~ /:443$/ {b++} END {printf "TCP_14443_LISTENERS=%d\nTCP_443_LISTENERS=%d\n", a+0, b+0}'
 if command -v python3 >/dev/null 2>&1; then echo PYTHON3=YES; else echo PYTHON3=NO; fi
+python3 - <<'PY'
+import socket, ssl
+
+host = "www.microsoft.com"
+tcp = "FAIL"
+tls = "FAIL"
+version = "NOT_AVAILABLE"
+error = "HANDSHAKE_TARGET_UNREACHABLE"
+try:
+    raw = socket.create_connection((host, 443), timeout=5)
+    tcp = "PASS"
+    try:
+        with ssl.create_default_context().wrap_socket(raw, server_hostname=host) as conn:
+            tls = "PASS"
+            version = conn.version() or "NOT_AVAILABLE"
+            error = "NONE_OBSERVED"
+    except ssl.SSLCertVerificationError:
+        error = "SNI_OR_CERT_MISMATCH"
+    except (socket.timeout, TimeoutError):
+        error = "TIMEOUT"
+    except (ConnectionResetError, EOFError):
+        error = "CONNECTION_RESET_OR_EOF"
+    except Exception:
+        error = "UNKNOWN_TLS_HANDSHAKE_FAILURE"
+        try: raw.close()
+        except Exception: pass
+except (socket.timeout, TimeoutError):
+    error = "TIMEOUT"
+except (ConnectionResetError, EOFError):
+    error = "CONNECTION_RESET_OR_EOF"
+except Exception:
+    error = "HANDSHAKE_TARGET_UNREACHABLE"
+print("HANDSHAKE_TARGET_TCP=" + tcp)
+print("HANDSHAKE_TARGET_TLS=" + tls)
+print("HANDSHAKE_TARGET_TLS_VERSION=" + (version if version in ("TLSv1.2", "TLSv1.3") else "NOT_AVAILABLE"))
+print("HANDSHAKE_TARGET_ERROR_CLASS=" + error)
+PY
 if command -v pgrep >/dev/null 2>&1; then echo SING_BOX_PROCESS_COUNT=`$(pgrep -cx sing-box 2>/dev/null || true); else echo SING_BOX_PROCESS_COUNT=`$(ps -eo comm= | awk '`$1 == "sing-box" {n++} END {print n+0}'); fi
 if [ -e '/run/vpn-network-optimization-g2c-$RunId' ] || [ -L '/run/vpn-network-optimization-g2c-$RunId' ] || [ -e '/tmp/vpn-network-optimization-g2c-$RunId' ] || [ -L '/tmp/vpn-network-optimization-g2c-$RunId' ]; then echo G2C_RUN_PATH_COLLISION=YES; else echo G2C_RUN_PATH_COLLISION=NO; fi
 printf 'REMOTE_DEFAULT_ROUTE=%s\n' "`$(ip -4 route show default | head -n 1 | sed 's/[[:space:]]*$//')"
@@ -275,6 +341,10 @@ function Assert-G2cRemotePreflight {
     Assert-G2c ($Markers['PYTHON3'] -eq 'YES') 'REMOTE_PYTHON3_UNAVAILABLE'
     Assert-G2c ($Markers['SING_BOX_PROCESS_COUNT'] -eq '0') 'REMOTE_SING_BOX_PROCESS_ALREADY_PRESENT'
     Assert-G2c ($Markers['G2C_RUN_PATH_COLLISION'] -eq 'NO') 'REMOTE_G2C_PATH_COLLISION'
+    Assert-G2c ($Markers['HANDSHAKE_TARGET_TCP'] -in @('PASS', 'FAIL')) 'HANDSHAKE_TARGET_TCP_READBACK_INVALID'
+    Assert-G2c ($Markers['HANDSHAKE_TARGET_TLS'] -in @('PASS', 'FAIL')) 'HANDSHAKE_TARGET_TLS_READBACK_INVALID'
+    Assert-G2c ($Markers['HANDSHAKE_TARGET_TLS_VERSION'] -match '^(TLSv1\.[23]|NOT_AVAILABLE)$') 'HANDSHAKE_TARGET_TLS_VERSION_INVALID'
+    Assert-G2c ($Markers['HANDSHAKE_TARGET_ERROR_CLASS'] -in @('NONE_OBSERVED', 'HANDSHAKE_TARGET_UNREACHABLE', 'CONNECTION_RESET_OR_EOF', 'TIMEOUT', 'SNI_OR_CERT_MISMATCH', 'UNKNOWN_TLS_HANDSHAKE_FAILURE')) 'HANDSHAKE_TARGET_ERROR_CLASS_INVALID'
 }
 
 function Get-G2cRemoteSupervisorSource {
@@ -291,6 +361,7 @@ WORKSPACE = pathlib.Path("/tmp") / ("vpn-network-optimization-g2c-" + RUN_ID)
 CONFIG = RUNTIME / "server.json"
 PID_FILE = RUNTIME / "sing-box.pid"
 BINARY = WORKSPACE / "sing-box"
+LOG_FILE = RUNTIME / "sing-box.log"
 SERVER = None
 RUNTIME_CREATED = False
 WORKSPACE_CREATED = False
@@ -322,6 +393,40 @@ def exact_listener_state():
         if local.endswith(":443"):
             on_443.append(local)
     return on_14443, on_443
+
+def classify_core_error(text):
+    value = text.lower()
+    if re.search(r"x25519.?mlkem|ml.?kem|key.?share|hybrid.?key", value):
+        return "KEY_SHARE_OR_MLKEM_MISMATCH"
+    if re.search(r"(invalid|unknown|rejected|failed).{0,40}(short.?id|reality|authentication)|((short.?id|reality|authentication).{0,40}(invalid|unknown|reject|fail))", value):
+        return "REALITY_AUTH_OR_VERIFICATION_FAILED"
+    if re.search(r"x509|certificate|cert verify|unknown ca|hostname.{0,20}mismatch|server.?name.{0,20}mismatch|sni.{0,20}mismatch", value):
+        return "SNI_OR_CERT_MISMATCH"
+    if re.search(r"(vless|vision|xtls-rprx-vision|flow).{0,40}(invalid|reject|unsupported|mismatch|fail)|(invalid|unknown).{0,30}(uuid|user)", value):
+        return "VLESS_OR_VISION_REJECTED"
+    if re.search(r"(www\.microsoft\.com|handshake target).{0,60}(refused|unreachable|timeout|timed out|failed)|((refused|unreachable).{0,60}(www\.microsoft\.com|handshake target))", value):
+        return "HANDSHAKE_TARGET_UNREACHABLE"
+    if re.search(r"connection reset|reset by peer|unexpected eof|\beof\b|broken pipe|remote host closed", value):
+        return "CONNECTION_RESET_OR_EOF"
+    if re.search(r"timed out|timeout|deadline exceeded", value):
+        return "TIMEOUT"
+    if re.search(r"tls.{0,20}handshake|ssl_connect|handshake failure", value):
+        return "UNKNOWN_TLS_HANDSHAKE_FAILURE"
+    return "UNKNOWN_TLS_HANDSHAKE_FAILURE" if value.strip() else "NONE_OBSERVED"
+
+def sing_box_error_class():
+    try:
+        info = LOG_FILE.stat(follow_symlinks=False)
+        if not stat.S_ISREG(info.st_mode) or info.st_uid != 0 or stat.S_IMODE(info.st_mode) != 0o600:
+            return "UNKNOWN_TLS_HANDSHAKE_FAILURE"
+        raw = LOG_FILE.read_bytes()
+        text = raw.decode("utf-8", "replace")
+        result = classify_core_error(text)
+        raw = None
+        text = None
+        return result
+    except OSError:
+        return "UNKNOWN_TLS_HANDSHAKE_FAILURE"
 
 def same_server_process(pid):
     try:
@@ -583,7 +688,7 @@ def main_run():
     client_data = None
 
     config_data = {
-        "log": {"level": "error"},
+        "log": {"level": "debug"},
         "inbounds": [{
             "type": "vless", "tag": "g2c-private-reality-in",
             "listen": "10.66.21.1", "listen_port": 14443,
@@ -608,9 +713,17 @@ def main_run():
         checked = None
         raise GateFailure("SERVER_CONFIG_CHECK_FAILED")
     checked = None
-    SERVER = subprocess.Popen([str(BINARY), "run", "-c", str(CONFIG)], stdin=subprocess.DEVNULL,
-                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, close_fds=True,
-                              start_new_session=True)
+    log_fd = os.open(str(LOG_FILE), os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    os.fchmod(log_fd, 0o600)
+    try:
+        SERVER = subprocess.Popen([str(BINARY), "run", "-c", str(CONFIG)], stdin=subprocess.DEVNULL,
+                                  stdout=log_fd, stderr=subprocess.STDOUT, close_fds=True,
+                                  start_new_session=True)
+    finally:
+        os.close(log_fd)
+    log_info = LOG_FILE.stat(follow_symlinks=False)
+    if log_info.st_uid != 0 or stat.S_IMODE(log_info.st_mode) != 0o600:
+        raise GateFailure("SERVER_DIAGNOSTIC_LOG_OWNER_OR_MODE_INVALID")
     write_exclusive(PID_FILE, (str(SERVER.pid) + "\n").encode("ascii"), 0o600)
     deadline = time.monotonic() + 8
     while time.monotonic() < deadline:
@@ -631,6 +744,9 @@ def main_run():
     signal.alarm(90)
     control = sys.stdin.buffer.readline()
     signal.alarm(0)
+    if control in (b"DIAGNOSTICS\n", b"DIAGNOSTICS\r\n"):
+        emit({"status": "diagnostics", "sing_box_error_class": sing_box_error_class()})
+        control = sys.stdin.buffer.readline()
     if control not in (b"CLEANUP\n", b"CLEANUP\r\n", b""):
         raise GateFailure("REMOTE_CONTROL_COMMAND_INVALID")
 
@@ -690,9 +806,9 @@ function Start-G2cSuppressedProcess {
     $process = [Diagnostics.Process]::new()
     $process.StartInfo = $psi
     [void]$process.Start()
-    $stdoutDrain = $process.StandardOutput.BaseStream.CopyToAsync([IO.Stream]::Null)
-    $stderrDrain = $process.StandardError.BaseStream.CopyToAsync([IO.Stream]::Null)
-    return [pscustomobject]@{ Process = $process; StdoutDrain = $stdoutDrain; StderrDrain = $stderrDrain }
+    $stdoutCapture = $process.StandardOutput.ReadToEndAsync()
+    $stderrCapture = $process.StandardError.ReadToEndAsync()
+    return [pscustomobject]@{ Process = $process; StdoutCapture = $stdoutCapture; StderrCapture = $stderrCapture }
 }
 
 function New-G2cOwnerOnlyDirectoryAcl {
@@ -788,7 +904,7 @@ port: $($script:localProxyPort)
 allow-lan: false
 bind-address: 127.0.0.1
 mode: rule
-log-level: error
+log-level: debug
 tun:
   enable: false
 proxies:
@@ -839,6 +955,39 @@ function Get-G2cRemoteReadyLine {
     return $readTask.GetAwaiter().GetResult()
 }
 
+function Test-G2cPrivateListenerTcp {
+    $client = [Net.Sockets.TcpClient]::new()
+    try {
+        $connect = $client.BeginConnect($script:serverTunnelIp, $script:serverPort, $null, $null)
+        if (-not $connect.AsyncWaitHandle.WaitOne(3000)) { return $false }
+        $client.EndConnect($connect)
+        return $true
+    }
+    catch { return $false }
+    finally { $client.Dispose() }
+}
+
+function Invoke-G2cRemoteDiagnosticSnapshot {
+    if ($null -eq $script:remoteProcess -or -not $script:remoteProcessStarted -or
+        -not $script:remoteSecretsSent -or $script:remoteProcess.HasExited -or $script:singBoxDiagnosticAttempted) { return }
+    $script:singBoxDiagnosticAttempted = $true
+    try {
+        $script:remoteProcess.StandardInput.WriteLine('DIAGNOSTICS')
+        $script:remoteProcess.StandardInput.Flush()
+        $line = Get-G2cRemoteReadyLine -Process $script:remoteProcess -TimeoutSeconds 5
+        $record = $line | ConvertFrom-Json -AsHashtable -ErrorAction Stop
+        $allowed = @('KEY_SHARE_OR_MLKEM_MISMATCH', 'REALITY_AUTH_OR_VERIFICATION_FAILED',
+                     'SNI_OR_CERT_MISMATCH', 'VLESS_OR_VISION_REJECTED',
+                     'HANDSHAKE_TARGET_UNREACHABLE', 'CONNECTION_RESET_OR_EOF',
+                     'TIMEOUT', 'UNKNOWN_TLS_HANDSHAKE_FAILURE', 'NONE_OBSERVED')
+        if ($record['status'] -eq 'diagnostics' -and $record['sing_box_error_class'] -in $allowed) {
+            $script:singBoxErrorClass = [string]$record['sing_box_error_class']
+            $script:singBoxDiagnosticReadback = $true
+        }
+    }
+    catch { $script:singBoxErrorClass = 'UNKNOWN_TLS_HANDSHAKE_FAILURE' }
+}
+
 function Stop-G2cMihomoExact {
     if ($null -eq $script:mihomoProcess) { $script:mihomoStopped = $true; return }
     try {
@@ -849,6 +998,16 @@ function Stop-G2cMihomoExact {
             if (-not $script:mihomoProcess.WaitForExit(10000)) { throw 'MIHOMO_PROCESS_STOP_TIMEOUT' }
         }
         Assert-G2c $script:mihomoProcess.HasExited 'MIHOMO_PROCESS_REMAINS'
+        if ($null -ne $script:mihomoCapture) {
+            $stdoutText = $script:mihomoCapture.StdoutCapture.GetAwaiter().GetResult()
+            $stderrText = $script:mihomoCapture.StderrCapture.GetAwaiter().GetResult()
+            $combinedText = [string]$stdoutText + "`n" + [string]$stderrText
+            $script:mihomoErrorClass = Get-G2cSanitizedErrorClass -Text $combinedText -ExitCode $script:mihomoProcess.ExitCode -RequestSucceeded:($script:requestStarted -and $script:curlExit -eq 0 -and $null -ne $script:curlAppConnect -and [double]$script:curlAppConnect -gt 0)
+            $stdoutText = $null
+            $stderrText = $null
+            $combinedText = $null
+            $script:mihomoCapture = $null
+        }
         $script:mihomoStopped = $true
     }
     catch {
@@ -867,6 +1026,16 @@ function Stop-G2cCurlExact {
         Assert-G2c $script:curlProcess.HasExited 'CURL_PROCESS_REMAINS'
     }
     catch { $script:cleanupFailures.Add('CURL_PROCESS_STOP_FAILED') }
+    if ($null -ne $script:curlStderrTask -and $script:curlStderrTask.IsCompleted) {
+        try {
+            $curlErrorText = $script:curlStderrTask.GetAwaiter().GetResult()
+            $exit = if ($null -ne $script:curlProcess -and $script:curlProcess.HasExited) { $script:curlProcess.ExitCode } else { -1 }
+            $script:curlErrorClass = Get-G2cSanitizedErrorClass -Text $curlErrorText -ExitCode $exit -RequestSucceeded:($script:requestStarted -and $exit -eq 0 -and $null -ne $script:curlAppConnect -and [double]$script:curlAppConnect -gt 0)
+            $curlErrorText = $null
+            $script:curlStderrTask = $null
+        }
+        catch { $script:curlErrorClass = 'UNKNOWN_TLS_HANDSHAKE_FAILURE' }
+    }
 }
 
 function Remove-G2cLocalRuntimeExact {
@@ -967,6 +1136,23 @@ printf 'TMP_FREE_KIB=%s\n' "`$(df -Pk /tmp | awk 'NR==2 {print `$4}')"
 "@
 }
 
+function Resolve-G2cDiagnosticClassification {
+    if ($script:requestCount -ne 1) { return 'UNKNOWN_AFTER_DIAGNOSTIC' }
+    if ($script:curlExit -eq 0 -and $null -ne $script:curlAppConnect -and [double]$script:curlAppConnect -gt 0) {
+        return 'NO_FAILURE_REPRODUCED'
+    }
+    $candidates = [Collections.Generic.List[string]]::new()
+    if ($null -ne $script:preRemoteMarkers -and $script:preRemoteMarkers['HANDSHAKE_TARGET_ERROR_CLASS'] -notin @('NONE_OBSERVED', 'UNKNOWN_TLS_HANDSHAKE_FAILURE')) {
+        $candidates.Add([string]$script:preRemoteMarkers['HANDSHAKE_TARGET_ERROR_CLASS'])
+    }
+    foreach ($candidate in @($script:curlErrorClass, $script:mihomoErrorClass, $script:singBoxErrorClass)) {
+        if ($candidate -notin @('NONE_OBSERVED', 'NOT_CAPTURED', 'UNKNOWN_TLS_HANDSHAKE_FAILURE')) { $candidates.Add([string]$candidate) }
+    }
+    $unique = @($candidates | Sort-Object -Unique)
+    if ($unique.Count -eq 1) { return $unique[0] }
+    return 'UNKNOWN_AFTER_DIAGNOSTIC'
+}
+
 try {
     $script:phase = 'LOCAL_PREFLIGHT'
     Assert-G2c (Test-Path -LiteralPath $script:mihomoPath -PathType Leaf) 'MIHOMO_BINARY_MISSING'
@@ -981,6 +1167,9 @@ try {
     $script:sshHostKeyVerified = $true
     $remoteMarkers = ConvertFrom-G2cMarkerText -Text $remoteProbeOutput
     $script:preRemoteMarkers = $remoteMarkers
+    $script:handshakeTargetTcp = [string]$remoteMarkers['HANDSHAKE_TARGET_TCP']
+    $script:handshakeTargetTls = [string]$remoteMarkers['HANDSHAKE_TARGET_TLS']
+    $script:handshakeTargetTlsVersion = [string]$remoteMarkers['HANDSHAKE_TARGET_TLS_VERSION']
     Assert-G2cRemotePreflight -Markers $remoteMarkers
     $script:remotePreflightPassed = $true
     Write-Output 'G2C_CANARY_PREFLIGHT=PASS'
@@ -1025,9 +1214,11 @@ try {
         [void]$configCheck.Process.WaitForExit(5000)
         throw 'MIHOMO_CONFIG_CHECK_TIMEOUT'
     }
-    [void]$configCheck.StdoutDrain.GetAwaiter().GetResult()
-    [void]$configCheck.StderrDrain.GetAwaiter().GetResult()
+    $configCheckStdout = $configCheck.StdoutCapture.GetAwaiter().GetResult()
+    $configCheckStderr = $configCheck.StderrCapture.GetAwaiter().GetResult()
     Assert-G2c ($configCheck.Process.ExitCode -eq 0) 'MIHOMO_CONFIG_CHECK_FAILED'
+    $configCheckStdout = $null
+    $configCheckStderr = $null
     $script:mihomoConfigChecked = $true
 
     $script:phase = 'REMOTE_SERVER_CONFIG_AND_LISTENER'
@@ -1059,8 +1250,12 @@ try {
     Assert-G2c ($script:remoteStartRecord['private_listener'] -eq '10.66.21.1:14443') 'PRIVATE_LISTENER_NOT_PROVEN'
     Assert-G2c ($script:remoteStartRecord['public_14443_listener'] -eq 'NO' -and
                 $script:remoteStartRecord['public_tcp443_listener'] -eq 'NO') 'PUBLIC_LISTENER_NEGATIVE_CHECK_FAILED'
+    $script:phase = 'PRIVATE_LISTENER_TCP_REACHABILITY'
+    $script:privateListenerTcpReachable = Test-G2cPrivateListenerTcp
+    Assert-G2c $script:privateListenerTcpReachable 'WINDOWS_PRIVATE_LISTENER_TCP_UNREACHABLE'
     $script:phase = 'MIHOMO_START_AND_PROXY_READY'
-    $script:mihomoProcess = (Start-G2cSuppressedProcess -FilePath $script:mihomoPath -ArgumentList @('-d', $script:runtimeDirectory, '-f', $script:runtimeConfigPath)).Process
+    $script:mihomoCapture = Start-G2cSuppressedProcess -FilePath $script:mihomoPath -ArgumentList @('-d', $script:runtimeDirectory, '-f', $script:runtimeConfigPath)
+    $script:mihomoProcess = $script:mihomoCapture.Process
     $localReady = $false
     $deadline = [DateTime]::UtcNow.AddSeconds(10)
     while ([DateTime]::UtcNow -lt $deadline) {
@@ -1083,12 +1278,11 @@ try {
     $curlArgs = @(
         '--ipv4', '--http1.1',
         '--proxy', "http://127.0.0.1:$($script:localProxyPort)",
-        '--connect-timeout', '10', '--max-time', '30', '--silent',
+        '--connect-timeout', '10', '--max-time', '30', '--silent', '--show-error',
         '--output', 'NUL',
         '--write-out', '%{http_code}|%{time_total}|%{time_connect}|%{time_appconnect}',
         $script:apiEndpoint
     )
-    $script:requestStarted = $true
     $curlPsi = [Diagnostics.ProcessStartInfo]::new()
     $curlPsi.FileName = $script:curlPath
     $curlPsi.UseShellExecute = $false
@@ -1099,15 +1293,17 @@ try {
     $script:curlProcess.StartInfo = $curlPsi
     [void]$script:curlProcess.Start()
     $script:curlProcessStarted = $true
-    $curlStdoutTask = $script:curlProcess.StandardOutput.ReadToEndAsync()
-    $curlStderrDrain = $script:curlProcess.StandardError.BaseStream.CopyToAsync([IO.Stream]::Null)
+    $script:requestStarted = $true
+    $script:requestCount = 1
+    $script:realityProxyUsed = $true
+    $script:curlStdoutTask = $script:curlProcess.StandardOutput.ReadToEndAsync()
+    $script:curlStderrTask = $script:curlProcess.StandardError.ReadToEndAsync()
     if (-not $script:curlProcess.WaitForExit(35000)) {
         $script:curlProcess.Kill()
         [void]$script:curlProcess.WaitForExit(5000)
         throw 'REALITY_CANARY_CURL_TIMEOUT'
     }
-    $curlText = $curlStdoutTask.GetAwaiter().GetResult().Trim()
-    [void]$curlStderrDrain.GetAwaiter().GetResult()
+    $curlText = $script:curlStdoutTask.GetAwaiter().GetResult().Trim()
     $script:curlExit = [int]$script:curlProcess.ExitCode
     if ($curlText -match '^(?<status>\d{3})\|(?<total>[0-9.]+)\|(?<connect>[0-9.]+)\|(?<appconnect>[0-9.]+)$') {
         $script:httpStatus = [int]$Matches.status
@@ -1116,8 +1312,10 @@ try {
         $script:curlAppConnect = $Matches.appconnect
     }
     $curlText = $null
+    $script:curlStdoutTask = $null
+    Stop-G2cCurlExact
+    Invoke-G2cRemoteDiagnosticSnapshot
     Assert-G2c ($script:curlExit -eq 0 -and $script:httpStatus -eq 401) 'REALITY_CANARY_HTTP_RESULT_INVALID'
-    $script:realityProxyUsed = $true
     $script:canaryPass = $true
 }
 catch {
@@ -1127,6 +1325,7 @@ catch {
 }
 finally {
     Stop-G2cCurlExact
+    if ($script:requestStarted -and -not $script:singBoxDiagnosticReadback) { Invoke-G2cRemoteDiagnosticSnapshot }
     Stop-G2cMihomoExact
     Remove-G2cLocalRuntimeExact
     Invoke-G2cRemoteSessionCleanup
@@ -1217,6 +1416,17 @@ Write-Output "REALITY_CANARY_HTTP_STATUS=$($script:httpStatus)"
 Write-Output "REALITY_CANARY_TIME_TOTAL=$($script:curlTotal)"
 Write-Output "REALITY_CANARY_TIME_CONNECT=$($script:curlConnect)"
 Write-Output "REALITY_CANARY_TIME_APPCONNECT=$($script:curlAppConnect)"
+Write-Output "ONE_PROXIED_REQUEST_COUNT=$($script:requestCount)"
+Write-Output "HANDSHAKE_TARGET_TCP=$($script:handshakeTargetTcp)"
+Write-Output "HANDSHAKE_TARGET_TLS=$($script:handshakeTargetTls)"
+Write-Output "HANDSHAKE_TARGET_TLS_VERSION=$($script:handshakeTargetTlsVersion)"
+Write-Output "HANDSHAKE_TARGET_ERROR_CLASS=$(if ($null -ne $script:preRemoteMarkers) { $script:preRemoteMarkers['HANDSHAKE_TARGET_ERROR_CLASS'] } else { 'UNAVAILABLE' })"
+Write-Output "WINDOWS_PRIVATE_LISTENER_TCP=$(if ($script:privateListenerTcpReachable) { 'PASS' } else { 'NO' })"
+Write-Output "CURL_ERROR_CLASS=$($script:curlErrorClass)"
+Write-Output "MIHOMO_ERROR_CLASS=$($script:mihomoErrorClass)"
+Write-Output "SING_BOX_ERROR_CLASS=$($script:singBoxErrorClass)"
+$script:realityDiagnosticClassification = Resolve-G2cDiagnosticClassification
+Write-Output "REALITY_DIAGNOSTIC_CLASSIFICATION=$($script:realityDiagnosticClassification)"
 Write-Output "TEST_MIHOMO_STOPPED=$(if ($script:mihomoStopped) { 'YES' } else { 'NO' })"
 Write-Output "CLIENT_SECRET_RUNTIME_DELETED=$(if (-not (Test-Path -LiteralPath $script:runtimeDirectory)) { 'YES' } else { 'NO' })"
 Write-Output "REMOTE_CANARY_CLEANUP=$(if ($script:remotePostcheckPass) { 'PASS' } elseif (-not $script:remotePreflightPassed) { 'NOT_REACHED' } else { 'FAIL' })"
@@ -1233,8 +1443,9 @@ Write-Output 'BENCHMARK_STARTED=NO'
 Write-Output 'SECRET_VALUES_EMITTED=0'
 Write-Output 'SECRET_VALUES_COMMITTED=0'
 
-if ($script:canaryPass -and $script:cleanupFailures.Count -eq 0) {
-    Write-Output 'REALITY_CANARY_RESULT=PASS_CANDIDATE'
+if ($script:requestCount -eq 1 -and $script:cleanupFailures.Count -eq 0 -and
+    $script:realityDiagnosticClassification -ne 'UNKNOWN_AFTER_DIAGNOSTIC') {
+    Write-Output 'G2C_REALITY_DIAGNOSTIC_RESULT=PASS_CANDIDATE_DIAGNOSTIC'
     exit 0
 }
 
@@ -1242,5 +1453,5 @@ Write-Output "FAILED_PHASE=$($script:phase)"
 Write-Output "FAILURE_CODE=$($script:failureCode)"
 Write-Output "FAILURE_TYPE=$($script:failureType)"
 Write-Output ('CLEANUP_FAILURES=' + $(if ($script:cleanupFailures.Count -gt 0) { $script:cleanupFailures -join ',' } else { 'NONE' }))
-Write-Output 'REALITY_CANARY_RESULT=RETURN_G2C_PRIVATE_REALITY_CANARY'
+Write-Output 'G2C_REALITY_DIAGNOSTIC_RESULT=RETURN_G2C_REALITY_DIAGNOSTIC_INCONCLUSIVE'
 exit 1

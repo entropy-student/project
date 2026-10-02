@@ -2,16 +2,17 @@
 
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
-## Current execution status — G2-C private REALITY canary attempted; handshake not proven
+## Current execution status — G2C REALITY handshake diagnostic R1
 
-- Current Gate: `G2C_PRIVATE_REALITY_COMPAT_CANARY`; executed under the Reviewer-authorized Medium-integrity retry. The old preflight script was not run.
-- Fresh local read-back: PowerShell 7.6.5, Medium integrity RID `8192`, Administrator `False`; WireGuard services Running, `SFO2-A` Up/ifIndex 13, control route to `10.66.21.1` via ifIndex 13; system proxy disabled, WinHTTP direct, no TUN adapter, Mihomo Meta `v1.19.31`.
-- Strict SSH/accepted HostKeyAlias reached root on `10.66.21.1`; target read-back matched `ubuntu-s-1vcpu-512mb-10gb-sfo3`, Ubuntu 24.04.5 LTS, kernel `6.8.0-142-generic`. WG/HY2 services and UDP 51820/8443 listeners were active; TCP 443 was free.
-- Official pinned sing-box `v1.14.2` asset SHA-256 verification and server config check passed. The temporary listener was bound only to `10.66.21.1:14443`; no public 14443 or TCP 443 listener was created. Mihomo config check passed and the independent HTTP-only localhost proxy became ready.
-- Exactly one proxied request to `https://api.openai.com/v1/models` was made. curl exit `35`, HTTP status `0`, total `5.002776s`, proxy TCP connect `0.000937s`, TLS app-connect `0.000000s`. REALITY/TLS handshake and client interoperability are **not proven**; no retry or further request was made. No benchmark or performance conclusion was produced.
-- Cleanup and fresh read-back passed: test Mihomo stopped; owner-only client runtime deleted; remote canary process, config, binary, `/run`/`/tmp` artifacts and TCP 14443 listener absent; TCP 443 remained free; WG/HY2 active and routes unchanged; local proxy/TUN/system-proxy state unchanged. Secret values emitted/committed: `0`.
-- No public listener, firewall, route, WireGuard, HY2, system proxy, TUN, MTU, or kernel tuning change occurred. No persistent service was created.
-- Result: `RETURN_G2C_PRIVATE_REALITY_HANDSHAKE_CURL_EXIT_35`. Stop here for Reviewer diagnosis; Owner action `NONE`.
+- Gate: `G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1`; source base was fresh GitHub `main` commit `3b20323933f6751e6cd614e5b41946430c191432`. Executed in the Owner Windows account via PowerShell 7.6.5, Medium integrity RID `8192`, Administrator `False`; elevation was not required.
+- Fresh local preflight passed: WireGuard Manager/Tunnel Running, `SFO2-A` Up/ifIndex 13, control route to `10.66.21.1` via ifIndex 13, system proxy disabled, WinHTTP direct, no Mihomo/TUN process or adapter, and accepted Mihomo Meta `v1.19.31` present.
+- Strict SSH with the accepted HostKeyAlias reached root on `10.66.21.1`; target was `ubuntu-s-1vcpu-512mb-10gb-sfo3`, Ubuntu 24.04.5 LTS, kernel `6.8.0-142-generic`. WG/HY2 were active with UDP 51820/8443 listeners; TCP 14443 and TCP 443 were initially free.
+- VPS→`www.microsoft.com:443` read-only check passed TCP and TLS 1.3. After the temporary server listener was ready, Windows→`10.66.21.1:14443` TCP reachability passed. Pinned sing-box v1.14.2 asset/hash and server/Mihomo config checks passed; listener was private-only, with no public 14443/443 listener.
+- Protocol parameters remained unchanged: VLESS+REALITY+Vision, handshake/SNI `www.microsoft.com`, flow `xtls-rprx-vision`, VPS private listener `10.66.21.1:14443`, localhost HTTP proxy `127.0.0.1:17990`. Only diagnostic log capture/classification was added.
+- Exactly one proxied request to `https://api.openai.com/v1/models`: curl exit `35`, HTTP `0`, total `5.002744s`, proxy connect `0.000765s`, TLS app-connect `0.000000s`. Sanitized classes: curl `UNKNOWN_TLS_HANDSHAKE_FAILURE`; Mihomo `TIMEOUT`; sing-box `UNKNOWN_TLS_HANDSHAKE_FAILURE`. Aggregate `REALITY_DIAGNOSTIC_CLASSIFICATION=TIMEOUT`. This narrows the observed client-core failure to a timeout class, but does not prove protocol compatibility or identify a more specific underlying defect. No retry, benchmark, or performance conclusion.
+- Cleanup/fresh read-back passed: test Mihomo stopped; temporary owner-only client config removed; protected VPS runtime/workspace, sing-box process and TCP 14443 listener absent; TCP 443 still free; WG/HY2, routes, system proxy, WinHTTP, and TUN state preserved. Secret values emitted/committed: `0`.
+- No public listener, firewall, route, WireGuard/HY2 service, system proxy, TUN, MTU, or kernel tuning change occurred; no persistent service was installed. Result: `PASS_CANDIDATE_DIAGNOSTIC`; stop for Reviewer. Owner action: `NONE`.
+- Timing: `ROUND_STARTED_AT=2026-10-02T17:57:29Z`; `ROUND_FINISHED_AT=2026-10-02T18:20:49Z`; `ACTUAL_ELAPSED=23m20s`; `TIME_OVERRUN=NO` (estimate 15–30 minutes).
 
 ## G1 historical executor status (preserved)
 
