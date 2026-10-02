@@ -283,3 +283,16 @@ X2 deep-demand research is now recorded separately in:
 docs/X2_DEMAND_DEPTH_SHORTLIST_2026-10.md
 
 X1 remains the canonical broad-discovery record. X2 does not rewrite the 50 raw ideas or 25 normalized candidate pool; it records which candidates earned deeper continuation under fresh evidence.
+
+
+---
+
+## 15. Standardization reframe
+
+2026-10-02 Owner 明确把“标品 / 可产品化半标品”提升为当前选品硬目标。
+
+因此：
+- X1 的广泛 Discovery 继续有效；
+- X2 的服务需求研究继续作为 Job/Payment 证据；
+- X2 的 8-item service shortlist 被 `X2R1_STANDARDIZED_PRODUCT_RESEARCH_2026-10.md` **SUPERSEDED_FOR_SELECTION_AXIS**；
+- 后续只有 A/B 类候选进入 Top 3。
