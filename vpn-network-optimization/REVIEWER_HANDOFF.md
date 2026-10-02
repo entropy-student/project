@@ -45,72 +45,52 @@ Current known components:
 ## CURRENT_ACCEPTED_STATE
 
 Latest accepted G2-B facts:
-- Latest authorized retry completed WireGuard benchmark **60/60 with 0 failures**.
-- Latest WG sample: Median 0.604015s, P90 0.764660s, P95 0.797894s, P99 1.333582s, >1s 1, >1.5s 0, >2s 0.
-- Runtime Secret config creation and owner-only ACL validation passed.
-- Mihomo test proxy reached READY.
-- The latest handshake-only probe proved `proxy_used=1` and failed with curl exit 35 / `TLS_ERROR`, HTTP `000`, `appconnect=0`; no target HTTPS TLS session was established.
-- Cleanup passed: Mihomo stopped, runtime Secret config deleted, plaintext Secret artifacts 0, temporary route removed, production WireGuard restored, final test residue absent.
-- Fresh server-side read-only diagnostics then proved Hysteria service active+enabled, ExecMainStatus 0, NRestarts 0, one Hysteria UDP 8443 listener, intact strict-SNI/password-auth config shape, matching certificate fingerprint/SAN, and no host UFW/nft/iptables rule explicitly blocking UDP 8443.
-- The UDP-arrival probe then proved `UDP_8443_INBOUND_SEEN=NO` and `OUTBOUND_SEEN=NO` while the local proxy attempted the HY2 connection. Therefore the failure occurs before Hysteria receives the packet.
-- The DigitalOcean Droplet networking page was fresh-read by Owner and shows no Cloud Firewall assigned. Therefore provider Cloud Firewall is cleared as the cause.
-- The remaining primary boundary is Windows/Mihomo egress versus local WLAN/router/ISP/upstream path before the Droplet.
-- No HY2 benchmark sample or protocol-performance conclusion exists yet.
+- WireGuard Windows strict WFP kill-switch was proven as the root cause of the prior HY2 TLS failure: production `0.0.0.0/0` plus WireGuard-owned `Block all outbound (IPv4)` dropped direct HY2 outer UDP before WLAN.
+- Owner changed IPv4 full-tunnel routing to `0.0.0.0/1, 128.0.0.0/1`; fresh read-back showed `0.0.0.0/0=NO`, both split defaults present, and `Block all outbound (IPv4)=NO`.
+- Post-repair raw UDP/8443 reached VPS successfully.
+- Post-repair HY2 handshake passed: curl exit 0, HTTP 401 from the OpenAI endpoint, `HY2_AUTH=PASS`, `TLS_CERTIFICATE_PINNING=PASS`, `HY2_OUTER_ROUTE=WLAN_DIRECT`.
+- Formal same-window comparison completed 60 WireGuard + 60 HY2 samples with zero failures/timeouts/resets on both.
+- WireGuard: Median 0.796850s, P90 1.502720s, P95 1.735142s, P99 5.745878s, >1s 15, >1.5s 7, >2s 1.
+- HY2: Median 0.498499s, P90 0.715330s, P95 0.761820s, P99 1.771594s, >1s 2, >1.5s 1, >2s 0.
+- Deterministic comparison result: `HY2_BETTER_THIS_WINDOW`.
+- `PEAK_HOUR_SUPERIORITY_PROVEN=NO`; do not generalize this one window into universal superiority.
+- Cleanup passed: temporary route absent, Mihomo stopped, runtime Secret deleted, plaintext Secret artifacts 0, production WireGuard restored, test residue absent.
+- Secret values emitted/committed: 0.
 
-Accepted source:
-- Repaired runner commit: `ed4f8216ecd18dcea29f06f12fa0773c97c3cdf4`
-- Repaired runner blob: `5a6e65edd3d9e7c62b61fe209954f4d19c493366`
-- Reviewer acceptance commit: `165fc79b906dd6de858fdb6c3521e95f7b749136`
+Accepted evidence commit from this review: pending current write.
 
 ## CURRENT_GATE
 
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
-STATE=AUTHORIZED_POST_KILLSWITCH_COMPARATIVE_VALIDATION
-OBJECTIVE=Confirm whether the proven local WFP outbound drop is WireGuard Windows kill-switch enforcement caused by the production full-tunnel /0 configuration.
-MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
-MANDATORY_REVIEW_STOP=YES
+STATE=PASS
+RESULT=ROOT_CAUSE_REPAIRED_AND_VALIDATED
+NETWORK_COMPARISON=HY2_BETTER_THIS_WINDOW
+PEAK_HOUR_SUPERIORITY_PROVEN=NO
+MANDATORY_REVIEW_STOP=SATISFIED
 ```
 
 ### TARGET_AND_SCOPE
 
-Current next diagnostic under the standing authorization (read-only):
-- keep production WireGuard ON;
-- create the same exact temporary `24.199.118.137/32` WLAN route;
-- use Windows built-in pktmon with an exact `24.199.118.137 + UDP + 8443` filter on NICs only;
-- log only the first 42 bytes of matching Ethernet/IPv4/UDP frames, enough for headers and excluding the 7-byte synthetic payload;
-- send exactly one 7-byte raw UDP datagram bound to WLAN address `192.168.1.4`;
-- stop pktmon, convert the ETL to text, and determine presence by numeric target/port markers rather than localized counter labels;
-- remove temporary pktmon artifacts/filter and the exact route, then verify WireGuard remains restored.
-
-Forbidden:
-- no payload inspection;
-- no persistent packet capture beyond the minimum temporary diagnostic artifact;
-- no benchmark;
-- no second handshake;
-- no configuration/tuning changes;
-- no service/firewall/provider changes.
+Closed. No further Windows/WFP/HY2 fault diagnostics are authorized or needed from this Gate unless contradictory evidence appears.
 
 ### REQUIRED_EVIDENCE
 
-- local UDP observer ready;
-- `WINDOWS_UDP_8443_OUTBOUND_SEEN=YES/NO`;
-- one handshake only;
-- `proxy_used / curl exit / HTTP status / error`;
-- no benchmark;
-- observer stopped;
-- temporary route removed;
-- Mihomo/runtime config removed;
-- production WireGuard restored;
+Satisfied:
+- local WFP drop proven;
+- WireGuard kill-switch ownership confirmed;
+- split-default repair fresh-read back;
+- UDP/8443 arrival after repair proven;
+- HY2 TLS/auth/pinning handshake proven;
+- 60/60 same-window WG and 60/60 HY2 benchmark completed;
+- exact cleanup and WireGuard restoration proven;
 - Secret values emitted/committed = 0.
 
 ### ACCEPTANCE_CRITERIA
 
-Diagnostic classification:
-- WireGuard `/0` + matching WireGuard `Block all outbound (IPv4)` WFP filter → root cause confirmed: WireGuard kill-switch blocks the direct HY2 outer path while production WG remains active;
-- no matching WireGuard block filter → continue targeted WFP owner/filter identification before any repair.
+PASS for this diagnostic/repair Gate.
 
-This Gate does not itself PASS G2-B.
+The same-window network comparison is accepted as `HY2_BETTER_THIS_WINDOW`. It is not accepted as proof of peak-hour or universal superiority.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
@@ -134,19 +114,12 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 ### REVIEWER_TO_OWNER
 
-- 本轮结果：只读复核确认修复尚未落到运行中的 `SFO2-A`；仍是 IPv4 `0.0.0.0/0`，两个 `/1` 均不存在，WireGuard WFP `Block all outbound (IPv4)` 仍在。
-- 当前状态：根因已确认，修复尚未应用；暂不重跑 HY2。
-- 当前问题：需要在 WireGuard 的 `SFO2-A` 配置中将 IPv4 `/0` 改为两个 `/1`，保存并重载隧道。
-- 下一步：Owner 完成一次配置编辑与隧道重载后，重新运行现有只读 kill-switch 检查；预期 `/0=NO`、两个 `/1=YES`、WFP block=NO。
-- 你需要做什么：仅执行该本机配置变更与重载；当前 Gate 持续授权有效。
-
-### REVIEWER_TO_OWNER
-
-- 本轮结果：WireGuard kill-switch 修复后，原始 UDP/8443 已从 Windows 经 WLAN 成功到达 VPS，根因与修复闭环成立。
-- 当前状态：进入真实 HY2 握手验证，不再排查 Windows/WFP。
-- 当前问题：尚未确认 Mihomo/HY2 在解除本机阻断后能完成 TLS/认证握手。
-- 下一步：运行新的 post-killswitch handshake checkpoint；仍使用既有 DPAPI Secret 运行时边界、一次临时 Mihomo、一次握手、自动清理。
-- 你需要做什么：运行 Reviewer 给出的单条 PowerShell 命令并回传完整输出；当前 Gate 授权持续有效。
+- 本轮结果：**PASS**。Windows UDP/8443 故障根因已修复；HY2 握手通过；同窗口 60+60 对比完成。
+- 当前状态：本 Gate 已关闭。该窗口内 HY2 在 Median/P90/P95/P99 和慢请求尾部计数上均优于 WireGuard，双方均 60/60 成功。
+- 当前问题：没有残留故障。唯一未证明的是“晚高峰/长期/真实 Codex 工作负载下 HY2 仍持续更优”。
+- 项目进度：G2-B 的同窗口网络对比已完成；README 所述最终 v1 若要求真实 Codex A/B，则应另开一个新 Gate，不应混入本 Gate。
+- 下一步：Reviewer 建议先把 HY2 作为已验证候选保留，WireGuard 仍作为生产回退；如 Owner 要继续完成 v1 封板，再授权一个独立的真实 Codex / 晚高峰验证 Gate。
+- 你需要做什么：当前无需做任何修复动作。
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
