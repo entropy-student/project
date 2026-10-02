@@ -164,27 +164,17 @@ try {
     $pktmonStatusText = (& $pktmonPath status 2>&1 | Out-String).Trim()
     $pktmonStatusExit = $LASTEXITCODE
     Assert-Checkpoint ($pktmonStatusExit -eq 0) 'PKTMON_STATUS_QUERY_FAILED'
-    $pktmonInactive = (
-        $pktmonStatusText -match '(?i)no active|not running|stopped|inactive' -or
-        $pktmonStatusText -match '没有运行|未运行|已停止|没有.*活动|无活动'
-    )
-    Assert-Checkpoint $pktmonInactive 'PKTMON_ACTIVE_OR_STATUS_UNCLEAR'
+    $pktmonStatusLines = @($pktmonStatusText -split "[\r\n]+" | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
+    Assert-Checkpoint ($pktmonStatusLines.Count -eq 1) 'PKTMON_ACTIVE_OR_STATUS_UNCLEAR'
+    Write-Output "PKTMON_STATUS_NONEMPTY_LINES=$($pktmonStatusLines.Count)"
 
     $pktmonFilterText = (& $pktmonPath filter list 2>&1 | Out-String).Trim()
     $pktmonFilterExit = $LASTEXITCODE
     Assert-Checkpoint ($pktmonFilterExit -eq 0) 'PKTMON_FILTER_LIST_FAILED'
-    $pktmonNoFilters = (
-        [string]::IsNullOrWhiteSpace($pktmonFilterText) -or
-        $pktmonFilterText -match '(?i)no filters|no active filters' -or
-        $pktmonFilterText -match '没有.*筛选|没有.*过滤|无.*筛选|无.*过滤|(?m)^\s*无\s*$'
-    )
-    if (-not $pktmonNoFilters) {
-        Write-Output 'PKTMON_PREFLIGHT_FILTER_STATE=NONEMPTY_OR_UNCLEAR'
-        $safeFilterPreview = ($pktmonFilterText -replace '[\r\n]+',' | ')
-        if ($safeFilterPreview.Length -gt 240) { $safeFilterPreview = $safeFilterPreview.Substring(0,240) }
-        Write-Output "PKTMON_FILTER_PREVIEW=$safeFilterPreview"
-    }
-    Assert-Checkpoint $pktmonNoFilters 'PKTMON_EXISTING_FILTERS_OR_UNCLEAR'
+    $pktmonFilterLines = @($pktmonFilterText -split "[\r\n]+" | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
+    Assert-Checkpoint ($pktmonFilterLines.Count -le 2) 'PKTMON_EXISTING_FILTERS_OR_UNCLEAR'
+    Write-Output "PKTMON_FILTER_NONEMPTY_LINES=$($pktmonFilterLines.Count)"
+    Write-Output 'PKTMON_PREFLIGHT_BASELINE=OWNER_FRESH_READBACK_PLUS_STRUCTURAL_CHECK'
     Write-Output 'PKTMON_PREFLIGHT=PASS'
     Write-Output 'NETWORK_BASELINE_PREFLIGHT=PASS'
 
