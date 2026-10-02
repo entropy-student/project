@@ -150,3 +150,14 @@ STOP_AT_REVIEWER=YES
 ```
 
 
+
+## Current resume point — supersedes earlier DPAPI path assumptions
+
+- Hysteria2 server-side deployment remains accepted and active on UDP 8443; WireGuard remains active on UDP 51820.
+- The original G2-A DPAPI artifact was not missing. It was written under Codex packaged-app virtualization at `...\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi`.
+- That virtualized artifact is 1206 bytes, owner-only, DPAPI CurrentUser decryptable, parses as the accepted `VPNHY2R1` bundle, and passes TLS key/cert, SAN, and fingerprint validation.
+- Do not re-fetch or rotate VPS Secrets.
+- `g2b-owner-runner.ps1` ACL validation has been fixed and statically reviewed; benchmark has not started.
+- `scripts/realize-owner-dpapi-path.ps1` is the current Owner action path. Its first run failed only because its integrity precheck falsely rejected a real High-integrity PowerShell 7.6.6 process.
+- Owner read-back proved Administrator=True and integrity SID `S-1-16-12288` / High; pending and target canonical artifacts were not created.
+- Next executor action: fix only the realization runner integrity precheck to use token integrity level semantics; do not execute benchmark until canonical Owner path fresh read-back passes.
