@@ -13,9 +13,9 @@ P0                                   PASS
 G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
-G2-B benchmark                       WG 60/60 complete; HY2 not started; returned at runtime ACL owner validation
-CURRENT_BLOCKER                      Owner execution of one ACL-fixture-gated full G2-B retry pending
-CURRENT_GATE                         G2B_Full_Retry_After_Acl_Repair (AUTHORIZED_ONCE)
+G2-B benchmark                       WG 60/60 complete; HY2 proxy started; returned at handshake path validator
+CURRENT_BLOCKER                      Read-only HY2 proxy-use / port-state diagnostic pending
+CURRENT_GATE                         G2B_HY2_Handshake_Validator_Diagnostic (READ_ONLY)
 ```
 
 Current runtime facts:
@@ -774,3 +774,14 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - Owner has freshly authorized one consequential G2-B retry. Authorization is bounded to one atomic checkpoint: validate the repaired ACL semantics with non-Secret temp objects, verify accepted source identity/current baseline, create the exact temporary VPS route, invoke the repaired runner once, persist non-Secret result artifacts, and restore/verify production WireGuard.
 - No MTU/BBR/fq/GRO/sysctl tuning or second runner invocation is authorized.
 - Accepted repaired runner commit: 0f7a2a93353a8ce04e5887e59d87fe760aaf161d. Accepted repaired runner blob: 1153a2124d393899967094416b856f0a6022a1db.
+
+
+### G2-B retry after ACL repair — HY2 handshake path validator return
+
+- Owner executed the newly authorized retry; the formal runner was invoked once, so that consequential authorization is consumed.
+- Real-host non-Secret ACL directory/file fixtures passed; runtime Secret config creation and owner-only ACL validation then also passed.
+- WireGuard benchmark completed 60/60 with 0 failures: Median 0.600826s, P90 0.832286s, P95 1.111586s, P99 1.533950s, >1s 4, >1.5s 1, >2s 0.
+- Mihomo test proxy reached READY, then the runner returned at HY2_OUTER_ROUTE_AND_HANDSHAKE with HY2_HANDSHAKE_DID_NOT_USE_LOCAL_PROXY before HY2 sample 1.
+- Cleanup reported Mihomo stopped, runtime Secret config deleted, plaintext Secret artifacts 0, temporary route removed, and production WireGuard restored.
+- Wrapper final readback returned FINAL_PROXY_LISTENER_PRESENT. This may be a validator false-positive because it currently counts all TCP states on local port 17890 rather than only Listen; actual port state is UNKNOWN until a read-only real-host query.
+- Current fault domain is therefore validation: (1) curl proxy-use proof uses remote_ip == 127.0.0.1, and (2) wrapper residue proof counts all LocalPort 17890 TCP rows. No further consequential retry is authorized until both are diagnosed read-only.
