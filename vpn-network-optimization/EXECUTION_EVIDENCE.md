@@ -1019,3 +1019,23 @@ Reviewer interpretation:
 - No HY2 handshake was sent; standing Owner authorization for the current Gate remains available.
 - Return occurred before any pktmon mutation because the checkpoint could not safely classify the localized/current `pktmon status` output as inactive.
 - Cleanup/read-back is clean. Next step is read-only capture of `pktmon status` and `pktmon filter list` text, then repair the preflight parser or select a language-independent state check.
+
+
+## Windows pktmon localized-state read-only check — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+PKTMON_STATUS=数据包监视器没有运行。
+PKTMON_FILTER_LIST_HEADER=数据包筛选器:
+PKTMON_FILTER_LIST_VALUE=无
+PKTMON_RUNNING=NO
+PKTMON_EXISTING_FILTERS=NO
+NETWORK_MUTATION=NO
+HY2_HANDSHAKE_SENT=NO
+```
+
+Reviewer interpretation:
+- The prior checkpoint return was a localization-parser false negative.
+- Windows Packet Monitor is currently inactive and has no existing filters.
+- The checkpoint parser was repaired to recognize these zh-CN outputs.
+- Standing Owner authorization for the current Gate remains valid because no handshake was sent.
