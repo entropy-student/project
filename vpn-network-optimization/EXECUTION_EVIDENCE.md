@@ -1392,3 +1392,29 @@ Reviewer interpretation:
 - The post-killswitch HY2 handshake checkpoint did not execute.
 - This provides no new evidence about HY2.
 - The next attempt will fetch the exact same pinned commit via the GitHub Contents API instead of raw.githubusercontent.com, then verify the same Git blob SHA before execution.
+
+
+## Post-killswitch HY2 handshake — inner source download reset — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+CURL_EXIT=35
+CURL_ERROR=Recv failure: Connection was reset
+CHECKPOINT_RETURN_STAGE=OWNER_AND_SOURCE_PREFLIGHT
+CHECKPOINT_RETURN_CODE=ACCEPTED_SOURCE_DOWNLOAD_FAILED
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_TEST_RUNTIME_RESIDUE=ABSENT
+TEMP_CHECKPOINT_WORKSPACE_REMOVED=YES
+RUNNER_INVOKED=NO
+RUNNER_COMPLETED=NO
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+OWNER_POST_KILLSWITCH_HANDSHAKE_RESULT=RETURN_TO_REVIEWER
+```
+
+Reviewer interpretation:
+- The outer checkpoint executed successfully.
+- Failure occurred before the formal runner invocation because its internal `Download-ExactFile` helper still used raw.githubusercontent.com for the pinned runner/config sources.
+- HY2 handshake was not attempted, so there is no new HY2 evidence.
+- Cleanup and production WireGuard restoration passed.
+- Next revision changes only the internal pinned-source transport from raw.githubusercontent.com to the GitHub Contents API, retaining the same accepted commit and blob SHA checks.
