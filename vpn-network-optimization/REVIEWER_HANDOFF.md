@@ -137,8 +137,8 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 Prepared one-shot Windows egress checkpoint:
 - `scripts/g2b-windows-udp8443-egress-checkpoint.ps1`
-- commit: `e30ba1fbeaa1223f873d1185b0a347fff99e98f6`
-- blob: `c3ed3df09d814d6639ea287ea6a5f8ddcb6cf457`
+- commit: `8b33d6a1b8edc07f9c64cae754f5804a10336828`
+- blob: `7c46b895897010833d30d923704d44333c72c8a2`
 - keeps production WireGuard ON;
 - uses Windows built-in Packet Monitor (`pktmon`) with an exact `24.199.118.137 + UDP + 8443` filter;
 - uses counters-only NIC monitoring, so packet payload is not logged;
@@ -198,7 +198,7 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-Fresh read-back proved `pktmon` is inactive and has no filters. The zh-CN preflight parser is repaired; continue the standing-authorized Windows UDP/8443 egress checkpoint.
+Fresh read-back proved `pktmon` is inactive and has no filters. Because captured localized text was still unreliable, preflight now uses language-independent output-structure checks; continue the standing-authorized Windows UDP/8443 egress checkpoint.
 
 ## OWNER_ACTION_REQUIRED
 
