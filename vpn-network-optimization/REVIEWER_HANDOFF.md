@@ -134,23 +134,20 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Current prepared Windows-stack diagnostic:
-- `scripts/g2b-pktmon-json-egress-diagnostic.ps1`
-- commit: `141fe0b6972e24a82c1a4cd1c5f773d3aed55013`
-- blob: `af719d2445ed507c0dc6b155066de23563d4e849`
-- keeps production WireGuard ON;
-- creates and exact-readbacks the temporary `24.199.118.137/32` WLAN route;
-- uses the exact `24.199.118.137 + UDP + 8443` pktmon filter across **all networking components**;
-- runs counters-only, so no packet log or payload is captured;
-- binds one 7-byte synthetic UDP datagram explicitly to WLAN address `192.168.1.4`;
-- emits the native `pktmon counters --type all --include-hidden --drop-reason` table verbatim between markers, with no machine parsing;
-- cleanup removes pktmon state/filter and the exact route, then rechecks production WireGuard.
+Current prepared read-only root-cause confirmation:
+- `scripts/g2b-wireguard-killswitch-readonly.ps1`
+- commit: `857c9b326727ac5f6a07ae0aa021024ebd6c3746`
+- blob: `360d50e62fb996cd9e86243d0250cb2d26c4e19a`
+- keeps production WireGuard ON and performs no route/firewall/VPN mutation;
+- checks active IPv4 routes on WireGuard interface 13 for `0.0.0.0/0` versus split `/1` routes;
+- queries WFP filters affecting outbound UDP/8443 to `24.199.118.137` and checks for WireGuard's documented `Block all outbound (IPv4)` filter;
+- also checks WFP state for WireGuard and the matching block filter;
+- outputs only boolean/non-secret classification fields;
+- deletes temporary XML artifacts and rechecks WireGuard unchanged.
 
-The previous JSON-format attempt reproduced the send successfully but failed only at JSON parsing. Microsoft documents `--json` as supported; this revision avoids the local output-representation issue entirely.
+If `/0` and the WireGuard block filter are both present, classify the current root cause as the WireGuard Windows kill-switch blocking direct untunneled HY2 traffic while the WG service itself remains exempt.
 
-Standing Owner authorization remains valid for bounded troubleshooting inside this Gate.
-
-Executor should read only this Current Gate and the prepared diagnostic. Do not alter VPN/HY2 configuration or replay benchmarks.
+Standing Owner authorization covers this read-only confirmation. Any repair that weakens kill-switch/firewall semantics requires a separate explicit Owner decision.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
