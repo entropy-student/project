@@ -4,10 +4,53 @@
 > Governance: `entropy-student/spike.skill/vps-project-governance` latest  
 > Executor facts begin in `EXECUTOR_HANDOFF.md` / `EXECUTION_EVIDENCE.md` once G1 execution starts.
 
+## 0. Current Truth / Resume Point
+
+This section is the canonical resume point. If any older section conflicts with it, this section wins.
+
+```text
+P0                                   PASS
+G1                                   PASS
+G2-A server-side HY2 deployment      PASS
+G2-A DPAPI recovery closure          OPEN DEFECT / REPAIR REQUIRED
+G2-B benchmark                       NOT STARTED (0 formal samples)
+CURRENT BLOCKER                      Owner-host DPAPI recovery ACL helper
+```
+
+Current runtime facts:
+
+- Production traffic remains on WireGuard; WireGuard has not been stopped or replaced.
+- VPS is DigitalOcean `24.199.118.137` in `sfo3`; WireGuard listens on UDP 51820 and Hysteria2 v2.12.3 listens on UDP 8443.
+- Safe split control/data path is proven:
+  - control plane: Codex/SSH → WireGuard → `10.66.21.1:22`;
+  - HY2 candidate data plane: localhost test proxy → WLAN → `24.199.118.137:8443`.
+- Owner-created temporary route is currently present and fresh-read as: `24.199.118.137/32 -> 192.168.1.1 -> WLAN ifIndex 18 -> ActiveStore, metric 1`. It is non-persistent and must be removed only after G2-B testing/cleanup is complete.
+- With that route present, WireGuard services remain Running, adapter `SFO2-A` remains Up, and normal public exit remains `24.199.118.137`.
+- SSH over the public IP is not the G2-B control path. Use `10.66.21.1:22` through WireGuard with the already accepted host-key trust.
+- Owner PowerShell environment has been verified as PowerShell 7.6.6, Administrator = True, integrity RID 12288 / High.
+- Codex desktop cannot run the long local benchmark in the current thread because no integrated terminal is attached; therefore the accepted execution model is an Owner-run PowerShell runner, with Codex/Reviewer handling preparation, review, evidence, and final acceptance.
+
+DPAPI recovery reality:
+
+- Fresh Owner-host read-back proved that `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` is absent and the recovery directory itself is absent.
+- This supersedes the earlier G2-A claim `DPAPI_FINAL_EXISTS=YES`; that earlier claim must be treated as stale/false for current host reality.
+- Do not rotate or regenerate VPS HY2 Secrets merely to repair this recovery defect.
+- The repair runner successfully completed SSH transport from the VPS (`SSH_NATIVE_EXIT_CODE=0`, `REMOTE_TRANSFER_RESULT=PASS`) but failed locally before final promotion with `RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID`.
+- Failure cleanup was then fresh-read on the Owner host: base directory absent, recovery directory absent, pending absent, final absent. No partial recovery artifact remains.
+- Next action is NOT another real-Secret retry. First run a non-secret ACL fixture to diagnose/fix the ACL helper; only after fixture create/readback/validator/cleanup PASS should the real recovery repair runner be retried.
+
+G2-B benchmark status:
+
+- WireGuard benchmark samples completed: `0`.
+- HY2 benchmark samples completed: `0`.
+- HY2 real client handshake tested in G2-B: `NO`.
+- No G2-B performance conclusion exists yet.
+- Do not claim HY2 is better/worse/equivalent until same-window data exists.
+
 ## 1. Project Goal
 
 - Final goal: 建立一套可迁移、可验证、可回滚的自建 VPN 优化标准，提高 Codex / OpenAI / AI 生图等长任务的稳定性与尾部表现，并可快速复用于不同 VPS。
-- Current goal: 在不影响当前前台任务的前提下，以现有 SFO2-A + WireGuard 为基线，完成第一版可迁移优化骨架；暂不做性能 A/B 和路由切换。
+- Current goal: 修复并 fresh-verify Owner Windows DPAPI recovery，随后在已确认安全窗口内完成 WireGuard vs Hysteria2 同窗口低干扰 A/B；在 recovery 修复前不得开始 benchmark。
 - Guiding principle: 不复制某一作者的全部参数；以官方文档、可靠实现和本机证据筛选最小有效配置。
 
 ## 2. Authority / Source of Truth
@@ -55,8 +98,9 @@ Windows client
 ```text
 P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
 G1 Foreground-safe Foundation        ✅ REVIEWER PASS
-G2-A Side-by-side HY2 Deployment     ✅ REVIEWER PASS
-G2-B Safe-window Validation + Seal   ← CURRENT / OWNER SAFE WINDOW CONFIRMED
+G2-A HY2 server deployment          ✅ REVIEWER PASS
+G2-A DPAPI recovery closure          ⚠ OPEN DEFECT / REPAIR REQUIRED
+G2-B Safe-window Validation + Seal   ⏸ BLOCKED BEFORE BENCHMARK
 ```
 
 P0 acceptance covers research/scope only. It does NOT assert fresh server/runtime state.
@@ -187,7 +231,7 @@ HY2 may be `BLOCKED_WITH_EXACT_REASON` if Cloud Firewall, DNS/certificate, Secre
 - GitHub fresh read-back: PASS; at review time this commit is current `main` HEAD.
 - Hysteria2 official binary v2.12.3 is installed side-by-side and its dedicated service is enabled/active on UDP 8443.
 - Existing WireGuard remains active on UDP 51820; routes, NAT/firewall state, Windows WireGuard/proxy/TUN state, MTU/qdisc/BBR/GRO baseline, and current foreground traffic were not switched or tuned.
-- Secret authorization and recovery requirements were satisfied: target files use the accepted permissions; Secret values emitted/logged/committed = 0; DPAPI CurrentUser recovery final artifact passed host-local existence, owner-only ACL, and byte-identity round-trip checks.
+- Secret generation/install on the VPS remains accepted and Secret values emitted/logged/committed = 0. However, the later Owner-host fresh read-back proved the claimed Windows DPAPI final artifact is absent. Therefore the G2-A server deployment remains accepted, but the DPAPI recovery closure is reopened and must be repaired before G2-B benchmark execution.
 - The non-sensitive `config/clash/sfo3-a-hy2.yaml` is parser-valid and pins the deployed certificate fingerprint; its auth remains a local secret-injection placeholder and it has not been imported/enabled.
 - Client handshake and real traffic validation were intentionally not performed in G2-A. Therefore server deployment is accepted, but HY2 performance/reliability is not yet accepted.
 - Resource observation: HY2 RSS was ~21 MiB; the interval MemAvailable delta is not attributed solely to HY2.
@@ -200,9 +244,9 @@ HY2 may be `BLOCKED_WITH_EXACT_REASON` if Cloud Firewall, DNS/certificate, Secre
 - DigitalOcean Cloud Firewall: Owner visually confirmed no Cloud Firewall is attached to this droplet.
 - Current VPS OS/kernel/qdisc/BBR/offload values.
 - UDP 8443 is locally bound by the Hysteria2 service; end-to-end client reachability/handshake is still unproven until G2-B.
-- HY2 auth/TLS generation and DPAPI recovery are complete; no public DNS dependency is used. Client-side auth injection and handshake remain to be validated.
+- HY2 auth/TLS generation on the VPS is complete and no public DNS dependency is used. Owner-host DPAPI recovery is currently NOT complete and is the active blocker; client-side auth injection and handshake remain untested.
 - Whether any server-level changes would share a failure domain with other services.
-- Whether current MTU=1280 is still necessary/optimal.
+- Active WireGuard MTU is 1420; whether any MTU change would improve tail behavior remains untested and is not authorized before the protocol A/B.
 - Whether long-task bottleneck is client→VPS, international route jitter/retransmission, WireGuard/MTU behavior, local bufferbloat, VPS forwarding, VPS→OpenAI, or upstream service behavior.
 - Peak-hour evidence shows tail degradation without broad request failure; G1 must preserve this as a diagnosis target rather than assume “high ping” is the root cause.
 
@@ -263,6 +307,17 @@ Owner-side Windows read-back before G2-B established:
 
 Implication: do not run HY2 through the current default route because that would risk nesting HY2 inside WireGuard and invalidating the comparison. Preferred bounded G2-B method is a temporary ActiveStore-only `24.199.118.137/32` route via WLAN gateway `192.168.1.1` / ifIndex 18, with exact pre/post read-back and exact removal at the end. WireGuard itself must remain running. If route creation requires elevation unavailable to Executor, stop at an Owner checkpoint rather than disabling WireGuard.
 
+#### Owner route action — current
+
+Owner subsequently created the route from an elevated PowerShell and fresh read-back proved:
+
+- `24.199.118.137/32` → `192.168.1.1` → WLAN ifIndex 18;
+- `PolicyStore=ActiveStore`, metric 1;
+- `Find-NetRoute` selects WLAN for the VPS IP;
+- WireGuard services remained Running, `SFO2-A` remained Up, public exit remained `24.199.118.137`.
+
+Current boundary: the route remains present. Do not recreate, overwrite, or delete it from Codex. The Owner-run G2-B runner may remove only this exact matching route during final cleanup after the benchmark has actually completed.
+
 ### G2-B — Safe-window comparative validation — NEXT
 
 Only after Owner explicitly confirms a safe window:
@@ -280,22 +335,34 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package rat
 
 ## 12. Next Step
 
-- Owner explicitly confirmed a safe window on 2026-10-02: no foreground task needs protection during this G2-B run.
-- Reviewer next action: issue the bounded G2-B validation prompt.
-- Executor next action: perform only the bounded G2-B sequence below and stop at Reviewer.
-- Owner safe-window confirmation for this run: CONFIRMED.
-- G2-B must keep WireGuard as the rollback baseline, inject the existing HY2 auth locally without exposing it, prove a real HY2 handshake first, then run short low-impact same-window comparison.
-- Do not add 3X-UI, VLESS-Reality, broad sysctl tuning, aggressive fixed-bandwidth settings, or bundled multi-variable tuning.
-- If HY2 alone materially improves the accepted tail/stability metrics, seal v1 without unnecessary BBR/GRO/MTU changes. If not, test surviving tuning candidates one at a time with rollback.
+1. Keep the current temporary `24.199.118.137/32` ActiveStore WLAN route in place; do not recreate it and do not remove it yet.
+2. Do not rerun the real DPAPI recovery repair immediately.
+3. Executor/Codex first performs the non-secret ACL fixture workflow against an isolated fixture path:
+   - create protected directories/file with non-secret fixture bytes;
+   - read back Owner SID, inheritance state, ACEs and rights;
+   - identify the exact cause of `RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID`;
+   - fix the ACL helper without weakening the intended Owner-only protection;
+   - prove fixture create/readback/validator/cleanup all PASS.
+4. Only after the non-secret ACL fixture passes, Owner reruns `repair-owner-dpapi-recovery.ps1` in elevated PowerShell 7.6.6.
+5. Fresh Owner-host read-back must then prove the final DPAPI artifact exists, is CurrentUser-decryptable, byte-identical to the validated bundle, has the accepted ACL boundary, and has no pending/plaintext residue.
+6. Only after DPAPI recovery is repaired may Owner rerun `g2b-owner-runner.ps1`.
+7. G2-B runner then performs: WG 60×5s → HY2 real handshake → HY2 60×5s → comparison → Secret runtime cleanup → exact temporary route cleanup → production WireGuard read-back.
+8. Do not run MTU/BBR/fq/GRO/sysctl tuning in this round. If protocol A/B is inconclusive, Reviewer chooses one later single-variable experiment.
 
 ## 13. Status Summary
 
-- Overall progress: P0 + G1 + G2-A PASS. HY2 is deployed side-by-side; current production traffic remains on WireGuard.
-- Final goal: portable VPN optimization v1.
-- Current Gate: G2-B safe-window validation is next and has not started.
-- This round completed: official HY2 v2.12.3 deployment on UDP 8443, Secret/TLS provisioning, DPAPI recovery, parser-validated Mihomo client fragment, rollback and regression verification.
-- Next: Owner confirms a safe window; then prove client handshake and compare WireGuard vs HY2 under the same low-impact method.
-- Attention: server-side readiness is accepted; HY2 performance superiority is not yet proven.
+- Overall: P0 PASS, G1 PASS, HY2 server-side G2-A PASS.
+- Current exception: the Windows DPAPI recovery claim from the original G2-A evidence is revoked by later Owner-host reality; recovery closure is OPEN.
+- Current Gate: G2-B is authorized but blocked before benchmark by the recovery defect.
+- Formal G2-B samples so far: WG 0 / HY2 0. No protocol-performance conclusion exists.
+- Server state: WireGuard active on UDP 51820; Hysteria2 v2.12.3 active on UDP 8443.
+- Control path: SSH via WireGuard to `10.66.21.1:22` PASS.
+- Candidate data path: WLAN direct to `24.199.118.137:8443` prepared via the Owner-created temporary ActiveStore /32 route.
+- Owner PowerShell runtime: 7.6.6, Administrator/High integrity verified.
+- Benchmark execution model: Owner-run PowerShell runner; Codex desktop thread itself cannot host the long benchmark loop.
+- Immediate blocker: repair runner ACL validator. Last real repair attempt transferred the recovery payload successfully over SSH but failed before final DPAPI promotion; cleanup left no recovery/pending/final artifact.
+- Immediate next action: non-secret ACL fixture and helper fix, then retry DPAPI repair; only then run the benchmark runner.
+- No live MTU/BBR/fq/GRO/sysctl tuning has been applied.
 
 
 ### G2-B control-path preflight — PASS
@@ -334,3 +401,34 @@ Reviewer consequence:
 - do not rerun or rotate VPS Secrets merely to repair this;
 - create and verify a new Owner-host DPAPI CurrentUser recovery artifact from the existing VPS Secret material over the accepted WireGuard SSH control path before any G2-B client Secret use;
 - no G2-B benchmark may continue until recovery reality is repaired and fresh-read on the actual Owner host.
+
+#### DPAPI repair attempt — current blocker
+
+A dedicated Owner repair runner was created and statically reviewed. Owner executed it in elevated PowerShell 7.6.6.
+
+Observed result:
+
+```text
+SSH_NATIVE_EXIT_CODE=0
+REMOTE_TRANSFER_RESULT=PASS
+LOCAL_FINALIZATION_RESULT=FAILED
+FINAL_PROMOTION_RESULT=NOT_PROMOTED
+RUNNER_FAILURE_CLASS=RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID
+```
+
+Owner then fresh-read the expected local paths and found:
+
+```text
+BaseExists=False
+RecoveryExists=False
+PendingExists=False
+FinalExists=False
+```
+
+Interpretation:
+
+- VPS Secret material does not need regeneration or rotation.
+- SSH transport is not the current blocker.
+- No partial local recovery artifact remains.
+- The current blocker is the ACL creation/validation helper used by the recovery runner.
+- The next attempt must first validate the ACL helper with non-secret fixture data; do not use real Secret material as ACL debug input.
