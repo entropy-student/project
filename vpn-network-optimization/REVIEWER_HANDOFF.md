@@ -67,14 +67,14 @@ Accepted source:
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
 STATE=AUTHORIZED_UNTIL_GATE_RESOLVED
-OBJECTIVE=Determine where inside the Windows networking stack the synthetic UDP/8443 datagram stops before reaching the physical WLAN NIC.
+OBJECTIVE=Confirm whether the proven local WFP outbound drop is WireGuard Windows kill-switch enforcement caused by the production full-tunnel /0 configuration.
 MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 ```
 
 ### TARGET_AND_SCOPE
 
-Current next diagnostic under the standing authorization:
+Current next diagnostic under the standing authorization (read-only):
 - keep production WireGuard ON;
 - create the same exact temporary `24.199.118.137/32` WLAN route;
 - use Windows built-in pktmon with an exact `24.199.118.137 + UDP + 8443` filter on NICs only;
@@ -107,9 +107,8 @@ Forbidden:
 ### ACCEPTANCE_CRITERIA
 
 Diagnostic classification:
-- JSON shows matching flow at protocol/filter components but not NIC → identify the last Windows component / drop reason and repair that local egress boundary;
-- JSON remains empty even across all components → pktmon never observes the synthetic send; move to Windows socket/WFP route-control diagnostics rather than blaming VPS/ISP;
-- JSON reaches NIC → Windows does transmit the datagram; then router/NAT/ISP/upstream path becomes primary.
+- WireGuard `/0` + matching WireGuard `Block all outbound (IPv4)` WFP filter → root cause confirmed: WireGuard kill-switch blocks the direct HY2 outer path while production WG remains active;
+- no matching WireGuard block filter → continue targeted WFP owner/filter identification before any repair.
 
 This Gate does not itself PASS G2-B.
 
@@ -200,11 +199,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-Raw UDP to both 51820 and 8443 failed to reach VPS eth0 despite explicit WLAN binding. Production WireGuard still works, so inspect the actual Windows WLAN NIC transmit path with a header-only pktmon capture before assigning blame upstream.
+Pktmon all-component counters proved the synthetic UDP datagram is locally dropped at TCP/IPv4 L3/L4 before WLAN transmission. Confirm the WireGuard /0 kill-switch WFP filter read-only before repair.
 
 ## OWNER_ACTION_REQUIRED
 
-**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected and run the prepared local WLAN-NIC header-only capture checkpoint.
+**No further authorization needed for this read-only confirmation.** Keep WireGuard connected. Do not change kill-switch/firewall semantics yet.
 
 ## EVIDENCE_POINTERS
 
