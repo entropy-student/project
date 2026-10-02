@@ -1161,3 +1161,25 @@ Reviewer interpretation:
 - This disproves a simple UDP/8443-only filter hypothesis.
 - Production WireGuard to UDP/51820 remains healthy, so generic upstream UDP failure is also not proven.
 - The remaining discriminator is whether the synthetic datagram reaches the Windows WLAN NIC transmit path. A local header-only pktmon capture can answer this without relying on localized counters text.
+
+
+## pktmon JSON diagnostic — route-selection preflight return — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+PKTMON_JSON_DIAGNOSTIC_PREFLIGHT=PASS
+PKTMON_JSON_DIAGNOSTIC_RETURN_CODE=VPS_ROUTE_SELECTION_AMBIGUOUS
+FINAL_PKTMON_STATE_CLEAN=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+CLEANUP_FAILURE_COUNT=0
+OWNER_PKTMON_JSON_DIAGNOSTIC_RESULT=COMPLETE
+```
+
+Reviewer interpretation:
+- The probe stopped before pktmon start and before any synthetic UDP send.
+- The exact temporary /32 route was created and later removed cleanly; production WireGuard was restored.
+- `Find-NetRoute` returned more than one selectable result in this environment, so its cardinality check is too strict for this diagnostic.
+- This check is redundant because the exact ActiveStore /32 route is already verified and the diagnostic UDP socket binds explicitly to WLAN address 192.168.1.4.
+- The terminal `COMPLETE` marker is a script bug: it currently reflects cleanup success even when the diagnostic body returned. The next revision must return `RETURN_TO_REVIEWER` unless the diagnostic itself reaches completion.
+- No UDP probe was sent; standing Owner authorization remains valid.
