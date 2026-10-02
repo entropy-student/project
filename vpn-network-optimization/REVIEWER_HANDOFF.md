@@ -134,21 +134,22 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Prepared one-shot Windows egress checkpoint:
-- `scripts/g2b-windows-udp8443-egress-checkpoint.ps1`
-- commit: `8b33d6a1b8edc07f9c64cae754f5804a10336828`
-- blob: `7c46b895897010833d30d923704d44333c72c8a2`
+Current prepared control checkpoint:
+- `scripts/g2b-raw-udp8443-path-control.ps1`
+- commit: `c749916e9a515d22920ab31d90eea33f1a7066d3`
+- blob: `c54daf710e6b803bddc36b362076dd38eac025fb`
 - keeps production WireGuard ON;
-- uses Windows built-in Packet Monitor (`pktmon`) with an exact `24.199.118.137 + UDP + 8443` filter;
-- uses counters-only NIC monitoring, so packet payload is not logged;
-- invokes accepted `g2b-owner-runner.ps1 -HandshakeOnly` exactly once;
-- records only whether matching UDP/8443 traffic reached Windows NIC counters;
-- cleans pktmon state/filter, temporary route, Mihomo/runtime config, and rechecks WireGuard;
-- fails closed before the handshake if pktmon already has active/unclear state or existing filters.
+- creates the exact temporary `24.199.118.137/32` WLAN route;
+- starts one strict-SSH VPS tcpdump observer for the presence of a single inbound UDP/8443 packet, with payload discarded;
+- sends exactly one small raw UDP datagram from Windows using `UdpClient`;
+- does not start Mihomo, does not read DPAPI Secret, and does not run any benchmark;
+- removes the exact temporary route and rechecks production WireGuard.
+
+The previous pktmon result is retained as diagnostic evidence but is not treated as conclusive because its human-readable counters parser may false-negative.
 
 Standing Owner authorization remains valid for further bounded troubleshooting inside this Gate.
 
-Executor should read only this Current Gate and the prepared checkpoint. Do not alter configuration or replay benchmarks.
+Executor should read only this Current Gate and the prepared control checkpoint. Do not alter configuration or replay benchmarks.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
