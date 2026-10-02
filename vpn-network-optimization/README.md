@@ -42,12 +42,13 @@
 
 1. WireGuard 当前配置与路径基线检查；
 2. MTU / Keepalive 等 WireGuard 参数标准化；
-3. Hysteria2 作为拥塞/高丢包场景的备用通道候选；
-4. Linux fq / BBR 只作为候选，先检查再决定是否应用；
-5. 检查适用于 UDP VPN 出口的 GRO / forwarding 能力；
-6. Clash Verge 作为客户端统一管理候选，不强制替换现有 WireGuard 客户端；
-7. 自动部署、健康检查、回滚与迁移模板；
-8. 后续安全窗口内再做网络与真实 Codex A/B，筛选最终 v1 配置。
+3. Hysteria2 作为拥塞/高丢包场景的高性能候选；
+4. VLESS + REALITY + XTLS Vision 作为 UDP 不可用/受限网络下的 TCP/443 互补候选；
+5. Linux fq / BBR 只作为候选，先检查再决定是否应用；
+6. 检查适用于 UDP VPN 出口的 GRO / forwarding 能力；
+7. Clash Verge / Mihomo 作为客户端统一管理层，不强制替换现有 WireGuard 管理通道；
+8. 自动部署、网络自适应、健康检查、回滚与迁移模板；
+9. 后续安全窗口内做 HY2 / VLESS+REALITY / WireGuard 的代表性验证，再筛选最终 v1 角色。
 
 ## 首版明确不做
 
@@ -77,7 +78,8 @@ P0   研究、范围冻结、立项                    ✅ PASS
 G1   无干扰基线 + 可迁移第一版               ✅ PASS
 G2-A HY2 旁路部署                            ✅ PASS
 G2-B 安全窗口 WireGuard vs HY2 对比          ✅ PASS
-G2-C 晚高峰 + 真实工作负载验证               ⏳ NEXT
+G2-C VLESS+REALITY 旁路候选                  🔄 IN_PROGRESS
+G2-D 晚高峰 + 真实工作负载验证               ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
@@ -108,4 +110,4 @@ G2-C 与最终 v1 生产角色/安全策略决策完成后，即视为 MVP 完�
 - Cloud Firewall：Owner 确认未绑定
 - live BBR/fq/GRO/MTU 调优：未应用
 
-G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好，但尚未证明晚高峰或真实 Codex/生图工作负载下持续占优。下一步在新的 G2-C Gate 中做晚高峰 + 真实工作负载验证，再决定 v1 的最终生产角色与安全策略。
+G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。Owner 决定在最终封板前再补一个互补的 TCP/443 候选，因此 G2-C 新增 VLESS+REALITY 旁路集成；之后 G2-D 再做晚高峰 + 真实 Codex/生图工作负载验证，并决定 v1 的最终生产角色与安全策略。
