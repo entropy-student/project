@@ -1,0 +1,50 @@
+{
+  "capturedAtUtc": "2026-09-29T12:40:32.173Z",
+  "project": "birthday-magazine-g3c",
+  "composeFile": "birthday-magazine-studio/poc/g3c/compose.yaml",
+  "versions": {
+    "wordpress": "7.1.1",
+    "php": "8.3.33",
+    "woocommerce": "11.1.2",
+    "astra": "4.13.11",
+    "localOnly": true,
+    "generationEnabled": false,
+    "activePlugins": [
+      "astra-sites/astra-sites.php",
+      "bms-g3c-commerce-loop/bms-g3c-commerce-loop.php",
+      "bms-g3c-preview/bms-g3c-preview.php",
+      "woocommerce/woocommerce.php"
+    ],
+    "paypalActive": [],
+    "generationJobCount": 0,
+    "modelCallCount": 0,
+    "product": {
+      "id": 11,
+      "type": "simple",
+      "price": "39.99",
+      "virtual": true,
+      "currency": "USD",
+      "url": "http://127.0.0.1:8147/product/birthday-magazine-g3c-synthetic-preview/"
+    },
+    "starterTemplates": "4.7.7",
+    "mariadb": "11.4.7-MariaDB-ubu2404",
+    "mailpit": "1.31.2"
+  },
+  "projectContainers": [
+    "birthday-magazine-g3c-db-1|Up 56 minutes (healthy)|3306/tcp",
+    "birthday-magazine-g3c-mailpit-1|Up 56 minutes (healthy)|127.0.0.1:8148->8025/tcp",
+    "birthday-magazine-g3c-wordpress-1|Up 6 minutes|127.0.0.1:8147->80/tcp",
+    "birthday-magazine-g3c-wpcli-1|Up 55 minutes|"
+  ],
+  "exposure": {
+    "wordpressBind": "127.0.0.1:8147",
+    "mailpitBind": "127.0.0.1:8148",
+    "mariadbHostPortPublished": false
+  },
+  "initialWpCliFlagReadback": {
+    "localOnly": false,
+    "generationEnabled": null,
+    "cause": "WORDPRESS_CONFIG_EXTRA was not provided to the wpcli service"
+  },
+  "flagCorrection": "wp config set BMS_G3C_LOCAL_ONLY true --raw; wp config set BMS_G3C_GENERATION_ENABLED false --raw"
+}

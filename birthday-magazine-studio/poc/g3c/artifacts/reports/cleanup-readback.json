@@ -1,0 +1,32 @@
+{
+  "capturedAtUtc": "2026-09-29T12:55:23.015Z",
+  "gate": "G3C_UI_UX_PRODUCTIZATION",
+  "cleanupScope": "exact project compose down --volumes --remove-orphans; no global prune",
+  "temporaryDirectory": {
+    "path": "birthday-magazine-studio/poc/g3c/.tmp",
+    "insideRepository": true,
+    "gitIgnored": true,
+    "notSymlinkOrReparsePoint": true,
+    "removedFileCount": 2,
+    "existsAfterCleanup": false
+  },
+  "projectResourcesAfter": {
+    "containers": [],
+    "volumes": [],
+    "networks": []
+  },
+  "projectResourcesGone": true,
+  "unrelatedFingerprintBasis": "container ID|name|published ports; volume name; network ID|name|driver|scope (container uptime/status excluded)",
+  "unrelatedFingerprintCounts": {
+    "containers": {},
+    "volumes": {},
+    "networks": {}
+  },
+  "unrelatedDockerResourceFingerprintUnchanged": true,
+  "forbiddenActions": {
+    "globalPrune": false,
+    "paypalOrPayment": 0,
+    "productionAi": 0,
+    "sharedInfrastructureMutation": 0
+  }
+}

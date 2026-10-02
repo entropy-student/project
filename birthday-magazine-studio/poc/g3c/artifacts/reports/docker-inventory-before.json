@@ -1,0 +1,29 @@
+{
+  "capturedAtUtc": "2026-09-29T11:44:05.969Z",
+  "stage": "before",
+  "dockerClientServerVersion": "29.7.2|29.7.2",
+  "composeVersion": "5.4.0",
+  "projectResources": {
+    "containers": [],
+    "volumes": [],
+    "networks": []
+  },
+  "unrelatedResourceFingerprint": {
+    "containers": {
+      "count": 32,
+      "sha256": "4a0d5e639433a4b2522bfbc0fc7a6b5b25c37ee810f2be03dd3784910c30938e"
+    },
+    "volumes": {
+      "count": 78,
+      "sha256": "61b312c2cb3fded46e49eb945b7321304bd0dfe5f2ededdbcf562bb3c2cc2eea"
+    },
+    "networks": {
+      "count": 17,
+      "sha256": "9da165b15ce31e29608846eabddb1668eed4d8ee48a86f60e55972ebf9db9656"
+    }
+  },
+  "images": {
+    "count": 45,
+    "sha256": "578d910b78f541858b21e1c8f6bb104a13a6a1f0f3c11ed195671c0d31f1f016"
+  }
+}
