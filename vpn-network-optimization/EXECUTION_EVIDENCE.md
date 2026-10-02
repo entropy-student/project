@@ -420,3 +420,21 @@ Owner fresh read-back later established:
 Current interpretation: this is consistent with Windows packaged-app path virtualization. The historical `DPAPI_FINAL_EXISTS=YES` must therefore not be read as proof that the canonical Owner AppData path was written. Exact virtualized-artifact metadata, ACL, DPAPI round-trip, and canonical-path reconciliation remain pending.
 
 During a later repair attempt, SSH transfer from the VPS succeeded but local finalization failed before promotion with `RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID`; cleanup left no canonical base/recovery/pending/final paths. Because a virtualized artifact has now been found, do not rotate/regenerate VPS Secrets or rerun the real repair until the virtualized artifact is validated.
+
+### Virtualized DPAPI artifact exact metadata/ACL read-back
+
+Owner fresh read-back found the exact artifact under Codex packaged-app virtualization:
+
+```text
+PATH=C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi
+NAME=hy2-g2a.dpapi
+BYTES=1206
+CREATION_TIME=2026-10-02 00:14:04
+LAST_WRITE_TIME=2026-10-02 00:14:04
+OWNER=码头整来的薯条\34707
+INHERITANCE_PROTECTED=True
+ACCESS_RULE_COUNT=1
+SOLE_ACE=current Owner FullControl Allow explicit
+```
+
+This matches the historical G2-A size and intended ACL pattern and confirms the packaged-app path-virtualization hypothesis at the filesystem metadata level. DPAPI CurrentUser decrypt/round-trip and bundle validation are still pending; canonical Owner AppData path remains unrealized.
