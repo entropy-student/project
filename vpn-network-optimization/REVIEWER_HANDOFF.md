@@ -48,7 +48,7 @@ G2-B benchmark status:
 - Owner High-integrity `-PreflightOnly` was then executed from PowerShell 7.6.6 / RID 12288. The earlier route/adapter precheck passed far enough to advance into `PRECHECK_WIREGUARD_AND_CLIENT_STATE`, where the runner failed closed with `PropertyNotFoundException` before Secret access, Mihomo start, benchmark, or network mutation.
 - Owner bounded read-only diagnostic proved `AutoConfigURL` is absent while the other snapshot inputs are healthy; under StrictMode the old direct access was the exact `PropertyNotFoundException` cause.
 - Reviewer fresh-read accepted commit `50a6b02480df6554493fee59f1610486a9a239fe`: optional `ProxyServer` / `ProxyOverride` / `AutoConfigURL` now normalize missing/null to empty string, `ProxyEnable` and required service/WireGuard/route fields remain fail-closed, and snapshot failures now retain branch-specific diagnostics.
-- Exact commit scope is limited to `g2b-owner-runner.ps1`, `EXECUTION_EVIDENCE.md`, and `EXECUTOR_HANDOFF.md`; `REVIEWER_HANDOFF.md` was not modified by Executor. Current `main` equals the accepted commit.
+- Exact candidate commit scope is limited to `g2b-owner-runner.ps1`, `EXECUTION_EVIDENCE.md`, and `EXECUTOR_HANDOFF.md`; `REVIEWER_HANDOFF.md` was not modified by Executor. Reviewer acceptance then advanced `main` only by the Reviewer-owned Handoff record.
 - No G2-B performance conclusion exists yet.
 
 ## 1. Project Goal
@@ -618,7 +618,7 @@ Reviewer interpretation: the previous route/adapter failure is no longer the act
 
 - Decision: `PASS_G2B_CLIENTSNAPSHOT_OPTIONAL_PROPERTY_REPAIR`.
 - Accepted commit: `50a6b02480df6554493fee59f1610486a9a239fe`.
-- Reviewer fresh-read inspected the exact commit diff, canonical runner, `EXECUTION_EVIDENCE.md`, and `EXECUTOR_HANDOFF.md`; current `main` is identical to the accepted commit.
+- Reviewer fresh-read inspected the exact commit diff, canonical runner, `EXECUTION_EVIDENCE.md`, and `EXECUTOR_HANDOFF.md`; the candidate was current `main` at inspection, after which Reviewer advanced `main` only with the acceptance Handoff update.
 - Exact commit changes only the runner and the two Executor-owned records. Intervening unrelated repository commits are not part of this Gate and do not alter the reviewed VPN candidate.
 - The fix preserves StrictMode, keeps `ProxyEnable` and required service/WireGuard/route state fail-closed, and normalizes only the three optional proxy strings.
 - Owner `-PreflightOnly` was intentionally not executed by Executor. Full benchmark remains blocked until Owner High-integrity preflight succeeds and Reviewer accepts the read-back.
