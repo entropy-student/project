@@ -1496,3 +1496,71 @@ Reviewer conclusion:
 - The entire fault chain is closed: the previous TLS_ERROR was caused by the local WireGuard WFP kill-switch preventing HY2 outer UDP from leaving Windows.
 - Cleanup was complete and production WireGuard was restored.
 - Next step is the formal WG vs HY2 benchmark; do not repeat root-cause diagnostics.
+
+
+## Post-killswitch same-window WG vs HY2 comparative validation — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+ACCEPTED_SOURCE_IDENTITY=PASS
+NETWORK_BASELINE_PREFLIGHT=PASS
+OWNER_TEMP_ROUTE_CREATED=YES
+FORMAL_COMPARATIVE_VALIDATION_INVOCATION=START
+WG_SAMPLES=60
+WG_SUCCESS=60
+WG_FAILURES=0
+WG_MEDIAN=0.796850
+WG_P90=1.502720
+WG_P95=1.735142
+WG_P99=5.745878
+WG_GT_1S=15
+WG_GT_1_5S=7
+WG_GT_2S=1
+HY2_HANDSHAKE_CURL_EXIT=0
+HY2_HANDSHAKE_HTTP_STATUS=401
+HY2_HANDSHAKE_ERROR=NONE
+HY2_HANDSHAKE_TIME_TOTAL=1.151337
+HY2_HANDSHAKE_TIME_CONNECT=0.000728
+HY2_HANDSHAKE_TIME_APPCONNECT=0.852377
+HY2_AUTH=PASS
+TLS_CERTIFICATE_PINNING=PASS
+HY2_OUTER_ROUTE=WLAN_DIRECT
+PUBLIC_EXIT_THROUGH_HY2=24.199.118.137
+HY2_SAMPLES=60
+HY2_SUCCESS=60
+HY2_FAILURES=0
+HY2_MEDIAN=0.498499
+HY2_P90=0.715330
+HY2_P95=0.761820
+HY2_P99=1.771594
+HY2_GT_1S=2
+HY2_GT_1_5S=1
+HY2_GT_2S=0
+CURRENT_WINDOW_RESULT=HY2_BETTER_THIS_WINDOW
+PEAK_HOUR_SUPERIORITY_PROVEN=NO
+TEST_MIHOMO_STOPPED=YES
+CLIENT_SECRET_RUNTIME_DELETED=YES
+PLAINTEXT_SECRET_ARTIFACTS_REMAINING=0
+OWNER_TEMP_ROUTE_REMOVED=YES
+PRODUCTION_WG_RESTORED=YES
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+G2B_OWNER_RUNNER_RESULT=COMPLETE
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_TEST_RUNTIME_RESIDUE=ABSENT
+TEMP_CHECKPOINT_WORKSPACE_REMOVED=YES
+RUNNER_INVOKED=YES
+RUNNER_COMPLETED=YES
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+OWNER_POST_KILLSWITCH_COMPARATIVE_RESULT=COMPLETE
+```
+
+Reviewer analysis:
+- Both transports completed 60/60 samples with zero failures, zero timeouts, zero resets, and no failure streak.
+- HY2 dominated WireGuard on every measured latency/tail metric in this same window: median 0.498499s vs 0.796850s; P90 0.715330s vs 1.502720s; P95 0.761820s vs 1.735142s; P99 1.771594s vs 5.745878s.
+- Relative to WireGuard in this window, HY2 reduced median by about 37.4%, P90 by 52.4%, P95 by 56.1%, and P99 by 69.2%.
+- Tail-count improvement was also material: >1s 2 vs 15; >1.5s 1 vs 7; >2s 0 vs 1.
+- The runner's deterministic comparator classified this window as `HY2_BETTER_THIS_WINDOW`.
+- This does not prove universal or peak-hour superiority; the runner explicitly reports `PEAK_HOUR_SUPERIORITY_PROVEN=NO`.
+- The Windows UDP/8443 egress fault Gate is resolved and can be closed. G2-B safe-window network comparison has positive evidence; final v1 sealing should still preserve the distinction between this same-window network result and any separate peak-hour / real Codex workload validation required by project scope.
