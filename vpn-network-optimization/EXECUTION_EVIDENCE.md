@@ -1375,3 +1375,20 @@ Reviewer conclusion:
 - This is the exact path that failed before the WireGuard WFP kill-switch repair.
 - The root-cause chain is therefore closed: WireGuard's strict Windows kill-switch was the blocker; replacing IPv4 /0 with two /1 defaults removed that blocker while preserving WireGuard routing.
 - Next validation is the real HY2 handshake using the existing protected DPAPI Secret runtime boundary and one temporary Mihomo instance.
+
+
+## Post-killswitch HY2 handshake checkpoint download reset — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+DOWNLOAD_ENDPOINT=raw.githubusercontent.com
+CURL_EXIT=35
+CURL_ERROR=Recv failure: Connection was reset
+CHECKPOINT_DOWNLOAD_FAILED=YES
+HANDSHAKE_SCRIPT_EXECUTED=NO
+```
+
+Reviewer interpretation:
+- The post-killswitch HY2 handshake checkpoint did not execute.
+- This provides no new evidence about HY2.
+- The next attempt will fetch the exact same pinned commit via the GitHub Contents API instead of raw.githubusercontent.com, then verify the same Git blob SHA before execution.
