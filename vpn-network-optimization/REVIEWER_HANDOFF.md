@@ -13,8 +13,8 @@ P0                                   PASS
 G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
-G2-B benchmark                       RETURN before first formal sample
-CURRENT_BLOCKER                      RETURN_WG_BASELINE_BINDING + cleanup reconciliation
+G2-B benchmark                       RETURN before first formal sample; network reconciled safe
+CURRENT_BLOCKER                      Runner repair: empty Rows binding + exact-route no-match verification
 ```
 
 Current runtime facts:
@@ -350,19 +350,22 @@ Owner read-only diagnostic proved that the optional Internet Settings field `Aut
 
 ## 12. Next Step
 
-1. Do not rerun the full runner and do not manually add/remove the `/32` route.
-2. Run one atomic Owner-local read-only reconciliation that proves: exact `/32` route present/absent; selected route to the VPS; WireGuard services/adapter state; system-proxy/TUN/Mihomo state; public exit; runtime-secret artifact absence; and one non-secret fixture proving whether an empty mandatory collection triggers the observed `ParameterBindingValidationException`.
-3. After current network reality is reconciled, repair only the benchmark empty-collection binding and exact-route no-match cleanup verification, with branch-specific cleanup diagnostics.
-4. Persist/fresh-read the repair before any new benchmark authorization. No MTU/BBR/fq/GRO/sysctl tuning.
+1. Executor repairs only `scripts/g2b-owner-runner.ps1` for two proven defects: allow the intentionally empty benchmark row collection at entry, and normalize exact-route ObjectNotFound no-match to an empty collection in cleanup/readback.
+2. Preserve benchmark sampling, DPAPI, Mihomo, HY2, WireGuard, route-removal, and final-state acceptance semantics; do not weaken cleanup verification.
+3. Add non-secret regression fixtures for both defects, AST/static validation, and Secret scan only; do not run the full runner or Owner checkpoint.
+4. Update only Executor-owned Evidence/Handoff, commit project-owned changes, fresh-read GitHub, and stop at Reviewer.
+5. Executor startup follows Governance v0.2.5 narrow relay; do not reread Governance or broad history.
 
 ## 13. Status Summary
 
+- Governance current: v0.2.5 / ACTIVE_PROVISIONAL.
 - Overall: P0 PASS, G1 PASS, G2-A PASS, DPAPI recovery PASS, G2-B preflight chain PASS.
 - Full G2-B attempt: RETURN before sample 1 at `WIREGUARD_BASELINE` / `ParameterBindingValidationException`.
-- Secret access/runtime: no Secret runtime created; Mihomo not started; no HY2 handshake; no formal WG/HY2 samples.
-- Cleanup report: exact route cleanup and final network readback returned failures; actual route/WG state is currently UNKNOWN until Owner read-only reconciliation.
-- Source finding: empty mandatory `Rows` collection binding is the leading benchmark root cause and matches the failure point; exact-route no-match handling is the leading cleanup false-negative cause.
-- Current action: one atomic read-only reconciliation only. No rerun.
+- Owner post-failure reconciliation: PASS; production WireGuard path is active, temporary `/32` route absent, no Mihomo/TUN/runtime Secret residue, public exit correct.
+- Proven benchmark defect: Mandatory empty collection binding; `[AllowEmptyCollection()]` fixture passes.
+- Proven cleanup verifier defect: exact missing-route query throws ObjectNotFound/CimJobException and must be normalized to empty without swallowing unrelated errors.
+- Formal WG/HY2 samples remain 0/0; no protocol-performance conclusion exists.
+- Current action: source repair + static regression + persistence only.
 
 
 
@@ -658,3 +661,20 @@ G2B_OWNER_RUNNER_RESULT=FAIL_CLOSED
 ```
 
 Reviewer boundary: the output does not prove that the route is still present or that production WireGuard is not restored, because the cleanup verifier itself can fail on an exact no-match query. Current network state is UNKNOWN until a read-only Owner reconciliation. Do not retry the runner.
+
+
+### Owner post-failure reconciliation — PASS_NETWORK_RESTORED
+
+- Exact `24.199.118.137/32` ActiveStore route is absent; no-match returns `CimJobException` / `CmdletizationQuery_NotFound,Get-NetRoute` / `ObjectNotFound`.
+- Selected VPS path is the WireGuard default route on ifIndex 13.
+- WireGuard Manager and tunnel are Running; adapter `SFO2-A` is Up.
+- System proxy is disabled; no matching TUN adapter, Mihomo process, runtime Secret config, or test-proxy listener remains.
+- Public exit is the accepted VPS exit.
+- Empty Mandatory collection fixture reproduces `ParameterBindingValidationException`; `[AllowEmptyCollection()]` passes.
+- Consequence: production network state is reconciled safe; prior cleanup status fields were false-negative verifier outputs.
+
+### Gate — G2B_Runner_Binding_And_Cleanup_NoMatch_Repair
+
+- `REVIEWER_TO_EXECUTOR_RELAY`: Read only `scripts/g2b-owner-runner.ps1`, the latest G2-B repair section in `EXECUTION_EVIDENCE.md`, and the current top section of `EXECUTOR_HANDOFF.md`. Accepted facts: network reconciliation PASS; exact route absent; WireGuard restored; benchmark root cause = empty Mandatory collection binding; cleanup false-negative root cause = exact-route ObjectNotFound no-match. Modify only the runner and Executor-owned Evidence/Handoff. Do not reread Governance/history, run benchmark, access Secrets, or mutate network.
+- Objective: smallest source repair plus non-secret fixtures, AST/static validation, Secret scan, GitHub persistence, then STOP_AT_REVIEWER.
+- Acceptance: empty benchmark Rows enters `Invoke-Benchmark`; unrelated binding errors still fail closed; only accepted exact-route ObjectNotFound becomes zero rows; unrelated NetRoute errors still fail closed; consequential paths otherwise unchanged.
