@@ -1274,3 +1274,32 @@ Reviewer interpretation:
 - Microsoft documents outbound `Inspection drop` as a Windows Filtering Platform inspection result.
 - WireGuard for Windows documents a /0 single-peer kill-switch that permits the WireGuard tunnel service itself while blocking other untunneled traffic. This precisely matches the observed asymmetry (production WireGuard UDP works; synthetic direct UDP from PowerShell and HY2/Mihomo do not).
 - Next step is read-only confirmation of WireGuard's WFP block filter and /0 route semantics before proposing any repair.
+
+
+## WireGuard kill-switch root-cause confirmation — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+WG_ROUTE_DEFAULT_V4_0_0_0_0_0=YES
+WG_ROUTE_SPLIT_V4_0_0_0_0_1=NO
+WG_ROUTE_SPLIT_V4_128_0_0_0_1=NO
+WFP_TARGET_BLOCK_ALL_OUTBOUND_IPV4=YES
+WFP_TARGET_FILTER_TEXT_HAS_WIREGUARD=YES
+WFP_STATE_HAS_WIREGUARD=YES
+WFP_STATE_HAS_BLOCK_ALL_OUTBOUND_IPV4=YES
+WIREGUARD_KILLSWITCH_CONFIRMATION=CONFIRMED
+READ_ONLY_MUTATION=NO
+SECRET_VALUES_EMITTED=0
+TEMP_WFP_READONLY_ARTIFACTS_REMOVED=YES
+FINAL_PRODUCTION_WIREGUARD=UNCHANGED
+PROBE_COMPLETED=YES
+CLEANUP_FAILURE_COUNT=0
+OWNER_WIREGUARD_KILLSWITCH_READONLY_RESULT=COMPLETE
+```
+
+Reviewer conclusion:
+- Root cause is confirmed: WireGuard for Windows is operating with IPv4 `0.0.0.0/0` full-tunnel semantics and an active WireGuard-owned WFP `Block all outbound (IPv4)` filter.
+- This kill-switch permits the WireGuard tunnel service's own outer traffic while blocking other untunneled/direct WLAN egress.
+- That exactly explains the entire diagnostic chain: production WireGuard remains healthy while raw UDP and Mihomo/HY2 direct outer UDP are locally dropped before WLAN transmission.
+- Hysteria server, UDP/8443 listener, certificate/SNI/auth shape, DigitalOcean Cloud Firewall, VPS host firewall, and ISP/port-specific filtering are no longer the active fault domain.
+- Next phase is a minimal reversible client-side routing/security-semantics repair that keeps WireGuard connected while permitting the HY2 outer path.
