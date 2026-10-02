@@ -66,7 +66,7 @@ Current known components:
 
 ```text
 GATE_ID=G2C_PRIVATE_REALITY_COMPAT_CANARY
-STATE=AUTHORIZED_EXECUTION
+STATE=AUTHORIZED_RETRY_AFTER_PREFLIGHT_TOOLING_RECONCILIATION
 OBJECTIVE=Prove the exact Windows Mihomo <-> sing-box VLESS+REALITY+Vision pair works before any public TCP/443 exposure.
 MAX_ENDPOINT_THIS_ROUND=One temporary WireGuard-only canary on 10.66.21.1:14443, one real proxied HTTPS handshake, exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -113,7 +113,8 @@ Executor must fresh-read:
 
 Before mutation prove:
 - Windows PowerShell/runtime + existing Mihomo binary;
-- WireGuard Manager/tunnel/adapter healthy;
+- **Administrator/High integrity is NOT required for this canary. Medium-integrity Owner/Codex execution is acceptable because this Gate performs no Windows route/firewall/service/TUN/system-proxy mutation.**
+- WireGuard Manager/tunnel/adapter healthy using read-only queries available to the current user;
 - strict SSH native exit 0 and remote hostname/root identity;
 - `10.66.21.1:14443` has no listener;
 - public TCP/443 remains free;
@@ -189,10 +190,13 @@ Authorization includes the temporary server/client writes, ephemeral credential 
 Start only from:
 1. this Gate;
 2. `CURRENT_ACCEPTED_STATE`;
-3. `scripts/g2c-vless-reality-preflight.ps1` for the already-accepted SSH/runtime baseline pattern;
-4. `scripts/g2b-owner-runner.ps1` only for reusable owner-only runtime-file/Mihomo-process/curl-sanitization patterns, not for G2-B history.
+3. `scripts/g2c-vless-reality-preflight.ps1` **as a reference only** for SSH options/accepted host identity; do **not** execute it wholesale because its Administrator assertion belongs to the earlier read-only checkpoint and is not an acceptance requirement of this canary;
+4. `scripts/g2b-owner-runner.ps1` only for reusable current-owner-only runtime-file/Mihomo-process/curl-sanitization patterns, not for G2-B history.
 
 Accepted facts Executor may rely on:
+- Owner authorization above remains active because the prior attempt stopped before SSH, Secret access, server/client runtime creation, or any consequential mutation;
+- the previous `RETURN_G2C_WINDOWS_ADMIN_PREFLIGHT_BLOCKED` is Reviewer-classified as a **preflight tooling over-constraint**, not target/runtime drift;
+- Medium integrity / non-elevated Windows execution is permitted for this Gate; do not ask Owner for elevation unless a specific required operation independently fails and truly requires it;
 - Owner authorization above is active;
 - strict SSH identity exists at the current recorded path and passed immediately before this Gate;
 - VPS identity is `ubuntu-s-1vcpu-512mb-10gb-sfo3`, Ubuntu 24.04.5, x86_64;
@@ -260,37 +264,26 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Proposed next checkpoint, not yet authorized:
+Resume the **same authorized G2-C private REALITY compatibility canary** from the current Codex/Owner context.
 
-```text
-CHECKPOINT=G2C_PRIVATE_REALITY_COMPAT_CANARY
-SERVER_SCOPE=temporary project-local sing-box candidate only
-LISTEN=10.66.21.1:14443 over existing WireGuard control network only
-PUBLIC_TCP_443=UNCHANGED
-CLIENT=existing Windows Mihomo / Clash Verge core
-PURPOSE=prove current Mihomo <-> sing-box VLESS+REALITY+Vision interoperability before any public listener is created
-SECRETS=ephemeral candidate UUID + REALITY keypair generated inside protected target boundary; no values emitted
-CLEANUP=stop/remove temporary process/config/key material after result; preserve WG/HY2
-MANDATORY_REVIEW_STOP=YES
-```
-
-Reason for the extra canary: current REALITY implementations have active cross-core compatibility churn, and unauthenticated REALITY fallback can forward to the configured handshake target. Therefore public TCP/443 deployment is intentionally deferred until compatibility and fallback-safety design are proven.
+The prior attempt is not replayed as a privileged checkpoint. Executor should build/use a canary-specific checkpoint that:
+- accepts the current Medium-integrity Windows token;
+- performs only ordinary user-space local Mihomo/runtime-file work plus strict SSH to the already-authorized VPS root path;
+- performs no Windows route/firewall/service/TUN/system-proxy mutation;
+- retains every Secret/listener/cleanup boundary already defined by this Gate;
+- stops at Reviewer after Evidence + Executor Handoff persistence.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Owner has authorized the private canary. Executor may proceed inside the current Gate; public TCP/443 remains unauthorized.
+**NONE.** No Administrator PowerShell is required for the retry. Owner authorization for this private canary remains valid. Public TCP/443 remains unauthorized.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-```text
-NO_ACTIVE_EXECUTOR_GATE
-```
+Use the relay inside `CURRENT_GATE`. The previous admin-only preflight result has been reconciled. Do not rerun `g2c-vless-reality-preflight.ps1` wholesale; use only its strict SSH/identity pattern as a reference.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-```text
-NONE
-```
+Use the fixed completion packet defined inside `CURRENT_GATE`.
 
 ## EVIDENCE_POINTERS
 
