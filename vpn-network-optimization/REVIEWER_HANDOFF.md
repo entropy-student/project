@@ -136,14 +136,15 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 Current prepared Windows-stack diagnostic:
 - `scripts/g2b-pktmon-json-egress-diagnostic.ps1`
-- commit: `842da52dfbae7c2aa33895ba3305f6eae2127ef8`
-- blob: `c54d568d25174b66fc32a26657fef7d7d973cd20`
+- commit: `577e0c4f5d764f5aca1b136f0b7c9e233bde3de8`
+- blob: `a84205191a17e0770b2c334d49138a43769c7cfb`
 - keeps production WireGuard ON;
-- creates the exact temporary `24.199.118.137/32` WLAN route and fresh-reads Windows route selection;
+- creates and exact-readbacks the temporary `24.199.118.137/32` WLAN route; the redundant `Find-NetRoute` single-result assertion was removed because this host can return multiple route-selection rows;
 - uses the exact `24.199.118.137 + UDP + 8443` pktmon filter;
 - runs pktmon in counters-only NIC mode, so no packet log or payload is captured;
 - binds one 7-byte synthetic UDP datagram explicitly to WLAN address `192.168.1.4`;
 - emits `pktmon counters --json` verbatim between markers so localized text parsing is eliminated;
+- terminal result is now `COMPLETE` only if the diagnostic body itself reaches completion; cleanup success alone cannot mask an earlier return;
 - stops pktmon, removes its filter and temporary route, then rechecks production WireGuard.
 
 Standing Owner authorization remains valid for further bounded troubleshooting inside this Gate.
