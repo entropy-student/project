@@ -65,89 +65,154 @@ Current known components:
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G2C_VLESS_REALITY_SIDEBYSIDE
-STATE=PREFLIGHT_PASS_PRIVATE_COMPAT_CANARY_PENDING_OWNER_AUTH
-OBJECTIVE=Add VLESS+REALITY as the frozen TCP/443 fallback candidate without disturbing WireGuard or HY2.
-MAX_ENDPOINT_THIS_ROUND=Read-only preflight completed; next consequential endpoint is one private WireGuard-only VLESS+REALITY compatibility canary on a non-public test port, followed by mandatory Reviewer stop.
+GATE_ID=G2C_PRIVATE_REALITY_COMPAT_CANARY
+STATE=AUTHORIZED_EXECUTION
+OBJECTIVE=Prove the exact Windows Mihomo <-> sing-box VLESS+REALITY+Vision pair works before any public TCP/443 exposure.
+MAX_ENDPOINT_THIS_ROUND=One temporary WireGuard-only canary on 10.66.21.1:14443, one real proxied HTTPS handshake, exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 ```
 
 ### TARGET_AND_SCOPE
 
-This Gate adds one complementary candidate only:
-- candidate protocol: VLESS + REALITY + XTLS Vision over TCP/443;
-- planned server implementation: sing-box, subject to fresh preflight;
-- planned Windows client: existing Clash Verge / Mihomo;
-- WireGuard remains production/rollback;
-- HY2 remains the validated UDP/QUIC performance candidate;
-- no persistent VLESS client/default-route switch in this round.
+Authorized canary only:
+- server implementation: sing-box **v1.14.2 stable**, Linux amd64;
+- accepted asset: `sing-box-1.14.2-linux-amd64-glibc.tar.gz`;
+- accepted SHA256: `5c7bc18461827b28d0e5ee7e89d33b276d3ff7c818531104c8e8d26d85b0656e`;
+- temporary listener: **10.66.21.1:14443/TCP only**;
+- protocol: VLESS + REALITY + `xtls-rprx-vision`;
+- private-canary handshake target: `www.microsoft.com:443` only for interoperability proof; this target is **not** pre-approved for later public fallback;
+- Windows client: existing `C:\Program Files\Clash Verge\verge-mihomo.exe`;
+- local test proxy: loopback-only temporary mixed port `17990`;
+- test endpoint: `https://api.openai.com/v1/models`; curl exit 0 + HTTP 401 is a successful transport/application reachability result.
 
-The protocol candidate set is frozen to WireGuard + HY2 + VLESS/REALITY. Do not add TUIC/AnyTLS/VMess/Trojan/Shadowsocks/MASQUE unless later evidence proves a capability gap not covered by these three.
+Explicitly forbidden this round:
+- no public `0.0.0.0:443` or public-IP:443 listener;
+- no firewall rule, NAT, DNS, provider, sysctl, BBR/fq/GRO, WireGuard, HY2, or routing mutation;
+- no persistent systemd service;
+- no Clash Verge profile/default-node/system-proxy/TUN mutation;
+- no benchmark;
+- no protocol candidate expansion;
+- no Secret value/hash in chat, GitHub, ordinary logs, stdout/stderr, command arguments, or environment variables.
 
 ### APPLICABLE_CRITICAL_CONSTRAINTS
 
-- Do not interrupt current WireGuard connectivity or foreground work.
-- Reuse the accepted strict SSH identity/trust path; do not request or expose the private key.
-- Secret values must not be generated or emitted during this read-only round.
-- TCP/443 ownership must be proven before any later listener is installed.
-- No change to WG/HY2 services, routes, firewall, sysctl, BBR/fq/GRO, DNS, or current client profile.
+- Foreground work and existing WireGuard/HY2 connectivity remain available.
+- Strict SSH trust path is reused exactly: current key reference + known_hosts + `HostKeyAlias=24.199.118.137` + `HostName=10.66.21.1`; no private key copy/export.
+- Ephemeral VLESS UUID / REALITY private key / short-id are created and consumed only inside protected process/stdin/runtime-file boundaries.
+- Server Secret-bearing runtime material must be root-only and ephemeral; Windows Secret-bearing client config must be current-owner-only and ephemeral.
+- sing-box binary is temporary/project-scoped and must be SHA256-verified before execution.
+- Failure is fail-closed; cleanup/read-back still runs.
+- One real handshake only; no performance comparison.
 
 ### PREFLIGHT
 
-Fresh read-back must prove:
-- real Owner Windows runtime and current WireGuard state;
-- existing SSH key/trust metadata is usable through the accepted WireGuard control path;
-- exact VPS identity;
-- TCP/443 listener/ownership state;
-- current WG UDP/51820 and HY2 UDP/8443 health;
-- whether sing-box/Xray/Mihomo already exists on the VPS;
-- time sync, memory, disk, and firewall status sufficient for a later side-by-side service;
-- no target-port/shared-service collision.
+Executor must fresh-read:
+- this current Gate and `REVIEWER_TO_EXECUTOR_RELAY`;
+- current accepted G2-C preflight facts only;
+- exact target scripts it creates/uses.
+
+Before mutation prove:
+- Windows PowerShell/runtime + existing Mihomo binary;
+- WireGuard Manager/tunnel/adapter healthy;
+- strict SSH native exit 0 and remote hostname/root identity;
+- `10.66.21.1:14443` has no listener;
+- public TCP/443 remains free;
+- WG UDP/51820 and HY2 UDP/8443 remain healthy;
+- no prior canary process/runtime residue.
+
+### EXECUTION
+
+Use one bounded Owner-local/Codex checkpoint. Implementation may be written by Executor, but it must:
+1. download the pinned sing-box asset into a temporary non-Secret server workspace and verify the exact SHA256 before extraction/execution;
+2. generate the REALITY keypair on the server without exposing the private key; generate/transport VLESS UUID and short-id through reviewed stdin/process-memory handling, never command args/env/stdout;
+3. create root-only ephemeral server config under a runtime location, bind exactly `10.66.21.1:14443`, validate with `sing-box check`, then start only the temporary process;
+4. positively verify listener is `10.66.21.1:14443` and negatively verify no `0.0.0.0:14443`, public-IP:14443, or TCP/443 listener was created;
+5. create owner-only temporary Mihomo client config on Windows with VLESS + REALITY + Vision, server `10.66.21.1:14443`, local proxy `127.0.0.1:17990`, and the matching non-public client parameters;
+6. validate Mihomo config, start one temporary Mihomo process, then issue exactly one curl request through `127.0.0.1:17990` to the OpenAI models endpoint;
+7. record only sanitized markers such as proxy-used, curl exit, HTTP status, total/connect/appconnect times, listener/process state, and Secret counters;
+8. always stop temporary Mihomo and sing-box, remove both Secret configs/runtime material and temporary binary/workspace, then fresh-read WG/HY2 and all canary ports/processes.
 
 ### REQUIRED_EVIDENCE
 
-- Windows preflight PASS;
-- strict SSH connection PASS with native exit 0;
-- VPS hostname/OS/arch;
-- TCP_443_FREE=YES/NO plus bounded owner/process metadata if occupied;
-- WG and HY2 service/listener read-back;
-- server-core inventory;
-- time-sync/resource/firewall read-back;
-- READ_ONLY_MUTATION=NO;
-- SECRET_VALUES_EMITTED=0.
+Required sanitized markers:
+- `G2C_CANARY_PREFLIGHT=PASS`;
+- `SING_BOX_VERSION=1.14.2`;
+- `SING_BOX_ASSET_SHA256=PASS`;
+- `SERVER_CONFIG_CHECK=PASS`;
+- `PRIVATE_LISTENER_10_66_21_1_14443=YES`;
+- `PUBLIC_14443_LISTENER=NO`;
+- `PUBLIC_TCP443_UNCHANGED_FREE=YES`;
+- `MIHOMO_CONFIG_CHECK=PASS`;
+- `MIHOMO_TEST_PROXY_READY=YES`;
+- `REALITY_CANARY_PROXY_USED=YES`;
+- `REALITY_CANARY_CURL_EXIT=0`;
+- `REALITY_CANARY_HTTP_STATUS=401`;
+- `REALITY_CANARY_ERROR=NONE`;
+- `REALITY_CANARY_RESULT=PASS_CANDIDATE`;
+- cleanup: server/client canary processes absent, 14443 absent, runtime Secret files absent, temporary binary/workspace absent;
+- WG UDP/51820 + HY2 UDP/8443 still healthy;
+- `SECRET_VALUES_EMITTED=0`;
+- `SECRET_VALUES_COMMITTED=0`;
+- cleanup failure count = 0.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE for preflight only when target identity is unchanged, WireGuard/HY2 are healthy, SSH trust is valid, and TCP/443 has no unreviewed ownership conflict. Any collision/drift returns to Reviewer before a deployment design is sealed.
+Reviewer may PASS this private compatibility canary only when:
+- exact pinned sing-box candidate identity is proven;
+- exact private-only listener boundary is proven positive + negative;
+- existing Mihomo successfully completes the proxied OpenAI HTTPS request through VLESS+REALITY+Vision;
+- no public TCP listener/firewall/routing/profile mutation occurred;
+- all ephemeral Secret/process/binary residue is removed;
+- WG/HY2 remain healthy;
+- Evidence is persisted and reviewable.
+
+This PASS would prove **interoperability only**, not public fallback safety or performance.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Read-only round: no target mutation, so rollback is not applicable. Existing WireGuard + HY2 state must remain unchanged.
+Rollback is deterministic cleanup:
+- stop only the canary sing-box process by exact PID/identity;
+- stop only the temporary Mihomo process;
+- remove only the exact canary runtime directories/files created by this Gate;
+- do not remove/modify shared or pre-existing services;
+- verify TCP/14443 absent and TCP/443 unchanged;
+- verify WireGuard and HY2 still healthy.
 
 ### OWNER_ONLY_ACTIONS
 
-Owner authorized entry into the next protocol-selection step on 2026-10-02. This authorization covers this read-only preflight only. A later server install / Secret generation / public TCP listener is a consequential continuation inside G2-C and will be issued only after Reviewer accepts this preflight.
+**AUTHORIZED by Owner on 2026-10-02 for this private canary.**
+
+Authorization includes the temporary server/client writes, ephemeral credential generation, one compatibility handshake, and exact cleanup defined above. It does **not** include public TCP/443 exposure or a persistent service.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Read only:
-- this Gate;
-- current `SYSTEM_MAP` / `CURRENT_ACCEPTED_STATE`;
-- `scripts/g2c-vless-reality-preflight.ps1`;
-- existing strict SSH pattern from `scripts/g2b-hy2-server-readonly.ps1` only if needed.
+Start only from:
+1. this Gate;
+2. `CURRENT_ACCEPTED_STATE`;
+3. `scripts/g2c-vless-reality-preflight.ps1` for the already-accepted SSH/runtime baseline pattern;
+4. `scripts/g2b-owner-runner.ps1` only for reusable owner-only runtime-file/Mihomo-process/curl-sanitization patterns, not for G2-B history.
 
-Do not traverse historical G2-B diagnostics. Run one bounded read-only Owner checkpoint and return the fixed completion packet.
+Accepted facts Executor may rely on:
+- Owner authorization above is active;
+- strict SSH identity exists at the current recorded path and passed immediately before this Gate;
+- VPS identity is `ubuntu-s-1vcpu-512mb-10gb-sfo3`, Ubuntu 24.04.5, x86_64;
+- TCP/443 was free; WG UDP/51820 and HY2 UDP/8443 healthy;
+- server had no sing-box/Xray/Mihomo installation;
+- current Windows Mihomo path/version family was already accepted;
+- no need to rediscover historical G2-B root-cause work.
+
+Executor must persist sanitized facts to `EXECUTION_EVIDENCE.md`, write its fixed completion packet to `EXECUTOR_HANDOFF.md`, commit project-owned changes, then STOP for Reviewer. Executor must not edit `REVIEWER_HANDOFF.md`.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
 结果：PASS_CANDIDATE / RETURN_*
-改动：NONE；只读 Windows + VPS preflight。
-验证：SSH / TCP443 / WG / HY2 / core inventory / time / resources。
-问题：NONE，或精确说明端口、身份、服务或资源冲突。
-回滚：NOT_APPLICABLE_READ_ONLY。
-请 Reviewer 检查：是否可以进入 VLESS+REALITY side-by-side deployment。
-Owner 转交：完整非敏感 checkpoint 输出。
+改动：临时私有 REALITY canary，或 NONE（若 preflight 阻断）。
+验证：sing-box identity / private listener / Mihomo handshake / OpenAI HTTP status / WG+HY2 unchanged。
+问题：NONE，或精确阻塞原因。
+回滚：临时 server/client process、Secret config、binary/workspace 已清理；14443 absent；443 unchanged。
+请 Reviewer 检查：Evidence 是否足以证明 Mihomo <-> sing-box REALITY/Vison 兼容。
+Owner 转交：NONE，除非 Executor 无法访问真实 Owner host。
 ```
 
 ## CRITICAL_CONSTRAINTS
@@ -213,7 +278,7 @@ Reason for the extra canary: current REALITY implementations have active cross-c
 
 ## OWNER_ACTION_REQUIRED
 
-Explicitly authorize or decline the private G2-C compatibility canary above. This does not authorize public TCP/443 exposure.
+**NONE.** Owner has authorized the private canary. Executor may proceed inside the current Gate; public TCP/443 remains unauthorized.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
