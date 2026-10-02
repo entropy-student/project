@@ -67,7 +67,7 @@ Accepted source:
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
 STATE=AUTHORIZED_UNTIL_GATE_RESOLVED
-OBJECTIVE=Determine whether a synthetic UDP/8443 datagram reaches the Windows WLAN NIC transmit path before it leaves the Owner host.
+OBJECTIVE=Determine where inside the Windows networking stack the synthetic UDP/8443 datagram stops before reaching the physical WLAN NIC.
 MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 ```
@@ -107,8 +107,9 @@ Forbidden:
 ### ACCEPTANCE_CRITERIA
 
 Diagnostic classification:
-- local WLAN NIC capture **YES** + VPS prior inbound **NO** → packet leaves Windows; router/NAT/ISP/upstream path becomes primary fault domain;
-- local WLAN NIC capture **NO** → Windows/WFP/local egress becomes primary fault domain.
+- JSON shows matching flow at protocol/filter components but not NIC → identify the last Windows component / drop reason and repair that local egress boundary;
+- JSON remains empty even across all components → pktmon never observes the synthetic send; move to Windows socket/WFP route-control diagnostics rather than blaming VPS/ISP;
+- JSON reaches NIC → Windows does transmit the datagram; then router/NAT/ISP/upstream path becomes primary.
 
 This Gate does not itself PASS G2-B.
 
@@ -136,18 +137,20 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 Current prepared Windows-stack diagnostic:
 - `scripts/g2b-pktmon-json-egress-diagnostic.ps1`
-- commit: `577e0c4f5d764f5aca1b136f0b7c9e233bde3de8`
-- blob: `a84205191a17e0770b2c334d49138a43769c7cfb`
+- commit: `07cbc3081b7b583ee2c94a369ddfb85f43f502e7`
+- blob: `64c9a024034a99acec4b9ec2d35dae009ef2f67a`
 - keeps production WireGuard ON;
-- creates and exact-readbacks the temporary `24.199.118.137/32` WLAN route; the redundant `Find-NetRoute` single-result assertion was removed because this host can return multiple route-selection rows;
+- creates and exact-readbacks the temporary `24.199.118.137/32` WLAN route;
 - uses the exact `24.199.118.137 + UDP + 8443` pktmon filter;
-- runs pktmon in counters-only NIC mode, so no packet log or payload is captured;
+- expands pktmon scope from NIC-only to **all networking components**;
+- runs counters-only, so no packet log or payload is captured;
 - binds one 7-byte synthetic UDP datagram explicitly to WLAN address `192.168.1.4`;
-- emits `pktmon counters --json` verbatim between markers so localized text parsing is eliminated;
-- terminal result is now `COMPLETE` only if the diagnostic body itself reaches completion; cleanup success alone cannot mask an earlier return;
-- stops pktmon, removes its filter and temporary route, then rechecks production WireGuard.
+- emits `pktmon counters --type all --json` verbatim between markers;
+- cleanup removes pktmon state/filter and the exact route, then rechecks production WireGuard.
 
-Standing Owner authorization remains valid for further bounded troubleshooting inside this Gate.
+Prior NIC-only JSON was an empty array. This run is specifically to locate any pre-NIC Windows propagation/drop.
+
+Standing Owner authorization remains valid for bounded troubleshooting inside this Gate.
 
 Executor should read only this Current Gate and the prepared diagnostic. Do not alter VPN/HY2 configuration or replay benchmarks.
 
