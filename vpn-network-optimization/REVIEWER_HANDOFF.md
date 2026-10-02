@@ -63,91 +63,108 @@ Accepted source:
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G2B_HY2_Handshake_Auth_Diagnostic
-STATE=READ_ONLY_DIAGNOSTIC
-OBJECTIVE=Determine why the proxied HY2 handshake failed after proxy_used=1, without replaying the consumed full benchmark.
-MAX_ENDPOINT_THIS_ROUND=Source/result diagnosis only. Any real-host probe that starts Mihomo, reads the DPAPI Secret, changes routes, or sends a new HY2 handshake requires a new bounded Owner authorization.
+GATE_ID=G2B_HY2_Handshake_Only_Probe
+STATE=WAIT_OWNER_AUTH
+OBJECTIVE=Run one HY2 handshake-only diagnostic to capture the exact non-secret curl failure fields; do not replay WG/HY2 benchmarks.
+MAX_ENDPOINT_THIS_ROUND=One temporary route + one protected Mihomo runtime + one proxied curl handshake + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 ```
 
 ### TARGET_AND_SCOPE
 
-Allowed now:
-- inspect accepted runner/config/source;
-- inspect the non-secret Owner-reported console output and persisted non-secret result metadata when available;
-- identify which missing diagnostic field is needed next;
-- prepare a bounded diagnostic repair/probe for later authorization.
+After fresh Owner authorization, allow exactly:
+- Owner PowerShell 7.6.6 / Administrator / High integrity checkpoint;
+- accepted runner/config source only;
+- one exact temporary `24.199.118.137/32` ActiveStore route via WLAN;
+- protected DPAPI Secret read only to construct the temporary Mihomo runtime config;
+- one test-only Mihomo process on localhost port 17890;
+- one proxied curl request to the existing OpenAI models endpoint;
+- emit only these handshake diagnostics: `proxy_used`, curl native exit, HTTP status, runner error classification, and timing fields;
+- mandatory cleanup of Mihomo/runtime config/temporary route and final WireGuard read-back.
 
-Not allowed now:
-- no second full runner invocation;
-- no new temporary route;
-- no Mihomo start;
-- no DPAPI Secret read;
-- no HY2 handshake replay;
-- no MTU / BBR / fq / GRO / sysctl tuning;
-- no WireGuard/VPS/HY2 reconfiguration or Secret rotation.
+Forbidden:
+- no WireGuard 60-sample benchmark;
+- no HY2 60-sample benchmark;
+- no second handshake attempt;
+- no MTU/BBR/fq/GRO/sysctl tuning;
+- no WireGuard/VPS/HY2 reconfiguration or Secret rotation;
+- no Secret values, Secret hashes, raw Mihomo logs, or raw server config output.
 
 ### APPLICABLE_CRITICAL_CONSTRAINTS
 
-- The previous consequential authorization is consumed.
-- Production WireGuard is the restored baseline.
-- Current failure is not yet classified as TLS, HY2 auth, UDP path, server rejection, or OpenAI-side behavior because the failed handshake sample's curl exit/status/error fields were not retained.
-- Diagnose one fault domain at a time; do not infer root cause from the generic failure code.
-- Secret values remain inside the protected execution boundary.
+- Previous full-run authorization is consumed and cannot be reused.
+- Production WireGuard remains the baseline.
+- Fail closed on any preflight/source/runtime drift.
+- The probe exists only to classify the current handshake failure; it must not become another performance run.
+- Cleanup is mandatory even when the handshake fails.
+
+### PREFLIGHT
+
+Before the one handshake:
+1. verify Owner runtime/elevation;
+2. verify accepted runner/config identity;
+3. verify production WireGuard and expected public exit;
+4. verify exact temporary route and Mihomo/runtime residue are absent;
+5. verify canonical DPAPI recovery availability/ACL without printing Secret material;
+6. create/read back only the exact temporary route.
 
 ### REQUIRED_EVIDENCE
 
-For this diagnostic round:
-- exact runner success predicate and failure ordering;
-- what the retained output proves and does not prove;
-- whether existing non-secret result artifacts contain the missing handshake curl exit / HTTP status / error class;
-- if not, the smallest future diagnostic needed to capture those fields without running the 60+60 benchmark again.
+- `HY2_HANDSHAKE_PROXY_USED`;
+- `HY2_HANDSHAKE_CURL_EXIT`;
+- `HY2_HANDSHAKE_HTTP_STATUS`;
+- `HY2_HANDSHAKE_ERROR`;
+- handshake timing fields when parseable;
+- whether Mihomo reached READY;
+- cleanup result;
+- temporary route absence;
+- production WireGuard restored;
+- runtime Secret config absent;
+- Secret values emitted/committed = 0.
 
 ### ACCEPTANCE_CRITERIA
 
-This diagnostic Gate passes when Reviewer can state one of:
-1. a root cause is proven from existing non-secret evidence; or
-2. the exact missing fact is identified and a minimal bounded diagnostic is prepared, with no full benchmark replay.
+The Gate is diagnostic-only. PASS_CANDIDATE requires:
+- exactly one handshake attempt;
+- the four required non-secret failure/success fields are retained;
+- no benchmark samples are run;
+- exact cleanup passes;
+- production WireGuard is restored.
+
+Reviewer then classifies the failure domain and designs the smallest repair. This Gate does not itself PASS G2-B.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Current accepted cleanup:
-```text
-PRODUCTION_WIREGUARD=RESTORED
-TEMPORARY_VPS_ROUTE=ABSENT
-MIHOMO_TEST_PROCESS=ABSENT
-RUNTIME_SECRET_CONFIG=ABSENT
-PLAINTEXT_SECRET_RESIDUE=0
-CHECKPOINT_CLEANUP_FAILURE_COUNT=0
-```
-
-No new runtime mutation is authorized in this Gate.
+Current baseline is clean and restored. The diagnostic checkpoint must always:
+- stop Mihomo;
+- delete temporary runtime Secret config;
+- remove exact temporary route;
+- verify production WireGuard/public exit;
+- stop at Reviewer.
 
 ### OWNER_ONLY_ACTIONS
 
-Previous full-run authorization: **CONSUMED**.
-
-Current Owner action: **NONE** until Reviewer finishes the read-only diagnosis. Any later real-host handshake diagnostic will receive a separate, narrowly scoped authorization request.
+**Fresh Owner authorization required** for exactly one HY2 handshake-only diagnostic. This is separate from the consumed full-run authorization.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Executor startup for this diagnostic is intentionally narrow.
+Executor should prepare only the handshake-only diagnostic path. It may read:
+1. this Current Gate;
+2. `scripts/g2b-owner-runner.ps1` around `Invoke-CurlSample`, DPAPI/runtime creation, Mihomo start, handshake, and cleanup;
+3. `scripts/g2b-owner-checkpoint.ps1`;
+4. `config/clash/sfo3-a-hy2.yaml`;
+5. only the newest G2-B return Evidence.
 
-Read only:
-1. this `CURRENT_GATE`;
-2. `scripts/g2b-owner-runner.ps1` around `Invoke-CurlSample` and `HY2_OUTER_ROUTE_AND_HANDSHAKE`;
-3. `config/clash/sfo3-a-hy2.yaml`;
-4. the newest Evidence section `G2-B authorized retry after proxy-use validator repair — 2026-10-02`.
-
-Do not reread full Governance, historical Handoff, old Gates, or the whole Evidence file.
+Do not load full Governance or historical project narrative. Do not rerun any benchmark while preparing this probe.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
 结果：PASS_CANDIDATE / RETURN_*
-诊断：一句话说明已证明什么。
-缺口：一句话说明还缺哪个具体事实。
-下一步：一句话说明是否需要新的 Owner 本机诊断。
+握手：proxy_used / curl exit / HTTP status / error
+验证：一句话说明是否只执行了 1 次握手且无 benchmark。
+回滚：一句话说明 Mihomo、runtime config、临时路由、WireGuard 最终状态。
+问题：NONE / 实际阻塞原因。
 Owner 转交：NONE / 最小必要动作。
 ```
 
@@ -187,11 +204,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-Diagnose only the HY2 handshake/auth failure. First preserve and inspect non-secret failure facts; do not rerun the full benchmark. If a real-host probe that starts Mihomo or reads the DPAPI Secret is required, obtain a new bounded Owner authorization for that diagnostic only.
+After Owner authorization, run exactly one HY2 handshake-only diagnostic that captures the missing non-secret curl fields. Do not rerun either 60-sample benchmark.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE right now.** The one-shot retry was executed and is consumed. Reviewer is diagnosing the HY2 handshake/auth failure before asking you to run anything else.
+**Authorize one HY2 handshake-only diagnostic** if you want to continue. It will not rerun the WireGuard or HY2 60-sample benchmarks.
 
 ## EVIDENCE_POINTERS
 
