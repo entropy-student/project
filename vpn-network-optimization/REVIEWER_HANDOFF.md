@@ -15,6 +15,7 @@ G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       RETURN before first formal sample; network reconciled safe
 CURRENT_BLOCKER                      Runner repair: empty Rows binding + exact-route no-match verification
+CURRENT_GATE                         G2B_Runner_Binding_And_Cleanup_NoMatch_Repair
 ```
 
 Current runtime facts:
@@ -24,8 +25,8 @@ Current runtime facts:
 - Safe split control/data path is proven:
   - control plane: Codex/SSH → WireGuard → `10.66.21.1:22`;
   - HY2 candidate data plane: localhost test proxy → WLAN → `24.199.118.137:8443`.
-- Owner-created temporary route is currently present and fresh-read as: `24.199.118.137/32 -> 192.168.1.1 -> WLAN ifIndex 18 -> ActiveStore, metric 1`. It is non-persistent and must be removed only after G2-B testing/cleanup is complete.
-- With that route present, WireGuard services remain Running, adapter `SFO2-A` remains Up, and normal public exit remains `24.199.118.137`.
+- The former Owner-created temporary `24.199.118.137/32` ActiveStore route is now absent after the failed full-run cleanup. Owner read-only reconciliation proved this exact no-match on the real Windows host.
+- Current production path is restored to WireGuard: `Find-NetRoute` selects ifIndex 13, WireGuard Manager/tunnel are Running, adapter `SFO2-A` is Up, and public exit remains `24.199.118.137`.
 - SSH over the public IP is not the G2-B control path. Use `10.66.21.1:22` through WireGuard with the already accepted host-key trust.
 - Owner PowerShell environment has been verified as PowerShell 7.6.6, Administrator = True, integrity RID 12288 / High.
 - Codex desktop cannot run the long local benchmark in the current thread because no integrated terminal is attached; therefore the accepted execution model is an Owner-run PowerShell runner, with Codex/Reviewer handling preparation, review, evidence, and final acceptance.
