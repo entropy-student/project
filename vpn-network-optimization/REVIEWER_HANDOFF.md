@@ -14,7 +14,7 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          VIRTUALIZED ARTIFACT VERIFIED METADATA/ACL / ROUNDTRIP PENDING
 G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT BLOCKER                      Validate virtualized DPAPI artifact; realize canonical path; patch G2-B runner ACL validator
+CURRENT BLOCKER                      Realize validated DPAPI artifact into canonical Owner path
 ```
 
 Current runtime facts:
@@ -335,29 +335,25 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package rat
 ## 12. Next Step
 
 1. Do not rerun the real DPAPI repair runner and do not rotate/regenerate VPS Secrets.
-2. Fresh-read the virtualized Codex package artifact under `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\vpn-network-optimization\recovery\`:
-   - exact filename/full path;
-   - size/timestamps;
-   - owner SID, inheritance state, ACEs;
-   - DPAPI CurrentUser decrypt/round-trip using the accepted `VPNHY2R1` parser contract;
-   - pending/final naming state.
-3. If the virtualized final artifact validates, treat the historical G2-A write as a packaged-app path-virtualization case rather than a missing-write case.
-4. Reconcile the recovery artifact into the canonical Owner path `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` using an Owner-run elevated PowerShell path-realization/migration step that preserves DPAPI bytes and verifies ACL + round-trip on the canonical path. Do not re-fetch Secrets from the VPS unless validation shows the virtualized artifact itself is invalid.
-5. After canonical-path fresh read-back PASS, resume `g2b-owner-runner.ps1`.
-6. G2-B then performs WG 60×5s → HY2 real handshake → HY2 60×5s → comparison → Secret runtime cleanup → exact temporary route cleanup → production WireGuard read-back.
-7. Do not run MTU/BBR/fq/GRO/sysctl tuning in this round.
+2. Virtualized artifact validation is COMPLETE: DPAPI CurrentUser unprotect, `VPNHY2R1` parse, TLS key/cert match, SAN match, and pinned fingerprint match all PASS; no VPS Secret was accessed.
+3. `g2b-owner-runner.ps1` independent ACL validator is FIXED and static review PASS; it no longer relies on a fixed ACE count.
+4. Owner now runs `scripts/realize-owner-dpapi-path.ps1` in elevated PowerShell 7.6.6 to copy the already-encrypted validated artifact into canonical path `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` and perform target ACL + DPAPI round-trip read-back.
+5. Do not delete the virtualized source during this step; do not re-fetch Secrets from the VPS.
+6. After canonical-path fresh read-back PASS, resume `g2b-owner-runner.ps1`.
+7. G2-B then performs WG 60×5s → HY2 real handshake → HY2 60×5s → comparison → Secret runtime cleanup → exact temporary route cleanup → production WireGuard read-back.
+8. Do not run MTU/BBR/fq/GRO/sysctl tuning in this round.
 
 ## 13. Status Summary
 
 - Overall: P0 PASS, G1 PASS, HY2 server-side G2-A PASS.
 - DPAPI reality: the canonical Owner AppData path is absent, but a matching recovery artifact has been found under Codex packaged-app `LocalCache\Local\...` virtualization.
-- Current classification: `PATH_VIRTUALIZATION_CONFIRMED / EXACT ARTIFACT VALIDATION PENDING`, not `SECRET LOST`.
-- Current Gate: G2-B remains blocked before benchmark until the virtualized artifact is validated and reconciled to the canonical Owner path.
+- Current classification: `PATH_VIRTUALIZATION_CONFIRMED / VIRTUALIZED ARTIFACT FULLY VALIDATED / CANONICAL PATH REALIZATION PENDING`, not `SECRET LOST`.
+- Current Gate: G2-B remains blocked only until the already-validated virtualized artifact is realized and fresh-read at the canonical Owner path.
 - Formal G2-B samples so far: WG 0 / HY2 0. No protocol-performance conclusion exists.
 - Server state: WireGuard active on UDP 51820; Hysteria2 v2.12.3 active on UDP 8443.
 - Control path: SSH via WireGuard to `10.66.21.1:22` PASS.
 - Candidate data path: WLAN direct to `24.199.118.137:8443` prepared via the Owner-created temporary ActiveStore /32 route.
-- Immediate next action: DPAPI-unprotect and validate the exact virtualized artifact, prepare canonical-path realization without VPS Secret re-fetch, and patch the independent single-ACE ACL assertion in `g2b-owner-runner.ps1` before benchmark execution.
+- Immediate next action: Owner runs the prepared local-only canonical-path realization runner in elevated PowerShell 7.6.6. The virtualized source has already passed DPAPI/VPNHY2R1/TLS validation, and the independent G2-B ACL validator has been fixed + statically reviewed.
 - No live MTU/BBR/fq/GRO/sysctl tuning has been applied.
 
 
@@ -482,3 +478,34 @@ Execution note: fixture ran in PowerShell 7.6.5 with Medium token. This is accep
 Newly discovered follow-up: `g2b-owner-runner.ps1` still has its own single-ACE-count ACL assertion. It must be patched/reviewed before any real G2-B run. The repair-runner ACL fix must not be assumed to cover the benchmark runner.
 
 Plan impact: despite the repaired recovery runner being technically retry-ready, do NOT rerun it now. The virtualized 1206-byte DPAPI final artifact has been found and is the preferred source for local validation + canonical-path realization, avoiding unnecessary VPS Secret re-fetch.
+
+### Virtualized artifact DPAPI/content validation — PASS
+
+Executor performed local-only validation of the existing virtualized recovery artifact. No VPS Secret was accessed; no network state changed; benchmark was not started.
+
+```text
+VIRTUALIZED_SOURCE_VALIDATION=PASS
+DPAPI_UNPROTECT=PASS
+VPNHY2R1_PARSE=PASS
+TLS_KEY_CERT_MATCH=PASS
+TLS_SAN_MATCH=PASS
+TLS_FINGERPRINT_MATCH=PASS
+REAL_SECRET_ACCESSED_FROM_VPS=NO
+NETWORK_CHANGED=NO
+BENCHMARK_STARTED=NO
+```
+
+Conclusion: the original G2-A DPAPI final artifact is valid; the defect is path realization caused by Codex packaged-app virtualization, not Secret loss or bundle corruption.
+
+A local-only path realization runner is prepared at `scripts/realize-owner-dpapi-path.ps1`. It has not been executed. Its purpose is to copy the already-encrypted source bytes into the canonical Owner AppData path and verify target ACL, DPAPI CurrentUser unprotect, parser validation, and byte identity without contacting the VPS.
+
+### G2-B ACL validator repair — PASS STATIC
+
+The independent ACL validator in `g2b-owner-runner.ps1` was patched to reject inherited rules, non-Owner principals, and Deny ACEs while aggregating Owner rights to FullControl; it no longer requires exactly one ACE.
+
+```text
+G2B_ACL_VALIDATOR_FIXED=YES
+G2B_RUNNER_STATIC_REVIEW=PASS
+```
+
+Do not execute G2-B until canonical-path realization receives Owner-host fresh read-back PASS.
