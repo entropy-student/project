@@ -2,17 +2,15 @@
 
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
-## Current execution status — G2-B runner binding and cleanup no-match repair
+## Current execution status — G2-C private REALITY canary preflight blocked
 
-- Current Gate: `G2B_Runner_Binding_And_Cleanup_NoMatch_Repair`.
-- Reviewer relay reports the production network is restored, the exact temporary `/32` route is absent, WireGuard is active, proxy/TUN are off, and Mihomo/runtime Secret config are absent. This is relay-reported, not Executor host read-back.
-- Formal G2-B samples remain WG `0` / HY2 `0`; no handshake or performance conclusion exists.
-- `Invoke-Benchmark.Rows` now accepts the required empty `List[object]` while keeping Mandatory binding and its original type. Sample count, interval, request, statistics, and comparison semantics are unchanged.
-- `Get-ExactTemporaryRoute` now normalizes only `ObjectNotFound` plus the exact `CmdletizationQuery_NotFound,Get-NetRoute` FQID to zero matches. Other query errors still fail closed.
-- Cleanup distinguishes route query, state, removal, post-removal verification, and final network readback failures; the exact route target and removal predicate are unchanged.
-- PowerShell AST and non-secret in-memory binding/route/cleanup fixtures passed. Static comparison confirmed benchmark, DPAPI, Mihomo, final network acceptance, and route-removal scope are unchanged.
-- No Owner preflight or runner, benchmark, DPAPI read, Mihomo/HY2 action, or network mutation was performed. `REVIEWER_HANDOFF.md` was not modified.
-- Stop at Reviewer; Reviewer should fresh-read this commit, runner, and new Evidence before issuing any Owner checkpoint.
+- Current Gate: `G2C_PRIVATE_REALITY_COMPAT_CANARY`; Owner authorization for this private canary is recorded in the current Reviewer Gate.
+- The named read-only `scripts/g2c-vless-reality-preflight.ps1` was invoked from the current Windows execution context and stopped at its first assertion: `ADMINISTRATOR_ELEVATION_REQUIRED`.
+- Direct token read-back confirmed `Administrator=False`, integrity `Medium` (RID `8192`). The account name is intentionally not copied into project records.
+- The preflight stopped before starting SSH. No VPS read/write, sing-box download, key/UUID generation, server/client runtime config, listener, Mihomo process, or canary request occurred.
+- Network state was not changed. Public TCP/443, firewall, routes, WireGuard, HY2, Clash profile, system proxy, and TUN were not modified.
+- No cleanup was needed because no canary artifact or process was created. Secret values emitted/committed: `0`.
+- Required next execution context: elevated Windows PowerShell satisfying the named preflight. Stop at Reviewer; no canary or Owner action is claimed complete.
 
 ## G1 historical executor status (preserved)
 
