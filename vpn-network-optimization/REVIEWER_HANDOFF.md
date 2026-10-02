@@ -98,7 +98,7 @@ Windows client
 ```text
 P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
 G1 Foreground-safe Foundation        ✅ REVIEWER PASS
-G2-A HY2 server deployment          ✅ REVIEWER PASS
+G2-A HY2 server deployment           ✅ REVIEWER PASS
 G2-A DPAPI recovery closure          ⚠ OPEN DEFECT / REPAIR REQUIRED
 G2-B Safe-window Validation + Seal   ⏸ BLOCKED BEFORE BENCHMARK
 ```
@@ -318,7 +318,7 @@ Owner subsequently created the route from an elevated PowerShell and fresh read-
 
 Current boundary: the route remains present. Do not recreate, overwrite, or delete it from Codex. The Owner-run G2-B runner may remove only this exact matching route during final cleanup after the benchmark has actually completed.
 
-### G2-B — Safe-window comparative validation — NEXT
+### G2-B — Safe-window comparative validation — BLOCKED ON DPAPI RECOVERY
 
 Only after Owner explicitly confirms a safe window:
 - import/enable the prepared HY2 profile without deleting the existing WireGuard profile;
