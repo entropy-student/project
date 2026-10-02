@@ -2,15 +2,16 @@
 
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
-## Current execution status — G2-C private REALITY canary preflight blocked
+## Current execution status — G2-C private REALITY canary attempted; handshake not proven
 
-- Current Gate: `G2C_PRIVATE_REALITY_COMPAT_CANARY`; Owner authorization for this private canary is recorded in the current Reviewer Gate.
-- The named read-only `scripts/g2c-vless-reality-preflight.ps1` was invoked from the current Windows execution context and stopped at its first assertion: `ADMINISTRATOR_ELEVATION_REQUIRED`.
-- Direct token read-back confirmed `Administrator=False`, integrity `Medium` (RID `8192`). The account name is intentionally not copied into project records.
-- The preflight stopped before starting SSH. No VPS read/write, sing-box download, key/UUID generation, server/client runtime config, listener, Mihomo process, or canary request occurred.
-- Network state was not changed. Public TCP/443, firewall, routes, WireGuard, HY2, Clash profile, system proxy, and TUN were not modified.
-- No cleanup was needed because no canary artifact or process was created. Secret values emitted/committed: `0`.
-- Required next execution context: elevated Windows PowerShell satisfying the named preflight. Stop at Reviewer; no canary or Owner action is claimed complete.
+- Current Gate: `G2C_PRIVATE_REALITY_COMPAT_CANARY`; executed under the Reviewer-authorized Medium-integrity retry. The old preflight script was not run.
+- Fresh local read-back: PowerShell 7.6.5, Medium integrity RID `8192`, Administrator `False`; WireGuard services Running, `SFO2-A` Up/ifIndex 13, control route to `10.66.21.1` via ifIndex 13; system proxy disabled, WinHTTP direct, no TUN adapter, Mihomo Meta `v1.19.31`.
+- Strict SSH/accepted HostKeyAlias reached root on `10.66.21.1`; target read-back matched `ubuntu-s-1vcpu-512mb-10gb-sfo3`, Ubuntu 24.04.5 LTS, kernel `6.8.0-142-generic`. WG/HY2 services and UDP 51820/8443 listeners were active; TCP 443 was free.
+- Official pinned sing-box `v1.14.2` asset SHA-256 verification and server config check passed. The temporary listener was bound only to `10.66.21.1:14443`; no public 14443 or TCP 443 listener was created. Mihomo config check passed and the independent HTTP-only localhost proxy became ready.
+- Exactly one proxied request to `https://api.openai.com/v1/models` was made. curl exit `35`, HTTP status `0`, total `5.002776s`, proxy TCP connect `0.000937s`, TLS app-connect `0.000000s`. REALITY/TLS handshake and client interoperability are **not proven**; no retry or further request was made. No benchmark or performance conclusion was produced.
+- Cleanup and fresh read-back passed: test Mihomo stopped; owner-only client runtime deleted; remote canary process, config, binary, `/run`/`/tmp` artifacts and TCP 14443 listener absent; TCP 443 remained free; WG/HY2 active and routes unchanged; local proxy/TUN/system-proxy state unchanged. Secret values emitted/committed: `0`.
+- No public listener, firewall, route, WireGuard, HY2, system proxy, TUN, MTU, or kernel tuning change occurred. No persistent service was created.
+- Result: `RETURN_G2C_PRIVATE_REALITY_HANDSHAKE_CURL_EXIT_35`. Stop here for Reviewer diagnosis; Owner action `NONE`.
 
 ## G1 historical executor status (preserved)
 

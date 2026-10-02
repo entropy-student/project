@@ -1696,3 +1696,80 @@ Reviewer reasoning:
 - The blocker came from executing the earlier `g2c-vless-reality-preflight.ps1` Administrator assertion as if it were a canary acceptance requirement. In the current Gate that script is only a reference for the strict SSH/runtime pattern.
 - Medium-integrity Windows execution is sufficient for user-space Mihomo, current-owner-only ephemeral runtime files, and strict SSH, subject to the exact read-backs already required by the Gate.
 - Retry stays inside the existing Owner-authorized Gate and must still fail closed if a specific operation independently proves elevation is actually required.
+
+
+## G2-C private REALITY compatibility canary — bounded execution — 2026-10-03
+
+```text
+AUTHORIZED_GATE=G2C_PRIVATE_REALITY_COMPAT_CANARY
+SOURCE_BRANCH=codex/g2c-private-reality-compat-canary
+PRE_GATE_HEAD=cabd36f1f25be6b312ae83846e68f1b738462c4e
+WINDOWS_RUNTIME=PowerShell 7.6.5 / Medium integrity RID 8192 / Administrator=False
+LOCAL_CONTROL_ROUTE=10.66.21.1 via SFO2-A ifIndex 13
+WIREGUARD_MANAGER=Running
+WIREGUARD_TUNNEL=Running
+WIREGUARD_ADAPTER=SFO2-A / Up / ifIndex 13
+SYSTEM_PROXY_ENABLE=0
+WINHTTP_DIRECT=YES
+TUN_ADAPTER_COUNT=0
+MIHOMO=Mihomo Meta v1.19.31
+SSH_CONTROL=10.66.21.1:22 / StrictHostKeyChecking=yes / HostKeyAlias=24.199.118.137
+SSH_HOST_KEY_TRUST=PASS
+TARGET_HOSTNAME=ubuntu-s-1vcpu-512mb-10gb-sfo3
+TARGET_OS=Ubuntu 24.04.5 LTS
+TARGET_KERNEL=6.8.0-142-generic
+TARGET_DEFAULT_ROUTE=default via 24.199.112.1 dev eth0 proto static
+TARGET_WG_ROUTE=10.66.21.0/24 proto kernel scope link src 10.66.21.1
+WG_SERVICE=active
+HY2_SERVICE=active
+UDP_51820_LISTENERS=2
+UDP_8443_LISTENERS=1
+TCP_443_LISTENER_BEFORE=0
+MEM_AVAILABLE_KIB=267676
+TMP_FREE_KIB=7013704
+SING_BOX_VERSION=1.14.2
+PINNED_ASSET_SHA256=5c7bc18461827b28d0e5ee7e89d33b276d3ff7c818531104c8e8d26d85b0656e / VERIFIED
+SERVER_CONFIG_CHECK=PASS
+PRIVATE_LISTENER=10.66.21.1:14443 / PASS
+PUBLIC_14443_LISTENER=NO
+PUBLIC_TCP443_LISTENER=NO
+MIHOMO_CONFIG_CHECK=PASS
+MIHOMO_TEST_PROXY=127.0.0.1:17990 / HTTP-only / READY
+PROXIED_HTTPS_REQUESTS=1
+REQUEST_ENDPOINT=https://api.openai.com/v1/models
+CURL_EXIT=35
+HTTP_STATUS=0
+CURL_TIME_TOTAL_SECONDS=5.002776
+CURL_TIME_CONNECT_SECONDS=0.000937
+CURL_TIME_APPCONNECT_SECONDS=0.000000
+REALITY_HANDSHAKE=NOT_PROVEN
+CLIENT_INTEROPERABILITY=NOT_PROVEN
+BENCHMARK_STARTED=NO
+PERFORMANCE_CONCLUSION=NONE
+TEST_MIHOMO_STOPPED=YES
+CLIENT_SECRET_RUNTIME_DELETED=YES
+REMOTE_CANARY_PROCESS_CONFIG_BINARY_REMOVED=YES
+REMOTE_G2C_RUN_PATHS_ABSENT=YES
+TCP_14443_POSTCLEANUP_LISTENERS=0
+TCP_443_POSTCLEANUP_LISTENERS=0
+WG_HY2_POSTCLEANUP=PASS
+LOCAL_ROUTE_PROXY_TUN_POSTCLEANUP=PASS
+PUBLIC_TCP443_CHANGED=NO
+FIREWALL_CHANGED=NO
+ROUTES_CHANGED=NO
+WIREGUARD_OR_HY2_CHANGED=NO
+SYSTEM_PROXY_OR_TUN_CHANGED=NO
+LIVE_SYSTEM_TUNING_APPLIED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+EXECUTOR_RESULT=RETURN_G2C_PRIVATE_REALITY_HANDSHAKE_CURL_EXIT_35
+STOP_AT_REVIEWER=YES
+```
+
+Execution notes:
+- The first local-only preflight attempt exposed an empty-array scalarization false positive in the runner's TUN adapter count; the helper was minimally corrected and empty/one-match fixtures passed. No remote action occurred in that attempt.
+- A subsequent read-only VPS preflight exposed a `pgrep -c` zero-result fallback that rendered the marker as `00`; the shell fallback was corrected. A targeted read-only check found zero `sing-box` processes, zero G2C temp paths, and no TCP 14443 listener.
+- Two runner invocations then reached the official asset/keypair or private listener setup but stopped on empty dynamic assertion-message binding. Each `finally` cleanup and post-cleanup read-back passed. A later invocation found that Mihomo's mixed HTTP/SOCKS port opened a UDP socket; the temporary client config was narrowed to an HTTP-only localhost port.
+- The final bounded invocation passed the read-only preflight, asset hash, sing-box config check, private listener boundary, Mihomo config check, and localhost proxy readiness. Its single proxied request ended with curl exit 35 before TLS app-connect. curl stderr remained suppressed; the exact TLS failure cause is therefore unknown and no compatibility success is claimed.
+- Across attempts, generated VLESS/REALITY material existed only in the authorized ephemeral process/runtime boundaries and was not emitted. Every attempted remote and local temporary artifact was removed and freshly verified absent. No later request was made after the observed curl failure.
+- The new executor script is `scripts/g2c-private-reality-canary.ps1`. It contains no runtime Secret values. PowerShell AST, embedded Python syntax, static Secret scan, and static network-mutation scan passed before the final attempt.
