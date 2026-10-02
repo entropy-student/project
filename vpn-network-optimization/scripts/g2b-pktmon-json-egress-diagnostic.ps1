@@ -132,12 +132,13 @@ try {
     Assert-Check ($LASTEXITCODE -eq 0) 'PKTMON_FILTER_ADD_FAILED'
     $pktmonFilterAdded = $true
 
-    & $pktmonPath start --capture --counters-only --comp nics | Out-Null
+    & $pktmonPath start --capture --counters-only --comp all | Out-Null
     Assert-Check ($LASTEXITCODE -eq 0) 'PKTMON_START_FAILED'
     $pktmonStarted = $true
 
     & $pktmonPath reset | Out-Null
     Assert-Check ($LASTEXITCODE -eq 0) 'PKTMON_RESET_FAILED'
+    Write-Output 'PKTMON_COMPONENT_SCOPE=ALL'
     Write-Output 'PKTMON_JSON_OBSERVER_READY=YES'
 
     $udp = [Net.Sockets.UdpClient]::new([Net.Sockets.AddressFamily]::InterNetwork)
