@@ -66,7 +66,7 @@ Accepted source:
 
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
-STATE=AUTHORIZED_UNTIL_GATE_RESOLVED
+STATE=AUTHORIZED_KILLSWITCH_REPAIR_PENDING_OWNER_APPLY
 OBJECTIVE=Confirm whether the proven local WFP outbound drop is WireGuard Windows kill-switch enforcement caused by the production full-tunnel /0 configuration.
 MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -131,6 +131,14 @@ It does **not** authorize:
 - broad firewall/security weakening.
 
 Reviewer should not ask Owner for repeated authorization for ordinary bounded troubleshooting inside this Gate.
+
+### REVIEWER_TO_OWNER
+
+- 本轮结果：只读复核确认修复尚未落到运行中的 `SFO2-A`；仍是 IPv4 `0.0.0.0/0`，两个 `/1` 均不存在，WireGuard WFP `Block all outbound (IPv4)` 仍在。
+- 当前状态：根因已确认，修复尚未应用；暂不重跑 HY2。
+- 当前问题：需要在 WireGuard 的 `SFO2-A` 配置中将 IPv4 `/0` 改为两个 `/1`，保存并重载隧道。
+- 下一步：Owner 完成一次配置编辑与隧道重载后，重新运行现有只读 kill-switch 检查；预期 `/0=NO`、两个 `/1=YES`、WFP block=NO。
+- 你需要做什么：仅执行该本机配置变更与重载；当前 Gate 持续授权有效。
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
