@@ -148,7 +148,17 @@ Current baseline is clean and restored. The diagnostic checkpoint must always:
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Executor should prepare only the handshake-only diagnostic path. It may read:
+Executor should use the prepared one-shot handshake diagnostic path.
+
+Prepared diagnostic:
+- runner commit: `4e10db6fb3db68b20f6dff29c42d0ec0ee2c3206`
+- runner blob: `04fa524b05a9cecc408e8e4ef46ffcd649fd096e`
+- checkpoint: `scripts/g2b-hy2-handshake-checkpoint.ps1`
+- checkpoint commit: `5a8c5e94959f1cf4bc53d9ba3c32a85f2ce8e597`
+- checkpoint blob: `cd1ec842267e1efc0da776c251d2eb207e3e283b`
+- checkpoint invokes the runner with `-HandshakeOnly` exactly once and preserves the existing cleanup path.
+
+It may read:
 1. this Current Gate;
 2. `scripts/g2b-owner-runner.ps1` around `Invoke-CurlSample`, DPAPI/runtime creation, Mihomo start, handshake, and cleanup;
 3. `scripts/g2b-owner-checkpoint.ps1`;
@@ -208,7 +218,7 @@ After Owner authorization, run exactly one HY2 handshake-only diagnostic that ca
 
 ## OWNER_ACTION_REQUIRED
 
-**Run the prepared one-shot HY2 handshake diagnostic when presented.** No benchmark replay is authorized.
+**Run the prepared one-shot `scripts/g2b-hy2-handshake-checkpoint.ps1` from PowerShell 7.6.6 as Administrator.** No benchmark replay or second handshake is authorized.
 
 ## EVIDENCE_POINTERS
 
