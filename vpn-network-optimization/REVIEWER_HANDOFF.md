@@ -14,7 +14,7 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       RETURN before first formal sample; network reconciled safe
-CURRENT_BLOCKER                      Minimal atomic retry wrapper execution pending
+CURRENT_BLOCKER                      Detached accepted-commit atomic retry execution pending
 CURRENT_GATE                         G2B_Full_Retry_After_Repair (AUTHORIZED_ONCE_UNCONSUMED)
 ```
 
@@ -723,3 +723,12 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - Final readback passed: temporary route absent, WireGuard restored/active, system proxy disabled, no TUN/Mihomo/runtime Secret config/test listener, expected public exit present.
 - Therefore the one repaired full-run authorization remains unconsumed.
 - Reviewer classifies the failure as an over-strict wrapper path-identity assertion, not target/network drift. The next wrapper will remove exact Git-root path equality and instead verify the exact runner and client-fragment Git blob identities directly from the current files before any network mutation.
+
+
+### Owner atomic retry wrapper — RUNNER_SOURCE_DRIFT preflight return
+
+- Owner wrapper again returned before any consequential action, this time at source identity with `RUNNER_SOURCE_DRIFT`.
+- Final readback passed: exact temporary route absent; production WireGuard active; system proxy disabled; no TUN/Mihomo/runtime config residue; expected public exit present.
+- `RUNNER_INVOKED=False`; therefore the one repaired full-run authorization remains unconsumed.
+- Reviewer interpretation: the local checkout/HEAD source identity does not match the accepted runner blob. This is a local source-context problem, not evidence that the accepted GitHub candidate or network state drifted.
+- Next wrapper must not depend on local HEAD contents. It will discover the actual local Git root, verify canonical origin, fetch the accepted commit, create a detached temporary worktree at exactly `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`, verify the accepted runner/config blobs there, run exactly once, copy non-secret result artifacts back, then remove the temporary worktree.
