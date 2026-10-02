@@ -199,3 +199,58 @@ SPECIFIC_FINAL_PRODUCT_WINNER=NOT_PROVEN
 SUPPLY_SOURCING=DEFERRED
 NEXT=X2_DEMAND_DEPTH_AND_SHORTLIST_EVIDENCE
 ~~~
+
+
+---
+
+## 2026-10 — X2 Demand Depth & Shortlist
+
+~~~text
+AUTHORIZED_GATE=X2_DEMAND_DEPTH_AND_SHORTLIST_EVIDENCE
+EXECUTION_CLASS=READ_ONLY_PUBLIC_MARKET_RESEARCH + DOCUMENTATION
+RUNTIME_MUTATIONS=0
+ACCOUNT_MUTATIONS=0
+LISTINGS_PUBLISHED=0
+REAL_PURCHASES=0
+PAYMENTS=0
+SHORTLIST_COUNT=8
+FINAL_WINNER_SELECTED=NO
+~~~
+
+### Evidence added
+
+- Fresh official agreement read-back confirmed 2026-05-27 version / 2026-06-15 effective date, service-information transaction support, certification condition for some special service categories, lawful-rights requirement and prohibition on unauthorized/malicious data acquisition.
+- Fresh Xianyu homepage taxonomy read-back confirmed PPT制作, 修图, 平面设计, 视频剪辑, 建模 and related service categories.
+- Xinhua 2026 H1 platform data was read in full: AI-service orders 9.816m, nearly 5m buyers, +1732% AI programming/site-building, +264% AI PPT/office, 6.6% templates/workflows including workflow/agent setup, technical deployment high-ticket but lower-volume.
+- Current Goofish item pages were re-read for data automation, CAD/SolidWorks, WordPress assets, ecommerce image productivity and custom app development.
+- Documented real Xianyu seller cases were used for PPT and resume labor/price evidence.
+- Multiple query variants were used for the 10 X1 demand clusters; public search indexing was sparse and is explicitly recorded as a limitation rather than filled with invented SKU counts.
+
+### X2 accepted shortlist
+
+1. Excel / CSV cleaning + office automation
+2. Fixed-scope AI programming / light site / micro-tool
+3. PPT structure rewrite + visual polish
+4. AI Workflow / Agent for a defined business process
+5. Legitimate commercial CAD / SolidWorks redraw/modeling
+6. JD-specific resume diagnosis + interview feedback
+7. Ecommerce product-image / SKU asset standardization
+8. Video editing / subtitle / structured media cleanup
+
+### X2 removed / downgraded
+
+- personalized travel itinerary = HOLD, weak direct payment evidence + high free-AI substitution;
+- generic SOP/template packs = merge into stronger workflow/automation theses or HOLD;
+- generic copied digital materials = KILL;
+- pure OCR/transcription = HOLD standalone, only useful when bundled into higher-value output;
+- gray/rights-circumvention/academic ghostwork = KILL.
+
+### Result
+
+~~~text
+X2_DEMAND_DEPTH_AND_SHORTLIST_EVIDENCE=PASS
+PUBLIC_INDEXING_LIMITATION=KNOWN
+FINAL_PRIORITY_TEST=NOT_RUN
+SUPPLY_SOURCING=NOT_YET_PROVEN
+NEXT=X3_EVIDENCE_CARDS_COUNTEREVIDENCE_AND_SUPPLY_PATH
+~~~

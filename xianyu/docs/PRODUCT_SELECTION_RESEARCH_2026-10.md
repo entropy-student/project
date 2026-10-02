@@ -272,3 +272,14 @@ FINAL_PRIORITY_TEST=NOT_YET
 SUPPLY_SOURCE=DEFERRED
 NEXT=X2_DEMAND_DEPTH_AND_SHORTLIST_EVIDENCE
 ~~~
+
+
+---
+
+## 14. X2 continuation
+
+X2 deep-demand research is now recorded separately in:
+
+docs/X2_DEMAND_DEPTH_SHORTLIST_2026-10.md
+
+X1 remains the canonical broad-discovery record. X2 does not rewrite the 50 raw ideas or 25 normalized candidate pool; it records which candidates earned deeper continuation under fresh evidence.
