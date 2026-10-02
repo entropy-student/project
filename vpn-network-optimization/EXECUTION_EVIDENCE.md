@@ -491,3 +491,8 @@ TARGET_EXISTS=NO
 ```
 
 Therefore the path-realization failure is a false negative in the runner's integrity precheck, not a lack of elevation. Current next action is to fix only that precheck helper, then rerun canonical-path realization. G2-B benchmark remains not started.
+
+
+## Canonical Owner DPAPI path realization — PASS (2026-10-02)
+
+Owner executed the local-only realization runner from elevated PowerShell 7.6.6. Results: Owner Windows target confirmed; DPAPI scope CurrentUser; virtualized source retained; source and target encrypted bytes identical; target owner-only ACL PASS; target DPAPI round-trip PASS; target VPNHY2R1 validation PASS; pending absent; no plaintext temporary files; Secret values emitted 0. This closes the AppData path-realization defect. G2-B benchmark had not started at this evidence point.
