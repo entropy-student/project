@@ -12,9 +12,9 @@ This section is the canonical resume point. If any older section conflicts with 
 P0                                   PASS
 G1                                   PASS
 G2-A server-side HY2 deployment      PASS
-G2-A DPAPI recovery closure          PATH VIRTUALIZATION CONFIRMED / VERIFY ARTIFACT
+G2-A DPAPI recovery closure          VIRTUALIZED ARTIFACT VERIFIED METADATA/ACL / ROUNDTRIP PENDING
 G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT BLOCKER                      Verify virtualized DPAPI artifact and reconcile to canonical Owner path
+CURRENT BLOCKER                      DPAPI round-trip validate virtualized artifact, then realize canonical Owner path
 ```
 
 Current runtime facts:
@@ -32,11 +32,11 @@ Current runtime facts:
 
 DPAPI recovery reality:
 
-- Standard Owner path `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` is absent, but Owner subsequently found a matching `hy2-g2a*.dpapi` under Codex packaged-app virtualization at `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\vpn-network-optimization\recovery\...`.
-- Therefore the earlier G2-A evidence is NOT yet classified as a false write; current classification is `PATH_VIRTUALIZATION_CONFIRMED / STANDARD_OWNER_PATH_NOT_REALIZED` pending exact artifact read-back.
+- Standard Owner path `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` is absent. Owner found the exact virtualized final artifact at `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi`.
+- Exact Owner read-back now matches the historical G2-A metadata: filename `hy2-g2a.dpapi`, length 1206 bytes, creation/write time 2026-10-02 00:14:04, owner `码头整来的薯条\34707`, inheritance protected, exactly one explicit ACE granting that owner FullControl. This strongly confirms the original G2-A write landed in Codex packaged-app LocalCache rather than the canonical Owner AppData path. Current classification: `PATH_VIRTUALIZATION_CONFIRMED / METADATA+ACL_MATCH / DPAPI_ROUNDTRIP_PENDING`.
 - Do not rotate or regenerate VPS HY2 Secrets merely to repair this path-reality defect.
 - The previous repair runner attempt successfully completed SSH transport from the VPS (`SSH_NATIVE_EXIT_CODE=0`, `REMOTE_TRANSFER_RESULT=PASS`) but failed locally before final promotion with `RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID`; this failure is now treated as secondary until the virtualized artifact is fully inspected.
-- Immediate next action: fresh-read the exact virtualized artifact path, size, timestamps, owner/ACL, and DPAPI round-trip on the real Owner Windows host. Do not run another real-Secret recovery attempt or ACL fixture before this inspection.
+- Immediate next action: validate the virtualized artifact with DPAPI CurrentUser unprotect + accepted `VPNHY2R1` parser/byte-identity checks, then realize the same encrypted artifact into the canonical Owner AppData path with owner-only ACL and fresh round-trip. No VPS Secret re-fetch is needed if source validation passes.
 
 G2-B benchmark status:
 
@@ -439,3 +439,19 @@ Owner searched Codex packaged-app storage and found:
 - at least one `hy2-g2a*.dpapi` artifact under that virtualized recovery directory.
 
 This matches the known Windows packaged-app path virtualization failure mode from prior projects. Until the exact artifact is read back and DPAPI-validated, do not classify the original G2-A write as either fully valid or fully missing. The correct current state is: standard Owner path not realized; virtualized artifact present; validation/reconciliation pending.
+
+#### Virtualized artifact exact metadata/ACL — PASS
+
+Owner fresh read-back on 2026-10-02:
+
+- exact file: `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi`;
+- name: `hy2-g2a.dpapi`;
+- length: `1206` bytes;
+- creation time: `2026-10-02 00:14:04`;
+- last write time: `2026-10-02 00:14:04`;
+- owner: `码头整来的薯条\34707`;
+- inheritance protected: `True`;
+- access rule count: `1`;
+- sole ACE: current Owner FullControl / Allow / explicit / no inheritance.
+
+This matches the original G2-A reported size and intended owner-only ACL. The remaining validation is DPAPI CurrentUser decrypt + accepted bundle validation + byte-identity round-trip, followed by canonical-path realization. Do not re-fetch or rotate the VPS Secrets unless that validation fails.
