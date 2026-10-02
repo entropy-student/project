@@ -1,0 +1,61 @@
+{
+  "capturedAtUtc": "2026-09-30T07:51:41.045Z",
+  "gate": "G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE",
+  "baseMain": "b4533ff290c98699fa2b11237c4dc577e0ee7d0e",
+  "branch": "codex/birthday-magazine-g3cr2r2-v2-catalog-closure",
+  "wordpress": "7.1.1",
+  "mariadb": "11.4.7-MariaDB-ubu2404",
+  "blocksy": "2.1.57",
+  "blocksyCompanion": "2.1.57",
+  "catalogRequest": {
+    "url": "https://startersites.io?route=v2/demo/get_all&companion_version=2.1.57",
+    "method": "GET",
+    "caller": "WordPress wp_remote_get()",
+    "httpStatus": 200,
+    "wpError": null,
+    "jsonDecoded": true,
+    "responseBodyBytes": 52186,
+    "responseBodySha256": "c59a7cb0c6e25e59da507141f0439b05e1a19b72de772ad32b71a61c583e9185",
+    "licenseIdSent": false,
+    "installIdSent": false,
+    "authorizationSent": false
+  },
+  "weddingVariants": [
+    {
+      "name": "Wedding",
+      "builder": "",
+      "plugins": ["simply-gallery-block", "stackable-ultimate-gutenberg-blocks", "wpforms-lite"],
+      "is_pro": false,
+      "plans": {"present": false},
+      "recordPath": "artifacts/reports/wedding-variants.json#/variants/0"
+    },
+    {
+      "name": "Wedding",
+      "builder": "elementor",
+      "plugins": ["elementor", "wpforms-lite", "ht-slider-for-elementor"],
+      "is_pro": false,
+      "plans": {"present": false},
+      "recordPath": "artifacts/reports/wedding-variants.json#/variants/1"
+    }
+  ],
+  "exactWeddingGutenbergRecordCount": 0,
+  "decision": "RETURN_G3CR2R2_WEDDING_GUTENBERG_RECORD_UNAVAILABLE",
+  "phaseAQuery": "PASS_HTTP_200_JSON",
+  "variantDependencyClosure": "NOT_ESTABLISHED",
+  "emptyBuilderInferredAsGutenberg": false,
+  "elementorInstalled": false,
+  "htSliderInstalled": false,
+  "starterImport": "NOT_RUN",
+  "woocommerceInstall": "NOT_RUN",
+  "productCartCheckoutAccount": "NOT_RUN",
+  "privateWorkspaceRegression": "NOT_RUN",
+  "screenshots": "NOT_APPLICABLE_STARTER_IMPORT_NOT_RUN",
+  "paypalActions": 0,
+  "realMoneyActions": 0,
+  "modelCalls": 0,
+  "productionDeployment": 0,
+  "sharedInfrastructureMutations": 0,
+  "paidPurchases": 0,
+  "globalDockerPrune": 0,
+  "stopAtReviewer": true
+}

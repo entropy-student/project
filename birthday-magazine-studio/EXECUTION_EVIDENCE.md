@@ -1,3 +1,56 @@
+## Current Gate — G3CR2R2 Blocksy Wedding v2 Dashboard Catalogue Closure
+
+```text
+GATE=G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE
+RESULT=RETURN_G3CR2R2_WEDDING_GUTENBERG_RECORD_UNAVAILABLE
+BASE_MAIN=b4533ff290c98699fa2b11237c4dc577e0ee7d0e
+EXECUTION_BRANCH=codex/birthday-magazine-g3cr2r2-v2-catalog-closure
+INITIAL_EVIDENCE_COMMIT=9fcc7b9b2dae5a26f98a2344c1cef4f340c79976
+GITHUB_PR=#62 https://github.com/entropy-student/project/pull/62 (open, unmerged)
+PHASE_A_V2_REQUEST=PASS_HTTP_200_JSON
+WEDDING_VARIANT_COUNT=2
+EXACT_BUILDER_GUTENBERG_RECORD_COUNT=0
+STARTER_IMPORT=NOT_RUN
+WOOCOMMERCE_CANARY=NOT_RUN
+PRIVATE_WORKSPACE_REGRESSION=NOT_RUN
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+MODEL_CALLS=0
+PRODUCTION_DEPLOYMENT=0
+SHARED_INFRA_MUTATIONS=0
+GLOBAL_DOCKER_PRUNE=0
+STOP_AT_REVIEWER=YES
+```
+
+GitHub `main` was fetched immediately before execution; the worktree was clean, and the dedicated branch was created from `b4533ff290c98699fa2b11237c4dc577e0ee7d0e`. PR #60's merged-list report and PR #61's accepted legacy `fetch_single_demo()` RETURN were read as historical evidence only. Neither was used to classify v2 dependencies.
+
+### Fresh isolated runtime and v2 query
+
+- Runtime: Docker Engine 29.7.2, Compose 5.4.0, WordPress 7.1.1, PHP 8.3.33, WP-CLI 2.12.0, MariaDB 11.4.7, Blocksy 2.1.57, Blocksy Companion 2.1.57.
+- Blocksy and Companion were downloaded from the official WordPress.org package URLs. SHA-256 values match the package digests in `poc/g3cr2r2/artifacts/reports/runtime-versions.json`; licenses are GNU GPL v2-or-later and GPLv2-or-later respectively.
+- Compose project `birthday-magazine-g3cr2r2` used dedicated volumes/network and loopback-only ports 8177/8178. The G3A workspace and Mailpit helper sources were mounted read-only. Only Blocksy Companion was active; WooCommerce was not installed.
+- The WordPress-side helper used `wp_remote_get()` for `https://startersites.io?route=v2/demo/get_all&companion_version=2.1.57`, with no `license_id`, `install_id`, cookie, or Authorization header.
+- Read-back: HTTP 200; WP_Error null; JSON decoded; response body 52,186 bytes, SHA-256 `c59a7cb0c6e25e59da507141f0439b05e1a19b72de772ad32b71a61c583e9185`. The complete sanitized decoded response is retained in `poc/g3cr2r2/artifacts/reports/v2-catalog-response.json`.
+
+### Exact Wedding variant records and Phase A decision
+
+The raw response contains two separate records named `Wedding`:
+
+1. `builder=""`, `plugins=["simply-gallery-block","stackable-ultimate-gutenberg-blocks","wpforms-lite"]`, `is_pro=false`; `plans` is absent.
+2. `builder="elementor"`, `plugins=["elementor","wpforms-lite","ht-slider-for-elementor"]`, `is_pro=false`; `plans` is absent.
+
+All source fields for both records are retained separately in `poc/g3cr2r2/artifacts/reports/wedding-variants.json`. The plugin arrays were not unioned. There is no record whose `name` is `Wedding` and whose `builder` is exactly `gutenberg`; therefore the Gate's exact Gutenberg dependency closure was not established. The empty-builder record was not inferred to mean Gutenberg. This satisfies `RETURN_G3CR2R2_WEDDING_GUTENBERG_RECORD_UNAVAILABLE`.
+
+No dependency plugin, Elementor, HT Slider, WooCommerce, or starter content was installed. No Starter import occurred. Product/Cart/Checkout/My Account, workspace regression, and screenshots were not run; starter screenshots are not applicable because import was not reached. `poc/g3cr2r2/artifacts/reports/phase-a-decision.json` records the stop point and zero forbidden-action counts.
+
+### Cleanup and read-back
+
+Only `docker compose -p birthday-magazine-g3cr2r2 -f birthday-magazine-studio/poc/g3cr2r2/compose.yaml down --volumes --remove-orphans` was run. The exact ignored `poc/g3cr2r2/.tmp/` package directory was removed by the guarded project cleanup script. Read-back shows project containers/volumes/networks `0/0/0`, temp directory absent, files `0`, and ports 8177/8178 with no listeners. Unrelated inventory counts match the pre-run counts: 32 containers, 78 volumes, 14 non-default networks. The initial and final inventory hash representations were not comparable, so no identity-level fingerprint equality is claimed; no unrelated resource was targeted, and no global prune was run. See `poc/g3cr2r2/artifacts/reports/cleanup-readback.json`.
+
+No payment, model, production, Shared Infrastructure, paid purchase, Elementor, or HT Slider action occurred. G3C full-page work and G4 remain unstarted/out of scope.
+
+---
+
 # G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E cleanup closure
 
 **Current result:** `PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE`
