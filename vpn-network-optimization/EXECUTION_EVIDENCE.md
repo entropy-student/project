@@ -872,3 +872,52 @@ Reviewer reconciliation:
 - The new read-only probe connected to `10.66.21.1` without the already accepted control-path alias.
 - The previously validated recovery/control script uses `HostName=10.66.21.1` with `HostKeyAlias=24.199.118.137`, preserving strict checking against the existing trusted public-IP host key.
 - Repair is limited to restoring those accepted SSH options. No `known_hosts` write or auto-accept is authorized.
+
+
+## HY2 server read-only state diagnostic — 2026-10-02
+
+```text
+AUTHORIZED_GATE=G2B_HY2_Server_ReadOnly_State_Diagnostic
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+TARGET_HOSTNAME=ubuntu-s-1vcpu-512mb-10gb-sfo3
+HY2_SERVICE_ACTIVE=active
+HY2_SERVICE_ENABLED=enabled
+HY2_EXEC_MAIN_STATUS=0
+HY2_NRESTARTS=0
+HY2_SERVICE_USER=hy2-vpn
+HY2_SERVICE_GROUP=hy2-vpn
+HY2_UDP_8443_LISTENER_COUNT=1
+HY2_UDP_8443_HYSTERIA_COUNT=1
+HY2_BINARY_PRESENT=YES
+HY2_BINARY_VERSION=UNKNOWN
+HY2_CONFIG_PRESENT=YES
+HY2_CONFIG_LISTEN_OK=YES
+HY2_CONFIG_SNI_GUARD_STRICT=YES
+HY2_CONFIG_AUTH_TYPE_PASSWORD=YES
+HY2_CONFIG_AUTH_FORMAT_VALID=YES
+HY2_CONFIG_CERT_PATH_OK=YES
+HY2_CONFIG_KEY_PATH_OK=YES
+HY2_CERT_PRESENT=YES
+HY2_KEY_PRESENT=YES
+HY2_CERT_FINGERPRINT_MATCH=YES
+HY2_CERT_SAN_MATCH=YES
+UFW_ACTIVE=NO
+UFW_8443_UDP_ALLOW_RULES=0
+UFW_8443_UDP_DENY_RULES=0
+NFT_8443_UDP_ACCEPT_RULES=0
+NFT_8443_UDP_DROP_RULES=0
+IPTABLES_8443_UDP_ACCEPT_RULES=0
+IPTABLES_8443_UDP_DROP_RULES=0
+READ_ONLY_MUTATION=NO
+SECRET_VALUES_EMITTED=0
+SSH_NATIVE_EXIT_CODE=0
+SERVER_READONLY_PROBE_RESULT=COMPLETE
+```
+
+Reviewer interpretation:
+- Server-side Hysteria runtime is healthy: service active/enabled, ExecMainStatus 0, no restarts, one UDP 8443 listener owned by Hysteria.
+- Accepted server config shape is intact: port 8443, strict SNI guard, password auth, expected certificate/key paths, valid auth format.
+- Current certificate fingerprint and SAN match the accepted client metadata.
+- No host-level UFW/nft/iptables evidence of UDP 8443 being explicitly blocked.
+- The remaining primary fault domain is therefore client-to-server Hysteria/UDP initialization or a provider/network-path issue outside the host firewall.
+- HY2 binary version string was not returned by this probe; this is not enough to explain the current failure because the service is active and its accepted deployment identity remains otherwise intact.
