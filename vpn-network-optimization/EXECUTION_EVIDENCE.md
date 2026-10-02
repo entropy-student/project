@@ -976,3 +976,21 @@ Reviewer interpretation:
 - Because inbound UDP/8443 was not seen on eth0, current failure occurs before Hysteria server processing. Server TLS/auth/SNI configuration is therefore not the active fault domain for this run.
 - Primary remaining fault domains are external to the Hysteria process: Windows/WLAN egress path, local/router/ISP UDP handling, or provider-side/cloud firewall filtering before packets reach the droplet.
 - Cleanup and production WireGuard restoration passed.
+
+
+## DigitalOcean Cloud Firewall read-only check — 2026-10-02
+
+```text
+AUTHORIZED_GATE=G2B_DigitalOcean_Cloud_Firewall_ReadOnly_Check
+PROVENANCE=OWNER_PROVIDED_DIGITALOCEAN_SCREENSHOT
+TARGET_DROPLET_PUBLIC_IP=24.199.118.137
+DO_CLOUD_FIREWALL_ATTACHED=NO
+DO_UDP_8443_INBOUND_ALLOWED=NOT_APPLICABLE
+DO_UDP_51820_INBOUND_ALLOWED=NOT_APPLICABLE
+PROVIDER_MUTATION=NO
+```
+
+Reviewer interpretation:
+- The target Droplet networking page explicitly shows that no DigitalOcean Cloud Firewall is assigned.
+- Therefore DigitalOcean Cloud Firewall cannot explain why the previous UDP/8443 arrival probe saw no packets on the Droplet eth0 interface.
+- With the Droplet-local Hysteria service/listener healthy and no provider firewall attached, the remaining primary boundary is before the Droplet: Windows/Mihomo egress, local WLAN/router/NAT, ISP/upstream UDP handling, or other provider-path filtering not represented by a Droplet Cloud Firewall.
