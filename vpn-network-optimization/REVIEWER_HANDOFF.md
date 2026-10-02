@@ -14,7 +14,7 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT_BLOCKER                      PRECHECK_ROUTE_AND_ADAPTERS runner defect
+CURRENT_BLOCKER                      Owner High-integrity -PreflightOnly pending
 ```
 
 Current runtime facts:
@@ -44,7 +44,8 @@ G2-B benchmark status:
 - HY2 real client handshake tested in G2-B: `NO`.
 - The first Owner run of `g2b-owner-runner.ps1` passed Administrator/High checks but failed closed at `PRECHECK_ROUTE_AND_ADAPTERS` with `CimJobException` before any benchmark sample.
 - Owner then ran the underlying read-only Windows queries successfully from the same elevated PowerShell 7.6.6 shell: exact /32 route present, WLAN ifIndex 18 Up with IPv4 192.168.1.4 and gateway present, WireGuard `SFO2-A` ifIndex 13 Up.
-- Current interpretation: target network reality is healthy; the blocker is the runner precheck implementation/composition, not route/adapter drift.
+- Reviewer fresh-read accepted the bounded diagnostic/source-persistence Gate at commit `243c5eeb5833f25566ea49463b84b93b5063ad14`: the no-match `PersistentStore` query fault is handled narrowly, branch-specific diagnostics are present, `-PreflightOnly` returns before Secret/Mihomo/benchmark/network mutation, and all three runner sources are now canonical/reviewable on GitHub.
+- The exact root cause is reproduced in Codex Medium-integrity runtime and is consistent with the Owner failure, but Owner High-integrity production-path confirmation is still pending via `-PreflightOnly`.
 - No G2-B performance conclusion exists yet.
 
 ## 1. Project Goal
@@ -100,7 +101,7 @@ P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
 G1 Foreground-safe Foundation        ✅ REVIEWER PASS
 G2-A HY2 server deployment           ✅ REVIEWER PASS
 G2-A DPAPI recovery closure          ✅ REVIEWER PASS
-G2-B Safe-window Validation + Seal   ⏸ PRECHECK FIX IN PROGRESS
+G2-B Safe-window Validation + Seal   ⏸ OWNER PREFLIGHTONLY PENDING
 ```
 
 P0 acceptance covers research/scope only. It does NOT assert fresh server/runtime state.
@@ -335,25 +336,24 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package rat
 
 ## 12. Next Step
 
-1. Fresh-read the local current `scripts/g2b-owner-runner.ps1`; do not run the full benchmark.
-2. Diagnose the exact `PRECHECK_ROUTE_AND_ADAPTERS` statement/composition that can emit `CimJobException`. The direct Owner-host route/WLAN/WireGuard queries already PASS, so treat this as runner/evidence-helper failure unless new authoritative host evidence proves drift.
-3. Apply the smallest precheck-only fix and add branch-specific sanitized failure codes. Preserve benchmark, DPAPI, Mihomo, route-removal, Secret, and cleanup semantics.
-4. Add or expose a read-only Owner `PreflightOnly` path that executes the exact production precheck code path and stops before DPAPI Secret access, Mihomo start, benchmark traffic, or network mutation.
-5. Before repository mutation, prove canonical Git root/branch/revision and unrelated worktree state. If unrelated changes could contaminate the Gate, isolate project-owned paths; do not stage or alter unrelated work.
-6. Secret-scan and commit the current project-owned runner sources that are required for Reviewer review. At minimum `g2b-owner-runner.ps1`, `realize-owner-dpapi-path.ps1`, and `repair-owner-dpapi-recovery.ps1` must be present in the canonical GitHub project path if they remain part of the accepted/recovery execution chain. Never commit DPAPI ciphertext, runtime Secret YAML, Secret values, LocalCache data, or plaintext recovery material.
-7. Fresh-read the committed scripts from GitHub and record non-secret source identity/evidence in `EXECUTION_EVIDENCE.md` / `EXECUTOR_HANDOFF.md`. Executor must not edit `REVIEWER_HANDOFF.md`.
-8. Stop at Reviewer. Do not execute the full G2-B benchmark in this round.
+1. Bounded diagnostic/source-persistence Gate is formally accepted: commit `243c5eeb5833f25566ea49463b84b93b5063ad14`.
+2. Owner runs only the production-path read-only checkpoint from the canonical repository root in elevated PowerShell 7.6.6:
+   `& .\vpn-network-optimization\scripts\g2b-owner-runner.ps1 -PreflightOnly`
+3. Expected success evidence includes: Administrator/High integrity PASS, route/WLAN/WireGuard queries PASS, `G2B_PREFLIGHT_ONLY=PASS`, `SECRET_ACCESSED=NO`, `MIHOMO_STARTED=NO`, `BENCHMARK_STARTED=NO`, `NETWORK_CHANGED=NO`.
+4. If any subcheck returns, do not rerun or repair interactively; return the full bounded output to Reviewer. The new branch-specific diagnostics should identify the fault domain.
+5. Do not execute the full G2-B benchmark until Reviewer accepts Owner High-integrity PreflightOnly.
+6. Do not run MTU/BBR/fq/GRO/sysctl tuning in this round.
 
 ## 13. Status Summary
 
 - Overall: P0 PASS, G1 PASS, G2-A HY2 server deployment PASS, DPAPI recovery/path realization PASS.
-- Current Gate: G2-B is blocked before benchmark by a runner-side `PRECHECK_ROUTE_AND_ADAPTERS` failure.
-- Formal G2-B samples: WG 0 / HY2 0; no performance conclusion exists.
-- Owner execution shell: PowerShell 7.6.6, Administrator=True, High integrity RID 12288.
-- Current network reality: exact `24.199.118.137/32 -> 192.168.1.1` WLAN route present; WLAN ifIndex 18 Up with IPv4 `192.168.1.4`; WireGuard `SFO2-A` ifIndex 13 Up.
-- Direct read-only route/adapter/IP queries PASS from the same Owner shell; therefore the current fault domain is the runner precheck implementation/composition.
-- DPAPI canonical Owner path is valid and no recovery rerun/Secret rotation is needed.
-- Immediate next action: bounded diagnostic + smallest precheck fix + GitHub source persistence/reviewability + Owner PreflightOnly checkpoint; full benchmark remains blocked until Reviewer accepts that evidence.
+- Reviewer decision for commit `243c5eeb5833f25566ea49463b84b93b5063ad14`: `PASS_G2B_BOUNDED_DIAGNOSTIC_AND_SOURCE_PERSISTENCE`.
+- Canonical source persistence: PASS. `g2b-owner-runner.ps1`, `realize-owner-dpapi-path.ps1`, and `repair-owner-dpapi-recovery.ps1` are all present and fresh-readable on default branch; no Secret/recovery artifact was found in the committed runner sources during Reviewer inspection.
+- G2-B route/adapter fix: static/reviewable PASS. The runner narrowly treats the exact `Get-NetRoute` ObjectNotFound no-match as empty while leaving other query failures fail-closed, preserves exact route/WLAN/WireGuard invariants, and exposes branch-specific failure metadata.
+- `-PreflightOnly`: code-path review PASS. It runs the production prechecks and returns before DPAPI Unprotect, runtime Secret YAML, Mihomo start, handshake, benchmark, cleanup-eligible route removal, or other network mutation.
+- Formal G2-B samples remain WG 0 / HY2 0; no performance conclusion exists.
+- Current Owner checkpoint: elevated PowerShell 7.6.6 `-PreflightOnly` only.
+- Full benchmark remains blocked until that Owner High-integrity preflight is reviewed.
 
 
 
@@ -580,3 +580,12 @@ WIREGUARD_ADAPTER=SFO2-A; WireGuard Tunnel; ifIndex 13; Up
 All four direct commands (`Get-NetRoute`, `Get-NetAdapter` for WLAN, `Get-NetIPConfiguration` for WLAN, and `Get-NetAdapter` for `SFO2-A`) completed successfully. Therefore the network state required by G2-B is present and healthy; the prior `CimJobException` is attributable to the runner's precheck implementation or composition, not to a missing route, down adapter, or lack of elevation. Formal G2-B samples remain WG 0 / HY2 0.
 
 Next action: fresh-read the local uncommitted `g2b-owner-runner.ps1`, identify the exact statement inside `PRECHECK_ROUTE_AND_ADAPTERS` that can throw `CimJobException`, add branch-specific diagnostics, and fix only that precheck. Do not start benchmark during the fix.
+
+### Reviewer Decision — G2-B bounded diagnostic/source persistence
+
+- Decision: `PASS_G2B_BOUNDED_DIAGNOSTIC_AND_SOURCE_PERSISTENCE`.
+- Accepted commit: `243c5eeb5833f25566ea49463b84b93b5063ad14`.
+- Reviewer fresh-read inspected the commit, canonical `g2b-owner-runner.ps1`, `EXECUTION_EVIDENCE.md`, `EXECUTOR_HANDOFF.md`, and the persisted recovery-runner source identities.
+- Commit scope is project-owned only: the accepted commit itself changes exactly the two executor records plus the three runner files. Unrelated repository commits between the pre-Gate base and accepted commit are not part of this Gate.
+- Root-cause confidence boundary: the exact `PersistentStore` no-match `CimJobException` was reproduced in Codex Medium-integrity runtime and the repair is narrowly scoped; the original Owner High-integrity failure lacked subcheck detail, so Owner `-PreflightOnly` remains required before the full benchmark.
+- No benchmark, Mihomo start, DPAPI Secret access, or network mutation is accepted as having occurred in this Gate.
