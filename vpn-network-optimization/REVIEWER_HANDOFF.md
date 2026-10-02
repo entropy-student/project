@@ -137,8 +137,8 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 Prepared one-shot Windows egress checkpoint:
 - `scripts/g2b-windows-udp8443-egress-checkpoint.ps1`
-- commit: `172802154b531233b7237bb60688972ad33cdddc`
-- blob: `88e6e55bf973d5158e53533cabd803e61cc2b394`
+- commit: `e30ba1fbeaa1223f873d1185b0a347fff99e98f6`
+- blob: `c3ed3df09d814d6639ea287ea6a5f8ddcb6cf457`
 - keeps production WireGuard ON;
 - uses Windows built-in Packet Monitor (`pktmon`) with an exact `24.199.118.137 + UDP + 8443` filter;
 - uses counters-only NIC monitoring, so packet payload is not logged;
@@ -198,11 +198,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-First fresh-read the local `pktmon status` and `pktmon filter list` output to classify the current Packet Monitor state safely. Then repair the checkpoint preflight and continue the standing-authorized Windows UDP/8443 egress probe without asking for another authorization.
+Fresh read-back proved `pktmon` is inactive and has no filters. The zh-CN preflight parser is repaired; continue the standing-authorized Windows UDP/8443 egress checkpoint.
 
 ## OWNER_ACTION_REQUIRED
 
-**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected. Next action is a read-only `pktmon status` / `pktmon filter list` check; do not rerun the egress checkpoint until its preflight parser is repaired.
+**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected and run the repaired Windows UDP/8443 egress checkpoint.
 
 ## EVIDENCE_POINTERS
 
