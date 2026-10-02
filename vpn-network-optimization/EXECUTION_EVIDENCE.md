@@ -1098,3 +1098,32 @@ Reviewer interpretation:
 - However the checkpoint parsed localized human-readable `pktmon counters --type flow` text with a narrow regex. A zero result can therefore be a parser false-negative and is not accepted as proof that Windows emitted no UDP/8443.
 - Do not change Mihomo/HY2 based on this pktmon result alone.
 - Next diagnostic is a controlled raw UDP/8443 path probe: one small Windows UDP datagram with simultaneous VPS packet-presence observation. It does not use Mihomo or any Secret and stays within the standing-authorized current egress Gate.
+
+
+## Raw UDP8443 path-control result — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+RAW_UDP_CONTROL_PREFLIGHT=PASS
+OWNER_TEMP_ROUTE_CREATED=YES
+RAW_UDP_OBSERVER_READY=YES
+RAW_UDP_WINDOWS_SEND_BYTES=28
+RAW_UDP_WINDOWS_SEND_CALL=PASS
+RAW_UDP_OBSERVER_EXIT=124
+RAW_UDP_OBSERVER_PAYLOAD_CAPTURED=NO
+RAW_UDP_8443_VPS_INBOUND_SEEN=NO
+RAW_UDP_PATH_CONTROL_COMPLETE=YES
+RAW_UDP_OBSERVER_STOPPED=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+CLEANUP_FAILURE_COUNT=0
+OWNER_RAW_UDP_CONTROL_RESULT=COMPLETE
+```
+
+Reviewer interpretation:
+- This control did not use Mihomo, Hysteria, DPAPI Secret, or pktmon.
+- Windows accepted a 28-byte UDP send to the target VPS public IP on port 8443 while the exact temporary /32 route was installed.
+- Simultaneous VPS eth0 observation saw no inbound UDP/8443 packet.
+- Therefore the active fault is outside Hysteria/Mihomo application processing.
+- A successful UdpClient Send call alone does not prove the datagram physically exited the WLAN NIC, so ISP/upstream filtering is not yet conclusively proven.
+- Next diagnostic is a same-host/same-route raw UDP port comparison against UDP/51820, which is the known-working WireGuard port, while observing both ports on VPS eth0.
