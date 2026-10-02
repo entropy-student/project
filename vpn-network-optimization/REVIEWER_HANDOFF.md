@@ -137,18 +137,17 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 Current prepared Windows-stack diagnostic:
 - `scripts/g2b-pktmon-json-egress-diagnostic.ps1`
-- commit: `07cbc3081b7b583ee2c94a369ddfb85f43f502e7`
-- blob: `64c9a024034a99acec4b9ec2d35dae009ef2f67a`
+- commit: `141fe0b6972e24a82c1a4cd1c5f773d3aed55013`
+- blob: `af719d2445ed507c0dc6b155066de23563d4e849`
 - keeps production WireGuard ON;
 - creates and exact-readbacks the temporary `24.199.118.137/32` WLAN route;
-- uses the exact `24.199.118.137 + UDP + 8443` pktmon filter;
-- expands pktmon scope from NIC-only to **all networking components**;
+- uses the exact `24.199.118.137 + UDP + 8443` pktmon filter across **all networking components**;
 - runs counters-only, so no packet log or payload is captured;
 - binds one 7-byte synthetic UDP datagram explicitly to WLAN address `192.168.1.4`;
-- emits `pktmon counters --type all --json` verbatim between markers;
+- emits the native `pktmon counters --type all --include-hidden --drop-reason` table verbatim between markers, with no machine parsing;
 - cleanup removes pktmon state/filter and the exact route, then rechecks production WireGuard.
 
-Prior NIC-only JSON was an empty array. This run is specifically to locate any pre-NIC Windows propagation/drop.
+The previous JSON-format attempt reproduced the send successfully but failed only at JSON parsing. Microsoft documents `--json` as supported; this revision avoids the local output-representation issue entirely.
 
 Standing Owner authorization remains valid for bounded troubleshooting inside this Gate.
 
