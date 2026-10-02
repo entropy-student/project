@@ -800,3 +800,55 @@ Reviewer interpretation boundary:
 - Current retained console output does not include that handshake sample's exact curl exit code, HTTP status, or error classification. Do not infer TLS/auth/UDP/server root cause yet.
 - Consequential authorization is consumed. No second full retry is authorized.
 - Cleanup is accepted from Owner-reported bounded output as clean; formal G2-B PASS is not possible because HY2 sample count remains 0.
+
+
+## G2-B HY2 handshake-only diagnostic — 2026-10-02
+
+```text
+AUTHORIZED_GATE=G2B_HY2_Handshake_Only_Probe
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+OWNER_RUNTIME=PowerShell 7.6.6 / Administrator=True / High integrity RID 12288
+ACCEPTED_SOURCE_IDENTITY=PASS
+NETWORK_BASELINE_PREFLIGHT=PASS
+OWNER_TEMP_ROUTE_CREATED=YES
+FORMAL_HANDSHAKE_PROBE_INVOKED=YES
+HANDSHAKE_PROBE_AUTHORIZATION_CONSUMED=YES
+
+HANDSHAKE_ONLY_MODE=YES
+WG_BENCHMARK_SKIPPED=YES
+CLIENT_SECRET_RUNTIME_CREATED=YES
+CLIENT_SECRET_RUNTIME_OWNER_ONLY_ACL=PASS
+MIHOMO_TEST_PROXY_READY=YES
+
+HY2_HANDSHAKE_PROXY_USED=1
+HY2_HANDSHAKE_CURL_EXIT=35
+HY2_HANDSHAKE_HTTP_STATUS=000
+HY2_HANDSHAKE_ERROR=TLS_ERROR
+HY2_HANDSHAKE_TIME_TOTAL=5.001902
+HY2_HANDSHAKE_TIME_CONNECT=0.000712
+HY2_HANDSHAKE_TIME_APPCONNECT=0.000000
+RUNNER_FAILED_PHASE=HY2_OUTER_ROUTE_AND_HANDSHAKE
+RUNNER_FAILURE_CODE=HY2_HANDSHAKE_OR_AUTH_FAILED
+
+BENCHMARK_REPLAYED=NO
+HY2_FORMAL_SAMPLES=0
+TEST_MIHOMO_STOPPED=YES
+CLIENT_SECRET_RUNTIME_DELETED=YES
+PLAINTEXT_SECRET_ARTIFACTS_REMAINING=0
+OWNER_TEMP_ROUTE_REMOVED=YES
+PRODUCTION_WG_RESTORED=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_TEST_RUNTIME_RESIDUE=ABSENT
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+OWNER_HANDSHAKE_PROBE_RESULT=RETURN_TO_REVIEWER
+NON_SECRET_RESULTS_PATH=C:\Users\34707\AppData\Local\vpn-network-optimization\results\g2b-handshake-probe-20261002T100521Z
+```
+
+Reviewer interpretation boundary:
+- The local HTTP proxy was definitely used (`proxy_used=1`).
+- The target HTTPS TLS session never completed (`curl exit 35`, HTTP `000`, app-connect `0`).
+- This does not by itself identify whether the Hysteria outbound failed because of server reachability/UDP filtering, Hysteria TLS/pinning/SNI, Hysteria authentication, or another outbound initialization error; Mihomo was configured silent and its stderr was intentionally discarded.
+- No benchmark was replayed and cleanup is accepted as clean.
