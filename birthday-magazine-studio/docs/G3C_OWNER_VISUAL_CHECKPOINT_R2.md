@@ -1,6 +1,6 @@
 # G3C Owner Visual Checkpoint R2
 
-> Status: **CURRENT — OWNER DECISION REQUIRED**  
+> Status: **RESOLVED — BOUNDED PREVIEW/ACTIVATION POLISH REQUESTED**  
 > Date opened: 2026-10-02  
 > PR: #64  
 > Reviewed implementation head: `15ff73f6232e0ef94f04f313f74372e52389d1e2`  
@@ -76,3 +76,20 @@ Reviewer PASS does not substitute for Owner visual acceptance.
 PR #64 remains open/unmerged until this checkpoint is resolved.
 
 G4 remains HOLD / NOT AUTHORIZED.
+
+
+## Resolution — 2026-10-02
+
+The Owner broadly accepts the G3CR6R1 overall composition, but does not accept the current photo-upload Preview experience as final.
+
+This resolves this checkpoint through the bounded-change path.
+
+Reviewer product/activation review:
+- `REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md`
+
+Current Gate:
+- `G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md`
+
+The frozen MVP contract is not reopened in this step. The Free Preview capability remains; the bounded change is to its framing and first-value experience.
+
+`OWNER_VISUAL_FREEZE=PENDING`; PR #64 remains open/unmerged; G4 remains HOLD.
