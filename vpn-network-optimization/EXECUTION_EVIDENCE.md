@@ -1896,3 +1896,37 @@ TIME_OVERRUN_CAUSE=NONE
 ```
 
 Diagnostic implementation change was limited to capturing curl/Mihomo output in process memory and sing-box debug output in a root-owned `0600` file inside the temporary root-only `/run` directory; only allowlisted classes were emitted. That file and all temporary runtime artifacts were removed and their absence was verified. The VLESS/REALITY/Vision protocol fields, endpoint/ports, routing, and production services were not changed. The concrete `TIMEOUT` class came from Mihomo; curl and sing-box streams remained generic, so Reviewer should decide whether the narrowed client-side timeout is sufficient for a minimal next repair.
+
+
+## Reviewer acceptance — G2C REALITY handshake diagnostic R1 — 2026-10-03
+
+```text
+REVIEWED_MAIN_COMMIT=e2e89aa920bc06fe417428bffa4842aa5119ceec
+DIAGNOSTIC_IMPLEMENTATION_COMMIT=c45a09688ed6eb48ac885f1f85a3b9c98f649923
+EXECUTOR_RESULT=PASS_CANDIDATE_DIAGNOSTIC
+REVIEWER_RESULT=PASS_DIAGNOSTIC_ONLY
+PRIVATE_TCP_REACHABILITY=PASS
+HANDSHAKE_TARGET_TCP=PASS
+HANDSHAKE_TARGET_TLS=PASS_TLS1_3
+ONE_PROXIED_REQUEST=YES
+CURL_EXIT=35
+HTTP_STATUS=0
+MIHOMO_ERROR_CLASS=TIMEOUT
+SING_BOX_ERROR_CLASS=UNKNOWN_TLS_HANDSHAKE_FAILURE
+REALITY_COMPATIBILITY_PROVEN=NO
+CLEANUP=PASS
+WG_HY2_PRESERVED=YES
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+ESTIMATED_EXECUTION_TIME=15-30 minutes
+ACTUAL_ELAPSED=24m29s
+TIME_OVERRUN=NO
+PROPOSED_NEXT_GATE=G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2
+PROPOSED_NEXT_ESTIMATE=10-20 minutes
+NEXT_GATE_AUTHORIZED=NO
+```
+
+Reviewer reasoning:
+- R1 successfully removed general private-TCP and handshake-target reachability as leading explanations.
+- The remaining evidence does not reveal whether REALITY authentication was accepted, whether sing-box fell back to the target, or whether the server accepted auth and stalled later in TLS rewriting.
+- No protocol parameter is changed yet. R2 should extract only those safe state transitions from the protected server log, then stop.
