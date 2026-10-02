@@ -161,3 +161,8 @@ STOP_AT_REVIEWER=YES
 - `scripts/realize-owner-dpapi-path.ps1` is the current Owner action path. Its first run failed only because its integrity precheck falsely rejected a real High-integrity PowerShell 7.6.6 process.
 - Owner read-back proved Administrator=True and integrity SID `S-1-16-12288` / High; pending and target canonical artifacts were not created.
 - Next executor action: fix only the realization runner integrity precheck to use token integrity level semantics; do not execute benchmark until canonical Owner path fresh read-back passes.
+
+
+## G2-B readiness update — 2026-10-02
+
+Owner-side canonical recovery path realization completed successfully. Source was retained; target ACL, DPAPI round-trip, bundle validation, and encrypted-byte identity all passed; no pending or plaintext temporary artifact remains. Do not repeat recovery creation. G2-B benchmark is now the next step and has not started yet.
