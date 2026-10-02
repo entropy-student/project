@@ -16,7 +16,7 @@
 
 - 当前主力 VPS：DigitalOcean `24.199.118.137`；历史本地标签为 `SFO2-A`，fresh DigitalOcean metadata 实际 region 为 `sfo3`
 - 当前公网 IP：`24.199.118.137`
-- 当前主通道：WireGuard
+- 当前主通道：WireGuard（当前生产/回退基线；IPv4 使用两个 /1 默认路由，严格 WFP kill-switch 已解除）
 - 当前客户端：Windows；已安装 Clash Verge（具体版本 / Mihomo 内核版本待 G1 fresh read-back）
 - 当前 WireGuard 历史 MTU：1280（是否继续固定待验证）
 - 当前主要业务：Codex / OpenAI / AI 生图等长时间任务
@@ -70,13 +70,15 @@
 ## 项目阶段
 
 ```text
-P0   研究、范围冻结、立项            ✅
-G1   无干扰基线 + 可迁移第一版       ✅ PASS
-G2-A HY2 旁路部署                    ✅ PASS
-G2-B 安全窗口对比验证 + v1 封板      ← NEXT
+P0   研究、范围冻结、立项                    ✅ PASS
+G1   无干扰基线 + 可迁移第一版               ✅ PASS
+G2-A HY2 旁路部署                            ✅ PASS
+G2-B 安全窗口 WireGuard vs HY2 对比          ✅ PASS
+G2-C 晚高峰 + 真实工作负载验证               ⏳ NEXT
+MVP v1 封板                                  ⏳ PENDING
 ```
 
-G2 完成后即视为 MVP 完成。未来更换 VPS 使用同一模板部署并做 Provider Validation，不重新堆叠大量 Gate。
+G2-C 与最终 v1 生产角色/安全策略决策完成后，即视为 MVP 完成。未来更换 VPS 使用同一模板部署并做 Provider Validation，不重新堆叠大量 Gate。
 
 ## 项目真相
 
@@ -96,11 +98,11 @@ G2 完成后即视为 MVP 完成。未来更换 VPS 使用同一模板部署并�
 - DigitalOcean sfo3 目标：`24.199.118.137`
 - 当前生产通道：WireGuard，active MTU 1420
 - Hysteria2：official v2.12.3，独立 systemd 服务，UDP 8443，已启动
-- 当前流量：仍在 WireGuard；HY2 客户端未导入/启用
+- 当前流量：仍在 WireGuard；HY2 已通过临时 Mihomo 客户端完成真实握手和 60 次正式测试，但尚未作为持久默认客户端启用
 - Clash Verge：2.5.6；Mihomo v1.19.31 / alpha-f103639 解析 HY2 + fingerprint 配置通过
 - TLS：自签 P-256 + certificate fingerprint pinning
 - Secret：未进入 GitHub / 聊天 / 普通日志；Windows DPAPI CurrentUser 恢复副本已验证
 - Cloud Firewall：Owner 确认未绑定
 - live BBR/fq/GRO/MTU 调优：未应用
 
-下一步只在 Owner 明确确认安全窗口后进入 G2-B，先证明真实 HY2 client handshake，再同窗口比较 WireGuard 与 HY2 的成功率和 Median/P95/P99/尾部表现。
+G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好，但尚未证明晚高峰或真实 Codex/生图工作负载下持续占优。下一步在新的 G2-C Gate 中做晚高峰 + 真实工作负载验证，再决定 v1 的最终生产角色与安全策略。
