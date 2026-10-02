@@ -1,0 +1,23 @@
+{
+  "capturedAtUtc": "2026-09-30T08:31:34.1147282Z",
+  "dockerClient": "29.7.2",
+  "dockerServer": "29.7.2",
+  "compose": "5.4.0",
+  "containers": {
+    "count": 32,
+    "sha256": "8E1FA69F9ADCAB7C17CAF5CF750AE0E9221189C2C2D6658B6E8FFFC359F3A8AD"
+  },
+  "volumes": {
+    "count": 78,
+    "sha256": "656EE2DCEF3C4D99314FB8F2B42E8821E522BC93B6E8A27D81DB991517D9C701"
+  },
+  "networks": {
+    "count": 17,
+    "sha256": "41DF5CE698646B8E44E66A8BBB05337ABB5618DA2E91B9527D9BACC8F5301414"
+  },
+  "targetProjectBefore": {
+    "containers": 0,
+    "volumes": 0,
+    "networks": 0
+  }
+}

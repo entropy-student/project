@@ -1,0 +1,46 @@
+{
+  "gate": "G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY",
+  "baselineMain": "7111910a0fb5e2e4fcfd33a3d9a53618efb4517e",
+  "importRoute": "WordPress admin > Blocksy > Starter Sites > Wedding card > Import > choose Gutenberg > Next > Next > Install",
+  "requestedStarter": "Wedding",
+  "selectedBuilder": "Gutenberg",
+  "rawBuilderMapping": "empty string means Gutenberg",
+  "importResult": "Starter Site Imported Successfully",
+  "wizardRequiredPlugins": [
+    {
+      "slug": "simply-gallery-block",
+      "source": "https://downloads.wordpress.org/plugin/simply-gallery-block.3.4.3.zip",
+      "displayName": "SimpLy Gallery Block & Lightbox",
+      "version": "3.4.3",
+      "license": "GPL-2.0"
+    },
+    {
+      "slug": "stackable-ultimate-gutenberg-blocks",
+      "source": "https://downloads.wordpress.org/plugin/stackable-ultimate-gutenberg-blocks.3.20.2.zip",
+      "displayName": "Stackable - Gutenberg Blocks",
+      "version": "3.20.2",
+      "license": "GPL-3.0"
+    },
+    {
+      "slug": "wpforms-lite",
+      "source": "https://downloads.wordpress.org/plugin/wpforms-lite.2.0.2.1.zip",
+      "displayName": "WPForms - Contact Form",
+      "version": "2.0.2.1",
+      "license": "GPL-2.0-or-later"
+    }
+  ],
+  "elementorRequired": false,
+  "htSliderRequired": false,
+  "paidDependencyRequired": false,
+  "homePageId": 858,
+  "homePageType": "page",
+  "homePageStatus": "publish",
+  "gutenbergBlockMarkup": true,
+  "parsedTopLevelBlockCount": 31,
+  "elementorDataMetaPresent": false,
+  "editorScreenLoaded": true,
+  "starterImportScreenshotRequired": [
+    "artifacts/screenshots/wedding-home-desktop.png",
+    "artifacts/screenshots/wedding-home-mobile-375.png"
+  ]
+}
