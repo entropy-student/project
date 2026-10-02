@@ -14,7 +14,7 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT_BLOCKER                      Owner High-integrity -PreflightOnly pending
+CURRENT_BLOCKER                      PRECHECK_WIREGUARD_AND_CLIENT_STATE PropertyNotFoundException
 ```
 
 Current runtime facts:
@@ -45,7 +45,8 @@ G2-B benchmark status:
 - The first Owner run of `g2b-owner-runner.ps1` passed Administrator/High checks but failed closed at `PRECHECK_ROUTE_AND_ADAPTERS` with `CimJobException` before any benchmark sample.
 - Owner then ran the underlying read-only Windows queries successfully from the same elevated PowerShell 7.6.6 shell: exact /32 route present, WLAN ifIndex 18 Up with IPv4 192.168.1.4 and gateway present, WireGuard `SFO2-A` ifIndex 13 Up.
 - Reviewer fresh-read accepted the bounded diagnostic/source-persistence Gate at commit `243c5eeb5833f25566ea49463b84b93b5063ad14`: the no-match `PersistentStore` query fault is handled narrowly, branch-specific diagnostics are present, `-PreflightOnly` returns before Secret/Mihomo/benchmark/network mutation, and all three runner sources are now canonical/reviewable on GitHub.
-- The exact root cause is reproduced in Codex Medium-integrity runtime and is consistent with the Owner failure, but Owner High-integrity production-path confirmation is still pending via `-PreflightOnly`.
+- Owner High-integrity `-PreflightOnly` was then executed from PowerShell 7.6.6 / RID 12288. The earlier route/adapter precheck passed far enough to advance into `PRECHECK_WIREGUARD_AND_CLIENT_STATE`, where the runner failed closed with `PropertyNotFoundException` before Secret access, Mihomo start, benchmark, or network mutation.
+- Reviewer source inspection narrows the uninstrumented fault domain to `Get-ClientSnapshot`, especially direct optional registry-property access under `Set-StrictMode -Version Latest`; exact missing property is not yet proven and must be identified by one bounded read-only Owner diagnostic before any patch.
 - No G2-B performance conclusion exists yet.
 
 ## 1. Project Goal
@@ -336,24 +337,23 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package rat
 
 ## 12. Next Step
 
-1. Bounded diagnostic/source-persistence Gate is formally accepted: commit `243c5eeb5833f25566ea49463b84b93b5063ad14`.
-2. Owner runs only the production-path read-only checkpoint from the canonical repository root in elevated PowerShell 7.6.6:
-   `& .\vpn-network-optimization\scripts\g2b-owner-runner.ps1 -PreflightOnly`
-3. Expected success evidence includes: Administrator/High integrity PASS, route/WLAN/WireGuard queries PASS, `G2B_PREFLIGHT_ONLY=PASS`, `SECRET_ACCESSED=NO`, `MIHOMO_STARTED=NO`, `BENCHMARK_STARTED=NO`, `NETWORK_CHANGED=NO`.
-4. If any subcheck returns, do not rerun or repair interactively; return the full bounded output to Reviewer. The new branch-specific diagnostics should identify the fault domain.
-5. Do not execute the full G2-B benchmark until Reviewer accepts Owner High-integrity PreflightOnly.
-6. Do not run MTU/BBR/fq/GRO/sysctl tuning in this round.
+1. Do not rerun `-PreflightOnly` yet and do not run the full benchmark.
+2. Run one atomic Owner-local read-only diagnostic that exercises only the `PRECHECK_WIREGUARD_AND_CLIENT_STATE` snapshot inputs and reports presence/type/status metadata without printing proxy values or other sensitive content.
+3. The diagnostic must distinguish service, WireGuard adapter, Internet Settings property-presence, hidden TUN adapter enumeration, Mihomo process enumeration, route snapshot, and WinHTTP readback.
+4. If the missing/invalid property is proven, repair only `Get-ClientSnapshot`/its diagnostics using safe optional-property extraction; preserve benchmark, Secret, Mihomo, route cleanup, and network semantics.
+5. Persist the repair to GitHub, fresh-read it, then retry only Owner `-PreflightOnly`.
+6. Full G2-B benchmark remains blocked.
 
 ## 13. Status Summary
 
 - Overall: P0 PASS, G1 PASS, G2-A HY2 server deployment PASS, DPAPI recovery/path realization PASS.
-- Reviewer decision for commit `243c5eeb5833f25566ea49463b84b93b5063ad14`: `PASS_G2B_BOUNDED_DIAGNOSTIC_AND_SOURCE_PERSISTENCE`.
-- Canonical source persistence: PASS. `g2b-owner-runner.ps1`, `realize-owner-dpapi-path.ps1`, and `repair-owner-dpapi-recovery.ps1` are all present and fresh-readable on default branch; no Secret/recovery artifact was found in the committed runner sources during Reviewer inspection.
-- G2-B route/adapter fix: static/reviewable PASS. The runner narrowly treats the exact `Get-NetRoute` ObjectNotFound no-match as empty while leaving other query failures fail-closed, preserves exact route/WLAN/WireGuard invariants, and exposes branch-specific failure metadata.
-- `-PreflightOnly`: code-path review PASS. It runs the production prechecks and returns before DPAPI Unprotect, runtime Secret YAML, Mihomo start, handshake, benchmark, cleanup-eligible route removal, or other network mutation.
-- Formal G2-B samples remain WG 0 / HY2 0; no performance conclusion exists.
-- Current Owner checkpoint: elevated PowerShell 7.6.6 `-PreflightOnly` only.
-- Full benchmark remains blocked until that Owner High-integrity preflight is reviewed.
+- Bounded route/adapter diagnostic/source persistence remains PASS at accepted commit `243c5eeb5833f25566ea49463b84b93b5063ad14`.
+- Owner High-integrity `-PreflightOnly` environment: PowerShell 7.6.6, Administrator=True, integrity RID 12288.
+- Route/adapter fix advanced successfully past the previous fault domain.
+- New blocker: `PRECHECK_WIREGUARD_AND_CLIENT_STATE` failed closed with `PropertyNotFoundException`; `SUBCHECK` was still phase-generic, so exact property is not yet evidence.
+- Reviewer source inspection shows `Get-ClientSnapshot` directly reads several potentially optional `HKCU\...\Internet Settings` properties under StrictMode; this is the leading fault domain, not yet a proven exact root cause.
+- Consequential mutation started: NO. Secret access: NO. Mihomo start: NO. Benchmark samples: WG 0 / HY2 0. Network mutation: NO.
+- Next action: one bounded read-only Owner diagnostic, then smallest source fix if proven.
 
 
 
@@ -589,3 +589,22 @@ Next action: fresh-read the local uncommitted `g2b-owner-runner.ps1`, identify t
 - Commit scope is project-owned only: the accepted commit itself changes exactly the two executor records plus the three runner files. Unrelated repository commits between the pre-Gate base and accepted commit are not part of this Gate.
 - Root-cause confidence boundary: the exact `PersistentStore` no-match `CimJobException` was reproduced in Codex Medium-integrity runtime and the repair is narrowly scoped; the original Owner High-integrity failure lacked subcheck detail, so Owner `-PreflightOnly` remains required before the full benchmark.
 - No benchmark, Mihomo start, DPAPI Secret access, or network mutation is accepted as having occurred in this Gate.
+
+### Owner High PreflightOnly — RETURN_PROPERTY_NOT_FOUND
+
+Owner executed the canonical `g2b-owner-runner.ps1 -PreflightOnly` from repository root using PowerShell 7.6.6, Administrator token, High integrity RID 12288.
+
+Observed:
+
+```text
+RUNNER_FAILED_PHASE=PRECHECK_WIREGUARD_AND_CLIENT_STATE
+SUBCHECK=PRECHECK_WIREGUARD_AND_CLIENT_STATE
+NON_SECRET_ERROR_CLASS=PropertyNotFoundException
+CONSEQUENTIAL_MUTATION_STARTED=NO
+CURRENT_WINDOW_RESULT=INCONCLUSIVE
+G2B_OWNER_RUNNER_RESULT=FAIL_CLOSED
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+```
+
+Reviewer interpretation: the previous route/adapter failure is no longer the active blocker. This new failure occurred before Secret access, Mihomo, benchmark, or cleanup-eligible network mutation. Because the phase lacks branch-specific detail, exact cause remains unproven. Fresh source review narrows the next diagnostic to `Get-ClientSnapshot` and its optional property reads; do not patch from inference alone.
