@@ -70,6 +70,8 @@ STATE=AUTHORIZED_RETRY_AFTER_PREFLIGHT_TOOLING_RECONCILIATION
 OBJECTIVE=Prove the exact Windows Mihomo <-> sing-box VLESS+REALITY+Vision pair works before any public TCP/443 exposure.
 MAX_ENDPOINT_THIS_ROUND=One temporary WireGuard-only canary on 10.66.21.1:14443, one real proxied HTTPS handshake, exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
+ESTIMATED_EXECUTION_TIME=25-45 minutes
+TIMING_OVERRUN_POLICY=record-and-diagnose-at-natural-checkpoint-without-delaying-healthy-progress
 ```
 
 ### TARGET_AND_SCOPE
@@ -207,6 +209,12 @@ Accepted facts Executor may rely on:
 
 Executor must persist sanitized facts to `EXECUTION_EVIDENCE.md`, write its fixed completion packet to `EXECUTOR_HANDOFF.md`, commit project-owned changes, then STOP for Reviewer. Executor must not edit `REVIEWER_HANDOFF.md`.
 
+Timing add-on for this round:
+- estimate: **25–45 minutes** end-to-end;
+- record round start/end + actual elapsed;
+- if over 45 minutes, add a brief evidence-based cause classification and, only if needed, one bounded diagnosis of the slow phase;
+- do not interrupt healthy canary progress merely because the clock passed the estimate.
+
 ### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
@@ -217,6 +225,30 @@ Executor must persist sanitized facts to `EXECUTION_EVIDENCE.md`, write its fixe
 回滚：临时 server/client process、Secret config、binary/workspace 已清理；14443 absent；443 unchanged。
 请 Reviewer 检查：Evidence 是否足以证明 Mihomo <-> sing-box REALITY/Vison 兼容。
 Owner 转交：NONE，除非 Executor 无法访问真实 Owner host。
+耗时：预计 25-45 分钟；实际 <elapsed>；超时 YES/NO；原因 <NONE/brief cause>。
+```
+
+## ROUND_TIMING_OBSERVABILITY
+
+Starting with the next Executor round, every Gate/round carries a Reviewer time estimate and Executor timing record.
+
+Rules:
+- Reviewer sets `ESTIMATED_EXECUTION_TIME` as a practical range for the whole Executor round, excluding deliberate waits requested from Owner (for example waiting until a peak-hour window).
+- Executor records `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, and `ACTUAL_ELAPSED` in sanitized Evidence. Approximate phase timing may be added when it comes naturally from logs; do not add instrumentation that materially complicates the work.
+- If `ACTUAL_ELAPSED` exceeds the estimate's upper bound, record `TIME_OVERRUN=YES` and a short `TIME_OVERRUN_CAUSE` classification supported by existing evidence.
+- Timing overrun by itself is **not** a failure and does not stop otherwise healthy execution.
+- Do not interrupt normal progress merely to investigate elapsed time. Diagnose at the next natural checkpoint or after completion unless there is an actual stall/no-progress condition.
+- If the overrun cause is not already evident, perform only one bounded timing diagnostic focused on the slow phase (for example download, SSH, server start, client handshake, benchmark wait, Git persistence). Do not broaden into unrelated project debugging.
+- A true stall means no meaningful phase progress for roughly 15 minutes beyond the expected phase behavior; a stall may trigger immediate bounded diagnosis.
+- Executor completion packets add one line: `耗时：预计 <range>；实际 <elapsed>；超时 YES/NO；原因 <NONE/brief cause>`.
+- Reviewer uses accumulated actual timings to adjust later round estimates; the timing task must never become a reason to delay the project by itself.
+
+Current next Executor round:
+```text
+ROUND=G2C_PRIVATE_REALITY_COMPAT_CANARY_RETRY
+ESTIMATED_EXECUTION_TIME=25-45 minutes
+ESTIMATE_SCOPE=canary-specific checkpoint creation/review + pinned sing-box download + private server/client setup + one handshake + cleanup + Evidence/Handoff commit
+OWNER_WAIT_EXCLUDED=YES
 ```
 
 ## CRITICAL_CONSTRAINTS
