@@ -1127,3 +1127,37 @@ Reviewer interpretation:
 - Therefore the active fault is outside Hysteria/Mihomo application processing.
 - A successful UdpClient Send call alone does not prove the datagram physically exited the WLAN NIC, so ISP/upstream filtering is not yet conclusively proven.
 - Next diagnostic is a same-host/same-route raw UDP port comparison against UDP/51820, which is the known-working WireGuard port, while observing both ports on VPS eth0.
+
+
+## Raw UDP 51820 vs 8443 comparison — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+RAW_UDP_PORT_COMPARE_PREFLIGHT=PASS
+OWNER_TEMP_ROUTE_CREATED=YES
+RAW_UDP_COMPARE_OBSERVER_READY=YES
+RAW_UDP_PORT_51820_WINDOWS_SEND_BYTES=7
+RAW_UDP_PORT_51820_LOCAL_ADDRESS=192.168.1.4
+RAW_UDP_PORT_51820_WINDOWS_SEND_CALL=PASS
+RAW_UDP_PORT_8443_WINDOWS_SEND_BYTES=7
+RAW_UDP_PORT_8443_LOCAL_ADDRESS=192.168.1.4
+RAW_UDP_PORT_8443_WINDOWS_SEND_CALL=PASS
+RAW_UDP_51820_OBSERVER_EXIT=124
+RAW_UDP_8443_OBSERVER_EXIT=124
+RAW_UDP_COMPARE_PAYLOAD_CAPTURED=NO
+RAW_UDP_51820_VPS_INBOUND_SEEN=NO
+RAW_UDP_8443_VPS_INBOUND_SEEN=NO
+RAW_UDP_PORT_COMPARE_CLASSIFICATION=RAW_CONTROL_PATH_NOT_REACHING_VPS
+RAW_UDP_PORT_COMPARE_COMPLETE=YES
+RAW_UDP_COMPARE_OBSERVER_STOPPED=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+CLEANUP_FAILURE_COUNT=0
+OWNER_RAW_UDP_PORT_COMPARE_RESULT=COMPLETE
+```
+
+Reviewer interpretation:
+- Synthetic UDP datagrams bound explicitly to WLAN address 192.168.1.4 did not reach VPS eth0 on either destination port 51820 or 8443.
+- This disproves a simple UDP/8443-only filter hypothesis.
+- Production WireGuard to UDP/51820 remains healthy, so generic upstream UDP failure is also not proven.
+- The remaining discriminator is whether the synthetic datagram reaches the Windows WLAN NIC transmit path. A local header-only pktmon capture can answer this without relying on localized counters text.
