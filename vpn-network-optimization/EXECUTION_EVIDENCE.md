@@ -1930,3 +1930,21 @@ Reviewer reasoning:
 - R1 successfully removed general private-TCP and handshake-target reachability as leading explanations.
 - The remaining evidence does not reveal whether REALITY authentication was accepted, whether sing-box fell back to the target, or whether the server accepted auth and stalled later in TLS rewriting.
 - No protocol parameter is changed yet. R2 should extract only those safe state transitions from the protected server log, then stop.
+
+
+## Owner authorization — G2C REALITY server-state diagnostic R2 — 2026-10-03
+
+```text
+AUTHORIZED_GATE=G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2
+OWNER_AUTHORIZATION=GRANTED
+MAX_ENDPOINT=one private 10.66.21.1:14443 setup + one unchanged proxied HTTPS request + allowlisted server-state extraction + exact cleanup + Reviewer stop
+PROTOCOL_PARAMETERS_CHANGE=NOT_AUTHORIZED
+CORE_REPLACEMENT=NOT_AUTHORIZED
+PUBLIC_TCP443_EXPOSURE=NOT_AUTHORIZED
+PERSISTENT_SERVICE=NOT_AUTHORIZED
+BENCHMARK=NOT_AUTHORIZED
+ESTIMATED_EXECUTION_TIME=10-20 minutes
+TIMING_RECORD_REQUIRED=YES
+```
+
+No execution result is claimed by this authorization record. Executor must append the actual R2 diagnostic Evidence after execution.
