@@ -438,3 +438,24 @@ SOLE_ACE=current Owner FullControl Allow explicit
 ```
 
 This matches the historical G2-A size and intended ACL pattern and confirms the packaged-app path-virtualization hypothesis at the filesystem metadata level. DPAPI CurrentUser decrypt/round-trip and bundle validation are still pending; canonical Owner AppData path remains unrealized.
+
+## Non-secret ACL fixture diagnosis
+
+A non-secret ACL fixture was used to isolate the recovery-runner ACL validator without SSH, VPS Secret access, or real DPAPI recovery execution.
+
+```text
+ACL_FIXTURE_CREATE=PASS
+ACL_FIXTURE_READBACK=PASS
+ACL_FIXTURE_VALIDATOR=PASS
+ACL_FIXTURE_CLEANUP=PASS
+RECOVERY_RUNNER_ACL_FIXED=YES
+STATIC_REVIEW=PASS
+REAL_SECRET_ACCESSED=NO
+REAL_RECOVERY_RUNNER_EXECUTED=NO
+```
+
+The old helper incorrectly treated `ACE count != 1` as failure even where all explicit ACEs belonged to the current Owner and merged to FullControl. The fixed helper now validates security semantics rather than a fixed rule count. Because the prior real failure had already been cleaned and the old error class merged multiple branches, the exact historical branch hit cannot be proven.
+
+Fixture runtime was PowerShell 7.6.5 / Medium token and is diagnostic only. Real canonical-path validation still requires the elevated Owner execution path.
+
+`g2b-owner-runner.ps1` independently retains a single-ACE-count validator and remains unfixed as of this evidence update.
