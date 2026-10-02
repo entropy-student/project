@@ -65,7 +65,7 @@ Accepted source:
 
 ```text
 GATE_ID=G2B_Full_Retry_After_ProxyUse_Repair
-STATE=WAIT_OWNER_AUTH
+STATE=AUTHORIZED_OWNER_RUN_PENDING
 OBJECTIVE=Run one bounded same-window WireGuard vs Hysteria2 validation using the accepted proxy-use validator repair.
 MAX_ENDPOINT_THIS_ROUND=One full runner invocation, result persistence, exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -155,9 +155,18 @@ During the authorized retry, cleanup is mandatory even on failure:
 
 ### OWNER_ONLY_ACTIONS
 
-Current requirement: **fresh explicit authorization for one consequential full G2-B retry**.
+Authorization status: **GRANTED** for exactly one consequential full G2-B retry.
 
-The takeover request itself is not interpreted as that authorization.
+Scope of this authorization:
+- one atomic Owner-local checkpoint;
+- one formal runner invocation maximum;
+- exact temporary route only;
+- existing accepted runner/config only;
+- mandatory cleanup/read-back;
+- no MTU/BBR/fq/GRO/sysctl tuning;
+- no second attempt.
+
+This authorization is consumed only once the formal runner is actually invoked. Pre-execution/read-only wrapper failure does not consume it.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
@@ -224,11 +233,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-Wait for fresh Owner authorization. After authorization, run exactly one bounded G2-B retry under the Current Gate, persist non-secret Evidence, stop at Reviewer, and decide whether G2-B passes or returns.
+Run exactly one bounded G2-B retry under the Current Gate, persist non-secret Evidence, stop at Reviewer, and decide whether G2-B passes or returns.
 
 ## OWNER_ACTION_REQUIRED
 
-**Authorize one consequential G2-B retry** if you want execution to continue. Otherwise no action is required.
+**Run the prepared one-shot Owner checkpoint when presented by Executor.** No second authorization is required unless the formal runner is invoked and returns.
 
 ## EVIDENCE_POINTERS
 
