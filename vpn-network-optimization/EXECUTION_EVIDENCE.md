@@ -1243,3 +1243,34 @@ Reviewer interpretation:
 - The synthetic UDP send did occur with pktmon monitoring all networking components.
 - Failure occurred only when parsing `pktmon counters --json`; Microsoft documentation confirms this syntax should be supported, so the current blocker is output representation/encoding rather than the traffic reproduction.
 - Next run keeps the same traffic reproduction and all-component counters-only monitoring, but emits the native human-readable counters table verbatim without machine parsing.
+
+
+## pktmon all-component counters — local outbound drop proven — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+TARGET_COMPONENT=Realtek 8852CE WiFi 6E PCI-E NIC
+PKTMON_COMPONENT=TCP/IPv4 - L3/L4
+PKTMON_COUNTER=DROP
+RX_PACKETS=0
+RX_BYTES=0
+TX_PACKETS=1
+TX_BYTES=15
+SYNTHETIC_UDP_PAYLOAD_BYTES=7
+EXPECTED_UDP_L4_BYTES=15
+DROP_REASON_RENDERING=MOJIBAKE_CONSISTENT_WITH_INSPECTION_DROP
+PKTMON_TEXT_DIAGNOSTIC_COMPLETE=YES
+FINAL_PKTMON_STATE_CLEAN=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+DIAGNOSTIC_COMPLETED=YES
+CLEANUP_FAILURE_COUNT=0
+```
+
+Reviewer interpretation:
+- The synthetic 7-byte UDP payload plus 8-byte UDP header equals the observed 15-byte Tx drop counter exactly.
+- Therefore the synthetic UDP/8443 datagram reaches Windows TCP/IPv4 L3/L4 processing but is dropped locally before physical WLAN transmission.
+- The mojibake token `涓㈠純` round-trips to Chinese `丢弃`. The following mojibake text is consistent with an inspection-drop label, but exact filter ownership is not inferred from mojibake alone.
+- Microsoft documents outbound `Inspection drop` as a Windows Filtering Platform inspection result.
+- WireGuard for Windows documents a /0 single-peer kill-switch that permits the WireGuard tunnel service itself while blocking other untunneled traffic. This precisely matches the observed asymmetry (production WireGuard UDP works; synthetic direct UDP from PowerShell and HY2/Mihomo do not).
+- Next step is read-only confirmation of WireGuard's WFP block filter and /0 route semantics before proposing any repair.
