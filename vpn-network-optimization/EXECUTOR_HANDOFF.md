@@ -12,7 +12,7 @@
 - Exactly one proxied request to `https://api.openai.com/v1/models`: curl exit `35`, HTTP `0`, total `5.002744s`, proxy connect `0.000765s`, TLS app-connect `0.000000s`. Sanitized classes: curl `UNKNOWN_TLS_HANDSHAKE_FAILURE`; Mihomo `TIMEOUT`; sing-box `UNKNOWN_TLS_HANDSHAKE_FAILURE`. Aggregate `REALITY_DIAGNOSTIC_CLASSIFICATION=TIMEOUT`. This narrows the observed client-core failure to a timeout class, but does not prove protocol compatibility or identify a more specific underlying defect. No retry, benchmark, or performance conclusion.
 - Cleanup/fresh read-back passed: test Mihomo stopped; temporary owner-only client config removed; protected VPS runtime/workspace, sing-box process and TCP 14443 listener absent; TCP 443 still free; WG/HY2, routes, system proxy, WinHTTP, and TUN state preserved. Secret values emitted/committed: `0`.
 - No public listener, firewall, route, WireGuard/HY2 service, system proxy, TUN, MTU, or kernel tuning change occurred; no persistent service was installed. Result: `PASS_CANDIDATE_DIAGNOSTIC`; stop for Reviewer. Owner action: `NONE`.
-- Timing: `ROUND_STARTED_AT=2026-10-02T17:57:29Z`; `ROUND_FINISHED_AT=2026-10-02T18:20:49Z`; `ACTUAL_ELAPSED=23m20s`; `TIME_OVERRUN=NO` (estimate 15–30 minutes).
+- Timing: `ROUND_STARTED_AT=2026-10-02T17:57:29Z`; `ROUND_FINISHED_AT=2026-10-02T18:21:58Z`; `ACTUAL_ELAPSED=24m29s`; `TIME_OVERRUN=NO` (estimate 15–30 minutes).
 
 ## G1 historical executor status (preserved)
 
