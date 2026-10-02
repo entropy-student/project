@@ -13,8 +13,8 @@ P0                                   PASS
 G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
-G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT_BLOCKER                      Full G2-B benchmark execution pending
+G2-B benchmark                       RETURN before first formal sample
+CURRENT_BLOCKER                      RETURN_WG_BASELINE_BINDING + cleanup reconciliation
 ```
 
 Current runtime facts:
@@ -52,6 +52,10 @@ G2-B benchmark status:
 - Owner reran the canonical `g2b-owner-runner.ps1 -PreflightOnly` from PowerShell 7.6.6 / Administrator / integrity RID 12288 after the accepted ClientSnapshot repair.
 - Owner read-back: `ROUTE_QUERY=PASS`, `WLAN_ADAPTER_QUERY=PASS`, `WLAN_IP_QUERY=PASS`, `WG_ADAPTER_QUERY=PASS`, `G2B_PREFLIGHT_ONLY=PASS`, with `SECRET_ACCESSED=NO`, `MIHOMO_STARTED=NO`, `BENCHMARK_STARTED=NO`, and `NETWORK_CHANGED=NO`.
 - Reviewer accepts this as `PASS_G2B_OWNER_HIGH_PREFLIGHTONLY`. The preflight/source-repair chain is closed. Owner has now confirmed the safe window.
+- Owner then ran one authorized full canonical G2-B runner. Prechecks passed, but execution failed closed immediately at `WIREGUARD_BASELINE` with `ParameterBindingValidationException` before any sample was emitted.
+- Cleanup then reported `OWNER_ROUTE_EXACT_CLEANUP_FAILED` and `FINAL_NETWORK_READBACK_FAILED`; Mihomo was not started, no runtime Secret file was created, and no protocol result exists.
+- Reviewer source inspection identifies a direct binding defect: `Invoke-Benchmark` declares mandatory collection parameter `Rows` without `AllowEmptyCollection`, while the first call passes the intentionally empty `Generic.List[object]`; this is consistent with failure before sample 1.
+- Reviewer also identifies a cleanup verification defect consistent with the already-proven NetTCPIP behavior: `Get-ExactTemporaryRoute` directly calls exact `Get-NetRoute -ErrorAction Stop`; after successful route removal, a no-match may throw instead of returning an empty collection. Current actual route/WG state must therefore be read back before any repair/retry.
 - No G2-B performance conclusion exists yet.
 
 ## 1. Project Goal
@@ -107,7 +111,7 @@ P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
 G1 Foreground-safe Foundation        ✅ REVIEWER PASS
 G2-A HY2 server deployment           ✅ REVIEWER PASS
 G2-A DPAPI recovery closure          ✅ REVIEWER PASS
-G2-B Safe-window Validation + Seal   ⏸ SAFE-WINDOW CONFIRMATION PENDING
+G2-B Safe-window Validation + Seal   ⏸ RETURN / READ-ONLY RECONCILIATION
 ```
 
 P0 acceptance covers research/scope only. It does NOT assert fresh server/runtime state.
@@ -346,22 +350,19 @@ Owner read-only diagnostic proved that the optional Internet Settings field `Aut
 
 ## 12. Next Step
 
-1. Owner High-integrity `-PreflightOnly` is formally accepted: `PASS_G2B_OWNER_HIGH_PREFLIGHTONLY`.
-2. Before any full benchmark, obtain a fresh Owner safe-window confirmation because the full runner generates benchmark traffic, starts a temporary local Mihomo process, accesses the approved DPAPI Secret in memory, and removes the exact temporary `/32` route during final cleanup.
-3. If Owner confirms no foreground Codex/image/network-critical task would be disrupted, the next Gate is one full canonical `g2b-owner-runner.ps1` execution from the same elevated PowerShell 7.6.6 environment.
-4. The full Gate must stop on any precheck/handshake/cleanup failure, must not tune MTU/BBR/fq/GRO/sysctl, and must return the complete bounded output plus generated non-secret result artifacts for Reviewer inspection.
-5. If safe window is not confirmed, do nothing; keep WireGuard production state and the temporary `/32` route unchanged.
+1. Do not rerun the full runner and do not manually add/remove the `/32` route.
+2. Run one atomic Owner-local read-only reconciliation that proves: exact `/32` route present/absent; selected route to the VPS; WireGuard services/adapter state; system-proxy/TUN/Mihomo state; public exit; runtime-secret artifact absence; and one non-secret fixture proving whether an empty mandatory collection triggers the observed `ParameterBindingValidationException`.
+3. After current network reality is reconciled, repair only the benchmark empty-collection binding and exact-route no-match cleanup verification, with branch-specific cleanup diagnostics.
+4. Persist/fresh-read the repair before any new benchmark authorization. No MTU/BBR/fq/GRO/sysctl tuning.
 
 ## 13. Status Summary
 
-- Overall: P0 PASS, G1 PASS, G2-A HY2 server deployment PASS, DPAPI recovery/path realization PASS.
-- Route/adapter precheck repair: PASS.
-- ClientSnapshot optional-property repair: PASS.
-- Owner High-integrity production-path `-PreflightOnly`: PASS.
-- Safety read-back: Secret access NO; Mihomo start NO; benchmark start NO; network change NO.
-- Formal G2-B samples remain WG 0 / HY2 0; no protocol-performance conclusion exists.
-- Current Owner checkpoint: fresh confirmation that the full benchmark can run without disrupting foreground work.
-- Full benchmark remains blocked until that safe window is confirmed.
+- Overall: P0 PASS, G1 PASS, G2-A PASS, DPAPI recovery PASS, G2-B preflight chain PASS.
+- Full G2-B attempt: RETURN before sample 1 at `WIREGUARD_BASELINE` / `ParameterBindingValidationException`.
+- Secret access/runtime: no Secret runtime created; Mihomo not started; no HY2 handshake; no formal WG/HY2 samples.
+- Cleanup report: exact route cleanup and final network readback returned failures; actual route/WG state is currently UNKNOWN until Owner read-only reconciliation.
+- Source finding: empty mandatory `Rows` collection binding is the leading benchmark root cause and matches the failure point; exact-route no-match handling is the leading cleanup false-negative cause.
+- Current action: one atomic read-only reconciliation only. No rerun.
 
 
 
@@ -634,3 +635,26 @@ Reviewer interpretation: the previous route/adapter failure is no longer the act
 - Negative evidence: Secret access NO, Mihomo start NO, benchmark start NO, network change NO.
 - This closes the preflight repair loop. It does not authorize or prove the full G2-B benchmark.
 - Next consequential boundary: fresh Owner safe-window confirmation before full runner execution.
+
+### Full G2-B attempt — RETURN_WG_BASELINE_BINDING
+
+Owner executed the single authorized full canonical runner after safe-window confirmation.
+
+Observed:
+
+```text
+PRECHECK=PASS
+RUNNER_FAILED_PHASE=WIREGUARD_BASELINE
+RUNNER_FAILURE_TYPE=ParameterBindingValidationException
+CLEANUP_FAILED=OWNER_ROUTE_EXACT_CLEANUP_FAILED
+CLEANUP_FAILED=FINAL_NETWORK_READBACK_FAILED
+TEST_MIHOMO_STOPPED=NOT_STARTED
+CLIENT_SECRET_RUNTIME_DELETED=NOT_CREATED
+PLAINTEXT_SECRET_ARTIFACTS_REMAINING=0
+OWNER_TEMP_ROUTE_REMOVED=NO
+PRODUCTION_WG_RESTORED=NO
+CURRENT_WINDOW_RESULT=INCONCLUSIVE
+G2B_OWNER_RUNNER_RESULT=FAIL_CLOSED
+```
+
+Reviewer boundary: the output does not prove that the route is still present or that production WireGuard is not restored, because the cleanup verifier itself can fail on an exact no-match query. Current network state is UNKNOWN until a read-only Owner reconciliation. Do not retry the runner.
