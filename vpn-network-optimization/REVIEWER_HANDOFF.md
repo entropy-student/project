@@ -14,7 +14,7 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          VIRTUALIZED ARTIFACT VERIFIED METADATA/ACL / ROUNDTRIP PENDING
 G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT BLOCKER                      DPAPI round-trip validate virtualized artifact, then realize canonical Owner path
+CURRENT BLOCKER                      Validate virtualized DPAPI artifact; realize canonical path; patch G2-B runner ACL validator
 ```
 
 Current runtime facts:
@@ -357,7 +357,7 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package rat
 - Server state: WireGuard active on UDP 51820; Hysteria2 v2.12.3 active on UDP 8443.
 - Control path: SSH via WireGuard to `10.66.21.1:22` PASS.
 - Candidate data path: WLAN direct to `24.199.118.137:8443` prepared via the Owner-created temporary ActiveStore /32 route.
-- Immediate next action: inspect exact virtualized DPAPI artifact metadata/ACL/round-trip. Do not rerun the repair runner or ACL fixture yet.
+- Immediate next action: DPAPI-unprotect and validate the exact virtualized artifact, prepare canonical-path realization without VPS Secret re-fetch, and patch the independent single-ACE ACL assertion in `g2b-owner-runner.ps1` before benchmark execution.
 - No live MTU/BBR/fq/GRO/sysctl tuning has been applied.
 
 
@@ -455,3 +455,30 @@ Owner fresh read-back on 2026-10-02:
 - sole ACE: current Owner FullControl / Allow / explicit / no inheritance.
 
 This matches the original G2-A reported size and intended owner-only ACL. The remaining validation is DPAPI CurrentUser decrypt + accepted bundle validation + byte-identity round-trip, followed by canonical-path realization. Do not re-fetch or rotate the VPS Secrets unless that validation fails.
+
+### ACL fixture result — helper bug isolated and fixed
+
+Non-secret fixture run completed without accessing real Secret material or executing the real recovery runner.
+
+Result:
+
+```text
+ACL_FIXTURE_CREATE=PASS
+ACL_FIXTURE_READBACK=PASS
+ACL_FIXTURE_VALIDATOR=PASS
+ACL_FIXTURE_CLEANUP=PASS
+RECOVERY_RUNNER_ACL_FIXED=YES
+STATIC_REVIEW=PASS
+REAL_SECRET_ACCESSED=NO
+REAL_RECOVERY_RUNNER_EXECUTED=NO
+```
+
+Root cause: the old ACL helper conflated `Owner SID mismatch` with `ACE count != 1`. The fixture proved that multiple explicit ACEs can all belong to the current Owner and combine to FullControl, so a fixed ACE-count assertion was not a valid security boundary. The helper now validates owner SID, inheritance, each principal/type, and merged rights instead of requiring exactly one ACE.
+
+Important limitation: the already-cleaned real failure cannot be retroactively classified to a specific old branch because the old error class did not expose branch detail.
+
+Execution note: fixture ran in PowerShell 7.6.5 with Medium token. This is acceptable only as non-secret ACL diagnostic evidence; it is not a substitute for elevated Owner-path validation.
+
+Newly discovered follow-up: `g2b-owner-runner.ps1` still has its own single-ACE-count ACL assertion. It must be patched/reviewed before any real G2-B run. The repair-runner ACL fix must not be assumed to cover the benchmark runner.
+
+Plan impact: despite the repaired recovery runner being technically retry-ready, do NOT rerun it now. The virtualized 1206-byte DPAPI final artifact has been found and is the preferred source for local validation + canonical-path realization, avoiding unnecessary VPS Secret re-fetch.
