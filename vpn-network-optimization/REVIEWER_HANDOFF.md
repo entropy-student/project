@@ -14,8 +14,8 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       RETURN before first formal sample; network reconciled safe
-CURRENT_BLOCKER                      Owner atomic repaired full G2-B retry execution pending
-CURRENT_GATE                         G2B_Full_Retry_After_Repair (AUTHORIZED_ONCE)
+CURRENT_BLOCKER                      Minimal atomic retry wrapper execution pending
+CURRENT_GATE                         G2B_Full_Retry_After_Repair (AUTHORIZED_ONCE_UNCONSUMED)
 ```
 
 Current runtime facts:
@@ -714,3 +714,12 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - The wrapper's final readback also returned before producing a positive network result; because the wrapper emitted only `RuntimeException`, this output does not prove production drift.
 - The single repaired full-run authorization remains unconsumed because the canonical runner was never invoked and the temporary route was never created.
 - Reviewer repair for the wrapper: avoid working-tree raw-byte blob comparison by executing the accepted commit from a detached temporary Git worktree; use the previously proven `Find-NetRoute` route-object filter requiring DestinationPrefix + NextHop + InterfaceIndex; preserve one-run limit and exact fallback cleanup.
+
+
+### Owner atomic retry wrapper — CANONICAL_GIT_ROOT_MISMATCH preflight return
+
+- Owner wrapper reached Administrator/High-integrity preflight, then returned at source preflight with `CANONICAL_GIT_ROOT_MISMATCH`.
+- No temporary route was created; fallback cleanup was not armed; canonical runner was not invoked.
+- Final readback passed: temporary route absent, WireGuard restored/active, system proxy disabled, no TUN/Mihomo/runtime Secret config/test listener, expected public exit present.
+- Therefore the one repaired full-run authorization remains unconsumed.
+- Reviewer classifies the failure as an over-strict wrapper path-identity assertion, not target/network drift. The next wrapper will remove exact Git-root path equality and instead verify the exact runner and client-fragment Git blob identities directly from the current files before any network mutation.
