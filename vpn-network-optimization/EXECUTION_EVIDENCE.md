@@ -718,3 +718,32 @@ ANOMALIES:
 SECRET_VALUES_EMITTED: 0
 SECRET_VALUES_COMMITTED: 0
 EXECUTOR_RESULT: RETURN_TEST_FAILURE
+
+
+## G2-B HY2 proxy-use validator diagnostic and repair
+
+AUTHORIZED_GATE: G2B_HY2_Handshake_Validator_Diagnostic
+PREFLIGHT_FACTS:
+- Real-host PowerShell 7.6.6 remained Administrator-ready.
+- curl is 8.21.0 and supports the write-out variable proxy_used.
+- Direct no-proxy probe returned proxy_used=0 with native exit 0.
+- After the prior runner cleanup: TCP rows on local port 17890 = 0; UDP rows = 0; Mihomo process count = 0; runtime directory absent; runtime config absent.
+
+DIAGNOSIS:
+- The runner used curl remote_ip == 127.0.0.1 as proof that an HTTP proxy was used. That is an incidental representation and not the correct invariant for this curl runtime.
+- curl proxy_used is available on the verified target and directly expresses whether the proxy path was used.
+- The wrapper's previous FINAL_PROXY_LISTENER_PRESENT was not persistent residue. Current authoritative readback shows no TCP/UDP endpoint, no Mihomo process, and no runtime files.
+- The wrapper check was also over-broad because it treated every TCP state on LocalPort 17890 as a listener; future wrapper readback must check TCP State=Listen.
+
+ACTUAL_CHANGES:
+- Invoke-CurlSample now records curl proxy_used and parses it as 0/1.
+- WG samples require ProxyUsed=0; HY2/proxied samples require ProxyUsed=1.
+- HY2 handshake path validation now uses ProxyUsed=1 instead of RemoteIp=127.0.0.1.
+- Result CSV includes ProxyUsed.
+- Runner preflight now treats only TCP State=Listen on 17890 as port occupation; UDP endpoint behavior is unchanged.
+
+VALIDATION:
+- Fresh source readback confirms the write-out format, eight-field parser, ProxyUsed property, benchmark guards, handshake guard, CSV field, and Listen-only TCP precheck.
+- No network mutation, Secret access, Mihomo start, or benchmark was performed during this diagnostic/repair round.
+
+EXECUTOR_RESULT: PASS_CANDIDATE
