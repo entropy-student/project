@@ -13,9 +13,9 @@ P0                                   PASS
 G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
-G2-B benchmark                       RETURN before first formal sample; network reconciled safe
-CURRENT_BLOCKER                      Local accepted-commit object atomic retry pending
-CURRENT_GATE                         G2B_Full_Retry_After_Repair (AUTHORIZED_ONCE_UNCONSUMED)
+G2-B benchmark                       WG 60/60 complete; HY2 not started; returned at runtime ACL owner validation
+CURRENT_BLOCKER                      Fresh Owner authorization for one retry after ACL owner repair
+CURRENT_GATE                         G2B_Full_Retry_After_Acl_Repair (WAIT_OWNER_AUTH)
 ```
 
 Current runtime facts:
@@ -751,3 +751,15 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - Final readback also hit the same route-selection validator, so that validator is now the single bounded fault domain. No target/network drift is inferred from the validator failure alone.
 - The repaired full-run authorization remains unconsumed.
 - Next action is a read-only diagnostic of the actual `Find-NetRoute -RemoteIPAddress 24.199.118.137` returned object shapes/cardinality on the real Windows host; no further wrapper retry until that diagnostic is reconciled.
+
+
+### G2-B full retry — WG complete, ACL owner validation return
+
+- Owner executed the authorized full retry. The formal runner was invoked once.
+- WireGuard benchmark completed 60/60 with 0 failures: Median 0.622782s, P90 0.815755s, P95 0.914709s, P99 1.624033s, >1s 3, >1.5s 2, >2s 0.
+- The run then failed closed at `CREATE_OWNER_ONLY_RUNTIME_CONFIG` with `OWNER_ACL_OWNER_MISMATCH`; HY2 was not started and no HY2 benchmark sample exists.
+- Cleanup passed: temporary owner route removed, production WireGuard restored, runtime Secret file not created, plaintext Secret artifacts remaining 0. Wrapper final readback also passed.
+- The consequential retry authorization is consumed because the runner executed the 60-sample WG benchmark and entered runtime-config creation.
+- Source review found the owner-only ACL constructors created protected ACLs for the Owner SID but did not explicitly set the security descriptor owner. This is consistent with the observed mismatch.
+- Source repair now adds `SetOwner($script:ownerSid)` to both directory and file ACL constructors before `Set-Acl`; benchmark, route, Secret, and cleanup logic are otherwise unchanged.
+- Reviewer accepts the source repair as technically scoped, but the next consequential retry must first run a non-Secret real-host ACL fixture inside the same atomic checkpoint. A fresh Owner authorization is required before that retry.
