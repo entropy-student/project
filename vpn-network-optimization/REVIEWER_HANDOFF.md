@@ -67,7 +67,7 @@ Accepted source:
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
 STATE=AUTHORIZED_UNTIL_GATE_RESOLVED
-OBJECTIVE=Determine whether Windows can emit any UDP/8443 traffic to the VPS over the exact WLAN route, independent of Mihomo/HY2.
+OBJECTIVE=Determine whether the failure is port-specific by comparing one raw UDP datagram to known-working WireGuard port 51820 with one raw UDP datagram to HY2 port 8443 over the same exact WLAN route.
 MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 ```
@@ -77,10 +77,10 @@ MANDATORY_REVIEW_STOP=YES
 Current next diagnostic under the standing authorization:
 - keep production WireGuard ON;
 - create the same exact temporary `24.199.118.137/32` WLAN route;
-- start one VPS-side read-only UDP/8443 packet-presence observer via the accepted WireGuard SSH control path;
-- send exactly one small raw UDP datagram from Windows to `24.199.118.137:8443`;
+- start one VPS-side read-only packet-presence observer for UDP/51820 and UDP/8443 on eth0;
+- send exactly one small raw UDP datagram to 51820 and exactly one to 8443 from Windows;
 - do not start Mihomo and do not read DPAPI Secret;
-- record only whether the VPS observed that one UDP datagram;
+- record only whether each port's packet arrived;
 - remove the exact temporary route and verify WireGuard remains restored.
 
 Forbidden:
@@ -107,8 +107,9 @@ Forbidden:
 ### ACCEPTANCE_CRITERIA
 
 Diagnostic classification:
-- raw UDP arrives at VPS → WLAN/router/ISP/provider UDP/8443 path works; Mihomo/HY2 client emission becomes the primary fault domain;
-- raw UDP does not arrive → path outside Mihomo is broken or filtered; continue with WLAN/router/ISP/upstream diagnosis.
+- 51820 YES + 8443 NO → port-specific filtering/path policy is proven outside Hysteria/Mihomo;
+- 51820 YES + 8443 YES → generic raw UDP path works; prior 8443 miss was transient/observer-specific and HY2 client behavior must be revisited;
+- 51820 NO + 8443 NO → the raw-control route/Windows egress method itself is not reaching the VPS, so inspect local routing/source-interface behavior before blaming upstream filtering.
 
 This Gate does not itself PASS G2-B.
 
@@ -198,11 +199,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-The pktmon filter was valid, but its localized counters-text parser can still false-negative. Run one raw UDP/8443 control datagram with simultaneous VPS observation to remove pktmon/Mihomo ambiguity.
+The raw UDP/8443 control also failed to reach VPS eth0. Compare raw UDP/51820 vs UDP/8443 over the same route to distinguish port-specific filtering from a broader local routing/egress issue.
 
 ## OWNER_ACTION_REQUIRED
 
-**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected and run the prepared raw UDP/8443 path-control checkpoint.
+**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected and run the prepared raw UDP 51820-vs-8443 comparison checkpoint.
 
 ## EVIDENCE_POINTERS
 
