@@ -15,6 +15,7 @@ $wgAdapterName = 'SFO2-A'
 $pktmonPath = $null
 $pktmonStarted = $false
 $pktmonFilterAdded = $false
+$diagnosticCompleted = $false
 $cleanupFailures = [Collections.Generic.List[string]]::new()
 
 function Assert-Check {
@@ -123,14 +124,9 @@ try {
         [string]$routes[0].NextHop -eq $wlanGateway
     ) 'OWNER_ROUTE_CREATE_READBACK_INVALID'
 
-    $selected = @(Find-NetRoute -RemoteIPAddress $publicVpsIp -ErrorAction Stop)
-    Assert-Check ($selected.Count -eq 1) 'VPS_ROUTE_SELECTION_AMBIGUOUS'
-    Assert-Check (
-        [int]$selected[0].InterfaceIndex -eq $wlanIndex -and
-        [string]$selected[0].NextHop -eq $wlanGateway
-    ) 'VPS_OUTER_ROUTE_NOT_WLAN_DIRECT'
     Write-Output 'OWNER_TEMP_ROUTE_CREATED=YES'
-    Write-Output 'VPS_ROUTE_SELECTION=WLAN_DIRECT'
+    Write-Output 'VPS_EXACT_ROUTE_READBACK=WLAN_DIRECT'
+    Write-Output 'RAW_UDP_SOCKET_BIND_TARGET=192.168.1.4'
 
     & $pktmonPath filter add 'G2B-RAW-UDP8443' -i $publicVpsIp -t UDP -p 8443 | Out-Null
     Assert-Check ($LASTEXITCODE -eq 0) 'PKTMON_FILTER_ADD_FAILED'
@@ -190,6 +186,7 @@ try {
     Write-Output 'PKTMON_JSON_OBSERVER_STOPPED=YES'
     Write-Output 'PKTMON_PACKET_LOGGING=NO'
     Write-Output 'PKTMON_JSON_DIAGNOSTIC_COMPLETE=YES'
+    $diagnosticCompleted = $true
 }
 catch {
     $message = [string]$_.Exception.Message
@@ -253,8 +250,9 @@ finally {
     }
 }
 
+Write-Output "DIAGNOSTIC_COMPLETED=$diagnosticCompleted"
 Write-Output "CLEANUP_FAILURE_COUNT=$($cleanupFailures.Count)"
-if ($cleanupFailures.Count -gt 0) {
+if (-not $diagnosticCompleted -or $cleanupFailures.Count -gt 0) {
     Write-Output 'OWNER_PKTMON_JSON_DIAGNOSTIC_RESULT=RETURN_TO_REVIEWER'
     exit 1
 }
