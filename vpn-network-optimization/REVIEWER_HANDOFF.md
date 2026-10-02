@@ -1,799 +1,243 @@
 # VPN Network Optimization — REVIEWER HANDOFF
 
-> Maintainer: Reviewer / Architect / Gatekeeper only  
-> Governance: `entropy-student/spike.skill/vps-project-governance` latest  
-> Executor facts begin in `EXECUTOR_HANDOFF.md` / `EXECUTION_EVIDENCE.md` once G1 execution starts.
+> Maintainer: Reviewer only  
+> Governance: `entropy-student/spike.skill/vps-project-governance` v0.2.6 / ACTIVE_PROVISIONAL  
+> Canonical project state: this file. Detailed execution history/proof remains in `EXECUTION_EVIDENCE.md` and Git history.
 
-## 0. Current Truth / Resume Point
+## PROJECT_GOAL
 
-This section is the canonical resume point. If any older section conflicts with it, this section wins.
+建立一套可迁移、可验证、可回滚的自建 VPN 优化标准，重点改善 Codex / OpenAI / AI 生图等长任务的稳定性和尾部表现；当前 MVP 以 WireGuard 为生产基线，验证 Hysteria2 是否值得作为备用/增强通道。
 
-```text
-P0                                   PASS
-G1                                   PASS
-G2-A server-side HY2 deployment      PASS
-G2-A DPAPI recovery closure          PASS
-G2-B benchmark                       WG 60/60 complete; HY2 proxy started; returned at handshake path validator
-CURRENT_BLOCKER                      Fresh Owner authorization for one retry after HY2 proxy-use validator repair
-CURRENT_GATE                         G2B_Full_Retry_After_ProxyUse_Repair (WAIT_OWNER_AUTH)
-```
-
-Current runtime facts:
-
-- Production traffic remains on WireGuard; WireGuard has not been stopped or replaced.
-- VPS is DigitalOcean `24.199.118.137` in `sfo3`; WireGuard listens on UDP 51820 and Hysteria2 v2.12.3 listens on UDP 8443.
-- Safe split control/data path is proven:
-  - control plane: Codex/SSH → WireGuard → `10.66.21.1:22`;
-  - HY2 candidate data plane: localhost test proxy → WLAN → `24.199.118.137:8443`.
-- The former Owner-created temporary `24.199.118.137/32` ActiveStore route is now absent after the failed full-run cleanup. Owner read-only reconciliation proved this exact no-match on the real Windows host.
-- Current production path is restored to WireGuard: `Find-NetRoute` selects ifIndex 13, WireGuard Manager/tunnel are Running, adapter `SFO2-A` is Up, and public exit remains `24.199.118.137`.
-- SSH over the public IP is not the G2-B control path. Use `10.66.21.1:22` through WireGuard with the already accepted host-key trust.
-- Owner PowerShell environment has been verified as PowerShell 7.6.6, Administrator = True, integrity RID 12288 / High.
-- Codex desktop cannot run the long local benchmark in the current thread because no integrated terminal is attached; therefore the accepted execution model is an Owner-run PowerShell runner, with Codex/Reviewer handling preparation, review, evidence, and final acceptance.
-
-DPAPI recovery reality:
-
-- The original 1206-byte DPAPI artifact was found under Codex packaged-app LocalCache virtualization, fully validated with DPAPI CurrentUser + `VPNHY2R1` + TLS checks, then copied as identical encrypted bytes into the canonical Owner path.
-- Canonical Owner path realization is PASS: Owner Windows target confirmed, Owner-only ACL PASS, DPAPI round-trip PASS, `VPNHY2R1` validation PASS, pending absent, no plaintext temp file, Secret values emitted 0.
-- Do not re-fetch or rotate VPS Secrets. The virtualized source remains retained for now.
-- The AppData/path-virtualization defect is CLOSED.
-
-G2-B benchmark status:
-
-- WireGuard benchmark samples completed: `0`.
-- HY2 benchmark samples completed: `0`.
-- HY2 real client handshake tested in G2-B: `NO`.
-- The first Owner run of `g2b-owner-runner.ps1` passed Administrator/High checks but failed closed at `PRECHECK_ROUTE_AND_ADAPTERS` with `CimJobException` before any benchmark sample.
-- Owner then ran the underlying read-only Windows queries successfully from the same elevated PowerShell 7.6.6 shell: exact /32 route present, WLAN ifIndex 18 Up with IPv4 192.168.1.4 and gateway present, WireGuard `SFO2-A` ifIndex 13 Up.
-- Reviewer fresh-read accepted the bounded diagnostic/source-persistence Gate at commit `243c5eeb5833f25566ea49463b84b93b5063ad14`: the no-match `PersistentStore` query fault is handled narrowly, branch-specific diagnostics are present, `-PreflightOnly` returns before Secret/Mihomo/benchmark/network mutation, and all three runner sources are now canonical/reviewable on GitHub.
-- Owner High-integrity `-PreflightOnly` was then executed from PowerShell 7.6.6 / RID 12288. The earlier route/adapter precheck passed far enough to advance into `PRECHECK_WIREGUARD_AND_CLIENT_STATE`, where the runner failed closed with `PropertyNotFoundException` before Secret access, Mihomo start, benchmark, or network mutation.
-- Owner bounded read-only diagnostic proved `AutoConfigURL` is absent while the other snapshot inputs are healthy; under StrictMode the old direct access was the exact `PropertyNotFoundException` cause.
-- Reviewer fresh-read accepted commit `50a6b02480df6554493fee59f1610486a9a239fe`: optional `ProxyServer` / `ProxyOverride` / `AutoConfigURL` now normalize missing/null to empty string, `ProxyEnable` and required service/WireGuard/route fields remain fail-closed, and snapshot failures now retain branch-specific diagnostics.
-- Exact candidate commit scope is limited to `g2b-owner-runner.ps1`, `EXECUTION_EVIDENCE.md`, and `EXECUTOR_HANDOFF.md`; `REVIEWER_HANDOFF.md` was not modified by Executor. Reviewer acceptance then advanced `main` only by the Reviewer-owned Handoff record.
-- Owner reran the canonical `g2b-owner-runner.ps1 -PreflightOnly` from PowerShell 7.6.6 / Administrator / integrity RID 12288 after the accepted ClientSnapshot repair.
-- Owner read-back: `ROUTE_QUERY=PASS`, `WLAN_ADAPTER_QUERY=PASS`, `WLAN_IP_QUERY=PASS`, `WG_ADAPTER_QUERY=PASS`, `G2B_PREFLIGHT_ONLY=PASS`, with `SECRET_ACCESSED=NO`, `MIHOMO_STARTED=NO`, `BENCHMARK_STARTED=NO`, and `NETWORK_CHANGED=NO`.
-- Reviewer accepts this as `PASS_G2B_OWNER_HIGH_PREFLIGHTONLY`. The preflight/source-repair chain is closed. Owner has now confirmed the safe window.
-- Owner then ran one authorized full canonical G2-B runner. Prechecks passed, but execution failed closed immediately at `WIREGUARD_BASELINE` with `ParameterBindingValidationException` before any sample was emitted.
-- Cleanup then reported `OWNER_ROUTE_EXACT_CLEANUP_FAILED` and `FINAL_NETWORK_READBACK_FAILED`; Mihomo was not started, no runtime Secret file was created, and no protocol result exists.
-- Reviewer source inspection identifies a direct binding defect: `Invoke-Benchmark` declares mandatory collection parameter `Rows` without `AllowEmptyCollection`, while the first call passes the intentionally empty `Generic.List[object]`; this is consistent with failure before sample 1.
-- Reviewer also identifies a cleanup verification defect consistent with the already-proven NetTCPIP behavior: `Get-ExactTemporaryRoute` directly calls exact `Get-NetRoute -ErrorAction Stop`; after successful route removal, a no-match may throw instead of returning an empty collection. Current actual route/WG state must therefore be read back before any repair/retry.
-- No G2-B performance conclusion exists yet.
-
-## 1. Project Goal
-
-- Final goal: 建立一套可迁移、可验证、可回滚的自建 VPN 优化标准，提高 Codex / OpenAI / AI 生图等长任务的稳定性与尾部表现，并可快速复用于不同 VPS。
-- Current goal: 在 Owner fresh safe-window confirmation 后运行一次完整 G2-B 同窗口 WireGuard vs Hysteria2 A/B；runner 必须保留现有生产 WireGuard、使用临时 HY2 localhost proxy、完成 exact cleanup，并在结果后停止于 Reviewer。
-- Guiding principle: 不复制某一作者的全部参数；以官方文档、可靠实现和本机证据筛选最小有效配置。
-
-## 2. Authority / Source of Truth
-
-### Governance
-
-1. Owner 最新明确指令
-2. active bounded Reviewer override
-3. GitHub canonical `entropy-student/spike.skill/vps-project-governance` latest
-4. 历史副本 / chat
-
-### Project factual state
-
-1. 本 `REVIEWER_HANDOFF.md`
-2. fresh target-host read-back + accepted `EXECUTION_EVIDENCE.md`
-3. `EXECUTOR_HANDOFF.md`
-4. README / historical chat
-
-## 3. Current Architecture
+## PROJECT_STAGE
 
 ```text
-Windows client
-   │
-   ├─ Current production path: WireGuard
-   │        ↓
-   │   DigitalOcean sfo3 droplet
-   │        ↓
-   │   Internet / OpenAI
-   │
-   └─ Side-by-side candidate: Hysteria2 UDP 8443
-            ↓
-       same DigitalOcean sfo3 droplet
-       (server deployed/active; client not imported/enabled; no traffic switched)
+P0 Research / Scope                    PASS
+G1 Foreground-safe Foundation          PASS
+G2-A HY2 side-by-side deployment       PASS
+G2-A DPAPI recovery closure            PASS
+G2-B Safe-window WG vs HY2 validation  IN_PROGRESS
+MVP v1 seal                            PENDING
 ```
 
-- VPS: DigitalOcean droplet at `24.199.118.137`. Legacy project/client label `SFO2-A`; fresh DigitalOcean metadata identifies the actual provider region as `sfo3`. Treat `SFO2-A` only as the legacy local profile/test label, not as the provider region.
-- Current production VPN: WireGuard; fresh active MTU is 1420. Historical 1280 remains only as legacy metadata.
-- Client: Windows; Clash Verge 2.5.6 installed. Mihomo Meta v1.19.31 and alpha-f103639 are present and HY2/fingerprint config-parser compatible; no active Mihomo core/TUN was observed at G2-A completion.
-- Hysteria2: G2-A side-by-side server deployment accepted; official v2.12.3 service active on UDP 8443. Client profile is prepared but not imported/enabled.
-- Current networking baseline: eth0 qdisc fq_codel; TCP CC cubic; BBR inactive; generic GRO on; rx-gro-list off; rx-udp-gro-forwarding off. No live tuning has been applied.
-- Shared infra dependency: none assumed. Any discovered Caddy/80/443/shared firewall dependency must fail closed and be reported before change.
-
-## 4. Current State
+## SYSTEM_MAP
 
 ```text
-P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
-G1 Foreground-safe Foundation        ✅ REVIEWER PASS
-G2-A HY2 server deployment           ✅ REVIEWER PASS
-G2-A DPAPI recovery closure          ✅ REVIEWER PASS
-G2-B Safe-window Validation + Seal   ⏸ RETURN / READ-ONLY RECONCILIATION
+Windows Owner host
+├─ Production: WireGuard adapter SFO2-A
+│  └─ DigitalOcean sfo3 VPS 24.199.118.137
+│     └─ Internet / OpenAI
+├─ G2-B candidate path:
+│  └─ localhost Mihomo test proxy :17890
+│     └─ temporary ActiveStore /32 route via WLAN
+│        └─ Hysteria2 UDP 8443 on same VPS
+└─ Control path:
+   └─ SSH through WireGuard to 10.66.21.1:22
 ```
 
-P0 acceptance covers research/scope only. It does NOT assert fresh server/runtime state.
+Current known components:
+- VPS: DigitalOcean `sfo3`, public IP `24.199.118.137`.
+- Production VPN: WireGuard, active MTU 1420.
+- Hysteria2: official v2.12.3, independent service on UDP 8443.
+- Windows client: Clash Verge 2.5.6; Mihomo v1.19.31 / alpha-f103639 available.
+- Owner execution runtime: PowerShell 7.6.6, Administrator, High integrity.
+- Recovery: canonical DPAPI CurrentUser recovery artifact validated; do not re-fetch or rotate VPS Secrets.
 
-## 5. Accepted Baseline
+## CURRENT_ACCEPTED_STATE
 
-- Owner priority: finish quickly; avoid unnecessary feature accumulation.
-- Highest runtime constraint: current foreground Codex / image-generation tasks must not be interrupted or rerouted.
-- Current WireGuard remains production baseline until G2 evidence proves a reason to change.
-- Hysteria2 is a candidate/backup path, not a predetermined winner.
-- Clash Verge should be reused where suitable rather than adding another Windows GUI client unnecessarily.
-- Author-derived ideas are a candidate pool only; external official/reliable sources may replace them.
-- First MVP excludes 3X-UI, VLESS-Reality, TUIC, residential IP, broad sysctl tuning, aggressive fixed-bandwidth HY2, automated VPS purchasing.
+Latest accepted G2-B facts:
+- One repaired full retry completed WireGuard benchmark **60/60 with 0 failures**.
+- Latest accepted WG sample: Median 0.600826s, P90 0.832286s, P95 1.111586s, P99 1.533950s, >1s 4, >1.5s 1, >2s 0.
+- Runtime Secret config creation and owner-only ACL validation passed.
+- Mihomo test proxy reached READY.
+- The run returned before HY2 sample 1 because the old handshake-path validator incorrectly used curl `remote_ip == 127.0.0.1` as proof that the proxy was used.
+- Read-only diagnosis proved curl 8.21.0 supports `%{proxy_used}`; direct no-proxy probe returned `proxy_used=0`.
+- Current real-host cleanup read-back after that return is clean: TCP 17890 rows 0, UDP 17890 rows 0, Mihomo process count 0, runtime directory/config absent.
+- Production WireGuard was restored and the temporary /32 route was removed.
+- The repaired runner now uses `proxy_used`: WG requires 0; HY2/proxied requests require 1. TCP occupation preflight now treats only State=Listen as a listener.
+- Repair accepted by Reviewer. No HY2 benchmark sample or protocol-performance conclusion exists yet.
 
-Historical performance reference:
-- short WG test: Median ~0.595s / P95 ~0.773s / P99 ~0.985s;
-- 15-minute foreground-load test: 90/90 success, Median ~0.696s / P95 ~1.358s / P99 ~1.872s / >1s 13;
-- 2026-10-01 ~20:00 peak test: 90/90 OpenAI requests succeeded, average ~0.845s, Median ~0.756s, P95 ~1.628s, P99 ~2.190s, >1s 18/90, >1.5s 7/90, >2s 1/90, WG ping no-reply 4/90;
-- same peak sample: client→public VPS ping Median ~160ms / P95 ~187ms; WG tunnel ping Median ~163ms / P95 ~180ms; TCP22 Median ~169ms with isolated ~1.17s tail.
-Interpretation boundary: evidence currently supports “normal baseline RTT with materially worse evening tail/jitter”; it does NOT yet prove whether the root cause is client uplink, international route loss/retransmission, WireGuard/MTU behavior, local bufferbloat, VPS forwarding, or OpenAI/upstream wait. ICMP no-reply is a warning signal, not by itself a transport packet-loss measurement.
-These are historical references, not G1 fresh evidence.
+Accepted source:
+- Repaired runner commit: `ed4f8216ecd18dcea29f06f12fa0773c97c3cdf4`
+- Repaired runner blob: `379ea04f108de20290ab5ae35e6a9dfbd70f02b6`
+- Reviewer acceptance commit: `165fc79b906dd6de858fdb6c3521e95f7b749136`
 
-## 6. Accepted Gate — G1 Foreground-safe Foundation
-
-### Goal
-
-Without affecting current foreground traffic:
-
-1. prove target-host identity and current client/server baseline;
-2. inspect WireGuard, MTU, routes, firewall, NAT, ports, kernel, qdisc, congestion control, GRO/offload capabilities;
-3. create portable non-secret deployment/config templates;
-4. prepare Hysteria2 side-by-side as far as safely possible;
-5. prepare health-check and rollback tooling;
-6. leave current traffic on existing WireGuard;
-7. do not run performance benchmark yet.
-
-### Allowed
-
-- Read-only local/remote inspection.
-- Project-local GitHub files/scripts/templates.
-- Back up relevant non-secret configuration metadata.
-- Download/install binaries/packages if the operation does not restart or alter current network services.
-- Create isolated HY2 config/service on an unused UDP port only after conflict checks.
-- Generate syntax-valid non-secret client templates for Clash Verge/Mihomo or official HY2 client.
-- Start an isolated HY2 service only if this requires no route/NAT/default-policy changes, no existing-service restart, no material foreground resource impact, and no unresolved cloud-firewall dependency.
-- Create rollback/uninstall scripts.
-- Create `EXECUTOR_HANDOFF.md` and `EXECUTION_EVIDENCE.md` when actual execution begins.
-
-### Forbidden in G1
-
-- Restart/reboot VPS.
-- Restart/stop/reconfigure WireGuard or wg0.
-- Switch Windows current VPN, system proxy, TUN, route, or current Clash node.
-- Run Speedtest, bulk downloads, stress tests, long benchmark loops, Codex/image A/B.
-- Apply fq/BBR/sysctl/network offload changes to the live host.
-- Change existing NAT/default firewall policy unless separately authorized after impact review.
-- Touch shared Caddy/80/443 or unrelated production services.
-- Install 3X-UI/VLESS-Reality/TUIC/one-click optimization suites.
-- Commit any Secret value.
-- Generate/install new Secret material unless Owner provides explicit exact allowlist authorization under Governance.
-
-### Acceptance criteria
+## CURRENT_GATE
 
 ```text
-TARGET_HOST_VERIFIED=YES
-CURRENT_WIREGUARD_PRESERVED=YES
-FOREGROUND_TASK_INTERRUPTION=NO
-BASELINE_INSPECTION_COMPLETE=YES
-PORTABLE_TEMPLATE_READY=YES
-ROLLBACK_READY=YES
-CURRENT_TRAFFIC_SWITCHED=NO
-LIVE_SYSTEM_TUNING_APPLIED=NO
-HY2_READY=YES|BLOCKED_WITH_EXACT_REASON
-CLASH_VERGE_INTEGRATION_PLAN_READY=YES
+GATE_ID=G2B_Full_Retry_After_ProxyUse_Repair
+STATE=WAIT_OWNER_AUTH
+OBJECTIVE=Run one bounded same-window WireGuard vs Hysteria2 validation using the accepted proxy-use validator repair.
+MAX_ENDPOINT_THIS_ROUND=One full runner invocation, result persistence, exact cleanup/read-back, then mandatory Reviewer stop.
+MANDATORY_REVIEW_STOP=YES
 ```
 
-HY2 may be `BLOCKED_WITH_EXACT_REASON` if Cloud Firewall, DNS/certificate, Secret authorization, or client GUI action requires Owner. That does not authorize bypassing the blocker.
+### TARGET_AND_SCOPE
 
-### Evidence required
+Allowed only after fresh explicit Owner authorization:
+- Owner Windows host only for the local benchmark/checkpoint.
+- Existing production WireGuard stays running.
+- Existing Hysteria2 server on UDP 8443 is used as-is.
+- One temporary exact `24.199.118.137/32` ActiveStore route via the already accepted WLAN path may be created and must be removed during cleanup.
+- One test-only localhost Mihomo proxy on port 17890 may be started and must be stopped during cleanup.
+- Canonical DPAPI recovery may be read only inside the protected Owner execution boundary to render the temporary runtime config.
+- Non-secret benchmark result artifacts may be persisted.
 
-- target host identity and fresh IP read-back;
-- WireGuard state without private key disclosure;
-- current routes and relevant interface/MTU metadata;
-- listening ports and HY2 port conflict result;
-- firewall/NAT metadata;
-- kernel/qdisc/congestion-control/GRO capability;
-- exact files/services created or changed;
-- proof existing WG remains up;
-- proof no current route/proxy switch occurred;
-- rollback commands/scripts and syntax checks;
-- secret/private-data statement.
+Not allowed:
+- No second runner invocation.
+- No MTU / BBR / fq / GRO / sysctl tuning.
+- No WireGuard stop/reconfigure.
+- No VPS/HY2 redeploy or Secret rotation.
+- No Secret value in chat, repo, console output, Handoff, Evidence, command arguments, or ordinary logs.
+- No expansion into another protocol or architecture.
 
-## 7. Candidate Optimization Pool
+### APPLICABLE_CRITICAL_CONSTRAINTS
 
-### MVP candidates
+- Preserve production WireGuard and foreground tasks.
+- Source identity must match the accepted repaired runner before consequential execution.
+- Fresh runtime/target preflight is still required; static accepted documents are not a substitute for live state.
+- Any material drift, ambiguous prior state, unexpected Secret/runtime residue, route mismatch, or cleanup failure returns to Reviewer.
+- One authorization covers one consequential runner invocation only.
 
-- WireGuard MTU/Keepalive standardization;
-- Hysteria2 side-by-side;
-- fq / BBR suitability inspection;
-- UDP GRO forwarding/offload inspection;
-- Clash Verge/Mihomo integration;
-- automated inspection/health/rollback/migration tooling.
+### PREFLIGHT
 
-### Later only if evidence supports
+Before the one full invocation:
+1. prove Owner PowerShell 7.6.6 / Administrator / High integrity;
+2. prove accepted runner source/blob identity;
+3. prove production WireGuard baseline and expected public exit;
+4. prove temporary exact /32 route is absent before creation;
+5. prove no Mihomo test process/listener/runtime config residue;
+6. prove required WLAN/WireGuard adapter identity and accepted route prerequisites;
+7. prove canonical DPAPI recovery artifact is available and protected without emitting Secret material;
+8. create/read back only the exact temporary route required for the HY2 outer path;
+9. fail closed before Secret access/benchmark if any required preflight item is not satisfied.
 
-- HY2 aggressive/fixed-bandwidth congestion mode;
-- UDP socket buffer changes;
-- SQM/CAKE for proven local bufferbloat;
-- VLESS-Reality for reachability/obfuscation needs;
-- additional protocols.
+### REQUIRED_EVIDENCE
 
-## 7A. Reviewer Decision — G1
+- source/commit identity;
+- Owner-host privilege/runtime identity;
+- preflight network/client state;
+- temporary route creation/read-back;
+- WireGuard benchmark sample count and Median/P90/P95/P99/tail metrics;
+- HY2 proxy readiness and `proxy_used=1` handshake-path proof;
+- HY2 benchmark sample count and same metrics;
+- expected public exit/path checks;
+- native exit/failure phase if any;
+- Mihomo stop, runtime Secret config deletion, plaintext Secret artifact count;
+- exact temporary route removal;
+- production WireGuard restoration and final network read-back;
+- Secret values emitted/committed = 0.
 
-- Decision: `PASS_G1_FOREGROUND_SAFE_FOUNDATION`.
-- Accepted execution commit: `75b738726d3325dbb67ee4cbeaf1bad46cf47f78`.
-- GitHub branch reconciliation: current `main` later advanced to `e9b2de0303d3e9c36fb7e025b62e16a11a48ad3a` through unrelated `shared-vps-infrastructure` commits. The G1 commit remains an ancestor of current `main`; no VPN project rollback or overwrite occurred.
-- The Executor's `RETURN_PREFLIGHT_DRIFT` was correct at execution time. Reviewer reconciliation resolves it as documentation/label drift, not wrong-host drift: the exact historical public IP was reached under strict host-key checking, while fresh DigitalOcean metadata identifies the same target as region `sfo3`. Future docs/scripts must not call the provider region `SFO2`.
-- No live VPS/network/client mutation occurred; current WireGuard remained active; foreground tasks were not interrupted.
-- G1 portable templates, preflight, health-check, rollback, and migration scaffolding are accepted.
-- `HY2_READY=BLOCKED_WITH_EXACT_REASON` is accepted under G1 criteria because Secret/TLS/DNS/cloud-firewall enablement was intentionally not authorized in this foreground-safe Gate.
-- YAML parser validation remains outstanding and must be performed before any HY2 deployment.
-- Mihomo active core version remains UNKNOWN; it must be confirmed before importing/enabling the HY2 profile.
+### ACCEPTANCE_CRITERIA
 
-## 7B. Reviewer Decision — G2-A
+PASS_CANDIDATE requires:
+- one valid WG sample set;
+- one valid HY2 sample set;
+- HY2 path proven to use the local proxy and intended outer route;
+- no unexpected public-exit/path drift;
+- exact cleanup PASS;
+- production WireGuard restored;
+- no plaintext Secret residue;
+- no second consequential invocation;
+- complete reviewable non-secret Evidence.
 
-- Decision: `PASS_G2A_HY2_SIDE_BY_SIDE`.
-- Accepted execution commit: `e17929a469a616c299ca22ec094e42f019b90df5`.
-- GitHub fresh read-back: PASS; at review time this commit is current `main` HEAD.
-- Hysteria2 official binary v2.12.3 is installed side-by-side and its dedicated service is enabled/active on UDP 8443.
-- Existing WireGuard remains active on UDP 51820; routes, NAT/firewall state, Windows WireGuard/proxy/TUN state, MTU/qdisc/BBR/GRO baseline, and current foreground traffic were not switched or tuned.
-- Secret generation/install on the VPS remains accepted and Secret values emitted/logged/committed = 0. The standard Owner AppData path is absent, but a matching DPAPI artifact has now been found under Codex packaged-app LocalCache virtualization. Therefore the G2-A server deployment remains accepted; DPAPI recovery closure is pending exact virtualized-artifact validation and reconciliation to the canonical Owner path before G2-B benchmark execution.
-- The non-sensitive `config/clash/sfo3-a-hy2.yaml` is parser-valid and pins the deployed certificate fingerprint; its auth remains a local secret-injection placeholder and it has not been imported/enabled.
-- Client handshake and real traffic validation were intentionally not performed in G2-A. Therefore server deployment is accepted, but HY2 performance/reliability is not yet accepted.
-- Resource observation: HY2 RSS was ~21 MiB; the interval MemAvailable delta is not attributed solely to HY2.
-- G2-A execution notes about the missing `/srv/data`/`/srv/apps` parents and the corrected `ss -p` parser are accepted because final independent read-back passed before DPAPI final promotion and no prohibited network change occurred.
+Reviewer alone decides final PASS and whether G2-B supports a v1 protocol/config decision.
 
-## 8. UNKNOWN / Open Risks
+### ROLLBACK_STATUS_OR_PLAN
 
-- Clash Verge is 2.5.6; installed Mihomo cores are known and parser-compatible, but no active core was running during G2-A.
-- Whether current Windows traffic uses official WireGuard app, Clash, or mixed routing at execution time.
-- DigitalOcean Cloud Firewall: Owner visually confirmed no Cloud Firewall is attached to this droplet.
-- Current VPS OS/kernel/qdisc/BBR/offload values.
-- UDP 8443 is locally bound by the Hysteria2 service; end-to-end client reachability/handshake is still unproven until G2-B.
-- HY2 auth/TLS generation on the VPS is complete and no public DNS dependency is used. A DPAPI artifact exists under Codex packaged-app LocalCache virtualization, while the canonical Owner AppData path is absent. Exact artifact validation/reconciliation is the active blocker; client-side auth injection and handshake remain untested.
-- Whether any server-level changes would share a failure domain with other services.
-- Active WireGuard MTU is 1420; whether any MTU change would improve tail behavior remains untested and is not authorized before the protocol A/B.
-- Whether long-task bottleneck is client→VPS, international route jitter/retransmission, WireGuard/MTU behavior, local bufferbloat, VPS forwarding, VPS→OpenAI, or upstream service behavior.
-- Peak-hour evidence shows tail degradation without broad request failure; G1 must preserve this as a diagnosis target rather than assume “high ping” is the root cause.
+Current accepted baseline is already restored: production WireGuard active, temporary route absent, no Mihomo/runtime-config residue.
 
-## 9. Owner-only Checkpoints
+During the authorized retry, cleanup is mandatory even on failure:
+- stop test Mihomo;
+- delete temporary runtime Secret config;
+- remove exact temporary /32 route;
+- verify production WireGuard and final network state;
+- if cleanup is incomplete or ambiguous, RETURN and do not retry.
 
-Owner intervention is required only for:
+### OWNER_ONLY_ACTIONS
 
-- purchase/payment/new VPS;
-- account/2FA/DigitalOcean GUI action unavailable to Executor;
-- DNS ownership action;
-- explicit Secret generation/install authorization (exact allowlist);
-- manual Clash Verge GUI import/switch when unavoidable;
-- any action that would alter the current live route/VPN while foreground tasks are running;
-- irreversible or material production/network enablement.
+Current requirement: **fresh explicit authorization for one consequential full G2-B retry**.
 
-When blocked, Executor must stop with one compact action list; no fragmented command relay.
+The takeover request itself is not interpreted as that authorization.
 
-## 10. Rollback / Recovery
+### REVIEWER_TO_EXECUTOR_RELAY
 
-G1 rollback principle:
+If/when Owner authorizes the retry, Executor startup is intentionally narrow.
 
-- Existing WireGuard is untouched.
-- New project/HY2 artifacts must be isolated and removable without changing WG.
-- Any new systemd service must have an explicit disable/stop/remove path.
-- Any package/config write must be recorded.
-- No broad prune.
-- No secret value in repo/log/evidence.
-- If a step unexpectedly changes connectivity or a shared service, fail closed and restore only the exact G1 change.
+Read:
+1. this `CURRENT_GATE` section;
+2. `scripts/g2b-owner-runner.ps1`;
+3. `config/clash/sfo3-a-hy2.yaml`;
+4. only the recent G2-B Evidence sections covering:
+   - runtime ACL owner repair;
+   - retry after ACL repair / HY2 handshake validator return;
+   - HY2 proxy-use validator diagnostic and repair.
 
-## 11. G2 — Deploy + Safe-window Validation + v1 Seal
+Accepted facts Executor may rely on are listed in `CURRENT_ACCEPTED_STATE`.
 
-G2 remains one Gate with two bounded checkpoints to avoid Gate sprawl.
+Do **not** reread full Governance, full historical Handoff, old completed Gates, or the whole append-only Evidence file. If a specific missing fact appears, do the smallest targeted read; confirmed material drift returns to Reviewer.
 
-### G2-A — Side-by-side HY2 deployment — REVIEWER PASS
-
-Completed without switching the live WireGuard path.
-
-Required sequence:
-- fresh read-only preflight and confirm the accepted sfo3 target;
-- validate the YAML templates with a real parser before deployment;
-- confirm the actual Mihomo core/version and current Hysteria2 support;
-- inspect DigitalOcean Cloud Firewall / UDP 8443 reachability without changing live routing;
-- prefer the minimum private-node TLS design. Current research candidate is self-signed TLS with certificate pinning, avoiding a domain requirement, but Executor must verify compatibility against the installed Hysteria2/Mihomo versions before freezing config;
-- Secret generation/install requires exact Owner authorization and must follow delegated-secret rules;
-- install HY2 as a side-by-side service on UDP 8443 only; do not alter wg0, routes, NAT default policy, system proxy, or current Clash/WireGuard traffic;
-- perform local/service-level health checks only.
-
-G2-A must stop before client traffic switches if foreground tasks are active.
-
-### G2-B client-route preflight — Owner read-back
-
-Owner-side Windows read-back before G2-B established:
-
-- target VPS `24.199.118.137` currently resolves through the WireGuard adapter `SFO2-A` (ifIndex 13), source `10.66.21.2`;
-- physical WLAN is `Realtek 8852CE WiFi 6E PCI-E NIC`, ifIndex 18, IPv4 `192.168.1.4`, gateway `192.168.1.1`;
-- there is no existing `24.199.118.137/32` host route;
-- both WLAN and WireGuard expose a default route, and Windows route diagnosis selected WireGuard for the VPS IP.
-
-Implication: do not run HY2 through the current default route because that would risk nesting HY2 inside WireGuard and invalidating the comparison. Preferred bounded G2-B method is a temporary ActiveStore-only `24.199.118.137/32` route via WLAN gateway `192.168.1.1` / ifIndex 18, with exact pre/post read-back and exact removal at the end. WireGuard itself must remain running. If route creation requires elevation unavailable to Executor, stop at an Owner checkpoint rather than disabling WireGuard.
-
-#### Owner route action — current
-
-Owner subsequently created the route from an elevated PowerShell and fresh read-back proved:
-
-- `24.199.118.137/32` → `192.168.1.1` → WLAN ifIndex 18;
-- `PolicyStore=ActiveStore`, metric 1;
-- `Find-NetRoute` selects WLAN for the VPS IP;
-- WireGuard services remained Running, `SFO2-A` remained Up, public exit remained `24.199.118.137`.
-
-Current boundary: the route remains present. Do not recreate, overwrite, or delete it from Codex. The Owner-run G2-B runner may remove only this exact matching route during final cleanup after the benchmark has actually completed.
-
-### G2-B — Safe-window comparative validation — BLOCKED ON DPAPI RECOVERY
-
-Only after Owner explicitly confirms a safe window:
-- import/enable the prepared HY2 profile without deleting the existing WireGuard profile;
-- compare WG and HY2 under the same short, low-impact method;
-- prioritize success rate, Median/P95/P99, >1s tails, timeout/reset, and real long-task behavior over bandwidth screenshots;
-- only if HY2 alone does not explain/improve the tail, test the surviving tuning candidates one at a time (for example MTU or UDP GRO forwarding), with before/after rollback boundaries;
-- do not bundle BBR/fq/GRO/MTU changes into one experiment;
-- select the minimal configuration that improves stability without adding unnecessary complexity;
-- freeze v1 portable deployment and rollback package.
-
-### G2 exit
-
-MVP ends after G2. New VPS/provider evaluation later reuses the same package rather than rebuilding the stack.
-
-### Owner snapshot diagnostic — root cause proven
-
-Owner read-only diagnostic proved that the optional Internet Settings field `AutoConfigURL` is absent while the other queried client-state fields and route/service checks are present and healthy. Under StrictMode, the current direct access in `Get-ClientSnapshot` explains the observed `PropertyNotFoundException`. No Secret access, benchmark, Mihomo start, or network mutation occurred.
-
-## 12. Next Step
-
-1. Owner has freshly confirmed the safe window and authorized one repaired full G2-B retry.
-2. Owner runs one atomic PowerShell 7.6.6 High-integrity checkpoint only. The checkpoint must verify the accepted runner blob, verify current WireGuard/WLAN baseline, require the exact `/32` route to be absent initially, create exactly one ActiveStore WLAN-direct route, invoke the repaired canonical runner once, perform exact fallback route cleanup if needed, and verify production WireGuard/public-exit restoration.
-3. The checkpoint must fail closed on source drift, baseline drift, unexpected route state, runner failure, cleanup ambiguity, or final network mismatch. No second runner invocation is allowed.
-4. No MTU/BBR/fq/GRO/sysctl tuning is authorized.
-5. Owner returns the complete bounded console output to Reviewer for final G2-B review.
-
-## 13. Status Summary
-
-- Governance current: v0.2.6 / ACTIVE_PROVISIONAL.
-- Runner repair: PASS at `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`; accepted runner blob `0ca085d8f31e6f9d31c76e7cb0434a5bcc89d2bd` remains current.
-- First full G2-B attempt: RETURN->FIXED; production-network reconciliation PASS.
-- Fresh Owner safe-window authorization: PASS for one repaired full retry only.
-- Formal WG/HY2 samples remain 0/0 until this run completes.
-- Current action: one atomic Owner-local checkpoint; no blind retry and no tuning.
-
-
-
-### G2-B control-path preflight — PASS
-
-Owner/Executor read-back established a safe split control/data path before benchmarking:
-
-- SSH control target: `10.66.21.1:22`
-- SSH control route: existing WireGuard tunnel
-- TCP/22 reachability: PASS
-- SSH host-key trust: PASS (accepted host identity reused without auto-accepting a new key)
-- VPS read-only probe: PASS
-- target hostname: `ubuntu-s-1vcpu-512mb-10gb-sfo3`
-- `wg-quick@wg0`: active
-- `hysteria2-vpn-network-optimization.service`: active
-- UDP 51820 listener: present
-- UDP 8443 listener: present
-
-G2-B should therefore keep:
-- control plane: Codex → WireGuard → `10.66.21.1:22`
-- HY2 data-plane candidate: localhost test proxy → WLAN → `24.199.118.137:8443`
-
-Do not retry public-IP SSH during this Gate unless Reviewer explicitly changes the plan.
-
-
-### G2-B DPAPI recovery reality correction — OWNER FRESH READBACK
-
-Owner fresh read-back on the actual Windows host supersedes the earlier G2-A evidence that claimed the final DPAPI artifact existed.
-
-Observed on 2026-10-02:
-- expected directory `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery` is missing;
-- recursive search under `C:\Users\34707\AppData\Local` found no `hy2-g2a*.dpapi` artifact;
-- therefore `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` is NOT PRESENT on the actual Owner Windows host.
-
-Reviewer consequence:
-- treat the prior G2-A claim `DPAPI_FINAL_EXISTS=YES` as stale/false for current host reality;
-- do not rerun or rotate VPS Secrets merely to repair this;
-- create and verify a new Owner-host DPAPI CurrentUser recovery artifact from the existing VPS Secret material over the accepted WireGuard SSH control path before any G2-B client Secret use;
-- no G2-B benchmark may continue until recovery reality is repaired and fresh-read on the actual Owner host.
-
-#### DPAPI repair attempt — current blocker
-
-A dedicated Owner repair runner was created and statically reviewed. Owner executed it in elevated PowerShell 7.6.6.
-
-Observed result:
+### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
-SSH_NATIVE_EXIT_CODE=0
-REMOTE_TRANSFER_RESULT=PASS
-LOCAL_FINALIZATION_RESULT=FAILED
-FINAL_PROMOTION_RESULT=NOT_PROMOTED
-RUNNER_FAILURE_CLASS=RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID
+结果：PASS_CANDIDATE / RETURN_*
+改动：一句话说明实际执行了什么。
+验证：一句话总结关键结果；详细证据写入 EXECUTION_EVIDENCE。
+问题：NONE / 实际阻塞原因。
+回滚：一句话说明 cleanup 与生产 WireGuard 状态。
+请 Reviewer 检查：一句话说明需要核对的 Evidence。
+Owner 转交：NONE / 最小必要动作。
 ```
 
-Owner then fresh-read the expected local paths and found:
+## CRITICAL_CONSTRAINTS
+
+- Foreground Codex / image-generation work must not be disrupted.
+- WireGuard remains production baseline until Reviewer accepts G2-B evidence.
+- Hysteria2 is a candidate, not a predetermined winner.
+- Secret values never leave the protected execution boundary.
+- No live tuning before the protocol A/B is completed and reviewed.
+- Accepted completed Gates are not replayed without proven material drift.
+
+## DEFAULT_EXECUTION_CHANNEL
+
+Owner-run elevated PowerShell 7.6.6 on the real Windows host for the consequential G2-B checkpoint. Reviewer/Executor prepare, inspect, persist non-secret Evidence, and review; Owner is not responsible for debugging/design.
+
+## CURRENT_ROLLBACK_STATUS
 
 ```text
-BaseExists=False
-RecoveryExists=False
-PendingExists=False
-FinalExists=False
+PRODUCTION_WIREGUARD=RESTORED
+TEMPORARY_VPS_ROUTE=ABSENT
+MIHOMO_TEST_PROCESS=ABSENT
+TCP_17890_ROWS=0
+UDP_17890_ROWS=0
+RUNTIME_SECRET_CONFIG=ABSENT
+PLAINTEXT_SECRET_RESIDUE=0
 ```
 
-Interpretation:
+These are the latest accepted read-backs from the completed diagnostic/cleanup chain. A fresh runtime preflight is required before the next consequential retry.
 
-- VPS Secret material does not need regeneration or rotation.
-- SSH transport is not the current blocker.
-- No partial local recovery artifact remains.
-- The current blocker is the ACL creation/validation helper used by the recovery runner.
-- The next attempt must first validate the ACL helper with non-secret fixture data; do not use real Secret material as ACL debug input.
+## UNRESOLVED
 
-### G2-B AppData path virtualization finding — OWNER FRESH READBACK
+- HY2 real client handshake/proxy path after the validator repair is not yet proven.
+- HY2 formal G2-B sample count is 0.
+- WireGuard vs Hysteria2 performance/reliability conclusion remains UNKNOWN.
+- MVP v1 protocol/config seal remains pending G2-B completion.
 
-Owner searched Codex packaged-app storage and found:
+## NEXT_STEP
 
-- package root: `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0`;
-- virtualized project directory: `...\LocalCache\Local\vpn-network-optimization`;
-- virtualized recovery directory: `...\LocalCache\Local\vpn-network-optimization\recovery`;
-- at least one `hy2-g2a*.dpapi` artifact under that virtualized recovery directory.
+Wait for fresh Owner authorization. After authorization, run exactly one bounded G2-B retry under the Current Gate, persist non-secret Evidence, stop at Reviewer, and decide whether G2-B passes or returns.
 
-This matches the known Windows packaged-app path virtualization failure mode from prior projects. Until the exact artifact is read back and DPAPI-validated, do not classify the original G2-A write as either fully valid or fully missing. The correct current state is: standard Owner path not realized; virtualized artifact present; validation/reconciliation pending.
+## OWNER_ACTION_REQUIRED
 
-#### Virtualized artifact exact metadata/ACL — PASS
+**Authorize one consequential G2-B retry** if you want execution to continue. Otherwise no action is required.
 
-Owner fresh read-back on 2026-10-02:
+## EVIDENCE_POINTERS
 
-- exact file: `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi`;
-- name: `hy2-g2a.dpapi`;
-- length: `1206` bytes;
-- creation time: `2026-10-02 00:14:04`;
-- last write time: `2026-10-02 00:14:04`;
-- owner: `码头整来的薯条\34707`;
-- inheritance protected: `True`;
-- access rule count: `1`;
-- sole ACE: current Owner FullControl / Allow / explicit / no inheritance.
+- `EXECUTION_EVIDENCE.md` — append-only execution proof.
+- `EXECUTOR_HANDOFF.md` — Executor factual completion notes only; not canonical project truth.
+- `scripts/g2b-owner-runner.ps1` — current repaired runner.
+- Commit `9b730b81e751099fae7c4c3c61e8a5a5a755877d` — HY2 handshake validator return recorded.
+- Commit `ed4f8216ecd18dcea29f06f12fa0773c97c3cdf4` — proxy-use validator repair.
+- Commit `3c381726f38950579bceb0f258ba46cc83c68328` — diagnostic/repair evidence record.
+- Commit `165fc79b906dd6de858fdb6c3521e95f7b749136` — Reviewer acceptance and current Gate transition.
 
-This matches the original G2-A reported size and intended owner-only ACL. The remaining validation is DPAPI CurrentUser decrypt + accepted bundle validation + byte-identity round-trip, followed by canonical-path realization. Do not re-fetch or rotate the VPS Secrets unless that validation fails.
-
-### ACL fixture result — helper bug isolated and fixed
-
-Non-secret fixture run completed without accessing real Secret material or executing the real recovery runner.
-
-Result:
-
-```text
-ACL_FIXTURE_CREATE=PASS
-ACL_FIXTURE_READBACK=PASS
-ACL_FIXTURE_VALIDATOR=PASS
-ACL_FIXTURE_CLEANUP=PASS
-RECOVERY_RUNNER_ACL_FIXED=YES
-STATIC_REVIEW=PASS
-REAL_SECRET_ACCESSED=NO
-REAL_RECOVERY_RUNNER_EXECUTED=NO
-```
-
-Root cause: the old ACL helper conflated `Owner SID mismatch` with `ACE count != 1`. The fixture proved that multiple explicit ACEs can all belong to the current Owner and combine to FullControl, so a fixed ACE-count assertion was not a valid security boundary. The helper now validates owner SID, inheritance, each principal/type, and merged rights instead of requiring exactly one ACE.
-
-Important limitation: the already-cleaned real failure cannot be retroactively classified to a specific old branch because the old error class did not expose branch detail.
-
-Execution note: fixture ran in PowerShell 7.6.5 with Medium token. This is acceptable only as non-secret ACL diagnostic evidence; it is not a substitute for elevated Owner-path validation.
-
-Newly discovered follow-up: `g2b-owner-runner.ps1` still has its own single-ACE-count ACL assertion. It must be patched/reviewed before any real G2-B run. The repair-runner ACL fix must not be assumed to cover the benchmark runner.
-
-Plan impact: despite the repaired recovery runner being technically retry-ready, do NOT rerun it now. The virtualized 1206-byte DPAPI final artifact has been found and is the preferred source for local validation + canonical-path realization, avoiding unnecessary VPS Secret re-fetch.
-
-### Virtualized artifact DPAPI/content validation — PASS
-
-Executor performed local-only validation of the existing virtualized recovery artifact. No VPS Secret was accessed; no network state changed; benchmark was not started.
-
-```text
-VIRTUALIZED_SOURCE_VALIDATION=PASS
-DPAPI_UNPROTECT=PASS
-VPNHY2R1_PARSE=PASS
-TLS_KEY_CERT_MATCH=PASS
-TLS_SAN_MATCH=PASS
-TLS_FINGERPRINT_MATCH=PASS
-REAL_SECRET_ACCESSED_FROM_VPS=NO
-NETWORK_CHANGED=NO
-BENCHMARK_STARTED=NO
-```
-
-Conclusion: the original G2-A DPAPI final artifact is valid; the defect is path realization caused by Codex packaged-app virtualization, not Secret loss or bundle corruption.
-
-A local-only path realization runner is prepared at `scripts/realize-owner-dpapi-path.ps1`. It has not been executed. Its purpose is to copy the already-encrypted source bytes into the canonical Owner AppData path and verify target ACL, DPAPI CurrentUser unprotect, parser validation, and byte identity without contacting the VPS.
-
-### G2-B ACL validator repair — PASS STATIC
-
-The independent ACL validator in `g2b-owner-runner.ps1` was patched to reject inherited rules, non-Owner principals, and Deny ACEs while aggregating Owner rights to FullControl; it no longer requires exactly one ACE.
-
-```text
-G2B_ACL_VALIDATOR_FIXED=YES
-G2B_RUNNER_STATIC_REVIEW=PASS
-```
-
-Do not execute G2-B until canonical-path realization receives Owner-host fresh read-back PASS.
-
-### Canonical-path realization integrity precheck — owner High confirmed
-
-Owner fresh read-back from the same PowerShell 7.6.6 window used to execute `realize-owner-dpapi-path.ps1`:
-
-```text
-WindowsPrincipal.IsInRole(Administrator)=True
-Mandatory Label\High Mandatory Level
-INTEGRITY_SID=S-1-16-12288
-```
-
-Therefore the runner failure `HIGH_INTEGRITY_TOKEN_REQUIRED` is a false negative in the runner's integrity precheck, not a lack of elevation. The script stopped before creating either pending or target artifact (`PENDING_EXISTS=NO`, `TARGET_EXISTS=NO`).
-
-Next action: fix only the integrity-level detection in `realize-owner-dpapi-path.ps1` using the same accepted token-integrity method already used for the corrected G2-B runner; do not weaken other prechecks, do not execute the path runner during the fix, and do not start G2-B.
-
-
-### Canonical Owner DPAPI path realization — PASS
-
-Owner executed the local-only path realization runner from elevated PowerShell 7.6.6. The canonical Owner path is now realized and validated.
-
-```text
-OWNER_WINDOWS_TARGET=CONFIRMED
-DPAPI_SCOPE=CurrentUser
-SOURCE_RETAINED=YES
-SOURCE_TARGET_ENCRYPTED_BYTES=BYTE_IDENTICAL
-TARGET_OWNER_ONLY_ACL=PASS
-TARGET_DPAPI_ROUNDTRIP=PASS
-TARGET_VPNHY2R1_VALIDATION=PASS
-PENDING_EXISTS=NO
-PLAINTEXT_TEMP_FILES_CREATED=0
-SECRET_VALUES_EMITTED=0
-```
-
-Reviewer consequence: the packaged-app AppData path-realization defect is closed. No VPS Secret re-fetch or rotation is required. The virtualized source remains retained for now. G2-B is now ready to proceed to the planned same-window benchmark; no protocol-performance conclusion exists until that benchmark completes.
-
-
-### G2-B runner precheck — PRECHECK_ROUTE_AND_ADAPTERS CimJobException
-
-Owner executed `g2b-owner-runner.ps1` from elevated PowerShell 7.6.6. Administrator and High integrity checks passed (`INTEGRITY_RID=12288`), but the runner failed closed during `PRECHECK_ROUTE_AND_ADAPTERS` with `CimJobException` before any benchmark samples were produced.
-
-```text
-ADMINISTRATOR_TOKEN=YES
-INTEGRITY_RID=12288
-RUNNER_FAILED_PHASE=PRECHECK_ROUTE_AND_ADAPTERS
-RUNNER_FAILURE_TYPE=CimJobException
-CURRENT_WINDOW_RESULT=INCONCLUSIVE
-G2B_OWNER_RUNNER_RESULT=FAIL_CLOSED
-SECRET_VALUES_EMITTED=0
-SECRET_VALUES_COMMITTED=0
-```
-
-Current interpretation: this is a local Windows route/adapter precheck implementation/runtime issue, not a protocol-performance result. Formal G2-B samples remain WG 0 / HY2 0. Before rerun, fresh-read the temporary host route and the WLAN/WireGuard adapter state from the same Owner shell, and isolate which read-only NetTCPIP/NetAdapter query throws the CIM exception. Do not start benchmark or change network state until that is identified.
-
-
-### G2-B route/adapter fresh read-back — PASS
-
-Owner reran the exact underlying Windows read-only queries from the same elevated PowerShell 7.6.6 shell after the runner's `PRECHECK_ROUTE_AND_ADAPTERS` CimJobException.
-
-Observed:
-
-```text
-TEMP_ROUTE=24.199.118.137/32 -> 192.168.1.1 via WLAN ifIndex 18 metric 1
-WLAN_ADAPTER=Up; Realtek 8852CE WiFi 6E PCI-E NIC; ifIndex 18
-WLAN_IPV4=192.168.1.4
-WLAN_DEFAULT_GATEWAY=present
-WIREGUARD_ADAPTER=SFO2-A; WireGuard Tunnel; ifIndex 13; Up
-```
-
-All four direct commands (`Get-NetRoute`, `Get-NetAdapter` for WLAN, `Get-NetIPConfiguration` for WLAN, and `Get-NetAdapter` for `SFO2-A`) completed successfully. Therefore the network state required by G2-B is present and healthy; the prior `CimJobException` is attributable to the runner's precheck implementation or composition, not to a missing route, down adapter, or lack of elevation. Formal G2-B samples remain WG 0 / HY2 0.
-
-Next action: fresh-read the local uncommitted `g2b-owner-runner.ps1`, identify the exact statement inside `PRECHECK_ROUTE_AND_ADAPTERS` that can throw `CimJobException`, add branch-specific diagnostics, and fix only that precheck. Do not start benchmark during the fix.
-
-### Reviewer Decision — G2-B bounded diagnostic/source persistence
-
-- Decision: `PASS_G2B_BOUNDED_DIAGNOSTIC_AND_SOURCE_PERSISTENCE`.
-- Accepted commit: `243c5eeb5833f25566ea49463b84b93b5063ad14`.
-- Reviewer fresh-read inspected the commit, canonical `g2b-owner-runner.ps1`, `EXECUTION_EVIDENCE.md`, `EXECUTOR_HANDOFF.md`, and the persisted recovery-runner source identities.
-- Commit scope is project-owned only: the accepted commit itself changes exactly the two executor records plus the three runner files. Unrelated repository commits between the pre-Gate base and accepted commit are not part of this Gate.
-- Root-cause confidence boundary: the exact `PersistentStore` no-match `CimJobException` was reproduced in Codex Medium-integrity runtime and the repair is narrowly scoped; the original Owner High-integrity failure lacked subcheck detail, so Owner `-PreflightOnly` remains required before the full benchmark.
-- No benchmark, Mihomo start, DPAPI Secret access, or network mutation is accepted as having occurred in this Gate.
-
-### Owner High PreflightOnly — RETURN_PROPERTY_NOT_FOUND
-
-Owner executed the canonical `g2b-owner-runner.ps1 -PreflightOnly` from repository root using PowerShell 7.6.6, Administrator token, High integrity RID 12288.
-
-Observed:
-
-```text
-RUNNER_FAILED_PHASE=PRECHECK_WIREGUARD_AND_CLIENT_STATE
-SUBCHECK=PRECHECK_WIREGUARD_AND_CLIENT_STATE
-NON_SECRET_ERROR_CLASS=PropertyNotFoundException
-CONSEQUENTIAL_MUTATION_STARTED=NO
-CURRENT_WINDOW_RESULT=INCONCLUSIVE
-G2B_OWNER_RUNNER_RESULT=FAIL_CLOSED
-SECRET_VALUES_EMITTED=0
-SECRET_VALUES_COMMITTED=0
-```
-
-Reviewer interpretation: the previous route/adapter failure is no longer the active blocker. This new failure occurred before Secret access, Mihomo, benchmark, or cleanup-eligible network mutation. Because the phase lacks branch-specific detail, exact cause remains unproven. Fresh source review narrows the next diagnostic to `Get-ClientSnapshot` and its optional property reads; do not patch from inference alone.
-
-### Reviewer Decision — G2-B ClientSnapshot optional-property repair
-
-- Decision: `PASS_G2B_CLIENTSNAPSHOT_OPTIONAL_PROPERTY_REPAIR`.
-- Accepted commit: `50a6b02480df6554493fee59f1610486a9a239fe`.
-- Reviewer fresh-read inspected the exact commit diff, canonical runner, `EXECUTION_EVIDENCE.md`, and `EXECUTOR_HANDOFF.md`; the candidate was current `main` at inspection, after which Reviewer advanced `main` only with the acceptance Handoff update.
-- Exact commit changes only the runner and the two Executor-owned records. Intervening unrelated repository commits are not part of this Gate and do not alter the reviewed VPN candidate.
-- The fix preserves StrictMode, keeps `ProxyEnable` and required service/WireGuard/route state fail-closed, and normalizes only the three optional proxy strings.
-- Owner `-PreflightOnly` was intentionally not executed by Executor. Full benchmark remains blocked until Owner High-integrity preflight succeeds and Reviewer accepts the read-back.
-
-### Reviewer Decision — Owner High PreflightOnly
-
-- Decision: `PASS_G2B_OWNER_HIGH_PREFLIGHTONLY`.
-- Proven Owner environment: PowerShell 7.6.6, Administrator token, integrity RID 12288.
-- Accepted read-back: route, WLAN adapter/IP, and WireGuard adapter queries PASS; `G2B_PREFLIGHT_ONLY=PASS`.
-- Negative evidence: Secret access NO, Mihomo start NO, benchmark start NO, network change NO.
-- This closes the preflight repair loop. It does not authorize or prove the full G2-B benchmark.
-- Next consequential boundary: fresh Owner safe-window confirmation before full runner execution.
-
-### Full G2-B attempt — RETURN_WG_BASELINE_BINDING
-
-Owner executed the single authorized full canonical runner after safe-window confirmation.
-
-Observed:
-
-```text
-PRECHECK=PASS
-RUNNER_FAILED_PHASE=WIREGUARD_BASELINE
-RUNNER_FAILURE_TYPE=ParameterBindingValidationException
-CLEANUP_FAILED=OWNER_ROUTE_EXACT_CLEANUP_FAILED
-CLEANUP_FAILED=FINAL_NETWORK_READBACK_FAILED
-TEST_MIHOMO_STOPPED=NOT_STARTED
-CLIENT_SECRET_RUNTIME_DELETED=NOT_CREATED
-PLAINTEXT_SECRET_ARTIFACTS_REMAINING=0
-OWNER_TEMP_ROUTE_REMOVED=NO
-PRODUCTION_WG_RESTORED=NO
-CURRENT_WINDOW_RESULT=INCONCLUSIVE
-G2B_OWNER_RUNNER_RESULT=FAIL_CLOSED
-```
-
-Reviewer boundary: the output does not prove that the route is still present or that production WireGuard is not restored, because the cleanup verifier itself can fail on an exact no-match query. Current network state is UNKNOWN until a read-only Owner reconciliation. Do not retry the runner.
-
-
-### Owner post-failure reconciliation — PASS_NETWORK_RESTORED
-
-- Exact `24.199.118.137/32` ActiveStore route is absent; no-match returns `CimJobException` / `CmdletizationQuery_NotFound,Get-NetRoute` / `ObjectNotFound`.
-- Selected VPS path is the WireGuard default route on ifIndex 13.
-- WireGuard Manager and tunnel are Running; adapter `SFO2-A` is Up.
-- System proxy is disabled; no matching TUN adapter, Mihomo process, runtime Secret config, or test-proxy listener remains.
-- Public exit is the accepted VPS exit.
-- Empty Mandatory collection fixture reproduces `ParameterBindingValidationException`; `[AllowEmptyCollection()]` passes.
-- Consequence: production network state is reconciled safe; prior cleanup status fields were false-negative verifier outputs.
-
-### Gate — G2B_Runner_Binding_And_Cleanup_NoMatch_Repair
-
-- `REVIEWER_TO_EXECUTOR_RELAY`: Start from this Gate section and read only `scripts/g2b-owner-runner.ps1`; no broader project-document read is required to begin. Accepted facts: network reconciliation PASS; exact route absent; WireGuard restored; benchmark root cause = empty Mandatory collection binding; cleanup false-negative root cause = exact-route ObjectNotFound no-match. Modify only the runner and then append/update the Executor-owned Evidence/Handoff for this Gate. Do not reread Governance/history, run benchmark, access Secrets, or mutate network.
-- Objective: smallest source repair plus non-secret fixtures, AST/static validation, Secret scan, GitHub persistence, then STOP_AT_REVIEWER.
-- Acceptance: empty benchmark Rows enters `Invoke-Benchmark`; unrelated binding errors still fail closed; only accepted exact-route ObjectNotFound becomes zero rows; unrelated NetRoute errors still fail closed; consequential paths otherwise unchanged.
-
-### Reviewer Decision — G2-B runner binding and cleanup repair
-
-- Decision: `PASS_G2B_RUNNER_BINDING_AND_CLEANUP_NOMATCH_REPAIR`.
-- Accepted commit: `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`.
-- Reviewer inspected the exact commit diff, canonical runner, appended Evidence, and current Executor Handoff; candidate-to-main comparison is identical.
-- Scope: only the runner and the two Executor-owned records changed.
-- Acceptance: empty initial Rows binding fixed; non-empty/wrong-type behavior preserved; exact route no-match normalization is restricted to the proven ObjectNotFound/FQID; unrelated route errors remain fail-closed; branch-specific cleanup diagnostics are present; benchmark/DPAPI/Mihomo/route-removal/final-network semantics are otherwise unchanged.
-- Governance drift reconciliation: current v0.2.6 clarifications do not invalidate the v0.2.5-executed static Gate.
-- No Owner checkpoint, benchmark, Secret access, Mihomo start, HY2 action, or network mutation occurred in this repair Gate.
-- Next consequential retry requires fresh Owner authorization.
-
-### Owner authorization — one repaired full G2-B retry
-
-- Owner freshly confirmed the safe window and authorized one consequential retry after the accepted repair.
-- Authorization scope: one atomic Owner-local checkpoint that may create the exact temporary `24.199.118.137/32` ActiveStore route via WLAN ifIndex 18 / next hop `192.168.1.1`, invoke the canonical repaired runner exactly once, and remove that exact route during runner/fallback cleanup.
-- Accepted runner source identity: Git blob `0ca085d8f31e6f9d31c76e7cb0434a5bcc89d2bd` from accepted commit `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`; current GitHub `main` runner blob matches.
-- The checkpoint must verify Owner High-integrity PowerShell 7.6.6, exact source identity, route/WLAN/WireGuard baseline, final route absence, WireGuard restoration, and expected public exit.
-- Any failure returns to Reviewer. Authorization does not cover a second full-run attempt or any MTU/BBR/fq/GRO/sysctl tuning.
-
-
-### Owner atomic retry wrapper parse pre-execution return
-
-- Owner checkpoint did not execute because PowerShell parser rejected an assignment to `${using:ErrorActionPreference}`.
-- Failure class: parser-level / pre-execution. The runner was not invoked, no temporary route was created, no Secret was accessed, Mihomo was not started, and no benchmark/network mutation began.
-- This does not consume the single consequential full-run attempt because execution never entered the checkpoint body.
-- Repair: use ordinary local-scope assignment `$ErrorActionPreference = 'Stop'`; no `using:` scope is valid for assignment here.
-- Next action remains one atomic repaired full G2-B retry after wrapper syntax correction.
-
-
-### Owner atomic retry wrapper preflight return — no consequential action
-
-- Owner ran the authorized atomic wrapper, but it returned during `OWNER_AND_SOURCE_PREFLIGHT` after Administrator/High-integrity proof and before route creation or runner invocation.
-- Observed: `RUNNER_INVOKED=False`, fallback cleanup not armed, and no benchmark/Secret/Mihomo action began.
-- The wrapper's final readback also returned before producing a positive network result; because the wrapper emitted only `RuntimeException`, this output does not prove production drift.
-- The single repaired full-run authorization remains unconsumed because the canonical runner was never invoked and the temporary route was never created.
-- Reviewer repair for the wrapper: avoid working-tree raw-byte blob comparison by executing the accepted commit from a detached temporary Git worktree; use the previously proven `Find-NetRoute` route-object filter requiring DestinationPrefix + NextHop + InterfaceIndex; preserve one-run limit and exact fallback cleanup.
-
-
-### Owner atomic retry wrapper — CANONICAL_GIT_ROOT_MISMATCH preflight return
-
-- Owner wrapper reached Administrator/High-integrity preflight, then returned at source preflight with `CANONICAL_GIT_ROOT_MISMATCH`.
-- No temporary route was created; fallback cleanup was not armed; canonical runner was not invoked.
-- Final readback passed: temporary route absent, WireGuard restored/active, system proxy disabled, no TUN/Mihomo/runtime Secret config/test listener, expected public exit present.
-- Therefore the one repaired full-run authorization remains unconsumed.
-- Reviewer classifies the failure as an over-strict wrapper path-identity assertion, not target/network drift. The next wrapper will remove exact Git-root path equality and instead verify the exact runner and client-fragment Git blob identities directly from the current files before any network mutation.
-
-
-### Owner atomic retry wrapper — RUNNER_SOURCE_DRIFT preflight return
-
-- Owner wrapper again returned before any consequential action, this time at source identity with `RUNNER_SOURCE_DRIFT`.
-- Final readback passed: exact temporary route absent; production WireGuard active; system proxy disabled; no TUN/Mihomo/runtime config residue; expected public exit present.
-- `RUNNER_INVOKED=False`; therefore the one repaired full-run authorization remains unconsumed.
-- Reviewer interpretation: the local checkout/HEAD source identity does not match the accepted runner blob. This is a local source-context problem, not evidence that the accepted GitHub candidate or network state drifted.
-- Next wrapper must not depend on local HEAD contents. It will discover the actual local Git root, verify canonical origin, fetch the accepted commit, create a detached temporary worktree at exactly `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`, verify the accepted runner/config blobs there, run exactly once, copy non-secret result artifacts back, then remove the temporary worktree.
-
-
-### Owner atomic retry wrapper — GIT_ORIGIN_QUERY_FAILED preflight return
-
-- Owner wrapper returned during read-only source discovery because the local Git context does not expose an `origin` remote through the assumed name.
-- No temporary route was created and the canonical runner was not invoked.
-- Final production readback passed: exact temporary route absent; WireGuard active; system proxy disabled; no TUN/Mihomo/runtime config/test listener; expected public exit present.
-- The one repaired full-run authorization remains unconsumed.
-- Reviewer classifies this as wrapper source-discovery overconstraint, not project/network drift. The next wrapper must not depend on a named remote. It should use the actual local Git object database directly: prove the accepted commit object exists, create a detached temporary worktree at that exact commit, then execute once.
-
-
-### Owner atomic retry wrapper — VPS_ROUTE_SELECTION_INVALID
-
-- Owner wrapper passed real-host privilege, Git context, accepted detached-worktree source identity, and client-config identity.
-- It returned read-only during network baseline with `VPS_ROUTE_SELECTION_INVALID` before temporary route creation and before runner invocation.
-- `RUNNER_INVOKED=False`; no benchmark, Secret, Mihomo, or network mutation began. Temporary worktree cleanup passed.
-- Final readback also hit the same route-selection validator, so that validator is now the single bounded fault domain. No target/network drift is inferred from the validator failure alone.
-- The repaired full-run authorization remains unconsumed.
-- Next action is a read-only diagnostic of the actual `Find-NetRoute -RemoteIPAddress 24.199.118.137` returned object shapes/cardinality on the real Windows host; no further wrapper retry until that diagnostic is reconciled.
-
-
-### G2-B full retry — WG complete, ACL owner validation return
-
-- Owner executed the authorized full retry. The formal runner was invoked once.
-- WireGuard benchmark completed 60/60 with 0 failures: Median 0.622782s, P90 0.815755s, P95 0.914709s, P99 1.624033s, >1s 3, >1.5s 2, >2s 0.
-- The run then failed closed at `CREATE_OWNER_ONLY_RUNTIME_CONFIG` with `OWNER_ACL_OWNER_MISMATCH`; HY2 was not started and no HY2 benchmark sample exists.
-- Cleanup passed: temporary owner route removed, production WireGuard restored, runtime Secret file not created, plaintext Secret artifacts remaining 0. Wrapper final readback also passed.
-- The consequential retry authorization is consumed because the runner executed the 60-sample WG benchmark and entered runtime-config creation.
-- Source review found the owner-only ACL constructors created protected ACLs for the Owner SID but did not explicitly set the security descriptor owner. This is consistent with the observed mismatch.
-- Source repair now adds `SetOwner($script:ownerSid)` to both directory and file ACL constructors before `Set-Acl`; benchmark, route, Secret, and cleanup logic are otherwise unchanged.
-- Reviewer accepts the source repair as technically scoped, but the next consequential retry must first run a non-Secret real-host ACL fixture inside the same atomic checkpoint. A fresh Owner authorization is required before that retry.
-
-
-### Reviewer acceptance — runtime ACL owner repair and fresh retry authorization
-
-- Reviewer fresh-read Governance v0.2.6 and current project state.
-- Source delta from the previously accepted runner is exactly two owner assignments: SetOwner(current Owner SID) in the owner-only directory ACL constructor and the owner-only file ACL constructor.
-- The observed failure was OWNER_ACL_OWNER_MISMATCH immediately after Set-Acl on the newly created runtime directory; the missing explicit owner assignment is directly consistent with that failure.
-- The repair is accepted for the next Gate, subject to a real-host non-Secret directory+file ACL fixture before any network mutation.
-- Owner has freshly authorized one consequential G2-B retry. Authorization is bounded to one atomic checkpoint: validate the repaired ACL semantics with non-Secret temp objects, verify accepted source identity/current baseline, create the exact temporary VPS route, invoke the repaired runner once, persist non-Secret result artifacts, and restore/verify production WireGuard.
-- No MTU/BBR/fq/GRO/sysctl tuning or second runner invocation is authorized.
-- Accepted repaired runner commit: 0f7a2a93353a8ce04e5887e59d87fe760aaf161d. Accepted repaired runner blob: 1153a2124d393899967094416b856f0a6022a1db.
-
-
-### G2-B retry after ACL repair — HY2 handshake path validator return
-
-- Owner executed the newly authorized retry; the formal runner was invoked once, so that consequential authorization is consumed.
-- Real-host non-Secret ACL directory/file fixtures passed; runtime Secret config creation and owner-only ACL validation then also passed.
-- WireGuard benchmark completed 60/60 with 0 failures: Median 0.600826s, P90 0.832286s, P95 1.111586s, P99 1.533950s, >1s 4, >1.5s 1, >2s 0.
-- Mihomo test proxy reached READY, then the runner returned at HY2_OUTER_ROUTE_AND_HANDSHAKE with HY2_HANDSHAKE_DID_NOT_USE_LOCAL_PROXY before HY2 sample 1.
-- Cleanup reported Mihomo stopped, runtime Secret config deleted, plaintext Secret artifacts 0, temporary route removed, and production WireGuard restored.
-- Wrapper final readback returned FINAL_PROXY_LISTENER_PRESENT. This may be a validator false-positive because it currently counts all TCP states on local port 17890 rather than only Listen; actual port state is UNKNOWN until a read-only real-host query.
-- Current fault domain is therefore validation: (1) curl proxy-use proof uses remote_ip == 127.0.0.1, and (2) wrapper residue proof counts all LocalPort 17890 TCP rows. No further consequential retry is authorized until both are diagnosed read-only.
-
-
-### HY2 proxy-use / port-state diagnostic resolved
-
-- Owner read-only diagnostic proved curl 8.21.0 supports `%{proxy_used}`; direct no-proxy probe returned `proxy_used=0` with exit 0.
-- Current real-host cleanup readback is clean: TCP 17890 rows 0, UDP 17890 rows 0, Mihomo process count 0, runtime directory/config absent.
-- Therefore the earlier handshake failure is attributed to the runner's proxy-path validator, not persistent network/runtime residue.
-- The runner now uses curl `proxy_used` as the proxy-path invariant: WG requires 0, HY2 requires 1. The HY2 handshake guard uses the same invariant.
-- TCP port-occupation preflight now checks only State=Listen; UDP endpoint check remains unchanged.
-- Fresh source readback verifies the patch. No consequential execution occurred during this repair.
-- The previous full-run authorization was consumed by the prior runner invocation. A fresh Owner authorization is required before one further consequential retry.
-- Current repaired runner commit: ed4f8216ecd18dcea29f06f12fa0773c97c3cdf4. Current repaired runner blob: 379ea04f108de20290ab5ae35e6a9dfbd70f02b6.
+Historical Reviewer narrative before this compact-dashboard takeover remains available in Git history. It is intentionally not duplicated here.
