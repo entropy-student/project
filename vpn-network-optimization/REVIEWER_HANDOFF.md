@@ -14,8 +14,8 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       WG 60/60 complete; HY2 proxy started; returned at handshake path validator
-CURRENT_BLOCKER                      Read-only HY2 proxy-use / port-state diagnostic pending
-CURRENT_GATE                         G2B_HY2_Handshake_Validator_Diagnostic (READ_ONLY)
+CURRENT_BLOCKER                      Fresh Owner authorization for one retry after HY2 proxy-use validator repair
+CURRENT_GATE                         G2B_Full_Retry_After_ProxyUse_Repair (WAIT_OWNER_AUTH)
 ```
 
 Current runtime facts:
@@ -785,3 +785,15 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - Cleanup reported Mihomo stopped, runtime Secret config deleted, plaintext Secret artifacts 0, temporary route removed, and production WireGuard restored.
 - Wrapper final readback returned FINAL_PROXY_LISTENER_PRESENT. This may be a validator false-positive because it currently counts all TCP states on local port 17890 rather than only Listen; actual port state is UNKNOWN until a read-only real-host query.
 - Current fault domain is therefore validation: (1) curl proxy-use proof uses remote_ip == 127.0.0.1, and (2) wrapper residue proof counts all LocalPort 17890 TCP rows. No further consequential retry is authorized until both are diagnosed read-only.
+
+
+### HY2 proxy-use / port-state diagnostic resolved
+
+- Owner read-only diagnostic proved curl 8.21.0 supports `%{proxy_used}`; direct no-proxy probe returned `proxy_used=0` with exit 0.
+- Current real-host cleanup readback is clean: TCP 17890 rows 0, UDP 17890 rows 0, Mihomo process count 0, runtime directory/config absent.
+- Therefore the earlier handshake failure is attributed to the runner's proxy-path validator, not persistent network/runtime residue.
+- The runner now uses curl `proxy_used` as the proxy-path invariant: WG requires 0, HY2 requires 1. The HY2 handshake guard uses the same invariant.
+- TCP port-occupation preflight now checks only State=Listen; UDP endpoint check remains unchanged.
+- Fresh source readback verifies the patch. No consequential execution occurred during this repair.
+- The previous full-run authorization was consumed by the prior runner invocation. A fresh Owner authorization is required before one further consequential retry.
+- Current repaired runner commit: ed4f8216ecd18dcea29f06f12fa0773c97c3cdf4. Current repaired runner blob: 379ea04f108de20290ab5ae35e6a9dfbd70f02b6.
