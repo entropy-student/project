@@ -63,114 +63,83 @@ Accepted source:
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G2B_HY2_Handshake_Only_Probe
-STATE=RETURN_TLS_CONNECT_DIAGNOSTIC_REQUIRED
-OBJECTIVE=Run one HY2 handshake-only diagnostic to capture the exact non-secret curl failure fields; do not replay WG/HY2 benchmarks.
-MAX_ENDPOINT_THIS_ROUND=One temporary route + one protected Mihomo runtime + one proxied curl handshake + exact cleanup/read-back, then mandatory Reviewer stop.
+GATE_ID=G2B_HY2_Server_ReadOnly_State_Diagnostic
+STATE=OWNER_READ_ONLY_ACTION_PENDING
+OBJECTIVE=Fresh-read the Hysteria2 server/service/listener/config-shape/firewall state without Secret output or any new HY2 handshake.
+MAX_ENDPOINT_THIS_ROUND=One SSH read-only probe over the accepted WireGuard control path, persist sanitized output, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 ```
 
 ### TARGET_AND_SCOPE
 
-The authorized handshake probe has completed. Current diagnostic scope is read-only:
-- inspect accepted source/config and the retained handshake evidence;
-- perform only non-Secret, read-only server/service/network-state checks;
-- no new local proxy, temporary route, DPAPI Secret read, or HY2 handshake.
+Allowed:
+- Owner PowerShell 7.6.6 invokes one SSH read-only probe to `10.66.21.1:22` over WireGuard;
+- verify target hostname, Hysteria service active/enabled state, process restart count, UDP 8443 listener, binary version;
+- inspect only non-Secret config shape: listen port, TLS cert/key path presence, `sniGuard`, auth type, and boolean auth-format validity;
+- inspect host firewall/service state without modifying it.
 
 Forbidden:
-- no WireGuard 60-sample benchmark;
-- no HY2 60-sample benchmark;
-- no second handshake attempt;
-- no MTU/BBR/fq/GRO/sysctl tuning;
-- no WireGuard/VPS/HY2 reconfiguration or Secret rotation;
-- no Secret values, Secret hashes, raw Mihomo logs, or raw server config output.
+- no new HY2 handshake;
+- no Mihomo start;
+- no DPAPI Secret read;
+- no temporary route;
+- no benchmark;
+- no service restart/reload;
+- no firewall change;
+- no raw config, password, Secret hash, certificate private key, or raw logs.
 
 ### APPLICABLE_CRITICAL_CONSTRAINTS
 
-- Previous full-run authorization is consumed and cannot be reused.
-- Production WireGuard remains the baseline.
-- Fail closed on any preflight/source/runtime drift.
-- The probe exists only to classify the current handshake failure; it must not become another performance run.
-- Cleanup is mandatory even when the handshake fails.
-
-### PREFLIGHT
-
-Before the one handshake:
-1. verify Owner runtime/elevation;
-2. verify accepted runner/config identity;
-3. verify production WireGuard and expected public exit;
-4. verify exact temporary route and Mihomo/runtime residue are absent;
-5. verify canonical DPAPI recovery availability/ACL without printing Secret material;
-6. create/read back only the exact temporary route.
+- The handshake-probe authorization is consumed.
+- Production WireGuard is restored and remains the control path.
+- SSH host-key trust is reused strictly; no auto-accept.
+- Sanitized read-only output only.
+- Any target/host-key mismatch returns immediately.
 
 ### REQUIRED_EVIDENCE
 
-- `HY2_HANDSHAKE_PROXY_USED`;
-- `HY2_HANDSHAKE_CURL_EXIT`;
-- `HY2_HANDSHAKE_HTTP_STATUS`;
-- `HY2_HANDSHAKE_ERROR`;
-- handshake timing fields when parseable;
-- whether Mihomo reached READY;
-- cleanup result;
-- temporary route absence;
-- production WireGuard restored;
-- runtime Secret config absent;
-- Secret values emitted/committed = 0.
+- target hostname;
+- Hysteria service active/enabled;
+- ExecMainStatus and restart count;
+- UDP 8443 listener count;
+- Hysteria binary version;
+- config listen/SNI-guard/auth-type shape;
+- boolean auth-format-valid;
+- non-Secret firewall summary relevant to UDP 8443;
+- SSH native exit code.
 
 ### ACCEPTANCE_CRITERIA
 
-The Gate is diagnostic-only. PASS_CANDIDATE requires:
-- exactly one handshake attempt;
-- the four required non-secret failure/success fields are retained;
-- no benchmark samples are run;
-- exact cleanup passes;
-- production WireGuard is restored.
+PASS_CANDIDATE requires:
+- accepted target reached through strict SSH trust;
+- service active and UDP 8443 listening;
+- config shape matches accepted G2-A design;
+- no host-firewall evidence of UDP 8443 being blocked;
+- no mutation and no Secret output.
 
-Reviewer then classifies the failure domain and designs the smallest repair. This Gate does not itself PASS G2-B.
+If this passes, the next fault domain is client-to-server UDP/HY2 initialization or Mihomo-specific behavior. If it fails, repair only the proven server/runtime drift.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Current baseline is clean and restored. The diagnostic checkpoint must always:
-- stop Mihomo;
-- delete temporary runtime Secret config;
-- remove exact temporary route;
-- verify production WireGuard/public exit;
-- stop at Reviewer.
+Read-only Gate; rollback not applicable. Any attempted write is a Gate violation and must stop.
 
 ### OWNER_ONLY_ACTIONS
 
-**Authorization status: CONSUMED.** The one HY2 handshake-only diagnostic was invoked and returned with curl exit 35 / TLS_ERROR. No second handshake is authorized.
+Run the prepared read-only server diagnostic from PowerShell 7.6.6. No new consequential authorization is required because this Gate performs no write, Secret read, or handshake.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Executor should use the prepared one-shot handshake diagnostic path.
-
-Prepared diagnostic:
-- runner commit: `4e10db6fb3db68b20f6dff29c42d0ec0ee2c3206`
-- runner blob: `04fa524b05a9cecc408e8e4ef46ffcd649fd096e`
-- checkpoint: `scripts/g2b-hy2-handshake-checkpoint.ps1`
-- checkpoint commit: `5a8c5e94959f1cf4bc53d9ba3c32a85f2ce8e597`
-- checkpoint blob: `cd1ec842267e1efc0da776c251d2eb207e3e283b`
-- checkpoint invokes the runner with `-HandshakeOnly` exactly once and preserves the existing cleanup path.
-
-It may read:
-1. this Current Gate;
-2. `scripts/g2b-owner-runner.ps1` around `Invoke-CurlSample`, DPAPI/runtime creation, Mihomo start, handshake, and cleanup;
-3. `scripts/g2b-owner-checkpoint.ps1`;
-4. `config/clash/sfo3-a-hy2.yaml`;
-5. only the newest G2-B return Evidence.
-
-Do not load full Governance or historical project narrative. Do not rerun any benchmark while preparing this probe.
+Read only this Current Gate and the prepared read-only diagnostic script. Do not load historical benchmark Evidence or Governance.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
 结果：PASS_CANDIDATE / RETURN_*
-握手：proxy_used / curl exit / HTTP status / error
-验证：一句话说明是否只执行了 1 次握手且无 benchmark。
-回滚：一句话说明 Mihomo、runtime config、临时路由、WireGuard 最终状态。
-问题：NONE / 实际阻塞原因。
-Owner 转交：NONE / 最小必要动作。
+服务器：service / UDP8443 / version
+配置：listen / sniGuard / auth-shape
+防火墙：一句话
+验证：SSH exit + no mutation/no Secret
+Owner 转交：NONE
 ```
 
 ## CRITICAL_CONSTRAINTS
@@ -209,11 +178,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-Run a read-only server-side diagnostic next: verify Hysteria service active/listening, current unit/config metadata, SNI-guard/auth type shape, firewall state, and binary version without printing Secret material. Use this to separate server/runtime drift from client/UDP-path failure before authorizing any new handshake.
+Run the prepared read-only server-state diagnostic. Use it to separate server/runtime drift from client/UDP-path or Mihomo-specific failure before any new handshake.
 
 ## OWNER_ACTION_REQUIRED
 
-**Run one read-only server-state diagnostic when presented.** No new HY2 handshake, benchmark, Secret read, or network mutation is authorized.
+**Run the prepared read-only server-state diagnostic from PowerShell 7.6.6.** No new HY2 handshake, benchmark, Secret read, or network mutation is authorized.
 
 ## EVIDENCE_POINTERS
 
