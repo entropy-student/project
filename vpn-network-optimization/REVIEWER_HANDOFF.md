@@ -64,7 +64,7 @@ Accepted source:
 
 ```text
 GATE_ID=G2B_HY2_Handshake_Only_Probe
-STATE=WAIT_OWNER_AUTH
+STATE=AUTHORIZED_HANDSHAKE_PROBE_PENDING
 OBJECTIVE=Run one HY2 handshake-only diagnostic to capture the exact non-secret curl failure fields; do not replay WG/HY2 benchmarks.
 MAX_ENDPOINT_THIS_ROUND=One temporary route + one protected Mihomo runtime + one proxied curl handshake + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -144,7 +144,7 @@ Current baseline is clean and restored. The diagnostic checkpoint must always:
 
 ### OWNER_ONLY_ACTIONS
 
-**Fresh Owner authorization required** for exactly one HY2 handshake-only diagnostic. This is separate from the consumed full-run authorization.
+**Authorization status: GRANTED** for exactly one HY2 handshake-only diagnostic. This is separate from the consumed full-run authorization and is consumed only when the handshake probe is actually invoked.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
@@ -208,7 +208,7 @@ After Owner authorization, run exactly one HY2 handshake-only diagnostic that ca
 
 ## OWNER_ACTION_REQUIRED
 
-**Authorize one HY2 handshake-only diagnostic** if you want to continue. It will not rerun the WireGuard or HY2 60-sample benchmarks.
+**Run the prepared one-shot HY2 handshake diagnostic when presented.** No benchmark replay is authorized.
 
 ## EVIDENCE_POINTERS
 
