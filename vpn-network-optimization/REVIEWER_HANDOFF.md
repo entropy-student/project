@@ -12,9 +12,9 @@ This section is the canonical resume point. If any older section conflicts with 
 P0                                   PASS
 G1                                   PASS
 G2-A server-side HY2 deployment      PASS
-G2-A DPAPI recovery closure          OPEN DEFECT / REPAIR REQUIRED
+G2-A DPAPI recovery closure          PATH VIRTUALIZATION CONFIRMED / VERIFY ARTIFACT
 G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT BLOCKER                      Owner-host DPAPI recovery ACL helper
+CURRENT BLOCKER                      Verify virtualized DPAPI artifact and reconcile to canonical Owner path
 ```
 
 Current runtime facts:
@@ -32,12 +32,11 @@ Current runtime facts:
 
 DPAPI recovery reality:
 
-- Fresh Owner-host read-back proved that `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` is absent and the recovery directory itself is absent.
-- This supersedes the earlier G2-A claim `DPAPI_FINAL_EXISTS=YES`; that earlier claim must be treated as stale/false for current host reality.
-- Do not rotate or regenerate VPS HY2 Secrets merely to repair this recovery defect.
-- The repair runner successfully completed SSH transport from the VPS (`SSH_NATIVE_EXIT_CODE=0`, `REMOTE_TRANSFER_RESULT=PASS`) but failed locally before final promotion with `RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID`.
-- Failure cleanup was then fresh-read on the Owner host: base directory absent, recovery directory absent, pending absent, final absent. No partial recovery artifact remains.
-- Next action is NOT another real-Secret retry. First run a non-secret ACL fixture to diagnose/fix the ACL helper; only after fixture create/readback/validator/cleanup PASS should the real recovery repair runner be retried.
+- Standard Owner path `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` is absent, but Owner subsequently found a matching `hy2-g2a*.dpapi` under Codex packaged-app virtualization at `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\vpn-network-optimization\recovery\...`.
+- Therefore the earlier G2-A evidence is NOT yet classified as a false write; current classification is `PATH_VIRTUALIZATION_CONFIRMED / STANDARD_OWNER_PATH_NOT_REALIZED` pending exact artifact read-back.
+- Do not rotate or regenerate VPS HY2 Secrets merely to repair this path-reality defect.
+- The previous repair runner attempt successfully completed SSH transport from the VPS (`SSH_NATIVE_EXIT_CODE=0`, `REMOTE_TRANSFER_RESULT=PASS`) but failed locally before final promotion with `RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID`; this failure is now treated as secondary until the virtualized artifact is fully inspected.
+- Immediate next action: fresh-read the exact virtualized artifact path, size, timestamps, owner/ACL, and DPAPI round-trip on the real Owner Windows host. Do not run another real-Secret recovery attempt or ACL fixture before this inspection.
 
 G2-B benchmark status:
 
@@ -99,7 +98,7 @@ Windows client
 P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
 G1 Foreground-safe Foundation        ✅ REVIEWER PASS
 G2-A HY2 server deployment           ✅ REVIEWER PASS
-G2-A DPAPI recovery closure          ⚠ OPEN DEFECT / REPAIR REQUIRED
+G2-A DPAPI recovery closure          ⚠ PATH VIRTUALIZATION CONFIRMED / VERIFY
 G2-B Safe-window Validation + Seal   ⏸ BLOCKED BEFORE BENCHMARK
 ```
 
@@ -231,7 +230,7 @@ HY2 may be `BLOCKED_WITH_EXACT_REASON` if Cloud Firewall, DNS/certificate, Secre
 - GitHub fresh read-back: PASS; at review time this commit is current `main` HEAD.
 - Hysteria2 official binary v2.12.3 is installed side-by-side and its dedicated service is enabled/active on UDP 8443.
 - Existing WireGuard remains active on UDP 51820; routes, NAT/firewall state, Windows WireGuard/proxy/TUN state, MTU/qdisc/BBR/GRO baseline, and current foreground traffic were not switched or tuned.
-- Secret generation/install on the VPS remains accepted and Secret values emitted/logged/committed = 0. However, the later Owner-host fresh read-back proved the claimed Windows DPAPI final artifact is absent. Therefore the G2-A server deployment remains accepted, but the DPAPI recovery closure is reopened and must be repaired before G2-B benchmark execution.
+- Secret generation/install on the VPS remains accepted and Secret values emitted/logged/committed = 0. The standard Owner AppData path is absent, but a matching DPAPI artifact has now been found under Codex packaged-app LocalCache virtualization. Therefore the G2-A server deployment remains accepted; DPAPI recovery closure is pending exact virtualized-artifact validation and reconciliation to the canonical Owner path before G2-B benchmark execution.
 - The non-sensitive `config/clash/sfo3-a-hy2.yaml` is parser-valid and pins the deployed certificate fingerprint; its auth remains a local secret-injection placeholder and it has not been imported/enabled.
 - Client handshake and real traffic validation were intentionally not performed in G2-A. Therefore server deployment is accepted, but HY2 performance/reliability is not yet accepted.
 - Resource observation: HY2 RSS was ~21 MiB; the interval MemAvailable delta is not attributed solely to HY2.
@@ -244,7 +243,7 @@ HY2 may be `BLOCKED_WITH_EXACT_REASON` if Cloud Firewall, DNS/certificate, Secre
 - DigitalOcean Cloud Firewall: Owner visually confirmed no Cloud Firewall is attached to this droplet.
 - Current VPS OS/kernel/qdisc/BBR/offload values.
 - UDP 8443 is locally bound by the Hysteria2 service; end-to-end client reachability/handshake is still unproven until G2-B.
-- HY2 auth/TLS generation on the VPS is complete and no public DNS dependency is used. Owner-host DPAPI recovery is currently NOT complete and is the active blocker; client-side auth injection and handshake remain untested.
+- HY2 auth/TLS generation on the VPS is complete and no public DNS dependency is used. A DPAPI artifact exists under Codex packaged-app LocalCache virtualization, while the canonical Owner AppData path is absent. Exact artifact validation/reconciliation is the active blocker; client-side auth injection and handshake remain untested.
 - Whether any server-level changes would share a failure domain with other services.
 - Active WireGuard MTU is 1420; whether any MTU change would improve tail behavior remains untested and is not authorized before the protocol A/B.
 - Whether long-task bottleneck is client→VPS, international route jitter/retransmission, WireGuard/MTU behavior, local bufferbloat, VPS forwarding, VPS→OpenAI, or upstream service behavior.
@@ -335,33 +334,30 @@ MVP ends after G2. New VPS/provider evaluation later reuses the same package rat
 
 ## 12. Next Step
 
-1. Keep the current temporary `24.199.118.137/32` ActiveStore WLAN route in place; do not recreate it and do not remove it yet.
-2. Do not rerun the real DPAPI recovery repair immediately.
-3. Executor/Codex first performs the non-secret ACL fixture workflow against an isolated fixture path:
-   - create protected directories/file with non-secret fixture bytes;
-   - read back Owner SID, inheritance state, ACEs and rights;
-   - identify the exact cause of `RECOVERY_ACL_OWNER_OR_RULE_COUNT_INVALID`;
-   - fix the ACL helper without weakening the intended Owner-only protection;
-   - prove fixture create/readback/validator/cleanup all PASS.
-4. Only after the non-secret ACL fixture passes, Owner reruns `repair-owner-dpapi-recovery.ps1` in elevated PowerShell 7.6.6.
-5. Fresh Owner-host read-back must then prove the final DPAPI artifact exists, is CurrentUser-decryptable, byte-identical to the validated bundle, has the accepted ACL boundary, and has no pending/plaintext residue.
-6. Only after DPAPI recovery is repaired may Owner rerun `g2b-owner-runner.ps1`.
-7. G2-B runner then performs: WG 60×5s → HY2 real handshake → HY2 60×5s → comparison → Secret runtime cleanup → exact temporary route cleanup → production WireGuard read-back.
-8. Do not run MTU/BBR/fq/GRO/sysctl tuning in this round. If protocol A/B is inconclusive, Reviewer chooses one later single-variable experiment.
+1. Do not rerun the real DPAPI repair runner and do not rotate/regenerate VPS Secrets.
+2. Fresh-read the virtualized Codex package artifact under `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\vpn-network-optimization\recovery\`:
+   - exact filename/full path;
+   - size/timestamps;
+   - owner SID, inheritance state, ACEs;
+   - DPAPI CurrentUser decrypt/round-trip using the accepted `VPNHY2R1` parser contract;
+   - pending/final naming state.
+3. If the virtualized final artifact validates, treat the historical G2-A write as a packaged-app path-virtualization case rather than a missing-write case.
+4. Reconcile the recovery artifact into the canonical Owner path `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` using an Owner-run elevated PowerShell path-realization/migration step that preserves DPAPI bytes and verifies ACL + round-trip on the canonical path. Do not re-fetch Secrets from the VPS unless validation shows the virtualized artifact itself is invalid.
+5. After canonical-path fresh read-back PASS, resume `g2b-owner-runner.ps1`.
+6. G2-B then performs WG 60×5s → HY2 real handshake → HY2 60×5s → comparison → Secret runtime cleanup → exact temporary route cleanup → production WireGuard read-back.
+7. Do not run MTU/BBR/fq/GRO/sysctl tuning in this round.
 
 ## 13. Status Summary
 
 - Overall: P0 PASS, G1 PASS, HY2 server-side G2-A PASS.
-- Current exception: the Windows DPAPI recovery claim from the original G2-A evidence is revoked by later Owner-host reality; recovery closure is OPEN.
-- Current Gate: G2-B is authorized but blocked before benchmark by the recovery defect.
+- DPAPI reality: the canonical Owner AppData path is absent, but a matching recovery artifact has been found under Codex packaged-app `LocalCache\Local\...` virtualization.
+- Current classification: `PATH_VIRTUALIZATION_CONFIRMED / EXACT ARTIFACT VALIDATION PENDING`, not `SECRET LOST`.
+- Current Gate: G2-B remains blocked before benchmark until the virtualized artifact is validated and reconciled to the canonical Owner path.
 - Formal G2-B samples so far: WG 0 / HY2 0. No protocol-performance conclusion exists.
 - Server state: WireGuard active on UDP 51820; Hysteria2 v2.12.3 active on UDP 8443.
 - Control path: SSH via WireGuard to `10.66.21.1:22` PASS.
 - Candidate data path: WLAN direct to `24.199.118.137:8443` prepared via the Owner-created temporary ActiveStore /32 route.
-- Owner PowerShell runtime: 7.6.6, Administrator/High integrity verified.
-- Benchmark execution model: Owner-run PowerShell runner; Codex desktop thread itself cannot host the long benchmark loop.
-- Immediate blocker: repair runner ACL validator. Last real repair attempt transferred the recovery payload successfully over SSH but failed before final DPAPI promotion; cleanup left no recovery/pending/final artifact.
-- Immediate next action: non-secret ACL fixture and helper fix, then retry DPAPI repair; only then run the benchmark runner.
+- Immediate next action: inspect exact virtualized DPAPI artifact metadata/ACL/round-trip. Do not rerun the repair runner or ACL fixture yet.
 - No live MTU/BBR/fq/GRO/sysctl tuning has been applied.
 
 
@@ -432,3 +428,14 @@ Interpretation:
 - No partial local recovery artifact remains.
 - The current blocker is the ACL creation/validation helper used by the recovery runner.
 - The next attempt must first validate the ACL helper with non-secret fixture data; do not use real Secret material as ACL debug input.
+
+### G2-B AppData path virtualization finding — OWNER FRESH READBACK
+
+Owner searched Codex packaged-app storage and found:
+
+- package root: `C:\Users\34707\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0`;
+- virtualized project directory: `...\LocalCache\Local\vpn-network-optimization`;
+- virtualized recovery directory: `...\LocalCache\Local\vpn-network-optimization\recovery`;
+- at least one `hy2-g2a*.dpapi` artifact under that virtualized recovery directory.
+
+This matches the known Windows packaged-app path virtualization failure mode from prior projects. Until the exact artifact is read back and DPAPI-validated, do not classify the original G2-A write as either fully valid or fully missing. The correct current state is: standard Owner path not realized; virtualized artifact present; validation/reconciliation pending.
