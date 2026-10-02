@@ -14,8 +14,8 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       WG 60/60 complete; HY2 not started; returned at runtime ACL owner validation
-CURRENT_BLOCKER                      Fresh Owner authorization for one retry after ACL owner repair
-CURRENT_GATE                         G2B_Full_Retry_After_Acl_Repair (WAIT_OWNER_AUTH)
+CURRENT_BLOCKER                      Owner execution of one ACL-fixture-gated full G2-B retry pending
+CURRENT_GATE                         G2B_Full_Retry_After_Acl_Repair (AUTHORIZED_ONCE)
 ```
 
 Current runtime facts:
@@ -763,3 +763,14 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - Source review found the owner-only ACL constructors created protected ACLs for the Owner SID but did not explicitly set the security descriptor owner. This is consistent with the observed mismatch.
 - Source repair now adds `SetOwner($script:ownerSid)` to both directory and file ACL constructors before `Set-Acl`; benchmark, route, Secret, and cleanup logic are otherwise unchanged.
 - Reviewer accepts the source repair as technically scoped, but the next consequential retry must first run a non-Secret real-host ACL fixture inside the same atomic checkpoint. A fresh Owner authorization is required before that retry.
+
+
+### Reviewer acceptance — runtime ACL owner repair and fresh retry authorization
+
+- Reviewer fresh-read Governance v0.2.6 and current project state.
+- Source delta from the previously accepted runner is exactly two owner assignments: SetOwner(current Owner SID) in the owner-only directory ACL constructor and the owner-only file ACL constructor.
+- The observed failure was OWNER_ACL_OWNER_MISMATCH immediately after Set-Acl on the newly created runtime directory; the missing explicit owner assignment is directly consistent with that failure.
+- The repair is accepted for the next Gate, subject to a real-host non-Secret directory+file ACL fixture before any network mutation.
+- Owner has freshly authorized one consequential G2-B retry. Authorization is bounded to one atomic checkpoint: validate the repaired ACL semantics with non-Secret temp objects, verify accepted source identity/current baseline, create the exact temporary VPS route, invoke the repaired runner once, persist non-Secret result artifacts, and restore/verify production WireGuard.
+- No MTU/BBR/fq/GRO/sysctl tuning or second runner invocation is authorized.
+- Accepted repaired runner commit: 0f7a2a93353a8ce04e5887e59d87fe760aaf161d. Accepted repaired runner blob: 1153a2124d393899967094416b856f0a6022a1db.
