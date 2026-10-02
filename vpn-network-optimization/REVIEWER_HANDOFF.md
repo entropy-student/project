@@ -129,6 +129,14 @@ Run the prepared read-only server diagnostic from PowerShell 7.6.6. No new conse
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
+Prepared read-only diagnostic:
+- `scripts/g2b-hy2-server-readonly.ps1`
+- commit: `4cc16485b29ab5bd2c33750349c379eb25f8f630`
+- blob: `e7e406a88d6438703d1b9469ec6347087d480817`
+- strict SSH to `10.66.21.1:22` through existing WireGuard;
+- outputs only sanitized service/listener/config-shape/firewall fields;
+- no Secret read/output, no service restart, no handshake, no mutation.
+
 Read only this Current Gate and the prepared read-only diagnostic script. Do not load historical benchmark Evidence or Governance.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
