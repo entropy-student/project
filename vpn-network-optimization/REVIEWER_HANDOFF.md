@@ -561,3 +561,22 @@ SECRET_VALUES_COMMITTED=0
 ```
 
 Current interpretation: this is a local Windows route/adapter precheck implementation/runtime issue, not a protocol-performance result. Formal G2-B samples remain WG 0 / HY2 0. Before rerun, fresh-read the temporary host route and the WLAN/WireGuard adapter state from the same Owner shell, and isolate which read-only NetTCPIP/NetAdapter query throws the CIM exception. Do not start benchmark or change network state until that is identified.
+
+
+### G2-B route/adapter fresh read-back — PASS
+
+Owner reran the exact underlying Windows read-only queries from the same elevated PowerShell 7.6.6 shell after the runner's `PRECHECK_ROUTE_AND_ADAPTERS` CimJobException.
+
+Observed:
+
+```text
+TEMP_ROUTE=24.199.118.137/32 -> 192.168.1.1 via WLAN ifIndex 18 metric 1
+WLAN_ADAPTER=Up; Realtek 8852CE WiFi 6E PCI-E NIC; ifIndex 18
+WLAN_IPV4=192.168.1.4
+WLAN_DEFAULT_GATEWAY=present
+WIREGUARD_ADAPTER=SFO2-A; WireGuard Tunnel; ifIndex 13; Up
+```
+
+All four direct commands (`Get-NetRoute`, `Get-NetAdapter` for WLAN, `Get-NetIPConfiguration` for WLAN, and `Get-NetAdapter` for `SFO2-A`) completed successfully. Therefore the network state required by G2-B is present and healthy; the prior `CimJobException` is attributable to the runner's precheck implementation or composition, not to a missing route, down adapter, or lack of elevation. Formal G2-B samples remain WG 0 / HY2 0.
+
+Next action: fresh-read the local uncommitted `g2b-owner-runner.ps1`, identify the exact statement inside `PRECHECK_ROUTE_AND_ADAPTERS` that can throw `CimJobException`, add branch-specific diagnostics, and fix only that precheck. Do not start benchmark during the fix.
