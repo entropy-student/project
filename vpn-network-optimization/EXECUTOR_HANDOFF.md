@@ -168,3 +168,14 @@ STOP_AT_REVIEWER=YES
 ## G2-B readiness update — 2026-10-02
 
 Owner-side canonical recovery path realization completed successfully. Source was retained; target ACL, DPAPI round-trip, bundle validation, and encrypted-byte identity all passed; no pending or plaintext temporary artifact remains. Do not repeat recovery creation. G2-B benchmark is now the next step and has not started yet.
+
+
+## G2-B runtime ACL owner repair
+
+结果：PASS_CANDIDATE
+改动：owner-only directory/file ACL constructors now explicitly set Owner SID before Set-Acl.
+验证：The repair is limited to ACL ownership semantics; benchmark, Secret, route, and cleanup logic are unchanged.
+问题：下一次正式重试前仍需在真实 Windows 主机上用非 Secret 临时目录验证 SetOwner + Set-Acl + owner readback。
+回滚：移除两处 SetOwner($script:ownerSid) 即可回到上一 accepted runner。
+请 Reviewer 检查：核对 OWNER_ACL_OWNER_MISMATCH 与源码缺失 SetOwner 的因果一致性、补丁范围及下一次 fixture 要求。
+Owner 转交：NONE
