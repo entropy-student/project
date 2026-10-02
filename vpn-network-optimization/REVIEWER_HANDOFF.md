@@ -14,7 +14,7 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       RETURN before first formal sample; network reconciled safe
-CURRENT_BLOCKER                      Detached accepted-commit atomic retry execution pending
+CURRENT_BLOCKER                      Local accepted-commit object atomic retry pending
 CURRENT_GATE                         G2B_Full_Retry_After_Repair (AUTHORIZED_ONCE_UNCONSUMED)
 ```
 
@@ -732,3 +732,12 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - `RUNNER_INVOKED=False`; therefore the one repaired full-run authorization remains unconsumed.
 - Reviewer interpretation: the local checkout/HEAD source identity does not match the accepted runner blob. This is a local source-context problem, not evidence that the accepted GitHub candidate or network state drifted.
 - Next wrapper must not depend on local HEAD contents. It will discover the actual local Git root, verify canonical origin, fetch the accepted commit, create a detached temporary worktree at exactly `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`, verify the accepted runner/config blobs there, run exactly once, copy non-secret result artifacts back, then remove the temporary worktree.
+
+
+### Owner atomic retry wrapper — GIT_ORIGIN_QUERY_FAILED preflight return
+
+- Owner wrapper returned during read-only source discovery because the local Git context does not expose an `origin` remote through the assumed name.
+- No temporary route was created and the canonical runner was not invoked.
+- Final production readback passed: exact temporary route absent; WireGuard active; system proxy disabled; no TUN/Mihomo/runtime config/test listener; expected public exit present.
+- The one repaired full-run authorization remains unconsumed.
+- Reviewer classifies this as wrapper source-discovery overconstraint, not project/network drift. The next wrapper must not depend on a named remote. It should use the actual local Git object database directly: prove the accepted commit object exists, create a detached temporary worktree at that exact commit, then execute once.
