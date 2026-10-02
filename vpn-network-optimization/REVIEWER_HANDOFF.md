@@ -67,22 +67,21 @@ Accepted source:
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
 STATE=AUTHORIZED_UNTIL_GATE_RESOLVED
-OBJECTIVE=Determine whether the one HY2 handshake emits UDP/8443 traffic from the Windows WLAN interface before the packet leaves the Owner host.
+OBJECTIVE=Determine whether Windows can emit any UDP/8443 traffic to the VPS over the exact WLAN route, independent of Mihomo/HY2.
 MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 ```
 
 ### TARGET_AND_SCOPE
 
-After fresh Owner authorization, allow exactly:
+Current next diagnostic under the standing authorization:
 - keep production WireGuard ON;
-- use a local Windows packet-presence observer limited to UDP/8443 metadata on the WLAN interface;
 - create the same exact temporary `24.199.118.137/32` WLAN route;
-- read the protected DPAPI Secret only inside the existing handshake-only runtime boundary;
-- start one temporary Mihomo instance;
-- send exactly one HY2 handshake;
-- record only whether outbound UDP/8443 was observed locally, plus existing handshake diagnostics;
-- mandatory cleanup of observer, temporary route, Mihomo/runtime config, and final WireGuard read-back.
+- start one VPS-side read-only UDP/8443 packet-presence observer via the accepted WireGuard SSH control path;
+- send exactly one small raw UDP datagram from Windows to `24.199.118.137:8443`;
+- do not start Mihomo and do not read DPAPI Secret;
+- record only whether the VPS observed that one UDP datagram;
+- remove the exact temporary route and verify WireGuard remains restored.
 
 Forbidden:
 - no payload inspection;
@@ -108,8 +107,8 @@ Forbidden:
 ### ACCEPTANCE_CRITERIA
 
 Diagnostic classification:
-- Windows outbound **NO** → client/Mihomo/Windows egress is primary fault domain;
-- Windows outbound **YES** + VPS inbound **NO** → packet leaves Owner host but is lost in local router/NAT/ISP/upstream path before the Droplet.
+- raw UDP arrives at VPS → WLAN/router/ISP/provider UDP/8443 path works; Mihomo/HY2 client emission becomes the primary fault domain;
+- raw UDP does not arrive → path outside Mihomo is broken or filtered; continue with WLAN/router/ISP/upstream diagnosis.
 
 This Gate does not itself PASS G2-B.
 
@@ -198,11 +197,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-Fresh read-back proved `pktmon` is inactive and has no filters. Because captured localized text was still unreliable, preflight now uses language-independent output-structure checks; continue the standing-authorized Windows UDP/8443 egress checkpoint.
+The pktmon filter was valid, but its localized counters-text parser can still false-negative. Run one raw UDP/8443 control datagram with simultaneous VPS observation to remove pktmon/Mihomo ambiguity.
 
 ## OWNER_ACTION_REQUIRED
 
-**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected and run the repaired Windows UDP/8443 egress checkpoint.
+**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected and run the prepared raw UDP/8443 path-control checkpoint.
 
 ## EVIDENCE_POINTERS
 
