@@ -66,7 +66,7 @@ Current known components:
 
 ```text
 GATE_ID=G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2
-STATE=PROPOSED_NOT_AUTHORIZED
+STATE=AUTHORIZED_EXECUTION
 PREVIOUS_RESULT=PASS_CANDIDATE_DIAGNOSTIC
 OBJECTIVE=Determine whether sing-box accepted the REALITY client authentication and where the server-side REALITY handshake stopped, before changing any protocol parameter.
 MAX_ENDPOINT_THIS_ROUND=One private 10.66.21.1:14443 setup + one unchanged proxied HTTPS request + sanitized REALITY server-state extraction + exact cleanup + Reviewer stop.
@@ -137,11 +137,19 @@ No protocol compatibility PASS is possible in this Gate.
 
 ### OWNER_ONLY_ACTIONS
 
-**NOT YET AUTHORIZED.** R1 consumed its one-request authorization. R2 requires one fresh private diagnostic request. Public TCP/443, persistent deployment, performance benchmark, and protocol changes remain unauthorized.
+**AUTHORIZED by Owner on 2026-10-03 for G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2.**
+
+Authorization covers exactly:
+- one private setup on `10.66.21.1:14443`;
+- one unchanged proxied HTTPS request;
+- protected sing-box REALITY server-state extraction limited to the allowlisted non-secret fields in this Gate;
+- exact cleanup/read-back and Evidence persistence.
+
+It does **not** authorize public TCP/443 exposure, persistent deployment, benchmark/performance testing, protocol-parameter changes, core replacement, or protocol expansion.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-After Owner authorization:
+Owner authorization is active.
 - fresh-read this Gate;
 - reuse `scripts/g2c-private-reality-canary.ps1` from diagnostic implementation commit `c45a09688ed6eb48ac885f1f85a3b9c98f649923`;
 - make only the smallest sanitizer/state-extraction change;
@@ -232,19 +240,19 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Await Owner authorization for **G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2**. This is intended to be the last unchanged-parameter diagnostic before selecting a repair.
+Executor proceeds with **G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2** exactly as defined in the current Gate. This is the final unchanged-parameter diagnostic before Reviewer selects either a single-variable repair or a controlled implementation A/B.
 
 ## OWNER_ACTION_REQUIRED
 
-Authorize one additional private diagnostic request on `10.66.21.1:14443` for server-state classification only. No public TCP/443, persistent deployment, benchmark, or parameter change.
+**NONE.** Owner has authorized R2. Public TCP/443, persistent deployment, benchmark, and protocol changes remain unauthorized.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No active Executor run until Owner authorizes R2.
+Use the authorized R2 relay in `CURRENT_GATE`. Keep protocol parameters unchanged, extract only allowlisted non-secret server-state markers, run exactly one request, clean up, persist Evidence + Executor Handoff, commit, and STOP.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Use the fixed R2 packet in `CURRENT_GATE` after authorization.
+Use the fixed R2 completion packet in `CURRENT_GATE`, including the 10–20 minute estimate and actual timing fields.
 
 ## EVIDENCE_POINTERS
 
