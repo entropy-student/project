@@ -1564,3 +1564,55 @@ Reviewer analysis:
 - The runner's deterministic comparator classified this window as `HY2_BETTER_THIS_WINDOW`.
 - This does not prove universal or peak-hour superiority; the runner explicitly reports `PEAK_HOUR_SUPERIORITY_PROVEN=NO`.
 - The Windows UDP/8443 egress fault Gate is resolved and can be closed. G2-B safe-window network comparison has positive evidence; final v1 sealing should still preserve the distinction between this same-window network result and any separate peak-hour / real Codex workload validation required by project scope.
+
+
+## G2-C VLESS+REALITY read-only preflight — PASS — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+WINDOWS_ADMINISTRATOR=YES
+POWERSHELL_VERSION=7.6.6
+SSH_LOCAL_FILES=PASS
+WINDOWS_WIREGUARD_BASELINE=PASS
+SSH_CONNECTION_OK=YES
+REMOTE_USER=root
+REMOTE_UID=0
+REMOTE_HOSTNAME=ubuntu-s-1vcpu-512mb-10gb-sfo3
+REMOTE_OS=Ubuntu 24.04.5 LTS
+REMOTE_KERNEL=6.8.0-142-generic
+REMOTE_ARCH=x86_64
+WG0_PRESENT=YES
+WG_SERVICE_ACTIVE=YES
+UDP_51820_LISTENER=YES
+HY2_SERVICE_ACTIVE=YES
+UDP_8443_LISTENER=YES
+TCP_443_FREE=YES
+TCP_443_LISTENER_COUNT=0
+TCP_443_OWNER_NAMES=NONE
+SING_BOX_PRESENT=NO
+SING_BOX_VERSION=NONE
+XRAY_PRESENT=NO
+XRAY_VERSION=NONE
+MIHOMO_SERVER_PRESENT=NO
+MIHOMO_SERVER_VERSION=NONE
+NTP_SYNCHRONIZED=yes
+MEM_AVAILABLE_KIB=259660
+ROOT_FREE_KIB=7013936
+UFW_STATE=INACTIVE
+NFT_TCP443_RULE_COUNT=0
+IPTABLES_TCP443_RULE_COUNT=0
+READ_ONLY_MUTATION=NO
+SECRET_VALUES_EMITTED=0
+SSH_NATIVE_EXIT=0
+G2C_TCP443_PREFLIGHT=PASS
+OWNER_G2C_VLESS_REALITY_PREFLIGHT_RESULT=COMPLETE
+```
+
+Reviewer conclusion:
+- Preflight PASS. The accepted strict SSH identity/trust path remains usable with native exit 0 and root target identity.
+- Existing WireGuard and HY2 production/candidate services remain healthy on UDP 51820 and UDP 8443.
+- TCP/443 is free with no listener and no matching nftables/iptables rule conflict.
+- sing-box, Xray, and server-side Mihomo are not installed, so there is no existing server-core collision to preserve.
+- Time synchronization is healthy. Root filesystem has about 6.69 GiB free. MemAvailable is about 254 MiB on this small VPS; later deployment must keep the side-by-side service footprint small and include resource read-back.
+- No target mutation occurred and no Secret value was emitted.
+- G2-C may proceed to a separately authorized side-by-side deployment design on TCP/443.
