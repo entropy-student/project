@@ -543,3 +543,21 @@ SECRET_VALUES_EMITTED=0
 ```
 
 Reviewer consequence: the packaged-app AppData path-realization defect is closed. No VPS Secret re-fetch or rotation is required. The virtualized source remains retained for now. G2-B is now ready to proceed to the planned same-window benchmark; no protocol-performance conclusion exists until that benchmark completes.
+
+
+### G2-B runner precheck — PRECHECK_ROUTE_AND_ADAPTERS CimJobException
+
+Owner executed `g2b-owner-runner.ps1` from elevated PowerShell 7.6.6. Administrator and High integrity checks passed (`INTEGRITY_RID=12288`), but the runner failed closed during `PRECHECK_ROUTE_AND_ADAPTERS` with `CimJobException` before any benchmark samples were produced.
+
+```text
+ADMINISTRATOR_TOKEN=YES
+INTEGRITY_RID=12288
+RUNNER_FAILED_PHASE=PRECHECK_ROUTE_AND_ADAPTERS
+RUNNER_FAILURE_TYPE=CimJobException
+CURRENT_WINDOW_RESULT=INCONCLUSIVE
+G2B_OWNER_RUNNER_RESULT=FAIL_CLOSED
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+```
+
+Current interpretation: this is a local Windows route/adapter precheck implementation/runtime issue, not a protocol-performance result. Formal G2-B samples remain WG 0 / HY2 0. Before rerun, fresh-read the temporary host route and the WLAN/WireGuard adapter state from the same Owner shell, and isolate which read-only NetTCPIP/NetAdapter query throws the CIM exception. Do not start benchmark or change network state until that is identified.
