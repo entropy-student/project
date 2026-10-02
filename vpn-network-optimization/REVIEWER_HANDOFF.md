@@ -318,3 +318,19 @@ G2-B should therefore keep:
 - HY2 data-plane candidate: localhost test proxy → WLAN → `24.199.118.137:8443`
 
 Do not retry public-IP SSH during this Gate unless Reviewer explicitly changes the plan.
+
+
+### G2-B DPAPI recovery reality correction — OWNER FRESH READBACK
+
+Owner fresh read-back on the actual Windows host supersedes the earlier G2-A evidence that claimed the final DPAPI artifact existed.
+
+Observed on 2026-10-02:
+- expected directory `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery` is missing;
+- recursive search under `C:\Users\34707\AppData\Local` found no `hy2-g2a*.dpapi` artifact;
+- therefore `C:\Users\34707\AppData\Local\vpn-network-optimization\recovery\hy2-g2a.dpapi` is NOT PRESENT on the actual Owner Windows host.
+
+Reviewer consequence:
+- treat the prior G2-A claim `DPAPI_FINAL_EXISTS=YES` as stale/false for current host reality;
+- do not rerun or rotate VPS Secrets merely to repair this;
+- create and verify a new Owner-host DPAPI CurrentUser recovery artifact from the existing VPS Secret material over the accepted WireGuard SSH control path before any G2-B client Secret use;
+- no G2-B benchmark may continue until recovery reality is repaired and fresh-read on the actual Owner host.
