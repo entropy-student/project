@@ -887,6 +887,7 @@ function Get-ComparisonTable {
 
 function New-OwnerOnlyDirectoryAcl {
     $acl = [Security.AccessControl.DirectorySecurity]::new()
+    $acl.SetOwner($script:ownerSid)
     $acl.SetAccessRuleProtection($true, $false)
     $inheritance = [Security.AccessControl.InheritanceFlags]::ContainerInherit -bor
                    [Security.AccessControl.InheritanceFlags]::ObjectInherit
@@ -903,6 +904,7 @@ function New-OwnerOnlyDirectoryAcl {
 
 function New-OwnerOnlyFileAcl {
     $acl = [Security.AccessControl.FileSecurity]::new()
+    $acl.SetOwner($script:ownerSid)
     $acl.SetAccessRuleProtection($true, $false)
     $rule = [Security.AccessControl.FileSystemAccessRule]::new(
         $script:ownerSid,
