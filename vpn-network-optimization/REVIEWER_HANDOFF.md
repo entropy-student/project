@@ -140,13 +140,18 @@ Current baseline is clean. After the one probe:
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Prepare one atomic Owner checkpoint using:
-1. this Current Gate;
-2. the accepted strict SSH alias pattern from `repair-owner-dpapi-recovery.ps1`;
-3. the existing `g2b-owner-runner.ps1 -HandshakeOnly` path;
-4. existing handshake checkpoint cleanup logic.
+Prepared one-shot checkpoint:
+- `scripts/g2b-hy2-udp-arrival-checkpoint.ps1`
+- commit: `3c28e2990fd9964a7f7ade5ef12a9970a1edc299`
+- blob: `2c8e498939a76c0baf9e4dd56b31e56103ccb73f`
+- keeps WireGuard on;
+- creates the exact temporary VPS /32 WLAN route;
+- starts strict-SSH UDP/8443 packet-presence observers with no payload output or pcap file;
+- invokes accepted `g2b-owner-runner.ps1 -HandshakeOnly` exactly once;
+- then stops the observer and performs the existing route/Mihomo/runtime/WireGuard cleanup/read-back.
+- if the observer is not ready, the handshake runner is not invoked and authorization is not consumed.
 
-Do not reread full Governance or historical benchmark evidence. Do not alter configuration.
+Executor should read only this Current Gate and the prepared checkpoint. Do not reread full Governance or historical benchmark evidence. Do not alter configuration.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
