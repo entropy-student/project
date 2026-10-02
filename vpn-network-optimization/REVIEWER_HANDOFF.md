@@ -172,11 +172,18 @@ This authorization is consumed only once the formal runner is actually invoked. 
 
 Owner authorization is granted. Executor startup is intentionally narrow.
 
+Prepared Owner checkpoint:
+- `scripts/g2b-owner-checkpoint.ps1`
+- checkpoint blob: `4756ce6661a3613b80014f663b2f5f25f616ef92`
+- checkpoint creation commit: `c94929f478a4856636bc88aa07708de5d23df545`
+- it pins the accepted runner/config, creates the exact temporary route, invokes the formal runner at most once, persists non-secret results, and performs fallback cleanup/read-back.
+
 Read:
 1. this `CURRENT_GATE` section;
-2. `scripts/g2b-owner-runner.ps1`;
-3. `config/clash/sfo3-a-hy2.yaml`;
-4. only the recent G2-B Evidence sections covering:
+2. `scripts/g2b-owner-checkpoint.ps1`;
+3. `scripts/g2b-owner-runner.ps1`;
+4. `config/clash/sfo3-a-hy2.yaml`;
+5. only the recent G2-B Evidence sections covering:
    - runtime ACL owner repair;
    - retry after ACL repair / HY2 handshake validator return;
    - HY2 proxy-use validator diagnostic and repair.
@@ -237,7 +244,7 @@ Run exactly one bounded G2-B retry under the Current Gate, persist non-secret Ev
 
 ## OWNER_ACTION_REQUIRED
 
-**Run the prepared one-shot Owner checkpoint when presented by Executor.** No second authorization is required unless the formal runner is invoked and returns.
+**Run the prepared one-shot `scripts/g2b-owner-checkpoint.ps1` from PowerShell 7.6.6 as Administrator.** No second authorization is required unless the formal runner is invoked and returns.
 
 ## EVIDENCE_POINTERS
 
