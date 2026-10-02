@@ -675,3 +675,46 @@ VALIDATION:
 - A real-host non-secret ACL fixture remains required before the next consequential full retry.
 
 EXECUTOR_RESULT: PASS_CANDIDATE
+
+
+## G2-B retry after ACL owner repair — HY2 handshake validator return
+
+AUTHORIZED_GATE: G2B_Full_Retry_After_Acl_Repair
+PREFLIGHT_FACTS:
+- Owner PowerShell 7.6.6 / Administrator / integrity RID 12288 passed.
+- Accepted repaired runner/config source identity passed.
+- Real-host non-Secret directory and file ACL fixtures both passed before any network mutation.
+- Production network baseline passed and the exact temporary VPS /32 WLAN route was created and read back as WLAN_DIRECT.
+
+ACTUAL_EXECUTION:
+- Repaired full runner invoked exactly once.
+- WireGuard benchmark completed 60/60 with 0 failures.
+- Runtime Secret config creation and owner-only ACL validation passed.
+- Mihomo test-only local proxy became ready.
+- Run failed closed in HY2_OUTER_ROUTE_AND_HANDSHAKE with HY2_HANDSHAKE_DID_NOT_USE_LOCAL_PROXY before any HY2 benchmark sample.
+
+WIREGUARD_METRICS:
+- Success 60 / Failures 0
+- Median 0.600826s
+- P90 0.832286s
+- P95 1.111586s
+- P99 1.533950s
+- >1s 4 / >1.5s 1 / >2s 0
+
+CLEANUP_AND_READBACK:
+- Mihomo process stop: YES.
+- Runtime Secret config deleted: YES.
+- Plaintext Secret artifacts remaining: 0.
+- Exact temporary route removed: YES.
+- Production WireGuard restored: YES.
+- Wrapper fallback route cleanup not needed.
+- Non-Secret result artifacts copied: 2.
+- Wrapper final readback returned FINAL_PROXY_LISTENER_PRESENT even though runner reported Mihomo stopped.
+
+ANOMALIES:
+- The runner currently treats curl %{remote_ip} == 127.0.0.1 as proof that the HTTP proxy was used. curl documentation provides a dedicated %{proxy_used} write-out variable (curl >= 8.7.0), which is a more direct proxy-use invariant; real-host support still needs a read-only check before repair.
+- The wrapper final check counts any TCP connection with LocalPort 17890 as a listener, regardless of state. A read-only real-host TCP-state readback is required to distinguish LISTEN residue from TIME_WAIT/other closed-connection residue.
+
+SECRET_VALUES_EMITTED: 0
+SECRET_VALUES_COMMITTED: 0
+EXECUTOR_RESULT: RETURN_TEST_FAILURE
