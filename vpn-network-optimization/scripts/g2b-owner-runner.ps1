@@ -1,12 +1,15 @@
 [CmdletBinding()]
 param(
-    [switch]$PreflightOnly
+    [switch]$PreflightOnly,
+    [switch]$HandshakeOnly
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $PSNativeCommandUseErrorActionPreference = $false
+
+if ($PreflightOnly -and $HandshakeOnly) { throw 'PREFLIGHT_ONLY_AND_HANDSHAKE_ONLY_ARE_MUTUALLY_EXCLUSIVE' }
 
 Add-Type -AssemblyName System.Security.Cryptography.ProtectedData
 
@@ -1099,9 +1102,10 @@ function Get-NullableMetric {
 
 function New-RunSummary {
     return [ordered]@{
-        GATE = 'G2B_SAFE_WINDOW_COMPARATIVE_VALIDATION'
+        GATE = $(if ($HandshakeOnly) { 'G2B_HY2_HANDSHAKE_ONLY_DIAGNOSTIC' } else { 'G2B_SAFE_WINDOW_COMPARATIVE_VALIDATION' })
         TARGET_PUBLIC_IP = $script:publicVpsIp
-        WG_G2B_WITH_OWNER_HOST_ROUTE = 'YES'
+        HANDSHAKE_ONLY_MODE = [bool]$HandshakeOnly
+        WG_G2B_WITH_OWNER_HOST_ROUTE = $(if ($HandshakeOnly) { 'NO' } else { 'YES' })
         WG_BASELINE_TESTED = [bool]($null -ne $script:wgStats -and $script:wgStats.Samples -eq $script:sampleCount)
         WG_SUCCESS = $(Get-NullableMetric $script:wgStats 'Success')
         WG_FAILURES = $(Get-NullableMetric $script:wgStats 'Failures')
@@ -1330,11 +1334,17 @@ public static class G2bTokenIntegrityNative {
     $cleanupEligible = $true
     Write-Output 'PHASE=PRECHECK_PASS'
 
-    $phase = 'WIREGUARD_BASELINE'
-    Write-Output 'PHASE=WG_BENCHMARK_START'
-    $script:wgStats = Invoke-Benchmark -Name 'WG' -Rows $wgRows -ProxyUrl $null
-    if ($wgStats.Samples -ne $sampleCount) { throw 'WG_BASELINE_INCOMPLETE' }
-    Write-Output 'WG_BASELINE_TESTED=YES'
+    if ($HandshakeOnly) {
+        Write-Output 'HANDSHAKE_ONLY_MODE=YES'
+        Write-Output 'WG_BENCHMARK_SKIPPED=YES'
+    }
+    else {
+        $phase = 'WIREGUARD_BASELINE'
+        Write-Output 'PHASE=WG_BENCHMARK_START'
+        $script:wgStats = Invoke-Benchmark -Name 'WG' -Rows $wgRows -ProxyUrl $null
+        if ($wgStats.Samples -ne $sampleCount) { throw 'WG_BASELINE_INCOMPLETE' }
+        Write-Output 'WG_BASELINE_TESTED=YES'
+    }
 
     $phase = 'DPAPI_CLIENT_SECRET_PARSE'
     $protectedBytes = [IO.File]::ReadAllBytes($dpapiPath)
@@ -1442,27 +1452,42 @@ public static class G2bOwnerRunnerNative {
     $outerRoute = 'WLAN_DIRECT'
     $proxyUrl = "http://127.0.0.1:$proxyPort"
     $handshake = Invoke-CurlSample -TimestampUtc ([DateTime]::UtcNow) -ProxyUrl $proxyUrl
+    Write-Output "HY2_HANDSHAKE_PROXY_USED=$($handshake.ProxyUsed)"
+    Write-Output "HY2_HANDSHAKE_CURL_EXIT=$($handshake.CurlExit)"
+    Write-Output "HY2_HANDSHAKE_HTTP_STATUS=$($handshake.HttpStatus)"
+    Write-Output "HY2_HANDSHAKE_ERROR=$($handshake.Error)"
+    Write-Output "HY2_HANDSHAKE_TIME_TOTAL=$($handshake.TimeTotal)"
+    Write-Output "HY2_HANDSHAKE_TIME_CONNECT=$($handshake.TimeConnect)"
+    Write-Output "HY2_HANDSHAKE_TIME_APPCONNECT=$($handshake.TimeAppConnect)"
     Assert-Condition ($handshake.ProxyUsed -eq 1) 'HY2_HANDSHAKE_DID_NOT_USE_LOCAL_PROXY'
     Assert-Condition ($handshake.Success) 'HY2_HANDSHAKE_OR_AUTH_FAILED'
     $handshakeAuth = 'PASS'
     $handshakePin = 'PASS'
-    $exitViaHy2 = Get-PublicExit -ProxyUrl $proxyUrl
-    Assert-Condition ($exitViaHy2 -eq $expectedExit) 'HY2_PUBLIC_EXIT_MISMATCH'
-    $hy2PublicExit = $exitViaHy2
     Write-Output 'HY2_AUTH=PASS'
     Write-Output 'TLS_CERTIFICATE_PINNING=PASS'
     Write-Output 'HY2_OUTER_ROUTE=WLAN_DIRECT'
-    Write-Output "PUBLIC_EXIT_THROUGH_HY2=$hy2PublicExit"
 
-    $phase = 'HY2_BENCHMARK'
-    Assert-OwnerRouteAndWlan
-    Write-Output 'PHASE=HY2_BENCHMARK_START'
-    $script:hy2Stats = Invoke-Benchmark -Name 'HY2' -Rows $hy2Rows -ProxyUrl $proxyUrl
-    Assert-Condition ($hy2Stats.Samples -eq $sampleCount) 'HY2_BENCHMARK_INCOMPLETE'
-    $script:comparison = Get-WindowComparison $wgStats $hy2Stats
+    if ($HandshakeOnly) {
+        Write-Output 'HY2_BENCHMARK_SKIPPED=YES'
+        $phase = 'TESTS_COMPLETE_CLEANUP_PENDING'
+        Write-Output 'HY2_HANDSHAKE_ONLY_COMPLETE=YES'
+    }
+    else {
+        $exitViaHy2 = Get-PublicExit -ProxyUrl $proxyUrl
+        Assert-Condition ($exitViaHy2 -eq $expectedExit) 'HY2_PUBLIC_EXIT_MISMATCH'
+        $hy2PublicExit = $exitViaHy2
+        Write-Output "PUBLIC_EXIT_THROUGH_HY2=$hy2PublicExit"
 
-    $phase = 'TESTS_COMPLETE_CLEANUP_PENDING'
-    Write-Output 'G2B_NETWORK_TEST_COMPLETE=YES'
+        $phase = 'HY2_BENCHMARK'
+        Assert-OwnerRouteAndWlan
+        Write-Output 'PHASE=HY2_BENCHMARK_START'
+        $script:hy2Stats = Invoke-Benchmark -Name 'HY2' -Rows $hy2Rows -ProxyUrl $proxyUrl
+        Assert-Condition ($hy2Stats.Samples -eq $sampleCount) 'HY2_BENCHMARK_INCOMPLETE'
+        $script:comparison = Get-WindowComparison $wgStats $hy2Stats
+
+        $phase = 'TESTS_COMPLETE_CLEANUP_PENDING'
+        Write-Output 'G2B_NETWORK_TEST_COMPLETE=YES'
+    }
 } catch {
     $runFailed = $true
     $failurePhase = $phase
