@@ -1443,3 +1443,56 @@ Reviewer interpretation:
 - The formal HY2 runner was never invoked, so this is not a handshake failure.
 - Cleanup completed and production WireGuard was restored.
 - Next revision removes raw.githubusercontent.com from the checkpoint's internal dependency fetch and uses the GitHub Contents API while retaining exact blob-SHA verification.
+
+
+## Post-killswitch HY2 handshake validation — PASS — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+ACCEPTED_SOURCE_IDENTITY=PASS
+NETWORK_BASELINE_PREFLIGHT=PASS
+OWNER_TEMP_ROUTE_CREATED=YES
+FORMAL_HANDSHAKE_PROBE_INVOCATION=START
+PHASE=PRECHECK_PASS
+HANDSHAKE_ONLY_MODE=YES
+WG_BENCHMARK_SKIPPED=YES
+CLIENT_SECRET_RUNTIME_CREATED=YES
+CLIENT_SECRET_RUNTIME_OWNER_ONLY_ACL=PASS
+MIHOMO_TEST_PROXY_READY=YES
+HY2_HANDSHAKE_PROXY_USED=1
+HY2_HANDSHAKE_CURL_EXIT=0
+HY2_HANDSHAKE_HTTP_STATUS=401
+HY2_HANDSHAKE_ERROR=NONE
+HY2_HANDSHAKE_TIME_TOTAL=1.900814
+HY2_HANDSHAKE_TIME_CONNECT=0.001333
+HY2_HANDSHAKE_TIME_APPCONNECT=0.832811
+HY2_AUTH=PASS
+TLS_CERTIFICATE_PINNING=PASS
+HY2_OUTER_ROUTE=WLAN_DIRECT
+HY2_BENCHMARK_SKIPPED=YES
+HY2_HANDSHAKE_ONLY_COMPLETE=YES
+TEST_MIHOMO_STOPPED=YES
+CLIENT_SECRET_RUNTIME_DELETED=YES
+PLAINTEXT_SECRET_ARTIFACTS_REMAINING=0
+OWNER_TEMP_ROUTE_REMOVED=YES
+PRODUCTION_WG_RESTORED=YES
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+G2B_OWNER_RUNNER_RESULT=COMPLETE
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_TEST_RUNTIME_RESIDUE=ABSENT
+TEMP_CHECKPOINT_WORKSPACE_REMOVED=YES
+RUNNER_INVOKED=YES
+RUNNER_COMPLETED=YES
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+OWNER_POST_KILLSWITCH_HANDSHAKE_RESULT=COMPLETE
+```
+
+Reviewer conclusion:
+- HY2 handshake is now proven successful after removal of the WireGuard Windows kill-switch.
+- curl exit 0, TLS appconnect completed, HY2 auth passed, certificate pinning passed, and the HY2 outer route was WLAN direct.
+- HTTP 401 is the expected unauthenticated response from the target HTTPS endpoint and is not a HY2 transport failure.
+- The entire fault chain is closed: the previous TLS_ERROR was caused by the local WireGuard WFP kill-switch preventing HY2 outer UDP from leaving Windows.
+- Cleanup was complete and production WireGuard was restored.
+- Next step is the formal WG vs HY2 benchmark; do not repeat root-cause diagnostics.
