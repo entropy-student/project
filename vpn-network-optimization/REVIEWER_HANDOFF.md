@@ -14,7 +14,7 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT_BLOCKER                      Owner High-integrity -PreflightOnly retry pending
+CURRENT_BLOCKER                      Fresh Owner safe-window confirmation for full G2-B benchmark
 ```
 
 Current runtime facts:
@@ -49,12 +49,15 @@ G2-B benchmark status:
 - Owner bounded read-only diagnostic proved `AutoConfigURL` is absent while the other snapshot inputs are healthy; under StrictMode the old direct access was the exact `PropertyNotFoundException` cause.
 - Reviewer fresh-read accepted commit `50a6b02480df6554493fee59f1610486a9a239fe`: optional `ProxyServer` / `ProxyOverride` / `AutoConfigURL` now normalize missing/null to empty string, `ProxyEnable` and required service/WireGuard/route fields remain fail-closed, and snapshot failures now retain branch-specific diagnostics.
 - Exact candidate commit scope is limited to `g2b-owner-runner.ps1`, `EXECUTION_EVIDENCE.md`, and `EXECUTOR_HANDOFF.md`; `REVIEWER_HANDOFF.md` was not modified by Executor. Reviewer acceptance then advanced `main` only by the Reviewer-owned Handoff record.
+- Owner reran the canonical `g2b-owner-runner.ps1 -PreflightOnly` from PowerShell 7.6.6 / Administrator / integrity RID 12288 after the accepted ClientSnapshot repair.
+- Owner read-back: `ROUTE_QUERY=PASS`, `WLAN_ADAPTER_QUERY=PASS`, `WLAN_IP_QUERY=PASS`, `WG_ADAPTER_QUERY=PASS`, `G2B_PREFLIGHT_ONLY=PASS`, with `SECRET_ACCESSED=NO`, `MIHOMO_STARTED=NO`, `BENCHMARK_STARTED=NO`, and `NETWORK_CHANGED=NO`.
+- Reviewer accepts this as `PASS_G2B_OWNER_HIGH_PREFLIGHTONLY`. The preflight/source-repair chain is closed; the remaining boundary before the full benchmark is a fresh Owner confirmation that no foreground Codex/image/network-critical work would be disrupted.
 - No G2-B performance conclusion exists yet.
 
 ## 1. Project Goal
 
 - Final goal: 建立一套可迁移、可验证、可回滚的自建 VPN 优化标准，提高 Codex / OpenAI / AI 生图等长任务的稳定性与尾部表现，并可快速复用于不同 VPS。
-- Current goal: 在 Owner 同一 High-integrity PowerShell 7.6.6 上重新运行只读 `-PreflightOnly` 验证已接受的 ClientSnapshot 修复；只有 Reviewer 接受该 Owner read-back 后才进入 WireGuard vs Hysteria2 同窗口低干扰 A/B。
+- Current goal: 在 Owner fresh safe-window confirmation 后运行一次完整 G2-B 同窗口 WireGuard vs Hysteria2 A/B；runner 必须保留现有生产 WireGuard、使用临时 HY2 localhost proxy、完成 exact cleanup，并在结果后停止于 Reviewer。
 - Guiding principle: 不复制某一作者的全部参数；以官方文档、可靠实现和本机证据筛选最小有效配置。
 
 ## 2. Authority / Source of Truth
@@ -104,7 +107,7 @@ P0 Research / Scope / Project Init   ✅ REVIEWER ACCEPTED
 G1 Foreground-safe Foundation        ✅ REVIEWER PASS
 G2-A HY2 server deployment           ✅ REVIEWER PASS
 G2-A DPAPI recovery closure          ✅ REVIEWER PASS
-G2-B Safe-window Validation + Seal   ⏸ OWNER PREFLIGHTONLY PENDING
+G2-B Safe-window Validation + Seal   ⏸ SAFE-WINDOW CONFIRMATION PENDING
 ```
 
 P0 acceptance covers research/scope only. It does NOT assert fresh server/runtime state.
@@ -343,22 +346,22 @@ Owner read-only diagnostic proved that the optional Internet Settings field `Aut
 
 ## 12. Next Step
 
-1. Reviewer accepts `G2B_ClientSnapshot_Optional_Property_Repair` at commit `50a6b02480df6554493fee59f1610486a9a239fe`.
-2. Owner runs only the canonical read-only checkpoint from repository root in elevated PowerShell 7.6.6:
-   `& .\vpn-network-optimization\scripts\g2b-owner-runner.ps1 -PreflightOnly`
-3. Expected success evidence: Administrator/High integrity PASS, route/WLAN/WireGuard/client-state/public-exit/config prechecks complete, `G2B_PREFLIGHT_ONLY=PASS`, `SECRET_ACCESSED=NO`, `MIHOMO_STARTED=NO`, `BENCHMARK_STARTED=NO`, `NETWORK_CHANGED=NO`.
-4. If it returns, do not rerun or patch interactively; return the complete bounded output to Reviewer.
-5. Do not run the full G2-B benchmark or MTU/BBR/fq/GRO/sysctl tuning yet.
+1. Owner High-integrity `-PreflightOnly` is formally accepted: `PASS_G2B_OWNER_HIGH_PREFLIGHTONLY`.
+2. Before any full benchmark, obtain a fresh Owner safe-window confirmation because the full runner generates benchmark traffic, starts a temporary local Mihomo process, accesses the approved DPAPI Secret in memory, and removes the exact temporary `/32` route during final cleanup.
+3. If Owner confirms no foreground Codex/image/network-critical task would be disrupted, the next Gate is one full canonical `g2b-owner-runner.ps1` execution from the same elevated PowerShell 7.6.6 environment.
+4. The full Gate must stop on any precheck/handshake/cleanup failure, must not tune MTU/BBR/fq/GRO/sysctl, and must return the complete bounded output plus generated non-secret result artifacts for Reviewer inspection.
+5. If safe window is not confirmed, do nothing; keep WireGuard production state and the temporary `/32` route unchanged.
 
 ## 13. Status Summary
 
 - Overall: P0 PASS, G1 PASS, G2-A HY2 server deployment PASS, DPAPI recovery/path realization PASS.
 - Route/adapter precheck repair: PASS.
-- ClientSnapshot optional-property repair: `PASS_G2B_CLIENTSNAPSHOT_OPTIONAL_PROPERTY_REPAIR` at commit `50a6b02480df6554493fee59f1610486a9a239fe`.
-- Reviewer inspection: optional registry strings are safely normalized; required fields remain fail-closed; branch-specific snapshot diagnostics are present; benchmark/DPAPI/Mihomo/final cleanup boundaries are unchanged.
+- ClientSnapshot optional-property repair: PASS.
+- Owner High-integrity production-path `-PreflightOnly`: PASS.
+- Safety read-back: Secret access NO; Mihomo start NO; benchmark start NO; network change NO.
 - Formal G2-B samples remain WG 0 / HY2 0; no protocol-performance conclusion exists.
-- Current Owner checkpoint: elevated PowerShell 7.6.6 `-PreflightOnly` only.
-- Full benchmark remains blocked until that Owner High-integrity preflight is reviewed.
+- Current Owner checkpoint: fresh confirmation that the full benchmark can run without disrupting foreground work.
+- Full benchmark remains blocked until that safe window is confirmed.
 
 
 
@@ -622,3 +625,12 @@ Reviewer interpretation: the previous route/adapter failure is no longer the act
 - Exact commit changes only the runner and the two Executor-owned records. Intervening unrelated repository commits are not part of this Gate and do not alter the reviewed VPN candidate.
 - The fix preserves StrictMode, keeps `ProxyEnable` and required service/WireGuard/route state fail-closed, and normalizes only the three optional proxy strings.
 - Owner `-PreflightOnly` was intentionally not executed by Executor. Full benchmark remains blocked until Owner High-integrity preflight succeeds and Reviewer accepts the read-back.
+
+### Reviewer Decision — Owner High PreflightOnly
+
+- Decision: `PASS_G2B_OWNER_HIGH_PREFLIGHTONLY`.
+- Proven Owner environment: PowerShell 7.6.6, Administrator token, integrity RID 12288.
+- Accepted read-back: route, WLAN adapter/IP, and WireGuard adapter queries PASS; `G2B_PREFLIGHT_ONLY=PASS`.
+- Negative evidence: Secret access NO, Mihomo start NO, benchmark start NO, network change NO.
+- This closes the preflight repair loop. It does not authorize or prove the full G2-B benchmark.
+- Next consequential boundary: fresh Owner safe-window confirmation before full runner execution.
