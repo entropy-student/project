@@ -705,3 +705,12 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - This does not consume the single consequential full-run attempt because execution never entered the checkpoint body.
 - Repair: use ordinary local-scope assignment `$ErrorActionPreference = 'Stop'`; no `using:` scope is valid for assignment here.
 - Next action remains one atomic repaired full G2-B retry after wrapper syntax correction.
+
+
+### Owner atomic retry wrapper preflight return — no consequential action
+
+- Owner ran the authorized atomic wrapper, but it returned during `OWNER_AND_SOURCE_PREFLIGHT` after Administrator/High-integrity proof and before route creation or runner invocation.
+- Observed: `RUNNER_INVOKED=False`, fallback cleanup not armed, and no benchmark/Secret/Mihomo action began.
+- The wrapper's final readback also returned before producing a positive network result; because the wrapper emitted only `RuntimeException`, this output does not prove production drift.
+- The single repaired full-run authorization remains unconsumed because the canonical runner was never invoked and the temporary route was never created.
+- Reviewer repair for the wrapper: avoid working-tree raw-byte blob comparison by executing the accepted commit from a detached temporary Git worktree; use the previously proven `Find-NetRoute` route-object filter requiring DestinationPrefix + NextHop + InterfaceIndex; preserve one-run limit and exact fallback cleanup.
