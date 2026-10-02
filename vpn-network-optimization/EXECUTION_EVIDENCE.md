@@ -1328,3 +1328,23 @@ Reviewer interpretation:
 - Neither split default `0.0.0.0/1` nor `128.0.0.0/1` is active.
 - WireGuard's WFP `Block all outbound (IPv4)` kill-switch remains active.
 - Therefore the intended repair has not yet been applied to the running tunnel; no HY2 retest should be attempted until the configuration is actually changed and the tunnel reloaded.
+
+
+## WireGuard kill-switch repair verified — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_LOCAL_READBACK
+WG_ROUTE_DEFAULT_V4_0_0_0_0_0=NO
+WG_ROUTE_SPLIT_V4_0_0_0_0_1=YES
+WG_ROUTE_SPLIT_V4_128_0_0_0_1=YES
+WFP_TARGET_BLOCK_ALL_OUTBOUND_IPV4=NO
+WFP_TARGET_FILTER_TEXT_HAS_WIREGUARD=YES
+```
+
+Reviewer conclusion:
+- The running SFO2-A tunnel no longer uses the IPv4 `0.0.0.0/0` route.
+- The two split defaults `0.0.0.0/1` and `128.0.0.0/1` are active, preserving full IPv4 route coverage.
+- WireGuard's target WFP `Block all outbound (IPv4)` kill-switch filter is absent.
+- The previously proven local WFP block has therefore been removed successfully while WireGuard remains active.
+- Presence of WireGuard text in the target WFP dump is not itself a kill-switch failure; the decisive block filter is absent.
+- Next validation: raw UDP/8443 arrival at VPS, then HY2 handshake.
