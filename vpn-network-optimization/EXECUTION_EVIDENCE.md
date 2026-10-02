@@ -1215,3 +1215,31 @@ Reviewer interpretation:
 - The synthetic socket send still succeeded and was explicitly bound to WLAN address 192.168.1.4 with an exact WLAN /32 route.
 - This strongly shifts the active fault domain toward the Windows networking stack before the physical NIC, but NIC-only monitoring cannot identify the exact internal component.
 - Next diagnostic changes only pktmon component scope from `nics` to `all`, still counters-only/no packet logging, so JSON can reveal whether the matching datagram appears at protocol/filter components and whether a drop reason is reported.
+
+
+## pktmon all-component JSON diagnostic — JSON formatting return — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+PKTMON_JSON_DIAGNOSTIC_PREFLIGHT=PASS
+OWNER_TEMP_ROUTE_CREATED=YES
+VPS_EXACT_ROUTE_READBACK=WLAN_DIRECT
+RAW_UDP_SOCKET_BIND_TARGET=192.168.1.4
+PKTMON_COMPONENT_SCOPE=ALL
+PKTMON_JSON_OBSERVER_READY=YES
+RAW_UDP_8443_WINDOWS_SEND_BYTES=7
+RAW_UDP_8443_LOCAL_ADDRESS=192.168.1.4
+RAW_UDP_8443_WINDOWS_SEND_CALL=PASS
+PKTMON_JSON_DIAGNOSTIC_RETURN_CODE=PKTMON_COUNTERS_JSON_INVALID
+FINAL_PKTMON_STATE_CLEAN=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+DIAGNOSTIC_COMPLETED=NO
+CLEANUP_FAILURE_COUNT=0
+OWNER_PKTMON_JSON_DIAGNOSTIC_RESULT=RETURN_TO_REVIEWER
+```
+
+Reviewer interpretation:
+- The synthetic UDP send did occur with pktmon monitoring all networking components.
+- Failure occurred only when parsing `pktmon counters --json`; Microsoft documentation confirms this syntax should be supported, so the current blocker is output representation/encoding rather than the traffic reproduction.
+- Next run keeps the same traffic reproduction and all-component counters-only monitoring, but emits the native human-readable counters table verbatim without machine parsing.
