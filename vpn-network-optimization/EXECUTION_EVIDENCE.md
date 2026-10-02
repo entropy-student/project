@@ -994,3 +994,28 @@ Reviewer interpretation:
 - The target Droplet networking page explicitly shows that no DigitalOcean Cloud Firewall is assigned.
 - Therefore DigitalOcean Cloud Firewall cannot explain why the previous UDP/8443 arrival probe saw no packets on the Droplet eth0 interface.
 - With the Droplet-local Hysteria service/listener healthy and no provider firewall attached, the remaining primary boundary is before the Droplet: Windows/Mihomo egress, local WLAN/router/NAT, ISP/upstream UDP handling, or other provider-path filtering not represented by a Droplet Cloud Firewall.
+
+
+## Windows UDP8443 egress probe — pktmon preflight return — 2026-10-02
+
+```text
+AUTHORIZED_GATE=G2B_Windows_UDP8443_Egress_Probe
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+ACCEPTED_SOURCE_IDENTITY=PASS
+CHECKPOINT_RETURN_STAGE=NETWORK_BASELINE_PREFLIGHT
+CHECKPOINT_RETURN_CODE=PKTMON_ACTIVE_OR_STATUS_UNCLEAR
+FINAL_WINDOWS_UDP_OBSERVER_CLEAN=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_TEST_RUNTIME_RESIDUE=ABSENT
+RUNNER_INVOKED=NO
+RUNNER_COMPLETED=NO
+WINDOWS_EGRESS_PROBE_INVOKED=NO
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+OWNER_WINDOWS_EGRESS_PROBE_RESULT=RETURN_TO_REVIEWER
+```
+
+Reviewer interpretation:
+- No HY2 handshake was sent; standing Owner authorization for the current Gate remains available.
+- Return occurred before any pktmon mutation because the checkpoint could not safely classify the localized/current `pktmon status` output as inactive.
+- Cleanup/read-back is clean. Next step is read-only capture of `pktmon status` and `pktmon filter list` text, then repair the preflight parser or select a language-independent state check.
