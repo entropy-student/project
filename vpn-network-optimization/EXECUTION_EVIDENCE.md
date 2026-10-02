@@ -1348,3 +1348,30 @@ Reviewer conclusion:
 - The previously proven local WFP block has therefore been removed successfully while WireGuard remains active.
 - Presence of WireGuard text in the target WFP dump is not itself a kill-switch failure; the decisive block filter is absent.
 - Next validation: raw UDP/8443 arrival at VPS, then HY2 handshake.
+
+
+## Raw UDP8443 path validation after WireGuard kill-switch repair — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+RAW_UDP_CONTROL_PREFLIGHT=PASS
+OWNER_TEMP_ROUTE_CREATED=YES
+RAW_UDP_OBSERVER_READY=YES
+RAW_UDP_WINDOWS_SEND_BYTES=28
+RAW_UDP_WINDOWS_SEND_CALL=PASS
+RAW_UDP_OBSERVER_EXIT=0
+RAW_UDP_OBSERVER_PAYLOAD_CAPTURED=NO
+RAW_UDP_8443_VPS_INBOUND_SEEN=YES
+RAW_UDP_PATH_CONTROL_COMPLETE=YES
+RAW_UDP_OBSERVER_STOPPED=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+CLEANUP_FAILURE_COUNT=0
+OWNER_RAW_UDP_CONTROL_RESULT=COMPLETE
+```
+
+Reviewer conclusion:
+- The direct WLAN path from Owner Windows to VPS public UDP/8443 is now proven working.
+- This is the exact path that failed before the WireGuard WFP kill-switch repair.
+- The root-cause chain is therefore closed: WireGuard's strict Windows kill-switch was the blocker; replacing IPv4 /0 with two /1 defaults removed that blocker while preserving WireGuard routing.
+- Next validation is the real HY2 handshake using the existing protected DPAPI Secret runtime boundary and one temporary Mihomo instance.
