@@ -165,6 +165,26 @@ try {
     $sshPath = (Get-Command ssh.exe -ErrorAction Stop).Source
     Write-Output 'NETWORK_BASELINE_PREFLIGHT=PASS'
 
+    $failureStage = 'CREATE_EXACT_TEMP_ROUTE'
+    $routeArgs = @{
+        AddressFamily = 'IPv4'
+        DestinationPrefix = $routePrefix
+        InterfaceIndex = $wlanIndex
+        NextHop = $wlanGateway
+        RouteMetric = 1
+        PolicyStore = 'ActiveStore'
+        ErrorAction = 'Stop'
+    }
+    New-NetRoute @routeArgs | Out-Null
+
+    $createdRoutes = Get-ExactOwnerRoute
+    Assert-Checkpoint ($createdRoutes.Count -eq 1) 'OWNER_ROUTE_CREATE_CARDINALITY_INVALID'
+    Assert-Checkpoint (
+        [int]$createdRoutes[0].InterfaceIndex -eq $wlanIndex -and
+        [string]$createdRoutes[0].NextHop -eq $wlanGateway
+    ) 'OWNER_ROUTE_CREATE_READBACK_INVALID'
+    Write-Output 'OWNER_TEMP_ROUTE_CREATED=YES'
+
     $failureStage = 'START_UDP_OBSERVER'
     $remoteObserver = @'
 set -eu
@@ -188,9 +208,9 @@ cleanup() {
 }
 trap cleanup HUP INT TERM EXIT
 
-timeout 20 tcpdump -n -q -i eth0 -c 1 'udp dst port 8443' >/dev/null 2>&1 &
+timeout 30 tcpdump -n -q -i eth0 -c 1 'udp dst port 8443' >/dev/null 2>&1 &
 inpid=$!
-timeout 20 tcpdump -n -q -i eth0 -c 1 'udp src port 8443' >/dev/null 2>&1 &
+timeout 30 tcpdump -n -q -i eth0 -c 1 'udp src port 8443' >/dev/null 2>&1 &
 outpid=$!
 
 echo "UDP_OBSERVER_READY=YES"
@@ -270,26 +290,6 @@ exit 0
     Assert-Checkpoint ($readyLine -eq 'UDP_OBSERVER_READY=YES') 'UDP_OBSERVER_NOT_READY'
     Write-Output 'UDP_OBSERVER_READY=YES'
 
-    $failureStage = 'CREATE_EXACT_TEMP_ROUTE'
-    $routeArgs = @{
-        AddressFamily = 'IPv4'
-        DestinationPrefix = $routePrefix
-        InterfaceIndex = $wlanIndex
-        NextHop = $wlanGateway
-        RouteMetric = 1
-        PolicyStore = 'ActiveStore'
-        ErrorAction = 'Stop'
-    }
-    New-NetRoute @routeArgs | Out-Null
-
-    $createdRoutes = Get-ExactOwnerRoute
-    Assert-Checkpoint ($createdRoutes.Count -eq 1) 'OWNER_ROUTE_CREATE_CARDINALITY_INVALID'
-    Assert-Checkpoint (
-        [int]$createdRoutes[0].InterfaceIndex -eq $wlanIndex -and
-        [string]$createdRoutes[0].NextHop -eq $wlanGateway
-    ) 'OWNER_ROUTE_CREATE_READBACK_INVALID'
-    Write-Output 'OWNER_TEMP_ROUTE_CREATED=YES'
-
     $failureStage = 'FORMAL_RUNNER_INVOCATION'
     Set-Content -LiteralPath $markerPath -Value "$stamp|$acceptedCommit" -NoNewline -Encoding ascii
     $runnerInvoked = $true
@@ -306,7 +306,7 @@ exit 0
 
     $failureStage = 'COLLECT_UDP_OBSERVER'
     if ($null -eq $observerProcess) { throw 'UDP_OBSERVER_PROCESS_MISSING' }
-    if (-not $observerProcess.WaitForExit(30000)) {
+    if (-not $observerProcess.WaitForExit(45000)) {
         try { $observerProcess.Kill($true) } catch { }
         throw 'UDP_OBSERVER_TIMEOUT'
     }
