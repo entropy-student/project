@@ -741,3 +741,13 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - Final production readback passed: exact temporary route absent; WireGuard active; system proxy disabled; no TUN/Mihomo/runtime config/test listener; expected public exit present.
 - The one repaired full-run authorization remains unconsumed.
 - Reviewer classifies this as wrapper source-discovery overconstraint, not project/network drift. The next wrapper must not depend on a named remote. It should use the actual local Git object database directly: prove the accepted commit object exists, create a detached temporary worktree at that exact commit, then execute once.
+
+
+### Owner atomic retry wrapper — VPS_ROUTE_SELECTION_INVALID
+
+- Owner wrapper passed real-host privilege, Git context, accepted detached-worktree source identity, and client-config identity.
+- It returned read-only during network baseline with `VPS_ROUTE_SELECTION_INVALID` before temporary route creation and before runner invocation.
+- `RUNNER_INVOKED=False`; no benchmark, Secret, Mihomo, or network mutation began. Temporary worktree cleanup passed.
+- Final readback also hit the same route-selection validator, so that validator is now the single bounded fault domain. No target/network drift is inferred from the validator failure alone.
+- The repaired full-run authorization remains unconsumed.
+- Next action is a read-only diagnostic of the actual `Find-NetRoute -RemoteIPAddress 24.199.118.137` returned object shapes/cardinality on the real Windows host; no further wrapper retry until that diagnostic is reconciled.
