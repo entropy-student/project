@@ -121,16 +121,18 @@ function Get-PrecheckPropertyValue {
     param(
         [Parameter(Mandatory = $true)][object]$InputObject,
         [Parameter(Mandatory = $true)][string]$PropertyName,
-        [Parameter(Mandatory = $true)][string]$ShapeSubcheck
+        [Parameter(Mandatory = $true)][string]$ShapeSubcheck,
+        [string]$ExtractionSubcheck = 'PROPERTY_EXTRACTION_FAILED',
+        [switch]$RequiredValue
     )
 
     try {
         $propertyNames = @($InputObject.PSObject.Properties.Name)
     }
     catch {
-        $script:failureSubcheck = 'PROPERTY_EXTRACTION_FAILED'
+        $script:failureSubcheck = $ExtractionSubcheck
         $script:failureType = $_.Exception.GetType().Name
-        throw 'PRECHECK_PROPERTY_EXTRACTION_FAILED'
+        throw "PRECHECK_$ExtractionSubcheck"
     }
     if ($propertyNames -notcontains $PropertyName) {
         $script:failureSubcheck = $ShapeSubcheck
@@ -139,13 +141,70 @@ function Get-PrecheckPropertyValue {
     }
 
     try {
-        return $InputObject.$PropertyName
+        $value = $InputObject.$PropertyName
     }
     catch {
-        $script:failureSubcheck = 'PROPERTY_EXTRACTION_FAILED'
+        $script:failureSubcheck = $ExtractionSubcheck
         $script:failureType = $_.Exception.GetType().Name
-        throw 'PRECHECK_PROPERTY_EXTRACTION_FAILED'
+        throw "PRECHECK_$ExtractionSubcheck"
     }
+    if ($RequiredValue -and $null -eq $value) {
+        $script:failureSubcheck = $ShapeSubcheck
+        $script:failureType = 'CimObjectShapeInvalid'
+        throw 'CIM_OBJECT_SHAPE_INVALID'
+    }
+    return $value
+}
+
+function Get-OptionalSnapshotString {
+    param(
+        [Parameter(Mandatory = $true)][object]$InputObject,
+        [Parameter(Mandatory = $true)][string]$PropertyName
+    )
+
+    try {
+        $propertyNames = @($InputObject.PSObject.Properties.Name)
+    }
+    catch {
+        $script:failureSubcheck = 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED'
+        $script:failureType = $_.Exception.GetType().Name
+        throw 'PRECHECK_CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED'
+    }
+    if ($propertyNames -notcontains $PropertyName) { return '' }
+
+    $previousError = if ($Error.Count -gt 0) { $Error[0] } else { $null }
+    try {
+        $value = $InputObject.$PropertyName
+        $stringValue = if ($null -eq $value) { '' } else { [string]$value }
+    }
+    catch {
+        $script:failureSubcheck = 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED'
+        $script:failureType = $_.Exception.GetType().Name
+        throw 'PRECHECK_CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED'
+    }
+    if ($Error.Count -gt 0 -and
+        -not [object]::ReferenceEquals($Error[0], $previousError)) {
+        $script:failureSubcheck = 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED'
+        $script:failureType = $Error[0].Exception.GetType().Name
+        throw 'PRECHECK_CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED'
+    }
+    return $stringValue
+}
+
+function Get-ClientSnapshotSingleResult {
+    param(
+        [Parameter(Mandatory = $true)][string]$QuerySubcheck,
+        [Parameter(Mandatory = $true)][string]$ShapeSubcheck,
+        [Parameter(Mandatory = $true)][string]$CardinalityCode,
+        [Parameter(Mandatory = $true)][scriptblock]$Query,
+        [string[]]$EmptyResultErrorIds = @()
+    )
+
+    $items = Invoke-PrecheckQuery -Subcheck $QuerySubcheck `
+        -EmptyResultErrorIds $EmptyResultErrorIds -Query $Query
+    Assert-PrecheckCondition -Condition ($items.Count -eq 1) `
+        -Subcheck $ShapeSubcheck -Code $CardinalityCode
+    return $items[0]
 }
 
 function Assert-OwnerOnlyAclRules {
@@ -388,7 +447,17 @@ function Get-ClientSettings {
 
 function Get-RouteRows {
     param([switch]$ExcludeOwnerTemporaryRoute)
-    $routes = @(Get-NetRoute -AddressFamily IPv4 -PolicyStore ActiveStore -ErrorAction Stop)
+    $routes = Invoke-PrecheckQuery -Subcheck 'CLIENT_SNAPSHOT_ROUTE_QUERY_FAILED' -Query {
+        Get-NetRoute -AddressFamily IPv4 -PolicyStore ActiveStore -ErrorAction Stop
+    }
+    $routeFields = @('DestinationPrefix', 'NextHop', 'InterfaceIndex', 'RouteMetric', 'State', 'Store')
+    foreach ($route in $routes) {
+        foreach ($propertyName in $routeFields) {
+            [void](Get-PrecheckPropertyValue -InputObject $route -PropertyName $propertyName `
+                -ShapeSubcheck 'CIM_OBJECT_SHAPE_INVALID' `
+                -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue)
+        }
+    }
     if ($ExcludeOwnerTemporaryRoute) {
         $routes = @($routes | Where-Object { $_.DestinationPrefix -ne $script:routePrefix })
     }
@@ -406,30 +475,86 @@ function Get-WinHttpProxyState {
 }
 
 function Get-ClientSnapshot {
-    $manager = Get-Service -Name 'WireGuardManager' -ErrorAction Stop
-    $tunnel = Get-Service -Name 'WireGuardTunnel$SFO2-A' -ErrorAction Stop
-    $clashService = Get-Service -Name 'clash_verge_service' -ErrorAction Stop
-    $wgAdapter = Get-NetAdapter -Name 'SFO2-A' -ErrorAction Stop
-    $internet = Get-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings' -ErrorAction Stop
-    $tun = @(Get-NetAdapter -IncludeHidden -ErrorAction Stop |
-        Where-Object { $_.Name -match 'Clash|Mihomo|Meta' -or $_.InterfaceDescription -match 'Clash|Mihomo|Meta' } |
-        Sort-Object Name |
-        ForEach-Object { "$($_.Name)|$($_.InterfaceDescription)|$($_.InterfaceIndex)|$($_.Status)" })
+    $manager = Get-ClientSnapshotSingleResult -QuerySubcheck 'WG_SERVICE_QUERY_FAILED' `
+        -ShapeSubcheck 'WG_SERVICE_STATE_INVALID' -CardinalityCode 'WIREGUARD_MANAGER_CARDINALITY_INVALID' -Query {
+            Get-Service -Name 'WireGuardManager' -ErrorAction Stop
+        }
+    $tunnel = Get-ClientSnapshotSingleResult -QuerySubcheck 'WG_SERVICE_QUERY_FAILED' `
+        -ShapeSubcheck 'WG_SERVICE_STATE_INVALID' -CardinalityCode 'WIREGUARD_TUNNEL_SERVICE_CARDINALITY_INVALID' -Query {
+            Get-Service -Name 'WireGuardTunnel$SFO2-A' -ErrorAction Stop
+        }
+    $clashService = Get-ClientSnapshotSingleResult -QuerySubcheck 'CLASH_SERVICE_QUERY_FAILED' `
+        -ShapeSubcheck 'CLASH_SERVICE_STATE_INVALID' -CardinalityCode 'CLASH_SERVICE_CARDINALITY_INVALID' -Query {
+            Get-Service -Name 'clash_verge_service' -ErrorAction Stop
+        }
+    $wgAdapter = Get-ClientSnapshotSingleResult -QuerySubcheck 'WG_ADAPTER_QUERY_FAILED' `
+        -ShapeSubcheck 'WG_ADAPTER_STATE_INVALID' -CardinalityCode 'WG_ADAPTER_CARDINALITY_INVALID' -Query {
+            Get-NetAdapter -Name 'SFO2-A' -ErrorAction Stop
+        }
+    $internet = Get-ClientSnapshotSingleResult -QuerySubcheck 'INTERNET_SETTINGS_QUERY_FAILED' `
+        -ShapeSubcheck 'INTERNET_SETTINGS_SHAPE_INVALID' -CardinalityCode 'INTERNET_SETTINGS_CARDINALITY_INVALID' -Query {
+            Get-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings' -ErrorAction Stop
+        }
+
+    $managerStatus = Get-PrecheckPropertyValue -InputObject $manager -PropertyName 'Status' `
+        -ShapeSubcheck 'WG_SERVICE_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue
+    $tunnelStatus = Get-PrecheckPropertyValue -InputObject $tunnel -PropertyName 'Status' `
+        -ShapeSubcheck 'WG_SERVICE_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue
+    $clashStatus = Get-PrecheckPropertyValue -InputObject $clashService -PropertyName 'Status' `
+        -ShapeSubcheck 'CLASH_SERVICE_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue
+    $wgStatus = Get-PrecheckPropertyValue -InputObject $wgAdapter -PropertyName 'Status' `
+        -ShapeSubcheck 'WG_ADAPTER_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue
+    $wgIfIndex = Get-PrecheckPropertyValue -InputObject $wgAdapter -PropertyName 'InterfaceIndex' `
+        -ShapeSubcheck 'WG_ADAPTER_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue
+    $proxyEnableValue = Get-PrecheckPropertyValue -InputObject $internet -PropertyName 'ProxyEnable' `
+        -ShapeSubcheck 'INTERNET_SETTINGS_SHAPE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue
+    try { $proxyEnable = [int]$proxyEnableValue }
+    catch {
+        $script:failureSubcheck = 'INTERNET_SETTINGS_SHAPE_INVALID'
+        $script:failureType = $_.Exception.GetType().Name
+        throw 'INTERNET_SETTINGS_PROXYENABLE_INVALID'
+    }
+    $proxyServer = Get-OptionalSnapshotString -InputObject $internet -PropertyName 'ProxyServer'
+    $proxyOverride = Get-OptionalSnapshotString -InputObject $internet -PropertyName 'ProxyOverride'
+    $autoConfigUrl = Get-OptionalSnapshotString -InputObject $internet -PropertyName 'AutoConfigURL'
+
+    $tunAdapters = Invoke-PrecheckQuery -Subcheck 'CLIENT_SNAPSHOT_TUN_QUERY_FAILED' -Query {
+        Get-NetAdapter -IncludeHidden -ErrorAction Stop
+    }
+    try {
+        $tun = @($tunAdapters |
+            Where-Object { $_.Name -match 'Clash|Mihomo|Meta' -or $_.InterfaceDescription -match 'Clash|Mihomo|Meta' } |
+            Sort-Object Name |
+            ForEach-Object { "$($_.Name)|$($_.InterfaceDescription)|$($_.InterfaceIndex)|$($_.Status)" })
+    }
+    catch {
+        $script:failureSubcheck = 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED'
+        $script:failureType = $_.Exception.GetType().Name
+        throw 'PRECHECK_CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED'
+    }
     $cores = @(Get-Process -Name 'mihomo', 'verge-mihomo', 'verge-mihomo-alpha' -ErrorAction SilentlyContinue |
         Sort-Object ProcessName, Id |
         ForEach-Object { "$($_.ProcessName)|$($_.Id)" })
+    $winHttp = try {
+        Get-WinHttpProxyState
+    }
+    catch {
+        $script:failureSubcheck = 'WINHTTP_READBACK_FAILED'
+        $script:failureType = $_.Exception.GetType().Name
+        throw 'PRECHECK_WINHTTP_READBACK_FAILED'
+    }
     return [pscustomobject]@{
         RoutesWithoutOwnerRoute = (Get-RouteRows -ExcludeOwnerTemporaryRoute) -join ';'
-        WireGuardManager = $manager.Status.ToString()
-        WireGuardTunnel = $tunnel.Status.ToString()
-        WireGuardAdapter = "$($wgAdapter.Status)|$($wgAdapter.InterfaceIndex)"
-        WireGuardIfIndex = [int]$wgAdapter.InterfaceIndex
-        ClashService = $clashService.Status.ToString()
-        ProxyEnable = [int]$internet.ProxyEnable
-        ProxyServer = [string]$internet.ProxyServer
-        ProxyOverride = [string]$internet.ProxyOverride
-        AutoConfigURL = [string]$internet.AutoConfigURL
-        WinHttp = $(Get-WinHttpProxyState)
+        WireGuardManager = $managerStatus.ToString()
+        WireGuardTunnel = $tunnelStatus.ToString()
+        WireGuardAdapter = "$wgStatus|$wgIfIndex"
+        WireGuardIfIndex = [int]$wgIfIndex
+        ClashService = $clashStatus.ToString()
+        ProxyEnable = $proxyEnable
+        ProxyServer = $proxyServer
+        ProxyOverride = $proxyOverride
+        AutoConfigURL = $autoConfigUrl
+        WinHttp = $winHttp
         TunAdapters = $tun -join ';'
         MihomoProcesses = $cores -join ';'
     }
@@ -1135,25 +1260,44 @@ public static class G2bTokenIntegrityNative {
     Assert-OwnerRouteAndWlan
 
     $phase = 'PRECHECK_WIREGUARD_AND_CLIENT_STATE'
-    $manager = Get-Service -Name 'WireGuardManager' -ErrorAction Stop
-    $tunnel = Get-Service -Name 'WireGuardTunnel$SFO2-A' -ErrorAction Stop
-    $wgAdapters = Invoke-PrecheckQuery -Subcheck 'WG_ADAPTER_QUERY_FAILED' `
+    $manager = Get-ClientSnapshotSingleResult -QuerySubcheck 'WG_SERVICE_QUERY_FAILED' `
+        -ShapeSubcheck 'WG_SERVICE_STATE_INVALID' -CardinalityCode 'WIREGUARD_MANAGER_CARDINALITY_INVALID' -Query {
+            Get-Service -Name 'WireGuardManager' -ErrorAction Stop
+        }
+    $tunnel = Get-ClientSnapshotSingleResult -QuerySubcheck 'WG_SERVICE_QUERY_FAILED' `
+        -ShapeSubcheck 'WG_SERVICE_STATE_INVALID' -CardinalityCode 'WIREGUARD_TUNNEL_SERVICE_CARDINALITY_INVALID' -Query {
+            Get-Service -Name 'WireGuardTunnel$SFO2-A' -ErrorAction Stop
+        }
+    $wgAdapter = Get-ClientSnapshotSingleResult -QuerySubcheck 'WG_ADAPTER_QUERY_FAILED' `
+        -ShapeSubcheck 'WG_ADAPTER_STATE_INVALID' -CardinalityCode 'WG_ADAPTER_CARDINALITY_INVALID' `
         -EmptyResultErrorIds @('CmdletizationQuery_NotFound_Name,Get-NetAdapter') -Query {
             Get-NetAdapter -Name 'SFO2-A' -ErrorAction Stop
         }
-    Assert-PrecheckCondition -Condition ($wgAdapters.Count -eq 1) `
-        -Subcheck 'WG_ADAPTER_STATE_INVALID' -Code 'WG_ADAPTER_CARDINALITY_INVALID'
-    $wgAdapter = $wgAdapters[0]
-    $wgName = [string](Get-PrecheckPropertyValue -InputObject $wgAdapter -PropertyName 'Name' -ShapeSubcheck 'WG_ADAPTER_STATE_INVALID')
-    $wgStatus = [string](Get-PrecheckPropertyValue -InputObject $wgAdapter -PropertyName 'Status' -ShapeSubcheck 'WG_ADAPTER_STATE_INVALID')
-    $wgIfIndex = [int](Get-PrecheckPropertyValue -InputObject $wgAdapter -PropertyName 'InterfaceIndex' -ShapeSubcheck 'WG_ADAPTER_STATE_INVALID')
-    Assert-Condition ($manager.Status -eq 'Running') 'WIREGUARD_MANAGER_NOT_RUNNING'
-    Assert-Condition ($tunnel.Status -eq 'Running') 'WIREGUARD_TUNNEL_SERVICE_NOT_RUNNING'
+    $wgName = [string](Get-PrecheckPropertyValue -InputObject $wgAdapter -PropertyName 'Name' `
+        -ShapeSubcheck 'WG_ADAPTER_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue)
+    $wgStatus = [string](Get-PrecheckPropertyValue -InputObject $wgAdapter -PropertyName 'Status' `
+        -ShapeSubcheck 'WG_ADAPTER_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue)
+    $wgIfIndex = [int](Get-PrecheckPropertyValue -InputObject $wgAdapter -PropertyName 'InterfaceIndex' `
+        -ShapeSubcheck 'WG_ADAPTER_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue)
+    $managerStatus = [string](Get-PrecheckPropertyValue -InputObject $manager -PropertyName 'Status' `
+        -ShapeSubcheck 'WG_SERVICE_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue)
+    $tunnelStatus = [string](Get-PrecheckPropertyValue -InputObject $tunnel -PropertyName 'Status' `
+        -ShapeSubcheck 'WG_SERVICE_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue)
+    Assert-PrecheckCondition -Condition ($managerStatus -eq 'Running') `
+        -Subcheck 'WG_SERVICE_STATE_INVALID' -Code 'WIREGUARD_MANAGER_NOT_RUNNING'
+    Assert-PrecheckCondition -Condition ($tunnelStatus -eq 'Running') `
+        -Subcheck 'WG_SERVICE_STATE_INVALID' -Code 'WIREGUARD_TUNNEL_SERVICE_NOT_RUNNING'
     Assert-PrecheckCondition -Condition (
         $wgName -eq 'SFO2-A' -and $wgStatus -eq 'Up' -and $wgIfIndex -eq 13
     ) -Subcheck 'WG_ADAPTER_STATE_INVALID' -Code 'WIREGUARD_ADAPTER_NOT_UP'
-    $clashService = Get-Service -Name 'clash_verge_service' -ErrorAction Stop
-    Assert-Condition ($clashService.Status -eq 'Running') 'CLASH_VERGE_SERVICE_NOT_RUNNING'
+    $clashService = Get-ClientSnapshotSingleResult -QuerySubcheck 'CLASH_SERVICE_QUERY_FAILED' `
+        -ShapeSubcheck 'CLASH_SERVICE_STATE_INVALID' -CardinalityCode 'CLASH_SERVICE_CARDINALITY_INVALID' -Query {
+            Get-Service -Name 'clash_verge_service' -ErrorAction Stop
+        }
+    $clashStatus = [string](Get-PrecheckPropertyValue -InputObject $clashService -PropertyName 'Status' `
+        -ShapeSubcheck 'CLASH_SERVICE_STATE_INVALID' -ExtractionSubcheck 'CLIENT_SNAPSHOT_PROPERTY_EXTRACTION_FAILED' -RequiredValue)
+    Assert-PrecheckCondition -Condition ($clashStatus -eq 'Running') `
+        -Subcheck 'CLASH_SERVICE_STATE_INVALID' -Code 'CLASH_VERGE_SERVICE_NOT_RUNNING'
     $script:baselineSnapshot = Get-ClientSnapshot
 
     $phase = 'PRECHECK_PUBLIC_EXIT_AND_CONFIG_METADATA'

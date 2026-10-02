@@ -2,16 +2,16 @@
 
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
-## Current execution status — G2-B bounded precheck/source-persistence Gate
+## Current execution status — G2-B ClientSnapshot optional-property repair
 
-- Current Gate: `G2B_RouteAdapter_Precheck_Diagnostic_And_Source_Persistence`.
-- Formal G2-B samples remain WG `0` / HY2 `0`; no G2-B HY2 handshake or performance conclusion exists.
-- Owner-reported elevated PowerShell 7.6.6 run failed closed in `PRECHECK_ROUTE_AND_ADAPTERS` with `CimJobException`; Owner-reported direct route/adapter reads were healthy. Those Owner facts are not represented as Executor direct read-back.
-- A read-only direct Codex-runtime diagnostic reproduced the `CimJobException` at the runner's exact-filter `Get-NetRoute -PolicyStore PersistentStore -DestinationPrefix ...` query when no matching route exists. The provider reports `CmdletizationQuery_NotFound` / `ObjectNotFound` instead of an empty result.
-- The runner now normalizes only that exact no-match result, scalarizes route/adapter/IP data after explicit cardinality checks, reports branch-specific failures, and supports `-PreflightOnly` on the same production precheck path.
-- Static parsing and direct read-only execution of the extracted production route/WLAN helper passed in the current Medium-integrity Codex runtime. Owner High-integrity `-PreflightOnly` has not been run and remains the next owner-side validation.
-- No DPAPI artifact was read/unprotected; no Mihomo process, HY2 request, benchmark, route change, or network mutation occurred.
-- `REVIEWER_HANDOFF.md` was not modified. This bounded source Gate stops before the full G2-B benchmark; formal acceptance remains with Reviewer.
+- Current Gate: `G2B_ClientSnapshot_Optional_Property_Repair`.
+- Formal G2-B samples remain WG `0` / HY2 `0`; no G2-B handshake or performance conclusion exists.
+- The Owner-reported bounded diagnostic proved `AutoConfigURL` is absent from the current Internet Settings object; the prior direct property access under `Set-StrictMode -Version Latest` caused `PropertyNotFoundException`. This host diagnostic is Owner-reported, not Executor direct read-back.
+- `Get-ClientSnapshot` now treats only `ProxyServer`, `ProxyOverride`, and `AutoConfigURL` as optional strings (missing/null → empty string); `ProxyEnable` and required service/WireGuard/route fields still fail closed.
+- Snapshot query, shape, property extraction, route read, and WinHTTP failures now retain branch-specific non-secret diagnostics.
+- PowerShell AST and non-secret in-memory fixtures passed, including absent optional fields, missing required fields, and a throwing property getter. Benchmark, DPAPI, Mihomo, PreflightOnly, and finally/route-cleanup code were verified unchanged.
+- Owner `-PreflightOnly` and the full runner were not executed. No DPAPI artifact was read, no Mihomo/HY2/benchmark started, and no network state changed.
+- `REVIEWER_HANDOFF.md` was not modified. Stop before Owner execution; Reviewer should fresh-read the committed candidate and issue any next checkpoint.
 
 ## G1 historical executor status (preserved)
 
