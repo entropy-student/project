@@ -66,7 +66,7 @@ Accepted source:
 
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
-STATE=AUTHORIZED_POST_KILLSWITCH_HY2_HANDSHAKE_API_FETCH
+STATE=AUTHORIZED_POST_KILLSWITCH_COMPARATIVE_VALIDATION
 OBJECTIVE=Confirm whether the proven local WFP outbound drop is WireGuard Windows kill-switch enforcement caused by the production full-tunnel /0 configuration.
 MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -150,17 +150,18 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Current post-killswitch HY2 handshake checkpoint:
-- `scripts/g2b-hy2-handshake-after-killswitch-repair.ps1`
-- commit: `3a6e63da29be4a0bc1a96a3aa815bbf61dbf53ef`
-- blob: `a305de734e01908f449f574125fd2b0e8e8ca90e`
-- outer checkpoint should be downloaded via GitHub Contents API, not raw.githubusercontent.com;
-- its internal pinned runner/config fetches also use GitHub Contents API;
-- accepted runner/config commit and blob SHA checks are unchanged;
-- formal runner invocation remains exactly once with `-HandshakeOnly`;
-- DPAPI Secret runtime boundary, exact temporary /32 WLAN route, cleanup, and final WireGuard restoration are unchanged.
+Current post-killswitch comparative checkpoint:
+- `scripts/g2b-comparative-after-killswitch-repair.ps1`
+- commit: `6fa3587eb2ccf303a0612d3d260b66207162fa56`
+- blob: `c4ca11dbf8c55896cb45159199b1888296465fd5`
+- outer checkpoint and internal runner/config fetches use GitHub Contents API; no raw.githubusercontent.com dependency;
+- exact accepted runner/config blob SHA verification remains unchanged;
+- formal runner invocation occurs exactly once without `-HandshakeOnly`;
+- runner performs 60 WireGuard samples and 60 HY2 samples at 5-second spacing;
+- HY2 still uses the exact temporary `/32` WLAN route and existing protected DPAPI Secret runtime boundary;
+- cleanup removes temporary route/Mihomo/runtime secret material and verifies production WireGuard restoration.
 
-Standing Owner authorization remains valid for this Gate. Do not broaden beyond post-killswitch handshake validation.
+Standing Owner authorization remains valid for this Gate. This is the final comparative validation after root-cause repair; do not reopen Windows/WFP diagnostics unless this run produces new contradictory evidence.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
