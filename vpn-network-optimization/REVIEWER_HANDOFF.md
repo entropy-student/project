@@ -66,7 +66,7 @@ Accepted source:
 
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
-STATE=AUTHORIZED_KILLSWITCH_REPAIR_PENDING_OWNER_APPLY
+STATE=AUTHORIZED_POST_KILLSWITCH_HY2_HANDSHAKE
 OBJECTIVE=Confirm whether the proven local WFP outbound drop is WireGuard Windows kill-switch enforcement caused by the production full-tunnel /0 configuration.
 MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -139,6 +139,14 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 - 当前问题：需要在 WireGuard 的 `SFO2-A` 配置中将 IPv4 `/0` 改为两个 `/1`，保存并重载隧道。
 - 下一步：Owner 完成一次配置编辑与隧道重载后，重新运行现有只读 kill-switch 检查；预期 `/0=NO`、两个 `/1=YES`、WFP block=NO。
 - 你需要做什么：仅执行该本机配置变更与重载；当前 Gate 持续授权有效。
+
+### REVIEWER_TO_OWNER
+
+- 本轮结果：WireGuard kill-switch 修复后，原始 UDP/8443 已从 Windows 经 WLAN 成功到达 VPS，根因与修复闭环成立。
+- 当前状态：进入真实 HY2 握手验证，不再排查 Windows/WFP。
+- 当前问题：尚未确认 Mihomo/HY2 在解除本机阻断后能完成 TLS/认证握手。
+- 下一步：运行新的 post-killswitch handshake checkpoint；仍使用既有 DPAPI Secret 运行时边界、一次临时 Mihomo、一次握手、自动清理。
+- 你需要做什么：运行 Reviewer 给出的单条 PowerShell 命令并回传完整输出；当前 Gate 授权持续有效。
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
