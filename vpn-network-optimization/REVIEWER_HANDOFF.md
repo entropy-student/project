@@ -509,3 +509,17 @@ G2B_RUNNER_STATIC_REVIEW=PASS
 ```
 
 Do not execute G2-B until canonical-path realization receives Owner-host fresh read-back PASS.
+
+### Canonical-path realization integrity precheck — owner High confirmed
+
+Owner fresh read-back from the same PowerShell 7.6.6 window used to execute `realize-owner-dpapi-path.ps1`:
+
+```text
+WindowsPrincipal.IsInRole(Administrator)=True
+Mandatory Label\High Mandatory Level
+INTEGRITY_SID=S-1-16-12288
+```
+
+Therefore the runner failure `HIGH_INTEGRITY_TOKEN_REQUIRED` is a false negative in the runner's integrity precheck, not a lack of elevation. The script stopped before creating either pending or target artifact (`PENDING_EXISTS=NO`, `TARGET_EXISTS=NO`).
+
+Next action: fix only the integrity-level detection in `realize-owner-dpapi-path.ps1` using the same accepted token-integrity method already used for the corrected G2-B runner; do not weaken other prechecks, do not execute the path runner during the fix, and do not start G2-B.
