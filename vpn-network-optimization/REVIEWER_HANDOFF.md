@@ -66,7 +66,7 @@ Current known components:
 
 ```text
 GATE_ID=G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1
-STATE=RETURN_DIAGNOSTIC_PROPOSED_NOT_AUTHORIZED
+STATE=AUTHORIZED_EXECUTION
 PREVIOUS_RESULT=RETURN_G2C_PRIVATE_REALITY_HANDSHAKE_CURL_EXIT_35
 OBJECTIVE=Identify the exact REALITY/TLS handshake fault domain without changing protocol architecture or exposing public TCP/443.
 MAX_ENDPOINT_THIS_ROUND=One private 10.66.21.1:14443 diagnostic setup + one proxied HTTPS request with sanitized client/server error classification + exact cleanup + Reviewer stop.
@@ -152,11 +152,21 @@ This diagnostic Gate does not PASS protocol compatibility. It PASSes as a diagno
 
 ### OWNER_ONLY_ACTIONS
 
-**NOT YET AUTHORIZED.** The prior one-request authorization was consumed by the completed failed canary. One additional private diagnostic request requires fresh Owner authorization. Public TCP/443 remains unauthorized.
+**AUTHORIZED by Owner on 2026-10-03 for G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1.**
+
+Authorization covers exactly:
+- one private diagnostic setup on `10.66.21.1:14443`;
+- one Windows->private-listener TCP reachability check;
+- one VPS->`www.microsoft.com:443` bounded TLS reachability check;
+- one proxied OpenAI HTTPS request through the unchanged VLESS+REALITY+Vision parameters;
+- protected capture/classification of curl/Mihomo/sing-box error streams;
+- exact cleanup/read-back and Evidence persistence.
+
+It does **not** authorize public TCP/443 exposure, persistent service installation, benchmark/performance testing, protocol-parameter changes, or expansion to another protocol/core.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-After Owner authorization, start only from:
+Owner authorization is now active. Start only from:
 - this Gate;
 - the accepted execution section for commit `450a3d18ed5575cf5b0e27edd3c4949262b87cd6`;
 - `scripts/g2c-private-reality-canary.ps1`;
@@ -245,19 +255,19 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Await Owner authorization for **G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1**. The next round must diagnose the existing configuration before trying parameter changes.
+Executor proceeds with **G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1** using the current Gate. Keep the exact previous protocol parameters unchanged, add only sanitized diagnostic instrumentation, run one private diagnostic request, clean up, persist Evidence + Executor Handoff, then STOP for Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-Authorize one additional **private** diagnostic request on `10.66.21.1:14443`. This does not authorize public TCP/443 or persistent deployment.
+**NONE.** Owner has authorized this diagnostic round. No Administrator PowerShell is required unless a specific required operation independently proves it needs elevation. Public TCP/443 remains unauthorized.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No active Executor run until Owner authorizes the diagnostic Gate above.
+Use the authorized relay in `CURRENT_GATE`. Do not modify protocol parameters, do not benchmark, and do not expand scope.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Use the fixed diagnostic packet in `CURRENT_GATE` after authorization.
+Use the fixed packet in `CURRENT_GATE`, including the 15–30 minute estimate and actual timing fields.
 
 ## EVIDENCE_POINTERS
 
