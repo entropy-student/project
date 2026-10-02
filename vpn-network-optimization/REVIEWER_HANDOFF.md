@@ -180,7 +180,7 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## UNRESOLVED
 
-- HY2 real client handshake/proxy path after the validator repair is not yet proven.
+- HY2 local proxy usage after the validator repair is proven (`proxy_used=1`); HY2 handshake/auth success is not proven.
 - HY2 formal G2-B sample count is 0.
 - WireGuard vs Hysteria2 performance/reliability conclusion remains UNKNOWN.
 - MVP v1 protocol/config seal remains pending G2-B completion.
@@ -201,6 +201,8 @@ Diagnose only the HY2 handshake/auth failure. First preserve and inspect non-sec
 - Commit `9b730b81e751099fae7c4c3c61e8a5a5a755877d` — HY2 handshake validator return recorded.
 - Commit `ed4f8216ecd18dcea29f06f12fa0773c97c3cdf4` — proxy-use validator repair.
 - Commit `3c381726f38950579bceb0f258ba46cc83c68328` — diagnostic/repair evidence record.
-- Commit `165fc79b906dd6de858fdb6c3521e95f7b749136` — Reviewer acceptance and current Gate transition.
+- Commit `165fc79b906dd6de858fdb6c3521e95f7b749136` — proxy-use repair acceptance.
+- Commit `e9cb20b9acfc3ffae30b27fe7d1cfd5b46181478` — latest Owner G2-B return persisted to Evidence.
+- Commit `e683604b5c8e1e4a49af472d2b3e21cfeba6383b` — current diagnostic Gate narrowed to handshake/auth only.
 
 Historical Reviewer narrative before this compact-dashboard takeover remains available in Git history. It is intentionally not duplicated here.
