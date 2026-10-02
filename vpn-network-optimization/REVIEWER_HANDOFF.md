@@ -52,7 +52,8 @@ Latest accepted G2-B facts:
 - The latest handshake-only probe proved `proxy_used=1` and failed with curl exit 35 / `TLS_ERROR`, HTTP `000`, `appconnect=0`; no target HTTPS TLS session was established.
 - Cleanup passed: Mihomo stopped, runtime Secret config deleted, plaintext Secret artifacts 0, temporary route removed, production WireGuard restored, final test residue absent.
 - Fresh server-side read-only diagnostics then proved Hysteria service active+enabled, ExecMainStatus 0, NRestarts 0, one Hysteria UDP 8443 listener, intact strict-SNI/password-auth config shape, matching certificate fingerprint/SAN, and no host UFW/nft/iptables rule explicitly blocking UDP 8443.
-- The remaining primary fault domain is client-to-server HY2/UDP initialization or a provider/network-path issue outside the VPS host firewall.
+- The UDP-arrival probe then proved `UDP_8443_INBOUND_SEEN=NO` and `OUTBOUND_SEEN=NO` while the local proxy attempted the HY2 connection. Therefore the failure occurs before Hysteria receives the packet.
+- Because WireGuard UDP/51820 to the same VPS is already the working production path, generic local UDP/WLAN failure is less likely than a port-specific filter. DigitalOcean Cloud Firewall is now the highest-priority unverified boundary because it is external to UFW/nft/iptables and was not covered by the prior host-firewall checks.
 - No HY2 benchmark sample or protocol-performance conclusion exists yet.
 
 Accepted source:
@@ -63,105 +64,69 @@ Accepted source:
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G2B_HY2_UDP_Arrival_Probe
-STATE=AUTHORIZED_UDP_ARRIVAL_PROBE_PENDING
-OBJECTIVE=Determine whether one HY2 handshake sends UDP/8443 packets to the VPS and whether the VPS emits UDP/8443 response traffic.
-MAX_ENDPOINT_THIS_ROUND=One server-side read-only packet-presence observer + one existing handshake-only client probe + exact cleanup/read-back, then mandatory Reviewer stop.
+GATE_ID=G2B_DigitalOcean_Cloud_Firewall_ReadOnly_Check
+STATE=OWNER_READ_ONLY_ACTION_PENDING
+OBJECTIVE=Determine whether a DigitalOcean Cloud Firewall is attached to the target Droplet and whether inbound UDP/8443 is permitted.
+MAX_ENDPOINT_THIS_ROUND=Read-only provider control-plane inspection only; no firewall change, no new handshake, no benchmark.
 MANDATORY_REVIEW_STOP=YES
 ```
 
 ### TARGET_AND_SCOPE
 
-After fresh Owner authorization, allow exactly:
-- keep production WireGuard **ON**; it remains the ChatGPT/SSH control path;
-- strict SSH to `10.66.21.1:22` using the accepted `HostKeyAlias=24.199.118.137`;
-- start temporary read-only packet-presence observers on VPS `eth0` for UDP destination/source port 8443; no payload dump and no persistent pcap;
-- locally create the same exact temporary `24.199.118.137/32` WLAN route;
-- read the protected DPAPI Secret only inside the existing handshake-only runtime boundary;
-- start one temporary Mihomo instance;
-- send exactly one HY2 handshake request;
-- retain only non-Secret packet-presence/count result plus existing handshake diagnostic fields;
-- mandatory cleanup and WireGuard restoration/read-back.
+Allowed:
+- inspect DigitalOcean Networking → Firewalls and the target Droplet's applied firewall rules;
+- record only non-Secret metadata: firewall attached YES/NO, inbound UDP/8443 allow YES/NO, UDP/51820 allow YES/NO, relevant source scope;
+- alternatively use an already-authenticated `doctl`/DigitalOcean API read-only listing if such authentication is already safely available.
 
 Forbidden:
-- no 60-sample benchmark;
-- no second handshake;
-- no packet payload/hex dump or persistent capture file;
-- no service restart/reload;
-- no firewall/cloud-firewall change;
-- no HY2/server/client configuration change;
-- no Secret value/hash/log output;
-- no MTU/BBR/fq/GRO/sysctl tuning.
+- no new DigitalOcean token creation or Secret disclosure;
+- no firewall rule modification yet;
+- no new HY2 handshake;
+- no benchmark;
+- no VPS/client config change.
 
 ### APPLICABLE_CRITICAL_CONSTRAINTS
 
-- Previous handshake authorization is consumed.
-- Production WireGuard must remain ON throughout.
-- The public VPS /32 data route is temporary and applies only to the HY2 data plane.
-- Server observer is read-only and temporary.
-- Client handshake authorization is consumed only if the actual one-shot handshake runner is invoked.
-- Any preflight failure before the handshake does not authorize improvisation or a second attempt.
+- The previous UDP-arrival + handshake authorization is consumed.
+- Production WireGuard remains ON and restored.
+- DigitalOcean Cloud Firewall is distinct from UFW/nft/iptables and can block traffic before it reaches the Droplet.
+- Provider control-plane state must be fresh-read before any firewall change is proposed.
 
 ### REQUIRED_EVIDENCE
 
-- server observer ready before client handshake;
-- `UDP_8443_INBOUND_SEEN=YES/NO`;
-- `UDP_8443_OUTBOUND_SEEN=YES/NO`;
-- one handshake only;
-- `proxy_used / curl exit / HTTP status / error`;
-- no benchmark;
-- observer terminated;
-- temporary route removed;
-- Mihomo/runtime config removed;
-- production WireGuard restored;
-- Secret values emitted/committed = 0.
+- `DO_CLOUD_FIREWALL_ATTACHED=YES/NO`;
+- `DO_UDP_8443_INBOUND_ALLOWED=YES/NO/NOT_APPLICABLE`;
+- `DO_UDP_51820_INBOUND_ALLOWED=YES/NO/NOT_APPLICABLE`;
+- source scope for any relevant rules;
+- no provider mutation.
 
 ### ACCEPTANCE_CRITERIA
 
 Diagnostic classification:
-- inbound **NO** → packet does not reach VPS: client/WLAN/provider/cloud-firewall path becomes primary fault domain;
-- inbound **YES**, outbound **NO** → VPS/Hysteria receive-side/runtime becomes primary fault domain;
-- inbound **YES**, outbound **YES** → bidirectional UDP reaches the host; client/Mihomo/HY2 TLS/auth handling becomes primary fault domain.
-
-This Gate does not itself PASS G2-B.
+- firewall attached + UDP/8443 not allowed → root cause candidate proven at provider firewall boundary; next Gate may propose the smallest inbound UDP/8443 allow rule;
+- firewall absent or UDP/8443 already allowed → DigitalOcean Cloud Firewall is cleared and next diagnosis moves to port-specific upstream/local egress behavior.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Current baseline is clean. After the one probe:
-- terminate server observers;
-- stop Mihomo;
-- delete runtime Secret config;
-- remove exact temporary route;
-- verify production WireGuard remains active and public exit restored.
+Read-only Gate; no rollback required.
 
 ### OWNER_ONLY_ACTIONS
 
-**Authorization status: GRANTED** for exactly one UDP-arrival + HY2-handshake probe. Keep WireGuard VPN on. Authorization is consumed only when the one-shot handshake runner is actually invoked.
+Perform one read-only DigitalOcean firewall inspection. No consequential authorization is required because no provider setting is changed.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Prepared one-shot checkpoint:
-- `scripts/g2b-hy2-udp-arrival-checkpoint.ps1`
-- commit: `3c28e2990fd9964a7f7ade5ef12a9970a1edc299`
-- blob: `2c8e498939a76c0baf9e4dd56b31e56103ccb73f`
-- keeps WireGuard on;
-- creates the exact temporary VPS /32 WLAN route;
-- starts strict-SSH UDP/8443 packet-presence observers with no payload output or pcap file;
-- invokes accepted `g2b-owner-runner.ps1 -HandshakeOnly` exactly once;
-- then stops the observer and performs the existing route/Mihomo/runtime/WireGuard cleanup/read-back.
-- if the observer is not ready, the handshake runner is not invoked and authorization is not consumed.
-
-Executor should read only this Current Gate and the prepared checkpoint. Do not reread full Governance or historical benchmark evidence. Do not alter configuration.
+Read only this Current Gate and current provider-firewall evidence. Do not load historical benchmark evidence or rerun network tests.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
 结果：PASS_CANDIDATE / RETURN_*
-UDP：inbound YES/NO；outbound YES/NO
-握手：proxy_used / curl exit / HTTP status / error
-验证：one handshake / no benchmark / observer stopped
-回滚：route / Mihomo / runtime / WireGuard
-Owner 转交：NONE / 最小必要动作
+Cloud Firewall：attached YES/NO
+UDP8443：allowed YES/NO/NA
+UDP51820：allowed YES/NO/NA
+来源范围：一句话
+变更：NONE
 ```
 
 ## CRITICAL_CONSTRAINTS
@@ -200,11 +165,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-After fresh Owner authorization, run one UDP-arrival + handshake probe. Keep WireGuard on. Use packet presence to determine whether the failure is before the VPS, on the VPS receive path, or after bidirectional UDP is established.
+Fresh-read the DigitalOcean Cloud Firewall attached to the target Droplet. This is the highest-priority unverified boundary because the UDP/8443 probe never reached `eth0` while the Droplet-local firewall and Hysteria listener are healthy.
 
 ## OWNER_ACTION_REQUIRED
 
-**Run the prepared one-shot UDP-arrival + HY2 handshake checkpoint when presented.** Keep the current WireGuard VPN connected.
+**Check the target Droplet's DigitalOcean Cloud Firewall rules read-only.** Keep WireGuard connected; do not change any rule yet.
 
 ## EVIDENCE_POINTERS
 
