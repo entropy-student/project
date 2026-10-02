@@ -66,7 +66,7 @@ Accepted source:
 
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
-STATE=WAIT_OWNER_AUTH
+STATE=AUTHORIZED_UNTIL_GATE_RESOLVED
 OBJECTIVE=Determine whether the one HY2 handshake emits UDP/8443 traffic from the Windows WLAN interface before the packet leaves the Owner host.
 MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -119,7 +119,19 @@ Current baseline is clean and restored. Diagnostic cleanup is mandatory.
 
 ### OWNER_ONLY_ACTIONS
 
-**Fresh Owner authorization required** for exactly one Windows UDP/8443 egress + HY2 handshake probe. Keep WireGuard connected.
+**Owner standing authorization: GRANTED for this Gate until the current UDP/8443 egress fault is resolved.**
+
+This standing authorization covers repeated bounded diagnostics and the smallest reversible repairs that stay inside `G2B_Windows_UDP8443_Egress_Probe`, including one-at-a-time HY2 handshake reproductions when diagnostically necessary.
+
+It does **not** authorize:
+- scope expansion into a different Gate/protocol/architecture;
+- destructive or materially irreversible changes;
+- purchases/provider billing changes;
+- Secret disclosure/rotation unless separately required by a new Gate;
+- disabling the production WireGuard control path;
+- broad firewall/security weakening.
+
+Reviewer should not ask Owner for repeated authorization for ordinary bounded troubleshooting inside this Gate.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
@@ -176,7 +188,7 @@ After fresh Owner authorization, run one Windows UDP/8443 egress + HY2 handshake
 
 ## OWNER_ACTION_REQUIRED
 
-**Authorize one Windows UDP/8443 egress + HY2 handshake probe** if you want to continue. Keep WireGuard connected.
+**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected and run the prepared checkpoint when presented.
 
 ## EVIDENCE_POINTERS
 
