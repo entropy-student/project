@@ -1061,3 +1061,40 @@ Reviewer interpretation:
 - Manual Owner read-back immediately before this run already proved pktmon inactive and filter list empty.
 - Repeated return is caused by localized/captured text decoding, not real pktmon activity.
 - Parser is replaced with language-independent output-structure checks while retaining fail-closed behavior.
+
+
+## Windows UDP8443 egress probe — pktmon counters result — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+PKTMON_PREFLIGHT=PASS
+NETWORK_BASELINE_PREFLIGHT=PASS
+OWNER_TEMP_ROUTE_CREATED=YES
+WINDOWS_UDP_OBSERVER_READY=YES
+FORMAL_WINDOWS_EGRESS_HANDSHAKE_INVOCATION=YES
+HANDSHAKE_ONLY_MODE=YES
+WG_BENCHMARK_SKIPPED=YES
+MIHOMO_TEST_PROXY_READY=YES
+HY2_HANDSHAKE_PROXY_USED=1
+HY2_HANDSHAKE_CURL_EXIT=35
+HY2_HANDSHAKE_HTTP_STATUS=000
+HY2_HANDSHAKE_ERROR=TLS_ERROR
+WINDOWS_UDP_8443_OUTBOUND_SEEN=NO
+WINDOWS_UDP_8443_INBOUND_SEEN=NO
+PKTMON_MAX_NIC_TX_PACKETS=0
+PKTMON_MAX_NIC_RX_PACKETS=0
+PKTMON_PAYLOAD_CAPTURED=NO
+WINDOWS_UDP_OBSERVER_STOPPED=YES
+FINAL_WINDOWS_UDP_OBSERVER_CLEAN=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_TEST_RUNTIME_RESIDUE=ABSENT
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+OWNER_WINDOWS_EGRESS_PROBE_RESULT=RETURN_TO_REVIEWER
+```
+
+Reviewer interpretation:
+- The exact Packet Monitor filter shape is valid for matching either source/destination IP and port.
+- However the checkpoint parsed localized human-readable `pktmon counters --type flow` text with a narrow regex. A zero result can therefore be a parser false-negative and is not accepted as proof that Windows emitted no UDP/8443.
+- Do not change Mihomo/HY2 based on this pktmon result alone.
+- Next diagnostic is a controlled raw UDP/8443 path probe: one small Windows UDP datagram with simultaneous VPS packet-presence observation. It does not use Mihomo or any Secret and stays within the standing-authorized current egress Gate.
