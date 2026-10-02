@@ -852,3 +852,23 @@ Reviewer interpretation boundary:
 - The target HTTPS TLS session never completed (`curl exit 35`, HTTP `000`, app-connect `0`).
 - This does not by itself identify whether the Hysteria outbound failed because of server reachability/UDP filtering, Hysteria TLS/pinning/SNI, Hysteria authentication, or another outbound initialization error; Mihomo was configured silent and its stderr was intentionally discarded.
 - No benchmark was replayed and cleanup is accepted as clean.
+
+
+## HY2 server read-only probe SSH trust return — 2026-10-02
+
+```text
+AUTHORIZED_GATE=G2B_HY2_Server_ReadOnly_State_Diagnostic
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+SSH_NATIVE_EXIT_CODE=255
+SERVER_READONLY_PROBE_RESULT=SSH_HOST_KEY_VERIFY_FAILED
+REMOTE_COMMAND_STARTED=NO
+REMOTE_STATE_READ=NO
+REMOTE_MUTATION=NO
+SECRET_READ=NO
+```
+
+Reviewer reconciliation:
+- This return does not prove host-key drift.
+- The new read-only probe connected to `10.66.21.1` without the already accepted control-path alias.
+- The previously validated recovery/control script uses `HostName=10.66.21.1` with `HostKeyAlias=24.199.118.137`, preserving strict checking against the existing trusted public-IP host key.
+- Repair is limited to restoring those accepted SSH options. No `known_hosts` write or auto-accept is authorized.
