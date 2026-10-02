@@ -459,3 +459,35 @@ The old helper incorrectly treated `ACE count != 1` as failure even where all ex
 Fixture runtime was PowerShell 7.6.5 / Medium token and is diagnostic only. Real canonical-path validation still requires the elevated Owner execution path.
 
 `g2b-owner-runner.ps1` independently retains a single-ACE-count validator and remains unfixed as of this evidence update.
+
+## Current DPAPI path-realization evidence (2026-10-02)
+
+The packaged-app virtualized recovery artifact has now passed content validation:
+
+```text
+VIRTUALIZED_SOURCE_VALIDATION=PASS
+DPAPI_UNPROTECT=PASS
+VPNHY2R1_PARSE=PASS
+TLS_KEY_CERT_MATCH=PASS
+TLS_SAN_MATCH=PASS
+TLS_FINGERPRINT_MATCH=PASS
+REAL_SECRET_ACCESSED_FROM_VPS=NO
+NETWORK_CHANGED=NO
+BENCHMARK_STARTED=NO
+```
+
+The independent ACL validator in `g2b-owner-runner.ps1` was also fixed to validate security semantics rather than a fixed ACE count and passed static review.
+
+A local-only canonical-path realization runner exists at `scripts/realize-owner-dpapi-path.ps1`. On first Owner execution it stopped in PRECHECK with `HIGH_INTEGRITY_TOKEN_REQUIRED` before creating pending or target files.
+
+Owner fresh read-back from the same PowerShell 7.6.6 window proved:
+
+```text
+ADMINISTRATOR=True
+INTEGRITY_SID=S-1-16-12288
+INTEGRITY_LEVEL=High
+PENDING_EXISTS=NO
+TARGET_EXISTS=NO
+```
+
+Therefore the path-realization failure is a false negative in the runner's integrity precheck, not a lack of elevation. Current next action is to fix only that precheck helper, then rerun canonical-path realization. G2-B benchmark remains not started.
