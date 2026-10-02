@@ -654,3 +654,24 @@ ROLLBACK_EFFECT=Revert only this Gate's runner and Executor record changes; pres
 EXECUTOR_RESULT=PASS_CANDIDATE_G2B_RUNNER_BINDING_AND_CLEANUP_NOMATCH_REPAIR
 STOP_AT_REVIEWER=YES
 ```
+
+
+## G2-B runtime ACL owner repair
+
+AUTHORIZED_GATE: G2B_Runtime_Acl_Owner_Repair
+PREFLIGHT_FACTS:
+- Owner full G2-B retry reached WG benchmark and completed 60/60 WireGuard samples.
+- The run then failed closed at CREATE_OWNER_ONLY_RUNTIME_CONFIG with OWNER_ACL_OWNER_MISMATCH.
+- Cleanup reported OWNER_TEMP_ROUTE_REMOVED=YES, PRODUCTION_WG_RESTORED=YES, plaintext Secret artifacts remaining 0, and no Mihomo start.
+- Source review found both New-OwnerOnlyDirectoryAcl and New-OwnerOnlyFileAcl created protected ACLs for the Owner SID but did not explicitly set the security descriptor owner before Set-Acl.
+
+ACTUAL_CHANGES:
+- Added SetOwner($script:ownerSid) to both owner-only ACL constructors before access-rule protection/rules are applied.
+- No network, Secret, runtime, benchmark, or Owner-host action was performed by this source repair.
+
+VALIDATION:
+- Patch is limited to explicit owner assignment in the two ACL constructors.
+- Existing allowlist, inheritance protection, FullControl rules, Assert-OwnerOnlyAcl, Secret handling, benchmark logic, and cleanup logic are unchanged.
+- A real-host non-secret ACL fixture remains required before the next consequential full retry.
+
+EXECUTOR_RESULT: PASS_CANDIDATE
