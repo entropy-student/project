@@ -1773,3 +1773,36 @@ Execution notes:
 - The final bounded invocation passed the read-only preflight, asset hash, sing-box config check, private listener boundary, Mihomo config check, and localhost proxy readiness. Its single proxied request ended with curl exit 35 before TLS app-connect. curl stderr remained suppressed; the exact TLS failure cause is therefore unknown and no compatibility success is claimed.
 - Across attempts, generated VLESS/REALITY material existed only in the authorized ephemeral process/runtime boundaries and was not emitted. Every attempted remote and local temporary artifact was removed and freshly verified absent. No later request was made after the observed curl failure.
 - The new executor script is `scripts/g2c-private-reality-canary.ps1`. It contains no runtime Secret values. PowerShell AST, embedded Python syntax, static Secret scan, and static network-mutation scan passed before the final attempt.
+
+
+## Reviewer review — G2-C private REALITY curl 35 return — 2026-10-03
+
+```text
+REVIEWED_COMMIT=450a3d18ed5575cf5b0e27edd3c4949262b87cd6
+EXECUTOR_RESULT=RETURN_G2C_PRIVATE_REALITY_HANDSHAKE_CURL_EXIT_35
+REVIEWER_RESULT=RETURN_DIAGNOSTIC_REQUIRED
+PRIVATE_LISTENER_AND_CONFIG=PASS
+ONE_PROXIED_REQUEST=YES
+CURL_EXIT=35
+HTTP_STATUS=0
+TLS_APPCONNECT_SECONDS=0.000000
+REALITY_COMPATIBILITY_PROVEN=NO
+EXACT_TLS_ERROR_CLASS=UNKNOWN
+WHY_UNKNOWN=curl stderr and protocol-core error streams were suppressed
+CLEANUP=PASS
+WG_HY2_PRESERVED=YES
+PUBLIC_TCP443_CHANGED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+TIMING_RECORD_PRESENT=NO
+TIMING_NONCONFORMANCE_BLOCKS_TECHNICAL_REVIEW=NO
+PROPOSED_NEXT_GATE=G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1
+PROPOSED_ESTIMATED_EXECUTION_TIME=15-30 minutes
+NEXT_GATE_AUTHORIZED=NO
+```
+
+Reviewer interpretation:
+- The return is valid and cleanup evidence is sufficient.
+- The evidence narrows the problem to the REALITY/TLS/VLESS handshake path after local proxy readiness and private listener creation, but it does not identify a specific implementation/configuration defect.
+- No speculative protocol-parameter patch is accepted yet. The next round should first capture sanitized Mihomo/sing-box/curl error classes and prove the configured handshake target is reachable from the VPS.
+- Per-round timing fields requested by the current timing policy were not recorded. This is a documentation/observability miss only and does not invalidate the network result; the next round must include them.
