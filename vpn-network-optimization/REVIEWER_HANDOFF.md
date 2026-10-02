@@ -57,7 +57,7 @@ Latest accepted G2-B facts:
 
 Accepted source:
 - Repaired runner commit: `ed4f8216ecd18dcea29f06f12fa0773c97c3cdf4`
-- Repaired runner blob: `379ea04f108de20290ab5ae35e6a9dfbd70f02b6`
+- Repaired runner blob: `5a6e65edd3d9e7c62b61fe209954f4d19c493366`
 - Reviewer acceptance commit: `165fc79b906dd6de858fdb6c3521e95f7b749136`
 
 ## CURRENT_GATE
@@ -131,7 +131,7 @@ Run the prepared read-only server diagnostic from PowerShell 7.6.6. No new conse
 
 Prepared read-only diagnostic:
 - `scripts/g2b-hy2-server-readonly.ps1`
-- commit: `4cc16485b29ab5bd2c33750349c379eb25f8f630`
+- commit: `7d86841d6f3406af0d99e5730bb369e8d693d162`
 - blob: `e7e406a88d6438703d1b9469ec6347087d480817`
 - strict SSH to `10.66.21.1:22` through existing WireGuard;
 - outputs only sanitized service/listener/config-shape/firewall fields;
