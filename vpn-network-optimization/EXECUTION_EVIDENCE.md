@@ -496,3 +496,72 @@ Therefore the path-realization failure is a false negative in the runner's integ
 ## Canonical Owner DPAPI path realization — PASS (2026-10-02)
 
 Owner executed the local-only realization runner from elevated PowerShell 7.6.6. Results: Owner Windows target confirmed; DPAPI scope CurrentUser; virtualized source retained; source and target encrypted bytes identical; target owner-only ACL PASS; target DPAPI round-trip PASS; target VPNHY2R1 validation PASS; pending absent; no plaintext temporary files; Secret values emitted 0. This closes the AppData path-realization defect. G2-B benchmark had not started at this evidence point.
+
+## G2-B bounded route/adapter diagnostic and runner-source persistence (2026-10-02)
+
+```text
+AUTHORIZED_GATE=G2B_RouteAdapter_Precheck_Diagnostic_And_Source_Persistence
+GOVERNANCE_VERSION=v0.2.4 / ACTIVE_PROVISIONAL
+PROJECT_REPOSITORY=entropy-student/project
+PROJECT_BRANCH=main
+WORKSPACE_INITIAL_HEAD=b8699ec02d4a02e9d73c646922fa18033dde157b
+CANONICAL_PRE_GATE_HEAD=b3f21718fb0e015ce4f0c622b43f1d293efbf8d7
+SOURCE_PROVENANCE=PASS (canonical root/remote verified; workspace fast-forwarded before source edits)
+UNRELATED_DIRTY_STATE=NONE (only the three requested untracked runner sources were present)
+
+OWNER_REPORTED_READBACK=route 24.199.118.137/32 -> 192.168.1.1 via WLAN ifIndex 18; WLAN Up / 192.168.1.4 / gateway present; SFO2-A Up / ifIndex 13
+OWNER_REPORTED_RUNNER_FAILURE=PRECHECK_ROUTE_AND_ADAPTERS / CimJobException
+DIRECT_CODEX_RUNTIME=Medium integrity; not Owner High-integrity preflight
+DIRECT_ACTIVE_ROUTE_READBACK=one exact route; WLAN / ifIndex 18 / next hop 192.168.1.1
+DIRECT_WLAN_ADAPTER_AND_IP_READBACK=PASS
+DIRECT_FIND_NET_ROUTE_READBACK=two CIM objects; scalar route selection resolved to WLAN / ifIndex 18 / next hop 192.168.1.1
+DIRECT_PERSISTENT_ROUTE_QUERY=CimJobException; FQID CmdletizationQuery_NotFound,Get-NetRoute; category ObjectNotFound when the exact destination has no persistent match
+PREFLIGHT_FACTS=Owner state above is OWNER_REPORTED; direct route/helper probes were performed in the Codex Medium-integrity runtime only
+
+CIMJOBEXCEPTION_ROOT_CAUSE=The runner treated the NetTCPIP provider's exact no-match CimJobException from Get-NetRoute -PolicyStore PersistentStore -DestinationPrefix ... as a generic query failure instead of an empty result. The original Owner run did not retain a subcheck, so the direct Codex-runtime reproduction narrows the fault to this statement but is not represented as an Owner High-token reproduction.
+ACTUAL_CHANGES=Patched only g2b-owner-runner.ps1 precheck/query diagnostics and added same-path -PreflightOnly; updated this handoff and execution evidence. The realization and repair runner sources were persisted unchanged.
+ROUTE_REQUIREMENT=Still requires exactly 24.199.118.137/32, next hop 192.168.1.1, WLAN alias, ifIndex 18, and no persistent exact route
+WLAN_REQUIREMENT=Still requires WLAN ifIndex 18 Up, IPv4 192.168.1.4, and gateway 192.168.1.1
+WIREGUARD_REQUIREMENT=Still requires SFO2-A ifIndex 13 Up and the existing WireGuard services Running
+
+NO_MATCH_CIM_NORMALIZATION_FIXTURE=PASS (only exact Get-NetRoute ObjectNotFound no-match FQID maps to empty; other errors remain fail-closed)
+PRODUCTION_ROUTE_WLAN_HELPER=DIRECT_CODEX_RUNTIME_READ_ONLY_PASS
+WG_ADAPTER_SCALAR_EXTRACTION_FIXTURE=PASS
+BRANCH_SPECIFIC_QUERY_ERROR_FIXTURE=PASS
+POWERSHELL_AST_PARSE=PASS (all three runner scripts)
+SECRET_SCAN=PASS (six PEM header-format literals are parser markers; two 64-hex literals are accepted public Hysteria binary SHA-256 integrity values; no private-key PEM body, Secret hash, long base64 payload, credential literal, API key, or bearer value)
+BENCHMARK_LOGIC_UNCHANGED=YES
+DPAPI_SECRET_HANDLING_UNCHANGED=YES
+MIHOMO_RUNTIME_LOGIC_UNCHANGED=YES
+FINALLY_CLEANUP_UNCHANGED=YES
+EXACT_ROUTE_REMOVAL_SEMANTICS_UNCHANGED=YES
+PREFLIGHT_ONLY_ORDERING=PASS (returns before benchmark, DPAPI Unprotect, runtime YAML, Mihomo, handshake, and cleanup-eligible route removal)
+VALIDATION=PASS (PowerShell AST, secret scan, exact no-match fixture, query-error branch fixture, direct read-only production route/WLAN helper, preservation checks)
+
+OWNER_HIGH_PREFLIGHT=NOT_RUN_REQUIRES_OWNER
+OBJECTIVE_READBACK=Extracted production route/WLAN precheck helper passed read-only in the direct Codex Medium-integrity runtime; Owner High-integrity -PreflightOnly remains pending.
+WG_FORMAL_SAMPLES=0
+HY2_FORMAL_SAMPLES=0
+HY2_REAL_G2B_HANDSHAKE=NO
+PERFORMANCE_CONCLUSION=NONE
+BENCHMARK_STARTED=NO
+MIHOMO_STARTED=NO
+SECRET_ACCESSED=NO
+NETWORK_CHANGED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+ANOMALIES=The original Owner run retained only phase and CimJobException class; the precise reproduction was obtained in the separate Direct Codex Medium-integrity runtime, not Owner High context.
+EVIDENCE_ARTIFACTS_AND_PURPOSE=Three project runner sources (G2-B precheck fix plus existing recovery chain) and the two executor-owned factual records; no runtime/recovery artifacts
+ROLLBACK_EFFECT=Revert only this Gate's source/document commit to canonical pre-edit base; preserve prior remote history, unrelated paths, DPAPI artifacts, Owner route, and all network state
+```
+
+Validation ran only parser/static checks, a non-secret no-match/error fixture, and read-only execution of the extracted production route/WLAN precheck helper in the current Medium-integrity Codex runtime. Owner High-integrity `-PreflightOnly` remains required to validate the packaged Owner execution path; no benchmark or full runner was executed.
+
+Evidence artifacts: `scripts/g2b-owner-runner.ps1` is the repaired production runner; `scripts/realize-owner-dpapi-path.ps1` and `scripts/repair-owner-dpapi-recovery.ps1` are the existing recovery-execution chain persisted unchanged. No DPAPI artifact, LocalCache data, runtime Secret config, Secret value, or result sample was added.
+
+Rollback effect: revert only this Gate's project-owned source and record commit to the canonical pre-edit base; preserve the already-canonical remote history, unrelated paths, all Windows/VPS network state, DPAPI artifacts, and the Owner route.
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G2B_BOUNDED_DIAGNOSTIC_AND_SOURCE_PERSISTENCE
+STOP_BEFORE_FULL_BENCHMARK=YES
+STOP_AT_REVIEWER=YES
+```

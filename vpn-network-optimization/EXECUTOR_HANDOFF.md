@@ -2,15 +2,16 @@
 
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
-## Current execution status — G2-A
+## Current execution status — G2-B bounded precheck/source-persistence Gate
 
-- The latest Owner instruction states G1 has Reviewer PASS. G1 was not rerun; its evidence below is preserved as historical execution evidence.
-- Current Gate: `G2-A — Side-by-side Hysteria2 Deployment`.
-- G2-A side-by-side deployment completed on 2026-10-02: the dedicated Hysteria2 service is enabled and active on UDP 8443; the existing WireGuard path remains active.
-- The Owner-confirmed Secret allowlist was created on the target; the encrypted DPAPI CurrentUser recovery copy was atomically promoted to its final path only after remote service verification.
-- The non-sensitive `SFO3-A-HY2` Mihomo fragment is parser-validated but was not imported or enabled. Windows WireGuard, routes, system proxy, Clash profile, and TUN state were not changed.
-- No client handshake/performance test was run; no G2-B work was started.
-- `REVIEWER_HANDOFF.md` was not modified. This is a G2-A pass candidate only; formal acceptance remains with Reviewer.
+- Current Gate: `G2B_RouteAdapter_Precheck_Diagnostic_And_Source_Persistence`.
+- Formal G2-B samples remain WG `0` / HY2 `0`; no G2-B HY2 handshake or performance conclusion exists.
+- Owner-reported elevated PowerShell 7.6.6 run failed closed in `PRECHECK_ROUTE_AND_ADAPTERS` with `CimJobException`; Owner-reported direct route/adapter reads were healthy. Those Owner facts are not represented as Executor direct read-back.
+- A read-only direct Codex-runtime diagnostic reproduced the `CimJobException` at the runner's exact-filter `Get-NetRoute -PolicyStore PersistentStore -DestinationPrefix ...` query when no matching route exists. The provider reports `CmdletizationQuery_NotFound` / `ObjectNotFound` instead of an empty result.
+- The runner now normalizes only that exact no-match result, scalarizes route/adapter/IP data after explicit cardinality checks, reports branch-specific failures, and supports `-PreflightOnly` on the same production precheck path.
+- Static parsing and direct read-only execution of the extracted production route/WLAN helper passed in the current Medium-integrity Codex runtime. Owner High-integrity `-PreflightOnly` has not been run and remains the next owner-side validation.
+- No DPAPI artifact was read/unprotected; no Mihomo process, HY2 request, benchmark, route change, or network mutation occurred.
+- `REVIEWER_HANDOFF.md` was not modified. This bounded source Gate stops before the full G2-B benchmark; formal acceptance remains with Reviewer.
 
 ## G1 historical executor status (preserved)
 
