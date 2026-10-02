@@ -921,3 +921,58 @@ Reviewer interpretation:
 - No host-level UFW/nft/iptables evidence of UDP 8443 being explicitly blocked.
 - The remaining primary fault domain is therefore client-to-server Hysteria/UDP initialization or a provider/network-path issue outside the host firewall.
 - HY2 binary version string was not returned by this probe; this is not enough to explain the current failure because the service is active and its accepted deployment identity remains otherwise intact.
+
+
+## HY2 UDP arrival probe — 2026-10-02
+
+```text
+AUTHORIZED_GATE=G2B_HY2_UDP_Arrival_Probe
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+ACCEPTED_SOURCE_IDENTITY=PASS
+NETWORK_BASELINE_PREFLIGHT=PASS
+OWNER_TEMP_ROUTE_CREATED=YES
+UDP_OBSERVER_READY=YES
+FORMAL_UDP_ARRIVAL_HANDSHAKE_INVOCATION=YES
+
+HANDSHAKE_ONLY_MODE=YES
+WG_BENCHMARK_SKIPPED=YES
+CLIENT_SECRET_RUNTIME_CREATED=YES
+CLIENT_SECRET_RUNTIME_OWNER_ONLY_ACL=PASS
+MIHOMO_TEST_PROXY_READY=YES
+HY2_HANDSHAKE_PROXY_USED=1
+HY2_HANDSHAKE_CURL_EXIT=35
+HY2_HANDSHAKE_HTTP_STATUS=000
+HY2_HANDSHAKE_ERROR=TLS_ERROR
+HY2_HANDSHAKE_TIME_TOTAL=5.002079
+HY2_HANDSHAKE_TIME_CONNECT=0.000719
+HY2_HANDSHAKE_TIME_APPCONNECT=0.000000
+
+UDP_OBSERVER_INBOUND_EXIT=124
+UDP_OBSERVER_OUTBOUND_EXIT=124
+UDP_OBSERVER_PAYLOAD_CAPTURED=NO
+UDP_8443_INBOUND_SEEN=NO
+UDP_8443_OUTBOUND_SEEN=NO
+
+BENCHMARK_REPLAYED=NO
+TEST_MIHOMO_STOPPED=YES
+CLIENT_SECRET_RUNTIME_DELETED=YES
+PLAINTEXT_SECRET_ARTIFACTS_REMAINING=0
+OWNER_TEMP_ROUTE_REMOVED=YES
+PRODUCTION_WG_RESTORED=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_TEST_RUNTIME_RESIDUE=ABSENT
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+UDP_ARRIVAL_PROBE_AUTHORIZATION_CONSUMED=YES
+OWNER_UDP_ARRIVAL_PROBE_RESULT=RETURN_TO_REVIEWER
+NON_SECRET_RESULTS_PATH=C:\Users\34707\AppData\Local\vpn-network-optimization\results\g2b-udp-arrival-probe-20261002T103009Z
+```
+
+Reviewer interpretation:
+- Local curl definitely used the local Mihomo proxy.
+- Mihomo attempted the HY2 outbound, but no UDP packet with destination port 8443 reached the VPS public interface during the observation window.
+- Because inbound UDP/8443 was not seen on eth0, current failure occurs before Hysteria server processing. Server TLS/auth/SNI configuration is therefore not the active fault domain for this run.
+- Primary remaining fault domains are external to the Hysteria process: Windows/WLAN egress path, local/router/ISP UDP handling, or provider-side/cloud firewall filtering before packets reach the droplet.
+- Cleanup and production WireGuard restoration passed.
