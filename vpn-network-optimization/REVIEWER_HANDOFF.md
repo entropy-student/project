@@ -14,8 +14,8 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       RETURN before first formal sample; network reconciled safe
-CURRENT_BLOCKER                      Fresh Owner authorization for one repaired full G2-B retry
-CURRENT_GATE                         G2B_Full_Retry_After_Repair (WAIT_OWNER_AUTH)
+CURRENT_BLOCKER                      Owner atomic repaired full G2-B retry execution pending
+CURRENT_GATE                         G2B_Full_Retry_After_Repair (AUTHORIZED_ONCE)
 ```
 
 Current runtime facts:
@@ -351,21 +351,20 @@ Owner read-only diagnostic proved that the optional Internet Settings field `Aut
 
 ## 12. Next Step
 
-1. Source repair Gate is formally PASS at `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`.
-2. The previous consequential full-run authorization was consumed by the failed attempt. Governance v0.2.6 requires fresh Owner authorization before a later production/network retry.
-3. The temporary `24.199.118.137/32` ActiveStore route is currently absent, while the repaired full runner requires exactly one such WLAN-direct route during preflight and HY2 testing.
-4. Ask Owner only for a fresh safe-window confirmation. If confirmed, Reviewer will issue one atomic Owner-local checkpoint that revalidates the real Windows host, creates/verifies the exact temporary route, invokes the canonical repaired runner exactly once, and provides bounded non-secret output; runner/fallback cleanup must leave production WireGuard restored.
-5. Until that confirmation, do not recreate the route, run `-PreflightOnly`, run the full runner, access the DPAPI Secret, start Mihomo, or tune MTU/BBR/fq/GRO/sysctl.
+1. Owner has freshly confirmed the safe window and authorized one repaired full G2-B retry.
+2. Owner runs one atomic PowerShell 7.6.6 High-integrity checkpoint only. The checkpoint must verify the accepted runner blob, verify current WireGuard/WLAN baseline, require the exact `/32` route to be absent initially, create exactly one ActiveStore WLAN-direct route, invoke the repaired canonical runner once, perform exact fallback route cleanup if needed, and verify production WireGuard/public-exit restoration.
+3. The checkpoint must fail closed on source drift, baseline drift, unexpected route state, runner failure, cleanup ambiguity, or final network mismatch. No second runner invocation is allowed.
+4. No MTU/BBR/fq/GRO/sysctl tuning is authorized.
+5. Owner returns the complete bounded console output to Reviewer for final G2-B review.
 
 ## 13. Status Summary
 
 - Governance current: v0.2.6 / ACTIVE_PROVISIONAL.
-- Overall: P0 PASS, G1 PASS, G2-A PASS, DPAPI recovery PASS, G2-B preflight chain PASS.
-- First full G2-B attempt: RETURN before sample 1; post-failure production-network reconciliation PASS.
-- Runner binding + cleanup no-match repair: PASS at `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`.
-- Formal WG/HY2 samples remain 0/0; no protocol-performance conclusion exists.
-- Temporary `/32` WLAN-direct route is currently absent; production WireGuard is restored.
-- Current Owner checkpoint: fresh safe-window / one-retry authorization only.
+- Runner repair: PASS at `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`; accepted runner blob `0ca085d8f31e6f9d31c76e7cb0434a5bcc89d2bd` remains current.
+- First full G2-B attempt: RETURN->FIXED; production-network reconciliation PASS.
+- Fresh Owner safe-window authorization: PASS for one repaired full retry only.
+- Formal WG/HY2 samples remain 0/0 until this run completes.
+- Current action: one atomic Owner-local checkpoint; no blind retry and no tuning.
 
 
 
@@ -689,3 +688,11 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - Governance drift reconciliation: current v0.2.6 clarifications do not invalidate the v0.2.5-executed static Gate.
 - No Owner checkpoint, benchmark, Secret access, Mihomo start, HY2 action, or network mutation occurred in this repair Gate.
 - Next consequential retry requires fresh Owner authorization.
+
+### Owner authorization — one repaired full G2-B retry
+
+- Owner freshly confirmed the safe window and authorized one consequential retry after the accepted repair.
+- Authorization scope: one atomic Owner-local checkpoint that may create the exact temporary `24.199.118.137/32` ActiveStore route via WLAN ifIndex 18 / next hop `192.168.1.1`, invoke the canonical repaired runner exactly once, and remove that exact route during runner/fallback cleanup.
+- Accepted runner source identity: Git blob `0ca085d8f31e6f9d31c76e7cb0434a5bcc89d2bd` from accepted commit `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`; current GitHub `main` runner blob matches.
+- The checkpoint must verify Owner High-integrity PowerShell 7.6.6, exact source identity, route/WLAN/WireGuard baseline, final route absence, WireGuard restoration, and expected public exit.
+- Any failure returns to Reviewer. Authorization does not cover a second full-run attempt or any MTU/BBR/fq/GRO/sysctl tuning.
