@@ -67,7 +67,7 @@ Accepted source:
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
 STATE=AUTHORIZED_UNTIL_GATE_RESOLVED
-OBJECTIVE=Determine whether the failure is port-specific by comparing one raw UDP datagram to known-working WireGuard port 51820 with one raw UDP datagram to HY2 port 8443 over the same exact WLAN route.
+OBJECTIVE=Determine whether a synthetic UDP/8443 datagram reaches the Windows WLAN NIC transmit path before it leaves the Owner host.
 MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 ```
@@ -77,11 +77,11 @@ MANDATORY_REVIEW_STOP=YES
 Current next diagnostic under the standing authorization:
 - keep production WireGuard ON;
 - create the same exact temporary `24.199.118.137/32` WLAN route;
-- start one VPS-side read-only packet-presence observer for UDP/51820 and UDP/8443 on eth0;
-- send exactly one small raw UDP datagram to 51820 and exactly one to 8443 from Windows;
-- do not start Mihomo and do not read DPAPI Secret;
-- record only whether each port's packet arrived;
-- remove the exact temporary route and verify WireGuard remains restored.
+- use Windows built-in pktmon with an exact `24.199.118.137 + UDP + 8443` filter on NICs only;
+- log only the first 42 bytes of matching Ethernet/IPv4/UDP frames, enough for headers and excluding the 7-byte synthetic payload;
+- send exactly one 7-byte raw UDP datagram bound to WLAN address `192.168.1.4`;
+- stop pktmon, convert the ETL to text, and determine presence by numeric target/port markers rather than localized counter labels;
+- remove temporary pktmon artifacts/filter and the exact route, then verify WireGuard remains restored.
 
 Forbidden:
 - no payload inspection;
@@ -107,9 +107,8 @@ Forbidden:
 ### ACCEPTANCE_CRITERIA
 
 Diagnostic classification:
-- 51820 YES + 8443 NO → port-specific filtering/path policy is proven outside Hysteria/Mihomo;
-- 51820 YES + 8443 YES → generic raw UDP path works; prior 8443 miss was transient/observer-specific and HY2 client behavior must be revisited;
-- 51820 NO + 8443 NO → the raw-control route/Windows egress method itself is not reaching the VPS, so inspect local routing/source-interface behavior before blaming upstream filtering.
+- local WLAN NIC capture **YES** + VPS prior inbound **NO** → packet leaves Windows; router/NAT/ISP/upstream path becomes primary fault domain;
+- local WLAN NIC capture **NO** → Windows/WFP/local egress becomes primary fault domain.
 
 This Gate does not itself PASS G2-B.
 
@@ -198,11 +197,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-The raw UDP/8443 control also failed to reach VPS eth0. Compare raw UDP/51820 vs UDP/8443 over the same route to distinguish port-specific filtering from a broader local routing/egress issue.
+Raw UDP to both 51820 and 8443 failed to reach VPS eth0 despite explicit WLAN binding. Production WireGuard still works, so inspect the actual Windows WLAN NIC transmit path with a header-only pktmon capture before assigning blame upstream.
 
 ## OWNER_ACTION_REQUIRED
 
-**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected and run the prepared raw UDP 51820-vs-8443 comparison checkpoint.
+**No further authorization needed for bounded troubleshooting inside this Gate.** Keep WireGuard connected and run the prepared local WLAN-NIC header-only capture checkpoint.
 
 ## EVIDENCE_POINTERS
 
