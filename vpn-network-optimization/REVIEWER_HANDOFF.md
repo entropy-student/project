@@ -65,167 +65,116 @@ Current known components:
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G2C_PRIVATE_REALITY_COMPAT_CANARY
-STATE=AUTHORIZED_RETRY_AFTER_PREFLIGHT_TOOLING_RECONCILIATION
-OBJECTIVE=Prove the exact Windows Mihomo <-> sing-box VLESS+REALITY+Vision pair works before any public TCP/443 exposure.
-MAX_ENDPOINT_THIS_ROUND=One temporary WireGuard-only canary on 10.66.21.1:14443, one real proxied HTTPS handshake, exact cleanup/read-back, then mandatory Reviewer stop.
+GATE_ID=G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1
+STATE=RETURN_DIAGNOSTIC_PROPOSED_NOT_AUTHORIZED
+PREVIOUS_RESULT=RETURN_G2C_PRIVATE_REALITY_HANDSHAKE_CURL_EXIT_35
+OBJECTIVE=Identify the exact REALITY/TLS handshake fault domain without changing protocol architecture or exposing public TCP/443.
+MAX_ENDPOINT_THIS_ROUND=One private 10.66.21.1:14443 diagnostic setup + one proxied HTTPS request with sanitized client/server error classification + exact cleanup + Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
-ESTIMATED_EXECUTION_TIME=25-45 minutes
+ESTIMATED_EXECUTION_TIME=15-30 minutes
 TIMING_OVERRUN_POLICY=record-and-diagnose-at-natural-checkpoint-without-delaying-healthy-progress
 ```
 
+### REVIEWER_CLASSIFICATION_OF_PREVIOUS_RETURN
+
+Accepted facts from commit `450a3d18ed5575cf5b0e27edd3c4949262b87cd6`:
+- sing-box v1.14.2 identity/hash PASS;
+- server config check PASS;
+- exact private listener `10.66.21.1:14443` PASS;
+- no public 14443 or 443 listener;
+- Mihomo config check PASS and local HTTP proxy `127.0.0.1:17990` ready;
+- exactly one proxied OpenAI HTTPS request was attempted;
+- curl exit 35, HTTP 0, `time_appconnect=0`;
+- benchmark not started;
+- cleanup/read-back passed and WG/HY2/network/system proxy/TUN were preserved;
+- Secret values emitted/committed = 0.
+
+Reviewer interpretation:
+- basic local proxy readiness, server process startup, private TCP listener creation, and cleanup are proven;
+- end-to-end REALITY compatibility is **not** proven;
+- the failure occurred before the destination TLS app-connect completed;
+- exact cause remains UNKNOWN because curl stderr and both protocol-core error streams were suppressed rather than converted into sanitized diagnostics;
+- do not classify this yet as "sing-box incompatible", "Mihomo bug", "bad SNI", or "network block";
+- current external documentation confirms REALITY interoperability is actively changing, including Mihomo's explicit `support-x25519mlkem768` option and known cross-core compatibility issues, so a fault-domain probe is justified before any config change.
+
 ### TARGET_AND_SCOPE
 
-Authorized canary only:
-- server implementation: sing-box **v1.14.2 stable**, Linux amd64;
-- accepted asset: `sing-box-1.14.2-linux-amd64-glibc.tar.gz`;
-- accepted SHA256: `5c7bc18461827b28d0e5ee7e89d33b276d3ff7c818531104c8e8d26d85b0656e`;
-- temporary listener: **10.66.21.1:14443/TCP only**;
-- protocol: VLESS + REALITY + `xtls-rprx-vision`;
-- private-canary handshake target: `www.microsoft.com:443` only for interoperability proof; this target is **not** pre-approved for later public fallback;
-- Windows client: existing `C:\Program Files\Clash Verge\verge-mihomo.exe`;
-- local test proxy: loopback-only temporary mixed port `17990`;
-- test endpoint: `https://api.openai.com/v1/models`; curl exit 0 + HTTP 401 is a successful transport/application reachability result.
+Diagnostic only. Reuse the same private canary topology:
+- Windows Mihomo v1.19.31 family;
+- temporary sing-box v1.14.2;
+- server bind exactly `10.66.21.1:14443`;
+- local HTTP proxy exactly `127.0.0.1:17990`;
+- no public listener, persistent service, benchmark, route/firewall/TUN/system-proxy change.
 
-Explicitly forbidden this round:
-- no public `0.0.0.0:443` or public-IP:443 listener;
-- no firewall rule, NAT, DNS, provider, sysctl, BBR/fq/GRO, WireGuard, HY2, or routing mutation;
-- no persistent systemd service;
-- no Clash Verge profile/default-node/system-proxy/TUN mutation;
-- no benchmark;
-- no protocol candidate expansion;
-- no Secret value/hash in chat, GitHub, ordinary logs, stdout/stderr, command arguments, or environment variables.
+Do **not** change protocol parameters in R1 merely to "try something". In particular, preserve the previous VLESS/REALITY/Vision parameters for the one diagnostic request. The purpose is to learn why the exact prior configuration failed.
 
-### APPLICABLE_CRITICAL_CONSTRAINTS
+### PREFLIGHT_AND_DIAGNOSTIC
 
-- Foreground work and existing WireGuard/HY2 connectivity remain available.
-- Strict SSH trust path is reused exactly: current key reference + known_hosts + `HostKeyAlias=24.199.118.137` + `HostName=10.66.21.1`; no private key copy/export.
-- Ephemeral VLESS UUID / REALITY private key / short-id are created and consumed only inside protected process/stdin/runtime-file boundaries.
-- Server Secret-bearing runtime material must be root-only and ephemeral; Windows Secret-bearing client config must be current-owner-only and ephemeral.
-- sing-box binary is temporary/project-scoped and must be SHA256-verified before execution.
-- Failure is fail-closed; cleanup/read-back still runs.
-- One real handshake only; no performance comparison.
+Before the one real request:
+1. fresh-read WG/HY2, private port absence, public 443 absence, and no residue;
+2. prove Windows can establish ordinary TCP to `10.66.21.1:14443` after the temporary listener is ready;
+3. from the VPS, perform a bounded read-only reachability/TLS check to the configured REALITY handshake target `www.microsoft.com:443` with SNI; emit only PASS/FAIL + protocol version/error class, not raw certificate/log payload;
+4. start the same Mihomo/sing-box pair with logs captured only inside the protected runtime boundary.
 
-### PREFLIGHT
-
-Executor must fresh-read:
-- this current Gate and `REVIEWER_TO_EXECUTOR_RELAY`;
-- current accepted G2-C preflight facts only;
-- exact target scripts it creates/uses.
-
-Before mutation prove:
-- Windows PowerShell/runtime + existing Mihomo binary;
-- **Administrator/High integrity is NOT required for this canary. Medium-integrity Owner/Codex execution is acceptable because this Gate performs no Windows route/firewall/service/TUN/system-proxy mutation.**
-- WireGuard Manager/tunnel/adapter healthy using read-only queries available to the current user;
-- strict SSH native exit 0 and remote hostname/root identity;
-- `10.66.21.1:14443` has no listener;
-- public TCP/443 remains free;
-- WG UDP/51820 and HY2 UDP/8443 remain healthy;
-- no prior canary process/runtime residue.
-
-### EXECUTION
-
-Use one bounded Owner-local/Codex checkpoint. Implementation may be written by Executor, but it must:
-1. download the pinned sing-box asset into a temporary non-Secret server workspace and verify the exact SHA256 before extraction/execution;
-2. generate the REALITY keypair on the server without exposing the private key; generate/transport VLESS UUID and short-id through reviewed stdin/process-memory handling, never command args/env/stdout;
-3. create root-only ephemeral server config under a runtime location, bind exactly `10.66.21.1:14443`, validate with `sing-box check`, then start only the temporary process;
-4. positively verify listener is `10.66.21.1:14443` and negatively verify no `0.0.0.0:14443`, public-IP:14443, or TCP/443 listener was created;
-5. create owner-only temporary Mihomo client config on Windows with VLESS + REALITY + Vision, server `10.66.21.1:14443`, local proxy `127.0.0.1:17990`, and the matching non-public client parameters;
-6. validate Mihomo config, start one temporary Mihomo process, then issue exactly one curl request through `127.0.0.1:17990` to the OpenAI models endpoint;
-7. record only sanitized markers such as proxy-used, curl exit, HTTP status, total/connect/appconnect times, listener/process state, and Secret counters;
-8. always stop temporary Mihomo and sing-box, remove both Secret configs/runtime material and temporary binary/workspace, then fresh-read WG/HY2 and all canary ports/processes.
+For the single proxied request:
+- capture curl stderr in memory and map it to a short sanitized error class;
+- capture Mihomo and sing-box error/debug streams in memory or protected temporary files;
+- never persist or emit raw streams;
+- map relevant lines to an allowlist such as:
+  `REALITY_AUTH_OR_VERIFICATION_FAILED`,
+  `KEY_SHARE_OR_MLKEM_MISMATCH`,
+  `SNI_OR_CERT_MISMATCH`,
+  `VLESS_OR_VISION_REJECTED`,
+  `HANDSHAKE_TARGET_UNREACHABLE`,
+  `CONNECTION_RESET_OR_EOF`,
+  `TIMEOUT`,
+  `UNKNOWN_TLS_HANDSHAKE_FAILURE`;
+- emit only the classification and non-secret timing/status markers.
 
 ### REQUIRED_EVIDENCE
 
-Required sanitized markers:
-- `G2C_CANARY_PREFLIGHT=PASS`;
-- `SING_BOX_VERSION=1.14.2`;
-- `SING_BOX_ASSET_SHA256=PASS`;
-- `SERVER_CONFIG_CHECK=PASS`;
-- `PRIVATE_LISTENER_10_66_21_1_14443=YES`;
-- `PUBLIC_14443_LISTENER=NO`;
-- `PUBLIC_TCP443_UNCHANGED_FREE=YES`;
-- `MIHOMO_CONFIG_CHECK=PASS`;
-- `MIHOMO_TEST_PROXY_READY=YES`;
-- `REALITY_CANARY_PROXY_USED=YES`;
-- `REALITY_CANARY_CURL_EXIT=0`;
-- `REALITY_CANARY_HTTP_STATUS=401`;
-- `REALITY_CANARY_ERROR=NONE`;
-- `REALITY_CANARY_RESULT=PASS_CANDIDATE`;
-- cleanup: server/client canary processes absent, 14443 absent, runtime Secret files absent, temporary binary/workspace absent;
-- WG UDP/51820 + HY2 UDP/8443 still healthy;
-- `SECRET_VALUES_EMITTED=0`;
-- `SECRET_VALUES_COMMITTED=0`;
-- cleanup failure count = 0.
+- previous accepted candidate identities unchanged;
+- handshake-target TCP/TLS read-only check result;
+- Windows -> private listener TCP reachability result;
+- exactly one proxied request;
+- curl exit / HTTP / total-connect-appconnect timing;
+- sanitized `CURL_ERROR_CLASS`;
+- sanitized `MIHOMO_ERROR_CLASS`;
+- sanitized `SING_BOX_ERROR_CLASS`;
+- `REALITY_DIAGNOSTIC_CLASSIFICATION=<one bounded class>` or `UNKNOWN_AFTER_DIAGNOSTIC`;
+- exact cleanup/read-back and WG/HY2 preserved;
+- Secret values emitted/committed = 0;
+- timing fields: `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN`, and cause if needed.
 
 ### ACCEPTANCE_CRITERIA
 
-Reviewer may PASS this private compatibility canary only when:
-- exact pinned sing-box candidate identity is proven;
-- exact private-only listener boundary is proven positive + negative;
-- existing Mihomo successfully completes the proxied OpenAI HTTPS request through VLESS+REALITY+Vision;
-- no public TCP listener/firewall/routing/profile mutation occurred;
-- all ephemeral Secret/process/binary residue is removed;
-- WG/HY2 remain healthy;
-- Evidence is persisted and reviewable.
-
-This PASS would prove **interoperability only**, not public fallback safety or performance.
-
-### ROLLBACK_STATUS_OR_PLAN
-
-Rollback is deterministic cleanup:
-- stop only the canary sing-box process by exact PID/identity;
-- stop only the temporary Mihomo process;
-- remove only the exact canary runtime directories/files created by this Gate;
-- do not remove/modify shared or pre-existing services;
-- verify TCP/14443 absent and TCP/443 unchanged;
-- verify WireGuard and HY2 still healthy.
+This diagnostic Gate does not PASS protocol compatibility. It PASSes as a diagnostic only if it safely narrows the failure to a reviewable fault domain while preserving cleanup/security boundaries. Reviewer then chooses the smallest repair/protocol-implementation decision.
 
 ### OWNER_ONLY_ACTIONS
 
-**AUTHORIZED by Owner on 2026-10-02 for this private canary.**
-
-Authorization includes the temporary server/client writes, ephemeral credential generation, one compatibility handshake, and exact cleanup defined above. It does **not** include public TCP/443 exposure or a persistent service.
+**NOT YET AUTHORIZED.** The prior one-request authorization was consumed by the completed failed canary. One additional private diagnostic request requires fresh Owner authorization. Public TCP/443 remains unauthorized.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Start only from:
-1. this Gate;
-2. `CURRENT_ACCEPTED_STATE`;
-3. `scripts/g2c-vless-reality-preflight.ps1` **as a reference only** for SSH options/accepted host identity; do **not** execute it wholesale because its Administrator assertion belongs to the earlier read-only checkpoint and is not an acceptance requirement of this canary;
-4. `scripts/g2b-owner-runner.ps1` only for reusable current-owner-only runtime-file/Mihomo-process/curl-sanitization patterns, not for G2-B history.
+After Owner authorization, start only from:
+- this Gate;
+- the accepted execution section for commit `450a3d18ed5575cf5b0e27edd3c4949262b87cd6`;
+- `scripts/g2c-private-reality-canary.ps1`;
+- current timing rules.
 
-Accepted facts Executor may rely on:
-- Owner authorization above remains active because the prior attempt stopped before SSH, Secret access, server/client runtime creation, or any consequential mutation;
-- the previous `RETURN_G2C_WINDOWS_ADMIN_PREFLIGHT_BLOCKED` is Reviewer-classified as a **preflight tooling over-constraint**, not target/runtime drift;
-- Medium integrity / non-elevated Windows execution is permitted for this Gate; do not ask Owner for elevation unless a specific required operation independently fails and truly requires it;
-- Owner authorization above is active;
-- strict SSH identity exists at the current recorded path and passed immediately before this Gate;
-- VPS identity is `ubuntu-s-1vcpu-512mb-10gb-sfo3`, Ubuntu 24.04.5, x86_64;
-- TCP/443 was free; WG UDP/51820 and HY2 UDP/8443 healthy;
-- server had no sing-box/Xray/Mihomo installation;
-- current Windows Mihomo path/version family was already accepted;
-- no need to rediscover historical G2-B root-cause work.
-
-Executor must persist sanitized facts to `EXECUTION_EVIDENCE.md`, write its fixed completion packet to `EXECUTOR_HANDOFF.md`, commit project-owned changes, then STOP for Reviewer. Executor must not edit `REVIEWER_HANDOFF.md`.
-
-Timing add-on for this round:
-- estimate: **25–45 minutes** end-to-end;
-- record round start/end + actual elapsed;
-- if over 45 minutes, add a brief evidence-based cause classification and, only if needed, one bounded diagnosis of the slow phase;
-- do not interrupt healthy canary progress merely because the clock passed the estimate.
+Do not re-open G2-B history. Do not change REALITY parameters in R1. Instrument/classify the failing handshake, clean up, persist Evidence + Executor Handoff, and STOP.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
-结果：PASS_CANDIDATE / RETURN_*
-改动：临时私有 REALITY canary，或 NONE（若 preflight 阻断）。
-验证：sing-box identity / private listener / Mihomo handshake / OpenAI HTTP status / WG+HY2 unchanged。
-问题：NONE，或精确阻塞原因。
-回滚：临时 server/client process、Secret config、binary/workspace 已清理；14443 absent；443 unchanged。
-请 Reviewer 检查：Evidence 是否足以证明 Mihomo <-> sing-box REALITY/Vison 兼容。
-Owner 转交：NONE，除非 Executor 无法访问真实 Owner host。
-耗时：预计 25-45 分钟；实际 <elapsed>；超时 YES/NO；原因 <NONE/brief cause>。
+结果：PASS_CANDIDATE_DIAGNOSTIC / RETURN_*
+改动：仅诊断增强 + 临时私有 canary；协议参数未变。
+验证：handshake target / private TCP / one proxied request / sanitized core error classes / cleanup。
+问题：明确 fault-domain classification，或 UNKNOWN_AFTER_DIAGNOSTIC。
+回滚：临时进程、Secret config、binary/workspace 全部清理；14443 absent；443 unchanged；WG/HY2 preserved。
+请 Reviewer 检查：是否已有足够证据决定最小修复。
+Owner 转交：NONE，除非真实 Owner host 不可访问。
+耗时：预计 15-30 分钟；实际 <elapsed>；超时 YES/NO；原因 <NONE/brief cause>。
 ```
 
 ## ROUND_TIMING_OBSERVABILITY
@@ -245,9 +194,9 @@ Rules:
 
 Current next Executor round:
 ```text
-ROUND=G2C_PRIVATE_REALITY_COMPAT_CANARY_RETRY
-ESTIMATED_EXECUTION_TIME=25-45 minutes
-ESTIMATE_SCOPE=canary-specific checkpoint creation/review + pinned sing-box download + private server/client setup + one handshake + cleanup + Evidence/Handoff commit
+ROUND=G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1
+ESTIMATED_EXECUTION_TIME=15-30 minutes
+ESTIMATE_SCOPE=same private canary topology + handshake-target check + one request with sanitized client/server error classification + cleanup + Evidence/Handoff commit
 OWNER_WAIT_EXCLUDED=YES
 ```
 
@@ -286,7 +235,7 @@ Rollback/recovery assets:
 
 ## UNRESOLVED
 
-- VLESS+REALITY side-by-side viability: TCP/443 ownership, server-core choice, handshake, and client compatibility remain unvalidated on this VPS.
+- VLESS+REALITY compatibility: private listener/config validation passed, but the first real Mihomo -> sing-box REALITY request failed before TLS app-connect (curl 35); exact handshake fault domain remains unresolved.
 - Peak-hour repeatability: whether HY2 retains its same-window advantage during the user's known evening congestion window.
 - Real workload behavior: Codex / OpenAI / image-generation long-task A/B is still untested.
 - Final production role: HY2 primary vs on-demand backup vs WireGuard primary remains undecided.
@@ -296,26 +245,19 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Resume the **same authorized G2-C private REALITY compatibility canary** from the current Codex/Owner context.
-
-The prior attempt is not replayed as a privileged checkpoint. Executor should build/use a canary-specific checkpoint that:
-- accepts the current Medium-integrity Windows token;
-- performs only ordinary user-space local Mihomo/runtime-file work plus strict SSH to the already-authorized VPS root path;
-- performs no Windows route/firewall/service/TUN/system-proxy mutation;
-- retains every Secret/listener/cleanup boundary already defined by this Gate;
-- stops at Reviewer after Evidence + Executor Handoff persistence.
+Await Owner authorization for **G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1**. The next round must diagnose the existing configuration before trying parameter changes.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** No Administrator PowerShell is required for the retry. Owner authorization for this private canary remains valid. Public TCP/443 remains unauthorized.
+Authorize one additional **private** diagnostic request on `10.66.21.1:14443`. This does not authorize public TCP/443 or persistent deployment.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Use the relay inside `CURRENT_GATE`. The previous admin-only preflight result has been reconciled. Do not rerun `g2c-vless-reality-preflight.ps1` wholesale; use only its strict SSH/identity pattern as a reference.
+No active Executor run until Owner authorizes the diagnostic Gate above.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Use the fixed completion packet defined inside `CURRENT_GATE`.
+Use the fixed diagnostic packet in `CURRENT_GATE` after authorization.
 
 ## EVIDENCE_POINTERS
 
