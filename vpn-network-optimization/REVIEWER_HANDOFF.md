@@ -14,7 +14,7 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT_BLOCKER                      Fresh Owner safe-window confirmation for full G2-B benchmark
+CURRENT_BLOCKER                      Full G2-B benchmark execution pending
 ```
 
 Current runtime facts:
@@ -51,7 +51,7 @@ G2-B benchmark status:
 - Exact candidate commit scope is limited to `g2b-owner-runner.ps1`, `EXECUTION_EVIDENCE.md`, and `EXECUTOR_HANDOFF.md`; `REVIEWER_HANDOFF.md` was not modified by Executor. Reviewer acceptance then advanced `main` only by the Reviewer-owned Handoff record.
 - Owner reran the canonical `g2b-owner-runner.ps1 -PreflightOnly` from PowerShell 7.6.6 / Administrator / integrity RID 12288 after the accepted ClientSnapshot repair.
 - Owner read-back: `ROUTE_QUERY=PASS`, `WLAN_ADAPTER_QUERY=PASS`, `WLAN_IP_QUERY=PASS`, `WG_ADAPTER_QUERY=PASS`, `G2B_PREFLIGHT_ONLY=PASS`, with `SECRET_ACCESSED=NO`, `MIHOMO_STARTED=NO`, `BENCHMARK_STARTED=NO`, and `NETWORK_CHANGED=NO`.
-- Reviewer accepts this as `PASS_G2B_OWNER_HIGH_PREFLIGHTONLY`. The preflight/source-repair chain is closed; the remaining boundary before the full benchmark is a fresh Owner confirmation that no foreground Codex/image/network-critical work would be disrupted.
+- Reviewer accepts this as `PASS_G2B_OWNER_HIGH_PREFLIGHTONLY`. The preflight/source-repair chain is closed. Owner has now confirmed the safe window.
 - No G2-B performance conclusion exists yet.
 
 ## 1. Project Goal
