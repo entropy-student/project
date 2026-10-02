@@ -135,7 +135,21 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Prepare one atomic Owner checkpoint using the existing handshake-only runner and the smallest Windows-local packet-presence mechanism. Do not alter configuration or replay benchmarks.
+Prepared one-shot Windows egress checkpoint:
+- `scripts/g2b-windows-udp8443-egress-checkpoint.ps1`
+- commit: `172802154b531233b7237bb60688972ad33cdddc`
+- blob: `88e6e55bf973d5158e53533cabd803e61cc2b394`
+- keeps production WireGuard ON;
+- uses Windows built-in Packet Monitor (`pktmon`) with an exact `24.199.118.137 + UDP + 8443` filter;
+- uses counters-only NIC monitoring, so packet payload is not logged;
+- invokes accepted `g2b-owner-runner.ps1 -HandshakeOnly` exactly once;
+- records only whether matching UDP/8443 traffic reached Windows NIC counters;
+- cleans pktmon state/filter, temporary route, Mihomo/runtime config, and rechecks WireGuard;
+- fails closed before the handshake if pktmon already has active/unclear state or existing filters.
+
+Standing Owner authorization remains valid for further bounded troubleshooting inside this Gate.
+
+Executor should read only this Current Gate and the prepared checkpoint. Do not alter configuration or replay benchmarks.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
