@@ -1806,3 +1806,20 @@ Reviewer interpretation:
 - The evidence narrows the problem to the REALITY/TLS/VLESS handshake path after local proxy readiness and private listener creation, but it does not identify a specific implementation/configuration defect.
 - No speculative protocol-parameter patch is accepted yet. The next round should first capture sanitized Mihomo/sing-box/curl error classes and prove the configured handshake target is reachable from the VPS.
 - Per-round timing fields requested by the current timing policy were not recorded. This is a documentation/observability miss only and does not invalidate the network result; the next round must include them.
+
+
+## Owner authorization — G2C REALITY handshake diagnostic R1 — 2026-10-03
+
+```text
+AUTHORIZED_GATE=G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1
+OWNER_AUTHORIZATION=GRANTED
+MAX_ENDPOINT=one private diagnostic setup + handshake-target check + one proxied HTTPS request + sanitized error classification + exact cleanup + Reviewer stop
+PROTOCOL_PARAMETERS_CHANGE=NOT_AUTHORIZED
+PUBLIC_TCP443_EXPOSURE=NOT_AUTHORIZED
+PERSISTENT_SERVICE=NOT_AUTHORIZED
+BENCHMARK=NOT_AUTHORIZED
+ESTIMATED_EXECUTION_TIME=15-30 minutes
+TIMING_RECORD_REQUIRED=YES
+```
+
+No execution result is claimed by this authorization record. Executor must append the actual diagnostic Evidence after execution.
