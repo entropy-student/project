@@ -66,7 +66,7 @@ Accepted source:
 
 ```text
 GATE_ID=G2B_Windows_UDP8443_Egress_Probe
-STATE=AUTHORIZED_POST_KILLSWITCH_HY2_HANDSHAKE
+STATE=AUTHORIZED_POST_KILLSWITCH_HY2_HANDSHAKE_API_FETCH
 OBJECTIVE=Confirm whether the proven local WFP outbound drop is WireGuard Windows kill-switch enforcement caused by the production full-tunnel /0 configuration.
 MAX_ENDPOINT_THIS_ROUND=One local packet-presence observer + one existing handshake-only probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -150,20 +150,17 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Current prepared read-only root-cause confirmation:
-- `scripts/g2b-wireguard-killswitch-readonly.ps1`
-- commit: `857c9b326727ac5f6a07ae0aa021024ebd6c3746`
-- blob: `360d50e62fb996cd9e86243d0250cb2d26c4e19a`
-- keeps production WireGuard ON and performs no route/firewall/VPN mutation;
-- checks active IPv4 routes on WireGuard interface 13 for `0.0.0.0/0` versus split `/1` routes;
-- queries WFP filters affecting outbound UDP/8443 to `24.199.118.137` and checks for WireGuard's documented `Block all outbound (IPv4)` filter;
-- also checks WFP state for WireGuard and the matching block filter;
-- outputs only boolean/non-secret classification fields;
-- deletes temporary XML artifacts and rechecks WireGuard unchanged.
+Current post-killswitch HY2 handshake checkpoint:
+- `scripts/g2b-hy2-handshake-after-killswitch-repair.ps1`
+- commit: `3a6e63da29be4a0bc1a96a3aa815bbf61dbf53ef`
+- blob: `a305de734e01908f449f574125fd2b0e8e8ca90e`
+- outer checkpoint should be downloaded via GitHub Contents API, not raw.githubusercontent.com;
+- its internal pinned runner/config fetches also use GitHub Contents API;
+- accepted runner/config commit and blob SHA checks are unchanged;
+- formal runner invocation remains exactly once with `-HandshakeOnly`;
+- DPAPI Secret runtime boundary, exact temporary /32 WLAN route, cleanup, and final WireGuard restoration are unchanged.
 
-If `/0` and the WireGuard block filter are both present, classify the current root cause as the WireGuard Windows kill-switch blocking direct untunneled HY2 traffic while the WG service itself remains exempt.
-
-Standing Owner authorization covers this read-only confirmation. Any repair that weakens kill-switch/firewall semantics requires a separate explicit Owner decision.
+Standing Owner authorization remains valid for this Gate. Do not broaden beyond post-killswitch handshake validation.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
