@@ -254,3 +254,47 @@ FINAL_PRIORITY_TEST=NOT_RUN
 SUPPLY_SOURCING=NOT_YET_PROVEN
 NEXT=X3_EVIDENCE_CARDS_COUNTEREVIDENCE_AND_SUPPLY_PATH
 ~~~
+
+
+---
+
+## 2026-10 — X2R1 Standardized Product Reframe
+
+~~~text
+AUTHORIZED_GATE=X2R1_STANDARDIZED_PRODUCT_REFRAME
+EXECUTION_CLASS=READ_ONLY_PUBLIC_MARKET_RESEARCH + DOCUMENTATION
+PREVIOUS_X2=RETAINED_AS_DEMAND_EVIDENCE
+PREVIOUS_X2_SHORTLIST=SUPERSEDED_FOR_SELECTION_AXIS
+RUNTIME_MUTATIONS=0
+ACCOUNT_MUTATIONS=0
+LISTINGS_PUBLISHED=0
+REAL_PURCHASES=0
+STANDARDIZED_RAW_UNIVERSE=36
+STANDARDIZED_SHORTLIST=8
+~~~
+
+### New decision rule
+
+Only A/B product shapes proceed:
+- A = repeated same product / versioned product;
+- B = structured-input fixed pipeline with target human QA <=15 min/order;
+- C/D service shapes do not proceed even when demand is strong.
+
+### Fresh market facts used
+
+- 2026 H1 Xianyu AI orders = 9.816m; tutorials/courses 8.1%; templates/workflows 6.6%; one seller sold 17k copies of an AI-manga tutorial in six months.
+- Current ecommerce image-productivity software = RMB 2.98–50.98, 722 “想要”, 5,163 views.
+- Current WordPress template bundle = RMB 25.90, 804 “想要”, about 10k views; license provenance remains unresolved, so only the demand pattern is retained.
+- Current processed public-company dataset = RMB 0.49 / RMB 1 direct buy, 523 “想要”, 3,591 views; strong standardization but low price and source/right risk.
+- Current AI bid-tool market contains reusable software/tool/access offers with direct “想要” counts, demonstrating task-specific tool demand while third-party access/rental models are excluded as our supply path.
+- Current software recommendation sets also contain monitoring/automation utilities and office/PDF products; platform-dependent automation risk remains counterevidence.
+
+### Result
+
+~~~text
+X2R1_STANDARDIZED_PRODUCT_REFRAME=PASS
+CURRENT_SELECTION_AXIS=MARKET_DEMAND_X_STANDARDIZATION
+A_B_ONLY=YES
+FINAL_PRIORITY_TEST=NOT_RUN
+NEXT=X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3
+~~~
