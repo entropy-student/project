@@ -64,7 +64,7 @@ Accepted source:
 
 ```text
 GATE_ID=G2B_HY2_UDP_Arrival_Probe
-STATE=WAIT_OWNER_AUTH
+STATE=AUTHORIZED_UDP_ARRIVAL_PROBE_PENDING
 OBJECTIVE=Determine whether one HY2 handshake sends UDP/8443 packets to the VPS and whether the VPS emits UDP/8443 response traffic.
 MAX_ENDPOINT_THIS_ROUND=One server-side read-only packet-presence observer + one existing handshake-only client probe + exact cleanup/read-back, then mandatory Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -136,7 +136,7 @@ Current baseline is clean. After the one probe:
 
 ### OWNER_ONLY_ACTIONS
 
-**Fresh Owner authorization required** for exactly one UDP-arrival + HY2-handshake probe. Keep WireGuard VPN on.
+**Authorization status: GRANTED** for exactly one UDP-arrival + HY2-handshake probe. Keep WireGuard VPN on. Authorization is consumed only when the one-shot handshake runner is actually invoked.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
@@ -199,7 +199,7 @@ After fresh Owner authorization, run one UDP-arrival + handshake probe. Keep Wir
 
 ## OWNER_ACTION_REQUIRED
 
-**Authorize one UDP-arrival + HY2 handshake probe** if you want to continue. Keep the current WireGuard VPN connected.
+**Run the prepared one-shot UDP-arrival + HY2 handshake checkpoint when presented.** Keep the current WireGuard VPN connected.
 
 ## EVIDENCE_POINTERS
 
