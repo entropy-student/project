@@ -15,7 +15,7 @@ P0 Research / Scope                    PASS
 G1 Foreground-safe Foundation          PASS
 G2-A HY2 side-by-side deployment       PASS
 G2-A DPAPI recovery closure            PASS
-G2-B Safe-window WG vs HY2 validation  IN_PROGRESS
+G2-B Safe-window WG vs HY2 validation  RETURN->DIAGNOSTIC
 MVP v1 seal                            PENDING
 ```
 
@@ -65,9 +65,9 @@ Accepted source:
 
 ```text
 GATE_ID=G2B_Full_Retry_After_ProxyUse_Repair
-STATE=AUTHORIZED_OWNER_RUN_PENDING
-OBJECTIVE=Run one bounded same-window WireGuard vs Hysteria2 validation using the accepted proxy-use validator repair.
-MAX_ENDPOINT_THIS_ROUND=One full runner invocation, result persistence, exact cleanup/read-back, then mandatory Reviewer stop.
+STATE=RETURN_TEST_FAILURE_DIAGNOSTIC_REQUIRED
+OBJECTIVE=Diagnose the failed HY2 handshake/auth sample without replaying the consumed full benchmark.
+MAX_ENDPOINT_THIS_ROUND=Read-only/source diagnosis first; any real-host Secret/Mihomo/handshake probe requires a new bounded Owner authorization.
 MANDATORY_REVIEW_STOP=YES
 ```
 
@@ -155,7 +155,7 @@ During the authorized retry, cleanup is mandatory even on failure:
 
 ### OWNER_ONLY_ACTIONS
 
-Authorization status: **GRANTED** for exactly one consequential full G2-B retry.
+Authorization status: **CONSUMED** by the 2026-10-02 formal runner invocation.
 
 Scope of this authorization:
 - one atomic Owner-local checkpoint;
@@ -166,7 +166,7 @@ Scope of this authorization:
 - no MTU/BBR/fq/GRO/sysctl tuning;
 - no second attempt.
 
-This authorization is consumed only once the formal runner is actually invoked. Pre-execution/read-only wrapper failure does not consume it.
+The formal runner was invoked, so this authorization cannot be reused. No second full retry is authorized.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
@@ -240,11 +240,11 @@ These are the latest accepted read-backs from the completed diagnostic/cleanup c
 
 ## NEXT_STEP
 
-Run exactly one bounded G2-B retry under the Current Gate, persist non-secret Evidence, stop at Reviewer, and decide whether G2-B passes or returns.
+Diagnose only the HY2 handshake/auth failure. First preserve and inspect non-secret failure facts; do not rerun the full benchmark. If a real-host probe that starts Mihomo or reads the DPAPI Secret is required, obtain a new bounded Owner authorization for that diagnostic only.
 
 ## OWNER_ACTION_REQUIRED
 
-**Run the prepared one-shot `scripts/g2b-owner-checkpoint.ps1` from PowerShell 7.6.6 as Administrator.** No second authorization is required unless the formal runner is invoked and returns.
+**NONE right now.** The one-shot retry was executed and is consumed. Reviewer is diagnosing the HY2 handshake/auth failure before asking you to run anything else.
 
 ## EVIDENCE_POINTERS
 
