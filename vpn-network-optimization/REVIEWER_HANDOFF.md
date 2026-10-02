@@ -696,3 +696,12 @@ Reviewer boundary: the output does not prove that the route is still present or 
 - Accepted runner source identity: Git blob `0ca085d8f31e6f9d31c76e7cb0434a5bcc89d2bd` from accepted commit `c1f93fedc6cb918a6a6054ae80d182ebd3738f94`; current GitHub `main` runner blob matches.
 - The checkpoint must verify Owner High-integrity PowerShell 7.6.6, exact source identity, route/WLAN/WireGuard baseline, final route absence, WireGuard restoration, and expected public exit.
 - Any failure returns to Reviewer. Authorization does not cover a second full-run attempt or any MTU/BBR/fq/GRO/sysctl tuning.
+
+
+### Owner atomic retry wrapper parse pre-execution return
+
+- Owner checkpoint did not execute because PowerShell parser rejected an assignment to `${using:ErrorActionPreference}`.
+- Failure class: parser-level / pre-execution. The runner was not invoked, no temporary route was created, no Secret was accessed, Mihomo was not started, and no benchmark/network mutation began.
+- This does not consume the single consequential full-run attempt because execution never entered the checkpoint body.
+- Repair: use ordinary local-scope assignment `$ErrorActionPreference = 'Stop'`; no `using:` scope is valid for assignment here.
+- Next action remains one atomic repaired full G2-B retry after wrapper syntax correction.
