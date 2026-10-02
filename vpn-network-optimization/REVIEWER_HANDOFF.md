@@ -134,21 +134,21 @@ Reviewer should not ask Owner for repeated authorization for ordinary bounded tr
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Current prepared comparison checkpoint:
-- `scripts/g2b-raw-udp-port-compare.ps1`
-- commit: `128a105a4da2fd2893238dc2e317b703a2427385`
-- blob: `186c3ab088a800254bfbce731bddfdc23650827d`
+Current prepared Windows-stack diagnostic:
+- `scripts/g2b-pktmon-json-egress-diagnostic.ps1`
+- commit: `842da52dfbae7c2aa33895ba3305f6eae2127ef8`
+- blob: `c54d568d25174b66fc32a26657fef7d7d973cd20`
 - keeps production WireGuard ON;
-- creates the exact temporary `24.199.118.137/32` WLAN route;
-- binds each synthetic UDP socket explicitly to WLAN address `192.168.1.4`;
-- sends exactly one 7-byte UDP datagram to 51820 and one 7-byte UDP datagram to 8443;
-- VPS observes only UDP header length 15 on the corresponding destination port, which distinguishes the synthetic 51820 probe from normal WireGuard traffic without inspecting payload;
-- does not start Mihomo, read DPAPI Secret, or run any benchmark;
-- removes the exact temporary route and rechecks production WireGuard.
+- creates the exact temporary `24.199.118.137/32` WLAN route and fresh-reads Windows route selection;
+- uses the exact `24.199.118.137 + UDP + 8443` pktmon filter;
+- runs pktmon in counters-only NIC mode, so no packet log or payload is captured;
+- binds one 7-byte synthetic UDP datagram explicitly to WLAN address `192.168.1.4`;
+- emits `pktmon counters --json` verbatim between markers so localized text parsing is eliminated;
+- stops pktmon, removes its filter and temporary route, then rechecks production WireGuard.
 
 Standing Owner authorization remains valid for further bounded troubleshooting inside this Gate.
 
-Executor should read only this Current Gate and the prepared comparison checkpoint. Do not alter configuration or replay benchmarks.
+Executor should read only this Current Gate and the prepared diagnostic. Do not alter VPN/HY2 configuration or replay benchmarks.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
