@@ -14,7 +14,7 @@ G1                                   PASS
 G2-A server-side HY2 deployment      PASS
 G2-A DPAPI recovery closure          PASS
 G2-B benchmark                       NOT STARTED (0 formal samples)
-CURRENT_BLOCKER                      PRECHECK_WIREGUARD_AND_CLIENT_STATE PropertyNotFoundException
+CURRENT_BLOCKER                      Get-ClientSnapshot optional property handling
 ```
 
 Current runtime facts:
@@ -334,6 +334,10 @@ Only after Owner explicitly confirms a safe window:
 ### G2 exit
 
 MVP ends after G2. New VPS/provider evaluation later reuses the same package rather than rebuilding the stack.
+
+### Owner snapshot diagnostic — root cause proven
+
+Owner read-only diagnostic proved that the optional Internet Settings field `AutoConfigURL` is absent while the other queried client-state fields and route/service checks are present and healthy. Under StrictMode, the current direct access in `Get-ClientSnapshot` explains the observed `PropertyNotFoundException`. No Secret access, benchmark, Mihomo start, or network mutation occurred.
 
 ## 12. Next Step
 
