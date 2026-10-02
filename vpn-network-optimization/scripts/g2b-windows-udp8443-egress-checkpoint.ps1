@@ -166,7 +166,7 @@ try {
     Assert-Checkpoint ($pktmonStatusExit -eq 0) 'PKTMON_STATUS_QUERY_FAILED'
     $pktmonInactive = (
         $pktmonStatusText -match '(?i)no active|not running|stopped|inactive' -or
-        $pktmonStatusText -match '没有.*活动|未运行|已停止|无活动'
+        $pktmonStatusText -match '没有运行|未运行|已停止|没有.*活动|无活动'
     )
     Assert-Checkpoint $pktmonInactive 'PKTMON_ACTIVE_OR_STATUS_UNCLEAR'
 
@@ -176,7 +176,206 @@ try {
     $pktmonNoFilters = (
         [string]::IsNullOrWhiteSpace($pktmonFilterText) -or
         $pktmonFilterText -match '(?i)no filters|no active filters' -or
-        $pktmonFilterText -match '没有.*筛选|没有.*过滤|无.*筛选|无.*过滤'
+        $pktmonFilterText -match '没有.*筛选|没有.*过滤|无.*筛选|无.*过滤|(?m)^\s*无\s*
+    if (-not $pktmonNoFilters) {
+        Write-Output 'PKTMON_PREFLIGHT_FILTER_STATE=NONEMPTY_OR_UNCLEAR'
+        $safeFilterPreview = ($pktmonFilterText -replace '[\r\n]+',' | ')
+        if ($safeFilterPreview.Length -gt 240) { $safeFilterPreview = $safeFilterPreview.Substring(0,240) }
+        Write-Output "PKTMON_FILTER_PREVIEW=$safeFilterPreview"
+    }
+    Assert-Checkpoint $pktmonNoFilters 'PKTMON_EXISTING_FILTERS_OR_UNCLEAR'
+    Write-Output 'PKTMON_PREFLIGHT=PASS'
+    Write-Output 'NETWORK_BASELINE_PREFLIGHT=PASS'
+
+    $failureStage = 'CREATE_EXACT_TEMP_ROUTE'
+    $routeArgs = @{
+        AddressFamily = 'IPv4'
+        DestinationPrefix = $routePrefix
+        InterfaceIndex = $wlanIndex
+        NextHop = $wlanGateway
+        RouteMetric = 1
+        PolicyStore = 'ActiveStore'
+        ErrorAction = 'Stop'
+    }
+    New-NetRoute @routeArgs | Out-Null
+
+    $createdRoutes = Get-ExactOwnerRoute
+    Assert-Checkpoint ($createdRoutes.Count -eq 1) 'OWNER_ROUTE_CREATE_CARDINALITY_INVALID'
+    Assert-Checkpoint (
+        [int]$createdRoutes[0].InterfaceIndex -eq $wlanIndex -and
+        [string]$createdRoutes[0].NextHop -eq $wlanGateway
+    ) 'OWNER_ROUTE_CREATE_READBACK_INVALID'
+    Write-Output 'OWNER_TEMP_ROUTE_CREATED=YES'
+
+    $failureStage = 'START_WINDOWS_UDP_OBSERVER'
+    & $pktmonPath filter add 'G2B-HY2-UDP8443' -i $publicVpsIp -t UDP -p 8443 | Out-Null
+    Assert-Checkpoint ($LASTEXITCODE -eq 0) 'PKTMON_FILTER_ADD_FAILED'
+    $pktmonFilterAdded = $true
+
+    & $pktmonPath start --capture --counters-only --comp nics | Out-Null
+    Assert-Checkpoint ($LASTEXITCODE -eq 0) 'PKTMON_START_FAILED'
+    $pktmonStarted = $true
+
+    & $pktmonPath reset | Out-Null
+    Assert-Checkpoint ($LASTEXITCODE -eq 0) 'PKTMON_RESET_FAILED'
+    Write-Output 'WINDOWS_UDP_OBSERVER_READY=YES'
+
+    $failureStage = 'FORMAL_RUNNER_INVOCATION'
+    Set-Content -LiteralPath $markerPath -Value "$stamp|$acceptedCommit" -NoNewline -Encoding ascii
+    $runnerInvoked = $true
+    Write-Output 'FORMAL_WINDOWS_EGRESS_HANDSHAKE_INVOCATION=START'
+
+    try {
+        & $runnerPath -HandshakeOnly 2>&1 | Tee-Object -FilePath $checkpointLog
+        $runnerCompleted = $true
+    }
+    catch {
+        $runnerCompleted = $false
+        Write-Output "FORMAL_RUNNER_RETURNED_ERROR_CLASS=$($_.Exception.GetType().Name)"
+    }
+
+    $failureStage = 'COLLECT_WINDOWS_UDP_OBSERVER'
+    $pktmonCounterText = (& $pktmonPath counters --type flow 2>&1 | Out-String).Trim()
+    Assert-Checkpoint ($LASTEXITCODE -eq 0) 'PKTMON_COUNTERS_FAILED'
+
+    foreach ($line in @($pktmonCounterText -split "[\r\n]+")) {
+        if ($line -match '\bTx\s+([0-9,]+)\s+([0-9,]+)') {
+            $txValue = [int64](($Matches[1] -replace ',',''))
+            if ($txValue -gt $pktmonTxPackets) { $pktmonTxPackets = $txValue }
+        }
+        if ($line -match '\bRx\s+([0-9,]+)\s+([0-9,]+)') {
+            $rxValue = [int64](($Matches[1] -replace ',',''))
+            if ($rxValue -gt $pktmonRxPackets) { $pktmonRxPackets = $rxValue }
+        }
+    }
+
+    $windowsUdpOutboundSeen = $(if ($pktmonTxPackets -gt 0) { 'YES' } else { 'NO' })
+    $windowsUdpInboundSeen = $(if ($pktmonRxPackets -gt 0) { 'YES' } else { 'NO' })
+    Write-Output "WINDOWS_UDP_8443_OUTBOUND_SEEN=$windowsUdpOutboundSeen"
+    Write-Output "WINDOWS_UDP_8443_INBOUND_SEEN=$windowsUdpInboundSeen"
+    Write-Output "PKTMON_MAX_NIC_TX_PACKETS=$pktmonTxPackets"
+    Write-Output "PKTMON_MAX_NIC_RX_PACKETS=$pktmonRxPackets"
+    Write-Output 'PKTMON_PAYLOAD_CAPTURED=NO'
+
+    & $pktmonPath stop | Out-Null
+    Assert-Checkpoint ($LASTEXITCODE -eq 0) 'PKTMON_STOP_FAILED'
+    $pktmonStarted = $false
+
+    & $pktmonPath filter remove | Out-Null
+    Assert-Checkpoint ($LASTEXITCODE -eq 0) 'PKTMON_FILTER_REMOVE_FAILED'
+    $pktmonFilterAdded = $false
+    Write-Output 'WINDOWS_UDP_OBSERVER_STOPPED=YES'
+
+    $failureStage = 'PERSIST_NON_SECRET_RESULTS'
+    if (Test-Path -LiteralPath $tempResults -PathType Container) {
+        Get-ChildItem -LiteralPath $tempResults -File -ErrorAction Stop |
+            Where-Object { $_.Extension -in @('.csv','.json') } |
+            Copy-Item -Destination $persistedResults -Force -ErrorAction Stop
+    }
+    Write-Output "NON_SECRET_RESULTS_PATH=$persistedResults"
+}
+catch {
+    $checkpointFailed = $true
+    $failureType = $_.Exception.GetType().Name
+    $message = [string]$_.Exception.Message
+    Write-Output "CHECKPOINT_RETURN_STAGE=$failureStage"
+    if ($message -match '^[A-Z][A-Z0-9_]*$') {
+        Write-Output "CHECKPOINT_RETURN_CODE=$message"
+    }
+    else {
+        Write-Output "CHECKPOINT_RETURN_ERROR_CLASS=$failureType"
+    }
+}
+finally {
+    $failureStage = 'FINAL_FALLBACK_CLEANUP'
+
+    try {
+        if ($pktmonStarted -and $null -ne $pktmonPath) {
+            & $pktmonPath stop | Out-Null
+            if ($LASTEXITCODE -ne 0) { throw 'PKTMON_FINAL_STOP_FAILED' }
+            $pktmonStarted = $false
+        }
+        if ($pktmonFilterAdded -and $null -ne $pktmonPath) {
+            & $pktmonPath filter remove | Out-Null
+            if ($LASTEXITCODE -ne 0) { throw 'PKTMON_FINAL_FILTER_REMOVE_FAILED' }
+            $pktmonFilterAdded = $false
+        }
+        Write-Output 'FINAL_WINDOWS_UDP_OBSERVER_CLEAN=YES'
+    }
+    catch {
+        Add-CleanupFailure 'FINAL_WINDOWS_UDP_OBSERVER_CLEANUP_FAILED'
+    }
+
+    try {
+        $routes = Get-ExactOwnerRoute
+        if ($routes.Count -gt 0) {
+            $unexpected = @($routes | Where-Object {
+                [int]$_.InterfaceIndex -ne $wlanIndex -or [string]$_.NextHop -ne $wlanGateway
+            })
+            if ($unexpected.Count -gt 0) {
+                throw 'UNEXPECTED_OWNER_ROUTE_SHAPE_DURING_CLEANUP'
+            }
+            foreach ($route in $routes) {
+                Remove-NetRoute -InputObject $route -Confirm:$false -ErrorAction Stop
+            }
+        }
+        Assert-Checkpoint ((Get-ExactOwnerRoute).Count -eq 0) 'OWNER_ROUTE_STILL_PRESENT'
+        Write-Output 'FINAL_OWNER_TEMP_ROUTE_ABSENT=YES'
+    }
+    catch {
+        Add-CleanupFailure 'FINAL_OWNER_ROUTE_CLEANUP_FAILED'
+    }
+
+    try {
+        $wgManagerFinal = Get-Service -Name 'WireGuardManager' -ErrorAction Stop
+        $wgTunnelFinal = Get-Service -Name 'WireGuardTunnel$SFO2-A' -ErrorAction Stop
+        $wgAdapterFinal = Get-NetAdapter -Name $wgAdapterName -ErrorAction Stop
+        Assert-Checkpoint ($wgManagerFinal.Status -eq 'Running') 'FINAL_WG_MANAGER_NOT_RUNNING'
+        Assert-Checkpoint ($wgTunnelFinal.Status -eq 'Running') 'FINAL_WG_TUNNEL_NOT_RUNNING'
+        Assert-Checkpoint ($wgAdapterFinal.Status -eq 'Up' -and [int]$wgAdapterFinal.InterfaceIndex -eq 13) 'FINAL_WG_ADAPTER_INVALID'
+        Assert-Checkpoint ((Get-PublicExit) -eq $publicVpsIp) 'FINAL_PUBLIC_EXIT_INVALID'
+        Write-Output 'FINAL_PRODUCTION_WIREGUARD=RESTORED'
+    }
+    catch {
+        Add-CleanupFailure 'FINAL_WIREGUARD_READBACK_FAILED'
+    }
+
+    try {
+        Assert-Checkpoint (@(Get-NetTCPConnection -LocalPort $proxyPort -State Listen -ErrorAction SilentlyContinue).Count -eq 0) 'FINAL_PROXY_LISTENER_PRESENT'
+        Assert-Checkpoint (@(Get-NetUDPEndpoint -LocalPort $proxyPort -ErrorAction SilentlyContinue).Count -eq 0) 'FINAL_PROXY_UDP_ENDPOINT_PRESENT'
+        Assert-Checkpoint (-not (Test-Path -LiteralPath $runtimeConfigPath)) 'FINAL_RUNTIME_CONFIG_PRESENT'
+        Write-Output 'FINAL_TEST_RUNTIME_RESIDUE=ABSENT'
+    }
+    catch {
+        Add-CleanupFailure 'FINAL_TEST_RUNTIME_READBACK_FAILED'
+    }
+
+    try {
+        if (Test-Path -LiteralPath $tempRoot) {
+            Remove-Item -LiteralPath $tempRoot -Recurse -Force -ErrorAction Stop
+        }
+        Write-Output 'TEMP_CHECKPOINT_WORKSPACE_REMOVED=YES'
+    }
+    catch {
+        Add-CleanupFailure 'TEMP_CHECKPOINT_WORKSPACE_CLEANUP_FAILED'
+    }
+}
+
+if ($cleanupFailures.Count -gt 0) { $checkpointFailed = $true }
+
+Write-Output "RUNNER_INVOKED=$runnerInvoked"
+Write-Output "RUNNER_COMPLETED=$runnerCompleted"
+Write-Output "WINDOWS_EGRESS_PROBE_INVOKED=$runnerInvoked"
+Write-Output "CHECKPOINT_CLEANUP_FAILURE_COUNT=$($cleanupFailures.Count)"
+
+if ($runnerInvoked -and $runnerCompleted -and -not $checkpointFailed) {
+    Write-Output 'OWNER_WINDOWS_EGRESS_PROBE_RESULT=COMPLETE'
+    exit 0
+}
+
+Write-Output 'OWNER_WINDOWS_EGRESS_PROBE_RESULT=RETURN_TO_REVIEWER'
+exit 1
+
     )
     if (-not $pktmonNoFilters) {
         Write-Output 'PKTMON_PREFLIGHT_FILTER_STATE=NONEMPTY_OR_UNCLEAR'
