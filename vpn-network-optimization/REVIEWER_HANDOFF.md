@@ -48,6 +48,7 @@ Current known components:
 
 ## CURRENT_ACCEPTED_STATE
 
+- G2-C read-only preflight passed: strict SSH path valid; TCP/443 free; WG/HY2 healthy; no existing sing-box/Xray/Mihomo server-core collision; NTP healthy; about 254 MiB MemAvailable and 6.69 GiB root free.
 - G2-B root cause is closed: WireGuard Windows `0.0.0.0/0` strict WFP kill-switch blocked HY2 outer UDP before WLAN.
 - Owner replaced IPv4 `0.0.0.0/0` with `0.0.0.0/1, 128.0.0.0/1`; fresh read-back proved both split defaults present and `Block all outbound (IPv4)` absent.
 - Post-repair raw UDP/8443 reached the VPS.
@@ -65,9 +66,9 @@ Current known components:
 
 ```text
 GATE_ID=G2C_VLESS_REALITY_SIDEBYSIDE
-STATE=AUTHORIZED_READONLY_PREFLIGHT
+STATE=PREFLIGHT_PASS_DEPLOYMENT_PENDING_OWNER_AUTH
 OBJECTIVE=Add VLESS+REALITY as the frozen TCP/443 fallback candidate without disturbing WireGuard or HY2.
-MAX_ENDPOINT_THIS_ROUND=Read-only Windows/VPS preflight and implementation/port compatibility decision; no server install, Secret generation, public listener, or client switch yet.
+MAX_ENDPOINT_THIS_ROUND=Read-only preflight completed; next consequential endpoint is one side-by-side VLESS+REALITY deployment checkpoint after explicit Owner authorization.
 MANDATORY_REVIEW_STOP=YES
 ```
 
@@ -194,11 +195,11 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Run the read-only G2-C preflight. If it passes, Reviewer will freeze the exact VLESS+REALITY implementation, target/port, Secret/recovery model, rollback plan, and one side-by-side deployment checkpoint. No protocol performance conclusion is made in the preflight.
+Preflight passed. Reviewer now freezes the exact side-by-side deployment design and prepares one consequential Owner checkpoint. No server/client mutation occurs until Owner explicitly authorizes that checkpoint.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the single read-only G2-C preflight checkpoint supplied by Reviewer and return its complete non-secret output.
+Explicitly authorize or decline the prepared G2-C side-by-side deployment checkpoint after Reviewer presents the exact design, rollback, and Secret boundary.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
