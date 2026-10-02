@@ -186,6 +186,8 @@ foreach ($arg in @(
     '-o', 'StrictHostKeyChecking=yes',
     '-o', 'UpdateHostKeys=no',
     '-o', "UserKnownHostsFile=$KnownHostsFile",
+    '-o', 'HostKeyAlias=24.199.118.137',
+    '-o', 'HostName=10.66.21.1',
     '-o', 'ControlMaster=no',
     '-o', 'ControlPath=none',
     '-o', 'ForwardAgent=no',
