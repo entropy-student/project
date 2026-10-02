@@ -1670,3 +1670,29 @@ EXECUTOR_RESULT=RETURN_G2C_WINDOWS_ADMIN_PREFLIGHT_BLOCKED
 REQUIRED_NEXT_CONTEXT=Elevated Windows PowerShell must pass the named preflight before any canary action
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Reviewer reconciliation — G2-C admin preflight return — 2026-10-03
+
+```text
+REVIEWED_COMMIT=181554b265ce9f7c9f8978186943d7dd87d540d0
+EXECUTOR_RESULT=RETURN_G2C_WINDOWS_ADMIN_PREFLIGHT_BLOCKED
+REVIEWER_CLASSIFICATION=PREFLIGHT_TOOLING_OVERCONSTRAINT
+TARGET_RUNTIME_DRIFT_PROVEN=NO
+CONSEQUENTIAL_ACTION_STARTED=NO
+SSH_STARTED=NO
+SECRET_ACCESSED=NO
+VPS_CHANGED=NO
+WINDOWS_NETWORK_CHANGED=NO
+OWNER_AUTHORIZATION_REMAINS_VALID=YES
+ADMINISTRATOR_REQUIRED_FOR_RETRY=NO
+SAME_GATE_BOUNDED_RETRY=AUTHORIZED
+PUBLIC_TCP443_EXPOSURE=NOT_AUTHORIZED
+```
+
+Reviewer reasoning:
+- The accepted canary Gate itself does not require any Windows route/firewall/service/TUN/system-proxy mutation.
+- The failed attempt stopped before SSH or any consequential action and therefore does not create ambiguous partial target state.
+- The blocker came from executing the earlier `g2c-vless-reality-preflight.ps1` Administrator assertion as if it were a canary acceptance requirement. In the current Gate that script is only a reference for the strict SSH/runtime pattern.
+- Medium-integrity Windows execution is sufficient for user-space Mihomo, current-owner-only ephemeral runtime files, and strict SSH, subject to the exact read-backs already required by the Gate.
+- Retry stays inside the existing Owner-authorized Gate and must still fail closed if a specific operation independently proves elevation is actually required.
