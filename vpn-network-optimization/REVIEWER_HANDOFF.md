@@ -73,7 +73,7 @@ MANDATORY_REVIEW_STOP=YES
 
 ### TARGET_AND_SCOPE
 
-Allowed only after fresh explicit Owner authorization:
+Owner authorization is now granted for this one bounded retry:
 - Owner Windows host only for the local benchmark/checkpoint.
 - Existing production WireGuard stays running.
 - Existing Hysteria2 server on UDP 8443 is used as-is.
@@ -170,7 +170,7 @@ This authorization is consumed only once the formal runner is actually invoked. 
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-If/when Owner authorizes the retry, Executor startup is intentionally narrow.
+Owner authorization is granted. Executor startup is intentionally narrow.
 
 Read:
 1. this `CURRENT_GATE` section;
