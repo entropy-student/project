@@ -66,7 +66,7 @@ else
   echo "WG_SERVICE_ACTIVE=NO"
 fi
 
-if ss -H -lunp 2>/dev/null | awk '$5 ~ /:51820$/ {found=1} END{exit !found}'; then
+if ss -H -lunp 2>/dev/null | awk '$4 ~ /:51820$/ {found=1} END{exit !found}'; then
   echo "UDP_51820_LISTENER=YES"
 else
   echo "UDP_51820_LISTENER=NO"
@@ -78,7 +78,7 @@ else
   echo "HY2_SERVICE_ACTIVE=NO"
 fi
 
-if ss -H -lunp 2>/dev/null | awk '$5 ~ /:8443$/ {found=1} END{exit !found}'; then
+if ss -H -lunp 2>/dev/null | awk '$4 ~ /:8443$/ {found=1} END{exit !found}'; then
   echo "UDP_8443_LISTENER=YES"
 else
   echo "UDP_8443_LISTENER=NO"
