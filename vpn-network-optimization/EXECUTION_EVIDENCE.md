@@ -1039,3 +1039,25 @@ Reviewer interpretation:
 - Windows Packet Monitor is currently inactive and has no existing filters.
 - The checkpoint parser was repaired to recognize these zh-CN outputs.
 - Standing Owner authorization for the current Gate remains valid because no handshake was sent.
+
+
+## Windows UDP8443 egress probe — second pktmon preflight return — 2026-10-02
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+CHECKPOINT_RETURN_STAGE=NETWORK_BASELINE_PREFLIGHT
+CHECKPOINT_RETURN_CODE=PKTMON_ACTIVE_OR_STATUS_UNCLEAR
+RUNNER_INVOKED=NO
+WINDOWS_EGRESS_PROBE_INVOKED=NO
+FINAL_WINDOWS_UDP_OBSERVER_CLEAN=YES
+FINAL_OWNER_TEMP_ROUTE_ABSENT=YES
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_TEST_RUNTIME_RESIDUE=ABSENT
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+```
+
+Reviewer interpretation:
+- No handshake was sent and standing authorization remains valid.
+- Manual Owner read-back immediately before this run already proved pktmon inactive and filter list empty.
+- Repeated return is caused by localized/captured text decoding, not real pktmon activity.
+- Parser is replaced with language-independent output-structure checks while retaining fail-closed behavior.
