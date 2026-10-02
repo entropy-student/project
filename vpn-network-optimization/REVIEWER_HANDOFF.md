@@ -45,16 +45,15 @@ Current known components:
 ## CURRENT_ACCEPTED_STATE
 
 Latest accepted G2-B facts:
-- One repaired full retry completed WireGuard benchmark **60/60 with 0 failures**.
-- Latest accepted WG sample: Median 0.600826s, P90 0.832286s, P95 1.111586s, P99 1.533950s, >1s 4, >1.5s 1, >2s 0.
+- Latest authorized retry completed WireGuard benchmark **60/60 with 0 failures**.
+- Latest WG sample: Median 0.604015s, P90 0.764660s, P95 0.797894s, P99 1.333582s, >1s 1, >1.5s 0, >2s 0.
 - Runtime Secret config creation and owner-only ACL validation passed.
 - Mihomo test proxy reached READY.
-- The run returned before HY2 sample 1 because the old handshake-path validator incorrectly used curl `remote_ip == 127.0.0.1` as proof that the proxy was used.
-- Read-only diagnosis proved curl 8.21.0 supports `%{proxy_used}`; direct no-proxy probe returned `proxy_used=0`.
-- Current real-host cleanup read-back after that return is clean: TCP 17890 rows 0, UDP 17890 rows 0, Mihomo process count 0, runtime directory/config absent.
-- Production WireGuard was restored and the temporary /32 route was removed.
-- The repaired runner now uses `proxy_used`: WG requires 0; HY2/proxied requests require 1. TCP occupation preflight now treats only State=Listen as a listener.
-- Repair accepted by Reviewer. No HY2 benchmark sample or protocol-performance conclusion exists yet.
+- The latest run passed the repaired `proxy_used=1` proxy-path assertion, then returned on the next assertion with `HY2_HANDSHAKE_OR_AUTH_FAILED` before HY2 sample 1.
+- Therefore the request reached the local proxy path, but the proxied curl sample did not satisfy `curl exit == 0 && HTTP status == 401`.
+- The retained console output did not include that sample's exact curl exit code, HTTP status, or classified error; root cause is still UNKNOWN.
+- Cleanup passed: Mihomo stopped, runtime Secret config deleted, plaintext Secret artifacts 0, temporary route removed, production WireGuard restored, final test residue absent.
+- No HY2 benchmark sample or protocol-performance conclusion exists yet.
 
 Accepted source:
 - Repaired runner commit: `ed4f8216ecd18dcea29f06f12fa0773c97c3cdf4`
@@ -64,143 +63,91 @@ Accepted source:
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G2B_Full_Retry_After_ProxyUse_Repair
-STATE=RETURN_TEST_FAILURE_DIAGNOSTIC_REQUIRED
-OBJECTIVE=Diagnose the failed HY2 handshake/auth sample without replaying the consumed full benchmark.
-MAX_ENDPOINT_THIS_ROUND=Read-only/source diagnosis first; any real-host Secret/Mihomo/handshake probe requires a new bounded Owner authorization.
+GATE_ID=G2B_HY2_Handshake_Auth_Diagnostic
+STATE=READ_ONLY_DIAGNOSTIC
+OBJECTIVE=Determine why the proxied HY2 handshake failed after proxy_used=1, without replaying the consumed full benchmark.
+MAX_ENDPOINT_THIS_ROUND=Source/result diagnosis only. Any real-host probe that starts Mihomo, reads the DPAPI Secret, changes routes, or sends a new HY2 handshake requires a new bounded Owner authorization.
 MANDATORY_REVIEW_STOP=YES
 ```
 
 ### TARGET_AND_SCOPE
 
-Owner authorization is now granted for this one bounded retry:
-- Owner Windows host only for the local benchmark/checkpoint.
-- Existing production WireGuard stays running.
-- Existing Hysteria2 server on UDP 8443 is used as-is.
-- One temporary exact `24.199.118.137/32` ActiveStore route via the already accepted WLAN path may be created and must be removed during cleanup.
-- One test-only localhost Mihomo proxy on port 17890 may be started and must be stopped during cleanup.
-- Canonical DPAPI recovery may be read only inside the protected Owner execution boundary to render the temporary runtime config.
-- Non-secret benchmark result artifacts may be persisted.
+Allowed now:
+- inspect accepted runner/config/source;
+- inspect the non-secret Owner-reported console output and persisted non-secret result metadata when available;
+- identify which missing diagnostic field is needed next;
+- prepare a bounded diagnostic repair/probe for later authorization.
 
-Not allowed:
-- No second runner invocation.
-- No MTU / BBR / fq / GRO / sysctl tuning.
-- No WireGuard stop/reconfigure.
-- No VPS/HY2 redeploy or Secret rotation.
-- No Secret value in chat, repo, console output, Handoff, Evidence, command arguments, or ordinary logs.
-- No expansion into another protocol or architecture.
+Not allowed now:
+- no second full runner invocation;
+- no new temporary route;
+- no Mihomo start;
+- no DPAPI Secret read;
+- no HY2 handshake replay;
+- no MTU / BBR / fq / GRO / sysctl tuning;
+- no WireGuard/VPS/HY2 reconfiguration or Secret rotation.
 
 ### APPLICABLE_CRITICAL_CONSTRAINTS
 
-- Preserve production WireGuard and foreground tasks.
-- Source identity must match the accepted repaired runner before consequential execution.
-- Fresh runtime/target preflight is still required; static accepted documents are not a substitute for live state.
-- Any material drift, ambiguous prior state, unexpected Secret/runtime residue, route mismatch, or cleanup failure returns to Reviewer.
-- One authorization covers one consequential runner invocation only.
-
-### PREFLIGHT
-
-Before the one full invocation:
-1. prove Owner PowerShell 7.6.6 / Administrator / High integrity;
-2. prove accepted runner source/blob identity;
-3. prove production WireGuard baseline and expected public exit;
-4. prove temporary exact /32 route is absent before creation;
-5. prove no Mihomo test process/listener/runtime config residue;
-6. prove required WLAN/WireGuard adapter identity and accepted route prerequisites;
-7. prove canonical DPAPI recovery artifact is available and protected without emitting Secret material;
-8. create/read back only the exact temporary route required for the HY2 outer path;
-9. fail closed before Secret access/benchmark if any required preflight item is not satisfied.
+- The previous consequential authorization is consumed.
+- Production WireGuard is the restored baseline.
+- Current failure is not yet classified as TLS, HY2 auth, UDP path, server rejection, or OpenAI-side behavior because the failed handshake sample's curl exit/status/error fields were not retained.
+- Diagnose one fault domain at a time; do not infer root cause from the generic failure code.
+- Secret values remain inside the protected execution boundary.
 
 ### REQUIRED_EVIDENCE
 
-- source/commit identity;
-- Owner-host privilege/runtime identity;
-- preflight network/client state;
-- temporary route creation/read-back;
-- WireGuard benchmark sample count and Median/P90/P95/P99/tail metrics;
-- HY2 proxy readiness and `proxy_used=1` handshake-path proof;
-- HY2 benchmark sample count and same metrics;
-- expected public exit/path checks;
-- native exit/failure phase if any;
-- Mihomo stop, runtime Secret config deletion, plaintext Secret artifact count;
-- exact temporary route removal;
-- production WireGuard restoration and final network read-back;
-- Secret values emitted/committed = 0.
+For this diagnostic round:
+- exact runner success predicate and failure ordering;
+- what the retained output proves and does not prove;
+- whether existing non-secret result artifacts contain the missing handshake curl exit / HTTP status / error class;
+- if not, the smallest future diagnostic needed to capture those fields without running the 60+60 benchmark again.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires:
-- one valid WG sample set;
-- one valid HY2 sample set;
-- HY2 path proven to use the local proxy and intended outer route;
-- no unexpected public-exit/path drift;
-- exact cleanup PASS;
-- production WireGuard restored;
-- no plaintext Secret residue;
-- no second consequential invocation;
-- complete reviewable non-secret Evidence.
-
-Reviewer alone decides final PASS and whether G2-B supports a v1 protocol/config decision.
+This diagnostic Gate passes when Reviewer can state one of:
+1. a root cause is proven from existing non-secret evidence; or
+2. the exact missing fact is identified and a minimal bounded diagnostic is prepared, with no full benchmark replay.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Current accepted baseline is already restored: production WireGuard active, temporary route absent, no Mihomo/runtime-config residue.
+Current accepted cleanup:
+```text
+PRODUCTION_WIREGUARD=RESTORED
+TEMPORARY_VPS_ROUTE=ABSENT
+MIHOMO_TEST_PROCESS=ABSENT
+RUNTIME_SECRET_CONFIG=ABSENT
+PLAINTEXT_SECRET_RESIDUE=0
+CHECKPOINT_CLEANUP_FAILURE_COUNT=0
+```
 
-During the authorized retry, cleanup is mandatory even on failure:
-- stop test Mihomo;
-- delete temporary runtime Secret config;
-- remove exact temporary /32 route;
-- verify production WireGuard and final network state;
-- if cleanup is incomplete or ambiguous, RETURN and do not retry.
+No new runtime mutation is authorized in this Gate.
 
 ### OWNER_ONLY_ACTIONS
 
-Authorization status: **CONSUMED** by the 2026-10-02 formal runner invocation.
+Previous full-run authorization: **CONSUMED**.
 
-Scope of this authorization:
-- one atomic Owner-local checkpoint;
-- one formal runner invocation maximum;
-- exact temporary route only;
-- existing accepted runner/config only;
-- mandatory cleanup/read-back;
-- no MTU/BBR/fq/GRO/sysctl tuning;
-- no second attempt.
-
-The formal runner was invoked, so this authorization cannot be reused. No second full retry is authorized.
+Current Owner action: **NONE** until Reviewer finishes the read-only diagnosis. Any later real-host handshake diagnostic will receive a separate, narrowly scoped authorization request.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Owner authorization is granted. Executor startup is intentionally narrow.
+Executor startup for this diagnostic is intentionally narrow.
 
-Prepared Owner checkpoint:
-- `scripts/g2b-owner-checkpoint.ps1`
-- checkpoint blob: `4756ce6661a3613b80014f663b2f5f25f616ef92`
-- checkpoint creation commit: `c94929f478a4856636bc88aa07708de5d23df545`
-- it pins the accepted runner/config, creates the exact temporary route, invokes the formal runner at most once, persists non-secret results, and performs fallback cleanup/read-back.
+Read only:
+1. this `CURRENT_GATE`;
+2. `scripts/g2b-owner-runner.ps1` around `Invoke-CurlSample` and `HY2_OUTER_ROUTE_AND_HANDSHAKE`;
+3. `config/clash/sfo3-a-hy2.yaml`;
+4. the newest Evidence section `G2-B authorized retry after proxy-use validator repair — 2026-10-02`.
 
-Read:
-1. this `CURRENT_GATE` section;
-2. `scripts/g2b-owner-checkpoint.ps1`;
-3. `scripts/g2b-owner-runner.ps1`;
-4. `config/clash/sfo3-a-hy2.yaml`;
-5. only the recent G2-B Evidence sections covering:
-   - runtime ACL owner repair;
-   - retry after ACL repair / HY2 handshake validator return;
-   - HY2 proxy-use validator diagnostic and repair.
-
-Accepted facts Executor may rely on are listed in `CURRENT_ACCEPTED_STATE`.
-
-Do **not** reread full Governance, full historical Handoff, old completed Gates, or the whole append-only Evidence file. If a specific missing fact appears, do the smallest targeted read; confirmed material drift returns to Reviewer.
+Do not reread full Governance, historical Handoff, old Gates, or the whole Evidence file.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
 结果：PASS_CANDIDATE / RETURN_*
-改动：一句话说明实际执行了什么。
-验证：一句话总结关键结果；详细证据写入 EXECUTION_EVIDENCE。
-问题：NONE / 实际阻塞原因。
-回滚：一句话说明 cleanup 与生产 WireGuard 状态。
-请 Reviewer 检查：一句话说明需要核对的 Evidence。
+诊断：一句话说明已证明什么。
+缺口：一句话说明还缺哪个具体事实。
+下一步：一句话说明是否需要新的 Owner 本机诊断。
 Owner 转交：NONE / 最小必要动作。
 ```
 
