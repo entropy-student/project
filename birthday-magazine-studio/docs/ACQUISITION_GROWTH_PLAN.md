@@ -12,7 +12,9 @@ CORE_PRODUCT_THESIS=KEEP_FOR_LOW_COST_VALIDATION
 SOLUTION_PROOF=STRONG_AT_BOUNDED_TECHNICAL_SCOPE
 REAL_TARGET_USER_ATTENTION=UNVERIFIED
 REAL_TARGET_USER_INTEREST=UNVERIFIED
-ACTIVATION_FRAMING=ITERATE_ONCE_IN_G3CR6R2
+FINAL_PRODUCT_PROOF=ITERATE
+MOTION_CREATIVE=ITERATE
+ACTIVATION_FRAMING=ITERATE_IN_G3CR6R3
 REAL_INTENT=UNVERIFIED
 REAL_TRANSACTION=UNVERIFIED
 REPEATABILITY=UNKNOWN
@@ -58,27 +60,18 @@ Do not infer them from Sandbox, screenshots, code correctness, likes, views, or 
 
 Before external testing:
 
-- **Bottleneck:** Value Experience / Activation + Trust.
+- **Bottleneck:** Proof / Trust + Message / Creative + Value Experience / Activation.
 - **Primary lever:** Free Preview framing / first-value experience.
 - **Secondary lever:** Proof / Trust.
 - **This round does not change:** Audience, price, paid scope or channel.
 
-## G3CR6R2 — bounded Activation correction
+## G3CR6R3 — Final Product Proof + Motion + Activation correction
 
-Keep the free Preview capability.
-
-Change the framing:
-
-1. show a polished magazine outcome before upload;
-2. make “Try it with your photo” optional;
-3. when personalized, preserve cover + editorial spread context;
-4. keep the complete 12-page US$39.99 expansion immediately understandable.
-
-Then stop general product polishing.
+Use the accepted real G2BR3 12-page output as prominent final-product proof; add purposeful editorial motion across the homepage; redesign the low-pull upload-first Preview so personalization is optional and the magazine proposition is already clear. Image generation may stage actual rendered pages, but must not fabricate a different deliverable. Then stop general product polishing.
 
 ## Next real-user experiment
 
-After G3CR6R2 Reviewer PASS + Owner visual freeze + the required public/payment readiness Gates, the first acquisition loop should vary **Message / Situation**, not price or product scope.
+After G3CR6R3 Reviewer PASS + Owner visual freeze + the required public/payment readiness Gates, the first acquisition loop should vary **Message / Situation**, not price or product scope.
 
 Suggested message hypotheses:
 
