@@ -2286,3 +2286,21 @@ Reviewer reasoning:
 - Post-run read-back shows SFO2-A and the selected control route both on ifIndex 9 while the runner requires 13; the safe invariant is runtime consistency, not a fixed interface number.
 - Because request state is UNKNOWN, Reviewer will not reuse the prior one-request authorization. A fresh Owner authorization is required before any later real OpenAI/REALITY request.
 - The next round is local-only runner hardening with zero SSH/network/Secret activity.
+
+
+## Owner context reconciliation — Windows reboot before R3 ifIndex read-back — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED
+OWNER_REPORTED_WINDOWS_REBOOT=YES
+TIMING=shortly before the observed R3 post-run SFO2-A ifIndex=9 read-back
+REVIEWER_INTERPRETATION=reboot may plausibly coincide with Windows interface-index renumbering
+CAUSATION_OF_R3_FAILURE=NOT_PROVEN
+RUNNER_HARDCODED_IFINDEX_13=STILL_INVALID_RUNTIME_ASSUMPTION
+H1_GATE_REQUIRED=YES
+H1_LIVE_IFINDEX_EXPECTATION=DYNAMIC_POSITIVE_VALUE_MATCHING_CONTROL_ROUTE
+SPECIFIC_IFINDEX_9_REQUIRED=NO
+SPECIFIC_IFINDEX_13_REQUIRED=NO
+```
+
+This Owner-reported reboot context changes the interpretation of the ifIndex observation, not the safety conclusion. The project no longer treats the move from 13 to 9 as unexplained evidence of network drift; it is plausibly consistent with a normal Windows reboot/re-enumeration. However, no causal claim is made about the masked R3 failure. The H1 runner-hardening Gate remains necessary because the runner must tolerate legitimate interface-index changes across reboot/reconnect and because the exception classifier independently failed.
