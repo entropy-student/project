@@ -3145,3 +3145,41 @@ Reviewer interpretation:
 - No persistent change, permanent firewall/routing change, or Secret emission/commit occurred.
 - The one-request P1 budget is exhausted; this Gate must not be replayed absent a separately authorized future Gate.
 
+## Reviewer acceptance — G3A network adaptation local engineering H1 — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_POWERSHELL_OUTPUT_REVIEWED_AGAINST_PINNED_H1_SOURCE
+GATE_ID=G3A_NETWORK_ADAPTATION_LOCAL_ENGINEERING_H1
+REVIEWER_RESULT=PASS
+IMPLEMENTATION_COMMIT=eef00e13e51734d892b74de7c20efc9f5243f23f
+HANDOFF_PIN_COMMIT=cfdf8c23048b30dd70309eb29ec22deed98eceb1
+POWERSHELL_RUNTIME=7.6.6
+OWNER_EXECUTION_PRIVILEGE=NON_ADMINISTRATOR
+PLANNER_AST=PASS
+G3A_SELFTEST_CASES=9
+G3A_SELFTEST_RESULT=PASS
+PLANNER_MODE=ADVISORY_ONLY
+STATIC_SOURCE_REVIEW=PASS
+HISTORICAL_WLAN_CONSTANTS_PRESENT=NO
+LIVE_ROUTE_MUTATION_CODE_PRESENT=NO
+SERVICE_MUTATION_CODE_PRESENT=NO
+SYSTEM_PROXY_MUTATION_CODE_PRESENT=NO
+TUN_MUTATION_CODE_PRESENT=NO
+SSH_OR_HTTP_ACTION_CODE_PRESENT=NO
+NETWORK_MUTATION=NO
+SERVICE_MUTATION=NO
+SYSTEM_PROXY_MUTATION=NO
+TUN_MUTATION=NO
+VPS_MUTATION=NO
+SECRET_VALUES_READ=0
+SECRET_VALUES_EMITTED=0
+```
+
+Reviewer interpretation:
+- H1 source and deterministic fixture behavior satisfy the accepted plan-only Gate.
+- Dynamic physical-egress selection is not tied to historical WLAN address/gateway/ifIndex values.
+- Valid, missing, and ambiguous physical-egress fixtures are covered.
+- WireGuard baseline, HY2 fallback, REALITY fallback, no-safe-role, and ambiguous-health cases are fail-closed as designed.
+- H1 performs no live route, service, proxy, TUN, VPS, SSH, or HTTP action and reads/emits no Secret values.
+- H1 is formally closed. The next G3-A step may collect real read-only health/readiness facts, but live switching remains separately gated.
+
