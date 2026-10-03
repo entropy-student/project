@@ -27,13 +27,13 @@ RUNTIME_MUTATION_THIS_REBOOT = 0
 ~~~text
 当前官方规则 / 平台交易数据 / 当前公开商品页
 → 需求证据池
-→ 标准化分类 A / B / C / D
-→ 只允许 A / B 进入候选
-→ 标品候选池
-→ E1–E10 + 标准化经济性 + 版权/交付
-→ 最多 3 个 Top Candidates
+→ 具体商品类型 / SKU 池
+→ SKU 级需求深挖与排序
+→ 约 10–15 个高需求 SKU
+→ 单独研究货源 / 权利 / 交付 / 经济性
 → Minimum Validation
-→ Supply / Listing / Automation
+→ 最终 Priority SKU
+→ Listing / Automation
 
 既有 Shared VPS Xianyu runtime
 → 独立保留
@@ -129,7 +129,7 @@ X3R1 的 36 个具体 SKU、需求等级、当前证据与货源独立字段已�
 
 ## STANDARDIZATION_GATE
 
-候选进入 Top 3 前必须证明：
+SKU 进入最终真实测试候选前必须证明：
 
 - CORE_INVARIANCE：核心产品至少 80% 不因买家变化；
 - STRUCTURED_INPUT：若需要个性化，只接收固定字段/文件，不依赖开放式需求访谈；
@@ -169,11 +169,9 @@ AUTOMATION_RUNTIME=UNCHANGED / NOT_USED
 ## UNRESOLVED
 
 - 闲鱼公开网页无法完整暴露 SKU 级真实订单、退款、询盘和 Support Minutes；最终仍需 Minimum Validation。
-- AI 模板/工作流 6.6% 的平台订单口径同时包含模板与定制工作流，纯标品份额未知。
-- P1 的决定性未知：哪个具体单任务工具能在免费工具之外证明真实付款，而不是只有“想要/浏览”。
-- P2 的决定性未知：版本更新成本能否控制，以及买家是否为原创项目文件/可执行路径付费而不是只买低价教程。
-- P4 的决定性未知：哪个垂直 Excel/Office 系统能明显优于免费通用模板并保持 <=3 分钟/单的售后目标。
-- P3/P5/P7 尚未证明“合法标准化子产品”的付款强度足以覆盖免费替代；P6/P8 仍有明显价格/版权/支持风险。
+- 36 个 SKU 当前证据强度不均：部分有直接商品页和“想要/浏览”，部分只由相邻需求或推荐市场推导，X3R2 必须逐 SKU 补证据。
+- 同一卖家矩阵、低价引流 SKU、推荐页偶然曝光可能放大表面需求，后续必须做 lineage/独立卖家去重。
+- 多个高需求 SKU 的货源、授权或再分发权仍为 UNKNOWN/NEEDS_PROOF；这些未知 **不影响需求排名**，只在后续 Supply Gate 判断能否执行。
 - 当前账号对特色服务/虚拟商品类目的实际发布资格尚未做账号内验证。
 - runtime public ingress 与 retention-review 继续保持历史 UNKNOWN，不属于当前 Gate。
 
