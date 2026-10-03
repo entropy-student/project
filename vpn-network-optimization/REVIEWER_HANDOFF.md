@@ -85,7 +85,7 @@ Current known components:
 
 ```text
 GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
-STATE=PROPOSED_NOT_AUTHORIZED
+STATE=AUTHORIZED
 PREVIOUS_RESULT=PASS_G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
 OBJECTIVE=Prove the accepted Mihomo v1.19.31 VLESS+REALITY+Vision candidate over the intended public TCP/443 path, with no persistence and deterministic rollback.
 MAX_ENDPOINT_THIS_ROUND=read-only current-state preflight + one temporary public TCP/443 Mihomo server + one temporary exact /32 outer-route bypass to the current physical egress + one proxied OpenAI HTTPS request + exact cleanup/read-back + Reviewer stop.
@@ -211,9 +211,9 @@ Rollback:
 
 ### OWNER_ONLY_ACTIONS
 
-**NOT YET AUTHORIZED.**
+**AUTHORIZED.**
 
-Fresh Owner authorization is required because this Gate temporarily exposes public TCP/443 and adds a temporary host route.
+Owner authorization was granted on 2026-10-03 for this Gate only: one temporary public TCP/443 REALITY canary, one temporary exact `/32` physical-egress route, and one OpenAI request.
 
 It does **not** authorize persistence, permanent firewall changes, benchmark, production-default changes, or more than one OpenAI request.
 
@@ -309,15 +309,15 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Await Owner authorization for **G2C_REALITY_PUBLIC_TCP443_CANARY_P1**.
+Execute **G2C_REALITY_PUBLIC_TCP443_CANARY_P1** exactly within the authorized bounded scope, persist sanitized Evidence + Executor Handoff, fresh read-back, then stop for Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-Authorize one temporary **public TCP/443** REALITY canary plus one temporary exact `/32` physical-egress route and one OpenAI request. No persistence or permanent firewall/routing changes.
+**NONE.** P1 authorization has been granted. Any persistence, permanent firewall/routing change, benchmark, production-default change, second real request, or scope expansion requires a new authorization.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No public-path execution until Owner authorizes P1.
+P1 is authorized. Executor starts only from the P1 Gate above, `scripts/g2c-mihomo-server-r3.ps1`, the accepted R4 Evidence block, and the directly reusable accepted G2-B dynamic physical-egress / exact-route pattern. Do not reread Governance or historical Gates broadly. Run once, clean up exactly, persist sanitized Evidence + Executor Handoff, commit, fresh read-back, STOP.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 

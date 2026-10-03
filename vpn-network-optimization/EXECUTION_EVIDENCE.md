@@ -2543,3 +2543,25 @@ Reviewer reasoning:
 - This is sufficient to select Mihomo v1.19.31 as the remaining G2-C server candidate and stop spending further v1 effort on the sing-box path.
 - The evidence does not prove a universal sing-box defect and does not establish public TCP/443 reachability, persistence, production default, or peak-hour performance.
 - Cleanup and regression evidence are complete; the private A/B Gate is formally closed.
+
+## Owner authorization — G2C_REALITY_PUBLIC_TCP443_CANARY_P1 — 2026-10-03
+
+```text
+AUTHORIZED_GATE=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+OWNER_AUTHORIZATION=GRANTED
+AUTHORIZATION_SOURCE=OWNER_DIRECT_IN_CURRENT_CHAT
+PUBLIC_TCP443_TEMPORARY_EXPOSURE=AUTHORIZED
+TEMPORARY_EXACT_VPS_PUBLIC_IPV4_32_PHYSICAL_EGRESS_ROUTE=AUTHORIZED
+REAL_OPENAI_REQUEST_MAX=1
+PERSISTENT_DEPLOYMENT=NOT_AUTHORIZED
+PERMANENT_FIREWALL_CHANGE=NOT_AUTHORIZED
+PERMANENT_ROUTING_CHANGE=NOT_AUTHORIZED
+BENCHMARK=NOT_AUTHORIZED
+PRODUCTION_DEFAULT_CHANGE=NOT_AUTHORIZED
+SECOND_REAL_REQUEST=NOT_AUTHORIZED
+MANDATORY_REVIEW_STOP=YES
+ESTIMATED_EXECUTION_TIME=20-30 minutes
+```
+
+Authorization applies only to the already-reviewed P1 Gate recorded in `REVIEWER_HANDOFF.md`. It does not widen the Gate. Any preflight conflict, target ambiguity, unexpected TCP/443 owner, firewall conflict, physical-egress ambiguity, or failed/ambiguous consequential action returns without retry or scope expansion.
+
