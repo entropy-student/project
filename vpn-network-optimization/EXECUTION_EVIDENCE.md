@@ -2815,6 +2815,7 @@ REVIEWER_HANDOFF_DIRTY=FAIL_CLOSED
 GATE_ID_STATE_BUDGET_INVALID=FAIL_CLOSED
 CURRENT_GATE_LF_FIXTURE=PASS
 CURRENT_GATE_CRLF_FIXTURE=PASS
+LOCAL_PRODUCTION_SOURCE_PREFLIGHT=PASS
 POWERSHELL_AST_PARSE=PASS
 UNCHANGED_RUNNER_FUNCTIONS=PASS
 STATIC_SECRET_SCAN=PASS
@@ -2833,4 +2834,17 @@ REVIEWER_HANDOFF_MODIFIED=NO
 ```
 
 The canonical-source check now asks Git for the real worktree root from the actual project directory, derives the project-relative paths from that root, and uses those paths for tracked/clean checks. Origin validation, valid HEAD, the existing accepted-base ancestry anchor, tracked runner/Reviewer source, clean-target checks, and current Gate/request-budget validation remain fail-closed. The local fixtures exercised the production path/fact helpers with non-secret values; no Owner checkpoint or P1 action was run. Initial source reconnaissance preceded a timing checkpoint, so total round elapsed time is not reconstructed.
+
+### GitHub persistence read-back
+
+```text
+SOURCE_FIX_COMMIT=e5f1dd24064ccab47b2412fd8a3305a161c17ed6
+SOURCE_FIX_PUSH=PASS
+FRESH_FETCH_REMOTE_MAIN=e5f1dd24064ccab47b2412fd8a3305a161c17ed6
+LOCAL_SOURCE_HEAD=e5f1dd24064ccab47b2412fd8a3305a161c17ed6
+RUNNER_FRESH_READBACK=PASS
+EVIDENCE_FRESH_READBACK=PASS
+EXECUTOR_HANDOFF_FRESH_READBACK=PASS
+REVIEWER_HANDOFF_MODIFIED=NO
+```
 

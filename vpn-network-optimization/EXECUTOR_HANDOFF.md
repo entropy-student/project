@@ -287,8 +287,8 @@ STOP_AT_REVIEWER=YES
 改动：Git 从真实 project root 读取 `--show-toplevel`，随后动态推导并校验 project-relative tracked paths；source provenance 的 origin、HEAD、accepted-base ancestry、tracked/clean、Gate 和 request-budget 检查保持 fail-closed。
 验证：canonical checkout、既有 managed worktree 和合法嵌套 project-path fixture PASS；LF/CRLF Gate 字段、错配路径、错误 origin、invalid HEAD、未跟踪/dirty target、错误 Gate/budget fixtures 均按预期通过或 fail-closed；PowerShell AST、未改 runner 函数对比和 Secret/network-boundary 静态审查 PASS。
 问题：NONE。
-回滚：仅本轮源码与执行记录；回退本轮 commit 即可恢复，未发生运行态变更。
-GitHub：提交到 `main` 后 fresh-read runner、Evidence 与本节 Handoff；commit SHA 由 Git 历史及本轮完成回执确认。
+回滚：仅本轮源码与执行记录；回滚本轮两个提交即可恢复，未发生运行态变更。
+GitHub：源码提交 `e5f1dd24064ccab47b2412fd8a3305a161c17ed6` 已推送到 `main`；fresh-fetch/read-back 确认当时 remote main 与 source commit 一致，runner、Evidence、Handoff 均可读。
 请 Reviewer 检查：本轮 commit、canonical source/worktree discovery helper、无网络 fixtures 与 Evidence。
 Owner 转交：NONE；本轮没有执行 Owner checkpoint，P1 真实请求额度保持 `0/1`。
 OPENAI_REQUEST_COUNT=0
