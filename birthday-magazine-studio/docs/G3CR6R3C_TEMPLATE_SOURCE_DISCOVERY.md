@@ -7,8 +7,15 @@ GATE_ID=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
 OBJECTIVE=Find the strongest reusable source/template candidates for 12 magazine pages + 1 homepage + 1 core interaction before implementation
 MAX_ENDPOINT_THIS_ROUND=Reviewer research package + Owner shortlist
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Read-only web/source research and local documentation only
+TARGET_AND_SCOPE=Read-only web/source research and project-scoped research documentation only
+APPLICABLE_CRITICAL_CONSTRAINTS=REAL_MONEY_ACTIONS_0; PAYPAL_ACTIONS_0; CHECKOUT_SUBMISSIONS_0; RUNTIME_MUTATION_0; PRODUCTION_DEPLOYMENT_0; SHARED_INFRA_MUTATIONS_0; PR64_MERGE_0
+PREFLIGHT=Current main Handoff/Gate/research-contract/Owner-quality-bar must exist in the same execution workspace; stale PR64 head is not a valid research baseline until reconciled
+REQUIRED_EVIDENCE=Research Ledger; Source Coverage Map; S/A Shortlist; Reject Summary; 12+1+1 Coverage Map; Reuse Map; Saturation Evidence; Owner Gallery
+ACCEPTANCE_CRITERIA=See ACCEPTANCE_CRITERIA section and mandatory Research Contract
+ROLLBACK_STATUS_OR_PLAN=No runtime mutation; documentation/source research is Git-revertible; preserve PR64 branch-only accepted evidence during source-baseline repair
 OWNER_ONLY_ACTIONS=NONE
+REVIEWER_TO_EXECUTOR_RELAY=SEE_SECTION_BELOW
+EXECUTOR_TO_REVIEWER_RELAY=SEE_SECTION_BELOW
 ```
 
 Governance: **vps-project-governance v0.2.6**.
@@ -20,6 +27,26 @@ Mandatory research contract:
 - `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`
 
 The Gate cannot PASS on a convenience shortlist that does not satisfy the research floor, evidence requirements, and saturation stop.
+
+## Source-baseline preflight
+
+Fresh Reviewer reconciliation on 2026-10-04 found:
+
+- canonical `main` contains this Gate, the mandatory research contract and the current v0.2.6 Reviewer Handoff;
+- existing PR #64 head `15ff73f6232e0ef94f04f313f74372e52389d1e2` does not contain this Gate/contract/quality-bar and still carries the older 2026-09-30 Handoff;
+- PR #64 also contains 7 branch-only G3C/G3CR6R1 implementation/evidence commits that must be preserved.
+
+Therefore the research execution preflight currently returns:
+
+```text
+RETURN_PREFLIGHT_DRIFT
+G3CR6R3C_RESEARCH_STARTED=NO
+```
+
+Before research begins, establish a clean project-scoped execution workspace that contains the current canonical Gate/Handoff/contracts and preserves the branch-only evidence. Do not repair this by blindly merging/rebasing hundreds of unrelated shared-repository commits.
+
+Reviewer decision:
+- `docs/REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md`
 
 ## Goal
 
