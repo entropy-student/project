@@ -36,17 +36,27 @@ Fresh Reviewer reconciliation on 2026-10-04 found:
 - existing PR #64 head `15ff73f6232e0ef94f04f313f74372e52389d1e2` does not contain this Gate/contract/quality-bar and still carries the older 2026-09-30 Handoff;
 - PR #64 also contains 7 branch-only G3C/G3CR6R1 implementation/evidence commits that must be preserved.
 
-Therefore the research execution preflight currently returns:
+That earlier preflight RETURN is now closed.
+
+Fresh read-back after the bounded reconciliation:
 
 ```text
-RETURN_PREFLIGHT_DRIFT
+SOURCE_BASELINE_PREFLIGHT=PASS
+APPROVED_PR64_HEAD=83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6
+PR64_AHEAD_OF_MAIN=8
+PR64_BEHIND_MAIN=0
+PR64_MERGEABLE=YES
+NON_PROJECT_DIFF_FILES=0
+CURRENT_GATE_AND_CONTRACT_READBACK=PASS
+BRANCH_ONLY_EVIDENCE_PRESERVATION=PASS
+G3CR6R3C_RESEARCH_AUTHORIZED=YES
 G3CR6R3C_RESEARCH_STARTED=NO
 ```
 
-Before research begins, establish a clean project-scoped execution workspace that contains the current canonical Gate/Handoff/contracts and preserves the branch-only evidence. Do not repair this by blindly merging/rebasing hundreds of unrelated shared-repository commits.
+Current Reviewer decision:
+- `docs/REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md`
 
-Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md`
+The earlier `REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` remains historical RETURN provenance.
 
 ## Goal
 
