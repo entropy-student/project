@@ -76,13 +76,13 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 `G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION`
 
 Objective:
-- show the real final magazine clearly;
-- add purposeful editorial motion so the homepage is not mostly static;
+- show the real final **static 12-page magazine/PDF** clearly;
+- add purposeful **website/homepage** editorial motion so the site is not mostly static;
 - redesign the low-pull upload-first Preview so the experience creates stronger purchase desire.
 
 Scope:
 - real G2BR3 final-product showcase;
-- bounded homepage motion system;
+- bounded homepage/site motion system; magazine deliverable remains static;
 - Preview composition/interactions;
 - optional personalization framing;
 - Free → complete 12-page US$39.99 transition;
