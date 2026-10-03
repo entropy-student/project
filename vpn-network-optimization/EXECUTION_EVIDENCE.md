@@ -3336,3 +3336,41 @@ Reviewer interpretation:
 - The integrated path preserved advisory-only and no-default-change invariants and performed no live mutation or external workload request.
 - Formal H4 PASS remains pending only on the required Owner-visible fixture self-test proof; the live read-only integration does not need to be replayed.
 
+## Reviewer acceptance — G3A live read-only advisory integration H4 — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_H4_SELFTEST_PLUS_PREVIOUSLY_ACCEPTED_LIVE_READONLY_PROOF
+GATE_ID=G3A_LIVE_READONLY_ADVISORY_INTEGRATION_H4
+REVIEWER_RESULT=PASS
+H4_SELFTEST_CASES=6
+H4_SELFTEST_RESULT=PASS
+LIVE_READONLY_PROOF=PASS
+INTEGRATED_WIREGUARD_CURRENT_HEALTH=HEALTHY
+INTEGRATED_HY2_READINESS=READY_FOR_SEPARATE_ACTIVATION
+INTEGRATED_REALITY_READINESS=READY_FOR_SEPARATE_ACTIVATION
+ADVISORY_SELECTED_ROLE=WIREGUARD_BASELINE
+ADVISORY_REASON=CURRENT_PRODUCTION_BASELINE_HEALTHY
+ADVISORY_ROUTE_REQUIRED=FALSE
+ADVISORY_ROUTE_APPLY_ALLOWED=FALSE
+ADVISORY_ONLY=TRUE
+PRODUCTION_DEFAULT_CHANGE_ALLOWED=FALSE
+EXTERNAL_WORKLOAD_REQUEST_COUNT=0
+NETWORK_MUTATION=NO
+SERVICE_MUTATION=NO
+SYSTEM_PROXY_MUTATION=NO
+TUN_MUTATION=NO
+VPS_MUTATION=NO
+SECRET_VALUES_READ=0
+VPN_APPLICATION_SECRET_VALUES_READ=0
+SECRET_VALUES_EMITTED=0
+G3A_H4_INTEGRATED_RESULT=COMPLETE
+```
+
+Reviewer interpretation:
+- H4 is formally PASS.
+- The canonical H2 collector and H3 planner integrate correctly without duplicating their logic.
+- The current real environment maps to `WIREGUARD_BASELINE` while HY2 and REALITY remain ready candidates.
+- The integrated decision remains advisory-only; route application and production-default changes are explicitly disabled.
+- Self-test and live read-only proof together show zero network/service/proxy/TUN/VPS mutation, zero external workload request, and zero Secret emission.
+- G3-A sensing + readiness classification + advisory decision is complete. No automatic actuator/switching capability has been authorized or implemented.
+
