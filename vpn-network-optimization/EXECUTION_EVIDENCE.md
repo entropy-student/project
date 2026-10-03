@@ -4050,3 +4050,30 @@ Reviewer conclusion:
 - Next round is documentation-only persistence. It must preserve the local unique facts while preventing stale local Gate/status text from overwriting newer canonical Reviewer/Executor state.
 - Shared-main advancement by unrelated projects is not a reason to rerun VPN work. Reconcile at the Git/document boundary only.
 
+## G3C C2B P0 local-fact persistence R1 — reconciliation evidence
+
+```text
+GATE_ID=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
+SOURCE_DIRTY_FILES=EXECUTION_EVIDENCE.md,EXECUTOR_HANDOFF.md,docs/ROUND_TIMING_RETROSPECTIVE.md
+DIFF_CLASSIFICATION=UNIQUE_FACT_TO_PERSIST;ALREADY_DURABLE_DUPLICATE;STALE_STATE_OR_GATE_TEXT_DO_NOT_PERSIST
+PRIOR_C2A_SOURCE_COMMIT=408f632c7d15f336a99ff2c7b807b96cbdd48d9e
+PRIOR_C2A_SOURCE_COMMIT_PUSHED_TO=origin/main
+PRIOR_C2A_GITHUB_FRESH_READBACK=PASS
+PRIOR_C2A_REMOTE_MAIN_AT_READBACK=7d97ab8f4f0fe60a5429202a414fb7a2f8439c7e
+PRIOR_C2A_SOURCE_COMMIT_IS_REMOTE_MAIN_ANCESTOR=YES
+PRIOR_C2A_ALL_SEVEN_GATE_FILE_BLOBS_MATCH=YES
+PRIOR_C2A_REVIEWER_HANDOFF_MODIFIED=NO
+PRIOR_C2A_GIT_PERSISTENCE_ELAPSED=00:03:51; 2026-10-03T16:35:39Z to 2026-10-03T16:39:30Z target-blob fresh read-back
+PRIOR_C2A_UNRELATED_REMOTE_COMMIT_PRESERVED=YES
+PRIOR_C2A_LOCAL_HEAD_AFTER_SAFE_FAST_FORWARD=7d97ab8f4f0fe60a5429202a414fb7a2f8439c7e
+PRIOR_C2A_FULL_ROUND_START=NOT_CAPTURED
+PRIOR_C2A_ACTUAL_ELAPSED=UNKNOWN
+PRIOR_C2A_TIME_OVERRUN=UNKNOWN
+CURRENT_R1_ROUND_START=NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH
+CURRENT_R1_ACTUAL_ELAPSED=UNKNOWN_START_NOT_CAPTURED
+CURRENT_R1_TIME_OVERRUN=UNKNOWN_START_NOT_CAPTURED
+CURRENT_R1_LIVE_OR_NETWORK_ACTION=NO
+```
+
+The prior C2A closeout's source-commit/read-back, measured Git-persistence interval, seven-file blob check, and unrelated-main fast-forward facts were not all represented in canonical main before this reconciliation. The source commit and technical result were already documented; those duplicate facts were not restated as new outcomes. The stale local C2A status wording was not used to replace the current R1 Gate or the Reviewer-owned disposition. Current-round timing is incomplete because the initial canonical fetch preceded the first captured clock marker; no total duration or overrun classification is inferred.
+

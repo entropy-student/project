@@ -51,6 +51,30 @@ STOP_AT_REVIEWER=YES
 
 Return `PASS_CANDIDATE_G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1` or precise `RETURN_*`.
 
+### Executor reconciliation result — G3C C2B P0 local-fact persistence R1
+
+```text
+GATE_ID=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
+EXECUTOR_RESULT=RETURN_R1_TIMING_START_NOT_CAPTURED
+UNIQUE_FACT_CLASSES_RECONCILED=GITHUB_FRESH_READBACK,GIT_PERSISTENCE_TIMING,SAFE_FAST_FORWARD_RESULT
+PRIOR_C2A_SOURCE_COMMIT=408f632c7d15f336a99ff2c7b807b96cbdd48d9e
+PRIOR_C2A_REMOTE_MAIN_AT_READBACK=7d97ab8f4f0fe60a5429202a414fb7a2f8439c7e
+PRIOR_C2A_GIT_PERSISTENCE_ELAPSED=00:03:51
+PRIOR_C2A_ALL_SEVEN_GATE_BLOBS_MATCH=YES
+PRIOR_C2A_REVIEWER_HANDOFF_MODIFIED=NO
+PRIOR_C2A_UNRELATED_MAIN_COMMIT_PRESERVED_BY_SAFE_FAST_FORWARD=YES
+PRIOR_C2A_LOCAL_HEAD_AFTER_FAST_FORWARD=7d97ab8f4f0fe60a5429202a414fb7a2f8439c7e
+STALE_C2A_STATUS_TEXT_REINTRODUCED=NO
+ROUND_STARTED_AT=NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH
+RECONCILIATION_CLOCK_STARTED_AT=2026-10-03T17:28:07Z; after initial fetch
+ACTUAL_ELAPSED=UNKNOWN_START_NOT_CAPTURED
+TIME_OVERRUN=UNKNOWN_START_NOT_CAPTURED
+LIVE_OR_NETWORK_ACTION=NO
+STOP_AT_REVIEWER=YES
+```
+
+The three dirty closeout documents contained unique publication/read-back, persistence-duration, and safe-fast-forward facts. These facts are reconciled here and in Evidence/timing records; already durable technical facts remain duplicates, while the superseded local C2A status wording was not copied over the current P0 Gate or Reviewer state. The original dirty files are to be cleaned only after this reconciliation is pushed and fresh-read back. The full R1 elapsed time cannot be reconstructed because the required start marker was missed before the initial canonical fetch; therefore this is a timing-limited RETURN, not a PASS candidate.
+
 
 ## Historical execution status — G3C C2B preflight worktree reconciliation P0
 
