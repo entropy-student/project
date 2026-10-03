@@ -2669,3 +2669,37 @@ Reviewer interpretation:
 - Therefore the previous instruction to launch Codex itself from elevated PowerShell was unnecessarily strict. The safer/minimal relay is: prepare and static-review the bounded runner without elevation, then have Owner run one atomic checkpoint from PowerShell 7.6.6 Administrator/High.
 - This clarification changes only the execution mechanism, not the authorized P1 scope, acceptance criteria, one-request limit, or rollback boundary.
 
+## G2C_REALITY_PUBLIC_TCP443_CANARY_P1 — Owner checkpoint prepared (2026-10-03)
+
+```text
+SOURCE_BASE=496f464029fad4a5747465ce441613104ed8ce06
+RUNNER=vpn-network-optimization/scripts/g2c-reality-public-tcp443-canary-p1.ps1
+RUNNER_PURPOSE=single bounded Owner-local P1 checkpoint; no runner execution in this preparation round
+OWNER_CHECKPOINT_REQUIRED=PowerShell_7.6.6_Administrator_High
+TOKEN_GATE_ORDER=PowerShell_7.6.6_then_Administrator_role_then_integrity_RID_ge_12288_then_source_preflight
+CANONICAL_SOURCE_PREFLIGHT=Git_root_and_GitHub_origin_plus_tracked_clean_runner_and_current_authorized_gate_with_request_budget_0_of_1
+POWERSHELL_AST_PARSE=PASS
+REMOTE_PYTHON_AST_PARSE=PASS
+PHYSICAL_EGRESS_MATCH_FIXTURE=PASS
+EXACT_ROUTE_MATCH_FIXTURE=PASS
+ROUTE_IFINDEX_MISMATCH_FAIL_CLOSED=PASS
+AMBIGUOUS_PHYSICAL_EGRESS_FAIL_CLOSED=PASS
+STRUCTURAL_REVIEW=PASS; one exact /32 add and remove path, dynamic interface/gateway, UFW/iptables-backend/nftables readback with unknown backends fail-closed, one OpenAI request call site, TCP/443-only listener, localhost-only client proxy, TUN disabled
+SECRET_SCAN=PASS; no concrete Secret material found in runner
+STATIC_REPAIR=Embedded remote Python server-config block indentation corrected after local Python AST parser exposed an IndentationError; re-parse PASS
+RUNNER_EXECUTED=NO
+OWNER_PREFLIGHT_EXECUTED=NO
+SSH_STARTED=NO
+VPS_READ_OR_WRITE=NO
+TEMP_ROUTE_CREATED=NO
+PUBLIC_LISTENER_STARTED=NO
+SECRET_ACCESSED=NO
+OPENAI_REQUEST_COUNT=0
+P1_REQUEST_BUDGET_REMAINING=1
+NETWORK_CHANGED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+STOP_BEFORE_OWNER_LOCAL_EXECUTION=YES
+```
+
+The runner fail-closes before SSH or other P1 actions unless the invoking Owner process is exactly PowerShell 7.6.6, is in the Windows Administrator role, and has integrity RID at least 12288. Static fixtures exercised only pure route/physical-egress helpers with synthetic non-secret values. Neither Owner host preflight nor the P1 consequential checkpoint was run by Executor. The Gate estimate of 20–30 minutes applies to the later Owner execution; consequential execution time is therefore not started. Preparation timing was not captured from the initial source read and is not reconstructed.
+

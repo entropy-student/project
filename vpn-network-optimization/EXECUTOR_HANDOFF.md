@@ -267,3 +267,16 @@ STOP_AT_REVIEWER=YES
 Owner 转交：需要后续在真实 Owner Administrator/High-integrity PowerShell 7.x 执行；本轮不提交运行器命令，也不自动重试。
 耗时：预计 20–30 分钟；实际耗时未可靠捕获（首个计时读数晚于本地 preflight）；超时 NO，因首项 token gate 失败即停止。
 STOP_AT_REVIEWER=YES
+
+## Current executor result — G2C_REALITY_PUBLIC_TCP443_CANARY_P1 runner preparation (2026-10-03)
+
+结果：PASS_CANDIDATE_RUNNER_PREPARED；未执行 Owner checkpoint。
+改动：新增 `scripts/g2c-reality-public-tcp443-canary-p1.ps1`，以单个 Owner-local PowerShell checkpoint 封装本 Gate 的有界流程。
+验证：PowerShell 与嵌入式 Python AST 均 PASS；物理出口/精确路由匹配与 fail-closed fixture PASS；静态检查确认先验 PowerShell 7.6.6 + Administrator + High token、canonical source/Gate 校验、动态物理出口、UFW/iptables-backend/nftables 只读防火墙检查、只监听公网 TCP/443、精确 `/32` 回滚及唯一一次 OpenAI 请求边界；Secret scan PASS。Python AST 初次发现 server config 块缩进错误，已在新 runner 内修复并复验 PASS。
+问题：NONE；当前仅源码准备。Owner live preflight、SSH/VPS、路由、listener、Secret 和真实请求均未运行，额度仍为 `0/1`。
+回滚：本轮仅有项目源码与脱敏执行记录变更；可通过回退本轮 Git commit 撤销，不涉及运行态回滚。
+请 Reviewer 检查：fresh-read P1 runner、静态验证和本轮 Evidence/commit；确认后再让 Owner 执行单条 checkpoint 命令。
+Owner 转交：只需在真实 Owner Windows 上以 PowerShell 7.6.6 Administrator/High 运行最终回复给出的唯一命令；runner 自身会先重验 token 与 canonical source，失败即停止。
+耗时：P1 consequential execution 预计 20–30 分钟，尚未开始；源码准备初始计时未捕获，不重构实际耗时。
+STOP_BEFORE_OWNER_LOCAL_EXECUTION=YES
+STOP_AT_REVIEWER=YES
