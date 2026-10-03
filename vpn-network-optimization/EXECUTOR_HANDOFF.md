@@ -5,7 +5,38 @@
 
 
 
-## Current execution status — G3C C1 native Mihomo parse reconciliation R1
+## Current execution result — G3C C1 native Mihomo parse reconciliation R1
+
+```text
+GATE_ID=G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1
+EXECUTOR_RESULT=RETURN_MIHOMO_VERSION_DRIFT
+PRE_GATE_HEAD=b8e8e09d17fdec55076afb753d8a461f7e74d15b
+HISTORICAL_MIHOMO_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+HISTORICAL_PATH_EXISTS=YES
+EXPECTED_MIHOMO_VERSION=v1.19.31
+OBSERVED_MIHOMO_VERSION=v1.19.32
+NATIVE_CONFIG_TEST=NOT_RUN_VERSION_DRIFT
+TEMP_FIXTURE_CREATED=NO
+NETWORK_REQUEST_COUNT=0
+CLASH_ACTIVE_STARTED=NO
+WIREGUARD_CHANGED=NO
+ROUTE_CHANGED=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_CHANGED=NO
+VPS_ACCESS=NO
+SECRET_ACCESS=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+ROUND_STARTED_AT=UNKNOWN_NOT_CAPTURED
+ROUND_FINISHED_AT=UNKNOWN_NOT_CAPTURED
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+TIME_OVERRUN_CAUSE=Timing capture began only after initial preflight; the 2026-10-03T14:02:32Z clock read is not a valid round-start or finish measurement.
+STOP_AT_REVIEWER=YES
+```
+
+The exact historically accepted binary exists, but its read-only `-v` output is v1.19.32 rather than the Gate-pinned v1.19.31. Per the Gate, no bounded substitution search and no native config parse were performed after this version drift. No temporary fixture was created, and no client, network, route, VPS, or Secret action occurred. The canonical C1 template was read unchanged (blob `a7ec68ec08c47945b55b567e1717d89d3d06bfaa`).
+
+## Historical R1 execution package — superseded by the result above
 
 ```text
 GATE_ID=G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1

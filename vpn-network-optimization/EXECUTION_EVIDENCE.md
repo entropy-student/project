@@ -3629,3 +3629,40 @@ Reviewer interpretation:
 - Historical accepted project evidence identifies the canonical Windows binary path as `C:\Program Files\Clash Verge\verge-mihomo.exe` and previously proved Mihomo Meta v1.19.31. Therefore the next action is a bounded local-only binary/path reconciliation and native config test, not a C1 redesign.
 - No live network action is authorized by this Reviewer return.
 
+## Executor evidence — G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1 (2026-10-03)
+
+```text
+AUTHORIZED_GATE=G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1
+PREFLIGHT_SOURCE=GitHub origin/main fresh-fetched and clean project-scoped worktree fast-forwarded
+PRE_GATE_HEAD=b8e8e09d17fdec55076afb753d8a461f7e74d15b
+HISTORICAL_MIHOMO_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+MIHOMO_BINARY_EXISTS=YES
+EXPECTED_MIHOMO_VERSION=v1.19.31
+OBSERVED_MIHOMO_VERSION=v1.19.32
+VERSION_COMMAND=-v
+EXECUTOR_RESULT=RETURN_MIHOMO_VERSION_DRIFT
+NATIVE_CONFIG_TEST=NOT_RUN_VERSION_DRIFT
+C1_TEMPLATE_BLOB=a7ec68ec08c47945b55b567e1717d89d3d06bfaa
+TEMP_FIXTURE_CREATED=NO
+TEMP_FIXTURE_CLEANUP=NOT_APPLICABLE
+CLASH_ACTIVE_STARTED=NO
+NETWORK_REQUEST_COUNT=0
+WIREGUARD_CHANGED=NO
+ROUTE_CHANGED=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_CHANGED=NO
+VPS_ACCESS=NO
+SECRET_ACCESSED=NO
+SECRET_VALUES_EMITTED=0
+REVIEWER_HANDOFF_MODIFIED=NO
+ROUND_STARTED_AT=UNKNOWN_NOT_CAPTURED
+ROUND_FINISHED_AT=UNKNOWN_NOT_CAPTURED
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+TIME_OVERRUN_CAUSE=Timing capture began only after initial preflight; the 2026-10-03T14:02:32Z clock read is not a valid round-start or finish measurement.
+ROLLBACK_EFFECT=No runtime or network mutation; no fixture existed to clean up.
+STOP_AT_REVIEWER=YES
+```
+
+The exact accepted historical path was checked first and exists. Its only executed binary operation was `-v`, which identified Mihomo Meta v1.19.32, not the Gate-pinned v1.19.31. The Gate requires immediate RETURN on version drift; therefore no alternate binary search, fixture rendering, config-test, active client, network request, VPS access, or Secret access followed. The C1 source/template was not changed. Timing start was not instrumented before initial preflight, so total elapsed and overrun status are explicitly unknown rather than inferred.
+
