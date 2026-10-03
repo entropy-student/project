@@ -688,7 +688,10 @@ function Invoke-R3RemoteReadOnlyProbe {
     $null = $stderr
     $values = @{}
     foreach ($line in ($stdout -split "\r?\n")) {
-        if ($line -match '^([A-Z0-9_]+)=(.*)
+        if ($line -match '^([A-Z0-9_]+)=(.*)$') { $values[$Matches[1]] = $Matches[2] }
+    }
+    return $values
+}
 
 function Assert-R3RemoteBaseline {
     param([Parameter(Mandatory = $true)][hashtable]$Values)
