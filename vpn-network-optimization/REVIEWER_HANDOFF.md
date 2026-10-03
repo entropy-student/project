@@ -56,141 +56,98 @@ Current known components:
 
 ## CURRENT_ACCEPTED_STATE
 
-- **Current production/rollback:** system WireGuard remains connected and authoritative.
-- **G3-C C1:** formally PASS; accepted Windows Mihomo core is v1.19.32.
-- **Original C2A package:** repository-only execution was clean; WG+HY2 selector shape, REALITY exclusion, AST/fixtures and no-live-action boundaries all passed.
-- **C2A blocking review finding:** the prepared future C2B runner would decrypt the real HY2 auth into a temporary profile and then ask Owner to import it into Clash Verge. Upstream Clash Verge behavior persists local profile content into its own application `profiles/` storage, where proxy passwords/UUIDs can reside. The current package only proves cleanup of the project-owned temp file, not Clash-owned persistent copies or backup propagation.
-- **C2A disposition:** RETURN for Secret persistence boundary only. Do not discard the valid selector/cleanup/network-safety work; minimally repair the future C2B package.
-- **Revised sequencing:** C2B becomes a **synthetic-secret, no-traffic UI-only canary** with no DPAPI access and no real HY2 credential/endpoint dependency. It proves Clash profile import, WG/HY2 UI visibility, default/manual selector behavior, and canary-profile removal only.
-- **Real HY2-in-Clash connectivity:** deferred to C2C, which will explicitly review whether and how real HY2 credentials may persist in Clash-owned storage.
-- **REALITY:** remains cold/deferred and excluded from C2B/C2C until its own persistent readiness Gate.
-- **Timing:** original C2A took 43m29s vs 15–25m; only broad aggregate cause was recorded. Repair round must include lightweight phase timing.
+- **Current production:** WireGuard remains connected and authoritative.
+- **G3-C C1:** PASS; Windows Mihomo v1.19.32 accepted.
+- **G3-C C2A repair:** paused by Owner priority change and will resume after this benchmark.
+- **HY2:** existing candidate is deployed and previously validated.
+- **REALITY:** non-persistent; previous bounded public canary proved interoperability and cleanup.
+- **New Owner priority:** obtain a same-window comparison of WG, HY2 and REALITY before traffic conditions change materially.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1
+GATE_ID=G3X_TRI_PATH_SAME_WINDOW_BENCHMARK_PACKAGE_B1
 STATE=AUTHORIZED
-PREVIOUS_RESULT=RETURN_C2B_SECRET_PERSISTENCE_BOUNDARY_UNRESOLVED
-OWNER_CONTINUE_AUTHORIZATION=2026-10-03
-SPECIALIST_TRIGGERS=11B_SECRET_TARGET_HOST_LOCAL_RUNTIME,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION
-OBJECTIVE=Repair the future C2B package into a synthetic-secret, no-traffic Clash UI canary that proves UI/control semantics without exposing or persisting the real HY2 Secret.
-MAX_ENDPOINT_THIS_ROUND=repository-only package/template/validator/docs repair + deterministic offline validation + timing evidence; no DPAPI, Secret, Clash, Mihomo runtime, network, route, proxy/TUN/WG or VPS action.
+PREVIOUS_GATE=G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1_PAUSED
+OWNER_CONTINUE_AUTHORIZATION=2026-10-04
+OBJECTIVE=Build and offline-validate one bounded same-window benchmark package for WG, HY2 and REALITY using the same OpenAI endpoint and equal samples.
+MAX_ENDPOINT_THIS_ROUND=repository-only benchmark runner/validator/docs/evidence; no live benchmark in B1.
 MANDATORY_REVIEW_STOP=YES
-ACTIVE_VPN_CONNECTIVITY_MUST_BE_PRESERVED=YES
-DPAPI_ACCESS_AUTHORIZED=NO
-SECRET_READ_AUTHORIZED=NO
-REAL_HY2_AUTH_ALLOWED_IN_C2B_PACKAGE=NO
-REAL_HY2_ENDPOINT_REQUIRED_IN_C2B=NO
-CLASH_PROFILE_APPLY_AUTHORIZED=NO_IN_R1
-CLASH_ACTIVE_START_AUTHORIZED=NO_IN_R1
-NETWORK_REQUEST_AUTHORIZED=NO
-WG_SERVICE_STOP_AUTHORIZED=NO
-WG_ROUTE_REMOVAL_AUTHORIZED=NO
+SAMPLES_PER_PATH=20
+SAMPLE_MODE=ROUND_ROBIN_TRIPLETS
+TARGET_ENDPOINT=https://api.openai.com/v1/models
+EXPECTED_HTTP_STATUS=401
+METRICS=TTFB_P50_P95,TOTAL_P50_P95,FAILURE_RATE,JITTER
+WG_MUST_REMAIN_CONNECTED=YES
 SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
 TUN_CHANGE_AUTHORIZED=NO
-ROUTE_CHANGE_AUTHORIZED=NO
-VPS_ACCESS_AUTHORIZED=NO
-REALITY_LIVE_NODE_AUTHORIZED=NO
-DEFAULT_EXECUTION_CHANNEL=CODEX_DESKTOP_EXECUTOR
-OWNER_INTERVENTION_REQUIRED=NO_IN_R1
+PERSISTENT_ROUTE_AUTHORIZED=NO
+API_CREDENTIAL_ALLOWED=NO
+OWNER_INTERVENTION_REQUIRED=NO_IN_B1
 ESTIMATED_EXECUTION_TIME=15-25_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES_WITH_PHASES
-TIME_OVERRUN_REVIEW_REQUIRED=YES
 ```
 
-### REQUIRED_REPAIR
+### PACKAGE_REQUIREMENTS
 
-1. Preserve the valid two-node UI shape, but make the future C2B profile **synthetic/no-traffic**:
-   - `WG-BASELINE` remains first/default `direct`.
-   - one HY2 UI-canary node is shown; it must use a reserved documentation address and fixture-only auth/fingerprint, never the production HY2 Secret.
-   - REALITY remains absent and documented cold/deferred.
-2. Remove all DPAPI recovery/unprotect/auth extraction from the future C2B Owner runner. The runner must not read the real recovery artifact at all.
-3. C2B must not depend on the real HY2 endpoint or real certificate fingerprint to prove UI visibility.
-4. C2B remains no-traffic:
-   - system WireGuard stays connected;
-   - system proxy and TUN remain off;
-   - no delay test, curl, API request, health probe, or route mutation;
-   - no persistent/temporary public-IP /32 route.
-5. Add structured Owner UI evidence to the one-shot runner. Before cleanup, require one bounded acknowledgement that confirms all of:
-   - temporary profile imported;
-   - WG baseline visible;
-   - HY2 UI-canary node visible;
-   - manual selector group visible;
-   - default/current selector is WG baseline;
-   - synthetic HY2 node was not used for traffic.
-6. Extend Clash-owned cleanup observability:
-   - snapshot the Clash Verge application profile directory file-name/hash set before Owner import using read-only hashes only;
-   - after Owner removes the canary profile, assert no **new canary-related profile file** remains and no unexpected new profile files remain relative to the pre-snapshot;
-   - do not print or parse existing profile contents/Secrets;
-   - if cleanup is ambiguous or residue remains, RETURN and do not delete unrelated Clash files automatically.
-7. Keep the project-owned runtime marker/CreateNew/owner-only ACL cleanup logic.
-8. Update package docs to state clearly:
-   - C2B proves UI only, not HY2 connectivity;
-   - no real Secret is used;
-   - C2C is the first stage allowed to consider real HY2-in-Clash persistence/connectivity.
-9. Extend deterministic fixtures to reject:
-   - any DPAPI/recovery-path access in C2B;
-   - any production HY2 auth/real endpoint dependency;
-   - missing structured UI acknowledgement;
-   - missing Clash profile-store pre/post residue check;
-   - any network request/delay-test instruction;
-   - REALITY live inclusion;
-   - WG/proxy/TUN/route mutation.
-10. C2A-R1 itself stays source-only.
+- Do not reuse historical benchmark code with hardcoded adapter/interface/address facts.
+- Reuse only previously accepted bounded HY2 and public REALITY canary mechanisms, updated for the current Mihomo baseline and current dynamic-interface rules.
+- The later B2 benchmark must keep WireGuard available throughout, use equal 20-sample round-robin triplets, and direct all three paths to the same OpenAI endpoint without credentials.
+- Capture identical curl timing fields for every sample and compute TTFB median/P95, total median/P95, failure rate, timeout/reset counts, and an explicit jitter statistic.
+- Any temporary path/runtime state used by the accepted canary mechanisms must be exact, bounded, non-persistent and fully proven absent afterward.
+- A cleanup failure overrides benchmark success.
+- Save only non-secret CSV/JSON statistics.
+- B1 itself performs no live request, Secret access, runtime start, VPN change or server action.
 
-### TIMING_OBSERVABILITY
+### VALIDATOR_REQUIREMENTS
 
-Reviewer estimate: **15–25 minutes**.
+Reject:
+- hardcoded physical interface/index/gateway/local address;
+- unequal path sample counts/order;
+- API credentials;
+- persistent route or WG disconnect;
+- system proxy/TUN change;
+- missing cleanup proof;
+- missing TTFB/total/jitter statistics;
+- missing timing instrumentation.
 
-Record total timing plus these four lightweight phase elapsed values:
-- `SOURCE_BUILD_ELAPSED`
-- `FIXTURE_VALIDATE_ELAPSED`
-- `STATIC_REVIEW_ELAPSED`
-- `GIT_PERSISTENCE_ELAPSED`
+### TIMING
 
-If total exceeds 25 minutes, use those measurements for `TIME_OVERRUN_CAUSE`; do not use only a broad aggregate label.
+Estimate: **15–25 minutes**.
 
-### ACCEPTANCE_CRITERIA
-
-PASS_CANDIDATE requires:
-- C2B package contains no real Secret and has no DPAPI/recovery access;
-- synthetic HY2 node cannot accidentally represent production connectivity;
-- structured UI evidence is encoded;
-- Clash-owned profile-store residue detection is encoded without reading/printing existing Secret content;
-- no automatic deletion of unrelated Clash files;
-- project runtime cleanup remains exact;
-- all new/updated negative fixtures PASS;
-- no live action in R1;
-- complete total + phase timing evidence.
+Record total plus:
+`SOURCE_BUILD_ELAPSED`,
+`FIXTURE_VALIDATE_ELAPSED`,
+`STATIC_REVIEW_ELAPSED`,
+`GIT_PERSISTENCE_ELAPSED`.
 
 ### OWNER_ONLY_ACTIONS
 
-NONE in R1.
+NONE in B1.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Repair only the future C2B package. Do not execute it. Remove real-Secret/DPAPI use from C2B entirely; make it a synthetic UI-only canary and add Clash profile-store residue observability plus structured UI evidence.
+Build only the offline same-window tri-path benchmark package. Preserve the paused C2A repair for later.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return `PASS_CANDIDATE_G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1` or precise `RETURN_*`; persist Evidence/Handoff/timing and STOP_AT_REVIEWER.
+Return `PASS_CANDIDATE_G3X_TRI_PATH_BENCHMARK_PACKAGE_B1` or precise RETURN; persist Evidence/Handoff/timing and STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Codex repairs the future C2B package offline. Reviewer then inspects the synthetic/no-traffic package. Only after PASS will Owner be asked to import the temporary synthetic profile into Clash Verge.
+Codex prepares the benchmark package. Reviewer inspects it. If accepted, Owner runs one bounded B2 benchmark during the current low-load window; then Reviewer summarizes WG/HY2/REALITY results.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Keep WireGuard and Clash unchanged. Do not run the current C2B runner; it is superseded pending repair.
+**NONE during B1.** Keep WireGuard connected. Do not change Clash.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Execute only C2A synthetic UI package repair R1. Do not run C2B or access DPAPI/Secrets/runtime/network.
+Execute G3X B1 benchmark package construction only; no live action.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1 or precise RETURN; persist Evidence/Handoff/timing and STOP.
+Return PASS_CANDIDATE_G3X_TRI_PATH_BENCHMARK_PACKAGE_B1 or precise RETURN; STOP_AT_REVIEWER.
 
 ## EVIDENCE_POINTERS
 
