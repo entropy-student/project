@@ -24,7 +24,7 @@ PERSISTENT_BYPASS_ROUTE_AUTHORIZED=NO
 VPS_ACCESS_AUTHORIZED=NO
 SECRET_READ_AUTHORIZED=NO
 ESTIMATED_EXECUTION_TIME=15-25_minutes
-TIMING_OBSERVABILITY_REQUIRED=YES
+TIMING_OBSERVABILITY_REQUIRED=NEXT_GATE
 STOP_AT_REVIEWER=YES
 ```
 
@@ -51,17 +51,11 @@ STOP_AT_REVIEWER=YES
    - persistent /32 route instruction rejection;
    - REALITY incorrectly marked production-ready rejection.
 6. Use a deterministic local Mihomo parse/test path if available without starting Clash or changing active profiles.
-7. Capture whole-round timing:
-   - `ROUND_STARTED_AT=<UTC ISO8601>`
-   - `ROUND_FINISHED_AT=<UTC ISO8601>`
-   - `ACTUAL_ELAPSED=<duration>`
-   - `TIME_OVERRUN=YES|NO`
-   - if YES: `TIME_OVERRUN_CAUSE=<evidence-backed cause>`
-8. Reviewer estimate is **15–25 minutes end-to-end**, including source work, fixtures, optional Mihomo parse, Evidence/Handoff persistence, and fresh GitHub read-back.
-9. If `TIME_OVERRUN=YES`, use existing Evidence to identify the slow phase; if unclear, perform at most one bounded timing diagnosis. Timeout alone does not fail C1 and must not trigger replay of consequential actions.
-10. Update `docs/ROUND_TIMING_RETROSPECTIVE.md` for this round when it has estimate+actual, an overrun, a new reusable timing cause, or evidence that a previous timing optimization worked/failed.
-11. On PASS: append bounded non-secret Evidence and update this Executor Handoff; then STOP_AT_REVIEWER.
-12. On failure: record the exact failure class and stop. Do not perform live retries.
+7. **C1 transition exception:** this C1 prompt was already issued before timing observability was restored. Timing fields are optional for C1 and missing timing must not cause retry, RETURN, or replay.
+8. Reviewer estimate **15–25 minutes** is reference-only for C1.
+9. Starting with the next Gate after C1, timing capture becomes mandatory per `docs/ROUND_TIMING_RETROSPECTIVE.md`.
+10. On PASS: append bounded non-secret Evidence and update this Executor Handoff; then STOP_AT_REVIEWER.
+11. On failure: record the exact failure class and stop. Do not perform live retries.
 
 ### Explicit prohibitions
 
