@@ -231,12 +231,17 @@ Owner authorization was granted on 2026-10-03 for this Gate only: one temporary 
 
 It does **not** authorize persistence, permanent firewall changes, benchmark, production-default changes, or more than one OpenAI request.
 
-### REVIEWER_TO_EXECUTOR_RELAY
+## NEXT_STEP
 
-Current source repair is Reviewer-directed and Owner may execute the bounded local verification directly under the project-specific exception. Codex is not required for the next step.
+Owner executes the already-authorized `G2C_REALITY_PUBLIC_TCP443_CANARY_P1` exactly once after synchronizing the existing managed worktree to the current Reviewer-accepted GitHub `main`. The runner performs fresh local/VPS/network preflight and either fails closed before mutation or performs the bounded public TCP/443 canary, one exact `/32` route, one OpenAI request, exact cleanup/read-back, then stops for Reviewer.
 
-Before real P1 execution, the existing managed worktree must sync cleanly to the repair commit and Owner must run `g2c-reality-public-tcp443-canary-p1.ps1 -CanonicalSourceOnly` from PowerShell 7.6.6 Administrator/High. This mode must perform no SSH, VPS access, route/listener/runtime mutation, Secret access, or OpenAI request. Return the bounded output to Reviewer. Do not proceed automatically into the real canary.
+## OWNER_ACTION_REQUIRED
 
+Run the Reviewer-provided single atomic local command. It first performs a safe fetch + fast-forward-only sync of the managed worktree to current GitHub `main`, verifies the runner and `REVIEWER_HANDOFF.md` are tracked and clean, then launches Microsoft Store PowerShell 7.6.6 as Administrator/High and runs the P1 runner **without** `-CanonicalSourceOnly`. Do not manually retry after any PASS or RETURN.
+
+## REVIEWER_TO_EXECUTOR_RELAY
+
+**NONE for the next step.** Owner direct execution is authorized for this bounded checkpoint. If the P1 runner returns any failure or ambiguity, stop and relay the bounded output to Reviewer; do not retry, patch, or broaden scope.
 ## EXECUTOR_TO_REVIEWER_RELAY
 
 Use the fixed P1 packet in `CURRENT_GATE` after authorization.
