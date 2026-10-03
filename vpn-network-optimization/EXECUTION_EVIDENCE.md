@@ -3274,3 +3274,31 @@ Reviewer interpretation:
 - No P1 route/runtime/listener residue exists.
 - No external workload request, network/service/proxy/TUN/VPS mutation, VPN/application Secret read, or Secret emission occurred.
 
+## Reviewer acceptance — G3A readiness-to-plan integration H3 — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_POWERSHELL_OUTPUT_REVIEWED_AGAINST_PINNED_H3_SOURCE
+GATE_ID=G3A_READINESS_TO_PLAN_INTEGRATION_H3
+REVIEWER_RESULT=PASS
+SOURCE_HEAD=6e99f25cda54c0626a63b96e954257d2dc53e2e0
+IMPLEMENTATION_COMMIT=36f44502b6347d6478dea43afc18c9cfc1da91b5
+PLANNER_AST=PASS
+G3A_SELFTEST_CASES=10
+G3A_SELFTEST_RESULT=PASS
+PLANNER_MODE=ADVISORY_ONLY
+NETWORK_MUTATION=NO
+SERVICE_MUTATION=NO
+SYSTEM_PROXY_MUTATION=NO
+TUN_MUTATION=NO
+VPS_MUTATION=NO
+SECRET_VALUES_READ=0
+SECRET_VALUES_EMITTED=0
+```
+
+Reviewer interpretation:
+- H3 is formally PASS.
+- Planner inputs now distinguish active WireGuard health from HY2/REALITY readiness.
+- Accepted advisory policy is: healthy WireGuard remains baseline; if WireGuard is unhealthy, HY2 READY is preferred as fallback candidate; otherwise REALITY READY may be advised; required UNKNOWN states fail closed; no usable candidate fails closed.
+- Route output remains intent-only with `ApplyAllowed=false`.
+- H3 performs no live network read, route/service/proxy/TUN/VPS mutation, SSH, HTTP, or Secret read.
+
