@@ -4,7 +4,7 @@
 > Governance: **vps-project-governance v0.2.6**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
-> Last reviewed: 2026-10-03
+> Last reviewed: 2026-10-04
 
 ## PROJECT_GOAL
 
@@ -34,6 +34,7 @@ PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=BROADLY_ACCEPTED
 CURRENT_GATE=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
+SOURCE_BASELINE_PREFLIGHT=RETURN_PREFLIGHT_DRIFT
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
 MAGAZINE_WEB_PAGE_MOTION_MODE=UNRESOLVED
@@ -73,6 +74,7 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 - Owner Visual Checkpoint R2: resolved; Owner broadly accepts the overall composition but now explicitly rates the homepage around 7/10 for the intended quality bar, wants meaningful motion, wants the actual final magazine shown clearly, and rates the current upload-first Preview around 5/10.
 - Owner editability at G3CR6R1 evidence scope: Administrator, edit Home, replace media, edit copy, reorder eight major Gutenberg Groups, edit Blocksy global style/palette; footer is editable WordPress block.
 - PR #64 remains open/unmerged at accepted execution head `15ff73f6232e0ef94f04f313f74372e52389d1e2`.
+- Fresh 2026-10-04 reconciliation: PR #64 head is materially stale relative to canonical `main`; it still carries the old 2026-09-30 Reviewer Handoff and does not contain the current G3CR6R3C Gate, mandatory research contract, or Owner research-quality decision. The 7 branch-only commits contain G3C/G3CR6R1 evidence/PoC material and must be preserved. Research execution is therefore blocked by `RETURN_PREFLIGHT_DRIFT` until a project-scoped source baseline is established.
 
 ## CURRENT_GATE
 
@@ -135,7 +137,7 @@ PR_64_MERGE=0
 G4_ACTIONS=0
 ```
 
-Protected backend behavior for G3CR6R2:
+Protected backend behavior for the current visual/research phase:
 - Woo cart/order/checkout business logic;
 - payment gateway;
 - order state;
@@ -147,9 +149,11 @@ Protected backend behavior for G3CR6R2:
 
 ## DEFAULT_EXECUTION_CHANNEL
 
-- Executor works in the existing local G3C project workspace / branch and updates **existing PR #64**.
-- No new PR by default.
-- No production/target-host execution in G3CR6R2.
+- Canonical research/Gate authority is current GitHub `main`.
+- The existing PR #64 branch is retained as the G3C/G3CR6R1 implementation/evidence branch, but **must not be used as the G3CR6R3C execution baseline until source-baseline reconciliation passes**.
+- Before Executor research writes, use a clean project-scoped worktree/sparse workspace or equivalent isolation and preserve the 7 PR-branch-only commits/evidence; do not perform a blind repository-wide merge/rebase for cosmetic freshness.
+- Existing PR #64 remains preferred if it can be aligned safely. A replacement research branch/PR is a Reviewer-approved fallback only if project-scoped reconciliation proves the existing branch unsafe to continue.
+- No production/target-host execution in G3CR6R3C.
 
 ## CURRENT_ROLLBACK_STATUS
 
@@ -158,6 +162,7 @@ Protected backend behavior for G3CR6R2:
 - G3CR6R2 is superseded before execution.
 - G3CR6R3 must create its own scoped rollback point before mutation.
 - Git history remains the source-code recovery baseline.
+- PR #64 branch-only G3C/G3CR6R1 evidence is a preservation requirement during source-baseline repair; do not reset/drop it merely to match `main`.
 
 ## UNRESOLVED
 
@@ -170,14 +175,16 @@ Protected backend behavior for G3CR6R2:
 - unattended production provider/runtime and provider-spend idempotency;
 - production storage/private delivery/recovery;
 - production refund/cancellation policy;
-- final visual freeze after G3CR6R2.
+- final visual freeze after template selection and the subsequent bounded implementation/review;
+- safe source/branch packaging for G3CR6R3C while preserving PR #64 branch-only evidence.
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3C** only under the mandatory quality contract: inspect >=60 distinct candidates across >=8 source ecosystems, keep a reject ledger, and continue until saturation.
-2. Reviewer verifies source/license status and coherence.
-3. Owner selects the preferred source/template combination.
-4. Only then open an implementation Gate to vendor/copy permitted source and adapt it into the unified 1+1+12 system.
+1. Resolve the **G3CR6R3C source-baseline preflight** only: establish a clean project-scoped execution workspace containing the current v0.2.6 Handoff/Gate/contracts while preserving PR #64's 7 branch-only evidence commits.
+2. After that preflight passes, execute **G3CR6R3C** under the mandatory quality contract: inspect >=60 distinct candidates across >=8 source ecosystems, keep a reject ledger, and continue until saturation.
+3. Reviewer verifies source/license status, evidence quality and design-system coherence.
+4. Owner selects the preferred source/template combination.
+5. Only then open an implementation Gate to vendor/copy permitted source and adapt it into the unified 1+1+12 system.
 
 ## OWNER_ACTION_REQUIRED
 
@@ -192,7 +199,8 @@ Owner action is required later for:
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/MVP_PRODUCT_CONTRACT.md`
+1. `docs/REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md`
+2. `docs/MVP_PRODUCT_CONTRACT.md`
 2. `docs/REVIEWER_DECISION_G3CR6R1_PASS.md`
 3. `docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md`
 4. `docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md`
