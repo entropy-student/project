@@ -1,5 +1,7 @@
 # X3R1 — Concrete SKU Demand Pool — 2026-10-03
 
+> **X3R2 REVIEW STATUS — SUPERSEDED AS COMPLETE UNIVERSE:** 本文 36 个 SKU 继续保留为历史种子池，但不再代表完整市场母集，其旧 S/A/B 排名也不再作为当前需求排序。当前方法与候选母集请读 `X3R2_PROJECT_REVIEW_METHOD_RESET_2026-10.md` 和 `X3R3_PLATFORM_FIRST_SKU_UNIVERSE_SEED_2026-10.md`。
+
 > **PROJECT ENDPOINT UPDATE — 2026-10-03:** 本项目现已明确只负责产出“基于闲鱼市场需求的具体商品类型 / SKU 目录”。货源、授权落地、上架、真实交易、自动化均已移出本项目范围。本文中的 supply/rights 字段只保留为历史备注，不参与当前选品结论，也不是后续必经步骤。
 
 Status: PASS_CANDIDATE pending Reviewer read-back
