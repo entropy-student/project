@@ -34,6 +34,7 @@ PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=BROADLY_ACCEPTED
 CURRENT_GATE=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
+MAGAZINE_WEB_PAGE_MOTION_MODE=UNRESOLVED
 OWNER_VISUAL_FREEZE=PENDING
 REAL_MONEY_TRANSACTION=UNVERIFIED
 REAL_CUSTOMER_ACQUISITION=UNVERIFIED
@@ -78,7 +79,7 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 The Owner simplified the 1+1+12 direction further: source strong reusable templates/components first, then implement only the selected system. G3CR6R3B is superseded before execution.
 
 Objective:
-- find the strongest reusable candidates for 12 static magazine pages + 1 homepage + 1 core homepage interaction;
+- find the strongest reusable candidates for 12 magazine pages + 1 homepage + 1 core homepage interaction;
 - explicitly classify what source can be legally reused versus what must be independently reimplemented;
 - recommend one coherent template/component family before implementation.
 
@@ -89,6 +90,8 @@ Scope:
 - one coherent recommended combination.
 
 No runtime implementation in this Gate.
+
+The 12 magazine pages may be static or dynamic in web presentation; that choice is intentionally not frozen during discovery. The current deliverable contract remains a 12-page PDF unless later reopened by the Owner.
 
 Not reopened:
 - overall site composition;
