@@ -18,7 +18,8 @@ G3-A Health/readiness/advisory              PASS
 G3-B Migration package D1-D3                PASS_OFFLINE
 G3-C C1 Manual-control contract             PASS
 G3-C C2A Synthetic UI package repair        PASS_WITH_TIMING_GAP
-G3-C C2B Synthetic Clash UI canary          READY_NOT_STARTED
+G3-C C2B-P0 Worktree reconciliation         IN_PROGRESS
+G3-C C2B Synthetic Clash UI canary          NEXT_OWNER_CHECKPOINT
 G3-C C2C Real HY2-in-Clash canary           PENDING
 G3-B Fresh-target migration rehearsal       DEFERRED
 G4 Peak-hour + real workload final validate PENDING
@@ -58,67 +59,91 @@ Current known components:
 
 - **Current production:** WireGuard remains connected and authoritative.
 - **G3-C C1:** PASS; Windows Mihomo v1.19.32 accepted.
-- **G3-C C2A synthetic UI repair:** technical/safety package accepted from commit `408f632c...`; timing start was missed and remains an explicit observability gap, with no technical replay.
-- **Future C2B package:** synthetic/no-traffic only. WG baseline first/default; HY2 uses reserved documentation endpoint + fixture credentials; REALITY absent/cold.
-- **Secret boundary:** no DPAPI/recovery/real HY2 credential access in C2B package.
-- **Clash persistence boundary:** before/after profile-store filename+hash snapshots are required; no automatic deletion of unrelated Clash-owned files.
-- **Benchmark detour:** cancelled by Owner. Ad-hoc latency testing is outside project governance unless explicitly reintroduced later.
+- **G3-C C2A synthetic UI repair:** technical/safety package accepted from commit `408f632c...`; timing gap recorded without replay.
+- **C2B package identity:** reviewed runner blob `cd5a2eb768b54d13307b651ea514a912b9742c9d`; template blob `b50f9747157200670d6e85fdd53ba81e9a8c5c76`.
+- **Executor interruption residue:** the managed worktree may still contain three unstaged superseded R1 closeout edits in `EXECUTION_EVIDENCE.md`, `EXECUTOR_HANDOFF.md`, and `docs/ROUND_TIMING_RETROSPECTIVE.md`.
+- **Owner has explicitly resumed the main project on 2026-10-04.**
+- **Benchmark detour remains cancelled and outside project governance.**
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2B_SYNTHETIC_CLASH_UI_CANARY
-STATE=READY_NOT_STARTED
+GATE_ID=G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0
+STATE=AUTHORIZED
 PREVIOUS_RESULT=PASS_TECHNICAL_WITH_RECORDED_TIMING_OBSERVABILITY_GAP
-OWNER_CONTINUE_AUTHORIZATION=NOT_YET_REQUESTED
-OBJECTIVE=Run the already-reviewed synthetic/no-traffic Clash UI canary when Owner chooses to resume the project.
+OWNER_CONTINUE_AUTHORIZATION=2026-10-04
+OBJECTIVE=Reconcile and clean only the known superseded unstaged R1 closeout edits before the live Owner C2B checkpoint.
+MAX_ENDPOINT_THIS_ROUND=Git/worktree/document reconciliation only; no C2B runner execution, Clash/Mihomo runtime, Secret, network, route, proxy/TUN/WG or VPS action.
 MANDATORY_REVIEW_STOP=YES
-OWNER_INTERVENTION_REQUIRED=YES_WHEN_RESUMED
-REAL_SECRET_ACCESS_AUTHORIZED=NO
+EXPECTED_DIRTY_FILES=EXECUTION_EVIDENCE.md,EXECUTOR_HANDOFF.md,docs/ROUND_TIMING_RETROSPECTIVE.md
+C2B_RUNNER_EXECUTION_AUTHORIZED=NO_IN_P0
+CLASH_PROFILE_APPLY_AUTHORIZED=NO
+MIHOMO_EXECUTION_AUTHORIZED=NO
+SECRET_READ_AUTHORIZED=NO
 NETWORK_REQUEST_AUTHORIZED=NO
-WG_DISCONNECT_REQUIRED=NO
+WG_CHANGE_AUTHORIZED=NO
+ROUTE_CHANGE_AUTHORIZED=NO
 SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
 TUN_CHANGE_AUTHORIZED=NO
-ROUTE_CHANGE_AUTHORIZED=NO
-REALITY_LIVE_NODE_AUTHORIZED=NO
-ESTIMATED_EXECUTION_TIME=3-5_minutes
-TIMING_OBSERVABILITY_REQUIRED=SCRIPT_EMBEDDED
+VPS_ACCESS_AUTHORIZED=NO
+OWNER_INTERVENTION_REQUIRED=NO_IN_P0
+ESTIMATED_EXECUTION_TIME=5-10_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### CURRENT_BOUNDARY
+### P0 TASK
 
-- Do not run C2B until Owner explicitly resumes the project.
-- The reviewed runner is `scripts/c2b-owner-clash-ui-canary.ps1`.
-- C2B proves UI visibility/default/manual selector semantics only; it does not prove HY2 connectivity.
-- C2C remains the first stage allowed to consider real HY2 credentials/connectivity in Clash.
+1. First action: record `ROUND_STARTED_AT` before fetch/status/preflight.
+2. Fresh fetch `origin/main`; do not reset or discard anything yet.
+3. Inspect the managed worktree status and exact diffs for the three expected dirty files.
+4. Require that there are **no other** modified/untracked files in `vpn-network-optimization/`. Any extra project file => RETURN.
+5. Compare each dirty hunk against current canonical GitHub Evidence/Handoff/timing records.
+6. If any dirty hunk contains unique factual evidence not already durably represented on `main`, RETURN with the exact file/hunk class; do not discard it.
+7. If all three dirty files contain only superseded/duplicate R1 closeout text, discard **only those exact three unstaged modifications** back to current canonical `origin/main`.
+8. Do not touch C2B source files; verify runner/template blobs remain exactly the accepted identities.
+9. End state must be a clean project-scoped worktree for `vpn-network-optimization/`.
+10. Persist only a bounded reconciliation record in Executor Handoff / Evidence if needed; do not alter C2B source or Reviewer Handoff.
+11. Fresh GitHub read-back.
+12. Record `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN=YES|NO`. If >10m record cause.
+13. STOP_AT_REVIEWER.
+
+### ACCEPTANCE_CRITERIA
+
+PASS_CANDIDATE requires:
+- no unique evidence lost;
+- only the three known superseded unstaged docs were discarded, if present;
+- project-scoped worktree clean;
+- accepted C2B runner/template blob identities unchanged;
+- no live/runtime/network/Secret action;
+- complete timing.
 
 ### OWNER_ONLY_ACTIONS
 
-NONE now. Resume only on explicit Owner request.
+NONE in P0.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action. Benchmark B1 is cancelled. C2A repair is accepted; wait for Owner to resume C2B.
+Perform only the bounded worktree reconciliation. Do not run C2B.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-No action until Owner resumes C2B.
+Return `PASS_CANDIDATE_G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0` or precise `RETURN_*`; STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Wait for Owner to resume the main project. The next governed step is the already-reviewed synthetic/no-traffic C2B UI canary.
+Codex reconciles the interrupted R1 worktree. If P0 passes, Reviewer opens the live Owner C2B synthetic/no-traffic Clash UI canary immediately.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Ad-hoc latency testing is separate from the project.
+**NONE in P0.** Keep WireGuard and Clash unchanged.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action. Benchmark B1 cancelled; wait for Owner to resume C2B.
+Execute only C2B-P0 worktree reconciliation; do not run C2B.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-No Executor action until Owner resumes C2B.
+Return PASS_CANDIDATE_G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0 or precise RETURN; STOP.
 
 ## EVIDENCE_POINTERS
 
