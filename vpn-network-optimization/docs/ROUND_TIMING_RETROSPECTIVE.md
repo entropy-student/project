@@ -28,6 +28,7 @@
 | G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2 | 10–15 分钟 | UNKNOWN（已记录局部 3m59s） | UNKNOWN | 第二个强制 timing round 仍未在 fetch/preflight 前记录开始时间；技术动作又被 Codex `CreateProcess` policy 阻断，未启动 parser。R2 不重放；后续 Owner checkpoint 把 `ROUND_STARTED_AT` 内置为脚本第一条证据输出。 | commit `1a4cb5ad...` |
 | G3C_C1_OWNER_MIHOMO_NATIVE_PARSE_R3 + R3R1 | 2–5 分钟 | 10m09.782s | YES | Mihomo `-t` 本身 PASS；超时来自 Reviewer 把交互式 `try/finally` 拆成两个语法单元，导致必须追加 cleanup-only 补偿。后续 Owner checkpoint 必须单个原子语法单元。 | Owner console + Reviewer acceptance |
 | G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A | 15–25 分钟 | 43m29s（至首轮最终 GitHub fresh read-back） | YES | 本地 Owner package 审查/fixture 迭代及 GitHub persistence closeout 共超估算上限 18m29s；期间未发生 consequential action。 | C2A Evidence in same commit |
+| G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1 | 15–25 分钟 | UNKNOWN | UNKNOWN | 首次 canonical fetch 前未记录开始时间；source/fixtures/AST/Secret scan 均完成并提交，技术工作不重放。下轮必须继续把 timing marker 作为第一条动作。 | commit `408f632c...` |
 
 ## 已确认的主要耗时来源
 
