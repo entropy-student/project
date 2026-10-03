@@ -54,120 +54,107 @@ Current known components:
 ## CURRENT_ACCEPTED_STATE
 
 - **Current production/rollback:** system WireGuard remains connected and authoritative on the existing DigitalOcean sfo3 VPS.
-- **Connectivity dependency:** Owner's ChatGPT web and Codex desktop access require at least one working VPN path at all times. WireGuard is the current production VPN, but Owner has other temporary VPN options. WireGuard may be disconnected only at an explicit Owner checkpoint after an alternate VPN path is confirmed working; Executor must never strand the Owner offline.
-- **HY2:** deployed and previously validated as a side-by-side candidate on UDP 8443.
-- **REALITY:** public TCP/443 interoperability was validated by bounded canary, but the server is currently a cold/non-persistent candidate.
-- **G3-A:** health/readiness/advisory logic PASS; no automatic actuator exists.
-- **G3-B D1-D3:** offline migration package, target qualification contract, and staged render contract PASS. Fresh-target rehearsal is intentionally deferred while G3-C makes the existing system directly usable.
-- **Manual-control design direction:** Clash Verge/Mihomo will be the upper control surface while system WireGuard stays connected underneath. A named DIRECT-type node may represent the WG baseline; HY2/REALITY candidate nodes may use per-node physical-interface binding, but Windows bypass behavior remains UNPROVEN until a live canary.
-- **No current runtime change:** Clash is not required to be running now; current connectivity remains WireGuard-only.
+- **Connectivity dependency:** at least one VPN path must remain available for ChatGPT/Codex. WireGuard may be disconnected only at an explicit Owner checkpoint after an alternate VPN is confirmed.
+- **G3-A:** health/readiness/advisory PASS; no automatic actuator exists.
+- **G3-B D1-D3:** offline migration package/qualification/render contracts PASS; fresh-target rehearsal remains deferred.
+- **G3-C C1 source:** manual-control template, contract doc, and offline validator are present on GitHub; A–G deterministic fixtures PASS.
+- **C1 review disposition:** RETURN only for missing Mihomo-native parser evidence. The source design is not rejected and must not be rebuilt without new parser evidence.
+- **Historical Mihomo fact:** accepted project runners used `C:\Program Files\Clash Verge\verge-mihomo.exe` and proved Mihomo Meta v1.19.31. Current Executor discovery saying no verified binary is unresolved until the exact canonical path is checked.
+- **Current runtime:** unchanged; Clash profile not applied, WG/routes/system proxy/TUN untouched.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_UNIFIED_MANUAL_CONTROL_CONTRACT_C1
+GATE_ID=G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1
 STATE=AUTHORIZED
-PREVIOUS_RESULT=PASS_G3B_STAGED_INSTALL_RENDER_CONTRACT_D3
+PREVIOUS_RESULT=RETURN_MIHOMO_NATIVE_PARSE_REQUIRED
 OWNER_CONTINUE_AUTHORIZATION=2026-10-03
-SPECIALIST_TRIGGERS=11B_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION
-OBJECTIVE=Create and offline-validate a Clash Verge/Mihomo manual-control profile contract that can later expose WG baseline, HY2, and REALITY without disconnecting system WireGuard.
-MAX_ENDPOINT_THIS_ROUND=repository-only profile/template/validator design + deterministic offline validation; no Clash apply, no system proxy/TUN change, no route change, no VPS access, no Secret read, no service action.
+SPECIALIST_TRIGGERS=11B_TARGET_HOST_LOCAL_RUNTIME,11C_DEPLOYMENT_NETWORK_RESOURCES
+OBJECTIVE=Reconcile the historical accepted Mihomo binary path and obtain one local-only native config parse for the C1 manual-control profile without applying or starting the profile.
+MAX_ENDPOINT_THIS_ROUND=local read-only binary/version discovery + one non-secret temporary parse fixture + mihomo config-test + exact fixture cleanup + Evidence/Handoff persistence.
 MANDATORY_REVIEW_STOP=YES
 ACTIVE_VPN_CONNECTIVITY_MUST_BE_PRESERVED=YES
-WG_IS_CURRENT_PRODUCTION_VPN=YES
-WG_DISCONNECT_REQUIRES_OWNER_CHECKPOINT=YES
-ALTERNATE_VPN_MUST_BE_CONFIRMED_BEFORE_WG_DISCONNECT=YES
-OWNER_CHAT_AND_CODEX_CONNECTIVITY_MUST_BE_PRESERVED=YES
-WG_SERVICE_STOP_AUTHORIZED=NO_IN_C1
-WG_ROUTE_REMOVAL_AUTHORIZED=NO_IN_C1
+WG_SERVICE_STOP_AUTHORIZED=NO
+WG_ROUTE_REMOVAL_AUTHORIZED=NO
+CLASH_ACTIVE_START_AUTHORIZED=NO
 CLASH_PROFILE_APPLY_AUTHORIZED=NO
 SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
 TUN_CHANGE_AUTHORIZED=NO
-PERSISTENT_BYPASS_ROUTE_AUTHORIZED=NO
+ROUTE_CHANGE_AUTHORIZED=NO
 VPS_ACCESS_AUTHORIZED=NO
 SECRET_READ_AUTHORIZED=NO
-ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
+EXTERNAL_REQUEST_AUTHORIZED=NO
+SOURCE_REDESIGN_AUTHORIZED=NO_UNLESS_NATIVE_PARSE_PROVES_A_SOURCE_DEFECT
+ROLLBACK_STATUS=LOCAL_FIXTURE_CLEANUP_ONLY
 DEFAULT_EXECUTION_CHANNEL=CODEX_DESKTOP_EXECUTOR
-OWNER_INTERVENTION_REQUIRED=NO_IN_C1
-ESTIMATED_EXECUTION_TIME=15-25_minutes
-TIMING_OBSERVABILITY_REQUIRED=NEXT_GATE
-TIME_OVERRUN_REVIEW_REQUIRED=NEXT_GATE
+OWNER_INTERVENTION_REQUIRED=NO
+ESTIMATED_EXECUTION_TIME=10-15_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
+TIME_OVERRUN_REVIEW_REQUIRED=YES
 ```
 
 ### TARGET_AND_SCOPE
 
-- Build a non-secret portable manual-control profile contract with these logical entries:
-  - `WG-BASELINE`: named Mihomo `direct` proxy; semantic meaning is “use normal Windows routing while system WireGuard remains connected”.
-  - `HY2-SFO3`: existing HY2 candidate with Secret/auth/fingerprint placeholders preserved.
-  - `REALITY-SFO3`: non-secret VLESS+REALITY+Vision client skeleton with Secret/identity placeholders preserved; not claimed usable until a later persistent-server Gate.
-  - `SELF-VPN-MANUAL`: `select` group with default `WG-BASELINE`.
-- HY2/REALITY candidate nodes shall carry a placeholder for the dynamically discovered physical interface; no `WLAN`/ifIndex/gateway/IP may be hardcoded.
-- Prefer per-node `interface-name` as the first bypass candidate because Mihomo supports node-bound outbound interfaces; treat Windows real behavior as `UNPROVEN_LIVE`.
-- Do not add a persistent public-IP /32 route in C1.
-- Include a manual delay-test URL/contract compatible with Clash Verge; do not enable automatic switching.
-- `profile.store-selected=true` may be used so Owner manual selection persists, but the first/default selected node must remain `WG-BASELINE`.
-- C1 must not emit or render real WG private keys, HY2 auth, REALITY UUID/private-key material, certificate key material, or populated recovery data.
-
-### REQUIRED OFFLINE FIXTURES
-
-- valid three-entry profile contract with default WG baseline;
-- hardcoded physical interface rejected;
-- WG baseline missing/reordered away from default rejected;
-- automatic/fallback/url-test production selection rejected;
-- Secret sentinel removed/populated rejected;
-- persistent /32 route instruction present rejected;
-- REALITY incorrectly marked production-ready rejected.
+1. Fresh sync canonical `main` in the existing project-scoped worktree; do not disturb unrelated work.
+2. Check the historically accepted exact binary first:
+   `C:\Program Files\Clash Verge\verge-mihomo.exe`
+3. If that exact file is absent, perform only a bounded read-only search under `C:\Program Files\Clash Verge\` for Mihomo executables; do not install/download anything.
+4. Run `-v` only. Expected accepted stable identity is Mihomo Meta v1.19.31. Version drift returns to Reviewer; do not silently validate against an unknown replacement.
+5. Build one **temporary, non-secret parse fixture** from the current canonical C1 template. Substitute only synthetic/test-safe values:
+   - reserved documentation public IP;
+   - fixture password/fingerprint;
+   - valid synthetic UUID/short-id/public-key-shaped value;
+   - dynamically discovered current physical interface name only if required for config validation.
+6. Run the pinned Mihomo **config test only** (`-t` with the fixture); do not start the core as an active client.
+7. Delete the temporary fixture and prove cleanup.
+8. Do not modify the C1 template/validator unless native parse itself proves an exact source defect. If parse fails, record the sanitized parser failure and STOP_AT_REVIEWER.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS requires:
-- portable profile/template parses under the pinned Mihomo syntax validation path or equivalent deterministic parser available locally;
-- `WG-BASELINE` is a named `direct` node and remains the default manual selection;
-- HY2 and REALITY carry dynamic physical-interface placeholders only;
-- REALITY is explicitly cold/not-ready-for-manual-use until its later live Gate;
-- no automatic switching, route mutation, system proxy/TUN change, VPS access, Secret read, or file application occurs;
-- C1 leaves current WireGuard connectivity untouched. Later live Gates may authorize a WG disconnect only after the Owner has confirmed another VPN is already carrying ChatGPT/Codex connectivity.
+PASS_CANDIDATE requires:
+- historical/canonical Mihomo binary identity reconciled;
+- `MIHOMO_VERSION=v1.19.31` or a precise RETURN for version drift;
+- one native Mihomo config-test against the canonical C1 profile shape succeeds;
+- fixture contains no real Secret and is removed afterward;
+- no Clash active process/profile application, network request, route/proxy/TUN/WG/VPS change;
+- C1 source blobs remain unchanged unless a parser-proven source defect required Reviewer-visible repair;
+- timing fields recorded because this is the first mandatory timing round after C1.
 
 ### TIMING_OBSERVABILITY
 
-- **C1 transition exception:** the Executor prompt for C1 had already been issued before the timing rule was restored. Missing C1 timing fields are therefore **not an acceptance blocker** and must not cause replay or RETURN.
-- Reviewer keeps the C1 estimate of **15–25 minutes** as non-blocking reference only.
-- **Mandatory starting with the next Gate after C1:** Reviewer provides an end-to-end estimate before execution; Executor records `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, and `TIME_OVERRUN=YES|NO`.
-- If a future round has `TIME_OVERRUN=YES`, record the best evidence-backed `TIME_OVERRUN_CAUSE`; if unclear, perform at most one bounded investigation of the slow stage.
-- Timeout alone does not fail the Gate and must not trigger replay of a consequential action.
-- Update `docs/ROUND_TIMING_RETROSPECTIVE.md` under its existing update rules.
-
-### ROLLBACK_STATUS_OR_PLAN
-
-Source-only C1. Exact commit revert is sufficient; no runtime rollback applies.
+- Reviewer estimate: **10–15 minutes end-to-end**.
+- Record `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN=YES|NO`.
+- If over 15 minutes, record `TIME_OVERRUN_CAUSE` using existing evidence; at most one bounded timing diagnosis if unclear.
+- Timeout alone is not Gate failure and must not trigger any network/action replay.
+- Update `docs/ROUND_TIMING_RETROSPECTIVE.md` under its existing rules.
 
 ### OWNER_ONLY_ACTIONS
 
-NONE in C1.
+NONE.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Read this C1 Gate plus only the current portable Clash/HY2/REALITY templates and any accepted G2-C client-schema source needed to build the non-secret profile contract. Do not inspect recovery artifacts or Secret values. Create the minimum profile contract + offline validator, validate only repository/local fixture content, update Evidence/Executor Handoff, and STOP_AT_REVIEWER.
+Use the exact historical Mihomo path first and run only local binary/version/config-test reconciliation. Do not redesign C1 unless the native parser proves a source defect. No VPN/client/server/network action is authorized.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE or a precise RETURN. Do not start Clash, enable system proxy/TUN, stop WireGuard, add routes, access the VPS, or advance to C2.
+Return PASS_CANDIDATE_G3C_C1_NATIVE_PARSE or a precise RETURN. Persist Evidence/Executor Handoff and STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Codex Desktop Executor builds and offline-validates the G3-C C1 manual-control profile contract. On Reviewer PASS, C2 will be the first live UI canary while WireGuard remains connected throughout.
+Codex Desktop Executor performs the bounded local-only Mihomo native parse reconciliation. If it passes and source identity remains unchanged, Reviewer can close C1 without any live VPN switch.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** C1 is repository-only. Keep your current VPN setup unchanged. If a later Gate truly needs WireGuard disconnected, Reviewer will first tell you to switch to another working VPN and confirm connectivity before authorizing the disconnect.
+**NONE.** Keep your current VPN setup unchanged. This reconciliation is local-only and must not start Clash or disconnect WireGuard.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Read the current C1 Gate and its explicitly named portable templates only. Implement repository-only profile/validator work, write bounded Evidence, and STOP_AT_REVIEWER.
+Use the current R1 Gate only: exact historical Mihomo path first, local `-v` + one non-secret native config test, cleanup, Evidence/Handoff, STOP.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE or a precise RETURN for C1. No live network/client/server action is authorized.
+Return PASS_CANDIDATE_G3C_C1_NATIVE_PARSE or a precise RETURN. No live network/client/server action.
 
 ## EVIDENCE_POINTERS
 
