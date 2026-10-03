@@ -568,3 +568,146 @@ PROJECT_ENDPOINT=FINAL_CONCRETE_SKU_OR_PRODUCT_TYPE_CATALOG
 SUPPLY_LISTING_VALIDATION_AUTOMATION=OUT_OF_SCOPE
 NEXT=X3R2_FINAL_SKU_CATALOG_RESEARCH
 ~~~
+
+
+---
+
+## 2026-10-03 — X3R2 Project-wide Review & Selection Method Reset
+
+~~~text
+AUTHORIZED_GATE=X3R2_PROJECT_WIDE_REVIEW_AND_METHOD_RESET
+EXECUTION_CLASS=READ_ONLY_PUBLIC_MARKET_RESEARCH + DOCUMENTATION
+PROJECT_GOAL_REVIEW=PASS
+SELECTION_METHOD_REVIEW=RETURN_THEN_FIXED
+CURRENT_36_SKU_POOL=PARTIAL_SEED_ONLY
+CURRENT_36_SKU_RANK=SUPERSEDED
+RUNTIME_MUTATIONS=0
+ACCOUNT_MUTATIONS=0
+LISTINGS_PUBLISHED=0
+REAL_PURCHASES=0
+PAYMENTS=0
+~~~
+
+### Reviewer findings
+
+1. **Goal is valid.** The project ends at an evidence-backed concrete Xianyu product-type / SKU catalog.
+2. **X1 discovery was service-first.** Its 50 raw / 25 normalized candidates were dominated by site building, Excel cleanup, PPT, CAD service, resume/interview, video editing and personalized planning. This created downstream bias toward software/AI/Office/productized services.
+3. **The 36-SKU pool is incomplete.** It is useful evidence, but it does not represent a balanced platform-first universe.
+4. **Recommendation evidence was overused.** A “为你推荐” module proves current existence/visibility, not query search depth, market share or independent transaction volume.
+5. **Adjacent-demand transfer occurred.** Some derived SKUs were promoted from neighboring jobs without direct SKU evidence.
+6. **SKU grain is inconsistent.** The pool mixes concrete device/style SKUs with broad product families.
+7. **The installed opportunity Skill has a different endpoint.** Its evidence discipline remains useful; its Priority Test / economics / delivery / Minimum Validation endpoint is not authoritative for this SKU-catalog project.
+
+### Fresh platform-first evidence
+
+Current official Xianyu public taxonomy visibly includes standardized virtual-goods surfaces that the old 36 under-covered:
+
+~~~text
+餐饮美食:
+麦当劳 / 奶茶券 / 咖啡券 / 肯德基 / 必胜客 / 火锅券 / 外卖券
+
+会员账号:
+视频会员 / 网盘会员 / 音乐会员 / 音频会员 / 读书会员 / 话费充值
+
+便民服务:
+代金卡 / 京东卡 / 话费充值 / 健身卡 / 游泳卡 / 加油卡 /
+美容卡 / 电影票 / 网约车券 / 演出门票 / 景点门票
+
+游戏交易:
+账号 / 租号 / 代练 / 自抽号 / 首充号 / 道具 / 皮肤 /
+游戏充值 / 点券 / 装备
+~~~
+
+Official source:
+https://www.goofish.com/
+
+Current standardized examples also include:
+- Youku SVIP weekly/device product: RMB 1.12–3.25, 987 “想要”, 4,079 views.
+- Xunlei membership current related-results cluster: multiple independent sellers, with visible intent ranging from tens to thousands and one listing showing 61,999 “想要”; this is strong family-level replication but still not SKU sales.
+- CF/game-account current related-results cluster: multiple independent sellers and items, some with hundreds to 2,270 “想要”; retained as market-surface proof, not automatically a clean executable recommendation.
+- Dragonfly 25.1 authorization product: RMB 34.56, 12 “想要”.
+- ArchiCAD 29 education subscription activation: RMB 78.80.
+- multi-merchant mall source code: RMB 13, 36 “想要”, 808 views.
+- school-specific postgraduate retest pack: RMB 15, 109 “想要”.
+- local middle-school physics test pack: RMB 2.68, 161 “想要”.
+- current photography-related cluster contains a Japanese-film LR/PS preset at RMB 0.80 / 603 “想要” plus multiple LUT/preset products.
+- current public-company datasets remain directly observable: management-team stability RMB 1 / 523 “想要”; supply-chain PageRank RMB 1 / 194 “想要”.
+
+These prove the prior candidate universe materially under-covered platform-native memberships/cards/game/software-activation/education and creative-asset markets.
+
+### New project-local selection method
+
+Discovery order:
+
+~~~text
+OFFICIAL PLATFORM TAXONOMY
+→ DIRECT CURRENT SKU SCAN
+→ PLATFORM/CATEGORY TRANSACTION DATA
+→ MULTI-SELLER / MULTI-LISTING REPLICATION
+→ SERVICE-TO-PRODUCTIZATION ONLY AS SUPPLEMENT
+~~~
+
+Primary provenance:
+
+~~~text
+PLATFORM_TRANSACTION
+PLATFORM_CATEGORY
+DIRECT_SKU
+RELATED_RESULTS_CLUSTER
+DERIVED_ADJACENT
+~~~
+
+Demand evidence level:
+
+~~~text
+D4 = platform / first-party product-family transaction evidence or attributable SKU transaction evidence
+D3 = replicated independent current Xianyu market evidence
+D2 = one direct current SKU or coherent current related-results cluster
+D1 = platform-category / adjacent / macro-only evidence
+U  = insufficient
+~~~
+
+Old S/A/B demand labels are superseded.
+
+### New market coverage frame
+
+The next universe scan must cover:
+
+~~~text
+1 Membership / recharge
+2 Card / ticket / voucher
+3 Game virtual goods
+4 Software / license / activation
+5 Source code / plugins / utilities
+6 AI tutorials / workflows / tools
+7 Office / business templates
+8 Education / exam / certification packs
+9 Research datasets / data products
+10 Technical drawings / engineering materials
+11 Photography presets / LUT / retouch assets
+12 Video / audio / design asset packs
+13 Website / WordPress / web templates
+14 Professional / industry knowledge packs
+15 Travel / lifestyle / recipe / hobby guides
+~~~
+
+### Artifacts
+
+- `docs/X3R2_PROJECT_REVIEW_METHOD_RESET_2026-10.md`
+- `docs/X3R3_PLATFORM_FIRST_SKU_UNIVERSE_SEED_2026-10.md`
+
+The second artifact currently holds 70+ platform-first seeds. It is a universe seed, not a final catalog.
+
+### Result
+
+~~~text
+X3R2_PROJECT_WIDE_REVIEW_AND_METHOD_RESET=PASS_CANDIDATE
+PROJECT_GOAL=VALID
+OLD_36_SKU_POOL=PARTIAL_SEED
+OLD_36_RANKING=SUPERSEDED
+SELECTION_METHOD=PLATFORM_FIRST
+MARKET_SURFACES=15
+PLATFORM_FIRST_SEEDS=>70
+FINAL_CATALOG=NOT_READY
+NEXT=X3R3_PLATFORM_FIRST_SKU_UNIVERSE_REBUILD
+~~~
