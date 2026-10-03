@@ -48,8 +48,10 @@ if ($wgClient -notmatch '(?m)^AllowedIPs\s*=\s*0\.0\.0\.0/1,\s*128\.0\.0\.0/1\s*
     throw 'WG_SPLIT_DEFAULT_BASELINE_MISSING'
 }
 
-foreach ($text in @($variables,$wgClient,$hy2Server,$clash,$manifest)) {
+foreach ($text in @($variables,$wgClient,$hy2Server,$clash)) {
     if ($text -match '192\.168\.1\.(1|4)') { throw 'HISTORICAL_WLAN_CONSTANT_PRESENT' }
+    if ($text -match '24\.199\.118\.137') { throw 'CURRENT_VPS_PUBLIC_IP_PRESENT_IN_PORTABLE_PACKAGE' }
+    if ($text -match '(?i)SFO3-A') { throw 'CURRENT_INSTANCE_LABEL_PRESENT_IN_PORTABLE_PACKAGE' }
 }
 foreach ($template in @($hy2Server,$clash)) {
     if ($template -match 'hy2\.sfo3-a\.invalid') { throw 'STALE_SFO3_SNI_PRESENT' }
