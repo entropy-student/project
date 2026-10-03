@@ -105,3 +105,12 @@
 **Local hardening scope:** make failure classification independently testable and non-throwing; replace fixed ifIndex 13 assertions with dynamic adapter/control-route consistency; prove both through no-network fixtures before any SSH or remote/server work.
 
 **Consequence:** G2-C compatibility remains unresolved, but no protocol conclusion is lost or invented. The next round has zero network actions and no Owner consequential authorization requirement; the subsequent real A/B retry does.
+
+
+## 2026-10-03 — Accept H1 local runner hardening and require fresh authorization for R4
+
+**Decision:** Accept `G2C_R3_LOCAL_RUNNER_HARDENING_H1` as PASS. The next REALITY interoperability experiment is `G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4`, but it remains proposed until the Owner provides a fresh one-request authorization.
+
+**Why:** H1 proves the two known local runner defects are closed: the failure classifier no longer depends on an unresolvable exception type literal, and WireGuard preflight validates the live adapter/control-route relationship instead of a fixed ifIndex. However, the earlier R3 retry left request state UNKNOWN, so its prior one-request authorization is not reused.
+
+**R4 boundary:** one temporary private Mihomo v1.19.31 server, one unchanged proxied OpenAI request, exact cleanup/read-back; no public TCP/443, persistence, benchmark, protocol/SNI/target change, or production switch.
