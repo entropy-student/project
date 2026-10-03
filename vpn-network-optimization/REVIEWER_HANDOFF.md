@@ -16,7 +16,9 @@ G1 Foreground-safe Foundation               PASS
 G2 Multi-path candidate validation          PASS
 G3-A Health/readiness/advisory              PASS
 G3-B Migration package D1-D3                PASS_OFFLINE
-G3-C Unified manual control surface         IN_PROGRESS
+G3-C C1 Manual-control contract             PASS
+G3-C C2A Live UI canary package             IN_PROGRESS
+G3-C C2B Owner live UI canary               PENDING
 G3-B Fresh-target migration rehearsal       DEFERRED
 G4 Peak-hour + real workload final validate PENDING
 MVP v1 seal                                 PENDING
@@ -35,7 +37,7 @@ Windows Owner host
 │     └─ temporary ActiveStore 24.199.118.137/32 via WLAN
 │        └─ Hysteria2 UDP 8443 on same VPS
 ├─ Validated REALITY private interoperability path
-│  └─ Windows Mihomo v1.19.31 client
+│  └─ Windows Mihomo v1.19.31 client (historical G2-C proof)
 │     └─ temporary Mihomo v1.19.31 VLESS+REALITY+Vision server on 10.66.21.1:14443
 │        └─ one OpenAI request succeeded with expected HTTP 401
 └─ Control path
@@ -47,106 +49,131 @@ Current known components:
 - WireGuard: active MTU 1420; current IPv4 defaults are two `/1` routes, not `0.0.0.0/0`.
 - WireGuard Windows strict WFP kill-switch: absent after the accepted G2-B repair.
 - Hysteria2: official v2.12.3, independent service on UDP 8443.
-- Windows client: Clash Verge 2.5.6; Mihomo v1.19.31 / alpha-f103639 available.
+- Windows client: Clash Verge 2.5.6; accepted current Mihomo core v1.19.32. Historical G2-C proofs used v1.19.31.
 - Owner execution runtime: PowerShell 7.6.6, Administrator, High integrity.
 - HY2 recovery: canonical DPAPI CurrentUser recovery artifact validated; do not re-fetch or rotate VPS Secrets.
 
 ## CURRENT_ACCEPTED_STATE
 
 - **Current production/rollback:** system WireGuard remains connected and authoritative.
-- **Connectivity dependency:** at least one working VPN must remain available; no VPN change is needed for the current checkpoint.
+- **Connectivity dependency:** at least one working VPN must remain available for ChatGPT/Codex. No automatic WG disconnect is authorized.
 - **G3-A:** health/readiness/advisory PASS.
-- **G3-B D1-D3:** offline migration package/qualification/render PASS; fresh-target rehearsal deferred.
-- **G3-C C1 source:** manual-control profile, contract and offline validator remain unchanged; A–G fixtures PASS.
-- **Mihomo runtime:** installed exact path is `C:\Program Files\Clash Verge\verge-mihomo.exe`; current version is stable `v1.19.32`.
-- **Owner R3 technical result:** native Mihomo config-test succeeded with exit 0 against the synthetic C1 fixture; source postcheck reported unchanged.
-- **R3 formal status:** not yet PASS only because Reviewer-delivered interactive `finally` did not execute, leaving temp-fixture cleanup and finish timing unproven.
-- **No replay rule:** the successful native parse must not be rerun. Only cleanup/source-postcheck/timing-finalization remains.
-- **Checkpoint-design lesson:** future PowerShell Owner checkpoints must be delivered as one syntactic unit; split interactive `try/finally` is prohibited.
+- **G3-B D1-D3:** offline migration package/qualification/render PASS; fresh-target rehearsal remains deferred.
+- **G3-C C1:** formally PASS. Manual-control template/contract/validator passed A–G fixtures and installed Mihomo native config-test.
+- **Accepted Windows client core:** `C:\Program Files\Clash Verge\verge-mihomo.exe`, stable Mihomo **v1.19.32**.
+- **C1 Owner proof:** native parse exit 0; fixture contained no real Secret; marked temp residue after cleanup = 0; source hashes unchanged; WG/routes/system proxy/TUN/VPS/network unchanged.
+- **Timing result:** Owner R3 + R3R1 took 10m09.782s vs 2–5 min estimate. Overrun cause was Reviewer checkpoint syntax split requiring cleanup remediation, not Mihomo runtime slowness.
+- **HY2:** existing server candidate remains deployed/validated and is the only non-WG candidate eligible for the first live UI canary.
+- **REALITY:** remains a cold/non-persistent candidate. It must not be represented as a currently usable live selector entry until a separate persistent-server/readiness Gate passes.
+- **UI target remains:** eventual WG + HY2 + REALITY manual selection in Clash Verge. C2 first proves the control plane safely with WG + HY2 rather than presenting a fake/unusable REALITY node.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C1_OWNER_R3_CLEANUP_R3R1
-STATE=AWAITING_OWNER_EXECUTION
-PREVIOUS_RESULT=PASS_CANDIDATE_NATIVE_PARSE_PENDING_CLEANUP
-SPECIALIST_TRIGGERS=11B_TARGET_HOST_LOCAL_RUNTIME
-OBJECTIVE=Complete exact cleanup and timing finalization for the already-successful Owner R3 native parse without replaying Mihomo config-test.
-MAX_ENDPOINT_THIS_ROUND=one atomic local PowerShell cleanup-only checkpoint: identify exact marked R3 temp artifact, delete it, prove absence, re-check C1 source hashes, finalize elapsed/overrun evidence.
+GATE_ID=G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A
+STATE=AUTHORIZED
+PREVIOUS_RESULT=PASS_G3C_C1_MANUAL_CONTROL_CONTRACT
+OWNER_CONTINUE_AUTHORIZATION=2026-10-03
+SPECIALIST_TRIGGERS=11B_SECRET_TARGET_HOST_LOCAL_RUNTIME,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION
+OBJECTIVE=Build and offline-validate one atomic Owner-run package for the first real Clash Verge UI canary using WG baseline + HY2 while preserving system WireGuard and excluding cold REALITY from live selection.
+MAX_ENDPOINT_THIS_ROUND=repository-only package/script/docs/fixtures; no Secret read, no Clash apply/start, no system proxy/TUN/route change, no VPS access, no network request.
 MANDATORY_REVIEW_STOP=YES
-OWNER_INTERVENTION_REQUIRED=YES_ONE_SHOT_LOCAL
-OWNER_DEBUGGING_REQUIRED=NO
-NATIVE_CONFIG_TEST_REPLAY_AUTHORIZED=NO
-MIHOMO_EXECUTION_AUTHORIZED=NO
 ACTIVE_VPN_CONNECTIVITY_MUST_BE_PRESERVED=YES
-WG_DISCONNECT_REQUIRED=NO
 WG_SERVICE_STOP_AUTHORIZED=NO
-ROUTE_CHANGE_AUTHORIZED=NO
+WG_ROUTE_REMOVAL_AUTHORIZED=NO
+CLASH_PROFILE_APPLY_AUTHORIZED=NO
+CLASH_ACTIVE_START_AUTHORIZED=NO
 SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
 TUN_CHANGE_AUTHORIZED=NO
+ROUTE_CHANGE_AUTHORIZED=NO
 VPS_ACCESS_AUTHORIZED=NO
-PROVIDER_ACCESS_AUTHORIZED=NO
 SECRET_READ_AUTHORIZED=NO
+DPAPI_UNPROTECT_AUTHORIZED=NO_IN_C2A
 EXTERNAL_REQUEST_AUTHORIZED=NO
-C1_TEMPLATE_SHA256=37759F834A637CF37DF4D71BA7C75585DA1F8211C668A23C323B50D2D9C1D424
-C1_VALIDATOR_SHA256=3682B298833C9352BA56AE6A1F7EAF2A24D06D19CE9B8B2F8418AEAD8C39E783
-R3_ORIGINAL_STARTED_AT=2026-10-03T14:45:59.5840466Z
-ESTIMATED_EXECUTION_TIME=1-2_minutes
-TIMING_OBSERVABILITY_REQUIRED=SCRIPT_EMBEDDED
-ROLLBACK_STATUS=CLEANUP_ONLY
+REALITY_LIVE_NODE_AUTHORIZED=NO
+DEFAULT_EXECUTION_CHANNEL=CODEX_DESKTOP_EXECUTOR
+OWNER_INTERVENTION_REQUIRED=NO_IN_C2A
+ESTIMATED_EXECUTION_TIME=15-25_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
+TIME_OVERRUN_REVIEW_REQUIRED=YES
 ```
 
-### OWNER_CHECKPOINT_CONTRACT
+### TARGET_AND_SCOPE
 
-- Run exactly one atomic Reviewer-provided PowerShell block.
-- Do not rerun Mihomo or any parser command.
-- The block may inspect only:
-  - the existing R3 `$tempDir` variable if still present;
-  - `$env:TEMP\vpn-network-optimization-g3c-r3-*` candidates with exact marker `.g3c-owner-r3-marker=G3C_OWNER_R3`;
-  - the C1 template/validator hashes.
-- Delete only a directory that has the exact R3 marker. If ambiguity exists, return without deleting anything.
-- Prove no marked R3 temp directory remains.
-- Re-check canonical source hashes.
-- Finalize elapsed time from `2026-10-03T14:45:59.5840466Z`; overrun cause is the Reviewer checkpoint syntax split/remediation, not Mihomo performance.
-- Owner pastes bounded output back to Reviewer.
+Build the minimum repository-owned package for a later Owner C2B checkpoint. C2A itself is offline/source-only.
+
+Required design:
+- live canary selector contains only:
+  - `WG-BASELINE` — named Mihomo `direct`, preserving normal Windows routing through the already-active system WireGuard;
+  - `HY2-SFO3` — current deployed HY2 candidate.
+- Do **not** include `REALITY-SFO3` in the live selector yet. Document it as `COLD / DEFERRED_TO_SEPARATE_PERSISTENT_READINESS_GATE`.
+- The later Owner C2B package must:
+  - discover the physical egress interface dynamically;
+  - use the existing protected HY2 recovery path locally without printing/committing the auth value;
+  - render runtime config only under a uniquely marked owner-local runtime directory;
+  - run Mihomo native config-test before any UI apply;
+  - keep system WireGuard connected throughout the first canary;
+  - keep system proxy and TUN off initially;
+  - avoid persistent public-IP /32 route creation;
+  - expose bounded pre/post state markers and an exact rollback/cleanup path;
+  - stop before any action that would disconnect WG.
+- C2A may read existing recovery-helper **source/metadata only**, not decrypt or inspect real Secret content.
+- C2A must produce deterministic fixtures that reject:
+  - REALITY appearing as a live selectable node;
+  - hardcoded WLAN/ifIndex/gateway/local IP;
+  - plaintext HY2 auth in repo/package/log output;
+  - system proxy or TUN auto-enable;
+  - WG stop/route removal;
+  - persistent /32 route;
+  - missing rollback/cleanup markers;
+  - missing timing instrumentation.
 
 ### ACCEPTANCE_CRITERIA
 
 PASS_CANDIDATE requires:
-- no Mihomo/parser replay;
-- exact marked temp fixture cleanup PASS or proven already absent;
-- marked R3 temp residue count after cleanup = 0;
-- template and validator hashes match accepted values;
-- no network/VPN/system mutation;
-- finish/elapsed/overrun evidence emitted.
+- one atomic Owner-run C2B checkpoint package exists and is statically/offline validated;
+- package contains no real Secret and does not unprotect DPAPI during C2A;
+- WG + HY2 live selector semantics are explicit;
+- REALITY is explicitly excluded from live selector and marked deferred/cold;
+- first live canary keeps WG connected and proxy/TUN off;
+- exact cleanup/rollback is encoded;
+- timing begins inside the one-shot package before preflight;
+- no live client/network/server action occurs in C2A.
+
+### TIMING_OBSERVABILITY
+
+- Reviewer estimate: **15–25 minutes end-to-end**.
+- Executor must record `ROUND_STARTED_AT` before fetch/preflight and complete finish/elapsed/overrun fields.
+- If over 25 minutes, record evidence-backed cause and update `docs/ROUND_TIMING_RETROSPECTIVE.md` under its existing rules.
+- Do not replay actions for timing.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the single atomic cleanup-only PowerShell block provided by Reviewer and paste its complete output. Do not rerun the earlier R3 block.
+NONE in C2A.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-**NONE.** Codex remains paused until Owner R3R1 is reviewed.
+Build only the offline Owner C2B canary package. Do not read Secret values, unprotect DPAPI, start/apply Clash, send traffic, change routes/proxy/TUN/WG, access VPS, or make REALITY live.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-No Executor action is authorized.
+Return PASS_CANDIDATE_G3C_C2A_CLASH_UI_CANARY_PACKAGE or a precise RETURN. Persist Evidence/Executor Handoff and STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Owner performs cleanup-only R3R1. Reviewer then persists the final R3 result. If cleanup/source hashes pass, C1 can be formally closed and Mihomo v1.19.32 accepted as the current client-core baseline without replaying native parse.
+Codex Desktop builds and offline-validates the C2B Owner checkpoint package. Reviewer then inspects it before asking Owner to perform the first real Clash Verge UI canary.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the single cleanup-only PowerShell block from Reviewer in the same PowerShell 7 window if it is still open, then paste the complete output. **Do not rerun the previous R3 script.**
+**NONE for C2A.** Keep WireGuard and Clash settings unchanged. The next Owner action will only occur after Reviewer approves the C2B package.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-**NONE.** Codex remains paused; do not retry Mihomo native parse.
+Execute current C2A only: build the offline atomic Owner C2B canary package for WG+HY2; REALITY stays cold/deferred; no Secret/runtime/network action.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-No Executor action while Owner cleanup-only R3R1 is pending.
+Return PASS_CANDIDATE_G3C_C2A_CLASH_UI_CANARY_PACKAGE or precise RETURN; persist Evidence/Handoff and STOP.
 
 ## EVIDENCE_POINTERS
 
