@@ -711,3 +711,148 @@ PLATFORM_FIRST_SEEDS=>70
 FINAL_CATALOG=NOT_READY
 NEXT=X3R3_PLATFORM_FIRST_SKU_UNIVERSE_REBUILD
 ~~~
+
+
+---
+
+## 2026-10-03 — X3R3 Platform-first SKU Universe Rebuild
+
+~~~text
+AUTHORIZED_GATE=X3R3_PLATFORM_FIRST_SKU_UNIVERSE_REBUILD
+EXECUTION_CLASS=READ_ONLY_PUBLIC_MARKET_RESEARCH + DOCUMENTATION
+MARKET_SURFACES_COVERED=15/15
+PLATFORM_FIRST_SEED_ENTRIES=>70
+NORMALIZED_UNIVERSE_ENTRIES=60
+OLD_36_RECONCILED=36/36
+RUNTIME_MUTATIONS=0
+ACCOUNT_MUTATIONS=0
+LISTINGS_PUBLISHED=0
+REAL_PURCHASES=0
+PAYMENTS=0
+~~~
+
+### Validation
+
+- Rebuilt discovery around official Xianyu market surfaces rather than operator capabilities.
+- Covered all 15 required market surfaces.
+- Added provenance classes: PLATFORM_TRANSACTION / PLATFORM_CATEGORY / DIRECT_SKU / RELATED_RESULTS_CLUSTER / DERIVED_ADJACENT.
+- Replaced old S/A/B demand labels with D4/D3/D2/D1/U.
+- Reconciled all old 36 candidates into RETAIN / MERGE / DOWNGRADE_DERIVED / SPLIT / PARTIAL_RETAIN outcomes.
+- Added materially missing membership, card/ticket, game, activation-code, source-code, education and creative-asset surfaces.
+- Preserved recommendation evidence as RELATED_RESULTS_CLUSTER rather than treating it as search-share evidence.
+- No sourcing requirement or supply penalty was introduced.
+
+### Artifacts
+
+- `docs/X3R3_PLATFORM_FIRST_SKU_UNIVERSE_SEED_2026-10.md`
+- `docs/X3R3_NORMALIZED_PLATFORM_FIRST_SKU_UNIVERSE_R1_2026-10.md`
+
+### Result
+
+~~~text
+X3R3_PLATFORM_FIRST_SKU_UNIVERSE_REBUILD=PASS_CANDIDATE
+NORMALIZED_UNIVERSE_ENTRIES=60
+FINAL_CATALOG_REVIEW_READY=YES
+NEXT=X3R4_FINAL_SKU_CATALOG_REVIEW
+~~~
+
+---
+
+## 2026-10-03 — X3R4 Final SKU Catalog Review
+
+~~~text
+AUTHORIZED_GATE=X3R4_FINAL_SKU_CATALOG_REVIEW
+EXECUTION_CLASS=REVIEW_AND_DOCUMENTATION
+PROJECT_ENDPOINT=FINAL_EVIDENCE_BACKED_CONCRETE_SKU_OR_PRODUCT_TYPE_CATALOG
+SUPPLIER_RESEARCH_REQUIRED=NO
+LISTING_REQUIRED=NO
+REAL_ORDER_REQUIRED=NO
+RUNTIME_MUTATION_REQUIRED=NO
+~~~
+
+### Final catalog review
+
+Reviewer inspected:
+- current project goal and completion standard;
+- X3R2 methodology reset;
+- X3R3 70+ seed universe;
+- X3R3 normalized 60-entry universe;
+- current source ledger and strongest public Xianyu evidence;
+- old 36 reconciliation.
+
+Accepted final catalog structure:
+
+~~~text
+CONFIRMED_DEMAND=6
+PROBABLE_DEMAND=44
+CORE_CATALOG_CONFIRMED_PLUS_PROBABLE=50
+WATCHLIST=19
+MARKET_SIGNAL_ONLY=6
+UNIQUE_WINNER_REQUIRED=NO
+~~~
+
+The 50-item core catalog is the project’s principal deliverable. Watchlist and market-signal-only appendices are retained so weak evidence is not silently converted into “no demand.”
+
+### Acceptance checks
+
+- concrete searchable product/SKU names: PASS
+- platform-first coverage: PASS
+- all 15 market surfaces reviewed: PASS
+- old 36 reconciled: PASS
+- provenance visible: PASS
+- D4/D3/D2/D1/U visible: PASS
+- transaction/intent/attention separation: PASS
+- seller-total vs SKU distinction: PASS
+- recommendation vs search-depth distinction: PASS
+- supply UNKNOWN not used as demand kill: PASS
+- no arbitrary Top N or winner: PASS
+- sourcing/listing/payment/runtime scope respected: PASS
+
+### Final artifact
+
+- `docs/FINAL_SKU_CATALOG_2026-10.md`
+
+### Result
+
+~~~text
+X3R4_FINAL_SKU_CATALOG_REVIEW=PASS_CANDIDATE
+PROJECT_ENDPOINT_ARTIFACT=AVAILABLE
+PROJECT_CLOSEOUT_READY=YES
+~~~
+
+---
+
+## 2026-10-03 — Project Closeout Reconciliation
+
+~~~text
+CLOSEOUT_CLASS=RESEARCH_AND_DOCUMENTATION_PROJECT
+DESTRUCTIVE_CLEANUP_REQUIRED=NO
+REMOTE_CANONICAL_ARCHIVE=GITHUB_PROJECT_REPOSITORY
+UNIQUE_LOCAL_ARTIFACTS_CREATED=NO
+RUNTIME_DEPENDENCY=NO
+SHARED_INFRA_MUTATION=0
+PRODUCTION_MUTATION=0
+ACCOUNT_MUTATION=0
+TRANSACTION_MUTATION=0
+PAYMENT_MUTATION=0
+~~~
+
+### Closeout reconciliation
+
+- Canonical research artifacts and current state are persisted in GitHub project-owned paths.
+- No local-only source, evidence, runtime or business data was created in this round.
+- No deletion is required for closeout; therefore no destructive cleanup is authorized or performed.
+- Legacy Xianyu runtime records remain preserved and explicitly outside the current project dependency graph.
+- There are no deferred sourcing/listing/transaction actions because those were explicitly removed from this project scope rather than marked as incomplete project work.
+- Future supplier research, sourcing, listing or automation—if desired—must start as a separate project/scope and cannot reopen this completed selection project by implication.
+
+### Closeout result
+
+~~~text
+PROJECT_GOAL_SATISFIED=PASS_CANDIDATE
+FINAL_SKU_CATALOG=AVAILABLE
+CANONICAL_PERSISTENCE=PASS_CANDIDATE
+DESTRUCTIVE_CLEANUP=NOT_APPLICABLE
+DEFERRED_IN_SCOPE_ACTIONS=NONE
+PROJECT_CLOSEOUT=PASS_CANDIDATE
+~~~
