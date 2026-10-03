@@ -4,10 +4,10 @@ param(
     [switch]$ReadOnlySnapshot,
     [ValidateSet('HEALTHY','UNHEALTHY','UNKNOWN')]
     [string]$WireGuardHealth = 'UNKNOWN',
-    [ValidateSet('HEALTHY','UNHEALTHY','UNKNOWN')]
-    [string]$Hy2Health = 'UNKNOWN',
-    [ValidateSet('HEALTHY','UNHEALTHY','UNKNOWN')]
-    [string]$RealityHealth = 'UNKNOWN',
+    [ValidateSet('READY_FOR_SEPARATE_ACTIVATION','NOT_READY','UNKNOWN')]
+    [string]$Hy2Readiness = 'UNKNOWN',
+    [ValidateSet('READY_FOR_SEPARATE_ACTIVATION','NOT_READY','UNKNOWN')]
+    [string]$RealityReadiness = 'UNKNOWN',
     [string]$VpsPublicIp = '24.199.118.137'
 )
 
@@ -70,8 +70,8 @@ function Resolve-G3aRolePlan {
     param(
         [Parameter(Mandatory = $true)][object]$PhysicalEgress,
         [Parameter(Mandatory = $true)][ValidateSet('HEALTHY','UNHEALTHY','UNKNOWN')][string]$WireGuard,
-        [Parameter(Mandatory = $true)][ValidateSet('HEALTHY','UNHEALTHY','UNKNOWN')][string]$Hy2,
-        [Parameter(Mandatory = $true)][ValidateSet('HEALTHY','UNHEALTHY','UNKNOWN')][string]$Reality,
+        [Parameter(Mandatory = $true)][ValidateSet('READY_FOR_SEPARATE_ACTIVATION','NOT_READY','UNKNOWN')][string]$Hy2,
+        [Parameter(Mandatory = $true)][ValidateSet('READY_FOR_SEPARATE_ACTIVATION','NOT_READY','UNKNOWN')][string]$Reality,
         [Parameter(Mandatory = $true)][string]$PublicIp
     )
 
@@ -84,16 +84,16 @@ function Resolve-G3aRolePlan {
         $reason = 'CURRENT_PRODUCTION_BASELINE_HEALTHY'
     }
     else {
-        if ($Hy2 -eq 'UNKNOWN') { throw 'HEALTH_STATE_AMBIGUOUS_HY2' }
-        if ($Hy2 -eq 'HEALTHY') {
+        if ($Hy2 -eq 'UNKNOWN') { throw 'READINESS_STATE_AMBIGUOUS_HY2' }
+        if ($Hy2 -eq 'READY_FOR_SEPARATE_ACTIVATION') {
             $selectedRole = 'HY2_FALLBACK_CANDIDATE'
-            $reason = 'WIREGUARD_UNHEALTHY_HY2_HEALTHY'
+            $reason = 'WIREGUARD_UNHEALTHY_HY2_READY'
         }
         else {
-            if ($Reality -eq 'UNKNOWN') { throw 'HEALTH_STATE_AMBIGUOUS_REALITY' }
-            if ($Reality -eq 'HEALTHY') {
+            if ($Reality -eq 'UNKNOWN') { throw 'READINESS_STATE_AMBIGUOUS_REALITY' }
+            if ($Reality -eq 'READY_FOR_SEPARATE_ACTIVATION') {
                 $selectedRole = 'REALITY_FALLBACK_CANDIDATE'
-                $reason = 'WIREGUARD_AND_HY2_UNHEALTHY_REALITY_HEALTHY'
+                $reason = 'WIREGUARD_UNHEALTHY_HY2_NOT_READY_REALITY_READY'
             }
             else {
                 throw 'NO_SAFE_ROLE_AVAILABLE'
@@ -136,10 +136,10 @@ function Resolve-G3aRolePlan {
             SourceIPv4 = $PhysicalEgress.SourceIPv4
         }
         RouteIntent = $routeIntent
-        Health = [ordered]@{
-            WireGuard = $WireGuard
-            Hy2 = $Hy2
-            Reality = $Reality
+        Inputs = [ordered]@{
+            WireGuardCurrentHealth = $WireGuard
+            Hy2Readiness = $Hy2
+            RealityReadiness = $Reality
         }
     }
 }
@@ -224,30 +224,35 @@ function Invoke-G3aSelfTest {
     }
     $passed++
 
-    $wg = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard HEALTHY -Hy2 HEALTHY -Reality HEALTHY -PublicIp '203.0.113.10'
+    $wg = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard HEALTHY -Hy2 READY_FOR_SEPARATE_ACTIVATION -Reality READY_FOR_SEPARATE_ACTIVATION -PublicIp '203.0.113.10'
     Assert-G3a ($wg.SelectedRole -eq 'WIREGUARD_BASELINE' -and -not $wg.RouteIntent.Required) 'SELFTEST_WG_BASELINE_FAILED'
     $passed++
 
-    $hy2 = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNHEALTHY -Hy2 HEALTHY -Reality HEALTHY -PublicIp '203.0.113.10'
+    $hy2 = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNHEALTHY -Hy2 READY_FOR_SEPARATE_ACTIVATION -Reality READY_FOR_SEPARATE_ACTIVATION -PublicIp '203.0.113.10'
     Assert-G3a ($hy2.SelectedRole -eq 'HY2_FALLBACK_CANDIDATE' -and $hy2.RouteIntent.Required -and -not $hy2.RouteIntent.ApplyAllowed) 'SELFTEST_HY2_FALLBACK_FAILED'
     $passed++
 
-    $reality = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNHEALTHY -Hy2 UNHEALTHY -Reality HEALTHY -PublicIp '203.0.113.10'
+    $reality = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNHEALTHY -Hy2 NOT_READY -Reality READY_FOR_SEPARATE_ACTIVATION -PublicIp '203.0.113.10'
     Assert-G3a ($reality.SelectedRole -eq 'REALITY_FALLBACK_CANDIDATE' -and $reality.RouteIntent.Required -and -not $reality.RouteIntent.ApplyAllowed) 'SELFTEST_REALITY_FALLBACK_FAILED'
     $passed++
 
     Invoke-G3aExpectedFailure -ExpectedCode 'NO_SAFE_ROLE_AVAILABLE' -Action {
-        $null = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNHEALTHY -Hy2 UNHEALTHY -Reality UNHEALTHY -PublicIp '203.0.113.10'
+        $null = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNHEALTHY -Hy2 NOT_READY -Reality NOT_READY -PublicIp '203.0.113.10'
     }
     $passed++
 
     Invoke-G3aExpectedFailure -ExpectedCode 'HEALTH_STATE_AMBIGUOUS_WIREGUARD' -Action {
-        $null = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNKNOWN -Hy2 HEALTHY -Reality HEALTHY -PublicIp '203.0.113.10'
+        $null = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNKNOWN -Hy2 READY_FOR_SEPARATE_ACTIVATION -Reality READY_FOR_SEPARATE_ACTIVATION -PublicIp '203.0.113.10'
     }
     $passed++
 
-    Invoke-G3aExpectedFailure -ExpectedCode 'HEALTH_STATE_AMBIGUOUS_HY2' -Action {
-        $null = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNHEALTHY -Hy2 UNKNOWN -Reality HEALTHY -PublicIp '203.0.113.10'
+    Invoke-G3aExpectedFailure -ExpectedCode 'READINESS_STATE_AMBIGUOUS_HY2' -Action {
+        $null = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNHEALTHY -Hy2 UNKNOWN -Reality READY_FOR_SEPARATE_ACTIVATION -PublicIp '203.0.113.10'
+    }
+    $passed++
+
+    Invoke-G3aExpectedFailure -ExpectedCode 'READINESS_STATE_AMBIGUOUS_REALITY' -Action {
+        $null = Resolve-G3aRolePlan -PhysicalEgress $egress -WireGuard UNHEALTHY -Hy2 NOT_READY -Reality UNKNOWN -PublicIp '203.0.113.10'
     }
     $passed++
 
@@ -273,7 +278,7 @@ if ($SelfTest) {
 
 $candidates = Get-G3aReadOnlyPhysicalCandidates
 $physicalEgress = Resolve-G3aPhysicalEgress -Candidates $candidates
-$plan = Resolve-G3aRolePlan -PhysicalEgress $physicalEgress -WireGuard $WireGuardHealth -Hy2 $Hy2Health -Reality $RealityHealth -PublicIp $VpsPublicIp
+$plan = Resolve-G3aRolePlan -PhysicalEgress $physicalEgress -WireGuard $WireGuardHealth -Hy2 $Hy2Readiness -Reality $RealityReadiness -PublicIp $VpsPublicIp
 
 $plan | ConvertTo-Json -Depth 6
 Write-Output 'PLANNER_MODE=READ_ONLY_SNAPSHOT'
