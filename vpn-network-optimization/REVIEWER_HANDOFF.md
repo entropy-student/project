@@ -53,25 +53,26 @@ Current known components:
 
 ## CURRENT_ACCEPTED_STATE
 
-- **Current production/rollback:** system WireGuard remains connected and authoritative on the existing DigitalOcean sfo3 VPS.
-- **Connectivity dependency:** at least one VPN path must remain available for ChatGPT/Codex. WireGuard may be disconnected only at an explicit Owner checkpoint after an alternate VPN is confirmed.
-- **G3-A:** health/readiness/advisory PASS; no automatic actuator exists.
-- **G3-B D1-D3:** offline migration package/qualification/render contracts PASS; fresh-target rehearsal remains deferred.
-- **G3-C C1 source:** manual-control template, contract doc, and offline validator are present on GitHub; A–G deterministic fixtures PASS.
-- **C1 review disposition:** RETURN only for missing Mihomo-native parser evidence. The source design is not rejected and must not be rebuilt without new parser evidence.
-- **Historical Mihomo fact:** accepted project runners used `C:\Program Files\Clash Verge\verge-mihomo.exe` and proved Mihomo Meta v1.19.31. Current Executor discovery saying no verified binary is unresolved until the exact canonical path is checked.
-- **Current runtime:** unchanged; Clash profile not applied, WG/routes/system proxy/TUN untouched.
+- **Current production/rollback:** system WireGuard remains connected and authoritative.
+- **Connectivity dependency:** at least one working VPN must remain available for ChatGPT/Codex; no automatic WG disconnect is authorized.
+- **G3-A:** health/readiness/advisory PASS.
+- **G3-B D1-D3:** offline migration package/qualification/render PASS; fresh-target rehearsal deferred.
+- **G3-C C1 design:** manual profile template + contract + offline validator are on GitHub; A–G fixtures PASS; no runtime application occurred.
+- **R1 result:** exact historical Mihomo path exists, but installed core is now v1.19.32 instead of historical accepted v1.19.31. Executor stopped correctly before native parse.
+- **Upstream verification:** MetaCubeX officially published stable v1.19.32 on 2026-09-30. Reviewer will requalify the current installed core rather than downgrade it.
+- **Timing process:** R1 timing start was not captured; next Gate must record `ROUND_STARTED_AT` before any preflight/fetch/version action.
+- **Formal client-core baseline:** remains v1.19.31 until R2 native parse passes. Current local installed fact is v1.19.32.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1
+GATE_ID=G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2
 STATE=AUTHORIZED
-PREVIOUS_RESULT=RETURN_MIHOMO_NATIVE_PARSE_REQUIRED
+PREVIOUS_RESULT=RETURN_MIHOMO_VERSION_DRIFT
 OWNER_CONTINUE_AUTHORIZATION=2026-10-03
 SPECIALIST_TRIGGERS=11B_TARGET_HOST_LOCAL_RUNTIME,11C_DEPLOYMENT_NETWORK_RESOURCES
-OBJECTIVE=Reconcile the historical accepted Mihomo binary path and obtain one local-only native config parse for the C1 manual-control profile without applying or starting the profile.
-MAX_ENDPOINT_THIS_ROUND=local read-only binary/version discovery + one non-secret temporary parse fixture + mihomo config-test + exact fixture cleanup + Evidence/Handoff persistence.
+OBJECTIVE=Requalify the actual installed stable Mihomo v1.19.32 against the unchanged canonical C1 manual-control profile using one local-only native config test.
+MAX_ENDPOINT_THIS_ROUND=timing start marker + local version confirmation + one non-secret temporary config-test fixture + native mihomo parse + exact cleanup + Evidence/Handoff persistence.
 MANDATORY_REVIEW_STOP=YES
 ACTIVE_VPN_CONNECTIVITY_MUST_BE_PRESERVED=YES
 WG_SERVICE_STOP_AUTHORIZED=NO
@@ -85,11 +86,13 @@ VPS_ACCESS_AUTHORIZED=NO
 SECRET_READ_AUTHORIZED=NO
 EXTERNAL_REQUEST_AUTHORIZED=NO
 SOURCE_REDESIGN_AUTHORIZED=NO_UNLESS_NATIVE_PARSE_PROVES_A_SOURCE_DEFECT
+MIHOMO_BINARY_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+EXPECTED_MIHOMO_VERSION=v1.19.32
+PREVIOUS_ACCEPTED_MIHOMO_VERSION=v1.19.31
+OFFICIAL_STABLE_RELEASE_VERIFIED=YES
 ROLLBACK_STATUS=LOCAL_FIXTURE_CLEANUP_ONLY
 DEFAULT_EXECUTION_CHANNEL=CODEX_DESKTOP_EXECUTOR
 OWNER_INTERVENTION_REQUIRED=NO
-HISTORICAL_MIHOMO_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
-EXPECTED_MIHOMO_VERSION=v1.19.31
 ESTIMATED_EXECUTION_TIME=10-15_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 TIME_OVERRUN_REVIEW_REQUIRED=YES
@@ -97,38 +100,48 @@ TIME_OVERRUN_REVIEW_REQUIRED=YES
 
 ### TARGET_AND_SCOPE
 
-1. Fresh sync canonical `main` in the existing project-scoped worktree; do not disturb unrelated work.
-2. Check the historically accepted exact binary first:
-   `C:\Program Files\Clash Verge\verge-mihomo.exe`
-3. If that exact file is absent, perform only a bounded read-only search under `C:\Program Files\Clash Verge\` for Mihomo executables; do not install/download anything.
-4. Run `-v` only. Expected accepted stable identity is Mihomo Meta v1.19.31. Version drift returns to Reviewer; do not silently validate against an unknown replacement.
-5. Build one **temporary, non-secret parse fixture** from the current canonical C1 template. Substitute only synthetic/test-safe values:
-   - reserved documentation public IP;
-   - fixture password/fingerprint;
-   - valid synthetic UUID/short-id/public-key-shaped value;
-   - dynamically discovered current physical interface name only if required for config validation.
-6. Run the pinned Mihomo **config test only** (`-t` with the fixture); do not start the core as an active client.
-7. Delete the temporary fixture and prove cleanup.
-8. Do not modify the C1 template/validator unless native parse itself proves an exact source defect. If parse fails, record the sanitized parser failure and STOP_AT_REVIEWER.
+1. **First action before any other preflight:** record `ROUND_STARTED_AT=<UTC ISO8601>`.
+2. Fresh fetch/sync canonical `origin/main` in the existing project-scoped worktree; do not discard unrelated work.
+3. Verify exact binary path `C:\Program Files\Clash Verge\verge-mihomo.exe`.
+4. Run only `-v`; require v1.19.32. Any new drift returns immediately.
+5. Use the canonical C1 template unchanged to create one temporary non-secret config-test fixture outside the repository.
+6. Substitute placeholders only with synthetic/test-safe values sufficient for parser validation:
+   - reserved documentation IP;
+   - example SNI;
+   - fixture-only password;
+   - parser-safe certificate fingerprint sentinel;
+   - valid synthetic UUID;
+   - valid synthetic short-id;
+   - non-secret public-key-shaped fixture;
+   - dynamically discovered current physical interface name only if required by parser validation.
+7. Run Mihomo native config test only; no active client start and no external traffic.
+8. Delete the temporary fixture and prove absence.
+9. If parse succeeds, do not edit C1 source. If parse fails, record sanitized parser output and STOP_AT_REVIEWER; source repair is not automatic.
+10. Persist Evidence + Executor Handoff only; do not modify Reviewer Handoff.
+11. Fresh GitHub read-back and verify canonical C1 template/validator blob identity.
+12. Record finish/elapsed/overrun fields and update timing retrospective if required.
+13. STOP_AT_REVIEWER.
 
 ### ACCEPTANCE_CRITERIA
 
 PASS_CANDIDATE requires:
-- historical/canonical Mihomo binary identity reconciled;
-- `MIHOMO_VERSION=v1.19.31` or a precise RETURN for version drift;
-- one native Mihomo config-test against the canonical C1 profile shape succeeds;
-- fixture contains no real Secret and is removed afterward;
-- no Clash active process/profile application, network request, route/proxy/TUN/WG/VPS change;
-- C1 source blobs remain unchanged unless a parser-proven source defect required Reviewer-visible repair;
-- timing fields recorded because this is the first mandatory timing round after C1.
+- `ROUND_STARTED_AT` captured before preflight;
+- binary exists at exact path and reports v1.19.32;
+- native Mihomo config-test succeeds on the unchanged C1 profile shape;
+- no real Secret appears in fixture;
+- fixture cleanup proven;
+- C1 source unchanged;
+- no Clash active client/profile apply, network request, route/proxy/TUN/WG/VPS change;
+- complete timing fields.
 
 ### TIMING_OBSERVABILITY
 
 - Reviewer estimate: **10–15 minutes end-to-end**.
-- Record `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN=YES|NO`.
-- If over 15 minutes, record `TIME_OVERRUN_CAUSE` using existing evidence; at most one bounded timing diagnosis if unclear.
-- Timeout alone is not Gate failure and must not trigger any network/action replay.
-- Update `docs/ROUND_TIMING_RETROSPECTIVE.md` under its existing rules.
+- Start marker is the first execution record, before fetch/path/version checks.
+- Record `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN=YES|NO`.
+- If over 15 minutes, record evidence-backed `TIME_OVERRUN_CAUSE`; at most one bounded timing diagnosis.
+- Timeout alone does not fail the Gate or justify action replay.
+- Update `docs/ROUND_TIMING_RETROSPECTIVE.md` under its current rules.
 
 ### OWNER_ONLY_ACTIONS
 
@@ -136,27 +149,27 @@ NONE.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Use the exact historical Mihomo path first and run only local binary/version/config-test reconciliation. Do not redesign C1 unless the native parser proves a source defect. No VPN/client/server/network action is authorized.
+Execute only the R2 local requalification of installed stable Mihomo v1.19.32. Timing start must be recorded first. No downgrade, download, profile apply, client start, network request, or C1 redesign is authorized.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3C_C1_NATIVE_PARSE or a precise RETURN. Persist Evidence/Executor Handoff and STOP_AT_REVIEWER.
+Return PASS_CANDIDATE_G3C_C1_MIHOMO_V11932_NATIVE_PARSE or a precise RETURN. Persist Evidence/Executor Handoff and STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Codex Desktop Executor performs the bounded local-only Mihomo native parse reconciliation. If it passes and source identity remains unchanged, Reviewer can close C1 without any live VPN switch.
+Codex Desktop requalifies installed stable Mihomo v1.19.32 with one local-only native config test. If it passes with unchanged C1 source and complete cleanup/timing evidence, Reviewer can formally close C1 and open the first live Clash UI canary C2.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Keep your current VPN setup unchanged. This reconciliation is local-only and must not start Clash or disconnect WireGuard.
+**NONE.** Keep your current VPN setup unchanged. R2 is local-only and must not start Clash or disconnect WireGuard.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Use the current R1 Gate only: exact historical Mihomo path first, local `-v` + one non-secret native config test, cleanup, Evidence/Handoff, STOP.
+Execute only current R2: timing marker first, verify exact Mihomo v1.19.32 path/version, one synthetic native config test, cleanup, Evidence/Handoff, STOP.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3C_C1_NATIVE_PARSE or a precise RETURN. No live network/client/server action.
+Return PASS_CANDIDATE_G3C_C1_MIHOMO_V11932_NATIVE_PARSE or precise RETURN; no live networking/client action.
 
 ## EVIDENCE_POINTERS
 
