@@ -64,3 +64,14 @@
 **Purpose:** Improve future planning and make abnormal slowdowns visible without turning timing measurement into another source of project delay.
 
 **First estimate:** G2-C private REALITY compatibility canary retry = **25–45 minutes**, excluding any deliberate Owner wait.
+
+
+## 2026-10-03 — Stop unchanged-parameter REALITY diagnostics after R2 and isolate server implementation
+
+**Decision:** Accept R2 as `PASS_DIAGNOSTIC_ONLY / UNKNOWN_AFTER_R2` and stop further unchanged-parameter sing-box trace probing. The next G2-C experiment is a controlled B-side using a temporary Mihomo v1.19.31 native VLESS+REALITY server while preserving the existing Windows Mihomo client, SNI/target, Vision flow, private port, and one-request limit.
+
+**Why:** Two bounded diagnostic rounds reproduced the same curl 35 / Mihomo timeout while private TCP and target TLS 1.3 reachability remained healthy, yet sing-box trace did not expose the requested REALITY internal state. Governance §6 says repeated materially similar failure without new evidence should not trigger another speculative patch. Swapping only the temporary server implementation produces higher information than another log parser or an unproven parameter toggle.
+
+**Pinned B-side candidate:** official MetaCubeX Mihomo `v1.19.31`, asset `mihomo-linux-amd64-compatible-v1.19.31.gz`, SHA256 `04cf9f09671704f839ddbee2e93069dc831a4123a75281e725d1d96ab9ac1afc`.
+
+**Consequence:** A successful Mihomo-server B-side materially implicates the sing-box server implementation path but does not itself authorize production use. A similar failure weakens the sing-box-specific hypothesis and moves the next Reviewer choice to a different single variable such as the REALITY handshake target/SNI. Public TCP/443 remains separately gated.
