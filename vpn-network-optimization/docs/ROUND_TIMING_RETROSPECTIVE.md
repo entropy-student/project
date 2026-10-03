@@ -21,7 +21,7 @@
 | G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1 | 15–30 分钟 | 24m29s | NO | 处于预计区间内；完成握手目标检查、一次私网请求、脱敏错误分类和 cleanup。 | main `e2e89aa9...` / diagnostic `c45a0968...` |
 | G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2 | 10–20 分钟 | 25m12s | YES | 主要不是 VPN 技术阶段变慢，而是执行期间共享 `main` 多次前进，首次 push 被拒后需要 fetch / rebase / retry。 | main `0d9249ad...` |
 | G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 attempt 1 | 20–35 分钟 | 55m10s | YES | 两类开销叠加：① 本地 PowerShell helper 在最后启动 curl 前才暴露空 `--noproxy` 参数绑定问题，导致前面的远端准备已完成后再回头诊断/修复；② 执行期间共享 `main` 前进，需要同步协调。真实 OpenAI 请求数为 0。 | commit `f2a02ca6...` |
-| G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 retry | 15–25 分钟 | PENDING | PENDING | 已将本地 no-network empty-argument fixture 前置到任何远端启动之前；本轮用于验证优化是否有效。 | current Gate |
+| G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 retry | 15–25 分钟 | 10m58s | NO | Shift-left 优化有效：empty-argument fixture 在远端工作前通过，整轮较快返回；但随后暴露第二个本地 runner 缺陷——异常分类器自身因类型名不可解析而报错，并遮蔽原始失败阶段。另发现硬编码 ifIndex=13 已与当前 SFO2-A/control-route ifIndex=9 不一致。 | commit `23e025ef...` |
 
 ## 已确认的主要耗时来源
 
@@ -110,6 +110,18 @@ TOTAL
 
 只记录阶段开始/结束或 elapsed；不为计时引入新的复杂 telemetry。
 
+### 4. 失败路径本身缺少 fixture
+
+R3 retry 证明了“正常参数路径”的本地 fixture 已经能提前挡住问题，但顶层 catch / failure-classification 路径没有被同样验证，结果是**错误处理代码本身再次报错**。
+
+同时，runner 把历史 ifIndex 13 当成安全不变量；当前 read-back 已经是 ifIndex 9，说明这种易变化的运行时编号不能硬编码。
+
+**新增改进：**
+- 异常分类器改成独立、可测试的纯本地函数，不直接引用可能无法解析的类型字面量；
+- 为“已知参数绑定异常”和“未知异常”各做一个 no-network fixture，保证 classifier 自身永不抛错；
+- 对网卡只验证“名称/状态/控制路由与动态发现 ifIndex 一致”，不验证固定数字；
+- 在任何 SSH/远端服务启动前完成这些 failure-path fixtures。
+
 ## 当前优化方案
 
 ### A. Shift-left：本地问题先于远端工作发现
@@ -154,7 +166,7 @@ TOTAL
 - 已存在 runner 的同 Gate retry：缩短预计区间。
 - 共享 `main` 活跃期：额外留少量 Git reconcile 余量，但不把异常 rebase 时间无限计入正常预算。
 
-当前 R3 retry 已从 20–35 分钟调整为 **15–25 分钟**。
+R3 retry 实际 **10m58s**，说明本地 fixture 前置对缩短失败轮次有效。下一轮 H1 是纯本地 hardening，预计 **10–20 分钟**。
 
 ## 不建议为了提速做的事情
 
@@ -187,4 +199,5 @@ TOTAL
 - R1 在预计区间内；
 - R2 的主要流程损耗是 GitHub shared-main concurrency；
 - R3 attempt 1 的最大可避免损耗是**本地 runner 错误发现过晚**，其次仍有 shared-main reconciliation；
-- 因此当前最高优先级的效率优化是：**本地 fixture 前置 + project-scoped worktree + round-boundary Git reconciliation + 轻量阶段计时**。
+- R3 retry 在 10m58s 内 fail-fast，证明 fixture 前置有效，但也暴露了 failure-classifier 与 hardcoded ifIndex 没被纳入 fixture 的缺口；
+- 因此当前最高优先级的效率优化是：**本地 fixture 前置 + failure-path fixture + 动态运行时不变量 + project-scoped worktree + round-boundary Git reconciliation + 轻量阶段计时**。
