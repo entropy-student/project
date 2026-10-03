@@ -146,6 +146,12 @@ Owner R3 的核心 Mihomo `-t` 已成功，但 Reviewer 把交互式 `try { ... 
 
 **改进：** 后续 Owner-local PowerShell checkpoint 必须以单个 `& { ... }` / 单脚本文件 / 单次可整体粘贴的语法单元交付。不得要求 Owner 依赖交互式解析器把分离的 `try/finally` 自动关联。cleanup 必须可单独补偿且不得重放已经成功的 consequential/validation action。
 
+### 8. Source-only package round 超时需要阶段级归因
+
+C2A 预计 15–25 分钟，实际 43m29s。Executor 只记录了“本地 package/fixture review + GitHub persistence closeout”的总类目，没有阶段时间，因此无法判断主要慢在源码构造、fixture 迭代、静态 review 还是 Git persistence。
+
+**改进：** 对预计超过 10 分钟的 source-only package round，至少记录 `SOURCE_BUILD`、`FIXTURE_VALIDATE`、`STATIC_REVIEW`、`GIT_PERSISTENCE` 四个轻量 elapsed。只有超时时才需要细看这些阶段；正常轮次不增加更复杂 telemetry。
+
 ## 当前优化方案
 
 ### A. Shift-left：本地问题先于远端工作发现
