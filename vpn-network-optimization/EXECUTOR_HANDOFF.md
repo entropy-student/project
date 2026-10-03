@@ -179,3 +179,18 @@ Owner-side canonical recovery path realization completed successfully. Source wa
 回滚：移除两处 SetOwner($script:ownerSid) 即可回到上一 accepted runner。
 请 Reviewer 检查：核对 OWNER_ACL_OWNER_MISMATCH 与源码缺失 SetOwner 的因果一致性、补丁范围及下一次 fixture 要求。
 Owner 转交：NONE
+
+## Current executor result — G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2 (2026-10-03)
+
+结果：PASS_CANDIDATE_DIAGNOSTIC；服务端状态归类为 `UNKNOWN_AFTER_R2`。
+改动：canary 仅把临时 sing-box 日志提高到 trace，并从受保护日志提取固定 REALITY 状态枚举；VLESS+REALITY+Vision 参数未变。
+验证：仅发送 1 次私网代理请求（curl 35 / HTTP 0）；临时私网监听器已创建并清理，sing-box 状态日志采集与 cleanup read-back 通过，但所有 REALITY 阶段字段均为 UNKNOWN。Mihomo 已停止、Secret runtime 已删除、WG/HY2 与本机网络基线保持。
+问题：UNKNOWN_AFTER_R2：可读 trace 中未确认任何目标 REALITY 内部状态标记；不得据此推断 auth/fallback 或协议兼容性。
+回滚：提交前恢复 `scripts/g2c-private-reality-canary.ps1` 与本轮两份记录即可；本轮临时服务端/客户端运行物已清理，无持久网络或服务变更。
+请 Reviewer 检查：fresh-read 本轮 runner、Evidence 与 commit，评估为何 v1.14.2 trace 未暴露目标状态字段，并决定下一步 Gate。
+Owner 转交：NONE
+ROUND_STARTED_AT=2026-10-03T00:44:07Z
+ROUND_FINISHED_AT=2026-10-03T00:58:55Z
+ACTUAL_ELAPSED=14m48s
+TIME_OVERRUN=NO
+STOP_AT_REVIEWER=YES

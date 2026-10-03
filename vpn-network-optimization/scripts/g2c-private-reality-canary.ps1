@@ -40,6 +40,16 @@ $script:curlAppConnect = $null
 $script:curlErrorClass = 'NOT_CAPTURED'
 $script:mihomoErrorClass = 'NOT_CAPTURED'
 $script:singBoxErrorClass = 'NOT_CAPTURED'
+$script:realityServerAuthAccepted = 'UNKNOWN'
+$script:realityServerFallbackUsed = 'UNKNOWN'
+$script:realityServerKeyShare = 'UNKNOWN'
+$script:realityServerHandshakeReached = 'UNKNOWN'
+$script:realityServerClientFinished = 'UNKNOWN'
+$script:realityServerHandshakeComplete = 'UNKNOWN'
+$script:realityServerHandshakeStage = 'UNKNOWN'
+$script:realityServerErrorStage = 'UNKNOWN'
+$script:realityServerStateCapture = 'UNAVAILABLE'
+$script:realityServerStateClassification = 'UNKNOWN_AFTER_R2'
 $script:handshakeTargetTcp = 'NOT_RUN'
 $script:handshakeTargetTls = 'NOT_RUN'
 $script:handshakeTargetTlsVersion = 'NOT_AVAILABLE'
@@ -414,19 +424,76 @@ def classify_core_error(text):
         return "UNKNOWN_TLS_HANDSHAKE_FAILURE"
     return "UNKNOWN_TLS_HANDSHAKE_FAILURE" if value.strip() else "NONE_OBSERVED"
 
-def sing_box_error_class():
+def parse_reality_server_state(text):
+    state = {"auth_accepted": "UNKNOWN", "fallback_used": "UNKNOWN",
+             "key_share": "UNKNOWN", "handshake_reached": "UNKNOWN",
+             "client_finished": "UNKNOWN", "handshake_complete": "UNKNOWN",
+             "handshake_stage": "UNKNOWN", "error_stage": "UNKNOWN"}
+    handshake_result = None
+    for line in text.splitlines():
+        match = re.search(r"hs\.c\.conn\s*==\s*conn:\s*(true|false)\b", line, re.I)
+        if match:
+            state["auth_accepted"] = "YES" if match.group(1).lower() == "true" else "NO"
+            state["fallback_used"] = "NO" if state["auth_accepted"] == "YES" else "YES"
+        match = re.search(r"using X25519MLKEM768:\s*(true|false)\b", line, re.I)
+        if match:
+            state["key_share"] = "X25519MLKEM768" if match.group(1).lower() == "true" else "X25519"
+        match = re.search(r"hs\.handshake\(\)\s+err:\s*(.*)$", line, re.I)
+        if match:
+            handshake_result = match.group(1).strip().lower() == "<nil>"
+            state["handshake_reached"] = "YES"
+        match = re.search(r"hs\.readClientFinished\(\)\s+err:\s*(.*)$", line, re.I)
+        if match:
+            state["client_finished"] = "YES" if match.group(1).strip().lower() == "<nil>" else "NO"
+        match = re.search(r"hs\.c\.isHandshakeComplete\.Load\(\):\s*(true|false)\b", line, re.I)
+        if match:
+            state["handshake_complete"] = "YES" if match.group(1).lower() == "true" else "NO"
+
+    if state["handshake_reached"] == "UNKNOWN" and state["fallback_used"] == "YES":
+        state["handshake_reached"] = "NO"
+    if state["handshake_complete"] == "YES":
+        state["handshake_stage"] = "COMPLETE"
+    elif state["client_finished"] == "YES":
+        state["handshake_stage"] = "CLIENT_FINISHED"
+    elif state["client_finished"] == "NO":
+        state["handshake_stage"] = "CLIENT_FINISHED_ERROR"
+        state["error_stage"] = "CLIENT_FINISHED"
+    elif handshake_result is False:
+        state["handshake_stage"] = "SERVER_HANDSHAKE_ERROR"
+        state["error_stage"] = "SERVER_HANDSHAKE"
+    elif handshake_result is True:
+        state["handshake_stage"] = "SERVER_HANDSHAKE"
+    elif state["fallback_used"] == "YES":
+        state["handshake_stage"] = "FALLBACK"
+        state["error_stage"] = "REALITY_AUTH_OR_FALLBACK"
+    elif state["auth_accepted"] == "YES":
+        state["handshake_stage"] = "AUTH_ACCEPTED"
+    return state
+
+def sing_box_reality_state():
+    unknown = {"capture": "UNAVAILABLE", "error_class": "UNKNOWN_TLS_HANDSHAKE_FAILURE",
+               "auth_accepted": "UNKNOWN", "fallback_used": "UNKNOWN",
+               "key_share": "UNKNOWN", "handshake_reached": "UNKNOWN", "client_finished": "UNKNOWN",
+               "handshake_complete": "UNKNOWN", "handshake_stage": "UNKNOWN", "error_stage": "UNKNOWN"}
     try:
         info = LOG_FILE.stat(follow_symlinks=False)
-        if not stat.S_ISREG(info.st_mode) or info.st_uid != 0 or stat.S_IMODE(info.st_mode) != 0o600:
-            return "UNKNOWN_TLS_HANDSHAKE_FAILURE"
+        if (not stat.S_ISREG(info.st_mode) or info.st_uid != 0 or stat.S_IMODE(info.st_mode) != 0o600
+                or info.st_size > 4194304):
+            return unknown
         raw = LOG_FILE.read_bytes()
         text = raw.decode("utf-8", "replace")
-        result = classify_core_error(text)
+        parsed = parse_reality_server_state(text)
+        error_lines = "\n".join(line for line in text.splitlines()
+                                  if re.search(r"\b(?:ERROR|FATAL)\b", line, re.I) or
+                                  (re.search(r"hs\.(?:handshake|readClientFinished)\(\)\s+err:", line, re.I)
+                                   and not re.search(r"err:\s*<nil>\s*$", line, re.I)))
+        error_class = classify_core_error(error_lines)
         raw = None
         text = None
-        return result
+        error_lines = None
+        return {"capture": "PASS", **parsed, "error_class": error_class}
     except OSError:
-        return "UNKNOWN_TLS_HANDSHAKE_FAILURE"
+        return unknown
 
 def same_server_process(pid):
     try:
@@ -688,7 +755,7 @@ def main_run():
     client_data = None
 
     config_data = {
-        "log": {"level": "debug"},
+        "log": {"level": "trace"},
         "inbounds": [{
             "type": "vless", "tag": "g2c-private-reality-in",
             "listen": "10.66.21.1", "listen_port": 14443,
@@ -745,7 +812,10 @@ def main_run():
     control = sys.stdin.buffer.readline()
     signal.alarm(0)
     if control in (b"DIAGNOSTICS\n", b"DIAGNOSTICS\r\n"):
-        emit({"status": "diagnostics", "sing_box_error_class": sing_box_error_class()})
+        state = sing_box_reality_state()
+        emit({"status": "diagnostics", "sing_box_error_class": state["error_class"],
+              "reality_server_state": state})
+        state = None
         control = sys.stdin.buffer.readline()
     if control not in (b"CLEANUP\n", b"CLEANUP\r\n", b""):
         raise GateFailure("REMOTE_CONTROL_COMMAND_INVALID")
@@ -980,8 +1050,32 @@ function Invoke-G2cRemoteDiagnosticSnapshot {
                      'SNI_OR_CERT_MISMATCH', 'VLESS_OR_VISION_REJECTED',
                      'HANDSHAKE_TARGET_UNREACHABLE', 'CONNECTION_RESET_OR_EOF',
                      'TIMEOUT', 'UNKNOWN_TLS_HANDSHAKE_FAILURE', 'NONE_OBSERVED')
-        if ($record['status'] -eq 'diagnostics' -and $record['sing_box_error_class'] -in $allowed) {
-            $script:singBoxErrorClass = [string]$record['sing_box_error_class']
+        $state = $record['reality_server_state']
+        $stateStages = @('UNKNOWN', 'FALLBACK', 'AUTH_ACCEPTED', 'SERVER_HANDSHAKE',
+                         'SERVER_HANDSHAKE_ERROR', 'CLIENT_FINISHED', 'CLIENT_FINISHED_ERROR', 'COMPLETE')
+        $errorStages = @('UNKNOWN', 'NONE_OBSERVED', 'REALITY_AUTH_OR_FALLBACK', 'SERVER_HANDSHAKE',
+                         'CLIENT_FINISHED', 'CORE_ERROR')
+        $validState = $null -ne $state -and $state.ContainsKey('capture') -and
+            $state['capture'] -in @('PASS', 'UNAVAILABLE') -and
+            $state['error_class'] -in $allowed -and
+            $state['auth_accepted'] -in @('YES', 'NO', 'UNKNOWN') -and
+            $state['fallback_used'] -in @('YES', 'NO', 'UNKNOWN') -and
+            $state['key_share'] -in @('X25519', 'X25519MLKEM768', 'UNKNOWN') -and
+            $state['handshake_reached'] -in @('YES', 'NO', 'UNKNOWN') -and
+            $state['client_finished'] -in @('YES', 'NO', 'UNKNOWN') -and
+            $state['handshake_complete'] -in @('YES', 'NO', 'UNKNOWN') -and
+            $state['handshake_stage'] -in $stateStages -and $state['error_stage'] -in $errorStages
+        if ($record['status'] -eq 'diagnostics' -and $record['sing_box_error_class'] -in $allowed -and $validState) {
+            $script:singBoxErrorClass = [string]$state['error_class']
+            $script:realityServerStateCapture = [string]$state['capture']
+            $script:realityServerAuthAccepted = [string]$state['auth_accepted']
+            $script:realityServerFallbackUsed = [string]$state['fallback_used']
+            $script:realityServerKeyShare = [string]$state['key_share']
+            $script:realityServerHandshakeReached = [string]$state['handshake_reached']
+            $script:realityServerClientFinished = [string]$state['client_finished']
+            $script:realityServerHandshakeComplete = [string]$state['handshake_complete']
+            $script:realityServerHandshakeStage = [string]$state['handshake_stage']
+            $script:realityServerErrorStage = [string]$state['error_stage']
             $script:singBoxDiagnosticReadback = $true
         }
     }
@@ -1151,6 +1245,22 @@ function Resolve-G2cDiagnosticClassification {
     $unique = @($candidates | Sort-Object -Unique)
     if ($unique.Count -eq 1) { return $unique[0] }
     return 'UNKNOWN_AFTER_DIAGNOSTIC'
+}
+
+function Resolve-G2cServerStateClassification {
+    if (-not $script:singBoxDiagnosticReadback) { return 'UNKNOWN_AFTER_R2' }
+    if ($script:realityServerAuthAccepted -eq 'NO' -and $script:realityServerFallbackUsed -eq 'YES') {
+        return 'REALITY_AUTH_REJECTED_OR_FALLBACK'
+    }
+    if ($script:realityServerAuthAccepted -eq 'YES' -and $script:realityServerHandshakeComplete -eq 'YES') {
+        if ($script:curlExit -eq 0 -and $script:httpStatus -eq 401) { return 'SERVER_HANDSHAKE_COMPLETE_REQUEST_SUCCEEDED' }
+        return 'SERVER_HANDSHAKE_COMPLETE_CLIENT_SIDE_FAILURE'
+    }
+    if ($script:realityServerAuthAccepted -eq 'YES' -and $script:realityServerHandshakeReached -eq 'YES' -and
+        $script:realityServerHandshakeComplete -eq 'NO') {
+        return 'REALITY_AUTH_ACCEPTED_SERVER_HANDSHAKE_INCOMPLETE'
+    }
+    return 'UNKNOWN_AFTER_R2'
 }
 
 try {
@@ -1425,6 +1535,17 @@ Write-Output "WINDOWS_PRIVATE_LISTENER_TCP=$(if ($script:privateListenerTcpReach
 Write-Output "CURL_ERROR_CLASS=$($script:curlErrorClass)"
 Write-Output "MIHOMO_ERROR_CLASS=$($script:mihomoErrorClass)"
 Write-Output "SING_BOX_ERROR_CLASS=$($script:singBoxErrorClass)"
+Write-Output "REALITY_SERVER_STATE_CAPTURE=$($script:realityServerStateCapture)"
+Write-Output "REALITY_SERVER_AUTH_ACCEPTED=$($script:realityServerAuthAccepted)"
+Write-Output "REALITY_SERVER_FALLBACK_USED=$($script:realityServerFallbackUsed)"
+Write-Output "REALITY_SERVER_KEY_SHARE=$($script:realityServerKeyShare)"
+Write-Output "REALITY_SERVER_HANDSHAKE_REACHED=$($script:realityServerHandshakeReached)"
+Write-Output "REALITY_SERVER_CLIENT_FINISHED=$($script:realityServerClientFinished)"
+Write-Output "REALITY_SERVER_HANDSHAKE_STAGE=$($script:realityServerHandshakeStage)"
+Write-Output "REALITY_SERVER_HANDSHAKE_COMPLETE=$($script:realityServerHandshakeComplete)"
+Write-Output "REALITY_SERVER_ERROR_STAGE=$($script:realityServerErrorStage)"
+$script:realityServerStateClassification = Resolve-G2cServerStateClassification
+Write-Output "REALITY_SERVER_STATE_CLASSIFICATION=$($script:realityServerStateClassification)"
 $script:realityDiagnosticClassification = Resolve-G2cDiagnosticClassification
 Write-Output "REALITY_DIAGNOSTIC_CLASSIFICATION=$($script:realityDiagnosticClassification)"
 Write-Output "TEST_MIHOMO_STOPPED=$(if ($script:mihomoStopped) { 'YES' } else { 'NO' })"
@@ -1443,8 +1564,7 @@ Write-Output 'BENCHMARK_STARTED=NO'
 Write-Output 'SECRET_VALUES_EMITTED=0'
 Write-Output 'SECRET_VALUES_COMMITTED=0'
 
-if ($script:requestCount -eq 1 -and $script:cleanupFailures.Count -eq 0 -and
-    $script:realityDiagnosticClassification -ne 'UNKNOWN_AFTER_DIAGNOSTIC') {
+if ($script:requestCount -eq 1 -and $script:cleanupFailures.Count -eq 0 -and $script:singBoxDiagnosticReadback) {
     Write-Output 'G2C_REALITY_DIAGNOSTIC_RESULT=PASS_CANDIDATE_DIAGNOSTIC'
     exit 0
 }
