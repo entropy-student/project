@@ -3374,3 +3374,35 @@ Reviewer interpretation:
 - Self-test and live read-only proof together show zero network/service/proxy/TUN/VPS mutation, zero external workload request, and zero Secret emission.
 - G3-A sensing + readiness classification + advisory decision is complete. No automatic actuator/switching capability has been authorized or implemented.
 
+## Reviewer acceptance — G3B migration package discovery D1 — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_POWERSHELL_OUTPUT_REVIEWED_AGAINST_PINNED_D1_VALIDATOR
+GATE_ID=G3B_MIGRATION_ROLLBACK_PACKAGE_DISCOVERY_D1
+REVIEWER_RESULT=PASS
+SOURCE_HEAD=8f9901f999fb7d8d81d34e611038f5e35a0ce956
+G3B_VALIDATOR_AST=PASS
+G3B_REQUIRED_FILE_COUNT=11
+G3B_WG_SPLIT_DEFAULT_TEMPLATE=PASS
+G3B_TARGET_IDENTITY_INPUTS=PASS
+G3B_HY2_SNI_PARAMETERIZATION=PASS
+G3B_CURRENT_INSTANCE_CONFIG_BOUNDARY=PASS
+G3B_SECRET_TRANSFER_BOUNDARY=PASS
+G3B_SOURCE_DECOMMISSION_BOUNDARY=PASS
+NETWORK_MUTATION=NO
+VPS_MUTATION=NO
+PROVIDER_ACTION=NO
+SECRET_VALUES_READ=0
+SECRET_VALUES_EMITTED=0
+G3B_D1_PACKAGE_VALIDATION=PASS
+```
+
+Reviewer interpretation:
+- D1 is formally PASS.
+- The migration package now separates portable templates from current SFO3 instance evidence.
+- Portable WireGuard client semantics preserve the accepted split-default IPv4 baseline.
+- HY2 target identity/SNI is parameterized rather than tied to the current region.
+- Secret movement, Provider provisioning, cutover, and source decommission remain separate later Gates.
+- Full rollback semantics preserve the known-good source VPS through the rollback window; `rollback-uninstall.sh` is only a project-owned HY2 cleanup helper and is not the migration rollback itself.
+- No live network, VPS, Provider, or Secret action occurred.
+
