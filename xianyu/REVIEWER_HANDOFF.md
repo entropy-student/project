@@ -1,5 +1,8 @@
 # Xianyu — REVIEWER HANDOFF
 
+> GOVERNANCE_BASELINE=vps-project-governance v0.2.6 / ACTIVE_PROVISIONAL  
+> CANONICAL_GOVERNANCE=entropy-student/spike.skill@main:vps-project-governance/VNEXT.md
+
 ## PROJECT_GOAL
 
 以真实市场需求为最高优先级，筛选 **标品或高度可产品化的半标品** 闲鱼虚拟商品；非标服务只作为需求来源，不作为最终优先商品。随后再解决合法货源/交付、上架、自动化与规模化。
@@ -11,7 +14,8 @@ MARKET_SELECTION_REBOOT = ACTIVE
 X1_MARKET_DEMAND_DISCOVERY_AND_NORMALIZATION = PASS
 X2_SERVICE_DEMAND_DEPTH = PASS_EVIDENCE_ONLY
 X2R1_STANDARDIZED_PRODUCT_REFRAME = PASS
-X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3 = NEXT
+X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3 = PASS
+X4_MINIMUM_VALIDATION_DESIGN_AND_ACCOUNT_POLICY_READBACK = NEXT
 
 AUTOMATION_RUNTIME_TRACK = PRESERVED_ACCEPTED_BASELINE
 RUNTIME_MUTATION_THIS_REBOOT = 0
@@ -46,6 +50,8 @@ RUNTIME_MUTATION_THIS_REBOOT = 0
 - 当前最强的“标品存在真钱需求”证据包括：闲鱼 2026 H1 AI 教程/课程占 AI 订单 8.1%，AI 模板/工作流占 6.6%，并有卖家半年卖出 1.7 万份 AI 漫剧制作教程。
 - 当前公开市场也存在重复销售的软件/工具、模板、数据产品等直接样本；但第三方会员/账号/未经授权模板/搬运数据/平台规避工具只作为需求证据，不进入可执行 shortlist。
 - 货源暂时 UNKNOWN 不淘汰；但最终无法建立合法、稳定、可重复交付来源时 KILL。
+- X3 已对 P1–P8 建立 E1–E10 Evidence Cards；当前最多 3 个研究候选为 **P1 单一任务型自研工具、P2 AI 垂直教程+项目文件、P4 垂直 Excel/Office 系统**，明确 **不排名、不等于最终赢家**。
+- P3/P5/P7 保留为 HOLD；P6 为 HOLD_HIGH_RISK；P8 为 HOLD。其主要阻塞分别来自免费替代、合法需求与现有样本错位、标准化付费证据不足、低价/版权/更新或售后负担。
 
 ### Standardization classes
 
@@ -85,15 +91,25 @@ CLEANUP_AUTHORIZED=NO
 
 ~~~text
 GATE_ID=X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3
-OBJECTIVE=对 X2R1 的标品/半标品候选补齐 E1–E10、标准化经济性、版权/交付来源、更新负担和反方证据，收敛到最多 3 个 Top Candidates
-MAX_ENDPOINT_THIS_ROUND=TOP3_WITHOUT_REAL_LISTING
-MANDATORY_REVIEW_STOP=YES_BEFORE_FINAL_PRIORITY_TEST_OR_REAL_LISTING
-TARGET_AND_SCOPE=XIANYU_STANDARDIZED_VIRTUAL_PRODUCT_RESEARCH_ONLY
-RUNTIME_MUTATION=FORBIDDEN
-LISTING_PUBLISH=FORBIDDEN
-REAL_PURCHASE=FORBIDDEN
-ACCOUNT_MUTATION=FORBIDDEN
+STATUS=PASS
+OBJECTIVE=对 P1–P8 建立 E1–E10 Evidence Cards，并收敛最多 3 个进入下一阶段的研究候选
+ACCEPTED_TOP3=P1_SINGLE_PURPOSE_SELF_DEVELOPED_UTILITY;P2_AI_NICHE_TUTORIAL_PLUS_PROJECT_FILES;P4_VERTICAL_EXCEL_OFFICE_SYSTEM
+TOP3_RANKED=NO
+REAL_LISTING=0
+REAL_PURCHASE=0
+PAYMENT=0
+ACCOUNT_MUTATION=0
+RUNTIME_MUTATION=0
+MANDATORY_REVIEW_STOP=REACHED
+NEXT_GATE=X4_MINIMUM_VALIDATION_DESIGN_AND_ACCOUNT_POLICY_READBACK
+NEXT_GATE_OPENED=NO
 ~~~
+
+X3 的完整 Gate 合同、8 张 Evidence Cards、经济性假设、反方研究与 source ledger 已持久化到：
+- `docs/X3_STANDARDIZED_EVIDENCE_CARDS_TOP3_2026-10.md`
+- `EXECUTION_EVIDENCE.md`
+
+下一 Gate 尚未打开；不会自动进入真实上架、真实付款或账号变更。
 
 ### X2R1 accepted standardized shortlist — not ranked
 
@@ -151,13 +167,16 @@ AUTOMATION_RUNTIME=UNCHANGED / NOT_USED
 
 - 闲鱼公开网页无法完整暴露 SKU 级真实订单、退款、询盘和 Support Minutes；最终仍需 Minimum Validation。
 - AI 模板/工作流 6.6% 的平台订单口径同时包含模板与定制工作流，纯标品份额未知。
-- 软件/工具类公开样本常混有第三方授权、平台自动化或数据抓取需求，需要在 X3 继续把“需求”与“合法可复制产品”分开。
+- P1 的决定性未知：哪个具体单任务工具能在免费工具之外证明真实付款，而不是只有“想要/浏览”。
+- P2 的决定性未知：版本更新成本能否控制，以及买家是否为原创项目文件/可执行路径付费而不是只买低价教程。
+- P4 的决定性未知：哪个垂直 Excel/Office 系统能明显优于免费通用模板并保持 <=3 分钟/单的售后目标。
+- P3/P5/P7 尚未证明“合法标准化子产品”的付款强度足以覆盖免费替代；P6/P8 仍有明显价格/版权/支持风险。
 - 当前账号对特色服务/虚拟商品类目的实际发布资格尚未做账号内验证。
 - runtime public ingress 与 retention-review 继续保持历史 UNKNOWN，不属于当前 Gate。
 
 ## NEXT_STEP
 
-执行 X3：只对 8 个 A/B 候选建立 E1–E10 Evidence Cards，并增加 Standardization Economics（人工分钟数、更新负担、自动交付、售后、版权来源）；收敛到最多 3 个 Top Candidates。
+下一轮先设计 X4：为 P1/P2/P4 分别定义最小真实验证 Offer、价格假设、Kill Evidence、成功阈值和账号内政策/类目 read-back；在 Owner 明确授权前不真实发布、不付款、不改账号。
 
 ## OWNER_ACTION_REQUIRED
 
@@ -168,5 +187,6 @@ NONE
 - docs/PRODUCT_SELECTION_RESEARCH_2026-10.md
 - docs/X2_DEMAND_DEPTH_SHORTLIST_2026-10.md（需求证据历史，不再是 current shortlist）
 - docs/X2R1_STANDARDIZED_PRODUCT_RESEARCH_2026-10.md
+- docs/X3_STANDARDIZED_EVIDENCE_CARDS_TOP3_2026-10.md
 - EXECUTION_EVIDENCE.md
 - PROJECT_STORAGE_MANIFEST.md（仅 runtime 需要时读）

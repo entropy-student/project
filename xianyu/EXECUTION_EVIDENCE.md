@@ -298,3 +298,98 @@ A_B_ONLY=YES
 FINAL_PRIORITY_TEST=NOT_RUN
 NEXT=X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3
 ~~~
+
+
+---
+
+## 2026-10-03 — X3 Standardized Evidence Cards & Top 3
+
+~~~text
+AUTHORIZED_GATE=X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3
+EXECUTION_CLASS=READ_ONLY_PUBLIC_MARKET_RESEARCH + DOCUMENTATION
+GOVERNANCE=vps-project-governance_v0.2.6
+RUNTIME_MUTATIONS=0
+ACCOUNT_MUTATIONS=0
+LISTINGS_PUBLISHED=0
+REAL_PURCHASES=0
+PAYMENTS=0
+EVIDENCE_CARDS=8
+TOP3_COUNT=3
+FINAL_PRIORITY_TEST=NOT_RUN
+~~~
+
+### Preflight facts
+
+- Current canonical project baseline was read from `xianyu/REVIEWER_HANDOFF.md`, `EXECUTION_EVIDENCE.md`, X1/X2/X2R1 research docs.
+- Current Governance v0.2.6 was loaded from GitHub canonical `vps-project-governance/VNEXT.md`.
+- The Xianyu-specific opportunity Skill's E1–E10, Xianyu modifier, competition/economics and counterevidence rules were loaded before scoring.
+- X3 Gate was expanded to the complete v0.2.6 Gate contract before research execution.
+- Current official Xianyu agreement/platform docs and current public market evidence were refreshed.
+- No legacy automation runtime was touched.
+
+### Objective read-back / evidence added
+
+1. Current Xianyu agreement remains version 2026-05-27 / effective 2026-06-15 and explicitly covers item/product/service information and transactions while requiring lawful publishing rights.
+2. Xianyu-reported 2026 H1 AI transaction data remains: 9.816m AI-service orders, nearly 5m buyers, tutorials/courses 8.1%, templates/workflows 6.6%, and one seller at 17k AI-manga tutorial copies in six months.
+3. Current live self-developed quotation software: RMB 13.50 / direct-buy 13.90, 133 “想要”, 5,008 views; used as direct current P1 product-shape evidence, not as SKU sales proof.
+4. Current ecommerce image-productivity software remains RMB 2.98–50.98, 722 “想要”, 5,163 views; the sampled value is partly cross-platform image downloading, so only the demand signal is retained for P5.
+5. Current processed public-company dataset remains RMB 0.49 / RMB 1 direct-buy, 523 “想要”, 3,591 views; the seller itself states data are moved from the web, making it strong counterevidence for P6 rights/economics.
+6. Current WordPress 700+ theme bundle remains RMB 25.90 / direct-buy 29, 804 “想要”, about 10k views; license provenance is not accepted as our supply path.
+7. Current recommendation pages contain a RMB 39.90 Python Office automation script pack, supporting reusable Office-tool supply/payment structure without proving per-SKU orders.
+8. Free-substitute refresh:
+   - n8n exposes 12,895 community workflow templates;
+   - Dify Marketplace provides one-click reusable templates and a free resume/JD matching workflow;
+   - Microsoft provides free Excel templates;
+   - ImageMagick provides free batch resize/convert processing;
+   - WordPress.org provides a large free-theme directory.
+
+### X3 dispositions
+
+~~~text
+P1_SINGLE_PURPOSE_SELF_DEVELOPED_UTILITY=TOP3_CONTINUE
+P2_AI_NICHE_TUTORIAL_PLUS_PROJECT_FILES=TOP3_CONTINUE
+P3_TASK_SPECIFIC_AI_WORKFLOW_PACK=HOLD
+P4_VERTICAL_EXCEL_OFFICE_SYSTEM=TOP3_CONTINUE
+P5_BUYER_OWNED_ECOM_IMAGE_SKU_BATCH_TOOL=HOLD
+P6_ORIGINAL_PROCESSED_PUBLIC_DATA_PRODUCT=HOLD_HIGH_RISK
+P7_STRUCTURED_INPUT_DIAGNOSTIC_REPORT=HOLD
+P8_ORIGINAL_LICENSED_VERTICAL_STARTER_KIT=HOLD
+~~~
+
+The Top 3 is explicitly unranked.
+
+### Standardization/economics conclusions
+
+- P1 can remain A1 if it is one-task, self-developed, self-serve and support stays around 0–5 min/order.
+- P2 has the strongest exact repeated-digital-product transaction proof, but only remains attractive with original executable assets, explicit version cutoff and bounded support.
+- P4 has the lowest structural variable cost and version burden; its decisive unknown is willingness to pay over free generic Excel templates.
+- P3/P5/P7 retain meaningful Jobs but lack sufficiently clean evidence that the legal standardized sub-product beats free alternatives without turning into service.
+- P6 and P8 are particularly exposed to price compression, licensing/provenance or support expansion.
+
+### Counterevidence / limitations
+
+- Public Goofish indexing remains incomplete.
+- “想要” and views are not payment.
+- Seller-wide sold totals are never assigned to SKU sales.
+- The current account's actual category/virtual-product publishing eligibility remains UNKNOWN.
+- Refund/dispute rates, qualified inquiry conversion and real Support Minutes remain UNKNOWN.
+- No X3 candidate is promoted to `PRIORITY TEST`; Minimum Validation is a later Gate.
+
+### Evidence artifact
+
+- `docs/X3_STANDARDIZED_EVIDENCE_CARDS_TOP3_2026-10.md`
+
+### Result
+
+~~~text
+X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3=PASS_CANDIDATE
+TOP3=P1_SINGLE_PURPOSE_SELF_DEVELOPED_UTILITY;P2_AI_NICHE_TUTORIAL_PLUS_PROJECT_FILES;P4_VERTICAL_EXCEL_OFFICE_SYSTEM
+TOP3_RANKED=NO
+POLICY_ACCOUNT_PATH=UNKNOWN_CONDITIONAL
+REAL_LISTING=0
+REAL_PURCHASE=0
+PAYMENT=0
+ACCOUNT_MUTATION=0
+RUNTIME_MUTATION=0
+NEXT=X4_MINIMUM_VALIDATION_DESIGN_AND_ACCOUNT_POLICY_READBACK
+~~~
