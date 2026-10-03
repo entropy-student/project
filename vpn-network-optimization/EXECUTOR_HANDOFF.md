@@ -2,7 +2,96 @@
 
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
-## Current execution result — G3C C2A Clash UI canary package
+
+## Current execution status — G3C C2A synthetic UI package repair R1
+
+```text
+GATE_ID=G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+PREVIOUS_RESULT=RETURN_C2B_SECRET_PERSISTENCE_BOUNDARY_UNRESOLVED
+OWNER_INTERVENTION_REQUIRED=NO_IN_R1
+DPAPI_ACCESS_AUTHORIZED=NO
+SECRET_READ_AUTHORIZED=NO
+REAL_HY2_AUTH_ALLOWED_IN_C2B_PACKAGE=NO
+REAL_HY2_ENDPOINT_REQUIRED_IN_C2B=NO
+CLASH_PROFILE_APPLY_AUTHORIZED=NO_IN_R1
+CLASH_ACTIVE_START_AUTHORIZED=NO_IN_R1
+NETWORK_REQUEST_AUTHORIZED=NO
+WG_SERVICE_STOP_AUTHORIZED=NO
+WG_ROUTE_REMOVAL_AUTHORIZED=NO
+SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
+TUN_CHANGE_AUTHORIZED=NO
+ROUTE_CHANGE_AUTHORIZED=NO
+VPS_ACCESS_AUTHORIZED=NO
+REALITY_LIVE_NODE_AUTHORIZED=NO
+ESTIMATED_EXECUTION_TIME=15-25_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES_WITH_PHASES
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. **First action:** record `ROUND_STARTED_AT=<UTC ISO8601>`.
+2. Fresh fetch/sync canonical `origin/main`; do not discard unrelated work.
+3. Read current R1 Gate plus the existing C2B template/runner/validator/package docs only as needed.
+4. Repair the future Owner C2B package into a **synthetic-secret, no-traffic UI-only canary**:
+   - `WG-BASELINE` remains first/default `direct`;
+   - HY2 UI node uses a reserved documentation address and fixture-only auth/fingerprint;
+   - REALITY remains absent/cold/deferred.
+5. Remove **all** DPAPI/recovery artifact access and real HY2 auth extraction from the C2B runner/package.
+6. C2B must not depend on the real HY2 endpoint or production certificate fingerprint.
+7. Preserve no-traffic boundaries:
+   - WG connected;
+   - system proxy off;
+   - TUN off;
+   - no delay test;
+   - no curl/API/health request;
+   - no route mutation or /32 bypass.
+8. Add one bounded structured Owner UI acknowledgement that confirms:
+   - temporary profile imported;
+   - WG baseline visible;
+   - synthetic HY2 canary visible;
+   - manual selector visible;
+   - WG baseline is current/default;
+   - synthetic HY2 was not used for traffic.
+9. Add Clash profile-store residue observability:
+   - before Owner import, take read-only file-name/hash snapshot of Clash Verge application `profiles/` directory;
+   - never print/read existing profile contents or Secret values;
+   - after Owner deletes the temporary canary profile, compare file-name/hash set;
+   - require no new canary/unexpected profile files remain;
+   - on ambiguity/residue, RETURN without deleting unrelated Clash files automatically.
+10. Keep exact project-owned runtime marker/CreateNew/owner-only ACL cleanup.
+11. Update docs: C2B proves UI only, not HY2 connectivity; real HY2-in-Clash moves to C2C.
+12. Extend offline fixtures to reject:
+   - DPAPI/recovery access;
+   - real HY2 auth or production endpoint dependency;
+   - missing structured UI acknowledgement;
+   - missing Clash profile-store pre/post residue check;
+   - any network request/delay test;
+   - REALITY live inclusion;
+   - WG/proxy/TUN/route mutation.
+13. Do **not** run the Owner runner, Clash, Mihomo, DPAPI, or any network action in R1.
+14. Persist Evidence and update Executor Handoff only; do not modify Reviewer Handoff.
+15. Fresh GitHub read-back and verify source/scope identity.
+16. Record:
+   - `ROUND_FINISHED_AT`
+   - `ACTUAL_ELAPSED`
+   - `TIME_OVERRUN=YES|NO`
+   - `SOURCE_BUILD_ELAPSED`
+   - `FIXTURE_VALIDATE_ELAPSED`
+   - `STATIC_REVIEW_ELAPSED`
+   - `GIT_PERSISTENCE_ELAPSED`
+   - if over 25m: evidence-backed `TIME_OVERRUN_CAUSE` based on those phases.
+17. Update `docs/ROUND_TIMING_RETROSPECTIVE.md` under its current rules.
+18. STOP_AT_REVIEWER.
+
+### Expected completion
+
+Return `PASS_CANDIDATE_G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1` or a precise `RETURN_*`.
+Do not advance to live C2B.
+
+## Historical execution result — G3C C2A Clash UI canary package
 
 ```text
 GATE_ID=G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A
