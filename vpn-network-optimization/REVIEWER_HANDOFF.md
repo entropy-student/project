@@ -95,7 +95,8 @@ Accepted facts:
 - post-run cleanup read-back found no temporary local/remote Mihomo process, listener, or R3 runtime residue;
 - WG/HY2 remained active; system proxy remained off; WinHTTP remained direct; TUN count remained zero;
 - post-run SFO2-A was Up on ifIndex 9 and the control route to `10.66.21.1` selected the same ifIndex 9;
-- current runner hardcodes ifIndex 13 in its local baseline assertions, so that invariant is stale and must not be used for another real attempt;
+- Owner reports the Windows PC was rebooted shortly before this observation. A reboot can plausibly coincide with Windows interface-index renumbering, but this is **OWNER_REPORTED context**, not proof that reboot caused the R3 failure;
+- regardless of cause, the runner's hardcoded ifIndex 13 is an invalid runtime assumption and must not be used for another real attempt;
 - estimate 15–25 minutes; actual 10m58s; no timing overrun.
 
 Authorization consequence:
@@ -113,9 +114,10 @@ Allowed repair scope:
 2. Remove the hardcoded WireGuard ifIndex `13` requirement. Preserve the actual invariant:
    - adapter name is `SFO2-A`;
    - adapter is Up;
-   - discovered WireGuard ifIndex is a positive runtime value;
+   - discovered WireGuard ifIndex is a positive runtime value obtained fresh in the current process;
    - control route to `10.66.21.1` resolves to `SFO2-A`;
-   - control-route ifIndex equals the discovered adapter ifIndex.
+   - control-route ifIndex equals the freshly discovered adapter ifIndex;
+   - no specific numeric ifIndex (including 9) is treated as stable across reboot/reconnect.
 3. Do not change VLESS, REALITY, Vision, SNI, handshake target, ports, Mihomo versions, Secret handling, SSH trust, server config, curl endpoint, or request-count logic.
 
 ### APPLICABLE_CRITICAL_CONSTRAINTS
@@ -133,15 +135,17 @@ Before source mutation prove:
 - canonical Git root / source provenance / project-owned path;
 - target runner is the version reviewed from commit `23e025ef6ef158361ac8bb73d3b6ac969f2ad70a`;
 - no unrelated project files will be edited;
-- current local SFO2-A and control-route values are read-only facts only and are not mutated.
+- current local SFO2-A and control-route values are read-only facts only and are not mutated;
+- treat Owner-reported reboot only as context for why an interface index may have changed; do not use it to infer the masked R3 failure cause.
 
 ### REQUIRED_EVIDENCE
 
 - PowerShell AST parse PASS;
 - failure resolver fixture PASS using a real locally generated parameter-binding validation error, proving the resolver returns `LOCAL_PROCESS_ARGUMENT_BINDING_FAILED` and does not throw;
 - unknown-exception fixture PASS, proving a different local exception returns a bounded generic code and does not throw;
-- local baseline fixture with `SFO2-A ifIndex=9` and matching control-route ifIndex 9 PASS;
-- local baseline mismatch fixture (adapter/control-route indexes differ) FAILS CLOSED with the expected bounded code;
+- synthetic local baseline fixture with a positive non-hardcoded ifIndex (for example 9) and matching control-route ifIndex PASS;
+- synthetic local baseline mismatch fixture (adapter/control-route indexes differ) FAILS CLOSED with the expected bounded code;
+- fresh read-only live-host baseline check PASS using whatever positive ifIndex `SFO2-A` has **at H1 execution time**, without requiring it to equal 9 or 13;
 - empty-argument `Start-R3SuppressedProcess` no-network fixture remains PASS;
 - static scan confirms no hardcoded `WireGuardIfIndex -eq 13` or `ControlRouteIfIndex -eq 13` remains;
 - source diff is limited to local runner hardening plus optional local fixture code;
