@@ -114,3 +114,14 @@
 **Why:** H1 proves the two known local runner defects are closed: the failure classifier no longer depends on an unresolvable exception type literal, and WireGuard preflight validates the live adapter/control-route relationship instead of a fixed ifIndex. However, the earlier R3 retry left request state UNKNOWN, so its prior one-request authorization is not reused.
 
 **R4 boundary:** one temporary private Mihomo v1.19.31 server, one unchanged proxied OpenAI request, exact cleanup/read-back; no public TCP/443, persistence, benchmark, protocol/SNI/target change, or production switch.
+
+
+## 2026-10-03 — Select Mihomo v1.19.31 as the G2-C REALITY server candidate
+
+**Decision:** Accept the R4 private implementation A/B and continue G2-C with **Mihomo v1.19.31 native VLESS+REALITY** as the server candidate. Stop spending v1 implementation effort on the sing-box server path unless later evidence reopens that question.
+
+**Why:** Under the same Windows Mihomo client and unchanged VLESS+REALITY+Vision, SNI and handshake-target semantics, the temporary Mihomo server returned the expected OpenAI HTTP 401 in one bounded request. The accepted sing-box path had repeatedly produced curl 35 / timeout. The server-core implementation difference is therefore materially implicated in this tested configuration.
+
+**Limit:** This does not prove a universal sing-box bug or incompatibility. It also does not prove public TCP/443 interoperability, persistence, production role, or peak-hour superiority.
+
+**Next:** Run one Owner-authorized temporary public TCP/443 canary with a dynamically discovered physical-egress /32 route, then clean up completely. Persistence remains a later step.
