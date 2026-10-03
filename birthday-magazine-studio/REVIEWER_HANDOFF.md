@@ -34,6 +34,8 @@ PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=BROADLY_ACCEPTED
 CURRENT_GATE=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
+TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
+TEMPLATE_RESEARCH_CONTRACT=MANDATORY
 MAGAZINE_WEB_PAGE_MOTION_MODE=UNRESOLVED
 OWNER_VISUAL_FREEZE=PENDING
 REAL_MONEY_TRANSACTION=UNVERIFIED
@@ -84,7 +86,9 @@ Objective:
 - recommend one coherent template/component family before implementation.
 
 Scope:
-- read-only template/component/motion research;
+- read-only template/component/motion research under the mandatory Research Contract;
+- minimum 60 directly inspected candidates across minimum 8 source ecosystems;
+- quality-over-quantity shortlist with saturation stop;
 - license/source-code/reuse verification;
 - 12+1+1 coverage map;
 - one coherent recommended combination.
@@ -105,6 +109,10 @@ Not reopened:
 
 Current Gate file:
 - `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
+
+Mandatory research contract:
+- `docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`
+- `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`
 
 Current growth diagnosis:
 - `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
@@ -166,7 +174,7 @@ Protected backend behavior for G3CR6R2:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3C** only: deeply research reusable templates/components for 12 magazine pages + 1 homepage + 1 core interaction.
+1. Execute **G3CR6R3C** only under the mandatory quality contract: inspect >=60 distinct candidates across >=8 source ecosystems, keep a reject ledger, and continue until saturation.
 2. Reviewer verifies source/license status and coherence.
 3. Owner selects the preferred source/template combination.
 4. Only then open an implementation Gate to vendor/copy permitted source and adapt it into the unified 1+1+12 system.
@@ -191,6 +199,8 @@ Current working set:
 5. `docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md`
 6. `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md`
 7. `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
+8. `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`
+9. `docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`
 8. `docs/OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md` — superseded provenance
 9. `docs/G3CR6R3B_VISUAL_MOTION_LAB.md` — superseded before execution
 8. `docs/OWNER_DECISION_G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` — superseded full-build decision provenance
