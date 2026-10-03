@@ -4,7 +4,7 @@
 > Status: **REVIEWER DECISION / PRODUCT-ACTIVATION REVIEW COMPLETE**  
 > Parent: G3C Owner Visual Checkpoint R2  
 > PR: #64  
-> Governance: `vps-project-governance v0.2.4` / canonical `VNEXT.md`
+> Governance: `vps-project-governance v0.2.6` / canonical `VNEXT.md`
 
 ## Owner input
 
@@ -80,12 +80,13 @@ This preserves the frozen MVP contract while improving Activation/Trust.
 
 ## Growth interpretation
 
-Using `acquisition-growth-radar v0.2`:
+Using `acquisition-growth-radar v0.2` and the current Validation Spine in `GROWTH_VALIDATION_STATE_2026-10-03.md`:
 
-- Current likely bottleneck before real traffic: **Value Experience / Activation + Trust**.
-- Current lever: **Free Preview framing / first-value experience**.
-- Do not simultaneously test price, product scope, channel and preview mechanics.
-- After this bounded correction, stop product polishing and move to real-user validation.
+- Current product-readiness bottleneck before real traffic: **Value Experience / Activation + Trust**.
+- Current primary lever: **Free Preview framing / first-value experience**.
+- Real Attention / Interest / Intent / Transaction evidence for the finalized site is still **UNVERIFIED**.
+- Do not simultaneously test price, product scope, channel and Preview mechanics.
+- After this bounded correction, stop general product polishing. The next commercial need is real customer behavior; further UI changes require new evidence of a concrete defect.
 
 ## Next Gate
 
