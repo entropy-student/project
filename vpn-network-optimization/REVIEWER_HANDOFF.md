@@ -35,6 +35,10 @@ Windows Owner host
 │  └─ temporary localhost Mihomo proxy :17890
 │     └─ temporary ActiveStore 24.199.118.137/32 via WLAN
 │        └─ Hysteria2 UDP 8443 on same VPS
+├─ Validated REALITY private interoperability path
+│  └─ Windows Mihomo v1.19.31 client
+│     └─ temporary Mihomo v1.19.31 VLESS+REALITY+Vision server on 10.66.21.1:14443
+│        └─ one OpenAI request succeeded with expected HTTP 401
 └─ Control path
    └─ SSH through WireGuard to 10.66.21.1:22
 ```
@@ -71,150 +75,169 @@ Current known components:
 - Because the masked failure leaves request-count / REALITY-handshake state `UNKNOWN`, the previous one-request authorization is no longer safe to reuse for another real request.
 - H1 local runner hardening is formally accepted from commit `2993756d41d0621471480ed2891c828d6674c7e6`: exception classification is non-throwing and fixture-proven, WireGuard ifIndex validation is dynamic, live SFO2-A/control-route consistency passed, and network/SSH/Secret activity was zero.
 - H1 timing: estimated 10–20 minutes, actual 14m45s, no overrun.
+- R4 private Mihomo-server B-side is formally accepted from commit `7e957ab9adbf59535a9c0ed548183051e7ebcf94`: one unchanged VLESS+REALITY+Vision request through Mihomo v1.19.31 server returned curl 0 / HTTP 401; classification `MIHOMO_SERVER_SUCCEEDED`.
+- Implementation A/B conclusion: under the tested private path and unchanged client/protocol semantics, the server-core implementation difference is materially implicated; Mihomo v1.19.31 is the accepted REALITY server candidate for the next G2-C step. This does not prove a universal sing-box defect.
+- R4 cleanup/read-back PASS: temporary client/server/runtime/binary removed, TCP14443/TCP443 absent afterward, WG/HY2 and Windows network baseline preserved, Secret emitted/committed 0.
+- R4 timing: estimated 15–25 minutes, actual 9m38s, no overrun.
+
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
-STATE=AUTHORIZED_EXECUTION
-PREVIOUS_RESULT=PASS_G2C_R3_LOCAL_RUNNER_HARDENING_H1
-OBJECTIVE=Run one fresh, bounded Mihomo v1.19.31 server-side B experiment with the hardened Windows runner to determine whether changing only the temporary REALITY server implementation changes the observed interoperability result.
-MAX_ENDPOINT_THIS_ROUND=local hardening preflight fixtures + one temporary private Mihomo server on 10.66.21.1:14443 + one proxied OpenAI HTTPS request + exact cleanup/read-back + Reviewer stop.
+GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+STATE=PROPOSED_NOT_AUTHORIZED
+PREVIOUS_RESULT=PASS_G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
+OBJECTIVE=Prove the accepted Mihomo v1.19.31 VLESS+REALITY+Vision candidate over the intended public TCP/443 path, with no persistence and deterministic rollback.
+MAX_ENDPOINT_THIS_ROUND=read-only current-state preflight + one temporary public TCP/443 Mihomo server + one temporary exact /32 outer-route bypass to the current physical egress + one proxied OpenAI HTTPS request + exact cleanup/read-back + Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
-ESTIMATED_EXECUTION_TIME=15-25 minutes
+ESTIMATED_EXECUTION_TIME=20-30 minutes
 ```
 
-### REVIEWER_ACCEPTANCE_OF_H1
+### REVIEWER_ACCEPTANCE_OF_R4
 
-Commit `2993756d41d0621471480ed2891c828d6674c7e6` is accepted as **PASS** for local runner hardening.
+Commit `7e957ab9adbf59535a9c0ed548183051e7ebcf94` is accepted as **PASS** for the private Mihomo-server implementation A/B.
 
-Required Evidence inspected and satisfied:
-- PowerShell AST parse PASS;
-- real local parameter-binding exception classified as `LOCAL_PROCESS_ARGUMENT_BINDING_FAILED`;
-- unknown exception classified to bounded `UNEXPECTED_LOCAL_FAILURE` without classifier self-failure;
-- synthetic matching dynamic-ifIndex fixture PASS;
-- synthetic mismatch fixture failed closed;
-- empty-string process-argument fixture PASS;
-- hardcoded ifIndex 13 check PASS;
-- live read-only baseline PASS with current `SFO2-A` Up / ifIndex 9 and control route `SFO2-A` / ifIndex 9;
-- network requests 0, SSH 0, Secret access 0, network mutation 0;
-- source diff limited to failure resolver and dynamic WireGuard baseline invariants;
-- estimate 10–20 minutes; actual 14m45s; no overrun.
+Accepted Evidence:
+- hardened local preflight PASS;
+- pinned Mihomo v1.19.31 server asset/hash PASS;
+- private listener/config PASS;
+- exactly one authorized request;
+- curl exit 0 / HTTP 401;
+- `IMPLEMENTATION_AB_RESULT=MIHOMO_SERVER_SUCCEEDED`;
+- no client/server error observed;
+- exact cleanup and independent post-cleanup read-back PASS;
+- WG/HY2 and Windows network baseline preserved;
+- Secret values emitted/committed 0;
+- estimate 15–25 minutes; actual 9m38s; no overrun.
 
-Reviewer conclusion:
-- the two known local runner defects are closed;
-- reboot/re-enumeration no longer creates a false failure through a fixed interface number;
-- H1 itself does not establish any REALITY/Mihomo interoperability result.
+Interpretation:
+- Mihomo v1.19.31 is the accepted server implementation for the remaining G2-C REALITY candidate work.
+- The A/B result materially implicates server implementation as the differentiating variable under this tested configuration.
+- Do not generalize this into a universal sing-box incompatibility claim.
+- No public TCP/443, persistence, production-default, or peak-hour conclusion exists yet.
 
 ### TARGET_AND_SCOPE
 
-Keep the A-side accepted sing-box evidence unchanged; **do not replay A-side**.
+Public-path candidate:
+- server core: Mihomo v1.19.31 native VLESS+REALITY;
+- public endpoint: current VPS public IPv4 on TCP/443 only;
+- client: Windows Mihomo v1.19.31;
+- protocol semantics unchanged from R4: VLESS + REALITY + `xtls-rprx-vision`;
+- SNI/server-name and REALITY handshake target unchanged from R4;
+- local HTTP proxy remains an ephemeral localhost test proxy;
+- exactly one proxied OpenAI request.
 
-B-side:
-- temporary server core: Mihomo v1.19.31 native VLESS+REALITY;
-- private bind only `10.66.21.1:14443`;
-- Windows client: existing Mihomo v1.19.31;
-- VLESS / REALITY / `xtls-rprx-vision`;
-- SNI/server-name `www.microsoft.com`;
-- REALITY handshake target `www.microsoft.com:443`;
-- local HTTP proxy `127.0.0.1:17990`;
-- exactly one request to `https://api.openai.com/v1/models`.
+Outer-route requirement:
+- because WireGuard remains the active full-coverage path, discover the current physical egress/interface/gateway at runtime;
+- add one temporary exact `/32` route for the VPS public IPv4 through that physical egress so the REALITY outer TCP/443 connection does not hairpin through WireGuard;
+- do not hardcode historical WLAN IP, gateway, or ifIndex;
+- remove the exact route during cleanup and prove it is absent afterward.
 
-No other material variable may change.
+No persistent server/service/client profile is created in P1.
 
 ### APPLICABLE_CRITICAL_CONSTRAINTS
 
-- Use the hardened runner from/after commit `2993756d41d0621471480ed2891c828d6674c7e6`.
-- Before any SSH/server action, rerun the bounded local-only fixtures needed to prove the hardened failure classifier, empty-argument handling, and dynamic SFO2-A/control-route invariant still pass on the current boot.
-- Strict SSH trust path only; no private-key export.
-- Secret values remain in protected process-memory/stdin/root-only runtime only; no values/hashes in chat/repo/log output.
-- Public TCP/443 remains unauthorized.
-- No persistent Mihomo service, route/firewall/system-proxy/TUN change, benchmark, protocol tuning, target/SNI change, or sing-box A-side replay.
-- Exactly one real proxied OpenAI request is authorized **only after fresh Owner authorization for this Gate**.
-- If the real request starts, the request allowance is consumed regardless of outcome; Git reconciliation must never replay it.
-- Cleanup/regression is mandatory.
+- Public TCP/443 exposure is temporary, bounded, and Owner-only.
+- No random alternate public port.
+- No systemd persistence or boot enablement.
+- No permanent firewall/routing/system-proxy/TUN changes.
+- Do not stop/change WireGuard or HY2.
+- Use the hardened runner failure handling and dynamic local-network invariants.
+- Ephemeral REALITY/VLESS credential material remains protected and is destroyed after the canary; no values/hashes enter repo/chat/ordinary logs.
+- Exactly one real OpenAI request after positive preflight.
+- If the request starts, it is consumed regardless of outcome; Git reconciliation must not replay it.
+- Cleanup includes the temporary public listener and the exact local `/32` route.
 
 ### PREFLIGHT
 
-Before remote mutation prove:
-- canonical Git/source provenance and project-scoped worktree;
-- hardened runner AST PASS;
-- hardened failure-classifier fixture PASS;
-- empty-argument local fixture PASS;
-- fresh live dynamic SFO2-A/control-route baseline PASS without fixed numeric ifIndex;
-- no local Mihomo process/runtime residue and local proxy port free;
-- strict SSH native exit 0 and expected VPS identity;
+Before public exposure prove:
+- canonical Git/source provenance and project-scoped workspace;
+- hardened local runner fixtures PASS;
+- current physical egress/interface/gateway dynamically discovered and internally consistent;
+- WireGuard SFO2-A/control route healthy;
+- strict SSH trust and target VPS identity PASS;
 - WG/HY2 healthy;
-- private TCP/14443 and TCP/443 free;
+- TCP/443 has no pre-existing listener;
+- no G2-C runtime residue;
+- current host firewall/nftables/ufw state is read back without broad changes;
+- current VPS public IPv4 identity matches accepted target;
 - pinned Mihomo v1.19.31 asset/hash identity intact;
-- no R3/R4 runtime residue.
+- rollback commands for exact public server process/runtime and exact `/32` route are prepared before mutation.
+
+Any unexpected TCP/443 owner, firewall conflict, target mismatch, or physical-egress ambiguity => RETURN before exposure.
 
 ### REQUIRED_EVIDENCE
 
-- local hardening fixtures PASS before SSH;
-- exact Mihomo v1.19.31 server asset/hash PASS;
-- server config validation PASS;
-- private listener `10.66.21.1:14443` positive check;
-- negative public 14443 / TCP443 checks;
-- Windows->private listener TCP PASS;
-- exactly one OpenAI proxied request;
-- request-start marker, request count, curl exit, HTTP status, timing;
+- preflight facts above;
+- exact pre-mutation route state for VPS public IPv4;
+- temporary exact `/32` physical-egress route added and selected for the VPS public IPv4;
+- temporary Mihomo server config check PASS;
+- positive public TCP/443 listener check on the intended public endpoint;
+- negative check that private test port 14443 is not left listening;
+- Windows public-endpoint TCP reachability PASS;
+- exactly one proxied OpenAI request;
+- curl exit / HTTP status / timing;
 - sanitized client/server error classes;
-- `SERVER_IMPLEMENTATION=MIHOMO_V1_19_31_NATIVE`;
-- `IMPLEMENTATION_AB_RESULT=MIHOMO_SERVER_SUCCEEDED | MIHOMO_SERVER_FAILED_SIMILARLY | DIFFERENT_FAILURE | UNKNOWN`;
-- exact cleanup of local/remote process/config/runtime/binary;
-- WG/HY2 preserved; proxy/TUN/network unchanged;
-- Secret emitted/committed = 0;
+- `PUBLIC_REALITY_INTEROPERABILITY=PASS | FAIL | UNKNOWN`;
+- exact cleanup of client/server/runtime/binary;
+- exact temporary `/32` route removed;
+- TCP/443 listener absent after cleanup;
+- WG/HY2 preserved; system proxy/TUN unchanged;
+- Secret emitted/committed 0;
 - timing record.
 
 ### ACCEPTANCE_CRITERIA
 
-1. curl exit 0 + HTTP 401 => `MIHOMO_SERVER_SUCCEEDED`.
-2. curl 35 + HTTP 0 with materially similar timeout/handshake pattern => `MIHOMO_SERVER_FAILED_SIMILARLY`.
-3. another bounded, reviewable real-request failure => `DIFFERENT_FAILURE`.
-4. ambiguous request state, cleanup failure, or runner failure => precise RETURN; do not replay.
+PASS_CANDIDATE_PUBLIC_CANARY requires:
+- public TCP/443 path selected through the dynamically discovered physical egress;
+- exactly one request returns curl 0 / HTTP 401;
+- cleanup/read-back fully restores pre-Gate runtime state;
+- no persistent/public residue remains.
 
-This Gate can classify the B-side. It does not authorize public deployment or a production default.
+A failure/ambiguity produces a precise RETURN and does not trigger retry.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Deterministic cleanup:
-- stop only the temporary Windows Mihomo client and temporary VPS Mihomo server by exact process identity;
-- remove only exact R4 runtime/config/log/binary paths;
-- verify local proxy absent, private 14443 absent, TCP443 unchanged;
-- verify WG/HY2 and Windows network baseline preserved.
+Before mutation, preserve:
+- existing WireGuard production path;
+- active HY2 service;
+- exact preexisting route/listener state.
+
+Rollback:
+- stop exact temporary Mihomo client/server processes;
+- remove exact temporary runtime/config/binary paths;
+- delete only the exact P1 `/32` route created by the Gate;
+- verify TCP443 absent and WG/HY2/network baseline restored.
 
 ### OWNER_ONLY_ACTIONS
 
-**AUTHORIZED by Owner on 2026-10-03 for this R4 Gate.**
+**NOT YET AUTHORIZED.**
 
-Fresh Owner authorization has now been granted for exactly the bounded R4 endpoint already defined above.
+Fresh Owner authorization is required because this Gate temporarily exposes public TCP/443 and adds a temporary host route.
 
-Authorized scope remains exactly the R4 Gate already defined: one bounded private B-side execution, one real request maximum, and exact cleanup/read-back.
-
-Public TCP/443, persistence, benchmark, protocol changes, target/SNI changes, and production-default changes remain unauthorized.
+It does **not** authorize persistence, permanent firewall changes, benchmark, production-default changes, or more than one OpenAI request.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Owner authorization is active. Start only from:
-1. this R4 Gate;
-2. hardened `scripts/g2c-mihomo-server-r3.ps1` from/after commit `2993756d41d0621471480ed2891c828d6674c7e6`;
-3. H1 accepted Evidence block;
-4. accepted R3 server-implementation A/B semantics already encoded in this Gate.
+After Owner authorization, start only from:
+1. this P1 Gate;
+2. hardened runner logic from `scripts/g2c-mihomo-server-r3.ps1`;
+3. accepted R4 Evidence block;
+4. existing accepted G2-B dynamic physical-egress / exact-route patterns where directly reusable.
 
-Do not reread Governance or historical Gates. Do not replay sing-box A-side. Run local hardening fixtures first; only then run one Mihomo-server B-side request. Persist Evidence + Executor Handoff, commit, fresh read-back, STOP.
+Do not reread Governance or historical Gates broadly. Do not replay private R4 or sing-box. Adapt only what is necessary for the public TCP/443 temporary canary, preserve dynamic discovery, run once, clean up, persist Evidence + Executor Handoff, commit, fresh read-back, STOP.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
 ```text
-结果：PASS_CANDIDATE_AB / RETURN_*
-改动：仅执行 hardened-runner 下的 Mihomo v1.19.31 私网 B-side；协议参数不变。
-验证：local hardening fixtures + pinned asset + private listener + exactly one request + cleanup + WG/HY2 unchanged。
-问题：MIHOMO_SERVER_SUCCEEDED / MIHOMO_SERVER_FAILED_SIMILARLY / DIFFERENT_FAILURE / 精确 RETURN 原因。
-回滚：临时 server/client/runtime/binary 全部清理；14443 absent；443 unchanged。
-请 Reviewer 检查：server-core implementation A/B 是否得到有效分类。
+结果：PASS_CANDIDATE_PUBLIC_CANARY / RETURN_*
+改动：仅临时开放 Mihomo REALITY public TCP/443，并为 VPS public IPv4 添加一次性动态 /32 物理出口路由。
+验证：preflight + public 443 listener + one request + route/listener cleanup + WG/HY2 unchanged。
+问题：PUBLIC_REALITY_INTEROPERABILITY=PASS / 精确 RETURN 原因。
+回滚：临时 client/server/runtime/binary 与 exact /32 route 已清理；443 absent；生产网络恢复。
+请 Reviewer 检查：REALITY 是否已在真实 public TCP/443 路径完成互操作。
 Owner 转交：NONE。
-耗时：预计 15-25 分钟；实际 <elapsed>；超时 YES/NO；原因 <NONE/brief cause>。
+耗时：预计 20-30 分钟；实际 <elapsed>；超时 YES/NO；原因 <NONE/brief cause>。
 ```
 
 ## ROUND_TIMING_OBSERVABILITY
@@ -234,9 +257,9 @@ Rules:
 
 Current next Executor round:
 ```text
-ROUND=G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
-ESTIMATED_EXECUTION_TIME=15-25 minutes
-ESTIMATE_SCOPE=local hardened-runner preflight + one temporary private Mihomo B-side request + cleanup + Evidence/Handoff persistence
+ROUND=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+ESTIMATED_EXECUTION_TIME=20-30 minutes
+ESTIMATE_SCOPE=dynamic physical-egress preflight + temporary public TCP443 server + one request + exact route/listener cleanup + Evidence/Handoff persistence
 OWNER_WAIT_EXCLUDED=YES
 ```
 
@@ -275,7 +298,7 @@ Rollback/recovery assets:
 
 ## UNRESOLVED
 
-- VLESS+REALITY compatibility remains unresolved. H1 has now closed the known local runner defects; the next evidence target is one fresh Owner-authorized Mihomo-server B-side request under the hardened runner.
+- VLESS+REALITY private interoperability is now proven with Mihomo v1.19.31. Public TCP/443 interoperability, persistence, and final fallback packaging remain unresolved; next target is one temporary public-path canary.
 - Peak-hour repeatability and real-workload behavior remain mandatory before final seal, but are intentionally deferred until after G3-A/G3-B so the final validation measures the near-final automated/migratable implementation instead of an intermediate build.
 - G3-A remains to implement physical-egress discovery, network-adaptive route/config generation, health checks, and safe role switching without hardcoded WLAN/IP/gateway assumptions.
 - G3-B remains to package template-driven VPS migration, per-VPS Secret/certificate lifecycle, staged cutover, rollback, and a bounded migration rehearsal.
@@ -286,19 +309,19 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Executor proceeds with **G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4** exactly as defined in the current Gate.
+Await Owner authorization for **G2C_REALITY_PUBLIC_TCP443_CANARY_P1**.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Owner has authorized R4. All exclusions already defined by the Gate remain in force.
+Authorize one temporary **public TCP/443** REALITY canary plus one temporary exact `/32` physical-egress route and one OpenAI request. No persistence or permanent firewall/routing changes.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Use the authorized R4 relay in `CURRENT_GATE`; local hardening preflight must pass before the single real request.
+No public-path execution until Owner authorizes P1.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Use the fixed R4 packet in `CURRENT_GATE` after authorization.
+Use the fixed P1 packet in `CURRENT_GATE` after authorization.
 
 ## EVIDENCE_POINTERS
 
