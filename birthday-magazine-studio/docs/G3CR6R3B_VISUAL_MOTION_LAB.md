@@ -1,3 +1,6 @@
+> **STATUS: SUPERSEDED BEFORE EXECUTION by `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY`.**  
+> Owner simplified the plan to template/source-first discovery for 12 magazine pages + 1 homepage + 1 core interaction before any implementation.
+
 # G3CR6R3B — Visual + Motion Lab
 
 ## Gate
