@@ -567,7 +567,7 @@ function Assert-R3LocalBaseline {
     Assert-R3 ($Snapshot.ControlRouteAdapter -eq 'SFO2-A' -and $Snapshot.ControlRouteIfIndex -eq $Snapshot.WireGuardIfIndex) "${Prefix}_CONTROL_ROUTE_NOT_WIREGUARD"
     Assert-R3 ($Snapshot.PublicRoute.InterfaceAlias -ceq 'SFO2-A' -and $Snapshot.PublicRoute.InterfaceIndex -eq $Snapshot.WireGuardIfIndex) "${Prefix}_PUBLIC_ROUTE_BASELINE_NOT_WIREGUARD"
     Assert-R3 ($Snapshot.ActiveOwnerRouteCount -eq 0 -and $Snapshot.PersistentOwnerRouteCount -eq 0) "${Prefix}_EXACT_PUBLIC_ROUTE_ALREADY_PRESENT"
-    Assert-R3 ($Snapshot.PhysicalEgress.InterfaceIndex -gt 0 -and $Snapshot.PhysicalEgress.InterfaceAlias -cne 'SFO2-A') "${Prefix}_PHYSICAL_EGRESS_INVALID"
+    Assert-R3 ($Snapshot.PhysicalEgress.InterfaceIndex -gt 0 -and $Snapshot.PhysicalEgress.Alias -cne 'SFO2-A') "${Prefix}_PHYSICAL_EGRESS_INVALID"
     Assert-R3 ($Snapshot.WireGuardSplitRoutes.Count -eq 2) "${Prefix}_WIREGUARD_SPLIT_DEFAULTS_INVALID"
     Assert-R3 (-not $Snapshot.ProxyEnabled -and $Snapshot.WinHttpExit -eq 0) "${Prefix}_SYSTEM_PROXY_INVALID"
     Assert-R3 $Snapshot.WinHttpDirect "${Prefix}_WINHTTP_NOT_DIRECT"
@@ -1681,7 +1681,7 @@ if ($null -ne $script:localBefore -and $null -ne $script:localAfter) {
         $script:localBefore.PublicRoute.InterfaceAlias -ceq $script:localAfter.PublicRoute.InterfaceAlias -and
         $script:localBefore.PublicRoute.InterfaceIndex -eq $script:localAfter.PublicRoute.InterfaceIndex -and
         $script:localBefore.PublicRoute.NextHop -ceq $script:localAfter.PublicRoute.NextHop -and
-        $script:localBefore.PhysicalEgress.InterfaceAlias -ceq $script:localAfter.PhysicalEgress.InterfaceAlias -and
+        $script:localBefore.PhysicalEgress.Alias -ceq $script:localAfter.PhysicalEgress.Alias -and
         $script:localBefore.PhysicalEgress.InterfaceIndex -eq $script:localAfter.PhysicalEgress.InterfaceIndex -and
         $script:localBefore.PhysicalEgress.Gateway -ceq $script:localAfter.PhysicalEgress.Gateway -and
         $script:localBefore.PhysicalEgress.SourceIPv4 -ceq $script:localAfter.PhysicalEgress.SourceIPv4 -and
