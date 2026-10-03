@@ -30,7 +30,7 @@ function Test-G3aIPv4 {
 }
 
 function Resolve-G3aPhysicalEgress {
-    param([Parameter(Mandatory = $true)][object[]]$Candidates)
+    param([Parameter(Mandatory = $true)][AllowEmptyCollection()][object[]]$Candidates)
 
     $valid = @(
         $Candidates | Where-Object {
