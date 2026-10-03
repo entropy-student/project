@@ -74,7 +74,7 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 - Owner Visual Checkpoint R2: resolved; Owner broadly accepts the overall composition but now explicitly rates the homepage around 7/10 for the intended quality bar, wants meaningful motion, wants the actual final magazine shown clearly, and rates the current upload-first Preview around 5/10.
 - Owner editability at G3CR6R1 evidence scope: Administrator, edit Home, replace media, edit copy, reorder eight major Gutenberg Groups, edit Blocksy global style/palette; footer is editable WordPress block.
 - PR #64 remains open/unmerged at accepted execution head `15ff73f6232e0ef94f04f313f74372e52389d1e2`.
-- Fresh 2026-10-04 source-baseline closure: PR #64 is reconciled at head `83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6`; it is ahead of the then-current `main` by 8, behind by 0, mergeable, and all 173 branch diff files are scoped to `birthday-magazine-studio/`. Current v0.2.6 Handoff/Gate/research contracts are readable from the same head, while the prior 7 branch-only G3C/G3CR6R1 commits/evidence remain preserved.
+- Fresh 2026-10-04 source-baseline closure: reconciliation anchor `83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6` proved the bounded merge strategy: ahead 8 / behind 0 at that read-back, mergeable, 173 diff files all scoped to `birthday-magazine-studio/`, current v0.2.6 Handoff/Gate/contracts readable, and the prior 7 branch-only G3C/G3CR6R1 commits/evidence preserved. The approved execution branch is PR #64's current head **only when it remains a descendant of this anchor and includes the current canonical `main` baseline**.
 
 ## CURRENT_GATE
 
