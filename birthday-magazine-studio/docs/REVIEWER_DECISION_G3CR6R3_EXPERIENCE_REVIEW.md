@@ -43,7 +43,9 @@ Showing only stylized covers/spreads or generated marketing art creates a Trust 
 
 ## Why motion belongs in this correction
 
-Motion is treated as a **Creative / Value Presentation** lever, not as evidence by itself.
+Motion is treated as a **WEBSITE Creative / Value Presentation** lever, not as a property of the magazine deliverable and not as evidence by itself.
+
+The birthday magazine remains a static 12-page PDF. The website may animate its interface, sections, decorative layers and state transitions; it must not imply that the purchased magazine itself is animated.
 
 It should help:
 - direct attention;
