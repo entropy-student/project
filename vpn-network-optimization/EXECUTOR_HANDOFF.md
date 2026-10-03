@@ -7,7 +7,75 @@
 
 
 
-## Current execution status — awaiting Owner R3
+
+## Current execution status — G3C C2A Clash UI canary package
+
+```text
+GATE_ID=G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+PREVIOUS_RESULT=PASS_G3C_C1_MANUAL_CONTROL_CONTRACT
+OWNER_INTERVENTION_REQUIRED=NO_IN_C2A
+ACTIVE_VPN_CONNECTIVITY_MUST_BE_PRESERVED=YES
+WG_SERVICE_STOP_AUTHORIZED=NO
+WG_ROUTE_REMOVAL_AUTHORIZED=NO
+CLASH_PROFILE_APPLY_AUTHORIZED=NO
+CLASH_ACTIVE_START_AUTHORIZED=NO
+SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
+TUN_CHANGE_AUTHORIZED=NO
+ROUTE_CHANGE_AUTHORIZED=NO
+VPS_ACCESS_AUTHORIZED=NO
+SECRET_READ_AUTHORIZED=NO
+DPAPI_UNPROTECT_AUTHORIZED=NO_IN_C2A
+EXTERNAL_REQUEST_AUTHORIZED=NO
+REALITY_LIVE_NODE_AUTHORIZED=NO
+ESTIMATED_EXECUTION_TIME=15-25_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. **First action:** record `ROUND_STARTED_AT=<UTC ISO8601>` before fetch/preflight.
+2. Fresh fetch/sync canonical `origin/main`; do not discard unrelated local work.
+3. Read the current C2A Gate in `REVIEWER_HANDOFF.md`, current C1 profile/validator, and only the accepted recovery-helper source/metadata necessary to design local HY2 secret injection. Do not unprotect/read the real Secret.
+4. Build the minimum repository-owned package for the later Owner C2B live UI canary.
+5. The later live selector must contain only:
+   - `WG-BASELINE` — named Mihomo `direct`;
+   - `HY2-SFO3` — current deployed HY2 candidate.
+6. REALITY must be documented as `COLD / DEFERRED_TO_SEPARATE_PERSISTENT_READINESS_GATE` and must not be emitted into the live selectable group.
+7. The atomic Owner checkpoint/package must be designed so that later C2B:
+   - dynamically discovers the physical interface;
+   - locally obtains HY2 auth only through the existing protected recovery path without printing/committing it;
+   - renders into a uniquely marked owner-local runtime directory;
+   - native-parses with accepted Mihomo v1.19.32 before any UI apply;
+   - keeps system WireGuard connected;
+   - keeps system proxy and TUN off initially;
+   - does not add a persistent /32 route;
+   - exposes bounded pre/post markers;
+   - has exact cleanup/rollback;
+   - stops before any WG disconnect.
+8. Offline/static fixtures must reject:
+   - live REALITY selector entry;
+   - hardcoded WLAN/ifIndex/gateway/local IP;
+   - plaintext HY2 auth in repo/package/log output;
+   - automatic system proxy/TUN enablement;
+   - WG stop/route removal;
+   - persistent /32 route;
+   - missing rollback/cleanup markers;
+   - missing first-step timing instrumentation.
+9. C2A itself must not start/apply Clash, decrypt DPAPI, read Secret values, send traffic, change routes/proxy/TUN/WG, or access VPS/Provider.
+10. Persist bounded Evidence and update Executor Handoff only; do not modify Reviewer Handoff.
+11. Fresh GitHub read-back and verify tested package/source identity and scope diff.
+12. Record `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN=YES|NO`; if over 25 minutes record `TIME_OVERRUN_CAUSE` and update timing retrospective.
+13. STOP_AT_REVIEWER.
+
+### Expected completion
+
+Return `PASS_CANDIDATE_G3C_C2A_CLASH_UI_CANARY_PACKAGE` or a precise `RETURN_*`.
+Do not advance to live C2B.
+
+## Historical execution status — awaiting Owner R3
 
 ```text
 GATE_ID=G3C_C1_OWNER_MIHOMO_NATIVE_PARSE_R3
