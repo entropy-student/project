@@ -90,8 +90,8 @@ ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 DEFAULT_EXECUTION_CHANNEL=CODEX_DESKTOP_EXECUTOR
 OWNER_INTERVENTION_REQUIRED=NO_IN_C1
 ESTIMATED_EXECUTION_TIME=15-25_minutes
-TIMING_OBSERVABILITY_REQUIRED=YES
-TIME_OVERRUN_REVIEW_REQUIRED=YES
+TIMING_OBSERVABILITY_REQUIRED=NEXT_GATE
+TIME_OVERRUN_REVIEW_REQUIRED=NEXT_GATE
 ```
 
 ### TARGET_AND_SCOPE
@@ -130,11 +130,12 @@ PASS requires:
 
 ### TIMING_OBSERVABILITY
 
-- Reviewer estimate for C1: **15–25 minutes end-to-end**, including source work, offline fixtures, optional local Mihomo parse, Evidence/Handoff persistence, and GitHub fresh read-back.
-- Executor records `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, and `TIME_OVERRUN=YES|NO`.
-- If `TIME_OVERRUN=YES`, record the best evidence-backed `TIME_OVERRUN_CAUSE`; if the cause is unclear, perform at most one bounded investigation of the slow stage.
+- **C1 transition exception:** the Executor prompt for C1 had already been issued before the timing rule was restored. Missing C1 timing fields are therefore **not an acceptance blocker** and must not cause replay or RETURN.
+- Reviewer keeps the C1 estimate of **15–25 minutes** as non-blocking reference only.
+- **Mandatory starting with the next Gate after C1:** Reviewer provides an end-to-end estimate before execution; Executor records `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, and `TIME_OVERRUN=YES|NO`.
+- If a future round has `TIME_OVERRUN=YES`, record the best evidence-backed `TIME_OVERRUN_CAUSE`; if unclear, perform at most one bounded investigation of the slow stage.
 - Timeout alone does not fail the Gate and must not trigger replay of a consequential action.
-- Update `docs/ROUND_TIMING_RETROSPECTIVE.md` when the round has a formal estimate+actual pair, overruns, reveals a reusable timing cause, or validates/invalidates an existing timing optimization.
+- Update `docs/ROUND_TIMING_RETROSPECTIVE.md` under its existing update rules.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
