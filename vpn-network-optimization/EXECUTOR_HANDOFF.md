@@ -1,4 +1,54 @@
-## Current execution status — wait for Owner C2B resume
+## Current execution status — G3C C2B preflight worktree reconciliation P0
+
+```text
+GATE_ID=G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+EXPECTED_DIRTY_FILES=EXECUTION_EVIDENCE.md,EXECUTOR_HANDOFF.md,docs/ROUND_TIMING_RETROSPECTIVE.md
+C2B_RUNNER_EXECUTION_AUTHORIZED=NO_IN_P0
+CLASH_PROFILE_APPLY_AUTHORIZED=NO
+MIHOMO_EXECUTION_AUTHORIZED=NO
+SECRET_READ_AUTHORIZED=NO
+NETWORK_REQUEST_AUTHORIZED=NO
+WG_CHANGE_AUTHORIZED=NO
+ROUTE_CHANGE_AUTHORIZED=NO
+SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
+TUN_CHANGE_AUTHORIZED=NO
+VPS_ACCESS_AUTHORIZED=NO
+ESTIMATED_EXECUTION_TIME=5-10_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. **First action:** record `ROUND_STARTED_AT=<UTC ISO8601>`.
+2. Fresh fetch `origin/main`; do not reset/discard before diff inspection.
+3. Inspect exact project-scoped status and diffs.
+4. Expected possible dirty files are only:
+   - `EXECUTION_EVIDENCE.md`
+   - `EXECUTOR_HANDOFF.md`
+   - `docs/ROUND_TIMING_RETROSPECTIVE.md`
+5. Any additional modified/untracked file under `vpn-network-optimization/` => precise RETURN.
+6. Compare each dirty hunk with current canonical GitHub Evidence/Handoff/timing records.
+7. If any dirty hunk contains unique factual evidence not already durably represented on `main`, RETURN and preserve it.
+8. If all are duplicate/superseded closeout text, discard **only those exact three unstaged modifications** to current canonical source.
+9. Verify accepted C2B identities remain:
+   - runner blob `cd5a2eb768b54d13307b651ea514a912b9742c9d`
+   - template blob `b50f9747157200670d6e85fdd53ba81e9a8c5c76`
+10. Require clean project-scoped worktree at end.
+11. Do not run C2B, Clash, Mihomo, DPAPI, network requests, VPS access, route/proxy/TUN/WG changes.
+12. Persist bounded non-secret reconciliation facts only if necessary; do not modify Reviewer Handoff or C2B source.
+13. Fresh GitHub read-back.
+14. Record `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN=YES|NO`; if >10m include cause.
+15. STOP_AT_REVIEWER.
+
+### Expected completion
+
+Return `PASS_CANDIDATE_G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0` or a precise `RETURN_*`.
+
+
+## Historical execution status — wait for Owner C2B resume
 
 ```text
 GATE_ID=G3C_C2B_SYNTHETIC_CLASH_UI_CANARY
