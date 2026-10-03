@@ -1,4 +1,58 @@
-## Current execution status — G3C C2B preflight worktree reconciliation P0
+## Current execution status — G3C C2B P0 local-fact persistence R1
+
+```text
+GATE_ID=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+PREVIOUS_RESULT=RETURN_P0_LOCAL_FACTS_NOT_DURABLE
+SOURCE_DIRTY_FILES=EXECUTION_EVIDENCE.md,EXECUTOR_HANDOFF.md,docs/ROUND_TIMING_RETROSPECTIVE.md
+DISCARD_SOURCE_DIRTY_HUNKS_BEFORE_PERSISTENCE=NO
+BLIND_WHOLE_FILE_OVERWRITE_AUTHORIZED=NO
+STALE_REVIEWER_GATE_REINTRODUCTION_AUTHORIZED=NO
+C2B_SOURCE_MODIFICATION_AUTHORIZED=NO
+C2B_RUNNER_EXECUTION_AUTHORIZED=NO
+LIVE_ACTION_AUTHORIZED=NO
+ESTIMATED_EXECUTION_TIME=8-15_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. **First action before fetch/status/diff:** record `ROUND_STARTED_AT=<UTC ISO8601>`.
+2. Preserve the current dirty worktree until every unique fact is captured.
+3. Fresh fetch latest `origin/main`; shared-main movement from other projects is expected.
+4. Inspect exact diffs for only:
+   - `EXECUTION_EVIDENCE.md`
+   - `EXECUTOR_HANDOFF.md`
+   - `docs/ROUND_TIMING_RETROSPECTIVE.md`
+5. Classify every dirty hunk as:
+   - `UNIQUE_FACT_TO_PERSIST`
+   - `ALREADY_DURABLE_DUPLICATE`
+   - `STALE_STATE_OR_GATE_TEXT_DO_NOT_PERSIST`
+6. Persist at minimum the reported unique fact classes:
+   - GitHub fresh-read-back;
+   - Git persistence timing;
+   - safe fast-forward/reconciliation result.
+7. If other unique factual hunks exist, persist them explicitly too.
+8. **Do not commit the stale dirty files wholesale.** Reconcile only unique factual hunks into the latest canonical versions.
+9. Do not overwrite current Reviewer Gate/state with stale local status prose.
+10. Do not modify C2B runner/template/validator/package source.
+11. After GitHub persistence + fresh read-back proves every unique source fact durable, clean only the now-superseded local unstaged closeout edits.
+12. Require project-scoped worktree clean at end. If any unique hunk remains unproven, RETURN and preserve it.
+13. Verify accepted C2B identities remain:
+   - runner blob `cd5a2eb768b54d13307b651ea514a912b9742c9d`
+   - template blob `b50f9747157200670d6e85fdd53ba81e9a8c5c76`
+14. No C2B execution, Clash/Mihomo/DPAPI/Secret/network/VPS/route/proxy/TUN/WG action.
+15. Record `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN=YES|NO`; if >15m include specific Git/document phase.
+16. Fresh read-back current GitHub main and STOP_AT_REVIEWER.
+
+### Expected completion
+
+Return `PASS_CANDIDATE_G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1` or precise `RETURN_*`.
+
+
+## Historical execution status — G3C C2B preflight worktree reconciliation P0
 
 ```text
 GATE_ID=G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0
