@@ -83,6 +83,8 @@
 | `G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier design lab Gate | **SUPERSEDED BEFORE EXECUTION** |
 | `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md` | Owner-approved template/source-first direction | **CURRENT OWNER DECISION** |
 | `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` | Read-only template + interaction source discovery | **CURRENT GATE** |
+| `OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md` | Owner-approved anti-shallow-search quality bar | **CURRENT OWNER DECISION** |
+| `G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md` | Mandatory breadth/evidence/saturation contract for template research | **MANDATORY CURRENT RESEARCH CONTRACT** |
 | `G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` | Website motion + static final-product proof + Preview Activation correction | **PREPARED / HOLD PENDING MAGAZINE VISUAL PASS** |
 | `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
