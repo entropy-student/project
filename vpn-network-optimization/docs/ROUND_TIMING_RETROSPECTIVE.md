@@ -22,6 +22,7 @@
 | G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2 | 10–20 分钟 | 25m12s | YES | 主要不是 VPN 技术阶段变慢，而是执行期间共享 `main` 多次前进，首次 push 被拒后需要 fetch / rebase / retry。 | main `0d9249ad...` |
 | G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 attempt 1 | 20–35 分钟 | 55m10s | YES | 两类开销叠加：① 本地 PowerShell helper 在最后启动 curl 前才暴露空 `--noproxy` 参数绑定问题，导致前面的远端准备已完成后再回头诊断/修复；② 执行期间共享 `main` 前进，需要同步协调。真实 OpenAI 请求数为 0。 | commit `f2a02ca6...` |
 | G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 retry | 15–25 分钟 | 10m58s | NO | Shift-left 优化有效：empty-argument fixture 在远端工作前通过，整轮较快返回；但随后暴露第二个本地 runner 缺陷——异常分类器自身因类型名不可解析而报错，并遮蔽原始失败阶段。另发现硬编码 ifIndex=13 已与当前 SFO2-A/control-route ifIndex=9 不一致。 | commit `23e025ef...` |
+| G2C_R3_LOCAL_RUNNER_HARDENING_H1 | 10–20 分钟 | 14m45s | NO | failure-path fixture、动态 ifIndex 和 live baseline 全部通过；本轮没有 SSH、网络请求或 Secret 活动。说明“先本地 hardening 再真实请求”的分拆有效。 | commit `2993756d...` |
 
 ## 已确认的主要耗时来源
 
@@ -166,7 +167,7 @@ R3 retry 证明了“正常参数路径”的本地 fixture 已经能提前挡�
 - 已存在 runner 的同 Gate retry：缩短预计区间。
 - 共享 `main` 活跃期：额外留少量 Git reconcile 余量，但不把异常 rebase 时间无限计入正常预算。
 
-R3 retry 实际 **10m58s**，说明本地 fixture 前置对缩短失败轮次有效。下一轮 H1 是纯本地 hardening，预计 **10–20 分钟**。
+R3 retry 实际 **10m58s**，H1 实际 **14m45s**；两轮都证明将本地 fixture / hardening 前置可以快速收敛 runner 问题。下一次真实 R4 预计 **15–25 分钟**。
 
 ## 不建议为了提速做的事情
 
@@ -200,4 +201,5 @@ R3 retry 实际 **10m58s**，说明本地 fixture 前置对缩短失败轮次有
 - R2 的主要流程损耗是 GitHub shared-main concurrency；
 - R3 attempt 1 的最大可避免损耗是**本地 runner 错误发现过晚**，其次仍有 shared-main reconciliation；
 - R3 retry 在 10m58s 内 fail-fast，证明 fixture 前置有效，但也暴露了 failure-classifier 与 hardcoded ifIndex 没被纳入 fixture 的缺口；
-- 因此当前最高优先级的效率优化是：**本地 fixture 前置 + failure-path fixture + 动态运行时不变量 + project-scoped worktree + round-boundary Git reconciliation + 轻量阶段计时**。
+- H1 在 14m45s 内完成并正式 PASS，验证了 failure-path fixture + 动态运行时不变量方案有效；
+- 当前最高优先级的效率优化继续是：**本地 fixture 前置 + failure-path fixture + 动态运行时不变量 + project-scoped worktree + round-boundary Git reconciliation + 轻量阶段计时**。
