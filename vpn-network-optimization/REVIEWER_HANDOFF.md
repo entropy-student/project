@@ -55,88 +55,91 @@ Current known components:
 ## CURRENT_ACCEPTED_STATE
 
 - **Current production/rollback:** WireGuard remains the active production/rollback path.
-- **G2-C REALITY:** public TCP/443 canary is formally PASS and closed; replay is forbidden without a new Gate.
-- **G3-A H1:** advisory planner source/offline engineering PASS with 9 deterministic fixtures and zero mutation.
-- **G3-A H2:** read-only health/readiness collection PASS after the control-route validator repair; 10 fixtures PASS.
-- **Current live facts from H2:** WireGuard current health = `HEALTHY`; HY2 readiness = `READY_FOR_SEPARATE_ACTIVATION`; REALITY readiness = `READY_FOR_SEPARATE_ACTIVATION`.
-- **Residue checks:** P1 route residue 0; TCP/443 and 14443 free; G2-C runtime residue 0.
-- **Automation boundary:** no live automatic switching has been authorized. H1/H2 are advisory/read-only only.
-- **Final validation pending:** G4 peak-hour and representative Codex/OpenAI/image-generation workload validation remains mandatory before MVP v1 seal.
+- **G2-C REALITY:** public TCP/443 canary PASS and closed; no replay without a new Gate.
+- **G3-A H1:** advisory planner engineering PASS.
+- **G3-A H2:** read-only health/readiness collector PASS after the control-route validator repair.
+- **G3-A H3:** readiness-to-plan semantic integration PASS with 10 deterministic fixtures.
+- **Current accepted live state:** WireGuard = `HEALTHY`; HY2 = `READY_FOR_SEPARATE_ACTIVATION`; REALITY = `READY_FOR_SEPARATE_ACTIVATION`.
+- **Automation boundary:** no live automatic switching is authorized; all G3-A work so far is advisory/read-only.
+- **Final validation pending:** G4 peak-hour + representative Codex/OpenAI/image-generation workload validation remains mandatory before MVP v1 seal.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3A_READINESS_TO_PLAN_INTEGRATION_H3
+GATE_ID=G3A_LIVE_READONLY_ADVISORY_INTEGRATION_H4
 STATE=AUTHORIZED
-PREVIOUS_RESULT=PASS_G3A_READONLY_HEALTH_READINESS_H2
+PREVIOUS_RESULT=PASS_G3A_READINESS_TO_PLAN_INTEGRATION_H3
 OWNER_CONTINUE_AUTHORIZATION=2026-10-03
-SPECIALIST_TRIGGERS=11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION
-OBJECTIVE=Integrate H2 readiness semantics into the advisory planner without live activation, so current health and candidate readiness are not conflated.
-MAX_ENDPOINT_THIS_ROUND=project-owned planner source change + deterministic offline fixtures + Owner self-test + Reviewer stop.
+SPECIALIST_TRIGGERS=11B_SSH_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION
+OBJECTIVE=Integrate the accepted H2 live read-only collector with the accepted H3 advisory planner and prove one real current-state advisory decision without any activation.
+MAX_ENDPOINT_THIS_ROUND=project-owned orchestrator source + offline parser/self-test + one Owner live read-only integrated run + Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
 LIVE_NETWORK_ACTIVATION_AUTHORIZED=NO
+ROUTE_SERVICE_PROXY_TUN_MUTATION_AUTHORIZED=NO
 REAL_OPENAI_REQUEST_AUTHORIZED=NO
-SSH_OR_REMOTE_COLLECTION_AUTHORIZED=NO_IN_H3_SELFTEST
+PUBLIC_LISTENER_CREATION_AUTHORIZED=NO
 SECRET_READ_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 ESTIMATED_EXECUTION_TIME=10-20_minutes
-IMPLEMENTATION_COMMIT=36f44502b6347d6478dea43afc18c9cfc1da91b5
-STATIC_SOURCE_REVIEW=PASS
-OWNER_SELFTEST_PROOF=PENDING
 ```
 
 ### TARGET_AND_SCOPE
 
-- Update `scripts/g3a-network-adaptation-planner.ps1`.
-- Replace HY2/REALITY "health" input semantics with explicit candidate readiness semantics:
-  - `READY_FOR_SEPARATE_ACTIVATION`
-  - `NOT_READY`
-  - `UNKNOWN`
-- Preserve WireGuard as `HEALTHY | UNHEALTHY | UNKNOWN` because it is the current active production path.
-- Advisory policy:
-  - WG HEALTHY => remain `WIREGUARD_BASELINE`;
-  - WG UNHEALTHY + HY2 READY => advise `HY2_FALLBACK_CANDIDATE`;
-  - WG UNHEALTHY + HY2 NOT_READY + REALITY READY => advise `REALITY_FALLBACK_CANDIDATE`;
-  - any required UNKNOWN => fail closed;
-  - no usable candidate => fail closed.
-- Route output remains intent-only with `ApplyAllowed=false`.
+- New orchestrator: `scripts/g3a-advisory-decision-readonly.ps1`.
+- Reuse, do not duplicate:
+  - H2 collector: `g3a-health-readiness-readonly.ps1`;
+  - H3 planner: `g3a-network-adaptation-planner.ps1`.
+- Orchestrator flow:
+  1. run H2 collector read-only;
+  2. require `G3A_H2_READONLY_RESULT=COMPLETE`;
+  3. parse only allowlisted machine-state keys;
+  4. feed those exact states into H3 planner;
+  5. require planner `AdvisoryOnly=true`, `ProductionDefaultChangeAllowed=false`, and route `ApplyAllowed=false`;
+  6. output one integrated advisory decision.
+- H4 may repeat H2's strict read-only SSH probe but may not create routes/listeners or send external workload traffic.
 
 ### REQUIRED_EVIDENCE
 
-- AST/static review;
-- no network/service/proxy/TUN/SSH/HTTP mutation/action code introduced;
-- no historical physical-egress constants introduced;
-- deterministic fixtures for WG healthy, HY2 fallback, REALITY fallback, UNKNOWN readiness, and no candidate;
-- H2 accepted state maps to `WIREGUARD_BASELINE`;
-- Owner PowerShell 7.6.6 self-test PASS with mutation counters zero.
+- orchestrator AST/static source review;
+- no mutating network/service/proxy/TUN/VPS commands;
+- no HTTP/OpenAI workload calls;
+- fixture tests for complete healthy H2 payload, missing required key, incomplete H2 marker, invalid enum, and planner refusal propagation;
+- Owner live read-only run;
+- integrated current decision expected to remain `WIREGUARD_BASELINE` while accepted H2 state remains unchanged;
+- explicit zero-mutation/request markers.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS requires semantic separation of current health vs candidate readiness, all fixtures PASS, H2 accepted state maps to WireGuard baseline, and zero live mutation/action.
+PASS requires:
+- H2 and H3 are invoked as canonical components rather than reimplemented;
+- incomplete/ambiguous collector output fails closed;
+- live integrated result is advisory-only;
+- current accepted healthy-WG state maps to `WIREGUARD_BASELINE`;
+- zero route/service/proxy/TUN/VPS mutation and zero external workload requests.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Exact source commit revert only. H3 has no runtime mutation.
+Source-only orchestrator can be reverted exactly. Live run is read-only, so no runtime rollback is applicable.
 
 ### OWNER_ONLY_ACTIONS
 
-Run one bounded fixture-only self-test after Reviewer static review.
+Run one bounded H4 integrated read-only command after Reviewer static review.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Modify only `scripts/g3a-network-adaptation-planner.ps1`. Use H2 accepted enum semantics above. Do not invoke H2 collector, SSH, HTTP, route/service mutation, or live network reads in the H3 self-test.
+Create only `scripts/g3a-advisory-decision-readonly.ps1`. Invoke the accepted H2 collector and H3 planner; do not copy their decision/probe logic. No live mutation, listener creation, external HTTP/OpenAI request, or Secret read.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE only after static source review and deterministic self-test. Any live activation requirement returns for a new Gate.
+Return PASS_CANDIDATE only after offline parser/self-test and static negative review. Formal PASS still requires one Owner live read-only integrated run.
 
 ## NEXT_STEP
 
-Run the H3 planner fixture-only `-SelfTest` once on the Owner host and return the bounded output for Reviewer PASS/RETURN. No live network collection or switching occurs.
+Implement and statically/offline validate the H4 read-only orchestrator. Then run one Owner live read-only integrated advisory decision and return the bounded output for Reviewer PASS/RETURN.
 
 ## OWNER_ACTION_REQUIRED
 
-Run one fixture-only PowerShell 7.6.6 `-SelfTest` after syncing canonical `main`. Do not use `-ReadOnlySnapshot`; H3 self-test must not read or change live network state.
+**NONE yet.** Wait for Reviewer to finish H4 source/static validation and provide the exact integrated read-only command.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
