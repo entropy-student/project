@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=BROADLY_ACCEPTED
-CURRENT_GATE=G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION
+CURRENT_GATE=G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT
 OWNER_VISUAL_FREEZE=PENDING
 REAL_MONEY_TRANSACTION=UNVERIFIED
 REAL_CUSTOMER_ACQUISITION=UNVERIFIED
@@ -73,7 +73,9 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION`
+`G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT`
+
+G3CR6R3 is prepared but **HOLD_PENDING_OWNER_MAGAZINE_VISUAL_DECISION**.
 
 Objective:
 - show the real final **static 12-page magazine/PDF** clearly;
@@ -161,14 +163,14 @@ Protected backend behavior for G3CR6R2:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3** only.
-2. Reviewer inspects actual-final-product proof, motion behavior, Preview purchase-pull, mobile/accessibility and protected-boundary evidence.
-3. Owner performs final visual/experience checkpoint.
-4. After visual freeze, stop general polishing and move toward the real-behavior validation path; Live/payment remains a separate Owner-authorized Gate.
+1. Owner reviews the existing G2B/G2BR3 static magazine outputs and decides whether the magazine visual system itself is acceptable for MVP.
+2. If accepted, execute **G3CR6R3**: website/homepage motion + real static product proof + Preview Activation.
+3. If not accepted, open a separate bounded magazine-visual correction before G3CR6R3.
+4. After final frontend/product visual freeze, move toward the real-behavior validation path; Live/payment remains a separate Owner-authorized Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-`NONE` for G3CR6R3 execution.
+Owner decision required now: accept current magazine visual system for MVP or request bounded magazine visual redesign.
 
 Owner action is required later for:
 - final subjective visual freeze;
