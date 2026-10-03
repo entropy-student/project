@@ -89,6 +89,9 @@ SECRET_READ_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 DEFAULT_EXECUTION_CHANNEL=CODEX_DESKTOP_EXECUTOR
 OWNER_INTERVENTION_REQUIRED=NO_IN_C1
+ESTIMATED_EXECUTION_TIME=15-25_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
+TIME_OVERRUN_REVIEW_REQUIRED=YES
 ```
 
 ### TARGET_AND_SCOPE
@@ -124,6 +127,14 @@ PASS requires:
 - REALITY is explicitly cold/not-ready-for-manual-use until its later live Gate;
 - no automatic switching, route mutation, system proxy/TUN change, VPS access, Secret read, or file application occurs;
 - C1 leaves current WireGuard connectivity untouched. Later live Gates may authorize a WG disconnect only after the Owner has confirmed another VPN is already carrying ChatGPT/Codex connectivity.
+
+### TIMING_OBSERVABILITY
+
+- Reviewer estimate for C1: **15–25 minutes end-to-end**, including source work, offline fixtures, optional local Mihomo parse, Evidence/Handoff persistence, and GitHub fresh read-back.
+- Executor records `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, and `TIME_OVERRUN=YES|NO`.
+- If `TIME_OVERRUN=YES`, record the best evidence-backed `TIME_OVERRUN_CAUSE`; if the cause is unclear, perform at most one bounded investigation of the slow stage.
+- Timeout alone does not fail the Gate and must not trigger replay of a consequential action.
+- Update `docs/ROUND_TIMING_RETROSPECTIVE.md` when the round has a formal estimate+actual pair, overruns, reveals a reusable timing cause, or validates/invalidates an existing timing optimization.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
