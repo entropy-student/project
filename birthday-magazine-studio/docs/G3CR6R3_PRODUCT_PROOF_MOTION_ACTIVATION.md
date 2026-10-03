@@ -9,9 +9,12 @@ MAX_ENDPOINT_THIS_ROUND=Reviewer evidence package for the bounded frontend exper
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Existing local G3C frontend on PR #64
 OWNER_ONLY_ACTIONS=NONE
+EXECUTION_STATUS=HOLD_PENDING_OWNER_MAGAZINE_VISUAL_DECISION
 ```
 
 Governance: **vps-project-governance v0.2.6**, canonical `VNEXT.md`.
+
+> **PRE-EXECUTION HOLD:** Do not execute this Gate until `G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT.md` is resolved by the Owner. The website cannot responsibly market the current magazine as the final product until the Owner has seen and accepted that magazine visual system.
 
 ## Accepted facts
 
