@@ -1,0 +1,1479 @@
+{
+  "gate": "G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY",
+  "siteUrl": "http://127.0.0.1:8189/",
+  "rollbackBase": "084a4308da57fd96f04e757c4072e24243f8dfb8",
+  "homepageContentModifiedThisRun": "NO",
+  "implementationCodeModifiedThisRun": "YES",
+  "homepage": {
+    "sections": 6,
+    "cta": true,
+    "heroCtaText": "Create a Free Preview",
+    "preview": true,
+    "width": 1440,
+    "viewport": 1440
+  },
+  "homepageMobile": {
+    "sectionCount": 6,
+    "documentWidth": 375,
+    "viewport": 375,
+    "previewWorkbenchColumns": "341px",
+    "previewStageColumns": "297px",
+    "heroCta": {
+      "visible": true,
+      "top": 357,
+      "bottom": 407,
+      "width": 172
+    }
+  },
+  "preview": {
+    "desktop": {
+      "sourceIsBlob": true,
+      "imageLoaded": true,
+      "objectFit": "cover",
+      "frame": {
+        "top": 0,
+        "bottom": 141,
+        "width": 210,
+        "height": 140
+      },
+      "copy": {
+        "top": 141,
+        "bottom": 321,
+        "width": 210,
+        "height": 180,
+        "scrollWidth": 210,
+        "clientWidth": 210,
+        "scrollHeight": 180,
+        "clientHeight": 180
+      },
+      "textWithinCopy": true,
+      "dedicatedAreasDoNotOverlap": true,
+      "spreadScrollWidth": 210,
+      "spreadClientWidth": 210,
+      "labels": [
+        "A NOTE FOR THE NEXT CHAPTER",
+        "More life.More stories.",
+        "Keep making it your own.",
+        "05"
+      ],
+      "geometry": {
+        "innerWidth": 1440,
+        "documentWidth": 1440
+      },
+      "viewport": 1440,
+      "network": {
+        "requestCount": 1,
+        "externalRequestCount": 0,
+        "postCount": 0,
+        "externalImageCount": 0,
+        "modelRequestCount": 0
+      },
+      "workbenchColumns": "395.5px 734.5px",
+      "photoFrameWidth": 210
+    },
+    "mobile375": {
+      "sourceIsBlob": true,
+      "imageLoaded": true,
+      "objectFit": "cover",
+      "frame": {
+        "top": 15,
+        "bottom": 101,
+        "width": 129,
+        "height": 85
+      },
+      "copy": {
+        "top": 101,
+        "bottom": 236,
+        "width": 129,
+        "height": 135,
+        "scrollWidth": 129,
+        "clientWidth": 129,
+        "scrollHeight": 135,
+        "clientHeight": 135
+      },
+      "textWithinCopy": true,
+      "dedicatedAreasDoNotOverlap": true,
+      "spreadScrollWidth": 149,
+      "spreadClientWidth": 149,
+      "labels": [
+        "A NOTE FOR THE NEXT CHAPTER",
+        "More life.More stories.",
+        "Keep making it your own.",
+        "05"
+      ],
+      "geometry": {
+        "innerWidth": 375,
+        "documentWidth": 375
+      },
+      "viewport": 375,
+      "network": {
+        "requestCount": 1,
+        "externalRequestCount": 0,
+        "postCount": 0,
+        "externalImageCount": 0,
+        "modelRequestCount": 0
+      },
+      "workbenchColumns": "341px",
+      "spreadStageColumns": "297px"
+    },
+    "networkAfterSelection": {
+      "requests": [
+        {
+          "method": "GET",
+          "origin": "browser-local",
+          "path": "<local-object-url>",
+          "resourceType": "image",
+          "transport": "blob"
+        },
+        {
+          "method": "GET",
+          "origin": "browser-local",
+          "path": "<local-object-url>",
+          "resourceType": "image",
+          "transport": "blob"
+        }
+      ],
+      "posts": [],
+      "externalRequests": [],
+      "externalImageRequests": [],
+      "modelRequests": []
+    }
+  },
+  "commerce": {
+    "productUrl": "http://127.0.0.1:8189/product/birthday-magazine/",
+    "productOfferCta": "http://127.0.0.1:8189/product/birthday-magazine/",
+    "nativeAddToCart": {
+      "status": 200,
+      "success": true
+    },
+    "product": {
+      "kind": "product",
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "bodyBackground": "rgb(243, 239, 232)",
+      "heading": {
+        "x": 777,
+        "y": 227,
+        "width": 543,
+        "height": 176,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(23, 25, 30)",
+        "font": "Georgia, \"Times New Roman\", serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 0,
+        "bg": "rgb(243, 239, 232)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerContent": {
+        "x": 75,
+        "y": 0,
+        "width": 1290,
+        "height": 121,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerRow": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 121,
+        "bg": "rgb(243, 239, 232)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerMenuLink": {
+        "x": 284,
+        "y": 42,
+        "width": 100,
+        "height": 36,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(38, 61, 168)",
+        "font": "Lato, sans-serif",
+        "radius": "0px",
+        "border": "rgb(38, 61, 168)"
+      },
+      "headerCta": {
+        "x": 1145,
+        "y": 39,
+        "width": 220,
+        "height": 42,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(38, 61, 168)",
+        "font": "Lato, sans-serif",
+        "radius": "0px",
+        "border": "rgb(38, 61, 168)"
+      },
+      "footer": {
+        "x": 0,
+        "y": 1126,
+        "width": 1440,
+        "height": 527,
+        "bg": "rgb(23, 25, 30)",
+        "color": "rgb(255, 255, 255)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(255, 255, 255)"
+      },
+      "gallery": {
+        "x": 120,
+        "y": 121,
+        "width": 545,
+        "height": 718,
+        "bg": "rgb(255, 253, 249)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "price": {
+        "x": 777,
+        "y": 419,
+        "width": 543,
+        "height": 50,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(237, 89, 60)",
+        "font": "Georgia, \"Times New Roman\", serif",
+        "radius": "0px",
+        "border": "rgb(237, 89, 60)"
+      },
+      "cta": {
+        "x": 917,
+        "y": 585,
+        "width": 403,
+        "height": 55,
+        "bg": "rgb(237, 89, 60)",
+        "color": "rgb(255, 255, 255)",
+        "font": "Lato, sans-serif",
+        "radius": "0px",
+        "border": "rgb(255, 255, 255)"
+      },
+      "quantity": {
+        "x": 777,
+        "y": 585,
+        "width": 130,
+        "height": 55,
+        "bg": "rgb(255, 253, 249)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "3px",
+        "border": "rgb(207, 201, 192)"
+      },
+      "priceText": "$39.99"
+    },
+    "cart": {
+      "kind": "cart",
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "bodyBackground": "rgb(243, 239, 232)",
+      "heading": {
+        "x": 75,
+        "y": 136,
+        "width": 1290,
+        "height": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(23, 25, 30)",
+        "font": "Georgia, \"Times New Roman\", serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 0,
+        "bg": "rgb(243, 239, 232)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerContent": {
+        "x": 75,
+        "y": 0,
+        "width": 1290,
+        "height": 121,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerRow": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 121,
+        "bg": "rgb(243, 239, 232)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerMenuLink": {
+        "x": 284,
+        "y": 42,
+        "width": 100,
+        "height": 36,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(38, 61, 168)",
+        "font": "Lato, sans-serif",
+        "radius": "0px",
+        "border": "rgb(38, 61, 168)"
+      },
+      "headerCta": {
+        "x": 1145,
+        "y": 39,
+        "width": 220,
+        "height": 42,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(38, 61, 168)",
+        "font": "Lato, sans-serif",
+        "radius": "0px",
+        "border": "rgb(38, 61, 168)"
+      },
+      "footer": {
+        "x": 0,
+        "y": 661,
+        "width": 1440,
+        "height": 527,
+        "bg": "rgb(23, 25, 30)",
+        "color": "rgb(255, 255, 255)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(255, 255, 255)"
+      },
+      "cart": {
+        "x": 75,
+        "y": 248,
+        "width": 833,
+        "height": 353,
+        "bg": "rgb(255, 253, 249)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "totals": {
+        "x": 948,
+        "y": 248,
+        "width": 417,
+        "height": 331,
+        "bg": "rgb(255, 253, 249)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(237, 239, 242)"
+      },
+      "checkoutCta": {
+        "x": 974,
+        "y": 505,
+        "width": 365,
+        "height": 48,
+        "bg": "rgb(237, 89, 60)",
+        "color": "rgb(255, 255, 255)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(255, 255, 255)"
+      },
+      "quantity": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bg": "rgb(255, 253, 249)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "3px",
+        "border": "rgb(207, 201, 192)"
+      },
+      "remove": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(38, 61, 168)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(38, 61, 168)"
+      },
+      "cartHasProduct": true
+    },
+    "checkout": {
+      "kind": "checkout",
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "bodyBackground": "rgb(243, 239, 232)",
+      "heading": {
+        "x": 75,
+        "y": 136,
+        "width": 1290,
+        "height": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(23, 25, 30)",
+        "font": "Georgia, \"Times New Roman\", serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 0,
+        "bg": "rgb(243, 239, 232)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerContent": {
+        "x": 75,
+        "y": 0,
+        "width": 1290,
+        "height": 121,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerRow": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 121,
+        "bg": "rgb(243, 239, 232)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerMenuLink": {
+        "x": 284,
+        "y": 42,
+        "width": 100,
+        "height": 36,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(38, 61, 168)",
+        "font": "Lato, sans-serif",
+        "radius": "0px",
+        "border": "rgb(38, 61, 168)"
+      },
+      "headerCta": {
+        "x": 1145,
+        "y": 39,
+        "width": 220,
+        "height": 42,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(38, 61, 168)",
+        "font": "Lato, sans-serif",
+        "radius": "0px",
+        "border": "rgb(38, 61, 168)"
+      },
+      "footer": {
+        "x": 0,
+        "y": 1680,
+        "width": 1440,
+        "height": 527,
+        "bg": "rgb(23, 25, 30)",
+        "color": "rgb(255, 255, 255)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(255, 255, 255)"
+      },
+      "billing": {
+        "x": 75,
+        "y": 248,
+        "width": 630,
+        "height": 1372,
+        "bg": "rgb(255, 253, 249)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "orderPanel": {
+        "x": 772,
+        "y": 345,
+        "width": 556,
+        "height": 649,
+        "bg": "rgb(255, 253, 249)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "cta": {
+        "x": 796,
+        "y": 922,
+        "width": 508,
+        "height": 48,
+        "bg": "rgb(237, 89, 60)",
+        "color": "rgb(255, 255, 255)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(255, 255, 255)"
+      },
+      "fields": [
+        {
+          "x": 99,
+          "y": 358,
+          "width": 279,
+          "height": 50,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(207, 201, 192)"
+        },
+        {
+          "x": 402,
+          "y": 358,
+          "width": 279,
+          "height": 50,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(207, 201, 192)"
+        },
+        {
+          "x": 99,
+          "y": 461,
+          "width": 582,
+          "height": 50,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(207, 201, 192)"
+        },
+        {
+          "x": 99,
+          "y": 663,
+          "width": 582,
+          "height": 50,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(207, 201, 192)"
+        },
+        {
+          "x": 99,
+          "y": 740,
+          "width": 582,
+          "height": 50,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(207, 201, 192)"
+        }
+      ],
+      "checkoutForm": true,
+      "accountRequiredCopy": true
+    },
+    "account": {
+      "kind": "account",
+      "documentWidth": 1440,
+      "viewport": 1440,
+      "bodyBackground": "rgb(243, 239, 232)",
+      "heading": {
+        "x": 75,
+        "y": 136,
+        "width": 1290,
+        "height": 72,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(23, 25, 30)",
+        "font": "Georgia, \"Times New Roman\", serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 0,
+        "bg": "rgb(243, 239, 232)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerContent": {
+        "x": 75,
+        "y": 0,
+        "width": 1290,
+        "height": 121,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerRow": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 121,
+        "bg": "rgb(243, 239, 232)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(23, 25, 30)"
+      },
+      "headerMenuLink": {
+        "x": 284,
+        "y": 42,
+        "width": 100,
+        "height": 36,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(38, 61, 168)",
+        "font": "Lato, sans-serif",
+        "radius": "0px",
+        "border": "rgb(38, 61, 168)"
+      },
+      "headerCta": {
+        "x": 1145,
+        "y": 39,
+        "width": 220,
+        "height": 42,
+        "bg": "rgba(0, 0, 0, 0)",
+        "color": "rgb(38, 61, 168)",
+        "font": "Lato, sans-serif",
+        "radius": "0px",
+        "border": "rgb(38, 61, 168)"
+      },
+      "footer": {
+        "x": 0,
+        "y": 729,
+        "width": 1440,
+        "height": 527,
+        "bg": "rgb(23, 25, 30)",
+        "color": "rgb(255, 255, 255)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(255, 255, 255)"
+      },
+      "login": {
+        "x": 495,
+        "y": 248,
+        "width": 450,
+        "height": 385,
+        "bg": "rgb(255, 253, 249)",
+        "color": "rgb(23, 25, 30)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(225, 219, 209)"
+      },
+      "fields": [
+        {
+          "x": 526,
+          "y": 309,
+          "width": 388,
+          "height": 50,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(207, 201, 192)"
+        },
+        {
+          "x": 526,
+          "y": 405,
+          "width": 388,
+          "height": 50,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(207, 201, 192)"
+        },
+        {
+          "x": 526,
+          "y": 475,
+          "width": 16,
+          "height": 16,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(0, 0, 0)",
+          "font": "Arial",
+          "radius": "3px",
+          "border": "rgb(237, 239, 242)"
+        }
+      ],
+      "cta": {
+        "x": 526,
+        "y": 515,
+        "width": 388,
+        "height": 48,
+        "bg": "rgb(237, 89, 60)",
+        "color": "rgb(255, 255, 255)",
+        "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+        "radius": "0px",
+        "border": "rgb(255, 255, 255)"
+      },
+      "loginForm": true
+    },
+    "mobile375": {
+      "product": {
+        "kind": "product",
+        "documentWidth": 375,
+        "viewport": 375,
+        "bodyBackground": "rgb(243, 239, 232)",
+        "heading": {
+          "x": 15,
+          "y": 629,
+          "width": 345,
+          "height": 116,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(23, 25, 30)",
+          "font": "Georgia, \"Times New Roman\", serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 0,
+          "bg": "rgb(243, 239, 232)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerContent": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerRow": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgb(243, 239, 232)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerMenuLink": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(38, 61, 168)",
+          "font": "Lato, sans-serif",
+          "radius": "0px",
+          "border": "rgb(38, 61, 168)"
+        },
+        "headerCta": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(38, 61, 168)",
+          "font": "Lato, sans-serif",
+          "radius": "0px",
+          "border": "rgb(38, 61, 168)"
+        },
+        "footer": {
+          "x": 0,
+          "y": 1449,
+          "width": 375,
+          "height": 560,
+          "bg": "rgb(23, 25, 30)",
+          "color": "rgb(255, 255, 255)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(255, 255, 255)"
+        },
+        "gallery": {
+          "x": 15,
+          "y": 150,
+          "width": 345,
+          "height": 453,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "price": {
+          "x": 15,
+          "y": 761,
+          "width": 345,
+          "height": 50,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(237, 89, 60)",
+          "font": "Georgia, \"Times New Roman\", serif",
+          "radius": "0px",
+          "border": "rgb(237, 89, 60)"
+        },
+        "cta": {
+          "x": 125,
+          "y": 952,
+          "width": 235,
+          "height": 40,
+          "bg": "rgb(237, 89, 60)",
+          "color": "rgb(255, 255, 255)",
+          "font": "Lato, sans-serif",
+          "radius": "0px",
+          "border": "rgb(255, 255, 255)"
+        },
+        "quantity": {
+          "x": 15,
+          "y": 952,
+          "width": 100,
+          "height": 48,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "3px",
+          "border": "rgb(207, 201, 192)"
+        },
+        "priceText": "$39.99"
+      },
+      "cart": {
+        "kind": "cart",
+        "documentWidth": 375,
+        "viewport": 375,
+        "bodyBackground": "rgb(243, 239, 232)",
+        "heading": {
+          "x": 23,
+          "y": 78,
+          "width": 330,
+          "height": 51,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(23, 25, 30)",
+          "font": "Georgia, \"Times New Roman\", serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 0,
+          "bg": "rgb(243, 239, 232)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerContent": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerRow": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgb(243, 239, 232)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerMenuLink": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(38, 61, 168)",
+          "font": "Lato, sans-serif",
+          "radius": "0px",
+          "border": "rgb(38, 61, 168)"
+        },
+        "headerCta": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(38, 61, 168)",
+          "font": "Lato, sans-serif",
+          "radius": "0px",
+          "border": "rgb(38, 61, 168)"
+        },
+        "footer": {
+          "x": 0,
+          "y": 1028,
+          "width": 375,
+          "height": 560,
+          "bg": "rgb(23, 25, 30)",
+          "color": "rgb(255, 255, 255)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(255, 255, 255)"
+        },
+        "cart": {
+          "x": 23,
+          "y": 169,
+          "width": 330,
+          "height": 466,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "totals": {
+          "x": 23,
+          "y": 675,
+          "width": 330,
+          "height": 303,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(237, 239, 242)"
+        },
+        "checkoutCta": {
+          "x": 41,
+          "y": 912,
+          "width": 294,
+          "height": 48,
+          "bg": "rgb(237, 89, 60)",
+          "color": "rgb(255, 255, 255)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(255, 255, 255)"
+        },
+        "quantity": {
+          "x": 149,
+          "y": 356,
+          "width": 80,
+          "height": 48,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "3px",
+          "border": "rgb(207, 201, 192)"
+        },
+        "remove": {
+          "x": 319,
+          "y": 362,
+          "width": 22,
+          "height": 25,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(38, 61, 168)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(38, 61, 168)"
+        },
+        "cartHasProduct": true
+      },
+      "checkout": {
+        "kind": "checkout",
+        "documentWidth": 375,
+        "viewport": 375,
+        "bodyBackground": "rgb(243, 239, 232)",
+        "heading": {
+          "x": 23,
+          "y": 78,
+          "width": 330,
+          "height": 51,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(23, 25, 30)",
+          "font": "Georgia, \"Times New Roman\", serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 0,
+          "bg": "rgb(243, 239, 232)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerContent": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerRow": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgb(243, 239, 232)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerMenuLink": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(38, 61, 168)",
+          "font": "Lato, sans-serif",
+          "radius": "0px",
+          "border": "rgb(38, 61, 168)"
+        },
+        "headerCta": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(38, 61, 168)",
+          "font": "Lato, sans-serif",
+          "radius": "0px",
+          "border": "rgb(38, 61, 168)"
+        },
+        "footer": {
+          "x": 0,
+          "y": 2548,
+          "width": 375,
+          "height": 560,
+          "bg": "rgb(23, 25, 30)",
+          "color": "rgb(255, 255, 255)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(255, 255, 255)"
+        },
+        "billing": {
+          "x": 23,
+          "y": 169,
+          "width": 330,
+          "height": 1459,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "orderPanel": {
+          "x": 50,
+          "y": 1733,
+          "width": 276,
+          "height": 738,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "cta": {
+          "x": 65,
+          "y": 2407,
+          "width": 246,
+          "height": 48,
+          "bg": "rgb(237, 89, 60)",
+          "color": "rgb(255, 255, 255)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(255, 255, 255)"
+        },
+        "fields": [
+          {
+            "x": 39,
+            "y": 271,
+            "width": 298,
+            "height": 50,
+            "bg": "rgb(255, 253, 249)",
+            "color": "rgb(23, 25, 30)",
+            "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+            "radius": "0px",
+            "border": "rgb(207, 201, 192)"
+          },
+          {
+            "x": 39,
+            "y": 374,
+            "width": 298,
+            "height": 50,
+            "bg": "rgb(255, 253, 249)",
+            "color": "rgb(23, 25, 30)",
+            "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+            "radius": "0px",
+            "border": "rgb(207, 201, 192)"
+          },
+          {
+            "x": 39,
+            "y": 477,
+            "width": 298,
+            "height": 50,
+            "bg": "rgb(255, 253, 249)",
+            "color": "rgb(23, 25, 30)",
+            "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+            "radius": "0px",
+            "border": "rgb(207, 201, 192)"
+          },
+          {
+            "x": 39,
+            "y": 678,
+            "width": 298,
+            "height": 50,
+            "bg": "rgb(255, 253, 249)",
+            "color": "rgb(23, 25, 30)",
+            "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+            "radius": "0px",
+            "border": "rgb(207, 201, 192)"
+          },
+          {
+            "x": 39,
+            "y": 755,
+            "width": 298,
+            "height": 50,
+            "bg": "rgb(255, 253, 249)",
+            "color": "rgb(23, 25, 30)",
+            "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+            "radius": "0px",
+            "border": "rgb(207, 201, 192)"
+          }
+        ],
+        "checkoutForm": true,
+        "accountRequiredCopy": true
+      },
+      "account": {
+        "kind": "account",
+        "documentWidth": 375,
+        "viewport": 375,
+        "bodyBackground": "rgb(243, 239, 232)",
+        "heading": {
+          "x": 23,
+          "y": 78,
+          "width": 330,
+          "height": 51,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(23, 25, 30)",
+          "font": "Georgia, \"Times New Roman\", serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 0,
+          "bg": "rgb(243, 239, 232)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerContent": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerRow": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgb(243, 239, 232)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(23, 25, 30)"
+        },
+        "headerMenuLink": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(38, 61, 168)",
+          "font": "Lato, sans-serif",
+          "radius": "0px",
+          "border": "rgb(38, 61, 168)"
+        },
+        "headerCta": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "bg": "rgba(0, 0, 0, 0)",
+          "color": "rgb(38, 61, 168)",
+          "font": "Lato, sans-serif",
+          "radius": "0px",
+          "border": "rgb(38, 61, 168)"
+        },
+        "footer": {
+          "x": 0,
+          "y": 610,
+          "width": 375,
+          "height": 560,
+          "bg": "rgb(23, 25, 30)",
+          "color": "rgb(255, 255, 255)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(255, 255, 255)"
+        },
+        "login": {
+          "x": 23,
+          "y": 169,
+          "width": 330,
+          "height": 365,
+          "bg": "rgb(255, 253, 249)",
+          "color": "rgb(23, 25, 30)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(225, 219, 209)"
+        },
+        "fields": [
+          {
+            "x": 40,
+            "y": 220,
+            "width": 296,
+            "height": 50,
+            "bg": "rgb(255, 253, 249)",
+            "color": "rgb(23, 25, 30)",
+            "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+            "radius": "0px",
+            "border": "rgb(207, 201, 192)"
+          },
+          {
+            "x": 40,
+            "y": 316,
+            "width": 296,
+            "height": 50,
+            "bg": "rgb(255, 253, 249)",
+            "color": "rgb(23, 25, 30)",
+            "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+            "radius": "0px",
+            "border": "rgb(207, 201, 192)"
+          },
+          {
+            "x": 40,
+            "y": 386,
+            "width": 16,
+            "height": 16,
+            "bg": "rgba(0, 0, 0, 0)",
+            "color": "rgb(0, 0, 0)",
+            "font": "Arial",
+            "radius": "3px",
+            "border": "rgb(237, 239, 242)"
+          }
+        ],
+        "cta": {
+          "x": 40,
+          "y": 426,
+          "width": 296,
+          "height": 48,
+          "bg": "rgb(237, 89, 60)",
+          "color": "rgb(255, 255, 255)",
+          "font": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+          "radius": "0px",
+          "border": "rgb(255, 255, 255)"
+        },
+        "loginForm": true
+      }
+    },
+    "wooMobile375": "PASS",
+    "continuitySkin": {
+      "product": true,
+      "cart": true,
+      "checkout": true,
+      "account": true
+    },
+    "path": "PASS",
+    "orderSubmitted": false
+  },
+  "consoleErrors": [],
+  "screenshots": [
+    "01-desktop-home-regression.png",
+    "02-desktop-preview-with-photo.png",
+    "03-mobile-preview-with-photo-375.png",
+    "04-desktop-product.png",
+    "05-mobile-product-375.png",
+    "06-desktop-cart.png",
+    "07-mobile-cart-375.png",
+    "08-desktop-checkout.png",
+    "09-mobile-checkout-375.png",
+    "10-desktop-my-account.png",
+    "11-mobile-my-account-375.png"
+  ],
+  "baseline": {
+    "branch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
+    "headBeforeRun": "084a4308da57fd96f04e757c4072e24243f8dfb8",
+    "currentMainReadback": "239f256ddcd68bbe170a60ad75be0eb13715ef09",
+    "pr": 64,
+    "rollback": "Revert G3CR5 commit or restore preview-plugin/birthday-magazine-poc.php from headBeforeRun; no database or homepage content mutation was made."
+  },
+  "runtime": {
+    "siteUrl": "http://127.0.0.1:8189/",
+    "wpAdminUrl": "http://127.0.0.1:8189/wp-admin/",
+    "wordpress": "7.1.1",
+    "woocommerce": "11.1.2",
+    "theme": "Blocksy 2.1.57",
+    "starter": "Wedding / Gutenberg",
+    "blocksyCompanion": "2.1.57",
+    "previewPlugin": "0.2.0",
+    "product": {
+      "id": 1113,
+      "price": "39.99",
+      "currency": "USD",
+      "virtual": true
+    },
+    "homePage": {
+      "id": 858,
+      "postType": "page",
+      "gutenbergBlocks": true,
+      "sha256BeforeAndAfter": "d075824113df48fa75a8abd9d783509b0dfc17d97f396a1e523caa7c57735bcb"
+    },
+    "owner": {
+      "login": "bms-owner",
+      "role": "administrator",
+      "canEditPages": true,
+      "canEditHome": true,
+      "canUploadMedia": true,
+      "canReorderBlocks": true,
+      "canEditBlocksyGlobalStyles": true
+    },
+    "containers": [
+      "birthday-magazine-g3c-wordpress-1=Up",
+      "birthday-magazine-g3c-db-1=Up(healthy)",
+      "birthday-magazine-g3c-mailpit-1=Up(healthy)"
+    ],
+    "retainedForOwnerReview": true
+  },
+  "capture": {
+    "desktopViewport": "1440x1000",
+    "mobileViewport": "375x812",
+    "syntheticPhoto": "sample-current-era.png",
+    "screenshotCount": 11,
+    "screenshotInventory": [
+      {
+        "name": "01-desktop-home-regression.png",
+        "sizeBytes": 456270,
+        "sha256": "50623d9c9d1b81cc80db73f10f7a3853460ef74e64c352f4060ef6f1c7f86897"
+      },
+      {
+        "name": "02-desktop-preview-with-photo.png",
+        "sizeBytes": 130233,
+        "sha256": "2c46e8c1b1b5891aad9d8066aaa736dd11ed284431a9a023d2b6455cea0943c1"
+      },
+      {
+        "name": "03-mobile-preview-with-photo-375.png",
+        "sizeBytes": 71522,
+        "sha256": "1e856a0b6a8a3444ca36bb46cfb194734cf630f33ab3772ae8be7e078d1b9b33"
+      },
+      {
+        "name": "04-desktop-product.png",
+        "sizeBytes": 142967,
+        "sha256": "da7b745510b1820b3f2b2d4dc2e54606c8ab6bab2974e6e65398544a74478921"
+      },
+      {
+        "name": "05-mobile-product-375.png",
+        "sizeBytes": 93551,
+        "sha256": "c8f247217082967d4001f02a3c7ae3fe5ca83b9d415feaad83b16f5a6664d061"
+      },
+      {
+        "name": "06-desktop-cart.png",
+        "sizeBytes": 63430,
+        "sha256": "67b7dd767ae41d578ced46f04e54cfa086da4e0bdd103cd349e5158dbc7e331b"
+      },
+      {
+        "name": "07-mobile-cart-375.png",
+        "sizeBytes": 50553,
+        "sha256": "a72a67cc2eb0e2ae40af27bf5926826dcabf7b8ed6f04d248e2308167c0f9bf8"
+      },
+      {
+        "name": "08-desktop-checkout.png",
+        "sizeBytes": 101964,
+        "sha256": "ebc851f273be988cba2f03142da6dd964fc47dcf6c6606a626b4e3e2eea809e4"
+      },
+      {
+        "name": "09-mobile-checkout-375.png",
+        "sizeBytes": 85494,
+        "sha256": "a3966cfdc987a062e9aa29118bad0f1d00d6a73b1418b4b8f5b624e5694c8bbc"
+      },
+      {
+        "name": "10-desktop-my-account.png",
+        "sizeBytes": 44724,
+        "sha256": "86f20e98d885d89b7e6b8a1670876968f33e512e7135c934f0b38a7bf9f761fc"
+      },
+      {
+        "name": "11-mobile-my-account-375.png",
+        "sizeBytes": 35392,
+        "sha256": "81867d50cba5df6241baabf7886e0b2d5871b7d4a7e96e9c016fea470f71338d"
+      }
+    ]
+  },
+  "results": {
+    "PHOTO_PREVIEW_DEDICATED_FRAME": "YES",
+    "PHOTO_PREVIEW_TEXT_OVERLAP": "NO",
+    "PHOTO_PREVIEW_DESKTOP": "PASS",
+    "PHOTO_PREVIEW_MOBILE_375": "PASS",
+    "browserLocalBlobImages": "PASS",
+    "FREE_PREVIEW_MODEL_CALLS": 0,
+    "FREE_PREVIEW_SERVER_PHOTO_UPLOADS": 0,
+    "FREE_PREVIEW_EXTERNAL_IMAGE_POSTS": 0,
+    "WOO_PRODUCT_VISUAL_CONTINUITY": "PASS",
+    "WOO_CART_VISUAL_CONTINUITY": "PASS",
+    "WOO_CHECKOUT_VISUAL_CONTINUITY": "PASS",
+    "WOO_ACCOUNT_VISUAL_CONTINUITY": "PASS",
+    "WOO_MOBILE_375": "PASS",
+    "WOO_BLOCKING_OVERFLOW": "NO",
+    "HOMEPAGE_REGRESSION": "PASS",
+    "OWNER_GUTENBERG_EDIT_ACCESS": "PASS",
+    "WOO_NATIVE_ADD_TO_CART": "HTTP 200 / success",
+    "CHECKOUT_SUBMITTED": "NO",
+    "ORDER_CREATED_THIS_RUN": "NO",
+    "PAYPAL_ACTIONS": 0,
+    "REAL_MONEY_ACTIONS": 0,
+    "MODEL_CALLS": 0,
+    "PRODUCTION_AI_CALLS": 0,
+    "PRODUCTION_DEPLOYMENT": 0,
+    "SHARED_INFRA_MUTATIONS": 0,
+    "G4_ACTIONS": 0,
+    "G3C_RUNTIME_RETAINED_FOR_OWNER_REVIEW": "YES",
+    "OWNER_VISUAL_FREEZE": "PENDING",
+    "STOP_AT_REVIEWER": "YES"
+  }
+}

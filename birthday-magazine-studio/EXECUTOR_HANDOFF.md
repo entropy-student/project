@@ -1,6 +1,62 @@
 # Executor Handoff — Birthday Magazine Studio
 
-## Current Gate — G3BR1 cleanup-only closure
+## Current Gate — G3CR6R1 Frontend Composition Redesign
+
+```text
+GATE=G3CR6R1_FRONTEND_COMPOSITION_REDESIGN
+RESULT=PASS_CANDIDATE_G3CR6R1_FRONTEND_COMPOSITION_REDESIGN
+EXECUTION_BRANCH=codex/birthday-magazine-g3c-blocksy-wedding-productization
+PRE_RUN_HEAD=9f90c1e53058567010fcbd9f505ac99ceaacc6f9
+PR=64_OPEN_UNMERGED
+LOCAL_SITE_URL=http://127.0.0.1:8189/
+LOCAL_WP_ADMIN_URL=http://127.0.0.1:8189/wp-admin/
+ROLLBACK=poc/g3c/artifacts/backups/g3cr6r1
+HOME_TOP_LEVEL_GUTENBERG_GROUPS=8
+OLD_G3CR4_STRUCTURAL_CLASSES_ACTIVE=0
+NATIVE_WOOCOMMERCE=RETAINED
+PRODUCT=1113_VIRTUAL_USD_39.99
+ORDER_COUNT_BEFORE=1
+ORDER_COUNT_AFTER=1
+PREVIEW_SELECT_REPLACE_REMOVE_INVALID=PASS_DESKTOP_AND_375
+FREE_PREVIEW_MODEL_CALLS=0
+FREE_PREVIEW_SERVER_PHOTO_UPLOADS=0
+FREE_PREVIEW_EXTERNAL_IMAGE_POSTS=0
+SCREENSHOT_COUNT=21
+MOBILE_DOCUMENT_WIDTH=375
+MOBILE_BLOCKING_OVERFLOW=NO
+PROTECTED_BACKEND_HASHES=UNCHANGED
+OWNER_ROLE=ADMINISTRATOR
+OWNER_CAN_EDIT_HOME=YES
+OWNER_CAN_REPLACE_IMAGES=YES
+OWNER_CAN_EDIT_COPY=YES
+OWNER_CAN_REORDER_MAJOR_SECTIONS=YES
+OWNER_CAN_EDIT_GLOBAL_STYLE=YES
+OWNER_VISUAL_FREEZE=PENDING
+PR_MERGE=0
+THEME_CHANGE=0
+BUILDER_CHANGE=0
+ELEMENTOR_INSTALL=0
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+CHECKOUT_SUBMISSIONS=0
+PRODUCTION_AI_CALLS=0
+PRODUCTION_DEPLOYMENT=0
+SHARED_INFRA_MUTATIONS=0
+PAID_PURCHASES=0
+GLOBAL_DOCKER_PRUNE=0
+G4_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+[Execution report](docs/G3CR6R1_EXECUTION_REPORT.md) explains the new gift-editorial Hero, unequal gallery, full-width Preview, 12-page editorial Included section, vertical journey, standalone gift conclusion/FAQ and supported editable Footer. Ordinary Home content remains core Gutenberg; Preview alone is a shortcode. The old six-group count and g3cr4 CSS chain are no longer design constraints.
+
+[Final machine report](poc/g3c/artifacts/reports/g3cr6r1-final.json), [browser/network report](poc/g3c/artifacts/reports/g3cr6r1-browser.json), and [21 screenshots](poc/g3c/artifacts/screenshots/g3cr6r1/) are the current review evidence. Three existing G3CR6 generated assets were adopted; no new images/model calls. Supported Blocksy palette + inline dynamic CSS preserve Owner color editing. Workspace guard proof is handler-level in-memory identity, not authenticated browser session proof; Gutenberg editability is permissions/structure/roundtrip, not an editor-save claim.
+
+Existing PR #64 only; exact submission SHA is reported after GitHub readback. The original G3CR6 rollback and pre-existing unrelated worktree changes are preserved. Do not merge, freeze the visual direction or proceed to G4 without Reviewer/Owner acceptance.
+
+---
+
+## Historical Gate — G3BR1 cleanup-only closure
 
 ```text
 GATE=G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND
@@ -479,3 +535,91 @@ Concrete return reasons: `RETURN_STORELLY_PREVIEW_NOT_BROWSER_LOCAL` (and a runt
 2. Decide whether to accept Upload Files for registered-account flows and return only the guest flow, or require a local email-capture run before acceptance.
 3. Decide whether Attach Me meets the private proof-delivery bar for registered orders and whether guest delivery plus an actual completed byte download must be rerun before acceptance.
 4. Decide if the exact A/B starter-site imports need their own bounded follow-up evidence. Do not continue to G2A2 in this execution.
+
+## G3C Blocksy Wedding productization — current handoff
+
+**Gate:** `G3C_BLOCKSY_WEDDING_PRODUCTIZATION`
+**Current handoff status:** `RETURN_PR_CREATION_PENDING_OWNER_GITHUB_AUTH`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**Stop:** `STOP_AT_REVIEWER=YES`; do not enter G4.
+
+The local site is ready for Owner editing and remains running:
+
+- Site: http://127.0.0.1:8189/
+- WordPress admin: http://127.0.0.1:8189/wp-admin/
+- Local password reset template: in `poc/g3c/README.md`; it is a command template only. Do not place the Owner's chosen password in GitHub or chat.
+
+Current technical read-back:
+
+- Blocksy 2.1.57 / Wedding / Gutenberg and WooCommerce 11.1.2 remain active; Product 1113 is virtual at USD 39.99.
+- The corrected homepage is editable as Gutenberg page 858. `bms-owner` has Administrator permissions for content, media replacement, block ordering, and Blocksy global styles.
+- Product → Cart → Checkout and My Account paths were observed. Checkout has the required-account setting and only the local offline test method; it was not submitted.
+- The preview remains Good Issue-style and browser-local (`blob:` object URL) with no detected photo-submit API path. No AI/model request was made.
+- Buyer A workspace access passed; Buyer B and guest direct replay were denied. Logo references are removed from homepage content, Blocksy theme mods, and post content.
+- Compose runtime is retained. No PayPal, real money, production AI, production deployment, shared infrastructure, paid plugin, or teardown action occurred.
+
+Screenshot status is deliberately separate from the old PNGs in the working folder. Those older files predate the final Hero/header/icon corrections and were excluded from the PR. The Owner has the updated screenshot archive and will upload it to the Reviewer directly. The Executor did not inspect it, so the 375px visual result and durable screenshot evidence remain for Reviewer verification. Required names are listed in `poc/g3c/artifacts/screenshots/README.md`.
+
+Machine-readable read-back is in `poc/g3c/artifacts/reports/verification-g3c.json` plus `runtime-setup.json` and `productization.json`. The precise limitation is that this handoff does not claim `PASS_CANDIDATE` until the Reviewer has the current screenshot archive.
+
+The branch is pushed to GitHub. PR creation is pending: the GitHub connector transport failed, and the browser PR page requires Owner login. The Owner must sign in on the local GitHub tab; then resume opening the PR. No merge occurred.
+
+## G3CR4 — current Reviewer handoff
+
+**Current Gate:** `G3CR4_G3C_VISUAL_CONSOLIDATION`
+**Execution result:** `PASS_CANDIDATE_G3CR4_G3C_VISUAL_CONSOLIDATION`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**PR:** [#64](https://github.com/entropy-student/project/pull/64), open and unmerged before this update.
+**Stop:** `STOP_AT_REVIEWER=YES`; do not enter G4.
+
+The live site at http://127.0.0.1:8189/ now uses the consolidated six-section Gutenberg Home page. The runtime stays available for Owner review. WP Admin is http://127.0.0.1:8189/wp-admin/. The `bms-owner` Administrator retains Gutenberg page/media/block-order and Blocksy global-style capabilities. No password is included. The optional admin-editor screenshot was not captured because the screenshot browser had no authenticated session.
+
+Current evidence:
+
+- Screenshots: `poc/g3c/artifacts/screenshots/g3cr4/` (17 synthetic PNGs, including desktop/mobile full pages, sections, local-photo preview states, Woo product/cart/checkout/My Account).
+- Machine report: `poc/g3c/artifacts/reports/g3cr4-final.json`.
+- Reversible pre-edit backup: `poc/g3c/artifacts/backups/g3cr4/home-and-blocksy-before-20261001-141123.json`.
+- Editable Home: six Gutenberg Group sections; three samples; one Good Issue preview shortcode.
+- At 375px, preview and spread use one column; document width is 375px; no measured right clipping or internal horizontal overflow.
+- Selected synthetic cover image stayed in a browser `blob:` URL. Image selection produced no POST/PUT, external image request, or model-provider request.
+- Native Woo product 1113 remains virtual at USD 39.99. Product Add to Cart returned WooCommerce success, the Cart displayed the product, and Checkout/My Account pages loaded. No order or payment was submitted.
+- Private Workspace code was not changed; the previously accepted owner 200 / unrelated account 403 / guest 403 evidence is reused.
+- No PayPal, real-money, model/AI, production deployment, shared infrastructure, paid purchase, global prune, or G4 action occurred.
+
+Please review the current screenshot set and the live page, with Owner visual freeze still pending. Earlier G3C handoff paragraphs describe a prior state and are superseded for this Gate by the G3CR4 evidence above. No Reviewer decision file was edited. Runtime teardown was intentionally skipped.
+
+## G3CR5 — current Executor handoff
+
+**Current Gate:** `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY`
+**Execution result:** `PASS_CANDIDATE_G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**PR:** #64; continued without merge.
+**Stop:** `STOP_AT_REVIEWER=YES`; G4 remains unstarted.
+
+The accepted six-section Home page and Gutenberg content are unchanged (page 858 SHA-256 `d075824113df48fa75a8abd9d783509b0dfc17d97f396a1e523caa7c57735bcb`). The Good Issue photo preview now uses a dedicated image frame separate from the spread copy. At desktop 1440px and mobile 375px, the selected synthetic sample stayed in browser-local `blob:` URLs, text/page labels fit without overlap, and photo selection caused 0 upload POST/PUT/PATCH, 0 external HTTP/image requests, and 0 model-provider requests.
+
+A project-local CSS file skins WooCommerce routes. Product 1113 remains a virtual USD 39.99 product. Native Add to Cart succeeded; Cart, Checkout and My Account loaded in the same isolated browser context. No checkout was submitted and no order/payment was created. Product/Cart/Checkout/My Account mobile document widths all stayed at 375px; CTAs and controls fit. Owner `bms-owner` remains Administrator with Home edit, Gutenberg, media-upload, block reorder, and Blocksy global-style access.
+
+Current screenshots: `poc/g3c/artifacts/screenshots/g3cr5/` (11 PNG files). Machine evidence and image hashes: `poc/g3c/artifacts/reports/g3cr5-final.json`. Execution details and runtime/dependency read-back are appended to `EXECUTION_EVIDENCE.md`.
+
+The local runtime remains up for Owner review at http://127.0.0.1:8189/ (admin: http://127.0.0.1:8189/wp-admin/). No theme, builder, product, checkout/order system, or homepage content was changed. No PayPal, real payment, model/AI, production deployment, Shared Infrastructure, paid purchase, or G4 action occurred. Owner visual freeze remains pending.
+
+## Current execution append — G3CR6 (2026-10-01)
+
+Supersedes the prior frontend candidate only. Historical Gates and Reviewer decisions remain unchanged.
+
+- Result: `PASS_CANDIDATE_G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN`; formal Reviewer acceptance and Owner visual freeze pending.
+- Authorization: Owner G3CR6 request, main `becb2ab9c644649a07327664cfdb5ae975964ba9` G3CR6 contract, latest Handoff, and supplied Option2 reference ZIP.
+- Continue branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, PR #64 open/unmerged. Pre-run HEAD `b3aff79fd74b0a63bc42ff370c8adb1a5eac82ba`; final execution/evidence commit is the enclosing commit in this branch and returned after push.
+- Changed frontend: editable six-group Home, fictional marketing assets, product copy/image, brand CSS across native Woo pages, browser-local Preview UI/replace/remove/error states. No protected backend or compose change.
+- Backup: `poc/g3c/artifacts/backups/g3cr6/`; rollback helper `scripts/restore-g3cr6.php`; detailed steps in `artifacts/reports/g3cr6-execution-notes.md`.
+- Screenshots: `poc/g3c/artifacts/screenshots/g3cr6/` (19 new PNGs). Reports: `g3cr6-final.json`, `g3cr6-browser.json`, `g3cr6-runtime.json`, workspace guard reports, asset provenance and resource read-back.
+- Versions retained: WP7.1.1, Woo11.1.2, Blocksy/Companion2.1.57, Simply Gallery3.4.3, Stackable3.20.2, WPForms Lite2.0.2.1; existing Playwright Core1.62.1/Edge used locally.
+- Preview select/replace/remove/name/age/styles/invalid/corrupt image tests PASS on desktop/375px, blob-local, separate photo/text frames, no upload/external image POST/model call. Four local static GETs per viewport were recorded, not hidden.
+- Native AddCart/quantity/remove/form pages/CTAs PASS, US$39.99 virtual product intact. No Checkout submission or new order. Owner Administrator/core Gutenberg/media/global-style capabilities PASS.
+- Private guard regression: Owner200, unrelated403, guest403 using unchanged handler/in-memory synthetic identities; independent guest HTTP403. No new authenticated login/session claim and no password/cookie read.
+- Asset-generation calls5 (authorized marketing), runtime product/Preview model calls0. Production AI0, PayPal0, real money0, deployment0, Shared Infra0, G4=0, theme/builder changes0, paid purchase0, prune0, merge0.
+- Runtime retained and healthy: http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/ . Owner account retained; credentials omitted.
+- Pre-existing Owner ZIPs and deleted old screenshots excluded from commit. No Reviewer doc changed. Retained local backup/tools only; no teardown.
+
+Next: Reviewer reviews PR #64 and current screenshots; Owner may inspect/edit local site. `OWNER_VISUAL_FREEZE=PENDING`; `STOP_AT_REVIEWER=YES`. Do not enter G4.

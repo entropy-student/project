@@ -1,0 +1,2 @@
+# Byte-exact scoped rollback; do not normalize original CRLF/mixed-line-ending files.
+* -text -diff

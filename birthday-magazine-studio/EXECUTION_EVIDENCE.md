@@ -1,6 +1,50 @@
-# G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E cleanup closure
+# Execution Evidence — Birthday Magazine Studio
 
-**Current result:** `PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE`
+## Current Gate — G3CR6R1 Frontend Composition Redesign — 2026-10-02
+
+`PASS_CANDIDATE_G3CR6R1_FRONTEND_COMPOSITION_REDESIGN`
+
+Existing PR #64 / `codex/birthday-magazine-g3c-blocksy-wedding-productization`; fresh pre-run HEAD `9f90c1e53058567010fcbd9f505ac99ceaacc6f9`. PR is open and unmerged. Canonical latest Reviewer/return/execution/Owner packets were read in full; scoped rollback was created before changes at `poc/g3c/artifacts/backups/g3cr6r1`, without overwriting G3CR6.
+
+Current rendering is eight Gutenberg chapters, not the historical six-section g3cr4 skeleton: wide gift-editorial Hero; concise value strip; unequal staggered Spread/Cover samples; full-width photo-local Preview; 12-page visual Included story; vertical journey; centered gift offer; separate open FAQ. Footer is editable wp_block1143 with supported Blocksy copyright/placement hooks and no vendor attribution. Product/Cart/Checkout/Account remain native Woo with gift-led presentation; no protected business handler is changed.
+
+Fresh desktop/375 tests pass Preview select/replace/remove/invalid MIME/corrupt image, decoded blob images and old URL revocation. Interaction network capture: model calls0, server photo uploads0, external image POST0. Native Add to Cart, quantity2 / USD79.98, removal, Checkout form load without submit and My Account login form load pass. Order count1→1. Product1113 remains virtual/USD39.99; active plugins/theme unchanged. All10 route/viewport checks have document width equal viewport, no broken images and no blocking horizontal overflow. Mobile viewport375.
+
+Fresh protected source hashes for Compose/commerce workspace/Mailpit/Woo match preflight. Private workspace handler: Owner200/unrelated403/guest403; anonymous HTTP403. In-memory identity tests do not claim authenticated HTTP login. Owner Administrator/edit Home/media/theme-options capabilities and core Gutenberg render roundtrip pass; eight core Groups support section reorder. Gutenberg editor-save behavior was not claimed. Global design tokens use the editable Blocksy palette; supported inline dynamic CSS fixes stale demo-cache colors. No theme/builder switch.
+
+Current full results and evidence boundaries:
+
+- [Execution report](docs/G3CR6R1_EXECUTION_REPORT.md)
+- [Preflight and rollback hashes](poc/g3c/artifacts/reports/g3cr6r1-preflight.json)
+- [Browser request/geometry/screenshot evidence](poc/g3c/artifacts/reports/g3cr6r1-browser.json)
+- [Final machine report](poc/g3c/artifacts/reports/g3cr6r1-final.json)
+- [21 final screenshots](poc/g3c/artifacts/screenshots/g3cr6r1/)
+
+Existing gift-hero, sample-spread and sample-cover adopted; new generated assets0. Legacy model/job option counters are absent: zero-provider conclusion is based on implementation/request capture, not default option values. No customer/credential/production backup data was added. Pre-existing G3CR4 screenshot deletions and unrelated untracked ZIP/screenshots remain unstaged.
+
+```text
+PR_MERGE=0
+THEME_CHANGE=0
+BUILDER_CHANGE=0
+ELEMENTOR_INSTALL=0
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+CHECKOUT_SUBMISSIONS=0
+PRODUCTION_AI_CALLS=0
+PRODUCTION_DEPLOYMENT=0
+SHARED_INFRA_MUTATIONS=0
+PAID_PURCHASES=0
+GLOBAL_DOCKER_PRUNE=0
+G4_ACTIONS=0
+OWNER_VISUAL_FREEZE=PENDING
+STOP_AT_REVIEWER=YES
+```
+
+---
+
+## Historical evidence — G3BR1 Sandbox reconciliation, entitlement, and refund — Phase A-D + Phase E cleanup closure
+
+**Historical result:** `PASS_CANDIDATE_G3BR1_CLEANUP_CLOSURE`
 **Phase status:** Payment/refund/entitlement was accepted by Reviewer; cleanup-only closure passed. This run performed no payment, provider, order, Docker-start, tunnel-start, or model actions.
 **Execution branch:** `codex/birthday-magazine-g3br1-sandbox-reconciliation-entitlement`
 **Phase A-D base:** latest GitHub `main` at `290a73131a4d0ace487d2c1986a94145f03ee277`
@@ -683,3 +727,205 @@ All three routes used the same minimal WordPress page content and Good Issue-sty
 1. Decide whether to reject or replace Vanquish Upload Files for guest orders because its issued secure file link returned HTTP 200 when replayed from an unrelated guest context.
 2. Decide whether to reject or replace Vanquish Attach Me for guest private delivery because its issued attachment link also returned HTTP 200 when replayed from an unrelated guest context, despite the raw storage URL returning HTTP 403.
 3. Keep this Gate at Reviewer. Do not start G2A2 until the Reviewer resolves the two guest-link access-control failures.
+
+## G3C Blocksy Wedding UI/UX productization — current execution evidence
+
+**Gate:** `G3C_BLOCKSY_WEDDING_PRODUCTIZATION`
+**Base:** GitHub `main` at `636e1109e031f1c77704f2b88b83ca5dd771e46b`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**Current execution status:** `RETURN_PR_CREATION_PENDING_OWNER_GITHUB_AUTH` — local implementation and reports are committed and the branch is pushed. PR creation remains pending because the GitHub connector transport failed and the browser PR page requires Owner login. Independently, the Owner's updated screenshot archive is not available to the Executor for inspection, so this is not a PASS_CANDIDATE.
+
+### Runtime and dependencies
+
+- Project-local Compose stack `birthday-magazine-g3c` is retained for Owner editing at `http://127.0.0.1:8189/`; wp-admin is `http://127.0.0.1:8189/wp-admin/`.
+- WordPress 7.1.1; PHP 8.3.33; MariaDB 11.4.7; WooCommerce 11.1.2; Blocksy 2.1.57; Blocksy Companion 2.1.57. The retained Starter Site is Wedding imported with Gutenberg.
+- Active free components: Simply Gallery Block 3.4.3, Stackable 3.20.2, WPForms Lite 2.0.2.1, G3A commerce/workspace plugin 0.1.0, G3C Good Issue preview plugin 0.2.0, and local Mailpit MU plugin 0.1.0.
+- No Elementor, HT Slider, or WooCommerce PayPal Payments plugin is installed/active. WordPress and Mailpit host ports bind to `127.0.0.1`; Compose uses the project network `birthday-magazine-g3c_private` and named volumes `birthday-magazine-g3c_database` / `birthday-magazine-g3c_wordpress`.
+- Runtime read-back: four project containers remain up; MariaDB and Mailpit report healthy. Teardown is intentionally not performed because Owner visual review needs the site online. No global Docker cleanup was run.
+
+### Product page and editor
+
+- Home is WordPress page 858, still a Gutenberg page with 36 blocks and the Good Issue preview shortcode. The content presents the Birthday Magazine product, sample story/gallery, 12-page US Letter digital PDF, steps, US$39.99 offer, and contract-bounded FAQ.
+- Final desktop homepage was inspected in the local browser after the last Hero/header changes. The site identity, Home / What You Get navigation, sample magazine cover, and `Create a Free Preview` CTA were visible.
+- Removed the imported Wedding swan block and the old off-canvas Wedding text/logo item. Read-back now finds zero references to `footer-logo.svg` or `logo-dark.svg` in the home page, Blocksy theme mods, or post content: `KNOWN_LOGO_404S_RESOLVED=PASS`.
+- `bms-owner` is an Administrator. Runtime capability checks passed for editing page text, replacing images (`upload_files`), reordering the Gutenberg blocks, and editing Blocksy global styles (`edit_theme_options`). No credential is included here. The one-time local setup credential remains in ignored `poc/g3c/.tmp/local-owner-admin.json`; Owner can set a private password using the command template in `poc/g3c/README.md`.
+
+### Free preview and WooCommerce
+
+- The G3C preview reuses the G2A1 Good Issue browser-local component. A synthetic selected photo previously produced a browser `blob:` object URL; `preview.js` uses `URL.createObjectURL` and static inspection found no `fetch`, `XMLHttpRequest`, `FormData`, `sendBeacon`, or AJAX photo-submit path. The displayed copy states the photo stays in this browser. `FREE_PREVIEW_MODEL_CALLS=0`, `FREE_PREVIEW_SERVER_PHOTO_UPLOADS=0`, and `FREE_PREVIEW_EXTERNAL_IMAGE_POSTS=0`.
+- The browser automation surface did not provide a Network-panel export; therefore the no-photo-upload result is supported by the observed blob URL and source inspection, not by a committed HAR. This limitation is retained for Reviewer.
+- Product 1113 is a simple virtual WooCommerce product at USD 39.99. `Add to cart` worked; Cart showed one item at USD 39.99; Checkout loaded with required billing fields and the local-only `Local test only — no payment` offline method; account registration is required at checkout and generated username/password are configured. My Account login page loaded. No checkout submission or payment occurred.
+- The native path remains `Product → Cart → Checkout → My Account`; the homepage preview CTA and offer link point to WooCommerce product 1113. The order/cart implementation remains WooCommerce; no parallel order system was introduced.
+
+### Private workspace regression and boundaries
+
+- Reused the G3A workspace plugin; synthetic fixture order 1131 remained unpaid. Buyer A opened the workspace successfully (HTTP 200); Buyer B replay and guest direct replay were denied (HTTP 403 each). The fixture is not a paid order.
+- Generation jobs and model calls remained zero. PayPal Sandbox actions, PayPal Live actions, real-money actions, production AI calls, production deployment, shared-infrastructure mutations, and paid purchases were all zero.
+- Checkout was not submitted. The runtime remains local and available; no cleanup teardown was run.
+
+### Screenshot handoff limitation
+
+- PNG files currently in the local `poc/g3c/artifacts/screenshots/` folder are from before the final Hero/header/logo corrections. They are intentionally not committed or cited as current-state proof.
+- The Owner reports that the updated PNGs are in a local archive and will send that archive directly to the Reviewer. The Executor did not inspect that archive. Thus current-state desktop/mobile screenshot evidence is an Owner-to-Reviewer handoff item; 375px layout is not marked PASS by the Executor.
+- Required filenames are documented in `poc/g3c/artifacts/screenshots/README.md`. Please review the Owner-supplied archive before deciding the visual freeze.
+
+Machine-readable current reports: `poc/g3c/artifacts/reports/runtime-setup.json`, `productization.json`, and `verification-g3c.json`.
+
+### GitHub submission status
+
+- Local execution commits `75bcf66` and `cde069d` are on the dedicated G3C branch. The first `git push` attempt failed to connect to `github.com:443`; a later retry succeeded and confirmed the remote branch was created. The GitHub PR connector still failed to reach its backend. The browser compare page is at [create G3C PR](https://github.com/entropy-student/project/pull/new/codex/birthday-magazine-g3c-blocksy-wedding-productization) and currently requests GitHub login. No PR has been opened yet.
+- The remote branch is available, but no PR exists. Owner must complete GitHub login in the local browser; then resume PR creation. No merge was attempted.
+
+## G3CR4 — G3C visual consolidation execution evidence
+
+**Gate:** `G3CR4_G3C_VISUAL_CONSOLIDATION`
+**Execution result:** `PASS_CANDIDATE_G3CR4_G3C_VISUAL_CONSOLIDATION` — Reviewer decision remains pending.
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**PR:** [#64](https://github.com/entropy-student/project/pull/64), verified open and unmerged before this evidence update.
+**Pre-execution HEAD:** `af04fc8252ad414af53fb24394432de447d69bd1`.
+
+The existing local G3C runtime was retained; it was not rebuilt or torn down. WordPress 7.1.1, WooCommerce 11.1.2, Blocksy 2.1.57, and Blocksy Companion 2.1.57 were read back from the running environment. WordPress, MariaDB, and Mailpit containers remain running; MariaDB and Mailpit are healthy. Elementor and HT Slider are not installed.
+
+Before editing, Home page 858's raw Gutenberg content and the relevant Blocksy theme mods were saved to `poc/g3c/artifacts/backups/g3cr4/home-and-blocksy-before-20261001-141123.json` (504,020 bytes; SHA-256 `225f5f03fdadca990cce5995b0aafa75c71fdf433de465023f50c70b9219d6a7`). `scripts/restore-g3cr4-backup.php` restores those values. The current Home content is six editable top-level Group sections: Hero, three representative magazine samples, Free Preview, What You Get, How It Works, and Offer + FAQ. The page remains a normal Gutenberg page, not an opaque template. `bms-owner` is still an Administrator and can edit the page, replace media, reorder blocks, and edit Blocksy global styles.
+
+The previous long/repetitive page is consolidated: the main flow has three sample blocks (two displayed at once on 375px), repeated story labels are absent, Spacer blocks and mouse/scroll decorations are absent, and the Hero cover loads and is legible. At 1440px the document width is 1440px. At a 375px viewport the document width is 375px; the Preview workbench and spread are single-column, required labels and controls are visible, and measured preview elements have no right-edge clipping or internal horizontal overflow.
+
+The existing Good Issue preview shortcode is present once. Selecting the repository's synthetic sample image produced three loaded `blob:` preview images in both desktop and mobile contexts. After file selection the browser recorded zero POST/PUT requests, zero external image requests, and zero model-provider requests. No image was uploaded to WordPress or a third party.
+
+The Offer CTA resolves to the native WooCommerce product page. Product 1113 is virtual at USD 39.99. Its native Add to Cart returned HTTP 200 with WooCommerce's success response; Cart displayed the product and USD 39.99 total. Checkout rendered its form and My Account rendered the login form. No checkout was submitted and no payment/order was created. The only WooCommerce styling change is the authorized global Footer contrast correction; product/cart/checkout templates were not redesigned.
+
+Private Workspace code and routes were not changed. The already accepted G3C/G3A access evidence is reused for this visual-only regression check: owner access 200, unrelated account 403, guest replay 403. The workspace plugin remains active. This execution did not create or mutate a workspace/order fixture.
+
+Fresh synthetic screenshots and the machine read-back are under `poc/g3c/artifacts/screenshots/g3cr4/` and `poc/g3c/artifacts/reports/g3cr4-final.json` (17 PNG files, each recorded with size and SHA-256). The WP Admin/Gutenberg screenshot was not captured because the isolated browser context had no authenticated session; no password or session credential was read or exposed.
+
+| Check | Result |
+|---|---|
+| Editable Home structure | Six Gutenberg Group sections; three sample blocks; one preview shortcode |
+| 375px layout | Document width 375px; preview single-column; no measured clipping/overflow |
+| Browser-local photo preview | `blob:` images loaded; 0 image-selection POST/PUT; 0 external image posts |
+| Preview model/network calls | 0 model-provider requests |
+| Native WooCommerce path | Product → Cart → Checkout → My Account; USD 39.99 product remains virtual |
+| Owner editing | Administrator; page edit/media upload/block reorder/Blocksy global-style capabilities present |
+| Private workspace | Previously accepted G3C/G3A owner/other-account/guest access result reused; implementation untouched |
+| Forbidden actions | PayPal 0; real money 0; model/AI 0; production deployment 0; shared infra 0; paid purchases 0; global prune 0; G4 0 |
+| Runtime | Retained for Owner review; no teardown |
+
+Owner visual freeze remains `PENDING`; stop at Reviewer. No Reviewer decision document was modified.
+
+## G3CR5 — visual finish and WooCommerce continuity
+
+**Gate:** `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY`
+**Execution result:** `PASS_CANDIDATE_G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY` — Reviewer decision is pending.
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**PR:** #64, continued on the existing open PR; no merge was performed.
+**Pre-execution HEAD / rollback point:** `084a4308da57fd96f04e757c4072e24243f8dfb8`.
+
+The retained local runtime was used without rebuild or teardown: WordPress 7.1.1, WooCommerce 11.1.2, Blocksy 2.1.57, Blocksy Companion 2.1.57, and G3C preview plugin 0.2.0. Product 1113 still reads USD 39.99, currency USD, virtual=yes. The Home page remains page 858 with Gutenberg blocks; its raw content SHA-256 before and after is unchanged at `d075824113df48fa75a8abd9d783509b0dfc17d97f396a1e523caa7c57735bcb`.
+
+### Preview composition and privacy
+
+The shortcode now wraps the existing preview image/art hooks in a dedicated `.bms-spread-photo-frame` and places the existing copy in a separate `.bms-photo-copy` region. Existing `preview.js` and its browser-local object URL behavior were not changed. The photo fills its dedicated frame with `object-fit: cover`.
+
+In fresh Playwright/Edge contexts at 1440×1000 and 375×812, a synthetic sample image loaded from a `blob:` URL. The image frame and copy are non-overlapping layout siblings; the kicker, “More life. More stories.” headline, body copy, and page number all fit within the copy region at both widths. The spread and document have no measured horizontal overflow. During image selection, browser request events were browser-local blob image reads only (one per photo-loaded preview); HTTP POST/PUT/PATCH count was 0, external HTTP request count was 0, external image request count was 0, and model-provider request count was 0. Blob object identifiers are redacted in the machine report.
+
+### WooCommerce continuity
+
+Added a project-local CSS skin, enqueued only on WooCommerce Product/Cart/Checkout/My Account routes. Native templates, product identity/price/virtual status, cart behavior, checkout settings, and the order system were not replaced. The skin uses the accepted paper/white/ink palette, Georgia editorial headings, blue header links, coral square CTAs, padded white form/cart/order panels, and the existing dark footer. Non-product Woo page titles now start below the sticky Blocksy header.
+
+The native Product Add to Cart returned HTTP 200 with WooCommerce success; the same isolated browser context showed the US$39.99 item in Cart, loaded Checkout with account-required billing fields and the local-only no-payment gateway, and loaded My Account with the native login form. No checkout/order submission was made. At 375px, Product, Cart, Checkout, and My Account each had `documentElement.scrollWidth=375`; core CTAs and visible form controls fit within the viewport. Computed styles confirm the product price/Add to Cart, cart totals/checkout CTA, checkout billing/order panels/CTA, and account form/login CTA use the shared skin. Browser console/page errors: 0.
+
+### Owner editability, screenshots, and boundaries
+
+Fresh WordPress read-back: `bms-owner` role=Administrator; `user_can(edit_post, 858)=true`; page 858 has Gutenberg blocks and `use_block_editor_for_post(858)=true`; upload-files and Blocksy global-style capabilities remain enabled. No password or session material was read or recorded. Home Gutenberg content was not modified.
+
+Eleven current screenshots and a sanitized machine report are saved under:
+
+- `poc/g3c/artifacts/screenshots/g3cr5/` — required files 01–11 (desktop Home/preview/Product/Cart/Checkout/My Account and 375px selected-photo preview plus mobile Woo pages).
+- `poc/g3c/artifacts/reports/g3cr5-final.json` — viewport measurements, overlap checks, sanitized Network read-back, Woo path/skin checks, runtime/version/editor read-back, forbidden-action counts, screenshot byte sizes and SHA-256 inventory.
+
+Runtime read-back after testing: WordPress container is up; MariaDB and Mailpit are up and healthy. Site remains at `http://127.0.0.1:8189/` and wp-admin at `http://127.0.0.1:8189/wp-admin/` for Owner review.
+
+| Check | Result |
+|---|---|
+| Selected photo dedicated frame / no copy overlap | PASS desktop and 375px; `object-fit: cover` |
+| Browser-local preview | `blob:` loaded; 0 server uploads; 0 external HTTP/image requests; 0 model requests |
+| Homepage regression | PASS; six accepted sections; 375px width 375; Hero CTA visible; Home content hash unchanged |
+| Native Woo Product → Cart → Checkout → My Account | PASS; Add to Cart HTTP 200; product remains virtual USD 39.99; no order submission |
+| Woo visual continuity | PASS across Product, Cart, Checkout, and Account computed styles and screenshots |
+| Woo 375px / blocking overflow | PASS / NO; four route document widths are 375 and controls fit |
+| Owner Gutenberg edit access | PASS; Administrator, editable Home, Gutenberg enabled, media and global-style capabilities present |
+| Runtime | Retained for Owner; no rebuild or teardown |
+| Forbidden actions | PayPal 0; real money 0; model/AI 0; production deployment 0; shared infra 0; G4 0; paid purchase 0; global prune 0 |
+
+No `REVIEWER_HANDOFF.md` or Reviewer decision file was edited. `OWNER_VISUAL_FREEZE=PENDING`; stop at Reviewer.
+
+## G3CR6 — Frontend Experience + Brand Redesign (2026-10-01)
+
+This append supersedes G3CR5 as the current frontend candidate; historical evidence and Reviewer decisions are preserved.
+
+### Authority / preflight
+
+- Owner latest G3CR6 authorization + main `becb2ab9c644649a07327664cfdb5ae975964ba9` contract and Handoff were read. Canonical GitHub Governance SKILL, Handoff, v0.1.6 reference, source policy, target-host contract and Executor/Evidence templates were read. Local governance copy is a non-authoritative cache.
+- Branch: `codex/birthday-magazine-g3c-blocksy-wedding-productization`; pre-run HEAD `b3aff79fd74b0a63bc42ff370c8adb1a5eac82ba`. Continue existing PR #64, open/unmerged.
+- Provided ZIP was extracted with absolute destination guards into ignored project `.tmp/g3cr6-pack/`. Both reference images and execution boundary were read. Images set mood, not product structure.
+- Existing G3C WordPress/MariaDB/Mailpit runtime remained running on localhost; no rebuild/start/restart/tunnel occurred. No production host touched.
+- Existing Owner ZIPs/untracked old screenshots and 17 locally deleted tracked G3CR4 screenshots were present at start and excluded from this commit. The deleted screenshots remain in Git history.
+
+### Scoped backup / writes
+
+- Pre-edit backup: `poc/g3c/artifacts/backups/g3cr6/home-and-blocksy-before.json`; SHA256 `8639434135745daf86cf049722b33a634144e9f28ff8056e87da3447349db710`. Includes Home, allowlisted Blocksy mods and original product thumbnail. Theme mods were not changed.
+- Original product copy: `product-copy-before.json`; previous plugin implementation: `preview-plugin-before/` in the same directory. Rollback helper: `scripts/restore-g3cr6.php`; procedure in `artifacts/reports/g3cr6-execution-notes.md`.
+- Home remains six editable Gutenberg groups. Reworked copy, sample images, warm gift styling, Hero/header clearance, Preview and Offer/FAQ presentation. Added three fictional marketing media attachments.
+- Product 1113: customer-facing title/description and featured image changed; ID/US$39.99/USD/virtual remain. Native gallery uses Woo's standard full-size image filter. Product, Cart, Checkout, Account share the warm paper/coral/serif visual skin.
+- Preview frontend rebuilt with dedicated photo frame, visible replace/remove, accessible live status, image decoding and invalid/corrupt-file rejection. Photos still use createObjectURL/revokeObjectURL only.
+- Protected backend unchanged: compose, commerce/private-workspace plugin, Woo checkout/payment/order/account semantics, entitlement/job/schema/renderer. File parity hashes appear in the final report.
+
+### Generated asset boundary
+
+- Built-in image_gen, explicitly Owner-authorized: 4 original generations + 1 targeted page-number correction = 5 calls. Four curated assets adopted. Exact prompts and asset paths in `g3cr6-asset-provenance.md`.
+- Marketing-only Hero, cover and spread; all people fictional. Original spread 14/15 numbering was rejected and corrected to 04/05. UI labels fictional samples and digital PDF, not print/customer proof.
+- Separate synthetic portrait is a local browser screenshot input and was not imported into WordPress. These creative calls are not product-generation or Preview model calls. Production AI remains untouched.
+
+### Verification
+
+- Durable 19 fresh PNGs in `poc/g3c/artifacts/screenshots/g3cr6/`: full Home, Hero, samples, empty/photo Preview, Offer/FAQ, all four native Woo routes at desktop and 375px. File hashes and dimensions/checks in reports.
+- Browser report: `artifacts/reports/g3cr6-browser.json`; aggregate: `g3cr6-final.json`; runtime/Owner capabilities: `g3cr6-runtime.json`.
+- Desktop 1440x1000 and mobile 375x812: document width equals viewport on Home/Product/Cart/Checkout/Account; no broken image or pageerror/404 in tested routes. Hero clears overlay Header. Photo frames and text do not overlap. Mobile Preview is single-column, internal width343px equals its container.
+- Name/age/styles, select/replace/remove, old blob revocation, invalid MIME and corrupt image rejection passed on both viewports. Blob sources loaded successfully. During interaction, four local static GET requests per viewport were observed (WPForms/Blocksy assets); no photo upload, external image POST or model request. Evidence does not claim zero total network traffic.
+- Real native Woo Add to Cart HTTP200/success; cart quantity2/US$79.98 and remove-to-empty passed. Checkout/account native forms and visible CTA controls passed. Checkout was not submitted. Synthetic order count before/after remains1.
+- Owner Administrator, edit Home, upload media, Gutenberg and edit_theme_options capability read-back passed. Text/images/reordering remain core Gutenberg blocks; Preview only is a shortcode. No administrator credential was read and no admin-session screenshot claimed.
+- Existing private-space PHP guard regression under in-memory synthetic identities: Owner200/rendered, unrelated403, guest403. Browser guest direct URL also403. This is not a fresh authenticated HTTP login/session proof; historical accepted account proof is reused and backend unchanged.
+- Local counter options are absent and default to0; no product generator/provider was installed or called. No new generation job path was added.
+
+### Anomalies / cleanup
+
+- Initial Home installer wrote successfully, then failed in final report due to undefined theme variable. Fixed durable script, verified saved state directly, no repeated media import. Screenshot harness was corrected to select visible native cart controls and compare frame layout coordinates before CSS transforms; these were test harness issues.
+- Runtime retained for Owner review, no teardown. New media/assets and rollback files intentionally retained. Temporary browser contexts closed. Project-only ignored tools/reference extraction retained; no global cleanup/prune, unrelated Docker resources not mutated.
+- Resource identity/start-time read-back: `artifacts/reports/g3cr6-resource-readback.txt`.
+
+```text
+RESULT=PASS_CANDIDATE_G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN
+FREE_PREVIEW_MODEL_CALLS=0
+FREE_PREVIEW_SERVER_PHOTO_UPLOADS=0
+FREE_PREVIEW_EXTERNAL_IMAGE_POSTS=0
+WOO_NATIVE_PATH=PASS
+CHECKOUT_SUBMITTED=NO
+OWNER_GUTENBERG_EDIT_ACCESS=PASS
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+PRODUCTION_AI_CALLS=0
+PRODUCTION_DEPLOYMENT=0
+SHARED_INFRA_MUTATIONS=0
+THEME_CHANGE=0
+BUILDER_CHANGE=0
+ELEMENTOR_INSTALL=0
+PAID_PURCHASES=0
+GLOBAL_DOCKER_PRUNE=0
+G4_ACTIONS=0
+PR_MERGED=NO
+G3C_RUNTIME_RETAINED_FOR_OWNER_REVIEW=YES
+OWNER_VISUAL_FREEZE=PENDING
+STOP_AT_REVIEWER=YES
+```
+
+Git submission: this G3CR6 batch continues branch/PR #64; final SHA is the enclosing Git commit and is reported after push/read-back. No Reviewer PASS is asserted.

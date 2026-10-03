@@ -1,0 +1,7 @@
+{
+    "context": "unrelated",
+    "status": 403,
+    "workspace_rendered": false,
+    "test_boundary": "existing PHP template_redirect handler; in-memory synthetic identity; no HTTP login\/session proof",
+    "persistent_mutations": 0
+}

@@ -1,0 +1,2 @@
+<?php
+function walk(array $blocks): void { foreach($blocks as $b){$n=$b['blockName']??'';if($n==='stackable/image'||$n==='core/image'){ $a=$b['attrs']??[]; foreach(['url','imageUrl','imageID','imageId','id','image','src','link'] as $k)if(isset($a[$k])&&is_scalar($a[$k]))$a[$k]=mb_substr((string)$a[$k],0,180); echo wp_json_encode(['block'=>$n,'attrs'=>$a],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)."\n";} if(!empty($b['innerBlocks']))walk($b['innerBlocks']); }}walk(parse_blocks(get_post_field('post_content',858)));

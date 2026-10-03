@@ -1,0 +1,74 @@
+{
+  "gate": "G3C_BLOCKSY_WEDDING_PRODUCTIZATION",
+  "localUrl": "http://127.0.0.1:8189/",
+  "adminUrl": "http://127.0.0.1:8189/wp-admin/",
+  "mailpitUrl": "http://127.0.0.1:8190/",
+  "runtimeRetainedForOwnerReview": true,
+  "localOnly": true,
+  "productionDeployment": false,
+  "runtime": {
+    "dockerCompose": "5.4.0",
+    "wordpressImage": "wordpress:7.1.1-php8.3-apache",
+    "wordpress": "7.1.1",
+    "php": "8.3.33",
+    "mariadbImage": "mariadb:11.4.7",
+    "mariadb": "11.4.7-MariaDB-ubu2404",
+    "mailpitImage": "axllent/mailpit:v1.31.2",
+    "project": "birthday-magazine-g3c",
+    "containers": 4,
+    "health": {
+      "mariadb": "healthy",
+      "wordpress": "running",
+      "wpcli": "running",
+      "mailpit": "healthy"
+    },
+    "publishedPorts": {
+      "wordpress": "127.0.0.1:8189->80/tcp",
+      "mailpit": "127.0.0.1:8190->8025/tcp"
+    },
+    "volumes": [
+      "birthday-magazine-g3c_database",
+      "birthday-magazine-g3c_wordpress"
+    ],
+    "network": "birthday-magazine-g3c_private"
+  },
+  "themeAndCommerce": {
+    "theme": "Blocksy",
+    "themeVersion": "2.1.57",
+    "starter": "Wedding",
+    "builder": "Gutenberg",
+    "importer": "Blocksy Companion Starter Sites bundled with 2.1.57",
+    "woocommerce": "11.1.2",
+    "currency": "USD"
+  },
+  "activePlugins": [
+    { "slug": "bms-g3a-commerce-loop", "version": "0.1.0", "status": "active" },
+    { "slug": "bms-g3c-preview", "version": "0.2.0", "status": "active" },
+    { "slug": "blocksy-companion", "version": "2.1.57", "status": "active" },
+    { "slug": "simply-gallery-block", "version": "3.4.3", "status": "active" },
+    { "slug": "stackable-ultimate-gutenberg-blocks", "version": "3.20.2", "status": "active" },
+    { "slug": "woocommerce", "version": "11.1.2", "status": "active" },
+    { "slug": "wpforms-lite", "version": "2.0.2.1", "status": "active" },
+    { "slug": "00-g3a-local-mailpit", "version": "0.1.0", "status": "must-use" }
+  ],
+  "pluginsNotInstalled": [
+    "elementor",
+    "ht-slider-for-elementor",
+    "woocommerce-paypal-payments"
+  ],
+  "owner": {
+    "accountExists": true,
+    "role": "administrator",
+    "canEditHome": true,
+    "canUploadAndReplaceImages": true,
+    "canReorderGutenbergBlocks": true,
+    "canEditBlocksyGlobalStyle": true,
+    "credentialValueIncluded": false
+  },
+  "cleanup": {
+    "runtimeStopped": false,
+    "projectVolumesRemoved": false,
+    "projectNetworkRemoved": false,
+    "reason": "Owner needs the local site available for visual review and editing."
+  }
+}

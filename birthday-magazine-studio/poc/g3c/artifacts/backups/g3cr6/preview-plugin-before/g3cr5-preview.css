@@ -1,0 +1,104 @@
+.bms-photo-sheet {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	padding: 0;
+	background: #fffdf9;
+}
+
+.bms-spread-photo-frame {
+	position: relative;
+	flex: 0 0 44%;
+	min-height: 0;
+	overflow: hidden;
+	background: #dedbd4;
+	border-bottom: 1px solid #d9d3ca;
+}
+
+.bms-spread-photo-frame .bms-spread-art,
+.bms-spread-photo-frame .bms-spread-photo {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.bms-spread-photo-frame .bms-spread-photo {
+	object-fit: cover;
+}
+
+.bms-photo-copy {
+	position: relative;
+	flex: 1 1 auto;
+	min-height: 0;
+	padding: 10px 12px 22px;
+	background: #fffdf9;
+}
+
+.bms-photo-copy .bms-page-kicker,
+.bms-photo-copy h3,
+.bms-photo-copy p {
+	position: static;
+	z-index: auto;
+}
+
+.bms-photo-copy .bms-page-kicker {
+	margin-bottom: 7px;
+	font-size: 6px;
+}
+
+.bms-photo-copy h3 {
+	margin-bottom: 6px;
+	font-size: clamp(16px, 2vw, 23px);
+}
+
+.bms-photo-copy p {
+	font-size: 8px;
+}
+
+.bms-photo-copy > small {
+	position: absolute;
+	bottom: 7px;
+	left: 12px;
+	color: #aaa49a;
+	font-size: 7px;
+}
+
+@media (max-width: 600px) {
+	.bms-spread {
+		aspect-ratio: 1.08;
+	}
+
+	.bms-photo-sheet {
+		padding: 0;
+	}
+
+	.bms-spread-photo-frame {
+		flex-basis: 39%;
+	}
+
+	.bms-photo-copy {
+		padding: 8px 6px 19px;
+	}
+
+	.bms-photo-copy .bms-page-kicker {
+		margin-bottom: 5px;
+		font-size: 5px;
+		letter-spacing: .06em;
+	}
+
+	.bms-photo-copy h3 {
+		margin-bottom: 4px;
+		font-size: clamp(13px, 3.8vw, 16px);
+	}
+
+	.bms-photo-copy p {
+		font-size: 7px;
+		line-height: 1.35;
+	}
+
+	.bms-photo-copy > small {
+		bottom: 5px;
+		left: 6px;
+	}
+}

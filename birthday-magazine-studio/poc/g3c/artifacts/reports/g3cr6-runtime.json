@@ -1,0 +1,44 @@
+{
+    "home_id": 858,
+    "primary_groups": 6,
+    "home_sha256": "b45daee18bb450e958614e756bcb000742ab6cb2cf727dc45aa25152eafcbbfb",
+    "image_ids": [
+        1137,
+        1137,
+        1138,
+        1139
+    ],
+    "image_files_exist": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "gutenberg": true,
+    "owner_administrator": true,
+    "owner_edit_home": true,
+    "owner_media": true,
+    "owner_global_styles": true,
+    "product": {
+        "id": 1113,
+        "price": "39.99",
+        "currency": "USD",
+        "virtual": true
+    },
+    "wordpress": "7.1.1",
+    "woocommerce": "11.1.2",
+    "blocksy": "2.1.57",
+    "active_plugins": [
+        "blocksy-companion/blocksy-companion.php",
+        "bms-g3a-commerce-loop/bms-g3a-commerce-loop.php",
+        "bms-g3c-preview/birthday-magazine-poc.php",
+        "simply-gallery-block/plugin.php",
+        "stackable-ultimate-gutenberg-blocks/plugin.php",
+        "woocommerce/woocommerce.php",
+        "wpforms-lite/wpforms.php"
+    ],
+    "generation_jobs": 0,
+    "product_model_calls": 0,
+    "counter_options_present": false,
+    "order_count": 1
+}

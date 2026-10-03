@@ -1,0 +1,20 @@
+#footer,
+#footer [data-row],
+#footer [data-row] > div {
+	background-color: #17191e !important;
+}
+
+#footer,
+#footer .widget-title,
+#footer p,
+#footer li,
+#footer a,
+#footer .ct-icon {
+	color: #fff !important;
+	opacity: 1 !important;
+}
+
+#footer a:hover,
+#footer a:focus-visible {
+	color: #f2cf4a !important;
+}
