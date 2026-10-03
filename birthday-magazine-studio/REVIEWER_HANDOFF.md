@@ -34,7 +34,7 @@ PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=BROADLY_ACCEPTED
 CURRENT_GATE=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
-SOURCE_BASELINE_PREFLIGHT=RETURN_PREFLIGHT_DRIFT
+SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
 MAGAZINE_WEB_PAGE_MOTION_MODE=UNRESOLVED
@@ -74,7 +74,7 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 - Owner Visual Checkpoint R2: resolved; Owner broadly accepts the overall composition but now explicitly rates the homepage around 7/10 for the intended quality bar, wants meaningful motion, wants the actual final magazine shown clearly, and rates the current upload-first Preview around 5/10.
 - Owner editability at G3CR6R1 evidence scope: Administrator, edit Home, replace media, edit copy, reorder eight major Gutenberg Groups, edit Blocksy global style/palette; footer is editable WordPress block.
 - PR #64 remains open/unmerged at accepted execution head `15ff73f6232e0ef94f04f313f74372e52389d1e2`.
-- Fresh 2026-10-04 reconciliation: PR #64 head is materially stale relative to canonical `main`; it still carries the old 2026-09-30 Reviewer Handoff and does not contain the current G3CR6R3C Gate, mandatory research contract, or Owner research-quality decision. The 7 branch-only commits contain G3C/G3CR6R1 evidence/PoC material and must be preserved. Research execution is therefore blocked by `RETURN_PREFLIGHT_DRIFT` until a project-scoped source baseline is established.
+- Fresh 2026-10-04 source-baseline closure: PR #64 is reconciled at head `83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6`; it is ahead of the then-current `main` by 8, behind by 0, mergeable, and all 173 branch diff files are scoped to `birthday-magazine-studio/`. Current v0.2.6 Handoff/Gate/research contracts are readable from the same head, while the prior 7 branch-only G3C/G3CR6R1 commits/evidence remain preserved.
 
 ## CURRENT_GATE
 
@@ -150,10 +150,9 @@ Protected backend behavior for the current visual/research phase:
 ## DEFAULT_EXECUTION_CHANNEL
 
 - Canonical research/Gate authority is current GitHub `main`.
-- The existing PR #64 branch is retained as the G3C/G3CR6R1 implementation/evidence branch, but **must not be used as the G3CR6R3C execution baseline until source-baseline reconciliation passes**.
-- Before Executor research writes, use a clean project-scoped worktree/sparse workspace or equivalent isolation and preserve the 7 PR-branch-only commits/evidence; do not perform a blind repository-wide merge/rebase for cosmetic freshness.
-- Existing PR #64 remains preferred if it can be aligned safely. A replacement research branch/PR is a Reviewer-approved fallback only if project-scoped reconciliation proves the existing branch unsafe to continue.
-- No production/target-host execution in G3CR6R3C.
+- Existing PR #64 branch is the **approved G3CR6R3C execution baseline** after source reconciliation; Executor should use the reconciled branch head and current Gate/relay, not reconstruct project history.
+- Research writes remain project-scoped to `birthday-magazine-studio/`; the 7 historical G3C/G3CR6R1 branch commits/evidence remain preserved.
+- No new PR by default. No production/target-host execution in G3CR6R3C.
 
 ## CURRENT_ROLLBACK_STATUS
 
@@ -180,11 +179,10 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Resolve the **G3CR6R3C source-baseline preflight** only: establish a clean project-scoped execution workspace containing the current v0.2.6 Handoff/Gate/contracts while preserving PR #64's 7 branch-only evidence commits.
-2. After that preflight passes, execute **G3CR6R3C** under the mandatory quality contract: inspect >=60 distinct candidates across >=8 source ecosystems, keep a reject ledger, and continue until saturation.
-3. Reviewer verifies source/license status, evidence quality and design-system coherence.
-4. Owner selects the preferred source/template combination.
-5. Only then open an implementation Gate to vendor/copy permitted source and adapt it into the unified 1+1+12 system.
+1. Execute **G3CR6R3C** on reconciled PR #64 under the mandatory quality contract: inspect >=60 distinct candidates across >=8 source ecosystems, keep a reject ledger, and continue until saturation.
+2. Reviewer verifies source/license status, evidence quality and design-system coherence.
+3. Owner selects the preferred source/template combination.
+4. Only then open an implementation Gate to vendor/copy permitted source and adapt it into the unified 1+1+12 system.
 
 ## OWNER_ACTION_REQUIRED
 
@@ -199,7 +197,8 @@ Owner action is required later for:
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md`
+1. `docs/REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md`
+2. `docs/REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` — superseded preflight RETURN provenance
 2. `docs/MVP_PRODUCT_CONTRACT.md`
 2. `docs/REVIEWER_DECISION_G3CR6R1_PASS.md`
 3. `docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md`
