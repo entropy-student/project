@@ -9,7 +9,7 @@ MAX_ENDPOINT_THIS_ROUND=Reviewer research package + Owner shortlist
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Read-only web/source research and project-scoped research documentation only
 APPLICABLE_CRITICAL_CONSTRAINTS=REAL_MONEY_ACTIONS_0; PAYPAL_ACTIONS_0; CHECKOUT_SUBMISSIONS_0; RUNTIME_MUTATION_0; PRODUCTION_DEPLOYMENT_0; SHARED_INFRA_MUTATIONS_0; PR64_MERGE_0
-PREFLIGHT=Current main Handoff/Gate/research-contract/Owner-quality-bar must exist in the same execution workspace; stale PR64 head is not a valid research baseline until reconciled
+PREFLIGHT=PR64 head must descend from the accepted reconciliation anchor; current Gate/research-contract/Owner-quality-bar must be readable in the execution workspace; only current-main changes affecting birthday-magazine-studio/** or an explicitly named shared Gate dependency constitute source drift
 REQUIRED_EVIDENCE=Research Ledger; Source Coverage Map; S/A Shortlist; Reject Summary; 12+1+1 Coverage Map; Reuse Map; Saturation Evidence; Owner Gallery
 ACCEPTANCE_CRITERIA=See ACCEPTANCE_CRITERIA section and mandatory Research Contract
 ROLLBACK_STATUS_OR_PLAN=No runtime mutation; documentation/source research is Git-revertible; preserve PR64 branch-only accepted evidence during source-baseline repair
@@ -43,7 +43,9 @@ Fresh read-back after the bounded reconciliation:
 ```text
 SOURCE_BASELINE_PREFLIGHT=PASS
 RECONCILIATION_ANCHOR=83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6
-PR64_CURRENT_HEAD_REQUIREMENT=DESCENDANT_OF_RECONCILIATION_ANCHOR_AND_CURRENT_MAIN
+PR64_CURRENT_HEAD_REQUIREMENT=DESCENDANT_OF_RECONCILIATION_ANCHOR_AND_PROJECT_SCOPED_MAIN_BASELINE
+WHOLE_REPOSITORY_MAIN_TIP_ANCESTRY_REQUIRED=NO
+UNRELATED_MONOREPO_MAIN_COMMITS_BLOCK=NO
 BASELINE_READBACK_AT_ANCHOR=AHEAD_8_BEHIND_0
 PR64_MERGEABLE=YES
 NON_PROJECT_DIFF_FILES=0
@@ -57,6 +59,10 @@ Current Reviewer decision:
 - `docs/REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md`
 
 The earlier `REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` remains historical RETURN provenance.
+
+A subsequent Executor preflight correctly returned under the old whole-repository-main ancestry rule after `main` advanced only in `vpn-network-optimization/**`. Reviewer verified no Birthday Magazine path changed and replaced that overbroad rule with project-scoped freshness. See `docs/REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md`.
+
+Executor preflight should now use a path-scoped comparison equivalent to `PR_HEAD..origin/main -- birthday-magazine-studio` (plus any extra Gate-declared shared paths). Empty scoped output means unrelated monorepo movement does not block research.
 
 ## Goal
 
