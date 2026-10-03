@@ -90,7 +90,7 @@ PREVIOUS_RESULT=PASS_G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
 LAST_EXECUTOR_RESULT=RETURN_LOCAL_ADMIN_HIGH_TOKEN_REQUIRED
 LAST_ATTEMPT_CONSEQUENTIAL_ACTION_STARTED=NO
 REAL_OPENAI_REQUEST_BUDGET_CONSUMED=0_OF_1
-EXECUTION_BLOCKER=OWNER_LOCAL_POWERSHELL_7_6_6_ADMINISTRATOR_HIGH_REQUIRED
+EXECUTION_BLOCKER=OWNER_LOCAL_CONSEQUENTIAL_CHECKPOINT_REQUIRES_POWERSHELL_7_6_6_ADMINISTRATOR_HIGH
 OBJECTIVE=Prove the accepted Mihomo v1.19.31 VLESS+REALITY+Vision candidate over the intended public TCP/443 path, with no persistence and deterministic rollback.
 MAX_ENDPOINT_THIS_ROUND=read-only current-state preflight + one temporary public TCP/443 Mihomo server + one temporary exact /32 outer-route bypass to the current physical egress + one proxied OpenAI HTTPS request + exact cleanup/read-back + Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -224,13 +224,13 @@ It does **not** authorize persistence, permanent firewall changes, benchmark, pr
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-After Owner has started the Executor from real-host **PowerShell 7.6.6 Administrator/High**, start only from:
+Executor may prepare the runner without elevation. Start only from:
 1. this P1 Gate and the accepted precondition RETURN evidence at commit `58b12a313ed80f9f30d7f1d979d06b5c9173a482`;
 2. hardened runner logic from `scripts/g2c-mihomo-server-r3.ps1`;
 3. accepted R4 Evidence block;
 4. existing accepted G2-B dynamic physical-egress / exact-route patterns where directly reusable.
 
-Do not reread Governance or historical Gates broadly. Do not replay private R4 or sing-box. Adapt only what is necessary for the public TCP/443 temporary canary, preserve dynamic discovery, run once, clean up, persist Evidence + Executor Handoff, commit, fresh read-back, STOP.
+Do not reread Governance or historical Gates broadly. Do not replay private R4 or sing-box. Adapt only what is necessary for the public TCP/443 temporary canary and preserve dynamic discovery. Non-elevated work may prepare/static-review the runner only. Before any consequential action, hand Owner one atomic PowerShell 7.6.6 Administrator/High checkpoint command; the checkpoint re-proves the effective token and then runs once, cleans up, persists bounded output for Evidence + Executor Handoff, commit, fresh read-back, STOP.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
@@ -314,11 +314,11 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Owner launches the Executor/Codex from **PowerShell 7.6.6 running as Administrator/High integrity on the real Windows host**. Executor then resumes **G2C_REALITY_PUBLIC_TCP443_CANARY_P1 from fresh preflight**, using the existing authorization; the one-request budget remains unconsumed (`0/1`). Persist sanitized Evidence + Executor Handoff, fresh read-back, then stop for Reviewer.
+Executor may remain in its current non-elevated environment to prepare/review the bounded P1 runner and the single Owner-local checkpoint. Before any SSH, route/listener/runtime mutation, Secret access, or OpenAI request, Owner opens **PowerShell 7.6.6 as Administrator/High on the real Windows host** and runs that one atomic checkpoint. The checkpoint itself must fresh-prove PowerShell 7.6.6 + Administrator/High before continuing. Existing P1 authorization remains valid and the one-request budget remains `0/1`.
 
 ## OWNER_ACTION_REQUIRED
 
-Open **PowerShell 7.6.6 as Administrator** on the real Owner Windows host and start the Executor/Codex from that elevated shell so it inherits an Administrator/High token. No new consequential authorization is required for the same bounded P1 retry because the blocked attempt performed no SSH, route/listener/runtime mutation, Secret access, or OpenAI request (`REQUEST_COUNT=0`). Any persistence, permanent firewall/routing change, benchmark, production-default change, second real request, or scope expansion still requires a new authorization.
+Do **not** restart or elevate Codex merely for this Gate. After Executor prepares the bounded P1 runner, open **PowerShell 7.6.6 as Administrator** on the real Owner Windows host and run the single exact checkpoint command supplied by Executor. The Owner is not responsible for debugging or line-by-line execution. No new consequential authorization is required because the blocked attempt performed no SSH, route/listener/runtime mutation, Secret access, or OpenAI request (`REQUEST_COUNT=0`).
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 

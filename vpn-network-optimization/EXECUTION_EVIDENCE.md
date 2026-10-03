@@ -2647,3 +2647,25 @@ Reviewer interpretation:
 - No consequential action began and the real-request counter remains zero, so the previously granted single-canary authorization is not consumed. The same bounded P1 may be retried only after the Owner starts the Executor from the required elevated PowerShell 7.6.6 environment.
 - The retry restarts at fresh preflight. It does not inherit runtime facts from the blocked attempt and still cannot exceed one real OpenAI request.
 
+## Reviewer superseding clarification — P1 Owner-local elevation boundary — 2026-10-03
+
+```text
+SUPERSEDES_EXECUTION_MECHANISM_ONLY=REVIEWER_RECONCILIATION_AT_90a8b6bd3a682c4e3e059cf570cd89b242c4da25
+GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+OWNER_AUTHORIZATION_CHANGED=NO
+REQUEST_BUDGET=0_OF_1_CONSUMED
+CODEX_ELEVATION_REQUIRED=NO
+OWNER_LOCAL_CONSEQUENTIAL_CHECKPOINT_ELEVATION_REQUIRED=YES
+REQUIRED_CHECKPOINT_RUNTIME=PowerShell_7.6.6
+REQUIRED_CHECKPOINT_TOKEN=Administrator_High
+NON_ELEVATED_EXECUTOR_ALLOWED=RUNNER_PREPARATION_AND_STATIC_REVIEW_ONLY
+CONSEQUENTIAL_ACTIONS_FROM_NON_ELEVATED_EXECUTOR=FORBIDDEN
+OWNER_RELAY=ONE_ATOMIC_COMMAND_ONLY
+LINE_BY_LINE_OWNER_DEBUGGING=FORBIDDEN
+```
+
+Reviewer interpretation:
+- Governance 11B requires the real Owner-host checkpoint that performs host-local consequential work to prove effective privilege and target identity. It does not require the Codex process that prepares the runner to inherit the elevated token.
+- Therefore the previous instruction to launch Codex itself from elevated PowerShell was unnecessarily strict. The safer/minimal relay is: prepare and static-review the bounded runner without elevation, then have Owner run one atomic checkpoint from PowerShell 7.6.6 Administrator/High.
+- This clarification changes only the execution mechanism, not the authorized P1 scope, acceptance criteria, one-request limit, or rollback boundary.
+
