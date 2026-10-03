@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=BROADLY_ACCEPTED
-CURRENT_GATE=G3CR6R3A_MAGAZINE_VISUAL_REDESIGN
+CURRENT_GATE=G3CR6R3B_VISUAL_MOTION_LAB
 OWNER_VISUAL_FREEZE=PENDING
 REAL_MONEY_TRANSACTION=UNVERIFIED
 REAL_CUSTOMER_ACQUISITION=UNVERIFIED
@@ -73,22 +73,24 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR6R3A_MAGAZINE_VISUAL_REDESIGN`
+`G3CR6R3B_VISUAL_MOTION_LAB`
 
-The Owner has rejected the current magazine visual system. G3CR6R3 website motion remains **HOLD_PENDING_MAGAZINE_VISUAL_PASS**.
+The Owner has rejected the current magazine visual system and approved a lab-first 1+1+12 direction. G3CR6R3A full 12-page rebuild is superseded before execution; website integration/full magazine expansion remain on hold until lab selection.
 
 Objective:
-- redesign the static 12-page magazine itself from technical proof to paid-gift quality;
-- preserve the accepted content/schema/QA architecture;
-- produce explicit before-AI and after-AI contact sheets under the same new design.
+- validate one unified web-native editorial visual system before full build;
+- compare 3 high-impact photo→magazine interaction directions;
+- compare 3 deterministic cover directions;
+- validate 4 representative magazine page designs before expanding to all 12.
 
 Scope:
-- deterministic magazine templates/layout system;
-- non-private demo-photo fixture for realistic visual review;
-- three shared-architecture presets;
-- before-AI vs after-AI visual proof.
+- isolated Visual + Motion Lab only;
+- 3 interaction concepts;
+- 3 cover concepts;
+- 4 representative static magazine pages;
+- one shared design/motion language.
 
-Website/homepage motion and Preview redesign are NOT in this Gate.
+Do not rebuild all 12 pages or mutate the current WordPress runtime in this Gate.
 
 Not reopened:
 - overall site composition;
@@ -101,7 +103,7 @@ Not reopened:
 - production AI/provider.
 
 Current Gate file:
-- `docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md`
+- `docs/G3CR6R3B_VISUAL_MOTION_LAB.md`
 
 Current growth diagnosis:
 - `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
@@ -163,14 +165,14 @@ Protected backend behavior for G3CR6R2:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3A** only: redesign the static magazine visual system and generate before-AI / after-AI review artifacts.
-2. Reviewer checks the new 12-page visual result, QA, deterministic architecture and preset coherence.
-3. Owner visually accepts or requests bounded magazine changes.
-4. Only after magazine visual PASS does G3CR6R3 website motion + final-product proof + Preview Activation resume.
+1. Execute **G3CR6R3B** only: 3 interaction directions + 3 cover directions + 4 representative magazine pages.
+2. Reviewer compares purchase-pull, coherence, deterministic feasibility, mobile/reduced-motion safety.
+3. Owner selects one interaction + one cover/art direction.
+4. Only then expand the selected system into full 1 + 1 + 12 and integrate it into the current website.
 
 ## OWNER_ACTION_REQUIRED
 
-`NONE` for G3CR6R3A execution; Owner already selected magazine visual redesign.
+`NONE` for G3CR6R3B execution; Owner already approved lab-first visual direction.
 
 Owner action is required later for:
 - final subjective visual freeze;
@@ -186,9 +188,11 @@ Current working set:
 3. `docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md`
 4. `docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md`
 5. `docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md`
-6. `docs/OWNER_DECISION_G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md`
-7. `docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md`
-8. `docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` — prepared/hold after magazine visual PASS
+6. `docs/OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md`
+7. `docs/G3CR6R3B_VISUAL_MOTION_LAB.md`
+8. `docs/OWNER_DECISION_G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` — superseded full-build decision provenance
+9. `docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` — superseded before execution
+10. `docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` — prepared/hold after lab + magazine visual selection
 9. `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
 7. `EXECUTION_EVIDENCE.md` — accepted execution proof/history
 8. `EXECUTOR_HANDOFF.md` — latest Executor facts when current Gate executes
