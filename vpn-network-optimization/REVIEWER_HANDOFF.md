@@ -17,7 +17,9 @@ G2-A HY2 side-by-side deployment            PASS
 G2-A DPAPI recovery closure                 PASS
 G2-B Safe-window WG vs HY2 validation       PASS
 G2-C VLESS+REALITY side-by-side candidate  IN_PROGRESS
-G2-D Peak-hour + real workload validation   PENDING
+G3-A Network auto-adaptation + health       PENDING
+G3-B VPS migration + rollback package       PENDING
+G4 Peak-hour + real workload final validate PENDING
 MVP v1 seal                                 PENDING
 ```
 
@@ -285,12 +287,13 @@ Rollback/recovery assets:
 ## UNRESOLVED
 
 - VLESS+REALITY compatibility: private listener/config and target TLS 1.3 reachability passed, but repeated sing-box canaries still fail with curl 35 / Mihomo TIMEOUT; R2 ended `UNKNOWN_AFTER_R2`. Next evidence target is a controlled temporary Mihomo-server implementation A/B, not more sing-box log parsing.
-- Peak-hour repeatability: whether HY2 retains its same-window advantage during the user's known evening congestion window.
-- Real workload behavior: Codex / OpenAI / image-generation long-task A/B is still untested.
+- Peak-hour repeatability and real-workload behavior remain mandatory before final seal, but are intentionally deferred until after G3-A/G3-B so the final validation measures the near-final automated/migratable implementation instead of an intermediate build.
+- G3-A remains to implement physical-egress discovery, network-adaptive route/config generation, health checks, and safe role switching without hardcoded WLAN/IP/gateway assumptions.
+- G3-B remains to package template-driven VPS migration, per-VPS Secret/certificate lifecycle, staged cutover, rollback, and a bounded migration rehearsal.
 - Final production role: HY2 primary vs on-demand backup vs WireGuard primary remains undecided.
 - Final WireGuard security policy: whether the split-default/no-strict-kill-switch state is accepted for v1 or replaced by a different final routing design.
 - Optional Linux tuning candidates (BBR/fq/GRO/MTU) remain untested and are not required unless later evidence justifies them.
-- MVP v1 seal remains pending G2-C VLESS+REALITY integration, G2-D peak-hour/real-workload validation, and final architecture decision.
+- MVP v1 seal remains pending G2-C integration, G3-A/G3-B engineering closure, G4 peak-hour/real-workload final validation, and final architecture decision.
 
 ## NEXT_STEP
 
