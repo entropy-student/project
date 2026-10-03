@@ -80,6 +80,9 @@ SSH_OR_REMOTE_COLLECTION_AUTHORIZED=NO_IN_H3_SELFTEST
 SECRET_READ_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 ESTIMATED_EXECUTION_TIME=10-20_minutes
+IMPLEMENTATION_COMMIT=36f44502b6347d6478dea43afc18c9cfc1da91b5
+STATIC_SOURCE_REVIEW=PASS
+OWNER_SELFTEST_PROOF=PENDING
 ```
 
 ### TARGET_AND_SCOPE
@@ -129,11 +132,11 @@ Return PASS_CANDIDATE only after static source review and deterministic self-tes
 
 ## NEXT_STEP
 
-Implement H3 readiness-to-plan semantic integration and complete static/offline validation. Then run one fixture-only Owner self-test; no live network collection or switching occurs.
+Run the H3 planner fixture-only `-SelfTest` once on the Owner host and return the bounded output for Reviewer PASS/RETURN. No live network collection or switching occurs.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE yet.** Wait for Reviewer to finish H3 source/static review and provide the fixture-only PowerShell self-test command.
+Run one fixture-only PowerShell 7.6.6 `-SelfTest` after syncing canonical `main`. Do not use `-ReadOnlySnapshot`; H3 self-test must not read or change live network state.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
