@@ -2963,4 +2963,33 @@ OPENAI_REQUEST_COUNT=0
 NETWORK_CHANGED=NO
 NEXT_PROOF=OWNER_LOCAL_CANONICAL_SOURCE_ONLY
 ```
+## Reviewer acceptance — Owner CanonicalSourceOnly proof — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT_REVIEWED_AGAINST_CURRENT_RUNNER_AND_GATE
+GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+REVIEWER_RESULT=PASS
+RUNNER_PHASE=CANONICAL_SOURCE_ONLY_PASS
+FAILURE_CODE=NONE
+POWERSHELL_RUNTIME=7.6.6
+ADMINISTRATOR_TOKEN=TRUE
+INTEGRITY_RID=12288
+HIGH_INTEGRITY_TOKEN=TRUE
+CANONICAL_SOURCE_VERIFIED=TRUE
+SOURCE_HEAD=67c7ed2dc57e47bad10b4c2957b98b24d21ccfb3
+CURRENT_GATE_PREFLIGHT=AUTHORIZED_BUDGET_0_OF_1
+CANONICAL_SOURCE_ONLY_MODE=TRUE
+OPENAI_REQUEST_COUNT=0
+P1_REQUEST_BUDGET_REMAINING=1
+NETWORK_CHANGED=NO
+CLEANUP_READBACK=NOT_REQUIRED_NO_MUTATION
+NEXT_STEP=RUN_REAL_P1_ONCE
+FRESH_OWNER_CONSEQUENTIAL_AUTH_REQUIRED=NO
+```
+
+Reviewer interpretation:
+- The Unicode-path provenance repair is behaviorally proven on the real Owner Windows host.
+- Owner runtime, effective elevation, canonical source, current Gate, and unconsumed request budget pass together.
+- This verification mode made no network, VPS, route, listener, Secret, or OpenAI request action.
+- The existing P1 authorization remains valid; the real P1 may run once and must return to Reviewer after any outcome without manual retry.
 
