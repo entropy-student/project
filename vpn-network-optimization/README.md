@@ -33,8 +33,8 @@
 
 - 已知：同一测试窗口内，WireGuard 与 HY2 均 60/60 成功；HY2 的 Median/P90/P95/P99 与慢请求尾部计数均更好。
 - 已知：此前 HY2 连接失败的根因是 WireGuard Windows 严格 WFP kill-switch；修复后 UDP/8443、TLS、认证与证书 pinning 均通过。
-- 待验证：晚高峰下该优势是否持续，以及 Codex / OpenAI / AI 生图等真实长任务是否实际受益。
-- 待决策：最终 v1 采用 HY2 主通道、备用通道，还是继续以 WireGuard 为主；以及最终 WireGuard 路由 / kill-switch 安全策略。
+- 待验证：晚高峰下该优势是否持续，以及 Codex / OpenAI / AI 生图等真实长任务是否实际受益；该验证后置到自动化与迁移能力基本完成后，作为最终封板前的真实场景验收。
+- 待决策：最终 v1 采用 HY2 主通道、VLESS+REALITY TCP/443 备用、还是继续以 WireGuard 为主；以及最终 WireGuard 路由 / kill-switch 安全策略。
 
 ## MVP 范围
 
@@ -48,7 +48,7 @@
 6. 检查适用于 UDP VPN 出口的 GRO / forwarding 能力；
 7. Clash Verge / Mihomo 作为客户端统一管理层，不强制替换现有 WireGuard 管理通道；
 8. 自动部署、网络自适应、健康检查、回滚与迁移模板；
-9. 后续安全窗口内做 HY2 / VLESS+REALITY / WireGuard 的代表性验证，再筛选最终 v1 角色。
+9. 先完成自动化与迁移能力，再在晚高峰/真实工作负载窗口做 HY2 / VLESS+REALITY / WireGuard 的最终代表性验证，筛选 v1 角色。
 
 ## 首版明确不做
 
@@ -79,11 +79,13 @@ G1   无干扰基线 + 可迁移第一版               ✅ PASS
 G2-A HY2 旁路部署                            ✅ PASS
 G2-B 安全窗口 WireGuard vs HY2 对比          ✅ PASS
 G2-C VLESS+REALITY 旁路候选                  🔄 IN_PROGRESS
-G2-D 晚高峰 + 真实工作负载验证               ⏳ PENDING
+G3-A 网络自适应 + 健康检查                    ⏳ PENDING
+G3-B VPS 迁移 + 回滚模板                      ⏳ PENDING
+G4   晚高峰 + 真实工作负载最终验收             ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
-G2-C 与最终 v1 生产角色/安全策略决策完成后，即视为 MVP 完成。未来更换 VPS 使用同一模板部署并做 Provider Validation，不重新堆叠大量 Gate。
+当前顺序调整为：先完成 G2-C，再推进不依赖晚高峰时间窗口的 G3-A/G3-B；G4 放到近最终实现之后、MVP v1 封板之前。这样白天可以继续做确定性工程工作，晚高峰验证也会直接测到接近最终版本，而不是测一个随后还会变化的中间版本。G4 仍是封板前必做项，不因后置而取消。未来更换 VPS 使用同一模板部署并做 Provider Validation，不重新堆叠大量 Gate。
 
 ## 项目真相
 
@@ -110,4 +112,4 @@ G2-C 与最终 v1 生产角色/安全策略决策完成后，即视为 MVP 完�
 - Cloud Firewall：Owner 确认未绑定
 - live BBR/fq/GRO/MTU 调优：未应用
 
-G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。Owner 决定在最终封板前再补一个互补的 TCP/443 候选，因此 G2-C 新增 VLESS+REALITY 旁路集成；之后 G2-D 再做晚高峰 + 真实 Codex/生图工作负载验证，并决定 v1 的最终生产角色与安全策略。
+G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。Owner 决定在最终封板前再补一个互补的 TCP/443 候选，因此 G2-C 新增 VLESS+REALITY 旁路集成。2026-10-03 进一步调整顺序：G2-C 完成后先做 G3-A 网络自适应/健康检查与 G3-B VPS 迁移/回滚模板，原 G2-D 晚高峰 + 真实 Codex/生图工作负载验证后置并重编号为 G4，作为 MVP v1 封板前的最终真实场景验收。
