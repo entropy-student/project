@@ -665,7 +665,8 @@ function Invoke-R3RemoteReadOnlyProbe {
     $process = [Diagnostics.Process]::new()
     $process.StartInfo = New-R3SshStartInfo -RemoteCommand 'bash -s'
     [void]$process.Start()
-    $probeBytes = [Text.UTF8Encoding]::new($false).GetBytes($Command + "`n")
+    $normalizedCommand = $Command.Replace("`r`n", "`n").Replace("`r", "`n")
+    $probeBytes = [Text.UTF8Encoding]::new($false).GetBytes($normalizedCommand + "`n")
     try {
         $process.StandardInput.BaseStream.Write($probeBytes, 0, $probeBytes.Length)
         $process.StandardInput.BaseStream.Flush()
