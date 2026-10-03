@@ -2615,3 +2615,35 @@ STOP_AT_REVIEWER=YES
 
 The only direct local readback was the current PowerShell version and Windows token role/integrity. The token was not an Administrator token and its integrity RID was 8192 (Medium), so the required High-integrity preflight failed. No SSH connection, VPS command, route operation, listener, Mihomo process, Secret access, or OpenAI request was attempted. Interoperability remains untested; no failure or performance conclusion is inferred.
 
+## Reviewer reconciliation — G2C_REALITY_PUBLIC_TCP443_CANARY_P1 preflight RETURN — 2026-10-03
+
+```text
+REVIEWED_EXECUTOR_COMMIT=58b12a313ed80f9f30d7f1d979d06b5c9173a482
+REVIEWER_RESULT=RETURN_ACCEPTED
+RETURN_REASON=RETURN_LOCAL_ADMIN_HIGH_TOKEN_REQUIRED
+OBSERVED_WINDOWS_RUNTIME=PowerShell 7.6.5
+OBSERVED_ADMINISTRATOR_ROLE=NO
+OBSERVED_INTEGRITY_RID=8192_MEDIUM
+REQUIRED_EXECUTION_CHANNEL=REAL_OWNER_WINDOWS_POWERSHELL_7.6.6_ADMINISTRATOR_HIGH
+SSH_STARTED=NO
+VPS_MUTATION_STARTED=NO
+TEMP_ROUTE_CREATED=NO
+PUBLIC_TCP443_LISTENER_STARTED=NO
+SECRET_ACCESS_STARTED=NO
+OPENAI_REQUEST_COUNT=0
+P1_REQUEST_BUDGET_CONSUMED=NO
+P1_REQUEST_BUDGET_REMAINING=1
+CLEANUP_REQUIRED=NO_MUTATION_OCCURRED
+CURRENT_GATE=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+EXISTING_OWNER_AUTHORIZATION_REUSABLE=YES_WITHIN_IDENTICAL_BOUNDED_P1_SCOPE_AFTER_REVIEWER_RECONCILIATION
+FRESH_OWNER_CONSEQUENTIAL_AUTH_REQUIRED=NO
+OWNER_LOCAL_ACTION_REQUIRED=START_EXECUTOR_FROM_POWERSHELL_7.6.6_ADMINISTRATOR_HIGH
+STOP_AT_REVIEWER=YES
+```
+
+Reviewer interpretation:
+- The Executor correctly failed closed before any SSH, route, listener, runtime, Secret, or real request action because the local token was Medium integrity and not in the Administrator role.
+- The project's sticky default execution channel is real-host Owner-run PowerShell 7.6.6 elevated to Administrator/High. The observed PowerShell 7.6.5 Medium session does not satisfy that channel.
+- No consequential action began and the real-request counter remains zero, so the previously granted single-canary authorization is not consumed. The same bounded P1 may be retried only after the Owner starts the Executor from the required elevated PowerShell 7.6.6 environment.
+- The retry restarts at fresh preflight. It does not inherit runtime facts from the blocked attempt and still cannot exceed one real OpenAI request.
+
