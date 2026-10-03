@@ -27,7 +27,7 @@ Validate a repeatable, economically viable US-first DTC path for a **personalize
 
 Before real traffic, the most important product-readiness risk is:
 
-`Value Experience / Activation + Trust`
+`Proof / Trust + Message / Creative + Value Experience / Activation`
 
 The specific issue is not that the Preview lacks functionality. It is that its **first-value framing** can accidentally teach the wrong product category:
 
@@ -60,12 +60,14 @@ Not being changed in this round:
 
 If the Preview shows the magazine value **before upload**, and makes photo personalization an optional proof rather than the product itself, visitors will understand the offer as a full personalized magazine rather than a cover trick.
 
-### This round changes only
+### Owner feedback broadens the current correction
 
-- Preview framing/composition;
-- default sample state;
-- optional “Try it with your photo” interaction;
-- Free → paid value boundary.
+The Owner now also requires:
+- a prominent view of the actual final 12-page magazine;
+- meaningful editorial motion so the homepage does not feel mostly static;
+- a stronger Preview concept with materially higher purchase pull.
+
+Therefore G3CR6R2 is superseded before execution and G3CR6R3 becomes current.
 
 ### Product-readiness acceptance
 
@@ -79,7 +81,7 @@ The correction is acceptable when:
 
 This is not market validation.
 
-## After G3CR6R2
+## After G3CR6R3
 
 **Stop general product polishing.**
 
@@ -104,6 +106,8 @@ Photos, private answers, and raw personal data must not be put into analytics ev
 
 ```text
 CORE_PRODUCT_THESIS=KEEP_FOR_LOW_COST_VALIDATION
+FINAL_PRODUCT_PROOF=ITERATE
+MOTION_CREATIVE=ITERATE
 CURRENT_PREVIEW_FRAMING=ITERATE
 PRICE_TEST=NO
 SCOPE_EXPANSION=NO
