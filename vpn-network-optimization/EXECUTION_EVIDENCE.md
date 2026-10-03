@@ -3466,3 +3466,37 @@ Reviewer interpretation:
 - The validator was rebuilt from the last known parseable D3 base, with only the stale-instance assertion order changed.
 - D3 remains IN_PROGRESS until the clean rebuilt validator passes AST + offline validation through the Executor channel.
 
+## Executor validation — G3B staged-install render contract D3 — 2026-10-03
+
+```text
+GATE_ID=G3B_STAGED_INSTALL_RENDER_CONTRACT_D3
+SOURCE_PROVENANCE=FRESH_FETCHED_CANONICAL_ORIGIN_MAIN
+SOURCE_HEAD_TESTED=df32d130d65f129f68294e4b26e4df4f06b8f930
+LOCAL_HEAD_AT_VALIDATION=df32d130d65f129f68294e4b26e4df4f06b8f930
+REMOTE_MAIN_AT_VALIDATION=df32d130d65f129f68294e4b26e4df4f06b8f930
+WORKTREE_STATUS_BEFORE_RECORD=CLEAN
+POWERSHELL_VERSION=7.6.5
+POWERSHELL_AST_PARSE=PASS
+G3B_D3_SELFTEST_CASES=6
+G3B_D3_SELFTEST_RESULT=PASS
+G3B_D3_FIXTURE_TARGET_HOST=203.0.113.10
+G3B_D3_FIXTURE_TARGET_HOSTNAME=target-vpn-01
+G3B_D3_FIXTURE_HY2_SNI=hy2.target-vpn-01.invalid
+G3B_D3_WG_SPLIT_DEFAULT=PASS
+G3B_D3_SECRET_SENTINELS=PASS
+G3B_D3_STAGED_ORDER=PASS
+G3B_D3_ROLLBACK_TO_SOURCE=PASS
+G3B_D3_OFFLINE_VALIDATION=PASS
+FILES_CREATED=0
+NETWORK_MUTATION=NO
+VPS_ACCESS=NO
+PROVIDER_ACTION=NO
+SECRET_VALUES_READ=0
+SECRET_VALUES_EMITTED=0
+OWNER_INTERVENTION_REQUIRED=NO
+EXECUTOR_RESULT=PASS_CANDIDATE_G3B_D3_OFFLINE_RENDER_VALIDATION
+STOP_AT_REVIEWER=YES
+```
+
+The validator was AST-parsed and run only with `-Validate`. It rendered the declared target artifacts in memory from the fixed non-secret fixture and passed all six deterministic self-tests. No recovery bundle, Secret, live target, network, Provider, service, or runtime file was accessed or changed. No rendered artifact was written to disk.
+
