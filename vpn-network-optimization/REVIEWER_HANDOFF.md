@@ -81,6 +81,14 @@ CURRENT_VPS_MUTATION_AUTHORIZED=NO
 SECRET_ROTATION_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 ESTIMATED_EXECUTION_TIME=20-35_minutes
+MIGRATION_MANIFEST_COMMIT=92e5d5eda83c09b74d6a07c59e47c531df8a85c8
+MIGRATION_VALIDATOR_COMMIT=3d0741454fc7aa6bed2e92862a9e69d00c76c85c
+MIGRATION_PLAN_COMMIT=f8c549b41699e43824f9ce68ff9306c9b03d5bec
+WG_TEMPLATE_COMMIT=4c849e3f7a006f97614032d66bff604a369f26eb
+HY2_TEMPLATE_COMMIT=6224820052285a17cff50f3570a0f926123f8f17
+CLASH_TEMPLATE_COMMIT=58537223e13890a47ddae3387934acee30790fbe
+STATIC_SOURCE_REVIEW=PASS
+OWNER_PACKAGE_VALIDATION=PENDING
 ```
 
 ### TARGET_AND_SCOPE
@@ -131,11 +139,11 @@ Return PASS_CANDIDATE after repository-only migration-package reconciliation and
 
 ## NEXT_STEP
 
-Perform G3-B D1 repository-only discovery and reconciliation of existing migration/reinstall/rollback assets, then produce the minimum migration-package design needed for a later new-VPS rehearsal.
+Run the G3-B D1 repository-only migration-package validator once under PowerShell 7.6.6 after syncing canonical `main`, then return the bounded output for Reviewer PASS/RETURN.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** D1 is repository-only. No provider purchase, VPS mutation, Secret movement, or live cutover is authorized.
+Run one repository-only PowerShell 7.6.6 validation of `scripts/g3b-migration-package-validator.ps1 -Validate`. It reads only tracked non-secret package files. No provider purchase, VPS mutation, Secret movement, or live cutover is authorized.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
