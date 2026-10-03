@@ -1,4 +1,18 @@
-## Current execution status — G3X tri-path benchmark package B1
+## Current execution status — wait for Owner C2B resume
+
+```text
+GATE_ID=G3C_C2B_SYNTHETIC_CLASH_UI_CANARY
+STATE=READY_NOT_STARTED
+EXECUTOR_ACTION_AUTHORIZED=NO
+BENCHMARK_B1_CANCELLED=YES
+C2A_REPAIR_ACCEPTED=YES_WITH_RECORDED_TIMING_GAP
+OWNER_RESUME_REQUIRED=YES
+STOP_AT_REVIEWER=YES
+```
+
+Do not start benchmark B1. Do not run C2B until Owner explicitly resumes the main project.
+
+## Cancelled execution status — G3X tri-path benchmark package B1
 
 ```text
 GATE_ID=G3X_TRI_PATH_SAME_WINDOW_BENCHMARK_PACKAGE_B1
