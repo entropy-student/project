@@ -80,6 +80,9 @@ ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 OWNER_ONLY_ACTIONS=NONE_IN_H1
 LIVE_NETWORK_ACTIVATION_AUTHORIZED=NO
 ESTIMATED_EXECUTION_TIME=15-30_minutes
+IMPLEMENTATION_COMMIT=435a4e383be64c1d4649ab1f6d7b8cc42bdf95d1
+STATIC_SOURCE_REVIEW=PASS
+OWNER_SELFTEST_PROOF=PENDING
 ```
 
 ### TARGET_AND_SCOPE
@@ -154,11 +157,11 @@ Return PASS_CANDIDATE only after source read-back, static negative mutation scan
 
 ## NEXT_STEP
 
-Implement and offline-validate `G3A_NETWORK_ADAPTATION_LOCAL_ENGINEERING_H1`. The immediate deliverable is a plan-only Windows planner with dynamic physical-egress selection, health-input classification, advisory role/route intent, deterministic fixtures, and fail-closed behavior. No live network activation occurs in H1.
+Run the implemented G3-A planner's built-in `-SelfTest` once on the Owner Windows host using PowerShell 7.6.6 after syncing canonical `main`. This self-test uses deterministic fixtures only and must not query or change live network state. Return the bounded output to Reviewer for H1 PASS/RETURN.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE for source implementation.** Reviewer may later provide one bounded PowerShell 7.6.6 self-test/read-only command. No live route, service, proxy, TUN, VPN-default, or VPS change is authorized in H1.
+Run one Reviewer-provided PowerShell 7.6.6 `-SelfTest` command after canonical sync. No Administrator privilege is required for the fixture-only self-test. Do not run `-ReadOnlySnapshot` yet. No live route, service, proxy, TUN, VPN-default, or VPS change is authorized in H1.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
