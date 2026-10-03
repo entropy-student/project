@@ -2003,3 +2003,43 @@ STOP_AT_REVIEWER=YES
 ```
 
 The only source change was temporary sing-box trace verbosity plus a bounded parser that emits fixed, non-secret REALITY state enums; VLESS/REALITY/Vision parameters, endpoint, versions, and the one-request limit were unchanged. The protected temporary log was not emitted and was removed by the existing remote cleanup. The trace capture was readable, but none of the expected server-state markers was confirmed, so this round does not distinguish authentication/fallback from later handshake stages. No compatibility or protocol-performance conclusion is established.
+
+
+## Reviewer acceptance — G2C REALITY server-state diagnostic R2 — 2026-10-03
+
+```text
+REVIEWER_GOVERNANCE_VERSION=v0.2.6
+REVIEWER_GOVERNANCE_SHA=de2b38ec0e7f3ecceb1aeffa3fc7f033ed14429a
+TRIGGERED_SPECIALISTS=11B_SSH_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION_AUTH
+REVIEWED_MAIN_COMMIT=0d9249ada6fa17223e3587fb7f77c52b0227ffa7
+EXECUTOR_RESULT=PASS_CANDIDATE_DIAGNOSTIC
+REVIEWER_RESULT=PASS_DIAGNOSTIC_ONLY
+R2_CLASSIFICATION=UNKNOWN_AFTER_R2
+ONE_PRIVATE_REQUEST=YES
+CURL_EXIT=35
+HTTP_STATUS=0
+MIHOMO_ERROR_CLASS=TIMEOUT
+SING_BOX_TRACE_STATE_CAPTURE=PASS
+REALITY_SERVER_STATE_FIELDS=UNKNOWN
+HANDSHAKE_TARGET_TLS=PASS_TLS1_3
+CLEANUP=PASS
+WG_HY2_PRESERVED=YES
+PUBLIC_TCP443_CHANGED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+ESTIMATED_EXECUTION_TIME=10-20 minutes
+ACTUAL_ELAPSED=25m12s
+TIME_OVERRUN=YES
+TIME_OVERRUN_CAUSE=GITHUB_MAIN_ADVANCED_DURING_ROUND_REQUIRED_FETCH_REBASE_AND_RETRY
+OVERRUN_TECHNICAL_BLOCKER=NO
+NEXT_STRATEGY=CONTROLLED_IMPLEMENTATION_AB
+PROPOSED_NEXT_GATE=G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3
+PROPOSED_NEXT_ESTIMATE=20-35 minutes
+NEXT_GATE_AUTHORIZED=NO
+```
+
+Reviewer reasoning:
+- R2 satisfied its diagnostic acceptance path by safely reaching `UNKNOWN_AFTER_R2`; it does not prove REALITY interoperability.
+- The protected trace parser was valid as an evidence extractor, but no allowlisted REALITY internal marker appeared. Per Governance, more materially similar retries or blind parameter edits are not justified.
+- The next smallest high-information change is a one-sided implementation A/B: preserve the accepted Windows Mihomo client and all VLESS/REALITY/Vision semantics, replace only the temporary server core with the matching Mihomo v1.19.31 native listener, and make one request.
+- The 25m12s overrun is accepted as repository-concurrency overhead. It does not change the network result and does not require a separate technical incident Gate.
