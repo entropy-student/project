@@ -3855,17 +3855,17 @@ CANONICAL_ORIGIN=https://github.com/entropy-student/project.git
 PRE_GATE_HEAD=9aa78bcbe688ebd7b4dd5dd02f3898da2953bbed
 PRE_GATE_BRANCH=codex/g2c-private-reality-compat-canary
 ROUND_STARTED_AT=2026-10-03T15:05:24Z
-ROUND_FINISHED_AT=2026-10-03T15:42:20Z
-ACTUAL_ELAPSED=00:36:56
+ROUND_FINISHED_AT=2026-10-03T15:48:53Z
+ACTUAL_ELAPSED=00:43:29
 TIME_OVERRUN=YES
-TIME_OVERRUN_CAUSE=LOCAL_OWNER_PACKAGE_REVIEW_AND_FIXTURE_ITERATION_EXCEEDED_25_MINUTES
+TIME_OVERRUN_CAUSE=LOCAL_PACKAGE_AND_FIXTURE_REVIEW_PLUS_GITHUB_PERSISTENCE_CLOSEOUT
 ```
 
 Actual repository changes are limited to the future Owner C2B package: `templates/clash/c2b-wg-hy2-canary.yaml.template` (non-secret WG+HY2 selector), `scripts/c2b-owner-clash-ui-canary.ps1` (one-shot Owner-local checkpoint; not executed), `scripts/g3c-c2a-package-validator.ps1` (offline deterministic validator), and `docs/G3C_C2B_OWNER_CANARY_PACKAGE.md` (operator boundary/cleanup contract). The runner's `finally` path was hardened to attempt each exact owned-file/directory cleanup independently, zero byte buffers where practical, and emit bounded cleanup/timing markers. Runtime config creation is `CreateNew`; the ownership flag is set immediately after successful file creation so partial writes remain eligible for exact cleanup.
 
 Validation performed locally: JSON-compatible YAML parse PASS; PowerShell AST parse PASS for both scripts; deterministic fixtures A–I PASS (valid package; REALITY excluded; hardcoded interface/ifIndex/gateway/local IPv4 rejected; secret output/value rejected; proxy/TUN activation rejected; WG stop/route removal rejected; persistent /32 instruction rejected; missing cleanup rejected; missing/late timing rejected); static Secret scan PASS; `git diff --check` PASS. Mihomo native config test was not run in C2A; it is encoded for the later authorized C2B checkpoint before any UI action.
 
-This round did not execute the Owner runner. DPAPI was not unprotected and no Secret value was read, generated, output, hashed, or persisted. Mihomo/Clash was not started or applied; no network request, VPS/provider access, route/proxy/TUN/WireGuard change, or live system tuning occurred. No C2B action was initiated. The Owner has no action in C2A; stop for Reviewer inspection. The recorded interval ends after source construction, local fixture validation, static review, and evidence preparation; Git commit/push/fresh-readback follow as persistence closeout. No consequential action was replayed for timing.
+This round did not execute the Owner runner. DPAPI was not unprotected and no Secret value was read, generated, output, hashed, or persisted. Mihomo/Clash was not started or applied; no network request, VPS/provider access, route/proxy/TUN/WireGuard change, or live system tuning occurred. No C2B action was initiated. The Owner has no action in C2A; stop for Reviewer inspection. The recorded interval covers source construction, local fixture validation, static review, and the initial GitHub persistence/read-back closeout; the follow-up documentation-only timing/read-back record commit is outside this interval. No consequential action was replayed for timing.
 
 ```text
 OWNER_CHECKPOINT_EXECUTED=NO
@@ -3892,6 +3892,7 @@ STOP_AT_REVIEWER=YES
 PACKAGE_COMMIT=588d595cd2178fe4e9472bf143da067130da29db
 REMOTE_BRANCH=main
 REMOTE_HEAD=588d595cd2178fe4e9472bf143da067130da29db
+READBACK_RECORD_HEAD=7d8d94b13d17444ef5f7292cdd08f1aa94d31e29
 TARGET_FILE_BLOBS_MATCH=YES
 REVIEWER_HANDOFF_MODIFIED=NO
 REMOTE_DIFF_SECRET_SCAN=PASS
