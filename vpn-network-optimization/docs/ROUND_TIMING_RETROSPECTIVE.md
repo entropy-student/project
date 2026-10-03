@@ -30,6 +30,8 @@
 | G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A | 15–25 分钟 | 43m29s（至首轮最终 GitHub fresh read-back） | YES | 本地 Owner package 审查/fixture 迭代及 GitHub persistence closeout 共超估算上限 18m29s；期间未发生 consequential action。 | C2A Evidence in same commit |
 | G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1 | 15–25 分钟 | UNKNOWN | UNKNOWN | 首次 canonical fetch 前未记录开始时间；source/fixtures/AST/Secret scan 均完成并提交，技术工作不重放。下轮必须继续把 timing marker 作为第一条动作。 | commit `408f632c...` |
 
+| G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0 | 5–10 分钟 | UNKNOWN（补充核对窗口约 1 分钟） | UNKNOWN | 首个 preflight 前再次未记录开始时间；本轮正确 fail-closed，未丢弃含唯一事实的 3 个 dirty docs。下一轮把 start marker 作为第一条动作，并只做事实持久化。 | Executor RETURN_P0_LOCAL_FACTS_NOT_DURABLE |
+
 ## 已确认的主要耗时来源
 
 ### 1. 本地 runner 问题发现过晚
