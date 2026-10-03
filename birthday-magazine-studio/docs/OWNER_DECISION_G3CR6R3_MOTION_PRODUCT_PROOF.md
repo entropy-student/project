@@ -14,7 +14,7 @@ The Owner's current objections are broader than the earlier bounded “Preview u
 
 1. too much of the homepage still feels static;
 2. the page lacks meaningful motion / interaction and therefore feels less premium and less alive than desired;
-3. the homepage does not clearly show what the **final birthday magazine** actually looks like;
+3. the homepage does not clearly show what the **final static birthday magazine/PDF** actually looks like;
 4. the current “upload photo → immediately show my birthday magazine” interaction is rated about **5/10** by the Owner and does not create strong purchase desire;
 5. the desired result is not merely a technically correct page but a more cinematic / editorial consumer-gift experience.
 
@@ -52,7 +52,9 @@ Image generation must **not** silently invent a materially different magazine-pa
 
 The Owner wants the page to feel alive rather than mostly static.
 
-Motion should be:
+**Motion applies to the WEBSITE EXPERIENCE, especially the homepage. The magazine deliverable itself remains a static PDF and must not be described as animated or interactive.**
+
+Website motion should be:
 - editorial;
 - restrained;
 - premium;
@@ -61,12 +63,14 @@ Motion should be:
 - touch/mobile aware.
 
 Appropriate examples include:
-- magazine entrance / layered reveal;
-- gentle floating or depth motion;
-- scroll-triggered editorial reveals;
-- controlled page-stack or spread transitions;
-- hover/touch depth for sample magazines;
-- animated Preview transition after optional personalization.
+- Hero/section entrance and layered reveal;
+- gentle background/decorative depth motion;
+- scroll-triggered editorial section reveals;
+- hover/touch feedback for website cards/buttons/images;
+- subtle transitions between website states in Preview;
+- restrained sticky/header/CTA micro-interactions where useful.
+
+Static magazine page images may be revealed or repositioned by the webpage, but the magazine product itself remains static; do not imply that the purchased PDF contains motion, page-turn animation, or interactive effects.
 
 Motion is not an excuse for gratuitous effects, layout instability or inaccessible behavior.
 
