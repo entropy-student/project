@@ -3989,3 +3989,36 @@ GITHUB_FRESH_READBACK=PENDING
 STOP_AT_REVIEWER=YES
 ```
 
+## Reviewer reconciliation — G3C C2A synthetic UI package repair R1 — 2026-10-04
+
+```text
+GATE_ID=G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1
+REVIEWER_RESULT=PASS_TECHNICAL_WITH_RECORDED_TIMING_OBSERVABILITY_GAP
+EXECUTOR_SOURCE_COMMIT=408f632c7d15f336a99ff2c7b807b96cbdd48d9e
+SOURCE_BLOBS_UNCHANGED_ON_CURRENT_MAIN=YES
+SYNTHETIC_HY2_ONLY=PASS
+DPAPI_OR_REAL_SECRET_ACCESS=ABSENT
+PRODUCTION_HY2_ENDPOINT_DEPENDENCY=ABSENT
+REALITY_LIVE_NODE=ABSENT
+STRUCTURED_UI_ACK=PASS
+CLASH_PROFILE_STORE_PRE_POST_SNAPSHOT=PASS
+AUTO_DELETE_CLASH_PROFILE_STORE=NO
+SYSTEM_NETWORK_MUTATION=ABSENT
+OFFLINE_FIXTURES=PASS
+POWERSHELL_AST=PASS
+SECRET_SCAN=PASS
+LIVE_ACTION=NO
+ROUND_STARTED_AT=UNKNOWN_BEFORE_INITIAL_FETCH
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+TECHNICAL_REPLAY_REQUIRED=NO
+SUPERSEDED_BENCHMARK_GATE_CANCELLED_BY_OWNER=YES
+```
+
+Reviewer conclusion:
+- The R1 source repair satisfies the technical/safety intent of the Gate and is accepted without replay.
+- The future C2B package is synthetic, UI-only and no-traffic. It no longer accesses DPAPI/recovery or real HY2 credentials/endpoints.
+- Clash-owned profile persistence is observed with before/after filename+hash snapshots; no unrelated Clash-owned file is auto-deleted.
+- The missed whole-round timing start is retained as a process-observability defect. It cannot be reconstructed and does not justify replay of source work or any live action.
+- The temporary G3X benchmark Gate introduced by Reviewer is cancelled per Owner instruction; benchmarking is outside project governance unless explicitly reintroduced later.
+
