@@ -34,7 +34,7 @@
 - 已知：同一测试窗口内，WireGuard 与 HY2 均 60/60 成功；HY2 的 Median/P90/P95/P99 与慢请求尾部计数均更好。
 - 已知：此前 HY2 连接失败的根因是 WireGuard Windows 严格 WFP kill-switch；修复后 UDP/8443、TLS、认证与证书 pinning 均通过。
 - 待验证：晚高峰下该优势是否持续，以及 Codex / OpenAI / AI 生图等真实长任务是否实际受益；该验证后置到自动化与迁移能力基本完成后，作为最终封板前的真实场景验收。
-- 已验证：在私网兼容性 A/B 中，Mihomo v1.19.31 REALITY 服务端在协议参数不变时成功返回预期 HTTP 401；当前 G2-C 后续服务端候选固定为 Mihomo。公网 TCP/443 路径仍待验证。
+- 已验证：Mihomo v1.19.31 REALITY 服务端先通过私网实现 A/B，随后公网 TCP/443 canary 也通过；动态物理出口 /32 路由命中，唯一一次 OpenAI 请求返回 curl 0 / HTTP 401，且临时 listener、runtime 与路由均完成清理。
 - 待决策：最终 v1 采用 HY2 主通道、VLESS+REALITY TCP/443 备用、还是继续以 WireGuard 为主；以及最终 WireGuard 路由 / kill-switch 安全策略。
 
 ## MVP 范围
@@ -79,8 +79,8 @@ P0   研究、范围冻结、立项                    ✅ PASS
 G1   无干扰基线 + 可迁移第一版               ✅ PASS
 G2-A HY2 旁路部署                            ✅ PASS
 G2-B 安全窗口 WireGuard vs HY2 对比          ✅ PASS
-G2-C VLESS+REALITY 旁路候选                  🔄 IN_PROGRESS
-G3-A 网络自适应 + 健康检查                    ⏳ PENDING
+G2-C VLESS+REALITY 旁路候选                  ✅ PASS
+G3-A 网络自适应 + 健康检查                    🔄 IN_PROGRESS
 G3-B VPS 迁移 + 回滚模板                      ⏳ PENDING
 G4   晚高峰 + 真实工作负载最终验收             ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
@@ -115,4 +115,4 @@ MVP v1 封板                                  ⏳ PENDING
 - Cloud Firewall：Owner 确认未绑定
 - live BBR/fq/GRO/MTU 调优：未应用
 
-G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。Owner 决定在最终封板前再补一个互补的 TCP/443 候选，因此 G2-C 新增 VLESS+REALITY 旁路集成。G2-C 私网实现 A/B 已证明 Mihomo v1.19.31 服务端在相同协议语义下可成功互操作，后续不再以 sing-box 作为 v1 主实现候选；公网 TCP/443 canary 尚未完成。2026-10-03 进一步调整顺序：G2-C 完成后先做 G3-A 网络自适应/健康检查与 G3-B VPS 迁移/回滚模板，原 G2-D 晚高峰 + 真实 Codex/生图工作负载验证后置并重编号为 G4，作为 MVP v1 封板前的最终真实场景验收。
+G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。Owner 决定在最终封板前再补一个互补的 TCP/443 候选，因此 G2-C 新增 VLESS+REALITY 旁路集成。G2-C 已完成：私网实现 A/B 与公网 TCP/443 canary 均证明 Mihomo v1.19.31 在当前 VLESS+REALITY+Vision 语义下可互操作；公网 canary 的临时 /32 路由、listener、client/server runtime 均已清理，唯一请求预算已耗尽且不得重放。当前进入 G3-A 网络自适应/健康检查；G3-B VPS 迁移/回滚模板随后进行，G4 晚高峰 + 真实 Codex/生图工作负载验证仍作为 MVP v1 封板前最终真实场景验收。
