@@ -6,6 +6,8 @@ This file is navigation only. It is **not** a second project truth source.
 
 1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — authoritative current project dashboard.
 2. [docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md](./docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md) — current Gate.
+3. [docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md](./docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md) — mandatory research contract.
+4. [docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md](./docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md) — Owner quality bar.
 3. [docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md](./docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md) — current Owner decision.
 4. [docs/G3CR6R3B_VISUAL_MOTION_LAB.md](./docs/G3CR6R3B_VISUAL_MOTION_LAB.md) — superseded prior lab Gate.
 4. [docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md](./docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md) — superseded full-build Gate.
@@ -27,7 +29,7 @@ This file is navigation only. It is **not** a second project truth source.
 - **Owner magazine visual checkpoint:** RESOLVED — current static magazine visual rejected.
 - **G3CR6R3A:** SUPERSEDED BEFORE EXECUTION — do not jump straight to all 12 pages.
 - **G3CR6R3B:** SUPERSEDED BEFORE EXECUTION.
-- **G3CR6R3C:** CURRENT — first find strong reusable sources/templates for 12 magazine pages + 1 homepage + 1 core interaction, with license/source verification.
+- **G3CR6R3C:** CURRENT — template/source discovery under a hard research contract: >=60 direct candidates, >=8 source ecosystems, reject ledger, explicit license/source status, and saturation proof; no quota-filling.
 - **G3CR6R3:** PREPARED / HOLD — website/homepage motion + final-product proof + Preview redesign resumes only after magazine visual PASS.
 - **Commercial state:** LOW-COST VALIDATION / NOT SCALE.
 - **Owner visual freeze:** PENDING.
