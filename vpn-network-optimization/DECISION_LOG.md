@@ -133,3 +133,15 @@
 
 **Current use:** The Unicode Git-path provenance defect may be validated by Owner directly with a read-only canonical-source-only runner mode before any further P1 canary attempt.
 
+## 2026-10-03 — Accept public REALITY path and enter G3-A plan-only automation
+
+**Decision:** Accept `G2C_REALITY_PUBLIC_TCP443_CANARY_P1` as PASS and close G2-C. Begin `G3A_NETWORK_ADAPTATION_LOCAL_ENGINEERING_H1` as a source/offline Gate before any live automatic network switching.
+
+**Why:** The public canary proved the accepted Mihomo v1.19.31 VLESS+REALITY+Vision path over public TCP/443 with a dynamically discovered physical-egress /32 route, one curl 0 / HTTP 401 request, and complete cleanup/read-back. This closes the remaining interoperability/path question but does not yet justify persistent role changes. Governance 11C/11D requires automation to be fail-closed and safe before real automated actions.
+
+**G3-A H1 boundary:** implement a plan-only Windows planner that dynamically resolves the physical egress, consumes explicit WG/HY2/REALITY health states, emits advisory role/route intent, and fails closed on ambiguity. H1 forbids live route/service/proxy/TUN/VPS mutation and does not change the production default.
+
+**Current policy during H1:** WireGuard remains the production/rollback baseline. HY2 and REALITY remain validated candidates. Final priority/default-role selection is deferred to later near-final validation and G4 evidence.
+
+**Consequence:** P1 is not replayed; its one-request budget is exhausted. The next live network activation or automatic switch requires a separate reviewed Gate after H1 passes.
+
