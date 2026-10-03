@@ -2733,4 +2733,25 @@ Reviewer interpretation:
 - The temporary VPS public-IP route is ActiveStore-only, exact /32, dynamically bound to the single accepted physical egress, and cleanup removes only the matching exact route.
 - The OpenAI canary has one call site and is guarded by request count/budget state. Once curl successfully starts, the request budget is marked consumed regardless of outcome; no retry is authorized.
 - The final Owner action is one execution of the prepared checkpoint. Any RETURN is relayed back to Reviewer rather than manually repaired/replayed.
+## Owner launcher reconciliation — P1 checkpoint not started — 2026-10-03
+
+```text
+OWNER_REPORTED_LAUNCHER=Start-Process against C:\Program Files\PowerShell\7\pwsh.exe
+LAUNCHER_RESULT=FAIL_FILE_NOT_FOUND
+P1_RUNNER_STARTED=NO
+SSH_STARTED=NO
+VPS_MUTATION_STARTED=NO
+TEMP_ROUTE_CREATED=NO
+PUBLIC_TCP443_LISTENER_STARTED=NO
+OPENAI_REQUEST_COUNT=0
+P1_REQUEST_BUDGET_REMAINING=1
+HISTORICALLY_PROVEN_OWNER_RUNTIME=PowerShell_7.6.6_Administrator_High_RID_12288
+HISTORICALLY_PROVEN_PWSH_LOCATION=C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\pwsh.exe
+CORRECTION=DISCOVER_MICROSOFT_POWERSHELL_APPX_INSTALLLOCATION_AT_RUNTIME; DO_NOT_HARDCODE_PROGRAMFILES_POWERSHELL_7
+```
+
+Reviewer interpretation:
+- The failure occurred in Windows PowerShell `Start-Process` before the P1 runner started, so it is not a P1 runtime failure and consumes no request budget.
+- Project history already proves the Owner host previously ran PowerShell 7.6.6 elevated with Administrator=True and integrity RID 12288. The earlier successful installation was the Microsoft Store/AppX package, not the conventional Program Files PowerShell 7 directory.
+- Future Owner relay must discover the current AppX InstallLocation and validate version 7.6.6 before elevation, instead of assuming an installation layout.
 

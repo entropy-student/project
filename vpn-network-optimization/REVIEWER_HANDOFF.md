@@ -320,7 +320,7 @@ Run the accepted prepared checkpoint `scripts/g2c-reality-public-tcp443-canary-p
 
 ## OWNER_ACTION_REQUIRED
 
-Open **PowerShell 7.6.6 as Administrator/High** on the real Owner Windows host and run exactly once the prepared P1 checkpoint from commit `4a4eae48dac1fd3c21638efb2dfe0fc6b69a4614`. Owner performs no line-by-line debugging. If the runner returns before the OpenAI request, stop and relay its bounded output to Reviewer; do not manually retry. No new consequential authorization is required; request budget is still `0/1`.
+Use Windows AppX package discovery to locate the installed **Microsoft Store PowerShell 7.6.6** executable, then launch that executable as Administrator/High and run exactly once the prepared P1 checkpoint from commit `4a4eae48dac1fd3c21638efb2dfe0fc6b69a4614`. Do not assume `C:\Program Files\PowerShell\7\pwsh.exe`; the accepted Owner host previously used the Store package under `C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.6.0_x64__8wekyb3d8bbwe\pwsh.exe`. Owner performs no line-by-line debugging. If package discovery or runner startup fails before the checkpoint begins, stop and relay the output; do not manually retry the P1 action. Request budget remains `0/1` until the runner actually starts its OpenAI canary.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
