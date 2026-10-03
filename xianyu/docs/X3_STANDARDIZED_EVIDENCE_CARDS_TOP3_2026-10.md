@@ -1,5 +1,7 @@
 # X3 — Standardized Evidence Cards & Top 3 — 2026-10-03
 
+> **SELECTION STATUS — SUPERSEDED BY X3R1 (2026-10-03):** 本文的 P1/P2/P4 Top 3 只保留为商品结构分析与历史 Evidence，不再是当前选品 shortlist。当前 selection unit 是具体商品/SKU，权威候选池见 `X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md`。货源 UNKNOWN 不用于否定需求。
+
 Status: PASS_CANDIDATE pending Reviewer fresh read-back  
 Scope: Xianyu only  
 Endpoint: research Top 3 only; no real listing, purchase, payment, account mutation or runtime mutation  
