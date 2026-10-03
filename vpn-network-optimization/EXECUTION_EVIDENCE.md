@@ -2043,3 +2043,28 @@ Reviewer reasoning:
 - The protected trace parser was valid as an evidence extractor, but no allowlisted REALITY internal marker appeared. Per Governance, more materially similar retries or blind parameter edits are not justified.
 - The next smallest high-information change is a one-sided implementation A/B: preserve the accepted Windows Mihomo client and all VLESS/REALITY/Vision semantics, replace only the temporary server core with the matching Mihomo v1.19.31 native listener, and make one request.
 - The 25m12s overrun is accepted as repository-concurrency overhead. It does not change the network result and does not require a separate technical incident Gate.
+
+
+## Owner authorization — G2C REALITY implementation A/B Mihomo server R3 — 2026-10-03
+
+```text
+REVIEWER_GOVERNANCE_VERSION=v0.2.6
+REVIEWER_GOVERNANCE_SHA=de2b38ec0e7f3ecceb1aeffa3fc7f033ed14429a
+TRIGGERED_SPECIALISTS=11B_SSH_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION_AUTH
+AUTHORIZED_GATE=G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3
+OWNER_AUTHORIZATION=GRANTED
+A_SIDE_REPLAY=NOT_AUTHORIZED
+B_SIDE_SERVER_IMPLEMENTATION=MIHOMO_V1_19_31_NATIVE
+B_SIDE_PRIVATE_BIND=10.66.21.1:14443
+B_SIDE_REQUEST_COUNT=1
+CLIENT_AND_PROTOCOL_SEMANTICS=UNCHANGED
+PUBLIC_TCP443_EXPOSURE=NOT_AUTHORIZED
+PERSISTENT_SERVICE=NOT_AUTHORIZED
+BENCHMARK=NOT_AUTHORIZED
+TARGET_OR_SNI_CHANGE=NOT_AUTHORIZED
+PRODUCTION_DEFAULT_CHANGE=NOT_AUTHORIZED
+ESTIMATED_EXECUTION_TIME=20-35 minutes
+TIMING_RECORD_REQUIRED=YES
+```
+
+No execution result is claimed by this authorization record. Executor must append the actual R3 A/B Evidence after execution.
