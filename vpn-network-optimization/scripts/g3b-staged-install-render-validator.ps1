@@ -65,7 +65,15 @@ function Test-D3RenderedArtifacts {
     Assert-D3 ($Clash -match '(?m)^\s*password:\s*__EXTERNAL_SECRET_NOT_IN_REPOSITORY__\s*$') 'CLASH_AUTH_SENTINEL_CHANGED'
     Assert-D3 ($Clash -match '(?m)^\s*fingerprint:\s*__TARGET_CERT_SHA256_AFTER_SECRET_CHECKPOINT__\s*$') 'CLASH_FINGERPRINT_SENTINEL_CHANGED'
 
-    Assert-D3 ($WgClient -match '(?m)^AllowedIPs\s*=\s*0\.0\.0\.0/1,\s*128\.0\.0\.0/1\s*    Assert-D3 ($WgClient.Contains("Endpoint = $($Fixture.VPS_HOST):$($Fixture.WG_PORT)")) 'WG_TARGET_ENDPOINT_NOT_RENDERED'
+    Assert-D3 ($WgClient -match '(?m)^AllowedIPs\s*=\s*0\.0\.0\.0/1,\s*128\.0\.0\.0/1\s*$') 'WG_SPLIT_DEFAULT_BASELINE_MISSING'
+    Assert-D3 ($WgClient -notmatch '(?m)^AllowedIPs\s*=\s*0\.0\.0\.0/0\s*$') 'WG_STRICT_DEFAULT_PRESENT'
+
+    foreach ($stale in @('24.199.118.137','hy2.sfo3-a.invalid','SFO3-A','192.168.1.1','192.168.1.4')) {
+        $portable = $WgServer + $WgClient + $Hy2Server + $Hy2Unit + $Clash
+        Assert-D3 (-not $portable.Contains($stale)) "STALE_CURRENT_INSTANCE_CONSTANT_PRESENT_$($stale.Replace('.','_').Replace('-','_'))"
+    }
+
+    Assert-D3 ($WgClient.Contains("Endpoint = $($Fixture.VPS_HOST):$($Fixture.WG_PORT)")) 'WG_TARGET_ENDPOINT_NOT_RENDERED'
     Assert-D3 ($WgClient.Contains("PublicKey = $($Fixture.WG_SERVER_PUBLIC_KEY)")) 'WG_SERVER_PUBLIC_KEY_NOT_RENDERED'
     Assert-D3 ($WgServer.Contains("PublicKey = $($Fixture.WG_CLIENT_PUBLIC_KEY)")) 'WG_CLIENT_PUBLIC_KEY_NOT_RENDERED'
     Assert-D3 ($Hy2Server.Contains('listen: "' + $Fixture.HY2_LISTEN + '"')) 'HY2_LISTEN_NOT_RENDERED'
