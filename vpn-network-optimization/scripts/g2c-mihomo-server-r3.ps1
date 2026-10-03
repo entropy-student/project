@@ -60,6 +60,40 @@ function Assert-R3 {
     if (-not $Condition) { throw $Code }
 }
 
+function Resolve-R3FailureCode {
+    param([AllowNull()][object]$Record)
+    try {
+        $exception = $null
+        $fullyQualifiedErrorId = ''
+        if ($Record -is [System.Management.Automation.ErrorRecord]) {
+            $exception = $Record.Exception
+            $fullyQualifiedErrorId = [string]$Record.FullyQualifiedErrorId
+        }
+        elseif ($Record -is [System.Exception]) {
+            $exception = $Record
+        }
+
+        $runtimeTypeName = ''
+        $message = ''
+        if ($null -ne $exception) {
+            $runtimeTypeName = [string]$exception.GetType().Name
+            $message = [string]$exception.Message
+        }
+
+        $isParameterBindingException = $runtimeTypeName -in @('ParameterBindingValidationException', 'ParameterBindingException')
+        $isSuppressedProcessArgumentBinding = $fullyQualifiedErrorId -match '^(?:ParameterArgumentValidationError(?:EmptyArrayNotAllowed|EmptyCollectionNotAllowed|EmptyStringNotAllowed)|MissingMandatoryParameter),Start-R3SuppressedProcess$'
+        if ($isParameterBindingException -and $isSuppressedProcessArgumentBinding) {
+            return 'LOCAL_PROCESS_ARGUMENT_BINDING_FAILED'
+        }
+        if ($runtimeTypeName -eq 'RuntimeException' -and $fullyQualifiedErrorId -ceq $message -and
+            $message -match '^[A-Z][A-Z0-9_]{1,79}$') { return $message }
+        return 'UNEXPECTED_LOCAL_FAILURE'
+    }
+    catch {
+        return 'UNEXPECTED_LOCAL_FAILURE'
+    }
+}
+
 function Get-R3OptionalProperty {
     param([Parameter(Mandatory = $true)][object]$Object, [Parameter(Mandatory = $true)][string]$Name)
     $property = $Object.PSObject.Properties[$Name]
@@ -71,6 +105,8 @@ function Get-R3LocalSnapshot {
     $manager = Get-Service -Name 'WireGuardManager' -ErrorAction Stop
     $tunnel = Get-Service -Name 'WireGuardTunnel$SFO2-A' -ErrorAction Stop
     $adapter = Get-NetAdapter -Name 'SFO2-A' -ErrorAction Stop
+    $wireGuardIfIndex = [int]$adapter.ifIndex
+    Assert-R3 ($adapter.Name -ceq 'SFO2-A' -and $adapter.Status -eq 'Up' -and $wireGuardIfIndex -gt 0) 'LOCAL_WIREGUARD_ADAPTER_INVALID'
     $route = @(Find-NetRoute -RemoteIPAddress $script:serverTunnelIp -ErrorAction Stop)
     Assert-R3 ($route.Count -gt 0) 'LOCAL_CONTROL_ROUTE_MISSING'
     $selectedRoute = $route[0]
@@ -110,7 +146,7 @@ function Get-R3LocalSnapshot {
         WireGuardTunnel = $tunnel.Status.ToString()
         WireGuardAdapter = $adapter.Name
         WireGuardAdapterStatus = $adapter.Status.ToString()
-        WireGuardIfIndex = [int]$adapter.ifIndex
+        WireGuardIfIndex = $wireGuardIfIndex
         ControlRouteAdapter = [string]$selectedRoute.InterfaceAlias
         ControlRouteIfIndex = [int]$selectedRoute.InterfaceIndex
         ProxyState = ($proxyState | ConvertTo-Json -Compress)
@@ -132,8 +168,8 @@ function Assert-R3LocalBaseline {
     param([Parameter(Mandatory = $true)][object]$Snapshot, [Parameter(Mandatory = $true)][string]$Prefix)
     Assert-R3 ($Snapshot.WireGuardManager -eq 'Running') "${Prefix}_WIREGUARD_MANAGER_INVALID"
     Assert-R3 ($Snapshot.WireGuardTunnel -eq 'Running') "${Prefix}_WIREGUARD_TUNNEL_INVALID"
-    Assert-R3 ($Snapshot.WireGuardAdapter -eq 'SFO2-A' -and $Snapshot.WireGuardAdapterStatus -eq 'Up' -and $Snapshot.WireGuardIfIndex -eq 13) "${Prefix}_WIREGUARD_ADAPTER_INVALID"
-    Assert-R3 ($Snapshot.ControlRouteAdapter -eq 'SFO2-A' -and $Snapshot.ControlRouteIfIndex -eq 13) "${Prefix}_CONTROL_ROUTE_NOT_WIREGUARD"
+    Assert-R3 ($Snapshot.WireGuardAdapter -eq 'SFO2-A' -and $Snapshot.WireGuardAdapterStatus -eq 'Up' -and $Snapshot.WireGuardIfIndex -gt 0) "${Prefix}_WIREGUARD_ADAPTER_INVALID"
+    Assert-R3 ($Snapshot.ControlRouteAdapter -eq 'SFO2-A' -and $Snapshot.ControlRouteIfIndex -eq $Snapshot.WireGuardIfIndex) "${Prefix}_CONTROL_ROUTE_NOT_WIREGUARD"
     Assert-R3 (-not $Snapshot.ProxyEnabled -and $Snapshot.WinHttpExit -eq 0) "${Prefix}_SYSTEM_PROXY_INVALID"
     Assert-R3 $Snapshot.WinHttpDirect "${Prefix}_WINHTTP_NOT_DIRECT"
     Assert-R3 ($Snapshot.TunMatches.Count -eq 0) "${Prefix}_TUN_PRESENT"
@@ -1090,11 +1126,7 @@ try {
     $script:implementationResult = Get-R3Classification
 }
 catch {
-    if ($_.Exception -is [Management.Automation.ParameterBindingValidationException]) {
-        $script:failureCode = 'LOCAL_PROCESS_ARGUMENT_BINDING_FAILED'
-    }
-    elseif ($_.Exception.Message -match '^[A-Z][A-Z0-9_]+$') { $script:failureCode = $_.Exception.Message }
-    else { $script:failureCode = 'UNEXPECTED_LOCAL_FAILURE' }
+    $script:failureCode = Resolve-R3FailureCode -Record $_
 }
 finally {
     $script:resultPhase = $script:phase

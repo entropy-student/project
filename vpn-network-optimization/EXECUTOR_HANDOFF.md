@@ -226,3 +226,20 @@ ROUND_FINISHED_AT=2026-10-03T05:07:06Z
 ACTUAL_ELAPSED=10m58s
 TIME_OVERRUN=NO
 STOP_AT_REVIEWER=YES
+
+## Current executor result — G2C_R3_LOCAL_RUNNER_HARDENING_H1 (2026-10-03)
+
+结果：PASS_CANDIDATE；只完成本地 runner hardening，等待 Reviewer。
+改动：异常分类改为安全 runtime type/FQID 窄匹配；SFO2-A ifIndex 改为每次动态读取，并要求控制路由 alias/index 与之匹配。
+验证：AST、真实本地参数绑定异常、未知异常 generic fallback、动态 ifIndex 匹配/不匹配 fixture、空字符串进程参数 fixture 均通过；当前只读主机基线为 SFO2-A Up ifIndex 9，控制路由同样为 SFO2-A/9。
+问题：NONE；Owner reboot 仅作为 ifIndex 可能重编号的上下文，本轮不据此推断先前失败原因。
+回滚：仅回退本轮 runner 与两份 execution record 变更即可恢复 PRE_GATE_HEAD；本轮无网络/VPS/Secret/运行服务变更。
+请 Reviewer 检查：fresh-read 本轮 commit、R3 runner hardening 与新增 Evidence。
+Owner 转交：NONE
+ROUND_STARTED_AT=2026-10-03T05:18:10Z
+ROUND_FINISHED_AT=PENDING
+ACTUAL_ELAPSED=PENDING
+TIME_OVERRUN=PENDING
+TIME_OVERRUN_CAUSE=NONE
+MAIN_ADVANCE_DURING_GATE=YES; RECONCILED_TO=889fe48defd4bcd59221bfdf1567dbf93a6db66e
+STOP_AT_REVIEWER=YES

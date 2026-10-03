@@ -2304,3 +2304,50 @@ SPECIFIC_IFINDEX_13_REQUIRED=NO
 ```
 
 This Owner-reported reboot context changes the interpretation of the ifIndex observation, not the safety conclusion. The project no longer treats the move from 13 to 9 as unexplained evidence of network drift; it is plausibly consistent with a normal Windows reboot/re-enumeration. However, no causal claim is made about the masked R3 failure. The H1 runner-hardening Gate remains necessary because the runner must tolerate legitimate interface-index changes across reboot/reconnect and because the exception classifier independently failed.
+
+
+## Executor evidence — G2C_R3_LOCAL_RUNNER_HARDENING_H1 — 2026-10-03
+
+```text
+AUTHORIZED_GATE=G2C_R3_LOCAL_RUNNER_HARDENING_H1
+SOURCE_PROVENANCE=LOCAL_CANONICAL_WORKTREE_AT_GITHUB_MAIN_BASE
+PRE_GATE_HEAD=642255a1185100057c7ab8ea9d2515ea5d076046
+LATEST_MAIN_RECONCILED=889fe48defd4bcd59221bfdf1567dbf93a6db66e
+MAIN_ADVANCE_DURING_GATE=YES; TARGET_GATE_RUNNER_AND_RELAY_UNCHANGED
+RUNNER_PATH=vpn-network-optimization/scripts/g2c-mihomo-server-r3.ps1
+RUNNER_EXCEPTION_CLASSIFIER=RUNTIME_TYPE_NAME_AND_RESTRICTED_FQID
+LOCAL_PARAMETER_BINDING_RUNTIME_TYPE=ParameterBindingValidationException
+LOCAL_PARAMETER_BINDING_FQID=ParameterArgumentValidationErrorEmptyArrayNotAllowed,Start-R3SuppressedProcess
+LOCAL_PARAMETER_BINDING_CLASSIFICATION=LOCAL_PROCESS_ARGUMENT_BINDING_FAILED
+UNKNOWN_EXCEPTION_CLASSIFICATION=UNEXPECTED_LOCAL_FAILURE
+POWERSHELL_AST_PARSE=PASS
+SYNTHETIC_MATCHING_DYNAMIC_IFINDEX=PASS
+SYNTHETIC_MISMATCHING_IFINDEX=FAIL_CLOSED
+EMPTY_STRING_ARGUMENT_PROCESS_FIXTURE=PASS
+HARDCODED_IFINDEX_13_CHECK=PASS
+LIVE_HOST_WG_MANAGER=Running
+LIVE_HOST_WG_TUNNEL=Running
+LIVE_HOST_SFO2_A_STATUS=Up
+LIVE_HOST_SFO2_A_IFINDEX=9
+LIVE_HOST_CONTROL_ROUTE_ALIAS=SFO2-A
+LIVE_HOST_CONTROL_ROUTE_IFINDEX=9
+LIVE_HOST_DYNAMIC_ROUTE_BASELINE=PASS
+NETWORK_REQUESTS=0
+SSH_INVOCATIONS=0
+SECRET_ACCESSED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+MIHOMO_STARTED=NO
+VPS_OPERATIONS=0
+NETWORK_CHANGED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+```
+
+The top-level catch previously evaluated a statically named exception type that was not resolvable in the failing runtime, allowing the classifier to mask the original failure. The replacement safely extracts runtime type name and `FullyQualifiedErrorId`, only maps known parameter-binding types with a narrowly matched `Start-R3SuppressedProcess` binding ID, preserves only constrained uppercase runner codes, and returns a fixed generic code if classification itself encounters an error. The production baseline now reads the current `SFO2-A` adapter index and requires a positive value plus a control-route alias and index matching that same snapshot value. Static review found no benchmark, request, protocol, Secret, process-start, or cleanup logic changes. The live Windows readback and all fixtures were local/read-only; no SSH, remote operation, network request, Secret access, or network mutation occurred.
+
+ROUND_STARTED_AT=2026-10-03T05:18:10Z
+ROUND_FINISHED_AT=PENDING
+ACTUAL_ELAPSED=PENDING
+TIME_OVERRUN=PENDING
+TIME_OVERRUN_CAUSE=NONE
+STOP_AT_REVIEWER=YES
