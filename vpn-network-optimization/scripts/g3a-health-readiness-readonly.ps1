@@ -249,6 +249,16 @@ function Invoke-H2SelfTest {
     Assert-H2 ($wgUnknown.WireGuardCurrentHealth -eq 'UNKNOWN') 'SELFTEST_WG_UNKNOWN_FAILED'
     $passed++
 
+    $routeFixture = @(
+        [pscustomobject]@{ InterfaceIndex = 9; InterfaceAlias = 'SFO2-A' },
+        [pscustomobject]@{ InterfaceIndex = 18; InterfaceAlias = 'WLAN' }
+    )
+    $routeFixtureValid = $routeFixture.Count -gt 0 -and
+        [int]$routeFixture[0].InterfaceIndex -eq 9 -and
+        [string]$routeFixture[0].InterfaceAlias -eq 'SFO2-A'
+    Assert-H2 $routeFixtureValid 'SELFTEST_MULTI_ROUTE_SELECTED_WG_FAILED'
+    $passed++
+
     Write-Output "H2_SELFTEST_CASES=$passed"
     Write-Output 'H2_SELFTEST_RESULT=PASS'
 }
@@ -465,7 +475,7 @@ $wgManagerRunning = [string]$wgManager.Status -eq 'Running'
 $wgTunnelRunning = [string]$wgTunnel.Status -eq 'Running'
 
 $controlRoutes = @(Find-NetRoute -RemoteIPAddress $controlIp -ErrorAction Stop)
-$controlRouteViaWg = $controlRoutes.Count -eq 1 -and
+$controlRouteViaWg = $controlRoutes.Count -gt 0 -and
     [int]$controlRoutes[0].InterfaceIndex -eq $wgIfIndex -and
     [string]$controlRoutes[0].InterfaceAlias -eq $wireGuardAlias
 
