@@ -3500,3 +3500,43 @@ STOP_AT_REVIEWER=YES
 
 The validator was AST-parsed and run only with `-Validate`. It rendered the declared target artifacts in memory from the fixed non-secret fixture and passed all six deterministic self-tests. No recovery bundle, Secret, live target, network, Provider, service, or runtime file was accessed or changed. No rendered artifact was written to disk.
 
+## Reviewer acceptance — G3B staged-install render contract D3 — 2026-10-03
+
+```text
+PROVENANCE=EXECUTOR_RECORDED_OFFLINE_VALIDATION_PLUS_REVIEWER_FRESH_SOURCE_AND_COMMIT_READBACK
+GATE_ID=G3B_STAGED_INSTALL_RENDER_CONTRACT_D3
+REVIEWER_RESULT=PASS
+SOURCE_HEAD_TESTED=df32d130d65f129f68294e4b26e4df4f06b8f930
+EXECUTOR_RECORD_COMMIT=1c603fd90d1c0dabcf83abc943a8dc4ccbf3b9e2
+POWERSHELL_VERSION=7.6.5
+POWERSHELL_RUNTIME_CONTRACT=7.6.x
+POWERSHELL_AST_PARSE=PASS
+G3B_D3_SELFTEST_CASES=6
+G3B_D3_SELFTEST_RESULT=PASS
+G3B_D3_WG_SPLIT_DEFAULT=PASS
+G3B_D3_SECRET_SENTINELS=PASS
+G3B_D3_STAGED_ORDER=PASS
+G3B_D3_ROLLBACK_TO_SOURCE=PASS
+G3B_D3_OFFLINE_VALIDATION=PASS
+FILES_CREATED=0
+NETWORK_MUTATION=NO
+VPS_ACCESS=NO
+PROVIDER_ACTION=NO
+SECRET_VALUES_READ=0
+SECRET_VALUES_EMITTED=0
+EXECUTOR_SCOPE_DIFF=EVIDENCE_AND_EXECUTOR_HANDOFF_ONLY
+TESTED_VALIDATOR_SHA=d46431a5febbf00fd5f8cd124b2d1bc8e6d1a31d
+CURRENT_VALIDATOR_SHA=d46431a5febbf00fd5f8cd124b2d1bc8e6d1a31d
+TESTED_AND_CURRENT_VALIDATOR_IDENTICAL=TRUE
+FRESH_GITHUB_READBACK=PASS
+```
+
+Reviewer interpretation:
+- D3 is formally PASS.
+- The Executor tested the clean rebuilt validator, not the rejected/corrupted intermediate patch.
+- The post-validation commit changed only `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`; source and Reviewer truth were not modified by the Executor.
+- PowerShell 7.6.5 satisfies the Executor's frozen 7.6.x runtime contract.
+- All six deterministic render/negative fixtures passed; portable output preserves the split-default WireGuard baseline, Secret sentinels, staged activation order, and rollback-to-source boundary.
+- No file render was persisted and no VPS, Provider, Secret, network, service, firewall, route, or production action occurred.
+- G3-B repository-only package design/qualification/render contract is now complete through D3. Fresh-target migration proof still requires a real disposable target and cannot be inferred from offline fixtures.
+
