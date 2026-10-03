@@ -350,6 +350,7 @@ Use the fixed R3 completion packet in `CURRENT_GATE`, with retry estimate **15�
 
 - `EXECUTION_EVIDENCE.md` — append-only execution proof through the successful 60+60 same-window comparison.
 - `DECISION_LOG.md` — durable decision rationale for the kill-switch routing change and current production/candidate roles.
+- `docs/ROUND_TIMING_RETROSPECTIVE.md` — per-round estimate/actual timing, overrun causes, and reusable execution-efficiency improvements; not canonical project truth.
 - `EXECUTOR_HANDOFF.md` — historical Executor factual notes; not canonical current project truth.
 - `scripts/g2b-owner-runner.ps1` — accepted G2-B benchmark/runtime logic.
 - `scripts/g2b-comparative-after-killswitch-repair.ps1` — successful final G2-B comparative checkpoint.
