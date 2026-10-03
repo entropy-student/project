@@ -51,8 +51,17 @@ STOP_AT_REVIEWER=YES
    - persistent /32 route instruction rejection;
    - REALITY incorrectly marked production-ready rejection.
 6. Use a deterministic local Mihomo parse/test path if available without starting Clash or changing active profiles.
-7. On PASS: append bounded non-secret Evidence and update this Executor Handoff; then STOP_AT_REVIEWER.
-8. On failure: record the exact failure class and stop. Do not perform live retries.
+7. Capture whole-round timing:
+   - `ROUND_STARTED_AT=<UTC ISO8601>`
+   - `ROUND_FINISHED_AT=<UTC ISO8601>`
+   - `ACTUAL_ELAPSED=<duration>`
+   - `TIME_OVERRUN=YES|NO`
+   - if YES: `TIME_OVERRUN_CAUSE=<evidence-backed cause>`
+8. Reviewer estimate is **15–25 minutes end-to-end**, including source work, fixtures, optional Mihomo parse, Evidence/Handoff persistence, and fresh GitHub read-back.
+9. If `TIME_OVERRUN=YES`, use existing Evidence to identify the slow phase; if unclear, perform at most one bounded timing diagnosis. Timeout alone does not fail C1 and must not trigger replay of consequential actions.
+10. Update `docs/ROUND_TIMING_RETROSPECTIVE.md` for this round when it has estimate+actual, an overrun, a new reusable timing cause, or evidence that a previous timing optimization worked/failed.
+11. On PASS: append bounded non-secret Evidence and update this Executor Handoff; then STOP_AT_REVIEWER.
+12. On failure: record the exact failure class and stop. Do not perform live retries.
 
 ### Explicit prohibitions
 
