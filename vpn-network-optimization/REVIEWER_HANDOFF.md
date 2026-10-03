@@ -54,7 +54,7 @@ Current known components:
 ## CURRENT_ACCEPTED_STATE
 
 - **Current production/rollback:** system WireGuard remains connected and authoritative on the existing DigitalOcean sfo3 VPS.
-- **Connectivity dependency:** Owner's ChatGPT web and Codex desktop access depend on a working VPN path. A Gate must never begin by disconnecting/stopping WireGuard or removing its current routes.
+- **Connectivity dependency:** Owner's ChatGPT web and Codex desktop access require at least one working VPN path at all times. WireGuard is the current production VPN, but Owner has other temporary VPN options. WireGuard may be disconnected only at an explicit Owner checkpoint after an alternate VPN path is confirmed working; Executor must never strand the Owner offline.
 - **HY2:** deployed and previously validated as a side-by-side candidate on UDP 8443.
 - **REALITY:** public TCP/443 interoperability was validated by bounded canary, but the server is currently a cold/non-persistent candidate.
 - **G3-A:** health/readiness/advisory logic PASS; no automatic actuator exists.
@@ -73,10 +73,13 @@ SPECIALIST_TRIGGERS=11B_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_
 OBJECTIVE=Create and offline-validate a Clash Verge/Mihomo manual-control profile contract that can later expose WG baseline, HY2, and REALITY without disconnecting system WireGuard.
 MAX_ENDPOINT_THIS_ROUND=repository-only profile/template/validator design + deterministic offline validation; no Clash apply, no system proxy/TUN change, no route change, no VPS access, no Secret read, no service action.
 MANDATORY_REVIEW_STOP=YES
-WG_MUST_REMAIN_CONNECTED=YES
-OWNER_CHAT_CONNECTIVITY_MUST_BE_PRESERVED=YES
-WG_SERVICE_STOP_AUTHORIZED=NO
-WG_ROUTE_REMOVAL_AUTHORIZED=NO
+ACTIVE_VPN_CONNECTIVITY_MUST_BE_PRESERVED=YES
+WG_IS_CURRENT_PRODUCTION_VPN=YES
+WG_DISCONNECT_REQUIRES_OWNER_CHECKPOINT=YES
+ALTERNATE_VPN_MUST_BE_CONFIRMED_BEFORE_WG_DISCONNECT=YES
+OWNER_CHAT_AND_CODEX_CONNECTIVITY_MUST_BE_PRESERVED=YES
+WG_SERVICE_STOP_AUTHORIZED=NO_IN_C1
+WG_ROUTE_REMOVAL_AUTHORIZED=NO_IN_C1
 CLASH_PROFILE_APPLY_AUTHORIZED=NO
 SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
 TUN_CHANGE_AUTHORIZED=NO
@@ -120,7 +123,7 @@ PASS requires:
 - HY2 and REALITY carry dynamic physical-interface placeholders only;
 - REALITY is explicitly cold/not-ready-for-manual-use until its later live Gate;
 - no automatic switching, route mutation, system proxy/TUN change, VPS access, Secret read, or file application occurs;
-- C1 leaves current WireGuard connectivity untouched.
+- C1 leaves current WireGuard connectivity untouched. Later live Gates may authorize a WG disconnect only after the Owner has confirmed another VPN is already carrying ChatGPT/Codex connectivity.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
@@ -144,7 +147,7 @@ Codex Desktop Executor builds and offline-validates the G3-C C1 manual-control p
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Keep WireGuard connected exactly as it is. Do not open/close Clash or change any VPN setting for C1.
+**NONE.** C1 is repository-only. Keep your current VPN setup unchanged. If a later Gate truly needs WireGuard disconnected, Reviewer will first tell you to switch to another working VPN and confirm connectivity before authorizing the disconnect.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
