@@ -45,26 +45,29 @@ Use the accepted G2BR3 real output as the primary truth source:
 - representative accepted G2BR3 page screenshots.
 
 Create a prominent final-product showcase such as:
-- page-stack;
-- page-turn/spread viewer;
-- editorial carousel;
-- scroll-driven magazine walkthrough;
+- static page-stack or spread composition;
+- static multi-page editorial gallery;
+- website carousel/scroll section that displays static real page images;
 - equivalent high-quality composition.
 
 The visitor should be able to see several distinct pages / page types, not only one cover.
 
 Do not present generated fake pages as the actual final deliverable.
 
-### B. Add purposeful motion
+### B. Add purposeful WEBSITE motion
 
 The homepage should no longer feel mostly static.
 
-Introduce a coherent motion system where it improves the experience, for example:
-- Hero magazine entrance / gentle depth motion;
+**The final birthday magazine remains a static PDF. No magazine animation is a product requirement.** Website motion must be applied to the surrounding site experience, not presented as a property of the deliverable.
+
+Introduce a coherent website motion system where it improves the experience, for example:
+- Hero text/decorative-layer entrance;
 - controlled scroll reveal for editorial sections;
-- sample magazine hover/touch tilt or depth;
-- page-stack/spread transition in the final-product showcase;
-- Preview state transition.
+- subtle hover/touch feedback on website cards/buttons/sample frames;
+- background/decorative parallax or depth where restrained;
+- Preview UI state transition.
+
+The final-product showcase should display **static real magazine pages**. The webpage may reveal them progressively as part of scrolling/layout, but do not create or imply an animated/interactive magazine product.
 
 Requirements:
 - no gratuitous constant movement;
@@ -210,7 +213,7 @@ PASS requires all:
 
 1. Visitor can clearly see what the final 12-page magazine looks like.
 2. Final-product proof is grounded in actual accepted G2BR3 rendered output.
-3. Homepage has purposeful, visible motion and no longer reads as mostly static.
+3. Homepage has purposeful, visible **website** motion and no longer reads as mostly static, while the magazine deliverable remains clearly static.
 4. Motion feels coherent/premium and respects reduced-motion/accessibility.
 5. Preview no longer feels primarily like a low-value cover generator.
 6. Personalization is optional and strengthens the magazine proposition.
