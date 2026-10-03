@@ -42,7 +42,7 @@ fi
 
 KERNEL="$(uname -r)"
 ARCH="$(uname -m)"
-PUBLIC_IP_MATCH_COUNT="$(ip -o -4 addr show scope global | awk -v ip="$EXPECTED_PUBLIC_IPV4" '$4 ~ ("^" ip "/") {n++} END {print n+0}')"
+PUBLIC_IP_MATCH_COUNT="$(ip -o -4 addr show scope global | awk -v ip="$EXPECTED_PUBLIC_IPV4" '{split($4,a,"/"); if (a[1] == ip) n++} END {print n+0}')"
 DEFAULT_ROUTE_COUNT="$(ip -4 route show default | awk 'END {print NR+0}')"
 WAN_INTERFACE="$(ip -4 route show default | awk 'NR==1 {print $5}')"
 WAN_GATEWAY="$(ip -4 route show default | awk 'NR==1 {print $3}')"
