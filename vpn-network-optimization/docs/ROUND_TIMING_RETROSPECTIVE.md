@@ -24,6 +24,7 @@
 | G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 retry | 15–25 分钟 | 10m58s | NO | Shift-left 优化有效：empty-argument fixture 在远端工作前通过，整轮较快返回；但随后暴露第二个本地 runner 缺陷——异常分类器自身因类型名不可解析而报错，并遮蔽原始失败阶段。另发现硬编码 ifIndex=13 已与当前 SFO2-A/control-route ifIndex=9 不一致。 | commit `23e025ef...` |
 | G2C_R3_LOCAL_RUNNER_HARDENING_H1 | 10–20 分钟 | 14m45s | NO | failure-path fixture、动态 ifIndex 和 live baseline 全部通过；本轮没有 SSH、网络请求或 Secret 活动。说明“先本地 hardening 再真实请求”的分拆有效。 | commit `2993756d...` |
 | G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4 | 15–25 分钟 | 9m38s | NO | hardened preflight、单次 Mihomo B-side 请求、cleanup 与 Git fresh read-back 全部在预计内完成；curl 0 / HTTP 401，说明前置 hardening 后真实轮次执行效率恢复正常。 | commit `7e957ab9...` |
+| G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1 | 10–15 分钟 | UNKNOWN | UNKNOWN | 首个强制 timing Gate 未在初始 preflight 前记录开始时间；Executor 如实标记 UNKNOWN，没有事后猜测或重放。下一 Gate 必须先写 `ROUND_STARTED_AT` 再做任何 preflight。 | commit `1776ef5e...` |
 
 ## 已确认的主要耗时来源
 
@@ -123,6 +124,12 @@ R3 retry 证明了“正常参数路径”的本地 fixture 已经能提前挡�
 - 为“已知参数绑定异常”和“未知异常”各做一个 no-network fixture，保证 classifier 自身永不抛错；
 - 对网卡只验证“名称/状态/控制路由与动态发现 ifIndex 一致”，不验证固定数字；
 - 在任何 SSH/远端服务启动前完成这些 failure-path fixtures。
+
+### 5. Timing marker 必须先于 preflight
+
+R1 暴露了一个纯流程问题：虽然 Gate 已要求计时，但 Executor 在初始 preflight 后才开始关注计时，因此无法恢复可信的总耗时。
+
+**改进：** 从下一 Gate 起，`ROUND_STARTED_AT` 必须是执行包中的第一条本地记录动作，先于 fetch/version/path/preflight；若缺失，不允许事后估算。技术动作若已经安全停止，不因 timing 缺失重放。
 
 ## 当前优化方案
 
