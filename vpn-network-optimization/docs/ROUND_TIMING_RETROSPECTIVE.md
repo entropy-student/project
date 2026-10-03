@@ -242,5 +242,15 @@ R3 retry 实际 **10m58s**，H1 实际 **14m45s**；两轮都证明将本地 fix
 - Estimated duration: 15–25 minutes.
 - The Executor missed the required round-start timestamp before the initial canonical fetch. Total elapsed and `TIME_OVERRUN` therefore remain unknown; no start time was reconstructed.
 - The source-edit window was observed from 2026-10-03T16:12:58Z through 2026-10-03T16:30:21Z (17m23s), but that window overlaps fixture-driven edits and preliminary static review and is not reported as an isolated phase duration.
-- The final complete offline validator invocation measured 0.363s. The final automated scope/Secret/network-boundary scan measured 0.258s; manual diff review time was not separately captured. Git persistence timing will be recorded from its explicit phase start through fresh read-back.
+- The final complete offline validator invocation measured 0.363s. The final automated scope/Secret/network-boundary scan measured 0.258s; manual diff review time was not separately captured. The separately measured Git-persistence interval is recorded below.
+- The source commit `408f632c7d15f336a99ff2c7b807b96cbdd48d9e` was pushed and freshly read back by 2026-10-03T16:39:30Z; Git persistence from its explicit 16:35:39Z phase start measured 3m51s. The source commit was an ancestor of remote main `7d97ab8f4f0fe60a5429202a414fb7a2f8439c7e`, all seven Gate-file blobs matched, and a concurrent unrelated main change was preserved by safe fast-forward to that head. The full source round duration remains unknown because its initial start was not captured.
 - No consequential action was performed or replayed. This round reinforces the existing timing rule: initialize the round clock before the very first canonical-source operation, then use separate phase timers.
+
+### G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1 timing record
+
+- Estimated duration: 8–15 minutes.
+- The required round-start marker was not captured before the initial canonical fetch. `ROUND_STARTED_AT` and full `ACTUAL_ELAPSED` therefore remain unknown; `TIME_OVERRUN` cannot be classified. No start time was reconstructed.
+- A reconciliation timer was captured at 2026-10-03T17:28:07Z, after the initial fetch. This is a partial phase marker only and must not be represented as the round start.
+- The measured interval from that late marker through the successful push/read-back and clean original-worktree fast-forward was at least 17 minutes (finish marker 2026-10-03T17:45:07Z). Therefore `TIME_OVERRUN=YES` is established from the lower bound; exact `ACTUAL_ELAPSED` remains unknown.
+- The overrun was in Git/document reconciliation: the first push was rejected after shared-main advanced; a targeted fetch showed no net change in the three target documents, the single documentation commit rebased without conflict, push and fresh read-back passed, then the original three superseded local files were cleaned and the worktree fast-forwarded.
+- No live, network, VPS, route, proxy, TUN, WireGuard, Clash/Mihomo, or Secret action occurred.

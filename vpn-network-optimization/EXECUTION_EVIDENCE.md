@@ -4050,3 +4050,41 @@ Reviewer conclusion:
 - Next round is documentation-only persistence. It must preserve the local unique facts while preventing stale local Gate/status text from overwriting newer canonical Reviewer/Executor state.
 - Shared-main advancement by unrelated projects is not a reason to rerun VPN work. Reconcile at the Git/document boundary only.
 
+## G3C C2B P0 local-fact persistence R1 — reconciliation evidence
+
+```text
+GATE_ID=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
+SOURCE_DIRTY_FILES=EXECUTION_EVIDENCE.md,EXECUTOR_HANDOFF.md,docs/ROUND_TIMING_RETROSPECTIVE.md
+DIFF_CLASSIFICATION=UNIQUE_FACT_TO_PERSIST;ALREADY_DURABLE_DUPLICATE;STALE_STATE_OR_GATE_TEXT_DO_NOT_PERSIST
+PRIOR_C2A_SOURCE_COMMIT=408f632c7d15f336a99ff2c7b807b96cbdd48d9e
+PRIOR_C2A_SOURCE_COMMIT_PUSHED_TO=origin/main
+PRIOR_C2A_GITHUB_FRESH_READBACK=PASS
+PRIOR_C2A_REMOTE_MAIN_AT_READBACK=7d97ab8f4f0fe60a5429202a414fb7a2f8439c7e
+PRIOR_C2A_SOURCE_COMMIT_IS_REMOTE_MAIN_ANCESTOR=YES
+PRIOR_C2A_ALL_SEVEN_GATE_FILE_BLOBS_MATCH=YES
+PRIOR_C2A_REVIEWER_HANDOFF_MODIFIED=NO
+PRIOR_C2A_GIT_PERSISTENCE_ELAPSED=00:03:51; 2026-10-03T16:35:39Z to 2026-10-03T16:39:30Z target-blob fresh read-back
+PRIOR_C2A_UNRELATED_REMOTE_COMMIT_PRESERVED=YES
+PRIOR_C2A_LOCAL_HEAD_AFTER_SAFE_FAST_FORWARD=7d97ab8f4f0fe60a5429202a414fb7a2f8439c7e
+PRIOR_C2A_FULL_ROUND_START=NOT_CAPTURED
+PRIOR_C2A_ACTUAL_ELAPSED=UNKNOWN
+PRIOR_C2A_TIME_OVERRUN=UNKNOWN
+CURRENT_R1_ROUND_START=NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH
+PERSISTENCE_COMMIT=fc2aa9399627c19b5368ed6da6a219deaeb20b77
+PERSISTENCE_COMMIT_GITHUB_FRESH_READBACK=PASS
+UNIQUE_FACTS_DURABLE=YES
+ORIGINAL_DIRTY_WORKTREE_CLEAN=YES
+ORIGINAL_WORKTREE_HEAD=fc2aa9399627c19b5368ed6da6a219deaeb20b77
+C2B_RUNNER_BLOB_UNCHANGED=cd5a2eb768b54d13307b651ea514a912b9742c9d
+C2B_TEMPLATE_BLOB_UNCHANGED=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+REVIEWER_HANDOFF_MODIFIED=NO
+ROUND_FINISHED_AT=2026-10-03T17:45:07Z
+CURRENT_R1_ACTUAL_ELAPSED=UNKNOWN_START_NOT_CAPTURED
+CURRENT_R1_ACTUAL_ELAPSED_LOWER_BOUND=AT_LEAST_00:17:00
+CURRENT_R1_TIME_OVERRUN=YES
+CURRENT_R1_TIME_OVERRUN_CAUSE=SHARED_MAIN_PUSH_REJECTION_AND_REQUIRED_FETCH_REBASE_PUSH_READBACK_AND_WORKTREE_CLEANUP
+CURRENT_R1_LIVE_OR_NETWORK_ACTION=NO
+```
+
+The prior C2A closeout's source-commit/read-back, measured Git-persistence interval, seven-file blob check, and unrelated-main fast-forward facts were not all represented in canonical main before this reconciliation. The source commit and technical result were already documented; those duplicate facts were not restated as new outcomes. The stale local C2A status wording was not used to replace the current R1 Gate or the Reviewer-owned disposition. The unique facts were committed and fresh-read from GitHub before the exact three superseded files were cleaned; the original managed worktree then fast-forwarded to the same commit with a clean project status. The current round's exact elapsed time is unavailable because its start preceded the first captured clock marker; the captured post-fetch interval exceeded 17 minutes, so the estimate was exceeded even though the precise total cannot be reconstructed.
+
