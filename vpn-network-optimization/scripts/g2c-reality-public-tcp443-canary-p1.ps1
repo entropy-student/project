@@ -1,4 +1,4 @@
-param([switch]$CanonicalSourceOnly)
+param([switch]$CanonicalSourceOnly, [switch]$LocalPreflightOnly)
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
@@ -1537,6 +1537,9 @@ try {
     Assert-R3LocalBaseline -Snapshot $script:localBefore -Prefix 'PRECHECK'
     $script:physicalEgress = $script:localBefore.PhysicalEgress
     $script:routeBefore = $script:localBefore.PublicRoute
+    if ($LocalPreflightOnly) {
+        $script:phase = 'LOCAL_PREFLIGHT_ONLY_PASS'
+    } else {
     $script:phase = 'PRECHECK_VPS'
     $script:remoteBefore = Invoke-R3RemoteReadOnlyProbe -Command (Get-R3RemotePreflightCommand)
     Assert-R3RemoteBaseline -Values $script:remoteBefore
@@ -1605,6 +1608,7 @@ try {
     $script:phase = 'ONE_OPENAI_REQUEST'
     Invoke-R3SingleRequest
     $script:implementationResult = 'UNKNOWN'
+    }
     }
 }
 catch {
@@ -1833,9 +1837,15 @@ $roundFinishedIso = $script:roundFinishedAt.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
 "SECRET_VALUES_EMITTED=0"
 "SECRET_VALUES_COMMITTED=0"
 "CANONICAL_SOURCE_ONLY_MODE=$($CanonicalSourceOnly.ToString().ToUpperInvariant())"
+"LOCAL_PREFLIGHT_ONLY_MODE=$($LocalPreflightOnly.ToString().ToUpperInvariant())"
 
 if ($CanonicalSourceOnly) {
     if ($script:canonicalSourceVerified -and -not $script:failureCode -and -not $mutationStarted -and $script:requestCount -eq 0) { exit 0 }
+    exit 1
+}
+
+if ($LocalPreflightOnly) {
+    if ($script:canonicalSourceVerified -and $null -ne $script:localBefore -and -not $script:failureCode -and -not $mutationStarted -and $script:requestCount -eq 0) { exit 0 }
     exit 1
 }
 
