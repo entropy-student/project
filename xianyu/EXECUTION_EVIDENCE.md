@@ -1,3 +1,5 @@
+> Current evidence model and result: [v2.2 calibrated catalog](docs/FINAL_SKU_CATALOG_2026-10.md) and [Research Ledger](docs/RESEARCH_LEDGER_2026-10-03.md). Prior counts, PASS/CLOSED labels and rules below remain chronological history and do not override the latest calibration entry.
+
 # Xianyu — EXECUTION EVIDENCE
 
 ## 2026-10 — X1 Market Demand Discovery & Candidate Normalization
@@ -856,3 +858,43 @@ DESTRUCTIVE_CLEANUP=NOT_APPLICABLE
 DEFERRED_IN_SCOPE_ACTIONS=NONE
 PROJECT_CLOSEOUT=PASS_CANDIDATE
 ~~~
+
+
+---
+
+## 2026-10-03 — Final v2.2 evidence calibration and canonical-path update
+
+Execution class: documentation calibration + parent Reviewer limited public-page observations. The calibrated record is stored at the project canonical path.
+
+```text
+NORMALIZED_HISTORICAL_CANDIDATES=60
+REVIEW_INPUT_ADDITION=1
+NEW_DIFFERENT_OFFERS_FOUND=2
+REPORTED_TUTORIAL_SPLIT_FROM_UNVERIFIED_BUNDLE=1
+DISCOVERY_CANDIDATES_RETAINED=64
+CURRENT_CONFIRMED_DEMAND=0
+CURRENT_PROBABLE_DEMAND=0
+CATALOG_D2_PERIOD_UNKNOWN=11
+REUSED_DIRECT_INTEREST_OBSERVATIONS=8
+CATALOG_U=52
+CATALOG_WATCHLIST=63
+CATALOG_CONFIRMED_PERIOD_UNKNOWN=1
+HISTORICAL_D4_FAMILY=H1_2026_AI_TUTORIAL_COURSE
+PERIOD_UNKNOWN_D4_PRODUCT_TYPE=AI_MANGA_TUTORIAL_HALF_YEAR_START_END_UNKNOWN
+V2_1_11_PROBABLE_REINTERPRETED=AT_MOST_D2_WEAK_SIGNAL_CLAIMS
+COMPLETE_FRESH_VERIFICATION_OF_64=NO
+CANONICAL_RESULT=docs/FINAL_SKU_CATALOG_2026-10.md
+ACCOUNT_LISTING_PURCHASE_PAYMENT_RUNTIME_MUTATIONS=0
+```
+
+Observed facts and their boundaries are in the ledger (C-01 photography broad preset, C-02 Xunlei membership, C-03 AI bid-generation service, H-01 historical H1 tutorial/course family share and H-02 period-unknown AI-manga tutorial case, from the same Xinhua/Xianyu report). The current named bid-service Offer (N62) and Fuji-style6-xmp preset (N63) are retained as separate discoveries; old N23 software and N46 portrait subtype remain unverified. The tutorial itself is retained as N64, reported D4 with an unknown period; the old N01 bundle remains U. Three direct anchors and one report source were checked; research stopped at the budget/time boundary, without a saturation claim. Previous seller totals and current cumulative wants are not SKU transactions. The 0 current D3/D4 result describes the retained evidence, not absence of market demand.
+
+Artifacts:
+- [Current calibrated catalog](docs/FINAL_SKU_CATALOG_2026-10.md)
+- [Lightweight ledger with imported raw claims](docs/RESEARCH_LEDGER_2026-10-03.md)
+- [Original old catalog body](docs/history/FINAL_SKU_CATALOG_2026-10_PRE_V2_2.md)
+- [Original v2.1 review-input export](docs/history/XIANYU_MARKET_MAP_RERUN_V2_1_2026-10-03.md)
+
+Preservation: both copies retain original bytes; SHA256 recorded in ledger. Historical X1–X3R4 documents remain unchanged as research lineage. Current README/HANDOFF supersede their dynamic result claims. No sourcing, real testing, listing or infrastructure action was performed.
+
+Inheritance correction: N03/S03, N19/S08, N21/S07, N22/S11, N24/S13, N38/S18, N39/S19 and N40/S20 preserve named direct item IDs plus raw wants/views. These eight observations are reused as INTEREST/D2/UNKNOWN/LOW with no fresh-read claim. N21 supports the generic700+ theme bundle, not its assumed foreign-trade use; N24 supports image collection, and N40 does not guarantee arbitrary city/company versions. N23 and N46 remain scope-mismatched U. No archived bytes were regenerated. Lack of a new read alone is not a reason to erase attributable evidence.

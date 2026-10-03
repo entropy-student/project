@@ -1,208 +1,133 @@
-# FINAL — Xianyu Evidence-backed Product Type / SKU Catalog — 2026-10-03
+# FINAL — Xianyu Calibrated Discovery Catalog — 2026-10-03
 
-Status: REVIEW_CANDIDATE
-Project endpoint artifact
-Scope: Xianyu market-demand catalog only
-Sourcing / supplier / listing / real purchase / automation: OUT OF SCOPE
+Status: FINAL_CALIBRATED_RECORD / CANONICAL
+Evidence model: v2.2 / MARKET_MAP / XIANYU
 
-## 1. How to read this catalog
+## 1. Result and interpretation
 
-This catalog answers:
+完整保留60个标准化候选，加聊天重跑新增搬运工具N61、本轮发现的两个不同Offer N62/N63，以及从旧组合拆出的教程本体N64，共64个发现候选。目录不为维持旧数量而省略新发现。本轮现有可复核当前样本没有D3/D4：**当前90天可确认D3/D4=0**。目录证据分布为1个reported D4／时期UNKNOWN（N64）、11个D2／累计时期UNKNOWN（3个本轮入口、8个继承直接观察）、52个匹配证据不足U；需求状态为1个时期未知CONFIRMED_DEMAND、63个WATCHLIST，不把时期未知确认计入当前确认数。这表示现有记录不足以确认当前付费需求，**不是市场没有需求**，也不是64个候选都重新现场验证过。
 
-> **What concrete virtual/digital product types or SKUs currently show enough Xianyu market evidence to be worth keeping in the market map?**
+新华社2026-07-29报道需要分开解读：平台2026上半年AI教程与课程商品族订单占比8.1%，为HISTORICAL_REPORTED_D4（FAMILY）；“有人半年卖出1.7万份AI漫剧制作教程”的具体半年起止未明示，保留reported D4 / PERIOD_UNKNOWN（PRODUCT_TYPE），不能自动归属当前90天，也不能断言全部交易在90天窗外。具体教程案例不能自动支持项目文件/Workflow组合。
 
-It does not answer where to source them or whether a particular seller may legally redistribute a particular asset.
+| Evidence ID | 具名对象 | Scope | D-Level | Period classification / evidence period | Source Nature |
+|---|---|---|---|---|---|
+| H-01 | AI教程与课程 | FAMILY | D4 | HISTORICAL；2026 H1，订单占比8.1% | 媒体明确转述平台数据（reported） |
+| H-02 | AI漫剧制作教程 | PRODUCT_TYPE | D4 | UNKNOWN；半年起止UNKNOWN；截至2026-07-29报道 | 媒体报道平台交易案例（reported） |
 
-Evidence levels:
-- D4 = platform/first-party transaction evidence names the product family, or attributable SKU-level transaction evidence.
-- D3 = replicated current Xianyu evidence across independent listings/sellers/signals.
-- D2 = one current direct SKU or coherent current related-results cluster.
-- D1 = official category / macro / derived evidence only.
-- U = insufficient.
+旧“6 Confirmed +44 Probable”及聊天重跑“1 Confirmed +11 Probable +49 Watchlist”均为历史结果，不再作为当前标签。重跑的11个Probable声称全部降为**至多D2的弱信号复制主张**；未保留逐项ID、原始行为、期间的行不会因此成为本轮已核验D2。
 
-Final status:
-- CONFIRMED_DEMAND = strongest current demand evidence.
-- PROBABLE_DEMAND = credible current demand, but weaker than confirmed.
-- WATCHLIST = product type exists / is plausible, but current evidence is insufficient for a stronger conclusion.
-- MARKET_SIGNAL_ONLY = demand surface exists, but the observed form should not be treated as a clean executable business recommendation.
+本轮父Reviewer现场核验三条商品入口：迅雷会员当前页面弱信号匹配N04；摄影锚点是李大本事仿富士胶片LR/PS预设（6个xmp），作为N63保留；不能直接证明旧N46所指日系胶片人像细分。AI标书锚点是按次生成服务，作为N62保留；不能证明N23自用/可下载软件。新增两行各为D2，行为期间UNKNOWN。页面可见累计值的行为期间未知，不证明本轮90天新增需求。
 
-“想要” and views are intent/attention proxies, never treated as sales.
+## 2. Evidence contract
 
-## 2. Confirmed demand catalog
+```text
+OBSERVATION_DATE=2026-10-03
+CURRENT_TARGET_WINDOW=2026-07-06 through 2026-10-03 (90 days, inclusive)
+CURRENT_CONFIRMED_DEMAND=0
+CURRENT_PROBABLE_DEMAND=0
+CATALOG_D2_PERIOD_UNKNOWN=11
+REUSED_DIRECT_INTEREST_OBSERVATIONS=8
+CATALOG_U=52
+CATALOG_WATCHLIST=63
+CATALOG_CONFIRMED_PERIOD_UNKNOWN=1
+HISTORICAL_D4_FAMILY=AI教程与课程 / H1_2026
+PERIOD_UNKNOWN_D4_PRODUCT_TYPE=AI漫剧制作教程 / 半年起止UNKNOWN
+COMPLETE_FRESH_VERIFICATION_OF_64=NO
+MARKET_EXHAUSTIVENESS=NOT_CLAIMED
+LEDGER=RESEARCH_LEDGER_2026-10-03.md
+```
 
-| SKU / product type | Search phrase | Surface | Level | Current evidence | Persistence | Main counterevidence | Confidence | Sources |
-|---|---|---|---|---|---|---|---|---|
-| AI 漫剧制作教程 + 项目文件 / 工作流 | AI漫剧教程 项目文件 工作流 | AI digital | D4 | Xianyu-reported tutorials/courses = 8.1% of AI orders; reported seller sold 17k copies in six months | GROWING | standout seller may exceed median; fast tool updates | A/B | S02 |
-| 迅雷 SVIP / 网盘会员月卡周卡直充 | 迅雷会员 SVIP 月卡 周卡 | Membership | D3 family | many independent current sellers; visible wants include 4,217 / 3,313 / 2,522 and one 61,999-intent listing | STABLE | price competition; intent is not sales | B | S04 |
-| 院校 / 专业考研复试资料包 | 考研复试资料 学校 专业 | Education | D3 | multiple independent current school/major products; examples include RMB15/109 wants and RMB49.98/45 wants | SEASONAL_RECURRING | seasonal; school/version turnover | B | S09 |
-| 本地化初中 / 中考学科试卷复习包 | 初中 试卷 中考 电子版 | Education | D3 | multiple current local/school products; physics pack RMB2.68/161 wants | SEASONAL_RECURRING | curriculum/version changes | B | S09 |
-| 日系胶片 Lightroom / PS 人像预设 | 日系 胶片 LR PS 预设 | Photography assets | D3 | RMB0.80/603 wants plus several independent neighboring preset/LUT products | STABLE | heavy cloning/low price | B | S10 |
-| 漫展 / COS / 人像修图预设口令 | 像素蛋糕 漫展 COS 预设 口令 | Photography assets | D3 | multiple current products from different sellers; visible intent across presets/background assets | GROWING/STABLE | mixed with account-access/service offers | B | S10 |
+- D4：同Scope可归属真实交易／平台第一方交易报道；转述标reported。卖家口号、自述和卖家全店累计销量不算SKU成交证明。
+- D3：多个独立且明确针对付费Offer的购买意图，例如价格/交付询问、明确求购承诺或下单动作；不强制多卖家。
+- D2：单个或重复弱行为（想要/收藏/浏览等）；重复页面或更多卖家不升级D3。
+- D1：仅可核验供给／类目存在；U：当前记录不足或Scope无法归属。
+- D-Level与Period分开：N04/N62/N63记录可定位弱信号D2，但行为期间UNKNOWN；不称为当前90天买方事实。有具名对象、原始想要/浏览和直接商品ID的8个旧观察也保留D2／UNKNOWN，不因未刷新降成U；其余同Scope不足时为U，历史／时期未知交易或旧声称单列，不能加入当前90天确认计数。
+- 风险单列：未查用UNKNOWN；需要核对规则/版权/账号路径用REVIEW_REQUIRED；明确规避导向的工具形态用HIGH_RISK。没有行被默认写成NO_FLAG_OBSERVED。
 
-## 3. Probable demand catalog
+## 3. Complete candidate table
 
-| SKU / product type | Search phrase | Surface | Level | Current evidence | Persistence | Main counterevidence | Confidence | Sources |
-|---|---|---|---|---|---|---|---|---|
-| 可复用 AI Workflow / Agent 模板 | AI Workflow Agent 模板 工作流 | AI digital | D4 family / SKU narrower | templates/workflows = 6.6% of AI-service orders; reusable-vs-custom split unknown | GROWING | category mixes custom setup | B/C | S02 |
-| 优酷 SVIP 周卡 / 设备会员 | 优酷 SVIP 周卡 | Membership | D2 | current RMB1.12–3.25, 987 wants, 4,079 views | STABLE | one direct SKU; device-specific model | B | S03 |
-| 咖啡 / 奶茶券或自助下单 | 瑞幸 咖啡券 奶茶券 自助下单 | Voucher | D2 | official category + current Luckin self-order item | STABLE/PROMO | direct depth incomplete | B/C | S01,S05 |
-| 快餐 / 餐饮优惠券 | 麦当劳 肯德基 达美乐 优惠券 | Voucher | D2 | official category + current food discount/order cluster | STABLE/PROMO | some offers are service-like | B/C | S01,S05 |
-| 电影票优惠 / 代购票 | 电影票 优惠 代购 | Ticket | D1/D2 | official movie-ticket category plus repeated public buying/selling signal | STABLE | direct current SKU metrics incomplete | C | S01 |
-| Dragonfly 25.1 软件授权 / 激活 | Dragonfly 25.1 授权码 | Software activation | D2 | current RMB34.56, 12 wants | VERSIONED | single current sample | B/C | S01 |
-| ArchiCAD 29 教育订阅 / 激活 | ArchiCAD 29 教育订阅 激活 | Software activation | D2 | current RMB78.80 | VERSIONED | single current sample | C | S01 |
-| 课程 / 题库激活码 | 题库 激活码 课程 激活码 | Digital activation | D2 | current university-course and question-bank activation products | VERSIONED/SEASONAL | fragmented SKUs | C | S09 |
-| 多端多商户商城系统源码 | 商城系统 源码 Java Uniapp Vue | Source code | D2 | current indexed RMB13, 36 wants, 808 views | STABLE_NICHE | sampled item later down | B/C | S08 |
-| WordPress 外贸 / 企业站主题模板包 | WordPress 外贸 模板 主题 | Web templates | D2 | RMB25.90/direct29, 804 wants, ~10k views | STABLE | one direct listing; generic free alternatives | B | S07 |
-| 中小企业报价管理 Windows 软件 | 报价软件 报价管理 Windows | Utility software | D2 | RMB13.50/direct13.90, 133 wants, 5,008 views | STABLE | one direct SKU | B | S11 |
-| AI 标书制作 / 标书生成软件 | AI 标书 软件 标书生成 | Utility software | D2 | specific tool RMB8.60/110 wants plus dense neighboring bid market | GROWING | neighboring demand includes service/access products | B | S12 |
-| 电商商品图片采集 / 整理效率软件 | 商品图片 采集 工具 电商 | Utility software | D2 | RMB2.98–50.98, 722 wants, 5,163 views | STABLE | observed job partly involves third-party asset collection | B | S13 |
-| 闲鱼关键词监控 / 上新提醒软件 | 闲鱼 监控 上新 提醒 | Utility software | D2 | current RMB79.20, 147 wants | STABLE_NICHE | current evidence from related cluster | B/C | S14 |
-| Python Excel / Word / PDF 办公自动化脚本包 | Python 办公自动化 Excel Word PDF | Utility pack | D2 | current RMB39.90 product | STABLE | direct intent metrics sparse | C | S15 |
-| PDF 在线 / 批处理工具 | PDF 合并 拆分 转换 工具 | Utility software | D2 | current RMB20/15 wants example | STABLE | free alternatives; small observed sample | C | S09 |
-| AI 漫剧一键制作工具 | AI漫剧 一键制作 工具 | AI tool | D2 | current RMB2.80 related product | GROWING | current evidence is one related-results cluster | C | S16 |
-| AIGC 提示词 + 示例图 + 参数包 | AIGC 提示词 参数包 示例图 | AI content asset | D2 | current RMB1.98 example | FAD/GROWING | cheap/free substitutes; one cluster | C | S17 |
-| 教师教案 + PPT + 作业设计包 | 教案 PPT 作业设计 电子版 | Education | D2 | current teacher-material cluster; one product shows 97 wants | SEASONAL_RECURRING | fragmented by grade/version | B/C | S17 |
-| 英语课堂互动 PPT 游戏课件包 | 英语课堂 PPT 游戏 课件 | Education | D2 | current RMB2.68, 166 wants | STABLE/SEASONAL | recommendation-cluster evidence | B | S17 |
-| 公考 / 事业编 / 时政题库资料包 | 公考 事业编 时政 题库 | Education | D2 | multiple current current-affairs/question-bank products | SEASONAL_RECURRING | fragmented by region/exam year | B/C | S15 |
-| 职业资格 / 职称考试资料包 | 职称 考试 题库 电子资料 | Education | D2 | current logistics-professional pack RMB7.90/15 wants plus activation examples | SEASONAL | weaker volume signal | C | S09 |
-| SAT / DSE / 留学考试资料包 | SAT DSE 资料 题库 | Education | D2 | current SAT/DSE products visible | SEASONAL | sparse intent metrics | C | S09 |
-| 大学课程笔记 / 期末复习资料 | 大学 课程 笔记 期末 电子版 | Education | D2 | current university course/review PDFs visible | SEASONAL_RECURRING | highly fragmented | C | S09 |
-| 上市公司高管团队稳定性面板数据 | 上市公司 高管 稳定性 数据 | Research data | D2 | direct RMB1, 523 wants, 3,591 views | STABLE_NICHE | one direct product; very low price | B | S18 |
-| 上市公司供应链网络地位 / PageRank 数据 | 上市公司 供应链 PageRank 数据 | Research data | D2 | direct RMB1, 194 wants, 1,876 views | STABLE_NICHE | one direct product | B | S19 |
-| DID / 政策事件 / 企业面板数据 | DID 面板数据 政策 企业 | Research data | D2 | direct RMB1, 24 wants, 260 views | STABLE_NICHE | low visible intent | C | S20 |
-| SolidWorks 非标自动化设备 3D 图纸库 | SolidWorks 非标 自动化 3D 图纸 | Engineering assets | D2 | current related product RMB1, 686 wants | STABLE_NICHE | recommendation-cluster rather than direct target page | B | S21 |
-| 工业机器人 PROFINET / EtherCAT 配置手册包 | 工业机器人 PROFINET EtherCAT 手册 | Engineering materials | D2 | current auto-delivery manual product | STABLE_NICHE | intent metrics sparse | C | S09 |
-| 芯片 / 半导体工艺制造资料合集 | 半导体 工艺 芯片 资料 | Professional materials | D2 | current RMB14 product | STABLE_NICHE | intent metrics sparse | C | S15 |
-| IE 工业工程经验 + 工具表资料包 | IE 工业工程 资料 工具表 | Professional materials | D2 | current RMB3, 90 wants | STABLE_NICHE | one cluster | B | S15 |
-| 小提琴 / 大提琴制作图纸与技术文献 | 提琴 制作 图纸 文献 | Hobby/technical | D2 | current RMB12, 47 wants | STABLE_NICHE | niche | B/C | S15 |
-| 手机 Log 调色 LUT | 手机 Log LUT vivo X200 X300 | Photography assets | D2 | current RMB4.93 | DEVICE_CYCLE | no visible intent count in sampled page | C | S10 |
-| 索尼 FX3 / 电影感 LUT 包 | FX3 LUT 电影感 | Photography assets | D2 | current RMB3, 12 wants + neighboring LUTs | STABLE_NICHE | modest intent | B/C | S10 |
-| 婚纱 / 人像 PSD 背景前景水印素材包 | 婚纱 PSD 背景 素材 | Design assets | D2 | current related PSD/background products | STABLE | sparse direct metrics | C | S10 |
-| 剪辑音效库 / SFX 素材包 | 音效库 SFX 剪辑 素材 | Audio assets | D2 | current 30k+ SFX library product visible | STABLE | current metric depth sparse | C | S16 |
-| 乐谱 + 伴奏 / 示范音频资料包 | 乐谱 伴奏 电子版 | Music assets | D2 | current score/backing products visible | STABLE_NICHE | fragmented | C | S15 |
-| 蓝桥杯 / 技能竞赛经验资料包 | 蓝桥杯 嵌入式 资料 | Professional/education | D2 | current embedded-competition product visible | SEASONAL | niche | C | S15 |
-| 货代 / 行业专业资料包 | 货代 资料 行业 电子版 | Professional materials | D2 | current freight-forwarding professional product visible | STABLE_NICHE | sparse intent | C | S15 |
-| 日本关西自由行 PDF + 地图清单 | 关西 攻略 PDF 地图 | Lifestyle guide | D2 | current self-made RMB26 product | SEASONAL | one current sample | C | S15 |
-| 家常菜 / 空气炸锅菜谱电子书 | 菜谱 电子书 空气炸锅 | Lifestyle guide | D2 | current 360-recipe RMB8 product | STABLE | one sample; generic content | C | S17 |
-| 小吃 / 餐饮制作教程资料包 | 小吃 教程 配方 电子版 | Lifestyle guide | D2 | current RMB6.80 example | STABLE | one cluster | C | S15 |
-| 编织 / 手工教程资料库 | 编织 教程 电子版 资料 | Hobby guide | D2 | current craft/knitting products visible | STABLE | sparse metrics | C | S15 |
-| 摄影课程 / 后期教程资料包 | 摄影 教程 后期 课程 资料 | Creative education | D2 | current photography-course cluster, including 40/86-want examples | STABLE | mixed provenance/content rights unknown but not a demand kill | B/C | S10 |
+N64的Demand Status=CONFIRMED_DEMAND（时期UNKNOWN），其余63行=WATCHLIST。平台=XIANYU；N01保留旧BUNDLE，N21为具名主题BUNDLE，其余原候选多为PRODUCT_TYPE（并非逐项变体SKU已验证），N62/N63是现场具名SKU/Offer，N64是单独教程PRODUCT_TYPE；Confidence以具名Scope可复核性判断；继承直接观察标LOW/未刷新。标准搜索词沿用商品名称即可。各行来源ID链接至[轻量底稿](RESEARCH_LEDGER_2026-10-03.md)。历史数字及价格不充当当前报价，详见底稿原始事实。N21按直接证据归回通用700+主题BUNDLE，N24只记录图片采集，N40不扩展到任意城市/企业版本；原候选措辞保留在母表。
 
-## 4. Watchlist
+| ID | 商品类型 / 搜索词 | Market surface | Scope | Current price | D-Level / Period | Confidence | Retained historical / period-unknown claim | Risk Status | Evidence IDs / key limitation |
+|---|---|---|---|---|---|---|---|---|---|
+| N01 | AI 漫剧制作教程 + 项目文件 / 工作流 | AI digital products | BUNDLE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | reported D4 / 教程 PRODUCT_TYPE；半年起止 UNKNOWN；原 Bundle 不继承 | REVIEW_REQUIRED | I-N01, H-02；教程成交期间UNKNOWN，不能归属当前90天；项目文件/Workflow未验证 |
+| N02 | 可复用 AI Workflow / Agent 模板 | AI digital products | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | H1 templates/workflows 商品族交易占比；本候选 U | UNKNOWN | I-N02；统计含商品族与定制服务；不能归属可复用模板 SKU |
+| N03 | 优酷SVIP周卡/设备会员 | Membership | PRODUCT_TYPE | UNKNOWN | D2 / UNKNOWN；继承直接观察，未刷新 | LOW（原始定位保留；本轮未刷新） | REUSED_INTEREST / 原始想要与浏览保留 | REVIEW_REQUIRED | I-N03, S03 / item1011466117609；987想要、4079浏览；具体设备/时长变体适用性未刷新；观察日不等于行为期间 |
+| N04 | 迅雷 SVIP / 网盘会员月卡周卡直充 | Membership | PRODUCT_TYPE | 7.87–166.99元（产品类型混变体） | D2 / UNKNOWN；本轮页面可见累计弱信号 | MEDIUM（可定位；行为期间未知） | D2 CLAIM / 弱信号复现 | REVIEW_REQUIRED | I-N04, C-02；想要/浏览累计期间未知；卖家累计销量不能归属 SKU |
+| N05 | 其他视频会员月卡/周卡 | Membership | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D1 CLAIM / 类目供给 | REVIEW_REQUIRED | I-N05；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N06 | 音乐 / 音频 / 阅读会员 | Membership | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D1 CLAIM / 类目供给 | REVIEW_REQUIRED | I-N06；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N07 | 咖啡 / 奶茶券或自助下单（如瑞幸） | Voucher | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N07；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N08 | 快餐 / 餐饮优惠券（麦当劳 / KFC / 达美乐等） | Voucher | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N08；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N09 | 电影票优惠 / 代购票 | Ticket | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N09；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N10 | 京东卡 / 代金卡 / 加油卡 | Stored-value cards | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D1 CLAIM / 类目供给 | REVIEW_REQUIRED | I-N10；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N11 | 景点 / 演出 / 网约车券 | Ticket/voucher | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D1 CLAIM / 类目供给 | REVIEW_REQUIRED | I-N11；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N12 | 游戏账号（以 CF 等为例） | Game virtual goods | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号复现 | REVIEW_REQUIRED | I-N12；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N13 | 游戏点券 / 充值 | Game virtual goods | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D1 CLAIM / 类目供给 | REVIEW_REQUIRED | I-N13；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N14 | 游戏皮肤 / 道具 / 装备 | Game virtual goods | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D1 CLAIM / 类目供给 | REVIEW_REQUIRED | I-N14；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N15 | 游戏租号 / 代练 / 首充号 / 自抽号 | Game virtual goods | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D1 CLAIM / 类目供给 | REVIEW_REQUIRED | I-N15；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N16 | Dragonfly 25.1 软件授权码 / 激活 | Software activation | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号 | REVIEW_REQUIRED | I-N16；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N17 | ArchiCAD 29 教育订阅 / 激活 | Software activation | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N17；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N18 | 课程 / 题库激活码 | Digital activation | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N18；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N19 | 多端多商户商城系统源码 | Source code | PRODUCT_TYPE | UNKNOWN | D2 / UNKNOWN；继承直接观察，未刷新 | LOW（原始定位保留；本轮未刷新） | REUSED_INTEREST / 原始想要与浏览保留 | REVIEW_REQUIRED | I-N19, S08 / item989122652146；36想要、808浏览；旧记录同时说明后来下架，当前供给状态未刷新；观察日不等于行为期间 |
+| N20 | 小程序 / 网站后台系统源码 | Source code | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | UNKNOWN | I-N20；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N21 | WordPress 700+主题模板包（外贸/企业站用途未核验） | Website templates | BUNDLE | UNKNOWN | D2 / UNKNOWN；继承直接观察，未刷新 | LOW（原始定位保留；本轮未刷新） | REUSED_INTEREST / 原始想要与浏览保留 | REVIEW_REQUIRED | I-N21, S07 / item810121295766；804想要、约1万浏览；只支持通用700+主题包，不能证明外贸/企业用途适配；观察日不等于行为期间 |
+| N22 | 中小企业报价管理Windows软件 | Utility software | PRODUCT_TYPE | UNKNOWN | D2 / UNKNOWN；继承直接观察，未刷新 | LOW（原始定位保留；本轮未刷新） | REUSED_INTEREST / 原始想要与浏览保留 | UNKNOWN | I-N22, S11 / item974663190233；133想要、5008浏览；单个软件观察不代表稳定市场；观察日不等于行为期间 |
+| N23 | AI 标书制作 / 标书生成软件 | Utility software | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号复现 | UNKNOWN | I-N23, C-03（按次服务；软件本体未验证）；锚点为按次标书生成服务D2；不能证明可下载/自用软件 |
+| N24 | 电商商品图片采集软件（整理功能未核验） | Utility software | PRODUCT_TYPE | UNKNOWN | D2 / UNKNOWN；继承直接观察，未刷新 | LOW（原始定位保留；本轮未刷新） | REUSED_INTEREST / 原始想要与浏览保留 | REVIEW_REQUIRED | I-N24, S13 / item920219589301；722想要、5163浏览；观察支持图片采集，附加整理能力/第三方资产权利未核验；观察日不等于行为期间 |
+| N25 | 闲鱼关键词监控 / 上新提醒软件 | Utility software | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号 | REVIEW_REQUIRED | I-N25；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N26 | Python Excel / Word / PDF 办公自动化脚本包 | Utility/software pack | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | UNKNOWN | I-N26；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N27 | PDF 在线 / 批处理工具 | Utility software | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号 | UNKNOWN | I-N27；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N28 | AI 漫剧一键制作工具 | AI tool | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N28；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N29 | AIGC 提示词 + 示例图 + 参数包 | AI content asset | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N29；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N30 | 院校 / 专业考研复试资料包 | Education | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号复现 | REVIEW_REQUIRED | I-N30；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N31 | 本地化初中 / 中考学科试卷复习包 | Education | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号复现 | REVIEW_REQUIRED | I-N31；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N32 | 教师教案 + PPT + 作业设计资料包 | Education | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号复现 | REVIEW_REQUIRED | I-N32；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N33 | 英语课堂互动 PPT 游戏课件包 | Education | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号 | REVIEW_REQUIRED | I-N33；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N34 | 公考 / 事业编 / 时政 / 题库资料包 | Education | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N34；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N35 | 职业资格 / 职称考试题库资料包 | Education | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号 | REVIEW_REQUIRED | I-N35；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N36 | SAT / DSE / 留学考试资料包 | Education | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N36；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N37 | 大学课程笔记 / 期末复习资料 | Education | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N37；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N38 | 上市公司高管团队稳定性面板数据 | Research data | PRODUCT_TYPE | UNKNOWN | D2 / UNKNOWN；继承直接观察，未刷新 | LOW（原始定位保留；本轮未刷新） | REUSED_INTEREST / 原始想要与浏览保留 | REVIEW_REQUIRED | I-N38, S18 / item966484455784；523想要、3591浏览；该具名数据产品，不外推其他指标数据集；观察日不等于行为期间 |
+| N39 | 上市公司供应链网络地位/PageRank数据 | Research data | PRODUCT_TYPE | UNKNOWN | D2 / UNKNOWN；继承直接观察，未刷新 | LOW（原始定位保留；本轮未刷新） | REUSED_INTEREST / 原始想要与浏览保留 | REVIEW_REQUIRED | I-N39, S19 / item1061281260797；194想要、1876浏览；仅该具名数据产品；观察日不等于行为期间 |
+| N40 | DID/政策事件面板数据（具体城市/企业版本未核验） | Research data | PRODUCT_TYPE | UNKNOWN | D2 / UNKNOWN；继承直接观察，未刷新 | LOW（原始定位保留；本轮未刷新） | REUSED_INTEREST / 原始想要与浏览保留 | REVIEW_REQUIRED | I-N40, S20 / item1059572721917；24想要、260浏览；支持DID/政策面板产品，不证明任意城市/企业版本；观察日不等于行为期间 |
+| N41 | SolidWorks 非标自动化设备 3D 图纸库 | Engineering assets | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号 | REVIEW_REQUIRED | I-N41；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N42 | 工业机器人 PROFINET / EtherCAT 配置手册包 | Engineering materials | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N42；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N43 | 芯片 / 半导体工艺制造资料合集 | Professional materials | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N43；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N44 | IE 工业工程经验 + 工具表资料包 | Professional materials | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号 | REVIEW_REQUIRED | I-N44；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N45 | 小提琴 / 大提琴制作图纸与技术文献 | Hobby/technical | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号 | REVIEW_REQUIRED | I-N45；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N46 | 日系胶片 Lightroom / PS 人像预设 | Photography assets | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号复现 | REVIEW_REQUIRED | I-N46, C-01（新增N63具名仿富士预设）；旧N46人像细分未确认；不继承推荐全类信号 |
+| N47 | 像素蛋糕漫展 / COS 修图预设口令 | Photography assets | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号复现 | REVIEW_REQUIRED | I-N47；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N48 | 手机 Log 调色 LUT（vivo X200/X300 等） | Photography assets | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N48；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N49 | 索尼 FX3 / 电影感 LUT 包 | Photography assets | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号 | REVIEW_REQUIRED | I-N49；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N50 | 婚纱 / 人像 PSD 背景前景水印素材包 | Design assets | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号复现 | REVIEW_REQUIRED | I-N50；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N51 | 剪辑音效库 / SFX 素材包 | Audio assets | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N51；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N52 | AE / PR 剪辑模板包 | Video assets | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N52；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N53 | 乐谱 + 伴奏 / 示范音频资料包 | Music assets | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N53；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N54 | 蓝桥杯 / 技能竞赛经验与资料包 | Professional/education | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N54；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N55 | 货代 / 行业专业资料包 | Professional materials | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N55；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N56 | 日本关西自由行 PDF + 地图清单 | Lifestyle guide | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N56；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N57 | 家常菜 / 空气炸锅菜谱电子书 | Lifestyle guide | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N57；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N58 | 小吃 / 餐饮制作教程资料包 | Lifestyle guide | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N58；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N59 | 编织 / 手工教程资料库 | Hobby guide | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | U / 供给或推导 | REVIEW_REQUIRED | I-N59；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N60 | 摄影课程 / 后期教程资料包 | Creative education | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号复现 | REVIEW_REQUIRED | I-N60；无本轮逐项买方证据；旧推荐入口不等于本候选商品 ID |
+| N61 | 短视频搬运 / 去重 / “过原创”工具 | Video/circumvention tools | PRODUCT_TYPE | UNKNOWN | U / CURRENT_EVIDENCE_UNKNOWN | LOW（当前Scope未核验） | D2 CLAIM / 弱信号复现 | HIGH_RISK | I-N61；新增来自聊天重跑声称；无逐项 ID；规避导向需隔离 |
+| N62 | AI辅助标书按次方案生成服务（标探长AI-标书技术方案） | AI-assisted bid service | SKU（服务Offer） | 19.90元/次；旗舰版一本方案；工期1–5天 | D2 / UNKNOWN；本轮页面可见累计弱信号 | MEDIUM（可定位；行为期间未知） | NEW_CURRENT_OBSERVATION / 199想要、2207浏览 | UNKNOWN | C-03；按次服务；全店累计352非SKU销量；无独立明确付费意图/交易 |
+| N63 | 李大本事仿富士胶片LR/PS预设（6个xmp） | Photography presets | SKU | 0.80元 | D2 / UNKNOWN；本轮页面可见累计弱信号 | MEDIUM（可定位；行为期间未知） | NEW_CURRENT_OBSERVATION / 18想要、276浏览 | REVIEW_REQUIRED | C-01；具体6个xmp预设；版权/授权未核验；卖家累计28712非SKU销量 |
+| N64 | AI漫剧制作教程（不附加未证项目文件/Workflow） | AI tutorials | PRODUCT_TYPE | UNKNOWN | D4 / UNKNOWN；报道仅称半年 | MEDIUM（reported；起止未知、无逐单记录） | 平台交易案例reported；需求存在性，不代表规模/当前转化 | UNKNOWN | H-02；CONFIRMED_DEMAND仅时期未知；不能计入当前90天确认或下传N01组合 |
 
-These are concrete market candidates but current evidence is too shallow or mainly category/adjacent derived.
+## 4. Coverage, prices and refresh
 
-| Product type | Level | Why watchlist |
-|---|---|---|
-| 其他视频会员月卡/周卡 | D1 | official surface, exact current SKU scan incomplete |
-| 音乐 / 音频 / 阅读会员 | D1 | official surface only in this run |
-| 京东卡 / 通用代金卡 / 加油卡 | D1 | official surface; direct SKU evidence not yet retained |
-| 景点 / 演出 / 网约车券 | D1 | official surface; direct SKU evidence not yet retained |
-| 游戏点券 / 充值 | D1 | official game-trade surface only |
-| 游戏皮肤 / 道具 / 装备 | D1 | official surface only |
-| 小程序 / 网站后台系统源码 | D1 | adjacent to direct source-code sample |
-| Excel 库存 / 利润 / 订单模板 | D1 | old candidate was derived from office demand |
-| Excel CRM / 客户跟进模板 | D1 | derived |
-| Excel 报价 / 订单 / 发票模板 | D1 | derived from quotation software |
-| Excel 多表合并 / 清洗工具 | D1 | macro/adjacent evidence only |
-| 文件批量重命名 / 归档工具 | D1 | derived |
-| 电商 SKU 图片改尺寸 / 压缩 / 重命名工具 | D1 | derived from a different observed image-collection product |
-| AI 标书教程 + 评分检查表 | D1 | derived from bid-software/service market |
-| 短剧扒剧 / 竞品复盘模板 | D2 weak | current RMB9.99/12 wants; weak direct depth |
-| AE / PR 剪辑模板包 | D1/D2 | market visible but current cluster contaminated by circumvention software |
-| Font / icon / generic design asset pack | D1 | direct current Xianyu evidence not retained |
-| WordPress 垂直 starter template | D1 | derived from broad WP bundle |
-| Landing-page / HTML template pack | D1 | needs direct scan |
+母集是历史X3R3的60候选，不是平台全集；N61来自v2.1输入；N62/N63来自本轮不同Offer发现；N64从未验证Bundle拆出已报道教程本体。没有重新扫描15个市场面，也没有对64个候选完成两条入口后的发现饱和检查。具名对象与原始数值可直接定位的8条旧观察可复用为INTEREST／D2／UNKNOWN，标继承未刷新；缺推荐商品自身ID或Scope错配的旧资料仅作待核验入口。刷新只处理可能改变结论的缺口，不要求每轮重做全部观察。
 
-## 5. Market-signal-only appendix
+现场价格：C-01具名仿富士6个xmp预设0.80元；C-02迅雷会员7.87–166.99元；C-03按次AI标书服务19.90元。N62记录按次服务报价与1–5天工期，N63记录6个xmp预设报价；它们不能成为旧细分目录N46／软件目录N23的当前报价。其他价格均为旧记录，当前价格UNKNOWN。数值可随页面变化；必须保留商品ID、观察日、Scope和累计口径。
 
-Demand/market presence is visible, but the observed form should not be framed as a clean executable recommendation inside this project:
+下一次研究优先补能改变结论的独立付费Offer意图或近期交易；同时保留小型新入口扫描，避免只刷新旧目录。合法低损失需求实验可解决未知，但本项目没有发布、交易或测试执行。风险核验和实验就绪属于另行授权的执行范围。
 
-| Product type | Evidence | Why separated |
-|---|---|---|
-| CF / other game accounts | D3 family | multiple current sellers and high intent, but account-transfer form has title/platform dependency |
-| 游戏租号 / 代练 / 首充号 / 自抽号 | D1 | official category, but service/account-like |
-| shared account credentials / third-party access | current clusters | observed market demand but access model can be unauthorized |
-| cracked software / license resale | current market signals | demand signal only |
-| 搬运 / 去重 / 过原创 / 过审 tools | strong current intent in some clusters | circumvention-oriented form |
-| academic ghostwriting / 代做 | historical demand signal | not a standardized clean-product catalog item |
+## 5. Historical preservation and current pointers
 
-## 6. Strongest market conclusions
+- [Research Ledger](RESEARCH_LEDGER_2026-10-03.md)：本轮观察、历史报道、61条导入原始声称和限制。
+- [Old catalog, complete original bytes](history/FINAL_SKU_CATALOG_2026-10_PRE_V2_2.md)：旧body保留，标签已superseded。
+- [v2.1 chat export, complete original bytes](history/XIANYU_MARKET_MAP_RERUN_V2_1_2026-10-03.md)：REVIEW INPUT / NOT CANONICAL。
+- [60-candidate historical universe](X3R3_NORMALIZED_PLATFORM_FIRST_SKU_UNIVERSE_R1_2026-10.md)：只作历史候选来源，旧D-Level不继承。
 
-### Conclusion A — native virtual goods matter
-
-The old research overfocused on digital files and software. Current platform taxonomy and current membership clusters show that **membership/recharge, vouchers and game virtual goods are native Xianyu standardized-product surfaces** and must be represented in any honest market map.
-
-### Conclusion B — education is larger than the old pool suggested
-
-School/major-specific postgraduate packs, local middle-school packs, teacher resources, exam banks and activation products repeatedly appear in current related markets. “Education materials” should be treated as several distinct product families, not one tail category.
-
-### Conclusion C — photography presets are one of the clearest digital-asset markets
-
-Multiple independent current preset/LUT products coexist, with the Japanese-film preset at 603 wants and several other style/use-case variants. That is stronger replicated product-market evidence than many derived Office template ideas.
-
-### Conclusion D — research datasets are real but niche
-
-Current direct dataset pages show hundreds of wants on two specific processed public-company datasets. Demand is visible and highly standardized, but price is extremely low and individual datasets are niche. This project records demand, not economics.
-
-### Conclusion E — derived Office ideas were overstated
-
-Excel CRM, quote sheets, generic cleanup/file tools are plausible, but current evidence is weaker than their previous S/A/B placement implied. They remain watchlist until direct SKU evidence is found.
-
-## 7. Source ledger
-
-- S01 — Xianyu current official homepage taxonomy:
-  https://www.goofish.com/
-- S02 — Xinhua 2026 H1 Xianyu AI-service data:
-  https://www.xinhuanet.com/tech/20260729/3ba4f5d1aaf044229b890f40ce52f492/c.html
-- S03 — Youku SVIP current listing:
-  https://www.goofish.com/item?categoryId=0&id=1011466117609
-- S04 — current Xunlei membership related-results cluster:
-  https://www.goofish.com/item?categoryId=201703201&id=829473725585
-- S05 — current food/member/order related-results cluster:
-  https://www.goofish.com/item?categoryId=0&id=692505015204
-- S07 — WordPress 700+ theme bundle:
-  https://www.goofish.com/item?categoryId=201454708&id=810121295766
-- S08 — multi-merchant mall source code:
-  https://www.goofish.com/item?categoryId=201453616&id=989122652146
-- S09 — current education/exam related-results cluster:
-  https://www.goofish.com/item?categoryId=50023914&id=1058677363846
-- S10 — current photography preset/LUT related-results cluster:
-  https://www.goofish.com/item?categoryId=50023914&id=1002437237853
-- S11 — small-business quotation software:
-  https://www.goofish.com/item?categoryId=0&id=974663190233
-- S12 — current AI bid-writing market:
-  https://www.goofish.com/item?categoryId=0&id=968373210332
-- S13 — ecommerce image-productivity software:
-  https://www.goofish.com/item?categoryId=201453616&id=920219589301
-- S14 — current software/monitoring cluster:
-  https://www.goofish.com/item?categoryId=0&id=1042808803331
-- S15 — current digital/technical/office/lifestyle related-results cluster:
-  https://www.goofish.com/item?categoryId=50023914&id=1056677193291
-- S16 — current video/AI/software related-results cluster:
-  https://www.goofish.com/item?categoryId=50023914&id=1075972228395
-- S17 — current education/PPT/recipe/prompt related-results cluster:
-  https://www.goofish.com/item?id=1037962664440
-- S18 — listed-company management-team-stability dataset:
-  https://www.goofish.com/item?id=966484455784
-- S19 — listed-company supply-chain PageRank dataset:
-  https://www.goofish.com/item?id=1061281260797
-- S20 — current DID/policy panel dataset:
-  https://www.goofish.com/item?categoryId=202036301&id=1059572721917
-- S21 — current CAD/SolidWorks related market:
-  https://www.goofish.com/item?categoryId=0&id=899758670883
-
-## 8. Final counts
-
-~~~text
-CONFIRMED_DEMAND=6
-PROBABLE_DEMAND=44
-WATCHLIST=19
-MARKET_SIGNAL_ONLY=6
-CORE_CATALOG_CONFIRMED_PLUS_PROBABLE=50
-FINAL_UNIQUE_WINNER=NOT_REQUIRED
-SUPPLY_RESEARCH=OUT_OF_SCOPE
-~~~
-
-The main project deliverable is the 49-item Confirmed + Probable catalog above.
-Watchlist and market-signal-only entries remain attached so the market map is not falsely narrowed.
+Archive SHA256 and input SHA256 are recorded in the ledger. Historical X1–X3R4 and prior execution entries remain historical records; README and REVIEWER_HANDOFF point to this calibrated result. This project-owned path is the canonical calibrated result; archived review inputs cannot override it.

@@ -1,154 +1,31 @@
 # Xianyu
 
-## 项目状态
+## 当前项目结果
 
-**CLOSED / PASS**
+本项目交付闲鱼虚拟／数字商品的可复核发现目录。2026-10-03按v2.2校准后，保留**64个候选：1个reported D4／时期UNKNOWN、11个D2／累计时期UNKNOWN（3个本轮入口、8个继承直接观察）、52个U；当前90天可归属D3/D4=0**。N64教程本体保留时期未知CONFIRMED_DEMAND，其余63个为WATCHLIST。零个D3/D4指现有当前样本证据不足，不表示市场零需求。
 
-本项目目标已经完成：
+新华社报道中，平台2026上半年AI教程与课程FAMILY占比数据为历史reported D4；AI漫剧制作教程个案为reported D4，但“半年”起止UNKNOWN，不能归属当前90天或附加项目文件／Workflow组合，也不能断言全部交易在90天窗外。旧6/44和聊天重跑1/11/49均已被当前校准标签替代，原始文件完整保留。
 
-> **基于闲鱼真实市场需求，形成明确、可复核的商品类型 / SKU 目录。**
+当前主交付：[FINAL_SKU_CATALOG_2026-10.md](docs/FINAL_SKU_CATALOG_2026-10.md)。核验证据和61条旧声称：[RESEARCH_LEDGER_2026-10-03.md](docs/RESEARCH_LEDGER_2026-10-03.md)。状态及合并交接：[REVIEWER_HANDOFF.md](REVIEWER_HANDOFF.md)。
 
-最终主交付：
-- [docs/FINAL_SKU_CATALOG_2026-10.md](./docs/FINAL_SKU_CATALOG_2026-10.md)
+本轮完成文档校准和三个公开锚点检查，没有64次重新现场核验，也没有重新证明15个市场面完整覆盖。迅雷会员页面弱信号为D2；新增N63具名仿富士6个xmp预设与N62按次AI标书服务，各为D2／行为期间UNKNOWN；它们不能替旧N46人像细分或N23自用软件证明需求。64行来自历史60+输入新增1+现场发现2+单独保留报道教程1，不冻结旧目录数量。另8条旧观察保留原始想要/浏览与直接商品ID，复用为D2／时期UNKNOWN／LOW／未刷新；52行仍因缺定位或Scope匹配而为U。未刷新不等于证据无效，也不要求重做全部旧观察。N21仅支持通用700+主题包，不证明外贸/企业用途适配。
 
-最终目录：
-- **6 个 CONFIRMED_DEMAND**
-- **44 个 PROBABLE_DEMAND**
-- **50 个核心商品类型 / SKU**
-- 另保留 19 个 WATCHLIST
-- 6 个 MARKET_SIGNAL_ONLY
+## 方法
 
-项目不要求唯一冠军，也不强制 Top N。
+平台发现 → 具体候选 → 买方证据与供给分开 → Scope和Lineage → 当前／历史分别判断 → Demand与Risk分列。
 
-## 最终选品方法
+多挂单和多个想要最多支持弱信号D2；D3需要独立且明确针对付费Offer的意图；D4需要可归属交易／标明reported的平台交易报道。卖家累计销量不能写成SKU销量，观察日不能写成交易期间。
 
-经过完整复查，项目最终采用 **platform-first**，不再以“我们能做什么 / 哪些服务能产品化”为主要候选来源。
+下一次调用优先刷新关键证据，并保留小型新入口探索。访问／时间／预算限制可以终止本轮并明确剩余Unknown，不宣称市场饱和或没有需求。
 
-~~~text
-闲鱼官方当前类目
-→ 当前直接 SKU
-→ 平台 / 商品族交易数据
-→ 多卖家 / 多商品复现
-→ Provenance + Signal Lineage
-→ D4 / D3 / D2 / D1 / U
-→ 统一 SKU 粒度
-→ Final SKU Catalog
-→ PROJECT CLOSEOUT
-~~~
+## 项目边界与历史
 
-### Provenance
+目录研究不包括找供应商、授权落地、制作、上架、真实支付、交付、账号自动化或VPS/runtime。历史runtime保留且不属于本次依赖，未做相关变更。
 
-~~~text
-PLATFORM_TRANSACTION
-PLATFORM_CATEGORY
-DIRECT_SKU
-RELATED_RESULTS_CLUSTER
-DERIVED_ADJACENT
-~~~
+- [完整旧目录](docs/history/FINAL_SKU_CATALOG_2026-10_PRE_V2_2.md)
+- [原始v2.1聊天导出（非canonical）](docs/history/XIANYU_MARKET_MAP_RERUN_V2_1_2026-10-03.md)
+- [历史60候选母表](docs/X3R3_NORMALIZED_PLATFORM_FIRST_SKU_UNIVERSE_R1_2026-10.md)
+- [历史种子和方法资料](docs/X3R3_PLATFORM_FIRST_SKU_UNIVERSE_SEED_2026-10.md)
+- [执行记录](EXECUTION_EVIDENCE.md)
 
-### 需求证据等级
-
-~~~text
-D4  平台 / 第一方商品族交易证据，或可归属 SKU 成交证据
-D3  多个独立当前闲鱼市场信号
-D2  单个当前直接 SKU / 一致相关商品簇
-D1  平台类目 / 宏观 / 相邻推导
-U   证据不足
-~~~
-
-关键纪律：
-- “想要/浏览”不等于销量；
-- 卖家累计销量不等于 SKU 销量；
-- “为你推荐”不等于搜索深度或市场份额；
-- 相邻需求只能生成候选，不能直接证明具体 SKU；
-- 同一卖家矩阵 / 推荐链不重复计权；
-- 货源 UNKNOWN 不用于淘汰市场需求。
-
-## 复查后修正了什么
-
-### 1. 旧 36 SKU 不是完整母集
-
-旧 36 个 SKU 保留为历史种子，但其旧 S/A/B 排名已经 supersede。
-
-原因：
-- X1 是 service-first discovery，天然偏向软件 / AI / Office / 服务产品化；
-- 若干候选来自少数商品页的推荐模块；
-- 部分 SKU 是相邻需求外推；
-- SKU 粒度不统一。
-
-### 2. 重建为 15 个平台原生市场面
-
-最终覆盖：
-
-1. 会员 / 充值
-2. 卡券 / 票务 / 代金券
-3. 游戏虚拟物
-4. 软件 / License / 激活码
-5. 源码 / 插件 / 工具软件
-6. AI 教程 / Workflow / 工具
-7. Office / 经营模板
-8. 教育 / 考试 / 证书资料
-9. 研究数据 / 数据产品
-10. 工程图纸 / 技术资料
-11. 摄影预设 / LUT / 修图资产
-12. 视频 / 音频 / 设计素材
-13. 网站 / WordPress / Web 模板
-14. 行业 / 专业知识资料
-15. 旅行 / 生活 / 菜谱 / 兴趣攻略
-
-X3R3 先建立 70+ seed，再标准化成 60 个可比较候选，最终由 X3R4 形成核心 50 SKU 目录。
-
-## 最强结论摘要
-
-当前证据最强的市场方向包括：
-- AI 漫剧教程 + 项目 / 工作流文件；
-- 会员类虚拟商品；
-- 院校 / 专业考研复试资料；
-- 本地化初中 / 中考资料；
-- 摄影 Lightroom / PS 预设；
-- 漫展 / COS / 人像修图预设口令。
-
-此外，WordPress 模板、AI 标书软件、电商图片效率软件、研究数据产品、SolidWorks 图纸库等进入 PROBABLE_DEMAND 核心目录。
-
-旧的 Excel CRM、通用 Excel 清洗、文件重命名等方向没有被判定“没需求”，而是因为现有证据主要来自相邻需求，降到 WATCHLIST。
-
-## 项目边界
-
-以下全部不属于本项目，也不是未完成事项：
-
-- 找货源 / 找供应商；
-- 采购；
-- 版权 / 授权方案落地；
-- 商品制作；
-- 上架；
-- 真实订单 / 支付退款；
-- 交付与售后；
-- 账号自动化；
-- VPS/runtime；
-- 规模化运营。
-
-如果后续要做这些，应以最终 SKU 目录为输入，另立项目或另开明确独立范围。
-
-## 阅读顺序
-
-1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — 最终项目状态 / CLOSEOUT
-2. [docs/FINAL_SKU_CATALOG_2026-10.md](./docs/FINAL_SKU_CATALOG_2026-10.md) — **最终主交付**
-3. [docs/X3R2_PROJECT_REVIEW_METHOD_RESET_2026-10.md](./docs/X3R2_PROJECT_REVIEW_METHOD_RESET_2026-10.md) — 为什么旧方法需要修正
-4. [docs/X3R3_NORMALIZED_PLATFORM_FIRST_SKU_UNIVERSE_R1_2026-10.md](./docs/X3R3_NORMALIZED_PLATFORM_FIRST_SKU_UNIVERSE_R1_2026-10.md) — 60 个标准化候选
-5. [docs/X3R3_PLATFORM_FIRST_SKU_UNIVERSE_SEED_2026-10.md](./docs/X3R3_PLATFORM_FIRST_SKU_UNIVERSE_SEED_2026-10.md) — 70+ seed 市场母集
-6. [EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) — 全部执行 / Reviewer Evidence
-7. [docs/X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md](./docs/X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md) — 历史 36 SKU 种子池
-8. 更早 X1 / X2 / X2R1 / X3 文档 — 历史研究证据
-
-## 历史 runtime
-
-历史 Xianyu VPS/runtime 与本选品项目已经解耦：
-
-~~~text
-LEGACY_RUNTIME_CONTEXT=PRESERVED
-CURRENT_PROJECT_DEPENDENCY=NO
-CURRENT_PROJECT_READ_REQUIRED=NO
-CURRENT_PROJECT_MUTATION_ALLOWED=NO
-~~~
-
-本项目 closeout 没有执行任何删除、账号变更、交易、支付或 runtime 修改。
+上述固定项目路径为当前canonical结果；历史输入和旧状态不覆盖本轮校准结论。

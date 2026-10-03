@@ -28,7 +28,7 @@
 | **Unified Pay System** | 统一支付、退款、对账与权益/履约基础能力 | [Handoff](./unified-pay-system/REVIEWER_HANDOFF.md) |
 | **VPN Network Optimization** | 自建 VPN 稳定性、尾延迟、对照测试与可迁移部署/回滚 | [Handoff](./vpn-network-optimization/REVIEWER_HANDOFF.md) |
 | **Dujiao-Next** | 商城运行时、商品/订单/支付/履约相关能力 | [Handoff](./dujiao-next/REVIEWER_HANDOFF.md) |
-| **Xianyu** | 闲鱼自动化运行项目 | [Handoff](./xianyu/REVIEWER_HANDOFF.md) |
+| **Xianyu** | 闲鱼虚拟商品需求目录研究（历史 runtime 保留） | [Handoff](./xianyu/REVIEWER_HANDOFF.md) |
 
 ### 产品与商业项目
 
