@@ -18,7 +18,7 @@ G3-A Health/readiness/advisory              PASS
 G3-B Migration package D1-D3                PASS_OFFLINE
 G3-C C1 Manual-control contract             PASS
 G3-C C2A Synthetic UI package repair        PASS_WITH_TIMING_GAP
-G3-C C2B-P0 Worktree reconciliation         IN_PROGRESS
+G3-C C2B-P0 Local-fact persistence          IN_PROGRESS
 G3-C C2B Synthetic Clash UI canary          NEXT_OWNER_CHECKPOINT
 G3-C C2C Real HY2-in-Clash canary           PENDING
 G3-B Fresh-target migration rehearsal       DEFERRED
@@ -59,91 +59,100 @@ Current known components:
 
 - **Current production:** WireGuard remains connected and authoritative.
 - **G3-C C1:** PASS; Windows Mihomo v1.19.32 accepted.
-- **G3-C C2A synthetic UI repair:** technical/safety package accepted from commit `408f632c...`; timing gap recorded without replay.
-- **C2B package identity:** reviewed runner blob `cd5a2eb768b54d13307b651ea514a912b9742c9d`; template blob `b50f9747157200670d6e85fdd53ba81e9a8c5c76`.
-- **Executor interruption residue:** the managed worktree may still contain three unstaged superseded R1 closeout edits in `EXECUTION_EVIDENCE.md`, `EXECUTOR_HANDOFF.md`, and `docs/ROUND_TIMING_RETROSPECTIVE.md`.
-- **Owner has explicitly resumed the main project on 2026-10-04.**
-- **Benchmark detour remains cancelled and outside project governance.**
+- **G3-C C2A repair:** accepted technically; C2B runner/template identities remain accepted.
+- **P0 result:** the managed Executor worktree contains exactly the three expected dirty R1 closeout documents, but they contain unique facts not yet durable on canonical main. They must not be discarded.
+- **Unique fact classes reported by Executor:** GitHub fresh-read-back, Git persistence timing, and safe fast-forward/reconciliation result.
+- **No live action occurred in P0.**
+- **Benchmark detour remains cancelled.**
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0
+GATE_ID=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
 STATE=AUTHORIZED
-PREVIOUS_RESULT=PASS_TECHNICAL_WITH_RECORDED_TIMING_OBSERVABILITY_GAP
+PREVIOUS_RESULT=RETURN_P0_LOCAL_FACTS_NOT_DURABLE
 OWNER_CONTINUE_AUTHORIZATION=2026-10-04
-OBJECTIVE=Reconcile and clean only the known superseded unstaged R1 closeout edits before the live Owner C2B checkpoint.
-MAX_ENDPOINT_THIS_ROUND=Git/worktree/document reconciliation only; no C2B runner execution, Clash/Mihomo runtime, Secret, network, route, proxy/TUN/WG or VPS action.
+OBJECTIVE=Persist only the unique factual R1 closeout material from the three dirty local documents onto the latest canonical main without reintroducing stale Gate/status text.
+MAX_ENDPOINT_THIS_ROUND=Git/document reconciliation only; no C2B runner, Clash/Mihomo, DPAPI/Secret, network, route, proxy/TUN/WG or VPS action.
 MANDATORY_REVIEW_STOP=YES
-EXPECTED_DIRTY_FILES=EXECUTION_EVIDENCE.md,EXECUTOR_HANDOFF.md,docs/ROUND_TIMING_RETROSPECTIVE.md
-C2B_RUNNER_EXECUTION_AUTHORIZED=NO_IN_P0
-CLASH_PROFILE_APPLY_AUTHORIZED=NO
-MIHOMO_EXECUTION_AUTHORIZED=NO
-SECRET_READ_AUTHORIZED=NO
-NETWORK_REQUEST_AUTHORIZED=NO
-WG_CHANGE_AUTHORIZED=NO
-ROUTE_CHANGE_AUTHORIZED=NO
-SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
-TUN_CHANGE_AUTHORIZED=NO
-VPS_ACCESS_AUTHORIZED=NO
-OWNER_INTERVENTION_REQUIRED=NO_IN_P0
-ESTIMATED_EXECUTION_TIME=5-10_minutes
+SOURCE_DIRTY_FILES=EXECUTION_EVIDENCE.md,EXECUTOR_HANDOFF.md,docs/ROUND_TIMING_RETROSPECTIVE.md
+DISCARD_SOURCE_DIRTY_HUNKS_BEFORE_PERSISTENCE=NO
+BLIND_WHOLE_FILE_OVERWRITE_AUTHORIZED=NO
+STALE_REVIEWER_GATE_REINTRODUCTION_AUTHORIZED=NO
+C2B_SOURCE_MODIFICATION_AUTHORIZED=NO
+C2B_RUNNER_EXECUTION_AUTHORIZED=NO
+LIVE_ACTION_AUTHORIZED=NO
+OWNER_INTERVENTION_REQUIRED=NO
+ESTIMATED_EXECUTION_TIME=8-15_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### P0 TASK
+### R1 TASK
 
-1. First action: record `ROUND_STARTED_AT` before fetch/status/preflight.
-2. Fresh fetch `origin/main`; do not reset or discard anything yet.
-3. Inspect the managed worktree status and exact diffs for the three expected dirty files.
-4. Require that there are **no other** modified/untracked files in `vpn-network-optimization/`. Any extra project file => RETURN.
-5. Compare each dirty hunk against current canonical GitHub Evidence/Handoff/timing records.
-6. If any dirty hunk contains unique factual evidence not already durably represented on `main`, RETURN with the exact file/hunk class; do not discard it.
-7. If all three dirty files contain only superseded/duplicate R1 closeout text, discard **only those exact three unstaged modifications** back to current canonical `origin/main`.
-8. Do not touch C2B source files; verify runner/template blobs remain exactly the accepted identities.
-9. End state must be a clean project-scoped worktree for `vpn-network-optimization/`.
-10. Persist only a bounded reconciliation record in Executor Handoff / Evidence if needed; do not alter C2B source or Reviewer Handoff.
-11. Fresh GitHub read-back.
-12. Record `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN=YES|NO`. If >10m record cause.
-13. STOP_AT_REVIEWER.
+1. **First action before fetch/status/diff:** record `ROUND_STARTED_AT=<UTC ISO8601>`.
+2. Preserve the existing dirty worktree exactly until the unique facts are captured.
+3. Fresh fetch the latest `origin/main`; unrelated main advancement is expected and must not trigger VPN technical replay.
+4. Inspect exact diffs for only the three source dirty files.
+5. Classify every dirty hunk as:
+   - `UNIQUE_FACT_TO_PERSIST`;
+   - `ALREADY_DURABLE_DUPLICATE`;
+   - `STALE_STATE_OR_GATE_TEXT_DO_NOT_PERSIST`.
+6. The minimum unique fact set expected from the RETURN is:
+   - final GitHub fresh-read-back fact(s);
+   - Git persistence timing fact(s);
+   - safe fast-forward/reconciliation result.
+   If the local diff contains any other unique factual material, include it explicitly in Evidence and preserve it.
+7. Do **not** commit the dirty files wholesale from the stale local base. Instead, reconcile only the unique factual hunks into the latest canonical versions of:
+   - `EXECUTION_EVIDENCE.md`;
+   - `EXECUTOR_HANDOFF.md`;
+   - `docs/ROUND_TIMING_RETROSPECTIVE.md`.
+8. Current Reviewer Gate/state must remain the R1 Gate from canonical main; local stale Gate/status prose must not overwrite it.
+9. Do not modify C2B runner/template/validator/package source.
+10. After the unique facts are safely committed and fresh-read back from GitHub, clean the original three local unstaged closeout edits only if they are now fully represented durably.
+11. Require project-scoped worktree clean at the end. If any source hunk cannot be proven durable, RETURN and preserve it.
+12. Verify accepted C2B runner/template blob identities unchanged.
+13. Record finish/elapsed/overrun. If >15m, record the specific Git/document phase causing it.
+14. STOP_AT_REVIEWER.
 
 ### ACCEPTANCE_CRITERIA
 
 PASS_CANDIDATE requires:
-- no unique evidence lost;
-- only the three known superseded unstaged docs were discarded, if present;
-- project-scoped worktree clean;
-- accepted C2B runner/template blob identities unchanged;
+- every unique local fact is durable on latest canonical main;
+- no stale Gate/status text reintroduced;
+- no unique source fact discarded before durability proof;
+- original three dirty local edits are clean only after durability proof;
+- C2B source blobs unchanged;
 - no live/runtime/network/Secret action;
-- complete timing.
+- complete timing;
+- GitHub fresh read-back confirms the persistence commit is in current main or safely reconciled after unrelated main movement.
 
 ### OWNER_ONLY_ACTIONS
 
-NONE in P0.
+NONE.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Perform only the bounded worktree reconciliation. Do not run C2B.
+Persist only the unique facts from the three dirty R1 closeout docs onto latest canonical state; do not overwrite whole stale files and do not run C2B.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return `PASS_CANDIDATE_G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0` or precise `RETURN_*`; STOP_AT_REVIEWER.
+Return `PASS_CANDIDATE_G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1` or precise `RETURN_*`; STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Codex reconciles the interrupted R1 worktree. If P0 passes, Reviewer opens the live Owner C2B synthetic/no-traffic Clash UI canary immediately.
+Codex durably persists the three local R1 closeout fact classes. If R1 passes and the worktree is clean, Reviewer opens C2B Owner synthetic/no-traffic UI canary.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE in P0.** Keep WireGuard and Clash unchanged.
+**NONE.** Keep WireGuard and Clash unchanged.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Execute only C2B-P0 worktree reconciliation; do not run C2B.
+Execute only P0-R1 local-fact persistence; no live action and no whole-file stale overwrite.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0 or precise RETURN; STOP.
+Return PASS_CANDIDATE_G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1 or precise RETURN; STOP.
 
 ## EVIDENCE_POINTERS
 
