@@ -2346,8 +2346,8 @@ REVIEWER_HANDOFF_MODIFIED=NO
 The top-level catch previously evaluated a statically named exception type that was not resolvable in the failing runtime, allowing the classifier to mask the original failure. The replacement safely extracts runtime type name and `FullyQualifiedErrorId`, only maps known parameter-binding types with a narrowly matched `Start-R3SuppressedProcess` binding ID, preserves only constrained uppercase runner codes, and returns a fixed generic code if classification itself encounters an error. The production baseline now reads the current `SFO2-A` adapter index and requires a positive value plus a control-route alias and index matching that same snapshot value. Static review found no benchmark, request, protocol, Secret, process-start, or cleanup logic changes. The live Windows readback and all fixtures were local/read-only; no SSH, remote operation, network request, Secret access, or network mutation occurred.
 
 ROUND_STARTED_AT=2026-10-03T05:18:10Z
-ROUND_FINISHED_AT=PENDING
-ACTUAL_ELAPSED=PENDING
-TIME_OVERRUN=PENDING
+ROUND_FINISHED_AT=2026-10-03T05:32:55Z
+ACTUAL_ELAPSED=14m45s
+TIME_OVERRUN=NO
 TIME_OVERRUN_CAUSE=NONE
 STOP_AT_REVIEWER=YES
