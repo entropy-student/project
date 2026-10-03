@@ -4088,3 +4088,34 @@ CURRENT_R1_LIVE_OR_NETWORK_ACTION=NO
 
 The prior C2A closeout's source-commit/read-back, measured Git-persistence interval, seven-file blob check, and unrelated-main fast-forward facts were not all represented in canonical main before this reconciliation. The source commit and technical result were already documented; those duplicate facts were not restated as new outcomes. The stale local C2A status wording was not used to replace the current R1 Gate or the Reviewer-owned disposition. The unique facts were committed and fresh-read from GitHub before the exact three superseded files were cleaned; the original managed worktree then fast-forwarded to the same commit with a clean project status. The current round's exact elapsed time is unavailable because its start preceded the first captured clock marker; the captured post-fetch interval exceeded 17 minutes, so the estimate was exceeded even though the precise total cannot be reconstructed.
 
+
+
+## Reviewer reconciliation — G3C C2B P0 local-fact persistence R1 — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
+EXECUTOR_RESULT=RETURN_R1_TIMING_START_NOT_CAPTURED
+REVIEWER_FORMAL_PASS=NO
+REVIEWER_TECHNICAL_DISPOSITION=CLOSED_WITH_RECORDED_TIMING_GAP_NO_REPLAY
+PERSISTENCE_COMMIT=fc2aa9399627c19b5368ed6da6a219deaeb20b77
+CLOSEOUT_COMMIT=dd8651aa760062f71ddc84a1154b21873ecbc174
+UNIQUE_FACTS_DURABLE=DIRECT_GITHUB_READBACK_PASS
+POST_DD865_VPN_PROJECT_DRIFT=NONE
+POST_DD865_MAIN_ADVANCEMENT=UNRELATED_BIRTHDAY_MAGAZINE_ONLY
+C2B_RUNNER_BLOB_DIRECT_READBACK=cd5a2eb768b54d13307b651ea514a912b9742c9d
+C2B_TEMPLATE_BLOB_DIRECT_READBACK=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+LOCAL_WORKTREE_CLEAN_PROVENANCE=EXECUTOR_REPORTED;REVERIFY_NEXT_GATE
+ROUND_STARTED_AT=NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH
+ACTUAL_ELAPSED=UNKNOWN
+ACTUAL_ELAPSED_LOWER_BOUND=AT_LEAST_00:17:00
+TIME_OVERRUN=YES
+TECHNICAL_OR_LIVE_REPLAY_REQUIRED=NO
+NEXT_GATE=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2
+```
+
+Reviewer conclusion:
+- The Executor correctly returned instead of claiming PASS_CANDIDATE because the Gate explicitly required a round-start marker before initial fetch and that evidence is irrecoverably missing.
+- The missing timing evidence blocks formal PASS for R1, but it does not invalidate the already completed document-persistence objective. The unique facts are durable on canonical GitHub and the locked C2B runner/template identities remain unchanged.
+- No VPN/network/runtime action is replayed. The clean local worktree assertion is retained as Executor-reported and must be freshly re-proven before the next Owner-local checkpoint.
+- Current main advancement after the R1 closeout is unrelated to this project and does not constitute material VPN drift.
+- R1 is therefore closed as a recorded timing-observability RETURN with no replay, and the project may proceed to the bounded synthetic/no-traffic C2B UI canary.
