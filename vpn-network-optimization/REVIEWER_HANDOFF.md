@@ -69,7 +69,7 @@ Current known components:
 
 ```text
 GATE_ID=G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3
-STATE=PROPOSED_NOT_AUTHORIZED
+STATE=AUTHORIZED_EXECUTION
 PREVIOUS_RESULT=PASS_CANDIDATE_DIAGNOSTIC / UNKNOWN_AFTER_R2
 OBJECTIVE=Isolate the server-core implementation as the next single variable by replacing only the temporary sing-box REALITY server with Mihomo v1.19.31 native VLESS+REALITY, while keeping the Windows Mihomo client and all protocol semantics unchanged.
 MAX_ENDPOINT_THIS_ROUND=One temporary private Mihomo server on 10.66.21.1:14443 + one proxied OpenAI HTTPS request + exact cleanup/read-back + Reviewer stop.
@@ -192,13 +192,20 @@ No production rollback action should be needed because this Gate has no persiste
 
 ### OWNER_ONLY_ACTIONS
 
-**NOT YET AUTHORIZED.** R3 crosses the previous diagnostic boundary by introducing a different temporary server core and one new real request.
+**AUTHORIZED by Owner on 2026-10-03 for G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3.**
 
-Fresh Owner authorization is required for exactly this private A/B canary. Public TCP/443, persistent deployment, benchmark, protocol-parameter changes, and production default changes remain unauthorized.
+Authorization covers exactly:
+- one temporary Mihomo v1.19.31 native VLESS+REALITY server bound only to `10.66.21.1:14443`;
+- one Windows->private-listener TCP reachability check;
+- one proxied OpenAI HTTPS request using the unchanged Windows Mihomo client and unchanged VLESS+REALITY+Vision semantics;
+- protected client/server diagnostic classification;
+- exact cleanup/read-back and Evidence persistence.
+
+It does **not** authorize public TCP/443 exposure, persistent service installation, benchmark/performance testing, target/SNI change, client REALITY option change, additional server cores, or production-default changes.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-After Owner authorization, start only from:
+Owner authorization is active. Start only from:
 1. this Gate;
 2. accepted R2 Evidence block under `G2C_REALITY_SERVER_STATE_DIAGNOSTIC_R2`;
 3. `scripts/g2c-private-reality-canary.ps1` only for reusable strict SSH, protected runtime, Windows client, curl, cleanup, and timing patterns;
@@ -287,19 +294,19 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Await Owner authorization for **G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3**. The A-side sing-box failure is already accepted and will not be replayed; the next round runs only the Mihomo-server B-side once.
+Executor proceeds with **G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3** exactly as defined in the current Gate. Do not replay the sing-box A-side; run only the Mihomo-server B-side once, clean up, persist Evidence + Executor Handoff, commit, then STOP for Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-Authorize one additional **private** A/B request using a temporary Mihomo v1.19.31 server bound only to `10.66.21.1:14443`. No public TCP/443, persistent service, benchmark, target/SNI change, or production switch.
+**NONE.** Owner has authorized R3. Public TCP/443, persistent deployment, benchmark, target/SNI changes, and production-default changes remain unauthorized.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No active Executor run until Owner authorizes R3.
+Use the authorized R3 relay in `CURRENT_GATE`. Keep the Windows client and protocol semantics unchanged, replace only the temporary server implementation, run exactly one request, and preserve the 20–35 minute timing record.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Use the fixed R3 packet in `CURRENT_GATE` after authorization.
+Use the fixed R3 completion packet in `CURRENT_GATE`.
 
 ## EVIDENCE_POINTERS
 
