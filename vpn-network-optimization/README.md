@@ -80,8 +80,8 @@ G1   无干扰基线 + 可迁移第一版               ✅ PASS
 G2-A HY2 旁路部署                            ✅ PASS
 G2-B 安全窗口 WireGuard vs HY2 对比          ✅ PASS
 G2-C VLESS+REALITY 旁路候选                  ✅ PASS
-G3-A 网络自适应 + 健康检查                    🔄 IN_PROGRESS
-G3-B VPS 迁移 + 回滚模板                      ⏳ PENDING
+G3-A 网络自适应 + 健康检查                    ✅ PASS
+G3-B VPS 迁移 + 回滚模板                      🔄 IN_PROGRESS
 G4   晚高峰 + 真实工作负载最终验收             ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
@@ -115,4 +115,4 @@ MVP v1 封板                                  ⏳ PENDING
 - Cloud Firewall：Owner 确认未绑定
 - live BBR/fq/GRO/MTU 调优：未应用
 
-G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。Owner 决定在最终封板前再补一个互补的 TCP/443 候选，因此 G2-C 新增 VLESS+REALITY 旁路集成。G2-C 已完成：私网实现 A/B 与公网 TCP/443 canary 均证明 Mihomo v1.19.31 在当前 VLESS+REALITY+Vision 语义下可互操作；公网 canary 的临时 /32 路由、listener、client/server runtime 均已清理，唯一请求预算已耗尽且不得重放。当前进入 G3-A 网络自适应/健康检查；G3-B VPS 迁移/回滚模板随后进行，G4 晚高峰 + 真实 Codex/生图工作负载验证仍作为 MVP v1 封板前最终真实场景验收。
+G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 成功，HY2 在 Median/P90/P95/P99 与慢请求尾部计数上均更好。Owner 决定在最终封板前再补一个互补的 TCP/443 候选，因此 G2-C 新增 VLESS+REALITY 旁路集成。G2-C 已完成：私网实现 A/B 与公网 TCP/443 canary 均证明 Mihomo v1.19.31 在当前 VLESS+REALITY+Vision 语义下可互操作；公网 canary 的临时 /32 路由、listener、client/server runtime 均已清理，唯一请求预算已耗尽且不得重放。G3-A 已完成：动态物理出口发现、真实只读健康/readiness 采集、readiness→advisory plan 语义和 H2→H3 实时只读联调均 PASS；当前健康环境建议继续 `WIREGUARD_BASELINE`，HY2 与 REALITY 保持可单独激活候选，未实现或授权自动切换执行器。当前进入 G3-B VPS 迁移/回滚模板；G4 晚高峰 + 真实 Codex/生图工作负载验证仍作为 MVP v1 封板前最终真实场景验收。
