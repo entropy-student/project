@@ -3436,3 +3436,33 @@ Reviewer interpretation:
 - Live execution of the Linux probe on a real target remains a separate Gate and has not occurred.
 - No current VPS, Provider, Secret, network, package, firewall, or filesystem action occurred.
 
+## G3B D3 validator self-test return and Reviewer repair — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_POWERSHELL_OUTPUT_PLUS_REVIEWER_SOURCE_READBACK
+GATE_ID=G3B_STAGED_INSTALL_RENDER_CONTRACT_D3
+INITIAL_SOURCE_HEAD=2980a2b920fb2d4cd3e03abcb83110ce2dd6896d
+INITIAL_AST=PASS
+INITIAL_RESULT=RETURN_SELFTEST_CLASSIFICATION
+FAILURE_CODE=SELFTEST_STALE_INSTANCE_FAILURE_CLASS_CHANGED
+LIVE_VPS_ACCESS=NO
+NETWORK_MUTATION=NO
+SECRET_READ=NO
+ROOT_CAUSE=STALE_INSTANCE_FIXTURE_TRIGGERED_TARGET_ENDPOINT_ASSERTION_BEFORE_STALE_CONSTANT_ASSERTION
+FIRST_REVIEW_PATCH=bda26ad62dbab0ee48e2d7e2dd8ac0a0cb67b68e
+FIRST_REVIEW_PATCH_STATUS=REJECTED_BY_REVIEWER_SOURCE_READBACK_DUE_TO_PATCH_CORRUPTION
+CLEAN_REBUILD_COMMIT=2cb25ecccdaf8fdc0c2a20368142b205cb0ca880
+CLEAN_REBUILD_BASE=2980a2b920fb2d4cd3e03abcb83110ce2dd6896d
+CLEAN_REBUILD_LINES=217
+CLEAN_REBUILD_CMDLET_BINDING_COUNT=1
+STALE_CHECK_BEFORE_TARGET_ENDPOINT_CHECK=TRUE
+STATIC_NEGATIVE_MUTATION_SCAN=PASS
+```
+
+Reviewer interpretation:
+- The Owner-reported failure is a deterministic validator self-test classification defect, not a migration-package design failure.
+- No live VPS, Provider, network, file-render, or Secret action occurred.
+- The first narrow Reviewer patch was rejected after fresh source read-back exposed accidental source concatenation/corruption; it must not be executed.
+- The validator was rebuilt from the last known parseable D3 base, with only the stale-instance assertion order changed.
+- D3 remains IN_PROGRESS until the clean rebuilt validator passes AST + offline validation through the Executor channel.
+
