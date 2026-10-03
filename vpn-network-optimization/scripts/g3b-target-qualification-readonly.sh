@@ -52,7 +52,7 @@ IP_FORWARD="$(sysctl -n net.ipv4.ip_forward 2>/dev/null || printf 'UNKNOWN')"
 
 count_udp_port() {
   local port="$1"
-  ss -H -lun | awk -v p=":$port" '$5 ~ (p "$") {n++} END {print n+0}'
+  ss -H -lun | awk -v p=":$port" '$4 ~ (p "$") {n++} END {print n+0}'
 }
 
 count_tcp_port() {
