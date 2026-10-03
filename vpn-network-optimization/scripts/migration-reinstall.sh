@@ -10,15 +10,23 @@ DATA_ROOT="${DATA_ROOT:-/srv/data/$PROJECT_NAME}"
 BACKUP_ROOT="${BACKUP_ROOT:-/srv/backups/$PROJECT_NAME}"
 
 plan() {
-  printf 'MIGRATION_PLAN=G1_NON_DESTRUCTIVE\n'
-  printf '1. fresh read-only inspect target identity, WG, ports, firewall, NAT, qdisc and offload\n'
-  printf '2. verify canonical paths: %s / %s / %s\n' "$APP_ROOT" "$DATA_ROOT" "$BACKUP_ROOT"
-  printf '3. validate external Secret/certificate metadata without reading values\n'
-  printf '4. render non-secret templates and validate before any service action\n'
-  printf '5. install optional HY2 unit only after DNS/cloud-firewall/Secret checkpoint\n'
-  printf '6. health-check, record read-back, and keep WG as current path\n'
-  printf '7. preserve rollback point; never broad-prune or overwrite unknown Secret files\n'
-  printf 'WRITE_PERFORMED=NO\nWG_TOUCHED=NO\nCURRENT_TRAFFIC_SWITCHED=NO\n'
+  printf 'MIGRATION_PLAN=G3B_STAGED_NEW_TO_OLD\n'
+  printf '1. freeze source and target VPS identity metadata; source remains authoritative\n'
+  printf '2. fresh read-only inspect target hostname/public IP/WAN, WG, free ports, firewall/NAT and resources\n'
+  printf '3. verify canonical target paths: %s / %s / %s\n' "$APP_ROOT" "$DATA_ROOT" "$BACKUP_ROOT"
+  printf '4. validate non-secret migration metadata and repository templates\n'
+  printf '5. enter a separate Owner-authorized Secret transfer checkpoint; never print/hash/overwrite unknown Secret values\n'
+  printf '6. render protected WG/HY2 runtime config on target and validate before enablement\n'
+  printf '7. qualify target WG and HY2 without changing the Owner production client\n'
+  printf '8. keep REALITY as cold candidate: prove TCP/443 readiness and required metadata, do not create persistence merely for migration\n'
+  printf '9. target health/read-back PASS before any client cutover\n'
+  printf '10. perform bounded Owner-side candidate/cutover only in a later consequential Gate\n'
+  printf '11. keep source VPS healthy and available throughout the rollback window\n'
+  printf '12. source VPS deletion/decommission is a later Closeout Gate, never part of migration PASS\n'
+  printf 'WRITE_PERFORMED=NO\n'
+  printf 'SOURCE_VPS_MUTATED=NO\nTARGET_VPS_MUTATED=NO\n'
+  printf 'SECRET_TRANSFER_PERFORMED=NO\nCURRENT_TRAFFIC_SWITCHED=NO\n'
+  printf 'SOURCE_DECOMMISSIONED=NO\n'
 }
 
 if [[ "${1:-}" == --plan || $# -eq 0 ]]; then
