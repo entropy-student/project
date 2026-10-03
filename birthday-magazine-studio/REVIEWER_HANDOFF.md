@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=BROADLY_ACCEPTED
-CURRENT_GATE=G3CR6R3B_VISUAL_MOTION_LAB
+CURRENT_GATE=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
 OWNER_VISUAL_FREEZE=PENDING
 REAL_MONEY_TRANSACTION=UNVERIFIED
 REAL_CUSTOMER_ACQUISITION=UNVERIFIED
@@ -73,24 +73,22 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR6R3B_VISUAL_MOTION_LAB`
+`G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY`
 
-The Owner has rejected the current magazine visual system and approved a lab-first 1+1+12 direction. G3CR6R3A full 12-page rebuild is superseded before execution; website integration/full magazine expansion remain on hold until lab selection.
+The Owner simplified the 1+1+12 direction further: source strong reusable templates/components first, then implement only the selected system. G3CR6R3B is superseded before execution.
 
 Objective:
-- validate one unified web-native editorial visual system before full build;
-- compare 3 high-impact photo→magazine interaction directions;
-- compare 3 deterministic cover directions;
-- validate 4 representative magazine page designs before expanding to all 12.
+- find the strongest reusable candidates for 12 static magazine pages + 1 homepage + 1 core homepage interaction;
+- explicitly classify what source can be legally reused versus what must be independently reimplemented;
+- recommend one coherent template/component family before implementation.
 
 Scope:
-- isolated Visual + Motion Lab only;
-- 3 interaction concepts;
-- 3 cover concepts;
-- 4 representative static magazine pages;
-- one shared design/motion language.
+- read-only template/component/motion research;
+- license/source-code/reuse verification;
+- 12+1+1 coverage map;
+- one coherent recommended combination.
 
-Do not rebuild all 12 pages or mutate the current WordPress runtime in this Gate.
+No runtime implementation in this Gate.
 
 Not reopened:
 - overall site composition;
@@ -103,7 +101,7 @@ Not reopened:
 - production AI/provider.
 
 Current Gate file:
-- `docs/G3CR6R3B_VISUAL_MOTION_LAB.md`
+- `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
 
 Current growth diagnosis:
 - `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
@@ -165,14 +163,14 @@ Protected backend behavior for G3CR6R2:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3B** only: 3 interaction directions + 3 cover directions + 4 representative magazine pages.
-2. Reviewer compares purchase-pull, coherence, deterministic feasibility, mobile/reduced-motion safety.
-3. Owner selects one interaction + one cover/art direction.
-4. Only then expand the selected system into full 1 + 1 + 12 and integrate it into the current website.
+1. Execute **G3CR6R3C** only: deeply research reusable templates/components for 12 magazine pages + 1 homepage + 1 core interaction.
+2. Reviewer verifies source/license status and coherence.
+3. Owner selects the preferred source/template combination.
+4. Only then open an implementation Gate to vendor/copy permitted source and adapt it into the unified 1+1+12 system.
 
 ## OWNER_ACTION_REQUIRED
 
-`NONE` for G3CR6R3B execution; Owner already approved lab-first visual direction.
+`NONE` for G3CR6R3C research; Owner already approved template-first sourcing.
 
 Owner action is required later for:
 - final subjective visual freeze;
@@ -188,8 +186,10 @@ Current working set:
 3. `docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md`
 4. `docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md`
 5. `docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md`
-6. `docs/OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md`
-7. `docs/G3CR6R3B_VISUAL_MOTION_LAB.md`
+6. `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md`
+7. `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
+8. `docs/OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md` — superseded provenance
+9. `docs/G3CR6R3B_VISUAL_MOTION_LAB.md` — superseded before execution
 8. `docs/OWNER_DECISION_G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` — superseded full-build decision provenance
 9. `docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` — superseded before execution
 10. `docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` — prepared/hold after lab + magazine visual selection
