@@ -13,6 +13,14 @@ OWNER_ONLY_ACTIONS=NONE
 
 Governance: **vps-project-governance v0.2.6**.
 
+`RESEARCH_CONTRACT=MANDATORY`
+
+Mandatory research contract:
+- `docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`
+- `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`
+
+The Gate cannot PASS on a convenience shortlist that does not satisfy the research floor, evidence requirements, and saturation stop.
+
 ## Goal
 
 Produce a high-quality shortlist for:
@@ -73,6 +81,8 @@ Do not:
 
 ## ACCEPTANCE_CRITERIA
 
+Before PASS_CANDIDATE, the mandatory Research Contract must be satisfied in full.
+
 PASS_CANDIDATE requires:
 
 1. Strong reusable candidates exist for homepage, core interaction and 12-page magazine coverage.
@@ -80,14 +90,21 @@ PASS_CANDIDATE requires:
 3. Recommended combination is visually coherent.
 4. The recommended implementation can share one design-token/component system.
 5. No protected runtime/backend scope is touched.
+6. At least 60 distinct real candidates were directly inspected across at least 8 source ecosystems.
+7. Every S/A candidate has reviewable visual/interaction evidence and explicit source/license status.
+8. Reject ledger and 12+1+1 coverage map exist.
+9. Saturation stop is proven by two consecutive >=10-candidate batches with no new first-order pattern and no material shortlist improvement.
+10. If no S-grade candidate exists, the Gate returns `RETURN_RESEARCH_NOT_SATURATED` or `NO_QUALIFYING_CANDIDATE_YET` instead of lowering the bar.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
 Research only:
 1. this Gate;
-2. Owner decision `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md`;
-3. MVP page map from `MVP_PRODUCT_CONTRACT.md` sections 5–7;
-4. current rejected magazine contact sheet only as negative baseline.
+2. mandatory `G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`;
+3. Owner quality-bar decision `OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`;
+4. Owner decision `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md`;
+5. MVP page map from `MVP_PRODUCT_CONTRACT.md` sections 5–7;
+6. current rejected magazine contact sheet only as negative baseline.
 
 Do not pre-filter the 12 magazine-page candidates by static/dynamic behavior. Record whether each candidate is static, lightly animated, or interaction-driven and what would remain compatible with the current PDF deliverable.
 
