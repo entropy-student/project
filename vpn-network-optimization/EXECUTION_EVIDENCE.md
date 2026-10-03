@@ -2886,4 +2886,41 @@ Reviewer interpretation:
 - Positive fixtures cover the canonical checkout, the existing managed Codex worktree, and a nested tracked-project layout. Negative fixtures cover the material provenance failure classes relevant to this Gate.
 - No P1 runtime action occurred; request budget remains 0/1.
 - Because this Reviewer acceptance advances GitHub main beyond the Executor's local completion HEAD, the next action is a local Git synchronization/read-back only. The Owner checkpoint must not run from a stale worktree.
+## Reviewer reconciliation — second P1 canonical-source preflight RETURN — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT_PLUS_REVIEWER_SOURCE_INSPECTION
+GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+OWNER_RUNTIME=PowerShell_7.6.6
+ADMINISTRATOR_TOKEN=TRUE
+INTEGRITY_RID=12288
+HIGH_INTEGRITY_TOKEN=TRUE
+RUNNER_PHASE=PRECHECK_CANONICAL_SOURCE
+FAILURE_CODE=CANONICAL_GIT_PROJECT_PATH_MISMATCH
+CANONICAL_SOURCE_VERIFIED=FALSE
+SOURCE_HEAD=NOT_VERIFIED
+SSH_STARTED=NO
+VPS_READ_OR_WRITE=NO
+TEMP_ROUTE_CREATED=NO
+PUBLIC_TCP443_LISTENER_STARTED=NO
+SECRET_ACCESS_STARTED=NO
+OPENAI_REQUEST_COUNT=0
+P1_REQUEST_BUDGET_REMAINING=1
+CLEANUP_READBACK=NOT_REQUIRED_NO_MUTATION
+PERMANENT_FIREWALL_CHANGED=NO
+PERMANENT_ROUTE_CHANGED=NO
+SIMILAR_PROVENANCE_FAILURE_COUNT=2
+REVIEWER_RESULT=RETURN_ACCEPTED
+NEXT_GATE=G2C_P1_CANONICAL_SOURCE_PATH_DIAGNOSTIC_D1
+NEXT_GATE_MODE=READ_ONLY_LOCAL_DIAGNOSTIC
+FRESH_OWNER_CONSEQUENTIAL_AUTH_REQUIRED=NO
+OWNER_ACTION_REQUIRED=NONE
+```
+
+Reviewer interpretation:
+- The Owner execution runtime is correct and is not the blocker.
+- Git-root query advanced past the previous failure; the new failure occurs inside `Resolve-P1TrackedProjectPath`, where the live Git-root/projectRoot relationship does not match the assumed relative-path invariant.
+- No consequential action began and the OpenAI request budget remains 0/1.
+- This is the second materially similar source-provenance failure. Governance §6 therefore requires a bounded diagnostic rather than another speculative patch/retry.
+- The next round is read-only and must capture the exact live path/worktree facts before any further source change or Owner checkpoint.
 

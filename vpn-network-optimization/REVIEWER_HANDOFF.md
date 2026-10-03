@@ -87,15 +87,17 @@ Current known components:
 GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
 STATE=AUTHORIZED
 PREVIOUS_RESULT=PASS_G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
-LAST_EXECUTOR_RESULT=PASS_CANDIDATE_HARDENING
+LAST_EXECUTOR_RESULT=RETURN_CANONICAL_GIT_PROJECT_PATH_MISMATCH
 RUNNER_PREPARATION_REVIEW=PASS
-CANONICAL_SOURCE_HARDENING_REVIEW=PASS
+CANONICAL_SOURCE_HARDENING_REVIEW=PASS_BUT_LIVE_PATH_ASSUMPTION_INCOMPLETE
 RUNNER_SOURCE_COMMIT=e5f1dd24064ccab47b2412fd8a3305a161c17ed6
 HARDENING_COMPLETION_COMMIT=64461d63fb92c6e8944639198e5e1a385e6d8c59
 LAST_ATTEMPT_CONSEQUENTIAL_ACTION_STARTED=NO
 REAL_OPENAI_REQUEST_BUDGET_CONSUMED=0_OF_1
 OWNER_RUNTIME_RECONFIRMED=PowerShell_7.6.6_Administrator_High_RID_12288
-EXECUTION_BLOCKER=LOCAL_MANAGED_WORKTREE_MUST_SYNC_TO_REVIEWER_ACCEPTED_MAIN_BEFORE_OWNER_CHECKPOINT
+EXECUTION_BLOCKER=LIVE_WORKTREE_PROJECT_RELATIVE_PATH_SHAPE_UNKNOWN
+SIMILAR_PROVENANCE_FAILURE_COUNT=2
+BLOCKING_DIAGNOSTIC_GATE=G2C_P1_CANONICAL_SOURCE_PATH_DIAGNOSTIC_D1
 OBJECTIVE=Prove the accepted Mihomo v1.19.31 VLESS+REALITY+Vision candidate over the intended public TCP/443 path, with no persistence and deterministic rollback.
 MAX_ENDPOINT_THIS_ROUND=read-only current-state preflight + one temporary public TCP/443 Mihomo server + one temporary exact /32 outer-route bypass to the current physical egress + one proxied OpenAI HTTPS request + exact cleanup/read-back + Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -229,105 +231,27 @@ It does **not** authorize persistence, permanent firewall changes, benchmark, pr
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Start only from:
-1. the current P1 Gate;
-2. Reviewer acceptance of `G2C_P1_CANONICAL_SOURCE_WORKTREE_DISCOVERY_H1`;
-3. the existing managed worktree `C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建`.
+Run only `G2C_P1_CANONICAL_SOURCE_PATH_DIAGNOSTIC_D1` from the existing managed worktree. This is the mandatory bounded diagnostic after two materially similar provenance failures. Do not patch source in this round.
 
-Perform only a non-consequential local Git synchronization/read-back step. Fetch GitHub `main`, verify no target-path dirty state or unrelated merge risk, then fast-forward/rebase only if it is a clean safe synchronization to the Reviewer-accepted `main`. Do not modify runner logic, Handoff, Evidence, network state, VPS state, routes, services, Secrets, or issue any OpenAI canary request. After sync, prove local HEAD == remote `main`, origin is canonical, `vpn-network-optimization/scripts/g2c-reality-public-tcp443-canary-p1.ps1` and `vpn-network-optimization/REVIEWER_HANDOFF.md` are tracked and clean, and report the exact absolute runner path. STOP_AT_REVIEWER.
+Read only:
+- current `REVIEWER_HANDOFF.md` NEXT_STEP / OWNER_ACTION_REQUIRED / this relay;
+- `scripts/g2c-reality-public-tcp443-canary-p1.ps1` functions `Resolve-P1TrackedProjectPath` and `Assert-P1CanonicalSource`;
+- live local Git/filesystem metadata needed for the diagnostic.
 
-### EXECUTOR_TO_REVIEWER_RELAY
+Capture sanitized exact values for:
+1. actual runner absolute path;
+2. computed projectRoot;
+3. `git -C <projectRoot> rev-parse --show-toplevel`;
+4. `git -C <projectRoot> rev-parse --show-prefix`;
+5. `[IO.Path]::GetFullPath()` for Git root and projectRoot;
+6. `[IO.Path]::GetRelativePath(gitRootFull, projectRootFull)` before/after slash normalization;
+7. `Resolve-Path` / `Get-Item` FullName, LinkType, Target, Attributes for relevant root/project directories;
+8. `git worktree list --porcelain` entry containing the current HEAD/path;
+9. canonical origin and local HEAD;
+10. Git-tracked path(s) ending in `vpn-network-optimization/scripts/g2c-reality-public-tcp443-canary-p1.ps1` and `vpn-network-optimization/REVIEWER_HANDOFF.md` using read-only `git ls-files`; 
+11. target-file `git status --porcelain` cleanliness.
 
-```text
-结果：PASS_CANDIDATE_PUBLIC_CANARY / RETURN_*
-改动：仅临时开放 Mihomo REALITY public TCP/443，并为 VPS public IPv4 添加一次性动态 /32 物理出口路由。
-验证：preflight + public 443 listener + one request + route/listener cleanup + WG/HY2 unchanged。
-问题：PUBLIC_REALITY_INTEROPERABILITY=PASS / 精确 RETURN 原因。
-回滚：临时 client/server/runtime/binary 与 exact /32 route 已清理；443 absent；生产网络恢复。
-请 Reviewer 检查：REALITY 是否已在真实 public TCP/443 路径完成互操作。
-Owner 转交：NONE。
-耗时：预计 20-30 分钟；实际 <elapsed>；超时 YES/NO；原因 <NONE/brief cause>。
-```
-
-## ROUND_TIMING_OBSERVABILITY
-
-Starting with the next Executor round, every Gate/round carries a Reviewer time estimate and Executor timing record.
-
-Rules:
-- Reviewer sets `ESTIMATED_EXECUTION_TIME` as a practical range for the whole Executor round, excluding deliberate waits requested from Owner (for example waiting until a peak-hour window).
-- Executor records `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, and `ACTUAL_ELAPSED` in sanitized Evidence. Approximate phase timing may be added when it comes naturally from logs; do not add instrumentation that materially complicates the work.
-- If `ACTUAL_ELAPSED` exceeds the estimate's upper bound, record `TIME_OVERRUN=YES` and a short `TIME_OVERRUN_CAUSE` classification supported by existing evidence.
-- Timing overrun by itself is **not** a failure and does not stop otherwise healthy execution.
-- Do not interrupt normal progress merely to investigate elapsed time. Diagnose at the next natural checkpoint or after completion unless there is an actual stall/no-progress condition.
-- If the overrun cause is not already evident, perform only one bounded timing diagnostic focused on the slow phase (for example download, SSH, server start, client handshake, benchmark wait, Git persistence). Do not broaden into unrelated project debugging.
-- A true stall means no meaningful phase progress for roughly 15 minutes beyond the expected phase behavior; a stall may trigger immediate bounded diagnosis.
-- Executor completion packets add one line: `耗时：预计 <range>；实际 <elapsed>；超时 YES/NO；原因 <NONE/brief cause>`.
-- Reviewer uses accumulated actual timings to adjust later round estimates; the timing task must never become a reason to delay the project by itself.
-
-Current next Executor round:
-```text
-ROUND=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
-ESTIMATED_EXECUTION_TIME=20-30 minutes
-ESTIMATE_SCOPE=dynamic physical-egress preflight + temporary public TCP443 server + one request + exact route/listener cleanup + Evidence/Handoff persistence
-OWNER_WAIT_EXCLUDED=YES
-```
-
-## CRITICAL_CONSTRAINTS
-
-- Foreground Codex / image-generation work must not be disrupted.
-- WireGuard remains the current production/rollback path until a later accepted Gate changes that role.
-- HY2 is now the validated UDP/QUIC performance candidate; VLESS+REALITY is the frozen TCP/443 fallback candidate under G2-C; neither is yet the sealed production default.
-- Current WireGuard routing intentionally uses two `/1` defaults; this removes the strict WireGuard Windows WFP kill-switch. Treat this as an explicit current security/runtime property.
-- Secret values never leave the protected execution boundary.
-- No BBR/fq/GRO/MTU or other live tuning is authorized merely because the protocol comparison passed.
-- Accepted completed Gates are not replayed without proven material drift.
-
-## DEFAULT_EXECUTION_CHANNEL
-
-For future consequential Windows validation: Owner-run elevated PowerShell 7.6.6 on the real Windows host, with one bounded Reviewer-designed checkpoint and fail-closed cleanup/read-back.
-
-## CURRENT_ROLLBACK_STATUS
-
-```text
-PRODUCTION_WIREGUARD=RESTORED
-WG_IPV4_DEFAULTS=0.0.0.0/1,128.0.0.0/1
-WG_STRICT_WFP_KILLSWITCH=ABSENT
-HY2_SERVER=ACTIVE
-HY2_PERSISTENT_CLIENT_DEFAULT=NOT_ENABLED
-TEMPORARY_VPS_ROUTE=ABSENT
-MIHOMO_TEST_PROCESS=ABSENT
-RUNTIME_SECRET_CONFIG=ABSENT
-PLAINTEXT_SECRET_RESIDUE=0
-```
-
-Rollback/recovery assets:
-- WireGuard remains directly usable as the current path.
-- HY2 server deployment and DPAPI recovery artifact remain available.
-- G2-B temporary test artifacts were removed.
-
-## UNRESOLVED
-
-- VLESS+REALITY private interoperability is now proven with Mihomo v1.19.31. Public TCP/443 interoperability, persistence, and final fallback packaging remain unresolved; next target is one temporary public-path canary.
-- Peak-hour repeatability and real-workload behavior remain mandatory before final seal, but are intentionally deferred until after G3-A/G3-B so the final validation measures the near-final automated/migratable implementation instead of an intermediate build.
-- G3-A remains to implement physical-egress discovery, network-adaptive route/config generation, health checks, and safe role switching without hardcoded WLAN/IP/gateway assumptions.
-- G3-B remains to package template-driven VPS migration, per-VPS Secret/certificate lifecycle, staged cutover, rollback, and a bounded migration rehearsal.
-- Final production role: HY2 primary vs on-demand backup vs WireGuard primary remains undecided.
-- Final WireGuard security policy: whether the split-default/no-strict-kill-switch state is accepted for v1 or replaced by a different final routing design.
-- Optional Linux tuning candidates (BBR/fq/GRO/MTU) remain untested and are not required unless later evidence justifies them.
-- MVP v1 seal remains pending G2-C integration, G3-A/G3-B engineering closure, G4 peak-hour/real-workload final validation, and final architecture decision.
-
-## NEXT_STEP
-
-Synchronize the existing managed Codex worktree to the current Reviewer-accepted GitHub `main` without changing project files, then fresh-read that local HEAD and the P1 runner path. After local HEAD equals current GitHub `main` and the target runner/Reviewer Handoff are clean, Owner may run the already-authorized P1 checkpoint once from PowerShell 7.6.6 Administrator/High. No SSH, VPS, route/listener/runtime mutation, Secret access, or OpenAI request is allowed during the sync step.
-
-## OWNER_ACTION_REQUIRED
-
-Relay the narrow local-source-sync task to Executor/Codex. Do **not** run the Owner checkpoint until Executor confirms the existing managed worktree local HEAD equals the current Reviewer-accepted GitHub `main`, the runner and `REVIEWER_HANDOFF.md` are clean, and the exact runner path still exists. The Owner runtime itself is already proven PowerShell 7.6.6 / Administrator=True / High integrity RID 12288.
-
-## REVIEWER_TO_EXECUTOR_RELAY
-
-P1 is authorized. Executor starts only from the P1 Gate above, `scripts/g2c-mihomo-server-r3.ps1`, the accepted R4 Evidence block, and the directly reusable accepted G2-B dynamic physical-egress / exact-route pattern. Do not reread Governance or historical Gates broadly. Run once, clean up exactly, persist sanitized Evidence + Executor Handoff, commit, fresh read-back, STOP.
-
+Do not expose Secrets. Do not write/commit/push anything in this diagnostic. Do not run the P1 runner. Do not SSH or touch network/runtime state. Return the exact observations and one root-cause classification to Reviewer. `OPENAI_REQUEST_COUNT=0`, `NETWORK_CHANGED=NO`, `STOP_AT_REVIEWER=YES`.
 ## EXECUTOR_TO_REVIEWER_RELAY
 
 Use the fixed P1 packet in `CURRENT_GATE` after authorization.
