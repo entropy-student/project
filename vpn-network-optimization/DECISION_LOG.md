@@ -155,3 +155,15 @@
 
 **Consequence:** G3-B D1 is repository-only. A later live rehearsal must prove exact source/target identity, protected Secret handling, target WG/HY2 health, REALITY cold readiness, bounded Owner-side qualification, and rollback to the still-valid source before any source decommission.
 
+## 2026-10-03 — Prioritize unified manual control before fresh-target rehearsal
+
+**Decision:** Defer the fresh-target G3-B rehearsal and open G3-C to make the existing WireGuard/HY2/REALITY capability visible and manually selectable through Clash Verge/Mihomo first.
+
+**Reason:** The project already has validated transport candidates and advisory health logic, but the Owner cannot currently see latency or manually select the self-hosted paths in one UI. A usable manual control surface is the next meaningful product-facing milestone and also reduces risk before automatic switching.
+
+**Connectivity boundary:** The Owner's ChatGPT web and Codex Desktop require at least one working VPN at all times. WireGuard is the current production VPN, but the Owner has other temporary VPN options. WireGuard may be disconnected only at an explicit Owner checkpoint after another VPN path is confirmed working. Executor must never strand the Owner with no VPN.
+
+**C1 boundary:** repository-only profile/validator work. No Clash apply, no system proxy/TUN change, no route mutation, no VPS access, no Secret read, and no WireGuard disconnect.
+
+**Later live control:** Prefer a named Mihomo direct node for the WG baseline and dynamic per-node physical-interface binding for HY2/REALITY as the first bypass design. Windows real bypass behavior remains unproven until a bounded live canary.
+
