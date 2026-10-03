@@ -3738,3 +3738,39 @@ STOP_AT_REVIEWER=YES
 
 The native config test did not run: Codex process creation blocked the inline PowerShell command before execution. No new shell, split invocation, or alternate tool path was used to bypass policy. The version read-back is direct local execution evidence; the parser result remains unavailable. Full-round timing was not captured before fetch, so the total duration and overrun status are unknown; the reported 3m59s covers only the later local phase window.
 
+## Reviewer review — G3C C1 Mihomo v1.19.32 native parse R2 — 2026-10-03
+
+```text
+GATE_ID=G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2
+REVIEWER_RESULT=RETURN_CODEX_EXECUTION_POLICY_BLOCK_CONFIRMED
+EXECUTOR_RECORD_COMMIT=1a4cb5ada2cdc93dbd49ed13f7efb9db6d95e9d7
+EXECUTOR_SCOPE_DIFF=EVIDENCE_AND_EXECUTOR_HANDOFF_ONLY
+MIHOMO_BINARY_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+MIHOMO_VERSION=v1.19.32
+NATIVE_CONFIG_TEST=NOT_STARTED
+BLOCK_LAYER=CODEX_PROCESS_CREATION_POLICY
+BLOCKED_EXECUTABLE=Codex execution-context pwsh.exe
+BLOCKED_POLICY_REASON=CreateProcess rejected; blocked by policy
+TEMP_FIXTURE_CREATED=NO
+LIVE_MUTATION=NO
+NETWORK_REQUEST_COUNT=0
+WIREGUARD_CHANGED=NO
+ROUTE_CHANGED=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_CHANGED=NO
+VPS_ACCESS=NO
+SECRET_ACCESS=NO
+TIMING_OBSERVABILITY=FAILED_TO_CAPTURE_ROUND_START
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+OWNER_CHECKPOINT_REQUIRED=YES_MINIMAL_LOCAL_ONLY
+```
+
+Reviewer interpretation:
+- R2 did not produce a Mihomo parser failure. The config-test process never started because the Codex execution environment rejected process creation before the local PowerShell setup/invocation ran.
+- Executor correctly did not attempt alternate/split commands to bypass the policy.
+- Repeating the same action through Codex is not useful. Governance permits a one-shot minimal Owner-local checkpoint when real-host execution cannot be proven through the Executor channel.
+- The Owner checkpoint will be local-only: read the already-verified C1 source in the current managed worktree, verify its expected SHA-256, create one marked synthetic fixture under TEMP, run the installed Mihomo v1.19.32 config test only, delete the fixture, and emit bounded non-secret evidence.
+- No WireGuard disconnect, route/proxy/TUN change, Clash profile application, VPS/Provider access, external test request, or real Secret access is required.
+- R2 also missed mandatory whole-round timing for the second consecutive round. This is recorded as a process-observability defect; R2 is not replayed. The Owner checkpoint script records its start marker before preflight.
+
