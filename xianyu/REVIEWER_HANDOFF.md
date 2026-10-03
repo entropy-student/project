@@ -14,8 +14,9 @@ MARKET_SELECTION_REBOOT = ACTIVE
 X1_MARKET_DEMAND_DISCOVERY_AND_NORMALIZATION = PASS
 X2_SERVICE_DEMAND_DEPTH = PASS_EVIDENCE_ONLY
 X2R1_STANDARDIZED_PRODUCT_REFRAME = PASS
-X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3 = PASS
-X4_MINIMUM_VALIDATION_DESIGN_AND_ACCOUNT_POLICY_READBACK = NEXT
+X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3 = PASS_SUPERSEDED_FOR_SELECTION_AXIS
+X3R1_CONCRETE_SKU_REFRAME = PASS
+X3R2_SKU_LEVEL_DEMAND_DEPTH_36_TO_10_15 = NEXT
 
 AUTOMATION_RUNTIME_TRACK = PRESERVED_ACCEPTED_BASELINE
 RUNTIME_MUTATION_THIS_REBOOT = 0
@@ -26,13 +27,13 @@ RUNTIME_MUTATION_THIS_REBOOT = 0
 ~~~text
 当前官方规则 / 平台交易数据 / 当前公开商品页
 → 需求证据池
-→ 标准化分类 A / B / C / D
-→ 只允许 A / B 进入候选
-→ 标品候选池
-→ E1–E10 + 标准化经济性 + 版权/交付
-→ 最多 3 个 Top Candidates
+→ 具体商品类型 / SKU 池
+→ SKU 级需求深挖与排序
+→ 约 10–15 个高需求 SKU
+→ 单独研究货源 / 权利 / 交付 / 经济性
 → Minimum Validation
-→ Supply / Listing / Automation
+→ 最终 Priority SKU
+→ Listing / Automation
 
 既有 Shared VPS Xianyu runtime
 → 独立保留
@@ -50,8 +51,10 @@ RUNTIME_MUTATION_THIS_REBOOT = 0
 - 当前最强的“标品存在真钱需求”证据包括：闲鱼 2026 H1 AI 教程/课程占 AI 订单 8.1%，AI 模板/工作流占 6.6%，并有卖家半年卖出 1.7 万份 AI 漫剧制作教程。
 - 当前公开市场也存在重复销售的软件/工具、模板、数据产品等直接样本；但第三方会员/账号/未经授权模板/搬运数据/平台规避工具只作为需求证据，不进入可执行 shortlist。
 - 货源暂时 UNKNOWN 不淘汰；但最终无法建立合法、稳定、可重复交付来源时 KILL。
-- X3 已对 P1–P8 建立 E1–E10 Evidence Cards；当前最多 3 个研究候选为 **P1 单一任务型自研工具、P2 AI 垂直教程+项目文件、P4 垂直 Excel/Office 系统**，明确 **不排名、不等于最终赢家**。
-- P3/P5/P7 保留为 HOLD；P6 为 HOLD_HIGH_RISK；P8 为 HOLD。其主要阻塞分别来自免费替代、合法需求与现有样本错位、标准化付费证据不足、低价/版权/更新或售后负担。
+- X3 的 P1/P2/P4 只保留为 **商品结构分析**，不再作为选品结果；Owner 明确要求最终决策必须落到具体商品类型 / SKU。
+- X3R1 已建立 **36 个具体 SKU 需求池**，覆盖软件、教程/项目包、模板、数据、摄影预设、专业资料、教育资料与攻略等。
+- 当前排序只看需求证据，不因货源暂时 UNKNOWN、版权来源暂未找到或制作路径未确定而淘汰需求。货源/权利/交付在需求收敛后单独研究。
+- 明确违规/违法的交付模型仍不能作为可执行 SKU，但其市场信号可以保留为需求观察。
 
 ### Standardization classes
 
@@ -90,26 +93,26 @@ CLEANUP_AUTHORIZED=NO
 ## CURRENT_GATE
 
 ~~~text
-GATE_ID=X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3
+GATE_ID=X3R1_CONCRETE_SKU_REFRAME
 STATUS=PASS
-OBJECTIVE=对 P1–P8 建立 E1–E10 Evidence Cards，并收敛最多 3 个进入下一阶段的研究候选
-ACCEPTED_TOP3=P1_SINGLE_PURPOSE_SELF_DEVELOPED_UTILITY;P2_AI_NICHE_TUTORIAL_PLUS_PROJECT_FILES;P4_VERTICAL_EXCEL_OFFICE_SYSTEM
-TOP3_RANKED=NO
+OBJECTIVE=把抽象商品结构改写为具体商品类型/SKU需求池，并把货源研究从需求筛选中拆开
+CONCRETE_SKU_POOL=36
+ABSTRACT_TOP3_SELECTION=SUPERSEDED
+SUPPLY_UNKNOWN_IS_DEMAND_KILL=NO
 REAL_LISTING=0
 REAL_PURCHASE=0
 PAYMENT=0
 ACCOUNT_MUTATION=0
 RUNTIME_MUTATION=0
 MANDATORY_REVIEW_STOP=REACHED
-NEXT_GATE=X4_MINIMUM_VALIDATION_DESIGN_AND_ACCOUNT_POLICY_READBACK
+NEXT_GATE=X3R2_SKU_LEVEL_DEMAND_DEPTH_36_TO_10_15
 NEXT_GATE_OPENED=NO
 ~~~
 
-X3 的完整 Gate 合同、8 张 Evidence Cards、经济性假设、反方研究与 source ledger 已持久化到：
-- `docs/X3_STANDARDIZED_EVIDENCE_CARDS_TOP3_2026-10.md`
-- `EXECUTION_EVIDENCE.md`
+X3R1 的 36 个具体 SKU、需求等级、当前证据与货源独立字段已持久化到：
+- `docs/X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md`
 
-下一 Gate 尚未打开；不会自动进入真实上架、真实付款或账号变更。
+当前选品权威单位改为 **SKU**，不再是 P1/P2/P4 这类抽象产品结构。
 
 ### X2R1 accepted standardized shortlist — not ranked
 
@@ -126,7 +129,7 @@ X3 的完整 Gate 合同、8 张 Evidence Cards、经济性假设、反方研究
 
 ## STANDARDIZATION_GATE
 
-候选进入 Top 3 前必须证明：
+SKU 进入最终真实测试候选前必须证明：
 
 - CORE_INVARIANCE：核心产品至少 80% 不因买家变化；
 - STRUCTURED_INPUT：若需要个性化，只接收固定字段/文件，不依赖开放式需求访谈；
@@ -166,17 +169,15 @@ AUTOMATION_RUNTIME=UNCHANGED / NOT_USED
 ## UNRESOLVED
 
 - 闲鱼公开网页无法完整暴露 SKU 级真实订单、退款、询盘和 Support Minutes；最终仍需 Minimum Validation。
-- AI 模板/工作流 6.6% 的平台订单口径同时包含模板与定制工作流，纯标品份额未知。
-- P1 的决定性未知：哪个具体单任务工具能在免费工具之外证明真实付款，而不是只有“想要/浏览”。
-- P2 的决定性未知：版本更新成本能否控制，以及买家是否为原创项目文件/可执行路径付费而不是只买低价教程。
-- P4 的决定性未知：哪个垂直 Excel/Office 系统能明显优于免费通用模板并保持 <=3 分钟/单的售后目标。
-- P3/P5/P7 尚未证明“合法标准化子产品”的付款强度足以覆盖免费替代；P6/P8 仍有明显价格/版权/支持风险。
+- 36 个 SKU 当前证据强度不均：部分有直接商品页和“想要/浏览”，部分只由相邻需求或推荐市场推导，X3R2 必须逐 SKU 补证据。
+- 同一卖家矩阵、低价引流 SKU、推荐页偶然曝光可能放大表面需求，后续必须做 lineage/独立卖家去重。
+- 多个高需求 SKU 的货源、授权或再分发权仍为 UNKNOWN/NEEDS_PROOF；这些未知 **不影响需求排名**，只在后续 Supply Gate 判断能否执行。
 - 当前账号对特色服务/虚拟商品类目的实际发布资格尚未做账号内验证。
 - runtime public ingress 与 retention-review 继续保持历史 UNKNOWN，不属于当前 Gate。
 
 ## NEXT_STEP
 
-下一轮先设计 X4：为 P1/P2/P4 分别定义最小真实验证 Offer、价格假设、Kill Evidence、成功阈值和账号内政策/类目 read-back；在 Owner 明确授权前不真实发布、不付款、不改账号。
+下一轮执行 X3R2：对 36 个具体 SKU 做 SKU 级需求深挖，补当前闲鱼价格带、想要/浏览、独立卖家/同款密度、买家任务清晰度、季节性和免费替代，先按需求收敛到约 10–15 个 SKU。货源不参与本轮淘汰。
 
 ## OWNER_ACTION_REQUIRED
 
@@ -187,6 +188,7 @@ NONE
 - docs/PRODUCT_SELECTION_RESEARCH_2026-10.md
 - docs/X2_DEMAND_DEPTH_SHORTLIST_2026-10.md（需求证据历史，不再是 current shortlist）
 - docs/X2R1_STANDARDIZED_PRODUCT_RESEARCH_2026-10.md
-- docs/X3_STANDARDIZED_EVIDENCE_CARDS_TOP3_2026-10.md
+- docs/X3_STANDARDIZED_EVIDENCE_CARDS_TOP3_2026-10.md（结构分析历史，selection axis 已被 X3R1 supersede）
+- docs/X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md
 - EXECUTION_EVIDENCE.md
 - PROJECT_STORAGE_MANIFEST.md（仅 runtime 需要时读）
