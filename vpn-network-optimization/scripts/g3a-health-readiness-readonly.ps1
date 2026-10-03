@@ -76,21 +76,24 @@ function Get-H2Classification {
         [Parameter(Mandatory = $true)][hashtable]$Remote
     )
 
-    $wgKnown = @('WgAdapterUp','WgManagerRunning','WgTunnelRunning','ControlRouteViaWg','SplitDefaultsValid') |
+    $remoteKnown = $Remote.ContainsKey('SshOk') -and $Remote.SshOk -and
+        $Remote.ContainsKey('TargetIdentityOk') -and $Remote.TargetIdentityOk
+
+    $wgLocalKnown = @('WgAdapterUp','WgManagerRunning','WgTunnelRunning','ControlRouteViaWg','SplitDefaultsValid') |
         ForEach-Object { $Local.ContainsKey($_) }
-    if ($wgKnown -contains $false) {
+    $wgRemoteKnown = $Remote.ContainsKey('WgServiceActive') -and $Remote.ContainsKey('Udp51820Present')
+
+    if ($wgLocalKnown -contains $false -or -not $remoteKnown -or -not $wgRemoteKnown) {
         $wgHealth = 'UNKNOWN'
     }
     elseif ($Local.WgAdapterUp -and $Local.WgManagerRunning -and $Local.WgTunnelRunning -and
-            $Local.ControlRouteViaWg -and $Local.SplitDefaultsValid) {
+            $Local.ControlRouteViaWg -and $Local.SplitDefaultsValid -and
+            $Remote.WgServiceActive -and $Remote.Udp51820Present) {
         $wgHealth = 'HEALTHY'
     }
     else {
         $wgHealth = 'UNHEALTHY'
     }
-
-    $remoteKnown = $Remote.ContainsKey('SshOk') -and $Remote.SshOk -and
-        $Remote.ContainsKey('TargetIdentityOk') -and $Remote.TargetIdentityOk
 
     if (-not $remoteKnown) {
         $hy2Readiness = 'UNKNOWN'
@@ -203,6 +206,8 @@ function Invoke-H2SelfTest {
     $healthyRemote = @{
         SshOk = $true
         TargetIdentityOk = $true
+        WgServiceActive = $true
+        Udp51820Present = $true
         Hy2ServiceActive = $true
         Udp8443Present = $true
         Tcp443Free = $true
@@ -522,6 +527,8 @@ $localFacts = @{
 $remoteFacts = @{
     SshOk = $true
     TargetIdentityOk = $targetIdentityOk
+    WgServiceActive = $remote.ContainsKey('WG_SERVICE') -and [string]$remote['WG_SERVICE'] -eq 'active'
+    Udp51820Present = $remote.ContainsKey('UDP_51820') -and [int]$remote['UDP_51820'] -ge 1
     Hy2ServiceActive = $remote.ContainsKey('HY2_SERVICE') -and [string]$remote['HY2_SERVICE'] -eq 'active'
     Udp8443Present = $remote.ContainsKey('UDP_8443') -and [int]$remote['UDP_8443'] -ge 1
     Tcp443Free = $remote.ContainsKey('TCP_443') -and [int]$remote['TCP_443'] -eq 0
