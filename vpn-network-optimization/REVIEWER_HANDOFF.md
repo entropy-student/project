@@ -18,8 +18,8 @@ G3-A Health/readiness/advisory              PASS
 G3-B Migration package D1-D3                PASS_OFFLINE
 G3-C C1 Manual-control contract             PASS
 G3-C C2A Synthetic UI package repair        PASS_WITH_TIMING_GAP
-G3-C C2B-P0 Local-fact persistence          IN_PROGRESS
-G3-C C2B Synthetic Clash UI canary          NEXT_OWNER_CHECKPOINT
+G3-C C2B-P0 Local-fact persistence          RETURN->FIXED
+G3-C C2B Synthetic Clash UI canary          IN_PROGRESS
 G3-C C2C Real HY2-in-Clash canary           PENDING
 G3-B Fresh-target migration rehearsal       DEFERRED
 G4 Peak-hour + real workload final validate PENDING
@@ -59,100 +59,106 @@ Current known components:
 
 - **Current production:** WireGuard remains connected and authoritative.
 - **G3-C C1:** PASS; Windows Mihomo v1.19.32 accepted.
-- **G3-C C2A repair:** accepted technically; C2B runner/template identities remain accepted.
-- **P0 result:** the managed Executor worktree contains exactly the three expected dirty R1 closeout documents, but they contain unique facts not yet durable on canonical main. They must not be discarded.
-- **Unique fact classes reported by Executor:** GitHub fresh-read-back, Git persistence timing, and safe fast-forward/reconciliation result.
-- **No live action occurred in P0.**
+- **G3-C C2A repair:** accepted technically with the previously recorded timing-observability gap.
+- **G3-C C2B-P0 R1 durability objective:** accepted without replay. Canonical commits `fc2aa9399627c19b5368ed6da6a219deaeb20b77` and `dd8651aa760062f71ddc84a1154b21873ecbc174` durably contain the previously missing GitHub read-back, Git-persistence timing, and safe-fast-forward facts.
+- **R1 formal Gate disposition:** `RETURN_R1_TIMING_START_NOT_CAPTURED` remains the correct Executor result because the Gate required a round-start marker before initial fetch. Reviewer does not convert that Gate to PASS; the missing exact start is retained as a process-observability defect.
+- **Replay:** NONE. The timing defect cannot be repaired by replay and does not invalidate the already-completed document reconciliation.
+- **Current-main drift check:** current main may advance for unrelated projects; Reviewer verified the post-`dd8651...` advancement touched only `birthday-magazine-studio/`, not this VPN project.
+- **C2B source identity:** direct GitHub read-back confirms runner blob `cd5a2eb768b54d13307b651ea514a912b9742c9d` and template blob `b50f9747157200670d6e85fdd53ba81e9a8c5c76`.
+- **Local worktree:** Executor reported the managed VPN worktree clean after durable read-back and cleanup; the next Gate must independently re-prove project-scoped cleanliness before the Owner checkpoint.
+- **No live action occurred in R1.**
 - **Benchmark detour remains cancelled.**
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
-STATE=AUTHORIZED
-PREVIOUS_RESULT=RETURN_P0_LOCAL_FACTS_NOT_DURABLE
-OWNER_CONTINUE_AUTHORIZATION=2026-10-04
-OBJECTIVE=Persist only the unique factual R1 closeout material from the three dirty local documents onto the latest canonical main without reintroducing stale Gate/status text.
-MAX_ENDPOINT_THIS_ROUND=Git/document reconciliation only; no C2B runner, Clash/Mihomo, DPAPI/Secret, network, route, proxy/TUN/WG or VPS action.
+GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2
+STATE=READY_OWNER_CHECKPOINT
+PREVIOUS_RESULT=RETURN_R1_TIMING_START_NOT_CAPTURED_CLOSED_NO_REPLAY
+OBJECTIVE=Prove the existing synthetic two-node Clash Verge profile is visible and manually selectable in the UI while production WireGuard remains unchanged and no HY2 traffic is sent.
+MAX_ENDPOINT_THIS_ROUND=Synthetic local UI import -> visual confirmation -> profile removal -> post-readback/cleanup only. No real HY2 credentials, no DPAPI recovery read, no real endpoint, no network request, no VPS access, no route/proxy/TUN/WireGuard mutation, no REALITY activation.
 MANDATORY_REVIEW_STOP=YES
-SOURCE_DIRTY_FILES=EXECUTION_EVIDENCE.md,EXECUTOR_HANDOFF.md,docs/ROUND_TIMING_RETROSPECTIVE.md
-DISCARD_SOURCE_DIRTY_HUNKS_BEFORE_PERSISTENCE=NO
-BLIND_WHOLE_FILE_OVERWRITE_AUTHORIZED=NO
-STALE_REVIEWER_GATE_REINTRODUCTION_AUTHORIZED=NO
-C2B_SOURCE_MODIFICATION_AUTHORIZED=NO
-C2B_RUNNER_EXECUTION_AUTHORIZED=NO
-LIVE_ACTION_AUTHORIZED=NO
-OWNER_INTERVENTION_REQUIRED=NO
-ESTIMATED_EXECUTION_TIME=8-15_minutes
+RUNNER=scripts/c2b-owner-clash-ui-canary.ps1
+RUNNER_BLOB=cd5a2eb768b54d13307b651ea514a912b9742c9d
+TEMPLATE=templates/clash/c2b-wg-hy2-canary.yaml.template
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+OWNER_PACKAGE=docs/G3C_C2B_OWNER_CANARY_PACKAGE.md
+SPECIALIST_RULES=11B_TARGET_HOST
+ESTIMATED_EXECUTION_TIME=5-10_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### R1 TASK
+### PREFLIGHT
 
-1. **First action before fetch/status/diff:** record `ROUND_STARTED_AT=<UTC ISO8601>`.
-2. Preserve the existing dirty worktree exactly until the unique facts are captured.
-3. Fresh fetch the latest `origin/main`; unrelated main advancement is expected and must not trigger VPN technical replay.
-4. Inspect exact diffs for only the three source dirty files.
-5. Classify every dirty hunk as:
-   - `UNIQUE_FACT_TO_PERSIST`;
-   - `ALREADY_DURABLE_DUPLICATE`;
-   - `STALE_STATE_OR_GATE_TEXT_DO_NOT_PERSIST`.
-6. The minimum unique fact set expected from the RETURN is:
-   - final GitHub fresh-read-back fact(s);
-   - Git persistence timing fact(s);
-   - safe fast-forward/reconciliation result.
-   If the local diff contains any other unique factual material, include it explicitly in Evidence and preserve it.
-7. Do **not** commit the dirty files wholesale from the stale local base. Instead, reconcile only the unique factual hunks into the latest canonical versions of:
-   - `EXECUTION_EVIDENCE.md`;
-   - `EXECUTOR_HANDOFF.md`;
-   - `docs/ROUND_TIMING_RETROSPECTIVE.md`.
-8. Current Reviewer Gate/state must remain the R1 Gate from canonical main; local stale Gate/status prose must not overwrite it.
-9. Do not modify C2B runner/template/validator/package source.
-10. After the unique facts are safely committed and fresh-read back from GitHub, clean the original three local unstaged closeout edits only if they are now fully represented durably.
-11. Require project-scoped worktree clean at the end. If any source hunk cannot be proven durable, RETURN and preserve it.
-12. Verify accepted C2B runner/template blob identities unchanged.
-13. Record finish/elapsed/overrun. If >15m, record the specific Git/document phase causing it.
-14. STOP_AT_REVIEWER.
+1. Fresh-read current canonical main and verify this VPN project has no material drift from the accepted C2B package.
+2. Re-prove the project-scoped checkout/worktree is clean before launching the checkpoint; unrelated repository artifacts outside the VPN project are not blockers.
+3. Verify the runner/template blobs exactly match the locked identities above.
+4. Use the existing runner as one atomic PowerShell checkpoint; do not edit it in this Gate.
+5. Runner must emit `ROUND_STARTED_AT` before its own runtime/network-state prechecks.
+6. Require PowerShell 7.6.6, Administrator/High-integrity Owner host context, current WireGuard baseline running, system proxy OFF, Clash/Mihomo TUN OFF, and exactly one discoverable Clash Verge profile store.
+7. Any mismatch, ambiguous profile store, unexpected local residue, source drift, or cleanup failure => precise RETURN before proceeding further.
+
+### OWNER CHECKPOINT
+
+The runner creates only an owner-only temporary synthetic profile. Owner then:
+1. imports **only** the synthetic profile shown by the runner;
+2. leaves the active production profile and WireGuard unchanged;
+3. confirms `WG-BASELINE`, synthetic `HY2-SFO3`, and the manual selector are visible;
+4. confirms `WG-BASELINE` remains current/default;
+5. does **not** select HY2 and sends **no** HY2 traffic;
+6. removes the imported synthetic profile in Clash Verge;
+7. enters the runner's exact bounded acknowledgement.
+
+### REQUIRED_EVIDENCE
+
+- canonical/main and locked source identities;
+- project-scoped clean preflight;
+- `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN`;
+- `C2B_PREFLIGHT=PASS`;
+- `MIHOMO_CONFIG_TEST=PASS`;
+- structured Owner acknowledgement;
+- `CLASH_PROFILE_STORE_POSTREMOVE=PASS`;
+- `POST_UI_NETWORK_READBACK=PASS`;
+- `LOCAL_RUNTIME_CLEANUP=PASS`;
+- WireGuard remains connected; system proxy OFF; TUN OFF; route snapshot unchanged;
+- `SECRET_VALUES_EMITTED=0`;
+- no network/VPS/Secret/DPAPI action.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires:
-- every unique local fact is durable on latest canonical main;
-- no stale Gate/status text reintroduced;
-- no unique source fact discarded before durability proof;
-- original three dirty local edits are clean only after durability proof;
-- C2B source blobs unchanged;
-- no live/runtime/network/Secret action;
-- complete timing;
-- GitHub fresh read-back confirms the persistence commit is in current main or safely reconciled after unrelated main movement.
+PASS_CANDIDATE requires all required evidence above, no profile-store residue or unrelated mutation, no real HY2/REALITY traffic, no system-network change, complete timing, and STOP_AT_REVIEWER.
+
+### ROLLBACK_STATUS_OR_PLAN
+
+No production mutation is authorized. The synthetic Clash profile is removed by Owner during the checkpoint; the runner owns and removes only its exact temporary project runtime files. Any unexpected profile-store or network delta fails closed and stops for Reviewer reconciliation.
 
 ### OWNER_ONLY_ACTIONS
 
-NONE.
+Import/inspect/remove the synthetic Clash profile and enter the exact runner acknowledgement. Owner is not responsible for debugging or redesign.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Persist only the unique facts from the three dirty R1 closeout docs onto latest canonical state; do not overwrite whole stale files and do not run C2B.
+Use only the locked C2B runner/template/package. First fresh-read canonical state and re-prove project-scoped cleanliness/source blobs. Then enter the one-shot Owner synthetic UI checkpoint. Do not read DPAPI/recovery material, substitute real HY2 values, start Mihomo traffic, touch routes/proxy/TUN/WireGuard/VPS, or enter C2C. STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return `PASS_CANDIDATE_G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1` or precise `RETURN_*`; STOP_AT_REVIEWER.
+Return `PASS_CANDIDATE_G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2` or precise `RETURN_*`; include the bounded runner outputs only; STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Codex durably persists the three local R1 closeout fact classes. If R1 passes and the worktree is clean, Reviewer opens C2B Owner synthetic/no-traffic UI canary.
+Run the bounded C2B synthetic/no-traffic Clash UI checkpoint. This proves only UI visibility/manual selection semantics and cleanup; real HY2 connectivity remains C2C.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Keep WireGuard and Clash unchanged.
+Run the one-shot C2B Owner checkpoint when prompted: import only the synthetic profile, visually confirm the two nodes/manual selector with WG still current, do not select HY2 or send traffic, remove the synthetic profile, then enter the exact acknowledgement.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Execute only P0-R1 local-fact persistence; no live action and no whole-file stale overwrite.
+Use only the locked C2B package and perform its fresh local preflight before the Owner checkpoint. No real HY2/REALITY, Secret/DPAPI, network/VPS, route/proxy/TUN/WG action. STOP_AT_REVIEWER.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1 or precise RETURN; STOP.
+Return PASS_CANDIDATE_G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2 or precise RETURN; STOP.
 
 ## EVIDENCE_POINTERS
 
