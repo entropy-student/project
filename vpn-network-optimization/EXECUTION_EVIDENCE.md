@@ -3183,3 +3183,33 @@ Reviewer interpretation:
 - H1 performs no live route, service, proxy, TUN, VPS, SSH, or HTTP action and reads/emits no Secret values.
 - H1 is formally closed. The next G3-A step may collect real read-only health/readiness facts, but live switching remains separately gated.
 
+## G3A H2 control-route validator diagnostic — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_READ_ONLY_POWERSHELL_DIAGNOSTIC
+GATE_ID=G3A_READONLY_HEALTH_READINESS_H2
+H2_INITIAL_RESULT=RETURN_DIAGNOSTIC_ONLY
+INITIAL_WG_CONTROL_ROUTE_VALID=FALSE
+INITIAL_WIREGUARD_CURRENT_HEALTH=UNHEALTHY
+STRICT_SSH_CONTROL_PATH=SUCCEEDED_IN_SAME_H2_RUN
+REMOTE_WG_SERVICE=active
+REMOTE_UDP_51820=2
+SELECTED_INTERFACE_ALIAS=SFO2-A
+SELECTED_INTERFACE_INDEX=9
+WG_INTERFACE_INDEX=9
+SELECTED_ROUTE_IS_WG=TRUE
+NETWORK_MUTATION=NO
+SERVICE_MUTATION=NO
+EXTERNAL_REQUEST_COUNT=0
+ROOT_CAUSE=H2_CONTROL_ROUTE_CARDINALITY_VALIDATOR_TOO_STRICT
+ACCEPTED_REFERENCE_SEMANTICS=P1_REQUIRES_AT_LEAST_ONE_ROUTE_AND_VALIDATES_SELECTED_FIRST_ROUTE
+REPAIR_COMMIT=48a831a7de40741515a91c835d8a09b6ae45f943
+REAL_WORKLOAD_RETRY=NOT_APPLICABLE
+```
+
+Reviewer interpretation:
+- The H2 `WIREGUARD_CURRENT_HEALTH=UNHEALTHY` result was a collector false negative, not accepted evidence that WireGuard was unhealthy.
+- The same H2 run successfully used the strict SSH control path to `10.66.21.1`, while the bounded diagnostic independently proved the selected route uses `SFO2-A` ifIndex 9.
+- H2 incorrectly required exactly one `Find-NetRoute` result. The already accepted P1 logic requires at least one result and validates the selected first route.
+- The repair aligns H2 with accepted P1 route semantics and adds a deterministic multi-route regression fixture.
+
