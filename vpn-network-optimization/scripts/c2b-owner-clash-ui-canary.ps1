@@ -16,10 +16,6 @@ $script:createdRuntimeRoot = $false
 $script:createdRuntimeDirectory = $false
 $script:markerCreated = $false
 $script:configCreated = $false
-$script:recoveryCiphertext = $null
-$script:recoveryPlaintext = $null
-$script:authBytes = $null
-$script:hy2Auth = $null
 $script:configTestOutput = $null
 $script:failureClass = 'NONE'
 $script:cleanupPassed = $false
@@ -27,7 +23,9 @@ $script:uiCleanupAcknowledged = $false
 $script:cleanupErrors = [Collections.Generic.List[string]]::new()
 $script:renderedText = $null
 $script:configBytes = $null
-$script:acceptedText = $null
+$script:profileStoreRoot = $null
+$script:profileSnapshotBefore = $null
+$script:profileSnapshotAfter = $null
 
 function Assert-C2B {
     param([bool]$Condition, [string]$Code)
@@ -108,107 +106,6 @@ function Assert-C2BOwnerAcl {
     Assert-C2BOwnerAclRules -Rules $rules -Directory:$item.PSIsContainer
 }
 
-function Read-C2BExactBytes {
-    param([IO.BinaryReader]$Reader, [int]$Count)
-    $value = $Reader.ReadBytes($Count)
-    if ($value.Length -ne $Count) { throw 'RECOVERY_FRAME_TRUNCATED' }
-    return ,$value
-}
-
-function Read-C2BRecoveryClientFields {
-    param([byte[]]$Bytes)
-    if ($Bytes.Length -lt 8 -or $Bytes.Length -gt 131072) { throw 'RECOVERY_FRAME_SIZE_INVALID' }
-    $stream = [IO.MemoryStream]::new($Bytes, $false)
-    $reader = [IO.BinaryReader]::new($stream, [Text.Encoding]::UTF8, $true)
-    $seen = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
-    $localAuth = $null
-    $localCert = $null
-    $cert = $null
-    $authText = $null
-    try {
-        $magic = [Text.Encoding]::ASCII.GetString((Read-C2BExactBytes $reader 8))
-        if ($magic -cne 'VPNHY2R1') { throw 'RECOVERY_FRAME_MAGIC_INVALID' }
-        while ($stream.Position -lt $stream.Length) {
-            $nameLength = [int]$reader.ReadByte()
-            if ($nameLength -lt 1 -or $nameLength -gt 32) { throw 'RECOVERY_FRAME_NAME_LENGTH_INVALID' }
-            $lengthBytes = Read-C2BExactBytes $reader 4
-            $dataLength = ([uint32]$lengthBytes[0] -shl 24) -bor
-                          ([uint32]$lengthBytes[1] -shl 16) -bor
-                          ([uint32]$lengthBytes[2] -shl 8) -bor [uint32]$lengthBytes[3]
-            if ($dataLength -lt 1 -or $dataLength -gt 65536) { throw 'RECOVERY_FRAME_DATA_LENGTH_INVALID' }
-            $name = [Text.Encoding]::UTF8.GetString((Read-C2BExactBytes $reader $nameLength))
-            if ($name -notin @('hy2-auth', 'server.key', 'server.crt') -or -not $seen.Add($name)) {
-                throw 'RECOVERY_FRAME_ALLOWLIST_INVALID'
-            }
-            $value = Read-C2BExactBytes $reader ([int]$dataLength)
-            if ($name -ceq 'hy2-auth') { $localAuth = $value }
-            elseif ($name -ceq 'server.crt') { $localCert = $value }
-            else { [Security.Cryptography.CryptographicOperations]::ZeroMemory($value) }
-        }
-        if ($seen.Count -ne 3 -or $null -eq $localAuth -or $null -eq $localCert) {
-            throw 'RECOVERY_FRAME_CARDINALITY_INVALID'
-        }
-        $authText = [Text.Encoding]::ASCII.GetString($localAuth)
-        if ($authText -cnotmatch '^[0-9a-f]{64}$') { throw 'RECOVERY_AUTH_FORMAT_INVALID' }
-        $cert = [Security.Cryptography.X509Certificates.X509Certificate2]::new($localCert)
-        $ecdsa = [Security.Cryptography.X509Certificates.ECDsaCertificateExtensions]::GetECDsaPublicKey($cert)
-        try {
-            if ($null -eq $ecdsa -or $ecdsa.KeySize -ne 256 -or
-                $ecdsa.ExportParameters($false).Curve.Oid.Value -ne '1.2.840.10045.3.1.7') {
-                throw 'RECOVERY_CERTIFICATE_KEY_TYPE_INVALID'
-            }
-        }
-        finally { if ($null -ne $ecdsa) { $ecdsa.Dispose() } }
-        $sanExtension = @($cert.Extensions | Where-Object { $_.Oid.Value -eq '2.5.29.17' })
-        if ($sanExtension.Count -ne 1) { throw 'RECOVERY_CERTIFICATE_SAN_INVALID' }
-        $san = [Security.Cryptography.X509Certificates.X509SubjectAlternativeNameExtension]::new($sanExtension[0].RawData)
-        $dns = @($san.EnumerateDnsNames())
-        if ($dns.Count -ne 1 -or $dns[0] -cne 'hy2.sfo3-a.invalid') { throw 'RECOVERY_CERTIFICATE_SAN_INVALID' }
-        $fingerprint = [Convert]::ToHexString($cert.GetCertHash([Security.Cryptography.HashAlgorithmName]::SHA256))
-        $fingerprint = ($fingerprint -split '(..)' | Where-Object { $_ }) -join ':'
-        return [pscustomobject]@{ AuthBytes = $localAuth; Fingerprint = $fingerprint }
-    }
-    catch {
-        if ($null -ne $localAuth) { [Security.Cryptography.CryptographicOperations]::ZeroMemory($localAuth) }
-        throw
-    }
-    finally {
-        $authText = $null
-        if ($null -ne $localCert) { [Security.Cryptography.CryptographicOperations]::ZeroMemory($localCert) }
-        if ($null -ne $cert) { $cert.Dispose() }
-        $reader.Dispose()
-        $stream.Dispose()
-    }
-}
-
-function Get-C2BPhysicalEgress {
-    $adapters = @(Get-NetAdapter -Physical -ErrorAction Stop | Where-Object { $_.Status -eq 'Up' })
-    $routes = @(Get-NetRoute -AddressFamily IPv4 -PolicyStore ActiveStore -DestinationPrefix '0.0.0.0/0' -ErrorAction Stop)
-    $candidates = @()
-    foreach ($route in $routes) {
-        $adapter = @($adapters | Where-Object { $_.ifIndex -eq $route.InterfaceIndex })
-        if ($adapter.Count -ne 1) { continue }
-        $ip = Get-NetIPConfiguration -InterfaceIndex $adapter[0].ifIndex -ErrorAction Stop
-        $gateway = @($ip.IPv4DefaultGateway | Where-Object { $_.NextHop })
-        $source = @($ip.IPv4Address | Where-Object { $_.IPAddress -and $_.IPAddress -notmatch '^169\.254\.' })
-        if ($gateway.Count -ne 1 -or $source.Count -lt 1) { continue }
-        $ipInterface = Get-NetIPInterface -InterfaceIndex $adapter[0].ifIndex -AddressFamily IPv4 -ErrorAction Stop
-        $cost = [long]$route.RouteMetric + [long]$ipInterface.InterfaceMetric
-        $candidates += [pscustomobject]@{
-            Name = [string]$adapter[0].Name
-            IfIndex = [int]$adapter[0].ifIndex
-            Gateway = [string]$gateway[0].NextHop
-            SourceIPv4 = [string]$source[0].IPAddress
-            Cost = $cost
-        }
-    }
-    if ($candidates.Count -eq 0) { throw 'PHYSICAL_EGRESS_NOT_FOUND' }
-    $minimum = ($candidates | Measure-Object -Property Cost -Minimum).Minimum
-    $best = @($candidates | Where-Object { $_.Cost -eq $minimum } | Group-Object IfIndex)
-    if ($best.Count -ne 1) { throw 'PHYSICAL_EGRESS_AMBIGUOUS' }
-    return $best[0].Group[0]
-}
-
 function Get-C2BState {
     $manager = Get-Service -Name 'WireGuardManager' -ErrorAction Stop
     $tunnel = Get-Service -Name 'WireGuardTunnel$SFO2-A' -ErrorAction Stop
@@ -264,27 +161,77 @@ function Write-C2BNewFile {
     finally { $stream.Dispose() }
 }
 
+function Resolve-C2BProfileStoreRoot {
+    $roamingRoot = [Environment]::GetFolderPath([Environment+SpecialFolder]::ApplicationData)
+    if ([string]::IsNullOrWhiteSpace($roamingRoot) -or
+        -not (Test-Path -LiteralPath $roamingRoot -PathType Container)) {
+        throw 'CLASH_PROFILE_STORE_ROOT_UNAVAILABLE'
+    }
+    $applicationRoots = @(Get-ChildItem -LiteralPath $roamingRoot -Directory -Force -ErrorAction Stop |
+        Where-Object { $_.Name -match '(?i)(?:clash.*verge|verge.*clash)' })
+    $profileStores = @($applicationRoots | ForEach-Object {
+        Join-Path $_.FullName 'profiles'
+    } | Where-Object { Test-Path -LiteralPath $_ -PathType Container })
+    if ($profileStores.Count -ne 1) { throw 'CLASH_PROFILE_STORE_AMBIGUOUS' }
+    return (Resolve-Path -LiteralPath $profileStores[0] -ErrorAction Stop).Path
+}
+
+function Get-C2BProfileSnapshot {
+    param([string]$Root)
+    $snapshot = [Collections.Generic.SortedDictionary[string,string]]::new([StringComparer]::OrdinalIgnoreCase)
+    $pending = [Collections.Generic.Stack[string]]::new()
+    $pending.Push($Root)
+    while ($pending.Count -gt 0) {
+        $directory = $pending.Pop()
+        foreach ($item in @(Get-ChildItem -LiteralPath $directory -Force -ErrorAction Stop)) {
+            if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+                throw 'CLASH_PROFILE_STORE_REPARSE_POINT_PRESENT'
+            }
+            $relative = [IO.Path]::GetRelativePath($Root, $item.FullName).Replace('\', '/')
+            if ($item.PSIsContainer) {
+                $snapshot.Add($relative, 'DIRECTORY')
+                $pending.Push($item.FullName)
+            }
+            else {
+                $hash = (Get-FileHash -LiteralPath $item.FullName -Algorithm SHA256 -ErrorAction Stop).Hash
+                $snapshot.Add($relative, $hash)
+            }
+        }
+    }
+    return ,$snapshot
+}
+
+function Assert-C2BProfileSnapshotUnchanged {
+    param(
+        [Collections.Generic.SortedDictionary[string,string]]$Before,
+        [Collections.Generic.SortedDictionary[string,string]]$After
+    )
+    if ($Before.Count -ne $After.Count) { throw 'CLASH_PROFILE_STORE_RESIDUE_OR_CHANGED' }
+    foreach ($key in $Before.Keys) {
+        if (-not $After.ContainsKey($key) -or $Before[$key] -cne $After[$key]) {
+            throw 'CLASH_PROFILE_STORE_RESIDUE_OR_CHANGED'
+        }
+    }
+}
+
 try {
     $script:phase = 'PRECHECK_RUNTIME'
     Assert-C2B ($PSVersionTable.PSVersion -eq [version]'7.6.6') 'POWERSHELL_7_6_6_REQUIRED'
     Assert-C2B ($null -ne $script:ownerSid) 'OWNER_SID_UNAVAILABLE'
     $baseProject = Join-Path $env:LOCALAPPDATA 'vpn-network-optimization'
-    $recoveryPath = Join-Path $baseProject 'recovery\hy2-g2a.dpapi'
     $templatePath = Join-Path $PSScriptRoot '..\templates\clash\c2b-wg-hy2-canary.yaml.template'
-    $acceptedHy2Path = Join-Path $PSScriptRoot '..\config\clash\sfo3-a-hy2.yaml'
     $mihomoPath = 'C:\Program Files\Clash Verge\verge-mihomo.exe'
-    Assert-C2B (Test-Path -LiteralPath $recoveryPath -PathType Leaf) 'DPAPI_RECOVERY_ARTIFACT_MISSING'
     Assert-C2B (Test-Path -LiteralPath $templatePath -PathType Leaf) 'CANARY_TEMPLATE_MISSING'
-    Assert-C2B (Test-Path -LiteralPath $acceptedHy2Path -PathType Leaf) 'ACCEPTED_HY2_METADATA_MISSING'
     Assert-C2B (Test-Path -LiteralPath $mihomoPath -PathType Leaf) 'MIHOMO_BINARY_MISSING'
-    Assert-C2BOwnerAcl -Path $recoveryPath
     $mihomoVersion = @(& $mihomoPath -v 2>&1)
     if ($LASTEXITCODE -ne 0 -or ($mihomoVersion -join ' ') -notmatch '\bv1\.19\.32\b') { throw 'MIHOMO_VERSION_MISMATCH' }
+    $script:profileStoreRoot = Resolve-C2BProfileStoreRoot
+    $script:profileSnapshotBefore = Get-C2BProfileSnapshot -Root $script:profileStoreRoot
+    Write-Output 'CLASH_PROFILE_STORE_BASELINE=PASS'
 
     $script:phase = 'PRECHECK_NETWORK_STATE'
     $script:before = Get-C2BState
     Assert-C2BState -State $script:before
-    $physical = Get-C2BPhysicalEgress
 
     $script:phase = 'CREATE_OWNER_RUNTIME'
     $runtimeParent = Split-Path -Parent $script:runtimeRoot
@@ -308,27 +255,19 @@ try {
     Set-Acl -LiteralPath $script:markerPath -AclObject (New-C2BOwnerAcl)
     Assert-C2BOwnerAcl -Path $script:markerPath
 
-    $script:phase = 'DPAPI_UNPROTECT_IN_MEMORY'
-    Add-Type -AssemblyName System.Security.Cryptography.ProtectedData
-    $script:recoveryCiphertext = [IO.File]::ReadAllBytes($recoveryPath)
-    $script:recoveryPlaintext = [Security.Cryptography.ProtectedData]::Unprotect(
-        $script:recoveryCiphertext, $null, [Security.Cryptography.DataProtectionScope]::CurrentUser
-    )
-    $recoveryFields = Read-C2BRecoveryClientFields -Bytes $script:recoveryPlaintext
-    $script:authBytes = $recoveryFields.AuthBytes
-    $script:hy2Auth = [Text.Encoding]::ASCII.GetString($script:authBytes)
-    $script:acceptedText = [IO.File]::ReadAllText($acceptedHy2Path)
-    $acceptedMatches = [regex]::Matches($script:acceptedText, '(?im)^\s*fingerprint:\s*(?<value>(?:[0-9A-F]{2}:){31}[0-9A-F]{2})\s*$')
-    if ($acceptedMatches.Count -ne 1 -or $acceptedMatches[0].Groups['value'].Value -cne $recoveryFields.Fingerprint) {
-        throw 'HY2_CERTIFICATE_FINGERPRINT_MISMATCH'
-    }
-
-    $script:phase = 'RENDER_AND_CONFIG_TEST'
+    $script:phase = 'RENDER_SYNTHETIC_PROFILE'
     $script:renderedText = [IO.File]::ReadAllText($templatePath)
-    $script:renderedText = $script:renderedText.Replace('__HY2_AUTH_INJECTED_IN_OWNER_RUNTIME__', $script:hy2Auth)
-    $script:renderedText = $script:renderedText.Replace('__HY2_FINGERPRINT_INJECTED_IN_OWNER_RUNTIME__', $recoveryFields.Fingerprint)
-    $script:renderedText = $script:renderedText.Replace('__PHYSICAL_INTERFACE_RUNTIME_DISCOVERY__', $physical.Name)
-    $null = ConvertFrom-Json -InputObject $script:renderedText -AsHashtable -ErrorAction Stop
+    $profile = ConvertFrom-Json -InputObject $script:renderedText -AsHashtable -ErrorAction Stop
+    Assert-C2B ($profile['proxies'].Count -eq 2 -and
+        $profile['proxies'][0]['name'] -ceq 'WG-BASELINE' -and
+        $profile['proxies'][0]['type'] -ceq 'direct' -and
+        $profile['proxies'][1]['name'] -ceq 'HY2-SFO3' -and
+        $profile['proxies'][1]['server'] -ceq '203.0.113.77' -and
+        $profile['proxies'][1]['password'] -ceq '__C2B_SYNTHETIC_AUTH_FIXTURE_ONLY__' -and
+        $profile['proxies'][1]['fingerprint'] -ceq '00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00' -and
+        $profile['proxy-groups'].Count -eq 1 -and
+        $profile['proxy-groups'][0]['type'] -ceq 'select' -and
+        $profile['proxy-groups'][0]['proxies'][0] -ceq 'WG-BASELINE') 'SYNTHETIC_PROFILE_CONTRACT_INVALID'
     $script:configBytes = [Text.UTF8Encoding]::new($false).GetBytes($script:renderedText)
     Write-C2BNewFile -Path $script:runtimeConfigPath -Bytes $script:configBytes -OnCreate { $script:configCreated = $true }
     Set-Acl -LiteralPath $script:runtimeConfigPath -AclObject (New-C2BOwnerAcl)
@@ -344,35 +283,43 @@ try {
     Write-Output 'TUN=OFF'
     Write-Output 'ROUTE_MUTATION=NONE'
     Write-Output 'REALITY_LIVE_NODE=ABSENT'
-    Write-Output ('PHYSICAL_INTERFACE=' + $physical.Name)
+    Write-Output 'HY2_CONNECTIVITY=NOT_TESTED'
     Write-Output ('TEMP_PROFILE_PATH=' + $script:runtimeConfigPath)
-    Write-Output 'OWNER_UI_STEP=Only after C2B authorization: import the temporary profile, keep WG connected and proxy/TUN off, perform only the authorized UI check, remove the imported profile, then return here.'
-    $ack = Read-Host 'After removing the temporary profile in Clash Verge, type PROFILE_REMOVED'
-    if ($ack -cne 'PROFILE_REMOVED') { throw 'OWNER_UI_CLEANUP_NOT_ACKNOWLEDGED' }
+    Write-Output 'OWNER_UI_STEP=Import only this synthetic profile for visual inspection; keep the active production profile, WG, system proxy, and TUN unchanged. Confirm WG/HY2 nodes and the manual selector with WG as current/default. Do not select HY2 or send traffic. Remove the imported profile in Clash Verge, then enter the exact acknowledgement requested below.'
+    $expectedAck = 'C2B_ACK|IMPORT=YES|WG_VISIBLE=YES|HY2_SYNTHETIC_VISIBLE=YES|SELECTOR_VISIBLE=YES|CURRENT=WG-BASELINE|HY2_TRAFFIC=NO|PROFILE_REMOVED=YES'
+    $ack = Read-Host ('Type exact acknowledgement: ' + $expectedAck)
+    if ($ack -cne $expectedAck) { throw 'OWNER_UI_STRUCTURED_ACK_INVALID' }
     $script:uiCleanupAcknowledged = $true
 
     $script:phase = 'POST_UI_READBACK'
     $after = Get-C2BState
     Assert-C2BState -State $after
     Assert-C2BSameState -Before $script:before -After $after
+    $script:profileSnapshotAfter = Get-C2BProfileSnapshot -Root $script:profileStoreRoot
+    Assert-C2BProfileSnapshotUnchanged -Before $script:profileSnapshotBefore -After $script:profileSnapshotAfter
+    Write-Output 'CLASH_PROFILE_STORE_POSTREMOVE=PASS'
     Write-Output 'POST_UI_NETWORK_READBACK=PASS'
 }
 catch {
     $script:failureClass = $_.Exception.GetType().Name
+    $safeFailureCode = [string]$_.Exception.Message
     Write-Output ('C2B_FAILED_PHASE=' + $script:phase)
     Write-Output ('C2B_FAILURE_CLASS=' + $script:failureClass)
+    if ($safeFailureCode -cmatch '^[A-Z][A-Z0-9_]{1,79}$') {
+        Write-Output ('C2B_FAILURE_CODE=' + $safeFailureCode)
+    }
+    else {
+        Write-Output 'C2B_FAILURE_CODE=UNCLASSIFIED'
+    }
 }
 finally {
     $script:completionPhase = $script:phase
     $script:phase = 'CLEANUP'
     if ($null -ne $script:configTestOutput) { $script:configTestOutput = $null }
-    if ($null -ne $script:authBytes) { [Security.Cryptography.CryptographicOperations]::ZeroMemory($script:authBytes) }
-    if ($null -ne $script:recoveryPlaintext) { [Security.Cryptography.CryptographicOperations]::ZeroMemory($script:recoveryPlaintext) }
-    if ($null -ne $script:recoveryCiphertext) { [Security.Cryptography.CryptographicOperations]::ZeroMemory($script:recoveryCiphertext) }
     if ($null -ne $script:configBytes) { [Security.Cryptography.CryptographicOperations]::ZeroMemory($script:configBytes) }
-    $script:hy2Auth = $null
     $script:renderedText = $null
-    $script:acceptedText = $null
+    if ($null -ne $script:profileSnapshotBefore) { $script:profileSnapshotBefore.Clear() }
+    if ($null -ne $script:profileSnapshotAfter) { $script:profileSnapshotAfter.Clear() }
     foreach ($ownedPath in @(
         @{ Path = $script:runtimeConfigPath; Created = $script:configCreated; Kind = 'FILE' },
         @{ Path = $script:markerPath; Created = $script:markerCreated; Kind = 'FILE' },

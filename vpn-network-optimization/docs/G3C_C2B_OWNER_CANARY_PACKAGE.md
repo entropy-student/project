@@ -1,42 +1,58 @@
-# G3C C2B Owner-local Clash Verge canary package
+# G3C C2B synthetic Clash UI canary package
 
-Status: prepared offline in C2A; not run, imported, or applied.
+Status: offline package only. This package is not authorized to run until a
+later Reviewer checkpoint. It validates UI visibility only; it does not prove
+HY2 connectivity.
 
-## Profile contract
+## Synthetic profile contract
 
-The temporary selector contains only `WG-BASELINE` (`direct`, first/default)
-and `HY2-SFO3` (the existing SFO3 Hysteria2 endpoint). The physical
-`interface-name` is discovered at runtime. The template contains auth and
-fingerprint sentinels only. REALITY is excluded from the live profile and stays
-`COLD / DEFERRED_TO_SEPARATE_PERSISTENT_READINESS_GATE`.
+The profile has exactly two nodes. `WG-BASELINE` is a named `direct` proxy and
+is first in the manual `SELF-VPN-CANARY` `select` group, so the declared initial
+choice is the current Windows route (with production WireGuard left running).
+`HY2-SFO3` uses the reserved documentation address `203.0.113.77`, an
+`.invalid` SNI, a conspicuously synthetic auth fixture, and a zero-valued
+fixture fingerprint. These values are not credentials and cannot identify the
+production HY2 endpoint. No physical interface name, ifIndex, gateway, or local
+address is embedded.
 
-## Owner checkpoint boundary
+REALITY is absent from the profile and remains
+`COLD / DEFERRED_TO_SEPARATE_PERSISTENT_READINESS_GATE`. No persistent REALITY
+server is part of C2B.
 
-The one-shot `scripts/c2b-owner-clash-ui-canary.ps1` is for a later Reviewer-
-authorized C2B only. It is designed to read the existing CurrentUser DPAPI
-recovery artifact locally, validate its `VPNHY2R1` allowlist in memory, render
-one owner-only runtime profile under a unique marked directory, and run the
-pinned Mihomo v1.19.32 config test before presenting the file to the Owner.
-It does not encode profile auto-apply, system-proxy/TUN enablement, WG stop,
-route mutation, VPS access, or external requests.
+## Future Owner UI checkpoint boundary
 
-The later UI step is explicit and bounded: import the temporary profile in
-Clash Verge, keep system WireGuard connected and system proxy/TUN off, perform
-only the Reviewer-authorized UI check, remove the temporary profile in the UI,
-then acknowledge cleanup so the runner can remove its exact runtime directory.
-If the Owner does not acknowledge, the script still runs local `finally`
-cleanup and returns a non-success result. Do not use this package before C2B
-authorization.
+The one-shot `scripts/c2b-owner-clash-ui-canary.ps1` is not executed in this R1.
+If a later Gate authorizes its use, it creates one owner-only, CreateNew runtime
+copy from the synthetic template and performs only Mihomo's local config parse.
+It does not unprotect DPAPI, read recovery material, obtain real HY2 auth or a
+production certificate fingerprint, start a Mihomo client, or send traffic.
 
-## Cleanup and rollback
+The Owner checkpoint keeps the existing production profile active, WireGuard
+connected, system proxy off, and TUN off. The Owner imports the synthetic
+profile only for visual inspection, confirms the WG/HY2 entries and manual
+selector with `WG-BASELINE` current/default, does not select HY2 or send traffic,
+removes the imported profile in the Clash Verge UI, and provides the exact
+bounded structured acknowledgement requested by the runner.
 
-The runner owns only its uniquely named runtime child, marker, and generated
-YAML. It uses fail-on-existing creation and deletes only those exact objects;
-it does not recursively remove a shared runtime parent or any Clash profile
-directory. The future UI checkpoint must remove the imported canary profile
-before acknowledging completion. The script compares WG, proxy, TUN, and route
-snapshots before/after and returns non-success on drift.
+Before import, the runner discovers exactly one Clash Verge `profiles/` store
+under the current user's roaming application-data directory and holds a
+read-only in-memory snapshot of relative file names and file hashes. After UI
+removal, it compares the snapshot. It never prints profile names, hashes, or
+contents and never deletes files from the Clash-owned profile store. Ambiguous
+store discovery, read failure, mismatch, or residue is fail-closed; cleanup is
+manual/reviewer-directed rather than automatic deletion of unrelated files.
 
-REALITY readiness remains cold. No persistent or temporary `/32` route is part
-of this package. C2A performs no DPAPI unprotect, Secret read, Mihomo start,
-profile apply, network request, or network mutation.
+## Safety, cleanup, and interpretation
+
+The runner checks that production WireGuard remains connected and that system
+proxy/TUN remain off; it compares route and client-state snapshots before and
+after. It owns only its unique project runtime directory, marker, and generated
+synthetic YAML, created with `CreateNew` and owner-only ACL. Its `finally`
+cleanup removes only those exact objects. It does not change routes, proxy,
+TUN, WireGuard, VPS state, or any system setting.
+
+C2B can establish only that the synthetic profile is parseable and that the
+manual controls are visible in the UI. It cannot establish a HY2 handshake,
+authentication, endpoint reachability, or performance. Real HY2 use within
+Clash is deferred to a separate C2C Gate with an explicitly approved secret and
+profile-storage lifecycle.

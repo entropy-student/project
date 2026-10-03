@@ -233,3 +233,11 @@ R3 retry 实际 **10m58s**，H1 实际 **14m45s**；两轮都证明将本地 fix
 - H1 在 14m45s 内完成并正式 PASS，验证了 failure-path fixture + 动态运行时不变量方案有效；
 - R4 在 9m38s 内完成单次真实 B-side 并 PASS，说明 runner hardening 已消除前两轮的本地工具性拖延；
 - 当前最高优先级的效率优化继续是：**本地 fixture 前置 + failure-path fixture + 动态运行时不变量 + project-scoped worktree + round-boundary Git reconciliation + 轻量阶段计时**。
+
+### G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1 timing record
+
+- Estimated duration: 15–25 minutes.
+- The Executor missed the required round-start timestamp before the initial canonical fetch. Total elapsed and `TIME_OVERRUN` therefore remain unknown; no start time was reconstructed.
+- The source-edit window was observed from 2026-10-03T16:12:58Z through 2026-10-03T16:30:21Z (17m23s), but that window overlaps fixture-driven edits and preliminary static review and is not reported as an isolated phase duration.
+- The final complete offline validator invocation measured 0.363s. The final automated scope/Secret/network-boundary scan measured 0.258s; manual diff review time was not separately captured. Git persistence timing will be recorded from its explicit phase start through fresh read-back.
+- No consequential action was performed or replayed. This round reinforces the existing timing rule: initialize the round clock before the very first canonical-source operation, then use separate phase timers.

@@ -7,14 +7,13 @@
     {
       "name": "HY2-SFO3",
       "type": "hysteria2",
-      "server": "24.199.118.137",
+      "server": "203.0.113.77",
       "port": 8443,
-      "password": "__HY2_AUTH_INJECTED_IN_OWNER_RUNTIME__",
-      "sni": "hy2.sfo3-a.invalid",
-      "skip-cert-verify": true,
-      "fingerprint": "__HY2_FINGERPRINT_INJECTED_IN_OWNER_RUNTIME__",
-      "alpn": ["h3"],
-      "interface-name": "__PHYSICAL_INTERFACE_RUNTIME_DISCOVERY__"
+      "password": "__C2B_SYNTHETIC_AUTH_FIXTURE_ONLY__",
+      "sni": "c2b-synthetic.invalid",
+      "skip-cert-verify": false,
+      "fingerprint": "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00",
+      "alpn": ["h3"]
     }
   ],
   "proxy-groups": [

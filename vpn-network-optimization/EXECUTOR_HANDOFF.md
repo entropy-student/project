@@ -91,6 +91,33 @@ STOP_AT_REVIEWER=YES
 Return `PASS_CANDIDATE_G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1` or a precise `RETURN_*`.
 Do not advance to live C2B.
 
+### Executor result — R1 candidate
+
+```text
+GATE_ID=G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1
+EXECUTOR_RESULT=PASS_CANDIDATE_WITH_TIMING_OBSERVABILITY_GAP
+PRE_GATE_HEAD=b7b910d11dcc112472c79411df44d9c177559047
+EXECUTION_WORKTREE=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建
+SOURCE_FILES=templates/clash/c2b-wg-hy2-canary.yaml.template,scripts/c2b-owner-clash-ui-canary.ps1,scripts/g3c-c2a-package-validator.ps1,docs/G3C_C2B_OWNER_CANARY_PACKAGE.md
+POWERSHELL_AST_PARSE=PASS
+OFFLINE_PACKAGE_FIXTURES=PASS
+SECRET_SCAN=PASS
+STATIC_NETWORK_BOUNDARY_REVIEW=PASS
+OWNER_RUNNER_EXECUTED=NO
+CLASH_OR_MIHOMO_STARTED=NO
+DPAPI_OR_SECRET_ACCESSED=NO
+NETWORK_OR_VPS_ACTION=NO
+ROUND_STARTED_AT=NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH
+ACTUAL_ELAPSED=UNKNOWN_START_NOT_CAPTURED
+TIME_OVERRUN=UNKNOWN_START_NOT_CAPTURED
+GITHUB_FRESH_READBACK=PENDING
+STOP_AT_REVIEWER=YES
+```
+
+The C2B profile is synthetic and UI-only: WG `direct` stays first/default; the HY2 entry uses reserved TEST-NET-3 plus fixture-only auth/fingerprint; REALITY is absent/cold. The runner no longer accesses DPAPI/recovery or production HY2 auth/fingerprint and implements a non-printing Clash `profiles/` filename/hash pre/post snapshot with fail-closed mismatch handling and no automatic deletion of Clash-owned files. It retains exact project-runtime CreateNew/owner-only ACL/finally cleanup and a bounded structured Owner acknowledgement. C2B can establish UI visibility only, not HY2 connectivity; real HY2-in-Clash is deferred to C2C.
+
+Timing limitation: the required round-start marker was missed before initial canonical fetch. `EXECUTION_EVIDENCE.md` records this honestly, with the measured final validator and automated static-scan durations and the observed source-work window. Total elapsed and overrun classification are unknown; no value was reconstructed or invented.
+
 ## Historical execution result — G3C C2A Clash UI canary package
 
 ```text

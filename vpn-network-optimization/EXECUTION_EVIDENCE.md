@@ -3939,3 +3939,53 @@ Reviewer interpretation:
 - Real HY2-in-Clash connectivity moves to a later dedicated C2C Gate with an explicit approved persistent-secret/storage lifecycle.
 - The timing overrun is recorded, but Executor supplied only a broad aggregate cause. No consequential action occurred, so C2A is not replayed for timing. The repair round must include lightweight phase timing so the next overrun can be attributed precisely.
 
+## G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1 — executor evidence
+
+```text
+GATE_ID=G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1
+PROVENANCE=DIRECT_MANAGED_WORKTREE_SOURCE_AND_OFFLINE_VALIDATOR_READBACK
+CANONICAL_ORIGIN=https://github.com/entropy-student/project.git
+PRE_GATE_HEAD=b7b910d11dcc112472c79411df44d9c177559047
+PRE_GATE_BRANCH=codex/g2c-private-reality-compat-canary
+WORKTREE_DIRTY_BEFORE=NO
+PRIMARY_CHECKOUT_UNTRACKED_RESULTS_PRESERVED=YES
+ROUND_STARTED_AT=NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH
+ROUND_FINISHED_AT=PENDING_GITHUB_READBACK
+ACTUAL_ELAPSED=UNKNOWN_START_NOT_CAPTURED
+TIME_OVERRUN=UNKNOWN_START_NOT_CAPTURED
+TIME_OVERRUN_CAUSE=NOT_CLASSIFIABLE_WITHOUT_ROUND_START
+SOURCE_BUILD_ELAPSED=NOT_SEPARATELY_MEASURED; source work included fixture-driven edits
+SOURCE_BUILD_OBSERVED_WINDOW=2026-10-03T16:12:58Z..2026-10-03T16:30:21Z; combined observation window, not an isolated phase duration
+FIXTURE_VALIDATE_ELAPSED=00:00:00.3627436; final complete validator invocation
+STATIC_REVIEW_ELAPSED=00:00:00.2580820; final automated scope/secret/action scan only; manual diff review duration not captured
+GIT_PERSISTENCE_ELAPSED=PENDING
+EXECUTOR_RESULT=PASS_CANDIDATE_WITH_TIMING_OBSERVABILITY_GAP
+```
+
+Actual source changes are limited to the future C2B package: `templates/clash/c2b-wg-hy2-canary.yaml.template`, `scripts/c2b-owner-clash-ui-canary.ps1`, `scripts/g3c-c2a-package-validator.ps1`, and `docs/G3C_C2B_OWNER_CANARY_PACKAGE.md`. The template now declares `WG-BASELINE` as named `direct` and first in the manual `SELF-VPN-CANARY` select group. The HY2 UI-only entry uses reserved TEST-NET-3 address `203.0.113.77`, `.invalid` SNI, a synthetic-only auth sentinel and a zero-valued fixture fingerprint; no physical interface/local network value or production HY2 endpoint/fingerprint is required. REALITY is absent and remains cold/deferred.
+
+The C2B runner no longer contains DPAPI/recovery access, VPNHY2R1 parsing, real auth extraction, accepted production fingerprint reads, or physical-egress discovery. It retains the project-owned CreateNew runtime file, owner-only ACL and exact `finally` cleanup. It now discovers exactly one Clash Verge `profiles/` store, snapshots relative names plus SHA-256 file hashes in memory without printing/serializing them, and requires an identical post-removal snapshot. Ambiguity, read errors or any difference fail closed; the runner contains no deletion against Clash-owned profile storage. A bounded exact structured Owner acknowledgement covers import, both visible nodes, selector visibility, WG current/default, HY2 no-traffic, and profile removal. This is implemented future-runner behavior only; the Owner runner was not executed in R1.
+
+The offline validator parsed the JSON-compatible YAML and passed deterministic fixtures for: valid synthetic UI-only profile; WG missing/default ordering; automatic selector rejection; hardcoded WLAN/ifIndex/gateway/local IPv4; DPAPI/recovery and real-auth access; production endpoint; altered auth/fingerprint fixture values; missing structured acknowledgement; missing profile-store baseline/post-check; delay/network requests; live REALITY and readiness overclaim; persistent `/32` instruction; WG/proxy/TUN/route mutations; missing cleanup; and missing timing markers. PowerShell AST parsing passed for the validator and C2B runner. `git diff --check`, source-scope scan, Secret-pattern scan, and no-network-mutation scan passed.
+
+```text
+OWNER_RUNNER_EXECUTED=NO
+CLASH_STARTED=NO
+MIHOMO_STARTED=NO
+DPAPI_UNPROTECT=NO
+SECRET_READ=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+NETWORK_REQUESTS=0
+VPS_OR_PROVIDER_ACCESS=NO
+NETWORK_CHANGED=NO
+WIREGUARD_CHANGED=NO
+ROUTE_CHANGED=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_CHANGED=NO
+CLASH_PROFILE_STORE_RUNTIME_SNAPSHOT=NOT_RUN_R1
+REVIEWER_HANDOFF_MODIFIED=NO
+GITHUB_FRESH_READBACK=PENDING
+STOP_AT_REVIEWER=YES
+```
+
