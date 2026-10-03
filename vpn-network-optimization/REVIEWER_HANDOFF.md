@@ -54,113 +54,99 @@ Current known components:
 ## CURRENT_ACCEPTED_STATE
 
 - **Current production/rollback:** system WireGuard remains connected and authoritative.
-- **Connectivity dependency:** at least one working VPN must remain available for ChatGPT/Codex; this checkpoint does not require disconnecting WireGuard.
+- **Connectivity dependency:** at least one working VPN must remain available; no VPN change is needed for the current checkpoint.
 - **G3-A:** health/readiness/advisory PASS.
 - **G3-B D1-D3:** offline migration package/qualification/render PASS; fresh-target rehearsal deferred.
-- **G3-C C1 design:** manual-control profile, contract and offline validator are on GitHub; A–G fixtures PASS; source remains unchanged.
-- **Mihomo runtime:** installed exact path is `C:\Program Files\Clash Verge\verge-mihomo.exe`; observed version is stable `v1.19.32`.
-- **R2 result:** native parse is still unproven because Codex policy blocked creation of the local PowerShell/config-test process before it started. This is not a Mihomo parser failure.
-- **Execution-channel decision:** do not retry/bypass Codex policy. Use one minimal Owner-local config-test checkpoint.
-- **Timing process:** R1 and R2 both missed whole-round start capture. Owner R3 embeds timing inside the one-shot script so the first emitted evidence is `ROUND_STARTED_AT`.
-- **Formal client-core baseline:** remains v1.19.31 until Owner R3 proves v1.19.32 accepts the unchanged C1 profile shape.
+- **G3-C C1 source:** manual-control profile, contract and offline validator remain unchanged; A–G fixtures PASS.
+- **Mihomo runtime:** installed exact path is `C:\Program Files\Clash Verge\verge-mihomo.exe`; current version is stable `v1.19.32`.
+- **Owner R3 technical result:** native Mihomo config-test succeeded with exit 0 against the synthetic C1 fixture; source postcheck reported unchanged.
+- **R3 formal status:** not yet PASS only because Reviewer-delivered interactive `finally` did not execute, leaving temp-fixture cleanup and finish timing unproven.
+- **No replay rule:** the successful native parse must not be rerun. Only cleanup/source-postcheck/timing-finalization remains.
+- **Checkpoint-design lesson:** future PowerShell Owner checkpoints must be delivered as one syntactic unit; split interactive `try/finally` is prohibited.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C1_OWNER_MIHOMO_NATIVE_PARSE_R3
+GATE_ID=G3C_C1_OWNER_R3_CLEANUP_R3R1
 STATE=AWAITING_OWNER_EXECUTION
-PREVIOUS_RESULT=RETURN_MIHOMO_NATIVE_PARSE_BLOCKED_BY_POLICY
-SPECIALIST_TRIGGERS=11B_TARGET_HOST_LOCAL_RUNTIME,11C_DEPLOYMENT_NETWORK_RESOURCES
-OBJECTIVE=Use one Owner-local PowerShell checkpoint to prove installed Mihomo v1.19.32 accepts the unchanged canonical C1 profile shape.
-MAX_ENDPOINT_THIS_ROUND=one local one-shot PowerShell checkpoint: source/hash check + synthetic TEMP fixture + mihomo native config-test + exact cleanup + bounded output.
+PREVIOUS_RESULT=PASS_CANDIDATE_NATIVE_PARSE_PENDING_CLEANUP
+SPECIALIST_TRIGGERS=11B_TARGET_HOST_LOCAL_RUNTIME
+OBJECTIVE=Complete exact cleanup and timing finalization for the already-successful Owner R3 native parse without replaying Mihomo config-test.
+MAX_ENDPOINT_THIS_ROUND=one atomic local PowerShell cleanup-only checkpoint: identify exact marked R3 temp artifact, delete it, prove absence, re-check C1 source hashes, finalize elapsed/overrun evidence.
 MANDATORY_REVIEW_STOP=YES
 OWNER_INTERVENTION_REQUIRED=YES_ONE_SHOT_LOCAL
 OWNER_DEBUGGING_REQUIRED=NO
+NATIVE_CONFIG_TEST_REPLAY_AUTHORIZED=NO
+MIHOMO_EXECUTION_AUTHORIZED=NO
 ACTIVE_VPN_CONNECTIVITY_MUST_BE_PRESERVED=YES
 WG_DISCONNECT_REQUIRED=NO
 WG_SERVICE_STOP_AUTHORIZED=NO
-WG_ROUTE_REMOVAL_AUTHORIZED=NO
-CLASH_ACTIVE_START_AUTHORIZED=NO
-CLASH_PROFILE_APPLY_AUTHORIZED=NO
+ROUTE_CHANGE_AUTHORIZED=NO
 SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
 TUN_CHANGE_AUTHORIZED=NO
-ROUTE_CHANGE_AUTHORIZED=NO
 VPS_ACCESS_AUTHORIZED=NO
 PROVIDER_ACCESS_AUTHORIZED=NO
 SECRET_READ_AUTHORIZED=NO
 EXTERNAL_REQUEST_AUTHORIZED=NO
-MIHOMO_BINARY_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
-EXPECTED_MIHOMO_VERSION=v1.19.32
 C1_TEMPLATE_SHA256=37759F834A637CF37DF4D71BA7C75585DA1F8211C668A23C323B50D2D9C1D424
 C1_VALIDATOR_SHA256=3682B298833C9352BA56AE6A1F7EAF2A24D06D19CE9B8B2F8418AEAD8C39E783
-ESTIMATED_EXECUTION_TIME=2-5_minutes
+R3_ORIGINAL_STARTED_AT=2026-10-03T14:45:59.5840466Z
+ESTIMATED_EXECUTION_TIME=1-2_minutes
 TIMING_OBSERVABILITY_REQUIRED=SCRIPT_EMBEDDED
-ROLLBACK_STATUS=TEMP_FIXTURE_CLEANUP_ONLY
+ROLLBACK_STATUS=CLEANUP_ONLY
 ```
 
 ### OWNER_CHECKPOINT_CONTRACT
 
-- Run exactly one Reviewer-provided PowerShell 7.x checkpoint on the Owner Windows host.
-- The checkpoint must emit `ROUND_STARTED_AT` before path/version/source checks.
-- It must verify:
-  - PowerShell 7.x;
-  - exact Mihomo path exists;
-  - Mihomo reports v1.19.32;
-  - current C1 template SHA-256 equals the accepted hash above;
-  - current C1 validator SHA-256 equals the accepted hash above.
-- It may perform only read-only physical-interface discovery required to replace the template's runtime interface placeholder in a **synthetic TEMP fixture**.
-- Fixture values must be test-only and contain no real Secret.
-- Native parse invocation is Mihomo config-test only: `-t -d <marked-temp-dir> -f <fixture>`.
-- The checkpoint must never start Mihomo as an active client.
-- It must delete only its own marked temp directory and prove cleanup.
-- Output is bounded/non-secret and is the only Owner relay required.
+- Run exactly one atomic Reviewer-provided PowerShell block.
+- Do not rerun Mihomo or any parser command.
+- The block may inspect only:
+  - the existing R3 `$tempDir` variable if still present;
+  - `$env:TEMP\vpn-network-optimization-g3c-r3-*` candidates with exact marker `.g3c-owner-r3-marker=G3C_OWNER_R3`;
+  - the C1 template/validator hashes.
+- Delete only a directory that has the exact R3 marker. If ambiguity exists, return without deleting anything.
+- Prove no marked R3 temp directory remains.
+- Re-check canonical source hashes.
+- Finalize elapsed time from `2026-10-03T14:45:59.5840466Z`; overrun cause is the Reviewer checkpoint syntax split/remediation, not Mihomo performance.
+- Owner pastes bounded output back to Reviewer.
 
 ### ACCEPTANCE_CRITERIA
 
 PASS_CANDIDATE requires:
-- exact source hashes match accepted C1 source;
-- Mihomo v1.19.32 native config-test exit code 0;
-- `MIHOMO_NATIVE_CONFIG_TEST=PASS`;
-- `TEMP_FIXTURE_SECRET_VALUES=0`;
-- exact cleanup PASS;
-- template/validator hashes unchanged after the test;
-- no active client, external request, route/proxy/TUN/WG/VPS/Provider/Secret action;
-- complete script-embedded timing fields.
-
-### TIMING_OBSERVABILITY
-
-- Reviewer estimate: **2–5 minutes**.
-- Script itself emits start before preflight and computes finish/elapsed.
-- If execution exceeds 5 minutes, preserve the emitted last phase and timing; Reviewer performs the overrun analysis. Owner does not debug.
-- Do not rerun solely because timing exceeds estimate.
+- no Mihomo/parser replay;
+- exact marked temp fixture cleanup PASS or proven already absent;
+- marked R3 temp residue count after cleanup = 0;
+- template and validator hashes match accepted values;
+- no network/VPN/system mutation;
+- finish/elapsed/overrun evidence emitted.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the single Reviewer-provided PowerShell checkpoint and paste its complete bounded output back to Reviewer. No VPN switch or admin elevation is expected.
+Run the single atomic cleanup-only PowerShell block provided by Reviewer and paste its complete output. Do not rerun the earlier R3 block.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-**NONE while awaiting Owner R3.** Codex must not retry the blocked native parse or attempt a policy workaround.
+**NONE.** Codex remains paused until Owner R3R1 is reviewed.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-No Executor action is authorized until Owner R3 output is reviewed.
+No Executor action is authorized.
 
 ## NEXT_STEP
 
-Owner runs one local PowerShell checkpoint. Reviewer checks the bounded output. A clean native parse closes C1 and accepts installed Mihomo v1.19.32 as the current client-core baseline; a parser failure opens a source-repair Gate with the exact parser error.
+Owner performs cleanup-only R3R1. Reviewer then persists the final R3 result. If cleanup/source hashes pass, C1 can be formally closed and Mihomo v1.19.32 accepted as the current client-core baseline without replaying native parse.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the single PowerShell checkpoint provided by Reviewer and paste the full output back. **Do not disconnect WireGuard or change Clash/VPN settings.**
+Run the single cleanup-only PowerShell block from Reviewer in the same PowerShell 7 window if it is still open, then paste the complete output. **Do not rerun the previous R3 script.**
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-**NONE while Owner R3 is pending.** Do not retry or bypass the Codex process-creation policy.
+**NONE.** Codex remains paused; do not retry Mihomo native parse.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-No Executor action until Reviewer processes Owner R3 output.
+No Executor action while Owner cleanup-only R3R1 is pending.
 
 ## EVIDENCE_POINTERS
 
