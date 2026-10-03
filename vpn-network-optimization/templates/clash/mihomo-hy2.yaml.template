@@ -1,7 +1,7 @@
 # Non-sensitive Mihomo/Clash Verge fragment. Import or enable manually only in a safe window.
 # Do not auto-switch the current profile, proxy, system proxy, or TUN.
 proxies:
-  - name: SFO3-A-HY2
+  - name: VPN-HY2
     type: hysteria2
     server: __VPS_HOST__
     port: 8443
@@ -19,5 +19,5 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-      - SFO3-A-HY2
+      - VPN-HY2
 
