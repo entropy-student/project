@@ -5,7 +5,26 @@
 
 ## PROJECT_GOAL
 
-以真实市场需求为最高优先级，筛选 **标品或高度可产品化的半标品** 闲鱼虚拟商品；非标服务只作为需求来源，不作为最终优先商品。随后再解决合法货源/交付、上架、自动化与规模化。
+本项目只解决一个问题：
+
+> **基于闲鱼真实市场需求，找出明确、可复核的商品类型 / 具体 SKU 列表。**
+
+项目在形成满足证据标准的最终 SKU / 商品类型目录后即完成。
+
+**不属于本项目目标：**
+- 找货源；
+- 判断或落实采购渠道；
+- 版权/授权方案落地；
+- 制作商品；
+- 上架；
+- 真实交易验证；
+- 支付/退款；
+- 自动发货；
+- 闲鱼账号自动化；
+- VPS/runtime 部署或维护；
+- 规模化运营。
+
+这些事项如后续需要，应另立项目或另开独立 Gate，不得作为当前 Xianyu 选品项目的后续必经阶段。
 
 ## PROJECT_STAGE
 
@@ -16,168 +35,199 @@ X2_SERVICE_DEMAND_DEPTH = PASS_EVIDENCE_ONLY
 X2R1_STANDARDIZED_PRODUCT_REFRAME = PASS
 X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3 = PASS_SUPERSEDED_FOR_SELECTION_AXIS
 X3R1_CONCRETE_SKU_REFRAME = PASS
-X3R2_SKU_LEVEL_DEMAND_DEPTH_36_TO_10_15 = NEXT
-
-AUTOMATION_RUNTIME_TRACK = PRESERVED_ACCEPTED_BASELINE
-RUNTIME_MUTATION_THIS_REBOOT = 0
+X3R1R1_PROJECT_GOAL_RECONCILIATION = PASS
+X3R2_FINAL_SKU_CATALOG_RESEARCH = NEXT
+PROJECT_CLOSEOUT = PENDING_AFTER_FINAL_SKU_CATALOG
 ~~~
 
 ## SYSTEM_MAP
 
 ~~~text
-当前官方规则 / 平台交易数据 / 当前公开商品页
-→ 需求证据池
-→ 具体商品类型 / SKU 池
-→ SKU 级需求深挖与排序
-→ 约 10–15 个高需求 SKU
-→ 单独研究货源 / 权利 / 交付 / 经济性
-→ Minimum Validation
-→ 最终 Priority SKU
-→ Listing / Automation
-
-既有 Shared VPS Xianyu runtime
-→ 独立保留
-→ 当前 Market Gate 不调用、不修改
+当前闲鱼市场 / 平台数据 / 当前公开商品与搜索结果
+→ 广泛需求信号
+→ 具体商品类型 / SKU 候选
+→ SKU 级需求证据补全与去重
+→ 最终商品类型 / SKU 目录
+→ Reviewer 验收
+→ PROJECT CLOSEOUT
 ~~~
+
+**终点就是“最终商品类型 / SKU 目录”。**
+
+不存在本项目内的：
+
+~~~text
+Supply
+→ Listing
+→ Minimum Validation
+→ Automation
+~~~
+
+以上均已从项目主线删除。
 
 ## CURRENT_ACCEPTED_STATE
 
-### Market selection
+### Current selection truth
 
-- 2026-10 从零重启；任何历史 shortlist、分数、赢家或“以前推荐过”均无 current authority。
-- X1 的 50 raw ideas / 25 normalized candidates 继续作为广泛需求发现证据。
-- 原 X2 证明了定制开发、PPT、CAD、求职、设计/视频等多个服务需求池真实存在，但其 8-item shortlist **不再作为当前选品 shortlist**；原因是它混合了标品与强非标服务。
-- X2R1 新增标准化分类：A=纯标品，B=结构化输入的可产品化半标品，C=套餐化服务，D=完全定制。**只有 A/B 可以进入当前 shortlist。**
-- 当前最强的“标品存在真钱需求”证据包括：闲鱼 2026 H1 AI 教程/课程占 AI 订单 8.1%，AI 模板/工作流占 6.6%，并有卖家半年卖出 1.7 万份 AI 漫剧制作教程。
-- 当前公开市场也存在重复销售的软件/工具、模板、数据产品等直接样本；但第三方会员/账号/未经授权模板/搬运数据/平台规避工具只作为需求证据，不进入可执行 shortlist。
-- 货源暂时 UNKNOWN 不淘汰；但最终无法建立合法、稳定、可重复交付来源时 KILL。
-- X3 的 P1/P2/P4 只保留为 **商品结构分析**，不再作为选品结果；Owner 明确要求最终决策必须落到具体商品类型 / SKU。
-- X3R1 已建立 **36 个具体 SKU 需求池**，覆盖软件、教程/项目包、模板、数据、摄影预设、专业资料、教育资料与攻略等。
-- 当前排序只看需求证据，不因货源暂时 UNKNOWN、版权来源暂未找到或制作路径未确定而淘汰需求。货源/权利/交付在需求收敛后单独研究。
-- 明确违规/违法的交付模型仍不能作为可执行 SKU，但其市场信号可以保留为需求观察。
+- 2026-10 选品从零重启，旧 shortlist / 旧赢家不具 current authority。
+- X1 建立了广泛需求池；X2 的服务类需求只作为需求证据。
+- X2R1 确立“标品 / 可高度标准化商品优先”的筛选原则。
+- X3 的 P1/P2/P4 只保留为商品结构分析，不再是选品结果。
+- X3R1 已建立 **36 个具体商品 / SKU 候选**；这份 36 SKU 池是当前主要研究输入，不是最终目录。
+- Owner 最新明确：**项目目标到“找到商品类型 / SKU”即结束。**
+- 因此，货源是否已找到、授权方式是否明确、能否自动交付、能否上架，均不得作为本项目“需求存在与否”或“是否完成”的判断条件。
+- 货源 UNKNOWN 不淘汰一个有市场需求的 SKU。
+- 明确违法/违规/侵权的具体交付模式可作为市场需求观察，但不得在最终目录中被表述为可直接执行的经营方案。
 
-### Standardization classes
+### Product-shape preference
 
 ~~~text
 A 纯标品
-= 同一核心交付物重复卖；买家几乎不改变产品；可自动/一键交付
+B 高度可产品化半标品
+→ 优先纳入最终 SKU / 商品类型目录
 
-B 可产品化半标品
-= 买家只提供结构化字段/文件；固定流水线生成结果；目标人工复核 <=15 分钟/单
-
-C 套餐化服务
-= 虽有固定菜单，但每单仍需理解自由文本需求、人工制作或多轮修改
-
-D 完全非标
-= 定制开发 / 设计 / 咨询 / 代做为主
+C 套餐化人工服务
+D 完全定制服务
+→ 可作为需求来源，但不作为本项目主要输出
 ~~~
 
-Current shortlist 只允许 A/B。
+这里的 A/B 是为了保证“输出的是商品”，不是为了继续推导交付、售后或自动化项目。
 
-### Automation runtime — prior accepted baseline, not revalidated
+### Legacy runtime context
+
+仓库中存在历史 Xianyu Shared VPS/runtime 资料，但它与当前选品项目目标无关：
 
 ~~~text
-PROJECT_ROLE=ACTIVE_RUNTIME
-CONTAINER=xianyu-xianyu-app-1
-APPS_PATH=/srv/apps/xianyu
-DATA_PATH=/srv/data/xianyu
-BACKUPS_PATH=/srv/backups/xianyu
-SHARED_NETWORK=spikersun-private
-PUBLIC_INGRESS=UNKNOWN
-RETENTION_REVIEW=OPEN
-CLEANUP_AUTHORIZED=NO
+LEGACY_RUNTIME_CONTEXT=PRESERVED
+CURRENT_PROJECT_DEPENDENCY=NO
+RUNTIME_READ_REQUIRED=NO
+RUNTIME_MUTATION_ALLOWED=NO
 ~~~
 
-本轮不重新探测、不清理、不调用 runtime。
+除非 Owner 后续明确另立 runtime 项目，否则 Reviewer/Executor 不应读取、探测或修改该 runtime。
 
 ## CURRENT_GATE
 
 ~~~text
-GATE_ID=X3R1_CONCRETE_SKU_REFRAME
-STATUS=PASS
-OBJECTIVE=把抽象商品结构改写为具体商品类型/SKU需求池，并把货源研究从需求筛选中拆开
-CONCRETE_SKU_POOL=36
-ABSTRACT_TOP3_SELECTION=SUPERSEDED
-SUPPLY_UNKNOWN_IS_DEMAND_KILL=NO
-REAL_LISTING=0
-REAL_PURCHASE=0
-PAYMENT=0
-ACCOUNT_MUTATION=0
-RUNTIME_MUTATION=0
-MANDATORY_REVIEW_STOP=REACHED
-NEXT_GATE=X3R2_SKU_LEVEL_DEMAND_DEPTH_36_TO_10_15
-NEXT_GATE_OPENED=NO
+GATE_ID=X3R2_FINAL_SKU_CATALOG_RESEARCH
+STATUS=NEXT_NOT_STARTED
+OBJECTIVE=把现有 36 个具体 SKU 候选补齐需求证据、去重和粒度校准，产出本项目最终的商品类型 / SKU 目录
+MAX_ENDPOINT_THIS_ROUND=FINAL_SKU_CATALOG + PROJECT_CLOSEOUT_CANDIDATE
+MANDATORY_REVIEW_STOP=YES_BEFORE_PROJECT_CLOSEOUT
+TARGET_AND_SCOPE=XIANYU_MARKET_DEMAND_RESEARCH_ONLY
+
+APPLICABLE_CRITICAL_CONSTRAINTS=
+MARKET_DEMAND_FIRST;
+CONCRETE_SKU_OR_PRODUCT_TYPE_OUTPUT;
+TRANSACTION_GT_INTENT_GT_ATTENTION;
+ITEM_SIGNAL_NE_SELLER_TOTAL;
+SUPPLY_UNKNOWN_NE_DEMAND_KILL;
+NO_FORCED_WINNER;
+NO_RUNTIME_ACCOUNT_LISTING_TRANSACTION_ACTIONS
+
+PREFLIGHT=
+1) read current REVIEWER_HANDOFF and X3R1 concrete SKU pool;
+2) use current public Xianyu market evidence;
+3) preserve evidence lineage and avoid double-counting same seller/matrix;
+4) distinguish payment/transaction, purchase intent, 想要, views and generic supply;
+5) normalize candidate granularity so every output is a searchable product type or SKU rather than an abstract business model;
+6) do not research sourcing as an exclusion criterion;
+7) do not touch account, listing, payment, purchase, automation or runtime.
+
+REQUIRED_EVIDENCE=
+1) every final catalog entry has a concrete product/SKU name;
+2) each entry has at least one current demand evidence path or is explicitly marked lower-confidence;
+3) price/intent/transaction evidence is labeled by strength and provenance;
+4) duplicated seller/matrix signals are identified where visible;
+5) derived SKUs are distinguished from directly observed SKUs;
+6) evidence gaps remain UNKNOWN rather than guessed;
+7) excluded observations and their exclusion reason are retained separately when useful.
+
+ACCEPTANCE_CRITERIA=
+1) final output is a concrete SKU / product-type list, not P1/P2/P4-style abstract structures;
+2) each retained entry is specific enough that a human could immediately search for that exact type of product;
+3) demand evidence is sufficient to explain why it is in the list;
+4) rankings/tiers, if used, reflect demand evidence only and do not penalize missing supply;
+5) no requirement exists to find a supplier, prove fulfillment, publish a listing or run a real purchase;
+6) final catalog may contain more or fewer than 10–15 entries; no arbitrary count is required;
+7) after Reviewer accepts the catalog, this project is eligible for CLOSEOUT.
+
+ROLLBACK_STATUS_OR_PLAN=DOCUMENTATION_AND_RESEARCH_ONLY; revert Git commits if necessary; no runtime/account/transaction state changes.
+OWNER_ONLY_ACTIONS=NONE_IN_CURRENT_RESEARCH_GATE.
+REVIEWER_TO_EXECUTOR_RELAY=Read REVIEWER_HANDOFF.md, docs/X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md and relevant accepted market evidence. Research only market demand and concrete SKU/product-type granularity. Do not perform sourcing, listing, account, payment, purchase, automation or runtime work.
+EXECUTOR_TO_REVIEWER_RELAY=Return PASS_CANDIDATE/RETURN plus final catalog artifact, evidence lineage, confidence labels, exclusions and unresolved evidence gaps. Persist artifacts before requesting PASS.
 ~~~
 
-X3R1 的 36 个具体 SKU、需求等级、当前证据与货源独立字段已持久化到：
-- `docs/X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md`
+## FINAL CATALOG COMPLETION STANDARD
 
-当前选品权威单位改为 **SKU**，不再是 P1/P2/P4 这类抽象产品结构。
+本项目最终交付应让 Owner 能直接拿到类似下面这种结果：
 
-### X2R1 accepted standardized shortlist — not ranked
+~~~text
+商品类型 / SKU
+当前常见价格带
+需求证据
+证据强度
+代表性闲鱼样本 / 来源
+需求持续性或季节性
+主要反方证据
+置信度
+~~~
 
-1. 单一任务型自研软件 / 小工具
-2. AI 垂直教程 + 项目文件 / 素材的版本化产品
-3. 特定岗位/任务的 AI Workflow / Agent 模板包
-4. Excel / Office 原创自动化工具包或业务模板系统
-5. 买家自有素材的电商图片 / SKU 批处理工具
-6. 原创加工的公开数据集 / 指标数据产品
-7. 结构化输入 → 自动生成的诊断/报告产品
-8. 原创/开源许可的垂直 Starter Kit / 模板系统
+不要求包含：
 
-这些是“值得继续验证的商品结构”，不是最终排名，也不代表每个具体题材都成立。
-
-## STANDARDIZATION_GATE
-
-SKU 进入最终真实测试候选前必须证明：
-
-- CORE_INVARIANCE：核心产品至少 80% 不因买家变化；
-- STRUCTURED_INPUT：若需要个性化，只接收固定字段/文件，不依赖开放式需求访谈；
-- HUMAN_MINUTES：稳定后目标人工处理 <=15 分钟/单；
-- REVISION_BOUNDARY：0 次或最多 1 次明确范围内修正，不接受无限改；
-- FULFILLMENT：可自动发货、一键交付或固定流水线交付；
-- SUPPORT_LOAD：不依赖长期人工维护/持续咨询才能获得价值；
-- RIGHTS：代码、内容、模板、素材、数据拥有明确的自有/开源/授权/公开合法来源；
-- VERSION_BURDEN：更新频率和维护成本不会吞掉毛利。
-
-任一候选长期只能维持 C/D，则从当前选品主线移除，即使市场需求很大。
+~~~text
+货源
+供应商
+采购价
+授权方式
+交付系统
+上架文案
+真实订单
+自动发货
+自动化
+~~~
 
 ## CRITICAL_CONSTRAINTS
 
-- MARKET_DEMAND_FIRST：标品化不是“为了省事选没人要的东西”；先要有需求，再看能否产品化。
-- STANDARDIZED_FIRST：当前最终候选只允许 A/B。
-- SERVICE_DEMAND_IS_INPUT_NOT_OUTPUT：非标服务可证明 Job 很痛，但不能直接成为当前 Priority Test。
-- TRANSACTION_GT_INTENT_GT_ATTENTION：订单/付款 > 明确成交动作 > 合格询盘 > 搜索/想要 > 浏览/曝光。
-- ITEM_SIGNAL_NE_SELLER_TOTAL：卖家累计卖出不得作为 SKU 销量。
-- SUPPLY_UNKNOWN_NE_KILL：货源 UNKNOWN 不在 Discovery 阶段淘汰；INVALID_RIGHTS / POLICY_FAIL 仍硬 KILL。
-- THIRD_PARTY_ACCESS_NE_PRODUCT：第三方会员、租号、充值、共享账号等可作为需求证据，不作为我们的候选货源。
-- GRAY_DEMAND_CAN_BE_MEASURED_NOT_SELECTED：搬运、去重过审、盗版、作弊、未授权数据等不进入可执行 shortlist。
-- AUTOMATION_RUNTIME_ISOLATED：本轮不得顺手修改 runtime、VPS、备份或清理项。
+- **MARKET_DEMAND_FIRST**：先证明闲鱼市场存在真实需求。
+- **CONCRETE_OUTPUT**：输出必须是具体商品类型或 SKU，不允许只输出“软件”“教程”“模板”等宽泛结构。
+- **STANDARDIZED_FIRST**：优先标品 / 高度标准化半标品。
+- **TRANSACTION_GT_INTENT_GT_ATTENTION**：真实成交证据 > 明确购买动作 > 合格询盘 > 想要/搜索 > 浏览。
+- **ITEM_SIGNAL_NE_SELLER_TOTAL**：卖家累计销量不得冒充单 SKU 销量。
+- **SUPPLY_UNKNOWN_NE_DEMAND_KILL**：没有货源信息不能成为删除需求候选的原因。
+- **NO_FORCED_COUNT**：不为了凑 Top 10 / Top 15 人为删除或保留商品。
+- **NO_FORCED_WINNER**：项目目标是输出可靠目录，不需要选唯一冠军。
+- **OUT_OF_SCOPE_EXECUTION**：货源、授权落地、上架、交易、账号操作、自动化、VPS 均不属于本项目。
 
 ## DEFAULT_EXECUTION_CHANNEL
 
 ~~~text
 MARKET_RESEARCH=PUBLIC_WEB + CANONICAL_GITHUB_RECORDS
 PROJECT_DOCS=GITHUB_SCOPED_TO_xianyu/**
-AUTOMATION_RUNTIME=UNCHANGED / NOT_USED
+ACCOUNT_ACTIONS=OUT_OF_SCOPE
+LISTING_ACTIONS=OUT_OF_SCOPE
+PURCHASE_PAYMENT=OUT_OF_SCOPE
+SUPPLY_SOURCING=OUT_OF_SCOPE
+AUTOMATION_RUNTIME=OUT_OF_SCOPE
 ~~~
 
 ## CURRENT_ROLLBACK_STATUS
 
-本轮仅研究/文档变更，可按 Git commit 回退；runtime、账号、数据和交易状态无变化。
+当前与下一 Gate 都仅涉及研究和 GitHub 文档，可按 Git commit 回退。无账号、交易、支付、runtime 或真实商品状态变化。
 
 ## UNRESOLVED
 
-- 闲鱼公开网页无法完整暴露 SKU 级真实订单、退款、询盘和 Support Minutes；最终仍需 Minimum Validation。
-- 36 个 SKU 当前证据强度不均：部分有直接商品页和“想要/浏览”，部分只由相邻需求或推荐市场推导，X3R2 必须逐 SKU 补证据。
-- 同一卖家矩阵、低价引流 SKU、推荐页偶然曝光可能放大表面需求，后续必须做 lineage/独立卖家去重。
-- 多个高需求 SKU 的货源、授权或再分发权仍为 UNKNOWN/NEEDS_PROOF；这些未知 **不影响需求排名**，只在后续 Supply Gate 判断能否执行。
-- 当前账号对特色服务/虚拟商品类目的实际发布资格尚未做账号内验证。
-- runtime public ingress 与 retention-review 继续保持历史 UNKNOWN，不属于当前 Gate。
+- 当前 36 SKU 候选的证据强度不均，有些是直接商品样本，有些是由相邻需求推导。
+- 闲鱼公开页面通常不能提供完整 SKU 成交量，因此需要用多源证据、独立卖家密度和当前市场结构增强判断。
+- “想要/浏览”只能作为需求代理，不能写成成交。
+- 候选之间仍存在粒度不一致，例如“某一具体机型 LUT”与“某类 Excel 工具”需要在 X3R2 统一到可检索、可比较的合理商品粒度。
+- 这些是本项目真正剩余的问题；货源、授权、账号资格、售后分钟数、runtime 状态不再属于本项目 unresolved。
 
 ## NEXT_STEP
 
-下一轮执行 X3R2：对 36 个具体 SKU 做 SKU 级需求深挖，补当前闲鱼价格带、想要/浏览、独立卖家/同款密度、买家任务清晰度、季节性和免费替代，先按需求收敛到约 10–15 个 SKU。货源不参与本轮淘汰。
+执行 X3R2：把现有 36 SKU 池整理成**最终、明确、证据可复核的闲鱼商品类型 / SKU 目录**。数量由证据决定，不预设必须是 10、15 或 3 个。
+
+完成并经 Reviewer PASS 后，直接进入 PROJECT CLOSEOUT。
 
 ## OWNER_ACTION_REQUIRED
 
@@ -186,9 +236,8 @@ NONE
 ## EVIDENCE_POINTERS
 
 - docs/PRODUCT_SELECTION_RESEARCH_2026-10.md
-- docs/X2_DEMAND_DEPTH_SHORTLIST_2026-10.md（需求证据历史，不再是 current shortlist）
-- docs/X2R1_STANDARDIZED_PRODUCT_RESEARCH_2026-10.md
-- docs/X3_STANDARDIZED_EVIDENCE_CARDS_TOP3_2026-10.md（结构分析历史，selection axis 已被 X3R1 supersede）
-- docs/X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md
+- docs/X2_DEMAND_DEPTH_SHORTLIST_2026-10.md（需求证据历史）
+- docs/X2R1_STANDARDIZED_PRODUCT_RESEARCH_2026-10.md（商品结构历史）
+- docs/X3_STANDARDIZED_EVIDENCE_CARDS_TOP3_2026-10.md（结构分析历史，selection axis 已 supersede）
+- docs/X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md（当前主要候选池）
 - EXECUTION_EVIDENCE.md
-- PROJECT_STORAGE_MANIFEST.md（仅 runtime 需要时读）
