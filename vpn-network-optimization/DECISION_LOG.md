@@ -94,3 +94,14 @@
 **G4 remains mandatory:** the schedule change does not weaken acceptance. Before MVP v1 seal, the near-final WireGuard/HY2/validated REALITY roles must still be tested in a representative peak-hour window and with real Codex/OpenAI/image-generation workloads.
 
 **Current Gate unaffected:** the already-authorized `G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3` remains the active Gate and is not expanded by this roadmap change.
+
+
+## 2026-10-03 — Freeze real-request retry after masked R3 runner failure
+
+**Decision:** Treat the R3 retry's real-request status as `UNKNOWN` because the top-level exception classifier failed and masked the original phase. Do not reuse the prior one-request authorization. Before any new REALITY/OpenAI request, first complete a local-only runner-hardening Gate; after that Gate passes, require fresh Owner authorization for the next real request.
+
+**Why:** Governance requires ambiguous consequential results to be reconciled before retry and forbids assuming an action did not occur when Evidence cannot prove it. The same round also showed that SFO2-A and its control route are currently ifIndex 9 while the runner hardcodes 13, so the runner must validate runtime consistency instead of a historical interface number.
+
+**Local hardening scope:** make failure classification independently testable and non-throwing; replace fixed ifIndex 13 assertions with dynamic adapter/control-route consistency; prove both through no-network fixtures before any SSH or remote/server work.
+
+**Consequence:** G2-C compatibility remains unresolved, but no protocol conclusion is lost or invented. The next round has zero network actions and no Owner consequential authorization requirement; the subsequent real A/B retry does.
