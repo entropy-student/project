@@ -3666,3 +3666,34 @@ STOP_AT_REVIEWER=YES
 
 The exact accepted historical path was checked first and exists. Its only executed binary operation was `-v`, which identified Mihomo Meta v1.19.32, not the Gate-pinned v1.19.31. The Gate requires immediate RETURN on version drift; therefore no alternate binary search, fixture rendering, config-test, active client, network request, VPS access, or Secret access followed. The C1 source/template was not changed. Timing start was not instrumented before initial preflight, so total elapsed and overrun status are explicitly unknown rather than inferred.
 
+## Reviewer review — G3C C1 Mihomo native parse reconciliation R1 — 2026-10-03
+
+```text
+GATE_ID=G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1
+REVIEWER_RESULT=RETURN_VERSION_DRIFT_CONFIRMED_NEXT_REQUALIFY_CURRENT_STABLE
+EXECUTOR_RECORD_COMMIT=1776ef5e13060eabe933eb7186c684f4df6e186e
+EXECUTOR_SCOPE_DIFF=EVIDENCE_AND_EXECUTOR_HANDOFF_ONLY
+HISTORICAL_MIHOMO_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+BINARY_EXISTS=YES
+PREVIOUS_ACCEPTED_VERSION=v1.19.31
+OBSERVED_INSTALLED_VERSION=v1.19.32
+OFFICIAL_RELEASE_VERIFIED=YES
+OFFICIAL_RELEASE_TAG=v1.19.32
+OFFICIAL_RELEASE_PUBLISHED_AT=2026-09-30T17:09:36Z
+OFFICIAL_RELEASE_PRERELEASE=NO
+NATIVE_CONFIG_TEST=NOT_RUN_BY_R1_AS_REQUIRED_ON_DRIFT
+LIVE_MUTATION=NO
+NETWORK_REQUEST_COUNT=0
+TIMING_OBSERVABILITY=FAILED_TO_CAPTURE_ROUND_START
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+```
+
+Reviewer interpretation:
+- Executor obeyed the version-drift stop condition exactly; no native parse, client start, route/proxy/TUN/WG/VPS/Secret action followed.
+- GitHub scope is correct: only `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md` changed.
+- Upstream MetaCubeX GitHub confirms `v1.19.32` is a normal stable release published 2026-09-30, not a prerelease.
+- Do not downgrade the local Clash Verge core merely to preserve the historical `v1.19.31` pin. Requalify the actual installed `v1.19.32` with the same bounded non-secret native config test.
+- Formal project baseline remains `v1.19.31` until the v1.19.32 native parse Gate passes; current local runtime fact is v1.19.32.
+- Timing observability was mandatory in R1 but the start marker was missed. This is a process-observability defect, not a reason to replay R1. The next Gate must capture timing before any preflight action.
+
