@@ -2992,4 +2992,49 @@ Reviewer interpretation:
 - Owner runtime, effective elevation, canonical source, current Gate, and unconsumed request budget pass together.
 - This verification mode made no network, VPS, route, listener, Secret, or OpenAI request action.
 - The existing P1 authorization remains valid; the real P1 may run once and must return to Reviewer after any outcome without manual retry.
+## Owner P1 Windows preflight RETURN + local baseline diagnosis — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT_AND_READ_ONLY_LOCAL_DIAGNOSTIC
+GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+RUNNER_PHASE=PRECHECK_WINDOWS
+FAILURE_CODE=UNEXPECTED_LOCAL_FAILURE
+CANONICAL_SOURCE_VERIFIED=TRUE
+SOURCE_HEAD=5b1f5799b23bd0d71181b33a5544dcd2928fc851
+CURRENT_GATE_PREFLIGHT=AUTHORIZED_BUDGET_0_OF_1
+WIREGUARD_ADAPTER=SFO2-A_IFINDEX_9_UP
+CONTROL_ROUTE=SFO2-A_IFINDEX_9
+SYSTEM_PROXY_ENABLED_BEFORE=FALSE
+RUNNER_WINHTTP_DIRECT_BEFORE=FALSE
+OWNER_API_WINHTTP_ACCESS_TYPE=1
+OWNER_API_WINHTTP_ACCESS_NAME=NO_PROXY_DIRECT
+OWNER_API_WINHTTP_PROXY_PRESENT=NO
+OWNER_API_WINHTTP_BYPASS_PRESENT=NO
+MIHOMO_PROCESS_COUNT_BEFORE=1
+EXISTING_MIHOMO_NAME=verge-mihomo
+EXISTING_MIHOMO_PATH=C:\ProgramData\clash-verge-service\cores\verge-mihomo.exe
+EXISTING_MIHOMO_LISTENERS=127.0.0.1:9097;127.0.0.1:7900
+P1_LOCAL_PROXY_TCP_17990_COUNT=0
+P1_LOCAL_PROXY_UDP_17990_COUNT=0
+SSH_STARTED=NO
+VPS_READ_OR_WRITE=NO
+TEMP_ROUTE_ADDED=FALSE
+OPENAI_REQUEST_COUNT=0
+P1_REQUEST_BUDGET_REMAINING=1
+ROOT_CAUSE_1=WINHTTP_NATIVE_TEXT_LOCALIZATION_OR_DECODING_FALSE_NEGATIVE
+ROOT_CAUSE_2=PREEXISTING_CLASH_VERGE_MIHOMO_BASELINE_WAS_INCORRECTLY_REQUIRED_TO_BE_ZERO
+REPAIR_COMMIT=c6c15550333600aeafce282215424c6eede5d269
+REPAIR_WINHTTP=WINDOWS_API_WINHTTP_DEFAULT_PROXY_CONFIGURATION
+REPAIR_MIHOMO=ALLOW_UNRELATED_EXISTING_PROCESS_AND_REQUIRE_EXACT_BASELINE_PRESERVATION
+REPAIR_FAILURE_CLASSIFIER=SYMBOLIC_ASSERT_CODE_PASSTHROUGH
+LOCAL_PREFLIGHT_ONLY_MODE=ADDED
+REAL_P1_EXECUTED=NO
+NETWORK_CHANGED=NO
+```
+
+Reviewer interpretation:
+- The Windows preflight failure occurred before SSH or any consequential action, so request budget remains 0/1.
+- WinHTTP is actually direct according to the Windows WinHTTP API; the earlier text parser produced a false negative.
+- The existing Mihomo process is the user's Clash Verge service and does not occupy P1 port 17990. P1 must preserve it rather than require all Mihomo processes to be absent.
+- The repaired runner now proves these facts with a bounded local-preflight-only mode before any further real P1 attempt.
 
