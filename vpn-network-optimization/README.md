@@ -95,6 +95,8 @@ MVP v1 封板                                  ⏳ PENDING
 
 进入执行阶段后，`EXECUTOR_HANDOFF.md` 与 `EXECUTION_EVIDENCE.md` 只记录执行事实与脱敏证据，不与 Reviewer Handoff 竞争。
 
+执行效率与超时复盘单独维护在 `docs/ROUND_TIMING_RETROSPECTIVE.md`，用于记录每轮预计/实际耗时、超时原因和流程优化，不改变项目真相层级。
+
 ## Secret 规则
 
 任何私钥、密码、Token、HY2 认证值、证书私钥不得进入 GitHub、普通日志、Handoff 或聊天。项目仓库只保留变量名、位置、生成规则与非敏感模板。
