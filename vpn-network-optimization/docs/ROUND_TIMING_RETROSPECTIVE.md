@@ -25,6 +25,7 @@
 | G2C_R3_LOCAL_RUNNER_HARDENING_H1 | 10–20 分钟 | 14m45s | NO | failure-path fixture、动态 ifIndex 和 live baseline 全部通过；本轮没有 SSH、网络请求或 Secret 活动。说明“先本地 hardening 再真实请求”的分拆有效。 | commit `2993756d...` |
 | G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4 | 15–25 分钟 | 9m38s | NO | hardened preflight、单次 Mihomo B-side 请求、cleanup 与 Git fresh read-back 全部在预计内完成；curl 0 / HTTP 401，说明前置 hardening 后真实轮次执行效率恢复正常。 | commit `7e957ab9...` |
 | G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1 | 10–15 分钟 | UNKNOWN | UNKNOWN | 首个强制 timing Gate 未在初始 preflight 前记录开始时间；Executor 如实标记 UNKNOWN，没有事后猜测或重放。下一 Gate 必须先写 `ROUND_STARTED_AT` 再做任何 preflight。 | commit `1776ef5e...` |
+| G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2 | 10–15 分钟 | UNKNOWN（已记录局部 3m59s） | UNKNOWN | 第二个强制 timing round 仍未在 fetch/preflight 前记录开始时间；技术动作又被 Codex `CreateProcess` policy 阻断，未启动 parser。R2 不重放；后续 Owner checkpoint 把 `ROUND_STARTED_AT` 内置为脚本第一条证据输出。 | commit `1a4cb5ad...` |
 
 ## 已确认的主要耗时来源
 
@@ -130,6 +131,12 @@ R3 retry 证明了“正常参数路径”的本地 fixture 已经能提前挡�
 R1 暴露了一个纯流程问题：虽然 Gate 已要求计时，但 Executor 在初始 preflight 后才开始关注计时，因此无法恢复可信的总耗时。
 
 **改进：** 从下一 Gate 起，`ROUND_STARTED_AT` 必须是执行包中的第一条本地记录动作，先于 fetch/version/path/preflight；若缺失，不允许事后估算。技术动作若已经安全停止，不因 timing 缺失重放。
+
+### 6. 连续漏记 timing：把计时写进 one-shot checkpoint 本体
+
+R1/R2 连续两轮在执行包中写了 timing 要求，但 Executor 都在初始 fetch/preflight 后才注意到计时，因此完整耗时不可恢复。
+
+**改进：** 对 Owner-local 或其他关键 one-shot checkpoint，不再依赖执行者“记得先计时”；脚本本体在任何 path/version/preflight 之前立即写出 `ROUND_STARTED_AT`，结束时自动计算 `ROUND_FINISHED_AT`、`ACTUAL_ELAPSED` 与 `TIME_OVERRUN`。缺失时不得事后猜测，也不得为补 timing 重放已安全终止的技术动作。
 
 ## 当前优化方案
 
