@@ -79,8 +79,10 @@
 | `G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT.md` | Owner review of current static 12-page magazine visual system | **RESOLVED — OWNER REJECTED CURRENT VISUAL** |
 | `OWNER_DECISION_G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` | Owner rejection + initial full-redesign boundary | **SUPERSEDED BY LAB-FIRST DECISION** |
 | `G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` | Full 12-page magazine visual redesign | **SUPERSEDED BEFORE EXECUTION** |
-| `OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md` | Owner-approved 1+1+12 / lab-first design direction | **CURRENT OWNER DECISION** |
-| `G3CR6R3B_VISUAL_MOTION_LAB.md` | 3 interactions + 3 covers + 4 representative magazine pages | **CURRENT GATE** |
+| `OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier 1+1+12 lab-first direction | **SUPERSEDED BEFORE EXECUTION** |
+| `G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier design lab Gate | **SUPERSEDED BEFORE EXECUTION** |
+| `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md` | Owner-approved template/source-first direction | **CURRENT OWNER DECISION** |
+| `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` | Read-only template + interaction source discovery | **CURRENT GATE** |
 | `G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` | Website motion + static final-product proof + Preview Activation correction | **PREPARED / HOLD PENDING MAGAZINE VISUAL PASS** |
 | `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
