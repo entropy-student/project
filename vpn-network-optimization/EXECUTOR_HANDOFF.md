@@ -243,3 +243,15 @@ TIME_OVERRUN=NO
 TIME_OVERRUN_CAUSE=NONE
 MAIN_ADVANCE_DURING_GATE=YES; RECONCILED_TO=889fe48defd4bcd59221bfdf1567dbf93a6db66e
 STOP_AT_REVIEWER=YES
+
+## Current executor result — G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4 (2026-10-03)
+
+结果：PASS_CANDIDATE_AB；单次 Mihomo v1.19.31 native B-side 请求成功，等待 Reviewer 判定。
+改动：仅执行已授权的临时私网 B-side；没有修改源 runner、VLESS/REALITY/Vision 参数、SNI、握手目标或 sing-box A 侧。
+验证：本地 hardened-runner preflight PASS；私网 `10.66.21.1:14443` 资产/配置/监听检查 PASS；唯一一次代理请求为 curl 0 / HTTP 401，B-side 分类 `MIHOMO_SERVER_SUCCEEDED`。精确 cleanup 与独立本地/SSH read-back 均 PASS。
+问题：NONE；结果仅适用于本次 bounded request，不代表生产默认或高峰表现。
+回滚：临时 client/server、Secret-bearing runtime config、服务端 runtime/workspace 与下载 binary 均已清理；WireGuard/HY2 和网络配置保持。
+请 Reviewer 检查：fresh-read 本轮 Evidence、Executor Handoff、提交及单次 B-side 结果。
+Owner 转交：NONE
+耗时：预计 15–25 分钟；实际 5m42s（从本地 preflight 起计）；超时 NO；原因 NONE。
+STOP_AT_REVIEWER=YES
