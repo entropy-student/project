@@ -4022,3 +4022,31 @@ Reviewer conclusion:
 - The missed whole-round timing start is retained as a process-observability defect. It cannot be reconstructed and does not justify replay of source work or any live action.
 - The temporary G3X benchmark Gate introduced by Reviewer is cancelled per Owner instruction; benchmarking is outside project governance unless explicitly reintroduced later.
 
+## Reviewer review — G3C C2B P0 worktree reconciliation — RETURN — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0
+REVIEWER_RESULT=RETURN_P0_LOCAL_FACTS_NOT_DURABLE_CONFIRMED
+EXECUTOR_REPORTED_DIRTY_FILE_COUNT=3
+EXPECTED_DIRTY_FILES_ONLY=YES
+DIRTY_FILES=EXECUTION_EVIDENCE.md,EXECUTOR_HANDOFF.md,docs/ROUND_TIMING_RETROSPECTIVE.md
+UNIQUE_LOCAL_FACTS_PRESENT=YES
+UNIQUE_FACT_CLASSES=GITHUB_FRESH_READBACK,PERSISTENCE_TIMING,SAFE_FAST_FORWARD_RESULT
+DISCARD_AUTHORIZED=NO
+LIVE_ACTION_OCCURRED=NO
+C2B_RUNNER_EXECUTED=NO
+CLASH_MIHOMO_DPAPI_NETWORK_VPS_ACTION=NO
+ACCEPTED_C2B_RUNNER_BLOB=cd5a2eb768b54d13307b651ea514a912b9742c9d
+ACCEPTED_C2B_TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+ROUND_STARTED_AT=NOT_CAPTURED_BEFORE_INITIAL_PREFLIGHT
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+TECHNICAL_REPLAY_REQUIRED=NO
+```
+
+Reviewer conclusion:
+- Executor correctly refused to discard the three known dirty documents because they contain factual closeout material not yet durable on canonical main.
+- No technical/runtime work is replayed.
+- Next round is documentation-only persistence. It must preserve the local unique facts while preventing stale local Gate/status text from overwriting newer canonical Reviewer/Executor state.
+- Shared-main advancement by unrelated projects is not a reason to rerun VPN work. Reconcile at the Git/document boundary only.
+
