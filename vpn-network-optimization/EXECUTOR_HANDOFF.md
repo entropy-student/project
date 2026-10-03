@@ -2,7 +2,61 @@
 
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
-## Current execution status — G2C REALITY handshake diagnostic R1
+
+## Current execution status — G3B D3 staged-install render validation
+
+```text
+GATE_ID=G3B_STAGED_INSTALL_RENDER_CONTRACT_D3
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+REBUILT_VALIDATOR_COMMIT=2cb25ecccdaf8fdc0c2a20368142b205cb0ca880
+OWNER_INTERVENTION_REQUIRED=NO
+LIVE_VPS_ACCESS_AUTHORIZED=NO
+PROVIDER_ACTION_AUTHORIZED=NO
+SECRET_READ_OR_TRANSFER_AUTHORIZED=NO
+SERVICE_OR_NETWORK_MUTATION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Read current `REVIEWER_HANDOFF.md` and only the D3 target files it names.
+2. Sync a clean local worktree to canonical `origin/main`; do not discard unknown local changes.
+3. Use PowerShell 7.6.x.
+4. AST-parse `scripts/g3b-staged-install-render-validator.ps1`.
+5. Run exactly:
+   `& .\scripts\g3b-staged-install-render-validator.ps1 -Validate`
+   from the project root, or the equivalent absolute path.
+6. Expected bounded success includes:
+   - `G3B_D3_SELFTEST_CASES=6`
+   - `G3B_D3_SELFTEST_RESULT=PASS`
+   - `G3B_D3_WG_SPLIT_DEFAULT=PASS`
+   - `G3B_D3_SECRET_SENTINELS=PASS`
+   - `G3B_D3_STAGED_ORDER=PASS`
+   - `G3B_D3_ROLLBACK_TO_SOURCE=PASS`
+   - `FILES_CREATED=0`
+   - `NETWORK_MUTATION=NO`
+   - `VPS_ACCESS=NO`
+   - `PROVIDER_ACTION=NO`
+   - `SECRET_VALUES_READ=0`
+   - `SECRET_VALUES_EMITTED=0`
+   - `G3B_D3_OFFLINE_VALIDATION=PASS`
+7. On PASS: append bounded non-secret execution facts to `EXECUTION_EVIDENCE.md`, update this handoff with the exact source HEAD/result, and stop for Reviewer.
+8. On failure: do not enter live/retry loops. Record the exact failure class and relevant non-secret source evidence, then stop for Reviewer.
+
+### Explicit prohibitions
+
+- Do not SSH to current or future VPS.
+- Do not create/buy a VPS or call a Provider control plane.
+- Do not read, generate, move, rotate, decrypt, print, hash, or commit Secret values.
+- Do not create rendered runtime files outside fixture memory.
+- Do not start/stop/enable services.
+- Do not change routes, firewall, NAT, sysctl, proxy, TUN, WireGuard, HY2, REALITY, or Clash.
+- Do not advance to D4/G4 or any later Gate.
+- Do not replay G2-C public canaries.
+
+
+## Historical execution status — G2C REALITY handshake diagnostic R1
 
 - Gate: `G2C_REALITY_HANDSHAKE_DIAGNOSTIC_R1`; source base was fresh GitHub `main` commit `3b20323933f6751e6cd614e5b41946430c191432`. Executed in the Owner Windows account via PowerShell 7.6.5, Medium integrity RID `8192`, Administrator `False`; elevation was not required.
 - Fresh local preflight passed: WireGuard Manager/Tunnel Running, `SFO2-A` Up/ifIndex 13, control route to `10.66.21.1` via ifIndex 13, system proxy disabled, WinHTTP direct, no Mihomo/TUN process or adapter, and accepted Mihomo Meta `v1.19.31` present.
