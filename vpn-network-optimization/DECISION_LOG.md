@@ -75,3 +75,22 @@
 **Pinned B-side candidate:** official MetaCubeX Mihomo `v1.19.31`, asset `mihomo-linux-amd64-compatible-v1.19.31.gz`, SHA256 `04cf9f09671704f839ddbee2e93069dc831a4123a75281e725d1d96ab9ac1afc`.
 
 **Consequence:** A successful Mihomo-server B-side materially implicates the sing-box server implementation path but does not itself authorize production use. A similar failure weakens the sing-box-specific hypothesis and moves the next Reviewer choice to a different single variable such as the REALITY handshake target/SNI. Public TCP/443 remains separately gated.
+
+
+## 2026-10-03 — Defer peak-hour/real-workload validation until after deterministic MVP engineering
+
+**Decision:** Re-sequence the remaining roadmap so the former `G2-D Peak-hour + real workload validation` becomes **G4 final validation**, after two deterministic engineering stages:
+1. `G3-A Network auto-adaptation + health`;
+2. `G3-B VPS migration + rollback package`;
+3. `G4 Peak-hour + real workload final validation`;
+4. `MVP v1 seal`.
+
+**Why:** Peak-hour validation depends on a suitable time window, while G3-A/G3-B can be advanced during the day. More importantly, running the real-workload A/B after automation/migration is implemented means the final test exercises a near-final system instead of an intermediate configuration that will immediately change afterward.
+
+**G3-A scope:** discover the active physical egress/interface/IP/gateway rather than hardcoding the historical WLAN values; generate/validate required bypass routes and client configuration; add bounded health/read-back and safe role-switch logic.
+
+**G3-B scope:** package template-driven VPS migration inputs, per-VPS Secret/certificate lifecycle, staged new->old cutover/rollback, health checks, and a bounded migration rehearsal without requiring a provider purchase unless separately authorized.
+
+**G4 remains mandatory:** the schedule change does not weaken acceptance. Before MVP v1 seal, the near-final WireGuard/HY2/validated REALITY roles must still be tested in a representative peak-hour window and with real Codex/OpenAI/image-generation workloads.
+
+**Current Gate unaffected:** the already-authorized `G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3` remains the active Gate and is not expanded by this roadmap change.
