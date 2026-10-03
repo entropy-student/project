@@ -1,3 +1,6 @@
+> **STATUS: SUPERSEDED BEFORE EXECUTION by `G3CR6R3B_VISUAL_MOTION_LAB`.**  
+> Owner chose a lab-first direction: validate 3 interactions + 3 covers + 4 representative magazine pages before expanding to the full 12-page redesign.
+
 # G3CR6R3A — Magazine Visual Redesign
 
 ## Gate
