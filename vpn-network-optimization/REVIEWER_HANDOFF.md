@@ -16,8 +16,8 @@ G1 Foreground-safe Foundation               PASS
 G2-A HY2 side-by-side deployment            PASS
 G2-A DPAPI recovery closure                 PASS
 G2-B Safe-window WG vs HY2 validation       PASS
-G2-C VLESS+REALITY side-by-side candidate  IN_PROGRESS
-G3-A Network auto-adaptation + health       PENDING
+G2-C VLESS+REALITY side-by-side candidate   PASS
+G3-A Network auto-adaptation + health       IN_PROGRESS
 G3-B VPS migration + rollback package       PENDING
 G4 Peak-hour + real workload final validate PENDING
 MVP v1 seal                                 PENDING
@@ -56,112 +56,107 @@ Current known components:
 
 - **Current production/rollback:** WireGuard on Windows; IPv4 split defaults `0.0.0.0/1` + `128.0.0.0/1`; strict WireGuard WFP kill-switch is not active.
 - **HY2:** official v2.12.3 is active on UDP/8443. Same-window 60+60 comparison passed on both protocols and favored HY2 in that tested window; peak-hour/representative workload superiority remains unproven.
-- **REALITY implementation:** Mihomo v1.19.31 is the accepted v1 server candidate after the private implementation A/B.
-- **Public REALITY path:** `G2C_REALITY_PUBLIC_TCP443_CANARY_P1` is formally PASS. One temporary public TCP/443 canary used a dynamically discovered physical-egress /32 route and returned curl 0 / HTTP 401 through VLESS+REALITY+Vision.
-- **P1 cleanup:** temporary server/client/runtime and exact /32 route were removed; TCP/443 and 14443 were absent afterward; WG/HY2, system proxy, WinHTTP, TUN, firewall and routing baseline were preserved.
-- **P1 replay:** forbidden. The one-request budget is exhausted (`1/1`); any future public canary/request requires a new Gate and fresh authorization.
-- **Dynamic egress rule:** accepted P1 logic discovers the current physical egress at runtime. Historical WLAN values observed during P1 are Evidence only and must not become G3-A constants.
-- **Secrets:** emitted/committed 0 in accepted P1 Evidence.
-- **Final validation pending:** peak-hour and representative Codex/OpenAI/image-generation workload validation remains G4 before MVP v1 seal.
+- **REALITY:** Mihomo v1.19.31 is the accepted server implementation; public TCP/443 canary PASS with complete cleanup and no persistence.
+- **P1 replay:** forbidden; the one-request budget is exhausted (`1/1`).
+- **G3-A H1:** formally PASS. `scripts/g3a-network-adaptation-planner.ps1` is advisory-only, dynamically resolves physical egress, fails closed on missing/ambiguous egress or health state, and passed 9 deterministic Owner-host fixtures under PowerShell 7.6.6 with zero network/service/proxy/TUN/VPS mutation and zero Secret read/emission.
+- **Automation boundary:** no live automatic switching has been authorized. H1 plans only; H2 may collect read-only health/readiness facts only.
+- **Final validation pending:** G4 peak-hour and representative Codex/OpenAI/image-generation workload validation remains mandatory before MVP v1 seal.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3A_NETWORK_ADAPTATION_LOCAL_ENGINEERING_H1
+GATE_ID=G3A_READONLY_HEALTH_READINESS_H2
 STATE=AUTHORIZED
-PREVIOUS_RESULT=PASS_G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+PREVIOUS_RESULT=PASS_G3A_NETWORK_ADAPTATION_LOCAL_ENGINEERING_H1
 OWNER_CONTINUE_AUTHORIZATION=2026-10-03
 SPECIALIST_TRIGGERS=11B_SSH_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION
-OBJECTIVE=Build and offline-validate a deterministic Windows network-adaptation planner that discovers current physical egress dynamically, classifies WG/HY2/REALITY health inputs, and emits a fail-closed role/route intent without changing live network state.
-MAX_ENDPOINT_THIS_ROUND=project-owned source changes + static review + offline/self-test + optional Owner read-only proof; no live route/service/proxy/TUN/VPN/VPS mutation and no real OpenAI request.
+OBJECTIVE=Build and validate a read-only Windows/VPS health-readiness collector that distinguishes current production health from cold candidate readiness without changing network state or generating external workload traffic.
+MAX_ENDPOINT_THIS_ROUND=project-owned source change + offline fixtures + one Owner read-only local/SSH collection + Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
-DEFAULT_EXECUTION_CHANNEL=GitHub_source_change_then_Owner_local_read_only_self_test
-ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
-OWNER_ONLY_ACTIONS=NONE_IN_H1
 LIVE_NETWORK_ACTIVATION_AUTHORIZED=NO
+REAL_OPENAI_REQUEST_AUTHORIZED=NO
+PUBLIC_LISTENER_CREATION_AUTHORIZED=NO
+TEMP_ROUTE_MUTATION_AUTHORIZED=NO
+SECRET_READ_AUTHORIZED=NO
+ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 ESTIMATED_EXECUTION_TIME=15-30_minutes
-IMPLEMENTATION_COMMIT=eef00e13e51734d892b74de7c20efc9f5243f23f
-STATIC_SOURCE_REVIEW=PASS
-OWNER_SELFTEST_PROOF=PENDING
 ```
 
 ### TARGET_AND_SCOPE
 
-- New project-owned planner: `scripts/g3a-network-adaptation-planner.ps1`.
-- Reuse accepted P1 dynamic physical-egress invariants; do not copy historical WLAN IP/gateway/ifIndex as constants.
-- Model three accepted protocol roles without making a production-default decision:
-  - WireGuard = current production/rollback baseline;
-  - HY2 = validated UDP candidate;
-  - Mihomo VLESS+REALITY = validated TCP/443 candidate.
-- H1 emits a plan only. It does not add/remove routes, start/stop services, change Clash Verge, change system proxy/TUN, or alter VPS state.
-- Production role priority remains unresolved until later validation; H1 may expose policy inputs but must not silently promote HY2 or REALITY to persistent default.
+- New collector: `scripts/g3a-health-readiness-readonly.ps1`.
+- Local read-only facts:
+  - PowerShell/runtime identity;
+  - WireGuard `SFO2-A` adapter/service/control-route state;
+  - split-default route presence;
+  - unique current physical IPv4 egress identity;
+  - Clash Verge service presence/state;
+  - exact P1 `24.199.118.137/32` route residue count;
+  - system proxy / WinHTTP / TUN read-back without modification.
+- Remote read-only facts over the already accepted strict SSH control path:
+  - target hostname/public-IP identity;
+  - WG/HY2 service and UDP listener state;
+  - TCP/443 and 14443 listener absence;
+  - G2-C runtime-residue absence;
+  - UFW/iptables/nft summary needed to classify readiness.
+- H2 outputs facts/readiness only. It must not feed a mutating actuator or change production default.
 
-### APPLICABLE_CRITICAL_CONSTRAINTS
+### STATE_SEMANTICS
 
-- WireGuard remains the current production/rollback path.
-- Existing HY2 and WG services must not be changed in H1.
-- No hardcoded historical physical egress identity.
-- Ambiguous/missing physical egress or contradictory health input => fail closed.
-- No Secret values, auth material, private keys, certificate private material, or raw credential-bearing config in output.
-- Automation defaults safe; H1 performs no real action.
-- Any future live route/client/service switch is a separate consequential Gate.
+- `WIREGUARD_CURRENT_HEALTH`: health of the currently active production/rollback path.
+- `HY2_READINESS`: readiness of the already deployed HY2 server plus local prerequisites; not a claim that a persistent HY2 client is active.
+- `REALITY_READINESS`: validated cold candidate readiness. TCP/443 being free is expected; absence of a persistent REALITY server is not failure.
+- `UNKNOWN` is preserved whenever required evidence is ambiguous or unavailable.
 
 ### PREFLIGHT
 
-Before source mutation:
-- prove canonical GitHub `main` and project-owned path scope;
-- confirm G2-C P1 is accepted and closed with request budget exhausted;
-- identify reusable accepted dynamic-egress logic;
-- verify no existing G3-A planner file collision.
-
-Before Owner-local self-test:
-- PowerShell 7.6.6;
-- canonical synced source;
-- AST parse PASS;
-- self-test/read-only mode only.
+- Canonical `main`, project-owned source path, clean source baseline.
+- Reuse accepted strict SSH trust/identity metadata; no host-key auto-accept.
+- Multiline remote payloads must normalize CRLF to LF and use stdin/simple fixed remote command.
+- No Secret values or recovery bundles are read.
+- No external HTTP/OpenAI request.
 
 ### REQUIRED_EVIDENCE
 
-- planner source identity and fresh read-back;
-- static negative scan proving no live mutation cmdlets/actions in H1;
-- deterministic fixtures for one valid physical egress, ambiguous egress, missing egress, WG healthy baseline, UDP/HY2 unavailable with REALITY available, and no healthy candidate/contradictory input;
-- every ambiguous or unsafe fixture fails closed;
-- planner output contains no Secret values;
-- Owner-local self-test reports zero network/service/proxy/TUN/VPS mutation.
+- AST/static source review;
+- offline fixtures for healthy baseline, missing/ambiguous local egress, unhealthy WG, unavailable HY2 server, REALITY cold-ready, SSH/nonzero failure classification;
+- negative scan for route/service/proxy/TUN mutation and external workload calls;
+- Owner-host read-only output with explicit mutation counters all zero;
+- strict SSH exit checked; remote target identity matched;
+- no P1 route/runtime/listener residue.
 
 ### ACCEPTANCE_CRITERIA
 
 PASS requires:
-- dynamic egress selection contains no historical WLAN identity constants;
-- all offline fixtures pass;
-- unsafe/ambiguous fixtures fail closed;
-- role output is advisory/plan-only and does not change production default;
-- static review finds no mutating network/service operations;
-- Owner-local proof confirms zero live mutation when requested.
+- local and remote facts are reviewable and internally consistent;
+- WireGuard current health and HY2/REALITY readiness are not conflated;
+- missing/ambiguous facts produce `UNKNOWN`/fail-closed rather than optimistic readiness;
+- zero live network/service/proxy/TUN/VPS mutation and zero Secret read/emission;
+- no external workload request.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Source-only Gate. Rollback is exact revert of the G3-A H1 source commit. No runtime rollback is required because live network/VPS mutation is forbidden.
+Source-only changes are revertable by exact commit revert. Owner collection is read-only, so runtime rollback is not applicable.
 
 ### OWNER_ONLY_ACTIONS
 
-**NONE in H1.** Live activation is explicitly outside this Gate.
+None beyond running one bounded read-only Owner checkpoint after Reviewer source review.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Work only on `vpn-network-optimization/scripts/g3a-network-adaptation-planner.ps1` plus the accepted G2-C P1 Evidence facts needed for role definitions. Reuse accepted P1 dynamic-egress semantics. Do not replay G2-C, do not read Secrets, do not touch live network state, and stop after source + offline/self-test evidence.
+Work only on `scripts/g3a-health-readiness-readonly.ps1`, current H2 Gate, accepted H1 planner semantics, and the accepted strict SSH/public-path facts needed to define read-only probes. Do not replay P1, do not read Secrets, do not create routes/listeners, and do not send HTTP/OpenAI traffic.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE only after source read-back, static negative mutation scan, and deterministic fixture/self-test evidence. Any need for live route/service/proxy/TUN/VPS mutation requires a new reviewed Gate.
+Return PASS_CANDIDATE only after static negative scan + fixtures. Owner-host read-only proof is still required before formal H2 PASS.
 
 ## NEXT_STEP
 
-Run the implemented G3-A planner's built-in `-SelfTest` once on the Owner Windows host using PowerShell 7.6.6 after syncing canonical `main`. This self-test uses deterministic fixtures only and must not query or change live network state. Return the bounded output to Reviewer for H1 PASS/RETURN.
+Implement and statically/offline validate the H2 read-only health/readiness collector. After Reviewer source review, run exactly one bounded Owner-host read-only collection and return the output for H2 PASS/RETURN.
 
 ## OWNER_ACTION_REQUIRED
 
-Run one Reviewer-provided PowerShell 7.6.6 `-SelfTest` command after canonical sync. No Administrator privilege is required for the fixture-only self-test. Do not run `-ReadOnlySnapshot` yet. No live route, service, proxy, TUN, VPN-default, or VPS change is authorized in H1.
+**NONE yet.** Wait for Reviewer to finish H2 source/static validation and provide the exact read-only PowerShell command.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
