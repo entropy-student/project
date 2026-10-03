@@ -83,7 +83,8 @@ ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 ESTIMATED_EXECUTION_TIME=10-20_minutes
 IMPLEMENTATION_COMMIT=ff1c46ef114180651a1e49bfbcc8a76c6bccad2f
 STATIC_SOURCE_REVIEW=PASS
-OWNER_INTEGRATED_READONLY_PROOF=PENDING
+OWNER_INTEGRATED_READONLY_PROOF=PASS
+OWNER_SELFTEST_PROOF=PENDING
 ```
 
 ### TARGET_AND_SCOPE
@@ -138,11 +139,11 @@ Return PASS_CANDIDATE only after offline parser/self-test and static negative re
 
 ## NEXT_STEP
 
-Run H4 `-SelfTest`; only on PASS continue immediately to one `-RunReadOnly` integrated advisory decision. Return both bounded outputs for Reviewer PASS/RETURN.
+Run H4 fixture-only `-SelfTest` once and return its bounded output. The live read-only integration proof is already accepted; do not replay it.
 
 ## OWNER_ACTION_REQUIRED
 
-Run one bounded PowerShell 7.6.6 checkpoint that first executes H4 `-SelfTest` and only if that succeeds executes H4 `-RunReadOnly`. Do not run any activation/mutation mode.
+Run only H4 `-SelfTest` once under PowerShell 7.6.6. The live `-RunReadOnly` proof is already accepted and must not be replayed merely to satisfy missing self-test evidence.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
