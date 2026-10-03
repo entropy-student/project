@@ -3302,3 +3302,37 @@ Reviewer interpretation:
 - Route output remains intent-only with `ApplyAllowed=false`.
 - H3 performs no live network read, route/service/proxy/TUN/VPS mutation, SSH, HTTP, or Secret read.
 
+## G3A H4 live read-only advisory integration proof — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_POWERSHELL_OUTPUT_REVIEWED_AGAINST_H4_ORCHESTRATOR
+GATE_ID=G3A_LIVE_READONLY_ADVISORY_INTEGRATION_H4
+LIVE_READONLY_PROOF=PASS
+INTEGRATED_WIREGUARD_CURRENT_HEALTH=HEALTHY
+INTEGRATED_HY2_READINESS=READY_FOR_SEPARATE_ACTIVATION
+INTEGRATED_REALITY_READINESS=READY_FOR_SEPARATE_ACTIVATION
+ADVISORY_SELECTED_ROLE=WIREGUARD_BASELINE
+ADVISORY_REASON=CURRENT_PRODUCTION_BASELINE_HEALTHY
+ADVISORY_ROUTE_REQUIRED=FALSE
+ADVISORY_ROUTE_APPLY_ALLOWED=FALSE
+ADVISORY_ONLY=TRUE
+PRODUCTION_DEFAULT_CHANGE_ALLOWED=FALSE
+EXTERNAL_WORKLOAD_REQUEST_COUNT=0
+NETWORK_MUTATION=NO
+SERVICE_MUTATION=NO
+SYSTEM_PROXY_MUTATION=NO
+TUN_MUTATION=NO
+VPS_MUTATION=NO
+VPN_APPLICATION_SECRET_VALUES_READ=0
+SECRET_VALUES_EMITTED=0
+G3A_H4_INTEGRATED_RESULT=COMPLETE
+H4_SELFTEST_PROOF=NOT_YET_REVIEWABLE_FROM_OWNER_OUTPUT
+```
+
+Reviewer interpretation:
+- The live H2 -> H3 integration path behaves correctly on the current real environment.
+- Healthy WireGuard keeps the advisory decision on `WIREGUARD_BASELINE`.
+- HY2 and REALITY remain ready candidates but are not activated.
+- The integrated path preserved advisory-only and no-default-change invariants and performed no live mutation or external workload request.
+- Formal H4 PASS remains pending only on the required Owner-visible fixture self-test proof; the live read-only integration does not need to be replayed.
+
