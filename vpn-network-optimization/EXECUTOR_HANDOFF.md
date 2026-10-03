@@ -4,7 +4,101 @@
 
 
 
-## Current execution status — G3C C1 unified manual-control contract
+
+## Current execution status — G3C C1 native Mihomo parse reconciliation R1
+
+```text
+GATE_ID=G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+PREVIOUS_RESULT=RETURN_MIHOMO_NATIVE_PARSE_REQUIRED
+HISTORICAL_MIHOMO_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+EXPECTED_MIHOMO_VERSION=v1.19.31
+OWNER_INTERVENTION_REQUIRED=NO
+ACTIVE_VPN_CONNECTIVITY_MUST_BE_PRESERVED=YES
+WG_SERVICE_STOP_AUTHORIZED=NO
+WG_ROUTE_REMOVAL_AUTHORIZED=NO
+CLASH_ACTIVE_START_AUTHORIZED=NO
+CLASH_PROFILE_APPLY_AUTHORIZED=NO
+SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
+TUN_CHANGE_AUTHORIZED=NO
+ROUTE_CHANGE_AUTHORIZED=NO
+VPS_ACCESS_AUTHORIZED=NO
+SECRET_READ_AUTHORIZED=NO
+EXTERNAL_REQUEST_AUTHORIZED=NO
+SOURCE_REDESIGN_AUTHORIZED=NO_UNLESS_NATIVE_PARSE_PROVES_A_SOURCE_DEFECT
+ESTIMATED_EXECUTION_TIME=10-15_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Fresh fetch/sync canonical `origin/main` in the project-scoped worktree. Do not discard unrelated work.
+2. Record `ROUND_STARTED_AT` before execution.
+3. Check this exact accepted historical path first:
+   `C:\Program Files\Clash Verge\verge-mihomo.exe`
+4. If absent, perform only a bounded read-only search beneath `C:\Program Files\Clash Verge\` for a Mihomo executable. Do not download/install anything.
+5. Run only `-v`. Expected stable identity is Mihomo Meta v1.19.31.
+   - If absent after bounded discovery: RETURN exact missing-binary evidence.
+   - If version differs: RETURN version drift; do not silently substitute another core.
+6. Use the current canonical `templates/clash/self-vpn-manual.yaml.template` unchanged to create one temporary **non-secret** config-test fixture outside the repository.
+7. Replace placeholders only with synthetic/test-safe values:
+   - reserved documentation IP such as 203.0.113.10;
+   - fixture-only password;
+   - parser-safe all-zero certificate fingerprint sentinel;
+   - valid synthetic UUID;
+   - valid synthetic short-id;
+   - non-secret public-key-shaped fixture value;
+   - example SNI;
+   - dynamically discovered current physical interface name only if Mihomo validation requires an existing interface.
+8. Run Mihomo config test only (`-t` / accepted equivalent invocation for the verified binary). Do not launch it as an active client and do not send traffic.
+9. Delete the temporary fixture and prove cleanup.
+10. Do not modify the C1 profile/template/validator unless the native parser itself proves a precise source defect. If it fails, preserve the sanitized parser failure class/output needed for Reviewer and STOP.
+11. Persist bounded non-secret facts in `EXECUTION_EVIDENCE.md` and update this Executor Handoff. Do not modify `REVIEWER_HANDOFF.md`.
+12. Fresh read-back GitHub main and prove tested C1 source blobs are still the canonical source.
+13. Record:
+   - `ROUND_FINISHED_AT`
+   - `ACTUAL_ELAPSED`
+   - `TIME_OVERRUN=YES|NO`
+   - if YES: `TIME_OVERRUN_CAUSE=<evidence-backed cause>`
+14. If actual elapsed exceeds 15 minutes, update `docs/ROUND_TIMING_RETROSPECTIVE.md` under its current rules.
+15. STOP_AT_REVIEWER.
+
+### Expected PASS_CANDIDATE evidence
+
+- `MIHOMO_BINARY_PATH=...`
+- `MIHOMO_VERSION=v1.19.31`
+- `MIHOMO_NATIVE_CONFIG_TEST=PASS`
+- `C1_PROFILE_SOURCE_CHANGED=NO`
+- `TEMP_FIXTURE_CREATED=YES`
+- `TEMP_FIXTURE_SECRET_VALUES=0`
+- `TEMP_FIXTURE_CLEANUP=PASS`
+- `CLASH_ACTIVE_STARTED=NO`
+- `NETWORK_REQUEST_COUNT=0`
+- `WIREGUARD_CHANGED=NO`
+- `ROUTE_CHANGED=NO`
+- `SYSTEM_PROXY_CHANGED=NO`
+- `TUN_CHANGED=NO`
+- `VPS_ACCESS=NO`
+- timing fields above
+- `STOP_AT_REVIEWER=YES`
+
+### Explicit prohibitions
+
+- Do not stop/restart/disable WireGuard.
+- Do not add/remove/change routes.
+- Do not enable system proxy or TUN.
+- Do not apply/import the profile into Clash Verge.
+- Do not start Mihomo as an active proxy client.
+- Do not SSH or access any VPS/Provider.
+- Do not read/generate/move/rotate real Secrets.
+- Do not send any external HTTP/UDP/TCP test request.
+- Do not redesign C1 merely because the previous Executor failed to discover the known binary path.
+- Do not advance to C2.
+
+
+## Historical execution status — G3C C1 unified manual-control contract
 
 ```text
 GATE_ID=G3C_UNIFIED_MANUAL_CONTROL_CONTRACT_C1
