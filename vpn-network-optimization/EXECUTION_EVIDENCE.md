@@ -3803,3 +3803,45 @@ Reviewer interpretation:
 - This is a Reviewer checkpoint-design defect. Owner is not responsible for debugging it.
 - Next action is a cleanup-only R3R1 checkpoint. It must locate only the marked R3 temp directory, delete it, re-check accepted source hashes, calculate elapsed time from the already-captured R3 start, and stop. No Mihomo config test is replayed.
 
+## Reviewer acceptance — G3C C1 Owner R3 + R3R1 — PASS — 2026-10-03
+
+```text
+GATE_ID=G3C_C1_OWNER_MIHOMO_NATIVE_PARSE_R3
+FOLLOWUP_GATE=G3C_C1_OWNER_R3_CLEANUP_R3R1
+REVIEWER_RESULT=PASS_G3C_C1_MANUAL_CONTROL_CONTRACT
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+POWERSHELL_VERSION=7.6.6
+ROUND_STARTED_AT=2026-10-03T14:45:59.5840466Z
+MIHOMO_BINARY_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+MIHOMO_VERSION=v1.19.32
+PHYSICAL_INTERFACE_DISCOVERED=YES
+TEMP_FIXTURE_CREATED=YES
+TEMP_FIXTURE_SECRET_VALUES=0
+MIHOMO_NATIVE_CONFIG_EXIT=0
+MIHOMO_NATIVE_CONFIG_TEST=PASS
+C1_PROFILE_SOURCE_CHANGED=NO
+CLEANUP_CHECKPOINT_STARTED_AT=2026-10-03T14:56:09.3340072Z
+MARKED_R3_TEMP_COUNT_BEFORE=1
+TEMP_FIXTURE_CLEANUP=PASS
+MARKED_R3_TEMP_COUNT_AFTER=0
+MIHOMO_NATIVE_CONFIG_TEST_REPLAYED=NO
+WIREGUARD_CHANGED=NO
+ROUTE_CHANGED=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_CHANGED=NO
+VPS_ACCESS=NO
+NETWORK_REQUEST_COUNT=0
+ROUND_FINISHED_AT=2026-10-03T14:56:09.3656718Z
+ACTUAL_ELAPSED=00:10:09.7816252
+TIME_OVERRUN=YES
+TIME_OVERRUN_CAUSE=REVIEWER_CHECKPOINT_SYNTAX_SPLIT_REQUIRED_CLEANUP_REMEDIATION
+```
+
+Reviewer conclusion:
+- The canonical C1 profile shape is accepted by the installed stable Mihomo v1.19.32 native parser.
+- The synthetic fixture contained no real Secret and was fully removed; marked R3 temp residue is zero.
+- The successful native parse was not replayed during cleanup.
+- Current WireGuard, routes, system proxy, TUN, VPS and external network state were not changed by R3/R3R1.
+- The 10m09s elapsed time exceeded the 2–5 minute estimate because the Reviewer-provided first Owner checkpoint split interactive `try/finally`, requiring a cleanup-only compensation step. This is a checkpoint-design/process overrun, not Mihomo execution slowness.
+- G3C C1 is formally PASS. Stable Mihomo v1.19.32 becomes the accepted current Windows client-core baseline for subsequent G3C work.
+
