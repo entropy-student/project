@@ -87,14 +87,15 @@ Current known components:
 GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
 STATE=AUTHORIZED
 PREVIOUS_RESULT=PASS_G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
-LAST_EXECUTOR_RESULT=RETURN_CANONICAL_GIT_ROOT_MISMATCH
-RUNNER_PREPARATION_REVIEW=PASS_WITH_PROVENANCE_REPAIR_REQUIRED
-RUNNER_COMMIT=4a4eae48dac1fd3c21638efb2dfe0fc6b69a4614
+LAST_EXECUTOR_RESULT=PASS_CANDIDATE_HARDENING
+RUNNER_PREPARATION_REVIEW=PASS
+CANONICAL_SOURCE_HARDENING_REVIEW=PASS
+RUNNER_SOURCE_COMMIT=e5f1dd24064ccab47b2412fd8a3305a161c17ed6
+HARDENING_COMPLETION_COMMIT=64461d63fb92c6e8944639198e5e1a385e6d8c59
 LAST_ATTEMPT_CONSEQUENTIAL_ACTION_STARTED=NO
 REAL_OPENAI_REQUEST_BUDGET_CONSUMED=0_OF_1
 OWNER_RUNTIME_RECONFIRMED=PowerShell_7.6.6_Administrator_High_RID_12288
-EXECUTION_BLOCKER=RUNNER_CANONICAL_SOURCE_WORKTREE_ROOT_DISCOVERY_BUG
-NEXT_REPAIR_GATE=G2C_P1_CANONICAL_SOURCE_WORKTREE_DISCOVERY_H1
+EXECUTION_BLOCKER=LOCAL_MANAGED_WORKTREE_MUST_SYNC_TO_REVIEWER_ACCEPTED_MAIN_BEFORE_OWNER_CHECKPOINT
 OBJECTIVE=Prove the accepted Mihomo v1.19.31 VLESS+REALITY+Vision candidate over the intended public TCP/443 path, with no persistence and deterministic rollback.
 MAX_ENDPOINT_THIS_ROUND=read-only current-state preflight + one temporary public TCP/443 Mihomo server + one temporary exact /32 outer-route bypass to the current physical egress + one proxied OpenAI HTTPS request + exact cleanup/read-back + Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -230,11 +231,10 @@ It does **not** authorize persistence, permanent firewall changes, benchmark, pr
 
 Start only from:
 1. the current P1 Gate;
-2. `scripts/g2c-reality-public-tcp443-canary-p1.ps1`, specifically `Assert-P1CanonicalSource`;
-3. the accepted source-provenance Evidence that records both `CANONICAL_GIT_ROOT=C:\Users\34707\Documents\ChatGPT\VPS搭建` and `EXECUTION_WORKTREE=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建`;
-4. this Reviewer reconciliation of `RETURN_CANONICAL_GIT_ROOT_MISMATCH`.
+2. Reviewer acceptance of `G2C_P1_CANONICAL_SOURCE_WORKTREE_DISCOVERY_H1`;
+3. the existing managed worktree `C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建`.
 
-Repair only canonical source/worktree discovery. Do not assume a fixed number of parent directories above `vpn-network-optimization`. Prefer asking Git from the actual project/script path for `rev-parse --show-toplevel`, then derive and validate the project-relative tracked paths against that returned root. Preserve strict origin allowlist, tracked-file checks, clean target-file checks, Gate authorization/budget checks, and fail-closed behavior. Add no-network fixtures covering the canonical checkout shape and the nested Codex worktree shape, plus a negative mismatched-root/path fixture. Do not run the P1 checkpoint, SSH, VPS preflight, route/listener/runtime mutation, Secret access, or OpenAI request. Persist Evidence + Executor Handoff, commit, fresh read-back, STOP_AT_REVIEWER.
+Perform only a non-consequential local Git synchronization/read-back step. Fetch GitHub `main`, verify no target-path dirty state or unrelated merge risk, then fast-forward/rebase only if it is a clean safe synchronization to the Reviewer-accepted `main`. Do not modify runner logic, Handoff, Evidence, network state, VPS state, routes, services, Secrets, or issue any OpenAI canary request. After sync, prove local HEAD == remote `main`, origin is canonical, `vpn-network-optimization/scripts/g2c-reality-public-tcp443-canary-p1.ps1` and `vpn-network-optimization/REVIEWER_HANDOFF.md` are tracked and clean, and report the exact absolute runner path. STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
@@ -318,11 +318,11 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Executor performs **G2C_P1_CANONICAL_SOURCE_WORKTREE_DISCOVERY_H1** only: repair the P1 runner's canonical Git root/path discovery so it supports both the canonical checkout and the existing nested Codex worktree without hardcoded parent-depth assumptions. Prove with local no-network fixtures and static review only. Do **not** run SSH, VPS preflight, route/listener/runtime mutation, Secret access, or the OpenAI canary. After repair, persist Evidence + Executor Handoff, commit, fresh read-back, and stop for Reviewer.
+Synchronize the existing managed Codex worktree to the current Reviewer-accepted GitHub `main` without changing project files, then fresh-read that local HEAD and the P1 runner path. After local HEAD equals current GitHub `main` and the target runner/Reviewer Handoff are clean, Owner may run the already-authorized P1 checkpoint once from PowerShell 7.6.6 Administrator/High. No SSH, VPS, route/listener/runtime mutation, Secret access, or OpenAI request is allowed during the sync step.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** The Owner runtime is now reconfirmed as PowerShell 7.6.6 / Administrator=True / High integrity RID 12288. The blocker is a runner source-provenance bug, so Executor must repair and statically verify it before any further Owner-local P1 execution. Do not ask Owner to rerun the current runner.
+Relay the narrow local-source-sync task to Executor/Codex. Do **not** run the Owner checkpoint until Executor confirms the existing managed worktree local HEAD equals the current Reviewer-accepted GitHub `main`, the runner and `REVIEWER_HANDOFF.md` are clean, and the exact runner path still exists. The Owner runtime itself is already proven PowerShell 7.6.6 / Administrator=True / High integrity RID 12288.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 

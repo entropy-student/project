@@ -2847,4 +2847,43 @@ EVIDENCE_FRESH_READBACK=PASS
 EXECUTOR_HANDOFF_FRESH_READBACK=PASS
 REVIEWER_HANDOFF_MODIFIED=NO
 ```
+## Reviewer acceptance — G2C_P1_CANONICAL_SOURCE_WORKTREE_DISCOVERY_H1 — 2026-10-03
+
+```text
+REVIEWED_COMPLETION_COMMIT=64461d63fb92c6e8944639198e5e1a385e6d8c59
+REVIEWED_SOURCE_COMMIT=e5f1dd24064ccab47b2412fd8a3305a161c17ed6
+REVIEWER_RESULT=PASS
+GIT_ROOT_DISCOVERY=REV_PARSE_FROM_ACTUAL_PROJECT_ROOT
+PROJECT_TRACKED_RELATIVE_PATH=DYNAMIC_FROM_GIT_ROOT
+CANONICAL_CHECKOUT_FIXTURE=PASS
+MANAGED_CODEX_WORKTREE_FIXTURE=PASS
+NESTED_TRACKED_PROJECT_PATH_FIXTURE=PASS
+MISMATCHED_GIT_ROOT_PROJECT_PATH=FAIL_CLOSED
+WRONG_ORIGIN=FAIL_CLOSED
+INVALID_HEAD=FAIL_CLOSED
+ACCEPTED_BASE_NOT_ANCESTOR=FAIL_CLOSED
+RUNNER_UNTRACKED=FAIL_CLOSED
+REVIEWER_HANDOFF_UNTRACKED=FAIL_CLOSED
+RUNNER_DIRTY=FAIL_CLOSED
+REVIEWER_HANDOFF_DIRTY=FAIL_CLOSED
+GATE_ID_STATE_BUDGET_INVALID=FAIL_CLOSED
+CURRENT_GATE_LF_FIXTURE=PASS
+CURRENT_GATE_CRLF_FIXTURE=PASS
+LOCAL_PRODUCTION_SOURCE_PREFLIGHT=PASS
+POWERSHELL_AST_PARSE=PASS
+STATIC_SECRET_SCAN=PASS
+STATIC_NETWORK_MUTATION_BOUNDARY=PASS
+OPENAI_REQUEST_COUNT=0
+P1_REQUEST_BUDGET_REMAINING=1
+NETWORK_CHANGED=NO
+OWNER_CHECKPOINT_EXECUTED=NO
+NEXT_STEP=SYNC_EXISTING_MANAGED_WORKTREE_TO_REVIEWER_ACCEPTED_MAIN_THEN_OWNER_CHECKPOINT
+```
+
+Reviewer interpretation:
+- The hardening removes the fixed parent-depth repository-root assumption and instead asks Git for the actual worktree root from the live project directory, then derives tracked-relative project paths.
+- Provenance strictness is preserved: canonical origin, valid HEAD, accepted-base ancestry, tracked runner/Handoff, clean target paths, and exact current Gate/request-budget facts remain mandatory and fail closed.
+- Positive fixtures cover the canonical checkout, the existing managed Codex worktree, and a nested tracked-project layout. Negative fixtures cover the material provenance failure classes relevant to this Gate.
+- No P1 runtime action occurred; request budget remains 0/1.
+- Because this Reviewer acceptance advances GitHub main beyond the Executor's local completion HEAD, the next action is a local Git synchronization/read-back only. The Owner checkpoint must not run from a stale worktree.
 
