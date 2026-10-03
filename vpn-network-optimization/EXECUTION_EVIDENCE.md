@@ -3595,3 +3595,37 @@ STOP_AT_REVIEWER=YES
 
 The profile uses JSON syntax, a strict subset of YAML, and was parsed offline by PowerShell `ConvertFrom-Json`; the offline validator then checked the Mihomo field contract and deterministic positive/negative fixtures. No verified local Mihomo binary or standalone YAML parser was found in the checked standard locations, so no native Mihomo `-t` parse was claimed. The first validator run exposed only a StrictMode fixture-error-message interpolation defect; that source-only defect was fixed, then AST parsing and the complete fixture suite passed. No running VPN/client/profile, network setting, route, VPS, Provider, or Secret was accessed or changed.
 
+## Reviewer review — G3C C1 manual-control contract — 2026-10-03
+
+```text
+GATE_ID=G3C_UNIFIED_MANUAL_CONTROL_CONTRACT_C1
+REVIEWER_RESULT=RETURN_MIHOMO_NATIVE_PARSE_REQUIRED
+EXECUTOR_CANDIDATE_COMMIT=afe8c04bb058d229ed31a4f6b62281a0e9df6327
+FRESH_MAIN_READBACK=59ba12f30877e38101004a772c3c3d6858b795bf
+EXECUTOR_SCOPE_DIFF=5_FILES_EXPECTED
+VPN_FILES_CHANGED_AFTER_EXECUTOR_COMMIT=NO
+PROFILE_TEMPLATE_BLOB=a7ec68ec08c47945b55b567e1717d89d3d06bfaa
+CONTRACT_DOC_BLOB=e130a1ae90be9fa8a36f08f976768188f0a02898
+VALIDATOR_BLOB=9974bf962c07a51e92aa88f604af6eb2fe77fb0f
+OFFLINE_FIXTURES_A_TO_G=PASS
+JSON_COMPATIBLE_YAML_PARSE=PASS
+SECRET_BOUNDARY=PASS
+WG_BASELINE_DEFAULT=PASS
+AUTOMATIC_SELECTION_FORBIDDEN=PASS
+PERSISTENT_BYPASS_ROUTE_FORBIDDEN=PASS
+REALITY_COLD_ONLY=PASS
+LIVE_MUTATION=NO
+MIHOMO_NATIVE_PARSE=NOT_RUN
+REQUIRED_ACCEPTANCE_EVIDENCE_MISSING=MIHOMO_NATIVE_CONFIG_TEST
+HISTORICAL_ACCEPTED_MIHOMO_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+HISTORICAL_ACCEPTED_MIHOMO_VERSION=v1.19.31
+```
+
+Reviewer interpretation:
+- C1 design and offline negative fixtures are materially sound and do not need to be rebuilt.
+- The Executor's five-file scope is correct and persisted on GitHub. Later main advancement is unrelated Birthday Magazine work; all five VPN blobs remain unchanged.
+- JSON parsing proves the template is syntactically valid JSON/YAML-subset, and the custom validator proves the intended field contract, but this does not independently prove the pinned Mihomo parser accepts the combined new profile.
+- The current C1 acceptance criterion explicitly requires the pinned Mihomo syntax path or an equivalent deterministic parser. That required evidence is not yet available.
+- Historical accepted project evidence identifies the canonical Windows binary path as `C:\Program Files\Clash Verge\verge-mihomo.exe` and previously proved Mihomo Meta v1.19.31. Therefore the next action is a bounded local-only binary/path reconciliation and native config test, not a C1 redesign.
+- No live network action is authorized by this Reviewer return.
+
