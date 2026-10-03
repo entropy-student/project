@@ -145,3 +145,13 @@
 
 **Consequence:** P1 is not replayed; its one-request budget is exhausted. The next live network activation or automatic switch requires a separate reviewed Gate after H1 passes.
 
+## 2026-10-03 — Close G3-A advisory automation and stage G3-B with source-VPS rollback
+
+**Decision:** Accept G3-A as complete for v1 sensing/classification/advisory scope. Begin G3-B as a staged migration-package effort in which a new target is qualified before cutover and the old/source VPS remains intact through the rollback window.
+
+**Why:** H1–H4 proved dynamic physical-egress discovery, real read-only WG/HY2/REALITY readiness collection, readiness-to-plan semantics, and live H2→H3 advisory integration. The current real state maps to `WIREGUARD_BASELINE`; no actuator or automatic switching is needed to call the advisory layer complete. For migration, rebuilding the old/source VPS after a failed cutover would be a weaker rollback than simply keeping the known-good source available.
+
+**Migration boundary:** Portable templates must not carry SFO3-specific public IP/SNI/WLAN/label constants. Secret movement, provider purchase/new-VPS provisioning, Owner client cutover, and source decommission are separate consequential checkpoints. REALITY remains a cold candidate and is not turned into a persistent service merely to satisfy migration packaging.
+
+**Consequence:** G3-B D1 is repository-only. A later live rehearsal must prove exact source/target identity, protected Secret handling, target WG/HY2 health, REALITY cold readiness, bounded Owner-side qualification, and rollback to the still-valid source before any source decommission.
+
