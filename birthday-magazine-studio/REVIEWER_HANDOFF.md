@@ -74,7 +74,7 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 - Owner Visual Checkpoint R2: resolved; Owner broadly accepts the overall composition but now explicitly rates the homepage around 7/10 for the intended quality bar, wants meaningful motion, wants the actual final magazine shown clearly, and rates the current upload-first Preview around 5/10.
 - Owner editability at G3CR6R1 evidence scope: Administrator, edit Home, replace media, edit copy, reorder eight major Gutenberg Groups, edit Blocksy global style/palette; footer is editable WordPress block.
 - PR #64 remains open/unmerged at accepted execution head `15ff73f6232e0ef94f04f313f74372e52389d1e2`.
-- Fresh 2026-10-04 source-baseline closure: reconciliation anchor `83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6` proved the bounded merge strategy: ahead 8 / behind 0 at that read-back, mergeable, 173 diff files all scoped to `birthday-magazine-studio/`, current v0.2.6 Handoff/Gate/contracts readable, and the prior 7 branch-only G3C/G3CR6R1 commits/evidence preserved. The approved execution branch is PR #64's current head **only when it remains a descendant of this anchor and includes the current canonical `main` baseline**.
+- Fresh 2026-10-04 source-baseline closure: reconciliation anchor `83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6` proved the bounded merge strategy and preserved the prior 7 G3C/G3CR6R1 branch commits/evidence. A later Executor correctly returned when unrelated `vpn-network-optimization/` commits moved repository `main`; Reviewer confirmed this was **not Birthday Magazine project drift** and corrected the preflight to project-scoped freshness. The approved PR #64 execution head must descend from the anchor and contain all current-main changes affecting `birthday-magazine-studio/**` or another path explicitly named by the Gate; unrelated monorepo commits do not block.
 
 ## CURRENT_GATE
 
@@ -150,7 +150,8 @@ Protected backend behavior for the current visual/research phase:
 ## DEFAULT_EXECUTION_CHANNEL
 
 - Canonical research/Gate authority is current GitHub `main`.
-- Existing PR #64 branch is the **approved G3CR6R3C execution baseline** after source reconciliation; Executor should use the reconciled branch head and current Gate/relay, not reconstruct project history.
+- Existing PR #64 branch is the **approved G3CR6R3C execution baseline** after source reconciliation; Executor should use the current branch head and current Gate/relay, not reconstruct project history.
+- Freshness is **project-scoped**: current-main-only changes under `birthday-magazine-studio/**` (or another path explicitly named by this Gate) block execution; unrelated commits elsewhere in the shared monorepo do not.
 - Research writes remain project-scoped to `birthday-magazine-studio/`; the 7 historical G3C/G3CR6R1 branch commits/evidence remain preserved.
 - No new PR by default. No production/target-host execution in G3CR6R3C.
 
@@ -175,7 +176,7 @@ Protected backend behavior for the current visual/research phase:
 - production storage/private delivery/recovery;
 - production refund/cancellation policy;
 - final visual freeze after template selection and the subsequent bounded implementation/review;
-- safe source/branch packaging for G3CR6R3C while preserving PR #64 branch-only evidence.
+- final visual freeze after template research/selection remains pending; source/branch packaging for G3CR6R3C is resolved.
 
 ## NEXT_STEP
 
@@ -197,8 +198,9 @@ Owner action is required later for:
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md`
-2. `docs/REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` — superseded preflight RETURN provenance
+1. `docs/REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md`
+2. `docs/REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md`
+3. `docs/REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` — superseded preflight RETURN provenance
 2. `docs/MVP_PRODUCT_CONTRACT.md`
 2. `docs/REVIEWER_DECISION_G3CR6R1_PASS.md`
 3. `docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md`
