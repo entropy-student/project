@@ -2183,3 +2183,58 @@ Reviewer reasoning:
 - The failure is localized to the Windows process helper. The repaired helper now explicitly permits the intentional empty string and keeps passing each argument through `ProcessStartInfo.ArgumentList`; no protocol or server semantics changed.
 - Retry must run the local no-network empty-argument fixture before starting the remote candidate. If it passes, the same R3 Gate may continue once. If a real request starts, that consumes the remaining request authorization regardless of protocol outcome.
 - Repository advancement after execution may require reconciliation, but must never cause the real request to be replayed.
+
+## G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 — authorized retry evidence (2026-10-03)
+
+```text
+AUTHORIZED_GATE=G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3_RETRY
+ROUND_STARTED_AT=2026-10-03T04:56:08Z
+ROUND_FINISHED_AT=2026-10-03T05:07:06Z
+ACTUAL_ELAPSED=10m58s
+ESTIMATED_EXECUTION_TIME=15-25 minutes
+TIME_OVERRUN=NO
+TIME_OVERRUN_CAUSE=NONE
+RETRY_PREFLIGHT_EMPTY_ARGUMENT_FIXTURE=PASS
+FIXTURE_METHOD=Extracted the committed Start-R3SuppressedProcess definition and ran local curl.exe --noproxy '' --version; ArgumentList retained 3 args including the empty value; exit 0; no URL/request.
+FIXTURE_NETWORK_REQUESTS=0
+RUNNER_SOURCE=unchanged at commit 752e66282f384cd2bb28433d12e2db450447b597
+RUNNER_INVOCATIONS=1
+RUNNER_EXIT=1
+RUNNER_FAILURE_PHASE=UNKNOWN
+RUNNER_SECONDARY_ERROR=Unable to find type Management.Automation.ParameterBindingValidationException in the top-level catch classifier at line 1093
+UNDERLYING_EXCEPTION=MASKED_BY_CATCH_CLASSIFIER_FAILURE
+REQUEST_COUNT=UNKNOWN
+REALITY_HANDSHAKE=UNKNOWN
+IMPLEMENTATION_AB_RESULT=UNKNOWN
+NO_REQUEST_REPLAY_AFTER_RUN=YES
+POSTCHECK_WIREGUARD_MANAGER=Running
+POSTCHECK_WIREGUARD_TUNNEL=Running
+POSTCHECK_SFO2_A=Up, ifIndex 9
+POSTCHECK_CONTROL_ROUTE=10.66.21.1 selects SFO2-A, ifIndex 9
+RUNNER_EXPECTED_WIREGUARD_IFINDEX=13; entry-time value not independently captured
+POSTCHECK_SYSTEM_PROXY_ENABLE=0
+POSTCHECK_WINHTTP=DIRECT
+POSTCHECK_TUN_MATCH_COUNT=0
+POSTCHECK_LOCAL_MIHOMO_PROCESS_COUNT=0
+POSTCHECK_LOCAL_PROXY_LISTENERS_TCP_UDP=0/0
+POSTCHECK_LOCAL_R3_RUNTIME_DIRECTORIES=0
+POSTCHECK_VPS_HOSTNAME=ubuntu-s-1vcpu-512mb-10gb-sfo3
+POSTCHECK_WG_SERVICE=active
+POSTCHECK_HY2_SERVICE=active
+POSTCHECK_UDP_51820_LISTENERS=2
+POSTCHECK_UDP_8443_LISTENERS=1
+POSTCHECK_TCP_14443_LISTENERS=0
+POSTCHECK_TCP_443_LISTENERS=0
+POSTCHECK_VPS_MIHOMO_PROCESS_COUNT=0
+POSTCHECK_VPS_R3_RUNTIME_RESIDUE=0
+CLEANUP_READBACK=PASS
+POSTCHECK_QUERY_ANOMALY=Initial exact-port Get-NetTCPConnection query returned no-match CimJobException; read-only full listener enumeration plus filter confirmed zero; no state changed.
+NETWORK_CONFIGURATION_MUTATION=NO
+SING_BOX_A_SIDE_REPLAY=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+FINAL_RESULT=RETURN_G2C_R3_RUNNER_EXCEPTION_CLASSIFIER_FAILURE
+STOP_AT_REVIEWER=YES
+```
+
+The local fixture passed, but the one authorized retry did not produce its normal result markers: the top-level catch itself raised a missing-type error, masking the original exception and phase. Therefore actual request count and handshake state are recorded as UNKNOWN; no additional request or runner invocation was made. Cleanup was independently read back over the accepted strict SSH control path and on Windows: no temporary server/client process, listener, or R3 runtime residue remained; WG/HY2, proxy, TUN, and the WireGuard-selected control route remained operational. The current post-run adapter index is 9 while the runner invariant expects 13; because entry-time state was not emitted, this is recorded as a current readback fact, not asserted as the triggering exception.

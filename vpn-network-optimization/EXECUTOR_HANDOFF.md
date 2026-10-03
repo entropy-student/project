@@ -211,3 +211,18 @@ ACTUAL_ELAPSED=55m10s
 TIME_OVERRUN=YES
 TIME_OVERRUN_CAUSE=LOCAL_PROCESS_ARGUMENT_BINDING_DIAGNOSIS_AND_GITHUB_MAIN_RECONCILIATION
 STOP_AT_REVIEWER=YES
+
+## Current executor result — G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 retry (2026-10-03)
+
+结果：RETURN_G2C_R3_RUNNER_EXCEPTION_CLASSIFIER_FAILURE；本轮无法给出 A/B 结果。
+改动：仅追加本轮脱敏 Evidence 与 Handoff；未修改 runner、协议参数、sing-box A 侧或网络配置。
+验证：正式 helper 的本地无网络 empty-argument fixture PASS。唯一一次 retry runner 随后在顶层 catch 中因异常类型不可解析而再次抛错，遮蔽原始阶段；请求数/REALITY 握手状态 UNKNOWN，不再重放。Windows 与 VPS 只读 cleanup read-back 均确认无临时 Mihomo、监听器或 runtime residue，WireGuard/HY2 保持 active。
+问题：RUNNER_EXCEPTION_CLASSIFIER_TYPE_UNAVAILABLE：`Management.Automation.ParameterBindingValidationException` 在当前 PowerShell runtime 无法解析；另有 post-run SFO2-A ifIndex=9，而 runner 要求 13，但无法证明该差异触发本次异常。
+回滚：所有本轮临时文件/进程均已清理；没有持久服务、路由、代理、TUN 或服务器配置修改。
+请 Reviewer 检查：fresh-read 当前 runner、authorized-retry Evidence 与本节，并决定后续诊断 Gate；本轮不再执行请求。
+Owner 转交：NONE
+ROUND_STARTED_AT=2026-10-03T04:56:08Z
+ROUND_FINISHED_AT=2026-10-03T05:07:06Z
+ACTUAL_ELAPSED=10m58s
+TIME_OVERRUN=NO
+STOP_AT_REVIEWER=YES
