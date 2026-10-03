@@ -3697,3 +3697,44 @@ Reviewer interpretation:
 - Formal project baseline remains `v1.19.31` until the v1.19.32 native parse Gate passes; current local runtime fact is v1.19.32.
 - Timing observability was mandatory in R1 but the start marker was missed. This is a process-observability defect, not a reason to replay R1. The next Gate must capture timing before any preflight action.
 
+## Executor evidence — G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2 (2026-10-03)
+
+```text
+AUTHORIZED_GATE=G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2
+PRE_GATE_HEAD=5537d50640c3d1ff12423d75104f30b4e555e682
+MIHOMO_BINARY_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+MIHOMO_BINARY_EXISTS=YES
+MIHOMO_VERSION=v1.19.32
+VERSION_COMMAND=-v
+C1_TEMPLATE_BLOB=a7ec68ec08c47945b55b567e1717d89d3d06bfaa
+C1_VALIDATOR_BLOB=9974bf962c07a51e92aa88f604af6eb2fe77fb0f
+NATIVE_CONFIG_TEST=BLOCKED_BEFORE_PROCESS_START
+BLOCKED_COMMAND_TYPE=PowerShell inline config-test setup/invocation
+BLOCKED_EXECUTABLE=Codex execution-context pwsh.exe
+BLOCKED_POLICY_REASON=CreateProcess rejected; blocked by policy
+EXECUTOR_RESULT=RETURN_MIHOMO_NATIVE_PARSE_BLOCKED_BY_POLICY
+TEMP_FIXTURE_CREATED=NO
+TEMP_FIXTURE_CLEANUP=NOT_APPLICABLE
+MIHOMO_ACTIVE_STARTED=NO
+NETWORK_REQUEST_COUNT=0
+WIREGUARD_CHANGED=NO
+ROUTE_CHANGED=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_CHANGED=NO
+VPS_ACCESS=NO
+SECRET_ACCESSED=NO
+SECRET_VALUES_EMITTED=0
+REVIEWER_HANDOFF_MODIFIED=NO
+ROUND_STARTED_AT=UNKNOWN_NOT_CAPTURED_BEFORE_INITIAL_FETCH
+ROUND_FINISHED_AT=UNKNOWN
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+LOCAL_R2_PHASE_START=2026-10-03T14:20:12Z
+LOCAL_R2_PHASE_CHECK=2026-10-03T14:24:11Z
+LOCAL_R2_PHASE_ELAPSED=3m59s
+ROLLBACK_EFFECT=No runtime/config/network mutation; no temporary fixture was created.
+STOP_AT_REVIEWER=YES
+```
+
+The native config test did not run: Codex process creation blocked the inline PowerShell command before execution. No new shell, split invocation, or alternate tool path was used to bypass policy. The version read-back is direct local execution evidence; the parser result remains unavailable. Full-round timing was not captured before fetch, so the total duration and overrun status are unknown; the reported 3m59s covers only the later local phase window.
+

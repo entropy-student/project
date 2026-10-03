@@ -6,7 +6,43 @@
 
 
 
-## Current execution status — G3C C1 Mihomo v1.19.32 native parse R2
+## Current execution result — G3C C1 Mihomo v1.19.32 native parse R2
+
+```text
+GATE_ID=G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2
+EXECUTOR_RESULT=RETURN_MIHOMO_NATIVE_PARSE_BLOCKED_BY_POLICY
+PRE_GATE_HEAD=5537d50640c3d1ff12423d75104f30b4e555e682
+MIHOMO_BINARY_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+MIHOMO_VERSION=v1.19.32
+C1_TEMPLATE_BLOB=a7ec68ec08c47945b55b567e1717d89d3d06bfaa
+C1_VALIDATOR_BLOB=9974bf962c07a51e92aa88f604af6eb2fe77fb0f
+NATIVE_CONFIG_TEST=BLOCKED_BEFORE_PROCESS_START
+BLOCKED_COMMAND_TYPE=PowerShell inline config-test setup/invocation
+BLOCKED_EXECUTABLE=Codex execution-context pwsh.exe
+BLOCKED_POLICY_REASON=CreateProcess rejected; blocked by policy
+TEMP_FIXTURE_CREATED=NO
+MIHOMO_ACTIVE_STARTED=NO
+NETWORK_REQUEST_COUNT=0
+WIREGUARD_CHANGED=NO
+ROUTE_CHANGED=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_CHANGED=NO
+VPS_ACCESS=NO
+SECRET_ACCESS=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+ROUND_STARTED_AT=UNKNOWN_NOT_CAPTURED_BEFORE_INITIAL_FETCH
+ROUND_FINISHED_AT=UNKNOWN
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+LOCAL_R2_PHASE_START=2026-10-03T14:20:12Z
+LOCAL_R2_PHASE_CHECK=2026-10-03T14:24:11Z
+LOCAL_R2_PHASE_ELAPSED=3m59s
+STOP_AT_REVIEWER=YES
+```
+
+The exact binary path was present and `-v` returned the Gate-required Mihomo Meta v1.19.32. The one attempted local fixture/config-test invocation was rejected before its PowerShell process started with `CreateProcess ... blocked by policy`; no fixture was created, and no Mihomo process or network action started. No alternate execution channel or split-command retry was attempted. The full Gate start marker was missed before the initial fetch; elapsed/overrun for the complete round remain unknown. The measured 3m59s is only the later local recheck interval, not the total Gate duration.
+
+## Historical R2 execution package — result recorded above
 
 ```text
 GATE_ID=G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2
