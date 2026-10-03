@@ -83,14 +83,16 @@ FIREWALL_NAT_MUTATION_AUTHORIZED=NO
 OWNER_CLIENT_CUTOVER_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 ESTIMATED_EXECUTION_TIME=15-25_minutes
+DEFAULT_EXECUTION_CHANNEL=CODEX_DESKTOP_EXECUTOR
+OWNER_INTERVENTION_REQUIRED=NO_IN_D3
 STAGED_MANIFEST_COMMIT=59899d53c319990256d9131b87671347a1f67bbb
-STAGED_VALIDATOR_COMMIT=7a6e7784c3b79bbb4420e88c9d654f923e7f400c
+STAGED_VALIDATOR_COMMIT=2cb25ecccdaf8fdc0c2a20368142b205cb0ca880
 WG_PUBLIC_KEY_INPUT_COMMIT=8f17c9ffaeca2f87f514adefd8e433a4d0a68f83
 WG_SERVER_SECRET_SENTINEL_COMMIT=e286f0050146465347374a9bdabe170faaf966b4
 WG_CLIENT_SECRET_SENTINEL_COMMIT=05bb99571b1f11ea954357c9275de00801100c2e
 HY2_FINGERPRINT_SENTINEL_COMMIT=5522015954bb14aabd4350db2842ec8af5e3920d
 STATIC_SOURCE_REVIEW=PASS
-OWNER_OFFLINE_VALIDATION=PENDING
+EXECUTOR_OFFLINE_VALIDATION=PENDING
 ```
 
 ### TARGET_AND_SCOPE
@@ -141,11 +143,11 @@ Return PASS_CANDIDATE after static review and deterministic offline render valid
 
 ## NEXT_STEP
 
-Run the G3-B D3 repository-only staged-install render validator once under PowerShell 7.6.6 after syncing canonical `main`, then return the bounded output for Reviewer PASS/RETURN.
+Codex Desktop Executor: sync canonical main, verify clean worktree and PowerShell 7.6.x, AST-parse the rebuilt D3 validator, run only `scripts/g3b-staged-install-render-validator.ps1 -Validate`, record bounded non-secret output in `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`, then STOP_AT_REVIEWER. Do not enter any live VPS/Provider/Secret/cutover Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-Run one repository-only PowerShell 7.6.6 validation of `scripts/g3b-staged-install-render-validator.ps1 -Validate`. It renders fixture content in memory only and does not create files, access a VPS, read Secrets, or activate services.
+**NONE in D3.** Owner intervention resumes only if a later Gate requires Provider purchase/provisioning, Secret movement, live VPS mutation, or production cutover.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
