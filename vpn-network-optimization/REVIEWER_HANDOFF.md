@@ -87,16 +87,17 @@ Current known components:
 GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
 STATE=AUTHORIZED
 PREVIOUS_RESULT=PASS_G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
-LAST_EXECUTOR_RESULT=RETURN_PRECHECK_WINDOWS_LOCAL_BASELINE
+LAST_EXECUTOR_RESULT=PASS_LOCAL_PREFLIGHT_ONLY_OWNER_PROOF
 RUNNER_PREPARATION_REVIEW=PASS
 CANONICAL_SOURCE_HARDENING_REVIEW=PASS
-RUNNER_SOURCE_COMMIT=e5f1dd24064ccab47b2412fd8a3305a161c17ed6
+RUNNER_SOURCE_COMMIT=d04e08e61cbac7fa511daba9c3b55f6725582b18
 HARDENING_COMPLETION_COMMIT=64461d63fb92c6e8944639198e5e1a385e6d8c59
 LAST_ATTEMPT_CONSEQUENTIAL_ACTION_STARTED=NO
 REAL_OPENAI_REQUEST_BUDGET_CONSUMED=0_OF_1
 OWNER_RUNTIME_RECONFIRMED=PowerShell_7.6.6_Administrator_High_RID_12288
 CANONICAL_SOURCE_ONLY_PROOF=PASS
-EXECUTION_BLOCKER=LOCAL_PREFLIGHT_PATCH_REQUIRES_OWNER_PROOF
+LOCAL_PREFLIGHT_ONLY_PROOF=PASS
+EXECUTION_BLOCKER=NONE
 SIMILAR_PROVENANCE_FAILURE_COUNT=2
 BLOCKING_DIAGNOSTIC_GATE=NONE_DIAGNOSTIC_COMPLETED
 OWNER_DIRECT_EXECUTION_EXCEPTION=AUTHORIZED_FOR_BOUNDED_LOW_RISK_OWNER_LOCAL_STEPS_WHEN_FASTER_THAN_CODEX
@@ -233,11 +234,11 @@ It does **not** authorize persistence, permanent firewall changes, benchmark, pr
 
 ## NEXT_STEP
 
-Owner synchronizes the existing managed worktree to current GitHub `main` and runs the repaired P1 runner once with `-LocalPreflightOnly` from PowerShell 7.6.6 Administrator/High. This mode must complete canonical-source + full Windows local preflight and stop before SSH/VPS/network mutation. If it passes, return output to Reviewer before the real P1 canary.
+Owner synchronizes the existing managed worktree to current GitHub `main` and executes the already-authorized real `G2C_REALITY_PUBLIC_TCP443_CANARY_P1` exactly once from PowerShell 7.6.6 Administrator/High, using the verified pinned v1.19.31 Windows client path. The runner must perform fresh VPS preflight before any mutation and then either fail closed or complete the bounded public TCP/443 canary, one `/32` route, one OpenAI request, exact cleanup/read-back, and mandatory Reviewer stop.
 
 ## OWNER_ACTION_REQUIRED
 
-Under the project-specific direct-execution exception, run the Reviewer-provided single atomic sync + `-LocalPreflightOnly` command. Do not run the real P1 canary yet. Request budget remains `0/1`.
+Under the project-specific direct-execution exception, run the Reviewer-provided real P1 command exactly once with `-ClientMihomoPath` pointing to the verified pinned v1.19.31 client. Do not retry after any PASS or RETURN. Request budget is still `0/1` before execution.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
