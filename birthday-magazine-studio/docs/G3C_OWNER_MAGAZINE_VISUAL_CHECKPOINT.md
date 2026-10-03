@@ -1,7 +1,7 @@
 # G3C Owner Magazine Visual Checkpoint
 
 > Date: 2026-10-03  
-> Status: **CURRENT — OWNER REVIEW REQUIRED BEFORE G3CR6R3 EXECUTION**  
+> Status: **RESOLVED — OWNER REJECTED CURRENT MAGAZINE VISUAL SYSTEM**  
 > PR: #64  
 > G4 authority: NONE
 
@@ -65,7 +65,7 @@ The pre-AI and post-AI contact sheets are intentionally visually similar because
 
 ## Owner choices
 
-### A. Accept the current magazine visual system for MVP
+### A. Accept the current magazine visual system for MVP — NOT SELECTED
 
 Then G3CR6R3 may execute:
 - add motion to the **website/homepage**;
@@ -73,7 +73,7 @@ Then G3CR6R3 may execute:
 - improve Preview/Activation;
 - keep the magazine deliverable itself static.
 
-### B. Request magazine visual redesign/polish
+### B. Request magazine visual redesign/polish — OWNER SELECTED
 
 Then G3CR6R3 website execution pauses.
 
@@ -91,9 +91,19 @@ while allowing the visual treatment/layout system to be polished within Owner-ap
 ```text
 G3CR6R1=PASS
 G3CR6R2=SUPERSEDED_BEFORE_EXECUTION
-G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT=CURRENT
-G3CR6R3=PREPARED_HOLD_PENDING_OWNER_MAGAZINE_VISUAL_DECISION
+G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT=RESOLVED_REJECTED
+G3CR6R3A_MAGAZINE_VISUAL_REDESIGN=CURRENT
+G3CR6R3=HOLD_PENDING_MAGAZINE_VISUAL_PASS
 OWNER_VISUAL_FREEZE=PENDING
 PR_64=OPEN_UNMERGED
 G4=HOLD_NOT_AUTHORIZED
 ```
+
+
+## Owner resolution
+
+The Owner explicitly rejected the current 12-page visual result after directly reviewing the G2BR3 contact sheet. The technical proof remains accepted; the visual system does not.
+
+Current execution contract:
+- `OWNER_DECISION_G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md`
+- `G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md`
