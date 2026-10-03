@@ -1,5 +1,8 @@
 # Xianyu — REVIEWER HANDOFF
 
+> GOVERNANCE_BASELINE=vps-project-governance v0.2.6 / ACTIVE_PROVISIONAL  
+> CANONICAL_GOVERNANCE=entropy-student/spike.skill@main:vps-project-governance/VNEXT.md
+
 ## PROJECT_GOAL
 
 以真实市场需求为最高优先级，筛选 **标品或高度可产品化的半标品** 闲鱼虚拟商品；非标服务只作为需求来源，不作为最终优先商品。随后再解决合法货源/交付、上架、自动化与规模化。
@@ -11,7 +14,7 @@ MARKET_SELECTION_REBOOT = ACTIVE
 X1_MARKET_DEMAND_DISCOVERY_AND_NORMALIZATION = PASS
 X2_SERVICE_DEMAND_DEPTH = PASS_EVIDENCE_ONLY
 X2R1_STANDARDIZED_PRODUCT_REFRAME = PASS
-X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3 = NEXT
+X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3 = IN_PROGRESS
 
 AUTOMATION_RUNTIME_TRACK = PRESERVED_ACCEPTED_BASELINE
 RUNTIME_MUTATION_THIS_REBOOT = 0
@@ -85,13 +88,49 @@ CLEANUP_AUTHORIZED=NO
 
 ~~~text
 GATE_ID=X3_STANDARDIZED_EVIDENCE_CARDS_AND_TOP3
-OBJECTIVE=对 X2R1 的标品/半标品候选补齐 E1–E10、标准化经济性、版权/交付来源、更新负担和反方证据，收敛到最多 3 个 Top Candidates
-MAX_ENDPOINT_THIS_ROUND=TOP3_WITHOUT_REAL_LISTING
-MANDATORY_REVIEW_STOP=YES_BEFORE_FINAL_PRIORITY_TEST_OR_REAL_LISTING
+OBJECTIVE=对 X2R1 的 8 个 A/B 候选建立可复核 E1–E10 Evidence Cards，补齐标准化经济性、版权/货源、更新负担、自动交付与反方证据，并收敛到最多 3 个进入 Minimum Validation 的候选
+MAX_ENDPOINT_THIS_ROUND=TOP3_RESEARCH_SHORTLIST_WITHOUT_REAL_LISTING_OR_FINAL_PRIORITY_TEST
+MANDATORY_REVIEW_STOP=YES_BEFORE_MINIMUM_VALIDATION_OR_ANY_REAL_LISTING
 TARGET_AND_SCOPE=XIANYU_STANDARDIZED_VIRTUAL_PRODUCT_RESEARCH_ONLY
+APPLICABLE_CRITICAL_CONSTRAINTS=MARKET_DEMAND_FIRST;STANDARDIZED_FIRST;TRANSACTION_GT_INTENT_GT_ATTENTION;ITEM_SIGNAL_NE_SELLER_TOTAL;SUPPLY_UNKNOWN_NE_KILL;THIRD_PARTY_ACCESS_NE_PRODUCT;GRAY_DEMAND_CAN_BE_MEASURED_NOT_SELECTED;AUTOMATION_RUNTIME_ISOLATED
+
+PREFLIGHT=
+1) use current GitHub xianyu/** as project baseline;
+2) use current xianyu-xiaohongshu-virtual-product-opportunity E1–E10 definitions;
+3) refresh current official Xianyu rule/platform evidence before relying on policy claims;
+4) distinguish transaction / purchase-intent / attention / seller-total signals;
+5) preserve source lineage and do not double-count same-seller/repackaged evidence;
+6) classify FACT / INFERENCE / UNKNOWN / CONFLICTED;
+7) no runtime/account/listing/payment mutation.
+
+REQUIRED_EVIDENCE=
+1) one E1–E10 card per P1–P8;
+2) current Xianyu-specific reachable-demand evidence for each surviving candidate;
+3) payment/transaction evidence strength and limitations;
+4) competition/price-compression/free-substitute counterevidence;
+5) CORE_INVARIANCE / STRUCTURED_INPUT / HUMAN_MINUTES / REVISION_BOUNDARY / FULFILLMENT / SUPPORT_LOAD / RIGHTS / VERSION_BURDEN;
+6) Base/Bad/Stress economics assumptions with unknowns explicit;
+7) independent premortem for every Top Candidate;
+8) source ledger and lineage notes;
+9) no invented SKU sales from “想要” or seller-wide totals.
+
+ACCEPTANCE_CRITERIA=
+1) all P1–P8 receive E1–E10 disposition with confidence and critical unknowns;
+2) only A/B shapes may survive;
+3) Top Candidates count <=3;
+4) each Top Candidate has credible demand/payment path, reachable Xianyu search intent, legal delivery thesis, <=15 min target human work/order, bounded support/revision model and non-trivial free-substitute gap;
+5) no Top Candidate relies on unauthorized accounts/content/data, platform circumvention, gray scraping, piracy or academic cheating;
+6) decisive unknowns are named and routed to Minimum Validation rather than guessed;
+7) no final winner or real-market test is claimed in X3.
+
+ROLLBACK_STATUS_OR_PLAN=DOCUMENTATION_ONLY; revert X3 branch commits; runtime/account/data/transaction state unchanged.
+OWNER_ONLY_ACTIONS=NONE_IN_X3; any later real listing, real purchase, paid test, account qualification change, provider/payment activation or runtime mutation requires a separately reviewed Gate and Owner authorization where consequential.
+REVIEWER_TO_EXECUTOR_RELAY=Read xianyu/REVIEWER_HANDOFF.md CURRENT_GATE; xianyu/docs/X2R1_STANDARDIZED_PRODUCT_RESEARCH_2026-10.md; xianyu/EXECUTION_EVIDENCE.md X1/X2/X2R1; and the current E1–E10/Xianyu modifier/competition-counterevidence sections of spike.skill. Research only P1–P8. Do not read or mutate the legacy runtime unless a specific contradiction makes it necessary.
+EXECUTOR_TO_REVIEWER_RELAY=Return a short PASS_CANDIDATE/RETURN packet; persist detailed cards, sources, confidence, counterevidence and economics to canonical project docs before asking for PASS.
 RUNTIME_MUTATION=FORBIDDEN
 LISTING_PUBLISH=FORBIDDEN
 REAL_PURCHASE=FORBIDDEN
+PAYMENT=FORBIDDEN
 ACCOUNT_MUTATION=FORBIDDEN
 ~~~
 
