@@ -10,6 +10,7 @@ The initial G1 sections below preserve historical preflight evidence. Current G2
 GATE=G1_FOREGROUND_SAFE_FOUNDATION
 FINAL_RETURN=RETURN_PREFLIGHT_DRIFT
 STOP_AT_REVIEWER=YES
+
 EXECUTOR_RUNTIME=Owner Windows host (target-host identity read back locally)
 TARGET_HOST_EXECUTION_PROVEN=PASS_FOR_READ_ONLY_PROBES
 SSH_HOST_KEY_MATCH=YES
@@ -2068,3 +2069,74 @@ TIMING_RECORD_REQUIRED=YES
 ```
 
 No execution result is claimed by this authorization record. Executor must append the actual R3 A/B Evidence after execution.
+
+## G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 — execution evidence (2026-10-03)
+
+```text
+AUTHORIZED_GATE=G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3
+ROUND_STARTED_AT=2026-10-03T01:20:41Z
+ROUND_FINISHED_AT=2026-10-03T02:15:51Z
+ACTUAL_ELAPSED=55m10s
+ESTIMATED_EXECUTION_TIME=20-35 minutes
+TIME_OVERRUN=YES
+TIME_OVERRUN_CAUSE=LOCAL_PROCESS_ARGUMENT_BINDING_DIAGNOSIS_AND_GITHUB_MAIN_RECONCILIATION
+PRE_RUN_MAIN=db5a39c4d94165c6d364ef6b338daa079c58e15e
+MAIN_RECONCILED_TO=58ee3616ed7a8f43af25a76dfa1ffaa7a3b6a483
+TARGET_HOSTNAME=ubuntu-s-1vcpu-512mb-10gb-sfo3
+TARGET_OS=Ubuntu 24.04.5 LTS
+TARGET_KERNEL=6.8.0-142-generic
+SSH_CONTROL_PATH=10.66.21.1:22 via WireGuard; strict accepted host-key trust; read-only preflight PASS
+WG_AND_HY2=active before and after; UDP 51820 and UDP 8443 listeners preserved
+WINDOWS_MIHOMO_CLIENT=v1.19.31
+WINDOWS_WG_MANAGER_AND_TUNNEL=Running
+WINDOWS_WG_ADAPTER=SFO2-A Up, ifIndex 13
+WINDOWS_PROXY_ENABLE=0
+WINDOWS_WINHTTP=direct
+WINDOWS_TUN_ADAPTERS=0
+LOCAL_PROXY_PORT_17990=free at preflight; temporary test proxy later READY
+VPS_PRIVATE_TCP_14443=free at preflight
+VPS_TCP_443=free at preflight; no public 443 listener was opened
+VPS_DEFAULT_ROUTE=default via 24.199.112.1 dev eth0
+VPS_IP_FORWARD=1
+VPS_MEMAVAILABLE_KIB_PREFLIGHT=293912
+VPS_TMP_FREE_KIB_PREFLIGHT=7012740
+SERVER_IMPLEMENTATION=MIHOMO_V1_19_31_NATIVE
+SERVER_ASSET_SHA256=04cf9f09671704f839ddbee2e93069dc831a4123a75281e725d1d96ab9ac1afc (PASS)
+SERVER_CONFIG_CHECK=PASS
+SERVER_PRIVATE_BIND=10.66.21.1:14443
+PRIVATE_LISTENER_TCP_CHECK=PASS
+SERVER_RSS_KIB_AT_READY=41192
+CLIENT_CONFIG=rendered with unchanged accepted client/protocol semantics; protected runtime ACL check PASS
+CLIENT_PROXY_PROCESS=READY
+ONE_SERVER_B_SIDE_ATTEMPT=YES
+SING_BOX_A_SIDE_REPLAY=NO
+OPENAI_PROXIED_REQUEST_COUNT=0
+CURL_PROCESS_STARTED=NO
+REALITY_HANDSHAKE=NOT_REACHED
+CURL_EXIT=NA
+HTTP_STATUS=NA
+CLIENT_ERROR_CLASS=NOT_RUN
+SERVER_ERROR_CLASS=NO_SERVER_ERROR_OBSERVED
+INITIAL_RUNNER_FAILURE=UNEXPECTED_LOCAL_FAILURE
+ROOT_CAUSE=Start-R3SuppressedProcess mandatory string[] Arguments rejected the intentional empty --noproxy value under PowerShell parameter validation
+ROOT_CAUSE_ERROR_CLASS=ParameterBindingValidationException
+ROOT_CAUSE_FQID=ParameterArgumentValidationErrorEmptyStringNotAllowed,Start-R3SuppressedProcess
+IMPLEMENTATION_AB_RESULT=UNKNOWN
+PERFORMANCE_CONCLUSION=NONE
+POST_CLEANUP_MEMAVAILABLE_KIB=279768
+CLIENT_MIHOMO_STOPPED=YES
+SERVER_MIHOMO_STOPPED=YES
+CLIENT_RUNTIME_DELETED=YES
+REMOTE_RUNTIME_DELETED=YES
+LOCAL_BASELINE_UNCHANGED=YES
+WG_HY2_PRESERVED=YES
+NETWORK_CHANGED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+FINAL_RESULT=RETURN_G2C_R3_CLIENT_REQUEST_NOT_STARTED
+STOP_AT_REVIEWER=YES
+```
+
+The request process was never started, so this round provides no REALITY handshake or implementation compatibility result. The failure was reproduced only with a local no-network helper fixture. The runner source now allows an empty argument and classifies parameter-binding failures without exposing exception text; after this patch, PowerShell AST parsing and a local `curl --version` helper fixture passed. No server/client/request rerun followed the patch. Temporary server/client processes and protected runtime files were removed, and post-cleanup read-back confirmed the production baseline remained intact.
+
+Evidence artifact purpose: `scripts/g2c-mihomo-server-r3.ps1` is the source for the bounded one-shot attempt and its cleanup; it contains no runtime Secret values.

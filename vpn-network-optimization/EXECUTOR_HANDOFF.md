@@ -195,3 +195,19 @@ ACTUAL_ELAPSED=25m12s
 TIME_OVERRUN=YES
 TIME_OVERRUN_CAUSE=GITHUB_MAIN_ADVANCED_DURING_ROUND_REQUIRED_FETCH_REBASE_AND_RETRY
 STOP_AT_REVIEWER=YES
+
+## Current executor result — G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 (2026-10-03)
+
+结果：RETURN_G2C_R3_CLIENT_REQUEST_NOT_STARTED；不得将本轮归类为 Mihomo server success/failure A/B。
+改动：新增有界 R3 runner，并修复其本地进程参数绑定问题；未重跑任何服务端、客户端或请求。
+验证：固定 Mihomo v1.19.31 资产哈希与服务端配置校验通过，私网 TCP 检查通过；一次服务端尝试后发现 `--noproxy ''` 被 PowerShell mandatory string[] 参数绑定拒绝，curl/REALITY 请求数为 0。临时进程与运行配置清理及生产网络回读通过。
+问题：LOCAL_PROCESS_ARGUMENT_BINDING_FAILED：PowerShell 参数校验拒绝显式空参数，发生在启动 curl 前；因此没有握手证据，结果为 UNKNOWN。
+回滚：临时 server/client 进程和运行文件已删除；没有持久服务、公开监听或网络配置变更。若需继续，等待 Reviewer 决定是否另开/授权重试 Gate。
+请 Reviewer 检查：fresh-read 本轮 runner、Evidence 和 commit，并决定下一步授权；本轮不得自动重放请求。
+Owner 转交：NONE
+ROUND_STARTED_AT=2026-10-03T01:20:41Z
+ROUND_FINISHED_AT=2026-10-03T02:15:51Z
+ACTUAL_ELAPSED=55m10s
+TIME_OVERRUN=YES
+TIME_OVERRUN_CAUSE=LOCAL_PROCESS_ARGUMENT_BINDING_DIAGNOSIS_AND_GITHUB_MAIN_RECONCILIATION
+STOP_AT_REVIEWER=YES
