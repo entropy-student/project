@@ -80,6 +80,9 @@ TEMP_ROUTE_MUTATION_AUTHORIZED=NO
 SECRET_READ_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 ESTIMATED_EXECUTION_TIME=15-30_minutes
+IMPLEMENTATION_COMMIT=4b8e505f4bc1f6837318305072b38362a330d607
+STATIC_SOURCE_REVIEW=PASS
+OWNER_READONLY_PROOF=PENDING
 ```
 
 ### TARGET_AND_SCOPE
@@ -113,7 +116,7 @@ ESTIMATED_EXECUTION_TIME=15-30_minutes
 - Canonical `main`, project-owned source path, clean source baseline.
 - Reuse accepted strict SSH trust/identity metadata; no host-key auto-accept.
 - Multiline remote payloads must normalize CRLF to LF and use stdin/simple fixed remote command.
-- No Secret values or recovery bundles are read.
+- No VPN/application Secret values or recovery bundles are read. The already accepted SSH identity file may be used by `ssh.exe`; its value must not be exposed, printed, copied, or committed.
 - No external HTTP/OpenAI request.
 
 ### REQUIRED_EVIDENCE
@@ -152,11 +155,11 @@ Return PASS_CANDIDATE only after static negative scan + fixtures. Owner-host rea
 
 ## NEXT_STEP
 
-Implement and statically/offline validate the H2 read-only health/readiness collector. After Reviewer source review, run exactly one bounded Owner-host read-only collection and return the output for H2 PASS/RETURN.
+Run the statically reviewed H2 collector once on the Owner host with `-ValidateAndCollect`, then return the bounded output for Reviewer PASS/RETURN. No live activation follows automatically.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE yet.** Wait for Reviewer to finish H2 source/static validation and provide the exact read-only PowerShell command.
+Run one Reviewer-provided PowerShell 7.6.6 `-ValidateAndCollect` checkpoint after syncing canonical `main`. It performs deterministic self-tests, local read-only inspection, and strict read-only SSH inspection only. Do not run any other G3-A mode or network-switch action.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
