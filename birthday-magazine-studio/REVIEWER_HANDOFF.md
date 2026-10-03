@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=BROADLY_ACCEPTED
-CURRENT_GATE=G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT
+CURRENT_GATE=G3CR6R3A_MAGAZINE_VISUAL_REDESIGN
 OWNER_VISUAL_FREEZE=PENDING
 REAL_MONEY_TRANSACTION=UNVERIFIED
 REAL_CUSTOMER_ACQUISITION=UNVERIFIED
@@ -73,22 +73,22 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT`
+`G3CR6R3A_MAGAZINE_VISUAL_REDESIGN`
 
-G3CR6R3 is prepared but **HOLD_PENDING_OWNER_MAGAZINE_VISUAL_DECISION**.
+The Owner has rejected the current magazine visual system. G3CR6R3 website motion remains **HOLD_PENDING_MAGAZINE_VISUAL_PASS**.
 
 Objective:
-- show the real final **static 12-page magazine/PDF** clearly;
-- add purposeful **website/homepage** editorial motion so the site is not mostly static;
-- redesign the low-pull upload-first Preview so the experience creates stronger purchase desire.
+- redesign the static 12-page magazine itself from technical proof to paid-gift quality;
+- preserve the accepted content/schema/QA architecture;
+- produce explicit before-AI and after-AI contact sheets under the same new design.
 
 Scope:
-- real G2BR3 final-product showcase;
-- bounded homepage/site motion system; magazine deliverable remains static;
-- Preview composition/interactions;
-- optional personalization framing;
-- Free → complete 12-page US$39.99 transition;
-- related Hero/sample/mobile motion/presentation where needed.
+- deterministic magazine templates/layout system;
+- non-private demo-photo fixture for realistic visual review;
+- three shared-architecture presets;
+- before-AI vs after-AI visual proof.
+
+Website/homepage motion and Preview redesign are NOT in this Gate.
 
 Not reopened:
 - overall site composition;
@@ -101,7 +101,7 @@ Not reopened:
 - production AI/provider.
 
 Current Gate file:
-- `docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md`
+- `docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md`
 
 Current growth diagnosis:
 - `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
@@ -163,14 +163,14 @@ Protected backend behavior for G3CR6R2:
 
 ## NEXT_STEP
 
-1. Owner reviews the existing G2B/G2BR3 static magazine outputs and decides whether the magazine visual system itself is acceptable for MVP.
-2. If accepted, execute **G3CR6R3**: website/homepage motion + real static product proof + Preview Activation.
-3. If not accepted, open a separate bounded magazine-visual correction before G3CR6R3.
-4. After final frontend/product visual freeze, move toward the real-behavior validation path; Live/payment remains a separate Owner-authorized Gate.
+1. Execute **G3CR6R3A** only: redesign the static magazine visual system and generate before-AI / after-AI review artifacts.
+2. Reviewer checks the new 12-page visual result, QA, deterministic architecture and preset coherence.
+3. Owner visually accepts or requests bounded magazine changes.
+4. Only after magazine visual PASS does G3CR6R3 website motion + final-product proof + Preview Activation resume.
 
 ## OWNER_ACTION_REQUIRED
 
-Owner decision required now: accept current magazine visual system for MVP or request bounded magazine visual redesign.
+`NONE` for G3CR6R3A execution; Owner already selected magazine visual redesign.
 
 Owner action is required later for:
 - final subjective visual freeze;
@@ -186,8 +186,10 @@ Current working set:
 3. `docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md`
 4. `docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md`
 5. `docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md`
-6. `docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md`
-7. `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
+6. `docs/OWNER_DECISION_G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md`
+7. `docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md`
+8. `docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` — prepared/hold after magazine visual PASS
+9. `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
 7. `EXECUTION_EVIDENCE.md` — accepted execution proof/history
 8. `EXECUTOR_HANDOFF.md` — latest Executor facts when current Gate executes
 
