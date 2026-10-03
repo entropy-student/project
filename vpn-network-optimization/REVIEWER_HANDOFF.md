@@ -55,95 +55,82 @@ Current known components:
 ## CURRENT_ACCEPTED_STATE
 
 - **Current production/rollback:** WireGuard remains the active production/rollback path.
-- **HY2:** deployed server candidate remains ready for a separately reviewed activation Gate.
-- **REALITY:** Mihomo v1.19.31 public TCP/443 path is validated and currently cold/clean; no persistent public listener exists.
-- **G3-A H1:** advisory planner engineering PASS.
-- **G3-A H2:** real read-only health/readiness collector PASS.
-- **G3-A H3:** readiness-to-plan semantic integration PASS.
-- **G3-A H4:** live read-only H2→H3 advisory integration PASS; current real state maps to `WIREGUARD_BASELINE`; HY2 and REALITY remain `READY_FOR_SEPARATE_ACTIVATION`.
-- **G3-A boundary:** sensing/classification/advisory decision is complete. No automatic actuator/switching capability is authorized or implemented.
-- **Final validation pending:** G4 peak-hour + representative Codex/OpenAI/image-generation workload validation remains mandatory before MVP v1 seal.
+- **G3-A:** H1–H4 formally PASS; sensing/readiness/advisory decision is complete, with no automatic actuator implemented.
+- **G3-B D1:** migration package discovery/design formally PASS.
+- **Portable package:** current-instance SFO3 IP/SNI/WLAN/label constants are excluded from portable templates; WireGuard split-default baseline is preserved.
+- **Migration rollback policy:** source VPS remains intact and distinguishable through the rollback window; source decommission is a later Closeout Gate.
+- **Secret/provider boundary:** Provider purchase/provisioning, Secret transfer/rotation, Owner client cutover, and source decommission remain separately authorized consequential actions.
+- **Current runtime:** untouched by G3-B D1.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3B_MIGRATION_ROLLBACK_PACKAGE_DISCOVERY_D1
+GATE_ID=G3B_TARGET_QUALIFICATION_CONTRACT_D2
 STATE=AUTHORIZED
-PREVIOUS_RESULT=PASS_G3A_LIVE_READONLY_ADVISORY_INTEGRATION_H4
+PREVIOUS_RESULT=PASS_G3B_MIGRATION_ROLLBACK_PACKAGE_DISCOVERY_D1
 OWNER_CONTINUE_AUTHORIZATION=2026-10-03
 SPECIALIST_TRIGGERS=11A_SHARED_VPS_STORAGE,11B_SSH_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES
-OBJECTIVE=Inventory and reconcile the existing migration/reinstall/rollback assets into a deterministic VPS migration package design without changing the current VPS or purchasing/provisioning a new provider.
-MAX_ENDPOINT_THIS_ROUND=read-only repository discovery + package design/source changes + offline validation; no provider purchase, no new VPS, no live migration, no Secret rotation, no current-VPS mutation.
+OBJECTIVE=Define and offline-validate a machine-readable, read-only qualification contract for a future target VPS before any install, Secret transfer, or migration action.
+MAX_ENDPOINT_THIS_ROUND=repository-only target probe/parser/fixture work + offline validation; no SSH to current VPS, no Provider action, no target VPS required, no Secret read, no runtime mutation.
 MANDATORY_REVIEW_STOP=YES
-LIVE_MIGRATION_AUTHORIZED=NO
-NEW_PROVIDER_PURCHASE_AUTHORIZED=NO
-CURRENT_VPS_MUTATION_AUTHORIZED=NO
-SECRET_ROTATION_AUTHORIZED=NO
+CURRENT_VPS_ACCESS_AUTHORIZED=NO
+NEW_TARGET_SSH_AUTHORIZED=NO_IN_D2
+PROVIDER_ACTION_AUTHORIZED=NO
+SECRET_TRANSFER_AUTHORIZED=NO
+RUNTIME_MUTATION_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
-ESTIMATED_EXECUTION_TIME=20-35_minutes
-MIGRATION_MANIFEST_COMMIT=92e5d5eda83c09b74d6a07c59e47c531df8a85c8
-MIGRATION_VALIDATOR_COMMIT=3d0741454fc7aa6bed2e92862a9e69d00c76c85c
-MIGRATION_PLAN_COMMIT=f8c549b41699e43824f9ce68ff9306c9b03d5bec
-WG_TEMPLATE_COMMIT=4c849e3f7a006f97614032d66bff604a369f26eb
-HY2_TEMPLATE_COMMIT=6224820052285a17cff50f3570a0f926123f8f17
-CLASH_TEMPLATE_COMMIT=58537223e13890a47ddae3387934acee30790fbe
-STATIC_SOURCE_REVIEW=PASS
-OWNER_PACKAGE_VALIDATION=PENDING
+ESTIMATED_EXECUTION_TIME=15-25_minutes
 ```
 
 ### TARGET_AND_SCOPE
 
-- Reconcile existing assets first, especially:
-  - `scripts/migration-reinstall.sh`
-  - `scripts/rollback-uninstall.sh`
-  - `scripts/preflight-linux.sh`
-  - `scripts/health-check.sh`
-  - existing WireGuard/HY2/Clash templates.
-- Define the migration unit for this VPN project:
-  - reconstructible software/config templates;
-  - per-VPS network identity inputs;
-  - Secret/certificate material classes and secure transfer/recovery procedure;
-  - post-deploy health checks;
-  - staged new→old cutover and rollback semantics;
-  - exact old/new VPS identity proof.
-- No Secret values may enter GitHub/chat/bundles.
-- D1 does not create or mutate a VPS.
-
-### REQUIRED_EVIDENCE
-
-- current repository asset inventory and gaps;
-- explicit classification of reconstructible vs Secret/recovery vs runtime-only assets;
-- static/offline validation of migration package inputs;
-- rollback procedure that does not depend on deleting the old working VPS first;
-- no provider/API purchase or live-host mutation.
+- Reuse `scripts/preflight-linux.sh` concepts but create a G3-B target-specific, machine-readable read-only qualification probe.
+- Qualification facts must include:
+  - target hostname and public IPv4 identity input;
+  - OS/kernel/architecture;
+  - default route/WAN interface;
+  - root free space and memory;
+  - IPv4 forwarding state;
+  - current WG/HY2/Mihomo/sing-box/xray process/service collision indicators;
+  - UDP/51820, UDP/8443, TCP/443, TCP/14443 listener collision counts;
+  - UFW/iptables/nft summary;
+  - project runtime residue/path collision indicators;
+  - canonical project paths existence/state.
+- Probe must not read private keys, application Secrets, or raw provider metadata.
+- D2 defines qualification only; it does not decide provider/region performance suitability.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS for D1 requires a reviewable migration package design with exact inputs/outputs, target identity, Secret handling, health/read-back and rollback boundaries, while preserving the current VPS untouched.
+PASS requires:
+- machine-readable probe is read-only and fail-closed;
+- deterministic fixtures cover qualified target, occupied required port, existing conflicting runtime, insufficient resource, identity mismatch, and ambiguous firewall state;
+- no Secret values are read or emitted;
+- no network/service/package/firewall/filesystem mutation exists in the probe;
+- target qualification result is separate from migration/cutover authorization.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Source-only D1 changes can be exactly reverted. Current runtime remains unchanged.
+Source-only D2. Exact commit revert is sufficient; no runtime rollback applies.
 
 ### OWNER_ONLY_ACTIONS
 
-None in D1. Any provider purchase/new VPS provisioning, Secret rotation/transfer, or live cutover is a later explicit Owner-authorized Gate.
+None in D2.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Inspect only the existing migration/reinstall/rollback/preflight/health/template assets needed for G3-B. Do not touch current VPS, Provider control plane, Secrets, or network state. Prefer adapting existing assets over creating duplicate migration paths.
+Create only the minimum target qualification probe/parser/fixtures needed for G3-B. Do not access any live VPS or Provider. Reuse accepted project path/port conventions and preserve fail-closed behavior.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE after repository-only migration-package reconciliation and offline validation. Any need for live target provisioning or Secret movement requires a new Gate.
+Return PASS_CANDIDATE after static negative scan and offline fixture validation. Live execution on an actual future target requires a separate Gate.
 
 ## NEXT_STEP
 
-Run the G3-B D1 repository-only migration-package validator once under PowerShell 7.6.6 after syncing canonical `main`, then return the bounded output for Reviewer PASS/RETURN.
+Implement and offline-validate the G3-B D2 target qualification contract. No live VPS is required or authorized in this Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-Run one repository-only PowerShell 7.6.6 validation of `scripts/g3b-migration-package-validator.ps1 -Validate`. It reads only tracked non-secret package files. No provider purchase, VPS mutation, Secret movement, or live cutover is authorized.
+**NONE.** D2 is repository-only; do not buy/create a VPS or run SSH.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
