@@ -1,5 +1,8 @@
 # G3CR6R2 — Free Preview Activation Polish
 
+> **STATUS: SUPERSEDED BEFORE EXECUTION by `G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION`.**  
+> Owner feedback on 2026-10-03 broadened the required correction from Preview framing alone to Final Product Proof + Motion + Preview Activation. Do not execute this Gate independently.
+
 ## Gate
 
 ```text
