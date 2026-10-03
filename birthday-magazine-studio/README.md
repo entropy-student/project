@@ -43,7 +43,8 @@
 | G3CR6 Frontend experience + warm-gift brand redesign | RETURN — visual direction underexecuted |
 | G3CR6R1 Frontend composition redesign | **PASS** |
 | G3C Owner visual checkpoint R2 | RESOLVED — bounded Preview polish requested |
-| G3CR6R2 Free Preview Activation polish | **CURRENT** |
+| G3CR6R2 Free Preview Activation polish | SUPERSEDED BEFORE EXECUTION |
+| G3CR6R3 Final product proof + motion + Preview Activation | **CURRENT** |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
@@ -62,7 +63,7 @@ G3B Sandbox 闭环已经通过：
 → scoped cleanup PASS
 ```
 
-这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前 G3CR4 / G3CR5 均已 PASS：首页结构、375px Preview、上传照片后的 Preview 排版，以及 Product/Cart/Checkout/My Account 的视觉连续性都已通过 Reviewer 验收。Owner 在该 checkpoint 选择了继续修改而不是视觉封板。G3CR6 已执行，但 Reviewer 对 19 张最终截图复核后判定 **RETURN**：功能/隐私/Woo 回归证据可保留，但页面组合仍明显继承 G3CR4/G3CR5 的旧骨架，主要表现为换图与换肤，没有充分执行 **Option 2 — Warm Birthday Gift**。**G3CR6R1 Frontend Composition Redesign 已 Reviewer PASS**：首页已重建为新的礼物编辑风格 composition，旧六段 / `g3cr4-*` 骨架退出渲染；Preview、375px、原生 Woo 路径、Owner 编辑能力与后台保护边界均完成回归。Owner 已对 G3CR6R1 的整体 composition 表示大致认可，但认为当前“上传照片 → 显示封面/Preview”的体验仍不理想。当前进入 **G3CR6R2 Free Preview Activation Polish**：保留浏览器本地零模型 Preview 能力和冻结 MVP 合同，不删除功能；重点把它从“封面生成器”重新定位为“完整生日杂志的个性化样刊证明”。PR #64 保持 open/unmerged，Owner visual freeze 仍为 PENDING，G4 继续 HOLD。
+这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前 G3CR4 / G3CR5 均已 PASS：首页结构、375px Preview、上传照片后的 Preview 排版，以及 Product/Cart/Checkout/My Account 的视觉连续性都已通过 Reviewer 验收。Owner 在该 checkpoint 选择了继续修改而不是视觉封板。G3CR6 已执行，但 Reviewer 对 19 张最终截图复核后判定 **RETURN**：功能/隐私/Woo 回归证据可保留，但页面组合仍明显继承 G3CR4/G3CR5 的旧骨架，主要表现为换图与换肤，没有充分执行 **Option 2 — Warm Birthday Gift**。**G3CR6R1 Frontend Composition Redesign 已 Reviewer PASS**：首页已重建为新的礼物编辑风格 composition，旧六段 / `g3cr4-*` 骨架退出渲染；Preview、375px、原生 Woo 路径、Owner 编辑能力与后台保护边界均完成回归。Owner 已对 G3CR6R1 的整体 composition 表示大致认可，但认为当前“上传照片 → 显示封面/Preview”的体验仍不理想。Owner 最新反馈把问题进一步明确为三件事：当前首页约为 7/10、整体过于静态；首页没有强力展示真实最终 12 页生日杂志；当前上传照片后立即出现生日杂志的体验购买欲弱。**G3CR6R2 在执行前被 supersede，当前进入 G3CR6R3 Final Product Proof + Motion + Preview Activation**。本轮优先使用已验收的 G2BR3 真实 12 页 PDF/contact sheet 作为最终产品证明，加入克制的 editorial motion，并重做 Preview 的价值体验；Woo/支付/账户/私有空间后台继续冻结。PR #64 保持 open/unmerged，Owner visual freeze 仍为 PENDING，G4 继续 HOLD。
 
 ## 已证明的技术能力
 
@@ -95,7 +96,10 @@ G3B Sandbox 闭环已经通过：
 - [docs/OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md](./docs/OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md) — **当前 Owner 视觉方向与变更边界**
 - [docs/REVIEWER_DECISION_G3CR6R1_PASS.md](./docs/REVIEWER_DECISION_G3CR6R1_PASS.md) — **G3CR6R1 Reviewer PASS**
 - [docs/REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md](./docs/REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md) — **当前产品/Activation 判断**
-- [docs/G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md](./docs/G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md) — **当前执行 Gate**
+- [docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md](./docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md) — 当前 Owner 体验要求
+- [docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md](./docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md) — 当前产品/获客判断
+- [docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md](./docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md) — **当前执行 Gate**
+- [docs/G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md](./docs/G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md) — superseded before execution
 - [docs/GROWTH_VALIDATION_STATE_2026-10-03.md](./docs/GROWTH_VALIDATION_STATE_2026-10-03.md) — 当前 Growth Validation Spine / 瓶颈判断
 - [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 当前获客验证计划
 - [docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md](./docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md) — 已解决的 Owner checkpoint
