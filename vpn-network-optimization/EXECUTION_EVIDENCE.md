@@ -2140,3 +2140,46 @@ STOP_AT_REVIEWER=YES
 The request process was never started, so this round provides no REALITY handshake or implementation compatibility result. The failure was reproduced only with a local no-network helper fixture. The runner source now allows an empty argument and classifies parameter-binding failures without exposing exception text; after this patch, PowerShell AST parsing and a local `curl --version` helper fixture passed. No server/client/request rerun followed the patch. Temporary server/client processes and protected runtime files were removed, and post-cleanup read-back confirmed the production baseline remained intact.
 
 Evidence artifact purpose: `scripts/g2c-mihomo-server-r3.ps1` is the source for the bounded one-shot attempt and its cleanup; it contains no runtime Secret values.
+
+
+## Reviewer reconciliation — G2C R3 request-not-started return — 2026-10-03
+
+```text
+REVIEWER_GOVERNANCE_VERSION=v0.2.6
+REVIEWER_GOVERNANCE_SHA=de2b38ec0e7f3ecceb1aeffa3fc7f033ed14429a
+TRIGGERED_SPECIALISTS=11B_SSH_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION_AUTH
+REVIEWED_COMMIT=f2a02ca60f8698d126620bcbbad21130386a7258
+EXECUTOR_RESULT=RETURN_G2C_R3_CLIENT_REQUEST_NOT_STARTED
+REVIEWER_CLASSIFICATION=LOCAL_PROCESS_ARGUMENT_BINDING_FAILURE_BEFORE_REQUEST
+SERVER_ASSET_AND_CONFIG=PASS
+PRIVATE_LISTENER_TCP=PASS
+CLIENT_PROXY_READY=YES
+OPENAI_PROXIED_REQUEST_COUNT=0
+CURL_PROCESS_STARTED=NO
+REALITY_HANDSHAKE_REACHED=NO
+IMPLEMENTATION_AB_RESULT=UNKNOWN
+PROTOCOL_COMPATIBILITY_CONCLUSION=NONE
+TOOLING_ROOT_CAUSE=EMPTY_NOPROXY_ARGUMENT_REJECTED_BY_MANDATORY_STRING_ARRAY_PARAMETER
+REPAIRED_RUNNER_STATIC_REVIEW=PASS
+REPAIRED_LOCAL_NO_NETWORK_FIXTURE=EXECUTOR_REPORTED_PASS
+CLEANUP=PASS
+WG_HY2_PRESERVED=YES
+NETWORK_CHANGED=NO
+PUBLIC_TCP443_CHANGED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+PREVIOUS_ESTIMATE=20-35 minutes
+ACTUAL_ELAPSED=55m10s
+TIME_OVERRUN=YES
+TIME_OVERRUN_CAUSE=LOCAL_PROCESS_ARGUMENT_BINDING_DIAGNOSIS_AND_GITHUB_MAIN_RECONCILIATION
+OWNER_REQUEST_AUTHORIZATION_CONSUMED=NO
+SAME_GATE_RETRY=AUTHORIZED
+FRESH_OWNER_AUTHORIZATION_REQUIRED=NO
+RETRY_ESTIMATED_EXECUTION_TIME=15-25 minutes
+```
+
+Reviewer reasoning:
+- The server-side B candidate reached a valid private ready state, but the only authorized real request never started, so no Mihomo-server A/B conclusion exists.
+- The failure is localized to the Windows process helper. The repaired helper now explicitly permits the intentional empty string and keeps passing each argument through `ProcessStartInfo.ArgumentList`; no protocol or server semantics changed.
+- Retry must run the local no-network empty-argument fixture before starting the remote candidate. If it passes, the same R3 Gate may continue once. If a real request starts, that consumes the remaining request authorization regardless of protocol outcome.
+- Repository advancement after execution may require reconciliation, but must never cause the real request to be replayed.
