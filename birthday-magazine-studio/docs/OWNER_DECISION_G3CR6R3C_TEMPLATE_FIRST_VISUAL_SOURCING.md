@@ -10,7 +10,7 @@
 The Owner further simplifies the visual strategy.
 
 Target:
-- **12 static magazine pages**
+- **12 magazine pages** — their web presentation may be static or dynamic; this is not frozen yet
 - **1 homepage**
 - **1 core homepage interaction / motion experience**
 - later, if useful, derive up to 3 visual styles from the same underlying system.
@@ -29,6 +29,8 @@ Do not blindly copy proprietary code, paid templates, or copyrighted assets.
 ## Architecture intent
 
 The 12 magazine pages + homepage should share one coherent design system.
+
+The **static-vs-dynamic web presentation of the 12 magazine pages is explicitly UNRESOLVED**. Template discovery should not filter out strong candidates merely because they use restrained motion/interaction. The current frozen deliverable remains the 12-page PDF unless the Owner later reopens that product-contract decision.
 
 Later style variants should be token/theme variants where possible, not three separate codebases.
 
