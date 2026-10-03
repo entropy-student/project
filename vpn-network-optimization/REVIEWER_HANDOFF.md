@@ -17,8 +17,8 @@ G2 Multi-path candidate validation          PASS
 G3-A Health/readiness/advisory              PASS
 G3-B Migration package D1-D3                PASS_OFFLINE
 G3-C C1 Manual-control contract             PASS
-G3-C C2A UI canary package                  RETURN->FIXING
-G3-C C2B Synthetic Clash UI canary          PENDING
+G3-C C2A Synthetic UI package repair        PASS_WITH_TIMING_GAP
+G3-C C2B Synthetic Clash UI canary          READY_NOT_STARTED
 G3-C C2C Real HY2-in-Clash canary           PENDING
 G3-B Fresh-target migration rehearsal       DEFERRED
 G4 Peak-hour + real workload final validate PENDING
@@ -58,96 +58,67 @@ Current known components:
 
 - **Current production:** WireGuard remains connected and authoritative.
 - **G3-C C1:** PASS; Windows Mihomo v1.19.32 accepted.
-- **G3-C C2A repair:** paused by Owner priority change and will resume after this benchmark.
-- **HY2:** existing candidate is deployed and previously validated.
-- **REALITY:** non-persistent; previous bounded public canary proved interoperability and cleanup.
-- **New Owner priority:** obtain a same-window comparison of WG, HY2 and REALITY before traffic conditions change materially.
+- **G3-C C2A synthetic UI repair:** technical/safety package accepted from commit `408f632c...`; timing start was missed and remains an explicit observability gap, with no technical replay.
+- **Future C2B package:** synthetic/no-traffic only. WG baseline first/default; HY2 uses reserved documentation endpoint + fixture credentials; REALITY absent/cold.
+- **Secret boundary:** no DPAPI/recovery/real HY2 credential access in C2B package.
+- **Clash persistence boundary:** before/after profile-store filename+hash snapshots are required; no automatic deletion of unrelated Clash-owned files.
+- **Benchmark detour:** cancelled by Owner. Ad-hoc latency testing is outside project governance unless explicitly reintroduced later.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3X_TRI_PATH_SAME_WINDOW_BENCHMARK_PACKAGE_B1
-STATE=AUTHORIZED
-PREVIOUS_GATE=G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1_PAUSED
-OWNER_CONTINUE_AUTHORIZATION=2026-10-04
-OBJECTIVE=Build and offline-validate one bounded same-window benchmark package for WG, HY2 and REALITY using the same OpenAI endpoint and equal samples.
-MAX_ENDPOINT_THIS_ROUND=repository-only benchmark runner/validator/docs/evidence; no live benchmark in B1.
+GATE_ID=G3C_C2B_SYNTHETIC_CLASH_UI_CANARY
+STATE=READY_NOT_STARTED
+PREVIOUS_RESULT=PASS_TECHNICAL_WITH_RECORDED_TIMING_OBSERVABILITY_GAP
+OWNER_CONTINUE_AUTHORIZATION=NOT_YET_REQUESTED
+OBJECTIVE=Run the already-reviewed synthetic/no-traffic Clash UI canary when Owner chooses to resume the project.
 MANDATORY_REVIEW_STOP=YES
-SAMPLES_PER_PATH=20
-SAMPLE_MODE=ROUND_ROBIN_TRIPLETS
-TARGET_ENDPOINT=https://api.openai.com/v1/models
-EXPECTED_HTTP_STATUS=401
-METRICS=TTFB_P50_P95,TOTAL_P50_P95,FAILURE_RATE,JITTER
-WG_MUST_REMAIN_CONNECTED=YES
+OWNER_INTERVENTION_REQUIRED=YES_WHEN_RESUMED
+REAL_SECRET_ACCESS_AUTHORIZED=NO
+NETWORK_REQUEST_AUTHORIZED=NO
+WG_DISCONNECT_REQUIRED=NO
 SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
 TUN_CHANGE_AUTHORIZED=NO
-PERSISTENT_ROUTE_AUTHORIZED=NO
-API_CREDENTIAL_ALLOWED=NO
-OWNER_INTERVENTION_REQUIRED=NO_IN_B1
-ESTIMATED_EXECUTION_TIME=15-25_minutes
-TIMING_OBSERVABILITY_REQUIRED=YES_WITH_PHASES
+ROUTE_CHANGE_AUTHORIZED=NO
+REALITY_LIVE_NODE_AUTHORIZED=NO
+ESTIMATED_EXECUTION_TIME=3-5_minutes
+TIMING_OBSERVABILITY_REQUIRED=SCRIPT_EMBEDDED
 ```
 
-### PACKAGE_REQUIREMENTS
+### CURRENT_BOUNDARY
 
-- Do not reuse historical benchmark code with hardcoded adapter/interface/address facts.
-- Reuse only previously accepted bounded HY2 and public REALITY canary mechanisms, updated for the current Mihomo baseline and current dynamic-interface rules.
-- The later B2 benchmark must keep WireGuard available throughout, use equal 20-sample round-robin triplets, and direct all three paths to the same OpenAI endpoint without credentials.
-- Capture identical curl timing fields for every sample and compute TTFB median/P95, total median/P95, failure rate, timeout/reset counts, and an explicit jitter statistic.
-- Any temporary path/runtime state used by the accepted canary mechanisms must be exact, bounded, non-persistent and fully proven absent afterward.
-- A cleanup failure overrides benchmark success.
-- Save only non-secret CSV/JSON statistics.
-- B1 itself performs no live request, Secret access, runtime start, VPN change or server action.
-
-### VALIDATOR_REQUIREMENTS
-
-Reject:
-- hardcoded physical interface/index/gateway/local address;
-- unequal path sample counts/order;
-- API credentials;
-- persistent route or WG disconnect;
-- system proxy/TUN change;
-- missing cleanup proof;
-- missing TTFB/total/jitter statistics;
-- missing timing instrumentation.
-
-### TIMING
-
-Estimate: **15–25 minutes**.
-
-Record total plus:
-`SOURCE_BUILD_ELAPSED`,
-`FIXTURE_VALIDATE_ELAPSED`,
-`STATIC_REVIEW_ELAPSED`,
-`GIT_PERSISTENCE_ELAPSED`.
+- Do not run C2B until Owner explicitly resumes the project.
+- The reviewed runner is `scripts/c2b-owner-clash-ui-canary.ps1`.
+- C2B proves UI visibility/default/manual selector semantics only; it does not prove HY2 connectivity.
+- C2C remains the first stage allowed to consider real HY2 credentials/connectivity in Clash.
 
 ### OWNER_ONLY_ACTIONS
 
-NONE in B1.
+NONE now. Resume only on explicit Owner request.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Build only the offline same-window tri-path benchmark package. Preserve the paused C2A repair for later.
+No Executor action. Benchmark B1 is cancelled. C2A repair is accepted; wait for Owner to resume C2B.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return `PASS_CANDIDATE_G3X_TRI_PATH_BENCHMARK_PACKAGE_B1` or precise RETURN; persist Evidence/Handoff/timing and STOP_AT_REVIEWER.
+No action until Owner resumes C2B.
 
 ## NEXT_STEP
 
-Codex prepares the benchmark package. Reviewer inspects it. If accepted, Owner runs one bounded B2 benchmark during the current low-load window; then Reviewer summarizes WG/HY2/REALITY results.
+Wait for Owner to resume the main project. The next governed step is the already-reviewed synthetic/no-traffic C2B UI canary.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE during B1.** Keep WireGuard connected. Do not change Clash.
+**NONE.** Ad-hoc latency testing is separate from the project.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Execute G3X B1 benchmark package construction only; no live action.
+No Executor action. Benchmark B1 cancelled; wait for Owner to resume C2B.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3X_TRI_PATH_BENCHMARK_PACKAGE_B1 or precise RETURN; STOP_AT_REVIEWER.
+No Executor action until Owner resumes C2B.
 
 ## EVIDENCE_POINTERS
 
