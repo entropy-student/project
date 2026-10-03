@@ -1,7 +1,7 @@
 # WireGuard client template. Keep this file non-secret.
 [Interface]
 Address = {{WG_CLIENT_ADDRESS}}
-# PrivateKey is injected from an external Secret at render time.
+# PrivateKey = __EXTERNAL_WG_CLIENT_PRIVATE_KEY_NOT_IN_REPOSITORY__
 # DNS is intentionally omitted until the client DNS policy is explicitly frozen.
 
 [Peer]
