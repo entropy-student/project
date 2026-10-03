@@ -6,7 +6,26 @@
 
 
 
-## Current execution result — G3C C1 Mihomo v1.19.32 native parse R2
+
+## Current execution status — awaiting Owner R3
+
+```text
+GATE_ID=G3C_C1_OWNER_MIHOMO_NATIVE_PARSE_R3
+STATE=AWAITING_OWNER_EXECUTION
+EXECUTOR_ACTION_AUTHORIZED=NO
+CODEX_NATIVE_PARSE_RETRY_AUTHORIZED=NO
+POLICY_WORKAROUND_AUTHORIZED=NO
+OWNER_ONE_SHOT_LOCAL_CHECKPOINT=REQUIRED
+MIHOMO_BINARY_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+EXPECTED_MIHOMO_VERSION=v1.19.32
+ESTIMATED_EXECUTION_TIME=2-5_minutes
+STOP_AT_REVIEWER=YES
+```
+
+Codex must not retry the native parse, spawn alternate shells to bypass policy, modify the C1 source, or perform any network/VPN action while Owner R3 is pending.
+
+
+## Historical execution result — G3C C1 Mihomo v1.19.32 native parse R2
 
 ```text
 GATE_ID=G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2
