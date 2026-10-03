@@ -1,5 +1,7 @@
 # X3R1 — Concrete SKU Demand Pool — 2026-10-03
 
+> **PROJECT ENDPOINT UPDATE — 2026-10-03:** 本项目现已明确只负责产出“基于闲鱼市场需求的具体商品类型 / SKU 目录”。货源、授权落地、上架、真实交易、自动化均已移出本项目范围。本文中的 supply/rights 字段只保留为历史备注，不参与当前选品结论，也不是后续必经步骤。
+
 Status: PASS_CANDIDATE pending Reviewer read-back
 Scope: Xianyu virtual/digital products
 Decision correction: concrete SKU demand first; sourcing is a later independent axis
@@ -139,9 +141,7 @@ The market decision will henceforth be made at SKU level.
 
 ## 6. Next research round
 
-Do not jump to sourcing yet for all 36.
-
-First perform SKU-level demand depth to reduce the pool:
+继续只做 SKU 级市场需求研究：
 
 ~~~text
 36 concrete SKUs
@@ -151,24 +151,14 @@ First perform SKU-level demand depth to reduce the pool:
 → independent seller/signal density
 → buyer-job clarity
 → seasonality
-→ free substitute
-→ Top 10–15 demand SKUs
+→ counterevidence
+→ final concrete SKU / product-type catalog
+→ PROJECT CLOSEOUT
 ~~~
 
-Only after that:
+最终目录数量由证据决定，不预设必须收敛到 10、15 或 3 个。
 
-~~~text
-Top demand SKUs
-→ source search
-→ rights/license
-→ fulfillment route
-→ margin/support
-→ Minimum Validation
-~~~
-
-This preserves the Owner rule:
-
-> No source found yet ≠ no demand.
+本项目不再进入 sourcing / rights implementation / fulfillment / Minimum Validation。
 
 ## 7. Current primary evidence ledger
 
@@ -205,11 +195,11 @@ CONCRETE_SKU_POOL=36
 ABSTRACT_TOP3_SELECTION=SUPERSEDED
 ABSTRACT_PRODUCT_FORM_ANALYSIS=RETAINED
 SUPPLY_UNKNOWN_IS_DEMAND_KILL=NO
-RIGHTS_AND_SOURCE_RESEARCH=DEFERRED_SEPARATE_AXIS
+RIGHTS_AND_SOURCE_RESEARCH=OUT_OF_SCOPE_CURRENT_PROJECT
 REAL_LISTING=0
 REAL_PURCHASE=0
 PAYMENT=0
 ACCOUNT_MUTATION=0
 RUNTIME_MUTATION=0
-NEXT=SKU_LEVEL_DEMAND_DEPTH_36_TO_10_15
+NEXT=X3R2_FINAL_SKU_CATALOG_RESEARCH
 ~~~
