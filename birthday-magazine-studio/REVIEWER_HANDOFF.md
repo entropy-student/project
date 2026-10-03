@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=BROADLY_ACCEPTED
-CURRENT_GATE=G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH
+CURRENT_GATE=G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION
 OWNER_VISUAL_FREEZE=PENDING
 REAL_MONEY_TRANSACTION=UNVERIFIED
 REAL_CUSTOMER_ACQUISITION=UNVERIFIED
@@ -67,24 +67,26 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 - G3CR4/G3CR5: earlier frontend regressions PASS at their tested scope.
 - G3CR6: RETURN because the visual direction was underexecuted.
 - G3CR6R1: PASS; Warm Birthday Gift composition, Preview privacy, native Woo path, 375px behavior, and Owner editability accepted.
-- Owner Visual Checkpoint R2: resolved through bounded change; Owner broadly accepts overall composition but rejects the current Preview framing as final.
+- Owner Visual Checkpoint R2: resolved; Owner broadly accepts the overall composition but now explicitly rates the homepage around 7/10 for the intended quality bar, wants meaningful motion, wants the actual final magazine shown clearly, and rates the current upload-first Preview around 5/10.
 - Owner editability at G3CR6R1 evidence scope: Administrator, edit Home, replace media, edit copy, reorder eight major Gutenberg Groups, edit Blocksy global style/palette; footer is editable WordPress block.
 - PR #64 remains open/unmerged at accepted execution head `15ff73f6232e0ef94f04f313f74372e52389d1e2`.
 
 ## CURRENT_GATE
 
-`G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH`
+`G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION`
 
 Objective:
-- correct the first-value experience so the product reads as a **complete personalized magazine gift**, not “upload photo → get cover.”
+- show the real final magazine clearly;
+- add purposeful editorial motion so the homepage is not mostly static;
+- redesign the low-pull upload-first Preview so the experience creates stronger purchase desire.
 
 Scope:
-- Preview framing/composition;
-- default sample state;
-- optional “Try it with your photo” framing;
-- cover + editorial-spread context;
+- real G2BR3 final-product showcase;
+- bounded homepage motion system;
+- Preview composition/interactions;
+- optional personalization framing;
 - Free → complete 12-page US$39.99 transition;
-- narrowly related Hero CTA/mobile correction if needed.
+- related Hero/sample/mobile motion/presentation where needed.
 
 Not reopened:
 - overall site composition;
@@ -97,7 +99,7 @@ Not reopened:
 - production AI/provider.
 
 Current Gate file:
-- `docs/G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md`
+- `docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md`
 
 Current growth diagnosis:
 - `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
@@ -140,7 +142,8 @@ Protected backend behavior for G3CR6R2:
 
 - Accepted rollback target: G3CR6R1 state.
 - Prior G3CR6/G3CR6R1 rollback evidence must not be overwritten.
-- G3CR6R2 must create its own scoped rollback point before mutation.
+- G3CR6R2 is superseded before execution.
+- G3CR6R3 must create its own scoped rollback point before mutation.
 - Git history remains the source-code recovery baseline.
 
 ## UNRESOLVED
@@ -158,14 +161,14 @@ Protected backend behavior for G3CR6R2:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R2** only.
-2. Reviewer inspects Preview screenshots + behavior/privacy evidence.
-3. Owner performs final bounded visual/Activation checkpoint.
+1. Execute **G3CR6R3** only.
+2. Reviewer inspects actual-final-product proof, motion behavior, Preview purchase-pull, mobile/accessibility and protected-boundary evidence.
+3. Owner performs final visual/experience checkpoint.
 4. After visual freeze, stop general polishing and move toward the real-behavior validation path; Live/payment remains a separate Owner-authorized Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-`NONE` for G3CR6R2 execution.
+`NONE` for G3CR6R3 execution.
 
 Owner action is required later for:
 - final subjective visual freeze;
@@ -179,9 +182,10 @@ Current working set:
 1. `docs/MVP_PRODUCT_CONTRACT.md`
 2. `docs/REVIEWER_DECISION_G3CR6R1_PASS.md`
 3. `docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md`
-4. `docs/REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md`
-5. `docs/G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md`
-6. `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
+4. `docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md`
+5. `docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md`
+6. `docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md`
+7. `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
 7. `EXECUTION_EVIDENCE.md` — accepted execution proof/history
 8. `EXECUTOR_HANDOFF.md` — latest Executor facts when current Gate executes
 
