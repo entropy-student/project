@@ -280,3 +280,17 @@ Owner 转交：只需在真实 Owner Windows 上以 PowerShell 7.6.6 Administrat
 耗时：P1 consequential execution 预计 20–30 分钟，尚未开始；源码准备初始计时未捕获，不重构实际耗时。
 STOP_BEFORE_OWNER_LOCAL_EXECUTION=YES
 STOP_AT_REVIEWER=YES
+
+## Current executor result — G2C_P1_CANONICAL_SOURCE_WORKTREE_DISCOVERY_H1 (2026-10-03)
+
+结果：PASS_CANDIDATE_HARDENING；仅修复 P1 runner 的 Git root / tracked-relative project path 发现。
+改动：Git 从真实 project root 读取 `--show-toplevel`，随后动态推导并校验 project-relative tracked paths；source provenance 的 origin、HEAD、accepted-base ancestry、tracked/clean、Gate 和 request-budget 检查保持 fail-closed。
+验证：canonical checkout、既有 managed worktree 和合法嵌套 project-path fixture PASS；LF/CRLF Gate 字段、错配路径、错误 origin、invalid HEAD、未跟踪/dirty target、错误 Gate/budget fixtures 均按预期通过或 fail-closed；PowerShell AST、未改 runner 函数对比和 Secret/network-boundary 静态审查 PASS。
+问题：NONE。
+回滚：仅本轮源码与执行记录；回退本轮 commit 即可恢复，未发生运行态变更。
+GitHub：提交到 `main` 后 fresh-read runner、Evidence 与本节 Handoff；commit SHA 由 Git 历史及本轮完成回执确认。
+请 Reviewer 检查：本轮 commit、canonical source/worktree discovery helper、无网络 fixtures 与 Evidence。
+Owner 转交：NONE；本轮没有执行 Owner checkpoint，P1 真实请求额度保持 `0/1`。
+OPENAI_REQUEST_COUNT=0
+NETWORK_CHANGED=NO
+STOP_AT_REVIEWER=YES

@@ -2791,3 +2791,46 @@ Reviewer interpretation:
 - Historical project Evidence already records successful provenance from both the canonical checkout and the managed Codex worktree. The repair must ask Git for the actual worktree root from the live project path and validate the project-relative tracked files, rather than infer the Git root solely by parent depth.
 - No Owner retry is allowed until the repaired runner is statically reviewed and accepted.
 
+## Executor evidence — G2C_P1_CANONICAL_SOURCE_WORKTREE_DISCOVERY_H1 — 2026-10-03
+
+```text
+GATE_ID=G2C_P1_CANONICAL_SOURCE_WORKTREE_DISCOVERY_H1
+PRE_GATE_HEAD=db94f252e450f0cb94be3d8c67259c6df2d6efa2
+SOURCE_PROVENANCE=PASS
+SOURCE_PROVENANCE_BASIS=FRESH_GITHUB_MAIN_PLUS_ISOLATED_WORKTREE
+GIT_ROOT_DISCOVERY=REV_PARSE_FROM_ACTUAL_PROJECT_ROOT
+PROJECT_TRACKED_RELATIVE_PATH=DYNAMIC_FROM_GIT_ROOT
+FIXED_PARENT_DEPTH_REPOSITORY_ROOT_ASSUMPTION=REMOVED
+CANONICAL_CHECKOUT_FIXTURE=PASS
+MANAGED_CODEX_WORKTREE_FIXTURE=PASS
+NESTED_TRACKED_PROJECT_PATH_FIXTURE=PASS
+MISMATCHED_GIT_ROOT_PROJECT_PATH=FAIL_CLOSED
+WRONG_ORIGIN=FAIL_CLOSED
+INVALID_HEAD=FAIL_CLOSED
+ACCEPTED_BASE_NOT_ANCESTOR=FAIL_CLOSED
+RUNNER_UNTRACKED=FAIL_CLOSED
+REVIEWER_HANDOFF_UNTRACKED=FAIL_CLOSED
+RUNNER_DIRTY=FAIL_CLOSED
+REVIEWER_HANDOFF_DIRTY=FAIL_CLOSED
+GATE_ID_STATE_BUDGET_INVALID=FAIL_CLOSED
+CURRENT_GATE_LF_FIXTURE=PASS
+CURRENT_GATE_CRLF_FIXTURE=PASS
+POWERSHELL_AST_PARSE=PASS
+UNCHANGED_RUNNER_FUNCTIONS=PASS
+STATIC_SECRET_SCAN=PASS
+STATIC_NETWORK_MUTATION_BOUNDARY=PASS
+OWNER_PRIOR_FAILURE_PROVENANCE=OWNER_REPORTED_REVIEWER_ACCEPTED
+OPENAI_REQUEST_COUNT=0
+P1_REQUEST_BUDGET_REMAINING=1
+SSH_STARTED=NO
+VPS_READ_OR_WRITE=NO
+TEMP_ROUTE_ADDED=NO
+PUBLIC_TCP443_LISTENER_STARTED=NO
+MIHOMO_STARTED=NO
+SECRET_ACCESSED=NO
+NETWORK_CHANGED=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+```
+
+The canonical-source check now asks Git for the real worktree root from the actual project directory, derives the project-relative paths from that root, and uses those paths for tracked/clean checks. Origin validation, valid HEAD, the existing accepted-base ancestry anchor, tracked runner/Reviewer source, clean-target checks, and current Gate/request-budget validation remain fail-closed. The local fixtures exercised the production path/fact helpers with non-secret values; no Owner checkpoint or P1 action was run. Initial source reconnaissance preceded a timing checkpoint, so total round elapsed time is not reconstructed.
+

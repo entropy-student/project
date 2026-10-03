@@ -110,34 +110,93 @@ function Invoke-P1GitRead {
     return ,$output
 }
 
+function Resolve-P1TrackedProjectPath {
+    param(
+        [Parameter(Mandatory = $true)][string]$GitRoot,
+        [Parameter(Mandatory = $true)][string]$ProjectRoot
+    )
+    $gitRootFull = [IO.Path]::GetFullPath($GitRoot)
+    $projectRootFull = [IO.Path]::GetFullPath($ProjectRoot)
+    $relativePath = [IO.Path]::GetRelativePath($gitRootFull, $projectRootFull).Replace('\', '/')
+    $outsideRoot = [IO.Path]::IsPathRooted($relativePath) -or
+        $relativePath -ceq '..' -or
+        $relativePath.StartsWith('../', [StringComparison]::Ordinal)
+    Assert-R3 (-not $outsideRoot -and
+        (Split-Path -Leaf $projectRootFull) -ceq 'vpn-network-optimization' -and
+        $relativePath -match '^(?:[^/]+/)*vpn-network-optimization$') 'CANONICAL_GIT_PROJECT_PATH_MISMATCH'
+    return $relativePath
+}
+
+function Assert-P1CanonicalSourceFacts {
+    param(
+        [Parameter(Mandatory = $true)][string]$Origin,
+        [Parameter(Mandatory = $true)][string]$Head,
+        [Parameter(Mandatory = $true)][bool]$AcceptedBaseIsAncestor,
+        [Parameter(Mandatory = $true)][bool]$RunnerTracked,
+        [Parameter(Mandatory = $true)][bool]$ReviewerTracked,
+        [Parameter(Mandatory = $true)][bool]$RunnerClean,
+        [Parameter(Mandatory = $true)][bool]$ReviewerClean,
+        [Parameter(Mandatory = $true)][AllowEmptyString()][string]$GateText
+    )
+    Assert-R3 ($Origin -in @(
+        'https://github.com/entropy-student/project.git',
+        'git@github.com:entropy-student/project.git',
+        'ssh://git@github.com/entropy-student/project.git'
+    )) 'CANONICAL_GITHUB_ORIGIN_MISMATCH'
+    Assert-R3 ($Head -match '^[0-9a-fA-F]{40}$') 'CANONICAL_GIT_HEAD_INVALID'
+    Assert-R3 $AcceptedBaseIsAncestor 'CANONICAL_ACCEPTED_BASE_NOT_ANCESTOR'
+    Assert-R3 $RunnerTracked 'CANONICAL_RUNNER_NOT_TRACKED'
+    Assert-R3 $ReviewerTracked 'CANONICAL_REVIEWER_HANDOFF_NOT_TRACKED'
+    Assert-R3 ($RunnerClean -and $ReviewerClean) 'CANONICAL_GATE_SOURCE_DIRTY'
+    $requiredGateFields = [ordered]@{
+        GATE_ID = 'G2C_REALITY_PUBLIC_TCP443_CANARY_P1'
+        STATE = 'AUTHORIZED'
+        REAL_OPENAI_REQUEST_BUDGET_CONSUMED = '0_OF_1'
+    }
+    foreach ($field in $requiredGateFields.Keys) {
+        $fieldPrefix = "$field="
+        $fieldLines = @($GateText -split '\r?\n' | Where-Object { $_.StartsWith($fieldPrefix, [StringComparison]::Ordinal) })
+        Assert-R3 ($fieldLines.Count -eq 1 -and
+            $fieldLines[0].Substring($fieldPrefix.Length) -ceq $requiredGateFields[$field]) 'CURRENT_GATE_NOT_AUTHORIZED_OR_BUDGET_NOT_FRESH'
+    }
+}
+
 function Assert-P1CanonicalSource {
     $scriptPath = [IO.Path]::GetFullPath($PSCommandPath)
     $script:projectRoot = Split-Path -Parent (Split-Path -Parent $scriptPath)
-    $script:repoRoot = Split-Path -Parent $script:projectRoot
     Assert-R3 ((Split-Path -Leaf $script:projectRoot) -ceq 'vpn-network-optimization') 'PROJECT_PATH_INVALID'
     Assert-R3 ((Split-Path -Leaf $scriptPath) -ceq 'g2c-reality-public-tcp443-canary-p1.ps1') 'RUNNER_PATH_INVALID'
     $script:gitPath = (Get-Command git.exe -ErrorAction Stop).Source
-    $gitRoot = [string]((Invoke-P1GitRead -Arguments @('rev-parse','--show-toplevel')) -join "`n").Trim()
-    Assert-R3 ([IO.Path]::GetFullPath($gitRoot) -ceq [IO.Path]::GetFullPath($script:repoRoot)) 'CANONICAL_GIT_ROOT_MISMATCH'
+    $gitRootLines = @(& $script:gitPath -C $script:projectRoot rev-parse --show-toplevel 2>$null)
+    Assert-R3 ($LASTEXITCODE -eq 0 -and $gitRootLines.Count -eq 1 -and -not [string]::IsNullOrWhiteSpace([string]$gitRootLines[0])) 'CANONICAL_GIT_ROOT_QUERY_FAILED'
+    $script:repoRoot = [IO.Path]::GetFullPath(([string]$gitRootLines[0]).Trim())
+    $script:trackedProjectPath = Resolve-P1TrackedProjectPath -GitRoot $script:repoRoot -ProjectRoot $script:projectRoot
+    $runnerRelativePath = "$($script:trackedProjectPath)/scripts/g2c-reality-public-tcp443-canary-p1.ps1"
+    $reviewerRelativePath = "$($script:trackedProjectPath)/REVIEWER_HANDOFF.md"
     $origin = [string]((Invoke-P1GitRead -Arguments @('remote','get-url','origin')) -join "`n").Trim()
-    Assert-R3 ($origin -in @('https://github.com/entropy-student/project.git','git@github.com:entropy-student/project.git','ssh://git@github.com/entropy-student/project.git')) 'CANONICAL_GITHUB_ORIGIN_MISMATCH'
     $head = [string]((Invoke-P1GitRead -Arguments @('rev-parse','HEAD')) -join "`n").Trim()
-    Assert-R3 ($head -match '^[0-9a-f]{40}$') 'CANONICAL_GIT_HEAD_INVALID'
     $script:sourceHead = $head
-    $null = Invoke-P1GitRead -Arguments @('merge-base','--is-ancestor','496f464029fad4a5747465ce441613104ed8ce06','HEAD')
-    $null = Invoke-P1GitRead -Arguments @('ls-files','--error-unmatch','vpn-network-optimization/scripts/g2c-reality-public-tcp443-canary-p1.ps1','vpn-network-optimization/REVIEWER_HANDOFF.md')
-    $dirty = @(& $script:gitPath -C $script:repoRoot status --porcelain --untracked-files=all -- `
-        'vpn-network-optimization/scripts/g2c-reality-public-tcp443-canary-p1.ps1' `
-        'vpn-network-optimization/REVIEWER_HANDOFF.md' 2>$null)
-    Assert-R3 ($LASTEXITCODE -eq 0 -and $dirty.Count -eq 0) 'CANONICAL_GATE_SOURCE_DIRTY'
+    $acceptedBase = '496f464029fad4a5747465ce441613104ed8ce06'
+    $null = & $script:gitPath -C $script:repoRoot merge-base --is-ancestor $acceptedBase HEAD 2>$null
+    $acceptedBaseIsAncestor = ($LASTEXITCODE -eq 0)
+    $null = & $script:gitPath -C $script:repoRoot ls-files --error-unmatch -- $runnerRelativePath 2>$null
+    $runnerTracked = ($LASTEXITCODE -eq 0)
+    $null = & $script:gitPath -C $script:repoRoot ls-files --error-unmatch -- $reviewerRelativePath 2>$null
+    $reviewerTracked = ($LASTEXITCODE -eq 0)
+    $runnerStatus = @(& $script:gitPath -C $script:repoRoot status --porcelain --untracked-files=all -- $runnerRelativePath 2>$null)
+    $runnerStatusExit = $LASTEXITCODE
+    $reviewerStatus = @(& $script:gitPath -C $script:repoRoot status --porcelain --untracked-files=all -- $reviewerRelativePath 2>$null)
+    $reviewerStatusExit = $LASTEXITCODE
+    $runnerClean = ($runnerStatusExit -eq 0 -and $runnerStatus.Count -eq 0)
+    $reviewerClean = ($reviewerStatusExit -eq 0 -and $reviewerStatus.Count -eq 0)
     $reviewerPath = Join-Path $script:projectRoot 'REVIEWER_HANDOFF.md'
     $reviewerText = [IO.File]::ReadAllText($reviewerPath)
     $gateMatch = [regex]::Match($reviewerText, '(?s)## CURRENT_GATE\s*```text\s*(?<gate>.*?)\s*```')
-    Assert-R3 $gateMatch.Success 'CURRENT_GATE_SOURCE_MISSING'
-    $gateText = $gateMatch.Groups['gate'].Value
-    Assert-R3 ($gateText -match '(?m)^GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1$' -and
-        $gateText -match '(?m)^STATE=AUTHORIZED$' -and
-        $gateText -match '(?m)^REAL_OPENAI_REQUEST_BUDGET_CONSUMED=0_OF_1$') 'CURRENT_GATE_NOT_AUTHORIZED_OR_BUDGET_NOT_FRESH'
+    $gateText = if ($gateMatch.Success) { $gateMatch.Groups['gate'].Value } else { '' }
+    Assert-P1CanonicalSourceFacts -Origin $origin -Head $head `
+        -AcceptedBaseIsAncestor $acceptedBaseIsAncestor -RunnerTracked $runnerTracked `
+        -ReviewerTracked $reviewerTracked -RunnerClean $runnerClean `
+        -ReviewerClean $reviewerClean -GateText $gateText
     $script:canonicalSourceVerified = $true
 }
 
