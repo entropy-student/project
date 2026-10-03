@@ -1,9 +1,64 @@
+## Current execution status — G3X tri-path benchmark package B1
+
+```text
+GATE_ID=G3X_TRI_PATH_SAME_WINDOW_BENCHMARK_PACKAGE_B1
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+OWNER_INTERVENTION_REQUIRED=NO_IN_B1
+SAMPLES_PER_PATH=20
+SAMPLE_MODE=ROUND_ROBIN_TRIPLETS
+TARGET_ENDPOINT=https://api.openai.com/v1/models
+EXPECTED_HTTP_STATUS=401
+METRICS=TTFB_P50_P95,TOTAL_P50_P95,FAILURE_RATE,JITTER
+WG_MUST_REMAIN_CONNECTED=YES
+SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
+TUN_CHANGE_AUTHORIZED=NO
+PERSISTENT_ROUTE_AUTHORIZED=NO
+API_CREDENTIAL_ALLOWED=NO
+ESTIMATED_EXECUTION_TIME=15-25_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES_WITH_PHASES
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Record `ROUND_STARTED_AT` before fetch/preflight.
+2. Fresh sync canonical `origin/main`.
+3. Build a new repository-owned B2 benchmark package; do not run it in B1.
+4. Reuse only accepted HY2/public-REALITY canary patterns, updated to current dynamic-interface rules and Mihomo v1.19.32.
+5. Do not reuse historical hardcoded adapter/index/gateway/local-IP facts.
+6. B2 must compare WG, HY2, REALITY in 20 equal round-robin triplets against the same OpenAI endpoint, without any API credential.
+7. Capture identical per-sample curl timing fields and summarize TTFB median/P95, total median/P95, failures/timeouts/resets, and explicit jitter.
+8. Keep WG available throughout. No system-proxy or TUN change.
+9. All temporary state must be bounded/non-persistent and cleanup-proven; cleanup failure overrides success.
+10. Save only non-secret CSV/JSON results.
+11. Add deterministic offline validator fixtures rejecting hardcoded interface facts, unequal sample counts/order, credentials, persistent route/WG disconnect, proxy/TUN change, missing cleanup, missing metrics, or missing timing.
+12. Do not access Secrets, start runtime processes, access VPS, or issue live network benchmark requests in B1.
+13. Persist Evidence and update Executor Handoff only; do not modify Reviewer Handoff.
+14. Fresh GitHub read-back.
+15. Record:
+   - `ROUND_FINISHED_AT`
+   - `ACTUAL_ELAPSED`
+   - `TIME_OVERRUN=YES|NO`
+   - `SOURCE_BUILD_ELAPSED`
+   - `FIXTURE_VALIDATE_ELAPSED`
+   - `STATIC_REVIEW_ELAPSED`
+   - `GIT_PERSISTENCE_ELAPSED`
+16. If over 25 minutes, record evidence-backed overrun cause from those phases and update the timing retrospective.
+17. STOP_AT_REVIEWER.
+
+### Expected completion
+
+Return `PASS_CANDIDATE_G3X_TRI_PATH_BENCHMARK_PACKAGE_B1` or precise `RETURN_*`.
+Do not execute the live B2 benchmark.
+
+
 # VPN Network Optimization — EXECUTOR HANDOFF
 
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
 
-## Current execution status — G3C C2A synthetic UI package repair R1
+## Paused execution status — G3C C2A synthetic UI package repair R1
 
 ```text
 GATE_ID=G3C_C2A_SYNTHETIC_UI_PACKAGE_REPAIR_R1
