@@ -65,15 +65,24 @@ PRIOR_C2A_REVIEWER_HANDOFF_MODIFIED=NO
 PRIOR_C2A_UNRELATED_MAIN_COMMIT_PRESERVED_BY_SAFE_FAST_FORWARD=YES
 PRIOR_C2A_LOCAL_HEAD_AFTER_FAST_FORWARD=7d97ab8f4f0fe60a5429202a414fb7a2f8439c7e
 STALE_C2A_STATUS_TEXT_REINTRODUCED=NO
+PERSISTENCE_COMMIT=fc2aa9399627c19b5368ed6da6a219deaeb20b77
+PERSISTENCE_COMMIT_GITHUB_FRESH_READBACK=PASS
+UNIQUE_FACTS_DURABLE=YES
+ORIGINAL_DIRTY_WORKTREE_CLEAN=YES
+ORIGINAL_WORKTREE_HEAD=fc2aa9399627c19b5368ed6da6a219deaeb20b77
+C2B_RUNNER_TEMPLATE_BLOBS_UNCHANGED=YES
 ROUND_STARTED_AT=NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH
 RECONCILIATION_CLOCK_STARTED_AT=2026-10-03T17:28:07Z; after initial fetch
+ROUND_FINISHED_AT=2026-10-03T17:45:07Z; after GitHub read-back and original worktree cleanup
 ACTUAL_ELAPSED=UNKNOWN_START_NOT_CAPTURED
-TIME_OVERRUN=UNKNOWN_START_NOT_CAPTURED
+ACTUAL_ELAPSED_LOWER_BOUND=AT_LEAST_00:17:00
+TIME_OVERRUN=YES
+TIME_OVERRUN_CAUSE=SHARED_MAIN_PUSH_REJECTION_AND_REQUIRED_FETCH_REBASE_PUSH_READBACK_AND_WORKTREE_CLEANUP
 LIVE_OR_NETWORK_ACTION=NO
 STOP_AT_REVIEWER=YES
 ```
 
-The three dirty closeout documents contained unique publication/read-back, persistence-duration, and safe-fast-forward facts. These facts are reconciled here and in Evidence/timing records; already durable technical facts remain duplicates, while the superseded local C2A status wording was not copied over the current P0 Gate or Reviewer state. The original dirty files are to be cleaned only after this reconciliation is pushed and fresh-read back. The full R1 elapsed time cannot be reconstructed because the required start marker was missed before the initial canonical fetch; therefore this is a timing-limited RETURN, not a PASS candidate.
+The three dirty closeout documents contained unique publication/read-back, persistence-duration, and safe-fast-forward facts. These facts are reconciled here and in Evidence/timing records; already durable technical facts remain duplicates, while the superseded local C2A status wording was not copied over the current P0 Gate or Reviewer state. After commit `fc2aa9399627c19b5368ed6da6a219deaeb20b77` was fresh-read from GitHub, only the exact three superseded local files were restored and the original managed worktree fast-forwarded cleanly to that same main head. The required initial timer was missed before fetch; a later 17-minute lower bound proves the 8–15 minute estimate was exceeded, but exact full elapsed remains unknown. This is a timing-limited RETURN, not a PASS candidate.
 
 
 ## Historical execution status — G3C C2B preflight worktree reconciliation P0

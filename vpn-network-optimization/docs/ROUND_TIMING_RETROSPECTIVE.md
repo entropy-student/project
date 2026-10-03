@@ -251,4 +251,6 @@ R3 retry 实际 **10m58s**，H1 实际 **14m45s**；两轮都证明将本地 fix
 - Estimated duration: 8–15 minutes.
 - The required round-start marker was not captured before the initial canonical fetch. `ROUND_STARTED_AT` and full `ACTUAL_ELAPSED` therefore remain unknown; `TIME_OVERRUN` cannot be classified. No start time was reconstructed.
 - A reconciliation timer was captured at 2026-10-03T17:28:07Z, after the initial fetch. This is a partial phase marker only and must not be represented as the round start.
+- The measured interval from that late marker through the successful push/read-back and clean original-worktree fast-forward was at least 17 minutes (finish marker 2026-10-03T17:45:07Z). Therefore `TIME_OVERRUN=YES` is established from the lower bound; exact `ACTUAL_ELAPSED` remains unknown.
+- The overrun was in Git/document reconciliation: the first push was rejected after shared-main advanced; a targeted fetch showed no net change in the three target documents, the single documentation commit rebased without conflict, push and fresh read-back passed, then the original three superseded local files were cleaned and the worktree fast-forwarded.
 - No live, network, VPS, route, proxy, TUN, WireGuard, Clash/Mihomo, or Secret action occurred.
