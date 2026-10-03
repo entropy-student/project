@@ -13,12 +13,11 @@
 ```text
 P0 Research / Scope                         PASS
 G1 Foreground-safe Foundation               PASS
-G2-A HY2 side-by-side deployment            PASS
-G2-A DPAPI recovery closure                 PASS
-G2-B Safe-window WG vs HY2 validation       PASS
-G2-C VLESS+REALITY side-by-side candidate   PASS
-G3-A Network auto-adaptation + health       PASS
-G3-B VPS migration + rollback package       IN_PROGRESS
+G2 Multi-path candidate validation          PASS
+G3-A Health/readiness/advisory              PASS
+G3-B Migration package D1-D3                PASS_OFFLINE
+G3-C Unified manual control surface         IN_PROGRESS
+G3-B Fresh-target migration rehearsal       DEFERRED
 G4 Peak-hour + real workload final validate PENDING
 MVP v1 seal                                 PENDING
 ```
@@ -54,80 +53,106 @@ Current known components:
 
 ## CURRENT_ACCEPTED_STATE
 
-- **Current production/rollback:** WireGuard remains the active production/rollback path on the existing DigitalOcean sfo3 VPS.
-- **G3-A:** H1–H4 formally PASS; sensing/readiness/advisory decision is complete, with no automatic actuator implemented.
-- **G3-B D1:** migration package discovery/design PASS.
-- **G3-B D2:** future-target qualification contract PASS.
-- **G3-B D3:** staged-install render contract PASS; six offline fixtures passed on the clean rebuilt validator under PowerShell 7.6.5/7.6.x contract.
-- **Portable package:** current SFO3 instance identity constants are excluded from portable templates; WireGuard split-default baseline and Secret sentinels are preserved.
-- **Migration rollback policy:** the source VPS remains intact and distinguishable through the rollback window; deleting/rebuilding the source is not part of migration PASS.
-- **Unproven boundary:** no fresh target VPS has yet been qualified or staged. Governance migration PASS requires fresh-target proof; D1–D3 offline success cannot substitute for it.
-- **Current runtime:** existing VPS/client state remains unchanged by G3-B D1–D3.
+- **Current production/rollback:** system WireGuard remains connected and authoritative on the existing DigitalOcean sfo3 VPS.
+- **Connectivity dependency:** Owner's ChatGPT web and Codex desktop access depend on a working VPN path. A Gate must never begin by disconnecting/stopping WireGuard or removing its current routes.
+- **HY2:** deployed and previously validated as a side-by-side candidate on UDP 8443.
+- **REALITY:** public TCP/443 interoperability was validated by bounded canary, but the server is currently a cold/non-persistent candidate.
+- **G3-A:** health/readiness/advisory logic PASS; no automatic actuator exists.
+- **G3-B D1-D3:** offline migration package, target qualification contract, and staged render contract PASS. Fresh-target rehearsal is intentionally deferred while G3-C makes the existing system directly usable.
+- **Manual-control design direction:** Clash Verge/Mihomo will be the upper control surface while system WireGuard stays connected underneath. A named DIRECT-type node may represent the WG baseline; HY2/REALITY candidate nodes may use per-node physical-interface binding, but Windows bypass behavior remains UNPROVEN until a live canary.
+- **No current runtime change:** Clash is not required to be running now; current connectivity remains WireGuard-only.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3B_FRESH_TARGET_QUALIFICATION_R1
-STATE=PENDING_OWNER_ACTION
+GATE_ID=G3C_UNIFIED_MANUAL_CONTROL_CONTRACT_C1
+STATE=AUTHORIZED
 PREVIOUS_RESULT=PASS_G3B_STAGED_INSTALL_RENDER_CONTRACT_D3
-SPECIALIST_TRIGGERS=11A_SHARED_VPS_STORAGE,11B_SSH_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11E_PROVIDER
-OBJECTIVE=Qualify one fresh disposable target VPS with the accepted D2 read-only probe before any install, Secret transfer, service activation, or cutover.
-OWNER_TARGET_REQUIRED=YES
-OWNER_AUTHORIZATION_REQUIRED=YES
-LIVE_TARGET_MUTATION_AUTHORIZED=NO
-SOURCE_VPS_ACCESS_AUTHORIZED=NO
-SOURCE_VPS_MUTATION_AUTHORIZED=NO
-SECRET_TRANSFER_AUTHORIZED=NO
-SERVICE_ENABLEMENT_AUTHORIZED=NO
-PROVIDER_PURCHASE_OR_PROVISIONING=OWNER_CHECKPOINT
-CUTOVER_AUTHORIZED=NO
-ROLLBACK_STATUS=SOURCE_VPS_REMAINS_AUTHORITATIVE
+OWNER_CONTINUE_AUTHORIZATION=2026-10-03
+SPECIALIST_TRIGGERS=11B_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION
+OBJECTIVE=Create and offline-validate a Clash Verge/Mihomo manual-control profile contract that can later expose WG baseline, HY2, and REALITY without disconnecting system WireGuard.
+MAX_ENDPOINT_THIS_ROUND=repository-only profile/template/validator design + deterministic offline validation; no Clash apply, no system proxy/TUN change, no route change, no VPS access, no Secret read, no service action.
 MANDATORY_REVIEW_STOP=YES
+WG_MUST_REMAIN_CONNECTED=YES
+OWNER_CHAT_CONNECTIVITY_MUST_BE_PRESERVED=YES
+WG_SERVICE_STOP_AUTHORIZED=NO
+WG_ROUTE_REMOVAL_AUTHORIZED=NO
+CLASH_PROFILE_APPLY_AUTHORIZED=NO
+SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
+TUN_CHANGE_AUTHORIZED=NO
+PERSISTENT_BYPASS_ROUTE_AUTHORIZED=NO
+VPS_ACCESS_AUTHORIZED=NO
+SECRET_READ_AUTHORIZED=NO
+ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
+DEFAULT_EXECUTION_CHANNEL=CODEX_DESKTOP_EXECUTOR
+OWNER_INTERVENTION_REQUIRED=NO_IN_C1
 ```
 
 ### TARGET_AND_SCOPE
 
-- One **fresh/disposable** Ubuntu 24.04 x86_64 VPS with no unrelated business workload.
-- Freeze exact provider/account context, public IPv4, hostname, SSH identity reference, and host-key trust before first SSH.
-- First execution after authorization is **read-only qualification only** using the accepted D2 target probe.
-- Required target facts: identity, OS/arch, default route/WAN, memory/disk, required-port collisions, conflicting VPN runtimes, firewall/nft state, and project-path residue.
-- No package install, directory creation, Secret read/generation/transfer, service change, firewall/NAT/sysctl/route change, or Owner traffic switch in R1.
+- Build a non-secret portable manual-control profile contract with these logical entries:
+  - `WG-BASELINE`: named Mihomo `direct` proxy; semantic meaning is “use normal Windows routing while system WireGuard remains connected”.
+  - `HY2-SFO3`: existing HY2 candidate with Secret/auth/fingerprint placeholders preserved.
+  - `REALITY-SFO3`: non-secret VLESS+REALITY+Vision client skeleton with Secret/identity placeholders preserved; not claimed usable until a later persistent-server Gate.
+  - `SELF-VPN-MANUAL`: `select` group with default `WG-BASELINE`.
+- HY2/REALITY candidate nodes shall carry a placeholder for the dynamically discovered physical interface; no `WLAN`/ifIndex/gateway/IP may be hardcoded.
+- Prefer per-node `interface-name` as the first bypass candidate because Mihomo supports node-bound outbound interfaces; treat Windows real behavior as `UNPROVEN_LIVE`.
+- Do not add a persistent public-IP /32 route in C1.
+- Include a manual delay-test URL/contract compatible with Clash Verge; do not enable automatic switching.
+- `profile.store-selected=true` may be used so Owner manual selection persists, but the first/default selected node must remain `WG-BASELINE`.
+- C1 must not emit or render real WG private keys, HY2 auth, REALITY UUID/private-key material, certificate key material, or populated recovery data.
+
+### REQUIRED OFFLINE FIXTURES
+
+- valid three-entry profile contract with default WG baseline;
+- hardcoded physical interface rejected;
+- WG baseline missing/reordered away from default rejected;
+- automatic/fallback/url-test production selection rejected;
+- Secret sentinel removed/populated rejected;
+- persistent /32 route instruction present rejected;
+- REALITY incorrectly marked production-ready rejected.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS requires a fresh real target to return `QUALIFIED_FOR_STAGED_INSTALL` semantics under the accepted D2 contract, with exact target identity/trust proven and zero target/source mutation.
+PASS requires:
+- portable profile/template parses under the pinned Mihomo syntax validation path or equivalent deterministic parser available locally;
+- `WG-BASELINE` is a named `direct` node and remains the default manual selection;
+- HY2 and REALITY carry dynamic physical-interface placeholders only;
+- REALITY is explicitly cold/not-ready-for-manual-use until its later live Gate;
+- no automatic switching, route mutation, system proxy/TUN change, VPS access, Secret read, or file application occurs;
+- C1 leaves current WireGuard connectivity untouched.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Read-only R1 has no target mutation to roll back. Existing source VPS remains the authoritative production/rollback path.
+Source-only C1. Exact commit revert is sufficient; no runtime rollback applies.
 
 ### OWNER_ONLY_ACTIONS
 
-Provide or create one disposable fresh VPS for rehearsal and explicitly authorize its use as the G3-B target. Do not send any Secret value in chat. Provider purchase/provisioning, if needed, is an Owner checkpoint.
+NONE in C1.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-**NONE until Owner supplies/authorizes a fresh target.** Do not SSH to any existing VPS as a substitute and do not use the shared Hostinger VPS merely because it is available.
+Read this C1 Gate plus only the current portable Clash/HY2/REALITY templates and any accepted G2-C client-schema source needed to build the non-secret profile contract. Do not inspect recovery artifacts or Secret values. Create the minimum profile contract + offline validator, validate only repository/local fixture content, update Evidence/Executor Handoff, and STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-No execution is authorized while `STATE=PENDING_OWNER_ACTION`.
+Return PASS_CANDIDATE or a precise RETURN. Do not start Clash, enable system proxy/TUN, stop WireGuard, add routes, access the VPS, or advance to C2.
 
 ## NEXT_STEP
 
-Wait for Owner to provide/authorize one fresh disposable target VPS. Reviewer will then freeze target identity/trust and issue the bounded read-only D2 qualification command to Codex Desktop Executor.
+Codex Desktop Executor builds and offline-validates the G3-C C1 manual-control profile contract. On Reviewer PASS, C2 will be the first live UI canary while WireGuard remains connected throughout.
 
 ## OWNER_ACTION_REQUIRED
 
-Provide one fresh/disposable Ubuntu 24.04 x86_64 VPS for migration rehearsal, or explicitly authorize creating one. Minimum relay: provider/name or label, public IPv4, expected hostname, and confirmation that it may be used as a disposable VPN migration target. Do **not** send private keys, passwords, tokens, or other Secret values.
+**NONE.** Keep WireGuard connected exactly as it is. Do not open/close Clash or change any VPN setting for C1.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-**NONE while R1 is pending Owner target authorization.**
+Read the current C1 Gate and its explicitly named portable templates only. Implement repository-only profile/validator work, write bounded Evidence, and STOP_AT_REVIEWER.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-No Executor action is authorized until Reviewer changes R1 from `PENDING_OWNER_ACTION` after target identity/trust is frozen.
+Return PASS_CANDIDATE or a precise RETURN for C1. No live network/client/server action is authorized.
 
 ## EVIDENCE_POINTERS
 
