@@ -253,5 +253,5 @@ STOP_AT_REVIEWER=YES
 回滚：临时 client/server、Secret-bearing runtime config、服务端 runtime/workspace 与下载 binary 均已清理；WireGuard/HY2 和网络配置保持。
 请 Reviewer 检查：fresh-read 本轮 Evidence、Executor Handoff、提交及单次 B-side 结果。
 Owner 转交：NONE
-耗时：预计 15–25 分钟；实际 5m42s（从本地 preflight 起计）；超时 NO；原因 NONE。
+耗时：预计 15–25 分钟；实际 9m38s（本地 preflight 至 GitHub fresh read-back）；超时 NO；原因 NONE。
 STOP_AT_REVIEWER=YES

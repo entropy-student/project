@@ -2494,8 +2494,9 @@ POSTCLEANUP_READBACK=PASS
 The single OpenAI request was explicitly proxied through the local Mihomo client to the temporary private Mihomo B-side. HTTP 401 is the expected unauthenticated network response. This is a bounded B-side result only; it does not establish a production default or peak-hour conclusion. The runner completed its exact cleanup and before/after checks; a subsequent read-only local snapshot and strict SSH VPS probe independently confirmed no temporary processes, runtime/workspace residue, listener on 14443/443, or change to the WireGuard/HY2 and local network baseline. Temporary VLESS/REALITY runtime credential material was generated only for this attempt and cleaned; values were not recorded.
 
 ROUND_STARTED_AT=2026-10-03T05:51:20Z
-ROUND_FINISHED_AT=2026-10-03T05:57:02Z
-ACTUAL_ELAPSED=5m42s
+ROUND_FINISHED_AT=2026-10-03T06:00:58Z
+ACTUAL_ELAPSED=9m38s
+TIMING_SCOPE=LOCAL_PREFLIGHT_START_THROUGH_GITHUB_FRESH_READBACK; CANONICAL_SOURCE_READ_PRECEDED_TIMER
 TIME_OVERRUN=NO
 TIME_OVERRUN_CAUSE=NONE
 STOP_AT_REVIEWER=YES
