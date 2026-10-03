@@ -465,3 +465,106 @@ ABSTRACT_TOP3_SELECTION=SUPERSEDED
 SUPPLY_UNKNOWN_IS_DEMAND_KILL=NO
 NEXT=X3R2_SKU_LEVEL_DEMAND_DEPTH_36_TO_10_15
 ~~~
+
+
+---
+
+## 2026-10-03 — X3R1R1 Project Goal Reconciliation
+
+~~~text
+AUTHORIZED_GATE=X3R1R1_PROJECT_GOAL_RECONCILIATION
+EXECUTION_CLASS=DOCUMENTATION_RECONCILIATION_ONLY
+OWNER_CORRECTION=PROJECT_ENDS_AT_CONCRETE_PRODUCT_TYPE_OR_SKU_LIST
+RUNTIME_MUTATIONS=0
+ACCOUNT_MUTATIONS=0
+LISTINGS_PUBLISHED=0
+REAL_PURCHASES=0
+PAYMENTS=0
+~~~
+
+### Reconciled project goal
+
+The Xianyu project now has a single endpoint:
+
+> Produce an evidence-backed final catalog of concrete Xianyu product types / SKUs.
+
+The following are explicitly **out of scope** for this project:
+- sourcing / supplier search;
+- procurement;
+- rights/licensing implementation;
+- product production;
+- listing publication;
+- real-payment validation;
+- fulfillment;
+- account automation;
+- VPS/runtime;
+- scaling operations.
+
+### Governance correction
+
+Previous project documents had drifted into:
+
+~~~text
+SKU research
+→ sourcing
+→ rights
+→ Minimum Validation
+→ listing
+→ automation
+~~~
+
+That path is no longer authoritative.
+
+Current canonical path:
+
+~~~text
+market demand
+→ concrete SKU/product-type candidates
+→ SKU-level evidence completion and normalization
+→ final SKU/product-type catalog
+→ Reviewer PASS
+→ PROJECT CLOSEOUT
+~~~
+
+### Completion rule
+
+A final catalog item must be:
+- concrete enough to search as a real product type/SKU;
+- backed by current demand evidence or clearly labeled lower-confidence;
+- supported by provenance/source references;
+- explicit about evidence strength and counterevidence.
+
+The project does **not** require:
+- supplier/source discovery;
+- supplier economics;
+- account/category qualification;
+- real orders;
+- delivery automation;
+- support-minute measurement.
+
+### Current state
+
+~~~text
+CURRENT_CONCRETE_SKU_POOL=36
+CURRENT_POOL_STATUS=CANDIDATE_INPUT_NOT_FINAL_CATALOG
+ARBITRARY_TOP_N_REQUIREMENT=REMOVED
+SUPPLY_UNKNOWN_IS_DEMAND_KILL=NO
+NEXT_GATE=X3R2_FINAL_SKU_CATALOG_RESEARCH
+NEXT_GATE_MAX_ENDPOINT=FINAL_SKU_CATALOG_PLUS_PROJECT_CLOSEOUT_CANDIDATE
+~~~
+
+### Files reconciled
+
+- `README.md`
+- `REVIEWER_HANDOFF.md`
+- `docs/X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md`
+
+### Result
+
+~~~text
+X3R1R1_PROJECT_GOAL_RECONCILIATION=PASS_CANDIDATE
+PROJECT_GOAL_DRIFT=FIXED
+PROJECT_ENDPOINT=FINAL_CONCRETE_SKU_OR_PRODUCT_TYPE_CATALOG
+SUPPLY_LISTING_VALIDATION_AUTOMATION=OUT_OF_SCOPE
+NEXT=X3R2_FINAL_SKU_CATALOG_RESEARCH
+~~~
