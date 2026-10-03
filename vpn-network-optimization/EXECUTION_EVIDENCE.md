@@ -3774,3 +3774,32 @@ Reviewer interpretation:
 - No WireGuard disconnect, route/proxy/TUN change, Clash profile application, VPS/Provider access, external test request, or real Secret access is required.
 - R2 also missed mandatory whole-round timing for the second consecutive round. This is recorded as a process-observability defect; R2 is not replayed. The Owner checkpoint script records its start marker before preflight.
 
+## Owner checkpoint evidence — G3C C1 Owner Mihomo native parse R3 — PARTIAL — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+GATE_ID=G3C_C1_OWNER_MIHOMO_NATIVE_PARSE_R3
+POWERSHELL_VERSION=7.6.6
+ROUND_STARTED_AT=2026-10-03T14:45:59.5840466Z
+MIHOMO_VERSION=v1.19.32
+PHYSICAL_INTERFACE_DISCOVERED=YES
+TEMP_FIXTURE_CREATED=YES
+TEMP_FIXTURE_SECRET_VALUES=0
+MIHOMO_NATIVE_CONFIG_EXIT=0
+MIHOMO_NATIVE_CONFIG_TEST=PASS
+C1_PROFILE_SOURCE_CHANGED=NO
+FINAL_CLEANUP_BLOCK=NOT_EXECUTED
+FINAL_CLEANUP_BLOCK_FAILURE=INTERACTIVE_POWERSHELL_STANDALONE_FINALLY_NOT_VALID
+TEMP_FIXTURE_CLEANUP=UNPROVEN_PENDING_OWNER_R3R1
+ROUND_FINISHED_AT=UNPROVEN_PENDING_OWNER_R3R1
+ACTUAL_ELAPSED=UNPROVEN_PENDING_OWNER_R3R1
+FORMAL_R3_RESULT=NOT_YET_PASS
+```
+
+Reviewer interpretation:
+- The material technical objective succeeded: installed Mihomo v1.19.32 returned native config-test exit 0 for the synthetic C1 profile fixture.
+- Do not rerun the native parse.
+- Formal R3 PASS is withheld only because the Reviewer-provided interactive checkpoint was structurally split into a completed `try { ... }` submission followed by a standalone `finally { ... }`; PowerShell therefore rejected `finally` as a command and cleanup/timing-finalization did not run.
+- This is a Reviewer checkpoint-design defect. Owner is not responsible for debugging it.
+- Next action is a cleanup-only R3R1 checkpoint. It must locate only the marked R3 temp directory, delete it, re-check accepted source hashes, calculate elapsed time from the already-captured R3 start, and stop. No Mihomo config test is replayed.
+
