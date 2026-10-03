@@ -138,6 +138,12 @@ R1/R2 连续两轮在执行包中写了 timing 要求，但 Executor 都在初�
 
 **改进：** 对 Owner-local 或其他关键 one-shot checkpoint，不再依赖执行者“记得先计时”；脚本本体在任何 path/version/preflight 之前立即写出 `ROUND_STARTED_AT`，结束时自动计算 `ROUND_FINISHED_AT`、`ACTUAL_ELAPSED` 与 `TIME_OVERRUN`。缺失时不得事后猜测，也不得为补 timing 重放已安全终止的技术动作。
 
+### 7. PowerShell one-shot 必须是单个语法单元
+
+Owner R3 的核心 Mihomo `-t` 已成功，但 Reviewer 把交互式 `try { ... }` 与 `finally { ... }` 设计成了可被 PowerShell 分别提交的两个语法单元；前一块执行完成后，后一块独立 `finally` 必然报错，导致 cleanup 和结束计时未执行。
+
+**改进：** 后续 Owner-local PowerShell checkpoint 必须以单个 `& { ... }` / 单脚本文件 / 单次可整体粘贴的语法单元交付。不得要求 Owner 依赖交互式解析器把分离的 `try/finally` 自动关联。cleanup 必须可单独补偿且不得重放已经成功的 consequential/validation action。
+
 ## 当前优化方案
 
 ### A. Shift-left：本地问题先于远端工作发现
