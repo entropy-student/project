@@ -17,7 +17,7 @@ Governance: **vps-project-governance v0.2.6**.
 
 Produce a high-quality shortlist for:
 
-- 12 static magazine page/layout patterns;
+- 12 magazine page/layout patterns; static vs dynamic web presentation is not yet frozen;
 - 1 homepage structure;
 - 1 high-impact core homepage interaction/motion pattern.
 
@@ -88,6 +88,8 @@ Research only:
 2. Owner decision `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md`;
 3. MVP page map from `MVP_PRODUCT_CONTRACT.md` sections 5–7;
 4. current rejected magazine contact sheet only as negative baseline.
+
+Do not pre-filter the 12 magazine-page candidates by static/dynamic behavior. Record whether each candidate is static, lightly animated, or interaction-driven and what would remain compatible with the current PDF deliverable.
 
 Search broadly beyond ecommerce templates:
 - editorial/magazine templates;
