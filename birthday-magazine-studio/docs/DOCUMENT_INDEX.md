@@ -82,7 +82,8 @@
 | `OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier 1+1+12 lab-first direction | **SUPERSEDED BEFORE EXECUTION** |
 | `G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier design lab Gate | **SUPERSEDED BEFORE EXECUTION** |
 | `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md` | Owner-approved template/source-first direction | **CURRENT OWNER DECISION** |
-| `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` | Read-only template + interaction source discovery | **CURRENT GATE** |
+| `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` | Read-only template + interaction source discovery | **CURRENT GATE — RESEARCH BLOCKED UNTIL SOURCE PREFLIGHT PASSES** |
+| `REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` | Fresh Reviewer takeover/source-baseline reconciliation | **CURRENT PREFLIGHT DECISION — RETURN_PREFLIGHT_DRIFT** |
 | `OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md` | Owner-approved anti-shallow-search quality bar | **CURRENT OWNER DECISION** |
 | `G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md` | Mandatory breadth/evidence/saturation contract for template research | **MANDATORY CURRENT RESEARCH CONTRACT** |
 | `G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` | Website motion + static final-product proof + Preview Activation correction | **PREPARED / HOLD PENDING MAGAZINE VISUAL PASS** |
@@ -106,45 +107,18 @@
 
 ## Current working set
 
-For the current project state, a new Reviewer/Executor should normally need only:
+For the current G3CR6R3C state, a new Reviewer/Executor should normally need only:
 
 1. `../REVIEWER_HANDOFF.md`
-2. `../EXECUTOR_HANDOFF.md`
-3. `../EXECUTION_EVIDENCE.md`
-4. `MVP_PRODUCT_CONTRACT.md`
-5. `OWNER_DECISION_G3C_BLOCKSY_WEDDING.md` — current Owner template decision
-6. `BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md` — why the canary is authorized
-7. `REVIEWER_DECISION_G3CR2R3_PASS.md` — accepted Blocksy/Woo compatibility decision
-8. `REVIEWER_DECISION_G3CR5_PASS.md` — accepted visual-finish decision
-9. `OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md` — current Owner visual direction and scope boundary
-10. `REVIEWER_DECISION_G3CR6R1_PASS.md` — accepted G3CR6R1 composition decision
-11. `REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md` — current product/Activation decision
-12. `OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md` — current Owner experience requirement
-13. `REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md` — current Reviewer diagnosis
-14. `G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` — current execution Gate
-15. `G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md` — superseded Preview-only Gate
-13. `GROWTH_VALIDATION_STATE_2026-10-03.md` — current growth diagnosis
-14. `ACQUISITION_GROWTH_PLAN.md` — current validation/acquisition plan
-13. `G3C_OWNER_VISUAL_CHECKPOINT_R2.md` — resolved checkpoint provenance
-12. `G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md` — executed/pass contract
-13. `REVIEWER_DECISION_G3CR6_RETURN.md` — prior G3CR6 visual RETURN
-14. `G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md` — executed G3CR6 provenance
-15. `G3C_OWNER_VISUAL_CHECKPOINT.md` — resolved first checkpoint provenance
-10. `REVIEWER_DECISION_G3CR4_PASS.md` — accepted homepage visual-consolidation decision
-11. `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY.md` — executed/pass contract
-10. `REVIEWER_DECISION_G3C_OWNER_VISUAL_RETURN.md` — prior visual RETURN provenance
-11. `G3CR4_G3C_VISUAL_CONSOLIDATION.md` — executed/pass contract
-10. `REVIEWER_DECISION_G3C_PR64_INTERIM_RETURN.md` — prior interim decision
-11. `G3CR3_G3C_VISUAL_EVIDENCE_CLOSURE.md` — superseded evidence-only closure
-10. `G3C_UI_UX_PRODUCTIZATION.md` — parent Gate
-11. `G3C_BLOCKSY_WEDDING_EXECUTION_PACKET.md` — parent implementation package
-9. `REVIEWER_DECISION_G3CR2R1_RETURN.md` — prior Reviewer return decision
-10. `G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md` — executed catalogue closure / RETURN provenance
-9. `REVIEWER_DECISION_G3CR2_RETURN.md` — parent G3CR2 return decision
-10. `G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md` — parent canary contract / RETURN provenance
-11. `REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md` — historical Astra RETURN provenance
-9. `REVIEWER_DECISION_G3BR1_G3B_PASS.md`
-10. `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` for closed Sandbox proof details
-11. `G3A_MINICRAFT_LESSONS_REFERENCE.md` only when a PayPal/runtime issue resembles an already-seen Mini Craft failure
+2. `REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md`
+3. `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
+4. `G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`
+5. `OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`
+6. `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md`
+7. `MVP_PRODUCT_CONTRACT.md` sections 5–7
+8. `G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT.md` and the rejected contact-sheet artifact only as negative visual baseline
+9. `REVIEWER_DECISION_G3CR6R1_PASS.md` only for the accepted homepage/runtime boundary
+10. `GROWTH_VALIDATION_STATE_2026-10-03.md` for the current activation/product-readiness diagnosis
+11. `../EXECUTOR_HANDOFF.md` / `../EXECUTION_EVIDENCE.md` only when a specific current execution fact must be inspected
 
-Older Gate contracts and research remain in place for provenance and must not be treated as the current execution package.
+Older Gates, payment history, prior template/theme research and superseded visual rounds remain provenance. Do not load them by default for G3CR6R3C.
