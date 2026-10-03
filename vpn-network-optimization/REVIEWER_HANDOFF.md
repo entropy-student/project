@@ -80,6 +80,10 @@ SECRET_TRANSFER_AUTHORIZED=NO
 RUNTIME_MUTATION_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 ESTIMATED_EXECUTION_TIME=15-25_minutes
+TARGET_PROBE_COMMIT=9797cda0f15e84f3051f1ce50633f550c27bc0ca
+TARGET_VALIDATOR_COMMIT=6290f737e712adb16fde643fc512bd99f6305785
+STATIC_SOURCE_REVIEW=PASS
+OWNER_OFFLINE_VALIDATION=PENDING
 ```
 
 ### TARGET_AND_SCOPE
@@ -126,11 +130,11 @@ Return PASS_CANDIDATE after static negative scan and offline fixture validation.
 
 ## NEXT_STEP
 
-Implement and offline-validate the G3-B D2 target qualification contract. No live VPS is required or authorized in this Gate.
+Run the G3-B D2 repository-only target-qualification validator once under PowerShell 7.6.6 after syncing canonical `main`, then return the bounded output for Reviewer PASS/RETURN.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** D2 is repository-only; do not buy/create a VPS or run SSH.
+Run one repository-only PowerShell 7.6.6 validation of `scripts/g3b-target-qualification-validator.ps1 -Validate`. It statically reviews the Linux read-only probe and runs deterministic fixtures only; it does not execute the probe, SSH, or access a VPS.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
