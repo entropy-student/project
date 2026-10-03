@@ -96,9 +96,11 @@ G3B Sandbox 闭环已经通过：
 - [docs/REVIEWER_DECISION_G3CR6R1_PASS.md](./docs/REVIEWER_DECISION_G3CR6R1_PASS.md) — **G3CR6R1 Reviewer PASS**
 - [docs/REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md](./docs/REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md) — **当前产品/Activation 判断**
 - [docs/G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md](./docs/G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md) — **当前执行 Gate**
+- [docs/GROWTH_VALIDATION_STATE_2026-10-03.md](./docs/GROWTH_VALIDATION_STATE_2026-10-03.md) — 当前 Growth Validation Spine / 瓶颈判断
+- [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 当前获客验证计划
 - [docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md](./docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md) — 已解决的 Owner checkpoint
 - [docs/REVIEWER_DECISION_G3CR6_RETURN.md](./docs/REVIEWER_DECISION_G3CR6_RETURN.md) — G3CR6 Reviewer RETURN
-- [docs/G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md](./docs/G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md) — **当前执行 Gate**
+- [docs/G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md](./docs/G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md) — 已执行 / PASS contract
 - [docs/G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md](./docs/G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md) — 已执行 G3CR6 合同
 - [docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md](./docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md) — G3B Reviewer PASS 判断
 - [docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](./docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md) — 已完成的 Sandbox closure contract
@@ -107,7 +109,7 @@ G3B Sandbox 闭环已经通过：
 
 ## 治理
 
-本项目采用 GitHub canonical **VPS Project Governance v0.2.4**；实际操作规则以 `spike.skill/vps-project-governance/VNEXT.md` 为准，当前无外部 operational addenda。
+本项目采用 GitHub canonical **VPS Project Governance v0.2.6**；实际操作规则以 `spike.skill/vps-project-governance/VNEXT.md` 为准，当前无外部 operational addenda。
 
 关键规则：
 
