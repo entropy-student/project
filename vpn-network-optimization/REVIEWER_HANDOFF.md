@@ -95,9 +95,10 @@ HARDENING_COMPLETION_COMMIT=64461d63fb92c6e8944639198e5e1a385e6d8c59
 LAST_ATTEMPT_CONSEQUENTIAL_ACTION_STARTED=NO
 REAL_OPENAI_REQUEST_BUDGET_CONSUMED=0_OF_1
 OWNER_RUNTIME_RECONFIRMED=PowerShell_7.6.6_Administrator_High_RID_12288
-EXECUTION_BLOCKER=LIVE_WORKTREE_PROJECT_RELATIVE_PATH_SHAPE_UNKNOWN
+EXECUTION_BLOCKER=WINDOWS_NATIVE_GIT_UNICODE_PATH_DECODE_MISMATCH
 SIMILAR_PROVENANCE_FAILURE_COUNT=2
-BLOCKING_DIAGNOSTIC_GATE=G2C_P1_CANONICAL_SOURCE_PATH_DIAGNOSTIC_D1
+BLOCKING_DIAGNOSTIC_GATE=NONE_DIAGNOSTIC_COMPLETED
+OWNER_DIRECT_EXECUTION_EXCEPTION=AUTHORIZED_FOR_BOUNDED_LOW_RISK_OWNER_LOCAL_STEPS_WHEN_FASTER_THAN_CODEX
 OBJECTIVE=Prove the accepted Mihomo v1.19.31 VLESS+REALITY+Vision candidate over the intended public TCP/443 path, with no persistence and deterministic rollback.
 MAX_ENDPOINT_THIS_ROUND=read-only current-state preflight + one temporary public TCP/443 Mihomo server + one temporary exact /32 outer-route bypass to the current physical egress + one proxied OpenAI HTTPS request + exact cleanup/read-back + Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -231,27 +232,10 @@ It does **not** authorize persistence, permanent firewall changes, benchmark, pr
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Run only `G2C_P1_CANONICAL_SOURCE_PATH_DIAGNOSTIC_D1` from the existing managed worktree. This is the mandatory bounded diagnostic after two materially similar provenance failures. Do not patch source in this round.
+Current source repair is Reviewer-directed and Owner may execute the bounded local verification directly under the project-specific exception. Codex is not required for the next step.
 
-Read only:
-- current `REVIEWER_HANDOFF.md` NEXT_STEP / OWNER_ACTION_REQUIRED / this relay;
-- `scripts/g2c-reality-public-tcp443-canary-p1.ps1` functions `Resolve-P1TrackedProjectPath` and `Assert-P1CanonicalSource`;
-- live local Git/filesystem metadata needed for the diagnostic.
+Before real P1 execution, the existing managed worktree must sync cleanly to the repair commit and Owner must run `g2c-reality-public-tcp443-canary-p1.ps1 -CanonicalSourceOnly` from PowerShell 7.6.6 Administrator/High. This mode must perform no SSH, VPS access, route/listener/runtime mutation, Secret access, or OpenAI request. Return the bounded output to Reviewer. Do not proceed automatically into the real canary.
 
-Capture sanitized exact values for:
-1. actual runner absolute path;
-2. computed projectRoot;
-3. `git -C <projectRoot> rev-parse --show-toplevel`;
-4. `git -C <projectRoot> rev-parse --show-prefix`;
-5. `[IO.Path]::GetFullPath()` for Git root and projectRoot;
-6. `[IO.Path]::GetRelativePath(gitRootFull, projectRootFull)` before/after slash normalization;
-7. `Resolve-Path` / `Get-Item` FullName, LinkType, Target, Attributes for relevant root/project directories;
-8. `git worktree list --porcelain` entry containing the current HEAD/path;
-9. canonical origin and local HEAD;
-10. Git-tracked path(s) ending in `vpn-network-optimization/scripts/g2c-reality-public-tcp443-canary-p1.ps1` and `vpn-network-optimization/REVIEWER_HANDOFF.md` using read-only `git ls-files`; 
-11. target-file `git status --porcelain` cleanliness.
-
-Do not expose Secrets. Do not write/commit/push anything in this diagnostic. Do not run the P1 runner. Do not SSH or touch network/runtime state. Return the exact observations and one root-cause classification to Reviewer. `OPENAI_REQUEST_COUNT=0`, `NETWORK_CHANGED=NO`, `STOP_AT_REVIEWER=YES`.
 ## EXECUTOR_TO_REVIEWER_RELAY
 
 Use the fixed P1 packet in `CURRENT_GATE` after authorization.

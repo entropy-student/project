@@ -125,3 +125,11 @@
 **Limit:** This does not prove a universal sing-box bug or incompatibility. It also does not prove public TCP/443 interoperability, persistence, production role, or peak-hour superiority.
 
 **Next:** Run one Owner-authorized temporary public TCP/443 canary with a dynamically discovered physical-egress /32 route, then clean up completely. Persistence remains a later step.
+## 2026-10-03 — Allow bounded direct Owner-local execution when faster
+
+**Decision:** For this project only, when Reviewer determines that a bounded Owner-local diagnostic/static check or exact already-authorized local checkpoint is materially faster than routing the step through Codex, the Owner may execute the Reviewer-designed atomic command directly.
+
+**Boundary:** This is an execution-channel exception only. It does not authorize new consequential scope, additional real requests, Secret disclosure, permanent network/firewall/routing changes, persistence, production-default changes, or bypass of Gate/Evidence/rollback requirements.
+
+**Current use:** The Unicode Git-path provenance defect may be validated by Owner directly with a read-only canonical-source-only runner mode before any further P1 canary attempt.
+

@@ -2923,4 +2923,44 @@ Reviewer interpretation:
 - No consequential action began and the OpenAI request budget remains 0/1.
 - This is the second materially similar source-provenance failure. Governance §6 therefore requires a bounded diagnostic rather than another speculative patch/retry.
 - The next round is read-only and must capture the exact live path/worktree facts before any further source change or Owner checkpoint.
+## Owner live diagnostic — Windows Git Unicode path decode mismatch — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+ACTUAL_RUNNER_ABSOLUTE_PATH=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\g2c-reality-public-tcp443-canary-p1.ps1
+COMPUTED_PROJECT_ROOT=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization
+GIT_SHOW_TOPLEVEL=C:/Users/34707/.codex/worktrees/g2b-runner-binding-cleanup/VPS鎼缓
+GIT_SHOW_PREFIX=vpn-network-optimization/
+DOTNET_RELATIVE_NORMALIZED=../VPS搭建/vpn-network-optimization
+WORKTREE_LIST_CURRENT_PATH=C:/Users/34707/.codex/worktrees/g2b-runner-binding-cleanup/VPS搭建
+WORKTREE_CURRENT_HEAD=7966a23645b0f2eb8eea5d9b7c446ec2354ed059
+TRACKED_RUNNER=scripts/g2c-reality-public-tcp443-canary-p1.ps1
+TRACKED_REVIEWER_HANDOFF=REVIEWER_HANDOFF.md
+TARGET_STATUS_PORCELAIN=CLEAN
+ORIGIN=https://github.com/entropy-student/project.git
+ROOT_CAUSE_CLASS=WINDOWS_NATIVE_GIT_UNICODE_PATH_OUTPUT_DECODE_MISMATCH
+OPENAI_REQUEST_COUNT=0
+NETWORK_CHANGED=NO
+```
+
+Reviewer interpretation:
+- Filesystem/worktree metadata agree on the real directory name `VPS搭建`; only decoded Git `--show-toplevel` is corrupted to `VPS鎼缓`.
+- Feeding that corrupted path to `.NET GetRelativePath()` manufactured a false parent escape and caused `CANONICAL_GIT_PROJECT_PATH_MISMATCH`.
+- Repair avoids the fragile Unicode absolute-root output entirely: Git checks now execute from the already-resolved project directory and require the canonical ASCII `--show-prefix=vpn-network-optimization/`.
+- A `-CanonicalSourceOnly` mode was added so this repair can be proven on the Owner host without entering SSH/network/P1.
+## Reviewer-directed source repair — avoid Unicode absolute Git-root decoding — 2026-10-03
+
+```text
+REPAIR_CLASS=CANONICAL_SOURCE_PROVENANCE_TRANSPORT_ENCODING
+REMOVED_DEPENDENCY=git_rev_parse_show_toplevel_for_path_arithmetic
+REPLACEMENT=git_rev_parse_show_prefix_from_actual_project_directory
+EXPECTED_PREFIX=vpn-network-optimization/
+GIT_COMMAND_CWD=actual_project_root
+TARGET_PATHS=project_local_ASCII_paths
+CANONICAL_SOURCE_ONLY_MODE=ADDED
+REAL_P1_EXECUTED=NO
+OPENAI_REQUEST_COUNT=0
+NETWORK_CHANGED=NO
+NEXT_PROOF=OWNER_LOCAL_CANONICAL_SOURCE_ONLY
+```
 

@@ -1,3 +1,5 @@
+param([switch]$CanonicalSourceOnly)
+
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
@@ -14,6 +16,7 @@ $script:ownerSid = $null
 $script:identityPath = $null
 $script:knownHostsPath = $null
 $script:gitPath = $null
+$script:gitCwd = $null
 $script:repoRoot = $null
 $script:projectRoot = $null
 $script:sourceHead = $null
@@ -105,26 +108,9 @@ function Assert-P1ExecutionToken {
 
 function Invoke-P1GitRead {
     param([Parameter(Mandatory = $true)][string[]]$Arguments)
-    $output = @(& $script:gitPath -C $script:repoRoot @Arguments 2>$null)
+    $output = @(& $script:gitPath -C $script:gitCwd @Arguments 2>$null)
     Assert-R3 ($LASTEXITCODE -eq 0) 'CANONICAL_GIT_READ_FAILED'
     return ,$output
-}
-
-function Resolve-P1TrackedProjectPath {
-    param(
-        [Parameter(Mandatory = $true)][string]$GitRoot,
-        [Parameter(Mandatory = $true)][string]$ProjectRoot
-    )
-    $gitRootFull = [IO.Path]::GetFullPath($GitRoot)
-    $projectRootFull = [IO.Path]::GetFullPath($ProjectRoot)
-    $relativePath = [IO.Path]::GetRelativePath($gitRootFull, $projectRootFull).Replace('\', '/')
-    $outsideRoot = [IO.Path]::IsPathRooted($relativePath) -or
-        $relativePath -ceq '..' -or
-        $relativePath.StartsWith('../', [StringComparison]::Ordinal)
-    Assert-R3 (-not $outsideRoot -and
-        (Split-Path -Leaf $projectRootFull) -ceq 'vpn-network-optimization' -and
-        $relativePath -match '^(?:[^/]+/)*vpn-network-optimization$') 'CANONICAL_GIT_PROJECT_PATH_MISMATCH'
-    return $relativePath
 }
 
 function Assert-P1CanonicalSourceFacts {
@@ -167,25 +153,37 @@ function Assert-P1CanonicalSource {
     Assert-R3 ((Split-Path -Leaf $script:projectRoot) -ceq 'vpn-network-optimization') 'PROJECT_PATH_INVALID'
     Assert-R3 ((Split-Path -Leaf $scriptPath) -ceq 'g2c-reality-public-tcp443-canary-p1.ps1') 'RUNNER_PATH_INVALID'
     $script:gitPath = (Get-Command git.exe -ErrorAction Stop).Source
-    $gitRootLines = @(& $script:gitPath -C $script:projectRoot rev-parse --show-toplevel 2>$null)
-    Assert-R3 ($LASTEXITCODE -eq 0 -and $gitRootLines.Count -eq 1 -and -not [string]::IsNullOrWhiteSpace([string]$gitRootLines[0])) 'CANONICAL_GIT_ROOT_QUERY_FAILED'
-    $script:repoRoot = [IO.Path]::GetFullPath(([string]$gitRootLines[0]).Trim())
-    $script:trackedProjectPath = Resolve-P1TrackedProjectPath -GitRoot $script:repoRoot -ProjectRoot $script:projectRoot
-    $runnerRelativePath = "$($script:trackedProjectPath)/scripts/g2c-reality-public-tcp443-canary-p1.ps1"
-    $reviewerRelativePath = "$($script:trackedProjectPath)/REVIEWER_HANDOFF.md"
+    $script:gitCwd = $script:projectRoot
+
+    $insideLines = @(& $script:gitPath -C $script:gitCwd rev-parse --is-inside-work-tree 2>$null)
+    Assert-R3 ($LASTEXITCODE -eq 0 -and $insideLines.Count -eq 1 -and ([string]$insideLines[0]).Trim() -ceq 'true') 'CANONICAL_GIT_WORKTREE_QUERY_FAILED'
+
+    # Do not consume --show-toplevel here. On this Windows host Git's UTF-8 absolute path
+    # can be decoded through the native-process boundary into mojibake (e.g. VPS搭建 -> VPS鎼缓).
+    # --show-prefix is repository-relative and ASCII for this canonical project path.
+    $prefixLines = @(& $script:gitPath -C $script:gitCwd rev-parse --show-prefix 2>$null)
+    Assert-R3 ($LASTEXITCODE -eq 0 -and $prefixLines.Count -eq 1) 'CANONICAL_GIT_PREFIX_QUERY_FAILED'
+    $projectPrefix = ([string]$prefixLines[0]).Trim().Replace('\', '/')
+    Assert-R3 ($projectPrefix -ceq 'vpn-network-optimization/') 'CANONICAL_GIT_PROJECT_PREFIX_MISMATCH'
+    $script:trackedProjectPath = $projectPrefix.TrimEnd('/')
+
+    # All remaining Git checks run from the already-resolved project directory, so target
+    # paths are ASCII project-local paths and do not depend on decoding a Unicode repo root.
+    $runnerRelativePath = 'scripts/g2c-reality-public-tcp443-canary-p1.ps1'
+    $reviewerRelativePath = 'REVIEWER_HANDOFF.md'
     $origin = [string]((Invoke-P1GitRead -Arguments @('remote','get-url','origin')) -join "`n").Trim()
     $head = [string]((Invoke-P1GitRead -Arguments @('rev-parse','HEAD')) -join "`n").Trim()
     $script:sourceHead = $head
     $acceptedBase = '496f464029fad4a5747465ce441613104ed8ce06'
-    $null = & $script:gitPath -C $script:repoRoot merge-base --is-ancestor $acceptedBase HEAD 2>$null
+    $null = & $script:gitPath -C $script:gitCwd merge-base --is-ancestor $acceptedBase HEAD 2>$null
     $acceptedBaseIsAncestor = ($LASTEXITCODE -eq 0)
-    $null = & $script:gitPath -C $script:repoRoot ls-files --error-unmatch -- $runnerRelativePath 2>$null
+    $null = & $script:gitPath -C $script:gitCwd ls-files --error-unmatch -- $runnerRelativePath 2>$null
     $runnerTracked = ($LASTEXITCODE -eq 0)
-    $null = & $script:gitPath -C $script:repoRoot ls-files --error-unmatch -- $reviewerRelativePath 2>$null
+    $null = & $script:gitPath -C $script:gitCwd ls-files --error-unmatch -- $reviewerRelativePath 2>$null
     $reviewerTracked = ($LASTEXITCODE -eq 0)
-    $runnerStatus = @(& $script:gitPath -C $script:repoRoot status --porcelain --untracked-files=all -- $runnerRelativePath 2>$null)
+    $runnerStatus = @(& $script:gitPath -C $script:gitCwd status --porcelain --untracked-files=all -- $runnerRelativePath 2>$null)
     $runnerStatusExit = $LASTEXITCODE
-    $reviewerStatus = @(& $script:gitPath -C $script:repoRoot status --porcelain --untracked-files=all -- $reviewerRelativePath 2>$null)
+    $reviewerStatus = @(& $script:gitPath -C $script:gitCwd status --porcelain --untracked-files=all -- $reviewerRelativePath 2>$null)
     $reviewerStatusExit = $LASTEXITCODE
     $runnerClean = ($runnerStatusExit -eq 0 -and $runnerStatus.Count -eq 0)
     $reviewerClean = ($reviewerStatusExit -eq 0 -and $reviewerStatus.Count -eq 0)
@@ -199,7 +197,6 @@ function Assert-P1CanonicalSource {
         -ReviewerClean $reviewerClean -GateText $gateText
     $script:canonicalSourceVerified = $true
 }
-
 function Resolve-P1PhysicalEgress {
     param([Parameter(Mandatory = $true)][AllowEmptyCollection()][object[]]$Candidates)
     $valid = [Collections.Generic.List[object]]::new()
@@ -1463,6 +1460,9 @@ try {
     $script:integrityRid = Assert-P1ExecutionToken
     $script:phase = 'PRECHECK_CANONICAL_SOURCE'
     Assert-P1CanonicalSource
+    if ($CanonicalSourceOnly) {
+        $script:phase = 'CANONICAL_SOURCE_ONLY_PASS'
+    } else {
     $script:ownerSid = [Security.Principal.WindowsIdentity]::GetCurrent().User
     $script:runId = [Guid]::NewGuid().ToString('N')
     $script:identityPath = Join-Path $env:USERPROFILE '.ssh\digitalocean_ed25519'
@@ -1547,6 +1547,7 @@ try {
     $script:phase = 'ONE_OPENAI_REQUEST'
     Invoke-R3SingleRequest
     $script:implementationResult = 'UNKNOWN'
+    }
 }
 catch {
     $script:failureCode = Resolve-R3FailureCode -Record $_
@@ -1770,6 +1771,12 @@ $roundFinishedIso = $script:roundFinishedAt.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
 "REQUEST_BUDGET_REMAINING=$(if ($script:requestBudgetConsumed) { 0 } else { 1 })"
 "SECRET_VALUES_EMITTED=0"
 "SECRET_VALUES_COMMITTED=0"
+"CANONICAL_SOURCE_ONLY_MODE=$($CanonicalSourceOnly.ToString().ToUpperInvariant())"
+
+if ($CanonicalSourceOnly) {
+    if ($script:canonicalSourceVerified -and -not $script:failureCode -and -not $mutationStarted -and $script:requestCount -eq 0) { exit 0 }
+    exit 1
+}
 
 if ($script:implementationResult -ne 'PASS' -or -not $cleanupPass -or $script:requestCount -ne 1) { exit 1 }
 exit 0
