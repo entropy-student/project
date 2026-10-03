@@ -76,7 +76,7 @@ Current known components:
 
 ```text
 GATE_ID=G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
-STATE=PROPOSED_NOT_AUTHORIZED
+STATE=AUTHORIZED_EXECUTION
 PREVIOUS_RESULT=PASS_G2C_R3_LOCAL_RUNNER_HARDENING_H1
 OBJECTIVE=Run one fresh, bounded Mihomo v1.19.31 server-side B experiment with the hardened Windows runner to determine whether changing only the temporary REALITY server implementation changes the observed interoperability result.
 MAX_ENDPOINT_THIS_ROUND=local hardening preflight fixtures + one temporary private Mihomo server on 10.66.21.1:14443 + one proxied OpenAI HTTPS request + exact cleanup/read-back + Reviewer stop.
@@ -186,20 +186,17 @@ Deterministic cleanup:
 
 ### OWNER_ONLY_ACTIONS
 
-**NOT YET AUTHORIZED.**
+**AUTHORIZED by Owner on 2026-10-03 for this R4 Gate.**
 
-Fresh Owner authorization is required because the prior retry's request state was UNKNOWN and therefore the previous one-request authorization cannot be reused.
+Fresh Owner authorization has now been granted for exactly the bounded R4 endpoint already defined above.
 
-Authorization requested:
-- one temporary private Mihomo-server B-side execution;
-- exactly one proxied OpenAI HTTPS request;
-- exact cleanup/read-back.
+Authorized scope remains exactly the R4 Gate already defined: one bounded private B-side execution, one real request maximum, and exact cleanup/read-back.
 
 Public TCP/443, persistence, benchmark, protocol changes, target/SNI changes, and production-default changes remain unauthorized.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-After Owner authorization, start only from:
+Owner authorization is active. Start only from:
 1. this R4 Gate;
 2. hardened `scripts/g2c-mihomo-server-r3.ps1` from/after commit `2993756d41d0621471480ed2891c828d6674c7e6`;
 3. H1 accepted Evidence block;
@@ -289,15 +286,15 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Await fresh Owner authorization for **G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4**. No real request should run before that authorization.
+Executor proceeds with **G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4** exactly as defined in the current Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-Authorize one fresh **private** Mihomo v1.19.31 B-side attempt with exactly one proxied OpenAI request under the hardened runner. No public TCP/443, persistent deployment, benchmark, protocol/SNI/target change, or production switch.
+**NONE.** Owner has authorized R4. All exclusions already defined by the Gate remain in force.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No active Executor real-request run until Owner authorizes R4.
+Use the authorized R4 relay in `CURRENT_GATE`; local hardening preflight must pass before the single real request.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
