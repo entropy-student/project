@@ -2754,4 +2754,40 @@ Reviewer interpretation:
 - The failure occurred in Windows PowerShell `Start-Process` before the P1 runner started, so it is not a P1 runtime failure and consumes no request budget.
 - Project history already proves the Owner host previously ran PowerShell 7.6.6 elevated with Administrator=True and integrity RID 12288. The earlier successful installation was the Microsoft Store/AppX package, not the conventional Program Files PowerShell 7 directory.
 - Future Owner relay must discover the current AppX InstallLocation and validate version 7.6.6 before elevation, instead of assuming an installation layout.
+## Reviewer reconciliation — P1 canonical Git root preflight RETURN — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT_PLUS_REVIEWER_SOURCE_INSPECTION
+GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+OWNER_RUNTIME=PowerShell_7.6.6
+ADMINISTRATOR_TOKEN=TRUE
+INTEGRITY_RID=12288
+HIGH_INTEGRITY_TOKEN=TRUE
+RUNNER_PHASE=PRECHECK_CANONICAL_SOURCE
+FAILURE_CODE=CANONICAL_GIT_ROOT_MISMATCH
+CANONICAL_SOURCE_VERIFIED=FALSE
+SSH_STARTED=NO
+VPS_READ_OR_WRITE=NO
+TEMP_ROUTE_CREATED=NO
+PUBLIC_TCP443_LISTENER_STARTED=NO
+SECRET_ACCESS_STARTED=NO
+OPENAI_REQUEST_COUNT=0
+P1_REQUEST_BUDGET_REMAINING=1
+CLEANUP_READBACK=NOT_REQUIRED_NO_MUTATION
+PERMANENT_FIREWALL_CHANGED=NO
+PERMANENT_ROUTE_CHANGED=NO
+HISTORICAL_CANONICAL_GIT_ROOT=C:\Users\34707\Documents\ChatGPT\VPS搭建
+HISTORICAL_EXECUTION_WORKTREE=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建
+REVIEWER_RESULT=RETURN_ACCEPTED
+ROOT_CAUSE_CLASS=RUNNER_SOURCE_PROVENANCE_PATH_DISCOVERY_DEFECT
+NEXT_REPAIR_GATE=G2C_P1_CANONICAL_SOURCE_WORKTREE_DISCOVERY_H1
+FRESH_OWNER_CONSEQUENTIAL_AUTH_REQUIRED=NO
+```
+
+Reviewer interpretation:
+- The Owner execution channel is now positively reconfirmed: PowerShell 7.6.6, Administrator=True, High integrity RID 12288.
+- The failure occurred in canonical-source validation before SSH or any consequential action. Therefore the one-request authorization remains unconsumed and no cleanup is required.
+- Source inspection shows the P1 runner derives `repoRoot` by taking the parent of `vpn-network-optimization`, then requires Git `rev-parse --show-toplevel` to equal that guessed path. This is an unnecessary fixed-layout assumption and is the fault domain to repair.
+- Historical project Evidence already records successful provenance from both the canonical checkout and the managed Codex worktree. The repair must ask Git for the actual worktree root from the live project path and validate the project-relative tracked files, rather than infer the Git root solely by parent depth.
+- No Owner retry is allowed until the repaired runner is statically reviewed and accepted.
 
