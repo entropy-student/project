@@ -56,85 +56,88 @@ Current known components:
 
 - **Current production/rollback:** WireGuard remains the active production/rollback path.
 - **G3-A:** H1–H4 formally PASS; sensing/readiness/advisory decision is complete, with no automatic actuator implemented.
-- **G3-B D1:** migration package discovery/design formally PASS.
-- **Portable package:** current-instance SFO3 IP/SNI/WLAN/label constants are excluded from portable templates; WireGuard split-default baseline is preserved.
+- **G3-B D1:** migration package discovery/design PASS.
+- **G3-B D2:** future-target qualification contract PASS; live target execution has not occurred.
+- **Portable package:** current-instance SFO3 identity constants are excluded from portable templates; WireGuard split-default baseline is preserved.
 - **Migration rollback policy:** source VPS remains intact and distinguishable through the rollback window; source decommission is a later Closeout Gate.
 - **Secret/provider boundary:** Provider purchase/provisioning, Secret transfer/rotation, Owner client cutover, and source decommission remain separately authorized consequential actions.
-- **Current runtime:** untouched by G3-B D1.
+- **Current runtime:** untouched by G3-B D1/D2.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3B_TARGET_QUALIFICATION_CONTRACT_D2
+GATE_ID=G3B_STAGED_INSTALL_RENDER_CONTRACT_D3
 STATE=AUTHORIZED
-PREVIOUS_RESULT=PASS_G3B_MIGRATION_ROLLBACK_PACKAGE_DISCOVERY_D1
+PREVIOUS_RESULT=PASS_G3B_TARGET_QUALIFICATION_CONTRACT_D2
 OWNER_CONTINUE_AUTHORIZATION=2026-10-03
-SPECIALIST_TRIGGERS=11A_SHARED_VPS_STORAGE,11B_SSH_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES
-OBJECTIVE=Define and offline-validate a machine-readable, read-only qualification contract for a future target VPS before any install, Secret transfer, or migration action.
-MAX_ENDPOINT_THIS_ROUND=repository-only target probe/parser/fixture work + offline validation; no SSH to current VPS, no Provider action, no target VPS required, no Secret read, no runtime mutation.
+SPECIALIST_TRIGGERS=11A_SHARED_VPS_STORAGE,11B_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION
+OBJECTIVE=Define and offline-validate the staged target-install render contract: portable non-secret metadata may be rendered, while Secret material, service activation, firewall/NAT changes, cutover, and source mutation remain forbidden.
+MAX_ENDPOINT_THIS_ROUND=repository-only render plan/manifest + deterministic offline fixtures + static validation; no VPS access, no Provider action, no Secret injection, no runtime file creation outside the local test fixture.
 MANDATORY_REVIEW_STOP=YES
 CURRENT_VPS_ACCESS_AUTHORIZED=NO
-NEW_TARGET_SSH_AUTHORIZED=NO_IN_D2
+NEW_TARGET_SSH_AUTHORIZED=NO
 PROVIDER_ACTION_AUTHORIZED=NO
 SECRET_TRANSFER_AUTHORIZED=NO
-RUNTIME_MUTATION_AUTHORIZED=NO
+SERVICE_ENABLEMENT_AUTHORIZED=NO
+FIREWALL_NAT_MUTATION_AUTHORIZED=NO
+OWNER_CLIENT_CUTOVER_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 ESTIMATED_EXECUTION_TIME=15-25_minutes
-TARGET_PROBE_COMMIT=9797cda0f15e84f3051f1ce50633f550c27bc0ca
-TARGET_VALIDATOR_COMMIT=6290f737e712adb16fde643fc512bd99f6305785
-STATIC_SOURCE_REVIEW=PASS
-OWNER_OFFLINE_VALIDATION=PENDING
 ```
 
 ### TARGET_AND_SCOPE
 
-- Reuse `scripts/preflight-linux.sh` concepts but create a G3-B target-specific, machine-readable read-only qualification probe.
-- Qualification facts must include:
-  - target hostname and public IPv4 identity input;
-  - OS/kernel/architecture;
-  - default route/WAN interface;
-  - root free space and memory;
-  - IPv4 forwarding state;
-  - current WG/HY2/Mihomo/sing-box/xray process/service collision indicators;
-  - UDP/51820, UDP/8443, TCP/443, TCP/14443 listener collision counts;
-  - UFW/iptables/nft summary;
-  - project runtime residue/path collision indicators;
-  - canonical project paths existence/state.
-- Probe must not read private keys, application Secrets, or raw provider metadata.
-- D2 defines qualification only; it does not decide provider/region performance suitability.
+- Build one repository-owned staged-install renderer/validator that consumes only non-secret migration metadata.
+- Required metadata:
+  - target public IPv4;
+  - expected target hostname;
+  - target-specific HY2 SNI;
+  - WireGuard server/client addresses and ports;
+  - HY2 port;
+  - runtime user/path metadata.
+- Render or validate only non-secret artifacts:
+  - WireGuard server/client template skeletons with private-key placeholders still intact;
+  - HY2 server skeleton with auth/private-key placeholders still intact;
+  - HY2 systemd unit;
+  - Mihomo/HY2 client skeleton with auth/fingerprint placeholders still intact;
+  - staged-install manifest with exact target paths and activation order.
+- Secret placeholder preservation is mandatory: D3 must fail if a rendered artifact contains a real-looking private key/password/token or if a required placeholder disappears.
+- No service activation, package install, sysctl/firewall/NAT change, route change, SSH, HTTP, or Provider action.
 
 ### ACCEPTANCE_CRITERIA
 
 PASS requires:
-- machine-readable probe is read-only and fail-closed;
-- deterministic fixtures cover qualified target, occupied required port, existing conflicting runtime, insufficient resource, identity mismatch, and ambiguous firewall state;
-- no Secret values are read or emitted;
-- no network/service/package/firewall/filesystem mutation exists in the probe;
-- target qualification result is separate from migration/cutover authorization.
+- deterministic non-secret render output/manifest from a fixture target identity;
+- no current SFO3/public-IP/WLAN constants leak into portable output;
+- accepted WireGuard split-default baseline preserved;
+- target-specific HY2 SNI/public IP/hostname are rendered correctly;
+- Secret placeholders remain explicit and complete;
+- activation order and rollback checkpoint are explicit;
+- zero live action/mutation.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Source-only D2. Exact commit revert is sufficient; no runtime rollback applies.
+Source-only D3. Exact commit revert is sufficient; no runtime rollback applies.
 
 ### OWNER_ONLY_ACTIONS
 
-None in D2.
+Run one repository-only PowerShell 7.6.6 validation after Reviewer static review.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Create only the minimum target qualification probe/parser/fixtures needed for G3-B. Do not access any live VPS or Provider. Reuse accepted project path/port conventions and preserve fail-closed behavior.
+Create the minimum staged-install render contract and validator. Do not read any local recovery bundle or Secret file. Do not execute Linux/service/network commands. Keep output limited to non-secret fixture content and manifest facts.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE after static negative scan and offline fixture validation. Live execution on an actual future target requires a separate Gate.
+Return PASS_CANDIDATE after static review and deterministic offline render validation. Any actual target rendering/injection or service activation requires a later Gate.
 
 ## NEXT_STEP
 
-Run the G3-B D2 repository-only target-qualification validator once under PowerShell 7.6.6 after syncing canonical `main`, then return the bounded output for Reviewer PASS/RETURN.
+Implement and offline-validate the G3-B D3 staged-install render contract. No live VPS, Secret, or service action is authorized.
 
 ## OWNER_ACTION_REQUIRED
 
-Run one repository-only PowerShell 7.6.6 validation of `scripts/g3b-target-qualification-validator.ps1 -Validate`. It statically reviews the Linux read-only probe and runs deterministic fixtures only; it does not execute the probe, SSH, or access a VPS.
+**NONE yet.** Wait for Reviewer to finish D3 source/static validation and provide one repository-only validator command.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
