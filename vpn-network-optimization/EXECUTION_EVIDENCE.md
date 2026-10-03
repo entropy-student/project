@@ -2398,3 +2398,23 @@ Reviewer reasoning:
 - The live Windows baseline confirms the dynamic invariant on the current boot without treating numeric ifIndex as stable.
 - H1 therefore closes the two known local runner defects. It does not prove REALITY interoperability.
 - Because the earlier R3 retry left real-request state UNKNOWN, a fresh Owner authorization is still required before another real request.
+
+
+## Owner authorization — G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4 — 2026-10-03
+
+```text
+AUTHORIZED_GATE=G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
+OWNER_AUTHORIZATION=GRANTED
+HARDENED_RUNNER_BASE=2993756d41d0621471480ed2891c828d6674c7e6
+LOCAL_PREFLIGHT_REQUIRED=YES
+REAL_REQUEST_MAX=1
+A_SIDE_REPLAY=NOT_AUTHORIZED
+PUBLIC_EXPOSURE=NOT_AUTHORIZED
+PERSISTENT_DEPLOYMENT=NOT_AUTHORIZED
+BENCHMARK=NOT_AUTHORIZED
+PROTOCOL_OR_TARGET_CHANGE=NOT_AUTHORIZED
+PRODUCTION_DEFAULT_CHANGE=NOT_AUTHORIZED
+ESTIMATED_EXECUTION_TIME=15-25 minutes
+```
+
+No execution result is claimed by this authorization record. If the single real request starts, it must not be replayed because of later Git synchronization.
