@@ -81,6 +81,9 @@ PUBLIC_LISTENER_CREATION_AUTHORIZED=NO
 SECRET_READ_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
 ESTIMATED_EXECUTION_TIME=10-20_minutes
+IMPLEMENTATION_COMMIT=ff1c46ef114180651a1e49bfbcc8a76c6bccad2f
+STATIC_SOURCE_REVIEW=PASS
+OWNER_INTEGRATED_READONLY_PROOF=PENDING
 ```
 
 ### TARGET_AND_SCOPE
@@ -135,11 +138,11 @@ Return PASS_CANDIDATE only after offline parser/self-test and static negative re
 
 ## NEXT_STEP
 
-Implement and statically/offline validate the H4 read-only orchestrator. Then run one Owner live read-only integrated advisory decision and return the bounded output for Reviewer PASS/RETURN.
+Run H4 `-SelfTest`; only on PASS continue immediately to one `-RunReadOnly` integrated advisory decision. Return both bounded outputs for Reviewer PASS/RETURN.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE yet.** Wait for Reviewer to finish H4 source/static validation and provide the exact integrated read-only command.
+Run one bounded PowerShell 7.6.6 checkpoint that first executes H4 `-SelfTest` and only if that succeeds executes H4 `-RunReadOnly`. Do not run any activation/mutation mode.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
