@@ -23,6 +23,7 @@
 | G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 attempt 1 | 20–35 分钟 | 55m10s | YES | 两类开销叠加：① 本地 PowerShell helper 在最后启动 curl 前才暴露空 `--noproxy` 参数绑定问题，导致前面的远端准备已完成后再回头诊断/修复；② 执行期间共享 `main` 前进，需要同步协调。真实 OpenAI 请求数为 0。 | commit `f2a02ca6...` |
 | G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R3 retry | 15–25 分钟 | 10m58s | NO | Shift-left 优化有效：empty-argument fixture 在远端工作前通过，整轮较快返回；但随后暴露第二个本地 runner 缺陷——异常分类器自身因类型名不可解析而报错，并遮蔽原始失败阶段。另发现硬编码 ifIndex=13 已与当前 SFO2-A/control-route ifIndex=9 不一致。 | commit `23e025ef...` |
 | G2C_R3_LOCAL_RUNNER_HARDENING_H1 | 10–20 分钟 | 14m45s | NO | failure-path fixture、动态 ifIndex 和 live baseline 全部通过；本轮没有 SSH、网络请求或 Secret 活动。说明“先本地 hardening 再真实请求”的分拆有效。 | commit `2993756d...` |
+| G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4 | 15–25 分钟 | 9m38s | NO | hardened preflight、单次 Mihomo B-side 请求、cleanup 与 Git fresh read-back 全部在预计内完成；curl 0 / HTTP 401，说明前置 hardening 后真实轮次执行效率恢复正常。 | commit `7e957ab9...` |
 
 ## 已确认的主要耗时来源
 
@@ -167,7 +168,7 @@ R3 retry 证明了“正常参数路径”的本地 fixture 已经能提前挡�
 - 已存在 runner 的同 Gate retry：缩短预计区间。
 - 共享 `main` 活跃期：额外留少量 Git reconcile 余量，但不把异常 rebase 时间无限计入正常预算。
 
-R3 retry 实际 **10m58s**，H1 实际 **14m45s**；两轮都证明将本地 fixture / hardening 前置可以快速收敛 runner 问题。下一次真实 R4 预计 **15–25 分钟**。
+R3 retry 实际 **10m58s**，H1 实际 **14m45s**；两轮都证明将本地 fixture / hardening 前置可以快速收敛 runner 问题。R4 实际 **9m38s**，未超时；下一轮 public TCP/443 canary 预计 **20–30 分钟**，因为需要动态物理出口路由与公网监听的额外 preflight/cleanup。
 
 ## 不建议为了提速做的事情
 
@@ -202,4 +203,5 @@ R3 retry 实际 **10m58s**，H1 实际 **14m45s**；两轮都证明将本地 fix
 - R3 attempt 1 的最大可避免损耗是**本地 runner 错误发现过晚**，其次仍有 shared-main reconciliation；
 - R3 retry 在 10m58s 内 fail-fast，证明 fixture 前置有效，但也暴露了 failure-classifier 与 hardcoded ifIndex 没被纳入 fixture 的缺口；
 - H1 在 14m45s 内完成并正式 PASS，验证了 failure-path fixture + 动态运行时不变量方案有效；
+- R4 在 9m38s 内完成单次真实 B-side 并 PASS，说明 runner hardening 已消除前两轮的本地工具性拖延；
 - 当前最高优先级的效率优化继续是：**本地 fixture 前置 + failure-path fixture + 动态运行时不变量 + project-scoped worktree + round-boundary Git reconciliation + 轻量阶段计时**。
