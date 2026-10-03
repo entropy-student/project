@@ -5,7 +5,105 @@
 
 
 
-## Current execution result — G3C C1 native Mihomo parse reconciliation R1
+
+## Current execution status — G3C C1 Mihomo v1.19.32 native parse R2
+
+```text
+GATE_ID=G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+PREVIOUS_RESULT=RETURN_MIHOMO_VERSION_DRIFT
+MIHOMO_BINARY_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe
+EXPECTED_MIHOMO_VERSION=v1.19.32
+PREVIOUS_ACCEPTED_MIHOMO_VERSION=v1.19.31
+OWNER_INTERVENTION_REQUIRED=NO
+ACTIVE_VPN_CONNECTIVITY_MUST_BE_PRESERVED=YES
+WG_SERVICE_STOP_AUTHORIZED=NO
+WG_ROUTE_REMOVAL_AUTHORIZED=NO
+CLASH_ACTIVE_START_AUTHORIZED=NO
+CLASH_PROFILE_APPLY_AUTHORIZED=NO
+SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
+TUN_CHANGE_AUTHORIZED=NO
+ROUTE_CHANGE_AUTHORIZED=NO
+VPS_ACCESS_AUTHORIZED=NO
+SECRET_READ_AUTHORIZED=NO
+EXTERNAL_REQUEST_AUTHORIZED=NO
+SOURCE_REDESIGN_AUTHORIZED=NO_UNLESS_NATIVE_PARSE_PROVES_A_SOURCE_DEFECT
+ESTIMATED_EXECUTION_TIME=10-15_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. **Before fetch, path check, version check, or any other preflight, record `ROUND_STARTED_AT=<UTC ISO8601>`.**
+2. Fresh fetch/sync canonical `origin/main` in the existing project-scoped worktree; do not discard unrelated work.
+3. Check exact binary path:
+   `C:\Program Files\Clash Verge\verge-mihomo.exe`
+4. Run only `-v` and require Mihomo Meta v1.19.32. Any new drift => precise RETURN.
+5. Read current canonical C1 source:
+   - `templates/clash/self-vpn-manual.yaml.template`
+   - `scripts/g3c-manual-control-validator.ps1`
+6. Create exactly one temporary non-secret config-test fixture outside the repository using the canonical template unchanged.
+7. Replace placeholders only with parser-safe synthetic/test values:
+   - reserved documentation IP;
+   - example SNI;
+   - fixture-only password;
+   - all-zero/parser-safe certificate fingerprint;
+   - valid synthetic UUID;
+   - valid synthetic short-id;
+   - non-secret public-key-shaped fixture;
+   - current physical interface name only if required for parser validation.
+8. Run Mihomo native **config test only**. Do not start the active proxy core and do not send traffic.
+9. Delete the temporary fixture and prove it is absent.
+10. If native parse succeeds, do not edit C1 source.
+11. If parse fails, record sanitized parser failure and STOP_AT_REVIEWER; do not auto-fix template/source.
+12. Persist bounded non-secret Evidence and update this Executor Handoff only. Do not modify Reviewer Handoff.
+13. Fresh GitHub read-back and prove the tested C1 template/validator blobs remain canonical.
+14. Record:
+   - `ROUND_FINISHED_AT=<UTC ISO8601>`
+   - `ACTUAL_ELAPSED=<duration>`
+   - `TIME_OVERRUN=YES|NO`
+   - if YES: `TIME_OVERRUN_CAUSE=<evidence-backed cause>`
+15. If over 15 minutes, update `docs/ROUND_TIMING_RETROSPECTIVE.md` under its current rules.
+16. STOP_AT_REVIEWER.
+
+### Expected PASS_CANDIDATE evidence
+
+- `ROUND_STARTED_AT=...` captured before preflight
+- `MIHOMO_BINARY_PATH=C:\Program Files\Clash Verge\verge-mihomo.exe`
+- `MIHOMO_VERSION=v1.19.32`
+- `MIHOMO_NATIVE_CONFIG_TEST=PASS`
+- `C1_PROFILE_SOURCE_CHANGED=NO`
+- `TEMP_FIXTURE_CREATED=YES`
+- `TEMP_FIXTURE_SECRET_VALUES=0`
+- `TEMP_FIXTURE_CLEANUP=PASS`
+- `CLASH_ACTIVE_STARTED=NO`
+- `NETWORK_REQUEST_COUNT=0`
+- `WIREGUARD_CHANGED=NO`
+- `ROUTE_CHANGED=NO`
+- `SYSTEM_PROXY_CHANGED=NO`
+- `TUN_CHANGED=NO`
+- `VPS_ACCESS=NO`
+- complete timing fields
+- `STOP_AT_REVIEWER=YES`
+
+### Explicit prohibitions
+
+- Do not downgrade or download Mihomo.
+- Do not stop/restart/disable WireGuard.
+- Do not add/remove/change routes.
+- Do not enable system proxy or TUN.
+- Do not apply/import the profile into Clash Verge.
+- Do not start Mihomo as an active proxy client.
+- Do not SSH or access any VPS/Provider.
+- Do not read/generate/move/rotate real Secrets.
+- Do not send external network requests.
+- Do not change C1 source unless Reviewer later authorizes a repair after a parser-proven defect.
+- Do not advance to C2.
+
+
+## Historical execution result — G3C C1 native Mihomo parse reconciliation R1
 
 ```text
 GATE_ID=G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1
