@@ -76,7 +76,8 @@
 | `G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md` | Earlier bounded Preview-only correction | **SUPERSEDED BEFORE EXECUTION** |
 | `OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md` | Owner requirement for motion, final-product proof, stronger Preview | **CURRENT OWNER DECISION** |
 | `REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md` | Reviewer product/growth diagnosis for the broadened experience correction | **CURRENT REVIEW DECISION** |
-| `G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` | Final product proof + motion + Preview Activation correction | **CURRENT GATE** |
+| `G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT.md` | Owner review of current static 12-page magazine visual system | **CURRENT OWNER CHECKPOINT** |
+| `G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` | Website motion + static final-product proof + Preview Activation correction | **PREPARED / HOLD PENDING OWNER MAGAZINE VISUAL DECISION** |
 | `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
