@@ -393,3 +393,75 @@ ACCOUNT_MUTATION=0
 RUNTIME_MUTATION=0
 NEXT=X4_MINIMUM_VALIDATION_DESIGN_AND_ACCOUNT_POLICY_READBACK
 ~~~
+
+
+---
+
+## 2026-10-03 — X3R1 Concrete SKU Reframe
+
+~~~text
+AUTHORIZED_GATE=X3R1_CONCRETE_SKU_REFRAME
+EXECUTION_CLASS=READ_ONLY_PUBLIC_MARKET_RESEARCH + DOCUMENTATION
+OWNER_CORRECTION=SELECTION_MUST_END_AT_CONCRETE_PRODUCT_TYPE_OR_SKU
+RUNTIME_MUTATIONS=0
+ACCOUNT_MUTATIONS=0
+LISTINGS_PUBLISHED=0
+REAL_PURCHASES=0
+PAYMENTS=0
+CONCRETE_SKU_POOL=36
+~~~
+
+### Decision correction
+
+The prior X3 abstract Top 3 (P1 utility / P2 AI tutorial+files / P4 vertical Office system) is retained as product-form analysis but is **SUPERSEDED_FOR_SELECTION_AXIS**.
+
+Current selection unit:
+
+~~~text
+MARKET DEMAND
+→ CONCRETE SKU
+→ DEMAND PRIORITY
+→ SOURCE / RIGHTS / DELIVERY RESEARCH
+→ MINIMUM VALIDATION
+~~~
+
+### Supply separation
+
+~~~text
+SUPPLY_UNKNOWN_IS_DEMAND_KILL=NO
+RIGHTS_SOURCE_UNRESOLVED_IS_DEMAND_KILL=NO
+CLEARLY_ILLEGAL_OR_PROHIBITED_DELIVERY_MODEL=NOT_EXECUTABLE
+~~~
+
+A SKU may remain high in the demand pool even when the source has not yet been found. Supply, rights, licensing, fulfillment and economics will be researched only after demand-level narrowing.
+
+### Current evidence refresh used
+
+- current self-developed quotation software: RMB 13.50 / direct-buy 13.90, 133 “想要”, 5,008 views;
+- current ecommerce image tool: RMB 2.98–50.98, 722 “想要”, 5,163 views;
+- current listed-company management-team-stability dataset: direct-buy RMB 1, 523 “想要”, 3,591 views;
+- current supply-chain/PageRank dataset: direct-buy RMB 1, 194 “想要”, 1,876 views;
+- current WordPress template bundle: RMB 25.90 / direct-buy 29, 804 “想要”, about 10k views;
+- current photography preset recommendation: one Japanese-film preset at 603 “想要”;
+- current SolidWorks recommendation: 13k automation-equipment drawings at 686 “想要”;
+- current AI bid-writing recommendation market contains individual offers at 110, 186, 220, 2,195 and 2,717 “想要”;
+- current Xianyu monitoring tool example: RMB 79.20, 147 “想要”;
+- current teaching-PPT example: 1,400 English interactive PPT games at RMB 2.68, 166 “想要”;
+- current IE/industrial-engineering materials example: RMB 3, 90 “想要”;
+- current cello/violin drawing/document example: RMB 12, 47 “想要”;
+- current office-script recommendation: Python Excel/Word/PDF automation pack RMB 39.90;
+- Xianyu-reported H1 2026 AI-service orders remain 9.816m, with tutorials/courses 8.1%, templates/workflows 6.6%, and a reported 17k-copy AI-manga tutorial seller.
+
+### Artifact
+
+- `docs/X3R1_CONCRETE_SKU_DEMAND_POOL_2026-10.md`
+
+### Result
+
+~~~text
+X3R1_CONCRETE_SKU_REFRAME=PASS_CANDIDATE
+CONCRETE_SKU_POOL=36
+ABSTRACT_TOP3_SELECTION=SUPERSEDED
+SUPPLY_UNKNOWN_IS_DEMAND_KILL=NO
+NEXT=X3R2_SKU_LEVEL_DEMAND_DEPTH_36_TO_10_15
+~~~
