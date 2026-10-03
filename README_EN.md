@@ -28,7 +28,7 @@
 | **Unified Pay System** | Shared payment, refund, reconciliation, entitlement and fulfillment capabilities | [Handoff](./unified-pay-system/REVIEWER_HANDOFF.md) |
 | **VPN Network Optimization** | Self-hosted VPN stability, tail latency, comparative validation, deployment and rollback | [Handoff](./vpn-network-optimization/REVIEWER_HANDOFF.md) |
 | **Dujiao-Next** | Commerce runtime for products, orders, payments, and fulfillment | [Handoff](./dujiao-next/REVIEWER_HANDOFF.md) |
-| **Xianyu** | Xianyu automation runtime project | [Handoff](./xianyu/REVIEWER_HANDOFF.md) |
+| **Xianyu** | Xianyu virtual-product demand catalog research (legacy runtime preserved) | [Handoff](./xianyu/REVIEWER_HANDOFF.md) |
 
 ### Product and commerce projects
 
