@@ -3038,3 +3038,37 @@ Reviewer interpretation:
 - The existing Mihomo process is the user's Clash Verge service and does not occupy P1 port 17990. P1 must preserve it rather than require all Mihomo processes to be absent.
 - The repaired runner now proves these facts with a bounded local-preflight-only mode before any further real P1 attempt.
 
+## Reviewer acceptance — Owner LocalPreflightOnly proof — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT_REVIEWED_AGAINST_CURRENT_RUNNER
+GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+REVIEWER_RESULT=PASS
+RUNNER_PHASE=LOCAL_PREFLIGHT_ONLY_PASS
+FAILURE_CODE=NONE
+SOURCE_HEAD=d04e08e61cbac7fa511daba9c3b55f6725582b18
+CANONICAL_SOURCE_VERIFIED=TRUE
+POWERSHELL_RUNTIME=7.6.6
+ADMINISTRATOR_TOKEN=TRUE
+HIGH_INTEGRITY_TOKEN=TRUE
+CLIENT_MIHOMO_VERSION=v1.19.31
+PINNED_CLIENT_ARCHIVE_SHA256=PASS
+PHYSICAL_EGRESS_DISCOVERY=WLAN|18|192.168.1.1|192.168.1.4
+WIREGUARD_ADAPTER=SFO2-A|9|Up
+CONTROL_ROUTE=SFO2-A|9
+WINHTTP_DIRECT_BEFORE=TRUE
+P1_TEST_MIHOMO_PROCESS_COUNT_BEFORE=0
+TEMP_ROUTE_BEFORE=ACTIVE_MATCHES_0_PERSISTENT_MATCHES_0
+REQUEST_COUNT=0
+P1_REQUEST_BUDGET_REMAINING=1
+NETWORK_MUTATION=NO
+VPS_ACCESS=NO
+NEXT_STEP=RUN_REAL_P1_ONCE
+```
+
+Reviewer interpretation:
+- Windows local preflight is now behaviorally proven on the Owner host with the pinned official Mihomo v1.19.31 client.
+- The physical egress, WireGuard/control-route baseline, WinHTTP state, local port exclusivity, and absence of P1 route residue all pass.
+- No SSH, VPS access, route mutation, public listener, Secret action, or OpenAI request occurred.
+- Existing P1 authorization remains valid and the real P1 may run exactly once.
+
