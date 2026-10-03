@@ -3406,3 +3406,33 @@ Reviewer interpretation:
 - Full rollback semantics preserve the known-good source VPS through the rollback window; `rollback-uninstall.sh` is only a project-owned HY2 cleanup helper and is not the migration rollback itself.
 - No live network, VPS, Provider, or Secret action occurred.
 
+## Reviewer acceptance — G3B target qualification contract D2 — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_POWERSHELL_OUTPUT_REVIEWED_AGAINST_PINNED_D2_VALIDATOR
+GATE_ID=G3B_TARGET_QUALIFICATION_CONTRACT_D2
+REVIEWER_RESULT=PASS
+SOURCE_HEAD=7a2736ffb92e7581c37d4577ef8314d7055c6dd6
+G3B_D2_VALIDATOR_AST=PASS
+G3B_D2_SELFTEST_CASES=7
+G3B_D2_SELFTEST_RESULT=PASS
+G3B_D2_MIN_MEM_AVAILABLE_KIB=196608
+G3B_D2_MIN_ROOT_FREE_KIB=1048576
+G3B_D2_QUALIFIED_RESULT=QUALIFIED_FOR_STAGED_INSTALL
+G3B_D2_IP_FORWARD_ZERO_IS_PLANNED_CHANGE=YES
+NETWORK_MUTATION=NO
+VPS_ACCESS=NO
+PROVIDER_ACTION=NO
+SECRET_VALUES_READ=0
+SECRET_VALUES_EMITTED=0
+G3B_D2_OFFLINE_VALIDATION=PASS
+```
+
+Reviewer interpretation:
+- D2 is formally PASS.
+- The future-target qualification contract is machine-readable, read-only, and fail-closed.
+- Fixtures cover a qualified target, occupied required port, conflicting sing-box runtime, insufficient memory, hostname mismatch, ambiguous nft input policy, and project-path collision.
+- A fresh target with IPv4 forwarding disabled is not rejected solely for that fact; it is explicitly classified as a later planned deployment change.
+- Live execution of the Linux probe on a real target remains a separate Gate and has not occurred.
+- No current VPS, Provider, Secret, network, package, firewall, or filesystem action occurred.
+
