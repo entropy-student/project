@@ -1,4 +1,8 @@
-param([switch]$CanonicalSourceOnly, [switch]$LocalPreflightOnly)
+param(
+    [switch]$CanonicalSourceOnly,
+    [switch]$LocalPreflightOnly,
+    [string]$ClientMihomoPath = ''
+)
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
@@ -22,7 +26,13 @@ $script:projectRoot = $null
 $script:sourceHead = $null
 $script:canonicalSourceVerified = $false
 $script:sshPath = $null
-$script:mihomoPath = 'C:\Program Files\Clash Verge\verge-mihomo.exe'
+$script:clientMihomoPathExplicit = -not [string]::IsNullOrWhiteSpace($ClientMihomoPath)
+$script:mihomoPath = if ($script:clientMihomoPathExplicit) {
+    [IO.Path]::GetFullPath($ClientMihomoPath)
+} else {
+    'C:\Program Files\Clash Verge\verge-mihomo.exe'
+}
+$script:pinnedClientArchiveHashPass = $false
 $script:serverHost = 'root@10.66.21.1'
 $script:serverTunnelIp = '10.66.21.1'
 $script:expectedHostname = 'ubuntu-s-1vcpu-512mb-10gb-sfo3'
@@ -1533,6 +1543,17 @@ try {
     Assert-R3 (Test-Path -LiteralPath $script:identityPath -PathType Leaf) 'SSH_IDENTITY_MISSING'
     Assert-R3 (Test-Path -LiteralPath $script:knownHostsPath -PathType Leaf) 'SSH_KNOWN_HOSTS_MISSING'
     Assert-R3 (Test-Path -LiteralPath $script:mihomoPath -PathType Leaf) 'WINDOWS_MIHOMO_BINARY_MISSING'
+    if ($script:clientMihomoPathExplicit) {
+        $pinnedClientRoot = Join-Path $env:LOCALAPPDATA 'vpn-network-optimization\p1-client-v1.19.31'
+        $expectedClientPath = Join-Path $pinnedClientRoot 'extracted\mihomo-windows-amd64-compatible.exe'
+        $expectedArchivePath = Join-Path $pinnedClientRoot 'mihomo-windows-amd64-compatible-v1.19.31.zip'
+        $expectedArchiveSha256 = '93d14e9a13b49b2f2d256202d02cc8d14a7c4695edf084cae0f941986bc9c218'
+        Assert-R3 ([IO.Path]::GetFullPath($script:mihomoPath) -ieq [IO.Path]::GetFullPath($expectedClientPath)) 'PINNED_CLIENT_PATH_INVALID'
+        Assert-R3 (Test-Path -LiteralPath $expectedArchivePath -PathType Leaf) 'PINNED_CLIENT_ARCHIVE_MISSING'
+        $archiveSha256 = (Get-FileHash -LiteralPath $expectedArchivePath -Algorithm SHA256 -ErrorAction Stop).Hash.ToLowerInvariant()
+        Assert-R3 ($archiveSha256 -ceq $expectedArchiveSha256) 'PINNED_CLIENT_ARCHIVE_SHA256_MISMATCH'
+        $script:pinnedClientArchiveHashPass = $true
+    }
     $script:localBefore = Get-R3LocalSnapshot
     Assert-R3LocalBaseline -Snapshot $script:localBefore -Prefix 'PRECHECK'
     $script:physicalEgress = $script:localBefore.PhysicalEgress
@@ -1752,6 +1773,9 @@ $roundFinishedIso = $script:roundFinishedAt.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
 "SOURCE_HEAD=$(if ($script:sourceHead) { $script:sourceHead } else { 'NOT_VERIFIED' })"
 "CURRENT_GATE_PREFLIGHT=$(if ($script:canonicalSourceVerified) { 'AUTHORIZED_BUDGET_0_OF_1' } else { 'NOT_VERIFIED' })"
 "SERVER_IMPLEMENTATION=MIHOMO_V1_19_31_NATIVE"
+"CLIENT_MIHOMO_PATH=$script:mihomoPath"
+"CLIENT_MIHOMO_VERSION=$(if ($script:localBefore) { $script:localBefore.ClientVersionText } else { 'NOT_READ' })"
+"PINNED_CLIENT_ARCHIVE_SHA256=$(if ($script:clientMihomoPathExplicit) { $(if ($script:pinnedClientArchiveHashPass) { 'PASS' } else { 'NOT_PROVEN' }) } else { 'NOT_APPLICABLE' })"
 "TARGET_HOSTNAME=$(if ($script:remoteBefore) { $script:remoteBefore['HOSTNAME'] } else { 'UNVERIFIED' })"
 "VPS_OS=$(if ($script:remoteBefore) { $script:remoteBefore['OS'] } else { 'NOT_READ' })"
 "VPS_KERNEL=$(if ($script:remoteBefore) { $script:remoteBefore['KERNEL'] } else { 'NOT_READ' })"
