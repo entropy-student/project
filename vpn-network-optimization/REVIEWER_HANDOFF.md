@@ -54,108 +54,80 @@ Current known components:
 
 ## CURRENT_ACCEPTED_STATE
 
-- **Current production/rollback:** WireGuard remains the active production/rollback path.
+- **Current production/rollback:** WireGuard remains the active production/rollback path on the existing DigitalOcean sfo3 VPS.
 - **G3-A:** H1–H4 formally PASS; sensing/readiness/advisory decision is complete, with no automatic actuator implemented.
 - **G3-B D1:** migration package discovery/design PASS.
-- **G3-B D2:** future-target qualification contract PASS; live target execution has not occurred.
-- **Portable package:** current-instance SFO3 identity constants are excluded from portable templates; WireGuard split-default baseline is preserved.
-- **Migration rollback policy:** source VPS remains intact and distinguishable through the rollback window; source decommission is a later Closeout Gate.
-- **Secret/provider boundary:** Provider purchase/provisioning, Secret transfer/rotation, Owner client cutover, and source decommission remain separately authorized consequential actions.
-- **Current runtime:** untouched by G3-B D1/D2.
+- **G3-B D2:** future-target qualification contract PASS.
+- **G3-B D3:** staged-install render contract PASS; six offline fixtures passed on the clean rebuilt validator under PowerShell 7.6.5/7.6.x contract.
+- **Portable package:** current SFO3 instance identity constants are excluded from portable templates; WireGuard split-default baseline and Secret sentinels are preserved.
+- **Migration rollback policy:** the source VPS remains intact and distinguishable through the rollback window; deleting/rebuilding the source is not part of migration PASS.
+- **Unproven boundary:** no fresh target VPS has yet been qualified or staged. Governance migration PASS requires fresh-target proof; D1–D3 offline success cannot substitute for it.
+- **Current runtime:** existing VPS/client state remains unchanged by G3-B D1–D3.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3B_STAGED_INSTALL_RENDER_CONTRACT_D3
-STATE=AUTHORIZED
-PREVIOUS_RESULT=PASS_G3B_TARGET_QUALIFICATION_CONTRACT_D2
-OWNER_CONTINUE_AUTHORIZATION=2026-10-03
-SPECIALIST_TRIGGERS=11A_SHARED_VPS_STORAGE,11B_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION
-OBJECTIVE=Define and offline-validate the staged target-install render contract: portable non-secret metadata may be rendered, while Secret material, service activation, firewall/NAT changes, cutover, and source mutation remain forbidden.
-MAX_ENDPOINT_THIS_ROUND=repository-only render plan/manifest + deterministic offline fixtures + static validation; no VPS access, no Provider action, no Secret injection, no runtime file creation outside the local test fixture.
-MANDATORY_REVIEW_STOP=YES
-CURRENT_VPS_ACCESS_AUTHORIZED=NO
-NEW_TARGET_SSH_AUTHORIZED=NO
-PROVIDER_ACTION_AUTHORIZED=NO
+GATE_ID=G3B_FRESH_TARGET_QUALIFICATION_R1
+STATE=PENDING_OWNER_ACTION
+PREVIOUS_RESULT=PASS_G3B_STAGED_INSTALL_RENDER_CONTRACT_D3
+SPECIALIST_TRIGGERS=11A_SHARED_VPS_STORAGE,11B_SSH_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11E_PROVIDER
+OBJECTIVE=Qualify one fresh disposable target VPS with the accepted D2 read-only probe before any install, Secret transfer, service activation, or cutover.
+OWNER_TARGET_REQUIRED=YES
+OWNER_AUTHORIZATION_REQUIRED=YES
+LIVE_TARGET_MUTATION_AUTHORIZED=NO
+SOURCE_VPS_ACCESS_AUTHORIZED=NO
+SOURCE_VPS_MUTATION_AUTHORIZED=NO
 SECRET_TRANSFER_AUTHORIZED=NO
 SERVICE_ENABLEMENT_AUTHORIZED=NO
-FIREWALL_NAT_MUTATION_AUTHORIZED=NO
-OWNER_CLIENT_CUTOVER_AUTHORIZED=NO
-ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
-ESTIMATED_EXECUTION_TIME=15-25_minutes
-DEFAULT_EXECUTION_CHANNEL=CODEX_DESKTOP_EXECUTOR
-OWNER_INTERVENTION_REQUIRED=NO_IN_D3
-STAGED_MANIFEST_COMMIT=59899d53c319990256d9131b87671347a1f67bbb
-STAGED_VALIDATOR_COMMIT=2cb25ecccdaf8fdc0c2a20368142b205cb0ca880
-WG_PUBLIC_KEY_INPUT_COMMIT=8f17c9ffaeca2f87f514adefd8e433a4d0a68f83
-WG_SERVER_SECRET_SENTINEL_COMMIT=e286f0050146465347374a9bdabe170faaf966b4
-WG_CLIENT_SECRET_SENTINEL_COMMIT=05bb99571b1f11ea954357c9275de00801100c2e
-HY2_FINGERPRINT_SENTINEL_COMMIT=5522015954bb14aabd4350db2842ec8af5e3920d
-STATIC_SOURCE_REVIEW=PASS
-EXECUTOR_OFFLINE_VALIDATION=PENDING
+PROVIDER_PURCHASE_OR_PROVISIONING=OWNER_CHECKPOINT
+CUTOVER_AUTHORIZED=NO
+ROLLBACK_STATUS=SOURCE_VPS_REMAINS_AUTHORITATIVE
+MANDATORY_REVIEW_STOP=YES
 ```
 
 ### TARGET_AND_SCOPE
 
-- Build one repository-owned staged-install renderer/validator that consumes only non-secret migration metadata.
-- Required metadata:
-  - target public IPv4;
-  - expected target hostname;
-  - target-specific HY2 SNI;
-  - WireGuard server/client addresses and ports;
-  - HY2 port;
-  - runtime user/path metadata.
-- Render or validate only non-secret artifacts:
-  - WireGuard server/client template skeletons with private-key placeholders still intact;
-  - HY2 server skeleton with auth/private-key placeholders still intact;
-  - HY2 systemd unit;
-  - Mihomo/HY2 client skeleton with auth/fingerprint placeholders still intact;
-  - staged-install manifest with exact target paths and activation order.
-- Secret placeholder preservation is mandatory: D3 must fail if a rendered artifact contains a real-looking private key/password/token or if a required placeholder disappears.
-- No service activation, package install, sysctl/firewall/NAT change, route change, SSH, HTTP, or Provider action.
+- One **fresh/disposable** Ubuntu 24.04 x86_64 VPS with no unrelated business workload.
+- Freeze exact provider/account context, public IPv4, hostname, SSH identity reference, and host-key trust before first SSH.
+- First execution after authorization is **read-only qualification only** using the accepted D2 target probe.
+- Required target facts: identity, OS/arch, default route/WAN, memory/disk, required-port collisions, conflicting VPN runtimes, firewall/nft state, and project-path residue.
+- No package install, directory creation, Secret read/generation/transfer, service change, firewall/NAT/sysctl/route change, or Owner traffic switch in R1.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS requires:
-- deterministic non-secret render output/manifest from a fixture target identity;
-- no current SFO3/public-IP/WLAN constants leak into portable output;
-- accepted WireGuard split-default baseline preserved;
-- target-specific HY2 SNI/public IP/hostname are rendered correctly;
-- Secret placeholders remain explicit and complete;
-- activation order and rollback checkpoint are explicit;
-- zero live action/mutation.
+PASS requires a fresh real target to return `QUALIFIED_FOR_STAGED_INSTALL` semantics under the accepted D2 contract, with exact target identity/trust proven and zero target/source mutation.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Source-only D3. Exact commit revert is sufficient; no runtime rollback applies.
+Read-only R1 has no target mutation to roll back. Existing source VPS remains the authoritative production/rollback path.
 
 ### OWNER_ONLY_ACTIONS
 
-Run one repository-only PowerShell 7.6.6 validation after Reviewer static review.
+Provide or create one disposable fresh VPS for rehearsal and explicitly authorize its use as the G3-B target. Do not send any Secret value in chat. Provider purchase/provisioning, if needed, is an Owner checkpoint.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Create the minimum staged-install render contract and validator. Do not read any local recovery bundle or Secret file. Do not execute Linux/service/network commands. Keep output limited to non-secret fixture content and manifest facts.
+**NONE until Owner supplies/authorizes a fresh target.** Do not SSH to any existing VPS as a substitute and do not use the shared Hostinger VPS merely because it is available.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE after static review and deterministic offline render validation. Any actual target rendering/injection or service activation requires a later Gate.
+No execution is authorized while `STATE=PENDING_OWNER_ACTION`.
 
 ## NEXT_STEP
 
-Codex Desktop Executor: sync canonical main, verify clean worktree and PowerShell 7.6.x, AST-parse the rebuilt D3 validator, run only `scripts/g3b-staged-install-render-validator.ps1 -Validate`, record bounded non-secret output in `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`, then STOP_AT_REVIEWER. Do not enter any live VPS/Provider/Secret/cutover Gate.
+Wait for Owner to provide/authorize one fresh disposable target VPS. Reviewer will then freeze target identity/trust and issue the bounded read-only D2 qualification command to Codex Desktop Executor.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE in D3.** Owner intervention resumes only if a later Gate requires Provider purchase/provisioning, Secret movement, live VPS mutation, or production cutover.
+Provide one fresh/disposable Ubuntu 24.04 x86_64 VPS for migration rehearsal, or explicitly authorize creating one. Minimum relay: provider/name or label, public IPv4, expected hostname, and confirmation that it may be used as a disposable VPN migration target. Do **not** send private keys, passwords, tokens, or other Secret values.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Read only the current G3-A Gate, accepted G2-C P1 Evidence, and the target planner source. Do not replay G2-C or reconstruct historical Gates. H1 is source/offline only and must stop before any live network action.
+**NONE while R1 is pending Owner target authorization.**
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Use the fixed P1 packet in `CURRENT_GATE` after authorization.
+No Executor action is authorized until Reviewer changes R1 from `PENDING_OWNER_ACTION` after target identity/trust is frozen.
 
 ## EVIDENCE_POINTERS
 
