@@ -79,7 +79,8 @@
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
 | `G1_TWO_STEP_AI_PRODUCT_FLOW.md` | Two-step product-flow design | Current supporting design where consistent with Handoff |
-| `ACQUISITION_GROWTH_PLAN.md` | Validation/acquisition plan | Supporting plan; not evidence of actual transactions |
+| `ACQUISITION_GROWTH_PLAN.md` | Current validation/acquisition operating plan | **CURRENT SUPPORTING PLAN — not evidence of actual transactions** |
+| `GROWTH_VALIDATION_STATE_2026-10-03.md` | Current Acquisition Growth Radar diagnosis / Validation Spine | **CURRENT SUPPORTING GROWTH STATE** |
 | `../prototype/` | Browser sample | Prototype evidence only; not production |
 
 ## Governance rules
@@ -107,6 +108,8 @@ For the current project state, a new Reviewer/Executor should normally need only
 10. `REVIEWER_DECISION_G3CR6R1_PASS.md` — accepted G3CR6R1 composition decision
 11. `REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md` — current product/Activation decision
 12. `G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md` — current execution Gate
+13. `GROWTH_VALIDATION_STATE_2026-10-03.md` — current growth diagnosis
+14. `ACQUISITION_GROWTH_PLAN.md` — current validation/acquisition plan
 13. `G3C_OWNER_VISUAL_CHECKPOINT_R2.md` — resolved checkpoint provenance
 12. `G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md` — executed/pass contract
 13. `REVIEWER_DECISION_G3CR6_RETURN.md` — prior G3CR6 visual RETURN
