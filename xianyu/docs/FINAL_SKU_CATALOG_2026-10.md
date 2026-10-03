@@ -188,7 +188,7 @@ Excel CRM, quote sheets, generic cleanup/file tools are plausible, but current e
 - S19 — listed-company supply-chain PageRank dataset:
   https://www.goofish.com/item?id=1061281260797
 - S20 — current DID/policy panel dataset:
-  https://www.goofish.com/item?id=1052697680640
+  https://www.goofish.com/item?categoryId=202036301&id=1059572721917
 - S21 — current CAD/SolidWorks related market:
   https://www.goofish.com/item?categoryId=0&id=899758670883
 
@@ -196,10 +196,10 @@ Excel CRM, quote sheets, generic cleanup/file tools are plausible, but current e
 
 ~~~text
 CONFIRMED_DEMAND=6
-PROBABLE_DEMAND=43
+PROBABLE_DEMAND=44
 WATCHLIST=19
 MARKET_SIGNAL_ONLY=6
-CORE_CATALOG_CONFIRMED_PLUS_PROBABLE=49
+CORE_CATALOG_CONFIRMED_PLUS_PROBABLE=50
 FINAL_UNIQUE_WINNER=NOT_REQUIRED
 SUPPLY_RESEARCH=OUT_OF_SCOPE
 ~~~
