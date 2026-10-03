@@ -1,5 +1,1069 @@
 # Shared VPS Infrastructure — REVIEWER HANDOFF
 
+## CURRENT REVIEWER UPDATE — Shared VPS Stable / No Proactive Cleanup — 2026-10-01
+
+```text
+M9_XIANYU_RETENTION_RECONCILIATION=CANCELLED_BEFORE_EXECUTION
+CURRENT_GATE=NONE
+SHARED_VPS_OPERATING_MODE=STABLE_RUN_NO_PROACTIVE_CLEANUP
+ACTIVE_PROJECT_CLEANUP_POLICY=DO_NOT_TOUCH_WITHOUT_NEW_NEED
+```
+
+Owner decided no further cleanup of healthy active projects is necessary. Xianyu/Dujiao/Mini Craft remain untouched. Unified Pay remains retired with destructive cleanup frozen. Future cleanup requires a concrete trigger such as disk pressure, security exposure, broken dependency, or an explicit project-specific request.
+
+Decision:
+docs/REVIEWER_DECISION_M9_CANCELLED_SHARED_VPS_STABLE_STATE.md
+
+## CURRENT REVIEWER UPDATE — M9 Xianyu Retention Reconciliation Open — 2026-10-01
+
+```text
+UNIFIED_PAY_PROJECT_STATUS=RETIRED_WITH_UNRESOLVED_RECOVERY_ASSET_INCIDENT
+UNIFIED_PAY_CURRENT_GATE=NONE
+
+CURRENT_GATE=M9_XIANYU_RETENTION_RECONCILIATION
+CURRENT_GATE_STATUS=AUTHORIZED_STRICT_READONLY
+XIANYU_CLEANUP_AUTHORIZED=NO
+```
+
+Shared VPS portfolio has been synchronized to mark Unified Pay retired. The next cleanup target is Xianyu legacy/retention material. M9 is read-only and classifies old source/build trees, slider_debug logs, eight backup generations, legacy network ownership and current ingress before any write/delete Gate.
+
+Execution packet:
+review-packets/M9_XIANYU_RETENTION_RECONCILIATION.md
+
+## CURRENT REVIEWER UPDATE — Unified Pay Retirement Closed with Unresolved Recovery-Asset Incident — 2026-10-01
+
+```text
+M8_R1_UNIFIED_PAY_RECOVERY_ASSET_DRIFT_FORENSICS=PASS
+RECOVERY_ASSET_DRIFT_CLASS=UNRESOLVED
+DOCKER_RM_CAUSALITY=DISPROVEN
+COMPOSE_RECOVERY_SOURCE=NONE
+DATABASE_EXACT_RECOVERY_SOURCE=NONE
+SECRET_RECOVERY_SOURCE=WINDOWS_DPAPI
+
+UNIFIED_PAY_APP_CONTAINER_PRESENT=NO
+UNIFIED_PAY_POSTGRES_CONTAINER_PRESENT=NO
+UNIFIED_PAY_RUNTIME_DECOMMISSION=COMPLETE
+UNIFIED_PAY_PROJECT_STATUS=RETIRED_WITH_UNRESOLVED_RECOVERY_ASSET_INCIDENT
+KNOWN_PROJECT_REGRESSION=NO
+
+CURRENT_GATE=NONE
+UNIFIED_PAY_FURTHER_DESTRUCTIVE_CLEANUP=FROZEN
+```
+
+Reviewer accepted Evidence 3b92a5a84c6014d4f2db575a7022e93be54745a6 and Handoff fba77a2c6d80021bd81e18e9816a1d914d1163d1.
+
+The exact stopped-container rm is not causal for host bind-path loss. No complete audit trail proves the actual destructive mechanism. Exact DB/Compose recovery bytes are unavailable in searched scopes. Current business impact remains none observed because Unified Pay was already retired and no current Dujiao/other-project dependency exists.
+
+Do not continue destructive cleanup for neatness. Preserve remaining images, DPAPI Secret recovery artifact and all historical evidence.
+
+Decision:
+docs/REVIEWER_DECISION_M8_R1_PASS_UNIFIED_PAY_RETIREMENT_INCIDENT_CLOSURE.md
+
+## CURRENT REVIEWER UPDATE — M8 RETURN / Recovery Asset Incident Freeze — 2026-10-01
+
+```text
+M8_RESULT=RETURN_M8_POSTDELETE_RECOVERY_ASSET_DRIFT
+UNIFIED_PAY_APP_CONTAINER_PRESENT=NO
+UNIFIED_PAY_POSTGRES_CONTAINER_PRESENT=NO
+UNIFIED_PAY_APP_IMAGE_PRESENT=YES
+UNIFIED_PAY_POSTGRES_IMAGE_PRESENT=YES
+
+POSTDELETE_COMPOSE_PRESENT=NO
+POSTDELETE_DATA_DB_PRESENT=NO
+POSTDELETE_BACKUP_FILE_COUNT=0
+KNOWN_PROJECT_REGRESSION=NO
+
+CURRENT_GATE=M8_R1_UNIFIED_PAY_RECOVERY_ASSET_DRIFT_FORENSICS
+CURRENT_GATE_STATUS=AUTHORIZED_STRICT_READONLY_INCIDENT_FORENSICS
+
+UNIFIED_PAY_FURTHER_DELETION_AUTHORIZED=NO
+UNIFIED_PAY_RESTORE_AUTHORIZED=NO
+UNIFIED_PAY_RECREATE_AUTHORIZED=NO
+OWNER_STANDING_DECOMMISSION_DELEGATION=TEMPORARILY_SUSPENDED_FOR_DESTRUCTIVE_ACTIONS
+```
+
+Plain stopped-container removal does not normally explain simultaneous loss of host Compose, bind DB path and backup files. Causality is not yet established. M8-R1 is read-only only.
+
+Decision:
+docs/REVIEWER_DECISION_M8_RETURN_R1_RECOVERY_ASSET_DRIFT_FORENSICS.md
+
+Packet:
+review-packets/M8_R1_UNIFIED_PAY_RECOVERY_ASSET_DRIFT_FORENSICS.md
+
+## CURRENT REVIEWER UPDATE — M7 PASS / M8 PostgreSQL Container Decommission Authorized — 2026-10-01
+
+```text
+M7_UNIFIED_PAY_POSTGRES_STOP_OBSERVATION=PASS
+UNIFIED_PAY_APP_CONTAINER_PRESENT=NO
+UNIFIED_PAY_POSTGRES_STATE=stopped
+UNIFIED_PAY_POSTGRES_CONTAINER_PRESENT=YES
+UNIFIED_PAY_DATA_PRESERVED=YES
+UNIFIED_PAY_BACKUPS_PRESERVED=YES
+KNOWN_PROJECT_REGRESSION=NO
+
+CURRENT_GATE=M8_UNIFIED_PAY_POSTGRES_CONTAINER_DECOMMISSION
+CURRENT_GATE_STATUS=AUTHORIZED_UNDER_OWNER_STANDING_DELEGATION
+
+UNIFIED_PAY_POSTGRES_CONTAINER_REMOVE_AUTHORIZED=YES_EXACTLY_ONE
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_SECRET_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_TUNNEL_MUTATION_AUTHORIZED=NO
+```
+
+M8 proceeds under the standing Unified Pay decommission authorization. Only the already-stopped PostgreSQL container may be removed; durable DB files, backups, Secrets, images, Compose and networks remain.
+
+Decision:
+docs/REVIEWER_DECISION_M7_PASS_M8_UNIFIED_PAY_POSTGRES_CONTAINER_DECOMMISSION.md
+
+Execution packet:
+review-packets/M8_UNIFIED_PAY_POSTGRES_CONTAINER_DECOMMISSION.md
+
+## CURRENT REVIEWER UPDATE — M7 Authorized + Standing Unified Pay Decommission Delegation — 2026-10-01
+
+```text
+OWNER_AUTHORIZES_M7=YES
+OWNER_STANDING_AUTHORIZATION_FOR_UNIFIED_PAY_DECOMMISSION=YES
+REPEATED_OWNER_APPROVAL_REQUIRED_FOR_IN_SCOPE_REVERSIBLE_PROJECT_ONLY_STEPS=NO
+
+CURRENT_GATE=M7_UNIFIED_PAY_POSTGRES_STOP_OBSERVATION
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_PROJECT_RUNTIME_WRITE
+
+UNIFIED_PAY_POSTGRES_STOP_AUTHORIZED=YES
+UNIFIED_PAY_POSTGRES_START_AUTHORIZED=YES_ROLLBACK_ONLY
+UNIFIED_PAY_POSTGRES_CONTAINER_REMOVE_AUTHORIZED=NO_IN_M7
+```
+
+Standing authorization covers later bounded Unified Pay-only decommission actions that do not affect other projects and preserve an adequate recovery path. It does not cover permanent deletion of DB data/backups/Secrets, Tunnel/DNS/shared-infra changes, real payment/provider actions, or any cross-project risk; those remain Owner checkpoints.
+
+Decision:
+docs/REVIEWER_DECISION_M7_OWNER_STANDING_AUTHORIZATION_UNIFIED_PAY_DECOMMISSION.md
+
+Execution packet:
+review-packets/M7_UNIFIED_PAY_POSTGRES_STOP_OBSERVATION.md
+
+## CURRENT REVIEWER UPDATE — M6 PASS / M7 Unified Pay PostgreSQL Stop Checkpoint — 2026-10-01
+
+```text
+M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION=PASS
+UNIFIED_PAY_APP_CONTAINER_PRESENT=NO
+UNIFIED_PAY_APP_IMAGE_PRESENT=YES
+UNIFIED_PAY_POSTGRES_STATE=healthy
+UNIFIED_PAY_RECREATE_PATH_PRESERVED=YES
+KNOWN_PROJECT_REGRESSION=NO
+
+CURRENT_GATE=M7_UNIFIED_PAY_POSTGRES_STOP_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+
+UNIFIED_PAY_POSTGRES_STOP_AUTHORIZED=NO
+UNIFIED_PAY_POSTGRES_CONTAINER_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_SECRET_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_TUNNEL_MUTATION_AUTHORIZED=NO
+```
+
+Reviewer accepted Evidence 5103301aa942ce40e7eac5f5ee9d747026ed3239 and Handoff b4697c0804812d1af9c47ace004fba01068f3d95.
+
+The app runtime is now decommissioned. The next proposed step is reversible: stop only the remaining Unified Pay PostgreSQL service while preserving its container, data, backups, Secrets, image, Compose and Tunnel/DNS.
+
+Decision:
+docs/REVIEWER_DECISION_M6_PASS_M7_UNIFIED_PAY_POSTGRES_STOP_CHECKPOINT.md
+
+## CURRENT REVIEWER UPDATE — M6 Owner Authorized Unified Pay App Container Decommission — 2026-10-01
+
+```text
+OWNER_AUTHORIZES_M6=YES
+CURRENT_GATE=M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_PROJECT_RUNTIME_DELETE
+
+UNIFIED_PAY_APP_CONTAINER_REMOVE_AUTHORIZED=YES_EXACTLY_ONE
+UNIFIED_PAY_APP_IMAGE_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_DB_STOP_AUTHORIZED=NO
+UNIFIED_PAY_DB_CONTAINER_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_TUNNEL_MUTATION_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_SECRET_DELETE_AUTHORIZED=NO
+```
+
+Only the stopped Unified Pay app container may be removed. PostgreSQL, image, Compose, data, backups, Secrets and Tunnel/DNS are preserved.
+
+Decision:
+docs/REVIEWER_DECISION_M6_OWNER_AUTHORIZED_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION.md
+
+Execution packet:
+review-packets/M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION.md
+
+## CURRENT REVIEWER UPDATE — M5 PASS / M6 Unified Pay App Container Decommission Checkpoint — 2026-10-01
+
+```text
+M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION=PASS
+UNIFIED_PAY_APP_STATE=stopped
+UNIFIED_PAY_APP_CONTAINER_PRESENT=YES
+UNIFIED_PAY_POSTGRES_STATE=healthy
+KNOWN_PROJECT_REGRESSION=NO
+CREDIBLE_CALLER_EVIDENCE_FOUND=NO
+
+UNIFIED_PAY_RUNTIME_ROLE=RETIRED_APP_STOPPED
+CURRENT_GATE=M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+
+UNIFIED_PAY_APP_CONTAINER_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_APP_IMAGE_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_DB_STOP_AUTHORIZED=NO
+UNIFIED_PAY_TUNNEL_MUTATION_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_SECRET_DELETE_AUTHORIZED=NO
+```
+
+Reviewer accepted M5 Evidence 93568e667ac83cecdc582cac3950fb906101b4fc and Handoff 5ce3d50dba4afccafaf6f4fcaf89433134a7bb76.
+
+The UNRESOLVED caller field is a telemetry limitation, not positive caller evidence. Historical/client provenance and current Dujiao dependency reconciliation remain authoritative. The next proposed phase removes only the already-stopped app container while preserving PostgreSQL, image, Compose, data, backups, Secrets and Tunnel.
+
+Decision:
+docs/REVIEWER_DECISION_M5_PASS_M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION_CHECKPOINT.md
+
+## CURRENT REVIEWER UPDATE — M5 Owner Authorized After Dujiao Recheck — 2026-10-01
+
+```text
+OWNER_AUTHORIZES_M5=YES
+DUJIAO_UNIFIED_PAY_HISTORICAL_RELATION=YES
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+DUJIAO_UNIFIED_PAY_BLOCKER_FOR_M5=NO
+
+CURRENT_GATE=M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_PROJECT_RUNTIME_WRITE
+
+UNIFIED_PAY_APP_STOP_AUTHORIZED=YES
+UNIFIED_PAY_APP_START_AUTHORIZED=YES_ROLLBACK_ONLY
+UNIFIED_PAY_DB_STOP_AUTHORIZED=NO
+UNIFIED_PAY_CONTAINER_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_TUNNEL_MUTATION_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+```
+
+Dujiao was rechecked before M5. Its historical Unified Pay architecture/extraction material is audit/design history. Current runtime dependency remains NO: payment channels active=0, channel_clients=0, downstream_order_refs=0, deployed Compose/non-secret source have no Unified Pay reference, and current Secret config key/reference classification found no Unified Pay reference.
+
+Decision:
+docs/REVIEWER_DECISION_M5_OWNER_AUTHORIZED_UNIFIED_PAY_APP_ONLY_STOP.md
+
+Execution packet:
+review-packets/M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION.md
+
+## CURRENT REVIEWER UPDATE — M4B-R1 Historical Unified Pay Record Reconciliation / M5 Rebased — 2026-10-01
+
+Owner-directed inspection of the historical Unified Pay project-space Evidence materially resolves the two M4B unknowns.
+
+```text
+PRODUCTION_CLIENT_A_PROVENANCE=INTERNAL_FIXED_BOOTSTRAP_CLIENT
+PRODUCTION_CLIENT_B_PROVENANCE=INTERNAL_FIXED_BOOTSTRAP_CLIENT
+EXTERNAL_OR_UNKNOWN_CALLER_BLOCKER=RESOLVED
+
+AMBIGUOUS_INCIDENT_CONTEXT=OWNER_AUTHORIZED_INTERNAL_ALIPAY_CANARY
+AMBIGUOUS_CREATE_EXTERNAL_PROVIDER_REQUEST=NO
+AMBIGUOUS_CREATE_FAILURE_CLASS=LOCAL_HANDOFF_VALIDATION_HTTP_502
+OWNER_PAYMENT_EXECUTED=NO
+PROVIDER_TRANSACTION_CALL_EXECUTED=NO
+REAL_PAYMENT_ACTIONS=0
+
+NEW_INDEPENDENT_BUSINESS_ACTIVITY_AFTER_CANARY=NO
+UNIFIED_PAY_STOP_OBSERVE_ROLLBACK_READY=YES
+UNIFIED_PAY_APP_STOP_CANDIDATE=YES
+RESIDUAL_BLOCKERS_FOR_REVERSIBLE_APP_STOP=NONE
+
+CURRENT_GATE=M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+UNIFIED_PAY_APP_STOP_AUTHORIZED=NO
+```
+
+Historical deployment Evidence shows production-only bootstrap of two fixed client IDs, generation of client_a/client_b runtime credentials on the VPS, and exactly two active fixed clients. The sole ambiguous ledger attempt is the Owner-authorized CNY 0.01 Alipay canary: the adapter generated a browser form locally, no external Alipay transaction API call occurred, local handoff validation returned HTTP 502, no payment handoff/Owner payment/retry/callback/query occurred.
+
+GPT View+ mapping remains unproven, but this is no longer required to classify the current client registrations as internal deployment principals.
+
+Decision:
+docs/REVIEWER_DECISION_M4B_R1_HISTORICAL_RECORD_RECONCILIATION_M5_REBASE.md
+
+## CURRENT REVIEWER UPDATE — M4B PASS / M5 Unified Pay App-Only Stop Owner Checkpoint — 2026-10-01
+
+```text
+M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL=PASS
+PRODUCTION_CLIENT_A_PROVENANCE=UNKNOWN
+PRODUCTION_CLIENT_B_PROVENANCE=UNKNOWN
+AMBIGUOUS_INCIDENT_CONTEXT=UNKNOWN
+NO_FURTHER_INVESTIGATION_GATE=YES
+
+UNIFIED_PAY_NEW_BUSINESS_ACTIVITY_SINCE_AMBIGUOUS=NO
+UNIFIED_PAY_STOP_OBSERVE_ROLLBACK_READY=YES
+
+CURRENT_GATE=M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+
+UNIFIED_PAY_APP_STOP_AUTHORIZED=NO
+UNIFIED_PAY_DB_STOP_AUTHORIZED=NO
+UNIFIED_PAY_CONTAINER_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_TUNNEL_MUTATION_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+```
+
+Reviewer accepted Evidence commit 7ba1d87f39c8677405ee2e61a878f9292e1fdc54 and Handoff commit 6304b38d4bddc69efe6c01b30441d52734aaae0a.
+
+Investigation is complete. The next proposed step is reversible: stop only the Unified Pay app while retaining PostgreSQL, data, backups, Secrets, image, Compose and Tunnel rollback material. Risk remains that an unknown caller or late Provider callback could encounter an unavailable app. No permanent deletion is proposed.
+
+Decision:
+docs/REVIEWER_DECISION_M4B_PASS_M5_UNIFIED_PAY_APP_STOP_OWNER_CHECKPOINT.md
+
+## CURRENT REVIEWER UPDATE — M4A PASS / M4B Final Client Provenance Open — 2026-10-01
+
+```text
+M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION=PASS
+CALLER_DISPLAY_NAME=production-client-a
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+UNIFIED_PAY_NEW_BUSINESS_ACTIVITY_SINCE_AMBIGUOUS=NO
+AMBIGUOUS_LOCAL_COMMIT_CLASS=IRREDUCIBLY_AMBIGUOUS
+
+CURRENT_GATE=M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+```
+
+M4B is the final investigative Gate. It reconstructs the canonical reviewed source bundle and checks bootstrap/seed/client provenance. If provenance remains unknown, no further investigation Gate will be opened; Reviewer will present the residual risk for an Owner stop-observation decision.
+
+Decision:
+docs/REVIEWER_DECISION_M4A_PASS_M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL.md
+
+Execution packet:
+review-packets/M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL.md
+
+## CURRENT REVIEWER UPDATE — M3E PASS / M4A Unified Pay Final Reconciliation Open — 2026-10-01
+
+```text
+M3E_CADDY_RUNTIME_DECOMMISSION=PASS
+CADDY_PRODUCTION_ROLE=RETIRED
+CADDY_CONTAINER_PRESENT=NO
+CADDY_IMAGE_PRESENT=YES
+CADDY_RECREATE_PATH_PRESERVED=YES
+PUBLIC_TUNNEL_REGRESSION=PASS
+
+CURRENT_GATE=M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+UNIFIED_PAY_RUNTIME_MUTATIONS=0
+CADDY_RUNTIME_DECOMMISSION_COMPLETE=YES
+```
+
+Reviewer accepted Evidence commit 7787a2e30d4fdea802854e88f30fbb527ead93c5 and Handoff commit a581eedd7bed8577a841099b6af250685806fe4b.
+
+Caddy runtime is fully decommissioned. Retained Caddy image/config/data/network assets are recovery material only and are not part of the active production path.
+
+M4A now focuses exclusively on the remaining Unified Pay caller and ambiguous local payment state before any reversible stop observation is proposed.
+
+Decision:
+docs/REVIEWER_DECISION_M3E_PASS_M4A_UNIFIED_PAY_FINAL_RECONCILIATION.md
+
+Execution packet:
+review-packets/M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION.md
+
+## CURRENT REVIEWER UPDATE — M3E Owner Authorized Caddy Runtime Decommission — 2026-10-01
+
+```text
+OWNER_AUTHORIZES_M3E=YES
+CURRENT_GATE=M3E_CADDY_RUNTIME_DECOMMISSION
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_SHARED_INFRA_DELETE
+
+CADDY_CONTAINER_REMOVE_AUTHORIZED=YES_EXACTLY_ONE
+CADDY_IMAGE_DELETE_AUTHORIZED=NO
+CADDY_CONFIG_DELETE_AUTHORIZED=NO
+CADDY_DATA_DELETE_AUTHORIZED=NO
+CADDYFILE_DELETE_AUTHORIZED=NO
+COMPOSE_DELETE_AUTHORIZED=NO
+SPIKERSUN_EDGE_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_MUTATION_AUTHORIZED=NO
+```
+
+Only the stopped Caddy container may be removed. Image, Compose, Caddyfile, data/config binds and spikersun-edge remain preserved for rollback.
+
+Decision:
+docs/REVIEWER_DECISION_M3E_OWNER_AUTHORIZED_CADDY_RUNTIME_DECOMMISSION.md
+
+Execution packet:
+review-packets/M3E_CADDY_RUNTIME_DECOMMISSION.md
+
+## CURRENT REVIEWER UPDATE — M3D-R1 PASS / M3E Caddy Decommission Owner Checkpoint — 2026-10-01
+
+```text
+M3D_R1_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION=PASS
+
+CADDY_PRODUCTION_ROLE=RETIRED
+CADDY_RUNTIME_STATE=STOPPED_RETAINED_FOR_ROLLBACK
+CADDY_DECOMMISSION_CANDIDATE=YES
+
+PUBLIC_TUNNEL_REGRESSION=PASS
+MONITOR_SCHEDULED_RUNS_PASS=3
+UNIFIED_PAY_MUTATIONS=0
+
+CURRENT_GATE=M3E_CADDY_RUNTIME_DECOMMISSION_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+
+CADDY_CONTAINER_REMOVE_AUTHORIZED=NO
+CADDY_IMAGE_DELETE_AUTHORIZED=NO
+CADDY_CONFIG_DELETE_AUTHORIZED=NO
+CADDY_DATA_DELETE_AUTHORIZED=NO
+SPIKERSUN_EDGE_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_MUTATION_AUTHORIZED=NO
+```
+
+Reviewer accepted Evidence commit 2fe3b6637741c18be4ea79212050f181b7f1a6a8 and Handoff commit a5f01ccd4aea9f0351f20e9aca3c132f4dcc4238.
+
+Caddy is now stopped and has been proven unnecessary for the checked production ingress paths. The next proposed phase removes only the stopped Caddy container while preserving its image, Compose source, config, data and shared network for rollback. Prior Owner authorization explicitly prohibited deletion, so a new deletion checkpoint is required.
+
+Decision:
+docs/REVIEWER_DECISION_M3D_R1_PASS_M3E_CADDY_DECOMMISSION_CHECKPOINT.md
+
+## CURRENT REVIEWER UPDATE — M3D RETURN Accepted / R1 Resume Authorized — 2026-10-01
+
+```text
+M3D_RETURN=ACCEPTED_FAIL_CLOSED
+MONITOR_EPHEMERAL_TMPFILE_LIFECYCLE=ALLOWED
+PERSISTENT_STATE_SIDE_EFFECT=NO
+
+OWNER_AUTHORIZES_M3D=YES_CARRIED_FORWARD
+CURRENT_GATE=M3D_R1_ALLOW_EPHEMERAL_TMP_AND_RESUME
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_SHARED_INFRA_WRITE
+
+CADDY_STOP_AUTHORIZED=YES_CONDITIONAL_AFTER_MONITOR_PASS
+CADDY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_MUTATION_AUTHORIZED=NO
+```
+
+Reviewer accepted Evidence commit bfdfa18e10bea8727b6f546e5359fac266595e6d and Handoff commit 2bd13ee288c6968c40fbedbab1b6c97363a04f3a.
+
+The only side effect found is an ephemeral mktemp response-body file under /tmp that is removed by the existing EXIT trap. This is allowed and is not treated as persistent state, external notification or auto-remediation.
+
+M3D resumes from rollback-copy creation; no new Owner checkpoint is required.
+
+Decision:
+docs/REVIEWER_DECISION_M3D_RETURN_R1_ALLOW_EPHEMERAL_TMP_AND_RESUME.md
+
+Execution packet:
+review-packets/M3D_R1_ALLOW_EPHEMERAL_TMP_AND_RESUME.md
+
+## CURRENT REVIEWER UPDATE — M3D Owner Authorized Caddy Monitor Migration + Stop Observation — 2026-10-01
+
+```text
+OWNER_AUTHORIZES_M3D=YES
+OWNER_DIRECTION=PROCEED_AND_REPORT_IF_PROBLEM
+
+CURRENT_GATE=M3D_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_SHARED_INFRA_WRITE
+
+MONITOR_SCRIPT_MUTATION_AUTHORIZED=YES_EXACT_SCOPE
+CADDY_STOP_AUTHORIZED=YES_CONDITIONAL_AFTER_MONITOR_PASS
+CADDY_START_AUTHORIZED=YES_ROLLBACK_ONLY_IF_REGRESSION
+
+CADDY_REMOVE_AUTHORIZED=NO
+CADDY_DELETE_AUTHORIZED=NO
+SPIKERSUN_EDGE_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+```
+
+Before any monitor write, Executor must prove the current monitor has no external notification or auto-remediation side effects. If not proven, fail closed with zero mutations.
+
+If clear, Executor may back up and modify only the Shared Infrastructure monitor script, validate one manual and at least two scheduled runs, then stop Caddy only and perform public/Tunnel regression. Caddy must remain present and recoverable; Unified Pay is untouched.
+
+Decision:
+docs/REVIEWER_DECISION_M3D_OWNER_AUTHORIZED_CADDY_STOP_OBSERVATION.md
+
+Execution packet:
+review-packets/M3D_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION.md
+
+## CURRENT REVIEWER UPDATE — M3C PASS / M3D Caddy Stop Observation Owner Checkpoint — 2026-10-01
+
+```text
+M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE=PASS
+
+UNIFIED_PAY_LIVE_CALLERS=1
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+LIVE_CALLER_RETIREMENT_BLOCKER=YES
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+UNIFIED_PAY_RETIREMENT_READY=NO
+
+CADDY_MONITOR_REPLACEMENT_PLAN=SEALED
+CADDY_DEPENDENT_PROBE_REMOVABLE=YES
+CADDY_RETIREMENT_READY_FOR_REVERSIBLE_STOP_SEQUENCE=YES
+
+CURRENT_GATE=M3D_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION_OWNER_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+
+MONITOR_SCRIPT_MUTATION_AUTHORIZED=NO
+CADDY_STOP_AUTHORIZED=NO
+CADDY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_STOP_AUTHORIZED=NO
+```
+
+Reviewer accepted M3C Evidence commit af3797e80f4fd2daaaeece5e4a0bfb41087b857e and Executor Handoff commit 00dfcf9b5375005b05c44665253ba74f9515abf5.
+
+Caddy is ready for a reversible stop-observation sequence after migrating the single localhost:443 monitor dependency. Unified Pay is not ready for shutdown because the recent caller remains external/unknown and the ambiguous provider-create state remains unresolved.
+
+Formal decision:
+docs/REVIEWER_DECISION_M3C_PASS_M3D_CADDY_MONITOR_MIGRATION_STOP_CHECKPOINT.md
+
+Owner action required: explicitly authorize or decline the bounded monitor migration + Caddy stop-observation sequence.
+
+## CURRENT REVIEWER UPDATE — M3B PASS / M3C Retirement Blocker Closure Open — 2026-10-01
+
+```text
+M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION=PASS
+
+UNIFIED_PAY_REGISTERED_ACTIVE_CLIENTS=2
+UNIFIED_PAY_LIVE_CALLERS=1
+DUJIAO_UNIFIED_PAY_DEPENDENCY=NO
+
+PAY_TUNNEL=spikersun-shared-private
+PAY_TUNNEL_ORIGIN=http://unified-pay-app:8080
+PAY_TUNNEL_HTTP_HOST_HEADER=NONE
+
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+
+CADDY_ACTIVE_ROUTE_CONSUMERS=1
+CADDY_PORT_80_443_ACTIVE_DEPENDENCIES=1
+CADDY_RETIREMENT_SAFE=NO
+
+CURRENT_GATE=M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_READONLY_RECONCILIATION
+
+CADDY_STOP_AUTHORIZED=NO
+UNIFIED_PAY_STOP_AUTHORIZED=NO
+UNIFIED_PAY_REMOVE_AUTHORIZED=NO
+MONITOR_CONFIG_MUTATION_AUTHORIZED=NO
+PROVIDER_WRITE_AUTHORIZED=NO
+```
+
+Reviewer accepted M3B Evidence commit `02dfb170b1f8dd6be044b22baa96c3c06ccc44e3` and Executor Handoff commit `00a4663deef7615de9369323a691f27d6d602b06`.
+
+Dujiao is formally cleared of current Unified Pay dependency. The pay hostname is confirmed as direct Tunnel-to-Unified-Pay. Caddy has no production route; its only active blocker is the scheduled localhost:443 health probe.
+
+M3C is narrowed to: classify the one recent caller, perform at most one safely proven Alipay read-only inquiry for the ambiguous create attempt, seal the Caddy monitor replacement, and prove a reversible Unified Pay app stop/observe rollback plan.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M3B_PASS_M3C_RETIREMENT_BLOCKER_CLOSURE.md`
+
+Execution packet:
+`review-packets/M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE.md`
+
+
+## CURRENT REVIEWER UPDATE — M3A PASS / M3B Dependency Reconciliation Open — 2026-10-01
+
+```text
+M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT=PASS
+
+CADDY_RETIREMENT_SAFE=UNRESOLVED
+UNIFIED_PAY_RUNTIME_RETIREMENT_SAFE=NO
+UNIFIED_PAY_DATA_DELETION_SAFE=NO
+UNIFIED_PAY_RECOVERY_BARRIER=UNRESOLVED
+
+CURRENT_GATE=M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_STOP_AUTHORIZED=NO
+CADDY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_STOP_AUTHORIZED=NO
+UNIFIED_PAY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+PROVIDER_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+```
+
+Reviewer accepted M3A Evidence commit `100a0ecb4a047df9968cdae8e1cd909391148f61` and Executor Handoff commit `756a7c1eb6e9ec381a71d019b109377e6eb7ae61`.
+
+M3A completed the assessment but did not prove deletion safe. M3B is narrowed to four unresolved facts: real activity behind the two registered Unified Pay clients, Dujiao's current dependency classification, exact `pay.spikersun.com` Tunnel origin, and read-only reconciliation of the one created/ambiguous payment state. It also resolves whether Caddy's two diagnostic routes have any active consumer.
+
+No shutdown or deletion is authorized.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M3A_PASS_M3B_DEPENDENCY_RECONCILIATION.md`
+
+Execution packet:
+`review-packets/M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION.md`
+
+
+## CURRENT REVIEWER UPDATE — M3A Caddy + Unified Pay Decommission Assessment Open — 2026-10-01
+
+```text
+MINICRAFT_INGRESS_MIGRATION_M1_TO_M2E=COMPLETE
+
+OWNER_DIRECTION_CADDY=RETIRE_IF_PROVEN_UNUSED
+OWNER_DIRECTION_UNIFIED_PAY=DECOMMISSION_AND_REMOVE_IF_SAFE
+
+CURRENT_GATE=M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_STOP_AUTHORIZED=NO
+CADDY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_STOP_AUTHORIZED=NO
+UNIFIED_PAY_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+NETWORK_DELETE_AUTHORIZED=NO
+BROAD_PRUNE_AUTHORIZED=NO
+```
+
+Owner wants Unified Pay safely removed and Caddy retired if the Shared VPS no longer needs it. Current evidence does not yet authorize either deletion: Unified Pay is still an active healthy app + PostgreSQL runtime, `pay.spikersun.com` is live, and Dujiao's current handoff still classifies its Unified Pay runtime dependency as UNKNOWN.
+
+M3A is therefore a read-only dependency/recovery assessment. It must prove current callers, provider/webhook state, safe DB business aggregates, recovery material, Tunnel ownership, Caddy route consumers, `spikersun-edge` consumers and exact rollback boundaries before Reviewer seals any mutation Gate.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT.md`
+
+Execution packet:
+`review-packets/M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT.md`
+
+
+## CURRENT REVIEWER UPDATE — M2E-R3 Formal PASS / Mini Craft Ingress Migration Closed — 2026-10-01
+
+```text
+M2E_R3_SHARED_CADDY_RECREATE=PASS
+M2E_RESTART_PERSISTENCE=PASS
+LEGACY_MINICRAFT_CADDY_ROUTE=ABSENT
+LEGACY_MINICRAFT_CADDY_ROUTE_REINTRODUCTION_RISK=RESOLVED
+M2E_FORMAL_PASS=YES
+
+M1=PASS
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+M2E=PASS
+
+MIGRATION_M1_TO_M2E=COMPLETE
+CURRENT_GATE=NONE_MIGRATION_CLOSED
+
+PRODUCTION_HOST=minicraft.spikersun.com
+PRODUCTION_INGRESS=CLOUDFLARE_TUNNEL_DIRECT_TO_MINICRAFT_APP
+PRODUCTION_TUNNEL=spikersun-shared-private
+PRODUCTION_ORIGIN=http://mini-craft-night-kit-wordpress:80
+
+CADDY_REQUIRED_FOR_MINICRAFT_PRODUCTION=NO
+```
+
+Reviewer independently accepted Evidence commit `a8873cb195410bef4854be36ea371002ab86af22` and Executor Handoff commit `4d5e6f6e1cac7d70c19e273d3a97220359b6b15a`.
+
+The one authorized Caddy-only recreate returned native exit 0. The Caddy container identity changed, while the immutable image, ports, network, restart policy and three persistent bind mounts remained sealed. The mounted `/etc/caddy/Caddyfile` now equals the current 143-byte host Caddyfile and accepted SHA-256; the retired Mini Craft matcher is absent and config validation passes.
+
+Other-container inventory was identical before and after. Mini Craft Home / Shop / WP REST / TLS and the direct-origin edge-test regression all passed. No Cloudflare, DNS, Tunnel, application, database, payment, pull, build, broad cleanup, Caddyfile write, separate reload or separate restart occurred.
+
+Mini Craft production ingress is now fully on the shared Cloudflare Tunnel/private-network pattern. The legacy Mini Craft Caddy route is retired and its restart reintroduction risk is resolved.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M2E_R3_PASS_MINICRAFT_INGRESS_MIGRATION_COMPLETE.md`
+
+
+## CURRENT REVIEWER UPDATE — Owner Authorized M2E-R3 Shared Caddy Recreate — 2026-10-01
+
+```text
+M2E_R2_CADDY_RECREATE_PREFLIGHT=PASS
+OWNER_EXPLICITLY_AUTHORIZES_M2E_R3_CADDY_RECREATE=YES
+
+CURRENT_GATE=M2E_R3_SHARED_CADDY_RECREATE
+CURRENT_GATE_STATUS=AUTHORIZED_BOUNDED_SHARED_INFRA_WRITE
+
+CADDY_RECREATE_AUTHORIZED=YES_ONE_BOUNDED_TRANSACTION
+CADDY_RECREATE_MAX_COUNT=1
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO_SEPARATE_ACTION
+CADDYFILE_WRITE_AUTHORIZED=NO
+
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+APPLICATION_MUTATION_AUTHORIZED=NO
+DATABASE_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Owner explicitly approved the exact sealed Shared Caddy recreate proposed by M2E-R2.
+
+Authorized transaction:
+
+```sh
+sudo -n docker compose --project-name spikersun-edge --project-directory /srv/infra/edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never --no-build caddy
+```
+
+The command may run exactly once and only after fresh pre-write invariants match the M2E-R2 seal. Any material drift cancels execution and returns to Reviewer. A non-zero or ambiguous recreate outcome must not be blindly retried; fresh read-only reconciliation is required.
+
+Success remains only `PASS_CANDIDATE` until Reviewer independently accepts post-write Evidence and formally closes M2E.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M2E_R3_OWNER_AUTHORIZED_CADDY_RECREATE.md`
+
+Execution packet:
+`review-packets/M2E_R3_OWNER_AUTHORIZED_CADDY_RECREATE.md`
+
+
+## CURRENT REVIEWER UPDATE — M2E-R2 Formal PASS / Owner Caddy Recreate Checkpoint — 2026-10-01
+
+```text
+S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT=PASS
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+
+M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION=PASS
+M2E_R2_CADDY_RECREATE_PREFLIGHT=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=FAIL_NEEDS_RECREATE
+M2E_FORMAL_PASS=NO
+
+CADDY_COMPOSE_PROJECT=spikersun-edge
+CADDY_COMPOSE_SERVICE=caddy
+CADDY_CANONICAL_COMPOSE_PATH=/srv/infra/edge/compose.yaml
+CADDY_IMAGE_ID=sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_BYTES=143
+HOST_SOURCE_MINICRAFT_MATCHER=ABSENT
+PRE_RECREATE_CADDY_CONFIG_VALID=PASS
+
+CURRENT_GATE=M2E_R3_OWNER_CADDY_RECREATE_CHECKPOINT
+CURRENT_GATE_STATUS=WAITING_FOR_EXPLICIT_OWNER_AUTHORIZATION
+
+CADDY_RECREATE_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Reviewer independently accepted M2E-R2. Evidence commit `55b7eefd5bf3bce898152904c4921cb92b89396b` and Executor Handoff commit `7053d1559535d21297397e47dedf345b9a6796b4` contain the expected bounded read-only additions. The two non-zero SSH command results were read-only command-construction errors and were superseded by later complete read-back; no ambiguous runtime write exists.
+
+The exact future transaction is sealed but not authorized:
+
+```sh
+sudo -n docker compose --project-name spikersun-edge --project-directory /srv/infra/edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never --no-build caddy
+```
+
+Before any authorized write, Executor must fresh-recheck target identity, canonical Compose validation, the exact 143-byte host Caddyfile/SHA, Mini Craft matcher absence, immutable Caddy image ID, ports/networks/mounts, and regression baseline. Any material drift cancels authorization. No blind second recreate is permitted after an ambiguous outcome.
+
+Formal decision:
+`docs/REVIEWER_DECISION_M2E_R2_PASS_OWNER_CADDY_RECREATE_CHECKPOINT.md`
+
+Owner action required: explicitly authorize or decline this exact bounded Shared Caddy recreate transaction. Until then, no Shared Infrastructure mutation is permitted.
+
+
+## CURRENT REVIEWER UPDATE — M2E-R1 Formal PASS / M2E-R2 Caddy Recreate Preflight Open — 2026-10-01
+
+```text
+S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT=PASS
+NORMAL_VPS_MANAGEMENT_PATH=STRICT_SSH
+HOSTINGER_WEB_TERMINAL_ROLE=FALLBACK_RECOVERY_ONLY
+
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION=PASS
+M2E_RESTART_PERSISTENCE=FAIL_NEEDS_RECREATE
+M2E_FORMAL_PASS=NO
+
+CADDY_CONTAINER_ID=793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+CADDY_MOUNT_DIVERGENCE_CLASS=SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE
+RESTART_REINTRODUCTION_RISK=YES
+PLAIN_RESTART_SUFFICIENT=NO
+RECREATE_REQUIRED=YES
+
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_BYTES=143
+HOST_SOURCE_MINICRAFT_MATCHER=ABSENT
+
+CONTAINER_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+CONTAINER_CADDYFILE_BYTES=199
+CONTAINER_MOUNTED_FILE_MINICRAFT_MATCHER=PRESENT
+ACTIVE_ADMIN_CONFIG_MINICRAFT_MATCHER=ABSENT
+
+CURRENT_GATE=M2E_R2_CADDY_RECREATE_PREFLIGHT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_RECREATE_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Reviewer persisted and fresh-read the complete M2E-R1 SSH result after the Executor-side GitHub transport failure. The stale single-file bind-mount condition is now formally accepted rather than provisional.
+
+The current production runtime remains healthy and the Mini Craft matcher is absent from both the host Caddy source and active Admin config. However the existing Caddy container still exposes the old 199-byte file at `/etc/caddy/Caddyfile`, and Caddy startup reads that path. A plain restart can therefore reintroduce the retired matcher.
+
+The smallest technical repair is a Caddy-only recreate/rebind from the canonical deployment definition. That write is not yet authorized.
+
+M2E-R2 is read-only preflight. It must identify the exact Compose project/service/config path, image, ports, networks, mounts and persistence volumes; validate the canonical definition and current 143-byte host Caddy config; seal the exact Caddy-only recreate command with no dependencies/pull/build; and establish public regression plus failure-recovery baselines.
+
+After M2E-R2 PASS, Reviewer will present an explicit Owner checkpoint containing the exact sealed recreate transaction. Only then may the Shared Caddy container be recreated.
+
+M2E-R1 formal PASS decision:
+`docs/REVIEWER_DECISION_M2E_R1_PASS_R2_CADDY_RECREATE_PREFLIGHT.md`
+
+M2E-R2 packet:
+`review-packets/M2E_R2_CADDY_RECREATE_PREFLIGHT.md`
+
+## CURRENT REVIEWER UPDATE — S1 Formal PASS / Canonical SSH Restored / M2E-R1 Reconciliation Resumes via SSH — 2026-09-30
+
+```text
+S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT=PASS
+
+NORMAL_VPS_MANAGEMENT_PATH=STRICT_SSH
+SSH_NORMAL_PATH=RESTORED
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+SSH_NATIVE_EXIT=0
+TARGET_HOST_EXECUTION_PROVEN=PASS
+SUDO_NONINTERACTIVE_AVAILABLE=YES
+DIRECT_DOCKER_SOCKET_ACCESS=NO
+DOCKER_ACCESS_METHOD=BOUNDED_SUDO_DOCKER
+HOSTINGER_WEB_TERMINAL_ROLE=FALLBACK_RECOVERY_ONLY
+
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=NOT_PROVEN
+M2E_FORMAL_PASS=NO
+
+CURRENT_GATE=M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_RELOAD_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RECREATE_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+SSH_REPAIR_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Reviewer independently persisted the S1 result after the Executor's GitHub transport failure and fresh-read the canonical Evidence/Handoff. The exact non-secret SSH trust tuple is now promoted into `SHARED_VPS_HANDOFF.md`.
+
+The prior `DOCKER_READONLY_ACCESS=NO` finding is not a connection failure. It means the `ops` account does not have direct Docker socket access. Passwordless non-interactive sudo is verified, so reviewed Docker inspection/actions must use bounded `sudo docker ...` commands.
+
+Hostinger Web Terminal is no longer the normal VPS management path. It remains fallback/recovery only.
+
+The unresolved M2E persistence issue is unchanged: current active Caddy and host source have the Mini Craft legacy route removed, while the container-mounted single-file Caddyfile is stale and could reintroduce the matcher on future restart. The next Gate completes that reconciliation through canonical SSH and retrieves the exact Caddy container identity plus fresh mount/config facts. It is strictly read-only.
+
+S1 formal PASS decision:
+`docs/REVIEWER_DECISION_S1_PASS_M2E_R1_SSH_RECONCILIATION.md`
+
+M2E-R1 SSH packet:
+`review-packets/M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION.md`
+
+## CURRENT REVIEWER UPDATE — SSH-first Management Restored as Governance Direction / S1 SSH Contract Recovery Open — 2026-09-30
+
+```text
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=NOT_PROVEN
+M2E_FORMAL_PASS=NO
+
+M2E_R1_R3_HOSTINGER_TERMINAL_CAPTURE=STOPPED_INCOMPLETE
+CADDY_CONTAINER_ID=NOT_CAPTURED
+CADDY_CONTAINER_NAME=NOT_CAPTURED
+HOSTINGER_TERMINAL_COMMAND_EXECUTION=UNPROVEN
+M2E_R1_R3_MUTATIONS=0
+
+MANAGEMENT_PATH_POLICY=SSH_FIRST
+NORMAL_VPS_MANAGEMENT_PATH=STRICT_SSH_ops@srv1970241
+HOSTINGER_WEB_TERMINAL_ROLE=FALLBACK_RECOVERY_ONLY
+
+CURRENT_GATE=S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+SSH_NETWORK_INVOCATIONS_AUTHORIZED=1
+SSH_REPAIR_AUTHORIZED=NO
+HOSTINGER_TERMINAL_USE_AUTHORIZED=NO_FOR_S1
+VPS_MUTATION_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+CADDY_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Governance re-review confirmed that the normal Shared VPS path is the canonical SSH connection contract. Hostinger Web Terminal is a provider-panel recovery route only.
+
+The browser-terminal path originally entered at M1-R2 after a single strict SSH probe failed before remote identity. Subsequent Mini Craft Gates reused that recovery path longer than intended. This is now corrected as execution-path drift; prior accepted target-host facts remain valid because they had target identity/readback, but future ordinary VPS management returns to strict SSH after S1 passes.
+
+The attempted M2E-R1-R3 Hostinger identity capture was stopped. The browser terminal showed a visible `root@srv1970241` prompt, but the bounded collection command was not proven executed and no Caddy container ID/name was accepted. No runtime mutation occurred.
+
+S1 first recovers the already-existing non-secret SSH trust metadata from the accepted Owner-workstation bootstrap handoff, validates the key fingerprint and known_hosts pins locally, then permits exactly one strict non-interactive read-only SSH probe as `ops@2.24.193.133:22`. No blind retry is permitted.
+
+After S1 PASS, the exact non-secret SSH trust metadata will be promoted into `SHARED_VPS_HANDOFF.md`, Hostinger Web Terminal remains fallback only, and the unfinished M2E persistence reconciliation resumes through SSH.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT.md`
+
+Execution packet:
+`review-packets/S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT.md`
+
+## CURRENT REVIEWER UPDATE — M2E-R1 GitHub Persistence RETURN Accepted / Missing Caddy Identity Capture Open — 2026-09-30
+
+```text
+M2A=PASS
+M2B=PASS
+M2C=PASS
+M2D=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=NOT_PROVEN
+M2E_FORMAL_PASS=NO
+
+M2E_R1_R2_RESULT=RETURN_GITHUB_EVIDENCE_PERSISTENCE_UNAVAILABLE
+GITHUB_CONNECTIVITY_RESTORED_AT_REVIEWER=YES
+CANONICAL_M2E_R1_EXECUTION_RECORD_PRESENT=NO
+
+CADDY_MOUNT_DIVERGENCE_CLASS=SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE
+RESTART_REINTRODUCTION_RISK=YES
+PLAIN_RESTART_SUFFICIENT=NO
+RECREATE_OR_RESTART_REQUIRED=RECREATE_REQUIRED
+
+HOST_CADDYFILE=/srv/infra/edge/Caddyfile
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+CONTAINER_CADDYFILE=/etc/caddy/Caddyfile
+CONTAINER_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+
+CURRENT_GATE=M2E_R1_R3_MISSING_CADDY_RUNTIME_IDENTITY_CAPTURE
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+
+CADDY_CONTAINER_ID=UNKNOWN_NOT_PERSISTED
+CADDY_CONTAINER_NAME=UNKNOWN_NOT_PERSISTED
+
+CADDY_MUTATION_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RECREATE_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+Reviewer-side GitHub access is currently healthy. The prior Executor persistence RETURN is accepted, and the canonical Evidence/Handoff are confirmed to still lack the M2E-R1 execution section.
+
+The only remaining missing runtime fields required before Reviewer can persist the complete M2E-R1 record are the exact current Caddy container ID and name. The stale single-file bind-mount classification and restart risk are otherwise provisionally accepted.
+
+The minimal technical remedy is now classified as Caddy container/service recreate/rebind only; a plain restart is insufficient because it would preserve the stale bind reference. This is analysis only—no recreate is authorized.
+
+R3 is strictly read-only and must capture only the missing Caddy runtime identity from the already-open Hostinger Web Terminal. Executor should not retry GitHub persistence. Once returned, Reviewer will write the complete Evidence/Handoff directly.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2E_R1_R2_RETURN_R3_MISSING_RUNTIME_IDENTITY_CAPTURE.md`
+
+Execution packet:
+`review-packets/M2E_R1_R3_MISSING_CADDY_RUNTIME_IDENTITY_CAPTURE.md`
+
+## CURRENT REVIEWER UPDATE — M2E-R1 Runtime Facts Provisionally Accepted / GitHub Evidence Persistence Recovery Open — 2026-09-30
+
+```text
+M2A_MINICRAFT_PRIVATE_NETWORK_PREPARATION=PASS
+M2B_TEMPORARY_TUNNEL_CANARY=PASS
+M2C_PRODUCTION_HOSTNAME_TUNNEL_CUTOVER=PASS
+M2D_PUBLIC_REGRESSION_AND_OBSERVATION=PASS
+
+M2E_ACTIVE_RUNTIME_RETIREMENT=PASS
+M2E_HOST_SOURCE_RETIREMENT=PASS
+M2E_RESTART_PERSISTENCE=NOT_PROVEN
+M2E_FORMAL_PASS=NO
+
+M2E_R1_RESULT=RETURN_GITHUB_EVIDENCE_PERSISTENCE_UNAVAILABLE
+M2E_R1_RUNTIME_READONLY_CHECKS=PASS_REPORTED
+M2E_R1_CANONICAL_PERSISTENCE=NOT_COMPLETED
+
+CADDY_MOUNT_DIVERGENCE_CLASS=SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE_REPORTED
+RESTART_REINTRODUCTION_RISK=YES_REPORTED
+
+HOST_CADDYFILE=/srv/infra/edge/Caddyfile
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_BYTES=143
+
+CONTAINER_CADDYFILE=/etc/caddy/Caddyfile
+CONTAINER_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+CONTAINER_CADDYFILE_BYTES=199
+
+MOUNT_TYPE=bind
+MOUNT_SOURCE=/srv/infra/edge/Caddyfile
+MOUNT_DESTINATION=/etc/caddy/Caddyfile
+MOUNT_RW=false
+MOUNT_PROPAGATION=rprivate
+
+CURRENT_GATE=M2E_R1_R2_GITHUB_EVIDENCE_PERSISTENCE_RECOVERY
+CURRENT_GATE_STATUS=AUTHORIZED_DOCUMENTATION_ONLY_WITH_READONLY_MISSING_FIELD_RECOVERY
+
+CADDY_MUTATION_AUTHORIZED=NO
+CADDY_RELOAD_AUTHORIZED=NO
+CADDY_RESTART_AUTHORIZED=NO
+CADDY_RECREATE_AUTHORIZED=NO
+DOCKER_MUTATION_AUTHORIZED=NO
+COMPOSE_MUTATION_AUTHORIZED=NO
+CLOUDFLARE_MUTATION_AUTHORIZED=NO
+DNS_MUTATION_AUTHORIZED=NO
+TUNNEL_ROUTE_MUTATION_AUTHORIZED=NO
+VPS_MUTATION_AUTHORIZED=NO
+PAYMENT_ACTION_AUTHORIZED=NO
+```
+
+The M2E-R1 target-host readback supports a stale single-file bind-mount explanation: the mount source path is the current host Caddyfile, but the container destination still exposes the old 199-byte configuration while the host path is the 143-byte post-retirement configuration; Caddy startup reads `/etc/caddy/Caddyfile`.
+
+The Executor could not persist the R1 result because GitHub transport failed. Reviewer independently re-read the canonical GitHub files afterward and confirmed that no M2E-R1 execution section was appended.
+
+Formal M2E-R1 PASS is therefore withheld only for canonical evidence persistence and completion of omitted required metadata such as exact Caddy container identity and the precise recreate/restart conclusion.
+
+The recovery Gate is documentation-only. If exact required values were not retained, one bounded Hostinger read-only lookup of only those missing fields is permitted. No Caddy/Docker/provider/runtime write is authorized.
+
+Reviewer decision:
+`docs/REVIEWER_DECISION_M2E_R1_RETURN_R2_GITHUB_EVIDENCE_PERSISTENCE_RECOVERY.md`
+
+Recovery packet:
+`review-packets/M2E_R1_R2_GITHUB_EVIDENCE_PERSISTENCE_RECOVERY.md`
+
 ## CURRENT REVIEWER UPDATE — M2E Active Runtime PASS / Restart Persistence NOT PROVEN / M2E-R1 Read-only Reconciliation Open — 2026-09-30
 
 ```text

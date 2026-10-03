@@ -1,0 +1,49 @@
+{
+  "proxies": [
+    {
+      "name": "WG-BASELINE",
+      "type": "direct"
+    },
+    {
+      "name": "HY2-SFO3",
+      "type": "hysteria2",
+      "server": "__VPS_HOST__",
+      "port": 8443,
+      "password": "__EXTERNAL_SECRET_NOT_IN_REPOSITORY__",
+      "sni": "__HY2_SNI__",
+      "skip-cert-verify": true,
+      "fingerprint": "__TARGET_CERT_SHA256_AFTER_SECRET_CHECKPOINT__",
+      "alpn": ["h3"],
+      "interface-name": "__PHYSICAL_INTERFACE_NAME_RUNTIME_DISCOVERY__"
+    },
+    {
+      "name": "REALITY-SFO3",
+      "type": "vless",
+      "server": "__VPS_HOST__",
+      "port": 443,
+      "uuid": "__EXTERNAL_REALITY_UUID_NOT_IN_REPOSITORY__",
+      "udp": false,
+      "flow": "xtls-rprx-vision",
+      "network": "tcp",
+      "tls": true,
+      "servername": "__REALITY_SNI__",
+      "client-fingerprint": "chrome",
+      "reality-opts": {
+        "public-key": "__TARGET_REALITY_PUBLIC_KEY_AFTER_LATER_GATE__",
+        "short-id": "__TARGET_REALITY_SHORT_ID_AFTER_LATER_GATE__"
+      },
+      "interface-name": "__PHYSICAL_INTERFACE_NAME_RUNTIME_DISCOVERY__"
+    }
+  ],
+  "proxy-groups": [
+    {
+      "name": "SELF-VPN-MANUAL",
+      "type": "select",
+      "proxies": [
+        "WG-BASELINE",
+        "HY2-SFO3",
+        "REALITY-SFO3"
+      ]
+    }
+  ]
+}

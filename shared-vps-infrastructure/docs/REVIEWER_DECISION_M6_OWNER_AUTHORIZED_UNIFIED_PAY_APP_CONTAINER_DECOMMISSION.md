@@ -1,0 +1,118 @@
+# Reviewer Decision — M6 Owner Authorized Unified Pay App Container Decommission
+
+Date: 2026-10-01
+Role: Reviewer / Architect / Gatekeeper
+
+## Owner authorization
+
+Owner explicitly approved M6.
+
+```text
+OWNER_AUTHORIZES_M6=YES
+AUTHORIZED_ACTION=REMOVE_STOPPED_UNIFIED_PAY_APP_CONTAINER_ONLY
+```
+
+## Accepted baseline
+
+```text
+M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION=PASS
+UNIFIED_PAY_APP_STATE=stopped
+UNIFIED_PAY_APP_CONTAINER_PRESENT=YES
+UNIFIED_PAY_POSTGRES_STATE=healthy
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+KNOWN_PROJECT_REGRESSION=NO
+CREDIBLE_CALLER_EVIDENCE_FOUND=NO
+```
+
+## Exact authorized scope
+
+Remove only the already-stopped Unified Pay app container.
+
+Preserve all of:
+
+- Unified Pay PostgreSQL container and database;
+- current Unified Pay app image;
+- canonical Compose source;
+- /srv/data/unified-pay;
+- /srv/backups/unified-pay;
+- Secret sources;
+- Cloudflare Tunnel route for pay.spikersun.com;
+- DNS;
+- all unrelated projects and networks.
+
+## Preconditions
+
+Before removal, fresh-read and require:
+
+```text
+UNIFIED_PAY_APP_STATE=stopped
+UNIFIED_PAY_APP_CONTAINER_PRESENT=YES
+UNIFIED_PAY_APP_IMAGE_PRESENT=YES
+UNIFIED_PAY_POSTGRES_STATE=healthy
+UNIFIED_PAY_COMPOSE_SOURCE_PRESENT=YES
+UNIFIED_PAY_DATA_PRESENT=YES
+UNIFIED_PAY_BACKUPS_PRESENT=YES
+UNIFIED_PAY_SECRET_SOURCE_PRESENT=YES
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+KNOWN_PROJECT_BASELINE=healthy
+```
+
+Any material drift returns to Reviewer before deletion.
+
+## Authorized mutation
+
+Remove exactly one stopped Unified Pay app container.
+
+Do not run compose down.
+
+Do not stop or remove PostgreSQL.
+
+Do not remove images, networks, volumes, bind-mounted data, backups, Secrets, Compose files, Tunnel routes or DNS.
+
+## Post-removal verification
+
+Require:
+
+```text
+UNIFIED_PAY_APP_CONTAINER_PRESENT=NO
+UNIFIED_PAY_APP_IMAGE_PRESENT=YES
+UNIFIED_PAY_POSTGRES_STATE=healthy
+UNIFIED_PAY_COMPOSE_SOURCE_PRESENT=YES
+UNIFIED_PAY_DATA_PRESENT=YES
+UNIFIED_PAY_BACKUPS_PRESENT=YES
+UNIFIED_PAY_SECRET_SOURCE_PRESENT=YES
+UNIFIED_PAY_RECREATE_PATH_PRESERVED=YES
+KNOWN_PROJECT_REGRESSION=NO
+```
+
+pay.spikersun.com remaining unavailable is expected while no app container exists and the Tunnel still targets unified-pay-app:8080.
+
+## Boundaries
+
+```text
+UNIFIED_PAY_APP_CONTAINER_REMOVE_AUTHORIZED=YES_EXACTLY_ONE
+UNIFIED_PAY_APP_IMAGE_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_DB_STOP_AUTHORIZED=NO
+UNIFIED_PAY_DB_CONTAINER_REMOVE_AUTHORIZED=NO
+UNIFIED_PAY_COMPOSE_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_DATA_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_BACKUP_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_SECRET_DELETE_AUTHORIZED=NO
+UNIFIED_PAY_TUNNEL_MUTATION_AUTHORIZED=NO
+UNIFIED_PAY_DNS_MUTATION_AUTHORIZED=NO
+PROVIDER_CALLS_AUTHORIZED=NO
+PAYMENT_ACTIONS_AUTHORIZED=NO
+BROAD_PRUNE_AUTHORIZED=NO
+```
+
+## Success
+
+```text
+PASS_CANDIDATE_M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION
+UNIFIED_PAY_APP_CONTAINER_PRESENT=NO
+UNIFIED_PAY_APP_IMAGE_PRESENT=YES
+UNIFIED_PAY_POSTGRES_STATE=healthy
+UNIFIED_PAY_RECREATE_PATH_PRESERVED=YES
+KNOWN_PROJECT_REGRESSION=NO
+STOP_AT_REVIEWER=YES
+```

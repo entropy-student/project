@@ -1,0 +1,23 @@
+# Non-sensitive Mihomo/Clash Verge fragment. Import or enable manually only in a safe window.
+# Do not auto-switch the current profile, proxy, system proxy, or TUN.
+proxies:
+  - name: VPN-HY2
+    type: hysteria2
+    server: __VPS_HOST__
+    port: 8443
+    password: __EXTERNAL_SECRET_NOT_IN_REPOSITORY__
+    sni: __HY2_SNI__
+    # Required for self-signed TLS; the certificate fingerprint below pins the exact leaf certificate.
+    skip-cert-verify: true
+    # Inject only after the protected target certificate checkpoint.
+    fingerprint: __TARGET_CERT_SHA256_AFTER_SECRET_CHECKPOINT__
+    alpn:
+      - h3
+
+proxy-groups:
+  - name: VPN-G1-MANUAL
+    type: select
+    proxies:
+      - DIRECT
+      - VPN-HY2
+

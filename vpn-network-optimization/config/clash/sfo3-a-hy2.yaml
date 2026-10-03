@@ -1,0 +1,20 @@
+# Non-sensitive SFO3-A client fragment. Keep disabled and outside active profiles
+# until the auth value is injected locally in an explicitly approved safe window.
+proxies:
+  - name: SFO3-A-HY2
+    type: hysteria2
+    server: 24.199.118.137
+    port: 8443
+    password: __LOCAL_SECRET_INJECTION_REQUIRED__
+    sni: hy2.sfo3-a.invalid
+    skip-cert-verify: true
+    fingerprint: 8A:8D:50:5F:DF:80:DB:76:C6:76:39:5A:86:E4:9D:81:8E:A1:5B:76:64:ED:70:30:8C:29:60:9C:23:74:1F:18
+    alpn:
+      - h3
+
+proxy-groups:
+  - name: VPN-G1-MANUAL
+    type: select
+    proxies:
+      - DIRECT
+      - SFO3-A-HY2

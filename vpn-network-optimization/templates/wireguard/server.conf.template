@@ -1,0 +1,14 @@
+# WireGuard server template. Render only into a protected runtime path.
+# Do not place a private key in this repository or in ordinary logs.
+[Interface]
+Address = {{WG_SERVER_ADDRESS}}
+ListenPort = {{WG_PORT}}
+# MTU is an environment decision; omit for wg-quick automatic behavior or set explicitly after validation.
+# MTU = {{WG_MTU}}
+# PrivateKey = __EXTERNAL_WG_SERVER_PRIVATE_KEY_NOT_IN_REPOSITORY__
+
+[Peer]
+PublicKey = {{WG_CLIENT_PUBLIC_KEY}}
+AllowedIPs = {{WG_CLIENT_ADDRESS}}
+# Keepalive is a client/NAT decision; do not force it on the server by default.
+

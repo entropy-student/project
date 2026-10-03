@@ -868,3 +868,1850 @@ Post-reload Caddy Admin readback showed only the preserved localhost and edge-te
 Important residual: the container's mounted `/etc/caddy/Caddyfile` still reads the prewrite 199-byte baseline hash, while the host source and active Admin configuration contain the 143-byte candidate. The Caddyfile bind mount is therefore stale. The requested stdin reload correctly changed the active configuration without reopening that pathname, but a future Caddy process restart from the stale mounted path could restore the retired matcher. No restart/recreate was attempted because it is explicitly forbidden in this Gate. Reviewer should decide whether a separately authorized mount reconciliation/recreate is required.
 
 A 30-byte edge-test body was briefly written to the exact diagnostic path shown above, then content/size-checked and removed; the path was confirmed absent afterward. No other temporary path was touched.
+
+
+## Gate: S1 Restore Canonical Shared VPS SSH Connection Contract — 2026-09-30
+
+```text
+GATE=S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT
+RESULT=PASS_CANDIDATE_S1_RESTORE_CANONICAL_SSH_CONNECTION_CONTRACT
+
+SSH_NORMAL_PATH=RESTORED
+IDENTITY_FILE_REFERENCE=C:\Users\34707\.ssh\xianyu_hostinger_codex_ed25519
+IDENTITY_FILE_EXISTS=YES
+IDENTITY_ACL_METADATA=PASS
+CLIENT_PUBLIC_KEY_FINGERPRINT=SHA256:qFlRXelvzDEFpatrcX7T4dUBKPAC7YqFqNkyFZh5rYw
+CLIENT_PUBLIC_KEY_FINGERPRINT_MATCH=YES
+EXPECTED_HOST_KEY_FINGERPRINTS=SHA256:yr2b1z2fZmMU+8IwnTB8M94H1VlO+U3CIZk1S3FOa+o;SHA256:L7lXm/ssbbeeHG6OlRis2dreMW+SGzeJoMeGu6xzngw;SHA256:QS8B89XaTDpt3s+74W55W4jQzrjwfrEc/Q0FfWp8uZc
+KNOWN_HOSTS_REFERENCE=C:\Users\34707\.ssh\known_hosts
+KNOWN_HOSTS_EXPECTED_PINS_MATCH=YES
+STRICT_OPTIONS=BatchMode=yes;IdentitiesOnly=yes;StrictHostKeyChecking=yes;UserKnownHostsFile=C:\Users\34707\.ssh\known_hosts;ConnectionAttempts=1;ConnectTimeout=10;ForwardAgent=no
+
+SSH_NATIVE_EXIT=0
+REMOTE_HOSTNAME=srv1970241
+REMOTE_USER=ops
+REMOTE_OS=Ubuntu 24.04.5 LTS (VERSION_ID=24.04)
+TARGET_HOST_EXECUTION_PROVEN=PASS
+SUDO_NONINTERACTIVE_AVAILABLE=YES
+DOCKER_READONLY_ACCESS=NO_DIRECT
+SSH_NETWORK_INVOCATIONS=1
+HOSTINGER_WEB_TERMINAL_USED=NO
+
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+STOP_AT_REVIEWER=YES
+```
+
+### S1 notes
+
+Local trust preflight passed before network access. The existing Owner-workstation identity reference was verified without reading or emitting private-key contents; the derived client public-key fingerprint and recorded known_hosts pins matched the accepted trust metadata. Exactly one strict non-interactive SSH invocation was made to ops@2.24.193.133:22 and exited 0. Remote readback proved hostname srv1970241 and user ops on Ubuntu 24.04.5 LTS.
+
+Direct unprivileged Docker read-only access is not available to ops, while non-interactive sudo is available. This does not block the SSH connection contract: future reviewed Docker operations should use bounded `sudo docker ...` commands rather than assuming direct docker-socket membership. No SSH repair or runtime mutation occurred.
+
+
+## Gate: M2E-R1 SSH Persistence Reconciliation Completion — 2026-10-01
+
+```text
+GATE=M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION
+RESULT=PASS_CANDIDATE_M2E_R1_SSH_PERSISTENCE_RECONCILIATION_COMPLETION
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+SSH_NATIVE_EXIT=0
+SSH_NETWORK_INVOCATIONS=1
+HOSTINGER_WEB_TERMINAL_USED=NO
+
+CADDY_CONTAINER_ID=793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+CADDY_STATE=running
+CADDY_RESTART_COUNT=0
+
+MOUNT_TYPE=bind
+MOUNT_SOURCE=/srv/infra/edge/Caddyfile
+MOUNT_DESTINATION=/etc/caddy/Caddyfile
+MOUNT_RW=false
+MOUNT_PROPAGATION=rprivate
+
+HOST_CADDYFILE_BYTES=143
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_SOURCE_MINICRAFT_MATCHER=ABSENT
+
+CONTAINER_CADDYFILE_BYTES=199
+CONTAINER_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+CONTAINER_MOUNTED_FILE_MINICRAFT_MATCHER=PRESENT
+
+ACTIVE_ADMIN_CONFIG_MINICRAFT_MATCHER=ABSENT
+CADDY_STARTUP_CONFIG_SOURCE=/etc/caddy/Caddyfile
+
+MINICRAFT_HOME_HTTP=200
+MINICRAFT_HOME_TLS_VERIFY=0
+MINICRAFT_SHOP_HTTP=200
+MINICRAFT_SHOP_TLS_VERIFY=0
+MINICRAFT_WP_REST_HTTP=200
+MINICRAFT_WP_REST_TLS_VERIFY=0
+
+CADDY_MOUNT_DIVERGENCE_CLASS=SINGLE_FILE_BIND_MOUNT_STALE_REFERENCE
+RESTART_REINTRODUCTION_RISK=YES
+PLAIN_RESTART_SUFFICIENT=NO
+RECREATE_REQUIRED=YES
+MINIMAL_RECONCILIATION_PLAN=RECREATE_ONLY_EXISTING_SHARED_CADDY_CONTAINER_OR_SERVICE_FROM_CANONICAL_DEPLOYMENT_DEFINITION_TO_REBIND_CURRENT_HOST_CADDYFILE_THEN_REGRESSION_VERIFY
+
+CADDYFILE_WRITES=0
+CADDY_RELOADS=0
+CADDY_RESTARTS=0
+CADDY_RECREATES=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+PAYMENT_ACTIONS=0
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+### M2E-R1 SSH reconciliation notes
+
+Fresh readback through the restored canonical SSH path reproduced the previously suspected persistence divergence. The host Caddyfile is the 143-byte post-retirement source with no Mini Craft matcher, while the running container's read-only single-file bind destination still exposes the 199-byte pre-retirement baseline containing the matcher. The active Caddy Admin config remains on the correct post-retirement state.
+
+Because Caddy startup reads `/etc/caddy/Caddyfile`, a plain process/container restart can reintroduce the legacy matcher. A plain restart therefore does not reconcile the stale bind reference. The bounded next-step proposal is to recreate only the existing shared Caddy service/container from its canonical deployment definition so the bind mount is re-established against the current host source, then perform full regression verification. No write action was executed in this Gate.
+
+
+## Gate: M2E-R2 Caddy Recreate Preflight — 2026-10-01
+
+```text
+GATE=M2E_R2_CADDY_RECREATE_PREFLIGHT
+RESULT=PASS_CANDIDATE_M2E_R2_CADDY_RECREATE_PREFLIGHT
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+SSH_LOCAL_TRUST_PREFLIGHT=PASS
+SSH_NETWORK_INVOCATIONS=4
+SSH_NATIVE_REMOTE_COMMAND_RESULTS=72,0,1,0
+
+CADDY_CONTAINER_ID=793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+CADDY_STATE=running
+CADDY_RESTART_COUNT=0
+CADDY_DOCKER_HEALTHCHECK=NONE
+
+CADDY_COMPOSE_PROJECT=spikersun-edge
+CADDY_COMPOSE_SERVICE=caddy
+CADDY_COMPOSE_WORKING_DIR=/srv/infra/edge
+CADDY_CANONICAL_COMPOSE_PATH=/srv/infra/edge/compose.yaml
+CADDY_COMPOSE_FILE_EXISTS=YES
+DOCKER_SERVER_VERSION=29.8.0
+DOCKER_COMPOSE_VERSION=5.5.1
+CANONICAL_COMPOSE_QUIET_VALIDATION=PASS
+CANONICAL_COMPOSE_SERVICES=caddy
+CADDY_IMAGE_REFERENCE=caddy:2-alpine
+CADDY_IMAGE_ID=sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648
+LOCAL_IMAGE_TAG_ID_MATCH=PASS
+CADDY_RESTART_POLICY=unless-stopped
+CADDY_COMPOSE_RUNTIME_SEMANTICS=PASS
+CADDY_PUBLISHED_PORTS=80/tcp,443/tcp
+CADDY_NETWORKS=spikersun-edge
+CADDY_MOUNTS=
+bind:/srv/infra/edge/Caddyfile->/etc/caddy/Caddyfile:RO
+bind:/srv/infra/edge/data->/data:RW
+bind:/srv/infra/edge/config->/config:RW
+CADDY_DATA_BIND_PATH_PRESENT=YES
+CADDY_CONFIG_BIND_PATH_PRESENT=YES
+CADDY_CERT_STATE_PERSISTENCE=PASS
+CADDY_CONFIG_STATE_PERSISTENCE=PASS
+
+HOST_CADDYFILE_BYTES=143
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_MINICRAFT_MATCHER=ABSENT
+PRE_RECREATE_CADDY_CONFIG_VALID=PASS
+CADDY_HOST_CONFIG_ROUTE_SEMANTICS=edge-test.spikersun.com:static_response:200:30 bytes:SHA256 2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824;localhost:static_response:200:24 bytes:SHA256 cdb5952b737f70a8b3138bebd1aa34dc4d9fb99e759155745e1df01689897107
+CADDY_ACTIVE_ADMIN_CONFIG_FRESH_READ=NOT_PERFORMED
+CADDY_SERVICE_HEALTH=PASS_BY_RUNNING_STATE_AND_ORIGIN_REGRESSION
+
+MINICRAFT_HOME_HTTP=200
+MINICRAFT_HOME_TLS_VERIFY_RESULT=0
+MINICRAFT_SHOP_HTTP=200
+MINICRAFT_SHOP_TLS_VERIFY_RESULT=0
+MINICRAFT_WP_REST_HTTP=200
+MINICRAFT_WP_REST_TLS_VERIFY_RESULT=0
+EDGE_TEST_PUBLIC_DNS=ABSENT_OR_UNRESOLVED
+EDGE_TEST_DIRECT_ORIGIN_HTTP=200
+EDGE_TEST_DIRECT_ORIGIN_TLS_VERIFY_RESULT=0
+EDGE_TEST_DIRECT_ORIGIN_BODY_BYTES=30
+EDGE_TEST_DIRECT_ORIGIN_BODY_SHA256=2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824
+
+CADDY_RECREATE_COMMAND_PROPOSAL=sudo -n docker compose --project-name spikersun-edge --project-directory /srv/infra/edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never --no-build caddy
+RECREATE_SCOPE=CADDY_ONLY
+PULL=NO
+BUILD=NO
+DEPENDENCY_RECREATE=NO
+OTHER_SERVICE_RECREATE=NO
+CADDY_RECREATE_AUTHORIZED=NO
+CADDY_RECREATE_EXECUTED=NO
+
+CADDY_RECREATE_FAILURE_RECOVERY_PLAN=Fresh-read container/service state first; no blind repeated recreate. In a separately authorized recovery Gate, use the same canonical Compose source to reconcile only caddy, preserve the 143-byte host Caddyfile and current image ID, then rerun Caddy/Tunnel/public regression; do not restore the stale 199-byte Mini Craft matcher or change Cloudflare/DNS/Tunnel.
+
+PROBE_NOTES=Attempt 1 exited 72 because Docker inspect Go template requested absent optional State.Health; attempt 2 completed the full bounded collection. Attempt 3 exited 1 after directory metadata and quiet Compose validation because a supplemental parser invocation omitted its service argument; no Caddy Admin API facts are claimed. Attempt 4 confirmed local image tag ID equals running immutable image ID. All four SSH invocations used canonical strict options; failures were read-only command-construction errors.
+
+CADDYFILE_WRITES=0
+CADDY_RELOADS=0
+CADDY_RESTARTS=0
+CADDY_RECREATES=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+VPS_MUTATIONS=0
+PAYMENT_ACTIONS=0
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+The current host Caddyfile validated successfully by streaming the host source read-only to the installed Caddy binary. Compose service semantics matched the running container for image reference/immutable image, TCP 80/443, `spikersun-edge`, all three bind mounts, and restart policy. `/srv/infra/edge/data` and `/srv/infra/edge/config` exist on the host root ext4 filesystem; the mounts therefore survive recreation of the Caddy container. Compose declares only the `caddy` service and no dependencies.
+
+The public Mini Craft Tunnel checks passed with normal TLS verification. The Caddy `edge-test` hostname did not resolve in the current public DNS readback, so it was checked against the current public origin IP using a per-request `--resolve` override without disabling TLS verification; it returned the accepted 30-byte fingerprint. The `localhost` route was confirmed in the validated host Caddyfile semantic adaptation; no fresh Admin API read is claimed.
+
+The recreate command above is a proposal only. It was not executed and remains unauthorized pending the Reviewer/Owner checkpoint.
+
+## Gate: M2E-R3 Shared Caddy Recreate — 2026-10-01
+
+```text
+GATE=M2E_R3_SHARED_CADDY_RECREATE
+RESULT=PASS_CANDIDATE_M2E_R3_SHARED_CADDY_RECREATE
+OWNER_AUTHORIZATION=YES_ONE_BOUNDED_TRANSACTION
+ACCESS_PATH=CANONICAL_STRICT_SSH
+SSH_LOCAL_TRUST_PREFLIGHT=PASS
+SSH_NETWORK_INVOCATIONS=4
+PREFLIGHT_ASSERTION_ATTEMPT_1=READ_ONLY_EXIT_42_PORT_SORT_ORDER_ASSERTION_ONLY_NO_MUTATION
+FRESH_PREWRITE_PREFLIGHT=PASS
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+RECREATE_NATIVE_EXIT=0
+CADDY_RECREATE_COUNT=1
+CADDY_RECREATE_COMMAND=sudo -n docker compose --project-name spikersun-edge --project-directory /srv/infra/edge -f /srv/infra/edge/compose.yaml up -d --no-deps --force-recreate --pull never --no-build caddy
+
+CADDY_OLD_CONTAINER_ID=793a5c8fbcd86d3c2b6dc0ba5a47e51de9d372957210efa0912523b8c1e7b9a2
+CADDY_NEW_CONTAINER_ID=82749fff0bcea4538748dbb96d0d616b88617e3b4cc505a9fd70b61b6a789bb1
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+POST_CADDY_STATE=running
+POST_CADDY_RESTART_COUNT=0
+POST_CADDY_IMAGE_ID=sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648
+POST_CADDY_RESTART_POLICY=unless-stopped
+POST_CADDY_PUBLISHED_PORTS=80/tcp,443/tcp
+POST_CADDY_NETWORKS=spikersun-edge
+POST_CADDY_MOUNTS=bind:/srv/infra/edge/Caddyfile->/etc/caddy/Caddyfile:RO;bind:/srv/infra/edge/data->/data:RW;bind:/srv/infra/edge/config->/config:RW
+
+CANONICAL_COMPOSE_QUIET_VALIDATION=PASS
+CANONICAL_COMPOSE_SERVICES=caddy
+LOCAL_IMAGE_TAG_ID_MATCH=PASS
+HOST_CADDYFILE_BYTES=143
+HOST_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+HOST_CADDYFILE_MINICRAFT_MATCHER=ABSENT
+PRE_RECREATE_MOUNTED_CADDYFILE_BYTES=199
+PRE_RECREATE_MOUNTED_CADDYFILE_SHA256=cde23fafd4c23f69e089f11bcafdfec22db61bc7ebbfd979b3b8213ddfaf72f8
+PRE_RECREATE_MOUNTED_MINICRAFT_MATCHER=PRESENT
+PRE_RECREATE_CADDY_CONFIG_VALID=PASS
+POST_CONTAINER_CADDYFILE_BYTES=143
+POST_CONTAINER_CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+POST_CONTAINER_MINICRAFT_MATCHER=ABSENT
+POST_CADDY_CONFIG_VALID=PASS
+CADDY_DATA_BIND_PRESENT=YES
+CADDY_CONFIG_BIND_PRESENT=YES
+CADDY_DATA_CONFIG_PERSISTENCE=PASS
+
+OTHER_CONTAINER_COUNT_BEFORE=9
+OTHER_CONTAINER_INVENTORY_SHA256_BEFORE=fedd477a7cc014763b0bc6dfa2af610b98f71ff802caf866dd136076ef0bf411
+OTHER_CONTAINER_COUNT_AFTER=9
+OTHER_CONTAINER_INVENTORY_SHA256_AFTER=fedd477a7cc014763b0bc6dfa2af610b98f71ff802caf866dd136076ef0bf411
+OTHER_SERVICE_RECREATES=0
+UNRELATED_CONTAINER_STATE_INVENTORY_UNCHANGED=YES
+
+MINICRAFT_HOME_HTTP=200
+MINICRAFT_HOME_TLS_VERIFY_RESULT=0
+MINICRAFT_SHOP_HTTP=200
+MINICRAFT_SHOP_TLS_VERIFY_RESULT=0
+MINICRAFT_WP_REST_HTTP=200
+MINICRAFT_WP_REST_TLS_VERIFY_RESULT=0
+EDGE_TEST_DIRECT_ORIGIN_HTTP=200
+EDGE_TEST_DIRECT_ORIGIN_TLS_VERIFY_RESULT=0
+EDGE_TEST_DIRECT_ORIGIN_BODY_BYTES=30
+EDGE_TEST_DIRECT_ORIGIN_BODY_SHA256=2a1fbeab0fdc9199b590f3b2b5ebf216271f2f7918df7fbe6a3a0e7587b9a824
+
+M2E_RESTART_PERSISTENCE=PASS
+LEGACY_MINICRAFT_CADDY_ROUTE_REINTRODUCTION_RISK=RESOLVED
+CADDYFILE_WRITES=0
+CADDY_RELOADS=0
+CADDY_RESTARTS=0
+CADDY_RECREATES=1
+OTHER_SERVICE_RECREATES=0
+PULLS=0
+BUILDS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+APPLICATION_MUTATIONS=0
+DATABASE_MUTATIONS=0
+PAYMENT_ACTIONS=0
+BROAD_PRUNE=NO
+SECRET_VALUES_EMITTED=0
+M2E_FORMAL_PASS=PENDING_REVIEWER
+STOP_AT_REVIEWER=YES
+```
+
+The first read-only preflight invocation stopped at a local assertion that compared port summaries in the wrong lexical order; no runtime write occurred. A complete fresh prewrite pass then matched the sealed baseline. The one authorized recreate returned native SSH exit 0. Fresh post-readback confirmed the container identity changed, while its immutable image ID and all sealed runtime semantics remained unchanged; the mounted startup Caddyfile now matches the host source byte-for-byte and validates without the retired Mini Craft matcher. Public Mini Craft and direct-origin edge-test checks passed with normal TLS verification. The bounded non-Caddy container inventory was identical before and after. No Cloudflare, DNS, Tunnel, application, database, payment, pull, build, or cleanup action occurred.
+
+
+## M3A Caddy + Unified Pay Decommission Assessment — 2026-10-01
+
+```text
+GATE=M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT
+RESULT=PASS_CANDIDATE_M3A_CADDY_UNIFIED_PAY_DECOMMISSION_ASSESSMENT
+CURRENT_GATE_STATUS=AUTHORIZED_READONLY_ONLY
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+REMOTE_UID=1000
+STRICT_SSH_TARGET_IDENTITY=PASS
+SSH_NATIVE_EXIT_ZERO_CALLS=3
+SSH_NATIVE_EXIT_TWO_READONLY_COMMAND_SYNTAX_ERRORS=2
+TARGET_HOST_EXECUTION_PROVEN=PASS
+SUDO_NONINTERACTIVE=YES
+DOCKER_READONLY_ACCESS=YES
+```
+
+### Authoritative sources read
+
+- Canonical VPS Project Governance latest: Governance Handoff, Source Policy, v0.1.6, Storage Layout Contract, SSH / Delegated Secret Operations, Target Host Reality Contract, and Production Provider Canary and Recovery Contract.
+- Shared VPS: `SHARED_VPS_HANDOFF.md`, current `REVIEWER_HANDOFF.md`, `SHARED_VPS_PORTFOLIO.md`, M3A Reviewer Decision, M3A Execution Packet, current `EXECUTION_EVIDENCE.md`, and `EXECUTOR_HANDOFF.md`.
+- Unified Pay: current `REVIEWER_HANDOFF.md`, `PROJECT_STORAGE_MANIFEST.md`, `PROJECT_RECORD.md`, GitHub source-bundle directory listing, README, Dockerfile/bundle manifest metadata.
+- Dujiao-Next, Xianyu, and Mini Craft current Reviewer Handoffs.
+
+### Caddy dependency and retirement assessment
+
+- Runtime: `/spikersun-edge-caddy-1`, container ID `82749fff0bcea4538748dbb96d0d616b88617e3b4cc505a9fd70b61b6a789bb1`, `running`, restart count 0; Compose project/service `spikersun-edge/caddy`, canonical file `/srv/infra/edge/compose.yaml`, image `caddy:2-alpine`.
+- Caddy is the current host listener owner for 80/443. It is attached to `spikersun-edge`; the network currently has two endpoints (Caddy and Mini Craft WordPress). Current mounted host source is `/srv/infra/edge/Caddyfile`, 143 bytes, SHA-256 `f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358`.
+- Caddy mounts `/srv/infra/edge/data -> /data` and `/srv/infra/edge/config -> /config` as persistent writable binds; Caddyfile is a read-only bind. Their contents, including certificate material, were not read.
+- Caddy Compose quiet validation passed. Both adapted source config and active Admin config contain only two static-response routes: `edge-test.spikersun.com` (HTTP 200, 30-byte body) and `localhost` (HTTP 200, 24-byte body); no reverse-proxy upstream and no Mini Craft matcher. `edge-test.spikersun.com` did not resolve in the host-side public DNS check. Public Mini Craft is on its accepted direct Tunnel path, not Caddy.
+- Existing M2E prewrite rollback Caddyfile remains present (199 bytes); no Caddy config or runtime change was made.
+- No production application route was found in the current Caddy route set. However, the active diagnostic/test and localhost routes have no independently verified owner/consumer inventory. Therefore `CADDY_RETIREMENT_SAFE=UNRESOLVED`, not YES.
+
+### Unified Pay, Dujiao, ingress and callers
+
+- Unified Pay app and PostgreSQL are both running/healthy, restart count 0, with no host-published ports. Compose project/service source is `/srv/apps/unified-pay/docker-compose.prod.yml`. App is attached to `spikersun-private` (`unified-pay-app` alias) and `unified-pay-internal`; PostgreSQL is only on `unified-pay-internal`. Durable DB path is `/srv/data/unified-pay/db` (about 64 MiB); secret files remain under `/srv/data/unified-pay/secrets` and are mounted read-only. No secret contents or values were read.
+- Public `pay.spikersun.com/health` and `/ready` both returned HTTP 200 with TLS verify result 0. Cloudflared is running on `spikersun-private` in remote-managed `tunnel run --token-file` mode. The exact Cloudflare public-hostname origin target was not available from the VPS-local metadata; no Cloudflare control-plane session/API read was performed. Therefore `UNIFIED_PAY_INGRESS_OWNER=CLOUDFLARE_REMOTE_MANAGED_TUNNEL; ORIGIN_TARGET=UNRESOLVED`.
+- Unified Pay DB safe aggregates only: 2 active client records; 2 active, unrevoked client credentials; 1 production Alipay provider-account row (`active=true`, `enabled=false`, `activation_reviewed=true`); 1 payment intent in `created`; 1 provider-create attempt in `ambiguous` at 2026-09-14 16:45 UTC; 1 idempotency record. Provider events, provider payment facts, refunds, provider refund attempts, and outbox events each count 0. No IDs, payloads, URLs, amounts, or record contents were read.
+- The two active client/credential pairs are registered caller principals; current simultaneous/live traffic was not measured. Thus `UNIFIED_PAY_ACTIVE_CALLERS=2_REGISTERED_ACTIVE_CLIENTS;LIVE_TRAFFIC=UNMEASURED`.
+- Dujiao app/PostgreSQL/Redis are running/healthy with restart count 0. Dujiao app can reach the shared private network, but its current three payment channels are all inactive; `channel_clients=0`, `downstream_order_refs=0`. Safe aggregate historical DB counts: 34 orders (30 canceled, 2 completed, 2 fulfilling) and 20 payments (7 expired, 11 failed, 2 success). No Dujiao Compose/deployed-source reference to Unified Pay was found. The mounted `/srv/data/dujiao-next/secrets/config.yml` was intentionally not read, so the conclusion is no direct dependency evidence found, but absence is not fully proven: `DUJIAO_UNIFIED_PAY_DEPENDENCY=UNRESOLVED`.
+- Xianyu is attached to `spikersun-private`; current Caddy config has no Xianyu matcher. Mini Craft M1–M2E migration is accepted complete, with production ingress direct through `spikersun-shared-private -> http://mini-craft-night-kit-wordpress:80`.
+
+### Data, backup, Secret recovery and reconstruction
+
+- `/srv/backups/unified-pay` contains 33 files: 13 database dumps (469,699 bytes total; newest file metadata 2026-09-14 17:45:28 UTC), 15 Compose snapshots (73,764 bytes total), and 5 other metadata files. The newest dump timestamp is later than the one current created/ambiguous intent-attempt timestamp, but backup contents were not read, hashes were not calculated, and no restore test was performed.
+- GitHub canonical `unified-pay-system/` contains the Dockerfile, bundle manifest and 16 source-bundle fragments; the declared source archive SHA-256 is `653b511bd98595d0ad21fbb5729e1a41055a41c59f7b9c4c8b7ca21a791104a8`. The README describes these as reconstructible source material and states Provider Secrets are not in the source bundle. No bundle was downloaded or decoded.
+- Current VPS secret source directory is present, but no separate protected Secret recovery artifact was found under the Unified Pay backup namespace. Owner-local protected recovery metadata was not independently verified. Database-backup existence and source reconstructibility do not establish a tested end-to-end recovery path.
+- `UNIFIED_PAY_RUNTIME_RETIREMENT_SAFE=NO`: public ingress and two active registered caller principals remain; one payment intent/provider-create attempt is unresolved; exact Tunnel origin and Dujiao's secret-mounted runtime configuration are unproven.
+- `UNIFIED_PAY_DATA_DELETION_SAFE=NO`: durable business/audit/client/provider state exists, including the unresolved intent; preserve DB, secrets and all backups.
+- `UNIFIED_PAY_RECOVERY_BARRIER=UNRESOLVED`: DB dump and reconstructible code exist, but no restore test or independent protected Secret recovery proof is available.
+
+### Minimum-risk phased retirement proposal (not executed)
+
+1. Keep Caddy and Unified Pay running. Reviewer first resolves Caddy test-route ownership and the exact remote-managed `pay` Tunnel target.
+2. In a separate read-only, metadata-only checkpoint, prove or disprove the two registered external client dependencies and Dujiao configuration without exposing secret values. Reconcile the single ambiguous provider-create/payment-intent state through an explicitly authorized read-only provider/local correlation; no replay.
+3. Before any future runtime retirement, obtain a separately authorized and verified DB recovery artifact, preserve the exact source bundle/image/Compose and a protected Secret recovery path, and prove restore/restart recovery. Keep all existing backups.
+4. If callers are proven absent and the ambiguous state is reconciled, use a new Owner-authorized Gate for a reversible app-runtime stop/observation while preserving PostgreSQL, DB, secrets, image, Compose and Tunnel rollback material. A separate Gate is required before any data/Secret/backup deletion.
+5. Assess Caddy in its own bounded Gate after an explicit decision on `edge-test` and localhost consumers; preserve its current config and `/data`/`/config` state, then verify all non-Caddy ingress before any separately authorized stop.
+
+### Mutation counters
+
+```text
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_CONTENT_READS=0
+BACKUP_DELETIONS=0
+CLEANUP_OR_PRUNE_ACTIONS=0
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+
+## M3B Caddy + Unified Pay Dependency Reconciliation — 2026-10-01
+
+```text
+GATE=M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION
+RESULT=PASS_CANDIDATE_M3B_CADDY_UNIFIED_PAY_DEPENDENCY_RECONCILIATION
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+CLOUDFLARE_DASHBOARD_CONTEXT=AUTHENTICATED_READONLY
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+FILE_DELETIONS=0
+NETWORK_MUTATIONS=0
+BROAD_PRUNE=NO
+```
+
+### Unified Pay caller evidence
+
+Fresh read-only PostgreSQL aggregates: 2 active registered clients and 2 active/unrevoked credentials. In the last 30 days, the audit table contained 2 payment-related events associated with 1 distinct client reference; latest event time was 2026-09-14T16:45:03Z. No request/client identity values were emitted. The app's available Docker log window contained one line, with no structured request records or caller fields; logs supplied no additional request counter.
+
+```text
+UNIFIED_PAY_REGISTERED_ACTIVE_CLIENTS=2
+UNIFIED_PAY_LIVE_CALLERS=1
+LIVE_CALLER_EVIDENCE=2 recent payment-related durable audit events; 1 distinct client reference; latest 2026-09-14T16:45:03Z
+```
+
+### Dujiao dependency
+
+Fresh DB aggregates: 3 non-deleted payment channels, 0 active; 0 non-deleted channel_clients; 0 non-deleted downstream_order_refs. The current deployed Compose and non-secret active source search contained no Unified Pay/pay.spikersun.com reference. The mounted config at /srv/data/dujiao-next/secrets/config.yml was parsed in memory with a key/reference-only classifier; no Unified Pay reference was found and no values were emitted. The config file itself was not printed or persisted.
+
+```text
+DUJIAO_UNIFIED_PAY_DEPENDENCY=NO
+DUJIAO_PAYMENT_CHANNELS_TOTAL=3
+DUJIAO_PAYMENT_CHANNELS_ACTIVE=0
+DUJIAO_CHANNEL_CLIENTS=0
+DUJIAO_DOWNSTREAM_ORDER_REFS=0
+DUJIAO_SECRET_CONFIG_REFERENCE=ABSENT
+VALUE_OUTPUT=NO
+```
+
+### Cloudflare Tunnel pay route
+
+Read from the authenticated Cloudflare dashboard's spikersun-shared-private route table and pay route details; no edits were made. The HTTP Host Header field was blank/default (no override). The same route table showed xianyu, pay, shop and canonical Mini Craft routes pointing directly to their app aliases.
+
+```text
+PAY_PUBLIC_HOST=pay.spikersun.com
+PAY_TUNNEL=spikersun-shared-private
+PAY_TUNNEL_ORIGIN=http://unified-pay-app:8080
+PAY_TUNNEL_HTTP_HOST_HEADER=NONE
+```
+
+### Ambiguous provider-create state
+
+Fresh local durable aggregate readback found one created payment intent and one provider-create attempt in ambiguous state (nonterminal); terminal create attempts=0. Provider events=0, provider payment facts=0, refunds=0 and outbox events=0. No already-established safe read-only provider query path was available, so no provider was contacted and the attempt remains unresolved.
+
+```text
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+PAYMENT_INTENTS_CREATED=1
+PROVIDER_CREATE_ATTEMPTS_AMBIGUOUS=1
+PROVIDER_CREATE_ATTEMPTS_TERMINAL=0
+PROVIDER_CREATE_ATTEMPTS_NONTERMINAL=1
+PROVIDER_EVENTS=0
+PROVIDER_PAYMENT_FACTS=0
+REFUNDS=0
+OUTBOX_EVENTS=0
+```
+
+### Caddy active-consumer reconciliation
+
+Fresh runtime/config readback: Caddy is the only container publishing host ports 80/443; its host Caddyfile remains 143 bytes with SHA-256 f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358, contains the static edge-test.spikersun.com and localhost routes, and has no production reverse proxy. edge-test.spikersun.com currently has no public IPv4 DNS answer. No active Compose consumer, Caddy Admin healthcheck, or matching running-container healthcheck was found. Cloudflare Tunnel routes for production apps go directly to app aliases; Mini Craft's membership in spikersun-edge is network membership only.
+
+One active consumer was found: enabled/active spikersun-infra-health.timer schedules spikersun-infra-health.service, whose current monitoring script probes https://localhost (default port 443). The one-shot service was inactive between runs at readback. An unscheduled Xianyu deploy helper also contains loopback default-port probes, but no active scheduler reference was found; it is not counted as a current active consumer.
+
+```text
+CADDY_ACTIVE_ROUTE_CONSUMERS=1
+CADDY_PORT_80_443_ACTIVE_DEPENDENCIES=1
+CADDY_ACTIVE_CONSUMER=spikersun-infra-health.timer -> check-shared-infra.sh -> HTTPS localhost:443
+CADDY_RETIREMENT_SAFE=NO
+CADDY_RETIREMENT_BLOCKER=active scheduled localhost HTTPS health probe
+```
+
+### Execution notes
+
+Cloudflare was read-only; pay origin and route metadata were read back from the authenticated dashboard. Strict SSH local trust preflight matched the recorded client fingerprint and expected host-key pins; successful remote probes proved ops@srv1970241. Several initial read-only command attempts had shell/template parsing errors; no mutation occurred, and the facts above came from subsequent successful bounded read-only queries. No provider query was attempted. No source values, client IDs, names, credentials, request bodies or business identifiers were emitted.
+
+## M3C Caddy + Unified Pay Retirement Blocker Closure — 2026-10-01
+
+```text
+GATE=M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE
+RESULT=PASS_CANDIDATE_M3C_CADDY_UNIFIED_PAY_RETIREMENT_BLOCKER_CLOSURE
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+SSH_NATIVE_EXIT=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+CADDY_MUTATIONS=0
+MONITOR_CONFIG_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+FILE_DELETIONS=0
+NETWORK_MUTATIONS=0
+BROAD_PRUNE=NO
+```
+
+### Recent Unified Pay caller and ambiguous intent
+
+Read-only aggregate SQL was executed through the running PostgreSQL container using its configured runtime DB role. No IDs, client names, transaction identifiers, amounts, payloads, credentials, or customer data were emitted.
+
+```text
+UNIFIED_PAY_REGISTERED_ACTIVE_CLIENTS=2 (accepted M3B baseline)
+UNIFIED_PAY_LIVE_CALLERS=1
+RECENT_PAYMENT_AUDIT_EVENTS=2
+RECENT_DISTINCT_CLIENT_REFERENCES=1
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+LIVE_CALLER_LAST_ACTIVITY=2026-09-14T16:45:03Z
+LIVE_CALLER_ACTIVITY_AFTER_AMBIGUOUS_WINDOW=NO
+LIVE_CALLER_RETIREMENT_BLOCKER=YES
+PAYMENT_INTENTS_CREATED=1
+PAYMENT_INTENT_STATUS_COUNTS=created:1
+PROVIDER_CREATE_ATTEMPTS_AMBIGUOUS=1
+PROVIDER_CREATE_ATTEMPTS_TERMINAL=0
+PROVIDER_EVENTS=0
+PROVIDER_PAYMENT_FACTS=0
+REFUNDS=0
+OUTBOX_EVENTS=0
+```
+
+The two recent payment audit events were internally checked against the single ambiguous attempt's intent reference; both correlate to that same intent. Their precise event times straddle the attempt timestamp by milliseconds, but there is no independent/unlinked subsequent business event. Registration metadata did not safely map the caller to a known internal project or test/canary purpose, so it remains `EXTERNAL_OR_UNKNOWN`; the caller remains a retirement blocker. No raw registration identity was persisted.
+
+### Provider inquiry decision
+
+The deployed adapter/code safety screen found no proven isolated Alipay order/status inquiry path, no safe invocation boundary, and no demonstrated protected-credential reuse for such a query. Therefore the optional Provider inquiry was not called.
+
+```text
+PROVIDER_QUERY_PATH_PROVEN_READONLY=NO
+PROVIDER_QUERY_PERFORMED=NO
+PROVIDER_QUERY_COUNT=0
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+DATABASE_WRITES=0
+```
+
+The ambiguous provider-create remains unresolved; no create/retry/cancel/refund/replay was attempted.
+
+### Caddy monitoring replacement design
+
+Fresh read-only host metadata confirmed the enabled/active `spikersun-infra-health.timer` invokes the oneshot `spikersun-infra-health.service` on a 2-minute boot delay and 5-minute interval. The service is inactive between runs and its last result was successful. The root-owned mode-0750, 3330-byte script is `/srv/infra/monitoring/check-shared-infra.sh`; it uses fail-fast `set -e`, includes host/Docker/cloudflared/private-network checks, and has one Caddy-dependent `https://localhost:443` probe. It does not currently probe Mini Craft, Shop, or Pay public endpoints.
+
+```text
+CADDY_MONITOR_REPLACEMENT_PLAN=SEALED
+CURRENT_CADDY_DEPENDENT_PROBE=https://localhost:443
+REPLACEMENT_PROBES=target host/basic health; Docker daemon availability; cloudflared running/restart state; spikersun-private presence; Mini Craft public Home/Shop/wp-json over verified TLS; Shop public endpoint; Pay endpoint only while Unified Pay remains intentionally active
+CADDY_DEPENDENT_PROBE_REMOVABLE=YES
+MONITOR_ROLLBACK_METHOD=In a separately authorized monitor Gate, preserve exact pre-change allowlisted monitor files in the existing scoped recovery area, verify their hashes, restore those exact files on regression, and daemon-reload only if unit definitions changed; do not restart Caddy.
+```
+
+No timer, service, script, or Caddy configuration was changed.
+
+### Unified Pay reversible stop/observe recovery barrier
+
+Fresh read-only runtime/metadata readback confirmed:
+
+- app: container `unified-pay-app-1`, Compose project `unified-pay`, service `app`, running/healthy, restart count 0, container ID `0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e`;
+- PostgreSQL: `unified-pay-db-1`, service `db`, running/healthy, restart count 0, container ID `eeb800570fd41e117a3cb788ef27977749de7f637f86e7379db4cf686547a120`;
+- canonical Compose source `/srv/apps/unified-pay/docker-compose.prod.yml` exists (5271 bytes, mode 0644) and matches the runtime Compose labels;
+- the current app image remains local: `sha256:78029ea23abde4a44ff4c51a176c549b1be81746e73f9cfe08dbda0550c901cc`;
+- durable PostgreSQL bind data remains at `/srv/data/unified-pay/db`; project data, backup namespace, and secret-source mounts are present. Secret content was not read; mount metadata only showed 7 regular sources at mode 0640 and 2 directories at mode 0750, with no world access;
+- the exact pay Tunnel route is carried forward from accepted M3B readback: `pay.spikersun.com -> spikersun-shared-private -> http://unified-pay-app:8080`, Host Header default/none. No Cloudflare change was made.
+
+```text
+UNIFIED_PAY_STOP_OBSERVE_ROLLBACK_READY=YES
+ROLLBACK_RESTART_SOURCE=Compose=/srv/apps/unified-pay/docker-compose.prod.yml; project=unified-pay; service=app only; current app image locally present; PostgreSQL service/data retained
+DATA_PRESERVATION_PLAN=SEALED
+```
+
+The future reversible observation boundary is app-only stop; preserve PostgreSQL, `/srv/data/unified-pay`, `/srv/backups/unified-pay`, mounted Secret sources, app image, Compose source, and Tunnel route. This Gate did not stop or restart any service and authorizes no later stop by itself.
+
+```text
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+
+## M3D Caddy Monitor Migration + Stop Observation — bounded preflight return — 2026-10-01
+
+```text
+GATE=M3D_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION
+RESULT=RETURN_M3D_MONITOR_SIDE_EFFECTS_UNRESOLVED
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+SSH_PRINCIPAL=ops@2.24.193.133:22
+PRIVILEGED_READ_CONTEXT=sudo root
+SSH_NATIVE_EXIT=0
+
+MONITOR_TIMER_PATH=/etc/systemd/system/spikersun-infra-health.timer
+MONITOR_TIMER_SHA256=e2ccc93decf36b667454f497b91be4e74fc83fce13ee18eb142f3495c6618164
+MONITOR_TIMER_BYTES=206
+MONITOR_TIMER_OWNER_MODE=root:root 0644
+MONITOR_TIMER_STATE=active/enabled
+
+MONITOR_SERVICE_PATH=/etc/systemd/system/spikersun-infra-health.service
+MONITOR_SERVICE_SHA256=c2052ff5f6d24a53b22b94a82d5a3a74762079977c41adda80d4f106dc8900bd
+MONITOR_SERVICE_BYTES=233
+MONITOR_SERVICE_OWNER_MODE=root:root 0644
+MONITOR_SERVICE_STATE=inactive/dead between runs; last result=success; last exit=0
+
+MONITOR_SCRIPT=/srv/infra/monitoring/check-shared-infra.sh
+MONITOR_SCRIPT_SHA256=cc466266a0f7de19badf7cbe6601a4cb01fc8b1ae661e1e68d6346e7ce29daf1
+MONITOR_SCRIPT_BYTES=3330
+MONITOR_SCRIPT_OWNER_MODE=root:root 0750
+
+MONITOR_EXTERNAL_NOTIFICATION=NO
+MONITOR_AUTO_REMEDIATION=NO
+MONITOR_HTTP_POST_OR_PROVIDER_WRITE=NO
+MONITOR_NONLOG_STATE_WRITES=YES
+MONITOR_NONLOG_STATE_WRITE_DETAIL=script creates a temporary response-body file with mktemp under /tmp, directs the existing HTTPS probe body into it, and removes it with an EXIT trap; this is outside normal service logging
+MONITOR_SIDE_EFFECT_SCREEN=BLOCKED
+
+CADDY_STATE=running
+CADDY_CONTAINER_ID=82749fff0bcea4538748dbb96d0d616b88617e3b4cc505a9fd70b61b6a789bb1
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+CADDY_RESTART_COUNT=0
+CADDY_IMAGE_ID=sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648
+CADDYFILE_BYTES=143
+CADDYFILE_SHA256=f96a9bab9fa326125de311df9c8c0c6fca20e3d6deb5fcbe22a7c739e819c358
+
+CLOUDFLARED_RUNNING_COUNT=1
+SPIKERSUN_PRIVATE_PRESENT=YES
+
+PREFLIGHT_MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+PREFLIGHT_MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+PREFLIGHT_MINICRAFT_WP_REST=HTTP_200_TLS_VERIFY_0
+PREFLIGHT_SHOP_HOME=HTTP_200_TLS_VERIFY_0
+
+ROLLBACK_COPY_CREATED=NO
+MONITOR_SCRIPT_MUTATION=0
+MANUAL_MONITOR_RUN=NOT_STARTED
+SCHEDULED_MONITOR_RUNS=0
+CADDY_STOP_ACTIONS=0
+CADDY_DELETIONS=0
+UNIFIED_PAY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+DOCKER_MUTATIONS=0
+VPS_RUNTIME_MUTATIONS=0
+SECRET_VALUES_OUTPUT=0
+BROAD_PRUNE=NO
+STOP_AT_REVIEWER=YES
+```
+
+The bounded side-effect review found no mail/chat/webhook notification, HTTP POST/provider write, or service/container remediation command. It did find the temporary-file create/write/remove lifecycle above. Because the Gate requires a clean pre-write side-effect screen and calls out non-logging state writes, execution stopped before creating a rollback copy or changing the monitor. Caddy remains running; no timer, service, monitoring file, Unified Pay, or production endpoint was changed. Initial public baseline was healthy with normal TLS verification.
+
+## Gate: M3D_R1_ALLOW_EPHEMERAL_TMP_AND_RESUME — 2026-10-01
+
+```text
+GATE=M3D_R1_ALLOW_EPHEMERAL_TMP_AND_RESUME
+RESULT=PASS_CANDIDATE_M3D_R1_CADDY_MONITOR_MIGRATION_AND_STOP_OBSERVATION
+TARGET_HOST=srv1970241
+MONITOR_EXTERNAL_NOTIFICATION=NO
+MONITOR_AUTO_REMEDIATION=NO
+MONITOR_HTTP_POST_OR_PROVIDER_WRITE=NO
+MONITOR_EPHEMERAL_TMPFILE_LIFECYCLE=ALLOWED
+PERSISTENT_STATE_SIDE_EFFECT=NO
+
+MONITOR_SOURCE_PATH=/srv/infra/monitoring/check-shared-infra.sh
+MONITOR_SOURCE_SHA256_BEFORE=cc466266a0f7de19badf7cbe6601a4cb01fc8b1ae661e1e68d6346e7ce29daf1
+MONITOR_ROLLBACK_PATH=/srv/backups/shared-infra/m3d-r1-monitor-prechange-20261001T091248Z.sh
+MONITOR_ROLLBACK_SHA256=cc466266a0f7de19badf7cbe6601a4cb01fc8b1ae661e1e68d6346e7ce29daf1
+MONITOR_SOURCE_BYTES_BEFORE=3330
+MONITOR_ROLLBACK_BYTES=3330
+MONITOR_SOURCE_OWNER_MODE=root:root:0750
+MONITOR_ROLLBACK_OWNER_MODE=root:root:0750
+MONITOR_ROLLBACK_COPY_VERIFIED=YES
+
+MONITOR_SOURCE_SHA256_AFTER=2e28085921c3a5c930dc40144db3e6717438e10696af7f6b3f63f2ccec31a7cf
+MONITOR_SOURCE_BYTES_AFTER=3872
+MONITOR_SOURCE_OWNER_MODE_AFTER=root:root:0750
+MONITOR_SYNTAX_VALIDATION=PASS
+CADDY_DEPENDENT_CHECKS_REMOVED=2
+PUBLIC_TLS_PROBES_ADDED=4
+MONITOR_CLOUDFLARED_RESTART_STATE_CHECK=ADDED
+MONITOR_PRIVATE_NETWORK_CHECK=ADDED
+MONITOR_MANUAL_RUN_BEFORE_STOP=PASS
+MONITOR_MANUAL_RUN_CADDY_STOPPED=PASS
+MONITOR_SCHEDULED_RUNS_PASS_BEFORE_STOP=2
+MONITOR_SCHEDULED_RUN_TIMES_BEFORE_STOP=2026-10-01T09:21:45Z,2026-10-01T09:26:55Z
+MONITOR_SCHEDULED_RUNS_PASS_CADDY_STOPPED=1
+MONITOR_SCHEDULED_RUN_TIME_CADDY_STOPPED=2026-10-01T09:31:59Z
+MONITOR_SCHEDULED_RUNS_PASS=3
+MONITOR_TIMER_STATE=active
+MONITOR_SERVICE_LAST_RESULT=success
+MONITOR_SERVICE_LAST_EXIT=0
+
+CADDY_CONTAINER_ID=82749fff0bcea4538748dbb96d0d616b88617e3b4cc505a9fd70b61b6a789bb1
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+CADDY_IMAGE_ID=sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648
+CADDY_STATE=stopped
+CADDY_CONTAINER_PRESENT=YES
+CADDY_IMAGE_PRESENT=YES
+CADDY_RESTART_COUNT=0
+CADDY_STOPPED_AT=2026-10-01T09:28:10Z
+CADDY_DELETIONS=0
+PUBLIC_MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+PUBLIC_MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+PUBLIC_MINICRAFT_WP_REST=HTTP_200_TLS_VERIFY_0
+PUBLIC_SHOP_ENDPOINT=HTTP_200_TLS_VERIFY_0
+PUBLIC_TUNNEL_REGRESSION=PASS
+CLOUDFLARED_STATE=running
+CLOUDFLARED_RESTART_COUNT=0
+SPIKERSUN_PRIVATE=PRESENT
+
+UNIFIED_PAY_MUTATIONS=0
+PAYMENT_ACTIONS=0
+DATABASE_WRITES=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+TIMER_UNIT_MUTATIONS=0
+SERVICE_UNIT_MUTATIONS=0
+DOCKER_MUTATIONS=1
+VPS_MUTATIONS=3
+SECRET_VALUES_OUTPUT=0
+BROAD_PRUNE=NO
+STOP_AT_REVIEWER=YES
+```
+
+Only the authorized health-check script was changed; one pre-change rollback copy was created in the existing Shared Infrastructure backup scope. The shared Caddy container was stopped once and retained with its image and all configuration/data. No Cloudflare, DNS, Tunnel, Unified Pay, provider, database, payment, timer/service-unit, or unrelated service changes were made. The monitor's existing mktemp/EXIT-trap response-body lifecycle remains unchanged and is accepted as ephemeral-only.
+
+## Gate: M3E_CADDY_RUNTIME_DECOMMISSION — 2026-10-01
+
+```text
+GATE=M3E_CADDY_RUNTIME_DECOMMISSION
+RESULT=PASS_CANDIDATE_M3E_CADDY_RUNTIME_DECOMMISSION
+OWNER_AUTHORIZES_M3E=YES
+TARGET_HOST=srv1970241
+SSH_USER=ops
+SSH_CANONICAL_TRUST_PREFLIGHT=PASS
+SSH_NATIVE_EXIT=0
+TARGET_HOST_EXECUTION_PROVEN=PASS
+READ_ONLY_PREFLIGHT_ATTEMPT_1=ABORTED_PRIVILEGED_CONTEXT_CHECK_ERROR
+READ_ONLY_PREFLIGHT_ATTEMPT_1_MUTATIONS=0
+READ_ONLY_PREFLIGHT_CONTEXT_CORRECTION=SSH_USER_VERIFIED_BEFORE_SUDO
+PREDELETE_FRESH_PREFLIGHT=PASS
+
+CADDY_CONTAINER_ID=82749fff0bcea4538748dbb96d0d616b88617e3b4cc505a9fd70b61b6a789bb1
+CADDY_CONTAINER_NAME=/spikersun-edge-caddy-1
+CADDY_STATE_BEFORE=stopped
+CADDY_CONTAINER_PRESENT_BEFORE=YES
+CADDY_IMAGE_ID=sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648
+CADDY_IMAGE_PRESENT_BEFORE=YES
+CADDY_COMPOSE_SOURCE_PRESENT_BEFORE=YES
+CADDYFILE_PRESENT_BEFORE=YES
+CADDY_DATA_PRESENT_BEFORE=YES
+CADDY_CONFIG_PRESENT_BEFORE=YES
+SPIKERSUN_EDGE_PRESENT_BEFORE=YES
+MONITOR_ROLLBACK_COPY=/srv/backups/shared-infra/m3d-r1-monitor-prechange-20261001T091248Z.sh
+MONITOR_ROLLBACK_COPY_PRESENT_BEFORE=YES
+MONITOR_ROLLBACK_SHA256=cc466266a0f7de19badf7cbe6601a4cb01fc8b1ae661e1e68d6346e7ce29daf1
+CLOUDFLARED_STATE_BEFORE=running
+SPIKERSUN_PRIVATE_BEFORE=PRESENT
+MONITOR_LAST_RESULT_BEFORE=success
+
+CADDY_CONTAINER_REMOVE_AUTHORIZED=YES_EXACTLY_ONE
+CADDY_CONTAINER_REMOVE_ACTIONS=1
+CADDY_CONTAINER_REMOVE_METHOD=EXACT_VERIFIED_CONTAINER_ID
+CADDY_CONTAINER_REMOVE_NATIVE_EXIT=0
+CADDY_CONTAINER_PRESENT=NO
+CADDY_IMAGE_PRESENT=YES
+CADDY_COMPOSE_SOURCE_PRESENT=YES
+CADDYFILE_PRESENT=YES
+CADDY_DATA_PRESENT=YES
+CADDY_CONFIG_PRESENT=YES
+SPIKERSUN_EDGE_PRESENT=YES
+MONITOR_ROLLBACK_COPY_AFTER=PRESENT
+CADDY_RECREATE_PATH_PRESERVED=YES
+
+PUBLIC_MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+PUBLIC_MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+PUBLIC_MINICRAFT_WP_REST=HTTP_200_TLS_VERIFY_0
+PUBLIC_SHOP_ENDPOINT=HTTP_200_TLS_VERIFY_0
+PUBLIC_TUNNEL_REGRESSION=PASS
+MONITOR_MANUAL_RUN=PASS
+CLOUDFLARED_STATE_AFTER=running
+CLOUDFLARED_RESTART_COUNT_AFTER=0
+SPIKERSUN_PRIVATE_AFTER=PRESENT
+
+CADDY_IMAGE_DELETE_ACTIONS=0
+CADDY_CONFIG_DELETE_ACTIONS=0
+CADDY_DATA_DELETE_ACTIONS=0
+CADDYFILE_DELETE_ACTIONS=0
+COMPOSE_DELETE_ACTIONS=0
+SPIKERSUN_EDGE_DELETE_ACTIONS=0
+UNIFIED_PAY_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+BROAD_PRUNE=NO
+DOCKER_MUTATIONS=1
+VPS_MUTATIONS=1
+STOP_AT_REVIEWER=YES
+```
+
+The only consequential action was removal of the already-stopped, freshly identified Caddy container by its exact ID. It was absent on read-back. Its image, canonical Compose source, Caddyfile, data/config directories, shared edge network and the verified monitor rollback copy remain present. Public Tunnel routes and the migrated monitor both passed after removal. No Caddy recreate/rollback was needed; Unified Pay and all other services were untouched.
+
+## M4A Unified Pay Final Retirement Reconciliation — 2026-10-01
+
+```text
+GATE=M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION
+RESULT=PASS_CANDIDATE_M4A_UNIFIED_PAY_FINAL_RETIREMENT_RECONCILIATION
+MODE=READ_ONLY
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+SSH_LOCAL_TRUST_PREFLIGHT=PASS
+SSH_NETWORK_INVOCATIONS=7
+SSH_NATIVE_EXIT_RESULTS=0,0,0,0,0,0,0
+HOSTINGER_WEB_TERMINAL_USED=NO
+RUNTIME_MATERIAL_DRIFT=NO_OBSERVED_IN_CHECKED_BASELINE
+```
+
+### Authoritative sources and evidence boundary
+
+Fully read canonical GitHub Governance SKILL/Handoff, Governance Source Policy rev1, Storage Layout rev1, SSH/Delegated Secret Operations rev2, Target Host Reality rev2 and Production Provider Canary/Recovery rev2. Fully read all M4A required Shared VPS and Unified Pay inputs. Current project-main tree readback: `9810e851c862521c9faff4fac5234357f6c88691`.
+
+Input blob identities:
+- Shared VPS Handoff: `e9e3874fe77935c43072e958b0d47d5dad061135`.
+- Shared Reviewer Handoff: `9dbe89daa34ae12b6680d12837713a6daa2c3c45`.
+- Portfolio: `d217d5c95e8ccee71a5a44dd85670100654ec22a`.
+- M4A decision: `6df2ce10abeb5e557c4310ad45eb029609e041e8`.
+- M4A packet: `de65df62b8d793769999be1ec1cbd9f76dacc1e5`.
+- Pre-append Evidence: `c1586e1e0598726fa7276dbe593b40f1341781ec`.
+- Pre-append Executor Handoff: `44e463fd5bb0ee9f973bd842533b2981207573b7`.
+- Unified Pay Reviewer/Storage/Record: `d7b28e364579485152acedbd204c62e134331d60`, `ef5397c0fb1d64fd4edf2ac77a7df9b85b3e159a`, `9c3f2fb5a5aa1781a6c06a554d399b74fc84a1b3`.
+- Canonical GPT View+ config: `43615784a27ec5664ba88bf2133e0ecb173fef3b`.
+- New Product Onboarding/Shared Payment Hub: `461d3f0a2d6eaf57babe398829e05a1f0457b978`, `42061fb1025784c92c7d68d40b738616190c2e45`.
+
+Supplemental historical reads: canonical Unified Pay Dockerfile; Dujiao Reviewer Handoff; canonical repository path inventory/search for Alipay R4/R5/R6 historical documents. Unified Pay EXECUTION_EVIDENCE.md and EXECUTOR_HANDOFF.md at its own project root returned 404; no records from those nonexistent paths are claimed. Available accepted M3A/M3B/M3C history is in the Shared VPS files above. No local dirty Git cache was used.
+
+Local identity-file presence/ACL metadata, client public-key fingerprint and the three normal known_hosts host pins matched the canonical contract. Seven bounded SSH read-only collection calls exited 0, with ops identity verified before sudo; no connection retry after failure was needed. SQL ran through the existing PostgreSQL container with `BEGIN READ ONLY` and `ROLLBACK`, selecting safe metadata/aggregates only. Existing configured DB role/database names were used inside the container without value output. No Secret file, credential/hash/prefix, customer, order, payment or Provider identifier was output.
+
+### A — caller registration mapping
+
+Joined audit/client and intent/client relationships inside the read-only DB boundary. Safe registration names:
+- `production-client-a`: active; 2 audit events, both payment-intent events; 1 intent.
+- `production-client-b`: active; 0 audit events and 0 intents.
+
+The current public schema has no applications/apps registry, app slug, public/server client-type field or client-environment field. The intent metadata is empty. The canonical config defines `gpt-view-plus` / `GPT View+` as a public client, but neither generic current registration provides a proven relation to that entry. Provider-account app_id is an Alipay application identity, not a product-registration slug; it was not used to invent a caller mapping or emitted.
+
+```text
+REGISTERED_ACTIVE_CLIENTS=2
+RECENT_PAYMENT_AUDIT_EVENTS=2
+RECENT_DISTINCT_CLIENT_REFERENCES=1
+CALLER_APP_ID=UNKNOWN
+CALLER_DISPLAY_NAME=production-client-a
+CALLER_CLIENT_TYPE=UNKNOWN
+CALLER_STATUS=ACTIVE
+CALLER_ENVIRONMENT=UNKNOWN
+LIVE_CALLER_CLASS=EXTERNAL_OR_UNKNOWN
+LIVE_CALLER_LAST_ACTIVITY=2026-09-14T16:45:03.234414Z
+LIVE_CALLER_ACTIVITY_AFTER_2026_09_14=NO
+SECOND_REGISTERED_CLIENT_CLASS=UNUSED
+SECOND_CLIENT_CLASS_SCOPE=NO_PAYMENT_INTENT_OR_AUDIT_ACTIVITY_IN_CURRENT_LEDGER
+GPT_VIEW_PLUS_CALLER_MAPPING=UNPROVEN
+```
+
+UNUSED does not prove zero unlogged HTTP requests. The previously accepted one recent caller reference is historical durable activity, not evidence of a currently live simultaneous caller. Generic display names are safe registration labels, not credentials or UUID client identifiers. Current project ownership remains unresolved.
+
+### B — lifecycle aggregates and precise time correlation
+
+| Public lifecycle table | Total rows | Created/processed after 2026-09-14T16:45:03Z |
+|---|---:|---:|
+| payment_intents | 1 | 1 |
+| provider_create_attempts | 1 | 1 |
+| provider_events | 0 | 0 |
+| provider_payment_facts | 0 | 0 |
+| provider_refund_attempts | 0 | 0 |
+| refunds | 0 | 0 |
+| outbox_events | 0 | 0 |
+| audit_events | 2 | 2 |
+| idempotency_records | 1 | 1 |
+
+The whole-second cutoff is not the end of the incident. The reservation audit/idempotency timestamp is 16:45:03.217077Z; the sole intent/create-attempt timestamp is 16:45:03.222972Z; the ambiguous outcome audit and intent/attempt update timestamp is 16:45:03.234414Z. Both audits correlate internally to the same sole attempt's intent. They are not independent later business. The idempotency resource class is create_payment_intent; its timestamp is within that same window, with no later idempotency row. No identifier is persisted.
+
+A separate fresh query counted created/updated lifecycle rows after the complete 16:45:03.234414Z window: 0. Independent audit events after the whole-second cutoff excluding the sole correlated intent: 0. No independent later intent exists.
+
+```text
+PAYMENT_INTENTS_CREATED=1
+PROVIDER_CREATE_ATTEMPTS_AMBIGUOUS=1
+PROVIDER_CREATE_ATTEMPTS_TERMINAL=0
+PROVIDER_EVENTS=0
+PROVIDER_PAYMENT_FACTS=0
+REFUNDS=0
+OUTBOX_EVENTS=0
+LIFECYCLE_ROWS_AFTER_FULL_AMBIGUOUS_WINDOW=0
+UNIFIED_PAY_NEW_BUSINESS_ACTIVITY_SINCE_AMBIGUOUS=NO
+UNIFIED_PAY_LATEST_INDEPENDENT_ACTIVITY=NONE
+PAYMENTS_TABLE=ABSENT
+ENTITLEMENTS_TABLE=ABSENT
+LICENSES_TABLE=ABSENT
+```
+
+NO is bounded to the inspected current Unified Pay PostgreSQL lifecycle ledger. Absent tables are not reported as zero-row tables or proof concerning an external store. Unlogged traffic cannot be measured from the available application logs.
+
+### C — ambiguous attempt local evidence
+
+The sole attempt remains ambiguous and the intent remains created. Both store the generic failure class provider_create_ambiguous. Attempt provider_reference, intent provider_ref/provider_order_ref and handoff are absent; intent metadata is empty. No succeeded/canceled/expired timestamp is recorded. Audit outcome is ambiguous with provider_reference_present=false and reservation create_correlation_present=true. The provider account remains production, active=true, enabled=false, activation_reviewed=true.
+
+There are no dedicated request_sent, response_received, HTTP status, transport-error, retryable or terminal metadata columns. The generic ambiguous code is not a definitive Provider success or rejection.
+
+```text
+REQUEST_SENT=UNKNOWN
+PROVIDER_RESPONSE_RECEIVED=UNKNOWN
+HTTP_STATUS_CLASS=UNKNOWN
+TRANSPORT_ERROR_CLASS=UNKNOWN
+PROVIDER_REFERENCE_PRESENT=NO
+PROVIDER_SUCCESS_SIGNAL_PRESENT=NO
+PROVIDER_FAILURE_SIGNAL_PRESENT=UNKNOWN
+ATTEMPT_RETRYABLE=UNKNOWN
+ATTEMPT_TERMINAL=NO
+AMBIGUOUS_PAYMENT_STATE=UNRESOLVED
+AMBIGUOUS_LOCAL_COMMIT_CLASS=IRREDUCIBLY_AMBIGUOUS
+```
+
+Absence of a stored reference, a roughly millisecond-scale operation, and zero later activity do not prove that a network request was never sent or that a Provider order was not created. No Provider call was authorized or performed.
+
+### D — historical logs and Canary context
+
+Current app container was created at 2026-09-14T17:50:18.057942029Z, after the incident. Its retained json-file log has one timestamped line at 17:50:18.433660292Z. The bounded 16:40–16:50 UTC incident log query returned 0 lines. No historical app/adapter transport log is available from that container; zero log lines do not prove zero activity. No old project app container was present in the current two-container project inventory.
+
+Only metadata was read for 33 existing Unified Pay backup files, not dump contents, archived credentials or backup Compose contents. Relevant sequence:
+
+| Backup filename | Bytes | File mtime UTC |
+|---|---:|---|
+| pre-alipay-r4-db-20260914153000.dump | 36242 | 2026-09-14T15:09:20.520682Z |
+| pre-alipay-r5-20260914170000.dump | 36242 | 2026-09-14T15:45:44.437519Z |
+| pre-alipay-real-canary-20260914T163717Z.dump | 36242 | 2026-09-14T16:37:17.297348Z |
+| pre-alipay-real-canary-20260914T163914Z.dump | 36242 | 2026-09-14T16:39:14.640785Z |
+| pre-alipay-real-canary-20260914T164218Z.dump | 36242 | 2026-09-14T16:42:19.052494Z |
+| pre-alipay-real-canary-20260914T164349Z.dump | 36242 | 2026-09-14T16:43:49.761850Z |
+| pre-alipay-r6-disabled-20260914T171401Z.dump | 37010 | 2026-09-14T17:14:01.818761Z |
+| pre-alipay-r6-final-20260914T172951Z.dump | 37010 | 2026-09-14T17:29:51.799568Z |
+| pre-alipay-r6-audit-20260914T174523Z.dump | 37010 | 2026-09-14T17:45:28.236016Z |
+
+Filename times and filesystem mtimes are separately reported, not assumed identical. Pre-real-canary backups precede the incident; disabled/final/audit backups follow it. This supports a historical Canary-preparation context, but neither filenames nor the generic client name prove that the unique attempt was an internal test. TEST/CANARY versus external production-caller attribution remains UNRESOLVED. The canonical GPT View+ config/architecture docs describe intended onboarding, not a proven relation to the deployed service's generic PostgreSQL registrations; the running /app layout exposes a binary and migrations, not application source providing an additional registration map.
+
+### E — reversible-stop proposal assessment (not executed)
+
+Fresh metadata confirmed Unified Pay app/PostgreSQL running and healthy, restart counts 0; canonical Compose /srv/apps/unified-pay/docker-compose.prod.yml exists; current app image sha256:78029ea23abde4a44ff4c51a176c549b1be81746e73f9cfe08dbda0550c901cc remains local. /srv/data/unified-pay, db, secrets and /srv/backups/unified-pay remain present; all existing app Secret sources remain present and mounted read-only by metadata. No content was read.
+
+Carry forward accepted M3B Dujiao dependency NO and accepted pay Tunnel origin http://unified-pay-app:8080 on spikersun-shared-private. No old Gate was rerun and Caddy was not touched. The accepted app-only rollback barrier is retained: keep PostgreSQL/data/backups/Secrets/image/Compose/Tunnel if a future stop is separately authorized.
+
+```text
+DUJIAO_UNIFIED_PAY_DEPENDENCY=NO_ACCEPTED_CARRY_FORWARD
+UNIFIED_PAY_STOP_OBSERVE_ROLLBACK_READY=YES
+UNIFIED_PAY_APP_STOP_OBSERVATION_CANDIDATE=UNRESOLVED
+STOP_OBSERVATION_BLOCKERS=CALLER_PROJECT_OWNERSHIP_UNRESOLVED;PROVIDER_CREATE_IRREDUCIBLY_AMBIGUOUS_LOCALLY
+APP_STOP_EXECUTED=NO
+```
+
+M4A completed the allowed reconciliation; it did not prove permanent retirement, data deletion or Provider truth safe. Reviewer must decide the bounded treatment of the residual caller/transaction obligations before proposing an Owner-authorized app-stop observation. This result does not authorize shutdown, create/retry/query/cancel/refund, ingress changes or deletion.
+
+### Mutation counters
+
+```text
+UNIFIED_PAY_RUNTIME_MUTATIONS=0
+VPS_MUTATIONS=0
+DOCKER_MUTATIONS=0
+COMPOSE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+SECRET_CONTENT_READS=0
+SECRET_VALUES_OUTPUT=0
+SECRET_HASH_OUTPUT=0
+BACKUP_MUTATIONS=0
+FILE_DELETIONS=0
+NETWORK_MUTATIONS=0
+BROAD_PRUNE=NO
+MUTATIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+## M4B Unified Pay Client Provenance Final — 2026-10-01
+
+```text
+GATE=M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL
+RESULT=PASS_CANDIDATE_M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL
+MODE=READ_ONLY_PROVENANCE_PLUS_AUTHORIZED_GITHUB_DOCUMENTATION
+CANONICAL_PROJECT_SOURCE_COMMIT=f1561c097ae84f321fd126b95f43fddd588d562a
+SOURCE_ARCHIVE_SHA256=653b511bd98595d0ad21fbb5729e1a41055a41c59f7b9c4c8b7ca21a791104a8
+SOURCE_ARCHIVE_SHA256_MATCH=YES
+BUNDLE_FRAGMENT_COUNT=16
+BUNDLE_FRAGMENT_SIZE_AND_GIT_BLOB_IDENTITY_MATCH=YES
+BUNDLE_FRAGMENT_ORDER=FILENAME_LEXICAL
+ARCHIVE_MEMBERS=122
+EXTRACTED_REGULAR_FILES=99
+SOURCE_CODE_EXECUTION=NO
+PRODUCTION_BUILD_OR_DEPLOY=NO
+PRODUCTION_CLIENT_A_SOURCE_MATCH_COUNT=0
+PRODUCTION_CLIENT_B_SOURCE_MATCH_COUNT=0
+CLIENT_REGISTRATION_DDL_OR_INSERT_MATCH=ABSENT_IN_RECONSTRUCTED_BUNDLE
+GPT_VIEW_PLUS_CONFIG_AND_EXAMPLE_PRESENT=YES
+GPT_VIEW_PLUS_TO_CURRENT_REGISTRATION_MAPPING=UNPROVEN
+SOURCE_TO_DEPLOYED_RUNTIME_LINEAGE=UNPROVEN
+CREDENTIAL_LITERAL_PRESENT=YES
+CREDENTIAL_LITERAL_VALUES_OUTPUT=0
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+CLIENT_PUBLIC_KEY_FINGERPRINT_MATCH=YES
+KNOWN_HOSTS_EXPECTED_PINS_MATCH=YES
+SSH_NATIVE_EXIT=0
+SSH_NETWORK_INVOCATIONS=1
+DATABASE_TRANSACTION_MODE=READ_ONLY_ROLLBACK
+PRODUCTION_CLIENT_A_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_B_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_A_CREDENTIAL_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_B_CREDENTIAL_CREATED_AT=2026-09-13T08:33:22.183851+00:00
+PRODUCTION_CLIENT_A_STATUS=ACTIVE
+PRODUCTION_CLIENT_B_STATUS=ACTIVE
+REGISTRATION_SOURCE=UNKNOWN_SCHEMA_NOT_AVAILABLE
+CLIENT_TYPE=UNKNOWN_SCHEMA_NOT_AVAILABLE
+ENVIRONMENT=UNKNOWN_SCHEMA_NOT_AVAILABLE
+SAFE_METADATA_KEYS=NOT_AVAILABLE_NO_REGISTRATION_METADATA_COLUMN
+REGISTRATION_UPDATED_AT=NOT_AVAILABLE_IN_CURRENT_SCHEMA
+REGISTERED_CLIENTS=2
+REGISTERED_ACTIVE_CLIENTS=2
+PRODUCTION_CLIENT_A_AUDIT_EVENTS=2
+PRODUCTION_CLIENT_A_PAYMENT_INTENTS=1
+PRODUCTION_CLIENT_A_LATEST_AUDIT=2026-09-14T16:45:03.234414+00:00
+PRODUCTION_CLIENT_B_AUDIT_EVENTS=0
+PRODUCTION_CLIENT_B_PAYMENT_INTENTS=0
+PRODUCTION_CLIENT_B_LATEST_ACTIVITY=NONE_IN_CURRENT_AUDIT_AND_INTENT_LEDGER
+PAYMENT_INTENTS_CREATED=1
+PROVIDER_CREATE_ATTEMPTS=1
+PROVIDER_CREATE_ATTEMPTS_AMBIGUOUS=1
+PROVIDER_EVENTS=0
+PROVIDER_PAYMENT_FACTS=0
+REFUNDS=0
+OUTBOX_EVENTS=0
+NEW_INDEPENDENT_ACTIVITY_AFTER_AMBIGUOUS_WINDOW=NO_ACCEPTED_M4A_CARRY_FORWARD
+PRODUCTION_CLIENT_A_PROVENANCE=UNKNOWN
+PRODUCTION_CLIENT_B_PROVENANCE=UNKNOWN
+PRODUCTION_CLIENT_B_USAGE_CLASS=UNUSED_IN_CURRENT_LEDGER_NOT_PROVEN_INTERNAL
+AMBIGUOUS_INCIDENT_CONTEXT=UNKNOWN
+AMBIGUOUS_LOCAL_COMMIT_CLASS=IRREDUCIBLY_AMBIGUOUS_ACCEPTED_M4A_CARRY_FORWARD
+UNIFIED_PAY_STOP_OBSERVATION_RESIDUAL_RISK=UNCHANGED
+UNIFIED_PAY_RUNTIME_MUTATIONS=0
+VPS_RUNTIME_MUTATIONS=0
+DOCKER_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+BACKUP_CONTENT_READS=0
+FILE_DELETIONS=0
+BROAD_PRUNE=NO
+MUTATIONS=0
+M4C_CREATED=NO
+STOP_OBSERVATION_EXECUTED=NO
+PERMANENT_DELETION_DECIDED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Scope and authoritative reads
+
+Evidence recorded 2026-10-01 10:31 UTC. Current Reviewer truth and M4B decision/packet authorized the final bounded provenance check. Latest GitHub files were fully read; unchanged historical bodies were verified byte-for-byte against the previous complete reads. Before documentation writes, Reviewer Handoff, Evidence and Executor Handoff were fresh-read again and remained unchanged.
+
+- `shared-vps-infrastructure/SHARED_VPS_HANDOFF.md` (blob `e9e3874fe77935c43072e958b0d47d5dad061135`)
+- `shared-vps-infrastructure/REVIEWER_HANDOFF.md` (blob `bb15a2a34b0ffe96cb1c61581a55ad25a23dc0c5`)
+- `shared-vps-infrastructure/docs/REVIEWER_DECISION_M4A_PASS_M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL.md` (blob `ac0d9d4c527aacc8fe77df702e36036d946411db`)
+- `shared-vps-infrastructure/review-packets/M4B_UNIFIED_PAY_CLIENT_PROVENANCE_FINAL.md` (blob `1c55c9ec083303ee3c18b227bd5b06b97e56b972`)
+- `shared-vps-infrastructure/EXECUTION_EVIDENCE.md` (blob `bad6a0061117237b3d1b711fc66f6c7121b3e167`)
+- `shared-vps-infrastructure/EXECUTOR_HANDOFF.md` (blob `369fe443d28141cb2085df6ad3a99e01f8aaa3ec`)
+- `unified-pay-system/REVIEWER_HANDOFF.md` (blob `7f468262fe16d0bd5895f1a57053159a66ffa09d`)
+- `unified-pay-system/Dockerfile` (blob `8cf2876a5dacf64b46acc26552d0017e1511bbb6`)
+- `unified-pay-system/BUNDLE_SHA256.txt` (blob `7f5fd5e06fe08fbc1bb1fb912823183a601b8bc4`)
+- `unified-pay-system/PROJECT_RECORD.md` (blob `9c3f2fb5a5aa1781a6c06a554d399b74fc84a1b3`)
+- `unified-pay-system/config/apps.gmpay.production.json` (blob `43615784a27ec5664ba88bf2133e0ecb173fef3b`)
+
+Canonical Governance latest was re-read/revalidated, rather than treating the older workstation skill cache as authority:
+
+- `entropy-student/spike.skill/vps-project-governance/GOVERNANCE_HANDOFF.md` (blob `4ea8792cd7d82998432c2997ed71c1ba5d83109e`)
+- `entropy-student/spike.skill/vps-project-governance/SKILL.md` (blob `5e6ba08305ad802e5f6ce732d8ca731bc316b141`)
+- `entropy-student/spike.skill/vps-project-governance/references/GOVERNANCE_SOURCE_POLICY.md` (blob `7d1897b6a032a5de0686ff6704c8854f54699ab4`)
+- `entropy-student/spike.skill/vps-project-governance/references/GOVERNANCE_V0_1_6.md` (blob `af0ba30deb403eedb3bf9cc37cdc1482adefae00`)
+- `entropy-student/spike.skill/vps-project-governance/references/STORAGE_LAYOUT_CONTRACT.md` (blob `04831d59e08a2d91dbe35bb9b9c18d2ba1d77b58`)
+- `entropy-student/spike.skill/vps-project-governance/references/SSH_AND_DELEGATED_SECRET_OPERATIONS.md` (blob `a0b5e2ad0bcb02184478ad660cd2f33375c59198`)
+- `entropy-student/spike.skill/vps-project-governance/references/TARGET_HOST_REALITY_CONTRACT.md` (blob `84a0f35dab5397b381bae79ad5f2b1fcda6ea7f3`)
+
+### Canonical source reconstruction and safe search
+
+Sixteen pinned-commit fragments were concatenated in Dockerfile filename order, with every fragment size and Git blob identity checked. Base64 decoding produced the exact published archive SHA-256. All 122 tar members were checked for path escape and non-regular/link entries before extraction into a new local temporary work area; there are 99 regular files. No package, migration, seed, bootstrap, test, provider adapter, Docker build or deployment code was executed.
+
+The initial local extraction guard rejected the harmless archive root-directory member; the containment check was corrected to permit the root itself while still rejecting escape/link entries. Archive verification and extraction then passed. This was a local helper assertion issue, not production/source baseline drift. Temporary investigation artifacts were retained; no cleanup/delete was performed.
+
+Full recursive hidden-file searches covered production-client-a, production-client-b, gpt-view-plus, GPT View+, client registration, client credential, seed, bootstrap, fixture, migration, canary, real-canary, test client and production client. Exact production-client-a/b matches were zero. Bootstrap, fixture, canary, real-canary and test/production-client phrases also had zero matches; the seed hit was historical handoff discussion, not proof of registration creation. Registration DDL/insert/helper-name searches found no current clients/client_credentials creation logic.
+
+Relevant safe source semantics:
+
+- `package.json:2-3`, `src/config.mjs:44-52,90-100`: archived unified-pay-core Node V0.18, app identities loaded from JSON configuration.
+- `config/apps.gmpay.example.json:3-4,27`, `config/apps.production.json:3-5`, `examples/gpt-view-plus/integration.js:1,5`: GPT View+ / gpt-view-plus public-client example/configuration exists.
+- `scripts/migrate-postgres.mjs:16-33`: ordered SQL migration runner; inspected only, not run.
+- `db/migrations/001_v0_2_state.sql:3`, `db/migrations/002_v0_3_relational.sql:3,39,60`: archived state/checkout_sessions/licenses/audit_logs schema, not the current clients/client_credentials/payment_intents/audit_events registration schema.
+- Current GitHub production configuration contains the GPT View+ app but no reliable link from its slug to either current generic registration.
+- Credential-shaped quoted literals were detected in mock/test source; only presence and safe paths/line metadata were inspected/output. Their values were not emitted or included in GitHub Evidence.
+
+The accepted M4A deployment is the Alipay R6 compiled runtime, whereas this canonical bundle describes Node V0.18. Archive seal PASS does not prove that this bundle generated the current database registrations. Source-to-live lineage remains unproven, not a basis for declaring either client internal or GPT View+.
+
+### Strict SSH and registration provenance
+
+Canonical identity reference, client public fingerprint and all three normal known_hosts pins passed local verification; private-key contents were not read/output. ACL metadata showed protected access for Owner, SYSTEM and Administrators. One strict SSH invocation used the sealed identity/known_hosts, BatchMode, IdentitiesOnly, StrictHostKeyChecking, bounded connection attempt/timeout and no agent forwarding. It proved ops (non-root) on srv1970241 and returned native exit 0.
+
+Via reviewed sudo Docker access, SQL ran in an explicit BEGIN READ ONLY / ROLLBACK transaction. Only safe registration columns, credential creation timestamps/state and aggregate audit/intent counts were returned. No UUID, webhook value, credential hash/prefix/value, customer/order/payment identifier or private payload was selected/output.
+
+Both registrations and their credentials were created simultaneously on 2026-09-13 at 08:33:22.183851 UTC. The current registration schema offers name/status/created_at, but no app mapping, source/creator/environment/type/public-server flag, updated_at or metadata column. Credential timestamp coincidence suggests a common provisioning event only; it does not establish which process or project performed it.
+
+A has the two audit events and one intent from the accepted ambiguous incident. B has no audit or intent activity in the current ledger, but absence of activity does not establish UNUSED_INTERNAL ownership.
+
+### Accepted deployment / Canary timeline comparison
+
+Accepted M4A backup metadata and incident evidence are carried forward, without reading any dump contents or repeating backup investigation:
+
+- 2026-09-14 16:37, 16:39, 16:42 and 16:43 UTC: pre-alipay-real-canary backup generations.
+- 16:45:03.217077: reserve audit; 16:45:03.222972: intent/attempt creation; 16:45:03.234414: ambiguous outcome audit.
+- 17:14: pre-alipay-r6-disabled; 17:29: pre-alipay-r6-final; 17:45: pre-alipay-r6-audit.
+
+Registration/credential creation predates this sequence by more than a day. The nearby backup names suggest a canary preparation window but neither prove the registrations came from that window nor establish that the exact ambiguous attempt was a test rather than production use. No GPT View+ registration timestamp or unambiguous source linkage exists. The accepted no-independent-business-after-incident conclusion is preserved, but Provider truth remains unresolved and no Provider inquiry was performed.
+
+### Final bounded conclusion
+
+PROVENANCE_EVIDENCE: verified canonical source contains GPT View+ config/examples but no production-client-a/b registrations; current database supplies simultaneous creation timestamps only, no ownership/source mapping; A has the single ambiguous incident ledger, B is unused in that ledger. Neither hard-coded test/bootstrap provenance nor an external-production principal is proven. Both provenance classifications and incident context therefore remain UNKNOWN; residual stop-observation risk is UNCHANGED.
+
+This is completion of the authorized investigation, not approval to stop the app or delete data. No additional investigation Gate was created. Reviewer must present the residual risk for the Owner's reversible app-only stop-observation decision. GitHub documentation updates and authorized local temporary archive processing are not production/runtime mutations.
+
+## M5 Unified Pay App-Only Stop Observation — 2026-10-01
+
+```text
+GATE=M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION
+RESULT=PASS_CANDIDATE_M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION
+CANONICAL_PROJECT_SOURCE_COMMIT=b29607276d9894b4fb38a545393a359f4bae7685
+OWNER_AUTHORIZES_M5=YES
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+LOCAL_SSH_TRUST=PASS
+SSH_NETWORK_INVOCATIONS=6
+SSH_NATIVE_EXIT_FINAL=0
+PRODUCTION_CLIENT_A_PROVENANCE=INTERNAL_FIXED_BOOTSTRAP_CLIENT
+PRODUCTION_CLIENT_B_PROVENANCE=INTERNAL_FIXED_BOOTSTRAP_CLIENT
+AMBIGUOUS_INCIDENT_CONTEXT=OWNER_AUTHORIZED_INTERNAL_ALIPAY_CANARY
+AMBIGUOUS_CREATE_EXTERNAL_PROVIDER_REQUEST=NO_ACCEPTED_REVIEWER_RECONCILIATION
+OWNER_PAYMENT_EXECUTED=NO_ACCEPTED_REVIEWER_RECONCILIATION
+PROVIDER_TRANSACTION_CALL_EXECUTED=NO_ACCEPTED_REVIEWER_RECONCILIATION
+NEW_INDEPENDENT_BUSINESS_ACTIVITY_AFTER_CANARY=NO
+DUJIAO_UNIFIED_PAY_HISTORICAL_RELATION=YES
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+DUJIAO_PAYMENT_CHANNELS_TOTAL=3
+DUJIAO_PAYMENT_CHANNELS_ACTIVE=0
+DUJIAO_CHANNEL_CLIENTS=0
+DUJIAO_DOWNSTREAM_ORDER_REFS=0
+DUJIAO_SECRET_CONFIG_REFERENCE=ABSENT
+DUJIAO_RUNTIME_ENV_REFERENCE=ABSENT
+DUJIAO_NONSECRET_CURRENT_CONFIG_REFERENCE=ABSENT
+UNIFIED_PAY_APP_CONTAINER_ID=0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e
+UNIFIED_PAY_APP_CONTAINER_NAME=/unified-pay-app-1
+UNIFIED_PAY_APP_IMAGE_ID=sha256:78029ea23abde4a44ff4c51a176c549b1be81746e73f9cfe08dbda0550c901cc
+UNIFIED_PAY_COMPOSE_PROJECT=unified-pay
+UNIFIED_PAY_COMPOSE_SERVICE=app
+UNIFIED_PAY_COMPOSE_SOURCE=/srv/apps/unified-pay/docker-compose.prod.yml
+UNIFIED_PAY_COMPOSE_BYTES=5271
+UNIFIED_PAY_COMPOSE_SHA256=deb4f91d39a53df951c3d61c9911baba73b1a06bfd4d9079b7f8932221e3ff44
+COMPOSE_QUIET_VALIDATION_BEFORE_STOP=PASS
+COMPOSE_QUIET_VALIDATION_AFTER_STOP=PASS
+COMPOSE_HASH_UNCHANGED=YES
+UNIFIED_PAY_APP_STATE_BEFORE=running/healthy
+UNIFIED_PAY_APP_STATE=stopped
+UNIFIED_PAY_APP_DOCKER_STATUS=exited
+UNIFIED_PAY_APP_RESTART_COUNT_BEFORE=0
+UNIFIED_PAY_APP_RESTART_COUNT_AFTER=0
+UNIFIED_PAY_APP_CONTAINER_PRESENT=YES
+UNIFIED_PAY_APP_IMAGE_PRESENT=YES
+UNIFIED_PAY_APP_STOP_ACTIONS=1
+UNIFIED_PAY_APP_START_ACTIONS=0
+STOP_REQUEST_UTC=2026-10-01T11:28:42.520507+00:00
+APP_FINISHED_AT=2026-10-01T11:28:42.662747382Z
+COMPOSE_STOP_NATIVE_EXIT=0
+FINAL_READBACK_UTC=2026-10-01T11:34:11.863922+00:00
+OBSERVATION_SECONDS=329.343
+UNIFIED_PAY_POSTGRES_CONTAINER_ID=eeb800570fd41e117a3cb788ef27977749de7f637f86e7379db4cf686547a120
+UNIFIED_PAY_POSTGRES_STATE=healthy
+UNIFIED_PAY_POSTGRES_RESTART_COUNT_BEFORE=0
+UNIFIED_PAY_POSTGRES_RESTART_COUNT_AFTER=0
+UNIFIED_PAY_DB_STOP=NO
+UNIFIED_PAY_DATA_PRESENT=YES
+UNIFIED_PAY_DATA_PRESERVED=YES
+UNIFIED_PAY_BACKUPS_PRESENT=YES
+UNIFIED_PAY_BACKUPS_PRESERVED=YES
+UNIFIED_PAY_SECRET_SOURCE_PRESENT=YES
+UNIFIED_PAY_SECRET_SOURCES_PRESERVED=YES
+UNIFIED_PAY_RECREATE_PATH_PRESERVED=YES
+ALL_APP_MOUNT_SOURCES_PRESERVED=YES
+KNOWN_PROJECT_REGRESSION=NO
+OTHER_CONTAINER_IDENTITIES_STATES_RESTARTS_UNCHANGED=YES
+DUJIAO_APP_POSTGRES_REDIS=running/healthy
+MINICRAFT_WORDPRESS=running
+MINICRAFT_MARIADB=running/healthy
+XIANYU_RUNTIME=running/healthy
+CLOUDFLARED=running
+SPIKERSUN_PRIVATE=PRESENT
+MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+MINICRAFT_WP_JSON=HTTP_200_TLS_VERIFY_0
+SHOP_PUBLIC=HTTP_200_TLS_VERIFY_0
+PAY_HEALTH_BEFORE_STOP=HTTP_200_TLS_VERIFY_0
+PAY_READY_BEFORE_STOP=HTTP_200_TLS_VERIFY_0
+PAY_HEALTH_AFTER_STOP=HTTP_502_TLS_VERIFY_0
+PAY_PUBLIC_ENDPOINT_EXPECTED_UNAVAILABLE=YES
+PAY_FAILURE_CLASS=EXPECTED_STOPPED_TUNNEL_ORIGIN_BAD_GATEWAY
+PAY_TUNNEL_ORIGIN_EXPECTED=http://unified-pay-app:8080_ACCEPTED_UNCHANGED_BASELINE
+MONITOR_SCRIPT_SHA256=2e28085921c3a5c930dc40144db3e6717438e10696af7f6b3f63f2ccec31a7cf
+MONITOR_SCRIPT_UNCHANGED=YES
+MONITOR_MANUAL_RUN=PASS
+MONITOR_MANUAL_RUNS_AFTER_STOP=2
+MONITOR_SCHEDULED_RUNS_PASS_AFTER_STOP=2
+MONITOR_SCHEDULED_RUN_1_START=2026-10-01T11:28:55Z
+MONITOR_SCHEDULED_RUN_1_END=2026-10-01T11:28:57Z
+MONITOR_SCHEDULED_RUN_2_START=2026-10-01T11:34:05Z
+MONITOR_SCHEDULED_RUN_2_END=2026-10-01T11:34:07Z
+MONITOR_LATEST_RESULT=success
+MONITOR_LATEST_EXIT=0
+MONITOR_TIMER_STATE=active
+SAFE_PAYMENT_INTENTS_TOTAL_BEFORE_AFTER=1/1
+SAFE_AUDIT_EVENTS_TOTAL_BEFORE_AFTER=2/2
+SAFE_CREATE_ATTEMPTS_TOTAL=1
+SAFE_AMBIGUOUS_ATTEMPTS_TOTAL=1
+SAFE_PROVIDER_EVENTS_TOTAL=0
+SAFE_PROVIDER_PAYMENT_FACTS_TOTAL=0
+SAFE_REFUNDS_TOTAL=0
+SAFE_OUTBOX_TOTAL=0
+AUDIT_EVENTS_AFTER_STOP=0
+PAYMENT_INTENTS_AFTER_STOP=0
+LATEST_DURABLE_AUDIT_ACTIVITY=2026-09-14T16:45:03.234414+00:00
+LATEST_DURABLE_ACTIVITY_CLASS=ACCEPTED_INTERNAL_CANARY_AMBIGUOUS_LOCAL_HANDOFF_FAILURE
+CREDIBLE_ACTIVE_BUSINESS_CALLER_AFTER_STOP=UNRESOLVED
+CREDIBLE_CALLER_EVIDENCE_FOUND=NO
+REQUEST_ATTRIBUTION_TELEMETRY_AVAILABLE=NO
+APP_EXISTING_POST_STOP_LOG_LINES=0
+RAW_LOG_OUTPUT=NO
+ROLLBACK_USED=NO
+UNIFIED_PAY_CONTAINER_REMOVE=NO
+UNIFIED_PAY_IMAGE_DELETE=NO
+UNIFIED_PAY_COMPOSE_MUTATION=NO
+UNIFIED_PAY_DATA_DELETE=NO
+UNIFIED_PAY_BACKUP_DELETE=NO
+UNIFIED_PAY_SECRET_DELETE=NO
+OTHER_SERVICE_MUTATIONS=0
+CADDY_MUTATIONS=0
+MONITOR_CONFIG_MUTATIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+SECRET_VALUES_OUTPUT=0
+BACKUP_MUTATIONS=0
+CLEANUP_ACTIONS=0
+BROAD_PRUNE=NO
+DOCKER_MUTATION_SCOPE=EXACTLY_ONE_AUTHORIZED_APP_STOP
+PERMANENT_DELETION_ENTERED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Canonical inputs and corrected baseline
+
+All required latest GitHub documents were fully read; unchanged historical bodies matched their previous complete reads. Current repository source commit: `b29607276d9894b4fb38a545393a359f4bae7685`. Current Reviewer truth was fresh-read again before documentation persistence and had not changed.
+
+- `shared-vps-infrastructure/SHARED_VPS_HANDOFF.md` — blob `e9e3874fe77935c43072e958b0d47d5dad061135`
+- `shared-vps-infrastructure/REVIEWER_HANDOFF.md` — blob `41b182c50bfe1e64a4d37ce229bb41a714fc4791`
+- `shared-vps-infrastructure/docs/REVIEWER_DECISION_M4B_R1_HISTORICAL_RECORD_RECONCILIATION_M5_REBASE.md` — blob `80cb53f49de5c07164bf7fcc2982c5988b89bf9e`
+- `shared-vps-infrastructure/docs/REVIEWER_DECISION_M5_OWNER_AUTHORIZED_UNIFIED_PAY_APP_ONLY_STOP.md` — blob `c9ce50d024d72df58dc4ea25329d6983b9084b2a`
+- `shared-vps-infrastructure/review-packets/M5_UNIFIED_PAY_APP_ONLY_STOP_OBSERVATION.md` — blob `c0f1a746746cbf6b0b7a7ccd0b210d4ce88faa17`
+- `shared-vps-infrastructure/EXECUTION_EVIDENCE.md` — blob `1828ff6e2ba46e5dcfa45fc2e302ead111fe70a8`
+- `shared-vps-infrastructure/EXECUTOR_HANDOFF.md` — blob `a70893f8455eab5ddd67e9547ea3c5751149b475`
+- `unified-pay-system/REVIEWER_HANDOFF.md` — blob `a6bcf7c02b9567f5e906ca60b3ce8669e856b41c`
+- `unified-pay-system/PROJECT_STORAGE_MANIFEST.md` — blob `ef5397c0fb1d64fd4edf2ac77a7df9b85b3e159a`
+- `unified-pay-system/PROJECT_RECORD.md` — blob `9c3f2fb5a5aa1781a6c06a554d399b74fc84a1b3`
+- `dujiao-next/REVIEWER_HANDOFF.md` — blob `3c2d4e962cd21f900e261793580bc5da2960d150`
+
+Canonical Governance latest (GOVERNANCE_HANDOFF, SKILL, Governance v0.1.6/source policy, Storage Layout, SSH/Delegated Secret Operations rev2 and Target Host Reality rev2) was fresh-read/revalidated against its prior complete content. The workstation skill cache was not treated as current authority.
+
+The current M4B-R1 historical reconciliation supersedes prior M4B UNKNOWN fields prospectively: both registrations are internal fixed bootstrap clients; the incident is the Owner-authorized internal Alipay Canary whose local form handoff failed without an external Provider transaction request or Owner payment. Historical Evidence was not rewritten. This Gate made no new Provider call.
+
+### Fresh preflight and Dujiao no-drift check
+
+Local SSH identity existence, derived public fingerprint and all normal known_hosts pins matched the canonical connection contract. Each remote call retained the exact identity and known_hosts reference, BatchMode, IdentitiesOnly, StrictHostKeyChecking, one connection attempt, bounded timeout and no agent forwarding. Remote identity proved non-root ops on srv1970241 before sudo Docker access.
+
+Fresh Unified Pay app and PostgreSQL were running/healthy, restart counts 0, exact accepted container IDs/image preserved. Canonical Compose labels matched project unified-pay, service app, working directory /srv/apps/unified-pay and the explicit production manifest. Quiet validation passed without config/environment values being printed. All data/backup paths and all nine app Secret-source mounts were present; only mount/path metadata was checked. No DB dump or Secret source contents were read.
+
+Dujiao fresh read-only SQL returned 3 non-deleted payment channels, 0 active, 0 non-deleted channel_clients and 0 downstream_order_refs. Current deployed non-secret configuration scan (2 eligible source/config files) found no Unified Pay reference; the unchanged deployed immutable app image retained accepted active-source baseline. Runtime environment was classified by key/reference only (1 key, no Unified Pay reference). The already-approved protected config classifier inspected /srv/data/dujiao-next/secrets/config.yml in memory, emitted only ABSENT/reference metadata, and did not print/persist values or hash that file. No new runtime dependency was found.
+
+The first read-only helper stopped with StopIteration because it expected /dujiao-next-app rather than the actual /dujiao-next-app-1. This was a local helper selector error, not runtime drift or a failed write. It was corrected to use Compose project/service labels and the subsequent complete read-only preflight passed. No stop/write occurred in that failed probe; its native SSH exit was 1. The five subsequent SSH invocations returned 0, including the exactly-once stop and final readback.
+
+Pre-stop safe runtime snapshot:
+
+| Container | ID | State/health | Restart count |
+| --- | --- | --- | --- |
+| /mini-craft-night-kit-wordpress-1 | 6477a1fb1d8dae319f93fc54b81e10e29c093686f24972b2735366e11400ae4b | running/not_defined | 0 |
+| /mini-craft-night-kit-mariadb-1 | 42d2c920ea4164cd0a41d416ac673381aeb4985a154fe370f7f873518b134884 | running/healthy | 0 |
+| /dujiao-next-app-1 | 5b2cc0e939f6cc05c94ba076f30b1d86d73ff16259a08085190f1c852f105041 | running/healthy | 0 |
+| /dujiao-next-postgres-1 | 9e8f218164e98404121f33e7c5725bbff9c03a708175f8b1d8cddc8d4528953c | running/healthy | 0 |
+| /dujiao-next-redis-1 | 90f03f7063e794aa42c4441b697dd7049c10688e583804f3fdf65df77b4ccf91 | running/healthy | 0 |
+| /unified-pay-app-1 | 0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e | running/healthy | 0 |
+| /unified-pay-db-1 | eeb800570fd41e117a3cb788ef27977749de7f637f86e7379db4cf686547a120 | running/healthy | 0 |
+| /xianyu-xianyu-app-1 | 8336c19164756ba1cdc949a4b4a1ee8a464bf19ab92636f321a2fad8a293c1fa | running/healthy | 0 |
+| /spikersun-private-cloudflared-1 | d414a4994116922bac67ee025f84bed8bf9a7cfc9de5c2817fc5812f6b632c8e | running/not_defined | 0 |
+
+Mini Craft Home/Shop/wp-json, Shop root and Pay /health + /ready all returned HTTP 200 with TLS verify result 0. cloudflared was running and spikersun-private existed. The monitor script hash matched the accepted migrated version; service latest result success / exit 0 and timer active.
+
+### Exactly-one app-only stop and preserved rollback
+
+Executed once:
+
+```sh
+sudo docker compose --project-directory /srv/apps/unified-pay -p unified-pay -f /srv/apps/unified-pay/docker-compose.prod.yml stop app
+```
+
+Native Compose exit 0. No blind retry, app start, compose down, remove, pull, build, or cleanup was performed. Same app container/image/restart count remained; actual Docker status is exited, normalized to stopped. The stopped container's retained Health.Status later read unhealthy; that health field is not a running-service failure and does not override its expected exited state.
+
+Only authorized rollback, not executed:
+
+```sh
+sudo docker compose --project-directory /srv/apps/unified-pay -p unified-pay -f /srv/apps/unified-pay/docker-compose.prod.yml start app
+```
+
+PostgreSQL stayed running/healthy with the same ID and restart count 0. /srv/data/unified-pay, /srv/backups/unified-pay, /srv/data/unified-pay/secrets, canonical Compose, local image and every existing app mount source remained present. Compose hash and quiet validation were unchanged. Thus the start-existing/recreate recovery path was retained; it was not exercised or declared a permanent deletion recovery test.
+
+### Regression and real short observation window
+
+Observation ran from 11:28:42.520507 to 11:34:11.863922 UTC (329.343 seconds). Immediate and final public checks confirmed Mini Craft Home/Shop/wp-json and shop.spikersun.com HTTP 200 / TLS verify 0. Existing Dujiao app/PostgreSQL/Redis, Mini Craft WordPress/MariaDB, Xianyu app and cloudflared retained exact IDs, states and restart counts. spikersun-private remained present. No known-project regression or credible-call evidence triggered rollback.
+
+Pay /health returned HTTP 502 with normal TLS verification both immediately and at final readback. This is the expected unavailable stopped-app Tunnel origin, not an unexpected regression; no Tunnel/DNS control-plane change was made. This Gate did not open or re-save Cloudflare configuration, so its route is recorded as the accepted untouched baseline, not a new control-plane readback.
+
+The unchanged Shared Infra monitor passed two manual executions after stop. Two genuine timer-triggered service runs completed successfully while the app was stopped: 11:28:55–11:28:57 and 11:34:05–11:34:07 UTC, exit 0; timer remained active. Manual runs were direct script invocations, not counted as scheduled service runs. Existing accepted ephemeral /tmp response-file lifecycle was unchanged; monitor/timer/service configuration mutations=0.
+
+### Safe caller telemetry limitation
+
+Read-only PostgreSQL aggregates stayed at one intent, one ambiguous create attempt, two audits, and zero Provider events/payment facts/refunds/outbox. No audit or intent was created after the stop. The accepted most-recent durable activity remains the historical internal Canary; no payment identifiers, amounts, client identifiers or private records were output.
+
+Existing app logs bounded to the post-stop window contained zero captured lines (stdout plus stderr); no raw logs were output. There is no proven attributable request counter for an intentionally stopped origin. Therefore CREDIBLE_ACTIVE_BUSINESS_CALLER_AFTER_STOP=UNRESOLVED: no credible business caller evidence was found, but absence of app logs/ledger updates cannot prove absence of attempted inbound calls. Synthetic health probes, Cloudflare Tunnel retries and infrastructure noise were not treated as callers. Logging was not enabled, and no test business request was sent.
+
+### Handoff boundary
+
+Only the authorized app stop occurred; all other runtime/configuration, database, Provider/payment, data/backup/Secret deletion and cleanup actions remained forbidden/zero. GitHub documentation appends are separate from the one authorized runtime mutation. App remains stopped with PostgreSQL and full recovery assets preserved. This is a short bounded observation, not proof that no future caller can appear and not permission for permanent deletion. STOP_AT_REVIEWER=YES.
+
+## M6 Unified Pay App Container Decommission — 2026-10-01
+
+```text
+GATE=M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION
+RESULT=PASS_CANDIDATE_M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION
+OWNER_AUTHORIZES_M6=YES
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+LOCAL_SSH_TRUST=PASS
+SSH_NATIVE_EXIT=0
+CURRENT_PROJECT_SOURCE_COMMIT=UNKNOWN_NOT_REQUIRED_FOR_RUNTIME_GATE
+PREFLIGHT_UTC=2026-10-01T12:24:52.001120+00:00
+APP_CONTAINER_ID=0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e
+APP_CONTAINER_NAME=/unified-pay-app-1
+APP_COMPOSE_PROJECT=unified-pay
+APP_COMPOSE_SERVICE=app
+APP_PRE_STATE=exited
+APP_REMOVAL_COMMAND=docker rm <freshly_verified exact container ID>
+APP_REMOVAL_NATIVE_EXIT=0
+APP_REMOVE_ACTIONS=1
+APP_CONTAINER_PRESENT_AFTER=NO
+APP_IMAGE=sha256:78029ea23abde4a44ff4c51a176c549b1be81746e73f9cfe08dbda0550c901cc
+APP_IMAGE_PRESENT_AFTER=YES
+POSTGRES_CONTAINER_ID=eeb800570fd41e117a3cb788ef27977749de7f637f86e7379db4cf686547a120
+POSTGRES_STATE_BEFORE_AFTER=healthy/healthy
+POSTGRES_RESTART_COUNT_BEFORE_AFTER=0/0
+POSTGRES_STOP_ACTIONS=0
+POSTGRES_REMOVE_ACTIONS=0
+COMPOSE_SOURCE=/srv/apps/unified-pay/docker-compose.prod.yml
+COMPOSE_BYTES=5271
+COMPOSE_SHA256=deb4f91d39a53df951c3d61c9911baba73b1a06bfd4d9079b7f8932221e3ff44
+COMPOSE_QUIET_VALIDATION_BEFORE_AFTER=PASS/PASS
+COMPOSE_MUTATIONS=0
+UNIFIED_PAY_DATA_PRESENT_AFTER=YES
+UNIFIED_PAY_BACKUPS_PRESENT_AFTER=YES
+UNIFIED_PAY_SECRET_SOURCE_PRESENT_AFTER=YES
+APP_SECRET_SOURCE_MOUNT_SOURCE_COUNT=9
+APP_SECRET_SOURCE_CONTENT_READS=0
+APP_IMAGE_DELETE_ACTIONS=0
+COMPOSE_DELETE_ACTIONS=0
+DATA_DELETE_ACTIONS=0
+BACKUP_DELETE_ACTIONS=0
+SECRET_DELETE_ACTIONS=0
+UNIFIED_PAY_TUNNEL_AND_DNS_MUTATIONS=0
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+DUJIAO_NONSECRET_SOURCE_SCAN_FILES=2
+DUJIAO_NONSECRET_REFERENCE_COUNT=0
+DUJIAO_PROTECTED_CONFIG_REFERENCE=ABSENT_VALUE_OUTPUT=NO
+DUJIAO_PAYMENT_CHANNELS_TOTAL=3
+DUJIAO_PAYMENT_CHANNELS_ACTIVE=0
+DUJIAO_CHANNEL_CLIENTS=0
+DUJIAO_DOWNSTREAM_ORDER_REFS=0
+DUJIAO_APP_POST_STATE=running/healthy
+DUJIAO_POSTGRES_POST_STATE=running/healthy
+DUJIAO_REDIS_POST_STATE=running/healthy
+SHOP_PUBLIC=HTTP_200_TLS_VERIFY_0
+MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+MINICRAFT_WP_JSON=HTTP_200_TLS_VERIFY_0
+XIANYU_RUNTIME=running/healthy_SAME_CONTAINER_ID_RESTART_COUNT
+CLOUDFLARED=running_SAME_CONTAINER_ID_RESTART_COUNT
+SPIKERSUN_PRIVATE=PRESENT
+SHARED_MONITOR_PREDELETE=PASS
+SHARED_MONITOR_POSTDELETE_MANUAL=PASS
+KNOWN_PROJECT_REGRESSION=NO
+PAY_PUBLIC_ENDPOINT_EXPECTED_UNAVAILABLE=YES_ACCEPTED_M5_BASELINE_NOT_RECHECKED
+ROLLBACK_USED=NO
+ROLLBACK_RECREATE_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+NON_TARGET_CONTAINER_MUTATIONS=0
+NON_TARGET_DOCKER_RESOURCE_DELETIONS=0
+BROAD_PRUNE=NO
+OTHER_CLEANUP_ACTIONS=0
+MUTATIONS_SCOPE=ONE_AUTHORIZED_STOPPED_APP_CONTAINER_REMOVAL
+STOP_AT_REVIEWER=YES
+```
+
+### Authoritative GitHub reads
+
+The complete M6 inputs and current Governance were fetched from canonical GitHub. Full documents identical to prior complete reads were byte-for-byte compared; current Reviewer Hand-off remained unchanged through execution.
+
+- `shared-vps-infrastructure/SHARED_VPS_HANDOFF.md` — blob `e9e3874fe77935c43072e958b0d47d5dad061135`
+- `shared-vps-infrastructure/REVIEWER_HANDOFF.md` — blob `62aba1ce123ab9392a675360659033668dcddd6d`
+- `shared-vps-infrastructure/docs/REVIEWER_DECISION_M5_PASS_M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION_CHECKPOINT.md` — blob `8ef5bca31d386a72e2aa261f3375c2bcf1723a0e`
+- `shared-vps-infrastructure/docs/REVIEWER_DECISION_M6_OWNER_AUTHORIZED_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION.md` — blob `82a4ddab7c3b60fe3377ffceb386970ceeafb819`
+- `shared-vps-infrastructure/review-packets/M6_UNIFIED_PAY_APP_CONTAINER_DECOMMISSION.md` — blob `7985bc1ef24f523cf87be57905f7296006a1a175`
+- `shared-vps-infrastructure/EXECUTION_EVIDENCE.md` — blob `0b2f0a8f0652a1aa0f846d07aa09c8300ace6d1d`
+- `shared-vps-infrastructure/EXECUTOR_HANDOFF.md` — blob `abc215acb629ab8cc4f2fa59f25c9afc23b6d767`
+- `unified-pay-system/REVIEWER_HANDOFF.md` — blob `d4b7ecd690026c4d6e8bebd41d6a7297c612980f`
+- `unified-pay-system/PROJECT_STORAGE_MANIFEST.md` — blob `ef5397c0fb1d64fd4edf2ac77a7df9b85b3e159a`
+- `unified-pay-system/PROJECT_RECORD.md` — blob `9c3f2fb5a5aa1781a6c06a554d399b74fc84a1b3`
+- `dujiao-next/REVIEWER_HANDOFF.md` — blob `3c2d4e962cd21f900e261793580bc5da2960d150`
+
+Current authorization was explicit in the M6 Reviewer decision and Reviewer Hand-off. M5 was formally accepted with the app stopped, PostgreSQL healthy and recovery assets retained. No permanent deletion was authorized.
+
+### Strict SSH and fresh preflight
+
+Owner workstation strict SSH identity fingerprint and all canonical normal known_hosts pins matched. The SSH invocation proved non-root ops on srv1970241 before reviewed sudo metadata/actions. Native exit was 0.
+
+Fresh preflight confirmed target app container `/unified-pay-app-1`, ID `0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e`, Compose project `unified-pay`, service `app`, status `exited`. Its exited Docker health field reported unhealthy; that is the stopped-container healthcheck state, not a running service, and no running transition occurred. Local image ID matched. PostgreSQL `unified-pay-db-1` was running/healthy, restart 0.
+
+Canonical manifest `/srv/apps/unified-pay/docker-compose.prod.yml` existed at 5271 bytes with the accepted SHA-256. Explicit Compose `config --quiet` passed before deletion. `/srv/data/unified-pay`, `/srv/backups/unified-pay`, and the Secret source directory were present; all nine app Secret-source mount paths existed, read-only mount metadata was checked, and source contents were not read. The app image existed locally.
+
+Dujiao remains independent: deployed non-secret scan examined two eligible files and found no Unified Pay reference; its protected runtime config was classified in memory as no reference, with values suppressed and not persisted. Fresh database aggregate: 3 channels, 0 active, 0 channel clients and 0 downstream order references. Dujiao app/PostgreSQL/Redis were healthy. This is consistent with the accepted M5 runtime dependency NO.
+
+Before deletion, Shop and Mini Craft Home/Shop/wp-json each returned HTTP 200 with TLS verify result 0. Xianyu was running/healthy, cloudflared running, spikersun-private present. Shared monitor timer was active and a manual run passed with the accepted script hash.
+
+### Exactly-one container removal
+
+Fresh identity and all preconditions were rechecked immediately before the action. The only removal command targeted the verified stopped App container ID:
+
+```sh
+sudo docker rm 0a197a4aef43cea853da0501b3bb370910d60ab8fb6a164dac327ac6f435150e
+```
+
+Docker returned native exit 0. Fresh lookup by exact ID and name confirmed the App container was absent. There was no retry, compose down, app recreate, PostgreSQL action, image/network/volume deletion, pull/build, prune, data/backup/Secret deletion or unrelated resource mutation.
+
+### Preserved recovery and production regression
+
+After deletion the local app image ID remained present; PostgreSQL remained healthy with the same container ID/restart count. The same Compose file/hash remained and quiet validation passed. Unified Pay data, backup and Secret-source directories plus all nine source mount paths remained present. This preserves the future Compose recreation path; it was not exercised.
+
+Dujiao app/PostgreSQL/Redis, Shop, Mini Craft Home/Shop/wp-json, Xianyu, cloudflared and spikersun-private all passed post-removal checks. Non-target containers retained their accepted IDs, running states and restart counts. Shared monitor manual run passed. No known project regression occurred, so rollback was unused. pay.spikersun.com remains an accepted expected-unavailable baseline while the retained route targets the removed App origin; this Gate did not query or change Cloudflare, DNS or Tunnel.
+
+### Hard-boundary results
+
+Exactly one authorized stopped App container was removed. App image, PostgreSQL, Compose, project data, backups, Secret sources, Tunnel/DNS, networks and every other project resource were preserved. Database writes, Provider calls/mutations, payment actions, Cloudflare/DNS/Tunnel mutations, cleanup/prune and other Docker deletions were zero. Secret values were not emitted. Permanent project/data deletion was not entered. Stop at Reviewer.
+
+## M7 Unified Pay PostgreSQL Stop Observation — 2026-10-01
+
+```text
+GATE=M7_UNIFIED_PAY_POSTGRES_STOP_OBSERVATION
+RESULT=PASS_CANDIDATE_M7_UNIFIED_PAY_POSTGRES_STOP_OBSERVATION
+OWNER_STANDING_AUTHORIZATION_FOR_UNIFIED_PAY_DECOMMISSION=YES
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+LOCAL_SSH_TRUST_PREFLIGHT=PASS
+CLIENT_PUBLIC_KEY_FINGERPRINT=SHA256:qFlRXelvzDEFpatrcX7T4dUBKPAC7YqFqNkyFZh5rYw
+EXPECTED_HOST_KEY_PINS_MATCH=YES
+SSH_NETWORK_INVOCATIONS=7
+PREFLIGHT_SSH_NATIVE_EXIT=0
+DB_CONTAINER_ID=eeb800570fd41e117a3cb788ef27977749de7f637f86e7379db4cf686547a120
+DB_CONTAINER_NAME=/unified-pay-db-1
+DB_COMPOSE_PROJECT=unified-pay
+DB_COMPOSE_SERVICE=db
+DB_STATE_BEFORE=running
+DB_HEALTH_BEFORE=healthy
+DB_RESTART_COUNT_BEFORE=0
+UNIFIED_PAY_APP_CONTAINER_PRESENT_BEFORE=NO
+UNIFIED_PAY_APP_CONTAINER_PRESENT_AFTER=NO
+UNIFIED_PAY_APP_CONTAINER_PRESENT=NO
+UNIFIED_PAY_APP_IMAGE_ID=sha256:78029ea23abde4a44ff4c51a176c549b1be81746e73f9cfe08dbda0550c901cc
+UNIFIED_PAY_APP_IMAGE_PRESENT=YES
+COMPOSE_SOURCE=/srv/apps/unified-pay/docker-compose.prod.yml
+COMPOSE_BYTES=5271
+COMPOSE_SHA256=deb4f91d39a53df951c3d61c9911baba73b1a06bfd4d9079b7f8932221e3ff44
+COMPOSE_QUIET_VALIDATION_BEFORE_AFTER=PASS/PASS
+UNIFIED_PAY_DATA_DB_PRESENT_BEFORE_AFTER=YES/YES
+UNIFIED_PAY_BACKUPS_PRESENT_BEFORE_AFTER=YES/YES
+UNIFIED_PAY_BACKUP_FILE_COUNT=33
+UNIFIED_PAY_BACKUP_TOTAL_BYTES=566264
+UNIFIED_PAY_BACKUP_OLDEST_MTIME_EPOCH=1789288950
+UNIFIED_PAY_BACKUP_NEWEST_MTIME_EPOCH=1789407928
+UNIFIED_PAY_SECRET_BIND_SOURCE_COUNT=9
+UNIFIED_PAY_SECRET_BIND_SOURCES_PRESENT=YES
+UNIFIED_PAY_SECRET_CONTENT_READS=0
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+DUJIAO_UNIFIED_PAY_SOURCE_REFERENCE_COUNT=0
+DUJIAO_RUNTIME=app/postgres/redis running healthy
+SHOP_PUBLIC=HTTP_200_TLS_VERIFY_0
+MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+MINICRAFT_WP_JSON=HTTP_200_TLS_VERIFY_0
+XIANYU_RUNTIME=running healthy
+CLOUDFLARED=running
+SPIKERSUN_PRIVATE=PRESENT
+SHARED_MONITOR_PRESTOP=PASS
+POSTGRES_STOP_COMMAND=docker stop <exact verified DB container ID>
+POSTGRES_STOP_NATIVE_EXIT=0
+POSTGRES_STOP_ACTIONS=1
+POSTGRES_CONTAINER_REMOVE_ACTIONS=0
+DB_STATE_AFTER=exited
+UNIFIED_PAY_POSTGRES_STATE=stopped
+UNIFIED_PAY_POSTGRES_CONTAINER_PRESENT=YES
+UNIFIED_PAY_DATA_PRESENT=YES
+UNIFIED_PAY_BACKUPS_PRESENT=YES
+UNIFIED_PAY_SECRET_SOURCE_PRESENT=YES_METADATA_ONLY
+DB_CONTAINER_PRESENT_AFTER=YES
+DB_RESTART_COUNT_AFTER=0
+UNIFIED_PAY_FULL_RUNTIME_RECREATE_PATH_PRESERVED=YES
+ROLLBACK_COMMAND=canonical Compose service start for project unified-pay service db
+ROLLBACK_SOURCE=/srv/apps/unified-pay/docker-compose.prod.yml
+PAY_PUBLIC_ENDPOINT=EXPECTED_UNAVAILABLE_POST_APP_RETIREMENT
+KNOWN_PROJECT_REGRESSION=NO
+ROLLBACK_USED=NO
+SSH_STOP_WRAPPER_EXIT=2_CRLF_EXIT_PARSER_ONLY_POST_STOP
+POSTCHECK_SSH_NATIVE_EXIT=0
+UNIFIED_PAY_POSTGRES_START_ACTIONS=0
+UNIFIED_PAY_DATA_DELETE_ACTIONS=0
+UNIFIED_PAY_BACKUP_DELETE_ACTIONS=0
+UNIFIED_PAY_SECRET_DELETE_ACTIONS=0
+UNIFIED_PAY_APP_IMAGE_DELETE_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+SHARED_INFRA_MUTATIONS=0
+DATABASE_WRITES=0
+PROVIDER_CALLS=0
+PROVIDER_MUTATIONS=0
+PAYMENT_ACTIONS=0
+BROAD_PRUNE=NO
+STOP_AT_REVIEWER=YES
+```
+
+## M8 Unified Pay PostgreSQL Container Decommission — 2026-10-01
+
+```text
+GATE=M8_UNIFIED_PAY_POSTGRES_CONTAINER_DECOMMISSION
+RESULT=RETURN_M8_POSTDELETE_RECOVERY_ASSET_DRIFT
+ACCESS_PATH=CANONICAL_STRICT_SSH
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+LOCAL_SSH_TRUST_PREFLIGHT=PASS
+
+UNIFIED_PAY_APP_CONTAINER_PRESENT_BEFORE=NO
+UNIFIED_PAY_POSTGRES_CONTAINER_ID=eeb800570fd41e117a3cb788ef27977749de7f637f86e7379db4cf686547a120
+UNIFIED_PAY_POSTGRES_CONTAINER_NAME=/unified-pay-db-1
+UNIFIED_PAY_POSTGRES_CONTAINER_PRESENT_BEFORE=YES
+UNIFIED_PAY_POSTGRES_STATE_BEFORE=exited
+UNIFIED_PAY_POSTGRES_CONTAINER_REMOVE=YES_EXACTLY_ONE
+POSTGRES_CONTAINER_REMOVE_NATIVE_EXIT=0
+POSTGRES_CONTAINER_REMOVE_ACTIONS=1
+UNIFIED_PAY_POSTGRES_CONTAINER_PRESENT_AFTER=NO
+UNIFIED_PAY_POSTGRES_CONTAINER_MATCH_COUNT_AFTER=0
+UNIFIED_PAY_APP_CONTAINER_PRESENT_AFTER=NO
+
+UNIFIED_PAY_APP_IMAGE_PRESENT_AFTER=YES
+UNIFIED_PAY_POSTGRES_IMAGE_PRESENT_AFTER=YES
+UNIFIED_PAY_POSTGRES_IMAGE_RECOVERY_AVAILABLE=YES
+
+PREDELETE_COMPOSE_SOURCE=/srv/apps/unified-pay/docker-compose.prod.yml
+PREDELETE_COMPOSE_BYTES=5271
+PREDELETE_COMPOSE_SHA256=deb4f91d39a53df951c3d61c9911baba73b1a06bfd4d9079b7f8932221e3ff44
+PREDELETE_COMPOSE_VALIDATION=PASS
+POSTDELETE_COMPOSE_SOURCE_PRESENT=NO
+POSTDELETE_DATA_ROOT_PRESENT_AFTER=YES
+POSTDELETE_DATA_DB_PRESENT_AFTER=NO
+POSTDELETE_BACKUP_ROOT_PRESENT_AFTER=YES
+POSTDELETE_BACKUP_FILE_COUNT_AFTER=0
+POSTDELETE_BACKUP_TOTAL_BYTES_AFTER=0
+POSTDELETE_UNIFIED_PAY_VOLUME_METADATA=NO_MATCHING_VOLUME_FOUND
+POSTDELETE_RECOVERY_ASSET_READBACK=FAIL
+
+PREDELETE_SECRET_SOURCE_METADATA=APP_BIND_SOURCE_COUNT=9|APP_BIND_SOURCES_PRESENT=YES|CONTENT_READS=0
+POSTDELETE_SECRET_SOURCE_REVALIDATION=NOT_PROVEN_AFTER_RECOVERY_ASSET_DRIFT
+SECRET_VALUES_OUTPUT=0
+SECRET_CONTENT_READS=0
+
+DUJIAO_UNIFIED_PAY_RUNTIME_DEPENDENCY=NO
+DUJIAO_RUNTIME=app/postgres/redis healthy
+SHOP_PUBLIC=HTTP_200_TLS_VERIFY_0
+MINICRAFT_HOME=HTTP_200_TLS_VERIFY_0
+MINICRAFT_SHOP=HTTP_200_TLS_VERIFY_0
+MINICRAFT_WP_JSON=HTTP_200_TLS_VERIFY_0
+XIANYU_RUNTIME=healthy
+CLOUDFLARED=running
+SPIKERSUN_PRIVATE=PRESENT
+SHARED_MONITOR_MANUAL=PASS
+PAY_PUBLIC_ENDPOINT=EXPECTED_UNAVAILABLE_POST_APP_RETIREMENT
+KNOWN_PROJECT_REGRESSION=NO
+
+POSTDELETE_FIRST_READBACK_SCRIPT=FAILED_SHELL_PARSE_NO_ADDITIONAL_DOCKER_MUTATION
+POSTDELETE_PATH_METADATA_READBACK=EXIT_0
+NO_CAUSAL_ATTRIBUTION_FOR_RECOVERY_ASSET_DRIFT=YES
+ROLLBACK_USED=NO
+
+UNIFIED_PAY_POSTGRES_IMAGE_DELETE=0
+UNIFIED_PAY_APP_IMAGE_DELETE=0
+UNIFIED_PAY_DATA_DELETE=0
+UNIFIED_PAY_BACKUP_DELETE=0
+UNIFIED_PAY_SECRET_DELETE=0
+UNIFIED_PAY_COMPOSE_DELETE=0
+UNIFIED_PAY_NETWORK_DELETE=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+SHARED_INFRA_MUTATIONS=0
+PROVIDER_CALLS=0
+PAYMENT_ACTIONS=0
+DATABASE_WRITES=0
+BROAD_PRUNE=NO
+STOP_AT_REVIEWER=YES
+```
+
+### M8 bounded result
+
+The fresh preflight passed with the exact stopped Unified Pay PostgreSQL container, canonical Compose validation, PostgreSQL/App images, data root, 33 backup files totaling 566264 bytes, metadata-only Secret-source verification, Dujiao dependency absent, and healthy unrelated project/public checks. Three earlier pre-delete wrapper scripts ended in shell parsing errors before the removal command and produced no Docker mutation.
+
+After the guards passed, exactly one strict SSH command removed only the fresh verified stopped database container by exact ID; native SSH exit was 0. No `-v`, prune, Compose down, image/network/volume removal, data/backup/Secret operation, Provider call, payment action, or other project mutation was executed.
+
+The first post-delete wrapper ended in a shell parse error after partial readback. A separate read-only path/volume diagnostic then exited 0 and found the Compose file absent, `/srv/data/unified-pay/db` absent, and zero files under `/srv/backups/unified-pay` (the backup root directory itself remained present); no matching Unified Pay Docker volume metadata was found. This is a material post-delete recovery-asset drift against the sealed M8 preflight. The readback does not attribute causality to the exact `docker rm` action, and no recovery or compensating mutation was attempted.
+
+The removed PostgreSQL container is absent, the App container remains absent, both immutable images remain present, Dujiao/Mini Craft/Shop/Xianyu/cloudflared/private-network/monitor checks remained healthy, and no known project regression was observed. Because the required Compose/data/backup recovery barrier was not satisfied on fresh readback, this Gate is returned to Reviewer and no further M8 action is authorized here.
+
+
+## Gate: M8-R1 Unified Pay Recovery Asset Drift Forensics — 2026-10-01
+
+```text
+GATE=M8_R1_UNIFIED_PAY_RECOVERY_ASSET_DRIFT_FORENSICS
+RESULT=PASS_CANDIDATE_M8_R1_UNIFIED_PAY_RECOVERY_ASSET_DRIFT_FORENSICS
+TARGET_HOST=srv1970241
+REMOTE_USER=ops
+TARGET_HOST_EXECUTION_PROVEN=PASS
+ACCESS_PATH=CANONICAL_STRICT_SSH
+VPS_FORENSICS_READONLY=YES
+
+UNIFIED_PAY_APP_DIR_EXISTS=YES
+UNIFIED_PAY_APP_DIR_TYPE=dir
+UNIFIED_PAY_APP_DIR_OWNER_GROUP=root:UNKNOWN
+UNIFIED_PAY_APP_DIR_MODE=0750
+UNIFIED_PAY_APP_DIR_INODE=2359336
+UNIFIED_PAY_APP_DIR_MTIME_UTC=2026-09-14T17:50:17Z
+UNIFIED_PAY_APP_DIR_CTIME_UTC=2026-09-14T17:50:17Z
+UNIFIED_PAY_APP_DIR_ENTRY_COUNT=0
+UNIFIED_PAY_APP_DIR_AGGREGATE_BYTES=0
+UNIFIED_PAY_APP_DIR_IS_MOUNTPOINT=NO
+
+UNIFIED_PAY_COMPOSE_PATH=/srv/apps/unified-pay/docker-compose.prod.yml
+UNIFIED_PAY_COMPOSE_EXISTS=NO
+UNIFIED_PAY_COMPOSE_TYPE=absent
+UNIFIED_PAY_COMPOSE_OWNER_GROUP_MODE_INODE_TIMES=NOT_APPLICABLE
+UNIFIED_PAY_COMPOSE_ENTRY_COUNT=0
+UNIFIED_PAY_COMPOSE_AGGREGATE_BYTES=0
+UNIFIED_PAY_COMPOSE_IS_MOUNTPOINT=NO
+HISTORICAL_COMPOSE_SHA256=deb4f91d39a53df951c3d61c9911baba73b1a06bfd4d9079b7f8932221e3ff44
+
+UNIFIED_PAY_DATA_DIR_EXISTS=YES
+UNIFIED_PAY_DATA_DIR_TYPE=dir
+UNIFIED_PAY_DATA_DIR_OWNER_GROUP=root:UNKNOWN
+UNIFIED_PAY_DATA_DIR_MODE=0750
+UNIFIED_PAY_DATA_DIR_INODE=2359337
+UNIFIED_PAY_DATA_DIR_MTIME_UTC=2026-09-13T08:33:16.190557397Z
+UNIFIED_PAY_DATA_DIR_CTIME_UTC=2026-09-13T08:33:16.190557397Z
+UNIFIED_PAY_DATA_DIR_ENTRY_COUNT=0
+UNIFIED_PAY_DATA_DIR_AGGREGATE_BYTES=0
+UNIFIED_PAY_DATA_DIR_IS_MOUNTPOINT=NO
+
+UNIFIED_PAY_DB_PATH=/srv/data/unified-pay/db
+UNIFIED_PAY_DB_EXISTS=NO
+UNIFIED_PAY_DB_TYPE=absent
+UNIFIED_PAY_DB_OWNER_GROUP_MODE_INODE_TIMES=NOT_APPLICABLE
+UNIFIED_PAY_DB_ENTRY_COUNT=0
+UNIFIED_PAY_DB_AGGREGATE_BYTES=0
+UNIFIED_PAY_DB_IS_MOUNTPOINT=NO
+
+UNIFIED_PAY_SECRETS_PATH=/srv/data/unified-pay/secrets
+UNIFIED_PAY_SECRETS_EXISTS=NO
+UNIFIED_PAY_SECRETS_TYPE=absent
+UNIFIED_PAY_SECRETS_OWNER_GROUP_MODE_INODE_TIMES=NOT_APPLICABLE
+UNIFIED_PAY_SECRETS_ENTRY_COUNT=0
+UNIFIED_PAY_SECRETS_AGGREGATE_BYTES=0
+UNIFIED_PAY_SECRETS_IS_MOUNTPOINT=NO
+VPS_SECRET_SOURCE_PRESENT=NO
+VPS_SECRET_FILE_COUNT=0
+SECRET_CONTENT_READS=0
+SECRET_HASH_ACTIONS=0
+
+UNIFIED_PAY_BACKUP_DIR_EXISTS=YES
+UNIFIED_PAY_BACKUP_DIR_TYPE=dir
+UNIFIED_PAY_BACKUP_DIR_OWNER_GROUP=root:root
+UNIFIED_PAY_BACKUP_DIR_MODE=0750
+UNIFIED_PAY_BACKUP_DIR_INODE=2359338
+UNIFIED_PAY_BACKUP_DIR_MTIME_UTC=2026-09-14T17:45:28.053014896Z
+UNIFIED_PAY_BACKUP_DIR_CTIME_UTC=2026-09-14T17:45:28.053014896Z
+UNIFIED_PAY_BACKUP_DIR_ENTRY_COUNT=0
+UNIFIED_PAY_BACKUP_DIR_AGGREGATE_BYTES=0
+UNIFIED_PAY_BACKUP_DIR_IS_MOUNTPOINT=NO
+ROOT_FILESYSTEM=/dev/sda1
+ROOT_FILESYSTEM_TYPE=ext4
+
+VPS_SEARCH_SCOPE=/srv+/root_metadata+/tmp+/home+known_owner_workspace+canonical_GitHub_tree
+EXACT_PRODUCTION_COMPOSE_COPY_FOUND=NO
+D13_R1_DUMP_FILES_FOUND=NO
+PRE_ALIPAY_DATABASE_DUMPS_FOUND=NO
+OTHER_UNIFIED_PAY_EXACT_DATABASE_DUMP_FOUND=NO
+UNIFIED_PAY_BACKUP_FILES_FOUND=NO
+GITHUB_DEPLOYMENT_COMPOSE_COPY_FOUND=NO
+GITHUB_DATABASE_DUMP_FOUND=NO
+GITHUB_SOURCE_BUNDLE_IS_DEPLOYMENT_COMPOSE=NO
+GITHUB_OPAQUE_LEGACY_B64_ARTIFACTS_DECODED=NO
+COMPOSE_RECOVERY_SOURCE=NONE
+DATABASE_EXACT_RECOVERY_SOURCE=NONE
+
+M8_DOCKER_RM_EVENT_UTC=2026-10-01T13:17:59Z
+M8_DOCKER_RM_COMMAND=EXACT_VERIFIED_CONTAINER_ID_WITHOUT_VOLUME_FLAG
+M8_DOCKER_RM_NATIVE_EXIT=0
+DOCKER_RM_WITH_VOLUME_FLAG_EVIDENCE=NO
+DOCKER_EVENT_ROWS_IN_AVAILABLE_WINDOW=0
+OTHER_DESTRUCTIVE_COMMAND_EVIDENCE=UNRESOLVED
+OTHER_DESTRUCTIVE_COMMAND_EVIDENCE_NOTE=Two sanitized docker-container-remove log entries correspond to the accepted exact rm; no other scoped destructive action was found in available records, which are not a complete audit trail.
+DB_STORAGE_TYPE=BIND
+DB_BIND_SOURCE=/srv/data/unified-pay/db
+DOCKER_RM_CAUSALITY=DISPROVEN
+
+WINDOWS_DPAPI_RECOVERY_PATH=C:\Users\34707\AppData\Local\DujiaoNext\recovery\unified-pay\secrets-20260913T082602Z.tar.dpapi
+WINDOWS_DPAPI_RECOVERY_EXISTS=YES
+WINDOWS_DPAPI_RECOVERY_BYTES=20710
+WINDOWS_DPAPI_RECOVERY_SHA256=E0F2FA7087998829277EB067BF2B105773285B5D774B82851BDC260C3142517B
+WINDOWS_DPAPI_RECOVERY_HASH_MATCH=YES
+WINDOWS_DPAPI_DECRYPT_OR_CONTENT_READ=NO
+SECRET_RECOVERY_SOURCE=WINDOWS_DPAPI
+
+CURRENT_ANONYMOUS_DOCKER_VOLUMES=5
+UNIFIED_PAY_DATABASE_VOLUME_MATCH=NONE
+ANONYMOUS_VOLUME_CONTENT_READS=0
+ANONYMOUS_VOLUMES_ACCEPTED_AS_DATABASE_RECOVERY=NO
+
+KNOWN_PROJECT_REGRESSION=NO
+DUJIAO_APP_POSTGRES_REDIS=HEALTHY
+SHOP_PUBLIC=HTTP_200_TLS_VERIFY_0
+MINICRAFT_HOME_SHOP_WP_JSON=HTTP_200_TLS_VERIFY_0
+XIANYU_RUNTIME=HEALTHY
+CLOUDFLARED=RUNNING
+SPIKERSUN_PRIVATE=PRESENT
+SHARED_MONITOR_LATEST_SCHEDULED_RESULT=SUCCESS_EXIT_0
+
+RECOVERY_ASSET_DRIFT_CLASS=UNRESOLVED
+DRIFT_CLASSIFICATION_BASIS=Pre-M8 evidence proves the named Compose, bind-data path and 33 backup files existed; current scoped searches find no exact Compose or database copy. Parent-directory timestamps predate M8 and available logs do not establish the loss mechanism or a complete command history. No causal attribution is made beyond ruling out plain docker rm as the cause of host bind-path deletion.
+FURTHER_MUTATIONS=0
+VPS_WRITES=0
+DOCKER_MUTATIONS=0
+CONTAINER_STARTS=0
+CONTAINER_CREATES=0
+FILES_CREATED=0
+FILES_MOVED=0
+FILES_DELETED=0
+DIRECTORIES_CREATED=0
+MOUNTS=0
+DATABASE_WRITES=0
+RESTORE_ACTIONS=0
+BACKUP_ACTIONS=0
+CLOUDFLARE_MUTATIONS=0
+DNS_MUTATIONS=0
+TUNNEL_ROUTE_MUTATIONS=0
+PROVIDER_CALLS=0
+PAYMENT_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+### Bounded forensic interpretation
+
+The current app, data and backup roots exist as empty directories; the production Compose file, database subdirectory and VPS Secret source are absent. Metadata-only checks found no mountpoint at the checked paths. No backup or database payload was opened. Safe searches of the VPS scopes, Owner workspace and canonical GitHub tree found no exact named Unified Pay Compose copy or database dump. The GitHub source bundle is application source, not the deleted deployment Compose; opaque legacy encoded deployment artifacts were not decoded.
+
+The local DPAPI recovery artifact exists and matches the previously sealed 20,710-byte SHA-256 metadata. It was not decrypted or read. This establishes a protected Secret-recovery artifact, not a database recovery source.
+
+The exact M8 action recorded by the accepted execution evidence was a one-container `docker rm` without `-v`. Historical runtime metadata identifies PostgreSQL storage as a host bind mount to `/srv/data/unified-pay/db`; ordinary removal of that container does not remove that host directory. Therefore Docker-container-removal causality for the bind-data disappearance is disproven. Two sanitized log entries classify that exact removal; available logs are not comprehensive enough to prove that no other destructive command occurred.
+
+The app/data/backup parent directory timestamps are 2026-09-14, before M8, despite M7 recording 33 backup files and a present database path. This timing anomaly is retained as an unresolved forensic discrepancy, not interpreted as proof of deletion, movement or a specific actor/action. Five current anonymous Docker volumes have no metadata linking them to Unified Pay and were not read or treated as recovery copies.
+
+Dujiao, Mini Craft, Xianyu, cloudflared, the private network, public Shop/Mini Craft endpoints and the latest scheduled monitor result were healthy at read time. No runtime or Docker mutation was performed. Because no exact database recovery source was found and the complete mechanism is not established, the overall asset-drift class remains `UNRESOLVED`; no restoration/recreation is authorized by this record.
+

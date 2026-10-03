@@ -57,13 +57,43 @@
 | `REVIEWER_DECISION_G3CR2R2_DEPENDENCY_PASS.md` | Reviewer interpretation of blank builder as Gutenberg | **CURRENT DEPENDENCY DECISION — PASS** |
 | `G3CR2R3_BLOCKSY_WEDDING_IMPORT_WOOCOMMERCE_CANARY.md` | Wedding import + WooCommerce/account/private-workspace compatibility | **EXECUTED / PASS** |
 | `REVIEWER_DECISION_G3CR2R3_PASS.md` | Reviewer acceptance of PR #63 compatibility canary | **CURRENT COMPATIBILITY DECISION — PASS** |
-| `G3C_BLOCKSY_WEDDING_EXECUTION_PACKET.md` | Blocksy Wedding + Good Issue productization / Owner edit package | **CURRENT EXECUTION PACKAGE** |
+| `G3C_BLOCKSY_WEDDING_EXECUTION_PACKET.md` | Blocksy Wedding + Good Issue productization / Owner edit package | Parent G3C implementation package |
+| `REVIEWER_DECISION_G3C_PR64_INTERIM_RETURN.md` | Reviewer interim decision after opening PR #64 | **CURRENT G3C INTERIM DECISION** |
+| `G3CR3_G3C_VISUAL_EVIDENCE_CLOSURE.md` | Screenshot + 375px evidence closure | **SUPERSEDED BY OWNER VISUAL REVIEW** |
+| `REVIEWER_DECISION_G3C_OWNER_VISUAL_RETURN.md` | Reviewer visual decision from Owner's current 17-screenshot package | **CURRENT VISUAL DECISION — RETURN** |
+| `G3CR4_G3C_VISUAL_CONSOLIDATION.md` | Homepage hierarchy/mobile-preview visual consolidation | **EXECUTED / PASS** |
+| `REVIEWER_DECISION_G3CR4_PASS.md` | Reviewer acceptance of G3CR4 | **CURRENT G3CR4 DECISION — PASS** |
+| `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY.md` | Preview-photo composition + WooCommerce visual continuity | **EXECUTED / PASS** |
+| `REVIEWER_DECISION_G3CR5_PASS.md` | Reviewer acceptance of G3CR5 | **CURRENT G3CR5 DECISION — PASS** |
+| `G3C_OWNER_VISUAL_CHECKPOINT.md` | Owner visual checkpoint after G3CR5 | **RESOLVED — OPTION B / FURTHER REDESIGN REQUESTED** |
+| `OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md` | Owner-selected Option 2 visual direction + frontend/backend change boundary | **CURRENT OWNER DECISION** |
+| `G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md` | Frontend experience + brand redesign execution contract | **EXECUTED / RETURN — VISUAL DIRECTION UNDEREXECUTED** |
+| `REVIEWER_DECISION_G3CR6_RETURN.md` | Reviewer decision on G3CR6 | **CURRENT G3CR6 DECISION — RETURN** |
+| `G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md` | Frontend composition correction; old six-section skeleton not binding | **EXECUTED / PASS** |
+| `REVIEWER_DECISION_G3CR6R1_PASS.md` | Reviewer decision on G3CR6R1 | **CURRENT G3CR6R1 DECISION — PASS** |
+| `G3C_OWNER_VISUAL_CHECKPOINT_R2.md` | Owner checkpoint after G3CR6R1 | **RESOLVED — BOUNDED PREVIEW POLISH REQUESTED** |
+| `REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md` | Product-opportunity / Activation review of Free Preview | **CURRENT REVIEW DECISION** |
+| `G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md` | Earlier bounded Preview-only correction | **SUPERSEDED BEFORE EXECUTION** |
+| `OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md` | Owner requirement for motion, final-product proof, stronger Preview | **CURRENT OWNER DECISION** |
+| `REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md` | Reviewer product/growth diagnosis for the broadened experience correction | **CURRENT REVIEW DECISION** |
+| `G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT.md` | Owner review of current static 12-page magazine visual system | **RESOLVED — OWNER REJECTED CURRENT VISUAL** |
+| `OWNER_DECISION_G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` | Owner rejection + initial full-redesign boundary | **SUPERSEDED BY LAB-FIRST DECISION** |
+| `G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` | Full 12-page magazine visual redesign | **SUPERSEDED BEFORE EXECUTION** |
+| `OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier 1+1+12 lab-first direction | **SUPERSEDED BEFORE EXECUTION** |
+| `G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier design lab Gate | **SUPERSEDED BEFORE EXECUTION** |
+| `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md` | Owner-approved template/source-first direction | **CURRENT OWNER DECISION** |
+| `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` | Read-only template + interaction source discovery | **CURRENT GATE — RESEARCH BLOCKED UNTIL SOURCE PREFLIGHT PASSES** |
+| `REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` | Fresh Reviewer takeover/source-baseline reconciliation | **CURRENT PREFLIGHT DECISION — RETURN_PREFLIGHT_DRIFT** |
+| `OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md` | Owner-approved anti-shallow-search quality bar | **CURRENT OWNER DECISION** |
+| `G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md` | Mandatory breadth/evidence/saturation contract for template research | **MANDATORY CURRENT RESEARCH CONTRACT** |
+| `G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` | Website motion + static final-product proof + Preview Activation correction | **PREPARED / HOLD PENDING MAGAZINE VISUAL PASS** |
 | `G3C_EXECUTION_PACKET.md` | Old Astra-specific full G3C package | **SUPERSEDED — DO NOT EXECUTE** |
 | `G3A_MINICRAFT_LESSONS_REFERENCE.md` | Accepted Mini Craft pitfalls/success path adapted for Birthday Magazine G3 | **CURRENT SUPPORTING EXECUTION REFERENCE** |
 | `G2A2_PRODUCT_RESEARCH_2026-09-27.md` | Market / competitor / adjacent-product evidence for G2A2 | Supporting research — R1 |
 | `G2A2_PRODUCT_RESEARCH_R2_DECISION_MATRIX.md` | Second-round evidence + explicit product decision matrix | **CURRENT SUPPORTING RESEARCH — NOT A FREEZE** |
 | `G1_TWO_STEP_AI_PRODUCT_FLOW.md` | Two-step product-flow design | Current supporting design where consistent with Handoff |
-| `ACQUISITION_GROWTH_PLAN.md` | Validation/acquisition plan | Supporting plan; not evidence of actual transactions |
+| `ACQUISITION_GROWTH_PLAN.md` | Current validation/acquisition operating plan | **CURRENT SUPPORTING PLAN — not evidence of actual transactions** |
+| `GROWTH_VALIDATION_STATE_2026-10-03.md` | Current Acquisition Growth Radar diagnosis / Validation Spine | **CURRENT SUPPORTING GROWTH STATE** |
 | `../prototype/` | Browser sample | Prototype evidence only; not production |
 
 ## Governance rules
@@ -77,24 +107,18 @@
 
 ## Current working set
 
-For the current project state, a new Reviewer/Executor should normally need only:
+For the current G3CR6R3C state, a new Reviewer/Executor should normally need only:
 
 1. `../REVIEWER_HANDOFF.md`
-2. `../EXECUTOR_HANDOFF.md`
-3. `../EXECUTION_EVIDENCE.md`
-4. `MVP_PRODUCT_CONTRACT.md`
-5. `OWNER_DECISION_G3C_BLOCKSY_WEDDING.md` — current Owner template decision
-6. `BLOCKSY_WEDDING_SELECTION_PROOF_2026-09-30.md` — why the canary is authorized
-7. `REVIEWER_DECISION_G3CR2R3_PASS.md` — accepted Blocksy/Woo compatibility decision
-8. `G3C_UI_UX_PRODUCTIZATION.md` — current parent Gate
-9. `G3C_BLOCKSY_WEDDING_EXECUTION_PACKET.md` — current execution package
-9. `REVIEWER_DECISION_G3CR2R1_RETURN.md` — prior Reviewer return decision
-10. `G3CR2R2_BLOCKSY_WEDDING_V2_CATALOG_CLOSURE.md` — executed catalogue closure / RETURN provenance
-9. `REVIEWER_DECISION_G3CR2_RETURN.md` — parent G3CR2 return decision
-10. `G3CR2_BLOCKSY_WEDDING_WOOCOMMERCE_CANARY.md` — parent canary contract / RETURN provenance
-11. `REVIEWER_DECISION_G3C_BLOCK_EDITOR_RETURN.md` — historical Astra RETURN provenance
-9. `REVIEWER_DECISION_G3BR1_G3B_PASS.md`
-10. `G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md` for closed Sandbox proof details
-11. `G3A_MINICRAFT_LESSONS_REFERENCE.md` only when a PayPal/runtime issue resembles an already-seen Mini Craft failure
+2. `REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md`
+3. `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
+4. `G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`
+5. `OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`
+6. `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md`
+7. `MVP_PRODUCT_CONTRACT.md` sections 5–7
+8. `G3C_OWNER_MAGAZINE_VISUAL_CHECKPOINT.md` and the rejected contact-sheet artifact only as negative visual baseline
+9. `REVIEWER_DECISION_G3CR6R1_PASS.md` only for the accepted homepage/runtime boundary
+10. `GROWTH_VALIDATION_STATE_2026-10-03.md` for the current activation/product-readiness diagnosis
+11. `../EXECUTOR_HANDOFF.md` / `../EXECUTION_EVIDENCE.md` only when a specific current execution fact must be inspected
 
-Older Gate contracts and research remain in place for provenance and must not be treated as the current execution package.
+Older Gates, payment history, prior template/theme research and superseded visual rounds remain provenance. Do not load them by default for G3CR6R3C.

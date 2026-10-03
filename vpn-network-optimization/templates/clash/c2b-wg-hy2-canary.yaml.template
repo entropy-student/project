@@ -1,0 +1,29 @@
+{
+  "proxies": [
+    {
+      "name": "WG-BASELINE",
+      "type": "direct"
+    },
+    {
+      "name": "HY2-SFO3",
+      "type": "hysteria2",
+      "server": "203.0.113.77",
+      "port": 8443,
+      "password": "__C2B_SYNTHETIC_AUTH_FIXTURE_ONLY__",
+      "sni": "c2b-synthetic.invalid",
+      "skip-cert-verify": false,
+      "fingerprint": "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00",
+      "alpn": ["h3"]
+    }
+  ],
+  "proxy-groups": [
+    {
+      "name": "SELF-VPN-CANARY",
+      "type": "select",
+      "proxies": [
+        "WG-BASELINE",
+        "HY2-SFO3"
+      ]
+    }
+  ]
+}

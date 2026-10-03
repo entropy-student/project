@@ -1,0 +1,22 @@
+[Unit]
+Description=Hysteria 2 side-by-side candidate for vpn-network-optimization
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User={{HY2_RUNTIME_USER}}
+Group={{HY2_RUNTIME_USER}}
+ExecStart=/usr/local/lib/vpn-network-optimization/hysteria server -c /srv/apps/vpn-network-optimization/config/hysteria2-server.yaml
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target
+

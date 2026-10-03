@@ -4,24 +4,38 @@ This file is navigation only. It is **not** a second project truth source.
 
 ## Read order
 
-1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — the only current Reviewer/project truth.
-2. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — document roles and authority.
-3. [EXECUTOR_HANDOFF.md](./EXECUTOR_HANDOFF.md) — latest Executor execution facts.
-4. [EXECUTION_EVIDENCE.md](./EXECUTION_EVIDENCE.md) — detailed sanitized evidence.
-5. Current/next Gate material referenced by the Handoff.
-6. Historical research/prototype documents only when needed.
+1. [REVIEWER_HANDOFF.md](./REVIEWER_HANDOFF.md) — authoritative current project dashboard.
+2. [docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md](./docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md) — current Gate.
+3. [docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md](./docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md) — mandatory research contract.
+4. [docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md](./docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md) — Owner quality bar.
+3. [docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md](./docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md) — current Owner decision.
+4. [docs/G3CR6R3B_VISUAL_MOTION_LAB.md](./docs/G3CR6R3B_VISUAL_MOTION_LAB.md) — superseded prior lab Gate.
+4. [docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md](./docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md) — superseded full-build Gate.
+4. [docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md](./docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md) — prepared website-motion Gate, on hold until magazine visual PASS.
+3. [docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md](./docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md) — current Owner experience requirement.
+4. [docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md](./docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md) — current product/growth diagnosis.
+5. [docs/GROWTH_VALIDATION_STATE_2026-10-03.md](./docs/GROWTH_VALIDATION_STATE_2026-10-03.md) — current growth diagnosis.
+6. [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — roles/status for all supporting and historical documents.
+7. `EXECUTOR_HANDOFF.md` / `EXECUTION_EVIDENCE.md` only for current execution facts/evidence.
 
 ## Current snapshot
 
-- P0 / G1 / G2A1 / G2A2 / G2B / G3A: accepted PASS at their defined scope.
-- **G3B / G3BR1: PASS** — PayPal Sandbox capture correlation, paid-entitlement 0→1 behavior, one Owner-authorized full Sandbox refund, entitlement revocation, and scoped cleanup are closed.
-- **G3CR2R3 compatibility canary: PASS** — Blocksy Wedding Gutenberg imported successfully; WooCommerce product/cart/checkout/account/private-workspace compatibility and Gutenberg editability passed.
-- **G3C UI/UX Productization: CURRENT** — adapt Wedding into Birthday Magazine, integrate the Good Issue browser-local preview, and keep the local WordPress runtime available for Owner Administrator/Gutenberg visual editing before freeze.
-- **G4 Live PayPal Canary: HOLD / NOT AUTHORIZED**.
-- PayPal Live, real-money payment, production AI provider, production private delivery and production deployment remain unproven.
+- **Technical Solution Proof:** PASS at its bounded scope.
+- **WooCommerce / account / private workspace:** PASS locally.
+- **PayPal Sandbox lifecycle:** PASS; Live/real-money still unproven.
+- **G3CR6R1 frontend composition:** PASS.
+- **Owner overall visual direction:** broadly accepted.
+- **G3CR6R2:** SUPERSEDED BEFORE EXECUTION.
+- **Owner magazine visual checkpoint:** RESOLVED — current static magazine visual rejected.
+- **G3CR6R3A:** SUPERSEDED BEFORE EXECUTION — do not jump straight to all 12 pages.
+- **G3CR6R3B:** SUPERSEDED BEFORE EXECUTION.
+- **G3CR6R3C:** CURRENT — template/source discovery under a hard research contract: >=60 direct candidates, >=8 source ecosystems, reject ledger, explicit license/source status, and saturation proof; no quota-filling.
+- **G3CR6R3:** PREPARED / HOLD — website/homepage motion + final-product proof + Preview redesign resumes only after magazine visual PASS.
+- **Commercial state:** LOW-COST VALIDATION / NOT SCALE.
+- **Owner visual freeze:** PENDING.
+- **PR #64:** open/unmerged.
+- **G4 Live PayPal:** HOLD / NOT AUTHORIZED.
 
 ## Source-of-truth rule
 
-Do not infer current status from old research, prototype copy, README snapshots or chat history. If anything conflicts with `REVIEWER_HANDOFF.md`, the Handoff wins unless the Owner gives a newer explicit instruction.
-
-Historical Evidence is preserved rather than rewritten; stronger later read-back supersedes earlier diagnosis through Reviewer decisions and the current Handoff.
+If any supporting document conflicts with `REVIEWER_HANDOFF.md`, the Handoff wins unless the Owner gives a newer explicit instruction or fresh authoritative evidence requires Reviewer reconciliation.

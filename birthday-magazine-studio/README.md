@@ -35,7 +35,20 @@
 | G3B PayPal Sandbox + paid entitlement + refund | **PASS** |
 | G3BR1 Payment reconciliation + entitlement/refund closure | **PASS** |
 | G3CR2R3 Blocksy Wedding + WooCommerce compatibility canary | **PASS** |
-| G3C Blocksy Wedding UI/UX productization + Owner visual freeze | **CURRENT** |
+| G3C Blocksy Wedding UI/UX productization + Owner visual freeze | INTERIM RETURN — PR #64 open; mobile/current screenshots pending |
+| G3CR3 current visual evidence closure | SUPERSEDED BY OWNER SCREENSHOT REVIEW |
+| G3CR4 G3C visual consolidation | **PASS** |
+| G3CR5 visual finish + WooCommerce continuity | **PASS** |
+| G3C Owner visual checkpoint | RESOLVED — Owner requested further redesign |
+| G3CR6 Frontend experience + warm-gift brand redesign | RETURN — visual direction underexecuted |
+| G3CR6R1 Frontend composition redesign | **PASS** |
+| G3C Owner visual checkpoint R2 | RESOLVED — bounded Preview polish requested |
+| G3CR6R2 Free Preview Activation polish | SUPERSEDED BEFORE EXECUTION |
+| G3C Owner magazine visual checkpoint | RESOLVED — current magazine visual rejected |
+| G3CR6R3A Static magazine visual redesign | SUPERSEDED BEFORE EXECUTION |
+| G3CR6R3B Visual + Motion Lab | SUPERSEDED BEFORE EXECUTION |
+| G3CR6R3C Template + Motion Source Discovery | **CURRENT** |
+| G3CR6R3 Final product proof + website motion + Preview Activation | HOLD pending magazine visual PASS |
 | G4 Live PayPal Canary | HOLD |
 | G5 Acquisition / economics | HOLD |
 | G6 Production hardening / scale | HOLD |
@@ -54,7 +67,7 @@ G3B Sandbox 闭环已经通过：
 → scoped cleanup PASS
 ```
 
-这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前正式进入 G3C：按最小修改原则把 Wedding 改造成 Birthday Magazine、接入 Good Issue 浏览器本地免费预览，并在技术完成后保留本地 WordPress 环境供 Owner 直接以 Administrator 身份在 Gutenberg 中修改页面。G4 Live PayPal Canary 继续保持 HOLD。
+这仍然**不是 Live/真钱支付证据**。此前 Astra 路线已经淘汰。**Blocksy Wedding Gutenberg 的兼容性现已 PASS**：Starter 可导入、首页可用 Gutenberg 编辑，WooCommerce 11.1.2 的商品/购物车/结账/账户以及 Private Workspace 回归均通过。当前 G3CR4 / G3CR5 均已 PASS：首页结构、375px Preview、上传照片后的 Preview 排版，以及 Product/Cart/Checkout/My Account 的视觉连续性都已通过 Reviewer 验收。Owner 在该 checkpoint 选择了继续修改而不是视觉封板。G3CR6 已执行，但 Reviewer 对 19 张最终截图复核后判定 **RETURN**：功能/隐私/Woo 回归证据可保留，但页面组合仍明显继承 G3CR4/G3CR5 的旧骨架，主要表现为换图与换肤，没有充分执行 **Option 2 — Warm Birthday Gift**。**G3CR6R1 Frontend Composition Redesign 已 Reviewer PASS**：首页已重建为新的礼物编辑风格 composition，旧六段 / `g3cr4-*` 骨架退出渲染；Preview、375px、原生 Woo 路径、Owner 编辑能力与后台保护边界均完成回归。Owner 已对 G3CR6R1 的整体 composition 表示大致认可，但认为当前“上传照片 → 显示封面/Preview”的体验仍不理想。Owner 直接查看 G2BR3 12 页 contact sheet 后明确拒绝当前杂志视觉：它只能作为技术 Solution Proof，不能作为对外出售的最终视觉。原计划直接重做完整 12 页，但 Owner 进一步收敛为 **1 + 1 + 12**：1 个首页、1 个高惊艳度核心交互、12 个静态杂志页面，共用一套 web-native editorial 设计系统。为避免再次一次性做完整套后返工，Owner 进一步简化：不先凭空设计原型，而是先把最强可复用模板/源码找出来。**当前进入 G3CR6R3C Template + Motion Source Discovery**：寻找覆盖 12 个杂志页面（网页呈现静态/动态暂未锁定）+ 1 个首页 + 1 个核心互动的优质来源，逐项确认源码可得性和许可证；可合法复用的后续直接适配，不能复制的只借鉴结构/交互后独立实现。当前研究受强制质量合同约束：至少直接检查 60 个不同候选、覆盖至少 8 个来源生态、保留淘汰记录，并在达到搜索饱和前不得为了凑数给出最终 shortlist。G3CR6R3 网站首页动效/最终产品展示/Preview 重做继续 HOLD，等杂志视觉通过后再恢复。Woo/支付/账户/私有空间后台继续冻结。PR #64 保持 open/unmerged，Owner visual freeze 仍为 PENDING，G4 继续 HOLD。
 
 ## 已证明的技术能力
 
@@ -84,14 +97,30 @@ G3B Sandbox 闭环已经通过：
 - [docs/DOCUMENT_INDEX.md](./docs/DOCUMENT_INDEX.md) — 所有文档角色与状态
 - [docs/MVP_PRODUCT_CONTRACT.md](./docs/MVP_PRODUCT_CONTRACT.md) — 冻结 MVP 产品合同
 - [docs/TECHNICAL_ROUTE.md](./docs/TECHNICAL_ROUTE.md) — 支持性技术路线
-- [docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md](./docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md) — **当前 G3B Reviewer PASS 判断**
+- [docs/OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md](./docs/OWNER_DECISION_G3CR6_WARM_GIFT_FRONTEND_REDESIGN.md) — **当前 Owner 视觉方向与变更边界**
+- [docs/REVIEWER_DECISION_G3CR6R1_PASS.md](./docs/REVIEWER_DECISION_G3CR6R1_PASS.md) — **G3CR6R1 Reviewer PASS**
+- [docs/REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md](./docs/REVIEWER_DECISION_G3CR6R2_PREVIEW_ACTIVATION_REVIEW.md) — **当前产品/Activation 判断**
+- [docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md](./docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md) — 当前 Owner 体验要求
+- [docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md](./docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md) — 当前产品/获客判断
+- [docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md](./docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md) — **当前执行 Gate**
+- [docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md](./docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md) — **当前模板研究强制质量合同**
+- [docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md](./docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md) — 当前 Owner 模板研究质量门槛
+- [docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md](./docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md) — 后续网站动效/Preview Gate（当前 HOLD）
+- [docs/G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md](./docs/G3CR6R2_FREE_PREVIEW_ACTIVATION_POLISH.md) — superseded before execution
+- [docs/GROWTH_VALIDATION_STATE_2026-10-03.md](./docs/GROWTH_VALIDATION_STATE_2026-10-03.md) — 当前 Growth Validation Spine / 瓶颈判断
+- [docs/ACQUISITION_GROWTH_PLAN.md](./docs/ACQUISITION_GROWTH_PLAN.md) — 当前获客验证计划
+- [docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md](./docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md) — 已解决的 Owner checkpoint
+- [docs/REVIEWER_DECISION_G3CR6_RETURN.md](./docs/REVIEWER_DECISION_G3CR6_RETURN.md) — G3CR6 Reviewer RETURN
+- [docs/G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md](./docs/G3CR6R1_FRONTEND_COMPOSITION_REDESIGN.md) — 已执行 / PASS contract
+- [docs/G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md](./docs/G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN.md) — 已执行 G3CR6 合同
+- [docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md](./docs/REVIEWER_DECISION_G3BR1_G3B_PASS.md) — G3B Reviewer PASS 判断
 - [docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md](./docs/G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND.md) — 已完成的 Sandbox closure contract
 
 其他研究、历史 Gate 与旧方案保留用于 provenance，但不与 Handoff 竞争当前真相。
 
 ## 治理
 
-本项目采用 GitHub canonical [VPS Project Governance v0.1.6](https://github.com/entropy-student/spike.skill/tree/main/vps-project-governance) 及当前 active addenda。
+本项目采用 GitHub canonical **VPS Project Governance v0.2.6**；实际操作规则以 `spike.skill/vps-project-governance/VNEXT.md` 为准，当前无外部 operational addenda。
 
 关键规则：
 
