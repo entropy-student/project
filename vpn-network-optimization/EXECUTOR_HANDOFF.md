@@ -3,7 +3,72 @@
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
 
-## Current execution status — G3B D3 staged-install render validation
+
+## Current execution status — G3C C1 unified manual-control contract
+
+```text
+GATE_ID=G3C_UNIFIED_MANUAL_CONTROL_CONTRACT_C1
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+OWNER_INTERVENTION_REQUIRED=NO
+ACTIVE_VPN_CONNECTIVITY_MUST_BE_PRESERVED=YES
+WG_IS_CURRENT_PRODUCTION_VPN=YES
+WG_DISCONNECT_REQUIRES_OWNER_CHECKPOINT=YES
+ALTERNATE_VPN_MUST_BE_CONFIRMED_BEFORE_WG_DISCONNECT=YES
+WG_SERVICE_STOP_AUTHORIZED=NO_IN_C1
+WG_ROUTE_REMOVAL_AUTHORIZED=NO_IN_C1
+CLASH_PROFILE_APPLY_AUTHORIZED=NO
+SYSTEM_PROXY_CHANGE_AUTHORIZED=NO
+TUN_CHANGE_AUTHORIZED=NO
+PERSISTENT_BYPASS_ROUTE_AUTHORIZED=NO
+VPS_ACCESS_AUTHORIZED=NO
+SECRET_READ_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Read the current C1 Gate in `REVIEWER_HANDOFF.md` and only the portable Clash/HY2/REALITY templates or accepted G2-C client-schema source required by that Gate.
+2. Sync a clean project-scoped worktree to canonical `origin/main`; do not discard unrelated changes.
+3. Create the minimum repository-owned non-secret manual-control profile contract and offline validator.
+4. Contract requirements:
+   - named `WG-BASELINE` Mihomo proxy with `type: direct`;
+   - `SELF-VPN-MANUAL` select group whose first/default selection is `WG-BASELINE`;
+   - `HY2-SFO3` and `REALITY-SFO3` skeletons use a dynamic physical-interface placeholder rather than hardcoded `WLAN`/ifIndex/gateway;
+   - HY2/REALITY Secret/identity sentinels remain explicit;
+   - REALITY is explicitly marked cold/not-ready-for-manual-use until a later live Gate;
+   - manual delay-test contract is present;
+   - no automatic/fallback/url-test production selection is enabled;
+   - no persistent public-IP /32 route instruction exists.
+5. Offline fixtures must cover:
+   - valid contract;
+   - hardcoded physical interface rejection;
+   - WG baseline missing/not-default rejection;
+   - automatic/fallback/url-test production selection rejection;
+   - Secret sentinel loss/population rejection;
+   - persistent /32 route instruction rejection;
+   - REALITY incorrectly marked production-ready rejection.
+6. Use a deterministic local Mihomo parse/test path if available without starting Clash or changing active profiles.
+7. On PASS: append bounded non-secret Evidence and update this Executor Handoff; then STOP_AT_REVIEWER.
+8. On failure: record the exact failure class and stop. Do not perform live retries.
+
+### Explicit prohibitions
+
+- Do not stop/disable/restart WireGuard in C1.
+- Do not remove/change the two accepted WireGuard /1 routes in C1.
+- Do not start Clash/Mihomo as an active client.
+- Do not enable system proxy or TUN.
+- Do not apply/import a live Clash profile.
+- Do not add persistent or temporary bypass routes in C1.
+- Do not SSH to any VPS.
+- Do not read/generate/move/rotate Secret values.
+- Do not make REALITY persistent.
+- Do not advance to C2 or resume G3-B fresh-target work.
+- Do not replay any G2-C canary.
+- In later Gates, never disconnect WG unless Reviewer has established an explicit Owner checkpoint and the Owner has already confirmed another VPN is working.
+
+
+## Historical execution status — G3B D3 staged-install render validation
 
 ```text
 GATE_ID=G3B_STAGED_INSTALL_RENDER_CONTRACT_D3
