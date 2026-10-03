@@ -17,8 +17,8 @@ G2-A HY2 side-by-side deployment            PASS
 G2-A DPAPI recovery closure                 PASS
 G2-B Safe-window WG vs HY2 validation       PASS
 G2-C VLESS+REALITY side-by-side candidate   PASS
-G3-A Network auto-adaptation + health       IN_PROGRESS
-G3-B VPS migration + rollback package       PENDING
+G3-A Network auto-adaptation + health       PASS
+G3-B VPS migration + rollback package       IN_PROGRESS
 G4 Peak-hour + real workload final validate PENDING
 MVP v1 seal                                 PENDING
 ```
@@ -55,95 +55,87 @@ Current known components:
 ## CURRENT_ACCEPTED_STATE
 
 - **Current production/rollback:** WireGuard remains the active production/rollback path.
-- **G2-C REALITY:** public TCP/443 canary PASS and closed; no replay without a new Gate.
+- **HY2:** deployed server candidate remains ready for a separately reviewed activation Gate.
+- **REALITY:** Mihomo v1.19.31 public TCP/443 path is validated and currently cold/clean; no persistent public listener exists.
 - **G3-A H1:** advisory planner engineering PASS.
-- **G3-A H2:** read-only health/readiness collector PASS after the control-route validator repair.
-- **G3-A H3:** readiness-to-plan semantic integration PASS with 10 deterministic fixtures.
-- **Current accepted live state:** WireGuard = `HEALTHY`; HY2 = `READY_FOR_SEPARATE_ACTIVATION`; REALITY = `READY_FOR_SEPARATE_ACTIVATION`.
-- **Automation boundary:** no live automatic switching is authorized; all G3-A work so far is advisory/read-only.
+- **G3-A H2:** real read-only health/readiness collector PASS.
+- **G3-A H3:** readiness-to-plan semantic integration PASS.
+- **G3-A H4:** live read-only H2→H3 advisory integration PASS; current real state maps to `WIREGUARD_BASELINE`; HY2 and REALITY remain `READY_FOR_SEPARATE_ACTIVATION`.
+- **G3-A boundary:** sensing/classification/advisory decision is complete. No automatic actuator/switching capability is authorized or implemented.
 - **Final validation pending:** G4 peak-hour + representative Codex/OpenAI/image-generation workload validation remains mandatory before MVP v1 seal.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3A_LIVE_READONLY_ADVISORY_INTEGRATION_H4
+GATE_ID=G3B_MIGRATION_ROLLBACK_PACKAGE_DISCOVERY_D1
 STATE=AUTHORIZED
-PREVIOUS_RESULT=PASS_G3A_READINESS_TO_PLAN_INTEGRATION_H3
+PREVIOUS_RESULT=PASS_G3A_LIVE_READONLY_ADVISORY_INTEGRATION_H4
 OWNER_CONTINUE_AUTHORIZATION=2026-10-03
-SPECIALIST_TRIGGERS=11B_SSH_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION
-OBJECTIVE=Integrate the accepted H2 live read-only collector with the accepted H3 advisory planner and prove one real current-state advisory decision without any activation.
-MAX_ENDPOINT_THIS_ROUND=project-owned orchestrator source + offline parser/self-test + one Owner live read-only integrated run + Reviewer stop.
+SPECIALIST_TRIGGERS=11A_SHARED_VPS_STORAGE,11B_SSH_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES
+OBJECTIVE=Inventory and reconcile the existing migration/reinstall/rollback assets into a deterministic VPS migration package design without changing the current VPS or purchasing/provisioning a new provider.
+MAX_ENDPOINT_THIS_ROUND=read-only repository discovery + package design/source changes + offline validation; no provider purchase, no new VPS, no live migration, no Secret rotation, no current-VPS mutation.
 MANDATORY_REVIEW_STOP=YES
-LIVE_NETWORK_ACTIVATION_AUTHORIZED=NO
-ROUTE_SERVICE_PROXY_TUN_MUTATION_AUTHORIZED=NO
-REAL_OPENAI_REQUEST_AUTHORIZED=NO
-PUBLIC_LISTENER_CREATION_AUTHORIZED=NO
-SECRET_READ_AUTHORIZED=NO
+LIVE_MIGRATION_AUTHORIZED=NO
+NEW_PROVIDER_PURCHASE_AUTHORIZED=NO
+CURRENT_VPS_MUTATION_AUTHORIZED=NO
+SECRET_ROTATION_AUTHORIZED=NO
 ROLLBACK_STATUS=SOURCE_ONLY_REVERTABLE
-ESTIMATED_EXECUTION_TIME=10-20_minutes
-IMPLEMENTATION_COMMIT=ff1c46ef114180651a1e49bfbcc8a76c6bccad2f
-STATIC_SOURCE_REVIEW=PASS
-OWNER_INTEGRATED_READONLY_PROOF=PASS
-OWNER_SELFTEST_PROOF=PENDING
+ESTIMATED_EXECUTION_TIME=20-35_minutes
 ```
 
 ### TARGET_AND_SCOPE
 
-- New orchestrator: `scripts/g3a-advisory-decision-readonly.ps1`.
-- Reuse, do not duplicate:
-  - H2 collector: `g3a-health-readiness-readonly.ps1`;
-  - H3 planner: `g3a-network-adaptation-planner.ps1`.
-- Orchestrator flow:
-  1. run H2 collector read-only;
-  2. require `G3A_H2_READONLY_RESULT=COMPLETE`;
-  3. parse only allowlisted machine-state keys;
-  4. feed those exact states into H3 planner;
-  5. require planner `AdvisoryOnly=true`, `ProductionDefaultChangeAllowed=false`, and route `ApplyAllowed=false`;
-  6. output one integrated advisory decision.
-- H4 may repeat H2's strict read-only SSH probe but may not create routes/listeners or send external workload traffic.
+- Reconcile existing assets first, especially:
+  - `scripts/migration-reinstall.sh`
+  - `scripts/rollback-uninstall.sh`
+  - `scripts/preflight-linux.sh`
+  - `scripts/health-check.sh`
+  - existing WireGuard/HY2/Clash templates.
+- Define the migration unit for this VPN project:
+  - reconstructible software/config templates;
+  - per-VPS network identity inputs;
+  - Secret/certificate material classes and secure transfer/recovery procedure;
+  - post-deploy health checks;
+  - staged new→old cutover and rollback semantics;
+  - exact old/new VPS identity proof.
+- No Secret values may enter GitHub/chat/bundles.
+- D1 does not create or mutate a VPS.
 
 ### REQUIRED_EVIDENCE
 
-- orchestrator AST/static source review;
-- no mutating network/service/proxy/TUN/VPS commands;
-- no HTTP/OpenAI workload calls;
-- fixture tests for complete healthy H2 payload, missing required key, incomplete H2 marker, invalid enum, and planner refusal propagation;
-- Owner live read-only run;
-- integrated current decision expected to remain `WIREGUARD_BASELINE` while accepted H2 state remains unchanged;
-- explicit zero-mutation/request markers.
+- current repository asset inventory and gaps;
+- explicit classification of reconstructible vs Secret/recovery vs runtime-only assets;
+- static/offline validation of migration package inputs;
+- rollback procedure that does not depend on deleting the old working VPS first;
+- no provider/API purchase or live-host mutation.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS requires:
-- H2 and H3 are invoked as canonical components rather than reimplemented;
-- incomplete/ambiguous collector output fails closed;
-- live integrated result is advisory-only;
-- current accepted healthy-WG state maps to `WIREGUARD_BASELINE`;
-- zero route/service/proxy/TUN/VPS mutation and zero external workload requests.
+PASS for D1 requires a reviewable migration package design with exact inputs/outputs, target identity, Secret handling, health/read-back and rollback boundaries, while preserving the current VPS untouched.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Source-only orchestrator can be reverted exactly. Live run is read-only, so no runtime rollback is applicable.
+Source-only D1 changes can be exactly reverted. Current runtime remains unchanged.
 
 ### OWNER_ONLY_ACTIONS
 
-Run one bounded H4 integrated read-only command after Reviewer static review.
+None in D1. Any provider purchase/new VPS provisioning, Secret rotation/transfer, or live cutover is a later explicit Owner-authorized Gate.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Create only `scripts/g3a-advisory-decision-readonly.ps1`. Invoke the accepted H2 collector and H3 planner; do not copy their decision/probe logic. No live mutation, listener creation, external HTTP/OpenAI request, or Secret read.
+Inspect only the existing migration/reinstall/rollback/preflight/health/template assets needed for G3-B. Do not touch current VPS, Provider control plane, Secrets, or network state. Prefer adapting existing assets over creating duplicate migration paths.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE only after offline parser/self-test and static negative review. Formal PASS still requires one Owner live read-only integrated run.
+Return PASS_CANDIDATE after repository-only migration-package reconciliation and offline validation. Any need for live target provisioning or Secret movement requires a new Gate.
 
 ## NEXT_STEP
 
-Run H4 fixture-only `-SelfTest` once and return its bounded output. The live read-only integration proof is already accepted; do not replay it.
+Perform G3-B D1 repository-only discovery and reconciliation of existing migration/reinstall/rollback assets, then produce the minimum migration-package design needed for a later new-VPS rehearsal.
 
 ## OWNER_ACTION_REQUIRED
 
-Run only H4 `-SelfTest` once under PowerShell 7.6.6. The live `-RunReadOnly` proof is already accepted and must not be replayed merely to satisfy missing self-test evidence.
+**NONE.** D1 is repository-only. No provider purchase, VPS mutation, Secret movement, or live cutover is authorized.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
