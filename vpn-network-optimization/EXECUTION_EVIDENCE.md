@@ -3902,3 +3902,40 @@ GITHUB_FRESH_READBACK=PASS
 
 Fresh `git fetch origin main` returned the package commit as `origin/main`. The seven package/record blobs on `origin/main` matched the committed local blobs; the worktree was clean and no file outside `vpn-network-optimization/` was included.
 
+## Reviewer review — G3C C2A Clash UI canary package — RETURN — 2026-10-03
+
+```text
+GATE_ID=G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A
+REVIEWER_RESULT=RETURN_C2B_SECRET_PERSISTENCE_BOUNDARY_UNRESOLVED
+EXECUTOR_RESULT=PASS_CANDIDATE_G3C_C2A_CLASH_UI_CANARY_PACKAGE
+PACKAGE_COMMIT=588d595cd2178fe4e9472bf143da067130da29db
+FINAL_EXECUTOR_RECORD_HEAD=31bb539aa8daef26318fbd93aad53a438c23a590
+SOURCE_ONLY_EXECUTION=YES
+OFFLINE_FIXTURES=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_COMMITTED=0
+DPAPI_UNPROTECT_EXECUTED=NO
+LIVE_NETWORK_MUTATION=NO
+REALITY_LIVE_NODE=ABSENT
+TECHNICAL_PACKAGE_SHAPE=GENERALLY_SOUND
+BLOCKING_GAP=REAL_HY2_SECRET_WOULD_BE_IMPORTED_INTO_CLASH_PROFILE_STORAGE
+CLASH_LOCAL_PROFILE_PERSISTENCE=CONFIRMED_BY_UPSTREAM_SOURCE
+CLASH_PROFILE_STORAGE_CAN_CONTAIN_PASSWORDS_UUIDS=CONFIRMED_BY_UPSTREAM_PRIVACY_DOC
+CURRENT_PACKAGE_PROVES_CLASH_PERSISTED_COPY_CLEANUP=NO
+CURRENT_PACKAGE_PREVENTS_BACKUP_PROPAGATION=NO
+TIME_ESTIMATE=15-25_minutes
+ACTUAL_ELAPSED=00:43:29
+TIME_OVERRUN=YES
+TIME_OVERRUN_DETAIL=ONLY_BROAD_PHASE_CLASS_AVAILABLE_NO_STAGE_TELEMETRY
+```
+
+Reviewer interpretation:
+- C2A respected its repository-only execution boundary. No DPAPI unprotect, Secret read, Mihomo start, profile apply, network request, route/proxy/TUN/WG change, VPS/Provider access, or REALITY activation occurred.
+- The package correctly limits the intended live selector to `WG-BASELINE` + `HY2-SFO3`, with REALITY cold/deferred.
+- The blocking issue is the future Owner C2B Secret lifecycle. The runner renders the real HY2 auth into an owner-only temporary profile and then instructs Owner to import that file into Clash Verge.
+- Upstream Clash Verge Rev source shows local profile creation writes the supplied profile data into the application's own `profiles/` directory. Upstream privacy documentation states that local profile storage normally contains proxy passwords/UUIDs.
+- Therefore deleting the repository-owned/runtime temp file is insufficient proof that the real HY2 Secret has been removed from Clash-owned persistent storage or any enabled backup path.
+- Do not authorize C2B with real HY2 auth. The minimum repair is to make C2B a **synthetic-secret UI-only canary**: no DPAPI unprotect, no real auth/fingerprint injection, no external request. It should prove only profile import/UI visibility/default/manual selector semantics and exact removal of the synthetic profile.
+- Real HY2-in-Clash connectivity moves to a later dedicated C2C Gate with an explicit approved persistent-secret/storage lifecycle.
+- The timing overrun is recorded, but Executor supplied only a broad aggregate cause. No consequential action occurred, so C2A is not replayed for timing. The repair round must include lightweight phase timing so the next overrun can be attributed precisely.
+
