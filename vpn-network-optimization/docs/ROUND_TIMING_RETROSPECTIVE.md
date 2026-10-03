@@ -27,6 +27,7 @@
 | G3C_C1_MIHOMO_NATIVE_PARSE_RECONCILIATION_R1 | 10–15 分钟 | UNKNOWN | UNKNOWN | 首个强制 timing Gate 未在初始 preflight 前记录开始时间；Executor 如实标记 UNKNOWN，没有事后猜测或重放。下一 Gate 必须先写 `ROUND_STARTED_AT` 再做任何 preflight。 | commit `1776ef5e...` |
 | G3C_C1_MIHOMO_V11932_NATIVE_PARSE_R2 | 10–15 分钟 | UNKNOWN（已记录局部 3m59s） | UNKNOWN | 第二个强制 timing round 仍未在 fetch/preflight 前记录开始时间；技术动作又被 Codex `CreateProcess` policy 阻断，未启动 parser。R2 不重放；后续 Owner checkpoint 把 `ROUND_STARTED_AT` 内置为脚本第一条证据输出。 | commit `1a4cb5ad...` |
 | G3C_C1_OWNER_MIHOMO_NATIVE_PARSE_R3 + R3R1 | 2–5 分钟 | 10m09.782s | YES | Mihomo `-t` 本身 PASS；超时来自 Reviewer 把交互式 `try/finally` 拆成两个语法单元，导致必须追加 cleanup-only 补偿。后续 Owner checkpoint 必须单个原子语法单元。 | Owner console + Reviewer acceptance |
+| G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A | 15–25 分钟 | 36m56s（source/validation freeze；Git closeout 后续） | YES | 本地 Owner package 静态审查与确定性 fixture 迭代超过估算 11m56s；期间未发生网络等待或 consequential action。 | C2A Evidence in same commit |
 
 ## 已确认的主要耗时来源
 

@@ -2,13 +2,37 @@
 
 > Executor-owned execution facts only. Reviewer truth remains `REVIEWER_HANDOFF.md`.
 
+## Current execution result — G3C C2A Clash UI canary package
+
+```text
+GATE_ID=G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A
+EXECUTOR_RESULT=PASS_CANDIDATE_G3C_C2A_CLASH_UI_CANARY_PACKAGE
+SOURCE_ONLY_PACKAGE=YES
+PACKAGE_FILES=templates/clash/c2b-wg-hy2-canary.yaml.template,scripts/c2b-owner-clash-ui-canary.ps1,scripts/g3c-c2a-package-validator.ps1,docs/G3C_C2B_OWNER_CANARY_PACKAGE.md
+OFFLINE_VALIDATOR=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+DPAPI_UNPROTECT=NO
+MIHOMO_STARTED=NO
+NETWORK_CHANGED=NO
+ROUND_STARTED_AT=2026-10-03T15:05:24Z
+ROUND_FINISHED_AT=2026-10-03T15:42:20Z
+ACTUAL_ELAPSED=00:36:56
+TIME_OVERRUN=YES
+TIME_OVERRUN_CAUSE=LOCAL_OWNER_PACKAGE_REVIEW_AND_FIXTURE_ITERATION_EXCEEDED_25_MINUTES
+GITHUB_FRESH_READBACK=REQUIRED_AFTER_PUSH
+STOP_AT_REVIEWER=YES
+```
+
+Built one future Owner-local C2B canary package. The manual selector is WG-BASELINE (`direct`, first/default) plus HY2-SFO3 only; REALITY stays cold/deferred. The Owner runner is not executed. Offline fixtures and AST/secret scans pass. No Secret, DPAPI, Mihomo runtime, network, VPS, route, proxy, TUN, or WireGuard action occurred. GitHub synchronization and fresh read-back remain the final C2A work.
 
 
 
 
 
 
-## Current execution status — G3C C2A Clash UI canary package
+
+## Executed gate scope — G3C C2A Clash UI canary package
 
 ```text
 GATE_ID=G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A
@@ -70,7 +94,7 @@ STOP_AT_REVIEWER=YES
 12. Record `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN=YES|NO`; if over 25 minutes record `TIME_OVERRUN_CAUSE` and update timing retrospective.
 13. STOP_AT_REVIEWER.
 
-### Expected completion
+### Gate result target
 
 Return `PASS_CANDIDATE_G3C_C2A_CLASH_UI_CANARY_PACKAGE` or a precise `RETURN_*`.
 Do not advance to live C2B.

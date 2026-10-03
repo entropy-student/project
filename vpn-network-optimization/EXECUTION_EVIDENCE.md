@@ -3845,3 +3845,44 @@ Reviewer conclusion:
 - The 10m09s elapsed time exceeded the 2–5 minute estimate because the Reviewer-provided first Owner checkpoint split interactive `try/finally`, requiring a cleanup-only compensation step. This is a checkpoint-design/process overrun, not Mihomo execution slowness.
 - G3C C1 is formally PASS. Stable Mihomo v1.19.32 becomes the accepted current Windows client-core baseline for subsequent G3C work.
 
+## G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A — offline package execution
+
+```text
+GATE_ID=G3C_C2_CLASH_UI_CANARY_PACKAGE_C2A
+EXECUTOR_RESULT=PASS_CANDIDATE_G3C_C2A_CLASH_UI_CANARY_PACKAGE
+PROVENANCE=DIRECT_LOCAL_SOURCE_AND_FIXTURE_READBACK
+CANONICAL_ORIGIN=https://github.com/entropy-student/project.git
+PRE_GATE_HEAD=9aa78bcbe688ebd7b4dd5dd02f3898da2953bbed
+PRE_GATE_BRANCH=codex/g2c-private-reality-compat-canary
+ROUND_STARTED_AT=2026-10-03T15:05:24Z
+ROUND_FINISHED_AT=2026-10-03T15:42:20Z
+ACTUAL_ELAPSED=00:36:56
+TIME_OVERRUN=YES
+TIME_OVERRUN_CAUSE=LOCAL_OWNER_PACKAGE_REVIEW_AND_FIXTURE_ITERATION_EXCEEDED_25_MINUTES
+```
+
+Actual repository changes are limited to the future Owner C2B package: `templates/clash/c2b-wg-hy2-canary.yaml.template` (non-secret WG+HY2 selector), `scripts/c2b-owner-clash-ui-canary.ps1` (one-shot Owner-local checkpoint; not executed), `scripts/g3c-c2a-package-validator.ps1` (offline deterministic validator), and `docs/G3C_C2B_OWNER_CANARY_PACKAGE.md` (operator boundary/cleanup contract). The runner's `finally` path was hardened to attempt each exact owned-file/directory cleanup independently, zero byte buffers where practical, and emit bounded cleanup/timing markers. Runtime config creation is `CreateNew`; the ownership flag is set immediately after successful file creation so partial writes remain eligible for exact cleanup.
+
+Validation performed locally: JSON-compatible YAML parse PASS; PowerShell AST parse PASS for both scripts; deterministic fixtures A–I PASS (valid package; REALITY excluded; hardcoded interface/ifIndex/gateway/local IPv4 rejected; secret output/value rejected; proxy/TUN activation rejected; WG stop/route removal rejected; persistent /32 instruction rejected; missing cleanup rejected; missing/late timing rejected); static Secret scan PASS; `git diff --check` PASS. Mihomo native config test was not run in C2A; it is encoded for the later authorized C2B checkpoint before any UI action.
+
+This round did not execute the Owner runner. DPAPI was not unprotected and no Secret value was read, generated, output, hashed, or persisted. Mihomo/Clash was not started or applied; no network request, VPS/provider access, route/proxy/TUN/WireGuard change, or live system tuning occurred. No C2B action was initiated. The Owner has no action in C2A; stop for Reviewer inspection. The recorded interval ends after source construction, local fixture validation, static review, and evidence preparation; Git commit/push/fresh-readback follow as persistence closeout. No consequential action was replayed for timing.
+
+```text
+OWNER_CHECKPOINT_EXECUTED=NO
+DPAPI_UNPROTECT=NO
+SECRET_VALUES_ACCESSED=0
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+MIHOMO_STARTED=NO
+CLASH_PROFILE_APPLIED=NO
+NETWORK_REQUESTS=0
+VPS_OR_PROVIDER_ACCESS=NO
+NETWORK_CHANGED=NO
+WIREGUARD_CHANGED=NO
+ROUTE_CHANGED=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_CHANGED=NO
+NATIVE_MIHOMO_PARSE=C2B_CHECKPOINT_ONLY_NOT_RUN
+STOP_AT_REVIEWER=YES
+```
+
