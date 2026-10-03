@@ -20,11 +20,16 @@ ROUND_FINISHED_AT=2026-10-03T15:42:20Z
 ACTUAL_ELAPSED=00:36:56
 TIME_OVERRUN=YES
 TIME_OVERRUN_CAUSE=LOCAL_OWNER_PACKAGE_REVIEW_AND_FIXTURE_ITERATION_EXCEEDED_25_MINUTES
-GITHUB_FRESH_READBACK=REQUIRED_AFTER_PUSH
+PACKAGE_COMMIT_SHA=588d595cd2178fe4e9472bf143da067130da29db
+GITHUB_REMOTE_BRANCH=main
+GITHUB_REMOTE_HEAD=588d595cd2178fe4e9472bf143da067130da29db
+GITHUB_FRESH_READBACK=PASS
+REVIEWER_HANDOFF_MODIFIED=NO
+SECRET_VALUES_COMMITTED=0
 STOP_AT_REVIEWER=YES
 ```
 
-Built one future Owner-local C2B canary package. The manual selector is WG-BASELINE (`direct`, first/default) plus HY2-SFO3 only; REALITY stays cold/deferred. The Owner runner is not executed. Offline fixtures and AST/secret scans pass. No Secret, DPAPI, Mihomo runtime, network, VPS, route, proxy, TUN, or WireGuard action occurred. GitHub synchronization and fresh read-back remain the final C2A work.
+Built one future Owner-local C2B canary package. The manual selector is WG-BASELINE (`direct`, first/default) plus HY2-SFO3 only; REALITY stays cold/deferred. The Owner runner is not executed. Offline fixtures and AST/secret scans pass. No Secret, DPAPI, Mihomo runtime, network, VPS, route, proxy, TUN, or WireGuard action occurred. GitHub package commit `588d595cd2178fe4e9472bf143da067130da29db` was freshly read from `main`; target blobs matched, Reviewer Handoff was unchanged, and committed diff Secret scan passed.
 
 
 

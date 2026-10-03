@@ -3886,3 +3886,18 @@ NATIVE_MIHOMO_PARSE=C2B_CHECKPOINT_ONLY_NOT_RUN
 STOP_AT_REVIEWER=YES
 ```
 
+### GitHub persistence read-back — C2A
+
+```text
+PACKAGE_COMMIT=588d595cd2178fe4e9472bf143da067130da29db
+REMOTE_BRANCH=main
+REMOTE_HEAD=588d595cd2178fe4e9472bf143da067130da29db
+TARGET_FILE_BLOBS_MATCH=YES
+REVIEWER_HANDOFF_MODIFIED=NO
+REMOTE_DIFF_SECRET_SCAN=PASS
+SECRET_VALUES_COMMITTED=0
+GITHUB_FRESH_READBACK=PASS
+```
+
+Fresh `git fetch origin main` returned the package commit as `origin/main`. The seven package/record blobs on `origin/main` matched the committed local blobs; the worktree was clean and no file outside `vpn-network-optimization/` was included.
+
