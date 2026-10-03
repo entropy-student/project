@@ -568,3 +568,291 @@ PROJECT_ENDPOINT=FINAL_CONCRETE_SKU_OR_PRODUCT_TYPE_CATALOG
 SUPPLY_LISTING_VALIDATION_AUTOMATION=OUT_OF_SCOPE
 NEXT=X3R2_FINAL_SKU_CATALOG_RESEARCH
 ~~~
+
+
+---
+
+## 2026-10-03 — X3R2 Project-wide Review & Selection Method Reset
+
+~~~text
+AUTHORIZED_GATE=X3R2_PROJECT_WIDE_REVIEW_AND_METHOD_RESET
+EXECUTION_CLASS=READ_ONLY_PUBLIC_MARKET_RESEARCH + DOCUMENTATION
+PROJECT_GOAL_REVIEW=PASS
+SELECTION_METHOD_REVIEW=RETURN_THEN_FIXED
+CURRENT_36_SKU_POOL=PARTIAL_SEED_ONLY
+CURRENT_36_SKU_RANK=SUPERSEDED
+RUNTIME_MUTATIONS=0
+ACCOUNT_MUTATIONS=0
+LISTINGS_PUBLISHED=0
+REAL_PURCHASES=0
+PAYMENTS=0
+~~~
+
+### Reviewer findings
+
+1. **Goal is valid.** The project ends at an evidence-backed concrete Xianyu product-type / SKU catalog.
+2. **X1 discovery was service-first.** Its 50 raw / 25 normalized candidates were dominated by site building, Excel cleanup, PPT, CAD service, resume/interview, video editing and personalized planning. This created downstream bias toward software/AI/Office/productized services.
+3. **The 36-SKU pool is incomplete.** It is useful evidence, but it does not represent a balanced platform-first universe.
+4. **Recommendation evidence was overused.** A “为你推荐” module proves current existence/visibility, not query search depth, market share or independent transaction volume.
+5. **Adjacent-demand transfer occurred.** Some derived SKUs were promoted from neighboring jobs without direct SKU evidence.
+6. **SKU grain is inconsistent.** The pool mixes concrete device/style SKUs with broad product families.
+7. **The installed opportunity Skill has a different endpoint.** Its evidence discipline remains useful; its Priority Test / economics / delivery / Minimum Validation endpoint is not authoritative for this SKU-catalog project.
+
+### Fresh platform-first evidence
+
+Current official Xianyu public taxonomy visibly includes standardized virtual-goods surfaces that the old 36 under-covered:
+
+~~~text
+餐饮美食:
+麦当劳 / 奶茶券 / 咖啡券 / 肯德基 / 必胜客 / 火锅券 / 外卖券
+
+会员账号:
+视频会员 / 网盘会员 / 音乐会员 / 音频会员 / 读书会员 / 话费充值
+
+便民服务:
+代金卡 / 京东卡 / 话费充值 / 健身卡 / 游泳卡 / 加油卡 /
+美容卡 / 电影票 / 网约车券 / 演出门票 / 景点门票
+
+游戏交易:
+账号 / 租号 / 代练 / 自抽号 / 首充号 / 道具 / 皮肤 /
+游戏充值 / 点券 / 装备
+~~~
+
+Official source:
+https://www.goofish.com/
+
+Current standardized examples also include:
+- Youku SVIP weekly/device product: RMB 1.12–3.25, 987 “想要”, 4,079 views.
+- Xunlei membership current related-results cluster: multiple independent sellers, with visible intent ranging from tens to thousands and one listing showing 61,999 “想要”; this is strong family-level replication but still not SKU sales.
+- CF/game-account current related-results cluster: multiple independent sellers and items, some with hundreds to 2,270 “想要”; retained as market-surface proof, not automatically a clean executable recommendation.
+- Dragonfly 25.1 authorization product: RMB 34.56, 12 “想要”.
+- ArchiCAD 29 education subscription activation: RMB 78.80.
+- multi-merchant mall source code: RMB 13, 36 “想要”, 808 views.
+- school-specific postgraduate retest pack: RMB 15, 109 “想要”.
+- local middle-school physics test pack: RMB 2.68, 161 “想要”.
+- current photography-related cluster contains a Japanese-film LR/PS preset at RMB 0.80 / 603 “想要” plus multiple LUT/preset products.
+- current public-company datasets remain directly observable: management-team stability RMB 1 / 523 “想要”; supply-chain PageRank RMB 1 / 194 “想要”.
+
+These prove the prior candidate universe materially under-covered platform-native memberships/cards/game/software-activation/education and creative-asset markets.
+
+### New project-local selection method
+
+Discovery order:
+
+~~~text
+OFFICIAL PLATFORM TAXONOMY
+→ DIRECT CURRENT SKU SCAN
+→ PLATFORM/CATEGORY TRANSACTION DATA
+→ MULTI-SELLER / MULTI-LISTING REPLICATION
+→ SERVICE-TO-PRODUCTIZATION ONLY AS SUPPLEMENT
+~~~
+
+Primary provenance:
+
+~~~text
+PLATFORM_TRANSACTION
+PLATFORM_CATEGORY
+DIRECT_SKU
+RELATED_RESULTS_CLUSTER
+DERIVED_ADJACENT
+~~~
+
+Demand evidence level:
+
+~~~text
+D4 = platform / first-party product-family transaction evidence or attributable SKU transaction evidence
+D3 = replicated independent current Xianyu market evidence
+D2 = one direct current SKU or coherent current related-results cluster
+D1 = platform-category / adjacent / macro-only evidence
+U  = insufficient
+~~~
+
+Old S/A/B demand labels are superseded.
+
+### New market coverage frame
+
+The next universe scan must cover:
+
+~~~text
+1 Membership / recharge
+2 Card / ticket / voucher
+3 Game virtual goods
+4 Software / license / activation
+5 Source code / plugins / utilities
+6 AI tutorials / workflows / tools
+7 Office / business templates
+8 Education / exam / certification packs
+9 Research datasets / data products
+10 Technical drawings / engineering materials
+11 Photography presets / LUT / retouch assets
+12 Video / audio / design asset packs
+13 Website / WordPress / web templates
+14 Professional / industry knowledge packs
+15 Travel / lifestyle / recipe / hobby guides
+~~~
+
+### Artifacts
+
+- `docs/X3R2_PROJECT_REVIEW_METHOD_RESET_2026-10.md`
+- `docs/X3R3_PLATFORM_FIRST_SKU_UNIVERSE_SEED_2026-10.md`
+
+The second artifact currently holds 70+ platform-first seeds. It is a universe seed, not a final catalog.
+
+### Result
+
+~~~text
+X3R2_PROJECT_WIDE_REVIEW_AND_METHOD_RESET=PASS_CANDIDATE
+PROJECT_GOAL=VALID
+OLD_36_SKU_POOL=PARTIAL_SEED
+OLD_36_RANKING=SUPERSEDED
+SELECTION_METHOD=PLATFORM_FIRST
+MARKET_SURFACES=15
+PLATFORM_FIRST_SEEDS=>70
+FINAL_CATALOG=NOT_READY
+NEXT=X3R3_PLATFORM_FIRST_SKU_UNIVERSE_REBUILD
+~~~
+
+
+---
+
+## 2026-10-03 — X3R3 Platform-first SKU Universe Rebuild
+
+~~~text
+AUTHORIZED_GATE=X3R3_PLATFORM_FIRST_SKU_UNIVERSE_REBUILD
+EXECUTION_CLASS=READ_ONLY_PUBLIC_MARKET_RESEARCH + DOCUMENTATION
+MARKET_SURFACES_COVERED=15/15
+PLATFORM_FIRST_SEED_ENTRIES=>70
+NORMALIZED_UNIVERSE_ENTRIES=60
+OLD_36_RECONCILED=36/36
+RUNTIME_MUTATIONS=0
+ACCOUNT_MUTATIONS=0
+LISTINGS_PUBLISHED=0
+REAL_PURCHASES=0
+PAYMENTS=0
+~~~
+
+### Validation
+
+- Rebuilt discovery around official Xianyu market surfaces rather than operator capabilities.
+- Covered all 15 required market surfaces.
+- Added provenance classes: PLATFORM_TRANSACTION / PLATFORM_CATEGORY / DIRECT_SKU / RELATED_RESULTS_CLUSTER / DERIVED_ADJACENT.
+- Replaced old S/A/B demand labels with D4/D3/D2/D1/U.
+- Reconciled all old 36 candidates into RETAIN / MERGE / DOWNGRADE_DERIVED / SPLIT / PARTIAL_RETAIN outcomes.
+- Added materially missing membership, card/ticket, game, activation-code, source-code, education and creative-asset surfaces.
+- Preserved recommendation evidence as RELATED_RESULTS_CLUSTER rather than treating it as search-share evidence.
+- No sourcing requirement or supply penalty was introduced.
+
+### Artifacts
+
+- `docs/X3R3_PLATFORM_FIRST_SKU_UNIVERSE_SEED_2026-10.md`
+- `docs/X3R3_NORMALIZED_PLATFORM_FIRST_SKU_UNIVERSE_R1_2026-10.md`
+
+### Result
+
+~~~text
+X3R3_PLATFORM_FIRST_SKU_UNIVERSE_REBUILD=PASS_CANDIDATE
+NORMALIZED_UNIVERSE_ENTRIES=60
+FINAL_CATALOG_REVIEW_READY=YES
+NEXT=X3R4_FINAL_SKU_CATALOG_REVIEW
+~~~
+
+---
+
+## 2026-10-03 — X3R4 Final SKU Catalog Review
+
+~~~text
+AUTHORIZED_GATE=X3R4_FINAL_SKU_CATALOG_REVIEW
+EXECUTION_CLASS=REVIEW_AND_DOCUMENTATION
+PROJECT_ENDPOINT=FINAL_EVIDENCE_BACKED_CONCRETE_SKU_OR_PRODUCT_TYPE_CATALOG
+SUPPLIER_RESEARCH_REQUIRED=NO
+LISTING_REQUIRED=NO
+REAL_ORDER_REQUIRED=NO
+RUNTIME_MUTATION_REQUIRED=NO
+~~~
+
+### Final catalog review
+
+Reviewer inspected:
+- current project goal and completion standard;
+- X3R2 methodology reset;
+- X3R3 70+ seed universe;
+- X3R3 normalized 60-entry universe;
+- current source ledger and strongest public Xianyu evidence;
+- old 36 reconciliation.
+
+Accepted final catalog structure:
+
+~~~text
+CONFIRMED_DEMAND=6
+PROBABLE_DEMAND=44
+CORE_CATALOG_CONFIRMED_PLUS_PROBABLE=50
+WATCHLIST=19
+MARKET_SIGNAL_ONLY=6
+UNIQUE_WINNER_REQUIRED=NO
+~~~
+
+The 50-item core catalog is the project’s principal deliverable. Watchlist and market-signal-only appendices are retained so weak evidence is not silently converted into “no demand.”
+
+### Acceptance checks
+
+- concrete searchable product/SKU names: PASS
+- platform-first coverage: PASS
+- all 15 market surfaces reviewed: PASS
+- old 36 reconciled: PASS
+- provenance visible: PASS
+- D4/D3/D2/D1/U visible: PASS
+- transaction/intent/attention separation: PASS
+- seller-total vs SKU distinction: PASS
+- recommendation vs search-depth distinction: PASS
+- supply UNKNOWN not used as demand kill: PASS
+- no arbitrary Top N or winner: PASS
+- sourcing/listing/payment/runtime scope respected: PASS
+
+### Final artifact
+
+- `docs/FINAL_SKU_CATALOG_2026-10.md`
+
+### Result
+
+~~~text
+X3R4_FINAL_SKU_CATALOG_REVIEW=PASS_CANDIDATE
+PROJECT_ENDPOINT_ARTIFACT=AVAILABLE
+PROJECT_CLOSEOUT_READY=YES
+~~~
+
+---
+
+## 2026-10-03 — Project Closeout Reconciliation
+
+~~~text
+CLOSEOUT_CLASS=RESEARCH_AND_DOCUMENTATION_PROJECT
+DESTRUCTIVE_CLEANUP_REQUIRED=NO
+REMOTE_CANONICAL_ARCHIVE=GITHUB_PROJECT_REPOSITORY
+UNIQUE_LOCAL_ARTIFACTS_CREATED=NO
+RUNTIME_DEPENDENCY=NO
+SHARED_INFRA_MUTATION=0
+PRODUCTION_MUTATION=0
+ACCOUNT_MUTATION=0
+TRANSACTION_MUTATION=0
+PAYMENT_MUTATION=0
+~~~
+
+### Closeout reconciliation
+
+- Canonical research artifacts and current state are persisted in GitHub project-owned paths.
+- No local-only source, evidence, runtime or business data was created in this round.
+- No deletion is required for closeout; therefore no destructive cleanup is authorized or performed.
+- Legacy Xianyu runtime records remain preserved and explicitly outside the current project dependency graph.
+- There are no deferred sourcing/listing/transaction actions because those were explicitly removed from this project scope rather than marked as incomplete project work.
+- Future supplier research, sourcing, listing or automation—if desired—must start as a separate project/scope and cannot reopen this completed selection project by implication.
+
+### Closeout result
+
+~~~text
+PROJECT_GOAL_SATISFIED=PASS_CANDIDATE
+FINAL_SKU_CATALOG=AVAILABLE
+CANONICAL_PERSISTENCE=PASS_CANDIDATE
+DESTRUCTIVE_CLEANUP=NOT_APPLICABLE
+DEFERRED_IN_SCOPE_ACTIONS=NONE
+PROJECT_CLOSEOUT=PASS_CANDIDATE
+~~~
