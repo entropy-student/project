@@ -87,10 +87,12 @@ Current known components:
 GATE_ID=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
 STATE=AUTHORIZED
 PREVIOUS_RESULT=PASS_G2C_REALITY_IMPLEMENTATION_AB_MIHOMO_SERVER_R4
-LAST_EXECUTOR_RESULT=RETURN_LOCAL_ADMIN_HIGH_TOKEN_REQUIRED
+LAST_EXECUTOR_RESULT=PASS_CANDIDATE_RUNNER_PREPARED
+RUNNER_PREPARATION_REVIEW=PASS
+RUNNER_COMMIT=4a4eae48dac1fd3c21638efb2dfe0fc6b69a4614
 LAST_ATTEMPT_CONSEQUENTIAL_ACTION_STARTED=NO
 REAL_OPENAI_REQUEST_BUDGET_CONSUMED=0_OF_1
-EXECUTION_BLOCKER=OWNER_LOCAL_CONSEQUENTIAL_CHECKPOINT_REQUIRES_POWERSHELL_7_6_6_ADMINISTRATOR_HIGH
+EXECUTION_BLOCKER=OWNER_LOCAL_CHECKPOINT_NOT_YET_RUN; REQUIRES_POWERSHELL_7_6_6_ADMINISTRATOR_HIGH
 OBJECTIVE=Prove the accepted Mihomo v1.19.31 VLESS+REALITY+Vision candidate over the intended public TCP/443 path, with no persistence and deterministic rollback.
 MAX_ENDPOINT_THIS_ROUND=read-only current-state preflight + one temporary public TCP/443 Mihomo server + one temporary exact /32 outer-route bypass to the current physical egress + one proxied OpenAI HTTPS request + exact cleanup/read-back + Reviewer stop.
 MANDATORY_REVIEW_STOP=YES
@@ -314,11 +316,11 @@ Rollback/recovery assets:
 
 ## NEXT_STEP
 
-Executor may remain in its current non-elevated environment to prepare/review the bounded P1 runner and the single Owner-local checkpoint. Before any SSH, route/listener/runtime mutation, Secret access, or OpenAI request, Owner opens **PowerShell 7.6.6 as Administrator/High on the real Windows host** and runs that one atomic checkpoint. The checkpoint itself must fresh-prove PowerShell 7.6.6 + Administrator/High before continuing. Existing P1 authorization remains valid and the one-request budget remains `0/1`.
+Run the accepted prepared checkpoint `scripts/g2c-reality-public-tcp443-canary-p1.ps1` once from **PowerShell 7.6.6 Administrator/High on the real Owner Windows host**. The runner must fresh-prove token, canonical source, Windows/VPS/network preflight, then either fail closed before mutation or execute the already-authorized one-shot P1 and exact cleanup. The one-request budget remains `0/1` before this Owner checkpoint.
 
 ## OWNER_ACTION_REQUIRED
 
-Do **not** restart or elevate Codex merely for this Gate. After Executor prepares the bounded P1 runner, open **PowerShell 7.6.6 as Administrator** on the real Owner Windows host and run the single exact checkpoint command supplied by Executor. The Owner is not responsible for debugging or line-by-line execution. No new consequential authorization is required because the blocked attempt performed no SSH, route/listener/runtime mutation, Secret access, or OpenAI request (`REQUEST_COUNT=0`).
+Open **PowerShell 7.6.6 as Administrator/High** on the real Owner Windows host and run exactly once the prepared P1 checkpoint from commit `4a4eae48dac1fd3c21638efb2dfe0fc6b69a4614`. Owner performs no line-by-line debugging. If the runner returns before the OpenAI request, stop and relay its bounded output to Reviewer; do not manually retry. No new consequential authorization is required; request budget is still `0/1`.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 

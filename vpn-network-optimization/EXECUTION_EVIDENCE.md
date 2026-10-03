@@ -2702,4 +2702,35 @@ STOP_BEFORE_OWNER_LOCAL_EXECUTION=YES
 ```
 
 The runner fail-closes before SSH or other P1 actions unless the invoking Owner process is exactly PowerShell 7.6.6, is in the Windows Administrator role, and has integrity RID at least 12288. Static fixtures exercised only pure route/physical-egress helpers with synthetic non-secret values. Neither Owner host preflight nor the P1 consequential checkpoint was run by Executor. The Gate estimate of 20–30 minutes applies to the later Owner execution; consequential execution time is therefore not started. Preparation timing was not captured from the initial source read and is not reconstructed.
+## Reviewer acceptance — G2C P1 runner preparation — 2026-10-03
+
+```text
+REVIEWED_RUNNER_COMMIT=4a4eae48dac1fd3c21638efb2dfe0fc6b69a4614
+REVIEWER_RESULT=PASS_RUNNER_PREPARATION_ONLY
+RUNNER_PATH=vpn-network-optimization/scripts/g2c-reality-public-tcp443-canary-p1.ps1
+POWERSHELL_7_6_6_GATE_BEFORE_SSH=PASS
+ADMINISTRATOR_HIGH_GATE_BEFORE_SSH=PASS
+CANONICAL_SOURCE_GATE_BEFORE_RUNTIME_MUTATION=PASS
+EXACT_ACTIVE_STORE_32_ROUTE_BOUNDARY=PASS
+EXACT_ROUTE_CLEANUP_BOUNDARY=PASS
+PUBLIC_TCP443_ONLY_SERVER_SCOPE=PASS
+OPENAI_REQUEST_CALLSITE_COUNT=1
+REQUEST_BUDGET_GUARD=PASS
+REQUEST_BUDGET_MARKED_CONSUMED_ON_PROCESS_START=PASS
+FINALLY_CLEANUP_PATH_PRESENT=PASS
+STATIC_SECRET_BOUNDARY_REVIEW=PASS
+REAL_P1_EXECUTED=NO
+OPENAI_REQUEST_COUNT=0
+P1_REQUEST_BUDGET_REMAINING=1
+OWNER_CHECKPOINT_REQUIRED=YES
+OWNER_CHECKPOINT_RUNTIME=PowerShell_7.6.6_Administrator_High
+CURRENT_GATE=G2C_REALITY_PUBLIC_TCP443_CANARY_P1
+```
+
+Reviewer interpretation:
+- The preparation round is accepted only as runner readiness; it is not evidence that public REALITY interoperability passed.
+- The checkpoint verifies PowerShell 7.6.6, Administrator membership, and High integrity before SSH. It then verifies canonical source and fresh Gate/request-budget state before any P1 mutation.
+- The temporary VPS public-IP route is ActiveStore-only, exact /32, dynamically bound to the single accepted physical egress, and cleanup removes only the matching exact route.
+- The OpenAI canary has one call site and is guarded by request count/budget state. Once curl successfully starts, the request budget is marked consumed regardless of outcome; no retry is authorized.
+- The final Owner action is one execution of the prepared checkpoint. Any RETURN is relayed back to Reviewer rather than manually repaired/replayed.
 
