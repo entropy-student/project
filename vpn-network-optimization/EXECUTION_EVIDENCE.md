@@ -2238,3 +2238,51 @@ STOP_AT_REVIEWER=YES
 ```
 
 The local fixture passed, but the one authorized retry did not produce its normal result markers: the top-level catch itself raised a missing-type error, masking the original exception and phase. Therefore actual request count and handshake state are recorded as UNKNOWN; no additional request or runner invocation was made. Cleanup was independently read back over the accepted strict SSH control path and on Windows: no temporary server/client process, listener, or R3 runtime residue remained; WG/HY2, proxy, TUN, and the WireGuard-selected control route remained operational. The current post-run adapter index is 9 while the runner invariant expects 13; because entry-time state was not emitted, this is recorded as a current readback fact, not asserted as the triggering exception.
+
+
+## Reviewer reconciliation — G2C R3 retry masked-failure return — 2026-10-03
+
+```text
+REVIEWER_GOVERNANCE_VERSION=v0.2.6
+REVIEWER_GOVERNANCE_SHA=de2b38ec0e7f3ecceb1aeffa3fc7f033ed14429a
+TRIGGERED_SPECIALISTS=11B_SSH_SECRET_TARGET_HOST,11C_DEPLOYMENT_NETWORK_RESOURCES,11D_AUTOMATION_AUTH
+REVIEWED_COMMIT=23e025ef6ef158361ac8bb73d3b6ac969f2ad70a
+EXECUTOR_RESULT=RETURN_G2C_R3_RUNNER_EXCEPTION_CLASSIFIER_FAILURE
+REVIEWER_RESULT=RETURN_LOCAL_RUNNER_HARDENING_REQUIRED
+EMPTY_ARGUMENT_FIXTURE=PASS
+RUNNER_TOP_LEVEL_CLASSIFIER_DEFECT=CONFIRMED
+MASKED_ORIGINAL_FAILURE=YES
+REQUEST_COUNT=UNKNOWN
+REALITY_HANDSHAKE=UNKNOWN
+IMPLEMENTATION_AB_RESULT=UNKNOWN
+PROTOCOL_COMPATIBILITY_CONCLUSION=NONE
+POSTCHECK_SFO2_A_STATUS=UP
+POSTCHECK_SFO2_A_IFINDEX=9
+POSTCHECK_CONTROL_ROUTE_INTERFACE=SFO2-A
+POSTCHECK_CONTROL_ROUTE_IFINDEX=9
+RUNNER_HARDCODED_IFINDEX=13
+HARDCODED_IFINDEX_INVARIANT=STALE
+CLEANUP_READBACK=PASS
+WG_HY2_PRESERVED=YES
+SYSTEM_PROXY_UNCHANGED=YES
+TUN_COUNT=0
+PUBLIC_TCP443_CHANGED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+ESTIMATED_EXECUTION_TIME=15-25 minutes
+ACTUAL_ELAPSED=10m58s
+TIME_OVERRUN=NO
+PRIOR_REAL_REQUEST_AUTHORIZATION_STATUS=AMBIGUOUS_CONSUMED_OR_NOT
+FRESH_OWNER_AUTHORIZATION_REQUIRED_BEFORE_NEXT_REAL_REQUEST=YES
+NEXT_GATE=G2C_R3_LOCAL_RUNNER_HARDENING_H1
+NEXT_GATE_NETWORK_ACTIONS=0
+NEXT_GATE_OWNER_AUTHORIZATION_REQUIRED=NO
+NEXT_GATE_ESTIMATED_EXECUTION_TIME=10-20 minutes
+```
+
+Reviewer reasoning:
+- The empty-argument repair itself is now proven locally, so repeating that binder fix is not justified.
+- The catch classifier can itself throw while classifying another exception, masking the original phase and request state.
+- Post-run read-back shows SFO2-A and the selected control route both on ifIndex 9 while the runner requires 13; the safe invariant is runtime consistency, not a fixed interface number.
+- Because request state is UNKNOWN, Reviewer will not reuse the prior one-request authorization. A fresh Owner authorization is required before any later real OpenAI/REALITY request.
+- The next round is local-only runner hardening with zero SSH/network/Secret activity.
