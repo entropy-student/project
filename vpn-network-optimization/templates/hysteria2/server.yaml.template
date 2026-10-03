@@ -5,8 +5,8 @@ listen: "__HY2_LISTEN__"
 tls:
   cert: "__HY2_CERT_FILE__"
   key: "__HY2_KEY_FILE__"
-  # The self-signed certificate must contain the configured local SNI as a DNS SAN.
-  # The client connects to the VPS IP directly; this .invalid SNI needs no public DNS.
+  # The self-signed certificate must contain {{HY2_SNI}} as a DNS SAN.
+  # The client connects to the VPS IP directly; this local .invalid SNI needs no public DNS.
   sniGuard: strict
 
 auth:
