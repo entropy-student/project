@@ -3213,3 +3213,64 @@ Reviewer interpretation:
 - H2 incorrectly required exactly one `Find-NetRoute` result. The already accepted P1 logic requires at least one result and validates the selected first route.
 - The repair aligns H2 with accepted P1 route semantics and adds a deterministic multi-route regression fixture.
 
+## Reviewer acceptance — G3A read-only health/readiness H2 — 2026-10-03
+
+```text
+PROVENANCE=OWNER_REPORTED_POWERSHELL_OUTPUT_REVIEWED_AGAINST_REPAIRED_H2_SOURCE
+GATE_ID=G3A_READONLY_HEALTH_READINESS_H2
+REVIEWER_RESULT=PASS
+COLLECTOR_REPAIR_COMMIT=48a831a7de40741515a91c835d8a09b6ae45f943
+H2_SELFTEST_CASES=10
+H2_SELFTEST_RESULT=PASS
+POWERSHELL_RUNTIME=7.6.6
+PHYSICAL_EGRESS=WLAN|18|192.168.1.1|192.168.1.4
+WG_ADAPTER=SFO2-A|9|Up
+WG_MANAGER_RUNNING=TRUE
+WG_TUNNEL_RUNNING=TRUE
+WG_CONTROL_ROUTE_VALID=TRUE
+WG_SPLIT_DEFAULTS_VALID=TRUE
+CLASH_SERVICE_RUNNING=TRUE
+SYSTEM_PROXY_ENABLED=FALSE
+WINHTTP_ACCESS_TYPE=1
+TUN_ADAPTER_COUNT=0
+P1_ROUTE_RESIDUE_COUNT=0
+HY2_RECOVERY_ARTIFACT_PRESENT=TRUE
+REALITY_PINNED_CLIENT_PRESENT=TRUE
+REALITY_PINNED_ARCHIVE_HASH_PASS=TRUE
+TARGET_HOSTNAME=ubuntu-s-1vcpu-512mb-10gb-sfo3
+VPS_PUBLIC_IP_MATCH_COUNT=1
+REMOTE_WG_SERVICE=active
+REMOTE_HY2_SERVICE=active
+REMOTE_UDP_51820=2
+REMOTE_UDP_8443=1
+REMOTE_TCP_443=0
+REMOTE_TCP_14443=0
+REMOTE_G2C_RUNTIME_RESIDUE=0
+REMOTE_UFW_STATUS=inactive
+REMOTE_IPTABLES_BACKEND=nf_tables
+REMOTE_NFT_INPUT_POLICY=NO_INPUT_HOOK
+WIREGUARD_CURRENT_HEALTH=HEALTHY
+HY2_READINESS=READY_FOR_SEPARATE_ACTIVATION
+REALITY_READINESS=READY_FOR_SEPARATE_ACTIVATION
+REALITY_INTEROP_REPROBED=NO
+EXTERNAL_WORKLOAD_REQUEST_COUNT=0
+NETWORK_MUTATION=NO
+SERVICE_MUTATION=NO
+SYSTEM_PROXY_MUTATION=NO
+TUN_MUTATION=NO
+VPS_MUTATION=NO
+VPN_APPLICATION_SECRET_VALUES_READ=0
+SECRET_VALUES_EMITTED=0
+SSH_PRIVATE_KEY_VALUE_EXPOSED=NO
+G3A_H2_READONLY_RESULT=COMPLETE
+```
+
+Reviewer interpretation:
+- H2 is formally PASS after the control-route validator repair and 10-case regression suite.
+- WireGuard is currently healthy on both Owner-host and VPS-side evidence.
+- HY2 is ready for a separately reviewed activation Gate; this does not mean a persistent HY2 client is currently active.
+- REALITY is ready as a cold candidate for a separately reviewed activation Gate; TCP/443 being free and no persistent REALITY listener are expected.
+- The previous H2 `WIREGUARD_CURRENT_HEALTH=UNHEALTHY` result is superseded as a validator false negative by the accepted diagnostic and repaired rerun.
+- No P1 route/runtime/listener residue exists.
+- No external workload request, network/service/proxy/TUN/VPS mutation, VPN/application Secret read, or Secret emission occurred.
+
