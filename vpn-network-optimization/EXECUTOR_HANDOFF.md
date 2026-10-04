@@ -1,4 +1,236 @@
-## Current execution status — G3C C2B P0 local-fact persistence R1
+## Current execution status — G3C C2B Owner ACL behavior diagnostic D2
+
+```text
+GATE_ID=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_C2B_OWNER_RUNTIME_ACL_INHERITANCE_ENABLED
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_D2_REQUIRED=YES
+ACL_DIAGNOSTIC_BLOB=64bc2fd1c3dfe85250cb229a116202e5d9b6c460
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun C2B.
+2. Wait for Owner D2 output.
+3. Persist only bounded ACL behavior/cleanup/timing facts.
+4. Do not accept any repair that weakens the Owner-only ACL invariant.
+5. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B route snapshot compatibility repair R1
+
+```text
+GATE_ID=G3C_C2B_ROUTE_SNAPSHOT_COMPAT_REPAIR_R1
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=PASS_DIAGNOSTIC_D1_ROOT_CAUSE_CONFIRMED
+OWNER_LOCAL_VALIDATION_CANARY_REQUIRED=YES
+RUNNER_BLOB=ffa5667e6e0d436294cb37de845d0f1440f5766a
+VALIDATOR_BLOB=a1ad9a30c0657f0912bcdebc6f39de5cf7e5de20
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+PACKAGE_BLOB=64b7ea3c562adc241311517c79cc53d966197a6e
+VALIDATOR_BEFORE_RUNNER=YES
+REAL_HY2_TRAFFIC_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not independently run C2B.
+2. Wait for Owner-local repair-validation/canary output.
+3. Persist bounded source identity, validator, canary, cleanup, and timing evidence.
+4. Any validator failure blocks runner acceptance.
+5. Do not enter C2C.
+6. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B subdir Git sync + diagnostic D1R3
+
+```text
+GATE_ID=G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_RUNNER_OUTSIDE_GIT_ROOT_PATH_ENCODING
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_D1R3_REQUIRED=YES
+KNOWN_EXISTING_RUNNER_PATH=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\c2b-owner-clash-ui-canary.ps1
+GIT_CONTEXT_MODE=RUN_FROM_RUNNER_DIRECTORY_NO_TOPLEVEL_PATH_PARSE
+DIAGNOSTIC_FILENAME=c2b-network-state-shape-diagnostic.ps1
+DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+DESTRUCTIVE_GIT_ACTION_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun C2B.
+2. Wait for Owner D1R3 output.
+3. Persist only bounded subdirectory-Git sync and diagnostic facts.
+4. Do not use the prior mojibake top-level path as evidence of repository topology.
+5. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B dynamic-root sync + diagnostic D1R2
+
+```text
+GATE_ID=G3C_C2B_OWNER_DYNAMIC_ROOT_SYNC_AND_DIAGNOSTIC_D1R2
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_WORKTREE_ROOT_MISMATCH
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_D1R2_REQUIRED=YES
+KNOWN_EXISTING_RUNNER_PATH=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\c2b-owner-clash-ui-canary.ps1
+GIT_ROOT_MODE=DYNAMIC_FROM_TRACKED_RUNNER
+DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+DESTRUCTIVE_GIT_ACTION_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun C2B.
+2. Wait for Owner D1R2 output.
+3. Persist only bounded dynamic-root/Git-sync/diagnostic facts.
+4. Any root ambiguity, project dirt/divergence, or diagnostic failure remains RETURN.
+5. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B Owner worktree sync + diagnostic D1R1
+
+```text
+GATE_ID=G3C_C2B_OWNER_WORKTREE_SYNC_AND_DIAGNOSTIC_D1R1
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_D1_DIAGNOSTIC_NOT_PRESENT_LOCAL_WORKTREE
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_SYNC_DIAGNOSTIC_REQUIRED=YES
+WORKTREE_ROOT=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建
+DIAGNOSTIC_RELATIVE_PATH=vpn-network-optimization/scripts/c2b-network-state-shape-diagnostic.ps1
+DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+DESTRUCTIVE_GIT_ACTION_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun C2B.
+2. Wait for the Owner-local D1R1 output.
+3. Persist only bounded Git synchronization and diagnostic facts.
+4. Any local divergence/dirt or diagnostic failure remains a RETURN.
+5. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B network-state shape diagnostic D1
+
+```text
+GATE_ID=G3C_C2B_NETWORK_STATE_SHAPE_DIAGNOSTIC_D1
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_C2B_PRECHECK_NETWORK_STATE_OBJECT_SHAPE
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_DIAGNOSTIC_REQUIRED=YES
+DIAGNOSTIC_SCRIPT=scripts/c2b-network-state-shape-diagnostic.ps1
+DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+OWNER_RUNTIME_REQUIRED=PowerShell_7.6.6;Administrator=True;High_Integrity_RID>=12288
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+DPAPI_OR_SECRET_READ_AUTHORIZED=NO
+VPS_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun the C2B runner.
+2. Wait for Owner-local diagnostic output from the reviewed D1 script.
+3. Persist only bounded property-presence/count/timing evidence.
+4. Do not infer network drift from the prior PropertyNotFoundException.
+5. Return PASS_CANDIDATE or precise RETURN and STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B Owner-local synthetic UI checkpoint R2R1-O1
+
+```text
+GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1_O1
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_C2B_OWNER_RUNTIME_PREFLIGHT_FAILED
+CODEX_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_CHECKPOINT_REQUIRED=YES
+OWNER_RUNTIME_REQUIRED=PowerShell_7.6.6;Administrator=True;High_Integrity_RID>=12288
+RUNNER_PATH=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\c2b-owner-clash-ui-canary.ps1
+REAL_HY2_TRAFFIC_AUTHORIZED=NO
+DPAPI_OR_SECRET_READ_AUTHORIZED=NO
+VPS_OR_REALITY_ACTION_AUTHORIZED=NO
+ROUTE_PROXY_TUN_WG_MUTATION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun the C2B runner from the Codex shell.
+2. Wait for Owner-local checkpoint output from the real Windows host.
+3. When Owner output is relayed, record only bounded non-secret evidence and classify the result against the current Gate.
+4. Do not enter C2C.
+5. Return PASS_CANDIDATE or precise RETURN and STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B Owner synthetic UI canary R2R1
+
+```text
+GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+PREVIOUS_RESULT=RETURN_C2B_CANONICAL_GATE_MISMATCH
+REVIEWER_HANDOFF_GATE_MUST_MATCH=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1
+RUNNER=scripts/c2b-owner-clash-ui-canary.ps1
+RUNNER_BLOB=cd5a2eb768b54d13307b651ea514a912b9742c9d
+TEMPLATE=templates/clash/c2b-wg-hy2-canary.yaml.template
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+OWNER_PACKAGE=docs/G3C_C2B_OWNER_CANARY_PACKAGE.md
+REAL_HY2_TRAFFIC_AUTHORIZED=NO
+DPAPI_OR_SECRET_READ_AUTHORIZED=NO
+VPS_OR_REALITY_ACTION_AUTHORIZED=NO
+ROUTE_PROXY_TUN_WG_MUTATION_AUTHORIZED=NO
+ESTIMATED_EXECUTION_TIME=5-10_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Read only the current R2R1 Gate/relay from `REVIEWER_HANDOFF.md`, this current block, and the locked runner/template/package named above.
+2. Require `REVIEWER_HANDOFF.md` and this current block to agree exactly on `GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1`. Any disagreement => precise RETURN, no Owner checkpoint.
+3. Fresh fetch/read `origin/main`; unrelated project movement is allowed, material VPN-project drift is not.
+4. Prove the `vpn-network-optimization/` worktree is clean before launch; unrelated artifacts outside this project are not blockers.
+5. Verify runner/template blobs exactly match the locked identities.
+6. Do not modify runner/template/package source.
+7. If preflight passes, run the existing one-shot Owner runner exactly once.
+8. Owner interaction is limited to importing the synthetic profile, visually confirming WG + synthetic HY2 + manual selector with WG current/default, not selecting HY2 or sending traffic, removing the synthetic profile, and entering the exact acknowledgement.
+9. Do not read DPAPI/recovery material, use real HY2 values, access VPS, activate REALITY, or mutate route/proxy/TUN/WireGuard.
+10. Capture the bounded required outputs and cleanup/read-back evidence from the Gate.
+11. Return `PASS_CANDIDATE_G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1` or precise `RETURN_*`.
+12. STOP_AT_REVIEWER; do not enter C2C.
+
+### Expected completion
+
+Return only the fixed completion packet required by Governance, with `Owner 转交` only if the one-shot checkpoint actually requires the Owner UI step.
+
+
+
+## Historical execution status — G3C C2B P0 local-fact persistence R1
 
 ```text
 GATE_ID=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1

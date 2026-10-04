@@ -32,11 +32,16 @@ TECHNICAL_SOLUTION_PROOF=PASS
 WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
-OWNER_OVERALL_VISUAL_DIRECTION=BROADLY_ACCEPTED
+OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
 CURRENT_GATE=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
+MAGAZINE_WEB_VIEWER_DIRECTION=CONFIRMED_MAGAZINE_WEB_VIEWER
+HOMEPAGE_FOCUSLY=REFERENCE_ONLY_NOT_SELECTED
+CORE_AHA_INTERACTION=UNRESOLVED_RESEARCH_AGAIN
+MAGAZINE_P1_P12_VISUAL_SYSTEM=UNRESOLVED_RESEARCH_AGAIN
+PRIOR_G3CR6R3C_SATURATION=SUPERSEDED_FOR_INTERACTION_AND_P1_P12
 MAGAZINE_WEB_PAGE_MOTION_MODE=UNRESOLVED
 OWNER_VISUAL_FREEZE=PENDING
 REAL_MONEY_TRANSACTION=UNVERIFIED
@@ -180,10 +185,11 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3C** on reconciled PR #64 under the mandatory quality contract: inspect >=60 distinct candidates across >=8 source ecosystems, keep a reject ledger, and continue until saturation.
-2. Reviewer verifies source/license status, evidence quality and design-system coherence.
-3. Owner selects the preferred source/template combination.
-4. Only then open an implementation Gate to vendor/copy permitted source and adapt it into the unified 1+1+12 system.
+1. Continue **G3CR6R3C** under the 2026-10-04 Owner research reset, but only for the two unresolved surfaces: core Aha interaction and the P1-P12 magazine visual/page system.
+2. Treat `magazine-web-viewer` as the accepted reader direction; treat Focusly only as homepage reference, not a frozen template.
+3. Re-open candidate discovery and saturation for those two unresolved surfaces; prior shortlist preferences do not carry forward as selections.
+4. Reviewer verifies live visual evidence, mobile/reduced-motion feasibility, license/source boundaries and P1-P12 coherence before Owner selection.
+5. Only after Owner selection may an implementation Gate be opened.
 
 ## OWNER_ACTION_REQUIRED
 
@@ -198,7 +204,8 @@ Owner action is required later for:
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md`
+1. `docs/OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md`
+2. `docs/REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md`
 2. `docs/REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md`
 3. `docs/REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` — superseded preflight RETURN provenance
 2. `docs/MVP_PRODUCT_CONTRACT.md`

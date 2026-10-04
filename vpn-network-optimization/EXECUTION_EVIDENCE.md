@@ -4088,3 +4088,281 @@ CURRENT_R1_LIVE_OR_NETWORK_ACTION=NO
 
 The prior C2A closeout's source-commit/read-back, measured Git-persistence interval, seven-file blob check, and unrelated-main fast-forward facts were not all represented in canonical main before this reconciliation. The source commit and technical result were already documented; those duplicate facts were not restated as new outcomes. The stale local C2A status wording was not used to replace the current R1 Gate or the Reviewer-owned disposition. The unique facts were committed and fresh-read from GitHub before the exact three superseded files were cleaned; the original managed worktree then fast-forwarded to the same commit with a clean project status. The current round's exact elapsed time is unavailable because its start preceded the first captured clock marker; the captured post-fetch interval exceeded 17 minutes, so the estimate was exceeded even though the precise total cannot be reconstructed.
 
+
+
+## Reviewer reconciliation — G3C C2B P0 local-fact persistence R1 — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
+EXECUTOR_RESULT=RETURN_R1_TIMING_START_NOT_CAPTURED
+REVIEWER_FORMAL_PASS=NO
+REVIEWER_TECHNICAL_DISPOSITION=CLOSED_WITH_RECORDED_TIMING_GAP_NO_REPLAY
+PERSISTENCE_COMMIT=fc2aa9399627c19b5368ed6da6a219deaeb20b77
+CLOSEOUT_COMMIT=dd8651aa760062f71ddc84a1154b21873ecbc174
+UNIQUE_FACTS_DURABLE=DIRECT_GITHUB_READBACK_PASS
+POST_DD865_VPN_PROJECT_DRIFT=NONE
+POST_DD865_MAIN_ADVANCEMENT=UNRELATED_BIRTHDAY_MAGAZINE_ONLY
+C2B_RUNNER_BLOB_DIRECT_READBACK=cd5a2eb768b54d13307b651ea514a912b9742c9d
+C2B_TEMPLATE_BLOB_DIRECT_READBACK=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+LOCAL_WORKTREE_CLEAN_PROVENANCE=EXECUTOR_REPORTED;REVERIFY_NEXT_GATE
+ROUND_STARTED_AT=NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH
+ACTUAL_ELAPSED=UNKNOWN
+ACTUAL_ELAPSED_LOWER_BOUND=AT_LEAST_00:17:00
+TIME_OVERRUN=YES
+TECHNICAL_OR_LIVE_REPLAY_REQUIRED=NO
+NEXT_GATE=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2
+```
+
+Reviewer conclusion:
+- The Executor correctly returned instead of claiming PASS_CANDIDATE because the Gate explicitly required a round-start marker before initial fetch and that evidence is irrecoverably missing.
+- The missing timing evidence blocks formal PASS for R1, but it does not invalidate the already completed document-persistence objective. The unique facts are durable on canonical GitHub and the locked C2B runner/template identities remain unchanged.
+- No VPN/network/runtime action is replayed. The clean local worktree assertion is retained as Executor-reported and must be freshly re-proven before the next Owner-local checkpoint.
+- Current main advancement after the R1 closeout is unrelated to this project and does not constitute material VPN drift.
+- R1 is therefore closed as a recorded timing-observability RETURN with no replay, and the project may proceed to the bounded synthetic/no-traffic C2B UI canary.
+
+
+## Reviewer reconciliation — RETURN_C2B_CANONICAL_GATE_MISMATCH — 2026-10-04
+
+```text
+REVIEWER_RESULT=RETURN_CONFIRMED_AND_RELAY_DRIFT_REPAIRED
+RETURN_CODE=RETURN_C2B_CANONICAL_GATE_MISMATCH
+ROOT_CAUSE=DIRECT_GITHUB_READBACK_SHOWED_REVIEWER_HANDOFF_CURRENT_GATE_R2_WHILE_EXECUTOR_HANDOFF_CURRENT_STATUS_REMAINED_R1
+REVIEWER_HANDOFF_BEFORE=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2
+EXECUTOR_HANDOFF_BEFORE=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
+LIVE_OR_OWNER_UI_ACTION_OCCURRED=NO_EVIDENCE_OF_EXECUTION_BEYOND_FAIL_CLOSED_GATE_CHECK
+VPN_NETWORK_SECRET_VPS_ACTION_REQUIRED_FOR_REPAIR=NO
+RUNNER_BLOB=cd5a2eb768b54d13307b651ea514a912b9742c9d
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+TECHNICAL_REPLAY_REQUIRED=NO
+REPAIR_SCOPE=REVIEWER_HANDOFF_GATE_COMPLETENESS_AND_REVIEWER_TO_EXECUTOR_RELAY_ALIGNMENT_PLUS_EXECUTOR_HANDOFF_CURRENT_BLOCK
+NEXT_GATE=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1
+```
+
+Reviewer conclusion:
+- The Executor was correct to fail closed. Direct canonical read-back showed two different current Gate identities: Reviewer Handoff had already advanced to the C2B Owner synthetic UI canary while Executor Handoff still advertised the prior R1 persistence Gate.
+- This was Reviewer-side relay/document synchronization drift, not VPN, Clash, HY2, WireGuard, Secret, or VPS drift.
+- No previous technical work is replayed. The repair is documentation/control-plane only: align the canonical current Gate and self-contained Executor relay, then rerun only the C2B preflight/Owner checkpoint as R2R1.
+- The R2R1 preflight must prove the two canonical surfaces agree before any Owner-local checkpoint can start.
+
+
+## Reviewer reconciliation — RETURN_C2B_OWNER_RUNTIME_PREFLIGHT_FAILED — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1
+EXECUTOR_RESULT=RETURN_C2B_OWNER_RUNTIME_PREFLIGHT_FAILED
+REVIEWER_RESULT=RETURN_CONFIRMED
+CANONICAL_MAIN_REPORTED=d87fbddce8c4e74b988d8683ff6c35b84b4c59b4
+GATE_ALIGNMENT_REPORTED=PASS
+PROJECT_SCOPE_CLEAN_REPORTED=PASS
+RUNNER_TEMPLATE_BLOBS_REPORTED=PASS
+EXECUTOR_RUNTIME_POWERSHELL=7.6.5
+EXECUTOR_RUNTIME_ADMINISTRATOR=False
+EXECUTOR_RUNTIME_INTEGRITY_RID=8192
+OWNER_RUNTIME_REQUIRED_POWERSHELL=7.6.6
+OWNER_RUNTIME_REQUIRED_ADMINISTRATOR=True
+OWNER_RUNTIME_REQUIRED_INTEGRITY=High
+RUNNER_STARTED=NO
+CLASH_MIHOMO_DPAPI_SECRET_UI_PROFILE_NETWORK_TOUCHED=NO_REPORTED
+ROUND_STARTED_AT=2026-10-04T01:17:57Z
+ROUND_FINISHED_AT=2026-10-04T01:21:56Z
+ACTUAL_ELAPSED=00:03:59
+TECHNICAL_REPLAY_REQUIRED=NO
+EXECUTION_CHANNEL_FALLBACK=ONE_SHOT_OWNER_LOCAL_CHECKPOINT_APPROVED
+NEXT_GATE=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1_O1
+PROVENANCE=OWNER_RELAYED_EXECUTOR_REPORT_PLUS_DIRECT_CANONICAL_SOURCE_READBACK
+```
+
+Reviewer conclusion:
+- The RETURN is accepted. The current Codex shell does not satisfy the frozen Owner-host runtime contract, so fail-closed before runner launch was required.
+- Direct GitHub read-back confirms the canonical Gate still requires PowerShell 7.6.6, Administrator/High-integrity Owner-host execution and the locked runner remains the reviewed source.
+- This is an execution-channel boundary, not a VPN/Clash/HY2 failure. No runner or network action is replayed from Codex.
+- Reviewer approves one bounded Owner-local checkpoint on the real Windows host. This fallback is specific to this Gate and does not replace the default execution channel.
+
+
+## Reviewer reconciliation — Owner-local C2B precheck PropertyNotFoundException — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1_O1
+OWNER_REPORTED_RUNTIME=PowerShell_7.6.6;Administrator=True
+OWNER_REPORTED_RUNNER_STARTED=YES
+OWNER_REPORTED_PROFILE_STORE_BASELINE=PASS
+OWNER_REPORTED_FAILED_PHASE=PRECHECK_NETWORK_STATE
+OWNER_REPORTED_FAILURE_CLASS=PropertyNotFoundException
+OWNER_REPORTED_FAILURE_CODE=UNCLASSIFIED
+OWNER_REPORTED_LOCAL_RUNTIME_CLEANUP=PASS
+OWNER_REPORTED_UI_PROFILE_REMOVED=NO_ACK
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+OWNER_REPORTED_ROUND_STARTED_AT=2026-10-04T01:27:19.9067053+00:00
+OWNER_REPORTED_ROUND_FINISHED_AT=2026-10-04T01:27:22.9483840+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:03.0416787
+OWNER_REPORTED_TIME_OVERRUN=NO
+REVIEWER_CLASSIFICATION=RETURN_C2B_PRECHECK_NETWORK_STATE_OBJECT_SHAPE
+NETWORK_DRIFT_PROVEN=NO
+RUNNER_OR_UI_RETRY_AUTHORIZED=NO
+NEXT_GATE=G3C_C2B_NETWORK_STATE_SHAPE_DIAGNOSTIC_D1
+PROVENANCE=OWNER_REPORTED
+```
+
+Reviewer conclusion:
+- The real Owner runtime boundary is now proven sufficient to start the reviewed runner.
+- The runner failed during read-only network-state acquisition with PropertyNotFoundException before synthetic profile creation/import or any authorized network mutation.
+- Cleanup passed. The failure is therefore treated as an object-shape/evidence-reader defect until proven otherwise, not as network drift.
+- A bounded read-only D1 diagnostic is opened to determine which expected property is absent on the real Windows object shape. The C2B runner must not be retried or patched speculatively before that evidence is returned.
+
+
+## Reviewer reconciliation — D1 diagnostic absent from local worktree — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_NETWORK_STATE_SHAPE_DIAGNOSTIC_D1
+OWNER_REPORTED_DIAGNOSTIC_TEST_PATH=False
+CANONICAL_DIAGNOSTIC_PRESENT=DIRECT_GITHUB_READBACK_YES
+CANONICAL_DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+REVIEWER_RESULT=RETURN_D1_DIAGNOSTIC_NOT_PRESENT_LOCAL_WORKTREE
+ROOT_CAUSE_CLASS=LOCAL_WORKTREE_STALE_RELATIVE_TO_CANONICAL_MAIN
+MANUAL_FILE_COPY_AUTHORIZED=NO
+DESTRUCTIVE_GIT_REPAIR_AUTHORIZED=NO
+NEXT_GATE=G3C_C2B_OWNER_WORKTREE_SYNC_AND_DIAGNOSTIC_D1R1
+PROVENANCE=OWNER_REPORTED_PLUS_DIRECT_GITHUB_READBACK
+```
+
+Reviewer conclusion:
+- Canonical GitHub contains the reviewed diagnostic; the Owner-local Test-Path failure therefore proves only that the existing worktree has not yet advanced to the canonical revision containing it.
+- The repair is a bounded local Git synchronization: require project-scope clean, fetch, prove local HEAD is ancestor of origin/main, and use ff-only update. No reset, force, stash, rebase, or manual file copy is authorized.
+- If synchronization succeeds and the diagnostic blob matches canonical, the same checkpoint may continue into the read-only D1 diagnostic. The C2B canary runner remains forbidden.
+
+
+## Reviewer reconciliation — D1R1 worktree root mismatch — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_OWNER_WORKTREE_SYNC_AND_DIAGNOSTIC_D1R1
+OWNER_REPORTED_RESULT=RETURN
+OWNER_REPORTED_FAILURE_CODE=WORKTREE_ROOT_MISMATCH
+OWNER_REPORTED_ROUND_STARTED_AT=2026-10-04T01:48:28.1709698+00:00
+OWNER_REPORTED_ROUND_FINISHED_AT=2026-10-04T01:48:28.3125636+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:00.1415938
+OWNER_REPORTED_C2B_RUNNER_EXECUTED=NO
+OWNER_REPORTED_NETWORK_MUTATION=NONE
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+REVIEWER_CLASSIFICATION=CHECKPOINT_HARDCODED_GIT_ROOT_ASSUMPTION_INVALID
+LOCAL_REPOSITORY_DRIFT_PROVEN=NO
+FETCH_OR_FAST_FORWARD_STARTED=NO
+DIAGNOSTIC_EXECUTED=NO
+DESTRUCTIVE_REPAIR_AUTHORIZED=NO
+NEXT_GATE=G3C_C2B_OWNER_DYNAMIC_ROOT_SYNC_AND_DIAGNOSTIC_D1R2
+PROVENANCE=OWNER_REPORTED
+```
+
+Reviewer conclusion:
+- The D1R1 checkpoint stopped before fetch/update because Reviewer had incorrectly treated the `VPS搭建` subdirectory as the Git top-level.
+- This RETURN is accepted as a checkpoint-path defect, not proof of local worktree divergence.
+- D1R2 removes the hardcoded-root assumption. It resolves the Git root and project prefix from the already-proven tracked C2B runner path, then permits only clean + ancestor-proven + ff-only synchronization before D1.
+
+
+## Reviewer reconciliation — D1R2 Git top-level path decoding failure — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_OWNER_DYNAMIC_ROOT_SYNC_AND_DIAGNOSTIC_D1R2
+OWNER_REPORTED_RESULT=RETURN
+OWNER_REPORTED_OWNER_RUNTIME=PASS
+OWNER_REPORTED_GIT_ROOT_RENDERED=C:/Users/34707/.codex/worktrees/g2b-runner-binding-cleanup/VPS_MOJIBAKE
+OWNER_REPORTED_FAILURE_CODE=RUNNER_OUTSIDE_GIT_ROOT
+OWNER_REPORTED_ROUND_STARTED_AT=2026-10-04T01:53:06.1244621+00:00
+OWNER_REPORTED_ROUND_FINISHED_AT=2026-10-04T01:53:06.2641726+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:00.1397105
+OWNER_REPORTED_C2B_RUNNER_EXECUTED=NO
+OWNER_REPORTED_NETWORK_MUTATION=NONE
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+FETCH_OR_FAST_FORWARD_STARTED=NO
+DIAGNOSTIC_EXECUTED=NO
+REVIEWER_CLASSIFICATION=NATIVE_GIT_PATH_OUTPUT_DECODING_MISMATCH
+REPOSITORY_TOPOLOGY_DRIFT_PROVEN=NO
+NEXT_GATE=G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3
+PROVENANCE=OWNER_REPORTED
+```
+
+Reviewer conclusion:
+- The Git top-level output contained mojibake for the Chinese `VPS搭建` path component. Comparing that decoded native-output string to the correct .NET Unicode runner path produced a false outside-root classification.
+- The Gate stopped before fetch/update and before D1/C2B/network action.
+- D1R3 removes the entire failure mode: Git operates from the already-known runner directory; no Git-emitted filesystem path is decoded or reused as a Windows locator.
+
+
+## Reviewer reconciliation — D1R3 root cause confirmation and C2B repair candidate — 2026-10-04
+
+```text
+DIAGNOSTIC_GATE=G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3
+OWNER_REPORTED_SYNC_RESULT=PASS
+OWNER_REPORTED_HEAD_BEFORE=d87fbddce8c4e74b988d8683ff6c35b84b4c59b4
+OWNER_REPORTED_ORIGIN_MAIN=867604f337428af54ffb94d8ea8c6ad022c4d68f
+OWNER_REPORTED_FAST_FORWARD=PASS
+OWNER_REPORTED_POST_SYNC_PROJECT_CLEAN=PASS
+OWNER_REPORTED_DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+OWNER_REPORTED_POWERSHELL_VERSION=7.6.6
+OWNER_REPORTED_ADMINISTRATOR=True
+OWNER_REPORTED_INTEGRITY_RID=12288
+OWNER_REPORTED_IPV4_ACTIVE_ROUTES_COUNT=23
+DESTINATIONPREFIX_MISSING=0
+NEXTHOP_MISSING=0
+INTERFACEINDEX_MISSING=0
+ROUTEMETRIC_MISSING=0
+POLICYSTORE_MISSING=23
+OWNER_REPORTED_DIAGNOSTIC_RESULT=PASS_READONLY_OBJECT_SHAPE_CAPTURED
+OWNER_REPORTED_NETWORK_MUTATION=NONE
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+ROOT_CAUSE=ROUTE_OBJECTS_DO_NOT_EXPOSE_POLICYSTORE_PROPERTY_ON_OWNER_HOST
+NETWORK_DRIFT_PROVEN=NO
+REPAIR_RUNNER_COMMIT=b6c87c25c61545a1599b90b7338265afbf60a419
+REPAIR_RUNNER_BLOB=ffa5667e6e0d436294cb37de845d0f1440f5766a
+REPAIR_VALIDATOR_COMMIT=0d43fac420761a248ae22a795e1b6a844fe374e7
+REPAIR_VALIDATOR_BLOB=a1ad9a30c0657f0912bcdebc6f39de5cf7e5de20
+REPAIR_SCOPE=KEEP_Get-NetRoute_-PolicyStore_ActiveStore;REMOVE_ROUTE_OBJECT_.PolicyStore_ACCESS
+REPAIR_ACCEPTED=NO_PENDING_OWNER_OFFLINE_VALIDATOR
+NEXT_GATE=G3C_C2B_ROUTE_SNAPSHOT_COMPAT_REPAIR_R1
+PROVENANCE=OWNER_REPORTED_PLUS_DIRECT_GITHUB_SOURCE_READBACK
+```
+
+Reviewer conclusion:
+- D1R3 directly identified the failing property: `PolicyStore` is absent on all 23 returned ActiveStore IPv4 route objects, while every other property used by the snapshot is present.
+- The failure was in evidence-reader compatibility, not network state. The ActiveStore scope is already selected by the `Get-NetRoute -PolicyStore ActiveStore` command argument.
+- The minimal repair removes only route-object `.PolicyStore` access. The validator now requires ActiveStore query scoping and adds a negative fixture that rejects reintroduction of `$_.PolicyStore`.
+- The repaired source is a candidate only until the Owner-local PowerShell validator proves syntax and all offline fixtures on the target runtime. Conditional C2B execution is allowed only after that validator passes.
+
+
+## Reviewer reconciliation — repaired C2B route snapshot accepted; Owner ACL runtime failure — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_ROUTE_SNAPSHOT_COMPAT_REPAIR_R1
+OWNER_REPORTED_HEAD_BEFORE=867604f337428af54ffb94d8ea8c6ad022c4d68f
+OWNER_REPORTED_ORIGIN_MAIN=1384f2bd49fed9da9fe5f0dccfbfbceb791fb51e
+OWNER_REPORTED_FAST_FORWARD=PASS
+OWNER_REPORTED_POST_SYNC_PROJECT_CLEAN=PASS
+OWNER_REPORTED_RUNNER_BLOB=ffa5667e6e0d436294cb37de845d0f1440f5766a
+OWNER_REPORTED_VALIDATOR_BLOB=a1ad9a30c0657f0912bcdebc6f39de5cf7e5de20
+OWNER_REPORTED_TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+OWNER_REPORTED_PACKAGE_BLOB=64b7ea3c562adc241311517c79cc53d966197a6e
+OWNER_REPORTED_LOCKED_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_ROUTE_SHAPE_FIXTURE=PASS
+OWNER_REPORTED_POWERSHELL_AST_PARSE=PASS
+OWNER_REPORTED_OFFLINE_FIXTURES=PASS
+OWNER_REPORTED_NETWORK_REQUESTS=0
+OWNER_REPORTED_NETWORK_CHANGED=NO
+ROUTE_SNAPSHOT_COMPAT_REPAIR=PASS
+OWNER_REPORTED_C2B_PROFILE_STORE_BASELINE=PASS
+OWNER_REPORTED_C2B_FAILED_PHASE=CREATE_OWNER_RUNTIME
+OWNER_REPORTED_C2B_FAILURE_CLASS=RuntimeException
+OWNER_REPORTED_C2B_FAILURE_CODE=OWNER_ACL_INHERITANCE_ENABLED
+OWNER_REPORTED_LOCAL_RUNTIME_CLEANUP=PASS
+OWNER_REPORTED_UI_PROFILE_REMOVED=NO_ACK
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+OWNER_REPORTED_C2B_ACTUAL_ELAPSED=00:00:00.9575943
+OWNER_REPORTED_TIME_OVERRUN=NO
+NETWORK_OR_UI_MUTATION_PROVEN=NO
+ACL_REQUIREMENT_RELAXATION_AUTHORIZED=NO
+NEXT_GATE=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2
+PROVENANCE=OWNER_REPORTED_PLUS_DIRECT_GITHUB_SOURCE_READBACK
+```
+
+Reviewer conclusion:
+- The route-object compatibility repair is accepted: target-host offline validation proved the new regression fixture, syntax, and all existing no-network/no-DPAPI guards.
+- The repaired runner passed the former network-state failure point and then failed at Owner runtime ACL creation because read-back reported inheritance enabled.
+- Cleanup passed and the UI checkpoint never began. The failure is isolated to ACL application/read-back behavior.
+- Owner-only ACL protection remains a hard security invariant. D2 compares two bounded ACL application methods on temporary directories and cleans them before any C2B retry.

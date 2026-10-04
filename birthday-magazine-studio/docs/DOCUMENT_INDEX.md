@@ -82,7 +82,8 @@
 | `OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier 1+1+12 lab-first direction | **SUPERSEDED BEFORE EXECUTION** |
 | `G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier design lab Gate | **SUPERSEDED BEFORE EXECUTION** |
 | `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md` | Owner-approved template/source-first direction | **CURRENT OWNER DECISION** |
-| `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` | Read-only template + interaction source discovery | **CURRENT GATE — READY FOR RESEARCH** |
+| `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` | Read-only source discovery; interaction + P1-P12 reopened by Owner | **CURRENT GATE — RESEARCH REOPENED** |
+| `OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md` | Owner reset: only magazine-web-viewer accepted; Focusly reference-only; interaction and P1-P12 reopened | **CURRENT OWNER DECISION** |
 | `REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md` | Shared-monorepo preflight correction after Executor RETURN | **CURRENT PREFLIGHT INTERPRETATION — PROJECT-SCOPED** |
 | `REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md` | Source-baseline reconciliation closure | **PREFLIGHT PASS — remains accepted** |
 | `REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` | Earlier takeover/source-baseline reconciliation | Historical preflight RETURN; superseded by PASS |
