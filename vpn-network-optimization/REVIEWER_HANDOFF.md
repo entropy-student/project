@@ -108,6 +108,8 @@ Fresh Owner authorization for exactly one bounded R3R2 canary was granted after 
 
 A subsequent Owner-local launch attempt was reconciled as a wrapper-only failure before any consequential R3R2 action started. Read-only evidence showed WireGuard/Clash healthy, system proxy OFF, TUN 0, no active/persistent HY2 /32 route, zero C2C runtime/profile residue, and zero C2C marker files in the Clash profile store. The single authorization therefore remains valid and unconsumed.
 
+A second parent-safe launch attempt also failed before any consequential action: native `git -C` received a mojibaked Chinese worktree path and could not resolve the repository. The parent PowerShell remained open; source locking, runner execution, Secret Prepare, profile import, route mutation, and real requests did not start. Authorization remains valid and unconsumed.
+
 ### Authorized R3R2 maximum endpoint
 
 ```text
