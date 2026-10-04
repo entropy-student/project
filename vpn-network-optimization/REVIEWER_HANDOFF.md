@@ -103,10 +103,10 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=EXECUTOR_REPAIR_R3_ASSIGNED_OFFLINE
+STATE=AWAITING_OWNER_LIVE_PREREQUISITES
 PREVIOUS_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Codex R3 offline repair of remote drift proof, profile content-integrity proof, and StrictMode recovery-cleanup classification only; no live VPS/Owner mutation.
+MAX_ENDPOINT_THIS_ROUND=No live execution yet. Offline G4-B runner/package is Reviewer PASS; wait for Owner-selected second-failure-domain recovery destination and explicit G4-B live authorization.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
@@ -119,7 +119,7 @@ REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_PERSISTENT_THREE_ROLE_READINESS_GATE.md + do
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
-G4-B0 is formally closed PASS. R2 successfully repaired the five R1 defects, but Reviewer source inspection found three remaining gaps: remote unrelated-drift evidence, profile content-integrity strength, and one StrictMode cleanup masking case. R3 offline repair is assigned to Codex. No persistent VPS/Windows mutation is authorized.
+G4-B0 is formally closed PASS. The G4-B offline live-runner package is now Reviewer PASS after R3. No persistent VPS/Windows mutation has occurred yet. Live G4-B is blocked only on the Owner-selected second-failure-domain recovery destination and explicit consequential authorization.
 
 Current G4-B offline Executor identity:
 
@@ -187,11 +187,20 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Codex executes `G4B_OFFLINE_LIVE_RUNNER_REPAIR_R3` only. Reviewer will inspect the three narrow repairs and all preserved R1/R2 regressions before any live G4-B authorization discussion.
+Collect the two Owner live prerequisites for `G4B_PERSISTENT_THREE_ROLE_READINESS`:
+1. approve/name a second-failure-domain destination for the encrypted portable recovery artifact; and
+2. explicitly authorize the live G4-B consequential deployment.
+
+After both are present, Reviewer may open the bounded live G4-B execution round using the reviewed runner.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE. The current R3 round remains offline source/fixture repair only.
+Required before live G4-B:
+1. choose an Owner-controlled second-failure-domain storage location distinct from both the SFO3 VPS
+   and the current Windows local disk (for example a synced cloud-drive folder or external drive);
+2. explicitly authorize the live G4-B Gate.
+
+No Secret value should be sent in chat.
 
 ## EVIDENCE_POINTERS
 
