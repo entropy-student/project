@@ -224,3 +224,27 @@ Rationale:
 **Execution state:** Authorization is granted; no R3R2 execution result has yet been recorded or accepted. A failed or ambiguous consequential attempt requires reconciliation and fresh authorization before another real attempt.
 
 **Reconciliation:** `REVIEWER_HANDOFF.md` is the canonical current dashboard and has been updated to `AUTHORIZED_NOT_EXECUTED`. The earlier transition snapshot remains a historical snapshot of the state at its creation time.
+
+
+## 2026-10-04 — Freeze v1 target role order and move G4 to validation
+
+**Owner target decision:** The v1 role order is now fixed for validation as:
+
+1. `HY2-SFO3 = PRIMARY`
+2. `WG-BASELINE = BACKUP_1`
+3. `REALITY-SFO3 = BACKUP_2`
+
+No additional protocol shopping is planned for v1 unless later evidence proves a capability gap.
+
+**Reviewer interpretation:** This is an Owner product/runtime target decision, not yet a technical production-role PASS. Existing evidence supports the direction: HY2 won the accepted 60/60 same-window comparison and passed R3R2 real Clash lifecycle validation; WireGuard remains the proven production/rollback baseline; REALITY is the validated TCP/443 compatibility fallback. G4 now validates this selected ordering rather than reopening the candidate set.
+
+**Current limitation:** The accepted REALITY public TCP/443 canary was temporary and fully cleaned. Therefore a persistent REALITY backup service/profile does not yet exist, and the three-role production layout is not yet durably ready.
+
+**G4 split:** 
+- G4-A: role contract + offline validation plan/package.
+- G4-B: persistent three-role readiness, separately consequential and Owner-authorized.
+- G4-C: peak-hour + representative real-workload validation, separately authorized after G4-B PASS.
+
+**Application takeover policy:** System proxy is tested before TUN because it is the smaller mutation. TUN remains OFF unless a later explicit Gate proves system-proxy coverage is insufficient and separately authorizes TUN compatibility work.
+
+**Persistent role change boundary:** HY2 is not promoted to the system-wide persistent production default merely by this decision. That promotion waits for G4 acceptance and final v1 sealing.
