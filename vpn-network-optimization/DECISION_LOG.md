@@ -389,3 +389,19 @@ digest.
 
 **Next:** `G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5`. No Owner action or real Baidu login is
 required during R5.
+
+
+## 2026-10-05 — Release archive hash is the Baidu CLI trust anchor
+
+**Decision:** For the pinned BaiduPCS-Go v4.0.2 Windows x64 asset, the authoritative GitHub Release
+asset SHA-256 plus constrained extraction is sufficient supply-chain identity. A separately
+pre-pinned inner executable digest is not required.
+
+**Reason:** the full archive SHA-256 authenticates every contained byte. The runner verifies that
+digest before extraction and accepts exactly one bounded, traversal-safe `BaiduPCS-Go.exe` entry.
+
+**Rejected shortcut:** GitHub Actions artifact executable hashes are not treated as the release
+binary hash because the upstream CI and release build paths are not proven byte-identical.
+
+**Remaining repair:** use the verified downloaded local archive path for extraction and align the
+production local pending basename with the exact remote pending object basename.
