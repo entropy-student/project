@@ -1,4 +1,27 @@
-## Current execution status — G3C C2C Secret scan readability diagnostic D8
+## Current execution status — G3C C2C Clash root lock metadata diagnostic D8R1
+
+```text
+GATE_ID=G3C_C2C_CLASH_ROOT_LOCK_METADATA_DIAGNOSTIC_D8R1
+EXECUTOR_ROLE=NO_EXECUTION_PENDING_OWNER_DIAGNOSTIC
+PREVIOUS_RESULT=PASS_D8_STABLE_ROOT_LOCK_READ_FAILURE
+OWNER_LOCAL_D8R1_REQUIRED=YES
+DIAGNOSTIC_BLOB=bf92a21ccf1254be86e50823ee701f53c5784107
+SCANNER_REPAIR_AUTHORIZED=NO
+SECRET_HELPER_EXECUTION_AUTHORIZED=NO
+DPAPI_ACCESS_AUTHORIZED=NO
+FILE_CONTENT_READ_AUTHORIZED=NO
+NETWORK_REQUESTS_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+No action. Wait for Owner D8R1 output. Do not patch the scanner before the lock-file metadata invariant is proven.
+
+
+
+## Historical execution status — G3C C2C Secret scan readability diagnostic D8
 
 ```text
 GATE_ID=G3C_C2C_SECRET_SCAN_READABILITY_DIAGNOSTIC_D8
