@@ -103,12 +103,12 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=EXECUTOR_ASSIGNED_BAIDU_BACKEND_REPAIR_R5
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=20-35 minutes
+STATE=EXECUTOR_ASSIGNED_BAIDU_BACKEND_REPAIR_R5R1
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=15-30 minutes
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
 PREVIOUS_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Offline-only R5 repair of the reviewed Baidu backend; no live execution.
+MAX_ENDPOINT_THIS_ROUND=Offline-only R5R1 repair of the two confirmed Baidu backend source defects under the authoritative release-archive SHA-256 trust model; no live execution.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
@@ -128,6 +128,7 @@ Current G4-B recovery-backend Executor identity:
 ```text
 G4B_BAIDU_BACKEND_R4_GATE_BLOB=b07461b85319aaa215396a5e8d6f9fe7ea358ec8
 G4B_BAIDU_BACKEND_R5_GATE_BLOB=c3eb751396d23f36c4c2a99d4435995d4ea56877
+G4B_BAIDU_BACKEND_R5R1_GATE_BLOB=1d5ae4c7563c195ba4dab747b3b0ea8b493b5ffb
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
 REAL_BAIDU_LOGIN_OR_UPLOAD_AUTHORIZED_IN_R4=NO
@@ -199,11 +200,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Codex executes `G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5` only. Reviewer checks the narrow R5 fixes before any live G4-B execution.
+Codex executes `G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5R1` only. It fixes the local-archive extraction path and production pending-object basename, preserves the official archive SHA-256 trust anchor, runs R1-R4 regressions plus R5R1 fixtures, and stops at Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE during R5 offline repair.
+NONE during R5R1 offline repair.
 
 ## EVIDENCE_POINTERS
 
