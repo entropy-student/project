@@ -19,7 +19,10 @@ foreach($path in @($templatePath,$gatePath,$runnerPath)){
 }
 
 $templateText = [IO.File]::ReadAllText($templatePath,[Text.Encoding]::UTF8)
-$cfg = ConvertFrom-Json -InputObject $templateText -AsHashtable -ErrorAction Stop
+Assert-G4B0 (([regex]::Matches($templateText,[regex]::Escape('__LOCAL_PROXY_PORT__'))).Count -eq 1) 'G4B0_LOCAL_PROXY_PORT_PLACEHOLDER_INVALID'
+$parseText = $templateText.Replace('__LOCAL_PROXY_PORT__','27990')
+$cfg = ConvertFrom-Json -InputObject $parseText -AsHashtable -ErrorAction Stop
+Assert-G4B0 ($cfg['socks-port'] -eq 27990) 'G4B0_SOCKS_PORT_RENDER_INVALID'
 
 Assert-G4B0 ($cfg['allow-lan'] -eq $false) 'G4B0_ALLOW_LAN_INVALID'
 Assert-G4B0 ($cfg['bind-address'] -ceq '127.0.0.1') 'G4B0_BIND_ADDRESS_INVALID'
