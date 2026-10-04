@@ -6107,3 +6107,43 @@ Reviewer note:
 - The R3R2 runner is live and waiting at the first Owner UI acknowledgement.
 - The real Secret has been used only inside the reviewed Owner-local protected runtime YAML; no route or real canary request has occurred yet.
 - From this point forward the single R3R2 authorization is consumed. If the runner fails, becomes ambiguous, or the PowerShell/session is interrupted, do not rerun; reconcile current profile/runtime/route/Secret state first.
+
+
+## Reviewer acceptance — R3R2 real HY2-in-Clash canary — 2026-10-04
+
+```text
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+C2C_IMPORT_READBACK=PASS
+C2C_TEMP_OUTER_ROUTE=PASS
+C2C_OPENAI_CURL_EXIT=0
+C2C_OPENAI_HTTP_STATUS=401
+C2C_OPENAI_PROXY_USED=1
+C2C_PUBLIC_EXIT=EXPECTED_SFO3
+REAL_CANARY_REQUEST_COUNT=2
+C2C_BOUNDED_PROXY_PROBE=PASS
+REAL_HY2_IN_CLASH_CANARY=PASS
+C2C_TEMP_OUTER_ROUTE_REMOVED=YES
+CLASH_PROFILE_STORE_POSTREMOVE=PASS
+POST_C2C_NETWORK_READBACK=PASS
+FINAL_C2C_TEMP_ROUTE_ABSENT=YES
+FINAL_CLASH_PROFILE_STORE_BASELINE=RESTORED
+FINAL_PRODUCTION_WIREGUARD=RESTORED
+FINAL_SYSTEM_PROXY=OFF
+FINAL_TUN=OFF
+FINAL_ROUTE_SNAPSHOT=RESTORED
+C2C_CLEANUP=PASS
+ACTUAL_ELAPSED=00:11:59.9548921
+TIME_OVERRUN=NO
+C2C_OWNER_CHECKPOINT=COMPLETE
+R3R2_CHILD_EXIT=0
+R3R2_PARENT_RESULT=PASS_CANDIDATE
+REVIEWER_RESULT=PASS_G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
+NEXT_STAGE=G4_PEAK_HOUR_AND_REAL_WORKLOAD_FINAL_VALIDATION
+STOP_AT_REVIEWER=YES
+```
+
+Reviewer conclusion:
+- The bounded R3R2 real-connectivity canary met its required request and exit-path checks.
+- Final cleanup/read-back restored the accepted baseline.
+- R3R2 is formally PASS. G4 is not authorized by this acceptance.
