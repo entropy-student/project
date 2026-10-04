@@ -1,8 +1,8 @@
 # Birthday Magazine Studio — MVP Product Contract
 
-> Status: FROZEN FOR G2B  
-> Date: 2026-09-27  
-> Authority: Owner-approved G2A2 product contract  
+> Status: FROZEN MVP CONTRACT — OWNER FLOW UPDATE 2026-10-04  
+> Date: 2026-10-04  
+> Authority: Owner-approved G2A2 product contract + Owner pre-payment full-intake flow decision  
 > Parent truth: ../REVIEWER_HANDOFF.md
 
 ## 1. Offer
@@ -16,45 +16,60 @@
 - Customer-facing promise: upload photos + answer a few good questions → receive a polished, story-led birthday magazine without Canva, layout work or designer back-and-forth.
 - AI is production infrastructure, not the primary customer-facing claim.
 
-## 2. Free pre-payment experience
+## 2. Free Preview + route into the core function
 
-Inputs:
+The homepage and the free Preview are discovery/activation surfaces, not the full intake.
+
+Free Preview inputs:
 - recipient name;
 - age / birthday;
 - style preset;
 - optional **one** local cover photo.
 
-Output:
+Free Preview output:
 - immediate cover preview;
 - one sample interior spread.
 
-Hard boundary:
-- selected photo remains browser-local;
-- no pre-payment server upload for the preview image;
+Free Preview hard boundary:
+- the optional Preview photo remains browser-local;
+- **0 server photo upload** from the free Preview itself;
 - 0 LLM;
 - 0 vision API;
 - 0 image-generation API;
-- no full-resolution export from the free preview.
+- no full-resolution export.
 
-The free Activation target is:
+The free Activation target remains:
 > “This already looks like their magazine.”
 
-## 3. Account / private workspace
+After the user understands the product, both the homepage entry and free Preview CTA may route into the **core function page** for the complete pre-payment intake.
 
-MVP requires an **authenticated customer account**.
+## 3. Pre-payment draft, checkout, account / private workspace
+
+The complete intake happens **before payment**, but production generation happens **only after payment**.
 
 Product UX requirement:
 - do not force a separate registration page before checkout;
-- checkout email should create or attach the WooCommerce customer account/workspace;
-- order, intake, proof/revision and final download are bound to the authenticated customer + WooCommerce order.
+- the core function page may create a temporary pre-payment draft for full intake data and uploaded photos;
+- the temporary draft must not itself grant paid entitlement or trigger production generation;
+- after the user submits the complete intake, route to WooCommerce checkout;
+- checkout email creates or attaches the WooCommerce customer account/workspace;
+- successful paid entitlement binds/adopts the submitted intake draft to the canonical WooCommerce order/customer;
+- proof/revision/final download remain inside the authenticated private workspace.
+
+Pre-payment draft requirements:
+- exact draft/session identity must be server-generated and unguessable;
+- draft access must be bounded to the submitting browser/session before checkout;
+- no model/provider generation before paid entitlement;
+- abandoned/unpaid drafts must have automatic short-lived retention and deletion; exact TTL is deferred to the implementation Gate and must be disclosed to the buyer;
+- no ordinary analytics/advertising system receives source photos or private answers.
 
 Authentication implementation preference:
 1. passwordless/magic-link if later proven feasible without unacceptable paid/vendor dependency;
 2. otherwise standard WooCommerce email/password setup.
 
-Guest/no-account private fulfillment is out of MVP scope.
+Guest/no-account **private fulfillment** remains out of MVP scope; an anonymous temporary pre-payment draft is not fulfillment authority.
 
-## 4. Paid intake
+## 4. Pre-payment full intake
 
 ### Required factual fields
 - recipient name;
@@ -110,12 +125,22 @@ Guidance:
 - one must-include phrase/quote.
 
 ### Incomplete intake behavior
-Generation must not start until:
-- required factual fields are complete;
-- six required prompts are complete;
-- at least 12 valid source photos exist.
+The user may save/progress through the core function page before checkout, but **submission to payment requires**:
+- required factual fields complete;
+- six required prompts complete;
+- at least 12 valid source photos present.
 
-Incomplete intake stays editable inside the private workspace.
+An incomplete intake remains an editable temporary pre-payment draft and must not start generation.
+
+### Submit -> payment boundary
+After complete intake validation:
+1. user presses **Submit / Continue to payment**;
+2. the server freezes a versioned intake snapshot for checkout correlation;
+3. WooCommerce checkout begins;
+4. payment success binds that exact intake snapshot to the canonical order/customer;
+5. only then may one canonical generation-ready job be created.
+
+A failed/cancelled payment does not generate the magazine and does not create a second intake snapshot unless the user edits and resubmits.
 
 ## 5. Visual system
 
@@ -319,14 +344,18 @@ to ordinary analytics/advertising systems.
 
 ## 11. Payment/generation boundary
 
+Canonical customer flow:
+> **Homepage -> Free Preview -> homepage/Preview CTA -> Core function page -> full photo + answer intake -> Submit -> WooCommerce payment -> automatic generation -> complete private magazine viewer/proof**
+
 MVP production generation may start only when:
+- a complete, server-validated pre-payment intake snapshot exists;
 - WooCommerce/server-side paid entitlement is confirmed;
-- required intake is complete;
+- that exact intake snapshot is bound to the paid order/customer;
 - no active canonical generation job already exists for that order.
 
-One paid order → at most one active canonical generation job.
+One paid order -> at most one active canonical generation job.
 
-Duplicate refresh/callback/job dispatch must not duplicate model spend.
+Duplicate refresh/callback/job dispatch must not duplicate model spend. Payment failure/cancellation must leave generation at 0.
 
 ## 12. G2B implementation invariants
 
@@ -345,3 +374,7 @@ G2B may choose technical implementation details, but it may not change:
 - 72h final PDF retention.
 
 Any need to change these returns to Reviewer/Owner instead of being silently invented during implementation.
+
+## 13. Owner flow update — 2026-10-04
+
+The earlier wording “Paid intake” is superseded. Full photos and answers are now gathered **before checkout** on the dedicated core function page. Payment remains the boundary that authorizes generation, not the boundary that begins intake.
