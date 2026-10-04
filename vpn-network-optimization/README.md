@@ -83,7 +83,7 @@ G3-B 迁移包 D1-D3（离线）                    ✅ PASS
 G3-C 手动控制 / Synthetic UI                  ✅ PASS
 G3-C C2C 包 + Secret scanner 修复             ✅ PASS
 G3-C Secret Prepare 真实 Owner 主机复验       ✅ PASS
-G3-C 真实 HY2-in-Clash canary R3R2           ✅ AUTHORIZED / NOT_EXECUTED
+G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4   晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
@@ -131,7 +131,7 @@ G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 
 
 ## 当前交互目标
 
-C2B synthetic UI、C2C package、Secret scanner 修复和 R2R3V2 Owner 真实 Secret Prepare 复验均已通过。**R3R2 真实 HY2-in-Clash bounded canary 已获得一次 fresh Owner 明确授权，但尚未执行或形成已接受结果。** 下一步是按既定边界执行这一单次 canary；若本次 consequential attempt 失败或结果含糊，必须先 reconciliation，不能复用授权盲目重试。
+C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Secret Prepare 复验以及 **R3R2 真实 HY2-in-Clash bounded canary 均已正式 PASS**。R3R2 已证明真实 Clash profile 生命周期中的 HY2 鉴权/连通性，并完成临时 profile、临时 /32 路由与运行时清理；WireGuard、系统代理、TUN 和路由快照均恢复到基线。下一步是单独设计并执行 G4 晚高峰 + 代表性真实工作负载最终验收，R3R2 的一次性授权不得复用。
 
 连接连续性约束：
 - Owner 的 ChatGPT 网页和 Codex Desktop 必须始终有至少一条可用 VPN。
