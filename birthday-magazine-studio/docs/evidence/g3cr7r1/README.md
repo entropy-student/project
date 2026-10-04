@@ -86,7 +86,7 @@ All 25 current captures are under [`screenshots/`](screenshots/):
 
 ## Rollback and forbidden actions
 
-Git rollback to the accepted target-file source is `git restore --source=e71f94377d341a88ba388f2c5da153e7cd6ee8b8 -- birthday-magazine-studio/poc/g3c/preview-plugin/birthday-magazine-poc.php birthday-magazine-studio/poc/g3c/preview-plugin/preview.js birthday-magazine-studio/poc/g3c/preview-plugin/home.css birthday-magazine-studio/poc/g3c/preview-plugin/studio.css birthday-magazine-studio/poc/g3c/preview-plugin/magazine-preview.css`, then remove the four new Gate-only helper files. Runtime-only rollback additionally restores the pre-overlay PHP copy from `C:\Users\34707\AppData\Local\Temp\birthday-magazine-g3cr7r1\birthday-magazine-poc.php.before`, removes the four added runtime helper files, and deletes only local pages `1147` and `1148`; no such rollback was applied.
+Git rollback to the accepted target-file source is `git restore --source=e71f94377d341a88ba388f2c5da153e7cd6ee8b8 -- birthday-magazine-studio/poc/g3c/preview-plugin/birthday-magazine-poc.php birthday-magazine-studio/poc/g3c/preview-plugin/preview.js birthday-magazine-studio/poc/g3c/preview-plugin/home.css birthday-magazine-studio/poc/g3c/preview-plugin/studio.css birthday-magazine-studio/poc/g3c/preview-plugin/magazine-preview.css`, then remove the four new Gate-only helper files. Runtime-only rollback additionally restores the pre-overlay PHP copy from `%LOCALAPPDATA%\Temp\birthday-magazine-g3cr7r1\birthday-magazine-poc.php.before`, removes the four added runtime helper files, and deletes only local pages `1147` and `1148`; no such rollback was applied.
 
 ```text
 REAL_PAYMENTS=0
