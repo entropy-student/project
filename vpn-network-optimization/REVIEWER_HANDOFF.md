@@ -125,74 +125,79 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 - **C2C formal Reviewer disposition:** `PASS_G3C_C2C_PACKAGE_OFFLINE_VALIDATION_R1`.
 - **Locked real-canary source identities:** orchestrator `e59be99321cc98a37a80e4a747b937aaaaf5d58b`; Secret helper `cdbcd94e504ca9d7f680d30a971bea201a812c7a`; proxy probe `4e17c849dffdd410ff2c635830ce0e59cb24304e`; validator `4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9`; template `ea18bdccf8f00f2d6d705e4ba34ba57db243722a`; package doc `10518d986ab3094a4578f431301a820645d7163b`.
 - **C2C Owner checkpoint R1 wrapper result:** RETURN before Git synchronization because the Reviewer-supplied wrapper used `$dirty.Count` under `Set-StrictMode -Version Latest`. A clean Git status yields no pipeline objects, so `$dirty` becomes `$null` and `.Count` faults. Only `OWNER_RUNTIME=PASS` preceded the failure; the orchestrator did not start and no DPAPI/Secret/Clash/route/network action occurred. R1R1 changes only the wrapper cardinality checks to `@($dirty).Count` / `@($dirtyAfter).Count`; locked C2C source blobs are unchanged.
+- **C2C Owner checkpoint R1R1 result:** wrapper sync, blob lock and Owner-side offline validator all PASS, then the orchestrator returned in `PREFLIGHT` with `CLASH_LOCAL_PROXY_LISTENER_MISSING`. Cleanup/readback confirms temp route absent, WireGuard restored, system proxy OFF, TUN OFF, route snapshot restored, Secret cleanup not required, real canary not started, and no real request evidence. This is classified as a local-proxy listener-discovery precondition issue, not a HY2/auth failure.
+- **Current diagnostic hypothesis:** the orchestrator currently derives the localhost proxy port solely from Windows `ProxyServer` metadata and then requires a Clash/Mihomo listener at that exact port. With system proxy OFF, this metadata may be stale or may not correspond to Clash's actual current local listener. D4 compares registry port metadata with live Clash/Mihomo loopback listeners without reading config contents, Secrets, or sending traffic.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R1R1
+GATE_ID=G3C_C2C_LOCAL_PROXY_LISTENER_DIAGNOSTIC_D4
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=RETURN_R1_OWNER_WRAPPER_NULL_COUNT
-OWNER_C2C_AUTHORIZATION=GRANTED
-OBJECTIVE=Retry the accepted one-shot real HY2-in-Clash Owner canary with only the outer checkpoint cardinality bug repaired; C2C package source remains unchanged.
-MAX_ENDPOINT_THIS_ROUND=Owner runtime -> safe ff-only sync with null-safe Git cleanliness cardinality -> exact source identity -> owner-runtime offline validator -> C2C orchestrator -> three bounded UI acknowledgements -> exactly two proxy requests -> cleanup/readback -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=RETURN_R1R1_CLASH_LOCAL_PROXY_LISTENER_MISSING
+OBJECTIVE=Read back Windows ProxyServer port metadata and actual loopback TCP listeners owned by Clash/Mihomo to determine whether the C2C preflight is using stale proxy metadata or Clash has no live local proxy listener.
+MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> locked read-only listener diagnostic -> registry-port/live-listener comparison -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; same accepted C2C package; outer wrapper fix only.
-APPLICABLE_CRITICAL_CONSTRAINTS=PowerShell 7.6.6; Administrator=True; High integrity RID>=12288; WireGuard remains connected; system proxy OFF; TUN OFF; CurrentUser DPAPI only inside Secret helper; one temporary C2C profile; one ActiveStore /32 route; exactly two requests; no persistent route; no VPS/SSH; no REALITY; no benchmark; no G4; no persistent default change.
-ORCHESTRATOR_BLOB=e59be99321cc98a37a80e4a747b937aaaaf5d58b
-SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
-PROXY_PROBE_BLOB=4e17c849dffdd410ff2c635830ce0e59cb24304e
-VALIDATOR_BLOB=4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9
-TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
-PACKAGE_BLOB=10518d986ab3094a4578f431301a820645d7163b
-SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
-ESTIMATED_EXECUTION_TIME=10-20_minutes
+TARGET_AND_SCOPE=Real Owner Windows host; HKCU Internet Settings metadata, Clash service/processes, and local TCP listener state only.
+APPLICABLE_CRITICAL_CONSTRAINTS=No C2C retry; no DPAPI/Secret; no Clash profile/config-content read; no profile mutation; no route/proxy/TUN/WireGuard mutation; no network requests; no VPS/SSH; no G4.
+LISTENER_DIAGNOSTIC=scripts/c2c-local-proxy-listener-diagnostic.ps1
+LISTENER_DIAGNOSTIC_BLOB=3ee49e2cdaa8f6de6809341e0775cfd296da92ec
+SPECIALIST_RULES=11B_TARGET_HOST
+ESTIMATED_EXECUTION_TIME=2-5_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### PREFLIGHT
+### REQUIRED_EVIDENCE
 
-1. Use the real Owner Windows host in elevated PowerShell 7.6.6.
-2. Capture checkpoint start before Git synchronization.
-3. Require project scope clean using null-safe cardinality checks `@($dirty).Count` and `@($dirtyAfter).Count`; fetch canonical `origin/main`; prove ancestor; update ff-only.
-4. Verify the same six locked blobs.
-5. Run the Owner-side offline validator first; only on PASS run the orchestrator exactly once.
-6. Do not manually invoke the Secret helper or proxy probe.
-
-### OWNER UI CHECKPOINTS
-
-Unchanged from R1: perform only the three UI steps printed by the orchestrator.
+- Owner PowerShell 7.6.6/Admin/High runtime;
+- safe ff-only sync and project clean;
+- exact diagnostic blob;
+- system proxy enable flag;
+- registry proxy port count/ports only;
+- Clash Verge service state;
+- Clash/Mihomo process count;
+- live loopback listener count and `process|address|port` tuples;
+- listener count/owner at any registry-derived port;
+- registry/live-listener intersection count;
+- `C2C_LOCAL_PROXY_LISTENER_DIAGNOSTIC=PASS`;
+- `DPAPI_UNPROTECT=NO`;
+- `REAL_SECRET_READ=NO`;
+- `CLASH_PROFILE_MUTATION=NO`;
+- `NETWORK_REQUESTS=0`;
+- `NETWORK_CHANGED=NO`;
+- `SECRET_VALUES_EMITTED=0`;
+- complete timing.
 
 ### ACCEPTANCE_CRITERIA
 
-Unchanged from R1: complete real HY2 proof, exactly two requests, full profile/Secret/route/network cleanup, and `C2C_OWNER_CHECKPOINT=COMPLETE`.
+PASS_CANDIDATE requires a complete read-only comparison. If a live Clash/Mihomo loopback listener exists on a different port from registry metadata, classify the current orchestrator port resolver as stale-metadata incompatible. If no live local proxy listener exists at all, classify that separately and do not patch the resolver until Reviewer understands why.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-R1 caused no state change. R1R1 retains WireGuard as continuity path and the accepted orchestrator cleanup behavior. On any real-canary failure after import, do not rerun; return the complete non-secret output for Reviewer.
+Read-only Gate; no rollback should be necessary.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the corrected Reviewer-supplied R1R1 checkpoint. Follow only orchestrator prompts.
+Run the Reviewer-supplied atomic D4 checkpoint and return complete non-secret output.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action during Owner canary.
+No Executor action. Do not rerun C2C or patch the resolver before D4 evidence.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-NONE until Owner returns complete output.
+NONE until Owner returns D4 output.
 
 ## NEXT_STEP
 
-Owner reruns the corrected outer checkpoint. Reviewer then accepts or returns C2C before G4.
+Owner runs D4. Reviewer then either repairs only local-proxy discovery or investigates why Clash has no listener; no real C2C retry before that decision.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the corrected R1R1 atomic checkpoint.
+Run the D4 read-only listener diagnostic checkpoint.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No execution while Owner canary is active.
+No action while D4 is pending.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
