@@ -103,11 +103,15 @@ The live implementation must correlate server and client material without emitti
 
 ## 5. Recovery model
 
-### First recovery copy
+### Recovery artifacts and ordering
 
-A protected Owner-local encrypted recovery bundle may be created under the existing project recovery root, using the same Owner-bound protection model already validated for HY2.
+The Owner-local DPAPI CurrentUser artifact is the first, profile-bound recovery copy only. It is not portable and is **not sufficient as sole disaster recovery**.
 
-This is **not sufficient as sole disaster recovery**.
+The second copy is a machine-independent authenticated encrypted `VPNG4BP1` artifact in the Owner-approved second failure domain. Its binary envelope is versioned and strictly parsed; it uses an Owner-entered hidden passphrase, PBKDF2-HMAC-SHA256 with a random 16-byte salt and 600,000 iterations, and AES-256-GCM with a random 12-byte nonce and 16-byte tag. The passphrase and plaintext are handled in memory only; neither values nor hashes are recorded.
+
+Both recovery artifacts are created as `pending` and round-trip validated before persistent remote mutation. They are promoted to final names only after service, profile, restart, and final read-backs succeed. On failure, pending artifacts are removed only after bounded remote rollback is verified; otherwise they are retained with a non-secret reconciliation marker.
+
+The PASS_CANDIDATE path retains a non-secret Owner-local journal and the remote run-ownership state. Only exact-run rollback may remove owned objects. Journal closeout is available only after formal Reviewer PASS.
 
 ### Second failure domain
 
