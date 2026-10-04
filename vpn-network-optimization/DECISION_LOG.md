@@ -248,3 +248,14 @@ No additional protocol shopping is planned for v1 unless later evidence proves a
 **Application takeover policy:** System proxy is tested before TUN because it is the smaller mutation. TUN remains OFF unless a later explicit Gate proves system-proxy coverage is insufficient and separately authorizes TUN compatibility work.
 
 **Persistent role change boundary:** HY2 is not promoted to the system-wide persistent production default merely by this decision. That promotion waits for G4 acceptance and final v1 sealing.
+
+
+## 2026-10-04 — Insert G4-B0 Windows bypass proof before persistent three-role readiness
+
+**Decision:** Do not enter persistent G4-B yet. Insert one bounded Owner-host prerequisite Gate, `G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1`, to prove whether Mihomo `interface-name` alone can carry HY2 outer traffic over the physical interface while WireGuard remains connected and no exact VPS `/32` bypass route exists.
+
+**Why:** The accepted evidence currently disagrees at the architecture boundary if treated as already solved: G3-A explicitly plans an exact VPS public-IP `/32` physical-egress route for HY2/REALITY fallback roles; G3-C C1 labels Windows `interface-name` bypass as unproven; and R3R2 achieved its real HY2 PASS with a temporary ActiveStore-only `/32` route. Therefore the persistent three-role template must not silently assume `interface-name` is sufficient.
+
+**Bound:** G4-B0 is Windows-local only, uses the existing accepted HY2 server, creates no exact VPS `/32` route, performs no SSH/VPS/REALITY/persistent-profile action, sends at most two bounded real requests, cleans its temporary runtime, and stops at Reviewer.
+
+**Consequence:** If G4-B0 passes, the v1 persistent Clash profile may use `interface-name` without adding a persistent VPS route. If it returns because interface binding is insufficient, Reviewer will design an explicit route lifecycle before G4-B rather than guess. This decision does not authorize the canary or any persistent G4-B write.
