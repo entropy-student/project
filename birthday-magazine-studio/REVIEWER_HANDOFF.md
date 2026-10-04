@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=OWNER_HOMEPAGE_VISUAL_CONFIRMATION
+CURRENT_GATE=G3CR6R3D2R3_OWNER_RUNTIME_MOTION_DIAGNOSTIC
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -47,8 +47,9 @@ D2_TECHNICAL_REVIEW=PASS
 D2_VISUAL_FIDELITY_REVIEW=PASS
 D2_VISUAL_REVIEW_TRANSPORT=OWNER_MANUAL_IMAGE_UPLOAD
 D2R1_OWNER_VISUAL_RELAY=FULFILLED
-D2R2_REVIEWER_DECISION=PASS
-OWNER_HOMEPAGE_VISUAL_FREEZE=PENDING
+D2R2_REVIEWER_DECISION=PASS_STATIC_VISUAL_AND_TECHNICAL
+OWNER_RUNTIME_MOTION=UNVERIFIED_AFTER_OWNER_NO_MOTION_REPORT
+OWNER_HOMEPAGE_VISUAL_FREEZE=BLOCKED_ON_OWNER_RUNTIME_MOTION_DIAGNOSTIC
 D2_FORMAL_VISUAL_DECISION=PASS_G3CR6R3D2R2
 G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
 CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS
@@ -102,40 +103,34 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`OWNER_HOMEPAGE_VISUAL_CONFIRMATION`
+`G3CR6R3D2R3_OWNER_RUNTIME_MOTION_DIAGNOSTIC`
 
-Reviewer has formally PASSed `G3CR6R3D2R2_VISUAL_POLISH` on candidate `8d03464dbf1678468a289e4676ba975745bcb94d`.
+New Owner runtime evidence supersedes the prior assumption that motion is visible in the Owner's actual browser.
 
-Accepted:
-- Focusly-inspired homepage technical implementation;
-- desktop 1440 + mobile 375 visual quality;
-- large editorial Samples / Selected Work;
-- materially diverse major-section imagery;
-- mobile header and page rhythm;
-- motion, reduced-motion and no-JS fallback;
-- current upload/Preview KEEP-AS-IS boundary;
-- Woo/account/payment/private-workspace freeze;
-- R2 rollback to accepted D2;
-- five generated static marketing assets with provenance.
+Preserved:
+- D2R2 static visual quality PASS;
+- D2R2 technical/source scope PASS;
+- Preview/Woo/account/payment/private-workspace freeze PASS;
+- current visual assets/layout PASS.
 
-Current checkpoint:
-- Owner decides whether the current homepage visual direction is acceptable for this stage.
+Returned for reconciliation:
+- Owner reports the retained local homepage is fully static.
+- Prior automated browser evidence only proves motion in its own normal-motion context.
+- Current source intentionally disables motion whenever the browser reports `prefers-reduced-motion: reduce`.
 
-No implementation or merge is authorized by this checkpoint.
+Current Gate is read-only diagnosis only:
+1. read Owner-browser reduced-motion preference;
+2. confirm `home-motion.js` is present;
+3. confirm `bms-motion-on` class/execution state;
+4. classify root cause before any mutation.
 
-Current Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR6R3D2R2_PASS.md`
+No redesign, runtime restart, CSS/JS patch, image generation, payment action or PR merge is authorized.
 
-Current Owner checkpoint:
-- `docs/OWNER_CHECKPOINT_G3CR6R3D2_HOMEPAGE_VISUAL_CONFIRMATION.md`
+Current Gate:
+- `docs/G3CR6R3D2R3_OWNER_RUNTIME_MOTION_DIAGNOSTIC.md`
 
-Still unresolved and separate:
-- core Aha interaction;
-- P1-P12 magazine visual system;
-- Privacy Policy publication;
-- PR #64 merge;
-- production deployment;
-- real-money/Live payment.
+Current reconciliation decision:
+- `docs/REVIEWER_DECISION_G3CR6R3D2R2_RETURN_OWNER_RUNTIME_MOTION.md`
 
 ## CRITICAL_CONSTRAINTS
 
@@ -198,19 +193,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Owner reviews the current R2 homepage and chooses **accept for this stage** or requests specific visual changes.
-2. If accepted, Reviewer records `OWNER_HOMEPAGE_VISUAL_FREEZE=PASS`.
-3. After that confirmation, resume the still-unresolved visual/product work outside the homepage; current upload/Preview interaction remains on hold unless Owner explicitly reopens it.
-4. PR #64 remains unmerged until a later reviewed integration/merge Gate.
+1. Owner runs one read-only browser-console diagnostic on `http://127.0.0.1:8189/`.
+2. Reviewer classifies the failure as reduced-motion suppression, script load/execution failure, perceptibility issue, or UNKNOWN.
+3. Only after classification may Reviewer open a bounded repair Gate.
+4. Owner homepage visual freeze remains blocked until visible motion is reconciled.
 
 ## OWNER_ACTION_REQUIRED
 
-Choose one:
-
-1. **Accept current homepage visual direction for this stage**, or
-2. state the specific homepage visual changes still wanted.
-
-No other Owner action is required now.
+Run the exact read-only Console diagnostic from `docs/G3CR6R3D2R3_OWNER_RUNTIME_MOTION_DIAGNOSTIC.md` and paste the returned object into ChatGPT.
 
 ## EVIDENCE_POINTERS
 
