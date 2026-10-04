@@ -1,4 +1,32 @@
-## Current execution status — G3C C2B subdir Git sync + diagnostic D1R3
+## Current execution status — G3C C2B route snapshot compatibility repair R1
+
+```text
+GATE_ID=G3C_C2B_ROUTE_SNAPSHOT_COMPAT_REPAIR_R1
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=PASS_DIAGNOSTIC_D1_ROOT_CAUSE_CONFIRMED
+OWNER_LOCAL_VALIDATION_CANARY_REQUIRED=YES
+RUNNER_BLOB=ffa5667e6e0d436294cb37de845d0f1440f5766a
+VALIDATOR_BLOB=a1ad9a30c0657f0912bcdebc6f39de5cf7e5de20
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+PACKAGE_BLOB=64b7ea3c562adc241311517c79cc53d966197a6e
+VALIDATOR_BEFORE_RUNNER=YES
+REAL_HY2_TRAFFIC_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not independently run C2B.
+2. Wait for Owner-local repair-validation/canary output.
+3. Persist bounded source identity, validator, canary, cleanup, and timing evidence.
+4. Any validator failure blocks runner acceptance.
+5. Do not enter C2C.
+6. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B subdir Git sync + diagnostic D1R3
 
 ```text
 GATE_ID=G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3
