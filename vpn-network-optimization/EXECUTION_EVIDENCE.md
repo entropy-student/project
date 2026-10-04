@@ -4256,3 +4256,31 @@ Reviewer conclusion:
 - The D1R1 checkpoint stopped before fetch/update because Reviewer had incorrectly treated the `VPS搭建` subdirectory as the Git top-level.
 - This RETURN is accepted as a checkpoint-path defect, not proof of local worktree divergence.
 - D1R2 removes the hardcoded-root assumption. It resolves the Git root and project prefix from the already-proven tracked C2B runner path, then permits only clean + ancestor-proven + ff-only synchronization before D1.
+
+
+## Reviewer reconciliation — D1R2 Git top-level path decoding failure — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_OWNER_DYNAMIC_ROOT_SYNC_AND_DIAGNOSTIC_D1R2
+OWNER_REPORTED_RESULT=RETURN
+OWNER_REPORTED_OWNER_RUNTIME=PASS
+OWNER_REPORTED_GIT_ROOT_RENDERED=C:/Users/34707/.codex/worktrees/g2b-runner-binding-cleanup/VPS_MOJIBAKE
+OWNER_REPORTED_FAILURE_CODE=RUNNER_OUTSIDE_GIT_ROOT
+OWNER_REPORTED_ROUND_STARTED_AT=2026-10-04T01:53:06.1244621+00:00
+OWNER_REPORTED_ROUND_FINISHED_AT=2026-10-04T01:53:06.2641726+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:00.1397105
+OWNER_REPORTED_C2B_RUNNER_EXECUTED=NO
+OWNER_REPORTED_NETWORK_MUTATION=NONE
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+FETCH_OR_FAST_FORWARD_STARTED=NO
+DIAGNOSTIC_EXECUTED=NO
+REVIEWER_CLASSIFICATION=NATIVE_GIT_PATH_OUTPUT_DECODING_MISMATCH
+REPOSITORY_TOPOLOGY_DRIFT_PROVEN=NO
+NEXT_GATE=G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3
+PROVENANCE=OWNER_REPORTED
+```
+
+Reviewer conclusion:
+- The Git top-level output contained mojibake for the Chinese `VPS搭建` path component. Comparing that decoded native-output string to the correct .NET Unicode runner path produced a false outside-root classification.
+- The Gate stopped before fetch/update and before D1/C2B/network action.
+- D1R3 removes the entire failure mode: Git operates from the already-known runner directory; no Git-emitted filesystem path is decoded or reused as a Windows locator.
