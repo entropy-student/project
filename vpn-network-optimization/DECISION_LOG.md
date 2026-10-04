@@ -184,3 +184,30 @@ Bounds:
 Rationale:
 - C2B already proved Clash UI/profile lifecycle semantics without real credentials or traffic.
 - C2C is the next required proof for real HY2 authentication/connectivity inside Clash while preserving immediate rollback.
+
+
+## 2026-10-04 — Accept bounded Secret scanner repair and real-host Prepare verification
+
+**Decision:** Accept the R2R3 bounded Clash root-lock scanner repair and R2R3V2 real-host Secret Prepare verification as PASS.
+
+**Why:** D7/D8/D8R1 proved the blocker was transient contention on one zero-byte, non-reparse, root-level Clash `.lock`, not DPAPI/recovery corruption or project-runtime residue. The accepted repair bypasses only that exact metadata class after an actual read exception in the Clash-app scan; all other unreadable files remain fail-closed, and the project-runtime scan has no exception. Owner validation then passed Fixtures A-L, PowerShell AST, Mihomo fixture parse, and the real Owner-host Prepare/VerifyCleanup path with zero residue.
+
+**Boundary:** This decision does not authorize generic `.lock` skipping, generic unreadable-file skipping, credential rotation, Clash import, route mutation, external requests, persistent default changes, benchmarks, REALITY activation, or G4.
+
+**Accepted C2C source identities:**
+- orchestrator `4424eab2f281af6398f6d7bfbe6e326bce5f7904`
+- Secret helper `81c5a43d4a947d57e44752fd7a09c59e735748e2`
+- proxy probe `d3403cba9196b55083ff9f443e9011582ef9cc01`
+- validator `e520fa7b6c08b2e46365b55ec731a20bdb810c04`
+- template `ea18bdccf8f00f2d6d705e4ba34ba57db243722a`
+- package doc `d9e815171d8d7b00722b213b6df6d52c46f6265e`
+
+## 2026-10-04 — Require fresh Owner authorization before R3R2 real HY2-in-Clash canary
+
+**Decision:** The next real HY2-in-Clash canary is `G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2` and remains blocked on fresh explicit Owner authorization.
+
+**Why:** The previous consequential real-canary attempt did not complete. Governance does not reuse prior consequential authorization after a failed or ambiguous attempt. R2R3V2 proves the historical Secret Prepare blocker is closed, but that technical readiness does not itself authorize a new profile import, temporary route, or external requests.
+
+**Authorized scope after fresh approval:** one temporary C2C profile, WireGuard retained as rollback, one ActiveStore-only `/32` route, exactly two bounded requests through the dynamically discovered local SOCKS5 listener, then return to WireGuard, profile removal, Secret cleanup, route removal, and full readback.
+
+**Not authorized:** benchmark loops, persistent routes, persistent default changes, system proxy/TUN enablement, automatic switching, REALITY activation, VPS/SSH changes, or G4.
