@@ -24,7 +24,9 @@ G3-C Synthetic Clash UI canary C2B          PASS
 G3-C Real C2C package + scanner repair      PASS
 G3-C Secret Prepare real-host verification  PASS
 G3-C Real HY2-in-Clash canary R3R2          PASS
-G4 Peak-hour + real workload final validate PENDING
+G4-A Three-role target/offline package          PASS
+G4-B Persistent three-role readiness             AUTH_REQUIRED
+G4-C Peak-hour + real workload final validate    PENDING
 MVP v1 seal                                 PENDING
 ```
 
@@ -58,6 +60,8 @@ Windows Owner host
 - G3-B migration package D1-D3 is complete offline; fresh-target live rehearsal remains deferred.
 - G3-C synthetic manual-control/UI behavior is accepted.
 - G3-C R3R2 real HY2-in-Clash canary is formally PASS: the bounded OpenAI request used the explicit Clash proxy path, the public-exit check matched the accepted SFO3 exit, and final cleanup/read-back restored the WireGuard/network/profile baseline.
+- Owner target v1 role order is now HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, REALITY-SFO3 BACKUP_2. This order is frozen for G4 validation but is not yet a production-role PASS.
+- G4-A offline plan/package is PASS. Persistent REALITY readiness and the persistent three-role Clash profile are not yet deployed.
 
 ### Secret / recovery
 
@@ -97,31 +101,37 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=REVIEWER_STOP_AFTER_G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
-STATE=PASS
-PREVIOUS_RESULT=PASS_G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
-OBJECTIVE=Close the accepted R3R2 consequential round and stop before G4.
-MAX_ENDPOINT_THIS_ROUND=R3R2_REVIEWER_CLOSEOUT_ONLY
+GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
+STATE=OWNER_AUTHORIZATION_REQUIRED
+PREVIOUS_RESULT=PASS_G4A_THREE_ROLE_TARGET_AND_OFFLINE_PACKAGE
+OBJECTIVE=Make HY2 primary / WG backup1 / REALITY backup2 durably ready without yet enabling system-wide traffic takeover or running G4-C workloads.
+MAX_ENDPOINT_THIS_ROUND=Persistent REALITY readiness + persistent three-role Clash profile + restart/read-back + STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Durable R3R2 acceptance, current-state reconciliation, and next-stage pointer only.
-PREFLIGHT=Required R3R2 request, cleanup, rollback, and final read-back evidence inspected.
-REQUIRED_EVIDENCE=Accepted R3R2 final console evidence in EXECUTION_EVIDENCE.md.
-ACCEPTANCE_CRITERIA=Real canary PASS plus full cleanup/rollback baseline restored.
-ROLLBACK_STATUS_OR_PLAN=WireGuard baseline restored; temporary C2C profile and route absent.
-OWNER_ONLY_ACTIONS=NONE
-REVIEWER_TO_EXECUTOR_RELAY=NONE
-EXECUTOR_TO_REVIEWER_RELAY=NONE
+TARGET_AND_SCOPE=Current SFO3 VPN VPS plus current Owner Windows host; exact project-owned persistent REALITY service/config and one persistent Clash profile only.
+APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard retained as rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C; no Secret output.
+PREFLIGHT=Fresh main/source, real Owner runtime, strict SSH identity/trust, WG/HY2 health, TCP443 ownership, proxy/TUN state, Secret lifecycle/recovery boundary, Clash profile-store baseline.
+REQUIRED_EVIDENCE=Persistent REALITY service/config/restart/read-back; public TCP443 readiness; Secret recovery compatibility; three-role profile order/read-back; WG/HY2 preservation; final proxy/TUN OFF; unrelated drift none.
+ACCEPTANCE_CRITERIA=PERSISTENT_REALITY_SERVICE_READY + THREE_ROLE_CLASH_PROFILE_READY + HY2/WG preserved + restart persistence + Secret recovery + no unrelated drift.
+ROLLBACK_STATUS_OR_PLAN=Remove only new REALITY service/config/profile, restore pre-G4B TCP443/profile-store state, preserve WG/HY2 and existing recovery assets.
+OWNER_ONLY_ACTIONS=Fresh explicit authorization required for persistent public REALITY enablement, persistent REALITY Secret generation/install, and live credential-bearing Clash profile installation.
+REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_PERSISTENT_THREE_ROLE_READINESS_GATE.md + docs/G4_FINAL_THREE_ROLE_VALIDATION_PLAN.md + exact accepted G2C/R3R2 source pointers needed for implementation; no historical diagnostic replay.
+EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed proof to EXECUTION_EVIDENCE.md; mandatory stop before G4-C.
 ```
 
-R3R2 is formally closed. Its one-shot Owner authorization is consumed and must not be reused. G4 remains a separate future Gate and is not authorized by this closeout.
+The Owner has selected the target role order, but has not yet granted the separate consequential authorization required to deploy persistent REALITY or install the live credential-bearing three-role profile.
 
 ## CRITICAL_CONSTRAINTS
 
-- WireGuard remains the production/rollback baseline until a later accepted Gate changes that role.
-- G4 is separate from R3R2 and requires its own reviewed Gate before any consequential network switching or representative workload experiment.
-- System proxy/TUN/default-route persistence remain unchanged unless a later Gate explicitly authorizes them.
-- No automatic switching or persistent default-role change is accepted yet.
-- Secret values remain excluded from GitHub/chat/ordinary logs/handoff.
+- Target v1 role order is HY2 PRIMARY, WG BACKUP_1, REALITY BACKUP_2.
+- The target order is an Owner decision, not yet a technical production-role PASS.
+- WireGuard remains the current production/rollback baseline until G4 acceptance and v1 sealing.
+- Existing HY2 service must remain healthy through G4-B.
+- Persistent REALITY deployment is a new consequential public-service/Secret boundary and requires fresh Owner authorization.
+- No automatic switching.
+- G4-B ends with system proxy OFF and TUN OFF.
+- G4-C real workloads are not part of G4-B.
+- Secret values/hashes/raw credential material never enter GitHub/chat/ordinary logs/Handoff/Evidence.
+- Any failed/ambiguous live G4-B attempt is reconciled before retry.
 - G3-B fresh-target live migration rehearsal remains deferred.
 
 ## DEFAULT_EXECUTION_CHANNEL
@@ -144,18 +154,22 @@ R3R2 is formally closed. Its one-shot Owner authorization is consumed and must n
 
 ## UNRESOLVED
 
-- G4 peak-hour + representative Codex/OpenAI/image-generation workload validation remains pending.
-- Final v1 default-role selection among WireGuard/HY2/REALITY remains pending G4/final evidence.
+- Fresh Owner authorization for G4-B persistent REALITY/service/Secret/profile writes.
+- Persistent REALITY backup service does not yet exist; the accepted public REALITY canary was temporary and cleaned.
+- Persistent three-role Clash profile does not yet exist.
+- G4-C must prove how representative Codex/OpenAI/image-generation traffic actually traverses the selected Clash role; system proxy is tested before any TUN design.
+- G4-C peak-hour + representative real-workload validation remains pending.
+- Final v1 production default/control posture remains pending G4.
 - Final WireGuard routing / kill-switch policy remains pending v1 sealing.
 - G3-B fresh-target live migration rehearsal remains deferred.
 
 ## NEXT_STEP
 
-Start a new Reviewer round to design the bounded G4 peak-hour + representative real-workload final-validation Gate. Do not execute G4 as part of the R3R2 closeout.
+Obtain fresh explicit Owner authorization for the bounded `G4B_PERSISTENT_THREE_ROLE_READINESS` Gate. If authorized, prepare/execute only the persistent readiness boundary and stop at Reviewer before G4-C.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE for R3R2 closeout. A later G4 Gate may require Owner scheduling/authorization depending on its final consequential boundary.
+Authorize or decline G4-B persistent three-role readiness: persistent public REALITY service enablement, protected persistent REALITY credential generation/installation, and one persistent credential-bearing Clash profile with HY2/WG/REALITY manual order. This does not authorize system proxy/TUN activation, peak-hour testing, or G4-C real workloads.
 
 ## EVIDENCE_POINTERS
 
