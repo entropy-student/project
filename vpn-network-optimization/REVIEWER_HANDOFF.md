@@ -124,7 +124,7 @@ G4-B persistent readiness is blocked on this bypass proof. The Owner has granted
 Locked G4-B0 live identities:
 
 ```text
-G4B0_RUNNER_BLOB=0a0a03c01b4163703c5f8ca0b2a2779a718ccb48
+G4B0_RUNNER_BLOB=43221672eb90a2a58062ca4ecbd118f4ebafc866
 G4B0_TEMPLATE_BLOB=f8c637d28a35d3795c8ebaf470d50248562dbaf8
 G4B0_VALIDATOR_BLOB=bd6b400a5353c84818a918e1f6415ab3029efde4
 G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
@@ -179,11 +179,11 @@ The live runner is offline-reviewed and ready. Before child execution, the Owner
 
 ## NEXT_STEP
 
-Retry the G4-B0 parent preflight only after repairing wrapper order: safe-sync the existing project worktree first, then resolve/check the runner, lock blobs, AST-parse, validate, and execute exactly one authorized two-request bypass canary. The prior preflight did not start the child runner and did not consume authorization.
+Run an Owner-local AST-only checkpoint against the repaired runner after ff-only sync. This checkpoint must not read Secret material, start Mihomo, send requests, or mutate networking. If AST PASS, proceed to the separately invoked already-authorized G4-B0 live canary; if AST returns errors, stop at Reviewer. The prior failures did not start the child runner and did not consume authorization.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the corrected G4-B0 parent wrapper when ready. The existing one-shot authorization remains valid because the previous preflight stopped before child-runner start. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
+Run the AST-only checkpoint for the repaired G4-B0 runner. The existing one-shot live authorization remains valid and unconsumed. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
 
 ## EVIDENCE_POINTERS
 
