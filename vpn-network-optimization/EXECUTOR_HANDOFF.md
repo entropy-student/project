@@ -4,39 +4,30 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Netdisk recovery backend repair R5
+## Current execution status — G4-B Baidu Netdisk recovery backend repair R5R1
 
 ```text
-GATE_ID=G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5
+GATE_ID=G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5R1
 EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RECOVERY_BACKEND_REPAIR_AND_FIXTURE_VALIDATION
-PREVIOUS_RESULT=RETURN_G4B_BAIDU_RECOVERY_BACKEND_R4_REVIEW_DEFECTS
-R4_MAIN=79c10bf54902ce337796ba6329e7911a838b4d1c
-R5_GATE_BLOB=c3eb751396d23f36c4c2a99d4435995d4ea56877
-CURRENT_R5_GATE_DOCUMENT_BLOB=17f50135959a0a6f86b8f525f35307bf7ac6c6b4
-R5_GATE_BLOB_UPDATE=REVIEWER_COMMIT_F8F8EF94_TIMING_ONLY
+PREVIOUS_RESULT=RETURN_G4B_R5_EXECUTABLE_DIGEST_RETRIEVAL_BLOCKED_BY_CODEX_POLICY
+R5R1_GATE_BLOB=1d5ae4c7563c195ba4dab747b3b0ea8b493b5ffb
 GOVERNANCE_VERSION_CURRENT=v0.2.7
-ESTIMATED_EXECUTION_TIME=20-35 minutes
+ESTIMATED_EXECUTION_TIME=15-30 minutes
 TIMING_RECORD_REQUIRED=YES
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-ROUND_STARTED_AT=UNKNOWN
-ROUND_FINISHED_AT=UNKNOWN
-ACTUAL_ELAPSED=UNKNOWN
-TIME_OVERRUN=UNKNOWN
-TIME_OVERRUN_CAUSE=ROUND_START_NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH_AND_SYNC
-PRE_GATE_HEAD=a473dca7294f5e7bd837840a004f8d96582363de
-CANONICAL_MAIN_SAFE_FAST_FORWARD=3d5b8aff01c2167bfaca9110641ed2421afff615
-REMOTE_ADVANCE_SCOPE=UNRELATED_BIRTHDAY_MAGAZINE_ONLY
-EXECUTOR_RESULT=RETURN_G4B_R5_EXECUTABLE_DIGEST_RETRIEVAL_BLOCKED_BY_CODEX_POLICY
-R5_SOURCE_REPAIRS=NOT_APPLIED
-R5_FIXTURES=NOT_RUN
-RELEASE_ASSET_RETRIEVAL=BLOCKED
-LIVE_EXECUTION=NO
+REAL_BAIDU_LOGIN_OR_FILE_OPERATION=NO
+LIVE_G4B_EXECUTION=NO
 STOP_AT_REVIEWER=YES
 ```
 
 ### Executor task
 
-R5 execution stopped before source changes. The required public release-asset retrieval was blocked by the Codex command policy; the browser read path returned an expired GitHub asset redirect. Without independently verifying the executable digest, the R5-3 pin cannot be safely supplied, so no partial R5 source repair or fixtures were performed. A narrow Gate-document comparison showed the relay-referenced blob differs from current main only by the Reviewer-authored timing amendment in commit `f8f8ef94`; the three technical findings are unchanged. No Owner action is requested; stop for Reviewer direction.
+1. Read `docs/G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5R1.md` as the current Gate.
+2. Capture `ROUND_STARTED_AT` before the first preflight/sync.
+3. Fix only the two remaining source defects: downloaded-local ZIP path selection and production pending basename alignment/guard.
+4. Preserve the authoritative pinned release-archive SHA-256 trust model; do not attempt to retrieve or invent an independent executable digest.
+5. Run all R1-R4 regressions plus R5R1 fixtures. Do not invoke the live runner or any real Baidu/VPS/Secret/network action.
+6. Update Evidence and this Handoff, perform canonical fresh read-back, record timing, and stop at Reviewer.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
