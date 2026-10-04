@@ -4284,3 +4284,44 @@ Reviewer conclusion:
 - The Git top-level output contained mojibake for the Chinese `VPS搭建` path component. Comparing that decoded native-output string to the correct .NET Unicode runner path produced a false outside-root classification.
 - The Gate stopped before fetch/update and before D1/C2B/network action.
 - D1R3 removes the entire failure mode: Git operates from the already-known runner directory; no Git-emitted filesystem path is decoded or reused as a Windows locator.
+
+
+## Reviewer reconciliation — D1R3 root cause confirmation and C2B repair candidate — 2026-10-04
+
+```text
+DIAGNOSTIC_GATE=G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3
+OWNER_REPORTED_SYNC_RESULT=PASS
+OWNER_REPORTED_HEAD_BEFORE=d87fbddce8c4e74b988d8683ff6c35b84b4c59b4
+OWNER_REPORTED_ORIGIN_MAIN=867604f337428af54ffb94d8ea8c6ad022c4d68f
+OWNER_REPORTED_FAST_FORWARD=PASS
+OWNER_REPORTED_POST_SYNC_PROJECT_CLEAN=PASS
+OWNER_REPORTED_DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+OWNER_REPORTED_POWERSHELL_VERSION=7.6.6
+OWNER_REPORTED_ADMINISTRATOR=True
+OWNER_REPORTED_INTEGRITY_RID=12288
+OWNER_REPORTED_IPV4_ACTIVE_ROUTES_COUNT=23
+DESTINATIONPREFIX_MISSING=0
+NEXTHOP_MISSING=0
+INTERFACEINDEX_MISSING=0
+ROUTEMETRIC_MISSING=0
+POLICYSTORE_MISSING=23
+OWNER_REPORTED_DIAGNOSTIC_RESULT=PASS_READONLY_OBJECT_SHAPE_CAPTURED
+OWNER_REPORTED_NETWORK_MUTATION=NONE
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+ROOT_CAUSE=ROUTE_OBJECTS_DO_NOT_EXPOSE_POLICYSTORE_PROPERTY_ON_OWNER_HOST
+NETWORK_DRIFT_PROVEN=NO
+REPAIR_RUNNER_COMMIT=b6c87c25c61545a1599b90b7338265afbf60a419
+REPAIR_RUNNER_BLOB=ffa5667e6e0d436294cb37de845d0f1440f5766a
+REPAIR_VALIDATOR_COMMIT=0d43fac420761a248ae22a795e1b6a844fe374e7
+REPAIR_VALIDATOR_BLOB=a1ad9a30c0657f0912bcdebc6f39de5cf7e5de20
+REPAIR_SCOPE=KEEP_Get-NetRoute_-PolicyStore_ActiveStore;REMOVE_ROUTE_OBJECT_.PolicyStore_ACCESS
+REPAIR_ACCEPTED=NO_PENDING_OWNER_OFFLINE_VALIDATOR
+NEXT_GATE=G3C_C2B_ROUTE_SNAPSHOT_COMPAT_REPAIR_R1
+PROVENANCE=OWNER_REPORTED_PLUS_DIRECT_GITHUB_SOURCE_READBACK
+```
+
+Reviewer conclusion:
+- D1R3 directly identified the failing property: `PolicyStore` is absent on all 23 returned ActiveStore IPv4 route objects, while every other property used by the snapshot is present.
+- The failure was in evidence-reader compatibility, not network state. The ActiveStore scope is already selected by the `Get-NetRoute -PolicyStore ActiveStore` command argument.
+- The minimal repair removes only route-object `.PolicyStore` access. The validator now requires ActiveStore query scoping and adds a negative fixture that rejects reintroduction of `$_.PolicyStore`.
+- The repaired source is a candidate only until the Owner-local PowerShell validator proves syntax and all offline fixtures on the target runtime. Conditional C2B execution is allowed only after that validator passes.
