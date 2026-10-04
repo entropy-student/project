@@ -224,24 +224,25 @@ Current offline package:
 
 No file above contains live credential values.
 
-## 11. Windows outer-bypass prerequisite
+## 11. Windows outer-bypass prerequisite — RESOLVED
 
-The persistent Clash template currently carries `interface-name` for HY2 and REALITY, but accepted project evidence does not yet prove that this alone bypasses the live WireGuard route on Windows.
+Accepted G4-B0 evidence now proves the Windows Mihomo `interface-name` mechanism for HY2 outer traffic on the current Owner host while WireGuard remains connected and exact VPS `/32` routes remain absent.
 
 ```text
-OUTER_BYPASS_MECHANISM=UNPROVEN_LIVE
+OUTER_BYPASS_MECHANISM=PASS_FOR_HY2_ON_CURRENT_OWNER_HOST
 R3R2_USED_EXPLICIT_TEMP_VPS_32_ROUTE=YES
-G3A_ROUTE_INTENT_FOR_HY2_REALITY=VPS_PUBLIC_IP_32_VIA_PHYSICAL_EGRESS
-G4B0_REQUIRED=YES
+G4B0_FORMAL_RESULT=PASS
+PERSISTENT_VPS_32_ROUTE_REQUIRED_FOR_HY2=NO
+REALITY_CLIENT_PATH_PROOF=NOT_CLAIMED_BY_G4B0
 ```
 
-Live persistent G4-B must not proceed until `G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1` is formally reviewed.
+G4-B may therefore proceed without designing a persistent VPS `/32` route solely for HY2. REALITY client-path behavior must be validated within its later applicable Gate rather than inferred from HY2.
 
 ## 12. Remaining prerequisites before live authorization is executable
 
 ```text
 OFFLINE_PACKAGE_STATIC_REVIEW=READY
-WINDOWS_OUTER_BYPASS_PROOF=PENDING_G4B0
+WINDOWS_OUTER_BYPASS_PROOF=PASS_G4B0
 DEDICATED_RUNTIME_IDENTITY_CONTRACT=READY
 ROLLBACK_CONTRACT=READY
 LIVE_RUNNER=NOT_YET_IMPLEMENTED
@@ -249,4 +250,4 @@ SECOND_FAILURE_DOMAIN_DESTINATION=OWNER_INPUT_REQUIRED
 LIVE_G4B_OWNER_AUTHORIZATION=REQUIRED
 ```
 
-The next safe engineering step is local-only live-runner implementation and fixture validation. That work may proceed without touching the VPS or Owner network. Actual G4-B execution remains blocked until the Owner authorizes the Gate and supplies the recovery-destination class/location.
+The next safe engineering step is local-only G4-B live-runner implementation and fixture validation. That work may proceed without touching the VPS or Owner network. Actual G4-B execution remains blocked until the Owner separately authorizes the new Gate and supplies the approved second-failure-domain recovery destination class/location.
