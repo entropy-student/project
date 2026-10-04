@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
+CURRENT_GATE=G3CR7_THREE_FRONTEND_SURFACES
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -80,6 +80,11 @@ PREPAYMENT_DRAFT_STORAGE=REQUIRED_TEMPORARY_SERVER_DRAFT
 PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
+FRONTEND_THREE_SURFACES=AUTHORIZED
+HOMEPAGE_ENTRY_SURFACE=IN_PROGRESS
+CORE_FUNCTION_ONBOARDING_SURFACE=IN_PROGRESS
+POSTPAY_GENERATION_STATUS_SURFACE=IN_PROGRESS
+P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 ```
@@ -123,26 +128,18 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY`
+`G3CR7_THREE_FRONTEND_SURFACES`
 
-Resumed after Owner homepage acceptance on 2026-10-04.
+Owner has explicitly reprioritized the next work before P1-P12:
 
-Current scope is now deliberately narrow:
-- **CORE_AHA_INTERACTION** — re-research the strongest local-photo-to-magazine interaction/entry pattern;
-- **MAGAZINE_P1_P12_VISUAL_SYSTEM** — re-research a coherent 12-page editorial system;
-- **HOMEPAGE** — accepted/frozen and excluded from template reselection. Only compatibility requirements for the future core-experience entry may be documented; no broad homepage redesign is authorized.
+- **Homepage entry unit** — bounded visual polish + route to the core-function page; accepted homepage outside this unit remains frozen.
+- **Core function page** — conventional full-page SaaS onboarding / multi-step intake; favor mature patterns and low custom-code burden.
+- **Post-payment generation/status surface** — conventional SaaS state/success UI; reuse WooCommerce checkout/order-confirmation rather than rebuilding payment.
 
-The existing mandatory research quality bar remains active:
-- >=60 directly inspected distinct candidates;
-- >=8 source ecosystems;
-- explicit source/license status;
-- reject ledger;
-- S/A shortlist;
-- saturation proof after two consecutive >=10-candidate no-improvement batches.
+Current Gate is presentation/frontend-shell only. It may build a reviewable clickable flow and Woo checkout handoff, but it may not implement server-side pre-payment draft persistence, production generation, P1-P12, real-money checkout, production deployment, Shared Infra, or PR #64 merge.
 
-The prior 91-candidate package remains evidence/history but its shortlist/saturation conclusion was already superseded for Core Aha and P1-P12 by the Owner research reset. Research restarts from an open candidate field for those two unresolved surfaces only.
-
-No implementation, runtime mutation, image generation, Woo/payment/account changes, production deployment, Shared Infra mutation, PR #64 merge, P1-P12 build, or core-Aha build is authorized in this Gate.
+Gate file:
+- `docs/G3CR7_THREE_FRONTEND_SURFACES.md`
 
 ## CRITICAL_CONSTRAINTS
 
@@ -207,17 +204,21 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Treat the **core function page** as a first-class missing product surface: full-page onboarding / multi-step intake for 12–25 photos + structured answers before checkout.
-2. Keep the homepage visual frozen except for its future entry card/CTA into this flow.
-3. Keep the free Preview browser-local and zero-model; its CTA routes into the core function page.
-4. Research/select a reusable full-page SaaS onboarding / multi-step form template for this page before implementation.
-5. P1-P12 visual research remains pending and must not be silently conflated with the intake-page design.
+1. Implement the three G3CR7 frontend surfaces on the existing PR #64 visual branch.
+2. Reuse the existing Good Issue tokens and WooCommerce checkout; use SaaS onboarding patterns rather than bespoke motion.
+3. Return a reviewable desktop/mobile frontend candidate and stop before backend draft persistence or P1-P12.
+4. Owner reviews the three surfaces visually; only after they are accepted does the project return to backend wiring / later P1-P12 work.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** The corrected customer flow is now the Owner-approved product contract. The next visual decision is the core function-page template/style.
+**NONE during implementation.** Owner review is required after the three frontend surfaces are visible as one flow.
 
 ## EVIDENCE_POINTERS
+
+Current G3CR7:
+1. `docs/OWNER_DECISION_G3CR7_THREE_FRONTEND_SURFACES_2026-10-04.md`
+2. `docs/G3CR7_THREE_FRONTEND_SURFACES.md`
+
 
 Current product-flow authority:
 1. `docs/OWNER_DECISION_PREPAYMENT_FULL_INTAKE_FLOW_2026-10-04.md`
