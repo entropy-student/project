@@ -4366,3 +4366,35 @@ Reviewer conclusion:
 - The repaired runner passed the former network-state failure point and then failed at Owner runtime ACL creation because read-back reported inheritance enabled.
 - Cleanup passed and the UI checkpoint never began. The failure is isolated to ACL application/read-back behavior.
 - Owner-only ACL protection remains a hard security invariant. D2 compares two bounded ACL application methods on temporary directories and cleans them before any C2B retry.
+
+
+## Reviewer reconciliation — D2 diagnostic MethodException and modern-.NET ACL invocation correction — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2
+OWNER_REPORTED_HEAD_BEFORE=1384f2bd49fed9da9fe5f0dccfbfbceb791fb51e
+OWNER_REPORTED_ORIGIN_MAIN=cd77c0784c72d5d4fadb0c37c2d2be490c874229
+OWNER_REPORTED_FAST_FORWARD=PASS
+OWNER_REPORTED_POST_SYNC_PROJECT_CLEAN=PASS
+OWNER_REPORTED_ACL_DIAGNOSTIC_BLOB=64bc2fd1c3dfe85250cb229a116202e5d9b6c460
+OWNER_REPORTED_DIAGNOSTIC_RESULT=RETURN
+OWNER_REPORTED_FAILURE_CLASS=MethodException
+OWNER_REPORTED_TEMP_CLEANUP=PASS
+OWNER_REPORTED_NETWORK_MUTATION=NONE
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+OWNER_REPORTED_C2B_RUNNER_EXECUTED=NO
+REVIEWER_CLASSIFICATION=DIAGNOSTIC_METHOD_BINDING_FAILURE_BEFORE_ACL_METHOD_EVIDENCE
+METHOD_A_ORIGINAL_CALL=[IO.Directory]::CreateDirectory(path,DirectorySecurity)
+MODERN_DOTNET_CREATE_WITH_ACL_API=System.IO.FileSystemAclExtensions.CreateDirectory(DirectorySecurity,path)
+METHOD_B_EVIDENCE_OBTAINED=NO
+ACL_REQUIREMENT_RELAXED=NO
+D2R1_DIAGNOSTIC_COMMIT=ac00d1d16b1cf3f18ce938f5ce2909b0cd707236
+D2R1_DIAGNOSTIC_BLOB=f890b8308d78ce2d41322df0214f3c2e9b13e7df
+NEXT_GATE=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2R1
+PROVENANCE=OWNER_REPORTED_PLUS_DIRECT_GITHUB_READBACK_PLUS_MICROSOFT_API_DOCUMENTATION
+```
+
+Reviewer conclusion:
+- D2 did not disprove either ACL strategy; it failed at the first method because the PowerShell/.NET invocation shape was wrong.
+- Modern .NET provides create-with-ACL via FileSystemAclExtensions rather than relying on PowerShell binding the old Directory static overload.
+- D2R1 isolates Method A and Method B so one exception cannot suppress the other, preserves full ACL evidence output, and still requires cleanup and no network/Secret action.
