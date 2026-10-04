@@ -26,7 +26,7 @@ G3-C Secret Prepare real-host verification  PASS
 G3-C Real HY2-in-Clash canary R3R2          PASS
 G4-A Three-role target/offline package          PASS
 G4-B0 Windows interface bypass canary            PASS
-G4-B Persistent three-role readiness             PENDING
+G4-B Persistent three-role readiness             IN_PROGRESS
 G4-C Peak-hour + real workload final validate    PENDING
 MVP v1 seal                                 PENDING
 ```
@@ -63,6 +63,7 @@ Windows Owner host
 - G3-C R3R2 real HY2-in-Clash canary is formally PASS: the bounded OpenAI request used the explicit Clash proxy path, the public-exit check matched the accepted SFO3 exit, and final cleanup/read-back restored the WireGuard/network/profile baseline.
 - Owner target v1 role order is now HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, REALITY-SFO3 BACKUP_2. This order is frozen for G4 validation but is not yet a production-role PASS.
 - G4-A offline plan/package is PASS. G4-B0 is now formally PASS: on the current Owner Windows host, Mihomo `interface-name` carried HY2 traffic over the dynamically discovered physical interface while WireGuard remained connected and exact active/persistent VPS `/32` routes stayed absent. The OpenAI probe returned HTTP 401 through the proxy, the public-exit probe matched the accepted SFO3 exit, request count was exactly 2, and final cleanup restored baseline. G4-B persistent implementation may now proceed to offline runner/package work without designing a persistent `/32` route solely for HY2. This does not yet prove REALITY client-path behavior or production-role acceptance.
+- G4-B Baidu recovery backend R5R1 is formally Reviewer PASS. The verified local ZIP path is now used after archive SHA-256 validation, production pending local/remote basenames are aligned with a pre-CLI fail-closed guard, R1-R4 regressions and R5R1 fixtures passed, and no live/Baidu/VPS/Secret/network action occurred. This accepts the offline backend source only; G4-B itself remains IN_PROGRESS.
 
 ### Secret / recovery
 
@@ -103,25 +104,25 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=EXECUTOR_ASSIGNED_BAIDU_BACKEND_REPAIR_R5R1
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=15-30 minutes
+STATE=EXECUTOR_ASSIGNED_BAIDU_AUTH_READINESS_R6
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=15-25 minutes
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
+PREVIOUS_RESULT=PASS_G4B_BAIDU_BACKEND_R5R1_OFFLINE_REPAIR
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Offline-only R5R1 repair of the two confirmed Baidu backend source defects under the authoritative release-archive SHA-256 trust model; no live execution.
+MAX_ENDPOINT_THIS_ROUND=Offline-only R6 design and validation of one atomic Owner-local Baidu authentication-readiness checkpoint; no real Baidu login/who, upload/download, VPS/SSH, Secret access, network mutation, or live G4-B execution.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
-PREFLIGHT=G4-B0 PASS; frozen persistent paths/runtime identity/rollback contract; accepted Mihomo v1.19.31 REALITY semantics; protected Secret/recovery lifecycle; unique Clash profile-store resolution; exact live-runner source identities before execution.
-REQUIRED_EVIDENCE=Persistent REALITY service/listener/readiness, HY2/WG preservation, three-role profile order, restart persistence, Secret recovery in approved second failure domain, no unrelated drift, system proxy/TUN OFF.
-ACCEPTANCE_CRITERIA=PERSISTENT_REALITY_SERVICE_READY + PUBLIC_TCP443_REALITY_READY + THREE_ROLE_CLASH_PROFILE_READY + SECRET_RECOVERY_VERIFIED + RESTART_PERSISTENCE_PASS + baseline preserved.
-ROLLBACK_STATUS_OR_PLAN=Remove only project-owned REALITY service/config/runtime and SELF-VPN-V1 profile; preserve HY2/WG and recovery material; verify TCP443/profile/route/proxy/TUN baselines after rollback.
-OWNER_ONLY_ACTIONS=Owner selected Baidu Netdisk as the second-failure-domain provider and G4-B live authorization is granted. R4 must adapt the reviewed runner offline first. Owner local Baidu CLI authentication will be required before live G4-B; credentials must never be sent in chat.
-REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_PERSISTENT_THREE_ROLE_READINESS_GATE.md + docs/G4B_PERSISTENT_IMPLEMENTATION_PACKAGE.md + current REVIEWER_HANDOFF.md + accepted G4-B0/R3R2/G2-C source identities as needed.
+PREFLIGHT=G4-B0 PASS; R5R1 offline backend PASS; frozen persistent paths/runtime identity/rollback contract; accepted Mihomo v1.19.31 REALITY semantics; protected Secret/recovery lifecycle; Baidu Netdisk selected as second failure domain; exact accepted live-runner source identities.
+REQUIRED_EVIDENCE=R6 checkpoint source + offline validation proving pinned-archive trust reuse, no credential argv/input capture, existing-config metadata/ACL checks, `who`-only provider readiness semantics with raw output suppressed, expected-account comparison in memory, precise unauthenticated return, and zero live actions.
+ACCEPTANCE_CRITERIA=R6_OWNER_AUTH_READINESS_CHECKPOINT_READY + NO_CREDENTIAL_ARGV + WHO_ONLY_READINESS_CONTRACT + RAW_PROVIDER_OUTPUT_SUPPRESSED + EXPECTED_ACCOUNT_MATCH_FAIL_CLOSED + LIVE_ACTIONS_0.
+ROLLBACK_STATUS_OR_PLAN=R6 is source/docs only; revert only R6 project-owned files if needed. No runtime rollback is required because real Owner/provider/VPS actions are forbidden in R6.
+OWNER_ONLY_ACTIONS=NONE during R6 offline design. After R6 Reviewer PASS, Owner-local Baidu authentication/readiness is a separate checkpoint; credentials/cookies/tokens must never be sent to chat, GitHub, logs, or process arguments.
+REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6.md + current REVIEWER_HANDOFF.md + accepted R5R1 runner/fixture identities only as named by the R6 Gate.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
-G4-B0 is formally closed PASS. The G4-B offline live-runner package is now Reviewer PASS after R3. No persistent VPS/Windows mutation has occurred yet. Owner selected Baidu Netdisk as the second-failure-domain provider. R4 is Reviewer RETURN; R5 offline repair is assigned. Live G4-B remains blocked until R5 is reviewed.
+G4-B0 is formally closed PASS. The G4-B offline live-runner package is Reviewer PASS through R5R1 backend repair. No persistent VPS/Windows mutation has occurred yet. Owner selected Baidu Netdisk as the second-failure-domain provider and live G4-B authorization remains granted. Live G4-B is still blocked until the R6 Owner-local authentication-readiness checkpoint is Reviewer PASS and later Owner-side authenticated config is proven.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -132,6 +133,11 @@ G4B_BAIDU_BACKEND_R5R1_GATE_BLOB=1d5ae4c7563c195ba4dab747b3b0ea8b493b5ffb
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
 REAL_BAIDU_LOGIN_OR_UPLOAD_AUTHORIZED_IN_R4=NO
+G4B_BAIDU_BACKEND_R5R1_RESULT=PASS
+G4B_BAIDU_BACKEND_R5R1_SOURCE_COMMIT=f1c1b1abdd713089edc4fa677322b96aadcc7e3d
+G4B_R5R1_RUNNER_BLOB=f9729791b36b042a305207be24f5ced87113820c
+G4B_R5R1_FIXTURE_VALIDATOR_BLOB=2bbc5c61c51fd381063fceebcaa5114b23daa36b
+G4B_R5R1_IMPLEMENTATION_PACKAGE_BLOB=9e3a33515afea52d93324cccd1d7406937458e6d
 ```
 
 Current G4-B offline Executor identity:
@@ -188,8 +194,8 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 ## UNRESOLVED
 
 - G4-B0 is formally PASS and closed.
-- G4-B persistent REALITY/service/Secret/profile writes remain blocked while the current R5R1 offline Baidu recovery-backend repair is pending Reviewer completion.
-- An approved encrypted recovery destination in a second failure domain (distinct from both the SFO3 VPS and this Windows local disk) is still Owner input required before G4-B can PASS.
+- G4-B Baidu recovery backend R5R1 is formally PASS; persistent REALITY/service/Secret/profile writes remain blocked until R6 auth-readiness checkpoint review and later Owner-local authenticated Baidu config proof.
+- Baidu Netdisk is the approved second failure domain; the remaining recovery prerequisite is proving an Owner-local authenticated BaiduPCS-Go config through the reviewed readiness boundary without exposing credentials.
 - Persistent REALITY backup service does not yet exist; the accepted public REALITY canary was temporary and cleaned.
 - Persistent three-role Clash profile does not yet exist.
 - G4-C must prove how representative Codex/OpenAI/image-generation traffic actually traverses the selected Clash role; system proxy is tested before any TUN design.
@@ -200,11 +206,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Codex executes `G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5R1` only. It fixes the local-archive extraction path and production pending-object basename, preserves the official archive SHA-256 trust anchor, runs R1-R4 regressions plus R5R1 fixtures, and stops at Reviewer.
+Codex executes `G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6` only. It builds and offline-validates one atomic Owner-local readiness checkpoint that never performs login or accepts credential values, reuses the pinned archive trust model, checks the protected config boundary, allows only sanitized `who` readiness/account-match semantics for the later Owner run, and stops at Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE during R5R1 offline repair.
+NONE during R6 offline checkpoint design/validation.
 
 ## EVIDENCE_POINTERS
 
