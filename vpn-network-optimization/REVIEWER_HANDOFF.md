@@ -23,7 +23,7 @@ G3-C Synthetic UI package C2A               PASS
 G3-C Synthetic Clash UI canary C2B          PASS
 G3-C Real C2C package + scanner repair      PASS
 G3-C Secret Prepare real-host verification  PASS
-G3-C Real HY2-in-Clash canary R3R2          AUTH_REQUIRED
+G3-C Real HY2-in-Clash canary R3R2          AUTHORIZED_NOT_EXECUTED
 G4 Peak-hour + real workload final validate PENDING
 MVP v1 seal                                 PENDING
 ```
@@ -97,16 +97,16 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
-STATE=OWNER_AUTHORIZATION_REQUIRED
+STATE=AUTHORIZED_NOT_EXECUTED
 PREVIOUS_RESULT=PASS_G3C_C2C_SECRET_PREPARE_REPAIR_VERIFICATION_R2R3V2
 OBJECTIVE=Run one bounded real HY2-in-Clash canary on the real Owner Windows host using the repaired Secret helper, keep WireGuard as rollback, and restore all temporary state afterward.
 MANDATORY_REVIEW_STOP=YES
-OWNER_C2C_AUTHORIZATION=REQUIRED_FRESH
+OWNER_C2C_AUTHORIZATION=GRANTED_FRESH
 ```
 
-Fresh Owner authorization has **not** yet been granted for R3R2 at this handoff.
+Fresh Owner authorization for exactly one bounded R3R2 canary was granted after the prior handoff; no R3R2 execution result has been recorded or accepted yet.
 
-### R3R2 maximum endpoint after fresh approval
+### Authorized R3R2 maximum endpoint
 
 ```text
 safe ff-only sync
@@ -129,7 +129,7 @@ Required real requests:
 
 ## CRITICAL_CONSTRAINTS
 
-- No R3R2 execution before fresh explicit Owner authorization.
+- The fresh Owner authorization covers exactly one bounded R3R2 canary; any consequential failure/ambiguity requires reconciliation before any retry.
 - Exactly two external requests in R3R2; no benchmark loop.
 - Production WireGuard stays connected/available as rollback.
 - System proxy stays OFF.
@@ -162,7 +162,6 @@ Required real requests:
 
 ## UNRESOLVED
 
-- Fresh Owner authorization for exactly one R3R2 real HY2-in-Clash canary.
 - Real HY2 authentication/connectivity through the actual Clash profile lifecycle is not yet formally PASS.
 - G4 peak-hour + representative Codex/OpenAI/image-generation workload validation remains pending.
 - Final v1 default-role selection among WireGuard/HY2/REALITY remains pending G4/final evidence.
@@ -170,13 +169,11 @@ Required real requests:
 
 ## NEXT_STEP
 
-Ask the Owner for fresh authorization for one bounded `G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2`.
-
-If authorized, provide one atomic Owner PowerShell checkpoint and the three exact UI acknowledgements. Do not enter G4 in the same round.
+Execute the already-authorized single bounded `G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2` using one atomic Owner PowerShell checkpoint and the three exact UI acknowledgements. Stop at Reviewer after cleanup/read-back; do not enter G4 in the same round.
 
 ## OWNER_ACTION_REQUIRED
 
-Authorize or decline one bounded R3R2 real HY2-in-Clash canary.
+Run the one already-authorized bounded R3R2 Owner checkpoint and provide the three UI acknowledgements when prompted; no new authorization is required unless this consequential attempt fails or becomes ambiguous.
 
 ## EVIDENCE_POINTERS
 
