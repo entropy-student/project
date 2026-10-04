@@ -1,5 +1,23 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Latest execution — G3CR6R3D2R4 Motion Polish (2026-10-04)
+
+This supersedes the earlier R2 execution status below; earlier sections are retained history. Static R2 is accepted; this motion candidate is not formal Reviewer/Owner PASS.
+
+- **Result:** PASS_CANDIDATE_G3CR6R3D2R4_MOTION_POLISH; same branch/PR64 open/unmerged. Approved start69b062be391a5b975aeef844378aa53f46fa6e47, fetched main947e119f568f520b09e5b5a5affc57e339e1a463; exact authority blob correlation in preflight.json. Final submission is the enclosing execution commit, verified after push and reported on PR64.
+- **Review first:** docs/evidence/g3cr6r3d2r4/README.md, qa-report.json, round2/browser.json, DESIGN.md, durable-screenshot-manifest.json and97 full-size JPGs under screenshots/. Round1 browser measurements are history, not final. Original PNGs remain local/ignored; no new Focusly visit or source acquisition.
+- **Motion repairs:**14-second Hero focus/scale/pan loop sleeping offscreen/hidden; split image/copy continuous entry/middle/exit; desktop vertical-overscan Panel parallax; three Samples tilt/scale/Y/depth sequence; desktop bounded sticky Closing with text reveal/drifting photos and stable CTA. Mobile is lighter and has no sticky/parallax trap. Only home.css/home-motion.js are application changes; no persistent Home markup write.
+- **Validation:**1440/375 multiple timed/scroll states; all3Samples each3states; Closing y0/full1440width at early/mid/late withCTAvisible. Reduced/no-JS/missing-controller and preference toggling work. No horizontal overflow, broken images, page errors or failed HTTP resources; hover/focus/native menu pass. Internal finish review is advisory. Owner live perceptibility is PENDING.
+- **Frozen:**Home858 hash7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a,8editableGroups/6anchors, all5R2assets, PreviewPHP/JS/CSS/shortcode/defaultgeometry, Woo/private workspace/account/payment, menu/theme mods/footer and Product1113 virtualUSD39.99 unchanged. Administrator/edit/media/global-style capability readback remains true. No upload/permission replay; accepted proof reused by source correlation. WooGET only; empty Checkout→Cart200. Orders1→1/jobs0/product-model0.
+- **Rollback:**poc/g3c/artifacts/backups/g3cr6r3d2r4/ restores accepted R2 CSS/JS, not pre-D2. Staged byte copy/readback passed; live rollback not applied. `node birthday-magazine-studio/poc/g3c/scripts/rollback-g3cr6r3d2r4.cjs --apply` restores only the two motion files; no DB/menu/assets mutation.
+- **Runtime:**retained current birthday-magazine-g3c; site http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/ . Entire project/unrelated Docker projection unchanged, no restart/build/pull/recreate/prune/teardown/tunnel action. Pre-existing dirty files excluded. No secrets/session/customer data exported.
+- **Forbidden counters:**Add-to-Cart/Checkout submit/order/PayPal/real-money/model/provider/imagegen/production/shared-infra/P1-P12/core-Aha/G4/merge0. No new PR, no Reviewer decision edits.
+- **Owner live relay:**refresh local homepage (Ctrl+F5 if stale cache), wait at Hero, then scroll normally through split/photo imagery, Samples and desktop Closing. Confirm whether all four motion families are visibly perceptible. Desktop screenshots/numeric changes alone do not establish formal motion PASS.
+
+**OWNER_LIVE_MOTION_PERCEPTIBILITY=PENDING; OWNER_VISUAL_FREEZE=PENDING; STOP_AT_REVIEWER=YES.**
+
+---
+
 ## Latest execution — G3CR6R3D2R2 Visual Polish (2026-10-04)
 
 This section supersedes earlier execution status for the current candidate; all older sections below are retained history.

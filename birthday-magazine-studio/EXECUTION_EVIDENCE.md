@@ -1,5 +1,23 @@
 # Execution Evidence — Birthday Magazine Studio
 
+## Latest execution — G3CR6R3D2R4 Motion Polish — 2026-10-04
+
+**PASS_CANDIDATE_G3CR6R3D2R4_MOTION_POLISH; STOP_AT_REVIEWER=YES.** This supersedes earlier current-execution descriptions below, which remain historical evidence. Formal perceptibility/visual freeze awaits Owner's live browser confirmation and Reviewer decision.
+
+Same branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, PR64 open/unmerged. Approved pre-run HEAD `69b062be391a5b975aeef844378aa53f46fa6e47`; fetched main `947e119f568f520b09e5b5a5affc57e339e1a463`. Current authority files match main exactly; preflight and final submission are recorded in the [R4 evidence bundle](docs/evidence/g3cr6r3d2r4/README.md). The submission is this evidence’s enclosing execution commit; its exact SHA and pushed/open status are reported on PR64. No new PR or merge.
+
+Only homepage `home.css` / `home-motion.js` change: 14-second visible Hero photographic breathing/pan; continuous split image/copy choreography; desktop Panel parallax with vertical overscan; stronger sample tilt/scale/Y/depth with flat middle; bounded desktop190svh/100svh sticky Closing, text reveal and photo drift. Mobile is lighter/static for panels/Closing. Default/no-JS/missing-controller and reduced motion remain complete. Temporary DOM Closing wrapper leaves Gutenberg/DB content unchanged.
+
+Final97 multi-state screenshots at1440/375 plus numeric browser evidence pass technical assertions. Hero3 timed states; both splits/panels3 scroll positions; each card3states; Closing3sticky positions with y0/full1440width/CTAvisible. All widths equal viewport, no broken image/page error/failed HTTP resource. Hover/focus/native menu and dynamic preference change pass. One build/inspection, one fix batch, one final confirmation; no further polishing. Full-size JPG captures committed with PNG source/output hashes, original PNGs retained locally.
+
+Home858 hash `7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a`,8Groups/6anchors,5R2asset hashes, Preview PHP/JS/CSS, Woo/private-workspace, menu/theme mods/footer/product1113USD39.99virtual all unchanged. Owner Administrator/edit/media/global-style capabilities remain true. Accepted Preview privacy/access proof is reused with fresh exact source/default-geometry correlation; no photo or permission replay. Free Preview model/server upload/external image POST counts0. Native commerce GET only; empty Checkout redirects to Cart200, not a populated form test. Orders1→1, generation jobs0, product model calls0.
+
+Rollback saves exact accepted R2 sources/Home under `poc/g3c/artifacts/backups/g3cr6r3d2r4/`; staged copy/read-back integrity PASS, live restore not run. Restore command returns only two motion files to R2, with no DB/media/menu/order deletion. Runtime and unrelated Docker inventory unchanged; no restart/build/pull/recreate/teardown/prune. WP7.1.1/Blocksy2.1.57/Woo11.1.2 retained at http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/ . Pre-existing dirty screenshots/archives excluded; no sensitive credential/session data retained.
+
+All Add-to-Cart/checkout-submit/order/PayPal/real-money/imagegen/product-model/production/shared-infra/P1-P12/core-Aha/G4/merge actions0. Owner must actually browse the retained runtime and confirm motion perceptibility; automated change measurements do not substitute for that checkpoint.
+
+---
+
 ## Current Gate — G3CR6R1 Frontend Composition Redesign — 2026-10-02
 
 `PASS_CANDIDATE_G3CR6R1_FRONTEND_COMPOSITION_REDESIGN`

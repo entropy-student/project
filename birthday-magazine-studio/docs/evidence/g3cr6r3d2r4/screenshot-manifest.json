@@ -1,0 +1,685 @@
+{
+  "round": "round2",
+  "count": 97,
+  "files": [
+    {
+      "file": "round2/screenshots/desktop-motion-unavailable-closing-static.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 254178,
+      "sha256": "6af104c14e4f65fe16ad4721cff87dede73e6d4131d3f30a35f11d6af9faf637"
+    },
+    {
+      "file": "round2/screenshots/desktop-motion-unavailable-full.png",
+      "width": 1440,
+      "height": 9989,
+      "bytes": 10165553,
+      "sha256": "3b12e8791cfdd5a6586cf3ac8e249d25d54076aed877ff3cb0439da27eb6623d"
+    },
+    {
+      "file": "round2/screenshots/desktop-motion-unavailable-hero-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1195808,
+      "sha256": "64afc6890d8f0e40287e3499387d7aaf826de5a6364ed1395ddb9f9eb805dcbb"
+    },
+    {
+      "file": "round2/screenshots/desktop-motion-unavailable-preview-component.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 166696,
+      "sha256": "6566294b269d5bb774b39e29957dc9129abc5973653cca0cce072e393660d1bf"
+    },
+    {
+      "file": "round2/screenshots/desktop-no-js-closing-static.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 266463,
+      "sha256": "fd7a70c60014f6977244a398ce9eab7c4b4173b83d2a02ed5f19fe68530072f1"
+    },
+    {
+      "file": "round2/screenshots/desktop-no-js-full.png",
+      "width": 1440,
+      "height": 9989,
+      "bytes": 10170566,
+      "sha256": "040194e95f6628f1546af959204e242d1248c140f8671494a1c0735e97944d4b"
+    },
+    {
+      "file": "round2/screenshots/desktop-no-js-hero-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1195808,
+      "sha256": "64afc6890d8f0e40287e3499387d7aaf826de5a6364ed1395ddb9f9eb805dcbb"
+    },
+    {
+      "file": "round2/screenshots/desktop-no-js-preview-component.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 158547,
+      "sha256": "91c9f9ec07bf2613653e6d0edec3bab08a8fb50635b12e5fabf2113bd0433a07"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-account.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 35123,
+      "sha256": "a84722ce88d7975acd0b7138120cf37b5d0d677f55bfae32e9b0c74b32be2aec"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-cart.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 45397,
+      "sha256": "d581fbe3a53d4a77caa0ee00d3ca51cb04673186682bfe2e110cb1ddfe1f1adf"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-checkout.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 45397,
+      "sha256": "d581fbe3a53d4a77caa0ee00d3ca51cb04673186682bfe2e110cb1ddfe1f1adf"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-closing-early.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 260952,
+      "sha256": "b941ccd8c0cb3a03fbf492d4fac68e0d1e0e29b18d3209006a56c6e3f7b53f3c"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-closing-late.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 250584,
+      "sha256": "bbe0e17ab286ff5708112450e0820b78b449e24aea7ab0ce6cb500d2708ae41b"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-closing-mid.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 259841,
+      "sha256": "133cb7a9380e64eed7f0b4a56362eb55f5c7598ead758da29fe6da5ca07b0a6a"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-closing-static.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 260463,
+      "sha256": "8105f88400f94b85e6946317ee0eae8a8f82ad5cc7bf0ed159650ea0aeb182a6"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-focus.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1165414,
+      "sha256": "ebc20e6ec6a244cf4d63e3dbd0c2149249e2127a54d5019159228ccb027b54ac"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-full.png",
+      "width": 1440,
+      "height": 10839,
+      "bytes": 7962984,
+      "sha256": "a84a9a8261f29502010a2b07ff581b73e5aa8e8afd795b9ac9bf2d44adef6d2c"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-hero-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1078544,
+      "sha256": "6f654ea4f77759deec809c0bf9560f3f92b8a60375b7af42f5452cce12bd039d"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-hero-1.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1108911,
+      "sha256": "eeaed47f2b8c889b3b75087aa030710ec580a590d5a8b178d56a70e64e79d7ef"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-hero-2.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1153468,
+      "sha256": "08856e03ee2427f3c3bbd711269a9d95a62586d95a2c767867f204439cd9db5a"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-hover.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1169476,
+      "sha256": "419b8ec35d5f734369dd44888ed5c76c25fcf5f66e5bd526abb7940f9bde0f09"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-how-it-works-enter.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 280902,
+      "sha256": "7108a0331a7c7e989fa3546bed2badfc1e4e7e86bbee01c5dbe76810ecb68b5b"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-how-it-works-exit.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1397375,
+      "sha256": "c43bf77f527f0a0e421124c81407db20e7dee2fc8ece2a7880ce757b80ab7745"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-how-it-works-mid.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 676413,
+      "sha256": "b7dab6b86b25dc0924d9e5cc856c3ee322280587828168cfe6a3768f6b272c6d"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-offer-panel-enter.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1021804,
+      "sha256": "208fbcd94afbe524da4993e89a73281a8752c528f36f6da799c4d8eb2983877a"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-offer-panel-exit.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 680070,
+      "sha256": "0333b7bd78e85f2d4c061c4f4a91f8d4971d891f8ca94610073f6e03b4e86737"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-offer-panel-mid.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1388049,
+      "sha256": "c1441f441fbdb8eec861617e0f2ba92b3205cf6e7f50b0334ba1e773885d4b8a"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-preview-component.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 176794,
+      "sha256": "c6ff89b17702f3386f8f458a1594472be454b7908204f831bd5aea5df93e0471"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-preview-panel-enter.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1249658,
+      "sha256": "5551dca7099079b1823bf133a84957ef6f371db245968a8a81d5f5de8285afca"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-preview-panel-exit.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 765274,
+      "sha256": "e48a5f26a10bc2260bd8c2d2b3e3d6c9c8fef1c8dc8821d7366ce4def20991a5"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-preview-panel-mid.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1344987,
+      "sha256": "8b893d8d55c0d3da956722f45b308dc86d0c53a170299fc9ce66cceeb0f66942"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-product.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 454763,
+      "sha256": "fbc98fd7074c1b8a72e3c55fdc389fbb4b89ed31172e1b8a2a0bafecd569913b"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-sample-1-enter.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 380544,
+      "sha256": "b0c66c350249b211df8cecab95c0e718ae9fbbf108a5a1e0767c2688fa0fc295"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-sample-1-exit.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1153771,
+      "sha256": "70ca8ab66473c13963647ee749bebfb5ab018eb8eed35f4268d9913dd8d2c884"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-sample-1-mid.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1704658,
+      "sha256": "89c52af5521364b0344ddb46246b76f4fcf672c4034927cad8673f96f65762cb"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-sample-2-enter.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1149309,
+      "sha256": "6701e582211f54847686ee3c0fab71a80264f9d199d7802dfee3c23382f24375"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-sample-2-exit.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1014774,
+      "sha256": "dc32276fa22740f160cee7dc8361344ca701204951e379552acc1e6e7372db9f"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-sample-2-mid.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1571258,
+      "sha256": "a5669a733b64c88c37c074988d5e2549f86ab3e1498aa4712aef3b8863503035"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-sample-3-enter.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1077345,
+      "sha256": "1f25da69743a81101f193cbce5b46147bf199d734818c196c53a3dba7c8d2351"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-sample-3-exit.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 448458,
+      "sha256": "a6c591e437dc0abe734e4fc7e00604f6668f751e1a380089198ef8f4d52e2084"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-sample-3-mid.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1500353,
+      "sha256": "c99b6eabd0fb79f11ae3a8d2b4a2b49235220f5d74340f36359b39d365eee8a2"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-what-you-get-enter.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1073224,
+      "sha256": "575ee9c13f1aaa275d46da69d1feb4a3aec4b6f93ce50efd78ed054b98b0d5e7"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-what-you-get-exit.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1453460,
+      "sha256": "a09c552d86262ae823f01e8749818154e0e79e67d7052e262f6c6ff3d58f72e5"
+    },
+    {
+      "file": "round2/screenshots/desktop-normal-what-you-get-mid.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 934815,
+      "sha256": "9aed535db78cf8394df5754b8ee6fe6ae634c74d7db3058885628b4eb5a8994e"
+    },
+    {
+      "file": "round2/screenshots/desktop-reduced-closing-static.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 254366,
+      "sha256": "0988a439ac463fdbb99e4d0e6b2402f73a7eb9c528bd297ade88d3ad559f8d08"
+    },
+    {
+      "file": "round2/screenshots/desktop-reduced-full.png",
+      "width": 1440,
+      "height": 9989,
+      "bytes": 10163676,
+      "sha256": "b712f681eb339ed324ca74b144526505ff6fb18ebb31a2d0c50d0599bacbc4b0"
+    },
+    {
+      "file": "round2/screenshots/desktop-reduced-hero-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1195548,
+      "sha256": "b700d4db53987c7d799b70b075c85da2bcee1b69f3a0849f518c56296631447a"
+    },
+    {
+      "file": "round2/screenshots/desktop-reduced-preview-component.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 166696,
+      "sha256": "6566294b269d5bb774b39e29957dc9129abc5973653cca0cce072e393660d1bf"
+    },
+    {
+      "file": "round2/screenshots/mobile-motion-unavailable-closing-static.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 64149,
+      "sha256": "904f1a2329500efa3c4a3868dbf2eb7308c4e09d63c661acf11bb33349184226"
+    },
+    {
+      "file": "round2/screenshots/mobile-motion-unavailable-full.png",
+      "width": 375,
+      "height": 7864,
+      "bytes": 1614616,
+      "sha256": "ea04422a1bd6fa489535ccfc043f482e49e4c4ce87c166f86a80527392556a87"
+    },
+    {
+      "file": "round2/screenshots/mobile-motion-unavailable-hero-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 291406,
+      "sha256": "514648a397b23feaf1a2fd575c66ade18f997160b0705a8ae1c0492d4b19dd0a"
+    },
+    {
+      "file": "round2/screenshots/mobile-motion-unavailable-preview-component.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 60951,
+      "sha256": "3ddd3badfd1291139b77e1dde34617de5808634d5da8c8a454d970654acd9bc1"
+    },
+    {
+      "file": "round2/screenshots/mobile-no-js-closing-static.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 64606,
+      "sha256": "abf6238d0fc44a541f1b0a1464120bf1644e49a091cba06a74a565bb3b7286c5"
+    },
+    {
+      "file": "round2/screenshots/mobile-no-js-full.png",
+      "width": 375,
+      "height": 7864,
+      "bytes": 1608486,
+      "sha256": "079786abd3a8e7246b79e86d13599ce064008a8f16a29917a450b5dd9e4e85f0"
+    },
+    {
+      "file": "round2/screenshots/mobile-no-js-hero-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 291406,
+      "sha256": "514648a397b23feaf1a2fd575c66ade18f997160b0705a8ae1c0492d4b19dd0a"
+    },
+    {
+      "file": "round2/screenshots/mobile-no-js-preview-component.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 58468,
+      "sha256": "ed5574a74c67751782ab2af9577f06ae6031e10164dcde0537b31f335c36e540"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-account.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 21976,
+      "sha256": "1a97b096c7ad708a56e8f39ba59de34416d5c87ccbb1fb1135ddb13640dd5ae1"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-cart.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 23897,
+      "sha256": "19e27a172cfd42e14839c3c506b136ac4ea8324c632d0bfa7db3308c285ec599"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-checkout.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 23897,
+      "sha256": "19e27a172cfd42e14839c3c506b136ac4ea8324c632d0bfa7db3308c285ec599"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-closing-early.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 79258,
+      "sha256": "13ffc923820f4eedbac1f38644df2d78f25ed4fa3d9817b3fdedf606fc959afc"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-closing-late.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 79258,
+      "sha256": "13ffc923820f4eedbac1f38644df2d78f25ed4fa3d9817b3fdedf606fc959afc"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-closing-mid.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 79258,
+      "sha256": "13ffc923820f4eedbac1f38644df2d78f25ed4fa3d9817b3fdedf606fc959afc"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-closing-static.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 64059,
+      "sha256": "c8d21e4607548367041fce4f95c786016fbc7c16155d38b39c50c1cb1c9b1b01"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-focus.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 286728,
+      "sha256": "46710739a3bce42645e1b471227c4858800744da6f0e8042268636cfde8494de"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-full.png",
+      "width": 375,
+      "height": 7866,
+      "bytes": 1593307,
+      "sha256": "86a1b7fa3fbf0df3c61b3fafbc00a1303b9515b4f6b2c47ed3522221883bd3ac"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-hero-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 290746,
+      "sha256": "3cfb614acf5bd0aca8285587bec7f0b43a43a2b3e9bacaa16ac9cb473c4ff191"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-hero-1.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 287075,
+      "sha256": "e7eaf5c5e3bc133f0e4b2d1358e77eaf93502643dc1373a81260e5d1dfb6ea0b"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-hero-2.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 287556,
+      "sha256": "d481438a7d26b584a57fde7c4f52226fcae72cf98e0183a3a928f5eb06708050"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-hover.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 285738,
+      "sha256": "0b730e8a90c37ec2a8e96c10e2c9a9e082e9cfdb00cb7542395a1a1c6bd05a0c"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-how-it-works-enter.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 141865,
+      "sha256": "791f4698a75555030748c43c85524e376a0a89c048bc453eec01310ba7de3180"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-how-it-works-exit.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 201620,
+      "sha256": "b6a795a028a566470c896ad2472902b8d3ddeb1aa6d18ef0bd63e9f62f35557b"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-how-it-works-mid.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 137892,
+      "sha256": "f433b31f1561688651521fff54c17fbeb8e1d966f2526805d24526f3ad1a59a6"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-menu-open.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 85719,
+      "sha256": "3cdd0199a107ba2807c31125fec456847538061df98066cda111c3f9cdb8c9c9"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-offer-panel-enter.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 198364,
+      "sha256": "860e6a6e77d3b6b1922ebc32bcd08766759d54bd17f60078746fcae9232358a4"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-offer-panel-exit.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 37754,
+      "sha256": "82d3d04c5297adab5fb877a3f07033d0824fe2f9d5d00b68d1a3806e78d6d1d8"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-offer-panel-mid.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 201133,
+      "sha256": "30298d1f21c960b2d54b94b09c294653ffad9ddcbfecd09a1aae30a3ad67e72f"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-preview-component.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 66044,
+      "sha256": "58d8453ae2b1c8d1ad6d2092deaef3bcc2a2b55dc11924213f5ac58941ae3314"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-preview-panel-enter.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 212317,
+      "sha256": "6fb915885493357d147a5755f5a78227bd91eb876fa06d1acafc696aceddfd8d"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-preview-panel-exit.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 107872,
+      "sha256": "71ac466857bd908cd74d88bbf6b23bf82695f671d2dc95abf9f5e4fe451ffcc6"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-preview-panel-mid.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 227368,
+      "sha256": "2c9c859e7d388906df795900fd777c8cc435a0070ddcac5f2d20667ce71e076a"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-product.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 146936,
+      "sha256": "5aaa493fd9e384605a70a9be0bd3dc0c0308bebff62de527f5f47537e8ad1654"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-sample-1-enter.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 141042,
+      "sha256": "5eb55fc38e650ec5f53a4801c55d50a04a79533d36bbd3ff6cc6346e593ec3f6"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-sample-1-exit.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 362339,
+      "sha256": "ef99dd69645e8b3524232f50bdf9919b58ac839e50e8bd2129fb255541043d1c"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-sample-1-mid.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 280083,
+      "sha256": "982ed4a145408770e50f95697803bcef40514de12a4151b1da6580289c7a32ce"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-sample-2-enter.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 260705,
+      "sha256": "fd41a42a35df7a5e4503627d764270ef19474a80b496e265f7720a03d216cccb"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-sample-2-exit.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 266803,
+      "sha256": "d07b29bcdf8fa25bf060b7781ff13b96bd7d62455dc831a59dcd4d46433a39cb"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-sample-2-mid.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 381261,
+      "sha256": "35dcc63e8c52d75a1be47280c1f305904a17128fa37691b4878d8d5e80e834c7"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-sample-3-enter.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 363545,
+      "sha256": "4fe08f7917f54ef7f6c2f3142b4bd43a8a87703343b083f1b039282b367740d9"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-sample-3-exit.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 157033,
+      "sha256": "515050bcc614d2ac8f38d1b3800fd32a5045d4e3f66b763eaf0236957a1f1cd7"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-sample-3-mid.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 285658,
+      "sha256": "20970e70de3fa966d514b4fecd374a0d5b25de13ebfecbed2be42849975bf80c"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-what-you-get-enter.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 288879,
+      "sha256": "a0f1fd7935f05dea100e73e0a13a9aec3b357d510eb48c5ac1023c3fa8db9505"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-what-you-get-exit.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 220623,
+      "sha256": "5bb29d23a6ef44eec9fdf18f4db75e0a86ce3ffbb3a32cb30f80612adda4a4b9"
+    },
+    {
+      "file": "round2/screenshots/mobile-normal-what-you-get-mid.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 155681,
+      "sha256": "f74f6acc018cb21f2d87de11f66426540c610ce81fbddee466bcc8ccefd2816f"
+    },
+    {
+      "file": "round2/screenshots/mobile-reduced-closing-static.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 64175,
+      "sha256": "9ea9f8f185f720c66e2da77aa5d0a84cb271b01a7d5189d4f31b2473381f2f51"
+    },
+    {
+      "file": "round2/screenshots/mobile-reduced-full.png",
+      "width": 375,
+      "height": 7866,
+      "bytes": 1611904,
+      "sha256": "f058312248f40a50e17413a830a3264d3c8d585ffa3bfaef36c7d1cee94670da"
+    },
+    {
+      "file": "round2/screenshots/mobile-reduced-hero-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 291243,
+      "sha256": "98be20f3f8f75b8ca128a32b7ed25ff4d672456b7fecb689dd37baa7f87c6c16"
+    },
+    {
+      "file": "round2/screenshots/mobile-reduced-preview-component.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 61113,
+      "sha256": "3f6abe52d785f8f7b477e74c7f29dd8efe81b1aa78840d44424b9358cc9f22bc"
+    }
+  ]
+}
