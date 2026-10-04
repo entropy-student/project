@@ -1,0 +1,99 @@
+{
+  "gate": "G3CR6R3D2R2_VISUAL_POLISH",
+  "tool": "built-in image_gen",
+  "totalCallCount": 5,
+  "rejectedCallCount": 0,
+  "adoptedCount": 5,
+  "apiKeyUsed": false,
+  "externalPaidProvider": false,
+  "staticMarketingOnly": true,
+  "runtimePreviewModelCalls": 0,
+  "realCustomerData": false,
+  "calls": [
+    {
+      "call": 1,
+      "prompt": "Use case: product-mockup. Asset type: original static birthday-magazine website editorial showcase, landscape 1536x1024. Create a premium close-up still-life photograph of a large personalized birthday magazine cover occupying 80% of the frame, lying diagonally on a deep terracotta red artist's table, one corner almost touching the image edge. Cover features an entirely fictional joyful silver-haired Black man wearing an ochre knit shirt, candid portrait, no real person likeness. Magazine design: warm cream paper, huge elegant black serif masthead reading exactly 'THE GOOD YEARS', small cover text 'A birthday issue' and 'ELI / 60'. One subtle coral line, highly legible sparse typography. Sculptural light from upper left, tactile paper edge, tiny blue ribbon at lower corner; no flowers, no wedding, no Mira, no website UI. Strong graphic editorial composition, sharp magazine cover and realistic photographic texture. Landscape fills the whole image, no empty oversized mat or miniature product, no watermark.",
+      "purpose": "Samples card 1 replaces small Alex cover",
+      "adoptedAsset": "poc/g3c/preview-plugin/assets/g3cr6r3d2r2/sample-eli-cover.png",
+      "sourceToolPath": "C:\\Users\\34707\\.codex\\generated_images\\01a10527-72de-7531-81a9-ae297311d671\\exec-9da7af98-74d3-485f-93c7-40ae3deb8b0f.png",
+      "replacesExistingVisual": true,
+      "subjects": "Entirely fictional, noncustomer",
+      "rights": "Original generated marketing asset; no Focusly proprietary assets used",
+      "notCustomerOutput": true,
+      "sha256": "690f7769b4ff115810763e5ad2311eef2c36d71c6100dcdfc676e8be003f9891",
+      "bytes": 2652128,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "call": 2,
+      "prompt": "Use case: product-mockup. Asset type: original landscape marketing photo of a personalized birthday magazine interior, 1536x1024. Premium graphic top-down editorial photograph: an open large magazine spread fills nearly the entire landscape frame, pages over a vivid cobalt-blue surface with a little buttery-yellow edge. Left page features a large photo of an entirely fictional young East Asian woman in a striped red shirt laughing at a sunlit seaside picnic, no known real person. Right page bold warm cream and black serif editorial composition with exact headline 'A LIFE IN LITTLE MOMENTS', a second smaller candid fictional friends photograph and a few sparse lines, printed-paper realism. Asymmetric art direction, confident generous typography and page gutters, softly curled thick paper at lower edge. No portrait cover, no flowers, no wedding, no Mira, no website interface, no watermark. Show an actual convincing magazine object, not a UI. Strong blue/yellow colors distinguish this spread from a terracotta cover showcase.",
+      "purpose": "Samples card 2 replaces old Mira spread",
+      "adoptedAsset": "poc/g3c/preview-plugin/assets/g3cr6r3d2r2/sample-moments-spread.png",
+      "sourceToolPath": "C:\\Users\\34707\\.codex\\generated_images\\01a10527-72de-7531-81a9-ae297311d671\\exec-e34da370-c492-403d-a0a6-17b2e70992a2.png",
+      "replacesExistingVisual": true,
+      "subjects": "Entirely fictional, noncustomer",
+      "rights": "Original generated marketing asset; no Focusly proprietary assets used",
+      "notCustomerOutput": true,
+      "sha256": "964d80b02f8bae28f3c36767d6c0ce69a52c715b1dac08843e4c6bee39ff6834",
+      "bytes": 2410182,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "call": 3,
+      "prompt": "Use case: photorealistic-natural. Asset type: original landscape birthday magazine gift-in-context marketing photograph, 1536x1024. A candid close-up scene of two entirely fictional adult sisters at a birthday kitchen table. Only one smiling Mediterranean-looking woman in her early forties is clearly visible, wearing a moss green knit cardigan, delighted as her sister's hands present a personalized large cream magazine. The magazine occupies much of the foreground angled toward camera, its cover showing an entirely fictional woman's candid portrait and elegant serif title 'THE LENA ISSUE', short line '40, and just getting started'. Bright natural morning light, warm honey timber table, small homemade lemon cake and two coffee cups, pale olive wall, quietly premium real photographic texture. Composition is intimate, diagonal and human-led, neither studio flat lay nor terracotta cover nor blue magazine spread. No flowers, wedding, pink gift ribbon, Mira, website UI or watermark. A clear readable magazine as the gift; all people invented noncustomer models.",
+      "purpose": "Samples card 3 replaces old Mira gift scene",
+      "adoptedAsset": "poc/g3c/preview-plugin/assets/g3cr6r3d2r2/sample-lena-gift.png",
+      "sourceToolPath": "C:\\Users\\34707\\.codex\\generated_images\\01a10527-72de-7531-81a9-ae297311d671\\exec-d8189dfd-fbe0-4b63-8fa8-32e446593fa5.png",
+      "replacesExistingVisual": true,
+      "subjects": "Entirely fictional, noncustomer",
+      "rights": "Original generated marketing asset; no Focusly proprietary assets used",
+      "notCustomerOutput": true,
+      "sha256": "41bfac37025eaec3e9877b7fb0bbaf3bc7726cadd872331703963cad3b4c9dd5",
+      "bytes": 2291961,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "call": 4,
+      "prompt": "Use case: photorealistic-natural. Asset type: original wide landscape photographic background for a birthday magazine website's free-preview introduction, 1536x1024. All humans entirely fictional, noncustomer. A relaxed living room in late afternoon. On the RIGHT HALF a fictional Black woman about 35 and her white female friend sit close together on a muted rust sofa laughing softly, looking through a small box of printed memories; one holds a candid printed photograph. In the foreground on the right a few postcards and family-style prints, no readable personal data. LEFT HALF is quiet rich olive wall, soft window-shadow, spare negative space for an independent dark text panel; do not render any panel, website or typography. Warm natural film photography, elegant intimate birthday-gift mood, realistic hands, face detail, subtle amber sunlight, no wedding, no flowers, no magazines, no pink ribbon, no real person likeness, no watermark. Photo-led editorial, fresh visual story completely distinct from existing magazine gift flatlays.",
+      "purpose": "Preview outer photographic panel replaces gift hero; component unchanged",
+      "adoptedAsset": "poc/g3c/preview-plugin/assets/g3cr6r3d2r2/preview-memories-panel.png",
+      "sourceToolPath": "C:\\Users\\34707\\.codex\\generated_images\\01a10527-72de-7531-81a9-ae297311d671\\exec-b14f859b-8fdc-47f7-8205-c61ba6f65f52.png",
+      "replacesExistingVisual": true,
+      "subjects": "Entirely fictional, noncustomer",
+      "rights": "Original generated marketing asset; no Focusly proprietary assets used",
+      "notCustomerOutput": true,
+      "sha256": "6922761748950308d34af46fec5a5ed7251199b77321c3ff253ab4cc6d339ab0",
+      "bytes": 2201100,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "call": 5,
+      "prompt": "Use case: photorealistic-natural. Asset type: original wide landscape photographic background for birthday-magazine offer section, 1536x1024. An entirely fictional silver-haired Latino father in his early sixties wearing a pale blue linen shirt, and an entirely fictional adult daughter in a cream blouse, caught in a warm candid embrace on the LEFT HALF at an outdoor birthday lunch. Small plain birthday cake on honey-colored wooden table front-left, believable faces and anatomy, unposed tenderness rather than cheesy stock celebration. RIGHT HALF a softly sunlit, pale sandstone garden wall and subtle green foliage, ample uncluttered visual quiet for a website dark panel; do not generate the panel or any text. Cream, apricot and sage palette, premium natural documentary photography, late summer light. No balloons, flowers, wedding, pink ribbons, Mira, magazines, branded objects, private identity or watermark. All people made-up noncustomer subjects. Composition and subjects must differ materially from a sofa-photo-memory scene.",
+      "purpose": "Offer photographic panel replaces gift hero",
+      "adoptedAsset": "poc/g3c/preview-plugin/assets/g3cr6r3d2r2/offer-birthday-panel.png",
+      "sourceToolPath": "C:\\Users\\34707\\.codex\\generated_images\\01a10527-72de-7531-81a9-ae297311d671\\exec-19a1e4b0-0c37-45b0-aafc-c0931ffc5059.png",
+      "replacesExistingVisual": true,
+      "subjects": "Entirely fictional, noncustomer",
+      "rights": "Original generated marketing asset; no Focusly proprietary assets used",
+      "notCustomerOutput": true,
+      "sha256": "713f896f834044562c3101763551a793dbd2e0383e56d8732a4066dabf016db2",
+      "bytes": 2343702,
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    }
+  ]
+}

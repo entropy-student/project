@@ -1,0 +1,49 @@
+{
+  "gate": "G3CR6R3D2R2_VISUAL_POLISH",
+  "round": "round2",
+  "result": "TECHNICAL_CHECKS_PASS",
+  "eightGutenbergGroups": true,
+  "sixUniqueAnchors": true,
+  "ownerEditCapabilities": true,
+  "homeChanges": "Exactly five image blocks; all other Gutenberg content byte-identical",
+  "samples": {
+    "desktopWidth": 1280,
+    "mobileWidth": 343,
+    "compositions": 3,
+    "fullBleed": true,
+    "perspectiveControllerByteUnchanged": true
+  },
+  "mobileHeader": {
+    "brandWidth": 182.453125,
+    "menuTouchTarget": 44,
+    "brandMenuGap": 84.546875
+  },
+  "mobileRhythm": {
+    "acceptedD2Height": 7959,
+    "r2Height": 7866,
+    "reduction": 93
+  },
+  "desktopMobileNoOverflow": true,
+  "brokenImages": 0,
+  "pageErrors": 0,
+  "failedResources": 0,
+  "hoverFocus": true,
+  "nativeMobileMenu": true,
+  "reducedMotion": true,
+  "noJS": true,
+  "missingMotionScriptFallback": true,
+  "protectedRuntimeHashesUnchanged": true,
+  "previewGeometryUnchanged": true,
+  "previewInteractionsReplayed": false,
+  "privacyBasis": "Accepted Preview proof + byte-identical JS/CSS/PHP and unchanged shortcode/geometry, not a new photo-upload test",
+  "commerceReadOnly": true,
+  "checkoutReadOnlyResult": "Empty-cart native redirect to /cart/; no Add to Cart or submit",
+  "orderCountBefore": 1,
+  "orderCountAfter": 1,
+  "productModelCalls": 0,
+  "generationJobs": 0,
+  "staticDesignImagegenCalls": 5,
+  "runtimeRetained": true,
+  "resourcesUnchanged": true,
+  "visualDecision": "Owner/Reviewer pending; internal technical report is not formal PASS"
+}

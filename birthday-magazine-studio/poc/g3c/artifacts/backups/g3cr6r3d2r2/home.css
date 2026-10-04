@@ -89,10 +89,12 @@ body.home .bms-focus-question .bms-copy{font-size:13px;line-height:1.65}
 body.home .bms-samples{background:var(--focus-paper);padding:64px 24px 120px;text-align:center}
 body.home .bms-samples>.bms-heading{font-size:96px;line-height:.98;margin-bottom:26px}
 body.home .bms-samples>.bms-copy{margin:0 auto 75px}
-body.home .bms-focus-card{position:relative;max-width:1280px;aspect-ratio:3/2;margin:0 auto 80px;border-radius:32px;overflow:hidden;background:#d1cec2;transform-origin:50% 50%;will-change:auto}
+body.home .bms-focus-card{position:relative;max-width:800px;aspect-ratio:16/10;margin:0 auto 120px;border-radius:48px;overflow:hidden;background:#d1cec2;transform-origin:50% 50%;will-change:auto}
 body.home .bms-focus-card:last-child{margin-bottom:0}
 body.home .bms-focus-card figure{height:100%;margin:0}
 body.home .bms-focus-card img{width:100%;height:100%;object-fit:cover;display:block}
+body.home .bms-focus-card .bms-card-cover{padding:35px}
+body.home .bms-card-cover img{object-fit:contain}
 body.home .bms-card-label{position:absolute;left:24px;bottom:24px;margin:0;border-radius:30px;background:white;color:#0c0e0f;font:12px/1 Arial,sans-serif;padding:9px 14px}
 body.home .bms-card-label::before{content:'';display:inline-block;width:5px;height:5px;background:var(--focus-signal);border-radius:50%;margin-right:8px}
 body.home .bms-closing{position:relative;isolation:isolate;background:#080a0b;min-height:1050px;display:grid;place-items:center;padding:150px 32px;overflow:clip}
@@ -127,10 +129,9 @@ body.home .bms-motion-on .bms-closing .bms-heading{background:linear-gradient(90
  body.home .bms-contained-cover{padding:25px 40px}
 }
 @media(max-width:700px){
- body.home #header [data-row='middle']{width:calc(100% - 32px);--height:64px;border-radius:0 0 22px 22px}
- body.home #header [data-row] .ct-container{padding:0 16px;gap:12px}
- body.home #header .site-title{font-size:22px!important;max-width:230px;line-height:1.05!important}
- body.home #header .ct-header-trigger{min-width:44px;min-height:44px}
+ body.home #header [data-row='middle']{width:calc(100% - 48px);--height:64px;border-radius:0 0 22px 22px}
+ body.home #header [data-row] .ct-container{padding:0 18px}
+ body.home #header .site-title{font-size:23px!important;max-width:235px}
  body.home #offcanvas .ct-panel-inner{inset:80px 24px auto auto;width:calc(100% - 48px);height:auto;max-height:calc(100svh - 100px);min-height:0;border-radius:24px;overflow:auto}
  body.home #offcanvas .ct-panel-content{flex:initial}
  body.home .bms-heading{font-size:40px;line-height:1.03}
@@ -146,32 +147,29 @@ body.home .bms-motion-on .bms-closing .bms-heading{background:linear-gradient(90
  body.home .bms-hero-message .bms-copy{max-width:28ch}
  body.home .bms-focus-note{font-size:11px}
  body.home .bms-hero-caption{bottom:22px;padding:0 24px;font-size:9px}
- body.home .bms-focus-split{display:flex;flex-direction:column;align-items:stretch;gap:24px;padding:28px 24px 36px}
+ body.home .bms-focus-split{display:flex;flex-direction:column;align-items:stretch;gap:30px;padding:36px 24px 50px}
  body.home .bms-focus-visual{height:327px;border-radius:24px}
  body.home .bms-focus-visual img{object-fit:contain}
- body.home .bms-focus-copy{gap:18px}
- body.home .bms-focus-photo-panel{min-height:560px;padding:32px 24px;align-items:flex-end}
- body.home #offer.bms-focus-photo-panel{min-height:650px}
+ body.home .bms-focus-copy{gap:22px}
+ body.home .bms-focus-photo-panel{min-height:520px;padding:44px 24px}
  body.home .bms-dark-panel{border-radius:24px;padding:28px 26px;gap:22px}
  body.home .bms-dark-panel .bms-heading{font-size:48px}
  body.home .bms-panel-background img{object-position:60% 45%}
- body.home #preview .bms-panel-background img{object-position:76% 45%}
- body.home #offer .bms-panel-background{background:#d4c9b7}
- body.home #offer .bms-panel-background img{height:320px;object-position:24% 35%}
- body.home .bms-preview-chapter{padding-bottom:30px}
- body.home .bms-preview-surface{padding:0 20px;margin-top:24px}
+ body.home .bms-preview-chapter{padding-bottom:45px}
+ body.home .bms-preview-surface{padding:0 20px;margin-top:35px}
  body.home .bms-how .bms-focus-visual{height:365px}
  body.home .bms-contained-cover{padding:20px 35px}
  body.home .bms-panel-right{justify-content:stretch}
  body.home .bms-focus-price{font-size:36px}
- body.home .bms-faq{display:block;padding:36px 24px}
- body.home .bms-focus-faq-grid{grid-template-columns:1fr;gap:22px;margin-top:26px}
+ body.home .bms-faq{display:block;padding:50px 24px}
+ body.home .bms-focus-faq-grid{grid-template-columns:1fr;gap:28px;margin-top:32px}
  body.home .bms-focus-question .bms-heading{font:600 14px/1.3 Arial,sans-serif}
  body.home .bms-focus-question .bms-copy{font-size:13px}
- body.home .bms-samples{padding:20px 16px 44px}
+ body.home .bms-samples{padding:20px 24px 64px}
  body.home .bms-samples>.bms-heading{font-size:48px}
- body.home .bms-samples>.bms-copy{margin-bottom:28px;font-size:13px}
- body.home .bms-focus-card{width:100%;aspect-ratio:3/2;margin-bottom:28px;border-radius:18px}
+ body.home .bms-samples>.bms-copy{margin-bottom:36px;font-size:13px}
+ body.home .bms-focus-card{width:100%;aspect-ratio:1.4;margin-bottom:40px;border-radius:18px}
+ body.home .bms-focus-card .bms-card-cover{padding:20px}
  body.home .bms-card-label{left:15px;bottom:15px;font-size:11px}
  body.home .bms-closing{min-height:560px;padding:65px 24px;display:flex;flex-direction:column;justify-content:center}
  body.home .bms-closing .bms-heading{font-size:54px;position:relative}

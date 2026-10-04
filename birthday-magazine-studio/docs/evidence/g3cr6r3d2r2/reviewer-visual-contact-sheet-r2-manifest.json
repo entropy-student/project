@@ -1,0 +1,737 @@
+{
+  "gate": "G3CR6R3D2R2_VISUAL_POLISH",
+  "file": "reviewer-visual-contact-sheet-r2.jpg",
+  "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\reviewer-visual-contact-sheet-r2.jpg",
+  "dimensions": [
+    2000,
+    14255
+  ],
+  "bytes": 2076139,
+  "sha256": "75dd1f1e1cc8a5aca0be3716d79c9a410d57d2fc0c8a99e72e7eba767da9fe2a",
+  "quality": 78,
+  "sourceCount": 34,
+  "sources": [
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/desktop-focus-cycle-6000.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\desktop-focus-cycle-6000.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 628835,
+      "sha256": "099bb817ba7140f6976d3180931b1e6e1757dc9d7c5dc75119b63b2b152946a0"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-hero.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\desktop-normal-hero.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 1167973,
+      "sha256": "d121a0b09d509d565f51cab500a06241dc635623f6014c0db7f422980aba304b"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/desktop-section-2-0.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\desktop-section-2-0.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 687952,
+      "sha256": "233e1a234d84258fe3235e04699824dab75afdf6ebcdc4b0c339cbf3339d10e6"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-what-you-get.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\desktop-normal-what-you-get.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 1079986,
+      "sha256": "d9537ef80b71bfc3ee74534746055f5696aef04d4ad39cb5a68169888b3f01f1"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/desktop-section-3-0.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\desktop-section-3-0.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 1170664,
+      "sha256": "c78da592b2c65a4ecc82a786171c1a75cf2a12305eb4d8a703c90659b1e2e2b9"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-preview.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\desktop-normal-preview.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 1330338,
+      "sha256": "233b4e2a308d777d6c80853916f5ce2b25f13335c4794579c3fb44345f4063b2"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/desktop-section-4-0.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\desktop-section-4-0.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 929864,
+      "sha256": "119b78dd0f93684e1fa7d030fce3fa2401ce26f46df1f529e655363b7c08625e"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-offer.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\desktop-normal-offer.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 1365541,
+      "sha256": "5a6941267f43e0cad8a03a7999b5db70d1b17b797975f6cef4bd64b0f39d7ae6"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/desktop-section-6-0.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\desktop-section-6-0.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 392682,
+      "sha256": "c38358d23c6550f5eefeb1155130a72876032d157f65f66417128e9297e00990"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-samples.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\desktop-normal-samples.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 1134184,
+      "sha256": "1fe8f58a3efa202ce0af0651de67add7c11cdefe6e8c0e19499ea2999bc1e496"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/desktop-section-6-40.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\desktop-section-6-40.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 385001,
+      "sha256": "a5de0a00ad14cdd4bf98c0b3a9b02681ffefb28595ade2841d42b5598e3c2246"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-sample-card-2.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\desktop-normal-sample-card-2.png",
+      "dimensions": [
+        1276,
+        849
+      ],
+      "bytes": 1428398,
+      "sha256": "c747dd8272f403b2d7954e71b441fc626e73076c12e2efdd43249a5da32c3e06"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/desktop-work-scroll-400.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\desktop-work-scroll-400.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 477084,
+      "sha256": "5865f2d27f058f2c74c76b56e76ccd5b1bf1db9b7851c653be27a90e6b472ce5"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-sample-card-3.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\desktop-normal-sample-card-3.png",
+      "dimensions": [
+        1276,
+        848
+      ],
+      "bytes": 1368123,
+      "sha256": "39deea2c95c403fd986546fac5cc68098e0085e035892c34312003f508391ca7"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/desktop-email-scroll-1100.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\desktop-email-scroll-1100.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 257693,
+      "sha256": "04c362a7f2c51772f77bcff66ce9071232071a25a05cc4da285811e2f7686f98"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-bms-closing.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\desktop-normal-bms-closing.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 254611,
+      "sha256": "da5f2f360163b3821018e0051d7c67f6b437d1afe0c3139238964109169fbb40"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/mobile-focus-cycle-6000.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\mobile-focus-cycle-6000.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 238789,
+      "sha256": "cef47733a3d1afaa036aa62fe09013871d21694ccaf1fcf5c25da9691eddfbde"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-hero.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\mobile-normal-hero.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 292081,
+      "sha256": "0ca437aeaff018025f4d4a3a07bd920277b381ce2b4098448b93337ba9278826"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/mobile-section-3-0.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\mobile-section-3-0.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 182670,
+      "sha256": "b5af96ef810264438a6870781bd4addaeabca289b21cb6432376d314056e0309"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-preview.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\mobile-normal-preview.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 231861,
+      "sha256": "f96af61fc2b7f6954c5486d25d60023c29c74ddff2c9c75c532b0c6d5c40c3fa"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/mobile-section-4-0.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\mobile-section-4-0.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 180101,
+      "sha256": "2720989384c2af536c1182291fc91942e820ccceb41724794b97c7e3bb28a779"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-offer.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\mobile-normal-offer.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 202680,
+      "sha256": "34be128474efdbb2b136784cb6d3bdb0d96cd4254a8658823e85b0c5e51b335a"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/mobile-section-6-0.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\mobile-section-6-0.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 152080,
+      "sha256": "52de18e9357d3e841ea4b8d61cfb752fa718b7b56896f871752cf7d97646fe25"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-sample-card-1.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\mobile-normal-sample-card-1.png",
+      "dimensions": [
+        341,
+        226
+      ],
+      "bytes": 124739,
+      "sha256": "5b2047aa236c0f36b2d96b7995cc5d01686767c39b77ac613daaed5b97ae4224"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-sample-card-2.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\mobile-normal-sample-card-2.png",
+      "dimensions": [
+        341,
+        227
+      ],
+      "bytes": 123275,
+      "sha256": "017d730ab5d813bae79d30c2f863c7c85278bd0befad3327f497ec82688b5330"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-sample-card-3.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\mobile-normal-sample-card-3.png",
+      "dimensions": [
+        341,
+        227
+      ],
+      "bytes": 121763,
+      "sha256": "80d65c1bf61f7dfb2235987a4b29c699cb11c81df941248d227ea4bb51a47857"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/mobile-section-7-0.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\mobile-section-7-0.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 102888,
+      "sha256": "cdfa6430746c232e44fee8983b6145704d2d32fd87c9005bc76a494ddd962351"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-bms-closing.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\mobile-normal-bms-closing.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 64767,
+      "sha256": "a4f41dd293a0f9ca02718f9bd5108175d3e784ff3d2a0f4b7cd1f08dc2c99410"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d1/screenshots/mobile-full.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d1\\screenshots\\mobile-full.png",
+      "dimensions": [
+        375,
+        5035
+      ],
+      "bytes": 673460,
+      "sha256": "9fd1609b38c0b06bbd2e8421e48991f5fe38da8183e5026d53f61af18af8b564"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-full.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\mobile-normal-full.png",
+      "dimensions": [
+        375,
+        7866
+      ],
+      "bytes": 1585600,
+      "sha256": "400daa4a8af2076b42f53f4dcca562f5e7a76bda58bab4e1e0891f261a7c35e6"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-reduced-hero.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\desktop-reduced-hero.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 1195548,
+      "sha256": "b700d4db53987c7d799b70b075c85da2bcee1b69f3a0849f518c56296631447a"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-reduced-hero.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\mobile-reduced-hero.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 291243,
+      "sha256": "98be20f3f8f75b8ca128a32b7ed25ff4d672456b7fecb689dd37baa7f87c6c16"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-no-js-hero.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\desktop-no-js-hero.png",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "bytes": 1195808,
+      "sha256": "64afc6890d8f0e40287e3499387d7aaf826de5a6364ed1395ddb9f9eb805dcbb"
+    },
+    {
+      "path": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-no-js-hero.png",
+      "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\docs\\evidence\\g3cr6r3d2r2\\round2\\screenshots\\mobile-no-js-hero.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 291406,
+      "sha256": "514648a397b23feaf1a2fd575c66ade18f997160b0705a8ae1c0492d4b19dd0a"
+    }
+  ],
+  "placements": [
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/desktop-focus-cycle-6000.png",
+      "role": "Focusly Reference",
+      "rect": [
+        40,
+        317,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-hero.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1014,
+        317,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/desktop-section-2-0.png",
+      "role": "Focusly Reference",
+      "rect": [
+        40,
+        1151,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-what-you-get.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1014,
+        1151,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/desktop-section-3-0.png",
+      "role": "Focusly Reference",
+      "rect": [
+        40,
+        1985,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-preview.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1014,
+        1985,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/desktop-section-4-0.png",
+      "role": "Focusly Reference",
+      "rect": [
+        40,
+        2819,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-offer.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1014,
+        2819,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/desktop-section-6-0.png",
+      "role": "Focusly Reference",
+      "rect": [
+        40,
+        3653,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-samples.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1014,
+        3653,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/desktop-section-6-40.png",
+      "role": "Focusly Reference",
+      "rect": [
+        40,
+        4487,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-sample-card-2.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1014,
+        4501,
+        946,
+        629
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/desktop-work-scroll-400.png",
+      "role": "Focusly Reference",
+      "rect": [
+        40,
+        5321,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-sample-card-3.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1014,
+        5335,
+        946,
+        629
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/desktop-email-scroll-1100.png",
+      "role": "Focusly Reference",
+      "rect": [
+        40,
+        6155,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-normal-bms-closing.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1014,
+        6155,
+        946,
+        657
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/mobile-focus-cycle-6000.png",
+      "role": "Focusly Reference",
+      "rect": [
+        310,
+        6953,
+        406,
+        880
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-hero.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1284,
+        6953,
+        406,
+        880
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/mobile-section-3-0.png",
+      "role": "Focusly Reference",
+      "rect": [
+        310,
+        7937,
+        406,
+        880
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-preview.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1284,
+        7937,
+        406,
+        880
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/mobile-section-4-0.png",
+      "role": "Focusly Reference",
+      "rect": [
+        310,
+        8921,
+        406,
+        880
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-offer.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1284,
+        8921,
+        406,
+        880
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/mobile-section-6-0.png",
+      "role": "Focusly Reference",
+      "rect": [
+        310,
+        9905,
+        406,
+        880
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-sample-card-1.png",
+      "role": "Birthday Magazine R2 - complete mobile card",
+      "rect": [
+        1280,
+        9905,
+        413,
+        274
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-sample-card-2.png",
+      "role": "Birthday Magazine R2 - complete mobile card",
+      "rect": [
+        1281,
+        10207,
+        412,
+        274
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-sample-card-3.png",
+      "role": "Birthday Magazine R2 - complete mobile card",
+      "rect": [
+        1281,
+        10509,
+        412,
+        274
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/mobile-section-7-0.png",
+      "role": "Focusly Reference",
+      "rect": [
+        310,
+        10889,
+        406,
+        880
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-bms-closing.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1284,
+        10889,
+        406,
+        880
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d1/screenshots/mobile-full.png",
+      "role": "Focusly Reference",
+      "rect": [
+        453,
+        11873,
+        119,
+        1600
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-normal-full.png",
+      "role": "Birthday Magazine R2",
+      "rect": [
+        1449,
+        11873,
+        76,
+        1600
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-reduced-hero.png",
+      "role": "R2 reduced-motion/no-JS",
+      "rect": [
+        40,
+        13684,
+        459,
+        319
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-reduced-hero.png",
+      "role": "R2 reduced-motion/no-JS",
+      "rect": [
+        638,
+        13589,
+        236,
+        510
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/desktop-no-js-hero.png",
+      "role": "R2 reduced-motion/no-JS",
+      "rect": [
+        1014,
+        13684,
+        459,
+        319
+      ],
+      "crop": "NONE"
+    },
+    {
+      "source": "docs/evidence/g3cr6r3d2r2/round2/screenshots/mobile-no-js-hero.png",
+      "role": "R2 reduced-motion/no-JS",
+      "rect": [
+        1612,
+        13589,
+        236,
+        510
+      ],
+      "crop": "NONE"
+    }
+  ],
+  "newReferenceResearch": false,
+  "screenshotsRetakenForComposition": false,
+  "ownerRelay": "Upload the local JPG directly to the current ChatGPT conversation",
+  "noBase64": true,
+  "noDataURI": true,
+  "noZIP": true
+}

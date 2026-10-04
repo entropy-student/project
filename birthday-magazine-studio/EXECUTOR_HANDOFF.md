@@ -1,5 +1,24 @@
 # Executor Handoff — Birthday Magazine Studio
 
+## Latest execution — G3CR6R3D2R2 Visual Polish (2026-10-04)
+
+This section supersedes earlier execution status for the current candidate; all older sections below are retained history.
+
+- **Result:** PASS_CANDIDATE_G3CR6R3D2R2_VISUAL_POLISH; formal visual acceptance and Owner freeze pending. Same branch codex/birthday-magazine-g3c-blocksy-wedding-productization and PR64 open/unmerged. Approved starting head2040bc762736830c7225e5121e40e4b65a829fc2; latest main e962be979c53d48373aba6ba5d52691a81a8c47c. Final submission is the enclosing commit, verified after push and reported on PR64.
+- **Review first:** docs/evidence/g3cr6r3d2r2/README.md, qa-report.json, DESIGN.md and reviewer-visual-contact-sheet-r2.jpg. Final59 PNGs under round2/screenshots/. Reused accepted66 Focusly captures; no template research or proprietary asset copying.
+- **Actual repairs:**1280px desktop/343px mobile full-bleed Samples with three distinct original scenes; two different original main photo panels; readable mobile brand/native44px trigger; tightened mobile gaps. Final mobile7866px vs D2 baseline7959px. Five built-in design-time imagegen calls, all adopted, no rejected iterations; prompts, file hashes and exact placement recorded. Hero/split/closing, all copy and links retained; Home differs in exactly five image blocks only.
+- **Validation:**1440/375 no overflow, broken images, JS/page errors or failed resources. Actual perspective/hover/focus/entrance and native menu/Escape; reduced/no-JS/missing-controller remain readable. Eight Gutenberg Groups/six anchors and Owner Administrator/edit/media/global-style capabilities preserved. Internal finish report is advisory, not Reviewer decision.
+- **Frozen boundaries:**Preview PHP/JS/CSS and internals, motion controller, Woo/private workspace, menus/theme mods/footer/product1113 USD39.99 virtual unchanged. Preview default geometry/type unchanged. No photo/permissions replay or new photo-network proof; accepted evidence reused with exact source correlation. Product/Cart/Account GET200; empty Checkout redirect to Cart200, not a full form test. Orders1->1, jobs0, product model calls0; design imagegen5 is separate.
+- **Rollback:**poc/g3c/artifacts/backups/g3cr6r3d2r2/ saves accepted D2 Home and byte-exact sources. Dry integrity PASS; actual restore not run. scripts/rollback-g3cr6r3d2r2.cjs --apply restores only that candidate, leaves new static assets inert. No DB/media/order deletion or pre-D2 rollback.
+- **Runtime:**retained WP7.1.1/Blocksy2.1.57/Woo11.1.2 at http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/. Docker project/unrelated inventory unchanged; no restart/build/pull/recreate/prune/teardown. No auth/session exported. Privacy Policy link remains deferred because configured page is draft.
+- **Git hygiene:**pre-existing screenshot deletions/Owner archives/unrelated untracked files excluded. No Reviewer decision modified; no new PR/merge or next Gate. All payment/PayPal/commerce-submit/order/product-model/production/shared-infra/P1-P12/Aha/G4 actions0.
+- **Owner visual relay:**upload local reviewer-visual-contact-sheet-r2.jpg directly to current ChatGPT conversation. Manifest records full absolute path, source/output dimensions/size/hash. JPG2000x14255,2,076,139bytes. Do not send a ZIP or Base64 substitute.
+
+**STOP_AT_REVIEWER=YES; OWNER_VISUAL_FREEZE=PENDING.**
+
+---
+
+
 ## Current Gate — G3CR6R1 Frontend Composition Redesign
 
 ```text
@@ -308,6 +327,25 @@ The runtime was then removed with the G3A-scoped Compose down --volumes --remove
 Branch: codex/birthday-magazine-g3a-woocommerce-commerce-account-loop; execution base 52ae9f2c1b810d8d61b6b64a42c115b95b93832c. Current main at PR creation was 782ea659040b60bda5f05a841c11b9c793d73c1a; intervening commits touched only Mini Craft files. Initial evidence commit fbd92b493ab98b2533ccf137206e54b2bbf926d3 is pushed; this PR/handoff reconciliation is a follow-up commit on the same branch. Reviewer PR [#49](https://github.com/entropy-student/project/pull/49) is open and unmerged (GitHub mergeable=true). Reviewer is the next decision point; do not start G3B.
 
 # Executor Handoff — Birthday Magazine Studio
+
+## Latest execution — G3CR6R3D2R2 Visual Polish (2026-10-04)
+
+This section supersedes earlier execution status for the current candidate; all older sections below are retained history.
+
+- **Result:** PASS_CANDIDATE_G3CR6R3D2R2_VISUAL_POLISH; formal visual acceptance and Owner freeze pending. Same branch codex/birthday-magazine-g3c-blocksy-wedding-productization and PR64 open/unmerged. Approved starting head2040bc762736830c7225e5121e40e4b65a829fc2; latest main e962be979c53d48373aba6ba5d52691a81a8c47c. Final submission is the enclosing commit, verified after push and reported on PR64.
+- **Review first:** docs/evidence/g3cr6r3d2r2/README.md, qa-report.json, DESIGN.md and reviewer-visual-contact-sheet-r2.jpg. Final59 PNGs under round2/screenshots/. Reused accepted66 Focusly captures; no template research or proprietary asset copying.
+- **Actual repairs:**1280px desktop/343px mobile full-bleed Samples with three distinct original scenes; two different original main photo panels; readable mobile brand/native44px trigger; tightened mobile gaps. Final mobile7866px vs D2 baseline7959px. Five built-in design-time imagegen calls, all adopted, no rejected iterations; prompts, file hashes and exact placement recorded. Hero/split/closing, all copy and links retained; Home differs in exactly five image blocks only.
+- **Validation:**1440/375 no overflow, broken images, JS/page errors or failed resources. Actual perspective/hover/focus/entrance and native menu/Escape; reduced/no-JS/missing-controller remain readable. Eight Gutenberg Groups/six anchors and Owner Administrator/edit/media/global-style capabilities preserved. Internal finish report is advisory, not Reviewer decision.
+- **Frozen boundaries:**Preview PHP/JS/CSS and internals, motion controller, Woo/private workspace, menus/theme mods/footer/product1113 USD39.99 virtual unchanged. Preview default geometry/type unchanged. No photo/permissions replay or new photo-network proof; accepted evidence reused with exact source correlation. Product/Cart/Account GET200; empty Checkout redirect to Cart200, not a full form test. Orders1->1, jobs0, product model calls0; design imagegen5 is separate.
+- **Rollback:**poc/g3c/artifacts/backups/g3cr6r3d2r2/ saves accepted D2 Home and byte-exact sources. Dry integrity PASS; actual restore not run. scripts/rollback-g3cr6r3d2r2.cjs --apply restores only that candidate, leaves new static assets inert. No DB/media/order deletion or pre-D2 rollback.
+- **Runtime:**retained WP7.1.1/Blocksy2.1.57/Woo11.1.2 at http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/. Docker project/unrelated inventory unchanged; no restart/build/pull/recreate/prune/teardown. No auth/session exported. Privacy Policy link remains deferred because configured page is draft.
+- **Git hygiene:**pre-existing screenshot deletions/Owner archives/unrelated untracked files excluded. No Reviewer decision modified; no new PR/merge or next Gate. All payment/PayPal/commerce-submit/order/product-model/production/shared-infra/P1-P12/Aha/G4 actions0.
+- **Owner visual relay:**upload local reviewer-visual-contact-sheet-r2.jpg directly to current ChatGPT conversation. Manifest records full absolute path, source/output dimensions/size/hash. JPG2000x14255,2,076,139bytes. Do not send a ZIP or Base64 substitute.
+
+**STOP_AT_REVIEWER=YES; OWNER_VISUAL_FREEZE=PENDING.**
+
+---
+
 
 ## Current Gate — G2BR3 Direct Codex Agent Real AI Proof — PASS_CANDIDATE
 

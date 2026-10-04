@@ -1,0 +1,11 @@
+{
+  "mode": "DRY_RUN_ONLY",
+  "backupHomeHashValid": true,
+  "backupSourceHashesValid": true,
+  "restoresTo": "Accepted D2 Home/CSS, not pre-D2",
+  "homeId": 858,
+  "homeSha256": "2e344d1edb45808d31e5e2ca8622a349dce6d58057acac424f1ed8538edbdc87",
+  "newAssetsPolicy": "Five new static files remain inert/unreferenced; no upload/DB deletion",
+  "menuRestoreRequired": false,
+  "protectedBusinessMutation": false
+}

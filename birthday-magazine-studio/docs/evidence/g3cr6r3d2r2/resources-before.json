@@ -1,0 +1,856 @@
+{
+  "containers": [
+    {
+      "id": "01e429b3b3d1b9cd248ec950dd040512c5aae32d7e0d4c0c6613b36ed244ecc0",
+      "name": "/spree-demo-repeat-2-postgres-1",
+      "image": "postgres:18-alpine",
+      "project": "spree-demo-repeat-2",
+      "state": "exited",
+      "startedAt": "2026-09-01T11:15:58.080390502Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "spree-demo-repeat-2_postgres_data",
+          "sourceHash": "9c8fb9c31b56d955ea0a1fd534b4c534b017e48a46210d8b2e3ea7946f97a62e",
+          "destinationHash": "c3507007e2b2e13c90b5e0255493917591677a2e961efcd32b4f84d2ada39b25",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "0216bc7716c8bf52161cf110be01b03851842b43a846a5669fda0f2eca8b133a",
+      "name": "/spree-demo-repeat-web-1",
+      "image": "spree-demo-repeat-backend:cb-dev-017",
+      "project": "spree-demo-repeat",
+      "state": "exited",
+      "startedAt": "2026-09-01T11:21:05.789136093Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "spree-demo-repeat_storage_data",
+          "sourceHash": "9e1b7bf37f5ab924c4de817cba94315c4be442eeb4f1647165ddf0bca85c8755",
+          "destinationHash": "2c11501217f5e07677688b10f029810922a389cc26ed2e9c2375f1bd4cc7fb7f",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "04d6e13caa1e51b7615d9e87b88415bc6ce178892c435a7a4f46f2f980c986aa",
+      "name": "/cb-b06r1-server-final-20260908",
+      "image": "cb-batch06-r1-medusa:20260908",
+      "project": null,
+      "state": "exited",
+      "startedAt": "2026-09-08T10:00:02.350373534Z",
+      "health": null,
+      "mounts": [],
+      "ports": {}
+    },
+    {
+      "id": "21892d72baebe6157fbeab15ad6a1e3949cf4663ca55b45360c3f4eb1f052f00",
+      "name": "/birthday-magazine-g3c-wordpress-1",
+      "image": "wordpress:7.1.1-php8.3-apache",
+      "project": "birthday-magazine-g3c",
+      "state": "running",
+      "startedAt": "2026-10-04T05:28:03.504710353Z",
+      "health": null,
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "birthday-magazine-g3c_wordpress",
+          "sourceHash": "136dcb0548c536e22bbfae251372897960fde90f8c90b41ee53bcf8024f45170",
+          "destinationHash": "69dd2b02e1f3a65918182048ea4e29979a849d8942e8f53ed20a4bf10e529b36",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "56b84782ebdd2c0cc7dfff7cf245fae666754d15dd61392267b58fbec69ba681",
+          "destinationHash": "e84f110fe6cd2abd28b9765202470c41158e6a8f1a17fe8a61d0af0fb9c518b2",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "6b16fc1c471c0b62d0d45c4590a9ca7dffbd050148abdce8bcef983755e728bb",
+          "destinationHash": "ab203185c80d7188adaac42fb5e90e62fd16524023998edcdf2c6d33d2ea68d5",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "2e509c693e9052b54064eb88d890f2893842731584dec0bd38a9ce30ad7bfb24",
+          "destinationHash": "a288f6a8e061ff5e9f66c2f8ea628a034f2b1a92fbd1cfc8fbf7eeaa2e061e60",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "0eefbee1116351bd501774a4892693887899904db89ce76a67e079cc7fad8693",
+          "destinationHash": "56fed10c1655ecc45a41e86ace6bc60c8ca53d08a9198bf93b4522d540165e9a",
+          "rw": false
+        }
+      ],
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8189"
+          }
+        ]
+      }
+    },
+    {
+      "id": "26e58895251b31eb71f4247a9ac5a55cdec720d7d4b757cb664f3f715d9fe102",
+      "name": "/cb-b06r1-pg-20260908",
+      "image": "postgres:16-alpine",
+      "project": null,
+      "state": "exited",
+      "startedAt": "2026-09-08T08:54:28.151345079Z",
+      "health": null,
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "e1f60da5b74805a1db375b1057add1de58bc21a5917d561a86c814f8bba04252",
+          "sourceHash": "675161c21c464994a9a10ea3adb11c5a5e4b84e833707084230106df6489edc4",
+          "destinationHash": "dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "2bc37ce9de931ff8bd6147a163bc11ad3e02f8b7250b954e8e37086f2e52c86b",
+      "name": "/dujiao-d3b-sandbox-app-1",
+      "image": "dujiao-next:d1-v1.4.7",
+      "project": "dujiao-d3b-sandbox",
+      "state": "exited",
+      "startedAt": "2026-09-11T17:02:32.280646523Z",
+      "health": "starting",
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "3f209ec7b70814cccd8dd2fe714d3e608df2f3de4cce8a38b43cdd4bee479b71",
+          "destinationHash": "6c8e7b3a4a95e7fac039f1d99c07ae519b77fcc6cf503d96bb0094798c9d0c17",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "f3284f564404d0ea5a034167c00ad76b79a2edc7dbe4ce152b51cbc2759534e0",
+          "destinationHash": "f98c1b7ae2a385c5644035e1ae746ecbcfd92eed9fc55cf0d57fa81f639005f8",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "ba109bd4b417ce71cd9156d37bfd578d3836b40714e9c3682b35444a550f104f",
+          "destinationHash": "1943ba2399b98e7056b45f51482396d6a7e9dd3bf084e30f08c825d683b7a096",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "59f547a05bdf618bbec00ca06ea683053f978893350f9b13495655c29b1a396e",
+          "destinationHash": "6fb8a0463da694df32694fe856dd98b06c5f67a7639cde766b935fffc1aa61de",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "2a21e1f893b7272fe7d53010769c988d289ce8ba814713e6b3210d97e150453a",
+          "destinationHash": "8e3a3dca23bcdb88c67ac80a59ad9a90f3ac0ede1f1d82c2c0f05e89c1d24060",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "35d286e7af500c5282a6ad6b8007a23ea177ff57f3a965effe39f2b63c0a0438",
+      "name": "/birthday-magazine-g3c-mailpit-1",
+      "image": "axllent/mailpit:v1.31.2",
+      "project": "birthday-magazine-g3c",
+      "state": "running",
+      "startedAt": "2026-10-04T05:28:03.955791041Z",
+      "health": "healthy",
+      "mounts": [],
+      "ports": {
+        "8025/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8190"
+          }
+        ]
+      }
+    },
+    {
+      "id": "35e2624e07ff10db1445810786399f7779455911cbda4f6612e6d3a21f2a5b3c",
+      "name": "/sub2api",
+      "image": "weishaw/sub2api:latest",
+      "project": "deploy",
+      "state": "running",
+      "startedAt": "2026-10-04T04:57:15.462673866Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "deploy_sub2api_data",
+          "sourceHash": "2df171c7e423655cba44c2d4634823fd8668220168f88994d51ea820021d1276",
+          "destinationHash": "e818321034dfd053d32b0a08be802e3ce89a7af0c17c9f370ec9a55388629ab1",
+          "rw": true
+        }
+      ],
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "0.0.0.0",
+            "HostPort": "8080"
+          }
+        ]
+      }
+    },
+    {
+      "id": "361d58eb545432b915badbab118aaeb8bf2d4b591d1b5bd753fb7393383579aa",
+      "name": "/birthday-magazine-g3c-db-1",
+      "image": "mariadb:11.4.7",
+      "project": "birthday-magazine-g3c",
+      "state": "running",
+      "startedAt": "2026-10-04T05:27:50.861671313Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "birthday-magazine-g3c_database",
+          "sourceHash": "4214adebb7a9942f0cfc86ecc18fe6b2a55a6f0f3a4b7d98f9708d4932e19ba6",
+          "destinationHash": "1b71b9889c08dd7098bde93f37cdce61a2044921189884a078d8cb313f154db3",
+          "rw": true
+        }
+      ],
+      "ports": {
+        "3306/tcp": null
+      }
+    },
+    {
+      "id": "39f3fb5736eabf84f438cbd2120a30dc14601f725895f0bfe4a6d02d306f1a24",
+      "name": "/cb-b06r1-redis-tls-20260908",
+      "image": "redis:8-alpine",
+      "project": null,
+      "state": "exited",
+      "startedAt": "2026-09-08T12:05:47.257268459Z",
+      "health": null,
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "5dd5eb4a9bf6c06c9779a64118875bd0ed40330569b5cea6f599794e4f8f2ccd",
+          "destinationHash": "224afeb303cb2f800edb6fc2cbb98f5850076a1fb288c925d46aeb10cb05efce",
+          "rw": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "41f9e92935cf18d1beb01deaa06a73b4d1f104eb8cfb78c8c9a2c3e2a9f28e46",
+      "name": "/cb-b06r1-worker-20260908",
+      "image": "cb-batch06-r1-medusa:20260908",
+      "project": null,
+      "state": "exited",
+      "startedAt": "2026-09-08T09:42:13.201610213Z",
+      "health": null,
+      "mounts": [],
+      "ports": {}
+    },
+    {
+      "id": "43bd534305184def1a431d28af4c28b363102aa989b81577d3324b006866bdc6",
+      "name": "/ai-town-main-backend-1",
+      "image": "ghcr.io/get-convex/convex-backend:latest",
+      "project": "ai-town-main",
+      "state": "exited",
+      "startedAt": "2026-09-25T14:42:12.509671661Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "ai-town-main_data",
+          "sourceHash": "2aee2d692ddaebd8e237ce0d3854377423076fe4b2e5a63ee6597956b06482a4",
+          "destinationHash": "614f0fe38e90c8121bea27a66f84cd9e22721bd4dddffc4b95a0ac05a5041144",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "4805f82d11588065fc31c68a78e30c6ac0f613de30c2c382ef90217bba93d9dc",
+      "name": "/dujiao-d1-local-app-1",
+      "image": "dujiao-next:d1-v1.4.7",
+      "project": "dujiao-d1-local",
+      "state": "exited",
+      "startedAt": "2026-09-11T14:08:42.6870297Z",
+      "health": "starting",
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "b8285bc9867138546ed38edb2d08c756762d06962b8cdf416e96ebaf41e1bbc2",
+          "destinationHash": "6fb8a0463da694df32694fe856dd98b06c5f67a7639cde766b935fffc1aa61de",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "1cc9584fe0d5ab84c75fb18345fb8bcfecb902f67c9f6e0d98f6babfabb21957",
+          "destinationHash": "8e3a3dca23bcdb88c67ac80a59ad9a90f3ac0ede1f1d82c2c0f05e89c1d24060",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "eb97955a0315f7608ca6dd9afe0f1506240cc1a96c929493f559e3b3ad1c7233",
+          "destinationHash": "6c8e7b3a4a95e7fac039f1d99c07ae519b77fcc6cf503d96bb0094798c9d0c17",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "066d0f7739f9fe41ad5ef93c401fb6a8788906bae16200fdde8a949bf5812906",
+          "destinationHash": "f98c1b7ae2a385c5644035e1ae746ecbcfd92eed9fc55cf0d57fa81f639005f8",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "4e2e92042f2a05b9f64a65e58ca89b03698e65210fa3065a2590dc4edf44660b",
+      "name": "/crossborder-medusa-postgres-1",
+      "image": "postgres:16-alpine",
+      "project": "crossborder-medusa",
+      "state": "exited",
+      "startedAt": "2026-09-02T11:29:01.112622043Z",
+      "health": "starting",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "crossborder-medusa_medusa_pgdata",
+          "sourceHash": "932c768a78dff83a6b9d6550be9e3e707feee5850900e6c4da2772e3c2f76251",
+          "destinationHash": "dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "5471951eaab7126eca24563279b3cc47c8a978c9fd6392671cc7cc88e78e417d",
+      "name": "/spree-demo-repeat-postgres-1",
+      "image": "postgres:18-alpine",
+      "project": "spree-demo-repeat",
+      "state": "exited",
+      "startedAt": "2026-09-01T10:53:17.491056112Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "spree-demo-repeat_postgres_data",
+          "sourceHash": "6e56297e4ca9d5fcd9ad3d2e3812745b0b385a86e3b825888d8d158328f58756",
+          "destinationHash": "c3507007e2b2e13c90b5e0255493917591677a2e961efcd32b4f84d2ada39b25",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "6177c61a315930790d76ddd0d072c498d6956d878fbd1fd4dcac6f4997e0916a",
+      "name": "/spree-demo-web-1",
+      "image": "ghcr.io/spree/spree:latest",
+      "project": "spree-demo",
+      "state": "exited",
+      "startedAt": "2026-09-01T05:24:47.264015408Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "spree-demo_storage_data",
+          "sourceHash": "ffd0ed7aed9f34a556b7845ee71d86c14da98814b526dbbb8aecb362eb8b9613",
+          "destinationHash": "2c11501217f5e07677688b10f029810922a389cc26ed2e9c2375f1bd4cc7fb7f",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "7580dcbcba205816e97583ed545a1f1de19757f8f96b2b494385e030058b2f2a",
+      "name": "/spree-demo-source-postgres-1",
+      "image": "postgres:18-alpine",
+      "project": "spree-demo-source",
+      "state": "exited",
+      "startedAt": "2026-09-01T09:12:42.346093437Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "spree-demo-source_postgres_data",
+          "sourceHash": "144bc9bc9df24042b901ef55fa28d2b2eb207fe76dc8a91eb1812f45876471e7",
+          "destinationHash": "c3507007e2b2e13c90b5e0255493917591677a2e961efcd32b4f84d2ada39b25",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "83946a3e0b8a749b5da3dc8b8ef2478a7cc890ee5752bd93768d01abcd357924",
+      "name": "/cb-b06r1-migrate-20260908",
+      "image": "cb-batch06-r1-medusa:20260908",
+      "project": null,
+      "state": "exited",
+      "startedAt": "2026-09-08T09:14:21.959428132Z",
+      "health": null,
+      "mounts": [],
+      "ports": {}
+    },
+    {
+      "id": "8a95ce5786b488f9e48924d57bd8eda4252f2ae499f29d496ff092f63681dead",
+      "name": "/dujiao-d1-local-redis-1",
+      "image": "redis:7-alpine",
+      "project": "dujiao-d1-local",
+      "state": "exited",
+      "startedAt": "2026-09-11T13:17:55.181684029Z",
+      "health": "starting",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "9caa567e552a5c5876334a4a08a7b7e875cadbc725a51c6610b4f4400f9439d9",
+          "sourceHash": "cc2f564b313a6d5dcd29e0cff254b8b2d2bd8265800e1edd0e9978ab4407d755",
+          "destinationHash": "bd47413b5c03dfc6e4b5b8143fe205eae10ecaf0c28b426be98d74cff48c7453",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "8b77d32044cde8632bd48b854e280d5909031f471f7ee5da125546c615a18787",
+      "name": "/cb-b06r1-worker-final-20260908",
+      "image": "cb-batch06-r1-medusa:20260908",
+      "project": null,
+      "state": "exited",
+      "startedAt": "2026-09-08T10:00:02.93143947Z",
+      "health": null,
+      "mounts": [],
+      "ports": {}
+    },
+    {
+      "id": "8d16ec31648f08e46863f7c70e1a79ada7da26579f8da5059bc908fde908ea50",
+      "name": "/dujiao-d3b-sandbox-redis-1",
+      "image": "redis:7-alpine",
+      "project": "dujiao-d3b-sandbox",
+      "state": "exited",
+      "startedAt": "2026-09-11T17:02:26.433749973Z",
+      "health": "starting",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "100ae48b4ac06025d97eb3f175e79796c4c89694eabb158a6d59a094bc116acb",
+          "sourceHash": "2f828affa13cc016312f5cdef124b80370b226fd0181e779389dc71afd65aa4c",
+          "destinationHash": "bd47413b5c03dfc6e4b5b8143fe205eae10ecaf0c28b426be98d74cff48c7453",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "99e4c5772948cb1926a58fb0f050302848c46528ff07a072b4d956cf3259b1e2",
+      "name": "/spree-demo-repeat-2-web-1",
+      "image": "spree-demo-repeat-backend:cb-dev-017",
+      "project": "spree-demo-repeat-2",
+      "state": "exited",
+      "startedAt": "2026-09-01T11:17:49.866397853Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "spree-demo-repeat-2_storage_data",
+          "sourceHash": "c41009aadff24cb54707734d7ef9f7d73ac38a4a25bbaaffdaa4c9a068e5d189",
+          "destinationHash": "2c11501217f5e07677688b10f029810922a389cc26ed2e9c2375f1bd4cc7fb7f",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "a01c654e400f17bd8a762ae6db076d95ce10c916400399540f4ed51602aeec72",
+      "name": "/cb-b06r1-server-20260908",
+      "image": "cb-batch06-r1-medusa:20260908",
+      "project": null,
+      "state": "exited",
+      "startedAt": "2026-09-08T09:38:05.370727236Z",
+      "health": null,
+      "mounts": [],
+      "ports": {}
+    },
+    {
+      "id": "b61e21ae5efb8521af246670acbf9429b2021843dceed9c8aaa2f973bdf84e2b",
+      "name": "/sub2api-redis",
+      "image": "redis:8-alpine",
+      "project": "deploy",
+      "state": "running",
+      "startedAt": "2026-10-04T04:57:12.537807447Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "deploy_redis_data",
+          "sourceHash": "a5779129b32f29ed0b67784ad44952fe028f7910c26b93b09aa04c8e2acf0f57",
+          "destinationHash": "bd47413b5c03dfc6e4b5b8143fe205eae10ecaf0c28b426be98d74cff48c7453",
+          "rw": true
+        }
+      ],
+      "ports": {
+        "6379/tcp": null
+      }
+    },
+    {
+      "id": "c8359897612fa01b48cc5abd591d9df4320016abeeeb8a1f3dfdde352815c949",
+      "name": "/cb-b06r1-redis-20260908",
+      "image": "redis:8-alpine",
+      "project": null,
+      "state": "exited",
+      "startedAt": "2026-09-08T08:54:28.699525243Z",
+      "health": null,
+      "mounts": [],
+      "ports": {}
+    },
+    {
+      "id": "cafb79047bb2c65112c660f14461f1b124ad1806e80f8e4846e3351758512a93",
+      "name": "/crossborder-medusa-repeat-postgres-1",
+      "image": "postgres:16-alpine",
+      "project": "crossborder-medusa-repeat",
+      "state": "exited",
+      "startedAt": "2026-09-01T10:10:42.255820372Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "crossborder-medusa-repeat_pgdata",
+          "sourceHash": "bf9a9df648ef73af87155d195a3ebd654a3022c4c470b50a6af24b576c9cc4d8",
+          "destinationHash": "dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "cf668498c0a49a80e50b94e9f320c033687d3a1fe9f8e69e467cac8fedbd905a",
+      "name": "/cb-b06r1-server-current-tag-20260908",
+      "image": "cb-batch06-r1-medusa:20260908",
+      "project": null,
+      "state": "exited",
+      "startedAt": "2026-09-08T13:48:53.387477231Z",
+      "health": null,
+      "mounts": [],
+      "ports": {}
+    },
+    {
+      "id": "d2d639bee46e1fc4c5917b08d40c5dbbf75d6542d00e1518eac773e8cab5984c",
+      "name": "/spree-demo-mailpit-1",
+      "image": "axllent/mailpit:latest",
+      "project": "spree-demo",
+      "state": "exited",
+      "startedAt": "2026-09-01T05:24:48.592735236Z",
+      "health": "unhealthy",
+      "mounts": [],
+      "ports": {}
+    },
+    {
+      "id": "d5dc3c8530f3e66571391605e1245e313e17a6384b5aa7f4261570c69021f586",
+      "name": "/spree-demo-postgres-1",
+      "image": "postgres:16-alpine",
+      "project": "spree-demo",
+      "state": "exited",
+      "startedAt": "2026-09-01T05:24:48.571639836Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "spree-demo_postgres_data",
+          "sourceHash": "f0b1dfb032765b7792e0abe411de9b6ed3340e601ae978f370d226579c3e3a4f",
+          "destinationHash": "c3507007e2b2e13c90b5e0255493917591677a2e961efcd32b4f84d2ada39b25",
+          "rw": true
+        },
+        {
+          "type": "volume",
+          "name": "49339c60e066089919c34aeb297b45cdcbfb08861a61b96b528d14f07044ab90",
+          "sourceHash": "5493edf8be40dc04e4d1ad59f348f236ca61bc8853c7da1769f50b59b8f48869",
+          "destinationHash": "dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "d7cef8311d21e424bad5eef8ea1407e605ae10a71c533f9dca0e315a75dbe49b",
+      "name": "/sub2api-postgres",
+      "image": "postgres:18-alpine",
+      "project": "deploy",
+      "state": "running",
+      "startedAt": "2026-10-04T04:57:12.536463486Z",
+      "health": "healthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "5dc57966425445803ccdbcbf73c880c70a4df51b64e226c8ac47f128834f4268",
+          "sourceHash": "a3547150cebcc3124f12697576b0761bf1c6e49591fbbc332b7cd13e9990cb23",
+          "destinationHash": "c3507007e2b2e13c90b5e0255493917591677a2e961efcd32b4f84d2ada39b25",
+          "rw": true
+        },
+        {
+          "type": "volume",
+          "name": "deploy_postgres_data",
+          "sourceHash": "4465f6ad8246ec1d87ee62a1dae01268224f8e45b5e1c0aab3ca3ad7e3db4abf",
+          "destinationHash": "dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+          "rw": true
+        }
+      ],
+      "ports": {
+        "5432/tcp": null
+      }
+    },
+    {
+      "id": "d84f715e0fc2e862d0454fc853f2ae15c9efcc3d99bd9ad621639ae5104b4096",
+      "name": "/crossborder-medusa-repeat-2-postgres-1",
+      "image": "postgres:16-alpine",
+      "project": "crossborder-medusa-repeat-2",
+      "state": "exited",
+      "startedAt": "2026-09-01T11:13:40.712693217Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "crossborder-medusa-repeat-2_pgdata",
+          "sourceHash": "7366a3b754ed891a379aef432e9700c5ed69a1863be0ab693e0873c79d244904",
+          "destinationHash": "dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "dc18a4702b8b5260fa0322e17b1d47eef33f81dbbbde469fe513c6c314234b6a",
+      "name": "/medusa-product-integration-a1b2c3-postgres-1",
+      "image": "postgres:16-alpine",
+      "project": "medusa-product-integration-a1b2c3",
+      "state": "exited",
+      "startedAt": "2026-09-05T02:53:37.089009304Z",
+      "health": "starting",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "medusa-product-integration-a1b2c3_pgdata",
+          "sourceHash": "b74d21ec0471c2dd2f742907b06b8d7f76eb72f72bab877f72998096e851b709",
+          "destinationHash": "dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "dcf4e8ebd56baa4e90e961a4116854c725f2e22bf6160013a237e670b4e02c46",
+      "name": "/cb-b06r1-worker-current-tag-20260908",
+      "image": "cb-batch06-r1-medusa:20260908",
+      "project": null,
+      "state": "exited",
+      "startedAt": "2026-09-08T13:48:53.988323912Z",
+      "health": null,
+      "mounts": [],
+      "ports": {}
+    },
+    {
+      "id": "de9742647e062fddd40b9d7e310be52db57281e89cbba3fd6f39530a28759873",
+      "name": "/birthday-magazine-g3c-wpcli-1",
+      "image": "wordpress:cli-php8.3",
+      "project": "birthday-magazine-g3c",
+      "state": "exited",
+      "startedAt": "2026-09-30T11:18:02.940099822Z",
+      "health": null,
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "2e509c693e9052b54064eb88d890f2893842731584dec0bd38a9ce30ad7bfb24",
+          "destinationHash": "a288f6a8e061ff5e9f66c2f8ea628a034f2b1a92fbd1cfc8fbf7eeaa2e061e60",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "0eefbee1116351bd501774a4892693887899904db89ce76a67e079cc7fad8693",
+          "destinationHash": "56fed10c1655ecc45a41e86ace6bc60c8ca53d08a9198bf93b4522d540165e9a",
+          "rw": false
+        },
+        {
+          "type": "volume",
+          "name": "birthday-magazine-g3c_wordpress",
+          "sourceHash": "136dcb0548c536e22bbfae251372897960fde90f8c90b41ee53bcf8024f45170",
+          "destinationHash": "69dd2b02e1f3a65918182048ea4e29979a849d8942e8f53ed20a4bf10e529b36",
+          "rw": true
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "695836dd9ba681db8dc4a4c0f1106c9d832ff237acf0164b5465f65486b8057a",
+          "destinationHash": "e84f110fe6cd2abd28b9765202470c41158e6a8f1a17fe8a61d0af0fb9c518b2",
+          "rw": false
+        },
+        {
+          "type": "bind",
+          "name": null,
+          "sourceHash": "6b16fc1c471c0b62d0d45c4590a9ca7dffbd050148abdce8bcef983755e728bb",
+          "destinationHash": "ab203185c80d7188adaac42fb5e90e62fd16524023998edcdf2c6d33d2ea68d5",
+          "rw": false
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "e27958be198ef14e72d402b9adde60975acc39f9364f5f3f57ddb60893cbb737",
+      "name": "/spree-demo-source-web-1",
+      "image": "spree-demo-source-backend:cb-dev-016",
+      "project": "spree-demo-source",
+      "state": "exited",
+      "startedAt": "2026-09-01T09:12:48.125061413Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "spree-demo-source_storage_data",
+          "sourceHash": "f1acf036fe9be8817d81cabad6d9f532215c60ae29917cdc15742bcc19a31d95",
+          "destinationHash": "2c11501217f5e07677688b10f029810922a389cc26ed2e9c2375f1bd4cc7fb7f",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    },
+    {
+      "id": "f1ef48cc59b2af88d966b59bf8cd50fb09034c1dce130a9c25cc0d485e7b785b",
+      "name": "/medusa-template-validation-postgres-1",
+      "image": "postgres:16-alpine",
+      "project": "medusa-template-validation",
+      "state": "exited",
+      "startedAt": "2026-09-01T12:11:01.115425668Z",
+      "health": "unhealthy",
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "medusa-template-validation_pgdata",
+          "sourceHash": "336e340172e277179e3ddaebd948b0812beea20662a7e167206ca62e13f474c7",
+          "destinationHash": "dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+          "rw": true
+        }
+      ],
+      "ports": {}
+    }
+  ],
+  "volumes": [
+    "00b5efcc7a1ecb13d80154e527d9ff7b7f6e8f82560c687f47f5aa047646d785",
+    "057f39d05820a171c0dc55e46a56be39b0bb87dbee596620a6e7150bf8d6d97a",
+    "05bd2e1e16add4110cbc05cd25b74d77ba94102fdeff358a07a7ee18efb9cfa4",
+    "07b04a690815cd75803c3f374e2e3735b5cc38d8d499e285346d228edae4a00b",
+    "0a5c28de57970032dc890129e8b3dce8b7ada9475119baa1850785aedab143d9",
+    "0c033c60e4b0141025459b1856c964e6428562344c5cf02511a595a4c2309533",
+    "100ae48b4ac06025d97eb3f175e79796c4c89694eabb158a6d59a094bc116acb",
+    "1110d2a1d472d1c74203f6fd7f3f808eff9d93beeaef7b851d963433db76528f",
+    "11cef2beef3d5aa2c60a0d1a937da5395355ecb5ac0a0bb0f6e76083ab6072a5",
+    "16b3abf0e3770ed2ba1acaedb4f448352bc1fbd1b106d16b5f820fa904a2d3f7",
+    "1a15f5ae27f85d215294ebceb015a52b4d6733ea7601695404024067f65387af",
+    "211c120e812de7c0f90c2d2d0594edb267572c50c887dfbcaa6f64abe114d35b",
+    "266239103b9b71b2244a36971a64f2ff406cc451e7300c270bc7559c6f1daae5",
+    "286353d7fd63e059c74f6df895a39f854ab91710eaa74f76891fb63505eae36a",
+    "2f13929f04eaf5a2007c9de0c5742b897fffd0cb01e7d1e38da9774e043d8587",
+    "2fd121a39fba3577c1d15593881f74bd37b71c48e0d2cb28ab146dd5895f81ef",
+    "2fd5f82b04f4ad7bfa48520c82e7684dc5e5699154ace7e384f98ee80e2e51c1",
+    "319db03c45308fdd99c1e34bf7fc9c5bd959fd5e36a9047c7ce09e5b0e08be7e",
+    "336e1bac9cb41f5687c01ea3895369d49cb506c9934e763e3cdde3e7a1ea76f6",
+    "3444678537a1f7ad18f27c41f8e96868246fa2645c607878bdb41875a4ac9ac3",
+    "3e3adf134b24e86cfc71502c259f533a6e2da137299e176650dfbdd708e00a6e",
+    "49339c60e066089919c34aeb297b45cdcbfb08861a61b96b528d14f07044ab90",
+    "4a8b27fbf128dc946a8cb5ad329c179a56c4dca3b2426e30990eb11b40c208d4",
+    "4d6921e3ff1125c15d2289cde629579ffd29b04872d66c3371021737dd48c5c1",
+    "4feb0e675545ab65736e6fa34bc445c5b99f7836e6e46c9dd18ce5b14d4d4512",
+    "5ba0c3ac1ce0b7168e9eecefb7cb8c60f6ebcfd6ac6f73099545dba18fcaaec1",
+    "5dc57966425445803ccdbcbf73c880c70a4df51b64e226c8ac47f128834f4268",
+    "63e2d7c156b0613d864fb3acb71d5091dce29f55fb9f65abf4aa058f2c26f08d",
+    "6729cfada77f295cd50fdcf01e29ec56e6251a1faad1b4a32ef3550fc6eb1cae",
+    "67b0513ba0a4db458575c52eeeebb716fe8ec68dcdf380daf2df74e13286b1d6",
+    "6da987975b1f52202de1cd475e28751b13a70b03a690d28ca646f46bb51080ea",
+    "6eaf99e97842f9f3a8f3916f5788f2546c83d850ac2f99041a33f78c8e1e5c23",
+    "7271d673586206379737c74baafca14a0a702618a8e7622ecca70eab6995e549",
+    "745b44440b243a682141a0564fd706577a216569c4a1c2cd52f2136dff410d80",
+    "763bf379356e4a197ad464026e5f504a8303afb2d41a41a8c73f7f7c8ee6a329",
+    "7686011b86b15e74095175cabf2e516b466e4fe880c685ba26453c596cf40bf3",
+    "7b12279952d0cac9263ba2b77dcbf670209e5575c2f768c6a75afcf3d79614e2",
+    "81ab934308c187e44c602c648fbdf395149298b5c4fd9ec497b84148a88ee608",
+    "829a42fceacf63246b7d047c3b5f0cc4a33f0fa828936c36986e5b7b6876436a",
+    "847d10fd18c7e1059d1afad95ec25ef37479dce0e01f3e1a03d2d6e5155257f6",
+    "8ad69e8a11697816063d75c48e2b496602a02320cf7724634e4b45eb04a50f26",
+    "95730d36431390f6b1bf5f11d30d88f09aad2be09bed5514c4aa4c49309650c8",
+    "959a091b965963c25bfc1a6606e56c152fe84579e40d917bed935da05dcf6932",
+    "9caa567e552a5c5876334a4a08a7b7e875cadbc725a51c6610b4f4400f9439d9",
+    "9f9aff446fbf64f4e165007f396aaedb020085e7dfb238afb98e63636fe06e63",
+    "a096b61951f6f3aff385baddcd972bbbe049a5d196f18da19a6741a389aa7f04",
+    "ace22a743a63a773eac477b0d7f55862215018374d823c2c375c3a7ac50478db",
+    "ai-town-main_data",
+    "birthday-magazine-g3c_database",
+    "birthday-magazine-g3c_wordpress",
+    "c3687829d4cbbce868f4f2047e2fe4c69dffe8dc9157bcd75a73a4da5afe5db2",
+    "c3a069742c45853afa7535dc0b88cff039487560d08b05fedd2c3d7266250591",
+    "c7d897d649d8c74d1ed620f842dd1681117421ac3b5b673cd155700424954541",
+    "cdb8185965782ea5ab03d31807dc0b0ce59e61ac57ed087f4f253bcadf00ee5e",
+    "crossborder-medusa-repeat-2_pgdata",
+    "crossborder-medusa-repeat_pgdata",
+    "crossborder-medusa_medusa_pgdata",
+    "d5101f7b580777017c451df476d626a464908eb06cd06feb466f9d29e1b831f7",
+    "d9d4438906eac8b3247ed954b6232678f7611eb214868c21064151d0269c18bc",
+    "dd5cc8c1a9014453095f65aacebeacb09d67ac9760f393c3eb994ce40cf91f79",
+    "deploy_postgres_data",
+    "deploy_redis_data",
+    "deploy_sub2api_data",
+    "e1a961a6e8ad30997ad4a25a65d71aa4cd09fe66aa71f6c3702d8a745f1661e1",
+    "e1f60da5b74805a1db375b1057add1de58bc21a5917d561a86c814f8bba04252",
+    "ec144471b9c9fada42cd5433c8810b34926c4e4737c2a32e4db292b7b839e7eb",
+    "ef2a8596ea017a73cdd448f33cc50b09ac01991a8bc322844c7e7901fd446626",
+    "f8226e67b75bceccfd30b9d902033ab439fdcd8bed6ddff4cfb782ebf0da9b51",
+    "medusa-product-integration-a1b2c3_pgdata",
+    "medusa-template-validation_pgdata",
+    "r16r5r2-gobuildcache",
+    "r16r5r2-gomodcache",
+    "spree-demo-repeat-2_postgres_data",
+    "spree-demo-repeat-2_storage_data",
+    "spree-demo-repeat_postgres_data",
+    "spree-demo-repeat_storage_data",
+    "spree-demo-source_postgres_data",
+    "spree-demo-source_storage_data",
+    "spree-demo_postgres_data",
+    "spree-demo_storage_data"
+  ],
+  "networks": [
+    "046d623f374b spree-demo_default",
+    "0c6a7c6a2435 spree-demo-source_default",
+    "106a3d7f3c2d dujiao-d3b-sandbox_d3b-internal",
+    "245d747c8bb7 deploy_sub2api-network",
+    "2b62901cf639 medusa-product-integration-a1b2c3_default",
+    "58ccee174256 cb-b06r1-isolated-20260908",
+    "5b61449e165c bridge",
+    "63b6ef66f23f crossborder-medusa_default",
+    "6d7071b6699d crossborder-medusa-repeat_default",
+    "7f510f1357d8 ai-town-main_ai-town-network",
+    "91ed1c13d94c medusa-template-validation_default",
+    "9b519b6201be crossborder-medusa-repeat-2_default",
+    "b8c63b574c25 host",
+    "c5764a133496 spree-demo-repeat-2_default",
+    "ce916834f2a2 spree-demo-repeat_default",
+    "d677c4a7378c dujiao-d1-local_d1-internal",
+    "d9fc34a391c1 birthday-magazine-g3c_private",
+    "fef09169748c none"
+  ]
+}

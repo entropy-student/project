@@ -1,0 +1,3 @@
+*.css -text whitespace=cr-at-eol
+*.js -text whitespace=cr-at-eol
+*.php -text whitespace=cr-at-eol
