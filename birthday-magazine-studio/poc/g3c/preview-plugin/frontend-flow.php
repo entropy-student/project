@@ -21,7 +21,13 @@ add_action('wp_enqueue_scripts',static function(){
 },130);
 function bms7_doc(string $surface): void {
  $title=$surface==='intake'?'Create their birthday issue':'Your birthday issue';
- ?><!doctype html><html <?php language_attributes(); ?>><head><meta charset="<?php bloginfo('charset'); ?>"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title><?php echo esc_html($title); ?> — Good Issue</title><?php wp_head(); ?></head><body class="bms7"><main id="bms7-root" data-bms7-surface="<?php echo esc_attr($surface); ?>"></main><?php wp_footer(); ?></body></html><?php
+ $order_id=$surface==='status'&&isset($_GET['order_id'])?absint($_GET['order_id']):0;
+ $paid=false;
+ if($order_id && function_exists('wc_get_order') && is_user_logged_in()){
+  $order=wc_get_order($order_id);
+  $paid=$order && (int)$order->get_customer_id()===get_current_user_id() && $order->is_paid();
+ }
+ ?><!doctype html><html <?php language_attributes(); ?>><head><meta charset="<?php bloginfo('charset'); ?>"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title><?php echo esc_html($title); ?> — Good Issue</title><?php wp_head(); ?></head><body class="bms7"><main id="bms7-root" data-bms7-surface="<?php echo esc_attr($surface); ?>" data-order-id="<?php echo esc_attr((string)$order_id); ?>" data-paid="<?php echo $paid?'1':'0'; ?>"></main><?php wp_footer(); ?></body></html><?php
 }
 add_action('template_redirect',static function(){
  if(is_admin())return;
@@ -30,5 +36,7 @@ add_action('template_redirect',static function(){
 },0);
 add_action('woocommerce_thankyou',static function($order_id){
  if(!$order_id)return;
- echo '<div class="bms7-order-status" data-bms7-order-status data-order-id="'.esc_attr((string)absint($order_id)).'"></div>';
+ $order=function_exists('wc_get_order')?wc_get_order(absint($order_id)):false;
+ $paid=$order && $order->is_paid();
+ echo '<div class="bms7-order-status" data-bms7-order-status data-order-id="'.esc_attr((string)absint($order_id)).'" data-paid="'.($paid?'1':'0').'"></div>';
 },20);
