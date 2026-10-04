@@ -32,6 +32,8 @@
 
 | G3C_C2B_PREFLIGHT_WORKTREE_RECONCILIATION_P0 | 5–10 分钟 | UNKNOWN（补充核对窗口约 1 分钟） | UNKNOWN | 首个 preflight 前再次未记录开始时间；本轮正确 fail-closed，未丢弃含唯一事实的 3 个 dirty docs。下一轮把 start marker 作为第一条动作，并只做事实持久化。 | Executor RETURN_P0_LOCAL_FACTS_NOT_DURABLE |
 
+| G4B_BAIDU_NETDISK_RECOVERY_BACKEND_R4 | **未预先给出（Reviewer 流程缺口）** | 52m40s（至 source/offline validation；后续 Git persistence 不在该计时内） | UNCLASSIFIABLE | R4 Gate 漏写端到端预计耗时，违反本文件“Reviewer 每轮 Gate 给出预计区间”的规则，因此不能事后把 52m40s 判为超时或未超时。该遗漏本身作为 timing process defect 记录；R5 已恢复强制估时。 | R4 Evidence / main `79c10bf5...` |
+
 ## 已确认的主要耗时来源
 
 ### 1. 本地 runner 问题发现过晚
