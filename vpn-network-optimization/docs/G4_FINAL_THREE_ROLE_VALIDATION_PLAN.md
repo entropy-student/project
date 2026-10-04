@@ -35,6 +35,14 @@ Repository/document-only. No network, Secret, VPS, Clash, route, proxy, TUN, or 
 
 Result: this document plus canonical Handoff/Decision state.
 
+### G4-B0 — Windows outer-bypass semantics
+
+Before persistent three-role readiness, one bounded Owner-host canary must resolve whether Mihomo `interface-name` alone can bypass the live WireGuard route on Windows without an exact VPS `/32` route.
+
+This is required because the accepted G3-A planner expects a VPS `/32` physical-egress route for HY2/REALITY, G3-C C1 labels `interface-name` as unproven on Windows, and R3R2 succeeded with an explicit temporary `/32` route.
+
+If G4-B0 passes, G4-B may use `interface-name` and avoid a persistent route. If it fails, Reviewer must design a controlled route lifecycle before persistent readiness.
+
 ### G4-B — persistent three-role readiness
 
 Separate consequential Gate requiring fresh Owner authorization before execution.
