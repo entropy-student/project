@@ -142,21 +142,23 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 
 - **R2R3 Reviewer-direct repair:** at Owner request, Reviewer directly implemented the bounded scanner exception in helper/validator/package docs. Static read-back confirms Clash opt-in count 2, runtime opt-in count 0, all five metadata guards present, and Fixture L mutations for zero-length/root-level/extension/reparse/runtime scope. Formal PASS waits for Owner-side A-L/AST/Mihomo validation.
 
+- **R2R3V1 Owner validation return:** source identity and Owner runtime preflight passed, but the validator itself failed before A-L because Fixture L used a double-quoted mutation string containing `$isLock`; StrictMode expanded an unset validator variable. This is classified as a validator fixture defect, not a scanner-source failure. Validator-only commit `23f1c0e92bf6f8b87bf3ab56a712db2e2185824d` fixes the literal quoting; new validator blob is `abcf19ce6712fbf448c84043684e69930d67bef3`.
+
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_OWNER_VALIDATION_R2R3V1
+GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_OWNER_VALIDATION_R2R3V1R1
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=REVIEWER_SOURCE_REPAIR_COMPLETE_PENDING_OWNER_VALIDATION
-OBJECTIVE=Validate the Reviewer-direct bounded Secret scanner repair on the real Owner Windows toolchain without reading DPAPI/Secret or executing the real helper/canary.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact six source identities -> package validator A-L -> AST -> Mihomo v1.19.32 fixture parse -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=RETURN_R2R3V1_VALIDATOR_FIXTURE_L_LITERAL_INTERPOLATION
+OBJECTIVE=Rerun the repaired Owner-local offline validator after correcting the Fixture L literal-string bug; prove A-L, AST and Mihomo v1.19.32 against the exact repaired package with zero Secret/network action.
+MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact six source identities -> repaired package validator A-L -> AST -> Mihomo v1.19.32 fixture parse -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Real Owner Windows host; repository validator only.
 APPLICABLE_CRITICAL_CONSTRAINTS=No Secret-helper real mode; no DPAPI/recovery content; no real Secret/hash; no orchestrator/proxy probe/diagnostics; no Clash mutation; no network requests; no network mutation; no VPS/SSH; no G4.
 ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
 SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
 PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
-VALIDATOR_BLOB=46c5020f2b735d37c8cd1cff6fca568e7e855b54
+VALIDATOR_BLOB=abcf19ce6712fbf448c84043684e69930d67bef3
 TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
 PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
@@ -164,14 +166,13 @@ ESTIMATED_EXECUTION_TIME=2-5_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### REPAIR ALREADY APPLIED
+### FAILURE RECONCILIATION
 
-Reviewer directly implemented the Owner-requested R2R3 repair:
-- helper commit `20026cde8faa1fc022e048c56b7efb52aa44b590`;
-- validator commit `5a48774c78a351cf52c8d5c3300583d617e7a206`;
-- package-doc commit `46942adc1599a9257797b2320c9cd81abb3f71e2`.
-
-The helper now permits a bypass only after an actual read exception and only when fresh metadata proves a direct-child Clash-root `.lock` that is zero-byte, a normal file, and non-reparse. The project-runtime scan has no exception. Fixture L mutates each guard independently and requires rejection.
+- R2R3V1 reached the validator with all six prior blobs locked and then failed before fixture execution because Fixture L constructed one mutation target with a double-quoted PowerShell string.
+- Under StrictMode, `$isLock` inside that string was expanded before assignment and caused the validator itself to throw.
+- This is an evidence-tooling/fixture defect, not evidence that the Secret scanner repair failed.
+- Commit `23f1c0e92bf6f8b87bf3ab56a712db2e2185824d` changes exactly one validator line to a literal single-quoted PowerShell string. Helper/orchestrator/probe/template/package are unchanged.
+- No DPAPI/Secret/network action occurred in the failed validation.
 
 ### REQUIRED EVIDENCE
 
@@ -191,19 +192,19 @@ The helper now permits a bypass only after an actual read exception and only whe
 
 ### ACCEPTANCE_CRITERIA
 
-PASS only if the real Owner validator proves A-L + AST + Mihomo parse with the exact locked blobs and zero Secret/network action. No Secret Prepare replay occurs in this Gate.
+PASS only if the Owner validator proves A-L + AST + Mihomo parse with the exact locked blobs and zero Secret/network action. No Secret Prepare replay occurs in this Gate.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Repo-only repair; source can be reverted to the pre-R2R3 helper/validator/package blobs if validation fails.
+Repo-only validator correction; the scanner repair remains unchanged.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic R2R3V1 offline validation checkpoint and return complete output.
+Run the Reviewer-supplied atomic R2R3V1R1 offline validation checkpoint and return complete output.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action. Reviewer implemented this repair directly at Owner request.
+No Executor action.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
@@ -211,11 +212,11 @@ NONE.
 
 ## NEXT_STEP
 
-Owner validates the repaired package. If PASS, Reviewer reopens one sanitized Secret Prepare replay to prove the scanner repair on the real host.
+Owner reruns the repaired offline validator. If PASS, Reviewer formally accepts R2R3 and opens one sanitized Secret Prepare replay to prove the scanner repair on the real host.
 
 ## OWNER_ACTION_REQUIRED
 
-Run R2R3V1 offline validator only.
+Run R2R3V1R1 offline validator only.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
