@@ -124,19 +124,19 @@ G4-B persistent readiness is blocked on this bypass proof. The first G4-B0 live 
 Locked G4-B0 repair identities:
 
 ```text
-G4B0_REPAIR_CHECKPOINT_BLOB=b06fae4cdd2e9c80df8101f88f71cb48523de92b
+G4B0_REPAIR_CHECKPOINT_BLOB=8249091f6fcf469c303c449a2912ad507dead7a2
 ```
 
 Locked G4-B0 live identities:
 
 ```text
-G4B0_RUNNER_BLOB=234658cefed52f2f95a1cb20b50dad415ea4b54e
+G4B0_RUNNER_BLOB=71746ed816a89ccc8d3173a8743713cc9877e64a
 G4B0_TEMPLATE_BLOB=f8c637d28a35d3795c8ebaf470d50248562dbaf8
-G4B0_VALIDATOR_BLOB=e38fb49de49ffcaafb5fff505c1b05919072efaa
+G4B0_VALIDATOR_BLOB=25e9624092ecef7fc23ae97569d85026e3ebef56
 G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
 ```
 
-The repaired live runner, validator, and Owner-host repair checkpoint all PASS. Fresh Owner authorization has been granted for exactly one repaired live retry. No persistent G4-B/REALITY/system-proxy/TUN/G4-C scope is authorized.
+The second live retry returned before any external request because the readiness check rejected a loopback SOCKS UDP endpoint. That authorization is consumed. The readiness invariant has now been repaired to allow SOCKS TCP/UDP only on loopback, and the new runner/validator/checkpoint package has passed repository-level static review. Owner-host repair checkpoint is still required before any fresh live authorization can be requested.
 
 ## CRITICAL_CONSTRAINTS
 
