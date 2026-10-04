@@ -146,21 +146,23 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 
 - **R2R3V1R1 Owner validation return:** the same unset `$isLock` error recurred before substantive fixture execution. Static diagnostic found one remaining double-quoted regex literal using backslash-dollar; PowerShell still interpolated it. Validator-only commit `9c42dd671f005a04c66904778890b4181ba8126f` fixes that final occurrence. Whole-validator bounded scan now reports zero remaining `"\\$variable"`-style literals; new validator blob is `26655446b16f70809cb4741633fa7296b7c4d0de`.
 
+- **R2R3V1R2 Owner validation return:** validator reached package-contract validation and returned `PACKAGE_SECRET_SCAN_EXCEPTION_UNDOCUMENTED`. The package already documented all required safety semantics; the validator alone incorrectly depended on the English order `zero-byte -> root-level -> .lock`. Validator-only commit `6a831b5f947f82c63514989c28e0d0c03a33e2aa` replaces that with six independent semantic checks. New validator blob is `e520fa7b6c08b2e46365b55ec731a20bdb810c04`.
+
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_OWNER_VALIDATION_R2R3V1R2
+GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_OWNER_VALIDATION_R2R3V1R3
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=RETURN_R2R3V1R1_VALIDATOR_REGEX_LITERAL_INTERPOLATION
-OBJECTIVE=Rerun the Owner-local offline validator after correcting the second and final backslash-dollar interpolation defect in Fixture L; prove A-L, AST and Mihomo v1.19.32 against the exact repaired package with zero Secret/network action.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact six source identities -> repaired package validator A-L -> AST -> Mihomo v1.19.32 fixture parse -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=RETURN_R2R3V1R2_PACKAGE_DOC_VALIDATOR_ORDER_DEPENDENCY
+OBJECTIVE=Rerun the Owner-local offline validator after making the package-document contract semantic and order-independent; prove A-L, AST and Mihomo v1.19.32 against the exact repaired package with zero Secret/network action.
+MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact six source identities -> package validator A-L -> AST -> Mihomo v1.19.32 fixture parse -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Real Owner Windows host; repository validator only.
 APPLICABLE_CRITICAL_CONSTRAINTS=No Secret-helper real mode; no DPAPI/recovery content; no real Secret/hash; no orchestrator/proxy probe/diagnostics; no Clash mutation; no network requests; no network mutation; no VPS/SSH; no G4.
 ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
 SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
 PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
-VALIDATOR_BLOB=26655446b16f70809cb4741633fa7296b7c4d0de
+VALIDATOR_BLOB=e520fa7b6c08b2e46365b55ec731a20bdb810c04
 TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
 PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
@@ -170,12 +172,11 @@ TIMING_OBSERVABILITY_REQUIRED=YES
 
 ### FAILURE RECONCILIATION
 
-- R2R3V1R1 again failed before substantive fixture execution with the same unset `$isLock` error.
-- Targeted static inspection found exactly one remaining double-quoted regex literal containing backslash-dollar. In PowerShell, backslash does not escape variable interpolation.
-- Commit `9c42dd671f005a04c66904778890b4181ba8126f` converts that final literal to a true single-quoted literal.
-- A bounded scan of the entire validator after the patch found `REMAINING_SUSPICIOUS_COUNT=0` for double-quoted backslash-dollar variable patterns.
-- Scanner/helper/orchestrator/probe/template/package remain unchanged.
-- No DPAPI/Secret/network action occurred in the failed validation.
+- R2R3V1R2 reached package-contract validation and returned `PACKAGE_SECRET_SCAN_EXCEPTION_UNDOCUMENTED`.
+- Direct comparison proved the package text already contains all required semantics: actual read failure, root-level `.lock`, zero-byte, reparse exclusion, and strict project-runtime behavior.
+- The validator incorrectly encoded one phrase-order dependency: `zero-byte.*root-level.*\.lock`, while the valid documentation states root-level `.lock` before zero-byte.
+- Commit `6a831b5f947f82c63514989c28e0d0c03a33e2aa` changes only the validator document-contract check to six independent semantic regexes. Package/helper/orchestrator/probe/template are unchanged.
+- No DPAPI/Secret/network action occurred.
 
 ### REQUIRED EVIDENCE
 
@@ -199,11 +200,11 @@ PASS only if the Owner validator proves A-L + AST + Mihomo parse with the exact 
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Repo-only validator correction; the scanner repair remains unchanged.
+Repo-only validator correction; scanner repair and package documentation remain unchanged.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic R2R3V1R2 offline validation checkpoint and return complete output.
+Run the Reviewer-supplied atomic R2R3V1R3 offline validation checkpoint and return complete output.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
@@ -219,7 +220,7 @@ Owner reruns the validator. If PASS, Reviewer formally accepts R2R3 and opens on
 
 ## OWNER_ACTION_REQUIRED
 
-Run R2R3V1R2 offline validator only.
+Run R2R3V1R3 offline validator only.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
