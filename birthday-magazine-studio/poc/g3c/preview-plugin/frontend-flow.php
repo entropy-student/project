@@ -10,7 +10,8 @@ function bms7_assets(): void {
  wp_enqueue_style('bms7-flow',plugins_url('frontend-flow.css',__FILE__),[],'0.1.0');
  wp_enqueue_style('bms7-intake',plugins_url('frontend-intake.css',__FILE__),['bms7-flow'],'0.1.0');
  wp_enqueue_script('bms7-flow',plugins_url('frontend-flow.js',__FILE__),[],'0.1.0',true);
- wp_enqueue_script('bms7-intake',plugins_url('frontend-intake.js',__FILE__),['bms7-flow'],'0.1.0',true);
+ wp_enqueue_script('bms7-intake-ui',plugins_url('frontend-intake-ui.js',__FILE__),['bms7-flow'],'0.1.0',true);
+ wp_enqueue_script('bms7-intake',plugins_url('frontend-intake.js',__FILE__),['bms7-intake-ui'],'0.1.0',true);
  wp_add_inline_script('bms7-flow','window.BMS7='.wp_json_encode(['create'=>bms7_create(),'checkout'=>bms7_checkout()]).';','before');
 }
 add_action('wp_enqueue_scripts',static function(){
