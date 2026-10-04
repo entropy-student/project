@@ -1,7 +1,7 @@
 # VPN Network Optimization — REVIEWER HANDOFF
 
 > Maintainer: Reviewer only  
-> Governance: `entropy-student/spike.skill/vps-project-governance/VNEXT.md` v0.2.6 / ACTIVE_PROVISIONAL  
+> Governance: `entropy-student/spike.skill/vps-project-governance/VNEXT.md` v0.2.7 / ACTIVE_PROVISIONAL  
 > Canonical branch: `main`  
 > Detailed chronology: `docs/REVIEWER_TRANSITION_2026-10-04.md`  
 > Detailed proof: `EXECUTION_EVIDENCE.md`
@@ -188,7 +188,7 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 ## UNRESOLVED
 
 - G4-B0 is formally PASS and closed.
-- G4-B persistent REALITY/service/Secret/profile writes remain blocked while the R2 offline live-runner repair is pending.
+- G4-B persistent REALITY/service/Secret/profile writes remain blocked while the current R5R1 offline Baidu recovery-backend repair is pending Reviewer completion.
 - An approved encrypted recovery destination in a second failure domain (distinct from both the SFO3 VPS and this Windows local disk) is still Owner input required before G4-B can PASS.
 - Persistent REALITY backup service does not yet exist; the accepted public REALITY canary was temporary and cleaned.
 - Persistent three-role Clash profile does not yet exist.
