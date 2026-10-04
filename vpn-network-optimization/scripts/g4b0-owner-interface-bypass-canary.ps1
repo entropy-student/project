@@ -31,6 +31,7 @@ $script:authBytes = $null
 $script:configBytes = $null
 $script:runtimeDirectory = $null
 $script:configPath = $null
+$script:runtimeMarkerPath = $null
 $script:mihomoProcess = $null
 $script:mihomoStdoutTask = $null
 $script:mihomoStderrTask = $null
@@ -518,6 +519,10 @@ try {
     $script:runtimeDirectory = Join-Path $script:runtimeRoot ('g4b0-' + [Guid]::NewGuid().ToString('N'))
     [void][System.IO.FileSystemAclExtensions]::CreateDirectory((New-OwnerAcl -Directory),$script:runtimeDirectory)
     Assert-OwnerAcl -Path $script:runtimeDirectory
+    $script:runtimeMarkerPath = Join-Path $script:runtimeDirectory '.g4b0-owner'
+    [IO.File]::WriteAllText($script:runtimeMarkerPath,'G4B0',[Text.UTF8Encoding]::new($false))
+    Set-Acl -LiteralPath $script:runtimeMarkerPath -AclObject (New-OwnerAcl) -ErrorAction Stop
+    Assert-OwnerAcl -Path $script:runtimeMarkerPath
     $script:configPath = Join-Path $script:runtimeDirectory 'g4b0-interface-bypass.json'
     $templateText = [IO.File]::ReadAllText($script:templatePath,[Text.Encoding]::UTF8)
     $script:configBytes = New-ConfigBytes -TemplateText $templateText -AuthBytes $script:authBytes -Physical $script:physicalEgress -ProxyPort $script:proxyPort -Fingerprint $script:expectedFingerprint
@@ -574,13 +579,83 @@ finally {
 
     try {
         if ($null -ne $script:runtimeDirectory -and (Test-Path -LiteralPath $script:runtimeDirectory -PathType Container)) {
+            $runtimeFull = [IO.Path]::GetFullPath($script:runtimeDirectory)
+            $runtimeRootFull = [IO.Path]::GetFullPath($script:runtimeRoot).TrimEnd('\') + '\'
+            $runtimeLeaf = Split-Path -Leaf $runtimeFull
+            Assert-G4B0 ($runtimeFull.StartsWith($runtimeRootFull,[StringComparison]::OrdinalIgnoreCase)) 'RUNTIME_PATH_OUTSIDE_PROJECT_ROOT'
+            Assert-G4B0 ($runtimeLeaf -cmatch '^g4b0-[0-9a-f]{32}
+
+    try {
+        $leftoversAfter = @(Get-ChildItem -LiteralPath $script:runtimeRoot -Directory -Force -ErrorAction Stop | Where-Object { $_.Name -like 'g4b0-*' })
+        if ($leftoversAfter.Count -ne 0) { $script:cleanupFailures.Add('G4B0_RUNTIME_RESIDUE_PRESENT') }
+    }
+    catch { $script:cleanupFailures.Add('RUNTIME_RESIDUE_READBACK_FAILED') }
+
+    try {
+        Assert-NoVps32Route
+        Write-Output 'G4B0_ACTIVE_VPS_32_ROUTE_AFTER=0'
+        Write-Output 'G4B0_PERSISTENT_VPS_32_ROUTE_AFTER=0'
+    }
+    catch { $script:cleanupFailures.Add('FINAL_VPS_32_ROUTE_STATE_INVALID') }
+
+    try {
+        if ($null -ne $script:baseline) {
+            $finalState = Get-Baseline
+            Assert-SafeBaseline -State $finalState
+            Assert-SameBaseline -Before $script:baseline -After $finalState
+            Write-Output 'G4B0_WIREGUARD_PRESERVED=YES'
+            Write-Output 'G4B0_SYSTEM_PROXY_FINAL=OFF'
+            Write-Output 'G4B0_TUN_FINAL=OFF'
+            Write-Output 'G4B0_NETWORK_BASELINE_RESTORED=PASS'
+        }
+    }
+    catch { $script:cleanupFailures.Add('FINAL_NETWORK_BASELINE_INVALID') }
+
+    if ($null -ne $script:configBytes) { [Security.Cryptography.CryptographicOperations]::ZeroMemory($script:configBytes) }
+    if ($null -ne $script:authBytes) { [Security.Cryptography.CryptographicOperations]::ZeroMemory($script:authBytes) }
+    if ($null -ne $script:bundleFiles) {
+        foreach($value in $script:bundleFiles.Files.Values){ [Security.Cryptography.CryptographicOperations]::ZeroMemory([byte[]]$value) }
+    }
+    if ($null -ne $script:bundleBytes) { [Security.Cryptography.CryptographicOperations]::ZeroMemory($script:bundleBytes) }
+    if ($null -ne $script:protectedBytes) { [Security.Cryptography.CryptographicOperations]::ZeroMemory($script:protectedBytes) }
+
+    if ($script:cleanupFailures.Count -eq 0) {
+        Write-Output 'G4B0_SECRET_RUNTIME_CLEANUP=PASS'
+    }
+    else {
+        $script:success = $false
+        if ($null -eq $script:failureCode) { $script:failureCode = 'G4B0_CLEANUP_FAILED' }
+        Write-Output ('G4B0_CLEANUP_FAILURE_COUNT=' + $script:cleanupFailures.Count)
+    }
+
+    Write-Output 'SECRET_VALUES_EMITTED=0'
+    $finishedAt = [DateTimeOffset]::UtcNow
+    Write-Output ('ROUND_FINISHED_AT=' + $finishedAt.ToString('o'))
+    Write-Output ('ACTUAL_ELAPSED=' + ($finishedAt - $script:startedAt).ToString())
+}
+
+if ($script:success -and $script:cleanupFailures.Count -eq 0) {
+    Write-Output 'G4B0_OWNER_CHECKPOINT=COMPLETE'
+    Write-Output 'G4B0_RUNNER_RESULT=PASS_CANDIDATE_INTERFACE_NAME_BYPASS'
+    exit 0
+}
+
+Write-Output 'G4B0_RUNNER_RESULT=RETURN_TO_REVIEWER'
+Write-Output ('G4B0_FAILURE_PHASE=' + $script:phase)
+Write-Output ('G4B0_FAILURE_CODE=' + $(if ($null -ne $script:failureCode) { $script:failureCode } else { 'UNKNOWN' }))
+Write-Output ('G4B0_CONSEQUENTIAL_ACTION_STARTED=' + $(if ($script:consequentialStarted) { 'YES' } else { 'NO' }))
+Write-Output ('G4B0_REQUEST_COUNT=' + $script:requestCount)
+Write-Output 'DO_NOT_RERUN=YES'
+exit 1
+) 'RUNTIME_DIRECTORY_NAME_INVALID'
             Assert-OwnerAcl -Path $script:runtimeDirectory
-            if (@(Get-ChildItem -LiteralPath $script:runtimeDirectory -Force -ErrorAction Stop).Count -ne 0) {
-                $script:cleanupFailures.Add('RUNTIME_DIRECTORY_NOT_EMPTY')
+            Assert-G4B0 ($null -ne $script:runtimeMarkerPath -and (Test-Path -LiteralPath $script:runtimeMarkerPath -PathType Leaf)) 'RUNTIME_MARKER_MISSING'
+            Assert-OwnerAcl -Path $script:runtimeMarkerPath
+            foreach($item in @(Get-ChildItem -LiteralPath $script:runtimeDirectory -Recurse -Force -ErrorAction Stop)) {
+                Assert-G4B0 (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -eq 0) 'RUNTIME_REPARSE_POINT_PRESENT'
             }
-            else {
-                Remove-Item -LiteralPath $script:runtimeDirectory -ErrorAction Stop
-            }
+            Remove-Item -LiteralPath $script:runtimeDirectory -Recurse -Force -ErrorAction Stop
+            Assert-G4B0 (-not (Test-Path -LiteralPath $script:runtimeDirectory)) 'RUNTIME_DIRECTORY_REMAINS'
         }
     }
     catch { $script:cleanupFailures.Add('RUNTIME_DIRECTORY_DELETE_FAILED') }
