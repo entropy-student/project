@@ -101,92 +101,111 @@ No production mutation is authorized in C2B. Current rollback/continuity baselin
 - **C2B retry result:** the repaired runner progressed past the prior network-state failure and profile-store baseline, then failed at `CREATE_OWNER_RUNTIME` with `OWNER_ACL_INHERITANCE_ENABLED`. Cleanup passed; no UI acknowledgement, Secret output, real HY2/REALITY/VPS action, or network mutation occurred.
 - **ACL failure classification:** the Owner-only runtime ACL invariant remains required. The current failure is treated as ACL application/read-back incompatibility, not permission relaxation.
 - **D2 diagnostic result:** Owner-local D2 synchronized safely to current main, verified the diagnostic blob, then returned `MethodException` before either ACL method produced evidence; cleanup passed and C2B/network/Secret actions remained absent.
-- **D2 root cause refinement:** the diagnostic invoked the .NET Framework-shaped static `[IO.Directory]::CreateDirectory(path, DirectorySecurity)` call. On the target PowerShell 7.6.6/.NET runtime that call shape is not bindable; modern .NET exposes equivalent ACL-at-create behavior through `System.IO.FileSystemAclExtensions.CreateDirectory(DirectorySecurity, path)`. D2R1 tests that extension method and the Set-Acl fallback independently.
+- **D2 root cause refinement:** the diagnostic invoked the .NET Framework-shaped static `[IO.Directory]::CreateDirectory(path, DirectorySecurity)` call. On the target PowerShell 7.6.6/.NET runtime that call shape is not bindable; modern .NET exposes equivalent ACL-at-create behavior through `System.IO.FileSystemAclExtensions.CreateDirectory(DirectorySecurity, path)`.
+- **D2R1 result:** both modern create-with-ACL and create-then-`Set-Acl` independently proved `PROTECTED=True`, correct Owner, exactly one Owner rule, zero inherited/unauthorized rules, direct FullControl, child FullControl, cleanup PASS, no network mutation, and no Secret output. Reviewer selects create-with-ACL because it avoids a temporary inherited-permission window.
+- **ACL repair candidate:** canonical runner now uses `FileSystemAclExtensions.CreateDirectory` for both Owner runtime directories and explicitly `SetOwner($script:ownerSid)`; validator requires both properties and rejects regression to the old Directory overload.
 - **Benchmark detour remains cancelled.**
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2R1
+GATE_ID=G3C_C2B_OWNER_ACL_COMPAT_REPAIR_R1
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=RETURN_D2_ACL_DIAGNOSTIC_METHOD_BINDING
-OBJECTIVE=Independently test two supported Owner-only ACL application methods on the real PowerShell 7.6.6 host and identify a method that preserves the full protected owner-only ACL invariant.
-MAX_ENDPOINT_THIS_ROUND=Safe ff-only sync -> locked D2R1 diagnostic identity -> Method A modern .NET FileSystemAclExtensions create-with-ACL -> Method B create-then-Set-Acl -> bounded readback -> cleanup -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=PASS_D2R1_ACL_METHOD_CONFIRMED
+OBJECTIVE=Validate the Owner-only ACL repair on the target PowerShell 7.6.6 host and, only if the full offline validator passes, rerun the bounded synthetic/no-traffic Clash UI canary.
+MAX_ENDPOINT_THIS_ROUND=Safe ff-only sync -> locked source identity -> offline validator -> conditional repaired C2B synthetic UI canary -> cleanup/readback -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; isolated temporary %LOCALAPPDATA% ACL diagnostic directories only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No C2B runner retry; no Clash/Mihomo/UI; no network/VPS/DPAPI/Secret; no route/proxy/TUN/WG mutation; each ACL method isolated so one failure cannot suppress the other; temp fixtures must be removed.
-ACL_DIAGNOSTIC=scripts/c2b-owner-acl-diagnostic.ps1
-ACL_DIAGNOSTIC_BLOB=f890b8308d78ce2d41322df0214f3c2e9b13e7df
+TARGET_AND_SCOPE=Existing Owner Windows worktree; repaired C2B runner/validator plus unchanged template/package only.
+APPLICABLE_CRITICAL_CONSTRAINTS=PowerShell 7.6.6/Admin/High; no destructive Git; validator before runner; Owner-only protected ACL invariant must remain intact; WireGuard remains connected; synthetic/no-traffic only; no real HY2/REALITY/VPS/DPAPI/Secret; no route/proxy/TUN/WG mutation.
+RUNNER_BLOB=817ed91b30efd72f7cbb43fff56e9c55025380b6
+VALIDATOR_BLOB=aaddf4810b77655e4a2ae6d94ba3fb443a6b3e3a
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+PACKAGE_BLOB=64b7ea3c562adc241311517c79cc53d966197a6e
 SPECIALIST_RULES=11B_TARGET_HOST
-ESTIMATED_EXECUTION_TIME=2-5_minutes
+ESTIMATED_EXECUTION_TIME=5-10_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
 ### PREFLIGHT
 
-1. Use the existing elevated PowerShell 7.6.6 Owner session.
-2. Operate Git from the known C2B scripts directory; do not parse Git-emitted Chinese filesystem paths.
+1. Use the real Owner Windows host and elevated PowerShell 7.6.6.
+2. Operate Git from the known scripts directory; do not parse Git-emitted Chinese filesystem paths.
 3. Require project scope clean; fetch origin/main; require local HEAD ancestor of origin/main; update only with ff-only.
-4. Require post-sync project scope clean and exact D2R1 diagnostic blob `f890b8308d78ce2d41322df0214f3c2e9b13e7df`.
-5. Do not run `c2b-owner-clash-ui-canary.ps1`.
+4. Require post-sync project scope clean.
+5. Verify exact runner/validator/template/package blobs above.
+6. Run `g3c-c2a-package-validator.ps1` before the C2B runner.
+7. Require at least:
+   - `G3C_C2A_FIXTURE_I1_ACTIVE_STORE_SCOPE_WITHOUT_OBJECT_POLICYSTORE=PASS`;
+   - `G3C_C2A_FIXTURE_J1_MODERN_OWNER_ACL_CREATION_REQUIRED=PASS`;
+   - `POWERSHELL_AST_PARSE=PASS`;
+   - `G3C_C2A_OFFLINE_FIXTURES=PASS`;
+   - `NETWORK_REQUESTS=0`;
+   - `NETWORK_CHANGED=NO`.
+8. Any validator non-zero exit or missing required marker stops before C2B.
+9. Only after validator PASS may the repaired C2B runner execute exactly once.
 
-### DIAGNOSTIC METHODS
+### OWNER CHECKPOINT
 
-- **Method A:** use `System.IO.FileSystemAclExtensions.CreateDirectory(DirectorySecurity, path)` so ACL is applied at creation on modern .NET.
-- **Method B:** create normally, read existing ACL, call `SetAccessRuleProtection(true,false)`, set Owner and Owner FullControl, and apply with `Set-Acl`.
-- Each method runs inside its own try/catch and must emit its own result; Method A failure must not suppress Method B.
-- Each successful method readback reports: protected flag, owner match, rule count, inherited-rule count, unauthorized-rule count, direct Owner FullControl, child-inheritance Owner FullControl.
-- Entire diagnostic root is deleted in `finally`.
+If the runner reaches the UI prompt:
+1. import only the synthetic profile printed by the runner;
+2. leave production WireGuard and current production profile unchanged;
+3. confirm `WG-BASELINE`, synthetic `HY2-SFO3`, and manual selector are visible;
+4. keep `WG-BASELINE` current/default;
+5. do not select HY2 and send no HY2 traffic;
+6. remove the synthetic profile;
+7. enter the exact acknowledgement requested by the runner.
 
 ### REQUIRED_EVIDENCE
 
-- PowerShell 7.6.6 / Administrator / High integrity;
-- safe ff-only sync and post-sync clean;
-- exact D2R1 diagnostic blob;
-- Method A result + bounded ACL facts if created;
-- Method B result + bounded ACL facts if created;
-- at least one method satisfies the full invariant;
-- `ACL_DIAGNOSTIC=PASS`;
-- `TEMP_ACL_DIAGNOSTIC_CLEANUP=PASS`;
-- `NETWORK_MUTATION=NONE`;
+- safe ff-only synchronization and post-sync clean;
+- exact four locked source blobs;
+- full offline validator PASS including the new ACL regression fixture;
+- runner `C2B_PREFLIGHT=PASS`;
+- `OWNER_ONLY_RUNTIME_ACL=PASS`;
+- `MIHOMO_CONFIG_TEST=PASS`;
+- structured Owner acknowledgement;
+- `CLASH_PROFILE_STORE_POSTREMOVE=PASS`;
+- `POST_UI_NETWORK_READBACK=PASS`;
+- `LOCAL_RUNTIME_CLEANUP=PASS`;
+- WireGuard connected; proxy OFF; TUN OFF; routes unchanged;
 - `SECRET_VALUES_EMITTED=0`;
 - complete timing.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires at least one method with `PROTECTED=True`, `OWNER_MATCH=True`, zero inherited rules, zero unauthorized rules, Owner direct FullControl, Owner child FullControl, plus successful cleanup. No ACL invariant may be weakened.
+PASS_CANDIDATE requires target-host validator PASS before runner, exact repaired source identity, protected Owner-only runtime ACL readback, successful synthetic UI acknowledgement/removal, unchanged production network state, complete timing, and STOP_AT_REVIEWER.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-All writes are isolated under a unique temporary %LOCALAPPDATA% diagnostic root and removed in finally. No production/network/runtime state is authorized to change.
+Local source synchronization is ff-only. No production network mutation is authorized. If validator fails, runner does not start. If runner fails, its fail-closed cleanup applies and Reviewer reconciles before any retry.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic D2R1 checkpoint and return its complete non-secret output.
+Run the single Reviewer-supplied atomic validation+canary checkpoint. Only if the runner reaches the UI prompt, perform the bounded synthetic import/inspect/remove/acknowledge steps.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Do not rerun or patch C2B. Wait for Owner D2R1 output; persist only bounded ACL diagnostic facts; STOP_AT_REVIEWER.
+Do not independently run or patch C2B. Wait for Owner R1 output; persist bounded source/validator/ACL/canary/cleanup/timing facts only; STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return `PASS_CANDIDATE_G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2R1` or precise `RETURN_*`; STOP_AT_REVIEWER.
+Return `PASS_CANDIDATE_G3C_C2B_OWNER_ACL_COMPAT_REPAIR_R1` or precise `RETURN_*`; STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Run D2R1. Reviewer will select the minimal runner ACL repair from the method that proves the full invariant on the real host; if both pass, prefer the create-with-ACL method because it avoids a permission exposure window.
+Owner safely synchronizes the ACL-repaired canonical source, runs the complete offline validator, and only on validator PASS proceeds into the repaired synthetic Clash UI canary.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the D2R1 atomic PowerShell checkpoint supplied by Reviewer. Do not rerun C2B.
+Run the Reviewer-supplied atomic ACL-repair validation checkpoint. If it reaches the C2B UI prompt, follow only the bounded synthetic profile instructions.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Wait for D2R1 Owner output. No C2B patch/retry until Reviewer accepts an ACL method.
+Wait for Owner R1 output. Do not run or patch C2B independently and do not enter C2C.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2R1 or precise RETURN; STOP.
+Return PASS_CANDIDATE_G3C_C2B_OWNER_ACL_COMPAT_REPAIR_R1 or precise RETURN; STOP.
 
 ## EVIDENCE_POINTERS
 
