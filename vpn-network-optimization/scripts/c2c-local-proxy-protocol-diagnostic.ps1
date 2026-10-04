@@ -85,17 +85,20 @@ try {
     $listeners = @($listeners | Sort-Object ProcessName,LocalPort,LocalAddress -Unique)
     Write-Output ('CANDIDATE_LISTENER_COUNT=' + @($listeners).Count)
 
+    $probeResults = [Collections.Generic.List[object]]::new()
     foreach ($listener in $listeners) {
         $probeCount++
         $result = Invoke-Socks5Greeting -Port $listener.LocalPort
+        $probeResults.Add([pscustomobject]@{
+            ProcessName = $listener.ProcessName
+            LocalAddress = $listener.LocalAddress
+            LocalPort = $listener.LocalPort
+            Result = $result
+        })
         Write-Output ('SOCKS5_PROBE=' + $listener.ProcessName + '|' + $listener.LocalAddress + '|' + $listener.LocalPort + '|' + $result)
     }
 
-    $socksListeners = @(
-        $listeners | Where-Object {
-            (Invoke-Socks5Greeting -Port $_.LocalPort) -eq 'SOCKS5_NOAUTH'
-        }
-    )
+    $socksListeners = @($probeResults | Where-Object { $_.Result -eq 'SOCKS5_NOAUTH' })
 
     Write-Output ('SOCKS5_PROXY_LISTENER_COUNT=' + @($socksListeners).Count)
     foreach ($listener in $socksListeners) {
