@@ -283,3 +283,14 @@ No additional protocol shopping is planned for v1 unless later evidence proves a
 **Repair rule:** Future readiness checking may reject UDP binding on the reserved local SOCKS port, but must not reject unrelated Mihomo-owned ephemeral UDP sockets. Failure telemetry must preserve the pre-cleanup failure phase separately from the cleanup phase.
 
 **Authorization:** No retry is authorized by the consumed first-attempt approval. Fresh explicit Owner authorization is required only after the repaired runner passes non-consequential AST/static/validator checks.
+
+
+## 2026-10-04 — Owner authorized one repaired G4-B0 live retry
+
+**Decision:** After the repaired Owner-host checkpoint PASS, Owner explicitly authorized exactly one repaired `G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1` live retry.
+
+**Scope:** Same bounded Windows-local canary only: WireGuard remains connected; exact VPS `/32` routes remain absent; existing HY2 credential may be read only inside the protected runtime; one temporary Mihomo HY2 instance may be started; at most two external requests may be sent; cleanup/read-back and mandatory Reviewer stop are required.
+
+**Not authorized:** route creation, SSH/VPS mutation, REALITY, persistent Clash profile writes, system proxy/TUN activation, benchmark loops, automatic switching, G4-B persistent writes, G4-C, or blind additional retries.
+
+**Execution state:** Fresh retry authorization is granted and unconsumed until the runner enters its protected Secret/runtime consequential phase.
