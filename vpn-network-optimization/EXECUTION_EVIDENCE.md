@@ -6799,3 +6799,20 @@ Reviewer conclusion:
 - No Secret access, external request, or network mutation occurred in this checkpoint.
 - The interface-name hypothesis is still unresolved because both prior live attempts sent zero requests.
 - A fresh explicit Owner authorization is required before exactly one further repaired live retry.
+
+
+## Owner standing authorization for current G4-B0 Gate — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+OWNER_AUTHORIZATION=GRANTED
+AUTHORIZATION_MODE=STANDING_WITHIN_CURRENT_GATE
+CURRENT_GATE_SCOPE_ONLY=YES
+CURRENT_FIXED_BOUNDARY_ONLY=YES
+```
+
+Owner explicitly stated that authorizations within this Gate are approved. Reviewer interpretation:
+- Do not repeatedly ask for approval for ordinary actions already inside the currently defined G4-B0 boundary.
+- This authorization does not expand the Gate scope.
+- It does not authorize persistent G4-B, REALITY deployment, system proxy/TUN activation, route creation, SSH/VPS mutation, benchmark loops, G4-C, or any action outside the current Gate.
+- Governance-required fresh post-failure authorization or any scope-changing authorization remains a mandatory stop and cannot be waived prospectively.
