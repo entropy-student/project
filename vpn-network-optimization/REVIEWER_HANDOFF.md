@@ -127,80 +127,102 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 - **C2C Owner checkpoint R1 wrapper result:** RETURN before Git synchronization because the Reviewer-supplied wrapper used `$dirty.Count` under `Set-StrictMode -Version Latest`. A clean Git status yields no pipeline objects, so `$dirty` becomes `$null` and `.Count` faults. Only `OWNER_RUNTIME=PASS` preceded the failure; the orchestrator did not start and no DPAPI/Secret/Clash/route/network action occurred. R1R1 changes only the wrapper cardinality checks to `@($dirty).Count` / `@($dirtyAfter).Count`; locked C2C source blobs are unchanged.
 - **C2C Owner checkpoint R1R1 result:** wrapper sync, blob lock and Owner-side offline validator all PASS, then the orchestrator returned in `PREFLIGHT` with `CLASH_LOCAL_PROXY_LISTENER_MISSING`. Cleanup/readback confirms temp route absent, WireGuard restored, system proxy OFF, TUN OFF, route snapshot restored, Secret cleanup not required, real canary not started, and no real request evidence. This is classified as a local-proxy listener-discovery precondition issue, not a HY2/auth failure.
 - **D4 listener result:** Windows system proxy is OFF; registry metadata still points to port 10810, but no process listens there. Clash/Mihomo is live and owns loopback listeners on 52560 (`clash-verge`), 7900 (`verge-mihomo`), and 9097 (`verge-mihomo`). Registry/live intersection is zero. This proves the current resolver is stale-metadata incompatible.
-- **D5 purpose:** do not hard-code 7900 by guess. Send one local SOCKS5 greeting to each live Clash/Mihomo loopback listener and classify which listener actually behaves as a SOCKS/mixed proxy. D5 has zero external requests, zero Secret access, and no mutation.
+- **D5 result:** exactly one live Clash/Mihomo listener answered the SOCKS5 no-auth greeting: `verge-mihomo|127.0.0.1|7900`. Port 52560 returned non-SOCKS bytes and 9097 returned no SOCKS response. D5 used three loopback-only probes, zero external requests, zero Secret access, and no mutation.
+- **Resolver repair:** C2C no longer trusts Windows `ProxyServer` metadata. The orchestrator now discovers live Clash/Mihomo loopback listeners and requires exactly one SOCKS5 no-auth listener. The bounded two-request probe now uses `socks5h://127.0.0.1:<discovered-port>`, matching the protocol actually proven by D5.
+- **Repair scope:** orchestrator, bounded proxy probe, offline validator, and package documentation changed; Secret helper and HY2 template are unchanged. Real C2C execution remains paused until post-repair offline validation is accepted.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_LOCAL_PROXY_PROTOCOL_DIAGNOSTIC_D5
-STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=PASS_D4_STALE_PROXY_METADATA_CONFIRMED
-OBJECTIVE=Identify the actual Clash/Mihomo local proxy listener by protocol behavior instead of registry metadata, using one loopback-only SOCKS5 greeting per live candidate listener.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> locked local protocol diagnostic -> one loopback SOCKS5 greeting per live Clash/Mihomo listener -> classify proxy listener(s) -> STOP_AT_REVIEWER.
+GATE_ID=G3C_C2C_PROXY_RESOLVER_REPAIR_OFFLINE_VALIDATION_R2
+STATE=EXECUTOR_ACTION_REQUIRED
+PREVIOUS_RESULT=PASS_D5_SINGLE_SOCKS5_LISTENER_PROVEN
+OWNER_C2C_AUTHORIZATION=GRANTED
+OBJECTIVE=Offline-validate the D5-driven C2C resolver repair that replaces stale Windows ProxyServer metadata with live Clash/Mihomo SOCKS5 protocol discovery and uses socks5h for the bounded real probe.
+MAX_ENDPOINT_THIS_ROUND=clean project sync -> exact repaired source identities -> static/AST/Mihomo offline validator -> bounded repo-only repair if needed -> rerun validator -> persist evidence -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; loopback TCP listeners owned by Clash/Mihomo only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No C2C retry; no external network request; no DPAPI/Secret; no Clash profile/config-content read; no profile mutation; no route/proxy/TUN/WireGuard mutation; no VPS/SSH; no G4.
-PROTOCOL_DIAGNOSTIC=scripts/c2c-local-proxy-protocol-diagnostic.ps1
-PROTOCOL_DIAGNOSTIC_BLOB=7e7045c1e7a8d3290623ec107142b6abec050d56
-SPECIALIST_RULES=11B_TARGET_HOST
-ESTIMATED_EXECUTION_TIME=2-5_minutes
+TARGET_AND_SCOPE=Repaired C2C package only; no real canary action.
+APPLICABLE_CRITICAL_CONSTRAINTS=No orchestrator execution; no Secret-helper real mode; no DPAPI/Secret; no Clash UI/profile mutation; no local protocol probe needed in this Gate; no external network requests; no route/proxy/TUN/WireGuard mutation; no VPS/SSH; no REALITY; no G4.
+ORCHESTRATOR_BLOB=2188150190e0e092f40f990ed1d98220ed53c423
+SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
+VALIDATOR_BLOB=450c9cd3d393e5ceaa489b0477fca65a43b8be49
+TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
+SPECIALIST_RULES=11B_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
+ESTIMATED_EXECUTION_TIME=5-12_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### REQUIRED_EVIDENCE
+### PREFLIGHT
 
-- Owner PowerShell 7.6.6/Admin/High runtime;
-- safe ff-only sync and project clean;
-- exact D5 diagnostic blob;
-- Clash service state;
-- candidate listener count;
-- one `SOCKS5_PROBE=process|address|port|result` per candidate listener;
-- `SOCKS5_PROXY_LISTENER_COUNT` and exact matching listener tuple(s);
-- `C2C_LOCAL_PROXY_PROTOCOL_DIAGNOSTIC=PASS`;
-- local socket probe count;
-- `EXTERNAL_NETWORK_REQUESTS=0`;
+1. Capture timing before synchronization.
+2. Prove canonical remote, clean project scope, safe ancestor + ff-only sync.
+3. Verify the six locked blobs above.
+4. Read only the current relay and the repaired C2C package files.
+5. Run only `scripts/g3c-c2c-package-validator.ps1`.
+6. Do not execute the orchestrator, Secret helper real modes, proxy probe, D4/D5 diagnostics, Clash UI, network routes, or external requests.
+
+### REQUIRED EVIDENCE
+
+- complete timing;
+- canonical remote/safe sync/project clean;
+- exact initial/final six blobs;
+- validator output including fixtures A-I:
+  - A baseline package;
+  - B Secret/network separation;
+  - C Secret helper no network;
+  - D network probe no Secret;
+  - E no system proxy/TUN/WG mutation;
+  - F structured cleanup required;
+  - G template no real Secret;
+  - H stale ProxyServer metadata dependency rejected;
+  - I socks5h proxy scheme required;
+- PowerShell AST parse PASS;
+- Mihomo v1.19.32 fixture parse PASS;
+- `G3C_C2C_OFFLINE_FIXTURES=PASS`;
 - `DPAPI_UNPROTECT=NO`;
-- `REAL_SECRET_READ=NO`;
-- `CLASH_PROFILE_MUTATION=NO`;
+- `NETWORK_REQUESTS=0`;
 - `NETWORK_CHANGED=NO`;
 - `SECRET_VALUES_EMITTED=0`;
-- complete timing.
+- orchestrator/Secret-helper/proxy-probe real modes not executed;
+- if repair is needed, exact package-scoped files changed and rationale.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires exactly one live Clash/Mihomo listener to answer the SOCKS5 no-auth greeting. If exactly one is found, Reviewer may repair the C2C resolver to discover the live proxy listener by process+protocol rather than stale system-proxy registry metadata. Zero or multiple SOCKS5 listeners require further bounded diagnosis before source repair.
+PASS_CANDIDATE only if the repaired package passes all A-I fixtures, AST, Mihomo parse, remains within the split Secret/network boundary, rejects stale ProxyServer dependence, requires live SOCKS5 discovery and socks5h probe use, and causes no real host/network/Secret action.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Read-only/local-loopback Gate; no rollback should be necessary.
+Repo-only Gate. Revert only R2 repair/evidence commits if necessary. No host/network rollback should be needed.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied D5 checkpoint and return complete output.
+NONE in R2.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action. Do not patch C2C until D5 proves the proxy listener.
+Validate the repaired C2C package only. If validator fails, make the smallest repo-only repair confined to the six C2C package files plus Evidence/Executor Handoff. Do not alter Reviewer Handoff. STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-NONE until Owner returns D5 output.
+Return `PASS_CANDIDATE_G3C_C2C_PROXY_RESOLVER_REPAIR_OFFLINE_VALIDATION_R2` or precise `RETURN_*`, with durable evidence and fresh read-back.
 
 ## NEXT_STEP
 
-Owner runs D5. If exactly one SOCKS5-capable listener is proven, Reviewer performs a minimal resolver repair, updates the offline validator, and reopens the real C2C canary.
+Executor validates the repaired package. After Reviewer acceptance, reopen the Owner real C2C canary with new locked blobs.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the D5 local-only protocol diagnostic checkpoint.
+NONE while Executor performs R2.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No action while D5 is pending.
+Use current Gate only; no real C2C action.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-NONE.
+Standard short completion packet + durable evidence, then STOP_AT_REVIEWER.
 
 ## EVIDENCE_POINTERS
 
