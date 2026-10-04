@@ -4,6 +4,7 @@ param()
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
+$PSNativeCommandUseErrorActionPreference = $false
 
 $started = [DateTimeOffset]::UtcNow
 Write-Output ('ROUND_STARTED_AT=' + $started.ToString('o'))
