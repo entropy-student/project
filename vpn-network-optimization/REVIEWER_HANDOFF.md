@@ -121,6 +121,12 @@ EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized 
 
 G4-B persistent readiness is blocked on this bypass proof. The first G4-B0 live attempt formally RETURNed before any external request; its authorization is consumed. Persistent REALITY/service/profile writes remain unauthorized.
 
+Locked G4-B0 repair identities:
+
+```text
+G4B0_REPAIR_CHECKPOINT_BLOB=b06fae4cdd2e9c80df8101f88f71cb48523de92b
+```
+
 Locked G4-B0 live identities:
 
 ```text
@@ -130,7 +136,7 @@ G4B0_VALIDATOR_BLOB=f102280866520bb7fff906181081c13ed1d17beb
 G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
 ```
 
-The repaired live runner has passed repository-level static review only. Owner-host AST + validator revalidation is still required before any fresh live authorization can be requested. No child execution is currently authorized.
+The repaired live runner and the non-consequential repair-checkpoint package have passed repository-level static review. Owner-host execution of `scripts/g4b0-repair-checkpoint.ps1` is still required before any fresh live authorization can be requested. No child live execution is currently authorized.
 
 ## CRITICAL_CONSTRAINTS
 
