@@ -140,92 +140,90 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 - **D8R1 result:** the single root-level `.lock` is exactly one file, non-reparse and zero-length, but it was readable during D8R1. This disproves a permanent-unreadable-file invariant and reclassifies D8's two 100 ms failures as transient lock contention across time rather than a stable storage defect.
 - **Repair decision:** do not generically skip `.lock` or unreadable files. Add one fail-closed exception only when the Clash-app-root scan actually gets a read exception and fresh metadata proves the failing item is root-level, extension `.lock`, zero bytes, and non-reparse. All other read failures remain `SECRET_SCAN_READ_FAILED`. Project-runtime scanning gets no exception.
 
+- **R2R3 Reviewer-direct repair:** at Owner request, Reviewer directly implemented the bounded scanner exception in helper/validator/package docs. Static read-back confirms Clash opt-in count 2, runtime opt-in count 0, all five metadata guards present, and Fixture L mutations for zero-length/root-level/extension/reparse/runtime scope. Formal PASS waits for Owner-side A-L/AST/Mihomo validation.
+
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_REPAIR_R2R3
-STATE=EXECUTOR_ACTION_REQUIRED
-PREVIOUS_RESULT=RETURN_D8R1_LOCK_BECAME_READABLE_TRANSIENT_CONTENTION_CONFIRMED
-OBJECTIVE=Repair the Secret residue scanner so a read failure may be bypassed only for a freshly verified zero-byte, non-reparse, root-level .lock in the Clash app root; all other unreadable files remain fail-closed.
-MAX_ENDPOINT_THIS_ROUND=clean sync -> exact source baseline -> minimal helper/validator/package repair -> offline fixtures A-L + AST + Mihomo parse -> persist evidence -> STOP_AT_REVIEWER.
+GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_OWNER_VALIDATION_R2R3V1
+STATE=OWNER_ACTION_REQUIRED
+PREVIOUS_RESULT=REVIEWER_SOURCE_REPAIR_COMPLETE_PENDING_OWNER_VALIDATION
+OBJECTIVE=Validate the Reviewer-direct bounded Secret scanner repair on the real Owner Windows toolchain without reading DPAPI/Secret or executing the real helper/canary.
+MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact six source identities -> package validator A-L -> AST -> Mihomo v1.19.32 fixture parse -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=scripts/c2c-secret-profile-helper.ps1; scripts/g3c-c2c-package-validator.ps1; docs/G3C_C2C_REAL_HY2_CANARY_PACKAGE.md only, plus Evidence/Executor Handoff.
-APPLICABLE_CRITICAL_CONSTRAINTS=No Secret-helper real mode; no DPAPI; no real Secret/recovery content; no orchestrator/proxy probe/D6/D7/D8/D8R1 execution; no Clash mutation; no network requests; no network mutation; no VPS/SSH; no G4.
-CURRENT_SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
-CURRENT_VALIDATOR_BLOB=151b2c9166b02d6f6ff943412f75fb047808c37b
-CURRENT_PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
+TARGET_AND_SCOPE=Real Owner Windows host; repository validator only.
+APPLICABLE_CRITICAL_CONSTRAINTS=No Secret-helper real mode; no DPAPI/recovery content; no real Secret/hash; no orchestrator/proxy probe/diagnostics; no Clash mutation; no network requests; no network mutation; no VPS/SSH; no G4.
+ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
+SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
+PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
+VALIDATOR_BLOB=46c5020f2b735d37c8cd1cff6fca568e7e855b54
+TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
-ESTIMATED_EXECUTION_TIME=5-12_minutes
+ESTIMATED_EXECUTION_TIME=2-5_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### REQUIRED REPAIR
+### REPAIR ALREADY APPLIED
 
-1. Keep `Test-FilePattern` exact byte scanning unchanged for readable files.
-2. Add an explicit opt-in policy to `Get-PatternFileCount` for the Clash app root only; project runtime must not receive this exception.
-3. On a file read exception only, fresh-read the failing item's metadata and bypass that one item only if all are true:
-   - item is directly in the supplied Clash app root, not a descendant;
-   - extension is exactly `.lock` case-insensitively;
-   - length is exactly 0;
-   - item is not a reparse point.
-4. Do not bypass a readable zero-byte file; normal readable files continue through `Test-FilePattern`.
-5. Any metadata lookup failure, nonzero length, reparse point, descendant .lock, other extension, or any project-runtime read failure must still produce `SECRET_SCAN_READ_FAILED` (or the existing reparse fail code where applicable).
-6. Do not hard-code a filename; the invariant is the narrow metadata class above.
-7. Preserve all DPAPI, Secret zeroization, ACL, profile generation, Mihomo parsing, cleanup, residue and no-network boundaries.
-8. Update package documentation to record this exact fail-closed scanner rule.
-9. Extend validator with Fixture L that rejects broad unreadable-file skipping and proves the exception contract contains root-level + `.lock` + zero-length + non-reparse + Clash-only opt-in guards. Existing A-K must remain PASS.
+Reviewer directly implemented the Owner-requested R2R3 repair:
+- helper commit `20026cde8faa1fc022e048c56b7efb52aa44b590`;
+- validator commit `5a48774c78a351cf52c8d5c3300583d617e7a206`;
+- package-doc commit `46942adc1599a9257797b2320c9cd81abb3f71e2`.
+
+The helper now permits a bypass only after an actual read exception and only when fresh metadata proves a direct-child Clash-root `.lock` that is zero-byte, a normal file, and non-reparse. The project-runtime scan has no exception. Fixture L mutates each guard independently and requires rejection.
 
 ### REQUIRED EVIDENCE
 
-- full timing from before preflight;
-- canonical remote / clean / safe ff-only sync;
-- pre-repair blobs and final blobs;
-- exact files changed;
+- full timing from before sync;
+- Owner PowerShell 7.6.6/Admin/High;
+- clean project scope + safe ff-only sync;
+- exact six blobs above;
 - Fixtures A-L PASS;
 - PowerShell AST parse PASS;
 - Mihomo v1.19.32 fixture parse PASS;
-- Secret helper retains no network capability;
-- no DPAPI/Secret/helper/orchestrator/probe/diagnostic execution;
+- `G3C_C2C_OFFLINE_FIXTURES=PASS`;
+- `DPAPI_UNPROTECT=NO`;
 - `NETWORK_REQUESTS=0`;
 - `NETWORK_CHANGED=NO`;
 - `SECRET_VALUES_EMITTED=0`;
-- project clean and GitHub fresh read-back.
+- no helper/orchestrator/probe/diagnostic execution.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE only if the scanner exception is strictly narrower than generic lock/read-error skipping, applies only after an actual read failure and only to the verified zero-byte non-reparse root-level Clash .lock class, leaves project-runtime scanning strict, passes A-L/AST/Mihomo validation, and causes zero host/Secret/network action.
+PASS only if the real Owner validator proves A-L + AST + Mihomo parse with the exact locked blobs and zero Secret/network action. No Secret Prepare replay occurs in this Gate.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Repo-only repair. Revert only the R2R3 source/evidence commits if necessary; no host/network rollback should be needed.
+Repo-only repair; source can be reverted to the pre-R2R3 helper/validator/package blobs if validation fails.
 
 ### OWNER_ONLY_ACTIONS
 
-NONE in R2R3.
+Run the Reviewer-supplied atomic R2R3V1 offline validation checkpoint and return complete output.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Read only this current Gate plus the three target package files. Make the smallest scanner-policy repair above. Do not execute real helper/C2C/diagnostics. Persist Evidence + Executor Handoff only; leave Reviewer Handoff unchanged. STOP_AT_REVIEWER.
+No Executor action. Reviewer implemented this repair directly at Owner request.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return `PASS_CANDIDATE_G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_REPAIR_R2R3` or precise `RETURN_*`, with final blobs and durable evidence.
+NONE.
 
 ## NEXT_STEP
 
-Executor repairs and validates the scanner. Reviewer inspects before any further Secret Prepare replay.
+Owner validates the repaired package. If PASS, Reviewer reopens one sanitized Secret Prepare replay to prove the scanner repair on the real host.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE.
+Run R2R3V1 offline validator only.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Use current Gate only; no real Secret or C2C execution.
+No action.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Standard short completion packet + durable evidence, then STOP_AT_REVIEWER.
+NONE.
 
 ## EVIDENCE_POINTERS
 
