@@ -7154,6 +7154,82 @@ Rollback: source-only; revert this Gate's project-owned candidate commit to
 `4caed9bb0dbf069d5407b261fe66740794c7676a`. No runtime state was changed.
 
 
+## Executor evidence — G4B_OFFLINE_LIVE_RUNNER_REPAIR_R3 — 2026-10-04
+
+```text
+AUTHORIZED_GATE=G4B_OFFLINE_LIVE_RUNNER_REPAIR_R3
+GOVERNANCE_VERSION=v0.2.6 / ACTIVE_PROVISIONAL
+PRE_GATE_HEAD=301eda93ee91bef860341ec280e95f39f97cbcf7
+SOURCE_PROVENANCE=PASS
+UNRELATED_WORKTREE_CHANGES=NONE_AT_PREFLIGHT
+RUNNER_PRE_GATE_BLOB=cc595546e0bad6cb17dc4cac5fea11d82840bb24
+FIXTURE_VALIDATOR_PRE_GATE_BLOB=af01347b126a90eea90247767664991e4cf18044
+R3_GATE_BLOB=c76c7118d181f7d01897ba39429334d0068b92e4
+
+ROUND_STARTED_AT=UNKNOWN_AS_REQUIRED_BY_GATE
+ROUND_FINISHED_AT=UNKNOWN_AS_REQUIRED_BY_GATE
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+TIMING_NOTE=The start boundary was not captured before the already-completed fresh preflight/sync; no timing was reconstructed.
+
+R3_REMOTE_ROUTE_BASELINE_COMPARE=PASS
+R3_REMOTE_FIREWALL_BASELINE_COMPARE=PASS
+R3_REMOTE_SERVICE_DRIFT_ALLOWLIST=PASS
+R3_REMOTE_ROLLBACK_BASELINE_COMPARE=PASS
+R3_PROFILE_CONTENT_INTEGRITY=PASS
+R3_PROFILE_SAME_SIZE_CONTENT_DRIFT_NEGATIVE=PASS
+R3_STRICTMODE_RECOVERY_CLEANUP=PASS
+R3_FAILURE_CODE_NOT_MASKED=PASS
+R2_REGRESSIONS=PASS
+R1_REGRESSIONS=PASS
+
+REMOTE_DRIFT_IMPLEMENTATION=Read-only normalized IPv4/IPv6 route and rule state; available UFW/nftables/iptables firewall state; active service inventory. Stage rechecks the preflight snapshot before its first remote write. Candidate/closeout allows only the one project REALITY service addition; rollback requires exact route/firewall/service restoration. WG/HY2 active/listener checks remain in place.
+REMOTE_DRIFT_NORMALIZATION=Route expiry countdowns and firewall packet/byte counters are excluded; route/rule/firewall structure remains compared. Snapshots remain internal to the runner/journal and are not emitted in Evidence or ordinary output.
+PROFILE_INTEGRITY=Existing files use SHA-256 plus length and LastWriteTimeUtc ticks; directories remain structural entries. Rollback journal continues to hold the baseline owner-only.
+PROFILE_NEGATIVE_FIXTURE=Harmless 3-byte file content changed AAA to BBB while size and timestamp were held constant; digest comparison rejected the mutation; unique fixture directory was removed and absence verified.
+STRICTMODE_FIXTURE=Extracted recovery cleanup initialization and cleanup statements ran under StrictMode with an injected pre-assignment failure; original failure remained observable. A negative variant without the late-variable initialization reproduced the masking failure.
+OTHER_FINALLY_SCAN=PASS; reviewed the runner's other finally blocks and found no additional uninitialized cleanup-local case requiring repair.
+
+POWERSHELL_AST_PARSE=PASS
+EMBEDDED_REMOTE_PYTHON_AST_PARSE=PASS (local in-memory ast.parse only; remote source not executed)
+R3_REMOTE_PYTHON_HELPER_FIXTURES=PASS (production capture/compare helpers executed with subprocess and executable-availability calls mocked to deterministic non-secret outputs)
+FULL_OFFLINE_FIXTURE_VALIDATOR=PASS
+PACKAGE_VALIDATOR=PASS
+SECRET_SCAN=PASS (changed files contain no private-key material, recovery artifact, or real credential value; fixture-only literals are synthetic)
+GIT_DIFF_CHECK=PASS
+SOURCE_SCOPE=PASS (runner, fixture validator, EXECUTION_EVIDENCE.md, EXECUTOR_HANDOFF.md only)
+
+LIVE_RUNNER_EXECUTION=NO
+SSH_OR_VPS_ACTION=NO
+REAL_SECRET_ACCESS=NO
+DPAPI_REAL_SECRET_ACCESS=NO
+EXTERNAL_TEST_REQUESTS=0
+NETWORK_MUTATION=NO
+CLASH_PROFILE_MUTATION=NO
+SYSTEM_PROXY_CHANGE=NO
+TUN_CHANGE=NO
+SERVICE_MUTATION=NO
+ROUTE_MUTATION=NO
+REALITY_LIVE_DEPLOYMENT=NO
+G4C_EXECUTION=NO
+REVIEWER_HANDOFF_MODIFIED_BY_EXECUTOR=NO
+GITHUB_FRESH_READBACK=REQUIRED_AFTER_PUSH
+EXECUTOR_RESULT=PASS_CANDIDATE
+STOP_AT_REVIEWER=YES
+```
+
+Validation provenance: direct local execution of the offline fixture validator and package
+validator; PowerShell AST parse and Python `ast.parse`. The full embedded remote supervisor was
+never invoked. Its selected pure snapshot/compare functions were executed locally with all
+subprocess and executable-availability calls mocked to deterministic non-secret fixture data. The
+same-size profile fixture used disposable, non-secret contents and was removed. No live Runner,
+SSH, VPS, Secret/DPAPI, Mihomo process, network, route, service, profile, proxy, or TUN action was
+performed.
+
+Rollback: source-only; revert the R3 runner, fixture-validator, and execution-record changes to
+`301eda93ee91bef860341ec280e95f39f97cbcf7`. No runtime state was changed.
+
+
 ## Reviewer RETURN — G4-B offline live-runner repair R2 — 2026-10-04
 
 ```text

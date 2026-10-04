@@ -66,6 +66,27 @@ function Test-RunnerContract {
     $restartCheck=($Text.Contains("Write-Phase 'P11_RESTART_PERSISTENCE'") -and $Text.Contains("Invoke-Remote -Action 'restart'") -and $Text.Contains('Restart-Service -Name ''clash_verge_service''') -and $Text.Contains('REALITY_RESTART_PERSISTENCE_FAILED'))
     $recoveryStart=$Text.IndexOf('function Write-EncryptedRecovery {',[StringComparison]::Ordinal); $recoveryEnd=$Text.IndexOf('function Promote-RecoveryArtifacts {',$recoveryStart,[StringComparison]::Ordinal)
     $recoveryBody=if($recoveryStart -ge 0 -and $recoveryEnd -gt $recoveryStart){$Text.Substring($recoveryStart,$recoveryEnd-$recoveryStart)}else{''}
+    $remoteCaptureStart=$Text.IndexOf('def capture_remote_drift():',[StringComparison]::Ordinal); $remoteCaptureEnd=$Text.IndexOf('def validate_drift_snapshot(snapshot):',$remoteCaptureStart,[StringComparison]::Ordinal)
+    $remoteCapture=if($remoteCaptureStart -ge 0 -and $remoteCaptureEnd -gt $remoteCaptureStart){$Text.Substring($remoteCaptureStart,$remoteCaptureEnd-$remoteCaptureStart)}else{''}
+    $remoteProbeStart=$Text.IndexOf('def probe():',$remoteCaptureEnd,[StringComparison]::Ordinal); $remoteStageStart=$Text.IndexOf('def stage():',$remoteProbeStart,[StringComparison]::Ordinal)
+    $remoteStageEnd=$Text.IndexOf('def configure():',$remoteStageStart,[StringComparison]::Ordinal)
+    $remoteRollbackStart=$Text.IndexOf('def rollback():',$remoteStageEnd,[StringComparison]::Ordinal); $remoteCloseoutStart=$Text.IndexOf('def closeout():',$remoteRollbackStart,[StringComparison]::Ordinal)
+    $remoteCandidateStart=$Text.IndexOf('def candidate():',$remoteCloseoutStart,[StringComparison]::Ordinal); $remoteMainStart=$Text.IndexOf('def main():',$remoteCandidateStart,[StringComparison]::Ordinal)
+    $remoteProbe=if($remoteProbeStart -ge 0 -and $remoteStageStart -gt $remoteProbeStart){$Text.Substring($remoteProbeStart,$remoteStageStart-$remoteProbeStart)}else{''}
+    $remoteStage=if($remoteStageStart -ge 0 -and $remoteStageEnd -gt $remoteStageStart){$Text.Substring($remoteStageStart,$remoteStageEnd-$remoteStageStart)}else{''}
+    $remoteRollback=if($remoteRollbackStart -ge 0 -and $remoteCloseoutStart -gt $remoteRollbackStart){$Text.Substring($remoteRollbackStart,$remoteCloseoutStart-$remoteRollbackStart)}else{''}
+    $remoteLiveCompare=if($remoteCloseoutStart -ge 0 -and $remoteMainStart -gt $remoteCloseoutStart){$Text.Substring($remoteCloseoutStart,$remoteMainStart-$remoteCloseoutStart)}else{''}
+    $remoteSnapshotComparison=$Text.Substring([Math]::Max(0,$Text.IndexOf('def assert_remote_drift(before,after,allow_reality=False):',[StringComparison]::Ordinal)),[Math]::Max(0,$Text.IndexOf('def probe():',$remoteCaptureEnd,[StringComparison]::Ordinal)-$Text.IndexOf('def assert_remote_drift(before,after,allow_reality=False):',[StringComparison]::Ordinal)))
+    $remoteRouteBaseline=($remoteCapture.Contains("'ip','-j','route','show','table','all'") -and $remoteCapture.Contains("'ip','-j','-6','route','show','table','all'") -and $remoteCapture.Contains("'ip','-j','rule','show'") -and $remoteCapture.Contains("'ip','-j','-6','rule','show'") -and $remoteCapture.Contains("record.pop('expires',None)") -and $remoteProbe.Contains('drift=capture_remote_drift()') -and $remoteStage.Contains("assert_remote_drift(baseline,capture_remote_drift(),allow_reality=False)") -and $remoteStage.IndexOf("assert_remote_drift(baseline,capture_remote_drift(),allow_reality=False)",[StringComparison]::Ordinal) -lt $remoteStage.IndexOf('TXN.mkdir',[StringComparison]::Ordinal))
+    $remoteFirewallBaseline=($remoteCapture.Contains("'ufw']=canonical_json") -and $remoteCapture.Contains("'nft']=canonical_json(normalize_nft(nft))") -and $remoteCapture.Contains("'iptables4','iptables-save'") -and $remoteCapture.Contains("'iptables6','ip6tables-save'") -and $remoteCapture.Contains("'REMOTE_FIREWALL_BASELINE_UNAVAILABLE'") -and $remoteSnapshotComparison.Contains("before['firewall_json']!=after['firewall_json']"))
+    $remoteServiceAllowlist=($remoteCapture.Contains("'systemctl','list-units','--type=service','--state=active'") -and $remoteSnapshotComparison.Contains('expected.add(SERVICE)') -and $remoteSnapshotComparison.Contains("set(after['active_services'])!=expected") -and $remoteLiveCompare.Contains("allow_reality=True") -and $Text.Contains('G4B_UNRELATED_REMOTE_DRIFT=NONE'))
+    $remoteRollbackBaseline=($remoteStage.Contains("'remote_drift_baseline':baseline") -and $remoteRollback.Contains("s.get('remote_drift_baseline')") -and $remoteRollback.Contains("assert_remote_drift(s.get('remote_drift_baseline'),check['drift_snapshot'],allow_reality=False)") -and $Text.Contains('route_firewall_service_restored') -and $Text.Contains('$script:remoteDriftBaseline=$journal[''remote_drift_baseline'']'))
+    $profileContentIntegrity=($Text.Contains('Get-FileHash -LiteralPath $item.FullName -Algorithm SHA256') -and $Text.Contains('$Before[$key] -ceq $After[$key]'))
+    $cleanupInitLine=[regex]::Match($recoveryBody,'(?m)^\s*\$dpapi=\$null; \$portable=\$null; \$round=\$null; \$portableRound=\$null\s*$')
+    $cleanupReadbackInitLine=[regex]::Match($recoveryBody,'(?m)^\s*\$localReadback=\$null; \$externalReadback=\$null; \$localPayload=\$null; \$externalPayload=\$null\s*$')
+    $cleanupTryAt=$recoveryBody.IndexOf('try {',[StringComparison]::Ordinal); $cleanupFinallyAt=$recoveryBody.IndexOf('finally {',[StringComparison]::Ordinal)
+    $cleanupVars=@('$round','$portableRound','$dpapi','$portable','$localReadback','$externalReadback','$localPayload','$externalPayload')
+    $cleanupComplete=($cleanupInitLine.Success -and $cleanupReadbackInitLine.Success -and $cleanupTryAt -gt $cleanupReadbackInitLine.Index -and $cleanupFinallyAt -gt $cleanupTryAt -and @($cleanupVars | Where-Object { -not $recoveryBody.Substring($cleanupFinallyAt).Contains($_) }).Count -eq 0)
     $portableCodec=($Text.Contains('VPNG4BP1') -and $Text.Contains('[Security.Cryptography.Rfc2898DeriveBytes]::Pbkdf2') -and $Text.Contains('[Security.Cryptography.HashAlgorithmName]::SHA256') -and $Text.Contains('[Security.Cryptography.AesGcm]::new($key,16)') -and $Text.Contains('GetBytes(16)') -and $Text.Contains('GetBytes(12)') -and $Text.Contains('[byte[]]::new(16)') -and $Text.Contains("'hy2_auth','reality_uuid','reality_private_key','reality_public_key','reality_short_id'") -and $Text.Contains('$added=$seen.Add($property.Name)') -and $recoveryBody.Contains('Write-OwnerOnlyFile -Path $script:recoveryPendingLocal -Bytes $dpapi') -and $recoveryBody.Contains('Write-OwnerOnlyFile -Path $script:recoveryPendingExternal -Bytes $portable') -and -not $recoveryBody.Contains('Write-OwnerOnlyFile -Path $script:recoveryPendingExternal -Bytes $dpapi'))
     $pendingAt=$Text.IndexOf('Write-EncryptedRecovery -PayloadBytes',[StringComparison]::Ordinal)
     $stageMutationAt=$Text.IndexOf('$script:remoteMutationStarted=$true',[StringComparison]::Ordinal)
@@ -113,16 +134,22 @@ function Test-RunnerContract {
         RuntimeFilesystem=$accessProof
         ProfileRestartReadback=$profileRestartReadback
         RollbackJournalRetention=$journalRetention -and $candidateRetains -and $closeoutGuard -and $canonicalGateModeBound
-        SanitizedMarkers=$sanitizedMarkers
+        SanitizedMarkers=$sanitizedMarkers -and $Text.Contains('G4B_UNRELATED_REMOTE_DRIFT=NONE')
         NonRootCapability=$runtimeIdentity
         StopAtReviewer=$stopAtReviewer
         NoG4C=$noG4C
         OfflineDefault=$defaultLiveGuard
+        RemoteRouteBaseline=$remoteRouteBaseline
+        RemoteFirewallBaseline=$remoteFirewallBaseline
+        RemoteServiceAllowlist=$remoteServiceAllowlist
+        RemoteRollbackBaseline=$remoteRollbackBaseline
+        ProfileContentIntegrity=$profileContentIntegrity
+        StrictModeRecoveryCleanup=$cleanupComplete
     }
 }
 
 $runnerTokens=$null; $runnerParseErrors=$null
-[void][System.Management.Automation.Language.Parser]::ParseFile($runnerPath,[ref]$runnerTokens,[ref]$runnerParseErrors)
+$runnerAst=[System.Management.Automation.Language.Parser]::ParseFile($runnerPath,[ref]$runnerTokens,[ref]$runnerParseErrors)
 Assert-Fixture ($runnerParseErrors.Count -eq 0) 'RUNNER_AST'
 $validatorTokens=$null; $validatorParseErrors=$null
 $validatorAst=[System.Management.Automation.Language.Parser]::ParseFile($PSCommandPath,[ref]$validatorTokens,[ref]$validatorParseErrors)
@@ -155,12 +182,84 @@ Assert-Fixture ($contract.NonRootCapability -and $serviceTemplate.Contains('User
 Assert-Fixture $contract.StopAtReviewer 'STOP_AT_REVIEWER_MARKER'
 Assert-Fixture $contract.NoG4C 'NO_G4C_WORKLOAD_OR_BENCHMARK'
 Assert-Fixture $contract.OfflineDefault 'LIVE_RUNNER_NOT_INVOKED_BY_DEFAULT'
+Assert-Fixture $contract.RemoteRouteBaseline 'R3_SOURCE_REMOTE_ROUTE_BASELINE'
+Assert-Fixture $contract.RemoteFirewallBaseline 'R3_SOURCE_REMOTE_FIREWALL_BASELINE'
+Assert-Fixture $contract.RemoteServiceAllowlist 'R3_SOURCE_REMOTE_SERVICE_ALLOWLIST'
+Assert-Fixture $contract.RemoteRollbackBaseline 'R3_SOURCE_REMOTE_ROLLBACK_BASELINE'
+Assert-Fixture $contract.ProfileContentIntegrity 'R3_SOURCE_PROFILE_CONTENT_INTEGRITY'
+Assert-Fixture $contract.StrictModeRecoveryCleanup 'R3_SOURCE_STRICTMODE_RECOVERY_CLEANUP'
 $validatorCommands=@($validatorAst.FindAll({param($node) $node -is [System.Management.Automation.Language.CommandAst]},$true) | ForEach-Object { $_.GetCommandName() })
 $forbiddenCommands=@($validatorCommands | Where-Object { $_ -match '(?i)^(?:Start-Process|ssh(?:\.exe)?|Invoke-WebRequest|Invoke-RestMethod|curl(?:\.exe)?|New-NetRoute|Remove-NetRoute|Set-NetRoute|Start-Service|Stop-Service|Restart-Service|Invoke-Expression)$' })
 Assert-Fixture ($forbiddenCommands.Count -eq 0) 'FIXTURE_VALIDATOR_NO_LIVE_ACTIONS'
 
 $offlineRunnerOutput=@(. $runnerPath 2>&1 | ForEach-Object { [string]$_ })
 Assert-Fixture ($offlineRunnerOutput -contains 'G4B_RUNNER_LIVE_MODE=NOT_REQUESTED') 'LIVE_RUNNER_DEFAULT_REFUSES_EXECUTION'
+
+$driftBase=@{routes_json='{"ipv4_routes":[],"ipv6_routes":[],"ipv4_rules":[],"ipv6_rules":[]}';firewall_json='{"nft":{"rules":[]}}';active_services=[string[]]@('hysteria2-vpn-network-optimization.service','wg-quick@wg0.service')}
+$driftBase.active_services=[string[]]@($driftBase.active_services | Sort-Object -CaseSensitive)
+$driftSame=@{routes_json=$driftBase.routes_json;firewall_json=$driftBase.firewall_json;active_services=[string[]]@($driftBase.active_services)}
+$driftLive=@{routes_json=$driftBase.routes_json;firewall_json=$driftBase.firewall_json;active_services=[string[]]@(@($driftBase.active_services)+$script:realityService | Sort-Object -CaseSensitive)}
+$driftRoundtrip=ConvertFrom-Json -InputObject (ConvertTo-Json -InputObject $driftBase -Depth 5 -Compress) -AsHashtable -ErrorAction Stop
+Assert-Fixture ($driftRoundtrip['active_services'] -is [array]) 'R3_REMOTE_DRIFT_JSON_ROUNDTRIP_SHAPE'
+Assert-RemoteDriftSnapshot -Before $driftBase -After $driftRoundtrip
+Assert-RemoteDriftSnapshot -Before $driftBase -After $driftSame
+Assert-Fixture $true 'R3_REMOTE_ROUTE_BASELINE_COMPARE'
+Assert-Fixture $true 'R3_REMOTE_FIREWALL_BASELINE_COMPARE'
+Assert-RemoteDriftSnapshot -Before $driftBase -After $driftLive -AllowRealityService
+Assert-Fixture $true 'R3_REMOTE_SERVICE_DRIFT_ALLOWLIST'
+Assert-RemoteDriftSnapshot -Before $driftBase -After $driftSame
+Assert-Fixture $true 'R3_REMOTE_ROLLBACK_BASELINE_COMPARE'
+$routeDrift=@{routes_json='{"ipv4_routes":[{"dst":"fixture"}],"ipv6_routes":[],"ipv4_rules":[],"ipv6_rules":[]}';firewall_json=$driftBase.firewall_json;active_services=[string[]]@($driftBase.active_services)}
+$routeRejected=$false; try { Assert-RemoteDriftSnapshot -Before $driftBase -After $routeDrift } catch { $routeRejected=$_.Exception.Message -ceq 'REMOTE_ROUTE_DRIFT' }
+Assert-Fixture $routeRejected 'R3_REMOTE_ROUTE_DRIFT_NEGATIVE'
+$firewallDrift=@{routes_json=$driftBase.routes_json;firewall_json='{"nft":{"rules":["fixture"]}}';active_services=[string[]]@($driftBase.active_services)}
+$firewallRejected=$false; try { Assert-RemoteDriftSnapshot -Before $driftBase -After $firewallDrift } catch { $firewallRejected=$_.Exception.Message -ceq 'REMOTE_FIREWALL_DRIFT' }
+Assert-Fixture $firewallRejected 'R3_REMOTE_FIREWALL_DRIFT_NEGATIVE'
+$serviceDrift=@{routes_json=$driftBase.routes_json;firewall_json=$driftBase.firewall_json;active_services=[string[]]@(@($driftBase.active_services)+'unrelated-fixture.service' | Sort-Object -CaseSensitive)}
+$serviceRejected=$false; try { Assert-RemoteDriftSnapshot -Before $driftBase -After $serviceDrift -AllowRealityService } catch { $serviceRejected=$_.Exception.Message -ceq 'REMOTE_SERVICE_DRIFT' }
+Assert-Fixture $serviceRejected 'R3_REMOTE_SERVICE_DRIFT_NEGATIVE'
+$rollbackRouteRejected=$false; try { Assert-RemoteDriftSnapshot -Before $driftBase -After $routeDrift } catch { $rollbackRouteRejected=$_.Exception.Message -ceq 'REMOTE_ROUTE_DRIFT' }
+Assert-Fixture $rollbackRouteRejected 'R3_REMOTE_ROLLBACK_DRIFT_NEGATIVE'
+
+$profileFixtureRoot=Join-Path ([IO.Path]::GetTempPath()) ('g4b-r3-profile-fixture-'+[guid]::NewGuid().ToString('N'))
+Assert-Fixture (-not (Test-Path -LiteralPath $profileFixtureRoot)) 'R3_PROFILE_FIXTURE_PATH_ABSENT'
+$profileFixtureCleanup='FAIL'
+try {
+    [void][IO.Directory]::CreateDirectory($profileFixtureRoot)
+    $profileFixtureFile=Join-Path $profileFixtureRoot 'preexisting.yaml'
+    $fixtureStream=[IO.File]::Open($profileFixtureFile,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None)
+    try { $fixtureBytes=[Text.Encoding]::ASCII.GetBytes('AAA'); $fixtureStream.Write($fixtureBytes,0,$fixtureBytes.Length); [Security.Cryptography.CryptographicOperations]::ZeroMemory($fixtureBytes) } finally { $fixtureStream.Dispose() }
+    $fixedTime=[DateTime]::new(2020,1,2,3,4,5,[DateTimeKind]::Utc); [IO.File]::SetLastWriteTimeUtc($profileFixtureFile,$fixedTime)
+    $profileFixtureBefore=Get-ProfileSnapshot -Root $profileFixtureRoot
+    $beforeMeta=Get-Item -LiteralPath $profileFixtureFile
+    [IO.File]::WriteAllText($profileFixtureFile,'BBB',[Text.Encoding]::ASCII); [IO.File]::SetLastWriteTimeUtc($profileFixtureFile,$fixedTime)
+    $profileFixtureAfter=Get-ProfileSnapshot -Root $profileFixtureRoot
+    $afterMeta=Get-Item -LiteralPath $profileFixtureFile
+    Assert-Fixture ($beforeMeta.Length -eq $afterMeta.Length -and $beforeMeta.LastWriteTimeUtc.Ticks -eq $afterMeta.LastWriteTimeUtc.Ticks) 'R3_PROFILE_FIXTURE_METADATA_HELD'
+    $profileRejected=$false; try { Assert-ExistingProfileStoreUnchanged -Before $profileFixtureBefore -After $profileFixtureAfter } catch { $profileRejected=$_.Exception.Message -ceq 'UNRELATED_PROFILE_STORE_MUTATION' }
+    Assert-Fixture $profileRejected 'R3_PROFILE_SAME_SIZE_CONTENT_DRIFT_NEGATIVE'
+}
+finally {
+    if(Test-Path -LiteralPath $profileFixtureRoot -PathType Container){Remove-Item -LiteralPath $profileFixtureRoot -Recurse -Force -ErrorAction Stop}
+    if(-not (Test-Path -LiteralPath $profileFixtureRoot)){ $profileFixtureCleanup='PASS' }
+}
+Assert-Fixture ($profileFixtureCleanup -ceq 'PASS') 'R3_PROFILE_FIXTURE_CLEANUP'
+
+$recoveryFunctionStart=$runnerAst.FindAll({param($node) $node -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -ceq 'Write-EncryptedRecovery'},$true) | Select-Object -First 1
+Assert-Fixture ($null -ne $recoveryFunctionStart) 'R3_RECOVERY_CLEANUP_FUNCTION_FOUND'
+$recoveryFunctionText=$recoveryFunctionStart.Extent.Text
+$recoveryInit=[regex]::Match($recoveryFunctionText,'(?m)^\s*\$dpapi=\$null; \$portable=\$null; \$round=\$null; \$portableRound=\$null\s*\r?\n\s*\$localReadback=\$null; \$externalReadback=\$null; \$localPayload=\$null; \$externalPayload=\$null\s*$').Value
+$recoveryCleanup=[regex]::Match($recoveryFunctionText,'(?m)^\s*foreach\(\$value in @\(\$round,\$portableRound,\$dpapi,\$portable,\$localReadback,\$externalReadback,\$localPayload,\$externalPayload\)\)\{ if\(\$null -ne \$value\)\{\[Security\.Cryptography\.CryptographicOperations\]::ZeroMemory\(\[byte\[\]\]\$value\)\} \}\s*$').Value
+Assert-Fixture (-not [string]::IsNullOrWhiteSpace($recoveryInit) -and -not [string]::IsNullOrWhiteSpace($recoveryCleanup)) 'R3_RECOVERY_FIXTURE_SOURCE_EXTRACTED'
+$strictFixtureCode="Set-StrictMode -Version Latest`n$recoveryInit`ntry { throw 'R3_FIXTURE_ORIGINAL_FAILURE' } finally { $recoveryCleanup }"
+$strictFixtureBlock=[ScriptBlock]::Create($strictFixtureCode)
+$strictFixtureFailure=$null; try { & $strictFixtureBlock } catch { $strictFixtureFailure=$_.Exception.Message }
+Assert-Fixture ($strictFixtureFailure -ceq 'R3_FIXTURE_ORIGINAL_FAILURE') 'R3_FAILURE_CODE_NOT_MASKED'
+$oldRecoveryInit=$recoveryInit -replace '(?m)^\s*\$localReadback=\$null; \$externalReadback=\$null; \$localPayload=\$null; \$externalPayload=\$null\s*$', ''
+$oldStrictFixtureCode="Set-StrictMode -Version Latest`n$oldRecoveryInit`ntry { throw 'R3_FIXTURE_ORIGINAL_FAILURE' } finally { $recoveryCleanup }"
+$oldStrictFixtureBlock=[ScriptBlock]::Create($oldStrictFixtureCode)
+$oldStrictFixtureFailure=$null; try { & $oldStrictFixtureBlock } catch { $oldStrictFixtureFailure=$_.Exception.Message }
+Assert-Fixture ($oldStrictFixtureFailure -match 'localReadback' -and $oldStrictFixtureFailure -cne 'R3_FIXTURE_ORIGINAL_FAILURE') 'R3_STRICTMODE_MASKING_REPRODUCED'
 $fixturePayloadJson=$null; $fixturePayloadBytes=$null; $fixtureBlob=$null; $fixtureRestored=$null; $fixtureTampered=$null; $fixtureExtraBytes=$null; $fixtureDuplicateBytes=$null
 $fixturePass=ConvertTo-SecureString 'fixture-only-portable-passphrase-2026' -AsPlainText -Force
 $fixtureWrongPass=ConvertTo-SecureString 'fixture-only-wrong-passphrase-2026' -AsPlainText -Force
@@ -208,13 +307,29 @@ $negative=@(
     @{Name='CANDIDATE_DELETES_REMOTE_JOURNAL'; Source=$runner.Replace("s['pass_candidate']=True; save_state(s)","shutil.rmtree(TXN)`n    s['pass_candidate']=True; save_state(s)"); Check='RollbackJournalRetention'},
     @{Name='CLOSEOUT_WITHOUT_REVIEWER_PASS'; Source=$runner.Replace('Assert-G4B ($ReviewerDecision -ceq ''FORMAL_PASS_G4B_PERSISTENT_THREE_ROLE_READINESS'') ''CLOSEOUT_REVIEWER_PASS_REQUIRED''','# reviewer decision guard removed'); Check='RollbackJournalRetention'},
     @{Name='POST_REVIEW_MODE_REQUIRES_CURRENT_LIVE_GATE'; Source=$runner.Replace("if (`$Mode -eq 'Run') {",'if ($true) {'); Check='RollbackJournalRetention'},
-    @{Name='LIVE_MARKER_MISSING'; Source=$runner.Replace('G4B_REALITY_RUNTIME_ACCESS=PASS','G4B_RUNTIME_MARKER_MISSING'); Check='SanitizedMarkers'}
+    @{Name='LIVE_MARKER_MISSING'; Source=$runner.Replace('G4B_REALITY_RUNTIME_ACCESS=PASS','G4B_RUNTIME_MARKER_MISSING'); Check='SanitizedMarkers'},
+    @{Name='REMOTE_ROUTE_SNAPSHOT_MISSING'; Source=$runner.Replace("'ip','-j','-6','route','show','table','all'", "'fixture-no-ipv6-route'"); Check='RemoteRouteBaseline'},
+    @{Name='REMOTE_FIREWALL_COMPARE_MISSING'; Source=$runner.Replace("if before['firewall_json']!=after['firewall_json']: raise GateError('REMOTE_FIREWALL_DRIFT')",'# firewall compare omitted'); Check='RemoteFirewallBaseline'},
+    @{Name='REMOTE_SERVICE_ALLOWLIST_MISSING'; Source=$runner.Replace('expected.add(SERVICE)','expected=set()'); Check='RemoteServiceAllowlist'},
+    @{Name='REMOTE_ROLLBACK_COMPARE_MISSING'; Source=$runner.Replace("assert_remote_drift(s.get('remote_drift_baseline'),check['drift_snapshot'],allow_reality=False)",'# rollback drift compare omitted'); Check='RemoteRollbackBaseline'},
+    @{Name='PROFILE_SHA256_MISSING'; Source=$runner.Replace('Get-FileHash -LiteralPath $item.FullName -Algorithm SHA256','Get-Item -LiteralPath $item.FullName'); Check='ProfileContentIntegrity'},
+    @{Name='RECOVERY_CLEANUP_LOCALS_UNINITIALIZED'; Source=$runner.Replace('$localReadback=$null; $externalReadback=$null; $localPayload=$null; $externalPayload=$null','# cleanup locals omitted'); Check='StrictModeRecoveryCleanup'}
 )
 foreach($fixture in $negative){
     $result=Test-RunnerContract $fixture.Source
     Assert-Fixture (-not [bool]$result.($fixture.Check)) ('NEGATIVE_'+$fixture.Name)
 }
 
+Write-Output 'R2_REGRESSIONS=PASS'
+Write-Output 'R1_REGRESSIONS=PASS'
+Write-Output 'R3_REMOTE_ROUTE_BASELINE_COMPARE=PASS'
+Write-Output 'R3_REMOTE_FIREWALL_BASELINE_COMPARE=PASS'
+Write-Output 'R3_REMOTE_SERVICE_DRIFT_ALLOWLIST=PASS'
+Write-Output 'R3_REMOTE_ROLLBACK_BASELINE_COMPARE=PASS'
+Write-Output 'R3_PROFILE_CONTENT_INTEGRITY=PASS'
+Write-Output 'R3_PROFILE_SAME_SIZE_CONTENT_DRIFT_NEGATIVE=PASS'
+Write-Output 'R3_STRICTMODE_RECOVERY_CLEANUP=PASS'
+Write-Output 'R3_FAILURE_CODE_NOT_MASKED=PASS'
 Write-Output 'G4B_LIVE_RUNNER_FIXTURES=PASS'
 Write-Output 'NEGATIVE_FIXTURES=PASS'
 Write-Output 'SSH_OR_VPS_ACTION=NO'

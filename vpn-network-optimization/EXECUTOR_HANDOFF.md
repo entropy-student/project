@@ -9,11 +9,30 @@
 ```text
 GATE_ID=G4B_OFFLINE_LIVE_RUNNER_REPAIR_R3
 EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_REPAIR_AND_FIXTURE_VALIDATION
-PREVIOUS_RESULT=RETURN_G4B_OFFLINE_LIVE_RUNNER_REPAIR_R2_REVIEW_DEFECTS
-R2_MAIN=6eb7b3733eacdab5a09a01310e7f62baa4860e68
+EXECUTOR_RESULT=PASS_CANDIDATE
+PRE_GATE_HEAD=301eda93ee91bef860341ec280e95f39f97cbcf7
 R2_RUNNER_BLOB=cc595546e0bad6cb17dc4cac5fea11d82840bb24
 R2_FIXTURE_VALIDATOR_BLOB=af01347b126a90eea90247767664991e4cf18044
 R3_GATE_BLOB=c76c7118d181f7d01897ba39429334d0068b92e4
+R3_REMOTE_ROUTE_BASELINE_COMPARE=PASS
+R3_REMOTE_FIREWALL_BASELINE_COMPARE=PASS
+R3_REMOTE_SERVICE_DRIFT_ALLOWLIST=PASS
+R3_REMOTE_ROLLBACK_BASELINE_COMPARE=PASS
+R3_PROFILE_CONTENT_INTEGRITY=PASS
+R3_PROFILE_SAME_SIZE_CONTENT_DRIFT_NEGATIVE=PASS
+R3_STRICTMODE_RECOVERY_CLEANUP=PASS
+R3_FAILURE_CODE_NOT_MASKED=PASS
+R2_REGRESSIONS=PASS
+R1_REGRESSIONS=PASS
+POWERSHELL_AST_PARSE=PASS
+EMBEDDED_REMOTE_PYTHON_AST_PARSE=PASS
+R3_REMOTE_PYTHON_HELPER_FIXTURES=PASS
+SECRET_SCAN=PASS
+GITHUB_FRESH_READBACK=REQUIRED_AFTER_PUSH
+ROUND_STARTED_AT=UNKNOWN
+ROUND_FINISHED_AT=UNKNOWN
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
 LIVE_G4B_EXECUTION_AUTHORIZED=NO
 SSH_OR_VPS_ACTION=NO
 REAL_SECRET_ACCESS=NO
@@ -28,14 +47,14 @@ G4C_EXECUTION=NO
 STOP_AT_REVIEWER=YES
 ```
 
-### Executor task
+### Completed R3 execution
 
-1. Read only `docs/G4B_OFFLINE_LIVE_RUNNER_REPAIR_R3.md` plus the current runner/fixture files it names.
-2. Capture timing before preflight/sync; safe ff-only sync.
-3. Fix only: remote route/firewall/service drift proof, strong profile-store content integrity, and StrictMode recovery-cleanup failure classification.
-4. Preserve every accepted R1/R2 contract and keep all frozen files unchanged.
-5. Run R1 + R2 regressions plus the new R3 positive/negative fixtures. Do not run the live runner.
-6. Persist sanitized Evidence, update only Executor Handoff, perform fresh GitHub read-back, and stop at Reviewer.
+Offline-only repairs cover remote route/firewall/service drift comparison and exact rollback
+read-back, SHA-256 profile-store integrity, and initialization of every recovery cleanup buffer
+before `try`. R1/R2 regressions and R3 positive/negative fixtures passed. No live action occurred.
+Timing is `UNKNOWN` because the Gate start boundary was not captured before preflight/sync. Evidence
+is appended in `EXECUTION_EVIDENCE.md`; `REVIEWER_HANDOFF.md` remains Reviewer-owned. Fresh GitHub
+read-back remains required after commit/push. Stop for Reviewer review; do not run live G4-B.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 

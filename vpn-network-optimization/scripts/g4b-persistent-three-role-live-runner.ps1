@@ -36,6 +36,7 @@ $script:recoveryPendingExternal = $null
 $script:profileConfig = Join-Path $script:localRuntime 'SELF-VPN-V1.yaml'
 $script:profileStore = $null
 $script:profileBefore = $null
+$script:remoteDriftBaseline = $null
 $script:profileCreatedPaths = [Collections.Generic.List[string]]::new()
 $script:ownerSid = [Security.Principal.WindowsIdentity]::GetCurrent().User
 $script:physicalEgress = $null
@@ -236,7 +237,10 @@ function Get-ProfileSnapshot {
             if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) { throw 'CLASH_PROFILE_STORE_REPARSE_POINT' }
             $rel=[IO.Path]::GetRelativePath($Root,$item.FullName).Replace('\','/')
             if ($item.PSIsContainer) { $map.Add($rel,'DIR'); $stack.Push($item.FullName) }
-            else { $map.Add($rel,('{0}|{1}' -f $item.Length,$item.LastWriteTimeUtc.Ticks)) }
+            else {
+                $digest=(Get-FileHash -LiteralPath $item.FullName -Algorithm SHA256 -ErrorAction Stop).Hash.ToLowerInvariant()
+                $map.Add($rel,('FILE|{0}|{1}|{2}' -f $item.Length,$item.LastWriteTimeUtc.Ticks,$digest))
+            }
         }
     }
     return ,$map
@@ -245,6 +249,32 @@ function Get-ProfileSnapshot {
 function Assert-ExistingProfileStoreUnchanged {
     param([object]$Before,[object]$After)
     foreach($key in $Before.Keys){ Assert-G4B ($After.ContainsKey($key) -and $Before[$key] -ceq $After[$key]) 'UNRELATED_PROFILE_STORE_MUTATION' }
+}
+
+function Assert-RemoteDriftSnapshot {
+    param([Parameter(Mandatory=$true)][object]$Before,[Parameter(Mandatory=$true)][object]$After,[switch]$AllowRealityService)
+    foreach($snapshot in @($Before,$After)){
+        Assert-G4B ($snapshot -is [System.Collections.IDictionary] -and $snapshot.Contains('routes_json') -and $snapshot.Contains('firewall_json') -and $snapshot.Contains('active_services')) 'REMOTE_DRIFT_SNAPSHOT_INVALID'
+        Assert-G4B ($snapshot['routes_json'] -is [string] -and $snapshot['firewall_json'] -is [string] -and $snapshot['active_services'] -is [array]) 'REMOTE_DRIFT_SNAPSHOT_INVALID'
+        Assert-G4B ($snapshot['routes_json'].Length -gt 0 -and $snapshot['routes_json'].Length -le 1048576 -and $snapshot['firewall_json'].Length -gt 0 -and $snapshot['firewall_json'].Length -le 1048576) 'REMOTE_DRIFT_SNAPSHOT_INVALID'
+        try {
+            $routes=ConvertFrom-Json -InputObject $snapshot['routes_json'] -AsHashtable -ErrorAction Stop
+            $firewall=ConvertFrom-Json -InputObject $snapshot['firewall_json'] -AsHashtable -ErrorAction Stop
+            Assert-G4B ($routes -is [System.Collections.IDictionary] -and $firewall -is [System.Collections.IDictionary]) 'REMOTE_DRIFT_SNAPSHOT_INVALID'
+        } catch { throw 'REMOTE_DRIFT_SNAPSHOT_INVALID' }
+        Assert-G4B (@($snapshot['active_services'] | Where-Object { $_ -isnot [string] -or $_ -notmatch '\.service$' }).Count -eq 0) 'REMOTE_DRIFT_SERVICE_SHAPE_INVALID'
+        Assert-G4B (@($snapshot['active_services'] | Select-Object -Unique).Count -eq $snapshot['active_services'].Count) 'REMOTE_DRIFT_SERVICE_DUPLICATE'
+    }
+    Assert-G4B ($Before['routes_json'] -ceq $After['routes_json']) 'REMOTE_ROUTE_DRIFT'
+    Assert-G4B ($Before['firewall_json'] -ceq $After['firewall_json']) 'REMOTE_FIREWALL_DRIFT'
+    $expected=@($Before['active_services'] | Sort-Object -CaseSensitive)
+    if($AllowRealityService){
+        Assert-G4B ($expected -notcontains $script:realityService) 'REMOTE_REALITY_SERVICE_PREEXISTED'
+        $expected+= $script:realityService
+    }
+    $expected=@($expected | Sort-Object -CaseSensitive)
+    $actual=@($After['active_services'] | Sort-Object -CaseSensitive)
+    Assert-G4B (($expected -join "`n") -ceq ($actual -join "`n")) 'REMOTE_SERVICE_DRIFT'
 }
 
 function Read-Hy2Auth {
@@ -408,6 +438,7 @@ function Write-EncryptedRecovery {
     }
     Assert-G4B (Test-G4BRecoveryPayload -PayloadBytes $PayloadBytes) 'RECOVERY_PAYLOAD_INVALID'
     $dpapi=$null; $portable=$null; $round=$null; $portableRound=$null
+    $localReadback=$null; $externalReadback=$null; $localPayload=$null; $externalPayload=$null
     try {
         $dpapi=[Security.Cryptography.ProtectedData]::Protect($PayloadBytes,$null,[Security.Cryptography.DataProtectionScope]::CurrentUser)
         $round=[Security.Cryptography.ProtectedData]::Unprotect($dpapi,$null,[Security.Cryptography.DataProtectionScope]::CurrentUser)
@@ -527,6 +558,7 @@ function Write-RollbackJournal {
         profile_store=$script:profileStore
         profile_created_paths=@($script:profileCreatedPaths)
         profile_before=@(if($null -ne $script:profileBefore){foreach($key in $script:profileBefore.Keys){[pscustomobject]@{path=$key;metadata=$script:profileBefore[$key]}}})
+        remote_drift_baseline=$script:remoteDriftBaseline
         recovery_pending_local=$script:recoveryPendingLocal
         recovery_pending_external=$script:recoveryPendingExternal
         recovery_final_local=$script:secretRecoveryPath
@@ -559,6 +591,7 @@ function Read-RollbackJournal {
     $record=ConvertFrom-Json -InputObject ([IO.File]::ReadAllText($script:rollbackJournal,[Text.Encoding]::UTF8)) -AsHashtable -ErrorAction Stop
     Assert-G4B ($record['format'] -ceq 'G4B_OWNER_ROLLBACK_R1' -and $record['run_id'] -ceq $script:runId -and $record['status'] -in @('IN_PROGRESS','PASS_CANDIDATE')) 'ROLLBACK_JOURNAL_IDENTITY_INVALID'
     Assert-G4B ($record['profile_store'] -is [string] -and $record['profile_created_paths'] -is [array]) 'ROLLBACK_JOURNAL_SHAPE_INVALID'
+    Assert-RemoteDriftSnapshot -Before $record['remote_drift_baseline'] -After $record['remote_drift_baseline']
     $currentProfileStore=Resolve-ProfileStoreRoot
     Assert-G4B ([IO.Path]::GetFullPath([string]$record['profile_store']) -ceq [IO.Path]::GetFullPath($currentProfileStore)) 'ROLLBACK_JOURNAL_PROFILE_ROOT_INVALID'
     Assert-G4B ($SecondFailureDomainPath -and (Test-Path -LiteralPath $SecondFailureDomainPath -PathType Container)) 'ROLLBACK_RECOVERY_DOMAIN_REQUIRED'
@@ -704,6 +737,78 @@ def save_state(s):
     tmp=TXN/'state.tmp'
     with open(tmp,'x',encoding='utf-8') as f: json.dump(s,f,separators=(',',':')); f.flush(); os.fsync(f.fileno())
     os.replace(tmp,TXN/'state.json')
+def checked_text(args,code,timeout=10):
+    result=subprocess.run(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,check=False,timeout=timeout)
+    if result.returncode: raise GateError(code)
+    return result.stdout
+def canonical_json(value): return json.dumps(value,sort_keys=True,separators=(',',':'))
+def normalize_nft(value,parent=''):
+    if isinstance(value,dict):
+        result={}
+        for key,item in value.items():
+            if parent=='counter' and key in ('packets','bytes'): continue
+            result[key]=normalize_nft(item,key)
+        return result
+    if isinstance(value,list): return [normalize_nft(item,parent) for item in value]
+    return value
+def capture_remote_drift():
+    routes={}
+    queries=(
+        ('ipv4_routes',['ip','-j','route','show','table','all'],'REMOTE_IPV4_ROUTE_BASELINE_FAILED'),
+        ('ipv6_routes',['ip','-j','-6','route','show','table','all'],'REMOTE_IPV6_ROUTE_BASELINE_FAILED'),
+        ('ipv4_rules',['ip','-j','rule','show'],'REMOTE_IPV4_RULE_BASELINE_FAILED'),
+        ('ipv6_rules',['ip','-j','-6','rule','show'],'REMOTE_IPV6_RULE_BASELINE_FAILED'))
+    for name,args,code in queries:
+        try: records=json.loads(checked_text(args,code))
+        except GateError: raise
+        except Exception: raise GateError(code)
+        if not isinstance(records,list) or any(not isinstance(item,dict) for item in records): raise GateError('REMOTE_ROUTE_BASELINE_SHAPE_INVALID')
+        normalized=[]
+        for item in records:
+            record=dict(item); record.pop('expires',None); normalized.append(record)
+        routes[name]=sorted(normalized,key=canonical_json)
+    firewall={}
+    if shutil.which('ufw'):
+        text=checked_text(['ufw','status'],'REMOTE_UFW_BASELINE_FAILED')
+        firewall['ufw']=canonical_json([line.strip() for line in text.splitlines() if line.strip()])
+    if shutil.which('nft'):
+        try: nft=json.loads(checked_text(['nft','--json','list','ruleset'],'REMOTE_NFT_BASELINE_FAILED'))
+        except GateError: raise
+        except Exception: raise GateError('REMOTE_NFT_BASELINE_INVALID')
+        firewall['nft']=canonical_json(normalize_nft(nft))
+    for name,command,code in (('iptables4','iptables-save','REMOTE_IPTABLES4_BASELINE_FAILED'),('iptables6','ip6tables-save','REMOTE_IPTABLES6_BASELINE_FAILED')):
+        if shutil.which(command):
+            text=checked_text([command],code); lines=[]
+            for line in text.splitlines():
+                if not line or line.startswith('#'): continue
+                lines.append(re.sub(r'^\[\d+:\d+\](?=\s)', '', line.strip()))
+            firewall[name]=canonical_json(lines)
+    if not firewall: raise GateError('REMOTE_FIREWALL_BASELINE_UNAVAILABLE')
+    service_text=checked_text(['systemctl','list-units','--type=service','--state=active','--no-legend','--no-pager','--plain','--full'],'REMOTE_SERVICE_BASELINE_FAILED')
+    services=[]
+    for line in service_text.splitlines():
+        fields=line.split(None,4)
+        if len(fields)<4 or not fields[0].endswith('.service'): raise GateError('REMOTE_SERVICE_BASELINE_SHAPE_INVALID')
+        services.append(fields[0])
+    return {'routes_json':canonical_json(routes),'firewall_json':canonical_json(firewall),'active_services':sorted(set(services))}
+def validate_drift_snapshot(snapshot):
+    if not isinstance(snapshot,dict) or set(snapshot)!={'routes_json','firewall_json','active_services'}: raise GateError('REMOTE_DRIFT_BASELINE_INVALID')
+    if not isinstance(snapshot['routes_json'],str) or len(snapshot['routes_json'])>1048576 or not isinstance(snapshot['firewall_json'],str) or len(snapshot['firewall_json'])>1048576: raise GateError('REMOTE_DRIFT_BASELINE_INVALID')
+    try:
+        if not isinstance(json.loads(snapshot['routes_json']),dict) or not isinstance(json.loads(snapshot['firewall_json']),dict): raise GateError('REMOTE_DRIFT_BASELINE_INVALID')
+    except GateError: raise
+    except Exception: raise GateError('REMOTE_DRIFT_BASELINE_INVALID')
+    services=snapshot['active_services']
+    if not isinstance(services,list) or any(not isinstance(name,str) or not name.endswith('.service') for name in services) or services!=sorted(set(services)): raise GateError('REMOTE_DRIFT_BASELINE_INVALID')
+def assert_remote_drift(before,after,allow_reality=False):
+    validate_drift_snapshot(before); validate_drift_snapshot(after)
+    if before['routes_json']!=after['routes_json']: raise GateError('REMOTE_ROUTE_DRIFT')
+    if before['firewall_json']!=after['firewall_json']: raise GateError('REMOTE_FIREWALL_DRIFT')
+    expected=set(before['active_services'])
+    if allow_reality:
+        if SERVICE in expected: raise GateError('REMOTE_REALITY_SERVICE_PREEXISTED')
+        expected.add(SERVICE)
+    if set(after['active_services'])!=expected: raise GateError('REMOTE_SERVICE_DRIFT')
 def probe():
     if os.geteuid()!=0: raise GateError('REMOTE_ROOT_REQUIRED')
     host=socket.gethostname()
@@ -719,15 +824,18 @@ def probe():
     unit=run(['systemctl','is-active',SERVICE],timeout=10).decode().strip() if not absent(UNIT) else 'absent'
     firewall={'ufw':subprocess.run(['ufw','status'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,check=False,timeout=10).returncode if shutil.which('ufw') else -1,
               'nft':subprocess.run(['nft','list','ruleset'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=False,timeout=10).returncode if shutil.which('nft') else -1}
-    return {'hostname':host,'os_id':'ubuntu' if 'ID=ubuntu' in osinfo else 'unknown','os_version':'24.04' if 'VERSION_ID="24.04"' in osinfo else 'unknown','wg_service':wg,'hy2_service':hy,'udp51820':count(51820,'udp'),'udp8443':count(8443,'udp'),'tcp443':count(443,'tcp'),'reality_service':unit,'mihomo_processes':sum(1 for p in pathlib.Path('/proc').iterdir() if p.name.isdigit() and (pathlib.Path('/proc')/p.name/'comm').exists() and 'mihomo' in (pathlib.Path('/proc')/p.name/'comm').read_text(errors='ignore')),'memory_available_kib':mem,'root_free_bytes':free,'firewall_query_rc':firewall,'target_paths_absent':all(absent(x) for x in (BIN,RUNTIME,SECRETS,UNIT)),'transaction_path_absent':absent(TXN),'temp_path_absent':absent(TMP)}
+    drift=capture_remote_drift()
+    return {'hostname':host,'os_id':'ubuntu' if 'ID=ubuntu' in osinfo else 'unknown','os_version':'24.04' if 'VERSION_ID="24.04"' in osinfo else 'unknown','wg_service':wg,'hy2_service':hy,'udp51820':count(51820,'udp'),'udp8443':count(8443,'udp'),'tcp443':count(443,'tcp'),'reality_service':unit,'mihomo_processes':sum(1 for p in pathlib.Path('/proc').iterdir() if p.name.isdigit() and (pathlib.Path('/proc')/p.name/'comm').exists() and 'mihomo' in (pathlib.Path('/proc')/p.name/'comm').read_text(errors='ignore')),'memory_available_kib':mem,'root_free_bytes':free,'firewall_query_rc':firewall,'drift_snapshot':drift,'target_paths_absent':all(absent(x) for x in (BIN,RUNTIME,SECRETS,UNIT)),'transaction_path_absent':absent(TXN),'temp_path_absent':absent(TMP)}
 def stage():
     if os.geteuid()!=0: raise GateError('REMOTE_ROOT_REQUIRED')
     if not all(absent(x) for x in (BIN,RUNTIME,SECRETS,UNIT,TXN,TMP)): raise GateError('PERSISTENT_TARGET_COLLISION')
     if shutil.which('getent') and subprocess.run(['getent','passwd',USER],stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=False).returncode==0: raise GateError('RUNTIME_USER_COLLISION')
     if subprocess.run(['getent','group',GROUP],stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=False).returncode==0: raise GateError('RUNTIME_GROUP_COLLISION')
+    baseline=P.get('drift_baseline')
+    assert_remote_drift(baseline,capture_remote_drift(),allow_reality=False)
     TXN.mkdir(mode=0o700); os.chmod(TXN,0o700)
     TMP.mkdir(mode=0o700); os.chmod(TMP,0o700)
-    state={'run_id':RUN_ID,'created_binary':False,'created_user':False,'created_group':False,'created_runtime':False,'created_secrets_dir':False,'created_secret_config':False,'created_unit':False,'service_started':False,'created_parents':[],'pass_candidate':False}
+    state={'run_id':RUN_ID,'remote_drift_baseline':baseline,'created_binary':False,'created_user':False,'created_group':False,'created_runtime':False,'created_secrets_dir':False,'created_secret_config':False,'created_unit':False,'service_started':False,'created_parents':[],'pass_candidate':False}
     save_state(state)
     write_new(TMP/'.g4b-owner',(RUN_ID+'\n').encode(),0o600)
     try:
@@ -809,7 +917,8 @@ def rollback():
         if not absent(TMP): raise GateError('ROLLBACK_TEMP_OWNERSHIP_UNPROVEN')
         check=probe()
         if not check['target_paths_absent'] or check['reality_service']!='absent' or check['wg_service']!='active' or check['hy2_service']!='active' or check['udp51820']==0 or check['udp8443']==0 or check['tcp443']!=0: raise GateError('ROLLBACK_NO_TRANSACTION_READBACK_FAILED')
-        return {'ok':True,'rollback':'PASS','target_paths':'absent','wg_hy2':'preserved'}
+        assert_remote_drift(P.get('drift_baseline'),check['drift_snapshot'],allow_reality=False)
+        return {'ok':True,'rollback':'PASS','target_paths':'absent','wg_hy2':'preserved','route_firewall_service_restored':'PASS'}
     s=load_state()
     if s.get('run_id')!=RUN_ID: raise GateError('ROLLBACK_OWNERSHIP_MISMATCH')
     if s.get('created_unit') and not absent(UNIT):
@@ -859,7 +968,8 @@ def rollback():
     shutil.rmtree(TXN)
     check=probe()
     if not check['target_paths_absent'] or check['reality_service']!='absent' or check['wg_service']!='active' or check['hy2_service']!='active' or check['udp51820']==0 or check['udp8443']==0 or check['tcp443']!=0: raise GateError('ROLLBACK_POSTREMOVE_READBACK_FAILED')
-    return {'ok':True,'rollback':'PASS','target_paths':'absent','wg_hy2':'preserved'}
+    assert_remote_drift(s.get('remote_drift_baseline'),check['drift_snapshot'],allow_reality=False)
+    return {'ok':True,'rollback':'PASS','target_paths':'absent','wg_hy2':'preserved','route_firewall_service_restored':'PASS'}
 def closeout():
     if absent(TXN): raise GateError('CLOSEOUT_TRANSACTION_MISSING')
     s=load_state()
@@ -868,6 +978,7 @@ def closeout():
     if P.get('reviewer_decision')!='FORMAL_PASS_G4B_PERSISTENT_THREE_ROLE_READINESS': raise GateError('CLOSEOUT_REVIEWER_PASS_REQUIRED')
     current=status()
     if current.get('service')!='active' or current.get('tcp443_listener')!='mihomo': raise GateError('CLOSEOUT_SERVICE_READBACK_FAILED')
+    assert_remote_drift(s.get('remote_drift_baseline'),probe()['drift_snapshot'],allow_reality=True)
     if not absent(TMP):
         marker=TMP/'.g4b-owner'
         if not marker.is_file() or marker.is_symlink() or marker.read_text(encoding='utf-8').strip()!=RUN_ID: raise GateError('CLOSEOUT_TEMP_OWNERSHIP_UNPROVEN')
@@ -880,6 +991,7 @@ def candidate():
     if s.get('run_id')!=RUN_ID: raise GateError('CANDIDATE_OWNERSHIP_MISMATCH')
     current=status()
     if current.get('service')!='active' or current.get('tcp443_listener')!='mihomo': raise GateError('CANDIDATE_SERVICE_READBACK_FAILED')
+    assert_remote_drift(s.get('remote_drift_baseline'),probe()['drift_snapshot'],allow_reality=True)
     s['pass_candidate']=True; save_state(s)
     return {'ok':True,'rollback_journal_retained':'YES'}
 def main():
@@ -943,9 +1055,10 @@ try {
     if($Mode -eq 'Rollback'){
         $script:baseline=Get-LocalBaseline
         $journal=Read-RollbackJournal
+        $script:remoteDriftBaseline=$journal['remote_drift_baseline']
         $script:profileStore=[string]$journal['profile_store']
-        $rollback=Invoke-Remote -Action 'rollback'
-        Assert-G4B ($rollback['rollback'] -ceq 'PASS') 'BOUNDED_REMOTE_ROLLBACK_UNVERIFIED'
+        $rollback=Invoke-Remote -Action 'rollback' -Payload @{drift_baseline=$script:remoteDriftBaseline}
+        Assert-G4B ($rollback['rollback'] -ceq 'PASS' -and $rollback['route_firewall_service_restored'] -ceq 'PASS') 'BOUNDED_REMOTE_ROLLBACK_UNVERIFIED'
         Remove-OwnedProfileFiles -Journal $journal
         Assert-ProfileStoreMatchesJournal -Journal $journal
         foreach($path in @($journal['recovery_pending_local'],$journal['recovery_pending_external'])){
@@ -962,6 +1075,7 @@ try {
         Assert-G4B ($ReviewerDecision -ceq 'FORMAL_PASS_G4B_PERSISTENT_THREE_ROLE_READINESS') 'CLOSEOUT_REVIEWER_PASS_REQUIRED'
         $script:baseline=Get-LocalBaseline
         $journal=Read-RollbackJournal
+        $script:remoteDriftBaseline=$journal['remote_drift_baseline']
         Assert-G4B ($journal['status'] -ceq 'PASS_CANDIDATE') 'CLOSEOUT_PASS_CANDIDATE_REQUIRED'
         $script:profileStore=[string]$journal['profile_store']
         $profileBefore=Get-JournalProfileSnapshot -Journal $journal
@@ -993,6 +1107,8 @@ try {
 
     Write-Phase 'P2_STRICT_TARGET_IDENTITY'
     $remote=Invoke-Remote -Action 'probe'
+    $script:remoteDriftBaseline=$remote['drift_snapshot']
+    Assert-RemoteDriftSnapshot -Before $script:remoteDriftBaseline -After $script:remoteDriftBaseline
     Assert-G4B ($remote['hostname'] -ceq 'ubuntu-s-1vcpu-512mb-10gb-sfo3' -and $remote['os_id'] -ceq 'ubuntu' -and $remote['os_version'] -ceq '24.04') 'VPS_IDENTITY_INVALID'
     Assert-G4B ($remote['transaction_path_absent'] -eq $true -and $remote['temp_path_absent'] -eq $true) 'REMOTE_RUN_PATH_COLLISION'
 
@@ -1028,7 +1144,7 @@ try {
     Write-RollbackJournal -Status 'IN_PROGRESS'
 
     $script:remoteMutationStarted=$true
-    $script:remoteCredentials=Invoke-Remote -Action 'stage'
+    $script:remoteCredentials=Invoke-Remote -Action 'stage' -Payload @{drift_baseline=$script:remoteDriftBaseline}
     Assert-G4B ($script:remoteCredentials['version'] -ceq 'v1.19.31' -and $script:remoteCredentials['asset_hash'] -ceq 'PASS') 'PINNED_MIHOMO_ASSET_INVALID'
 
     Write-Phase 'P6_SERVER_CONFIG_PARSE'
@@ -1091,6 +1207,8 @@ try {
     Assert-G4B ($remoteFinal['service'] -ceq 'active' -and $remoteFinal['tcp443_listener'] -ceq 'mihomo') 'FINAL_REALITY_READBACK_FAILED'
     $remoteBaseline=Invoke-Remote -Action 'probe'
     Assert-G4B ($remoteBaseline['wg_service'] -ceq 'active' -and [int]$remoteBaseline['udp51820'] -gt 0 -and $remoteBaseline['hy2_service'] -ceq 'active' -and [int]$remoteBaseline['udp8443'] -gt 0) 'FINAL_WG_HY2_READBACK_FAILED'
+    Assert-RemoteDriftSnapshot -Before $script:remoteDriftBaseline -After $remoteBaseline['drift_snapshot'] -AllowRealityService
+    Write-Output 'G4B_UNRELATED_REMOTE_DRIFT=NONE'
     $remoteCandidate=Invoke-Remote -Action 'candidate'
     Assert-G4B ($remoteCandidate['rollback_journal_retained'] -ceq 'YES') 'REMOTE_ROLLBACK_JOURNAL_NOT_RETAINED'
     $finalRecoveryJson=ConvertTo-Json -InputObject @{format='VPNG4BR1';hy2_auth=$script:hy2Auth;reality_uuid=$credentials['uuid'];reality_private_key=$credentials['private_key'];reality_public_key=$credentials['public_key'];reality_short_id=$credentials['short_id']} -Compress
@@ -1130,8 +1248,8 @@ finally {
     if (-not $script:completed) {
         if ($script:remoteMutationStarted -or $script:recoveryCreatedPaths.Count -gt 0) {
             try {
-                $rollback=Invoke-Remote -Action 'rollback'
-                if($rollback['rollback'] -ceq 'PASS') { $script:remoteRollbackVerified=$true; Write-Output 'REMOTE_ROLLBACK=PASS' }
+                $rollback=Invoke-Remote -Action 'rollback' -Payload @{drift_baseline=$script:remoteDriftBaseline}
+                if($rollback['rollback'] -ceq 'PASS' -and $rollback['route_firewall_service_restored'] -ceq 'PASS') { $script:remoteRollbackVerified=$true; Write-Output 'REMOTE_ROLLBACK=PASS' }
                 else { Write-Output 'REMOTE_ROLLBACK=FAIL' }
             }
             catch { Write-Output 'REMOTE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION' }
