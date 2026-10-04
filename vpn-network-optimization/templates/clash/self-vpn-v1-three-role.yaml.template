@@ -1,0 +1,52 @@
+{
+  "proxies": [
+    {
+      "name": "HY2-SFO3",
+      "type": "hysteria2",
+      "server": "__VPS_HOST__",
+      "port": 8443,
+      "password": "__HY2_AUTH_INJECT_PROTECTED_RUNTIME_ONLY__",
+      "sni": "__HY2_SNI__",
+      "skip-cert-verify": true,
+      "fingerprint": "__HY2_CERT_SHA256__",
+      "alpn": ["h3"],
+      "interface-name": "__PHYSICAL_INTERFACE_NAME_RUNTIME_DISCOVERY__"
+    },
+    {
+      "name": "WG-BASELINE",
+      "type": "direct"
+    },
+    {
+      "name": "REALITY-SFO3",
+      "type": "vless",
+      "server": "__VPS_HOST__",
+      "port": 443,
+      "uuid": "__REALITY_UUID_INJECT_PROTECTED_RUNTIME_ONLY__",
+      "udp": false,
+      "flow": "xtls-rprx-vision",
+      "network": "tcp",
+      "tls": true,
+      "servername": "www.microsoft.com",
+      "client-fingerprint": "chrome",
+      "reality-opts": {
+        "public-key": "__REALITY_PUBLIC_KEY_INJECT_PROTECTED_RUNTIME_ONLY__",
+        "short-id": "__REALITY_SHORT_ID_INJECT_PROTECTED_RUNTIME_ONLY__"
+      },
+      "interface-name": "__PHYSICAL_INTERFACE_NAME_RUNTIME_DISCOVERY__"
+    }
+  ],
+  "proxy-groups": [
+    {
+      "name": "SELF-VPN-V1",
+      "type": "select",
+      "proxies": [
+        "HY2-SFO3",
+        "WG-BASELINE",
+        "REALITY-SFO3"
+      ]
+    }
+  ],
+  "rules": [
+    "MATCH,SELF-VPN-V1"
+  ]
+}
