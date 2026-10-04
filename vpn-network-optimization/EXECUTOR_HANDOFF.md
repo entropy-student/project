@@ -4,26 +4,20 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B offline live-runner implementation R1
+## Current execution status — G4-B offline live-runner repair R2
 
 ```text
-GATE_ID=G4B_OFFLINE_LIVE_RUNNER_IMPLEMENTATION_R1
-EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_IMPLEMENTATION_AND_FIXTURE_VALIDATION
-PREVIOUS_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
-GATE_DOC_BLOB=6ebf299166109b0640f2acd93cd8c669bc036b32
-PRE_GATE_HEAD=46c2cf2c914a0e7043467ab1022da403fd1e015e
-EXECUTOR_RESULT=PASS_CANDIDATE
-RUNNER_SOURCE=IMPLEMENTED
-OFFLINE_FIXTURES=21_POSITIVE_AND_10_NEGATIVE_PASS
-POWERSHELL_AST_PARSE=PASS
-REMOTE_SUPERVISOR_PY_AST_PARSE=PASS
-EXISTING_PACKAGE_VALIDATOR=PASS
-SECRET_SCAN=PASS
+GATE_ID=G4B_OFFLINE_LIVE_RUNNER_REPAIR_R2
+EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_REPAIR_AND_FIXTURE_VALIDATION
+PREVIOUS_RESULT=RETURN_G4B_OFFLINE_RUNNER_IMPLEMENTATION_R1_REVIEW_DEFECTS
+R1_COMMIT=b97266e7cc9e3c3224032f7e49e9bf6d3b61c7d0
+R1_RUNNER_BLOB=bd791c02310031c6e80b2c1986c73dc9475b553d
+R1_FIXTURE_VALIDATOR_BLOB=b830cd1635c6752095dc21718dbbd28165448f6c
+R2_GATE_BLOB=b60c1d1bf09cac5467f547b83dc2c13a4af850d8
 LIVE_G4B_EXECUTION_AUTHORIZED=NO
 SSH_OR_VPS_ACTION=NO
-DPAPI_OR_REAL_SECRET_ACCESS=NO
+REAL_SECRET_ACCESS=NO
 EXTERNAL_TEST_REQUESTS=0
-GITHUB_METADATA_FETCH=YES
 NETWORK_MUTATION=NO
 CLASH_PROFILE_MUTATION=NO
 SYSTEM_PROXY_CHANGE=NO
@@ -31,15 +25,18 @@ TUN_CHANGE=NO
 SERVICE_MUTATION=NO
 ROUTE_MUTATION=NO
 G4C_EXECUTION=NO
-TIMING=PARTIAL_START_TIMESTAMP_NOT_CAPTURED; IMPLEMENTATION_WINDOW=00:52:48
 STOP_AT_REVIEWER=YES
 ```
 
-### Executor result
+### Executor task
 
-Implemented and offline-validated the bounded runner and fixture validator; updated the implementation package asset/status list. The runner itself was not executed. No live Secret, VPS, SSH, network, route, service, Clash profile, system proxy, or TUN state was accessed or changed.
-
-Reviewer: inspect the two scripts, package synchronization, and appended Evidence section. The full Gate start time was not captured before initial read/sync; Evidence reports only the measured implementation window and marks total-round timing unverified.
+1. Read only `docs/G4B_OFFLINE_LIVE_RUNNER_REPAIR_R2.md` as the current repair Gate plus the R1 target source/fixtures it names.
+2. Capture `ROUND_STARTED_AT` before preflight/sync and safe ff-only sync.
+3. Repair only the five Reviewer findings: portable/two-phase recovery, runtime filesystem/access, post-Clash-restart profile persistence, retained rollback journal/closeout path, and sanitized live Evidence markers.
+4. Keep Reviewer Handoff, G4-B readiness Gate, final validation plan, accepted templates, G4-B0 source/evidence, and existing package validator frozen.
+5. Run all R1 regressions plus the new R2 positive/negative fixtures. Do not execute the live runner.
+6. Persist sanitized proof to `EXECUTION_EVIDENCE.md`, update only this Executor Handoff, fresh read-back, and capture `ROUND_FINISHED_AT`.
+7. Return PASS_CANDIDATE or precise RETURN and `STOP_AT_REVIEWER=YES`.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
