@@ -14,20 +14,19 @@ The source of truth is the already-accepted Owner-local CurrentUser DPAPI artifa
 
 `%LOCALAPPDATA%\vpn-network-optimization\recovery\hy2-g2a.dpapi`
 
-The runner:
-- verifies the recovery file's Owner-only ACL;
-- decrypts with DPAPI CurrentUser only in process memory;
-- validates the VPNHY2R1 frame, auth format, certificate SAN, and certificate fingerprint;
-- never prints the auth value or a hash of it;
-- zeroes plaintext buffers after use.
+The implementation is intentionally split into three reviewed components so no single component both handles the plaintext HY2 credential and constructs external network requests:
 
-A real auth value is injected only into one unique Owner-only runtime YAML. Importing that YAML into Clash Verge may cause Clash's own application storage/cache to temporarily contain the real auth value. This temporary persistence is inside the authorized C2C boundary. The runner scans the Clash application root for the exact auth byte sequence before import and requires zero matches after the canary profile is removed. It does not print matching paths.
+- `scripts/c2c-secret-profile-helper.ps1`: local-only Secret helper. It verifies Owner-only ACLs, decrypts the DPAPI CurrentUser artifact in process memory, validates the VPNHY2R1 frame/auth/certificate, renders one Owner-only temporary YAML, performs the exact auth-byte residue checks, and zeroes plaintext buffers. It contains no network-request code.
+- `scripts/c2c-bounded-proxy-probe.ps1`: two-request network probe. It receives only a localhost proxy port and has no DPAPI/recovery/auth access.
+- `scripts/c2c-owner-clash-real-canary.ps1`: orchestration layer. It handles read-back, the temporary /32 route, UI acknowledgements, helper/probe invocation, and final rollback verification; it does not decrypt or hold the HY2 credential.
+
+A real auth value is injected only into one unique Owner-only runtime YAML. Importing that YAML into Clash Verge may cause Clash's own application storage/cache to temporarily contain the real auth value. This temporary persistence is inside the authorized C2C boundary. The Secret helper scans the Clash application root for the exact auth byte sequence before import and requires zero matches after the canary profile is removed. It does not print matching paths.
 
 ## Network boundary
 
 Production WireGuard remains connected throughout. System proxy and Clash TUN must remain OFF.
 
-The runner creates one temporary ActiveStore IPv4 /32 route for the HY2 server public IP through the dynamically resolved non-WireGuard physical default gateway. This is required so HY2 UDP/8443 does not recurse through the WireGuard full tunnel. The route is removed in cleanup and no persistent route is allowed.
+The orchestrator creates one temporary ActiveStore IPv4 /32 route for the HY2 server public IP through the dynamically resolved non-WireGuard physical default gateway. This is required so HY2 UDP/8443 does not recurse through the WireGuard full tunnel. The route is removed in cleanup and no persistent route is allowed.
 
 Exactly two real requests are authorized in C2C. The only intentional real canary traffic is:
 1. one HTTPS request to `https://api.openai.com/v1/models` through Clash's existing local HTTP proxy listener, expecting curl exit 0 and HTTP 401;
