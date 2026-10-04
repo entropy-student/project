@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7_THREE_FRONTEND_SURFACES
+CURRENT_GATE=G3CR7R1_EXECUTOR_REPRODUCTION
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -81,14 +81,15 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=SOURCE_CANDIDATE_READY
-CORE_FUNCTION_ONBOARDING_SURFACE=SOURCE_CANDIDATE_READY
-POSTPAY_GENERATION_STATUS_SURFACE=SOURCE_CANDIDATE_READY
+HOMEPAGE_ENTRY_SURFACE=PENDING_EXECUTOR_REPRODUCTION
+CORE_FUNCTION_ONBOARDING_SURFACE=PENDING_EXECUTOR_REPRODUCTION
+POSTPAY_GENERATION_STATUS_SURFACE=PENDING_EXECUTOR_REPRODUCTION
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
-G3CR7_SOURCE_CANDIDATE=PASS_CANDIDATE_SOURCE_ONLY
-G3CR7_SOURCE_HEAD=0603706ca0441fb1cb65ff716f47f7a919e2e4f3
-G3CR7_PAYMENT_TRUTH_REVIEW=PASS
-G3CR7_PREVIEW_STYLE_HANDOFF=PASS
+G3CR7_SOURCE_CANDIDATE=REFERENCE_ONLY_NONAUTHORITATIVE
+G3CR7_REFERENCE_PROTOTYPE_SOURCE_HEAD=0603706ca0441fb1cb65ff716f47f7a919e2e4f3
+G3CR7_ACCEPTED_REPRODUCTION_BASELINE=e71f94377d341a88ba388f2c5da153e7cd6ee8b8
+G3CR7_PAYMENT_TRUTH_REVIEW=INVALIDATED_ROLE_SEPARATION
+G3CR7_PREVIEW_STYLE_HANDOFF=INVALIDATED_ROLE_SEPARATION
 G3CR7_RUNTIME_VISUAL=UNVERIFIED
 G3CR7_OWNER_VISUAL=PENDING
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
@@ -134,18 +135,17 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7_THREE_FRONTEND_SURFACES`
+`G3CR7R1_EXECUTOR_REPRODUCTION`
 
-Owner has explicitly reprioritized the next work before P1-P12:
+The prior G3CR7 implementation round is formally RETURNed because Reviewer implemented and self-reviewed the source. Its prototype may be consulted only as a non-authoritative reference.
 
-- **Homepage entry unit** — bounded visual polish + route to the core-function page; accepted homepage outside this unit remains frozen.
-- **Core function page** — conventional full-page SaaS onboarding / multi-step intake; favor mature patterns and low custom-code burden.
-- **Post-payment generation/status surface** — conventional SaaS state/success UI; reuse WooCommerce checkout/order-confirmation rather than rebuilding payment.
-
-Current Gate is presentation/frontend-shell only. It may build a reviewable clickable flow and Woo checkout handoff, but it may not implement server-side pre-payment draft persistence, production generation, P1-P12, real-money checkout, production deployment, Shared Infra, or PR #64 merge.
+Current execution authority is a fresh independent Executor reproduction from the accepted pre-implementation source baseline `e71f94377d341a88ba388f2c5da153e7cd6ee8b8`.
 
 Gate file:
-- `docs/G3CR7_THREE_FRONTEND_SURFACES.md`
+- `docs/G3CR7R1_EXECUTOR_REPRODUCTION.md`
+
+Reference invalidation:
+- `docs/REVIEWER_DECISION_G3CR7_RETURN_ROLE_SEPARATION_2026-10-05.md`
 
 ## CRITICAL_CONSTRAINTS
 
@@ -210,14 +210,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Load PR #64 candidate `0603706ca0441fb1cb65ff716f47f7a919e2e4f3` into the retained local WordPress runtime without production deployment.
-2. Capture 1440px + 375px evidence for the homepage entry, all intake states, generation/ready status, and Woo order-received continuation.
-3. Reviewer checks runtime behavior and scope; Owner reviews the three surfaces visually.
-4. Only after that checkpoint may G3CR7 PASS. Backend pre-payment draft persistence is a later Gate; P1-P12 remains deferred.
+1. Codex/Executor executes `G3CR7R1_EXECUTOR_REPRODUCTION` from the accepted target-file baseline `e71f94377d341a88ba388f2c5da153e7cd6ee8b8`.
+2. The prior Reviewer-authored prototype at `0603706c...` may be used only as reference; its PASS/validation claims are not accepted Evidence.
+3. Executor returns fresh source, actual lint/static checks, local-runtime desktop/mobile screenshots, Woo payment-truth negative checks, and a PASS_CANDIDATE / RETURN packet.
+4. Reviewer independently inspects that Evidence and only then decides PASS / RETURN. P1-P12 remains deferred.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE until runtime screenshots are ready.** The next Owner action is visual acceptance/rejection of the three surfaces.
+**NONE.** The next action belongs to Codex/Executor; Owner review returns only after an independently executed runtime candidate exists.
 
 ## EVIDENCE_POINTERS
 
