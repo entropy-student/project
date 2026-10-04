@@ -70,3 +70,18 @@ Do not:
 Reuse the existing accepted D1 Focusly screenshots and D2 round2 screenshots.
 
 The next Gate is an evidence-format closure only.
+
+
+## Owner transport update — 2026-10-04
+
+The Owner selected manual image relay for the remaining visual inspection.
+
+~~~text
+VISUAL_REVIEW_TRANSPORT=OWNER_MANUAL_IMAGE_UPLOAD
+DATA_URI_TRANSPORT=SUPERSEDED
+IMPLEMENTATION_REPLAY_REQUIRED=NO
+D2_TECHNICAL_ACCEPTANCE=PASS_UNCHANGED
+VISUAL_FIDELITY_REVIEW=WAITING_FOR_OWNER_UPLOADED_CONTACT_SHEET
+~~~
+
+This transport change does not reopen any D2 technical acceptance item and does not authorize any application redesign. The Executor now only creates a labeled JPEG contact sheet from already-existing D1/D2 screenshots and reports its exact local path. The Owner uploads that JPEG directly into the current ChatGPT conversation for Reviewer inspection.
