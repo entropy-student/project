@@ -6645,3 +6645,56 @@ MANDATORY_REVIEW_STOP=YES
 ```
 
 This fresh authorization applies only to one repaired G4-B0 live retry. It does not authorize G4-B persistent writes, REALITY deployment, system proxy/TUN activation, benchmark loops, or G4-C.
+
+
+## G4-B0 repaired live retry RETURN — SOCKS UDP loopback semantics — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+ROUND_STARTED_AT=2026-10-04T09:35:50.0457794+00:00
+ROUND_FINISHED_AT=2026-10-04T09:36:01.2539810+00:00
+ACTUAL_ELAPSED=00:00:11.2082016
+
+CANONICAL_SOURCE=PASS
+OWNER_BASELINE=PASS
+ACTIVE_VPS_32_ROUTE_BEFORE=0
+PERSISTENT_VPS_32_ROUTE_BEFORE=0
+PHYSICAL_EGRESS_DISCOVERY=PASS
+PHYSICAL_INTERFACE_ALIAS=WLAN
+PHYSICAL_INTERFACE_INDEX=18
+
+CONSEQUENTIAL_PHASE_STARTED=YES
+DPAPI_UNPROTECT=PASS
+HY2_AUTH_FORMAT=PASS
+CERTIFICATE_FINGERPRINT_MATCH=PASS
+OWNER_ONLY_RUNTIME=PASS
+INTERFACE_NAME_APPLIED=YES
+MIHOMO_CONFIG_PARSE=PASS
+
+FAILURE_PHASE=P4_MIHOMO_PARSE_AND_START
+FAILURE_CODE=MIHOMO_UDP_BOUND_ON_LOCAL_SOCKS_PORT
+REQUEST_COUNT=0
+EXTERNAL_REQUESTS=0
+
+ACTIVE_VPS_32_ROUTE_AFTER=0
+PERSISTENT_VPS_32_ROUTE_AFTER=0
+WIREGUARD_PRESERVED=YES
+SYSTEM_PROXY_FINAL=OFF
+TUN_FINAL=OFF
+NETWORK_BASELINE_RESTORED=PASS
+SECRET_RUNTIME_CLEANUP=PASS
+SECRET_VALUES_EMITTED=0
+
+G4B0_RUNNER_RESULT=RETURN_TO_REVIEWER
+OWNER_AUTHORIZATION_CONSUMED=YES
+DO_NOT_RERUN=YES
+```
+
+Reviewer reconciliation:
+- The repaired retry authorization is consumed because protected Secret/runtime preparation started.
+- No external request was sent, so the `interface-name` bypass hypothesis remains untested.
+- Cleanup/read-back is clean and exact VPS `/32` route count remained zero.
+- The remaining blocker is a readiness-check semantics defect: Mihomo `socks-port` may legitimately expose SOCKS5 UDP capability on the same local loopback port.
+- The correct safety invariant is not “zero UDP endpoint on the SOCKS port”; it is “any SOCKS-port TCP/UDP listener owned by this Mihomo process must be loopback-only, with no non-loopback exposure”.
+- No further live retry is authorized. Repair and non-consequential validation are required first.
