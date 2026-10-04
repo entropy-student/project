@@ -130,8 +130,6 @@ body.home .bms-hero-focus-on .bms-focus-sharp{visibility:hidden;animation:none}
 body.home .bms-hero-focus-on .bms-focus-frame{height:420px;background:transparent;z-index:1;pointer-events:none;transform:translate(calc(-50% + var(--focus-x,0px)),var(--focus-y,0px))}
 body.home .bms-hero-focus-on .bms-hero-message{z-index:2}
 @media(min-width:701px){
- body.home .bms-hero-focus-on::before{z-index:2;pointer-events:none;background:linear-gradient(180deg,transparent 52%,#050708b3 64%,#050708d9 100%)}
- body.home .bms-hero-focus-on :is(.bms-hero-message,.bms-hero-caption){z-index:3}
  body.home .bms-motion-on .bms-closing{height:190svh;min-height:1600px;display:block;padding:0;overflow:clip}
  body.home .bms-closing-sticky{position:sticky;top:0;width:100%;max-width:none!important;margin:0!important;height:100svh;min-height:700px;display:grid;place-items:center;padding:80px 32px;isolation:isolate}
  body.home .bms-motion-on .bms-closing .bms-heading{transform:translateY(var(--closing-text-y,0px))}

@@ -32,9 +32,9 @@
     const width = hero.clientWidth, height = hero.querySelector('.bms-hero-focus-canvas').clientHeight;
     const w = lens.offsetWidth, h = lens.offsetHeight, top = lens.offsetTop;
     lensGeometry = {width,height,w,h,top,left:(width-w)/2,radius:getComputedStyle(lens).borderRadius,
-      maxX:Math.max(0,(width-w)/2-24),
-      minY:24-top,
-      maxY:height-top-h-24};
+      maxX:Math.max(0,Math.min(180,(width-w)/2-24)),
+      minY:-Math.max(0,Math.min(60,top-90)),
+      maxY:Math.max(0,Math.min(60,hero.querySelector('.bms-hero-message').offsetTop-top-h-20))};
     focusPoint.x=focusPoint.y=focusTarget.x=focusTarget.y=0;
     paintFocus();
   }
@@ -86,16 +86,14 @@
     focusReady=true;
     hero.classList.toggle('bms-hero-focus-on',!reduced.matches);
     measureFocus();syncHero();
-    // Listen across the Hero's visual field, including the separate Header.
-    window.addEventListener('pointermove',event=>{
+    hero.addEventListener('pointermove',event=>{
       if (event.pointerType==='touch'||mobile.matches||!finePointer.matches||reduced.matches||!lensGeometry) return;
       const rect=hero.getBoundingClientRect(),g=lensGeometry;
-      const inside=event.clientX>=rect.left&&event.clientX<=rect.right&&event.clientY>=rect.top&&event.clientY<=rect.bottom;
-      focusTarget.x=inside?clamp(event.clientX-rect.left-g.width/2,-g.maxX,g.maxX):0;
-      focusTarget.y=inside?clamp(event.clientY-rect.top-g.top-g.h/2,g.minY,g.maxY):0;
+      focusTarget.x=clamp((event.clientX-rect.left-g.width/2)*.45,-g.maxX,g.maxX);
+      focusTarget.y=clamp((event.clientY-rect.top-g.top-g.h/2)*.35,g.minY,g.maxY);
       queueFocus();
     },{passive:true});
-    window.addEventListener('pointerout',event=>{if (!event.relatedTarget) {focusTarget.x=focusTarget.y=0;queueFocus();}});
+    hero.addEventListener('pointerleave',()=>{focusTarget.x=focusTarget.y=0;queueFocus();});
   }
   // Decorative label duplicate; the link keeps one accessible name and target.
   document.querySelectorAll('body.home #header .menu > li > a, body.home .bms-focus-link > a').forEach(link => {

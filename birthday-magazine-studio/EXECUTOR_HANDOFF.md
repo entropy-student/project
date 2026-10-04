@@ -768,3 +768,13 @@ Backup `poc/g3c/artifacts/backups/g3cr6r3d2r4-hero-focus/`, byte-roundtrip PASS;
 Continue same branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, PR64 open/unmerged. Baseline198aed658fb59ebecffa596e37e143892d2d763b; fresh main4caed9bb0dbf069d5407b261fe66740794c7676a project authority unchanged. Enclosing execution/evidence commit is pushed submission identity, read back in PR64. Pre-existing Owner files/deletions excluded.
 
 Reviewer: assess Hero-only code, matching coordinate/clock proof, fallbacks and frozen boundaries. Owner: Ctrl+F5, move pointer and wait10–12s for Lena. Headless proof is not physical-device smoothness or official visual acceptance. **STOP_AT_REVIEWER=YES; OWNER_VISUAL_FREEZE=PENDING.**
+
+## Current handoff — R4 Hero travel expansion (2026-10-04)
+
+**Executor PASS_CANDIDATE; Reviewer/Owner confirmation pending.** Owner approved allowing desktop lens travel under navigation/copy; only Hero motion bounds and desktop readability layering changed. Read [Hero range evidence](docs/evidence/g3cr6r3d2r4-hero-range/README.md):62 checks,55 new captures, eight1440/375 browser modes; edge-bounded window, Header/CTA hit targets and contrast checked. One shade-opacity repair then final confirmation. Mobile fixed window, paired images/cycle/fallbacks and non-Hero motion unchanged.
+
+Home858/Preview/media/menu/theme/business/runtime protected states unchanged; no new upload/auth test claimed. USD39.99 virtual product and GET-only routes preserved; empty-cart Checkout redirect explicitly scoped. Orders1→1, jobs/model0. No payment, PayPal, production/shared-infra, imagegen, G4 or merge.
+
+Same branch/PR64 open/unmerged, baseline022ad6de2d64237ad6669c5c4a29e6eef11cea79; fresh main301eda93ee91bef860341ec280e95f39f97cbcf7 project authority unchanged. Enclosing submission commit pushed/read back; no new PR. Backup `poc/g3c/artifacts/backups/g3cr6r3d2r4-hero-range/` restores prior Hero-focus two source files; staged byte check PASS, actual restore not executed. Docker project/unrelated resources unchanged. Runtime retained http://127.0.0.1:8189/ ; http://127.0.0.1:8189/wp-admin/ . Owner files/deletions excluded and Reviewer decisions untouched.
+
+Reviewer: check Hero-only diff, larger bounds, layered readability/hit-test proof and freeze correlation. Owner: Ctrl+F5 and move cursor across navigation and title. Physical-device smoothness/visual freeze remains pending. **STOP_AT_REVIEWER=YES.**

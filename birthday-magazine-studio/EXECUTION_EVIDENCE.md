@@ -1092,3 +1092,15 @@ Pre-write rollback `poc/g3c/artifacts/backups/g3cr6r3d2r4-hero-focus/` restores1
 Same branch/PR64 open/unmerged. Baseline198aed658fb59ebecffa596e37e143892d2d763b; main4caed9bb0dbf069d5407b261fe66740794c7676a, project authority unchanged. Enclosing execution/evidence commit is submission identity, returned after push/read-back; no stale no-commit claim or Reviewer decision edit.
 
 Evidence: [Hero focus README](docs/evidence/g3cr6r3d2r4-hero-focus/README.md). Headless measurements do not prove physical-device frame rate or visual approval. Reviewer checks paired coordinates, cycle and freeze boundaries; Owner Ctrl+F5, move pointer and wait10–12s. **OWNER_VISUAL_FREEZE=PENDING; STOP_AT_REVIEWER=YES.**
+
+## Current execution addendum — R4 Hero travel expansion (2026-10-04)
+
+Owner accepted the dual-image Hero and explicitly approved relaxing desktop travel limits. **Executor PASS_CANDIDATE; Reviewer/Owner visual confirmation pending.** This supersedes only the Hero-focus navigation/copy avoidance boundary; earlier history remains intact.
+
+Only home-motion.js/home.css application edits: desktop window bounded by Hero edges24px inset, cursor follows through the separate Header, copy/caption and native navigation remain above the lens. At1440×1000: horizontal−336…336px, vertical−121…411px. Readability gradient above clear scene/frame, below text; one opacity repair after round1 avoids excessive darkening.62 final checks PASS,55 new full-size screenshots, eight desktop/mobile normal/reduced/no-JS/missing-controller contexts. No overflow/broken images/JS or HTTP errors. Native link hit-tests and focus pass; stationary copy/CTA and fixed mobile window verified.
+
+Two images/cycle/easing/paired coordinates and all non-Hero motion unchanged.152 non-Hero CSS rules/controller exact. Home858 hash7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a, eight Groups/six anchors, menus/theme/footer/assets/Preview/Woo/workspace hashes unchanged. Owner edit capabilities retained. GET-only virtual USD39.99 Product/Cart/Account200; Checkout native empty-cart redirect, not populated form proof. Prior photo privacy/access evidence correlated, not replayed. Orders1→1, jobs/model0.
+
+Baseline022ad6de2d64237ad6669c5c4a29e6eef11cea79; main301eda93ee91bef860341ec280e95f39f97cbcf7 project authority unchanged. Same branch/PR64 open/unmerged; enclosing committed submission identity is read back after push. Pre-write backup `poc/g3c/artifacts/backups/g3cr6r3d2r4-hero-range/`, dry byte-copy PASS; no live restore. Project/unrelated Docker projections unchanged, no restart/rebuild/prune/teardown. Runtime retained http://127.0.0.1:8189/ . All payment/provider/production/shared-infra/G4/merge actions0; imagegen0. Owner pre-existing files excluded, Reviewer docs untouched.
+
+Evidence: [Hero range README](docs/evidence/g3cr6r3d2r4-hero-range/README.md). Lens dims naturally under the text shade; headless state proof is not device smoothness or visual acceptance. **OWNER_VISUAL_FREEZE=PENDING; STOP_AT_REVIEWER=YES.**

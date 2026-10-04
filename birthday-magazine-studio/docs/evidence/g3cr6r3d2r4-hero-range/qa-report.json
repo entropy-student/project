@@ -1,0 +1,273 @@
+{
+  "gate": "G3CR6R3D2R4_MOTION_POLISH",
+  "iteration": "Owner-approved Hero-only expanded travel under navigation/copy",
+  "result": "AUTOMATED_CHECKS_PASS",
+  "round": "round2",
+  "checks": [
+    {
+      "name": "protected_runtime_identical",
+      "result": "PASS"
+    },
+    {
+      "name": "docker_project_and_unrelated_resources_identical",
+      "result": "PASS"
+    },
+    {
+      "name": "rollback_byte_roundtrip",
+      "result": "PASS"
+    },
+    {
+      "name": "owner_gutenberg_edit_capabilities",
+      "result": "PASS"
+    },
+    {
+      "name": "orders_jobs_model_frozen",
+      "result": "PASS"
+    },
+    {
+      "name": "product_1113_virtual_39_99_usd",
+      "result": "PASS"
+    },
+    {
+      "name": "non_hero_scroll_hover_reveal_js_exact",
+      "result": "PASS"
+    },
+    {
+      "name": "non_hero_css_rule_projection_exact",
+      "result": "PASS"
+    },
+    {
+      "name": "preview_php_exact",
+      "result": "PASS"
+    },
+    {
+      "name": "five_owned_r2_assets_unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "eight_browser_modes",
+      "result": "PASS"
+    },
+    {
+      "name": "no_browser_business_or_preview_interactions",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_home_resource_health",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_gutenberg_anchors_preview",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_two_real_owned_images",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_clear_a_b_a_cycle",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_blur_zoom_only_transitions",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_same_scene_coordinates",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_paired_animation_clocks",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_window_bounded_only_by_hero_edges",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_copy_cta_fixed",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_focus_hit_and_pause",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_live_reduced_restored",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_expanded_pointer_horizontal_and_vertical_follow",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_window_passes_under_header_and_copy",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_dark_copy_shade_and_contrast",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_pointer_leave_recentres",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_normal_woo_get_only_routes",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_reduced_home_resource_health",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_reduced_gutenberg_anchors_preview",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_reduced_static_complete",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_reduced_animations_paused",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_no-js_home_resource_health",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_no-js_gutenberg_anchors_preview",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_no-js_static_complete",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_motion-unavailable_home_resource_health",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_motion-unavailable_gutenberg_anchors_preview",
+      "result": "PASS"
+    },
+    {
+      "name": "desktop_motion-unavailable_static_complete",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_home_resource_health",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_gutenberg_anchors_preview",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_two_real_owned_images",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_clear_a_b_a_cycle",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_blur_zoom_only_transitions",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_same_scene_coordinates",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_paired_animation_clocks",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_window_bounded_only_by_hero_edges",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_copy_cta_fixed",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_focus_hit_and_pause",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_live_reduced_restored",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_fixed_mobile_window",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_native_mobile_menu",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_normal_woo_get_only_routes",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_reduced_home_resource_health",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_reduced_gutenberg_anchors_preview",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_reduced_static_complete",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_reduced_animations_paused",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_no-js_home_resource_health",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_no-js_gutenberg_anchors_preview",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_no-js_static_complete",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_motion-unavailable_home_resource_health",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_motion-unavailable_gutenberg_anchors_preview",
+      "result": "PASS"
+    },
+    {
+      "name": "mobile_motion-unavailable_static_complete",
+      "result": "PASS"
+    }
+  ],
+  "screenshotCount": 55,
+  "heroPeriodSeconds": 20,
+  "clearHoldSecondsPerImage": 8,
+  "transitionSeconds": 2,
+  "newImagegenCalls": 0,
+  "limitations": [
+    "Headless Edge verifies states/geometry, not physical-device frame rate or Owner visual acceptance.",
+    "Checkout GET follows native empty-cart redirect; no populated checkout or cart mutation exercised.",
+    "Preview interactions and authenticated workspace not repeated; unchanged hashes correlate accepted evidence."
+  ],
+  "uiRepairBatches": 1,
+  "harnessNote": "Round1 inspected desktop/mobile together; one desktop shade-opacity adjustment preserves a visible lens under copy. Final confirmation only; prior capture-helper history retained in hero-focus evidence.",
+  "productModelCalls": 0,
+  "paypalActions": 0,
+  "checkoutSubmissions": 0,
+  "ownerVisualFreeze": "PENDING",
+  "runtimeRetained": true
+}
