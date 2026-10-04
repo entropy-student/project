@@ -373,3 +373,19 @@ credential flags.
 **Live boundary:** Owner's live G4-B authorization remains granted, but no real Baidu login/upload
 or live G4-B execution begins until the R4 backend package is Reviewer PASS and local CLI
 authentication is proven.
+
+
+## 2026-10-05 — Baidu recovery backend R4 returned for three source defects
+
+**Decision:** R4 remains offline-only and is Reviewer RETURN.
+
+**Accepted:** credential-free CLI argv boundary, local-auth readiness design, encrypted portable
+artifact only, synthetic pending readback, delayed final promotion, and pending-only rollback.
+
+**Blocking repairs:** default downloaded ZIP must be opened from its local verified path; production
+local pending filename must match the expected remote pending object semantics; and the extracted
+BaiduPCS-Go executable must have a fixed reviewed SHA-256 equality check in addition to the archive
+digest.
+
+**Next:** `G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5`. No Owner action or real Baidu login is
+required during R5.
