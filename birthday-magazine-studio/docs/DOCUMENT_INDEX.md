@@ -92,7 +92,9 @@
 | `REVIEWER_DECISION_G3CR6R3D1_RETURN_SCOPE_RECONCILIATION_2026-10-04.md` | Reviewer accepts reusable Focusly evidence, preserves D1 RETURN, removes Preview benchmark from next scope | **CURRENT D1 REVIEW DECISION** |
 | `G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE.md` | Fresh retained local homepage/runtime readback only | **EXECUTED / PASS** |
 | `REVIEWER_DECISION_G3CR6R3D1R2_PASS.md` | Reviewer acceptance of fresh local Home/runtime baseline and D2 authorization | **CURRENT D1R2 REVIEW DECISION — PASS** |
-| `G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md` | High-fidelity independent Focusly-inspired homepage implementation; Preview/Woo frozen | **CURRENT GATE — READY FOR EXECUTOR** |
+| `G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md` | High-fidelity independent Focusly-inspired homepage implementation; Preview/Woo frozen | **EXECUTED / TECHNICAL PASS / FORMAL PASS HELD ON DIRECT VISUAL REVIEW** |
+| `REVIEWER_DECISION_G3CR6R3D2_RETURN_VISUAL_EVIDENCE.md` | Reviewer accepts D2 technical evidence but cannot directly decode required PNG visuals | **CURRENT D2 REVIEW DECISION — RETURN VISUAL EVIDENCE ONLY** |
+| `G3CR6R3D2R1_VISUAL_REVIEW_BUNDLE.md` | Evidence-only contact-sheet closure using existing D1/D2 screenshots | **CURRENT GATE — READY FOR EXECUTOR** |
 | `OWNER_DECISION_G3CR6R3D2_IMAGE_GENERATION_QUALITY_PRIORITY_2026-10-04.md` | Owner authorizes quality-first design-time image generation for homepage assets | **CURRENT D2 OWNER DECISION** |
 | `REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md` | Shared-monorepo preflight correction after Executor RETURN | **CURRENT PREFLIGHT INTERPRETATION — PROJECT-SCOPED** |
 | `REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md` | Source-baseline reconciliation closure | **PREFLIGHT PASS — remains accepted** |

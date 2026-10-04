@@ -33,16 +33,18 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION
+CURRENT_GATE=G3CR6R3D2R1_VISUAL_REVIEW_BUNDLE
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
 MAGAZINE_WEB_VIEWER_DIRECTION=CONFIRMED_MAGAZINE_WEB_VIEWER
 HOMEPAGE_FOCUSLY=AUTHORIZED_PUBLIC_VISUAL_REFERENCE
 HOMEPAGE_HIGH_FIDELITY_REIMPLEMENTATION=AUTHORIZED_AFTER_D1_REVIEWER_PASS
-HOMEPAGE_IMPLEMENTATION_STATUS=AUTHORIZED_D2_IN_PROGRESS
+HOMEPAGE_IMPLEMENTATION_STATUS=D2_IMPLEMENTED_TECH_PASS_VISUAL_REVIEW_PENDING
 D2_DESIGN_TIME_IMAGE_GENERATION=AUTHORIZED_QUALITY_FIRST
 D2_ARTIFICIAL_LOW_IMAGEGEN_CAP=NONE
+D2_TECHNICAL_REVIEW=PASS
+D2_VISUAL_FIDELITY_REVIEW=BLOCKED_ON_REVIEWABLE_IMAGE_TRANSPORT
 G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
 CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS
 PREVIEW_INTERACTION_CHANGE=HOLD
@@ -93,47 +95,40 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION`
+`G3CR6R3D2R1_VISUAL_REVIEW_BUNDLE`
+
+D2 implementation candidate `d2e31c532ace82c688554cad68e0464702268b24` has passed Reviewer technical inspection but cannot receive formal D2 PASS until the current Reviewer directly inspects the required visual evidence.
+
+Accepted without replay:
+- Home 858 / source scope;
+- 1440 and 375 geometry;
+- actual motion behavior;
+- reduced-motion and no-JS fallback;
+- Preview source/interaction freeze;
+- Woo/account/payment/private-workspace freeze;
+- mobile samples anchor repair;
+- font license provenance;
+- rollback package;
+- image generation count 0.
+
+Blocked only:
+- current Reviewer direct visual judgment of material Focusly fidelity and final desktop/mobile craft.
 
 Objective:
-- independently implement a high-fidelity Focusly-inspired Birthday Magazine homepage from the already accepted public-reference mapping;
-- preserve the current upload/Preview interaction exactly at the functional/component level;
-- preserve WooCommerce/Product/Cart/Checkout/Account/payment/private-workspace semantics;
-- produce a desktop + 375px + motion + reduced-motion/no-JS evidence package for Owner visual review.
-
-Scope:
-- Home 858 Gutenberg presentation;
-- homepage-scoped CSS;
-- optional homepage-only motion controller;
-- narrowly guarded homepage enqueue;
-- exact mobile menu anchor correction `/#sample-pages -> /#samples`;
-- conditional Footer Privacy-link wiring only if an already-published intended WordPress privacy page is positively identified.
-
-Not reopened:
-- Preview interaction design;
-- Preview JS/shortcode internals;
-- P1-P12 magazine visual system;
-- unresolved core Aha interaction;
-- Woo/account/payment/order/private-workspace business logic;
-- production deployment.
-
-Visual target:
-- materially close to the public Focusly Home 1 composition and motion language, independently implemented with Birthday Magazine content and owned/rights-compatible assets;
-- no copying/extraction of paid template source or proprietary assets.
+- package existing D1 reference screenshots and existing D2 round2 screenshots into one compact side-by-side contact sheet;
+- expose that JPEG through a UTF-8 base64 data-URI text artifact that the Reviewer connector can decode;
+- make no application/runtime/design mutation.
 
 Current Gate file:
-- `docs/G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md`
+- `docs/G3CR6R3D2R1_VISUAL_REVIEW_BUNDLE.md`
 
 Current Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR6R3D1R2_PASS.md`
-
-Latest Owner Preview decision:
-- `docs/OWNER_DECISION_G3CR6R3D_PREVIEW_INTERACTION_HOLD_2026-10-04.md`
+- `docs/REVIEWER_DECISION_G3CR6R3D2_RETURN_VISUAL_EVIDENCE.md`
 
 Mandatory stop:
-- implementation + evidence only, then STOP_AT_REVIEWER;
-- PR #64 remains unmerged;
-- formal visual acceptance still requires Owner review.
+- evidence packaging only;
+- no redesign, no new screenshots, no image generation, no runtime mutation, no PR merge;
+- formal D2 PASS or RETURN follows only after Reviewer directly sees the contact sheet.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -196,17 +191,17 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3D2** on PR #64 from the accepted D1R2 baseline.
-2. Implement the Focusly-inspired homepage at high visual/motion fidelity while keeping the current upload/Preview component unchanged.
-3. Fix only the known mobile samples anchor; leave the empty Footer Privacy link untouched unless a valid existing published privacy page is positively identified.
-4. Capture desktop 1440px + mobile 375px + motion + reduced-motion/no-JS + read-only Woo route evidence.
-5. Stop at Reviewer. Reviewer then decides whether the candidate is ready for Owner visual confirmation.
+1. Execute **G3CR6R3D2R1** as an evidence-format closure only.
+2. Reuse the already-submitted D1 Focusly and D2 round2 screenshots; do not change the application.
+3. Produce the compact side-by-side contact sheet and UTF-8 data-URI transport artifact.
+4. Reviewer directly inspects the decoded contact sheet and then decides formal D2 PASS / RETURN.
+5. Only after formal D2 PASS does the project enter Owner homepage visual confirmation.
 
 ## OWNER_ACTION_REQUIRED
 
-`NONE` for D2 execution.
+`NONE` for D2R1 evidence closure.
 
-Owner action is required after Reviewer accepts the implementation evidence for:
+Owner action is required only after Reviewer completes direct visual inspection, for:
 - subjective homepage visual freeze / requested visual changes;
 - any future decision to reopen/change the upload/Preview interaction;
 - any real payment/Live provider action;
@@ -216,15 +211,15 @@ Owner action is required after Reviewer accepts the implementation evidence for:
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md`
-2. `docs/REVIEWER_DECISION_G3CR6R3D1R2_PASS.md`
-3. `docs/OWNER_DECISION_G3CR6R3D_PREVIEW_INTERACTION_HOLD_2026-10-04.md`
-4. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md`
-5. `docs/evidence/g3cr6r3d1/` — accepted Focusly visual/motion reference evidence
-6. `docs/G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_REPORT.md`
-7. `docs/evidence/g3cr6r3d1r2/` — accepted fresh current-local baseline
-8. target Home 858 / homepage CSS / optional motion JS / guarded enqueue / exact mobile menu object
+1. `docs/G3CR6R3D2R1_VISUAL_REVIEW_BUNDLE.md`
+2. `docs/REVIEWER_DECISION_G3CR6R3D2_RETURN_VISUAL_EVIDENCE.md`
+3. `docs/G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md`
+4. `docs/evidence/g3cr6r3d2/README.md`
+5. `docs/evidence/g3cr6r3d2/round2/`
+6. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md`
+7. `docs/evidence/g3cr6r3d1/`
+8. `docs/OWNER_DECISION_G3CR6R3D_PREVIEW_INTERACTION_HOLD_2026-10-04.md`
 9. `docs/OWNER_DECISION_G3CR6R3D2_IMAGE_GENERATION_QUALITY_PRIORITY_2026-10-04.md`
-10. `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md` for D2 execution facts
+10. `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`
 
-Older Gates, payment history, superseded Preview benchmark work and unrelated research remain provenance and are not default D2 startup material.
+D2 application candidate is retained unchanged pending only the visual-evidence closure.
