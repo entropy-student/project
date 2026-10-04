@@ -90,7 +90,9 @@
 | `G3CR6R3D1R1_RUNTIME_AND_PREVIEW_BENCHMARK_CLOSURE.md` | Earlier fresh-readback + Preview benchmark closure | **SUPERSEDED BEFORE EXECUTION — OWNER HELD PREVIEW CHANGES** |
 | `OWNER_DECISION_G3CR6R3D_PREVIEW_INTERACTION_HOLD_2026-10-04.md` | Latest Owner decision: existing upload/Preview stays unchanged; live-cover idea not selected | **CURRENT PREVIEW OWNER DECISION** |
 | `REVIEWER_DECISION_G3CR6R3D1_RETURN_SCOPE_RECONCILIATION_2026-10-04.md` | Reviewer accepts reusable Focusly evidence, preserves D1 RETURN, removes Preview benchmark from next scope | **CURRENT D1 REVIEW DECISION** |
-| `G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE.md` | Fresh retained local homepage/runtime readback only | **CURRENT GATE — READY FOR EXECUTOR** |
+| `G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE.md` | Fresh retained local homepage/runtime readback only | **EXECUTED / PASS** |
+| `REVIEWER_DECISION_G3CR6R3D1R2_PASS.md` | Reviewer acceptance of fresh local Home/runtime baseline and D2 authorization | **CURRENT D1R2 REVIEW DECISION — PASS** |
+| `G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md` | High-fidelity independent Focusly-inspired homepage implementation; Preview/Woo frozen | **CURRENT GATE — READY FOR EXECUTOR** |
 | `REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md` | Shared-monorepo preflight correction after Executor RETURN | **CURRENT PREFLIGHT INTERPRETATION — PROJECT-SCOPED** |
 | `REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md` | Source-baseline reconciliation closure | **PREFLIGHT PASS — remains accepted** |
 | `REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` | Earlier takeover/source-baseline reconciliation | Historical preflight RETURN; superseded by PASS |
