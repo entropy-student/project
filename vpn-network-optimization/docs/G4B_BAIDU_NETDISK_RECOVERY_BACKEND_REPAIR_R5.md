@@ -164,8 +164,22 @@ allowed external read.
 
 ## TIMING
 
+```text
+ESTIMATED_EXECUTION_TIME=20-35 minutes
+TIMING_RECORD_REQUIRED=YES
+TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
+```
+
+Reviewer estimate basis: this is a narrow three-defect repair on an already-implemented backend,
+but it still requires supply-chain digest derivation, source edits, new negative fixtures, full
+R1-R4 regression, Git persistence, and fresh read-back.
+
 Capture `ROUND_STARTED_AT` before preflight/sync and `ROUND_FINISHED_AT` after fresh GitHub
-read-back. If missed, record `UNKNOWN`.
+read-back. Record `ACTUAL_ELAPSED` and `TIME_OVERRUN`.
+
+If actual elapsed exceeds 35 minutes, record a precise `TIME_OVERRUN_CAUSE` from Evidence and append
+the round to `docs/ROUND_TIMING_RETROSPECTIVE.md`. If timing boundaries are missed, record
+`UNKNOWN`; do not reconstruct them.
 
 ## ACCEPTANCE
 
