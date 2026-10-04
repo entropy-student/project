@@ -106,6 +106,8 @@ OWNER_C2C_AUTHORIZATION=GRANTED_FRESH
 
 Fresh Owner authorization for exactly one bounded R3R2 canary was granted after the prior handoff; no R3R2 execution result has been recorded or accepted yet.
 
+A subsequent Owner-local launch attempt was reconciled as a wrapper-only failure before any consequential R3R2 action started. Read-only evidence showed WireGuard/Clash healthy, system proxy OFF, TUN 0, no active/persistent HY2 /32 route, zero C2C runtime/profile residue, and zero C2C marker files in the Clash profile store. The single authorization therefore remains valid and unconsumed.
+
 ### Authorized R3R2 maximum endpoint
 
 ```text
