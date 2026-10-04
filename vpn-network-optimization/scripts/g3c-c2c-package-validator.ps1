@@ -80,6 +80,33 @@ function Test-C2CPackage {
     if ($S -notmatch '(?im)ProtectedData\]::Unprotect' -or $S -notmatch '(?im)DataProtectionScope\]::CurrentUser' -or $S -notmatch '(?im)hy2-g2a\.dpapi' -or $S -notmatch '(?im)VPNHY2R1') { throw 'SECRET_HELPER_DPAPI_CONTRACT_MISSING' }
     if ($S -notmatch '(?im)FileSystemAclExtensions\]::CreateDirectory' -or $S -notmatch '(?im)SetOwner\(\$ownerSid\)' -or $S -notmatch '(?im)SetAccessRuleProtection\(\$true,\s*\$false\)') { throw 'SECRET_HELPER_OWNER_ACL_GUARD_MISSING' }
     if ($S -notmatch '(?im)Get-PatternFileCount' -or $S -notmatch '(?im)CLASH_REAL_AUTH_RESIDUE=' -or $S -notmatch '(?im)PROJECT_RUNTIME_REAL_AUTH_RESIDUE=') { throw 'SECRET_RESIDUE_SCAN_MISSING' }
+    $scanner = [regex]::Match($S, '(?is)function\s+Get-PatternFileCount\s*\{(?<body>.*?)\r?\n\}\s*(?=function\s+Read-ExactBytes)')
+    if (-not $scanner.Success) { throw 'SECRET_SCAN_ROOT_LOCK_EXCEPTION_CONTRACT_INVALID' }
+    $scannerBody = $scanner.Groups['body'].Value
+    foreach ($requiredScannerGuard in @(
+        '\[switch\]\$AllowUnreadableZeroLengthRootLock',
+        '\$rootFull\s*=\s*\[IO\.Path\]::GetFullPath\(\$Root\)\.TrimEnd',
+        'Get-Item\s+-LiteralPath\s+\$item\.FullName\s+-Force\s+-ErrorAction\s+Stop',
+        '\$freshParent\s*=\s*\[IO\.Path\]::GetFullPath',
+        '\$isRootLevel\s*=\s*\$freshParent\.Equals\(\$rootFull,\s*\[StringComparison\]::OrdinalIgnoreCase\)',
+        "\$isLock\s*=\s*\$freshItem\.Extension\s+-ieq\s+'\.lock'",
+        '\$isZeroLength\s*=\s*\[long\]\$freshItem\.Length\s+-eq\s+0',
+        '\$isFile\s*=\s*-not\s+\$freshItem\.PSIsContainer',
+        '\$isReparse\s*=\s*\(\(\$freshItem\.Attributes\s+-band\s+\[IO\.FileAttributes\]::ReparsePoint\)\s+-ne\s+0\)',
+        '\$isRootLevel\s+-and\s+\$isLock\s+-and\s+\$isZeroLength\s+-and\s+\$isFile\s+-and\s+-not\s+\$isReparse\)\s*\{\s*continue'
+    )) {
+        if ($scannerBody -notmatch "(?is)$requiredScannerGuard") {
+            throw 'SECRET_SCAN_ROOT_LOCK_EXCEPTION_CONTRACT_INVALID'
+        }
+    }
+
+    $clashOptIn = 'Get-PatternFileCount\s+-Root\s+\$clashAppRoot\s+-Pattern\s+\$authBytes\s+-AllowUnreadableZeroLengthRootLock'
+    if (([regex]::Matches($S, $clashOptIn, [Text.RegularExpressions.RegexOptions]::IgnoreCase)).Count -ne 2) {
+        throw 'SECRET_SCAN_CLASH_ONLY_OPT_IN_INVALID'
+    }
+    if ($S -match '(?im)Get-PatternFileCount\s+-Root\s+\$runtimeRoot[^\r\n]*AllowUnreadableZeroLengthRootLock') {
+        throw 'SECRET_SCAN_RUNTIME_EXCEPTION_FORBIDDEN'
+    }
     if ($S -match '(?im)\bcurl(?:\.exe)?\b|Invoke-WebRequest|Invoke-RestMethod|HttpClient|WebClient|api\.openai\.com|api\.ipify\.org') { throw 'SECRET_HELPER_NETWORK_CAPABILITY_FORBIDDEN' }
     if ($S -match '(?im)Write-(?:Output|Host)[^\r\n]*(?:authBytes|hy2-auth|bundleBytes|protectedBytes)') { throw 'SECRET_HELPER_SECRET_OUTPUT_FORBIDDEN' }
     if ($S -notmatch '(?im)CryptographicOperations\]::ZeroMemory') { throw 'SECRET_ZEROIZATION_MISSING' }
@@ -98,6 +125,12 @@ function Test-C2CPackage {
     if ($T -notmatch '(?ms)- name:\s*SELF-VPN-C2C\s*\r?\n\s*type:\s*select\s*\r?\n\s*proxies:\s*\r?\n\s*- WG-BASELINE\s*\r?\n\s*- HY2-SFO3-REAL') { throw 'TEMPLATE_MANUAL_SELECTOR_INVALID' }
 
     if ($D -notmatch '(?i)not a performance benchmark' -or $D -notmatch '(?i)system proxy.*OFF' -or $D -notmatch '(?i)TUN.*OFF' -or $D -notmatch '(?i)two.*real.*request' -or $D -notmatch '(?i)SOCKS5') { throw 'PACKAGE_BOUNDARY_UNDOCUMENTED' }
+    if ($D -notmatch '(?i)zero-byte.*root-level.*\.lock' -or
+        $D -notmatch '(?i)actual read (?:failure|exception)' -or
+        $D -notmatch '(?i)project runtime.*strict' -or
+        $D -notmatch '(?i)reparse') {
+        throw 'PACKAGE_SECRET_SCAN_EXCEPTION_UNDOCUMENTED'
+    }
     return $true
 }
 
@@ -160,6 +193,37 @@ $callerInvisibleForwarding = $callerInvisibleForwarding.Replace(
 )
 Assert-ExpectedFailure -Expected 'SECRET_HELPER_EVIDENCE_FORWARDING_CONTRACT_INVALID' -O $callerInvisibleForwarding -S $secretHelper -P $probe -T $template -D $package
 Write-Output 'G3C_C2C_FIXTURE_K_CALLER_VISIBLE_HELPER_EVIDENCE_REQUIRED=PASS'
+
+$broadZeroLengthSkip = $secretHelper.Replace(
+    '$isZeroLength = [long]$freshItem.Length -eq 0',
+    '$isZeroLength = $true'
+)
+Assert-ExpectedFailure -Expected 'SECRET_SCAN_ROOT_LOCK_EXCEPTION_CONTRACT_INVALID' -O $orchestrator -S $broadZeroLengthSkip -P $probe -T $template -D $package
+
+$descendantSkip = $secretHelper.Replace(
+    '$isRootLevel = $freshParent.Equals($rootFull, [StringComparison]::OrdinalIgnoreCase)',
+    '$isRootLevel = $true'
+)
+Assert-ExpectedFailure -Expected 'SECRET_SCAN_ROOT_LOCK_EXCEPTION_CONTRACT_INVALID' -O $orchestrator -S $descendantSkip -P $probe -T $template -D $package
+
+$anyExtensionSkip = $secretHelper.Replace(
+    "$isLock = $freshItem.Extension -ieq '.lock'",
+    '$isLock = $true'
+)
+Assert-ExpectedFailure -Expected 'SECRET_SCAN_ROOT_LOCK_EXCEPTION_CONTRACT_INVALID' -O $orchestrator -S $anyExtensionSkip -P $probe -T $template -D $package
+
+$reparseSkip = $secretHelper.Replace(
+    '$isReparse = (($freshItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0)',
+    '$isReparse = $false'
+)
+Assert-ExpectedFailure -Expected 'SECRET_SCAN_ROOT_LOCK_EXCEPTION_CONTRACT_INVALID' -O $orchestrator -S $reparseSkip -P $probe -T $template -D $package
+
+$runtimeOptIn = $secretHelper.Replace(
+    'Get-PatternFileCount -Root $runtimeRoot -Pattern $authBytes',
+    'Get-PatternFileCount -Root $runtimeRoot -Pattern $authBytes -AllowUnreadableZeroLengthRootLock'
+)
+Assert-ExpectedFailure -Expected 'SECRET_SCAN_RUNTIME_EXCEPTION_FORBIDDEN' -O $orchestrator -S $runtimeOptIn -P $probe -T $template -D $package
+Write-Output 'G3C_C2C_FIXTURE_L_ZERO_LENGTH_ROOT_LOCK_EXCEPTION_BOUNDED=PASS'
 
 foreach ($path in @($orchestratorPath,$secretHelperPath,$probePath)) {
     $tokens = $null
