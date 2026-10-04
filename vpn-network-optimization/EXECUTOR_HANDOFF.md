@@ -1,4 +1,28 @@
-## Current execution status — G3C C2B runtime-root ACL reconcile + canary R1
+## Current execution status — G3C C2C Owner authorization A0
+
+```text
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_AUTHORIZATION_A0
+EXECUTOR_ROLE=NO_EXECUTION_PENDING_OWNER_DECISION
+PREVIOUS_RESULT=PASS_G3C_C2B_SYNTHETIC_CLASH_UI_CANARY
+C2B_REPLAY_AUTHORIZED=NO
+REAL_HY2_CREDENTIAL_ACCESS_AUTHORIZED=NO
+REAL_HY2_TRAFFIC_AUTHORIZED=NO
+CLASH_PROFILE_MUTATION_AUTHORIZED=NO
+VPS_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do nothing until Owner explicitly authorizes C2C.
+2. Do not read/unprotect HY2 credentials.
+3. Do not modify Clash or send HY2 traffic.
+4. Do not enter G4.
+5. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B runtime-root ACL reconcile + canary R1
 
 ```text
 GATE_ID=G3C_C2B_RUNTIME_ROOT_ACL_RECONCILE_AND_CANARY_R1
