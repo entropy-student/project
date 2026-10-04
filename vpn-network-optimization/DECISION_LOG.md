@@ -346,3 +346,12 @@ and StrictMode-safe recovery cleanup.
 **Boundary:** No live G4-B deployment has occurred. The next Gate remains
 `G4B_PERSISTENT_THREE_ROLE_READINESS` and still requires Owner-selected second-failure-domain
 encrypted recovery destination plus explicit live consequential authorization.
+
+
+## 2026-10-04 — Owner authorized live G4-B; recovery destination still pending
+
+**Decision:** Owner explicitly authorized the consequential `G4B_PERSISTENT_THREE_ROLE_READINESS` live deployment.
+
+**Remaining prerequisite:** execution must not start until the encrypted portable recovery artifact has an approved second failure domain distinct from both the SFO3 VPS and the current Windows local disk.
+
+**Repository boundary:** the ordinary project GitHub repository is not used for private recovery material under the current Gate. Using GitHub as an encrypted-storage provider would require a separate explicitly reviewed storage design; it is not inferred from the live authorization.
