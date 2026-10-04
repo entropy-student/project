@@ -1,4 +1,39 @@
-## Current execution status — G3C C2C local proxy protocol diagnostic D5
+## Current execution status — G3C C2C proxy resolver repair offline validation R2
+
+```text
+GATE_ID=G3C_C2C_PROXY_RESOLVER_REPAIR_OFFLINE_VALIDATION_R2
+EXECUTOR_ROLE=CODEX_DESKTOP_PACKAGE_VALIDATION_AND_BOUNDED_REPAIR
+PREVIOUS_RESULT=PASS_D5_SINGLE_SOCKS5_LISTENER_PROVEN
+OWNER_C2C_AUTHORIZATION=GRANTED
+REAL_C2C_EXECUTION_AUTHORIZED_IN_THIS_GATE=NO
+ORCHESTRATOR_BLOB=2188150190e0e092f40f990ed1d98220ed53c423
+SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
+VALIDATOR_BLOB=450c9cd3d393e5ceaa489b0477fca65a43b8be49
+TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
+DPAPI_ACCESS_AUTHORIZED=NO
+CLASH_PROFILE_MUTATION_AUTHORIZED=NO
+EXTERNAL_NETWORK_REQUESTS_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+G4_ENTRY_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Capture timing, prove canonical remote/project clean/safe ff-only sync.
+2. Verify the six locked blobs above.
+3. Run only `scripts/g3c-c2c-package-validator.ps1`.
+4. Require fixtures A-I, AST parse, Mihomo v1.19.32 fixture parse, zero DPAPI/network/Secret action.
+5. If validator fails, make the smallest repair inside the six package files only, rerun, and document exact changes.
+6. Do not execute orchestrator/helper/proxy probe/D4/D5 diagnostics or modify Clash/network state.
+7. Persist Evidence + Executor Handoff only. Leave Reviewer Handoff unchanged.
+8. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2C local proxy protocol diagnostic D5
 
 ```text
 GATE_ID=G3C_C2C_LOCAL_PROXY_PROTOCOL_DIAGNOSTIC_D5
