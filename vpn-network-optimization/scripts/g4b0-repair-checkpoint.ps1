@@ -42,6 +42,7 @@ Assert-G4B0Checkpoint ($exitCode -eq 0) 'G4B0_CHECKPOINT_VALIDATOR_FAILED'
 Assert-G4B0Checkpoint (($output -join [Environment]::NewLine).Contains('G4B0_OFFLINE_PACKAGE_VALIDATION=PASS')) 'G4B0_CHECKPOINT_VALIDATOR_MARKER_MISSING'
 Assert-G4B0Checkpoint (($output -join [Environment]::NewLine).Contains('G4B0_UDP_READINESS_REPAIR=PASS')) 'G4B0_CHECKPOINT_UDP_REPAIR_MARKER_MISSING'
 Assert-G4B0Checkpoint (($output -join [Environment]::NewLine).Contains('G4B0_FAILURE_PHASE_TELEMETRY=PASS')) 'G4B0_CHECKPOINT_PHASE_MARKER_MISSING'
+Assert-G4B0Checkpoint (($output -join [Environment]::NewLine).Contains('G4B0_SOCKS_LOOPBACK_READINESS=PASS')) 'G4B0_CHECKPOINT_SOCKS_LOOPBACK_MARKER_MISSING'
 
 Write-Output 'G4B0_REPAIR_CHECKPOINT=PASS'
 Write-Output 'NETWORK_MUTATION=NO'
