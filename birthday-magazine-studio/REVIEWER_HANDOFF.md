@@ -33,14 +33,14 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE
+CURRENT_GATE=G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
 MAGAZINE_WEB_VIEWER_DIRECTION=CONFIRMED_MAGAZINE_WEB_VIEWER
 HOMEPAGE_FOCUSLY=AUTHORIZED_PUBLIC_VISUAL_REFERENCE
 HOMEPAGE_HIGH_FIDELITY_REIMPLEMENTATION=AUTHORIZED_AFTER_D1_REVIEWER_PASS
-HOMEPAGE_IMPLEMENTATION_STATUS=HOLD_PENDING_D1R2_REVIEWER_PASS
+HOMEPAGE_IMPLEMENTATION_STATUS=AUTHORIZED_D2_IN_PROGRESS
 G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
 CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS
 PREVIEW_INTERACTION_CHANGE=HOLD
@@ -82,58 +82,56 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 - G3CR4/G3CR5: earlier frontend regressions PASS at their tested scope.
 - G3CR6: RETURN because the visual direction was underexecuted.
 - G3CR6R1: PASS; Warm Birthday Gift composition, Preview privacy, native Woo path, 375px behavior, and Owner editability accepted.
+- G3CR6R3D1: RETURN only on fresh local-runtime readback; Focusly public desktop/375/motion evidence and 66 screenshots preserved as reusable evidence.
+- G3CR6R3D1R2: PASS; fresh Home 858/runtime/theme/menu/CTA/Preview and read-only Woo route baseline closed at Executor commit `7a0a16cf0169980443f8bb760f7f9e919ff0d68c`.
 - Owner Visual Checkpoint R2: resolved; Owner broadly accepts the overall composition but now explicitly rates the homepage around 7/10 for the intended quality bar, wants meaningful motion, wants the actual final magazine shown clearly, and rates the current upload-first Preview around 5/10.
 - Owner editability at G3CR6R1 evidence scope: Administrator, edit Home, replace media, edit copy, reorder eight major Gutenberg Groups, edit Blocksy global style/palette; footer is editable WordPress block.
-- PR #64 remains open/unmerged at accepted execution head `15ff73f6232e0ef94f04f313f74372e52389d1e2`.
+- PR #64 remains open/unmerged; latest accepted D1R2 evidence commit is `7a0a16cf0169980443f8bb760f7f9e919ff0d68c`. Project-scoped freshness, not whole-monorepo tip ancestry, controls execution.
 - Fresh 2026-10-04 source-baseline closure: reconciliation anchor `83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6` proved the bounded merge strategy and preserved the prior 7 G3C/G3CR6R1 branch commits/evidence. A later Executor correctly returned when unrelated `vpn-network-optimization/` commits moved repository `main`; Reviewer confirmed this was **not Birthday Magazine project drift** and corrected the preflight to project-scoped freshness. The approved PR #64 execution head must descend from the anchor and contain all current-main changes affecting `birthday-magazine-studio/**` or another path explicitly named by the Gate; unrelated monorepo commits do not block.
 
 ## CURRENT_GATE
 
-`G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE`
-
-The Owner has reprioritized the Focusly-inspired homepage while explicitly placing upload/Preview interaction changes on hold.
+`G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION`
 
 Objective:
-- reuse the already-captured Focusly public visual/motion evidence without replay;
-- close only the fresh readback blocker for the current retained local Birthday Magazine homepage;
-- prove the exact current homepage/template/menu/CTA/Preview surface before implementation;
-- provide the final precondition for a bounded homepage-only D2 implementation Gate.
+- independently implement a high-fidelity Focusly-inspired Birthday Magazine homepage from the already accepted public-reference mapping;
+- preserve the current upload/Preview interaction exactly at the functional/component level;
+- preserve WooCommerce/Product/Cart/Checkout/Account/payment/private-workspace semantics;
+- produce a desktop + 375px + motion + reduced-motion/no-JS evidence package for Owner visual review.
 
 Scope:
-- bounded availability of the existing retained local runtime + read-only current-site inspection + project documentation;
-- no homepage or Preview implementation;
-- no Preview benchmark research;
-- no paid template purchase;
-- no build/pull/recreate/volume reset/migration/global Docker configuration or cleanup.
+- Home 858 Gutenberg presentation;
+- homepage-scoped CSS;
+- optional homepage-only motion controller;
+- narrowly guarded homepage enqueue;
+- exact mobile menu anchor correction `/#sample-pages -> /#samples`;
+- conditional Footer Privacy-link wiring only if an already-published intended WordPress privacy page is positively identified.
 
-Mandatory stop:
-- Reviewer must PASS D1R2 before D2 homepage implementation opens.
-
-Frozen during this Gate:
-- existing upload/Preview interaction and privacy behavior;
-- Product/Cart/Checkout/Order semantics;
-- Woo backend/payment;
-- account/private-workspace and entitlement logic;
-- prices/currency/product identity;
+Not reopened:
+- Preview interaction design;
+- Preview JS/shortcode internals;
+- P1-P12 magazine visual system;
 - unresolved core Aha interaction;
-- P1-P12 magazine visual selection.
+- Woo/account/payment/order/private-workspace business logic;
+- production deployment.
 
-Preserved:
-- Focusly public observation + mapping from D1 remain reusable evidence.
-- `magazine-web-viewer` remains the accepted reader direction.
-- G3CR6R3C remains unresolved for core interaction and P1-P12, but is paused while the Owner-prioritized homepage Gate runs.
+Visual target:
+- materially close to the public Focusly Home 1 composition and motion language, independently implemented with Birthday Magazine content and owned/rights-compatible assets;
+- no copying/extraction of paid template source or proprietary assets.
 
 Current Gate file:
-- `docs/G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE.md`
+- `docs/G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md`
 
 Current Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR6R3D1_RETURN_SCOPE_RECONCILIATION_2026-10-04.md`
+- `docs/REVIEWER_DECISION_G3CR6R3D1R2_PASS.md`
 
-Latest Owner decision:
+Latest Owner Preview decision:
 - `docs/OWNER_DECISION_G3CR6R3D_PREVIEW_INTERACTION_HOLD_2026-10-04.md`
 
-Current growth diagnosis:
-- `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
+Mandatory stop:
+- implementation + evidence only, then STOP_AT_REVIEWER;
+- PR #64 remains unmerged;
+- formal visual acceptance still requires Owner review.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -196,17 +194,18 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3D1R2**: reuse the accepted Focusly evidence and close only the fresh current-local-homepage readback blocker.
-2. Reviewer checks the fresh Home/runtime/template/menu/CTA/Preview readback and exact D2 mutation boundary.
-3. If D1R2 PASS, open **G3CR6R3D2** for bounded Focusly-inspired homepage visual implementation while keeping the existing upload/Preview interaction unchanged.
-4. After homepage visual work reaches Owner review, resume the unresolved core Aha interaction and P1-P12 visual research separately.
+1. Execute **G3CR6R3D2** on PR #64 from the accepted D1R2 baseline.
+2. Implement the Focusly-inspired homepage at high visual/motion fidelity while keeping the current upload/Preview component unchanged.
+3. Fix only the known mobile samples anchor; leave the empty Footer Privacy link untouched unless a valid existing published privacy page is positively identified.
+4. Capture desktop 1440px + mobile 375px + motion + reduced-motion/no-JS + read-only Woo route evidence.
+5. Stop at Reviewer. Reviewer then decides whether the candidate is ready for Owner visual confirmation.
 
 ## OWNER_ACTION_REQUIRED
 
-`NONE` by default for G3CR6R3D1R2. If Docker Desktop requires GUI/elevation/login/update/install action that the Executor cannot safely perform, Executor returns the smallest exact Owner runtime-start action.
+`NONE` for D2 execution.
 
-Owner action is required later for:
-- final subjective visual freeze;
+Owner action is required after Reviewer accepts the implementation evidence for:
+- subjective homepage visual freeze / requested visual changes;
 - any future decision to reopen/change the upload/Preview interaction;
 - any real payment/Live provider action;
 - account/Secret/provider authorization;
@@ -215,17 +214,14 @@ Owner action is required later for:
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/OWNER_DECISION_G3CR6R3D_PREVIEW_INTERACTION_HOLD_2026-10-04.md`
-2. `docs/REVIEWER_DECISION_G3CR6R3D1_RETURN_SCOPE_RECONCILIATION_2026-10-04.md`
-3. `docs/G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE.md`
+1. `docs/G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md`
+2. `docs/REVIEWER_DECISION_G3CR6R3D1R2_PASS.md`
+3. `docs/OWNER_DECISION_G3CR6R3D_PREVIEW_INTERACTION_HOLD_2026-10-04.md`
 4. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md`
-5. `docs/evidence/g3cr6r3d1/`
-6. `docs/OWNER_DECISION_G3CR6R3D_FOCUSLY_HOMEPAGE_REDESIGN.md` — homepage direction; its earlier Preview-update subsection is superseded by the latest Owner hold
-7. `docs/REVIEWER_DECISION_G3CR6R3D1_RETURN_LOCAL_HOMEPAGE.md` — earlier D1 return provenance
-8. `docs/G3CR6R3D1R1_RUNTIME_AND_PREVIEW_BENCHMARK_CLOSURE.md` — superseded before execution
-9. `docs/REVIEWER_DECISION_G3CR6R1_PASS.md` — accepted homepage/runtime functional baseline
-10. `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` — paused unresolved core interaction + P1-P12 research
-11. `EXECUTION_EVIDENCE.md` — execution proof/history
-12. `EXECUTOR_HANDOFF.md` — latest Executor facts
+5. `docs/evidence/g3cr6r3d1/` — accepted Focusly visual/motion reference evidence
+6. `docs/G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_REPORT.md`
+7. `docs/evidence/g3cr6r3d1r2/` — accepted fresh current-local baseline
+8. target Home 858 / homepage CSS / optional motion JS / guarded enqueue / exact mobile menu object
+9. `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md` for D2 execution facts
 
-Historical decisions remain in `docs/` and `DOCUMENT_INDEX.md`; they are provenance, not the current dashboard.
+Older Gates, payment history, superseded Preview benchmark work and unrelated research remain provenance and are not default D2 startup material.
