@@ -1,4 +1,31 @@
-## Current execution status — G3C C2B network-state shape diagnostic D1
+## Current execution status — G3C C2B Owner worktree sync + diagnostic D1R1
+
+```text
+GATE_ID=G3C_C2B_OWNER_WORKTREE_SYNC_AND_DIAGNOSTIC_D1R1
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_D1_DIAGNOSTIC_NOT_PRESENT_LOCAL_WORKTREE
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_SYNC_DIAGNOSTIC_REQUIRED=YES
+WORKTREE_ROOT=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建
+DIAGNOSTIC_RELATIVE_PATH=vpn-network-optimization/scripts/c2b-network-state-shape-diagnostic.ps1
+DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+DESTRUCTIVE_GIT_ACTION_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun C2B.
+2. Wait for the Owner-local D1R1 output.
+3. Persist only bounded Git synchronization and diagnostic facts.
+4. Any local divergence/dirt or diagnostic failure remains a RETURN.
+5. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B network-state shape diagnostic D1
 
 ```text
 GATE_ID=G3C_C2B_NETWORK_STATE_SHAPE_DIAGNOSTIC_D1
