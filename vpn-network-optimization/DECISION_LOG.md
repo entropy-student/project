@@ -294,3 +294,16 @@ No additional protocol shopping is planned for v1 unless later evidence proves a
 **Not authorized:** route creation, SSH/VPS mutation, REALITY, persistent Clash profile writes, system proxy/TUN activation, benchmark loops, automatic switching, G4-B persistent writes, G4-C, or blind additional retries.
 
 **Execution state:** Fresh retry authorization is granted and unconsumed until the runner enters its protected Secret/runtime consequential phase.
+
+
+## 2026-10-04 — G4-B0 repaired retry returned before requests on SOCKS UDP loopback check
+
+**Decision:** The repaired live retry is a formal RETURN and is not evidence for or against Windows Mihomo `interface-name` bypass.
+
+**Reason:** The retry entered the protected consequential phase and consumed its authorization, but request count stayed 0. Mihomo parse passed; startup readiness then rejected a UDP endpoint on the configured local SOCKS port.
+
+**Interpretation:** A SOCKS5 listener may provide UDP-associate capability on the same local port. Therefore “no UDP endpoint on SOCKS port” is not a valid invariant. The valid invariant is loopback confinement: process-owned TCP/UDP listener surfaces on the configured SOCKS port must be loopback-only; unrelated HY2 outbound ephemeral UDP sockets must not be treated as listeners.
+
+**Baseline:** Final WireGuard state was preserved, system proxy/TUN remained OFF, exact VPS `/32` routes remained absent, and protected runtime/Secret cleanup passed.
+
+**Authorization:** The repaired retry authorization is consumed. No live retry is currently authorized.
