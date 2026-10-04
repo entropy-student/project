@@ -1,4 +1,29 @@
-## Current execution status — G3C C2B Owner ACL compatibility repair R1
+## Current execution status — G3C C2B runtime-root residue diagnostic D3
+
+```text
+GATE_ID=G3C_C2B_RUNTIME_ROOT_RESIDUE_DIAGNOSTIC_D3
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_C2B_OWNER_RUNTIME_ACL_INHERITANCE_ENABLED_AFTER_REPAIR
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+RUNTIME_ROOT_REPAIR_AUTHORIZED=NO
+OWNER_LOCAL_D3_REQUIRED=YES
+RUNTIME_ROOT_DIAGNOSTIC_BLOB=de16f13f22bf2cfaa0b8c7987153401b523a6d49
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun or patch C2B.
+2. Wait for Owner D3 output.
+3. Persist only bounded runtime-root existence/emptiness/ACL/timing facts.
+4. No ACL mutation or deletion is authorized in D3.
+5. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B Owner ACL compatibility repair R1
 
 ```text
 GATE_ID=G3C_C2B_OWNER_ACL_COMPAT_REPAIR_R1
