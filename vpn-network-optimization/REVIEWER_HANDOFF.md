@@ -103,7 +103,7 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
-STATE=RETURN_REPAIR_REQUIRED
+STATE=REPAIR_VALIDATION_PENDING
 PREVIOUS_RESULT=PASS_G4A_THREE_ROLE_TARGET_AND_OFFLINE_PACKAGE
 OBJECTIVE=Prove whether Windows Mihomo interface-name alone can carry HY2 outer traffic over the physical egress while WireGuard remains connected and no exact VPS /32 bypass route exists.
 MAX_ENDPOINT_THIS_ROUND=One protected temporary local Mihomo HY2 runtime + exactly two bounded requests + cleanup/read-back + STOP_AT_REVIEWER.
@@ -124,9 +124,9 @@ G4-B persistent readiness is blocked on this bypass proof. The first G4-B0 live 
 Locked G4-B0 live identities:
 
 ```text
-G4B0_RUNNER_BLOB=43221672eb90a2a58062ca4ecbd118f4ebafc866
+G4B0_RUNNER_BLOB=234658cefed52f2f95a1cb20b50dad415ea4b54e
 G4B0_TEMPLATE_BLOB=f8c637d28a35d3795c8ebaf470d50248562dbaf8
-G4B0_VALIDATOR_BLOB=1c43d09ac277a5c1567d6890e2eb14d8c998515d
+G4B0_VALIDATOR_BLOB=f102280866520bb7fff906181081c13ed1d17beb
 G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
 ```
 
@@ -183,7 +183,7 @@ Owner-local AST-only checkpoint PASS on PowerShell 7.6.6. The repaired offline v
 
 ## OWNER_ACTION_REQUIRED
 
-Repair the G4-B0 Mihomo readiness check and failure-phase telemetry, then complete non-consequential AST/static/validator validation. After that, request fresh explicit Owner authorization for one repaired live retry. Do not run the current live runner again.
+Repair is complete and offline static review PASS. Run only non-consequential Owner-local AST + validator checks against the repaired locked blobs. If both PASS, request fresh explicit Owner authorization for one repaired live retry. Do not run the live runner yet.
 
 ## EVIDENCE_POINTERS
 
