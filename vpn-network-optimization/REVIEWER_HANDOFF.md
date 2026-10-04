@@ -134,36 +134,41 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 - **D7 sanitized Secret Prepare result:** Owner-local D7 safely reproduced the helper failure and surfaced `FAILURE_CODE=SECRET_SCAN_READ_FAILED`. Baseline and post-return runtime C2C directory/profile counts were all zero; Clash import, outer route, external requests, system-proxy/TUN/WireGuard mutation were all absent; `SECRET_VALUES_EMITTED=0`. Source control flow places the failure after DPAPI/recovery parsing/template/certificate validation and inside one of the exact auth-byte file scans, but D7 does not distinguish Clash-app scan from project-runtime scan.
 - **D8 purpose:** reproduce only file-read compatibility across the same Clash-app/runtime roots without DPAPI or the real auth pattern. It reads files locally to EOF using the same read/share semantics, discards bytes, and emits only root/category/extension/error-class aggregates; no file names, contents, Secrets, hashes, or network traffic are exported.
 
+- **D8 readability result:** Clash app root contains 56 files; exactly one read failure is stable and classified as a root-level `.lock` file with `MethodInvocationException` on both attempts. Project runtime contains zero files and zero read failures. This proves the current full-root residue scanner is blocked by one Clash root lock file, not by project runtime residue.
+- **D8R1 purpose:** before weakening the Secret scan, verify metadata-only that the problematic class corresponds to exactly one root-level `.lock`, that it is non-reparse and zero-length, and that it remains unreadable. Only that evidence can justify an exact zero-byte root-lock exception; any nonzero/reparse/multiple-lock result fails closed.
+
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_SECRET_SCAN_READABILITY_DIAGNOSTIC_D8
+GATE_ID=G3C_C2C_CLASH_ROOT_LOCK_METADATA_DIAGNOSTIC_D8R1
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=PASS_D7_CLASSIFIED_SECRET_SCAN_READ_FAILED
-OBJECTIVE=Determine whether the Secret-aware scanner fails because one or more files under the Clash app root or project runtime root cannot be read with the helper's FileStream access/share semantics, without DPAPI or real Secret material.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact D8 identity -> local read-to-end compatibility scan on Clash app/runtime roots -> sanitized aggregate classification -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=PASS_D8_STABLE_ROOT_LOCK_READ_FAILURE
+OBJECTIVE=Prove whether the one stable unreadable Clash root-level .lock file is exactly one zero-byte non-reparse runtime lock, so the Secret scanner can later exempt only that exact safe class without weakening other unreadable-file failures.
+MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact D8R1 identity -> metadata-only root .lock cardinality/length/reparse/readability check -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; Clash app root and project runtime root file-read compatibility only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No C2C retry; no Secret-helper execution; no DPAPI; no recovery-file content read; no real Secret/pattern/hash; local file bytes may be read only inside the Owner process and immediately discarded; no file content/name exported; no Clash/profile mutation; no network requests; no route/proxy/TUN/WireGuard mutation; no VPS/SSH; no G4.
-DIAGNOSTIC_PATH=scripts/c2c-secret-scan-readability-diagnostic.ps1
-DIAGNOSTIC_BLOB=41f0453a70ad43315f0bef839d1e63868086889b
+TARGET_AND_SCOPE=Real Owner Windows host; Clash app root-level .lock metadata only.
+APPLICABLE_CRITICAL_CONSTRAINTS=No file content read; no Secret-helper execution; no DPAPI; no recovery content; no real Secret/hash; no profile mutation; no network requests; no network mutation; no VPS/SSH; no G4.
+DIAGNOSTIC_PATH=scripts/c2c-clash-root-lock-metadata-diagnostic.ps1
+DIAGNOSTIC_BLOB=bf92a21ccf1254be86e50823ee701f53c5784107
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
-ESTIMATED_EXECUTION_TIME=2-5_minutes
+ESTIMATED_EXECUTION_TIME=1-3_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
 ### REQUIRED EVIDENCE
 
-- Owner PowerShell 7.6.6/Admin/High runtime;
-- safe ff-only sync and clean project scope;
-- exact D8 blob;
-- Clash-app root presence, file count, read-failure count;
-- project-runtime root presence, file count, read-failure count;
-- for each failure class only: sanitized first-level category, extension, first/second exception class, stable/transient, count;
-- `D8_SECRET_SCAN_READABILITY_DIAGNOSTIC=PASS`;
+- Owner PowerShell 7.6.6/Admin/High;
+- safe ff-only sync and project clean;
+- exact D8R1 blob;
+- `CLASH_ROOT_LOCK_COUNT=1`;
+- `CLASH_ROOT_LOCK_REPARSE=NO`;
+- `CLASH_ROOT_LOCK_LENGTH=0`;
+- `CLASH_ROOT_LOCK_READABLE=NO`;
+- non-secret read-error class;
+- `D8R1_ZERO_LENGTH_ROOT_LOCK_CONFIRMED=PASS`;
+- `FILE_CONTENT_READ=NO`;
 - `DPAPI_UNPROTECT=NO`;
 - `REAL_SECRET_READ=NO`;
-- `FILE_CONTENT_EXPORTED=NO`;
 - `CLASH_PROFILE_MUTATION=NO`;
 - `NETWORK_REQUESTS=0`;
 - `NETWORK_CHANGED=NO`;
@@ -172,35 +177,35 @@ TIMING_OBSERVABILITY_REQUIRED=YES
 
 ### ACCEPTANCE_CRITERIA
 
-D8 PASS requires complete sanitized readability results with no mutation. Stable read failures identify the precise root/category/error class that blocks the current scanner. Transient-only failures support a retry-safe scanner repair. Zero failures means the prior scan failure was transient or pattern-loop-specific and requires a narrower source-level repair/fixture before any Secret replay.
+PASS_D8R1 only if there is exactly one root-level .lock, it is zero-byte, non-reparse, and still unreadable. Any deviation returns and no scanner exception is authorized.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Read-only diagnostic; no rollback should be required.
+Read-only metadata Gate; no rollback required.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic D8 checkpoint and return complete output.
+Run the Reviewer-supplied D8R1 checkpoint and return complete output.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action. Do not patch scanner behavior or rerun Secret processing before D8 evidence.
+No Executor action while D8R1 is pending.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-NONE until Owner returns D8 output.
+NONE until Owner returns D8R1 output.
 
 ## NEXT_STEP
 
-Owner runs D8. Reviewer then makes the smallest scanner repair or follow-up diagnostic based on stable/transient/root classification.
+If D8R1 PASS, Reviewer opens one minimal Executor repair Gate: Secret scanner may skip only an unreadable zero-byte root-level .lock under the Clash app root, while every other unreadable file still fails closed, with a dedicated regression fixture.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the D8 local readability checkpoint.
+Run the D8R1 metadata-only checkpoint.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No action while D8 is pending.
+No action while D8R1 is pending.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
