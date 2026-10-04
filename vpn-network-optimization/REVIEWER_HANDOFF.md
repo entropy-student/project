@@ -134,77 +134,91 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_SECRET_PREPARE_PRESECRET_DIAGNOSTIC_D6
+GATE_ID=G3C_C2C_SECRET_PREPARE_SANITIZED_REPLAY_D7
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=RETURN_R3R1_SECRET_HELPER_PREPARE_FAILED
-OBJECTIVE=Classify all non-secret prerequisites and any filename-level residue from the failed Secret Prepare attempt before any DPAPI/Secret replay.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact D6 diagnostic identity -> read-only ACL/path/template/Mihomo/profile-store/residue checks -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=PASS_D6_PRESECRET_PREREQUISITES
+OWNER_C2C_AUTHORIZATION=GRANTED
+OBJECTIVE=Run one sanitized Secret-helper Prepare replay to surface the exact non-secret inner failure code; if Prepare unexpectedly succeeds, immediately verify-cleanup the temporary real profile and stop without importing Clash or sending traffic.
+MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact D7 identity -> one Secret-helper Prepare invocation -> allowlisted marker/failure-code emission -> if Prepare PASS, one immediate VerifyCleanup -> residue readback -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; recovery/runtime ACL metadata, file/path existence, template, Mihomo version, Clash profile-store cardinality, and C2C filename residue counts only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No C2C orchestrator retry; no Secret-helper Prepare/VerifyCleanup; no DPAPI unprotect; no recovery-file content read; no Secret value/hash; no Clash profile mutation; no route/proxy/TUN/WireGuard mutation; no network requests; no VPS/SSH; no G4.
-DIAGNOSTIC_PATH=scripts/c2c-secret-prepare-presecret-diagnostic.ps1
-DIAGNOSTIC_BLOB=516313c0c3243c7cc4763f57634241b722f1bd7d
+TARGET_AND_SCOPE=Real Owner Windows host; c2c-secret-profile-helper.ps1 Prepare/VerifyCleanup only through the locked D7 wrapper.
+APPLICABLE_CRITICAL_CONSTRAINTS=This Gate DOES authorize CurrentUser DPAPI/recovery-content processing inside the reviewed Secret helper; no Secret/hash/raw child output may reach console; no Clash profile import; no outer route; no external network requests; system proxy/TUN/WireGuard unchanged; no VPS/SSH; no G4.
+DIAGNOSTIC_PATH=scripts/c2c-secret-prepare-sanitized-diagnostic.ps1
+DIAGNOSTIC_BLOB=a0c54c91894cd648328fac8b9176f8442aa168d1
+SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
 ESTIMATED_EXECUTION_TIME=2-5_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
+### PREFLIGHT
+
+1. Owner PowerShell 7.6.6 / Administrator / High integrity.
+2. Capture checkpoint start before Git synchronization.
+3. Require clean project scope, canonical origin/main, ancestor proof and ff-only sync.
+4. Verify exact D7 and Secret-helper blobs.
+5. D7 requires zero baseline runtime C2C directories/profiles before Secret replay.
+
 ### REQUIRED EVIDENCE
 
-- Owner PowerShell 7.6.6/Admin/High runtime;
-- safe ff-only sync and clean project scope;
-- exact D6 blob;
-- recovery file exists;
-- recovery root ACL PASS;
-- recovery file ACL PASS;
-- runtime root existence and ACL result if present;
-- runtime C2C directory/profile filename counts;
-- Clash profile-store count exactly one;
-- Clash C2C profile filename residue count;
-- template static check PASS;
-- Mihomo v1.19.32;
-- required .NET assemblies PASS;
-- `D6_PRESECRET_PREREQUISITES=PASS` or precise `RETURN`;
-- `DPAPI_UNPROTECT=NO`;
-- `RECOVERY_FILE_CONTENT_READ=NO`;
-- `REAL_SECRET_READ=NO`;
-- `CLASH_PROFILE_MUTATION=NO`;
-- `NETWORK_REQUESTS=0`;
-- `NETWORK_CHANGED=NO`;
+- Owner runtime / safe sync / project clean;
+- exact D7 and Secret-helper blobs;
+- baseline runtime C2C directory/profile counts = 0;
+- `SECRET_PREPARE_REPLAY_STARTED=YES`;
+- only allowlisted child evidence;
+- child `SECRET_VALUES_EMITTED=0`;
+- if Prepare returns non-zero:
+  - exact `FAILURE_CODE=<sanitized code>`;
+  - `SECRET_PREPARE_CHILD_RESULT=RETURN`;
+  - post-return runtime C2C directory/profile counts = 0;
+  - `D7_SECRET_PREPARE_DIAGNOSTIC=RETURN_CLASSIFIED`;
+- if Prepare unexpectedly passes:
+  - approved Prepare PASS markers;
+  - `TEMP_REAL_PROFILE_CREATED=YES`;
+  - immediate cleanup started;
+  - approved cleanup PASS markers;
+  - post-cleanup runtime C2C directory/profile counts = 0;
+  - `D7_SECRET_PREPARE_DIAGNOSTIC=UNEXPECTED_PREPARE_PASS_CLEANED`;
+- `CLASH_PROFILE_IMPORT=NO`;
+- `TEMP_OUTER_ROUTE_CREATED=NO`;
+- `EXTERNAL_NETWORK_REQUESTS=0`;
+- `SYSTEM_PROXY_MUTATION=NO`;
+- `TUN_MUTATION=NO`;
+- `WIREGUARD_MUTATION=NO`;
 - `SECRET_VALUES_EMITTED=0`;
-- timing complete.
+- complete timing.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_D6 only if all non-secret prerequisites pass and all C2C residue counts are zero. A D6 failure identifies the exact pre-secret fault and blocks any Secret replay. A full D6 PASS means the remaining fault domain is inside DPAPI/recovery parsing, Secret-aware residue scan, protected temp-profile creation/ACL, or Mihomo real-profile parse; Reviewer must then design one sanitized bounded replay rather than guessing.
+D7 succeeds diagnostically if it either (a) returns one precise sanitized child failure code with zero runtime residue, or (b) proves Prepare now succeeds and immediately cleans the temporary profile with zero residue. D7 does not itself prove real HY2 connectivity and cannot import Clash or send traffic.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Read-only Gate; no rollback should be required.
+Baseline residue is zero. On child Prepare failure, the helper's bounded catch cleanup must leave runtime counts zero. On unexpected Prepare success, D7 immediately invokes VerifyCleanup. If cleanup fails or residue remains, do not rerun; return output for a dedicated cleanup Gate.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic D6 checkpoint and return the complete output.
+Run the Reviewer-supplied D7 atomic checkpoint. By running it, Owner authorizes this one bounded DPAPI/Secret Prepare diagnostic replay only; no network canary is authorized in D7.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action. Do not patch or retry Secret processing while D6 is pending.
+No Executor action. Do not run Secret helper/C2C or patch by guess while D7 is pending.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-NONE until Owner returns D6 output.
+NONE until Owner returns D7 output.
 
 ## NEXT_STEP
 
-Owner runs D6. Reviewer then narrows the failed Secret Prepare phase and decides whether a source repair or one sanitized Secret-helper diagnostic replay is justified.
+Owner runs D7. Reviewer uses the exact sanitized inner failure code to choose the smallest repair, or if Prepare unexpectedly succeeds and cleans, decides whether the real C2C canary may be reopened.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the D6 read-only checkpoint.
+Run the D7 sanitized Secret Prepare diagnostic checkpoint.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No action while D6 is pending.
+No action while D7 is pending.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
