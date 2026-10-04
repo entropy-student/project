@@ -4,7 +4,7 @@
 
 **Candidate / 可交 Owner 连续动效验收。** 在本轮已有截图和源码中，未发现必须修复的 CTA 遮挡、横向溢出、阅读阶段缺失或静态回退内容缺失。本结论是内部视觉建议，不是官方 Reviewer 决策，也不代替 Owner 最终验收。Owner 最新继续执行授权与历史等待记录分别保留，不将新授权解释为最终 PASS。
 
-依据为本 namespace 的 `DESIGN.md`、当前 `home.css` / `home-motion.js`、`round2/screenshots/` 中已保存的代表帧、`round2/browser.json`、`qa-report.json` 及 runtime before/after JSON。最终批次共有 125 帧；本 review 直接查看了其中 33 张代表截图，没有重启浏览器、自行采样、运行测试或修改应用源码。
+依据为本 namespace 的 `DESIGN.md`、当前 `home.css` / `home-motion.js`、`round2/screenshots/` 中已保存的代表帧、`round2/browser.json`、`qa-report.json` 及 runtime before/after JSON。最终批次共有 125 帧；本 review 直接查看了其中 31 张代表截图，没有重启浏览器、自行采样、运行测试或修改应用源码。
 
 ## 2. 动效方向与可读性
 

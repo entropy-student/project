@@ -1074,3 +1074,5 @@ PayPal, real money, AddCart, Checkout submit, order/account mutation, provider/p
 Owner must still confirm perceptibility by waiting at Hero and normally scrolling the editorial/panel, Samples and desktop Closing. Formal Reviewer decision/Owner visual freeze PENDING. STOP_AT_REVIEWER=YES.
 
 Evidence: [docs/evidence/g3cr6r3d2r4-owner-video/README.md](docs/evidence/g3cr6r3d2r4-owner-video/README.md). Submission identity is the enclosing implementation/evidence commit, returned after push and recorded in PR64; baseline a6cbe3cc80f7d276ffbc30499f538544a7082bb6, main 46c2cf2c914a0e7043467ab1022da403fd1e015e. No Reviewer decision was edited.
+
+R4 Owner-video submission identity: implementation/evidence commit d6df5f1bff414716dd485605f0795f966a0151e6; final enclosing documentation hygiene commit corrects only the internal advisory's viewed-frame count to31. Same branch/PR64, unmerged; no new application or runtime change.
