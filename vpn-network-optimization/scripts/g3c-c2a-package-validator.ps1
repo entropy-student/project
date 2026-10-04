@@ -42,6 +42,12 @@ function Test-C2APackage {
         $runnerLower -match '(?im)proxyenable\s*[,=]\s*1|(?:enable-tun|tun)\s*:\s*true') {
         throw 'SYSTEM_NETWORK_MUTATION_FORBIDDEN'
     }
+    if ($RunnerText -notmatch '(?im)Get-NetRoute[^\r\n]*-AddressFamily\s+IPv4[^\r\n]*-PolicyStore\s+ActiveStore') {
+        throw 'ACTIVE_ROUTE_STORE_SCOPE_MISSING'
+    }
+    if ($RunnerText -match '(?im)\$_\.PolicyStore') {
+        throw 'ROUTE_OBJECT_POLICYSTORE_PROPERTY_FORBIDDEN'
+    }
     if ($RunnerText -notmatch '(?im)C2B_ACK\|IMPORT=YES\|WG_VISIBLE=YES\|HY2_SYNTHETIC_VISIBLE=YES\|SELECTOR_VISIBLE=YES\|CURRENT=WG-BASELINE\|HY2_TRAFFIC=NO\|PROFILE_REMOVED=YES' -or
         $RunnerText -notmatch '(?im)Read-Host[^\r\n]*expectedAck') {
         throw 'OWNER_UI_ACK_CONTRACT_INVALID'
@@ -188,6 +194,15 @@ Assert-C2AExpectedFailure 'I_ROUTE_MUTATION' $templateText ($runnerText + "`nRem
 Assert-C2AExpectedFailure 'I_WIREGUARD_MUTATION' $templateText ($runnerText + "`nStop-Service WireGuardManager") $packageText 'SYSTEM_NETWORK_MUTATION_FORBIDDEN'
 Assert-C2AExpectedFailure 'I_PROXY_TUN_MUTATION' $templateText ($runnerText + "`nSet-ItemProperty ProxyEnable 1") $packageText 'SYSTEM_NETWORK_MUTATION_FORBIDDEN'
 Write-Output 'G3C_C2A_FIXTURE_I_NO_SYSTEM_NETWORK_MUTATION=PASS'
+
+$missingActiveStoreScope = $runnerText.Replace('-PolicyStore ActiveStore', '')
+Assert-C2AExpectedFailure 'I1_ACTIVE_ROUTE_STORE_SCOPE_MISSING' $templateText $missingActiveStoreScope $packageText 'ACTIVE_ROUTE_STORE_SCOPE_MISSING'
+$policyStorePropertyAccess = $runnerText.Replace(
+    "'{0}|{1}|{2}|{3}' -f `$_.DestinationPrefix, `$_.NextHop, `$_.InterfaceIndex, `$_.RouteMetric",
+    "'{0}|{1}|{2}|{3}|{4}' -f `$_.DestinationPrefix, `$_.NextHop, `$_.InterfaceIndex, `$_.RouteMetric, `$_.PolicyStore"
+)
+Assert-C2AExpectedFailure 'I1_ROUTE_OBJECT_POLICYSTORE_PROPERTY' $templateText $policyStorePropertyAccess $packageText 'ROUTE_OBJECT_POLICYSTORE_PROPERTY_FORBIDDEN'
+Write-Output 'G3C_C2A_FIXTURE_I1_ACTIVE_STORE_SCOPE_WITHOUT_OBJECT_POLICYSTORE=PASS'
 
 $withoutFinally = $runnerText -replace '(?is)\r?\nfinally\s*\{\s*\$script:completionPhase[\s\S]*\z', ''
 Assert-C2AExpectedFailure 'J_MISSING_CLEANUP' $templateText $withoutFinally $packageText 'PROJECT_RUNTIME_CLEANUP_OR_ACL_GUARD_MISSING'
