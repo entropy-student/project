@@ -1,0 +1,16 @@
+{
+  "mode": "STAGED_BYTE_ROUNDTRIP_ONLY",
+  "backupHomeHashValid": true,
+  "backupSourceHashesValid": true,
+  "stagedCopyReadback": true,
+  "restoresTo": "Prior R4 d882e247 motion/presentation",
+  "homeSha256": "7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a",
+  "restoredFiles": [
+    "home.css",
+    "home-motion.js"
+  ],
+  "homeDatabaseMutation": false,
+  "menusMutation": false,
+  "assetsMutation": false,
+  "liveRollbackExecuted": false
+}

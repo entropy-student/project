@@ -10,8 +10,6 @@
   const hero = home.querySelector('.bms-hero');
   const closing = home.querySelector('.bms-closing');
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-  const phase = (value, start, end) => clamp((value - start) / (end - start), 0, 1);
-  const ease = value => value * value * (3 - 2 * value);
   // Decorative label duplicate; the link keeps one accessible name and target.
   document.querySelectorAll('body.home #header .menu > li > a, body.home .bms-focus-link > a').forEach(link => {
     if (link.children.length || !link.textContent.trim()) return;
@@ -63,45 +61,29 @@
     // Read geometry together, then write CSS variables; no per-frame idle loop.
     const cardStates = cards.map(progress);
     const splitStates = splits.map(progress);
-    const panelStates = backgrounds.map(image => {
-      const panel = image.closest('.bms-focus-photo-panel');
-      return scrollY - (layoutTop(panel) - (innerHeight - panel.offsetHeight) / 2);
-    });
+    const panelStates = backgrounds.map(image => progress(image.parentElement));
     const closingState = closing ? clamp((scrollY - layoutTop(closing)) / Math.max(1, closing.offsetHeight - innerHeight), 0, 1) : 0;
     const small = mobile.matches;
     cards.forEach((card, i) => {
-      const p = cardStates[i];
-      // Distinct arrival, flat reading plateau, and departure; no scroll hijack.
-      const entering = 1 - ease(phase(p, .08, .40));
-      const leaving = ease(phase(p, .60, .92));
-      const distance = entering + leaving;
-      card.style.setProperty('--card-tilt', `${(entering - leaving) * (small ? 4 : 30)}deg`);
-      card.style.setProperty('--card-scale', `${1 - distance * (small ? .045 : .24)}`);
-      card.style.setProperty('--card-y', `${(entering - leaving) * (small ? 14 : 90)}px`);
-      card.style.setProperty('--card-depth', `${-distance * (small ? 0 : 180)}px`);
+      const p = cardStates[i], distance = Math.abs(p - .5) * 2;
+      card.style.setProperty('--card-tilt', `${(.5 - p) * (small ? 8 : 48)}deg`);
+      card.style.setProperty('--card-scale', `${1 - distance * (small ? .045 : .22)}`);
+      card.style.setProperty('--card-y', `${(.5 - p) * (small ? 28 : 160)}px`);
+      card.style.setProperty('--card-depth', `${-distance * (small ? 0 : 140)}px`);
     });
     splits.forEach((split, i) => {
-      const p = splitStates[i], entering = 1 - ease(phase(p, .08, .45));
-      const leaving = ease(phase(p, .72, 1));
-      split.style.setProperty('--split-scale', `${1 + entering * (small ? .045 : .24) + leaving * .04}`);
-      split.style.setProperty('--split-y', `${entering * (small ? 18 : 72) - leaving * (small ? 8 : 24)}px`);
-      split.style.setProperty('--split-inset', `${entering * (small ? 3 : 12)}%`);
-      split.style.setProperty('--copy-y', `${entering * (small ? 18 : 48)}px`);
-      split.style.setProperty('--copy-opacity', `${1 - entering * .35}`);
+      const p = splitStates[i], distance = Math.abs(p - .5) * 2;
+      split.style.setProperty('--split-scale', `${1 + distance * (small ? .045 : .2)}`);
+      split.style.setProperty('--split-y', `${(.5 - p) * (small ? 28 : 100)}px`);
+      split.style.setProperty('--copy-y', `${Math.max(0, .5 - p) * (small ? 24 : 72)}px`);
+      split.style.setProperty('--copy-opacity', `${1 - Math.max(0, .5 - p) * .45}`);
     });
-    // Compensate scroll one-for-one over a bounded 360px interval. The image
-    // stays in viewport while its text panel moves; local overscan covers edges.
-    backgrounds.forEach((image, i) => image.style.setProperty('--photo-y', small ? '0px' : `${clamp(panelStates[i], -180, 180)}px`));
+    backgrounds.forEach((image, i) => image.style.setProperty('--photo-y', small ? '0px' : `${(panelStates[i] - .5) * 220}px`));
     if (closing) {
-      const left = ease(phase(closingState, .05, .28));
-      const title = ease(phase(closingState, .22, .64));
-      const right = ease(phase(closingState, .55, .82));
-      closing.style.setProperty('--closing-reveal', `${small ? 100 : title * 100}%`);
-      closing.style.setProperty('--closing-left-opacity', `${small ? .6 : left}`);
-      closing.style.setProperty('--closing-right-opacity', `${small ? .6 : right}`);
-      closing.style.setProperty('--closing-left', small ? '0px' : `${(1 - left) * 100 - closingState * 35}px`);
-      closing.style.setProperty('--closing-right', small ? '0px' : `${(1 - right) * 100 - closingState * 25}px`);
-      closing.style.setProperty('--closing-text-y', small ? '0px' : `${(1 - title) * 28}px`);
+      closing.style.setProperty('--closing-reveal', `${small ? 100 : 10 + closingState * 90}%`);
+      closing.style.setProperty('--closing-left', small ? '0px' : `${(closingState - .5) * -220}px`);
+      closing.style.setProperty('--closing-right', small ? '0px' : `${(closingState - .5) * 200}px`);
+      closing.style.setProperty('--closing-text-y', small ? '0px' : `${(1 - closingState) * 32}px`);
     }
   }
   const queue = () => {if (!scheduled) {scheduled = true; requestAnimationFrame(render);}};

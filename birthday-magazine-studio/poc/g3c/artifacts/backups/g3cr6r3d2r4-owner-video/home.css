@@ -113,25 +113,22 @@ body.home .bms-motion-on .bms-focus-sharp{animation:bms-focus-entry 1.8s cubic-b
 body.home .bms-motion-on .bms-hero-message{animation:bms-title-entry 1.2s cubic-bezier(.16,1,.3,1) both}
 body.home .bms-motion-on .bms-reveal.bms-in-view{animation:bms-section-entry .9s cubic-bezier(.16,1,.3,1) both}
 body.home .bms-motion-on .bms-focus-card{transform:perspective(1600px) translateY(var(--card-y,0px)) translateZ(var(--card-depth,0px)) rotateX(var(--card-tilt,0deg)) scale(var(--card-scale,1))}
-body.home .bms-motion-on .bms-panel-background img{position:relative;top:-180px;height:calc(100% + 360px);transform:translateY(var(--photo-y,0px))}
-body.home .bms-motion-on .bms-focus-visual{clip-path:inset(var(--split-inset,0%) round 32px)}
+body.home .bms-motion-on .bms-panel-background img{position:relative;top:-110px;height:calc(100% + 220px);transform:translateY(var(--photo-y,0px))}
 body.home .bms-motion-on .bms-focus-visual img{transform:translateY(var(--split-y,0px)) scale(var(--split-scale,1));transform-origin:50% 50%}
 body.home .bms-motion-on .bms-focus-copy{transform:translateY(var(--copy-y,0px));opacity:var(--copy-opacity,1)}
-body.home .bms-motion-on .bms-focus-background{animation:bms-focus-breathe 12s ease-in-out infinite;animation-play-state:paused}
-body.home .bms-motion-on .bms-focus-sharp img{animation:bms-focus-pan 12s ease-in-out infinite;animation-play-state:paused}
+body.home .bms-motion-on .bms-focus-background{animation:bms-focus-breathe 14s ease-in-out infinite;animation-play-state:paused}
+body.home .bms-motion-on .bms-focus-sharp img{animation:bms-focus-pan 14s ease-in-out infinite;animation-play-state:paused}
 body.home .bms-motion-on .bms-focus-awake :is(.bms-focus-background,.bms-focus-sharp img){animation-play-state:running}
-@keyframes bms-focus-breathe{0%,26%,54%,74%,100%{filter:blur(12px)}36%,42%,84%,90%{filter:blur(25px)}0%,36%,100%{transform:scale(1.04) translateX(0)}42%,84%{transform:scale(1.14) translateX(-16px)}}
-/* Crop switches happen while defocused; the existing product photo is reused.
-   The readable headline/CTA sits outside these photographic layers. */
-@keyframes bms-focus-pan{0%,26%,100%{filter:blur(0);transform:scale(1) translateX(0)}36%{filter:blur(14px);transform:scale(1.04) translateX(0)}42%{filter:blur(14px);transform:scale(1.32) translateX(-18px)}54%,74%{filter:blur(0);transform:scale(1.32) translateX(-18px)}84%{filter:blur(14px);transform:scale(1.32) translateX(-18px)}90%{filter:blur(14px);transform:scale(1) translateX(0)}}
+@keyframes bms-focus-breathe{0%,100%{filter:blur(12px);transform:scale(1.04) translateX(-8px)}50%{filter:blur(22px);transform:scale(1.13) translateX(8px)}}
+@keyframes bms-focus-pan{0%,100%{transform:scale(1) translateX(0)}50%{transform:scale(1.09) translateX(-12px)}}
 @media(min-width:701px){
  body.home .bms-motion-on .bms-closing{height:190svh;min-height:1600px;display:block;padding:0;overflow:clip}
  body.home .bms-closing-sticky{position:sticky;top:0;width:100%;max-width:none!important;margin:0!important;height:100svh;min-height:700px;display:grid;place-items:center;padding:80px 32px;isolation:isolate}
  body.home .bms-motion-on .bms-closing .bms-heading{transform:translateY(var(--closing-text-y,0px))}
 }
-body.home .bms-motion-on .bms-closing-photo-left{transform:translateY(var(--closing-left,0px));opacity:var(--closing-left-opacity,1)}
-body.home .bms-motion-on .bms-closing-photo-right{transform:translateY(var(--closing-right,0px));opacity:var(--closing-right-opacity,1)}
-body.home .bms-motion-on .bms-closing .bms-heading{clip-path:inset(0 calc(100% - var(--closing-reveal,100%)) 0 0);color:white}
+body.home .bms-motion-on .bms-closing-photo-left{transform:translateY(var(--closing-left,0px))}
+body.home .bms-motion-on .bms-closing-photo-right{transform:translateY(var(--closing-right,0px))}
+body.home .bms-motion-on .bms-closing .bms-heading{background:linear-gradient(90deg,#fff var(--closing-reveal,100%),#b1b1ae var(--closing-reveal,100%));background-clip:text;-webkit-background-clip:text;color:transparent}
 @keyframes bms-focus-entry{from{filter:blur(9px);opacity:.65}to{filter:blur(0);opacity:1}}
 @keyframes bms-title-entry{from{transform:translateY(18px);opacity:.75}to{transform:translateY(0);opacity:1}}
 @keyframes bms-section-entry{from{transform:translateY(18px);filter:blur(2px);opacity:.75}to{transform:translateY(0);filter:blur(0);opacity:1}}
@@ -200,12 +197,11 @@ body.home .bms-motion-on .bms-closing .bms-heading{clip-path:inset(0 calc(100% -
  body.home .bms-closing-photo-left{left:24px;top:20px;height:70px}
  body.home .bms-closing-photo-right{right:24px;bottom:28px}
 }
-@keyframes bms-focus-breathe-mobile{0%,26%,54%,74%,100%{filter:blur(12px)}36%,42%,84%,90%{filter:blur(17px)}0%,36%,100%{transform:scale(1.04)}42%,84%{transform:scale(1.08)}}
-@keyframes bms-focus-pan-mobile{0%,26%,100%{filter:blur(0);transform:scale(1)}36%{filter:blur(5px);transform:scale(1.02)}42%{filter:blur(5px);transform:scale(1.10)}54%,74%{filter:blur(0);transform:scale(1.10)}84%{filter:blur(5px);transform:scale(1.10)}90%{filter:blur(5px);transform:scale(1)}}
+@keyframes bms-focus-breathe-mobile{0%,100%{filter:blur(12px);transform:scale(1.04)}50%{filter:blur(17px);transform:scale(1.08)}}
+@keyframes bms-focus-pan-mobile{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
 @media(prefers-reduced-motion:reduce){
  body.home .bms-focus-background,body.home .bms-focus-sharp img{animation:none!important}
  body.home .bms-focus-visual img,body.home .bms-focus-copy{transform:none!important;opacity:1!important}
- body.home .bms-focus-visual,body.home .bms-closing .bms-heading{clip-path:none!important}
  body.home .bms-focus-sharp,body.home .bms-hero-message,body.home .bms-reveal{animation:none!important}
  body.home .bms-focus-card,body.home .bms-panel-background img,body.home .bms-closing-photo{transform:none!important}
  body.home .bms-roll>span{transition:none}

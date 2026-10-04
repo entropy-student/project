@@ -1,0 +1,143 @@
+{
+  "gate": "G3CR6R3D2R4_MOTION_POLISH",
+  "result": "AUTOMATED_CHECKS_PASS",
+  "round": "round2",
+  "screenshotCount": 125,
+  "iteration": "Owner-approved phone-video calibration; prior R4 evidence retained",
+  "heroTimedStates": 5,
+  "heroPeriodSeconds": 12,
+  "heroPausesOffscreen": true,
+  "heroDefocusCropRefocus": true,
+  "splitStatesPerSection": 3,
+  "panelStatesPerPanel": 5,
+  "panelBoundedTravelPx": 360,
+  "panelViewportRetention": true,
+  "sampleStatesPerCard": 5,
+  "sampleReadingPlateau": true,
+  "sampleMeasuredDesktopTiltDegrees": [
+    20.4793433615853,
+    0,
+    0,
+    0,
+    -20.4793433615853
+  ],
+  "sampleMeasuredWidths": [
+    1071.593505859375,
+    1280,
+    1280,
+    1280,
+    1071.593505859375
+  ],
+  "closingStickyStates": [
+    {
+      "name": "early",
+      "top": 0,
+      "scrollY": 8588,
+      "reveal": "0%",
+      "ctaVisible": true
+    },
+    {
+      "name": "left",
+      "top": 0,
+      "scrollY": 8723,
+      "reveal": "0%",
+      "ctaVisible": true
+    },
+    {
+      "name": "mid",
+      "top": 0,
+      "scrollY": 8948,
+      "reveal": "57.12126120289385%",
+      "ctaVisible": true
+    },
+    {
+      "name": "right",
+      "top": 0,
+      "scrollY": 9173,
+      "reveal": "100%",
+      "ctaVisible": true
+    },
+    {
+      "name": "late",
+      "top": 0,
+      "scrollY": 9398,
+      "reveal": "100%",
+      "ctaVisible": true
+    }
+  ],
+  "desktop1440": true,
+  "mobile375": true,
+  "noHorizontalOverflow": true,
+  "mobileLighter": true,
+  "mobileNoSticky": true,
+  "reducedMotion": true,
+  "livePreferenceChange": true,
+  "noJS": true,
+  "missingController": true,
+  "hoverFocus": true,
+  "nativeMobileMenu": true,
+  "homeSha256": "7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a",
+  "homeDatabaseWrites": 0,
+  "gutenbergGroups": 8,
+  "anchors": 6,
+  "ownerEditCapabilities": true,
+  "staticR2AssetHashes": [
+    {
+      "file": "poc/g3c/preview-plugin/assets/g3cr6r3d2r2/sample-eli-cover.png",
+      "sha256": "690f7769b4ff115810763e5ad2311eef2c36d71c6100dcdfc676e8be003f9891",
+      "bytes": 2652128
+    },
+    {
+      "file": "poc/g3c/preview-plugin/assets/g3cr6r3d2r2/sample-moments-spread.png",
+      "sha256": "964d80b02f8bae28f3c36767d6c0ce69a52c715b1dac08843e4c6bee39ff6834",
+      "bytes": 2410182
+    },
+    {
+      "file": "poc/g3c/preview-plugin/assets/g3cr6r3d2r2/sample-lena-gift.png",
+      "sha256": "41bfac37025eaec3e9877b7fb0bbaf3bc7726cadd872331703963cad3b4c9dd5",
+      "bytes": 2291961
+    },
+    {
+      "file": "poc/g3c/preview-plugin/assets/g3cr6r3d2r2/preview-memories-panel.png",
+      "sha256": "6922761748950308d34af46fec5a5ed7251199b77321c3ff253ab4cc6d339ab0",
+      "bytes": 2201100
+    },
+    {
+      "file": "poc/g3c/preview-plugin/assets/g3cr6r3d2r2/offer-birthday-panel.png",
+      "sha256": "713f896f834044562c3101763551a793dbd2e0383e56d8732a4066dabf016db2",
+      "bytes": 2343702
+    }
+  ],
+  "protectedRuntimeHashes": {
+    "commerce_workspace": "e971d02be42e4dbb01b1cc1c614cd49d76991ad1df2f253cec80825f0b9823d2",
+    "woocommerce_main": "a22b424b59842caa0d84741f34da240498a553fe1133a8590eebb5192f02483b",
+    "preview_php": "eb46a5c62f21b8f375ef023d48d744a2c140b1f44d61cf760ead5271ee7dfd9d",
+    "preview_js": "59ba672be58d8f33ebb83b978ef5678c5f0c5e102fce88de8a0c1ebc8b82dabc",
+    "preview_css": "c7cfd022626ade6b4d117e1fd9773f579c822d19455ec6e1ab251fa6e4d40bae"
+  },
+  "previewDefaultGeometryUnchanged": true,
+  "previewInteractionsReplayed": false,
+  "previewPrivacyBasis": "Accepted proof reused with frozen shortcode/PHP/JS/CSS/default geometry; no new photo interaction or upload test",
+  "nativeCommerceGET": true,
+  "checkoutResult": "Empty-cart native redirect to Cart; no populated form/submission replay",
+  "ordersBefore": 1,
+  "ordersAfter": 1,
+  "generationJobs": 0,
+  "modelCalls": 0,
+  "imagegenCalls": 0,
+  "paypalActions": 0,
+  "checkoutSubmissions": 0,
+  "addToCartActions": 0,
+  "productionDeployments": 0,
+  "sharedInfraMutations": 0,
+  "p1P12Actions": 0,
+  "coreAhaActions": 0,
+  "g4Actions": 0,
+  "mergeActions": 0,
+  "runtimeRetained": true,
+  "resourcesUnchanged": true,
+  "rollbackStagedByteRoundtrip": true,
+  "desktopClosingOrderedPhotoHeadingPhoto": true,
+  "ownerLiveMotionPerceptibility": "PENDING",
+  "formalReviewerDecision": "PENDING"
+}
