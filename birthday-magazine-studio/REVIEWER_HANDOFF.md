@@ -1,7 +1,7 @@
 # Birthday Magazine Studio — REVIEWER HANDOFF
 
 > Maintainer: Reviewer / Architect / Gatekeeper only  
-> Governance: **vps-project-governance v0.2.6**  
+> Governance: **vps-project-governance v0.2.7**  
 > Canonical operational rules: `spike.skill/vps-project-governance/VNEXT.md`  
 > External operational addenda: NONE  
 > Last reviewed: 2026-10-04
@@ -33,14 +33,14 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR6R3D2R4_MOTION_POLISH
+CURRENT_GATE=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
 MAGAZINE_WEB_VIEWER_DIRECTION=CONFIRMED_MAGAZINE_WEB_VIEWER
 HOMEPAGE_FOCUSLY=AUTHORIZED_PUBLIC_VISUAL_REFERENCE
 HOMEPAGE_HIGH_FIDELITY_REIMPLEMENTATION=AUTHORIZED_AFTER_D1_REVIEWER_PASS
-HOMEPAGE_IMPLEMENTATION_STATUS=D2R2_REVIEWER_PASS_OWNER_CONFIRMATION_PENDING
+HOMEPAGE_IMPLEMENTATION_STATUS=OWNER_ACCEPTED_WITH_RESERVED_CORE_ENTRY
 D2_DESIGN_TIME_IMAGE_GENERATION=AUTHORIZED_QUALITY_FIRST
 D2_ARTIFICIAL_LOW_IMAGEGEN_CAP=NONE
 D2_TECHNICAL_REVIEW=PASS
@@ -51,11 +51,11 @@ D2R2_REVIEWER_DECISION=PASS_STATIC_VISUAL_AND_TECHNICAL
 D2R3_MOTION_DIAGNOSTIC=PASS
 D2R3_ROOT_CAUSE=MOTION_RUNNING_BUT_NOT_PERCEPTIBLE
 D2R4_AUTOMATED_REVIEW=PASS
-D2R4_OWNER_LIVE_MOTION=PENDING
-OWNER_RUNTIME_MOTION=REPAIRED_CANDIDATE_OWNER_CONFIRMATION_PENDING
-OWNER_HOMEPAGE_VISUAL_FREEZE=BLOCKED_ON_OWNER_LIVE_MOTION_CONFIRMATION
+D2R4_OWNER_LIVE_MOTION=PASS_OWNER_REPORTED
+OWNER_RUNTIME_MOTION=PASS
+OWNER_HOMEPAGE_VISUAL_FREEZE=PASS_WITH_CORE_ENTRY_RESERVED
 D2_FORMAL_VISUAL_DECISION=PASS_G3CR6R3D2R2
-G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
+G3CR6R3C_RESEARCH_STATUS=RESUMED_CORE_AHA_AND_P1_P12_ONLY
 CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS
 PREVIEW_INTERACTION_CHANGE=HOLD
 CORE_AHA_INTERACTION_DIRECTION=UNRESOLVED
@@ -63,7 +63,7 @@ CORE_AHA_EXACT_PRESENTATION=UNRESOLVED
 MAGAZINE_P1_P12_VISUAL_SYSTEM=UNRESOLVED_RESEARCH_AGAIN
 PRIOR_G3CR6R3C_SATURATION=SUPERSEDED_FOR_INTERACTION_AND_P1_P12
 MAGAZINE_WEB_PAGE_MOTION_MODE=UNRESOLVED
-OWNER_VISUAL_FREEZE=PENDING
+OWNER_VISUAL_FREEZE=HOMEPAGE_PASS_PRODUCT_VISUAL_PENDING
 REAL_MONEY_TRANSACTION=UNVERIFIED
 REAL_CUSTOMER_ACQUISITION=UNVERIFIED
 REPEATABILITY=UNKNOWN
@@ -100,6 +100,7 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 - G3CR6R3D1R2: PASS; fresh Home 858/runtime/theme/menu/CTA/Preview and read-only Woo route baseline closed at Executor commit `7a0a16cf0169980443f8bb760f7f9e919ff0d68c`.
 - G3CR6R3D2: technical acceptance PASS; D2R1 direct visual review identified bounded quality gaps.
 - G3CR6R3D2R2: PASS; Owner-uploaded R2 contact sheet was directly inspected. Samples/Selected Work, image diversity, mobile header and mobile rhythm now meet the Reviewer quality bar while accepted Hero/editorial panel/closing/Preview/Woo behavior remains preserved.
+- G3CR6R3D2R4: **PASS** at latest PR #64 candidate `f50cc974ead65c9811f952cdf0a327c548f14efc`. Reviewer inspected the Owner-video calibration, dual-image Hero focus, expanded Hero travel, source correlation, 1440/375 multi-state QA and scoped rollback. Owner then reported that the homepage is now essentially satisfactory and authorized moving to the next stage. Homepage structure/visual/motion is frozen except for a future **bounded core-experience entry integration**.
 - Owner Visual Checkpoint R2: resolved; Owner broadly accepts the overall composition but now explicitly rates the homepage around 7/10 for the intended quality bar, wants meaningful motion, wants the actual final magazine shown clearly, and rates the current upload-first Preview around 5/10.
 - Owner editability at G3CR6R1 evidence scope: Administrator, edit Home, replace media, edit copy, reorder eight major Gutenberg Groups, edit Blocksy global style/palette; footer is editable WordPress block.
 - PR #64 remains open/unmerged; latest accepted D1R2 evidence commit is `7a0a16cf0169980443f8bb760f7f9e919ff0d68c`. Project-scoped freshness, not whole-monorepo tip ancestry, controls execution.
@@ -107,37 +108,26 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR6R3D2R4_MOTION_POLISH`
+`G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY`
 
-Executor candidate `d882e247a75930a0d019a0d355278c5007a73a6b` has passed Reviewer automated/source/multi-state evidence inspection.
+Resumed after Owner homepage acceptance on 2026-10-04.
 
-Reviewer accepted:
-- source scope: only homepage `home-motion.js` + `home.css`;
-- accepted R2 static imagery/content preserved;
-- Hero 14s recurring focus cycle;
-- editorial split enter/mid/exit choreography;
-- desktop photo-panel parallax (~132px sampled travel);
-- Samples enter/mid/exit progression (~+14.39° / 0° / -14.39° plus scale/Y/depth);
-- desktop Closing sticky reveal (14.5% / 55% / 95.5%);
-- 1440 + 375 no-overflow behavior;
-- reduced-motion, no-JS, missing-controller fallback;
-- Preview/Woo/account/payment/private-workspace freeze;
-- rollback to accepted D2R2.
+Current scope is now deliberately narrow:
+- **CORE_AHA_INTERACTION** — re-research the strongest local-photo-to-magazine interaction/entry pattern;
+- **MAGAZINE_P1_P12_VISUAL_SYSTEM** — re-research a coherent 12-page editorial system;
+- **HOMEPAGE** — accepted/frozen and excluded from template reselection. Only compatibility requirements for the future core-experience entry may be documented; no broad homepage redesign is authorized.
 
-Reviewer also directly inspected representative committed motion-state screenshots and found them consistent with the numeric evidence.
+The existing mandatory research quality bar remains active:
+- >=60 directly inspected distinct candidates;
+- >=8 source ecosystems;
+- explicit source/license status;
+- reject ledger;
+- S/A shortlist;
+- saturation proof after two consecutive >=10-candidate no-improvement batches.
 
-Formal D2R4 PASS remains blocked by the Gate's required Owner live-browser evidence.
+The prior 91-candidate package remains evidence/history but its shortlist/saturation conclusion was already superseded for Core Aha and P1-P12 by the Owner research reset. Research restarts from an open candidate field for those two unresolved surfaces only.
 
-Current Reviewer record:
-- `docs/REVIEWER_DECISION_G3CR6R3D2R4_PARTIAL_OWNER_MOTION_PENDING.md`
-
-Owner verification required on retained local runtime:
-1. Hero visibly changes after waiting several seconds.
-2. Split/photo sections visibly move during normal scrolling.
-3. Samples visibly tilt/scale/depth-shift.
-4. Desktop Closing visibly performs a sticky reveal.
-
-No further Executor mutation is authorized before Owner reports this result.
+No implementation, runtime mutation, image generation, Woo/payment/account changes, production deployment, Shared Infra mutation, PR #64 merge, P1-P12 build, or core-Aha build is authorized in this Gate.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -155,6 +145,8 @@ PRODUCTION_DEPLOYMENT=0
 SHARED_INFRA_MUTATIONS=0
 PR_64_MERGE=0
 G4_ACTIONS=0
+HOMEPAGE_GLOBAL_REDESIGN=0
+HOMEPAGE_ONLY_RESERVED_CHANGE=CORE_AHA_ENTRY_COMPATIBILITY_AFTER_REVIEW
 ```
 
 Protected backend behavior for the current visual/research phase:
@@ -200,32 +192,27 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Owner hard-refreshes `http://127.0.0.1:8189/` and performs a normal live browse.
-2. Owner reports whether Hero, split/photo sections, Samples and Closing are now clearly animated without DevTools.
-3. If Owner confirms, Reviewer formally PASSes D2R4 and returns to homepage visual-freeze checkpoint.
-4. If Owner still finds motion weak/broken, Reviewer opens only the smallest bounded motion repair; accepted static R2 visual work remains preserved.
+1. Resume `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY` for **Core Aha interaction + P1-P12 only**.
+2. Keep the accepted homepage frozen; do not reopen homepage template/style research.
+3. Satisfy the existing hard research contract from an open field and return an Owner-ready shortlist with explicit reuse/license status and saturation evidence.
+4. After Reviewer + Owner selection, open a separate implementation Gate for a **bounded vertical slice first** (core interaction + representative magazine pages) before committing to all 12 pages.
 
 ## OWNER_ACTION_REQUIRED
 
-Open `http://127.0.0.1:8189/`, press **Ctrl+F5**, then check:
-
-1. wait 10–15 seconds on the Hero;
-2. scroll normally through the image/copy and dark photo-panel sections;
-3. scroll slowly through the three Samples;
-4. scroll through the final black Closing section.
-
-Report whether these four motion classes are clearly visible without opening DevTools.
+**NONE.** Owner homepage acceptance and authorization to proceed are recorded. The next checkpoint is after the renewed Core Aha + P1-P12 research shortlist is ready.
 
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/G3CR6R3D2R4_MOTION_POLISH.md`
-2. `docs/REVIEWER_DECISION_G3CR6R3D2R4_PARTIAL_OWNER_MOTION_PENDING.md`
-3. `docs/evidence/g3cr6r3d2r4/qa-report.json`
-4. `docs/evidence/g3cr6r3d2r4/round2/browser.json`
-5. `docs/evidence/g3cr6r3d2r4/source-correlation.json`
-6. `docs/evidence/g3cr6r3d2r4/rollback-proof.json`
-7. representative `docs/evidence/g3cr6r3d2r4/screenshots/*`
-8. current `poc/g3c/preview-plugin/home-motion.js` and `home.css`
+1. `docs/OWNER_DECISION_G3CR6R3D2R4_HOMEPAGE_ACCEPTANCE_2026-10-04.md`
+2. `docs/REVIEWER_DECISION_G3CR6R3D2R4_PASS_HOMEPAGE_FREEZE.md`
+3. latest PR #64 candidate `f50cc974ead65c9811f952cdf0a327c548f14efc`
+4. `docs/evidence/g3cr6r3d2r4-owner-video/`
+5. `docs/evidence/g3cr6r3d2r4-hero-focus/`
+6. `docs/evidence/g3cr6r3d2r4-hero-range/`
+7. `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
+8. `docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`
+9. `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`
+10. `docs/OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md`
 
-D2R4 automated review is accepted. Only Owner live-motion perceptibility remains open.
+Homepage is accepted/frozen except for the future bounded core-experience entry. Current unresolved visual work is Core Aha + P1-P12.

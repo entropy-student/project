@@ -18,7 +18,7 @@ REVIEWER_TO_EXECUTOR_RELAY=SEE_SECTION_BELOW
 EXECUTOR_TO_REVIEWER_RELAY=SEE_SECTION_BELOW
 ```
 
-Governance: **vps-project-governance v0.2.6**.
+Governance: **vps-project-governance v0.2.7**.
 
 `RESEARCH_CONTRACT=MANDATORY`
 
@@ -72,6 +72,8 @@ Executor preflight should now use a path-scoped comparison equivalent to `PR_HEA
 
 ## Goal
 
+**Resume scope — 2026-10-04:** Owner has accepted the current homepage and authorized moving on. Homepage visual/template research is closed. This Gate resumes only for **Core Aha interaction + P1-P12**; a later implementation Gate may make one bounded homepage entry-point adjustment after the core experience is selected.
+
 Produce a high-quality reopened shortlist for:
 
 - the complete P1-P12 magazine visual/page system; static vs dynamic web presentation is not yet frozen;
@@ -114,7 +116,7 @@ Owner-ready reopened shortlist should include:
 
 - core interaction/motion: 3 strongest **directly verified** candidates;
 - magazine pages: enough complete source/layout families to cover the 12-page page map coherently, preferably from a small number of systems;
-- homepage treatment only where needed to explain how the interaction fits the current site; Focusly remains reference-only;
+- homepage is now accepted/frozen; record only the compatibility requirements needed to connect the future core interaction into the existing homepage;
 - recommended combination into one design system;
 - exact items that can be legally/source-wise vendored or copied;
 - exact items that must be recreated rather than copied.
@@ -138,7 +140,7 @@ Before PASS_CANDIDATE, the mandatory Research Contract must be satisfied in full
 
 PASS_CANDIDATE requires:
 
-1. Strong reusable candidates exist for homepage, core interaction and 12-page magazine coverage.
+1. Strong reusable candidates exist for the **core interaction** and coherent **12-page magazine coverage**; homepage reselection is not required.
 2. License/source status is explicit for every candidate.
 3. Recommended combination is visually coherent.
 4. The recommended implementation can share one design-token/component system.
