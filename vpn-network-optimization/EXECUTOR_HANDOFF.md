@@ -1,4 +1,32 @@
-## Current execution status — G3C C2B Owner-local synthetic UI checkpoint R2R1-O1
+## Current execution status — G3C C2B network-state shape diagnostic D1
+
+```text
+GATE_ID=G3C_C2B_NETWORK_STATE_SHAPE_DIAGNOSTIC_D1
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_C2B_PRECHECK_NETWORK_STATE_OBJECT_SHAPE
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_DIAGNOSTIC_REQUIRED=YES
+DIAGNOSTIC_SCRIPT=scripts/c2b-network-state-shape-diagnostic.ps1
+DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+OWNER_RUNTIME_REQUIRED=PowerShell_7.6.6;Administrator=True;High_Integrity_RID>=12288
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+DPAPI_OR_SECRET_READ_AUTHORIZED=NO
+VPS_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun the C2B runner.
+2. Wait for Owner-local diagnostic output from the reviewed D1 script.
+3. Persist only bounded property-presence/count/timing evidence.
+4. Do not infer network drift from the prior PropertyNotFoundException.
+5. Return PASS_CANDIDATE or precise RETURN and STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B Owner-local synthetic UI checkpoint R2R1-O1
 
 ```text
 GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1_O1
