@@ -43,12 +43,13 @@ function Test-RunnerContract {
     $mutationAt=$Text.IndexOf('$script:remoteMutationStarted=$true',[StringComparison]::Ordinal)
     $authAt=$Text.IndexOf("OwnerAuthorization -ceq 'OWNER_G4B_LIVE_AUTHORIZATION=APPROVED'",[StringComparison]::Ordinal)
     $targetAt=$Text.IndexOf('$remote[''hostname''] -ceq ''ubuntu-s-1vcpu-512mb-10gb-sfo3''',[StringComparison]::Ordinal)
-    $secondPathAt=$Text.IndexOf('$SecondFailureDomainPath -and (Test-Path',[StringComparison]::Ordinal)
+    $accountIdAt=$Text.IndexOf("ExpectedBaiduUid -match '^[1-9][0-9]{0,19}$'",[StringComparison]::Ordinal)
     $secondAckAt=$Text.IndexOf("SecondFailureDomainAcknowledgement -ceq 'SECOND_FAILURE_DOMAIN_DISTINCT_ENCRYPTED=CONFIRMED'",[StringComparison]::Ordinal)
     $firstMutationAt=$mutationAt
     $authBeforeMutation=($authAt -ge 0 -and $mutationAt -gt $authAt)
     $targetBeforeMutation=($targetAt -ge 0 -and $mutationAt -gt $targetAt)
-    $secondRecovery=($secondPathAt -ge 0 -and $secondAckAt -ge 0 -and $mutationAt -gt $secondPathAt -and $mutationAt -gt $secondAckAt)
+    $baiduInitAt=$Text.IndexOf('Initialize-BaiduBackend',[StringComparison]::Ordinal)
+    $secondRecovery=($accountIdAt -ge 0 -and $secondAckAt -ge 0 -and $baiduInitAt -ge 0 -and $mutationAt -gt $accountIdAt -and $mutationAt -gt $secondAckAt -and $mutationAt -gt $baiduInitAt -and $Text.Contains('SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK') -and $Text.Contains('Assert-BaiduAccountReady -ExpectedUid $ExpectedBaiduUid'))
     $outputs=@($Text -split "`r?`n" | Where-Object { $_ -match '(?i)\bWrite-(?:Output|Host|Verbose|Information|Warning|Error)\b' })
     $secretOutput=(@($outputs | Where-Object { $_ -match '(?i)\$(?:script:)?(?:hy2Auth|remoteCredentials|credentials|recoveryJson|serverRendered|rendered)|private_key|secret_bundle_b64' }).Count -gt 0)
     $routeWriter=($Text -match '(?im)\b(?:New-NetRoute|Remove-NetRoute|Set-NetRoute)\b|\broute(?:\.exe)?\s+(?:add|delete|change)\b')
@@ -82,20 +83,20 @@ function Test-RunnerContract {
     $remoteServiceAllowlist=($remoteCapture.Contains("'systemctl','list-units','--type=service','--state=active'") -and $remoteSnapshotComparison.Contains('expected.add(SERVICE)') -and $remoteSnapshotComparison.Contains("set(after['active_services'])!=expected") -and $remoteLiveCompare.Contains("allow_reality=True") -and $Text.Contains('G4B_UNRELATED_REMOTE_DRIFT=NONE'))
     $remoteRollbackBaseline=($remoteStage.Contains("'remote_drift_baseline':baseline") -and $remoteRollback.Contains("s.get('remote_drift_baseline')") -and $remoteRollback.Contains("assert_remote_drift(s.get('remote_drift_baseline'),check['drift_snapshot'],allow_reality=False)") -and $Text.Contains('route_firewall_service_restored') -and $Text.Contains('$script:remoteDriftBaseline=$journal[''remote_drift_baseline'']'))
     $profileContentIntegrity=($Text.Contains('Get-FileHash -LiteralPath $item.FullName -Algorithm SHA256') -and $Text.Contains('$Before[$key] -ceq $After[$key]'))
-    $cleanupInitLine=[regex]::Match($recoveryBody,'(?m)^\s*\$dpapi=\$null; \$portable=\$null; \$round=\$null; \$portableRound=\$null\s*$')
-    $cleanupReadbackInitLine=[regex]::Match($recoveryBody,'(?m)^\s*\$localReadback=\$null; \$externalReadback=\$null; \$localPayload=\$null; \$externalPayload=\$null\s*$')
+    $cleanupInitLine=[regex]::Match($recoveryBody,'(?m)^\s*\$dpapi=\$null;\$portable=\$null;\$round=\$null;\$portableRound=\$null\s*$')
+    $cleanupReadbackInitLine=[regex]::Match($recoveryBody,'(?m)^\s*\$localReadback=\$null;\$externalReadback=\$null;\$cloudLocalReadback=\$null;\$localPayload=\$null;\$externalPayload=\$null\s*$')
     $cleanupTryAt=$recoveryBody.IndexOf('try {',[StringComparison]::Ordinal); $cleanupFinallyAt=$recoveryBody.IndexOf('finally {',[StringComparison]::Ordinal)
-    $cleanupVars=@('$round','$portableRound','$dpapi','$portable','$localReadback','$externalReadback','$localPayload','$externalPayload')
+    $cleanupVars=@('$round','$portableRound','$dpapi','$portable','$localReadback','$externalReadback','$cloudLocalReadback','$localPayload','$externalPayload')
     $cleanupComplete=($cleanupInitLine.Success -and $cleanupReadbackInitLine.Success -and $cleanupTryAt -gt $cleanupReadbackInitLine.Index -and $cleanupFinallyAt -gt $cleanupTryAt -and @($cleanupVars | Where-Object { -not $recoveryBody.Substring($cleanupFinallyAt).Contains($_) }).Count -eq 0)
-    $portableCodec=($Text.Contains('VPNG4BP1') -and $Text.Contains('[Security.Cryptography.Rfc2898DeriveBytes]::Pbkdf2') -and $Text.Contains('[Security.Cryptography.HashAlgorithmName]::SHA256') -and $Text.Contains('[Security.Cryptography.AesGcm]::new($key,16)') -and $Text.Contains('GetBytes(16)') -and $Text.Contains('GetBytes(12)') -and $Text.Contains('[byte[]]::new(16)') -and $Text.Contains("'hy2_auth','reality_uuid','reality_private_key','reality_public_key','reality_short_id'") -and $Text.Contains('$added=$seen.Add($property.Name)') -and $recoveryBody.Contains('Write-OwnerOnlyFile -Path $script:recoveryPendingLocal -Bytes $dpapi') -and $recoveryBody.Contains('Write-OwnerOnlyFile -Path $script:recoveryPendingExternal -Bytes $portable') -and -not $recoveryBody.Contains('Write-OwnerOnlyFile -Path $script:recoveryPendingExternal -Bytes $dpapi'))
+    $portableCodec=($Text.Contains('VPNG4BP1') -and $Text.Contains('[Security.Cryptography.Rfc2898DeriveBytes]::Pbkdf2') -and $Text.Contains('[Security.Cryptography.HashAlgorithmName]::SHA256') -and $Text.Contains('[Security.Cryptography.AesGcm]::new($key,16)') -and $Text.Contains('GetBytes(16)') -and $Text.Contains('GetBytes(12)') -and $Text.Contains('[byte[]]::new(16)') -and $Text.Contains("'hy2_auth','reality_uuid','reality_private_key','reality_public_key','reality_short_id'") -and $Text.Contains('$added=$seen.Add($property.Name)') -and $recoveryBody.Contains('Write-OwnerOnlyFile -Path $script:recoveryPendingLocal -Bytes $dpapi') -and $recoveryBody.Contains('Write-OwnerOnlyFile -Path $script:recoveryPendingCloudLocal -Bytes $portable') -and $Text.Contains('Upload-BaiduPendingRecovery -PayloadBytes $PayloadBytes -Passphrase $Passphrase') -and $Text.Contains('Promote-BaiduPendingRecovery -PayloadBytes $PayloadBytes -Passphrase $script:portablePassphrase') -and -not $recoveryBody.Contains('Write-OwnerOnlyFile -Path $script:recoveryPendingExternal -Bytes $dpapi'))
     $pendingAt=$Text.IndexOf('Write-EncryptedRecovery -PayloadBytes',[StringComparison]::Ordinal)
     $stageMutationAt=$Text.IndexOf('$script:remoteMutationStarted=$true',[StringComparison]::Ordinal)
     $stageAt=$Text.IndexOf("Invoke-Remote -Action 'stage'",[StringComparison]::Ordinal)
-    $pendingOrdering=($pendingAt -ge 0 -and $stageMutationAt -gt $pendingAt -and $stageAt -gt $stageMutationAt -and $Text.Contains('$script:recoveryPendingLocal') -and $Text.Contains('.pending') -and $Text.Contains('vpn-network-optimization-g4b.vpr1'))
+    $pendingOrdering=($pendingAt -ge 0 -and $stageMutationAt -gt $pendingAt -and $stageAt -gt $stageMutationAt -and $Text.Contains('$script:recoveryPendingLocal') -and $Text.Contains('$script:recoveryPendingCloudLocal') -and $Text.Contains('Upload-BaiduPendingRecovery') -and $Text.Contains('.pending') -and $Text.Contains('vpn-network-optimization-g4b.vpr1'))
     $promotionAt=$Text.IndexOf('Promote-RecoveryArtifacts -PayloadBytes',[StringComparison]::Ordinal)
     $remoteFinalAt=$Text.IndexOf('$remoteFinal=Invoke-Remote -Action ''status''',[StringComparison]::Ordinal)
     $candidateAt=$Text.IndexOf('$remoteCandidate=Invoke-Remote -Action ''candidate''',[StringComparison]::Ordinal)
-    $promotionOrdering=($remoteFinalAt -ge 0 -and $candidateAt -gt $remoteFinalAt -and $promotionAt -gt $candidateAt -and $Text.Contains('FINAL_REALITY_READBACK_FAILED') -and $Text.Contains('Assert-SameLocalBaseline -Before $script:baseline -After $final') -and $Text.Contains('Write-RollbackJournal -Status ''PASS_CANDIDATE'''))
+    $promotionOrdering=($remoteFinalAt -ge 0 -and $candidateAt -gt $remoteFinalAt -and $promotionAt -gt $candidateAt -and $Text.Contains('BAIDU_RECOVERY_FINAL_PROMOTION_READBACK_FAILED') -and $Text.Contains('Assert-SameLocalBaseline -Before $script:baseline -After $final') -and $Text.Contains('Write-RollbackJournal -Status ''PASS_CANDIDATE'''))
     $accessProof=($Text.Contains('def ensure_directory(') -and $Text.Contains('stat.S_IMODE(info.st_mode)!=mode') -and $Text.Contains('os.chown(path,uid,gid); os.chmod(path,mode)') -and $Text.Contains('ensure_directory(RUNTIME,0o750,uid,gid,s)') -and $Text.Contains('ensure_directory(SECRETS.parent,0o710,0,gid,s)') -and $Text.Contains('write_new(SECRETS,config,0o640,0,gid)') -and $Text.Contains('access_as(USER,RUNTIME,os.W_OK|os.X_OK)') -and $Text.Contains('access_as(USER,SECRETS,os.R_OK)') -and $Text.Contains("access_as('nobody',SECRETS,os.R_OK)"))
     $restartReadbackAt=$Text.IndexOf('[void](Get-ProfileSemanticState -Path $importedProfilePath)',$Text.IndexOf("Restart-Service -Name 'clash_verge_service'",[StringComparison]::Ordinal),[StringComparison]::Ordinal)
     $profileRestartReadback=($restartReadbackAt -gt $Text.IndexOf("Restart-Service -Name 'clash_verge_service'",[StringComparison]::Ordinal) -and $Text.Contains('$profileAfterRestart=Get-ProfileSnapshot') -and $Text.Contains('RESTART_PROFILE_NOT_PERSISTED') -and $Text.Contains('RESTART_PROFILE_SELECTOR_INVALID'))
@@ -105,12 +106,29 @@ function Test-RunnerContract {
     $canonicalGateStart=$Text.IndexOf("if (`$Mode -eq 'Run') {",[StringComparison]::Ordinal)
     $canonicalGateEnd=if($canonicalGateStart -ge 0){$Text.IndexOf("if(`$Mode -eq 'Rollback')",$canonicalGateStart,[StringComparison]::Ordinal)}else{-1}
     $canonicalGateBlock=if($canonicalGateStart -ge 0 -and $canonicalGateEnd -gt $canonicalGateStart){$Text.Substring($canonicalGateStart,$canonicalGateEnd-$canonicalGateStart)}else{''}
-    $canonicalGateModeBound=($canonicalGateBlock.Contains('LIVE_G4B_GATE_NOT_CURRENT') -and $canonicalGateBlock.Contains('REVIEWER_LIVE_AUTHORIZATION_MISSING') -and $canonicalGateBlock.Contains('REVIEWER_RECOVERY_DESTINATION_NOT_APPROVED'))
+    $canonicalGateModeBound=($canonicalGateBlock.Contains('LIVE_G4B_GATE_NOT_CURRENT') -and $canonicalGateBlock.Contains('REVIEWER_LIVE_AUTHORIZATION_MISSING') -and $canonicalGateBlock.Contains('REVIEWER_RECOVERY_PROVIDER_NOT_APPROVED') -and $canonicalGateBlock.Contains('SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK'))
     $journalRetention=($Text.Contains('/var/lib') -and $Text.Contains("'G4B_OWNER_ROLLBACK_R1'") -and $Text.Contains("Write-RollbackJournal -Status 'PASS_CANDIDATE'") -and $Text.Contains('G4B_ROLLBACK_JOURNAL_RETAINED=YES') -and $Text -notmatch "(?m)^\s*if ACTION=='complete':")
     $candidateRetains=($candidateBody.Contains("s['pass_candidate']=True; save_state(s)") -and -not ($candidateBody -match 'shutil\.rmtree|\.unlink\(') -and -not $Text.Contains("Invoke-Remote -Action 'complete'"))
     $successMarkers=@('G4B_RECOVERY_PENDING_VERIFIED=YES','G4B_RECOVERY_FINAL_PROMOTED=YES','G4B_REALITY_RUNTIME_ACCESS=PASS','G4B_REALITY_SERVICE_READY=YES','G4B_PUBLIC_TCP443_READY=YES','G4B_THREE_ROLE_PROFILE_IMPORTED=YES','G4B_THREE_ROLE_PROFILE_RESTART_PERSISTENCE=PASS','G4B_ROLE_ORDER=HY2_PRIMARY_WG_BACKUP1_REALITY_BACKUP2','G4B_AUTO_SWITCHING=OFF','G4B_WIREGUARD_PRESERVED=YES','G4B_HY2_PRESERVED=YES','G4B_SYSTEM_PROXY_FINAL=OFF','G4B_TUN_FINAL=OFF','G4B_ROLLBACK_JOURNAL_RETAINED=YES','SECRET_VALUES_EMITTED=0','STOP_AT_REVIEWER=YES')
     $sanitizedMarkers=(@($successMarkers | Where-Object { -not $Text.Contains($_) }).Count -eq 0)
     $runtimeIdentity=($Text.Contains("useradd','--system'") -and $Text.Contains("'--shell','/usr/sbin/nologin'") -and $Text.Contains('$script:runtimeUser = ''reality-vpn-network-optimization'''))
+    $baiduSourcePinned=($Text.Contains('qjfoidnh/BaiduPCS-Go/releases/download/v4.0.2') -and $Text.Contains('$script:baiduCliVersion = ''v4.0.2''') -and $Text.Contains('$script:baiduArchiveSha256 = ''ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30'''))
+    $baiduCommandBoundary=($Text.Contains("[ValidateSet('who','ls','mkdir','upload','download','mv','rm')]" ) -and $Text.Contains('$psi.ArgumentList.Add($Action)') -and $Text.Contains('BAIDUPCS_GO_CONFIG_DIR') -and $Text.Contains('Assert-BaiduAccountReady -ExpectedUid $ExpectedBaiduUid') -and $Text.Contains('$script:baiduRecoveryDirectory = ''/vpn-network-optimization-g4b-recovery''') -and $Text -notmatch '(?im)ArgumentList\.Add\([^\r\n]*(?:bduss|stoken|ptoken|cookie|password)=')
+    $uploadStart=$Text.IndexOf('function Upload-BaiduPendingRecovery {',[StringComparison]::Ordinal);$uploadEnd=$Text.IndexOf('function Promote-BaiduPendingRecovery {',$uploadStart,[StringComparison]::Ordinal)
+    $uploadBody=if($uploadStart -ge 0 -and $uploadEnd -gt $uploadStart){$Text.Substring($uploadStart,$uploadEnd-$uploadStart)}else{''}
+    $uploadAt=$uploadBody.IndexOf("Invoke-BaiduCli -Action 'upload'",[StringComparison]::Ordinal)
+    $postUploadStateAt=if($uploadAt -ge 0){$uploadBody.IndexOf('Get-BaiduRemoteObjectState',$uploadAt,[StringComparison]::Ordinal)}else{-1}
+    $postUploadReadbackAt=if($postUploadStateAt -ge 0){$uploadBody.IndexOf('Read-BaiduCiphertext',$postUploadStateAt,[StringComparison]::Ordinal)}else{-1}
+    $uploadReadback=($uploadAt -ge 0 -and $postUploadStateAt -gt $uploadAt -and $postUploadReadbackAt -gt $postUploadStateAt -and $uploadBody.Contains('[Linq.Enumerable]::SequenceEqual[byte]($localBytes,$remoteBytes)'))
+    $promotionStart=$Text.IndexOf('function Promote-BaiduPendingRecovery {',[StringComparison]::Ordinal);$promotionEnd=$Text.IndexOf('function Remove-BaiduPendingIfOwned {',$promotionStart,[StringComparison]::Ordinal)
+    $promotionBody=if($promotionStart -ge 0 -and $promotionEnd -gt $promotionStart){$Text.Substring($promotionStart,$promotionEnd-$promotionStart)}else{''}
+    $promotionOrder=($promotionBody.IndexOf("Invoke-BaiduCli -Action 'mv'",[StringComparison]::Ordinal) -ge 0 -and $promotionBody.IndexOf('Read-BaiduCiphertext',[StringComparison]::Ordinal) -gt $promotionBody.IndexOf("Invoke-BaiduCli -Action 'mv'",[StringComparison]::Ordinal) -and $promotionBody.Contains('BAIDU_RECOVERY_FINAL_PROMOTION_READBACK_FAILED') -and $promotionBody.Contains('[Linq.Enumerable]::SequenceEqual[byte]($localBytes,$finalBytes)'))
+    $rollbackStart=$Text.IndexOf('function Remove-BaiduPendingIfOwned {',[StringComparison]::Ordinal);$rollbackEnd=$Text.IndexOf('function Initialize-BaiduBackend {',$rollbackStart,[StringComparison]::Ordinal)
+    $baiduRollback=if($rollbackStart -ge 0 -and $rollbackEnd -gt $rollbackStart){$Text.Substring($rollbackStart,$rollbackEnd-$rollbackStart)}else{''}
+    $rollbackScope=($baiduRollback.Contains('Read-BaiduCiphertext -RemotePath $script:recoveryPendingExternal') -and $baiduRollback.Contains('[Linq.Enumerable]::SequenceEqual[byte]($localBytes,$remoteBytes)') -and $baiduRollback.Contains("Invoke-BaiduCli -Action 'rm' -Arguments @(`$script:recoveryPendingExternal)") -and -not $baiduRollback.Contains("Invoke-BaiduCli -Action 'rm' -Arguments @(`$script:recoveryFinalExternal)"))
+    $baiduSuccessCleanupAt=$Text.IndexOf("Remove-Item -LiteralPath `$script:baiduRuntime -Recurse -Force -ErrorAction Stop",$Text.IndexOf('Promote-RecoveryArtifacts -PayloadBytes $finalRecoveryBytes',[StringComparison]::Ordinal),[StringComparison]::Ordinal)
+    $baiduCompletedAt=$Text.IndexOf('$script:completed=$true',$baiduSuccessCleanupAt,[StringComparison]::Ordinal)
+    $baiduRuntimeCleanup=($baiduSuccessCleanupAt -gt 0 -and $baiduCompletedAt -gt $baiduSuccessCleanupAt -and $Text.Contains("'BAIDU_RUNTIME_REMOVE_UNVERIFIED'"))
     $stopAtReviewer=$Text.Contains("Write-Output 'STOP_AT_REVIEWER=YES'")
     $liveGuardAt=$Text.IndexOf('if (-not $Live)',[StringComparison]::Ordinal)
     $mainTryAt=if($liveGuardAt -ge 0){$Text.IndexOf('try {',$liveGuardAt,[StringComparison]::Ordinal)}else{-1}
@@ -145,6 +163,12 @@ function Test-RunnerContract {
         RemoteRollbackBaseline=$remoteRollbackBaseline
         ProfileContentIntegrity=$profileContentIntegrity
         StrictModeRecoveryCleanup=$cleanupComplete
+        BaiduSourcePinned=$baiduSourcePinned
+        BaiduCommandBoundary=$baiduCommandBoundary
+        BaiduPendingReadback=$uploadReadback
+        BaiduFinalPromotion=$promotionOrder
+        BaiduRollbackScoped=$rollbackScope
+        BaiduRuntimeCleanup=$baiduRuntimeCleanup
     }
 }
 
@@ -188,6 +212,12 @@ Assert-Fixture $contract.RemoteServiceAllowlist 'R3_SOURCE_REMOTE_SERVICE_ALLOWL
 Assert-Fixture $contract.RemoteRollbackBaseline 'R3_SOURCE_REMOTE_ROLLBACK_BASELINE'
 Assert-Fixture $contract.ProfileContentIntegrity 'R3_SOURCE_PROFILE_CONTENT_INTEGRITY'
 Assert-Fixture $contract.StrictModeRecoveryCleanup 'R3_SOURCE_STRICTMODE_RECOVERY_CLEANUP'
+Assert-Fixture $contract.BaiduSourcePinned 'R4_BAIDU_CLI_SOURCE_AND_RELEASE_PIN'
+Assert-Fixture $contract.BaiduCommandBoundary 'R4_BAIDU_AUTH_AND_ARGUMENT_BOUNDARY'
+Assert-Fixture $contract.BaiduPendingReadback 'R4_PENDING_UPLOAD_CIPHERTEXT_READBACK'
+Assert-Fixture $contract.BaiduFinalPromotion 'R4_FINAL_PROMOTION_AFTER_READBACK'
+Assert-Fixture $contract.BaiduRollbackScoped 'R4_ROLLBACK_REMOVES_ONLY_VERIFIED_PENDING'
+Assert-Fixture $contract.BaiduRuntimeCleanup 'R4_BAIDU_PORTABLE_RUNTIME_CLEANUP'
 $validatorCommands=@($validatorAst.FindAll({param($node) $node -is [System.Management.Automation.Language.CommandAst]},$true) | ForEach-Object { $_.GetCommandName() })
 $forbiddenCommands=@($validatorCommands | Where-Object { $_ -match '(?i)^(?:Start-Process|ssh(?:\.exe)?|Invoke-WebRequest|Invoke-RestMethod|curl(?:\.exe)?|New-NetRoute|Remove-NetRoute|Set-NetRoute|Start-Service|Stop-Service|Restart-Service|Invoke-Expression)$' })
 Assert-Fixture ($forbiddenCommands.Count -eq 0) 'FIXTURE_VALIDATOR_NO_LIVE_ACTIONS'
@@ -248,14 +278,14 @@ Assert-Fixture ($profileFixtureCleanup -ceq 'PASS') 'R3_PROFILE_FIXTURE_CLEANUP'
 $recoveryFunctionStart=$runnerAst.FindAll({param($node) $node -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -ceq 'Write-EncryptedRecovery'},$true) | Select-Object -First 1
 Assert-Fixture ($null -ne $recoveryFunctionStart) 'R3_RECOVERY_CLEANUP_FUNCTION_FOUND'
 $recoveryFunctionText=$recoveryFunctionStart.Extent.Text
-$recoveryInit=[regex]::Match($recoveryFunctionText,'(?m)^\s*\$dpapi=\$null; \$portable=\$null; \$round=\$null; \$portableRound=\$null\s*\r?\n\s*\$localReadback=\$null; \$externalReadback=\$null; \$localPayload=\$null; \$externalPayload=\$null\s*$').Value
-$recoveryCleanup=[regex]::Match($recoveryFunctionText,'(?m)^\s*foreach\(\$value in @\(\$round,\$portableRound,\$dpapi,\$portable,\$localReadback,\$externalReadback,\$localPayload,\$externalPayload\)\)\{ if\(\$null -ne \$value\)\{\[Security\.Cryptography\.CryptographicOperations\]::ZeroMemory\(\[byte\[\]\]\$value\)\} \}\s*$').Value
+$recoveryInit=[regex]::Match($recoveryFunctionText,'(?m)^\s*\$dpapi=\$null;\$portable=\$null;\$round=\$null;\$portableRound=\$null\s*\r?\n\s*\$localReadback=\$null;\$externalReadback=\$null;\$cloudLocalReadback=\$null;\$localPayload=\$null;\$externalPayload=\$null\s*$').Value
+$recoveryCleanup=[regex]::Match($recoveryFunctionText,'(?m)^\s*foreach\(\$value in @\(\$round,\$portableRound,\$dpapi,\$portable,\$localReadback,\$externalReadback,\$cloudLocalReadback,\$localPayload,\$externalPayload\)\)\{if\(\$null -ne \$value\)\{\[Security\.Cryptography\.CryptographicOperations\]::ZeroMemory\(\[byte\[\]\]\$value\)\}\}\s*$').Value
 Assert-Fixture (-not [string]::IsNullOrWhiteSpace($recoveryInit) -and -not [string]::IsNullOrWhiteSpace($recoveryCleanup)) 'R3_RECOVERY_FIXTURE_SOURCE_EXTRACTED'
 $strictFixtureCode="Set-StrictMode -Version Latest`n$recoveryInit`ntry { throw 'R3_FIXTURE_ORIGINAL_FAILURE' } finally { $recoveryCleanup }"
 $strictFixtureBlock=[ScriptBlock]::Create($strictFixtureCode)
 $strictFixtureFailure=$null; try { & $strictFixtureBlock } catch { $strictFixtureFailure=$_.Exception.Message }
 Assert-Fixture ($strictFixtureFailure -ceq 'R3_FIXTURE_ORIGINAL_FAILURE') 'R3_FAILURE_CODE_NOT_MASKED'
-$oldRecoveryInit=$recoveryInit -replace '(?m)^\s*\$localReadback=\$null; \$externalReadback=\$null; \$localPayload=\$null; \$externalPayload=\$null\s*$', ''
+$oldRecoveryInit=$recoveryInit -replace '(?m)^\s*\$localReadback=\$null;\$externalReadback=\$null;\$cloudLocalReadback=\$null;\$localPayload=\$null;\$externalPayload=\$null\s*$', ''
 $oldStrictFixtureCode="Set-StrictMode -Version Latest`n$oldRecoveryInit`ntry { throw 'R3_FIXTURE_ORIGINAL_FAILURE' } finally { $recoveryCleanup }"
 $oldStrictFixtureBlock=[ScriptBlock]::Create($oldStrictFixtureCode)
 $oldStrictFixtureFailure=$null; try { & $oldStrictFixtureBlock } catch { $oldStrictFixtureFailure=$_.Exception.Message }
@@ -286,9 +316,120 @@ finally {
     $fixturePass.Dispose(); $fixtureWrongPass.Dispose(); $fixturePayloadJson=$null; $fixtureDuplicateJson=$null
 }
 
+$baiduFixtureRoot=Join-Path ([IO.Path]::GetTempPath()) ('g4b-r4-baidu-fixture-'+[guid]::NewGuid().ToString('N'))
+Assert-Fixture (-not (Test-Path -LiteralPath $baiduFixtureRoot)) 'R4_FIXTURE_PATH_ABSENT'
+$baiduFixtureCleanup='FAIL';$baiduFixturePass=ConvertTo-SecureString 'fixture-only-baidu-passphrase-2026' -AsPlainText -Force
+$baiduFixturePayloadBytes=$null;$baiduFixtureBlob=$null;$baiduFixtureLocalBytes=$null
+try {
+    [void][IO.FileSystemAclExtensions]::CreateDirectory((New-OwnerAcl -Directory),$baiduFixtureRoot)
+    $script:baiduRuntime=Join-Path $baiduFixtureRoot 'runtime'
+    [void][IO.FileSystemAclExtensions]::CreateDirectory((New-OwnerAcl -Directory),$script:baiduRuntime)
+    $script:baiduRecoveryDirectory='/fixture/vpn-network-optimization/recovery'
+    $script:recoveryFinalExternal=$script:baiduRecoveryDirectory+'/vpn-network-optimization-g4b.vpr1'
+    $fixtureRunId=[guid]::NewGuid().ToString('N')
+    $script:recoveryPendingExternal=$script:baiduRecoveryDirectory+'/vpn-network-optimization-g4b-'+$fixtureRunId+'.vpr1.pending'
+    $script:recoveryPendingCloudLocal=Join-Path $baiduFixtureRoot ([IO.Path]::GetFileName($script:recoveryPendingExternal))
+    $script:recoveryCreatedPaths=[Collections.Generic.List[string]]::new()
+    $script:baiduUploadAttempted=$false;$script:baiduPendingVerified=$false;$script:baiduPendingPromoted=$false
+    $baiduFixturePayloadJson=ConvertTo-Json -InputObject @{format='VPNG4BR1';hy2_auth=('c'*64);reality_uuid='00000000-0000-4000-8000-000000000002';reality_private_key=('C'*43);reality_public_key=('D'*43);reality_short_id='fedcba9876543210'} -Compress
+    $baiduFixturePayloadBytes=[Text.Encoding]::UTF8.GetBytes($baiduFixturePayloadJson)
+    $baiduFixtureBlob=ConvertTo-PortableRecoveryBytes -PayloadBytes $baiduFixturePayloadBytes -Passphrase $baiduFixturePass
+    Write-OwnerOnlyFile -Path $script:recoveryPendingCloudLocal -Bytes $baiduFixtureBlob -RecoveryArtifact
+    $baiduFixtureState=@{Files=@{};Directories=[Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal);Calls=[Collections.Generic.List[string]]::new();Who='当前帐号 uid: 123456789, 用户名: FixtureUser, 性别: 未知, 年龄: 0.0';TamperDownload=$false}
+    [void]$baiduFixtureState.Directories.Add($script:baiduRecoveryDirectory)
+    $script:baiduFakeShim={
+        param([string]$Action,[string[]]$Arguments)
+        [void]$baiduFixtureState.Calls.Add(($Action+' '+($Arguments -join ' ')).Trim())
+        switch($Action){
+            'who' {return [pscustomobject]@{ExitCode=0;StdOut=$baiduFixtureState.Who}}
+            'mkdir' {[void]$baiduFixtureState.Directories.Add($Arguments[0]);return [pscustomobject]@{ExitCode=0;StdOut=''}}
+            'ls' {
+                $directory=[string]$Arguments[1]
+                if(-not $baiduFixtureState.Directories.Contains($directory)){return [pscustomobject]@{ExitCode=0;StdOut='目录不存在'}}
+                $rows=[Collections.Generic.List[string]]::new()
+                foreach($childDir in @($baiduFixtureState.Directories | Where-Object { $_ -ne $directory -and $_.StartsWith($directory.TrimEnd('/')+'/',[StringComparison]::Ordinal) })){
+                    $leaf=$childDir.Substring($directory.TrimEnd('/').Length+1).Split('/')[0]
+                    [void]$rows.Add('| 0 | - | fixture | fixture | fixture | fixture | '+$leaf+'/ |')
+                }
+                foreach($remotePath in @($baiduFixtureState.Files.Keys | Where-Object { ([string]$_).Substring(0,([string]$_).LastIndexOf('/')) -ceq $directory })){
+                    $leaf=[IO.Path]::GetFileName([string]$remotePath)
+                    [void]$rows.Add('| 0 | 1 | 1 | fixture | fixture | fixture | fixture | '+$leaf+' |')
+                }
+                return [pscustomobject]@{ExitCode=0;StdOut=("当前目录: $directory`n----`n"+($rows -join "`n"))}
+            }
+            'upload' {
+                $local=[string]$Arguments[0];$directory=[string]$Arguments[1];$remote=$directory.TrimEnd('/')+'/'+[IO.Path]::GetFileName($local)
+                if($baiduFixtureState.Files.ContainsKey($remote)){return [pscustomobject]@{ExitCode=1;StdOut=''}}
+                $baiduFixtureState.Files[$remote]=[IO.File]::ReadAllBytes($local)
+                return [pscustomobject]@{ExitCode=0;StdOut='uploaded'}
+            }
+            'download' {
+                $remote=[string]$Arguments[0];$directory=[string]$Arguments[2]
+                if(-not $baiduFixtureState.Files.ContainsKey($remote)){return [pscustomobject]@{ExitCode=1;StdOut=''}}
+                $copy=[byte[]]$baiduFixtureState.Files[$remote].Clone()
+                if($baiduFixtureState.TamperDownload){$copy[0]=$copy[0] -bxor 1}
+                $path=Join-Path $directory ([IO.Path]::GetFileName($remote));$stream=[IO.File]::Open($path,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None)
+                try{$stream.Write($copy,0,$copy.Length);$stream.Flush($true)}finally{$stream.Dispose()}
+                [Security.Cryptography.CryptographicOperations]::ZeroMemory($copy)
+                return [pscustomobject]@{ExitCode=0;StdOut='downloaded'}
+            }
+            'mv' {
+                $source=[string]$Arguments[0];$destination=[string]$Arguments[1]
+                if(-not $baiduFixtureState.Files.ContainsKey($source) -or $baiduFixtureState.Files.ContainsKey($destination)){return [pscustomobject]@{ExitCode=1;StdOut=''}}
+                $baiduFixtureState.Files[$destination]=$baiduFixtureState.Files[$source];[void]$baiduFixtureState.Files.Remove($source)
+                return [pscustomobject]@{ExitCode=0;StdOut='moved'}
+            }
+            'rm' {[void]$baiduFixtureState.Files.Remove([string]$Arguments[0]);return [pscustomobject]@{ExitCode=0;StdOut='removed'}}
+            default {return [pscustomobject]@{ExitCode=9;StdOut=''}}
+        }
+    }.GetNewClosure()
+    Assert-BaiduAccountReady -ExpectedUid '123456789'
+    Assert-Fixture $true 'R4_ACCOUNT_READINESS_PASS'
+    $baiduMissingLogin=$false;try{$baiduFixtureState.Who='请先登录';Assert-BaiduAccountReady -ExpectedUid '123456789'}catch{$baiduMissingLogin=$_.Exception.Message -ceq 'BAIDU_LOGIN_READINESS_MISSING'}
+    Assert-Fixture $baiduMissingLogin 'R4_MISSING_LOGIN_FAIL_CLOSED'
+    $baiduFixtureState.Who='当前帐号 uid: 987654321, 用户名: FixtureOther, 性别: 未知, 年龄: 0.0'
+    $baiduWrongAccount=$false;try{Assert-BaiduAccountReady -ExpectedUid '123456789'}catch{$baiduWrongAccount=$_.Exception.Message -ceq 'BAIDU_ACCOUNT_MISMATCH'}
+    Assert-Fixture $baiduWrongAccount 'R4_WRONG_ACCOUNT_FAIL_CLOSED'
+    $baiduFixtureState.Who='当前帐号 uid: 123456789, 用户名: FixtureUser, 性别: 未知, 年龄: 0.0'
+    $baiduFixtureState.Files[$script:recoveryFinalExternal]=[byte[]](1,2,3)
+    $baiduCollision=$false;try{Upload-BaiduPendingRecovery -PayloadBytes $baiduFixturePayloadBytes -Passphrase $baiduFixturePass}catch{$baiduCollision=$_.Exception.Message -ceq 'BAIDU_RECOVERY_FINAL_COLLISION'}
+    Assert-Fixture $baiduCollision 'R4_EXISTING_FINAL_COLLISION_FAIL_CLOSED'
+    [void]$baiduFixtureState.Files.Remove($script:recoveryFinalExternal)
+    $baiduFixtureState.TamperDownload=$true
+    $baiduMismatch=$false;try{Upload-BaiduPendingRecovery -PayloadBytes $baiduFixturePayloadBytes -Passphrase $baiduFixturePass}catch{$baiduMismatch=$_.Exception.Message -ceq 'BAIDU_PENDING_READBACK_MISMATCH'}
+    Assert-Fixture $baiduMismatch 'R4_READBACK_MISMATCH_FAIL_CLOSED'
+    $baiduFixtureState.TamperDownload=$false
+    [void]$baiduFixtureState.Files.Remove($script:recoveryPendingExternal)
+    $script:baiduUploadAttempted=$false
+    Upload-BaiduPendingRecovery -PayloadBytes $baiduFixturePayloadBytes -Passphrase $baiduFixturePass
+    Assert-Fixture ($script:baiduPendingVerified -and (Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name ([IO.Path]::GetFileName($script:recoveryPendingExternal))) -ceq 'FILE' -and (Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name ([IO.Path]::GetFileName($script:recoveryFinalExternal))) -ceq 'ABSENT') 'R4_PENDING_UPLOAD_READBACK_PASS'
+    Promote-BaiduPendingRecovery -PayloadBytes $baiduFixturePayloadBytes -Passphrase $baiduFixturePass
+    Assert-Fixture ($script:baiduPendingPromoted -and (Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name ([IO.Path]::GetFileName($script:recoveryPendingExternal))) -ceq 'ABSENT' -and (Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name ([IO.Path]::GetFileName($script:recoveryFinalExternal))) -ceq 'FILE') 'R4_PENDING_TO_FINAL_PROMOTION_PASS'
+    $rollbackRun=[guid]::NewGuid().ToString('N')
+    $rollbackPath=$script:baiduRecoveryDirectory+'/vpn-network-optimization-g4b-'+$rollbackRun+'.vpr1.pending'
+    $rollbackLocal=Join-Path $baiduFixtureRoot ([IO.Path]::GetFileName($rollbackPath))
+    $script:recoveryPendingExternal=$rollbackPath;$script:recoveryPendingCloudLocal=$rollbackLocal
+    Write-OwnerOnlyFile -Path $rollbackLocal -Bytes $baiduFixtureBlob -RecoveryArtifact
+    [void](Invoke-BaiduCli -Action 'upload' -Arguments @($rollbackLocal,$script:baiduRecoveryDirectory))
+    $script:baiduUploadAttempted=$true
+    Remove-BaiduPendingIfOwned
+    Assert-Fixture ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name ([IO.Path]::GetFileName($rollbackPath))) -ceq 'ABSENT' -and (Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $script:baiduFinalName) -ceq 'FILE') 'R4_ROLLBACK_REMOVES_PENDING_ONLY'
+    Assert-Fixture (@($baiduFixtureState.Calls | Where-Object { $_ -match '(?i)(?:bduss|stoken|ptoken|cookie|password|credential|auth)=' }).Count -eq 0) 'R4_NO_CREDENTIAL_ARGUMENTS'
+}
+finally {
+    $script:baiduFakeShim=$null
+    if(Test-Path -LiteralPath $baiduFixtureRoot -PathType Container){Remove-Item -LiteralPath $baiduFixtureRoot -Recurse -Force -ErrorAction Stop}
+    if(-not (Test-Path -LiteralPath $baiduFixtureRoot)){$baiduFixtureCleanup='PASS'}
+    if($null -ne $baiduFixturePayloadBytes){[Security.Cryptography.CryptographicOperations]::ZeroMemory($baiduFixturePayloadBytes)}
+    if($null -ne $baiduFixtureBlob){[Security.Cryptography.CryptographicOperations]::ZeroMemory($baiduFixtureBlob)}
+    if($null -ne $baiduFixtureLocalBytes){[Security.Cryptography.CryptographicOperations]::ZeroMemory($baiduFixtureLocalBytes)}
+    $baiduFixturePass.Dispose();$baiduFixturePayloadJson=$null
+}
+Assert-Fixture ($baiduFixtureCleanup -ceq 'PASS') 'R4_FIXTURE_CLEANUP'
+
 $negative=@(
     @{Name='NO_OWNER_AUTH'; Source=$runner.Replace('Assert-G4B ($OwnerAuthorization -ceq ''OWNER_G4B_LIVE_AUTHORIZATION=APPROVED'') ''OWNER_G4B_AUTHORIZATION_REQUIRED''','# OWNER AUTH FIXTURE REMOVAL'); Check='OwnerAuthorizationBeforeMutation'},
-    @{Name='NO_SECOND_FAILURE_DOMAIN'; Source=[regex]::Replace($runner,'(?m)^\s*Assert-G4B \(\$SecondFailureDomainPath -and \(Test-Path -LiteralPath \$SecondFailureDomainPath -PathType Container\)\).*(?:\r?\n)?$',''); Check='SecondFailureDomain'},
+    @{Name='NO_BAIDU_ACCOUNT_PREFLIGHT'; Source=$runner.Replace("Assert-G4B (`$ExpectedBaiduUid -match '^[1-9][0-9]{0,19}$') 'BAIDU_EXPECTED_ACCOUNT_ID_REQUIRED'",'# account readiness omitted'); Check='SecondFailureDomain'},
     @{Name='WRONG_TARGET_IDENTITY'; Source=$runner.Replace('ubuntu-s-1vcpu-512mb-10gb-sfo3','fixture-wrong-host'); Check='TargetIdentity'},
     @{Name='PREEXISTING_TARGET_PATH'; Source=$runner.Replace('$remote[''target_paths_absent''] -eq $true', '$remote[''target_paths_unknown''] -eq $true'); Check='TargetCollision'},
     @{Name='SECRET_OUTPUT'; Source=$runner.Replace("    Write-Phase 'P0_CANONICAL_SOURCE'", "    Write-Output `$script:hy2Auth`r`n    Write-Phase 'P0_CANONICAL_SOURCE'"); Check='SecretOutputAbsent'},
@@ -297,7 +438,7 @@ $negative=@(
     @{Name='ROLE_ORDER'; Source=$runner.Replace('$cfg[''proxies''][0][''name''] -ceq ''HY2-SFO3''', '$cfg[''proxies''][0][''name''] -ceq ''WG-BASELINE'''); Check='ManualRoles'},
     @{Name='ROLLBACK_GUARD_REMOVED'; Source=[regex]::Replace($runner,"(?m)^\s*if s\.get\('run_id'\)!=RUN_ID: raise GateError\('ROLLBACK_OWNERSHIP_MISMATCH'\)\s*$",''); Check='RollbackScoped'},
     @{Name='FINAL_PROXY_TUN_GUARD_REMOVED'; Source=$runner.Replace('SYSTEM_PROXY_NOT_OFF','SYSTEM_PROXY_GUARD_REMOVED').Replace('TUN_NOT_OFF','TUN_GUARD_REMOVED'); Check='ProxyTunGuards'},
-    @{Name='DPAPI_AS_PORTABLE_COPY'; Source=$runner.Replace('Write-OwnerOnlyFile -Path $script:recoveryPendingExternal -Bytes $portable -RecoveryArtifact','Write-OwnerOnlyFile -Path $script:recoveryPendingExternal -Bytes $dpapi -RecoveryArtifact'); Check='PortableRecovery'},
+    @{Name='DPAPI_AS_PORTABLE_COPY'; Source=$runner.Replace('Write-OwnerOnlyFile -Path $script:recoveryPendingCloudLocal -Bytes $portable -RecoveryArtifact','Write-OwnerOnlyFile -Path $script:recoveryPendingCloudLocal -Bytes $dpapi -RecoveryArtifact'); Check='PortableRecovery'},
     @{Name='PARSER_SUCCESS_STREAM_POLLUTION'; Source=$runner.Replace('$added=$seen.Add($property.Name)','$seen.Add($property.Name)'); Check='PortableRecovery'},
     @{Name='RECOVERY_AFTER_MUTATION'; Source=$runner.Replace('Write-EncryptedRecovery -PayloadBytes $recoveryBytes -Passphrase $script:portablePassphrase','# pending recovery omitted'); Check='PortableRecovery'},
     @{Name='PROMOTION_BEFORE_FINAL_READBACK'; Source=$runner.Replace('$remoteFinal=Invoke-Remote -Action ''status''','# final remote readback omitted'); Check='PortableRecovery'},
@@ -313,7 +454,7 @@ $negative=@(
     @{Name='REMOTE_SERVICE_ALLOWLIST_MISSING'; Source=$runner.Replace('expected.add(SERVICE)','expected=set()'); Check='RemoteServiceAllowlist'},
     @{Name='REMOTE_ROLLBACK_COMPARE_MISSING'; Source=$runner.Replace("assert_remote_drift(s.get('remote_drift_baseline'),check['drift_snapshot'],allow_reality=False)",'# rollback drift compare omitted'); Check='RemoteRollbackBaseline'},
     @{Name='PROFILE_SHA256_MISSING'; Source=$runner.Replace('Get-FileHash -LiteralPath $item.FullName -Algorithm SHA256','Get-Item -LiteralPath $item.FullName'); Check='ProfileContentIntegrity'},
-    @{Name='RECOVERY_CLEANUP_LOCALS_UNINITIALIZED'; Source=$runner.Replace('$localReadback=$null; $externalReadback=$null; $localPayload=$null; $externalPayload=$null','# cleanup locals omitted'); Check='StrictModeRecoveryCleanup'}
+    @{Name='RECOVERY_CLEANUP_LOCALS_UNINITIALIZED'; Source=$runner.Replace('$localReadback=$null;$externalReadback=$null;$cloudLocalReadback=$null;$localPayload=$null;$externalPayload=$null','# cleanup locals omitted'); Check='StrictModeRecoveryCleanup'}
 )
 foreach($fixture in $negative){
     $result=Test-RunnerContract $fixture.Source

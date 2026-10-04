@@ -11,25 +11,45 @@ GATE_ID=G4B_BAIDU_NETDISK_RECOVERY_BACKEND_R4
 EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RECOVERY_BACKEND_IMPLEMENTATION_AND_FIXTURE_VALIDATION
 PREVIOUS_RESULT=PASS_G4B_OFFLINE_LIVE_RUNNER_PACKAGE
 R4_GATE_BLOB=b07461b85319aaa215396a5e8d6f9fe7ea358ec8
+PRE_GATE_HEAD=1d569df96ea9d1f87363a3d8e9f0e4f8595d08b7
+CANONICAL_MAIN_AT_PREFLIGHT=1d569df96ea9d1f87363a3d8e9f0e4f8595d08b7
+CANONICAL_MAIN_SAFE_FAST_FORWARD=7e17369fd0245a788d7b36a8e24cc4255e9ae824
+REMOTE_ADVANCE_SCOPE=UNRELATED_BIRTHDAY_MAGAZINE_STUDIO_ONLY
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_RECOVERY_BACKEND_R4
+R4_BAIDU_BACKEND_SOURCE=PASS
+R4_CREDENTIAL_ARGUMENT_EXPOSURE=ABSENT
+R4_PENDING_UPLOAD_READBACK=PASS_SYNTHETIC_FAKE_CLI
+R4_FINAL_PROMOTION_ORDERING=PASS_SYNTHETIC_FAKE_CLI
+R4_ROLLBACK_SCOPE=PASS_SYNTHETIC_FAKE_CLI
+R1_R2_R3_REGRESSIONS=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+LIVE_ACTIONS=0
+BAIDU_LOGIN_OR_UPLOAD_DOWNLOAD=NO
+VPS_OR_SECRET_ACCESS=NO
 REAL_BAIDU_LOGIN_OR_UPLOAD_AUTHORIZED_THIS_ROUND=NO
 SSH_OR_VPS_ACTION=NO
 REAL_SECRET_ACCESS=NO
-EXTERNAL_REQUESTS=0
+RUNNER_FIXTURE_NETWORK_REQUESTS=0
+UPSTREAM_RELEASE_DOCUMENTATION_LOOKUP=READ_ONLY
+GIT_FETCH=READ_ONLY
 NETWORK_MUTATION=NO
+ROUND_STARTED_AT=2026-10-04T14:56:17.9180274Z
+SOURCE_AND_OFFLINE_VALIDATION_FINISHED_AT=2026-10-04T15:48:58Z
+ACTUAL_ELAPSED_TO_VALIDATION=00:52:40
 STOP_AT_REVIEWER=YES
 ```
 
 ### Executor task
 
-1. Read `docs/G4B_BAIDU_NETDISK_RECOVERY_BACKEND_R4.md` as the current Gate.
-2. Safe ff-only sync and capture timing before preflight.
-3. Implement only the offline Baidu CLI recovery backend and synthetic fixtures required by R4.
-4. Do not log in to Baidu, read real auth material, upload/download a real file, run the live G4-B runner, access VPS, or mutate runtime network/Clash/service/route state.
-5. Preserve all accepted R1/R2/R3 contracts and frozen files.
-6. Persist sanitized proof to `EXECUTION_EVIDENCE.md`, update only this `EXECUTOR_HANDOFF.md`, fresh read-back, and stop at Reviewer.
-7. Return PASS_CANDIDATE or precise RETURN.
+1. R4 Gate preflight passed at canonical `main` `1d569df96ea9d1f87363a3d8e9f0e4f8595d08b7`; five pre-existing untracked `results/` entries were preserved and not staged.
+2. Updated the existing runner to use pinned BaiduPCS-Go v4.0.2, local-auth readiness, fixed project remote storage, encrypted pending upload/readback, delayed final promotion, and byte-verified pending-only rollback.
+3. Extended the existing validator with local fake CLI tests for readiness, wrong account, collision, mismatch, upload/readback, promotion order, rollback scope, and credential-free argv; all R1/R2/R3 regressions remain PASS.
+4. Updated the implementation package contract. No real login, Baidu file operation, VPS access, Secret access, or runtime network/Clash/service/route mutation occurred.
+5. Only R4-allowed runner, fixture validator, package, Evidence and this Handoff are in scope. `REVIEWER_HANDOFF.md` remains untouched.
+6. After commit and GitHub fresh read-back, stop at Reviewer; do not start live G4-B.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 

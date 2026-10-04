@@ -5948,7 +5948,9 @@ PREPARE_REPAIR_BEHAVIORALLY_VERIFIED=YES
 TEMP_RUNTIME_RESIDUE=ZERO
 CLASH_IMPORT_OCCURRED=NO
 NETWORK_MUTATION_OCCURRED=NO
-EXTERNAL_REQUESTS=0
+RUNNER_FIXTURE_NETWORK_REQUESTS=0
+UPSTREAM_RELEASE_DOCUMENTATION_LOOKUP=READ_ONLY
+GIT_FETCH=READ_ONLY
 SECRET_EXPOSURE=NO
 NEXT_GATE=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
 NEXT_GATE_AUTHORIZATION=FRESH_OWNER_REQUIRED
@@ -7393,3 +7395,90 @@ Reviewer note:
   backend-adaptation round is required before live execution.
 - Only the encrypted portable recovery artifact may be sent to Baidu Netdisk.
 - Baidu login/authentication state is Secret-bearing local state and must remain outside Git/chat/Evidence.
+
+
+## Executor offline implementation — G4B Baidu Netdisk recovery backend R4 — 2026-10-04
+
+```text
+GATE_ID=G4B_BAIDU_NETDISK_RECOVERY_BACKEND_R4
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_RECOVERY_BACKEND_R4
+GOVERNANCE_VERSION=v0.2.6 / ACTIVE_PROVISIONAL
+R4_GATE_BLOB=b07461b85319aaa215396a5e8d6f9fe7ea358ec8
+CANONICAL_ORIGIN=entropy-student/project
+BRANCH=main
+PRE_GATE_HEAD=1d569df96ea9d1f87363a3d8e9f0e4f8595d08b7
+CANONICAL_MAIN_AT_PREFLIGHT=1d569df96ea9d1f87363a3d8e9f0e4f8595d08b7
+CANONICAL_MAIN_SAFE_FAST_FORWARD=7e17369fd0245a788d7b36a8e24cc4255e9ae824
+REMOTE_ADVANCE_SCOPE=UNRELATED_BIRTHDAY_MAGAZINE_STUDIO_ONLY
+PRE_GATE_RUNNER_BLOB=064f2207be91c29adc6081927090f90a211a3e13
+PRE_GATE_FIXTURE_VALIDATOR_BLOB=c5656a99874b77b754234237e68c23ed6cfb524e
+PRE_GATE_PACKAGE_BLOB=c50eed9af0fe85bc73a8aa25207b5783913286e8
+UNRELATED_WORKTREE_STATE=5_PREEXISTING_UNTRACKED_RESULTS_PRESERVED_NOT_STAGED
+SOURCE_PROVENANCE=PASS
+AUTHORIZED_FILES=scripts/g4b-persistent-three-role-live-runner.ps1;scripts/g4b-live-runner-fixture-validator.ps1;docs/G4B_PERSISTENT_IMPLEMENTATION_PACKAGE.md;EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+REVIEWER_HANDOFF_MODIFIED=NO
+```
+
+### Actual changes
+
+- Adapted the existing second recovery copy from a local external directory to Baidu Netdisk. The Owner-local DPAPI CurrentUser copy remains the first recovery copy; the portable recovery format remains `VPNG4BP1` AES-256-GCM.
+- Added community-maintained `qjfoidnh/BaiduPCS-Go` Windows x64 v4.0.2 release pin. The runner validates the release ZIP SHA-256 `ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30`, extracts only the expected executable into a protected run directory, and calculates the extracted executable SHA-256 as non-secret runtime metadata. Upstream references: [v4.0.2 release assets](https://github.com/qjfoidnh/BaiduPCS-Go/releases/expanded_assets/v4.0.2) and [v4.0.2 README](https://github.com/qjfoidnh/BaiduPCS-Go/blob/v4.0.2/README.md).
+- Restricted CLI operations to `who`, `ls`, `mkdir`, `upload`, `download`, `mv`, and `rm` with exact argument shapes. Credentials are not accepted in arguments; the already-authenticated config directory is provided through `BAIDUPCS_GO_CONFIG_DIR` and checked to be outside the repository without broad Users/Everyone/Authenticated Users allow rules.
+- Account readiness parses only the expected numeric UID from captured `who` output. Raw account output and CLI stderr are not emitted or written to Evidence/logs.
+- Uses fixed project-owned remote directory `/vpn-network-optimization-g4b-recovery`, a run-scoped pending object, encrypted-only upload, protected local ciphertext download, byte identity comparison, and `VPNG4BP1` payload validation. Final promotion occurs only after the existing full G4-B service/profile/restart/final-readback path reaches the accepted promotion boundary.
+- Rollback re-downloads the exact pending object and compares it byte-for-byte with this run's encrypted staging file before deleting only that pending path. It never deletes the fixed final object or remote directory. Existing local DPAPI pending cleanup and recovery ordering remain bounded by the existing rollback verification.
+- Updated the existing fixture validator and package contract; no parallel runner or duplicate helper was created.
+
+### Validation and provenance
+
+```text
+POWERSHELL_AST_PARSE=PASS
+PACKAGE_VALIDATOR=PASS
+R1_R2_R3_REGRESSIONS=PASS
+R4_BAIDU_SOURCE_AND_RELEASE_PIN=PASS
+R4_CREDENTIAL_ARGUMENT_EXPOSURE=ABSENT
+R4_ACCOUNT_READINESS_PASS=PASS_SYNTHETIC
+R4_MISSING_LOGIN_FAIL_CLOSED=PASS
+R4_WRONG_ACCOUNT_FAIL_CLOSED=PASS
+R4_EXISTING_FINAL_COLLISION_FAIL_CLOSED=PASS
+R4_READBACK_MISMATCH_FAIL_CLOSED=PASS
+R4_PENDING_UPLOAD_CIPHERTEXT_READBACK=PASS_SYNTHETIC_FAKE_CLI
+R4_PENDING_TO_FINAL_ORDERING=PASS_SYNTHETIC_FAKE_CLI
+R4_ROLLBACK_PENDING_ONLY_FINAL_PRESERVED=PASS_SYNTHETIC_FAKE_CLI
+R4_FAKE_FIXTURE_CLEANUP=PASS
+SECRET_SCAN=PASS
+```
+
+The fake CLI shim used only local synthetic fixture data and an in-memory object map. It did not invoke BaiduPCS-Go, HTTP, GitHub release download, account login, real upload/download, SSH, VPS, DPAPI, or any real Secret. The runner's offline default returned `G4B_RUNNER_LIVE_MODE=NOT_REQUESTED`.
+
+```text
+REAL_BAIDU_LOGIN_OR_UPLOAD_DOWNLOAD=NO
+SSH_OR_VPS_ACTION=NO
+REAL_SECRET_OR_DPAPI_ACCESS=NO
+EXTERNAL_REQUESTS=0
+NETWORK_MUTATION=NO
+CLASH_PROFILE_MUTATION=NO
+SYSTEM_PROXY_CHANGE=NO
+TUN_CHANGE=NO
+SERVICE_MUTATION=NO
+ROUTE_MUTATION=NO
+LIVE_G4B_RUNNER=NOT_INVOKED
+LIVE_ACTIONS=0
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+```
+
+Timing from the recorded preflight start through source and offline validation completion (Git commit/push/read-back is the subsequent persistence step):
+
+```text
+ROUND_STARTED_AT=2026-10-04T14:56:17.9180274Z
+SOURCE_AND_OFFLINE_VALIDATION_FINISHED_AT=2026-10-04T15:48:58Z
+ACTUAL_ELAPSED_TO_VALIDATION=00:52:40
+TIME_OVERRUN=NOT_APPLICABLE_NO_GATE_ESTIMATE
+```
+
+Rollback is source-only: revert only this Gate's project-owned runner, fixture validator, package, Evidence, and Executor Handoff changes. The five pre-existing untracked `results/` entries were not read, modified, staged, or removed. No runtime state requires rollback.
+
+```text
+STOP_AT_REVIEWER=YES
+```

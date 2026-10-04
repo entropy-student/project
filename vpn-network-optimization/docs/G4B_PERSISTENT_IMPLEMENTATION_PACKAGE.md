@@ -1,6 +1,6 @@
 # G4-B Persistent Three-Role Implementation Package
 
-Status: OFFLINE_REVIEWED_PASS / LIVE_PREREQUISITES_PENDING
+Status: OFFLINE_R4_IMPLEMENTED / REVIEWER_REVIEW_PENDING
 
 This package turns the accepted G4-B Gate into an implementation contract without touching the live VPS or Owner Windows host.
 
@@ -109,29 +109,23 @@ The Owner-local DPAPI CurrentUser artifact is the first, profile-bound recovery 
 
 The second copy is a machine-independent authenticated encrypted `VPNG4BP1` artifact in the Owner-approved second failure domain. Its binary envelope is versioned and strictly parsed; it uses an Owner-entered hidden passphrase, PBKDF2-HMAC-SHA256 with a random 16-byte salt and 600,000 iterations, and AES-256-GCM with a random 12-byte nonce and 16-byte tag. The passphrase and plaintext are handled in memory only; neither values nor hashes are recorded.
 
-Both recovery artifacts are created as `pending` and round-trip validated before persistent remote mutation. They are promoted to final names only after service, profile, restart, and final read-backs succeed. On failure, pending artifacts are removed only after bounded remote rollback is verified; otherwise they are retained with a non-secret reconciliation marker.
+Both recovery copies use the accepted `VPNG4BP1` AES-256-GCM envelope. The local DPAPI artifact is staged locally; the portable ciphertext is uploaded to Baidu Netdisk as a run-scoped `pending` object. Before any persistent VPS mutation, the runner downloads that pending ciphertext into a protected local runtime directory, compares bytes in process, and validates the decrypted payload. The portable object is promoted to its fixed final name only after service, profile, restart, and final read-backs succeed. On failure, only a byte-verified project-owned pending object may be removed, and only after bounded remote rollback is verified; otherwise the encrypted local staging artifact is retained for reconciliation. A final recovery object is never deleted by rollback.
 
 The PASS_CANDIDATE path retains a non-secret Owner-local journal and the remote run-ownership state. Only exact-run rollback may remove owned objects. Journal closeout is available only after formal Reviewer PASS.
 
-### Second failure domain
+### Baidu Netdisk second failure domain
 
-Before live G4-B can PASS, the Owner must name one approved second-failure-domain destination for an encrypted recovery copy.
+The Owner selected `BAIDU_NETDISK`; the runner uses the fixed project directory `/vpn-network-optimization-g4b-recovery` and fixed final basename `vpn-network-optimization-g4b.vpr1`. A run-specific pending basename is derived from the non-secret run ID. The project directory may be created if needed and is retained; rollback only targets the exact pending object, never the directory or final object.
 
-Acceptable classes include an Owner-controlled external/cloud storage location that is distinct from both:
+The reviewed portable CLI is the community-maintained `qjfoidnh/BaiduPCS-Go`, pinned to release `v4.0.2` for Windows x64. The runner downloads the exact release ZIP from the pinned release URL, verifies the release archive SHA-256 (`ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30`), extracts only the single `BaiduPCS-Go.exe` entry into an Owner-only run directory, and records the extracted executable SHA-256 as non-secret metadata. See the [v4.0.2 release assets](https://github.com/qjfoidnh/BaiduPCS-Go/releases/expanded_assets/v4.0.2) and [v4.0.2 upstream README](https://github.com/qjfoidnh/BaiduPCS-Go/blob/v4.0.2/README.md). This is a third-party/community CLI, not a claim of Baidu-official software.
 
-- the SFO3 VPS; and
-- the current Windows machine's local disk.
-
-The exact destination path/account is Owner-controlled and is not stored in Git. Secret values are never relayed through chat.
-
-Current offline package state:
+The runner consumes only the already authenticated local CLI config directory (default `%APPDATA%\BaiduPCS-Go`) through the child-process `BAIDUPCS_GO_CONFIG_DIR` environment setting. It never accepts login credentials, cookies, tokens, or passwords as CLI arguments. Before recovery Secret access, it runs `who`, parses only the expected numeric account UID in memory, and discards the captured account output; missing login or account mismatch fails closed. CLI stdout/stderr is captured and never copied to normal logs or Evidence. The Owner-selected account identity and config path are not committed.
 
 ```text
-SECOND_FAILURE_DOMAIN_DESTINATION=UNRESOLVED_OWNER_INPUT
-LIVE_G4B_PASS_BLOCKED_UNTIL_RESOLVED=YES
+SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
+BAIDU_REMOTE_DIRECTORY=/vpn-network-optimization-g4b-recovery
+LIVE_PROVIDER_OPERATIONS_IN_R4=NONE
 ```
-
-This is a design prerequisite, not a request to expose any credential.
 
 ## 6. Live execution phase contract
 
@@ -225,8 +219,8 @@ Current offline package:
 - `templates/reality/mihomo-reality-server.yaml.template`
 - `templates/systemd/mihomo-reality-vpn-network-optimization.service.template`
 - `scripts/g4b-three-role-package-validator.ps1`
-- `scripts/g4b-persistent-three-role-live-runner.ps1` (offline-implemented; live mode remains unauthorized)
-- `scripts/g4b-live-runner-fixture-validator.ps1` (offline-only contract and negative fixtures)
+- `scripts/g4b-persistent-three-role-live-runner.ps1` (R4 Baidu backend implemented; no live invocation in R4)
+- `scripts/g4b-live-runner-fixture-validator.ps1` (offline-only R1–R4 contract and negative fixtures)
 
 No file above contains live credential values.
 
@@ -251,9 +245,10 @@ OFFLINE_PACKAGE_STATIC_REVIEW=PASS_REVIEWER_ACCEPTED
 WINDOWS_OUTER_BYPASS_PROOF=PASS_G4B0
 DEDICATED_RUNTIME_IDENTITY_CONTRACT=READY
 ROLLBACK_CONTRACT=READY
-LIVE_RUNNER=IMPLEMENTED_OFFLINE_ONLY
-SECOND_FAILURE_DOMAIN_DESTINATION=OWNER_INPUT_REQUIRED
-LIVE_G4B_OWNER_AUTHORIZATION=REQUIRED
+LIVE_RUNNER=R4_BAIDU_BACKEND_SOURCE_CANDIDATE
+SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
+OWNER_LOCAL_BAIDU_AUTHENTICATION=REQUIRED_AT_LIVE_PREFLIGHT
+LIVE_G4B_OWNER_AUTHORIZATION=GRANTED_BY_CURRENT_REVIEWER_GATE
 ```
 
-The bounded runner source and offline fixture validator are implemented. Actual G4-B execution remains blocked until the Reviewer opens the live Gate, the Owner separately authorizes it, and the approved second-failure-domain recovery destination class/location is supplied.
+R4 only validates the integration with a local fake CLI shim. Actual CLI download, account readiness, upload/download, VPS deployment, and Owner UI actions remain unexecuted in this offline Gate and require a later Reviewer-authorized live step.

@@ -8,7 +8,9 @@ param(
     [string]$ReviewerDecision,
     [string]$SshIdentityFile,
     [string]$KnownHostsFile = (Join-Path $env:USERPROFILE '.ssh\known_hosts'),
-    [string]$SecondFailureDomainPath,
+    [string]$BaiduCliArchivePath,
+    [string]$BaiduConfigDirectory = (Join-Path $env:APPDATA 'BaiduPCS-Go'),
+    [string]$ExpectedBaiduUid,
     [string]$SecondFailureDomainAcknowledgement
 )
 
@@ -31,8 +33,21 @@ $script:localRuntimeRoot = Join-Path $env:LOCALAPPDATA 'vpn-network-optimization
 $script:localRuntime = Join-Path $script:localRuntimeRoot ('g4b-' + $script:runId)
 $script:rollbackJournal = Join-Path $script:localRuntimeRoot ('g4b-' + $script:runId + '.rollback.json')
 $script:recoveryPendingLocal = $script:secretRecoveryPath + '.pending'
-$script:recoveryFinalExternal = $null
-$script:recoveryPendingExternal = $null
+$script:baiduRecoveryDirectory = '/vpn-network-optimization-g4b-recovery'
+$script:baiduFinalName = 'vpn-network-optimization-g4b.vpr1'
+$script:recoveryFinalExternal = $script:baiduRecoveryDirectory + '/' + $script:baiduFinalName
+$script:recoveryPendingExternal = $script:baiduRecoveryDirectory + '/vpn-network-optimization-g4b-' + $script:runId + '.vpr1.pending'
+$script:recoveryPendingCloudLocal = $script:secretRecoveryPath + '.' + $script:runId + '.vpr1.pending'
+$script:baiduRuntime = Join-Path $script:localRuntimeRoot ('g4b-baidu-' + $script:runId)
+$script:baiduArchiveUrl = 'https://github.com/qjfoidnh/BaiduPCS-Go/releases/download/v4.0.2/BaiduPCS-Go-v4.0.2-windows-x64.zip'
+$script:baiduArchiveSha256 = 'ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30'
+$script:baiduCliVersion = 'v4.0.2'
+$script:baiduCliPath = $null
+$script:baiduCliSha256 = $null
+$script:baiduUploadAttempted = $false
+$script:baiduPendingVerified = $false
+$script:baiduPendingPromoted = $false
+$script:baiduFakeShim = $null
 $script:profileConfig = Join-Path $script:localRuntime 'SELF-VPN-V1.yaml'
 $script:profileStore = $null
 $script:profileBefore = $null
@@ -94,7 +109,7 @@ function Assert-CanonicalSource {
     if ($Mode -eq 'Run') {
         Assert-G4B ($handoff -match '(?m)^GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS$') 'LIVE_G4B_GATE_NOT_CURRENT'
         Assert-G4B ($handoff -match '(?m)^LIVE_G4B_EXECUTION_AUTHORIZED=YES$') 'REVIEWER_LIVE_AUTHORIZATION_MISSING'
-        Assert-G4B ($handoff -match '(?m)^SECOND_FAILURE_DOMAIN_DESTINATION=OWNER_APPROVED$') 'REVIEWER_RECOVERY_DESTINATION_NOT_APPROVED'
+        Assert-G4B ($handoff -match '(?m)^SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK$') 'REVIEWER_RECOVERY_PROVIDER_NOT_APPROVED'
     }
     Assert-G4B ($repoRoot.Length -gt 0) 'CANONICAL_ROOT_UNAVAILABLE'
 }
@@ -421,24 +436,251 @@ function ConvertFrom-PortableRecoveryBytes {
     }
 }
 
+function Invoke-BaiduCli {
+    param([ValidateSet('who','ls','mkdir','upload','download','mv','rm')][string]$Action,[string[]]$Arguments=@())
+    switch($Action){
+        'who' {Assert-G4B ($Arguments.Count -eq 0) 'BAIDU_CLI_ARGUMENT_SHAPE_INVALID'}
+        'ls' {Assert-G4B ($Arguments.Count -eq 2 -and $Arguments[0] -ceq '-l' -and $Arguments[1] -ceq $script:baiduRecoveryDirectory) 'BAIDU_CLI_ARGUMENT_SHAPE_INVALID'}
+        'mkdir' {Assert-G4B ($Arguments.Count -eq 1 -and $Arguments[0] -ceq $script:baiduRecoveryDirectory) 'BAIDU_CLI_ARGUMENT_SHAPE_INVALID'}
+        'upload' {Assert-G4B ($Arguments.Count -eq 2 -and [IO.Path]::GetFullPath($Arguments[0]) -ceq [IO.Path]::GetFullPath($script:recoveryPendingCloudLocal) -and $Arguments[1] -ceq $script:baiduRecoveryDirectory) 'BAIDU_CLI_ARGUMENT_SHAPE_INVALID'}
+        'download' {Assert-G4B ($Arguments.Count -eq 3 -and $Arguments[0] -in @($script:recoveryPendingExternal,$script:recoveryFinalExternal) -and $Arguments[1] -ceq '--saveto' -and [IO.Path]::GetFullPath($Arguments[2]).StartsWith([IO.Path]::GetFullPath($script:baiduRuntime).TrimEnd('\')+'\',[StringComparison]::OrdinalIgnoreCase)) 'BAIDU_CLI_ARGUMENT_SHAPE_INVALID'}
+        'mv' {Assert-G4B ($Arguments.Count -eq 2 -and $Arguments[0] -ceq $script:recoveryPendingExternal -and $Arguments[1] -ceq $script:recoveryFinalExternal) 'BAIDU_CLI_ARGUMENT_SHAPE_INVALID'}
+        'rm' {Assert-G4B ($Arguments.Count -eq 1 -and $Arguments[0] -ceq $script:recoveryPendingExternal) 'BAIDU_CLI_ARGUMENT_SHAPE_INVALID'}
+    }
+    foreach($argument in $Arguments){Assert-G4B ($argument -notmatch '(?i)(?:bduss|stoken|ptoken|cookie|password|credential|auth)=') 'BAIDU_CLI_CREDENTIAL_ARGUMENT_FORBIDDEN'}
+    if($null -ne $script:baiduFakeShim){
+        $fakeResult=& $script:baiduFakeShim $Action $Arguments
+        Assert-G4B ($null -ne $fakeResult -and $fakeResult.PSObject.Properties['ExitCode'] -and $fakeResult.PSObject.Properties['StdOut']) 'BAIDU_FAKE_SHIM_RESULT_INVALID'
+        Assert-G4B ([int]$fakeResult.ExitCode -eq 0) 'BAIDU_CLI_COMMAND_FAILED'
+        return [pscustomobject]@{ExitCode=0;StdOut=[string]$fakeResult.StdOut}
+    }
+    Assert-G4B ($script:baiduCliPath -and (Test-Path -LiteralPath $script:baiduCliPath -PathType Leaf)) 'BAIDU_CLI_BINARY_MISSING'
+    $psi=[Diagnostics.ProcessStartInfo]::new(); $psi.FileName=$script:baiduCliPath; $psi.UseShellExecute=$false
+    $psi.RedirectStandardOutput=$true; $psi.RedirectStandardError=$true; $psi.CreateNoWindow=$true
+    [void]$psi.ArgumentList.Add($Action)
+    foreach($argument in $Arguments){[void]$psi.ArgumentList.Add([string]$argument)}
+    $environmentKeys=@($psi.Environment.Keys)
+    foreach($key in $environmentKeys){if([string]$key -match '(?i)bduss|stoken|ptoken|cookie|password|credential|auth|secret|token'){$psi.Environment.Remove([string]$key)}}
+    $psi.Environment['BAIDUPCS_GO_CONFIG_DIR']=$BaiduConfigDirectory
+    $psi.Environment['BAIDUPCS_GO_VERBOSE']='0'
+    $process=[Diagnostics.Process]::new(); $stdout=$null; $stderr=$null
+    try {
+        $process.StartInfo=$psi
+        if(-not $process.Start()){throw 'BAIDU_CLI_START_FAILED'}
+        $outTask=$process.StandardOutput.ReadToEndAsync(); $errTask=$process.StandardError.ReadToEndAsync()
+        if(-not $process.WaitForExit(120000)){try{$process.Kill($true)}catch{};throw 'BAIDU_CLI_TIMEOUT'}
+        $stdout=$outTask.GetAwaiter().GetResult(); $stderr=$errTask.GetAwaiter().GetResult()
+        Assert-G4B ($process.ExitCode -eq 0) 'BAIDU_CLI_COMMAND_FAILED'
+        return [pscustomobject]@{ExitCode=0;StdOut=[string]$stdout}
+    }
+    catch {if($_.Exception.Message -match '^BAIDU_[A-Z0-9_]+$'){throw $_.Exception.Message};throw 'BAIDU_CLI_COMMAND_FAILED'}
+    finally {$stdout=$null;$stderr=$null;$process.Dispose()}
+}
+
+function Assert-BaiduConfigDirectory {
+    $config=[IO.Path]::GetFullPath($BaiduConfigDirectory)
+    Assert-G4B (Test-Path -LiteralPath $config -PathType Container) 'BAIDU_AUTH_CONFIG_MISSING'
+    Assert-G4B (-not $config.StartsWith($script:projectRoot,[StringComparison]::OrdinalIgnoreCase)) 'BAIDU_AUTH_CONFIG_INSIDE_REPOSITORY'
+    $unsafeSids=@('S-1-1-0','S-1-5-11','S-1-5-32-545')
+    $items=[Collections.Generic.List[IO.FileSystemInfo]]::new()
+    $items.Add((Get-Item -LiteralPath $config -Force -ErrorAction Stop))
+    foreach($child in @(Get-ChildItem -LiteralPath $config -Force -Recurse -ErrorAction Stop)){$items.Add($child)}
+    foreach($item in $items){
+        Assert-G4B (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -eq 0) 'BAIDU_AUTH_CONFIG_REPARSE_POINT'
+        $acl=Get-Acl -LiteralPath $item.FullName -ErrorAction Stop
+        Assert-G4B ($acl.GetOwner([Security.Principal.SecurityIdentifier]).Value -ceq $script:ownerSid.Value) 'BAIDU_AUTH_CONFIG_OWNER_MISMATCH'
+        foreach($rule in @($acl.GetAccessRules($true,$true,[Security.Principal.SecurityIdentifier]))){
+            if($rule.AccessControlType -eq [Security.AccessControl.AccessControlType]::Allow){Assert-G4B ($rule.IdentityReference.Value -notin $unsafeSids) 'BAIDU_AUTH_CONFIG_BROAD_ACCESS'}
+        }
+    }
+}
+
+function Install-PinnedBaiduCli {
+    Assert-G4B (-not (Test-Path -LiteralPath $script:baiduRuntime)) 'BAIDU_RUNTIME_COLLISION'
+    [void][IO.FileSystemAclExtensions]::CreateDirectory((New-OwnerAcl -Directory),$script:baiduRuntime)
+    Assert-OwnerAcl -Path $script:baiduRuntime
+    $archive=Join-Path $script:baiduRuntime 'BaiduPCS-Go-v4.0.2-windows-x64.zip'
+    $archiveSource=$script:baiduArchiveUrl
+    if(-not [string]::IsNullOrWhiteSpace($BaiduCliArchivePath)){
+        $archiveSource=[IO.Path]::GetFullPath($BaiduCliArchivePath)
+        Assert-G4B (Test-Path -LiteralPath $archiveSource -PathType Leaf) 'BAIDU_CLI_ARCHIVE_MISSING'
+        Assert-G4B (-not $archiveSource.StartsWith($script:projectRoot,[StringComparison]::OrdinalIgnoreCase)) 'BAIDU_CLI_ARCHIVE_INSIDE_REPOSITORY'
+        $actualArchiveHash=(Get-FileHash -LiteralPath $archiveSource -Algorithm SHA256 -ErrorAction Stop).Hash.ToLowerInvariant()
+        Assert-G4B ($actualArchiveHash -ceq $script:baiduArchiveSha256) 'BAIDU_CLI_ARCHIVE_HASH_INVALID'
+    } else {
+        $oldProgress=$ProgressPreference
+        try {$ProgressPreference='SilentlyContinue';[void](Invoke-WebRequest -Uri $script:baiduArchiveUrl -OutFile $archive -TimeoutSec 120 -ErrorAction Stop)}
+        catch {throw 'BAIDU_CLI_RELEASE_DOWNLOAD_FAILED'}
+        finally {$ProgressPreference=$oldProgress}
+        Assert-G4B ((Test-Path -LiteralPath $archive -PathType Leaf) -and (Get-Item -LiteralPath $archive).Length -gt 0 -and (Get-Item -LiteralPath $archive).Length -le 100MB) 'BAIDU_CLI_ARCHIVE_SIZE_INVALID'
+        $actualArchiveHash=(Get-FileHash -LiteralPath $archive -Algorithm SHA256 -ErrorAction Stop).Hash.ToLowerInvariant()
+        Assert-G4B ($actualArchiveHash -ceq $script:baiduArchiveSha256) 'BAIDU_CLI_ARCHIVE_HASH_INVALID'
+    }
+    $zip=$null; $entryStream=$null; $memory=$null; $exeBytes=$null
+    try {
+        Add-Type -AssemblyName System.IO.Compression.FileSystem -ErrorAction Stop
+        $zip=[IO.Compression.ZipFile]::OpenRead($archiveSource)
+        $entries=@($zip.Entries | Where-Object { [IO.Path]::GetFileName($_.FullName) -ceq 'BaiduPCS-Go.exe' })
+        Assert-G4B ($entries.Count -eq 1 -and $entries[0].Length -gt 0 -and $entries[0].Length -le 64MB -and $entries[0].FullName -notmatch '(^|/)\.\.(/|$)') 'BAIDU_CLI_ARCHIVE_ENTRY_INVALID'
+        $entryStream=$entries[0].Open();$memory=[IO.MemoryStream]::new();$entryStream.CopyTo($memory);$exeBytes=$memory.ToArray()
+        Assert-G4B ($exeBytes.Length -eq $entries[0].Length) 'BAIDU_CLI_EXTRACT_LENGTH_INVALID'
+        $script:baiduCliPath=Join-Path $script:baiduRuntime 'BaiduPCS-Go.exe'
+        Write-OwnerOnlyFile -Path $script:baiduCliPath -Bytes $exeBytes
+        $script:baiduCliSha256=(Get-FileHash -LiteralPath $script:baiduCliPath -Algorithm SHA256 -ErrorAction Stop).Hash.ToLowerInvariant()
+    }
+    finally {
+        if($null -ne $exeBytes){[Security.Cryptography.CryptographicOperations]::ZeroMemory($exeBytes)}
+        if($null -ne $memory){$memory.Dispose()};if($null -ne $entryStream){$entryStream.Dispose()};if($null -ne $zip){$zip.Dispose()}
+        if([string]::IsNullOrWhiteSpace($BaiduCliArchivePath) -and (Test-Path -LiteralPath $archive -PathType Leaf)){Remove-Item -LiteralPath $archive -Force -ErrorAction Stop}
+    }
+    Write-Output ('BAIDU_CLI_VERSION='+$script:baiduCliVersion)
+    Write-Output ('BAIDU_CLI_SOURCE='+$script:baiduArchiveUrl)
+    Write-Output ('BAIDU_CLI_RELEASE_ARCHIVE_SHA256='+$script:baiduArchiveSha256)
+    Write-Output ('BAIDU_CLI_BINARY_SHA256='+$script:baiduCliSha256)
+}
+
+function Assert-BaiduAccountReady {
+    param([Parameter(Mandatory=$true)][string]$ExpectedUid)
+    Assert-G4B ($ExpectedUid -match '^[1-9][0-9]{0,19}$') 'BAIDU_EXPECTED_ACCOUNT_ID_INVALID'
+    $result=Invoke-BaiduCli -Action 'who'
+    try {
+        $uidMatch=[regex]::Match($result.StdOut,'(?m)^当前帐号 uid:\s*([0-9]+),')
+        Assert-G4B ($uidMatch.Success) 'BAIDU_LOGIN_READINESS_MISSING'
+        Assert-G4B ($uidMatch.Groups[1].Value -ceq $ExpectedUid) 'BAIDU_ACCOUNT_MISMATCH'
+    }
+    finally {$result=$null;$uidMatch=$null}
+}
+
+function Get-BaiduDirectoryListing {
+    param([Parameter(Mandatory=$true)][string]$Directory)
+    $result=Invoke-BaiduCli -Action 'ls' -Arguments @('-l',$Directory)
+    $listing=[string]$result.StdOut
+    Assert-G4B ([regex]::IsMatch($listing,'(?m)^当前目录:\s*'+[regex]::Escape($Directory)+'\s*$')) 'BAIDU_REMOTE_DIRECTORY_READBACK_INVALID'
+    return $listing
+}
+
+function Get-BaiduRemoteObjectState {
+    param([Parameter(Mandatory=$true)][string]$Directory,[Parameter(Mandatory=$true)][string]$Name)
+    $listing=Get-BaiduDirectoryListing -Directory $Directory
+    $escaped=[regex]::Escape($Name)
+    $matches=[regex]::Matches($listing,'(?m)^\|[^\r\n]*\|\s*'+$escaped+'(?<directory>/)?\s*\|\s*$')
+    Assert-G4B ($matches.Count -le 1) 'BAIDU_REMOTE_OBJECT_LISTING_AMBIGUOUS'
+    if($matches.Count -eq 0){return 'ABSENT'}
+    if($matches[0].Groups['directory'].Success){return 'DIRECTORY'}
+    return 'FILE'
+}
+
+function Ensure-BaiduRecoveryDirectory {
+    [void](Invoke-BaiduCli -Action 'mkdir' -Arguments @($script:baiduRecoveryDirectory))
+    $listing=Get-BaiduDirectoryListing -Directory $script:baiduRecoveryDirectory
+    Assert-G4B ($listing -match '(?m)^当前目录:\s*'+[regex]::Escape($script:baiduRecoveryDirectory)+'\s*$') 'BAIDU_RECOVERY_DIRECTORY_NOT_READY'
+}
+
+function Read-BaiduCiphertext {
+    param([Parameter(Mandatory=$true)][string]$RemotePath)
+    $directory=Join-Path $script:baiduRuntime ('readback-'+[guid]::NewGuid().ToString('N'))
+    Assert-G4B (-not (Test-Path -LiteralPath $directory)) 'BAIDU_READBACK_DIRECTORY_COLLISION'
+    [void][IO.FileSystemAclExtensions]::CreateDirectory((New-OwnerAcl -Directory),$directory)
+    Assert-OwnerAcl -Path $directory
+    $bytes=$null
+    try {
+        [void](Invoke-BaiduCli -Action 'download' -Arguments @($RemotePath,'--saveto',$directory))
+        $leaf=[IO.Path]::GetFileName($RemotePath)
+        $path=Join-Path $directory $leaf
+        Assert-G4B (Test-Path -LiteralPath $path -PathType Leaf) 'BAIDU_READBACK_FILE_MISSING'
+        $item=Get-Item -LiteralPath $path -Force -ErrorAction Stop
+        Assert-G4B (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -eq 0 -and $item.Length -ge 61 -and $item.Length -le 131132) 'BAIDU_READBACK_FILE_INVALID'
+        $files=@(Get-ChildItem -LiteralPath $directory -Force -ErrorAction Stop)
+        Assert-G4B ($files.Count -eq 1 -and $files[0].FullName -ceq $path) 'BAIDU_READBACK_DIRECTORY_CONTENT_INVALID'
+        $bytes=[IO.File]::ReadAllBytes($path)
+        return ,$bytes
+    }
+    finally {
+        if(Test-Path -LiteralPath $directory -PathType Container){Assert-OwnerAcl -Path $directory;Remove-Item -LiteralPath $directory -Recurse -Force -ErrorAction Stop}
+        Assert-G4B (-not (Test-Path -LiteralPath $directory)) 'BAIDU_READBACK_TEMP_CLEANUP_FAILED'
+    }
+}
+
+function Upload-BaiduPendingRecovery {
+    param([Parameter(Mandatory=$true)][byte[]]$PayloadBytes,[Parameter(Mandatory=$true)][Security.SecureString]$Passphrase)
+    $pendingName=[IO.Path]::GetFileName($script:recoveryPendingExternal)
+    $finalName=[IO.Path]::GetFileName($script:recoveryFinalExternal)
+    Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $finalName) -ceq 'ABSENT') 'BAIDU_RECOVERY_FINAL_COLLISION'
+    Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $pendingName) -ceq 'ABSENT') 'BAIDU_RECOVERY_PENDING_COLLISION'
+    Assert-OwnerAcl -Path $script:recoveryPendingCloudLocal
+    $localBytes=[IO.File]::ReadAllBytes($script:recoveryPendingCloudLocal);$remoteBytes=$null;$remotePayload=$null
+    try {
+        $script:baiduUploadAttempted=$true
+        [void](Invoke-BaiduCli -Action 'upload' -Arguments @($script:recoveryPendingCloudLocal,$script:baiduRecoveryDirectory))
+        Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $pendingName) -ceq 'FILE') 'BAIDU_PENDING_UPLOAD_NOT_PRESENT'
+        $remoteBytes=Read-BaiduCiphertext -RemotePath $script:recoveryPendingExternal
+        Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($localBytes,$remoteBytes)) 'BAIDU_PENDING_READBACK_MISMATCH'
+        $remotePayload=ConvertFrom-PortableRecoveryBytes -Blob $remoteBytes -Passphrase $Passphrase
+        Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($PayloadBytes,$remotePayload) -and (Test-G4BRecoveryPayload -PayloadBytes $remotePayload)) 'BAIDU_PENDING_PAYLOAD_READBACK_INVALID'
+        $script:baiduPendingVerified=$true
+    }
+    finally {foreach($value in @($localBytes,$remoteBytes,$remotePayload)){if($null -ne $value){[Security.Cryptography.CryptographicOperations]::ZeroMemory([byte[]]$value)}}}
+}
+
+function Promote-BaiduPendingRecovery {
+    param([Parameter(Mandatory=$true)][byte[]]$PayloadBytes,[Parameter(Mandatory=$true)][Security.SecureString]$Passphrase)
+    $pendingName=[IO.Path]::GetFileName($script:recoveryPendingExternal);$finalName=[IO.Path]::GetFileName($script:recoveryFinalExternal)
+    Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $pendingName) -ceq 'FILE') 'BAIDU_RECOVERY_PENDING_MISSING'
+    Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $finalName) -ceq 'ABSENT') 'BAIDU_RECOVERY_FINAL_COLLISION'
+    $localBytes=[IO.File]::ReadAllBytes($script:recoveryPendingCloudLocal);$finalBytes=$null;$finalPayload=$null
+    try {
+        [void](Invoke-BaiduCli -Action 'mv' -Arguments @($script:recoveryPendingExternal,$script:recoveryFinalExternal))
+        Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $pendingName) -ceq 'ABSENT' -and (Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $finalName) -ceq 'FILE') 'BAIDU_RECOVERY_FINAL_PROMOTION_READBACK_FAILED'
+        $finalBytes=Read-BaiduCiphertext -RemotePath $script:recoveryFinalExternal
+        Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($localBytes,$finalBytes)) 'BAIDU_RECOVERY_FINAL_CIPHERTEXT_MISMATCH'
+        $finalPayload=ConvertFrom-PortableRecoveryBytes -Blob $finalBytes -Passphrase $Passphrase
+        Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($PayloadBytes,$finalPayload) -and (Test-G4BRecoveryPayload -PayloadBytes $finalPayload)) 'BAIDU_RECOVERY_FINAL_PAYLOAD_INVALID'
+        $script:baiduPendingVerified=$false;$script:baiduPendingPromoted=$true;$script:baiduUploadAttempted=$false
+    }
+    finally {foreach($value in @($localBytes,$finalBytes,$finalPayload)){if($null -ne $value){[Security.Cryptography.CryptographicOperations]::ZeroMemory([byte[]]$value)}}}
+}
+
+function Remove-BaiduPendingIfOwned {
+    if(-not $script:baiduUploadAttempted){return}
+    $pendingName=[IO.Path]::GetFileName($script:recoveryPendingExternal)
+    $state=Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $pendingName
+    if($state -ceq 'ABSENT'){$script:baiduPendingVerified=$false;return}
+    Assert-G4B ($state -ceq 'FILE' -and (Test-Path -LiteralPath $script:recoveryPendingCloudLocal -PathType Leaf)) 'BAIDU_PENDING_OWNERSHIP_UNPROVEN'
+    Assert-OwnerAcl -Path $script:recoveryPendingCloudLocal
+    $localBytes=[IO.File]::ReadAllBytes($script:recoveryPendingCloudLocal);$remoteBytes=$null
+    try {
+        $remoteBytes=Read-BaiduCiphertext -RemotePath $script:recoveryPendingExternal
+        Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($localBytes,$remoteBytes)) 'BAIDU_PENDING_OWNERSHIP_UNPROVEN'
+        [void](Invoke-BaiduCli -Action 'rm' -Arguments @($script:recoveryPendingExternal))
+        Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $pendingName) -ceq 'ABSENT') 'BAIDU_PENDING_REMOVE_READBACK_FAILED'
+        $script:baiduPendingVerified=$false
+    }
+    finally {foreach($value in @($localBytes,$remoteBytes)){if($null -ne $value){[Security.Cryptography.CryptographicOperations]::ZeroMemory([byte[]]$value)}}}
+}
+
+function Initialize-BaiduBackend {
+    Assert-G4B (Test-Path -LiteralPath $script:localRuntimeRoot -PathType Container) 'LOCAL_RUNTIME_ROOT_MISSING'
+    Assert-OwnerAcl -Path $script:localRuntimeRoot
+    Assert-BaiduConfigDirectory
+    Install-PinnedBaiduCli
+    Assert-BaiduAccountReady -ExpectedUid $ExpectedBaiduUid
+    Ensure-BaiduRecoveryDirectory
+}
+
 function Write-EncryptedRecovery {
     param([Parameter(Mandatory=$true)][byte[]]$PayloadBytes,[Parameter(Mandatory=$true)][Security.SecureString]$Passphrase)
     $root=Split-Path -Parent $script:secretRecoveryPath
     Assert-G4B (Test-Path -LiteralPath $root -PathType Container) 'OWNER_RECOVERY_ROOT_MISSING'
     Assert-OwnerAcl -Path $root
-    $external=[IO.Path]::GetFullPath($SecondFailureDomainPath)
-    Assert-G4B (Test-Path -LiteralPath $external -PathType Container) 'SECOND_FAILURE_DOMAIN_UNAVAILABLE'
     Assert-G4B ($SecondFailureDomainAcknowledgement -ceq 'SECOND_FAILURE_DOMAIN_DISTINCT_ENCRYPTED=CONFIRMED') 'SECOND_FAILURE_DOMAIN_ACK_INVALID'
-    Assert-G4B (-not $external.StartsWith($script:projectRoot,[StringComparison]::OrdinalIgnoreCase)) 'SECOND_FAILURE_DOMAIN_INSIDE_REPOSITORY'
-    Assert-G4B (-not $external.StartsWith((Split-Path -Parent $script:secretRecoveryPath),[StringComparison]::OrdinalIgnoreCase)) 'SECOND_FAILURE_DOMAIN_NOT_DISTINCT'
-    $script:recoveryFinalExternal=Join-Path $external 'vpn-network-optimization-g4b.vpr1'
-    $script:recoveryPendingExternal=$script:recoveryFinalExternal+'.pending'
-    foreach($path in @($script:secretRecoveryPath,$script:recoveryPendingLocal,$script:recoveryFinalExternal,$script:recoveryPendingExternal)){
+    foreach($path in @($script:secretRecoveryPath,$script:recoveryPendingLocal,$script:recoveryPendingCloudLocal)){
         Assert-G4B (-not (Test-Path -LiteralPath $path)) 'RECOVERY_TARGET_OR_PENDING_EXISTS'
     }
+    Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $script:baiduFinalName) -ceq 'ABSENT') 'BAIDU_RECOVERY_FINAL_COLLISION'
+    Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name ([IO.Path]::GetFileName($script:recoveryPendingExternal))) -ceq 'ABSENT') 'BAIDU_RECOVERY_PENDING_COLLISION'
     Assert-G4B (Test-G4BRecoveryPayload -PayloadBytes $PayloadBytes) 'RECOVERY_PAYLOAD_INVALID'
-    $dpapi=$null; $portable=$null; $round=$null; $portableRound=$null
-    $localReadback=$null; $externalReadback=$null; $localPayload=$null; $externalPayload=$null
+    $dpapi=$null;$portable=$null;$round=$null;$portableRound=$null
+    $localReadback=$null;$externalReadback=$null;$cloudLocalReadback=$null;$localPayload=$null;$externalPayload=$null
     try {
         $dpapi=[Security.Cryptography.ProtectedData]::Protect($PayloadBytes,$null,[Security.Cryptography.DataProtectionScope]::CurrentUser)
         $round=[Security.Cryptography.ProtectedData]::Unprotect($dpapi,$null,[Security.Cryptography.DataProtectionScope]::CurrentUser)
@@ -447,34 +689,33 @@ function Write-EncryptedRecovery {
         $portableRound=ConvertFrom-PortableRecoveryBytes -Blob $portable -Passphrase $Passphrase
         Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($PayloadBytes,$portableRound)) 'PORTABLE_RECOVERY_ROUNDTRIP_FAILED'
         Write-OwnerOnlyFile -Path $script:recoveryPendingLocal -Bytes $dpapi -RecoveryArtifact
-        Write-OwnerOnlyFile -Path $script:recoveryPendingExternal -Bytes $portable -RecoveryArtifact
-        Assert-OwnerAcl -Path $script:recoveryPendingLocal; Assert-OwnerAcl -Path $script:recoveryPendingExternal
-        $localReadback=[IO.File]::ReadAllBytes($script:recoveryPendingLocal); $externalReadback=[IO.File]::ReadAllBytes($script:recoveryPendingExternal)
+        Write-OwnerOnlyFile -Path $script:recoveryPendingCloudLocal -Bytes $portable -RecoveryArtifact
+        Assert-OwnerAcl -Path $script:recoveryPendingLocal;Assert-OwnerAcl -Path $script:recoveryPendingCloudLocal
+        $localReadback=[IO.File]::ReadAllBytes($script:recoveryPendingLocal)
+        $cloudLocalReadback=[IO.File]::ReadAllBytes($script:recoveryPendingCloudLocal)
         $localPayload=[Security.Cryptography.ProtectedData]::Unprotect($localReadback,$null,[Security.Cryptography.DataProtectionScope]::CurrentUser)
-        $externalPayload=ConvertFrom-PortableRecoveryBytes -Blob $externalReadback -Passphrase $Passphrase
-        Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($PayloadBytes,$localPayload) -and [Linq.Enumerable]::SequenceEqual[byte]($PayloadBytes,$externalPayload)) 'RECOVERY_PENDING_READBACK_FAILED'
+        $externalPayload=ConvertFrom-PortableRecoveryBytes -Blob $cloudLocalReadback -Passphrase $Passphrase
+        Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($PayloadBytes,$localPayload) -and [Linq.Enumerable]::SequenceEqual[byte]($PayloadBytes,$externalPayload)) 'RECOVERY_LOCAL_PENDING_READBACK_FAILED'
+        Upload-BaiduPendingRecovery -PayloadBytes $PayloadBytes -Passphrase $Passphrase
     }
     finally {
-        foreach($value in @($round,$portableRound,$dpapi,$portable,$localReadback,$externalReadback,$localPayload,$externalPayload)){ if($null -ne $value){[Security.Cryptography.CryptographicOperations]::ZeroMemory([byte[]]$value)} }
+        foreach($value in @($round,$portableRound,$dpapi,$portable,$localReadback,$externalReadback,$cloudLocalReadback,$localPayload,$externalPayload)){if($null -ne $value){[Security.Cryptography.CryptographicOperations]::ZeroMemory([byte[]]$value)}}
     }
 }
 
 function Promote-RecoveryArtifacts {
     param([Parameter(Mandatory=$true)][byte[]]$PayloadBytes)
-    Assert-G4B ((Test-Path -LiteralPath $script:recoveryPendingLocal -PathType Leaf) -and (Test-Path -LiteralPath $script:recoveryPendingExternal -PathType Leaf)) 'RECOVERY_PENDING_MISSING'
-    Assert-G4B ((-not (Test-Path -LiteralPath $script:secretRecoveryPath)) -and (-not (Test-Path -LiteralPath $script:recoveryFinalExternal))) 'RECOVERY_FINAL_COLLISION'
-    [IO.File]::Move($script:recoveryPendingLocal,$script:secretRecoveryPath); $script:recoveryCreatedPaths.Add($script:secretRecoveryPath)
-    [IO.File]::Move($script:recoveryPendingExternal,$script:recoveryFinalExternal); $script:recoveryCreatedPaths.Add($script:recoveryFinalExternal)
-    Assert-OwnerAcl -Path $script:secretRecoveryPath; Assert-OwnerAcl -Path $script:recoveryFinalExternal
-    $cipher=[IO.File]::ReadAllBytes($script:secretRecoveryPath); $round=$null
-    try {
-        $round=[Security.Cryptography.ProtectedData]::Unprotect($cipher,$null,[Security.Cryptography.DataProtectionScope]::CurrentUser)
-        Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($round,$PayloadBytes) -and (Test-G4BRecoveryPayload -PayloadBytes $round)) 'DPAPI_FINAL_PARSE_FAILED'
-    }
-    finally { [Security.Cryptography.CryptographicOperations]::ZeroMemory($cipher); if($null -ne $round){[Security.Cryptography.CryptographicOperations]::ZeroMemory($round)} }
-    $portable=[IO.File]::ReadAllBytes($script:recoveryFinalExternal); $portableRound=$null
-    try { $portableRound=ConvertFrom-PortableRecoveryBytes -Blob $portable -Passphrase $script:portablePassphrase; Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($portableRound,$PayloadBytes) -and (Test-G4BRecoveryPayload -PayloadBytes $portableRound)) 'PORTABLE_FINAL_PARSE_FAILED' }
-    finally { [Security.Cryptography.CryptographicOperations]::ZeroMemory($portable); if($null -ne $portableRound){[Security.Cryptography.CryptographicOperations]::ZeroMemory($portableRound)} }
+    Assert-G4B ((Test-Path -LiteralPath $script:recoveryPendingLocal -PathType Leaf) -and (Test-Path -LiteralPath $script:recoveryPendingCloudLocal -PathType Leaf)) 'RECOVERY_PENDING_MISSING'
+    Assert-G4B (-not (Test-Path -LiteralPath $script:secretRecoveryPath)) 'RECOVERY_FINAL_COLLISION'
+    Promote-BaiduPendingRecovery -PayloadBytes $PayloadBytes -Passphrase $script:portablePassphrase
+    [IO.File]::Move($script:recoveryPendingLocal,$script:secretRecoveryPath);$script:recoveryCreatedPaths.Add($script:secretRecoveryPath)
+    Assert-OwnerAcl -Path $script:secretRecoveryPath
+    $cipher=[IO.File]::ReadAllBytes($script:secretRecoveryPath);$round=$null
+    try {$round=[Security.Cryptography.ProtectedData]::Unprotect($cipher,$null,[Security.Cryptography.DataProtectionScope]::CurrentUser);Assert-G4B ([Linq.Enumerable]::SequenceEqual[byte]($round,$PayloadBytes) -and (Test-G4BRecoveryPayload -PayloadBytes $round)) 'DPAPI_FINAL_PARSE_FAILED'}
+    finally {[Security.Cryptography.CryptographicOperations]::ZeroMemory($cipher);if($null -ne $round){[Security.Cryptography.CryptographicOperations]::ZeroMemory($round)}}
+    Assert-OwnerAcl -Path $script:recoveryPendingCloudLocal
+    Remove-Item -LiteralPath $script:recoveryPendingCloudLocal -Force -ErrorAction Stop
+    Assert-G4B (-not (Test-Path -LiteralPath $script:recoveryPendingCloudLocal)) 'LOCAL_CLOUD_PENDING_REMOVE_FAILED'
 }
 
 function Invoke-MihomoParse {
@@ -560,6 +801,7 @@ function Write-RollbackJournal {
         profile_before=@(if($null -ne $script:profileBefore){foreach($key in $script:profileBefore.Keys){[pscustomobject]@{path=$key;metadata=$script:profileBefore[$key]}}})
         remote_drift_baseline=$script:remoteDriftBaseline
         recovery_pending_local=$script:recoveryPendingLocal
+        recovery_pending_cloud_local=$script:recoveryPendingCloudLocal
         recovery_pending_external=$script:recoveryPendingExternal
         recovery_final_local=$script:secretRecoveryPath
         recovery_final_external=$script:recoveryFinalExternal
@@ -594,13 +836,11 @@ function Read-RollbackJournal {
     Assert-RemoteDriftSnapshot -Before $record['remote_drift_baseline'] -After $record['remote_drift_baseline']
     $currentProfileStore=Resolve-ProfileStoreRoot
     Assert-G4B ([IO.Path]::GetFullPath([string]$record['profile_store']) -ceq [IO.Path]::GetFullPath($currentProfileStore)) 'ROLLBACK_JOURNAL_PROFILE_ROOT_INVALID'
-    Assert-G4B ($SecondFailureDomainPath -and (Test-Path -LiteralPath $SecondFailureDomainPath -PathType Container)) 'ROLLBACK_RECOVERY_DOMAIN_REQUIRED'
-    $externalRoot=[IO.Path]::GetFullPath($SecondFailureDomainPath)
-    $expectedExternal=Join-Path $externalRoot 'vpn-network-optimization-g4b.vpr1'
     Assert-G4B (([IO.Path]::GetFullPath([string]$record['recovery_pending_local']) -ceq $script:recoveryPendingLocal) -and
-        ([IO.Path]::GetFullPath([string]$record['recovery_pending_external']) -ceq ($expectedExternal+'.pending')) -and
+        ([IO.Path]::GetFullPath([string]$record['recovery_pending_cloud_local']) -ceq $script:recoveryPendingCloudLocal) -and
+        ([string]$record['recovery_pending_external'] -ceq $script:recoveryPendingExternal) -and
         ([IO.Path]::GetFullPath([string]$record['recovery_final_local']) -ceq $script:secretRecoveryPath) -and
-        ([IO.Path]::GetFullPath([string]$record['recovery_final_external']) -ceq $expectedExternal)) 'ROLLBACK_JOURNAL_RECOVERY_PATH_INVALID'
+        ([string]$record['recovery_final_external'] -ceq $script:recoveryFinalExternal)) 'ROLLBACK_JOURNAL_RECOVERY_PATH_INVALID'
     return $record
 }
 
@@ -1055,13 +1295,16 @@ try {
     if($Mode -eq 'Rollback'){
         $script:baseline=Get-LocalBaseline
         $journal=Read-RollbackJournal
+        Initialize-BaiduBackend
+        $script:baiduUploadAttempted=$true
         $script:remoteDriftBaseline=$journal['remote_drift_baseline']
         $script:profileStore=[string]$journal['profile_store']
         $rollback=Invoke-Remote -Action 'rollback' -Payload @{drift_baseline=$script:remoteDriftBaseline}
         Assert-G4B ($rollback['rollback'] -ceq 'PASS' -and $rollback['route_firewall_service_restored'] -ceq 'PASS') 'BOUNDED_REMOTE_ROLLBACK_UNVERIFIED'
         Remove-OwnedProfileFiles -Journal $journal
         Assert-ProfileStoreMatchesJournal -Journal $journal
-        foreach($path in @($journal['recovery_pending_local'],$journal['recovery_pending_external'])){
+        Remove-BaiduPendingIfOwned
+        foreach($path in @($journal['recovery_pending_local'],$journal['recovery_pending_cloud_local'])){
             if(Test-Path -LiteralPath $path -PathType Leaf){Assert-OwnerAcl -Path $path; Remove-Item -LiteralPath $path -Force -ErrorAction Stop; Assert-G4B (-not (Test-Path -LiteralPath $path)) 'ROLLBACK_RECOVERY_PENDING_REMOVE_UNVERIFIED'}
         }
         Remove-Item -LiteralPath $script:rollbackJournal -Force -ErrorAction Stop
@@ -1122,7 +1365,10 @@ try {
     Assert-G4B ($remote['target_paths_absent'] -eq $true -and $remote['reality_service'] -eq 'absent') 'REALITY_TARGET_PATH_COLLISION'
 
     Write-Phase 'P5_SECRET_AND_RECOVERY_PREPARE'
-    Assert-G4B ($SecondFailureDomainPath -and (Test-Path -LiteralPath $SecondFailureDomainPath -PathType Container)) 'SECOND_FAILURE_DOMAIN_DESTINATION_REQUIRED'
+    Assert-G4B ($SecondFailureDomainAcknowledgement -ceq 'SECOND_FAILURE_DOMAIN_DISTINCT_ENCRYPTED=CONFIRMED') 'SECOND_FAILURE_DOMAIN_AUTHORIZATION_REQUIRED'
+    Assert-G4B ($ExpectedBaiduUid -match '^[1-9][0-9]{0,19}$') 'BAIDU_EXPECTED_ACCOUNT_ID_REQUIRED'
+    Initialize-BaiduBackend
+    Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $script:baiduFinalName) -ceq 'ABSENT') 'BAIDU_RECOVERY_FINAL_COLLISION'
     Read-Hy2Auth
     $credentials=New-RealityCredentials
     Assert-G4B ($credentials['uuid'] -match '^[0-9a-f-]{36}$' -and $credentials['private_key'] -match '^[A-Za-z0-9_-]{40,64}$' -and $credentials['public_key'] -match '^[A-Za-z0-9_-]{40,64}$' -and $credentials['short_id'] -match '^[0-9a-f]{16}$') 'REALITY_CREDENTIAL_FORMAT_INVALID'
@@ -1215,6 +1461,10 @@ try {
     $finalRecoveryBytes=[Text.Encoding]::UTF8.GetBytes($finalRecoveryJson)
     try { Promote-RecoveryArtifacts -PayloadBytes $finalRecoveryBytes }
     finally { [Security.Cryptography.CryptographicOperations]::ZeroMemory($finalRecoveryBytes); $finalRecoveryJson=$null }
+    Assert-OwnerAcl -Path $script:baiduRuntime
+    Remove-Item -LiteralPath $script:baiduRuntime -Recurse -Force -ErrorAction Stop
+    Assert-G4B (-not (Test-Path -LiteralPath $script:baiduRuntime)) 'BAIDU_RUNTIME_REMOVE_UNVERIFIED'
+    Write-Output 'BAIDU_RUNTIME_CLEANUP=PASS'
     Write-RollbackJournal -Status 'PASS_CANDIDATE'
     $script:preserveRollbackJournal=$true
     $script:completed=$true
@@ -1260,13 +1510,19 @@ finally {
             catch { $localCleanupVerified=$false; Write-Output 'PROFILE_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION' }
         }
         if ($script:remoteRollbackVerified -and $localCleanupVerified) {
-            foreach($path in $script:recoveryCreatedPaths){
-                try {
-                    if([IO.Path]::GetExtension($path) -ceq '.pending' -and (Test-Path -LiteralPath $path -PathType Leaf)){
-                        Assert-OwnerAcl -Path $path; Remove-Item -LiteralPath $path -Force -ErrorAction Stop
-                        Assert-G4B (-not (Test-Path -LiteralPath $path)) 'RECOVERY_PENDING_REMOVE_UNVERIFIED'
-                    }
-                } catch { $localCleanupVerified=$false; Write-Output 'RECOVERY_ARTIFACT_CLEANUP=FAIL' }
+            if($script:baiduUploadAttempted){
+                try {Remove-BaiduPendingIfOwned;Write-Output 'BAIDU_PENDING_ROLLBACK=PASS'}
+                catch {$localCleanupVerified=$false;Write-Output 'BAIDU_PENDING_ROLLBACK=UNKNOWN_REQUIRES_RECONCILIATION'}
+            }
+            if($localCleanupVerified){
+                foreach($path in $script:recoveryCreatedPaths){
+                    try {
+                        if([IO.Path]::GetExtension($path) -ceq '.pending' -and (Test-Path -LiteralPath $path -PathType Leaf)){
+                            Assert-OwnerAcl -Path $path; Remove-Item -LiteralPath $path -Force -ErrorAction Stop
+                            Assert-G4B (-not (Test-Path -LiteralPath $path)) 'RECOVERY_PENDING_REMOVE_UNVERIFIED'
+                        }
+                    } catch { $localCleanupVerified=$false; Write-Output 'RECOVERY_ARTIFACT_CLEANUP=FAIL' }
+                }
             }
         } elseif ($script:recoveryCreatedPaths.Count -gt 0) {
             Write-Output 'RECOVERY_ARTIFACT_CLEANUP=RETAINED_ROLLBACK_UNVERIFIED'
@@ -1274,6 +1530,10 @@ finally {
         if (Test-Path -LiteralPath $script:localRuntime -PathType Container) {
             try { Assert-OwnerAcl -Path $script:localRuntime; Remove-Item -LiteralPath $script:localRuntime -Recurse -Force -ErrorAction Stop; Assert-G4B (-not (Test-Path -LiteralPath $script:localRuntime)) 'LOCAL_RUNTIME_REMOVE_UNVERIFIED' }
             catch { $localCleanupVerified=$false; Write-Output 'LOCAL_RUNTIME_CLEANUP=FAIL' }
+        }
+        if (Test-Path -LiteralPath $script:baiduRuntime -PathType Container) {
+            try { Assert-OwnerAcl -Path $script:baiduRuntime; Remove-Item -LiteralPath $script:baiduRuntime -Recurse -Force -ErrorAction Stop; Assert-G4B (-not (Test-Path -LiteralPath $script:baiduRuntime)) 'BAIDU_RUNTIME_REMOVE_UNVERIFIED' }
+            catch { $localCleanupVerified=$false; Write-Output 'BAIDU_RUNTIME_CLEANUP=FAIL' }
         }
         if($script:journalCreated -and $script:remoteRollbackVerified -and $localCleanupVerified -and (Test-Path -LiteralPath $script:rollbackJournal -PathType Leaf)){
             try { Assert-OwnerAcl -Path $script:rollbackJournal; Remove-Item -LiteralPath $script:rollbackJournal -Force -ErrorAction Stop; Assert-G4B (-not (Test-Path -LiteralPath $script:rollbackJournal)) 'ROLLBACK_JOURNAL_CLEANUP_UNVERIFIED' }
