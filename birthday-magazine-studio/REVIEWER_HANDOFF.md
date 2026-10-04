@@ -44,7 +44,8 @@ HOMEPAGE_IMPLEMENTATION_STATUS=D2_IMPLEMENTED_TECH_PASS_VISUAL_REVIEW_PENDING
 D2_DESIGN_TIME_IMAGE_GENERATION=AUTHORIZED_QUALITY_FIRST
 D2_ARTIFICIAL_LOW_IMAGEGEN_CAP=NONE
 D2_TECHNICAL_REVIEW=PASS
-D2_VISUAL_FIDELITY_REVIEW=BLOCKED_ON_REVIEWABLE_IMAGE_TRANSPORT
+D2_VISUAL_FIDELITY_REVIEW=WAITING_FOR_OWNER_UPLOADED_CONTACT_SHEET
+D2_VISUAL_REVIEW_TRANSPORT=OWNER_MANUAL_IMAGE_UPLOAD
 G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
 CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS
 PREVIEW_INTERACTION_CHANGE=HOLD
@@ -97,38 +98,26 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 `G3CR6R3D2R1_VISUAL_REVIEW_BUNDLE`
 
-D2 implementation candidate `d2e31c532ace82c688554cad68e0464702268b24` has passed Reviewer technical inspection but cannot receive formal D2 PASS until the current Reviewer directly inspects the required visual evidence.
+D2 candidate `d2e31c532ace82c688554cad68e0464702268b24` has passed Reviewer technical inspection. Only direct visual fidelity/craft inspection remains.
 
-Accepted without replay:
-- Home 858 / source scope;
-- 1440 and 375 geometry;
-- actual motion behavior;
-- reduced-motion and no-JS fallback;
-- Preview source/interaction freeze;
-- Woo/account/payment/private-workspace freeze;
-- mobile samples anchor repair;
-- font license provenance;
-- rollback package;
-- image generation count 0.
+Latest Owner transport decision:
+- Codex composes one labeled JPEG from existing D1 Focusly + D2 round2 screenshots.
+- Codex saves `reviewer-visual-contact-sheet.jpg` into the local project workspace and reports the exact local path.
+- The Owner directly uploads that JPEG into the current ChatGPT conversation.
+- The previous GitHub Base64/data-URI transport is superseded.
 
-Blocked only:
-- current Reviewer direct visual judgment of material Focusly fidelity and final desktop/mobile craft.
+No application, WordPress, runtime, screenshot-capture, design or image-generation mutation is authorized.
 
-Objective:
-- package existing D1 reference screenshots and existing D2 round2 screenshots into one compact side-by-side contact sheet;
-- expose that JPEG through a UTF-8 base64 data-URI text artifact that the Reviewer connector can decode;
-- make no application/runtime/design mutation.
-
-Current Gate file:
+Current Gate:
 - `docs/G3CR6R3D2R1_VISUAL_REVIEW_BUNDLE.md`
+
+Current transport decision:
+- `docs/OWNER_DECISION_G3CR6R3D2R1_MANUAL_VISUAL_RELAY_2026-10-04.md`
 
 Current Reviewer decision:
 - `docs/REVIEWER_DECISION_G3CR6R3D2_RETURN_VISUAL_EVIDENCE.md`
 
-Mandatory stop:
-- evidence packaging only;
-- no redesign, no new screenshots, no image generation, no runtime mutation, no PR merge;
-- formal D2 PASS or RETURN follows only after Reviewer directly sees the contact sheet.
+Formal D2 PASS remains pending until the Owner uploads the contact sheet and Reviewer directly inspects it.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -191,27 +180,28 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3D2R1** as an evidence-format closure only.
-2. Reuse the already-submitted D1 Focusly and D2 round2 screenshots; do not change the application.
-3. Produce the compact side-by-side contact sheet and UTF-8 data-URI transport artifact.
-4. Reviewer directly inspects the decoded contact sheet and then decides formal D2 PASS / RETURN.
-5. Only after formal D2 PASS does the project enter Owner homepage visual confirmation.
+1. Execute **G3CR6R3D2R1** as evidence packaging only.
+2. Reuse existing D1/D2 screenshots; create one labeled `reviewer-visual-contact-sheet.jpg`.
+3. Executor reports the exact local file path and commits the evidence artifact/manifest when practical.
+4. Owner uploads that JPEG directly into the current ChatGPT conversation.
+5. Reviewer visually inspects it and decides formal D2 PASS / RETURN.
+6. Only after D2 PASS does the project proceed to Owner homepage visual confirmation/optimization decisions.
 
 ## OWNER_ACTION_REQUIRED
 
-`NONE` for D2R1 evidence closure.
+After D2R1 Executor returns **PASS_CANDIDATE**:
 
-Owner action is required only after Reviewer completes direct visual inspection, for:
-- subjective homepage visual freeze / requested visual changes;
-- any future decision to reopen/change the upload/Preview interaction;
-- any real payment/Live provider action;
-- account/Secret/provider authorization;
-- production enablement.
+1. Open the exact local path reported by Executor.
+2. Upload `reviewer-visual-contact-sheet.jpg` directly into the current ChatGPT conversation.
+3. No ZIP, Base64 or conversion is required.
+
+No other Owner action is required for this Gate.
 
 ## EVIDENCE_POINTERS
 
 Current working set:
 1. `docs/G3CR6R3D2R1_VISUAL_REVIEW_BUNDLE.md`
+2. `docs/OWNER_DECISION_G3CR6R3D2R1_MANUAL_VISUAL_RELAY_2026-10-04.md`
 2. `docs/REVIEWER_DECISION_G3CR6R3D2_RETURN_VISUAL_EVIDENCE.md`
 3. `docs/G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md`
 4. `docs/evidence/g3cr6r3d2/README.md`
