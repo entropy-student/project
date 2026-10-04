@@ -64,8 +64,12 @@ foreach ($required in @(
     '/usr/local/lib/vpn-network-optimization/mihomo-reality',
     '/srv/apps/vpn-network-optimization/reality',
     '/srv/apps/vpn-network-optimization/secrets/reality-server.yaml',
+    'User=__REALITY_RUNTIME_USER__',
+    'Group=__REALITY_RUNTIME_USER__',
     'Restart=on-failure',
     'NoNewPrivileges=true',
+    'AmbientCapabilities=CAP_NET_BIND_SERVICE',
+    'CapabilityBoundingSet=CAP_NET_BIND_SERVICE',
     'ProtectSystem=strict',
     'ProtectHome=true'
 )) {
