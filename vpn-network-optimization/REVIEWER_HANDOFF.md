@@ -134,121 +134,82 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3
-STATE=OWNER_ACTION_REQUIRED
+GATE_ID=G3C_C2C_SECRET_HELPER_EVIDENCE_FORWARDING_REPAIR_R2R2
+STATE=EXECUTOR_ACTION_REQUIRED
 PREVIOUS_RESULT=PASS_WITH_TIMING_GAP_G3C_C2C_PROXY_RESOLVER_SCALAR_RETURN_REPAIR_R2R1
 OWNER_C2C_AUTHORIZATION=GRANTED
-OBJECTIVE=Execute the accepted bounded real HY2-in-Clash canary using live SOCKS5 proxy discovery, exactly two real requests, and full profile/Secret/route/network cleanup.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact source identity -> Owner-side offline validator A-J -> orchestrator once -> three UI acknowledgements -> exactly two socks5h requests -> cleanup/readback -> STOP_AT_REVIEWER.
+OBJECTIVE=Make Secret-helper non-secret marker output directly reviewable in the future Owner canary without changing Secret handling, network behavior, or canary scope.
+MAX_ENDPOINT_THIS_ROUND=clean sync -> inspect current orchestrator/validator -> minimal evidence-forwarding repair -> offline validator A-K -> persist evidence -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; accepted C2C package only.
-APPLICABLE_CRITICAL_CONSTRAINTS=PowerShell 7.6.6; Administrator=True; High integrity RID>=12288; WireGuard remains connected; system proxy OFF; TUN OFF; CurrentUser DPAPI only inside Secret helper; one temporary C2C profile; one ActiveStore /32 route; exactly two external requests; no persistent route; no VPS/SSH; no REALITY; no benchmark; no G4; no persistent default change.
-ORCHESTRATOR_BLOB=bad7aa75458f48efe37cd11de18259ceb1cc19d2
-SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
-PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
-VALIDATOR_BLOB=882730a85b8cf3512feae4982f761ef7cdfec4d2
-TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
-PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
+TARGET_AND_SCOPE=c2c-owner-clash-real-canary.ps1 and g3c-c2c-package-validator.ps1 only, plus Evidence/Executor Handoff.
+APPLICABLE_CRITICAL_CONSTRAINTS=No orchestrator execution; no Secret-helper real mode; no proxy-probe execution; no DPAPI/Secret; no Clash profile/UI; no local protocol diagnostic; no external requests; no network mutation; no VPS/SSH; no G4.
+CURRENT_ORCHESTRATOR_BLOB=bad7aa75458f48efe37cd11de18259ceb1cc19d2
+CURRENT_SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+CURRENT_PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
+CURRENT_VALIDATOR_BLOB=882730a85b8cf3512feae4982f761ef7cdfec4d2
+CURRENT_TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+CURRENT_PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
-ESTIMATED_EXECUTION_TIME=10-20_minutes
+ESTIMATED_EXECUTION_TIME=5-10_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### PREFLIGHT
+### REQUIRED REPAIR
 
-1. Use Owner Windows host in elevated PowerShell 7.6.6.
-2. Capture checkpoint start before Git synchronization.
-3. Require project scope clean with null-safe cardinality; fetch canonical origin/main; prove ancestor; ff-only update; require clean after sync.
-4. Verify the six locked blobs above.
-5. Run `scripts/g3c-c2c-package-validator.ps1` first and require Fixtures A-J, AST parse, Mihomo fixture parse, `DPAPI_UNPROTECT=NO`, `NETWORK_REQUESTS=0`, `NETWORK_CHANGED=NO`, `SECRET_VALUES_EMITTED=0`.
-6. Only then run `scripts/c2c-owner-clash-real-canary.ps1` exactly once.
-7. Do not manually invoke Secret helper, proxy probe, D4 or D5 diagnostics.
-
-### OWNER UI CHECKPOINTS
-
-**Step 1**
-- Import and activate only the unique C2C temporary profile printed by the orchestrator.
-- Confirm `SELF-VPN-C2C`, `WG-BASELINE`, `HY2-SFO3-REAL` visible.
-- Keep `WG-BASELINE` selected.
-- Keep system proxy OFF and TUN OFF.
-- Enter the exact Step-1 ACK printed by the runner.
-
-**Step 2**
-- Wait for `C2C_TEMP_OUTER_ROUTE=PASS`.
-- Select `HY2-SFO3-REAL` in `SELF-VPN-C2C`.
-- Do not enable system proxy/TUN or run any other traffic.
-- Enter exact Step-2 ACK.
-- Runner performs exactly two requests via the dynamically discovered SOCKS5 listener using `socks5h`.
-
-**Step 3**
-- After `REAL_HY2_IN_CLASH_CANARY=PASS`, switch back to `WG-BASELINE`.
-- Remove only the unique C2C profile.
-- Keep system proxy/TUN OFF.
-- Enter exact Step-3 ACK.
+1. Keep `Invoke-SecretHelper` responsible for launching/capturing the child helper and returning its output, but remove caller-invisible success-stream forwarding from inside that function.
+2. Immediately after each assignment from `Invoke-SecretHelper` (Prepare, VerifyCleanup, and fallback VerifyCleanup), explicitly emit the captured non-secret helper lines to the Owner console before marker validation.
+3. Preserve all current helper markers and Secret redaction; do not add any Secret/hash/path disclosure beyond the already-approved temporary profile path.
+4. Preserve dynamic SOCKS5 discovery, scalar resolver return, `socks5h`, exact two-request scope, route lifecycle, and all existing cleanup.
+5. Extend validator with Fixture K that rejects the current caller-invisible evidence-forwarding shape and requires explicit caller-side forwarding after assignment.
+6. Run full offline validator and require A-K + AST + Mihomo v1.19.32 parse PASS.
 
 ### REQUIRED EVIDENCE
 
-- Owner runtime / safe sync / six blobs;
-- Owner-side validator A-J PASS;
-- `C2C_PREFLIGHT=PASS`;
-- `CLASH_LOCAL_PROXY_DISCOVERY=LIVE_PROCESS_SOCKS5`;
-- scalar `CLASH_LOCAL_PROXY_PORT=<port>`;
-- WireGuard connected / system proxy OFF / TUN OFF;
-- DPAPI/auth/certificate/Owner-only real profile/Mihomo real-profile parse PASS;
-- no pre-existing real-auth residue;
-- Step-1 ACK + post-import readback PASS;
-- temp ActiveStore /32 route PASS;
-- Step-2 ACK;
-- OpenAI curl exit 0 / HTTP 401 / proxy_used=1;
-- expected SFO3 public exit;
-- `REAL_CANARY_REQUEST_COUNT=2`;
-- `REAL_HY2_IN_CLASH_CANARY=PASS`;
-- Step-3 ACK;
-- Clash profile store restored;
-- Clash/project runtime auth residue ABSENT;
-- temp route absent;
-- final WireGuard/system proxy/TUN/route snapshot restored;
-- `C2C_SECRET_CLEANUP=PASS`;
-- `C2C_CLEANUP=PASS`;
+- full timing from before preflight;
+- canonical remote / clean / safe ff-only sync;
+- pre-repair six blobs and final six blobs;
+- exact changed files;
+- fixtures A-K PASS;
+- AST parse PASS;
+- Mihomo fixture parse PASS;
+- `DPAPI_UNPROTECT=NO`;
+- `NETWORK_REQUESTS=0`;
+- `NETWORK_CHANGED=NO`;
 - `SECRET_VALUES_EMITTED=0`;
-- full checkpoint timing;
-- `C2C_OWNER_CHECKPOINT=COMPLETE`.
+- orchestrator/helper/probe/diagnostics not executed;
+- project clean and GitHub fresh read-back.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires the full evidence set above. This Gate proves real HY2-in-Clash connectivity only; it does not authorize persistent HY2 default, G4, REALITY, or broader network mutation.
-
-### ROLLBACK_STATUS_OR_PLAN
-
-WireGuard remains connected throughout. The orchestrator removes the exact temp ActiveStore /32 route in finally. Secret helper owns temp plaintext profile removal and exact auth-byte residue checks. If failure occurs after profile import and cleanup is not fully PASS, do not rerun; return complete non-secret output for a bounded cleanup Gate.
+PASS_CANDIDATE only if future Owner output will directly contain the approved Secret-helper marker lines for Prepare/Cleanup while helper output remains captured for marker validation, and no Secret/network/host action occurs in this Gate.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic R3 checkpoint and perform only the three UI actions when prompted.
+NONE in R2R2.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action during Owner canary.
+Perform only the evidence-forwarding repair and Fixture K. Do not change Secret helper internals, real canary scope, endpoints, route behavior, or SOCKS5 logic. Leave `REVIEWER_HANDOFF.md` unchanged. STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-NONE until Owner returns complete output.
+Return `PASS_CANDIDATE_G3C_C2C_SECRET_HELPER_EVIDENCE_FORWARDING_REPAIR_R2R2` or precise `RETURN_*`.
 
 ## NEXT_STEP
 
-Owner executes the R3 real C2C checkpoint. Reviewer accepts or returns before any G4 work.
+Executor performs R2R2 repair/validation. Reviewer inspects before reopening the Owner real C2C canary.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the R3 atomic Owner checkpoint.
+NONE.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No execution while Owner canary is active.
+Use current Gate only; no real C2C execution.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-NONE.
+Standard short completion packet + durable evidence, then STOP_AT_REVIEWER.
 
 ## EVIDENCE_POINTERS
 
