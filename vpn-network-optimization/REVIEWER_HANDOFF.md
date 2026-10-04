@@ -23,7 +23,7 @@ G3-C Synthetic UI package C2A               PASS
 G3-C Synthetic Clash UI canary C2B          PASS
 G3-C Real C2C package + scanner repair      PASS
 G3-C Secret Prepare real-host verification  PASS
-G3-C Real HY2-in-Clash canary R3R2          AUTHORIZED_NOT_EXECUTED
+G3-C Real HY2-in-Clash canary R3R2          PASS
 G4 Peak-hour + real workload final validate PENDING
 MVP v1 seal                                 PENDING
 ```
@@ -57,6 +57,7 @@ Windows Owner host
 - G3-A sensing/readiness/advisory automation is complete; no automatic network-switch actuator is authorized.
 - G3-B migration package D1-D3 is complete offline; fresh-target live rehearsal remains deferred.
 - G3-C synthetic manual-control/UI behavior is accepted.
+- G3-C R3R2 real HY2-in-Clash canary is formally PASS: the bounded OpenAI request used the explicit Clash proxy path, the public-exit check matched the accepted SFO3 exit, and final cleanup/read-back restored the WireGuard/network/profile baseline.
 
 ### Secret / recovery
 
@@ -96,55 +97,32 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
-STATE=AUTHORIZED_NOT_EXECUTED
-PREVIOUS_RESULT=PASS_G3C_C2C_SECRET_PREPARE_REPAIR_VERIFICATION_R2R3V2
-OBJECTIVE=Run one bounded real HY2-in-Clash canary on the real Owner Windows host using the repaired Secret helper, keep WireGuard as rollback, and restore all temporary state afterward.
+GATE_ID=REVIEWER_STOP_AFTER_G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
+STATE=PASS
+PREVIOUS_RESULT=PASS_G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
+OBJECTIVE=Close the accepted R3R2 consequential round and stop before G4.
+MAX_ENDPOINT_THIS_ROUND=R3R2_REVIEWER_CLOSEOUT_ONLY
 MANDATORY_REVIEW_STOP=YES
-OWNER_C2C_AUTHORIZATION=GRANTED_FRESH
+TARGET_AND_SCOPE=Durable R3R2 acceptance, current-state reconciliation, and next-stage pointer only.
+PREFLIGHT=Required R3R2 request, cleanup, rollback, and final read-back evidence inspected.
+REQUIRED_EVIDENCE=Accepted R3R2 final console evidence in EXECUTION_EVIDENCE.md.
+ACCEPTANCE_CRITERIA=Real canary PASS plus full cleanup/rollback baseline restored.
+ROLLBACK_STATUS_OR_PLAN=WireGuard baseline restored; temporary C2C profile and route absent.
+OWNER_ONLY_ACTIONS=NONE
+REVIEWER_TO_EXECUTOR_RELAY=NONE
+EXECUTOR_TO_REVIEWER_RELAY=NONE
 ```
 
-Fresh Owner authorization for exactly one bounded R3R2 canary was granted after the prior handoff; no R3R2 execution result has been recorded or accepted yet.
-
-A subsequent Owner-local launch attempt was reconciled as a wrapper-only failure before any consequential R3R2 action started. Read-only evidence showed WireGuard/Clash healthy, system proxy OFF, TUN 0, no active/persistent HY2 /32 route, zero C2C runtime/profile residue, and zero C2C marker files in the Clash profile store. The single authorization therefore remains valid and unconsumed.
-
-A second parent-safe launch attempt also failed before any consequential action: native `git -C` received a mojibaked Chinese worktree path and could not resolve the repository. The parent PowerShell remained open; source locking, runner execution, Secret Prepare, profile import, route mutation, and real requests did not start. Authorization remains valid and unconsumed.
-
-### Authorized R3R2 maximum endpoint
-
-```text
-safe ff-only sync
--> exact six source identities
--> preflight
--> one Secret Prepare
--> Owner UI import with WG-BASELINE selected
--> one temporary ActiveStore-only /32 route
--> Owner selects HY2-SFO3-REAL
--> exactly two bounded proxy requests
--> Owner returns to WG-BASELINE and removes C2C profile
--> Secret cleanup / route / profile / network readback
--> STOP_AT_REVIEWER
-```
-
-Required real requests:
-
-- OpenAI `/v1/models`: curl exit 0, HTTP 401, proxy used.
-- public-exit check: accepted SFO3 exit.
+R3R2 is formally closed. Its one-shot Owner authorization is consumed and must not be reused. G4 remains a separate future Gate and is not authorized by this closeout.
 
 ## CRITICAL_CONSTRAINTS
 
-- The fresh Owner authorization covers exactly one bounded R3R2 canary; any consequential failure/ambiguity requires reconciliation before any retry.
-- Exactly two external requests in R3R2; no benchmark loop.
-- Production WireGuard stays connected/available as rollback.
-- System proxy stays OFF.
-- Clash TUN stays OFF.
-- Temporary route is ActiveStore-only `/32`; no persistent route/default-route change.
-- No VPS/SSH mutation in R3R2.
-- No REALITY activation in R3R2.
-- No automatic switching or persistent default change.
-- No G4 in R3R2.
-- No Secret/hash/raw helper output.
-- Any consequential failure/ambiguity is reconciled before retry; no blind replay.
+- WireGuard remains the production/rollback baseline until a later accepted Gate changes that role.
+- G4 is separate from R3R2 and requires its own reviewed Gate before any consequential network switching or representative workload experiment.
+- System proxy/TUN/default-route persistence remain unchanged unless a later Gate explicitly authorizes them.
+- No automatic switching or persistent default-role change is accepted yet.
+- Secret values remain excluded from GitHub/chat/ordinary logs/handoff.
+- G3-B fresh-target live migration rehearsal remains deferred.
 
 ## DEFAULT_EXECUTION_CHANNEL
 
@@ -157,27 +135,27 @@ Required real requests:
 
 ## CURRENT_ROLLBACK_STATUS
 
-- WireGuard is the active rollback path.
-- R2R3V2 left zero C2C runtime directory/profile residue.
-- No temporary route from R2R3V2 exists.
-- No Clash C2C profile was imported during R2R3V2.
-- R3R2 runner is designed to remove its temporary route in `finally` and invoke fallback Secret cleanup when needed.
-- If a C2C profile has been imported and a later step fails, Owner UI cleanup may still be required before retry.
+- WireGuard is the active production/rollback path.
+- R3R2 final read-back restored the pre-canary network state.
+- The temporary ActiveStore-only HY2 /32 route is absent.
+- The unique temporary C2C profile is removed and the Clash profile store returned to baseline.
+- Project runtime cleanup passed and no R3R2 temporary runtime remains accepted as live state.
+- System proxy is OFF and Clash TUN is OFF.
 
 ## UNRESOLVED
 
-- Real HY2 authentication/connectivity through the actual Clash profile lifecycle is not yet formally PASS.
 - G4 peak-hour + representative Codex/OpenAI/image-generation workload validation remains pending.
 - Final v1 default-role selection among WireGuard/HY2/REALITY remains pending G4/final evidence.
+- Final WireGuard routing / kill-switch policy remains pending v1 sealing.
 - G3-B fresh-target live migration rehearsal remains deferred.
 
 ## NEXT_STEP
 
-Execute the already-authorized single bounded `G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2` using one atomic Owner PowerShell checkpoint and the three exact UI acknowledgements. Stop at Reviewer after cleanup/read-back; do not enter G4 in the same round.
+Start a new Reviewer round to design the bounded G4 peak-hour + representative real-workload final-validation Gate. Do not execute G4 as part of the R3R2 closeout.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the one already-authorized bounded R3R2 Owner checkpoint and provide the three UI acknowledgements when prompted; no new authorization is required unless this consequential attempt fails or becomes ambiguous.
+NONE for R3R2 closeout. A later G4 Gate may require Owner scheduling/authorization depending on its final consequential boundary.
 
 ## EVIDENCE_POINTERS
 
