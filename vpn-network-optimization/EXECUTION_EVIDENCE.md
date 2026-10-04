@@ -6356,3 +6356,39 @@ Reviewer conclusion:
 - No consequential phase started.
 - The existing one-shot G4-B0 Owner authorization remains valid and unconsumed.
 - Next step is one live G4-B0 execution only, followed by mandatory Reviewer stop.
+
+
+## G4-B0 offline validator JSON-placeholder failure reconciliation — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT + DIRECT_GITHUB_REPAIR_READBACK
+OFFLINE_VALIDATOR=RETURN
+FAILURE_POINT=ConvertFrom-Json on unrendered __LOCAL_PROXY_PORT__
+G4B0_LIVE_RUNNER_STARTED=NO
+G4B0_CONSEQUENTIAL_PHASE_STARTED=NO
+SECRET_ACCESS=NO
+EXTERNAL_REQUESTS=0
+NETWORK_MUTATION=NO
+AUTHORIZATION_CONSUMED=NO
+```
+
+Root cause:
+- The template intentionally keeps `__LOCAL_PROXY_PORT__` as an unquoted numeric placeholder.
+- The offline validator attempted to parse the raw template as JSON before rendering that placeholder.
+- This is a validator defect only; the live runner and template semantics were not implicated.
+
+Repair:
+- Require exactly one `__LOCAL_PROXY_PORT__` placeholder.
+- Replace it with fixed static validation value `27990` inside the validator only.
+- Parse the rendered validation text and assert `socks-port=27990`.
+- Independent read-back confirms the rendered template is valid JSON.
+- Live runner blob remains unchanged.
+
+```text
+G4B0_RUNNER_BLOB=43221672eb90a2a58062ca4ecbd118f4ebafc866
+G4B0_TEMPLATE_BLOB=f8c637d28a35d3795c8ebaf470d50248562dbaf8
+G4B0_VALIDATOR_BLOB=1c43d09ac277a5c1567d6890e2eb14d8c998515d
+OWNER_AUTHORIZATION=GRANTED_AND_UNCONSUMED
+NEXT_CHECKPOINT=OWNER_LOCAL_VALIDATOR_ONLY
+```
