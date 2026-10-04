@@ -1,12 +1,14 @@
 # VPN Network Optimization — REVIEWER HANDOFF
 
 > Maintainer: Reviewer only  
-> Governance: `entropy-student/spike.skill/vps-project-governance` v0.2.6 / ACTIVE_PROVISIONAL  
-> Canonical project state: this file. Detailed execution history/proof remains in `EXECUTION_EVIDENCE.md` and Git history.
+> Governance: `entropy-student/spike.skill/vps-project-governance/VNEXT.md` v0.2.6 / ACTIVE_PROVISIONAL  
+> Canonical branch: `main`  
+> Detailed chronology: `docs/REVIEWER_TRANSITION_2026-10-04.md`  
+> Detailed proof: `EXECUTION_EVIDENCE.md`
 
 ## PROJECT_GOAL
 
-建立一套可迁移、可验证、可回滚的自建 VPN 优化标准，重点改善 Codex / OpenAI / AI 生图等长任务的稳定性和尾部表现；以 WireGuard 为当前生产/回退基线，验证 Hysteria2 是否值得进入最终 v1。
+建立一套可迁移、可验证、可回滚的自建 VPN 优化标准，重点改善 Codex / OpenAI / AI 生图等长任务的稳定性和尾部表现。WireGuard 当前仍是生产/回退基线；HY2 是当前 G3-C 真实 Clash 控制面验证对象；REALITY 是已验证的 TCP/443 兼容候选。
 
 ## PROJECT_STAGE
 
@@ -16,11 +18,12 @@ G1 Foreground-safe Foundation               PASS
 G2 Multi-path candidate validation          PASS
 G3-A Health/readiness/advisory              PASS
 G3-B Migration package D1-D3                PASS_OFFLINE
-G3-C C1 Manual-control contract             PASS
-G3-C C2A Synthetic UI package repair        PASS_WITH_TIMING_GAP
-G3-C C2B Synthetic Clash UI canary          PASS
-G3-C C2C package offline validation         PASS
-G3-C C2C real HY2-in-Clash Owner canary     IN_PROGRESS
+G3-C Manual-control contract C1             PASS
+G3-C Synthetic UI package C2A               PASS
+G3-C Synthetic Clash UI canary C2B          PASS
+G3-C Real C2C package + scanner repair      PASS
+G3-C Secret Prepare real-host verification  PASS
+G3-C Real HY2-in-Clash canary R3R2          AUTH_REQUIRED
 G4 Peak-hour + real workload final validate PENDING
 MVP v1 seal                                 PENDING
 ```
@@ -29,128 +32,66 @@ MVP v1 seal                                 PENDING
 
 ```text
 Windows Owner host
-├─ Current production / rollback: WireGuard adapter SFO2-A
-│  ├─ IPv4 full coverage via 0.0.0.0/1 + 128.0.0.0/1
-│  └─ DigitalOcean sfo3 VPS 24.199.118.137
-│     └─ Internet / OpenAI
-├─ Validated HY2 candidate path
-│  └─ temporary localhost Mihomo proxy :17890
-│     └─ temporary ActiveStore 24.199.118.137/32 via WLAN
-│        └─ Hysteria2 UDP 8443 on same VPS
-├─ Validated REALITY private interoperability path
-│  └─ Windows Mihomo v1.19.31 client (historical G2-C proof)
-│     └─ temporary Mihomo v1.19.31 VLESS+REALITY+Vision server on 10.66.21.1:14443
-│        └─ one OpenAI request succeeded with expected HTTP 401
-└─ Control path
-   └─ SSH through WireGuard to 10.66.21.1:22
+├─ Production / rollback: WireGuard
+│  ├─ IPv4 coverage: 0.0.0.0/1 + 128.0.0.0/1
+│  ├─ active MTU: 1420
+│  └─ current self-hosted VPS: DigitalOcean 24.199.118.137 / sfo3
+├─ Clash Verge 2.5.6
+│  └─ local SOCKS5 listener must be dynamically discovered
+│     └─ D5 observed 127.0.0.1:7900, but port 7900 is NOT a hardcoded contract
+├─ HY2 candidate
+│  ├─ server: Hysteria2 v2.12.3
+│  ├─ UDP/8443
+│  └─ current C2C Owner Mihomo validation baseline: v1.19.32
+└─ REALITY candidate
+   └─ historical G2-C interoperability baseline: Mihomo v1.19.31
 ```
-
-Current known components:
-- VPS: DigitalOcean `sfo3`, public IP `24.199.118.137`.
-- WireGuard: active MTU 1420; current IPv4 defaults are two `/1` routes, not `0.0.0.0/0`.
-- WireGuard Windows strict WFP kill-switch: absent after the accepted G2-B repair.
-- Hysteria2: official v2.12.3, independent service on UDP 8443.
-- Windows client: Clash Verge 2.5.6; accepted current Mihomo core v1.19.32. Historical G2-C proofs used v1.19.31.
-- Owner execution runtime: PowerShell 7.6.6, Administrator, High integrity.
-- HY2 recovery: canonical DPAPI CurrentUser recovery artifact validated; do not re-fetch or rotate VPS Secrets.
-
-## CRITICAL_CONSTRAINTS
-
-- Production WireGuard remains the continuity/rollback baseline throughout C2C.
-- Owner has explicitly authorized one bounded C2C real-HY2 canary, and the C2C offline package has now been formally accepted. The current Gate is the Owner-local real canary only.
-- Real C2C actions are allowed only inside the locked Owner-local checkpoint: CurrentUser DPAPI unprotect via the Secret helper, one temporary real Clash profile, one temporary ActiveStore /32 route, and exactly two proxy requests. VPS/SSH, REALITY, G4, persistent routes/default changes, system-proxy enablement, TUN enablement, and WireGuard disconnect remain forbidden.
-- C2C package architecture is split deliberately: Secret helper has no network-request capability; bounded network probe has no Secret/DPAPI capability; orchestrator owns sequencing only.
-- The offline package is accepted; real execution must use the exact locked blobs and the Reviewer-supplied one-shot Owner checkpoint.
-- REALITY remains cold/deferred; C2C does not authorize G4 or any persistent default change.
-- Owner-local actions use one reviewed checkpoint; Owner is not responsible for debugging/design.
-
-## DEFAULT_EXECUTION_CHANNEL
-
-`CODEX_DESKTOP -> reviewed Owner-local PowerShell one-shot checkpoint when explicitly requested by the current Gate`.
-
-## CURRENT_ROLLBACK_STATUS
-
-C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains production/rollback and must stay connected throughout the real C2C canary. The C2C orchestrator owns the temporary /32 route lifecycle; the Secret helper owns the temporary plaintext profile and residue verification. If execution fails after the real profile has been imported but before Owner removal, do not rerun: remove only the C2C profile if Reviewer directs it after inspecting the failure evidence.
-
-## UNRESOLVED
-
-- C2C real HY2-in-Clash Owner canary remains to be executed once using the accepted package.
-- G4 peak-hour + real-workload final validation remains pending.
-- REALITY remains cold/deferred for persistent manual-control use.
 
 ## CURRENT_ACCEPTED_STATE
 
-- **Current production:** WireGuard remains connected and authoritative.
-- **G3-C C1:** PASS; Windows Mihomo v1.19.32 accepted.
-- **G3-C C2A repair:** accepted technically with the previously recorded timing-observability gap.
-- **G3-C C2B-P0 R1 durability objective:** accepted without replay. Canonical commits `fc2aa9399627c19b5368ed6da6a219deaeb20b77` and `dd8651aa760062f71ddc84a1154b21873ecbc174` durably contain the previously missing GitHub read-back, Git-persistence timing, and safe-fast-forward facts.
-- **R1 formal Gate disposition:** `RETURN_R1_TIMING_START_NOT_CAPTURED` remains the correct Executor result because the Gate required a round-start marker before initial fetch. Reviewer does not convert that Gate to PASS; the missing exact start is retained as a process-observability defect.
-- **Replay:** NONE. The timing defect cannot be repaired by replay and does not invalidate the already-completed document reconciliation.
-- **Current-main drift check:** current main may advance for unrelated projects; Reviewer verified the post-`dd8651...` advancement touched only `birthday-magazine-studio/`, not this VPN project.
-- **C2B source identity:** direct GitHub read-back confirms runner blob `cd5a2eb768b54d13307b651ea514a912b9742c9d` and template blob `b50f9747157200670d6e85fdd53ba81e9a8c5c76`.
-- **Local worktree:** Executor reported the managed VPN worktree clean after durable read-back and cleanup; the next Gate must independently re-prove project-scoped cleanliness before the Owner checkpoint.
-- **No live action occurred in R1.**
-- **C2B R2R1 Executor preflight:** Owner-relayed Executor report states canonical/main, Gate alignment, project cleanliness, and locked runner/template identities passed; the current Codex execution shell failed the Owner-runtime boundary at PowerShell 7.6.5 / non-admin / medium integrity. Runner did not start.
-- **Execution-channel disposition:** Codex runtime is not authorized to bypass that mismatch. Reviewer approves a one-shot Owner-local checkpoint only; this does not change the default execution channel.
-- **Owner-local R2R1-O1 result:** Owner-reported output shows the real PowerShell 7.6.6/Admin runner started, passed Clash profile-store baseline, then failed read-only `PRECHECK_NETWORK_STATE` with `PropertyNotFoundException`; cleanup passed and no UI acknowledgement occurred.
-- **Failure classification:** this is treated as runner/evidence-shape incompatibility until a read-only object-shape diagnostic identifies the missing property; it is not evidence of network drift.
-- **D1 local-path result:** Owner reported `Test-Path` for the reviewed diagnostic in the existing Codex worktree returned `False`. Canonical GitHub contains the diagnostic, so the local worktree is stale rather than the diagnostic being absent from canonical.
-- **D1R1 root result:** Owner-reported bounded checkpoint returned `WORKTREE_ROOT_MISMATCH` before fetch/sync/diagnostic. No C2B runner or network action occurred. Reviewer classifies the fault as an incorrect hardcoded Git-root assumption in the checkpoint, not local repository drift.
-- **D1R2 path-encoding result:** Owner-reported Git top-level rendered the Chinese path component `VPS搭建` as mojibake `VPS鎼缓`; the checkpoint then compared that decoded string with the correct .NET Unicode runner path and returned `RUNNER_OUTSIDE_GIT_ROOT`. No fetch/update/diagnostic/C2B/network action occurred. This is a native-output path-decoding defect, not repository topology evidence.
-- **D1R3 diagnostic result:** Owner-local evidence proved safe ff-only synchronization from `d87fbdd...` to `867604f...`, exact diagnostic blob identity, PowerShell 7.6.6/Admin/High integrity, and a successful read-only object-shape capture with no network mutation or Secret output.
-- **Confirmed root cause:** all 23 ActiveStore IPv4 route objects exposed `DestinationPrefix`, `NextHop`, `InterfaceIndex`, and `RouteMetric`, while `PolicyStore` was absent on 23/23 objects. The original runner's `$_.PolicyStore` access therefore caused the `PropertyNotFoundException`.
-- **Route-snapshot repair:** Owner-local validation passed all offline fixtures, including the new ActiveStore/no-object-PolicyStore regression guard; the route-object compatibility repair is accepted.
-- **C2B retry result:** the repaired runner progressed past the prior network-state failure and profile-store baseline, then failed at `CREATE_OWNER_RUNTIME` with `OWNER_ACL_INHERITANCE_ENABLED`. Cleanup passed; no UI acknowledgement, Secret output, real HY2/REALITY/VPS action, or network mutation occurred.
-- **ACL failure classification:** the Owner-only runtime ACL invariant remains required. The current failure is treated as ACL application/read-back incompatibility, not permission relaxation.
-- **D2 diagnostic result:** Owner-local D2 synchronized safely to current main, verified the diagnostic blob, then returned `MethodException` before either ACL method produced evidence; cleanup passed and C2B/network/Secret actions remained absent.
-- **D2 root cause refinement:** the diagnostic invoked the .NET Framework-shaped static `[IO.Directory]::CreateDirectory(path, DirectorySecurity)` call. On the target PowerShell 7.6.6/.NET runtime that call shape is not bindable; modern .NET exposes equivalent ACL-at-create behavior through `System.IO.FileSystemAclExtensions.CreateDirectory(DirectorySecurity, path)`.
-- **D2R1 result:** both modern create-with-ACL and create-then-`Set-Acl` independently proved `PROTECTED=True`, correct Owner, exactly one Owner rule, zero inherited/unauthorized rules, direct FullControl, child FullControl, cleanup PASS, no network mutation, and no Secret output. Reviewer selects create-with-ACL because it avoids a temporary inherited-permission window.
-- **ACL repair candidate:** canonical runner now uses `FileSystemAclExtensions.CreateDirectory` for both Owner runtime directories and explicitly `SetOwner($script:ownerSid)`; validator requires both properties and rejects regression to the old Directory overload.
-- **ACL repair target validation:** Owner-local validator passed all fixtures including the modern Owner ACL regression guard, but the repaired runner still returned `OWNER_ACL_INHERITANCE_ENABLED` at `CREATE_OWNER_RUNTIME` before UI. Cleanup passed and no network/Secret action occurred.
-- **D3 residue result:** Owner-local readback proved the exact project-owned runtime root exists, is empty, is not a reparse point, and still carries the legacy inherited ACL: `PROTECTED=False`, `OWNER_MATCH=False`, one inherited rule, zero unauthorized rules, with no mutation performed.
-- **Root cause closure:** the repaired runner was not reaching the new create-with-ACL code because the stale runtime root already existed. This fully explains the repeated `OWNER_ACL_INHERITANCE_ENABLED` without disproving the new ACL implementation.
-- **Repair authorization:** because the exact root is empty, non-reparse, project-owned, and has no explicit unauthorized ACL rules, Reviewer authorized a bounded in-place ACL reconciliation only; no deletion was authorized.
-- **C2B final Owner checkpoint:** exact runtime-root ACL reconciliation succeeded in place: before `PROTECTED=False / OWNER_MATCH=False / inherited=1`; after `PROTECTED=True / OWNER_MATCH=True / inherited=0 / unauthorized=0`, Owner direct+child FullControl true, root remained empty, and root deletion was `NO`.
-- **C2B validator:** all offline fixtures passed, including the ActiveStore route-shape regression and modern Owner ACL creation regression; AST parse passed; network requests/change remained zero.
-- **C2B UI proof:** Owner visual evidence showed `SELF-VPN-CANARY`, `WG-BASELINE`, and synthetic `HY2-SFO3` visible with `WG-BASELINE` current/default. Owner then removed the imported synthetic profile and supplied the exact structured acknowledgement.
-- **C2B final readback:** `CLASH_PROFILE_STORE_POSTREMOVE=PASS`, `POST_UI_NETWORK_READBACK=PASS`, `LOCAL_RUNTIME_CLEANUP=PASS`, `OWNER_UI_PROFILE_REMOVED=ACKNOWLEDGED`, `SECRET_VALUES_EMITTED=0`, `C2B_OWNER_CHECKPOINT=COMPLETE`, and outer `RECONCILE_VALIDATION_CANARY=PASS`.
-- **C2B formal Reviewer disposition:** `PASS_G3C_C2B_SYNTHETIC_CLASH_UI_CANARY`. This proves synthetic profile parsing, UI visibility/manual selection semantics, cleanup, and no-production-state drift only; it does **not** prove real HY2 authentication/connectivity/performance.
-- **Benchmark detour remains cancelled.**
-- **C2C Owner authorization:** GRANTED in the current conversation on 2026-10-04. Authorization covers one bounded real HY2-in-Clash canary after a reviewed package is accepted; it does not authorize persistent default change, performance benchmarking, G4, REALITY activation, or broader network mutation.
-- **C2C package candidate:** source split is now explicit: `c2c-secret-profile-helper.ps1` is local-only Secret handling, `c2c-bounded-proxy-probe.ps1` is exactly two network requests with no Secret access, and `c2c-owner-clash-real-canary.ps1` orchestrates the temporary route/UI lifecycle without DPAPI access.
-- **C2C candidate source identities before offline validation:** orchestrator `e59be99321cc98a37a80e4a747b937aaaaf5d58b`; Secret helper `cdbcd94e504ca9d7f680d30a971bea201a812c7a`; proxy probe `4e17c849dffdd410ff2c635830ce0e59cb24304e`; validator `4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9`; template `ea18bdccf8f00f2d6d705e4ba34ba57db243722a`; package doc `10518d986ab3094a4578f431301a820645d7163b`.
-- **C2C package acceptance:** PASS. Executor commit `87455f208ab58f6a134cc2fa15de1707c21a9d8d` changed only `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`; all six package blobs remained unchanged.
-- **C2C offline proof:** all seven static fixtures passed; PowerShell AST parse passed; Mihomo v1.19.32 synthetic fixture parse passed; DPAPI unprotect/real Secret read/orchestrator/Secret-helper real modes/Clash mutation/network requests/network changes/VPS/REALITY were all absent; validator exit 0; temp residue 0.
-- **Offline runtime note:** Executor used PowerShell 7.6.5, which is acceptable for this repo-only/static Gate because no Owner-runtime action was authorized. The real Owner canary independently requires PowerShell 7.6.6 + Administrator + High integrity.
-- **C2C formal Reviewer disposition:** `PASS_G3C_C2C_PACKAGE_OFFLINE_VALIDATION_R1`.
-- **Locked real-canary source identities:** orchestrator `e59be99321cc98a37a80e4a747b937aaaaf5d58b`; Secret helper `cdbcd94e504ca9d7f680d30a971bea201a812c7a`; proxy probe `4e17c849dffdd410ff2c635830ce0e59cb24304e`; validator `4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9`; template `ea18bdccf8f00f2d6d705e4ba34ba57db243722a`; package doc `10518d986ab3094a4578f431301a820645d7163b`.
-- **C2C Owner checkpoint R1 wrapper result:** RETURN before Git synchronization because the Reviewer-supplied wrapper used `$dirty.Count` under `Set-StrictMode -Version Latest`. A clean Git status yields no pipeline objects, so `$dirty` becomes `$null` and `.Count` faults. Only `OWNER_RUNTIME=PASS` preceded the failure; the orchestrator did not start and no DPAPI/Secret/Clash/route/network action occurred. R1R1 changes only the wrapper cardinality checks to `@($dirty).Count` / `@($dirtyAfter).Count`; locked C2C source blobs are unchanged.
-- **C2C Owner checkpoint R1R1 result:** wrapper sync, blob lock and Owner-side offline validator all PASS, then the orchestrator returned in `PREFLIGHT` with `CLASH_LOCAL_PROXY_LISTENER_MISSING`. Cleanup/readback confirms temp route absent, WireGuard restored, system proxy OFF, TUN OFF, route snapshot restored, Secret cleanup not required, real canary not started, and no real request evidence. This is classified as a local-proxy listener-discovery precondition issue, not a HY2/auth failure.
-- **D4 listener result:** Windows system proxy is OFF; registry metadata still points to port 10810, but no process listens there. Clash/Mihomo is live and owns loopback listeners on 52560 (`clash-verge`), 7900 (`verge-mihomo`), and 9097 (`verge-mihomo`). Registry/live intersection is zero. This proves the current resolver is stale-metadata incompatible.
-- **D5 result:** exactly one live Clash/Mihomo listener answered the SOCKS5 no-auth greeting: `verge-mihomo|127.0.0.1|7900`. Port 52560 returned non-SOCKS bytes and 9097 returned no SOCKS response. D5 used three loopback-only probes, zero external requests, zero Secret access, and no mutation.
-- **Resolver repair:** C2C no longer trusts Windows `ProxyServer` metadata. The orchestrator now discovers live Clash/Mihomo loopback listeners and requires exactly one SOCKS5 no-auth listener. The bounded two-request probe now uses `socks5h://127.0.0.1:<discovered-port>`, matching the protocol actually proven by D5.
-- **Repair scope:** orchestrator, bounded proxy probe, offline validator, and package documentation changed; Secret helper and HY2 template are unchanged. Real C2C execution remains paused until post-repair offline validation is accepted.
+### Transport and architecture
 
-- **D7 sanitized Secret Prepare result:** Owner-local D7 safely reproduced the helper failure and surfaced `FAILURE_CODE=SECRET_SCAN_READ_FAILED`. Baseline and post-return runtime C2C directory/profile counts were all zero; Clash import, outer route, external requests, system-proxy/TUN/WireGuard mutation were all absent; `SECRET_VALUES_EMITTED=0`. Source control flow places the failure after DPAPI/recovery parsing/template/certificate validation and inside one of the exact auth-byte file scans, but D7 does not distinguish Clash-app scan from project-runtime scan.
-- **D8 purpose:** reproduce only file-read compatibility across the same Clash-app/runtime roots without DPAPI or the real auth pattern. It reads files locally to EOF using the same read/share semantics, discards bytes, and emits only root/category/extension/error-class aggregates; no file names, contents, Secrets, hashes, or network traffic are exported.
+- WireGuard is the production and rollback baseline.
+- HY2 passed the historical same-window 60/60 comparison against WireGuard and showed better median/tail behavior in that accepted sample.
+- VLESS + REALITY + Vision passed private implementation A/B and public TCP/443 canary; it remains a compatibility candidate, not the current active G3-C target.
+- G3-A sensing/readiness/advisory automation is complete; no automatic network-switch actuator is authorized.
+- G3-B migration package D1-D3 is complete offline; fresh-target live rehearsal remains deferred.
+- G3-C synthetic manual-control/UI behavior is accepted.
 
-- **D8 readability result:** Clash app root contains 56 files; exactly one read failure is stable and classified as a root-level `.lock` file with `MethodInvocationException` on both attempts. Project runtime contains zero files and zero read failures. This proves the current full-root residue scanner is blocked by one Clash root lock file, not by project runtime residue.
-- **D8R1 purpose:** before weakening the Secret scan, verify metadata-only that the problematic class corresponds to exactly one root-level `.lock`, that it is non-reparse and zero-length, and that it remains unreadable. Only that evidence can justify an exact zero-byte root-lock exception; any nonzero/reparse/multiple-lock result fails closed.
+### Secret / recovery
 
-- **D8R1 result:** the single root-level `.lock` is exactly one file, non-reparse and zero-length, but it was readable during D8R1. This disproves a permanent-unreadable-file invariant and reclassifies D8's two 100 ms failures as transient lock contention across time rather than a stable storage defect.
-- **Repair decision:** do not generically skip `.lock` or unreadable files. Add one fail-closed exception only when the Clash-app-root scan actually gets a read exception and fresh metadata proves the failing item is root-level, extension `.lock`, zero bytes, and non-reparse. All other read failures remain `SECRET_SCAN_READ_FAILED`. Project-runtime scanning gets no exception.
+- Secret values never enter GitHub/chat/ordinary logs/handoff.
+- Accepted recovery metadata: `%LOCALAPPDATA%\vpn-network-optimization\recovery\hy2-g2a.dpapi`, DPAPI CurrentUser, accepted `VPNHY2R1` bundle.
+- Do not re-fetch or rotate the HY2 credential to continue C2C.
+- R2R3V2 proved real Owner-host DPAPI unprotect, bundle/auth validation, certificate fingerprint match, temporary Owner-only profile creation, Mihomo parse, immediate VerifyCleanup, and zero residue.
 
-- **R2R3 Reviewer-direct repair:** at Owner request, Reviewer directly implemented the bounded scanner exception in helper/validator/package docs. Static read-back confirms Clash opt-in count 2, runtime opt-in count 0, all five metadata guards present, and Fixture L mutations for zero-length/root-level/extension/reparse/runtime scope. Formal PASS waits for Owner-side A-L/AST/Mihomo validation.
+### Accepted C2C repair
 
-- **R2R3V1 Owner validation return:** source identity and Owner runtime preflight passed, but the validator itself failed before A-L because Fixture L used a double-quoted mutation string containing `$isLock`; StrictMode expanded an unset validator variable. This is classified as a validator fixture defect, not a scanner-source failure. Validator-only commit `23f1c0e92bf6f8b87bf3ab56a712db2e2185824d` fixes the literal quoting; new validator blob is `abcf19ce6712fbf448c84043684e69930d67bef3`.
+Historical blocker `SECRET_SCAN_READ_FAILED` was localized to transient contention on one Clash-app root-level zero-byte `.lock`.
 
-- **R2R3V1R1 Owner validation return:** the same unset `$isLock` error recurred before substantive fixture execution. Static diagnostic found one remaining double-quoted regex literal using backslash-dollar; PowerShell still interpolated it. Validator-only commit `9c42dd671f005a04c66904778890b4181ba8126f` fixes that final occurrence. Whole-validator bounded scan now reports zero remaining `"\\$variable"`-style literals; new validator blob is `26655446b16f70809cb4741633fa7296b7c4d0de`.
+Accepted scanner policy:
 
-- **R2R3V1R2 Owner validation return:** validator reached package-contract validation and returned `PACKAGE_SECRET_SCAN_EXCEPTION_UNDOCUMENTED`. The package already documented all required safety semantics; the validator alone incorrectly depended on the English order `zero-byte -> root-level -> .lock`. Validator-only commit `6a831b5f947f82c63514989c28e0d0c03a33e2aa` replaces that with six independent semantic checks. New validator blob is `e520fa7b6c08b2e46365b55ec731a20bdb810c04`.
+- no generic `.lock` bypass;
+- no generic unreadable-file bypass;
+- exception activates only **after an actual read exception** in the Clash-app scan;
+- fresh metadata must prove the failing item is a direct root child, `.lock`, zero-byte, normal file, and non-reparse;
+- project-runtime scanning has no exception and remains strict;
+- every other unreadable-file case remains fail-closed.
 
-- **R2R3 formal acceptance:** Owner R2R3V1R3 returned PASS with exact six locked blobs, Fixtures A-L PASS, PowerShell AST PASS, Mihomo fixture parse PASS, `G3C_C2C_OFFLINE_FIXTURES=PASS`, `DPAPI_UNPROTECT=NO`, `NETWORK_REQUESTS=0`, `NETWORK_CHANGED=NO`, and `SECRET_VALUES_EMITTED=0`. The bounded Clash zero-byte root-lock scan repair is formally accepted.
+R2R3 Owner validation passed Fixtures A-L, PowerShell AST parse and Mihomo fixture parse. R2R3V2 then behaviorally verified real Secret Prepare + immediate cleanup on the Owner host.
 
-- **R2R3V2 formal acceptance:** Owner real-host sanitized Prepare verification passed. DPAPI/recovery parsing, auth format, certificate fingerprint, temporary Owner-only profile generation, Mihomo parse, immediate VerifyCleanup, and zero-residue readback all passed. No Clash import, route, external request, system-proxy/TUN/WireGuard mutation, or Secret output occurred.
+### Locked current C2C identities
+
+```text
+ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
+SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
+PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
+VALIDATOR_BLOB=e520fa7b6c08b2e46365b55ec731a20bdb810c04
+TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
+```
+
+Do not silently substitute historical C2C blobs from old Evidence or Executor sections.
 
 ## CURRENT_GATE
 
@@ -158,103 +99,97 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
 STATE=OWNER_AUTHORIZATION_REQUIRED
 PREVIOUS_RESULT=PASS_G3C_C2C_SECRET_PREPARE_REPAIR_VERIFICATION_R2R3V2
-OBJECTIVE=Run one bounded real HY2-in-Clash canary on the real Owner Windows host using the repaired Secret helper, while keeping production WireGuard available as rollback and restoring all temporary state afterward.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact package identities -> preflight -> one Secret Prepare -> Owner UI import with WG baseline -> one temporary ActiveStore /32 route -> Owner selects HY2 -> exactly two proxy requests -> Owner returns to WG and removes C2C profile -> Secret cleanup/residue check -> route/network/profile readback -> STOP_AT_REVIEWER.
+OBJECTIVE=Run one bounded real HY2-in-Clash canary on the real Owner Windows host using the repaired Secret helper, keep WireGuard as rollback, and restore all temporary state afterward.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; c2c-owner-clash-real-canary.ps1 with repaired helper and existing bounded proxy probe/template/package only.
-APPLICABLE_CRITICAL_CONSTRAINTS=Fresh Owner authorization required because the prior real canary attempt failed before completion; exactly two external requests only; no benchmark loop; production WireGuard remains connected; system proxy OFF; TUN OFF; temporary /32 route is ActiveStore only and must be absent at end; no persistent route; no default-route change; no VPS/SSH; no G4; no Secret/hash/raw helper output.
-ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
-SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
-PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
-VALIDATOR_BLOB=e520fa7b6c08b2e46365b55ec731a20bdb810c04
-TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
-PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
 OWNER_C2C_AUTHORIZATION=REQUIRED_FRESH
-SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
-ESTIMATED_EXECUTION_TIME=5-10_minutes_plus_owner_UI
-TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### ACCEPTED R2R3V2 REAL-HOST VERIFICATION
+Fresh Owner authorization has **not** yet been granted for R3R2 at this handoff.
 
-Owner R2R3V2 proved the repaired helper can decrypt/validate the accepted recovery artifact, complete Secret Prepare, create and parse the temporary Owner-only profile, and immediately VerifyCleanup with zero runtime residue. No Clash import, route, external request, proxy/TUN/WireGuard mutation, or Secret output occurred.
+### R3R2 maximum endpoint after fresh approval
 
-### OWNER AUTHORIZATION BOUNDARY
+```text
+safe ff-only sync
+-> exact six source identities
+-> preflight
+-> one Secret Prepare
+-> Owner UI import with WG-BASELINE selected
+-> one temporary ActiveStore-only /32 route
+-> Owner selects HY2-SFO3-REAL
+-> exactly two bounded proxy requests
+-> Owner returns to WG-BASELINE and removes C2C profile
+-> Secret cleanup / route / profile / network readback
+-> STOP_AT_REVIEWER
+```
 
-This next Gate is consequential and is not implicitly authorized by R2R3V2. It will:
-- ask the Owner to import/activate one unique temporary C2C profile while WG remains selected;
-- create one temporary ActiveStore /32 route to the HY2 server through the physical egress;
-- ask the Owner to select the real HY2 node;
-- send exactly two real requests through the proven local SOCKS5 listener;
-- ask the Owner to return to WG and remove the C2C profile;
-- verify zero Secret/profile/route residue and restored network state.
+Required real requests:
 
-No execution may start until the Owner gives fresh explicit authorization for this Gate.
+- OpenAI `/v1/models`: curl exit 0, HTTP 401, proxy used.
+- public-exit check: accepted SFO3 exit.
 
-### REQUIRED EVIDENCE AFTER AUTHORIZATION
+## CRITICAL_CONSTRAINTS
 
-- Owner PowerShell 7.6.6/Admin/High and clean safe ff-only sync;
-- exact six blobs above;
-- preflight WireGuard connected, system proxy OFF, TUN OFF, live SOCKS5 listener, profile-store baseline, no existing temp route;
-- Secret Prepare markers with no Secret output;
-- exact Owner UI ACK 1 after import with WG baseline selected;
-- temporary ActiveStore /32 route exact readback;
-- exact Owner UI ACK 2 after selecting HY2;
-- exactly two bounded proxy requests: OpenAI curl exit 0 / HTTP 401 / proxy used, plus accepted SFO3 public exit;
-- `REAL_HY2_IN_CLASH_CANARY=PASS`;
-- exact Owner UI ACK 3 after return to WG and profile removal;
-- zero Clash real-auth residue and zero project-runtime residue;
-- temporary route absent;
-- profile-store restored;
-- WireGuard restored/unchanged, system proxy OFF, TUN OFF;
-- `SECRET_VALUES_EMITTED=0`;
-- complete timing and cleanup PASS.
+- No R3R2 execution before fresh explicit Owner authorization.
+- Exactly two external requests in R3R2; no benchmark loop.
+- Production WireGuard stays connected/available as rollback.
+- System proxy stays OFF.
+- Clash TUN stays OFF.
+- Temporary route is ActiveStore-only `/32`; no persistent route/default-route change.
+- No VPS/SSH mutation in R3R2.
+- No REALITY activation in R3R2.
+- No automatic switching or persistent default change.
+- No G4 in R3R2.
+- No Secret/hash/raw helper output.
+- Any consequential failure/ambiguity is reconciled before retry; no blind replay.
 
-### ACCEPTANCE_CRITERIA
+## DEFAULT_EXECUTION_CHANNEL
 
-PASS only if all real canary markers and all cleanup/readback markers pass in the same bounded run. Any failure/ambiguity returns and is reconciled before another consequential retry.
+- Reviewer may directly perform normal repository/document/source repair when inside the current accepted project boundary.
+- Owner executes consequential Windows checkpoints in PowerShell 7.6.6 + Administrator + High integrity.
+- Executor is used when independent implementation/testing materially improves safety or speed; current R3R2 has `EXECUTOR_ROLE=NO_ACTION`.
+- Owner-local convenience path previously used:
+  `C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\c2c-owner-clash-real-canary.ps1`
+- Local path is not source authority; every consequential run still safe-syncs to GitHub `main` and locks blobs.
 
-### ROLLBACK_STATUS_OR_PLAN
+## CURRENT_ROLLBACK_STATUS
 
-Production WireGuard remains the rollback path throughout. The runner removes the temporary route in finally and invokes fallback Secret cleanup when needed; Owner UI cleanup remains required if a profile was imported and a later step fails.
+- WireGuard is the active rollback path.
+- R2R3V2 left zero C2C runtime directory/profile residue.
+- No temporary route from R2R3V2 exists.
+- No Clash C2C profile was imported during R2R3V2.
+- R3R2 runner is designed to remove its temporary route in `finally` and invoke fallback Secret cleanup when needed.
+- If a C2C profile has been imported and a later step fails, Owner UI cleanup may still be required before retry.
 
-### OWNER_ONLY_ACTIONS
+## UNRESOLVED
 
-Give fresh explicit authorization for one bounded R3R2 real HY2-in-Clash canary. After authorization, Reviewer will provide the atomic Owner checkpoint and the three exact UI acknowledgements.
-
-### REVIEWER_TO_EXECUTOR_RELAY
-
-No Executor action.
-
-### EXECUTOR_TO_REVIEWER_RELAY
-
-NONE.
+- Fresh Owner authorization for exactly one R3R2 real HY2-in-Clash canary.
+- Real HY2 authentication/connectivity through the actual Clash profile lifecycle is not yet formally PASS.
+- G4 peak-hour + representative Codex/OpenAI/image-generation workload validation remains pending.
+- Final v1 default-role selection among WireGuard/HY2/REALITY remains pending G4/final evidence.
+- G3-B fresh-target live migration rehearsal remains deferred.
 
 ## NEXT_STEP
 
-Obtain fresh Owner authorization, then run exactly one bounded real canary and stop for Reviewer decision.
+Ask the Owner for fresh authorization for one bounded `G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2`.
+
+If authorized, provide one atomic Owner PowerShell checkpoint and the three exact UI acknowledgements. Do not enter G4 in the same round.
 
 ## OWNER_ACTION_REQUIRED
 
 Authorize or decline one bounded R3R2 real HY2-in-Clash canary.
 
-## REVIEWER_TO_EXECUTOR_RELAY
-
-No action.
-
-## EXECUTOR_TO_REVIEWER_RELAY
-
-NONE.
-
 ## EVIDENCE_POINTERS
 
-- `EXECUTION_EVIDENCE.md` — append-only execution proof through the successful 60+60 same-window comparison.
-- `DECISION_LOG.md` — durable decision rationale for the kill-switch routing change and current production/candidate roles.
-- `docs/ROUND_TIMING_RETROSPECTIVE.md` — per-round estimate/actual timing, overrun causes, and reusable execution-efficiency improvements; not canonical project truth.
-- `EXECUTOR_HANDOFF.md` — historical Executor factual notes; not canonical current project truth.
-- `scripts/g2b-owner-runner.ps1` — accepted G2-B benchmark/runtime logic.
-- `scripts/g2b-comparative-after-killswitch-repair.ps1` — successful final G2-B comparative checkpoint.
-- Evidence commit `b85224370a295cc5128e29da9186573b81345d27` — same-window WG vs HY2 results and cleanup proof.
-- Reviewer acceptance commit `cfb2d723657a5607c5d8c756705dc873c06babe5` — first formal acceptance of the completed G2-B evidence.
+Read only what is needed:
 
-Historical Reviewer narrative remains available in Git history and is intentionally not duplicated in this dashboard.
+- `docs/REVIEWER_TRANSITION_2026-10-04.md` — complete transition chronology and accepted boundaries.
+- `EXECUTION_EVIDENCE.md` — append-only execution proof; accepted R2R3/R2R3V2 sections are near the tail.
+- `DECISION_LOG.md` — architecture and authorization rationale, including accepted scanner repair and fresh R3R2 authorization requirement.
+- `docs/G3C_C2C_REAL_HY2_CANARY_PACKAGE.md` — accepted real canary package contract.
+- `docs/G3C_C2B_OWNER_CANARY_PACKAGE.md` — accepted synthetic UI canary package.
+- `docs/G3C_MANUAL_CONTROL_CONTRACT.md` — accepted manual-control contract.
+- `docs/G3B_MIGRATION_PACKAGE.md` and `docs/G3B_STAGED_INSTALL_MANIFEST.md` — accepted G3-B offline migration package.
+- `docs/ROUND_TIMING_RETROSPECTIVE.md` — process/timing notes only; not canonical project truth.
+- `EXECUTOR_HANDOFF.md` — historical Executor facts only; never use it to override this file.
+
+Historical Reviewer narrative remains in Git history and the transition snapshot; it is intentionally not duplicated here.
