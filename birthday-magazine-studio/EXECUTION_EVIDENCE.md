@@ -1014,3 +1014,5 @@ Supersedes the previous implementation-pending status only. Formal Reviewer and 
 - All forbidden actions0: PayPal/payment/AddCart/Checkout-submit/order/account/provider/product-model/production/shared-infra/P1–P12/core-Aha/G4/purchase/prune/merge. Successful browser contexts closed; evidence-tool lazy-image wait was bounded and rerun, failed helper trees safely stopped. Pre-existing Owner files17 old PNG deletions/untracked obsolete evidence untouched and excluded; no Reviewer decision modified.
 
 `STOP_AT_REVIEWER=YES`; `Owner relay=NONE`; `OWNER_VISUAL_FREEZE=PENDING`.
+
+D2 submission readback addendum: implementation commit e6d7a5bf51255474fc6cd96e6015b9d2bb04f366 pushed. Scoped backup byte-preservation re-add is included in the enclosing final hygiene commit; staged Git-blob SHA256 matches original manifests. Default PowerShell HTTP routing refused localhost, while explicit NoProxy and Node direct HTTP returned200. Runtime remains retained, no restart/proxy configuration mutation. PR64 final head read back after final push.

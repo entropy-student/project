@@ -54,4 +54,6 @@ Pre-write backup: `poc/g3c/artifacts/backups/g3cr6r3d2/` contains full Home cont
 
 Retained site: http://127.0.0.1:8189/ ; admin: http://127.0.0.1:8189/wp-admin/ . Project-local evidence/rollback retained for review. Pre-existing Owner archives,17 old screenshot deletions and unrelated untracked evidence are untouched and excluded.
 
+Post-push hygiene: scoped `.gitattributes` plus explicit backup re-add preserve original CRLF bytes in Git, rather than silently normalizing the SHA-guarded rollback package. Git-blob hash verification is part of submission readback. Default PowerShell HTTP routing later refused localhost; explicit `-NoProxy` and Node direct HTTP both returned200, with existing container identities/state unchanged. No global proxy setting or runtime resource was changed. This route-specific observation does not require a restart.
+
 All forbidden actions this round are0: PayPal, real money, runtime Preview/product models, production AI, production deployment, shared infrastructure, Checkout submission, order creation, P1–P12, core Aha changes, purchases, global prune, PR merge and G4. Reviewer decision files are unchanged.

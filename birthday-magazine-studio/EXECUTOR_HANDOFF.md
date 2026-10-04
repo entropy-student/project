@@ -673,3 +673,5 @@ This is the current Executor candidate; it preserves prior history and leaves fo
 - **Submission hygiene:** pre-existing Owner archives/17 PNG deletions/untracked old benchmark evidence excluded. Reviewer files untouched. All forbidden action counts0, no merge.
 
 Please assess visual fidelity,375px quality, actual motion, accessibility fallbacks and Preview/Woo/account freeze boundaries before any Owner visual confirmation. **STOP_AT_REVIEWER=YES; Owner relay=NONE; OWNER_VISUAL_FREEZE=PENDING.**
+
+D2 final submission addendum: implementation/evidence e6d7a5bf51255474fc6cd96e6015b9d2bb04f366 plus enclosing byte-preservation hygiene commit; both submitted to existing PR64. Byte-exact backup Git blobs verified; direct localhost HTTP200, runtime retained without restart. Final SHA returned after push. STOP_AT_REVIEWER=YES.
