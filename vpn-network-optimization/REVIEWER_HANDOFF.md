@@ -103,7 +103,8 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
-STATE=AWAITING_OWNER_AUTHORIZATION
+STANDING_GATE_AUTHORIZATION=YES
+STATE=AUTHORIZED_NOT_EXECUTED
 PREVIOUS_RESULT=PASS_G4A_THREE_ROLE_TARGET_AND_OFFLINE_PACKAGE
 OBJECTIVE=Prove whether Windows Mihomo interface-name alone can carry HY2 outer traffic over the physical egress while WireGuard remains connected and no exact VPS /32 bypass route exists.
 MAX_ENDPOINT_THIS_ROUND=One protected temporary local Mihomo HY2 runtime + exactly two bounded requests + cleanup/read-back + STOP_AT_REVIEWER.
@@ -114,7 +115,7 @@ PREFLIGHT=Fresh source, Owner runtime, WG/Clash health, physical-egress discover
 REQUIRED_EVIDENCE=interface-name applied; no /32 route before/during/after; Mihomo parse/proxy ready; exactly two proxied requests; OpenAI 401; expected SFO3 public exit; cleanup and baseline restored.
 ACCEPTANCE_CRITERIA=PASS_INTERFACE_NAME_BYPASS or precise RETURN without routing inference.
 ROLLBACK_STATUS_OR_PLAN=Own only the unique temporary local Mihomo runtime/process; no route/profile/VPS mutation; final network baseline must equal pre-canary.
-OWNER_ONLY_ACTIONS=SOCKS loopback repair validation has PASSed. Fresh explicit Owner authorization is now required before exactly one further repaired G4-B0 live retry.
+OWNER_ONLY_ACTIONS=Owner has granted standing authorization for actions already inside the fixed current G4-B0 Gate boundary. This does not expand scope and does not waive any governance-required fresh post-failure authorization.
 REVIEWER_TO_EXECUTOR_RELAY=docs/G4B0_WINDOWS_INTERFACE_BYPASS_CANARY_GATE.md + accepted R3R2 Secret/runtime safety pattern + accepted G3-A physical-egress semantics; no historical diagnostic replay.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop.
 ```
