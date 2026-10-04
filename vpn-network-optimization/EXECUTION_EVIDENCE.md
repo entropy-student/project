@@ -4119,3 +4119,27 @@ Reviewer conclusion:
 - No VPN/network/runtime action is replayed. The clean local worktree assertion is retained as Executor-reported and must be freshly re-proven before the next Owner-local checkpoint.
 - Current main advancement after the R1 closeout is unrelated to this project and does not constitute material VPN drift.
 - R1 is therefore closed as a recorded timing-observability RETURN with no replay, and the project may proceed to the bounded synthetic/no-traffic C2B UI canary.
+
+
+## Reviewer reconciliation — RETURN_C2B_CANONICAL_GATE_MISMATCH — 2026-10-04
+
+```text
+REVIEWER_RESULT=RETURN_CONFIRMED_AND_RELAY_DRIFT_REPAIRED
+RETURN_CODE=RETURN_C2B_CANONICAL_GATE_MISMATCH
+ROOT_CAUSE=DIRECT_GITHUB_READBACK_SHOWED_REVIEWER_HANDOFF_CURRENT_GATE_R2_WHILE_EXECUTOR_HANDOFF_CURRENT_STATUS_REMAINED_R1
+REVIEWER_HANDOFF_BEFORE=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2
+EXECUTOR_HANDOFF_BEFORE=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
+LIVE_OR_OWNER_UI_ACTION_OCCURRED=NO_EVIDENCE_OF_EXECUTION_BEYOND_FAIL_CLOSED_GATE_CHECK
+VPN_NETWORK_SECRET_VPS_ACTION_REQUIRED_FOR_REPAIR=NO
+RUNNER_BLOB=cd5a2eb768b54d13307b651ea514a912b9742c9d
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+TECHNICAL_REPLAY_REQUIRED=NO
+REPAIR_SCOPE=REVIEWER_HANDOFF_GATE_COMPLETENESS_AND_REVIEWER_TO_EXECUTOR_RELAY_ALIGNMENT_PLUS_EXECUTOR_HANDOFF_CURRENT_BLOCK
+NEXT_GATE=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1
+```
+
+Reviewer conclusion:
+- The Executor was correct to fail closed. Direct canonical read-back showed two different current Gate identities: Reviewer Handoff had already advanced to the C2B Owner synthetic UI canary while Executor Handoff still advertised the prior R1 persistence Gate.
+- This was Reviewer-side relay/document synchronization drift, not VPN, Clash, HY2, WireGuard, Secret, or VPS drift.
+- No previous technical work is replayed. The repair is documentation/control-plane only: align the canonical current Gate and self-contained Executor relay, then rerun only the C2B preflight/Owner checkpoint as R2R1.
+- The R2R1 preflight must prove the two canonical surfaces agree before any Owner-local checkpoint can start.
