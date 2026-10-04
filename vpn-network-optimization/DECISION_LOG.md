@@ -331,3 +331,18 @@ No additional protocol shopping is planned for v1 unless later evidence proves a
 **Boundary:** This proof is transport/path evidence for HY2 only. It is not evidence that REALITY application traffic, automatic switching, peak-hour workloads, or the final production role has passed.
 
 **Next Gate:** `G4B_PERSISTENT_THREE_ROLE_READINESS`. G4-B remains a new consequential Gate and requires its own Owner authorization plus the unresolved second-failure-domain recovery destination before live execution can PASS.
+
+
+## 2026-10-04 — G4-B offline live-runner package formally accepted after R3
+
+**Decision:** The G4-B persistent three-role live-runner source/fixture package is formally accepted
+for later live execution.
+
+**Accepted repairs:** R1/R2/R3 source review now covers portable two-copy recovery, non-root REALITY
+runtime filesystem/access, profile restart persistence, retained exact-run rollback/closeout state,
+sanitized live markers, remote route/firewall/service drift proof, SHA-256 profile-store integrity,
+and StrictMode-safe recovery cleanup.
+
+**Boundary:** No live G4-B deployment has occurred. The next Gate remains
+`G4B_PERSISTENT_THREE_ROLE_READINESS` and still requires Owner-selected second-failure-domain
+encrypted recovery destination plus explicit live consequential authorization.
