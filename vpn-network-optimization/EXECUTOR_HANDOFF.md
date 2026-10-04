@@ -1,4 +1,32 @@
-## Current execution status — G3C C2B dynamic-root sync + diagnostic D1R2
+## Current execution status — G3C C2B subdir Git sync + diagnostic D1R3
+
+```text
+GATE_ID=G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_RUNNER_OUTSIDE_GIT_ROOT_PATH_ENCODING
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_D1R3_REQUIRED=YES
+KNOWN_EXISTING_RUNNER_PATH=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\c2b-owner-clash-ui-canary.ps1
+GIT_CONTEXT_MODE=RUN_FROM_RUNNER_DIRECTORY_NO_TOPLEVEL_PATH_PARSE
+DIAGNOSTIC_FILENAME=c2b-network-state-shape-diagnostic.ps1
+DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+DESTRUCTIVE_GIT_ACTION_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun C2B.
+2. Wait for Owner D1R3 output.
+3. Persist only bounded subdirectory-Git sync and diagnostic facts.
+4. Do not use the prior mojibake top-level path as evidence of repository topology.
+5. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B dynamic-root sync + diagnostic D1R2
 
 ```text
 GATE_ID=G3C_C2B_OWNER_DYNAMIC_ROOT_SYNC_AND_DIAGNOSTIC_D1R2
