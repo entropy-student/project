@@ -20,7 +20,7 @@ Frozen MVP:
 - browser-local zero-model free Preview;
 - authenticated customer account;
 - WooCommerce canonical commerce/order system;
-- paid + intake complete is required before one canonical generation-ready job;
+- complete pre-payment intake + paid entitlement are both required before one canonical generation-ready job;
 - one bounded revision batch;
 - source/intermediate deletion within 24h after final delivery/approval; final PDF retained 72h;
 - physical print deferred.
@@ -73,6 +73,13 @@ REAL_MONEY_TRANSACTION=UNVERIFIED
 REAL_CUSTOMER_ACQUISITION=UNVERIFIED
 REPEATABILITY=UNKNOWN
 ECONOMICS=UNKNOWN
+CUSTOMER_FLOW=HOMEPAGE_FREE_PREVIEW_CORE_FUNCTION_SUBMIT_PAY_GENERATE_VIEW
+CORE_FUNCTION_PAGE=REQUIRED_PREPAYMENT_FULL_INTAKE_SURFACE
+PREPAYMENT_FULL_INTAKE=OWNER_APPROVED
+PREPAYMENT_DRAFT_STORAGE=REQUIRED_TEMPORARY_SERVER_DRAFT
+PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
+PAYMENT_AFTER_COMPLETE_INTAKE=YES
+GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 ```
@@ -85,14 +92,17 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 - Current local site: `http://127.0.0.1:8189/`.
 - Current wp-admin: `http://127.0.0.1:8189/wp-admin/`.
 - Product: Woo product 1113, virtual, USD 39.99.
-- Free Preview: project-local frontend component; selected photo remains browser-local; no server photo upload and no model request.
-- Account/private workspace: authenticated account + Woo order ownership.
+- Free Preview: project-local frontend component; its optional selected photo remains browser-local; no Preview server photo upload and no model request.
+- Core function page: separate pre-payment full-intake surface; 12–25 photos + structured answers are stored as a temporary server draft before checkout, with no generation/model entitlement.
+- Account/private workspace: checkout creates/attaches authenticated customer + Woo order ownership; successful payment adopts the exact submitted pre-payment intake snapshot into that order/workspace.
 - Payment baseline: official WooCommerce PayPal Payments; Sandbox proof accepted. Live/real-money not proven.
 - Paid generation: exact production provider/runtime remains UNKNOWN.
 - Production deployment/storage/private final delivery: UNKNOWN / not yet proven.
 - Shared VPS dependency: NONE accepted for current Gate.
 
 ## CURRENT_ACCEPTED_STATE
+
+- **Owner flow correction 2026-10-04:** canonical flow is **Homepage -> Free Preview -> Core function page -> full intake -> Submit -> Payment -> automatic generation -> complete result**. The free Preview remains browser-local/zero-model; the separate core function page may upload/store the complete 12–25 photo + answer draft before payment. Payment still gates all production generation. This supersedes the earlier “paid intake after checkout” wording.
 
 - G2BR3: real-AI structured content + deterministic 12-page PDF Solution Proof PASS.
 - G3A: WordPress/WooCommerce commerce/account/private-workspace loop PASS.
@@ -197,16 +207,21 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Owner reviews the Reviewer recommendation **PHOTO_TO_ISSUE_MORPH**: browser-local photo -> magazine cover -> first interior spread.
-2. If accepted, freeze the Core Aha direction; do not implement it yet.
-3. Continue the remaining parent-Gate work with **P1-P12 magazine visual-system research** only.
-4. After both Core Aha and P1-P12 are selected, open a separate bounded vertical-slice implementation Gate.
+1. Treat the **core function page** as a first-class missing product surface: full-page onboarding / multi-step intake for 12–25 photos + structured answers before checkout.
+2. Keep the homepage visual frozen except for its future entry card/CTA into this flow.
+3. Keep the free Preview browser-local and zero-model; its CTA routes into the core function page.
+4. Research/select a reusable full-page SaaS onboarding / multi-step form template for this page before implementation.
+5. P1-P12 visual research remains pending and must not be silently conflated with the intake-page design.
 
 ## OWNER_ACTION_REQUIRED
 
-Confirm or reject the recommended Core Aha direction: **one local photo visibly becomes the personalized magazine cover, then reveals the first interior spread**.
+**NONE.** The corrected customer flow is now the Owner-approved product contract. The next visual decision is the core function-page template/style.
 
 ## EVIDENCE_POINTERS
+
+Current product-flow authority:
+1. `docs/OWNER_DECISION_PREPAYMENT_FULL_INTAKE_FLOW_2026-10-04.md`
+2. `docs/MVP_PRODUCT_CONTRACT.md`
 
 Core Aha current research:
 1. `docs/REVIEWER_DECISION_G3CR6R3C_CORE_AHA_RESEARCH_PASS.md`
