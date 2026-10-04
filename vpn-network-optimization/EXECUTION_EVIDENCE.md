@@ -4208,3 +4208,24 @@ Reviewer conclusion:
 - The runner failed during read-only network-state acquisition with PropertyNotFoundException before synthetic profile creation/import or any authorized network mutation.
 - Cleanup passed. The failure is therefore treated as an object-shape/evidence-reader defect until proven otherwise, not as network drift.
 - A bounded read-only D1 diagnostic is opened to determine which expected property is absent on the real Windows object shape. The C2B runner must not be retried or patched speculatively before that evidence is returned.
+
+
+## Reviewer reconciliation — D1 diagnostic absent from local worktree — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_NETWORK_STATE_SHAPE_DIAGNOSTIC_D1
+OWNER_REPORTED_DIAGNOSTIC_TEST_PATH=False
+CANONICAL_DIAGNOSTIC_PRESENT=DIRECT_GITHUB_READBACK_YES
+CANONICAL_DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+REVIEWER_RESULT=RETURN_D1_DIAGNOSTIC_NOT_PRESENT_LOCAL_WORKTREE
+ROOT_CAUSE_CLASS=LOCAL_WORKTREE_STALE_RELATIVE_TO_CANONICAL_MAIN
+MANUAL_FILE_COPY_AUTHORIZED=NO
+DESTRUCTIVE_GIT_REPAIR_AUTHORIZED=NO
+NEXT_GATE=G3C_C2B_OWNER_WORKTREE_SYNC_AND_DIAGNOSTIC_D1R1
+PROVENANCE=OWNER_REPORTED_PLUS_DIRECT_GITHUB_READBACK
+```
+
+Reviewer conclusion:
+- Canonical GitHub contains the reviewed diagnostic; the Owner-local Test-Path failure therefore proves only that the existing worktree has not yet advanced to the canonical revision containing it.
+- The repair is a bounded local Git synchronization: require project-scope clean, fetch, prove local HEAD is ancestor of origin/main, and use ff-only update. No reset, force, stash, rebase, or manual file copy is authorized.
+- If synchronization succeeds and the diagnostic blob matches canonical, the same checkpoint may continue into the read-only D1 diagnostic. The C2B canary runner remains forbidden.
