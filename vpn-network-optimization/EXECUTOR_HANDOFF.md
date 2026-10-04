@@ -14,6 +14,28 @@ R1_COMMIT=b97266e7cc9e3c3224032f7e49e9bf6d3b61c7d0
 R1_RUNNER_BLOB=bd791c02310031c6e80b2c1986c73dc9475b553d
 R1_FIXTURE_VALIDATOR_BLOB=b830cd1635c6752095dc21718dbbd28165448f6c
 R2_GATE_BLOB=b60c1d1bf09cac5467f547b83dc2c13a4af850d8
+PRE_GATE_HEAD=4caed9bb0dbf069d5407b261fe66740794c7676a
+SOURCE_FIX_COMMIT=f48f7010c0efd78c5402f8746e9e4134eb57c101
+SOURCE_COMMIT_GITHUB_READBACK=PASS
+RUNNER_BLOB=cc595546e0bad6cb17dc4cac5fea11d82840bb24
+FIXTURE_VALIDATOR_BLOB=af01347b126a90eea90247767664991e4cf18044
+PACKAGE_DOC_BLOB=8baaa653b14354cb43951fb22aa50881c91f84a5
+R2_RECOVERY_PORTABILITY=PASS
+R2_RECOVERY_ORDERING=PASS
+R2_RUNTIME_FILESYSTEM_CONTRACT=PASS
+R2_PROFILE_RESTART_PERSISTENCE=PASS
+R2_ROLLBACK_JOURNAL_RETENTION=PASS
+R2_SANITIZED_LIVE_EVIDENCE_MARKERS=PASS
+R1_REGRESSIONS=PASS
+POWERSHELL_AST=PASS
+EMBEDDED_REMOTE_PYTHON_AST=PASS
+OFFLINE_FIXTURES=PASS
+PACKAGE_VALIDATOR=PASS
+SECRET_SCAN=PASS
+ROUND_STARTED_AT=UNKNOWN
+ROUND_FINISHED_AT=UNKNOWN
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
 LIVE_G4B_EXECUTION_AUTHORIZED=NO
 SSH_OR_VPS_ACTION=NO
 REAL_SECRET_ACCESS=NO
@@ -30,13 +52,18 @@ STOP_AT_REVIEWER=YES
 
 ### Executor task
 
-1. Read only `docs/G4B_OFFLINE_LIVE_RUNNER_REPAIR_R2.md` as the current repair Gate plus the R1 target source/fixtures it names.
-2. Capture `ROUND_STARTED_AT` before preflight/sync and safe ff-only sync.
-3. Repair only the five Reviewer findings: portable/two-phase recovery, runtime filesystem/access, post-Clash-restart profile persistence, retained rollback journal/closeout path, and sanitized live Evidence markers.
-4. Keep Reviewer Handoff, G4-B readiness Gate, final validation plan, accepted templates, G4-B0 source/evidence, and existing package validator frozen.
-5. Run all R1 regressions plus the new R2 positive/negative fixtures. Do not execute the live runner.
-6. Persist sanitized proof to `EXECUTION_EVIDENCE.md`, update only this Executor Handoff, fresh read-back, and capture `ROUND_FINISHED_AT`.
-7. Return PASS_CANDIDATE or precise RETURN and `STOP_AT_REVIEWER=YES`.
+R2 offline source repair and validation are complete. Recovery now has a verified independent portable
+artifact and pending-to-final ordering; runtime filesystem/access checks, post-restart profile
+semantic read-back, retained rollback journal, and sanitized live markers are covered by the runner
+and deterministic fixtures. Current live-Gate authorization checks apply only to `Run`; source
+provenance remains enforced in all modes, and `Closeout` still requires the exact formal Reviewer
+PASS decision. The source fix commit was fresh-read from GitHub `main` with matching runner,
+fixture-validator, and package-document blobs.
+
+Timing boundary capture was missed before preflight, so all round-duration markers remain `UNKNOWN`.
+No live runner, SSH/VPS, Secret/DPAPI, network, service, route, profile, proxy, TUN, or G4-C action
+was performed. Evidence is appended in `EXECUTION_EVIDENCE.md`; `REVIEWER_HANDOFF.md` remains
+unchanged. Return this candidate to Reviewer and stop.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 

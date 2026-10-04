@@ -7079,3 +7079,76 @@ LIVE_G4B_EXECUTION_AUTHORIZED=NO
 OWNER_ACTION_REQUIRED=NO
 STOP_AT_REVIEWER=YES
 ```
+
+## Executor evidence — G4-B offline live-runner repair R2
+
+```text
+GATE_ID=G4B_OFFLINE_LIVE_RUNNER_REPAIR_R2
+GOVERNANCE_VERSION=v0.2.6 / ACTIVE_PROVISIONAL
+PRE_GATE_HEAD=4caed9bb0dbf069d5407b261fe66740794c7676a
+ORIGIN_MAIN_AT_PREFLIGHT=4caed9bb0dbf069d5407b261fe66740794c7676a
+SOURCE_FIX_COMMIT=f48f7010c0efd78c5402f8746e9e4134eb57c101
+SOURCE_COMMIT_GITHUB_FRESH_READBACK=PASS
+SOURCE_RUNNER_BLOB=cc595546e0bad6cb17dc4cac5fea11d82840bb24
+SOURCE_FIXTURE_VALIDATOR_BLOB=af01347b126a90eea90247767664991e4cf18044
+SOURCE_PACKAGE_DOC_BLOB=8baaa653b14354cb43951fb22aa50881c91f84a5
+SOURCE_WORKTREE=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建
+SOURCE_BRANCH=codex/g2c-private-reality-compat-canary
+SOURCE_PROVENANCE=PASS
+PROJECT_SCOPE_DIRTY_BEFORE=NO
+UNRELATED_ROOT_CHECKOUT_RESULTS=UNTOUCHED
+ROUND_STARTED_AT=UNKNOWN
+ROUND_FINISHED_AT=UNKNOWN
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+TIMING_NOTE=The round-start capture was missed before preflight/fetch; the Gate requires UNKNOWN when either boundary is missed, so elapsed/overrun are not fabricated.
+
+R2_RECOVERY_PORTABILITY=PASS
+R2_RECOVERY_ORDERING=PASS
+R2_RUNTIME_FILESYSTEM_CONTRACT=PASS
+R2_PROFILE_RESTART_PERSISTENCE=PASS
+R2_ROLLBACK_JOURNAL_RETENTION=PASS
+R2_SANITIZED_LIVE_EVIDENCE_MARKERS=PASS
+R1_REGRESSIONS=PASS
+
+ACTUAL_SOURCE_CHANGES=
+- Runner now prepares local credentials before remote persistent mutation and creates two pending recovery artifacts: Owner CurrentUser DPAPI plus independent VPNG4BP1 portable authenticated encryption (PBKDF2-HMAC-SHA256/600000, random salt, AES-256-GCM). Synthetic payload validation and in-memory authenticated round-trip are enforced before mutation; final promotion follows final remote/profile/network read-backs.
+- Runner establishes project-owned runtime and Secret directory ownership/modes, validates runtime-account access and unrelated-principal denial, and retains exact run ownership state through PASS_CANDIDATE.
+- Runner re-reads and validates the three-role profile after the Clash service restart, verifies the pre-existing profile-store snapshot is unchanged, and emits sanitized positive G4-B evidence markers.
+- Current-Gate/live authorization checks in Assert-CanonicalSource are scoped to Mode=Run. Shared origin, tracked-file, project-cleanliness, accepted-runner-blob, and current-main checks remain active for every mode; Closeout retains its exact formal Reviewer PASS check.
+- Fixture validator now checks the post-review mode boundary and includes a negative mutation proving that requiring the current live Gate for post-review modes fails validation.
+- G4B_PERSISTENT_IMPLEMENTATION_PACKAGE.md documents the portable recovery and retained-journal contract.
+
+VALIDATION=
+POWERSHELL_AST=PASS (runner + fixture validator)
+EMBEDDED_REMOTE_PYTHON_AST=PASS (local in-memory parse only)
+OFFLINE_FIXTURE_VALIDATOR=PASS (R1 regressions + R2 positive/negative fixtures; 21 negative mutations)
+PACKAGE_VALIDATOR=PASS (offline package contract)
+GIT_DIFF_CHECK=PASS
+SECRET_SCAN=PASS (no private-key PEM, credential literal, recovery artifact, or Secret-bearing runtime file in changed set; public pinned asset digest only)
+SOURCE_SCOPE=PASS (runner, fixture validator, package doc, this Evidence, and Executor Handoff only)
+
+LIVE_RUNNER_EXECUTION=NO
+SSH_OR_VPS_ACTION=NO
+REAL_SECRET_ACCESS=NO
+DPAPI_REAL_SECRET_ACCESS=NO
+EXTERNAL_TEST_REQUESTS=0
+NETWORK_MUTATION=NO
+CLASH_PROFILE_MUTATION=NO
+SYSTEM_PROXY_CHANGE=NO
+TUN_CHANGE=NO
+SERVICE_MUTATION=NO
+ROUTE_MUTATION=NO
+REALITY_LIVE_DEPLOYMENT=NO
+G4C_EXECUTION=NO
+REVIEWER_HANDOFF_MODIFIED_BY_EXECUTOR=NO
+STOP_AT_REVIEWER=YES
+```
+
+Validation provenance: direct local execution of the offline fixture validator and package
+validator; PowerShell AST parser and Python `ast.parse` only. The remote Python source was parsed
+from memory and not invoked. No Mihomo process, SSH, DPAPI, VPS, network, service, profile, route,
+proxy, or TUN operation was performed.
+
+Rollback: source-only; revert this Gate's project-owned candidate commit to
+`4caed9bb0dbf069d5407b261fe66740794c7676a`. No runtime state was changed.
