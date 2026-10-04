@@ -132,11 +132,11 @@ Locked G4-B0 live identities:
 ```text
 G4B0_RUNNER_BLOB=71746ed816a89ccc8d3173a8743713cc9877e64a
 G4B0_TEMPLATE_BLOB=f8c637d28a35d3795c8ebaf470d50248562dbaf8
-G4B0_VALIDATOR_BLOB=25e9624092ecef7fc23ae97569d85026e3ebef56
+G4B0_VALIDATOR_BLOB=e6d7ac364aca14d52737315a020de7be8d8db1b0
 G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
 ```
 
-The second live retry returned before any external request because the readiness check rejected a loopback SOCKS UDP endpoint. That authorization is consumed. The readiness invariant has now been repaired to allow SOCKS TCP/UDP only on loopback, and the new runner/validator/checkpoint package has passed repository-level static review. Owner-host repair checkpoint is still required before any fresh live authorization can be requested.
+The latest Owner-host repair checkpoint AST passed but the validator falsely matched the new `MIHOMO_UNEXPECTED_UDP_LISTENER_PORT` code as the removed legacy `MIHOMO_UNEXPECTED_UDP_LISTENER` code. That validator-only false positive is repaired; Owner-host repair checkpoint must be rerun. The second live retry returned before any external request because the readiness check rejected a loopback SOCKS UDP endpoint. That authorization is consumed. The readiness invariant has now been repaired to allow SOCKS TCP/UDP only on loopback, and the new runner/validator/checkpoint package has passed repository-level static review. Owner-host repair checkpoint is still required before any fresh live authorization can be requested.
 
 ## CRITICAL_CONSTRAINTS
 
