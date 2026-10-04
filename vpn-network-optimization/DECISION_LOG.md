@@ -355,3 +355,21 @@ encrypted recovery destination plus explicit live consequential authorization.
 **Remaining prerequisite:** execution must not start until the encrypted portable recovery artifact has an approved second failure domain distinct from both the SFO3 VPS and the current Windows local disk.
 
 **Repository boundary:** the ordinary project GitHub repository is not used for private recovery material under the current Gate. Using GitHub as an encrypted-storage provider would require a separate explicitly reviewed storage design; it is not inferred from the live authorization.
+
+
+## 2026-10-04 — Baidu Netdisk selected for portable G4-B recovery
+
+**Decision:** Owner selected Baidu Netdisk as the second failure domain for the portable encrypted
+G4-B recovery artifact.
+
+**Implementation consequence:** The reviewed G4-B runner must first gain an offline-reviewed Baidu
+CLI backend because its accepted recovery backend was filesystem-based. Only encrypted portable
+recovery ciphertext may be uploaded.
+
+**Credential boundary:** Baidu account credentials/cookies/tokens remain Owner-local Secret state.
+They are never requested in chat, committed to Git, or passed by the G4-B runner as command-line
+credential flags.
+
+**Live boundary:** Owner's live G4-B authorization remains granted, but no real Baidu login/upload
+or live G4-B execution begins until the R4 backend package is Reviewer PASS and local CLI
+authentication is proven.
