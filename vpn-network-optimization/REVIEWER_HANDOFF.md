@@ -103,7 +103,7 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
-STATE=REPAIR_VALIDATION_PENDING
+STATE=AWAITING_OWNER_AUTHORIZATION
 PREVIOUS_RESULT=PASS_G4A_THREE_ROLE_TARGET_AND_OFFLINE_PACKAGE
 OBJECTIVE=Prove whether Windows Mihomo interface-name alone can carry HY2 outer traffic over the physical egress while WireGuard remains connected and no exact VPS /32 bypass route exists.
 MAX_ENDPOINT_THIS_ROUND=One protected temporary local Mihomo HY2 runtime + exactly two bounded requests + cleanup/read-back + STOP_AT_REVIEWER.
@@ -114,7 +114,7 @@ PREFLIGHT=Fresh source, Owner runtime, WG/Clash health, physical-egress discover
 REQUIRED_EVIDENCE=interface-name applied; no /32 route before/during/after; Mihomo parse/proxy ready; exactly two proxied requests; OpenAI 401; expected SFO3 public exit; cleanup and baseline restored.
 ACCEPTANCE_CRITERIA=PASS_INTERFACE_NAME_BYPASS or precise RETURN without routing inference.
 ROLLBACK_STATUS_OR_PLAN=Own only the unique temporary local Mihomo runtime/process; no route/profile/VPS mutation; final network baseline must equal pre-canary.
-OWNER_ONLY_ACTIONS=The repaired live retry authorization is consumed. No further live retry is authorized until the SOCKS listener readiness semantics are repaired and non-consequential validation passes.
+OWNER_ONLY_ACTIONS=SOCKS loopback repair validation has PASSed. Fresh explicit Owner authorization is now required before exactly one further repaired G4-B0 live retry.
 REVIEWER_TO_EXECUTOR_RELAY=docs/G4B0_WINDOWS_INTERFACE_BYPASS_CANARY_GATE.md + accepted R3R2 Secret/runtime safety pattern + accepted G3-A physical-egress semantics; no historical diagnostic replay.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop.
 ```
@@ -136,7 +136,7 @@ G4B0_VALIDATOR_BLOB=e6d7ac364aca14d52737315a020de7be8d8db1b0
 G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
 ```
 
-The latest Owner-host repair checkpoint AST passed but the validator falsely matched the new `MIHOMO_UNEXPECTED_UDP_LISTENER_PORT` code as the removed legacy `MIHOMO_UNEXPECTED_UDP_LISTENER` code. That validator-only false positive is repaired; Owner-host repair checkpoint must be rerun. The second live retry returned before any external request because the readiness check rejected a loopback SOCKS UDP endpoint. That authorization is consumed. The readiness invariant has now been repaired to allow SOCKS TCP/UDP only on loopback, and the new runner/validator/checkpoint package has passed repository-level static review. Owner-host repair checkpoint is still required before any fresh live authorization can be requested.
+The SOCKS loopback readiness repair has now PASSed on the actual Owner host, including AST and offline validator checks. Both prior live attempts remain non-diagnostic because request count was zero. No live retry is currently authorized; fresh explicit Owner authorization is the only remaining blocker before exactly one further repaired G4-B0 live retry.
 
 ## CRITICAL_CONSTRAINTS
 
