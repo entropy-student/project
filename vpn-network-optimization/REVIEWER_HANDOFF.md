@@ -179,11 +179,11 @@ The live runner is offline-reviewed and ready. Before child execution, the Owner
 
 ## NEXT_STEP
 
-Owner-local AST-only checkpoint PASS on PowerShell 7.6.6. The subsequent offline validator returned before live runner start because it parsed the raw numeric port placeholder as JSON. That validator-only defect is repaired; the live runner remains unchanged. Run one validator-only checkpoint next. The one-shot live authorization remains valid and unconsumed.
+Owner-local AST-only checkpoint PASS on PowerShell 7.6.6. The repaired offline validator also PASSed on the Owner host with zero network mutation and zero Secret access. The live runner remains unchanged. The one-shot live authorization remains valid and unconsumed.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the corrected G4-B0 validator only. If it PASSes, return to Reviewer before launching the live runner. The one-shot live authorization remains valid and unconsumed. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
+Run exactly one live G4-B0 canary using the locked runner, then stop at Reviewer. The authorization becomes consumed once the runner enters its consequential Secret/runtime phase. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
 
 ## EVIDENCE_POINTERS
 
