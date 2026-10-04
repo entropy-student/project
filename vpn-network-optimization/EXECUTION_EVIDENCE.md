@@ -7152,3 +7152,63 @@ proxy, or TUN operation was performed.
 
 Rollback: source-only; revert this Gate's project-owned candidate commit to
 `4caed9bb0dbf069d5407b261fe66740794c7676a`. No runtime state was changed.
+
+
+## Reviewer RETURN — G4-B offline live-runner repair R2 — 2026-10-04
+
+```text
+GATE_ID=G4B_OFFLINE_LIVE_RUNNER_REPAIR_R2
+EXECUTOR_RESULT=PASS_CANDIDATE
+REVIEWER_RESULT=RETURN_G4B_OFFLINE_LIVE_RUNNER_REPAIR_R2_REVIEW_DEFECTS
+REVIEWED_MAIN=6eb7b3733eacdab5a09a01310e7f62baa4860e68
+REVIEWED_RUNNER_BLOB=cc595546e0bad6cb17dc4cac5fea11d82840bb24
+REVIEWED_FIXTURE_VALIDATOR_BLOB=af01347b126a90eea90247767664991e4cf18044
+REVIEWED_PACKAGE_DOC_BLOB=8baaa653b14354cb43951fb22aa50881c91f84a5
+R2_RECOVERY_PORTABILITY=PASS
+R2_RECOVERY_ORDERING=PASS
+R2_RUNTIME_FILESYSTEM_CONTRACT=PASS
+R2_PROFILE_RESTART_PERSISTENCE=PASS
+R2_ROLLBACK_JOURNAL_RETENTION=PASS
+R2_SANITIZED_LIVE_EVIDENCE_MARKERS=PASS
+R1_REGRESSIONS=PASS
+R2_LIVE_ACTIONS=0
+R2_TIMING=UNKNOWN
+```
+
+Reviewer accepted the five intended R2 repairs as implemented. PASS is still blocked by three
+additional source-level defects found during direct review:
+
+1. **Remote unrelated drift proof missing — RETURN_TEST_FAILURE**
+   - the frozen G4-B Gate requires pre/post route/firewall/service drift evidence;
+   - current remote `probe()` exposes firewall query return codes only, no route baseline, and no
+     normalized service baseline comparison;
+   - therefore `UNRELATED_DRIFT=NONE` cannot be formally accepted from a future live run.
+
+2. **Profile-store integrity proof weakened — RETURN_TEST_FAILURE**
+   - current `Get-ProfileSnapshot` uses file length plus last-write ticks;
+   - accepted earlier C2C integrity checks used content SHA-256;
+   - same-size/same-time content drift can therefore evade the G4-B unrelated-profile mutation
+     proof and weaken bounded rollback read-back.
+
+3. **StrictMode recovery cleanup can mask the true failure — RETURN_TEST_FAILURE**
+   - `Write-EncryptedRecovery` references later-assigned cleanup variables from `finally` without
+     initializing them to `$null`;
+   - an earlier recovery failure under StrictMode can be replaced by an uninitialized-variable
+     exception, losing the intended classified failure code.
+
+The R2 timing fields remain correctly `UNKNOWN` under the R2 Gate rule because the start boundary
+was missed. This is not an additional technical blocker.
+
+No live VPS, Secret, DPAPI real-secret, network, route, service, Clash profile, proxy, TUN, or G4-C
+action occurred.
+
+Next Gate:
+`G4B_OFFLINE_LIVE_RUNNER_REPAIR_R3`
+with Gate blob
+`c76c7118d181f7d01897ba39429334d0068b92e4`.
+
+```text
+LIVE_G4B_EXECUTION_AUTHORIZED=NO
+OWNER_ACTION_REQUIRED=NO
+STOP_AT_REVIEWER=YES
+```
