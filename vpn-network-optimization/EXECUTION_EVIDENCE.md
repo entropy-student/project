@@ -7293,3 +7293,65 @@ LIVE_G4B_EXECUTION_AUTHORIZED=NO
 OWNER_ACTION_REQUIRED=NO
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Reviewer acceptance — G4-B offline live-runner package after R3 — 2026-10-04
+
+```text
+OFFLINE_GATE=G4B_OFFLINE_LIVE_RUNNER_REPAIR_R3
+EXECUTOR_RESULT=PASS_CANDIDATE
+REVIEWER_RESULT=PASS_G4B_OFFLINE_LIVE_RUNNER_PACKAGE
+REVIEWED_MAIN=9695cbe27f20e4c14e36fd7c2eea1a00fde827b7
+RUNNER_BLOB=064f2207be91c29adc6081927090f90a211a3e13
+FIXTURE_VALIDATOR_BLOB=c5656a99874b77b754234237e68c23ed6cfb524e
+
+R3_REMOTE_ROUTE_BASELINE_COMPARE=PASS
+R3_REMOTE_FIREWALL_BASELINE_COMPARE=PASS
+R3_REMOTE_SERVICE_DRIFT_ALLOWLIST=PASS
+R3_REMOTE_ROLLBACK_BASELINE_COMPARE=PASS
+R3_PROFILE_CONTENT_INTEGRITY=PASS
+R3_PROFILE_SAME_SIZE_CONTENT_DRIFT_NEGATIVE=PASS
+R3_STRICTMODE_RECOVERY_CLEANUP=PASS
+R3_FAILURE_CODE_NOT_MASKED=PASS
+
+R2_RECOVERY_PORTABILITY=PASS
+R2_RECOVERY_ORDERING=PASS
+R2_RUNTIME_FILESYSTEM_CONTRACT=PASS
+R2_PROFILE_RESTART_PERSISTENCE=PASS
+R2_ROLLBACK_JOURNAL_RETENTION=PASS
+R2_SANITIZED_LIVE_EVIDENCE_MARKERS=PASS
+R1_REGRESSIONS=PASS
+
+POWERSHELL_AST_PARSE=PASS
+EMBEDDED_REMOTE_PYTHON_AST_PARSE=PASS
+R3_REMOTE_PYTHON_HELPER_FIXTURES=PASS
+PACKAGE_VALIDATOR=PASS
+SECRET_SCAN=PASS
+
+LIVE_RUNNER_EXECUTION=NO
+SSH_OR_VPS_ACTION=NO
+REAL_SECRET_ACCESS=NO
+NETWORK_MUTATION=NO
+REVIEWER_HANDOFF_MODIFIED_BY_EXECUTOR=NO
+R3_TOTAL_TIMING=UNKNOWN
+```
+
+Reviewer direct source inspection confirms:
+- remote drift snapshots now cover normalized IPv4/IPv6 routes/rules, available firewall state,
+  and active-service inventory; final/candidate/closeout allow only the project REALITY service
+  addition and rollback requires exact pre-G4B restoration;
+- profile-store snapshots now include SHA-256 content integrity in addition to metadata;
+- recovery cleanup locals are initialized before the protected try/finally boundary so an earlier
+  classified failure is no longer masked under StrictMode;
+- the accepted R2 recovery/runtime/restart/rollback-journal/evidence repairs remain present.
+
+The R3 timing boundary was missed and remains UNKNOWN exactly as required; this does not block the
+offline package acceptance because timing was not an acceptance criterion and no live action occurred.
+
+```text
+OFFLINE_G4B_PACKAGE=PASS
+LIVE_G4B_EXECUTION=NOT_YET_AUTHORIZED
+SECOND_FAILURE_DOMAIN_DESTINATION=OWNER_INPUT_REQUIRED
+NEXT_GATE=G4B_PERSISTENT_THREE_ROLE_READINESS
+STOP_AT_REVIEWER=YES
+```
