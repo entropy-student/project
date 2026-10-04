@@ -1,8 +1,33 @@
 <?php
-/** G3CR7 presentation-only: homepage entry, intake shell, generation-status shell. */
-if (!defined('ABSPATH')) exit;
+/** G3CR7 presentation-only frontend shells. No persistence or generation. */
+if (!defined('ABSPATH')) { exit; }
 function bms7_create(): string { return add_query_arg('bms_surface','intake',home_url('/')); }
-function bms7_status_url(int $id=0): string { return add_query_arg(array_filter(['bms_surface'=>'status','order_id'=>$id]),home_url('/')); }
-function bms7_checkout(): string { return add_query_arg(['add-to-cart'=>1113,'quantity'=>1],function_exists('wc_get_checkout_url')?wc_get_checkout_url():home_url('/')); }
-function bms7_css(): string { return <<<'CSS'
-:root{--p:#f4f0e9;--c:#fffdf9;--i:#191b1c;--m:#756d66;--l:#ddd5ca;--a:#c65a46;--s:Georgia,serif;--n:Arial,sans-serif}.bms7{margin:0;background:var(--p);color:var(--i);font-family:var(--n)}.bms7 *{box-sizing:border-box}.bms7-brand{display:flex;gap:10px;align-items:center;color:inherit;text-decoration:none;font:700 11px var(--n);letter-spacing:.12em}.bms7-brand i{display:grid;place-items:center;width:34px;height:34px;border:1px solid;border-radius:50%;font-style:normal;font-size:9px}.bms7-k{font:700 10px var(--n);letter-spacing:.18em;color:var(--a);text-transform:uppercase}.bms7-app{min-height:100vh;display:grid;grid-template-columns:330px 1fr}.bms7-rail{height:100vh;position:sticky;top:0;background:#171b1c;color:#fff;padding:32px;display:flex;flex-direction:column}.bms7-rail h1{margin:auto 0 12px;font:400 46px/.95 var(--s);letter-spacing:-.04em}.bms7-rail>p{color:#bbb7b0;font-size:12px;line-height:1.6}.bms7-steps{list-style:none;padding:0;margin:30px 0;display:grid;gap:9px}.bms7-steps li{display:flex;align-items:center;gap:10px;color:#777}.bms7-steps span{display:grid;place-items:center;width:26px;height:26px;border:1px solid #555;border-radius:50%;font-size:9px}.bms7-steps b{font-size:10px}.bms7-steps .on,.bms7-steps .done{color:#fff}.bms7-steps .on span{background:var(--a);border-color:var(--a)}.bms7-steps .done span{background:#657564;border-color:#657564}.bms7-main{padding:30px clamp(24px,6vw,80px)}.bms7-progress{height:2px;background:#ddd}.bms7-progress i{display:block;height:100%;width:20%;background:var(--a)}.bms7-form{max-width:800px;margin:auto;padding-top:8vh}.bms7-page{display:none}.bms7-page.on{display:block}.bms7-page h2,.bms7-status h1{font:400 clamp(44px,5vw,68px)/.98 var(--s);letter-spacing:-.045em;margin:12px 0}.bms7-lede{color:var(--m);font-size:13px;line-height:1.7;margin-bottom:28px}.bms7-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.bms7-grid .wide{grid-column:1/-1}.bms7-field{display:block;font-size:10px;font-weight:700}.bms7-field input,.bms7-field select,.bms7-field textarea{display:block;width:100%;margin-top:7px;border:1px solid var(--l);background:var(--c);border-radius:9px;padding:13px;font:13px var(--n);color:var(--i)}.bms7-field textarea{min-height:100px;resize:vertical}.bms7-radios{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:26px}.bms7-radios label{border:1px solid var(--l);background:var(--c);border-radius:10px;padding:14px;font-size:10px}.bms7-radios input{margin-right:7px}.bms7-drop{margin-top:18px;min-height:160px;border:1px dashed #aaa;border-radius:12px;display:grid;place-items:center;text-align:center;background:#faf7f2;cursor:pointer;font-size:11px}.bms7-drop input{display:none}.bms7-photos{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}.bms7-photo{position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;background:#ddd}.bms7-photo img{width:100%;height:100%;object-fit:cover}.bms7-star{position:absolute;right:5px;top:5px;border:0;border-radius:50%;width:25px;height:25px}.bms7-star.on{background:#171b1c;color:#fff}.bms7-review{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--l);border-radius:12px;background:var(--c);overflow:hidden}.bms7-review div{padding:17px;border-bottom:1px solid var(--l)}.bms7-review b{display:block;margin-top:4px}.bms7-price{display:flex;justify-content:space-between;margin-top:12px;padding:18px;background:#171b1c;color:#fff;border-radius:12px}.bms7-actions{display:flex;align-items:center;gap:10px;border-top:1px solid var(--l);margin-top:26px;padding-top:18px}.bms7-btn{border:0;border-radius:999px;padding:12px 17px;font:700 10px var(--n);text-decoration:none}.bms7-next{margin-left:auto;background:#171b1c;color:#fff}.bms7-back{background:transparent;border:1px solid var(--l)}.bms7-err{flex:1;color:#a13f32;font-size:10px}.bms7-status{max-width:1120px;margin:8vh auto;padding:0 24px}.bms7-status-card{display:grid;grid-template-columns:.8fr 1.2fr;border:1px solid var(--l);border-radius:24px;overflow:hidden;background:var(--c)}.bms7-art{min-height:500px;background:#d9d2c7;display:grid;place-items:center}.bms7-mag{width:205px;height:285px;background:#f0e6da;box-shadow:-22px 16px 0 #ae715c,20px 10px 0 #c9bfaf,0 28px 50px #0003;padding:22px;font:400 35px/.9 var(--s)}.bms7-copy{padding:60px}.bms7-pipe{list-style:none;padding:0;margin:30px 0}.bms7-pipe li{display:flex;gap:12px;padding:0 0 20px;font-size:1
+function bms7_checkout(): string {
+ $base=function_exists('wc_get_checkout_url')?wc_get_checkout_url():home_url('/');
+ return add_query_arg(['add-to-cart'=>1113,'quantity'=>1],$base);
+}
+function bms7_assets(): void {
+ wp_enqueue_style('bms7-flow',plugins_url('frontend-flow.css',__FILE__),[],'0.1.0');
+ wp_enqueue_style('bms7-intake',plugins_url('frontend-intake.css',__FILE__),['bms7-flow'],'0.1.0');
+ wp_enqueue_script('bms7-flow',plugins_url('frontend-flow.js',__FILE__),[],'0.1.0',true);
+ wp_enqueue_script('bms7-intake',plugins_url('frontend-intake.js',__FILE__),['bms7-flow'],'0.1.0',true);
+ wp_add_inline_script('bms7-flow','window.BMS7='.wp_json_encode(['create'=>bms7_create(),'checkout'=>bms7_checkout()]).';','before');
+}
+add_action('wp_enqueue_scripts',static function(){
+ $s=isset($_GET['bms_surface'])?sanitize_key(wp_unslash($_GET['bms_surface'])):'';
+ $received=function_exists('is_order_received_page')&&is_order_received_page();
+ if(is_front_page()||in_array($s,['intake','status'],true)||$received){bms7_assets();}
+},130);
+function bms7_doc(string $surface): void {
+ $title=$surface==='intake'?'Create their birthday issue':'Your birthday issue';
+ ?><!doctype html><html <?php language_attributes(); ?>><head><meta charset="<?php bloginfo('charset'); ?>"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title><?php echo esc_html($title); ?> — Good Issue</title><?php wp_head(); ?></head><body class="bms7"><main id="bms7-root" data-bms7-surface="<?php echo esc_attr($surface); ?>"></main><?php wp_footer(); ?></body></html><?php
+}
+add_action('template_redirect',static function(){
+ if(is_admin())return;
+ $s=isset($_GET['bms_surface'])?sanitize_key(wp_unslash($_GET['bms_surface'])):'';
+ if(in_array($s,['intake','status'],true)){status_header(200);nocache_headers();bms7_doc($s);exit;}
+},0);
+add_action('woocommerce_thankyou',static function($order_id){
+ if(!$order_id)return;
+ echo '<div class="bms7-order-status" data-bms7-order-status data-order-id="'.esc_attr((string)absint($order_id)).'"></div>';
+},20);
