@@ -4229,3 +4229,30 @@ Reviewer conclusion:
 - Canonical GitHub contains the reviewed diagnostic; the Owner-local Test-Path failure therefore proves only that the existing worktree has not yet advanced to the canonical revision containing it.
 - The repair is a bounded local Git synchronization: require project-scope clean, fetch, prove local HEAD is ancestor of origin/main, and use ff-only update. No reset, force, stash, rebase, or manual file copy is authorized.
 - If synchronization succeeds and the diagnostic blob matches canonical, the same checkpoint may continue into the read-only D1 diagnostic. The C2B canary runner remains forbidden.
+
+
+## Reviewer reconciliation — D1R1 worktree root mismatch — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_OWNER_WORKTREE_SYNC_AND_DIAGNOSTIC_D1R1
+OWNER_REPORTED_RESULT=RETURN
+OWNER_REPORTED_FAILURE_CODE=WORKTREE_ROOT_MISMATCH
+OWNER_REPORTED_ROUND_STARTED_AT=2026-10-04T01:48:28.1709698+00:00
+OWNER_REPORTED_ROUND_FINISHED_AT=2026-10-04T01:48:28.3125636+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:00.1415938
+OWNER_REPORTED_C2B_RUNNER_EXECUTED=NO
+OWNER_REPORTED_NETWORK_MUTATION=NONE
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+REVIEWER_CLASSIFICATION=CHECKPOINT_HARDCODED_GIT_ROOT_ASSUMPTION_INVALID
+LOCAL_REPOSITORY_DRIFT_PROVEN=NO
+FETCH_OR_FAST_FORWARD_STARTED=NO
+DIAGNOSTIC_EXECUTED=NO
+DESTRUCTIVE_REPAIR_AUTHORIZED=NO
+NEXT_GATE=G3C_C2B_OWNER_DYNAMIC_ROOT_SYNC_AND_DIAGNOSTIC_D1R2
+PROVENANCE=OWNER_REPORTED
+```
+
+Reviewer conclusion:
+- The D1R1 checkpoint stopped before fetch/update because Reviewer had incorrectly treated the `VPS搭建` subdirectory as the Git top-level.
+- This RETURN is accepted as a checkpoint-path defect, not proof of local worktree divergence.
+- D1R2 removes the hardcoded-root assumption. It resolves the Git root and project prefix from the already-proven tracked C2B runner path, then permits only clean + ancestor-proven + ff-only synchronization before D1.
