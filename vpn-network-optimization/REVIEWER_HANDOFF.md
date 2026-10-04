@@ -179,11 +179,11 @@ The live runner is offline-reviewed and ready. Before child execution, the Owner
 
 ## NEXT_STEP
 
-Finish and review the local G4-B0 live runner, then execute exactly one authorized two-request bypass canary and stop at Reviewer. Do not enter persistent G4-B in the same round.
+Retry the G4-B0 parent preflight only after repairing wrapper order: safe-sync the existing project worktree first, then resolve/check the runner, lock blobs, AST-parse, validate, and execute exactly one authorized two-request bypass canary. The prior preflight did not start the child runner and did not consume authorization.
 
 ## OWNER_ACTION_REQUIRED
 
-NONE before runner review. The one G4-B0 authorization is granted. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
+Run the corrected G4-B0 parent wrapper when ready. The existing one-shot authorization remains valid because the previous preflight stopped before child-runner start. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
 
 ## EVIDENCE_POINTERS
 
