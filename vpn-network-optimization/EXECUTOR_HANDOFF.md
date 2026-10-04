@@ -1,3 +1,43 @@
+## Current execution status — G3C C2C package offline validation R1
+
+```text
+GATE_ID=G3C_C2C_PACKAGE_OFFLINE_VALIDATION_R1
+EXECUTOR_ROLE=CODEX_DESKTOP_PACKAGE_VALIDATION_AND_BOUNDED_REPAIR
+PREVIOUS_RESULT=PASS_G3C_C2B_SYNTHETIC_CLASH_UI_CANARY
+OWNER_C2C_AUTHORIZATION=GRANTED
+REAL_C2C_EXECUTION_AUTHORIZED_IN_THIS_GATE=NO
+DPAPI_UNPROTECT_AUTHORIZED=NO
+REAL_SECRET_ACCESS_AUTHORIZED=NO
+SECRET_HELPER_REAL_MODE_AUTHORIZED=NO
+CLASH_PROFILE_MUTATION_AUTHORIZED=NO
+NETWORK_REQUESTS_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+VPS_ACTION_AUTHORIZED=NO
+REALITY_ACTION_AUTHORIZED=NO
+G4_ENTRY_AUTHORIZED=NO
+OFFLINE_VALIDATOR=scripts/g3c-c2c-package-validator.ps1
+INITIAL_ORCHESTRATOR_BLOB=e59be99321cc98a37a80e4a747b937aaaaf5d58b
+INITIAL_SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+INITIAL_PROXY_PROBE_BLOB=4e17c849dffdd410ff2c635830ce0e59cb24304e
+INITIAL_VALIDATOR_BLOB=4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9
+INITIAL_TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+INITIAL_PACKAGE_BLOB=10518d986ab3094a4578f431301a820645d7163b
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Capture timing before the first synchronization/source action.
+2. Prove canonical remote, project cleanliness, safe ff-only synchronization, and the six initial blob identities above.
+3. Read only the current Reviewer relay and the named C2C package files.
+4. Run only `scripts/g3c-c2c-package-validator.ps1`.
+5. If it fails, make the smallest repair confined to the named C2C package files; rerun the offline validator.
+6. Do **not** run the orchestrator, do **not** invoke the Secret helper real modes, do **not** read/unprotect DPAPI, do **not** import Clash profiles, do **not** create routes, and do **not** send network requests.
+7. Persist detailed non-secret evidence in `EXECUTION_EVIDENCE.md` and this handoff; leave `REVIEWER_HANDOFF.md` unchanged.
+8. STOP_AT_REVIEWER.
+
+
+
 ## Current execution status — G3C C2C Owner authorization A0
 
 ```text
