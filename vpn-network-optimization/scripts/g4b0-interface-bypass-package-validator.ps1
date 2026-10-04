@@ -7,13 +7,14 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $templatePath = Join-Path $projectRoot 'templates\clash\g4b0-hy2-interface-bypass.yaml.template'
 $gatePath = Join-Path $projectRoot 'docs\G4B0_WINDOWS_INTERFACE_BYPASS_CANARY_GATE.md'
+$runnerPath = Join-Path $projectRoot 'scripts\g4b0-owner-interface-bypass-canary.ps1'
 
 function Assert-G4B0 {
     param([bool]$Condition,[string]$Code)
     if (-not $Condition) { throw $Code }
 }
 
-foreach($path in @($templatePath,$gatePath)){
+foreach($path in @($templatePath,$gatePath,$runnerPath)){
     Assert-G4B0 (Test-Path -LiteralPath $path -PathType Leaf) 'G4B0_REQUIRED_FILE_MISSING'
 }
 
@@ -45,6 +46,21 @@ foreach($placeholder in @(
 
 Assert-G4B0 ($templateText -notmatch '(?i)reality|vless|wg-baseline|url-test|fallback|load-balance') 'G4B0_SCOPE_EXPANSION_PRESENT'
 
+
+$runnerText = [IO.File]::ReadAllText($runnerPath,[Text.Encoding]::UTF8)
+Assert-G4B0 ($runnerText -notmatch '(?i)\b(?:New-NetRoute|Remove-NetRoute|Set-NetRoute)\b') 'G4B0_RUNNER_ROUTE_MUTATION_PRESENT'
+Assert-G4B0 ($runnerText -notmatch '(?i)\b(?:ssh|scp)(?:\.exe)?\b') 'G4B0_RUNNER_SSH_PRESENT'
+Assert-G4B0 ($runnerText -notmatch '(?i)REALITY-SFO3|reality-opts|type\s*[:=]\s*vless') 'G4B0_RUNNER_REALITY_PRESENT'
+Assert-G4B0 ($runnerText -notmatch '(?i)\bSet-ItemProperty\b|\bNew-ItemProperty\b|\bRemove-ItemProperty\b') 'G4B0_RUNNER_REGISTRY_MUTATION_PRESENT'
+Assert-G4B0 (($runnerText.Split('https://api.openai.com/v1/models').Count - 1) -eq 1) 'G4B0_OPENAI_ENDPOINT_CARDINALITY_INVALID'
+Assert-G4B0 (($runnerText.Split('https://api.ipify.org').Count - 1) -eq 1) 'G4B0_EXIT_ENDPOINT_CARDINALITY_INVALID'
+Assert-G4B0 (($runnerText.Split('$script:requestCount++').Count - 1) -eq 2) 'G4B0_REQUEST_INCREMENT_CARDINALITY_INVALID'
+Assert-G4B0 ($runnerText.Contains('STATE=AUTHORIZED_NOT_EXECUTED')) 'G4B0_RUNNER_AUTH_GATE_MISSING'
+Assert-G4B0 ($runnerText.Contains('G4B0_RUNNER_RESULT=PASS_CANDIDATE_INTERFACE_NAME_BYPASS')) 'G4B0_RUNNER_PASS_MARKER_MISSING'
+Assert-G4B0 ($runnerText.Contains('DO_NOT_RERUN=YES')) 'G4B0_RUNNER_RETRY_GUARD_MISSING'
+Assert-G4B0 ($runnerText.Contains('RUNTIME_REPARSE_POINT_PRESENT')) 'G4B0_RUNTIME_REPARSE_GUARD_MISSING'
+Assert-G4B0 ($runnerText.Contains('Remove-Item -LiteralPath $script:runtimeDirectory -Recurse -Force')) 'G4B0_EXACT_RUNTIME_CLEANUP_MISSING'
+
 $gateText = [IO.File]::ReadAllText($gatePath,[Text.Encoding]::UTF8)
 foreach($required in @(
     'TEMP_OR_PERSISTENT_VPS_32_ROUTE_CREATED=NO',
@@ -62,6 +78,7 @@ Write-Output 'G4B0_NO_ROUTE_CONTRACT=PASS'
 Write-Output 'G4B0_NO_REALITY_OR_WG_NODE=PASS'
 Write-Output 'G4B0_TUN_DISABLED=PASS'
 Write-Output 'G4B0_REQUEST_BUDGET=2'
+Write-Output 'G4B0_LIVE_RUNNER_STATIC_BOUNDARY=PASS'
 Write-Output 'G4B0_OFFLINE_PACKAGE_VALIDATION=PASS'
 Write-Output 'NETWORK_MUTATION=NO'
 Write-Output 'SECRET_ACCESS=NO'
