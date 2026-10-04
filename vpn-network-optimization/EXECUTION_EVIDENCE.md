@@ -6195,3 +6195,49 @@ Reviewer conclusion:
 - No live target action occurred.
 - The only issue found was a validator false positive against a literal placeholder; it was corrected without changing the target templates or protocol semantics.
 - G4-B is now the current consequential boundary and requires fresh explicit Owner authorization before any persistent REALITY service/Secret/Clash-profile write.
+
+
+## Reviewer offline acceptance — G4-B0 bypass package + G4-B least-privilege refinement — 2026-10-04
+
+```text
+PROVENANCE=DIRECT_GITHUB_READBACK_PLUS_INDEPENDENT_STATIC_VALIDATION
+LIVE_EXECUTION=NO
+NETWORK_MUTATION=NO
+VPS_ACCESS=NO
+SSH_ACCESS=NO
+SECRET_ACCESS=NO
+CLASH_IMPORT=NO
+SYSTEM_PROXY_CHANGED=NO
+TUN_CHANGED=NO
+ROUTE_CHANGED=NO
+
+G4B0_GATE_DOC_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
+G4B0_TEMPLATE_BLOB=8ae0b25bc1ad667e1a887e2a2df0479099d671de
+G4B0_VALIDATOR_BLOB=e5821f9eff4032cebec786fb5e64c05fac044ae7
+G4B_REALITY_SYSTEMD_TEMPLATE_BLOB=b146f0ca0b110511141f38a431acd928bec5c26b
+G4B_IMPLEMENTATION_PACKAGE_BLOB=cc5a23078a807aeee7e674bf9d80b57018a3ccbf
+
+G4B0_ONE_HY2_PROXY_ONLY=PASS
+G4B0_INTERFACE_NAME_PLACEHOLDER=PASS
+G4B0_TUN_DISABLED=PASS
+G4B0_LOCALHOST_ONLY=PASS
+G4B0_NO_REALITY_OR_WG_NODE=PASS
+G4B0_NO_EXACT_ROUTE_MUTATION_CONTRACT=PASS
+G4B0_REQUEST_BUDGET_TWO=PASS
+G4B0_NO_SSH_OR_VPS_MUTATION=PASS
+
+G4B_REALITY_DEDICATED_RUNTIME_IDENTITY=PASS
+G4B_REALITY_LOW_PORT_CAPABILITY_BOUNDARY=PASS
+G4B_OUTER_BYPASS_MECHANISM=UNPROVEN_LIVE
+G4B_LIVE_EXECUTION_BLOCKED_ON_G4B0=YES
+
+REVIEWER_RESULT=PASS_G4B0_OFFLINE_PACKAGE_READY
+NEXT_GATE=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+NEXT_GATE_STATE=OWNER_AUTHORIZATION_REQUIRED
+```
+
+Reviewer conclusion:
+- The live architecture gap is now explicit rather than hidden inside the persistent template.
+- The bounded G4-B0 package is ready for a future Owner-authorized two-request Windows-local canary.
+- No live Secret, route, Clash, VPS, proxy, TUN, or network action occurred in this offline preparation round.
+- Persistent G4-B remains blocked until G4-B0 is formally reviewed.
