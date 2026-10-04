@@ -1,6 +1,6 @@
 # G4-B Persistent Three-Role Implementation Package
 
-Status: OFFLINE_R5R1_REPAIR_CANDIDATE / REVIEWER_REVIEW_PENDING
+Status: OFFLINE_R5R1_REPAIR_REVIEWER_ACCEPTED / LIVE_AUTH_READINESS_PENDING
 
 This package turns the accepted G4-B Gate into an implementation contract without touching the live VPS or Owner Windows host.
 
@@ -247,10 +247,10 @@ OFFLINE_PACKAGE_STATIC_REVIEW=PASS_REVIEWER_ACCEPTED
 WINDOWS_OUTER_BYPASS_PROOF=PASS_G4B0
 DEDICATED_RUNTIME_IDENTITY_CONTRACT=READY
 ROLLBACK_CONTRACT=READY
-LIVE_RUNNER=R5R1_BAIDU_BACKEND_SOURCE_CANDIDATE
+LIVE_RUNNER=R5R1_BAIDU_BACKEND_REVIEWER_ACCEPTED
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LOCAL_BAIDU_AUTHENTICATION=REQUIRED_AT_LIVE_PREFLIGHT
 LIVE_G4B_OWNER_AUTHORIZATION=GRANTED_BY_CURRENT_REVIEWER_GATE
 ```
 
-R5R1 validates the repaired integration with source-contract checks and a local fake CLI shim. Actual CLI download, account readiness, upload/download, VPS deployment, and Owner UI actions remain unexecuted in this offline Gate and require a later Reviewer-authorized live step.
+R5R1 is Reviewer accepted after source-contract checks and a local fake CLI shim. Actual account readiness, upload/download, VPS deployment, and Owner UI actions remain unexecuted. The immediate next boundary is an offline-reviewed Owner-local Baidu authentication-readiness checkpoint; live G4-B remains blocked until that checkpoint and the later Owner-local authenticated-config proof pass.
