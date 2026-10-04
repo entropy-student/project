@@ -211,3 +211,16 @@ Rationale:
 **Authorized scope after fresh approval:** one temporary C2C profile, WireGuard retained as rollback, one ActiveStore-only `/32` route, exactly two bounded requests through the dynamically discovered local SOCKS5 listener, then return to WireGuard, profile removal, Secret cleanup, route removal, and full readback.
 
 **Not authorized:** benchmark loops, persistent routes, persistent default changes, system proxy/TUN enablement, automatic switching, REALITY activation, VPS/SSH changes, or G4.
+
+
+## 2026-10-04 — Owner granted fresh authorization for one R3R2 real HY2-in-Clash canary
+
+**Decision:** Owner explicitly authorized exactly one bounded `G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2` consequential canary after the prior handoff had still recorded authorization as pending.
+
+**Scope:** The authorization is limited to the already-reviewed R3R2 boundary: one temporary C2C profile, WireGuard retained as rollback, one ActiveStore-only IPv4 `/32` route, exactly two bounded requests through the dynamically discovered local SOCKS5 listener, then return to WireGuard, remove the C2C profile, clean Secret runtime state, remove the route, perform full read-back, and stop at Reviewer.
+
+**Not authorized:** benchmark loops, persistent route/default changes, system proxy or TUN enablement, automatic switching, REALITY activation, VPS/SSH mutation, G4, or a blind retry after any consequential failure/ambiguity.
+
+**Execution state:** Authorization is granted; no R3R2 execution result has yet been recorded or accepted. A failed or ambiguous consequential attempt requires reconciliation and fresh authorization before another real attempt.
+
+**Reconciliation:** `REVIEWER_HANDOFF.md` is the canonical current dashboard and has been updated to `AUTHORIZED_NOT_EXECUTED`. The earlier transition snapshot remains a historical snapshot of the state at its creation time.
