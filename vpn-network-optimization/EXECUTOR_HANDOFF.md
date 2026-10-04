@@ -4,58 +4,32 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B offline live-runner repair R3
+## Current execution status — G4-B Baidu Netdisk recovery backend R4
 
 ```text
-GATE_ID=G4B_OFFLINE_LIVE_RUNNER_REPAIR_R3
-EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_REPAIR_AND_FIXTURE_VALIDATION
-EXECUTOR_RESULT=PASS_CANDIDATE
-PRE_GATE_HEAD=301eda93ee91bef860341ec280e95f39f97cbcf7
-R2_RUNNER_BLOB=cc595546e0bad6cb17dc4cac5fea11d82840bb24
-R2_FIXTURE_VALIDATOR_BLOB=af01347b126a90eea90247767664991e4cf18044
-R3_GATE_BLOB=c76c7118d181f7d01897ba39429334d0068b92e4
-R3_REMOTE_ROUTE_BASELINE_COMPARE=PASS
-R3_REMOTE_FIREWALL_BASELINE_COMPARE=PASS
-R3_REMOTE_SERVICE_DRIFT_ALLOWLIST=PASS
-R3_REMOTE_ROLLBACK_BASELINE_COMPARE=PASS
-R3_PROFILE_CONTENT_INTEGRITY=PASS
-R3_PROFILE_SAME_SIZE_CONTENT_DRIFT_NEGATIVE=PASS
-R3_STRICTMODE_RECOVERY_CLEANUP=PASS
-R3_FAILURE_CODE_NOT_MASKED=PASS
-R2_REGRESSIONS=PASS
-R1_REGRESSIONS=PASS
-POWERSHELL_AST_PARSE=PASS
-EMBEDDED_REMOTE_PYTHON_AST_PARSE=PASS
-R3_REMOTE_PYTHON_HELPER_FIXTURES=PASS
-SECRET_SCAN=PASS
-SOURCE_COMMIT=7dde4796abac0019763345cd540cdfd5c00b9c1a
-GITHUB_FRESH_READBACK=PASS
-ROUND_STARTED_AT=UNKNOWN
-ROUND_FINISHED_AT=UNKNOWN
-ACTUAL_ELAPSED=UNKNOWN
-TIME_OVERRUN=UNKNOWN
-LIVE_G4B_EXECUTION_AUTHORIZED=NO
+GATE_ID=G4B_BAIDU_NETDISK_RECOVERY_BACKEND_R4
+EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RECOVERY_BACKEND_IMPLEMENTATION_AND_FIXTURE_VALIDATION
+PREVIOUS_RESULT=PASS_G4B_OFFLINE_LIVE_RUNNER_PACKAGE
+R4_GATE_BLOB=b07461b85319aaa215396a5e8d6f9fe7ea358ec8
+SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
+OWNER_LIVE_G4B_AUTHORIZATION=GRANTED
+REAL_BAIDU_LOGIN_OR_UPLOAD_AUTHORIZED_THIS_ROUND=NO
 SSH_OR_VPS_ACTION=NO
 REAL_SECRET_ACCESS=NO
-EXTERNAL_TEST_REQUESTS=0
+EXTERNAL_REQUESTS=0
 NETWORK_MUTATION=NO
-CLASH_PROFILE_MUTATION=NO
-SYSTEM_PROXY_CHANGE=NO
-TUN_CHANGE=NO
-SERVICE_MUTATION=NO
-ROUTE_MUTATION=NO
-G4C_EXECUTION=NO
 STOP_AT_REVIEWER=YES
 ```
 
-### Completed R3 execution
+### Executor task
 
-Offline-only repairs cover remote route/firewall/service drift comparison and exact rollback
-read-back, SHA-256 profile-store integrity, and initialization of every recovery cleanup buffer
-before `try`. R1/R2 regressions and R3 positive/negative fixtures passed. No live action occurred.
-Timing is `UNKNOWN` because the Gate start boundary was not captured before preflight/sync. Evidence
-is appended in `EXECUTION_EVIDENCE.md`; `REVIEWER_HANDOFF.md` remains Reviewer-owned. Fresh GitHub
-read-back remains required after commit/push. Stop for Reviewer review; do not run live G4-B.
+1. Read `docs/G4B_BAIDU_NETDISK_RECOVERY_BACKEND_R4.md` as the current Gate.
+2. Safe ff-only sync and capture timing before preflight.
+3. Implement only the offline Baidu CLI recovery backend and synthetic fixtures required by R4.
+4. Do not log in to Baidu, read real auth material, upload/download a real file, run the live G4-B runner, access VPS, or mutate runtime network/Clash/service/route state.
+5. Preserve all accepted R1/R2/R3 contracts and frozen files.
+6. Persist sanitized proof to `EXECUTION_EVIDENCE.md`, update only this `EXECUTOR_HANDOFF.md`, fresh read-back, and stop at Reviewer.
+7. Return PASS_CANDIDATE or precise RETURN.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
