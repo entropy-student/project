@@ -121,6 +121,17 @@ EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized 
 
 G4-B persistent readiness is blocked on this bypass proof. The Owner has granted exactly one G4-B0 attempt; persistent REALITY/service/profile writes remain unauthorized.
 
+Locked G4-B0 live identities:
+
+```text
+G4B0_RUNNER_BLOB=0a0a03c01b4163703c5f8ca0b2a2779a718ccb48
+G4B0_TEMPLATE_BLOB=f8c637d28a35d3795c8ebaf470d50248562dbaf8
+G4B0_VALIDATOR_BLOB=bd6b400a5353c84818a918e1f6415ab3029efde4
+G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
+```
+
+The live runner is offline-reviewed and ready. Before child execution, the Owner wrapper must safe-sync ff-only, verify these blobs, AST-parse runner + validator, and run the offline validator.
+
 ## CRITICAL_CONSTRAINTS
 
 - Target v1 role order is HY2 PRIMARY, WG BACKUP_1, REALITY BACKUP_2.
