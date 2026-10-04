@@ -81,10 +81,14 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=IN_PROGRESS
-CORE_FUNCTION_ONBOARDING_SURFACE=IN_PROGRESS
-POSTPAY_GENERATION_STATUS_SURFACE=IN_PROGRESS
+HOMEPAGE_ENTRY_SURFACE=SOURCE_CANDIDATE_READY
+CORE_FUNCTION_ONBOARDING_SURFACE=SOURCE_CANDIDATE_READY
+POSTPAY_GENERATION_STATUS_SURFACE=SOURCE_CANDIDATE_READY
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
+G3CR7_SOURCE_CANDIDATE=PASS_CANDIDATE_SOURCE_ONLY
+G3CR7_SOURCE_HEAD=5327c690e2dfe3aaab306f7c85d02fa0ac06f5b4
+G3CR7_RUNTIME_VISUAL=UNVERIFIED
+G3CR7_OWNER_VISUAL=PENDING
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 ```
@@ -204,18 +208,19 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Implement the three G3CR7 frontend surfaces on the existing PR #64 visual branch.
-2. Reuse the existing Good Issue tokens and WooCommerce checkout; use SaaS onboarding patterns rather than bespoke motion.
-3. Return a reviewable desktop/mobile frontend candidate and stop before backend draft persistence or P1-P12.
-4. Owner reviews the three surfaces visually; only after they are accepted does the project return to backend wiring / later P1-P12 work.
+1. Load PR #64 candidate `5327c690e2dfe3aaab306f7c85d02fa0ac06f5b4` into the retained local WordPress runtime without production deployment.
+2. Capture 1440px + 375px evidence for the homepage entry, all intake states, generation/ready status, and Woo order-received continuation.
+3. Reviewer checks runtime behavior and scope; Owner reviews the three surfaces visually.
+4. Only after that checkpoint may G3CR7 PASS. Backend pre-payment draft persistence is a later Gate; P1-P12 remains deferred.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE during implementation.** Owner review is required after the three frontend surfaces are visible as one flow.
+**NONE until runtime screenshots are ready.** The next Owner action is visual acceptance/rejection of the three surfaces.
 
 ## EVIDENCE_POINTERS
 
 Current G3CR7:
+1. `docs/G3CR7_FRONTEND_SOURCE_CANDIDATE.md`
 1. `docs/OWNER_DECISION_G3CR7_THREE_FRONTEND_SURFACES_2026-10-04.md`
 2. `docs/G3CR7_THREE_FRONTEND_SURFACES.md`
 
