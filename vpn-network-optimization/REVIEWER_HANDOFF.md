@@ -103,10 +103,10 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=AWAITING_OWNER_LIVE_PREREQUISITES
+STATE=AUTHORIZED_AWAITING_RECOVERY_DESTINATION
 PREVIOUS_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=No live execution yet. Offline G4-B runner/package is Reviewer PASS; wait for Owner-selected second-failure-domain recovery destination and explicit G4-B live authorization.
+MAX_ENDPOINT_THIS_ROUND=No live execution yet. Offline G4-B runner/package is Reviewer PASS and Owner live authorization is granted; wait only for an approved second-failure-domain recovery destination.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
@@ -114,12 +114,12 @@ PREFLIGHT=G4-B0 PASS; frozen persistent paths/runtime identity/rollback contract
 REQUIRED_EVIDENCE=Persistent REALITY service/listener/readiness, HY2/WG preservation, three-role profile order, restart persistence, Secret recovery in approved second failure domain, no unrelated drift, system proxy/TUN OFF.
 ACCEPTANCE_CRITERIA=PERSISTENT_REALITY_SERVICE_READY + PUBLIC_TCP443_REALITY_READY + THREE_ROLE_CLASH_PROFILE_READY + SECRET_RECOVERY_VERIFIED + RESTART_PERSISTENCE_PASS + baseline preserved.
 ROLLBACK_STATUS_OR_PLAN=Remove only project-owned REALITY service/config/runtime and SELF-VPN-V1 profile; preserve HY2/WG and recovery material; verify TCP443/profile/route/proxy/TUN baselines after rollback.
-OWNER_ONLY_ACTIONS=Live G4-B is a new consequential Gate. Current G4-B0 standing authorization does not transfer. Before live execution, Owner must separately authorize G4-B and provide an approved second-failure-domain encrypted recovery destination distinct from SFO3 and the current Windows local disk.
+OWNER_ONLY_ACTIONS=Owner live G4-B authorization is granted. Before live execution, Owner must still provide an approved second-failure-domain encrypted recovery destination distinct from SFO3 and the current Windows local disk. Ordinary project GitHub repository storage is not approved under the current Gate.
 REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_PERSISTENT_THREE_ROLE_READINESS_GATE.md + docs/G4B_PERSISTENT_IMPLEMENTATION_PACKAGE.md + current REVIEWER_HANDOFF.md + accepted G4-B0/R3R2/G2-C source identities as needed.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
-G4-B0 is formally closed PASS. The G4-B offline live-runner package is now Reviewer PASS after R3. No persistent VPS/Windows mutation has occurred yet. Live G4-B is blocked only on the Owner-selected second-failure-domain recovery destination and explicit consequential authorization.
+G4-B0 is formally closed PASS. The G4-B offline live-runner package is now Reviewer PASS after R3. No persistent VPS/Windows mutation has occurred yet. Live G4-B is blocked only on the Owner-selected second-failure-domain recovery destination; explicit consequential authorization is already granted.
 
 Current G4-B offline Executor identity:
 
@@ -128,7 +128,7 @@ G4B_OFFLINE_IMPLEMENTATION_R1_GATE_BLOB=6ebf299166109b0640f2acd93cd8c669bc036b32
 G4B_OFFLINE_REPAIR_R2_GATE_BLOB=b60c1d1bf09cac5467f547b83dc2c13a4af850d8
 G4B_OFFLINE_REPAIR_R3_GATE_BLOB=c76c7118d181f7d01897ba39429334d0068b92e4
 EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_REPAIR_AND_FIXTURE_VALIDATION
-LIVE_G4B_EXECUTION_AUTHORIZED=NO
+LIVE_G4B_EXECUTION_AUTHORIZED=YES
 ```
 
 Locked G4-B0 final identities:
@@ -187,20 +187,13 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Collect the two Owner live prerequisites for `G4B_PERSISTENT_THREE_ROLE_READINESS`:
-1. approve/name a second-failure-domain destination for the encrypted portable recovery artifact; and
-2. explicitly authorize the live G4-B consequential deployment.
-
-After both are present, Reviewer may open the bounded live G4-B execution round using the reviewed runner.
+Select and record one approved second-failure-domain destination for the encrypted portable recovery artifact. After that prerequisite is satisfied, Reviewer may open the bounded live G4-B execution round using the reviewed runner; no further G4-B authorization is needed unless the Gate changes or a failed consequential attempt triggers a fresh-authorization rule.
 
 ## OWNER_ACTION_REQUIRED
 
-Required before live G4-B:
-1. choose an Owner-controlled second-failure-domain storage location distinct from both the SFO3 VPS
-   and the current Windows local disk (for example a synced cloud-drive folder or external drive);
-2. explicitly authorize the live G4-B Gate.
+Choose one approved second-failure-domain destination distinct from the SFO3 VPS and the current Windows local disk.
 
-No Secret value should be sent in chat.
+The ordinary project GitHub repository is not approved for this private recovery artifact under the current Gate. No Secret value should be sent in chat.
 
 ## EVIDENCE_POINTERS
 
