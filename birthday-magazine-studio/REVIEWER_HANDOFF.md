@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=OWNER_HOMEPAGE_VISUAL_CONFIRMATION
+CURRENT_GATE=G3CR6R3D2R4_MOTION_POLISH
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -47,8 +47,11 @@ D2_TECHNICAL_REVIEW=PASS
 D2_VISUAL_FIDELITY_REVIEW=PASS
 D2_VISUAL_REVIEW_TRANSPORT=OWNER_MANUAL_IMAGE_UPLOAD
 D2R1_OWNER_VISUAL_RELAY=FULFILLED
-D2R2_REVIEWER_DECISION=PASS
-OWNER_HOMEPAGE_VISUAL_FREEZE=PENDING
+D2R2_REVIEWER_DECISION=PASS_STATIC_VISUAL_AND_TECHNICAL
+D2R3_MOTION_DIAGNOSTIC=PASS
+D2R3_ROOT_CAUSE=MOTION_RUNNING_BUT_NOT_PERCEPTIBLE
+OWNER_RUNTIME_MOTION=RUNNING_BUT_NOT_PERCEPTIBLE
+OWNER_HOMEPAGE_VISUAL_FREEZE=BLOCKED_ON_MOTION_POLISH
 D2_FORMAL_VISUAL_DECISION=PASS_G3CR6R3D2R2
 G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
 CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS
@@ -102,40 +105,38 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`OWNER_HOMEPAGE_VISUAL_CONFIRMATION`
+`G3CR6R3D2R4_MOTION_POLISH`
 
-Reviewer has formally PASSed `G3CR6R3D2R2_VISUAL_POLISH` on candidate `8d03464dbf1678468a289e4676ba975745bcb94d`.
+Owner-browser diagnosis is complete.
 
-Accepted:
-- Focusly-inspired homepage technical implementation;
-- desktop 1440 + mobile 375 visual quality;
-- large editorial Samples / Selected Work;
-- materially diverse major-section imagery;
-- mobile header and page rhythm;
-- motion, reduced-motion and no-JS fallback;
-- current upload/Preview KEEP-AS-IS boundary;
-- Woo/account/payment/private-workspace freeze;
-- R2 rollback to accepted D2;
-- five generated static marketing assets with provenance.
+Direct Owner readback proves:
+- `reducedMotion=false`;
+- `home-motion.js` is loaded;
+- `bms-motion-on` is active;
+- Samples card motion variables are being written (`-8deg`, `0.9`, matrix3d);
+- therefore the failure class is **MOTION_RUNNING_BUT_NOT_PERCEPTIBLE**.
 
-Current checkpoint:
-- Owner decides whether the current homepage visual direction is acceptable for this stage.
+Preserved:
+- D2R2 static visual quality PASS;
+- all five R2 marketing assets;
+- current homepage composition/copy;
+- Preview/Woo/account/payment/private-workspace freeze.
 
-No implementation or merge is authorized by this checkpoint.
+Current repair objective:
+- strengthen homepage motion so it is visibly perceptible in the Owner's normal browser without DevTools;
+- specifically improve Hero living focus, editorial image choreography, photo-panel parallax, Samples scroll progression, and desktop Closing sticky reveal;
+- preserve reduced-motion/no-JS accessibility fallbacks.
 
-Current Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR6R3D2R2_PASS.md`
+Current Gate:
+- `docs/G3CR6R3D2R4_MOTION_POLISH.md`
 
-Current Owner checkpoint:
-- `docs/OWNER_CHECKPOINT_G3CR6R3D2_HOMEPAGE_VISUAL_CONFIRMATION.md`
+Diagnostic decision:
+- `docs/REVIEWER_DECISION_G3CR6R3D2R3_PASS_MOTION_DIAGNOSTIC.md`
 
-Still unresolved and separate:
-- core Aha interaction;
-- P1-P12 magazine visual system;
-- Privacy Policy publication;
-- PR #64 merge;
-- production deployment;
-- real-money/Live payment.
+Mandatory stop:
+- Executor produces motion-polished local candidate + multi-state evidence;
+- Owner then performs live-browser motion check;
+- no PR merge, production deploy, Preview redesign, payment action, P1-P12 or core-Aha work.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -198,30 +199,27 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Owner reviews the current R2 homepage and chooses **accept for this stage** or requests specific visual changes.
-2. If accepted, Reviewer records `OWNER_HOMEPAGE_VISUAL_FREEZE=PASS`.
-3. After that confirmation, resume the still-unresolved visual/product work outside the homepage; current upload/Preview interaction remains on hold unless Owner explicitly reopens it.
-4. PR #64 remains unmerged until a later reviewed integration/merge Gate.
+1. Execute **G3CR6R3D2R4** as a presentation-only motion polish.
+2. Make the accepted static homepage visibly dynamic in ordinary browsing, using the already-observed Focusly motion behaviors as reference.
+3. Preserve reduced-motion/no-JS static completeness and all protected Preview/Woo behavior.
+4. After Executor PASS_CANDIDATE, Owner opens the local site and verifies four motion classes: Hero, editorial/photo sections, Samples, Closing.
+5. Only after Owner confirms perceptible motion may the homepage visual freeze resume.
 
 ## OWNER_ACTION_REQUIRED
 
-Choose one:
+**NONE now.** The diagnostic is complete.
 
-1. **Accept current homepage visual direction for this stage**, or
-2. state the specific homepage visual changes still wanted.
-
-No other Owner action is required now.
+After D2R4 Executor returns PASS_CANDIDATE, Owner will only need to open `http://127.0.0.1:8189/` and confirm the strengthened motion is visibly perceptible.
 
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/REVIEWER_DECISION_G3CR6R3D2R2_PASS.md`
-2. `docs/OWNER_CHECKPOINT_G3CR6R3D2_HOMEPAGE_VISUAL_CONFIRMATION.md`
-3. `docs/evidence/g3cr6r3d2r2/reviewer-visual-contact-sheet-r2.jpg`
-4. `docs/evidence/g3cr6r3d2r2/reviewer-visual-contact-sheet-r2-manifest.json`
-5. `docs/evidence/g3cr6r3d2r2/generated-asset-provenance.json`
-6. `docs/evidence/g3cr6r3d2r2/qa-report.json`
-7. `docs/evidence/g3cr6r3d2r2/rollback-proof.json`
-8. `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`
+1. `docs/G3CR6R3D2R4_MOTION_POLISH.md`
+2. `docs/REVIEWER_DECISION_G3CR6R3D2R3_PASS_MOTION_DIAGNOSTIC.md`
+3. current `poc/g3c/preview-plugin/home-motion.js`
+4. current `poc/g3c/preview-plugin/home.css`
+5. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md` section 3 motion inventory
+6. accepted D2R2 QA/rollback/source-correlation evidence
+7. `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`
 
-Homepage implementation is Reviewer-accepted; Owner visual freeze remains pending.
+Static R2 design remains accepted. Only perceptible motion is open.

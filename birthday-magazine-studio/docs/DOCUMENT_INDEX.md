@@ -143,3 +143,19 @@ For the current G3CR6R3D1R1 state, a new Reviewer/Executor should normally need 
 11. `../EXECUTOR_HANDOFF.md` / `../EXECUTION_EVIDENCE.md` only when a specific current execution fact must be inspected
 
 Older Gates, payment history, prior template/theme research and superseded visual rounds remain provenance. Do not load them by default for G3CR6R3C.
+
+
+## Motion runtime reconciliation — 2026-10-04
+
+| Document | Purpose | Status |
+|---|---|---|
+| `REVIEWER_DECISION_G3CR6R3D2R2_RETURN_OWNER_RUNTIME_MOTION.md` | Reconciles Owner report that homepage is fully static against prior automated motion evidence | **CURRENT RETURN DECISION** |
+| `G3CR6R3D2R3_OWNER_RUNTIME_MOTION_DIAGNOSTIC.md` | Read-only Owner-browser diagnostic for reduced-motion/script execution state | **CURRENT GATE** |
+
+
+## Motion polish — 2026-10-04
+
+| Document | Purpose | Status |
+|---|---|---|
+| `REVIEWER_DECISION_G3CR6R3D2R3_PASS_MOTION_DIAGNOSTIC.md` | Owner-browser diagnosis: script runs, motion exists technically, but is not perceptible | **PASS / ROOT CAUSE CLASSIFIED** |
+| `G3CR6R3D2R4_MOTION_POLISH.md` | Strengthen Hero, editorial, panel, Samples and Closing motion while preserving accepted static design | **CURRENT GATE — READY FOR EXECUTOR** |
