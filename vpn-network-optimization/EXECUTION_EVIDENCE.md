@@ -7727,3 +7727,26 @@ ROLLBACK=Revert only this Gate's source/document commits; no runtime rollback is
 EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_BACKEND_R5R1_OFFLINE_REPAIR
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Reviewer reconciliation — G4-B Baidu backend R5R1 — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_BACKEND_R5R1_OFFLINE_REPAIR
+REVIEWER_RESULT=PASS_G4B_BAIDU_BACKEND_R5R1_OFFLINE_REPAIR
+FINAL_MAIN_HEAD=8f8153b1f4f2d54de6721aaf6d77245a0e33f628
+SOURCE_COMMIT=f1c1b1abdd713089edc4fa677322b96aadcc7e3d
+RUNNER_BLOB=f9729791b36b042a305207be24f5ced87113820c
+FIXTURE_VALIDATOR_BLOB=2bbc5c61c51fd381063fceebcaa5114b23daa36b
+IMPLEMENTATION_PACKAGE_BLOB=9e3a33515afea52d93324cccd1d7406937458e6d
+ACTUAL_ELAPSED=22m02s
+TIME_OVERRUN=NO
+REAL_BAIDU_ACTIONS=0
+LIVE_ACTIONS=0
+```
+
+Reviewer independently inspected the final `main` source and accepted Evidence. The default download branch binds `archiveSource` to the protected local archive, verifies the pinned archive SHA-256 before `ZipFile::OpenRead`, and preserves the same validation for the local archive override. The production pending local/remote names derive from the same run-scoped basename, and the mismatch guard executes before any remote state query or upload call. The negative fixture proves basename mismatch causes zero fake-CLI calls.
+
+R1-R4 regression markers, all required R5R1 markers, PowerShell AST parsing, Secret scan, changed-path scope, timing persistence, and GitHub fresh read-back are accepted. The final two commits after the source change contain only Evidence/Executor-Handoff persistence and timing correction. No live runner, Baidu provider operation, VPS/SSH, real Secret access, network request, Clash/profile, service, route, proxy, TUN, or G4-C action occurred.
+
+R5R1 closes as formal PASS. This does not PASS G4-B. The next boundary is offline preparation of the Owner-local Baidu authentication-readiness checkpoint; real account authentication remains Owner-only and credentials must never enter chat/GitHub/logs/process arguments.
