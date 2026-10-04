@@ -34,6 +34,8 @@
 
 | G4B_BAIDU_NETDISK_RECOVERY_BACKEND_R4 | **未预先给出（Reviewer 流程缺口）** | 52m40s（至 source/offline validation；后续 Git persistence 不在该计时内） | UNCLASSIFIABLE | R4 Gate 漏写端到端预计耗时，违反本文件“Reviewer 每轮 Gate 给出预计区间”的规则，因此不能事后把 52m40s 判为超时或未超时。该遗漏本身作为 timing process defect 记录；R5 已恢复强制估时。 | R4 Evidence / main `79c10bf5...` |
 
+| G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5 | 20–35 分钟 | UNKNOWN | UNKNOWN | Executor 在初始 canonical fetch 前再次漏记开始时间，因此不得回推；技术执行在源码修改前因 Codex policy 阻止 release digest 获取而 fail-closed。无 live 动作。后续 R5R1 预计 15–30 分钟，并取消冗余 inner-exe digest 检索。 | R5 Evidence / main `77089e8d...` |
+
 ## 已确认的主要耗时来源
 
 ### 1. 本地 runner 问题发现过晚
