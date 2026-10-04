@@ -55,11 +55,16 @@ D2R4_OWNER_LIVE_MOTION=PASS_OWNER_REPORTED
 OWNER_RUNTIME_MOTION=PASS
 OWNER_HOMEPAGE_VISUAL_FREEZE=PASS_WITH_CORE_ENTRY_RESERVED
 D2_FORMAL_VISUAL_DECISION=PASS_G3CR6R3D2R2
-G3CR6R3C_RESEARCH_STATUS=RESUMED_CORE_AHA_AND_P1_P12_ONLY
+G3CR6R3C_RESEARCH_STATUS=PARTIAL_CORE_AHA_RESEARCH_PASS_P1_P12_PENDING
 CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS
 PREVIEW_INTERACTION_CHANGE=HOLD
-CORE_AHA_INTERACTION_DIRECTION=UNRESOLVED
-CORE_AHA_EXACT_PRESENTATION=UNRESOLVED
+CORE_AHA_INTERACTION_DIRECTION=REVIEWER_RECOMMENDS_PHOTO_TO_ISSUE_MORPH
+CORE_AHA_EXACT_PRESENTATION=PHOTO_TO_COVER_TO_FIRST_SPREAD
+CORE_AHA_RESEARCH=PASS
+CORE_AHA_RESEARCH_CANDIDATES=82
+CORE_AHA_SOURCE_ECOSYSTEMS=8
+CORE_AHA_SATURATION=PASS
+CORE_AHA_OWNER_SELECTION=PENDING
 MAGAZINE_P1_P12_VISUAL_SYSTEM=UNRESOLVED_RESEARCH_AGAIN
 PRIOR_G3CR6R3C_SATURATION=SUPERSEDED_FOR_INTERACTION_AND_P1_P12
 MAGAZINE_WEB_PAGE_MOTION_MODE=UNRESOLVED
@@ -192,27 +197,27 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Resume `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY` for **Core Aha interaction + P1-P12 only**.
-2. Keep the accepted homepage frozen; do not reopen homepage template/style research.
-3. Satisfy the existing hard research contract from an open field and return an Owner-ready shortlist with explicit reuse/license status and saturation evidence.
-4. After Reviewer + Owner selection, open a separate implementation Gate for a **bounded vertical slice first** (core interaction + representative magazine pages) before committing to all 12 pages.
+1. Owner reviews the Reviewer recommendation **PHOTO_TO_ISSUE_MORPH**: browser-local photo -> magazine cover -> first interior spread.
+2. If accepted, freeze the Core Aha direction; do not implement it yet.
+3. Continue the remaining parent-Gate work with **P1-P12 magazine visual-system research** only.
+4. After both Core Aha and P1-P12 are selected, open a separate bounded vertical-slice implementation Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** Owner homepage acceptance and authorization to proceed are recorded. The next checkpoint is after the renewed Core Aha + P1-P12 research shortlist is ready.
+Confirm or reject the recommended Core Aha direction: **one local photo visibly becomes the personalized magazine cover, then reveals the first interior spread**.
 
 ## EVIDENCE_POINTERS
 
-Current working set:
-1. `docs/OWNER_DECISION_G3CR6R3D2R4_HOMEPAGE_ACCEPTANCE_2026-10-04.md`
-2. `docs/REVIEWER_DECISION_G3CR6R3D2R4_PASS_HOMEPAGE_FREEZE.md`
-3. latest PR #64 candidate `f50cc974ead65c9811f952cdf0a327c548f14efc`
-4. `docs/evidence/g3cr6r3d2r4-owner-video/`
-5. `docs/evidence/g3cr6r3d2r4-hero-focus/`
-6. `docs/evidence/g3cr6r3d2r4-hero-range/`
-7. `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
-8. `docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`
-9. `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`
-10. `docs/OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md`
+Core Aha current research:
+1. `docs/REVIEWER_DECISION_G3CR6R3C_CORE_AHA_RESEARCH_PASS.md`
+2. `docs/g3cr6r3c-core-aha/RESEARCH_LEDGER.md`
+3. `docs/g3cr6r3c-core-aha/SOURCE_COVERAGE_AND_SATURATION.md`
+4. `docs/g3cr6r3c-core-aha/SHORTLIST_AND_RECOMMENDATION.md`
+5. `docs/g3cr6r3c-core-aha/REUSE_AND_IMPLEMENTATION_MAP.md`
 
-Homepage is accepted/frozen except for the future bounded core-experience entry. Current unresolved visual work is Core Aha + P1-P12.
+Preserved parent-Gate / homepage state:
+6. `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
+7. `docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`
+8. `docs/REVIEWER_DECISION_G3CR6R3D2R4_PASS_HOMEPAGE_FREEZE.md`
+
+Core Aha research is PASS; Owner selection is pending. P1-P12 remains unresolved and was not researched in this round.
