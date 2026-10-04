@@ -4484,3 +4484,44 @@ Reviewer conclusion:
 - The target-host validator accepted the ACL repair source, but the runner still failed at runtime-root ACL validation before any UI action.
 - Source readback shows a pre-existing runtime root is validated rather than recreated. Cleanup intentionally removes the root only when the current run created it.
 - Therefore the repaired Method A has not yet been disproven. D3 performs an exact read-only runtime-root residue inspection before any mutation.
+
+
+## Reviewer reconciliation — D3 stale empty runtime-root ACL residue confirmed — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_RUNTIME_ROOT_RESIDUE_DIAGNOSTIC_D3
+OWNER_REPORTED_HEAD_BEFORE=276a418ca8d9d919261036fea719e5994e7c1ef5
+OWNER_REPORTED_ORIGIN_MAIN=cb5e9adb0e1ed71bcf6b7043d9ab29df5a2a04b2
+OWNER_REPORTED_FAST_FORWARD=PASS
+OWNER_REPORTED_POST_SYNC_PROJECT_CLEAN=PASS
+OWNER_REPORTED_DIAGNOSTIC_BLOB=de16f13f22bf2cfaa0b8c7987153401b523a6d49
+RUNTIME_ROOT_EXISTS=True
+RUNTIME_ROOT_REPARSE_POINT=False
+RUNTIME_ROOT_CHILD_COUNT=0
+RUNTIME_ROOT_EMPTY=True
+RUNTIME_ROOT_ACL_PROTECTED=False
+RUNTIME_ROOT_OWNER_MATCH=False
+RUNTIME_ROOT_RULE_COUNT=1
+RUNTIME_ROOT_INHERITED_RULE_COUNT=1
+RUNTIME_ROOT_UNAUTHORIZED_RULE_COUNT=0
+RUNTIME_ROOT_OWNER_DIRECT_FULLCONTROL=True
+RUNTIME_ROOT_OWNER_CHILD_FULLCONTROL=True
+OWNER_REPORTED_RUNTIME_ROOT_DIAGNOSTIC=PASS
+OWNER_REPORTED_RUNTIME_ROOT_MUTATION=NONE
+OWNER_REPORTED_NETWORK_MUTATION=NONE
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+ROOT_CAUSE=STALE_EMPTY_PROJECT_RUNTIME_ROOT_WITH_LEGACY_INHERITED_ACL_BYPASSES_NEW_CREATE_WITH_ACL_PATH
+NEW_ACL_IMPLEMENTATION_DISPROVEN=NO
+REPAIR_AUTHORIZED=EXACT_IN_PLACE_ACL_TIGHTENING_ONLY
+ROOT_DELETE_AUTHORIZED=NO
+RUNTIME_ROOT_REPAIR_COMMIT=3b7f19751e1738dcecc7b1288795ca306918ceae
+RUNTIME_ROOT_REPAIR_BLOB=cf33051c1a6eb073673020e835f182756f05d783
+NEXT_GATE=G3C_C2B_RUNTIME_ROOT_ACL_RECONCILE_AND_CANARY_R1
+PROVENANCE=OWNER_REPORTED_PLUS_DIRECT_GITHUB_SOURCE_READBACK
+```
+
+Reviewer conclusion:
+- D3 directly confirms the stale-root hypothesis: the exact project-owned runtime root is empty and non-reparse but retains the old inherited ACL and wrong Owner.
+- This explains why the repaired runner continues to fail before invoking the new child-directory create-with-ACL path.
+- Because the root is empty and contains no unauthorized ACL rule evidence, a minimal in-place ACL tightening is authorized. Deletion remains forbidden.
+- The next checkpoint combines repair readback, full offline validation, and conditional C2B canary to avoid another unnecessary round trip.
