@@ -6030,3 +6030,35 @@ Reviewer conclusion:
 - Current WireGuard/Clash/network/profile state is clean and matches the accepted pre-canary boundary.
 - Because no consequential action started, the already-granted single R3R2 authorization remains unconsumed; no fresh Owner authorization is required for the corrected wrapper.
 - The wrapper defect is limited to using top-level `exit` in code pasted directly into the Owner's interactive PowerShell host. The corrected wrapper must never terminate the parent host.
+
+
+## Reviewer reconciliation — R3R2 parent-safe wrapper Git path encoding failure — 2026-10-04
+
+```text
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+PARENT_POWERSHELL_STILL_ALIVE=YES
+FAILURE_PHASE=WRAPPER_PREFLIGHT_GIT_ROOT_DISCOVERY
+FAILURE_DOMAIN=WINDOWS_NATIVE_ARGUMENT_PATH_ENCODING
+OBSERVED_GIT_PATH=VPS_MOJIBAKE_PATH
+SECONDARY_ERROR=NULL_TRIM_AFTER_FAILED_GIT_OUTPUT
+
+R3R2_SOURCE_LOCK_STARTED=NO
+R3R2_RUNNER_STARTED=NO
+SECRET_PREPARE_STARTED=NO
+CLASH_PROFILE_IMPORT_STARTED=NO
+TEMP_ROUTE_CREATED=NO
+REAL_NETWORK_REQUESTS_STARTED=NO
+R3R2_CONSEQUENTIAL_ACTION_STARTED=NO
+AUTHORIZED_REAL_CANARY_CONSUMED=NO
+
+RECONCILIATION_RESULT=PASS_PRESTART_FAILURE
+R3R2_AUTHORIZATION_REMAINS_VALID=YES
+NEXT_ACTION=RETRY_WRAPPER_WITH_UNICODE_SAFE_WORKING_DIRECTORY_AND_NO_GIT_C_UNICODE_PATH_ARGUMENT
+```
+
+Reviewer conclusion:
+- The corrected parent-safe wrapper preserved the interactive PowerShell host as intended.
+- The attempt failed before repository synchronization or any R3R2 runner execution because the Chinese path component was mojibaked when passed as a native `git -C` argument.
+- No consequential R3R2 action started and the single Owner authorization remains valid and unconsumed.
+- The next wrapper should enter the project directory with PowerShell `Push-Location -LiteralPath` first and invoke Git without a Unicode `-C` path argument; Git output must be checked before calling string methods.
