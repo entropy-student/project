@@ -405,3 +405,14 @@ binary hash because the upstream CI and release build paths are not proven byte-
 
 **Remaining repair:** use the verified downloaded local archive path for extraction and align the
 production local pending basename with the exact remote pending object basename.
+
+
+## 2026-10-05 — Baidu recovery backend R5R1 formally accepted
+
+**Decision:** `G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5R1` is Reviewer PASS.
+
+**Accepted repair:** the pinned release archive is opened from the verified local path, and the production pending local/remote basename is unified with a fail-closed pre-CLI mismatch guard. R1-R4 regressions and R5R1 fixtures passed; the mismatch negative fixture proves zero CLI calls before rejection.
+
+**Boundary:** This is an offline source PASS only. No real Baidu/VPS/Secret/network action occurred and `G4B_PERSISTENT_THREE_ROLE_READINESS` remains IN_PROGRESS.
+
+**Next:** `G4B_BAIDU_OWNER_AUTH_READINESS_CHECKPOINT_R6` prepares one offline-reviewed Owner-local readiness verifier. R6 itself performs no real login or provider action. Owner credentials remain local and are never relayed through chat, GitHub, logs, environment variables, or process arguments.
