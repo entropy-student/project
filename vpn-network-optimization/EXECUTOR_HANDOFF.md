@@ -1,4 +1,34 @@
-## Current execution status — G3C C2C Clash root lock metadata diagnostic D8R1
+## Current execution status — G3C C2C Secret scan zero-length root-lock repair R2R3
+
+```text
+GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_REPAIR_R2R3
+EXECUTOR_ROLE=CODEX_DESKTOP_MINIMAL_SOURCE_REPAIR_AND_OFFLINE_VALIDATION
+PREVIOUS_RESULT=RETURN_D8R1_LOCK_BECAME_READABLE_TRANSIENT_CONTENTION_CONFIRMED
+REAL_SECRET_EXECUTION_AUTHORIZED=NO
+REPAIR_FILES=scripts/c2c-secret-profile-helper.ps1;scripts/g3c-c2c-package-validator.ps1;docs/G3C_C2C_REAL_HY2_CANARY_PACKAGE.md
+CURRENT_SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+CURRENT_VALIDATOR_BLOB=151b2c9166b02d6f6ff943412f75fb047808c37b
+CURRENT_PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
+DPAPI_ACCESS_AUTHORIZED=NO
+NETWORK_REQUESTS_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Capture full timing before preflight and perform safe ff-only sync.
+2. Implement only the narrow read-failure exception described by the current Gate.
+3. Runtime-root scan remains strict; no generic .lock or unreadable-file skipping.
+4. Add Fixture L and keep A-K passing.
+5. Run offline validator, AST and Mihomo fixture parse only.
+6. Do not execute helper/orchestrator/probe/D6/D7/D8/D8R1 or access DPAPI/Secret/network.
+7. Persist Evidence + Executor Handoff only; leave Reviewer Handoff unchanged.
+8. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2C Clash root lock metadata diagnostic D8R1
 
 ```text
 GATE_ID=G3C_C2C_CLASH_ROOT_LOCK_METADATA_DIAGNOSTIC_D8R1
