@@ -28,9 +28,11 @@ Production WireGuard remains connected throughout. System proxy and Clash TUN mu
 
 The orchestrator creates one temporary ActiveStore IPv4 /32 route for the HY2 server public IP through the dynamically resolved non-WireGuard physical default gateway. This is required so HY2 UDP/8443 does not recurse through the WireGuard full tunnel. The route is removed in cleanup and no persistent route is allowed.
 
-Exactly two real requests are authorized in C2C. The only intentional real canary traffic is:
-1. one HTTPS request to `https://api.openai.com/v1/models` through Clash's existing local HTTP proxy listener, expecting curl exit 0 and HTTP 401;
-2. one request to `https://api.ipify.org` through the same local proxy, expecting the accepted SFO3 public exit.
+Exactly two real requests are authorized in C2C. The orchestrator does not trust disabled Windows `ProxyServer` metadata; instead it discovers live Clash/Mihomo loopback listeners and requires exactly one listener to answer a SOCKS5 no-auth greeting. The bounded probe then uses that proven listener explicitly with `socks5h://127.0.0.1:<port>`.
+
+The only intentional real canary traffic is:
+1. one HTTPS request to `https://api.openai.com/v1/models` through the proven local SOCKS5 listener, expecting curl exit 0 and HTTP 401;
+2. one request to `https://api.ipify.org` through the same SOCKS5 listener, expecting the accepted SFO3 public exit.
 
 No benchmark loop is authorized.
 
@@ -57,8 +59,9 @@ PASS requires:
 - Owner-only runtime YAML and local Mihomo parse PASS;
 - temporary /32 route exact readback;
 - explicit UI acknowledgements;
-- OpenAI request via local proxy => curl 0 / HTTP 401;
-- public exit through the same proxy => accepted SFO3 exit;
+- live local proxy discovery => exactly one Clash/Mihomo SOCKS5 no-auth listener;
+- OpenAI request via `socks5h` => curl 0 / HTTP 401;
+- public exit through the same `socks5h` proxy => accepted SFO3 exit;
 - profile-store snapshot restored;
 - zero auth-byte matches in Clash application storage after profile removal;
 - temporary route absent;
