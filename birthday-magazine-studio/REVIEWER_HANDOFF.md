@@ -33,14 +33,14 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR6R3D1_FOCUSLY_VISUAL_MAPPING
+CURRENT_GATE=G3CR6R3D1R1_RUNTIME_AND_PREVIEW_BENCHMARK_CLOSURE
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
 MAGAZINE_WEB_VIEWER_DIRECTION=CONFIRMED_MAGAZINE_WEB_VIEWER
 HOMEPAGE_FOCUSLY=AUTHORIZED_PUBLIC_VISUAL_REFERENCE
 HOMEPAGE_HIGH_FIDELITY_REIMPLEMENTATION=AUTHORIZED_AFTER_D1_REVIEWER_PASS
-HOMEPAGE_IMPLEMENTATION_STATUS=HOLD_PENDING_D1_REVIEWER_PASS
+HOMEPAGE_IMPLEMENTATION_STATUS=HOLD_PENDING_D1R1_REVIEWER_PASS
 G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
 CORE_AHA_INTERACTION_DIRECTION=PERSISTENT_LIVE_MAGAZINE_COVER_PREVIEW_ACCEPTED
 CORE_AHA_EXACT_PRESENTATION=PENDING_D1_BENCHMARK_MAPPING
@@ -87,25 +87,26 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR6R3D1_FOCUSLY_VISUAL_MAPPING`
+`G3CR6R3D1R1_RUNTIME_AND_PREVIEW_BENCHMARK_CLOSURE`
 
 The Owner has reprioritized the homepage before the unresolved core-interaction and P1-P12 research.
 
 Objective:
-- directly inspect the public Focusly homepage and its actual motion/responsive behavior;
-- inventory the current Birthday Magazine homepage, assets and protected functional boundaries;
-- produce a one-to-one Focusly -> current-homepage mapping that a later implementation Gate can execute safely;
-- maximize public-reference visual fidelity through independent implementation, without copying the paid template source or proprietary assets.
+- reuse the already-captured Focusly public visual/motion evidence without replay;
+- restore/obtain the smallest safe fresh readback of the current local Birthday Magazine homepage;
+- directly inspect the selected Preview benchmark products;
+- map the accepted persistent live-magazine-cover interaction onto the existing browser-local Preview;
+- decide whether Focusly homepage restyling and the new Preview can share one D2 implementation/rollback/evidence boundary.
 
 Scope:
-- read-only reference/browser inspection and project documentation only;
-- no WordPress/source/CSS/JS/media/database/runtime mutation in D1;
+- targeted local-runtime availability/readback + public benchmark inspection + project documentation;
+- no homepage/Preview implementation, no WordPress content/CSS/JS/business-data mutation;
 - no paid template purchase;
-- existing project-owned images may be reused;
-- design-time static image generation may be proposed only within existing authorized capability and without introducing a new external paid provider/account/Secret.
+- no rebuild/pull/volume reset/migration/global Docker cleanup;
+- existing project-owned images remain preferred for later D2.
 
 Mandatory stop:
-- Reviewer must PASS the mapping before D2 implementation opens.
+- Reviewer must PASS D1R1 before D2 implementation opens.
 
 Frozen during this Gate:
 - Free Preview privacy and zero-model runtime contract;
@@ -121,7 +122,10 @@ Preserved:
 - G3CR6R3C remains unresolved for core interaction and P1-P12, but is paused while the Owner-prioritized homepage Gate runs.
 
 Current Gate file:
-- `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING.md`
+- `docs/G3CR6R3D1R1_RUNTIME_AND_PREVIEW_BENCHMARK_CLOSURE.md`
+
+Reviewer decision preserving D1 evidence:
+- `docs/REVIEWER_DECISION_G3CR6R3D1_RETURN_LOCAL_HOMEPAGE.md`
 
 Current Owner decision:
 - `docs/OWNER_DECISION_G3CR6R3D_FOCUSLY_HOMEPAGE_REDESIGN.md`
@@ -190,14 +194,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3D1** read-only: directly inspect Focusly desktop/mobile/motion behavior **and** benchmark YourCover, DigitalPrank, Customily and Corjl for the accepted persistent live-cover Preview interaction.
-2. Reviewer checks the Focusly mapping, Preview benchmark mapping, asset plan and frozen functional boundaries, and decides whether both can safely share one D2 implementation Gate.
-3. If D1 PASS, open **G3CR6R3D2** for bounded homepage implementation and regression proof.
+1. Execute **G3CR6R3D1R1**: reuse existing Focusly evidence, close the fresh local-homepage readback blocker, and inspect YourCover, DigitalPrank, Customily and Corjl for the accepted persistent live-cover Preview.
+2. Reviewer checks the local readback + Preview benchmark mapping and decides whether both can safely share one D2 implementation Gate.
+3. If D1R1 PASS, open **G3CR6R3D2** for bounded Focusly-inspired homepage + live-cover Preview implementation and regression proof.
 4. After homepage + accepted live-cover Preview work reaches Owner review, resume the still-unresolved P1-P12 magazine visual research under G3CR6R3C.
 
 ## OWNER_ACTION_REQUIRED
 
-`NONE` for G3CR6R3D1; Owner already authorized Focusly-based independent homepage visual reconstruction within the frozen functional boundary.
+`NONE` by default for G3CR6R3D1R1. If Docker Desktop cannot be made available within the bounded safe runtime path, Executor returns the smallest exact Owner runtime-start action.
 
 Owner action is required later for:
 - final subjective visual freeze;
@@ -209,7 +213,11 @@ Owner action is required later for:
 
 Current working set:
 1. `docs/OWNER_DECISION_G3CR6R3D_FOCUSLY_HOMEPAGE_REDESIGN.md`
-2. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING.md`
+2. `docs/REVIEWER_DECISION_G3CR6R3D1_RETURN_LOCAL_HOMEPAGE.md`
+3. `docs/G3CR6R3D1R1_RUNTIME_AND_PREVIEW_BENCHMARK_CLOSURE.md`
+4. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md`
+5. `docs/evidence/g3cr6r3d1/`
+6. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING.md`
 3. `docs/OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md`
 2. `docs/REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md`
 2. `docs/REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md`
