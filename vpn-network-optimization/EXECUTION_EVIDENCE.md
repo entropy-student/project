@@ -7544,3 +7544,69 @@ OWNER_ACTION_REQUIRED=NO
 LIVE_G4B_EXECUTION=BLOCKED_PENDING_R5
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Executor return — G4-B Baidu recovery backend repair R5 — 2026-10-05
+
+```text
+AUTHORIZED_GATE=G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5
+GOVERNANCE_VERSION=v0.2.7 / ACTIVE_PROVISIONAL (current Reviewer Handoff)
+PRE_GATE_HEAD=a473dca7294f5e7bd837840a004f8d96582363de
+CANONICAL_MAIN_SAFE_FAST_FORWARD=3d5b8aff01c2167bfaca9110641ed2421afff615
+REMOTE_ADVANCE_SCOPE=UNRELATED_BIRTHDAY_MAGAZINE_ONLY
+CANONICAL_ORIGIN=entropy-student/project
+BRANCH=main
+WORKTREE_STATE=ONLY_PREEXISTING_UNTRACKED_RESULTS_PRESERVED
+REVIEWER_HANDOFF_MODIFIED=NO
+RELAY_RECORDED_GATE_BLOB=c3eb751396d23f36c4c2a99d4435995d4ea56877
+CURRENT_GATE_DOCUMENT_BLOB=17f50135959a0a6f86b8f525f35307bf7ac6c6b4
+GATE_BLOB_DIFFERENCE=REVIEWER_AUTHORED_TIMING_AMENDMENT_ONLY_COMMIT_f8f8ef94
+R5_FINDINGS_SCOPE_DRIFT=NO
+R5_EXECUTOR_RESULT=RETURN_G4B_R5_EXECUTABLE_DIGEST_RETRIEVAL_BLOCKED_BY_CODEX_POLICY
+R5_ARCHIVE_SOURCE_PATH_REPAIR=NOT_APPLIED
+R5_PENDING_OBJECT_NAMING_REPAIR=NOT_APPLIED
+R5_EXECUTABLE_DIGEST_PIN=BLOCKED_UNVERIFIED
+R5_FIXTURES=NOT_RUN
+```
+
+### Provenance and blocker
+
+- Fresh `origin/main` was fast-forwarded from `79c10bf5...` to `a473dca7...`; incoming commits changed VPN Reviewer/Evidence/Handoff Gate records. The current R5 source and Gate were read after synchronization. The worktree had only five pre-existing untracked `results/` entries, which were preserved.
+- The R5 relay's Gate blob (`c3eb...`) differs from the current Gate document blob (`17f501...`). Targeted history inspection proved commit `f8f8ef94` changed only the timing section to restore the required estimate/recording; the three technical findings and allowed scope are unchanged. Current canonical Gate text was followed.
+- The exact pinned GitHub release-asset retrieval attempted through the local PowerShell command path was rejected before process start with `blocked by policy`; therefore no local download/temp artifact was created. The web read of that exact asset failed with HTTP 500 because its redirect resolved to an expired signed asset URL. The signed URL/token was not retained here.
+- The executable SHA-256 could not be independently derived or verified. Since R5 requires the fixed executable digest before any CLI invocation, no source repair was applied and no R5 fixture was run; using a guessed or historical value would violate the Gate.
+
+### Timing
+
+```text
+ROUND_STARTED_AT=UNKNOWN
+ROUND_FINISHED_AT=UNKNOWN
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+TIME_OVERRUN_CAUSE=ROUND_START_TIMESTAMP_NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH_AND_FAST_FORWARD; BOUNDARIES_NOT_RECONSTRUCTED
+```
+
+### Safety and rollback
+
+```text
+RUNNER_SOURCE_CHANGED=NO
+REAL_BAIDU_LOGIN=NO
+REAL_BAIDU_API_OR_FILE_OPERATION=NO
+OWNER_BAIDU_AUTH_READ=NO
+LIVE_RUNNER_EXECUTION=NO
+SSH_OR_VPS_ACTION=NO
+REAL_SECRET_ACCESS=NO
+NETWORK_RUNTIME_MUTATION=NO
+CLASH_PROFILE_MUTATION=NO
+SYSTEM_PROXY_CHANGE=NO
+TUN_CHANGE=NO
+SERVICE_MUTATION=NO
+ROUTE_MUTATION=NO
+G4C_EXECUTION=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+OWNER_ACTION_REQUIRED=NO
+STOP_AT_REVIEWER=YES
+```
+
+No runner/runtime rollback is needed. The only local repository movement was a safe fast-forward to canonical `main`; the pre-existing untracked `results/` entries were not read, modified, staged, or removed.

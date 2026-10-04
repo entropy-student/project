@@ -12,22 +12,31 @@ EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RECOVERY_BACKEND_REPAIR_AND_FIXTURE_VALIDATI
 PREVIOUS_RESULT=RETURN_G4B_BAIDU_RECOVERY_BACKEND_R4_REVIEW_DEFECTS
 R4_MAIN=79c10bf54902ce337796ba6329e7911a838b4d1c
 R5_GATE_BLOB=c3eb751396d23f36c4c2a99d4435995d4ea56877
+CURRENT_R5_GATE_DOCUMENT_BLOB=17f50135959a0a6f86b8f525f35307bf7ac6c6b4
+R5_GATE_BLOB_UPDATE=REVIEWER_COMMIT_F8F8EF94_TIMING_ONLY
 GOVERNANCE_VERSION_CURRENT=v0.2.7
 ESTIMATED_EXECUTION_TIME=20-35 minutes
 TIMING_RECORD_REQUIRED=YES
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
+ROUND_STARTED_AT=UNKNOWN
+ROUND_FINISHED_AT=UNKNOWN
+ACTUAL_ELAPSED=UNKNOWN
+TIME_OVERRUN=UNKNOWN
+TIME_OVERRUN_CAUSE=ROUND_START_NOT_CAPTURED_BEFORE_INITIAL_CANONICAL_FETCH_AND_SYNC
+PRE_GATE_HEAD=a473dca7294f5e7bd837840a004f8d96582363de
+CANONICAL_MAIN_SAFE_FAST_FORWARD=3d5b8aff01c2167bfaca9110641ed2421afff615
+REMOTE_ADVANCE_SCOPE=UNRELATED_BIRTHDAY_MAGAZINE_ONLY
+EXECUTOR_RESULT=RETURN_G4B_R5_EXECUTABLE_DIGEST_RETRIEVAL_BLOCKED_BY_CODEX_POLICY
+R5_SOURCE_REPAIRS=NOT_APPLIED
+R5_FIXTURES=NOT_RUN
+RELEASE_ASSET_RETRIEVAL=BLOCKED
 LIVE_EXECUTION=NO
 STOP_AT_REVIEWER=YES
 ```
 
 ### Executor task
 
-1. Read `docs/G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5.md`.
-2. Capture timing before preflight/sync.
-3. Fix only the three Reviewer findings named by R5.
-4. Preserve all accepted R1-R4 contracts and frozen files.
-5. Run R1-R4 regressions plus R5 fixtures; do not run live G4-B.
-6. Update Evidence and this Handoff, fresh read-back, then stop at Reviewer.
+R5 execution stopped before source changes. The required public release-asset retrieval was blocked by the Codex command policy; the browser read path returned an expired GitHub asset redirect. Without independently verifying the executable digest, the R5-3 pin cannot be safely supplied, so no partial R5 source repair or fixtures were performed. A narrow Gate-document comparison showed the relay-referenced blob differs from current main only by the Reviewer-authored timing amendment in commit `f8f8ef94`; the three technical findings are unchanged. No Owner action is requested; stop for Reviewer direction.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
