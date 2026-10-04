@@ -150,59 +150,77 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 
 - **R2R3 formal acceptance:** Owner R2R3V1R3 returned PASS with exact six locked blobs, Fixtures A-L PASS, PowerShell AST PASS, Mihomo fixture parse PASS, `G3C_C2C_OFFLINE_FIXTURES=PASS`, `DPAPI_UNPROTECT=NO`, `NETWORK_REQUESTS=0`, `NETWORK_CHANGED=NO`, and `SECRET_VALUES_EMITTED=0`. The bounded Clash zero-byte root-lock scan repair is formally accepted.
 
+- **R2R3V2 formal acceptance:** Owner real-host sanitized Prepare verification passed. DPAPI/recovery parsing, auth format, certificate fingerprint, temporary Owner-only profile generation, Mihomo parse, immediate VerifyCleanup, and zero-residue readback all passed. No Clash import, route, external request, system-proxy/TUN/WireGuard mutation, or Secret output occurred.
+
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_SECRET_PREPARE_REPAIR_VERIFICATION_R2R3V2
-STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=PASS_G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_REPAIR_R2R3
-OBJECTIVE=Verify on the real Owner Windows host that the repaired Secret scanner allows one sanitized Prepare to complete, then immediately VerifyCleanup the temporary Owner-only profile, without importing Clash or sending traffic.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact D7/helper identities -> one D7 sanitized Prepare replay -> if Prepare succeeds, immediate VerifyCleanup -> zero runtime residue -> STOP_AT_REVIEWER.
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
+STATE=OWNER_AUTHORIZATION_REQUIRED
+PREVIOUS_RESULT=PASS_G3C_C2C_SECRET_PREPARE_REPAIR_VERIFICATION_R2R3V2
+OBJECTIVE=Run one bounded real HY2-in-Clash canary on the real Owner Windows host using the repaired Secret helper, while keeping production WireGuard available as rollback and restoring all temporary state afterward.
+MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact package identities -> preflight -> one Secret Prepare -> Owner UI import with WG baseline -> one temporary ActiveStore /32 route -> Owner selects HY2 -> exactly two proxy requests -> Owner returns to WG and removes C2C profile -> Secret cleanup/residue check -> route/network/profile readback -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; existing c2c-secret-prepare-sanitized-diagnostic.ps1 wrapper plus repaired c2c-secret-profile-helper.ps1 only.
-APPLICABLE_CRITICAL_CONSTRAINTS=This Gate authorizes CurrentUser DPAPI/recovery-content processing inside the reviewed Secret helper and temporary Owner-only runtime profile creation solely for Prepare verification; no Secret/hash/raw helper output may reach console; no Clash profile import; no outer route; no external network requests; system proxy/TUN/WireGuard unchanged; no VPS/SSH; no real C2C canary; no G4.
-D7_DIAGNOSTIC_BLOB=a0c54c91894cd648328fac8b9176f8442aa168d1
+TARGET_AND_SCOPE=Real Owner Windows host; c2c-owner-clash-real-canary.ps1 with repaired helper and existing bounded proxy probe/template/package only.
+APPLICABLE_CRITICAL_CONSTRAINTS=Fresh Owner authorization required because the prior real canary attempt failed before completion; exactly two external requests only; no benchmark loop; production WireGuard remains connected; system proxy OFF; TUN OFF; temporary /32 route is ActiveStore only and must be absent at end; no persistent route; no default-route change; no VPS/SSH; no G4; no Secret/hash/raw helper output.
+ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
 SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
-OWNER_SECRET_REPLAY_AUTHORIZATION=GRANTED_BY_OWNER_CONTINUE_INSTRUCTION
+PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
+VALIDATOR_BLOB=e520fa7b6c08b2e46365b55ec731a20bdb810c04
+TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
+OWNER_C2C_AUTHORIZATION=REQUIRED_FRESH
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
-ESTIMATED_EXECUTION_TIME=2-5_minutes
+ESTIMATED_EXECUTION_TIME=5-10_minutes_plus_owner_UI
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### ACCEPTED R2R3 OFFLINE VALIDATION
+### ACCEPTED R2R3V2 REAL-HOST VERIFICATION
 
-Owner R2R3V1R3 validation proved exact source identity and all A-L fixtures, PowerShell AST parse, Mihomo v1.19.32 fixture parse, and the complete offline package result with zero DPAPI/network/Secret output. R2R3 is formally PASS.
+Owner R2R3V2 proved the repaired helper can decrypt/validate the accepted recovery artifact, complete Secret Prepare, create and parse the temporary Owner-only profile, and immediately VerifyCleanup with zero runtime residue. No Clash import, route, external request, proxy/TUN/WireGuard mutation, or Secret output occurred.
 
-### REQUIRED EVIDENCE
+### OWNER AUTHORIZATION BOUNDARY
 
-- Owner PowerShell 7.6.6/Admin/High;
-- clean project scope + safe ff-only sync;
-- exact D7 diagnostic and repaired helper blobs above;
-- baseline runtime C2C directory/profile counts zero;
-- one sanitized Prepare invocation only;
-- if Prepare succeeds: immediate VerifyCleanup and post-cleanup directory/profile counts zero;
-- desired success marker from the existing D7 wrapper: `D7_SECRET_PREPARE_DIAGNOSTIC=UNEXPECTED_PREPARE_PASS_CLEANED` (historical label; in this repair-verification Gate it means expected repair success);
-- `C2C_SECRET_HELPER_RESULT=PASS` for Prepare and cleanup as exposed by the D7 allowlist;
+This next Gate is consequential and is not implicitly authorized by R2R3V2. It will:
+- ask the Owner to import/activate one unique temporary C2C profile while WG remains selected;
+- create one temporary ActiveStore /32 route to the HY2 server through the physical egress;
+- ask the Owner to select the real HY2 node;
+- send exactly two real requests through the proven local SOCKS5 listener;
+- ask the Owner to return to WG and remove the C2C profile;
+- verify zero Secret/profile/route residue and restored network state.
+
+No execution may start until the Owner gives fresh explicit authorization for this Gate.
+
+### REQUIRED EVIDENCE AFTER AUTHORIZATION
+
+- Owner PowerShell 7.6.6/Admin/High and clean safe ff-only sync;
+- exact six blobs above;
+- preflight WireGuard connected, system proxy OFF, TUN OFF, live SOCKS5 listener, profile-store baseline, no existing temp route;
+- Secret Prepare markers with no Secret output;
+- exact Owner UI ACK 1 after import with WG baseline selected;
+- temporary ActiveStore /32 route exact readback;
+- exact Owner UI ACK 2 after selecting HY2;
+- exactly two bounded proxy requests: OpenAI curl exit 0 / HTTP 401 / proxy used, plus accepted SFO3 public exit;
+- `REAL_HY2_IN_CLASH_CANARY=PASS`;
+- exact Owner UI ACK 3 after return to WG and profile removal;
+- zero Clash real-auth residue and zero project-runtime residue;
+- temporary route absent;
+- profile-store restored;
+- WireGuard restored/unchanged, system proxy OFF, TUN OFF;
 - `SECRET_VALUES_EMITTED=0`;
-- `CLASH_PROFILE_IMPORT=NO`;
-- `TEMP_OUTER_ROUTE_CREATED=NO`;
-- `EXTERNAL_NETWORK_REQUESTS=0`;
-- `SYSTEM_PROXY_MUTATION=NO`;
-- `TUN_MUTATION=NO`;
-- `WIREGUARD_MUTATION=NO`;
-- complete timing.
+- complete timing and cleanup PASS.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_R2R3V2 only if repaired Prepare succeeds, immediate cleanup succeeds, zero runtime residue remains, no Secret value is emitted, and no Clash import/network/route/proxy/TUN/WireGuard mutation occurs. A sanitized RETURN is not retried blindly; Reviewer classifies the new failure code first.
+PASS only if all real canary markers and all cleanup/readback markers pass in the same bounded run. Any failure/ambiguity returns and is reconciled before another consequential retry.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-D7 VerifyCleanup is the immediate rollback for any successfully created temporary profile. Any nonzero residue or cleanup ambiguity stops further action.
+Production WireGuard remains the rollback path throughout. The runner removes the temporary route in finally and invokes fallback Secret cleanup when needed; Owner UI cleanup remains required if a profile was imported and a later step fails.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic R2R3V2 checkpoint and return complete sanitized output.
+Give fresh explicit authorization for one bounded R3R2 real HY2-in-Clash canary. After authorization, Reviewer will provide the atomic Owner checkpoint and the three exact UI acknowledgements.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
@@ -214,11 +232,11 @@ NONE.
 
 ## NEXT_STEP
 
-If R2R3V2 passes, Reviewer can reopen the bounded real HY2-in-Clash canary as a separate Owner Gate. No real canary is authorized inside R2R3V2.
+Obtain fresh Owner authorization, then run exactly one bounded real canary and stop for Reviewer decision.
 
 ## OWNER_ACTION_REQUIRED
 
-Run R2R3V2 sanitized Secret Prepare repair verification.
+Authorize or decline one bounded R3R2 real HY2-in-Clash canary.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
