@@ -95,89 +95,111 @@ No production mutation is authorized in C2B. Current rollback/continuity baselin
 - **D1 local-path result:** Owner reported `Test-Path` for the reviewed diagnostic in the existing Codex worktree returned `False`. Canonical GitHub contains the diagnostic, so the local worktree is stale rather than the diagnostic being absent from canonical.
 - **D1R1 root result:** Owner-reported bounded checkpoint returned `WORKTREE_ROOT_MISMATCH` before fetch/sync/diagnostic. No C2B runner or network action occurred. Reviewer classifies the fault as an incorrect hardcoded Git-root assumption in the checkpoint, not local repository drift.
 - **D1R2 path-encoding result:** Owner-reported Git top-level rendered the Chinese path component `VPS搭建` as mojibake `VPS鎼缓`; the checkpoint then compared that decoded string with the correct .NET Unicode runner path and returned `RUNNER_OUTSIDE_GIT_ROOT`. No fetch/update/diagnostic/C2B/network action occurred. This is a native-output path-decoding defect, not repository topology evidence.
+- **D1R3 diagnostic result:** Owner-local evidence proved safe ff-only synchronization from `d87fbdd...` to `867604f...`, exact diagnostic blob identity, PowerShell 7.6.6/Admin/High integrity, and a successful read-only object-shape capture with no network mutation or Secret output.
+- **Confirmed root cause:** all 23 ActiveStore IPv4 route objects exposed `DestinationPrefix`, `NextHop`, `InterfaceIndex`, and `RouteMetric`, while `PolicyStore` was absent on 23/23 objects. The original runner's `$_.PolicyStore` access therefore caused the `PropertyNotFoundException`.
+- **Repair candidate:** canonical runner now scopes the query with `Get-NetRoute ... -PolicyStore ActiveStore` but snapshots only the four proven route properties. Validator now requires ActiveStore query scoping and rejects any `$_.PolicyStore` route-object access. Repair is not accepted until Owner-local offline validator passes.
 - **Benchmark detour remains cancelled.**
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3
+GATE_ID=G3C_C2B_ROUTE_SNAPSHOT_COMPAT_REPAIR_R1
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=RETURN_RUNNER_OUTSIDE_GIT_ROOT_PATH_ENCODING
-OBJECTIVE=Avoid decoding Git paths containing Chinese characters by running all Git operations from the already-proven runner directory, safely ff-only synchronize origin/main, prove the diagnostic file identity, and run only D1.
-MAX_ENDPOINT_THIS_ROUND=Runner-directory Git-context proof -> project-scope cleanliness via relative pathspec -> fetch origin main -> ancestor proof -> ff-only update -> diagnostic tracked/content proof -> D1 read-only diagnostic -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=PASS_DIAGNOSTIC_D1_ROOT_CAUSE_CONFIRMED
+OBJECTIVE=Validate the minimal ActiveStore route-snapshot compatibility repair and, only if all offline fixtures pass, rerun the bounded synthetic/no-traffic Clash UI canary.
+MAX_ENDPOINT_THIS_ROUND=Safe ff-only sync -> locked source identity -> offline package validator -> conditional Owner synthetic UI canary -> post-readback/cleanup -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Known runner directory under the existing Codex worktree; no Git top-level path parsing or Unicode path comparison.
-APPLICABLE_CRITICAL_CONSTRAINTS=No reset/force/stash/rebase/checkout overwrite; no decoded Git path used as a Windows filesystem locator; fail on dirt/divergence; no C2B retry; no Clash/Mihomo UI; no DPAPI/Secret; no VPS; no route/proxy/TUN/WG mutation.
-KNOWN_EXISTING_RUNNER_PATH=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\c2b-owner-clash-ui-canary.ps1
-PROJECT_DIR_BASENAME=vpn-network-optimization
-DIAGNOSTIC_FILENAME=c2b-network-state-shape-diagnostic.ps1
-DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+TARGET_AND_SCOPE=Existing Owner Windows worktree and repaired C2B runner/validator/template/package only.
+APPLICABLE_CRITICAL_CONSTRAINTS=PowerShell 7.6.6/Admin/High; no destructive Git; validator before runner; production WireGuard remains connected; synthetic/no-traffic only; no real HY2/REALITY/VPS/DPAPI/Secret; no route/proxy/TUN/WG mutation.
+RUNNER_BLOB=ffa5667e6e0d436294cb37de845d0f1440f5766a
+VALIDATOR_BLOB=a1ad9a30c0657f0912bcdebc6f39de5cf7e5de20
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+PACKAGE_BLOB=64b7ea3c562adc241311517c79cc53d966197a6e
 SPECIALIST_RULES=11B_TARGET_HOST
-ESTIMATED_EXECUTION_TIME=2-5_minutes
+ESTIMATED_EXECUTION_TIME=5-10_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
 ### PREFLIGHT
 
-1. Use the real Windows host and elevated PowerShell 7.6.6.
-2. Require the known runner path to exist; derive `runnerDir` and `projectDir` using .NET filesystem operations only.
-3. Require `projectDir` basename exactly `vpn-network-optimization`.
-4. Prove `runnerDir` is inside a Git worktree using `git -C <runnerDir> rev-parse --is-inside-work-tree`; do not read or compare `--show-toplevel`.
-5. Prove the runner is tracked using `git -C <runnerDir> ls-files --error-unmatch -- c2b-owner-clash-ui-canary.ps1`; do not consume the path text.
-6. Require project-scope clean with `git -C <runnerDir> status --porcelain -- ..`; do not print dirty path text. Any non-empty result => RETURN.
-7. Fetch only `origin main`; read only ASCII commit IDs from `rev-parse HEAD` and `rev-parse origin/main`.
-8. Require HEAD ancestor of origin/main; update only by `git -C <runnerDir> merge --ff-only origin/main`.
-9. Require post-update project scope clean.
-10. Require the D1 diagnostic file at `Join-Path runnerDir DIAGNOSTIC_FILENAME`, prove it is tracked using basename-relative `ls-files --error-unmatch`, and prove its working-tree Git blob with `hash-object` equals the locked blob.
-11. Only then run D1. Do not run C2B.
+1. Use the real Owner Windows host and elevated PowerShell 7.6.6.
+2. Start from the already-known C2B runner path and operate Git from its scripts directory; do not parse Git-emitted Chinese filesystem paths.
+3. Require project scope clean before synchronization.
+4. Fetch only `origin main`; require local HEAD ancestor of `origin/main`; update only by `merge --ff-only`.
+5. Require project scope clean after synchronization.
+6. Verify exact Git blobs for runner, validator, template, and package against the locked identities above.
+7. Run `g3c-c2a-package-validator.ps1` before the C2B runner.
+8. Require validator PASS markers including:
+   - `G3C_C2A_FIXTURE_I1_ACTIVE_STORE_SCOPE_WITHOUT_OBJECT_POLICYSTORE=PASS`;
+   - `POWERSHELL_AST_PARSE=PASS`;
+   - `G3C_C2A_OFFLINE_FIXTURES=PASS`;
+   - `NETWORK_REQUESTS=0`;
+   - `NETWORK_CHANGED=NO`.
+9. Any validator non-zero exit or missing required marker stops before C2B.
+10. Only if validation passes, invoke the repaired C2B runner exactly once.
+
+### OWNER CHECKPOINT
+
+If the repaired runner reaches the UI prompt:
+1. import only the printed synthetic profile;
+2. leave production WireGuard/current production profile unchanged;
+3. confirm `WG-BASELINE`, synthetic `HY2-SFO3`, and manual selector are visible;
+4. keep `WG-BASELINE` current/default;
+5. do not select HY2 and send no HY2 traffic;
+6. remove the synthetic profile;
+7. enter the exact acknowledgement requested by the runner.
 
 ### REQUIRED_EVIDENCE
 
-- Owner runtime pass;
-- Git worktree context pass without top-level path decoding;
-- runner tracked;
-- pre-sync project clean;
-- HEAD before / origin/main commit;
-- ancestor + ff-only pass;
-- HEAD after / post-sync project clean;
-- diagnostic tracked + blob match;
-- D1 bounded property-shape output, timing, `NETWORK_MUTATION=NONE`, `SECRET_VALUES_EMITTED=0`.
+- safe ff-only synchronization and post-sync project clean;
+- exact four locked blob identities;
+- complete offline validator output and zero exit;
+- new I1 route-shape regression fixture PASS;
+- runner timing and `C2B_PREFLIGHT=PASS`;
+- `MIHOMO_CONFIG_TEST=PASS`;
+- structured Owner acknowledgement;
+- `CLASH_PROFILE_STORE_POSTREMOVE=PASS`;
+- `POST_UI_NETWORK_READBACK=PASS`;
+- `LOCAL_RUNTIME_CLEANUP=PASS`;
+- WireGuard remains connected; proxy OFF; TUN OFF; route snapshot unchanged;
+- `SECRET_VALUES_EMITTED=0`;
+- no real HY2/REALITY/VPS/DPAPI/Secret action.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires no Git-path decoding dependency, clean + ancestor-proven ff-only synchronization, exact diagnostic identity, and successful read-only D1 evidence. Any dirt/divergence/Git failure/blob mismatch/diagnostic failure/mutation => precise RETURN.
+PASS_CANDIDATE requires offline validator PASS before runner launch, exact repaired source identity, successful synthetic UI acknowledgement/cleanup, unchanged production network state, complete timing, and STOP_AT_REVIEWER.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-No destructive Git operation is authorized. The only repository update is ancestor-proven ff-only. D1 is read-only.
+The source repair is already canonical and local synchronization is ff-only. No production network mutation is authorized. If validator fails, C2B does not run. If runner fails, its cleanup/fail-closed behavior applies and Reviewer reconciles before any retry.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied single atomic D1R3 PowerShell checkpoint in the current elevated 7.6.6 window and return its complete non-secret output.
+Run the single Reviewer-supplied atomic validation+canary checkpoint. If and only if the runner reaches the UI prompt, perform the bounded synthetic import/inspect/remove/acknowledge steps.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Do not rerun or patch C2B. Wait for Owner D1R3 output; persist bounded Git-sync/diagnostic facts only; STOP_AT_REVIEWER.
+Do not independently rerun C2B. Wait for Owner R1 output; persist bounded validation/canary evidence only; STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return `PASS_CANDIDATE_G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3` or precise `RETURN_*`; STOP_AT_REVIEWER.
+Return `PASS_CANDIDATE_G3C_C2B_ROUTE_SNAPSHOT_COMPAT_REPAIR_R1` or precise `RETURN_*`; STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Use Git entirely from the known runner directory, avoiding Git-emitted Chinese filesystem paths. If the project is clean and safely fast-forwardable, synchronize canonical main and run only D1.
+Owner safely synchronizes the repaired canonical source, runs the full offline validator, and only on validator PASS proceeds into the repaired synthetic Clash UI canary.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the D1R3 atomic PowerShell checkpoint supplied by Reviewer. Do not rerun C2B.
+Run the Reviewer-supplied atomic repair-validation checkpoint. If it reaches the C2B UI prompt, follow only the bounded synthetic profile instructions.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Wait for D1R3 Owner output. No C2B patch/retry until Reviewer receives D1 property-shape evidence.
+Wait for Owner R1 output. Do not run or patch C2B independently and do not enter C2C.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3 or precise RETURN; STOP.
+Return PASS_CANDIDATE_G3C_C2B_ROUTE_SNAPSHOT_COMPAT_REPAIR_R1 or precise RETURN; STOP.
 
 ## EVIDENCE_POINTERS
 
