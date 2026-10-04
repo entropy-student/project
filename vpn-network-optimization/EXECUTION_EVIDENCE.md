@@ -5182,3 +5182,33 @@ Reviewer conclusion:
 - Fixture J directly rejects the same regression; A-I remain PASS.
 - The missing full-round start timestamp is retained as a timing observability gap, but it does not undermine package correctness or safety because this was an offline-only Gate with zero DPAPI/network/host mutation.
 - R2R1 is formally accepted with timing gap. The Owner R3 checkpoint must capture complete timing from before sync.
+
+
+## Reviewer pre-execution hold — C2C Secret-helper evidence forwarding — 2026-10-04
+
+```text
+PREVIOUS_GATE=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3
+R3_REAL_EXECUTION_STARTED=NO
+REVIEWER_PRE_EXECUTION_FINDING=SECRET_HELPER_MARKERS_CAPTURED_NOT_DIRECTLY_FORWARDED
+ORCHESTRATOR_BLOB=bad7aa75458f48efe37cd11de18259ceb1cc19d2
+VALIDATOR_BLOB=882730a85b8cf3512feae4982f761ef7cdfec4d2
+SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
+TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
+
+FINDING_FUNCTION=Invoke-SecretHelper
+FINDING_SHAPE=FUNCTION_WRITES_CHILD_LINES_TO_SUCCESS_STREAM_THEN_CALLER_ASSIGNMENT_CAPTURES_FUNCTION_OUTPUT
+INTERNAL_MARKER_VALIDATION=CAN_PASS
+DIRECT_OWNER_EVIDENCE=INCOMPLETE
+SECRET_DISCLOSURE_FOUND=NO
+NETWORK_RISK_FOUND=NO
+HOST_MUTATION_OCCURRED=NO
+REAL_C2C_REQUESTS=0
+NEXT_GATE=G3C_C2C_SECRET_HELPER_EVIDENCE_FORWARDING_REPAIR_R2R2
+```
+
+Reviewer conclusion:
+- R2R1 remains accepted for the scalar resolver repair.
+- R3 is held before execution because the current helper-wrapper shape would make approved DPAPI/certificate/residue markers non-directly-reviewable in the Owner transcript.
+- R2R2 is an evidence-path repair only; it must not alter Secret handling or real-canary behavior.
