@@ -61,7 +61,7 @@ Windows Owner host
 - G3-C synthetic manual-control/UI behavior is accepted.
 - G3-C R3R2 real HY2-in-Clash canary is formally PASS: the bounded OpenAI request used the explicit Clash proxy path, the public-exit check matched the accepted SFO3 exit, and final cleanup/read-back restored the WireGuard/network/profile baseline.
 - Owner target v1 role order is now HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, REALITY-SFO3 BACKUP_2. This order is frozen for G4 validation but is not yet a production-role PASS.
-- G4-A offline plan/package is PASS. Persistent REALITY readiness and the persistent three-role Clash profile are not yet deployed.
+- G4-A offline plan/package is PASS. G4-B persistent implementation contract is now also prepared offline, including least-privilege REALITY service identity/capability boundaries and exact rollback semantics. Persistent REALITY readiness and the persistent three-role Clash profile are not yet deployed.
 
 ### Secret / recovery
 
@@ -155,6 +155,7 @@ The Owner has selected the target role order, but has not yet granted the separa
 ## UNRESOLVED
 
 - Fresh Owner authorization for G4-B persistent REALITY/service/Secret/profile writes.
+- An approved encrypted recovery destination in a second failure domain (distinct from both the SFO3 VPS and this Windows local disk) is still Owner input required before G4-B can PASS.
 - Persistent REALITY backup service does not yet exist; the accepted public REALITY canary was temporary and cleaned.
 - Persistent three-role Clash profile does not yet exist.
 - G4-C must prove how representative Codex/OpenAI/image-generation traffic actually traverses the selected Clash role; system proxy is tested before any TUN design.
@@ -165,11 +166,11 @@ The Owner has selected the target role order, but has not yet granted the separa
 
 ## NEXT_STEP
 
-Obtain fresh explicit Owner authorization for the bounded `G4B_PERSISTENT_THREE_ROLE_READINESS` Gate. If authorized, prepare/execute only the persistent readiness boundary and stop at Reviewer before G4-C.
+Finish the local-only G4-B execution package against the now-frozen implementation contract. Live G4-B remains blocked until the Owner supplies one approved second-failure-domain encrypted recovery destination and grants fresh explicit authorization. Then execute only the persistent-readiness boundary and stop at Reviewer before G4-C.
 
 ## OWNER_ACTION_REQUIRED
 
-Authorize or decline G4-B persistent three-role readiness: persistent public REALITY service enablement, protected persistent REALITY credential generation/installation, and one persistent credential-bearing Clash profile with HY2/WG/REALITY manual order. This does not authorize system proxy/TUN activation, peak-hour testing, or G4-C real workloads.
+Before live G4-B: (1) name one approved second-failure-domain destination for an encrypted recovery copy, and (2) explicitly authorize or decline the bounded G4-B live writes. No credential value is needed in chat. This does not authorize system proxy/TUN activation, peak-hour testing, or G4-C real workloads.
 
 ## EVIDENCE_POINTERS
 
