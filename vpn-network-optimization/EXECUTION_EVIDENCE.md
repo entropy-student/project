@@ -6698,3 +6698,34 @@ Reviewer reconciliation:
 - The remaining blocker is a readiness-check semantics defect: Mihomo `socks-port` may legitimately expose SOCKS5 UDP capability on the same local loopback port.
 - The correct safety invariant is not “zero UDP endpoint on the SOCKS port”; it is “any SOCKS-port TCP/UDP listener owned by this Mihomo process must be loopback-only, with no non-loopback exposure”.
 - No further live retry is authorized. Repair and non-consequential validation are required first.
+
+
+## G4-B0 SOCKS loopback readiness repair static review PASS — 2026-10-04
+
+```text
+LIVE_EXECUTION=NO
+SECRET_ACCESS=NO
+EXTERNAL_REQUESTS=0
+NETWORK_MUTATION=NO
+
+G4B0_RUNNER_BLOB=71746ed816a89ccc8d3173a8743713cc9877e64a
+G4B0_VALIDATOR_BLOB=25e9624092ecef7fc23ae97569d85026e3ebef56
+G4B0_REPAIR_CHECKPOINT_BLOB=8249091f6fcf469c303c449a2912ad507dead7a2
+
+SOCKS_UDP_SAME_PORT_REJECT_REMOVED=PASS
+TCP_LOOPBACK_GUARD=PASS
+UDP_LOOPBACK_GUARD=PASS
+LOOPBACK_ALLOWLIST=127.0.0.1,::1,::ffff:127.0.0.1
+UDP_CHECK_SCOPED_TO_PROXY_PORT=PASS
+ROUTE_WRITE_COMMANDS=0
+REQUEST_INCREMENT_CARDINALITY=2
+VALIDATOR_SOCKS_LOOPBACK_MARKER=PASS
+CHECKPOINT_REQUIRES_SOCKS_LOOPBACK_MARKER=PASS
+CHECKPOINT_SECRET_ACCESS_PATHS=0
+CHECKPOINT_EXTERNAL_ENDPOINTS=0
+CHECKPOINT_NETWORK_WRITE_COMMANDS=0
+
+REVIEWER_RESULT=PASS_REPOSITORY_STATIC_REPAIR_REVIEW
+OWNER_HOST_REPAIR_CHECKPOINT=PENDING
+LIVE_AUTHORIZATION=NOT_GRANTED
+```
