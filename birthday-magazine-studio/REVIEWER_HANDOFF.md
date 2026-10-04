@@ -33,7 +33,7 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR7R1_EXECUTOR_REPRODUCTION
+CURRENT_GATE=G3CR7R1R1_EVIDENCE_AND_CLEAN_SOURCE_REPAIR
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
@@ -81,9 +81,9 @@ PREPAYMENT_DRAFT_TTL=UNRESOLVED_IMPLEMENTATION_DETAIL
 PAYMENT_AFTER_COMPLETE_INTAKE=YES
 GENERATION_ONLY_AFTER_PAID_ENTITLEMENT=YES
 FRONTEND_THREE_SURFACES=AUTHORIZED
-HOMEPAGE_ENTRY_SURFACE=PENDING_EXECUTOR_REPRODUCTION
-CORE_FUNCTION_ONBOARDING_SURFACE=PENDING_EXECUTOR_REPRODUCTION
-POSTPAY_GENERATION_STATUS_SURFACE=PENDING_EXECUTOR_REPRODUCTION
+HOMEPAGE_ENTRY_SURFACE=EXECUTOR_CANDIDATE_RUNTIME_PASS_OWNER_PENDING
+CORE_FUNCTION_ONBOARDING_SURFACE=EXECUTOR_CANDIDATE_RUNTIME_PASS
+POSTPAY_GENERATION_STATUS_SURFACE=PARTIAL_FIXTURE_ONLY_ORDER_RECEIVED_PENDING
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 G3CR7_SOURCE_CANDIDATE=REFERENCE_ONLY_NONAUTHORITATIVE
 G3CR7_REFERENCE_PROTOTYPE_SOURCE_HEAD=0603706ca0441fb1cb65ff716f47f7a919e2e4f3
@@ -92,6 +92,10 @@ G3CR7_PAYMENT_TRUTH_REVIEW=INVALIDATED_ROLE_SEPARATION
 G3CR7_PREVIEW_STYLE_HANDOFF=INVALIDATED_ROLE_SEPARATION
 G3CR7_RUNTIME_VISUAL=UNVERIFIED
 G3CR7_OWNER_VISUAL=PENDING
+G3CR7R1_EXECUTOR_HEAD=88f45f5d712e3c1fe26f4386628703716b8eca3e
+G3CR7R1_REVIEW=RETURN_EVIDENCE_INTEGRATION
+G3CR7R1_CLEAN_SOURCE_DIFF=RETURN
+G3CR7R1_WOO_ORDER_RECEIVED_POSITIVE=RETURN
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
 G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 ```
@@ -135,17 +139,15 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR7R1_EXECUTOR_REPRODUCTION`
+`G3CR7R1R1_EVIDENCE_AND_CLEAN_SOURCE_REPAIR`
 
-The prior G3CR7 implementation round is formally RETURNed because Reviewer implemented and self-reviewed the source. Its prototype may be consulted only as a non-authoritative reference.
+G3CR7R1 independent reproduction at `88f45f5d712e3c1fe26f4386628703716b8eca3e` passed baseline, frontend runtime, Preview privacy, checkout handoff, and payment-query negative review, but formal PASS is RETURNed on two narrow evidence/source-boundary issues.
 
-Current execution authority is a fresh independent Executor reproduction from the accepted pre-implementation source baseline `e71f94377d341a88ba388f2c5da153e7cd6ee8b8`.
+Current repair Gate:
+- `docs/G3CR7R1R1_EVIDENCE_AND_CLEAN_SOURCE_REPAIR.md`
 
-Gate file:
-- `docs/G3CR7R1_EXECUTOR_REPRODUCTION.md`
-
-Reference invalidation:
-- `docs/REVIEWER_DECISION_G3CR7_RETURN_ROLE_SEPARATION_2026-10-05.md`
+Current Reviewer decision:
+- `docs/REVIEWER_DECISION_G3CR7R1_RETURN_EVIDENCE_INTEGRATION.md`
 
 ## CRITICAL_CONSTRAINTS
 
@@ -210,14 +212,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Codex/Executor executes `G3CR7R1_EXECUTOR_REPRODUCTION` from the accepted target-file baseline `e71f94377d341a88ba388f2c5da153e7cd6ee8b8`.
-2. The prior Reviewer-authored prototype at `0603706c...` may be used only as reference; its PASS/validation claims are not accepted Evidence.
-3. Executor returns fresh source, actual lint/static checks, local-runtime desktop/mobile screenshots, Woo payment-truth negative checks, and a PASS_CANDIDATE / RETURN packet.
-4. Reviewer independently inspects that Evidence and only then decides PASS / RETURN. P1-P12 remains deferred.
+1. Executor runs `G3CR7R1R1_EVIDENCE_AND_CLEAN_SOURCE_REPAIR`; do not redesign or replay already-passed intake/Preview checks.
+2. Remove the six unused Reviewer-reference prototype files from the final plugin tree and regenerate a complete diff from `e71f943...`.
+3. Use a local non-consequential Woo order fixture to capture the **actual order-received route** with the BMS pending continuation at 1440px and 375px; no payment/provider action.
+4. Reviewer rechecks only these repaired boundaries, then decides formal G3CR7 PASS / RETURN and hands visual acceptance to Owner.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE.** The next action belongs to Codex/Executor; Owner review returns only after an independently executed runtime candidate exists.
+**NONE.** This is an Executor evidence/source-boundary repair; no Owner credential, payment, or manual action is needed.
 
 ## EVIDENCE_POINTERS
 
