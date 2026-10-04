@@ -35,7 +35,7 @@
 - 已知：此前 HY2 连接失败的根因是 WireGuard Windows 严格 WFP kill-switch；修复后 UDP/8443、TLS、认证与证书 pinning 均通过。
 - 待验证：晚高峰下该优势是否持续，以及 Codex / OpenAI / AI 生图等真实长任务是否实际受益；该验证后置到自动化与迁移能力基本完成后，作为最终封板前的真实场景验收。
 - 已验证：Mihomo v1.19.31 REALITY 服务端先通过私网实现 A/B，随后公网 TCP/443 canary 也通过；动态物理出口 /32 路由命中，唯一一次 OpenAI 请求返回 curl 0 / HTTP 401，且临时 listener、runtime 与路由均完成清理。
-- 待决策：最终 v1 采用 HY2 主通道、VLESS+REALITY TCP/443 备用、还是继续以 WireGuard 为主；以及最终 WireGuard 路由 / kill-switch 安全策略。
+- 已确定的 Owner 目标顺序：**HY2 主力、WireGuard 备用 1、VLESS+REALITY 备用 2**。该顺序已冻结进入 G4 验证，但尚未成为技术上的最终生产角色 PASS；最终 WireGuard 路由 / kill-switch 安全策略仍待 v1 封板。
 
 ## MVP 范围
 
@@ -85,7 +85,9 @@ G3-C C2C 包 + Secret scanner 修复             ✅ PASS
 G3-C Secret Prepare 真实 Owner 主机复验       ✅ PASS
 G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
-G4   晚高峰 + 真实工作负载最终验收            ⏳ PENDING
+G4-A 三角色目标 / 离线包                    ✅ PASS
+G4-B 长期三节点可用性                        🔐 AUTH_REQUIRED
+G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
@@ -131,7 +133,7 @@ G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 
 
 ## 当前交互目标
 
-C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Secret Prepare 复验以及 **R3R2 真实 HY2-in-Clash bounded canary 均已正式 PASS**。R3R2 已证明真实 Clash profile 生命周期中的 HY2 鉴权/连通性，并完成临时 profile、临时 /32 路由与运行时清理；WireGuard、系统代理、TUN 和路由快照均恢复到基线。下一步是单独设计并执行 G4 晚高峰 + 代表性真实工作负载最终验收，R3R2 的一次性授权不得复用。
+C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Secret Prepare 复验以及 **R3R2 真实 HY2-in-Clash bounded canary 均已正式 PASS**。Owner 已把 v1 目标角色冻结为 **HY2 主力 / WireGuard 备用 1 / REALITY 备用 2**，G4-A 计划和离线模板已 PASS。当前进入 **G4-B 长期三节点可用性**：REALITY 目前仍只有已验证但已清理的临时公网 canary，因此要成为备用 2，必须先通过单独授权的持久服务、Secret/recovery 与 Clash 三节点 profile Gate。G4-C 晚高峰和真实工作负载在 G4-B PASS 后另行执行。
 
 连接连续性约束：
 - Owner 的 ChatGPT 网页和 Codex Desktop 必须始终有至少一条可用 VPN。
