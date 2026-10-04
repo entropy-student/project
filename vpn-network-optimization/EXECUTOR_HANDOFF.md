@@ -1,4 +1,47 @@
-## Current execution status — G3C C2B P0 local-fact persistence R1
+## Current execution status — G3C C2B Owner synthetic UI canary R2R1
+
+```text
+GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1
+EXECUTOR_ROLE=CODEX_DESKTOP
+CANONICAL_SOURCE=origin/main
+PREVIOUS_RESULT=RETURN_C2B_CANONICAL_GATE_MISMATCH
+REVIEWER_HANDOFF_GATE_MUST_MATCH=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1
+RUNNER=scripts/c2b-owner-clash-ui-canary.ps1
+RUNNER_BLOB=cd5a2eb768b54d13307b651ea514a912b9742c9d
+TEMPLATE=templates/clash/c2b-wg-hy2-canary.yaml.template
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+OWNER_PACKAGE=docs/G3C_C2B_OWNER_CANARY_PACKAGE.md
+REAL_HY2_TRAFFIC_AUTHORIZED=NO
+DPAPI_OR_SECRET_READ_AUTHORIZED=NO
+VPS_OR_REALITY_ACTION_AUTHORIZED=NO
+ROUTE_PROXY_TUN_WG_MUTATION_AUTHORIZED=NO
+ESTIMATED_EXECUTION_TIME=5-10_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Read only the current R2R1 Gate/relay from `REVIEWER_HANDOFF.md`, this current block, and the locked runner/template/package named above.
+2. Require `REVIEWER_HANDOFF.md` and this current block to agree exactly on `GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1`. Any disagreement => precise RETURN, no Owner checkpoint.
+3. Fresh fetch/read `origin/main`; unrelated project movement is allowed, material VPN-project drift is not.
+4. Prove the `vpn-network-optimization/` worktree is clean before launch; unrelated artifacts outside this project are not blockers.
+5. Verify runner/template blobs exactly match the locked identities.
+6. Do not modify runner/template/package source.
+7. If preflight passes, run the existing one-shot Owner runner exactly once.
+8. Owner interaction is limited to importing the synthetic profile, visually confirming WG + synthetic HY2 + manual selector with WG current/default, not selecting HY2 or sending traffic, removing the synthetic profile, and entering the exact acknowledgement.
+9. Do not read DPAPI/recovery material, use real HY2 values, access VPS, activate REALITY, or mutate route/proxy/TUN/WireGuard.
+10. Capture the bounded required outputs and cleanup/read-back evidence from the Gate.
+11. Return `PASS_CANDIDATE_G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1` or precise `RETURN_*`.
+12. STOP_AT_REVIEWER; do not enter C2C.
+
+### Expected completion
+
+Return only the fixed completion packet required by Governance, with `Owner 转交` only if the one-shot checkpoint actually requires the Owner UI step.
+
+
+
+## Historical execution status — G3C C2B P0 local-fact persistence R1
 
 ```text
 GATE_ID=G3C_C2B_P0_LOCAL_FACT_PERSISTENCE_R1
