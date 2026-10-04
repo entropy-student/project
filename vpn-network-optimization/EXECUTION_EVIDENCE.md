@@ -6816,3 +6816,69 @@ Owner explicitly stated that authorizations within this Gate are approved. Revie
 - This authorization does not expand the Gate scope.
 - It does not authorize persistent G4-B, REALITY deployment, system proxy/TUN activation, route creation, SSH/VPS mutation, benchmark loops, G4-C, or any action outside the current Gate.
 - Governance-required fresh post-failure authorization or any scope-changing authorization remains a mandatory stop and cannot be waived prospectively.
+
+
+## G4-B0 formal PASS — Windows Mihomo interface-name bypass — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+ROUND_STARTED_AT=2026-10-04T10:05:26.6693459+00:00
+ROUND_FINISHED_AT=2026-10-04T10:05:38.2076463+00:00
+ACTUAL_ELAPSED=00:00:11.5383004
+
+CANONICAL_SOURCE=PASS
+OWNER_BASELINE=PASS
+ACTIVE_VPS_32_ROUTE_BEFORE=0
+PERSISTENT_VPS_32_ROUTE_BEFORE=0
+PHYSICAL_EGRESS_DISCOVERY=PASS
+PHYSICAL_INTERFACE_ALIAS=WLAN
+PHYSICAL_INTERFACE_INDEX=18
+
+CONSEQUENTIAL_PHASE_STARTED=YES
+DPAPI_UNPROTECT=PASS
+HY2_AUTH_FORMAT=PASS
+CERTIFICATE_FINGERPRINT_MATCH=PASS
+OWNER_ONLY_RUNTIME=PASS
+INTERFACE_NAME_APPLIED=YES
+MIHOMO_CONFIG_PARSE=PASS
+MIHOMO_LOCAL_PROXY_READY=YES
+TEMP_OR_PERSISTENT_VPS_32_ROUTE_CREATED=NO
+
+OPENAI_CURL_EXIT=0
+OPENAI_HTTP_STATUS=401
+OPENAI_PROXY_USED=1
+OPENAI_TIME_TOTAL=1.118680
+OPENAI_TIME_CONNECT=0.000701
+OPENAI_TIME_APPCONNECT=0.826330
+PUBLIC_EXIT=EXPECTED_SFO3
+REQUEST_COUNT=2
+BOUNDED_PROXY_PROBE=PASS
+INTERFACE_NAME_BYPASS=PASS
+
+ACTIVE_VPS_32_ROUTE_AFTER=0
+PERSISTENT_VPS_32_ROUTE_AFTER=0
+WIREGUARD_PRESERVED=YES
+SYSTEM_PROXY_FINAL=OFF
+TUN_FINAL=OFF
+NETWORK_BASELINE_RESTORED=PASS
+SECRET_RUNTIME_CLEANUP=PASS
+SECRET_VALUES_EMITTED=0
+
+G4B0_OWNER_CHECKPOINT=COMPLETE
+G4B0_RUNNER_RESULT=PASS_CANDIDATE_INTERFACE_NAME_BYPASS
+```
+
+Reviewer acceptance:
+- PASS_CANDIDATE is accepted as formal PASS.
+- The current Owner Windows host proved that Mihomo `interface-name` can carry HY2 outer traffic over the dynamically discovered physical interface while WireGuard remains connected and with zero exact VPS `/32` routes.
+- The proof includes one proxied OpenAI request returning HTTP 401 and one public-exit request returning the accepted SFO3 public IP, with request budget exactly 2.
+- Final cleanup/read-back restored the accepted baseline and emitted no Secret values.
+- This resolves the G4-B0 HY2 outer-bypass prerequisite.
+- This does not by itself prove REALITY application-path behavior, peak-hour superiority, automatic failover, or G4-C production-role acceptance.
+
+```text
+REVIEWER_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
+NEXT_GATE=G4B_PERSISTENT_THREE_ROLE_READINESS
+STOP_AT_REVIEWER=YES
+```
