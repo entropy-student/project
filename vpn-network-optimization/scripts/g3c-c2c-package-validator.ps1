@@ -125,11 +125,17 @@ function Test-C2CPackage {
     if ($T -notmatch '(?ms)- name:\s*SELF-VPN-C2C\s*\r?\n\s*type:\s*select\s*\r?\n\s*proxies:\s*\r?\n\s*- WG-BASELINE\s*\r?\n\s*- HY2-SFO3-REAL') { throw 'TEMPLATE_MANUAL_SELECTOR_INVALID' }
 
     if ($D -notmatch '(?i)not a performance benchmark' -or $D -notmatch '(?i)system proxy.*OFF' -or $D -notmatch '(?i)TUN.*OFF' -or $D -notmatch '(?i)two.*real.*request' -or $D -notmatch '(?i)SOCKS5') { throw 'PACKAGE_BOUNDARY_UNDOCUMENTED' }
-    if ($D -notmatch '(?i)zero-byte.*root-level.*\.lock' -or
-        $D -notmatch '(?i)actual read (?:failure|exception)' -or
-        $D -notmatch '(?i)project runtime.*strict' -or
-        $D -notmatch '(?i)reparse') {
-        throw 'PACKAGE_SECRET_SCAN_EXCEPTION_UNDOCUMENTED'
+    foreach ($requiredDocContract in @(
+        '(?i)zero-byte',
+        '(?i)root-level',
+        '(?i)\.lock',
+        '(?i)actual read (?:failure|exception)',
+        '(?i)project runtime.*strict',
+        '(?i)reparse'
+    )) {
+        if ($D -notmatch $requiredDocContract) {
+            throw 'PACKAGE_SECRET_SCAN_EXCEPTION_UNDOCUMENTED'
+        }
     }
     return $true
 }
