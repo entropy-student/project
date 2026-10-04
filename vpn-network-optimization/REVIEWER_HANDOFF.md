@@ -144,13 +144,15 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 
 - **R2R3V1 Owner validation return:** source identity and Owner runtime preflight passed, but the validator itself failed before A-L because Fixture L used a double-quoted mutation string containing `$isLock`; StrictMode expanded an unset validator variable. This is classified as a validator fixture defect, not a scanner-source failure. Validator-only commit `23f1c0e92bf6f8b87bf3ab56a712db2e2185824d` fixes the literal quoting; new validator blob is `abcf19ce6712fbf448c84043684e69930d67bef3`.
 
+- **R2R3V1R1 Owner validation return:** the same unset `$isLock` error recurred before substantive fixture execution. Static diagnostic found one remaining double-quoted regex literal using backslash-dollar; PowerShell still interpolated it. Validator-only commit `9c42dd671f005a04c66904778890b4181ba8126f` fixes that final occurrence. Whole-validator bounded scan now reports zero remaining `"\\$variable"`-style literals; new validator blob is `26655446b16f70809cb4741633fa7296b7c4d0de`.
+
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_OWNER_VALIDATION_R2R3V1R1
+GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_OWNER_VALIDATION_R2R3V1R2
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=RETURN_R2R3V1_VALIDATOR_FIXTURE_L_LITERAL_INTERPOLATION
-OBJECTIVE=Rerun the repaired Owner-local offline validator after correcting the Fixture L literal-string bug; prove A-L, AST and Mihomo v1.19.32 against the exact repaired package with zero Secret/network action.
+PREVIOUS_RESULT=RETURN_R2R3V1R1_VALIDATOR_REGEX_LITERAL_INTERPOLATION
+OBJECTIVE=Rerun the Owner-local offline validator after correcting the second and final backslash-dollar interpolation defect in Fixture L; prove A-L, AST and Mihomo v1.19.32 against the exact repaired package with zero Secret/network action.
 MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact six source identities -> repaired package validator A-L -> AST -> Mihomo v1.19.32 fixture parse -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Real Owner Windows host; repository validator only.
@@ -158,7 +160,7 @@ APPLICABLE_CRITICAL_CONSTRAINTS=No Secret-helper real mode; no DPAPI/recovery co
 ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
 SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
 PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
-VALIDATOR_BLOB=abcf19ce6712fbf448c84043684e69930d67bef3
+VALIDATOR_BLOB=26655446b16f70809cb4741633fa7296b7c4d0de
 TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
 PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
@@ -168,10 +170,11 @@ TIMING_OBSERVABILITY_REQUIRED=YES
 
 ### FAILURE RECONCILIATION
 
-- R2R3V1 reached the validator with all six prior blobs locked and then failed before fixture execution because Fixture L constructed one mutation target with a double-quoted PowerShell string.
-- Under StrictMode, `$isLock` inside that string was expanded before assignment and caused the validator itself to throw.
-- This is an evidence-tooling/fixture defect, not evidence that the Secret scanner repair failed.
-- Commit `23f1c0e92bf6f8b87bf3ab56a712db2e2185824d` changes exactly one validator line to a literal single-quoted PowerShell string. Helper/orchestrator/probe/template/package are unchanged.
+- R2R3V1R1 again failed before substantive fixture execution with the same unset `$isLock` error.
+- Targeted static inspection found exactly one remaining double-quoted regex literal containing backslash-dollar. In PowerShell, backslash does not escape variable interpolation.
+- Commit `9c42dd671f005a04c66904778890b4181ba8126f` converts that final literal to a true single-quoted literal.
+- A bounded scan of the entire validator after the patch found `REMAINING_SUSPICIOUS_COUNT=0` for double-quoted backslash-dollar variable patterns.
+- Scanner/helper/orchestrator/probe/template/package remain unchanged.
 - No DPAPI/Secret/network action occurred in the failed validation.
 
 ### REQUIRED EVIDENCE
@@ -192,7 +195,7 @@ TIMING_OBSERVABILITY_REQUIRED=YES
 
 ### ACCEPTANCE_CRITERIA
 
-PASS only if the Owner validator proves A-L + AST + Mihomo parse with the exact locked blobs and zero Secret/network action. No Secret Prepare replay occurs in this Gate.
+PASS only if the Owner validator proves A-L + AST + Mihomo parse with the exact locked blobs and zero Secret/network action.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
@@ -200,7 +203,7 @@ Repo-only validator correction; the scanner repair remains unchanged.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic R2R3V1R1 offline validation checkpoint and return complete output.
+Run the Reviewer-supplied atomic R2R3V1R2 offline validation checkpoint and return complete output.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
@@ -212,11 +215,11 @@ NONE.
 
 ## NEXT_STEP
 
-Owner reruns the repaired offline validator. If PASS, Reviewer formally accepts R2R3 and opens one sanitized Secret Prepare replay to prove the scanner repair on the real host.
+Owner reruns the validator. If PASS, Reviewer formally accepts R2R3 and opens one sanitized Secret Prepare replay.
 
 ## OWNER_ACTION_REQUIRED
 
-Run R2R3V1R1 offline validator only.
+Run R2R3V1R2 offline validator only.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
