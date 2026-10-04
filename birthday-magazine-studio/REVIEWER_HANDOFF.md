@@ -42,7 +42,8 @@ HOMEPAGE_FOCUSLY=AUTHORIZED_PUBLIC_VISUAL_REFERENCE
 HOMEPAGE_HIGH_FIDELITY_REIMPLEMENTATION=AUTHORIZED_AFTER_D1_REVIEWER_PASS
 HOMEPAGE_IMPLEMENTATION_STATUS=HOLD_PENDING_D1_REVIEWER_PASS
 G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
-CORE_AHA_INTERACTION=UNRESOLVED_RESEARCH_AGAIN
+CORE_AHA_INTERACTION_DIRECTION=PERSISTENT_LIVE_MAGAZINE_COVER_PREVIEW_ACCEPTED
+CORE_AHA_EXACT_PRESENTATION=PENDING_D1_BENCHMARK_MAPPING
 MAGAZINE_P1_P12_VISUAL_SYSTEM=UNRESOLVED_RESEARCH_AGAIN
 PRIOR_G3CR6R3C_SATURATION=SUPERSEDED_FOR_INTERACTION_AND_P1_P12
 MAGAZINE_WEB_PAGE_MOTION_MODE=UNRESOLVED
@@ -112,7 +113,7 @@ Frozen during this Gate:
 - Woo backend/payment;
 - account/private-workspace and entitlement logic;
 - prices/currency/product identity;
-- core Aha interaction selection;
+- core Aha exact visual presentation beyond the accepted persistent live-cover/local-photo-replacement direction;
 - P1-P12 magazine visual selection.
 
 Preserved:
@@ -189,10 +190,10 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3D1** read-only: directly inspect Focusly desktop/mobile/motion behavior and map it onto the current Birthday Magazine homepage.
-2. Reviewer checks the mapping, asset plan and frozen functional boundaries.
+1. Execute **G3CR6R3D1** read-only: directly inspect Focusly desktop/mobile/motion behavior **and** benchmark YourCover, DigitalPrank, Customily and Corjl for the accepted persistent live-cover Preview interaction.
+2. Reviewer checks the Focusly mapping, Preview benchmark mapping, asset plan and frozen functional boundaries, and decides whether both can safely share one D2 implementation Gate.
 3. If D1 PASS, open **G3CR6R3D2** for bounded homepage implementation and regression proof.
-4. After homepage visual work reaches Owner review, resume the still-unresolved core Aha interaction and P1-P12 research under G3CR6R3C.
+4. After homepage + accepted live-cover Preview work reaches Owner review, resume the still-unresolved P1-P12 magazine visual research under G3CR6R3C.
 
 ## OWNER_ACTION_REQUIRED
 

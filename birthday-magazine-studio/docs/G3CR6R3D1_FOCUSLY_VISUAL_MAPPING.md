@@ -4,13 +4,13 @@
 
 ~~~text
 GATE_ID=G3CR6R3D1_FOCUSLY_VISUAL_MAPPING
-OBJECTIVE=Produce a directly observed Focusly-to-current-homepage visual/motion mapping that is safe to independently implement without changing accepted commerce/account/preview behavior
+OBJECTIVE=Produce a directly observed Focusly homepage mapping plus benchmarked persistent live-magazine-cover Preview mapping that can be safely implemented together without changing accepted commerce/account/privacy semantics
 MAX_ENDPOINT_THIS_ROUND=Reviewer-ready mapping/specification and evidence only; no source/runtime mutation
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Public Focusly reference inspection + current Birthday Magazine homepage read-only inspection + project-scoped documentation
 APPLICABLE_CRITICAL_CONSTRAINTS=FREE_PREVIEW_MODEL_CALLS_0; FREE_PREVIEW_SERVER_PHOTO_UPLOADS_0; FREE_PREVIEW_EXTERNAL_IMAGE_POSTS_0; WOO_CANONICAL_ORDER_SYSTEM_YES; REAL_MONEY_ACTIONS_0; PAYPAL_ACTIONS_0; CHECKOUT_SUBMISSIONS_0; RUNTIME_MUTATION_0; PRODUCTION_DEPLOYMENT_0; SHARED_INFRA_MUTATIONS_0; PR64_MERGE_0
 PREFLIGHT=Use current PR64 project-scoped baseline; verify Focusly public reference is reachable; verify current local homepage is reachable read-only; identify exact current homepage source/theme/template paths before proposing any mutation
-REQUIRED_EVIDENCE=Focusly section inventory; Focusly motion inventory; desktop and mobile visual evidence; current-homepage section/asset/function inventory; protected-function map; Focusly-to-current mapping; asset reuse/generation gap list; independent-implementation plan; license/source boundary
+REQUIRED_EVIDENCE=Focusly section inventory; Focusly motion inventory; Preview benchmark comparison; desktop and mobile visual evidence; current-homepage section/asset/function inventory; protected-function map; Focusly-to-current mapping; live-cover-preview interaction mapping; asset reuse/generation gap list; independent-implementation plan; license/source boundary
 ACCEPTANCE_CRITERIA=See below
 ROLLBACK_STATUS_OR_PLAN=Read-only Gate; no runtime rollback required
 OWNER_ONLY_ACTIONS=NONE unless a paid/proprietary asset/template/license or new paid model/provider is required
@@ -25,10 +25,42 @@ Governance: vps-project-governance v0.2.6.
 - The existing G3CR6R1 homepage/runtime functional baseline remains accepted.
 - Focusly is now an Owner-authorized public visual/motion reference for the homepage only.
 - magazine-web-viewer remains the accepted reader direction.
-- Core Aha interaction and P1-P12 magazine visual system remain unresolved and are outside this Gate.
+- Core Aha **direction** is now accepted as a persistent live magazine-cover preview with browser-local photo replacement; D1 must benchmark and map the exact presentation before implementation. P1-P12 magazine visual system remains unresolved and outside this Gate.
 - The paid Focusly template itself is not required and must not be copied/extracted.
 - Existing project-owned homepage images may be reused.
 - Design-time image generation may be proposed where existing assets are insufficient, but no new external paid provider/account/Secret may be introduced in this Gate.
+
+## Preview interaction benchmark references
+
+Directly inspect and compare at least these references where publicly accessible:
+
+1. YourCover personalized birthday cover editor:
+   - https://www.yourcover.com/create/happy-birthday
+   - product lesson: finished cover first, then photo/headline personalization.
+2. DigitalPrank Magazine Cover Generator:
+   - https://digitalprank.com/tools/custom-magazine-cover/
+   - product lesson: immediate live cover preview; local/browser photo processing; zoom and X/Y positioning; editable cover text.
+3. Customily Product Page Preview:
+   - https://customily-2-0.myshopify.com/products/preview-style-demo-product-page-preview
+   - interaction lesson: product and controls coexist; personalization updates without leaving the page.
+4. Corjl/Funtastic Idea birthday-magazine demo:
+   - https://www.corjl.com/d/17L5NO/s
+   - interaction lesson: birthday-cover editing in-browser with direct page preview.
+
+For each, record what is directly observable, what is useful, and what must **not** be copied.
+
+Target interaction to map:
+
+~~~text
+BEAUTIFUL_SAMPLE_MAGAZINE_COVER_ALWAYS_VISIBLE
+-> user chooses local photo
+-> sample portrait is replaced immediately in the same cover
+-> optional crop / drag / zoom refinement
+-> magazine masthead / cover lines remain visible
+-> CTA advances to the canonical Birthday Magazine flow
+~~~
+
+This is not an uploader-first tool UI. The magazine product must remain the visual object throughout.
 
 ## Focusly reference
 
@@ -96,14 +128,17 @@ Reviewer PASS requires all of the following:
 1. Focusly homepage has been directly inspected, not described from marketing copy alone.
 2. At least one desktop and one mobile/responsive evidence view exist for the reference where technically accessible.
 3. Every major visible Focusly homepage section and meaningful motion pattern is mapped to the current homepage or explicitly marked not applicable.
-4. The current homepage functional paths are identified and protected.
-5. No protected backend/payment/account/Preview semantics are proposed for change.
-6. Existing assets are inventoried before proposing new generation.
-7. Any proposed new generated asset has a clear role and is static design-time content, not a runtime/free-preview model dependency.
-8. The implementation plan can be executed independently without proprietary Focusly source/assets.
-9. The plan includes desktop + 375px target behavior and reduced-motion fallback.
-10. No source/runtime mutation occurs in D1.
-11. Reviewer can inspect the captured evidence and mapping before D2 opens.
+4. The four Preview benchmarks above are directly inspected where accessible and their useful interaction patterns are compared.
+5. The proposed Preview keeps a finished magazine cover visible before and after photo selection, and specifies local photo replacement plus crop/position/zoom behavior where feasible.
+6. The current homepage functional paths are identified and protected.
+7. No protected backend/payment/account/Preview privacy semantics are proposed for change.
+8. Existing assets are inventoried before proposing new generation.
+9. Any proposed new generated asset has a clear role and is static design-time content, not a runtime/free-preview model dependency.
+10. The implementation plan can be executed independently without proprietary Focusly or benchmark source/assets.
+11. The plan includes desktop + 375px target behavior and reduced-motion fallback.
+12. The plan explicitly assesses whether Focusly restyling + live-cover Preview can share one D2 implementation/rollback/evidence boundary; if yes, recommend a single D2 Gate.
+13. No source/runtime mutation occurs in D1.
+14. Reviewer can inspect the captured evidence and mapping before D2 opens.
 
 ## Reviewer to Executor relay
 

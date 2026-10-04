@@ -42,6 +42,19 @@ function Test-C2CPackage {
     if ($O -notmatch '(?im)FINAL_PRODUCTION_WIREGUARD=RESTORED' -or $O -notmatch '(?im)FINAL_SYSTEM_PROXY=OFF' -or $O -notmatch '(?im)FINAL_TUN=OFF' -or $O -notmatch '(?im)FINAL_ROUTE_SNAPSHOT=RESTORED') { throw 'FINAL_NETWORK_READBACK_MISSING' }
     if ($O -match '(?im)\b(?:Stop-Service|Restart-Service)\b[^\r\n]*WireGuard|Set-ItemProperty[^\r\n]*ProxyEnable|(?:enable-tun|tun)\s*:\s*true') { throw 'PRODUCTION_NETWORK_MUTATION_FORBIDDEN' }
     if ($O -match '(?im)sampleCount|\bbenchmark\b') { throw 'C2C_BENCHMARK_FORBIDDEN' }
+    if ($O -match '(?im)ProxyServer') { throw 'STALE_PROXY_METADATA_DEPENDENCY_FORBIDDEN' }
+    if ($O -notmatch '(?im)function\s+Invoke-LocalSocks5Greeting' -or
+        $O -notmatch '(?im)SOCKS5_NOAUTH' -or
+        $O -notmatch '(?im)CLASH_LOCAL_PROXY_DISCOVERY=LIVE_PROCESS_SOCKS5') {
+        throw 'LIVE_SOCKS5_DISCOVERY_GUARD_MISSING'
+    }
+    $resolver = [regex]::Match($O, '(?is)function\s+Resolve-LocalProxyPort\s*\{(?<body>.*?)\r?\n\}\s*(?=function\s+Assert-LocalProxyListener)')
+    if (-not $resolver.Success -or $resolver.Groups['body'].Value -notmatch '(?im)^\s*return\s+\[int\]\$socksPorts\[0\]\s*$') {
+        throw 'PROXY_RESOLVER_SCALAR_RETURN_INVALID'
+    }
+    if ($resolver.Groups['body'].Value -match '(?im)\bWrite-Output\b') {
+        throw 'PROXY_RESOLVER_SUCCESS_STREAM_DIAGNOSTIC_FORBIDDEN'
+    }
 
     if ($S -notmatch '(?im)ProtectedData\]::Unprotect' -or $S -notmatch '(?im)DataProtectionScope\]::CurrentUser' -or $S -notmatch '(?im)hy2-g2a\.dpapi' -or $S -notmatch '(?im)VPNHY2R1') { throw 'SECRET_HELPER_DPAPI_CONTRACT_MISSING' }
     if ($S -notmatch '(?im)FileSystemAclExtensions\]::CreateDirectory' -or $S -notmatch '(?im)SetOwner\(\$ownerSid\)' -or $S -notmatch '(?im)SetAccessRuleProtection\(\$true,\s*\$false\)') { throw 'SECRET_HELPER_OWNER_ACL_GUARD_MISSING' }
@@ -52,6 +65,10 @@ function Test-C2CPackage {
 
     if ($P -match '(?im)\bProtectedData\b|::Unprotect\s*\(|hy2-auth|hy2-g2a\.dpapi|C2C_REAL_HY2_AUTH_INJECTION_ONLY') { throw 'PROBE_SECRET_ACCESS_FORBIDDEN' }
     if (([regex]::Matches($P, 'https://api\.openai\.com/v1/models')).Count -ne 1 -or ([regex]::Matches($P, 'https://api\.ipify\.org')).Count -ne 1) { throw 'PROBE_ENDPOINT_CARDINALITY_INVALID' }
+    if (([regex]::Matches($P, 'socks5h://127\.0\.0\.1:\$ProxyPort')).Count -ne 2 -or
+        $P -match 'http://127\.0\.0\.1:\$ProxyPort') {
+        throw 'PROBE_PROXY_SCHEME_INVALID'
+    }
     if ($P -notmatch '(?im)REAL_CANARY_REQUEST_COUNT=2' -or $P -notmatch '(?im)C2C_OPENAI_HTTP_STATUS=401' -or $P -notmatch '(?im)C2C_OPENAI_PROXY_USED=1' -or $P -notmatch '(?im)C2C_PUBLIC_EXIT=EXPECTED_SFO3') { throw 'PROBE_ACCEPTANCE_MARKERS_MISSING' }
 
     if (([regex]::Matches($T, '__C2C_REAL_HY2_AUTH_INJECTION_ONLY__')).Count -ne 1) { throw 'TEMPLATE_SECRET_PLACEHOLDER_INVALID' }
@@ -59,7 +76,7 @@ function Test-C2CPackage {
     if ($T -notmatch '(?m)^\s+fingerprint:\s*8A:8D:50:5F:DF:80:DB:76:C6:76:39:5A:86:E4:9D:81:8E:A1:5B:76:64:ED:70:30:8C:29:60:9C:23:74:1F:18\s*$') { throw 'TEMPLATE_FINGERPRINT_INVALID' }
     if ($T -notmatch '(?ms)- name:\s*SELF-VPN-C2C\s*\r?\n\s*type:\s*select\s*\r?\n\s*proxies:\s*\r?\n\s*- WG-BASELINE\s*\r?\n\s*- HY2-SFO3-REAL') { throw 'TEMPLATE_MANUAL_SELECTOR_INVALID' }
 
-    if ($D -notmatch '(?i)not a performance benchmark' -or $D -notmatch '(?i)system proxy.*OFF' -or $D -notmatch '(?i)TUN.*OFF' -or $D -notmatch '(?i)two.*real.*request') { throw 'PACKAGE_BOUNDARY_UNDOCUMENTED' }
+    if ($D -notmatch '(?i)not a performance benchmark' -or $D -notmatch '(?i)system proxy.*OFF' -or $D -notmatch '(?i)TUN.*OFF' -or $D -notmatch '(?i)two.*real.*request' -or $D -notmatch '(?i)SOCKS5') { throw 'PACKAGE_BOUNDARY_UNDOCUMENTED' }
     return $true
 }
 
@@ -96,6 +113,20 @@ Write-Output 'G3C_C2C_FIXTURE_F_STRUCTURED_CLEANUP_REQUIRED=PASS'
 $badTemplate = $template.Replace('__C2C_REAL_HY2_AUTH_INJECTION_ONLY__', ('a' * 64))
 Assert-ExpectedFailure -Expected 'TEMPLATE_SECRET_PLACEHOLDER_INVALID' -O $orchestrator -S $secretHelper -P $probe -T $badTemplate -D $package
 Write-Output 'G3C_C2C_FIXTURE_G_TEMPLATE_NO_REAL_SECRET=PASS'
+
+Assert-ExpectedFailure -Expected 'STALE_PROXY_METADATA_DEPENDENCY_FORBIDDEN' -O ($orchestrator + [Environment]::NewLine + '$x=$internet.ProxyServer') -S $secretHelper -P $probe -T $template -D $package
+Write-Output 'G3C_C2C_FIXTURE_H_STALE_PROXY_METADATA_REJECTED=PASS'
+
+$httpProbe = $probe.Replace('socks5h://127.0.0.1:$ProxyPort','http://127.0.0.1:$ProxyPort')
+Assert-ExpectedFailure -Expected 'PROBE_PROXY_SCHEME_INVALID' -O $orchestrator -S $secretHelper -P $httpProbe -T $template -D $package
+Write-Output 'G3C_C2C_FIXTURE_I_SOCKS5_SCHEME_REQUIRED=PASS'
+
+$resolverWithDiagnostic = $orchestrator.Replace(
+    '    return [int]$socksPorts[0]',
+    "    Write-Output 'RESOLVER_DIAGNOSTIC'`r`n    return [int]`$socksPorts[0]"
+)
+Assert-ExpectedFailure -Expected 'PROXY_RESOLVER_SUCCESS_STREAM_DIAGNOSTIC_FORBIDDEN' -O $resolverWithDiagnostic -S $secretHelper -P $probe -T $template -D $package
+Write-Output 'G3C_C2C_FIXTURE_J_RESOLVER_SUCCESS_STREAM_SCALAR_RETURN=PASS'
 
 foreach ($path in @($orchestratorPath,$secretHelperPath,$probePath)) {
     $tokens = $null
