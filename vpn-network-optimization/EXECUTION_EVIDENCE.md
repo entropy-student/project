@@ -6909,3 +6909,84 @@ Reviewer frozen boundary:
 - Accepted templates and the G4-B readiness Gate are frozen.
 - Any need to change a frozen contract is RETURN, not an Executor-side repair.
 - Detailed Executor evidence must return to Reviewer before any live G4-B authorization discussion.
+
+
+## G4-B offline live-runner implementation R1 — 2026-10-04
+
+```text
+GATE_ID=G4B_OFFLINE_LIVE_RUNNER_IMPLEMENTATION_R1
+EXECUTOR_RESULT=PASS_CANDIDATE
+PROVENANCE=DIRECT_LOCAL_SOURCE_AND_FIXTURE_READBACK
+PRE_GATE_HEAD=46c2cf2c914a0e7043467ab1022da403fd1e015e
+CANONICAL_ORIGIN=entropy-student/project
+BRANCH=codex/g2c-private-reality-compat-canary
+PROJECT_SCOPE_PRE_GATE_CLEAN=YES
+UNRELATED_WORKTREE_STATE=NONE
+LOCAL_HEAD_EQ_ORIGIN_MAIN_AT_PREFLIGHT=YES
+
+ROUND_STARTED_AT=NOT_CAPTURED_BEFORE_INITIAL_READ_AND_SYNC
+IMPLEMENTATION_WINDOW_STARTED_AT=2026-10-04T10:47:24Z
+IMPLEMENTATION_VALIDATION_CHECKPOINT_AT=2026-10-04T11:40:12Z
+ACTUAL_ELAPSED=00:52:48_THROUGH_VALIDATION_CHECKPOINT_ONLY
+ROUND_FINISHED_AT=NOT_CAPTURED_AT_FINAL_GITHUB_READBACK
+TIME_OVERRUN=UNDETERMINED_START_NOT_CAPTURED; GATE_HAS_NO_TIME_ESTIMATE
+
+FILES_CHANGED=
+  scripts/g4b-persistent-three-role-live-runner.ps1
+  scripts/g4b-live-runner-fixture-validator.ps1
+  docs/G4B_PERSISTENT_IMPLEMENTATION_PACKAGE.md
+  EXECUTION_EVIDENCE.md
+  EXECUTOR_HANDOFF.md
+REVIEWER_HANDOFF_MODIFIED=NO
+FROZEN_G4B_TEMPLATES_OR_READINESS_GATE_MODIFIED=NO
+
+RUNNER_IMPLEMENTED=YES
+RUNNER_DEFAULT_MODE=NO_LIVE_ACTION
+POWERSHELL_AST_PARSE=PASS
+REMOTE_SUPERVISOR_PY_AST_PARSE=PASS
+EXISTING_PACKAGE_VALIDATOR=PASS
+POSITIVE_SOURCE_CONTRACT_ASSERTIONS=21
+NEGATIVE_FIXTURES=10_OF_10_PASS
+FIXTURE_VALIDATOR_INVOKED_RUNNER=NO
+FIXTURE_VALIDATOR_LIVE_COMMANDS=0
+
+SOURCE_FIXES=
+  StrictMode optional Internet Settings fields normalize missing/null to empty string;
+  profile-store reparse-point check uses an explicitly grouped boolean expression;
+  Owner-only runtime directory uses the ACL-aware .NET API;
+  HY2 client render injects the accepted SNI placeholder value;
+  REALITY profile collision checks the full existing profile snapshot;
+  systemd unit validation uses the canonical .service filename;
+  rollback compares the installed binary against its recorded uncompressed SHA-256;
+  DPAPI byte buffers are cleared in finally even when Protect/Unprotect throws;
+  temporary client runtime is removed after profile import/readback;
+  failed-run recovery artifact cleanup is conditioned on verified remote rollback.
+
+SECRET_SCAN=PASS
+SECRET_VALUES_IN_SOURCE_OR_EVIDENCE=0
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+DPAPI_OR_REAL_SECRET_ACCESSED=NO
+SSH_OR_VPS_ACTION=NO
+VPS_OR_SERVICE_MUTATION=NO
+NETWORK_OR_ROUTE_MUTATION=NO
+CLASH_PROFILE_OR_SYSTEM_PROXY_MUTATION=NO
+TUN_CHANGE=NO
+EXTERNAL_TEST_REQUESTS=0
+GITHUB_METADATA_FETCH=YES
+MIHOMO_LIVE_PROCESS_STARTED=NO
+REALITY_LIVE_DEPLOYMENT=NO
+G4C_EXECUTION=NO
+STOP_AT_REVIEWER=YES
+```
+
+Validation provenance:
+- Direct local execution of `g4b-live-runner-fixture-validator.ps1`; its output confirmed runner/validator AST, existing package validator, phase ordering, all source-contract assertions, and each of ten negative source mutations.
+- Direct local PowerShell AST parse of the two new/changed runner scripts: PASS.
+- Python `ast.parse` over the embedded remote supervisor source only: PASS; no SSH or network invocation.
+- Static scan of the two scripts and synchronized package document: PASS. The accepted public Mihomo asset digest is not a credential.
+- `origin/main` was freshly fetched before source persistence; at that read-back it remained equal to the clean pre-gate HEAD above.
+
+Timing note: the Gate requested a start timestamp before initial preflight/sync, but this was not captured. The recorded 00:52:48 is only the implementation window from 10:47:24Z to 11:40:12Z, not a fabricated full-round duration. Reviewer should treat total-round timing/overrun as unverified.
+
+Rollback effect: source/document-only. Revert only this Gate's project-owned commit to restore `PRE_GATE_HEAD`; no live or Owner state was changed.

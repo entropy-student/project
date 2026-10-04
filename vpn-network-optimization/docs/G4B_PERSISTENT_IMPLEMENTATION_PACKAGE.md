@@ -221,6 +221,8 @@ Current offline package:
 - `templates/reality/mihomo-reality-server.yaml.template`
 - `templates/systemd/mihomo-reality-vpn-network-optimization.service.template`
 - `scripts/g4b-three-role-package-validator.ps1`
+- `scripts/g4b-persistent-three-role-live-runner.ps1` (offline-implemented; live mode remains unauthorized)
+- `scripts/g4b-live-runner-fixture-validator.ps1` (offline-only contract and negative fixtures)
 
 No file above contains live credential values.
 
@@ -241,13 +243,13 @@ G4-B may therefore proceed without designing a persistent VPS `/32` route solely
 ## 12. Remaining prerequisites before live authorization is executable
 
 ```text
-OFFLINE_PACKAGE_STATIC_REVIEW=READY
+OFFLINE_PACKAGE_STATIC_REVIEW=IMPLEMENTED_AND_FIXTURE_VALIDATED
 WINDOWS_OUTER_BYPASS_PROOF=PASS_G4B0
 DEDICATED_RUNTIME_IDENTITY_CONTRACT=READY
 ROLLBACK_CONTRACT=READY
-LIVE_RUNNER=NOT_YET_IMPLEMENTED
+LIVE_RUNNER=IMPLEMENTED_OFFLINE_ONLY
 SECOND_FAILURE_DOMAIN_DESTINATION=OWNER_INPUT_REQUIRED
 LIVE_G4B_OWNER_AUTHORIZATION=REQUIRED
 ```
 
-The next safe engineering step is local-only G4-B live-runner implementation and fixture validation. That work may proceed without touching the VPS or Owner network. Actual G4-B execution remains blocked until the Owner separately authorizes the new Gate and supplies the approved second-failure-domain recovery destination class/location.
+The bounded runner source and offline fixture validator are implemented. Actual G4-B execution remains blocked until the Reviewer opens the live Gate, the Owner separately authorizes it, and the approved second-failure-domain recovery destination class/location is supplied.
