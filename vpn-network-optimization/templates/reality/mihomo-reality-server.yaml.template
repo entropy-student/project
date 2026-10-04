@@ -1,0 +1,21 @@
+mode: rule
+log-level: warning
+ipv6: false
+rules:
+  - MATCH,DIRECT
+listeners:
+  - name: vpn-v1-reality
+    type: vless
+    listen: __VPS_PUBLIC_IP__
+    port: 443
+    users:
+      - uuid: __REALITY_UUID_INJECT_PROTECTED_RUNTIME_ONLY__
+        username: vpn-v1-backup-2
+        flow: xtls-rprx-vision
+    reality-config:
+      dest: www.microsoft.com:443
+      private-key: __REALITY_PRIVATE_KEY_INJECT_PROTECTED_RUNTIME_ONLY__
+      short-id:
+        - __REALITY_SHORT_ID_INJECT_PROTECTED_RUNTIME_ONLY__
+      server-names:
+        - www.microsoft.com
