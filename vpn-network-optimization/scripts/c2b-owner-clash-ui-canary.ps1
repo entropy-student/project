@@ -44,6 +44,7 @@ function New-C2BOwnerAcl {
         $inheritance = [Security.AccessControl.InheritanceFlags]::None
     }
     $acl.SetAccessRuleProtection($true, $false)
+    $acl.SetOwner($script:ownerSid)
     $rule = [Security.AccessControl.FileSystemAccessRule]::new(
         $script:ownerSid,
         [Security.AccessControl.FileSystemRights]::FullControl,
@@ -240,14 +241,14 @@ try {
         Assert-C2BOwnerAcl -Path $script:runtimeRoot
     }
     else {
-        [void][IO.Directory]::CreateDirectory($script:runtimeRoot, (New-C2BOwnerAcl -Directory))
+        [void][System.IO.FileSystemAclExtensions]::CreateDirectory((New-C2BOwnerAcl -Directory), $script:runtimeRoot)
         $script:createdRuntimeRoot = $true
         Assert-C2BOwnerAcl -Path $script:runtimeRoot
     }
     $script:runtimeDirectory = Join-Path $script:runtimeRoot ('c2b-' + [Guid]::NewGuid().ToString('N'))
     $script:runtimeConfigPath = Join-Path $script:runtimeDirectory 'c2b-wg-hy2-canary.yaml'
     $script:markerPath = Join-Path $script:runtimeDirectory 'owner-canary.marker'
-    [void][IO.Directory]::CreateDirectory($script:runtimeDirectory, (New-C2BOwnerAcl -Directory))
+    [void][System.IO.FileSystemAclExtensions]::CreateDirectory((New-C2BOwnerAcl -Directory), $script:runtimeDirectory)
     $script:createdRuntimeDirectory = $true
     Assert-C2BOwnerAcl -Path $script:runtimeDirectory
     $markerBytes = [Text.UTF8Encoding]::new($false).GetBytes('C2B_OWNER_CANARY_RUNTIME_V1')
