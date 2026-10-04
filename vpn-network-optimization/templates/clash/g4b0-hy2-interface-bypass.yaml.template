@@ -1,0 +1,36 @@
+{
+  "mixed-port": "__LOCAL_PROXY_PORT__",
+  "allow-lan": false,
+  "bind-address": "127.0.0.1",
+  "mode": "rule",
+  "log-level": "warning",
+  "tun": {
+    "enable": false
+  },
+  "proxies": [
+    {
+      "name": "HY2-INTERFACE-BYPASS-CANARY",
+      "type": "hysteria2",
+      "server": "__VPS_HOST__",
+      "port": 8443,
+      "password": "__HY2_AUTH_INJECT_PROTECTED_RUNTIME_ONLY__",
+      "sni": "__HY2_SNI__",
+      "skip-cert-verify": true,
+      "fingerprint": "__HY2_CERT_SHA256__",
+      "alpn": ["h3"],
+      "interface-name": "__PHYSICAL_INTERFACE_NAME_RUNTIME_DISCOVERY__"
+    }
+  ],
+  "proxy-groups": [
+    {
+      "name": "G4B0-BYPASS-CANARY",
+      "type": "select",
+      "proxies": [
+        "HY2-INTERFACE-BYPASS-CANARY"
+      ]
+    }
+  ],
+  "rules": [
+    "MATCH,G4B0-BYPASS-CANARY"
+  ]
+}
