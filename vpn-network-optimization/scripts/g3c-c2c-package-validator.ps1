@@ -56,6 +56,27 @@ function Test-C2CPackage {
         throw 'PROXY_RESOLVER_SUCCESS_STREAM_DIAGNOSTIC_FORBIDDEN'
     }
 
+    $helperInvoker = [regex]::Match($O, '(?is)function\s+Invoke-SecretHelper\s*\{(?<body>.*?)\r?\n\}\s*(?=function\s+Write-ApprovedSecretHelperEvidence)')
+    $evidenceForwarder = [regex]::Match($O, '(?is)function\s+Write-ApprovedSecretHelperEvidence\s*\{(?<body>.*?)\r?\n\}\s*(?=function\s+Require-Markers)')
+    if (-not $helperInvoker.Success -or -not $evidenceForwarder.Success -or
+        $helperInvoker.Groups['body'].Value -match '(?im)\bWrite-Output\b' -or
+        $helperInvoker.Groups['body'].Value -notmatch '(?im)return\s+,\$output') {
+        throw 'SECRET_HELPER_EVIDENCE_FORWARDING_CONTRACT_INVALID'
+    }
+    $forwarderBody = $evidenceForwarder.Groups['body'].Value
+    if ($forwarderBody -notmatch '(?im)\$allowedLines\s+-ccontains\s+\$text' -or
+        $forwarderBody -notmatch '(?im)TEMP_REAL_PROFILE_PATH=\.\+' -or
+        $forwarderBody -notmatch '(?im)Write-Output\s+\$text') {
+        throw 'SECRET_HELPER_EVIDENCE_ALLOWLIST_INVALID'
+    }
+    foreach ($call in @(
+        '\$prepareOutput\s*=\s*Invoke-SecretHelper\s+-Mode\s+Prepare\s*\r?\n\s*Write-ApprovedSecretHelperEvidence\s+-Output\s+\$prepareOutput\s+-Mode\s+Prepare',
+        '\$cleanupOutput\s*=\s*Invoke-SecretHelper\s+-Mode\s+VerifyCleanup\s*\r?\n\s*Write-ApprovedSecretHelperEvidence\s+-Output\s+\$cleanupOutput\s+-Mode\s+VerifyCleanup',
+        '\$fallbackOutput\s*=\s*Invoke-SecretHelper\s+-Mode\s+VerifyCleanup\s*\r?\n\s*Write-ApprovedSecretHelperEvidence\s+-Output\s+\$fallbackOutput\s+-Mode\s+VerifyCleanup'
+    )) {
+        if ($O -notmatch "(?im)$call") { throw 'SECRET_HELPER_CALLER_EVIDENCE_FORWARDING_MISSING' }
+    }
+
     if ($S -notmatch '(?im)ProtectedData\]::Unprotect' -or $S -notmatch '(?im)DataProtectionScope\]::CurrentUser' -or $S -notmatch '(?im)hy2-g2a\.dpapi' -or $S -notmatch '(?im)VPNHY2R1') { throw 'SECRET_HELPER_DPAPI_CONTRACT_MISSING' }
     if ($S -notmatch '(?im)FileSystemAclExtensions\]::CreateDirectory' -or $S -notmatch '(?im)SetOwner\(\$ownerSid\)' -or $S -notmatch '(?im)SetAccessRuleProtection\(\$true,\s*\$false\)') { throw 'SECRET_HELPER_OWNER_ACL_GUARD_MISSING' }
     if ($S -notmatch '(?im)Get-PatternFileCount' -or $S -notmatch '(?im)CLASH_REAL_AUTH_RESIDUE=' -or $S -notmatch '(?im)PROJECT_RUNTIME_REAL_AUTH_RESIDUE=') { throw 'SECRET_RESIDUE_SCAN_MISSING' }
@@ -127,6 +148,18 @@ $resolverWithDiagnostic = $orchestrator.Replace(
 )
 Assert-ExpectedFailure -Expected 'PROXY_RESOLVER_SUCCESS_STREAM_DIAGNOSTIC_FORBIDDEN' -O $resolverWithDiagnostic -S $secretHelper -P $probe -T $template -D $package
 Write-Output 'G3C_C2C_FIXTURE_J_RESOLVER_SUCCESS_STREAM_SCALAR_RETURN=PASS'
+
+$callerInvisibleForwarding = [regex]::Replace(
+    $orchestrator,
+    '(?im)^[ \t]*Write-ApprovedSecretHelperEvidence\s+-Output\s+\$(?:prepareOutput|cleanupOutput|fallbackOutput)\s+-Mode\s+(?:Prepare|VerifyCleanup)[ \t]*\r?\n',
+    ''
+)
+$callerInvisibleForwarding = $callerInvisibleForwarding.Replace(
+    '    Assert-C2C ($exitCode -eq 0)',
+    '    foreach ($line in $output) { Write-Output $line }' + [Environment]::NewLine + '    Assert-C2C ($exitCode -eq 0)'
+)
+Assert-ExpectedFailure -Expected 'SECRET_HELPER_EVIDENCE_FORWARDING_CONTRACT_INVALID' -O $callerInvisibleForwarding -S $secretHelper -P $probe -T $template -D $package
+Write-Output 'G3C_C2C_FIXTURE_K_CALLER_VISIBLE_HELPER_EVIDENCE_REQUIRED=PASS'
 
 foreach ($path in @($orchestratorPath,$secretHelperPath,$probePath)) {
     $tokens = $null

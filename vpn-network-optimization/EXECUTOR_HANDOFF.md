@@ -15,21 +15,41 @@ PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
 DPAPI_ACCESS_AUTHORIZED=NO
 NETWORK_REQUESTS_AUTHORIZED=NO
 NETWORK_MUTATION_AUTHORIZED=NO
+PRE_SYNC_HEAD=b5b721ffb3fe0522df5c1ca0d65219022dd5e5bc
+FRESH_ORIGIN_MAIN=283f7fc52f755cdc06634a8852aac6f7a09a03ff
+SAFE_FF_ONLY=PASS
+ORCHESTRATOR_BLOB_AFTER=4424eab2f281af6398f6d7bfbe6e326bce5f7904
+VALIDATOR_BLOB_AFTER=151b2c9166b02d6f6ff943412f75fb047808c37b
+EXECUTOR_RESULT=PASS_CANDIDATE_G3C_C2C_SECRET_HELPER_EVIDENCE_FORWARDING_REPAIR_R2R2
+C2C_FIXTURES_A_K=PASS
+POWERSHELL_AST_PARSE=PASS
+MIHOMO_VERSION=v1.19.32
+MIHOMO_FIXTURE_PARSE=PASS
+INVOKE_SECRET_HELPER_INTERNAL_SUCCESS_STREAM_FORWARDING=NO
+CALLER_FORWARDING_AFTER_PREPARE_CLEANUP_FALLBACK=YES
+SECRET_HELPER_INTERNALS_CHANGED=NO
+DPAPI_UNPROTECT=NO
+REAL_SECRET_READ=NO
+SECRET_VALUES_EMITTED=0
+ORCHESTRATOR_SECRET_HELPER_PROXY_PROBE_EXECUTED=NO
+REAL_C2C_REQUESTS=0
+NETWORK_REQUESTS=0
+NETWORK_CHANGED=NO
+CLASH_PROFILE_MUTATION=NO
+VPS_OR_SSH_ACTION=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+ROUND_START_CAPTURE=NOT_CAPTURED_BEFORE_PREFLIGHT
+ROUND_START_CAPTURE_GAP_REASON=Initial canonical fetch preceded the Gate timing capture; see appended Evidence
+CAPTURED_REPAIR_WINDOW_STARTED_AT=2026-10-04T05:03:47Z
+FINAL_VALIDATOR_FINISHED_AT=2026-10-04T05:05:56Z
+CAPTURED_REPAIR_VALIDATION_WINDOW=00:02:09
+TIME_OVERRUN=UNKNOWN_FULL_ROUND_START_NOT_CAPTURED
 STOP_AT_REVIEWER=YES
 ```
 
-### Executor task
+### Execution result
 
-1. Capture full timing before preflight/sync.
-2. Make only the evidence-forwarding repair:
-   - helper wrapper returns captured output without caller-invisible forwarding;
-   - caller explicitly emits captured approved lines after Prepare/Cleanup/fallback assignment;
-   - add Fixture K preventing regression.
-3. Preserve R2R1 scalar resolver, dynamic SOCKS5, socks5h, Secret helper internals, endpoints and cleanup scope.
-4. Run full offline validator, require A-K + AST + Mihomo parse.
-5. No orchestrator/helper/probe/diagnostic execution, no DPAPI/Secret/network/Clash mutation.
-6. Persist Evidence + Executor Handoff only. Leave Reviewer Handoff unchanged.
-7. STOP_AT_REVIEWER.
+The helper wrapper now returns captured child output without writing it to the success stream. Each Prepare, Cleanup, and fallback caller forwards only mode-allowlisted non-secret markers (plus the previously approved temporary-profile path for Prepare) immediately after assignment and before marker validation. Fixture K rejects the prior wrapper-forwarding shape. A–K, AST, and Mihomo v1.19.32 parse pass. No real C2C action occurred; the full-round start-time capture gap is recorded in Evidence.
 
 
 
