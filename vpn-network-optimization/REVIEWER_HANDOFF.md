@@ -179,11 +179,11 @@ The live runner is offline-reviewed and ready. Before child execution, the Owner
 
 ## NEXT_STEP
 
-Run an Owner-local AST-only checkpoint against the repaired runner after ff-only sync. This checkpoint must not read Secret material, start Mihomo, send requests, or mutate networking. If AST PASS, proceed to the separately invoked already-authorized G4-B0 live canary; if AST returns errors, stop at Reviewer. The prior failures did not start the child runner and did not consume authorization.
+Owner-local AST-only checkpoint PASS on PowerShell 7.6.6 with zero network mutation, zero Secret access, and zero external requests. Proceed with exactly one already-authorized G4-B0 live canary, then mandatory Reviewer stop.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the AST-only checkpoint for the repaired G4-B0 runner. The existing one-shot live authorization remains valid and unconsumed. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
+Run exactly one G4-B0 live canary using the repaired locked runner. The one-shot live authorization remains valid and unconsumed until the runner enters its consequential Secret/runtime phase. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
 
 ## EVIDENCE_POINTERS
 
