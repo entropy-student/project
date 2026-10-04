@@ -623,3 +623,19 @@ Supersedes the prior frontend candidate only. Historical Gates and Reviewer deci
 - Pre-existing Owner ZIPs and deleted old screenshots excluded from commit. No Reviewer doc changed. Retained local backup/tools only; no teardown.
 
 Next: Reviewer reviews PR #64 and current screenshots; Owner may inspect/edit local site. `OWNER_VISUAL_FREEZE=PENDING`; `STOP_AT_REVIEWER=YES`. Do not enter G4.
+
+## Current execution append — G3CR6R3D1 (2026-10-04)
+
+This append supersedes earlier runtime-availability descriptions for **this round only**, preserves historical evidence and does not revise Reviewer decisions.
+
+- Gate: `G3CR6R3D1_FOCUSLY_VISUAL_MAPPING`.
+- Result: `RETURN_G3CR6R3D1_LOCAL_HOMEPAGE_UNAVAILABLE`. D1 is not complete; D2 remains HOLD.
+- Baseline: PR #64 open/unmerged, branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, head `36b670c333601624c068b543d7bc3c2f2f9ee346`. Local fast-forward sync preserved pre-existing Owner archives/files and17 old screenshot deletions; all excluded from this submission. Main project-scoped freshness checked at `054b65f542ef456733396dd304fa6589da9eceae`.
+- Direct public reference: Focusly listing and linked Home1 live preview, HTTP200,1440×1000 and375×812. Every major region mapped; screenshots and timed hover/scroll/entrance/focus/mobile-menu evidence retained. No template source/original assets/fonts downloaded or copied for reuse.
+- Mapping: `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md`. Evidence/index/manifest: `docs/evidence/g3cr6r3d1/`.
+- Current-home inventory is source-based and accepted G3CR6R1 metadata only: eight editable Groups, separate local Preview shortcode, native Woo paths and unchanged account/workspace guard. Three owned marketing images inspected; no generation needed now; only an optional static life-moment photo gap proposed.
+- Fresh local Home/Product/Cart/Checkout/Account GETs all refused connection; Docker Desktop Linux Engine unavailable. No runtime start/rebuild, WordPress/content/theme/media/DB change, frontend CSS/JS change or commerce action. Actual persisted Groups/template/menu/URLs/health need fresh read-only reconciliation before D1 can PASS. No current-site screenshots fabricated or historical screenshots relabeled as current.
+- No PayPal/payment/Checkout submission/product-model/image-generation/deployment/shared-infrastructure action; all0. No D2/G4, no new PR, no merge. Temporary successful browser contexts closed; no runtime rollback required.
+- Documentation/evidence commit identity is the enclosing commit on PR #64, verified after push. Reviewer can directly access all evidence there; Owner relay NONE.
+
+Next: Reviewer checks the available reference/mapping and this exact local-runtime blocker; close missing current-home read-back inside D1 before authorizing implementation. `STOP_AT_REVIEWER=YES`.

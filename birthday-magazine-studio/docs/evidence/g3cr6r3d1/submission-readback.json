@@ -1,0 +1,12 @@
+{
+  "validatedAt": "2026-10-04T04:52:43.127Z",
+  "sourceFileAndAssetHashParity": true,
+  "screenshotManifestVerified": 66,
+  "jsonReportsParsed": 7,
+  "readmeLinksExist": true,
+  "failures": [],
+  "applicationSourceChanges": 0,
+  "checkoutActions": 0,
+  "modelCalls": 0,
+  "result": "RETURN_G3CR6R3D1_LOCAL_HOMEPAGE_UNAVAILABLE"
+}

@@ -929,3 +929,52 @@ STOP_AT_REVIEWER=YES
 ```
 
 Git submission: this G3CR6 batch continues branch/PR #64; final SHA is the enclosing Git commit and is reported after push/read-back. No Reviewer PASS is asserted.
+
+## G3CR6R3D1 — Focusly visual mapping (2026-10-04)
+
+### Authorized Gate / preflight
+
+- `G3CR6R3D1_FOCUSLY_VISUAL_MAPPING`; documentation/evidence only. Owner's current request and the current Gate/Owner decision authorize public visual observation, source mapping and Reviewer-ready submission, not implementation.
+- PR #64 API read-back: open, unmerged, head `36b670c333601624c068b543d7bc3c2f2f9ee346`. Local branch fast-forwarded from `d82e78494c9ece831b71af12aeacee8099b4aa5a` to that approved head; no frontend changes in the sync. Main at fetch `054b65f542ef456733396dd304fa6589da9eceae`; no main-only Birthday Magazine commits in the project-scoped log. Unrelated monorepo commits do not redefine this Gate.
+- Canonical governance current SKILL declares v0.2.6 / VNEXT.md; local legacy skill was treated as non-authoritative. Current Gate/relay and Owner decision used. No Reviewer decision/Handoff edited.
+- Docker read-only `ps` failed (exit1): Docker Desktop Linux Engine pipe absent. Browser GET to localhost8189 Home, Product, Cart, Checkout, My Account all returned connection-refused. No start/rebuild/repair or alternate runtime was attempted.
+
+### Actual changes / objective read-back
+
+- Only new mapping/documentation and evidence under `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md` and `docs/evidence/g3cr6r3d1/`, plus this append and Executor Handoff append.
+- Directly opened Webflow's Focusly public listing; rendered page links to `https://focusly-template.webflow.io/` as Preview in browser. Actual Home1 HTTP200 was inspected at1440×1000 and375×812 using existing Playwright Core1.62.1 / installed Edge. Exact browser version/times in JSON.
+- Captured navigation, full-viewport focus Hero/entrance, introduction, three alternating photo/copy regions, three work cards, sticky closing reveal and footer. Timed focus/filter/opacity samples, heading entrance, hover label/dot behavior, scroll perspective matrices and mobile menu opening retained. Computed typography/background/frame measurements retained without source or original asset extraction.
+- All major public desktop/mobile regions were visually inspected. Full-page PNGs alone are explicitly not treated as proof for fixed backgrounds or scroll-dependent card states. Motion-state PNGs and geometry reports supplement them. No specific Webflow animation implementation/library/easing inferred.
+- Direct source read-back inventories current enqueued frontend files, shortcode DOM/data hooks/local object-URL logic, eight Group installer/accepted report, native commerce destinations and workspace guard. Three project-owned marketing PNGs opened, all owned candidate PNG dimensions/hashes inventoried. Optional standalone life-moment photo gap identified; required new generation=none; images generated this run=0.
+- Per-region mapping distinguishes KEEP/RESTYLE/REORDER/REPLACE_VISUAL_ONLY, asset origin, independently recreated motion and frozen behavior. Proposed ordering/tradeoffs,375px behavior and explicit reduced-motion/no-JS fallback await Reviewer decision.
+
+### Validation / limitations
+
+- Public reference direct observation: PASS at sampled widths; current-source/function inventory: available; fresh current runtime/group/template/menu/CTA/Woo visual read-back: **BLOCKED**. No current-site screenshot or current-runtime PASS claimed. Accepted G3CR6R1 facts are labeled reused historical evidence, not replayed validation.
+- Actual WP persisted Home, resolved PHP template, menus/theme mods/media URLs and current counters cannot be freshly read while stopped. Source-supported route intent is documented; a historical sample anchor discrepancy is UNKNOWN until fresh menu read-back, not silently fixed.
+- Reduced-motion reference sample retained, full compliance UNVERIFIED. Physical touch/iOS/tablet breakpoints/cross-page transitions not verified. The work-card hover scale sample is confounded by scroll settling and is not claimed as an independent hover effect.
+- First observation helper timed out on a hidden mobile nav link; helper was stopped, visibility check added, and evidence collection repeated successfully. This was a tooling/extraction issue, not reference application failure. Successful browser contexts were closed. Temporary observation helpers were project-scoped/ignored and are not application code or submitted source.
+- No frontend/WP/CSS/JS/media/DB/runtime mutation; no cart action or Checkout submission; PayPal/real-money/product-model/image-generation/production-deployment/shared-infra actions0. Preview privacy/commerce/account/workspace/entitlement logic untouched. No D2/G4 action, no PR merge.
+-17 pre-existing tracked G3CR4 screenshot deletions and Owner ZIPs/untracked files preserved and excluded from commit. No runtime rollback required; docs/evidence can be reverted as a scoped commit. Docker resource fingerprint/health cannot be freshly asserted with daemon unavailable.
+
+### Evidence artifacts / result
+
+- Mapping: `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md`.
+- Public screenshot index, SHA256 manifest and geometry/motion/surface/source/preflight/failed-local-GET reports: `docs/evidence/g3cr6r3d1/`.
+- Git submission continues the existing branch/PR #64; the enclosing evidence commit is the immutable submission identity, read back after push. No new PR/merge and no accepted source/evidence history dropped.
+
+```text
+RESULT=RETURN_G3CR6R3D1_LOCAL_HOMEPAGE_UNAVAILABLE
+PUBLIC_FOCUSLY_OBSERVATION=PASS_AT_SAMPLED_VIEWPORTS
+CURRENT_HOME_FRESH_READBACK=BLOCKED
+RUNTIME_MUTATIONS=0
+FRONTEND_MUTATIONS=0
+PAYPAL_ACTIONS=0
+CHECKOUT_SUBMISSIONS=0
+MODEL_CALLS=0
+IMAGE_GENERATION_CALLS=0
+SHARED_INFRA_MUTATIONS=0
+D2_STARTED=NO
+STOP_AT_REVIEWER=YES
+OWNER_RELAY=NONE
+```
