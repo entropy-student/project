@@ -36,8 +36,9 @@ $script:recoveryPendingLocal = $script:secretRecoveryPath + '.pending'
 $script:baiduRecoveryDirectory = '/vpn-network-optimization-g4b-recovery'
 $script:baiduFinalName = 'vpn-network-optimization-g4b.vpr1'
 $script:recoveryFinalExternal = $script:baiduRecoveryDirectory + '/' + $script:baiduFinalName
-$script:recoveryPendingExternal = $script:baiduRecoveryDirectory + '/vpn-network-optimization-g4b-' + $script:runId + '.vpr1.pending'
-$script:recoveryPendingCloudLocal = $script:secretRecoveryPath + '.' + $script:runId + '.vpr1.pending'
+$script:baiduPendingName = 'vpn-network-optimization-g4b-' + $script:runId + '.vpr1.pending'
+$script:recoveryPendingExternal = $script:baiduRecoveryDirectory + '/' + $script:baiduPendingName
+$script:recoveryPendingCloudLocal = Join-Path (Split-Path -Parent $script:secretRecoveryPath) $script:baiduPendingName
 $script:baiduRuntime = Join-Path $script:localRuntimeRoot ('g4b-baidu-' + $script:runId)
 $script:baiduArchiveUrl = 'https://github.com/qjfoidnh/BaiduPCS-Go/releases/download/v4.0.2/BaiduPCS-Go-v4.0.2-windows-x64.zip'
 $script:baiduArchiveSha256 = 'ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30'
@@ -500,7 +501,7 @@ function Install-PinnedBaiduCli {
     [void][IO.FileSystemAclExtensions]::CreateDirectory((New-OwnerAcl -Directory),$script:baiduRuntime)
     Assert-OwnerAcl -Path $script:baiduRuntime
     $archive=Join-Path $script:baiduRuntime 'BaiduPCS-Go-v4.0.2-windows-x64.zip'
-    $archiveSource=$script:baiduArchiveUrl
+    $archiveSource=$archive
     if(-not [string]::IsNullOrWhiteSpace($BaiduCliArchivePath)){
         $archiveSource=[IO.Path]::GetFullPath($BaiduCliArchivePath)
         Assert-G4B (Test-Path -LiteralPath $archiveSource -PathType Leaf) 'BAIDU_CLI_ARCHIVE_MISSING'
@@ -604,6 +605,7 @@ function Read-BaiduCiphertext {
 function Upload-BaiduPendingRecovery {
     param([Parameter(Mandatory=$true)][byte[]]$PayloadBytes,[Parameter(Mandatory=$true)][Security.SecureString]$Passphrase)
     $pendingName=[IO.Path]::GetFileName($script:recoveryPendingExternal)
+    Assert-G4B ([IO.Path]::GetFileName($script:recoveryPendingCloudLocal) -ceq $pendingName) 'BAIDU_PENDING_LOCAL_BASENAME_MISMATCH'
     $finalName=[IO.Path]::GetFileName($script:recoveryFinalExternal)
     Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $finalName) -ceq 'ABSENT') 'BAIDU_RECOVERY_FINAL_COLLISION'
     Assert-G4B ((Get-BaiduRemoteObjectState -Directory $script:baiduRecoveryDirectory -Name $pendingName) -ceq 'ABSENT') 'BAIDU_RECOVERY_PENDING_COLLISION'

@@ -1,6 +1,6 @@
 # G4-B Persistent Three-Role Implementation Package
 
-Status: OFFLINE_R4_IMPLEMENTED / REVIEWER_REVIEW_PENDING
+Status: OFFLINE_R5R1_REPAIR_CANDIDATE / REVIEWER_REVIEW_PENDING
 
 This package turns the accepted G4-B Gate into an implementation contract without touching the live VPS or Owner Windows host.
 
@@ -117,7 +117,9 @@ The PASS_CANDIDATE path retains a non-secret Owner-local journal and the remote 
 
 The Owner selected `BAIDU_NETDISK`; the runner uses the fixed project directory `/vpn-network-optimization-g4b-recovery` and fixed final basename `vpn-network-optimization-g4b.vpr1`. A run-specific pending basename is derived from the non-secret run ID. The project directory may be created if needed and is retained; rollback only targets the exact pending object, never the directory or final object.
 
-The reviewed portable CLI is the community-maintained `qjfoidnh/BaiduPCS-Go`, pinned to release `v4.0.2` for Windows x64. The runner downloads the exact release ZIP from the pinned release URL, verifies the release archive SHA-256 (`ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30`), extracts only the single `BaiduPCS-Go.exe` entry into an Owner-only run directory, and records the extracted executable SHA-256 as non-secret metadata. See the [v4.0.2 release assets](https://github.com/qjfoidnh/BaiduPCS-Go/releases/expanded_assets/v4.0.2) and [v4.0.2 upstream README](https://github.com/qjfoidnh/BaiduPCS-Go/blob/v4.0.2/README.md). This is a third-party/community CLI, not a claim of Baidu-official software.
+The reviewed portable CLI is the community-maintained `qjfoidnh/BaiduPCS-Go`, pinned to release `v4.0.2` for Windows x64. The runner downloads the exact release ZIP into its protected local run directory, verifies the release archive size and SHA-256 (`ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30`), then opens that verified local archive path (the explicit local archive override is subject to the same digest check). Extraction is limited to exactly one bounded, traversal-safe `BaiduPCS-Go.exe` entry; the extracted executable SHA-256 is recorded only as non-secret audit metadata. The archive digest is the authoritative trust anchor and transitively authenticates the extracted bytes. See the [v4.0.2 release assets](https://github.com/qjfoidnh/BaiduPCS-Go/releases/expanded_assets/v4.0.2) and [v4.0.2 upstream README](https://github.com/qjfoidnh/BaiduPCS-Go/blob/v4.0.2/README.md). This is a third-party/community CLI, not a claim of Baidu-official software.
+
+The local encrypted portable pending artifact uses the same run-scoped basename as its remote pending object (`vpn-network-optimization-g4b-<runId>.vpr1.pending`). The runner checks exact basename equality before any Baidu CLI query/upload, so a mismatch fails closed before provider interaction.
 
 The runner consumes only the already authenticated local CLI config directory (default `%APPDATA%\BaiduPCS-Go`) through the child-process `BAIDUPCS_GO_CONFIG_DIR` environment setting. It never accepts login credentials, cookies, tokens, or passwords as CLI arguments. Before recovery Secret access, it runs `who`, parses only the expected numeric account UID in memory, and discards the captured account output; missing login or account mismatch fails closed. CLI stdout/stderr is captured and never copied to normal logs or Evidence. The Owner-selected account identity and config path are not committed.
 
@@ -219,8 +221,8 @@ Current offline package:
 - `templates/reality/mihomo-reality-server.yaml.template`
 - `templates/systemd/mihomo-reality-vpn-network-optimization.service.template`
 - `scripts/g4b-three-role-package-validator.ps1`
-- `scripts/g4b-persistent-three-role-live-runner.ps1` (R4 Baidu backend implemented; no live invocation in R4)
-- `scripts/g4b-live-runner-fixture-validator.ps1` (offline-only R1–R4 contract and negative fixtures)
+- `scripts/g4b-persistent-three-role-live-runner.ps1` (R5R1 Baidu backend source candidate; no live invocation in R5R1)
+- `scripts/g4b-live-runner-fixture-validator.ps1` (offline-only R1–R4 regressions plus R5R1 fixtures)
 
 No file above contains live credential values.
 
@@ -245,10 +247,10 @@ OFFLINE_PACKAGE_STATIC_REVIEW=PASS_REVIEWER_ACCEPTED
 WINDOWS_OUTER_BYPASS_PROOF=PASS_G4B0
 DEDICATED_RUNTIME_IDENTITY_CONTRACT=READY
 ROLLBACK_CONTRACT=READY
-LIVE_RUNNER=R4_BAIDU_BACKEND_SOURCE_CANDIDATE
+LIVE_RUNNER=R5R1_BAIDU_BACKEND_SOURCE_CANDIDATE
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
 OWNER_LOCAL_BAIDU_AUTHENTICATION=REQUIRED_AT_LIVE_PREFLIGHT
 LIVE_G4B_OWNER_AUTHORIZATION=GRANTED_BY_CURRENT_REVIEWER_GATE
 ```
 
-R4 only validates the integration with a local fake CLI shim. Actual CLI download, account readiness, upload/download, VPS deployment, and Owner UI actions remain unexecuted in this offline Gate and require a later Reviewer-authorized live step.
+R5R1 validates the repaired integration with source-contract checks and a local fake CLI shim. Actual CLI download, account readiness, upload/download, VPS deployment, and Owner UI actions remain unexecuted in this offline Gate and require a later Reviewer-authorized live step.

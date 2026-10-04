@@ -113,9 +113,26 @@ function Test-RunnerContract {
     $sanitizedMarkers=(@($successMarkers | Where-Object { -not $Text.Contains($_) }).Count -eq 0)
     $runtimeIdentity=($Text.Contains("useradd','--system'") -and $Text.Contains("'--shell','/usr/sbin/nologin'") -and $Text.Contains('$script:runtimeUser = ''reality-vpn-network-optimization'''))
     $baiduSourcePinned=($Text.Contains('qjfoidnh/BaiduPCS-Go/releases/download/v4.0.2') -and $Text.Contains('$script:baiduCliVersion = ''v4.0.2''') -and $Text.Contains('$script:baiduArchiveSha256 = ''ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30'''))
+    $installStart=$Text.IndexOf('function Install-PinnedBaiduCli {',[StringComparison]::Ordinal);$installEnd=$Text.IndexOf('function Assert-BaiduAccountReady {',$installStart,[StringComparison]::Ordinal)
+    $installBody=if($installStart -ge 0 -and $installEnd -gt $installStart){$Text.Substring($installStart,$installEnd-$installStart)}else{''}
+    $archiveOpenAt=$installBody.IndexOf('[IO.Compression.ZipFile]::OpenRead($archiveSource)',[StringComparison]::Ordinal)
+    $defaultDownloadAt=$installBody.IndexOf('Invoke-WebRequest -Uri $script:baiduArchiveUrl -OutFile $archive',[StringComparison]::Ordinal)
+    $defaultArchiveSourceAt=$installBody.IndexOf('$archiveSource=$archive',[StringComparison]::Ordinal)
+    $defaultArchiveHashAt=$installBody.IndexOf('Get-FileHash -LiteralPath $archive -Algorithm SHA256',[StringComparison]::Ordinal)
+    $baiduDefaultArchiveUsesLocal=($defaultDownloadAt -ge 0 -and $defaultArchiveSourceAt -ge 0 -and $defaultArchiveHashAt -gt $defaultDownloadAt -and $archiveOpenAt -gt $defaultArchiveHashAt -and -not $installBody.Contains('$archiveSource=$script:baiduArchiveUrl'))
+    $overrideAt=$installBody.IndexOf('$archiveSource=[IO.Path]::GetFullPath($BaiduCliArchivePath)',[StringComparison]::Ordinal)
+    $overrideHashAt=$installBody.IndexOf('Get-FileHash -LiteralPath $archiveSource -Algorithm SHA256',[StringComparison]::Ordinal)
+    $baiduLocalArchiveOverride=($overrideAt -ge 0 -and $installBody.Contains('Test-Path -LiteralPath $archiveSource -PathType Leaf') -and $installBody.Contains('$archiveSource.StartsWith($script:projectRoot') -and $overrideHashAt -gt $overrideAt -and $archiveOpenAt -gt $overrideHashAt)
+    $baiduOfficialArchiveDigest=($baiduSourcePinned -and ([regex]::Matches($installBody,'Assert-G4B \(\$actualArchiveHash -ceq \$script:baiduArchiveSha256\) ''BAIDU_CLI_ARCHIVE_HASH_INVALID''').Count -eq 2))
+    $baiduUniqueSafeExeEntry=($installBody.Contains('$entries=@($zip.Entries | Where-Object { [IO.Path]::GetFileName($_.FullName) -ceq ''BaiduPCS-Go.exe'' })') -and $installBody.Contains('$entries.Count -eq 1') -and $installBody.Contains('$entries[0].Length -gt 0') -and $installBody.Contains('$entries[0].Length -le 64MB') -and $installBody.Contains('$entries[0].FullName -notmatch ''(^|/)\.\.(/|$)'''))
     $baiduCommandBoundary=($Text.Contains("[ValidateSet('who','ls','mkdir','upload','download','mv','rm')]" ) -and $Text.Contains('$psi.ArgumentList.Add($Action)') -and $Text.Contains('BAIDUPCS_GO_CONFIG_DIR') -and $Text.Contains('Assert-BaiduAccountReady -ExpectedUid $ExpectedBaiduUid') -and $Text.Contains('$script:baiduRecoveryDirectory = ''/vpn-network-optimization-g4b-recovery''') -and $Text -notmatch '(?im)ArgumentList\.Add\([^\r\n]*(?:bduss|stoken|ptoken|cookie|password)=')
+    $baiduPendingName=($Text.Contains('$script:baiduPendingName = ''vpn-network-optimization-g4b-'' + $script:runId + ''.vpr1.pending''') -and $Text.Contains('$script:recoveryPendingExternal = $script:baiduRecoveryDirectory + ''/'' + $script:baiduPendingName') -and $Text.Contains('$script:recoveryPendingCloudLocal = Join-Path (Split-Path -Parent $script:secretRecoveryPath) $script:baiduPendingName'))
     $uploadStart=$Text.IndexOf('function Upload-BaiduPendingRecovery {',[StringComparison]::Ordinal);$uploadEnd=$Text.IndexOf('function Promote-BaiduPendingRecovery {',$uploadStart,[StringComparison]::Ordinal)
     $uploadBody=if($uploadStart -ge 0 -and $uploadEnd -gt $uploadStart){$Text.Substring($uploadStart,$uploadEnd-$uploadStart)}else{''}
+    $pendingNameGuardAt=$uploadBody.IndexOf('Assert-G4B ([IO.Path]::GetFileName($script:recoveryPendingCloudLocal) -ceq $pendingName) ''BAIDU_PENDING_LOCAL_BASENAME_MISMATCH''',[StringComparison]::Ordinal)
+    $firstPendingQueryAt=$uploadBody.IndexOf('Get-BaiduRemoteObjectState',[StringComparison]::Ordinal)
+    $firstUploadCliAt=$uploadBody.IndexOf("Invoke-BaiduCli -Action 'upload'",[StringComparison]::Ordinal)
+    $baiduPendingGuard=($pendingNameGuardAt -ge 0 -and $firstPendingQueryAt -gt $pendingNameGuardAt -and $firstUploadCliAt -gt $pendingNameGuardAt)
     $uploadAt=$uploadBody.IndexOf("Invoke-BaiduCli -Action 'upload'",[StringComparison]::Ordinal)
     $postUploadStateAt=if($uploadAt -ge 0){$uploadBody.IndexOf('Get-BaiduRemoteObjectState',$uploadAt,[StringComparison]::Ordinal)}else{-1}
     $postUploadReadbackAt=if($postUploadStateAt -ge 0){$uploadBody.IndexOf('Read-BaiduCiphertext',$postUploadStateAt,[StringComparison]::Ordinal)}else{-1}
@@ -164,7 +181,13 @@ function Test-RunnerContract {
         ProfileContentIntegrity=$profileContentIntegrity
         StrictModeRecoveryCleanup=$cleanupComplete
         BaiduSourcePinned=$baiduSourcePinned
+        BaiduDefaultArchiveUsesLocal=$baiduDefaultArchiveUsesLocal
+        BaiduLocalArchiveOverride=$baiduLocalArchiveOverride
+        BaiduOfficialArchiveDigest=$baiduOfficialArchiveDigest
+        BaiduUniqueSafeExeEntry=$baiduUniqueSafeExeEntry
         BaiduCommandBoundary=$baiduCommandBoundary
+        BaiduPendingName=$baiduPendingName
+        BaiduPendingGuard=$baiduPendingGuard
         BaiduPendingReadback=$uploadReadback
         BaiduFinalPromotion=$promotionOrder
         BaiduRollbackScoped=$rollbackScope
@@ -213,6 +236,11 @@ Assert-Fixture $contract.RemoteRollbackBaseline 'R3_SOURCE_REMOTE_ROLLBACK_BASEL
 Assert-Fixture $contract.ProfileContentIntegrity 'R3_SOURCE_PROFILE_CONTENT_INTEGRITY'
 Assert-Fixture $contract.StrictModeRecoveryCleanup 'R3_SOURCE_STRICTMODE_RECOVERY_CLEANUP'
 Assert-Fixture $contract.BaiduSourcePinned 'R4_BAIDU_CLI_SOURCE_AND_RELEASE_PIN'
+Assert-Fixture $contract.BaiduDefaultArchiveUsesLocal 'R5R1_DEFAULT_DOWNLOAD_USES_LOCAL_ARCHIVE'
+Assert-Fixture $contract.BaiduLocalArchiveOverride 'R5R1_LOCAL_ARCHIVE_OVERRIDE'
+Assert-Fixture $contract.BaiduOfficialArchiveDigest 'R5R1_OFFICIAL_ARCHIVE_DIGEST_PIN'
+Assert-Fixture $contract.BaiduUniqueSafeExeEntry 'R5R1_UNIQUE_SAFE_EXE_ENTRY'
+Assert-Fixture ($contract.BaiduPendingName -and $contract.BaiduPendingGuard) 'R5R1_PENDING_PRODUCTION_BASENAME'
 Assert-Fixture $contract.BaiduCommandBoundary 'R4_BAIDU_AUTH_AND_ARGUMENT_BOUNDARY'
 Assert-Fixture $contract.BaiduPendingReadback 'R4_PENDING_UPLOAD_CIPHERTEXT_READBACK'
 Assert-Fixture $contract.BaiduFinalPromotion 'R4_FINAL_PROMOTION_AFTER_READBACK'
@@ -327,8 +355,10 @@ try {
     $script:baiduRecoveryDirectory='/fixture/vpn-network-optimization/recovery'
     $script:recoveryFinalExternal=$script:baiduRecoveryDirectory+'/vpn-network-optimization-g4b.vpr1'
     $fixtureRunId=[guid]::NewGuid().ToString('N')
-    $script:recoveryPendingExternal=$script:baiduRecoveryDirectory+'/vpn-network-optimization-g4b-'+$fixtureRunId+'.vpr1.pending'
-    $script:recoveryPendingCloudLocal=Join-Path $baiduFixtureRoot ([IO.Path]::GetFileName($script:recoveryPendingExternal))
+    $script:baiduPendingName='vpn-network-optimization-g4b-'+$fixtureRunId+'.vpr1.pending'
+    $script:recoveryPendingExternal=$script:baiduRecoveryDirectory+'/'+$script:baiduPendingName
+    $script:recoveryPendingCloudLocal=Join-Path $baiduFixtureRoot $script:baiduPendingName
+    Assert-Fixture (([IO.Path]::GetFileName($script:recoveryPendingExternal) -ceq $script:baiduPendingName) -and ([IO.Path]::GetFileName($script:recoveryPendingCloudLocal) -ceq $script:baiduPendingName)) 'R5R1_FAKE_FIXTURE_USES_PRODUCTION_NAMING'
     $script:recoveryCreatedPaths=[Collections.Generic.List[string]]::new()
     $script:baiduUploadAttempted=$false;$script:baiduPendingVerified=$false;$script:baiduPendingPromoted=$false
     $baiduFixturePayloadJson=ConvertTo-Json -InputObject @{format='VPNG4BR1';hy2_auth=('c'*64);reality_uuid='00000000-0000-4000-8000-000000000002';reality_private_key=('C'*43);reality_public_key=('D'*43);reality_short_id='fedcba9876543210'} -Compress
@@ -383,6 +413,13 @@ try {
             default {return [pscustomobject]@{ExitCode=9;StdOut=''}}
         }
     }.GetNewClosure()
+    $matchingPendingPath=$script:recoveryPendingCloudLocal
+    $script:recoveryPendingCloudLocal=Join-Path $baiduFixtureRoot ('mismatch-'+$script:baiduPendingName)
+    $callsBeforeMismatch=$baiduFixtureState.Calls.Count
+    $pendingNameMismatchRejected=$false
+    try { Upload-BaiduPendingRecovery -PayloadBytes $baiduFixturePayloadBytes -Passphrase $baiduFixturePass } catch { $pendingNameMismatchRejected=$_.Exception.Message -ceq 'BAIDU_PENDING_LOCAL_BASENAME_MISMATCH' }
+    Assert-Fixture ($pendingNameMismatchRejected -and $baiduFixtureState.Calls.Count -eq $callsBeforeMismatch) 'R5R1_PENDING_BASENAME_MISMATCH_FAILS_PRE_CLI'
+    $script:recoveryPendingCloudLocal=$matchingPendingPath
     Assert-BaiduAccountReady -ExpectedUid '123456789'
     Assert-Fixture $true 'R4_ACCOUNT_READINESS_PASS'
     $baiduMissingLogin=$false;try{$baiduFixtureState.Who='请先登录';Assert-BaiduAccountReady -ExpectedUid '123456789'}catch{$baiduMissingLogin=$_.Exception.Message -ceq 'BAIDU_LOGIN_READINESS_MISSING'}
