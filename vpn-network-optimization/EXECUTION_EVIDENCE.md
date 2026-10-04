@@ -6882,3 +6882,30 @@ REVIEWER_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
 NEXT_GATE=G4B_PERSISTENT_THREE_ROLE_READINESS
 STOP_AT_REVIEWER=YES
 ```
+
+
+## G4-B offline live-runner implementation assigned to Codex — 2026-10-04
+
+```text
+GATE_ID=G4B_OFFLINE_LIVE_RUNNER_IMPLEMENTATION_R1
+GATE_DOC_BLOB=6ebf299166109b0640f2acd93cd8c669bc036b32
+EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_IMPLEMENTATION_AND_FIXTURE_VALIDATION
+LIVE_G4B_EXECUTION_AUTHORIZED=NO
+SSH_OR_VPS_ACTION=NO
+DPAPI_OR_REAL_SECRET_ACCESS=NO
+EXTERNAL_REQUESTS=0
+NETWORK_MUTATION=NO
+CLASH_PROFILE_MUTATION=NO
+SYSTEM_PROXY_CHANGE=NO
+TUN_CHANGE=NO
+SERVICE_MUTATION=NO
+ROUTE_MUTATION=NO
+G4C_EXECUTION=NO
+STOP_AT_REVIEWER=YES
+```
+
+Reviewer frozen boundary:
+- Executor may implement the future live-runner source and offline fixture validator only.
+- Accepted templates and the G4-B readiness Gate are frozen.
+- Any need to change a frozen contract is RETURN, not an Executor-side repair.
+- Detailed Executor evidence must return to Reviewer before any live G4-B authorization discussion.
