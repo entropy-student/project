@@ -7610,3 +7610,58 @@ STOP_AT_REVIEWER=YES
 ```
 
 No runner/runtime rollback is needed. The only local repository movement was a safe fast-forward to canonical `main`; the pre-existing untracked `results/` entries were not read, modified, staged, or removed.
+
+
+## Reviewer reconciliation — R5 digest retrieval blocker — 2026-10-05
+
+```text
+EXECUTOR_RESULT=RETURN_G4B_R5_EXECUTABLE_DIGEST_RETRIEVAL_BLOCKED_BY_CODEX_POLICY
+REVIEWER_RESULT=RETURN_ACCEPTED_AND_GATE_NARROWED
+R5_RUNNER_SOURCE_CHANGED=NO
+R5_FIXTURES_RUN=NO
+R5_LIVE_ACTIONS=0
+R5_TIMING=UNKNOWN
+```
+
+Reviewer accepts the Executor fail-closed behavior: it did not guess an executable digest after the
+local process path was policy-blocked and the direct web asset read failed.
+
+Reviewer independently obtained authoritative upstream GitHub Release metadata for the exact
+release asset:
+
+```text
+UPSTREAM_REPO=qjfoidnh/BaiduPCS-Go
+UPSTREAM_TAG=v4.0.2
+UPSTREAM_TAG_COMMIT=225bdd3b6cb298601c4d5ef7104c3e08cd1d692d
+UPSTREAM_ASSET_ID=523819947
+UPSTREAM_ASSET_NAME=BaiduPCS-Go-v4.0.2-windows-x64.zip
+UPSTREAM_ASSET_SIZE=5711812
+UPSTREAM_ASSET_SHA256=ce72b3155a710b7c4a2b15611c3aebd11a057d7cccf0529e7703bdde04f0aa30
+RUNNER_PINNED_ARCHIVE_SHA256_MATCH=YES
+```
+
+Supply-chain reconciliation:
+- the exact official release archive SHA-256 is already pinned and verified before extraction;
+- the runner restricts extraction to exactly one bounded, traversal-safe `BaiduPCS-Go.exe` entry;
+- therefore the verified archive digest transitively authenticates the executable bytes;
+- a separate independently sourced executable digest is redundant and is removed as a live blocker;
+- GitHub Actions build-artifact executable hashes are explicitly not substituted for the release
+  asset's internal binary identity because the upstream CI and release build paths are not proven
+  byte-identical.
+
+The two confirmed source defects remain:
+1. downloaded local ZIP path must be used by `ZipFile::OpenRead`;
+2. production pending local basename must equal the expected remote pending basename before upload.
+
+Next Gate:
+`G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5R1`
+with blob
+`1d5ae4c7563c195ba4dab747b3b0ea8b493b5ffb`.
+
+```text
+ESTIMATED_EXECUTION_TIME=15-30 minutes
+OWNER_ACTION_REQUIRED=NO
+REAL_BAIDU_ACTIONS=0
+LIVE_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
