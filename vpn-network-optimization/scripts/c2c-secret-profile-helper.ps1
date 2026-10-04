@@ -166,10 +166,15 @@ function Test-FilePattern {
 }
 
 function Get-PatternFileCount {
-    param([string]$Root, [byte[]]$Pattern)
+    param(
+        [string]$Root,
+        [byte[]]$Pattern,
+        [switch]$AllowUnreadableZeroLengthRootLock
+    )
 
     if (-not (Test-Path -LiteralPath $Root -PathType Container)) { return 0 }
 
+    $rootFull = [IO.Path]::GetFullPath($Root).TrimEnd('\')
     $count = 0
     $stack = [Collections.Generic.Stack[string]]::new()
     $stack.Push($Root)
@@ -189,6 +194,23 @@ function Get-PatternFileCount {
                     if (Test-FilePattern -Path $item.FullName -Pattern $Pattern) { $count++ }
                 }
                 catch {
+                    if ($AllowUnreadableZeroLengthRootLock) {
+                        try {
+                            $freshItem = Get-Item -LiteralPath $item.FullName -Force -ErrorAction Stop
+                            $freshParent = [IO.Path]::GetFullPath((Split-Path -Parent $freshItem.FullName)).TrimEnd('\')
+                            $isRootLevel = $freshParent.Equals($rootFull, [StringComparison]::OrdinalIgnoreCase)
+                            $isLock = $freshItem.Extension -ieq '.lock'
+                            $isZeroLength = [long]$freshItem.Length -eq 0
+                            $isFile = -not $freshItem.PSIsContainer
+                            $isReparse = (($freshItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0)
+
+                            if ($isRootLevel -and $isLock -and $isZeroLength -and $isFile -and -not $isReparse) {
+                                continue
+                            }
+                        }
+                        catch { }
+                    }
+
                     throw 'SECRET_SCAN_READ_FAILED'
                 }
             }
@@ -395,7 +417,7 @@ try {
     $templateInfo = Get-SecretContext
 
     if ($Prepare) {
-        Assert-C2CSecret ((Get-PatternFileCount -Root $clashAppRoot -Pattern $authBytes) -eq 0) 'REAL_AUTH_ALREADY_PRESENT_IN_CLASH_STORAGE'
+        Assert-C2CSecret ((Get-PatternFileCount -Root $clashAppRoot -Pattern $authBytes -AllowUnreadableZeroLengthRootLock) -eq 0) 'REAL_AUTH_ALREADY_PRESENT_IN_CLASH_STORAGE'
         Assert-C2CSecret ((Get-PatternFileCount -Root $runtimeRoot -Pattern $authBytes) -eq 0) 'REAL_AUTH_ALREADY_PRESENT_IN_PROJECT_RUNTIME'
 
         $createdDirectory = Join-Path $runtimeRoot ('c2c-' + [Guid]::NewGuid().ToString('N'))
@@ -435,7 +457,7 @@ try {
         Assert-C2CSecret ($fullProfile.StartsWith($fullRuntime, [StringComparison]::OrdinalIgnoreCase)) 'PROFILE_PATH_OUTSIDE_RUNTIME_ROOT'
         Assert-C2CSecret ((Split-Path -Leaf $fullProfile) -match '^c2c-real-hy2-canary-[0-9a-f]{8}\.yaml$') 'PROFILE_FILENAME_INVALID'
 
-        $appResidue = Get-PatternFileCount -Root $clashAppRoot -Pattern $authBytes
+        $appResidue = Get-PatternFileCount -Root $clashAppRoot -Pattern $authBytes -AllowUnreadableZeroLengthRootLock
 
         if (Test-Path -LiteralPath $fullProfile -PathType Leaf) {
             Assert-OwnerAcl -Path $fullProfile
