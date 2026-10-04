@@ -126,7 +126,7 @@ Locked G4-B0 live identities:
 ```text
 G4B0_RUNNER_BLOB=43221672eb90a2a58062ca4ecbd118f4ebafc866
 G4B0_TEMPLATE_BLOB=f8c637d28a35d3795c8ebaf470d50248562dbaf8
-G4B0_VALIDATOR_BLOB=bd6b400a5353c84818a918e1f6415ab3029efde4
+G4B0_VALIDATOR_BLOB=1c43d09ac277a5c1567d6890e2eb14d8c998515d
 G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
 ```
 
@@ -179,11 +179,11 @@ The live runner is offline-reviewed and ready. Before child execution, the Owner
 
 ## NEXT_STEP
 
-Owner-local AST-only checkpoint PASS on PowerShell 7.6.6 with zero network mutation, zero Secret access, and zero external requests. Proceed with exactly one already-authorized G4-B0 live canary, then mandatory Reviewer stop.
+Owner-local AST-only checkpoint PASS on PowerShell 7.6.6. The subsequent offline validator returned before live runner start because it parsed the raw numeric port placeholder as JSON. That validator-only defect is repaired; the live runner remains unchanged. Run one validator-only checkpoint next. The one-shot live authorization remains valid and unconsumed.
 
 ## OWNER_ACTION_REQUIRED
 
-Run exactly one G4-B0 live canary using the repaired locked runner. The one-shot live authorization remains valid and unconsumed until the runner enters its consequential Secret/runtime phase. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
+Run the corrected G4-B0 validator only. If it PASSes, return to Reviewer before launching the live runner. The one-shot live authorization remains valid and unconsumed. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
 
 ## EVIDENCE_POINTERS
 
