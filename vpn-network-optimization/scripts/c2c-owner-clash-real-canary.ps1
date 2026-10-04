@@ -148,16 +148,79 @@ function Test-SnapshotSame {
     return $true
 }
 
+function Invoke-LocalSocks5Greeting {
+    param([int]$Port)
+
+    $client = [Net.Sockets.TcpClient]::new()
+    try {
+        $connectTask = $client.ConnectAsync('127.0.0.1', $Port)
+        if (-not $connectTask.Wait(1000)) { return 'CONNECT_TIMEOUT' }
+
+        $stream = $client.GetStream()
+        $stream.ReadTimeout = 1000
+        $stream.WriteTimeout = 1000
+
+        $greeting = [byte[]](0x05,0x01,0x00)
+        $stream.Write($greeting,0,$greeting.Length)
+        $stream.Flush()
+
+        $response = [byte[]]::new(2)
+        $read = 0
+        try {
+            while ($read -lt 2) {
+                $n = $stream.Read($response,$read,2-$read)
+                if ($n -le 0) { break }
+                $read += $n
+            }
+        }
+        catch [IO.IOException] {
+            return 'NO_RESPONSE'
+        }
+
+        if ($read -ne 2) { return 'NO_RESPONSE' }
+        if ($response[0] -eq 0x05 -and $response[1] -eq 0x00) { return 'SOCKS5_NOAUTH' }
+        if ($response[0] -eq 0x05) { return ('SOCKS5_METHOD_' + $response[1].ToString('X2')) }
+        return 'NON_SOCKS'
+    }
+    catch {
+        return 'CONNECT_ERROR'
+    }
+    finally {
+        $client.Dispose()
+    }
+}
+
 function Resolve-LocalProxyPort {
-    $internet = Get-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings' -ErrorAction Stop
-    Assert-C2C ($null -ne $internet.PSObject.Properties['ProxyServer']) 'CLASH_LOCAL_PROXY_METADATA_MISSING'
-    $value = [string]$internet.ProxyServer
-    Assert-C2C (-not [string]::IsNullOrWhiteSpace($value)) 'CLASH_LOCAL_PROXY_METADATA_MISSING'
-    $matches = [regex]::Matches($value, '(?i)(?:127\.0\.0\.1|localhost):(?<p>\d{2,5})')
-    $ports = @($matches | ForEach-Object { [int]$_.Groups['p'].Value } | Sort-Object -Unique)
-    Assert-C2C ($ports.Count -eq 1) 'CLASH_LOCAL_PROXY_PORT_AMBIGUOUS'
-    Assert-C2C ($ports[0] -ge 1024 -and $ports[0] -le 65535) 'CLASH_LOCAL_PROXY_PORT_INVALID'
-    return [int]$ports[0]
+    $candidateProcesses = @(
+        Get-Process -ErrorAction SilentlyContinue |
+        Where-Object { $_.ProcessName -match '(?i)(?:mihomo|clash)' } |
+        Sort-Object Id
+    )
+
+    $candidatePorts = [Collections.Generic.HashSet[int]]::new()
+
+    foreach ($process in $candidateProcesses) {
+        foreach ($listener in @(Get-NetTCPConnection -State Listen -OwningProcess $process.Id -ErrorAction SilentlyContinue)) {
+            if ([string]$listener.LocalAddress -in @('127.0.0.1','0.0.0.0','::1','::')) {
+                [void]$candidatePorts.Add([int]$listener.LocalPort)
+            }
+        }
+    }
+
+    Assert-C2C ($candidatePorts.Count -gt 0) 'CLASH_LOCAL_PROXY_LISTENER_MISSING'
+
+    $socksPorts = @(
+        $candidatePorts |
+        Sort-Object |
+        Where-Object { (Invoke-LocalSocks5Greeting -Port $_) -eq 'SOCKS5_NOAUTH' }
+    )
+
+    Assert-C2C (@($socksPorts).Count -eq 1) 'CLASH_LOCAL_SOCKS5_LISTENER_CARDINALITY_INVALID'
+    Assert-C2C ($socksPorts[0] -ge 1024 -and $socksPorts[0] -le 65535) 'CLASH_LOCAL_PROXY_PORT_INVALID'
+
+    Write-Output 'CLASH_LOCAL_PROXY_DISCOVERY=LIVE_PROCESS_SOCKS5'
+    Write-Output ('CLASH_LOCAL_PROXY_PORT=' + [int]$socksPorts[0])
+    return [int]$socksPorts[0]
 }
 
 function Assert-LocalProxyListener {
