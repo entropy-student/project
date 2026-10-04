@@ -325,9 +325,44 @@ function Invoke-SecretHelper {
         $output = @(& $pwsh -NoProfile -File $script:secretHelper -VerifyCleanup -ProfilePath $script:profilePath 2>&1)
     }
     $exitCode = $LASTEXITCODE
-    foreach ($line in $output) { Write-Output $line }
     Assert-C2C ($exitCode -eq 0) ('C2C_SECRET_HELPER_' + $Mode.ToUpperInvariant() + '_FAILED')
     return ,$output
+}
+
+function Write-ApprovedSecretHelperEvidence {
+    param([object[]]$Output, [ValidateSet('Prepare','VerifyCleanup')][string]$Mode)
+
+    $allowedLines = if ($Mode -eq 'Prepare') {
+        @(
+            'DPAPI_UNPROTECT=PASS',
+            'REAL_HY2_AUTH_FORMAT=PASS',
+            'CERTIFICATE_FINGERPRINT_MATCH=PASS',
+            'CLASH_REAL_AUTH_PREEXISTING=NO',
+            'OWNER_ONLY_REAL_PROFILE=PASS',
+            'MIHOMO_REAL_PROFILE_PARSE=PASS',
+            'C2C_SECRET_PREPARE=PASS',
+            'SECRET_VALUES_EMITTED=0',
+            'C2C_SECRET_HELPER_RESULT=PASS'
+        )
+    }
+    else {
+        @(
+            'CLASH_REAL_AUTH_RESIDUE=ABSENT',
+            'PROJECT_RUNTIME_REAL_AUTH_RESIDUE=ABSENT',
+            'REAL_PROFILE_RUNTIME_CLEANUP=PASS',
+            'C2C_SECRET_CLEANUP_VERIFY=PASS',
+            'SECRET_VALUES_EMITTED=0',
+            'C2C_SECRET_HELPER_RESULT=PASS'
+        )
+    }
+
+    foreach ($line in $Output) {
+        $text = [string]$line
+        if (($allowedLines -ccontains $text) -or
+            ($Mode -eq 'Prepare' -and $text -cmatch '^TEMP_REAL_PROFILE_PATH=.+$')) {
+            Write-Output $text
+        }
+    }
 }
 
 function Require-Markers {
@@ -376,6 +411,7 @@ try {
 
     $script:phase = 'SECRET_PROFILE_PREPARE'
     $prepareOutput = Invoke-SecretHelper -Mode Prepare
+    Write-ApprovedSecretHelperEvidence -Output $prepareOutput -Mode Prepare
     Require-Markers -Output $prepareOutput -Prefix 'C2C_SECRET_PREPARE' -Markers @(
         'DPAPI_UNPROTECT=PASS',
         'REAL_HY2_AUTH_FORMAT=PASS',
@@ -450,6 +486,7 @@ try {
     $afterProfiles.Clear()
 
     $cleanupOutput = Invoke-SecretHelper -Mode VerifyCleanup
+    Write-ApprovedSecretHelperEvidence -Output $cleanupOutput -Mode VerifyCleanup
     Require-Markers -Output $cleanupOutput -Prefix 'C2C_SECRET_CLEANUP' -Markers @(
         'CLASH_REAL_AUTH_RESIDUE=ABSENT',
         'PROJECT_RUNTIME_REAL_AUTH_RESIDUE=ABSENT',
@@ -490,6 +527,7 @@ finally {
     if ($null -ne $script:profilePath -and -not $script:secretCleanupPassed) {
         try {
             $fallbackOutput = Invoke-SecretHelper -Mode VerifyCleanup
+            Write-ApprovedSecretHelperEvidence -Output $fallbackOutput -Mode VerifyCleanup
             Require-Markers -Output $fallbackOutput -Prefix 'C2C_FALLBACK_SECRET_CLEANUP' -Markers @(
                 'CLASH_REAL_AUTH_RESIDUE=ABSENT',
                 'PROJECT_RUNTIME_REAL_AUTH_RESIDUE=ABSENT',

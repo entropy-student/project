@@ -33,17 +33,19 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR6R3D1_FOCUSLY_VISUAL_MAPPING
+CURRENT_GATE=G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
 MAGAZINE_WEB_VIEWER_DIRECTION=CONFIRMED_MAGAZINE_WEB_VIEWER
 HOMEPAGE_FOCUSLY=AUTHORIZED_PUBLIC_VISUAL_REFERENCE
 HOMEPAGE_HIGH_FIDELITY_REIMPLEMENTATION=AUTHORIZED_AFTER_D1_REVIEWER_PASS
-HOMEPAGE_IMPLEMENTATION_STATUS=HOLD_PENDING_D1_REVIEWER_PASS
+HOMEPAGE_IMPLEMENTATION_STATUS=HOLD_PENDING_D1R2_REVIEWER_PASS
 G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
-CORE_AHA_INTERACTION_DIRECTION=PERSISTENT_LIVE_MAGAZINE_COVER_PREVIEW_ACCEPTED
-CORE_AHA_EXACT_PRESENTATION=PENDING_D1_BENCHMARK_MAPPING
+CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS
+PREVIEW_INTERACTION_CHANGE=HOLD
+CORE_AHA_INTERACTION_DIRECTION=UNRESOLVED
+CORE_AHA_EXACT_PRESENTATION=UNRESOLVED
 MAGAZINE_P1_P12_VISUAL_SYSTEM=UNRESOLVED_RESEARCH_AGAIN
 PRIOR_G3CR6R3C_SATURATION=SUPERSEDED_FOR_INTERACTION_AND_P1_P12
 MAGAZINE_WEB_PAGE_MOTION_MODE=UNRESOLVED
@@ -87,44 +89,48 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR6R3D1_FOCUSLY_VISUAL_MAPPING`
+`G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE`
 
-The Owner has reprioritized the homepage before the unresolved core-interaction and P1-P12 research.
+The Owner has reprioritized the Focusly-inspired homepage while explicitly placing upload/Preview interaction changes on hold.
 
 Objective:
-- directly inspect the public Focusly homepage and its actual motion/responsive behavior;
-- inventory the current Birthday Magazine homepage, assets and protected functional boundaries;
-- produce a one-to-one Focusly -> current-homepage mapping that a later implementation Gate can execute safely;
-- maximize public-reference visual fidelity through independent implementation, without copying the paid template source or proprietary assets.
+- reuse the already-captured Focusly public visual/motion evidence without replay;
+- close only the fresh readback blocker for the current retained local Birthday Magazine homepage;
+- prove the exact current homepage/template/menu/CTA/Preview surface before implementation;
+- provide the final precondition for a bounded homepage-only D2 implementation Gate.
 
 Scope:
-- read-only reference/browser inspection and project documentation only;
-- no WordPress/source/CSS/JS/media/database/runtime mutation in D1;
+- bounded availability of the existing retained local runtime + read-only current-site inspection + project documentation;
+- no homepage or Preview implementation;
+- no Preview benchmark research;
 - no paid template purchase;
-- existing project-owned images may be reused;
-- design-time static image generation may be proposed only within existing authorized capability and without introducing a new external paid provider/account/Secret.
+- no build/pull/recreate/volume reset/migration/global Docker configuration or cleanup.
 
 Mandatory stop:
-- Reviewer must PASS the mapping before D2 implementation opens.
+- Reviewer must PASS D1R2 before D2 homepage implementation opens.
 
 Frozen during this Gate:
-- Free Preview privacy and zero-model runtime contract;
+- existing upload/Preview interaction and privacy behavior;
 - Product/Cart/Checkout/Order semantics;
 - Woo backend/payment;
 - account/private-workspace and entitlement logic;
 - prices/currency/product identity;
-- core Aha exact visual presentation beyond the accepted persistent live-cover/local-photo-replacement direction;
+- unresolved core Aha interaction;
 - P1-P12 magazine visual selection.
 
 Preserved:
+- Focusly public observation + mapping from D1 remain reusable evidence.
 - `magazine-web-viewer` remains the accepted reader direction.
 - G3CR6R3C remains unresolved for core interaction and P1-P12, but is paused while the Owner-prioritized homepage Gate runs.
 
 Current Gate file:
-- `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING.md`
+- `docs/G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE.md`
 
-Current Owner decision:
-- `docs/OWNER_DECISION_G3CR6R3D_FOCUSLY_HOMEPAGE_REDESIGN.md`
+Current Reviewer decision:
+- `docs/REVIEWER_DECISION_G3CR6R3D1_RETURN_SCOPE_RECONCILIATION_2026-10-04.md`
+
+Latest Owner decision:
+- `docs/OWNER_DECISION_G3CR6R3D_PREVIEW_INTERACTION_HOLD_2026-10-04.md`
 
 Current growth diagnosis:
 - `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
@@ -190,17 +196,18 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3D1** read-only: directly inspect Focusly desktop/mobile/motion behavior **and** benchmark YourCover, DigitalPrank, Customily and Corjl for the accepted persistent live-cover Preview interaction.
-2. Reviewer checks the Focusly mapping, Preview benchmark mapping, asset plan and frozen functional boundaries, and decides whether both can safely share one D2 implementation Gate.
-3. If D1 PASS, open **G3CR6R3D2** for bounded homepage implementation and regression proof.
-4. After homepage + accepted live-cover Preview work reaches Owner review, resume the still-unresolved P1-P12 magazine visual research under G3CR6R3C.
+1. Execute **G3CR6R3D1R2**: reuse the accepted Focusly evidence and close only the fresh current-local-homepage readback blocker.
+2. Reviewer checks the fresh Home/runtime/template/menu/CTA/Preview readback and exact D2 mutation boundary.
+3. If D1R2 PASS, open **G3CR6R3D2** for bounded Focusly-inspired homepage visual implementation while keeping the existing upload/Preview interaction unchanged.
+4. After homepage visual work reaches Owner review, resume the unresolved core Aha interaction and P1-P12 visual research separately.
 
 ## OWNER_ACTION_REQUIRED
 
-`NONE` for G3CR6R3D1; Owner already authorized Focusly-based independent homepage visual reconstruction within the frozen functional boundary.
+`NONE` by default for G3CR6R3D1R2. If Docker Desktop requires GUI/elevation/login/update/install action that the Executor cannot safely perform, Executor returns the smallest exact Owner runtime-start action.
 
 Owner action is required later for:
 - final subjective visual freeze;
+- any future decision to reopen/change the upload/Preview interaction;
 - any real payment/Live provider action;
 - account/Secret/provider authorization;
 - production enablement.
@@ -208,28 +215,17 @@ Owner action is required later for:
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/OWNER_DECISION_G3CR6R3D_FOCUSLY_HOMEPAGE_REDESIGN.md`
-2. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING.md`
-3. `docs/OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md`
-2. `docs/REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md`
-2. `docs/REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md`
-3. `docs/REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` — superseded preflight RETURN provenance
-2. `docs/MVP_PRODUCT_CONTRACT.md`
-2. `docs/REVIEWER_DECISION_G3CR6R1_PASS.md`
-3. `docs/G3C_OWNER_VISUAL_CHECKPOINT_R2.md`
-4. `docs/OWNER_DECISION_G3CR6R3_MOTION_PRODUCT_PROOF.md`
-5. `docs/REVIEWER_DECISION_G3CR6R3_EXPERIENCE_REVIEW.md`
-6. `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md`
-7. `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
-8. `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`
-9. `docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`
-8. `docs/OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md` — superseded provenance
-9. `docs/G3CR6R3B_VISUAL_MOTION_LAB.md` — superseded before execution
-8. `docs/OWNER_DECISION_G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` — superseded full-build decision provenance
-9. `docs/G3CR6R3A_MAGAZINE_VISUAL_REDESIGN.md` — superseded before execution
-10. `docs/G3CR6R3_PRODUCT_PROOF_MOTION_ACTIVATION.md` — prepared/hold after lab + magazine visual selection
-9. `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
-7. `EXECUTION_EVIDENCE.md` — accepted execution proof/history
-8. `EXECUTOR_HANDOFF.md` — latest Executor facts when current Gate executes
+1. `docs/OWNER_DECISION_G3CR6R3D_PREVIEW_INTERACTION_HOLD_2026-10-04.md`
+2. `docs/REVIEWER_DECISION_G3CR6R3D1_RETURN_SCOPE_RECONCILIATION_2026-10-04.md`
+3. `docs/G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE.md`
+4. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md`
+5. `docs/evidence/g3cr6r3d1/`
+6. `docs/OWNER_DECISION_G3CR6R3D_FOCUSLY_HOMEPAGE_REDESIGN.md` — homepage direction; its earlier Preview-update subsection is superseded by the latest Owner hold
+7. `docs/REVIEWER_DECISION_G3CR6R3D1_RETURN_LOCAL_HOMEPAGE.md` — earlier D1 return provenance
+8. `docs/G3CR6R3D1R1_RUNTIME_AND_PREVIEW_BENCHMARK_CLOSURE.md` — superseded before execution
+9. `docs/REVIEWER_DECISION_G3CR6R1_PASS.md` — accepted homepage/runtime functional baseline
+10. `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` — paused unresolved core interaction + P1-P12 research
+11. `EXECUTION_EVIDENCE.md` — execution proof/history
+12. `EXECUTOR_HANDOFF.md` — latest Executor facts
 
 Historical decisions remain in `docs/` and `DOCUMENT_INDEX.md`; they are provenance, not the current dashboard.
