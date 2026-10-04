@@ -4325,3 +4325,44 @@ Reviewer conclusion:
 - The failure was in evidence-reader compatibility, not network state. The ActiveStore scope is already selected by the `Get-NetRoute -PolicyStore ActiveStore` command argument.
 - The minimal repair removes only route-object `.PolicyStore` access. The validator now requires ActiveStore query scoping and adds a negative fixture that rejects reintroduction of `$_.PolicyStore`.
 - The repaired source is a candidate only until the Owner-local PowerShell validator proves syntax and all offline fixtures on the target runtime. Conditional C2B execution is allowed only after that validator passes.
+
+
+## Reviewer reconciliation — repaired C2B route snapshot accepted; Owner ACL runtime failure — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_ROUTE_SNAPSHOT_COMPAT_REPAIR_R1
+OWNER_REPORTED_HEAD_BEFORE=867604f337428af54ffb94d8ea8c6ad022c4d68f
+OWNER_REPORTED_ORIGIN_MAIN=1384f2bd49fed9da9fe5f0dccfbfbceb791fb51e
+OWNER_REPORTED_FAST_FORWARD=PASS
+OWNER_REPORTED_POST_SYNC_PROJECT_CLEAN=PASS
+OWNER_REPORTED_RUNNER_BLOB=ffa5667e6e0d436294cb37de845d0f1440f5766a
+OWNER_REPORTED_VALIDATOR_BLOB=a1ad9a30c0657f0912bcdebc6f39de5cf7e5de20
+OWNER_REPORTED_TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+OWNER_REPORTED_PACKAGE_BLOB=64b7ea3c562adc241311517c79cc53d966197a6e
+OWNER_REPORTED_LOCKED_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_ROUTE_SHAPE_FIXTURE=PASS
+OWNER_REPORTED_POWERSHELL_AST_PARSE=PASS
+OWNER_REPORTED_OFFLINE_FIXTURES=PASS
+OWNER_REPORTED_NETWORK_REQUESTS=0
+OWNER_REPORTED_NETWORK_CHANGED=NO
+ROUTE_SNAPSHOT_COMPAT_REPAIR=PASS
+OWNER_REPORTED_C2B_PROFILE_STORE_BASELINE=PASS
+OWNER_REPORTED_C2B_FAILED_PHASE=CREATE_OWNER_RUNTIME
+OWNER_REPORTED_C2B_FAILURE_CLASS=RuntimeException
+OWNER_REPORTED_C2B_FAILURE_CODE=OWNER_ACL_INHERITANCE_ENABLED
+OWNER_REPORTED_LOCAL_RUNTIME_CLEANUP=PASS
+OWNER_REPORTED_UI_PROFILE_REMOVED=NO_ACK
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+OWNER_REPORTED_C2B_ACTUAL_ELAPSED=00:00:00.9575943
+OWNER_REPORTED_TIME_OVERRUN=NO
+NETWORK_OR_UI_MUTATION_PROVEN=NO
+ACL_REQUIREMENT_RELAXATION_AUTHORIZED=NO
+NEXT_GATE=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2
+PROVENANCE=OWNER_REPORTED_PLUS_DIRECT_GITHUB_SOURCE_READBACK
+```
+
+Reviewer conclusion:
+- The route-object compatibility repair is accepted: target-host offline validation proved the new regression fixture, syntax, and all existing no-network/no-DPAPI guards.
+- The repaired runner passed the former network-state failure point and then failed at Owner runtime ACL creation because read-back reported inheritance enabled.
+- Cleanup passed and the UI checkpoint never began. The failure is isolated to ACL application/read-back behavior.
+- Owner-only ACL protection remains a hard security invariant. D2 compares two bounded ACL application methods on temporary directories and cleans them before any C2B retry.
