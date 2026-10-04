@@ -32,7 +32,7 @@ function New-OwnerOnlyAcl {
 }
 
 function Measure-Acl {
-    param([string]$Label, [string]$Path)
+    param([string]$Path)
     $acl = Get-Acl -LiteralPath $Path -ErrorAction Stop
     $owner = $acl.GetOwner([Security.Principal.SecurityIdentifier]).Value
     $rules = @($acl.GetAccessRules($true, $true, [Security.Principal.SecurityIdentifier]))
@@ -53,16 +53,28 @@ function Measure-Acl {
     $ownerMatch = ($owner -ceq $ownerSid.Value)
     $directFull = (($directMask -band $full) -eq $full)
     $childFull = ((($containerMask -band $full) -eq $full) -and (($objectMask -band $full) -eq $full))
-    Write-Output ($Label + '_PROTECTED=' + $protected)
-    Write-Output ($Label + '_OWNER_MATCH=' + $ownerMatch)
-    Write-Output ($Label + '_RULE_COUNT=' + $rules.Count)
-    Write-Output ($Label + '_INHERITED_RULE_COUNT=' + $inherited)
-    Write-Output ($Label + '_UNAUTHORIZED_RULE_COUNT=' + $unauthorized)
-    Write-Output ($Label + '_OWNER_DIRECT_FULLCONTROL=' + $directFull)
-    Write-Output ($Label + '_OWNER_CHILD_FULLCONTROL=' + $childFull)
-    return ($protected -and $ownerMatch -and $inherited -eq 0 -and $unauthorized -eq 0 -and $directFull -and $childFull)
+    return [pscustomobject]@{
+        Protected = $protected
+        OwnerMatch = $ownerMatch
+        RuleCount = $rules.Count
+        InheritedRuleCount = $inherited
+        UnauthorizedRuleCount = $unauthorized
+        OwnerDirectFullControl = $directFull
+        OwnerChildFullControl = $childFull
+        Pass = ($protected -and $ownerMatch -and $inherited -eq 0 -and $unauthorized -eq 0 -and $directFull -and $childFull)
+    }
 }
 
+function Write-AclMeasurement {
+    param([string]$Label, [object]$Measurement)
+    Write-Output ($Label + '_PROTECTED=' + $Measurement.Protected)
+    Write-Output ($Label + '_OWNER_MATCH=' + $Measurement.OwnerMatch)
+    Write-Output ($Label + '_RULE_COUNT=' + $Measurement.RuleCount)
+    Write-Output ($Label + '_INHERITED_RULE_COUNT=' + $Measurement.InheritedRuleCount)
+    Write-Output ($Label + '_UNAUTHORIZED_RULE_COUNT=' + $Measurement.UnauthorizedRuleCount)
+    Write-Output ($Label + '_OWNER_DIRECT_FULLCONTROL=' + $Measurement.OwnerDirectFullControl)
+    Write-Output ($Label + '_OWNER_CHILD_FULLCONTROL=' + $Measurement.OwnerChildFullControl)
+}
 try {
     if (-not (Test-Path -LiteralPath $base -PathType Container)) {
         [void][IO.Directory]::CreateDirectory($base)
@@ -73,7 +85,9 @@ try {
     try {
         $aclA = New-OwnerOnlyAcl
         [void][System.IO.FileSystemAclExtensions]::CreateDirectory($aclA, $pathA)
-        $methodAPass = [bool](Measure-Acl -Label 'METHOD_A_EXTENSION_CREATE' -Path $pathA | Select-Object -Last 1)
+        $measurementA = Measure-Acl -Path $pathA
+        Write-AclMeasurement -Label 'METHOD_A_EXTENSION_CREATE' -Measurement $measurementA
+        $methodAPass = [bool]$measurementA.Pass
         Write-Output ('METHOD_A_RESULT=' + $(if ($methodAPass) { 'PASS' } else { 'RETURN_INVARIANT' }))
     }
     catch {
@@ -96,7 +110,9 @@ try {
         )
         [void]$aclB.SetAccessRule($ruleB)
         Set-Acl -LiteralPath $pathB -AclObject $aclB -ErrorAction Stop
-        $methodBPass = [bool](Measure-Acl -Label 'METHOD_B_CREATE_THEN_SETACL' -Path $pathB | Select-Object -Last 1)
+        $measurementB = Measure-Acl -Path $pathB
+        Write-AclMeasurement -Label 'METHOD_B_CREATE_THEN_SETACL' -Measurement $measurementB
+        $methodBPass = [bool]$measurementB.Pass
         Write-Output ('METHOD_B_RESULT=' + $(if ($methodBPass) { 'PASS' } else { 'RETURN_INVARIANT' }))
     }
     catch {
