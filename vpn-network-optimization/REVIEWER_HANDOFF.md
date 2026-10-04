@@ -132,11 +132,11 @@ Locked G4-B0 live identities:
 ```text
 G4B0_RUNNER_BLOB=234658cefed52f2f95a1cb20b50dad415ea4b54e
 G4B0_TEMPLATE_BLOB=f8c637d28a35d3795c8ebaf470d50248562dbaf8
-G4B0_VALIDATOR_BLOB=f102280866520bb7fff906181081c13ed1d17beb
+G4B0_VALIDATOR_BLOB=e38fb49de49ffcaafb5fff505c1b05919072efaa
 G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
 ```
 
-The repaired live runner and the non-consequential repair-checkpoint package have passed repository-level static review. Owner-host execution of `scripts/g4b0-repair-checkpoint.ps1` is still required before any fresh live authorization can be requested. No child live execution is currently authorized.
+The repaired live runner and the non-consequential repair-checkpoint package have passed repository-level static review. Owner-host execution of `scripts/g4b0-repair-checkpoint.ps1` is still required before any fresh live authorization can be requested. The previous checkpoint AST passed but its validator returned on a StrictMode static-string expansion defect; that validator-only defect is now repaired. No child live execution is currently authorized.
 
 ## CRITICAL_CONSTRAINTS
 
