@@ -5993,3 +5993,40 @@ Reviewer note:
 - This closeout changes documentation organization only; no runtime, Secret, Clash, route, network, VPS, or provider action occurred.
 - Historical detail remains in Git history and append-only Evidence; the canonical Reviewer Handoff was intentionally reduced to current state plus pointers.
 - The next Reviewer must obtain fresh explicit Owner authorization before any R3R2 real-canary execution.
+
+
+## Reviewer reconciliation — R3R2 outer-wrapper premature host exit — 2026-10-04
+
+```text
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+FAILURE_DOMAIN=OWNER_WRAPPER_CONTROL_FLOW
+CAUSE=INTERACTIVE_PARENT_POWERSHELL_CLOSED_BY_TOP_LEVEL_EXIT_IN_PASTED_WRAPPER
+R3R2_CONSEQUENTIAL_ACTION_STARTED=NO
+AUTHORIZED_REAL_CANARY_CONSUMED=NO
+
+WIREGUARD_MANAGER=RUNNING
+WIREGUARD_TUNNEL=RUNNING
+WIREGUARD_ADAPTER=UP
+CLASH_VERGE_SERVICE=RUNNING
+SYSTEM_PROXY=OFF
+TUN_COUNT=0
+ACTIVE_TEMP_ROUTE_24_199_118_137_32=0
+PERSISTENT_ROUTE_24_199_118_137_32=0
+
+C2C_RUNTIME_DIR_COUNT=0
+C2C_RUNTIME_PROFILE_COUNT=0
+CLASH_PROFILE_STORE_COUNT=1
+CLASH_C2C_MARKER_FILE_COUNT=0
+CLASH_PROFILE_UNREADABLE_COUNT=0
+
+RECONCILIATION_RESULT=PASS_NO_CONSEQUENTIAL_START
+R3R2_AUTHORIZATION_REMAINS_VALID=YES
+NEXT_ACTION=RETRY_SAME_SINGLE_AUTHORIZED_R3R2_WITH_PARENT_SAFE_WRAPPER
+```
+
+Reviewer conclusion:
+- The prior attempt did not reach Secret Prepare, Clash profile import, temporary route creation, or either real network request.
+- Current WireGuard/Clash/network/profile state is clean and matches the accepted pre-canary boundary.
+- Because no consequential action started, the already-granted single R3R2 authorization remains unconsumed; no fresh Owner authorization is required for the corrected wrapper.
+- The wrapper defect is limited to using top-level `exit` in code pasted directly into the Owner's interactive PowerShell host. The corrected wrapper must never terminate the parent host.
