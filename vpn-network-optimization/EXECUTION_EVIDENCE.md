@@ -6241,3 +6241,44 @@ Reviewer conclusion:
 - The bounded G4-B0 package is ready for a future Owner-authorized two-request Windows-local canary.
 - No live Secret, route, Clash, VPS, proxy, TUN, or network action occurred in this offline preparation round.
 - Persistent G4-B remains blocked until G4-B0 is formally reviewed.
+
+
+## Reviewer offline acceptance — G4-B0 live runner ready — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+OWNER_AUTHORIZATION=GRANTED_NOT_YET_CONSUMED
+LIVE_EXECUTION=NO
+NETWORK_MUTATION=NO
+SECRET_ACCESS=NO
+EXTERNAL_REQUEST_COUNT=0
+
+G4B0_RUNNER_BLOB=0a0a03c01b4163703c5f8ca0b2a2779a718ccb48
+G4B0_TEMPLATE_BLOB=f8c637d28a35d3795c8ebaf470d50248562dbaf8
+G4B0_VALIDATOR_BLOB=bd6b400a5353c84818a918e1f6415ab3029efde4
+G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
+
+ROUTE_WRITE_COMMANDS=0
+SSH_OR_SCP_COMMANDS=0
+REGISTRY_WRITE_COMMANDS=0
+REALITY_SCOPE_PRESENT=NO
+OPENAI_ENDPOINT_CARDINALITY=1
+IPIFY_ENDPOINT_CARDINALITY=1
+REQUEST_INCREMENT_CARDINALITY=2
+LOCAL_LISTENER=SOCKS_ONLY
+RUNTIME_OWNERSHIP_MARKER=YES
+RUNTIME_REPARSE_GUARD=YES
+EXACT_UNIQUE_RUNTIME_RECURSIVE_CLEANUP=YES
+DO_NOT_RERUN_GUARD=YES
+STATIC_BOUNDARY_REVIEW=PASS
+
+PRE_LIVE_REQUIREMENT=OWNER_WRAPPER_MUST_SAFE_SYNC_FF_ONLY + LOCK_BLOBS + AST_PARSE_RUNNER_AND_VALIDATOR + RUN_OFFLINE_VALIDATOR
+REVIEWER_RESULT=PASS_G4B0_LIVE_RUNNER_READY
+NEXT_STATE=AUTHORIZED_NOT_EXECUTED
+```
+
+Reviewer conclusion:
+- The authorized live runner is repository-ready, but has not executed.
+- The runner contains no route mutation, SSH/VPS action, system-proxy registry write, TUN enablement, or REALITY path.
+- The live request budget is structurally limited to the OpenAI request and one public-exit request.
+- The Owner wrapper must complete source synchronization, exact blob locking, PowerShell AST parsing, and the offline package validator before the child runner is allowed to start.
