@@ -7485,3 +7485,62 @@ Rollback is source-only: revert only this Gate's project-owned runner, fixture v
 ```text
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Reviewer RETURN — G4-B Baidu recovery backend R4 — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_NETDISK_RECOVERY_BACKEND_R4
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_RECOVERY_BACKEND_R4
+REVIEWER_RESULT=RETURN_G4B_BAIDU_RECOVERY_BACKEND_R4_REVIEW_DEFECTS
+REVIEWED_MAIN=79c10bf54902ce337796ba6329e7911a838b4d1c
+REVIEWED_RUNNER_BLOB=8bbdfc77b44cec61e92fcbdf67fd1b2ba1f1bb9d
+REVIEWED_FIXTURE_VALIDATOR_BLOB=8bbfed541b7f9e9f3ce216c7e25692cd61269394
+REVIEWED_PACKAGE_BLOB=52dad7f05e13c3a8efa2960d74e0ffb9b81fe1e2
+R4_LIVE_ACTIONS=0
+```
+
+Reviewer accepts the R4 credential-safety, synthetic account-readiness, encrypted pending
+readback, delayed promotion, and pending-only rollback design intent. PASS is blocked by three
+source-level defects:
+
+1. **Downloaded archive source path defect — RETURN_TEST_FAILURE**
+   - the default branch downloads the pinned ZIP into the protected local runtime path;
+   - `$archiveSource` remains the HTTPS URL;
+   - `ZipFile::OpenRead($archiveSource)` therefore targets the URL string rather than the downloaded
+     local archive.
+
+2. **Production/fake-fixture pending filename divergence — RETURN_TEST_FAILURE**
+   - production local pending basename is
+     `reality-g4b.dpapi.<run>.vpr1.pending`;
+   - expected remote pending basename is
+     `vpn-network-optimization-g4b-<run>.vpr1.pending`;
+   - directory upload preserves the local basename in the R4 fake CLI semantics;
+   - the R4 fixture silently overrides the local pending path so its basename already equals the
+     expected remote name, masking the production mismatch.
+
+3. **Executable digest is calculated but not pinned — RETURN_TEST_FAILURE**
+   - R4 pins the release ZIP SHA-256;
+   - the extracted `BaiduPCS-Go.exe` hash is calculated only after extraction and emitted as
+     metadata;
+   - no fixed expected executable SHA-256 is present and no equality assertion exists, despite the
+     R4 Gate requiring exact binary SHA-256 before live use.
+
+Governance metadata note:
+- current canonical Governance is `v0.2.7 / ACTIVE_PROVISIONAL`;
+- R4 Evidence recorded `v0.2.6`; this is stale metadata and does not override current authority.
+  Historical R4 Evidence is not rewritten.
+
+No real Baidu login, Baidu file operation, VPS/SSH, Secret, network, Clash, service, route, proxy,
+TUN, or live G4-B action occurred.
+
+Next Gate:
+`G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5`
+with Gate blob
+`c3eb751396d23f36c4c2a99d4435995d4ea56877`.
+
+```text
+OWNER_ACTION_REQUIRED=NO
+LIVE_G4B_EXECUTION=BLOCKED_PENDING_R5
+STOP_AT_REVIEWER=YES
+```
