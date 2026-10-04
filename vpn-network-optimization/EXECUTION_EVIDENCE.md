@@ -7355,3 +7355,21 @@ SECOND_FAILURE_DOMAIN_DESTINATION=OWNER_INPUT_REQUIRED
 NEXT_GATE=G4B_PERSISTENT_THREE_ROLE_READINESS
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Owner live authorization granted for G4-B persistent deployment — 2026-10-04
+
+```text
+GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
+OWNER_LIVE_AUTHORIZATION=GRANTED
+LIVE_EXECUTION_STARTED=NO
+SECOND_FAILURE_DOMAIN_DESTINATION=PENDING_OWNER_SELECTION
+GITHUB_PROJECT_REPOSITORY_AS_RECOVERY_DESTINATION=NOT_APPROVED
+```
+
+Owner explicitly authorized the live G4-B Gate. Execution remains blocked until an approved second-failure-domain encrypted recovery destination is selected and recorded.
+
+Governance interpretation:
+- the current Windows local disk may hold the first Owner-bound DPAPI recovery copy, but cannot be the sole disaster-recovery domain;
+- ordinary GitHub repository/review artifacts are not an approved destination for private recovery material under the current Gate;
+- no Secret value or recovery artifact is to be committed to the project repository.
