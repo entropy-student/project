@@ -6,6 +6,12 @@ Status: PROPOSED / OWNER_AUTHORIZATION_REQUIRED
 
 `G4B_PERSISTENT_THREE_ROLE_READINESS`
 
+## PREREQUISITE_GATE
+
+`G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1` must be formally PASS before live G4-B persistent profile/service execution.
+
+Until G4-B0 resolves the Windows outer-bypass mechanism, the `interface-name` placeholders in the persistent three-role template are design candidates only and no persistent VPS `/32` route is authorized.
+
 ## OBJECTIVE
 
 Make the already-selected v1 three-role layout durably ready without yet changing the system-wide production traffic takeover mode:
@@ -181,7 +187,7 @@ Rollback must not delete the existing HY2/WireGuard recovery material.
 
 ## OWNER_ONLY_ACTIONS
 
-Fresh Owner authorization is required before:
+After G4-B0 PASS, fresh Owner authorization is required before:
 
 - persistent public REALITY service enablement;
 - persistent REALITY Secret generation/installation;
