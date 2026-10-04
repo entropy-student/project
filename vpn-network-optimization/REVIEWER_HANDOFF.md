@@ -131,94 +131,76 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 - **Resolver repair:** C2C no longer trusts Windows `ProxyServer` metadata. The orchestrator now discovers live Clash/Mihomo loopback listeners and requires exactly one SOCKS5 no-auth listener. The bounded two-request probe now uses `socks5h://127.0.0.1:<discovered-port>`, matching the protocol actually proven by D5.
 - **Repair scope:** orchestrator, bounded proxy probe, offline validator, and package documentation changed; Secret helper and HY2 template are unchanged. Real C2C execution remains paused until post-repair offline validation is accepted.
 
+- **D7 sanitized Secret Prepare result:** Owner-local D7 safely reproduced the helper failure and surfaced `FAILURE_CODE=SECRET_SCAN_READ_FAILED`. Baseline and post-return runtime C2C directory/profile counts were all zero; Clash import, outer route, external requests, system-proxy/TUN/WireGuard mutation were all absent; `SECRET_VALUES_EMITTED=0`. Source control flow places the failure after DPAPI/recovery parsing/template/certificate validation and inside one of the exact auth-byte file scans, but D7 does not distinguish Clash-app scan from project-runtime scan.
+- **D8 purpose:** reproduce only file-read compatibility across the same Clash-app/runtime roots without DPAPI or the real auth pattern. It reads files locally to EOF using the same read/share semantics, discards bytes, and emits only root/category/extension/error-class aggregates; no file names, contents, Secrets, hashes, or network traffic are exported.
+
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_SECRET_PREPARE_SANITIZED_REPLAY_D7
+GATE_ID=G3C_C2C_SECRET_SCAN_READABILITY_DIAGNOSTIC_D8
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=PASS_D6_PRESECRET_PREREQUISITES
-OWNER_C2C_AUTHORIZATION=GRANTED
-OBJECTIVE=Run one sanitized Secret-helper Prepare replay to surface the exact non-secret inner failure code; if Prepare unexpectedly succeeds, immediately verify-cleanup the temporary real profile and stop without importing Clash or sending traffic.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact D7 identity -> one Secret-helper Prepare invocation -> allowlisted marker/failure-code emission -> if Prepare PASS, one immediate VerifyCleanup -> residue readback -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=PASS_D7_CLASSIFIED_SECRET_SCAN_READ_FAILED
+OBJECTIVE=Determine whether the Secret-aware scanner fails because one or more files under the Clash app root or project runtime root cannot be read with the helper's FileStream access/share semantics, without DPAPI or real Secret material.
+MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact D8 identity -> local read-to-end compatibility scan on Clash app/runtime roots -> sanitized aggregate classification -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; c2c-secret-profile-helper.ps1 Prepare/VerifyCleanup only through the locked D7 wrapper.
-APPLICABLE_CRITICAL_CONSTRAINTS=This Gate DOES authorize CurrentUser DPAPI/recovery-content processing inside the reviewed Secret helper; no Secret/hash/raw child output may reach console; no Clash profile import; no outer route; no external network requests; system proxy/TUN/WireGuard unchanged; no VPS/SSH; no G4.
-DIAGNOSTIC_PATH=scripts/c2c-secret-prepare-sanitized-diagnostic.ps1
-DIAGNOSTIC_BLOB=a0c54c91894cd648328fac8b9176f8442aa168d1
-SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+TARGET_AND_SCOPE=Real Owner Windows host; Clash app root and project runtime root file-read compatibility only.
+APPLICABLE_CRITICAL_CONSTRAINTS=No C2C retry; no Secret-helper execution; no DPAPI; no recovery-file content read; no real Secret/pattern/hash; local file bytes may be read only inside the Owner process and immediately discarded; no file content/name exported; no Clash/profile mutation; no network requests; no route/proxy/TUN/WireGuard mutation; no VPS/SSH; no G4.
+DIAGNOSTIC_PATH=scripts/c2c-secret-scan-readability-diagnostic.ps1
+DIAGNOSTIC_BLOB=41f0453a70ad43315f0bef839d1e63868086889b
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
 ESTIMATED_EXECUTION_TIME=2-5_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### PREFLIGHT
-
-1. Owner PowerShell 7.6.6 / Administrator / High integrity.
-2. Capture checkpoint start before Git synchronization.
-3. Require clean project scope, canonical origin/main, ancestor proof and ff-only sync.
-4. Verify exact D7 and Secret-helper blobs.
-5. D7 requires zero baseline runtime C2C directories/profiles before Secret replay.
-
 ### REQUIRED EVIDENCE
 
-- Owner runtime / safe sync / project clean;
-- exact D7 and Secret-helper blobs;
-- baseline runtime C2C directory/profile counts = 0;
-- `SECRET_PREPARE_REPLAY_STARTED=YES`;
-- only allowlisted child evidence;
-- child `SECRET_VALUES_EMITTED=0`;
-- if Prepare returns non-zero:
-  - exact `FAILURE_CODE=<sanitized code>`;
-  - `SECRET_PREPARE_CHILD_RESULT=RETURN`;
-  - post-return runtime C2C directory/profile counts = 0;
-  - `D7_SECRET_PREPARE_DIAGNOSTIC=RETURN_CLASSIFIED`;
-- if Prepare unexpectedly passes:
-  - approved Prepare PASS markers;
-  - `TEMP_REAL_PROFILE_CREATED=YES`;
-  - immediate cleanup started;
-  - approved cleanup PASS markers;
-  - post-cleanup runtime C2C directory/profile counts = 0;
-  - `D7_SECRET_PREPARE_DIAGNOSTIC=UNEXPECTED_PREPARE_PASS_CLEANED`;
-- `CLASH_PROFILE_IMPORT=NO`;
-- `TEMP_OUTER_ROUTE_CREATED=NO`;
-- `EXTERNAL_NETWORK_REQUESTS=0`;
-- `SYSTEM_PROXY_MUTATION=NO`;
-- `TUN_MUTATION=NO`;
-- `WIREGUARD_MUTATION=NO`;
+- Owner PowerShell 7.6.6/Admin/High runtime;
+- safe ff-only sync and clean project scope;
+- exact D8 blob;
+- Clash-app root presence, file count, read-failure count;
+- project-runtime root presence, file count, read-failure count;
+- for each failure class only: sanitized first-level category, extension, first/second exception class, stable/transient, count;
+- `D8_SECRET_SCAN_READABILITY_DIAGNOSTIC=PASS`;
+- `DPAPI_UNPROTECT=NO`;
+- `REAL_SECRET_READ=NO`;
+- `FILE_CONTENT_EXPORTED=NO`;
+- `CLASH_PROFILE_MUTATION=NO`;
+- `NETWORK_REQUESTS=0`;
+- `NETWORK_CHANGED=NO`;
 - `SECRET_VALUES_EMITTED=0`;
 - complete timing.
 
 ### ACCEPTANCE_CRITERIA
 
-D7 succeeds diagnostically if it either (a) returns one precise sanitized child failure code with zero runtime residue, or (b) proves Prepare now succeeds and immediately cleans the temporary profile with zero residue. D7 does not itself prove real HY2 connectivity and cannot import Clash or send traffic.
+D8 PASS requires complete sanitized readability results with no mutation. Stable read failures identify the precise root/category/error class that blocks the current scanner. Transient-only failures support a retry-safe scanner repair. Zero failures means the prior scan failure was transient or pattern-loop-specific and requires a narrower source-level repair/fixture before any Secret replay.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Baseline residue is zero. On child Prepare failure, the helper's bounded catch cleanup must leave runtime counts zero. On unexpected Prepare success, D7 immediately invokes VerifyCleanup. If cleanup fails or residue remains, do not rerun; return output for a dedicated cleanup Gate.
+Read-only diagnostic; no rollback should be required.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied D7 atomic checkpoint. By running it, Owner authorizes this one bounded DPAPI/Secret Prepare diagnostic replay only; no network canary is authorized in D7.
+Run the Reviewer-supplied atomic D8 checkpoint and return complete output.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action. Do not run Secret helper/C2C or patch by guess while D7 is pending.
+No Executor action. Do not patch scanner behavior or rerun Secret processing before D8 evidence.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-NONE until Owner returns D7 output.
+NONE until Owner returns D8 output.
 
 ## NEXT_STEP
 
-Owner runs D7. Reviewer uses the exact sanitized inner failure code to choose the smallest repair, or if Prepare unexpectedly succeeds and cleans, decides whether the real C2C canary may be reopened.
+Owner runs D8. Reviewer then makes the smallest scanner repair or follow-up diagnostic based on stable/transient/root classification.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the D7 sanitized Secret Prepare diagnostic checkpoint.
+Run the D8 local readability checkpoint.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No action while D7 is pending.
+No action while D8 is pending.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
