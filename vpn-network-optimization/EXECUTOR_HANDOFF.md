@@ -1,4 +1,31 @@
-## Current execution status — G3C C2B Owner worktree sync + diagnostic D1R1
+## Current execution status — G3C C2B dynamic-root sync + diagnostic D1R2
+
+```text
+GATE_ID=G3C_C2B_OWNER_DYNAMIC_ROOT_SYNC_AND_DIAGNOSTIC_D1R2
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_WORKTREE_ROOT_MISMATCH
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_D1R2_REQUIRED=YES
+KNOWN_EXISTING_RUNNER_PATH=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\c2b-owner-clash-ui-canary.ps1
+GIT_ROOT_MODE=DYNAMIC_FROM_TRACKED_RUNNER
+DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
+DESTRUCTIVE_GIT_ACTION_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun C2B.
+2. Wait for Owner D1R2 output.
+3. Persist only bounded dynamic-root/Git-sync/diagnostic facts.
+4. Any root ambiguity, project dirt/divergence, or diagnostic failure remains RETURN.
+5. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B Owner worktree sync + diagnostic D1R1
 
 ```text
 GATE_ID=G3C_C2B_OWNER_WORKTREE_SYNC_AND_DIAGNOSTIC_D1R1
