@@ -19,8 +19,8 @@ G3-B Migration package D1-D3                PASS_OFFLINE
 G3-C C1 Manual-control contract             PASS
 G3-C C2A Synthetic UI package repair        PASS_WITH_TIMING_GAP
 G3-C C2B-P0 Local-fact persistence          RETURN->FIXED
-G3-C C2B Synthetic Clash UI canary          IN_PROGRESS
-G3-C C2C Real HY2-in-Clash canary           PENDING
+G3-C C2B Synthetic Clash UI canary          PASS
+G3-C C2C Real HY2-in-Clash canary           OWNER_AUTH_REQUIRED
 G3-B Fresh-target migration rehearsal       DEFERRED
 G4 Peak-hour + real workload final validate PENDING
 MVP v1 seal                                 PENDING
@@ -68,12 +68,12 @@ Current known components:
 
 ## CURRENT_ROLLBACK_STATUS
 
-No production mutation is authorized in C2B. Current rollback/continuity baseline is the already-running WireGuard path. The synthetic profile must be removed during the checkpoint; the runner may clean only its own exact temporary runtime files.
+C2B is closed PASS. Production WireGuard remained connected and authoritative throughout the accepted canary; system proxy/TUN remained off, route state matched pre/post readback, the synthetic Clash profile was removed, and the project-owned temporary runtime was cleaned. C2C is not authorized yet.
 
 ## UNRESOLVED
 
-- C2B synthetic Clash UI visibility/manual-selector proof has not yet run.
-- C2C real HY2-in-Clash proof remains pending.
+- C2C real HY2-in-Clash proof remains pending and requires a new Owner authorization because it crosses from synthetic/no-traffic validation into real credential and real HY2 connectivity use.
+- G4 peak-hour + real-workload final validation remains pending.
 - REALITY remains cold/deferred for persistent manual-control use.
 
 ## CURRENT_ACCEPTED_STATE
@@ -107,110 +107,89 @@ No production mutation is authorized in C2B. Current rollback/continuity baselin
 - **ACL repair target validation:** Owner-local validator passed all fixtures including the modern Owner ACL regression guard, but the repaired runner still returned `OWNER_ACL_INHERITANCE_ENABLED` at `CREATE_OWNER_RUNTIME` before UI. Cleanup passed and no network/Secret action occurred.
 - **D3 residue result:** Owner-local readback proved the exact project-owned runtime root exists, is empty, is not a reparse point, and still carries the legacy inherited ACL: `PROTECTED=False`, `OWNER_MATCH=False`, one inherited rule, zero unauthorized rules, with no mutation performed.
 - **Root cause closure:** the repaired runner was not reaching the new create-with-ACL code because the stale runtime root already existed. This fully explains the repeated `OWNER_ACL_INHERITANCE_ENABLED` without disproving the new ACL implementation.
-- **Repair authorization:** because the exact root is empty, non-reparse, project-owned, and has no explicit unauthorized ACL rules, Reviewer authorizes a bounded in-place ACL reconciliation only; no deletion is authorized.
+- **Repair authorization:** because the exact root is empty, non-reparse, project-owned, and has no explicit unauthorized ACL rules, Reviewer authorized a bounded in-place ACL reconciliation only; no deletion was authorized.
+- **C2B final Owner checkpoint:** exact runtime-root ACL reconciliation succeeded in place: before `PROTECTED=False / OWNER_MATCH=False / inherited=1`; after `PROTECTED=True / OWNER_MATCH=True / inherited=0 / unauthorized=0`, Owner direct+child FullControl true, root remained empty, and root deletion was `NO`.
+- **C2B validator:** all offline fixtures passed, including the ActiveStore route-shape regression and modern Owner ACL creation regression; AST parse passed; network requests/change remained zero.
+- **C2B UI proof:** Owner visual evidence showed `SELF-VPN-CANARY`, `WG-BASELINE`, and synthetic `HY2-SFO3` visible with `WG-BASELINE` current/default. Owner then removed the imported synthetic profile and supplied the exact structured acknowledgement.
+- **C2B final readback:** `CLASH_PROFILE_STORE_POSTREMOVE=PASS`, `POST_UI_NETWORK_READBACK=PASS`, `LOCAL_RUNTIME_CLEANUP=PASS`, `OWNER_UI_PROFILE_REMOVED=ACKNOWLEDGED`, `SECRET_VALUES_EMITTED=0`, `C2B_OWNER_CHECKPOINT=COMPLETE`, and outer `RECONCILE_VALIDATION_CANARY=PASS`.
+- **C2B formal Reviewer disposition:** `PASS_G3C_C2B_SYNTHETIC_CLASH_UI_CANARY`. This proves synthetic profile parsing, UI visibility/manual selection semantics, cleanup, and no-production-state drift only; it does **not** prove real HY2 authentication/connectivity/performance.
 - **Benchmark detour remains cancelled.**
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2B_RUNTIME_ROOT_ACL_RECONCILE_AND_CANARY_R1
-STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=PASS_D3_STALE_RUNTIME_ROOT_CONFIRMED
-OBJECTIVE=Reconcile the exact empty stale project-owned runtime root to the accepted Owner-only ACL invariant, validate all C2B source guards, then conditionally complete the synthetic/no-traffic Clash UI canary.
-MAX_ENDPOINT_THIS_ROUND=Safe ff-only sync -> locked repair/source identity -> exact runtime-root ACL reconciliation -> readback -> offline validator -> conditional C2B UI canary -> post-readback/cleanup -> STOP_AT_REVIEWER.
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_AUTHORIZATION_A0
+STATE=OWNER_DECISION_REQUIRED
+PREVIOUS_RESULT=PASS_G3C_C2B_SYNTHETIC_CLASH_UI_CANARY
+OBJECTIVE=Decide whether to cross from synthetic/no-traffic C2B into a bounded real HY2-in-Clash canary using the already-validated HY2 service and an explicitly approved credential/profile-storage lifecycle.
+MAX_ENDPOINT_THIS_ROUND=Owner authorization decision only -> Reviewer designs C2C implementation Gate -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=%LOCALAPPDATA%\vpn-network-optimization\runtime exact root plus existing reviewed C2B package only.
-APPLICABLE_CRITICAL_CONSTRAINTS=Repair only if exact root exists, empty, non-reparse, and has no explicit unauthorized ACL rules; no root deletion; no destructive Git; validator before runner; WireGuard remains connected; synthetic/no-traffic only; no real HY2/REALITY/VPS/DPAPI/Secret; no route/proxy/TUN/WG mutation.
-RUNTIME_ROOT_REPAIR_BLOB=cf33051c1a6eb073673020e835f182756f05d783
-RUNNER_BLOB=817ed91b30efd72f7cbb43fff56e9c55025380b6
-VALIDATOR_BLOB=aaddf4810b77655e4a2ae6d94ba3fb443a6b3e3a
-TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
-PACKAGE_BLOB=64b7ea3c562adc241311517c79cc53d966197a6e
-SPECIALIST_RULES=11B_TARGET_HOST
-ESTIMATED_EXECUTION_TIME=5-10_minutes
-TIMING_OBSERVABILITY_REQUIRED=YES
+TARGET_AND_SCOPE=No host/VPS/Clash/Secret action in A0.
+APPLICABLE_CRITICAL_CONSTRAINTS=No real HY2 credential read/unprotect/import yet; no real HY2 traffic yet; no C2B replay; production WireGuard remains current rollback baseline; REALITY remains cold/deferred.
+SPECIALIST_RULES=11B_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
+ESTIMATED_EXECUTION_TIME=Owner decision only
+TIMING_OBSERVABILITY_REQUIRED=NO
 ```
 
-### PREFLIGHT
+### C2B ACCEPTED BOUNDARY
 
-1. Use the real Owner Windows host and elevated PowerShell 7.6.6.
-2. Operate Git from the known C2B scripts directory; do not parse Git-emitted Chinese filesystem paths.
-3. Require project scope clean; fetch origin/main; require local HEAD ancestor of origin/main; update only with ff-only.
-4. Require post-sync project scope clean.
-5. Verify exact blobs for repair/runner/validator/template/package.
-6. Run `c2b-runtime-root-acl-repair.ps1` first.
-7. Repair script must fail closed unless the exact runtime root exists, is empty, non-reparse, and has zero explicit unauthorized ACL rules.
-8. Require post-repair ACL invariant: protected, owner match, zero inherited rules, zero unauthorized rules, Owner direct FullControl, Owner child FullControl, root still empty, no deletion, no network/Secret action.
-9. Only after repair PASS run the full offline validator.
-10. Require validator PASS including the route-shape and modern ACL regression fixtures, AST parse, zero network requests, and zero network change.
-11. Only after validator PASS may the repaired C2B runner execute exactly once.
+C2B proves:
+- synthetic profile parses under accepted Mihomo;
+- Clash UI exposes WG/HY2 entries and a manual selector;
+- `WG-BASELINE` can remain current/default;
+- synthetic profile lifecycle can be cleaned without profile-store residue;
+- network state remains unchanged before/after.
 
-### OWNER CHECKPOINT
+C2B does not prove:
+- real HY2 credential handling inside Clash;
+- real HY2 handshake/authentication;
+- UDP 8443 reachability from Clash;
+- real traffic continuity/performance;
+- production/manual-switch readiness of HY2 in Clash.
 
-If the runner reaches the UI prompt:
-1. import only the printed synthetic profile;
-2. leave production WireGuard/current production profile unchanged;
-3. confirm `WG-BASELINE`, synthetic `HY2-SFO3`, and the manual selector are visible;
-4. keep `WG-BASELINE` current/default;
-5. do not select HY2 and send no HY2 traffic;
-6. remove the synthetic profile;
-7. enter the exact acknowledgement requested by the runner.
+### C2C AUTHORIZATION QUESTION
 
-### REQUIRED_EVIDENCE
+C2C would intentionally cross into real HY2 credential + real HY2 connectivity use. Owner authorization is required before Reviewer may design or execute that Gate.
 
-- safe ff-only sync and post-sync project clean;
-- exact five locked blobs;
-- runtime-root repair before/after bounded ACL facts;
-- `RUNTIME_ROOT_ACL_POST_REPAIR=PASS`;
-- `RUNTIME_ROOT_STILL_EMPTY=PASS`;
-- `RUNTIME_ROOT_DELETE=NO`;
-- full offline validator PASS;
-- runner `C2B_PREFLIGHT=PASS`;
-- `OWNER_ONLY_RUNTIME_ACL=PASS`;
-- `MIHOMO_CONFIG_TEST=PASS`;
-- structured Owner acknowledgement;
-- `CLASH_PROFILE_STORE_POSTREMOVE=PASS`;
-- `POST_UI_NETWORK_READBACK=PASS`;
-- `LOCAL_RUNTIME_CLEANUP=PASS`;
-- WireGuard connected; proxy OFF; TUN OFF; routes unchanged;
-- `SECRET_VALUES_EMITTED=0`;
-- complete timing.
+If authorized, Reviewer must design a new fail-closed C2C Gate that:
+1. uses the already-validated canonical HY2 recovery artifact/credential source without printing Secrets;
+2. defines exact temporary or persistent Clash profile-storage lifecycle before any credential access;
+3. keeps WireGuard as rollback/continuity until the Gate explicitly permits a bounded HY2 switch;
+4. proves actual HY2 handshake/real connectivity with bounded traffic;
+5. defines immediate rollback and residue cleanup;
+6. stops at Reviewer before any G4 or persistent default change.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires exact stale-root ACL reconciliation without deletion, full post-repair invariant, validator PASS before runner, successful synthetic UI acknowledgement/removal, unchanged production network state, complete timing, and STOP_AT_REVIEWER.
-
-### ROLLBACK_STATUS_OR_PLAN
-
-The only host mutation authorized is tightening the exact empty project-owned runtime-root ACL. No deletion is authorized. If repair fails, validator and runner do not start. If runner fails, its cleanup/fail-closed behavior applies and Reviewer reconciles before any retry.
+A0 closes only when Owner explicitly authorizes or declines C2C. No technical action occurs in this authorization Gate.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the single Reviewer-supplied atomic reconcile+validation+canary checkpoint. Only if the runner reaches the UI prompt, perform the bounded synthetic import/inspect/remove/acknowledge steps.
+Explicitly choose whether to proceed into C2C real HY2-in-Clash canary.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Do not independently repair or rerun C2B. Wait for Owner R1 output; persist bounded ACL repair/source/validator/canary/cleanup/timing facts only; STOP_AT_REVIEWER.
+No execution. Do not read/unprotect credentials, modify Clash, contact VPS, or send HY2 traffic until Reviewer opens a post-authorization C2C Gate.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return `PASS_CANDIDATE_G3C_C2B_RUNTIME_ROOT_ACL_RECONCILE_AND_CANARY_R1` or precise `RETURN_*`; STOP_AT_REVIEWER.
+NONE until Owner authorization.
 
 ## NEXT_STEP
 
-Owner performs the exact stale-root ACL reconciliation, validates the package, and—only if both pass—completes the synthetic Clash UI canary.
+Await Owner authorization decision for C2C. If authorized, Reviewer designs the bounded real-HY2 Gate before any execution.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the Reviewer-supplied atomic reconcile+validation+canary checkpoint. Do not manually delete the runtime root. If the UI prompt appears, follow only the bounded synthetic profile steps.
+Authorize C2C real HY2-in-Clash canary, or defer it.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Wait for Owner R1 output. Do not enter C2C.
+No execution in A0.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3C_C2B_RUNTIME_ROOT_ACL_RECONCILE_AND_CANARY_R1 or precise RETURN; STOP.
+NONE.
 
 ## EVIDENCE_POINTERS
 
