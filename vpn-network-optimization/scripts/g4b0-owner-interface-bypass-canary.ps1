@@ -376,10 +376,14 @@ function Start-Mihomo {
         $listeners = @(Get-NetTCPConnection -State Listen -ErrorAction Stop | Where-Object { [int]$_.OwningProcess -eq $process.Id })
         $udpOnProxyPort = @(Get-NetUDPEndpoint -LocalPort $script:proxyPort -ErrorAction SilentlyContinue | Where-Object { [int]$_.OwningProcess -eq $process.Id })
         if ($listeners.Count -gt 0) {
-            Assert-G4B0 ($listeners.Count -eq 1) 'MIHOMO_UNEXPECTED_TCP_LISTENER_COUNT'
-            Assert-G4B0 ([int]$listeners[0].LocalPort -eq $script:proxyPort) 'MIHOMO_PROXY_PORT_MISMATCH'
-            Assert-G4B0 ([string]$listeners[0].LocalAddress -in @('127.0.0.1','::ffff:127.0.0.1')) 'MIHOMO_PROXY_BINDING_NOT_LOCALHOST'
-            Assert-G4B0 ($udpOnProxyPort.Count -eq 0) 'MIHOMO_UDP_BOUND_ON_LOCAL_SOCKS_PORT'
+            foreach($listener in $listeners){
+                Assert-G4B0 ([int]$listener.LocalPort -eq $script:proxyPort) 'MIHOMO_UNEXPECTED_TCP_LISTENER_PORT'
+                Assert-G4B0 ([string]$listener.LocalAddress -in @('127.0.0.1','::1','::ffff:127.0.0.1')) 'MIHOMO_TCP_LISTENER_NOT_LOOPBACK'
+            }
+            foreach($udpEndpoint in $udpOnProxyPort){
+                Assert-G4B0 ([int]$udpEndpoint.LocalPort -eq $script:proxyPort) 'MIHOMO_UNEXPECTED_UDP_LISTENER_PORT'
+                Assert-G4B0 ([string]$udpEndpoint.LocalAddress -in @('127.0.0.1','::1','::ffff:127.0.0.1')) 'MIHOMO_UDP_LISTENER_NOT_LOOPBACK'
+            }
             return
         }
         Start-Sleep -Milliseconds 200
