@@ -93,6 +93,7 @@
 | `G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE.md` | Fresh retained local homepage/runtime readback only | **EXECUTED / PASS** |
 | `REVIEWER_DECISION_G3CR6R3D1R2_PASS.md` | Reviewer acceptance of fresh local Home/runtime baseline and D2 authorization | **CURRENT D1R2 REVIEW DECISION — PASS** |
 | `G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md` | High-fidelity independent Focusly-inspired homepage implementation; Preview/Woo frozen | **CURRENT GATE — READY FOR EXECUTOR** |
+| `OWNER_DECISION_G3CR6R3D2_IMAGE_GENERATION_QUALITY_PRIORITY_2026-10-04.md` | Owner authorizes quality-first design-time image generation for homepage assets | **CURRENT D2 OWNER DECISION** |
 | `REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md` | Shared-monorepo preflight correction after Executor RETURN | **CURRENT PREFLIGHT INTERPRETATION — PROJECT-SCOPED** |
 | `REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md` | Source-baseline reconciliation closure | **PREFLIGHT PASS — remains accepted** |
 | `REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` | Earlier takeover/source-baseline reconciliation | Historical preflight RETURN; superseded by PASS |
