@@ -4177,3 +4177,34 @@ Reviewer conclusion:
 - Direct GitHub read-back confirms the canonical Gate still requires PowerShell 7.6.6, Administrator/High-integrity Owner-host execution and the locked runner remains the reviewed source.
 - This is an execution-channel boundary, not a VPN/Clash/HY2 failure. No runner or network action is replayed from Codex.
 - Reviewer approves one bounded Owner-local checkpoint on the real Windows host. This fallback is specific to this Gate and does not replace the default execution channel.
+
+
+## Reviewer reconciliation — Owner-local C2B precheck PropertyNotFoundException — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1_O1
+OWNER_REPORTED_RUNTIME=PowerShell_7.6.6;Administrator=True
+OWNER_REPORTED_RUNNER_STARTED=YES
+OWNER_REPORTED_PROFILE_STORE_BASELINE=PASS
+OWNER_REPORTED_FAILED_PHASE=PRECHECK_NETWORK_STATE
+OWNER_REPORTED_FAILURE_CLASS=PropertyNotFoundException
+OWNER_REPORTED_FAILURE_CODE=UNCLASSIFIED
+OWNER_REPORTED_LOCAL_RUNTIME_CLEANUP=PASS
+OWNER_REPORTED_UI_PROFILE_REMOVED=NO_ACK
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+OWNER_REPORTED_ROUND_STARTED_AT=2026-10-04T01:27:19.9067053+00:00
+OWNER_REPORTED_ROUND_FINISHED_AT=2026-10-04T01:27:22.9483840+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:03.0416787
+OWNER_REPORTED_TIME_OVERRUN=NO
+REVIEWER_CLASSIFICATION=RETURN_C2B_PRECHECK_NETWORK_STATE_OBJECT_SHAPE
+NETWORK_DRIFT_PROVEN=NO
+RUNNER_OR_UI_RETRY_AUTHORIZED=NO
+NEXT_GATE=G3C_C2B_NETWORK_STATE_SHAPE_DIAGNOSTIC_D1
+PROVENANCE=OWNER_REPORTED
+```
+
+Reviewer conclusion:
+- The real Owner runtime boundary is now proven sufficient to start the reviewed runner.
+- The runner failed during read-only network-state acquisition with PropertyNotFoundException before synthetic profile creation/import or any authorized network mutation.
+- Cleanup passed. The failure is therefore treated as an object-shape/evidence-reader defect until proven otherwise, not as network drift.
+- A bounded read-only D1 diagnostic is opened to determine which expected property is absent on the real Windows object shape. The C2B runner must not be retried or patched speculatively before that evidence is returned.
