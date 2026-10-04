@@ -159,3 +159,10 @@ Older Gates, payment history, prior template/theme research and superseded visua
 |---|---|---|
 | `REVIEWER_DECISION_G3CR6R3D2R3_PASS_MOTION_DIAGNOSTIC.md` | Owner-browser diagnosis: script runs, motion exists technically, but is not perceptible | **PASS / ROOT CAUSE CLASSIFIED** |
 | `G3CR6R3D2R4_MOTION_POLISH.md` | Strengthen Hero, editorial, panel, Samples and Closing motion while preserving accepted static design | **CURRENT GATE — READY FOR EXECUTOR** |
+
+
+## D2R4 Reviewer checkpoint — 2026-10-04
+
+| Document | Purpose | Status |
+|---|---|---|
+| `REVIEWER_DECISION_G3CR6R3D2R4_PARTIAL_OWNER_MOTION_PENDING.md` | Reviewer source + multi-state automated motion inspection; formal PASS withheld only for Owner live-browser perceptibility check | **PARTIAL — OWNER CHECK REQUIRED** |
