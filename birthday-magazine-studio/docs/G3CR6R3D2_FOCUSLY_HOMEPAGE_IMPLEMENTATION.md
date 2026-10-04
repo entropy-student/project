@@ -167,24 +167,32 @@ The outer homepage section surrounding Preview may receive background/spacing/la
 
 ## Asset policy
 
-Use existing owned assets first.
+Owner quality-first update:
+- `docs/OWNER_DECISION_G3CR6R3D2_IMAGE_GENERATION_QUALITY_PRIORITY_2026-10-04.md`
 
-Optional design-time image generation is permitted only if the implemented layout proves one specific missing static marketing image is materially blocking visual fidelity.
+Use existing owned assets where they are genuinely strong enough, but **do not lower the final visual quality merely to avoid image generation**.
+
+Design-time image generation is authorized whenever it materially improves composition, visual coherence, product clarity, or fidelity to the approved Focusly-inspired direction.
 
 ~~~text
-OPTIONAL_DESIGN_TIME_IMAGE_GENERATION_MAX=2
+DESIGN_TIME_IMAGE_GENERATION=AUTHORIZED_QUALITY_FIRST
+ARTIFICIAL_LOW_CALL_CAP=NONE
 RUNTIME_PREVIEW_MODEL_CALLS=0
-EXTERNAL_PAID_PROVIDER_OR_SECRET=NO
+FREE_PREVIEW_SERVER_PHOTO_UPLOADS=0
+FREE_PREVIEW_EXTERNAL_IMAGE_POSTS=0
+NEW_EXTERNAL_PAID_PROVIDER_OR_SECRET=NO
 ~~~
 
 Any generated asset must:
-- be static marketing content;
+- be static homepage marketing/design content;
 - depict fictional/non-customer people if people are present;
 - avoid claims of actual customer output;
-- be committed with prompt/provenance and usage purpose;
+- have prompt/purpose, adopted file/path and usage recorded;
 - not be required for runtime Preview behavior.
 
-Do not generate images merely to imitate Focusly's proprietary photography if existing owned assets can carry the composition.
+Total generation call count must be recorded in execution evidence, including rejected iterations. Rejected intermediate images do not need to be committed.
+
+Do not copy Focusly proprietary photography. Generate original replacement assets when the existing project imagery would materially weaken the result.
 
 ## Preflight and rollback
 
@@ -222,7 +230,7 @@ PASS_CANDIDATE requires all of the following:
 14. With homepage motion JS disabled/unavailable, content and canonical links remain usable.
 15. Existing Gutenberg editability is preserved.
 16. Rights boundary is clean: no proprietary Focusly source/assets/fonts copied.
-17. If image generation occurs, calls <=2 and provenance is recorded; otherwise `IMAGEGEN_CALLS=0`.
+17. Image-generation usage is quality-driven rather than capped at 2; total calls and adopted-asset provenance are recorded, and all generation remains static-design-time only.
 18. Footer Privacy policy behavior follows the conditional rule above; an unresolved destination does not block D2 if no valid existing page exists.
 19. Rollback package is complete and a dry/read-only restore correlation proves touched surfaces can be restored.
 20. PR #64 remains unmerged and production/shared infrastructure remain untouched.
