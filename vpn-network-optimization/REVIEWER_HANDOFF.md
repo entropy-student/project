@@ -55,6 +55,27 @@ Current known components:
 - Owner execution runtime: PowerShell 7.6.6, Administrator, High integrity.
 - HY2 recovery: canonical DPAPI CurrentUser recovery artifact validated; do not re-fetch or rotate VPS Secrets.
 
+## CRITICAL_CONSTRAINTS
+
+- Production WireGuard must remain available throughout C2B.
+- C2B is synthetic/UI-only: no real HY2 credential, endpoint, traffic, DPAPI recovery read, VPS access, REALITY activation, or route/proxy/TUN/WireGuard mutation.
+- Owner-local actions must use the reviewed one-shot runner; Owner is not responsible for debugging or redesign.
+- Any canonical Gate/relay disagreement fails closed before Owner-local execution.
+
+## DEFAULT_EXECUTION_CHANNEL
+
+`CODEX_DESKTOP -> reviewed Owner-local PowerShell one-shot checkpoint when explicitly requested by the current Gate`.
+
+## CURRENT_ROLLBACK_STATUS
+
+No production mutation is authorized in C2B. Current rollback/continuity baseline is the already-running WireGuard path. The synthetic profile must be removed during the checkpoint; the runner may clean only its own exact temporary runtime files.
+
+## UNRESOLVED
+
+- C2B synthetic Clash UI visibility/manual-selector proof has not yet run.
+- C2C real HY2-in-Clash proof remains pending.
+- REALITY remains cold/deferred for persistent manual-control use.
+
 ## CURRENT_ACCEPTED_STATE
 
 - **Current production:** WireGuard remains connected and authoritative.
@@ -72,12 +93,14 @@ Current known components:
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2
+GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1
 STATE=READY_OWNER_CHECKPOINT
-PREVIOUS_RESULT=RETURN_R1_TIMING_START_NOT_CAPTURED_CLOSED_NO_REPLAY
+PREVIOUS_RESULT=RETURN_C2B_CANONICAL_GATE_MISMATCH
 OBJECTIVE=Prove the existing synthetic two-node Clash Verge profile is visible and manually selectable in the UI while production WireGuard remains unchanged and no HY2 traffic is sent.
-MAX_ENDPOINT_THIS_ROUND=Synthetic local UI import -> visual confirmation -> profile removal -> post-readback/cleanup only. No real HY2 credentials, no DPAPI recovery read, no real endpoint, no network request, no VPS access, no route/proxy/TUN/WireGuard mutation, no REALITY activation.
+MAX_ENDPOINT_THIS_ROUND=Fresh canonical/worktree/source preflight -> synthetic local UI import -> visual confirmation -> profile removal -> post-readback/cleanup -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
+TARGET_AND_SCOPE=Owner Windows host; existing reviewed C2B synthetic runner/template/package only.
+APPLICABLE_CRITICAL_CONSTRAINTS=Production WireGuard continuity; synthetic/no-traffic only; no DPAPI/recovery/real Secret; no real HY2 endpoint or traffic; no VPS/REALITY; no route/proxy/TUN/WG mutation; fail closed on canonical/relay disagreement.
 RUNNER=scripts/c2b-owner-clash-ui-canary.ps1
 RUNNER_BLOB=cd5a2eb768b54d13307b651ea514a912b9742c9d
 TEMPLATE=templates/clash/c2b-wg-hy2-canary.yaml.template
@@ -90,13 +113,14 @@ TIMING_OBSERVABILITY_REQUIRED=YES
 
 ### PREFLIGHT
 
-1. Fresh-read current canonical main and verify this VPN project has no material drift from the accepted C2B package.
-2. Re-prove the project-scoped checkout/worktree is clean before launching the checkpoint; unrelated repository artifacts outside the VPN project are not blockers.
-3. Verify the runner/template blobs exactly match the locked identities above.
-4. Use the existing runner as one atomic PowerShell checkpoint; do not edit it in this Gate.
-5. Runner must emit `ROUND_STARTED_AT` before its own runtime/network-state prechecks.
-6. Require PowerShell 7.6.6, Administrator/High-integrity Owner host context, current WireGuard baseline running, system proxy OFF, Clash/Mihomo TUN OFF, and exactly one discoverable Clash Verge profile store.
-7. Any mismatch, ambiguous profile store, unexpected local residue, source drift, or cleanup failure => precise RETURN before proceeding further.
+1. First read current canonical `REVIEWER_HANDOFF.md` and the current block at the top of `EXECUTOR_HANDOFF.md`; both must name exactly `G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1`.
+2. Fresh-read current `origin/main`; unrelated project movement is allowed, but any material VPN-project drift => RETURN.
+3. Re-prove the project-scoped checkout/worktree is clean before launching the Owner checkpoint; unrelated repository artifacts outside `vpn-network-optimization/` are not blockers.
+4. Verify the runner/template blobs exactly match the locked identities above.
+5. Use the existing runner as one atomic PowerShell checkpoint; do not edit it in this Gate.
+6. Runner must emit `ROUND_STARTED_AT` before its own runtime/network-state prechecks.
+7. Require PowerShell 7.6.6, Administrator/High-integrity Owner-host context, current WireGuard baseline running, system proxy OFF, Clash/Mihomo TUN OFF, and exactly one discoverable Clash Verge profile store.
+8. Any Gate/relay mismatch, source mismatch, ambiguous profile store, unexpected local residue, cleanup failure, or network-state change => precise RETURN before proceeding further.
 
 ### OWNER CHECKPOINT
 
@@ -111,7 +135,8 @@ The runner creates only an owner-only temporary synthetic profile. Owner then:
 
 ### REQUIRED_EVIDENCE
 
-- canonical/main and locked source identities;
+- canonical Reviewer/Executor Gate IDs agree on R2R1;
+- current main and locked source identities;
 - project-scoped clean preflight;
 - `ROUND_STARTED_AT`, `ROUND_FINISHED_AT`, `ACTUAL_ELAPSED`, `TIME_OVERRUN`;
 - `C2B_PREFLIGHT=PASS`;
@@ -138,15 +163,15 @@ Import/inspect/remove the synthetic Clash profile and enter the exact runner ack
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Use only the locked C2B runner/template/package. First fresh-read canonical state and re-prove project-scoped cleanliness/source blobs. Then enter the one-shot Owner synthetic UI checkpoint. Do not read DPAPI/recovery material, substitute real HY2 values, start Mihomo traffic, touch routes/proxy/TUN/WireGuard/VPS, or enter C2C. STOP_AT_REVIEWER.
+Start only from the current R2R1 Gate plus this relay. First prove canonical `REVIEWER_HANDOFF.md` and the top current block of `EXECUTOR_HANDOFF.md` both name R2R1; then fresh-read main, project cleanliness, and locked runner/template blobs. If all preflight passes, enter the one-shot Owner synthetic UI checkpoint. Do not read DPAPI/recovery material, substitute real HY2 values, start Mihomo traffic, touch routes/proxy/TUN/WireGuard/VPS, activate REALITY, or enter C2C. STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return `PASS_CANDIDATE_G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2` or precise `RETURN_*`; include the bounded runner outputs only; STOP_AT_REVIEWER.
+Return `PASS_CANDIDATE_G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1` or precise `RETURN_*`; include only bounded non-secret evidence; STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Run the bounded C2B synthetic/no-traffic Clash UI checkpoint. This proves only UI visibility/manual selection semantics and cleanup; real HY2 connectivity remains C2C.
+After the canonical Gate/relay repair, rerun only the bounded C2B synthetic/no-traffic Clash UI checkpoint as R2R1. This proves only UI visibility/manual selection semantics and cleanup; real HY2 connectivity remains C2C.
 
 ## OWNER_ACTION_REQUIRED
 
@@ -154,11 +179,11 @@ Run the one-shot C2B Owner checkpoint when prompted: import only the synthetic p
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Use only the locked C2B package and perform its fresh local preflight before the Owner checkpoint. No real HY2/REALITY, Secret/DPAPI, network/VPS, route/proxy/TUN/WG action. STOP_AT_REVIEWER.
+Start from R2R1 only. Verify Reviewer/Executor Gate agreement first, then use only the locked C2B package and perform the fresh local preflight before the Owner checkpoint. No real HY2/REALITY, Secret/DPAPI, network/VPS, route/proxy/TUN/WG action. STOP_AT_REVIEWER.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2 or precise RETURN; STOP.
+Return PASS_CANDIDATE_G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1 or precise RETURN; STOP.
 
 ## EVIDENCE_POINTERS
 
