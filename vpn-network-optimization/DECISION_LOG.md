@@ -270,3 +270,16 @@ No additional protocol shopping is planned for v1 unless later evidence proves a
 **Not authorized:** creating any active or persistent VPS `/32` route, SSH/VPS changes, REALITY activation/deployment, persistent Clash profile writes, system proxy/TUN enablement, benchmark loops, automatic switching, G4-B persistent writes, G4-C workloads, or a blind retry after a consequential/ambiguous failure.
 
 **Execution state:** Authorization is granted but not yet consumed. The live runner must first be completed and reviewed. A pre-start tooling/source failure does not consume authorization if Reviewer reconciliation proves the real Secret/runtime/request phase never started.
+
+
+## 2026-10-04 — G4-B0 first live attempt consumed authorization and returned before requests
+
+**Decision:** The first live `G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1` attempt is a formal RETURN, not a bypass result.
+
+**Reason:** The runner reached protected HY2 Secret/runtime preparation, so the one-shot Owner authorization is consumed. Mihomo configuration parsing passed, but the readiness check rejected a Mihomo-owned UDP endpoint before the local proxy-ready marker. Because HY2 itself uses UDP, zero Mihomo UDP endpoints is not a valid readiness invariant.
+
+**Evidence boundary:** Request count remained 0. Therefore this attempt proves neither success nor failure of `interface-name` bypass. Final cleanup/read-back restored WireGuard, system proxy OFF, TUN OFF, zero exact VPS `/32` routes, and no accepted temporary Secret/runtime residue.
+
+**Repair rule:** Future readiness checking may reject UDP binding on the reserved local SOCKS port, but must not reject unrelated Mihomo-owned ephemeral UDP sockets. Failure telemetry must preserve the pre-cleanup failure phase separately from the cleanup phase.
+
+**Authorization:** No retry is authorized by the consumed first-attempt approval. Fresh explicit Owner authorization is required only after the repaired runner passes non-consequential AST/static/validator checks.
