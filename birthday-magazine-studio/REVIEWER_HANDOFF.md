@@ -33,21 +33,23 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR6R3D2R2_VISUAL_POLISH
+CURRENT_GATE=OWNER_HOMEPAGE_VISUAL_CONFIRMATION
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
 MAGAZINE_WEB_VIEWER_DIRECTION=CONFIRMED_MAGAZINE_WEB_VIEWER
 HOMEPAGE_FOCUSLY=AUTHORIZED_PUBLIC_VISUAL_REFERENCE
 HOMEPAGE_HIGH_FIDELITY_REIMPLEMENTATION=AUTHORIZED_AFTER_D1_REVIEWER_PASS
-HOMEPAGE_IMPLEMENTATION_STATUS=D2_TECH_PASS_VISUAL_RETURN_TARGETED_POLISH
+HOMEPAGE_IMPLEMENTATION_STATUS=D2R2_REVIEWER_PASS_OWNER_CONFIRMATION_PENDING
 D2_DESIGN_TIME_IMAGE_GENERATION=AUTHORIZED_QUALITY_FIRST
 D2_ARTIFICIAL_LOW_IMAGEGEN_CAP=NONE
 D2_TECHNICAL_REVIEW=PASS
-D2_VISUAL_FIDELITY_REVIEW=RETURN_TARGETED_VISUAL_QUALITY_GAP
+D2_VISUAL_FIDELITY_REVIEW=PASS
 D2_VISUAL_REVIEW_TRANSPORT=OWNER_MANUAL_IMAGE_UPLOAD
 D2R1_OWNER_VISUAL_RELAY=FULFILLED
-D2_FORMAL_VISUAL_DECISION=RETURN_G3CR6R3D2_VISUAL_QUALITY_GAP
+D2R2_REVIEWER_DECISION=PASS
+OWNER_HOMEPAGE_VISUAL_FREEZE=PENDING
+D2_FORMAL_VISUAL_DECISION=PASS_G3CR6R3D2R2
 G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
 CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS
 PREVIEW_INTERACTION_CHANGE=HOLD
@@ -91,7 +93,8 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 - G3CR6R1: PASS; Warm Birthday Gift composition, Preview privacy, native Woo path, 375px behavior, and Owner editability accepted.
 - G3CR6R3D1: RETURN only on fresh local-runtime readback; Focusly public desktop/375/motion evidence and 66 screenshots preserved as reusable evidence.
 - G3CR6R3D1R2: PASS; fresh Home 858/runtime/theme/menu/CTA/Preview and read-only Woo route baseline closed at Executor commit `7a0a16cf0169980443f8bb760f7f9e919ff0d68c`.
-- G3CR6R3D2: technical acceptance PASS; direct Owner-relayed visual review completed from D2R1 contact sheet. Reviewer returned only the remaining visual-quality gap: Samples/Selected Work is underpowered, repeated imagery reduces premium feel, and mobile header/rhythm need bounded polish. Hero/editorial panel/closing direction remain accepted.
+- G3CR6R3D2: technical acceptance PASS; D2R1 direct visual review identified bounded quality gaps.
+- G3CR6R3D2R2: PASS; Owner-uploaded R2 contact sheet was directly inspected. Samples/Selected Work, image diversity, mobile header and mobile rhythm now meet the Reviewer quality bar while accepted Hero/editorial panel/closing/Preview/Woo behavior remains preserved.
 - Owner Visual Checkpoint R2: resolved; Owner broadly accepts the overall composition but now explicitly rates the homepage around 7/10 for the intended quality bar, wants meaningful motion, wants the actual final magazine shown clearly, and rates the current upload-first Preview around 5/10.
 - Owner editability at G3CR6R1 evidence scope: Administrator, edit Home, replace media, edit copy, reorder eight major Gutenberg Groups, edit Blocksy global style/palette; footer is editable WordPress block.
 - PR #64 remains open/unmerged; latest accepted D1R2 evidence commit is `7a0a16cf0169980443f8bb760f7f9e919ff0d68c`. Project-scoped freshness, not whole-monorepo tip ancestry, controls execution.
@@ -99,41 +102,40 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR6R3D2R2_VISUAL_POLISH`
+`OWNER_HOMEPAGE_VISUAL_CONFIRMATION`
 
-The Owner-relayed D2R1 contact sheet has been directly inspected by Reviewer.
+Reviewer has formally PASSed `G3CR6R3D2R2_VISUAL_POLISH` on candidate `8d03464dbf1678468a289e4676ba975745bcb94d`.
 
-Accepted and frozen:
-- D2 technical implementation and regressions;
-- Hero direction;
-- editorial image/copy direction;
-- photographic dark-panel direction;
-- dark closing direction;
-- actual motion + reduced-motion/no-JS fallback;
-- Preview/Woo/account/payment/private-workspace boundaries;
-- typography/license/rollback/menu-anchor repair.
+Accepted:
+- Focusly-inspired homepage technical implementation;
+- desktop 1440 + mobile 375 visual quality;
+- large editorial Samples / Selected Work;
+- materially diverse major-section imagery;
+- mobile header and page rhythm;
+- motion, reduced-motion and no-JS fallback;
+- current upload/Preview KEEP-AS-IS boundary;
+- Woo/account/payment/private-workspace freeze;
+- R2 rollback to accepted D2;
+- five generated static marketing assets with provenance.
 
-Direct visual RETURN is bounded to:
-1. **Samples / Selected Work:** current vertical cover is too small inside an oversized pale card; visual impact is materially below Focusly.
-2. **Repeated imagery:** the same Mira/gift visual language repeats across too many major sections, reducing richness/premium feel.
-3. **Mobile header:** 375px brand/nav treatment reads cramped rather than deliberately compact.
-4. **Mobile rhythm:** functional content is preserved, but the sequence needs tighter spacing and stronger visual transitions.
+Current checkpoint:
+- Owner decides whether the current homepage visual direction is acceptable for this stage.
 
-The current Gate is a targeted polish round, not a redesign from scratch.
-
-Quality-first design-time image generation remains authorized with no artificial low-call cap, bounded to original static homepage marketing assets. Runtime Preview model calls remain zero.
-
-Current Gate file:
-- `docs/G3CR6R3D2R2_VISUAL_POLISH.md`
+No implementation or merge is authorized by this checkpoint.
 
 Current Reviewer decision:
-- `docs/REVIEWER_DECISION_G3CR6R3D2_RETURN_VISUAL_QUALITY.md`
+- `docs/REVIEWER_DECISION_G3CR6R3D2R2_PASS.md`
 
-Mandatory stop:
-- implement only the bounded visual repairs;
-- preserve accepted D2 technical behavior;
-- produce a new R2 comparison contact sheet;
-- STOP_AT_REVIEWER; no PR merge or production deploy.
+Current Owner checkpoint:
+- `docs/OWNER_CHECKPOINT_G3CR6R3D2_HOMEPAGE_VISUAL_CONFIRMATION.md`
+
+Still unresolved and separate:
+- core Aha interaction;
+- P1-P12 magazine visual system;
+- Privacy Policy publication;
+- PR #64 merge;
+- production deployment;
+- real-money/Live payment.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -196,33 +198,30 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3D2R2** as a targeted visual-polish round.
-2. Make Samples visually dominant, reduce repeated major-section imagery, refine the 375px header, and tighten mobile rhythm.
-3. Use quality-first design-time image generation if existing assets cannot meet the visual bar; record all calls/provenance.
-4. Re-run only the regressions required by the Gate to prove accepted D2 technical behavior did not drift.
-5. Produce `reviewer-visual-contact-sheet-r2.jpg` and report its local path.
-6. Owner uploads that JPEG into this ChatGPT conversation.
-7. Reviewer then decides formal D2 PASS / RETURN.
+1. Owner reviews the current R2 homepage and chooses **accept for this stage** or requests specific visual changes.
+2. If accepted, Reviewer records `OWNER_HOMEPAGE_VISUAL_FREEZE=PASS`.
+3. After that confirmation, resume the still-unresolved visual/product work outside the homepage; current upload/Preview interaction remains on hold unless Owner explicitly reopens it.
+4. PR #64 remains unmerged until a later reviewed integration/merge Gate.
 
 ## OWNER_ACTION_REQUIRED
 
-After D2R2 Executor returns **PASS_CANDIDATE**:
+Choose one:
 
-1. Upload the reported local `reviewer-visual-contact-sheet-r2.jpg` directly into the current ChatGPT conversation.
-2. No ZIP/Base64 conversion is required.
+1. **Accept current homepage visual direction for this stage**, or
+2. state the specific homepage visual changes still wanted.
 
-No other Owner action is required for D2R2.
+No other Owner action is required now.
 
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/G3CR6R3D2R2_VISUAL_POLISH.md`
-2. `docs/REVIEWER_DECISION_G3CR6R3D2_RETURN_VISUAL_QUALITY.md`
-3. `docs/OWNER_DECISION_G3CR6R3D2_IMAGE_GENERATION_QUALITY_PRIORITY_2026-10-04.md`
-4. `docs/evidence/g3cr6r3d2/reviewer-visual-contact-sheet.jpg`
-5. `docs/evidence/g3cr6r3d2/reviewer-visual-contact-sheet-manifest.json`
-6. current D2 Home/source/assets only as targeted by R2
-7. existing D1 reference screenshots for comparison
-8. `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md` for current execution facts
+1. `docs/REVIEWER_DECISION_G3CR6R3D2R2_PASS.md`
+2. `docs/OWNER_CHECKPOINT_G3CR6R3D2_HOMEPAGE_VISUAL_CONFIRMATION.md`
+3. `docs/evidence/g3cr6r3d2r2/reviewer-visual-contact-sheet-r2.jpg`
+4. `docs/evidence/g3cr6r3d2r2/reviewer-visual-contact-sheet-r2-manifest.json`
+5. `docs/evidence/g3cr6r3d2r2/generated-asset-provenance.json`
+6. `docs/evidence/g3cr6r3d2r2/qa-report.json`
+7. `docs/evidence/g3cr6r3d2r2/rollback-proof.json`
+8. `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`
 
-Do not replay template research or reopen accepted Preview/commerce architecture.
+Homepage implementation is Reviewer-accepted; Owner visual freeze remains pending.
