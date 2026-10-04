@@ -224,10 +224,24 @@ Current offline package:
 
 No file above contains live credential values.
 
-## 11. Remaining prerequisites before live authorization is executable
+## 11. Windows outer-bypass prerequisite
+
+The persistent Clash template currently carries `interface-name` for HY2 and REALITY, but accepted project evidence does not yet prove that this alone bypasses the live WireGuard route on Windows.
+
+```text
+OUTER_BYPASS_MECHANISM=UNPROVEN_LIVE
+R3R2_USED_EXPLICIT_TEMP_VPS_32_ROUTE=YES
+G3A_ROUTE_INTENT_FOR_HY2_REALITY=VPS_PUBLIC_IP_32_VIA_PHYSICAL_EGRESS
+G4B0_REQUIRED=YES
+```
+
+Live persistent G4-B must not proceed until `G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1` is formally reviewed.
+
+## 12. Remaining prerequisites before live authorization is executable
 
 ```text
 OFFLINE_PACKAGE_STATIC_REVIEW=READY
+WINDOWS_OUTER_BYPASS_PROOF=PENDING_G4B0
 DEDICATED_RUNTIME_IDENTITY_CONTRACT=READY
 ROLLBACK_CONTRACT=READY
 LIVE_RUNNER=NOT_YET_IMPLEMENTED
