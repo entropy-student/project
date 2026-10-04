@@ -318,3 +318,16 @@ No additional protocol shopping is planned for v1 unless later evidence proves a
 **Non-expansion rule:** This does not authorize any action outside the Gate, including persistent G4-B writes, REALITY deployment, route creation, SSH/VPS mutation, system proxy/TUN activation, benchmark loops, auto-switching, or G4-C.
 
 **Governance override prohibited:** If governance requires a fresh post-failure Owner authorization after a consequential failure, or if the Gate boundary changes, Reviewer must stop and obtain that fresh authorization despite this standing preference.
+
+
+## 2026-10-04 — G4-B0 formally PASSes Windows Mihomo interface-name bypass
+
+**Decision:** `G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1` is formally PASS.
+
+**Accepted fact:** On the current Owner Windows host, with WireGuard connected and exact active/persistent VPS `/32` routes both absent, the accepted Mihomo path successfully carried HY2 traffic through the dynamically discovered physical interface using `interface-name`. The bounded OpenAI request returned HTTP 401 through the proxy and the public-exit request matched the accepted SFO3 IP.
+
+**Architecture consequence:** G4-B no longer needs an explicit persistent VPS `/32` route merely to make HY2 outer traffic bypass WireGuard on this Owner host. The persistent three-role design may keep HY2 bound to the physical interface via `interface-name`.
+
+**Boundary:** This proof is transport/path evidence for HY2 only. It is not evidence that REALITY application traffic, automatic switching, peak-hour workloads, or the final production role has passed.
+
+**Next Gate:** `G4B_PERSISTENT_THREE_ROLE_READINESS`. G4-B remains a new consequential Gate and requires its own Owner authorization plus the unresolved second-failure-domain recovery destination before live execution can PASS.
