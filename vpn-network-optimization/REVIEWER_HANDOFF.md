@@ -104,6 +104,8 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
 STATE=EXECUTOR_ASSIGNED_BAIDU_BACKEND_REPAIR_R5
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=20-35 minutes
+TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
 PREVIOUS_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
 MAX_ENDPOINT_THIS_ROUND=Offline-only R5 repair of the reviewed Baidu backend; no live execution.
