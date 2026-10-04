@@ -25,7 +25,8 @@ G3-C Real C2C package + scanner repair      PASS
 G3-C Secret Prepare real-host verification  PASS
 G3-C Real HY2-in-Clash canary R3R2          PASS
 G4-A Three-role target/offline package          PASS
-G4-B Persistent three-role readiness             AUTH_REQUIRED
+G4-B0 Windows interface bypass canary            AUTH_REQUIRED
+G4-B Persistent three-role readiness             PENDING
 G4-C Peak-hour + real workload final validate    PENDING
 MVP v1 seal                                 PENDING
 ```
@@ -61,7 +62,7 @@ Windows Owner host
 - G3-C synthetic manual-control/UI behavior is accepted.
 - G3-C R3R2 real HY2-in-Clash canary is formally PASS: the bounded OpenAI request used the explicit Clash proxy path, the public-exit check matched the accepted SFO3 exit, and final cleanup/read-back restored the WireGuard/network/profile baseline.
 - Owner target v1 role order is now HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, REALITY-SFO3 BACKUP_2. This order is frozen for G4 validation but is not yet a production-role PASS.
-- G4-A offline plan/package is PASS. G4-B persistent implementation contract is now also prepared offline, including least-privilege REALITY service identity/capability boundaries and exact rollback semantics. Persistent REALITY readiness and the persistent three-role Clash profile are not yet deployed.
+- G4-A offline plan/package is PASS. G4-B persistent implementation contract is prepared offline, including least-privilege REALITY service identity/capability boundaries and exact rollback semantics. A fresh review found one prerequisite gap: Windows Mihomo `interface-name` bypass is still unproven live, while accepted G3-A/R3R2 evidence relied on an exact VPS `/32` physical-egress route. Persistent REALITY readiness and the persistent three-role Clash profile are therefore not yet deployable.
 
 ### Secret / recovery
 
@@ -101,24 +102,24 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
 STATE=OWNER_AUTHORIZATION_REQUIRED
 PREVIOUS_RESULT=PASS_G4A_THREE_ROLE_TARGET_AND_OFFLINE_PACKAGE
-OBJECTIVE=Make HY2 primary / WG backup1 / REALITY backup2 durably ready without yet enabling system-wide traffic takeover or running G4-C workloads.
-MAX_ENDPOINT_THIS_ROUND=Persistent REALITY readiness + persistent three-role Clash profile + restart/read-back + STOP_AT_REVIEWER.
+OBJECTIVE=Prove whether Windows Mihomo interface-name alone can carry HY2 outer traffic over the physical egress while WireGuard remains connected and no exact VPS /32 bypass route exists.
+MAX_ENDPOINT_THIS_ROUND=One protected temporary local Mihomo HY2 runtime + exactly two bounded requests + cleanup/read-back + STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Current SFO3 VPN VPS plus current Owner Windows host; exact project-owned persistent REALITY service/config and one persistent Clash profile only.
-APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard retained as rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C; no Secret output.
-PREFLIGHT=Fresh main/source, real Owner runtime, strict SSH identity/trust, WG/HY2 health, TCP443 ownership, proxy/TUN state, Secret lifecycle/recovery boundary, Clash profile-store baseline.
-REQUIRED_EVIDENCE=Persistent REALITY service/config/restart/read-back; public TCP443 readiness; Secret recovery compatibility; three-role profile order/read-back; WG/HY2 preservation; final proxy/TUN OFF; unrelated drift none.
-ACCEPTANCE_CRITERIA=PERSISTENT_REALITY_SERVICE_READY + THREE_ROLE_CLASH_PROFILE_READY + HY2/WG preserved + restart persistence + Secret recovery + no unrelated drift.
-ROLLBACK_STATUS_OR_PLAN=Remove only new REALITY service/config/profile, restore pre-G4B TCP443/profile-store state, preserve WG/HY2 and existing recovery assets.
-OWNER_ONLY_ACTIONS=Fresh explicit authorization required for persistent public REALITY enablement, persistent REALITY Secret generation/install, and live credential-bearing Clash profile installation.
-REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_PERSISTENT_THREE_ROLE_READINESS_GATE.md + docs/G4_FINAL_THREE_ROLE_VALIDATION_PLAN.md + exact accepted G2C/R3R2 source pointers needed for implementation; no historical diagnostic replay.
-EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed proof to EXECUTION_EVIDENCE.md; mandatory stop before G4-C.
+TARGET_AND_SCOPE=Current Owner Windows host only; existing accepted HY2 server; no SSH/VPS mutation; no Clash persistent profile.
+APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard stays connected; system proxy OFF; TUN OFF; exact active/persistent VPS /32 route count remains zero; no REALITY; no benchmark; no Secret output.
+PREFLIGHT=Fresh source, Owner runtime, WG/Clash health, physical-egress discovery, exact VPS /32 absence, local proxy port availability, accepted protected HY2 recovery reader.
+REQUIRED_EVIDENCE=interface-name applied; no /32 route before/during/after; Mihomo parse/proxy ready; exactly two proxied requests; OpenAI 401; expected SFO3 public exit; cleanup and baseline restored.
+ACCEPTANCE_CRITERIA=PASS_INTERFACE_NAME_BYPASS or precise RETURN without routing inference.
+ROLLBACK_STATUS_OR_PLAN=Own only the unique temporary local Mihomo runtime/process; no route/profile/VPS mutation; final network baseline must equal pre-canary.
+OWNER_ONLY_ACTIONS=Fresh explicit authorization required because the canary reads the real HY2 credential inside the protected boundary and sends two real external requests.
+REVIEWER_TO_EXECUTOR_RELAY=docs/G4B0_WINDOWS_INTERFACE_BYPASS_CANARY_GATE.md + accepted R3R2 Secret/runtime safety pattern + accepted G3-A physical-egress semantics; no historical diagnostic replay.
+EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop.
 ```
 
-The Owner has selected the target role order, but has not yet granted the separate consequential authorization required to deploy persistent REALITY or install the live credential-bearing three-role profile.
+G4-B persistent readiness is blocked on this bypass proof. G4-B0 authorization does not authorize persistent REALITY/service/profile writes.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -154,7 +155,8 @@ The Owner has selected the target role order, but has not yet granted the separa
 
 ## UNRESOLVED
 
-- Fresh Owner authorization for G4-B persistent REALITY/service/Secret/profile writes.
+- Fresh Owner authorization for the bounded G4-B0 interface-bypass canary.
+- G4-B persistent REALITY/service/Secret/profile writes remain blocked until G4-B0 is formally reviewed.
 - An approved encrypted recovery destination in a second failure domain (distinct from both the SFO3 VPS and this Windows local disk) is still Owner input required before G4-B can PASS.
 - Persistent REALITY backup service does not yet exist; the accepted public REALITY canary was temporary and cleaned.
 - Persistent three-role Clash profile does not yet exist.
@@ -166,11 +168,11 @@ The Owner has selected the target role order, but has not yet granted the separa
 
 ## NEXT_STEP
 
-Finish the local-only G4-B execution package against the now-frozen implementation contract. Live G4-B remains blocked until the Owner supplies one approved second-failure-domain encrypted recovery destination and grants fresh explicit authorization. Then execute only the persistent-readiness boundary and stop at Reviewer before G4-C.
+Obtain fresh explicit Owner authorization for `G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1`. If authorized, run only the two-request local bypass canary and stop at Reviewer. Do not enter persistent G4-B in the same round.
 
 ## OWNER_ACTION_REQUIRED
 
-Before live G4-B: (1) name one approved second-failure-domain destination for an encrypted recovery copy, and (2) explicitly authorize or decline the bounded G4-B live writes. No credential value is needed in chat. This does not authorize system proxy/TUN activation, peak-hour testing, or G4-C real workloads.
+Authorize or decline the bounded G4-B0 interface-bypass canary. It uses the existing HY2 credential only inside the protected local runtime, creates no `/32` route, makes exactly two external requests, then cleans up. Persistent G4-B authorization and the second-failure-domain recovery destination are separate later decisions.
 
 ## EVIDENCE_POINTERS
 
