@@ -69,7 +69,10 @@ function Test-C2APackage {
         $RunnerText -notmatch '(?im)OWNER_UI_PROFILE_REMOVED=' -or
         $RunnerText -notmatch '(?im)CreateNew' -or
         $RunnerText -notmatch '(?im)SetAccessRuleProtection\(\$true,\s*\$false\)' -or
-        $RunnerText -notmatch '(?im)FileSystemRights\]::FullControl') {
+        $RunnerText -notmatch '(?im)SetOwner\(\$script:ownerSid\)' -or
+        $RunnerText -notmatch '(?im)FileSystemRights\]::FullControl' -or
+        (@([regex]::Matches($RunnerText, '(?im)FileSystemAclExtensions\]::CreateDirectory\(\(New-C2BOwnerAcl\s+-Directory\),\s*\$script:runtime(?:Root|Directory)\)')).Count -ne 2) -or
+        $RunnerText -match '(?im)\[IO\.Directory\]::CreateDirectory\(\$script:runtime(?:Root|Directory),\s*\(New-C2BOwnerAcl\s+-Directory\)\)') {
         throw 'PROJECT_RUNTIME_CLEANUP_OR_ACL_GUARD_MISSING'
     }
     if ($RunnerText -notmatch '(?im)MIHOMO_VERSION_MISMATCH' -or
@@ -206,6 +209,11 @@ Write-Output 'G3C_C2A_FIXTURE_I1_ACTIVE_STORE_SCOPE_WITHOUT_OBJECT_POLICYSTORE=P
 
 $withoutFinally = $runnerText -replace '(?is)\r?\nfinally\s*\{\s*\$script:completionPhase[\s\S]*\z', ''
 Assert-C2AExpectedFailure 'J_MISSING_CLEANUP' $templateText $withoutFinally $packageText 'PROJECT_RUNTIME_CLEANUP_OR_ACL_GUARD_MISSING'
+$withoutOwner = $runnerText.Replace('$acl.SetOwner($script:ownerSid)', '# owner assignment removed')
+Assert-C2AExpectedFailure 'J1_MISSING_ACL_OWNER' $templateText $withoutOwner $packageText 'PROJECT_RUNTIME_CLEANUP_OR_ACL_GUARD_MISSING'
+$legacyAclCreate = $runnerText.Replace('[System.IO.FileSystemAclExtensions]::CreateDirectory((New-C2BOwnerAcl -Directory), $script:runtimeRoot)', '[IO.Directory]::CreateDirectory($script:runtimeRoot, (New-C2BOwnerAcl -Directory))')
+Assert-C2AExpectedFailure 'J1_LEGACY_ACL_CREATE' $templateText $legacyAclCreate $packageText 'PROJECT_RUNTIME_CLEANUP_OR_ACL_GUARD_MISSING'
+Write-Output 'G3C_C2A_FIXTURE_J1_MODERN_OWNER_ACL_CREATION_REQUIRED=PASS'
 $withoutTiming = $runnerText.Replace('Write-Output (''ROUND_STARTED_AT='' + $script:roundStartedAt.ToString(''o''))', '# timing removed')
 Assert-C2AExpectedFailure 'J_MISSING_TIMING' $templateText $withoutTiming $packageText 'TIMING_INSTRUMENTATION_MISSING'
 Write-Output 'G3C_C2A_FIXTURE_J_CLEANUP_AND_TIMING_REQUIRED=PASS'

@@ -167,3 +167,20 @@
 
 **Later live control:** Prefer a named Mihomo direct node for the WG baseline and dynamic per-node physical-interface binding for HY2/REALITY as the first bypass design. Windows real bypass behavior remains unproven until a bounded live canary.
 
+
+
+## 2026-10-04 — Authorize bounded C2C real HY2-in-Clash canary after package validation
+
+Decision:
+- Owner explicitly authorized proceeding from synthetic C2B into one bounded real HY2-in-Clash canary.
+- Authorization is conditional on Reviewer acceptance of the C2C package before real execution.
+
+Bounds:
+- WireGuard remains the continuity/rollback baseline.
+- No persistent default change is authorized.
+- No C2C performance benchmark, G4 entry, REALITY activation, or broader network mutation is authorized by this decision.
+- The real canary is limited to the reviewed temporary-profile/temporary-route lifecycle and the explicitly bounded connectivity requests defined by the accepted C2C Gate.
+
+Rationale:
+- C2B already proved Clash UI/profile lifecycle semantics without real credentials or traffic.
+- C2C is the next required proof for real HY2 authentication/connectivity inside Clash while preserving immediate rollback.

@@ -82,8 +82,10 @@
 | `OWNER_DECISION_G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier 1+1+12 lab-first direction | **SUPERSEDED BEFORE EXECUTION** |
 | `G3CR6R3B_VISUAL_MOTION_LAB.md` | Earlier design lab Gate | **SUPERSEDED BEFORE EXECUTION** |
 | `OWNER_DECISION_G3CR6R3C_TEMPLATE_FIRST_VISUAL_SOURCING.md` | Owner-approved template/source-first direction | **CURRENT OWNER DECISION** |
-| `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` | Read-only source discovery; interaction + P1-P12 reopened by Owner | **CURRENT GATE — RESEARCH REOPENED** |
-| `OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md` | Owner reset: only magazine-web-viewer accepted; Focusly reference-only; interaction and P1-P12 reopened | **CURRENT OWNER DECISION** |
+| `G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md` | Core interaction + P1-P12 source discovery | **PAUSED — RESUME AFTER OWNER-PRIORITIZED HOMEPAGE GATE** |
+| `OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md` | Owner reset: magazine-web-viewer accepted; interaction and P1-P12 reopened | **CURRENT FOR CORE INTERACTION + P1-P12; HOMEPAGE PART SUPERSEDED** |
+| `OWNER_DECISION_G3CR6R3D_FOCUSLY_HOMEPAGE_REDESIGN.md` | Owner authorizes independent high-fidelity Focusly-inspired homepage redesign with frozen commerce/Preview behavior | **CURRENT HOMEPAGE OWNER DECISION** |
+| `G3CR6R3D1_FOCUSLY_VISUAL_MAPPING.md` | Read-only Focusly capture + current-homepage mapping before implementation | **CURRENT GATE — READY FOR EXECUTOR** |
 | `REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md` | Shared-monorepo preflight correction after Executor RETURN | **CURRENT PREFLIGHT INTERPRETATION — PROJECT-SCOPED** |
 | `REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md` | Source-baseline reconciliation closure | **PREFLIGHT PASS — remains accepted** |
 | `REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` | Earlier takeover/source-baseline reconciliation | Historical preflight RETURN; superseded by PASS |
@@ -110,7 +112,7 @@
 
 ## Current working set
 
-For the current G3CR6R3C state, a new Reviewer/Executor should normally need only:
+For the current G3CR6R3D1 state, a new Reviewer/Executor should normally need only:
 
 1. `../REVIEWER_HANDOFF.md`
 2. `REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md`

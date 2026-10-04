@@ -33,12 +33,15 @@ WOOCOMMERCE_ACCOUNT_PRIVATE_WORKSPACE=PASS
 PAYPAL_SANDBOX_LIFECYCLE=PASS
 FRONTEND_COMPOSITION_G3CR6R1=PASS
 OWNER_OVERALL_VISUAL_DIRECTION=PARTIAL_ONLY
-CURRENT_GATE=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
+CURRENT_GATE=G3CR6R3D1_FOCUSLY_VISUAL_MAPPING
 SOURCE_BASELINE_PREFLIGHT=PASS
 TEMPLATE_RESEARCH_QUALITY_BAR=OWNER_APPROVED
 TEMPLATE_RESEARCH_CONTRACT=MANDATORY
 MAGAZINE_WEB_VIEWER_DIRECTION=CONFIRMED_MAGAZINE_WEB_VIEWER
-HOMEPAGE_FOCUSLY=REFERENCE_ONLY_NOT_SELECTED
+HOMEPAGE_FOCUSLY=AUTHORIZED_PUBLIC_VISUAL_REFERENCE
+HOMEPAGE_HIGH_FIDELITY_REIMPLEMENTATION=AUTHORIZED_AFTER_D1_REVIEWER_PASS
+HOMEPAGE_IMPLEMENTATION_STATUS=HOLD_PENDING_D1_REVIEWER_PASS
+G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
 CORE_AHA_INTERACTION=UNRESOLVED_RESEARCH_AGAIN
 MAGAZINE_P1_P12_VISUAL_SYSTEM=UNRESOLVED_RESEARCH_AGAIN
 PRIOR_G3CR6R3C_SATURATION=SUPERSEDED_FOR_INTERACTION_AND_P1_P12
@@ -83,43 +86,44 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 ## CURRENT_GATE
 
-`G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY`
+`G3CR6R3D1_FOCUSLY_VISUAL_MAPPING`
 
-The Owner simplified the 1+1+12 direction further: source strong reusable templates/components first, then implement only the selected system. G3CR6R3B is superseded before execution.
+The Owner has reprioritized the homepage before the unresolved core-interaction and P1-P12 research.
 
 Objective:
-- find the strongest reusable candidates for 12 magazine pages + 1 homepage + 1 core homepage interaction;
-- explicitly classify what source can be legally reused versus what must be independently reimplemented;
-- recommend one coherent template/component family before implementation.
+- directly inspect the public Focusly homepage and its actual motion/responsive behavior;
+- inventory the current Birthday Magazine homepage, assets and protected functional boundaries;
+- produce a one-to-one Focusly -> current-homepage mapping that a later implementation Gate can execute safely;
+- maximize public-reference visual fidelity through independent implementation, without copying the paid template source or proprietary assets.
 
 Scope:
-- read-only template/component/motion research under the mandatory Research Contract;
-- minimum 60 directly inspected candidates across minimum 8 source ecosystems;
-- quality-over-quantity shortlist with saturation stop;
-- license/source-code/reuse verification;
-- 12+1+1 coverage map;
-- one coherent recommended combination.
+- read-only reference/browser inspection and project documentation only;
+- no WordPress/source/CSS/JS/media/database/runtime mutation in D1;
+- no paid template purchase;
+- existing project-owned images may be reused;
+- design-time static image generation may be proposed only within existing authorized capability and without introducing a new external paid provider/account/Secret.
 
-No runtime implementation in this Gate.
+Mandatory stop:
+- Reviewer must PASS the mapping before D2 implementation opens.
 
-The 12 magazine pages may be static or dynamic in web presentation; that choice is intentionally not frozen during discovery. The current deliverable contract remains a 12-page PDF unless later reopened by the Owner.
+Frozen during this Gate:
+- Free Preview privacy and zero-model runtime contract;
+- Product/Cart/Checkout/Order semantics;
+- Woo backend/payment;
+- account/private-workspace and entitlement logic;
+- prices/currency/product identity;
+- core Aha interaction selection;
+- P1-P12 magazine visual selection.
 
-Not reopened:
-- overall site composition;
-- theme/builder;
-- Product/Cart/Checkout/Account architecture;
-- Woo backend;
-- payment;
-- account/private-workspace model;
-- frozen MVP product contract;
-- production AI/provider.
+Preserved:
+- `magazine-web-viewer` remains the accepted reader direction.
+- G3CR6R3C remains unresolved for core interaction and P1-P12, but is paused while the Owner-prioritized homepage Gate runs.
 
 Current Gate file:
-- `docs/G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY.md`
+- `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING.md`
 
-Mandatory research contract:
-- `docs/G3CR6R3C_TEMPLATE_DISCOVERY_RESEARCH_CONTRACT.md`
-- `docs/OWNER_DECISION_G3CR6R3C_TEMPLATE_RESEARCH_QUALITY_BAR.md`
+Current Owner decision:
+- `docs/OWNER_DECISION_G3CR6R3D_FOCUSLY_HOMEPAGE_REDESIGN.md`
 
 Current growth diagnosis:
 - `docs/GROWTH_VALIDATION_STATE_2026-10-03.md`
@@ -185,15 +189,14 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Continue **G3CR6R3C** under the 2026-10-04 Owner research reset, but only for the two unresolved surfaces: core Aha interaction and the P1-P12 magazine visual/page system.
-2. Treat `magazine-web-viewer` as the accepted reader direction; treat Focusly only as homepage reference, not a frozen template.
-3. Re-open candidate discovery and saturation for those two unresolved surfaces; prior shortlist preferences do not carry forward as selections.
-4. Reviewer verifies live visual evidence, mobile/reduced-motion feasibility, license/source boundaries and P1-P12 coherence before Owner selection.
-5. Only after Owner selection may an implementation Gate be opened.
+1. Execute **G3CR6R3D1** read-only: directly inspect Focusly desktop/mobile/motion behavior and map it onto the current Birthday Magazine homepage.
+2. Reviewer checks the mapping, asset plan and frozen functional boundaries.
+3. If D1 PASS, open **G3CR6R3D2** for bounded homepage implementation and regression proof.
+4. After homepage visual work reaches Owner review, resume the still-unresolved core Aha interaction and P1-P12 research under G3CR6R3C.
 
 ## OWNER_ACTION_REQUIRED
 
-`NONE` for G3CR6R3C research; Owner already approved template-first sourcing.
+`NONE` for G3CR6R3D1; Owner already authorized Focusly-based independent homepage visual reconstruction within the frozen functional boundary.
 
 Owner action is required later for:
 - final subjective visual freeze;
@@ -204,7 +207,9 @@ Owner action is required later for:
 ## EVIDENCE_POINTERS
 
 Current working set:
-1. `docs/OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md`
+1. `docs/OWNER_DECISION_G3CR6R3D_FOCUSLY_HOMEPAGE_REDESIGN.md`
+2. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING.md`
+3. `docs/OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md`
 2. `docs/REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md`
 2. `docs/REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md`
 3. `docs/REVIEWER_DECISION_G3CR6R3C_TAKEOVER_SOURCE_BASELINE.md` — superseded preflight RETURN provenance
