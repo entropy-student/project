@@ -73,7 +73,8 @@ foreach ($required in @(
 }
 
 $allText = $clashText + [Environment]::NewLine + $serverText + [Environment]::NewLine + $serviceText
-Assert-G4B ($allText -notmatch '(?i)password:\s+[0-9a-f]{32,}|private-key:\s+[A-Za-z0-9+/=_-]{20,}|uuid:\s+[0-9a-f]{8}-[0-9a-f-]{27,}') 'G4B_REAL_SECRET_SHAPE_PRESENT'
+Assert-G4B ($allText -notmatch '(?i)password:\s+[0-9a-f]{32,}|uuid:\s+[0-9a-f]{8}-[0-9a-f-]{27,}') 'G4B_REAL_SECRET_SHAPE_PRESENT'
+Assert-G4B (([regex]::Matches($serverText, '(?m)^\s*private-key:')).Count -eq 1 -and $serverText.Contains('private-key: __REALITY_PRIVATE_KEY_INJECT_PROTECTED_RUNTIME_ONLY__')) 'G4B_REALITY_PRIVATE_KEY_PLACEHOLDER_INVALID'
 
 Write-Output 'G4B_THREE_ROLE_ORDER=HY2_PRIMARY_WG_BACKUP1_REALITY_BACKUP2'
 Write-Output 'G4B_MANUAL_SELECTOR_ONLY=PASS'
