@@ -6990,3 +6990,92 @@ Validation provenance:
 Timing note: the Gate requested a start timestamp before initial preflight/sync, but this was not captured. The recorded 00:52:48 is only the implementation window from 10:47:24Z to 11:40:12Z, not a fabricated full-round duration. Reviewer should treat total-round timing/overrun as unverified.
 
 Rollback effect: source/document-only. Revert only this Gate's project-owned commit to restore `PRE_GATE_HEAD`; no live or Owner state was changed.
+
+
+## Reviewer RETURN — G4-B offline live-runner implementation R1 — 2026-10-04
+
+```text
+GATE_ID=G4B_OFFLINE_LIVE_RUNNER_IMPLEMENTATION_R1
+EXECUTOR_RESULT=PASS_CANDIDATE
+REVIEWER_RESULT=RETURN_G4B_OFFLINE_RUNNER_IMPLEMENTATION_R1_REVIEW_DEFECTS
+REVIEWED_COMMIT=b97266e7cc9e3c3224032f7e49e9bf6d3b61c7d0
+REVIEWED_RUNNER_BLOB=bd791c02310031c6e80b2c1986c73dc9475b553d
+REVIEWED_FIXTURE_VALIDATOR_BLOB=b830cd1635c6752095dc21718dbbd28165448f6c
+REVIEWED_PACKAGE_VALIDATOR_BLOB=a4c5b3bd7875b16eb56cafc1f45ac3035f9a3b69
+REVIEWER_HANDOFF_MODIFIED_BY_EXECUTOR=NO
+FROZEN_G4B_TEMPLATE_OR_READINESS_GATE_MODIFIED=NO
+R1_AST=PASS
+R1_EXISTING_PACKAGE_VALIDATOR=PASS
+R1_POSITIVE_SOURCE_ASSERTIONS=21
+R1_NEGATIVE_FIXTURES=10_OF_10_PASS
+R1_SECRET_SCAN=PASS
+R1_LIVE_ACTIONS=0
+R1_TOTAL_TIMING=UNKNOWN
+R1_PARTIAL_IMPLEMENTATION_WINDOW=00:52:48
+```
+
+Reviewer inspected the new runner, fixture validator, implementation-package synchronization,
+Executor Handoff, and appended R1 Evidence. The Executor stayed inside the offline boundary and the
+reported validations are accepted as real offline evidence. PASS is blocked by live-runner source
+defects that the R1 fixtures did not model:
+
+1. **Recovery portability/order — RETURN_SECRET_RECOVERY_UNAVAILABLE**
+   - `Write-EncryptedRecovery` protects one ciphertext with
+     `ProtectedDataScope.CurrentUser` and writes that same profile-bound DPAPI form to both the
+     local and claimed second-failure-domain locations.
+   - Active Governance explicitly allows CurrentUser DPAPI as a first low-operation recovery copy,
+     never as the sole disaster-recovery mechanism.
+   - The current success path also calls persistent remote `stage` before the recovery set exists
+     and is round-trip/parser verified; the final recovery files are written before the full remote
+     change has been verified rather than using pending -> remote verify -> final promotion.
+
+2. **Runtime filesystem/access contract — RETURN_SECRET_ACCESS_MISMATCH**
+   - Remote `configure()` creates the REALITY runtime directory as root-owned mode 0750 and does
+     not chown it to the dedicated non-root runtime identity, while the systemd service runs as that
+     non-root user/group and uses the directory as Mihomo `-d`.
+   - The source writes
+     `/srv/apps/vpn-network-optimization/secrets/reality-server.yaml`
+     without creating or positively validating its parent Secret directory.
+   - Intended runtime read/write/traverse access and unrelated-principal denial are therefore not
+     established by the source.
+
+3. **Owner profile restart persistence not proven — RETURN_TEST_FAILURE**
+   - P11 restarts `clash_verge_service` but only re-checks the local network baseline.
+   - The runner does not re-read the imported `SELF-VPN-V1` profile after restart to prove it
+     remains present with HY2 -> WG -> REALITY order, HY2 default, manual selection, and auto
+     selection absent.
+   - The R1 fixture's restart assertion checks source tokens, not the required post-restart profile
+     state invariant.
+
+4. **Rollback capability discarded before Reviewer decision — RETURN_TEST_FAILURE**
+   - The PASS_CANDIDATE path calls remote `complete`, which deletes the remote transaction state
+     before the mandatory Reviewer stop.
+   - Owner-side created-profile rollback paths are only process-memory state.
+   - A Reviewer RETURN after PASS_CANDIDATE would therefore have weaker bounded rollback ownership
+     proof than existed during execution.
+
+5. **Live acceptance Evidence surface is under-specified — RETURN_TEST_FAILURE**
+   - The runner emits phase names and a final PASS_CANDIDATE, but does not emit enough sanitized
+     positive markers for the required G4-B acceptance facts (recovery finalization, runtime access,
+     service/public readiness, profile restart persistence, preserved WG/HY2, final proxy/TUN, and
+     retained rollback state) to be directly reviewable from the live run.
+
+Timing note:
+- The missed pre-round timestamp is retained as `UNKNOWN`; it is not fabricated.
+- No Gate-level time estimate existed, so no time-overrun judgment is made from the partial 00:52:48
+  window alone.
+- The timing gap is a process/evidence defect to correct in R2, but the technical RETURN reasons above
+  independently block PASS.
+
+No live VPS, Secret, network, service, route, profile, proxy, TUN, or G4-C action occurred in R1.
+
+Next Gate:
+`G4B_OFFLINE_LIVE_RUNNER_REPAIR_R2`
+with Gate blob
+`b60c1d1bf09cac5467f547b83dc2c13a4af850d8`.
+
+```text
+LIVE_G4B_EXECUTION_AUTHORIZED=NO
+OWNER_ACTION_REQUIRED=NO
+STOP_AT_REVIEWER=YES
+```
