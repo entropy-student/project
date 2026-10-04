@@ -1,0 +1,24 @@
+# G3C C2C real HY2-in-Clash canary.
+# The password placeholder is replaced only inside the protected Owner-local runtime.
+# Never commit or paste a real auth value into this file.
+proxies:
+  - name: WG-BASELINE
+    type: direct
+  - name: HY2-SFO3-REAL
+    type: hysteria2
+    server: 24.199.118.137
+    port: 8443
+    password: __C2C_REAL_HY2_AUTH_INJECTION_ONLY__
+    sni: hy2.sfo3-a.invalid
+    skip-cert-verify: true
+    fingerprint: 8A:8D:50:5F:DF:80:DB:76:C6:76:39:5A:86:E4:9D:81:8E:A1:5B:76:64:ED:70:30:8C:29:60:9C:23:74:1F:18
+    alpn:
+      - h3
+proxy-groups:
+  - name: SELF-VPN-C2C
+    type: select
+    proxies:
+      - WG-BASELINE
+      - HY2-SFO3-REAL
+rules:
+  - MATCH,SELF-VPN-C2C
