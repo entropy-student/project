@@ -5958,3 +5958,38 @@ Reviewer conclusion:
 - The repaired Secret scanner is proven on the real Owner host.
 - The previous blocker at Secret Prepare is closed.
 - The real canary is technically ready, but fresh Owner authorization is required before repeating the consequential profile/route/network actions.
+
+
+## Reviewer closeout — conversation handoff consolidation — 2026-10-04
+
+```text
+PURPOSE=Prepare canonical main for next Reviewer before conversation rollover
+RUNTIME_OR_NETWORK_EXECUTION=NO
+SECRET_ACCESS=NO
+VPS_OR_CLASH_MUTATION=NO
+
+CREATED=docs/REVIEWER_TRANSITION_2026-10-04.md
+UPDATED=REVIEWER_HANDOFF.md
+UPDATED=README.md
+UPDATED=DECISION_LOG.md
+UPDATED=EXECUTOR_HANDOFF.md
+
+CANONICAL_CURRENT_GATE=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
+CURRENT_GATE_STATE=OWNER_AUTHORIZATION_REQUIRED
+PREVIOUS_RESULT=PASS_G3C_C2C_SECRET_PREPARE_REPAIR_VERIFICATION_R2R3V2
+FRESH_OWNER_AUTHORIZATION_AT_CLOSEOUT=NOT_YET_GRANTED
+
+ACCEPTED_C2C_ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
+ACCEPTED_C2C_SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
+ACCEPTED_C2C_PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
+ACCEPTED_C2C_VALIDATOR_BLOB=e520fa7b6c08b2e46365b55ec731a20bdb810c04
+ACCEPTED_C2C_TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+ACCEPTED_C2C_PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
+
+NEXT_REVIEWER_READ_ORDER=REVIEWER_HANDOFF.md -> docs/REVIEWER_TRANSITION_2026-10-04.md -> DECISION_LOG.md -> current package doc -> exact Evidence as needed
+```
+
+Reviewer note:
+- This closeout changes documentation organization only; no runtime, Secret, Clash, route, network, VPS, or provider action occurred.
+- Historical detail remains in Git history and append-only Evidence; the canonical Reviewer Handoff was intentionally reduced to current state plus pointers.
+- The next Reviewer must obtain fresh explicit Owner authorization before any R3R2 real-canary execution.
