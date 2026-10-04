@@ -148,63 +148,61 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 
 - **R2R3V1R2 Owner validation return:** validator reached package-contract validation and returned `PACKAGE_SECRET_SCAN_EXCEPTION_UNDOCUMENTED`. The package already documented all required safety semantics; the validator alone incorrectly depended on the English order `zero-byte -> root-level -> .lock`. Validator-only commit `6a831b5f947f82c63514989c28e0d0c03a33e2aa` replaces that with six independent semantic checks. New validator blob is `e520fa7b6c08b2e46365b55ec731a20bdb810c04`.
 
+- **R2R3 formal acceptance:** Owner R2R3V1R3 returned PASS with exact six locked blobs, Fixtures A-L PASS, PowerShell AST PASS, Mihomo fixture parse PASS, `G3C_C2C_OFFLINE_FIXTURES=PASS`, `DPAPI_UNPROTECT=NO`, `NETWORK_REQUESTS=0`, `NETWORK_CHANGED=NO`, and `SECRET_VALUES_EMITTED=0`. The bounded Clash zero-byte root-lock scan repair is formally accepted.
+
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_OWNER_VALIDATION_R2R3V1R3
+GATE_ID=G3C_C2C_SECRET_PREPARE_REPAIR_VERIFICATION_R2R3V2
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=RETURN_R2R3V1R2_PACKAGE_DOC_VALIDATOR_ORDER_DEPENDENCY
-OBJECTIVE=Rerun the Owner-local offline validator after making the package-document contract semantic and order-independent; prove A-L, AST and Mihomo v1.19.32 against the exact repaired package with zero Secret/network action.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact six source identities -> package validator A-L -> AST -> Mihomo v1.19.32 fixture parse -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=PASS_G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_REPAIR_R2R3
+OBJECTIVE=Verify on the real Owner Windows host that the repaired Secret scanner allows one sanitized Prepare to complete, then immediately VerifyCleanup the temporary Owner-only profile, without importing Clash or sending traffic.
+MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact D7/helper identities -> one D7 sanitized Prepare replay -> if Prepare succeeds, immediate VerifyCleanup -> zero runtime residue -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; repository validator only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No Secret-helper real mode; no DPAPI/recovery content; no real Secret/hash; no orchestrator/proxy probe/diagnostics; no Clash mutation; no network requests; no network mutation; no VPS/SSH; no G4.
-ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
+TARGET_AND_SCOPE=Real Owner Windows host; existing c2c-secret-prepare-sanitized-diagnostic.ps1 wrapper plus repaired c2c-secret-profile-helper.ps1 only.
+APPLICABLE_CRITICAL_CONSTRAINTS=This Gate authorizes CurrentUser DPAPI/recovery-content processing inside the reviewed Secret helper and temporary Owner-only runtime profile creation solely for Prepare verification; no Secret/hash/raw helper output may reach console; no Clash profile import; no outer route; no external network requests; system proxy/TUN/WireGuard unchanged; no VPS/SSH; no real C2C canary; no G4.
+D7_DIAGNOSTIC_BLOB=a0c54c91894cd648328fac8b9176f8442aa168d1
 SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
-PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
-VALIDATOR_BLOB=e520fa7b6c08b2e46365b55ec731a20bdb810c04
-TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
-PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
+OWNER_SECRET_REPLAY_AUTHORIZATION=GRANTED_BY_OWNER_CONTINUE_INSTRUCTION
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
 ESTIMATED_EXECUTION_TIME=2-5_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### FAILURE RECONCILIATION
+### ACCEPTED R2R3 OFFLINE VALIDATION
 
-- R2R3V1R2 reached package-contract validation and returned `PACKAGE_SECRET_SCAN_EXCEPTION_UNDOCUMENTED`.
-- Direct comparison proved the package text already contains all required semantics: actual read failure, root-level `.lock`, zero-byte, reparse exclusion, and strict project-runtime behavior.
-- The validator incorrectly encoded one phrase-order dependency: `zero-byte.*root-level.*\.lock`, while the valid documentation states root-level `.lock` before zero-byte.
-- Commit `6a831b5f947f82c63514989c28e0d0c03a33e2aa` changes only the validator document-contract check to six independent semantic regexes. Package/helper/orchestrator/probe/template are unchanged.
-- No DPAPI/Secret/network action occurred.
+Owner R2R3V1R3 validation proved exact source identity and all A-L fixtures, PowerShell AST parse, Mihomo v1.19.32 fixture parse, and the complete offline package result with zero DPAPI/network/Secret output. R2R3 is formally PASS.
 
 ### REQUIRED EVIDENCE
 
-- full timing from before sync;
 - Owner PowerShell 7.6.6/Admin/High;
 - clean project scope + safe ff-only sync;
-- exact six blobs above;
-- Fixtures A-L PASS;
-- PowerShell AST parse PASS;
-- Mihomo v1.19.32 fixture parse PASS;
-- `G3C_C2C_OFFLINE_FIXTURES=PASS`;
-- `DPAPI_UNPROTECT=NO`;
-- `NETWORK_REQUESTS=0`;
-- `NETWORK_CHANGED=NO`;
+- exact D7 diagnostic and repaired helper blobs above;
+- baseline runtime C2C directory/profile counts zero;
+- one sanitized Prepare invocation only;
+- if Prepare succeeds: immediate VerifyCleanup and post-cleanup directory/profile counts zero;
+- desired success marker from the existing D7 wrapper: `D7_SECRET_PREPARE_DIAGNOSTIC=UNEXPECTED_PREPARE_PASS_CLEANED` (historical label; in this repair-verification Gate it means expected repair success);
+- `C2C_SECRET_HELPER_RESULT=PASS` for Prepare and cleanup as exposed by the D7 allowlist;
 - `SECRET_VALUES_EMITTED=0`;
-- no helper/orchestrator/probe/diagnostic execution.
+- `CLASH_PROFILE_IMPORT=NO`;
+- `TEMP_OUTER_ROUTE_CREATED=NO`;
+- `EXTERNAL_NETWORK_REQUESTS=0`;
+- `SYSTEM_PROXY_MUTATION=NO`;
+- `TUN_MUTATION=NO`;
+- `WIREGUARD_MUTATION=NO`;
+- complete timing.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS only if the Owner validator proves A-L + AST + Mihomo parse with the exact locked blobs and zero Secret/network action.
+PASS_R2R3V2 only if repaired Prepare succeeds, immediate cleanup succeeds, zero runtime residue remains, no Secret value is emitted, and no Clash import/network/route/proxy/TUN/WireGuard mutation occurs. A sanitized RETURN is not retried blindly; Reviewer classifies the new failure code first.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Repo-only validator correction; scanner repair and package documentation remain unchanged.
+D7 VerifyCleanup is the immediate rollback for any successfully created temporary profile. Any nonzero residue or cleanup ambiguity stops further action.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic R2R3V1R3 offline validation checkpoint and return complete output.
+Run the Reviewer-supplied atomic R2R3V2 checkpoint and return complete sanitized output.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
@@ -216,11 +214,11 @@ NONE.
 
 ## NEXT_STEP
 
-Owner reruns the validator. If PASS, Reviewer formally accepts R2R3 and opens one sanitized Secret Prepare replay.
+If R2R3V2 passes, Reviewer can reopen the bounded real HY2-in-Clash canary as a separate Owner Gate. No real canary is authorized inside R2R3V2.
 
 ## OWNER_ACTION_REQUIRED
 
-Run R2R3V1R3 offline validator only.
+Run R2R3V2 sanitized Secret Prepare repair verification.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
