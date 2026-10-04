@@ -1,4 +1,32 @@
-## Current execution status — G3C C2B Owner ACL behavior diagnostic D2R1
+## Current execution status — G3C C2B Owner ACL compatibility repair R1
+
+```text
+GATE_ID=G3C_C2B_OWNER_ACL_COMPAT_REPAIR_R1
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=PASS_D2R1_ACL_METHOD_CONFIRMED
+OWNER_LOCAL_VALIDATION_CANARY_REQUIRED=YES
+RUNNER_BLOB=817ed91b30efd72f7cbb43fff56e9c55025380b6
+VALIDATOR_BLOB=aaddf4810b77655e4a2ae6d94ba3fb443a6b3e3a
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+PACKAGE_BLOB=64b7ea3c562adc241311517c79cc53d966197a6e
+VALIDATOR_BEFORE_RUNNER=YES
+REAL_HY2_TRAFFIC_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not independently run C2B.
+2. Wait for Owner-local R1 validation/canary output.
+3. Persist bounded source identity, validator, Owner ACL, canary, cleanup, and timing facts.
+4. Any validator or Owner-only ACL failure blocks acceptance.
+5. Do not enter C2C.
+6. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B Owner ACL behavior diagnostic D2R1
 
 ```text
 GATE_ID=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2R1
