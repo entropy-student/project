@@ -4143,3 +4143,37 @@ Reviewer conclusion:
 - This was Reviewer-side relay/document synchronization drift, not VPN, Clash, HY2, WireGuard, Secret, or VPS drift.
 - No previous technical work is replayed. The repair is documentation/control-plane only: align the canonical current Gate and self-contained Executor relay, then rerun only the C2B preflight/Owner checkpoint as R2R1.
 - The R2R1 preflight must prove the two canonical surfaces agree before any Owner-local checkpoint can start.
+
+
+## Reviewer reconciliation — RETURN_C2B_OWNER_RUNTIME_PREFLIGHT_FAILED — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1
+EXECUTOR_RESULT=RETURN_C2B_OWNER_RUNTIME_PREFLIGHT_FAILED
+REVIEWER_RESULT=RETURN_CONFIRMED
+CANONICAL_MAIN_REPORTED=d87fbddce8c4e74b988d8683ff6c35b84b4c59b4
+GATE_ALIGNMENT_REPORTED=PASS
+PROJECT_SCOPE_CLEAN_REPORTED=PASS
+RUNNER_TEMPLATE_BLOBS_REPORTED=PASS
+EXECUTOR_RUNTIME_POWERSHELL=7.6.5
+EXECUTOR_RUNTIME_ADMINISTRATOR=False
+EXECUTOR_RUNTIME_INTEGRITY_RID=8192
+OWNER_RUNTIME_REQUIRED_POWERSHELL=7.6.6
+OWNER_RUNTIME_REQUIRED_ADMINISTRATOR=True
+OWNER_RUNTIME_REQUIRED_INTEGRITY=High
+RUNNER_STARTED=NO
+CLASH_MIHOMO_DPAPI_SECRET_UI_PROFILE_NETWORK_TOUCHED=NO_REPORTED
+ROUND_STARTED_AT=2026-10-04T01:17:57Z
+ROUND_FINISHED_AT=2026-10-04T01:21:56Z
+ACTUAL_ELAPSED=00:03:59
+TECHNICAL_REPLAY_REQUIRED=NO
+EXECUTION_CHANNEL_FALLBACK=ONE_SHOT_OWNER_LOCAL_CHECKPOINT_APPROVED
+NEXT_GATE=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1_O1
+PROVENANCE=OWNER_RELAYED_EXECUTOR_REPORT_PLUS_DIRECT_CANONICAL_SOURCE_READBACK
+```
+
+Reviewer conclusion:
+- The RETURN is accepted. The current Codex shell does not satisfy the frozen Owner-host runtime contract, so fail-closed before runner launch was required.
+- Direct GitHub read-back confirms the canonical Gate still requires PowerShell 7.6.6, Administrator/High-integrity Owner-host execution and the locked runner remains the reviewed source.
+- This is an execution-channel boundary, not a VPN/Clash/HY2 failure. No runner or network action is replayed from Codex.
+- Reviewer approves one bounded Owner-local checkpoint on the real Windows host. This fallback is specific to this Gate and does not replace the default execution channel.
