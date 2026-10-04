@@ -6304,3 +6304,34 @@ Reviewer reconciliation:
 - Cause is wrapper ordering: the wrapper checked for the newly-added runner file before the local worktree had been safe-synced to current `origin/main`.
 - No consequential G4-B0 action occurred and the one-shot Owner authorization remains valid and unconsumed.
 - Repair: sync the existing project worktree first using ff-only semantics, then resolve/check the runner and perform blob/AST/validator checks.
+
+
+## G4-B0 AST failure reconciliation and runner repair — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT + DIRECT_GITHUB_REPAIR_READBACK
+PARENT_SYNC=PASS
+LOCKED_SOURCE_CHECKS_BEFORE_AST=PASS
+RUNNER_AST_PARSE=RETURN
+G4B0_CHILD_RUNNER_STARTED=NO
+G4B0_AUTHORIZATION_CONSUMED=NO
+EXTERNAL_REQUEST_COUNT=0
+SECRET_ACCESS=NO
+NETWORK_MUTATION=NO
+```
+
+Root cause:
+- The repository runner had a malformed cleanup-line edit: a duplicated tail block had been inserted inside the runtime-directory regex literal.
+- This was a repository/tooling corruption, not a live Windows/network failure.
+
+Repair:
+- Remove the duplicated inserted block.
+- Restore the exact guard: `^g4b0-[0-9a-f]{32}$`.
+- Independent static read-back confirms the corrupt prefix is absent, required cleanup block occurs once, request endpoints occur once each, request increments remain exactly two, route-write commands remain zero, and a lightweight quote/bracket lexical check is balanced.
+
+```text
+REPAIRED_G4B0_RUNNER_BLOB=43221672eb90a2a58062ca4ecbd118f4ebafc866
+OWNER_AUTHORIZATION=GRANTED_AND_UNCONSUMED
+NEXT_CHECKPOINT=OWNER_LOCAL_AST_ONLY_NO_SECRET_NO_REQUEST_NO_NETWORK_MUTATION
+```
