@@ -29,7 +29,7 @@ Production WireGuard remains connected throughout. System proxy and Clash TUN mu
 
 The runner creates one temporary ActiveStore IPv4 /32 route for the HY2 server public IP through the dynamically resolved non-WireGuard physical default gateway. This is required so HY2 UDP/8443 does not recurse through the WireGuard full tunnel. The route is removed in cleanup and no persistent route is allowed.
 
-The only intentional real canary traffic is:
+Exactly two real requests are authorized in C2C. The only intentional real canary traffic is:
 1. one HTTPS request to `https://api.openai.com/v1/models` through Clash's existing local HTTP proxy listener, expecting curl exit 0 and HTTP 401;
 2. one request to `https://api.ipify.org` through the same local proxy, expecting the accepted SFO3 public exit.
 
