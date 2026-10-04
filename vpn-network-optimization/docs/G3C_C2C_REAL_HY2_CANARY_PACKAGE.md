@@ -22,6 +22,8 @@ The implementation is intentionally split into three reviewed components so no s
 
 A real auth value is injected only into one unique Owner-only runtime YAML. Importing that YAML into Clash Verge may cause Clash's own application storage/cache to temporarily contain the real auth value. This temporary persistence is inside the authorized C2C boundary. The Secret helper scans the Clash application root for the exact auth byte sequence before import and requires zero matches after the canary profile is removed. It does not print matching paths.
 
+The Clash application scan remains fail-closed for unreadable files, with one narrowly bounded runtime-lock exception. Only after an actual read failure may the scanner bypass that item, and only when a fresh metadata read proves it is a direct root-level `.lock` file in the Clash application root, exactly zero-byte, a normal file, and not a reparse point. Readable zero-byte files are still scanned normally. Metadata lookup failure, descendant lock files, nonzero files, reparse points, other extensions, and every unreadable file under the project runtime remain strict failures; the project runtime scan has no exception.
+
 ## Network boundary
 
 Production WireGuard remains connected throughout. System proxy and Clash TUN must remain OFF.
