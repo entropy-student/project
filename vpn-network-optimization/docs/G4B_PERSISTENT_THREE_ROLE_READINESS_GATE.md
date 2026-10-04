@@ -1,6 +1,6 @@
 # G4-B Persistent Three-Role Readiness Gate
 
-Status: PROPOSED / OWNER_AUTHORIZATION_REQUIRED
+Status: PREREQUISITE_SATISFIED / OWNER_AUTHORIZATION_REQUIRED
 
 ## GATE_ID
 
@@ -8,9 +8,9 @@ Status: PROPOSED / OWNER_AUTHORIZATION_REQUIRED
 
 ## PREREQUISITE_GATE
 
-`G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1` must be formally PASS before live G4-B persistent profile/service execution.
+`G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1` is formally PASS.
 
-Until G4-B0 resolves the Windows outer-bypass mechanism, the `interface-name` placeholders in the persistent three-role template are design candidates only and no persistent VPS `/32` route is authorized.
+Accepted G4-B0 evidence proves HY2 outer traffic can use Mihomo `interface-name` over the physical interface while WireGuard remains connected and exact VPS `/32` routes stay absent. No persistent VPS `/32` route is authorized by this Gate. REALITY client-path behavior remains to be validated in its own later execution path; G4-B0 does not overclaim that transport.
 
 ## OBJECTIVE
 
