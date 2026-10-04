@@ -5,10 +5,14 @@ After=network-online.target
 
 [Service]
 Type=simple
+User=__REALITY_RUNTIME_USER__
+Group=__REALITY_RUNTIME_USER__
 ExecStart=/usr/local/lib/vpn-network-optimization/mihomo-reality -d /srv/apps/vpn-network-optimization/reality -f /srv/apps/vpn-network-optimization/secrets/reality-server.yaml
 Restart=on-failure
 RestartSec=5s
 NoNewPrivileges=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
