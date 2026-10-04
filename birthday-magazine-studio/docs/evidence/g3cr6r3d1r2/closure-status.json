@@ -1,0 +1,62 @@
+{
+  "gate": "G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE",
+  "result": "PASS_CANDIDATE",
+  "approvedHead": "48191f6f0b95eb4be169746f8eac9c1d7ca5365a",
+  "main": "abc5216da1c29841aeca58fb1c4ef653c19a0017",
+  "localSyncMerge": "ce8df2b0a34bf8206fe4d5acec24a7387c4f7192",
+  "sourceProjectMatchesApprovedHead": true,
+  "focuslyEvidenceReused": 66,
+  "previewInteraction": "KEEP_AS_IS_NOT_EXERCISED",
+  "homeReadback": "PASS_1440_AND_375",
+  "runtimeContainersRecreated": 0,
+  "runtimeContainersStarted": [
+    "361d58eb5454",
+    "21892d72baeb",
+    "35d286e7af50"
+  ],
+  "dockerDesktopStartedByExecutor": false,
+  "wpcli": "RETAINED_STOPPED",
+  "unrelatedContainerProjectionUnchanged": true,
+  "allContainerIdentitiesMountsImagesUnchanged": true,
+  "volumeNamesUnchanged": true,
+  "networkIdsNamesUnchanged": true,
+  "wordpressProjectionUnchanged": true,
+  "orderCountBefore": 1,
+  "orderCountAfter": 1,
+  "generationJobs": 0,
+  "productModelCalls": 0,
+  "checkoutEvidence": "GET_302_TO_EMPTY_CART_200_NO_FORM_CLAIM",
+  "screenshotCount": 14,
+  "knownIssues": [
+    "Stored mobile-menu Sample Pages target #sample-pages absent; current section is #samples",
+    "Rendered footer Privacy policy href empty"
+  ],
+  "limits": [
+    "No fresh Preview interaction/network privacy test; accepted evidence and identical source hashes reused",
+    "No account login or private workspace authorization replay; unchanged accepted guard hash reused",
+    "Only application/option/order-count projection checked, not whole-database bitwise identity; normal runtime housekeeping not claimed absent"
+  ],
+  "actions": {
+    "frontendMutation": 0,
+    "wordpressContentMutation": 0,
+    "themeChange": 0,
+    "cartChange": 0,
+    "checkoutSubmission": 0,
+    "orderCreation": 0,
+    "paypal": 0,
+    "model": 0,
+    "build": 0,
+    "pull": 0,
+    "recreate": 0,
+    "volumeReset": 0,
+    "migration": 0,
+    "globalDockerConfiguration": 0,
+    "sharedInfra": 0,
+    "deployment": 0,
+    "mergePR": 0,
+    "D2": 0,
+    "G4": 0
+  },
+  "stopAtReviewer": true,
+  "ownerRelay": "NONE"
+}

@@ -1,0 +1,28 @@
+{
+  "authorityFiles": [
+    {
+      "file": "REVIEWER_HANDOFF.md",
+      "branchBlob": "d86c5881f7094bdcb0fa1f0da7b9dab4943fab6c",
+      "mainBlob": "d86c5881f7094bdcb0fa1f0da7b9dab4943fab6c"
+    },
+    {
+      "file": "docs/G3CR6R3D2R4_MOTION_POLISH.md",
+      "branchBlob": "e2f2c6a888e55edada82b307a6a1ab364f24ee77",
+      "mainBlob": "e2f2c6a888e55edada82b307a6a1ab364f24ee77"
+    },
+    {
+      "file": "docs/REVIEWER_DECISION_G3CR6R3D2R4_PARTIAL_OWNER_MOTION_PENDING.md",
+      "branchBlob": "da4b09e28cdc3c764e56ceeb2ec96dd1ff231874",
+      "mainBlob": "da4b09e28cdc3c764e56ceeb2ec96dd1ff231874"
+    }
+  ],
+  "site": "http://127.0.0.1:8189/",
+  "scope": "Only home.css/home-motion.js; no persistent Home858 or business change",
+  "video": "Owner phone recording, observed locally; not copied to evidence",
+  "head": "a6cbe3cc80f7d276ffbc30499f538544a7082bb6",
+  "main": "46c2cf2c914a0e7043467ab1022da403fd1e015e",
+  "approvedHead": "a6cbe3cc80f7d276ffbc30499f538544a7082bb6",
+  "ownerAuthorization": "Owner approved phone-video calibration then instructed start; latest explicit Owner instruction supersedes prior wait-for-Owner clause",
+  "newImagegenCalls": 0,
+  "branch": "codex/birthday-magazine-g3c-blocksy-wedding-productization"
+}

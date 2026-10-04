@@ -1,0 +1,143 @@
+{
+  "baseline": "36b670c333601624c068b543d7bc3c2f2f9ee346",
+  "evidenceType": "DIRECT_READBACK_SOURCE_ONLY_NOT_CURRENT_RUNTIME",
+  "files": [
+    {
+      "path": "birthday-magazine-studio/poc/g3c/preview-plugin/birthday-magazine-poc.php",
+      "sha256": "0ee467d6b212f5d72bcd94adff87fdcbab39513f884ce09e032d89252ea1b95f"
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/preview-plugin/preview.js",
+      "sha256": "59ba672be58d8f33ebb83b978ef5678c5f0c5e102fce88de8a0c1ebc8b82dabc"
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/preview-plugin/home.css",
+      "sha256": "e0d5114a94b093e85fada4bda5d4163716832ae0ad672c19e6b1b6f2d9c942bd"
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/preview-plugin/magazine-preview.css",
+      "sha256": "c7cfd022626ade6b4d117e1fd9773f579c822d19455ec6e1ab251fa6e4d40bae"
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/preview-plugin/studio.css",
+      "sha256": "9cfc6405b18c109e331f162766e71eda70de227fd9092cdd6c2be178a10e9ebc"
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/commerce-workspace-plugin/bms-g3a-commerce-loop.php",
+      "sha256": "e971d02be42e4dbb01b1cc1c614cd49d76991ad1df2f253cec80825f0b9823d2"
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/compose.yaml",
+      "sha256": "3313b1fc7c64c8a02883334eda2ec61bf5093064fc3640e86b59191e11b887d8"
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/scripts/redesign-home-g3cr6r1.php",
+      "sha256": "79306d9fdbaec94279d4b2a2daabf9ebd9297b9b40ebed5351b9a1aaf45f3839"
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/scripts/align-home-anchor-g3cr6r1.php",
+      "sha256": "d9e24723d7a286ba284aa438507683850337c1b8a7a0f30492f11ffad3ae6c22"
+    }
+  ],
+  "assets": [
+    {
+      "path": "birthday-magazine-studio/poc/g3c/preview-plugin/assets/g3cr6/gift-hero.png",
+      "bytes": 2425284,
+      "sha256": "24663a05ded782802a36b4f4e8f6dc789d9c1e7f4b2cc445ff6e3a560651fca0",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/preview-plugin/assets/g3cr6/sample-cover.png",
+      "bytes": 2231738,
+      "sha256": "9ee07a061e7066abac864b589f71f702d5f9c965e5b388fea2dd9fef355bdb7f",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/preview-plugin/assets/g3cr6/sample-spread.png",
+      "bytes": 2348418,
+      "sha256": "48a6fcf303334a0d7bd4722b7eaea713495e3f6ab64a5c73f89c2ae98ec4eed9",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/theme-overrides/sample-pages/sample-birthday-letter.png",
+      "bytes": 76323,
+      "sha256": "3a4a1533bab92cc0d972be8872212845f0ccdf04e2873d868eef6d9fe3d858e0",
+      "dimensions": [
+        1440,
+        1160
+      ]
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/theme-overrides/sample-pages/sample-contact-sheet.png",
+      "bytes": 139713,
+      "sha256": "b46b8b4644857c74df04baa698f53917434b820ad17bc09444ae1b607878bdd9",
+      "dimensions": [
+        1320,
+        928
+      ]
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/theme-overrides/sample-pages/sample-cover-bold.png",
+      "bytes": 56399,
+      "sha256": "699a4550ce811b7d74e49056f72bb14fdffc9504f908638327180ed602eacaa9",
+      "dimensions": [
+        1440,
+        1160
+      ]
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/theme-overrides/sample-pages/sample-cover-retro.png",
+      "bytes": 67155,
+      "sha256": "5ea4fb356698b5386d30f8b8493e5fa2612dc804501596046f8f99c957464b39",
+      "dimensions": [
+        1440,
+        1160
+      ]
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/theme-overrides/sample-pages/sample-cover-warm.png",
+      "bytes": 57308,
+      "sha256": "5e10d6c47bb1bde18e90d7b506ff057f0f4162f329009159a8f4401893feefd0",
+      "dimensions": [
+        1440,
+        1160
+      ]
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/theme-overrides/sample-pages/sample-current-era.png",
+      "bytes": 74981,
+      "sha256": "f858207fd28709061ae6c05cc1f004fcaafb4162db8703231615b826bf239d72",
+      "dimensions": [
+        1440,
+        1160
+      ]
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/theme-overrides/sample-pages/sample-feature-memory.png",
+      "bytes": 74565,
+      "sha256": "5f74f19ac9fe6e159b4e31c9101980e1feb2c2f5666dd559f7d656143e5cd2fe",
+      "dimensions": [
+        1440,
+        1160
+      ]
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/theme-overrides/g3cr6/synthetic-preview-portrait.png",
+      "bytes": 2408808,
+      "sha256": "0d4927a420f03fa8c8407bce29d0ef7ae816fb476cc79ad25ece551cb1506d22",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    }
+  ]
+}

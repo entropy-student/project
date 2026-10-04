@@ -1,0 +1,217 @@
+{
+  "gate": "G3CR4_G3C_VISUAL_CONSOLIDATION",
+  "execution_result": "PASS_CANDIDATE_G3CR4_G3C_VISUAL_CONSOLIDATION",
+  "git": {
+    "branch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
+    "head_before_commit": "af04fc8252ad414af53fb24394432de447d69bd1"
+  },
+  "urls": {
+    "site": "http://127.0.0.1:8189/",
+    "wp_admin": "http://127.0.0.1:8189/wp-admin/"
+  },
+  "runtime": {
+    "compose_file": "birthday-magazine-studio/poc/g3c/compose.yaml",
+    "retained_for_owner_review": true,
+    "containers": [
+      {
+        "name": "birthday-magazine-g3c-db-1",
+        "service": "db",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "name": "birthday-magazine-g3c-mailpit-1",
+        "service": "mailpit",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "name": "birthday-magazine-g3c-wordpress-1",
+        "service": "wordpress",
+        "state": "running",
+        "health": ""
+      }
+    ],
+    "wordpress_version": "7.1.1",
+    "woocommerce_version": "11.1.2",
+    "blocksy_version": "2.1.57",
+    "blocksy_companion_version": "2.1.57"
+  },
+  "page": {
+    "post_id": 858,
+    "type": "page",
+    "title": "Home",
+    "primary_editable_gutenberg_group_sections": 6,
+    "sample_blocks": 3,
+    "preview_shortcode_blocks": 1,
+    "duplicate_story_labels_absent": true,
+    "wedding_copy_absent": true,
+    "spacer_blocks": 0,
+    "scroll_mouse_decorations": 0,
+    "hero_cta_visible": true,
+    "hero_image_loaded": true,
+    "home_content_sha256": "d075824113df48fa75a8abd9d783509b0dfc17d97f396a1e523caa7c57735bcb"
+  },
+  "responsive": {
+    "desktop_viewport": 1440,
+    "desktop_document_width": 1440,
+    "mobile_viewport": 375,
+    "mobile_document_width": 375,
+    "mobile_document_height": 5525,
+    "mobile_preview_single_column": true,
+    "mobile_spread_single_column": true,
+    "mobile_preview_clipped_elements": [],
+    "mobile_preview_internal_overflow": [],
+    "mobile_samples_visible": 2,
+    "sample_card_nodes": 3
+  },
+  "preview": {
+    "good_issue_integrated": true,
+    "browser_local_photo_preview": true,
+    "desktop_blob_image_count": 3,
+    "mobile_blob_image_count": 3,
+    "post_requests_after_photo_selection": 0,
+    "external_image_requests": [],
+    "model_provider_requests": []
+  },
+  "commerce": {
+    "offer_cta": "http://127.0.0.1:8189/product/birthday-magazine/",
+    "product_id": 1113,
+    "product_price_usd": "39.99",
+    "product_virtual": true,
+    "product_desktop": true,
+    "add_to_cart_response_status": 200,
+    "add_to_cart_response_success": true,
+    "cart_contains_product_at_39_99": true,
+    "checkout_form_count": 1,
+    "account_login_form_count": 1,
+    "order_submitted": false,
+    "payment_submitted": false
+  },
+  "owner": {
+    "role": "administrator",
+    "can_edit_home": true,
+    "can_replace_images": true,
+    "can_reorder_blocks": true,
+    "can_edit_blocksy_global_style": true,
+    "wp_admin_screenshot": "NOT_CAPTURED_AUTH_REQUIRED"
+  },
+  "private_workspace": {
+    "result": "PASS_REUSED_ACCEPTED_G3C_BASELINE",
+    "workspace_plugin_active": true,
+    "plugin_modified_this_run": false,
+    "basis": "Existing accepted G3C/G3A owner 200 / unrelated account 403 / guest 403 evidence; workspace plugin and route untouched in this visual-only change."
+  },
+  "backup": {
+    "path": "birthday-magazine-studio/poc/g3c/artifacts/backups/g3cr4/home-and-blocksy-before-20261001-141123.json",
+    "sha256": "225F5F03FDADCA990CCE5995B0AAFA75C71FDF433DE465023F50C70B9219D6A7",
+    "size_bytes": 504020,
+    "rollback_script": "birthday-magazine-studio/poc/g3c/scripts/restore-g3cr4-backup.php"
+  },
+  "screenshots": {
+    "directory": "birthday-magazine-studio/poc/g3c/artifacts/screenshots/g3cr4",
+    "count": 17,
+    "files": [
+      {
+        "file": "01-desktop-full-page.png",
+        "size_bytes": 472216,
+        "sha256": "88812F7A489452DDF3349B0FA94D4507B21E019147F431A1894010EBA26EB908"
+      },
+      {
+        "file": "02-desktop-hero.png",
+        "size_bytes": 138087,
+        "sha256": "E588AC580A982B8A3F66686E6941D4CA9549BD564D00890486F36A1C0D2B4122"
+      },
+      {
+        "file": "03-desktop-samples.png",
+        "size_bytes": 92106,
+        "sha256": "0E8BBAA92C11E2023EB957283C8342AF27C68CF5C79A7A2DEFDA9E2A402CC09D"
+      },
+      {
+        "file": "04-desktop-preview.png",
+        "size_bytes": 137813,
+        "sha256": "505B5982F9BD1B5006279CEFE033AF283E439829F191DB04CECC6851F6AEC8DD"
+      },
+      {
+        "file": "05-desktop-what-how.png",
+        "size_bytes": 83232,
+        "sha256": "DA5F4AD33865AEB30DF5751F76A8787FD14CA4A9619E59F6F855239E3551B864"
+      },
+      {
+        "file": "06-desktop-offer-faq.png",
+        "size_bytes": 45803,
+        "sha256": "4629E137F7DE5851943D700573EF3E59BFC501A3EB9E71C71554DB74AC21DE11"
+      },
+      {
+        "file": "07-mobile-full-page-375.png",
+        "size_bytes": 288411,
+        "sha256": "FD4473A47D88F68F80326F43BA5B57271AE16CC1117F273C8C3CB1B9561F8177"
+      },
+      {
+        "file": "08-mobile-hero-375.png",
+        "size_bytes": 61646,
+        "sha256": "79627D988A0F0828B32E4F1BCEA1BE7AE37D91079A263D1F500B3C1917C693CB"
+      },
+      {
+        "file": "09-mobile-samples-375.png",
+        "size_bytes": 44865,
+        "sha256": "A87AB615B020743B281C284F4DECA161E39912562518C9E294EB3D1DB38E0775"
+      },
+      {
+        "file": "10-mobile-preview-375.png",
+        "size_bytes": 78452,
+        "sha256": "75E7FECC3F07D8B44E29398082EEA886E12C8BDF5397F50CBFB4EA31E02A8110"
+      },
+      {
+        "file": "11-mobile-offer-faq-375.png",
+        "size_bytes": 36562,
+        "sha256": "517EBE5AE4CBCBE9E7510740569D47B11D670971B7F7655A9A9C5E8F79A7805E"
+      },
+      {
+        "file": "12-desktop-product.png",
+        "size_bytes": 103127,
+        "sha256": "1CD7C99F2FA0CF0ED64D33C07780745A4AD23B90BA36500F098F70946CA32056"
+      },
+      {
+        "file": "13-desktop-cart.png",
+        "size_bytes": 52287,
+        "sha256": "DF1984077D4F773767048C16F934D58A17E8BF178F9984DAB2541EB086C6CF0F"
+      },
+      {
+        "file": "14-desktop-preview-with-photo.png",
+        "size_bytes": 145397,
+        "sha256": "C725703727400DBEF41405675D8F78BC350B3BC664B7243E56809AFB47B09470"
+      },
+      {
+        "file": "15-mobile-preview-with-photo-375.png",
+        "size_bytes": 81412,
+        "sha256": "19A78E938F7918B6F01E8BA677B514F6A25D82A82D0940A7B49242DF0DAAE7AF"
+      },
+      {
+        "file": "16-desktop-checkout.png",
+        "size_bytes": 56797,
+        "sha256": "883D249CA82706B0305FCF843D07A173A6974CE9E03C2C3677AA1CCA9F8E64E1"
+      },
+      {
+        "file": "17-desktop-my-account.png",
+        "size_bytes": 33345,
+        "sha256": "67FB6861B9CEFA662BF81F104D8C41F54FA2933028B67CC0C98D990C515EA80E"
+      }
+    ]
+  },
+  "safety": {
+    "paypal_actions": 0,
+    "real_money_actions": 0,
+    "model_calls": 0,
+    "production_ai_calls": 0,
+    "production_deployment": 0,
+    "shared_infra_mutations": 0,
+    "paid_purchases": 0,
+    "global_docker_prune": 0,
+    "elementor_installed": false,
+    "ht_slider_installed": false,
+    "g4_actions": 0,
+    "runtime_teardown": 0
+  },
+  "errors": []
+}

@@ -1,0 +1,5975 @@
+{
+  "time": "2026-10-04T09:44:09.448Z",
+  "browser": "154.0.4258.53",
+  "runs": [
+    {
+      "label": "desktop",
+      "mode": "normal",
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "failures": [],
+      "hero": [
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 5731.0999999940395,
+            "layoutTop": -30,
+            "layoutHeight": 1060,
+            "rect": {
+              "x": -90.8702392578125,
+              "y": -72.31494140625,
+              "width": 1619.7591552734375,
+              "height": 1144.6298828125,
+              "top": -72.31494140625,
+              "right": 1528.888916015625,
+              "bottom": 1072.31494140625,
+              "left": -90.8702392578125
+            },
+            "transform": "matrix(1.07984, 0, 0, 1.07984, -0.990679, 0)",
+            "filter": "blur(16.4266px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-focus-breathe",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 5746,
+            "layoutTop": 145,
+            "layoutHeight": 478,
+            "rect": {
+              "x": 340.8963317871094,
+              "y": 136.34642028808594,
+              "width": 747.0010986328125,
+              "height": 497.30712890625,
+              "top": 136.34642028808594,
+              "right": 1087.8974304199219,
+              "bottom": 633.6535491943359,
+              "left": 340.8963317871094
+            },
+            "transform": "matrix(1.04039, 0, 0, 1.04039, -5.60308, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "bms-focus-pan",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 5756.0999999940395,
+            "layoutTop": 637,
+            "layoutHeight": 283,
+            "rect": {
+              "x": 24,
+              "y": 637.421875,
+              "width": 1392,
+              "height": 282.578125,
+              "top": 637.421875,
+              "right": 1416,
+              "bottom": 920,
+              "left": 24
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-title-entry",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        },
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 9677.20000000298,
+            "layoutTop": -30,
+            "layoutHeight": 1060,
+            "rect": {
+              "x": -118.36370849609375,
+              "y": -98.8056640625,
+              "width": 1694.733154296875,
+              "height": 1197.611328125,
+              "top": -98.8056640625,
+              "right": 1576.3694458007812,
+              "bottom": 1098.8056640625,
+              "left": -118.36370849609375
+            },
+            "transform": "matrix(1.12982, 0, 0, 1.12982, 9.00282, 0)",
+            "filter": "blur(21.9802px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-focus-breathe",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 9688.79999999702,
+            "layoutTop": 145,
+            "layoutHeight": 478,
+            "rect": {
+              "x": 315.70892333984375,
+              "y": 124.53579711914062,
+              "width": 782.4824829101562,
+              "height": 520.928466796875,
+              "top": 124.53579711914062,
+              "right": 1098.19140625,
+              "bottom": 645.4642639160156,
+              "left": 315.70892333984375
+            },
+            "transform": "matrix(1.08981, 0, 0, 1.08981, -13.0499, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "bms-focus-pan",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 9697.79999999702,
+            "layoutTop": 637,
+            "layoutHeight": 283,
+            "rect": {
+              "x": 24,
+              "y": 637.421875,
+              "width": 1392,
+              "height": 282.578125,
+              "top": 637.421875,
+              "right": 1416,
+              "bottom": 920,
+              "left": 24
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-title-entry",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        },
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 13543.29999999702,
+            "layoutTop": -30,
+            "layoutHeight": 1060,
+            "rect": {
+              "x": -86.5472412109375,
+              "y": -68.22576904296875,
+              "width": 1608.1861572265625,
+              "height": 1136.45166015625,
+              "top": -68.22576904296875,
+              "right": 1521.638916015625,
+              "bottom": 1068.2258911132812,
+              "left": -86.5472412109375
+            },
+            "transform": "matrix(1.07212, 0, 0, 1.07212, -2.45415, 0)",
+            "filter": "blur(15.5693px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-focus-breathe",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 13554.09999999404,
+            "layoutTop": 145,
+            "layoutHeight": 478,
+            "rect": {
+              "x": 345.1338195800781,
+              "y": 138.36395263671875,
+              "width": 740.940185546875,
+              "height": 493.2720947265625,
+              "top": 138.36395263671875,
+              "right": 1086.0740051269531,
+              "bottom": 631.6360473632812,
+              "left": 345.1338195800781
+            },
+            "transform": "matrix(1.03195, 0, 0, 1.03195, -4.39611, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "bms-focus-pan",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 13564,
+            "layoutTop": 637,
+            "layoutHeight": 283,
+            "rect": {
+              "x": 24,
+              "y": 637.421875,
+              "width": 1392,
+              "height": 282.578125,
+              "top": 637.421875,
+              "right": 1416,
+              "bottom": 920,
+              "left": 24
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-title-entry",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        }
+      ],
+      "splits": [
+        {
+          "selector": "#what-you-get",
+          "states": [
+            {
+              "name": "enter",
+              "container": {
+                "scrollY": 309,
+                "time": 14700.90000000596,
+                "layoutTop": 1000,
+                "layoutHeight": 718,
+                "rect": {
+                  "x": 0,
+                  "y": 691,
+                  "width": 1440,
+                  "height": 718,
+                  "top": 691,
+                  "right": 1440,
+                  "bottom": 1409,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1.1280558789289872",
+                  "--split-y": "32.0139697322468px",
+                  "--copy-y": "23.050058207217695px",
+                  "--copy-opacity": "0.8559371362048894"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 309,
+                "time": 14711.79999999702,
+                "layoutTop": 1048,
+                "layoutHeight": 622,
+                "rect": {
+                  "x": -15.230621337890625,
+                  "y": 731.1885986328125,
+                  "width": 832.117431640625,
+                  "height": 701.6507568359375,
+                  "top": 731.1885986328125,
+                  "right": 816.8868103027344,
+                  "bottom": 1432.83935546875,
+                  "left": -15.230621337890625
+                },
+                "transform": "matrix(1.12806, 0, 0, 1.12806, 0, 32.014)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "copy": {
+                "scrollY": 309,
+                "time": 14721.90000000596,
+                "layoutTop": 1170,
+                "layoutHeight": 377,
+                "rect": {
+                  "x": 899.25,
+                  "y": 884.346923828125,
+                  "width": 508.75,
+                  "height": 377.390625,
+                  "top": 884.346923828125,
+                  "right": 1408,
+                  "bottom": 1261.737548828125,
+                  "left": 899.25
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 23.0501)",
+                "filter": "none",
+                "opacity": "0.855937",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            },
+            {
+              "name": "mid",
+              "container": {
+                "scrollY": 859,
+                "time": 15838.70000000298,
+                "layoutTop": 1000,
+                "layoutHeight": 718,
+                "rect": {
+                  "x": 0,
+                  "y": 141,
+                  "width": 1440,
+                  "height": 718,
+                  "top": 141,
+                  "right": 1440,
+                  "bottom": 859,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1",
+                  "--split-y": "0px",
+                  "--copy-y": "0px",
+                  "--copy-opacity": "1"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 859,
+                "time": 15846.79999999702,
+                "layoutTop": 1048,
+                "layoutHeight": 622,
+                "rect": {
+                  "x": 32,
+                  "y": 189,
+                  "width": 737.65625,
+                  "height": 622,
+                  "top": 189,
+                  "right": 769.65625,
+                  "bottom": 811,
+                  "left": 32
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "copy": {
+                "scrollY": 859,
+                "time": 15855.5,
+                "layoutTop": 1170,
+                "layoutHeight": 377,
+                "rect": {
+                  "x": 899.25,
+                  "y": 311.296875,
+                  "width": 508.75,
+                  "height": 377.390625,
+                  "top": 311.296875,
+                  "right": 1408,
+                  "bottom": 688.6875,
+                  "left": 899.25
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            },
+            {
+              "name": "exit",
+              "container": {
+                "scrollY": 1409,
+                "time": 16852.29999999702,
+                "layoutTop": 1000,
+                "layoutHeight": 718,
+                "rect": {
+                  "x": 0,
+                  "y": -409,
+                  "width": 1440,
+                  "height": 718,
+                  "top": -409,
+                  "right": 1440,
+                  "bottom": 309,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1.1280558789289872",
+                  "--split-y": "-32.01396973224679px",
+                  "--copy-y": "0px",
+                  "--copy-opacity": "1"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 1409,
+                "time": 16865.70000000298,
+                "layoutTop": 1048,
+                "layoutHeight": 622,
+                "rect": {
+                  "x": -15.230621337890625,
+                  "y": -432.8393859863281,
+                  "width": 832.117431640625,
+                  "height": 701.6507568359375,
+                  "top": -432.8393859863281,
+                  "right": 816.8868103027344,
+                  "bottom": 268.8113708496094,
+                  "left": -15.230621337890625
+                },
+                "transform": "matrix(1.12806, 0, 0, 1.12806, 0, -32.014)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "copy": {
+                "scrollY": 1409,
+                "time": 16874.59999999404,
+                "layoutTop": 1170,
+                "layoutHeight": 377,
+                "rect": {
+                  "x": 899.25,
+                  "y": -238.703125,
+                  "width": 508.75,
+                  "height": 377.390625,
+                  "top": -238.703125,
+                  "right": 1408,
+                  "bottom": 138.6875,
+                  "left": 899.25
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            }
+          ]
+        },
+        {
+          "selector": "#how-it-works",
+          "states": [
+            {
+              "name": "enter",
+              "container": {
+                "scrollY": 2674,
+                "time": 18307.90000000596,
+                "layoutTop": 3371,
+                "layoutHeight": 686,
+                "rect": {
+                  "x": 0,
+                  "y": 696.5,
+                  "width": 1440,
+                  "height": 686,
+                  "top": 696.5,
+                  "right": 1440,
+                  "bottom": 1382.5,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1.1281138790035588",
+                  "--split-y": "32.02846975088968px",
+                  "--copy-y": "23.060498220640568px",
+                  "--copy-opacity": "0.8558718861209964"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 2674,
+                "time": 18320.70000000298,
+                "layoutTop": 3447,
+                "layoutHeight": 534,
+                "rect": {
+                  "x": 74.99710083007812,
+                  "y": 770.3220825195312,
+                  "width": 651.662109375,
+                  "height": 602.4127807617188,
+                  "top": 770.3220825195312,
+                  "right": 726.6592102050781,
+                  "bottom": 1372.73486328125,
+                  "left": 74.99710083007812
+                },
+                "transform": "matrix(1.12811, 0, 0, 1.12811, 0, 32.0285)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "copy": {
+                "scrollY": 2674,
+                "time": 18330.59999999404,
+                "layoutTop": 3442,
+                "layoutHeight": 543,
+                "rect": {
+                  "x": 899.25,
+                  "y": 791.1854858398438,
+                  "width": 508.75,
+                  "height": 542.7500610351562,
+                  "top": 791.1854858398438,
+                  "right": 1408,
+                  "bottom": 1333.935546875,
+                  "left": 899.25
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 23.0605)",
+                "filter": "none",
+                "opacity": "0.855872",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            },
+            {
+              "name": "mid",
+              "container": {
+                "scrollY": 3214,
+                "time": 19099,
+                "layoutTop": 3371,
+                "layoutHeight": 686,
+                "rect": {
+                  "x": 0,
+                  "y": 156.5,
+                  "width": 1440,
+                  "height": 686,
+                  "top": 156.5,
+                  "right": 1440,
+                  "bottom": 842.5,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1",
+                  "--split-y": "0px",
+                  "--copy-y": "0px",
+                  "--copy-opacity": "1"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 3214,
+                "time": 19107.29999999702,
+                "layoutTop": 3447,
+                "layoutHeight": 534,
+                "rect": {
+                  "x": 112,
+                  "y": 232.5,
+                  "width": 577.65625,
+                  "height": 534,
+                  "top": 232.5,
+                  "right": 689.65625,
+                  "bottom": 766.5,
+                  "left": 112
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "copy": {
+                "scrollY": 3214,
+                "time": 19117.5,
+                "layoutTop": 3442,
+                "layoutHeight": 543,
+                "rect": {
+                  "x": 899.25,
+                  "y": 228.125,
+                  "width": 508.75,
+                  "height": 542.75,
+                  "top": 228.125,
+                  "right": 1408,
+                  "bottom": 770.875,
+                  "left": 899.25
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            },
+            {
+              "name": "exit",
+              "container": {
+                "scrollY": 3754,
+                "time": 20041.59999999404,
+                "layoutTop": 3371,
+                "layoutHeight": 686,
+                "rect": {
+                  "x": 0,
+                  "y": -383.5,
+                  "width": 1440,
+                  "height": 686,
+                  "top": -383.5,
+                  "right": 1440,
+                  "bottom": 302.5,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1.1281138790035588",
+                  "--split-y": "-32.02846975088968px",
+                  "--copy-y": "0px",
+                  "--copy-opacity": "1"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 3754,
+                "time": 20052.29999999702,
+                "layoutTop": 3447,
+                "layoutHeight": 534,
+                "rect": {
+                  "x": 74.99710083007812,
+                  "y": -373.73486328125,
+                  "width": 651.662109375,
+                  "height": 602.4127807617188,
+                  "top": -373.73486328125,
+                  "right": 726.6592102050781,
+                  "bottom": 228.67791748046875,
+                  "left": 74.99710083007812
+                },
+                "transform": "matrix(1.12811, 0, 0, 1.12811, 0, -32.0285)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "copy": {
+                "scrollY": 3754,
+                "time": 20059.79999999702,
+                "layoutTop": 3442,
+                "layoutHeight": 543,
+                "rect": {
+                  "x": 899.25,
+                  "y": -311.875,
+                  "width": 508.75,
+                  "height": 542.75,
+                  "top": -311.875,
+                  "right": 1408,
+                  "bottom": 230.875,
+                  "left": 899.25
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            }
+          ]
+        }
+      ],
+      "panels": [
+        {
+          "selector": "#preview .bms-focus-photo-panel",
+          "states": [
+            {
+              "name": "enter",
+              "panel": {
+                "scrollY": 1069,
+                "time": 21750.20000000298,
+                "layoutTop": 1718,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": 0,
+                  "y": 649,
+                  "width": 1440,
+                  "height": 754,
+                  "top": 649,
+                  "right": 1440,
+                  "bottom": 1403,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 1069,
+                "time": 21759.29999999702,
+                "layoutTop": 1718,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": -215.99993896484375,
+                  "y": 469.92510986328125,
+                  "width": 1872,
+                  "height": 980.1998901367188,
+                  "top": 469.92510986328125,
+                  "right": 1656.0000610351562,
+                  "bottom": 1450.125,
+                  "left": -215.99993896484375
+                },
+                "transform": "matrix(1.3, 0, 0, 1.3, 0, -65.9749)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "-65.97491448118586px"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            },
+            {
+              "name": "mid",
+              "panel": {
+                "scrollY": 1595,
+                "time": 22832.90000000596,
+                "layoutTop": 1718,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": 0,
+                  "y": 123,
+                  "width": 1440,
+                  "height": 754,
+                  "top": 123,
+                  "right": 1440,
+                  "bottom": 877,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 1595,
+                "time": 22843.20000000298,
+                "layoutTop": 1718,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": -215.99993896484375,
+                  "y": 9.9000244140625,
+                  "width": 1872,
+                  "height": 980.199951171875,
+                  "top": 9.9000244140625,
+                  "right": 1656.0000610351562,
+                  "bottom": 990.0999755859375,
+                  "left": -215.99993896484375
+                },
+                "transform": "matrix(1.3, 0, 0, 1.3, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "0px"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            },
+            {
+              "name": "exit",
+              "panel": {
+                "scrollY": 2121,
+                "time": 24014.90000000596,
+                "layoutTop": 1718,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": 0,
+                  "y": -403,
+                  "width": 1440,
+                  "height": 754,
+                  "top": -403,
+                  "right": 1440,
+                  "bottom": 351,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 2121,
+                "time": 24022.70000000298,
+                "layoutTop": 1718,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": -215.99993896484375,
+                  "y": -450.12506103515625,
+                  "width": 1872,
+                  "height": 980.199951171875,
+                  "top": -450.12506103515625,
+                  "right": 1656.0000610351562,
+                  "bottom": 530.0748901367188,
+                  "left": -215.99993896484375
+                },
+                "transform": "matrix(1.3, 0, 0, 1.3, 0, 65.9749)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "65.97491448118586px"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            }
+          ]
+        },
+        {
+          "selector": "#offer",
+          "states": [
+            {
+              "name": "enter",
+              "panel": {
+                "scrollY": 3408,
+                "time": 25199,
+                "layoutTop": 4057,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": 0,
+                  "y": 648.5,
+                  "width": 1440,
+                  "height": 754,
+                  "top": 648.5,
+                  "right": 1440,
+                  "bottom": 1402.5,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 3408,
+                "time": 25209.79999999702,
+                "layoutTop": 4057,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": -215.99993896484375,
+                  "y": 469.42510986328125,
+                  "width": 1872,
+                  "height": 980.1998901367188,
+                  "top": 469.42510986328125,
+                  "right": 1656.0000610351562,
+                  "bottom": 1449.625,
+                  "left": -215.99993896484375
+                },
+                "transform": "matrix(1.3, 0, 0, 1.3, 0, -65.9749)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "-65.97491448118586px"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            },
+            {
+              "name": "mid",
+              "panel": {
+                "scrollY": 3934,
+                "time": 26244.29999999702,
+                "layoutTop": 4057,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": 0,
+                  "y": 122.5,
+                  "width": 1440,
+                  "height": 754,
+                  "top": 122.5,
+                  "right": 1440,
+                  "bottom": 876.5,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 3934,
+                "time": 26253.20000000298,
+                "layoutTop": 4057,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": -215.99993896484375,
+                  "y": 9.4000244140625,
+                  "width": 1872,
+                  "height": 980.199951171875,
+                  "top": 9.4000244140625,
+                  "right": 1656.0000610351562,
+                  "bottom": 989.5999755859375,
+                  "left": -215.99993896484375
+                },
+                "transform": "matrix(1.3, 0, 0, 1.3, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "0px"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            },
+            {
+              "name": "exit",
+              "panel": {
+                "scrollY": 4460,
+                "time": 27437.09999999404,
+                "layoutTop": 4057,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": 0,
+                  "y": -403.5,
+                  "width": 1440,
+                  "height": 754,
+                  "top": -403.5,
+                  "right": 1440,
+                  "bottom": 350.5,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 1440,
+                "scrollWidth": 1440
+              },
+              "image": {
+                "scrollY": 4460,
+                "time": 27451,
+                "layoutTop": 4057,
+                "layoutHeight": 754,
+                "rect": {
+                  "x": -215.99993896484375,
+                  "y": -450.62506103515625,
+                  "width": 1872,
+                  "height": 980.199951171875,
+                  "top": -450.62506103515625,
+                  "right": 1656.0000610351562,
+                  "bottom": 529.5748901367188,
+                  "left": -215.99993896484375
+                },
+                "transform": "matrix(1.3, 0, 0, 1.3, 0, 65.9749)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "65.97491448118586px"
+                },
+                "width": 1440,
+                "scrollWidth": 1440
+              }
+            }
+          ]
+        }
+      ],
+      "cards": [
+        [
+          {
+            "name": "enter",
+            "scrollY": 5074,
+            "time": 28439.70000000298,
+            "layoutTop": 5703,
+            "layoutHeight": 853,
+            "rect": {
+              "x": 161.58998107910156,
+              "y": 775.9432373046875,
+              "width": 1116.820068359375,
+              "height": 688.8040771484375,
+              "top": 775.9432373046875,
+              "right": 1278.4100494384766,
+              "bottom": 1464.747314453125,
+              "left": 161.58998107910156
+            },
+            "transform": "matrix3d(0.868095, 0, 0, 0, 0, 0.840861, 0.215734, -0.000134834, 0, -0.248515, 0.968628, -0.000605393, 0, 47.9655, -83.9396, 1.05246)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "14.389638424177011deg",
+              "--card-scale": "0.8680949811117107",
+              "--card-y": "47.96546141392337px",
+              "--card-depth": "-83.9395574743659px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          {
+            "name": "mid",
+            "scrollY": 5630,
+            "time": 29265.29999999702,
+            "layoutTop": 5703,
+            "layoutHeight": 853,
+            "rect": {
+              "x": 80.06763458251953,
+              "y": 73.28317260742188,
+              "width": 1279.86474609375,
+              "height": 853.1865234375,
+              "top": 73.28317260742188,
+              "right": 1359.9323806762695,
+              "bottom": 926.4696960449219,
+              "left": 80.06763458251953
+            },
+            "transform": "matrix3d(0.999881, 0, 0, 0, 0, 0.999881, -0.000226028, 1.41267e-07, 0, 0.000226055, 1, -0.000625, 0, -0.0431732, -0.0755532, 1.00005)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-0.01295196977873836deg",
+              "--card-scale": "0.9998812736103616",
+              "--card-y": "-0.04317323259579453px",
+              "--card-depth": "-0.07555315704264043px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          {
+            "name": "exit",
+            "scrollY": 6185,
+            "time": 30540.5,
+            "layoutTop": 5703,
+            "layoutHeight": 853,
+            "rect": {
+              "x": 161.58998107910156,
+              "y": -463.85662841796875,
+              "width": 1116.820068359375,
+              "height": 688.8040161132812,
+              "top": -463.85662841796875,
+              "right": 1278.4100494384766,
+              "bottom": 224.9473876953125,
+              "left": 161.58998107910156
+            },
+            "transform": "matrix3d(0.868095, 0, 0, 0, 0, 0.840861, -0.215734, 0.000134834, 0, 0.248515, 0.968628, -0.000605393, 0, -47.9655, -83.9396, 1.05246)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-14.389638424177011deg",
+              "--card-scale": "0.8680949811117107",
+              "--card-y": "-47.96546141392337px",
+              "--card-depth": "-83.9395574743659px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        ],
+        [
+          {
+            "name": "enter",
+            "scrollY": 6008,
+            "time": 31403.90000000596,
+            "layoutTop": 6637,
+            "layoutHeight": 853,
+            "rect": {
+              "x": 161.58998107910156,
+              "y": 775.2713623046875,
+              "width": 1116.820068359375,
+              "height": 688.8040771484375,
+              "top": 775.2713623046875,
+              "right": 1278.4100494384766,
+              "bottom": 1464.075439453125,
+              "left": 161.58998107910156
+            },
+            "transform": "matrix3d(0.868095, 0, 0, 0, 0, 0.840861, 0.215734, -0.000134834, 0, -0.248515, 0.968628, -0.000605393, 0, 47.9655, -83.9396, 1.05246)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "14.389638424177011deg",
+              "--card-scale": "0.8680949811117107",
+              "--card-y": "47.96546141392337px",
+              "--card-depth": "-83.9395574743659px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          {
+            "name": "mid",
+            "scrollY": 6564,
+            "time": 32459.29999999702,
+            "layoutTop": 6637,
+            "layoutHeight": 853,
+            "rect": {
+              "x": 80.06763458251953,
+              "y": 72.611328125,
+              "width": 1279.86474609375,
+              "height": 853.1865234375,
+              "top": 72.611328125,
+              "right": 1359.9323806762695,
+              "bottom": 925.7978515625,
+              "left": 80.06763458251953
+            },
+            "transform": "matrix3d(0.999881, 0, 0, 0, 0, 0.999881, -0.000226028, 1.41267e-07, 0, 0.000226055, 1, -0.000625, 0, -0.0431732, -0.0755532, 1.00005)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-0.01295196977873836deg",
+              "--card-scale": "0.9998812736103616",
+              "--card-y": "-0.04317323259579453px",
+              "--card-depth": "-0.07555315704264043px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          {
+            "name": "exit",
+            "scrollY": 7119,
+            "time": 33749.09999999404,
+            "layoutTop": 6637,
+            "layoutHeight": 853,
+            "rect": {
+              "x": 161.58998107910156,
+              "y": -464.528564453125,
+              "width": 1116.820068359375,
+              "height": 688.8040771484375,
+              "top": -464.528564453125,
+              "right": 1278.4100494384766,
+              "bottom": 224.2755126953125,
+              "left": 161.58998107910156
+            },
+            "transform": "matrix3d(0.868095, 0, 0, 0, 0, 0.840861, -0.215734, 0.000134834, 0, 0.248515, 0.968628, -0.000605393, 0, -47.9655, -83.9396, 1.05246)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-14.389638424177011deg",
+              "--card-scale": "0.8680949811117107",
+              "--card-y": "-47.96546141392337px",
+              "--card-depth": "-83.9395574743659px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        ],
+        [
+          {
+            "name": "enter",
+            "scrollY": 6941,
+            "time": 34629.29999999702,
+            "layoutTop": 7570,
+            "layoutHeight": 853,
+            "rect": {
+              "x": 161.58998107910156,
+              "y": 775.599365234375,
+              "width": 1116.820068359375,
+              "height": 688.80419921875,
+              "top": 775.599365234375,
+              "right": 1278.4100494384766,
+              "bottom": 1464.403564453125,
+              "left": 161.58998107910156
+            },
+            "transform": "matrix3d(0.868095, 0, 0, 0, 0, 0.840861, 0.215734, -0.000134834, 0, -0.248515, 0.968628, -0.000605393, 0, 47.9655, -83.9396, 1.05246)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "14.389638424177011deg",
+              "--card-scale": "0.8680949811117107",
+              "--card-y": "47.96546141392337px",
+              "--card-depth": "-83.9395574743659px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          {
+            "name": "mid",
+            "scrollY": 7497,
+            "time": 35659.20000000298,
+            "layoutTop": 7570,
+            "layoutHeight": 853,
+            "rect": {
+              "x": 80.06763458251953,
+              "y": 72.939453125,
+              "width": 1279.86474609375,
+              "height": 853.1865234375,
+              "top": 72.939453125,
+              "right": 1359.9323806762695,
+              "bottom": 926.1259765625,
+              "left": 80.06763458251953
+            },
+            "transform": "matrix3d(0.999881, 0, 0, 0, 0, 0.999881, -0.000226028, 1.41267e-07, 0, 0.000226055, 1, -0.000625, 0, -0.0431732, -0.0755532, 1.00005)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-0.01295196977873836deg",
+              "--card-scale": "0.9998812736103616",
+              "--card-y": "-0.04317323259579453px",
+              "--card-depth": "-0.07555315704264043px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          {
+            "name": "exit",
+            "scrollY": 8052,
+            "time": 36934.40000000596,
+            "layoutTop": 7570,
+            "layoutHeight": 853,
+            "rect": {
+              "x": 161.58998107910156,
+              "y": -464.200439453125,
+              "width": 1116.820068359375,
+              "height": 688.80419921875,
+              "top": -464.200439453125,
+              "right": 1278.4100494384766,
+              "bottom": 224.603759765625,
+              "left": 161.58998107910156
+            },
+            "transform": "matrix3d(0.868095, 0, 0, 0, 0, 0.840861, -0.215734, 0.000134834, 0, 0.248515, 0.968628, -0.000605393, 0, -47.9655, -83.9396, 1.05246)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-14.389638424177011deg",
+              "--card-scale": "0.8680949811117107",
+              "--card-y": "-47.96546141392337px",
+              "--card-depth": "-83.9395574743659px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        ]
+      ],
+      "closing": [
+        {
+          "name": "early",
+          "outer": {
+            "scrollY": 8588,
+            "time": 37784.5,
+            "layoutTop": 8543,
+            "layoutHeight": 1900,
+            "rect": {
+              "x": 0,
+              "y": -44.734375,
+              "width": 1440,
+              "height": 1900,
+              "top": -44.734375,
+              "right": 1440,
+              "bottom": 1855.265625,
+              "left": 0
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--closing-reveal": "14.5%",
+              "--closing-left": "99px",
+              "--closing-right": "-90px",
+              "--closing-text-y": "30.4px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "inner": {
+            "scrollY": 8588,
+            "time": 37798.40000000596,
+            "layoutTop": 8588,
+            "layoutHeight": 1000,
+            "rect": {
+              "x": 264.84375,
+              "y": 0,
+              "width": 910.296875,
+              "height": 1000,
+              "top": 0,
+              "right": 1175.140625,
+              "bottom": 1000,
+              "left": 264.84375
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "sticky",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "heading": {
+            "scrollY": 8588,
+            "time": 37809.5,
+            "layoutTop": 8892,
+            "layoutHeight": 259,
+            "rect": {
+              "x": 296.84375,
+              "y": 334.1031188964844,
+              "width": 846.296875,
+              "height": 259.1875305175781,
+              "top": 334.1031188964844,
+              "right": 1143.140625,
+              "bottom": 593.2906494140625,
+              "left": 296.84375
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 30.4)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "left": {
+            "scrollY": 8588,
+            "time": 37822.09999999404,
+            "layoutTop": 8768,
+            "layoutHeight": 245,
+            "rect": {
+              "x": 322.4375,
+              "y": 279,
+              "width": 200,
+              "height": 245,
+              "top": 279,
+              "right": 522.4375,
+              "bottom": 524,
+              "left": 322.4375
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 99)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "right": {
+            "scrollY": 8588,
+            "time": 37831.40000000596,
+            "layoutTop": 9213,
+            "layoutHeight": 245,
+            "rect": {
+              "x": 917.546875,
+              "y": 535,
+              "width": 200,
+              "height": 245,
+              "top": 535,
+              "right": 1117.546875,
+              "bottom": 780,
+              "left": 917.546875
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, -90)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "cta": {
+            "scrollY": 8588,
+            "time": 37842.79999999702,
+            "layoutTop": 9183,
+            "layoutHeight": 48,
+            "rect": {
+              "x": 601.796875,
+              "y": 594.890625,
+              "width": 236.390625,
+              "height": 48.390625,
+              "top": 594.890625,
+              "right": 838.1875,
+              "bottom": 643.28125,
+              "left": 601.796875
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        },
+        {
+          "name": "mid",
+          "outer": {
+            "scrollY": 8993,
+            "time": 38548.79999999702,
+            "layoutTop": 8543,
+            "layoutHeight": 1900,
+            "rect": {
+              "x": 0,
+              "y": -449.734375,
+              "width": 1440,
+              "height": 1900,
+              "top": -449.734375,
+              "right": 1440,
+              "bottom": 1450.265625,
+              "left": 0
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--closing-reveal": "55%",
+              "--closing-left": "0px",
+              "--closing-right": "0px",
+              "--closing-text-y": "16px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "inner": {
+            "scrollY": 8993,
+            "time": 38556.5,
+            "layoutTop": 8993,
+            "layoutHeight": 1000,
+            "rect": {
+              "x": 264.84375,
+              "y": 0,
+              "width": 910.296875,
+              "height": 1000,
+              "top": 0,
+              "right": 1175.140625,
+              "bottom": 1000,
+              "left": 264.84375
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "sticky",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "heading": {
+            "scrollY": 8993,
+            "time": 38565.59999999404,
+            "layoutTop": 9297,
+            "layoutHeight": 259,
+            "rect": {
+              "x": 296.84375,
+              "y": 319.703125,
+              "width": 846.296875,
+              "height": 259.1875,
+              "top": 319.703125,
+              "right": 1143.140625,
+              "bottom": 578.890625,
+              "left": 296.84375
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 16)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "left": {
+            "scrollY": 8993,
+            "time": 38572.59999999404,
+            "layoutTop": 9173,
+            "layoutHeight": 245,
+            "rect": {
+              "x": 322.4375,
+              "y": 180,
+              "width": 200,
+              "height": 245,
+              "top": 180,
+              "right": 522.4375,
+              "bottom": 425,
+              "left": 322.4375
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "right": {
+            "scrollY": 8993,
+            "time": 38579.59999999404,
+            "layoutTop": 9618,
+            "layoutHeight": 245,
+            "rect": {
+              "x": 917.546875,
+              "y": 625,
+              "width": 200,
+              "height": 245,
+              "top": 625,
+              "right": 1117.546875,
+              "bottom": 870,
+              "left": 917.546875
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "cta": {
+            "scrollY": 8993,
+            "time": 38587.59999999404,
+            "layoutTop": 9588,
+            "layoutHeight": 48,
+            "rect": {
+              "x": 601.796875,
+              "y": 594.890625,
+              "width": 236.390625,
+              "height": 48.390625,
+              "top": 594.890625,
+              "right": 838.1875,
+              "bottom": 643.28125,
+              "left": 601.796875
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        },
+        {
+          "name": "late",
+          "outer": {
+            "scrollY": 9398,
+            "time": 39293.70000000298,
+            "layoutTop": 8543,
+            "layoutHeight": 1900,
+            "rect": {
+              "x": 0,
+              "y": -854.734375,
+              "width": 1440,
+              "height": 1900,
+              "top": -854.734375,
+              "right": 1440,
+              "bottom": 1045.265625,
+              "left": 0
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--closing-reveal": "95.5%",
+              "--closing-left": "-98.99999999999999px",
+              "--closing-right": "89.99999999999999px",
+              "--closing-text-y": "1.6000000000000014px"
+            },
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "inner": {
+            "scrollY": 9398,
+            "time": 39303.29999999702,
+            "layoutTop": 9398,
+            "layoutHeight": 1000,
+            "rect": {
+              "x": 264.84375,
+              "y": 0,
+              "width": 910.296875,
+              "height": 1000,
+              "top": 0,
+              "right": 1175.140625,
+              "bottom": 1000,
+              "left": 264.84375
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "sticky",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "heading": {
+            "scrollY": 9398,
+            "time": 39311.70000000298,
+            "layoutTop": 9702,
+            "layoutHeight": 259,
+            "rect": {
+              "x": 296.84375,
+              "y": 305.3031311035156,
+              "width": 846.296875,
+              "height": 259.1874694824219,
+              "top": 305.3031311035156,
+              "right": 1143.140625,
+              "bottom": 564.4906005859375,
+              "left": 296.84375
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 1.6)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "left": {
+            "scrollY": 9398,
+            "time": 39319.20000000298,
+            "layoutTop": 9578,
+            "layoutHeight": 245,
+            "rect": {
+              "x": 322.4375,
+              "y": 81,
+              "width": 200,
+              "height": 245,
+              "top": 81,
+              "right": 522.4375,
+              "bottom": 326,
+              "left": 322.4375
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, -99)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "right": {
+            "scrollY": 9398,
+            "time": 39328.09999999404,
+            "layoutTop": 10023,
+            "layoutHeight": 245,
+            "rect": {
+              "x": 917.546875,
+              "y": 715,
+              "width": 200,
+              "height": 245,
+              "top": 715,
+              "right": 1117.546875,
+              "bottom": 960,
+              "left": 917.546875
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 90)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "cta": {
+            "scrollY": 9398,
+            "time": 39336.59999999404,
+            "layoutTop": 9993,
+            "layoutHeight": 48,
+            "rect": {
+              "x": 601.796875,
+              "y": 594.890625,
+              "width": 236.390625,
+              "height": 48.390625,
+              "top": 594.890625,
+              "right": 838.1875,
+              "bottom": 643.28125,
+              "left": 601.796875
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        }
+      ],
+      "routes": [
+        {
+          "name": "product",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/product/birthday-magazine/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "price": "$39.99",
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": false
+        },
+        {
+          "name": "cart",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/cart/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "checkout",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/cart/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "account",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/my-account/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": true
+        }
+      ],
+      "status": 200,
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 10839,
+        "motion": true,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": true,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "heroPausedOffscreen": {
+        "scrollY": 9398,
+        "time": 39451.09999999404,
+        "layoutTop": -30,
+        "layoutHeight": 1060,
+        "rect": {
+          "x": -68.35577392578125,
+          "y": -9449.2333984375,
+          "width": 1560.093505859375,
+          "height": 1102.466796875,
+          "top": -9449.2333984375,
+          "right": 1491.7377319335938,
+          "bottom": -8346.7666015625,
+          "left": -68.35577392578125
+        },
+        "transform": "matrix(1.04006, 0, 0, 1.04006, -8.30895, 0)",
+        "filter": "blur(12.0069px)",
+        "opacity": "1",
+        "position": "absolute",
+        "animation": "bms-focus-breathe",
+        "playState": "paused",
+        "vars": {},
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      "hoverBefore": {
+        "href": "#preview",
+        "first": "none",
+        "second": "matrix(1, 0, 0, 1, 0, 17.2687)"
+      },
+      "hoverAfter": {
+        "href": "#preview",
+        "first": "matrix(1, 0, 0, 1, 0, -17.2687)",
+        "second": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "focus": {
+        "active": true,
+        "outline": "solid"
+      },
+      "preferenceReduced": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "preferenceRestored": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 10839,
+        "motion": true,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": true,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "0.904206"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "0.904206"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "0.904206"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 10839,
+        "motion": true,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": true,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      }
+    },
+    {
+      "label": "desktop",
+      "mode": "reduced",
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "failures": [],
+      "hero": [
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 4318.70000000298,
+            "layoutTop": -30,
+            "layoutHeight": 1060,
+            "rect": {
+              "x": -60,
+              "y": -51.199951171875,
+              "width": 1560,
+              "height": 1102.39990234375,
+              "top": -51.199951171875,
+              "right": 1500,
+              "bottom": 1051.199951171875,
+              "left": -60
+            },
+            "transform": "matrix(1.04, 0, 0, 1.04, 0, 0)",
+            "filter": "blur(12px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 4327.20000000298,
+            "layoutTop": 145,
+            "layoutHeight": 478,
+            "rect": {
+              "x": 361,
+              "y": 146,
+              "width": 718,
+              "height": 478,
+              "top": 146,
+              "right": 1079,
+              "bottom": 624,
+              "left": 361
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 4338.70000000298,
+            "layoutTop": 637,
+            "layoutHeight": 283,
+            "rect": {
+              "x": 24,
+              "y": 637.421875,
+              "width": 1392,
+              "height": 282.578125,
+              "top": 637.421875,
+              "right": 1416,
+              "bottom": 920,
+              "left": 24
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        }
+      ],
+      "splits": [],
+      "panels": [],
+      "cards": [],
+      "closing": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      }
+    },
+    {
+      "label": "desktop",
+      "mode": "no-js",
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "failures": [],
+      "hero": [
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 2727.5,
+            "layoutTop": -30,
+            "layoutHeight": 1060,
+            "rect": {
+              "x": -60,
+              "y": -51.199951171875,
+              "width": 1560,
+              "height": 1102.39990234375,
+              "top": -51.199951171875,
+              "right": 1500,
+              "bottom": 1051.199951171875,
+              "left": -60
+            },
+            "transform": "matrix(1.04, 0, 0, 1.04, 0, 0)",
+            "filter": "blur(12px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 2737.0999999940395,
+            "layoutTop": 145,
+            "layoutHeight": 478,
+            "rect": {
+              "x": 361,
+              "y": 146,
+              "width": 718,
+              "height": 478,
+              "top": 146,
+              "right": 1079,
+              "bottom": 624,
+              "left": 361
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 2745.4000000059605,
+            "layoutTop": 640,
+            "layoutHeight": 280,
+            "rect": {
+              "x": 24,
+              "y": 639.8125,
+              "width": 1392,
+              "height": 280.1875,
+              "top": 639.8125,
+              "right": 1416,
+              "bottom": 920,
+              "left": 24
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        }
+      ],
+      "splits": [],
+      "panels": [],
+      "cards": [],
+      "closing": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      }
+    },
+    {
+      "label": "desktop",
+      "mode": "motion-unavailable",
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "failures": [],
+      "hero": [
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 5191.0999999940395,
+            "layoutTop": -30,
+            "layoutHeight": 1060,
+            "rect": {
+              "x": -60,
+              "y": -51.199951171875,
+              "width": 1560,
+              "height": 1102.39990234375,
+              "top": -51.199951171875,
+              "right": 1500,
+              "bottom": 1051.199951171875,
+              "left": -60
+            },
+            "transform": "matrix(1.04, 0, 0, 1.04, 0, 0)",
+            "filter": "blur(12px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 5199.4000000059605,
+            "layoutTop": 145,
+            "layoutHeight": 478,
+            "rect": {
+              "x": 361,
+              "y": 146,
+              "width": 718,
+              "height": 478,
+              "top": 146,
+              "right": 1079,
+              "bottom": 624,
+              "left": 361
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 5206.29999999702,
+            "layoutTop": 640,
+            "layoutHeight": 280,
+            "rect": {
+              "x": 24,
+              "y": 639.8125,
+              "width": 1392,
+              "height": 280.1875,
+              "top": 639.8125,
+              "right": 1416,
+              "bottom": 920,
+              "left": 24
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 1440,
+            "scrollWidth": 1440
+          }
+        }
+      ],
+      "splits": [],
+      "panels": [],
+      "cards": [],
+      "closing": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "normal",
+      "width": 375,
+      "height": 812,
+      "errors": [],
+      "failures": [],
+      "hero": [
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 4594,
+            "layoutTop": -30,
+            "layoutHeight": 872,
+            "rect": {
+              "x": -42.234649658203125,
+              "y": -54.52557373046875,
+              "width": 459.46929931640625,
+              "height": 921.0511474609375,
+              "top": -54.52557373046875,
+              "right": 417.2346496582031,
+              "bottom": 866.5255737304688,
+              "left": -42.234649658203125
+            },
+            "transform": "matrix(1.05625, 0, 0, 1.05625, 0, 0)",
+            "filter": "blur(14.0314px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-focus-breathe-mobile",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 4609.399999991059,
+            "layoutTop": 112,
+            "layoutHeight": 274,
+            "rect": {
+              "x": 22.014389038085938,
+              "y": 110.48289489746094,
+              "width": 330.97119140625,
+              "height": 279.0341796875,
+              "top": 110.48289489746094,
+              "right": 352.98558044433594,
+              "bottom": 389.51707458496094,
+              "left": 22.014389038085938
+            },
+            "transform": "matrix(1.01837, 0, 0, 1.01837, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "bms-focus-pan-mobile",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 4621.199999988079,
+            "layoutTop": 409,
+            "layoutHeight": 312,
+            "rect": {
+              "x": 24,
+              "y": 409.328125,
+              "width": 327,
+              "height": 311.671875,
+              "top": 409.328125,
+              "right": 351,
+              "bottom": 721,
+              "left": 24
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-title-entry",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          }
+        },
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 8093.399999991059,
+            "layoutTop": -30,
+            "layoutHeight": 872,
+            "rect": {
+              "x": -47.34942626953125,
+              "y": -64.77862548828125,
+              "width": 469.6988525390625,
+              "height": 941.5572509765625,
+              "top": -64.77862548828125,
+              "right": 422.34942626953125,
+              "bottom": 876.7786254882812,
+              "left": -47.34942626953125
+            },
+            "transform": "matrix(1.07977, 0, 0, 1.07977, 0, 0)",
+            "filter": "blur(16.9709px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-focus-breathe-mobile",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 8103.699999988079,
+            "layoutTop": 112,
+            "layoutHeight": 274,
+            "rect": {
+              "x": 17.7281494140625,
+              "y": 106.8692626953125,
+              "width": 339.543701171875,
+              "height": 286.261474609375,
+              "top": 106.8692626953125,
+              "right": 357.2718505859375,
+              "bottom": 393.1307373046875,
+              "left": 17.7281494140625
+            },
+            "transform": "matrix(1.04475, 0, 0, 1.04475, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "bms-focus-pan-mobile",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 8112.5,
+            "layoutTop": 409,
+            "layoutHeight": 312,
+            "rect": {
+              "x": 24,
+              "y": 409.328125,
+              "width": 327,
+              "height": 311.671875,
+              "top": 409.328125,
+              "right": 351,
+              "bottom": 721,
+              "left": 24
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-title-entry",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          }
+        },
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 11588.699999988079,
+            "layoutTop": -30,
+            "layoutHeight": 872,
+            "rect": {
+              "x": -43.883056640625,
+              "y": -57.829925537109375,
+              "width": 462.76611328125,
+              "height": 927.659912109375,
+              "top": -57.829925537109375,
+              "right": 418.883056640625,
+              "bottom": 869.8299865722656,
+              "left": -43.883056640625
+            },
+            "transform": "matrix(1.06383, 0, 0, 1.06383, 0, 0)",
+            "filter": "blur(14.9788px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-focus-breathe-mobile",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 11597.5,
+            "layoutTop": 112,
+            "layoutHeight": 274,
+            "rect": {
+              "x": 20.65814208984375,
+              "y": 109.3394775390625,
+              "width": 333.6837158203125,
+              "height": 281.321044921875,
+              "top": 109.3394775390625,
+              "right": 354.34185791015625,
+              "bottom": 390.6605224609375,
+              "left": 20.65814208984375
+            },
+            "transform": "matrix(1.02672, 0, 0, 1.02672, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "bms-focus-pan-mobile",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 11605.59999999404,
+            "layoutTop": 409,
+            "layoutHeight": 312,
+            "rect": {
+              "x": 24,
+              "y": 409.328125,
+              "width": 327,
+              "height": 311.671875,
+              "top": 409.328125,
+              "right": 351,
+              "bottom": 721,
+              "left": 24
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "bms-title-entry",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          }
+        }
+      ],
+      "splits": [
+        {
+          "selector": "#what-you-get",
+          "states": [
+            {
+              "name": "enter",
+              "container": {
+                "scrollY": 283,
+                "time": 12320.5,
+                "layoutTop": 812,
+                "layoutHeight": 760,
+                "rect": {
+                  "x": 0,
+                  "y": 529,
+                  "width": 375,
+                  "height": 759.578125,
+                  "top": 529,
+                  "right": 375,
+                  "bottom": 1288.578125,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1.028797709923664",
+                  "--split-y": "8.959287531806616px",
+                  "--copy-y": "7.679389312977099px",
+                  "--copy-opacity": "0.8560114503816794"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 283,
+                "time": 12329.79999999702,
+                "layoutTop": 840,
+                "layoutHeight": 327,
+                "rect": {
+                  "x": 19.29156494140625,
+                  "y": 561.2508544921875,
+                  "width": 336.4168701171875,
+                  "height": 336.4168701171875,
+                  "top": 561.2508544921875,
+                  "right": 355.70843505859375,
+                  "bottom": 897.667724609375,
+                  "left": 19.29156494140625
+                },
+                "transform": "matrix(1.0288, 0, 0, 1.0288, 0, 8.95929)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "copy": {
+                "scrollY": 283,
+                "time": 12338.09999999404,
+                "layoutTop": 1191,
+                "layoutHeight": 345,
+                "rect": {
+                  "x": 24,
+                  "y": 915.6793823242188,
+                  "width": 327,
+                  "height": 344.57818603515625,
+                  "top": 915.6793823242188,
+                  "right": 351,
+                  "bottom": 1260.257568359375,
+                  "left": 24
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 7.67939)",
+                "filter": "none",
+                "opacity": "0.856011",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              }
+            },
+            {
+              "name": "mid",
+              "container": {
+                "scrollY": 786,
+                "time": 13113.29999999702,
+                "layoutTop": 812,
+                "layoutHeight": 760,
+                "rect": {
+                  "x": 0,
+                  "y": 26,
+                  "width": 375,
+                  "height": 759.578125,
+                  "top": 26,
+                  "right": 375,
+                  "bottom": 785.578125,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1",
+                  "--split-y": "0px",
+                  "--copy-y": "0px",
+                  "--copy-opacity": "1"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 786,
+                "time": 13121.5,
+                "layoutTop": 840,
+                "layoutHeight": 327,
+                "rect": {
+                  "x": 24,
+                  "y": 54,
+                  "width": 327,
+                  "height": 327,
+                  "top": 54,
+                  "right": 351,
+                  "bottom": 381,
+                  "left": 24
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "copy": {
+                "scrollY": 786,
+                "time": 13129.5,
+                "layoutTop": 1191,
+                "layoutHeight": 345,
+                "rect": {
+                  "x": 24,
+                  "y": 405,
+                  "width": 327,
+                  "height": 344.578125,
+                  "top": 405,
+                  "right": 351,
+                  "bottom": 749.578125,
+                  "left": 24
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              }
+            },
+            {
+              "name": "exit",
+              "container": {
+                "scrollY": 1289,
+                "time": 13841.5,
+                "layoutTop": 812,
+                "layoutHeight": 760,
+                "rect": {
+                  "x": 0,
+                  "y": -477,
+                  "width": 375,
+                  "height": 759.578125,
+                  "top": -477,
+                  "right": 375,
+                  "bottom": 282.578125,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1.028797709923664",
+                  "--split-y": "-8.959287531806616px",
+                  "--copy-y": "0px",
+                  "--copy-opacity": "1"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 1289,
+                "time": 13849.199999988079,
+                "layoutTop": 840,
+                "layoutHeight": 327,
+                "rect": {
+                  "x": 19.29156494140625,
+                  "y": -462.667724609375,
+                  "width": 336.4168701171875,
+                  "height": 336.4168701171875,
+                  "top": -462.667724609375,
+                  "right": 355.70843505859375,
+                  "bottom": -126.2508544921875,
+                  "left": 19.29156494140625
+                },
+                "transform": "matrix(1.0288, 0, 0, 1.0288, 0, -8.95929)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "copy": {
+                "scrollY": 1289,
+                "time": 13857.39999999106,
+                "layoutTop": 1191,
+                "layoutHeight": 345,
+                "rect": {
+                  "x": 24,
+                  "y": -98,
+                  "width": 327,
+                  "height": 344.578125,
+                  "top": -98,
+                  "right": 351,
+                  "bottom": 246.578125,
+                  "left": 24
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              }
+            }
+          ]
+        },
+        {
+          "selector": "#how-it-works",
+          "states": [
+            {
+              "name": "enter",
+              "container": {
+                "scrollY": 2825,
+                "time": 14884.29999999702,
+                "layoutTop": 3313,
+                "layoutHeight": 986,
+                "rect": {
+                  "x": 0,
+                  "y": 488,
+                  "width": 375,
+                  "height": 986.484375,
+                  "top": 488,
+                  "right": 375,
+                  "bottom": 1474.484375,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1.0287819799777531",
+                  "--split-y": "8.954393770856507px",
+                  "--copy-y": "7.675194660734149px",
+                  "--copy-opacity": "0.8560901001112347"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 2825,
+                "time": 14892.79999999702,
+                "layoutTop": 3361,
+                "layoutHeight": 325,
+                "rect": {
+                  "x": 55.301513671875,
+                  "y": 540.27734375,
+                  "width": 264.39697265625,
+                  "height": 334.3541259765625,
+                  "top": 540.27734375,
+                  "right": 319.698486328125,
+                  "bottom": 874.6314697265625,
+                  "left": 55.301513671875
+                },
+                "transform": "matrix(1.02878, 0, 0, 1.02878, 0, 8.95439)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "copy": {
+                "scrollY": 2825,
+                "time": 14900.29999999702,
+                "layoutTop": 3730,
+                "layoutHeight": 533,
+                "rect": {
+                  "x": 24,
+                  "y": 912.6751708984375,
+                  "width": 327,
+                  "height": 533.484375,
+                  "top": 912.6751708984375,
+                  "right": 351,
+                  "bottom": 1446.1595458984375,
+                  "left": 24
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 7.67519)",
+                "filter": "none",
+                "opacity": "0.85609",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              }
+            },
+            {
+              "name": "mid",
+              "container": {
+                "scrollY": 3400,
+                "time": 15605.89999999106,
+                "layoutTop": 3313,
+                "layoutHeight": 986,
+                "rect": {
+                  "x": 0,
+                  "y": -87,
+                  "width": 375,
+                  "height": 986.484375,
+                  "top": -87,
+                  "right": 375,
+                  "bottom": 899.484375,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1",
+                  "--split-y": "0px",
+                  "--copy-y": "0px",
+                  "--copy-opacity": "1"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 3400,
+                "time": 15613.59999999404,
+                "layoutTop": 3361,
+                "layoutHeight": 325,
+                "rect": {
+                  "x": 59,
+                  "y": -39,
+                  "width": 257,
+                  "height": 325,
+                  "top": -39,
+                  "right": 316,
+                  "bottom": 286,
+                  "left": 59
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "copy": {
+                "scrollY": 3400,
+                "time": 15621.79999999702,
+                "layoutTop": 3730,
+                "layoutHeight": 533,
+                "rect": {
+                  "x": 24,
+                  "y": 330,
+                  "width": 327,
+                  "height": 533.484375,
+                  "top": 330,
+                  "right": 351,
+                  "bottom": 863.484375,
+                  "left": 24
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              }
+            },
+            {
+              "name": "exit",
+              "container": {
+                "scrollY": 3975,
+                "time": 16333.09999999404,
+                "layoutTop": 3313,
+                "layoutHeight": 986,
+                "rect": {
+                  "x": 0,
+                  "y": -662,
+                  "width": 375,
+                  "height": 986.484375,
+                  "top": -662,
+                  "right": 375,
+                  "bottom": 324.484375,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--split-scale": "1.0287819799777531",
+                  "--split-y": "-8.954393770856507px",
+                  "--copy-y": "0px",
+                  "--copy-opacity": "1"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 3975,
+                "time": 16341.59999999404,
+                "layoutTop": 3361,
+                "layoutHeight": 325,
+                "rect": {
+                  "x": 55.301513671875,
+                  "y": -627.6314697265625,
+                  "width": 264.39697265625,
+                  "height": 334.3541564941406,
+                  "top": -627.6314697265625,
+                  "right": 319.698486328125,
+                  "bottom": -293.2773132324219,
+                  "left": 55.301513671875
+                },
+                "transform": "matrix(1.02878, 0, 0, 1.02878, 0, -8.95439)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "copy": {
+                "scrollY": 3975,
+                "time": 16349.39999999106,
+                "layoutTop": 3730,
+                "layoutHeight": 533,
+                "rect": {
+                  "x": 24,
+                  "y": -245,
+                  "width": 327,
+                  "height": 533.484375,
+                  "top": -245,
+                  "right": 351,
+                  "bottom": 288.484375,
+                  "left": 24
+                },
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              }
+            }
+          ]
+        }
+      ],
+      "panels": [
+        {
+          "selector": "#preview .bms-focus-photo-panel",
+          "states": [
+            {
+              "name": "enter",
+              "panel": {
+                "scrollY": 1034,
+                "time": 17607.79999999702,
+                "layoutTop": 1572,
+                "layoutHeight": 560,
+                "rect": {
+                  "x": 0,
+                  "y": 537.578125,
+                  "width": 375,
+                  "height": 560,
+                  "top": 537.578125,
+                  "right": 375,
+                  "bottom": 1097.578125,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 1034,
+                "time": 17615.39999999106,
+                "layoutTop": 1572,
+                "layoutHeight": 560,
+                "rect": {
+                  "x": 0,
+                  "y": 537.578125,
+                  "width": 375,
+                  "height": 560,
+                  "top": 537.578125,
+                  "right": 375,
+                  "bottom": 1097.578125,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "0px"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              }
+            },
+            {
+              "name": "mid",
+              "panel": {
+                "scrollY": 1446,
+                "time": 18282.69999998808,
+                "layoutTop": 1572,
+                "layoutHeight": 560,
+                "rect": {
+                  "x": 0,
+                  "y": 125.578125,
+                  "width": 375,
+                  "height": 560,
+                  "top": 125.578125,
+                  "right": 375,
+                  "bottom": 685.578125,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 1446,
+                "time": 18291,
+                "layoutTop": 1572,
+                "layoutHeight": 560,
+                "rect": {
+                  "x": 0,
+                  "y": 125.578125,
+                  "width": 375,
+                  "height": 560,
+                  "top": 125.578125,
+                  "right": 375,
+                  "bottom": 685.578125,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "0px"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              }
+            },
+            {
+              "name": "exit",
+              "panel": {
+                "scrollY": 1858,
+                "time": 18980.89999999106,
+                "layoutTop": 1572,
+                "layoutHeight": 560,
+                "rect": {
+                  "x": 0,
+                  "y": -286.421875,
+                  "width": 375,
+                  "height": 560,
+                  "top": -286.421875,
+                  "right": 375,
+                  "bottom": 273.578125,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 1858,
+                "time": 18988.39999999106,
+                "layoutTop": 1572,
+                "layoutHeight": 560,
+                "rect": {
+                  "x": 0,
+                  "y": -286.421875,
+                  "width": 375,
+                  "height": 560,
+                  "top": -286.421875,
+                  "right": 375,
+                  "bottom": 273.578125,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "0px"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              }
+            }
+          ]
+        },
+        {
+          "selector": "#offer",
+          "states": [
+            {
+              "name": "enter",
+              "panel": {
+                "scrollY": 3779,
+                "time": 20034.39999999106,
+                "layoutTop": 4299,
+                "layoutHeight": 650,
+                "rect": {
+                  "x": 0,
+                  "y": 520.484375,
+                  "width": 375,
+                  "height": 650,
+                  "top": 520.484375,
+                  "right": 375,
+                  "bottom": 1170.484375,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 3779,
+                "time": 20043.69999998808,
+                "layoutTop": 4299,
+                "layoutHeight": 320,
+                "rect": {
+                  "x": 0,
+                  "y": 520.484375,
+                  "width": 375,
+                  "height": 320,
+                  "top": 520.484375,
+                  "right": 375,
+                  "bottom": 840.484375,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "0px"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              }
+            },
+            {
+              "name": "mid",
+              "panel": {
+                "scrollY": 4218,
+                "time": 20719.29999999702,
+                "layoutTop": 4299,
+                "layoutHeight": 650,
+                "rect": {
+                  "x": 0,
+                  "y": 81.484375,
+                  "width": 375,
+                  "height": 650,
+                  "top": 81.484375,
+                  "right": 375,
+                  "bottom": 731.484375,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 4218,
+                "time": 20726.89999999106,
+                "layoutTop": 4299,
+                "layoutHeight": 320,
+                "rect": {
+                  "x": 0,
+                  "y": 81.484375,
+                  "width": 375,
+                  "height": 320,
+                  "top": 81.484375,
+                  "right": 375,
+                  "bottom": 401.484375,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "0px"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              }
+            },
+            {
+              "name": "exit",
+              "panel": {
+                "scrollY": 4657,
+                "time": 21383.39999999106,
+                "layoutTop": 4299,
+                "layoutHeight": 650,
+                "rect": {
+                  "x": 0,
+                  "y": -357.515625,
+                  "width": 375,
+                  "height": 650,
+                  "top": -357.515625,
+                  "right": 375,
+                  "bottom": 292.484375,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "relative",
+                "animation": "none",
+                "playState": "running",
+                "vars": {},
+                "width": 375,
+                "scrollWidth": 375
+              },
+              "image": {
+                "scrollY": 4657,
+                "time": 21390.39999999106,
+                "layoutTop": 4299,
+                "layoutHeight": 320,
+                "rect": {
+                  "x": 0,
+                  "y": -357.515625,
+                  "width": 375,
+                  "height": 320,
+                  "top": -357.515625,
+                  "right": 375,
+                  "bottom": -37.515625,
+                  "left": 0
+                },
+                "transform": "none",
+                "filter": "none",
+                "opacity": "1",
+                "position": "static",
+                "animation": "none",
+                "playState": "running",
+                "vars": {
+                  "--photo-y": "0px"
+                },
+                "width": 375,
+                "scrollWidth": 375
+              }
+            }
+          ]
+        }
+      ],
+      "cards": [
+        [
+          {
+            "name": "enter",
+            "scrollY": 5397,
+            "time": 22147.69999998808,
+            "layoutTop": 6001,
+            "layoutHeight": 229,
+            "rect": {
+              "x": 20.14592170715332,
+              "y": 616.327880859375,
+              "width": 334.7081298828125,
+              "height": 222.333984375,
+              "top": 616.327880859375,
+              "right": 354.8540515899658,
+              "bottom": 838.661865234375,
+              "left": 20.14592170715332
+            },
+            "transform": "matrix3d(0.972983, 0, 0, 0, 0, 0.972128, 0.0407704, -2.54815e-05, 0, -0.0419025, 0.999122, -0.000624451, 0, 8.40538, 0, 1)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "2.4015369836695486deg",
+              "--card-scale": "0.9729827089337176",
+              "--card-y": "8.40537944284342px",
+              "--card-depth": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          },
+          {
+            "name": "mid",
+            "scrollY": 5710,
+            "time": 22768.09999999404,
+            "layoutTop": 6001,
+            "layoutHeight": 229,
+            "rect": {
+              "x": 16.006589889526367,
+              "y": 291.428466796875,
+              "width": 342.98681640625,
+              "height": 228.6463623046875,
+              "top": 291.428466796875,
+              "right": 358.99340629577637,
+              "bottom": 520.0748291015625,
+              "left": 16.006589889526367
+            },
+            "transform": "matrix3d(0.999957, 0, 0, 0, 0, 0.999957, -6.70607e-05, 4.19129e-08, 0, 6.70636e-05, 1, -0.000625, 0, -0.0134486, 0, 1)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-0.003842459173871049deg",
+              "--card-scale": "0.9999567723342939",
+              "--card-y": "-0.013448607108548671px",
+              "--card-depth": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          },
+          {
+            "name": "exit",
+            "scrollY": 6022,
+            "time": 23415.79999999702,
+            "layoutTop": 6001,
+            "layoutHeight": 229,
+            "rect": {
+              "x": 20.14592170715332,
+              "y": -26.130630493164062,
+              "width": 334.7081298828125,
+              "height": 222.3340301513672,
+              "top": -26.130630493164062,
+              "right": 354.8540515899658,
+              "bottom": 196.20339965820312,
+              "left": 20.14592170715332
+            },
+            "transform": "matrix3d(0.972983, 0, 0, 0, 0, 0.972128, -0.0407704, 2.54815e-05, 0, 0.0419025, 0.999122, -0.000624451, 0, -8.40538, 0, 1)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-2.4015369836695486deg",
+              "--card-scale": "0.9729827089337176",
+              "--card-y": "-8.40537944284342px",
+              "--card-depth": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          }
+        ],
+        [
+          {
+            "name": "enter",
+            "scrollY": 5654,
+            "time": 24109.59999999404,
+            "layoutTop": 6258,
+            "layoutHeight": 229,
+            "rect": {
+              "x": 20.14592170715332,
+              "y": 615.984130859375,
+              "width": 334.7081298828125,
+              "height": 222.333984375,
+              "top": 615.984130859375,
+              "right": 354.8540515899658,
+              "bottom": 838.318115234375,
+              "left": 20.14592170715332
+            },
+            "transform": "matrix3d(0.972983, 0, 0, 0, 0, 0.972128, 0.0407704, -2.54815e-05, 0, -0.0419025, 0.999122, -0.000624451, 0, 8.40538, 0, 1)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "2.4015369836695486deg",
+              "--card-scale": "0.9729827089337176",
+              "--card-y": "8.40537944284342px",
+              "--card-depth": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          },
+          {
+            "name": "mid",
+            "scrollY": 5967,
+            "time": 24750.19999998808,
+            "layoutTop": 6258,
+            "layoutHeight": 229,
+            "rect": {
+              "x": 16.006589889526367,
+              "y": 291.0846862792969,
+              "width": 342.98681640625,
+              "height": 228.64639282226562,
+              "top": 291.0846862792969,
+              "right": 358.99340629577637,
+              "bottom": 519.7310791015625,
+              "left": 16.006589889526367
+            },
+            "transform": "matrix3d(0.999957, 0, 0, 0, 0, 0.999957, -6.70607e-05, 4.19129e-08, 0, 6.70636e-05, 1, -0.000625, 0, -0.0134486, 0, 1)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-0.003842459173871049deg",
+              "--card-scale": "0.9999567723342939",
+              "--card-y": "-0.013448607108548671px",
+              "--card-depth": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          },
+          {
+            "name": "exit",
+            "scrollY": 6279,
+            "time": 25424,
+            "layoutTop": 6258,
+            "layoutHeight": 229,
+            "rect": {
+              "x": 20.14592170715332,
+              "y": -26.474365234375,
+              "width": 334.7081298828125,
+              "height": 222.33404541015625,
+              "top": -26.474365234375,
+              "right": 354.8540515899658,
+              "bottom": 195.85968017578125,
+              "left": 20.14592170715332
+            },
+            "transform": "matrix3d(0.972983, 0, 0, 0, 0, 0.972128, -0.0407704, 2.54815e-05, 0, 0.0419025, 0.999122, -0.000624451, 0, -8.40538, 0, 1)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-2.4015369836695486deg",
+              "--card-scale": "0.9729827089337176",
+              "--card-y": "-8.40537944284342px",
+              "--card-depth": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          }
+        ],
+        [
+          {
+            "name": "enter",
+            "scrollY": 5911,
+            "time": 26107.39999999106,
+            "layoutTop": 6515,
+            "layoutHeight": 229,
+            "rect": {
+              "x": 20.14592170715332,
+              "y": 615.6403198242188,
+              "width": 334.7081298828125,
+              "height": 222.33404541015625,
+              "top": 615.6403198242188,
+              "right": 354.8540515899658,
+              "bottom": 837.974365234375,
+              "left": 20.14592170715332
+            },
+            "transform": "matrix3d(0.972983, 0, 0, 0, 0, 0.972128, 0.0407704, -2.54815e-05, 0, -0.0419025, 0.999122, -0.000624451, 0, 8.40538, 0, 1)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "2.4015369836695486deg",
+              "--card-scale": "0.9729827089337176",
+              "--card-y": "8.40537944284342px",
+              "--card-depth": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          },
+          {
+            "name": "mid",
+            "scrollY": 6224,
+            "time": 26788.39999999106,
+            "layoutTop": 6515,
+            "layoutHeight": 229,
+            "rect": {
+              "x": 16.006589889526367,
+              "y": 290.740966796875,
+              "width": 342.98681640625,
+              "height": 228.6463623046875,
+              "top": 290.740966796875,
+              "right": 358.99340629577637,
+              "bottom": 519.3873291015625,
+              "left": 16.006589889526367
+            },
+            "transform": "matrix3d(0.999957, 0, 0, 0, 0, 0.999957, -6.70607e-05, 4.19129e-08, 0, 6.70636e-05, 1, -0.000625, 0, -0.0134486, 0, 1)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-0.003842459173871049deg",
+              "--card-scale": "0.9999567723342939",
+              "--card-y": "-0.013448607108548671px",
+              "--card-depth": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          },
+          {
+            "name": "exit",
+            "scrollY": 6536,
+            "time": 27442.29999999702,
+            "layoutTop": 6515,
+            "layoutHeight": 229,
+            "rect": {
+              "x": 20.14592170715332,
+              "y": -26.818115234375,
+              "width": 334.7081298828125,
+              "height": 222.33404541015625,
+              "top": -26.818115234375,
+              "right": 354.8540515899658,
+              "bottom": 195.51593017578125,
+              "left": 20.14592170715332
+            },
+            "transform": "matrix3d(0.972983, 0, 0, 0, 0, 0.972128, -0.0407704, 2.54815e-05, 0, 0.0419025, 0.999122, -0.000624451, 0, -8.40538, 0, 1)",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--card-tilt": "-2.4015369836695486deg",
+              "--card-scale": "0.9729827089337176",
+              "--card-y": "-8.40537944284342px",
+              "--card-depth": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          }
+        ]
+      ],
+      "closing": [
+        {
+          "name": "early",
+          "outer": {
+            "scrollY": 6687,
+            "time": 27965,
+            "layoutTop": 6787,
+            "layoutHeight": 560,
+            "rect": {
+              "x": 0,
+              "y": 100.40625,
+              "width": 375,
+              "height": 560,
+              "top": 100.40625,
+              "right": 375,
+              "bottom": 660.40625,
+              "left": 0
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--closing-reveal": "100%",
+              "--closing-left": "0px",
+              "--closing-right": "0px",
+              "--closing-text-y": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "inner": null,
+          "heading": {
+            "scrollY": 6687,
+            "time": 27974.5,
+            "layoutTop": 6900,
+            "layoutHeight": 162,
+            "rect": {
+              "x": 24,
+              "y": 213.109375,
+              "width": 327,
+              "height": 162,
+              "top": 213.109375,
+              "right": 351,
+              "bottom": 375.109375,
+              "left": 24
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "left": {
+            "scrollY": 6687,
+            "time": 27983,
+            "layoutTop": 6807,
+            "layoutHeight": 70,
+            "rect": {
+              "x": 24,
+              "y": 120.40625,
+              "width": 74,
+              "height": 70,
+              "top": 120.40625,
+              "right": 98,
+              "bottom": 190.40625,
+              "left": 24
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "0.6",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "right": {
+            "scrollY": 6687,
+            "time": 27990.59999999404,
+            "layoutTop": 7226,
+            "layoutHeight": 93,
+            "rect": {
+              "x": 277,
+              "y": 539.40625,
+              "width": 74,
+              "height": 93,
+              "top": 539.40625,
+              "right": 351,
+              "bottom": 632.40625,
+              "left": 277
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "0.6",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "cta": {
+            "scrollY": 6687,
+            "time": 27999.69999998808,
+            "layoutTop": 7092,
+            "layoutHeight": 48,
+            "rect": {
+              "x": 69.296875,
+              "y": 405.109375,
+              "width": 236.390625,
+              "height": 48.390625,
+              "top": 405.109375,
+              "right": 305.6875,
+              "bottom": 453.5,
+              "left": 69.296875
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          }
+        },
+        {
+          "name": "mid",
+          "outer": {
+            "scrollY": 6687,
+            "time": 28290.5,
+            "layoutTop": 6787,
+            "layoutHeight": 560,
+            "rect": {
+              "x": 0,
+              "y": 100.40625,
+              "width": 375,
+              "height": 560,
+              "top": 100.40625,
+              "right": 375,
+              "bottom": 660.40625,
+              "left": 0
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--closing-reveal": "100%",
+              "--closing-left": "0px",
+              "--closing-right": "0px",
+              "--closing-text-y": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "inner": null,
+          "heading": {
+            "scrollY": 6687,
+            "time": 28298.19999998808,
+            "layoutTop": 6900,
+            "layoutHeight": 162,
+            "rect": {
+              "x": 24,
+              "y": 213.109375,
+              "width": 327,
+              "height": 162,
+              "top": 213.109375,
+              "right": 351,
+              "bottom": 375.109375,
+              "left": 24
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "left": {
+            "scrollY": 6687,
+            "time": 28305.29999999702,
+            "layoutTop": 6807,
+            "layoutHeight": 70,
+            "rect": {
+              "x": 24,
+              "y": 120.40625,
+              "width": 74,
+              "height": 70,
+              "top": 120.40625,
+              "right": 98,
+              "bottom": 190.40625,
+              "left": 24
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "0.6",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "right": {
+            "scrollY": 6687,
+            "time": 28313.69999998808,
+            "layoutTop": 7226,
+            "layoutHeight": 93,
+            "rect": {
+              "x": 277,
+              "y": 539.40625,
+              "width": 74,
+              "height": 93,
+              "top": 539.40625,
+              "right": 351,
+              "bottom": 632.40625,
+              "left": 277
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "0.6",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "cta": {
+            "scrollY": 6687,
+            "time": 28323,
+            "layoutTop": 7092,
+            "layoutHeight": 48,
+            "rect": {
+              "x": 69.296875,
+              "y": 405.109375,
+              "width": 236.390625,
+              "height": 48.390625,
+              "top": 405.109375,
+              "right": 305.6875,
+              "bottom": 453.5,
+              "left": 69.296875
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          }
+        },
+        {
+          "name": "late",
+          "outer": {
+            "scrollY": 6687,
+            "time": 28603.5,
+            "layoutTop": 6787,
+            "layoutHeight": 560,
+            "rect": {
+              "x": 0,
+              "y": 100.40625,
+              "width": 375,
+              "height": 560,
+              "top": 100.40625,
+              "right": 375,
+              "bottom": 660.40625,
+              "left": 0
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {
+              "--closing-reveal": "100%",
+              "--closing-left": "0px",
+              "--closing-right": "0px",
+              "--closing-text-y": "0px"
+            },
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "inner": null,
+          "heading": {
+            "scrollY": 6687,
+            "time": 28612.39999999106,
+            "layoutTop": 6900,
+            "layoutHeight": 162,
+            "rect": {
+              "x": 24,
+              "y": 213.109375,
+              "width": 327,
+              "height": 162,
+              "top": 213.109375,
+              "right": 351,
+              "bottom": 375.109375,
+              "left": 24
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "left": {
+            "scrollY": 6687,
+            "time": 28621.09999999404,
+            "layoutTop": 6807,
+            "layoutHeight": 70,
+            "rect": {
+              "x": 24,
+              "y": 120.40625,
+              "width": 74,
+              "height": 70,
+              "top": 120.40625,
+              "right": 98,
+              "bottom": 190.40625,
+              "left": 24
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "0.6",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "right": {
+            "scrollY": 6687,
+            "time": 28631.29999999702,
+            "layoutTop": 7226,
+            "layoutHeight": 93,
+            "rect": {
+              "x": 277,
+              "y": 539.40625,
+              "width": 74,
+              "height": 93,
+              "top": 539.40625,
+              "right": 351,
+              "bottom": 632.40625,
+              "left": 277
+            },
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "filter": "none",
+            "opacity": "0.6",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "cta": {
+            "scrollY": 6687,
+            "time": 28640.29999999702,
+            "layoutTop": 7092,
+            "layoutHeight": 48,
+            "rect": {
+              "x": 69.296875,
+              "y": 405.109375,
+              "width": 236.390625,
+              "height": 48.390625,
+              "top": 405.109375,
+              "right": 305.6875,
+              "bottom": 453.5,
+              "left": 69.296875
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "relative",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          }
+        }
+      ],
+      "routes": [
+        {
+          "name": "product",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/product/birthday-magazine/",
+          "width": 375,
+          "scrollWidth": 375,
+          "price": "$39.99",
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": false
+        },
+        {
+          "name": "cart",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/cart/",
+          "width": 375,
+          "scrollWidth": 375,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "checkout",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/cart/",
+          "width": 375,
+          "scrollWidth": 375,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "account",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/my-account/",
+          "width": 375,
+          "scrollWidth": 375,
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": true
+        }
+      ],
+      "status": 200,
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7866,
+        "motion": true,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "heroPausedOffscreen": {
+        "scrollY": 6687,
+        "time": 28691.59999999404,
+        "layoutTop": -30,
+        "layoutHeight": 872,
+        "rect": {
+          "x": -40.47764587402344,
+          "y": -6738.00341796875,
+          "width": 455.955322265625,
+          "height": 914.0068359375,
+          "top": -6738.00341796875,
+          "right": 415.47767639160156,
+          "bottom": -5823.99658203125,
+          "left": -40.47764587402344
+        },
+        "transform": "matrix(1.04817, 0, 0, 1.04817, 0, 0)",
+        "filter": "blur(13.0216px)",
+        "opacity": "1",
+        "position": "absolute",
+        "animation": "bms-focus-breathe-mobile",
+        "playState": "paused",
+        "vars": {},
+        "width": 375,
+        "scrollWidth": 375
+      },
+      "hoverBefore": {
+        "href": "#preview",
+        "first": "none",
+        "second": "matrix(1, 0, 0, 1, 0, 17.2687)"
+      },
+      "hoverAfter": {
+        "href": "#preview",
+        "first": "matrix(1, 0, 0, 1, 0, -17.2687)",
+        "second": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "focus": {
+        "active": true,
+        "outline": "solid"
+      },
+      "menuOpen": "true",
+      "menuClosed": "false",
+      "preferenceReduced": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7866,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "preferenceRestored": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7866,
+        "motion": true,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "0.916128"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "0.916128"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "0.916128"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7866,
+        "motion": true,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "reduced",
+      "width": 375,
+      "height": 812,
+      "errors": [],
+      "failures": [],
+      "hero": [
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 4254.20000000298,
+            "layoutTop": -30,
+            "layoutHeight": 872,
+            "rect": {
+              "x": -38.69999694824219,
+              "y": -47.439971923828125,
+              "width": 452.4000244140625,
+              "height": 906.8798828125,
+              "top": -47.439971923828125,
+              "right": 413.7000274658203,
+              "bottom": 859.4399108886719,
+              "left": -38.69999694824219
+            },
+            "transform": "matrix(1.04, 0, 0, 1.04, 0, 0)",
+            "filter": "blur(12px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 4264.5,
+            "layoutTop": 112,
+            "layoutHeight": 274,
+            "rect": {
+              "x": 25,
+              "y": 113,
+              "width": 325,
+              "height": 274,
+              "top": 113,
+              "right": 350,
+              "bottom": 387,
+              "left": 25
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 4271.800000011921,
+            "layoutTop": 409,
+            "layoutHeight": 312,
+            "rect": {
+              "x": 24,
+              "y": 409.328125,
+              "width": 327,
+              "height": 311.671875,
+              "top": 409.328125,
+              "right": 351,
+              "bottom": 721,
+              "left": 24
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          }
+        }
+      ],
+      "splits": [],
+      "panels": [],
+      "cards": [],
+      "closing": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7866,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7866,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "no-js",
+      "width": 375,
+      "height": 812,
+      "errors": [],
+      "failures": [],
+      "hero": [
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 2697,
+            "layoutTop": -30,
+            "layoutHeight": 872,
+            "rect": {
+              "x": -38.69999694824219,
+              "y": -47.439971923828125,
+              "width": 452.4000244140625,
+              "height": 906.8798828125,
+              "top": -47.439971923828125,
+              "right": 413.7000274658203,
+              "bottom": 859.4399108886719,
+              "left": -38.69999694824219
+            },
+            "transform": "matrix(1.04, 0, 0, 1.04, 0, 0)",
+            "filter": "blur(12px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 2709,
+            "layoutTop": 112,
+            "layoutHeight": 274,
+            "rect": {
+              "x": 25,
+              "y": 113,
+              "width": 325,
+              "height": 274,
+              "top": 113,
+              "right": 350,
+              "bottom": 387,
+              "left": 25
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 2716.7999999970198,
+            "layoutTop": 412,
+            "layoutHeight": 309,
+            "rect": {
+              "x": 24,
+              "y": 411.71875,
+              "width": 327,
+              "height": 309.28125,
+              "top": 411.71875,
+              "right": 351,
+              "bottom": 721,
+              "left": 24
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          }
+        }
+      ],
+      "splits": [],
+      "panels": [],
+      "cards": [],
+      "closing": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7864,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7864,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "motion-unavailable",
+      "width": 375,
+      "height": 812,
+      "errors": [],
+      "failures": [],
+      "hero": [
+        {
+          "background": {
+            "scrollY": 0,
+            "time": 4076,
+            "layoutTop": -30,
+            "layoutHeight": 872,
+            "rect": {
+              "x": -38.69999694824219,
+              "y": -47.439971923828125,
+              "width": 452.4000244140625,
+              "height": 906.8798828125,
+              "top": -47.439971923828125,
+              "right": 413.7000274658203,
+              "bottom": 859.4399108886719,
+              "left": -38.69999694824219
+            },
+            "transform": "matrix(1.04, 0, 0, 1.04, 0, 0)",
+            "filter": "blur(12px)",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "sharp": {
+            "scrollY": 0,
+            "time": 4086.7000000029802,
+            "layoutTop": 112,
+            "layoutHeight": 274,
+            "rect": {
+              "x": 25,
+              "y": 113,
+              "width": 325,
+              "height": 274,
+              "top": 113,
+              "right": 350,
+              "bottom": 387,
+              "left": 25
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "static",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          },
+          "message": {
+            "scrollY": 0,
+            "time": 4093.7999999970198,
+            "layoutTop": 412,
+            "layoutHeight": 309,
+            "rect": {
+              "x": 24,
+              "y": 411.71875,
+              "width": 327,
+              "height": 309.28125,
+              "top": 411.71875,
+              "right": 351,
+              "bottom": 721,
+              "left": 24
+            },
+            "transform": "none",
+            "filter": "none",
+            "opacity": "1",
+            "position": "absolute",
+            "animation": "none",
+            "playState": "running",
+            "vars": {},
+            "width": 375,
+            "scrollWidth": 375
+          }
+        }
+      ],
+      "splits": [],
+      "panels": [],
+      "cards": [],
+      "closing": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7864,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7864,
+        "motion": false,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "heroCTA": true,
+        "broken": [],
+        "sticky": false,
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1"
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1"
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1"
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1"
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1"
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1"
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1"
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1"
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1"
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1"
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1"
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1"
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1"
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1"
+          }
+        ]
+      }
+    }
+  ],
+  "blocked": [],
+  "previewInteractions": 0,
+  "businessActions": 0
+}

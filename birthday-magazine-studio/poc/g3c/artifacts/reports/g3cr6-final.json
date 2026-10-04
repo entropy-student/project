@@ -1,0 +1,266 @@
+{
+  "gate": "G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN",
+  "result": "PASS_CANDIDATE_G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN",
+  "branch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
+  "preRunHead": "b3aff79fd74b0a63bc42ff370c8adb1a5eac82ba",
+  "mainReadback": "becb2ab9c644649a07327664cfdb5ae975964ba9",
+  "pr": 64,
+  "prState": "OPEN_UNMERGED",
+  "runtime": {
+    "home_id": 858,
+    "primary_groups": 6,
+    "home_sha256": "b45daee18bb450e958614e756bcb000742ab6cb2cf727dc45aa25152eafcbbfb",
+    "image_ids": [
+      1137,
+      1137,
+      1138,
+      1139
+    ],
+    "image_files_exist": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "gutenberg": true,
+    "owner_administrator": true,
+    "owner_edit_home": true,
+    "owner_media": true,
+    "owner_global_styles": true,
+    "product": {
+      "id": 1113,
+      "price": "39.99",
+      "currency": "USD",
+      "virtual": true
+    },
+    "wordpress": "7.1.1",
+    "woocommerce": "11.1.2",
+    "blocksy": "2.1.57",
+    "active_plugins": [
+      "blocksy-companion/blocksy-companion.php",
+      "bms-g3a-commerce-loop/bms-g3a-commerce-loop.php",
+      "bms-g3c-preview/birthday-magazine-poc.php",
+      "simply-gallery-block/plugin.php",
+      "stackable-ultimate-gutenberg-blocks/plugin.php",
+      "woocommerce/woocommerce.php",
+      "wpforms-lite/wpforms.php"
+    ],
+    "generation_jobs": 0,
+    "product_model_calls": 0,
+    "counter_options_present": false,
+    "order_count": 1
+  },
+  "checks": {
+    "desktop": "PASS",
+    "mobile375": "PASS",
+    "previewEmptyAndPhoto": "PASS",
+    "selectReplaceRemoveAndNegativeFiles": "PASS",
+    "previewFrameOverlap": "NO",
+    "nativeWoo": "PASS",
+    "checkoutSubmitted": false,
+    "orderCountBeforeBrowser": 1,
+    "orderCountAfterBrowser": 1,
+    "ownerGutenbergEdit": "PASS",
+    "privateGuardRegression": [
+      {
+        "context": "owner",
+        "status": 200,
+        "workspace_rendered": true,
+        "test_boundary": "existing PHP template_redirect handler; in-memory synthetic identity; no HTTP login/session proof",
+        "persistent_mutations": 0
+      },
+      {
+        "context": "unrelated",
+        "status": 403,
+        "workspace_rendered": false,
+        "test_boundary": "existing PHP template_redirect handler; in-memory synthetic identity; no HTTP login/session proof",
+        "persistent_mutations": 0
+      },
+      {
+        "context": "guest",
+        "status": 403,
+        "workspace_rendered": false,
+        "test_boundary": "existing PHP template_redirect handler; in-memory synthetic identity; no HTTP login/session proof",
+        "persistent_mutations": 0
+      }
+    ],
+    "guestHttpStatus": 403
+  },
+  "protectedFiles": [
+    {
+      "path": "birthday-magazine-studio/poc/g3c/compose.yaml",
+      "sha256": "3313b1fc7c64c8a02883334eda2ec61bf5093064fc3640e86b59191e11b887d8",
+      "unchangedFromPreRunHead": true
+    },
+    {
+      "path": "birthday-magazine-studio/poc/g3c/commerce-workspace-plugin/bms-g3a-commerce-loop.php",
+      "sha256": "e971d02be42e4dbb01b1cc1c614cd49d76991ad1df2f253cec80825f0b9823d2",
+      "unchangedFromPreRunHead": true
+    }
+  ],
+  "assets": [
+    {
+      "path": "preview-plugin/assets/g3cr6/gift-hero.png",
+      "sizeBytes": 2425284,
+      "sha256": "24663a05ded782802a36b4f4e8f6dc789d9c1e7f4b2cc445ff6e3a560651fca0"
+    },
+    {
+      "path": "preview-plugin/assets/g3cr6/sample-spread.png",
+      "sizeBytes": 2348418,
+      "sha256": "48a6fcf303334a0d7bd4722b7eaea713495e3f6ab64a5c73f89c2ae98ec4eed9"
+    },
+    {
+      "path": "preview-plugin/assets/g3cr6/sample-cover.png",
+      "sizeBytes": 2231738,
+      "sha256": "9ee07a061e7066abac864b589f71f702d5f9c965e5b388fea2dd9fef355bdb7f"
+    },
+    {
+      "path": "theme-overrides/g3cr6/synthetic-preview-portrait.png",
+      "sizeBytes": 2408808,
+      "sha256": "0d4927a420f03fa8c8407bce29d0ef7ae816fb476cc79ad25ece551cb1506d22"
+    }
+  ],
+  "imageGeneration": {
+    "mode": "builtin_image_gen",
+    "ownerAuthorizedMarketingOnly": true,
+    "totalCalls": 5,
+    "originalGenerations": 4,
+    "targetedPageNumberEdits": 1,
+    "adoptedAssets": 4,
+    "runtimeProductModelCalls": 0,
+    "prepaymentPreviewModelCalls": 0
+  },
+  "network": {
+    "photoUploads": 0,
+    "externalImagePosts": 0,
+    "modelRequests": 0,
+    "localStaticGetsPerViewport": 4,
+    "details": "g3cr6-browser.json"
+  },
+  "backup": {
+    "path": "artifacts/backups/g3cr6",
+    "homeAndThemeSha256": "8639434135745daf86cf049722b33a634144e9f28ff8056e87da3447349db710"
+  },
+  "screenshots": [
+    {
+      "name": "01-desktop-home.png",
+      "sizeBytes": 1345526,
+      "sha256": "cc10e28153bb0cef9185dbd189742050e798d22046f6a8cafd4599a298ca7dd2"
+    },
+    {
+      "name": "02-desktop-hero.png",
+      "sizeBytes": 569827,
+      "sha256": "5d42e3cefd8b00e1bc4fb9ebd3553e95c07c2c9ab6fab8227da30dae8c4d5803"
+    },
+    {
+      "name": "03-desktop-samples.png",
+      "sizeBytes": 550069,
+      "sha256": "97e3a3c61d0188c1244b4b515b3123c00a227e5bd14e0347faadbb84e4c375d4"
+    },
+    {
+      "name": "04-desktop-preview-empty.png",
+      "sizeBytes": 102609,
+      "sha256": "8f338f4031793ea354ed710a01f90f0a2488a9269f00cb0ebc5b9bf99b27e9e2"
+    },
+    {
+      "name": "05-desktop-preview-photo.png",
+      "sizeBytes": 256750,
+      "sha256": "ea641bd0d415ee625f21da699590476b42a9025f51255baca5e908b97e156c7b"
+    },
+    {
+      "name": "06-desktop-offer-faq.png",
+      "sizeBytes": 45231,
+      "sha256": "1a86b5f3b9d3e9f8379e613ab70d57cbf5123901d07193a6dc65c4af9ac98424"
+    },
+    {
+      "name": "07-mobile-home-375.png",
+      "sizeBytes": 722789,
+      "sha256": "e4d0c92d28f0eab250fad93d5ec74c67b3ec0239c8885473514820599e6ab7d4"
+    },
+    {
+      "name": "08-mobile-hero-375.png",
+      "sizeBytes": 208575,
+      "sha256": "77115132274f32fdd3ceb69d25132c6fd43ebc29192839e4f68671f6e44458db"
+    },
+    {
+      "name": "09-mobile-preview-empty-375.png",
+      "sizeBytes": 66369,
+      "sha256": "ad25aab14397537d96d5b69e884f1dbe65fe62dec20025ea9b3146105e7a565f"
+    },
+    {
+      "name": "10-mobile-preview-photo-375.png",
+      "sizeBytes": 177873,
+      "sha256": "7f21218fd2eacd4e4114ded61fa5f110b00ddf5e3bc1943939267609c3108b47"
+    },
+    {
+      "name": "11-mobile-offer-faq-375.png",
+      "sizeBytes": 36454,
+      "sha256": "b0e35f66a2656da3b824262dc7a15be7ff90c89a5afb5f91bab4ca99fe5046e5"
+    },
+    {
+      "name": "12-desktop-product.png",
+      "sizeBytes": 665635,
+      "sha256": "8e4b802f530a18f2518337582d98bfb757b2f5593d2983fb6a9a2d97502bfb70"
+    },
+    {
+      "name": "13-mobile-product-375.png",
+      "sizeBytes": 313793,
+      "sha256": "ab34564e982cf319bf732db561182f89526e07b4a7c4ca1349fa9b25a93c0666"
+    },
+    {
+      "name": "14-desktop-cart.png",
+      "sizeBytes": 73628,
+      "sha256": "acdec6795bed86e891d517e3b67a3e6f0b6e611f7f0df966afbcf1851a7f84ba"
+    },
+    {
+      "name": "15-mobile-cart-375.png",
+      "sizeBytes": 64391,
+      "sha256": "dcdd8036c136f8b659a0b74b6819e8b983cc69d07280086d14c5617d80747760"
+    },
+    {
+      "name": "16-desktop-checkout.png",
+      "sizeBytes": 99255,
+      "sha256": "1f65d95c9eaf9a2f8a802f991d0a3a1a2b43850c8c2b1d03c969d6648ebc393b"
+    },
+    {
+      "name": "17-mobile-checkout-375.png",
+      "sizeBytes": 84513,
+      "sha256": "e17e932997050025d87da142e33988542857d1146928f6b4d172f65c504778ee"
+    },
+    {
+      "name": "18-desktop-account.png",
+      "sizeBytes": 43194,
+      "sha256": "d90c6ca24969d95dec99d491e895250075e6567dea9cdeb80aa28f791407115e"
+    },
+    {
+      "name": "19-mobile-account-375.png",
+      "sizeBytes": 35524,
+      "sha256": "b38e00a57de99353d3a746a58749b45893448149d77407a07218f8cc07d71cd8"
+    }
+  ],
+  "limitations": [
+    "Owner visual freeze remains pending.",
+    "Workspace authenticated tests execute the unchanged PHP guard under in-memory synthetic identities; this is not a new HTTP login/session proof.",
+    "WP-admin screenshot not captured: no credential or current admin session read.",
+    "Local generation counters were absent and default to zero; no product-generation worker/provider was installed or called."
+  ],
+  "forbidden": {
+    "themeChange": 0,
+    "builderChange": 0,
+    "elementorInstall": 0,
+    "paypalActions": 0,
+    "realMoneyActions": 0,
+    "checkoutSubmissions": 0,
+    "productModelCalls": 0,
+    "productionAiCalls": 0,
+    "productionDeployment": 0,
+    "sharedInfraMutations": 0,
+    "g4Actions": 0,
+    "paidPurchases": 0,
+    "globalPrune": 0,
+    "prMerges": 0
+  },
+  "runtimeRetained": true,
+  "ownerVisualFreeze": "PENDING",
+  "stopAtReviewer": true
+}

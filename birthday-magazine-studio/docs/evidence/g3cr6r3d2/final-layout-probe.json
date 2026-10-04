@@ -1,0 +1,54 @@
+{
+  "runs": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "heroGap": 12.421875,
+      "closingLeftGap": -178.796875,
+      "brandColor": "rgb(255, 255, 255)",
+      "spreadFit": "contain",
+      "preservedPreviewInputs": "",
+      "anchors": [
+        "what-you-get",
+        "preview",
+        "how-it-works",
+        "offer",
+        "faq",
+        "samples"
+      ]
+    },
+    {
+      "width": 375,
+      "scrollWidth": 375,
+      "heroGap": 21.328125,
+      "closingLeftGap": 22.703125,
+      "brandColor": "rgb(255, 255, 255)",
+      "spreadFit": "contain",
+      "preservedPreviewInputs": "",
+      "anchors": [
+        "what-you-get",
+        "preview",
+        "how-it-works",
+        "offer",
+        "faq",
+        "samples"
+      ],
+      "menu": {
+        "rect": {
+          "x": 24,
+          "y": 80,
+          "width": 327,
+          "height": 340,
+          "top": 80,
+          "right": 351,
+          "bottom": 420,
+          "left": 24
+        },
+        "radius": "24px"
+      },
+      "menuClosed": "false"
+    }
+  ],
+  "previewActions": 0,
+  "businessActions": 0
+}

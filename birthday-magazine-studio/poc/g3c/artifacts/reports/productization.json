@@ -1,0 +1,50 @@
+{
+  "gate": "G3C_BLOCKSY_WEDDING_PRODUCTIZATION",
+  "pageId": 858,
+  "pageTitle": "Home",
+  "pageType": "page",
+  "pageEditor": "Gutenberg",
+  "pageBlockCount": 36,
+  "goodIssuePreviewShortcodePresent": true,
+  "oldLogo404ReferencesInHome": false,
+  "oldLogo404ReferencesInBlocksyThemeMods": false,
+  "oldLogo404ReferencesInPostContent": 0,
+  "product": {
+    "id": 1113,
+    "url": "http://127.0.0.1:8189/product/birthday-magazine/",
+    "price": "39.99",
+    "currency": "USD",
+    "virtual": true
+  },
+  "checkout": {
+    "guestCheckout": false,
+    "accountCreationAtCheckout": true,
+    "accountRequiredAtCheckout": true,
+    "usernameAndPasswordGenerated": true,
+    "separateMyAccountRegistration": false,
+    "paymentMethodLabel": "Local test only — no payment",
+    "paymentSubmitted": false
+  },
+  "ownerEditing": {
+    "role": "administrator",
+    "canEditText": true,
+    "canReplaceImages": true,
+    "canReorderBlocks": true,
+    "canEditBlocksyGlobalStyle": true
+  },
+  "commerce": {
+    "addToCart": "PASS",
+    "cartRead": "PASS",
+    "checkoutForm": "PASS",
+    "checkoutAccountRequired": "PASS",
+    "myAccountLoginPage": "PASS",
+    "checkoutSubmitted": false
+  },
+  "forbiddenActions": {
+    "paypalActions": 0,
+    "realMoneyActions": 0,
+    "modelCalls": 0,
+    "productionAiCalls": 0,
+    "sharedInfrastructureMutations": 0
+  }
+}

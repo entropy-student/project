@@ -1,0 +1,6 @@
+{
+  "method": "GET",
+  "requested": "http://127.0.0.1:8189/checkout/",
+  "status": 302,
+  "location": "http://127.0.0.1:8189/cart/"
+}

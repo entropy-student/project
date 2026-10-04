@@ -1,0 +1,12 @@
+[
+  {
+    "antipattern": "gradient-text",
+    "name": "Gradient text",
+    "description": "Gradient text is decorative rather than meaningful — a common AI tell, especially on headings and metrics. Use solid colors for text.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\preview-plugin\\home.css",
+    "line": 119,
+    "snippet": "background-clip: text + gradient"
+  }
+]

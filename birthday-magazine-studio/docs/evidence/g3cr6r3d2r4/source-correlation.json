@@ -1,0 +1,20 @@
+{
+  "changedApplicationFiles": [
+    "poc/g3c/preview-plugin/home.css",
+    "poc/g3c/preview-plugin/home-motion.js"
+  ],
+  "sourceHashes": [
+    {
+      "file": "poc/g3c/preview-plugin/home.css",
+      "sha256": "5741203c9b429c3fb730dcbdc328da72d91a9ed61a828104d3357610e12b5035",
+      "baselineGitBlob": "9d9d75947292c6bd660784672731f4b7631b7417"
+    },
+    {
+      "file": "poc/g3c/preview-plugin/home-motion.js",
+      "sha256": "32d623ed67bd677e95b93ffdf91cef41a852f675f35ef41e35ea249f1ad2e292",
+      "baselineGitBlob": "94c6c5edbe05cd17f755918719d85b1a48478e41"
+    }
+  ],
+  "persistentHomeMutation": false,
+  "previewBusinessMutation": false
+}

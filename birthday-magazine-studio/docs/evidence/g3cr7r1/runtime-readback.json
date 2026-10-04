@@ -1,0 +1,43 @@
+{
+  "gate": "G3CR7R1_EXECUTOR_REPRODUCTION",
+  "siteUrl": "http://127.0.0.1:8189/",
+  "runtime": {
+    "wordpress": "7.1.1",
+    "woocommerce": "11.1.2",
+    "php": "8.3.33",
+    "activeTheme": "Blocksy",
+    "themeVersion": "2.1.57",
+    "containers": [
+      { "name": "birthday-magazine-g3c-wordpress-1", "image": "wordpress:7.1.1-php8.3-apache", "state": "Up", "publishedPort": "127.0.0.1:8189->80/tcp" },
+      { "name": "birthday-magazine-g3c-db-1", "image": "mariadb:11.4.7", "state": "Up (healthy)" },
+      { "name": "birthday-magazine-g3c-mailpit-1", "image": "axllent/mailpit:v1.31.2", "state": "Up (healthy)", "publishedPort": "127.0.0.1:8190->8025/tcp" }
+    ]
+  },
+  "woocommerceProduct": {
+    "id": 1113,
+    "name": "The Birthday Magazine",
+    "price": "39.99",
+    "currency": "USD",
+    "virtual": true,
+    "manageStock": false,
+    "permalink": "http://127.0.0.1:8189/product/birthday-magazine/"
+  },
+  "localPages": [
+    { "id": 1147, "slug": "make-your-magazine", "kind": "static shortcode fixture" },
+    { "id": 1148, "slug": "magazine-status-preview", "kind": "static shortcode visual fixture" }
+  ],
+  "generationOrJobTableCount": 0,
+  "orderReadback": {
+    "beforeCount": 1,
+    "afterCount": 1,
+    "paidCountBefore": 0,
+    "paidCountAfter": 0,
+    "existingSyntheticOrderStatus": "on-hold",
+    "existingSyntheticOrderPaid": false
+  },
+  "home858ContentSha256": "7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a",
+  "checkoutSubmitted": false,
+  "payments": 0,
+  "providerMutations": 0,
+  "modelOrGenerationCalls": 0
+}

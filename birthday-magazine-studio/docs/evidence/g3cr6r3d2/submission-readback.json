@@ -1,0 +1,13 @@
+{
+  "time": "2026-10-04T06:36:36.2884311Z",
+  "implementation_commit": "e6d7a5bf51255474fc6cd96e6015b9d2bb04f366",
+  "local_http_direct_status": 200,
+  "powershell_no_proxy_status": 200,
+  "default_powershell_route": "REFUSED_NOT_USED_FOR_RUNTIME_HEALTH",
+  "runtime_restarted": false,
+  "global_proxy_changed": false,
+  "backup_git_bytes": "VERIFIED_AFTER_EXPLICIT_RENORMALIZE_WITH_TEXT_UNSET",
+  "pr": 64,
+  "merged": false,
+  "stop_at_reviewer": true
+}

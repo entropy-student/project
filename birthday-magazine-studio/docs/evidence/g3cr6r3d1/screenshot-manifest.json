@@ -1,0 +1,468 @@
+{
+  "screenshotCount": 66,
+  "purpose": "Public rendered reference review only; not reusable website assets",
+  "files": [
+    {
+      "name": "desktop-about-reveal-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 683030,
+      "sha256": "e4c1df061288536cd914ebe282051977d047a0b805aea055ded9ba754d24a70c"
+    },
+    {
+      "name": "desktop-about-reveal-100.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 766687,
+      "sha256": "b0e713f5cd0af879bcf036ba82302e8075e94f2fab717c53dc977e9ec477fc8e"
+    },
+    {
+      "name": "desktop-about-reveal-600.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 728017,
+      "sha256": "2e2904873c4f3a9ed4204d3392b0a8fdf2fdb0da882c9f3b30c52742d4aafd1e"
+    },
+    {
+      "name": "desktop-email-scroll-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 11338,
+      "sha256": "19d080e6b14aeb3e6b738c479e46824207ba43df13e8cb65319a871e15d5987e"
+    },
+    {
+      "name": "desktop-email-scroll-1100.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 257693,
+      "sha256": "04c362a7f2c51772f77bcff66ce9071232071a25a05cc4da285811e2f7686f98"
+    },
+    {
+      "name": "desktop-email-scroll-600.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 150352,
+      "sha256": "b272b5be28444f83971dd185aaafa170938b802b22daf064cb39ff87dde48e54"
+    },
+    {
+      "name": "desktop-entrance-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 10149,
+      "sha256": "2911ef81f6478254e900b0b3d4d38b30fa687c530c7f103373592387046647c5"
+    },
+    {
+      "name": "desktop-entrance-3200.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 405940,
+      "sha256": "d36a391fa72ef4c817258a00b844de3e9c58b7f2164d7c51f2e60e9d88e4a1e7"
+    },
+    {
+      "name": "desktop-entrance-700.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 14366,
+      "sha256": "54d42585b432fa3336813360f9eb6c320c567d9730ca27dc60c1e03d47ee1a6a"
+    },
+    {
+      "name": "desktop-focus-cycle-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 10147,
+      "sha256": "8cf360e14d0c265d98068a40030a4d503f2ae8c58d8f12e822ca8643304ef641"
+    },
+    {
+      "name": "desktop-focus-cycle-1500.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 27402,
+      "sha256": "b2d4d335e513e75bcda853e92ee02c1b49ba10916facadcde5fab776d35718ba"
+    },
+    {
+      "name": "desktop-focus-cycle-6000.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 628835,
+      "sha256": "099bb817ba7140f6976d3180931b1e6e1757dc9d7c5dc75119b63b2b152946a0"
+    },
+    {
+      "name": "desktop-footer.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 129862,
+      "sha256": "ebd3a06d3ee9d8df7e2bf392afeaadcd8245e1060b54a2c345d56b3f21455a3e"
+    },
+    {
+      "name": "desktop-full.png",
+      "width": 1440,
+      "height": 9027,
+      "bytes": 2087156,
+      "sha256": "cdcfdf62d24d4950770ffc674baf05a1b64bf63f2ba49d967cf75c501673f50f"
+    },
+    {
+      "name": "desktop-hover-navigation-120.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 413729,
+      "sha256": "8838150a16b5e8d1ab8c096c679eab0f33cc8c6bfdb32b96bf99fb75c88a73df"
+    },
+    {
+      "name": "desktop-hover-navigation-620.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 371844,
+      "sha256": "c71905e297e2535d15a913efa590c8efec534bc73d035be7bd289f8951b72dec"
+    },
+    {
+      "name": "desktop-hover-read-more-120.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 886278,
+      "sha256": "4b37fff1253ac2d3c0c6d5607322ee0cee7169d0f9b8c06572e1079d776127a2"
+    },
+    {
+      "name": "desktop-hover-read-more-620.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 883814,
+      "sha256": "a61c1099b2c82f02d9fe4ccb3040818b72279b5aea35903e71efec2aa823dbc4"
+    },
+    {
+      "name": "desktop-hover-work-card-120.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 393649,
+      "sha256": "7a0325541ac80e72db703bc69b39245c1b303ead03d72cc7b9ae066f476556d4"
+    },
+    {
+      "name": "desktop-hover-work-card-620.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 396601,
+      "sha256": "b61000daed8e51e6e3ee992ae8e3e31d574ada3ec0325bf9cb1904dff583861f"
+    },
+    {
+      "name": "desktop-reduced-motion-hero.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 18847,
+      "sha256": "dd41a2ad83b367c4785cda160bd984508b1694146f4f4046240574219632500c"
+    },
+    {
+      "name": "desktop-section-1-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 352253,
+      "sha256": "6c9ec3e54abd995692b9ee0f89f84e6723bbd6ce048fd5db1501a3268cafb412"
+    },
+    {
+      "name": "desktop-section-2-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 687952,
+      "sha256": "233e1a234d84258fe3235e04699824dab75afdf6ebcdc4b0c339cbf3339d10e6"
+    },
+    {
+      "name": "desktop-section-3-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 1170664,
+      "sha256": "c78da592b2c65a4ecc82a786171c1a75cf2a12305eb4d8a703c90659b1e2e2b9"
+    },
+    {
+      "name": "desktop-section-4-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 929864,
+      "sha256": "119b78dd0f93684e1fa7d030fce3fa2401ce26f46df1f529e655363b7c08625e"
+    },
+    {
+      "name": "desktop-section-5-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 984868,
+      "sha256": "f4c2bb53ece9ade9c0f243f8a9b9d1f80a9c61b2785bfd175238b1e6049d98d7"
+    },
+    {
+      "name": "desktop-section-6-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 392682,
+      "sha256": "c38358d23c6550f5eefeb1155130a72876032d157f65f66417128e9297e00990"
+    },
+    {
+      "name": "desktop-section-6-40.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 385001,
+      "sha256": "a5de0a00ad14cdd4bf98c0b3a9b02681ffefb28595ade2841d42b5598e3c2246"
+    },
+    {
+      "name": "desktop-section-6-80.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 493610,
+      "sha256": "85abda13ec497ba0d6d9c2d8b602066958b8395a5c5bc9580091b252d289f462"
+    },
+    {
+      "name": "desktop-section-7-0.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 33874,
+      "sha256": "507dcc80dc6c435e35c9b2f1085f7460881c997171f14f3c873d87c5bf7eaf20"
+    },
+    {
+      "name": "desktop-section-7-40.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 154580,
+      "sha256": "6730a449f3f2f9f48cce279a66d1cd59d472d5f0a9b09d53a12bba79115489d5"
+    },
+    {
+      "name": "desktop-section-7-80.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 166835,
+      "sha256": "ce642d9c4cda605f1e9c37854ecab5c381bc3afccdebcdd793d63e5607060853"
+    },
+    {
+      "name": "desktop-work-scroll-100.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 394665,
+      "sha256": "75491d4bb1342acf2124952a52c8892b4e662ec59ccbf5f6c24a7b33f8fa60c7"
+    },
+    {
+      "name": "desktop-work-scroll-400.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 477084,
+      "sha256": "5865f2d27f058f2c74c76b56e76ccd5b1bf1db9b7851c653be27a90e6b472ce5"
+    },
+    {
+      "name": "desktop-work-scroll-750.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 332028,
+      "sha256": "a4c706217456e4e093bf87e474e8e0799c2ea0769f53d9662972ed75f4da2a6c"
+    },
+    {
+      "name": "mobile-about-reveal-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 52463,
+      "sha256": "01ccee6960c2e7b7e83358d2f95a982361cacd7912698623e72d26a982164d16"
+    },
+    {
+      "name": "mobile-about-reveal-100.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 121340,
+      "sha256": "7de8332cea8ee6d8b1ad91bbd588d5fccc213e1513a74ebd405e1ddeeca4c725"
+    },
+    {
+      "name": "mobile-about-reveal-600.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 145524,
+      "sha256": "2980f2875a98d8e2d825dc5e6c4db081e19fafd8c227eeab8e9cc9b1c03c8032"
+    },
+    {
+      "name": "mobile-email-scroll-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 69478,
+      "sha256": "9e00d2197c308e590f79307e289049cfa15894381e774f7b19e879bb6e670518"
+    },
+    {
+      "name": "mobile-email-scroll-1100.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 54026,
+      "sha256": "05c86e58de2d6bc224caf336cc7fda1f59ebad6f52d2ab16e94d1d2c3ace7b2a"
+    },
+    {
+      "name": "mobile-email-scroll-600.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 54026,
+      "sha256": "05c86e58de2d6bc224caf336cc7fda1f59ebad6f52d2ab16e94d1d2c3ace7b2a"
+    },
+    {
+      "name": "mobile-entrance-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 8730,
+      "sha256": "21b345e5a441498d34e2c923b73124175311481857437dc0151cb7a95fd7a105"
+    },
+    {
+      "name": "mobile-entrance-3200.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 143971,
+      "sha256": "e979003e4c72599201a4746e61c305293f3b4d4042c2505b159495ecc9b9c559"
+    },
+    {
+      "name": "mobile-entrance-700.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 9680,
+      "sha256": "19339b156625f0243e7d91f031eed7b575c85b80627c55cf7d868dc6ef4e519c"
+    },
+    {
+      "name": "mobile-focus-cycle-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 8730,
+      "sha256": "21b345e5a441498d34e2c923b73124175311481857437dc0151cb7a95fd7a105"
+    },
+    {
+      "name": "mobile-focus-cycle-1500.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 16089,
+      "sha256": "e43c929c0d7491f79da23b5f0d2f5d2b1ac315f2d6621bf83898bd0be1ec698f"
+    },
+    {
+      "name": "mobile-focus-cycle-6000.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 238789,
+      "sha256": "cef47733a3d1afaa036aa62fe09013871d21694ccaf1fcf5c25da9691eddfbde"
+    },
+    {
+      "name": "mobile-footer.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 54001,
+      "sha256": "d05f526aeec4cce072f90298cb5d1ef9285572c09650719444c52d4dd9b7be01"
+    },
+    {
+      "name": "mobile-full.png",
+      "width": 375,
+      "height": 5035,
+      "bytes": 673460,
+      "sha256": "9fd1609b38c0b06bbd2e8421e48991f5fe38da8183e5026d53f61af18af8b564"
+    },
+    {
+      "name": "mobile-hover-read-more-120.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 158867,
+      "sha256": "15f9ed78a2ecd0eefbe75ee42702b1e198585140920d838afa5ff2a3a4268b75"
+    },
+    {
+      "name": "mobile-hover-read-more-620.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 158792,
+      "sha256": "165c525ac51db73fa98bc6c2bd671ce83a31d2a3bd9a9bca343b646edac43d70"
+    },
+    {
+      "name": "mobile-hover-work-card-120.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 159108,
+      "sha256": "14038ea774a61b3010325372bf115f1a17b8bac889bc88c6f18c3e996d7a018c"
+    },
+    {
+      "name": "mobile-hover-work-card-620.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 152003,
+      "sha256": "f628c6d6c794d4c0745bed8442b64c1e89c0e11b323e32df8ed6fd23ef6b5a11"
+    },
+    {
+      "name": "mobile-nav-open.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 132731,
+      "sha256": "5f0afbc55cbdd31ce725d513aa75753b9e6918453de95c2c62f29e8664ed1377"
+    },
+    {
+      "name": "mobile-reduced-motion-hero.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 15862,
+      "sha256": "390df20d6de0960e417df968ab188bf737dc84901d1f8aad4a29a3c5065b55c4"
+    },
+    {
+      "name": "mobile-section-1-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 139051,
+      "sha256": "ead7129ded43bf521c9875ec7d6aaced8990328fbea6c1d3b3fd426233719956"
+    },
+    {
+      "name": "mobile-section-2-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 157708,
+      "sha256": "5e3c9c18e5c472e0a0257a3d9eb5590449de1e13c71a6b17e50cf744a6b6939f"
+    },
+    {
+      "name": "mobile-section-3-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 182670,
+      "sha256": "b5af96ef810264438a6870781bd4addaeabca289b21cb6432376d314056e0309"
+    },
+    {
+      "name": "mobile-section-4-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 180101,
+      "sha256": "2720989384c2af536c1182291fc91942e820ccceb41724794b97c7e3bb28a779"
+    },
+    {
+      "name": "mobile-section-5-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 135036,
+      "sha256": "49fb58267596f41c2890000970785c9962fb81d1f58f087ee8f1beb56b38e8d0"
+    },
+    {
+      "name": "mobile-section-6-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 152080,
+      "sha256": "52de18e9357d3e841ea4b8d61cfb752fa718b7b56896f871752cf7d97646fe25"
+    },
+    {
+      "name": "mobile-section-7-0.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 102888,
+      "sha256": "cdfa6430746c232e44fee8983b6145704d2d32fd87c9005bc76a494ddd962351"
+    },
+    {
+      "name": "mobile-work-scroll-100.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 228867,
+      "sha256": "9f4f925f85a38c06c523eb26c8a9346492dc47bb1103fcb5de4ab62b2d79bae3"
+    },
+    {
+      "name": "mobile-work-scroll-400.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 175022,
+      "sha256": "03c0b6c2a13d4133b86289cb1bf94716b6e30cc6abb787a0fb9381309a23ae86"
+    },
+    {
+      "name": "mobile-work-scroll-750.png",
+      "width": 375,
+      "height": 812,
+      "bytes": 78450,
+      "sha256": "dc0238a8c33bafcb4f3f4986ed3aadaa78294c7fd11401b66735d5d1508a2bf6"
+    },
+    {
+      "name": "public-template-listing.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 119564,
+      "sha256": "eb7fcaad4b363796528c22434d7e2704aa58abb40915616de4f6aaa66fca7daa"
+    }
+  ]
+}

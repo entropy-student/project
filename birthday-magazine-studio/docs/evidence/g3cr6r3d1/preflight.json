@@ -1,0 +1,50 @@
+{
+  "gate": "G3CR6R3D1_FOCUSLY_VISUAL_MAPPING",
+  "result": "RETURN_G3CR6R3D1_LOCAL_HOMEPAGE_UNAVAILABLE",
+  "branch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
+  "approvedBaseline": "36b670c333601624c068b543d7bc3c2f2f9ee346",
+  "localBeforeSync": "d82e78494c9ece831b71af12aeacee8099b4aa5a",
+  "mainAtFetch": "054b65f542ef456733396dd304fa6589da9eceae",
+  "projectScopedMainOnlyCommits": 0,
+  "pr": {
+    "number": 64,
+    "state": "open",
+    "merged": false,
+    "headAtStart": "36b670c333601624c068b543d7bc3c2f2f9ee346"
+  },
+  "docker": {
+    "command": "docker ps --format Names/Status/Ports",
+    "exitStatus": 1,
+    "safeSummary": "Docker Desktop Linux Engine named pipe unavailable",
+    "startedOrRebuilt": false,
+    "resourceFingerprint": "UNVERIFIED"
+  },
+  "localHomepage": "CONNECTION_REFUSED",
+  "freshCurrentHomepageVisualEvidence": "BLOCKED",
+  "acceptedHistoricalEvidenceReplayed": false,
+  "preexistingWork": {
+    "trackedScreenshotDeletions": 17,
+    "ownerArchivesAndUntrackedScreenshots": "preserved and excluded"
+  },
+  "counters": {
+    "frontendSourceChanges": 0,
+    "wordpressContentChanges": 0,
+    "cssChanges": 0,
+    "jsChanges": 0,
+    "mediaChanges": 0,
+    "databaseMutations": 0,
+    "runtimeMutations": 0,
+    "cartActions": 0,
+    "checkoutSubmissions": 0,
+    "paypalActions": 0,
+    "realMoneyActions": 0,
+    "productModelCalls": 0,
+    "imageGenerationCalls": 0,
+    "productionDeployments": 0,
+    "sharedInfrastructureMutations": 0,
+    "prMerge": 0
+  },
+  "d2Started": false,
+  "stopAtReviewer": true,
+  "ownerRelay": "NONE"
+}

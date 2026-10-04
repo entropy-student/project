@@ -1,0 +1,461 @@
+{
+  "capturedAt": "2026-10-04T05:30:27.203Z",
+  "browser": "154.0.4258.53",
+  "viewports": [
+    {
+      "label": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "homeStatus": 200,
+      "home": {
+        "title": "Birthday Magazine Studio – Turn photos and stories into a birthday magazine.",
+        "bodyClasses": "home wp-singular page-template-default page page-id-858 wp-custom-logo wp-embed-responsive wp-theme-blocksy theme-blocksy stk--is-blocksy-theme stk-has-block-style-inheritance woocommerce-js",
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": "",
+            "heading": "A birthday gift,all about them."
+          },
+          {
+            "class": "wp-block-group bms-value-strip is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples",
+            "heading": "Not just a message.A whole magazine."
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview",
+            "heading": "Now, make it theirs."
+          },
+          {
+            "class": "wp-block-group bms-included is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get",
+            "heading": "Pages ofbirthday goodness."
+          },
+          {
+            "class": "wp-block-group bms-how is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works",
+            "heading": "You bringthe person.We bringthe pages."
+          },
+          {
+            "class": "wp-block-group bms-offer is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer",
+            "heading": "Give themtheir own good issue."
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq",
+            "heading": "A few good questions."
+          }
+        ],
+        "anchors": [
+          "samples",
+          "preview",
+          "bms-name",
+          "bms-age",
+          "bms-style",
+          "bms-photo",
+          "what-you-get",
+          "how-it-works",
+          "offer",
+          "faq"
+        ],
+        "previewCount": 1,
+        "previewHasPhoto": "false",
+        "headerLinks": [
+          {
+            "label": "Home",
+            "href": "http://127.0.0.1:8189/"
+          },
+          {
+            "label": "What You Get",
+            "href": "http://127.0.0.1:8189/#what-you-get"
+          },
+          {
+            "label": "Birthday Magazine Studio",
+            "href": "http://127.0.0.1:8189/"
+          },
+          {
+            "label": "CREATE A FREE PREVIEW",
+            "href": "http://127.0.0.1:8189/#preview"
+          },
+          {
+            "label": "Birthday Magazine Studio",
+            "href": "http://127.0.0.1:8189/"
+          }
+        ],
+        "menuControls": [
+          {
+            "label": "Menu",
+            "expanded": null
+          }
+        ],
+        "ctas": [
+          {
+            "label": "See their free preview →",
+            "href": "#preview"
+          },
+          {
+            "label": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "label": "Make their birthday magazine →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "label": "Free preview",
+            "href": "http://127.0.0.1:8189/#preview"
+          },
+          {
+            "label": "The magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "label": "My account",
+            "href": "http://127.0.0.1:8189/my-account/"
+          },
+          {
+            "label": "Privacy policy",
+            "href": ""
+          }
+        ],
+        "brokenImages": []
+      },
+      "routes": [
+        {
+          "name": "product",
+          "requested": "http://127.0.0.1:8189/product/birthday-magazine/",
+          "status": 200,
+          "finalUrl": "http://127.0.0.1:8189/product/birthday-magazine/",
+          "redirectChain": [
+            {
+              "url": "http://127.0.0.1:8189/product/birthday-magazine/",
+              "method": "GET"
+            }
+          ],
+          "dom": {
+            "title": "The Birthday Magazine – Birthday Magazine Studio",
+            "heading": "The Birthday Magazine",
+            "innerWidth": 1440,
+            "scrollWidth": 1440,
+            "price": "$39.99",
+            "addToCartControlPresent": true,
+            "cartEmpty": false,
+            "checkoutFormPresent": false,
+            "accountLoginPresent": false
+          }
+        },
+        {
+          "name": "cart",
+          "requested": "http://127.0.0.1:8189/cart/",
+          "status": 200,
+          "finalUrl": "http://127.0.0.1:8189/cart/",
+          "redirectChain": [
+            {
+              "url": "http://127.0.0.1:8189/cart/",
+              "method": "GET"
+            }
+          ],
+          "dom": {
+            "title": "Cart – Birthday Magazine Studio",
+            "heading": "Cart",
+            "innerWidth": 1440,
+            "scrollWidth": 1440,
+            "addToCartControlPresent": false,
+            "cartEmpty": true,
+            "checkoutFormPresent": false,
+            "accountLoginPresent": false
+          }
+        },
+        {
+          "name": "checkout",
+          "requested": "http://127.0.0.1:8189/checkout/",
+          "status": 200,
+          "finalUrl": "http://127.0.0.1:8189/cart/",
+          "redirectChain": [
+            {
+              "url": "http://127.0.0.1:8189/checkout/",
+              "method": "GET"
+            },
+            {
+              "url": "http://127.0.0.1:8189/cart/",
+              "method": "GET"
+            }
+          ],
+          "dom": {
+            "title": "Cart – Birthday Magazine Studio",
+            "heading": "Cart",
+            "innerWidth": 1440,
+            "scrollWidth": 1440,
+            "addToCartControlPresent": false,
+            "cartEmpty": true,
+            "checkoutFormPresent": false,
+            "accountLoginPresent": false
+          }
+        },
+        {
+          "name": "account",
+          "requested": "http://127.0.0.1:8189/my-account/",
+          "status": 200,
+          "finalUrl": "http://127.0.0.1:8189/my-account/",
+          "redirectChain": [
+            {
+              "url": "http://127.0.0.1:8189/my-account/",
+              "method": "GET"
+            }
+          ],
+          "dom": {
+            "title": "My Account – Birthday Magazine Studio",
+            "heading": "My Account",
+            "innerWidth": 1440,
+            "scrollWidth": 1440,
+            "addToCartControlPresent": false,
+            "cartEmpty": false,
+            "checkoutFormPresent": false,
+            "accountLoginPresent": true
+          }
+        }
+      ],
+      "errors": [],
+      "failedResponses": []
+    },
+    {
+      "label": "mobile",
+      "width": 375,
+      "height": 812,
+      "homeStatus": 200,
+      "home": {
+        "title": "Birthday Magazine Studio – Turn photos and stories into a birthday magazine.",
+        "bodyClasses": "home wp-singular page-template-default page page-id-858 wp-custom-logo wp-embed-responsive wp-theme-blocksy theme-blocksy stk--is-blocksy-theme stk-has-block-style-inheritance woocommerce-js",
+        "innerWidth": 375,
+        "scrollWidth": 375,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": "",
+            "heading": "A birthday gift,all about them."
+          },
+          {
+            "class": "wp-block-group bms-value-strip is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples",
+            "heading": "Not just a message.A whole magazine."
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview",
+            "heading": "Now, make it theirs."
+          },
+          {
+            "class": "wp-block-group bms-included is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get",
+            "heading": "Pages ofbirthday goodness."
+          },
+          {
+            "class": "wp-block-group bms-how is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works",
+            "heading": "You bringthe person.We bringthe pages."
+          },
+          {
+            "class": "wp-block-group bms-offer is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer",
+            "heading": "Give themtheir own good issue."
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq",
+            "heading": "A few good questions."
+          }
+        ],
+        "anchors": [
+          "samples",
+          "preview",
+          "bms-name",
+          "bms-age",
+          "bms-style",
+          "bms-photo",
+          "what-you-get",
+          "how-it-works",
+          "offer",
+          "faq"
+        ],
+        "previewCount": 1,
+        "previewHasPhoto": "false",
+        "headerLinks": [
+          {
+            "label": "Home",
+            "href": "http://127.0.0.1:8189/"
+          },
+          {
+            "label": "What You Get",
+            "href": "http://127.0.0.1:8189/#what-you-get"
+          },
+          {
+            "label": "Birthday Magazine Studio",
+            "href": "http://127.0.0.1:8189/"
+          },
+          {
+            "label": "CREATE A FREE PREVIEW",
+            "href": "http://127.0.0.1:8189/#preview"
+          },
+          {
+            "label": "Birthday Magazine Studio",
+            "href": "http://127.0.0.1:8189/"
+          }
+        ],
+        "menuControls": [
+          {
+            "label": "Menu",
+            "expanded": null
+          }
+        ],
+        "ctas": [
+          {
+            "label": "See their free preview →",
+            "href": "#preview"
+          },
+          {
+            "label": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "label": "Make their birthday magazine →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "label": "Free preview",
+            "href": "http://127.0.0.1:8189/#preview"
+          },
+          {
+            "label": "The magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "label": "My account",
+            "href": "http://127.0.0.1:8189/my-account/"
+          },
+          {
+            "label": "Privacy policy",
+            "href": ""
+          }
+        ],
+        "brokenImages": []
+      },
+      "routes": [
+        {
+          "name": "product",
+          "requested": "http://127.0.0.1:8189/product/birthday-magazine/",
+          "status": 200,
+          "finalUrl": "http://127.0.0.1:8189/product/birthday-magazine/",
+          "redirectChain": [
+            {
+              "url": "http://127.0.0.1:8189/product/birthday-magazine/",
+              "method": "GET"
+            }
+          ],
+          "dom": {
+            "title": "The Birthday Magazine – Birthday Magazine Studio",
+            "heading": "The Birthday Magazine",
+            "innerWidth": 375,
+            "scrollWidth": 375,
+            "price": "$39.99",
+            "addToCartControlPresent": true,
+            "cartEmpty": false,
+            "checkoutFormPresent": false,
+            "accountLoginPresent": false
+          }
+        },
+        {
+          "name": "cart",
+          "requested": "http://127.0.0.1:8189/cart/",
+          "status": 200,
+          "finalUrl": "http://127.0.0.1:8189/cart/",
+          "redirectChain": [
+            {
+              "url": "http://127.0.0.1:8189/cart/",
+              "method": "GET"
+            }
+          ],
+          "dom": {
+            "title": "Cart – Birthday Magazine Studio",
+            "heading": "Cart",
+            "innerWidth": 375,
+            "scrollWidth": 375,
+            "addToCartControlPresent": false,
+            "cartEmpty": true,
+            "checkoutFormPresent": false,
+            "accountLoginPresent": false
+          }
+        },
+        {
+          "name": "checkout",
+          "requested": "http://127.0.0.1:8189/checkout/",
+          "status": 200,
+          "finalUrl": "http://127.0.0.1:8189/cart/",
+          "redirectChain": [
+            {
+              "url": "http://127.0.0.1:8189/checkout/",
+              "method": "GET"
+            },
+            {
+              "url": "http://127.0.0.1:8189/cart/",
+              "method": "GET"
+            }
+          ],
+          "dom": {
+            "title": "Cart – Birthday Magazine Studio",
+            "heading": "Cart",
+            "innerWidth": 375,
+            "scrollWidth": 375,
+            "addToCartControlPresent": false,
+            "cartEmpty": true,
+            "checkoutFormPresent": false,
+            "accountLoginPresent": false
+          }
+        },
+        {
+          "name": "account",
+          "requested": "http://127.0.0.1:8189/my-account/",
+          "status": 200,
+          "finalUrl": "http://127.0.0.1:8189/my-account/",
+          "redirectChain": [
+            {
+              "url": "http://127.0.0.1:8189/my-account/",
+              "method": "GET"
+            }
+          ],
+          "dom": {
+            "title": "My Account – Birthday Magazine Studio",
+            "heading": "My Account",
+            "innerWidth": 375,
+            "scrollWidth": 375,
+            "addToCartControlPresent": false,
+            "cartEmpty": false,
+            "checkoutFormPresent": false,
+            "accountLoginPresent": true
+          }
+        }
+      ],
+      "errors": [],
+      "failedResponses": []
+    }
+  ],
+  "blockedRequests": [],
+  "actions": {
+    "preview": 0,
+    "addToCart": 0,
+    "checkoutSubmission": 0,
+    "accountLogin": 0,
+    "paypal": 0,
+    "model": 0
+  }
+}

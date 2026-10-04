@@ -1,0 +1,17 @@
+{
+  "gate": "G3CR6R3D2R4_MOTION_POLISH",
+  "iteration": "Owner-approved Hero-only travel expansion",
+  "branch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
+  "baseline": "022ad6de2d64237ad6669c5c4a29e6eef11cea79",
+  "canonicalMain": "301eda93ee91bef860341ec280e95f39f97cbcf7",
+  "projectAuthorityDrift": false,
+  "governance": "spike.skill/vps-project-governance/VNEXT.md v0.2.6",
+  "governanceAnchor": "83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6",
+  "ownerAuthorization": "Hero differences discussed; plan accepted; Owner latest explicit instruction to start changes.",
+  "newGate": false,
+  "pr": 64,
+  "newPR": false,
+  "merge": false,
+  "runtimeRebuild": false,
+  "newImagegenCalls": 0
+}

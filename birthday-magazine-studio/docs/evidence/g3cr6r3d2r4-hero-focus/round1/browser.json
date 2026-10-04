@@ -1,0 +1,5895 @@
+{
+  "time": "2026-10-04T12:26:42.215Z",
+  "browser": "154.0.4258.53",
+  "runs": [
+    {
+      "label": "desktop",
+      "mode": "normal",
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "failures": [],
+      "states": [
+        {
+          "name": "a-clear",
+          "time": 22997.60000000894,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "frame": {
+            "x": 360,
+            "y": 145,
+            "width": 720,
+            "height": 420,
+            "top": 145,
+            "right": 1080,
+            "bottom": 565,
+            "left": 360
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+          "enhanced": true,
+          "clip": "inset(145px 360px 435px round 44px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "backgroundFilter": "blur(10px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 20533.201999999997,
+                  "state": "running"
+                },
+                {
+                  "time": 20533.201999999997,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 20533.201999999997,
+                  "state": "running"
+                },
+                {
+                  "time": 20533.201999999997,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 20533.201999999997,
+                  "state": "running"
+                },
+                {
+                  "time": 20533.201999999997,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 20533.201999999997,
+                  "state": "running"
+                },
+                {
+                  "time": 20533.201999999997,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 637.421875,
+            "width": 1392,
+            "height": 282.578125,
+            "top": 637.421875,
+            "right": 1416,
+            "bottom": 920,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 601.796875,
+            "y": 838.421875,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 838.421875,
+            "right": 838.1875,
+            "bottom": 886.8125,
+            "left": 601.796875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "name": "a-to-b",
+          "time": 31536.60000000894,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "frame": {
+            "x": 360,
+            "y": 145,
+            "width": 720,
+            "height": 420,
+            "top": 145,
+            "right": 1080,
+            "bottom": 565,
+            "left": 360
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+          "enhanced": true,
+          "clip": "inset(145px 360px 435px round 44px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "backgroundFilter": "blur(20px)",
+          "windowFilter": "blur(12px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": -56.97760009765625,
+                "y": -39.5677490234375,
+                "width": 1553.955078125,
+                "height": 1079.135498046875,
+                "top": -39.5677490234375,
+                "right": 1496.9774780273438,
+                "bottom": 1039.5677490234375,
+                "left": -56.97760009765625
+              },
+              "opacity": "0.573217",
+              "transform": "matrix(1.07914, 0, 0, 1.07914, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 29074.402,
+                  "state": "running"
+                },
+                {
+                  "time": 29074.402,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": -56.97760009765625,
+                "y": -39.5677490234375,
+                "width": 1553.955078125,
+                "height": 1079.135498046875,
+                "top": -39.5677490234375,
+                "right": 1496.9774780273438,
+                "bottom": 1039.5677490234375,
+                "left": -56.97760009765625
+              },
+              "opacity": "0.426783",
+              "transform": "matrix(1.07914, 0, 0, 1.07914, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 29074.402,
+                  "state": "running"
+                },
+                {
+                  "time": 29074.402,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": -56.97760009765625,
+                "y": -39.5677490234375,
+                "width": 1553.955078125,
+                "height": 1079.135498046875,
+                "top": -39.5677490234375,
+                "right": 1496.9774780273438,
+                "bottom": 1039.5677490234375,
+                "left": -56.97760009765625
+              },
+              "opacity": "0.573217",
+              "transform": "matrix(1.07914, 0, 0, 1.07914, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 29074.402,
+                  "state": "running"
+                },
+                {
+                  "time": 29074.402,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": -56.97760009765625,
+                "y": -39.5677490234375,
+                "width": 1553.955078125,
+                "height": 1079.135498046875,
+                "top": -39.5677490234375,
+                "right": 1496.9774780273438,
+                "bottom": 1039.5677490234375,
+                "left": -56.97760009765625
+              },
+              "opacity": "0.426783",
+              "transform": "matrix(1.07914, 0, 0, 1.07914, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 29074.402,
+                  "state": "running"
+                },
+                {
+                  "time": 29074.402,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 637.421875,
+            "width": 1392,
+            "height": 282.578125,
+            "top": 637.421875,
+            "right": 1416,
+            "bottom": 920,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 601.796875,
+            "y": 838.421875,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 838.421875,
+            "right": 838.1875,
+            "bottom": 886.8125,
+            "left": 601.796875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "name": "b-clear",
+          "time": 33487.70000000298,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "frame": {
+            "x": 360,
+            "y": 145,
+            "width": 720,
+            "height": 420,
+            "top": 145,
+            "right": 1080,
+            "bottom": 565,
+            "left": 360
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+          "enhanced": true,
+          "clip": "inset(145px 360px 435px round 44px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "backgroundFilter": "blur(10px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 31024.402000000002,
+                  "state": "running"
+                },
+                {
+                  "time": 31024.402000000002,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 31024.402000000002,
+                  "state": "running"
+                },
+                {
+                  "time": 31024.402000000002,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 31024.402000000002,
+                  "state": "running"
+                },
+                {
+                  "time": 31024.402000000002,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 31024.402000000002,
+                  "state": "running"
+                },
+                {
+                  "time": 31024.402000000002,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 637.421875,
+            "width": 1392,
+            "height": 282.578125,
+            "top": 637.421875,
+            "right": 1416,
+            "bottom": 920,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 601.796875,
+            "y": 838.421875,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 838.421875,
+            "right": 838.1875,
+            "bottom": 886.8125,
+            "left": 601.796875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "name": "b-to-a",
+          "time": 41538.10000000894,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "frame": {
+            "x": 360,
+            "y": 145,
+            "width": 720,
+            "height": 420,
+            "top": 145,
+            "right": 1080,
+            "bottom": 565,
+            "left": 360
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+          "enhanced": true,
+          "clip": "inset(145px 360px 435px round 44px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "backgroundFilter": "blur(20px)",
+          "windowFilter": "blur(12px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": -56.97930908203125,
+                "y": -39.5689697265625,
+                "width": 1553.95849609375,
+                "height": 1079.137939453125,
+                "top": -39.5689697265625,
+                "right": 1496.9791870117188,
+                "bottom": 1039.5689697265625,
+                "left": -56.97930908203125
+              },
+              "opacity": "0.426499",
+              "transform": "matrix(1.07914, 0, 0, 1.07914, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 39074.301999999996,
+                  "state": "running"
+                },
+                {
+                  "time": 39074.301999999996,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": -56.97930908203125,
+                "y": -39.5689697265625,
+                "width": 1553.95849609375,
+                "height": 1079.137939453125,
+                "top": -39.5689697265625,
+                "right": 1496.9791870117188,
+                "bottom": 1039.5689697265625,
+                "left": -56.97930908203125
+              },
+              "opacity": "0.573501",
+              "transform": "matrix(1.07914, 0, 0, 1.07914, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 39074.301999999996,
+                  "state": "running"
+                },
+                {
+                  "time": 39074.301999999996,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": -56.97930908203125,
+                "y": -39.5689697265625,
+                "width": 1553.95849609375,
+                "height": 1079.137939453125,
+                "top": -39.5689697265625,
+                "right": 1496.9791870117188,
+                "bottom": 1039.5689697265625,
+                "left": -56.97930908203125
+              },
+              "opacity": "0.426499",
+              "transform": "matrix(1.07914, 0, 0, 1.07914, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 39074.301999999996,
+                  "state": "running"
+                },
+                {
+                  "time": 39074.301999999996,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": -56.97930908203125,
+                "y": -39.5689697265625,
+                "width": 1553.95849609375,
+                "height": 1079.137939453125,
+                "top": -39.5689697265625,
+                "right": 1496.9791870117188,
+                "bottom": 1039.5689697265625,
+                "left": -56.97930908203125
+              },
+              "opacity": "0.573501",
+              "transform": "matrix(1.07914, 0, 0, 1.07914, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 39074.301999999996,
+                  "state": "running"
+                },
+                {
+                  "time": 39074.301999999996,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 637.421875,
+            "width": 1392,
+            "height": 282.578125,
+            "top": 637.421875,
+            "right": 1416,
+            "bottom": 920,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 601.796875,
+            "y": 838.421875,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 838.421875,
+            "right": 838.1875,
+            "bottom": 886.8125,
+            "left": 601.796875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "name": "a-return",
+          "time": 42994.70000000298,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "frame": {
+            "x": 360,
+            "y": 145,
+            "width": 720,
+            "height": 420,
+            "top": 145,
+            "right": 1080,
+            "bottom": 565,
+            "left": 360
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+          "enhanced": true,
+          "clip": "inset(145px 360px 435px round 44px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "backgroundFilter": "blur(10px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 40532.602,
+                  "state": "running"
+                },
+                {
+                  "time": 40532.602,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 40532.602,
+                  "state": "running"
+                },
+                {
+                  "time": 40532.602,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 40532.602,
+                  "state": "running"
+                },
+                {
+                  "time": 40532.602,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 40532.602,
+                  "state": "running"
+                },
+                {
+                  "time": 40532.602,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 637.421875,
+            "width": 1392,
+            "height": 282.578125,
+            "top": 637.421875,
+            "right": 1416,
+            "bottom": 920,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 601.796875,
+            "y": 838.421875,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 838.421875,
+            "right": 838.1875,
+            "bottom": 886.8125,
+            "left": 601.796875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 1440,
+          "scrollWidth": 1440
+        }
+      ],
+      "pointer": [
+        {
+          "name": "left",
+          "time": 6847.79999999702,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "frame": {
+            "x": 180,
+            "y": 94.25,
+            "width": 720,
+            "height": 420,
+            "top": 94.25,
+            "right": 900,
+            "bottom": 514.25,
+            "left": 180
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -540, -50.75)",
+          "enhanced": true,
+          "clip": "inset(94.25px 540px 485.75px 180px round 44px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "backgroundFilter": "blur(10px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 4383.201999999999,
+                  "state": "running"
+                },
+                {
+                  "time": 4383.201999999999,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 4383.201999999999,
+                  "state": "running"
+                },
+                {
+                  "time": 4383.201999999999,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 4383.201999999999,
+                  "state": "running"
+                },
+                {
+                  "time": 4383.201999999999,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 4383.201999999999,
+                  "state": "running"
+                },
+                {
+                  "time": 4383.201999999999,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 637.421875,
+            "width": 1392,
+            "height": 282.578125,
+            "top": 637.421875,
+            "right": 1416,
+            "bottom": 920,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 601.796875,
+            "y": 838.421875,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 838.421875,
+            "right": 838.1875,
+            "bottom": 886.8125,
+            "left": 601.796875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "-180px",
+          "focusY": "-50.75px",
+          "width": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "name": "right",
+          "time": 7947.5,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "frame": {
+            "x": 540,
+            "y": 146.75,
+            "width": 720,
+            "height": 420,
+            "top": 146.75,
+            "right": 1260,
+            "bottom": 566.75,
+            "left": 540
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -180, 1.75)",
+          "enhanced": true,
+          "clip": "inset(146.75px 180px 433.25px 540px round 44px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "backgroundFilter": "blur(10px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 5483.302,
+                  "state": "running"
+                },
+                {
+                  "time": 5483.302,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 5483.302,
+                  "state": "running"
+                },
+                {
+                  "time": 5483.302,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 5483.302,
+                  "state": "running"
+                },
+                {
+                  "time": 5483.302,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 5483.302,
+                  "state": "running"
+                },
+                {
+                  "time": 5483.302,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 637.421875,
+            "width": 1392,
+            "height": 282.578125,
+            "top": 637.421875,
+            "right": 1416,
+            "bottom": 920,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 601.796875,
+            "y": 838.421875,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 838.421875,
+            "right": 838.1875,
+            "bottom": 886.8125,
+            "left": 601.796875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "180px",
+          "focusY": "1.75px",
+          "width": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "name": "bottom",
+          "time": 8995.70000000298,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "frame": {
+            "x": 540,
+            "y": 197,
+            "width": 720,
+            "height": 420,
+            "top": 197,
+            "right": 1260,
+            "bottom": 617,
+            "left": 540
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -180, 52)",
+          "enhanced": true,
+          "clip": "inset(197px 180px 383px 540px round 44px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 1000,
+            "top": 0,
+            "right": 1440,
+            "bottom": 1000,
+            "left": 0
+          },
+          "backgroundFilter": "blur(10px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 6533.201999999999,
+                  "state": "running"
+                },
+                {
+                  "time": 6533.201999999999,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 6533.201999999999,
+                  "state": "running"
+                },
+                {
+                  "time": 6533.201999999999,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 6533.201999999999,
+                  "state": "running"
+                },
+                {
+                  "time": 6533.201999999999,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 1440,
+                "height": 1000,
+                "top": 0,
+                "right": 1440,
+                "bottom": 1000,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 6533.201999999999,
+                  "state": "running"
+                },
+                {
+                  "time": 6533.201999999999,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 637.421875,
+            "width": 1392,
+            "height": 282.578125,
+            "top": 637.421875,
+            "right": 1416,
+            "bottom": 920,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 601.796875,
+            "y": 838.421875,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 838.421875,
+            "right": 838.1875,
+            "bottom": 886.8125,
+            "left": 601.796875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "180px",
+          "focusY": "52px",
+          "width": 1440,
+          "scrollWidth": 1440
+        }
+      ],
+      "routes": [
+        {
+          "name": "product",
+          "status": 200,
+          "url": "http://127.0.0.1:8189/product/birthday-magazine/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "price": "$39.99",
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": false
+        },
+        {
+          "name": "cart",
+          "status": 200,
+          "url": "http://127.0.0.1:8189/cart/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "checkout",
+          "status": 200,
+          "url": "http://127.0.0.1:8189/cart/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "account",
+          "status": 200,
+          "url": "http://127.0.0.1:8189/my-account/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": true
+        }
+      ],
+      "status": 200,
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 10839,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "broken": []
+      },
+      "default": {
+        "time": 5762.20000000298,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "frame": {
+          "x": 360,
+          "y": 145,
+          "width": 720,
+          "height": 420,
+          "top": 145,
+          "right": 1080,
+          "bottom": 565,
+          "left": 360
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+        "enhanced": true,
+        "clip": "inset(145px 360px 435px round 44px)",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "backgroundFilter": "blur(10px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 3299.902,
+                "state": "running"
+              },
+              {
+                "time": 3299.902,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 3299.902,
+                "state": "running"
+              },
+              {
+                "time": 3299.902,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 3299.902,
+                "state": "running"
+              },
+              {
+                "time": 3299.902,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 3299.902,
+                "state": "running"
+              },
+              {
+                "time": 3299.902,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": 637.421875,
+          "width": 1392,
+          "height": 282.578125,
+          "top": 637.421875,
+          "right": 1416,
+          "bottom": 920,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 601.796875,
+          "y": 838.421875,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": 838.421875,
+          "right": 838.1875,
+          "bottom": 886.8125,
+          "left": 601.796875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "hidden",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      "pointerReturn": {
+        "time": 10128,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "frame": {
+          "x": 360,
+          "y": 145,
+          "width": 720,
+          "height": 420,
+          "top": 145,
+          "right": 1080,
+          "bottom": 565,
+          "left": 360
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+        "enhanced": true,
+        "clip": "inset(145px 360px 435px round 44px)",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "backgroundFilter": "blur(10px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 7666.402,
+                "state": "running"
+              },
+              {
+                "time": 7666.402,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 7666.402,
+                "state": "running"
+              },
+              {
+                "time": 7666.402,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 7666.402,
+                "state": "running"
+              },
+              {
+                "time": 7666.402,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 7666.402,
+                "state": "running"
+              },
+              {
+                "time": 7666.402,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": 637.421875,
+          "width": 1392,
+          "height": 282.578125,
+          "top": 637.421875,
+          "right": 1416,
+          "bottom": 920,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 601.796875,
+          "y": 838.421875,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": 838.421875,
+          "right": 838.1875,
+          "bottom": 886.8125,
+          "left": 601.796875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "hidden",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      "focus": {
+        "active": true,
+        "outline": "solid"
+      },
+      "liveReduced": {
+        "time": 45626.40000000596,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "frame": {
+          "x": 360,
+          "y": 145,
+          "width": 720,
+          "height": 480,
+          "top": 145,
+          "right": 1080,
+          "bottom": 625,
+          "left": 360
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+        "enhanced": false,
+        "clip": "inset(145px 360px -625px round 44px)",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "backgroundFilter": "blur(10px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43032.568,
+                "state": "paused"
+              },
+              {
+                "time": 43032.568,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43032.568,
+                "state": "paused"
+              },
+              {
+                "time": 43032.568,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43032.568,
+                "state": "paused"
+              },
+              {
+                "time": 43032.568,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43032.568,
+                "state": "paused"
+              },
+              {
+                "time": 43032.568,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": 637.421875,
+          "width": 1392,
+          "height": 282.578125,
+          "top": 637.421875,
+          "right": 1416,
+          "bottom": 920,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 601.796875,
+          "y": 838.421875,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": 838.421875,
+          "right": 838.1875,
+          "bottom": 886.8125,
+          "left": 601.796875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "visible",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      "liveRestored": {
+        "time": 46374.60000000894,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "frame": {
+          "x": 360,
+          "y": 145,
+          "width": 720,
+          "height": 420,
+          "top": 145,
+          "right": 1080,
+          "bottom": 565,
+          "left": 360
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+        "enhanced": true,
+        "clip": "inset(145px 360px 435px round 44px)",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "backgroundFilter": "blur(10px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43157.56300000691,
+                "state": "running"
+              },
+              {
+                "time": 43157.56300000691,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43157.56300000691,
+                "state": "running"
+              },
+              {
+                "time": 43157.56300000691,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43157.56300000691,
+                "state": "running"
+              },
+              {
+                "time": 43157.56300000691,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1000,
+              "top": 0,
+              "right": 1440,
+              "bottom": 1000,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43157.56300000691,
+                "state": "running"
+              },
+              {
+                "time": 43157.56300000691,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": 646.2562866210938,
+          "width": 1392,
+          "height": 282.578125,
+          "top": 646.2562866210938,
+          "right": 1416,
+          "bottom": 928.8344116210938,
+          "left": 24
+        },
+        "copyOpacity": "0.8773",
+        "cta": {
+          "x": 601.796875,
+          "y": 847.2562866210938,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": 847.2562866210938,
+          "right": 838.1875,
+          "bottom": 895.6469116210938,
+          "left": 601.796875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "hidden",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      "offscreen": {
+        "time": 46669.60000000894,
+        "scrollY": 2413,
+        "hero": {
+          "x": 0,
+          "y": -2413,
+          "width": 1440,
+          "height": 1000,
+          "top": -2413,
+          "right": 1440,
+          "bottom": -1413,
+          "left": 0
+        },
+        "frame": {
+          "x": 360,
+          "y": -2268,
+          "width": 720,
+          "height": 420,
+          "top": -2268,
+          "right": 1080,
+          "bottom": -1848,
+          "left": 360
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+        "enhanced": true,
+        "clip": "inset(145px 360px 435px round 44px)",
+        "canvas": {
+          "x": 0,
+          "y": -2413,
+          "width": 1440,
+          "height": 1000,
+          "top": -2413,
+          "right": 1440,
+          "bottom": -1413,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": -2413,
+          "width": 1440,
+          "height": 1000,
+          "top": -2413,
+          "right": 1440,
+          "bottom": -1413,
+          "left": 0
+        },
+        "backgroundFilter": "blur(10px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": -2413,
+              "width": 1440,
+              "height": 1000,
+              "top": -2413,
+              "right": 1440,
+              "bottom": -1413,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43207.66300000691,
+                "state": "paused"
+              },
+              {
+                "time": 43207.66300000691,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": -2413,
+              "width": 1440,
+              "height": 1000,
+              "top": -2413,
+              "right": 1440,
+              "bottom": -1413,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43207.66300000691,
+                "state": "paused"
+              },
+              {
+                "time": 43207.66300000691,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": -2413,
+              "width": 1440,
+              "height": 1000,
+              "top": -2413,
+              "right": 1440,
+              "bottom": -1413,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43207.66300000691,
+                "state": "paused"
+              },
+              {
+                "time": 43207.66300000691,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": -2413,
+              "width": 1440,
+              "height": 1000,
+              "top": -2413,
+              "right": 1440,
+              "bottom": -1413,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 43207.66300000691,
+                "state": "paused"
+              },
+              {
+                "time": 43207.66300000691,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": -1774.069580078125,
+          "width": 1392,
+          "height": 282.578125,
+          "top": -1774.069580078125,
+          "right": 1416,
+          "bottom": -1491.491455078125,
+          "left": 24
+        },
+        "copyOpacity": "0.979048",
+        "cta": {
+          "x": 601.796875,
+          "y": -1573.069580078125,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": -1573.069580078125,
+          "right": 838.1875,
+          "bottom": -1524.678955078125,
+          "left": 601.796875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "hidden",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 10839,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "broken": []
+      }
+    },
+    {
+      "label": "desktop",
+      "mode": "reduced",
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "failures": [],
+      "states": [],
+      "pointer": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "broken": []
+      },
+      "default": {
+        "time": 4589.199999988079,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "frame": {
+          "x": 360,
+          "y": 145,
+          "width": 720,
+          "height": 480,
+          "top": 145,
+          "right": 1080,
+          "bottom": 625,
+          "left": 360
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+        "enhanced": false,
+        "clip": "inset(145px 360px -625px round 44px)",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "backgroundFilter": "blur(10px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 0,
+                "state": "paused"
+              },
+              {
+                "time": 0,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 0,
+                "state": "paused"
+              },
+              {
+                "time": 0,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 0,
+                "state": "paused"
+              },
+              {
+                "time": 0,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 0,
+                "state": "paused"
+              },
+              {
+                "time": 0,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": 637.421875,
+          "width": 1392,
+          "height": 282.578125,
+          "top": 637.421875,
+          "right": 1416,
+          "bottom": 920,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 601.796875,
+          "y": 838.421875,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": 838.421875,
+          "right": 838.1875,
+          "bottom": 886.8125,
+          "left": 601.796875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "visible",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "broken": []
+      }
+    },
+    {
+      "label": "desktop",
+      "mode": "no-js",
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "failures": [],
+      "states": [],
+      "pointer": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "broken": []
+      },
+      "default": {
+        "time": 2669.8999999910593,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "frame": {
+          "x": 360,
+          "y": 145,
+          "width": 720,
+          "height": 480,
+          "top": 145,
+          "right": 1080,
+          "bottom": 625,
+          "left": 360
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+        "enhanced": false,
+        "background": [],
+        "sharp": [],
+        "copy": {
+          "x": 24,
+          "y": 639.8125,
+          "width": 1392,
+          "height": 280.1875,
+          "top": 639.8125,
+          "right": 1416,
+          "bottom": 920,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 601.796875,
+          "y": 840.8125,
+          "width": 236.390625,
+          "height": 46,
+          "top": 840.8125,
+          "right": 838.1875,
+          "bottom": 886.8125,
+          "left": 601.796875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "visible",
+        "focusX": "",
+        "focusY": "",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "broken": []
+      }
+    },
+    {
+      "label": "desktop",
+      "mode": "motion-unavailable",
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "failures": [],
+      "states": [],
+      "pointer": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "broken": []
+      },
+      "default": {
+        "time": 4515,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 1000,
+          "top": 0,
+          "right": 1440,
+          "bottom": 1000,
+          "left": 0
+        },
+        "frame": {
+          "x": 360,
+          "y": 145,
+          "width": 720,
+          "height": 480,
+          "top": 145,
+          "right": 1080,
+          "bottom": 625,
+          "left": 360
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -360, 0)",
+        "enhanced": false,
+        "background": [],
+        "sharp": [],
+        "copy": {
+          "x": 24,
+          "y": 639.8125,
+          "width": 1392,
+          "height": 280.1875,
+          "top": 639.8125,
+          "right": 1416,
+          "bottom": 920,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 601.796875,
+          "y": 840.8125,
+          "width": 236.390625,
+          "height": 46,
+          "top": 840.8125,
+          "right": 838.1875,
+          "bottom": 886.8125,
+          "left": 601.796875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "visible",
+        "focusX": "",
+        "focusY": "",
+        "width": 1440,
+        "scrollWidth": 1440
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "pageHeight": 9989,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 1120
+        },
+        "broken": []
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "normal",
+      "width": 375,
+      "height": 812,
+      "errors": [],
+      "failures": [],
+      "states": [
+        {
+          "name": "a-clear",
+          "time": 7731.29999999702,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 812,
+            "top": 0,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          },
+          "frame": {
+            "x": 24,
+            "y": 112,
+            "width": 327,
+            "height": 276,
+            "top": 112,
+            "right": 351,
+            "bottom": 388,
+            "left": 24
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+          "enhanced": true,
+          "clip": "inset(112px 24px 92px round 24px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "backgroundFilter": "blur(8px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 6050,
+                  "state": "running"
+                },
+                {
+                  "time": 6050,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 6050,
+                  "state": "running"
+                },
+                {
+                  "time": 6050,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 6050,
+                  "state": "running"
+                },
+                {
+                  "time": 6050,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 6050,
+                  "state": "running"
+                },
+                {
+                  "time": 6050,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 409.328125,
+            "width": 327,
+            "height": 311.671875,
+            "top": 409.328125,
+            "right": 351,
+            "bottom": 721,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 69.296875,
+            "y": 637.015625,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 637.015625,
+            "right": 305.6875,
+            "bottom": 685.40625,
+            "left": 69.296875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 375,
+          "scrollWidth": 375
+        },
+        {
+          "name": "a-to-b",
+          "time": 10744.39999999106,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 812,
+            "top": 0,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          },
+          "frame": {
+            "x": 24,
+            "y": 112,
+            "width": 327,
+            "height": 276,
+            "top": 112,
+            "right": 351,
+            "bottom": 388,
+            "left": 24
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+          "enhanced": true,
+          "clip": "inset(112px 24px 92px round 24px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "backgroundFilter": "blur(14px)",
+          "windowFilter": "blur(6px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": -6.5193939208984375,
+                "y": -8.344833374023438,
+                "width": 388.038818359375,
+                "height": 496.689697265625,
+                "top": -8.344833374023438,
+                "right": 381.51942443847656,
+                "bottom": 488.34486389160156,
+                "left": -6.5193939208984375
+              },
+              "opacity": "0.618644",
+              "transform": "matrix(1.03477, 0, 0, 1.03477, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 9058.2,
+                  "state": "running"
+                },
+                {
+                  "time": 9058.2,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": -6.5193939208984375,
+                "y": -8.344833374023438,
+                "width": 388.038818359375,
+                "height": 496.689697265625,
+                "top": -8.344833374023438,
+                "right": 381.51942443847656,
+                "bottom": 488.34486389160156,
+                "left": -6.5193939208984375
+              },
+              "opacity": "0.381355",
+              "transform": "matrix(1.03477, 0, 0, 1.03477, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 9058.2,
+                  "state": "running"
+                },
+                {
+                  "time": 9058.2,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": -6.5193939208984375,
+                "y": -8.344833374023438,
+                "width": 388.038818359375,
+                "height": 496.689697265625,
+                "top": -8.344833374023438,
+                "right": 381.51942443847656,
+                "bottom": 488.34486389160156,
+                "left": -6.5193939208984375
+              },
+              "opacity": "0.618644",
+              "transform": "matrix(1.03477, 0, 0, 1.03477, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 9058.2,
+                  "state": "running"
+                },
+                {
+                  "time": 9058.2,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": -6.5193939208984375,
+                "y": -8.344833374023438,
+                "width": 388.038818359375,
+                "height": 496.689697265625,
+                "top": -8.344833374023438,
+                "right": 381.51942443847656,
+                "bottom": 488.34486389160156,
+                "left": -6.5193939208984375
+              },
+              "opacity": "0.381355",
+              "transform": "matrix(1.03477, 0, 0, 1.03477, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 9058.2,
+                  "state": "running"
+                },
+                {
+                  "time": 9058.2,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 409.328125,
+            "width": 327,
+            "height": 311.671875,
+            "top": 409.328125,
+            "right": 351,
+            "bottom": 721,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 69.296875,
+            "y": 637.015625,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 637.015625,
+            "right": 305.6875,
+            "bottom": 685.40625,
+            "left": 69.296875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 375,
+          "scrollWidth": 375
+        },
+        {
+          "name": "b-clear",
+          "time": 12703.79999999702,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 812,
+            "top": 0,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          },
+          "frame": {
+            "x": 24,
+            "y": 112,
+            "width": 327,
+            "height": 276,
+            "top": 112,
+            "right": 351,
+            "bottom": 388,
+            "left": 24
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+          "enhanced": true,
+          "clip": "inset(112px 24px 92px round 24px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "backgroundFilter": "blur(8px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 11016.5,
+                  "state": "running"
+                },
+                {
+                  "time": 11016.5,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 11016.5,
+                  "state": "running"
+                },
+                {
+                  "time": 11016.5,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 11016.5,
+                  "state": "running"
+                },
+                {
+                  "time": 11016.5,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 11016.5,
+                  "state": "running"
+                },
+                {
+                  "time": 11016.5,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 409.328125,
+            "width": 327,
+            "height": 311.671875,
+            "top": 409.328125,
+            "right": 351,
+            "bottom": 721,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 69.296875,
+            "y": 637.015625,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 637.015625,
+            "right": 305.6875,
+            "bottom": 685.40625,
+            "left": 69.296875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 375,
+          "scrollWidth": 375
+        },
+        {
+          "name": "b-to-a",
+          "time": 20741.19999998808,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 812,
+            "top": 0,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          },
+          "frame": {
+            "x": 24,
+            "y": 112,
+            "width": 327,
+            "height": 276,
+            "top": 112,
+            "right": 351,
+            "bottom": 388,
+            "left": 24
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+          "enhanced": true,
+          "clip": "inset(112px 24px 92px round 24px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "backgroundFilter": "blur(14px)",
+          "windowFilter": "blur(6px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": -6.519561767578125,
+                "y": -8.34503173828125,
+                "width": 388.03912353515625,
+                "height": 496.6900634765625,
+                "top": -8.34503173828125,
+                "right": 381.5195617675781,
+                "bottom": 488.34503173828125,
+                "left": -6.519561767578125
+              },
+              "opacity": "0.381079",
+              "transform": "matrix(1.03477, 0, 0, 1.03477, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 19058.1,
+                  "state": "running"
+                },
+                {
+                  "time": 19058.1,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": -6.519561767578125,
+                "y": -8.34503173828125,
+                "width": 388.03912353515625,
+                "height": 496.6900634765625,
+                "top": -8.34503173828125,
+                "right": 381.5195617675781,
+                "bottom": 488.34503173828125,
+                "left": -6.519561767578125
+              },
+              "opacity": "0.618921",
+              "transform": "matrix(1.03477, 0, 0, 1.03477, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 19058.1,
+                  "state": "running"
+                },
+                {
+                  "time": 19058.1,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": -6.519561767578125,
+                "y": -8.34503173828125,
+                "width": 388.03912353515625,
+                "height": 496.6900634765625,
+                "top": -8.34503173828125,
+                "right": 381.5195617675781,
+                "bottom": 488.34503173828125,
+                "left": -6.519561767578125
+              },
+              "opacity": "0.381079",
+              "transform": "matrix(1.03477, 0, 0, 1.03477, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 19058.1,
+                  "state": "running"
+                },
+                {
+                  "time": 19058.1,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": -6.519561767578125,
+                "y": -8.34503173828125,
+                "width": 388.03912353515625,
+                "height": 496.6900634765625,
+                "top": -8.34503173828125,
+                "right": 381.5195617675781,
+                "bottom": 488.34503173828125,
+                "left": -6.519561767578125
+              },
+              "opacity": "0.618921",
+              "transform": "matrix(1.03477, 0, 0, 1.03477, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 19058.1,
+                  "state": "running"
+                },
+                {
+                  "time": 19058.1,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 409.328125,
+            "width": 327,
+            "height": 311.671875,
+            "top": 409.328125,
+            "right": 351,
+            "bottom": 721,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 69.296875,
+            "y": 637.015625,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 637.015625,
+            "right": 305.6875,
+            "bottom": 685.40625,
+            "left": 69.296875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 375,
+          "scrollWidth": 375
+        },
+        {
+          "name": "a-return",
+          "time": 22209.19999998808,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 812,
+            "top": 0,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          },
+          "frame": {
+            "x": 24,
+            "y": 112,
+            "width": 327,
+            "height": 276,
+            "top": 112,
+            "right": 351,
+            "bottom": 388,
+            "left": 24
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+          "enhanced": true,
+          "clip": "inset(112px 24px 92px round 24px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "backgroundFilter": "blur(8px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 20524.7,
+                  "state": "running"
+                },
+                {
+                  "time": 20524.7,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 20524.7,
+                  "state": "running"
+                },
+                {
+                  "time": 20524.7,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 20524.7,
+                  "state": "running"
+                },
+                {
+                  "time": 20524.7,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 20524.7,
+                  "state": "running"
+                },
+                {
+                  "time": 20524.7,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 409.328125,
+            "width": 327,
+            "height": 311.671875,
+            "top": 409.328125,
+            "right": 351,
+            "bottom": 721,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 69.296875,
+            "y": 637.015625,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 637.015625,
+            "right": 305.6875,
+            "bottom": 685.40625,
+            "left": 69.296875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 375,
+          "scrollWidth": 375
+        }
+      ],
+      "pointer": [
+        {
+          "name": "left",
+          "time": 5350.199999988079,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 812,
+            "top": 0,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          },
+          "frame": {
+            "x": 24,
+            "y": 112,
+            "width": 327,
+            "height": 276,
+            "top": 112,
+            "right": 351,
+            "bottom": 388,
+            "left": 24
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+          "enhanced": true,
+          "clip": "inset(112px 24px 92px round 24px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "backgroundFilter": "blur(8px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 3666.7999999999993,
+                  "state": "running"
+                },
+                {
+                  "time": 3666.7999999999993,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 3666.7999999999993,
+                  "state": "running"
+                },
+                {
+                  "time": 3666.7999999999993,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 3666.7999999999993,
+                  "state": "running"
+                },
+                {
+                  "time": 3666.7999999999993,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 3666.7999999999993,
+                  "state": "running"
+                },
+                {
+                  "time": 3666.7999999999993,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 409.328125,
+            "width": 327,
+            "height": 311.671875,
+            "top": 409.328125,
+            "right": 351,
+            "bottom": 721,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 69.296875,
+            "y": 637.015625,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 637.015625,
+            "right": 305.6875,
+            "bottom": 685.40625,
+            "left": 69.296875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 375,
+          "scrollWidth": 375
+        },
+        {
+          "name": "right",
+          "time": 6082.699999988079,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 812,
+            "top": 0,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          },
+          "frame": {
+            "x": 24,
+            "y": 112,
+            "width": 327,
+            "height": 276,
+            "top": 112,
+            "right": 351,
+            "bottom": 388,
+            "left": 24
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+          "enhanced": true,
+          "clip": "inset(112px 24px 92px round 24px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "backgroundFilter": "blur(8px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 4399.9,
+                  "state": "running"
+                },
+                {
+                  "time": 4399.9,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 4399.9,
+                  "state": "running"
+                },
+                {
+                  "time": 4399.9,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 4399.9,
+                  "state": "running"
+                },
+                {
+                  "time": 4399.9,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 4399.9,
+                  "state": "running"
+                },
+                {
+                  "time": 4399.9,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 409.328125,
+            "width": 327,
+            "height": 311.671875,
+            "top": 409.328125,
+            "right": 351,
+            "bottom": 721,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 69.296875,
+            "y": 637.015625,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 637.015625,
+            "right": 305.6875,
+            "bottom": 685.40625,
+            "left": 69.296875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 375,
+          "scrollWidth": 375
+        },
+        {
+          "name": "bottom",
+          "time": 6799.399999991059,
+          "scrollY": 0,
+          "hero": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 812,
+            "top": 0,
+            "right": 375,
+            "bottom": 812,
+            "left": 0
+          },
+          "frame": {
+            "x": 24,
+            "y": 112,
+            "width": 327,
+            "height": 276,
+            "top": 112,
+            "right": 351,
+            "bottom": 388,
+            "left": 24
+          },
+          "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+          "enhanced": true,
+          "clip": "inset(112px 24px 92px round 24px)",
+          "canvas": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "stage": {
+            "x": 0,
+            "y": 0,
+            "width": 375,
+            "height": 480,
+            "top": 0,
+            "right": 375,
+            "bottom": 480,
+            "left": 0
+          },
+          "backgroundFilter": "blur(8px)",
+          "windowFilter": "blur(0px)",
+          "background": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 5116.6,
+                  "state": "running"
+                },
+                {
+                  "time": 5116.6,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 5116.6,
+                  "state": "running"
+                },
+                {
+                  "time": 5116.6,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "sharp": [
+            {
+              "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 5116.6,
+                  "state": "running"
+                },
+                {
+                  "time": 5116.6,
+                  "state": "running"
+                }
+              ]
+            },
+            {
+              "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+              "rect": {
+                "x": 0,
+                "y": 0,
+                "width": 375,
+                "height": 480,
+                "top": 0,
+                "right": 375,
+                "bottom": 480,
+                "left": 0
+              },
+              "opacity": "0",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "objectPosition": "50% 40%",
+              "animations": [
+                {
+                  "time": 5116.6,
+                  "state": "running"
+                },
+                {
+                  "time": 5116.6,
+                  "state": "running"
+                }
+              ]
+            }
+          ],
+          "copy": {
+            "x": 24,
+            "y": 409.328125,
+            "width": 327,
+            "height": 311.671875,
+            "top": 409.328125,
+            "right": 351,
+            "bottom": 721,
+            "left": 24
+          },
+          "copyOpacity": "1",
+          "cta": {
+            "x": 69.296875,
+            "y": 637.015625,
+            "width": 236.390625,
+            "height": 48.390625,
+            "top": 637.015625,
+            "right": 305.6875,
+            "bottom": 685.40625,
+            "left": 69.296875
+          },
+          "ctaHref": "#preview",
+          "originalSharpVisibility": "hidden",
+          "focusX": "0px",
+          "focusY": "0px",
+          "width": 375,
+          "scrollWidth": 375
+        }
+      ],
+      "routes": [
+        {
+          "name": "product",
+          "status": 200,
+          "url": "http://127.0.0.1:8189/product/birthday-magazine/",
+          "width": 375,
+          "scrollWidth": 375,
+          "price": "$39.99",
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": false
+        },
+        {
+          "name": "cart",
+          "status": 200,
+          "url": "http://127.0.0.1:8189/cart/",
+          "width": 375,
+          "scrollWidth": 375,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "checkout",
+          "status": 200,
+          "url": "http://127.0.0.1:8189/cart/",
+          "width": 375,
+          "scrollWidth": 375,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "account",
+          "status": 200,
+          "url": "http://127.0.0.1:8189/my-account/",
+          "width": 375,
+          "scrollWidth": 375,
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": true
+        }
+      ],
+      "status": 200,
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7866,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "broken": []
+      },
+      "default": {
+        "time": 4623.5,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812,
+          "top": 0,
+          "right": 375,
+          "bottom": 812,
+          "left": 0
+        },
+        "frame": {
+          "x": 24,
+          "y": 112,
+          "width": 327,
+          "height": 276,
+          "top": 112,
+          "right": 351,
+          "bottom": 388,
+          "left": 24
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+        "enhanced": true,
+        "clip": "inset(112px 24px 92px round 24px)",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 480,
+          "top": 0,
+          "right": 375,
+          "bottom": 480,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 480,
+          "top": 0,
+          "right": 375,
+          "bottom": 480,
+          "left": 0
+        },
+        "backgroundFilter": "blur(8px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 2941.7,
+                "state": "running"
+              },
+              {
+                "time": 2941.7,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 2941.7,
+                "state": "running"
+              },
+              {
+                "time": 2941.7,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 2941.7,
+                "state": "running"
+              },
+              {
+                "time": 2941.7,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 2941.7,
+                "state": "running"
+              },
+              {
+                "time": 2941.7,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": 409.328125,
+          "width": 327,
+          "height": 311.671875,
+          "top": 409.328125,
+          "right": 351,
+          "bottom": 721,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 69.296875,
+          "y": 637.015625,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": 637.015625,
+          "right": 305.6875,
+          "bottom": 685.40625,
+          "left": 69.296875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "hidden",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 375,
+        "scrollWidth": 375
+      },
+      "pointerReturn": {
+        "time": 7609.699999988079,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812,
+          "top": 0,
+          "right": 375,
+          "bottom": 812,
+          "left": 0
+        },
+        "frame": {
+          "x": 24,
+          "y": 112,
+          "width": 327,
+          "height": 276,
+          "top": 112,
+          "right": 351,
+          "bottom": 388,
+          "left": 24
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+        "enhanced": true,
+        "clip": "inset(112px 24px 92px round 24px)",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 480,
+          "top": 0,
+          "right": 375,
+          "bottom": 480,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 480,
+          "top": 0,
+          "right": 375,
+          "bottom": 480,
+          "left": 0
+        },
+        "backgroundFilter": "blur(8px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 5924.9,
+                "state": "running"
+              },
+              {
+                "time": 5924.9,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 5924.9,
+                "state": "running"
+              },
+              {
+                "time": 5924.9,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 5924.9,
+                "state": "running"
+              },
+              {
+                "time": 5924.9,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 5924.9,
+                "state": "running"
+              },
+              {
+                "time": 5924.9,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": 409.328125,
+          "width": 327,
+          "height": 311.671875,
+          "top": 409.328125,
+          "right": 351,
+          "bottom": 721,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 69.296875,
+          "y": 637.015625,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": 637.015625,
+          "right": 305.6875,
+          "bottom": 685.40625,
+          "left": 69.296875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "hidden",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 375,
+        "scrollWidth": 375
+      },
+      "focus": {
+        "active": true,
+        "outline": "solid"
+      },
+      "menuOpen": "true",
+      "menuClosed": "false",
+      "liveReduced": {
+        "time": 24218,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812,
+          "top": 0,
+          "right": 375,
+          "bottom": 812,
+          "left": 0
+        },
+        "frame": {
+          "x": 24,
+          "y": 112,
+          "width": 327,
+          "height": 276,
+          "top": 112,
+          "right": 351,
+          "bottom": 388,
+          "left": 24
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+        "enhanced": false,
+        "clip": "inset(112px 24px -388px round 24px)",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "backgroundFilter": "blur(8px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22407.966,
+                "state": "paused"
+              },
+              {
+                "time": 22407.966,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22407.966,
+                "state": "paused"
+              },
+              {
+                "time": 22407.966,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22407.966,
+                "state": "paused"
+              },
+              {
+                "time": 22407.966,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22407.966,
+                "state": "paused"
+              },
+              {
+                "time": 22407.966,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": 409.328125,
+          "width": 327,
+          "height": 311.671875,
+          "top": 409.328125,
+          "right": 351,
+          "bottom": 721,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 69.296875,
+          "y": 637.015625,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": 637.015625,
+          "right": 305.6875,
+          "bottom": 685.40625,
+          "left": 69.296875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "visible",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 375,
+        "scrollWidth": 375
+      },
+      "liveRestored": {
+        "time": 24526.39999999106,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812,
+          "top": 0,
+          "right": 375,
+          "bottom": 812,
+          "left": 0
+        },
+        "frame": {
+          "x": 24,
+          "y": 112,
+          "width": 327,
+          "height": 276,
+          "top": 112,
+          "right": 351,
+          "bottom": 388,
+          "left": 24
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+        "enhanced": true,
+        "clip": "inset(112px 24px 92px round 24px)",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 480,
+          "top": 0,
+          "right": 375,
+          "bottom": 480,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 480,
+          "top": 0,
+          "right": 375,
+          "bottom": 480,
+          "left": 0
+        },
+        "backgroundFilter": "blur(8px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22524.641999991225,
+                "state": "running"
+              },
+              {
+                "time": 22524.641999991225,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22524.641999991225,
+                "state": "running"
+              },
+              {
+                "time": 22524.641999991225,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22524.641999991225,
+                "state": "running"
+              },
+              {
+                "time": 22524.641999991225,
+                "state": "running"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 375,
+              "height": 480,
+              "top": 0,
+              "right": 375,
+              "bottom": 480,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22524.641999991225,
+                "state": "running"
+              },
+              {
+                "time": 22524.641999991225,
+                "state": "running"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": 418.61077880859375,
+          "width": 327,
+          "height": 311.671875,
+          "top": 418.61077880859375,
+          "right": 351,
+          "bottom": 730.2826538085938,
+          "left": 24
+        },
+        "copyOpacity": "0.871074",
+        "cta": {
+          "x": 69.296875,
+          "y": 646.2982788085938,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": 646.2982788085938,
+          "right": 305.6875,
+          "bottom": 694.6889038085938,
+          "left": 69.296875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "hidden",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 375,
+        "scrollWidth": 375
+      },
+      "offscreen": {
+        "time": 24809,
+        "scrollY": 2315,
+        "hero": {
+          "x": 0,
+          "y": -2315,
+          "width": 375,
+          "height": 812,
+          "top": -2315,
+          "right": 375,
+          "bottom": -1503,
+          "left": 0
+        },
+        "frame": {
+          "x": 24,
+          "y": -2203,
+          "width": 327,
+          "height": 276,
+          "top": -2203,
+          "right": 351,
+          "bottom": -1927,
+          "left": 24
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+        "enhanced": true,
+        "clip": "inset(112px 24px 92px round 24px)",
+        "canvas": {
+          "x": 0,
+          "y": -2315,
+          "width": 375,
+          "height": 480,
+          "top": -2315,
+          "right": 375,
+          "bottom": -1835,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": -2315,
+          "width": 375,
+          "height": 480,
+          "top": -2315,
+          "right": 375,
+          "bottom": -1835,
+          "left": 0
+        },
+        "backgroundFilter": "blur(8px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": -2315,
+              "width": 375,
+              "height": 480,
+              "top": -2315,
+              "right": 375,
+              "bottom": -1835,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22574.641999991225,
+                "state": "paused"
+              },
+              {
+                "time": 22574.641999991225,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": -2315,
+              "width": 375,
+              "height": 480,
+              "top": -2315,
+              "right": 375,
+              "bottom": -1835,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22574.641999991225,
+                "state": "paused"
+              },
+              {
+                "time": 22574.641999991225,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": -2315,
+              "width": 375,
+              "height": 480,
+              "top": -2315,
+              "right": 375,
+              "bottom": -1835,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22574.641999991225,
+                "state": "paused"
+              },
+              {
+                "time": 22574.641999991225,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": -2315,
+              "width": 375,
+              "height": 480,
+              "top": -2315,
+              "right": 375,
+              "bottom": -1835,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 22574.641999991225,
+                "state": "paused"
+              },
+              {
+                "time": 22574.641999991225,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": -1903.835693359375,
+          "width": 327,
+          "height": 311.671875,
+          "top": -1903.835693359375,
+          "right": 351,
+          "bottom": -1592.163818359375,
+          "left": 24
+        },
+        "copyOpacity": "0.974497",
+        "cta": {
+          "x": 69.296875,
+          "y": -1676.148193359375,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": -1676.148193359375,
+          "right": 305.6875,
+          "bottom": -1627.757568359375,
+          "left": 69.296875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "hidden",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 375,
+        "scrollWidth": 375
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7866,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "broken": []
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "reduced",
+      "width": 375,
+      "height": 812,
+      "errors": [],
+      "failures": [],
+      "states": [],
+      "pointer": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7866,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "broken": []
+      },
+      "default": {
+        "time": 4242,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812,
+          "top": 0,
+          "right": 375,
+          "bottom": 812,
+          "left": 0
+        },
+        "frame": {
+          "x": 24,
+          "y": 112,
+          "width": 327,
+          "height": 276,
+          "top": 112,
+          "right": 351,
+          "bottom": 388,
+          "left": 24
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+        "enhanced": false,
+        "clip": "inset(112px 24px -388px round 24px)",
+        "canvas": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "backgroundFilter": "blur(8px)",
+        "windowFilter": "blur(0px)",
+        "background": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 8.299999999999974,
+                "state": "paused"
+              },
+              {
+                "time": 8.299999999999974,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 8.299999999999974,
+                "state": "paused"
+              },
+              {
+                "time": 8.299999999999974,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "sharp": [
+          {
+            "src": "http://127.0.0.1:8189/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "1",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 8.299999999999974,
+                "state": "paused"
+              },
+              {
+                "time": 8.299999999999974,
+                "state": "paused"
+              }
+            ]
+          },
+          {
+            "src": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "opacity": "0",
+            "transform": "none",
+            "objectPosition": "50% 40%",
+            "animations": [
+              {
+                "time": 8.299999999999974,
+                "state": "paused"
+              },
+              {
+                "time": 8.299999999999974,
+                "state": "paused"
+              }
+            ]
+          }
+        ],
+        "copy": {
+          "x": 24,
+          "y": 409.328125,
+          "width": 327,
+          "height": 311.671875,
+          "top": 409.328125,
+          "right": 351,
+          "bottom": 721,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 69.296875,
+          "y": 637.015625,
+          "width": 236.390625,
+          "height": 48.390625,
+          "top": 637.015625,
+          "right": 305.6875,
+          "bottom": 685.40625,
+          "left": 69.296875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "visible",
+        "focusX": "0px",
+        "focusY": "0px",
+        "width": 375,
+        "scrollWidth": 375
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7866,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "broken": []
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "no-js",
+      "width": 375,
+      "height": 812,
+      "errors": [],
+      "failures": [],
+      "states": [],
+      "pointer": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7864,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "broken": []
+      },
+      "default": {
+        "time": 2358.1000000089407,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812,
+          "top": 0,
+          "right": 375,
+          "bottom": 812,
+          "left": 0
+        },
+        "frame": {
+          "x": 24,
+          "y": 112,
+          "width": 327,
+          "height": 276,
+          "top": 112,
+          "right": 351,
+          "bottom": 388,
+          "left": 24
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+        "enhanced": false,
+        "background": [],
+        "sharp": [],
+        "copy": {
+          "x": 24,
+          "y": 411.71875,
+          "width": 327,
+          "height": 309.28125,
+          "top": 411.71875,
+          "right": 351,
+          "bottom": 721,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 69.296875,
+          "y": 639.40625,
+          "width": 236.390625,
+          "height": 46,
+          "top": 639.40625,
+          "right": 305.6875,
+          "bottom": 685.40625,
+          "left": 69.296875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "visible",
+        "focusX": "",
+        "focusY": "",
+        "width": 375,
+        "scrollWidth": 375
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7864,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "broken": []
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "motion-unavailable",
+      "width": 375,
+      "height": 812,
+      "errors": [],
+      "failures": [],
+      "states": [],
+      "pointer": [],
+      "routes": [],
+      "status": 200,
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7864,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "broken": []
+      },
+      "default": {
+        "time": 4986.5999999940395,
+        "scrollY": 0,
+        "hero": {
+          "x": 0,
+          "y": 0,
+          "width": 375,
+          "height": 812,
+          "top": 0,
+          "right": 375,
+          "bottom": 812,
+          "left": 0
+        },
+        "frame": {
+          "x": 24,
+          "y": 112,
+          "width": 327,
+          "height": 276,
+          "top": 112,
+          "right": 351,
+          "bottom": 388,
+          "left": 24
+        },
+        "frameTransform": "matrix(1, 0, 0, 1, -163.5, 0)",
+        "enhanced": false,
+        "background": [],
+        "sharp": [],
+        "copy": {
+          "x": 24,
+          "y": 411.71875,
+          "width": 327,
+          "height": 309.28125,
+          "top": 411.71875,
+          "right": 351,
+          "bottom": 721,
+          "left": 24
+        },
+        "copyOpacity": "1",
+        "cta": {
+          "x": 69.296875,
+          "y": 639.40625,
+          "width": 236.390625,
+          "height": 46,
+          "top": 639.40625,
+          "right": 305.6875,
+          "bottom": 685.40625,
+          "left": 69.296875
+        },
+        "ctaHref": "#preview",
+        "originalSharpVisibility": "visible",
+        "focusX": "",
+        "focusY": "",
+        "width": 375,
+        "scrollWidth": 375
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "pageHeight": 7864,
+        "groups": 8,
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "preview": {
+          "count": 1,
+          "width": 335
+        },
+        "broken": []
+      }
+    }
+  ],
+  "blocked": [],
+  "previewInteractions": 0,
+  "businessActions": 0
+}

@@ -1,0 +1,3373 @@
+{
+  "time": "2026-10-04T06:01:09.837Z",
+  "browser": "154.0.4258.53",
+  "round": "round1",
+  "runs": [
+    {
+      "label": "desktop",
+      "mode": "normal",
+      "width": 1440,
+      "height": 1000,
+      "status": 200,
+      "errors": [],
+      "failures": [],
+      "motionStates": [
+        {
+          "scrollY": 5556,
+          "transform": "matrix3d(0.929881, 0, 0, 0, 0, 0.925428, -0.0908943, 7.57453e-05, 0, 0.0977483, 0.995211, -0.000829343, 0, 0, 0, 1)",
+          "tilt": "-5.609523395498654deg",
+          "scale": "0.9298809575562669"
+        },
+        {
+          "scrollY": 6006,
+          "transform": "matrix3d(0.991088, 0, 0, 0, 0, 0.991011, -0.012332, 1.02767e-05, 0, 0.0124429, 0.999923, -0.000833269, 0, 0, 0, 1)",
+          "tilt": "-0.7129446200313989deg",
+          "scale": "0.9910881922496075"
+        },
+        {
+          "scrollY": 6456,
+          "transform": "matrix3d(0.948497, 0, 0, 0, 0, 0.946046, 0.0681491, -5.67909e-05, 0, -0.0718496, 0.997415, -0.00083118, 0, 0, 0, 1)",
+          "tilt": "4.120227751909015deg",
+          "scale": "0.9484971531011374"
+        }
+      ],
+      "sections": [
+        {
+          "selector": "#what-you-get",
+          "top": 191,
+          "height": 718,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#preview",
+          "top": 100,
+          "height": 1652.5,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#how-it-works",
+          "top": 206.5,
+          "height": 686,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#offer",
+          "top": 245.5,
+          "height": 754,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#faq",
+          "top": 481.5,
+          "height": 518.625,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#samples",
+          "top": -566.875,
+          "height": 2234.15625,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": ".bms-closing",
+          "top": 25.28125,
+          "height": 1050,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        }
+      ],
+      "routes": [
+        {
+          "name": "product",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/product/birthday-magazine/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "price": "$39.99",
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": false
+        },
+        {
+          "name": "cart",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/cart/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "checkout",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/cart/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "account",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/my-account/",
+          "width": 1440,
+          "scrollWidth": 1440,
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": true
+        }
+      ],
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 1120,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": true,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "76px",
+            "width": 520.375
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 289.8125
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 301.828125
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 264.109375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 380.390625
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 449.28125
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "96px",
+            "width": 1392
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "129.6px",
+            "width": 846.296875
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look insideLook inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazineMake their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      },
+      "hoverBefore": {
+        "link": "#preview",
+        "label": "Create a free previewCreate a free preview",
+        "first": "none",
+        "second": "matrix(1, 0, 0, 1, 0, 17.2687)"
+      },
+      "hoverAfter": {
+        "link": "#preview",
+        "label": "Create a free previewCreate a free preview",
+        "first": "matrix(1, 0, 0, 1, 0, -17.2687)",
+        "second": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "focus": {
+        "active": true,
+        "outline": "solid",
+        "outlineWidth": "3px"
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 1120,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": true,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "76px",
+            "width": 520.375
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 289.8125
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 301.828125
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 264.109375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 380.390625
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 449.28125
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "96px",
+            "width": 1392
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "129.6px",
+            "width": 846.296875
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look insideLook inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazineMake their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      }
+    },
+    {
+      "label": "desktop",
+      "mode": "reduced",
+      "width": 1440,
+      "height": 1000,
+      "status": 200,
+      "errors": [],
+      "failures": [],
+      "motionStates": [],
+      "sections": [
+        {
+          "selector": "#what-you-get",
+          "top": 191,
+          "height": 718,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#preview",
+          "top": 100,
+          "height": 1652.5,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#how-it-works",
+          "top": 206.5,
+          "height": 686,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#offer",
+          "top": 245.5,
+          "height": 754,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#faq",
+          "top": 481.5,
+          "height": 518.625,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#samples",
+          "top": -566.875,
+          "height": 2234.15625,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": ".bms-closing",
+          "top": 25.28125,
+          "height": 1050,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        }
+      ],
+      "routes": [],
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 1120,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "76px",
+            "width": 520.375
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 289.8125
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 301.828125
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 264.109375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 380.390625
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 449.28125
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "96px",
+            "width": 1392
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "129.6px",
+            "width": 846.296875
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look insideLook inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazineMake their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 1120,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "76px",
+            "width": 520.375
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 289.8125
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 301.828125
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 264.109375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 380.390625
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 449.28125
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "96px",
+            "width": 1392
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "129.6px",
+            "width": 846.296875
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look insideLook inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazineMake their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      }
+    },
+    {
+      "label": "desktop",
+      "mode": "no-js",
+      "width": 1440,
+      "height": 1000,
+      "status": 200,
+      "errors": [],
+      "failures": [],
+      "motionStates": [],
+      "sections": [
+        {
+          "selector": "#what-you-get",
+          "top": 191,
+          "height": 718,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#preview",
+          "top": 100,
+          "height": 1652.5,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#how-it-works",
+          "top": 206.5,
+          "height": 686,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#offer",
+          "top": 245.5,
+          "height": 754,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#faq",
+          "top": 481.5,
+          "height": 518.625,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#samples",
+          "top": -566.875,
+          "height": 2234.15625,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": ".bms-closing",
+          "top": 25.28125,
+          "height": 1050,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        }
+      ],
+      "routes": [],
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 1120,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "76px",
+            "width": 520.375
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 289.8125
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 301.828125
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 264.109375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 380.390625
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 449.28125
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "96px",
+            "width": 1392
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "129.6px",
+            "width": 846.296875
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 1120,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "76px",
+            "width": 520.375
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 289.8125
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 301.828125
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 264.109375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 380.390625
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 449.28125
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "96px",
+            "width": 1392
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "129.6px",
+            "width": 846.296875
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      }
+    },
+    {
+      "label": "desktop",
+      "mode": "motion-unavailable",
+      "width": 1440,
+      "height": 1000,
+      "status": 200,
+      "errors": [],
+      "failures": [],
+      "motionStates": [],
+      "sections": [
+        {
+          "selector": "#what-you-get",
+          "top": 191,
+          "height": 718,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#preview",
+          "top": 100,
+          "height": 1652.5,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#how-it-works",
+          "top": 206.5,
+          "height": 686,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#offer",
+          "top": 245.5,
+          "height": 754,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#faq",
+          "top": 481.5,
+          "height": 518.625,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": "#samples",
+          "top": -566.875,
+          "height": 2234.15625,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        },
+        {
+          "selector": ".bms-closing",
+          "top": 25.28125,
+          "height": 1050,
+          "left": 0,
+          "right": 1440,
+          "scrollWidth": 1440
+        }
+      ],
+      "routes": [],
+      "initial": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 1120,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "76px",
+            "width": 520.375
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 289.8125
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 301.828125
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 264.109375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 380.390625
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 449.28125
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "96px",
+            "width": 1392
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "129.6px",
+            "width": 846.296875
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      },
+      "final": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 1120,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "76px",
+            "width": 520.375
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 289.8125
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 301.828125
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 264.109375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 380.390625
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "72px",
+            "width": 449.28125
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 317.96875
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "96px",
+            "width": 1392
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "129.6px",
+            "width": 846.296875
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "normal",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "errors": [],
+      "failures": [],
+      "motionStates": [
+        {
+          "scrollY": 5663,
+          "transform": "matrix3d(0.982873, 0, 0, 0, 0, 0.982592, -0.0235017, 1.95847e-05, 0, 0.0239112, 0.999714, -0.000833095, 0, 0, 0, 1)",
+          "tilt": "-1.3701416987203303deg",
+          "scale": "0.9828732287659959"
+        },
+        {
+          "scrollY": 6028,
+          "transform": "matrix3d(0.999618, 0, 0, 0, 0, 0.999618, 0.000532607, -4.43839e-07, 0, -0.00053281, 1, -0.000833333, 0, 0, 0, 1)",
+          "tilt": "0.030527779186189985deg",
+          "scale": "0.9996184027601727"
+        },
+        {
+          "scrollY": 6394,
+          "transform": "matrix3d(0.982056, 0, 0, 0, 0, 0.981748, 0.0246027, -2.05022e-05, 0, -0.0250522, 0.999686, -0.000833072, 0, 0, 0, 1)",
+          "tilt": "1.4355368445041052deg",
+          "scale": "0.9820557894436986"
+        }
+      ],
+      "sections": [
+        {
+          "selector": "#what-you-get",
+          "top": 56,
+          "height": 799.578125,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#preview",
+          "top": -406.421875,
+          "height": 1724.421875,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#how-it-works",
+          "top": -55,
+          "height": 1022.484375,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#offer",
+          "top": 189.484375,
+          "height": 533.09375,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#faq",
+          "top": 99.578125,
+          "height": 927.75,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#samples",
+          "top": -74.671875,
+          "height": 1061.03125,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": ".bms-closing",
+          "top": 176.359375,
+          "height": 560,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        }
+      ],
+      "routes": [
+        {
+          "name": "product",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/product/birthday-magazine/",
+          "width": 375,
+          "scrollWidth": 375,
+          "price": "$39.99",
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": false
+        },
+        {
+          "name": "cart",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/cart/",
+          "width": 375,
+          "scrollWidth": 375,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "checkout",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/cart/",
+          "width": 375,
+          "scrollWidth": 375,
+          "motionScriptPresent": false,
+          "cartEmpty": true,
+          "accountForm": false
+        },
+        {
+          "name": "account",
+          "status": 200,
+          "final": "http://127.0.0.1:8189/my-account/",
+          "width": 375,
+          "scrollWidth": 375,
+          "motionScriptPresent": false,
+          "cartEmpty": false,
+          "accountForm": true
+        }
+      ],
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 335,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": true,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 161.015625
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 201.21875
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 146.734375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 253.59375
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 327
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "54px",
+            "width": 327
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look insideLook inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazineMake their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      },
+      "hoverBefore": {
+        "link": "#preview",
+        "label": "Create a free previewCreate a free preview",
+        "first": "none",
+        "second": "matrix(1, 0, 0, 1, 0, 17.2687)"
+      },
+      "hoverAfter": {
+        "link": "#preview",
+        "label": "Create a free previewCreate a free preview",
+        "first": "matrix(1, 0, 0, 1, 0, -17.2687)",
+        "second": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      "focus": {
+        "active": true,
+        "outline": "solid",
+        "outlineWidth": "3px"
+      },
+      "mobileMenu": {
+        "expanded": "true",
+        "panelActive": "ct-panel ct-header active",
+        "links": [
+          {
+            "text": "How It Works",
+            "href": "http://127.0.0.1:8189/#how-it-works"
+          },
+          {
+            "text": "Home",
+            "href": "http://127.0.0.1:8189/"
+          },
+          {
+            "text": "FAQ",
+            "href": "http://127.0.0.1:8189/#faq"
+          },
+          {
+            "text": "Free Preview",
+            "href": "http://127.0.0.1:8189/#preview"
+          },
+          {
+            "text": "Sample Pages",
+            "href": "http://127.0.0.1:8189/#samples"
+          },
+          {
+            "text": "What You Get",
+            "href": "http://127.0.0.1:8189/#what-you-get"
+          }
+        ],
+        "scrollWidth": 375
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 335,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": true,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 161.015625
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 201.21875
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 146.734375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 253.59375
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 327
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "54px",
+            "width": 327
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look insideLook inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazineMake their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "reduced",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "errors": [],
+      "failures": [],
+      "motionStates": [],
+      "sections": [
+        {
+          "selector": "#what-you-get",
+          "top": 56,
+          "height": 799.578125,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#preview",
+          "top": -406.421875,
+          "height": 1724.421875,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#how-it-works",
+          "top": -55,
+          "height": 1022.484375,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#offer",
+          "top": 189.484375,
+          "height": 533.09375,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#faq",
+          "top": 99.578125,
+          "height": 927.75,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#samples",
+          "top": -74.671875,
+          "height": 1061.03125,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": ".bms-closing",
+          "top": 176.359375,
+          "height": 560,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        }
+      ],
+      "routes": [],
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 335,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 161.015625
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 201.21875
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 146.734375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 253.59375
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 327
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "54px",
+            "width": 327
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look insideLook inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazineMake their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 335,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 161.015625
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 201.21875
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 146.734375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 253.59375
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 327
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "54px",
+            "width": 327
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look insideLook inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazineMake their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free previewCreate a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "no-js",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "errors": [],
+      "failures": [],
+      "motionStates": [],
+      "sections": [
+        {
+          "selector": "#what-you-get",
+          "top": 57,
+          "height": 797.1875,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#preview",
+          "top": -405.8125,
+          "height": 1724.421875,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#how-it-works",
+          "top": -55.390625,
+          "height": 1022.484375,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#offer",
+          "top": 192.09375,
+          "height": 528.3125,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#faq",
+          "top": 100.40625,
+          "height": 927.75,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#samples",
+          "top": -74.84375,
+          "height": 1061.03125,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": ".bms-closing",
+          "top": 176.1875,
+          "height": 560,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        }
+      ],
+      "routes": [],
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 335,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 161.015625
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 201.21875
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 146.734375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 253.59375
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 327
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "54px",
+            "width": 327
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 335,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 161.015625
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 201.21875
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 146.734375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 253.59375
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 327
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "54px",
+            "width": 327
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      }
+    },
+    {
+      "label": "mobile",
+      "mode": "motion-unavailable",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "errors": [],
+      "failures": [],
+      "motionStates": [],
+      "sections": [
+        {
+          "selector": "#what-you-get",
+          "top": 57,
+          "height": 797.1875,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#preview",
+          "top": -405.8125,
+          "height": 1724.421875,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#how-it-works",
+          "top": -55.390625,
+          "height": 1022.484375,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#offer",
+          "top": 192.09375,
+          "height": 528.3125,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#faq",
+          "top": 100.40625,
+          "height": 927.75,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": "#samples",
+          "top": -74.84375,
+          "height": 1061.03125,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        },
+        {
+          "selector": ".bms-closing",
+          "top": 176.1875,
+          "height": 560,
+          "left": 0,
+          "right": 375,
+          "scrollWidth": 375
+        }
+      ],
+      "routes": [],
+      "initial": {
+        "width": 375,
+        "scrollWidth": 375,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 335,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 161.015625
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 201.21875
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 146.734375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 253.59375
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 327
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "54px",
+            "width": 327
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      },
+      "final": {
+        "width": 375,
+        "scrollWidth": 375,
+        "groups": [
+          {
+            "class": "wp-block-group bms-hero is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          },
+          {
+            "class": "wp-block-group bms-included bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "what-you-get"
+          },
+          {
+            "class": "wp-block-group bms-preview-chapter is-layout-flow wp-block-group-is-layout-flow",
+            "id": "preview"
+          },
+          {
+            "class": "wp-block-group bms-how bms-focus-split is-layout-flow wp-block-group-is-layout-flow",
+            "id": "how-it-works"
+          },
+          {
+            "class": "wp-block-group bms-offer bms-focus-photo-panel bms-panel-right is-layout-flow wp-block-group-is-layout-flow",
+            "id": "offer"
+          },
+          {
+            "class": "wp-block-group bms-faq is-layout-flow wp-block-group-is-layout-flow",
+            "id": "faq"
+          },
+          {
+            "class": "wp-block-group bms-samples is-layout-flow wp-block-group-is-layout-flow",
+            "id": "samples"
+          },
+          {
+            "class": "wp-block-group bms-value-strip bms-closing is-layout-flow wp-block-group-is-layout-flow",
+            "id": ""
+          }
+        ],
+        "anchors": {
+          "samples": 1,
+          "preview": 1,
+          "what-you-get": 1,
+          "how-it-works": 1,
+          "offer": 1,
+          "faq": 1
+        },
+        "heroCTA": true,
+        "previewCount": 1,
+        "preview": {
+          "width": 335,
+          "layout": "grid",
+          "headlineFont": "\"Bodoni MT\", Didot, \"Palatino Linotype\", Georgia, serif"
+        },
+        "motionEnabled": false,
+        "font": "\"BMS Instrument\", Georgia, serif",
+        "headings": [
+          {
+            "text": "A birthday magazine.Made about them.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Your person.Our pages.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 161.015625
+          },
+          {
+            "text": "The first littlewow.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 201.21875
+          },
+          {
+            "text": "You bringthe person.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 146.734375
+          },
+          {
+            "text": "Give themtheir own issue.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 253.59375
+          },
+          {
+            "text": "A few goodquestions.",
+            "opacity": "1",
+            "fontSize": "40px",
+            "width": 327
+          },
+          {
+            "text": "What will I receive?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Do I need design experience?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Does the free preview upload my photo?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Why do I need an account?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Can I request changes?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "How long are files kept?",
+            "opacity": "1",
+            "fontSize": "14px",
+            "width": 327
+          },
+          {
+            "text": "Magazinemoments.",
+            "opacity": "1",
+            "fontSize": "48px",
+            "width": 327
+          },
+          {
+            "text": "Make their nextchapter a good one.",
+            "opacity": "1",
+            "fontSize": "54px",
+            "width": 327
+          }
+        ],
+        "links": [
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          },
+          {
+            "text": "Look inside",
+            "href": "#samples"
+          },
+          {
+            "text": "Make the complete 12-page issue US$39.99 →",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Make their birthday magazine",
+            "href": "http://127.0.0.1:8189/product/birthday-magazine/"
+          },
+          {
+            "text": "Create a free preview",
+            "href": "#preview"
+          }
+        ],
+        "brokenImages": []
+      }
+    }
+  ],
+  "blocked": [],
+  "businessActions": 0,
+  "previewActions": 0
+}

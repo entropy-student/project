@@ -1,0 +1,25 @@
+{
+  "branch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
+  "head": "69b062be391a5b975aeef844378aa53f46fa6e47",
+  "main": "947e119f568f520b09e5b5a5affc57e339e1a463",
+  "approvedHead": "69b062be391a5b975aeef844378aa53f46fa6e47",
+  "authorityFiles": [
+    {
+      "file": "REVIEWER_HANDOFF.md",
+      "mainBlob": "21fd9645ed86d65dd8c8d92c6796ad57e83485e9",
+      "branchBlob": "21fd9645ed86d65dd8c8d92c6796ad57e83485e9"
+    },
+    {
+      "file": "docs/G3CR6R3D2R4_MOTION_POLISH.md",
+      "mainBlob": "e2f2c6a888e55edada82b307a6a1ab364f24ee77",
+      "branchBlob": "e2f2c6a888e55edada82b307a6a1ab364f24ee77"
+    },
+    {
+      "file": "docs/REVIEWER_DECISION_G3CR6R3D2R3_PASS_MOTION_DIAGNOSTIC.md",
+      "mainBlob": "43d8861392e74489426d3e02824895f463eb6593",
+      "branchBlob": "43d8861392e74489426d3e02824895f463eb6593"
+    }
+  ],
+  "site": "http://127.0.0.1:8189/",
+  "scope": "home.css and home-motion.js only; no Home858 persistent mutation"
+}

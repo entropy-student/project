@@ -1,0 +1,5 @@
+# Preserve the byte-exact pre-write backup for its SHA256 restore guards.
+home.css -text whitespace=cr-at-eol
+birthday-magazine-poc.php -text whitespace=cr-at-eol
+content-menu-backup.json -text whitespace=cr-at-eol
+backup-manifest.json -text whitespace=cr-at-eol

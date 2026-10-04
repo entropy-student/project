@@ -1,0 +1,103 @@
+{
+  "gate": "G3CR6R1_FRONTEND_COMPOSITION_REDESIGN",
+  "preRunHead": "9f90c1e53058567010fcbd9f505ac99ceaacc6f9",
+  "createdAt": "2026-10-01T15:05:57.952Z",
+  "backup": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\artifacts\\backups\\g3cr6r1",
+  "protectedFiles": [
+    {
+      "path": "compose.yaml",
+      "sha256": "3313b1fc7c64c8a02883334eda2ec61bf5093064fc3640e86b59191e11b887d8"
+    },
+    {
+      "path": "commerce-workspace-plugin/bms-g3a-commerce-loop.php",
+      "sha256": "e971d02be42e4dbb01b1cc1c614cd49d76991ad1df2f253cec80825f0b9823d2"
+    },
+    {
+      "path": "mailpit-plugin/00-g3a-local-mailpit.php",
+      "sha256": "412d9dcd8292ddaab0ba7993034a4e1a0e5398c9b54d8627a507df0f1da46c90"
+    }
+  ],
+  "runtimeHashes": {
+    "commerce_workspace": "e971d02be42e4dbb01b1cc1c614cd49d76991ad1df2f253cec80825f0b9823d2",
+    "woocommerce_main": "a22b424b59842caa0d84741f34da240498a553fe1133a8590eebb5192f02483b",
+    "mailpit_mu": "412d9dcd8292ddaab0ba7993034a4e1a0e5398c9b54d8627a507df0f1da46c90"
+  },
+  "presentationSha256": "0f5b24c669dafdb5d97f324248f5152113bd25d230cd513577cf9014baaa763c",
+  "sourceFiles": [
+    {
+      "name": "birthday-magazine-poc.php",
+      "sha256": "c6a69c163dad59ed2747db4322dd4cb8b99cb4ea1d97e83b9a296955e1fd225f"
+    },
+    {
+      "name": "g3cr4-footer.css",
+      "sha256": "2d6865038a389d19d028e00cf38cfc2d2df2407ac5eb1543e00321007c5d6456"
+    },
+    {
+      "name": "g3cr4-home.css",
+      "sha256": "b8a369d2c2a91989d78c00afeeda00e195a430d027a7920984fd9f86b0895c22"
+    },
+    {
+      "name": "g3cr5-commerce.css",
+      "sha256": "b48550b265397852312a42abe2627b6e0e13c7e38eeeef13d734da1f6676e0f8"
+    },
+    {
+      "name": "g3cr5-preview.css",
+      "sha256": "ba3fa5659cfc9435c0a7dc982a1b18778d4de87ffae723606b6236ac8e999330"
+    },
+    {
+      "name": "g3cr6-brand.css",
+      "sha256": "567ad23e31c8d5040b8de327d9e7f1525b3c39625844fc49e48eda78d3439377"
+    },
+    {
+      "name": "mobile.css",
+      "sha256": "4a16c5e4708d17f51ead1c92b52be833c89b5f9c838978672c2d811d8d7e7ef8"
+    },
+    {
+      "name": "preview.css",
+      "sha256": "f126708caa2bf6dd8773b86ca0398d4216bbc2ca0d535afeed30074fd0d5ad09"
+    },
+    {
+      "name": "preview.js",
+      "sha256": "69de1c6b97815117843d7d52e68550a458cdda9773816b18890d7c5478d5597b"
+    },
+    {
+      "name": "routes.css",
+      "sha256": "95c6cd4077606f8aac18c476f89f4544fb3920036ec88b59131f4e469bddef10"
+    }
+  ],
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "width": 1440,
+      "viewport": 1440,
+      "title": "Birthday Magazine Studio – Turn photos and stories into a birthday magazine.",
+      "preview": true
+    },
+    {
+      "route": "/product/birthday-magazine/",
+      "status": 200,
+      "width": 1440,
+      "viewport": 1440,
+      "title": "The Birthday Magazine – Birthday Magazine Studio",
+      "preview": false
+    },
+    {
+      "route": "/cart/",
+      "status": 200,
+      "width": 1440,
+      "viewport": 1440,
+      "title": "Cart – Birthday Magazine Studio",
+      "preview": false
+    },
+    {
+      "route": "/my-account/",
+      "status": 200,
+      "width": 1440,
+      "viewport": 1440,
+      "title": "My Account – Birthday Magazine Studio",
+      "preview": false
+    }
+  ],
+  "orderCount": 1
+}

@@ -1,0 +1,7 @@
+{
+  "result": "HARNESS_TIMING_CHECK_FAILED",
+  "reason": "The first assertion expected three transforms although the approved loop has two held crop compositions. Fixed relative waits also missed peak mobile defocus because screenshot encoding advanced the clock.",
+  "repair": "Sampling waits for actual running CSS animation phases; no seeking or simulated states. Validator checks two held crops plus strong defocus and sharp holds.",
+  "applicationRepairAfterRound1": false,
+  "round2": "Final eight-context confirmation; raw first capture preserved"
+}

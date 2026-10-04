@@ -1,6 +1,99 @@
 # Executor Handoff — Birthday Magazine Studio
 
-## Current Gate — G3BR1 cleanup-only closure
+## Latest execution — G3CR6R3D2R4 Motion Polish (2026-10-04)
+
+This supersedes the earlier R2 execution status below; earlier sections are retained history. Static R2 is accepted; this motion candidate is not formal Reviewer/Owner PASS.
+
+- **Result:** PASS_CANDIDATE_G3CR6R3D2R4_MOTION_POLISH; same branch/PR64 open/unmerged. Approved start69b062be391a5b975aeef844378aa53f46fa6e47, fetched main947e119f568f520b09e5b5a5affc57e339e1a463; exact authority blob correlation in preflight.json. Final submission is the enclosing execution commit, verified after push and reported on PR64.
+- **Review first:** docs/evidence/g3cr6r3d2r4/README.md, qa-report.json, round2/browser.json, DESIGN.md, durable-screenshot-manifest.json and97 full-size JPGs under screenshots/. Round1 browser measurements are history, not final. Original PNGs remain local/ignored; no new Focusly visit or source acquisition.
+- **Motion repairs:**14-second Hero focus/scale/pan loop sleeping offscreen/hidden; split image/copy continuous entry/middle/exit; desktop vertical-overscan Panel parallax; three Samples tilt/scale/Y/depth sequence; desktop bounded sticky Closing with text reveal/drifting photos and stable CTA. Mobile is lighter and has no sticky/parallax trap. Only home.css/home-motion.js are application changes; no persistent Home markup write.
+- **Validation:**1440/375 multiple timed/scroll states; all3Samples each3states; Closing y0/full1440width at early/mid/late withCTAvisible. Reduced/no-JS/missing-controller and preference toggling work. No horizontal overflow, broken images, page errors or failed HTTP resources; hover/focus/native menu pass. Internal finish review is advisory. Owner live perceptibility is PENDING.
+- **Frozen:**Home858 hash7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a,8editableGroups/6anchors, all5R2assets, PreviewPHP/JS/CSS/shortcode/defaultgeometry, Woo/private workspace/account/payment, menu/theme mods/footer and Product1113 virtualUSD39.99 unchanged. Administrator/edit/media/global-style capability readback remains true. No upload/permission replay; accepted proof reused by source correlation. WooGET only; empty Checkout→Cart200. Orders1→1/jobs0/product-model0.
+- **Rollback:**poc/g3c/artifacts/backups/g3cr6r3d2r4/ restores accepted R2 CSS/JS, not pre-D2. Staged byte copy/readback passed; live rollback not applied. `node birthday-magazine-studio/poc/g3c/scripts/rollback-g3cr6r3d2r4.cjs --apply` restores only the two motion files; no DB/menu/assets mutation.
+- **Runtime:**retained current birthday-magazine-g3c; site http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/ . Entire project/unrelated Docker projection unchanged, no restart/build/pull/recreate/prune/teardown/tunnel action. Pre-existing dirty files excluded. No secrets/session/customer data exported.
+- **Forbidden counters:**Add-to-Cart/Checkout submit/order/PayPal/real-money/model/provider/imagegen/production/shared-infra/P1-P12/core-Aha/G4/merge0. No new PR, no Reviewer decision edits.
+- **Owner live relay:**refresh local homepage (Ctrl+F5 if stale cache), wait at Hero, then scroll normally through split/photo imagery, Samples and desktop Closing. Confirm whether all four motion families are visibly perceptible. Desktop screenshots/numeric changes alone do not establish formal motion PASS.
+
+**OWNER_LIVE_MOTION_PERCEPTIBILITY=PENDING; OWNER_VISUAL_FREEZE=PENDING; STOP_AT_REVIEWER=YES.**
+
+---
+
+## Latest execution — G3CR6R3D2R2 Visual Polish (2026-10-04)
+
+This section supersedes earlier execution status for the current candidate; all older sections below are retained history.
+
+- **Result:** PASS_CANDIDATE_G3CR6R3D2R2_VISUAL_POLISH; formal visual acceptance and Owner freeze pending. Same branch codex/birthday-magazine-g3c-blocksy-wedding-productization and PR64 open/unmerged. Approved starting head2040bc762736830c7225e5121e40e4b65a829fc2; latest main e962be979c53d48373aba6ba5d52691a81a8c47c. Final submission is the enclosing commit, verified after push and reported on PR64.
+- **Review first:** docs/evidence/g3cr6r3d2r2/README.md, qa-report.json, DESIGN.md and reviewer-visual-contact-sheet-r2.jpg. Final59 PNGs under round2/screenshots/. Reused accepted66 Focusly captures; no template research or proprietary asset copying.
+- **Actual repairs:**1280px desktop/343px mobile full-bleed Samples with three distinct original scenes; two different original main photo panels; readable mobile brand/native44px trigger; tightened mobile gaps. Final mobile7866px vs D2 baseline7959px. Five built-in design-time imagegen calls, all adopted, no rejected iterations; prompts, file hashes and exact placement recorded. Hero/split/closing, all copy and links retained; Home differs in exactly five image blocks only.
+- **Validation:**1440/375 no overflow, broken images, JS/page errors or failed resources. Actual perspective/hover/focus/entrance and native menu/Escape; reduced/no-JS/missing-controller remain readable. Eight Gutenberg Groups/six anchors and Owner Administrator/edit/media/global-style capabilities preserved. Internal finish report is advisory, not Reviewer decision.
+- **Frozen boundaries:**Preview PHP/JS/CSS and internals, motion controller, Woo/private workspace, menus/theme mods/footer/product1113 USD39.99 virtual unchanged. Preview default geometry/type unchanged. No photo/permissions replay or new photo-network proof; accepted evidence reused with exact source correlation. Product/Cart/Account GET200; empty Checkout redirect to Cart200, not a full form test. Orders1->1, jobs0, product model calls0; design imagegen5 is separate.
+- **Rollback:**poc/g3c/artifacts/backups/g3cr6r3d2r2/ saves accepted D2 Home and byte-exact sources. Dry integrity PASS; actual restore not run. scripts/rollback-g3cr6r3d2r2.cjs --apply restores only that candidate, leaves new static assets inert. No DB/media/order deletion or pre-D2 rollback.
+- **Runtime:**retained WP7.1.1/Blocksy2.1.57/Woo11.1.2 at http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/. Docker project/unrelated inventory unchanged; no restart/build/pull/recreate/prune/teardown. No auth/session exported. Privacy Policy link remains deferred because configured page is draft.
+- **Git hygiene:**pre-existing screenshot deletions/Owner archives/unrelated untracked files excluded. No Reviewer decision modified; no new PR/merge or next Gate. All payment/PayPal/commerce-submit/order/product-model/production/shared-infra/P1-P12/Aha/G4 actions0.
+- **Owner visual relay:**upload local reviewer-visual-contact-sheet-r2.jpg directly to current ChatGPT conversation. Manifest records full absolute path, source/output dimensions/size/hash. JPG2000x14255,2,076,139bytes. Do not send a ZIP or Base64 substitute.
+
+**STOP_AT_REVIEWER=YES; OWNER_VISUAL_FREEZE=PENDING.**
+
+---
+
+
+## Current Gate — G3CR6R1 Frontend Composition Redesign
+
+```text
+GATE=G3CR6R1_FRONTEND_COMPOSITION_REDESIGN
+RESULT=PASS_CANDIDATE_G3CR6R1_FRONTEND_COMPOSITION_REDESIGN
+EXECUTION_BRANCH=codex/birthday-magazine-g3c-blocksy-wedding-productization
+PRE_RUN_HEAD=9f90c1e53058567010fcbd9f505ac99ceaacc6f9
+PR=64_OPEN_UNMERGED
+LOCAL_SITE_URL=http://127.0.0.1:8189/
+LOCAL_WP_ADMIN_URL=http://127.0.0.1:8189/wp-admin/
+ROLLBACK=poc/g3c/artifacts/backups/g3cr6r1
+HOME_TOP_LEVEL_GUTENBERG_GROUPS=8
+OLD_G3CR4_STRUCTURAL_CLASSES_ACTIVE=0
+NATIVE_WOOCOMMERCE=RETAINED
+PRODUCT=1113_VIRTUAL_USD_39.99
+ORDER_COUNT_BEFORE=1
+ORDER_COUNT_AFTER=1
+PREVIEW_SELECT_REPLACE_REMOVE_INVALID=PASS_DESKTOP_AND_375
+FREE_PREVIEW_MODEL_CALLS=0
+FREE_PREVIEW_SERVER_PHOTO_UPLOADS=0
+FREE_PREVIEW_EXTERNAL_IMAGE_POSTS=0
+SCREENSHOT_COUNT=21
+MOBILE_DOCUMENT_WIDTH=375
+MOBILE_BLOCKING_OVERFLOW=NO
+PROTECTED_BACKEND_HASHES=UNCHANGED
+OWNER_ROLE=ADMINISTRATOR
+OWNER_CAN_EDIT_HOME=YES
+OWNER_CAN_REPLACE_IMAGES=YES
+OWNER_CAN_EDIT_COPY=YES
+OWNER_CAN_REORDER_MAJOR_SECTIONS=YES
+OWNER_CAN_EDIT_GLOBAL_STYLE=YES
+OWNER_VISUAL_FREEZE=PENDING
+PR_MERGE=0
+THEME_CHANGE=0
+BUILDER_CHANGE=0
+ELEMENTOR_INSTALL=0
+PAYPAL_ACTIONS=0
+REAL_MONEY_ACTIONS=0
+CHECKOUT_SUBMISSIONS=0
+PRODUCTION_AI_CALLS=0
+PRODUCTION_DEPLOYMENT=0
+SHARED_INFRA_MUTATIONS=0
+PAID_PURCHASES=0
+GLOBAL_DOCKER_PRUNE=0
+G4_ACTIONS=0
+STOP_AT_REVIEWER=YES
+```
+
+[Execution report](docs/G3CR6R1_EXECUTION_REPORT.md) explains the new gift-editorial Hero, unequal gallery, full-width Preview, 12-page editorial Included section, vertical journey, standalone gift conclusion/FAQ and supported editable Footer. Ordinary Home content remains core Gutenberg; Preview alone is a shortcode. The old six-group count and g3cr4 CSS chain are no longer design constraints.
+
+[Final machine report](poc/g3c/artifacts/reports/g3cr6r1-final.json), [browser/network report](poc/g3c/artifacts/reports/g3cr6r1-browser.json), and [21 screenshots](poc/g3c/artifacts/screenshots/g3cr6r1/) are the current review evidence. Three existing G3CR6 generated assets were adopted; no new images/model calls. Supported Blocksy palette + inline dynamic CSS preserve Owner color editing. Workspace guard proof is handler-level in-memory identity, not authenticated browser session proof; Gutenberg editability is permissions/structure/roundtrip, not an editor-save claim.
+
+Existing PR #64 only; exact submission SHA is reported after GitHub readback. The original G3CR6 rollback and pre-existing unrelated worktree changes are preserved. Do not merge, freeze the visual direction or proceed to G4 without Reviewer/Owner acceptance.
+
+---
+
+## Historical Gate — G3BR1 cleanup-only closure
 
 ```text
 GATE=G3BR1_SANDBOX_PAYMENT_RECONCILIATION_ENTITLEMENT_REFUND
@@ -253,6 +346,25 @@ Branch: codex/birthday-magazine-g3a-woocommerce-commerce-account-loop; execution
 
 # Executor Handoff — Birthday Magazine Studio
 
+## Latest execution — G3CR6R3D2R2 Visual Polish (2026-10-04)
+
+This section supersedes earlier execution status for the current candidate; all older sections below are retained history.
+
+- **Result:** PASS_CANDIDATE_G3CR6R3D2R2_VISUAL_POLISH; formal visual acceptance and Owner freeze pending. Same branch codex/birthday-magazine-g3c-blocksy-wedding-productization and PR64 open/unmerged. Approved starting head2040bc762736830c7225e5121e40e4b65a829fc2; latest main e962be979c53d48373aba6ba5d52691a81a8c47c. Final submission is the enclosing commit, verified after push and reported on PR64.
+- **Review first:** docs/evidence/g3cr6r3d2r2/README.md, qa-report.json, DESIGN.md and reviewer-visual-contact-sheet-r2.jpg. Final59 PNGs under round2/screenshots/. Reused accepted66 Focusly captures; no template research or proprietary asset copying.
+- **Actual repairs:**1280px desktop/343px mobile full-bleed Samples with three distinct original scenes; two different original main photo panels; readable mobile brand/native44px trigger; tightened mobile gaps. Final mobile7866px vs D2 baseline7959px. Five built-in design-time imagegen calls, all adopted, no rejected iterations; prompts, file hashes and exact placement recorded. Hero/split/closing, all copy and links retained; Home differs in exactly five image blocks only.
+- **Validation:**1440/375 no overflow, broken images, JS/page errors or failed resources. Actual perspective/hover/focus/entrance and native menu/Escape; reduced/no-JS/missing-controller remain readable. Eight Gutenberg Groups/six anchors and Owner Administrator/edit/media/global-style capabilities preserved. Internal finish report is advisory, not Reviewer decision.
+- **Frozen boundaries:**Preview PHP/JS/CSS and internals, motion controller, Woo/private workspace, menus/theme mods/footer/product1113 USD39.99 virtual unchanged. Preview default geometry/type unchanged. No photo/permissions replay or new photo-network proof; accepted evidence reused with exact source correlation. Product/Cart/Account GET200; empty Checkout redirect to Cart200, not a full form test. Orders1->1, jobs0, product model calls0; design imagegen5 is separate.
+- **Rollback:**poc/g3c/artifacts/backups/g3cr6r3d2r2/ saves accepted D2 Home and byte-exact sources. Dry integrity PASS; actual restore not run. scripts/rollback-g3cr6r3d2r2.cjs --apply restores only that candidate, leaves new static assets inert. No DB/media/order deletion or pre-D2 rollback.
+- **Runtime:**retained WP7.1.1/Blocksy2.1.57/Woo11.1.2 at http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/. Docker project/unrelated inventory unchanged; no restart/build/pull/recreate/prune/teardown. No auth/session exported. Privacy Policy link remains deferred because configured page is draft.
+- **Git hygiene:**pre-existing screenshot deletions/Owner archives/unrelated untracked files excluded. No Reviewer decision modified; no new PR/merge or next Gate. All payment/PayPal/commerce-submit/order/product-model/production/shared-infra/P1-P12/Aha/G4 actions0.
+- **Owner visual relay:**upload local reviewer-visual-contact-sheet-r2.jpg directly to current ChatGPT conversation. Manifest records full absolute path, source/output dimensions/size/hash. JPG2000x14255,2,076,139bytes. Do not send a ZIP or Base64 substitute.
+
+**STOP_AT_REVIEWER=YES; OWNER_VISUAL_FREEZE=PENDING.**
+
+---
+
+
 ## Current Gate — G2BR3 Direct Codex Agent Real AI Proof — PASS_CANDIDATE
 
 ```text
@@ -479,3 +591,210 @@ Concrete return reasons: `RETURN_STORELLY_PREVIEW_NOT_BROWSER_LOCAL` (and a runt
 2. Decide whether to accept Upload Files for registered-account flows and return only the guest flow, or require a local email-capture run before acceptance.
 3. Decide whether Attach Me meets the private proof-delivery bar for registered orders and whether guest delivery plus an actual completed byte download must be rerun before acceptance.
 4. Decide if the exact A/B starter-site imports need their own bounded follow-up evidence. Do not continue to G2A2 in this execution.
+
+## G3C Blocksy Wedding productization — current handoff
+
+**Gate:** `G3C_BLOCKSY_WEDDING_PRODUCTIZATION`
+**Current handoff status:** `RETURN_PR_CREATION_PENDING_OWNER_GITHUB_AUTH`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**Stop:** `STOP_AT_REVIEWER=YES`; do not enter G4.
+
+The local site is ready for Owner editing and remains running:
+
+- Site: http://127.0.0.1:8189/
+- WordPress admin: http://127.0.0.1:8189/wp-admin/
+- Local password reset template: in `poc/g3c/README.md`; it is a command template only. Do not place the Owner's chosen password in GitHub or chat.
+
+Current technical read-back:
+
+- Blocksy 2.1.57 / Wedding / Gutenberg and WooCommerce 11.1.2 remain active; Product 1113 is virtual at USD 39.99.
+- The corrected homepage is editable as Gutenberg page 858. `bms-owner` has Administrator permissions for content, media replacement, block ordering, and Blocksy global styles.
+- Product → Cart → Checkout and My Account paths were observed. Checkout has the required-account setting and only the local offline test method; it was not submitted.
+- The preview remains Good Issue-style and browser-local (`blob:` object URL) with no detected photo-submit API path. No AI/model request was made.
+- Buyer A workspace access passed; Buyer B and guest direct replay were denied. Logo references are removed from homepage content, Blocksy theme mods, and post content.
+- Compose runtime is retained. No PayPal, real money, production AI, production deployment, shared infrastructure, paid plugin, or teardown action occurred.
+
+Screenshot status is deliberately separate from the old PNGs in the working folder. Those older files predate the final Hero/header/icon corrections and were excluded from the PR. The Owner has the updated screenshot archive and will upload it to the Reviewer directly. The Executor did not inspect it, so the 375px visual result and durable screenshot evidence remain for Reviewer verification. Required names are listed in `poc/g3c/artifacts/screenshots/README.md`.
+
+Machine-readable read-back is in `poc/g3c/artifacts/reports/verification-g3c.json` plus `runtime-setup.json` and `productization.json`. The precise limitation is that this handoff does not claim `PASS_CANDIDATE` until the Reviewer has the current screenshot archive.
+
+The branch is pushed to GitHub. PR creation is pending: the GitHub connector transport failed, and the browser PR page requires Owner login. The Owner must sign in on the local GitHub tab; then resume opening the PR. No merge occurred.
+
+## G3CR4 — current Reviewer handoff
+
+**Current Gate:** `G3CR4_G3C_VISUAL_CONSOLIDATION`
+**Execution result:** `PASS_CANDIDATE_G3CR4_G3C_VISUAL_CONSOLIDATION`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**PR:** [#64](https://github.com/entropy-student/project/pull/64), open and unmerged before this update.
+**Stop:** `STOP_AT_REVIEWER=YES`; do not enter G4.
+
+The live site at http://127.0.0.1:8189/ now uses the consolidated six-section Gutenberg Home page. The runtime stays available for Owner review. WP Admin is http://127.0.0.1:8189/wp-admin/. The `bms-owner` Administrator retains Gutenberg page/media/block-order and Blocksy global-style capabilities. No password is included. The optional admin-editor screenshot was not captured because the screenshot browser had no authenticated session.
+
+Current evidence:
+
+- Screenshots: `poc/g3c/artifacts/screenshots/g3cr4/` (17 synthetic PNGs, including desktop/mobile full pages, sections, local-photo preview states, Woo product/cart/checkout/My Account).
+- Machine report: `poc/g3c/artifacts/reports/g3cr4-final.json`.
+- Reversible pre-edit backup: `poc/g3c/artifacts/backups/g3cr4/home-and-blocksy-before-20261001-141123.json`.
+- Editable Home: six Gutenberg Group sections; three samples; one Good Issue preview shortcode.
+- At 375px, preview and spread use one column; document width is 375px; no measured right clipping or internal horizontal overflow.
+- Selected synthetic cover image stayed in a browser `blob:` URL. Image selection produced no POST/PUT, external image request, or model-provider request.
+- Native Woo product 1113 remains virtual at USD 39.99. Product Add to Cart returned WooCommerce success, the Cart displayed the product, and Checkout/My Account pages loaded. No order or payment was submitted.
+- Private Workspace code was not changed; the previously accepted owner 200 / unrelated account 403 / guest 403 evidence is reused.
+- No PayPal, real-money, model/AI, production deployment, shared infrastructure, paid purchase, global prune, or G4 action occurred.
+
+Please review the current screenshot set and the live page, with Owner visual freeze still pending. Earlier G3C handoff paragraphs describe a prior state and are superseded for this Gate by the G3CR4 evidence above. No Reviewer decision file was edited. Runtime teardown was intentionally skipped.
+
+## G3CR5 — current Executor handoff
+
+**Current Gate:** `G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY`
+**Execution result:** `PASS_CANDIDATE_G3CR5_G3C_VISUAL_FINISH_WOO_CONTINUITY`
+**Branch:** `codex/birthday-magazine-g3c-blocksy-wedding-productization`
+**PR:** #64; continued without merge.
+**Stop:** `STOP_AT_REVIEWER=YES`; G4 remains unstarted.
+
+The accepted six-section Home page and Gutenberg content are unchanged (page 858 SHA-256 `d075824113df48fa75a8abd9d783509b0dfc17d97f396a1e523caa7c57735bcb`). The Good Issue photo preview now uses a dedicated image frame separate from the spread copy. At desktop 1440px and mobile 375px, the selected synthetic sample stayed in browser-local `blob:` URLs, text/page labels fit without overlap, and photo selection caused 0 upload POST/PUT/PATCH, 0 external HTTP/image requests, and 0 model-provider requests.
+
+A project-local CSS file skins WooCommerce routes. Product 1113 remains a virtual USD 39.99 product. Native Add to Cart succeeded; Cart, Checkout and My Account loaded in the same isolated browser context. No checkout was submitted and no order/payment was created. Product/Cart/Checkout/My Account mobile document widths all stayed at 375px; CTAs and controls fit. Owner `bms-owner` remains Administrator with Home edit, Gutenberg, media-upload, block reorder, and Blocksy global-style access.
+
+Current screenshots: `poc/g3c/artifacts/screenshots/g3cr5/` (11 PNG files). Machine evidence and image hashes: `poc/g3c/artifacts/reports/g3cr5-final.json`. Execution details and runtime/dependency read-back are appended to `EXECUTION_EVIDENCE.md`.
+
+The local runtime remains up for Owner review at http://127.0.0.1:8189/ (admin: http://127.0.0.1:8189/wp-admin/). No theme, builder, product, checkout/order system, or homepage content was changed. No PayPal, real payment, model/AI, production deployment, Shared Infrastructure, paid purchase, or G4 action occurred. Owner visual freeze remains pending.
+
+## Current execution append — G3CR6 (2026-10-01)
+
+Supersedes the prior frontend candidate only. Historical Gates and Reviewer decisions remain unchanged.
+
+- Result: `PASS_CANDIDATE_G3CR6_FRONTEND_EXPERIENCE_BRAND_REDESIGN`; formal Reviewer acceptance and Owner visual freeze pending.
+- Authorization: Owner G3CR6 request, main `becb2ab9c644649a07327664cfdb5ae975964ba9` G3CR6 contract, latest Handoff, and supplied Option2 reference ZIP.
+- Continue branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, PR #64 open/unmerged. Pre-run HEAD `b3aff79fd74b0a63bc42ff370c8adb1a5eac82ba`; final execution/evidence commit is the enclosing commit in this branch and returned after push.
+- Changed frontend: editable six-group Home, fictional marketing assets, product copy/image, brand CSS across native Woo pages, browser-local Preview UI/replace/remove/error states. No protected backend or compose change.
+- Backup: `poc/g3c/artifacts/backups/g3cr6/`; rollback helper `scripts/restore-g3cr6.php`; detailed steps in `artifacts/reports/g3cr6-execution-notes.md`.
+- Screenshots: `poc/g3c/artifacts/screenshots/g3cr6/` (19 new PNGs). Reports: `g3cr6-final.json`, `g3cr6-browser.json`, `g3cr6-runtime.json`, workspace guard reports, asset provenance and resource read-back.
+- Versions retained: WP7.1.1, Woo11.1.2, Blocksy/Companion2.1.57, Simply Gallery3.4.3, Stackable3.20.2, WPForms Lite2.0.2.1; existing Playwright Core1.62.1/Edge used locally.
+- Preview select/replace/remove/name/age/styles/invalid/corrupt image tests PASS on desktop/375px, blob-local, separate photo/text frames, no upload/external image POST/model call. Four local static GETs per viewport were recorded, not hidden.
+- Native AddCart/quantity/remove/form pages/CTAs PASS, US$39.99 virtual product intact. No Checkout submission or new order. Owner Administrator/core Gutenberg/media/global-style capabilities PASS.
+- Private guard regression: Owner200, unrelated403, guest403 using unchanged handler/in-memory synthetic identities; independent guest HTTP403. No new authenticated login/session claim and no password/cookie read.
+- Asset-generation calls5 (authorized marketing), runtime product/Preview model calls0. Production AI0, PayPal0, real money0, deployment0, Shared Infra0, G4=0, theme/builder changes0, paid purchase0, prune0, merge0.
+- Runtime retained and healthy: http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/ . Owner account retained; credentials omitted.
+- Pre-existing Owner ZIPs and deleted old screenshots excluded from commit. No Reviewer doc changed. Retained local backup/tools only; no teardown.
+
+Next: Reviewer reviews PR #64 and current screenshots; Owner may inspect/edit local site. `OWNER_VISUAL_FREEZE=PENDING`; `STOP_AT_REVIEWER=YES`. Do not enter G4.
+
+## Current execution append — G3CR6R3D1 (2026-10-04)
+
+This append supersedes earlier runtime-availability descriptions for **this round only**, preserves historical evidence and does not revise Reviewer decisions.
+
+- Gate: `G3CR6R3D1_FOCUSLY_VISUAL_MAPPING`.
+- Result: `RETURN_G3CR6R3D1_LOCAL_HOMEPAGE_UNAVAILABLE`. D1 is not complete; D2 remains HOLD.
+- Baseline: PR #64 open/unmerged, branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, head `36b670c333601624c068b543d7bc3c2f2f9ee346`. Local fast-forward sync preserved pre-existing Owner archives/files and17 old screenshot deletions; all excluded from this submission. Main project-scoped freshness checked at `054b65f542ef456733396dd304fa6589da9eceae`.
+- Direct public reference: Focusly listing and linked Home1 live preview, HTTP200,1440×1000 and375×812. Every major region mapped; screenshots and timed hover/scroll/entrance/focus/mobile-menu evidence retained. No template source/original assets/fonts downloaded or copied for reuse.
+- Mapping: `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md`. Evidence/index/manifest: `docs/evidence/g3cr6r3d1/`.
+- Current-home inventory is source-based and accepted G3CR6R1 metadata only: eight editable Groups, separate local Preview shortcode, native Woo paths and unchanged account/workspace guard. Three owned marketing images inspected; no generation needed now; only an optional static life-moment photo gap proposed.
+- Fresh local Home/Product/Cart/Checkout/Account GETs all refused connection; Docker Desktop Linux Engine unavailable. No runtime start/rebuild, WordPress/content/theme/media/DB change, frontend CSS/JS change or commerce action. Actual persisted Groups/template/menu/URLs/health need fresh read-only reconciliation before D1 can PASS. No current-site screenshots fabricated or historical screenshots relabeled as current.
+- No PayPal/payment/Checkout submission/product-model/image-generation/deployment/shared-infrastructure action; all0. No D2/G4, no new PR, no merge. Temporary successful browser contexts closed; no runtime rollback required.
+- Documentation/evidence commit identity is the enclosing commit on PR #64, verified after push. Reviewer can directly access all evidence there; Owner relay NONE.
+
+Next: Reviewer checks the available reference/mapping and this exact local-runtime blocker; close missing current-home read-back inside D1 before authorizing implementation. `STOP_AT_REVIEWER=YES`.
+
+## Current execution append — G3CR6R3D1R2 (2026-10-04)
+
+This is the latest Executor state and supersedes only the earlier local-readback blocker. Historical Gates and Reviewer authority remain intact.
+
+- Gate/result: `G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE` / **PASS_CANDIDATE**. D2 implementation permission remains Reviewer-only; not executed.
+- Branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`; continue PR #64 open/unmerged. Approved baseline48191f6f0b95eb4be169746f8eac9c1d7ca5365a; mainabc5216da1c29841aeca58fb1c4ef653c19a0017. Non-destructive sync mergece8df2b0a34bf8206fe4d5acec24a7387c4f7192; intended submission commit is the enclosing commit, returned after GitHub read-back.
+- Docker Desktop already available. Only existing db361d58eb5454, WordPress21892d72baeb, Mailpit35d286e7af50 started; no new runtime/container/image/volume/network, no global configuration or rebuild. All container identities/mounts/images, volume names/network IDs and unrelated state projection unchanged. WP-CLI remains stopped.
+- Local Home1440/375 HTTP200, document width matches viewport, eight actual editable Gutenberg Groups, anchors/menu/CTA/theme/template and Preview presence identified. Default page template is Blocksy page.php; Home858 SHA256 matches accepted R1 and before/after.14 fresh screenshots saved; no frontend/WP edit.
+- Preview interaction **KEEP_AS_IS**, not exercised. No Focusly replay, Preview benchmark or asset generation; accepted D1 mapping/66 images reused. Guard and Preview hashes unchanged; no new privacy/access proof fabricated.
+- Native Product1113 USD39.99 virtual; GET Product/Cart/Account200; Checkout redirects302 to empty Cart200. This is route readback, not checkout form verification. No cart/order/account/payment mutation. Order count1->1, generation jobs0, product model calls0.
+- Known existing issues: persisted mobile Sample Pages target#sample-pages absent (current#samples); footer privacy href empty. Recorded, not fixed. Reviewer should scope any later correction separately; no new policy invented.
+- Owner Administrator, Gutenberg, Home/media/global-style capabilities preserved. No password/session/cookie/token captured.
+- Read `docs/G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_REPORT.md` and `docs/evidence/g3cr6r3d1r2/README.md`; machine checks/status and exact proposed D2 mutation/rollback/evidence scope included. D2 proposal excludes Woo/payment/account/workspace/entitlement/Preview internals/product/footer/global menus by default.
+- Runtime retained for review: http://127.0.0.1:8189/ ; http://127.0.0.1:8189/wp-admin/ . If availability rollback later requested, stop only the three started IDs. No teardown/prune.
+- Existing Owner artifacts/17 deleted old PNGs/untracked benchmark-resume evidence preserved and excluded. No Reviewer decision file changed. Final commit/push/PR refresh verified without merge.
+
+Next: Reviewer assesses fresh local readback and exact homepage-only D2 proposal, including the two known navigation issues. `STOP_AT_REVIEWER=YES`; `Owner relay=NONE`; D2/G4 not started. Owner visual freeze pending.
+
+## Current execution append — G3CR6R3D2 (2026-10-04)
+
+This is the current Executor candidate; it preserves prior history and leaves formal Reviewer decisions unchanged.
+
+- **Gate/result:** `G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION` / **PASS_CANDIDATE**. Continue existing branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, PR #64 open/unmerged. D2 is implemented; no next Gate.
+- **Git:** approved starting head89deb53b578fb6e0ddaeaf20e582fc97f23fd9a2; subsequent Owner quality-first image authorization fast-forwarded to7bc7bc69a9dce91ddad4939e34ef4a8ebc6b1085. Fresh canonical main a3ca2f851398de47724452896465a900dcec8d50 project authority reconciled. Enclosing execution/evidence commit is final submission identity, returned after push and linked in PR64.
+- **Review first:** `docs/evidence/g3cr6r3d2/README.md`;53 final PNGs under `round2/screenshots/`, browser/machine reports, DESIGN.md, font license/provenance, source and resource correlation. Accepted D1 mapping/66 screenshots reused, not recrawled.
+- **Visual:** independently implemented focus-frame/photo Hero, large serif, warm paper, capsule navigation, alternating image/copy and dark photo panels, three scroll cards, hover/entrance/reveal, strong dark closing. Eight editable Home858 Groups/six anchors retained. Both1440/375 and reduced/no-JS/controller-unavailable show complete readable content. Internal two-round craft check resolved five defects; not a formal governance PASS.
+- **Narrow fixes/boundaries:** only mobile menu1098 target repaired to#samples. Privacy policy remains unresolved because configured page is draft; footer untouched. Preview JS/CSS/shortcode internals frozen; only outer wrapper and guarded homepage-controller enqueue. No photo-state/Preview-privacy retest or fresh authenticated-access claim. Source hashes and previous accepted proof reused. Owner remains Administrator with Gutenberg/Home/media/global-style capabilities.
+- **Commerce:** Product1113 virtual USD39.99 and native Product/Cart/Account GET200; empty-cart Checkout→Cart200. No AddCart, submit, account/order/payment/provider/model action. Orders1→1; jobs/model0. Woo/workspace/entitlement/P1–P12/Aha unchanged. Imagegen0; licensed Google Fonts OFL typography independently sourced.
+- **Rollback:** full scoped pre-write Home/menu/source snapshots at `poc/g3c/artifacts/backups/g3cr6r3d2/`; `scripts/rollback-g3cr6r3d2.cjs` default dry PASS. Actual restoration not executed. No DB/volume reset; optional future explicit apply restores only touched surfaces.
+- **Runtime:** retained healthy at http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/. Existing Docker identities/state/mounts/volumes/network IDs and unrelated projections unchanged versus accepted D1R2. No start/build/pull/recreate/prune/teardown. No credentials/session/auth data retained.
+- **Submission hygiene:** pre-existing Owner archives/17 PNG deletions/untracked old benchmark evidence excluded. Reviewer files untouched. All forbidden action counts0, no merge.
+
+Please assess visual fidelity,375px quality, actual motion, accessibility fallbacks and Preview/Woo/account freeze boundaries before any Owner visual confirmation. **STOP_AT_REVIEWER=YES; Owner relay=NONE; OWNER_VISUAL_FREEZE=PENDING.**
+
+D2 final submission addendum: implementation/evidence e6d7a5bf51255474fc6cd96e6015b9d2bb04f366 plus enclosing byte-preservation hygiene commit; both submitted to existing PR64. Byte-exact backup Git blobs verified; direct localhost HTTP200, runtime retained without restart. Final SHA returned after push. STOP_AT_REVIEWER=YES.
+
+
+## Current execution addendum — R4 Owner video calibration (2026-10-04)
+
+Owner-approved phone-video calibration of R4, after the prior Reviewer PARTIAL/Owner-live-pending record. This is an Executor candidate, not an official Reviewer PASS. Prior R4 and R2 history is retained.
+
+Hero now holds a clear photo, defocuses, changes the crop of the same owned photo, and refocuses on a 12-second cycle; headline/CTA stay clear. Editorial images unfold and settle. Desktop photo panels compensate scroll one-for-one over a bounded 360px travel window. Samples have distinct arrival, a flat .40–.60 reading plateau, and departure. Desktop Closing reveals left photo, heading mask, then right photo in its existing bounded sticky region; CTA remains usable. Mobile reduces strength and has no panel/sticky trap.
+
+Only home.css and home-motion.js application sources changed. No Home858 database write, asset swap, Preview internal change, Woo/business change, menu/footer/theme modification or new imagegen. Phone video informed ordering/strength, not exact pixels/timing; camera perspective/display artifacts were not reproduced and video/frames were not committed.
+
+Final round2: 125 source PNGs, eight contexts (1440×1000 / 375×812 × normal/reduced/no-JS/missing-controller), five actual timed Hero states, both splits at three positions, panels/cards/Closing at five positions, native menu, hover/focus and live reduced-motion toggling. No horizontal overflow, broken images, page errors or failed HTTP resources. Numeric state changes and full-size JPEG/hash manifests retained. Round1 showed a sampling/validator mismatch, repaired only in the harness before final confirmation; no extra UI polishing loop.
+
+Frozen Home SHA256 7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a; eight editable Gutenberg Groups/six anchors; all five R2 asset hashes match. Preview default widths1120/335 and accepted PHP/JS/CSS/privacy/access proof correlated. No new upload or authenticated-workspace test is claimed. Product1113 virtual USD39.99; GET Product/empty Cart/Account200, Checkout follows native empty-cart redirect to Cart200 (not populated form proof). Orders1→1, jobs0/product-model0. Owner Administrator/Home/media/global-style capabilities retained.
+
+Pre-write rollback: poc/g3c/artifacts/backups/g3cr6r3d2r4-owner-video/; staged source copy/read-back PASS restores prior R4 d882e247, while original R4 rollback to accepted R2 remains intact. No live restore. Docker container identities/state/mounts/volumes/network projection and unrelated resources unchanged; no start/rebuild/pull/recreate/prune/teardown. Runtime retained at http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/.
+
+PayPal, real money, AddCart, Checkout submit, order/account mutation, provider/product-model, imagegen, production/shared-infra, P1–P12/core Aha/G4 and merge actions0. Existing Owner files/deletions excluded. Same branch codex/birthday-magazine-g3c-blocksy-wedding-productization, existing PR64 open/unmerged.
+
+Owner must still confirm perceptibility by waiting at Hero and normally scrolling the editorial/panel, Samples and desktop Closing. Formal Reviewer decision/Owner visual freeze PENDING. STOP_AT_REVIEWER=YES.
+
+Evidence: [docs/evidence/g3cr6r3d2r4-owner-video/README.md](docs/evidence/g3cr6r3d2r4-owner-video/README.md). Submission identity is the enclosing implementation/evidence commit, returned after push and recorded in PR64; baseline a6cbe3cc80f7d276ffbc30499f538544a7082bb6, main 46c2cf2c914a0e7043467ab1022da403fd1e015e. No Reviewer decision was edited.
+
+R4 Owner-video submission identity: implementation/evidence commit d6df5f1bff414716dd485605f0795f966a0151e6; final enclosing documentation hygiene commit corrects only the internal advisory's viewed-frame count to31. Same branch/PR64, unmerged; no new application or runtime change.
+
+## Current handoff — R4 Hero dual-image focus (2026-10-04)
+
+**Executor PASS_CANDIDATE; Reviewer/Owner visual freeze PENDING.** Owner explicitly approved this Hero-only correction after the previous video calibration. Historical evidence retained; no Reviewer decision edited.
+
+Read [Hero focus evidence](docs/evidence/g3cr6r3d2r4-hero-focus/README.md) first. Existing Mira/Lena images, shared full-scene blurred/clear coordinates, desktop pointer-follow window,20s clear-hold/defocus-zoom/crossfade cycle, fixed lighter mobile window. Title/CTA fixed; reduced/no-JS static and offscreen pause. Only home.css/home-motion.js changed; no new imagegen. Non-Hero motion/static styles, Home858, Preview/business/media/menu frozen.
+
+Final51 captures, eight1440/375 contexts,60 machine checks PASS.152 non-Hero CSS rules/controller exact; protected runtime and five R2 assets unchanged. No overflow/resource errors. GET-only commerce proof includes native empty-cart Checkout redirect, not populated checkout. No new photo interaction/access proof fabricated. Orders1→1, jobs/model0. Owner Administrator/Gutenberg access intact.
+
+Backup `poc/g3c/artifacts/backups/g3cr6r3d2r4-hero-focus/`, byte-roundtrip PASS; explicit future rollback script restores198aed6's two application files only. Runtime/project/unrelated Docker projection unchanged and retained at http://127.0.0.1:8189/ ; http://127.0.0.1:8189/wp-admin/ . No teardown or credentials retained. All forbidden business/production/shared-infra/G4/merge actions0.
+
+Continue same branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, PR64 open/unmerged. Baseline198aed658fb59ebecffa596e37e143892d2d763b; fresh main4caed9bb0dbf069d5407b261fe66740794c7676a project authority unchanged. Enclosing execution/evidence commit is pushed submission identity, read back in PR64. Pre-existing Owner files/deletions excluded.
+
+Reviewer: assess Hero-only code, matching coordinate/clock proof, fallbacks and frozen boundaries. Owner: Ctrl+F5, move pointer and wait10–12s for Lena. Headless proof is not physical-device smoothness or official visual acceptance. **STOP_AT_REVIEWER=YES; OWNER_VISUAL_FREEZE=PENDING.**
+
+## Current handoff — R4 Hero travel expansion (2026-10-04)
+
+**Executor PASS_CANDIDATE; Reviewer/Owner confirmation pending.** Owner approved allowing desktop lens travel under navigation/copy; only Hero motion bounds and desktop readability layering changed. Read [Hero range evidence](docs/evidence/g3cr6r3d2r4-hero-range/README.md):62 checks,55 new captures, eight1440/375 browser modes; edge-bounded window, Header/CTA hit targets and contrast checked. One shade-opacity repair then final confirmation. Mobile fixed window, paired images/cycle/fallbacks and non-Hero motion unchanged.
+
+Home858/Preview/media/menu/theme/business/runtime protected states unchanged; no new upload/auth test claimed. USD39.99 virtual product and GET-only routes preserved; empty-cart Checkout redirect explicitly scoped. Orders1→1, jobs/model0. No payment, PayPal, production/shared-infra, imagegen, G4 or merge.
+
+Same branch/PR64 open/unmerged, baseline022ad6de2d64237ad6669c5c4a29e6eef11cea79; fresh main301eda93ee91bef860341ec280e95f39f97cbcf7 project authority unchanged. Enclosing submission commit pushed/read back; no new PR. Backup `poc/g3c/artifacts/backups/g3cr6r3d2r4-hero-range/` restores prior Hero-focus two source files; staged byte check PASS, actual restore not executed. Docker project/unrelated resources unchanged. Runtime retained http://127.0.0.1:8189/ ; http://127.0.0.1:8189/wp-admin/ . Owner files/deletions excluded and Reviewer decisions untouched.
+
+Reviewer: check Hero-only diff, larger bounds, layered readability/hit-test proof and freeze correlation. Owner: Ctrl+F5 and move cursor across navigation and title. Physical-device smoothness/visual freeze remains pending. **STOP_AT_REVIEWER=YES.**
+
+## Current handoff — G3CR7R1 Executor reproduction (2026-10-05)
+
+**Executor result: `PASS_CANDIDATE_G3CR7R1_EXECUTOR_REPRODUCTION`; STOP_AT_REVIEWER=YES.** This is an independent implementation against accepted baseline `e71f94377d341a88ba388f2c5da153e7cd6ee8b8`, not promotion of the prior Reviewer prototype. Existing PR #64 remains the only submission; do not merge or enter a later Gate.
+
+Read [`docs/evidence/g3cr7r1/README.md`](docs/evidence/g3cr7r1/README.md) first. It links the scoped source diff, runtime read-back, Playwright report, 25 screenshot SHA256 manifest, PHP/JS lint and rollback plan. Five-step intake uses browser-memory answers and `blob:` photos; photo bounds, validation, review, Woo-native checkout handoff, payment-state truth and 375px width were behaviorally checked. The Home 858 Gutenberg content and accepted Preview styles/scripts are unchanged. WooCommerce product 1113 remains the canonical USD 39.99 virtual product.
+
+**Reviewer decision requested:** decide whether the explicitly labeled local continuation/ready visual fixture plus real unpaid-order `is_paid()`/forged-query read-back meets the order-received evidence criterion. The only existing on-hold order belongs to a registered account; anonymous replay revealed no order details. No account credentials were read or used, and no order or payment was created. This limitation is documented without treating the visual fixture as a real order receipt.
+
+The runtime remains at `http://127.0.0.1:8189/`; no checkout submission, payment, Provider/model call, production deployment, Shared Infra action or merge occurred. Owner relay: `NONE`. Do not continue to the next Gate before Reviewer decision.
+
+## Current handoff — G3CR7R1 Executor reproduction (2026-10-05)
+
+**Executor result: `PASS_CANDIDATE_G3CR7R1_EXECUTOR_REPRODUCTION`; STOP_AT_REVIEWER=YES.** This is an independent implementation against accepted baseline `e71f94377d341a88ba388f2c5da153e7cd6ee8b8`, not promotion of the prior Reviewer prototype. Existing PR #64 remains the only submission; do not merge or enter a later Gate.
+
+Read [`docs/evidence/g3cr7r1/README.md`](docs/evidence/g3cr7r1/README.md) first. It links the scoped source diff, runtime read-back, Playwright report, 25 screenshot SHA256 manifest, PHP/JS lint and rollback plan. Five-step intake uses browser-memory answers and `blob:` photos; photo bounds, validation, review, Woo-native checkout handoff, payment-state truth and 375px width were behaviorally checked. The Home 858 Gutenberg content and accepted Preview styles/scripts are unchanged. WooCommerce product 1113 remains the canonical USD 39.99 virtual product.
+
+**Reviewer decision requested:** decide whether the explicitly labeled local continuation/ready visual fixture plus real unpaid-order `is_paid()`/forged-query read-back meets the order-received evidence criterion. The only existing on-hold order belongs to a registered account; anonymous replay revealed no order details. No account credentials were read or used, and no order or payment was created. This limitation is documented without treating the visual fixture as a real order receipt.
+
+The runtime remains at `http://127.0.0.1:8189/`; no checkout submission, payment, Provider/model call, production deployment, Shared Infra action or merge occurred. Owner relay: `NONE`. Do not continue to the next Gate before Reviewer decision.

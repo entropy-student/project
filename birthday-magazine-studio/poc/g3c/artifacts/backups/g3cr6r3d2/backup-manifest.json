@@ -1,0 +1,21 @@
+{
+  "baseline": "89deb53b578fb6e0ddaeaf20e582fc97f23fd9a2",
+  "home_motion_previously_exists": false,
+  "files": [
+    {
+      "file": "birthday-magazine-poc.php",
+      "sha256": "0ee467d6b212f5d72bcd94adff87fdcbab39513f884ce09e032d89252ea1b95f",
+      "bytes": 6531
+    },
+    {
+      "file": "content-menu-backup.json",
+      "sha256": "630265b4238b3dcd2f209a1b5517b8e02cb4e5679ff704d61ef78dcc5df57826",
+      "bytes": 18768
+    },
+    {
+      "file": "home.css",
+      "sha256": "e0d5114a94b093e85fada4bda5d4163716832ae0ad672c19e6b1b6f2d9c942bd",
+      "bytes": 6873
+    }
+  ]
+}
