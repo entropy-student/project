@@ -1,4 +1,28 @@
-## Current execution status — G3C C2B route snapshot compatibility repair R1
+## Current execution status — G3C C2B Owner ACL behavior diagnostic D2
+
+```text
+GATE_ID=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_C2B_OWNER_RUNTIME_ACL_INHERITANCE_ENABLED
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_D2_REQUIRED=YES
+ACL_DIAGNOSTIC_BLOB=64bc2fd1c3dfe85250cb229a116202e5d9b6c460
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun C2B.
+2. Wait for Owner D2 output.
+3. Persist only bounded ACL behavior/cleanup/timing facts.
+4. Do not accept any repair that weakens the Owner-only ACL invariant.
+5. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B route snapshot compatibility repair R1
 
 ```text
 GATE_ID=G3C_C2B_ROUTE_SNAPSHOT_COMPAT_REPAIR_R1
