@@ -1,3 +1,9 @@
+# VPN Network Optimization — EXECUTOR HANDOFF
+
+> Canonical current state is `REVIEWER_HANDOFF.md`.  
+> Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
+> Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
+
 ## Current execution status — fresh Owner authorization required for real HY2-in-Clash canary R3R2
 
 ```text
