@@ -1,4 +1,29 @@
-## Current execution status — G3C C2B Owner ACL behavior diagnostic D2
+## Current execution status — G3C C2B Owner ACL behavior diagnostic D2R1
+
+```text
+GATE_ID=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2R1
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_D2_ACL_DIAGNOSTIC_METHOD_BINDING
+C2B_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_D2R1_REQUIRED=YES
+ACL_DIAGNOSTIC_BLOB=f890b8308d78ce2d41322df0214f3c2e9b13e7df
+NETWORK_MUTATION_AUTHORIZED=NO
+CLASH_UI_ACTION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun C2B.
+2. Wait for Owner D2R1 output.
+3. Persist only bounded Method A/Method B ACL facts, cleanup, and timing.
+4. One method's exception does not invalidate the other's evidence.
+5. No ACL requirement may be weakened.
+6. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B Owner ACL behavior diagnostic D2
 
 ```text
 GATE_ID=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2
