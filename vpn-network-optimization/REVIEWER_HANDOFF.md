@@ -18,10 +18,9 @@ G3-A Health/readiness/advisory              PASS
 G3-B Migration package D1-D3                PASS_OFFLINE
 G3-C C1 Manual-control contract             PASS
 G3-C C2A Synthetic UI package repair        PASS_WITH_TIMING_GAP
-G3-C C2B-P0 Local-fact persistence          RETURN->FIXED
 G3-C C2B Synthetic Clash UI canary          PASS
-G3-C C2C Real HY2-in-Clash canary           OWNER_AUTH_REQUIRED
-G3-B Fresh-target migration rehearsal       DEFERRED
+G3-C C2C package offline validation         IN_PROGRESS
+G3-C C2C real HY2-in-Clash Owner canary     NEXT
 G4 Peak-hour + real workload final validate PENDING
 MVP v1 seal                                 PENDING
 ```
@@ -57,10 +56,13 @@ Current known components:
 
 ## CRITICAL_CONSTRAINTS
 
-- Production WireGuard must remain available throughout C2B.
-- C2B is synthetic/UI-only: no real HY2 credential, endpoint, traffic, DPAPI recovery read, VPS access, REALITY activation, or route/proxy/TUN/WireGuard mutation.
-- Owner-local actions must use the reviewed one-shot runner; Owner is not responsible for debugging or redesign.
-- Any canonical Gate/relay disagreement fails closed before Owner-local execution.
+- Production WireGuard remains the continuity/rollback baseline throughout C2C.
+- Owner has explicitly authorized a bounded C2C real-HY2 canary, but the current Gate is **offline package validation only**.
+- The current Executor Gate must not read/unprotect the HY2 DPAPI recovery artifact, start the C2C orchestrator, invoke the Secret helper in Prepare/VerifyCleanup mode, import/modify a Clash profile, create/remove network routes, send network requests, contact the VPS, or change system proxy/TUN/WireGuard.
+- C2C package architecture is split deliberately: Secret helper has no network-request capability; bounded network probe has no Secret/DPAPI capability; orchestrator owns sequencing only.
+- Any real C2C execution waits for a separate Reviewer-approved Owner checkpoint after the offline package is accepted.
+- REALITY remains cold/deferred; C2C does not authorize G4 or any persistent default change.
+- Owner-local actions use one reviewed checkpoint; Owner is not responsible for debugging/design.
 
 ## DEFAULT_EXECUTION_CHANNEL
 
@@ -68,11 +70,12 @@ Current known components:
 
 ## CURRENT_ROLLBACK_STATUS
 
-C2B is closed PASS. Production WireGuard remained connected and authoritative throughout the accepted canary; system proxy/TUN remained off, route state matched pre/post readback, the synthetic Clash profile was removed, and the project-owned temporary runtime was cleaned. C2C is not authorized yet.
+C2B remains closed PASS and production WireGuard remains authoritative. C2C Owner authorization has been granted, but no real C2C action has executed yet. The newly created C2C files are repo-only candidates; rollback for the current Gate is simply reverting project-owned C2C source/document changes. No host/network/Secret rollback is currently required.
 
 ## UNRESOLVED
 
-- C2C real HY2-in-Clash proof remains pending and requires a new Owner authorization because it crosses from synthetic/no-traffic validation into real credential and real HY2 connectivity use.
+- C2C candidate package must pass Executor-side offline/static validation and any bounded repo-only repair before Owner execution is permitted.
+- C2C real HY2-in-Clash proof remains pending after package acceptance.
 - G4 peak-hour + real-workload final validation remains pending.
 - REALITY remains cold/deferred for persistent manual-control use.
 
@@ -114,82 +117,103 @@ C2B is closed PASS. Production WireGuard remained connected and authoritative th
 - **C2B final readback:** `CLASH_PROFILE_STORE_POSTREMOVE=PASS`, `POST_UI_NETWORK_READBACK=PASS`, `LOCAL_RUNTIME_CLEANUP=PASS`, `OWNER_UI_PROFILE_REMOVED=ACKNOWLEDGED`, `SECRET_VALUES_EMITTED=0`, `C2B_OWNER_CHECKPOINT=COMPLETE`, and outer `RECONCILE_VALIDATION_CANARY=PASS`.
 - **C2B formal Reviewer disposition:** `PASS_G3C_C2B_SYNTHETIC_CLASH_UI_CANARY`. This proves synthetic profile parsing, UI visibility/manual selection semantics, cleanup, and no-production-state drift only; it does **not** prove real HY2 authentication/connectivity/performance.
 - **Benchmark detour remains cancelled.**
+- **C2C Owner authorization:** GRANTED in the current conversation on 2026-10-04. Authorization covers one bounded real HY2-in-Clash canary after a reviewed package is accepted; it does not authorize persistent default change, performance benchmarking, G4, REALITY activation, or broader network mutation.
+- **C2C package candidate:** source split is now explicit: `c2c-secret-profile-helper.ps1` is local-only Secret handling, `c2c-bounded-proxy-probe.ps1` is exactly two network requests with no Secret access, and `c2c-owner-clash-real-canary.ps1` orchestrates the temporary route/UI lifecycle without DPAPI access.
+- **C2C candidate source identities before offline validation:** orchestrator `e59be99321cc98a37a80e4a747b937aaaaf5d58b`; Secret helper `cdbcd94e504ca9d7f680d30a971bea201a812c7a`; proxy probe `4e17c849dffdd410ff2c635830ce0e59cb24304e`; validator `4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9`; template `ea18bdccf8f00f2d6d705e4ba34ba57db243722a`; package doc `10518d986ab3094a4578f431301a820645d7163b`.
+- **C2C package acceptance:** NOT YET. No target-host validator run, DPAPI unprotect, Clash import, temporary route, or real HY2 request is claimed by source creation alone.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_AUTHORIZATION_A0
-STATE=OWNER_DECISION_REQUIRED
+GATE_ID=G3C_C2C_PACKAGE_OFFLINE_VALIDATION_R1
+STATE=EXECUTOR_ACTION_REQUIRED
 PREVIOUS_RESULT=PASS_G3C_C2B_SYNTHETIC_CLASH_UI_CANARY
-OBJECTIVE=Decide whether to cross from synthetic/no-traffic C2B into a bounded real HY2-in-Clash canary using the already-validated HY2 service and an explicitly approved credential/profile-storage lifecycle.
-MAX_ENDPOINT_THIS_ROUND=Owner authorization decision only -> Reviewer designs C2C implementation Gate -> STOP_AT_REVIEWER.
+OWNER_C2C_AUTHORIZATION=GRANTED
+OBJECTIVE=Validate and, only if needed, minimally repair the candidate C2C package so it is ready for a later Owner-local real canary without performing any real C2C action in this Gate.
+MAX_ENDPOINT_THIS_ROUND=clean project sync -> inspect named C2C files -> run offline validator -> bounded repo-only repair if validator/static review finds a defect -> rerun offline validator -> persist non-secret evidence -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=No host/VPS/Clash/Secret action in A0.
-APPLICABLE_CRITICAL_CONSTRAINTS=No real HY2 credential read/unprotect/import yet; no real HY2 traffic yet; no C2B replay; production WireGuard remains current rollback baseline; REALITY remains cold/deferred.
-SPECIALIST_RULES=11B_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
-ESTIMATED_EXECUTION_TIME=Owner decision only
-TIMING_OBSERVABILITY_REQUIRED=NO
+TARGET_AND_SCOPE=vpn-network-optimization C2C source/docs plus local Mihomo v1.19.32 parse-only fixture validation.
+APPLICABLE_CRITICAL_CONSTRAINTS=No DPAPI unprotect; no real Secret read; no Secret helper Prepare/VerifyCleanup execution; no C2C orchestrator execution; no Clash UI/profile mutation; no route/proxy/TUN/WireGuard mutation; no network requests; no VPS/SSH; no REALITY; no G4.
+SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
+ESTIMATED_EXECUTION_TIME=8-15_minutes
+TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
-### C2B ACCEPTED BOUNDARY
+### PREFLIGHT
 
-C2B proves:
-- synthetic profile parses under accepted Mihomo;
-- Clash UI exposes WG/HY2 entries and a manual selector;
-- `WG-BASELINE` can remain current/default;
-- synthetic profile lifecycle can be cleaned without profile-store residue;
-- network state remains unchanged before/after.
+1. Capture round start before the first Git/network-independent source action.
+2. Verify canonical remote is `entropy-student/project`, project scope is clean, and local synchronization is safe; use clean + ancestor-proven + ff-only synchronization only.
+3. Initial candidate source identities must match:
+   - orchestrator `e59be99321cc98a37a80e4a747b937aaaaf5d58b`
+   - Secret helper `cdbcd94e504ca9d7f680d30a971bea201a812c7a`
+   - proxy probe `4e17c849dffdd410ff2c635830ce0e59cb24304e`
+   - validator `4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9`
+   - template `ea18bdccf8f00f2d6d705e4ba34ba57db243722a`
+   - package doc `10518d986ab3094a4578f431301a820645d7163b`
+4. Read only the current relay plus the six named C2C package files and the already-accepted G2-B configuration/evidence only if a specific compatibility question requires it.
+5. Do not execute `c2c-owner-clash-real-canary.ps1` or `c2c-secret-profile-helper.ps1`.
 
-C2B does not prove:
-- real HY2 credential handling inside Clash;
-- real HY2 handshake/authentication;
-- UDP 8443 reachability from Clash;
-- real traffic continuity/performance;
-- production/manual-switch readiness of HY2 in Clash.
+### REQUIRED_EVIDENCE
 
-### C2C AUTHORIZATION QUESTION
-
-C2C would intentionally cross into real HY2 credential + real HY2 connectivity use. Owner authorization is required before Reviewer may design or execute that Gate.
-
-If authorized, Reviewer must design a new fail-closed C2C Gate that:
-1. uses the already-validated canonical HY2 recovery artifact/credential source without printing Secrets;
-2. defines exact temporary or persistent Clash profile-storage lifecycle before any credential access;
-3. keeps WireGuard as rollback/continuity until the Gate explicitly permits a bounded HY2 switch;
-4. proves actual HY2 handshake/real connectivity with bounded traffic;
-5. defines immediate rollback and residue cleanup;
-6. stops at Reviewer before any G4 or persistent default change.
+- start/end/elapsed timing;
+- canonical remote, HEAD before/origin-main/HEAD after, safe ff-only result, project cleanliness;
+- initial and final C2C file blob identities;
+- complete non-secret output of `scripts/g3c-c2c-package-validator.ps1`;
+- all C2C static fixtures PASS;
+- PowerShell AST parse PASS for orchestrator/helper/probe;
+- Mihomo synthetic fixture parse PASS under v1.19.32;
+- `DPAPI_UNPROTECT=NO`;
+- `NETWORK_REQUESTS=0`;
+- `NETWORK_CHANGED=NO`;
+- `SECRET_VALUES_EMITTED=0`;
+- explicit statement that orchestrator/helper real modes were not executed;
+- if any repo-only repair is made: exact changed files and concise rationale.
 
 ### ACCEPTANCE_CRITERIA
 
-A0 closes only when Owner explicitly authorizes or declines C2C. No technical action occurs in this authorization Gate.
+PASS_CANDIDATE only if the offline validator passes on the execution host, the split Secret/network boundary remains intact, no real C2C side effect occurs, project scope is clean after persistence, and all repair changes stay inside the named C2C package/evidence files. Any real Secret/network/UI action in this Gate is out of scope and RETURN.
+
+### ROLLBACK_STATUS_OR_PLAN
+
+Repo-only: revert only this Gate's C2C source/document repair commit(s). No host/network rollback should be needed because real execution is forbidden.
 
 ### OWNER_ONLY_ACTIONS
 
-Explicitly choose whether to proceed into C2C real HY2-in-Clash canary.
+NONE in this Gate.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No execution. Do not read/unprotect credentials, modify Clash, contact VPS, or send HY2 traffic until Reviewer opens a post-authorization C2C Gate.
+Start only from this current Gate. Work on:
+- `scripts/c2c-owner-clash-real-canary.ps1`
+- `scripts/c2c-secret-profile-helper.ps1`
+- `scripts/c2c-bounded-proxy-probe.ps1`
+- `scripts/g3c-c2c-package-validator.ps1`
+- `templates/clash/c2c-real-hy2-canary.yaml.template`
+- `docs/G3C_C2C_REAL_HY2_CANARY_PACKAGE.md`
+- `EXECUTION_EVIDENCE.md`
+- `EXECUTOR_HANDOFF.md`
+
+Run the offline validator only. If it fails, diagnose from its exact fixture/error and make the smallest package-scoped repair; rerun until PASS or a precise RETURN is reached. Do not broaden into Governance/history/VPS/Secret/Clash runtime work. STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-NONE until Owner authorization.
+Use the standard short completion packet. Detailed proof goes to `EXECUTION_EVIDENCE.md`. `PASS_CANDIDATE` is not formal PASS.
 
 ## NEXT_STEP
 
-Await Owner authorization decision for C2C. If authorized, Reviewer designs the bounded real-HY2 Gate before any execution.
+Executor completes C2C package offline validation and any minimal repo-only repair. Reviewer then inspects the resulting source/evidence. Only after formal package PASS will Reviewer issue the one-shot Owner-local C2C real-canary checkpoint.
 
 ## OWNER_ACTION_REQUIRED
 
-Authorize C2C real HY2-in-Clash canary, or defer it.
+NONE while Executor performs the offline package Gate.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No execution in A0.
+Use the relay embedded in the current Gate above; no real C2C execution.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-NONE.
+Standard completion packet + durable evidence, then STOP_AT_REVIEWER.
 
 ## EVIDENCE_POINTERS
 
