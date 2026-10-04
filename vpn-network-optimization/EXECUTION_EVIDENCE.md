@@ -5630,3 +5630,56 @@ Reviewer conclusion:
 - D8R1 correctly returned because the acceptance criterion expected the lock to remain unreadable; it did not.
 - Combined with D8, this is stronger evidence for transient contention rather than a permanently inaccessible file.
 - The repair must not skip lock files generally. It may only bypass an actual read failure after fresh metadata proves the failing item is a zero-byte, non-reparse, direct child .lock of the Clash app root; the runtime-root scan remains strict.
+
+
+## Reviewer-direct source repair — C2C Secret scan zero-length root-lock R2R3 — 2026-10-04
+
+```text
+AUTHORIZED_GATE=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_REPAIR_R2R3
+EXECUTION_CHANNEL=REVIEWER_DIRECT_AT_EXPLICIT_OWNER_REQUEST
+PRE_REPAIR_SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+PRE_REPAIR_VALIDATOR_BLOB=151b2c9166b02d6f6ff943412f75fb047808c37b
+PRE_REPAIR_PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
+
+HELPER_COMMIT=20026cde8faa1fc022e048c56b7efb52aa44b590
+VALIDATOR_COMMIT=5a48774c78a351cf52c8d5c3300583d617e7a206
+PACKAGE_COMMIT=46942adc1599a9257797b2320c9cd81abb3f71e2
+
+FINAL_ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
+FINAL_SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
+FINAL_PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
+FINAL_VALIDATOR_BLOB=46c5020f2b735d37c8cd1cff6fca568e7e855b54
+FINAL_TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+FINAL_PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
+
+CLASH_SCAN_OPT_IN_CALL_COUNT=2
+PROJECT_RUNTIME_OPT_IN_CALL_COUNT=0
+ROOT_LEVEL_GUARD=PRESENT
+LOCK_EXTENSION_GUARD=PRESENT
+ZERO_LENGTH_GUARD=PRESENT
+NORMAL_FILE_GUARD=PRESENT
+NON_REPARSE_GUARD=PRESENT
+FIXTURE_L_ZERO_LENGTH_MUTATION=PRESENT
+FIXTURE_L_ROOT_LEVEL_MUTATION=PRESENT
+FIXTURE_L_EXTENSION_MUTATION=PRESENT
+FIXTURE_L_REPARSE_MUTATION=PRESENT
+FIXTURE_L_RUNTIME_SCOPE_MUTATION=PRESENT
+PACKAGE_RULE_UPDATED=YES
+
+REAL_SECRET_READ=NO
+DPAPI_UNPROTECT=NO
+SECRET_HELPER_EXECUTED=NO
+ORCHESTRATOR_EXECUTED=NO
+PROXY_PROBE_EXECUTED=NO
+NETWORK_REQUESTS=0
+NETWORK_CHANGED=NO
+SECRET_VALUES_EMITTED=0
+
+REVIEWER_SOURCE_RESULT=REPAIR_COMPLETE_PENDING_OWNER_TOOLCHAIN_VALIDATION
+NEXT_GATE=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_OWNER_VALIDATION_R2R3V1
+```
+
+Reviewer note:
+- No generic unreadable-file or generic .lock bypass was added.
+- The exception activates only inside the Clash-app scan after a real read exception; project-runtime scanning remains strict.
+- Static source review passed. Owner-side PowerShell AST and Mihomo v1.19.32 validation remain required before formal PASS.
