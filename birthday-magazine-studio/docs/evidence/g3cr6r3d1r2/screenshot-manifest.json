@@ -1,0 +1,100 @@
+[
+  {
+    "file": "desktop-account.png",
+    "bytes": 55354,
+    "width": 1440,
+    "height": 1251,
+    "sha256": "323f44c854070b49e49d8a4aa413efc8b3313d97a0491d7d3bfdf41e6bbfbaf7"
+  },
+  {
+    "file": "desktop-cart.png",
+    "bytes": 45397,
+    "width": 1440,
+    "height": 1000,
+    "sha256": "d581fbe3a53d4a77caa0ee00d3ca51cb04673186682bfe2e110cb1ddfe1f1adf"
+  },
+  {
+    "file": "desktop-checkout.png",
+    "bytes": 45397,
+    "width": 1440,
+    "height": 1000,
+    "sha256": "d581fbe3a53d4a77caa0ee00d3ca51cb04673186682bfe2e110cb1ddfe1f1adf"
+  },
+  {
+    "file": "desktop-home-full.png",
+    "bytes": 2710833,
+    "width": 1440,
+    "height": 6685,
+    "sha256": "b6c10e51ed17b60fcece73d885b1eba784cf19bb1d9d50ea314553d99b6c08f7"
+  },
+  {
+    "file": "desktop-home-hero.png",
+    "bytes": 690660,
+    "width": 1440,
+    "height": 1000,
+    "sha256": "abadb70452da1b2d43b9b4d5d4727b09b6d9ea5c7e1a78b658cfd68eb4f3bda0"
+  },
+  {
+    "file": "desktop-preview-presence.png",
+    "bytes": 143295,
+    "width": 1440,
+    "height": 1114,
+    "sha256": "48f111380ea00062f25c373869e8b6f254bd47c557e58f896fb5597ba0c4e190"
+  },
+  {
+    "file": "desktop-product.png",
+    "bytes": 1020434,
+    "width": 1440,
+    "height": 2405,
+    "sha256": "b1aea14fc39d206e9a1f94a7bb732a841f2dd2f85e69399333703288852f4ea8"
+  },
+  {
+    "file": "mobile-account.png",
+    "bytes": 45297,
+    "width": 375,
+    "height": 1385,
+    "sha256": "7f26d34b1e1ef4df2559b433dedd410045ea519572b16029d7184c4379c53de1"
+  },
+  {
+    "file": "mobile-cart.png",
+    "bytes": 31519,
+    "width": 375,
+    "height": 938,
+    "sha256": "691ba5cbc0882880d6a4128021185f5f5d0f8c5c2e3860e94395955895d4bda3"
+  },
+  {
+    "file": "mobile-checkout.png",
+    "bytes": 31519,
+    "width": 375,
+    "height": 938,
+    "sha256": "691ba5cbc0882880d6a4128021185f5f5d0f8c5c2e3860e94395955895d4bda3"
+  },
+  {
+    "file": "mobile-home-full.png",
+    "bytes": 884635,
+    "width": 375,
+    "height": 7757,
+    "sha256": "bb39ca1429e08ea863105fba2b35cf0c1745860c4c1c9d785d88c8d751847875"
+  },
+  {
+    "file": "mobile-home-hero.png",
+    "bytes": 198792,
+    "width": 375,
+    "height": 812,
+    "sha256": "c2b86b33bc19bf2cfd787bb4f32b21acf3c9607c1a3a030cddccbeba49c0b78d"
+  },
+  {
+    "file": "mobile-preview-presence.png",
+    "bytes": 93877,
+    "width": 375,
+    "height": 1393,
+    "sha256": "a8963b2d0ed0380d8be138be3db3d28da07a00ddb572e3b1c5778f0bfa9c61aa"
+  },
+  {
+    "file": "mobile-product.png",
+    "bytes": 354022,
+    "width": 375,
+    "height": 3085,
+    "sha256": "2b88d1dcba4b9b2cdf3cafdd25b4a93bb667f838707b0898e37371c67289967b"
+  }
+]

@@ -1,0 +1,657 @@
+[
+  {
+    "id": "de9742647e062fddd40b9d7e310be52db57281e89cbba3fd6f39530a28759873",
+    "name": "/birthday-magazine-g3c-wpcli-1",
+    "image": "wordpress:cli-php8.3",
+    "project": "birthday-magazine-g3c",
+    "status": "exited",
+    "startedAt": "2026-09-30T11:18:02.940099822Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "/var/lib/docker/volumes/birthday-magazine-g3c_wordpress/_data",
+        "Destination": "/var/www/html",
+        "RW": true
+      },
+      {
+        "Type": "bind",
+        "Source": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\wordpress\\.htaccess",
+        "Destination": "/var/www/html/.htaccess",
+        "RW": false
+      },
+      {
+        "Type": "bind",
+        "Source": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\mailpit-plugin",
+        "Destination": "/var/www/html/wp-content/mu-plugins",
+        "RW": false
+      },
+      {
+        "Type": "bind",
+        "Source": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\commerce-workspace-plugin",
+        "Destination": "/var/www/html/wp-content/plugins/bms-g3a-commerce-loop",
+        "RW": false
+      },
+      {
+        "Type": "bind",
+        "Source": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\preview-plugin",
+        "Destination": "/var/www/html/wp-content/plugins/bms-g3c-preview",
+        "RW": false
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "21892d72baebe6157fbeab15ad6a1e3949cf4663ca55b45360c3f4eb1f052f00",
+    "name": "/birthday-magazine-g3c-wordpress-1",
+    "image": "wordpress:7.1.1-php8.3-apache",
+    "project": "birthday-magazine-g3c",
+    "status": "exited",
+    "startedAt": "2026-10-01T03:33:19.27350586Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "/var/lib/docker/volumes/birthday-magazine-g3c_wordpress/_data",
+        "Destination": "/var/www/html",
+        "RW": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/run/desktop/mnt/host/c/Users/34707/Documents/ChatGPT/VPS基建/workspaces/birthday-magazine-g3cr2/birthday-magazine-studio/poc/g3c/wordpress/.htaccess",
+        "Destination": "/var/www/html/.htaccess",
+        "RW": false
+      },
+      {
+        "Type": "bind",
+        "Source": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\mailpit-plugin",
+        "Destination": "/var/www/html/wp-content/mu-plugins",
+        "RW": false
+      },
+      {
+        "Type": "bind",
+        "Source": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\commerce-workspace-plugin",
+        "Destination": "/var/www/html/wp-content/plugins/bms-g3a-commerce-loop",
+        "RW": false
+      },
+      {
+        "Type": "bind",
+        "Source": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr2\\birthday-magazine-studio\\poc\\g3c\\preview-plugin",
+        "Destination": "/var/www/html/wp-content/plugins/bms-g3c-preview",
+        "RW": false
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "361d58eb545432b915badbab118aaeb8bf2d4b591d1b5bd753fb7393383579aa",
+    "name": "/birthday-magazine-g3c-db-1",
+    "image": "mariadb:11.4.7",
+    "project": "birthday-magazine-g3c",
+    "status": "exited",
+    "startedAt": "2026-10-01T03:33:05.277363375Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "/var/lib/docker/volumes/birthday-magazine-g3c_database/_data",
+        "Destination": "/var/lib/mysql",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "35d286e7af500c5282a6ad6b8007a23ea177ff57f3a965effe39f2b63c0a0438",
+    "name": "/birthday-magazine-g3c-mailpit-1",
+    "image": "axllent/mailpit:v1.31.2",
+    "project": "birthday-magazine-g3c",
+    "status": "exited",
+    "startedAt": "2026-10-01T03:33:05.273059788Z",
+    "mounts": [],
+    "ports": {}
+  },
+  {
+    "id": "43bd534305184def1a431d28af4c28b363102aa989b81577d3324b006866bdc6",
+    "name": "/ai-town-main-backend-1",
+    "image": "ghcr.io/get-convex/convex-backend:latest",
+    "project": "ai-town-main",
+    "status": "exited",
+    "startedAt": "2026-09-25T14:42:12.509671661Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:2aee2d692ddaebd8e237ce0d3854377423076fe4b2e5a63ee6597956b06482a4",
+        "Destination": "sha256:614f0fe38e90c8121bea27a66f84cd9e22721bd4dddffc4b95a0ac05a5041144",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "2bc37ce9de931ff8bd6147a163bc11ad3e02f8b7250b954e8e37086f2e52c86b",
+    "name": "/dujiao-d3b-sandbox-app-1",
+    "image": "dujiao-next:d1-v1.4.7",
+    "project": "dujiao-d3b-sandbox",
+    "status": "exited",
+    "startedAt": "2026-09-11T17:02:32.280646523Z",
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "sha256:59f547a05bdf618bbec00ca06ea683053f978893350f9b13495655c29b1a396e",
+        "Destination": "sha256:6fb8a0463da694df32694fe856dd98b06c5f67a7639cde766b935fffc1aa61de",
+        "RW": false
+      },
+      {
+        "Type": "bind",
+        "Source": "sha256:2a21e1f893b7272fe7d53010769c988d289ce8ba814713e6b3210d97e150453a",
+        "Destination": "sha256:8e3a3dca23bcdb88c67ac80a59ad9a90f3ac0ede1f1d82c2c0f05e89c1d24060",
+        "RW": true
+      },
+      {
+        "Type": "bind",
+        "Source": "sha256:3f209ec7b70814cccd8dd2fe714d3e608df2f3de4cce8a38b43cdd4bee479b71",
+        "Destination": "sha256:6c8e7b3a4a95e7fac039f1d99c07ae519b77fcc6cf503d96bb0094798c9d0c17",
+        "RW": true
+      },
+      {
+        "Type": "bind",
+        "Source": "sha256:f3284f564404d0ea5a034167c00ad76b79a2edc7dbe4ce152b51cbc2759534e0",
+        "Destination": "sha256:f98c1b7ae2a385c5644035e1ae746ecbcfd92eed9fc55cf0d57fa81f639005f8",
+        "RW": true
+      },
+      {
+        "Type": "bind",
+        "Source": "sha256:ba109bd4b417ce71cd9156d37bfd578d3836b40714e9c3682b35444a550f104f",
+        "Destination": "sha256:1943ba2399b98e7056b45f51482396d6a7e9dd3bf084e30f08c825d683b7a096",
+        "RW": false
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "8d16ec31648f08e46863f7c70e1a79ada7da26579f8da5059bc908fde908ea50",
+    "name": "/dujiao-d3b-sandbox-redis-1",
+    "image": "redis:7-alpine",
+    "project": "dujiao-d3b-sandbox",
+    "status": "exited",
+    "startedAt": "2026-09-11T17:02:26.433749973Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:2f828affa13cc016312f5cdef124b80370b226fd0181e779389dc71afd65aa4c",
+        "Destination": "sha256:bd47413b5c03dfc6e4b5b8143fe205eae10ecaf0c28b426be98d74cff48c7453",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "4805f82d11588065fc31c68a78e30c6ac0f613de30c2c382ef90217bba93d9dc",
+    "name": "/dujiao-d1-local-app-1",
+    "image": "dujiao-next:d1-v1.4.7",
+    "project": "dujiao-d1-local",
+    "status": "exited",
+    "startedAt": "2026-09-11T14:08:42.6870297Z",
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "sha256:b8285bc9867138546ed38edb2d08c756762d06962b8cdf416e96ebaf41e1bbc2",
+        "Destination": "sha256:6fb8a0463da694df32694fe856dd98b06c5f67a7639cde766b935fffc1aa61de",
+        "RW": false
+      },
+      {
+        "Type": "bind",
+        "Source": "sha256:1cc9584fe0d5ab84c75fb18345fb8bcfecb902f67c9f6e0d98f6babfabb21957",
+        "Destination": "sha256:8e3a3dca23bcdb88c67ac80a59ad9a90f3ac0ede1f1d82c2c0f05e89c1d24060",
+        "RW": true
+      },
+      {
+        "Type": "bind",
+        "Source": "sha256:eb97955a0315f7608ca6dd9afe0f1506240cc1a96c929493f559e3b3ad1c7233",
+        "Destination": "sha256:6c8e7b3a4a95e7fac039f1d99c07ae519b77fcc6cf503d96bb0094798c9d0c17",
+        "RW": true
+      },
+      {
+        "Type": "bind",
+        "Source": "sha256:066d0f7739f9fe41ad5ef93c401fb6a8788906bae16200fdde8a949bf5812906",
+        "Destination": "sha256:f98c1b7ae2a385c5644035e1ae746ecbcfd92eed9fc55cf0d57fa81f639005f8",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "8a95ce5786b488f9e48924d57bd8eda4252f2ae499f29d496ff092f63681dead",
+    "name": "/dujiao-d1-local-redis-1",
+    "image": "redis:7-alpine",
+    "project": "dujiao-d1-local",
+    "status": "exited",
+    "startedAt": "2026-09-11T13:17:55.181684029Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:cc2f564b313a6d5dcd29e0cff254b8b2d2bd8265800e1edd0e9978ab4407d755",
+        "Destination": "sha256:bd47413b5c03dfc6e4b5b8143fe205eae10ecaf0c28b426be98d74cff48c7453",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "dcf4e8ebd56baa4e90e961a4116854c725f2e22bf6160013a237e670b4e02c46",
+    "name": "/cb-b06r1-worker-current-tag-20260908",
+    "image": "cb-batch06-r1-medusa:20260908",
+    "project": null,
+    "status": "exited",
+    "startedAt": "2026-09-08T13:48:53.988323912Z",
+    "mounts": [],
+    "ports": {}
+  },
+  {
+    "id": "cf668498c0a49a80e50b94e9f320c033687d3a1fe9f8e69e467cac8fedbd905a",
+    "name": "/cb-b06r1-server-current-tag-20260908",
+    "image": "cb-batch06-r1-medusa:20260908",
+    "project": null,
+    "status": "exited",
+    "startedAt": "2026-09-08T13:48:53.387477231Z",
+    "mounts": [],
+    "ports": {}
+  },
+  {
+    "id": "39f3fb5736eabf84f438cbd2120a30dc14601f725895f0bfe4a6d02d306f1a24",
+    "name": "/cb-b06r1-redis-tls-20260908",
+    "image": "redis:8-alpine",
+    "project": null,
+    "status": "exited",
+    "startedAt": "2026-09-08T12:05:47.257268459Z",
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "sha256:5dd5eb4a9bf6c06c9779a64118875bd0ed40330569b5cea6f599794e4f8f2ccd",
+        "Destination": "sha256:224afeb303cb2f800edb6fc2cbb98f5850076a1fb288c925d46aeb10cb05efce",
+        "RW": false
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "8b77d32044cde8632bd48b854e280d5909031f471f7ee5da125546c615a18787",
+    "name": "/cb-b06r1-worker-final-20260908",
+    "image": "cb-batch06-r1-medusa:20260908",
+    "project": null,
+    "status": "exited",
+    "startedAt": "2026-09-08T10:00:02.93143947Z",
+    "mounts": [],
+    "ports": {}
+  },
+  {
+    "id": "04d6e13caa1e51b7615d9e87b88415bc6ce178892c435a7a4f46f2f980c986aa",
+    "name": "/cb-b06r1-server-final-20260908",
+    "image": "cb-batch06-r1-medusa:20260908",
+    "project": null,
+    "status": "exited",
+    "startedAt": "2026-09-08T10:00:02.350373534Z",
+    "mounts": [],
+    "ports": {}
+  },
+  {
+    "id": "41f9e92935cf18d1beb01deaa06a73b4d1f104eb8cfb78c8c9a2c3e2a9f28e46",
+    "name": "/cb-b06r1-worker-20260908",
+    "image": "cb-batch06-r1-medusa:20260908",
+    "project": null,
+    "status": "exited",
+    "startedAt": "2026-09-08T09:42:13.201610213Z",
+    "mounts": [],
+    "ports": {}
+  },
+  {
+    "id": "a01c654e400f17bd8a762ae6db076d95ce10c916400399540f4ed51602aeec72",
+    "name": "/cb-b06r1-server-20260908",
+    "image": "cb-batch06-r1-medusa:20260908",
+    "project": null,
+    "status": "exited",
+    "startedAt": "2026-09-08T09:38:05.370727236Z",
+    "mounts": [],
+    "ports": {}
+  },
+  {
+    "id": "83946a3e0b8a749b5da3dc8b8ef2478a7cc890ee5752bd93768d01abcd357924",
+    "name": "/cb-b06r1-migrate-20260908",
+    "image": "cb-batch06-r1-medusa:20260908",
+    "project": null,
+    "status": "exited",
+    "startedAt": "2026-09-08T09:14:21.959428132Z",
+    "mounts": [],
+    "ports": {}
+  },
+  {
+    "id": "c8359897612fa01b48cc5abd591d9df4320016abeeeb8a1f3dfdde352815c949",
+    "name": "/cb-b06r1-redis-20260908",
+    "image": "redis:8-alpine",
+    "project": null,
+    "status": "exited",
+    "startedAt": "2026-09-08T08:54:28.699525243Z",
+    "mounts": [],
+    "ports": {}
+  },
+  {
+    "id": "26e58895251b31eb71f4247a9ac5a55cdec720d7d4b757cb664f3f715d9fe102",
+    "name": "/cb-b06r1-pg-20260908",
+    "image": "postgres:16-alpine",
+    "project": null,
+    "status": "exited",
+    "startedAt": "2026-09-08T08:54:28.151345079Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:675161c21c464994a9a10ea3adb11c5a5e4b84e833707084230106df6489edc4",
+        "Destination": "sha256:dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "35e2624e07ff10db1445810786399f7779455911cbda4f6612e6d3a21f2a5b3c",
+    "name": "/sub2api",
+    "image": "weishaw/sub2api:latest",
+    "project": "deploy",
+    "status": "running",
+    "startedAt": "2026-10-04T04:57:15.462673866Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:2df171c7e423655cba44c2d4634823fd8668220168f88994d51ea820021d1276",
+        "Destination": "sha256:e818321034dfd053d32b0a08be802e3ce89a7af0c17c9f370ec9a55388629ab1",
+        "RW": true
+      }
+    ],
+    "ports": {
+      "8080/tcp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "8080"
+        }
+      ]
+    }
+  },
+  {
+    "id": "b61e21ae5efb8521af246670acbf9429b2021843dceed9c8aaa2f973bdf84e2b",
+    "name": "/sub2api-redis",
+    "image": "redis:8-alpine",
+    "project": "deploy",
+    "status": "running",
+    "startedAt": "2026-10-04T04:57:12.537807447Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:a5779129b32f29ed0b67784ad44952fe028f7910c26b93b09aa04c8e2acf0f57",
+        "Destination": "sha256:bd47413b5c03dfc6e4b5b8143fe205eae10ecaf0c28b426be98d74cff48c7453",
+        "RW": true
+      }
+    ],
+    "ports": {
+      "6379/tcp": null
+    }
+  },
+  {
+    "id": "d7cef8311d21e424bad5eef8ea1407e605ae10a71c533f9dca0e315a75dbe49b",
+    "name": "/sub2api-postgres",
+    "image": "postgres:18-alpine",
+    "project": "deploy",
+    "status": "running",
+    "startedAt": "2026-10-04T04:57:12.536463486Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:a3547150cebcc3124f12697576b0761bf1c6e49591fbbc332b7cd13e9990cb23",
+        "Destination": "sha256:c3507007e2b2e13c90b5e0255493917591677a2e961efcd32b4f84d2ada39b25",
+        "RW": true
+      },
+      {
+        "Type": "volume",
+        "Source": "sha256:4465f6ad8246ec1d87ee62a1dae01268224f8e45b5e1c0aab3ca3ad7e3db4abf",
+        "Destination": "sha256:dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+        "RW": true
+      }
+    ],
+    "ports": {
+      "5432/tcp": null
+    }
+  },
+  {
+    "id": "dc18a4702b8b5260fa0322e17b1d47eef33f81dbbbde469fe513c6c314234b6a",
+    "name": "/medusa-product-integration-a1b2c3-postgres-1",
+    "image": "postgres:16-alpine",
+    "project": "medusa-product-integration-a1b2c3",
+    "status": "exited",
+    "startedAt": "2026-09-05T02:53:37.089009304Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:b74d21ec0471c2dd2f742907b06b8d7f76eb72f72bab877f72998096e851b709",
+        "Destination": "sha256:dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "f1ef48cc59b2af88d966b59bf8cd50fb09034c1dce130a9c25cc0d485e7b785b",
+    "name": "/medusa-template-validation-postgres-1",
+    "image": "postgres:16-alpine",
+    "project": "medusa-template-validation",
+    "status": "exited",
+    "startedAt": "2026-09-01T12:11:01.115425668Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:336e340172e277179e3ddaebd948b0812beea20662a7e167206ca62e13f474c7",
+        "Destination": "sha256:dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "99e4c5772948cb1926a58fb0f050302848c46528ff07a072b4d956cf3259b1e2",
+    "name": "/spree-demo-repeat-2-web-1",
+    "image": "spree-demo-repeat-backend:cb-dev-017",
+    "project": "spree-demo-repeat-2",
+    "status": "exited",
+    "startedAt": "2026-09-01T11:17:49.866397853Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:c41009aadff24cb54707734d7ef9f7d73ac38a4a25bbaaffdaa4c9a068e5d189",
+        "Destination": "sha256:2c11501217f5e07677688b10f029810922a389cc26ed2e9c2375f1bd4cc7fb7f",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "01e429b3b3d1b9cd248ec950dd040512c5aae32d7e0d4c0c6613b36ed244ecc0",
+    "name": "/spree-demo-repeat-2-postgres-1",
+    "image": "postgres:18-alpine",
+    "project": "spree-demo-repeat-2",
+    "status": "exited",
+    "startedAt": "2026-09-01T11:15:58.080390502Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:9c8fb9c31b56d955ea0a1fd534b4c534b017e48a46210d8b2e3ea7946f97a62e",
+        "Destination": "sha256:c3507007e2b2e13c90b5e0255493917591677a2e961efcd32b4f84d2ada39b25",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "d84f715e0fc2e862d0454fc853f2ae15c9efcc3d99bd9ad621639ae5104b4096",
+    "name": "/crossborder-medusa-repeat-2-postgres-1",
+    "image": "postgres:16-alpine",
+    "project": "crossborder-medusa-repeat-2",
+    "status": "exited",
+    "startedAt": "2026-09-01T11:13:40.712693217Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:7366a3b754ed891a379aef432e9700c5ed69a1863be0ab693e0873c79d244904",
+        "Destination": "sha256:dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "0216bc7716c8bf52161cf110be01b03851842b43a846a5669fda0f2eca8b133a",
+    "name": "/spree-demo-repeat-web-1",
+    "image": "spree-demo-repeat-backend:cb-dev-017",
+    "project": "spree-demo-repeat",
+    "status": "exited",
+    "startedAt": "2026-09-01T11:21:05.789136093Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:9e1b7bf37f5ab924c4de817cba94315c4be442eeb4f1647165ddf0bca85c8755",
+        "Destination": "sha256:2c11501217f5e07677688b10f029810922a389cc26ed2e9c2375f1bd4cc7fb7f",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "5471951eaab7126eca24563279b3cc47c8a978c9fd6392671cc7cc88e78e417d",
+    "name": "/spree-demo-repeat-postgres-1",
+    "image": "postgres:18-alpine",
+    "project": "spree-demo-repeat",
+    "status": "exited",
+    "startedAt": "2026-09-01T10:53:17.491056112Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:6e56297e4ca9d5fcd9ad3d2e3812745b0b385a86e3b825888d8d158328f58756",
+        "Destination": "sha256:c3507007e2b2e13c90b5e0255493917591677a2e961efcd32b4f84d2ada39b25",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "cafb79047bb2c65112c660f14461f1b124ad1806e80f8e4846e3351758512a93",
+    "name": "/crossborder-medusa-repeat-postgres-1",
+    "image": "postgres:16-alpine",
+    "project": "crossborder-medusa-repeat",
+    "status": "exited",
+    "startedAt": "2026-09-01T10:10:42.255820372Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:bf9a9df648ef73af87155d195a3ebd654a3022c4c470b50a6af24b576c9cc4d8",
+        "Destination": "sha256:dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "e27958be198ef14e72d402b9adde60975acc39f9364f5f3f57ddb60893cbb737",
+    "name": "/spree-demo-source-web-1",
+    "image": "spree-demo-source-backend:cb-dev-016",
+    "project": "spree-demo-source",
+    "status": "exited",
+    "startedAt": "2026-09-01T09:12:48.125061413Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:f1acf036fe9be8817d81cabad6d9f532215c60ae29917cdc15742bcc19a31d95",
+        "Destination": "sha256:2c11501217f5e07677688b10f029810922a389cc26ed2e9c2375f1bd4cc7fb7f",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "7580dcbcba205816e97583ed545a1f1de19757f8f96b2b494385e030058b2f2a",
+    "name": "/spree-demo-source-postgres-1",
+    "image": "postgres:18-alpine",
+    "project": "spree-demo-source",
+    "status": "exited",
+    "startedAt": "2026-09-01T09:12:42.346093437Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:144bc9bc9df24042b901ef55fa28d2b2eb207fe76dc8a91eb1812f45876471e7",
+        "Destination": "sha256:c3507007e2b2e13c90b5e0255493917591677a2e961efcd32b4f84d2ada39b25",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "d5dc3c8530f3e66571391605e1245e313e17a6384b5aa7f4261570c69021f586",
+    "name": "/spree-demo-postgres-1",
+    "image": "postgres:16-alpine",
+    "project": "spree-demo",
+    "status": "exited",
+    "startedAt": "2026-09-01T05:24:48.571639836Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:f0b1dfb032765b7792e0abe411de9b6ed3340e601ae978f370d226579c3e3a4f",
+        "Destination": "sha256:c3507007e2b2e13c90b5e0255493917591677a2e961efcd32b4f84d2ada39b25",
+        "RW": true
+      },
+      {
+        "Type": "volume",
+        "Source": "sha256:5493edf8be40dc04e4d1ad59f348f236ca61bc8853c7da1769f50b59b8f48869",
+        "Destination": "sha256:dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "d2d639bee46e1fc4c5917b08d40c5dbbf75d6542d00e1518eac773e8cab5984c",
+    "name": "/spree-demo-mailpit-1",
+    "image": "axllent/mailpit:latest",
+    "project": "spree-demo",
+    "status": "exited",
+    "startedAt": "2026-09-01T05:24:48.592735236Z",
+    "mounts": [],
+    "ports": {}
+  },
+  {
+    "id": "6177c61a315930790d76ddd0d072c498d6956d878fbd1fd4dcac6f4997e0916a",
+    "name": "/spree-demo-web-1",
+    "image": "ghcr.io/spree/spree:latest",
+    "project": "spree-demo",
+    "status": "exited",
+    "startedAt": "2026-09-01T05:24:47.264015408Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:ffd0ed7aed9f34a556b7845ee71d86c14da98814b526dbbb8aecb362eb8b9613",
+        "Destination": "sha256:2c11501217f5e07677688b10f029810922a389cc26ed2e9c2375f1bd4cc7fb7f",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  },
+  {
+    "id": "4e2e92042f2a05b9f64a65e58ca89b03698e65210fa3065a2590dc4edf44660b",
+    "name": "/crossborder-medusa-postgres-1",
+    "image": "postgres:16-alpine",
+    "project": "crossborder-medusa",
+    "status": "exited",
+    "startedAt": "2026-09-02T11:29:01.112622043Z",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Source": "sha256:932c768a78dff83a6b9d6550be9e3e707feee5850900e6c4da2772e3c2f76251",
+        "Destination": "sha256:dc8f97c32d813e285f0b23307b9fcf6871aec172c3a2394ce05ea0fba917a00e",
+        "RW": true
+      }
+    ],
+    "ports": {}
+  }
+]

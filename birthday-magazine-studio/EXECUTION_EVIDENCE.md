@@ -978,3 +978,23 @@ D2_STARTED=NO
 STOP_AT_REVIEWER=YES
 OWNER_RELAY=NONE
 ```
+
+## Current execution append — G3CR6R3D1R2 (2026-10-04)
+
+Supersedes the D1 localhost-unavailable status for this closure only; historical evidence and Reviewer decisions remain unchanged.
+
+- Gate: `G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE`. Result: **PASS_CANDIDATE**, formal Reviewer acceptance pending; no D2/G4 implementation.
+- PR #64 freshly open/unmerged at approved head `48191f6f0b95eb4be169746f8eac9c1d7ca5365a`; main `abc5216da1c29841aeca58fb1c4ef653c19a0017`. Non-destructive merge `ce8df2b0a34bf8206fe4d5acec24a7387c4f7192` preserved earlier local merge; project source matches approved head and contains current main project decisions.
+- Existing Docker Desktop4.88.1 / Engine29.7.2 was already available. Started only retained IDs database361d58eb5454, WordPress21892d72baeb and Mailpit35d286e7af50; WP-CLI retained stopped. No build/pull/recreate/reset/migration/global settings/prune. Container identity/mount/image, volume-name and network-ID/name metadata unchanged; unrelated container state projection unchanged.
+- Home858 freshly HTTP200 at1440x1000 and375x812; eight editable Gutenberg Groups and actual anchors identified. Content hash `3f678c490ff78f91d0918aacf4edd236d58500dced0a3ac229f0c865e86e1269` matches accepted R1 and before/after. Theme Blocksy2.1.57, WordPress7.1.1, Woo11.1.2; default slug resolves to `wp-content/themes/blocksy/page.php`.
+- Preview component present once in default no-photo state; accepted PHP/JS/CSS hashes match. `CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS`; no selection/replace/remove/research/benchmark this round. Accepted local-photo privacy evidence reused, not claimed as newly retested.
+- Header/Hero/Preview/Offer/native product/account destinations read. Existing stored mobile Sample Pages `#sample-pages` has no target (actual `#samples`); footer privacy href empty. Recorded only, no repair. Reviewer sees these as next-scope questions.
+- Product1113 USD39.99/virtual intact. GET-only Product/Cart/Account200; empty-cart Checkout302 -> Cart200, **not a fresh checkout form proof**. No Add to Cart, account login, Checkout submission, order or PayPal action. Order count1->1, generation jobs0, product model calls0.
+- Owner Administrator/Gutenberg/edit Home/media/global styles capabilities true. Protected workspace source unchanged; no new authenticated access test asserted.
+- Evidence: `docs/G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_REPORT.md`; `docs/evidence/g3cr6r3d1r2/` contains before/after projections, machine checks, GET-only helpers and14 current PNGs. Edge154.0.4258.53 / Playwright Core1.62.1. Home widths1440/375; JS errors/resource failures/broken rendered images0.
+- Reused D1 mapping and66 reference PNGs without Focusly research. Proposed exact D2 Home/source allowlist, protected-function exclusions, rollback/evidence plan in report; recommendation only, not permission.
+- Application/content/Preview/commerce/payment/provider/shared-infra/deployment/merge actions0. Runtime retained at http://127.0.0.1:8189/; admin http://127.0.0.1:8189/wp-admin/. Browser contexts closed; no auth export.
+- Existing17 screenshot deletions, Owner archives/current-review files and untracked D1R1 benchmark/resume files untouched and excluded. Only new D1R2 documentation/evidence and append logs submitted. Final evidence commit is the enclosing Git commit on this same branch/PR, read back after push; no self-referential commit placeholder claim.
+- Rollback: no application/content rollback. If later requested, stop exactly the three started IDs; do not remove containers/volumes. Documentation/evidence commit can be independently reverted.
+
+`STOP_AT_REVIEWER=YES`; `Owner relay=NONE`. Reviewer decides whether the last fresh-runtime prerequisite for D2 is satisfied. Owner visual freeze remains pending.

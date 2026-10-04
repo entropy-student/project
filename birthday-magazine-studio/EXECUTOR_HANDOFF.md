@@ -639,3 +639,21 @@ This append supersedes earlier runtime-availability descriptions for **this roun
 - Documentation/evidence commit identity is the enclosing commit on PR #64, verified after push. Reviewer can directly access all evidence there; Owner relay NONE.
 
 Next: Reviewer checks the available reference/mapping and this exact local-runtime blocker; close missing current-home read-back inside D1 before authorizing implementation. `STOP_AT_REVIEWER=YES`.
+
+## Current execution append — G3CR6R3D1R2 (2026-10-04)
+
+This is the latest Executor state and supersedes only the earlier local-readback blocker. Historical Gates and Reviewer authority remain intact.
+
+- Gate/result: `G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_CLOSURE` / **PASS_CANDIDATE**. D2 implementation permission remains Reviewer-only; not executed.
+- Branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`; continue PR #64 open/unmerged. Approved baseline48191f6f0b95eb4be169746f8eac9c1d7ca5365a; mainabc5216da1c29841aeca58fb1c4ef653c19a0017. Non-destructive sync mergece8df2b0a34bf8206fe4d5acec24a7387c4f7192; intended submission commit is the enclosing commit, returned after GitHub read-back.
+- Docker Desktop already available. Only existing db361d58eb5454, WordPress21892d72baeb, Mailpit35d286e7af50 started; no new runtime/container/image/volume/network, no global configuration or rebuild. All container identities/mounts/images, volume names/network IDs and unrelated state projection unchanged. WP-CLI remains stopped.
+- Local Home1440/375 HTTP200, document width matches viewport, eight actual editable Gutenberg Groups, anchors/menu/CTA/theme/template and Preview presence identified. Default page template is Blocksy page.php; Home858 SHA256 matches accepted R1 and before/after.14 fresh screenshots saved; no frontend/WP edit.
+- Preview interaction **KEEP_AS_IS**, not exercised. No Focusly replay, Preview benchmark or asset generation; accepted D1 mapping/66 images reused. Guard and Preview hashes unchanged; no new privacy/access proof fabricated.
+- Native Product1113 USD39.99 virtual; GET Product/Cart/Account200; Checkout redirects302 to empty Cart200. This is route readback, not checkout form verification. No cart/order/account/payment mutation. Order count1->1, generation jobs0, product model calls0.
+- Known existing issues: persisted mobile Sample Pages target#sample-pages absent (current#samples); footer privacy href empty. Recorded, not fixed. Reviewer should scope any later correction separately; no new policy invented.
+- Owner Administrator, Gutenberg, Home/media/global-style capabilities preserved. No password/session/cookie/token captured.
+- Read `docs/G3CR6R3D1R2_LOCAL_HOMEPAGE_READBACK_REPORT.md` and `docs/evidence/g3cr6r3d1r2/README.md`; machine checks/status and exact proposed D2 mutation/rollback/evidence scope included. D2 proposal excludes Woo/payment/account/workspace/entitlement/Preview internals/product/footer/global menus by default.
+- Runtime retained for review: http://127.0.0.1:8189/ ; http://127.0.0.1:8189/wp-admin/ . If availability rollback later requested, stop only the three started IDs. No teardown/prune.
+- Existing Owner artifacts/17 deleted old PNGs/untracked benchmark-resume evidence preserved and excluded. No Reviewer decision file changed. Final commit/push/PR refresh verified without merge.
+
+Next: Reviewer assesses fresh local readback and exact homepage-only D2 proposal, including the two known navigation issues. `STOP_AT_REVIEWER=YES`; `Owner relay=NONE`; D2/G4 not started. Owner visual freeze pending.

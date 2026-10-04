@@ -1,0 +1,56 @@
+[
+  {
+    "path": "birthday-magazine-studio/poc/g3c/preview-plugin/birthday-magazine-poc.php",
+    "accepted": "0ee467d6b212f5d72bcd94adff87fdcbab39513f884ce09e032d89252ea1b95f",
+    "current": "0ee467d6b212f5d72bcd94adff87fdcbab39513f884ce09e032d89252ea1b95f",
+    "match": true
+  },
+  {
+    "path": "birthday-magazine-studio/poc/g3c/preview-plugin/preview.js",
+    "accepted": "59ba672be58d8f33ebb83b978ef5678c5f0c5e102fce88de8a0c1ebc8b82dabc",
+    "current": "59ba672be58d8f33ebb83b978ef5678c5f0c5e102fce88de8a0c1ebc8b82dabc",
+    "match": true
+  },
+  {
+    "path": "birthday-magazine-studio/poc/g3c/preview-plugin/home.css",
+    "accepted": "e0d5114a94b093e85fada4bda5d4163716832ae0ad672c19e6b1b6f2d9c942bd",
+    "current": "e0d5114a94b093e85fada4bda5d4163716832ae0ad672c19e6b1b6f2d9c942bd",
+    "match": true
+  },
+  {
+    "path": "birthday-magazine-studio/poc/g3c/preview-plugin/magazine-preview.css",
+    "accepted": "c7cfd022626ade6b4d117e1fd9773f579c822d19455ec6e1ab251fa6e4d40bae",
+    "current": "c7cfd022626ade6b4d117e1fd9773f579c822d19455ec6e1ab251fa6e4d40bae",
+    "match": true
+  },
+  {
+    "path": "birthday-magazine-studio/poc/g3c/preview-plugin/studio.css",
+    "accepted": "9cfc6405b18c109e331f162766e71eda70de227fd9092cdd6c2be178a10e9ebc",
+    "current": "9cfc6405b18c109e331f162766e71eda70de227fd9092cdd6c2be178a10e9ebc",
+    "match": true
+  },
+  {
+    "path": "birthday-magazine-studio/poc/g3c/commerce-workspace-plugin/bms-g3a-commerce-loop.php",
+    "accepted": "e971d02be42e4dbb01b1cc1c614cd49d76991ad1df2f253cec80825f0b9823d2",
+    "current": "e971d02be42e4dbb01b1cc1c614cd49d76991ad1df2f253cec80825f0b9823d2",
+    "match": true
+  },
+  {
+    "path": "birthday-magazine-studio/poc/g3c/compose.yaml",
+    "accepted": "3313b1fc7c64c8a02883334eda2ec61bf5093064fc3640e86b59191e11b887d8",
+    "current": "3313b1fc7c64c8a02883334eda2ec61bf5093064fc3640e86b59191e11b887d8",
+    "match": true
+  },
+  {
+    "path": "birthday-magazine-studio/poc/g3c/scripts/redesign-home-g3cr6r1.php",
+    "accepted": "79306d9fdbaec94279d4b2a2daabf9ebd9297b9b40ebed5351b9a1aaf45f3839",
+    "current": "79306d9fdbaec94279d4b2a2daabf9ebd9297b9b40ebed5351b9a1aaf45f3839",
+    "match": true
+  },
+  {
+    "path": "birthday-magazine-studio/poc/g3c/scripts/align-home-anchor-g3cr6r1.php",
+    "accepted": "d9e24723d7a286ba284aa438507683850337c1b8a7a0f30492f11ffad3ae6c22",
+    "current": "d9e24723d7a286ba284aa438507683850337c1b8a7a0f30492f11ffad3ae6c22",
+    "match": true
+  }
+]
