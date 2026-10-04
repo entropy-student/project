@@ -103,7 +103,7 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
-STATE=AUTHORIZED_NOT_EXECUTED
+STATE=RETURN_REPAIR_REQUIRED
 PREVIOUS_RESULT=PASS_G4A_THREE_ROLE_TARGET_AND_OFFLINE_PACKAGE
 OBJECTIVE=Prove whether Windows Mihomo interface-name alone can carry HY2 outer traffic over the physical egress while WireGuard remains connected and no exact VPS /32 bypass route exists.
 MAX_ENDPOINT_THIS_ROUND=One protected temporary local Mihomo HY2 runtime + exactly two bounded requests + cleanup/read-back + STOP_AT_REVIEWER.
@@ -114,12 +114,12 @@ PREFLIGHT=Fresh source, Owner runtime, WG/Clash health, physical-egress discover
 REQUIRED_EVIDENCE=interface-name applied; no /32 route before/during/after; Mihomo parse/proxy ready; exactly two proxied requests; OpenAI 401; expected SFO3 public exit; cleanup and baseline restored.
 ACCEPTANCE_CRITERIA=PASS_INTERFACE_NAME_BYPASS or precise RETURN without routing inference.
 ROLLBACK_STATUS_OR_PLAN=Own only the unique temporary local Mihomo runtime/process; no route/profile/VPS mutation; final network baseline must equal pre-canary.
-OWNER_ONLY_ACTIONS=Fresh explicit authorization granted for exactly one G4-B0 canary. Authorization is limited to protected HY2 credential use, exactly two real external requests, cleanup/read-back, and Reviewer stop.
+OWNER_ONLY_ACTIONS=The prior one-shot authorization is consumed. Fresh explicit Owner authorization is required before any repaired live G4-B0 retry, but only after non-consequential repair validation passes.
 REVIEWER_TO_EXECUTOR_RELAY=docs/G4B0_WINDOWS_INTERFACE_BYPASS_CANARY_GATE.md + accepted R3R2 Secret/runtime safety pattern + accepted G3-A physical-egress semantics; no historical diagnostic replay.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop.
 ```
 
-G4-B persistent readiness is blocked on this bypass proof. The Owner has granted exactly one G4-B0 attempt; persistent REALITY/service/profile writes remain unauthorized.
+G4-B persistent readiness is blocked on this bypass proof. The first G4-B0 live attempt formally RETURNed before any external request; its authorization is consumed. Persistent REALITY/service/profile writes remain unauthorized.
 
 Locked G4-B0 live identities:
 
@@ -166,7 +166,7 @@ The live runner is offline-reviewed and ready. Before child execution, the Owner
 
 ## UNRESOLVED
 
-- One bounded G4-B0 authorization is granted and not yet consumed.
+- First G4-B0 live authorization is consumed; no retry is currently authorized.
 - G4-B persistent REALITY/service/Secret/profile writes remain blocked until G4-B0 is formally reviewed.
 - An approved encrypted recovery destination in a second failure domain (distinct from both the SFO3 VPS and this Windows local disk) is still Owner input required before G4-B can PASS.
 - Persistent REALITY backup service does not yet exist; the accepted public REALITY canary was temporary and cleaned.
@@ -183,7 +183,7 @@ Owner-local AST-only checkpoint PASS on PowerShell 7.6.6. The repaired offline v
 
 ## OWNER_ACTION_REQUIRED
 
-Run exactly one live G4-B0 canary using the locked runner, then stop at Reviewer. The authorization becomes consumed once the runner enters its consequential Secret/runtime phase. Do not extend it to persistent G4-B, REALITY deployment, system proxy/TUN, or G4-C.
+Repair the G4-B0 Mihomo readiness check and failure-phase telemetry, then complete non-consequential AST/static/validator validation. After that, request fresh explicit Owner authorization for one repaired live retry. Do not run the current live runner again.
 
 ## EVIDENCE_POINTERS
 
