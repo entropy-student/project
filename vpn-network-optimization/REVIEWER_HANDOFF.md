@@ -124,19 +124,20 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 - **Offline runtime note:** Executor used PowerShell 7.6.5, which is acceptable for this repo-only/static Gate because no Owner-runtime action was authorized. The real Owner canary independently requires PowerShell 7.6.6 + Administrator + High integrity.
 - **C2C formal Reviewer disposition:** `PASS_G3C_C2C_PACKAGE_OFFLINE_VALIDATION_R1`.
 - **Locked real-canary source identities:** orchestrator `e59be99321cc98a37a80e4a747b937aaaaf5d58b`; Secret helper `cdbcd94e504ca9d7f680d30a971bea201a812c7a`; proxy probe `4e17c849dffdd410ff2c635830ce0e59cb24304e`; validator `4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9`; template `ea18bdccf8f00f2d6d705e4ba34ba57db243722a`; package doc `10518d986ab3094a4578f431301a820645d7163b`.
+- **C2C Owner checkpoint R1 wrapper result:** RETURN before Git synchronization because the Reviewer-supplied wrapper used `$dirty.Count` under `Set-StrictMode -Version Latest`. A clean Git status yields no pipeline objects, so `$dirty` becomes `$null` and `.Count` faults. Only `OWNER_RUNTIME=PASS` preceded the failure; the orchestrator did not start and no DPAPI/Secret/Clash/route/network action occurred. R1R1 changes only the wrapper cardinality checks to `@($dirty).Count` / `@($dirtyAfter).Count`; locked C2C source blobs are unchanged.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R1
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R1R1
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=PASS_G3C_C2C_PACKAGE_OFFLINE_VALIDATION_R1
+PREVIOUS_RESULT=RETURN_R1_OWNER_WRAPPER_NULL_COUNT
 OWNER_C2C_AUTHORIZATION=GRANTED
-OBJECTIVE=Prove one bounded real HY2 connection through Clash Verge while keeping production WireGuard available, then remove all temporary profile/route/Secret residue and restore the pre-canary state.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact source identity -> owner-runtime offline validator -> C2C orchestrator -> three bounded UI acknowledgements -> exactly two proxy requests -> profile/Secret/route/network cleanup -> STOP_AT_REVIEWER.
+OBJECTIVE=Retry the accepted one-shot real HY2-in-Clash Owner canary with only the outer checkpoint cardinality bug repaired; C2C package source remains unchanged.
+MAX_ENDPOINT_THIS_ROUND=Owner runtime -> safe ff-only sync with null-safe Git cleanliness cardinality -> exact source identity -> owner-runtime offline validator -> C2C orchestrator -> three bounded UI acknowledgements -> exactly two proxy requests -> cleanup/readback -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; accepted C2C package only.
-APPLICABLE_CRITICAL_CONSTRAINTS=PowerShell 7.6.6; Administrator=True; High integrity RID>=12288; WireGuard remains connected; system proxy OFF; TUN OFF; CurrentUser DPAPI access only inside Secret helper; exactly one temporary C2C profile; exactly one ActiveStore /32 route; exactly two network requests; no persistent route; no VPS/SSH; no REALITY; no benchmark; no G4; no persistent default change.
+TARGET_AND_SCOPE=Real Owner Windows host; same accepted C2C package; outer wrapper fix only.
+APPLICABLE_CRITICAL_CONSTRAINTS=PowerShell 7.6.6; Administrator=True; High integrity RID>=12288; WireGuard remains connected; system proxy OFF; TUN OFF; CurrentUser DPAPI only inside Secret helper; one temporary C2C profile; one ActiveStore /32 route; exactly two requests; no persistent route; no VPS/SSH; no REALITY; no benchmark; no G4; no persistent default change.
 ORCHESTRATOR_BLOB=e59be99321cc98a37a80e4a747b937aaaaf5d58b
 SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
 PROXY_PROBE_BLOB=4e17c849dffdd410ff2c635830ce0e59cb24304e
@@ -152,91 +153,42 @@ TIMING_OBSERVABILITY_REQUIRED=YES
 
 1. Use the real Owner Windows host in elevated PowerShell 7.6.6.
 2. Capture checkpoint start before Git synchronization.
-3. Require project scope clean; fetch canonical `origin/main`; prove local HEAD is ancestor; update ff-only; require post-sync project scope clean.
-4. Verify the six locked source blobs above.
-5. Run `scripts/g3c-c2c-package-validator.ps1` first on the Owner host. Require all seven fixtures, AST parse, Mihomo fixture parse, `DPAPI_UNPROTECT=NO`, `NETWORK_REQUESTS=0`, `NETWORK_CHANGED=NO`, `SECRET_VALUES_EMITTED=0`.
-6. Only after validator PASS may `scripts/c2c-owner-clash-real-canary.ps1` run exactly once.
-7. Do not manually run the Secret helper or proxy probe outside the orchestrator.
+3. Require project scope clean using null-safe cardinality checks `@($dirty).Count` and `@($dirtyAfter).Count`; fetch canonical `origin/main`; prove ancestor; update ff-only.
+4. Verify the same six locked blobs.
+5. Run the Owner-side offline validator first; only on PASS run the orchestrator exactly once.
+6. Do not manually invoke the Secret helper or proxy probe.
 
 ### OWNER UI CHECKPOINTS
 
-The orchestrator owns the sequencing and prints the exact temporary profile path and acknowledgements.
-
-**Step 1 — import/activate real C2C profile**
-- Import and activate only the unique C2C temporary profile printed by the runner.
-- Confirm `SELF-VPN-C2C`, `WG-BASELINE`, and `HY2-SFO3-REAL` are visible.
-- Keep `WG-BASELINE` selected.
-- System proxy and TUN remain OFF.
-- Do not select HY2 until Step 2 is printed.
-- Enter exactly the Step-1 acknowledgement printed by the runner.
-
-**Step 2 — bounded real HY2 selection**
-- Only after `C2C_TEMP_OUTER_ROUTE=PASS`, select `HY2-SFO3-REAL` in `SELF-VPN-C2C`.
-- Do not enable system proxy/TUN and do not run delay tests or other traffic.
-- Enter exactly the Step-2 acknowledgement.
-- The runner then performs exactly two requests through the existing localhost Clash proxy: OpenAI models endpoint expecting HTTP 401/proxy_used=1 and ipify expecting the accepted SFO3 exit.
-
-**Step 3 — rollback UI state**
-- After `REAL_HY2_IN_CLASH_CANARY=PASS`, switch `SELF-VPN-C2C` back to `WG-BASELINE`.
-- Remove only the unique C2C profile.
-- Keep system proxy/TUN OFF.
-- Enter exactly the Step-3 acknowledgement.
-
-### REQUIRED_EVIDENCE
-
-- Owner runtime 7.6.6/Admin/High PASS;
-- safe ff-only sync and clean project scope;
-- exact six locked blobs;
-- Owner-side offline validator PASS before real execution;
-- `C2C_PREFLIGHT=PASS`;
-- WireGuard connected / system proxy OFF / TUN OFF;
-- DPAPI unprotect, auth format, certificate fingerprint, Owner-only profile, Mihomo real-profile parse PASS;
-- no pre-existing real-auth residue in Clash storage;
-- Step-1 import acknowledgement + post-import readback PASS;
-- temporary ActiveStore /32 route PASS;
-- Step-2 HY2 acknowledgement;
-- OpenAI curl exit 0 / HTTP 401 / proxy_used=1;
-- expected SFO3 public exit;
-- `REAL_CANARY_REQUEST_COUNT=2`;
-- `REAL_HY2_IN_CLASH_CANARY=PASS`;
-- Step-3 WG restore/profile removal acknowledgement;
-- Clash profile store restored;
-- Clash and project-runtime auth residue ABSENT;
-- temporary route absent;
-- final production WireGuard/system proxy/TUN/route snapshot restored;
-- `C2C_SECRET_CLEANUP=PASS`;
-- `C2C_CLEANUP=PASS`;
-- `SECRET_VALUES_EMITTED=0`;
-- timing complete;
-- `C2C_OWNER_CHECKPOINT=COMPLETE`.
+Unchanged from R1: perform only the three UI steps printed by the orchestrator.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires the full evidence set above with exactly two real canary requests, no Secret disclosure, no persistent route/profile residue, and complete final rollback/readback. This Gate proves real HY2-in-Clash connectivity only; it does not authorize HY2 as persistent default and does not enter G4.
+Unchanged from R1: complete real HY2 proof, exactly two requests, full profile/Secret/route/network cleanup, and `C2C_OWNER_CHECKPOINT=COMPLETE`.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-WireGuard remains connected throughout. The orchestrator removes the exact temporary ActiveStore route in `finally`. The Secret helper owns removal of the protected plaintext runtime profile and exact auth-byte residue verification. If a failure occurs after the profile is imported and the runner reports profile/residue cleanup failure, do not rerun; return the complete non-secret output to Reviewer for a bounded cleanup Gate.
+R1 caused no state change. R1R1 retains WireGuard as continuity path and the accepted orchestrator cleanup behavior. On any real-canary failure after import, do not rerun; return the complete non-secret output for Reviewer.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic Owner checkpoint. Perform only the three UI actions when the runner explicitly prompts for them.
+Run the corrected Reviewer-supplied R1R1 checkpoint. Follow only orchestrator prompts.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action during the Owner canary. Wait for Owner output. Do not independently run C2C, access DPAPI, change Clash/network state, or enter G4.
+No Executor action during Owner canary.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-NONE until Owner returns the complete C2C checkpoint output.
+NONE until Owner returns complete output.
 
 ## NEXT_STEP
 
-Owner executes the one-shot C2C real-canary checkpoint. Reviewer then formally accepts or returns C2C before any G4 work.
+Owner reruns the corrected outer checkpoint. Reviewer then accepts or returns C2C before G4.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the Reviewer-supplied atomic C2C checkpoint and follow only its three prompted Clash UI actions.
+Run the corrected R1R1 atomic checkpoint.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
