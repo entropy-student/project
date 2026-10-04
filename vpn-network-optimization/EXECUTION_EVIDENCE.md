@@ -4398,3 +4398,53 @@ Reviewer conclusion:
 - D2 did not disprove either ACL strategy; it failed at the first method because the PowerShell/.NET invocation shape was wrong.
 - Modern .NET provides create-with-ACL via FileSystemAclExtensions rather than relying on PowerShell binding the old Directory static overload.
 - D2R1 isolates Method A and Method B so one exception cannot suppress the other, preserves full ACL evidence output, and still requires cleanup and no network/Secret action.
+
+
+## Reviewer reconciliation — D2R1 Owner ACL methods PASS and runner repair candidate — 2026-10-04
+
+```text
+DIAGNOSTIC_GATE=G3C_C2B_OWNER_ACL_BEHAVIOR_DIAGNOSTIC_D2R1
+OWNER_REPORTED_HEAD_BEFORE=cd77c0784c72d5d4fadb0c37c2d2be490c874229
+OWNER_REPORTED_ORIGIN_MAIN=bf42df44157d7c6e948ed8bc19128aa4cdc950b3
+OWNER_REPORTED_FAST_FORWARD=PASS
+OWNER_REPORTED_POST_SYNC_PROJECT_CLEAN=PASS
+OWNER_REPORTED_ACL_DIAGNOSTIC_BLOB=f890b8308d78ce2d41322df0214f3c2e9b13e7df
+METHOD_A_PROTECTED=True
+METHOD_A_OWNER_MATCH=True
+METHOD_A_RULE_COUNT=1
+METHOD_A_INHERITED_RULE_COUNT=0
+METHOD_A_UNAUTHORIZED_RULE_COUNT=0
+METHOD_A_OWNER_DIRECT_FULLCONTROL=True
+METHOD_A_OWNER_CHILD_FULLCONTROL=True
+METHOD_A_RESULT=PASS
+METHOD_B_PROTECTED=True
+METHOD_B_OWNER_MATCH=True
+METHOD_B_RULE_COUNT=1
+METHOD_B_INHERITED_RULE_COUNT=0
+METHOD_B_UNAUTHORIZED_RULE_COUNT=0
+METHOD_B_OWNER_DIRECT_FULLCONTROL=True
+METHOD_B_OWNER_CHILD_FULLCONTROL=True
+METHOD_B_RESULT=PASS
+OWNER_REPORTED_ACL_DIAGNOSTIC=PASS
+OWNER_REPORTED_TEMP_CLEANUP=PASS
+OWNER_REPORTED_NETWORK_MUTATION=NONE
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+REVIEWER_ACL_METHOD_SELECTION=METHOD_A_MODERN_CREATE_WITH_ACL
+SELECTION_REASON=FULL_INVARIANT_PASS_AND_NO_TEMPORARY_INHERITED_PERMISSION_WINDOW
+RUNNER_REPAIR_COMMIT=067464b2c2aac2448020c4564e298de12f42b50a
+RUNNER_REPAIR_BLOB=817ed91b30efd72f7cbb43fff56e9c55025380b6
+VALIDATOR_REPAIR_COMMIT=541d9f74b141ef525398d35eed92ff67119782e4
+VALIDATOR_REPAIR_BLOB=aaddf4810b77655e4a2ae6d94ba3fb443a6b3e3a
+TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+PACKAGE_BLOB=64b7ea3c562adc241311517c79cc53d966197a6e
+REPAIR_ACCEPTED=NO_PENDING_OWNER_TARGET_VALIDATOR_AND_C2B_CANARY
+NEXT_GATE=G3C_C2B_OWNER_ACL_COMPAT_REPAIR_R1
+PROVENANCE=OWNER_REPORTED_PLUS_DIRECT_GITHUB_SOURCE_READBACK
+```
+
+Reviewer conclusion:
+- Both tested ACL methods satisfy the complete protected Owner-only ACL invariant on the real Owner host.
+- Method A is selected because applying the ACL at directory creation avoids any temporary inherited-access interval.
+- The runner is minimally repaired to use FileSystemAclExtensions.CreateDirectory for both runtime directories and to set the Owner SID explicitly.
+- The validator now requires the modern create-with-ACL calls and explicit Owner assignment, rejects the legacy Directory overload, and adds a regression fixture.
+- Formal repair acceptance waits for the target-host offline validator; conditional C2B execution is allowed only after that validator passes.
