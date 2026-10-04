@@ -6062,3 +6062,48 @@ Reviewer conclusion:
 - The attempt failed before repository synchronization or any R3R2 runner execution because the Chinese path component was mojibaked when passed as a native `git -C` argument.
 - No consequential R3R2 action started and the single Owner authorization remains valid and unconsumed.
 - The next wrapper should enter the project directory with PowerShell `Push-Location -LiteralPath` first and invoke Git without a Unicode `-C` path argument; Git output must be checked before calling string methods.
+
+
+## Owner checkpoint in progress — R3R2 reached UI Step 1 — 2026-10-04
+
+```text
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+WRAPPER_UNICODE_SAFE_PREFLIGHT=PASS
+HEAD_AFTER=037c07de34f05e15dc08f1966ffdb9425ea2a5b5
+R3R2_SOURCE_IDENTITY=PASS
+R3R2_CANONICAL_AUTHORIZATION=PASS
+PARENT_POWERSHELL_EXIT_PROTECTION=PASS
+
+CHILD_RUNNER_STARTED=YES
+C2C_PREFLIGHT=PASS
+WIREGUARD_CONNECTED=YES
+SYSTEM_PROXY=OFF
+TUN=OFF
+PHYSICAL_EGRESS_RESOLVED=PASS
+CLASH_LOCAL_PROXY_LISTENER=PASS
+CLASH_PROFILE_STORE_BASELINE=PASS
+
+DPAPI_UNPROTECT=PASS
+REAL_HY2_AUTH_FORMAT=PASS
+CERTIFICATE_FINGERPRINT_MATCH=PASS
+CLASH_REAL_AUTH_PREEXISTING=NO
+OWNER_ONLY_REAL_PROFILE=PASS
+MIHOMO_REAL_PROFILE_PARSE=PASS
+C2C_SECRET_PREPARE=PASS
+SECRET_VALUES_EMITTED=0
+
+CURRENT_PHASE=OWNER_UI_STEP_1_WAITING_ACK
+TEMP_REAL_PROFILE_CREATED=YES
+CLASH_PROFILE_IMPORT=NOT_YET_ACKNOWLEDGED
+TEMP_OUTER_ROUTE_CREATED=NO
+REAL_NETWORK_REQUESTS=0
+R3R2_CONSEQUENTIAL_ACTION_STARTED=YES
+R3R2_AUTHORIZATION_CONSUMED=YES
+RETRY_WITHOUT_RECONCILIATION=FORBIDDEN
+```
+
+Reviewer note:
+- The R3R2 runner is live and waiting at the first Owner UI acknowledgement.
+- The real Secret has been used only inside the reviewed Owner-local protected runtime YAML; no route or real canary request has occurred yet.
+- From this point forward the single R3R2 authorization is consumed. If the runner fails, becomes ambiguous, or the PowerShell/session is interrupted, do not rerun; reconcile current profile/runtime/route/Secret state first.
