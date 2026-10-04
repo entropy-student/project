@@ -17,7 +17,7 @@
 - 当前主力 VPS：DigitalOcean `24.199.118.137`；历史本地标签为 `SFO2-A`，fresh DigitalOcean metadata 实际 region 为 `sfo3`
 - 当前公网 IP：`24.199.118.137`
 - 当前主通道：WireGuard（当前生产/回退基线；IPv4 使用两个 /1 默认路由，严格 WFP kill-switch 已解除）
-- 当前客户端：Windows；Clash Verge 2.5.6；Mihomo v1.19.31 / alpha-f103639 已验证支持当前 HY2 配置
+- 当前客户端：Windows；Clash Verge 2.5.6；当前 C2C Owner 侧 Mihomo 验证基线为 v1.19.32；历史 G2-C REALITY 互操作验证使用 Mihomo v1.19.31
 - 当前 WireGuard active MTU：1420；历史 1280 仅保留为旧元数据，不是当前运行值
 - 当前主要业务：Codex / OpenAI / AI 生图等长时间任务
 - 最高约束：任何本项目动作不得干扰正在运行的前台任务
@@ -75,28 +75,37 @@
 ## 项目阶段
 
 ```text
-P0   研究、范围冻结、立项                    ✅ PASS
-G1   无干扰基线 + 可迁移第一版               ✅ PASS
-G2-A HY2 旁路部署                            ✅ PASS
-G2-B 安全窗口 WireGuard vs HY2 对比          ✅ PASS
-G2-C VLESS+REALITY 旁路候选                  ✅ PASS
-G3-A 网络自适应 + 健康检查                    ✅ PASS
-G3-B 迁移包 D1-D3（离线）                     ✅ PASS
-G3-C Clash Verge 三线路手动控制面              🔄 IN_PROGRESS
-G3-B 新 VPS 真实迁移演练                       ⏸ DEFERRED
-G4   晚高峰 + 真实工作负载最终验收             ⏳ PENDING
+P0   研究、范围冻结、立项                     ✅ PASS
+G1   无干扰基线 + 可迁移第一版                ✅ PASS
+G2   WG / HY2 / REALITY 多路径候选验证         ✅ PASS
+G3-A 网络健康 / readiness / advisory          ✅ PASS
+G3-B 迁移包 D1-D3（离线）                    ✅ PASS
+G3-C 手动控制 / Synthetic UI                  ✅ PASS
+G3-C C2C 包 + Secret scanner 修复             ✅ PASS
+G3-C Secret Prepare 真实 Owner 主机复验       ✅ PASS
+G3-C 真实 HY2-in-Clash canary R3R2           🔐 AUTH_REQUIRED
+G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
+G4   晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
 
 当前顺序调整为：先完成 G2-C，再推进不依赖晚高峰时间窗口的 G3-A/G3-B；G4 放到近最终实现之后、MVP v1 封板之前。这样白天可以继续做确定性工程工作，晚高峰验证也会直接测到接近最终版本，而不是测一个随后还会变化的中间版本。G4 仍是封板前必做项，不因后置而取消。未来更换 VPS 使用同一模板部署并做 Provider Validation，不重新堆叠大量 Gate。
 
-## 项目真相
+## 项目真相与 Reviewer 交接
 
 唯一 Reviewer 当前真相：
 
 - `REVIEWER_HANDOFF.md`
 
-进入执行阶段后，`EXECUTOR_HANDOFF.md` 与 `EXECUTION_EVIDENCE.md` 只记录执行事实与脱敏证据，不与 Reviewer Handoff 竞争。
+新 Reviewer 推荐读取顺序：
+
+1. `REVIEWER_HANDOFF.md` — 当前状态、当前 Gate、授权边界、下一步；
+2. `docs/REVIEWER_TRANSITION_2026-10-04.md` — 本次长对话收口后的完整已接受脉络；
+3. `DECISION_LOG.md` — 已确认决策与理由；
+4. `docs/G3C_C2C_REAL_HY2_CANARY_PACKAGE.md` — 当前真实 C2C canary 合同；
+5. `EXECUTION_EVIDENCE.md` — 仅在需要证明具体事实时读取相关 Evidence。
+
+`EXECUTOR_HANDOFF.md` 与 `EXECUTION_EVIDENCE.md` 记录执行事实与脱敏证据，不与 Reviewer Handoff 竞争。历史 Executor 中出现的旧 `Current` 标题不代表当前项目状态。
 
 执行效率与超时复盘单独维护在 `docs/ROUND_TIMING_RETROSPECTIVE.md`，用于记录每轮预计/实际耗时、超时原因和流程优化，不改变项目真相层级。
 
@@ -122,7 +131,7 @@ G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 
 
 ## 当前交互目标
 
-当前优先把底层多线路能力变成 Owner 可见、可测速、可手动切换的 Clash Verge/Mihomo 控制面，再继续新 VPS 真实迁移演练。
+C2B synthetic UI、C2C package、Secret scanner 修复和 R2R3V2 Owner 真实 Secret Prepare 复验均已通过。当前唯一直接下一步是 **R3R2 真实 HY2-in-Clash bounded canary**，但必须先取得新的 Owner 明确授权；在授权前不得导入真实 C2C profile、创建临时 /32 路由或发送两次真实请求。
 
 连接连续性约束：
 - Owner 的 ChatGPT 网页和 Codex Desktop 必须始终有至少一条可用 VPN。
