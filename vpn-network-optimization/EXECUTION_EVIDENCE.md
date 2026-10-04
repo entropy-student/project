@@ -6587,3 +6587,61 @@ Reviewer reconciliation:
 - Repair changed those static searches to literal-safe strings; live runner semantics were not changed.
 - Fresh validator blob: `e38fb49de49ffcaafb5fff505c1b05919072efaa`.
 - Owner-host repair checkpoint remains required before any fresh live authorization request.
+
+
+## G4-B0 repaired Owner-host checkpoint formally PASS — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+
+G4B0_REPAIRED_AST=PASS
+G4B0_TEMPLATE_PARSE=PASS
+G4B0_INTERFACE_NAME_ONLY=PASS
+G4B0_NO_ROUTE_CONTRACT=PASS
+G4B0_NO_REALITY_OR_WG_NODE=PASS
+G4B0_TUN_DISABLED=PASS
+G4B0_REQUEST_BUDGET=2
+G4B0_UDP_READINESS_REPAIR=PASS
+G4B0_FAILURE_PHASE_TELEMETRY=PASS
+G4B0_LIVE_RUNNER_STATIC_BOUNDARY=PASS
+G4B0_OFFLINE_PACKAGE_VALIDATION=PASS
+G4B0_REPAIR_CHECKPOINT=PASS
+
+NETWORK_MUTATION=NO
+SECRET_ACCESS=NO
+EXTERNAL_REQUESTS=0
+
+G4B0_RUNNER_BLOB=234658cefed52f2f95a1cb20b50dad415ea4b54e
+G4B0_VALIDATOR_BLOB=e38fb49de49ffcaafb5fff505c1b05919072efaa
+G4B0_REPAIR_CHECKPOINT_BLOB=b06fae4cdd2e9c80df8101f88f71cb48523de92b
+
+REVIEWER_RESULT=PASS_G4B0_REPAIR_VALIDATION
+PRIOR_LIVE_AUTHORIZATION=CONSUMED
+FRESH_LIVE_AUTHORIZATION_REQUIRED=YES
+```
+
+Reviewer conclusion:
+- The repaired runner and validator pass on the actual Owner PowerShell environment.
+- The prior live RETURN remains non-diagnostic for the interface-name hypothesis because request count was zero.
+- The prior one-shot live authorization remains consumed.
+- A fresh explicit Owner authorization is the only live blocker.
+
+
+## Owner granted fresh authorization for repaired G4-B0 retry — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+OWNER_AUTHORIZATION=GRANTED
+AUTHORIZATION_SCOPE=ONE_REPAIRED_LIVE_RETRY
+AUTHORIZATION_CONSUMED=NO
+MAX_EXTERNAL_REQUESTS=2
+NO_VPS_32_ROUTE_CREATION=YES
+NO_SSH_OR_VPS_MUTATION=YES
+NO_REALITY=YES
+SYSTEM_PROXY_MUST_REMAIN_OFF=YES
+TUN_MUST_REMAIN_OFF=YES
+MANDATORY_REVIEW_STOP=YES
+```
+
+This fresh authorization applies only to one repaired G4-B0 live retry. It does not authorize G4-B persistent writes, REALITY deployment, system proxy/TUN activation, benchmark loops, or G4-C.
