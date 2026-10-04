@@ -130,7 +130,7 @@ G4B0_VALIDATOR_BLOB=f102280866520bb7fff906181081c13ed1d17beb
 G4B0_GATE_BLOB=ae6018d5a7650c4d694b242e885e8dc3b616e630
 ```
 
-The live runner is offline-reviewed and ready. Before child execution, the Owner wrapper must safe-sync ff-only, verify these blobs, AST-parse runner + validator, and run the offline validator.
+The repaired live runner has passed repository-level static review only. Owner-host AST + validator revalidation is still required before any fresh live authorization can be requested. No child execution is currently authorized.
 
 ## CRITICAL_CONSTRAINTS
 
