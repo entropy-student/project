@@ -103,10 +103,10 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OFFLINE_IMPLEMENTATION_PENDING
+STATE=EXECUTOR_ASSIGNED_OFFLINE
 PREVIOUS_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Offline runner/package implementation and fixture validation only until separate live authorization and recovery-destination prerequisites are satisfied.
+MAX_ENDPOINT_THIS_ROUND=Codex offline runner/package implementation and fixture validation only; no live VPS/Owner mutation.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
@@ -119,7 +119,15 @@ REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_PERSISTENT_THREE_ROLE_READINESS_GATE.md + do
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
-G4-B0 is formally closed PASS. The next safe engineering work is local-only G4-B live-runner implementation and fixture validation. No persistent VPS/Windows mutation is authorized yet.
+G4-B0 is formally closed PASS. The G4-B offline live-runner implementation Gate has been assigned to Codex. Reviewer waits for PASS_CANDIDATE/RETURN. No persistent VPS/Windows mutation is authorized in this round.
+
+Current G4-B offline Executor identity:
+
+```text
+G4B_OFFLINE_IMPLEMENTATION_GATE_BLOB=6ebf299166109b0640f2acd93cd8c669bc036b32
+EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_IMPLEMENTATION_AND_FIXTURE_VALIDATION
+LIVE_G4B_EXECUTION_AUTHORIZED=NO
+```
 
 Locked G4-B0 final identities:
 
@@ -181,11 +189,9 @@ Owner-local AST-only checkpoint PASS on PowerShell 7.6.6. The repaired offline v
 
 ## OWNER_ACTION_REQUIRED
 
-No immediate Owner action is required for the next offline engineering step. Before **live G4-B**, Owner must:
-1. name/approve a second-failure-domain encrypted recovery destination distinct from the SFO3 VPS and current Windows local disk; and
-2. explicitly authorize the new G4-B consequential Gate.
+No Owner action is required during the current Codex offline implementation round.
 
-The standing authorization for G4-B0 is closed with that Gate and does not carry forward.
+Wait for the Executor result and Reviewer decision. Live G4-B remains a separate later boundary requiring the second-failure-domain recovery destination and its own consequential authorization.
 
 ## EVIDENCE_POINTERS
 
