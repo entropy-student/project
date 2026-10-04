@@ -137,79 +137,95 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 - **D8 readability result:** Clash app root contains 56 files; exactly one read failure is stable and classified as a root-level `.lock` file with `MethodInvocationException` on both attempts. Project runtime contains zero files and zero read failures. This proves the current full-root residue scanner is blocked by one Clash root lock file, not by project runtime residue.
 - **D8R1 purpose:** before weakening the Secret scan, verify metadata-only that the problematic class corresponds to exactly one root-level `.lock`, that it is non-reparse and zero-length, and that it remains unreadable. Only that evidence can justify an exact zero-byte root-lock exception; any nonzero/reparse/multiple-lock result fails closed.
 
+- **D8R1 result:** the single root-level `.lock` is exactly one file, non-reparse and zero-length, but it was readable during D8R1. This disproves a permanent-unreadable-file invariant and reclassifies D8's two 100 ms failures as transient lock contention across time rather than a stable storage defect.
+- **Repair decision:** do not generically skip `.lock` or unreadable files. Add one fail-closed exception only when the Clash-app-root scan actually gets a read exception and fresh metadata proves the failing item is root-level, extension `.lock`, zero bytes, and non-reparse. All other read failures remain `SECRET_SCAN_READ_FAILED`. Project-runtime scanning gets no exception.
+
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_CLASH_ROOT_LOCK_METADATA_DIAGNOSTIC_D8R1
-STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=PASS_D8_STABLE_ROOT_LOCK_READ_FAILURE
-OBJECTIVE=Prove whether the one stable unreadable Clash root-level .lock file is exactly one zero-byte non-reparse runtime lock, so the Secret scanner can later exempt only that exact safe class without weakening other unreadable-file failures.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> exact D8R1 identity -> metadata-only root .lock cardinality/length/reparse/readability check -> STOP_AT_REVIEWER.
+GATE_ID=G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_REPAIR_R2R3
+STATE=EXECUTOR_ACTION_REQUIRED
+PREVIOUS_RESULT=RETURN_D8R1_LOCK_BECAME_READABLE_TRANSIENT_CONTENTION_CONFIRMED
+OBJECTIVE=Repair the Secret residue scanner so a read failure may be bypassed only for a freshly verified zero-byte, non-reparse, root-level .lock in the Clash app root; all other unreadable files remain fail-closed.
+MAX_ENDPOINT_THIS_ROUND=clean sync -> exact source baseline -> minimal helper/validator/package repair -> offline fixtures A-L + AST + Mihomo parse -> persist evidence -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; Clash app root-level .lock metadata only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No file content read; no Secret-helper execution; no DPAPI; no recovery content; no real Secret/hash; no profile mutation; no network requests; no network mutation; no VPS/SSH; no G4.
-DIAGNOSTIC_PATH=scripts/c2c-clash-root-lock-metadata-diagnostic.ps1
-DIAGNOSTIC_BLOB=bf92a21ccf1254be86e50823ee701f53c5784107
+TARGET_AND_SCOPE=scripts/c2c-secret-profile-helper.ps1; scripts/g3c-c2c-package-validator.ps1; docs/G3C_C2C_REAL_HY2_CANARY_PACKAGE.md only, plus Evidence/Executor Handoff.
+APPLICABLE_CRITICAL_CONSTRAINTS=No Secret-helper real mode; no DPAPI; no real Secret/recovery content; no orchestrator/proxy probe/D6/D7/D8/D8R1 execution; no Clash mutation; no network requests; no network mutation; no VPS/SSH; no G4.
+CURRENT_SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+CURRENT_VALIDATOR_BLOB=151b2c9166b02d6f6ff943412f75fb047808c37b
+CURRENT_PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
 SPECIALIST_RULES=11B_SECRET_TARGET_HOST;11C_DEPLOYMENT_NETWORK_RESOURCES
-ESTIMATED_EXECUTION_TIME=1-3_minutes
+ESTIMATED_EXECUTION_TIME=5-12_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
 ```
 
+### REQUIRED REPAIR
+
+1. Keep `Test-FilePattern` exact byte scanning unchanged for readable files.
+2. Add an explicit opt-in policy to `Get-PatternFileCount` for the Clash app root only; project runtime must not receive this exception.
+3. On a file read exception only, fresh-read the failing item's metadata and bypass that one item only if all are true:
+   - item is directly in the supplied Clash app root, not a descendant;
+   - extension is exactly `.lock` case-insensitively;
+   - length is exactly 0;
+   - item is not a reparse point.
+4. Do not bypass a readable zero-byte file; normal readable files continue through `Test-FilePattern`.
+5. Any metadata lookup failure, nonzero length, reparse point, descendant .lock, other extension, or any project-runtime read failure must still produce `SECRET_SCAN_READ_FAILED` (or the existing reparse fail code where applicable).
+6. Do not hard-code a filename; the invariant is the narrow metadata class above.
+7. Preserve all DPAPI, Secret zeroization, ACL, profile generation, Mihomo parsing, cleanup, residue and no-network boundaries.
+8. Update package documentation to record this exact fail-closed scanner rule.
+9. Extend validator with Fixture L that rejects broad unreadable-file skipping and proves the exception contract contains root-level + `.lock` + zero-length + non-reparse + Clash-only opt-in guards. Existing A-K must remain PASS.
+
 ### REQUIRED EVIDENCE
 
-- Owner PowerShell 7.6.6/Admin/High;
-- safe ff-only sync and project clean;
-- exact D8R1 blob;
-- `CLASH_ROOT_LOCK_COUNT=1`;
-- `CLASH_ROOT_LOCK_REPARSE=NO`;
-- `CLASH_ROOT_LOCK_LENGTH=0`;
-- `CLASH_ROOT_LOCK_READABLE=NO`;
-- non-secret read-error class;
-- `D8R1_ZERO_LENGTH_ROOT_LOCK_CONFIRMED=PASS`;
-- `FILE_CONTENT_READ=NO`;
-- `DPAPI_UNPROTECT=NO`;
-- `REAL_SECRET_READ=NO`;
-- `CLASH_PROFILE_MUTATION=NO`;
+- full timing from before preflight;
+- canonical remote / clean / safe ff-only sync;
+- pre-repair blobs and final blobs;
+- exact files changed;
+- Fixtures A-L PASS;
+- PowerShell AST parse PASS;
+- Mihomo v1.19.32 fixture parse PASS;
+- Secret helper retains no network capability;
+- no DPAPI/Secret/helper/orchestrator/probe/diagnostic execution;
 - `NETWORK_REQUESTS=0`;
 - `NETWORK_CHANGED=NO`;
 - `SECRET_VALUES_EMITTED=0`;
-- complete timing.
+- project clean and GitHub fresh read-back.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_D8R1 only if there is exactly one root-level .lock, it is zero-byte, non-reparse, and still unreadable. Any deviation returns and no scanner exception is authorized.
+PASS_CANDIDATE only if the scanner exception is strictly narrower than generic lock/read-error skipping, applies only after an actual read failure and only to the verified zero-byte non-reparse root-level Clash .lock class, leaves project-runtime scanning strict, passes A-L/AST/Mihomo validation, and causes zero host/Secret/network action.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Read-only metadata Gate; no rollback required.
+Repo-only repair. Revert only the R2R3 source/evidence commits if necessary; no host/network rollback should be needed.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied D8R1 checkpoint and return complete output.
+NONE in R2R3.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action while D8R1 is pending.
+Read only this current Gate plus the three target package files. Make the smallest scanner-policy repair above. Do not execute real helper/C2C/diagnostics. Persist Evidence + Executor Handoff only; leave Reviewer Handoff unchanged. STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-NONE until Owner returns D8R1 output.
+Return `PASS_CANDIDATE_G3C_C2C_SECRET_SCAN_ZERO_LENGTH_ROOT_LOCK_REPAIR_R2R3` or precise `RETURN_*`, with final blobs and durable evidence.
 
 ## NEXT_STEP
 
-If D8R1 PASS, Reviewer opens one minimal Executor repair Gate: Secret scanner may skip only an unreadable zero-byte root-level .lock under the Clash app root, while every other unreadable file still fails closed, with a dedicated regression fixture.
+Executor repairs and validates the scanner. Reviewer inspects before any further Secret Prepare replay.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the D8R1 metadata-only checkpoint.
+NONE.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No action while D8R1 is pending.
+Use current Gate only; no real Secret or C2C execution.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-NONE.
+Standard short completion packet + durable evidence, then STOP_AT_REVIEWER.
 
 ## EVIDENCE_POINTERS
 
