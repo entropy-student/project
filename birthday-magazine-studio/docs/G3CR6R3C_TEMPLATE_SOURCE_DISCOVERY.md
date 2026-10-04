@@ -4,8 +4,8 @@
 
 ```text
 GATE_ID=G3CR6R3C_TEMPLATE_SOURCE_DISCOVERY
-OBJECTIVE=Find the strongest reusable source/template candidates for 12 magazine pages + 1 homepage + 1 core interaction before implementation
-MAX_ENDPOINT_THIS_ROUND=Reviewer research package + Owner shortlist
+OBJECTIVE=Under Owner reset, re-research the unresolved core Aha interaction and P1-P12 magazine visual/page system; preserve magazine-web-viewer as reader direction and Focusly only as homepage reference
+MAX_ENDPOINT_THIS_ROUND=Reopened research package for core interaction + P1-P12, then Owner shortlist; no implementation
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Read-only web/source research and project-scoped research documentation only
 APPLICABLE_CRITICAL_CONSTRAINTS=REAL_MONEY_ACTIONS_0; PAYPAL_ACTIONS_0; CHECKOUT_SUBMISSIONS_0; RUNTIME_MUTATION_0; PRODUCTION_DEPLOYMENT_0; SHARED_INFRA_MUTATIONS_0; PR64_MERGE_0
@@ -52,7 +52,13 @@ NON_PROJECT_DIFF_FILES=0
 CURRENT_GATE_AND_CONTRACT_READBACK=PASS
 BRANCH_ONLY_EVIDENCE_PRESERVATION=PASS
 G3CR6R3C_RESEARCH_AUTHORIZED=YES
-G3CR6R3C_RESEARCH_STARTED=NO
+G3CR6R3C_RESEARCH_STARTED=YES
+OWNER_RESEARCH_RESET_2026_10_04=ACTIVE
+MAGAZINE_WEB_VIEWER=CONFIRMED_OK
+HOMEPAGE_FOCUSLY=REFERENCE_ONLY_NOT_SELECTED
+CORE_AHA_INTERACTION=UNRESOLVED_RESEARCH_AGAIN
+MAGAZINE_P1_P12_VISUAL_SYSTEM=UNRESOLVED_RESEARCH_AGAIN
+PRIOR_SATURATION=SUPERSEDED_FOR_CORE_INTERACTION_AND_P1_P12
 ```
 
 Current Reviewer decision:
@@ -66,11 +72,15 @@ Executor preflight should now use a path-scoped comparison equivalent to `PR_HEA
 
 ## Goal
 
-Produce a high-quality shortlist for:
+Produce a high-quality reopened shortlist for:
 
-- 12 magazine page/layout patterns; static vs dynamic web presentation is not yet frozen;
-- 1 homepage structure;
-- 1 high-impact core homepage interaction/motion pattern.
+- the complete P1-P12 magazine visual/page system; static vs dynamic web presentation is not yet frozen;
+- 1 high-impact core homepage interaction/motion pattern whose described behavior is directly verified against the live work.
+
+Preserved Owner direction:
+- `magazine-web-viewer` is the accepted reader/viewer direction;
+- Focusly is homepage reference only, not a selected homepage implementation;
+- prior preferences for Wide, Stack-to-Content, Marginalia or other candidates are not selections.
 
 Prefer one coherent family/system over 14 unrelated styles.
 
@@ -100,11 +110,11 @@ If license is absent, unclear, restrictive, or assets are copyrighted:
 
 ## Output
 
-Owner-ready shortlist should include:
+Owner-ready reopened shortlist should include:
 
-- homepage: 3 strongest candidates;
-- core interaction/motion: 3 strongest candidates;
-- magazine pages: enough source/layout candidates to cover the 12-page page map, preferably from a small number of coherent families;
+- core interaction/motion: 3 strongest **directly verified** candidates;
+- magazine pages: enough complete source/layout families to cover the 12-page page map coherently, preferably from a small number of systems;
+- homepage treatment only where needed to explain how the interaction fits the current site; Focusly remains reference-only;
 - recommended combination into one design system;
 - exact items that can be legally/source-wise vendored or copied;
 - exact items that must be recreated rather than copied.
@@ -173,3 +183,10 @@ Owner 转交：NONE
 ```
 
 Stop at Reviewer.
+
+
+## Owner research reset — 2026-10-04
+
+See `docs/OWNER_DECISION_G3CR6R3C_RESEARCH_RESET_2026-10-04.md`.
+
+The prior 91-candidate research package remains evidence/history, but its shortlist and saturation conclusion are not accepted as closure for CORE_AHA_INTERACTION or MAGAZINE_P1_P12_VISUAL_SYSTEM. Both surfaces must be researched again from an open candidate field. Do not treat prior Reviewer/Executor preference as selection.
