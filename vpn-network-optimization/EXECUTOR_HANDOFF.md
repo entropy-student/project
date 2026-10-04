@@ -1,4 +1,39 @@
-## Current execution status — G3C C2C real HY2-in-Clash Owner canary R3
+## Current execution status — G3C C2C Secret-helper evidence forwarding repair R2R2
+
+```text
+GATE_ID=G3C_C2C_SECRET_HELPER_EVIDENCE_FORWARDING_REPAIR_R2R2
+EXECUTOR_ROLE=CODEX_DESKTOP_MINIMAL_SOURCE_REPAIR_AND_OFFLINE_VALIDATION
+PREVIOUS_RESULT=PASS_WITH_TIMING_GAP_G3C_C2C_PROXY_RESOLVER_SCALAR_RETURN_REPAIR_R2R1
+REAL_C2C_EXECUTION_AUTHORIZED=NO
+REPAIR_FILES=scripts/c2c-owner-clash-real-canary.ps1;scripts/g3c-c2c-package-validator.ps1
+CURRENT_ORCHESTRATOR_BLOB=bad7aa75458f48efe37cd11de18259ceb1cc19d2
+CURRENT_VALIDATOR_BLOB=882730a85b8cf3512feae4982f761ef7cdfec4d2
+SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
+TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+PACKAGE_BLOB=12ede0958a897ff3d835e098c1f931afb1c2fda1
+DPAPI_ACCESS_AUTHORIZED=NO
+NETWORK_REQUESTS_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Capture full timing before preflight/sync.
+2. Make only the evidence-forwarding repair:
+   - helper wrapper returns captured output without caller-invisible forwarding;
+   - caller explicitly emits captured approved lines after Prepare/Cleanup/fallback assignment;
+   - add Fixture K preventing regression.
+3. Preserve R2R1 scalar resolver, dynamic SOCKS5, socks5h, Secret helper internals, endpoints and cleanup scope.
+4. Run full offline validator, require A-K + AST + Mihomo parse.
+5. No orchestrator/helper/probe/diagnostic execution, no DPAPI/Secret/network/Clash mutation.
+6. Persist Evidence + Executor Handoff only. Leave Reviewer Handoff unchanged.
+7. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2C real HY2-in-Clash Owner canary R3 (held before execution)
 
 ```text
 GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3
