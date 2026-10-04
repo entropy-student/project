@@ -48,6 +48,13 @@ function Test-C2CPackage {
         $O -notmatch '(?im)CLASH_LOCAL_PROXY_DISCOVERY=LIVE_PROCESS_SOCKS5') {
         throw 'LIVE_SOCKS5_DISCOVERY_GUARD_MISSING'
     }
+    $resolver = [regex]::Match($O, '(?is)function\s+Resolve-LocalProxyPort\s*\{(?<body>.*?)\r?\n\}\s*(?=function\s+Assert-LocalProxyListener)')
+    if (-not $resolver.Success -or $resolver.Groups['body'].Value -notmatch '(?im)^\s*return\s+\[int\]\$socksPorts\[0\]\s*$') {
+        throw 'PROXY_RESOLVER_SCALAR_RETURN_INVALID'
+    }
+    if ($resolver.Groups['body'].Value -match '(?im)\bWrite-Output\b') {
+        throw 'PROXY_RESOLVER_SUCCESS_STREAM_DIAGNOSTIC_FORBIDDEN'
+    }
 
     if ($S -notmatch '(?im)ProtectedData\]::Unprotect' -or $S -notmatch '(?im)DataProtectionScope\]::CurrentUser' -or $S -notmatch '(?im)hy2-g2a\.dpapi' -or $S -notmatch '(?im)VPNHY2R1') { throw 'SECRET_HELPER_DPAPI_CONTRACT_MISSING' }
     if ($S -notmatch '(?im)FileSystemAclExtensions\]::CreateDirectory' -or $S -notmatch '(?im)SetOwner\(\$ownerSid\)' -or $S -notmatch '(?im)SetAccessRuleProtection\(\$true,\s*\$false\)') { throw 'SECRET_HELPER_OWNER_ACL_GUARD_MISSING' }
@@ -113,6 +120,13 @@ Write-Output 'G3C_C2C_FIXTURE_H_STALE_PROXY_METADATA_REJECTED=PASS'
 $httpProbe = $probe.Replace('socks5h://127.0.0.1:$ProxyPort','http://127.0.0.1:$ProxyPort')
 Assert-ExpectedFailure -Expected 'PROBE_PROXY_SCHEME_INVALID' -O $orchestrator -S $secretHelper -P $httpProbe -T $template -D $package
 Write-Output 'G3C_C2C_FIXTURE_I_SOCKS5_SCHEME_REQUIRED=PASS'
+
+$resolverWithDiagnostic = $orchestrator.Replace(
+    '    return [int]$socksPorts[0]',
+    "    Write-Output 'RESOLVER_DIAGNOSTIC'`r`n    return [int]`$socksPorts[0]"
+)
+Assert-ExpectedFailure -Expected 'PROXY_RESOLVER_SUCCESS_STREAM_DIAGNOSTIC_FORBIDDEN' -O $resolverWithDiagnostic -S $secretHelper -P $probe -T $template -D $package
+Write-Output 'G3C_C2C_FIXTURE_J_RESOLVER_SUCCESS_STREAM_SCALAR_RETURN=PASS'
 
 foreach ($path in @($orchestratorPath,$secretHelperPath,$probePath)) {
     $tokens = $null

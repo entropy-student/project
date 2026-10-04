@@ -218,8 +218,6 @@ function Resolve-LocalProxyPort {
     Assert-C2C (@($socksPorts).Count -eq 1) 'CLASH_LOCAL_SOCKS5_LISTENER_CARDINALITY_INVALID'
     Assert-C2C ($socksPorts[0] -ge 1024 -and $socksPorts[0] -le 65535) 'CLASH_LOCAL_PROXY_PORT_INVALID'
 
-    Write-Output 'CLASH_LOCAL_PROXY_DISCOVERY=LIVE_PROCESS_SOCKS5'
-    Write-Output ('CLASH_LOCAL_PROXY_PORT=' + [int]$socksPorts[0])
     return [int]$socksPorts[0]
 }
 
@@ -362,6 +360,8 @@ try {
 
     $egress = Resolve-PhysicalEgress -WireGuardIfIndex $script:baselineState.WgIfIndex
     $script:proxyPort = Resolve-LocalProxyPort
+    Write-Output 'CLASH_LOCAL_PROXY_DISCOVERY=LIVE_PROCESS_SOCKS5'
+    Write-Output ('CLASH_LOCAL_PROXY_PORT=' + [int]$script:proxyPort)
     Assert-LocalProxyListener -Port $script:proxyPort
     $script:profileStoreRoot = Resolve-ProfileStore
     $script:profileBefore = Get-ProfileSnapshot -Root $script:profileStoreRoot
