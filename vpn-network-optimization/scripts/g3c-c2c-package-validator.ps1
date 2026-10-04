@@ -89,7 +89,7 @@ function Test-C2CPackage {
         'Get-Item\s+-LiteralPath\s+\$item\.FullName\s+-Force\s+-ErrorAction\s+Stop',
         '\$freshParent\s*=\s*\[IO\.Path\]::GetFullPath',
         '\$isRootLevel\s*=\s*\$freshParent\.Equals\(\$rootFull,\s*\[StringComparison\]::OrdinalIgnoreCase\)',
-        "\$isLock\s*=\s*\$freshItem\.Extension\s+-ieq\s+'\.lock'",
+        '\$isLock\s*=\s*\$freshItem\.Extension\s+-ieq\s+''\.lock''',
         '\$isZeroLength\s*=\s*\[long\]\$freshItem\.Length\s+-eq\s+0',
         '\$isFile\s*=\s*-not\s+\$freshItem\.PSIsContainer',
         '\$isReparse\s*=\s*\(\(\$freshItem\.Attributes\s+-band\s+\[IO\.FileAttributes\]::ReparsePoint\)\s+-ne\s+0\)',
