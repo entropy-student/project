@@ -6,11 +6,12 @@
 
 ## 1. Purpose
 
-Prevent shallow template research and force a high-signal search for **exceptional** source/template/interaction candidates for:
+Prevent shallow template research and force a high-signal search for **exceptional** source/template/interaction candidates for the still-unresolved product surfaces:
 
 - 12 magazine pages;
-- 1 homepage;
-- 1 core homepage interaction/motion experience.
+- 1 core interaction/motion experience.
+
+The homepage itself is now **Owner-accepted and frozen**. Discovery must not reselect or redesign the homepage; it may only record compatibility requirements for the future bounded core-experience entry.
 
 The magazine pages may be static, lightly animated, or interaction-driven in web presentation. That choice remains unresolved during discovery.
 
@@ -237,8 +238,8 @@ Do not end with “here are some good templates.”
 The final result must answer:
 
 - What are the genuinely exceptional candidates?
-- Which one(s) are best for the homepage?
 - Which one(s) are best for the core interaction?
+- What minimal compatibility/entry requirement must the selected interaction satisfy on the already-frozen homepage?
 - Which family can cover the 12 magazine pages coherently?
 - Which source can be copied/adapted legally?
 - Which must be independently reimplemented?
