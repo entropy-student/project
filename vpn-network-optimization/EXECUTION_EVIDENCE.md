@@ -6282,3 +6282,25 @@ Reviewer conclusion:
 - The runner contains no route mutation, SSH/VPS action, system-proxy registry write, TUN enablement, or REALITY path.
 - The live request budget is structurally limited to the OpenAI request and one public-exit request.
 - The Owner wrapper must complete source synchronization, exact blob locking, PowerShell AST parsing, and the offline package validator before the child runner is allowed to start.
+
+
+## G4-B0 parent preflight runner-missing reconciliation — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+PARENT_PREFLIGHT_RESULT=RETURN_TO_REVIEWER
+PREFLIGHT_ERROR=G4B0_RUNNER_MISSING
+G4B0_CHILD_RUNNER_STARTED=NO
+G4B0_AUTHORIZATION_CONSUMED=NO
+PARENT_POWERSHELL_STILL_ALIVE=YES
+SECRET_ACCESS=NO
+EXTERNAL_REQUEST_COUNT=0
+NETWORK_MUTATION=NO
+```
+
+Reviewer reconciliation:
+- Failure occurred before child runner start.
+- Cause is wrapper ordering: the wrapper checked for the newly-added runner file before the local worktree had been safe-synced to current `origin/main`.
+- No consequential G4-B0 action occurred and the one-shot Owner authorization remains valid and unconsumed.
+- Repair: sync the existing project worktree first using ff-only semantics, then resolve/check the runner and perform blob/AST/validator checks.
