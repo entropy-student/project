@@ -1,4 +1,31 @@
-## Current execution status — G3C C2C package offline validation R1
+## Current execution status — G3C C2C real HY2-in-Clash Owner canary R1
+
+```text
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R1
+EXECUTOR_ROLE=NO_EXECUTION_DURING_OWNER_CANARY
+PREVIOUS_RESULT=PASS_G3C_C2C_PACKAGE_OFFLINE_VALIDATION_R1
+OWNER_ACTION_REQUIRED=YES
+ORCHESTRATOR_BLOB=e59be99321cc98a37a80e4a747b937aaaaf5d58b
+SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+PROXY_PROBE_BLOB=4e17c849dffdd410ff2c635830ce0e59cb24304e
+VALIDATOR_BLOB=4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9
+TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+PACKAGE_BLOB=10518d986ab3094a4578f431301a820645d7163b
+EXECUTOR_REAL_C2C_ACTION_AUTHORIZED=NO
+G4_ENTRY_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. No execution while Owner canary is active.
+2. Do not run orchestrator/helper/probe, access DPAPI, modify Clash/network state, or enter G4.
+3. Wait for Owner output and Reviewer decision.
+4. STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2C package offline validation R1
 
 ```text
 GATE_ID=G3C_C2C_PACKAGE_OFFLINE_VALIDATION_R1
@@ -61,7 +88,7 @@ STOP_AT_REVIEWER=YES
 
 
 
-## Current execution status — G3C C2C Owner authorization A0
+## Historical execution status — G3C C2C Owner authorization A0
 
 ```text
 GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_AUTHORIZATION_A0
