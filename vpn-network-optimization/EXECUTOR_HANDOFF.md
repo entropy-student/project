@@ -12,9 +12,23 @@ EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RECOVERY_BACKEND_REPAIR_AND_FIXTURE_VALIDATI
 PREVIOUS_RESULT=RETURN_G4B_R5_EXECUTABLE_DIGEST_RETRIEVAL_BLOCKED_BY_CODEX_POLICY
 R5R1_GATE_BLOB=1d5ae4c7563c195ba4dab747b3b0ea8b493b5ffb
 GOVERNANCE_VERSION_CURRENT=v0.2.7
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_BACKEND_R5R1_OFFLINE_REPAIR
+PRE_GATE_HEAD=1ade5e981591bcc07e7a347c11949092b257c2da
+SOURCE_COMMIT=f1c1b1abdd713089edc4fa677322b96aadcc7e3d
+SOURCE_GITHUB_FRESH_READBACK=PASS
+R1_R2_R3_R4_REGRESSIONS=PASS
+R5R1_FIXTURES=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+LIVE_ACTIONS=0
+REAL_BAIDU_ACTIONS=0
 ESTIMATED_EXECUTION_TIME=15-30 minutes
 TIMING_RECORD_REQUIRED=YES
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
+ROUND_STARTED_AT=2026-10-05T00:51:27+08:00
+ROUND_FINISHED_AT=2026-10-05T01:09:41+08:00
+ACTUAL_ELAPSED=18m14s
+TIME_OVERRUN=NO
 REAL_BAIDU_LOGIN_OR_FILE_OPERATION=NO
 LIVE_G4B_EXECUTION=NO
 STOP_AT_REVIEWER=YES
@@ -22,12 +36,7 @@ STOP_AT_REVIEWER=YES
 
 ### Executor task
 
-1. Read `docs/G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5R1.md` as the current Gate.
-2. Capture `ROUND_STARTED_AT` before the first preflight/sync.
-3. Fix only the two remaining source defects: downloaded-local ZIP path selection and production pending basename alignment/guard.
-4. Preserve the authoritative pinned release-archive SHA-256 trust model; do not attempt to retrieve or invent an independent executable digest.
-5. Run all R1-R4 regressions plus R5R1 fixtures. Do not invoke the live runner or any real Baidu/VPS/Secret/network action.
-6. Update Evidence and this Handoff, perform canonical fresh read-back, record timing, and stop at Reviewer.
+Completed: fixed only the downloaded-local ZIP path and production pending basename/guard, retained the archive SHA-256 trust model, passed R1–R4 regressions and R5R1 offline fixtures, and freshly read back the source commit from GitHub `main`. Evidence and this handoff record the execution; no live runner, Baidu, VPS, Secret, or network action occurred. Stop at Reviewer.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 

@@ -7665,3 +7665,65 @@ REAL_BAIDU_ACTIONS=0
 LIVE_ACTIONS=0
 STOP_AT_REVIEWER=YES
 ```
+
+
+## Executor result — G4-B Baidu recovery backend repair R5R1 — 2026-10-05
+
+```text
+AUTHORIZED_GATE=G4B_BAIDU_NETDISK_RECOVERY_BACKEND_REPAIR_R5R1
+GOVERNANCE_VERSION=v0.2.7 / ACTIVE_PROVISIONAL
+GATE_BLOB=1d5ae4c7563c195ba4dab747b3b0ea8b493b5ffb
+PRE_GATE_HEAD=1ade5e981591bcc07e7a347c11949092b257c2da
+LATEST_REVIEWER_ONLY_ADVANCE=b62335ef43a2c14008c522d885f389a417509abb
+LATEST_ADVANCE_SCOPE=REVIEWER_HANDOFF governance metadata and R5R1 blocker reconciliation only
+SOURCE_COMMIT=f1c1b1abdd713089edc4fa677322b96aadcc7e3d
+SOURCE_GITHUB_FRESH_READBACK=PASS
+```
+
+### Changes and validation
+
+- In the default Baidu CLI acquisition branch, `ZipFile.OpenRead` now receives the protected downloaded local archive path. The explicit local archive override remains intact and is still checked against the same pinned archive SHA-256 before extraction.
+- The local encrypted portable pending artifact now derives its basename from the same run-scoped name used by the remote pending object. `Upload-BaiduPendingRecovery` rejects any basename mismatch before a Baidu CLI query or upload.
+- The accepted official release archive SHA-256 remains the sole trust anchor; no executable digest was invented or substituted. The package text now documents the verified-local-archive and matching-basename contract.
+- Full offline fixture validator passed, including all accepted R1–R4 regression markers and R5R1 archive-path, override, digest-pin, unique bounded traversal-safe executable entry, production pending-name, and fake-CLI pre-invocation mismatch fixtures. The fake fixture used production run-ID naming; mismatch rejection caused zero shim calls.
+- PowerShell AST parsing passed for the runner and validator. The package validator passed through the offline fixture suite. `git diff --check`, changed-path review, and added/staged diff Secret scan passed.
+
+```text
+R5R1_DEFAULT_DOWNLOAD_USES_LOCAL_ARCHIVE=PASS
+R5R1_LOCAL_ARCHIVE_OVERRIDE=PASS
+R5R1_OFFICIAL_ARCHIVE_DIGEST_PIN=PASS
+R5R1_UNIQUE_SAFE_EXE_ENTRY=PASS
+R5R1_PENDING_PRODUCTION_BASENAME=PASS
+R5R1_PENDING_BASENAME_MISMATCH_FAILS_PRE_CLI=PASS
+R5R1_FAKE_FIXTURE_USES_PRODUCTION_NAMING=PASS
+R1_R2_R3_R4_REGRESSIONS=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+```
+
+### Scope, provenance, and timing
+
+The initial canonical worktree was `C:\Users\34707\Documents\ChatGPT\VPS搭建`, branch `main`, origin `https://github.com/entropy-student/project.git`. Before edits, only pre-existing untracked `vpn-network-optimization/results/` content was present; it was preserved and not read, staged, modified, or removed. `origin/main` later advanced to `b62335ef...`; a targeted diff showed only Reviewer-owned governance metadata/blocker wording, and a safe fast-forward retained the assigned R5R1 scope. The final source push was freshly fetched; local and remote HEAD and all three source/package blobs matched.
+
+```text
+ROUND_STARTED_AT=2026-10-05T00:51:27+08:00
+ROUND_FINISHED_AT=2026-10-05T01:09:41+08:00
+ACTUAL_ELAPSED=18m14s
+TIME_OVERRUN=NO
+TIME_OVERRUN_REASON=NONE
+TIMING_BOUNDARY=AFTER_SOURCE_COMMIT_GITHUB_FRESH_READBACK; evidence/handoff persistence is closeout bookkeeping
+REAL_BAIDU_LOGIN_OR_FILE_OPERATION=NO
+BAIDU_CLI_DOWNLOADED_OR_INVOKED=NO
+EXTERNAL_REQUESTS=0
+SSH_OR_VPS_ACTION=NO
+DPAPI_OR_REAL_SECRET_ACCESS=NO
+LIVE_RUNNER_LIVE_MODE=NOT_REQUESTED
+OFFLINE_DEFAULT_GUARD_TESTED=YES
+NETWORK_OR_SERVICE_OR_PROFILE_MUTATION=NO
+REVIEWER_HANDOFF_MODIFIED=NO
+SECRET_VALUES_EMITTED=0
+SECRET_VALUES_COMMITTED=0
+ROLLBACK=Revert only this Gate's source/document commits; no runtime rollback is needed
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_BACKEND_R5R1_OFFLINE_REPAIR
+STOP_AT_REVIEWER=YES
+```
