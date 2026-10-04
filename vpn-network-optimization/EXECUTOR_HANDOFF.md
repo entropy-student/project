@@ -4,29 +4,37 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — fresh Owner authorization required for real HY2-in-Clash canary R3R2
+## Current execution status — G4-B offline live-runner implementation R1
 
 ```text
-GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R3R2
-EXECUTOR_ROLE=NO_ACTION
-PREVIOUS_RESULT=PASS_G3C_C2C_SECRET_PREPARE_REPAIR_VERIFICATION_R2R3V2
-OWNER_C2C_AUTHORIZATION=REQUIRED_FRESH
-ORCHESTRATOR_BLOB=4424eab2f281af6398f6d7bfbe6e326bce5f7904
-SECRET_HELPER_BLOB=81c5a43d4a947d57e44752fd7a09c59e735748e2
-PROXY_PROBE_BLOB=d3403cba9196b55083ff9f443e9011582ef9cc01
-VALIDATOR_BLOB=e520fa7b6c08b2e46365b55ec731a20bdb810c04
-TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
-PACKAGE_BLOB=d9e815171d8d7b00722b213b6df6d52c46f6265e
-NETWORK_REQUESTS_AUTHORIZED=NO_UNTIL_OWNER_AUTH
-NETWORK_MUTATION_AUTHORIZED=NO_UNTIL_OWNER_AUTH
+GATE_ID=G4B_OFFLINE_LIVE_RUNNER_IMPLEMENTATION_R1
+EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_IMPLEMENTATION_AND_FIXTURE_VALIDATION
+PREVIOUS_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
+GATE_DOC_BLOB=6ebf299166109b0640f2acd93cd8c669bc036b32
+LIVE_G4B_EXECUTION_AUTHORIZED=NO
+SSH_OR_VPS_ACTION=NO
+DPAPI_OR_REAL_SECRET_ACCESS=NO
+EXTERNAL_REQUESTS=0
+NETWORK_MUTATION=NO
+CLASH_PROFILE_MUTATION=NO
+SYSTEM_PROXY_CHANGE=NO
+TUN_CHANGE=NO
+SERVICE_MUTATION=NO
+ROUTE_MUTATION=NO
+G4C_EXECUTION=NO
 STOP_AT_REVIEWER=YES
 ```
 
 ### Executor task
 
-No action. Wait for fresh Owner authorization and Reviewer-supplied Owner checkpoint.
-
-
+1. Read `docs/G4B_OFFLINE_LIVE_RUNNER_IMPLEMENTATION_GATE.md` as the current execution Gate.
+2. Safe ff-only sync and capture timing before preflight.
+3. Implement only the offline G4-B live-runner source + fixture validator allowed by the Gate.
+4. Keep frozen templates/G4-B readiness Gate/Reviewer Handoff unchanged.
+5. Run AST, existing package validator, fixture validator and all negative fixtures only.
+6. Do not access real Secret material, SSH/VPS, network state, Clash live state, or external endpoints.
+7. Persist detailed sanitized proof to `EXECUTION_EVIDENCE.md` and update only this `EXECUTOR_HANDOFF.md` for execution status.
+8. Return PASS_CANDIDATE or precise RETURN and STOP_AT_REVIEWER.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 
