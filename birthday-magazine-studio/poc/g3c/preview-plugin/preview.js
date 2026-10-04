@@ -8,6 +8,7 @@
   const status = root.querySelector('[data-bms-status]');
   const remove = root.querySelector('[data-bms-remove]');
   const uploadLabel = root.querySelector('[data-bms-upload-label]');
+  const createLink = root.querySelector('[data-bms-create-link]');
   let photoUrl = '';
   function update() {
     const person = name.value.trim() || 'Someone special';
@@ -16,6 +17,13 @@
     root.querySelector('[data-bms-name]').textContent = person;
     root.querySelector('[data-bms-age]').textContent = years ? `AGE ${years} · A VERY GOOD YEAR` : 'THE BIRTHDAY EDITION';
     root.querySelector('[data-bms-story]').textContent = `Here's to the moments that make you, you, ${person}. The familiar faces, the little joys, and the next chapter still to come.`;
+    if (createLink) {
+      const url = new URL(createLink.href, window.location.href);
+      if (name.value.trim()) url.searchParams.set('recipient', name.value.trim());
+      if (age.value) url.searchParams.set('age', age.value);
+      url.searchParams.set('style', style.value);
+      createLink.href = url.toString();
+    }
   }
   function clearPhoto() {
     if (photoUrl) URL.revokeObjectURL(photoUrl);
