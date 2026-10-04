@@ -120,7 +120,7 @@ function Get-C2BState {
         ($_.Name -match '(?i)(?:mihomo|clash|tun)' -or $_.InterfaceDescription -match '(?i)(?:mihomo|clash|tun)')
     })
     $routeSnapshot = @(Get-NetRoute -AddressFamily IPv4 -PolicyStore ActiveStore -ErrorAction Stop | ForEach-Object {
-        '{0}|{1}|{2}|{3}|{4}' -f $_.DestinationPrefix, $_.NextHop, $_.InterfaceIndex, $_.RouteMetric, $_.PolicyStore
+        '{0}|{1}|{2}|{3}' -f $_.DestinationPrefix, $_.NextHop, $_.InterfaceIndex, $_.RouteMetric
     } | Sort-Object)
     return [pscustomobject]@{
         Manager = [string]$manager.Status
