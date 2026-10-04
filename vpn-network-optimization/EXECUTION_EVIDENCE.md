@@ -6419,3 +6419,58 @@ Reviewer conclusion:
 - No live runner phase started, no Secret was accessed, no network mutation occurred, and no external request was sent.
 - The existing one-shot Owner authorization remains valid and unconsumed.
 - Next step is exactly one live G4-B0 canary using the locked runner, followed by mandatory Reviewer stop.
+
+
+## G4-B0 live attempt RETURN — Mihomo UDP endpoint check — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+ROUND_STARTED_AT=2026-10-04T09:20:20.5414201+00:00
+ROUND_FINISHED_AT=2026-10-04T09:20:32.0955011+00:00
+ACTUAL_ELAPSED=00:00:11.5540810
+
+CANONICAL_SOURCE=PASS
+OWNER_BASELINE=PASS
+ACTIVE_VPS_32_ROUTE_BEFORE=0
+PERSISTENT_VPS_32_ROUTE_BEFORE=0
+PHYSICAL_EGRESS_DISCOVERY=PASS
+PHYSICAL_INTERFACE_ALIAS=WLAN
+PHYSICAL_INTERFACE_INDEX=18
+
+CONSEQUENTIAL_PHASE_STARTED=YES
+DPAPI_UNPROTECT=PASS
+HY2_AUTH_FORMAT=PASS
+CERTIFICATE_FINGERPRINT_MATCH=PASS
+OWNER_ONLY_RUNTIME=PASS
+INTERFACE_NAME_APPLIED=YES
+MIHOMO_CONFIG_PARSE=PASS
+
+REPORTED_FAILURE_PHASE=P6_CLEANUP_AND_READBACK
+INFERRED_ACTUAL_FAILURE_PHASE=P4_MIHOMO_PARSE_AND_START
+FAILURE_CODE=MIHOMO_UNEXPECTED_UDP_LISTENER
+REQUEST_COUNT=0
+EXTERNAL_REQUESTS=0
+
+ACTIVE_VPS_32_ROUTE_AFTER=0
+PERSISTENT_VPS_32_ROUTE_AFTER=0
+WIREGUARD_PRESERVED=YES
+SYSTEM_PROXY_FINAL=OFF
+TUN_FINAL=OFF
+NETWORK_BASELINE_RESTORED=PASS
+SECRET_RUNTIME_CLEANUP=PASS
+SECRET_VALUES_EMITTED=0
+
+G4B0_CHILD_EXIT=1
+G4B0_PARENT_RESULT=RETURN_TO_REVIEWER
+OWNER_AUTHORIZATION_CONSUMED=YES
+DO_NOT_RERUN=YES
+```
+
+Reviewer reconciliation:
+- The one-shot authorization is consumed because the protected Secret/runtime consequential phase started.
+- No bounded external request was sent, so this attempt provides no evidence for or against the Windows `interface-name` bypass hypothesis.
+- Cleanup/read-back restored the accepted baseline and exact VPS `/32` route count remained zero.
+- The failure is a runner readiness-check defect: the startup check rejected any UDP endpoint owned by Mihomo even though HY2 itself is UDP-based and may legitimately create a local ephemeral UDP socket.
+- The reported P6 failure phase is also telemetry drift: `finally` overwrote the phase before the final failure report. Based on execution ordering and markers, the actual failure occurred in P4 before the local proxy-ready marker.
+- No retry is authorized. Repair and non-consequential validation must complete before fresh Owner authorization is requested.
