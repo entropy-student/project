@@ -94,21 +94,23 @@ No production mutation is authorized in C2B. Current rollback/continuity baselin
 - **Failure classification:** this is treated as runner/evidence-shape incompatibility until a read-only object-shape diagnostic identifies the missing property; it is not evidence of network drift.
 - **D1 local-path result:** Owner reported `Test-Path` for the reviewed diagnostic in the existing Codex worktree returned `False`. Canonical GitHub contains the diagnostic, so the local worktree is stale rather than the diagnostic being absent from canonical.
 - **D1R1 root result:** Owner-reported bounded checkpoint returned `WORKTREE_ROOT_MISMATCH` before fetch/sync/diagnostic. No C2B runner or network action occurred. Reviewer classifies the fault as an incorrect hardcoded Git-root assumption in the checkpoint, not local repository drift.
+- **D1R2 path-encoding result:** Owner-reported Git top-level rendered the Chinese path component `VPS搭建` as mojibake `VPS鎼缓`; the checkpoint then compared that decoded string with the correct .NET Unicode runner path and returned `RUNNER_OUTSIDE_GIT_ROOT`. No fetch/update/diagnostic/C2B/network action occurred. This is a native-output path-decoding defect, not repository topology evidence.
 - **Benchmark detour remains cancelled.**
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2B_OWNER_DYNAMIC_ROOT_SYNC_AND_DIAGNOSTIC_D1R2
+GATE_ID=G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=RETURN_WORKTREE_ROOT_MISMATCH
-OBJECTIVE=Dynamically resolve the actual Git worktree root from the already-proven C2B runner path, then safely ff-only synchronize canonical main and run only the reviewed read-only D1 diagnostic.
-MAX_ENDPOINT_THIS_ROUND=Dynamic git-root discovery -> project-scope cleanliness -> fetch origin main -> ancestor proof -> ff-only update -> diagnostic blob proof -> D1 read-only diagnostic -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=RETURN_RUNNER_OUTSIDE_GIT_ROOT_PATH_ENCODING
+OBJECTIVE=Avoid decoding Git paths containing Chinese characters by running all Git operations from the already-proven runner directory, safely ff-only synchronize origin/main, prove the diagnostic file identity, and run only D1.
+MAX_ENDPOINT_THIS_ROUND=Runner-directory Git-context proof -> project-scope cleanliness via relative pathspec -> fetch origin main -> ancestor proof -> ff-only update -> diagnostic tracked/content proof -> D1 read-only diagnostic -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Existing Codex worktree containing the proven runner path; actual Git root must be resolved by git rev-parse and not hardcoded.
-APPLICABLE_CRITICAL_CONSTRAINTS=No reset/force/stash/rebase/checkout overwrite; fail on project dirt/divergence; no C2B runner retry; no Clash/Mihomo UI; no DPAPI/Secret; no VPS; no route/proxy/TUN/WG mutation.
+TARGET_AND_SCOPE=Known runner directory under the existing Codex worktree; no Git top-level path parsing or Unicode path comparison.
+APPLICABLE_CRITICAL_CONSTRAINTS=No reset/force/stash/rebase/checkout overwrite; no decoded Git path used as a Windows filesystem locator; fail on dirt/divergence; no C2B retry; no Clash/Mihomo UI; no DPAPI/Secret; no VPS; no route/proxy/TUN/WG mutation.
 KNOWN_EXISTING_RUNNER_PATH=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\c2b-owner-clash-ui-canary.ps1
-DIAGNOSTIC_REPO_PATH=vpn-network-optimization/scripts/c2b-network-state-shape-diagnostic.ps1
+PROJECT_DIR_BASENAME=vpn-network-optimization
+DIAGNOSTIC_FILENAME=c2b-network-state-shape-diagnostic.ps1
 DIAGNOSTIC_BLOB=895af3b8c2adccec3a8671ad8130792e4bdca3c3
 SPECIALIST_RULES=11B_TARGET_HOST
 ESTIMATED_EXECUTION_TIME=2-5_minutes
@@ -118,64 +120,64 @@ TIMING_OBSERVABILITY_REQUIRED=YES
 ### PREFLIGHT
 
 1. Use the real Windows host and elevated PowerShell 7.6.6.
-2. Require the known existing runner path to exist.
-3. Resolve the actual Git root with `git -C <runner-directory> rev-parse --show-toplevel`; do not compare it to a hardcoded path.
-4. Resolve the runner's repository-relative path with `git -C <git-root> ls-files --full-name -- <runner-path>`. Require exactly one tracked path and derive the project prefix from that tracked path.
-5. Require project-scope `git status --porcelain -- <derived-project-prefix>` to be empty before fetch/update.
-6. Fetch only `origin main`; require local HEAD to be an ancestor of fetched `origin/main`.
-7. Update only with `git merge --ff-only origin/main`.
-8. Require post-update project scope clean.
-9. Resolve the D1 diagnostic by the **same derived project prefix**, require it exists and its Git blob is exactly `895af3b8c2adccec3a8671ad8130792e4bdca3c3`.
-10. Only then execute the D1 diagnostic. Do not run C2B.
+2. Require the known runner path to exist; derive `runnerDir` and `projectDir` using .NET filesystem operations only.
+3. Require `projectDir` basename exactly `vpn-network-optimization`.
+4. Prove `runnerDir` is inside a Git worktree using `git -C <runnerDir> rev-parse --is-inside-work-tree`; do not read or compare `--show-toplevel`.
+5. Prove the runner is tracked using `git -C <runnerDir> ls-files --error-unmatch -- c2b-owner-clash-ui-canary.ps1`; do not consume the path text.
+6. Require project-scope clean with `git -C <runnerDir> status --porcelain -- ..`; do not print dirty path text. Any non-empty result => RETURN.
+7. Fetch only `origin main`; read only ASCII commit IDs from `rev-parse HEAD` and `rev-parse origin/main`.
+8. Require HEAD ancestor of origin/main; update only by `git -C <runnerDir> merge --ff-only origin/main`.
+9. Require post-update project scope clean.
+10. Require the D1 diagnostic file at `Join-Path runnerDir DIAGNOSTIC_FILENAME`, prove it is tracked using basename-relative `ls-files --error-unmatch`, and prove its working-tree Git blob with `hash-object` equals the locked blob.
+11. Only then run D1. Do not run C2B.
 
 ### REQUIRED_EVIDENCE
 
-- PowerShell 7.6.6 / Administrator / High integrity;
-- dynamically resolved Git root and tracked runner-relative path;
-- derived project prefix;
+- Owner runtime pass;
+- Git worktree context pass without top-level path decoding;
+- runner tracked;
 - pre-sync project clean;
-- HEAD before / fetched origin/main;
-- ancestor proof;
-- ff-only PASS;
+- HEAD before / origin/main commit;
+- ancestor + ff-only pass;
 - HEAD after / post-sync project clean;
-- diagnostic path exists and exact blob matches;
-- D1 diagnostic bounded output, timing, `NETWORK_MUTATION=NONE`, `SECRET_VALUES_EMITTED=0`.
+- diagnostic tracked + blob match;
+- D1 bounded property-shape output, timing, `NETWORK_MUTATION=NONE`, `SECRET_VALUES_EMITTED=0`.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires the Git root/project prefix to be dynamically proven from the tracked runner, a non-destructive ff-only synchronization to canonical main, exact diagnostic identity, and successful read-only D1 evidence. Any ambiguity, untracked runner, dirt, divergence, Git failure, blob mismatch, diagnostic failure, mutation, or sensitive output => precise RETURN.
+PASS_CANDIDATE requires no Git-path decoding dependency, clean + ancestor-proven ff-only synchronization, exact diagnostic identity, and successful read-only D1 evidence. Any dirt/divergence/Git failure/blob mismatch/diagnostic failure/mutation => precise RETURN.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-No destructive Git action is authorized. ff-only is the only local revision update. If any precondition fails, stop without resetting or discarding local state. D1 remains read-only.
+No destructive Git operation is authorized. The only repository update is ancestor-proven ff-only. D1 is read-only.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the single Reviewer-supplied atomic PowerShell D1R2 checkpoint in the existing elevated PowerShell 7.6.6 window and return its complete non-secret output.
+Run the Reviewer-supplied single atomic D1R3 PowerShell checkpoint in the current elevated 7.6.6 window and return its complete non-secret output.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-Do not rerun C2B. Wait for D1R2 Owner output, persist only bounded dynamic-root/Git-sync/diagnostic facts, and STOP_AT_REVIEWER.
+Do not rerun or patch C2B. Wait for Owner D1R3 output; persist bounded Git-sync/diagnostic facts only; STOP_AT_REVIEWER.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-Return `PASS_CANDIDATE_G3C_C2B_OWNER_DYNAMIC_ROOT_SYNC_AND_DIAGNOSTIC_D1R2` or precise `RETURN_*`; STOP_AT_REVIEWER.
+Return `PASS_CANDIDATE_G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3` or precise `RETURN_*`; STOP_AT_REVIEWER.
 
 ## NEXT_STEP
 
-Resolve the real Git root from the already-existing tracked C2B runner instead of assuming a root path; if the project is clean and safely fast-forwardable, synchronize and immediately run only D1.
+Use Git entirely from the known runner directory, avoiding Git-emitted Chinese filesystem paths. If the project is clean and safely fast-forwardable, synchronize canonical main and run only D1.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the D1R2 atomic PowerShell checkpoint supplied by Reviewer. Do not manually search for the repository root and do not run the C2B canary runner.
+Run the D1R3 atomic PowerShell checkpoint supplied by Reviewer. Do not rerun C2B.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-Wait for D1R2 Owner-local output. No C2B patch/retry until Reviewer sees the property-shape evidence.
+Wait for D1R3 Owner output. No C2B patch/retry until Reviewer receives D1 property-shape evidence.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
-Return PASS_CANDIDATE_G3C_C2B_OWNER_DYNAMIC_ROOT_SYNC_AND_DIAGNOSTIC_D1R2 or precise RETURN; STOP.
+Return PASS_CANDIDATE_G3C_C2B_OWNER_SUBDIR_GIT_SYNC_AND_DIAGNOSTIC_D1R3 or precise RETURN; STOP.
 
 ## EVIDENCE_POINTERS
 
