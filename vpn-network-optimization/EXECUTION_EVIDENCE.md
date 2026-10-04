@@ -6565,3 +6565,25 @@ REVIEWER_RESULT=PASS_G4B0_REPAIR_CHECKPOINT_READY
 ```
 
 The checkpoint is non-consequential and exists only to revalidate the repaired runner + validator on the Owner PowerShell host. It does not read the HY2 recovery bundle, start Mihomo, send traffic, or mutate networking.
+
+
+## G4-B0 repair checkpoint validator variable-expansion return — 2026-10-04
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+G4B0_REPAIRED_AST=PASS
+CHECKPOINT_VALIDATOR=RETURN
+FAILURE=UNSET_VARIABLE_$udp_UNDER_STRICTMODE
+LIVE_RUNNER_STARTED=NO
+SECRET_ACCESS=NO
+EXTERNAL_REQUESTS=0
+NETWORK_MUTATION=NO
+LIVE_AUTHORIZATION=NOT_GRANTED
+```
+
+Reviewer reconciliation:
+- The checkpoint remained non-consequential.
+- Root cause was validator self-expansion of `$udp` and `$script:proxyPort` inside double-quoted static-search strings under StrictMode.
+- Repair changed those static searches to literal-safe strings; live runner semantics were not changed.
+- Fresh validator blob: `e38fb49de49ffcaafb5fff505c1b05919072efaa`.
+- Owner-host repair checkpoint remains required before any fresh live authorization request.
