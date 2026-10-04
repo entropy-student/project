@@ -1,6 +1,6 @@
 # G4-B0 Windows Mihomo interface-name bypass canary
 
-Status: PROPOSED / OWNER_AUTHORIZATION_REQUIRED
+Status: PASS / REVIEWER_ACCEPTED
 
 ## GATE_ID
 
@@ -152,3 +152,25 @@ Do not replay historical network diagnostics.
 Standard short completion packet; detailed sanitized proof to `EXECUTION_EVIDENCE.md`.
 
 Mandatory Reviewer stop after the canary.
+
+
+## REVIEWER_FINAL_RESULT
+
+```text
+RESULT=PASS
+REVIEWED_AT=2026-10-04
+INTERFACE_NAME_BYPASS=PASS
+OPENAI_PROXY_REQUEST=PASS_HTTP_401
+PUBLIC_EXIT=EXPECTED_SFO3
+REQUEST_COUNT=2
+ACTIVE_VPS_32_ROUTE_BEFORE=0
+PERSISTENT_VPS_32_ROUTE_BEFORE=0
+ACTIVE_VPS_32_ROUTE_AFTER=0
+PERSISTENT_VPS_32_ROUTE_AFTER=0
+WIREGUARD_PRESERVED=YES
+SYSTEM_PROXY_FINAL=OFF
+TUN_FINAL=OFF
+SECRET_RUNTIME_CLEANUP=PASS
+```
+
+Formal conclusion: on the current Owner Windows host, Mihomo `interface-name` is accepted for HY2 physical-egress bypass while WireGuard remains connected, without an exact VPS `/32` route.
