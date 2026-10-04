@@ -1,0 +1,41 @@
+{
+  "baseline": "Accepted D1R2 containers-after/volumes-after/networks-after, not a fabricated D2 pre-edit snapshot",
+  "time": "2026-10-04T06:19:36.911Z",
+  "containerIdentityStateMountsPortsUnchanged": true,
+  "volumeNamesUnchanged": true,
+  "networkIdsNamesUnchanged": true,
+  "unrelatedProjectionUnchanged": true,
+  "projectHealth": [
+    {
+      "id": "de9742647e062fddd40b9d7e310be52db57281e89cbba3fd6f39530a28759873",
+      "name": "/birthday-magazine-g3c-wpcli-1",
+      "status": "exited",
+      "health": null
+    },
+    {
+      "id": "21892d72baebe6157fbeab15ad6a1e3949cf4663ca55b45360c3f4eb1f052f00",
+      "name": "/birthday-magazine-g3c-wordpress-1",
+      "status": "running",
+      "health": null
+    },
+    {
+      "id": "361d58eb545432b915badbab118aaeb8bf2d4b591d1b5bd753fb7393383579aa",
+      "name": "/birthday-magazine-g3c-db-1",
+      "status": "running",
+      "health": "healthy"
+    },
+    {
+      "id": "35d286e7af500c5282a6ad6b8007a23ea177ff57f3a965effe39f2b63c0a0438",
+      "name": "/birthday-magazine-g3c-mailpit-1",
+      "status": "running",
+      "health": "healthy"
+    }
+  ],
+  "startsThisRound": 0,
+  "rebuilds": 0,
+  "pulls": 0,
+  "recreates": 0,
+  "teardowns": 0,
+  "globalPrunes": 0,
+  "runtimeRetained": true
+}

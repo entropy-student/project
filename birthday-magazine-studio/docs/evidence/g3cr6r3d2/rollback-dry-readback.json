@@ -1,0 +1,12 @@
+{
+  "mode": "dry_no_write",
+  "integrity": true,
+  "home_id": 858,
+  "restorable_groups": 8,
+  "preview_present": true,
+  "menu_id": 1098,
+  "restore_hash": "3f678c490ff78f91d0918aacf4edd236d58500dced0a3ac229f0c865e86e1269",
+  "write_count": 0,
+  "source_backup_hashes_verified": true,
+  "source_action": "dry_no_source_write"
+}

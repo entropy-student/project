@@ -1,0 +1,78 @@
+{
+  "time": "2026-10-04T06:30:43.379Z",
+  "hashConvention": "Raw local bytes; normalizedLF additionally recorded for text across Git CRLF checkout",
+  "files": [
+    {
+      "file": "preview-plugin/home.css",
+      "bytes": 16923,
+      "sha256": "7af7757bef0aa1573b0b1e28f2026b37836af68ec8b73cfb20497a82816a5e0a",
+      "normalizedLF": "04c9412e01f1b480b270f67f7dac624124c4b25c66712e330fb029d69fbe36ca"
+    },
+    {
+      "file": "preview-plugin/home-motion.js",
+      "bytes": 3605,
+      "sha256": "b1dc2d6e1c46d7761e67002493b2b648ef8417689d3dfb87bf4b5e6dea989aa7",
+      "normalizedLF": "b1dc2d6e1c46d7761e67002493b2b648ef8417689d3dfb87bf4b5e6dea989aa7"
+    },
+    {
+      "file": "preview-plugin/birthday-magazine-poc.php",
+      "bytes": 6629,
+      "sha256": "eb46a5c62f21b8f375ef023d48d744a2c140b1f44d61cf760ead5271ee7dfd9d",
+      "normalizedLF": "9584721c29520e5be5bf02a37febfe75e6369352b9157075ddac2e3cebef0495"
+    },
+    {
+      "file": "preview-plugin/preview.js",
+      "bytes": 2978,
+      "sha256": "59ba672be58d8f33ebb83b978ef5678c5f0c5e102fce88de8a0c1ebc8b82dabc",
+      "normalizedLF": "5dff548bd8541e18435f0dec598a3e8d91ba1b8f6578f345a774adb0c47794f9"
+    },
+    {
+      "file": "preview-plugin/magazine-preview.css",
+      "bytes": 6372,
+      "sha256": "c7cfd022626ade6b4d117e1fd9773f579c822d19455ec6e1ab251fa6e4d40bae",
+      "normalizedLF": "c7cfd022626ade6b4d117e1fd9773f579c822d19455ec6e1ab251fa6e4d40bae"
+    },
+    {
+      "file": "preview-plugin/g3cr5-commerce.css",
+      "bytes": 8374,
+      "sha256": "b48550b265397852312a42abe2627b6e0e13c7e38eeeef13d734da1f6676e0f8",
+      "normalizedLF": "b48550b265397852312a42abe2627b6e0e13c7e38eeeef13d734da1f6676e0f8"
+    },
+    {
+      "file": "preview-plugin/g3cr6-brand.css",
+      "bytes": 12574,
+      "sha256": "567ad23e31c8d5040b8de327d9e7f1525b3c39625844fc49e48eda78d3439377",
+      "normalizedLF": "567ad23e31c8d5040b8de327d9e7f1525b3c39625844fc49e48eda78d3439377"
+    },
+    {
+      "file": "preview-plugin/routes.css",
+      "bytes": 1077,
+      "sha256": "95c6cd4077606f8aac18c476f89f4544fb3920036ec88b59131f4e469bddef10",
+      "normalizedLF": "e7ef1ed7ae3d78cfa144ce1b0a3673a47495887656f2e53b60a5d723e1994280"
+    },
+    {
+      "file": "commerce-workspace-plugin/bms-g3a-commerce-loop.php",
+      "bytes": 5117,
+      "sha256": "e971d02be42e4dbb01b1cc1c614cd49d76991ad1df2f253cec80825f0b9823d2",
+      "normalizedLF": "ad7fd340c87c6ed284d7cfff0578b72429b7265bc5e0ad24f701e71c4947d1dc"
+    },
+    {
+      "file": "preview-plugin/assets/g3cr6/gift-hero.png",
+      "bytes": 2425284,
+      "sha256": "24663a05ded782802a36b4f4e8f6dc789d9c1e7f4b2cc445ff6e3a560651fca0",
+      "normalizedLF": null
+    },
+    {
+      "file": "preview-plugin/assets/g3cr6/sample-cover.png",
+      "bytes": 2231738,
+      "sha256": "9ee07a061e7066abac864b589f71f702d5f9c965e5b388fea2dd9fef355bdb7f",
+      "normalizedLF": null
+    },
+    {
+      "file": "preview-plugin/assets/g3cr6/sample-spread.png",
+      "bytes": 2348418,
+      "sha256": "48a6fcf303334a0d7bd4722b7eaea713495e3f6ab64a5c73f89c2ae98ec4eed9",
+      "normalizedLF": null
+    }
+  ]
+}

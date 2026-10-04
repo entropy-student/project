@@ -657,3 +657,19 @@ This is the latest Executor state and supersedes only the earlier local-readback
 - Existing Owner artifacts/17 deleted old PNGs/untracked benchmark-resume evidence preserved and excluded. No Reviewer decision file changed. Final commit/push/PR refresh verified without merge.
 
 Next: Reviewer assesses fresh local readback and exact homepage-only D2 proposal, including the two known navigation issues. `STOP_AT_REVIEWER=YES`; `Owner relay=NONE`; D2/G4 not started. Owner visual freeze pending.
+
+## Current execution append — G3CR6R3D2 (2026-10-04)
+
+This is the current Executor candidate; it preserves prior history and leaves formal Reviewer decisions unchanged.
+
+- **Gate/result:** `G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION` / **PASS_CANDIDATE**. Continue existing branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, PR #64 open/unmerged. D2 is implemented; no next Gate.
+- **Git:** approved starting head89deb53b578fb6e0ddaeaf20e582fc97f23fd9a2; subsequent Owner quality-first image authorization fast-forwarded to7bc7bc69a9dce91ddad4939e34ef4a8ebc6b1085. Fresh canonical main a3ca2f851398de47724452896465a900dcec8d50 project authority reconciled. Enclosing execution/evidence commit is final submission identity, returned after push and linked in PR64.
+- **Review first:** `docs/evidence/g3cr6r3d2/README.md`;53 final PNGs under `round2/screenshots/`, browser/machine reports, DESIGN.md, font license/provenance, source and resource correlation. Accepted D1 mapping/66 screenshots reused, not recrawled.
+- **Visual:** independently implemented focus-frame/photo Hero, large serif, warm paper, capsule navigation, alternating image/copy and dark photo panels, three scroll cards, hover/entrance/reveal, strong dark closing. Eight editable Home858 Groups/six anchors retained. Both1440/375 and reduced/no-JS/controller-unavailable show complete readable content. Internal two-round craft check resolved five defects; not a formal governance PASS.
+- **Narrow fixes/boundaries:** only mobile menu1098 target repaired to#samples. Privacy policy remains unresolved because configured page is draft; footer untouched. Preview JS/CSS/shortcode internals frozen; only outer wrapper and guarded homepage-controller enqueue. No photo-state/Preview-privacy retest or fresh authenticated-access claim. Source hashes and previous accepted proof reused. Owner remains Administrator with Gutenberg/Home/media/global-style capabilities.
+- **Commerce:** Product1113 virtual USD39.99 and native Product/Cart/Account GET200; empty-cart Checkout→Cart200. No AddCart, submit, account/order/payment/provider/model action. Orders1→1; jobs/model0. Woo/workspace/entitlement/P1–P12/Aha unchanged. Imagegen0; licensed Google Fonts OFL typography independently sourced.
+- **Rollback:** full scoped pre-write Home/menu/source snapshots at `poc/g3c/artifacts/backups/g3cr6r3d2/`; `scripts/rollback-g3cr6r3d2.cjs` default dry PASS. Actual restoration not executed. No DB/volume reset; optional future explicit apply restores only touched surfaces.
+- **Runtime:** retained healthy at http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/. Existing Docker identities/state/mounts/volumes/network IDs and unrelated projections unchanged versus accepted D1R2. No start/build/pull/recreate/prune/teardown. No credentials/session/auth data retained.
+- **Submission hygiene:** pre-existing Owner archives/17 PNG deletions/untracked old benchmark evidence excluded. Reviewer files untouched. All forbidden action counts0, no merge.
+
+Please assess visual fidelity,375px quality, actual motion, accessibility fallbacks and Preview/Woo/account freeze boundaries before any Owner visual confirmation. **STOP_AT_REVIEWER=YES; Owner relay=NONE; OWNER_VISUAL_FREEZE=PENDING.**

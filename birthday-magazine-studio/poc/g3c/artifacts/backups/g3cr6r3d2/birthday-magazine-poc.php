@@ -11,7 +11,6 @@ add_action('wp_enqueue_scripts', function () {
  wp_enqueue_style('bms-studio', plugins_url('studio.css', __FILE__), [], '0.3.0');
  if (is_front_page()) {
   wp_enqueue_style('bms-home', plugins_url('home.css', __FILE__), ['bms-studio'], '0.3.0');
-  wp_enqueue_script('bms-home-motion', plugins_url('home-motion.js', __FILE__), [], '0.3.0', true);
  }
  $post = get_post();
  if (is_singular() && $post && has_shortcode($post->post_content, 'bms_preview')) {

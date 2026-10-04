@@ -1,0 +1,139 @@
+{
+    "home_id": 858,
+    "home_title": "Home",
+    "home_sha256": "2e344d1edb45808d31e5e2ca8622a349dce6d58057acac424f1ed8538edbdc87",
+    "groups": [
+        {
+            "class": "bms-hero",
+            "anchor": null
+        },
+        {
+            "class": "bms-included bms-focus-split",
+            "anchor": "what-you-get"
+        },
+        {
+            "class": "bms-preview-chapter",
+            "anchor": "preview"
+        },
+        {
+            "class": "bms-how bms-focus-split",
+            "anchor": "how-it-works"
+        },
+        {
+            "class": "bms-offer bms-focus-photo-panel bms-panel-right",
+            "anchor": "offer"
+        },
+        {
+            "class": "bms-faq",
+            "anchor": "faq"
+        },
+        {
+            "class": "bms-samples",
+            "anchor": "samples"
+        },
+        {
+            "class": "bms-value-strip bms-closing",
+            "anchor": null
+        }
+    ],
+    "preview_shortcode_present": true,
+    "gutenberg": true,
+    "theme": "blocksy",
+    "theme_version": "2.1.57",
+    "page_template_slug": "",
+    "resolved_page_template": "wp-content/themes/blocksy/page.php",
+    "wordpress": "7.1.1",
+    "woocommerce": "11.1.2",
+    "menus": {
+        "menu_1": [
+            {
+                "label": "Home",
+                "url": "http://127.0.0.1:8189/"
+            },
+            {
+                "label": "What You Get",
+                "url": "http://127.0.0.1:8189/#what-you-get"
+            }
+        ],
+        "menu_mobile": [
+            {
+                "label": "How It Works",
+                "url": "http://127.0.0.1:8189/#how-it-works"
+            },
+            {
+                "label": "Home",
+                "url": "http://127.0.0.1:8189/"
+            },
+            {
+                "label": "FAQ",
+                "url": "http://127.0.0.1:8189/#faq"
+            },
+            {
+                "label": "Free Preview",
+                "url": "http://127.0.0.1:8189/#preview"
+            },
+            {
+                "label": "Sample Pages",
+                "url": "http://127.0.0.1:8189/#samples"
+            },
+            {
+                "label": "What You Get",
+                "url": "http://127.0.0.1:8189/#what-you-get"
+            }
+        ],
+        "footer": [],
+        "menu_2": [
+            {
+                "label": "How It Works",
+                "url": "http://127.0.0.1:8189/#how-it-works"
+            },
+            {
+                "label": "FAQ",
+                "url": "http://127.0.0.1:8189/#faq"
+            },
+            {
+                "label": "Free Preview",
+                "url": "http://127.0.0.1:8189/#preview"
+            }
+        ]
+    },
+    "owner_administrator": true,
+    "owner_edit_home": true,
+    "owner_media": true,
+    "owner_global_style": true,
+    "product": {
+        "id": 1113,
+        "price": "39.99",
+        "currency": "USD",
+        "virtual": true,
+        "url": "http://127.0.0.1:8189/product/birthday-magazine/"
+    },
+    "routes": {
+        "cart": "http://127.0.0.1:8189/cart/",
+        "checkout": "http://127.0.0.1:8189/checkout/",
+        "account": "http://127.0.0.1:8189/my-account/"
+    },
+    "checkout_guest_enabled": "no",
+    "checkout_signup_enabled": "yes",
+    "footer_sha256": "b3ba80fff8ca648705d2a7042c0547b4072c76040a9abc2139a2dd916887c638",
+    "theme_mods_sha256": "5d0a364f9ce5a62931432798c6684f2105802a54650f4bfe237e0826547d1f38",
+    "order_count": 1,
+    "generation_jobs": 0,
+    "product_model_calls": 0,
+    "active_plugins": [
+        "blocksy-companion/blocksy-companion.php",
+        "bms-g3a-commerce-loop/bms-g3a-commerce-loop.php",
+        "bms-g3c-preview/birthday-magazine-poc.php",
+        "simply-gallery-block/plugin.php",
+        "stackable-ultimate-gutenberg-blocks/plugin.php",
+        "woocommerce/woocommerce.php",
+        "wpforms-lite/wpforms.php"
+    ],
+    "protected_runtime_hashes": {
+        "commerce_workspace": "e971d02be42e4dbb01b1cc1c614cd49d76991ad1df2f253cec80825f0b9823d2",
+        "woocommerce_main": "a22b424b59842caa0d84741f34da240498a553fe1133a8590eebb5192f02483b",
+        "preview_php": "eb46a5c62f21b8f375ef023d48d744a2c140b1f44d61cf760ead5271ee7dfd9d",
+        "preview_js": "59ba672be58d8f33ebb83b978ef5678c5f0c5e102fce88de8a0c1ebc8b82dabc",
+        "preview_css": "c7cfd022626ade6b4d117e1fd9773f579c822d19455ec6e1ab251fa6e4d40bae"
+    }
+}
