@@ -207,7 +207,7 @@ $descendantSkip = $secretHelper.Replace(
 Assert-ExpectedFailure -Expected 'SECRET_SCAN_ROOT_LOCK_EXCEPTION_CONTRACT_INVALID' -O $orchestrator -S $descendantSkip -P $probe -T $template -D $package
 
 $anyExtensionSkip = $secretHelper.Replace(
-    "$isLock = $freshItem.Extension -ieq '.lock'",
+    '$isLock = $freshItem.Extension -ieq ''.lock''',
     '$isLock = $true'
 )
 Assert-ExpectedFailure -Expected 'SECRET_SCAN_ROOT_LOCK_EXCEPTION_CONTRACT_INVALID' -O $orchestrator -S $anyExtensionSkip -P $probe -T $template -D $package
