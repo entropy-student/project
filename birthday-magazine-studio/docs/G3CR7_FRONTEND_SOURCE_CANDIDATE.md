@@ -3,7 +3,7 @@
 > Date: 2026-10-04
 > Governance: vps-project-governance v0.2.7
 > PR: #64
-> Candidate head: `5327c690e2dfe3aaab306f7c85d02fa0ac06f5b4`
+> Candidate head: `0603706ca0441fb1cb65ff716f47f7a919e2e4f3`
 
 ## Result
 
@@ -58,13 +58,21 @@ Relative to the accepted G3CR7 opening head `e71f94377d341a88ba388f2c5da153e7cd6
 
 ## Verification
 
-- all eight changed source files fresh-read successfully from PR #64;
+- all changed G3CR7 source files fresh-read successfully from PR #64;
 - no truncation markers or merge-conflict markers found;
 - all four changed JavaScript files parse successfully in V8;
 - `frontend-flow.php` PHP lint: PASS;
 - changed `birthday-magazine-poc.php` PHP lint: PASS;
 - compare against G3CR7 opening head shows no non-project files;
-- static reference previews at 1440px and 375px showed no horizontal overflow, but they are **reference-only**, not authoritative WordPress runtime evidence.
+- static reference previews at 1440px and 375px showed no horizontal overflow, but they are **reference-only**, not authoritative WordPress runtime evidence;
+- Reviewer correction at `0603706c...`: free-Preview style is carried into intake, and payment/generation status is derived from WooCommerce paid truth rather than query-string claims.
+
+## Reviewer source corrections
+
+- The free Preview style choice now preselects the matching magazine style on the intake page.
+- The dedicated status surface checks the signed-in order owner and WooCommerce `is_paid()` before displaying paid/generating truth.
+- The Woo order-received continuation also derives paid state from the actual order.
+- A forged `order_id` or `state=ready` query cannot promote an unpaid/foreign order into a paid/ready presentation.
 
 ## Remaining checkpoint
 

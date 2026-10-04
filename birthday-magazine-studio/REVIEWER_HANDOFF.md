@@ -86,7 +86,9 @@ CORE_FUNCTION_ONBOARDING_SURFACE=SOURCE_CANDIDATE_READY
 POSTPAY_GENERATION_STATUS_SURFACE=SOURCE_CANDIDATE_READY
 P1_P12_VISUAL_WORK=DEFERRED_UNTIL_FRONTEND_THREE_SURFACES_CLOSE
 G3CR7_SOURCE_CANDIDATE=PASS_CANDIDATE_SOURCE_ONLY
-G3CR7_SOURCE_HEAD=5327c690e2dfe3aaab306f7c85d02fa0ac06f5b4
+G3CR7_SOURCE_HEAD=0603706ca0441fb1cb65ff716f47f7a919e2e4f3
+G3CR7_PAYMENT_TRUTH_REVIEW=PASS
+G3CR7_PREVIEW_STYLE_HANDOFF=PASS
 G3CR7_RUNTIME_VISUAL=UNVERIFIED
 G3CR7_OWNER_VISUAL=PENDING
 COMMERCIAL_STATE=LOW_COST_VALIDATION_NOT_SCALE
@@ -208,7 +210,7 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Load PR #64 candidate `5327c690e2dfe3aaab306f7c85d02fa0ac06f5b4` into the retained local WordPress runtime without production deployment.
+1. Load PR #64 candidate `0603706ca0441fb1cb65ff716f47f7a919e2e4f3` into the retained local WordPress runtime without production deployment.
 2. Capture 1440px + 375px evidence for the homepage entry, all intake states, generation/ready status, and Woo order-received continuation.
 3. Reviewer checks runtime behavior and scope; Owner reviews the three surfaces visually.
 4. Only after that checkpoint may G3CR7 PASS. Backend pre-payment draft persistence is a later Gate; P1-P12 remains deferred.
@@ -220,6 +222,7 @@ Protected backend behavior for the current visual/research phase:
 ## EVIDENCE_POINTERS
 
 Current G3CR7:
+1. `docs/REVIEWER_DECISION_G3CR7_SOURCE_PASS_RUNTIME_VISUAL_PENDING.md`
 1. `docs/G3CR7_FRONTEND_SOURCE_CANDIDATE.md`
 1. `docs/OWNER_DECISION_G3CR7_THREE_FRONTEND_SURFACES_2026-10-04.md`
 2. `docs/G3CR7_THREE_FRONTEND_SURFACES.md`
