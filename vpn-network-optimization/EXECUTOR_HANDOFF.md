@@ -1,4 +1,26 @@
-## Current execution status — G3C C2C local proxy listener diagnostic D4
+## Current execution status — G3C C2C local proxy protocol diagnostic D5
+
+```text
+GATE_ID=G3C_C2C_LOCAL_PROXY_PROTOCOL_DIAGNOSTIC_D5
+EXECUTOR_ROLE=NO_EXECUTION_PENDING_OWNER_DIAGNOSTIC
+PREVIOUS_RESULT=PASS_D4_STALE_PROXY_METADATA_CONFIRMED
+C2C_RETRY_AUTHORIZED=NO
+SOURCE_REPAIR_AUTHORIZED=NO
+OWNER_LOCAL_D5_REQUIRED=YES
+PROTOCOL_DIAGNOSTIC_BLOB=7e7045c1e7a8d3290623ec107142b6abec050d56
+DPAPI_ACCESS_AUTHORIZED=NO
+EXTERNAL_NETWORK_REQUESTS_AUTHORIZED=NO
+NETWORK_MUTATION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+No action. Wait for Owner D5 output. Do not patch proxy discovery before D5 proves the live proxy protocol listener.
+
+
+
+## Historical execution status — G3C C2C local proxy listener diagnostic D4
 
 ```text
 GATE_ID=G3C_C2C_LOCAL_PROXY_LISTENER_DIAGNOSTIC_D4
