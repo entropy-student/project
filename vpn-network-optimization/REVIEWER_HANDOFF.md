@@ -103,10 +103,10 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=EXECUTOR_ASSIGNED_OFFLINE
+STATE=EXECUTOR_REPAIR_ASSIGNED_OFFLINE
 PREVIOUS_RESULT=PASS_G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Codex offline runner/package implementation and fixture validation only; no live VPS/Owner mutation.
+MAX_ENDPOINT_THIS_ROUND=Codex R2 offline repair of the reviewed live-runner recovery, runtime filesystem, restart-persistence, rollback-journal, and Evidence-surface defects only; no live VPS/Owner mutation.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
@@ -119,13 +119,14 @@ REVIEWER_TO_EXECUTOR_RELAY=docs/G4B_PERSISTENT_THREE_ROLE_READINESS_GATE.md + do
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
-G4-B0 is formally closed PASS. The G4-B offline live-runner implementation Gate has been assigned to Codex. Reviewer waits for PASS_CANDIDATE/RETURN. No persistent VPS/Windows mutation is authorized in this round.
+G4-B0 is formally closed PASS. G4-B offline runner R1 is Reviewer RETURN despite its offline PASS_CANDIDATE: the Executor stayed in scope, but source review found recovery, runtime-filesystem, restart-persistence, rollback-journal, and live-Evidence gaps. R2 offline repair is assigned to Codex. No persistent VPS/Windows mutation is authorized.
 
 Current G4-B offline Executor identity:
 
 ```text
-G4B_OFFLINE_IMPLEMENTATION_GATE_BLOB=6ebf299166109b0640f2acd93cd8c669bc036b32
-EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_IMPLEMENTATION_AND_FIXTURE_VALIDATION
+G4B_OFFLINE_IMPLEMENTATION_R1_GATE_BLOB=6ebf299166109b0640f2acd93cd8c669bc036b32
+G4B_OFFLINE_REPAIR_R2_GATE_BLOB=b60c1d1bf09cac5467f547b83dc2c13a4af850d8
+EXECUTOR_ROLE=CODEX_DESKTOP_OFFLINE_RUNNER_REPAIR_AND_FIXTURE_VALIDATION
 LIVE_G4B_EXECUTION_AUTHORIZED=NO
 ```
 
@@ -172,8 +173,8 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## UNRESOLVED
 
-- First and repaired-retry G4-B0 live authorizations are both consumed. No live retry is currently authorized.
-- G4-B persistent REALITY/service/Secret/profile writes remain blocked until G4-B0 is formally reviewed.
+- G4-B0 is formally PASS and closed.
+- G4-B persistent REALITY/service/Secret/profile writes remain blocked while the R2 offline live-runner repair is pending.
 - An approved encrypted recovery destination in a second failure domain (distinct from both the SFO3 VPS and this Windows local disk) is still Owner input required before G4-B can PASS.
 - Persistent REALITY backup service does not yet exist; the accepted public REALITY canary was temporary and cleaned.
 - Persistent three-role Clash profile does not yet exist.
@@ -185,13 +186,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner-local AST-only checkpoint PASS on PowerShell 7.6.6. The repaired offline validator also PASSed on the Owner host with zero network mutation and zero Secret access. The live runner remains unchanged. The one-shot live authorization remains valid and unconsumed.
+Codex executes `G4B_OFFLINE_LIVE_RUNNER_REPAIR_R2` only. Reviewer will inspect the repaired runner/fixtures and decide PASS/RETURN before any live G4-B authorization discussion.
 
 ## OWNER_ACTION_REQUIRED
 
-No Owner action is required during the current Codex offline implementation round.
-
-Wait for the Executor result and Reviewer decision. Live G4-B remains a separate later boundary requiring the second-failure-domain recovery destination and its own consequential authorization.
+NONE. The current R2 repair round is offline source/fixture work only.
 
 ## EVIDENCE_POINTERS
 
