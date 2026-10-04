@@ -4448,3 +4448,39 @@ Reviewer conclusion:
 - The runner is minimally repaired to use FileSystemAclExtensions.CreateDirectory for both runtime directories and to set the Owner SID explicitly.
 - The validator now requires the modern create-with-ACL calls and explicit Owner assignment, rejects the legacy Directory overload, and adds a regression fixture.
 - Formal repair acceptance waits for the target-host offline validator; conditional C2B execution is allowed only after that validator passes.
+
+
+## Reviewer reconciliation — ACL-repaired runner still blocked by runtime-root ACL — 2026-10-04
+
+```text
+GATE_ID=G3C_C2B_OWNER_ACL_COMPAT_REPAIR_R1
+OWNER_REPORTED_HEAD_BEFORE=bf42df44157d7c6e948ed8bc19128aa4cdc950b3
+OWNER_REPORTED_ORIGIN_MAIN=276a418ca8d9d919261036fea719e5994e7c1ef5
+OWNER_REPORTED_FAST_FORWARD=PASS
+OWNER_REPORTED_POST_SYNC_PROJECT_CLEAN=PASS
+OWNER_REPORTED_RUNNER_BLOB=817ed91b30efd72f7cbb43fff56e9c55025380b6
+OWNER_REPORTED_VALIDATOR_BLOB=aaddf4810b77655e4a2ae6d94ba3fb443a6b3e3a
+OWNER_REPORTED_TEMPLATE_BLOB=b50f9747157200670d6e85fdd53ba81e9a8c5c76
+OWNER_REPORTED_PACKAGE_BLOB=64b7ea3c562adc241311517c79cc53d966197a6e
+OWNER_REPORTED_LOCKED_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_MODERN_OWNER_ACL_FIXTURE=PASS
+OWNER_REPORTED_OFFLINE_VALIDATOR=PASS
+OWNER_REPORTED_C2B_PROFILE_STORE_BASELINE=PASS
+OWNER_REPORTED_C2B_FAILED_PHASE=CREATE_OWNER_RUNTIME
+OWNER_REPORTED_C2B_FAILURE_CODE=OWNER_ACL_INHERITANCE_ENABLED
+OWNER_REPORTED_LOCAL_RUNTIME_CLEANUP=PASS
+OWNER_REPORTED_OWNER_UI_PROFILE_REMOVED=NO_ACK
+OWNER_REPORTED_SECRET_VALUES_EMITTED=0
+OWNER_REPORTED_C2B_ACTUAL_ELAPSED=00:00:00.7323466
+OWNER_REPORTED_TIME_OVERRUN=NO
+REPAIR_IMPLEMENTATION_DISPROVEN=NO
+LEADING_HYPOTHESIS=PREEXISTING_PROJECT_RUNTIME_ROOT_BYPASSES_NEW_CREATE_WITH_ACL_PATH
+RUNTIME_ROOT_REPAIR_AUTHORIZED=NO
+NEXT_GATE=G3C_C2B_RUNTIME_ROOT_RESIDUE_DIAGNOSTIC_D3
+PROVENANCE=OWNER_REPORTED_PLUS_DIRECT_GITHUB_SOURCE_READBACK
+```
+
+Reviewer conclusion:
+- The target-host validator accepted the ACL repair source, but the runner still failed at runtime-root ACL validation before any UI action.
+- Source readback shows a pre-existing runtime root is validated rather than recreated. Cleanup intentionally removes the root only when the current run created it.
+- Therefore the repaired Method A has not yet been disproven. D3 performs an exact read-only runtime-root residue inspection before any mutation.
