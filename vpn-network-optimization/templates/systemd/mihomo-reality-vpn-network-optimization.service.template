@@ -1,0 +1,20 @@
+[Unit]
+Description=VLESS REALITY backup for vpn-network-optimization
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/lib/vpn-network-optimization/mihomo-reality -d /srv/apps/vpn-network-optimization/reality -f /srv/apps/vpn-network-optimization/secrets/reality-server.yaml
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/apps/vpn-network-optimization/reality
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target
