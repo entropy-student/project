@@ -7373,3 +7373,23 @@ Governance interpretation:
 - the current Windows local disk may hold the first Owner-bound DPAPI recovery copy, but cannot be the sole disaster-recovery domain;
 - ordinary GitHub repository/review artifacts are not an approved destination for private recovery material under the current Gate;
 - no Secret value or recovery artifact is to be committed to the project repository.
+
+
+## Owner selected Baidu Netdisk as G4-B second failure domain — 2026-10-04
+
+```text
+GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
+OWNER_LIVE_AUTHORIZATION=GRANTED
+SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
+SECOND_FAILURE_DOMAIN_BACKEND=CLI_TO_BE_REVIEWED_OFFLINE
+BAIDU_CREDENTIALS_IN_CHAT=FORBIDDEN
+REAL_BAIDU_LOGIN_OR_UPLOAD_THIS_ROUND=NO
+G4B_BAIDU_BACKEND_R4_GATE_BLOB=b07461b85319aaa215396a5e8d6f9fe7ea358ec8
+```
+
+Reviewer note:
+- Baidu Netdisk is accepted as the intended second failure domain in principle.
+- The currently accepted G4-B runner used a filesystem-path recovery backend, so a narrow offline
+  backend-adaptation round is required before live execution.
+- Only the encrypted portable recovery artifact may be sent to Baidu Netdisk.
+- Baidu login/authentication state is Secret-bearing local state and must remain outside Git/chat/Evidence.
