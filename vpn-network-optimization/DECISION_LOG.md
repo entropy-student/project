@@ -307,3 +307,14 @@ No additional protocol shopping is planned for v1 unless later evidence proves a
 **Baseline:** Final WireGuard state was preserved, system proxy/TUN remained OFF, exact VPS `/32` routes remained absent, and protected runtime/Secret cleanup passed.
 
 **Authorization:** The repaired retry authorization is consumed. No live retry is currently authorized.
+
+
+## 2026-10-04 — Owner granted standing authorization within current G4-B0 Gate
+
+**Decision:** Owner explicitly approved authorizations within the current `G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1` Gate.
+
+**Interpretation:** Reviewer may proceed without repeatedly asking for approval for actions already inside the fixed current Gate boundary.
+
+**Non-expansion rule:** This does not authorize any action outside the Gate, including persistent G4-B writes, REALITY deployment, route creation, SSH/VPS mutation, system proxy/TUN activation, benchmark loops, auto-switching, or G4-C.
+
+**Governance override prohibited:** If governance requires a fresh post-failure Owner authorization after a consequential failure, or if the Gate boundary changes, Reviewer must stop and obtain that fresh authorization despite this standing preference.
