@@ -40,7 +40,7 @@ add_action('woocommerce_before_cart', function () {
  bms_gift_route_intro('THE GIFT YOU CHOSE', 'A little closer to their big day.', 'Your personalized birthday magazine starts here.');
 });
 add_action('woocommerce_before_checkout_form', function () {
- bms_gift_route_intro('ONE THOUGHTFUL GIFT', 'Make this birthday theirs.', 'Your photos and stories come first. Complete payment to start the issue.');
+ bms_gift_route_intro('ONE THOUGHTFUL GIFT', 'Make this birthday theirs.', 'Complete your purchase, then continue in your private workspace.');
 }, 5);
 add_action('woocommerce_before_customer_login_form', function () {
  bms_gift_route_intro('YOUR PRIVATE SPACE', 'Their story, in good hands.', 'Sign in to continue with your birthday magazine.');
@@ -54,7 +54,7 @@ add_action('woocommerce_after_add_to_cart_form', function () {
 });
 add_action('woocommerce_after_single_product_summary', function () {
  if (get_the_ID() !== 1113) { return; }
- echo '<section class="bms-product-story"><div><p class="bms-eyebrow">MORE THAN A BIRTHDAY MESSAGE</p><h2>A whole issue.<br>One extraordinary person.</h2><p>A cover, a life in photographs, and the people and little moments that make them who they are. Bring the photos and stories into the creator, then checkout when everything is ready.</p><p class="bms-fine">Fictional sample shown. Your purchase is a 12-page digital PDF.</p></div>';
+ echo '<section class="bms-product-story"><div><p class="bms-eyebrow">MORE THAN A BIRTHDAY MESSAGE</p><h2>A whole issue.<br>One extraordinary person.</h2><p>A cover, a life in photographs, and the people and little moments that make them who they are. Bring the story into your private workspace after purchase.</p><p class="bms-fine">Fictional sample shown. Your purchase is a 12-page digital PDF.</p></div>';
  echo wp_get_attachment_image(1138, 'full');
  echo '</section>';
 }, 5);
@@ -86,11 +86,9 @@ add_shortcode('bms_preview', function ($atts) {
    </div>
    <p class="bms-preview-annotation">Their name.<br>Their face.<br>Their very own issue.</p>
   </div>
-  <div class="bms-preview-bottom"><p>Your photo stays in this browser. Nothing is uploaded.<br><span>Illustrative cover + sample spread, not the finished magazine.</span></p><a class="bms-coral-link" data-bms-create-link href="<?php echo esc_url(function_exists('bms7_create') ? bms7_create() : get_permalink(absint($atts['product_id']))); ?>">Make the complete 12-page issue <span>Continue &rarr;</span></a></div>
+  <div class="bms-preview-bottom"><p>Your photo stays in this browser. Nothing is uploaded.<br><span>Illustrative cover + sample spread, not the finished magazine.</span></p><a class="bms-coral-link" href="<?php echo esc_url(home_url('/make-your-magazine/')); ?>">Tell their story in full <span>12 pages · US$39.99 &rarr;</span></a></div>
  </div>
  <?php return ob_get_clean();
 });
 
-
-// G3CR7: presentation-only three-surface flow.
-require_once __DIR__ . '/frontend-flow.php';
+require_once __DIR__ . '/frontend-reproduction.php';

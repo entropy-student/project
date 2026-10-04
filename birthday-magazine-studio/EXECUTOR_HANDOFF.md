@@ -778,3 +778,23 @@ Home858/Preview/media/menu/theme/business/runtime protected states unchanged; no
 Same branch/PR64 open/unmerged, baseline022ad6de2d64237ad6669c5c4a29e6eef11cea79; fresh main301eda93ee91bef860341ec280e95f39f97cbcf7 project authority unchanged. Enclosing submission commit pushed/read back; no new PR. Backup `poc/g3c/artifacts/backups/g3cr6r3d2r4-hero-range/` restores prior Hero-focus two source files; staged byte check PASS, actual restore not executed. Docker project/unrelated resources unchanged. Runtime retained http://127.0.0.1:8189/ ; http://127.0.0.1:8189/wp-admin/ . Owner files/deletions excluded and Reviewer decisions untouched.
 
 Reviewer: check Hero-only diff, larger bounds, layered readability/hit-test proof and freeze correlation. Owner: Ctrl+F5 and move cursor across navigation and title. Physical-device smoothness/visual freeze remains pending. **STOP_AT_REVIEWER=YES.**
+
+## Current handoff — G3CR7R1 Executor reproduction (2026-10-05)
+
+**Executor result: `PASS_CANDIDATE_G3CR7R1_EXECUTOR_REPRODUCTION`; STOP_AT_REVIEWER=YES.** This is an independent implementation against accepted baseline `e71f94377d341a88ba388f2c5da153e7cd6ee8b8`, not promotion of the prior Reviewer prototype. Existing PR #64 remains the only submission; do not merge or enter a later Gate.
+
+Read [`docs/evidence/g3cr7r1/README.md`](docs/evidence/g3cr7r1/README.md) first. It links the scoped source diff, runtime read-back, Playwright report, 25 screenshot SHA256 manifest, PHP/JS lint and rollback plan. Five-step intake uses browser-memory answers and `blob:` photos; photo bounds, validation, review, Woo-native checkout handoff, payment-state truth and 375px width were behaviorally checked. The Home 858 Gutenberg content and accepted Preview styles/scripts are unchanged. WooCommerce product 1113 remains the canonical USD 39.99 virtual product.
+
+**Reviewer decision requested:** decide whether the explicitly labeled local continuation/ready visual fixture plus real unpaid-order `is_paid()`/forged-query read-back meets the order-received evidence criterion. The only existing on-hold order belongs to a registered account; anonymous replay revealed no order details. No account credentials were read or used, and no order or payment was created. This limitation is documented without treating the visual fixture as a real order receipt.
+
+The runtime remains at `http://127.0.0.1:8189/`; no checkout submission, payment, Provider/model call, production deployment, Shared Infra action or merge occurred. Owner relay: `NONE`. Do not continue to the next Gate before Reviewer decision.
+
+## Current handoff — G3CR7R1 Executor reproduction (2026-10-05)
+
+**Executor result: `PASS_CANDIDATE_G3CR7R1_EXECUTOR_REPRODUCTION`; STOP_AT_REVIEWER=YES.** This is an independent implementation against accepted baseline `e71f94377d341a88ba388f2c5da153e7cd6ee8b8`, not promotion of the prior Reviewer prototype. Existing PR #64 remains the only submission; do not merge or enter a later Gate.
+
+Read [`docs/evidence/g3cr7r1/README.md`](docs/evidence/g3cr7r1/README.md) first. It links the scoped source diff, runtime read-back, Playwright report, 25 screenshot SHA256 manifest, PHP/JS lint and rollback plan. Five-step intake uses browser-memory answers and `blob:` photos; photo bounds, validation, review, Woo-native checkout handoff, payment-state truth and 375px width were behaviorally checked. The Home 858 Gutenberg content and accepted Preview styles/scripts are unchanged. WooCommerce product 1113 remains the canonical USD 39.99 virtual product.
+
+**Reviewer decision requested:** decide whether the explicitly labeled local continuation/ready visual fixture plus real unpaid-order `is_paid()`/forged-query read-back meets the order-received evidence criterion. The only existing on-hold order belongs to a registered account; anonymous replay revealed no order details. No account credentials were read or used, and no order or payment was created. This limitation is documented without treating the visual fixture as a real order receipt.
+
+The runtime remains at `http://127.0.0.1:8189/`; no checkout submission, payment, Provider/model call, production deployment, Shared Infra action or merge occurred. Owner relay: `NONE`. Do not continue to the next Gate before Reviewer decision.

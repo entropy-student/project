@@ -1,0 +1,3519 @@
+{
+  "gate": "G3CR7R1_EXECUTOR_REPRODUCTION",
+  "browser": {
+    "engine": "Microsoft Edge via Playwright",
+    "version": "154.0.4258.53",
+    "viewportRuns": [
+      {
+        "width": 1440,
+        "height": 1000,
+        "surface": "homepage/preview"
+      },
+      {
+        "width": 375,
+        "height": 812,
+        "surface": "homepage/preview"
+      },
+      {
+        "width": 1440,
+        "height": 1000,
+        "surface": "five-step intake"
+      },
+      {
+        "width": 375,
+        "height": 812,
+        "surface": "five-step intake"
+      },
+      {
+        "width": 1440,
+        "height": 1000,
+        "surface": "status visual fixture"
+      },
+      {
+        "width": 375,
+        "height": 812,
+        "surface": "status visual fixture"
+      },
+      {
+        "width": 1440,
+        "height": 1000,
+        "surface": "Woo order received fixture and access denial"
+      },
+      {
+        "width": 375,
+        "height": 812,
+        "surface": "Woo order received fixture and access denial"
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "file": "home-entry-desktop.png",
+      "width": 1440,
+      "height": 755,
+      "bytes": 63960,
+      "sha256": "a1658eaa0fcd57e17c770c825f6cbfd9beff41c5f7301054ff5b9a9217dccbe8"
+    },
+    {
+      "file": "home-entry-mobile-375.png",
+      "width": 375,
+      "height": 651,
+      "bytes": 192499,
+      "sha256": "4159e6de1164481b75167f7e38ee90674c44eab3d5db6750c972a87a3ea6c25f"
+    },
+    {
+      "file": "free-preview-selected-desktop.png",
+      "width": 1120,
+      "height": 794,
+      "bytes": 137016,
+      "sha256": "0e69b9e57d0474937ae66e3437768911c419066c91a19593aadc7291957af9e9"
+    },
+    {
+      "file": "free-preview-selected-mobile-375.png",
+      "width": 335,
+      "height": 1133,
+      "bytes": 90712,
+      "sha256": "6d8c17c9829973975f5838f20b4cece05c18b0264dcbc31e6a34be82677f3b9f"
+    },
+    {
+      "file": "intake-entry-full-desktop.png",
+      "width": 1440,
+      "height": 1985,
+      "bytes": 128310,
+      "sha256": "5ba1827abe540cf7134b15025563a3e977f7ea13aa638c9850fc4c2f5fcb224f"
+    },
+    {
+      "file": "intake-step-01-about-desktop.png",
+      "width": 774,
+      "height": 553,
+      "bytes": 21405,
+      "sha256": "bff65ad0d27f2df703300e92cd31bf747190fc36ea448fe6b6db9fe4eba43406"
+    },
+    {
+      "file": "intake-step-02-photos-empty-desktop.png",
+      "width": 774,
+      "height": 329,
+      "bytes": 24425,
+      "sha256": "e0bcf613e6289fb1370b211e3d163e9cfc0b31cb5d5f4108d8b8df6a202de12f"
+    },
+    {
+      "file": "intake-step-02-photos-12-must-use-desktop.png",
+      "width": 774,
+      "height": 1011,
+      "bytes": 62843,
+      "sha256": "087a984dcf6d35234c0f8d466bc62c869f9b8bf619551b4f87537f74c35ba8ea"
+    },
+    {
+      "file": "intake-step-03-story-desktop.png",
+      "width": 774,
+      "height": 589,
+      "bytes": 21042,
+      "sha256": "ebe363397fde59541e47444673fa539f2380feeb86be0764bc73903db1ecd21c"
+    },
+    {
+      "file": "intake-step-04-little-things-desktop.png",
+      "width": 774,
+      "height": 647,
+      "bytes": 20280,
+      "sha256": "ca2fdde05369606058ecc1677d90cf877a6cd503de37107b34f00fdc16b23c4f"
+    },
+    {
+      "file": "intake-step-05-review-desktop.png",
+      "width": 774,
+      "height": 839,
+      "bytes": 57557,
+      "sha256": "8800fd861ef803308ea7247ee1c296754d43dfeb4f3ca4680b1216841c24ef79"
+    },
+    {
+      "file": "woocommerce-checkout-handoff-desktop.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 61012,
+      "sha256": "99ba7ffd1eee3bea9464d992f95977f7d0be9c2eecd6f018324cf277c1eb8efc"
+    },
+    {
+      "file": "intake-entry-full-mobile-375.png",
+      "width": 375,
+      "height": 2067,
+      "bytes": 82503,
+      "sha256": "2552e935a92d4bfc42121c2dca2e83ab454914ea4cf39d3cccbbc7e08caee399"
+    },
+    {
+      "file": "intake-step-01-about-mobile-375.png",
+      "width": 311,
+      "height": 767,
+      "bytes": 19408,
+      "sha256": "07561d8c11f5fa333076b45871d3e0c131f81ab399e0a949dc9523ebca644796"
+    },
+    {
+      "file": "intake-step-02-photos-empty-mobile-375.png",
+      "width": 311,
+      "height": 379,
+      "bytes": 18844,
+      "sha256": "8a22c09848e48373aef8cec751bb6afdfd69f79396b7edecc8c5682838b450f6"
+    },
+    {
+      "file": "intake-step-02-photos-12-must-use-mobile-375.png",
+      "width": 311,
+      "height": 1539,
+      "bytes": 50378,
+      "sha256": "14953bc02df5dc24424a1aeaa040dff3b5c93b285b9600f1bd1d0db1043e7f93"
+    },
+    {
+      "file": "intake-step-03-story-mobile-375.png",
+      "width": 311,
+      "height": 643,
+      "bytes": 18442,
+      "sha256": "dbb7f0ed4bdcb6315621b9d9f259092e4b9cb903c46b2f5d0931af09defed020"
+    },
+    {
+      "file": "intake-step-04-little-things-mobile-375.png",
+      "width": 311,
+      "height": 701,
+      "bytes": 18392,
+      "sha256": "4c51e5aabfd8480cbc1a398973e7cc1442fd8e7d1bc04c3cc7b70377e62a9873"
+    },
+    {
+      "file": "intake-step-05-review-mobile-375.png",
+      "width": 311,
+      "height": 1399,
+      "bytes": 57704,
+      "sha256": "cb3fdea9836d232d471e7e96b34eaff5e5d931bcc0040169084b447336706bf1"
+    },
+    {
+      "file": "status-visual-fixture-desktop.png",
+      "width": 1440,
+      "height": 1838,
+      "bytes": 120495,
+      "sha256": "d5f00afbcaf3962d9c7e64cd895c1cacfc72b79381a657be9c2a1bd60ec6020a"
+    },
+    {
+      "file": "status-visual-fixture-mobile-375.png",
+      "width": 375,
+      "height": 2042,
+      "bytes": 88328,
+      "sha256": "5709f23f5312a957b7eff856a323548f2c10dbdbbe29bc270c12890ec04ad530"
+    },
+    {
+      "file": "woocommerce-order-received-continuation-fixture-desktop.png",
+      "width": 844,
+      "height": 234,
+      "bytes": 17218,
+      "sha256": "914242258d8ab73bfab450e4f6bdd78617734bcdd49c461d9f929d7a64f73585"
+    },
+    {
+      "file": "woocommerce-order-received-unauthorized-desktop.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 44984,
+      "sha256": "18a43db4933e6b8e882aeec38e6684f527dcb4cee3748d983216b5afc4a87a27"
+    },
+    {
+      "file": "woocommerce-order-received-continuation-fixture-mobile-375.png",
+      "width": 303,
+      "height": 345,
+      "bytes": 18141,
+      "sha256": "d6a3598ac1ccff08ce490b12b283eb2ebbd993961440b4bdf5bc55f569e2ef4d"
+    },
+    {
+      "file": "woocommerce-order-received-unauthorized-mobile-375.png",
+      "width": 375,
+      "height": 887,
+      "bytes": 31085,
+      "sha256": "b75c6ca15392bf51ac21d5ba5bd0695c02a5b31fc1096672d8a39cde93afcae5"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/home.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/magazine-preview.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-sample-spread.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/preview-memories-panel.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/offer-birthday-panel.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-eli-cover.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-moments-spread.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/home-motion.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/preview.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/fonts/instrument-serif/InstrumentSerif-Regular.ttf",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/fonts/instrument-serif/InstrumentSerif-Italic.ttf",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-sample-cover-600x900.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/010c65f7-55e9-4df1-bf2d-0778d5b6a4ed",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/783.ab7283116f3102720a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/328.9e358dc63741a0f66a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/318.1cd39a22ca4e96328011.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/make-your-magazine/",
+      "resourceType": "other"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/make-your-magazine/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/non-critical-styles.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/home.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/magazine-preview.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-sample-spread.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/preview-memories-panel.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/offer-birthday-panel.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-eli-cover.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-moments-spread.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/home-motion.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/preview.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/fonts/instrument-serif/InstrumentSerif-Regular.ttf",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/fonts/instrument-serif/InstrumentSerif-Italic.ttf",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-sample-cover-600x900.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/home.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/magazine-preview.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-gift-hero-600x400.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-sample-spread-600x400.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/preview-memories-panel.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/offer-birthday-panel.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-eli-cover.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-moments-spread.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/g3cr6r3d2r2/sample-lena-gift.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/home-motion.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/preview.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-gift-hero.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-sample-spread.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/uploads/2026/10/g3cr6-sample-cover-600x900.png",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/fonts/instrument-serif/InstrumentSerif-Regular.ttf",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/assets/fonts/instrument-serif/InstrumentSerif-Italic.ttf",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/3e92e870-b010-47e6-bcab-5dcd5276dd36",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/make-your-magazine/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/783.ab7283116f3102720a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/328.9e358dc63741a0f66a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/318.1cd39a22ca4e96328011.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/non-critical-styles.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/864c314f-fff9-46f2-8016-06221f34e160",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/f28ff9d8-8a57-4687-8a17-94f6c464d913",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/88c010f2-be6b-4eff-9cdb-265334450678",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/9cfeb91a-36d3-4289-a266-f6bbc5bbc7a9",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/05b43400-8b9f-4302-a236-dfd8b98a8563",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/0d7d3969-0147-4e36-bc2e-93ef03aa77cb",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/1602145c-216b-4a3a-8edf-805c0e79b109",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/57dda936-8d11-4ee0-8317-fb1ba3d2cf48",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/4bd91983-34a1-40b5-a500-d143def5c4e8",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/5083f0c5-1009-4fcd-afa6-0ba30da4930c",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/a6a8678b-0971-4f1d-8f74-b0d980c7d1c1",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/cd60671d-2cb0-4b61-85cf-ff642dbd8acc",
+      "resourceType": "image"
+    },
+    {
+      "method": "POST",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/",
+      "resourceType": "fetch"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/checkout/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/css/select2.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/country-select.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/address-i18n.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/utils/custom-place-order-button.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/checkout.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "POST",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/",
+      "resourceType": "xhr"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/74.95c89b75282af2b088a3.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/make-your-magazine/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/783.ab7283116f3102720a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/328.9e358dc63741a0f66a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/318.1cd39a22ca4e96328011.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/non-critical-styles.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/6472405f-9616-4d33-a2fb-e51439576d89",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/34c188f6-f90f-400b-b240-0f05aa4e10da",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/098b7470-d996-4fef-9274-054eab4d558d",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/ac1ea9ad-dce6-4c70-951f-40ea2d0192b3",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/1ffd3bdf-da1f-48c7-aa04-273c9e8ccd3b",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/345d247f-45d3-4552-b213-9ffa6d78c897",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/886a10c1-6852-45be-9a46-09d50fbab0dd",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/c2b5e180-ea54-4aa4-8133-591cf8939353",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/86926687-2ce8-4d75-a0cb-006407db1452",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/3a577cf3-26bc-41bf-b433-3948e80addc5",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/cdbdcc02-dd2c-47c1-9aeb-13dc228522e5",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/bac2b0ec-589b-40c0-9c4d-61751d349a22",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/make-your-magazine/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/783.ab7283116f3102720a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/328.9e358dc63741a0f66a7b.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/318.1cd39a22ca4e96328011.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/non-critical-styles.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/428c03c0-c4f4-4141-ab78-25bbe1cc4d8d",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/8374881e-6a09-4987-adc0-d3d2bb51219d",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/72d6fabc-e4eb-4e1e-a7c4-0e86ec1d6ef1",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/ee38fc75-a45b-45ea-8b6a-b52ba32cc8c7",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/075edb4f-c1ff-41f2-89bd-c4d7809ba217",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/e5b8b1d6-8d17-4f4a-945b-9275da851568",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/0d010e2f-d505-4372-949e-2052f8454c97",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/35be12b8-d77e-4192-bdf9-03c56a494672",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/608e78a2-5dfa-4711-8080-c822a2af5f30",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/1610a18c-cf03-4742-b4eb-edf3679a0584",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/afbc3544-40ff-4b5b-936f-521d7a266565",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/a237755d-bd67-49b1-aa90-a0f5feccee55",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/53cc78a1-24aa-49dd-a4e1-c5d06362cb9a",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/b7327587-1df5-456d-84a8-093e5b4f7551",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/81dc301d-0927-4928-9032-f741fa74ecd9",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/8557793f-0818-4577-bdb0-5c0a3a06932f",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/bffffe69-d58e-453d-962a-0df3b58d4140",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/d796b0c3-f6d1-4f50-8764-4e38f4e03496",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/503b0bab-82ad-421d-a643-9317b4795bc3",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/a82bc030-ef23-4176-9b5b-bda6e2ba001c",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/165fb752-edcd-45f2-b0e3-a26ccd6fdc00",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/548d7f84-430f-4570-a28b-19b219c8ab11",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/68c12266-5d95-4f92-a3c4-4373f411107d",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/c5feb930-fea0-401d-88f9-c35996cef1b5",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "http://127.0.0.1:8189/bb843fdf-37c3-4966-82d4-eb1e8d53721a",
+      "resourceType": "image"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/magazine-status-preview/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/magazine-status-preview/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/magazine-status-preview/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/checkout/order-received/1131/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/css/select2.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/country-select.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/address-i18n.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/utils/custom-place-order-button.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/checkout.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/fonts/woo.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/magazine-status-preview/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/fonts/woo.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/checkout/order-received/1131/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/css/select2.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/country-select.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/address-i18n.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/utils/custom-place-order-button.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/checkout.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/fonts/woo.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/checkout/order-received/987654321/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/css/select2.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/country-select.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/address-i18n.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/utils/custom-place-order-button.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/checkout.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/fonts/woo.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/make-your-magazine/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/fonts/woo.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/make-your-magazine/",
+      "resourceType": "document"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.style.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/woocommerce.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.googleapis.com",
+      "path": "/css2",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/page-title.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/stackable.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/wpforms.min.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/studio.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-includes/js/jquery/jquery-migrate.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/simply-gallery-block/plugins/pgc_sgb_lightbox.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/main.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/plugins/bms-g3c-preview/frontend-reproduction.js",
+      "resourceType": "script"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/fonts/woo.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6uyw4BMUTPHjx4wXg.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "https://fonts.gstatic.com",
+      "path": "/s/lato/v25/S6u9w4BMUTPHh6UVSwiPGQ.woff2",
+      "resourceType": "font"
+    },
+    {
+      "method": "GET",
+      "origin": "http://127.0.0.1:8189",
+      "path": "/wp-content/themes/blocksy/static/bundle/100.957a1d57641c41d5237c.js",
+      "resourceType": "script"
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "externalHosts": [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com"
+  ],
+  "checks": {
+    "homeOfferRoutesToIntake": true,
+    "homeOfferText": true,
+    "homeMobileViewport": {
+      "innerWidth": 375,
+      "scrollWidth": 375
+    },
+    "previewImageUrlScheme": "blob:",
+    "previewPostRequestsAfterSelection": [],
+    "previewSelectedPhotoRemainsLocal": true,
+    "previewCtaRoutesToIntake": true,
+    "previewCtaOmitsIntakeDataFromUrl": true,
+    "previewMobileViewport": {
+      "innerWidth": 375,
+      "scrollWidth": 375
+    },
+    "fiveStepLabels": [
+      "01 About them",
+      "02 Photos",
+      "03 Their story",
+      "04 Little things",
+      "05 Review"
+    ],
+    "emptyAboutStepBlocked": true,
+    "emptyPhotoStepBlocked": true,
+    "localPhotoCount": "12",
+    "mustUseCount": "3",
+    "fourthMustUseDisabled": true,
+    "fixtureImageUrlsAreBlob": true,
+    "emptyRequiredPromptsBlocked": true,
+    "incompleteFinalPromptsBlocked": true,
+    "checkoutHandoffPath": "/checkout/",
+    "checkoutNativeFormVisible": true,
+    "checkoutProductNameVisible": true,
+    "twentyFivePhotosAccepted": true,
+    "twentySixthPhotoRejected": true,
+    "existingUnpaidOrderState": "awaiting_payment",
+    "forgedQueryCannotPromoteUnpaidOrder": true,
+    "nonexistentOrderState": "not_found",
+    "wrongOrderContextHasNoStatus": true,
+    "nonexistentOrderHasNoPaidStatus": true,
+    "intakeOverflowdesktop": {
+      "innerWidth": 1440,
+      "documentWidth": 1440,
+      "bodyWidth": 1440
+    },
+    "intakeOverflowmobile-375": {
+      "innerWidth": 375,
+      "documentWidth": 375,
+      "bodyWidth": 375
+    },
+    "noPageErrors": true,
+    "noFailedRequests": true,
+    "noConsoleErrors": true,
+    "previewNoPhotoPost": true
+  },
+  "commerce": {
+    "existingUnpaidFixture": {
+      "available": true,
+      "status": "on-hold",
+      "paid": false,
+      "customerOwned": true
+    },
+    "after": {
+      "orderCount": 1,
+      "paidCount": 0,
+      "homeHash": "7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a"
+    },
+    "checkoutWasNotSubmitted": true,
+    "paymentActions": 0,
+    "providerMutations": 0,
+    "modelOrGenerationCalls": 0
+  },
+  "notes": []
+}

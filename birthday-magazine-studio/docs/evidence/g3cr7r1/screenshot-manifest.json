@@ -1,0 +1,186 @@
+{
+  "gate": "G3CR7R1_EXECUTOR_REPRODUCTION",
+  "screenshots": [
+    {
+      "file": "home-entry-desktop.png",
+      "width": 1440,
+      "height": 755,
+      "bytes": 63960,
+      "sha256": "a1658eaa0fcd57e17c770c825f6cbfd9beff41c5f7301054ff5b9a9217dccbe8"
+    },
+    {
+      "file": "home-entry-mobile-375.png",
+      "width": 375,
+      "height": 651,
+      "bytes": 192499,
+      "sha256": "4159e6de1164481b75167f7e38ee90674c44eab3d5db6750c972a87a3ea6c25f"
+    },
+    {
+      "file": "free-preview-selected-desktop.png",
+      "width": 1120,
+      "height": 794,
+      "bytes": 137016,
+      "sha256": "0e69b9e57d0474937ae66e3437768911c419066c91a19593aadc7291957af9e9"
+    },
+    {
+      "file": "free-preview-selected-mobile-375.png",
+      "width": 335,
+      "height": 1133,
+      "bytes": 90712,
+      "sha256": "6d8c17c9829973975f5838f20b4cece05c18b0264dcbc31e6a34be82677f3b9f"
+    },
+    {
+      "file": "intake-entry-full-desktop.png",
+      "width": 1440,
+      "height": 1985,
+      "bytes": 128310,
+      "sha256": "5ba1827abe540cf7134b15025563a3e977f7ea13aa638c9850fc4c2f5fcb224f"
+    },
+    {
+      "file": "intake-step-01-about-desktop.png",
+      "width": 774,
+      "height": 553,
+      "bytes": 21405,
+      "sha256": "bff65ad0d27f2df703300e92cd31bf747190fc36ea448fe6b6db9fe4eba43406"
+    },
+    {
+      "file": "intake-step-02-photos-empty-desktop.png",
+      "width": 774,
+      "height": 329,
+      "bytes": 24425,
+      "sha256": "e0bcf613e6289fb1370b211e3d163e9cfc0b31cb5d5f4108d8b8df6a202de12f"
+    },
+    {
+      "file": "intake-step-02-photos-12-must-use-desktop.png",
+      "width": 774,
+      "height": 1011,
+      "bytes": 62843,
+      "sha256": "087a984dcf6d35234c0f8d466bc62c869f9b8bf619551b4f87537f74c35ba8ea"
+    },
+    {
+      "file": "intake-step-03-story-desktop.png",
+      "width": 774,
+      "height": 589,
+      "bytes": 21042,
+      "sha256": "ebe363397fde59541e47444673fa539f2380feeb86be0764bc73903db1ecd21c"
+    },
+    {
+      "file": "intake-step-04-little-things-desktop.png",
+      "width": 774,
+      "height": 647,
+      "bytes": 20280,
+      "sha256": "ca2fdde05369606058ecc1677d90cf877a6cd503de37107b34f00fdc16b23c4f"
+    },
+    {
+      "file": "intake-step-05-review-desktop.png",
+      "width": 774,
+      "height": 839,
+      "bytes": 57557,
+      "sha256": "8800fd861ef803308ea7247ee1c296754d43dfeb4f3ca4680b1216841c24ef79"
+    },
+    {
+      "file": "woocommerce-checkout-handoff-desktop.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 61012,
+      "sha256": "99ba7ffd1eee3bea9464d992f95977f7d0be9c2eecd6f018324cf277c1eb8efc"
+    },
+    {
+      "file": "intake-entry-full-mobile-375.png",
+      "width": 375,
+      "height": 2067,
+      "bytes": 82503,
+      "sha256": "2552e935a92d4bfc42121c2dca2e83ab454914ea4cf39d3cccbbc7e08caee399"
+    },
+    {
+      "file": "intake-step-01-about-mobile-375.png",
+      "width": 311,
+      "height": 767,
+      "bytes": 19408,
+      "sha256": "07561d8c11f5fa333076b45871d3e0c131f81ab399e0a949dc9523ebca644796"
+    },
+    {
+      "file": "intake-step-02-photos-empty-mobile-375.png",
+      "width": 311,
+      "height": 379,
+      "bytes": 18844,
+      "sha256": "8a22c09848e48373aef8cec751bb6afdfd69f79396b7edecc8c5682838b450f6"
+    },
+    {
+      "file": "intake-step-02-photos-12-must-use-mobile-375.png",
+      "width": 311,
+      "height": 1539,
+      "bytes": 50378,
+      "sha256": "14953bc02df5dc24424a1aeaa040dff3b5c93b285b9600f1bd1d0db1043e7f93"
+    },
+    {
+      "file": "intake-step-03-story-mobile-375.png",
+      "width": 311,
+      "height": 643,
+      "bytes": 18442,
+      "sha256": "dbb7f0ed4bdcb6315621b9d9f259092e4b9cb903c46b2f5d0931af09defed020"
+    },
+    {
+      "file": "intake-step-04-little-things-mobile-375.png",
+      "width": 311,
+      "height": 701,
+      "bytes": 18392,
+      "sha256": "4c51e5aabfd8480cbc1a398973e7cc1442fd8e7d1bc04c3cc7b70377e62a9873"
+    },
+    {
+      "file": "intake-step-05-review-mobile-375.png",
+      "width": 311,
+      "height": 1399,
+      "bytes": 57704,
+      "sha256": "cb3fdea9836d232d471e7e96b34eaff5e5d931bcc0040169084b447336706bf1"
+    },
+    {
+      "file": "status-visual-fixture-desktop.png",
+      "width": 1440,
+      "height": 1838,
+      "bytes": 120495,
+      "sha256": "d5f00afbcaf3962d9c7e64cd895c1cacfc72b79381a657be9c2a1bd60ec6020a"
+    },
+    {
+      "file": "status-visual-fixture-mobile-375.png",
+      "width": 375,
+      "height": 2042,
+      "bytes": 88328,
+      "sha256": "5709f23f5312a957b7eff856a323548f2c10dbdbbe29bc270c12890ec04ad530"
+    },
+    {
+      "file": "woocommerce-order-received-continuation-fixture-desktop.png",
+      "width": 844,
+      "height": 234,
+      "bytes": 17218,
+      "sha256": "914242258d8ab73bfab450e4f6bdd78617734bcdd49c461d9f929d7a64f73585"
+    },
+    {
+      "file": "woocommerce-order-received-unauthorized-desktop.png",
+      "width": 1440,
+      "height": 1000,
+      "bytes": 44984,
+      "sha256": "18a43db4933e6b8e882aeec38e6684f527dcb4cee3748d983216b5afc4a87a27"
+    },
+    {
+      "file": "woocommerce-order-received-continuation-fixture-mobile-375.png",
+      "width": 303,
+      "height": 345,
+      "bytes": 18141,
+      "sha256": "d6a3598ac1ccff08ce490b12b283eb2ebbd993961440b4bdf5bc55f569e2ef4d"
+    },
+    {
+      "file": "woocommerce-order-received-unauthorized-mobile-375.png",
+      "width": 375,
+      "height": 887,
+      "bytes": 31085,
+      "sha256": "b75c6ca15392bf51ac21d5ba5bd0695c02a5b31fc1096672d8a39cde93afcae5"
+    }
+  ],
+  "screenshotCount": 25,
+  "viewports": [
+    "1440x1000",
+    "375x812"
+  ],
+  "outputDirectory": "birthday-magazine-studio/docs/evidence/g3cr7r1/screenshots"
+}
