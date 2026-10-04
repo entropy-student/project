@@ -1,4 +1,31 @@
-## Current execution status — G3C C2B Owner synthetic UI canary R2R1
+## Current execution status — G3C C2B Owner-local synthetic UI checkpoint R2R1-O1
+
+```text
+GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1_O1
+EXECUTOR_ROLE=CODEX_DESKTOP_AFTER_OWNER_RELAY
+PREVIOUS_RESULT=RETURN_C2B_OWNER_RUNTIME_PREFLIGHT_FAILED
+CODEX_RUNNER_RETRY_AUTHORIZED=NO
+OWNER_LOCAL_CHECKPOINT_REQUIRED=YES
+OWNER_RUNTIME_REQUIRED=PowerShell_7.6.6;Administrator=True;High_Integrity_RID>=12288
+RUNNER_PATH=C:\Users\34707\.codex\worktrees\g2b-runner-binding-cleanup\VPS搭建\vpn-network-optimization\scripts\c2b-owner-clash-ui-canary.ps1
+REAL_HY2_TRAFFIC_AUTHORIZED=NO
+DPAPI_OR_SECRET_READ_AUTHORIZED=NO
+VPS_OR_REALITY_ACTION_AUTHORIZED=NO
+ROUTE_PROXY_TUN_WG_MUTATION_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+1. Do not rerun the C2B runner from the Codex shell.
+2. Wait for Owner-local checkpoint output from the real Windows host.
+3. When Owner output is relayed, record only bounded non-secret evidence and classify the result against the current Gate.
+4. Do not enter C2C.
+5. Return PASS_CANDIDATE or precise RETURN and STOP_AT_REVIEWER.
+
+
+
+## Historical execution status — G3C C2B Owner synthetic UI canary R2R1
 
 ```text
 GATE_ID=G3C_C2B_OWNER_SYNTHETIC_UI_CANARY_R2R1
