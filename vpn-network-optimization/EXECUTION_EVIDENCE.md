@@ -6335,3 +6335,24 @@ REPAIRED_G4B0_RUNNER_BLOB=43221672eb90a2a58062ca4ecbd118f4ebafc866
 OWNER_AUTHORIZATION=GRANTED_AND_UNCONSUMED
 NEXT_CHECKPOINT=OWNER_LOCAL_AST_ONLY_NO_SECRET_NO_REQUEST_NO_NETWORK_MUTATION
 ```
+
+
+## G4-B0 Owner-local AST-only checkpoint PASS — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+LOCAL_FF_SYNC=PASS
+G4B0_AST_ONLY=PASS
+NETWORK_MUTATION=NO
+SECRET_ACCESS=NO
+EXTERNAL_REQUESTS=0
+AUTHORIZATION_CONSUMED=NO
+REPAIRED_G4B0_RUNNER_BLOB=43221672eb90a2a58062ca4ecbd118f4ebafc866
+```
+
+Reviewer conclusion:
+- The repaired runner parses successfully on the actual Owner PowerShell 7.6.6 host.
+- No consequential phase started.
+- The existing one-shot G4-B0 Owner authorization remains valid and unconsumed.
+- Next step is one live G4-B0 execution only, followed by mandatory Reviewer stop.
