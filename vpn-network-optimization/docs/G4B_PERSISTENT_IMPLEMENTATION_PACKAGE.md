@@ -1,6 +1,6 @@
 # G4-B Persistent Three-Role Implementation Package
 
-Status: OFFLINE_READY / LIVE_NOT_AUTHORIZED
+Status: OFFLINE_REVIEWED_PASS / LIVE_PREREQUISITES_PENDING
 
 This package turns the accepted G4-B Gate into an implementation contract without touching the live VPS or Owner Windows host.
 
@@ -247,7 +247,7 @@ G4-B may therefore proceed without designing a persistent VPS `/32` route solely
 ## 12. Remaining prerequisites before live authorization is executable
 
 ```text
-OFFLINE_PACKAGE_STATIC_REVIEW=IMPLEMENTED_AND_FIXTURE_VALIDATED
+OFFLINE_PACKAGE_STATIC_REVIEW=PASS_REVIEWER_ACCEPTED
 WINDOWS_OUTER_BYPASS_PROOF=PASS_G4B0
 DEDICATED_RUNTIME_IDENTITY_CONTRACT=READY
 ROLLBACK_CONTRACT=READY
