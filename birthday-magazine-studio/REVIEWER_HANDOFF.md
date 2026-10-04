@@ -50,8 +50,10 @@ D2R1_OWNER_VISUAL_RELAY=FULFILLED
 D2R2_REVIEWER_DECISION=PASS_STATIC_VISUAL_AND_TECHNICAL
 D2R3_MOTION_DIAGNOSTIC=PASS
 D2R3_ROOT_CAUSE=MOTION_RUNNING_BUT_NOT_PERCEPTIBLE
-OWNER_RUNTIME_MOTION=RUNNING_BUT_NOT_PERCEPTIBLE
-OWNER_HOMEPAGE_VISUAL_FREEZE=BLOCKED_ON_MOTION_POLISH
+D2R4_AUTOMATED_REVIEW=PASS
+D2R4_OWNER_LIVE_MOTION=PENDING
+OWNER_RUNTIME_MOTION=REPAIRED_CANDIDATE_OWNER_CONFIRMATION_PENDING
+OWNER_HOMEPAGE_VISUAL_FREEZE=BLOCKED_ON_OWNER_LIVE_MOTION_CONFIRMATION
 D2_FORMAL_VISUAL_DECISION=PASS_G3CR6R3D2R2
 G3CR6R3C_RESEARCH_STATUS=PAUSED_FOR_OWNER_REPRIORITIZED_HOMEPAGE_GATE
 CURRENT_UPLOAD_PREVIEW=KEEP_AS_IS
@@ -107,36 +109,35 @@ G4_LIVE_PAYPAL=HOLD_NOT_AUTHORIZED
 
 `G3CR6R3D2R4_MOTION_POLISH`
 
-Owner-browser diagnosis is complete.
+Executor candidate `d882e247a75930a0d019a0d355278c5007a73a6b` has passed Reviewer automated/source/multi-state evidence inspection.
 
-Direct Owner readback proves:
-- `reducedMotion=false`;
-- `home-motion.js` is loaded;
-- `bms-motion-on` is active;
-- Samples card motion variables are being written (`-8deg`, `0.9`, matrix3d);
-- therefore the failure class is **MOTION_RUNNING_BUT_NOT_PERCEPTIBLE**.
+Reviewer accepted:
+- source scope: only homepage `home-motion.js` + `home.css`;
+- accepted R2 static imagery/content preserved;
+- Hero 14s recurring focus cycle;
+- editorial split enter/mid/exit choreography;
+- desktop photo-panel parallax (~132px sampled travel);
+- Samples enter/mid/exit progression (~+14.39° / 0° / -14.39° plus scale/Y/depth);
+- desktop Closing sticky reveal (14.5% / 55% / 95.5%);
+- 1440 + 375 no-overflow behavior;
+- reduced-motion, no-JS, missing-controller fallback;
+- Preview/Woo/account/payment/private-workspace freeze;
+- rollback to accepted D2R2.
 
-Preserved:
-- D2R2 static visual quality PASS;
-- all five R2 marketing assets;
-- current homepage composition/copy;
-- Preview/Woo/account/payment/private-workspace freeze.
+Reviewer also directly inspected representative committed motion-state screenshots and found them consistent with the numeric evidence.
 
-Current repair objective:
-- strengthen homepage motion so it is visibly perceptible in the Owner's normal browser without DevTools;
-- specifically improve Hero living focus, editorial image choreography, photo-panel parallax, Samples scroll progression, and desktop Closing sticky reveal;
-- preserve reduced-motion/no-JS accessibility fallbacks.
+Formal D2R4 PASS remains blocked by the Gate's required Owner live-browser evidence.
 
-Current Gate:
-- `docs/G3CR6R3D2R4_MOTION_POLISH.md`
+Current Reviewer record:
+- `docs/REVIEWER_DECISION_G3CR6R3D2R4_PARTIAL_OWNER_MOTION_PENDING.md`
 
-Diagnostic decision:
-- `docs/REVIEWER_DECISION_G3CR6R3D2R3_PASS_MOTION_DIAGNOSTIC.md`
+Owner verification required on retained local runtime:
+1. Hero visibly changes after waiting several seconds.
+2. Split/photo sections visibly move during normal scrolling.
+3. Samples visibly tilt/scale/depth-shift.
+4. Desktop Closing visibly performs a sticky reveal.
 
-Mandatory stop:
-- Executor produces motion-polished local candidate + multi-state evidence;
-- Owner then performs live-browser motion check;
-- no PR merge, production deploy, Preview redesign, payment action, P1-P12 or core-Aha work.
+No further Executor mutation is authorized before Owner reports this result.
 
 ## CRITICAL_CONSTRAINTS
 
@@ -199,27 +200,32 @@ Protected backend behavior for the current visual/research phase:
 
 ## NEXT_STEP
 
-1. Execute **G3CR6R3D2R4** as a presentation-only motion polish.
-2. Make the accepted static homepage visibly dynamic in ordinary browsing, using the already-observed Focusly motion behaviors as reference.
-3. Preserve reduced-motion/no-JS static completeness and all protected Preview/Woo behavior.
-4. After Executor PASS_CANDIDATE, Owner opens the local site and verifies four motion classes: Hero, editorial/photo sections, Samples, Closing.
-5. Only after Owner confirms perceptible motion may the homepage visual freeze resume.
+1. Owner hard-refreshes `http://127.0.0.1:8189/` and performs a normal live browse.
+2. Owner reports whether Hero, split/photo sections, Samples and Closing are now clearly animated without DevTools.
+3. If Owner confirms, Reviewer formally PASSes D2R4 and returns to homepage visual-freeze checkpoint.
+4. If Owner still finds motion weak/broken, Reviewer opens only the smallest bounded motion repair; accepted static R2 visual work remains preserved.
 
 ## OWNER_ACTION_REQUIRED
 
-**NONE now.** The diagnostic is complete.
+Open `http://127.0.0.1:8189/`, press **Ctrl+F5**, then check:
 
-After D2R4 Executor returns PASS_CANDIDATE, Owner will only need to open `http://127.0.0.1:8189/` and confirm the strengthened motion is visibly perceptible.
+1. wait 10–15 seconds on the Hero;
+2. scroll normally through the image/copy and dark photo-panel sections;
+3. scroll slowly through the three Samples;
+4. scroll through the final black Closing section.
+
+Report whether these four motion classes are clearly visible without opening DevTools.
 
 ## EVIDENCE_POINTERS
 
 Current working set:
 1. `docs/G3CR6R3D2R4_MOTION_POLISH.md`
-2. `docs/REVIEWER_DECISION_G3CR6R3D2R3_PASS_MOTION_DIAGNOSTIC.md`
-3. current `poc/g3c/preview-plugin/home-motion.js`
-4. current `poc/g3c/preview-plugin/home.css`
-5. `docs/G3CR6R3D1_FOCUSLY_VISUAL_MAPPING_REPORT.md` section 3 motion inventory
-6. accepted D2R2 QA/rollback/source-correlation evidence
-7. `EXECUTION_EVIDENCE.md` and `EXECUTOR_HANDOFF.md`
+2. `docs/REVIEWER_DECISION_G3CR6R3D2R4_PARTIAL_OWNER_MOTION_PENDING.md`
+3. `docs/evidence/g3cr6r3d2r4/qa-report.json`
+4. `docs/evidence/g3cr6r3d2r4/round2/browser.json`
+5. `docs/evidence/g3cr6r3d2r4/source-correlation.json`
+6. `docs/evidence/g3cr6r3d2r4/rollback-proof.json`
+7. representative `docs/evidence/g3cr6r3d2r4/screenshots/*`
+8. current `poc/g3c/preview-plugin/home-motion.js` and `home.css`
 
-Static R2 design remains accepted. Only perceptible motion is open.
+D2R4 automated review is accepted. Only Owner live-motion perceptibility remains open.
