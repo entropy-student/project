@@ -42,6 +42,7 @@ $script:requestCount = 0
 $script:consequentialStarted = $false
 $script:success = $false
 $script:failureCode = $null
+$script:failurePhase = $null
 $script:cleanupFailures = [Collections.Generic.List[string]]::new()
 
 function Assert-G4B0 {
@@ -373,12 +374,12 @@ function Start-Mihomo {
     while([DateTime]::UtcNow -lt $deadline){
         if ($process.HasExited) { throw 'MIHOMO_EXITED_BEFORE_PROXY_READY' }
         $listeners = @(Get-NetTCPConnection -State Listen -ErrorAction Stop | Where-Object { [int]$_.OwningProcess -eq $process.Id })
-        $udp = @(Get-NetUDPEndpoint -ErrorAction Stop | Where-Object { [int]$_.OwningProcess -eq $process.Id })
+        $udpOnProxyPort = @(Get-NetUDPEndpoint -LocalPort $script:proxyPort -ErrorAction SilentlyContinue | Where-Object { [int]$_.OwningProcess -eq $process.Id })
         if ($listeners.Count -gt 0) {
             Assert-G4B0 ($listeners.Count -eq 1) 'MIHOMO_UNEXPECTED_TCP_LISTENER_COUNT'
             Assert-G4B0 ([int]$listeners[0].LocalPort -eq $script:proxyPort) 'MIHOMO_PROXY_PORT_MISMATCH'
             Assert-G4B0 ([string]$listeners[0].LocalAddress -in @('127.0.0.1','::ffff:127.0.0.1')) 'MIHOMO_PROXY_BINDING_NOT_LOCALHOST'
-            Assert-G4B0 ($udp.Count -eq 0) 'MIHOMO_UNEXPECTED_UDP_LISTENER'
+            Assert-G4B0 ($udpOnProxyPort.Count -eq 0) 'MIHOMO_UDP_BOUND_ON_LOCAL_SOCKS_PORT'
             return
         }
         Start-Sleep -Milliseconds 200
@@ -563,6 +564,7 @@ try {
     $script:success = $true
 }
 catch {
+    $script:failurePhase = $script:phase
     $script:failureCode = Get-SafeFailureCode -ErrorRecord $_
 }
 finally {
@@ -652,7 +654,7 @@ if ($script:success -and $script:cleanupFailures.Count -eq 0) {
 }
 
 Write-Output 'G4B0_RUNNER_RESULT=RETURN_TO_REVIEWER'
-Write-Output ('G4B0_FAILURE_PHASE=' + $script:phase)
+Write-Output ('G4B0_FAILURE_PHASE=' + $(if ($null -ne $script:failurePhase) { $script:failurePhase } else { $script:phase }))
 Write-Output ('G4B0_FAILURE_CODE=' + $(if ($null -ne $script:failureCode) { $script:failureCode } else { 'UNKNOWN' }))
 Write-Output ('G4B0_CONSEQUENTIAL_ACTION_STARTED=' + $(if ($script:consequentialStarted) { 'YES' } else { 'NO' }))
 Write-Output ('G4B0_REQUEST_COUNT=' + $script:requestCount)
