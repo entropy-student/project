@@ -94,7 +94,8 @@
 | `REVIEWER_DECISION_G3CR6R3D1R2_PASS.md` | Reviewer acceptance of fresh local Home/runtime baseline and D2 authorization | **CURRENT D1R2 REVIEW DECISION — PASS** |
 | `G3CR6R3D2_FOCUSLY_HOMEPAGE_IMPLEMENTATION.md` | High-fidelity independent Focusly-inspired homepage implementation; Preview/Woo frozen | **EXECUTED / TECHNICAL PASS / FORMAL PASS HELD ON DIRECT VISUAL REVIEW** |
 | `REVIEWER_DECISION_G3CR6R3D2_RETURN_VISUAL_EVIDENCE.md` | Reviewer accepts D2 technical evidence but cannot directly decode required PNG visuals | **CURRENT D2 REVIEW DECISION — RETURN VISUAL EVIDENCE ONLY** |
-| `G3CR6R3D2R1_VISUAL_REVIEW_BUNDLE.md` | Evidence-only contact-sheet closure using existing D1/D2 screenshots | **CURRENT GATE — READY FOR EXECUTOR** |
+| `G3CR6R3D2R1_VISUAL_REVIEW_BUNDLE.md` | Evidence-only contact-sheet closure using existing D1/D2 screenshots; Owner manually uploads JPEG to Reviewer | **CURRENT GATE — READY FOR EXECUTOR** |
+| `OWNER_DECISION_G3CR6R3D2R1_MANUAL_VISUAL_RELAY_2026-10-04.md` | Owner selects direct JPEG upload to current ChatGPT as visual-review transport; Base64/data-URI superseded | **CURRENT TRANSPORT DECISION** |
 | `OWNER_DECISION_G3CR6R3D2_IMAGE_GENERATION_QUALITY_PRIORITY_2026-10-04.md` | Owner authorizes quality-first design-time image generation for homepage assets | **CURRENT D2 OWNER DECISION** |
 | `REVIEWER_DECISION_G3CR6R3C_PROJECT_SCOPED_PREFLIGHT_FIX.md` | Shared-monorepo preflight correction after Executor RETURN | **CURRENT PREFLIGHT INTERPRETATION — PROJECT-SCOPED** |
 | `REVIEWER_DECISION_G3CR6R3C_SOURCE_BASELINE_PASS.md` | Source-baseline reconciliation closure | **PREFLIGHT PASS — remains accepted** |
