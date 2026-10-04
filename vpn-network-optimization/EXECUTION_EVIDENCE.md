@@ -6729,3 +6729,33 @@ REVIEWER_RESULT=PASS_REPOSITORY_STATIC_REPAIR_REVIEW
 OWNER_HOST_REPAIR_CHECKPOINT=PENDING
 LIVE_AUTHORIZATION=NOT_GRANTED
 ```
+
+
+## G4-B0 repair checkpoint false-positive legacy UDP match — 2026-10-04
+
+```text
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+G4B0_REPAIRED_AST=PASS
+CHECKPOINT_VALIDATOR=RETURN
+FAILURE_CODE=G4B0_OLD_UDP_ZERO_INVARIANT_PRESENT
+LIVE_RUNNER_STARTED=NO
+SECRET_ACCESS=NO
+EXTERNAL_REQUESTS=0
+NETWORK_MUTATION=NO
+LIVE_AUTHORIZATION=NOT_GRANTED
+```
+
+Reviewer reconciliation:
+- The runner did not contain the old exact failure code `'MIHOMO_UNEXPECTED_UDP_LISTENER'`.
+- It correctly contained the new code `'MIHOMO_UNEXPECTED_UDP_LISTENER_PORT'`.
+- The validator searched a broad substring and therefore falsely matched the new code.
+- Validator repair narrows the legacy check to the exact quoted failure-code literal.
+- Live runner semantics were not changed by this repair.
+
+```text
+G4B0_RUNNER_BLOB=71746ed816a89ccc8d3173a8743713cc9877e64a
+G4B0_VALIDATOR_BLOB=e6d7ac364aca14d52737315a020de7be8d8db1b0
+G4B0_REPAIR_CHECKPOINT_BLOB=8249091f6fcf469c303c449a2912ad507dead7a2
+REVIEWER_STATIC_RECHECK=PASS
+OWNER_HOST_REPAIR_CHECKPOINT=PENDING
+```
