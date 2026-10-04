@@ -6392,3 +6392,30 @@ G4B0_VALIDATOR_BLOB=1c43d09ac277a5c1567d6890e2eb14d8c998515d
 OWNER_AUTHORIZATION=GRANTED_AND_UNCONSUMED
 NEXT_CHECKPOINT=OWNER_LOCAL_VALIDATOR_ONLY
 ```
+
+
+## G4-B0 Owner-local validator-only checkpoint PASS — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+PROVENANCE=OWNER_REPORTED_CONSOLE_OUTPUT
+LOCAL_FF_SYNC=PASS
+G4B0_TEMPLATE_PARSE=PASS
+G4B0_INTERFACE_NAME_ONLY=PASS
+G4B0_NO_ROUTE_CONTRACT=PASS
+G4B0_NO_REALITY_OR_WG_NODE=PASS
+G4B0_TUN_DISABLED=PASS
+G4B0_REQUEST_BUDGET=2
+G4B0_LIVE_RUNNER_STATIC_BOUNDARY=PASS
+G4B0_OFFLINE_PACKAGE_VALIDATION=PASS
+NETWORK_MUTATION=NO
+SECRET_ACCESS=NO
+VALIDATOR_EXIT=0
+AUTHORIZATION_CONSUMED=NO
+```
+
+Reviewer conclusion:
+- The repaired G4-B0 validator passes on the actual Owner PowerShell environment.
+- No live runner phase started, no Secret was accessed, no network mutation occurred, and no external request was sent.
+- The existing one-shot Owner authorization remains valid and unconsumed.
+- Next step is exactly one live G4-B0 canary using the locked runner, followed by mandatory Reviewer stop.
