@@ -12,89 +12,6 @@
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
   const phase = (value, start, end) => clamp((value - start) / (end - start), 0, 1);
   const ease = value => value * value * (3 - 2 * value);
-  // Hero-only photographic enhancement. Each sharp/blur pair shares the same
-  // full-scene coordinates; the lens clips the scene, never drags a small image.
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-  const heroAnimations = [];
-  const lens = hero?.querySelector('.bms-focus-frame');
-  let focusReady = false, focusFrame = 0, lensGeometry;
-  const focusPoint = {x:0,y:0}, focusTarget = {x:0,y:0};
-  let adaptHero = () => {};
-  function paintFocus() {
-    if (!lensGeometry) return;
-    const {width,height,left,top,w,h,radius} = lensGeometry;
-    hero.style.setProperty('--focus-x', `${focusPoint.x}px`);
-    hero.style.setProperty('--focus-y', `${focusPoint.y}px`);
-    hero.style.setProperty('--focus-clip', `inset(${top+focusPoint.y}px ${width-left-w-focusPoint.x}px ${height-top-h-focusPoint.y}px ${left+focusPoint.x}px round ${radius})`);
-  }
-  function measureFocus() {
-    if (!focusReady) return;
-    const width = hero.clientWidth, height = hero.querySelector('.bms-hero-focus-canvas').clientHeight;
-    const w = lens.offsetWidth, h = lens.offsetHeight, top = lens.offsetTop;
-    lensGeometry = {width,height,w,h,top,left:(width-w)/2,radius:getComputedStyle(lens).borderRadius,
-      maxX:Math.max(0,Math.min(180,(width-w)/2-24)),
-      minY:-Math.max(0,Math.min(60,top-90)),
-      maxY:Math.max(0,Math.min(60,hero.querySelector('.bms-hero-message').offsetTop-top-h-20))};
-    focusPoint.x=focusPoint.y=focusTarget.x=focusTarget.y=0;
-    paintFocus();
-  }
-  function followFocus() {
-    focusFrame=0;
-    if (!focusReady || reduced.matches || mobile.matches || !finePointer.matches || !heroVisible || document.hidden) return;
-    focusPoint.x+=(focusTarget.x-focusPoint.x)*.15;
-    focusPoint.y+=(focusTarget.y-focusPoint.y)*.15;
-    const moving=Math.abs(focusTarget.x-focusPoint.x)+Math.abs(focusTarget.y-focusPoint.y)>.1;
-    if (!moving) {focusPoint.x=focusTarget.x;focusPoint.y=focusTarget.y;}
-    paintFocus();
-    if (moving) focusFrame=requestAnimationFrame(followFocus);
-  }
-  function queueFocus() {if (!focusFrame) focusFrame=requestAnimationFrame(followFocus);}
-  async function prepareHeroFocus() {
-    const first=hero?.querySelector('.bms-focus-background img'),second=cards[2]?.querySelector('img');
-    if (!first || !second || !lens || !Element.prototype.animate || !CSS.supports('clip-path','inset(0 round 24px)')) return;
-    const pictures=[first,second].map(source=>{
-      const image=new Image();image.src=source.src;image.alt='';image.loading='eager';image.decoding='async';return image;
-    });
-    try {await Promise.all(pictures.map(image=>image.decode()));} catch {return;}
-    const stage=document.createElement('div'),canvas=document.createElement('div');
-    stage.className='bms-hero-photo-stage';canvas.className='bms-hero-focus-canvas';
-    stage.setAttribute('aria-hidden','true');canvas.setAttribute('aria-hidden','true');
-    for (const container of [stage,canvas]) pictures.forEach((picture,i)=>{
-      const image=picture.cloneNode();image.className=`bms-hero-photo bms-hero-photo-${i?'b':'a'}`;container.append(image);
-    });
-    hero.prepend(stage);hero.insertBefore(canvas,lens);
-    const opacity=[{offset:0,opacity:1},{offset:.44,opacity:1},{offset:.47,opacity:0},{offset:.94,opacity:0},{offset:.97,opacity:1},{offset:1,opacity:1}];
-    const zoom=[{offset:0,transform:'scale(1)'},{offset:.4,transform:'scale(1)'},{offset:.45,transform:'scale(1.08)'},{offset:.5,transform:'scale(1)'},{offset:.9,transform:'scale(1)'},{offset:.95,transform:'scale(1.08)'},{offset:1,transform:'scale(1)'}];
-    const focus=[{offset:0,blur:0},{offset:.4,blur:0},{offset:.435,blur:1},{offset:.465,blur:1},{offset:.5,blur:0},{offset:.9,blur:0},{offset:.935,blur:1},{offset:.965,blur:1},{offset:1,blur:0}];
-    const timing={duration:20000,iterations:Infinity,easing:'linear'};
-    const add=(node,frames)=>{const animation=node.animate(frames.map(f=>({...f,easing:'ease-in-out'})),timing);heroAnimations.push(animation);return animation;};
-    const scales=[];
-    for (const container of [stage,canvas]) [...container.children].forEach((image,i)=>{
-      add(image,opacity.map(f=>({...f,opacity:i?1-f.opacity:f.opacity})));
-      scales.push(add(image,zoom));
-    });
-    const backgroundFocus=add(stage,[]),windowFocus=add(canvas,[]);
-    adaptHero=()=>{
-      const small=mobile.matches;
-      scales.forEach(animation=>animation.effect.setKeyframes(zoom.map(f=>({...f,transform:small?f.transform.replace('1.08','1.035'):f.transform,easing:'ease-in-out'}))));
-      backgroundFocus.effect.setKeyframes(focus.map(f=>({offset:f.offset,filter:`blur(${(small?8:10)+f.blur*(small?6:10)}px)`,easing:'ease-in-out'})));
-      windowFocus.effect.setKeyframes(focus.map(f=>({offset:f.offset,filter:`blur(${f.blur*(small?6:12)}px)`,easing:'ease-in-out'})));
-    };
-    adaptHero();
-    const origin=document.timeline.currentTime;
-    heroAnimations.forEach(animation=>{animation.startTime=origin;});
-    focusReady=true;
-    hero.classList.toggle('bms-hero-focus-on',!reduced.matches);
-    measureFocus();syncHero();
-    hero.addEventListener('pointermove',event=>{
-      if (event.pointerType==='touch'||mobile.matches||!finePointer.matches||reduced.matches||!lensGeometry) return;
-      const rect=hero.getBoundingClientRect(),g=lensGeometry;
-      focusTarget.x=clamp((event.clientX-rect.left-g.width/2)*.45,-g.maxX,g.maxX);
-      focusTarget.y=clamp((event.clientY-rect.top-g.top-g.h/2)*.35,g.minY,g.maxY);
-      queueFocus();
-    },{passive:true});
-    hero.addEventListener('pointerleave',()=>{focusTarget.x=focusTarget.y=0;queueFocus();});
-  }
   // Decorative label duplicate; the link keeps one accessible name and target.
   document.querySelectorAll('body.home #header .menu > li > a, body.home .bms-focus-link > a').forEach(link => {
     if (link.children.length || !link.textContent.trim()) return;
@@ -190,7 +107,6 @@
   const queue = () => {if (!scheduled) {scheduled = true; requestAnimationFrame(render);}};
   function applyPreference() {
     home.classList.toggle('bms-motion-on', !reduced.matches);
-    if (focusReady) {hero.classList.toggle('bms-hero-focus-on',!reduced.matches);adaptHero();measureFocus();}
     syncClosing();
     if (reduced.matches) {
       for (const node of [...cards, ...splits, ...backgrounds, closing].filter(Boolean)) {
@@ -200,22 +116,15 @@
   }
   // The focus loop sleeps offscreen/when the tab is hidden; CTA never moves.
   let heroVisible = true;
-  const syncHero = () => {
-    const awake=heroVisible&&!document.hidden&&!reduced.matches;
-    hero?.classList.toggle('bms-focus-awake',awake);
-    heroAnimations.forEach(animation=>awake?animation.play():animation.pause());
-    if (!awake&&focusFrame) {cancelAnimationFrame(focusFrame);focusFrame=0;}
-  };
+  const syncHero = () => hero?.classList.toggle('bms-focus-awake', heroVisible && !document.hidden && !reduced.matches);
   if (hero && 'IntersectionObserver' in window) {
     new IntersectionObserver(entries => {heroVisible = entries[0].isIntersecting; syncHero();}, {threshold:0}).observe(hero);
   }
   document.addEventListener('visibilitychange', syncHero);
   window.addEventListener('scroll', queue, {passive:true});
   window.addEventListener('resize', queue, {passive:true});
-  window.addEventListener('resize', measureFocus, {passive:true});
   reduced.addEventListener('change', () => {applyPreference(); syncHero();});
   mobile.addEventListener('change', applyPreference);
   applyPreference();
   syncHero();
-  prepareHeroFocus();
 })();

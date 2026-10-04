@@ -1076,3 +1076,19 @@ Owner must still confirm perceptibility by waiting at Hero and normally scrollin
 Evidence: [docs/evidence/g3cr6r3d2r4-owner-video/README.md](docs/evidence/g3cr6r3d2r4-owner-video/README.md). Submission identity is the enclosing implementation/evidence commit, returned after push and recorded in PR64; baseline a6cbe3cc80f7d276ffbc30499f538544a7082bb6, main 46c2cf2c914a0e7043467ab1022da403fd1e015e. No Reviewer decision was edited.
 
 R4 Owner-video submission identity: implementation/evidence commit d6df5f1bff414716dd485605f0795f966a0151e6; final enclosing documentation hygiene commit corrects only the internal advisory's viewed-frame count to31. Same branch/PR64, unmerged; no new application or runtime change.
+
+## Current execution addendum — R4 Hero dual-image focus (2026-10-04)
+
+Owner reported dissatisfaction only with Hero, accepted the dual-image/pointer-window plan, then explicitly authorized implementation. This latest instruction permits the narrow change; previous Reviewer wait-for-Owner status and all historical evidence remain intact. **Executor PASS_CANDIDATE; official Reviewer / Owner live confirmation PENDING.** Supersedes only the previous same-image crop loop.
+
+Only home.css/home-motion.js application files changed: existing Mira/Lena images share matching blurred/clear scene coordinates and clock; desktop pointer window follows smoothly, stays above copy and returns to centre.20s cycle:8s clear hold/2s blur-zoom-crossfade per image. Mobile fixed327×276 window over480px photo field, lighter transitions. Title/CTA fixed, reduced/no-JS/missing-controller static fallback; loops pause offscreen/hidden. New imagegen0.
+
+Final51 source PNGs/51 full-size committed JPGs; eight1440/375 modes and60 machine checks PASS. Actual A→B→A timed states, pointer/keyboard/menu/reduced-motion checked without seeking clocks; no overflow/broken images/page errors/HTTP failures. Non-Hero controller exact and152 complete CSS rules unchanged. Capture duplicate-brand locator and incomplete CSS projection corrected only in helpers; no application repair after batched inspection. Offline corrected projection supersedes the initial four-rule result.
+
+Home858 SHA2567369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a, eight Gutenberg Groups/six anchors, menus/footer/theme/Preview/Woo/workspace hashes and five R2 assets unchanged. No new photo-network or authenticated workspace test claimed. GET virtual Product1113 USD39.99/empty Cart/Account200; empty Checkout→Cart200, not populated form proof. Orders1→1, jobs/model0; Owner Administrator/Gutenberg/media/global-style access retained.
+
+Pre-write rollback `poc/g3c/artifacts/backups/g3cr6r3d2r4-hero-focus/` restores198aed6, staged byte-readback PASS, no live restore. Docker project/unrelated resources unchanged, runtime retained at http://127.0.0.1:8189/ ; admin http://127.0.0.1:8189/wp-admin/ . No restart/rebuild/prune/teardown. Payment/PayPal/AddCart/Checkout-submit/order/account/provider/production/shared-infra/P1–P12/Aha/G4/merge actions0. Owner's pre-existing files/deletions excluded.
+
+Same branch/PR64 open/unmerged. Baseline198aed658fb59ebecffa596e37e143892d2d763b; main4caed9bb0dbf069d5407b261fe66740794c7676a, project authority unchanged. Enclosing execution/evidence commit is submission identity, returned after push/read-back; no stale no-commit claim or Reviewer decision edit.
+
+Evidence: [Hero focus README](docs/evidence/g3cr6r3d2r4-hero-focus/README.md). Headless measurements do not prove physical-device frame rate or visual approval. Reviewer checks paired coordinates, cycle and freeze boundaries; Owner Ctrl+F5, move pointer and wait10–12s. **OWNER_VISUAL_FREEZE=PENDING; STOP_AT_REVIEWER=YES.**

@@ -1,0 +1,77 @@
+{
+  "branch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
+  "head": "198aed658fb59ebecffa596e37e143892d2d763b",
+  "homeSha256": "7369f833ad51a539e7205ee255cad11b236a28bf6b9e9f11a6e1d9cdc10a937a",
+  "sources": [
+    {
+      "file": "home.css",
+      "sha256": "750f7e18e57924c139485e05a485bf4427012819437cb2a5b10effdc1754095c",
+      "bytes": 20236
+    },
+    {
+      "file": "home-motion.js",
+      "sha256": "cdf33a961e5c1adcd56fc17023800848cb07f258f5637dbaf8a8110e67a4b2b1",
+      "bytes": 7024
+    },
+    {
+      "file": "birthday-magazine-poc.php",
+      "sha256": "eb46a5c62f21b8f375ef023d48d744a2c140b1f44d61cf760ead5271ee7dfd9d",
+      "bytes": 6629
+    }
+  ],
+  "menus": {
+    "menu_1": [
+      {
+        "label": "Home",
+        "url": "http://127.0.0.1:8189/"
+      },
+      {
+        "label": "What You Get",
+        "url": "http://127.0.0.1:8189/#what-you-get"
+      }
+    ],
+    "menu_mobile": [
+      {
+        "label": "How It Works",
+        "url": "http://127.0.0.1:8189/#how-it-works"
+      },
+      {
+        "label": "Home",
+        "url": "http://127.0.0.1:8189/"
+      },
+      {
+        "label": "FAQ",
+        "url": "http://127.0.0.1:8189/#faq"
+      },
+      {
+        "label": "Free Preview",
+        "url": "http://127.0.0.1:8189/#preview"
+      },
+      {
+        "label": "Sample Pages",
+        "url": "http://127.0.0.1:8189/#samples"
+      },
+      {
+        "label": "What You Get",
+        "url": "http://127.0.0.1:8189/#what-you-get"
+      }
+    ],
+    "footer": [],
+    "menu_2": [
+      {
+        "label": "How It Works",
+        "url": "http://127.0.0.1:8189/#how-it-works"
+      },
+      {
+        "label": "FAQ",
+        "url": "http://127.0.0.1:8189/#faq"
+      },
+      {
+        "label": "Free Preview",
+        "url": "http://127.0.0.1:8189/#preview"
+      }
+    ]
+  },
+  "newAssetDirectoryPreviouslyAbsent": true,
+  "rollbackTarget": "Prior Owner-video R4 198aed6; earlier R4/R2 rollback retained"
+}

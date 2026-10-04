@@ -1,0 +1,177 @@
+diff --git a/birthday-magazine-studio/poc/g3c/preview-plugin/home-motion.js b/birthday-magazine-studio/poc/g3c/preview-plugin/home-motion.js
+index 77c6014..a76a4cf 100644
+--- a/birthday-magazine-studio/poc/g3c/preview-plugin/home-motion.js
++++ b/birthday-magazine-studio/poc/g3c/preview-plugin/home-motion.js
+@@ -12,6 +12,89 @@
+   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+   const phase = (value, start, end) => clamp((value - start) / (end - start), 0, 1);
+   const ease = value => value * value * (3 - 2 * value);
++  // Hero-only photographic enhancement. Each sharp/blur pair shares the same
++  // full-scene coordinates; the lens clips the scene, never drags a small image.
++  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
++  const heroAnimations = [];
++  const lens = hero?.querySelector('.bms-focus-frame');
++  let focusReady = false, focusFrame = 0, lensGeometry;
++  const focusPoint = {x:0,y:0}, focusTarget = {x:0,y:0};
++  let adaptHero = () => {};
++  function paintFocus() {
++    if (!lensGeometry) return;
++    const {width,height,left,top,w,h,radius} = lensGeometry;
++    hero.style.setProperty('--focus-x', `${focusPoint.x}px`);
++    hero.style.setProperty('--focus-y', `${focusPoint.y}px`);
++    hero.style.setProperty('--focus-clip', `inset(${top+focusPoint.y}px ${width-left-w-focusPoint.x}px ${height-top-h-focusPoint.y}px ${left+focusPoint.x}px round ${radius})`);
++  }
++  function measureFocus() {
++    if (!focusReady) return;
++    const width = hero.clientWidth, height = hero.querySelector('.bms-hero-focus-canvas').clientHeight;
++    const w = lens.offsetWidth, h = lens.offsetHeight, top = lens.offsetTop;
++    lensGeometry = {width,height,w,h,top,left:(width-w)/2,radius:getComputedStyle(lens).borderRadius,
++      maxX:Math.max(0,Math.min(180,(width-w)/2-24)),
++      minY:-Math.max(0,Math.min(60,top-90)),
++      maxY:Math.max(0,Math.min(60,hero.querySelector('.bms-hero-message').offsetTop-top-h-20))};
++    focusPoint.x=focusPoint.y=focusTarget.x=focusTarget.y=0;
++    paintFocus();
++  }
++  function followFocus() {
++    focusFrame=0;
++    if (!focusReady || reduced.matches || mobile.matches || !finePointer.matches || !heroVisible || document.hidden) return;
++    focusPoint.x+=(focusTarget.x-focusPoint.x)*.15;
++    focusPoint.y+=(focusTarget.y-focusPoint.y)*.15;
++    const moving=Math.abs(focusTarget.x-focusPoint.x)+Math.abs(focusTarget.y-focusPoint.y)>.1;
++    if (!moving) {focusPoint.x=focusTarget.x;focusPoint.y=focusTarget.y;}
++    paintFocus();
++    if (moving) focusFrame=requestAnimationFrame(followFocus);
++  }
++  function queueFocus() {if (!focusFrame) focusFrame=requestAnimationFrame(followFocus);}
++  async function prepareHeroFocus() {
++    const first=hero?.querySelector('.bms-focus-background img'),second=cards[2]?.querySelector('img');
++    if (!first || !second || !lens || !Element.prototype.animate || !CSS.supports('clip-path','inset(0 round 24px)')) return;
++    const pictures=[first,second].map(source=>{
++      const image=new Image();image.src=source.src;image.alt='';image.loading='eager';image.decoding='async';return image;
++    });
++    try {await Promise.all(pictures.map(image=>image.decode()));} catch {return;}
++    const stage=document.createElement('div'),canvas=document.createElement('div');
++    stage.className='bms-hero-photo-stage';canvas.className='bms-hero-focus-canvas';
++    stage.setAttribute('aria-hidden','true');canvas.setAttribute('aria-hidden','true');
++    for (const container of [stage,canvas]) pictures.forEach((picture,i)=>{
++      const image=picture.cloneNode();image.className=`bms-hero-photo bms-hero-photo-${i?'b':'a'}`;container.append(image);
++    });
++    hero.prepend(stage);hero.insertBefore(canvas,lens);
++    const opacity=[{offset:0,opacity:1},{offset:.44,opacity:1},{offset:.47,opacity:0},{offset:.94,opacity:0},{offset:.97,opacity:1},{offset:1,opacity:1}];
++    const zoom=[{offset:0,transform:'scale(1)'},{offset:.4,transform:'scale(1)'},{offset:.45,transform:'scale(1.08)'},{offset:.5,transform:'scale(1)'},{offset:.9,transform:'scale(1)'},{offset:.95,transform:'scale(1.08)'},{offset:1,transform:'scale(1)'}];
++    const focus=[{offset:0,blur:0},{offset:.4,blur:0},{offset:.435,blur:1},{offset:.465,blur:1},{offset:.5,blur:0},{offset:.9,blur:0},{offset:.935,blur:1},{offset:.965,blur:1},{offset:1,blur:0}];
++    const timing={duration:20000,iterations:Infinity,easing:'linear'};
++    const add=(node,frames)=>{const animation=node.animate(frames.map(f=>({...f,easing:'ease-in-out'})),timing);heroAnimations.push(animation);return animation;};
++    const scales=[];
++    for (const container of [stage,canvas]) [...container.children].forEach((image,i)=>{
++      add(image,opacity.map(f=>({...f,opacity:i?1-f.opacity:f.opacity})));
++      scales.push(add(image,zoom));
++    });
++    const backgroundFocus=add(stage,[]),windowFocus=add(canvas,[]);
++    adaptHero=()=>{
++      const small=mobile.matches;
++      scales.forEach(animation=>animation.effect.setKeyframes(zoom.map(f=>({...f,transform:small?f.transform.replace('1.08','1.035'):f.transform,easing:'ease-in-out'}))));
++      backgroundFocus.effect.setKeyframes(focus.map(f=>({offset:f.offset,filter:`blur(${(small?8:10)+f.blur*(small?6:10)}px)`,easing:'ease-in-out'})));
++      windowFocus.effect.setKeyframes(focus.map(f=>({offset:f.offset,filter:`blur(${f.blur*(small?6:12)}px)`,easing:'ease-in-out'})));
++    };
++    adaptHero();
++    const origin=document.timeline.currentTime;
++    heroAnimations.forEach(animation=>{animation.startTime=origin;});
++    focusReady=true;
++    hero.classList.toggle('bms-hero-focus-on',!reduced.matches);
++    measureFocus();syncHero();
++    hero.addEventListener('pointermove',event=>{
++      if (event.pointerType==='touch'||mobile.matches||!finePointer.matches||reduced.matches||!lensGeometry) return;
++      const rect=hero.getBoundingClientRect(),g=lensGeometry;
++      focusTarget.x=clamp((event.clientX-rect.left-g.width/2)*.45,-g.maxX,g.maxX);
++      focusTarget.y=clamp((event.clientY-rect.top-g.top-g.h/2)*.35,g.minY,g.maxY);
++      queueFocus();
++    },{passive:true});
++    hero.addEventListener('pointerleave',()=>{focusTarget.x=focusTarget.y=0;queueFocus();});
++  }
+   // Decorative label duplicate; the link keeps one accessible name and target.
+   document.querySelectorAll('body.home #header .menu > li > a, body.home .bms-focus-link > a').forEach(link => {
+     if (link.children.length || !link.textContent.trim()) return;
+@@ -107,6 +190,7 @@
+   const queue = () => {if (!scheduled) {scheduled = true; requestAnimationFrame(render);}};
+   function applyPreference() {
+     home.classList.toggle('bms-motion-on', !reduced.matches);
++    if (focusReady) {hero.classList.toggle('bms-hero-focus-on',!reduced.matches);adaptHero();measureFocus();}
+     syncClosing();
+     if (reduced.matches) {
+       for (const node of [...cards, ...splits, ...backgrounds, closing].filter(Boolean)) {
+@@ -116,15 +200,22 @@
+   }
+   // The focus loop sleeps offscreen/when the tab is hidden; CTA never moves.
+   let heroVisible = true;
+-  const syncHero = () => hero?.classList.toggle('bms-focus-awake', heroVisible && !document.hidden && !reduced.matches);
++  const syncHero = () => {
++    const awake=heroVisible&&!document.hidden&&!reduced.matches;
++    hero?.classList.toggle('bms-focus-awake',awake);
++    heroAnimations.forEach(animation=>awake?animation.play():animation.pause());
++    if (!awake&&focusFrame) {cancelAnimationFrame(focusFrame);focusFrame=0;}
++  };
+   if (hero && 'IntersectionObserver' in window) {
+     new IntersectionObserver(entries => {heroVisible = entries[0].isIntersecting; syncHero();}, {threshold:0}).observe(hero);
+   }
+   document.addEventListener('visibilitychange', syncHero);
+   window.addEventListener('scroll', queue, {passive:true});
+   window.addEventListener('resize', queue, {passive:true});
++  window.addEventListener('resize', measureFocus, {passive:true});
+   reduced.addEventListener('change', () => {applyPreference(); syncHero();});
+   mobile.addEventListener('change', applyPreference);
+   applyPreference();
+   syncHero();
++  prepareHeroFocus();
+ })();
+diff --git a/birthday-magazine-studio/poc/g3c/preview-plugin/home.css b/birthday-magazine-studio/poc/g3c/preview-plugin/home.css
+index 2942954..c8fb52d 100644
+--- a/birthday-magazine-studio/poc/g3c/preview-plugin/home.css
++++ b/birthday-magazine-studio/poc/g3c/preview-plugin/home.css
+@@ -117,13 +117,18 @@ body.home .bms-motion-on .bms-panel-background img{position:relative;top:-180px;
+ body.home .bms-motion-on .bms-focus-visual{clip-path:inset(var(--split-inset,0%) round 32px)}
+ body.home .bms-motion-on .bms-focus-visual img{transform:translateY(var(--split-y,0px)) scale(var(--split-scale,1));transform-origin:50% 50%}
+ body.home .bms-motion-on .bms-focus-copy{transform:translateY(var(--copy-y,0px));opacity:var(--copy-opacity,1)}
+-body.home .bms-motion-on .bms-focus-background{animation:bms-focus-breathe 12s ease-in-out infinite;animation-play-state:paused}
+-body.home .bms-motion-on .bms-focus-sharp img{animation:bms-focus-pan 12s ease-in-out infinite;animation-play-state:paused}
+-body.home .bms-motion-on .bms-focus-awake :is(.bms-focus-background,.bms-focus-sharp img){animation-play-state:running}
+-@keyframes bms-focus-breathe{0%,26%,54%,74%,100%{filter:blur(12px)}36%,42%,84%,90%{filter:blur(25px)}0%,36%,100%{transform:scale(1.04) translateX(0)}42%,84%{transform:scale(1.14) translateX(-16px)}}
+-/* Crop switches happen while defocused; the existing product photo is reused.
+-   The readable headline/CTA sits outside these photographic layers. */
+-@keyframes bms-focus-pan{0%,26%,100%{filter:blur(0);transform:scale(1) translateX(0)}36%{filter:blur(14px);transform:scale(1.04) translateX(0)}42%{filter:blur(14px);transform:scale(1.32) translateX(-18px)}54%,74%{filter:blur(0);transform:scale(1.32) translateX(-18px)}84%{filter:blur(14px);transform:scale(1.32) translateX(-18px)}90%{filter:blur(14px);transform:scale(1) translateX(0)}}
++/* Hero photographic pairs use identical coordinates. The transparent frame
++   follows the pointer; only its clipping window moves, not the scene itself. */
++body.home .bms-hero-photo-stage,body.home .bms-hero-focus-canvas{position:absolute;inset:0;max-width:none!important;margin:0!important;pointer-events:none;overflow:hidden}
++body.home .bms-hero-photo-stage{z-index:-2;filter:blur(10px)}
++body.home .bms-hero-focus-canvas{z-index:0;clip-path:var(--focus-clip,inset(145px calc(50% - 360px) 435px calc(50% - 360px) round 44px))}
++body.home .bms-hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform-origin:50% 50%}
++body.home .bms-hero-photo-b{opacity:0}
++body.home .bms-hero:not(.bms-hero-focus-on) :is(.bms-hero-photo-stage,.bms-hero-focus-canvas){display:none}
++body.home .bms-hero-focus-on>.bms-focus-background{visibility:hidden}
++body.home .bms-hero-focus-on .bms-focus-sharp{visibility:hidden;animation:none}
++body.home .bms-hero-focus-on .bms-focus-frame{height:420px;background:transparent;z-index:1;pointer-events:none;transform:translate(calc(-50% + var(--focus-x,0px)),var(--focus-y,0px))}
++body.home .bms-hero-focus-on .bms-hero-message{z-index:2}
+ @media(min-width:701px){
+  body.home .bms-motion-on .bms-closing{height:190svh;min-height:1600px;display:block;padding:0;overflow:clip}
+  body.home .bms-closing-sticky{position:sticky;top:0;width:100%;max-width:none!important;margin:0!important;height:100svh;min-height:700px;display:grid;place-items:center;padding:80px 32px;isolation:isolate}
+@@ -144,8 +149,9 @@ body.home .bms-motion-on .bms-closing .bms-heading{clip-path:inset(0 calc(100% -
+ @media(max-width:700px){
+  body.home .bms-motion-on .bms-panel-background img{top:0;height:100%;transform:none}
+  body.home .bms-motion-on #offer .bms-panel-background img{height:320px}
+- body.home .bms-motion-on .bms-focus-background{animation-name:bms-focus-breathe-mobile}
+- body.home .bms-motion-on .bms-focus-sharp img{animation-name:bms-focus-pan-mobile}
++ body.home .bms-hero-focus-on .bms-focus-frame{height:276px}
++ body.home :is(.bms-hero-photo-stage,.bms-hero-focus-canvas){height:480px}
++ body.home .bms-hero-photo-stage{mask-image:linear-gradient(#000 0%,#000 75%,transparent 100%)}
+  body.home #header [data-row='middle']{width:calc(100% - 32px);--height:64px;border-radius:0 0 22px 22px}
+  body.home #header [data-row] .ct-container{padding:0 16px;gap:12px}
+  body.home #header .site-title{font-size:22px!important;max-width:230px;line-height:1.05!important}
+@@ -200,8 +206,6 @@ body.home .bms-motion-on .bms-closing .bms-heading{clip-path:inset(0 calc(100% -
+  body.home .bms-closing-photo-left{left:24px;top:20px;height:70px}
+  body.home .bms-closing-photo-right{right:24px;bottom:28px}
+ }
+-@keyframes bms-focus-breathe-mobile{0%,26%,54%,74%,100%{filter:blur(12px)}36%,42%,84%,90%{filter:blur(17px)}0%,36%,100%{transform:scale(1.04)}42%,84%{transform:scale(1.08)}}
+-@keyframes bms-focus-pan-mobile{0%,26%,100%{filter:blur(0);transform:scale(1)}36%{filter:blur(5px);transform:scale(1.02)}42%{filter:blur(5px);transform:scale(1.10)}54%,74%{filter:blur(0);transform:scale(1.10)}84%{filter:blur(5px);transform:scale(1.10)}90%{filter:blur(5px);transform:scale(1)}}
+ @media(prefers-reduced-motion:reduce){
+  body.home .bms-focus-background,body.home .bms-focus-sharp img{animation:none!important}
+  body.home .bms-focus-visual img,body.home .bms-focus-copy{transform:none!important;opacity:1!important}

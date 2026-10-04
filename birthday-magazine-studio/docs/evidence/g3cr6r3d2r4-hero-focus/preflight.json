@@ -1,0 +1,17 @@
+{
+  "gate": "G3CR6R3D2R4_MOTION_POLISH",
+  "iteration": "Owner-approved Hero-only focus",
+  "branch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
+  "baseline": "198aed658fb59ebecffa596e37e143892d2d763b",
+  "canonicalMain": "4caed9bb0dbf069d5407b261fe66740794c7676a",
+  "projectAuthorityDrift": false,
+  "governance": "spike.skill/vps-project-governance/VNEXT.md v0.2.6",
+  "governanceAnchor": "83a8ad33ed70e2a391e4a4dacd71e0b812b15ef6",
+  "ownerAuthorization": "Hero differences discussed; plan accepted; Owner latest explicit instruction to start changes.",
+  "newGate": false,
+  "pr": 64,
+  "newPR": false,
+  "merge": false,
+  "runtimeRebuild": false,
+  "newImagegenCalls": 0
+}

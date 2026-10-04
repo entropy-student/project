@@ -754,3 +754,17 @@ Owner must still confirm perceptibility by waiting at Hero and normally scrollin
 Evidence: [docs/evidence/g3cr6r3d2r4-owner-video/README.md](docs/evidence/g3cr6r3d2r4-owner-video/README.md). Submission identity is the enclosing implementation/evidence commit, returned after push and recorded in PR64; baseline a6cbe3cc80f7d276ffbc30499f538544a7082bb6, main 46c2cf2c914a0e7043467ab1022da403fd1e015e. No Reviewer decision was edited.
 
 R4 Owner-video submission identity: implementation/evidence commit d6df5f1bff414716dd485605f0795f966a0151e6; final enclosing documentation hygiene commit corrects only the internal advisory's viewed-frame count to31. Same branch/PR64, unmerged; no new application or runtime change.
+
+## Current handoff — R4 Hero dual-image focus (2026-10-04)
+
+**Executor PASS_CANDIDATE; Reviewer/Owner visual freeze PENDING.** Owner explicitly approved this Hero-only correction after the previous video calibration. Historical evidence retained; no Reviewer decision edited.
+
+Read [Hero focus evidence](docs/evidence/g3cr6r3d2r4-hero-focus/README.md) first. Existing Mira/Lena images, shared full-scene blurred/clear coordinates, desktop pointer-follow window,20s clear-hold/defocus-zoom/crossfade cycle, fixed lighter mobile window. Title/CTA fixed; reduced/no-JS static and offscreen pause. Only home.css/home-motion.js changed; no new imagegen. Non-Hero motion/static styles, Home858, Preview/business/media/menu frozen.
+
+Final51 captures, eight1440/375 contexts,60 machine checks PASS.152 non-Hero CSS rules/controller exact; protected runtime and five R2 assets unchanged. No overflow/resource errors. GET-only commerce proof includes native empty-cart Checkout redirect, not populated checkout. No new photo interaction/access proof fabricated. Orders1→1, jobs/model0. Owner Administrator/Gutenberg access intact.
+
+Backup `poc/g3c/artifacts/backups/g3cr6r3d2r4-hero-focus/`, byte-roundtrip PASS; explicit future rollback script restores198aed6's two application files only. Runtime/project/unrelated Docker projection unchanged and retained at http://127.0.0.1:8189/ ; http://127.0.0.1:8189/wp-admin/ . No teardown or credentials retained. All forbidden business/production/shared-infra/G4/merge actions0.
+
+Continue same branch `codex/birthday-magazine-g3c-blocksy-wedding-productization`, PR64 open/unmerged. Baseline198aed658fb59ebecffa596e37e143892d2d763b; fresh main4caed9bb0dbf069d5407b261fe66740794c7676a project authority unchanged. Enclosing execution/evidence commit is pushed submission identity, read back in PR64. Pre-existing Owner files/deletions excluded.
+
+Reviewer: assess Hero-only code, matching coordinate/clock proof, fallbacks and frozen boundaries. Owner: Ctrl+F5, move pointer and wait10–12s for Lena. Headless proof is not physical-device smoothness or official visual acceptance. **STOP_AT_REVIEWER=YES; OWNER_VISUAL_FREEZE=PENDING.**

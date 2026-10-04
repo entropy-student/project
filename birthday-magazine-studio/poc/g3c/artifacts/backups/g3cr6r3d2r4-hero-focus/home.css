@@ -117,18 +117,13 @@ body.home .bms-motion-on .bms-panel-background img{position:relative;top:-180px;
 body.home .bms-motion-on .bms-focus-visual{clip-path:inset(var(--split-inset,0%) round 32px)}
 body.home .bms-motion-on .bms-focus-visual img{transform:translateY(var(--split-y,0px)) scale(var(--split-scale,1));transform-origin:50% 50%}
 body.home .bms-motion-on .bms-focus-copy{transform:translateY(var(--copy-y,0px));opacity:var(--copy-opacity,1)}
-/* Hero photographic pairs use identical coordinates. The transparent frame
-   follows the pointer; only its clipping window moves, not the scene itself. */
-body.home .bms-hero-photo-stage,body.home .bms-hero-focus-canvas{position:absolute;inset:0;max-width:none!important;margin:0!important;pointer-events:none;overflow:hidden}
-body.home .bms-hero-photo-stage{z-index:-2;filter:blur(10px)}
-body.home .bms-hero-focus-canvas{z-index:0;clip-path:var(--focus-clip,inset(145px calc(50% - 360px) 435px calc(50% - 360px) round 44px))}
-body.home .bms-hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform-origin:50% 50%}
-body.home .bms-hero-photo-b{opacity:0}
-body.home .bms-hero:not(.bms-hero-focus-on) :is(.bms-hero-photo-stage,.bms-hero-focus-canvas){display:none}
-body.home .bms-hero-focus-on>.bms-focus-background{visibility:hidden}
-body.home .bms-hero-focus-on .bms-focus-sharp{visibility:hidden;animation:none}
-body.home .bms-hero-focus-on .bms-focus-frame{height:420px;background:transparent;z-index:1;pointer-events:none;transform:translate(calc(-50% + var(--focus-x,0px)),var(--focus-y,0px))}
-body.home .bms-hero-focus-on .bms-hero-message{z-index:2}
+body.home .bms-motion-on .bms-focus-background{animation:bms-focus-breathe 12s ease-in-out infinite;animation-play-state:paused}
+body.home .bms-motion-on .bms-focus-sharp img{animation:bms-focus-pan 12s ease-in-out infinite;animation-play-state:paused}
+body.home .bms-motion-on .bms-focus-awake :is(.bms-focus-background,.bms-focus-sharp img){animation-play-state:running}
+@keyframes bms-focus-breathe{0%,26%,54%,74%,100%{filter:blur(12px)}36%,42%,84%,90%{filter:blur(25px)}0%,36%,100%{transform:scale(1.04) translateX(0)}42%,84%{transform:scale(1.14) translateX(-16px)}}
+/* Crop switches happen while defocused; the existing product photo is reused.
+   The readable headline/CTA sits outside these photographic layers. */
+@keyframes bms-focus-pan{0%,26%,100%{filter:blur(0);transform:scale(1) translateX(0)}36%{filter:blur(14px);transform:scale(1.04) translateX(0)}42%{filter:blur(14px);transform:scale(1.32) translateX(-18px)}54%,74%{filter:blur(0);transform:scale(1.32) translateX(-18px)}84%{filter:blur(14px);transform:scale(1.32) translateX(-18px)}90%{filter:blur(14px);transform:scale(1) translateX(0)}}
 @media(min-width:701px){
  body.home .bms-motion-on .bms-closing{height:190svh;min-height:1600px;display:block;padding:0;overflow:clip}
  body.home .bms-closing-sticky{position:sticky;top:0;width:100%;max-width:none!important;margin:0!important;height:100svh;min-height:700px;display:grid;place-items:center;padding:80px 32px;isolation:isolate}
@@ -149,9 +144,8 @@ body.home .bms-motion-on .bms-closing .bms-heading{clip-path:inset(0 calc(100% -
 @media(max-width:700px){
  body.home .bms-motion-on .bms-panel-background img{top:0;height:100%;transform:none}
  body.home .bms-motion-on #offer .bms-panel-background img{height:320px}
- body.home .bms-hero-focus-on .bms-focus-frame{height:276px}
- body.home :is(.bms-hero-photo-stage,.bms-hero-focus-canvas){height:480px}
- body.home .bms-hero-photo-stage{mask-image:linear-gradient(#000 0%,#000 75%,transparent 100%)}
+ body.home .bms-motion-on .bms-focus-background{animation-name:bms-focus-breathe-mobile}
+ body.home .bms-motion-on .bms-focus-sharp img{animation-name:bms-focus-pan-mobile}
  body.home #header [data-row='middle']{width:calc(100% - 32px);--height:64px;border-radius:0 0 22px 22px}
  body.home #header [data-row] .ct-container{padding:0 16px;gap:12px}
  body.home #header .site-title{font-size:22px!important;max-width:230px;line-height:1.05!important}
@@ -206,6 +200,8 @@ body.home .bms-motion-on .bms-closing .bms-heading{clip-path:inset(0 calc(100% -
  body.home .bms-closing-photo-left{left:24px;top:20px;height:70px}
  body.home .bms-closing-photo-right{right:24px;bottom:28px}
 }
+@keyframes bms-focus-breathe-mobile{0%,26%,54%,74%,100%{filter:blur(12px)}36%,42%,84%,90%{filter:blur(17px)}0%,36%,100%{transform:scale(1.04)}42%,84%{transform:scale(1.08)}}
+@keyframes bms-focus-pan-mobile{0%,26%,100%{filter:blur(0);transform:scale(1)}36%{filter:blur(5px);transform:scale(1.02)}42%{filter:blur(5px);transform:scale(1.10)}54%,74%{filter:blur(0);transform:scale(1.10)}84%{filter:blur(5px);transform:scale(1.10)}90%{filter:blur(5px);transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){
  body.home .bms-focus-background,body.home .bms-focus-sharp img{animation:none!important}
  body.home .bms-focus-visual img,body.home .bms-focus-copy{transform:none!important;opacity:1!important}
