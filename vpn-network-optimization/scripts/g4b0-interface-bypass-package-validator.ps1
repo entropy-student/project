@@ -61,8 +61,8 @@ Assert-G4B0 (([regex]::Matches($runnerText,[regex]::Escape('$script:requestCount
 Assert-G4B0 ($runnerText.Contains('STATE=AUTHORIZED_NOT_EXECUTED')) 'G4B0_RUNNER_AUTH_GATE_MISSING'
 Assert-G4B0 ($runnerText.Contains('G4B0_RUNNER_RESULT=PASS_CANDIDATE_INTERFACE_NAME_BYPASS')) 'G4B0_RUNNER_PASS_MARKER_MISSING'
 Assert-G4B0 ($runnerText.Contains('DO_NOT_RERUN=YES')) 'G4B0_RUNNER_RETRY_GUARD_MISSING'
-$oldUdpZeroInvariant = 'MIHOMO_UNEXPECTED_UDP_LISTENER'
-$oldUdpSamePortReject = 'MIHOMO_UDP_BOUND_ON_LOCAL_SOCKS_PORT'
+$oldUdpZeroInvariant = "'MIHOMO_UNEXPECTED_UDP_LISTENER'"
+$oldUdpSamePortReject = "'MIHOMO_UDP_BOUND_ON_LOCAL_SOCKS_PORT'"
 Assert-G4B0 (-not $runnerText.Contains($oldUdpZeroInvariant)) 'G4B0_OLD_UDP_ZERO_INVARIANT_PRESENT'
 Assert-G4B0 (-not $runnerText.Contains($oldUdpSamePortReject)) 'G4B0_OLD_SOCKS_UDP_REJECT_PRESENT'
 Assert-G4B0 ($runnerText.Contains('Get-NetUDPEndpoint -LocalPort $script:proxyPort')) 'G4B0_UDP_PROXY_PORT_CHECK_MISSING'
