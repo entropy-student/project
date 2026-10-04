@@ -464,8 +464,9 @@ finally {
 
     if ($null -ne $script:profileBefore) { $script:profileBefore.Clear(); $script:profileBefore = $null }
 
-    $cleanupPass = ($script:cleanupFailures.Count -eq 0 -and $script:secretCleanupPassed)
-    Write-Output ('C2C_SECRET_CLEANUP=' + $(if ($script:secretCleanupPassed) { 'PASS' } else { 'FAIL' }))
+    $secretCleanupSatisfied = ($null -eq $script:profilePath -or $script:secretCleanupPassed)
+    $cleanupPass = ($script:cleanupFailures.Count -eq 0 -and $secretCleanupSatisfied)
+    Write-Output ('C2C_SECRET_CLEANUP=' + $(if ($script:secretCleanupPassed) { 'PASS' } elseif ($null -eq $script:profilePath) { 'NOT_REQUIRED' } else { 'FAIL' }))
     Write-Output ('REAL_HY2_CANARY_PASSED=' + $(if ($script:realCanaryPassed) { 'YES' } else { 'NO' }))
     Write-Output ('C2C_CLEANUP=' + $(if ($cleanupPass) { 'PASS' } else { 'FAIL' }))
     if ($script:cleanupFailures.Count -gt 0) {
