@@ -1,4 +1,23 @@
-## Current execution status — G3C C2C real HY2-in-Clash Owner canary R1
+## Current execution status — G3C C2C real HY2-in-Clash Owner canary R1R1
+
+```text
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R1R1
+EXECUTOR_ROLE=NO_EXECUTION_DURING_OWNER_CANARY
+PREVIOUS_RESULT=RETURN_R1_OWNER_WRAPPER_NULL_COUNT
+C2C_SOURCE_CHANGED=NO
+OWNER_ACTION_REQUIRED=YES
+EXECUTOR_REAL_C2C_ACTION_AUTHORIZED=NO
+G4_ENTRY_AUTHORIZED=NO
+STOP_AT_REVIEWER=YES
+```
+
+### Executor task
+
+No action. Wait for Owner R1R1 output and Reviewer decision.
+
+
+
+## Historical execution status — G3C C2C real HY2-in-Clash Owner canary R1
 
 ```text
 GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R1
