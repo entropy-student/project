@@ -13,7 +13,7 @@ $expectedExit = '24.199.118.137'
 $curl = (Get-Command curl.exe -ErrorAction Stop).Source
 
 $writeOut = '%{http_code}|%{time_total}|%{time_connect}|%{time_appconnect}|%{proxy_used}'
-$output = & $curl -sS -o NUL --connect-timeout 10 --max-time 20 --noproxy '' --proxy "http://127.0.0.1:$ProxyPort" -w $writeOut $openAiEndpoint 2>$null
+$output = & $curl -sS -o NUL --connect-timeout 10 --max-time 20 --noproxy '' --proxy "socks5h://127.0.0.1:$ProxyPort" -w $writeOut $openAiEndpoint 2>$null
 $curlExit = $LASTEXITCODE
 $parts = ([string]$output).Trim().Split('|')
 
@@ -29,7 +29,7 @@ Write-Output ('C2C_OPENAI_TIME_TOTAL=' + $parts[1])
 Write-Output ('C2C_OPENAI_TIME_CONNECT=' + $parts[2])
 Write-Output ('C2C_OPENAI_TIME_APPCONNECT=' + $parts[3])
 
-$exitValue = & $curl -fsS --connect-timeout 10 --max-time 20 --noproxy '' --proxy "http://127.0.0.1:$ProxyPort" $exitEndpoint 2>$null
+$exitValue = & $curl -fsS --connect-timeout 10 --max-time 20 --noproxy '' --proxy "socks5h://127.0.0.1:$ProxyPort" $exitEndpoint 2>$null
 $exitCode = $LASTEXITCODE
 
 if ($exitCode -ne 0) { throw 'C2C_EXIT_QUERY_FAILED' }
