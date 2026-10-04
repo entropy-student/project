@@ -259,3 +259,14 @@ No additional protocol shopping is planned for v1 unless later evidence proves a
 **Bound:** G4-B0 is Windows-local only, uses the existing accepted HY2 server, creates no exact VPS `/32` route, performs no SSH/VPS/REALITY/persistent-profile action, sends at most two bounded real requests, cleans its temporary runtime, and stops at Reviewer.
 
 **Consequence:** If G4-B0 passes, the v1 persistent Clash profile may use `interface-name` without adding a persistent VPS route. If it returns because interface binding is insufficient, Reviewer will design an explicit route lifecycle before G4-B rather than guess. This decision does not authorize the canary or any persistent G4-B write.
+
+
+## 2026-10-04 — Owner authorized one G4-B0 Windows interface bypass canary
+
+**Decision:** Owner explicitly authorized exactly one `G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1` attempt.
+
+**Authorized scope:** On the current Owner Windows host only, keep WireGuard connected; prove exact active/persistent VPS `/32` route absence; read the existing HY2 credential only inside the protected Owner-local boundary; render/start one temporary Mihomo HY2 runtime using dynamically discovered `interface-name`; send exactly two bounded external requests; then stop Mihomo, remove temporary Secret runtime state, prove the exact VPS `/32` route is still absent, prove WireGuard/system-proxy/TUN/network baseline is restored, and stop at Reviewer.
+
+**Not authorized:** creating any active or persistent VPS `/32` route, SSH/VPS changes, REALITY activation/deployment, persistent Clash profile writes, system proxy/TUN enablement, benchmark loops, automatic switching, G4-B persistent writes, G4-C workloads, or a blind retry after a consequential/ambiguous failure.
+
+**Execution state:** Authorization is granted but not yet consumed. The live runner must first be completed and reviewed. A pre-start tooling/source failure does not consume authorization if Reviewer reconciliation proves the real Secret/runtime/request phase never started.
