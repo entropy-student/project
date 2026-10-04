@@ -4794,3 +4794,42 @@ Reviewer conclusion:
 - No DPAPI/Secret/Clash/network/VPS/REALITY action occurred.
 - PowerShell 7.6.5 does not invalidate this repo-only/static Gate; the real Owner checkpoint independently enforces the accepted 7.6.6/Admin/High runtime.
 - C2C package validation is formally PASS. The accepted package may now proceed once through the bounded Owner real-canary Gate; G4 and persistent default changes remain unauthorized.
+
+
+## Reviewer reconciliation — C2C Owner canary R1 outer-wrapper null cardinality failure — 2026-10-04
+
+```text
+GATE_ID=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R1
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-04T04:04:30.7067964+00:00
+OWNER_REPORTED_OWNER_RUNTIME=PASS
+OWNER_REPORTED_RESULT=RETURN
+OWNER_REPORTED_FAILURE_CODE=PROPERTY_COUNT_NOT_FOUND
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-04T04:04:30.9069173+00:00
+OWNER_REPORTED_CHECKPOINT_ELAPSED=00:00:00.2001209
+
+FAILURE_LOCATION=OUTER_CHECKPOINT_PRE_SYNC_CLEANLINESS_CARDINALITY
+ROOT_CAUSE=STRICTMODE_NULL_COUNT_ON_CLEAN_GIT_STATUS
+FAULTY_SHAPE=$dirty.Count
+CORRECTED_SHAPE=@($dirty).Count
+SECONDARY_CORRECTION=@($dirtyAfter).Count
+GIT_FETCH_EXECUTED=NO
+SAFE_FAST_FORWARD_EXECUTED=NO
+OFFLINE_VALIDATOR_EXECUTED=NO
+ORCHESTRATOR_EXECUTED=NO
+DPAPI_UNPROTECT=NO
+REAL_SECRET_READ=NO
+CLASH_PROFILE_MUTATION=NO
+ROUTE_MUTATION=NO
+NETWORK_REQUESTS=0
+NETWORK_CHANGED=NO
+SECRET_VALUES_EMITTED=0
+C2C_SOURCE_CHANGE_REQUIRED=NO
+LOCKED_BLOBS_UNCHANGED=YES
+NEXT_GATE=G3C_C2C_REAL_HY2_IN_CLASH_OWNER_CANARY_R1R1
+PROVENANCE=OWNER_REPORTED_PLUS_REVIEWER_CHECKPOINT_SOURCE_INSPECTION_PLUS_DIRECT_GITHUB_READBACK
+```
+
+Reviewer conclusion:
+- R1 did not enter C2C. It failed in the Reviewer-supplied outer wrapper immediately after the Owner runtime check.
+- Under StrictMode, a clean Git-status pipeline can assign `$null`; direct `.Count` is therefore invalid. Both pre/post-sync checks are corrected to `@(...).Count`.
+- No package source change or revalidation by Executor is required. R1R1 is an exact retry with the wrapper only repaired.
