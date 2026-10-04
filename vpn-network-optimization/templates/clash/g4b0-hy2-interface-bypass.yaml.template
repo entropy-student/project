@@ -1,5 +1,5 @@
 {
-  "mixed-port": "__LOCAL_PROXY_PORT__",
+  "socks-port": __LOCAL_PROXY_PORT__,
   "allow-lan": false,
   "bind-address": "127.0.0.1",
   "mode": "rule",
