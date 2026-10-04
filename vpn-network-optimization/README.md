@@ -86,7 +86,8 @@ G3-C Secret Prepare 真实 Owner 主机复验       ✅ PASS
 G3-C 真实 HY2-in-Clash canary R3R2           ✅ PASS
 G3-B 新 VPS 真实迁移演练                      ⏸ DEFERRED
 G4-A 三角色目标 / 离线包                    ✅ PASS
-G4-B 长期三节点可用性                        🔐 AUTH_REQUIRED
+G4-B0 Windows 外层绕行验证                   🔐 AUTH_REQUIRED
+G4-B 长期三节点可用性                        ⏳ PENDING
 G4-C 晚高峰 + 真实工作负载最终验收            ⏳ PENDING
 MVP v1 封板                                  ⏳ PENDING
 ```
@@ -133,7 +134,7 @@ G2-B 已完成：HY2 真实握手通过；同窗口 WireGuard 与 HY2 各 60/60 
 
 ## 当前交互目标
 
-C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Secret Prepare 复验以及 **R3R2 真实 HY2-in-Clash bounded canary 均已正式 PASS**。Owner 已把 v1 目标角色冻结为 **HY2 主力 / WireGuard 备用 1 / REALITY 备用 2**，G4-A 计划和离线模板已 PASS。当前进入 **G4-B 长期三节点可用性**：REALITY 目前仍只有已验证但已清理的临时公网 canary，因此要成为备用 2，必须先通过单独授权的持久服务、Secret/recovery 与 Clash 三节点 profile Gate。G4-C 晚高峰和真实工作负载在 G4-B PASS 后另行执行。
+C2B synthetic UI、C2C package、Secret scanner 修复、R2R3V2 Owner 真实 Secret Prepare 复验以及 **R3R2 真实 HY2-in-Clash bounded canary 均已正式 PASS**。Owner 已把 v1 目标角色冻结为 **HY2 主力 / WireGuard 备用 1 / REALITY 备用 2**，G4-A 计划和离线模板已 PASS。继续复核发现，在真正进入 G4-B 前还必须先完成 **G4-B0 Windows 外层绕行验证**：R3R2 的 HY2 成功依赖临时 `/32` 路由，而长期模板中的 `interface-name` 在 Windows 上尚未被正式证明可独立绕过 WireGuard。G4-B0 只验证这一件事；PASS 后才进入 REALITY 持久服务、Secret/recovery 与 Clash 三节点 profile。G4-C 晚高峰和真实工作负载仍在 G4-B PASS 后另行执行。
 
 连接连续性约束：
 - Owner 的 ChatGPT 网页和 Codex Desktop 必须始终有至少一条可用 VPN。
