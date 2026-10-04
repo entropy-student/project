@@ -6474,3 +6474,41 @@ Reviewer reconciliation:
 - The failure is a runner readiness-check defect: the startup check rejected any UDP endpoint owned by Mihomo even though HY2 itself is UDP-based and may legitimately create a local ephemeral UDP socket.
 - The reported P6 failure phase is also telemetry drift: `finally` overwrote the phase before the final failure report. Based on execution ordering and markers, the actual failure occurred in P4 before the local proxy-ready marker.
 - No retry is authorized. Repair and non-consequential validation must complete before fresh Owner authorization is requested.
+
+
+## Reviewer offline acceptance — G4-B0 UDP-readiness repair — 2026-10-04
+
+```text
+GATE_ID=G4B0_WINDOWS_MIHOMO_INTERFACE_BYPASS_CANARY_R1
+LIVE_EXECUTION=NO
+SECRET_ACCESS=NO
+EXTERNAL_REQUESTS=0
+NETWORK_MUTATION=NO
+
+REPAIRED_RUNNER_BLOB=234658cefed52f2f95a1cb20b50dad415ea4b54e
+REPAIRED_VALIDATOR_BLOB=f102280866520bb7fff906181081c13ed1d17beb
+TEMPLATE_BLOB=f8c637d28a35d3795c8ebaf470d50248562dbaf8
+
+OLD_ZERO_UDP_INVARIANT_ABSENT=PASS
+UDP_CHECK_SCOPED_TO_LOCAL_SOCKS_PORT=PASS
+FAILURE_PHASE_CAPTURE_SEPARATE_FROM_CLEANUP=PASS
+ROUTE_WRITE_COMMANDS=0
+SSH_OR_SCP_COMMANDS=0
+REGISTRY_WRITE_COMMANDS=0
+REALITY_SCOPE_PRESENT=NO
+REQUEST_INCREMENT_CARDINALITY=2
+OPENAI_ENDPOINT_CARDINALITY=1
+IPIFY_ENDPOINT_CARDINALITY=1
+LEXICAL_QUOTES_CLOSED=PASS
+LEXICAL_BRACKETS_BALANCED=PASS
+STATIC_REPAIR_REVIEW=PASS
+
+NEXT_CHECKPOINT=OWNER_AST_PLUS_VALIDATOR_ONLY
+FRESH_LIVE_AUTHORIZATION_REQUIRED_AFTER_NONCONSEQUENTIAL_CHECKS=YES
+```
+
+Reviewer conclusion:
+- The first live RETURN is attributed to an over-strict Mihomo UDP endpoint readiness invariant, not to the bypass hypothesis.
+- The repaired runner permits HY2's unrelated UDP socket activity while still forbidding UDP ownership of the reserved local SOCKS port.
+- Failure telemetry now captures the original failure phase before cleanup.
+- No live retry is authorized until Owner-local AST and validator-only checks PASS and a fresh explicit authorization is granted.
