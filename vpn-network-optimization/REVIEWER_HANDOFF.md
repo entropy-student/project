@@ -126,21 +126,22 @@ C2B is closed PASS. C2C package validation is closed PASS. WireGuard remains pro
 - **Locked real-canary source identities:** orchestrator `e59be99321cc98a37a80e4a747b937aaaaf5d58b`; Secret helper `cdbcd94e504ca9d7f680d30a971bea201a812c7a`; proxy probe `4e17c849dffdd410ff2c635830ce0e59cb24304e`; validator `4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9`; template `ea18bdccf8f00f2d6d705e4ba34ba57db243722a`; package doc `10518d986ab3094a4578f431301a820645d7163b`.
 - **C2C Owner checkpoint R1 wrapper result:** RETURN before Git synchronization because the Reviewer-supplied wrapper used `$dirty.Count` under `Set-StrictMode -Version Latest`. A clean Git status yields no pipeline objects, so `$dirty` becomes `$null` and `.Count` faults. Only `OWNER_RUNTIME=PASS` preceded the failure; the orchestrator did not start and no DPAPI/Secret/Clash/route/network action occurred. R1R1 changes only the wrapper cardinality checks to `@($dirty).Count` / `@($dirtyAfter).Count`; locked C2C source blobs are unchanged.
 - **C2C Owner checkpoint R1R1 result:** wrapper sync, blob lock and Owner-side offline validator all PASS, then the orchestrator returned in `PREFLIGHT` with `CLASH_LOCAL_PROXY_LISTENER_MISSING`. Cleanup/readback confirms temp route absent, WireGuard restored, system proxy OFF, TUN OFF, route snapshot restored, Secret cleanup not required, real canary not started, and no real request evidence. This is classified as a local-proxy listener-discovery precondition issue, not a HY2/auth failure.
-- **Current diagnostic hypothesis:** the orchestrator currently derives the localhost proxy port solely from Windows `ProxyServer` metadata and then requires a Clash/Mihomo listener at that exact port. With system proxy OFF, this metadata may be stale or may not correspond to Clash's actual current local listener. D4 compares registry port metadata with live Clash/Mihomo loopback listeners without reading config contents, Secrets, or sending traffic.
+- **D4 listener result:** Windows system proxy is OFF; registry metadata still points to port 10810, but no process listens there. Clash/Mihomo is live and owns loopback listeners on 52560 (`clash-verge`), 7900 (`verge-mihomo`), and 9097 (`verge-mihomo`). Registry/live intersection is zero. This proves the current resolver is stale-metadata incompatible.
+- **D5 purpose:** do not hard-code 7900 by guess. Send one local SOCKS5 greeting to each live Clash/Mihomo loopback listener and classify which listener actually behaves as a SOCKS/mixed proxy. D5 has zero external requests, zero Secret access, and no mutation.
 
 ## CURRENT_GATE
 
 ```text
-GATE_ID=G3C_C2C_LOCAL_PROXY_LISTENER_DIAGNOSTIC_D4
+GATE_ID=G3C_C2C_LOCAL_PROXY_PROTOCOL_DIAGNOSTIC_D5
 STATE=OWNER_ACTION_REQUIRED
-PREVIOUS_RESULT=RETURN_R1R1_CLASH_LOCAL_PROXY_LISTENER_MISSING
-OBJECTIVE=Read back Windows ProxyServer port metadata and actual loopback TCP listeners owned by Clash/Mihomo to determine whether the C2C preflight is using stale proxy metadata or Clash has no live local proxy listener.
-MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> locked read-only listener diagnostic -> registry-port/live-listener comparison -> STOP_AT_REVIEWER.
+PREVIOUS_RESULT=PASS_D4_STALE_PROXY_METADATA_CONFIRMED
+OBJECTIVE=Identify the actual Clash/Mihomo local proxy listener by protocol behavior instead of registry metadata, using one loopback-only SOCKS5 greeting per live candidate listener.
+MAX_ENDPOINT_THIS_ROUND=Owner safe ff-only sync -> locked local protocol diagnostic -> one loopback SOCKS5 greeting per live Clash/Mihomo listener -> classify proxy listener(s) -> STOP_AT_REVIEWER.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Real Owner Windows host; HKCU Internet Settings metadata, Clash service/processes, and local TCP listener state only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No C2C retry; no DPAPI/Secret; no Clash profile/config-content read; no profile mutation; no route/proxy/TUN/WireGuard mutation; no network requests; no VPS/SSH; no G4.
-LISTENER_DIAGNOSTIC=scripts/c2c-local-proxy-listener-diagnostic.ps1
-LISTENER_DIAGNOSTIC_BLOB=3ee49e2cdaa8f6de6809341e0775cfd296da92ec
+TARGET_AND_SCOPE=Real Owner Windows host; loopback TCP listeners owned by Clash/Mihomo only.
+APPLICABLE_CRITICAL_CONSTRAINTS=No C2C retry; no external network request; no DPAPI/Secret; no Clash profile/config-content read; no profile mutation; no route/proxy/TUN/WireGuard mutation; no VPS/SSH; no G4.
+PROTOCOL_DIAGNOSTIC=scripts/c2c-local-proxy-protocol-diagnostic.ps1
+PROTOCOL_DIAGNOSTIC_BLOB=7e7045c1e7a8d3290623ec107142b6abec050d56
 SPECIALIST_RULES=11B_TARGET_HOST
 ESTIMATED_EXECUTION_TIME=2-5_minutes
 TIMING_OBSERVABILITY_REQUIRED=YES
@@ -150,54 +151,52 @@ TIMING_OBSERVABILITY_REQUIRED=YES
 
 - Owner PowerShell 7.6.6/Admin/High runtime;
 - safe ff-only sync and project clean;
-- exact diagnostic blob;
-- system proxy enable flag;
-- registry proxy port count/ports only;
-- Clash Verge service state;
-- Clash/Mihomo process count;
-- live loopback listener count and `process|address|port` tuples;
-- listener count/owner at any registry-derived port;
-- registry/live-listener intersection count;
-- `C2C_LOCAL_PROXY_LISTENER_DIAGNOSTIC=PASS`;
+- exact D5 diagnostic blob;
+- Clash service state;
+- candidate listener count;
+- one `SOCKS5_PROBE=process|address|port|result` per candidate listener;
+- `SOCKS5_PROXY_LISTENER_COUNT` and exact matching listener tuple(s);
+- `C2C_LOCAL_PROXY_PROTOCOL_DIAGNOSTIC=PASS`;
+- local socket probe count;
+- `EXTERNAL_NETWORK_REQUESTS=0`;
 - `DPAPI_UNPROTECT=NO`;
 - `REAL_SECRET_READ=NO`;
 - `CLASH_PROFILE_MUTATION=NO`;
-- `NETWORK_REQUESTS=0`;
 - `NETWORK_CHANGED=NO`;
 - `SECRET_VALUES_EMITTED=0`;
 - complete timing.
 
 ### ACCEPTANCE_CRITERIA
 
-PASS_CANDIDATE requires a complete read-only comparison. If a live Clash/Mihomo loopback listener exists on a different port from registry metadata, classify the current orchestrator port resolver as stale-metadata incompatible. If no live local proxy listener exists at all, classify that separately and do not patch the resolver until Reviewer understands why.
+PASS_CANDIDATE requires exactly one live Clash/Mihomo listener to answer the SOCKS5 no-auth greeting. If exactly one is found, Reviewer may repair the C2C resolver to discover the live proxy listener by process+protocol rather than stale system-proxy registry metadata. Zero or multiple SOCKS5 listeners require further bounded diagnosis before source repair.
 
 ### ROLLBACK_STATUS_OR_PLAN
 
-Read-only Gate; no rollback should be necessary.
+Read-only/local-loopback Gate; no rollback should be necessary.
 
 ### OWNER_ONLY_ACTIONS
 
-Run the Reviewer-supplied atomic D4 checkpoint and return complete non-secret output.
+Run the Reviewer-supplied D5 checkpoint and return complete output.
 
 ### REVIEWER_TO_EXECUTOR_RELAY
 
-No Executor action. Do not rerun C2C or patch the resolver before D4 evidence.
+No Executor action. Do not patch C2C until D5 proves the proxy listener.
 
 ### EXECUTOR_TO_REVIEWER_RELAY
 
-NONE until Owner returns D4 output.
+NONE until Owner returns D5 output.
 
 ## NEXT_STEP
 
-Owner runs D4. Reviewer then either repairs only local-proxy discovery or investigates why Clash has no listener; no real C2C retry before that decision.
+Owner runs D5. If exactly one SOCKS5-capable listener is proven, Reviewer performs a minimal resolver repair, updates the offline validator, and reopens the real C2C canary.
 
 ## OWNER_ACTION_REQUIRED
 
-Run the D4 read-only listener diagnostic checkpoint.
+Run the D5 local-only protocol diagnostic checkpoint.
 
 ## REVIEWER_TO_EXECUTOR_RELAY
 
-No action while D4 is pending.
+No action while D5 is pending.
 
 ## EXECUTOR_TO_REVIEWER_RELAY
 
