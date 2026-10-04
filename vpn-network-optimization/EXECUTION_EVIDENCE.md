@@ -4614,3 +4614,42 @@ Reviewer conclusion:
 - The C2B runner then completed its intended synthetic/UI-only scope: profile-store baseline, local Mihomo parse, UI visibility with WG as current/default, explicit no-HY2-traffic acknowledgement, profile removal, post-UI network/profile readback, and runtime cleanup.
 - Production WireGuard remained the continuity path; system proxy/TUN remained off; route state remained unchanged; no real HY2 credential/connectivity, REALITY activation, VPS action, or Secret output occurred.
 - C2B is therefore formally PASS. C2C is a new sensitivity boundary and remains unauthorized until explicit Owner approval.
+
+
+## Reviewer authorization reconciliation — C2C A0 closed; package offline Gate opened — 2026-10-04
+
+```text
+PREVIOUS_GATE=G3C_C2C_REAL_HY2_IN_CLASH_AUTHORIZATION_A0
+OWNER_DECISION=AUTHORIZED
+OWNER_AUTHORIZATION_SCOPE=ONE_BOUNDED_REAL_HY2_IN_CLASH_CANARY_AFTER_REVIEWED_PACKAGE_ACCEPTANCE
+PERSISTENT_DEFAULT_CHANGE_AUTHORIZED=NO
+PERFORMANCE_BENCHMARK_AUTHORIZED=NO
+G4_AUTHORIZED=NO
+REALITY_ACTIVATION_AUTHORIZED=NO
+
+PACKAGE_CANDIDATE_CREATED=YES
+ORCHESTRATOR_BLOB=e59be99321cc98a37a80e4a747b937aaaaf5d58b
+SECRET_HELPER_BLOB=cdbcd94e504ca9d7f680d30a971bea201a812c7a
+PROXY_PROBE_BLOB=4e17c849dffdd410ff2c635830ce0e59cb24304e
+VALIDATOR_BLOB=4ab9e18fef7f52dd60055e8bbcd5aacfe817bcc9
+TEMPLATE_BLOB=ea18bdccf8f00f2d6d705e4ba34ba57db243722a
+PACKAGE_DOC_BLOB=10518d986ab3094a4578f431301a820645d7163b
+
+PACKAGE_ARCHITECTURE=SECRET_HELPER_LOCAL_ONLY;PROXY_PROBE_NO_SECRET;ORCHESTRATOR_NO_DPAPI
+REAL_C2C_EXECUTED=NO
+DPAPI_UNPROTECT_EXECUTED=NO
+NETWORK_REQUESTS_EXECUTED=NO
+NETWORK_MUTATION=NONE
+CLASH_PROFILE_MUTATION=NONE
+VPS_ACTION=NONE
+SECRET_VALUES_EMITTED=0
+
+NEXT_GATE=G3C_C2C_PACKAGE_OFFLINE_VALIDATION_R1
+NEXT_GATE_REAL_ACTION_AUTHORIZED=NO
+PROVENANCE=OWNER_EXPLICIT_AUTHORIZATION_PLUS_DIRECT_GITHUB_SOURCE_READBACK
+```
+
+Reviewer note:
+- Owner authorization closes A0, but authorization is not itself proof that the C2C candidate package is safe or executable.
+- The initial monolithic design was split before execution so the component that decrypts the HY2 credential has no network-request capability, while the two-request probe has no Secret/DPAPI capability.
+- The candidate package remains unaccepted until target-side offline/static validation and Reviewer inspection complete.
