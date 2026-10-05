@@ -44,7 +44,8 @@ add_shortcode('bms_g3cr7_intake', function () {
   </ol><div class="bms-g3cr7-progress-track"><span data-progress-bar></span></div></nav>
   <div class="bms-g3cr7-card">
    <section class="bms-g3cr7-step" data-step="0" aria-labelledby="bms-step-about">
-    <p class="bms-g3cr7-step-label">STEP 01 · THE PERSON AT THE HEART OF IT</p><h2 id="bms-step-about">First, tell us about them.</h2><p class="bms-g3cr7-help">A few simple facts help every page feel like it belongs to them.</p>
+    <header class="bms-g3cr7-step-intro"><p class="bms-g3cr7-step-label">STEP 01 · THE PERSON AT THE HEART OF IT</p><h2 id="bms-step-about">First, tell us about them.</h2><p class="bms-g3cr7-help">A few simple facts help every page feel like it belongs to them.</p></header>
+    <div class="bms-g3cr7-step-body">
     <div class="bms-g3cr7-fields">
      <label class="bms-g3cr7-field bms-g3cr7-field-wide">Their name<input name="recipient_name" autocomplete="off" required></label>
      <label class="bms-g3cr7-field">Age<input name="age" type="number" min="1" max="120" inputmode="numeric" required></label>
@@ -53,35 +54,44 @@ add_shortcode('bms_g3cr7_intake', function () {
      <label class="bms-g3cr7-field">The tone<select name="tone" required><option value="">Choose the feeling</option><option value="heartfelt">Heartfelt</option><option value="playful">Playful</option><option value="balanced">Balanced</option></select></label>
      <label class="bms-g3cr7-field bms-g3cr7-field-wide">Pronouns <span class="bms-g3cr7-optional">optional</span><input name="pronouns" autocomplete="off"></label>
     </div>
+    </div>
    </section>
    <section class="bms-g3cr7-step" data-step="1" aria-labelledby="bms-step-photos" hidden>
-    <p class="bms-g3cr7-step-label">STEP 02 · THE PHOTOGRAPHS</p><h2 id="bms-step-photos">Bring their moments.</h2><p class="bms-g3cr7-help">Choose 12–25 JPG, PNG, or WebP images. Mark up to three must-use photos.</p>
+    <header class="bms-g3cr7-step-intro"><p class="bms-g3cr7-step-label">STEP 02 · THE PHOTOGRAPHS</p><h2 id="bms-step-photos">Bring their moments.</h2><p class="bms-g3cr7-help">Choose 12–25 JPG, PNG, or WebP images. Mark up to three must-use photos.</p></header>
+    <div class="bms-g3cr7-step-body">
     <label class="bms-g3cr7-drop" for="bms-g3cr7-files"><span aria-hidden="true">＋</span><strong>Choose photos from this device</strong><small>They stay in this browser in this local proof.</small><input id="bms-g3cr7-files" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
     <div class="bms-g3cr7-photo-meta"><span><strong data-photo-count>0</strong> of 12–25 selected</span><span><strong data-must-count>0</strong> of 3 marked must-use</span></div>
     <p class="bms-g3cr7-fixture-note">Local test uses fictional geometric PNG fixtures, not customer photographs.</p>
     <div class="bms-g3cr7-photo-grid" data-photo-grid aria-live="polite"></div><p class="bms-g3cr7-error" data-photo-error role="alert" hidden></p>
+    </div>
    </section>
    <section class="bms-g3cr7-step" data-step="2" aria-labelledby="bms-step-story" hidden>
-    <p class="bms-g3cr7-step-label">STEP 03 · THE STORY ONLY YOU CAN TELL</p><h2 id="bms-step-story">What makes them them?</h2><p class="bms-g3cr7-help">A few sentences is plenty. Write naturally; we’ll shape the story later.</p>
+    <header class="bms-g3cr7-step-intro"><p class="bms-g3cr7-step-label">STEP 03 · THE STORY ONLY YOU CAN TELL</p><h2 id="bms-step-story">What makes them them?</h2><p class="bms-g3cr7-help">A few sentences is plenty. Write naturally; we’ll shape the story later.</p></header>
+    <div class="bms-g3cr7-step-body">
     <label class="bms-g3cr7-field bms-g3cr7-field-stack">1. What makes them unmistakably them?<textarea name="q1" rows="4" required></textarea></label>
     <label class="bms-g3cr7-field bms-g3cr7-field-stack">2. Tell us one memory you always come back to.<textarea name="q2" rows="4" required></textarea></label>
     <label class="bms-g3cr7-field bms-g3cr7-field-stack">3. What do you admire or appreciate most about them — and why?<textarea name="q3" rows="4" required></textarea></label>
+    </div>
    </section>
    <section class="bms-g3cr7-step" data-step="3" aria-labelledby="bms-step-little" hidden>
-    <p class="bms-g3cr7-step-label">STEP 04 · THE LITTLE THINGS</p><h2 id="bms-step-little">The details make it theirs.</h2><p class="bms-g3cr7-help">These are the bits a generic birthday card could never know.</p>
+    <header class="bms-g3cr7-step-intro"><p class="bms-g3cr7-step-label">STEP 04 · THE LITTLE THINGS</p><h2 id="bms-step-little">The details make it theirs.</h2><p class="bms-g3cr7-help">These are the bits a generic birthday card could never know.</p></header>
+    <div class="bms-g3cr7-step-body">
     <label class="bms-g3cr7-field bms-g3cr7-field-stack">4. What are the little things only people close to them know?<textarea name="q4" rows="4" required></textarea></label>
     <label class="bms-g3cr7-field bms-g3cr7-field-stack">5. What are they into right now?<textarea name="q5" rows="4" required></textarea></label>
     <label class="bms-g3cr7-field bms-g3cr7-field-stack">6. What do you want them to hear on this birthday?<textarea name="q6" rows="4" required></textarea></label>
     <details class="bms-g3cr7-quick-facts"><summary>Optional quick facts</summary><div class="bms-g3cr7-fields"><label class="bms-g3cr7-field">Favorite song<input name="favorite_song"></label><label class="bms-g3cr7-field">Favorite food or drink<input name="favorite_food"></label><label class="bms-g3cr7-field">Favorite place<input name="favorite_place"></label><label class="bms-g3cr7-field">Current obsession<input name="current_obsession"></label><label class="bms-g3cr7-field bms-g3cr7-field-wide">One phrase to include<input name="must_include"></label></div></details>
+    </div>
    </section>
    <section class="bms-g3cr7-step" data-step="4" aria-labelledby="bms-step-review" hidden>
-    <p class="bms-g3cr7-step-label">STEP 05 · YOUR ISSUE, AT A GLANCE</p><h2 id="bms-step-review">Everything sounds like them.</h2><p class="bms-g3cr7-help">Review the details before continuing to the WooCommerce checkout.</p>
+    <header class="bms-g3cr7-step-intro"><p class="bms-g3cr7-step-label">STEP 05 · YOUR ISSUE, AT A GLANCE</p><h2 id="bms-step-review">Everything sounds like them.</h2><p class="bms-g3cr7-help">Review the details before continuing to the WooCommerce checkout.</p></header>
+    <div class="bms-g3cr7-step-body">
     <dl class="bms-g3cr7-review" data-review-summary></dl>
     <div class="bms-g3cr7-review-answers" data-review-answers></div>
     <aside class="bms-g3cr7-boundary"><strong>Local interface proof</strong><p>Answers and photos remain in this browser and are not saved to the server in this Gate. The next button verifies the WooCommerce checkout handoff only. Do not place an order.</p></aside>
     <p class="bms-g3cr7-price">Next step <span><?php echo $product ? wp_kses_post(wc_price($product->get_price())) : 'US$39.99'; ?> WooCommerce checkout</span></p>
     <button class="bms-g3cr7-button bms-g3cr7-checkout" type="button" data-checkout>Continue to WooCommerce checkout <span aria-hidden="true">↗</span></button>
     <p class="bms-g3cr7-error" data-checkout-error role="alert" hidden></p>
+    </div>
    </section>
    <div class="bms-g3cr7-nav"><button type="button" class="bms-g3cr7-back" data-back disabled>← Back</button><p data-step-count>Step 1 of 5</p><button type="button" class="bms-g3cr7-button" data-next>Continue <span aria-hidden="true">→</span></button></div>
   </div>

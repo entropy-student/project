@@ -1487,166 +1487,96 @@ body.bms-g3cr7-app-page .bms-brand-footer h2 {
 }
 
 
-/* G3CR7V2R3: bounded intake scale and density; status fixture remains QA-only. */
-body.bms-g3cr7-app-page .ct-container-full:has(.bms-g3cr7-intro) {
-	padding-block: 24px 32px !important;
+/* G3CR7V2R4: task-shaped widescreen intake; fields, steps and commerce stay unchanged. */
+body.bms-g3cr7-app-page .ct-container-full:has(.bms-g3cr7-intro) { padding-block: 24px 32px !important; }
+body.bms-g3cr7-app-page .entry-content > .bms-g3cr7:not(.bms-g3cr7-status-fixture) {
+ width: min(calc(100% - 64px), clamp(1248px, 72.66vw, 1488px));
+ max-width: 1488px;
+ padding: 16px 0 32px;
 }
-
-body.bms-g3cr7-app-page .bms-g3cr7:not(.bms-g3cr7-status-fixture) {
-	padding: 28px 24px 40px;
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-intro { max-width: none; gap: 8px 40px; margin-bottom: 24px; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-intro h1 { font-size: clamp(36px, 2.15vw, 44px); }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-intro > p:last-child { font-size: 18px; line-height: 1.5; font-weight: 400; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-progress { max-width: none; margin-bottom: 16px; padding: 20px 32px 16px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-progress li { font-size: 15px; font-weight: 400; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-progress li > span:first-child { width: 36px; height: 36px; font-size: 12px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-card { width: 100%; max-width: none; padding: 36px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step { display: grid; grid-template-columns: clamp(220px, 12.7vw, 260px) minmax(0, 1fr); gap: 40px; align-items: start; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step-intro { min-width: 0; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step h2 { font-size: 32px; line-height: 1.2; margin-bottom: 16px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-help { font-size: 17px; line-height: 1.5; font-weight: 400; margin-bottom: 0; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step-body { min-width: 0; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step[data-step="0"] .bms-g3cr7-step-body { max-width: 840px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step[data-step="2"] .bms-g3cr7-step-body,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step[data-step="3"] .bms-g3cr7-step-body,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step[data-step="4"] .bms-g3cr7-step-body { max-width: 75ch; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-fields { gap: 24px 20px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field { gap: 8px; font-size: 15px; font-weight: 400; color: #344054; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field-stack { margin-bottom: 24px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field input,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field select,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field textarea { padding: 12px 16px; font-size: 17px; font-weight: 400; line-height: 1.5; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field input,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field select { height: 54px; min-height: 54px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field textarea { min-height: 144px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-drop { min-height: 152px; margin-bottom: 20px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-drop strong { font-size: 17px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-drop small,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-photo-meta { font-size: 14px; font-weight: 400; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-fixture-note { font-size: 13px; line-height: 1.5; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-photo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-photo figcaption { flex-wrap: wrap; gap: 8px; font-size: 14px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-remove { min-height: 32px; font-size: 12px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-nav { margin-top: 32px; padding-top: 24px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-nav .bms-g3cr7-button,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-back,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-checkout { min-height: 52px; font-size: 16px; padding: 12px 24px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-nav > p { font-size: 14px; color: #667085; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review dt,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review dd,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review-answer { font-size: 16px; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review-answer p { line-height: 1.5; font-weight: 400; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-footnote { margin-top: 20px; font-size: 14px; font-weight: 400; }
+@media (min-width: 1800px) {
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-photo-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
-
-body.bms-g3cr7-app-page .bms-g3cr7-intro,
-body.bms-g3cr7-app-page .bms-g3cr7-progress,
-body.bms-g3cr7-app-page .bms-g3cr7-card {
-	max-width: none;
+@media (max-width: 1100px) {
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step-intro { max-width: 65ch; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
-
-body.bms-g3cr7-app-page .bms-g3cr7-intro h1 {
-	font-size: 42px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-intro > p:last-child {
-	font-size: 17px;
-	line-height: 1.5;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-progress {
-	padding: 18px 24px 16px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-progress li {
-	font-size: 13px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-progress li > span:first-child {
-	width: 32px;
-	height: 32px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-card {
-	width: 100%;
-	padding: 40px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-step h2 {
-	font-size: 30px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-help {
-	font-size: 17px;
-	line-height: 1.5;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-field {
-	font-size: 14px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-field input,
-body.bms-g3cr7-app-page .bms-g3cr7-field select,
-body.bms-g3cr7-app-page .bms-g3cr7-field textarea {
-	padding: 11px 14px;
-	font-size: 16px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-field input,
-body.bms-g3cr7-app-page .bms-g3cr7-field select {
-	min-height: 50px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-field textarea {
-	min-height: 128px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-drop {
-	min-height: 136px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-photo-meta {
-	font-size: 14px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-fixture-note {
-	font-size: 13px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-nav .bms-g3cr7-button,
-body.bms-g3cr7-app-page .bms-g3cr7-back {
-	min-height: 48px;
-	font-size: 14px;
-}
-
-body.bms-g3cr7-app-page .bms-g3cr7-footnote {
-	margin-top: 18px;
-	font-size: 13px;
-}
-
 @media (max-width: 760px) {
-	body.bms-g3cr7-app-page .ct-container-full:has(.bms-g3cr7-intro) {
-		padding-block: 16px 24px !important;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7:not(.bms-g3cr7-status-fixture) {
-		padding: 20px 16px 28px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-intro {
-		max-width: none;
-		margin-bottom: 16px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-intro h1 {
-		font-size: 32px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-intro > p:last-child,
-	body.bms-g3cr7-app-page .bms-g3cr7-help {
-		font-size: 16px;
-		line-height: 1.5;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-progress {
-		padding: 12px 10px 10px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-progress li {
-		font-size: 9px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-card {
-		padding: 24px 18px 18px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-step h2 {
-		font-size: 26px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-field {
-		font-size: 14px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-field input,
-	body.bms-g3cr7-app-page .bms-g3cr7-field select,
-	body.bms-g3cr7-app-page .bms-g3cr7-field textarea {
-		font-size: 16px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-field input,
-	body.bms-g3cr7-app-page .bms-g3cr7-field select {
-		min-height: 48px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-drop {
-		min-height: 124px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-photo-meta {
-		font-size: 12px;
-	}
-
-	body.bms-g3cr7-app-page .bms-g3cr7-nav .bms-g3cr7-button,
-	body.bms-g3cr7-app-page .bms-g3cr7-back {
-		min-height: 48px;
-		font-size: 13px;
-	}
+ body.bms-g3cr7-app-page .ct-container-full:has(.bms-g3cr7-intro) { padding-block: 0 24px !important; }
+ body.bms-g3cr7-app-page .entry-content > .bms-g3cr7:not(.bms-g3cr7-status-fixture) { width: 100%; padding: 24px 16px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-intro { gap: 8px; margin-bottom: 20px; grid-template-columns: minmax(0, 1fr); }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-intro h1 { font-size: 30px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-intro > p:last-child { font-size: 16px; grid-column: 1; grid-row: auto; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-progress { padding: 14px 10px 12px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-progress ol { gap: 4px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-progress li { font-size: 10px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-progress li > span:first-child { width: 32px; height: 32px; font-size: 11px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-card { padding: 24px 20px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step { gap: 24px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step h2 { margin-bottom: 12px; font-size: 26px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-help { font-size: 16px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-fields { gap: 20px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field { font-size: 14px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field input,
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field select,
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field textarea { padding: 12px; font-size: 16px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field input,
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-field select { height: 48px; min-height: 48px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-drop { min-height: 132px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-photo figcaption { gap: 4px; font-size: 12px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-photo-meta { font-size: 13px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-fixture-note { font-size: 12px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-nav { margin-top: 24px; padding-top: 20px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-nav .bms-g3cr7-button,
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-back,
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-checkout { min-height: 48px; font-size: 14px; padding: 12px 18px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-nav > p { font-size: 12px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-footnote { font-size: 13px; }
 }
+
+body.bms-g3cr7-app-page .bms-g3cr7 [hidden] { display: none !important; }

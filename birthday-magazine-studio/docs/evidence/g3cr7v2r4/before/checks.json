@@ -1,0 +1,237 @@
+{
+  "phase": "before",
+  "checks": [
+    {
+      "width": 2048,
+      "empty": {
+        "text": "Just addtheir photo.",
+        "backgroundImage": "radial-gradient(at 50% 33%, rgb(230, 189, 176) 0px, rgb(230, 189, 176) 24%, rgba(0, 0, 0, 0) 25%), radial-gradient(at 50% 100%, rgb(201, 133, 117) 0px, rgb(201, 133, 117) 42%, rgba(0, 0, 0, 0) 43%), none"
+      },
+      "privacy": {
+        "blob": true,
+        "replaceRemove": true,
+        "nonGetAttempts": 0,
+        "externalImageDelta": 0
+      },
+      "photoTextOverlap": true,
+      "cta": {
+        "text": "Tell their story in full 12 pages · US$39.99 →",
+        "path": "/make-your-magazine/",
+        "metadataOutside": true
+      },
+      "native": {
+        "product": "1113",
+        "checkoutPath": "/checkout/",
+        "addEndpoint": "add_to_cart"
+      },
+      "styles": [
+        "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791185666"
+      ],
+      "nextBack": true,
+      "minimumPhotosGuard": true,
+      "twelvePhotos": true,
+      "threeMustUseLimit": true,
+      "sixAnswers": true,
+      "checkoutNotClicked": true
+    },
+    {
+      "width": 1440,
+      "empty": {
+        "text": "Just addtheir photo.",
+        "backgroundImage": "radial-gradient(at 50% 33%, rgb(230, 189, 176) 0px, rgb(230, 189, 176) 24%, rgba(0, 0, 0, 0) 25%), radial-gradient(at 50% 100%, rgb(201, 133, 117) 0px, rgb(201, 133, 117) 42%, rgba(0, 0, 0, 0) 43%), none"
+      },
+      "privacy": {
+        "blob": true,
+        "replaceRemove": true,
+        "nonGetAttempts": 0,
+        "externalImageDelta": 0
+      },
+      "photoTextOverlap": true,
+      "cta": {
+        "text": "Tell their story in full 12 pages · US$39.99 →",
+        "path": "/make-your-magazine/",
+        "metadataOutside": true
+      },
+      "native": {
+        "product": "1113",
+        "checkoutPath": "/checkout/",
+        "addEndpoint": "add_to_cart"
+      },
+      "styles": [
+        "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791185666"
+      ],
+      "nextBack": true,
+      "minimumPhotosGuard": true,
+      "twelvePhotos": true,
+      "threeMustUseLimit": true,
+      "sixAnswers": true,
+      "checkoutNotClicked": true
+    },
+    {
+      "width": 375,
+      "empty": {
+        "text": "Just addtheir photo.",
+        "backgroundImage": "radial-gradient(at 50% 33%, rgb(230, 189, 176) 0px, rgb(230, 189, 176) 24%, rgba(0, 0, 0, 0) 25%), radial-gradient(at 50% 100%, rgb(201, 133, 117) 0px, rgb(201, 133, 117) 42%, rgba(0, 0, 0, 0) 43%), none"
+      },
+      "privacy": {
+        "blob": true,
+        "replaceRemove": true,
+        "nonGetAttempts": 0,
+        "externalImageDelta": 0
+      },
+      "photoTextOverlap": false,
+      "cta": {
+        "text": "Tell their story in full 12 pages · US$39.99 →",
+        "path": "/make-your-magazine/",
+        "metadataOutside": true
+      },
+      "native": {
+        "product": "1113",
+        "checkoutPath": "/checkout/",
+        "addEndpoint": "add_to_cart"
+      },
+      "styles": [
+        "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791185666"
+      ],
+      "nextBack": true,
+      "minimumPhotosGuard": true,
+      "twelvePhotos": true,
+      "threeMustUseLimit": true,
+      "sixAnswers": true,
+      "checkoutNotClicked": true
+    }
+  ],
+  "network": [
+    {
+      "width": 2048,
+      "nonGetAttempts": 0,
+      "externalImageRequests": 0,
+      "failedResources": [],
+      "pageErrors": []
+    },
+    {
+      "width": 1440,
+      "nonGetAttempts": 0,
+      "externalImageRequests": 0,
+      "failedResources": [],
+      "pageErrors": []
+    },
+    {
+      "width": 375,
+      "nonGetAttempts": 0,
+      "externalImageRequests": 0,
+      "failedResources": [],
+      "pageErrors": []
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "home-empty-2048.png",
+      "bytes": 136024,
+      "sha256": "e6ffaca906eab45a9397574840eff1dd44d884d76419087c467ff5e20d5b2553"
+    },
+    {
+      "file": "home-photo-2048.png",
+      "bytes": 274898,
+      "sha256": "19518f033606db5febff06dabf4b4094bdf29464097963623c2722d9c9533687"
+    },
+    {
+      "file": "intake-about-2048.png",
+      "bytes": 59684,
+      "sha256": "14577157814676df0effc365fe2baf9d7167b017d3458d34258f0347720be067"
+    },
+    {
+      "file": "intake-photos-2048.png",
+      "bytes": 120017,
+      "sha256": "a0b0df2e154c811fa78bfcafbcfab7301b82ff31c3f93887776f459f102257bc"
+    },
+    {
+      "file": "intake-story-2048.png",
+      "bytes": 71845,
+      "sha256": "d63e6e916dee9e6e3b039f68ac1ee9d116943b3823cf2fc6ae453fc8532957e7"
+    },
+    {
+      "file": "intake-little-2048.png",
+      "bytes": 71995,
+      "sha256": "c05b9bec59c9865cfa408c403fa7aa7cd7f1286356da66f238bd8b3d54545802"
+    },
+    {
+      "file": "intake-review-2048.png",
+      "bytes": 88783,
+      "sha256": "dfe63fc99585588b2c44951708d1aef03508cd1975199068d31651325449c3e3"
+    },
+    {
+      "file": "home-empty-1440.png",
+      "bytes": 131896,
+      "sha256": "e4101c394b73c4876f425d3d993b453902be184d00e976a668c156c466cd2dc4"
+    },
+    {
+      "file": "home-photo-1440.png",
+      "bytes": 269128,
+      "sha256": "f7421483b09155095ac9daaf27d2e574a560df4d23e77c16cfd85414231af41b"
+    },
+    {
+      "file": "intake-about-1440.png",
+      "bytes": 59684,
+      "sha256": "14577157814676df0effc365fe2baf9d7167b017d3458d34258f0347720be067"
+    },
+    {
+      "file": "intake-photos-1440.png",
+      "bytes": 119947,
+      "sha256": "619e1dc4a60b87ff9b92021a459de391bc972625e069e1407c8ae931e91cb4da"
+    },
+    {
+      "file": "intake-story-1440.png",
+      "bytes": 71845,
+      "sha256": "d63e6e916dee9e6e3b039f68ac1ee9d116943b3823cf2fc6ae453fc8532957e7"
+    },
+    {
+      "file": "intake-little-1440.png",
+      "bytes": 71995,
+      "sha256": "c05b9bec59c9865cfa408c403fa7aa7cd7f1286356da66f238bd8b3d54545802"
+    },
+    {
+      "file": "intake-review-1440.png",
+      "bytes": 88785,
+      "sha256": "170dd571a7a6bd0ac943ec406c1c22849194e777b25740bd54e034ad07deade3"
+    },
+    {
+      "file": "home-empty-375.png",
+      "bytes": 76755,
+      "sha256": "f84e075dae02e36f3fcf54cce83ad23683bc1fd866b891bb3b459319c6671cf3"
+    },
+    {
+      "file": "home-photo-375.png",
+      "bytes": 178111,
+      "sha256": "343f00450abc85a243599f5b7ac0a60d34272f647783b5ce5280d1c83498178d"
+    },
+    {
+      "file": "intake-about-375.png",
+      "bytes": 51352,
+      "sha256": "c9d1ccfad6f8ea6eabd3cbfad7abed1ca5d6c1ddf9bf0d98a96f91a4830379bf"
+    },
+    {
+      "file": "intake-photos-375.png",
+      "bytes": 91688,
+      "sha256": "687c954c77f75314649c897f7e1c31071c760d93a6d9cb3ffc4052db76c1985a"
+    },
+    {
+      "file": "intake-story-375.png",
+      "bytes": 61051,
+      "sha256": "d31173db53f53ec1e6eab6adb648e4df1c5017052ee88e9f8b3e83e9a9d47647"
+    },
+    {
+      "file": "intake-little-375.png",
+      "bytes": 61236,
+      "sha256": "80e7649c92af6c012f1a9b491e65e3972e17da675abe86ae80636b73b3639aef"
+    },
+    {
+      "file": "intake-review-375.png",
+      "bytes": 83516,
+      "sha256": "6637d9c7e5fa5888c530a5738091a249eeedb4e08e96f94d4df99ffa62d56ebc"
+    }
+  ],
+  "modelCalls": 0,
+  "checkoutSubmissions": 0,
+  "paymentActions": 0
+}

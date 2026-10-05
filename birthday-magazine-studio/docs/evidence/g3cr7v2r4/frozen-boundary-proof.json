@@ -1,0 +1,29 @@
+{
+  "baseline": "43ebf7bb732e9e3be8d547364ca7b018f7f505f8",
+  "frozenJS": [
+    {
+      "file": "preview.js",
+      "baselineNormalizedSHA256": "5dff548bd8541e18435f0dec598a3e8d91ba1b8f6578f345a774adb0c47794f9",
+      "candidateNormalizedSHA256": "5dff548bd8541e18435f0dec598a3e8d91ba1b8f6578f345a774adb0c47794f9",
+      "runtimeNormalizedMatch": true,
+      "newlineNormalizationOnly": true
+    },
+    {
+      "file": "frontend-reproduction.js",
+      "baselineNormalizedSHA256": "a38503ea1708e72761f6fae4c5e0468e09498bedddf44cea1ea1f7a29cf16d4b",
+      "candidateNormalizedSHA256": "a38503ea1708e72761f6fae4c5e0468e09498bedddf44cea1ea1f7a29cf16d4b",
+      "runtimeNormalizedMatch": true,
+      "newlineNormalizationOnly": true
+    },
+    {
+      "file": "home-motion.js",
+      "baselineNormalizedSHA256": "bfafaf0959ad1c9e250db53e7c92e8c46aa63c088de4b74bbe2944eb68621df0",
+      "candidateNormalizedSHA256": "bfafaf0959ad1c9e250db53e7c92e8c46aa63c088de4b74bbe2944eb68621df0",
+      "runtimeNormalizedMatch": true,
+      "newlineNormalizationOnly": true
+    }
+  ],
+  "intakePHPOnlyFivePresentationWrappers": true,
+  "statusAndWooPHPExactMatch": true,
+  "mainPHPBeforePreviewShortcodeExactMatch": true
+}

@@ -77,7 +77,7 @@ add_shortcode('bms_preview', function ($atts) {
   <div class="bms-preview-stage">
    <div class="bms-preview-cover" data-bms-cover>
     <div class="bms-cover-masthead">GOOD ISSUE<small>THE BIRTHDAY EDITION</small></div>
-    <div class="bms-cover-photo-frame"><img data-bms-image alt="Your browser-local cover photo" hidden><div class="bms-cover-art" data-bms-art><span>Just add<br>their photo.</span></div></div>
+    <div class="bms-cover-photo-frame"><img data-bms-image alt="Your browser-local cover photo" hidden><div class="bms-cover-art" data-bms-art></div></div>
     <div class="bms-cover-headlines"><span>THE ONE AND ONLY</span><strong data-bms-name>Taylor</strong><small data-bms-age>AGE 30 · A VERY GOOD YEAR</small></div>
    </div>
    <div class="bms-preview-spread">
@@ -86,7 +86,7 @@ add_shortcode('bms_preview', function ($atts) {
    </div>
    <p class="bms-preview-annotation">Their name.<br>Their face.<br>Their very own issue.</p>
   </div>
-  <div class="bms-preview-bottom"><p>Your photo stays in this browser. Nothing is uploaded.<br><span>Illustrative cover + sample spread, not the finished magazine.</span></p><a class="bms-coral-link" href="<?php echo esc_url(home_url('/make-your-magazine/')); ?>">Tell their story in full <span>12 pages · US$39.99 &rarr;</span></a></div>
+  <div class="bms-preview-bottom"><p>Illustrative cover + sample spread, not the finished magazine.</p><div class="bms-preview-action"><p>12-page digital PDF · US$39.99</p><a class="bms-coral-link" href="<?php echo esc_url(home_url('/make-your-magazine/')); ?>">Personalize your magazine &rarr;</a></div></div>
  </div>
  <?php return ob_get_clean();
 });

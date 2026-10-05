@@ -1,0 +1,631 @@
+{
+  "baseline": "43ebf7bb732e9e3be8d547364ca7b018f7f505f8",
+  "identity": [
+    {
+      "file": "birthday-magazine-poc.php",
+      "sourceSHA256": "c05e0de0f85889b61abfd68c2bef85aa23cffde1b745631ee23414bb0db83517",
+      "runtimeSHA256": "c05e0de0f85889b61abfd68c2bef85aa23cffde1b745631ee23414bb0db83517",
+      "exactMatch": true,
+      "bytes": 6655
+    },
+    {
+      "file": "frontend-reproduction.php",
+      "sourceSHA256": "767f2557da328faac57097520db19cc8a16d18af22ad9e9f93eb0a8b2cf3242f",
+      "runtimeSHA256": "767f2557da328faac57097520db19cc8a16d18af22ad9e9f93eb0a8b2cf3242f",
+      "exactMatch": true,
+      "bytes": 12782
+    },
+    {
+      "file": "magazine-preview.css",
+      "sourceSHA256": "e11dd13e9352a8aadc6e97bcdcc4dae4ed281624714440e6f87907889e393c41",
+      "runtimeSHA256": "e11dd13e9352a8aadc6e97bcdcc4dae4ed281624714440e6f87907889e393c41",
+      "exactMatch": true,
+      "bytes": 23093
+    },
+    {
+      "file": "frontend-reproduction.css",
+      "sourceSHA256": "0add833f903204803372312ff82b92b48d45598db54e90f30606ba107a584c6b",
+      "runtimeSHA256": "0add833f903204803372312ff82b92b48d45598db54e90f30606ba107a584c6b",
+      "exactMatch": true,
+      "bytes": 40785
+    }
+  ],
+  "dockerContainerId": "21892d72baebe6157fbeab15ad6a1e3949cf4663ca55b45360c3f4eb1f052f00",
+  "running": true,
+  "runtimePath": "C:/Users/34707/Documents/ChatGPT/VPS基建/workspaces/birthday-magazine-g3cr2/birthday-magazine-studio/poc/g3c/preview-plugin",
+  "site": "http://127.0.0.1:8189",
+  "cacheEnabled": true,
+  "cacheCleared": false,
+  "requestRoutingUsed": false,
+  "css": [
+    {
+      "viewport": 2048,
+      "label": "home",
+      "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/magazine-preview.css?ver=1791196102",
+      "status": 200,
+      "responseSHA256": "e11dd13e9352a8aadc6e97bcdcc4dae4ed281624714440e6f87907889e393c41",
+      "sourceSHA256": "e11dd13e9352a8aadc6e97bcdcc4dae4ed281624714440e6f87907889e393c41",
+      "versionFollowsMtime": true
+    },
+    {
+      "viewport": 2048,
+      "label": "intake",
+      "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791196706",
+      "status": 200,
+      "responseSHA256": "0add833f903204803372312ff82b92b48d45598db54e90f30606ba107a584c6b",
+      "sourceSHA256": "0add833f903204803372312ff82b92b48d45598db54e90f30606ba107a584c6b",
+      "versionFollowsMtime": true
+    },
+    {
+      "viewport": 1440,
+      "label": "home",
+      "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/magazine-preview.css?ver=1791196102",
+      "status": 200,
+      "responseSHA256": "e11dd13e9352a8aadc6e97bcdcc4dae4ed281624714440e6f87907889e393c41",
+      "sourceSHA256": "e11dd13e9352a8aadc6e97bcdcc4dae4ed281624714440e6f87907889e393c41",
+      "versionFollowsMtime": true
+    },
+    {
+      "viewport": 1440,
+      "label": "intake",
+      "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791196706",
+      "status": 200,
+      "responseSHA256": "0add833f903204803372312ff82b92b48d45598db54e90f30606ba107a584c6b",
+      "sourceSHA256": "0add833f903204803372312ff82b92b48d45598db54e90f30606ba107a584c6b",
+      "versionFollowsMtime": true
+    },
+    {
+      "viewport": 375,
+      "label": "home",
+      "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/magazine-preview.css?ver=1791196102",
+      "status": 200,
+      "responseSHA256": "e11dd13e9352a8aadc6e97bcdcc4dae4ed281624714440e6f87907889e393c41",
+      "sourceSHA256": "e11dd13e9352a8aadc6e97bcdcc4dae4ed281624714440e6f87907889e393c41",
+      "versionFollowsMtime": true
+    },
+    {
+      "viewport": 375,
+      "label": "intake",
+      "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791196706",
+      "status": 200,
+      "responseSHA256": "0add833f903204803372312ff82b92b48d45598db54e90f30606ba107a584c6b",
+      "sourceSHA256": "0add833f903204803372312ff82b92b48d45598db54e90f30606ba107a584c6b",
+      "versionFollowsMtime": true
+    }
+  ],
+  "geometry": [
+    {
+      "label": "home",
+      "viewport": 2048,
+      "scrollWidth": 2048,
+      "outerWidth": 2048,
+      "contentWidth": 1568,
+      "percentage": 76.5625,
+      "topY": 1870,
+      "headerToContentGap": 1791,
+      "h1": {
+        "width": 360,
+        "height": 107.5,
+        "font": "48px",
+        "lineHeight": "53.76px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "step": null,
+      "help": {
+        "width": 360,
+        "height": 76.5,
+        "font": "17px",
+        "lineHeight": "25.5px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "fieldLabel": {
+        "width": 222,
+        "height": 19.59375,
+        "font": "14px",
+        "lineHeight": "19.6px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "input": {
+        "width": 222,
+        "height": 52,
+        "font": "16px",
+        "lineHeight": "22.4px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "none"
+      },
+      "controls": {
+        "width": 360,
+        "height": 379.1875,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "none"
+      },
+      "stage": {
+        "width": 1176,
+        "height": 640.1875,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "378px 700px"
+      },
+      "cover": {
+        "width": 365.284912109375,
+        "height": 509.1511535644531,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 249, 237)",
+        "grid": "none"
+      },
+      "spread": {
+        "width": 683.5703125,
+        "height": 418.0277099609375,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 253, 248)",
+        "grid": "339px 339px"
+      },
+      "cta": {
+        "width": 255.71875,
+        "height": 52,
+        "font": "16px",
+        "lineHeight": "20px",
+        "background": "rgb(113, 63, 93)",
+        "grid": "none"
+      }
+    },
+    {
+      "label": "intake",
+      "viewport": 2048,
+      "scrollWidth": 2048,
+      "outerWidth": 1488,
+      "contentWidth": 1488,
+      "percentage": 72.65625,
+      "topY": 130,
+      "headerToContentGap": 64,
+      "h1": {
+        "width": 831.828125,
+        "height": 102.0625,
+        "font": "44px",
+        "lineHeight": "51.04px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "step": {
+        "width": 260,
+        "height": 76.78125,
+        "font": "32px",
+        "lineHeight": "38.4px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "help": {
+        "width": 260,
+        "height": 51,
+        "font": "17px",
+        "lineHeight": "25.5px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "fieldLabel": {
+        "width": 840,
+        "height": 83,
+        "font": "15px",
+        "lineHeight": "21px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "input": {
+        "width": 840,
+        "height": 54,
+        "font": "17px",
+        "lineHeight": "25.5px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "none"
+      },
+      "controls": null,
+      "stage": null,
+      "cover": null,
+      "spread": null,
+      "cta": {
+        "width": 143.921875,
+        "height": 52,
+        "font": "16px",
+        "lineHeight": "19.2px",
+        "background": "rgb(113, 63, 93)",
+        "grid": "none"
+      }
+    },
+    {
+      "label": "home",
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "outerWidth": 1440,
+      "contentWidth": 1280,
+      "percentage": 88.88888888888889,
+      "topY": 1870,
+      "headerToContentGap": 1791,
+      "h1": {
+        "width": 300,
+        "height": 80.625,
+        "font": "36px",
+        "lineHeight": "40.32px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "step": null,
+      "help": {
+        "width": 300,
+        "height": 76.5,
+        "font": "17px",
+        "lineHeight": "25.5px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "fieldLabel": {
+        "width": 162,
+        "height": 19.59375,
+        "font": "14px",
+        "lineHeight": "19.6px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "input": {
+        "width": 162,
+        "height": 52,
+        "font": "16px",
+        "lineHeight": "22.4px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "none"
+      },
+      "controls": {
+        "width": 300,
+        "height": 379.1875,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "none"
+      },
+      "stage": {
+        "width": 948,
+        "height": 634.3125,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "298.047px 551.953px"
+      },
+      "cover": {
+        "width": 320.2115478515625,
+        "height": 446.3199462890625,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 249, 237)",
+        "grid": "none"
+      },
+      "spread": {
+        "width": 555.07373046875,
+        "height": 364.8029479980469,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 253, 248)",
+        "grid": "274.969px 274.984px"
+      },
+      "cta": {
+        "width": 255.71875,
+        "height": 52,
+        "font": "16px",
+        "lineHeight": "20px",
+        "background": "rgb(113, 63, 93)",
+        "grid": "none"
+      }
+    },
+    {
+      "label": "intake",
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "outerWidth": 1248,
+      "contentWidth": 1248,
+      "percentage": 86.66666666666667,
+      "topY": 130,
+      "headerToContentGap": 64,
+      "h1": {
+        "width": 693.953125,
+        "height": 83.5,
+        "font": "36px",
+        "lineHeight": "41.76px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "step": {
+        "width": 220,
+        "height": 76.78125,
+        "font": "32px",
+        "lineHeight": "38.4px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "help": {
+        "width": 220,
+        "height": 76.5,
+        "font": "17px",
+        "lineHeight": "25.5px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "fieldLabel": {
+        "width": 840,
+        "height": 83,
+        "font": "15px",
+        "lineHeight": "21px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "input": {
+        "width": 840,
+        "height": 54,
+        "font": "17px",
+        "lineHeight": "25.5px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "none"
+      },
+      "controls": null,
+      "stage": null,
+      "cover": null,
+      "spread": null,
+      "cta": {
+        "width": 143.921875,
+        "height": 52,
+        "font": "16px",
+        "lineHeight": "19.2px",
+        "background": "rgb(113, 63, 93)",
+        "grid": "none"
+      }
+    },
+    {
+      "label": "home",
+      "viewport": 375,
+      "scrollWidth": 375,
+      "outerWidth": 375,
+      "contentWidth": 343,
+      "percentage": 91.46666666666667,
+      "topY": 1571.578125,
+      "headerToContentGap": 1506.578125,
+      "h1": {
+        "width": 343,
+        "height": 71.65625,
+        "font": "32px",
+        "lineHeight": "35.84px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "step": null,
+      "help": {
+        "width": 343,
+        "height": 72,
+        "font": "16px",
+        "lineHeight": "24px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "fieldLabel": {
+        "width": 213,
+        "height": 19.59375,
+        "font": "14px",
+        "lineHeight": "19.6px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "input": {
+        "width": 213,
+        "height": 48,
+        "font": "16px",
+        "lineHeight": "22.4px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "none"
+      },
+      "controls": {
+        "width": 343,
+        "height": 359.1875,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "none"
+      },
+      "stage": {
+        "width": 343,
+        "height": 714.84375,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "313px"
+      },
+      "cover": {
+        "width": 251.97483825683594,
+        "height": 355.476806640625,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 249, 237)",
+        "grid": "none"
+      },
+      "spread": {
+        "width": 313,
+        "height": 281.53125,
+        "font": "18px",
+        "lineHeight": "29.7px",
+        "background": "rgb(255, 253, 248)",
+        "grid": "155.5px 155.5px"
+      },
+      "cta": {
+        "width": 343,
+        "height": 50,
+        "font": "16px",
+        "lineHeight": "20px",
+        "background": "rgb(113, 63, 93)",
+        "grid": "none"
+      }
+    },
+    {
+      "label": "intake",
+      "viewport": 375,
+      "scrollWidth": 375,
+      "outerWidth": 375,
+      "contentWidth": 375,
+      "percentage": 100,
+      "topY": 106,
+      "headerToContentGap": 40,
+      "h1": {
+        "width": 343,
+        "height": 104.390625,
+        "font": "30px",
+        "lineHeight": "34.8px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "step": {
+        "width": 301,
+        "height": 31.1875,
+        "font": "26px",
+        "lineHeight": "31.2px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "help": {
+        "width": 301,
+        "height": 48,
+        "font": "16px",
+        "lineHeight": "24px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "fieldLabel": {
+        "width": 301,
+        "height": 75.59375,
+        "font": "14px",
+        "lineHeight": "19.6px",
+        "background": "rgba(0, 0, 0, 0)",
+        "grid": "none"
+      },
+      "input": {
+        "width": 301,
+        "height": 48,
+        "font": "16px",
+        "lineHeight": "24px",
+        "background": "rgb(255, 255, 255)",
+        "grid": "none"
+      },
+      "controls": null,
+      "stage": null,
+      "cover": null,
+      "spread": null,
+      "cta": {
+        "width": 114.203125,
+        "height": 48,
+        "font": "14px",
+        "lineHeight": "16.8px",
+        "background": "rgb(113, 63, 93)",
+        "grid": "none"
+      }
+    }
+  ],
+  "network": [
+    {
+      "width": 2048,
+      "nonGET": 0,
+      "externalImage": 0,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "nonGET": 0,
+      "externalImage": 0,
+      "errors": []
+    },
+    {
+      "width": 375,
+      "nonGET": 0,
+      "externalImage": 0,
+      "errors": []
+    }
+  ],
+  "routes": [
+    {
+      "label": "product",
+      "status": 200,
+      "requestedPath": "/product/birthday-magazine/",
+      "finalPath": "/product/birthday-magazine/",
+      "nativeWoo": true
+    },
+    {
+      "label": "cart",
+      "status": 200,
+      "requestedPath": "/cart/",
+      "finalPath": "/cart/",
+      "nativeWoo": true
+    },
+    {
+      "label": "checkout",
+      "status": 200,
+      "requestedPath": "/checkout/",
+      "finalPath": "/cart/",
+      "nativeWoo": true
+    },
+    {
+      "label": "account",
+      "status": 200,
+      "requestedPath": "/my-account/",
+      "finalPath": "/my-account/",
+      "nativeWoo": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "home-viewport-2048.png",
+      "bytes": 269126,
+      "sha256": "6a1cd05a51fbe482452fdfb1e98fb373bb48e330b7b2ab35774271d5098b86c5",
+      "viewport": 2048,
+      "fullPage": false
+    },
+    {
+      "file": "intake-viewport-2048.png",
+      "bytes": 100554,
+      "sha256": "7a89dd28a8b9e33da3c083060697328637b6ae6843fa072610de1ef670e29731",
+      "viewport": 2048,
+      "fullPage": true
+    },
+    {
+      "file": "home-viewport-1440.png",
+      "bytes": 252220,
+      "sha256": "b413eccc4801216120c9e6f3fd0b0476f863d089275afeea9aa446f777e0611a",
+      "viewport": 1440,
+      "fullPage": false
+    },
+    {
+      "file": "intake-viewport-1440.png",
+      "bytes": 92184,
+      "sha256": "493ade4edea72536a711a4116c9a0efd5be908fc28d4e835dc86b96c8611f50d",
+      "viewport": 1440,
+      "fullPage": true
+    },
+    {
+      "file": "home-viewport-375.png",
+      "bytes": 34768,
+      "sha256": "c7d1f28563b9951f3b6f00f8b7fa271a14e32a6921f5cdf367cd279d0cab3220",
+      "viewport": 375,
+      "fullPage": false
+    },
+    {
+      "file": "intake-viewport-375.png",
+      "bytes": 72560,
+      "sha256": "b217c8c7c8aa7aa644fea13bce97c7089219566cbd19dada88c4f07feb366029",
+      "viewport": 375,
+      "fullPage": true
+    }
+  ],
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "paymentActions": 0,
+  "checkoutSubmissions": 0
+}

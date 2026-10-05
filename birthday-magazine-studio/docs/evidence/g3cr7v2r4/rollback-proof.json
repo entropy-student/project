@@ -1,0 +1,57 @@
+{
+  "baseline": "43ebf7bb732e9e3be8d547364ca7b018f7f505f8",
+  "localPath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS基建\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\poc\\g3c\\.tmp\\g3cr7v2r4-rollback",
+  "files": [
+    {
+      "role": "source",
+      "file": "birthday-magazine-poc.php",
+      "size": 6720,
+      "sha256": "1210388b1c7b07048f196307390b98e4ae9e56ba20d4f41bb5a6f7f872f0df85"
+    },
+    {
+      "role": "runtime",
+      "file": "birthday-magazine-poc.php",
+      "size": 6720,
+      "sha256": "1210388b1c7b07048f196307390b98e4ae9e56ba20d4f41bb5a6f7f872f0df85"
+    },
+    {
+      "role": "source",
+      "file": "magazine-preview.css",
+      "size": 19555,
+      "sha256": "3a3b8c28fcdd606ec41ac42ed6b6490a2ab594f2d3cb59069b913e936f6b41f5"
+    },
+    {
+      "role": "runtime",
+      "file": "magazine-preview.css",
+      "size": 19555,
+      "sha256": "3a3b8c28fcdd606ec41ac42ed6b6490a2ab594f2d3cb59069b913e936f6b41f5"
+    },
+    {
+      "role": "source",
+      "file": "frontend-reproduction.css",
+      "size": 34868,
+      "sha256": "49c17879230eefd1d628719878d2a0afdcb081da49e73b82456ae78ec053769f"
+    },
+    {
+      "role": "runtime",
+      "file": "frontend-reproduction.css",
+      "size": 34868,
+      "sha256": "49c17879230eefd1d628719878d2a0afdcb081da49e73b82456ae78ec053769f"
+    },
+    {
+      "role": "source",
+      "file": "frontend-reproduction.php",
+      "size": 12297,
+      "sha256": "93291d73ff5794464fa95153e1b530ebfad3193ba441406735ff8b89941fd080"
+    },
+    {
+      "role": "runtime",
+      "file": "frontend-reproduction.php",
+      "size": 12179,
+      "sha256": "91f4bdf1b14aecde4318f671b171eebd9eb41b87bb0a954868aee0d2017a1a62"
+    }
+  ],
+  "hashesVerified": true,
+  "restoreExecuted": false,
+  "noDBRollbackNeeded": true
+}

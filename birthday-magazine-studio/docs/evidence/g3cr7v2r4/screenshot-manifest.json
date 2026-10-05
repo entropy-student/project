@@ -1,0 +1,540 @@
+{
+  "baseline": "43ebf7bb732e9e3be8d547364ca7b018f7f505f8",
+  "finalDirectory": "confirm",
+  "beforeCount": 21,
+  "finalCount": 27,
+  "screenshots": [
+    {
+      "file": "before\\home-empty-1440.png",
+      "dimensions": [
+        1440,
+        858
+      ],
+      "bytes": 131896,
+      "sha256": "e4101c394b73c4876f425d3d993b453902be184d00e976a668c156c466cd2dc4"
+    },
+    {
+      "file": "before\\home-empty-2048.png",
+      "dimensions": [
+        2048,
+        858
+      ],
+      "bytes": 136024,
+      "sha256": "e6ffaca906eab45a9397574840eff1dd44d884d76419087c467ff5e20d5b2553"
+    },
+    {
+      "file": "before\\home-empty-375.png",
+      "dimensions": [
+        375,
+        1327
+      ],
+      "bytes": 76755,
+      "sha256": "f84e075dae02e36f3fcf54cce83ad23683bc1fd866b891bb3b459319c6671cf3"
+    },
+    {
+      "file": "before\\home-photo-1440.png",
+      "dimensions": [
+        1440,
+        858
+      ],
+      "bytes": 269128,
+      "sha256": "f7421483b09155095ac9daaf27d2e574a560df4d23e77c16cfd85414231af41b"
+    },
+    {
+      "file": "before\\home-photo-2048.png",
+      "dimensions": [
+        2048,
+        858
+      ],
+      "bytes": 274898,
+      "sha256": "19518f033606db5febff06dabf4b4094bdf29464097963623c2722d9c9533687"
+    },
+    {
+      "file": "before\\home-photo-375.png",
+      "dimensions": [
+        375,
+        1331
+      ],
+      "bytes": 178111,
+      "sha256": "343f00450abc85a243599f5b7ac0a60d34272f647783b5ce5280d1c83498178d"
+    },
+    {
+      "file": "before\\intake-about-1440.png",
+      "dimensions": [
+        1120,
+        1063
+      ],
+      "bytes": 59684,
+      "sha256": "14577157814676df0effc365fe2baf9d7167b017d3458d34258f0347720be067"
+    },
+    {
+      "file": "before\\intake-about-2048.png",
+      "dimensions": [
+        1120,
+        1063
+      ],
+      "bytes": 59684,
+      "sha256": "14577157814676df0effc365fe2baf9d7167b017d3458d34258f0347720be067"
+    },
+    {
+      "file": "before\\intake-about-375.png",
+      "dimensions": [
+        375,
+        1279
+      ],
+      "bytes": 51352,
+      "sha256": "c9d1ccfad6f8ea6eabd3cbfad7abed1ca5d6c1ddf9bf0d98a96f91a4830379bf"
+    },
+    {
+      "file": "before\\intake-little-1440.png",
+      "dimensions": [
+        1120,
+        1193
+      ],
+      "bytes": 71995,
+      "sha256": "c05b9bec59c9865cfa408c403fa7aa7cd7f1286356da66f238bd8b3d54545802"
+    },
+    {
+      "file": "before\\intake-little-2048.png",
+      "dimensions": [
+        1120,
+        1193
+      ],
+      "bytes": 71995,
+      "sha256": "c05b9bec59c9865cfa408c403fa7aa7cd7f1286356da66f238bd8b3d54545802"
+    },
+    {
+      "file": "before\\intake-little-375.png",
+      "dimensions": [
+        375,
+        1256
+      ],
+      "bytes": 61236,
+      "sha256": "80e7649c92af6c012f1a9b491e65e3972e17da675abe86ae80636b73b3639aef"
+    },
+    {
+      "file": "before\\intake-photos-1440.png",
+      "dimensions": [
+        1120,
+        1701
+      ],
+      "bytes": 119947,
+      "sha256": "619e1dc4a60b87ff9b92021a459de391bc972625e069e1407c8ae931e91cb4da"
+    },
+    {
+      "file": "before\\intake-photos-2048.png",
+      "dimensions": [
+        1120,
+        1701
+      ],
+      "bytes": 120017,
+      "sha256": "a0b0df2e154c811fa78bfcafbcfab7301b82ff31c3f93887776f459f102257bc"
+    },
+    {
+      "file": "before\\intake-photos-375.png",
+      "dimensions": [
+        375,
+        2029
+      ],
+      "bytes": 91688,
+      "sha256": "687c954c77f75314649c897f7e1c31071c760d93a6d9cb3ffc4052db76c1985a"
+    },
+    {
+      "file": "before\\intake-review-1440.png",
+      "dimensions": [
+        1120,
+        1247
+      ],
+      "bytes": 88785,
+      "sha256": "170dd571a7a6bd0ac943ec406c1c22849194e777b25740bd54e034ad07deade3"
+    },
+    {
+      "file": "before\\intake-review-2048.png",
+      "dimensions": [
+        1120,
+        1247
+      ],
+      "bytes": 88783,
+      "sha256": "dfe63fc99585588b2c44951708d1aef03508cd1975199068d31651325449c3e3"
+    },
+    {
+      "file": "before\\intake-review-375.png",
+      "dimensions": [
+        375,
+        1763
+      ],
+      "bytes": 83516,
+      "sha256": "6637d9c7e5fa5888c530a5738091a249eeedb4e08e96f94d4df99ffa62d56ebc"
+    },
+    {
+      "file": "before\\intake-story-1440.png",
+      "dimensions": [
+        1120,
+        1138
+      ],
+      "bytes": 71845,
+      "sha256": "d63e6e916dee9e6e3b039f68ac1ee9d116943b3823cf2fc6ae453fc8532957e7"
+    },
+    {
+      "file": "before\\intake-story-2048.png",
+      "dimensions": [
+        1120,
+        1138
+      ],
+      "bytes": 71845,
+      "sha256": "d63e6e916dee9e6e3b039f68ac1ee9d116943b3823cf2fc6ae453fc8532957e7"
+    },
+    {
+      "file": "before\\intake-story-375.png",
+      "dimensions": [
+        375,
+        1182
+      ],
+      "bytes": 61051,
+      "sha256": "d31173db53f53ec1e6eab6adb648e4df1c5017052ee88e9f8b3e83e9a9d47647"
+    },
+    {
+      "file": "confirm\\home-empty-1440.png",
+      "dimensions": [
+        1440,
+        840
+      ],
+      "bytes": 125433,
+      "sha256": "9469683960a50a5ec3c67d2298e85ee132956c6a8bc320886daf1d58440f542e"
+    },
+    {
+      "file": "confirm\\home-empty-2048.png",
+      "dimensions": [
+        2048,
+        846
+      ],
+      "bytes": 140252,
+      "sha256": "9f3785b78d0857cb0159412cd4864b20ca5d9f3a246691add720c04797588a4c"
+    },
+    {
+      "file": "confirm\\home-empty-375.png",
+      "dimensions": [
+        375,
+        1557
+      ],
+      "bytes": 70277,
+      "sha256": "49a2b1fe533ad47a67c5cb940164b5f913bd3e42b18fcbb52530fd9704b26429"
+    },
+    {
+      "file": "confirm\\home-photo-1440.png",
+      "dimensions": [
+        1440,
+        860
+      ],
+      "bytes": 344860,
+      "sha256": "c687ebbe439879fe0ceedc003daf481a6134e524f598db1387672d66cf84ff17"
+    },
+    {
+      "file": "confirm\\home-photo-2048.png",
+      "dimensions": [
+        2048,
+        866
+      ],
+      "bytes": 446995,
+      "sha256": "0accb2d653b107388587871052702c3df9b794db0d7dd888414d83a9384cd8b6"
+    },
+    {
+      "file": "confirm\\home-photo-375.png",
+      "dimensions": [
+        375,
+        1577
+      ],
+      "bytes": 191432,
+      "sha256": "e29574fca7651a9e11c31d503b85974750e477a32b7273b40567ac8f0645b35b"
+    },
+    {
+      "file": "confirm\\home-viewport-1440.png",
+      "dimensions": [
+        1440,
+        1152
+      ],
+      "bytes": 252220,
+      "sha256": "b413eccc4801216120c9e6f3fd0b0476f863d089275afeea9aa446f777e0611a"
+    },
+    {
+      "file": "confirm\\home-viewport-2048.png",
+      "dimensions": [
+        2048,
+        1152
+      ],
+      "bytes": 269126,
+      "sha256": "6a1cd05a51fbe482452fdfb1e98fb373bb48e330b7b2ab35774271d5098b86c5"
+    },
+    {
+      "file": "confirm\\home-viewport-375.png",
+      "dimensions": [
+        375,
+        812
+      ],
+      "bytes": 34768,
+      "sha256": "c7d1f28563b9951f3b6f00f8b7fa271a14e32a6921f5cdf367cd279d0cab3220"
+    },
+    {
+      "file": "confirm\\intake-about-1440.png",
+      "dimensions": [
+        1248,
+        991
+      ],
+      "bytes": 58896,
+      "sha256": "9dec4f84dca9feada2d0eb9221cf41b26a3b8f091d58cb4e721dedcfbb6c8751"
+    },
+    {
+      "file": "confirm\\intake-about-2048.png",
+      "dimensions": [
+        1488,
+        1010
+      ],
+      "bytes": 63997,
+      "sha256": "088d1fb151bad1f5d350ffad01ed2a5c9e358060a2f4270532bbbca7094a75c6"
+    },
+    {
+      "file": "confirm\\intake-about-375.png",
+      "dimensions": [
+        375,
+        1354
+      ],
+      "bytes": 50837,
+      "sha256": "631c4ab193c39865510ffe6a09efd888e88425af4741d658ebc2fe895579cb35"
+    },
+    {
+      "file": "confirm\\intake-little-1440.png",
+      "dimensions": [
+        1248,
+        1139
+      ],
+      "bytes": 72075,
+      "sha256": "6e78744b5f2a63b910802f9a13b6565399992f85aa59099c68d133ffc9eb488e"
+    },
+    {
+      "file": "confirm\\intake-little-2048.png",
+      "dimensions": [
+        1488,
+        1157
+      ],
+      "bytes": 77755,
+      "sha256": "d1829bd451fed1d1dfe56a4fec1dc4ce46058b27ad947d5278378a9c436c5c85"
+    },
+    {
+      "file": "confirm\\intake-little-375.png",
+      "dimensions": [
+        375,
+        1375
+      ],
+      "bytes": 60387,
+      "sha256": "65377fe115787a1d3006d079abbf6d4bec79a2bda8d7918ce605f745d529fee6"
+    },
+    {
+      "file": "confirm\\intake-photos-1440.png",
+      "dimensions": [
+        1248,
+        1561
+      ],
+      "bytes": 114283,
+      "sha256": "b07a69683930792aecf5c0f89fedb84d500ab419895f75f464abde8c8444c86c"
+    },
+    {
+      "file": "confirm\\intake-photos-2048.png",
+      "dimensions": [
+        1488,
+        1560
+      ],
+      "bytes": 117210,
+      "sha256": "322b4541c03c0af6f426bf187b134759733607057d57c78dca547688643dd9d7"
+    },
+    {
+      "file": "confirm\\intake-photos-375.png",
+      "dimensions": [
+        375,
+        2321
+      ],
+      "bytes": 93419,
+      "sha256": "df4926f9b1b27954f9c7405e8e95307f746e07e773b372b52babbf02e96a56c8"
+    },
+    {
+      "file": "confirm\\intake-review-1440.png",
+      "dimensions": [
+        1248,
+        1126
+      ],
+      "bytes": 87199,
+      "sha256": "67a29143df8ca4c2d7cfb81a4c986f7e26ed5070dd77c1ae6e27ffccd39ecae1"
+    },
+    {
+      "file": "confirm\\intake-review-2048.png",
+      "dimensions": [
+        1488,
+        1144
+      ],
+      "bytes": 93188,
+      "sha256": "9450b54a359da057d32e4c596654ff12a5722b13aa3498109f4acf3f1b5008eb"
+    },
+    {
+      "file": "confirm\\intake-review-375.png",
+      "dimensions": [
+        375,
+        1832
+      ],
+      "bytes": 81773,
+      "sha256": "432ce49f91d902011dbff5e4b7a25ff62d8bdbd284c80d3d358396a8f06886f8"
+    },
+    {
+      "file": "confirm\\intake-story-1440.png",
+      "dimensions": [
+        1248,
+        1106
+      ],
+      "bytes": 72796,
+      "sha256": "b7fb86a59b1205ebed88b0443a6730461d15da4bc50d23eba6ba70a7f4f58c9e"
+    },
+    {
+      "file": "confirm\\intake-story-2048.png",
+      "dimensions": [
+        1488,
+        1125
+      ],
+      "bytes": 78382,
+      "sha256": "79113ed81c5041e25c8b69cef353c9c950c229b3cf7b68233f767cd3713af750"
+    },
+    {
+      "file": "confirm\\intake-story-375.png",
+      "dimensions": [
+        375,
+        1323
+      ],
+      "bytes": 60738,
+      "sha256": "ba82a6f603b4eb9d9ecdf08cf2e6242a7a1d706b67daddbf1b815d156e8448ce"
+    },
+    {
+      "file": "confirm\\intake-viewport-1440.png",
+      "dimensions": [
+        1440,
+        1461
+      ],
+      "bytes": 92184,
+      "sha256": "493ade4edea72536a711a4116c9a0efd5be908fc28d4e835dc86b96c8611f50d"
+    },
+    {
+      "file": "confirm\\intake-viewport-2048.png",
+      "dimensions": [
+        2048,
+        1480
+      ],
+      "bytes": 100554,
+      "sha256": "7a89dd28a8b9e33da3c083060697328637b6ae6843fa072610de1ef670e29731"
+    },
+    {
+      "file": "confirm\\intake-viewport-375.png",
+      "dimensions": [
+        375,
+        1925
+      ],
+      "bytes": 72560,
+      "sha256": "b217c8c7c8aa7aa644fea13bce97c7089219566cbd19dada88c4f07feb366029"
+    }
+  ],
+  "contactSheet": {
+    "file": "final-contact-sheet.jpg",
+    "absolutePath": "C:\\Users\\34707\\Documents\\ChatGPT\\VPS\u57fa\u5efa\\workspaces\\birthday-magazine-g3cr7r1-executor\\birthday-magazine-studio\\docs\\evidence\\g3cr7v2r4\\final-contact-sheet.jpg",
+    "dimensions": [
+      2200,
+      12898
+    ],
+    "bytes": 1867358,
+    "sha256": "45ecc57d77bcd14f3205b9c67a4518910627e3cec36e62081771cfc78123afb3",
+    "sources": [
+      {
+        "file": "before\\home-empty-2048.png",
+        "sha256": "e6ffaca906eab45a9397574840eff1dd44d884d76419087c467ff5e20d5b2553"
+      },
+      {
+        "file": "confirm\\home-empty-2048.png",
+        "sha256": "9f3785b78d0857cb0159412cd4864b20ca5d9f3a246691add720c04797588a4c"
+      },
+      {
+        "file": "before\\intake-about-2048.png",
+        "sha256": "14577157814676df0effc365fe2baf9d7167b017d3458d34258f0347720be067"
+      },
+      {
+        "file": "confirm\\intake-about-2048.png",
+        "sha256": "088d1fb151bad1f5d350ffad01ed2a5c9e358060a2f4270532bbbca7094a75c6"
+      },
+      {
+        "file": "before\\intake-photos-2048.png",
+        "sha256": "a0b0df2e154c811fa78bfcafbcfab7301b82ff31c3f93887776f459f102257bc"
+      },
+      {
+        "file": "confirm\\intake-photos-2048.png",
+        "sha256": "322b4541c03c0af6f426bf187b134759733607057d57c78dca547688643dd9d7"
+      },
+      {
+        "file": "before\\home-empty-1440.png",
+        "sha256": "e4101c394b73c4876f425d3d993b453902be184d00e976a668c156c466cd2dc4"
+      },
+      {
+        "file": "confirm\\home-empty-1440.png",
+        "sha256": "9469683960a50a5ec3c67d2298e85ee132956c6a8bc320886daf1d58440f542e"
+      },
+      {
+        "file": "before\\intake-about-1440.png",
+        "sha256": "14577157814676df0effc365fe2baf9d7167b017d3458d34258f0347720be067"
+      },
+      {
+        "file": "confirm\\intake-about-1440.png",
+        "sha256": "9dec4f84dca9feada2d0eb9221cf41b26a3b8f091d58cb4e721dedcfbb6c8751"
+      },
+      {
+        "file": "before\\intake-photos-1440.png",
+        "sha256": "619e1dc4a60b87ff9b92021a459de391bc972625e069e1407c8ae931e91cb4da"
+      },
+      {
+        "file": "confirm\\intake-photos-1440.png",
+        "sha256": "b07a69683930792aecf5c0f89fedb84d500ab419895f75f464abde8c8444c86c"
+      },
+      {
+        "file": "before\\home-empty-375.png",
+        "sha256": "f84e075dae02e36f3fcf54cce83ad23683bc1fd866b891bb3b459319c6671cf3"
+      },
+      {
+        "file": "confirm\\home-empty-375.png",
+        "sha256": "49a2b1fe533ad47a67c5cb940164b5f913bd3e42b18fcbb52530fd9704b26429"
+      },
+      {
+        "file": "before\\intake-about-375.png",
+        "sha256": "c9d1ccfad6f8ea6eabd3cbfad7abed1ca5d6c1ddf9bf0d98a96f91a4830379bf"
+      },
+      {
+        "file": "confirm\\intake-about-375.png",
+        "sha256": "631c4ab193c39865510ffe6a09efd888e88425af4741d658ebc2fe895579cb35"
+      },
+      {
+        "file": "before\\intake-photos-375.png",
+        "sha256": "687c954c77f75314649c897f7e1c31071c760d93a6d9cb3ffc4052db76c1985a"
+      },
+      {
+        "file": "confirm\\intake-photos-375.png",
+        "sha256": "df4926f9b1b27954f9c7405e8e95307f746e07e773b372b52babbf02e96a56c8"
+      },
+      {
+        "file": "before\\home-photo-2048.png",
+        "sha256": "19518f033606db5febff06dabf4b4094bdf29464097963623c2722d9c9533687"
+      },
+      {
+        "file": "confirm\\home-photo-2048.png",
+        "sha256": "0accb2d653b107388587871052702c3df9b794db0d7dd888414d83a9384cd8b6"
+      },
+      {
+        "file": "before\\home-photo-375.png",
+        "sha256": "343f00450abc85a243599f5b7ac0a60d34272f647783b5ce5280d1c83498178d"
+      },
+      {
+        "file": "confirm\\home-photo-375.png",
+        "sha256": "e29574fca7651a9e11c31d503b85974750e477a32b7273b40567ac8f0645b35b"
+      }
+    ]
+  }
+}
