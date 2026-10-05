@@ -587,3 +587,12 @@ Next Gate: `G4B_BAIDU_OWNER_SECURE_AUTH_RUN_R6R2I`, an Owner-local one-shot secu
 The Owner build reached and passed adapter Go tests, then the frozen build helper returned generic `BUILD_VALIDATION_FAILED`; temporary build cleanup passed. The wrapper stopped before the authentication checkpoint, so no authentication material/provider action occurred.
 
 Do not retry. The next step is a metadata-only Owner diagnostic of the project runtime directories and retained binary state. The known `SeSecurityPrivilege` limitation is a candidate explanation for the retained-binary ACL stage but remains unproven until reconciliation.
+
+
+## 2026-10-05 — R6R2I-D1 proves clean runtime residue state
+
+**Decision:** `PASS_R6R2I_D1_RUNTIME_RESIDUE_DIAGNOSTIC`.
+
+The Owner runtime root and runtime directory are present and safe; the retained adapter binary is absent; authentication did not start; the read-only diagnostic made zero mutations. The failed R6R2I attempt therefore needs no runtime cleanup.
+
+Next Gate: `G4B_BAIDU_RETAINED_BINARY_CREATION_REPAIR_R6R2I_D2`. It repairs only retained-binary creation/ACL/readback and failure-stage diagnostics. No build/auth retry is authorized until Reviewer PASS.
