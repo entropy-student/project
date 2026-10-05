@@ -1,6 +1,6 @@
 # Reviewer Transition — 2026-10-05 — G4-B R12 Local ACL Owner-Drift Inventory
 
-> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R14 chronology, current safety boundary and exact next unresolved question.
+> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R15 chronology, current safety boundary and exact next unresolved question.
 
 ## 1. Project goal and frozen v1 role order
 
@@ -40,9 +40,9 @@ MVP v1 seal                                 PENDING
 ## 3. Current canonical Reviewer state
 
 ```text
-STATE=OWNER_ACTION_REQUIRED_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14
-GATE_ID=G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14
-PREVIOUS_RESULT=RETURN_R6R2L_R13_EXPECTED_HISTORY_ABSENT_ONE_UNKNOWN_FILE
+STATE=OWNER_AUTHORIZATION_REQUIRED_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
+GATE_ID=G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
+PREVIOUS_RESULT=PASS_R6R2L_R14_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
 R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
 ```
 
@@ -367,42 +367,86 @@ Upstream v4.0.2 reconciliation then identified two additional known config-direc
 
 R9 executed a real upload, so `pcs_uploading.json` is the strongest candidate, but that remains unaccepted until R14 proves it from metadata.
 
-### R14 — current known config-role Owner classification — READY TO EXECUTE
+### R14 — known config-role Owner classification — PASS
 
-Current Gate:
-
-`docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md`
-
-Prepared helper:
-
-`scripts/g4b-baidu-known-config-role-owner-r14.ps1`
-
-Locked identities:
+R14 completed exactly within metadata-only scope:
 
 ```text
-R14_GATE_BLOB=4a12130337fc79366ce2dceea3fb7ae5f5fe759e
-R14_SCRIPT_BLOB=e2a5f2e9f64e5878b66575f50f772131b7dacb0f
-```
-
-R14 is local direct-child metadata-only. It classifies only the four upstream-known config-directory roles: config, command history, upload database and captcha.
-
-Desired narrow observation:
-
-```text
+TOTAL_ITEM_COUNT=3
 ROOT_OWNER_ROLE=OWNER
 CONFIG_PRESENT=YES
 CONFIG_OWNER_ROLE=OWNER
 HISTORY_PRESENT=NO
+HISTORY_OWNER_ROLE=NOT_PRESENT
 UPLOAD_DB_PRESENT=YES
 UPLOAD_DB_OWNER_ROLE=ADMIN
 CAPTCHA_PRESENT=NO
+CAPTCHA_OWNER_ROLE=NOT_PRESENT
 UNKNOWN_FILE_COUNT=0
 UNKNOWN_DIRECTORY_COUNT=0
 REPARSE_POINT_COUNT=0
 R14_KNOWN_ROLE_STATE=EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
+CONFIG_CONTENT_READ=NO
+ACL_MUTATION=NO
+BAIDU_PROVIDER_ACTION=NO
+UID_INPUT=NO
+SECRET_OR_DPAPI_ACCESS=NO
+SSH_OR_VPS_ACTION=NO
+NETWORK_MUTATION=NO
+STOP_AT_REVIEWER=YES
 ```
 
-R14 does not authorize ACL normalization, provider access or live retry.
+Formal result:
+
+```text
+PASS_R6R2L_R14_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
+```
+
+R12-R14 together now prove:
+- root Owner=OWNER;
+- `pcs_config.json` Owner=OWNER;
+- `pcs_uploading.json` Owner=ADMIN;
+- history/captcha absent;
+- no unknown entries;
+- no reparse;
+- prior R12 ACL policy checks were otherwise clean.
+
+Upstream v4.0.2 upload path creates `pcs_uploading.json`, and R9 executed a real upload. This closes the local object-identity question.
+
+### R15 — upload DB Owner normalization — PREPARED / OWNER AUTHORIZATION REQUIRED
+
+Current Gate:
+
+`docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md`
+
+Prepared helper:
+
+`scripts/g4b-baidu-upload-db-owner-normalize-r15.ps1`
+
+Locked identities:
+
+```text
+R15_GATE_BLOB=ba3a574c47d05a31c18ef59a500f13e616ea6a95
+R15_SCRIPT_BLOB=930cae384a3bc1df27c3f93d52d5d8580b15a32e
+OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=REQUIRED
+R15_EXECUTION_AUTHORIZED=NO
+```
+
+R15 is consequential local security-metadata write.
+
+Its intended mutation is deliberately narrower than historical full ACL normalization:
+- exact target only: `pcs_uploading.json`;
+- change only Owner ADMIN -> current Owner;
+- preserve current access rules already proven clean by R12;
+- do not change root/config ACLs;
+- create an Owner-only durable rollback journal before mutation;
+- retain rollback journal through Reviewer stop;
+- immediately re-run strict R6R1 metadata validation and exact shape readback;
+- restore the exact pre-mutation ACL from the journal on any post-write failure.
+
+The helper defaults to non-mutating `Mode=Validate`; mutation path additionally requires `-Mode Run -OwnerAuthorized`.
+
+No R15 Run command may be issued until the Owner explicitly authorizes this exact Gate.
 
 ## 5. Current unresolved truth
 
@@ -426,9 +470,9 @@ Unknown / unresolved:
 
 ## 6. Current safety boundary
 
-R14 allows only local direct-child known-role/Owner metadata observation.
+R15 is prepared but not authorized. Until explicit Owner authorization, only non-mutating validation/review is allowed.
 
-R14 does **not** authorize:
+Before authorization, R15 does **not** authorize:
 - config file content read/hash/copy/print;
 - username/path/SID/ACE-detail output;
 - `Set-Acl`, `takeown`, `icacls` or ownership mutation;
@@ -441,15 +485,16 @@ R14 does **not** authorize:
 - Clash/profile/service/route/proxy/TUN mutation;
 - G4-C.
 
-Only after R14 is reviewed may Reviewer decide whether a separate narrow ACL-normalization/reconciliation Gate is justified. Remote residual-state readback remains blocked until local ACL state is reconciled.
+R15 already defines the narrow normalization boundary, but execution remains blocked until explicit Owner authorization. Remote residual-state readback remains blocked until local ACL state is reconciled.
 
 ## 7. What the next Reviewer must read
 
 Read in this order:
 
 1. `REVIEWER_HANDOFF.md` — canonical dashboard/current Gate.
-2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R14 chronology.
-3. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — exact current Gate.
+2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R15 chronology.
+3. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — exact current prepared Gate, awaiting Owner authorization.
+4. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — completed R14 Gate.
 4. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — completed R13 Gate.
 4. `EXECUTION_EVIDENCE.md` — append-only R5→R12 evidence and formal Reviewer decisions.
 5. `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — completed R12 metadata inventory Gate.
@@ -480,6 +525,6 @@ Do not repeat without new Reviewer authorization/evidence:
 
 ## 9. Repository durability
 
-This transition snapshot, R14/R13/R12 Gates and helpers, R11/R10 history, accepted runner/validator, Evidence, Handoff and README are all on `main`.
+This transition snapshot, R15/R14/R13/R12 Gates and helpers, R11/R10 history, accepted runner/validator, Evidence, Handoff and README are all on `main`.
 
 No branch-only artifact is required to reconstruct or continue the current accepted project state.
