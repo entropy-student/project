@@ -494,3 +494,12 @@ Next: offline `G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E` to build a 
 R6R2E's metadata-only residue reconciliation and post-login ACL normalization design are accepted. However, the auth helper's fallback branch can delete a config root that existed empty before the run: when login starts/fails before a config file or post-login shape proof exists, the helper invokes `Remove-NewEmptyBaiduConfigDirectory` without checking `interactiveAuthConfigCreated`.
 
 This violates the explicit requirement that a pre-existing empty root be preserved. The next Gate, `G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1`, is limited to restoring exact root provenance in rollback and adding production-function regression fixtures. No Owner action or login replay is authorized meanwhile.
+
+
+## 2026-10-05 — R6R2E-R1 rollback provenance repair formally accepted
+
+**Decision:** `PASS_G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1`.
+
+The auth helper now preserves any pre-existing empty config root on failure and permits exact empty-root deletion only when root provenance proves it was created by the current run. Exact config-file rollback remains file-only for a pre-existing root and file+root for a run-created root. Six production-function provenance fixtures and full regression passed.
+
+The accepted metadata-only failed-run reconciliation helper remains frozen. Next Gate: `G4B_BAIDU_OWNER_PARTIAL_CONFIG_RECONCILIATION_RUN_R6R2F`.
