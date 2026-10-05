@@ -104,25 +104,25 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_READ_ONLY_NETWORK_DIAGNOSTIC
+STATE=OWNER_ACTION_REQUIRED_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_METADATA_ONLY
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_R6R2L_R10_BAIDU_REAL_LISTING_PARSER_REPAIR
-OBJECTIVE=Read-only reconcile the Baidu recovery directory after R9, because R9 pending rollback used the now-superseded broken listing parser and cannot prove that no pending object remains.
-MAX_ENDPOINT_THIS_ROUND=One read-only Baidu who + ls -l diagnostic ending at sanitized residual-state classification + STOP_AT_REVIEWER. No cleanup, no live runner, no SSH/VPS, no Secret/recovery read.
+PREVIOUS_RESULT=RETURN_R6R2L_R11_BAIDU_AUTH_CONFIG_OWNER_MISMATCH
+OBJECTIVE=Read only the local Baidu config subtree metadata and classify the exact owner/ACL drift that blocked R11 before any provider read.
+MAX_ENDPOINT_THIS_ROUND=One local metadata-only inventory ending in sanitized counts/classification + STOP_AT_REVIEWER. No ACL normalization, no provider action, no cleanup, no live runner.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Owner Windows host + approved Baidu recovery directory read-only state only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No mkdir/upload/download-from-Baidu/mv/rm/login/logout/config mutation; no live G4-B; no SSH/VPS; no DPAPI/real recovery Secret access; no profile/service/route/proxy/TUN mutation; no G4-C; no raw UID/provider output/remote filenames in evidence.
-PREFLIGHT=R10 formal PASS; corrected borderless listing semantics accepted; R9 reported CONSEQUENTIAL_MUTATION_STARTED=NO but its pending rollback result is non-authoritative because it used the pre-R10 parser.
-REQUIRED_EVIDENCE=R11 script blob b3dfb42f4deaf28650d3aab35d92b5a2965ed662; parser preflight; config ACL PASS; pinned CLI PASS; hidden UID input; who/UID PASS; ls/header PASS; project final/pending/unknown counts; sanitized residual classification; temp cleanup PASS; all mutation/Secret markers NO/0.
-ACCEPTANCE_CRITERIA=State observation only. CLEAN may permit a new live retry Gate; any residual/unknown/auth/provider result returns for separate reconciliation. R11 itself never closes G4-B.
-ROLLBACK_STATUS_OR_PLAN=No remote rollback because R11 is read-only. Temporary local diagnostic runtime must be removed before stop.
-OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R11 Gate/script blobs and Handoff state, parser-preflight the R11 script, run it once, enter expected Baidu UID only through hidden local prompt, return sanitized markers, stop.
+TARGET_AND_SCOPE=Owner Windows host, %APPDATA%\BaiduPCS-Go metadata/ACL only.
+APPLICABLE_CRITICAL_CONSTRAINTS=No config content read/hash/copy/print; no usernames/paths/SIDs/ACE details in evidence; no Set-Acl/takeown/icacls; no BaiduPCS-Go; no UID prompt; no DPAPI/recovery Secret; no SSH/VPS; no profile/service/route/proxy/TUN mutation; no live G4-B; no G4-C.
+PREFLIGHT=R11 formal RETURN at BAIDU_CONFIG_ACL with BAIDU_AUTH_CONFIG_OWNER_MISMATCH before UID/provider action; R10 formal PASS; historical R6R2D/R6R2H-R1 proves privileged child-created pcs_config.json can be Administrators-owned on this host but current mismatch principal/item remains UNKNOWN.
+REQUIRED_EVIDENCE=R12 metadata-only Gate blob e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2; bounded item count; root-owner match; owner-category counts; mismatch file/directory counts; reparse/Deny/unauthorized-Allow/Owner-read-rights counts; sanitized classification; no content/provider/Secret/network action.
+ACCEPTANCE_CRITERIA=Observation only. Narrow known admin-owner single-file shape may permit a later bounded normalization Gate; broader/unknown drift requires separate fail-closed reconciliation. R12 never authorizes mutation.
+ROLLBACK_STATUS_OR_PLAN=No rollback expected because R12 is metadata-only.
+OWNER_ONLY_ACTIONS=Next Reviewer may prepare/run a metadata-only R12 helper under this Gate. Do not normalize ACLs, access provider state, clean remote objects, or run live G4-B.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R11 markers only; do not perform cleanup or live retry.
+EXECUTOR_TO_REVIEWER_RELAY=Return only sanitized metadata counts/classification; no repair.
 ```
 
-G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and returned `BAIDU_PENDING_UPLOAD_NOT_PRESENT` with `CONSEQUENTIAL_MUTATION_STARTED=NO`; however its pending rollback observation used the now-superseded pre-R10 parser and cannot prove the Baidu recovery directory is clean. Current work is R11 read-only residual-state reconciliation; no cleanup or live retry is authorized.
+G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and returned `BAIDU_PENDING_UPLOAD_NOT_PRESENT` with `CONSEQUENTIAL_MUTATION_STARTED=NO`; its pending rollback observation used the superseded pre-R10 parser and remains non-authoritative for remote cleanliness. R11 then stopped locally at `BAIDU_CONFIG_ACL` with `BAIDU_AUTH_CONFIG_OWNER_MISMATCH` before UID/provider action. Current work is R12 local ACL-owner drift inventory only; remote residual state remains UNKNOWN, and no cleanup or live retry is authorized.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -255,6 +255,8 @@ G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_VALIDATOR_BLOB=26eff5e0ec7c3d12fc
 G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10_RESULT=PASS
 G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11_GATE_BLOB=b941fb2a97951ce978752937f36baebca7c6c4c5
 G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11_SCRIPT_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
+G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11_RESULT=RETURN_BAIDU_AUTH_CONFIG_OWNER_MISMATCH
+G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
 R9_TRANSITION_SNAPSHOT=docs/REVIEWER_TRANSITION_2026-10-05.md
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
@@ -326,7 +328,7 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 - G4-B0 is formally PASS and closed.
 - G4-B is IN_PROGRESS. R8 pipeline-output repair is formally PASS. R9 executed once and returned in P5 with `BAIDU_PENDING_UPLOAD_NOT_PRESENT`, `CONSEQUENTIAL_MUTATION_STARTED=NO`, remote rollback PASS and pending rollback PASS.
 - R9 source reconciliation identified a real-provider fixture drift: BaiduPCS-Go v4.0.2 `ls -l` is borderless, while the pre-R10 parser/fake fixture assumed pipe-delimited rows.
-- R10 parser/fixture repair is formally PASS. R11 is current and read-only-only because R9's pending rollback result used the superseded parser; no cleanup or live retry is authorized until R11 is reconciled.
+- R10 parser/fixture repair is formally PASS. R11 returned before provider access because local Baidu config ownership violates the strict R6R1 Owner invariant. R12 is current and metadata-only; remote residual state is still UNKNOWN and no ACL repair/provider cleanup/live retry is authorized.
 - Persistent REALITY backup service and persistent `SELF-VPN-V1` are still not accepted.
 - G4-C remains separate and pending after G4-B formal acceptance.
 - Final v1 production default/control posture remains pending G4.
@@ -335,18 +337,19 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner runs only `G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11` and stops at Reviewer. No cleanup or live retry is authorized.
+Next Reviewer proceeds only under `G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12`: local metadata-only owner/ACL inventory, then stop at Reviewer. No ACL normalization, provider access, cleanup or live retry is authorized.
 
 ## OWNER_ACTION_REQUIRED
 
-Fast-forward to current main, verify the R11 Gate/script blob and current Handoff state, parser-preflight the R11 script, run it once, enter the expected Baidu UID only through the hidden local prompt, and return sanitized markers. Do not perform cleanup or run live G4-B.
+No Owner action is required until the next Reviewer prepares the bounded R12 metadata-only helper. Do not change ACLs, run BaiduPCS-Go, enter UID, clean remote state, or run live G4-B.
 
 ## EVIDENCE_POINTERS
 
 Read only what is needed:
 
-- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R11 chronology, R9 return reconciliation, R10 formal PASS, and current residual-state boundary.
-- `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — exact current read-only reconciliation Gate.
+- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R12 chronology, R10 formal PASS, R11 ACL-owner mismatch return, and current local metadata-only boundary.
+- `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — exact current metadata-only ACL-owner drift Gate.
+- `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — historical R11 read-only residual-state Gate and return.
 - `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 parser-repair Gate and history.
 - `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9.md` — historical failed live retry Gate; do not execute.
 - `docs/REVIEWER_TRANSITION_2026-10-04.md` — older transition history; read only if earlier context is needed.
