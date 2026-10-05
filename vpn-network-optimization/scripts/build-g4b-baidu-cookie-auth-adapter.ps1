@@ -237,7 +237,7 @@ try {
             $fixtureStdout = $fixtureProcess.StandardOutput.ReadToEnd()
             $fixtureStderr = $fixtureProcess.StandardError.ReadToEnd()
             $fixtureProcess.WaitForExit()
-            if ($fixtureProcess.ExitCode -eq 0 -or ($fixtureStdout + $fixtureStderr) -notmatch 'BAIDU_COOKIE_AUTH_FAILURE_CODE=ARGUMENTS_FORBIDDEN') {
+            if ($fixtureProcess.ExitCode -eq 0 -or ($fixtureStdout + $fixtureStderr) -match 'BAIDU_COOKIE_AUTH') {
                 throw 'NATIVE_EXIT_FIXTURE_FAILED'
             }
         } finally {

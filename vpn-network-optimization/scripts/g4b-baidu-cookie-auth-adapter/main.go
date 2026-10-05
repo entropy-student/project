@@ -106,18 +106,12 @@ func setupAndSave(bduss, cookie string) (ok bool) {
 
 func run() int {
 	if len(os.Args) != 1 {
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH=FAIL_CLOSED")
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH_FAILURE_CODE=ARGUMENTS_FORBIDDEN")
 		return 2
 	}
 	if !validConfigPath() {
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH=FAIL_CLOSED")
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH_FAILURE_CODE=CONFIG_PATH_INVALID")
 		return 2
 	}
 	if !terminal.IsTerminal(int(os.Stdin.Fd())) {
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH=FAIL_CLOSED")
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH_FAILURE_CODE=OWNER_CONSOLE_REQUIRED")
 		return 2
 	}
 
@@ -126,20 +120,14 @@ func run() int {
 	fmt.Fprintln(os.Stderr)
 	if err != nil {
 		clearBytes(cookieBytes)
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH=FAIL_CLOSED")
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH_FAILURE_CODE=COOKIE_INPUT_FAILED")
 		return 2
 	}
 	defer clearBytes(cookieBytes)
 	if len(cookieBytes) == 0 {
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH=FAIL_CLOSED")
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH_FAILURE_CODE=COOKIE_EMPTY")
 		return 2
 	}
 	bduss, valid := parseExactBDUSS(cookieBytes)
 	if !valid {
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH=FAIL_CLOSED")
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH_FAILURE_CODE=COOKIE_FORMAT_INVALID")
 		return 2
 	}
 
@@ -148,14 +136,10 @@ func run() int {
 	if !setupAndSave(bduss, cookie) {
 		bduss = ""
 		cookie = ""
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH=FAIL_CLOSED")
-		fmt.Fprintln(os.Stderr, "BAIDU_COOKIE_AUTH_FAILURE_CODE=AUTH_SETUP_FAILED")
 		return 2
 	}
 	bduss = ""
 	cookie = ""
-	fmt.Fprintln(os.Stdout, "BAIDU_COOKIE_AUTH=SETUP_SAVED")
-	fmt.Fprintln(os.Stdout, "BAIDU_COOKIE_AUTH_UID_EMITTED=NO")
 	return 0
 }
 

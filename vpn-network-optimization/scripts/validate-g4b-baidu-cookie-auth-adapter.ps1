@@ -112,9 +112,9 @@ try {
     $acceptedBuild = (& git show ($acceptedBuildCommit + ':vpn-network-optimization/scripts/build-g4b-baidu-cookie-auth-adapter.ps1') | Out-String)
     Assert-Validation ($LASTEXITCODE -eq 0 -and $acceptedBuildBlob -ceq $expectedBuildBlob -and $acceptedBuild.Contains('225bdd3b6cb298601c4d5ef7104c3e08cd1d692d') -and $acceptedBuild.Contains('go1.27.1') -and $build.Contains('225bdd3b6cb298601c4d5ef7104c3e08cd1d692d') -and $build.Contains('go1.27.1')) 'R6R2H_R2_PINNED_BUILD_CHAIN_FROZEN'
 
+    $d5AcceptedHead = '57f47df93a0a4ff9b76aa236a905b3f9388c1d5c'
     $frozenBlobExpectations = @{
         'vpn-network-optimization/scripts/g4b-baidu-cookie-auth-owner-checkpoint.ps1' = '8d0aded1b49aff58e06f5e7c450b8799737b3b68'
-        'vpn-network-optimization/scripts/g4b-baidu-cookie-auth-adapter/main.go' = '6b12287e0744bd9b95e487656b8b048c394965c9'
         'vpn-network-optimization/scripts/g4b-baidu-cookie-auth-adapter/main_test.go' = 'a1d65216f061ee2d5ee32aefc046f01379d40ca2'
     }
     $authCoreFrozen = $true
@@ -122,7 +122,23 @@ try {
         $actualBlob = (& git rev-parse ('HEAD:' + $path)).Trim()
         if ($LASTEXITCODE -ne 0 -or $actualBlob -cne $frozenBlobExpectations[$path]) { $authCoreFrozen = $false }
     }
+    $acceptedMain = (& git show ($d5AcceptedHead + ':vpn-network-optimization/scripts/g4b-baidu-cookie-auth-adapter/main.go') | Out-String)
+    $statusOutputLinePattern = '^\s*fmt\.Fprintln\(os\.(?:Stdout|Stderr), "BAIDU_COOKIE_AUTH(?:_FAILURE_CODE|_UID_EMITTED)?=[^"]+"\)\s*$'
+    $acceptedMainNormalized = $acceptedMain.Replace("`r`n", "`n").TrimEnd([char]10)
+    $currentMainNormalized = $source.Replace("`r`n", "`n").TrimEnd([char]10)
+    $acceptedStatusLines = @($acceptedMainNormalized -split "`n" | Where-Object { $_ -match $statusOutputLinePattern })
+    $expectedMainCore = @($acceptedMainNormalized -split "`n" | Where-Object { $_ -notmatch $statusOutputLinePattern }) -join "`n"
+    Assert-Validation ($LASTEXITCODE -eq 0 -and $acceptedStatusLines.Count -eq 16 -and $currentMainNormalized -ceq $expectedMainCore -and $currentMainNormalized -notmatch $statusOutputLinePattern) 'R6R2I_D5_AUTH_LOGIC_FROZEN'
     Assert-Validation $authCoreFrozen 'R6R2I_D2_R3_AUTH_CORE_FROZEN'
+
+    $acceptedD5Build = (& git show ($d5AcceptedHead + ':vpn-network-optimization/scripts/build-g4b-baidu-cookie-auth-adapter.ps1') | Out-String)
+    $oldNativeFailureCondition = 'if ($fixtureProcess.ExitCode -eq 0 -or ($fixtureStdout + $fixtureStderr) -notmatch ''BAIDU_COOKIE_AUTH_FAILURE_CODE=ARGUMENTS_FORBIDDEN'') {'
+    $newNativeFailureCondition = 'if ($fixtureProcess.ExitCode -eq 0 -or ($fixtureStdout + $fixtureStderr) -match ''BAIDU_COOKIE_AUTH'') {'
+    $acceptedD5BuildNormalized = $acceptedD5Build.Replace("`r`n", "`n").TrimEnd([char]10)
+    $currentBuildNormalized = $build.Replace("`r`n", "`n").TrimEnd([char]10)
+    $oldConditionCount = ([regex]::Matches($acceptedD5BuildNormalized, [regex]::Escape($oldNativeFailureCondition))).Count
+    $expectedD5Build = $acceptedD5BuildNormalized.Replace($oldNativeFailureCondition, $newNativeFailureCondition)
+    Assert-Validation ($LASTEXITCODE -eq 0 -and $oldConditionCount -eq 1 -and $currentBuildNormalized -ceq $expectedD5Build -and $currentBuildNormalized.Contains($newNativeFailureCondition)) 'R6R2I_D5_NATIVE_FAILURE_FIXTURE_ONLY'
 
     $runtimeInitializerNode = Get-FunctionNode -Ast $buildAst -Name 'Initialize-OwnerBinaryRuntime'
     $aclHelperLoadAt = $build.IndexOf('. $aclHelper', [StringComparison]::Ordinal)
@@ -193,6 +209,9 @@ try {
     Assert-Validation ($source.Contains('parts := bytes.Split(cookie, []byte(";"))') -and $source.Contains('i == len(parts)-1') -and $source.Contains('count != 1')) 'R6R2H_R2_UPSTREAM_SECOND_PARSE_BYPASSED'
     Assert-Validation ($testSource.Contains('OTHER=prefixBDUSS=fixture-wrong; BDUSS=fixture-right;') -and $testSource.Contains('parsed != "fixture-right"')) 'R6R2H_R2_AMBIGUOUS_SUBSTRING_FIXTURE'
     Assert-Validation ($source.Contains('terminal.ReadPassword(int(os.Stdin.Fd()))') -and $source.Contains('os.Stdout, os.Stderr = sink, sink') -and $source.Contains('log.SetOutput(io.Discard)') -and $source.Contains('pcsverbose.Outputs = []io.Writer{io.Discard}') -and -not $source.Contains('Sum(') -and -not $source.Contains('sha256')) 'R6R2H_R2_SECRET_BOUNDARIES_UNCHANGED'
+    Assert-Validation ($source.Contains('fmt.Fprint(os.Stderr, "Enter Cookie in this local console (input hidden): ")') -and $source.Contains('terminal.ReadPassword(int(os.Stdin.Fd()))') -and $ownerText.Contains('$startInfo.RedirectStandardInput = $false') -and $ownerText.Contains('$startInfo.RedirectStandardOutput = $false') -and $ownerText.Contains('$startInfo.RedirectStandardError = $false')) 'R6R2I_D5_HIDDEN_INPUT_PATH_PRESERVED'
+    Assert-Validation ($source -notmatch $statusOutputLinePattern -and $source -notmatch 'BAIDU_COOKIE_AUTH_(?:FAILURE_CODE|UID_EMITTED)=|BAIDU_COOKIE_AUTH=(?:FAIL_CLOSED|SETUP_SAVED)') 'R6R2I_D5_ADAPTER_STATUS_CONSOLE_LEAK_BLOCKED'
+    Assert-Validation ($source.Contains('return 2') -and $source.Contains('return 0') -and $source.Contains('os.Exit(run())') -and $newNativeFailureCondition -and $build.Contains("if (`$fixtureProcess.ExitCode -eq 0 -or (`$fixtureStdout + `$fixtureStderr) -match 'BAIDU_COOKIE_AUTH') {")) 'R6R2I_D5_NATIVE_NONZERO_EXIT_PRESERVED'
     Assert-Validation ($source.Contains('len(os.Args) != 1') -and -not $source.Contains('SetupUserByBDUSS("", "", "", cookie)') -and $source.Contains('SetupUserByBDUSS(bduss, "", "", cookie)')) 'R6R2H_R2_SETUP_EXPLICIT_VALUE'
     $setupAt = $source.IndexOf('pcsconfig.Config.SetupUserByBDUSS(bduss, "", "", cookie)', [StringComparison]::Ordinal)
     $saveAt = $source.IndexOf('pcsconfig.Config.Save()', [StringComparison]::Ordinal)
@@ -240,6 +259,9 @@ try {
     }
     Assert-Validation $outputContractComplete 'R6R2H_R3_OUTPUT_CONTRACT_COMPLETE'
     Assert-Validation (@($writeOutputNodes | Where-Object { $_.Extent.Text.Contains('BAIDU_COOKIE_AUTH_CONFIG_STATE=') }).Count -eq 1) 'R6R2H_R3_CONFIG_STATE_OUTPUT_PRESENT'
+    Assert-Validation ($writeOutputNodes.Count -eq 8 -and $outputContractComplete) 'R6R2I_D5_OWNER_EIGHT_MARKER_CONTRACT_EXACT'
+    Assert-Validation ($source -notmatch $statusOutputLinePattern -and $source -notmatch 'BAIDU_COOKIE_AUTH_(?:FAILURE_CODE|UID_EMITTED)=|BAIDU_COOKIE_AUTH=(?:FAIL_CLOSED|SETUP_SAVED)') 'R6R2I_D5_SUCCESS_PATH_NO_DUPLICATE_MARKERS'
+    Assert-Validation ($source -notmatch $statusOutputLinePattern -and $build.Contains($newNativeFailureCondition) -and -not $build.Contains($oldNativeFailureCondition)) 'R6R2I_D5_FAILURE_PATH_NO_CHILD_MARKERS'
 
     $probeVariable = Get-Variable -Name configRootExistedBefore -Scope Script -ErrorAction SilentlyContinue
     $probeVariableExisted = $null -ne $probeVariable
@@ -478,6 +500,7 @@ try {
     Write-Output 'R6R2H_R3_CONFIG_STATE_PRODUCTION_EXPRESSION_FIXTURES=PASS'
     Write-Output 'R6R2H_R3_R2_CORE_FROZEN=PASS'
     Write-Output 'R6R2H_R3_FULL_R6R2H_R2_REGRESSION=PASS'
+    Write-Output 'R6R2I_D5_FULL_R6R2H_R3_REGRESSION=PASS'
     Write-Output 'REAL_COOKIE_VALUES_USED=0'
     Write-Output 'REAL_AUTH_ACTIONS=0'
     Write-Output 'REAL_BAIDU_AUTH_ACTIONS=0'
