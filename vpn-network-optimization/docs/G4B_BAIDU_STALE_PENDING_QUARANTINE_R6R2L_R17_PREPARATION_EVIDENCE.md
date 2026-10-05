@@ -21,7 +21,7 @@ The authorization covers the already-declared R17 maximum endpoint: one bounded 
 ## Locked implementation
 
 ```text
-R17_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
+R17_BASE_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
 R17_HELPER_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17.ps1
 R17_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
 R17_VALIDATOR_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17-validator.ps1
