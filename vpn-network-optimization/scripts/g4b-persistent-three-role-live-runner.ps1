@@ -458,6 +458,7 @@ function Invoke-BaiduCli {
     Assert-G4B ($script:baiduCliPath -and (Test-Path -LiteralPath $script:baiduCliPath -PathType Leaf)) 'BAIDU_CLI_BINARY_MISSING'
     $psi=[Diagnostics.ProcessStartInfo]::new(); $psi.FileName=$script:baiduCliPath; $psi.UseShellExecute=$false
     $psi.RedirectStandardOutput=$true; $psi.RedirectStandardError=$true; $psi.CreateNoWindow=$true
+    $utf8NoBom=[Text.UTF8Encoding]::new($false); $psi.StandardOutputEncoding=$utf8NoBom; $psi.StandardErrorEncoding=$utf8NoBom
     [void]$psi.ArgumentList.Add($Action)
     foreach($argument in $Arguments){[void]$psi.ArgumentList.Add([string]$argument)}
     $environmentKeys=@($psi.Environment.Keys)
