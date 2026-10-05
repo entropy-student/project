@@ -40,7 +40,7 @@ MVP v1 seal                                 PENDING
 ## 3. Current canonical Reviewer state
 
 ```text
-STATE=OWNER_AUTHORIZATION_REQUIRED_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
+STATE=OWNER_ACTION_REQUIRED_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
 GATE_ID=G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15
 PREVIOUS_RESULT=PASS_R6R2L_R14_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
 R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
@@ -413,7 +413,7 @@ R12-R14 together now prove:
 
 Upstream v4.0.2 upload path creates `pcs_uploading.json`, and R9 executed a real upload. This closes the local object-identity question.
 
-### R15 — upload DB Owner normalization — PREPARED / OWNER AUTHORIZATION REQUIRED
+### R15 — upload DB Owner normalization — AUTHORIZED / READY FOR ONE BOUNDED RUN
 
 Current Gate:
 
@@ -428,8 +428,8 @@ Locked identities:
 ```text
 R15_GATE_BLOB=ba3a574c47d05a31c18ef59a500f13e616ea6a95
 R15_SCRIPT_BLOB=930cae384a3bc1df27c3f93d52d5d8580b15a32e
-OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=REQUIRED
-R15_EXECUTION_AUTHORIZED=NO
+OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=GRANTED
+R15_EXECUTION_AUTHORIZED=YES
 ```
 
 R15 is consequential local security-metadata write.
@@ -446,7 +446,7 @@ Its intended mutation is deliberately narrower than historical full ACL normaliz
 
 The helper defaults to non-mutating `Mode=Validate`; mutation path additionally requires `-Mode Run -OwnerAuthorized`.
 
-No R15 Run command may be issued until the Owner explicitly authorizes this exact Gate.
+One R15 Run command may now be issued under the exact locked Gate/script. No second attempt is authorized without Reviewer reconciliation.
 
 ## 5. Current unresolved truth
 
@@ -470,9 +470,9 @@ Unknown / unresolved:
 
 ## 6. Current safety boundary
 
-R15 is prepared but not authorized. Until explicit Owner authorization, only non-mutating validation/review is allowed.
+R15 is prepared and explicitly authorized for one bounded local normalization attempt. Provider readback/live G4-B remain blocked.
 
-Before authorization, R15 does **not** authorize:
+Even after this authorization, R15 does **not** authorize:
 - config file content read/hash/copy/print;
 - username/path/SID/ACE-detail output;
 - `Set-Acl`, `takeown`, `icacls` or ownership mutation;
@@ -485,7 +485,7 @@ Before authorization, R15 does **not** authorize:
 - Clash/profile/service/route/proxy/TUN mutation;
 - G4-C.
 
-R15 already defines the narrow normalization boundary, but execution remains blocked until explicit Owner authorization. Remote residual-state readback remains blocked until local ACL state is reconciled.
+R15 now has explicit Owner authorization for one bounded normalization attempt. Remote residual-state readback remains blocked until R15 is formally reviewed.
 
 ## 7. What the next Reviewer must read
 
@@ -493,7 +493,7 @@ Read in this order:
 
 1. `REVIEWER_HANDOFF.md` — canonical dashboard/current Gate.
 2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R15 chronology.
-3. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — exact current prepared Gate, awaiting Owner authorization.
+3. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — exact current authorized Gate.
 4. `docs/G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14.md` — completed R14 Gate.
 4. `docs/G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13.md` — completed R13 Gate.
 4. `EXECUTION_EVIDENCE.md` — append-only R5→R12 evidence and formal Reviewer decisions.
