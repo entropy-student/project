@@ -9766,3 +9766,46 @@ Reviewer reconciliation:
 - The stale wrapper's whole-repository HEAD equality guard was stricter than needed for this offline Gate and caused a harmless false stop after an unrelated Reviewer wording commit.
 - Future R10 Owner wrapper should safe-fast-forward canonical main and lock the Gate/runner/validator blobs plus current Handoff state, rather than requiring an exact whole-repository HEAD.
 - No R10 validator body ran and no live/provider/Secret/network action occurred.
+
+
+## Reviewer correction — R10 parser persistence / duplicate-tail repair — 2026-10-05
+
+Owner retry preflight stopped before validator execution:
+
+```text
+CHECKPOINT_STARTED_AT=2026-10-05T15:31:25.4183986+00:00
+HEAD_AFTER=d0b90b45cb0062b7616b2ede422e7c14153cddb4
+PROJECT_SOURCE_STATUS=PASS
+PREEXISTING_RESULTS_PRESERVED=YES
+GATE_BLOB=1b502116ed51c77f2798d92e11d9423599ea3bed
+RUNNER_BLOB=9cfac247da85e917e213c28172fb619a62329592
+VALIDATOR_BLOB=e4b08b0df3289af089fe5c191ddcc63bde76808b
+LOCKED_R10_SOURCE_IDENTITY=PASS
+CURRENT_GATE_ALIGNMENT=PASS
+RESULT=PARSER_PREFLIGHT_FAILED
+FAILED_FILE=g4b-persistent-three-role-live-runner.ps1
+R10_VALIDATOR_EXECUTED=NO
+LIVE_G4B_RUNNER_EXECUTED=NO
+BAIDU_LIVE_ACTION=NO
+SSH_OR_VPS_ACTION=NO
+SECRET_OR_DPAPI_ACCESS=NO
+NETWORK_MUTATION=NO
+```
+
+Reviewer source reconciliation:
+- Fresh read-back proved the prior R10 runner persistence was malformed: after the first complete script end, a duplicate tail beginning with a repeated `$matches=[regex]::Matches(...)` block and subsequent functions/main flow had been appended.
+- The malformed source caused the parser's unexpected-`}` error before any validator body could run.
+- Rebuilding from the last parser-validated R9 runner plus only the intended R10 listing-parser change removed all duplicated tail content.
+- A second persistence hazard was identified: the regex text ending in the character sequence `$'` was repeatedly truncated by the write path. To avoid that persistence boundary, the equivalent line-end condition now uses a .NET regex lookahead `(?=\r?\n|\z)` instead of a literal dollar end anchor.
+- Fresh read-back of the repaired runner confirms a normal single script body, no duplicate parser block, and no duplicate tail.
+- Validator source contract was aligned to the lookahead form; no other validator behavior was changed.
+
+Authoritative R10 identities are now:
+
+```text
+R10_GATE_BLOB=86fd201aa368ab1fd45b5e2f83e5c64f993ba3e2
+R10_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
+R10_VALIDATOR_BLOB=aa8a6db471b83de173c02ae2956719d1ebfdef4b
+```
+
+All earlier R10 runner/gate/validator identities are superseded for execution. R10 remains offline-only and no live retry is authorized.
