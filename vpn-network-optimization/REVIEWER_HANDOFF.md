@@ -105,22 +105,22 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_PIPELINE_OUTPUT_REPAIR_OFFLINE_VALIDATION_R6R2L_R8
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_OFFLINE_VALIDATION
+STATE=OWNER_ACTION_REQUIRED_LIVE_RETRY_R6R2L_R9
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_LIVE_CONSEQUENTIAL
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=RETURN_R6R2L_R7_ROOT_CAUSE_IDENTIFIED
-OBJECTIVE=Prove the Baidu process-output pipeline repair that suppresses Environment.Remove Boolean success-stream pollution in the live runner and validator regression suite.
-MAX_ENDPOINT_THIS_ROUND=Offline live-runner fixture validator only. No Baidu network/API command, no live runner, no SSH/VPS, no DPAPI/real Secret access, no recovery/profile/service/route/proxy/TUN mutation.
+PREVIOUS_RESULT=PASS_R6R2L_R8_BAIDU_PIPELINE_OUTPUT_REPAIR
+OBJECTIVE=Retry the bounded G4-B persistent three-role readiness run after formal acceptance of the Baidu success-stream pollution repair.
+MAX_ENDPOINT_THIS_ROUND=Exactly one live retry ending at PASS_CANDIDATE or bounded failure + STOP_AT_REVIEWER. No production-role activation, no auto switching, no G4-C.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Owner Windows host, canonical main, repaired live runner + fixture validator only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No live retry; no Baidu mutation or read action; no Secret access/output; no SSH/VPS; no G4-C.
-PREFLIGHT=R7 root cause identified in canonical Evidence; runner uses [void] Environment.Remove suppression; validator includes positive suppression contract and negative stream-pollution regression fixture.
-REQUIRED_EVIDENCE=G4B_FIXTURE_R6R2L_R8_BAIDU_ENV_REMOVE_OUTPUT_SUPPRESSED=PASS; G4B_FIXTURE_NEGATIVE_BAIDU_ENV_REMOVE_STREAM_POLLUTION=PASS; G4B_LIVE_RUNNER_FIXTURES=PASS; NEGATIVE_FIXTURES=PASS; SSH_OR_VPS_ACTION=NO; DPAPI_OR_REAL_SECRET_ACCESS=NO; EXTERNAL_REQUESTS=0; NETWORK_MUTATION=NO.
-ACCEPTANCE_CRITERIA=All required R8 and existing fixture markers PASS; validator parser PASS; no external/network/Secret action; STOP_AT_REVIEWER.
-ROLLBACK_STATUS_OR_PLAN=No runtime rollback required. This Gate is offline validation only.
-OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R8 pipeline Gate/runner/validator blobs, parser-preflight the validator, run only the offline fixture validator, return markers, stop.
+TARGET_AND_SCOPE=Current accepted SFO3 VPS + Owner Windows host; persistent REALITY service, encrypted recovery, and exactly one SELF-VPN-V1 profile without activation.
+APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains production/rollback; HY2 preserved; final system proxy OFF; final TUN OFF; no Secret values in GitHub/chat/logs; no broad service/firewall/route/profile cleanup; no blind replay.
+PREFLIGHT=R8 formal PASS; repaired runner differs from R5 by exactly one [void] Environment.Remove suppression line; positive and negative regression fixtures PASS; prior R5 consequential mutation never started; existing bounded live authorization remains granted.
+REQUIRED_EVIDENCE=Locked R9 Gate; runner blob 388714218a7a6f1671777488b0c581812f6cc9eb; validator blob eac0f9684b8f98b71c856e4d297da03f867b2d51; sanitized live phase/result markers; rollback journal retained if PASS_CANDIDATE; final proxy/TUN OFF.
+ACCEPTANCE_CRITERIA=R9 success contract PASS_CANDIDATE with all required preservation/final-state markers, or bounded failure fully reconciled.
+ROLLBACK_STATUS_OR_PLAN=Runner-owned bounded rollback journal; WireGuard remains production rollback. On failure or ambiguity, stop and reconcile before any retry.
+OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R9 Gate/runner/validator identities, collect local-only UID/SSH/passphrase inputs, invoke exactly one live retry, perform only the bounded P10 import/visibility acknowledgement if all conditions hold, then stop at Reviewer.
 REVIEWER_TO_EXECUTOR_RELAY=NONE.
-EXECUTOR_TO_REVIEWER_RELAY=Return offline validator markers only; no live retry.
+EXECUTOR_TO_REVIEWER_RELAY=Return sanitized non-secret live output only; no G4-C or closeout.
 ```
 
 G4-B0 is formally closed PASS. The G4-B offline live-runner package is Reviewer PASS through R5R1 backend repair. No persistent VPS/Windows mutation has occurred yet. Owner selected Baidu Netdisk as the second-failure-domain provider and live G4-B authorization remains granted. R6 returned only on an ACL-validator completeness gap; live G4-B remains blocked until R6R1 is Reviewer PASS and the later Owner-side authenticated config is proven.
@@ -245,6 +245,10 @@ G4B_BAIDU_READONLY_DIAGNOSTIC_R6R2L_R7_RESULT=RETURN_ROOT_CAUSE_IDENTIFIED
 G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_GATE_BLOB=7e78a3ff585133c52fdc309947ce79e4a0283a17
 G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_RUNNER_BLOB=388714218a7a6f1671777488b0c581812f6cc9eb
 G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_VALIDATOR_BLOB=eac0f9684b8f98b71c856e4d297da03f867b2d51
+G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8_RESULT=PASS
+G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_GATE_BLOB=b81b39da7468d39b6901a4bc9017d136d7527c24
+G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_RUNNER_BLOB=388714218a7a6f1671777488b0c581812f6cc9eb
+G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9_VALIDATOR_BLOB=eac0f9684b8f98b71c856e4d297da03f867b2d51
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
@@ -325,7 +329,7 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner runs only `G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8` offline validation and stops at Reviewer. No live retry is authorized.
+Owner runs exactly one `G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9` live retry and stops at Reviewer.
 
 ## OWNER_ACTION_REQUIRED
 
