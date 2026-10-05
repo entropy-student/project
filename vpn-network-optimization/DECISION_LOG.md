@@ -578,3 +578,12 @@ R6R2H-R3 is a narrow output/validator repair. The accepted adapter/parser, build
 The Owner checkpoint now emits the missing bounded pre-auth config-state marker using only `NOT_REACHED`, `ABSENT_PREAUTH`, or `PREEXISTING_EMPTY`. Assignment occurs only after the accepted pre-run provenance checks and is not overwritten after authentication. The complete eight-marker output contract is validator-enforced, while the accepted R6R2H-R2 core remains frozen.
 
 Next Gate: `G4B_BAIDU_OWNER_SECURE_AUTH_RUN_R6R2I`, an Owner-local one-shot secure authentication checkpoint.
+
+
+## 2026-10-05 — R6R2I returned before authentication on retained-build failure
+
+**Decision:** `RETURN_R6R2I_BUILD_VALIDATION_FAILED_BEFORE_AUTH`.
+
+The Owner build reached and passed adapter Go tests, then the frozen build helper returned generic `BUILD_VALIDATION_FAILED`; temporary build cleanup passed. The wrapper stopped before the authentication checkpoint, so no authentication material/provider action occurred.
+
+Do not retry. The next step is a metadata-only Owner diagnostic of the project runtime directories and retained binary state. The known `SeSecurityPrivilege` limitation is a candidate explanation for the retained-binary ACL stage but remains unproven until reconciliation.
