@@ -1,0 +1,204 @@
+/* K10B homepage-only skin. Homira H0/H1/H3/H5/H6/H10, Mini Craft's own content.
+ * Palette: warm white #fffdf8, ink #221d19, clay #8f5d3f, linen #f0e4d9.
+ * Existing Plus Jakarta Sans becomes display + UI; no new fonts or global settings.
+ * Signature: four readable process cards gently stack as the night unfolds.
+ */
+body.home.page-id-939.mc-homira-home {
+    --mc-paper: #fffdf8;
+    --mc-ink: #221d19;
+    --mc-clay: #8f5d3f;
+    --mc-linen: #f0e4d9;
+    background: var(--mc-paper);
+}
+body.home.page-id-939.mc-homira-home #main,
+body.home.page-id-939.mc-homira-home #primary,
+body.home.page-id-939.mc-homira-home #post-939,
+body.home.page-id-939.mc-homira-home #post-939 .entry-content {
+    padding: 0; margin: 0; max-width: none; width: 100%; box-shadow: none;
+}
+body.home.page-id-939.mc-homira-home .content-container.site-container {
+    max-width: none; padding-inline: 0;
+}
+body.home.page-id-939.mc-homira-home #masthead {
+    position: absolute; top: 22px; left: 24px; right: 24px; width: auto; z-index: 20;
+}
+body.home.page-id-939.mc-homira-home #masthead .site-header-row-container-inner {
+    background: rgba(255,253,248,.88); backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,253,248,.65); border-radius: 12px;
+}
+body.home.page-id-939.mc-homira-home #masthead .site-container {
+    max-width: none; padding-inline: 22px;
+}
+body.home.page-id-939.mc-homira-home #masthead .site-main-header-inner-wrap { min-height: 76px; }
+body.home.page-id-939.mc-homira-home #masthead .brand img { width: 175px; }
+body.home.page-id-939.mc-homira-home #masthead .main-navigation a,
+body.home.page-id-939.mc-homira-home #masthead .header-cart-button,
+body.home.page-id-939.mc-homira-home #masthead .menu-toggle-open { color: var(--mc-ink); }
+body.home.page-id-939.mc-homira-home #masthead .header-button {
+    color: var(--mc-paper); background: var(--mc-ink); border-radius: 6px; min-height: 46px;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-home {
+    font-family: "Plus Jakarta Sans", sans-serif; color: var(--mc-ink); margin: 0; padding: 0;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-home h1,
+body.home.page-id-939.mc-homira-home #post-939 .mc-home h2,
+body.home.page-id-939.mc-homira-home #post-939 .mc-home h3 {
+    font-family: "Plus Jakarta Sans", sans-serif; font-weight: 500;
+    margin: 0; letter-spacing: -.035em !important; text-wrap: balance;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-home p {
+    width: auto !important; max-width: 64ch !important;
+    font-size: 17px !important; line-height: 1.65 !important;
+    margin: 0; letter-spacing: normal !important;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-home .wp-block-group { margin-block: 0; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-home figure { margin: 0; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-home img { display: block; width: 100%; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-home .wp-block-buttons {
+    display: flex; flex-wrap: wrap; gap: 12px; margin: 0;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-home .wp-block-button__link {
+    display: inline-flex; align-items: center; justify-content: center; min-height: 50px;
+    padding: 14px 24px; border-radius: 6px; border: 1px solid transparent;
+    background: var(--mc-ink); color: var(--mc-paper); font-size: 15px; font-weight: 600;
+    text-decoration: none; transition: background .22s, color .22s, transform .22s;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-home .wp-block-button__link:hover {
+    background: #4b3426; transform: translateY(-2px);
+}
+body.home.page-id-939.mc-homira-home :focus-visible { outline: 3px solid #bb6b36; outline-offset: 5px; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-home ::selection { background: #d7b99b; color: var(--mc-ink); }
+body.home.page-id-939.mc-homira-home #post-939 .mc-hero {
+    position: relative; isolation: isolate; min-height: 800px; min-height: 100svh;
+    display: flex; align-items: flex-end; padding: 160px 6vw 72px; overflow: hidden;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field > figure {
+    position: absolute; inset: 0; z-index: -2; height: 100%; width: 100%;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field > figure img {
+    height: 100%; object-fit: cover; object-position: 65% center;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg,rgba(22,15,10,.12) 15%,rgba(22,15,10,.65) 100%);
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-hero-content {
+    width: 100%; display: grid; grid-template-columns: 1.45fr 1fr; gap: 5vw; align-items: end; color: var(--mc-paper);
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-hero h1 {
+    font-size: clamp(60px,7.9vw,110px); line-height: 1.03; color: inherit;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-hero-aside { display: grid; gap: 26px; padding-bottom: 5px; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-hero .wp-block-button__link,
+body.home.page-id-939.mc-homira-home #post-939 .mc-close .wp-block-button__link {
+    background: var(--mc-paper); color: var(--mc-ink);
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-gallery {
+    padding: 116px 6vw 120px;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-section-heading {
+    display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 46px;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-section-heading h2 { font-size: clamp(42px,4.6vw,66px); line-height: 1.08; max-width: 13ch !important; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-experience {
+    position: relative; isolation: isolate; overflow: hidden; border-radius: 12px; min-height: 500px;
+    display: flex; align-items: end; padding: 20px;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-experience:nth-child(even) { margin-top: 60px; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-experience figure { position: absolute; inset: 0; z-index: -1; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-experience img {
+    height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16,1,.3,1);
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-experience:hover img { transform: scale(1.05); }
+body.home.page-id-939.mc-homira-home #post-939 .mc-experience-label {
+    width: 100%; padding: 20px 22px; border-radius: 8px; background: rgba(255,253,248,.92);
+    backdrop-filter: blur(12px); display: flex; justify-content: space-between; gap: 20px; align-items: end;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-experience h3 { font-size: 25px; line-height: 1.2; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-home .mc-experience p { font-size: 13px !important; max-width: 14ch !important; text-align: right; line-height: 1.45 !important; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-home .mc-gallery-note { font-size: 14px !important; color: #5c4939; margin-top: 28px; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-process { background: var(--mc-linen); padding: 104px 6vw 120px; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-process > h2 {
+    text-align: center; font-size: clamp(42px,5vw,70px); line-height: 1.1; margin-bottom: 64px;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-process-stack { max-width: 1000px; margin-inline: auto; display: grid; gap: 28px; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-step {
+    padding: 48px; min-height: 265px; border-radius: 12px; background: var(--mc-clay); color: var(--mc-paper);
+    display: grid; grid-template-columns: 110px 1fr; gap: 30px; align-items: start;
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-step:nth-child(2) { background: #7d5138; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-step:nth-child(3) { background: #6b4632; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-step:nth-child(4) { background: #583c2d; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-home .mc-step-number { font-size: 40px !important; line-height: 1.2 !important; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-step-copy { display: grid; gap: 22px; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-step h3 { font-size: 38px; line-height: 1.1; color: inherit; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-brand-break {
+    position: relative; isolation: isolate; min-height: 760px; display: flex; align-items: end;
+    padding: 110px 6vw; overflow: hidden; color: var(--mc-paper);
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-brand-copy { max-width: 940px; display: grid; gap: 30px; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-brand-break h2 { color: inherit; font-size: clamp(50px,6.7vw,92px); line-height: 1.05; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-close {
+    position: relative; isolation: isolate; min-height: 690px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center; padding: 120px 6vw; color: var(--mc-paper);
+}
+body.home.page-id-939.mc-homira-home #post-939 .mc-close::after { background: rgba(22,15,10,.7); }
+body.home.page-id-939.mc-homira-home #post-939 .mc-close-copy { display: grid; justify-items: center; text-align: center; gap: 32px; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-close h2 { color: inherit; font-size: clamp(54px,7vw,98px); line-height: 1.07; max-width: 13ch !important; }
+body.home.page-id-939.mc-homira-home #post-939 .mc-close .mc-secondary .wp-block-button__link { background: transparent; border-color: var(--mc-paper); color: var(--mc-paper); }
+@media (min-width: 1025px) and (prefers-reduced-motion: no-preference) {
+    body.home.page-id-939.mc-homira-home #post-939 .mc-motion .mc-step { position: sticky; top: 110px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-motion .mc-step:nth-child(2) { top: 126px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-motion .mc-step:nth-child(3) { top: 142px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-motion .mc-step:nth-child(4) { top: 158px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-motion .mc-process-stack { padding-bottom: 75px; }
+}
+@keyframes mc-home-enter { from { transform: translateY(24px); filter: blur(3px); } to { transform: none; filter: none; } }
+body.home.page-id-939.mc-homira-home #post-939 .mc-motion .mc-arrived { animation: mc-home-enter .85s cubic-bezier(.16,1,.3,1) both; }
+@media (max-width: 1024px) {
+    body.home.page-id-939.mc-homira-home #masthead { top: 16px; left: 16px; right: 16px; }
+    body.home.page-id-939.mc-homira-home #masthead .site-main-header-inner-wrap { min-height: 68px; }
+    body.home.page-id-939.mc-homira-home #masthead .brand img { width: 150px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-hero { min-height: 880px; min-height: 100svh; padding: 150px 6vw 56px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-hero-content { grid-template-columns: 1fr; gap: 30px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-hero h1 { font-size: clamp(48px,9vw,82px) !important; line-height: 1.04 !important; max-width: 11ch !important; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-hero-aside { max-width: 480px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-experience { min-height: 430px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-experience-label { flex-direction: column; align-items: start; gap: 10px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-home .mc-experience p { max-width: none !important; text-align: left; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-step { grid-template-columns: 70px 1fr; padding: 36px; }
+}
+@media (max-width: 600px) {
+    body.home.page-id-939.mc-homira-home #masthead { top: 12px; left: 12px; right: 12px; }
+    body.home.page-id-939.mc-homira-home #masthead .site-container { padding-inline: 16px; }
+    body.home.page-id-939.mc-homira-home #masthead .brand img { width: 135px; }
+    body.home.page-id-939.mc-homira-home #masthead .menu-toggle-open { min-width: 44px; min-height: 44px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-hero { min-height: 780px; min-height: 100svh; padding: 140px 24px 48px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-photo-field > figure img { object-position: 61% center; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-home h2 { font-size: 38px !important; line-height: 1.12 !important; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-home h3 { font-size: 26px !important; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-home p { font-size: 16px !important; line-height: 1.65 !important; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-gallery { padding: 72px 24px 76px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-section-heading { flex-direction: column; align-items: start; gap: 26px; margin-bottom: 34px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-gallery-grid { grid-template-columns: 1fr; gap: 20px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-experience { min-height: 420px; padding: 14px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-experience:nth-child(even) { margin-top: 0; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-home .mc-experience p { font-size: 13px !important; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-process { padding: 76px 24px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-process > h2 { margin-bottom: 36px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-step { padding: 28px; grid-template-columns: 1fr; gap: 28px; min-height: 0; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-home .mc-step-number { font-size: 32px !important; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-step-copy { gap: 16px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-brand-break { min-height: 640px; padding: 80px 24px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-brand-break h2 { font-size: 48px !important; line-height: 1.06 !important; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-close { min-height: 600px; padding: 84px 24px; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-close h2 { font-size: 44px !important; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-close .wp-block-buttons { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    body.home.page-id-939.mc-homira-home #post-939 .mc-home *,
+    body.home.page-id-939.mc-homira-home #masthead * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-step { position: static !important; transform: none !important; }
+    body.home.page-id-939.mc-homira-home #post-939 .mc-experience:hover img { transform: none; }
+}
