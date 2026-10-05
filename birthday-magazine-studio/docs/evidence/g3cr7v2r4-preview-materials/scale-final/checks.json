@@ -1,0 +1,339 @@
+{
+  "phase": "scale-final",
+  "checks": [
+    {
+      "width": 2048,
+      "empty": {
+        "text": "",
+        "backgroundImage": "none"
+      },
+      "privacy": {
+        "blob": true,
+        "replaceRemove": true,
+        "nonGetAttempts": 0,
+        "externalImageDelta": 0
+      },
+      "photoTextOverlap": false,
+      "cta": {
+        "text": "Personalize your magazine →",
+        "path": "/make-your-magazine/",
+        "metadataOutside": true
+      },
+      "native": {
+        "product": "1113",
+        "checkoutPath": "/checkout/",
+        "addEndpoint": "add_to_cart"
+      },
+      "styles": [
+        "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791219841"
+      ],
+      "nextBack": true,
+      "minimumPhotosGuard": true,
+      "styleProfiles": [
+        {
+          "font": "\"BMS Bold Editorial\", sans-serif",
+          "weight": "800"
+        },
+        {
+          "font": "\"BMS Retro Serif\", serif",
+          "weight": "400"
+        },
+        {
+          "font": "\"BMS Gift Serif\", \"BMS Instrument\", serif",
+          "weight": "500"
+        }
+      ],
+      "twelvePhotos": true,
+      "threeMustUseLimit": true,
+      "sixAnswers": true,
+      "checkoutNotClicked": true
+    },
+    {
+      "width": 1440,
+      "empty": {
+        "text": "",
+        "backgroundImage": "none"
+      },
+      "privacy": {
+        "blob": true,
+        "replaceRemove": true,
+        "nonGetAttempts": 0,
+        "externalImageDelta": 0
+      },
+      "photoTextOverlap": false,
+      "cta": {
+        "text": "Personalize your magazine →",
+        "path": "/make-your-magazine/",
+        "metadataOutside": true
+      },
+      "native": {
+        "product": "1113",
+        "checkoutPath": "/checkout/",
+        "addEndpoint": "add_to_cart"
+      },
+      "styles": [
+        "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791219841"
+      ],
+      "nextBack": true,
+      "minimumPhotosGuard": true,
+      "styleProfiles": [
+        {
+          "font": "\"BMS Bold Editorial\", sans-serif",
+          "weight": "800"
+        },
+        {
+          "font": "\"BMS Retro Serif\", serif",
+          "weight": "400"
+        },
+        {
+          "font": "\"BMS Gift Serif\", \"BMS Instrument\", serif",
+          "weight": "500"
+        }
+      ],
+      "twelvePhotos": true,
+      "threeMustUseLimit": true,
+      "sixAnswers": true,
+      "checkoutNotClicked": true
+    },
+    {
+      "width": 375,
+      "empty": {
+        "text": "",
+        "backgroundImage": "none"
+      },
+      "privacy": {
+        "blob": true,
+        "replaceRemove": true,
+        "nonGetAttempts": 0,
+        "externalImageDelta": 0
+      },
+      "photoTextOverlap": false,
+      "cta": {
+        "text": "Personalize your magazine →",
+        "path": "/make-your-magazine/",
+        "metadataOutside": true
+      },
+      "native": {
+        "product": "1113",
+        "checkoutPath": "/checkout/",
+        "addEndpoint": "add_to_cart"
+      },
+      "styles": [
+        "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791219841"
+      ],
+      "nextBack": true,
+      "minimumPhotosGuard": true,
+      "styleProfiles": [
+        {
+          "font": "\"BMS Bold Editorial\", sans-serif",
+          "weight": "800"
+        },
+        {
+          "font": "\"BMS Retro Serif\", serif",
+          "weight": "400"
+        },
+        {
+          "font": "\"BMS Gift Serif\", \"BMS Instrument\", serif",
+          "weight": "500"
+        }
+      ],
+      "twelvePhotos": true,
+      "threeMustUseLimit": true,
+      "sixAnswers": true,
+      "checkoutNotClicked": true
+    }
+  ],
+  "network": [
+    {
+      "width": 2048,
+      "nonGetAttempts": 0,
+      "externalImageRequests": 0,
+      "failedResources": [],
+      "pageErrors": []
+    },
+    {
+      "width": 1440,
+      "nonGetAttempts": 0,
+      "externalImageRequests": 0,
+      "failedResources": [],
+      "pageErrors": []
+    },
+    {
+      "width": 375,
+      "nonGetAttempts": 0,
+      "externalImageRequests": 0,
+      "failedResources": [],
+      "pageErrors": []
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "home-empty-2048.png",
+      "bytes": 1930718,
+      "sha256": "452104f3e65000992e07587e8a5da8499dde88701d4453bd240ec557a90bb5f2"
+    },
+    {
+      "file": "home-how-2048.png",
+      "bytes": 560193,
+      "sha256": "06e9374354cb3a5857db5dfcd29106b8193311b17c3644d1cb227b2956cfcc19"
+    },
+    {
+      "file": "home-photo-2048.png",
+      "bytes": 2282552,
+      "sha256": "af56050ac421f823f18196c86541848124957db7f9d2b7737f41b9c355e31935"
+    },
+    {
+      "file": "intake-about-2048.png",
+      "bytes": 63718,
+      "sha256": "c91b74bd61b1ed4b875c03a6f38a5b68fd117679d33287d859264973a99bbd4d"
+    },
+    {
+      "file": "intake-photos-2048.png",
+      "bytes": 117210,
+      "sha256": "322b4541c03c0af6f426bf187b134759733607057d57c78dca547688643dd9d7"
+    },
+    {
+      "file": "intake-story-2048.png",
+      "bytes": 78382,
+      "sha256": "79113ed81c5041e25c8b69cef353c9c950c229b3cf7b68233f767cd3713af750"
+    },
+    {
+      "file": "intake-little-2048.png",
+      "bytes": 77940,
+      "sha256": "b48d2dbf5cf45df9a6ccbe5fc72105d324f85c78ba9f97900aa3f78ee208f296"
+    },
+    {
+      "file": "intake-review-2048.png",
+      "bytes": 101116,
+      "sha256": "0bd1483d96f968d90d10c097e82c5e53ceee9ffad00bc822f79319f01ab702fe"
+    },
+    {
+      "file": "home-empty-1440.png",
+      "bytes": 1104050,
+      "sha256": "8c9e291a4799f253b3b3be3767a963a50b38f9890e6b6c37aadcfc882891bbed"
+    },
+    {
+      "file": "home-how-1440.png",
+      "bytes": 548238,
+      "sha256": "a680a7bcc6fd7b8715b21996123797996a48501fe8d027183552838817863a4e"
+    },
+    {
+      "file": "home-photo-1440.png",
+      "bytes": 1261861,
+      "sha256": "b259355a95ce760b056ce6e15f2f1f9a2f1174cc3ce6de74525361526e2fdd30"
+    },
+    {
+      "file": "style-editorial-1440.png",
+      "bytes": 1266427,
+      "sha256": "219209be7a2ac97d2c2cfed0fa4dc496a91f599735e424cee248ebeee91f9a1e"
+    },
+    {
+      "file": "style-retro-1440.png",
+      "bytes": 1265677,
+      "sha256": "bebaf6a08b088a785e4070e7ea9f34b5834ce3c21a8337fe336f24e300117985"
+    },
+    {
+      "file": "style-romantic-1440.png",
+      "bytes": 1261839,
+      "sha256": "a2b6c0a94c895503aed7a94ca7b3ca851619f986813a78eaafdf38c95cb637ce"
+    },
+    {
+      "file": "homepage-full-1440.png",
+      "bytes": 6802749,
+      "sha256": "7db6af776d2affe829b85bb8c0b280906eaef963e287c5d8968a03f9a30e4592"
+    },
+    {
+      "file": "intake-about-1440.png",
+      "bytes": 58635,
+      "sha256": "4297f21666bd0b9f194ab8efa8c08f3e686f5a0c4b53bf93051edf78801f11fc"
+    },
+    {
+      "file": "intake-photos-1440.png",
+      "bytes": 114283,
+      "sha256": "b07a69683930792aecf5c0f89fedb84d500ab419895f75f464abde8c8444c86c"
+    },
+    {
+      "file": "intake-story-1440.png",
+      "bytes": 72796,
+      "sha256": "b7fb86a59b1205ebed88b0443a6730461d15da4bc50d23eba6ba70a7f4f58c9e"
+    },
+    {
+      "file": "intake-little-1440.png",
+      "bytes": 72367,
+      "sha256": "61d2dc346eaba3a83ba44c371c6dcc721c94d643c42e3b0169de98acabfd29cc"
+    },
+    {
+      "file": "intake-review-1440.png",
+      "bytes": 95232,
+      "sha256": "9516db5c63b7d15c0fb312daec09e1c791652aba57069608dd219a6f4249ffe2"
+    },
+    {
+      "file": "home-empty-375.png",
+      "bytes": 400219,
+      "sha256": "6fe86d29209de73277f154188a2b43a560c74e6916de6a2304b8872c6a21c112"
+    },
+    {
+      "file": "home-how-375.png",
+      "bytes": 271540,
+      "sha256": "c1da3889fb7d1d22d47315551333f21da5efe25e793763346ceaae813fe5d28f"
+    },
+    {
+      "file": "home-photo-375.png",
+      "bytes": 475626,
+      "sha256": "8b0291549e17e66b3ace6038311845c3a44244d6e82556d10c2cbd3f57f05722"
+    },
+    {
+      "file": "style-editorial-375.png",
+      "bytes": 483050,
+      "sha256": "d93c98435ec2043e56f02dc2ac5856249a032b04d2920da0cd24dcb414e0ea39"
+    },
+    {
+      "file": "style-retro-375.png",
+      "bytes": 480423,
+      "sha256": "e29466e2372e9ac00ab90de77beeddb0b8b61f9a9e98c28873bf659575488eb2"
+    },
+    {
+      "file": "style-romantic-375.png",
+      "bytes": 475632,
+      "sha256": "c792cdba59ba6904e2f67cac23332218c0c8dd2d89cccf2629e54c8401ec264e"
+    },
+    {
+      "file": "intake-about-375.png",
+      "bytes": 50837,
+      "sha256": "631c4ab193c39865510ffe6a09efd888e88425af4741d658ebc2fe895579cb35"
+    },
+    {
+      "file": "intake-photos-375.png",
+      "bytes": 93419,
+      "sha256": "df4926f9b1b27954f9c7405e8e95307f746e07e773b372b52babbf02e96a56c8"
+    },
+    {
+      "file": "intake-story-375.png",
+      "bytes": 60738,
+      "sha256": "ba82a6f603b4eb9d9ecdf08cf2e6242a7a1d706b67daddbf1b815d156e8448ce"
+    },
+    {
+      "file": "intake-little-375.png",
+      "bytes": 60636,
+      "sha256": "c1545fc060aaa924ebb7df4ca6bf50f6e95df8481f8508fa515631c8428438ed"
+    },
+    {
+      "file": "intake-review-375.png",
+      "bytes": 88558,
+      "sha256": "034d327f6a57eb0f0cbbecee766724ff2d4e97bbf5616b9c9595ff6f89031498"
+    },
+    {
+      "file": "home-no-js-1440.png",
+      "bytes": 1095831,
+      "sha256": "6ca82260bfc80891fd3411438affc76ceb08ea565a69725f2215f7c9a987293a"
+    },
+    {
+      "file": "home-no-js-375.png",
+      "bytes": 392873,
+      "sha256": "ff6451caa8c6e15ebf229abd276f4a7390ae2e3b311b9433ec1ccffdbdb4c8de"
+    }
+  ],
+  "modelCalls": 0,
+  "checkoutSubmissions": 0,
+  "paymentActions": 0
+}

@@ -1,0 +1,176 @@
+{
+  "baseline": "66b0cf0088d60e77469513ac6ed36ab7b8a9b5f5",
+  "container": "birthday-magazine-g3c-wordpress-1",
+  "before": {
+    "homeSHA256": "6d15fe64e152e3fce87bbab067eb04f2ab8828ea60954bb2898cf8b8bee28917",
+    "themeModsSHA256": "5d0a364f9ce5a62931432798c6684f2105802a54650f4bfe237e0826547d1f38",
+    "ownerEdit": true,
+    "gutenberg": true,
+    "orders": 1,
+    "jobs": 0,
+    "modelCalls": 0
+  },
+  "after": {
+    "homeSHA256": "6d15fe64e152e3fce87bbab067eb04f2ab8828ea60954bb2898cf8b8bee28917",
+    "themeModsSHA256": "5d0a364f9ce5a62931432798c6684f2105802a54650f4bfe237e0826547d1f38",
+    "ownerEdit": true,
+    "gutenberg": true,
+    "orders": 1,
+    "jobs": 0,
+    "modelCalls": 0
+  },
+  "identities": [
+    {
+      "file": "magazine-preview.css",
+      "sourceSHA256": "de5f6205b2f6c06b32d79ae2c9e1511d9cbbe19007bf644789d1696f9c4fc909",
+      "runtimeSHA256": "de5f6205b2f6c06b32d79ae2c9e1511d9cbbe19007bf644789d1696f9c4fc909",
+      "exact": true
+    },
+    {
+      "file": "home.css",
+      "sourceSHA256": "7ec9895f3e3489fa31b7deac2986dc2422b2ed2bb0501fc10560ed4c372a9c2b",
+      "runtimeSHA256": "7ec9895f3e3489fa31b7deac2986dc2422b2ed2bb0501fc10560ed4c372a9c2b",
+      "exact": true
+    },
+    {
+      "file": "birthday-magazine-poc.php",
+      "sourceSHA256": "db4ee150ccc1c369d094252d8319c5253942c8f57d1b889cfaf43ebd4e253f07",
+      "runtimeSHA256": "db4ee150ccc1c369d094252d8319c5253942c8f57d1b889cfaf43ebd4e253f07",
+      "exact": true
+    },
+    {
+      "file": "frontend-reproduction.css",
+      "sourceSHA256": "8ffe899aa0200f5b720c9203e3ef3298388b518c3832413406ee0f671a295471",
+      "runtimeSHA256": "8ffe899aa0200f5b720c9203e3ef3298388b518c3832413406ee0f671a295471",
+      "exact": true
+    },
+    {
+      "file": "assets/preview-materials-20261006/blank-cover.png",
+      "sourceSHA256": "1b230954d0f39eaf707c290bb60edcea2cf4097007a990d1cd9dbc806b40fa2d",
+      "runtimeSHA256": "1b230954d0f39eaf707c290bb60edcea2cf4097007a990d1cd9dbc806b40fa2d",
+      "exact": true
+    },
+    {
+      "file": "assets/preview-materials-20261006/blank-spread.png",
+      "sourceSHA256": "07d0c888107e3694524ca8cb1a05a5d06ba2ab74d072aae025cdbc901a56bdcd",
+      "runtimeSHA256": "07d0c888107e3694524ca8cb1a05a5d06ba2ab74d072aae025cdbc901a56bdcd",
+      "exact": true
+    },
+    {
+      "file": "assets/preview-materials-20261006/DMSerifDisplay-OFL.txt",
+      "sourceSHA256": "a3e5cdd67d4571dd0a24fcc968de0efde7ae97ef752daf0906e4767619dd7231",
+      "runtimeSHA256": "a3e5cdd67d4571dd0a24fcc968de0efde7ae97ef752daf0906e4767619dd7231",
+      "exact": true
+    },
+    {
+      "file": "assets/preview-materials-20261006/DMSerifDisplay.ttf",
+      "sourceSHA256": "8cc3643535edf039aa5d95440a8542735e9197e4f4b8d9303e980fefbf5ab616",
+      "runtimeSHA256": "8cc3643535edf039aa5d95440a8542735e9197e4f4b8d9303e980fefbf5ab616",
+      "exact": true
+    },
+    {
+      "file": "assets/preview-materials-20261006/Manrope-OFL.txt",
+      "sourceSHA256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+      "runtimeSHA256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+      "exact": true
+    },
+    {
+      "file": "assets/preview-materials-20261006/Manrope.ttf",
+      "sourceSHA256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+      "runtimeSHA256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+      "exact": true
+    }
+  ],
+  "frozen": [
+    {
+      "file": "preview.js",
+      "normalizedSHA256": "5dff548bd8541e18435f0dec598a3e8d91ba1b8f6578f345a774adb0c47794f9",
+      "unchanged": true
+    },
+    {
+      "file": "frontend-reproduction.js",
+      "normalizedSHA256": "a38503ea1708e72761f6fae4c5e0468e09498bedddf44cea1ea1f7a29cf16d4b",
+      "unchanged": true
+    },
+    {
+      "file": "frontend-reproduction.php",
+      "normalizedSHA256": "c6a3a0c95870df17bbde1899d3908d50b4ba435db9912e922edfcb783447c33a",
+      "unchanged": true
+    },
+    {
+      "file": "home-motion.js",
+      "normalizedSHA256": "bfafaf0959ad1c9e250db53e7c92e8c46aa63c088de4b74bbe2944eb68621df0",
+      "unchanged": true
+    },
+    {
+      "file": "studio.css",
+      "normalizedSHA256": "9cfc6405b18c109e331f162766e71eda70de227fd9092cdd6c2be178a10e9ebc",
+      "unchanged": true
+    }
+  ],
+  "verifiedBackups": [
+    {
+      "file": "magazine-preview.css",
+      "role": "source",
+      "sha256": "cc18f24f516084a4b04a756f61e25ea147d53acb7aa19ec5d826b3c1a7af34f0",
+      "mtime": 1791215210569.7922,
+      "verified": true
+    },
+    {
+      "file": "magazine-preview.css",
+      "role": "runtime",
+      "sha256": "cc18f24f516084a4b04a756f61e25ea147d53acb7aa19ec5d826b3c1a7af34f0",
+      "mtime": 1791215210570,
+      "verified": true
+    },
+    {
+      "file": "home.css",
+      "role": "source",
+      "sha256": "4c5388a97332a719766d0e5b19192b4abf5a5bdea1968aaac232f322b4534925",
+      "mtime": 1791132684021.907,
+      "verified": true
+    },
+    {
+      "file": "home.css",
+      "role": "runtime",
+      "sha256": "a6a8972612f5ac5915b266eaf21737655a5373cdb680665bc0d19283c642595f",
+      "mtime": 1791122939907.2317,
+      "verified": true
+    },
+    {
+      "file": "birthday-magazine-poc.php",
+      "role": "source",
+      "sha256": "6d03ccd1641b3be993374d8e66370c84286a1f3ed6416c1e45897c96ecf56fc0",
+      "mtime": 1791214684104.014,
+      "verified": true
+    },
+    {
+      "file": "birthday-magazine-poc.php",
+      "role": "runtime",
+      "sha256": "6d03ccd1641b3be993374d8e66370c84286a1f3ed6416c1e45897c96ecf56fc0",
+      "mtime": 1791214684104,
+      "verified": true
+    },
+    {
+      "file": "frontend-reproduction.css",
+      "role": "source",
+      "sha256": "0add833f903204803372312ff82b92b48d45598db54e90f30606ba107a584c6b",
+      "mtime": 1791196706927.249,
+      "verified": true
+    },
+    {
+      "file": "frontend-reproduction.css",
+      "role": "runtime",
+      "sha256": "0add833f903204803372312ff82b92b48d45598db54e90f30606ba107a584c6b",
+      "mtime": 1791196706927,
+      "verified": true
+    }
+  ],
+  "PHPOnlyHomeCSSVersionAndStyleLabel": true,
+  "homeAndThemeUnchanged": true,
+  "runtimeRetained": true,
+  "wooExcluded": true,
+  "ordersChanged": 0,
+  "paymentActions": 0,
+  "modelCalls": 0
+}

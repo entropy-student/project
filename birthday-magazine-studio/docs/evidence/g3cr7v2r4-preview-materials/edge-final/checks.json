@@ -1,0 +1,363 @@
+{
+  "phase": "edge-final",
+  "checks": [
+    {
+      "width": 2048,
+      "empty": {
+        "text": "",
+        "backgroundImage": "none"
+      },
+      "privacy": {
+        "blob": true,
+        "replaceRemove": true,
+        "nonGetAttempts": 0,
+        "externalImageDelta": 0
+      },
+      "photoTextOverlap": false,
+      "paperSafeFrame": {
+        "left": 0.5602272727272727,
+        "right": 0.8897727272727273,
+        "top": 0.14012738853503184,
+        "bottom": 0.5923566878980892
+      },
+      "cta": {
+        "text": "Personalize your magazine →",
+        "path": "/make-your-magazine/",
+        "metadataOutside": true
+      },
+      "native": {
+        "product": "1113",
+        "checkoutPath": "/checkout/",
+        "addEndpoint": "add_to_cart"
+      },
+      "styles": [
+        "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791219841"
+      ],
+      "nextBack": true,
+      "minimumPhotosGuard": true,
+      "styleProfiles": [
+        {
+          "font": "\"BMS Bold Editorial\", sans-serif",
+          "weight": "800"
+        },
+        {
+          "font": "\"BMS Retro Serif\", serif",
+          "weight": "400"
+        },
+        {
+          "font": "\"BMS Gift Serif\", \"BMS Instrument\", serif",
+          "weight": "500"
+        }
+      ],
+      "twelvePhotos": true,
+      "threeMustUseLimit": true,
+      "sixAnswers": true,
+      "checkoutNotClicked": true
+    },
+    {
+      "width": 1440,
+      "empty": {
+        "text": "",
+        "backgroundImage": "none"
+      },
+      "privacy": {
+        "blob": true,
+        "replaceRemove": true,
+        "nonGetAttempts": 0,
+        "externalImageDelta": 0
+      },
+      "photoTextOverlap": false,
+      "paperSafeFrame": {
+        "left": 0.5602716468590832,
+        "right": 0.8913412563667232,
+        "top": 0.14014251781472684,
+        "bottom": 0.5463182897862233
+      },
+      "cta": {
+        "text": "Personalize your magazine →",
+        "path": "/make-your-magazine/",
+        "metadataOutside": true
+      },
+      "native": {
+        "product": "1113",
+        "checkoutPath": "/checkout/",
+        "addEndpoint": "add_to_cart"
+      },
+      "styles": [
+        "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791219841"
+      ],
+      "nextBack": true,
+      "minimumPhotosGuard": true,
+      "styleProfiles": [
+        {
+          "font": "\"BMS Bold Editorial\", sans-serif",
+          "weight": "800"
+        },
+        {
+          "font": "\"BMS Retro Serif\", serif",
+          "weight": "400"
+        },
+        {
+          "font": "\"BMS Gift Serif\", \"BMS Instrument\", serif",
+          "weight": "500"
+        }
+      ],
+      "twelvePhotos": true,
+      "threeMustUseLimit": true,
+      "sixAnswers": true,
+      "checkoutNotClicked": true
+    },
+    {
+      "width": 375,
+      "empty": {
+        "text": "",
+        "backgroundImage": "none"
+      },
+      "privacy": {
+        "blob": true,
+        "replaceRemove": true,
+        "nonGetAttempts": 0,
+        "externalImageDelta": 0
+      },
+      "photoTextOverlap": false,
+      "paperSafeFrame": {
+        "left": 0.5510204081632653,
+        "right": 0.9125364431486881,
+        "top": 0.11836734693877551,
+        "bottom": 0.3673469387755102
+      },
+      "cta": {
+        "text": "Personalize your magazine →",
+        "path": "/make-your-magazine/",
+        "metadataOutside": true
+      },
+      "native": {
+        "product": "1113",
+        "checkoutPath": "/checkout/",
+        "addEndpoint": "add_to_cart"
+      },
+      "styles": [
+        "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791219841"
+      ],
+      "nextBack": true,
+      "minimumPhotosGuard": true,
+      "styleProfiles": [
+        {
+          "font": "\"BMS Bold Editorial\", sans-serif",
+          "weight": "800"
+        },
+        {
+          "font": "\"BMS Retro Serif\", serif",
+          "weight": "400"
+        },
+        {
+          "font": "\"BMS Gift Serif\", \"BMS Instrument\", serif",
+          "weight": "500"
+        }
+      ],
+      "twelvePhotos": true,
+      "threeMustUseLimit": true,
+      "sixAnswers": true,
+      "checkoutNotClicked": true
+    }
+  ],
+  "network": [
+    {
+      "width": 2048,
+      "nonGetAttempts": 0,
+      "externalImageRequests": 0,
+      "failedResources": [
+        {
+          "type": "image",
+          "origin": "http://127.0.0.1:8189",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "width": 1440,
+      "nonGetAttempts": 0,
+      "externalImageRequests": 0,
+      "failedResources": [],
+      "pageErrors": []
+    },
+    {
+      "width": 375,
+      "nonGetAttempts": 0,
+      "externalImageRequests": 0,
+      "failedResources": [],
+      "pageErrors": []
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "home-empty-2048.png",
+      "bytes": 1940197,
+      "sha256": "82043c2e49a78a024110f60ec8f4a85652507de7213187cbc3a5998336cc219c"
+    },
+    {
+      "file": "home-how-2048.png",
+      "bytes": 560193,
+      "sha256": "06e9374354cb3a5857db5dfcd29106b8193311b17c3644d1cb227b2956cfcc19"
+    },
+    {
+      "file": "home-photo-2048.png",
+      "bytes": 2269538,
+      "sha256": "48251461d752986c978bf7e8ffdc816b98fb7e5adc2c791cb4b3c4a7797e5b21"
+    },
+    {
+      "file": "intake-about-2048.png",
+      "bytes": 63718,
+      "sha256": "c91b74bd61b1ed4b875c03a6f38a5b68fd117679d33287d859264973a99bbd4d"
+    },
+    {
+      "file": "intake-photos-2048.png",
+      "bytes": 117210,
+      "sha256": "322b4541c03c0af6f426bf187b134759733607057d57c78dca547688643dd9d7"
+    },
+    {
+      "file": "intake-story-2048.png",
+      "bytes": 78382,
+      "sha256": "79113ed81c5041e25c8b69cef353c9c950c229b3cf7b68233f767cd3713af750"
+    },
+    {
+      "file": "intake-little-2048.png",
+      "bytes": 77940,
+      "sha256": "b48d2dbf5cf45df9a6ccbe5fc72105d324f85c78ba9f97900aa3f78ee208f296"
+    },
+    {
+      "file": "intake-review-2048.png",
+      "bytes": 101116,
+      "sha256": "0bd1483d96f968d90d10c097e82c5e53ceee9ffad00bc822f79319f01ab702fe"
+    },
+    {
+      "file": "home-empty-1440.png",
+      "bytes": 1107366,
+      "sha256": "0a84e4d0384652b3dae25ed1cd856d51cc6872ce141d2a7f85c006db5eef956a"
+    },
+    {
+      "file": "home-how-1440.png",
+      "bytes": 548238,
+      "sha256": "a680a7bcc6fd7b8715b21996123797996a48501fe8d027183552838817863a4e"
+    },
+    {
+      "file": "home-photo-1440.png",
+      "bytes": 1253854,
+      "sha256": "aac5b94b30025aea3c2b72340a726235ba9be630ac1c2a7c9532682873ab9a39"
+    },
+    {
+      "file": "style-editorial-1440.png",
+      "bytes": 1258550,
+      "sha256": "9ce39cebb619d6474a41c1fa391c9b1b52e099ece1340a9de6b107d1c49d4c64"
+    },
+    {
+      "file": "style-retro-1440.png",
+      "bytes": 1257439,
+      "sha256": "4730a121dc0144dd5d7af1b76eddc6eaa44dd5b195d7c9928f6573d882a28934"
+    },
+    {
+      "file": "style-romantic-1440.png",
+      "bytes": 1253873,
+      "sha256": "fad2539cac24c3317a18318e2a44f65e2a541191c2bbe1b175a2d3addbc4dea2"
+    },
+    {
+      "file": "homepage-full-1440.png",
+      "bytes": 6796448,
+      "sha256": "b9096ce7b30744f63dd2bc1de88cd985bb986fde0496a5f03ef0b51d0139bf89"
+    },
+    {
+      "file": "intake-about-1440.png",
+      "bytes": 58635,
+      "sha256": "4297f21666bd0b9f194ab8efa8c08f3e686f5a0c4b53bf93051edf78801f11fc"
+    },
+    {
+      "file": "intake-photos-1440.png",
+      "bytes": 114283,
+      "sha256": "b07a69683930792aecf5c0f89fedb84d500ab419895f75f464abde8c8444c86c"
+    },
+    {
+      "file": "intake-story-1440.png",
+      "bytes": 72796,
+      "sha256": "b7fb86a59b1205ebed88b0443a6730461d15da4bc50d23eba6ba70a7f4f58c9e"
+    },
+    {
+      "file": "intake-little-1440.png",
+      "bytes": 72367,
+      "sha256": "61d2dc346eaba3a83ba44c371c6dcc721c94d643c42e3b0169de98acabfd29cc"
+    },
+    {
+      "file": "intake-review-1440.png",
+      "bytes": 95232,
+      "sha256": "9516db5c63b7d15c0fb312daec09e1c791652aba57069608dd219a6f4249ffe2"
+    },
+    {
+      "file": "home-empty-375.png",
+      "bytes": 401575,
+      "sha256": "b68fb44684289482f407c51b864b7968b6b48f62ff2aae2fa24970d36f24dec7"
+    },
+    {
+      "file": "home-how-375.png",
+      "bytes": 271540,
+      "sha256": "c1da3889fb7d1d22d47315551333f21da5efe25e793763346ceaae813fe5d28f"
+    },
+    {
+      "file": "home-photo-375.png",
+      "bytes": 473486,
+      "sha256": "62c07c5bb836457095995541a5b19c93f26ea6fc379f839cef5e8b24db7f2060"
+    },
+    {
+      "file": "style-editorial-375.png",
+      "bytes": 480877,
+      "sha256": "ee3063f798533b3f0afc5377722a06aae152139b85ec3426349956e274674afc"
+    },
+    {
+      "file": "style-retro-375.png",
+      "bytes": 478077,
+      "sha256": "9bc566008308cda43e6659bb5fb9c4e1fa7bfd2ac4849707d87e912ddc3a1b84"
+    },
+    {
+      "file": "style-romantic-375.png",
+      "bytes": 473487,
+      "sha256": "2e0225fe905f881ea2ddf871bee64844a030c2ddd7ebb3e8e7db17269544d148"
+    },
+    {
+      "file": "intake-about-375.png",
+      "bytes": 50837,
+      "sha256": "631c4ab193c39865510ffe6a09efd888e88425af4741d658ebc2fe895579cb35"
+    },
+    {
+      "file": "intake-photos-375.png",
+      "bytes": 93419,
+      "sha256": "df4926f9b1b27954f9c7405e8e95307f746e07e773b372b52babbf02e96a56c8"
+    },
+    {
+      "file": "intake-story-375.png",
+      "bytes": 60738,
+      "sha256": "ba82a6f603b4eb9d9ecdf08cf2e6242a7a1d706b67daddbf1b815d156e8448ce"
+    },
+    {
+      "file": "intake-little-375.png",
+      "bytes": 60636,
+      "sha256": "c1545fc060aaa924ebb7df4ca6bf50f6e95df8481f8508fa515631c8428438ed"
+    },
+    {
+      "file": "intake-review-375.png",
+      "bytes": 88558,
+      "sha256": "034d327f6a57eb0f0cbbecee766724ff2d4e97bbf5616b9c9595ff6f89031498"
+    },
+    {
+      "file": "home-no-js-1440.png",
+      "bytes": 1099111,
+      "sha256": "39cd7e2001a91cf3529a3a2dd18801bf99b14e8ee9b5a50d3b8c00d5fe088975"
+    },
+    {
+      "file": "home-no-js-375.png",
+      "bytes": 394503,
+      "sha256": "ce6433cf842ee710bd26d70fc8778200bb7f5a0edb18ad7fa427af84d154945e"
+    }
+  ],
+  "modelCalls": 0,
+  "checkoutSubmissions": 0,
+  "paymentActions": 0
+}

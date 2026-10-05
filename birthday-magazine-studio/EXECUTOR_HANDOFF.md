@@ -917,3 +917,25 @@ Four source/runtime rollback hashes verified under ignored poc/g3c/.tmp/preview-
 Forbidden actions all0: Add-to-Cart, checkout submission, order/payment mutation, PayPal, real money, product model/provider, production deployment, Shared Infra, Docker lifecycle/global prune, G4 and PR merge. Advisory screenshot audit is not Reviewer acceptance. OWNER_VISUAL_FREEZE=PENDING. Owner transfer:NONE.
 
 Submission reconciliation (2026-10-06): implementation,25 PNGs and complete proof commit `3d0b6ca492b0c232960d85d642904faf1c8f80ff`. This following documentation/helper commit reconciles the handoff; the final submitted SHA is the current PR #64 head. No visual/runtime changes occurred after final confirmation. The helper derives the existing Preview mount from Docker inspect rather than depending on an older Gate's temporary manifest; the evidence packager can reuse the committed Owner reference.
+
+## Owner-approved physical Preview and frontend finish — 2026-10-06
+
+**Executor PASS_CANDIDATE; formal Reviewer / Owner visual freeze PENDING. STOP_AT_REVIEWER=YES.** This is a bounded continuation under direct Owner approval; no newly invented Gate.
+
+Main fetched before work: b13901de9f696aee73422a860f692b6f29ddc56c; refreshed before submission: b778974eb709370016e865988dd1181673eba5c0, no Birthday Magazine path changes. Baseline / actual remote PR64 / rollback:66b0cf0088d60e77469513ac6ed36ab7b8a9b5f5, freshly correlated via remote refs. Same remote branch codex/birthday-magazine-g3c-blocksy-wedding-productization, same PR64 open/unmerged. Final submitted SHA is the PR head.
+
+Owner explicitly excluded WooCommerce frontend work. Changes are homepage Preview paper assets/presets, How backing-panel removal and narrow intake readability/alignment only. Later live Owner feedback was incorporated: right desktop magazine pair enlarged, then right photo/frame moved inward/down so it no longer touches layered page edges. No actual page flipping.
+
+See [evidence README](docs/evidence/g3cr7v2r4-preview-materials/README.md), [final contact sheet](docs/evidence/g3cr7v2r4-preview-materials/final-contact-sheet.jpg), authoritative edge-final/, runtime-boundary.json / delivery.json.155 PNGs across before/inspection/confirmation/Owner-requested refinements, current33 final captures; one2200×4800 JPG,1,218,283bytes. Exact image/asset hashes and original prompts/licenses retained.
+
+Two design-time imagegen calls, both adopted unchanged blank transparent photographic paper; no person generation. Manrope4.505 + DM Serif Display5.200, unmodified self-hosted OFL1.1 licenses. Soft & Warm reuses Playfair1.203/Instrument Serif. Same DOM and frozen Preview JS: typography/case/weight, frame shapes and print rules differ visibly rather than color alone. These are illustrative style previews, not a production PDF redesign.
+
+Final2048/1440/375: no horizontal overflow/broken rendered image/page error/photo-copy collision; story text inside paper; right photo within normalized front-paper safe region. Local blob select/reselect/remove, name/age/styles, Next/Back, minimum-photo guard,12local photos/3must-use and6answers pass. No checkout button clicked. Static no-JS layout readable; live interactions require JS. One2048 local image request aborted during navigation; final rendered images all complete, not a missing-resource or upload claim.
+
+Ordinary cache-enabled Edge separately verifies3stylesheet/4asset response/source hashes,3loaded font profiles and Age/Birthday alignment. Source/runtime copies exact; Home858/Gutenberg and theme hashes unchanged; Owner edit/Gutenberg true; orders1/jobs0/product-model0 unchanged. Frozen source/runtime: preview.js,frontend-reproduction.js/.php,home-motion.js,studio.css. Strip only PHP display label + homepage home.css mtime enqueue to reproduce baseline. Woo/account/private workspace/payment/entitlement/P1–P12 logic unchanged; accepted evidence reused, no commerce replay.
+
+Scoped rollback remains ignored poc/g3c/.tmp/preview-materials-20261006/:8source/runtime hashes +mtimes verified. Temporary canonical checkout safely removed with exact repo/reparse guards on first Python cleanup path; no prior denial or cross-shell fallback. Current original generated-image outputs/rollback/scratch remain project-isolated/local. Pre-existing Owner ZIP excluded. No rollback applied.
+
+Exact candidate retained in unchanged running birthday-magazine-g3c-wordpress-1 at http://127.0.0.1:8189/#preview and /make-your-magazine/; admin /wp-admin/. No teardown. Advisory final screenshot review finds no P1/P2 blocker and is not formal Reviewer acceptance. Owner visual freeze remains pending.
+
+Free Preview model/server photo uploads/external photo POSTs0. Add-to-Cart/checkout submit/order mutation/PayPal/real money/product model/provider/production deployment/Shared Infra/Docker lifecycle/global prune/paid purchase/G4/merge0. Design image generation2, separately disclosed. Owner transfer:NONE.

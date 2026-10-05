@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) { exit; }
 add_action('wp_enqueue_scripts', function () {
  wp_enqueue_style('bms-studio', plugins_url('studio.css', __FILE__), [], '0.3.0');
  if (is_front_page()) {
-  wp_enqueue_style('bms-home', plugins_url('home.css', __FILE__), ['bms-studio'], '0.3.0');
+  wp_enqueue_style('bms-home', plugins_url('home.css', __FILE__), ['bms-studio'], filemtime(__DIR__ . '/home.css'));
   wp_enqueue_script('bms-home-motion', plugins_url('home-motion.js', __FILE__), [], '0.3.0', true);
  }
  $post = get_post();
@@ -68,7 +68,7 @@ add_shortcode('bms_preview', function ($atts) {
    <div class="bms-preview-details">
     <div class="bms-field"><label for="bms-name">Their name</label><input id="bms-name" data-bms-input="name" maxlength="32" value="Taylor" autocomplete="off"></div>
     <div class="bms-field"><label for="bms-age">Age</label><input id="bms-age" data-bms-input="age" type="number" min="1" max="120" value="30" inputmode="numeric"></div>
-    <div class="bms-field"><label for="bms-style">The mood</label><select id="bms-style" data-bms-input="style"><option value="romantic">Soft &amp; warm</option><option value="editorial">Bold editorial</option><option value="retro">Retro &amp; playful</option></select></div>
+    <div class="bms-field"><label for="bms-style">The style</label><select id="bms-style" data-bms-input="style"><option value="romantic">Soft &amp; warm</option><option value="editorial">Bold editorial</option><option value="retro">Retro &amp; playful</option></select></div>
    </div>
    <div class="bms-preview-upload">
     <label class="bms-upload" for="bms-photo"><span aria-hidden="true"><?php if (is_front_page()) : ?><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><circle cx="8" cy="8" r="1.3"/><path d="m3 17 5-5 4 4 4-6 5 7"/></svg><?php else : ?>+<?php endif; ?></span><div><strong data-bms-upload-label>Choose their photo</strong><small>JPG, PNG or WebP · from your device</small></div><input id="bms-photo" data-bms-file type="file" accept="image/jpeg,image/png,image/webp"></label>

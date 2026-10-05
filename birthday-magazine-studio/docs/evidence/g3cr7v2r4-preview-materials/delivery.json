@@ -1,0 +1,88 @@
+{
+  "browser": "154.0.4258.53",
+  "ordinaryCache": true,
+  "routing": false,
+  "cacheCleared": false,
+  "bypass": false,
+  "styles": [
+    {
+      "file": "home.css",
+      "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/home.css?ver=1791219841",
+      "status": 200,
+      "version": "1791219841",
+      "sourceSHA256": "7ec9895f3e3489fa31b7deac2986dc2422b2ed2bb0501fc10560ed4c372a9c2b",
+      "deliveredSHA256": "7ec9895f3e3489fa31b7deac2986dc2422b2ed2bb0501fc10560ed4c372a9c2b"
+    },
+    {
+      "file": "magazine-preview.css",
+      "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/magazine-preview.css?ver=1791221252",
+      "status": 200,
+      "version": "1791221252",
+      "sourceSHA256": "de5f6205b2f6c06b32d79ae2c9e1511d9cbbe19007bf644789d1696f9c4fc909",
+      "deliveredSHA256": "de5f6205b2f6c06b32d79ae2c9e1511d9cbbe19007bf644789d1696f9c4fc909"
+    },
+    {
+      "file": "frontend-reproduction.css",
+      "url": "http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/frontend-reproduction.css?ver=1791219841",
+      "status": 200,
+      "sourceSHA256": "8ffe899aa0200f5b720c9203e3ef3298388b518c3832413406ee0f671a295471",
+      "deliveredSHA256": "8ffe899aa0200f5b720c9203e3ef3298388b518c3832413406ee0f671a295471"
+    }
+  ],
+  "assets": [
+    {
+      "file": "blank-cover.png",
+      "status": 200,
+      "bytes": 1667413,
+      "sha256": "1b230954d0f39eaf707c290bb60edcea2cf4097007a990d1cd9dbc806b40fa2d"
+    },
+    {
+      "file": "blank-spread.png",
+      "status": 200,
+      "bytes": 1640089,
+      "sha256": "07d0c888107e3694524ca8cb1a05a5d06ba2ab74d072aae025cdbc901a56bdcd"
+    },
+    {
+      "file": "Manrope.ttf",
+      "status": 200,
+      "bytes": 164700,
+      "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
+    },
+    {
+      "file": "DMSerifDisplay.ttf",
+      "status": 200,
+      "bytes": 76580,
+      "sha256": "8cc3643535edf039aa5d95440a8542735e9197e4f4b8d9303e980fefbf5ab616"
+    }
+  ],
+  "presets": [
+    {
+      "style": "romantic",
+      "font": "\"BMS Gift Serif\", \"BMS Instrument\", serif",
+      "fontLoaded": true,
+      "weight": "500"
+    },
+    {
+      "style": "editorial",
+      "font": "\"BMS Bold Editorial\", sans-serif",
+      "fontLoaded": true,
+      "weight": "800"
+    },
+    {
+      "style": "retro",
+      "font": "\"BMS Retro Serif\", serif",
+      "fontLoaded": true,
+      "weight": "400"
+    }
+  ],
+  "paper": "url(\"http://127.0.0.1:8189/wp-content/plugins/bms-g3c-preview/assets/preview-materials-20261006/blank-cover.png\")",
+  "backing": {
+    "background": "rgba(0, 0, 0, 0)",
+    "padding": "0px"
+  },
+  "ageBirthdayAligned": true,
+  "focusVisible": true,
+  "wooExcluded": true,
+  "addToCart": 0,
+  "checkoutSubmissions": 0
+}

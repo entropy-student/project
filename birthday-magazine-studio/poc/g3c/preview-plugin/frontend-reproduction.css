@@ -1535,7 +1535,7 @@ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-nav > p { font-size: 14px; color: 
 body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review dt,
 body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review dd,
 body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review-answer { font-size: 16px; }
-body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review-answer p { line-height: 1.5; font-weight: 400; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review-answer p { font-size: 16px; line-height: 1.5; font-weight: 400; }
 body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-footnote { margin-top: 20px; font-size: 14px; font-weight: 400; }
 @media (min-width: 1800px) {
  body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-photo-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
@@ -1580,3 +1580,19 @@ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-footnote { margin-top: 20px; font-
 }
 
 body.bms-g3cr7-app-page .bms-g3cr7 [hidden] { display: none !important; }
+
+/* Intake finish: readable summary copy and aligned optional factual fields. */
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review-answer strong { font-size: 14px; line-height: 1.5; }
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-boundary strong,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-boundary p,
+body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-quick-facts summary { font-size: 14px; line-height: 1.5; }
+@media(min-width:761px) {
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-step[data-step="0"] .bms-g3cr7-fields > .bms-g3cr7-field > input { margin-top: auto; }
+}
+@media(max-width:760px) {
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review-answer p { font-size: 15px; }
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-review-answer strong,
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-boundary strong,
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-boundary p,
+ body.bms-g3cr7-app-page .bms-g3cr7 .bms-g3cr7-quick-facts summary { font-size: 13px; }
+}

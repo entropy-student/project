@@ -1,0 +1,60 @@
+{
+  "designImageGenerationCalls": 2,
+  "productModelCalls": 0,
+  "assets": [
+    {
+      "file": "blank-cover.png",
+      "bytes": 1667413,
+      "sha256": "1b230954d0f39eaf707c290bb60edcea2cf4097007a990d1cd9dbc806b40fa2d",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "blank-spread.png",
+      "bytes": 1640089,
+      "sha256": "07d0c888107e3694524ca8cb1a05a5d06ba2ab74d072aae025cdbc901a56bdcd",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "DMSerifDisplay-OFL.txt",
+      "bytes": 4605,
+      "sha256": "a3e5cdd67d4571dd0a24fcc968de0efde7ae97ef752daf0906e4767619dd7231"
+    },
+    {
+      "file": "DMSerifDisplay.ttf",
+      "bytes": 76580,
+      "sha256": "8cc3643535edf039aa5d95440a8542735e9197e4f4b8d9303e980fefbf5ab616",
+      "nameTableVersions": [
+        "Version 5.200; ttfautohint (v1.8.3)"
+      ]
+    },
+    {
+      "file": "Manrope-OFL.txt",
+      "bytes": 4387,
+      "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+    },
+    {
+      "file": "Manrope.ttf",
+      "bytes": 164700,
+      "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+      "nameTableVersions": [
+        "Version 4.505"
+      ]
+    }
+  ]
+}
