@@ -10130,3 +10130,32 @@ Additional upstream v4.0.2 source reconciliation:
 - Current sanitized R12 evidence does not identify which of the two files is the Administrators-owned file. No filename inference is accepted yet.
 
 Next: R13 local metadata-only basename-role classification to prove the exact two expected v4.0.2 files and their Owner roles without reading file contents or emitting filenames/paths/SIDs.
+
+
+## Reviewer preparation — R13 config file-role owner metadata classifier — 2026-10-05
+
+R13 implementation is prepared on canonical main but has not been executed.
+
+```text
+GATE_ID=G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13
+R13_GATE_BLOB=281d0a174365369d91fc761509a2eaf9723e0a50
+R13_SCRIPT_BLOB=f27148308fbe56517924c686fa99cbb0e28549a3
+R13_EXECUTED=NO
+```
+
+Reviewer static inspection confirms:
+- helper is local metadata-only and direct-child only;
+- it compares only the two upstream-v4.0.2 expected basenames internally;
+- no config content read/copy/hash/print operation exists;
+- no ACL/owner mutation exists;
+- no file mutation exists;
+- no Baidu provider/process/network, UID input, Secret/DPAPI, SSH/VPS, Clash/profile/service/route/proxy/TUN or G4-C action exists;
+- output is sanitized owner-role/presence/count classification only.
+
+R13 exists only to distinguish:
+- exact expected root + pcs_config.json + pcs_command_history.txt shape with config ADMIN/history OWNER;
+- all-Owner expected shape;
+- other owner combinations;
+- missing/unexpected/reparse shapes.
+
+No normalization or provider readback is authorized by R13.
