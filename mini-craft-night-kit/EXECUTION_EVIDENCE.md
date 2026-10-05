@@ -7530,3 +7530,203 @@ STOP_AT_REVIEWER=YES
 ```
 
 This Gate used accepted Reviewer truth for historical/runtime/recovery facts, fresh local metadata and read-only public checks, and fresh GitHub readback. Product 1224 was not re-read or changed. Deferred real-money validation remains `DEFERRED_NOT_PASS`. Governance Candidate remains NOT ACTIVE.
+
+## K10A — Homepage Visual Skin Discovery and Change Plan — 2026-10-05
+
+### AUTHORIZED_GATE
+
+`K10A_HOMEPAGE_VISUAL_SKIN_DISCOVERY_AND_CHANGE_PLAN`; authorized endpoint is production read-only discovery plus documentation/evidence. K10B is NOT authorized. K9 remains accepted; no K0–K9 replay.
+
+### PREFLIGHT_FACTS
+
+- Source: GitHub `entropy-student/project/main` at `d441ed0bc31285311345ed3b3e847258d7de05a2`; packet blob `02f93cb8f2b5e15c6ab251f047438c11393f6ddd`; newest Reviewer K10A block read.
+- Governance: canonical `entropy-student/spike.skill/main:vps-project-governance/SKILL.md` declares v0.2.7 ACTIVE_PROVISIONAL and points exclusively to VNEXT.md (blob `3917c88a7f36df7a53758b3879a92703d659ef9d`). Local v0.1.6 skill was bootstrap only. The old GOVERNANCE_HANDOFF path returns 404; no historical addendum was substituted for current rules.
+- Strict SSH identity reference: `C:\Users\34707\.ssh\xianyu_hostinger_codex_ed25519`; normal known_hosts: `C:\Users\34707\.ssh\known_hosts`. Existing private-key file/ACL metadata only inspected; public .pub fingerprint matches `SHA256:qFlRXelvzDEFpatrcX7T4dUBKPAC7YqFqNkyFZh5rYw`. All three canonical normal known_hosts pins match.
+- BatchMode=yes, IdentitiesOnly=yes, StrictHostKeyChecking=yes, explicit UserKnownHostsFile, ConnectionAttempts=1, ConnectTimeout=10, ForwardAgent=no used. No trust/key/SSH-config changes and no browser-terminal fallback.
+- DIRECT_READBACK: `hostname=srv1970241`, `id -un=ops`, UID=1000, sudo noninteractive available; initial identity probe native exit=0. Later selected OS read-back: Ubuntu 24.04.5 LTS, kernel 6.8.0-139-generic.
+- DIRECT_READBACK WordPress: `/mini-craft-night-kit-wordpress-1`, ID `6477a1fb1d8dae319f93fc54b81e10e29c093686f24972b2735366e11400ae4b`, immutable image `sha256:f5413918c7858c97bb7d2b65f68d3ed38a97472deba9eb58eb3e1ab1eb2c4beb`, running, restart=0; no configured container healthcheck.
+- DIRECT_READBACK MariaDB: `/mini-craft-night-kit-mariadb-1`, ID `42d2c920ea4164cd0a41d416ac673381aeb4985a154fe370f7f873518b134884`, image `sha256:b105d14ee1f4688769a57d432a9b52179e4d95f4495783ca8a41f3c783eab03c`, running/healthy, restart=0.
+- Canonical Compose: `/srv/apps/mini-craft-night-kit/compose.production.yaml`, 5122 bytes. WordPress wp-content directory bind: `/srv/data/mini-craft-night-kit/wp-content -> /var/www/html/wp-content`, RW=true. DB bind: `/srv/data/mini-craft-night-kit/mysql -> /var/lib/mysql`.
+- Only allowlisted public page/theme options and record metadata were queried through the existing WordPress database authentication path using SHORTINIT (no active plugin/theme bootstrap), SET TRANSACTION READ ONLY, START TRANSACTION, then ROLLBACK. No credential file was independently opened, printed, copied or hashed.
+
+### ACTUAL_CHANGES
+
+Only isolated Owner-workstation evidence screenshots and GitHub documentation/evidence artifacts were created. No local Mini Craft runtime was recreated. No production backup, page/content edit, CSS/JS/plugin/theme deployment or runtime mutation was performed. The unrelated shared Git cache and Birthday worktree were not used or modified.
+
+### OBJECTIVE_READBACK / HOMEPAGE_IMPLEMENTATION_MAP
+
+| Surface | Fresh production fact | Later K10B boundary |
+|---|---|---|
+| Front page | show_on_front=page; page_on_front=939; page_for_posts=20 | Keep routing/options unchanged; update only page 939 content |
+| Page 939 | Published Home, slug home; default page template; 33146 content bytes; modified GMT 2026-09-22 18:03:54 | Gutenberg/Kadence editable content, not a standalone static HTML/PHP homepage |
+| Page layout meta | _kad_post_title=hide; _kad_post_content_style=unboxed; _kad_post_vertical_padding=hide; _kad_post_feature=hide; _kad_post_layout=fullwidth; _wp_page_template=default | Already suitable; no metadata change needed in proposed minimum |
+| Theme | stylesheet=template=kadence; public assets version 1.5.2 | Do not edit vendor theme, activate child theme or change theme |
+| Theme entry | themes/kadence/page.php calls get_header() then kadence_single; header.php fires kadence_header | Same global native header rendered on all pages |
+| Page blocks | 8 rowlayout and 16 column block declarations, including nested rows; 13 advancedheading, 3 advancedbtn/singlebtn, 5 image, 4 details blocks | Not eight mandatory major sections: six rendered top-level rows; can reorganize Home only |
+| Shared Custom CSS | custom_css post 1041, post_name=kadence, 13634 UTF-8 bytes | Mixed global/product/cart/checkout/support-page rules plus 18 .page-id-939 occurrences; do NOT replace this entire record |
+| Global theme settings | theme_mods_kadence includes logo, primary/footer menus, header/navigation/cart/button and fonts | Frozen; no global Customizer change |
+| Current header | #masthead; primary menu term 19, footer menu term 20; main-left logo, main-right navigation/cart/button; CTA /product/mini-craft-night-kit/ | Preserve DOM, native responsive toggle, native cart/link semantics |
+| Active plugins | Kadence Blocks, Kadence Starter Templates, Resend, WooCommerce PayPal Payments, WooCommerce | Do not modify any existing plugin, payment settings or activation list |
+| Custom frontend code | No current mu-plugins directory; wp-content root only index.php observed | Proposed new isolated homepage presentation loader, not a business-plugin rewrite |
+
+Current body classes include `home page-id-939 page-template-default wp-theme-kadence content-width-fullwidth content-style-unboxed transparent-header mobile-transparent-header`.
+
+Six current visible major rows: Hero; benefits; “WHY MINI CRAFT?” editorial; shared-night structure; FAQ + shipping information; closing conversion. Native details elements implement homepage FAQ. Existing content/assets remain Mini Craft's own.
+
+CSS loading: Kadence global/header/content/Woo/footer files; global inline theme settings; block rowlayout/column/advancedbtn/icon styles; page-generated `kadence_blocks_css-inline-css` (41930 browser text characters); Custom CSS `wp-custom-css`; Google Fonts Plus Jakarta Sans + DM Serif Display. JS loading includes native Kadence navigation/shop-spinner and Woo native add-to-cart/woocommerce/cart-fragments/order-attribution; no dedicated homepage skin JS observed. Do not remove or replace these existing business scripts.
+
+Reusable project imagery: hero-5.png; mini-craft-making-together-editorial-1536x1024.webp; 01-couple-painting-kit.webp; 02-miniature-greenhouse-kit.webp; 03-mini-weaving-kit.webp; 04-mini-cross-stitch-kit.webp. These are existing illustrative assets, not proof that four new purchasable SKUs exist. The last image was initially lazy/unloaded in DOM, but direct public asset request returned HTTP 200/TLS=0; no missing-file conclusion is made.
+
+### HOMIRA_REFERENCE_MAP_VERIFIED
+
+DIRECT_BROWSER_OBSERVATION at `https://homiras.webflow.io/`; no template purchase, licensed-code export, proprietary image adoption or generation.
+
+| Module | Actual layout / image / typography / interaction observed | Mini Craft interpretation |
+|---|---|---|
+| H0 Header | Inset translucent rounded navigation over image; logo left, links/cart/solid CTA right. Phone: logo/cart/hamburger; dark dropdown revealed beneath bar, toggle changes to close icon. | Homepage-only glass/inset treatment on EXISTING Kadence header; retain Mini Craft destinations and native menu/cart controls |
+| H1 Hero | Full-height photographic background, cover crop/dark overlay; oversized left lower white sans headline with smaller right-lower paragraph on desktop. Lato is the live computed display family, not an assumed serif. Phone compresses title and stacks explanatory copy beneath it; image focal crop changes. | Mini Craft date-night image/copy/CTA; preserve existing product destination, no promise of commerce enablement |
+| H3 Selected Projects | White space; eyebrow/title and right CTA; two-column large photographic tiles, rounded edges, inset translucent labels/category/price. Hovered image scale differed from neighboring resting image; scroll-entry blur/fade clears. Phone becomes one column with CTA below heading. | Featured craft EXPERIENCES/illustrative gallery with replaceable project-owned images; link to existing Product/Shop, no new products/prices or false availability |
+| H5 Design Process | Centered heading; four warm-brown numbered cards; sticky layout and scroll-dependent transforms bring cards together into a layered stack. Different scroll points expose different numbered cards. Phone uses vertical/staggered cards rather than a rigid desktop four-column row. | Real Mini Craft process semantics using editable block content; modest progressive reveal/stack, readable static/reduced-motion fallback |
+| H6 Brand break | Large wide photographic pause with dark overlay, “LUXURY LIVES HERE” eyebrow and bold multiline white statement; scroll revelation. Phone has strong crop and smaller lower image-overlay statement; eyebrow was not visible in the observed phone viewport. | Mini Craft emotional “making together” brand pause; retain its own facts/images, not Homira interior-design copy |
+| H10 Closing CTA | Dark image-backed closing composition; very large centered headline, solid + outline CTA treatments, followed by footer content; reveal motion. Phone title is smaller, CTAs stack. | Homepage closing product/shop action; existing global footer stays unchanged, no copied footer or extra business destination |
+
+Screenshots cover H0/H1 jointly, H3 heading/gallery, H5 heading/stack/card states, H6 and H10; phone H0 expanded menu also captured. Initial default reference viewport was 1031px wide, supplementary H5 desktop was 1280px; phone reference was explicitly verified at 375×812. Production baseline was verified at 1280×800 and 375×812.
+
+Motion intent, not animation constants: photo-first hierarchy, coordinated enter/reveal, clipped image-scale hover, intentional numbered-card scroll rhythm, large quiet visual pauses, restrained CTA feedback. Future implementation should use CSS plus a small homepage-only IntersectionObserver/scroll enhancement where justified; no imported Webflow runtime, scroll hijacking or motion-dependent content visibility. Mobile and prefers-reduced-motion must remain complete without animation. Executor chooses timing/easing after visual QA; this Gate does not freeze arbitrary pixel/millisecond values.
+
+### HEADER_BOUNDARY
+
+Preferred minimum: KEEP the existing Kadence header and global theme_mods/menu records. A small frontend-only MU loader registers assets/body class only when `!is_admin() && is_front_page() && get_queried_object_id() === 939`; add `mc-homira-home`. CSS is rooted in `body.home.page-id-939.mc-homira-home` and targets #masthead/#main/#post-939 only as necessary. JS immediately exits unless the same root exists.
+
+H0 can therefore use native header markup with homepage-only glass spacing/color/image-overlay treatment; preserve existing aria/toggle/focus/cart controls. Do not hide the global header and inject an inaccessible duplicate, edit global menu term 19, alter Woo cart fragments, or restyle #masthead on non-home pages. Non-home asset absence and unchanged header computed styles/links are mandatory K10B negative tests.
+
+### PROPOSED_K10B_CHANGE_SURFACE
+
+Not executed; subject to Reviewer authorization.
+
+Minimum production write set:
+
+1. WordPress `posts.ID=939.post_content` only, through WordPress application-level page update. Recompose into homepage-scoped editable Gutenberg/Kadence groups/classes for H1/H3/H5/H6/H10, retaining accurate Mini Craft copy, FAQ/policy access and existing links. Existing layout meta/routing need not change.
+2. New `/srv/data/mini-craft-night-kit/wp-content/mu-plugins/mini-craft-home-skin.php`: tiny frontend enqueue/body-class gate only; no Woo/payment/order/filter/auth/business hooks.
+3. New `.../mu-plugins/mini-craft-home-skin/home.css`.
+4. New `.../mu-plugins/mini-craft-home-skin/home.js`.
+
+No global Custom CSS post 1041 rewrite; no theme_mods change, theme/vendor-plugin edit, new builder, active_plugins change, product/media-record change, image generation, other page edit, Compose/network/ingress change or Docker recreate. Use existing project images as replaceable placeholders. Existing homepage-only CSS may require narrowly scoped specificity adjustments IN THE NEW stylesheet, not deletion of mixed historical/global CSS. A future need outside this list returns for expanded review rather than silently widening K10B.
+
+Design structure: image-led full-height H1 underneath H0; an editorial featured-experience H3 gallery; a clearly numbered Mini Craft H5 process; H6 emotional full-image pause; H10 confident closing Shop/Product CTA. Preserve policy/FAQ information as compact supporting Home content or existing links; do not change FAQ/Shipping/Contact pages. Visual inspiration does not license changing product contents, fulfillment, availability or claims.
+
+### DEPLOYMENT / NEXT-START PERSISTENCE PLAN
+
+- Canonical source for the new presentation code lives under the GitHub Mini Craft project, then deploy only the three reviewed files into the durable wp-content DIRECTORY bind.
+- Do not put production edits in container-only /var/www/html storage or the decommissioned local runtime.
+- MU loader auto-loads without changing active_plugins; assets enqueue only on front page 939. Page content persists in MariaDB durable state. Folder-bind deployment exposes the same files on current and future recreated WordPress containers; no single-file bind/inode replacement ambiguity is introduced.
+- PHP syntax and JS/CSS static checks before upload; preflight exact file absence and page/option/hash seals before content write. Deployment/file transfer is K10B, not performed here.
+- No reload/restart/recreate expected for new files and application-level page content. CLI ini reports opcache.validate_timestamps=1, revalidate_freq=2; this is NOT represented as an independently proven Apache-SAPI cache setting. New file paths and versioned asset URLs avoid stale prior entries; verify actual served CSS/JS/content after deployment.
+- Use content-derived asset versions and normal reload. No blanket cache purge/Cloudflare write. No active full-page-cache plugin was observed in active_plugins; if later served content differs, diagnose cache read-only before requesting any extra cache mutation.
+- Owner retains Gutenberg content/image replacement/major-section reorder. Do not hardcode the full page into a giant PHP render function.
+
+### PROPOSED_K10B_ROLLBACK_BOUNDARY
+
+Before any future write:
+
+- Create one dated K10B recovery set INSIDE existing `/srv/backups/mini-craft-night-kit` (e.g. manifests for page/file metadata, database for any approved consistent DB snapshot). Nothing created in K10A.
+- Export exact page 939 public content + selected page layout/template metadata, content byte count/hash/status/modified timestamp; front-page and theme/menu/plugin/Custom CSS seals are guard assertions, not restore-write targets.
+- Preserve exact previous bytes/metadata for any pre-existing candidate files; currently the proposed MU namespace is absent, so seal absence. Snapshot only the affected wp-content code surface; no Secret dump/copy.
+- Hash/byte-check backups against sources and prove restoration/import compatibility before production content change. If a full DB snapshot is additionally required by Reviewer, use the established project-consistent protected backup mechanism; never publish that dump in GitHub.
+- Preferred bounded rollback: disable only the new homepage MU loader by moving its exact file out of auto-load into the approved project recovery area, restore only page 939 content via WordPress API, and restore any actually changed allowlisted page meta. Do NOT restore the entire production DB over newer orders/customers.
+- Triggers: any non-home visual/style/asset spill, menu/cart regression, changed product/business state, homepage render error, material unapproved write-surface expansion, or mismatch between host and served artifact.
+- Recheck original Home content/hash/appearance and all seven regression destinations, native menu/cart links, PHP errors and runtime identities. No payment, order or Checkout submission during rollback verification.
+- Fresh metadata shows backup root/database/manifests exist; `/srv/backups/mini-craft-night-kit/wp-content` is currently absent despite being a planned manifest subdirectory. This is reported, not repaired. The future Gate must explicitly approve its exact recovery layout; do not assume an existing filesystem backup just because a historical path was documented.
+
+K10A runtime rollback: NOT_APPLICABLE (no production write).
+
+### REGRESSION_BASELINE
+
+Anonymous normal-TLS GETs only: no cart add, Checkout submission, contact submission, login, order, payment or refund.
+
+| Page | Requested route | Fresh result / behavior |
+|---|---|---|
+| Home | / | 200; TLS verification=0; page 939 Hero/native menu/cart/product CTA |
+| Product | /product/mini-craft-night-kit/ | 200; TLS=0; post 223; no native add-to-cart button in anonymous DOM |
+| Cart | /cart/ | 200; TLS=0; “Your cart is currently empty”; cart badge 0 |
+| Checkout | /checkout/ | Redirects once to /cart/; final 200/TLS=0 in empty session |
+| FAQ | /faq/ | 200; TLS=0; page 1121, grouped FAQ/details |
+| Shipping & Returns | /shipping-returns/ | 200; TLS=0; page 9 |
+| Contact | /contact/ | 200; TLS=0; page 10; native Kadence form visible, NOT submitted |
+
+Additional read-only Shop and /wp-json/ checks: 200/TLS=0. curl native exits=0 for every public check. Populated Cart/Checkout behavior is NOT validated in K10A because creating cart state is prohibited; the redirect is an explicit limitation, not a successful checkout claim.
+
+At desktop 1280px: client/document widths=1265px (scrollbar accounted for), all seven pages no horizontal blocking overflow. At mobile 375px: client/document widths=360px; all seven no horizontal blocking overflow. Same nav destinations and native global header remain present where responsive layout exposes them.
+
+Initial and final direct content read-back identical:
+
+| Record | UTF-8 bytes | SHA-256 |
+|---|---:|---|
+| Home 939 | 33146 | 5cdc1f04c13754ad7b91ff3a8965646870a9ad75386858d60d67907f518c6478 |
+| Product 223 content | 3304 | 7a8dee19692b87d364f51cccbcc7edcafd779de12e17bfd750e453a3d423d446 |
+| Cart 6 | 61 | c06894e2c572da7a4ff7f62b013386ae7bc45d8e5482e7248569e32e3d370aee |
+| Checkout 7 | 65 | db19c8ebf50fe65ac3f5639a107dc396f5cf969f2a8b94318f7dde6784ec0a83 |
+| FAQ 1121 | 4485 | 098261a476c308e09e69a4fd916091a4801b54778807a6c7005ddd31d4b04cd3 |
+| Shipping 9 | 2152 | 08f412dc87a880026ba5ac6caad03860884d1209579e2e5125dcd06ef3263a02 |
+| Contact 10 | 7512 | 66b264f43c9cf5d0f66d1c4bb57a446fff0aab820827a8a6309993fef08f192d |
+| Custom CSS 1041 | 13634 | eba190bc6e2ba3e1ef9f80420693242c86ddb6ca3d98c2f2925ca3f4edf41643 |
+
+Final guards for K10B: theme_mods_kadence SHA-256 `b7d3653e9596c2385364b1bfd7f3d04afbf8cd45af947aa8f1c740aed65817d0`; active_plugins `d85c0a37b2cae36915ed2893c880a35027cb919b6ba63eb28a875800ef9c29eb`. These are non-Secret presentation/plugin-list records.
+
+Vendor theme files unchanged across reads: header.php `6c95db46647d1953d571bb3f349e57b2f399611f3e77497499a69c9247e5f6a3`; page.php `86da67d79ecde9e60c932bb1b1f81c5cec6f5b4cdb0faa2c5b62b45141bf7779`; functions.php `c5e8405af279ada23c99e006ea61582893aea0aa1044e944a438834fea671dcc`.
+
+Product 223 remains publish with empty _price and no public purchase button. Product 1224 remains publish, _price/_regular_price=1.00, virtual=yes, sold_individually=yes, exclude-from-search + exclude-from-catalog (known hidden Canary). Currency USD. No containment/payment Gate is reopened. WordPress networks stay database + spikersun-edge + spikersun-private; MariaDB stays only database/healthy; identities/restart counts unchanged.
+
+### ANOMALIES
+
+- One evidence-extraction script ended native SSH 127 due to Windows CRLF on the final shell line; its selected earlier output was non-sensitive. Later bounded scripts normalized CRLF via stdin and completed native 0. No target drift was inferred from this parser failure.
+- One optional version-extraction one-liner ended SSH 255 with PHP quoting parse error AFTER hostname/user/OS read-back. It performed no mutation; no transport repair or blind retry occurred. Public asset version strings are observational, not proof of a release upgrade.
+- Viewport overrides initially targeted the selected tab rather than the intended existing tab; dimensions were checked explicitly, screenshots relabeled/recaptured where needed. The committed mobile baseline is actually 375px, not an assumed resized viewport.
+- Some Homira entry animations initially showed blur/fade; settled frames and distinct process-card states were captured. Do not reproduce unreadable animation-dependent states as Mini Craft's static fallback.
+- Three inspected existing Kadence files have root:root mode 0777. Pre-existing permission metadata is disclosed for Reviewer; no chmod/security repair is included or authorized.
+- Missing planned wp-content backup subdirectory noted above. No backup contents, Secret, PPCP/PayPal logs or protected recovery contents were inspected.
+
+### EVIDENCE_ARTIFACTS_AND_PURPOSE
+
+Committed evidence folder: [evidence/k10a-20261005](evidence/k10a-20261005/).
+Local capture folder: `C:\Users\34707\Documents\ChatGPT\VPS基建\_project-artifacts\mini-craft-k10a-20261005`.
+
+- Homira H0/H1: homira-h0-h1-desktop.jpg, homira-h0-h1-mobile.jpg; mobile menu: homira-h0-mobile-menu.jpg.
+- H3: homira-h3-desktop.jpg, homira-h3-gallery-desktop.jpg, homira-h3-mobile.jpg.
+- H5: homira-h5-heading-desktop.jpg, homira-h5-desktop.jpg, homira-h5-stack-desktop.jpg, homira-h5-mobile.jpg.
+- H6: homira-h6-desktop.jpg, homira-h6-mobile.jpg.
+- H10: homira-h10-desktop.jpg, homira-h10-mobile.jpg.
+- Production: production-{home,product,cart,checkout,faq,shipping-returns,contact}-{desktop,mobile}.jpg (14 full-page baseline captures).
+- Screenshots are documentation reference only, not licensed production imagery or a claim that Homira's frontend code/assets were adopted.
+- [capture-manifest.json](evidence/k10a-20261005/capture-manifest.json) identifies exact screenshot byte sizes/SHA-256 for review.
+
+### EXECUTOR_RESULT / COUNTERS
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_K10A_HOMEPAGE_VISUAL_SKIN_DISCOVERY_AND_CHANGE_PLAN
+TARGET_HOST_EXECUTION_PROVEN=PASS
+PRODUCTION_TARGET=VPS_ONLY
+HOMIRA_REFERENCE_MAP_VERIFIED=H0+H1+H3+H5+H6+H10
+HOMEPAGE_IMPLEMENTATION_SURFACE=PAGE_939_KADENCE_BLOCKS_PLUS_GLOBAL_THEME_AND_CUSTOM_CSS
+HEADER_BOUNDARY=GLOBAL_NATIVE_HEADER_WITH_PROPOSED_HOME_ONLY_PRESENTATION_GATE
+HOME_CONTENT_UNCHANGED=YES
+NONHOME_CONTENT_BASELINE_UNCHANGED=YES
+VPS_FILE_WRITES=0
+WORDPRESS_CONTENT_WRITES=0
+DATABASE_WRITES=0
+DOCKER_MUTATIONS=0
+PRODUCT_MUTATIONS=0
+CART_MUTATIONS=0
+CHECKOUT_SUBMISSIONS=0
+PAYMENT_ACTIONS=0
+PROVIDER_ACTIONS=0
+REFUND_ACTIONS=0
+SHARED_INFRA_MUTATIONS=0
+SECRET_FILE_CONTENT_READS=0
+SECRET_VALUES_EMITTED=0
+SECRET_HASH_ACTIONS=0
+PRODUCTION_BACKUP_CREATION=0
+IMAGE_GENERATION=0
+K10B_ENTERED=NO
+STOP_AT_REVIEWER=YES
+```

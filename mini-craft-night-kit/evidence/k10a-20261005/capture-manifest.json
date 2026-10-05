@@ -1,0 +1,150 @@
+{
+  "gate": "K10A_HOMEPAGE_VISUAL_SKIN_DISCOVERY_AND_CHANGE_PLAN",
+  "captured_date": "2026-10-05",
+  "purpose": "Read-only reference and production regression evidence; not production imagery.",
+  "homira_url": "https://homiras.webflow.io/",
+  "production_origin": "https://minicraft.spikersun.com",
+  "viewport_note": "Homira primary desktop 1031x764; supplementary desktop 1280x800; mobile 375x812. Production desktop 1280x800; mobile 375x812. Checkout captures show the empty-cart redirect.",
+  "files": [
+    {
+      "file": "homira-h0-h1-desktop.jpg",
+      "bytes": 80226,
+      "sha256": "29540427e15d846718080ff47db85fdccfc247483b4fcb54a004c6125f45a023"
+    },
+    {
+      "file": "homira-h0-h1-mobile.jpg",
+      "bytes": 31088,
+      "sha256": "542d22c95db12a70f0e3f67d629929203222c96eb9d3ca3e3560934a1a720ec4"
+    },
+    {
+      "file": "homira-h0-mobile-menu.jpg",
+      "bytes": 34047,
+      "sha256": "112f2eda6c1cd3dc4f487b3cd8da93b38934f4b2bcbcecd7b783f442638b09c4"
+    },
+    {
+      "file": "homira-h10-desktop.jpg",
+      "bytes": 45865,
+      "sha256": "50953934cb3fc3bae84ac5f9b6378be077829c27e8a9d541a532757a312f1b8e"
+    },
+    {
+      "file": "homira-h10-mobile.jpg",
+      "bytes": 30033,
+      "sha256": "084349d8e7f37b0b597d9db358b809e3b03a21a332a365ca82bb5943bc849e3e"
+    },
+    {
+      "file": "homira-h3-desktop.jpg",
+      "bytes": 51398,
+      "sha256": "2a0cb04336a360b585cdd1fbe75a8c1b9456bd92ce3ea52c62b578cb193e1a25"
+    },
+    {
+      "file": "homira-h3-gallery-desktop.jpg",
+      "bytes": 100182,
+      "sha256": "9da349080752e2e0788de1bfe188f0223f529ec4164dc9ada54c482bad893251"
+    },
+    {
+      "file": "homira-h3-mobile.jpg",
+      "bytes": 38958,
+      "sha256": "56b32bc645d02b0fe593b0c421afbf26d24ef8bc5cd43ba382a6f4ba2d4ab63a"
+    },
+    {
+      "file": "homira-h5-desktop.jpg",
+      "bytes": 20880,
+      "sha256": "87c9d8d9de90a190af2bc5dbd4685224f1ec35e93478511ae21465c9218c9b21"
+    },
+    {
+      "file": "homira-h5-heading-desktop.jpg",
+      "bytes": 19624,
+      "sha256": "e3eb583936fa7b414a6f7899b2eec08af2b9cb41a57a682246657e75255c6737"
+    },
+    {
+      "file": "homira-h5-mobile.jpg",
+      "bytes": 30132,
+      "sha256": "1b198a3706eb457a9f66ac5ee38be076543a00f6aac67a45e8704fb9b7294c61"
+    },
+    {
+      "file": "homira-h5-stack-desktop.jpg",
+      "bytes": 23758,
+      "sha256": "9f6d106c8faa150d267682468a055efb2d575401ca0228ee77ed52c4c52b0f63"
+    },
+    {
+      "file": "homira-h6-desktop.jpg",
+      "bytes": 70881,
+      "sha256": "40544a7463c40b0d423c11205199e5c5924d1d0ccc50dc3014a329e7c1791a95"
+    },
+    {
+      "file": "homira-h6-mobile.jpg",
+      "bytes": 30615,
+      "sha256": "8449922dedbe3713f42d55cf0e8dc8784f23029d9703ff7cb542f446a2ebc508"
+    },
+    {
+      "file": "production-cart-desktop.jpg",
+      "bytes": 37610,
+      "sha256": "ac1c26b851912c661d824eaec7d3672838630a21300938767fe6d3dd818465bd"
+    },
+    {
+      "file": "production-cart-mobile.jpg",
+      "bytes": 21336,
+      "sha256": "770a10ef86ab2f16f75c8c8f433889954f49a9e6e2f53192933348a09d2d7ae6"
+    },
+    {
+      "file": "production-checkout-desktop.jpg",
+      "bytes": 37610,
+      "sha256": "ac1c26b851912c661d824eaec7d3672838630a21300938767fe6d3dd818465bd"
+    },
+    {
+      "file": "production-checkout-mobile.jpg",
+      "bytes": 21336,
+      "sha256": "770a10ef86ab2f16f75c8c8f433889954f49a9e6e2f53192933348a09d2d7ae6"
+    },
+    {
+      "file": "production-contact-desktop.jpg",
+      "bytes": 137396,
+      "sha256": "dcb558a3c4dbddeff4096bd6d25235a1b88b034b95adc33812b6ffb230761257"
+    },
+    {
+      "file": "production-contact-mobile.jpg",
+      "bytes": 111473,
+      "sha256": "d6762fb6e69b7e2a9a42500cc14e707462629bc3c89d6e1d4df464b58686720a"
+    },
+    {
+      "file": "production-faq-desktop.jpg",
+      "bytes": 83877,
+      "sha256": "27bde879b5e449e76f3c6623f90cd6b2742fb28d6a6367fdc0f89c5e77c031f7"
+    },
+    {
+      "file": "production-faq-mobile.jpg",
+      "bytes": 54298,
+      "sha256": "562297b45ed863ae04cc4a68eba24cf92259baddf0e05bb760720cf5979fef3e"
+    },
+    {
+      "file": "production-home-desktop.jpg",
+      "bytes": 386687,
+      "sha256": "17ab0d8fe04caf97b28e8dbf220bf048021e7e8d4cf4fbb9e6bdfdd1488af16d"
+    },
+    {
+      "file": "production-home-mobile.jpg",
+      "bytes": 222735,
+      "sha256": "245e9920386a1c357bd410b36e2f1bbd79cd72cbfd6f2b19e4d7a92c624393e8"
+    },
+    {
+      "file": "production-product-desktop.jpg",
+      "bytes": 256946,
+      "sha256": "8f42613810a5f3da1804f345dd6339eb1ff73095fa59f444ce4513593eb62aba"
+    },
+    {
+      "file": "production-product-mobile.jpg",
+      "bytes": 207001,
+      "sha256": "f0111dcd1e6fcc2660bad0ef412c7cf4ee969113d396ed68ec46c4df4f4b03cf"
+    },
+    {
+      "file": "production-shipping-returns-desktop.jpg",
+      "bytes": 127671,
+      "sha256": "8ab644cbbc47d87d1cb7442024b571d45d2b0b57a32c31153f10de148ea8c0f1"
+    },
+    {
+      "file": "production-shipping-returns-mobile.jpg",
+      "bytes": 101349,
+      "sha256": "d27fec756e2acc9c5fd9a681f64762a11c9c247de4d028f775c35a94245187df"
+    }
+  ]
+}

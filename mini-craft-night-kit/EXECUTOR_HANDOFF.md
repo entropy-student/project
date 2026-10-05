@@ -3446,3 +3446,54 @@ STOP_AT_REVIEWER=YES
 - Evidence commit: `4c4cb32697d90efe0f7918b69bba990bf0d5e3dd`.
 - Local/Docker/VPS/Product/payment/refund/active-Governance mutations: all 0.
 
+## Current Executor Handoff — K10A Read-only Homepage Discovery — 2026-10-05
+
+`CURRENT_GATE=K10A_HOMEPAGE_VISUAL_SKIN_DISCOVERY_AND_CHANGE_PLAN`
+`EXECUTOR_RESULT=PASS_CANDIDATE_K10A_HOMEPAGE_VISUAL_SKIN_DISCOVERY_AND_CHANGE_PLAN`
+`STOP_AT_REVIEWER=YES`
+
+Production was freshly proven over the canonical strict SSH contract as ops@srv1970241; ordinary local Mini Craft runtime remains decommissioned. WordPress running/restart 0, MariaDB healthy/restart 0. No production write or K10B action occurred.
+
+Home is published WordPress page 939: default template, fullwidth/unboxed/hidden title metadata, editable Kadence/Gutenberg body (33146 bytes; SHA-256 5cdc1f04c13754ad7b91ff3a8965646870a9ad75386858d60d67907f518c6478). Its content, Custom CSS record 1041, other page content and inspected vendor files were identical on initial/final read-back. Kadence header/settings/menus are GLOBAL, not Home-specific. The mixed Custom CSS record must not be globally replaced.
+
+Homira H0/H1/H3/H5/H6/H10 were directly viewed and captured at desktop and real 375px phone width, including mobile menu open/close, gallery image treatments and scroll-driven process stacking. Reference design observation informed the isolated-header and readable-motion plan; no proprietary assets/code were adopted, no images generated. Production Home/Product/Cart/Checkout/FAQ/Shipping/Contact baseline has 14 full-page desktop/mobile captures, plus normal TLS HTTP checks. Empty Checkout redirects to Cart; no cart was populated and no order/contact form was submitted.
+
+Proposed minimum K10B (NOT authorized/executed):
+- Update only page 939 post_content via WordPress application-level API, retaining editable groups, valid Mini Craft claims and existing Product/Shop/policy links.
+- New homepage-only MU presentation loader plus home.css/home.js under durable `/srv/data/mini-craft-night-kit/wp-content/mu-plugins/`.
+- Guard frontend assets/body class with is_front_page AND page ID 939; scope all selectors/JS to the homepage root. Retain native Kadence logo/navigation/toggle/cart/CTA and style only its homepage appearance.
+- Do not edit theme_mods, active_plugins, Custom CSS 1041, vendor theme/plugins, any other page/product, payment, Compose, network or ingress.
+- Folder-bind wp-content + DB page content provide restart/recreate persistence without Docker restart. Versioned assets and served-artifact readback are required; never rely on a container-only copy.
+- Prewrite K10B recovery set in the existing project backup namespace must seal/export page 939 content/layout and affected code bytes/absence. Bounded rollback disables only the new loader and restores only page 939; no full-DB restore over later business state.
+- K10B negative regressions: non-home new assets absent; global header/menu/cart semantics and visuals unchanged; all seven routes reproduce this baseline; native business scripts preserved.
+
+Review notes: planned wp-content backup subdirectory is absent (root/database/manifests exist); future backup layout must be explicit before K10B, not assumed from history. Existing inspected theme file modes are 0777; report only, no repair. Two non-mutating evidence-helper failures (CRLF final line, optional PHP one-liner quoting) are disclosed in Evidence, not treated as target drift. Responsive overrides were dimension-verified before baseline labeling.
+
+Detailed facts, hashes, exact change/rollback surface, limitations and all counters:
+[EXECUTION_EVIDENCE.md — K10A](EXECUTION_EVIDENCE.md#k10a--homepage-visual-skin-discovery-and-change-plan--2026-10-05).
+
+Reviewable screenshots/manifest: [evidence/k10a-20261005](evidence/k10a-20261005/).
+
+```text
+VPS_FILE_WRITES=0
+WORDPRESS_CONTENT_WRITES=0
+DATABASE_WRITES=0
+DOCKER_MUTATIONS=0
+PRODUCT_MUTATIONS=0
+CART_MUTATIONS=0
+CHECKOUT_SUBMISSIONS=0
+PAYMENT_ACTIONS=0
+PROVIDER_ACTIONS=0
+REFUND_ACTIONS=0
+SHARED_INFRA_MUTATIONS=0
+SECRET_FILE_CONTENT_READS=0
+SECRET_VALUES_EMITTED=0
+SECRET_HASH_ACTIONS=0
+IMAGE_GENERATION=0
+PRODUCTION_BACKUP_CREATION=0
+K10B_ENTERED=NO
+OWNER_RELAY=NONE
+STOP_AT_REVIEWER=YES
+```
+
+Reviewer should inspect the live-reference captures, page/header isolation proposal, empty-Checkout baseline limitation and concrete scoped backup/rollback plan before designing K10B. PASS_CANDIDATE is not formal PASS and does not grant implementation authority.
