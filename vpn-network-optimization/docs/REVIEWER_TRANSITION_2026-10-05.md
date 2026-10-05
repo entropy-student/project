@@ -40,12 +40,13 @@ MVP v1 seal                                 PENDING
 ## 3. Current canonical Reviewer state
 
 ```text
-STATE=REVIEWER_ACTION_REQUIRED_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
+STATE=OWNER_ACTION_REQUIRED_R17_AUTHORIZED_LOCKED_READY_FOR_ONE_SHOT
 GATE_ID=G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
 PREVIOUS_RESULT=RETURN_R6R2L_R16_STALE_PENDING_PRESENT
-R17_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
-R17_HELPER_BLOB=NOT_PREPARED
-R17_EXECUTION_AUTHORIZED=NO
+R17_GATE_BLOB=a2eb3f342b142c2e6009cf54adfda8542ab8bae8
+R17_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
+R17_VALIDATOR_BLOB=4911ea2c2b573ab016e0600e33742842a89ee4fa
+R17_EXECUTION_AUTHORIZED=YES
 ```
 
 Historical bounded live authorization remains recorded for the earlier G4-B live work, but it does **not** authorize R17 or any new live retry.
@@ -54,7 +55,7 @@ Current truth:
 - R15 local ACL normalization is formally PASS and its local rollback journal remains retained.
 - R16 read-only provider observation is complete: final=0, pending=1, unknown=0.
 - Remote production residual state is formally `STALE_PENDING_PRESENT`.
-- R17 Gate is prepared as reversible rename-to-quarantine, but no helper is locked and no provider mutation is authorized.
+- R17 Gate/helper/validator are locked; Owner explicitly authorized the exact current Gate; provider mutation has not yet executed.
 
 ## 4. R4 → R17 chronology
 
@@ -501,7 +502,7 @@ Interpretation:
 
 The one pending object is consistent with the R9 pending-upload chronology and is the only production-namespace project residual. R16 does not itself authorize mutation.
 
-### R17 — current stale-pending quarantine reconciliation — PREPARED / HELPER NOT YET LOCKED
+### R17 — current stale-pending quarantine reconciliation — LOCKED / OWNER AUTHORIZED / NOT YET EXECUTED
 
 Current Gate:
 
@@ -510,9 +511,10 @@ Current Gate:
 Locked Gate identity:
 
 ```text
-R17_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
-R17_HELPER_BLOB=NOT_PREPARED
-R17_EXECUTION_AUTHORIZED=NO
+R17_GATE_BLOB=a2eb3f342b142c2e6009cf54adfda8542ab8bae8
+R17_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
+R17_VALIDATOR_BLOB=4911ea2c2b573ab016e0600e33742842a89ee4fa
+R17_EXECUTION_AUTHORIZED=YES
 ```
 
 R17 deliberately uses reversible quarantine rather than permanent delete.
@@ -526,7 +528,7 @@ Planned future behavior after helper preparation, review and explicit Owner auth
 - on failed post-readback, rename quarantine back to the exact source and prove final=0/pending=1/unknown=0;
 - never permanently `rm` ciphertext in R17.
 
-R17 currently authorizes **preparation/review only**. The next Reviewer must prepare and lock the helper on `main` before asking the Owner for mutation authorization.
+R17 preparation/review is complete. Owner authorization is already granted. The next action is the single Owner-local checkpoint: safe-sync/lock/AST/offline-validator, then one Run attempt and mandatory Reviewer stop.
 
 ## 5. Current unresolved truth
 
@@ -543,8 +545,8 @@ Known:
 - system proxy/TUN remain outside current work.
 
 Unknown / unresolved:
-- R17 helper implementation has not yet been prepared/locked.
-- The stale pending has not been quarantined or deleted.
+- R17 helper/validator are prepared and locked; execution remains pending.
+- The stale pending has not yet been quarantined or deleted.
 - The provider production namespace is therefore not yet CLEAN.
 - No new live G4-B retry Gate may be issued yet.
 - Permanent disposition of quarantined ciphertext, if later desired, remains a separate decision.
@@ -565,7 +567,7 @@ Current R17 preparation does **not** authorize:
 - live G4-B;
 - G4-C.
 
-Next Reviewer may only prepare/review/lock the R17 helper on `main`. Owner authorization must be requested only after the helper is locked and reviewed.
+R17 helper/validator are already locked and Owner authorization is already granted. Only the exact one-shot Owner checkpoint may run next; live G4-B/G4-C remain blocked.
 
 ## 7. What the next Reviewer must read
 
@@ -573,7 +575,8 @@ Read in this order:
 
 1. `REVIEWER_HANDOFF.md` — canonical dashboard/current Gate.
 2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this complete R4→R17 chronology.
-3. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — exact current prepared Gate; helper not yet locked.
+3. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — exact current locked and Owner-authorized Gate; execution not yet performed.
+4. `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_PREPARATION_EVIDENCE.md` — locked helper/validator review evidence.
 4. `EXECUTION_EVIDENCE.md` — append-only execution proof through R16.
 5. `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — completed R16 Gate.
 6. `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — completed R15 Gate.
