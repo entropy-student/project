@@ -52,6 +52,13 @@ Historical project evidence also records that on this exact Windows host, an ele
 
 That history is relevant but does not identify the current mismatching item. R12 must observe the current metadata without guessing.
 
+## LOCKED SOURCE
+
+```text
+R12_SCRIPT= scripts/g4b-baidu-config-acl-owner-drift-r12.ps1
+R12_SCRIPT_BLOB=3ca2dcb3784d5d37d0fb3710eeac2b48cca1d3a9
+```
+
 ## OBJECTIVE
 
 Read only the local Baidu config subtree metadata and classify the exact scope of owner/ACL drift before any repair is considered.
@@ -119,6 +126,35 @@ This classification is observation only. It does not authorize ACL normalization
 - Clash/profile/service/route/proxy/TUN mutation;
 - live G4-B;
 - G4-C.
+
+## REQUIRED SANITIZED OUTPUT
+
+```text
+OWNER_RUNTIME=PASS
+ITEM_COUNT=<integer>
+FILE_COUNT=<integer>
+DIRECTORY_COUNT=<integer>
+ROOT_OWNER_MATCH=YES|NO
+EXACT_OWNER_ITEM_COUNT=<integer>
+ADMIN_OWNER_ITEM_COUNT=<integer>
+SYSTEM_OWNER_ITEM_COUNT=<integer>
+OTHER_OWNER_ITEM_COUNT=<integer>
+OWNER_MISMATCH_FILE_COUNT=<integer>
+OWNER_MISMATCH_DIRECTORY_COUNT=<integer>
+REPARSE_POINT_COUNT=<integer>
+DENY_ACE_ITEM_COUNT=<integer>
+UNAUTHORIZED_ALLOW_ITEM_COUNT=<integer>
+OWNER_READ_RIGHTS_MISSING_ITEM_COUNT=<integer>
+R12_ACL_STATE=<classification>
+CONFIG_CONTENT_READ=NO
+ACL_MUTATION=NO
+BAIDU_PROVIDER_ACTION=NO
+UID_INPUT=NO
+SECRET_OR_DPAPI_ACCESS=NO
+SSH_OR_VPS_ACTION=NO
+NETWORK_MUTATION=NO
+STOP_AT_REVIEWER=YES
+```
 
 ## MAX ENDPOINT
 
