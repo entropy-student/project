@@ -48,9 +48,8 @@ PREVIOUS_RESULT=RETURN_R6R2L_R9_BAIDU_REAL_LS_FORMAT_PARSER_DRIFT
 Locked identities:
 
 ```text
-R10_GATE_BLOB=ef148ca80a630e0e6faab748a8862b5bee0e6ea4
-R10_RUNNER_BLOB=2faf59ec5a1653a275b11504fe567d0fc871f94e
-R10_VALIDATOR_BLOB=26eff5e0ec7c3d12fc436fe1b7b32b27929ab8d3
+R11_GATE_BLOB=fb03dce9b974e93e1126d6ce457e2c86919e4acb
+R11_SCRIPT_BLOB=dff7b60e31e0fb28295a3309d5516ae23aee28cf
 ```
 
 Authorization state:
@@ -283,7 +282,8 @@ Read in this order:
 
 1. `REVIEWER_HANDOFF.md` — current canonical dashboard and active Gate.
 2. `docs/REVIEWER_TRANSITION_2026-10-05.md` — this transition snapshot and R4-R10 chronology.
-3. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — exact current offline repair Gate.
+3. `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — exact current read-only reconciliation Gate.
+4. `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 repair Gate and history.
 4. `EXECUTION_EVIDENCE.md` — relevant R5-R9 accepted/returned evidence; append-only.
 5. `DECISION_LOG.md` — durable architecture/Owner decisions.
 6. Only then read older transition/package docs as needed.
