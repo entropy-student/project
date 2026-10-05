@@ -25,7 +25,7 @@ R17_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
 R17_HELPER_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17.ps1
 R17_HELPER_BLOB=dfb90be851eaf2bdc8ed7f84ec2beeb2d591a3b0
 R17_VALIDATOR_PATH=scripts/g4b-baidu-stale-pending-quarantine-r17-validator.ps1
-R17_VALIDATOR_BLOB=4911ea2c2b573ab016e0600e33742842a89ee4fa
+R17_VALIDATOR_BLOB=45b660a1faf6ace3be5bff840c7daa2ff519aea3
 ```
 
 ## Reviewer source review
@@ -48,7 +48,7 @@ Fresh GitHub read-back confirms:
 - R15 rollback journal is not read, changed or deleted;
 - helper always emits `BAIDU_PERMANENT_DELETE=NO` and mandatory Reviewer stop markers.
 
-The offline validator is limited to AST/source-contract checks, synthetic listing fixtures and the helper's default non-mutating validation mode. It does not read Owner config or invoke a Provider action.
+The offline validator is limited to AST/source-contract checks, synthetic listing fixtures and the helper's default non-mutating validation mode. A Reviewer fresh-read caught and repaired one pre-execution StrictMode string-interpolation defect in the validator's literal Mode check; no Owner/provider action used the superseded validator blob. The current locked validator does not read Owner config or invoke a Provider action.
 
 ## Current execution state
 
