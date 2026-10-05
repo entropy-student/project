@@ -105,21 +105,21 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_OFFLINE_VALIDATION
+STATE=OWNER_ACTION_REQUIRED_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=20-30_MINUTES_PLUS_OWNER_UI_IMPORT
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_G4B_BAIDU_UID_UTF8_DECODE_RETRY_R6R2J_R3
+PREVIOUS_RESULT=PASS_G4B_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K
 OBJECTIVE=Make HY2-SFO3 PRIMARY, WG-BASELINE BACKUP_1, and REALITY-SFO3 BACKUP_2 durably ready without enabling production-wide takeover or entering G4-C.
-MAX_ENDPOINT_THIS_ROUND=Owner-local offline live-runner fixture validation only; no real who, provider action, live runner, VPS/network mutation, or G4-C.
+MAX_ENDPOINT_THIS_ROUND=Exactly one live G4-B run through PASS_CANDIDATE or bounded failure/rollback; encrypted recovery publication + persistent REALITY + one SELF-VPN-V1 profile only; no G4-C or automatic switching.
 MANDATORY_REVIEW_STOP=YES
 TARGET_AND_SCOPE=Current accepted SFO3 VPS + current Owner Windows host; persistent project-owned REALITY service and one persistent SELF-VPN-V1 Clash profile are the later live targets.
 APPLICABLE_CRITICAL_CONSTRAINTS=WireGuard remains rollback; HY2 preserved; no auto switching; final system proxy OFF; final TUN OFF; no G4-C workloads; no Secret values in GitHub/chat/logs; no broad firewall/route/service cleanup.
 PREFLIGHT=R5R1 PASS; R6 non-ACL boundaries accepted; R6R1 ACL repair PASS; locked checkpoint blob be1c55d4b7623041c338aca83194ec0b59a41dc8; accepted Owner shell PowerShell 7.6.6 + Administrator + HighIntegrity.
-REQUIRED_EVIDENCE=Live-runner fixture validator exit 0 with R6R2K_BAIDU_CLI_UTF8_DECODE_LOCKED PASS and existing offline contract PASS markers; no real actions.
-ACCEPTANCE_CRITERIA=Full G4-B live-runner fixture validator PASS with new UTF-8 decode assertion and no regression of existing recovery/auth/rollback boundaries.
-ROLLBACK_STATUS_OR_PLAN=Source-only live-runner decode repair; revert the runner/validator commits if offline validator fails. No production state changed.
-OWNER_ONLY_ACTIONS=Run R6R2K offline validator only. Do not invoke the live runner or provider.
-REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2K is a single Owner-local offline validator run.
+REQUIRED_EVIDENCE=Full bounded live-runner terminal markers, phase/failure code, rollback markers if any, recovery/service/profile persistence read-backs, final WG/HY2/proxy/TUN posture, rollback run ID/journal, Secret values emitted 0.
+ACCEPTANCE_CRITERIA=Runner PASS_CANDIDATE with encrypted recovery final promoted, persistent REALITY TCP443 ready, one imported/restart-persistent three-role profile, WG/HY2 preserved, proxy/TUN/auto switching OFF, unrelated drift NONE, rollback journal retained.
+ROLLBACK_STATUS_OR_PLAN=Runner performs bounded rollback on failure and retains reconciliation state when rollback cannot be proven. Never retry an ambiguous/unknown failure before Reviewer reconciliation.
+OWNER_ONLY_ACTIONS=Run R6R2L exactly once in PowerShell 7.6.6 Administrator/High Integrity; enter UID/SSH key path locally, portable passphrase hidden, perform only the P10 named-profile import without activation, then return bounded output.
+REVIEWER_TO_EXECUTOR_RELAY=NONE. R6R2L is a consequential Owner-local live run using the locked runner.
 EXECUTOR_TO_REVIEWER_RELAY=Standard short completion packet; detailed sanitized proof to EXECUTION_EVIDENCE.md; mandatory stop after G4-B.
 ```
 
@@ -209,6 +209,10 @@ G4B_BAIDU_STANDALONE_R6R2_READINESS=SUPERSEDED_REDUNDANT_POSTAUTH
 G4B_LIVE_RUNNER_BAIDU_UTF8_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
 G4B_LIVE_RUNNER_VALIDATOR_UTF8_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
 G4B_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K_GATE_BLOB=eee401fde4e9cdb1713166737731ace3e9c7e836
+G4B_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K_RESULT=PASS
+G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_GATE_BLOB=e787311742f5bae97b3bfb8745dcb7c3920ca8af
+G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_RUNNER_BLOB=cf7bc19b1accc142065416bc6c6525aa7b58fc23
+G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L_VALIDATOR_BLOB=5d560481b0367bc0ab783ddd51b4c27285dd5831
 G4B_BAIDU_SECURE_AUTH_COMBINED_REPAIR_R6R2H_R2_RESULT=RETURN_OUTPUT_CONTRACT_CONFIG_STATE_MISSING
 G4B_BAIDU_OWNER_OUTPUT_REPAIR_R6R2H_R3_GATE_BLOB=721466d2b4becbfb67c921de5b4ce936fa91aafe
 SECOND_FAILURE_DOMAIN_PROVIDER=BAIDU_NETDISK
@@ -287,11 +291,11 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Owner runs `G4B_LIVE_RUNNER_BAIDU_UTF8_VALIDATION_R6R2K`: fast-forward main, verify locked blobs, run the existing live-runner fixture validator, then stop at Reviewer.
+Owner executes `G4B_PERSISTENT_THREE_ROLE_LIVE_RUN_R6R2L` exactly once. Mandatory stop at Reviewer after PASS_CANDIDATE or any bounded failure/rollback result.
 
 ## OWNER_ACTION_REQUIRED
 
-Run only the R6R2K offline validator. Do not invoke the live G4-B runner yet.
+Run R6R2L exactly once. Keep Baidu UID, SSH private-key path and portable recovery passphrase local. At P10 import only the generated SELF-VPN-V1 profile without activating it, then enter the exact acknowledgement requested by the runner.
 
 ## EVIDENCE_POINTERS
 
