@@ -4,7 +4,40 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Console Output Compiled Verification R6R2I-D5-R1
+## Current execution status — G4-B Baidu UID Parser Repair R6R2J-R1
+
+```text
+GATE_ID=G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1
+GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
+PRE_GATE_HEAD=2f4d04ce0f46fa4dee0cde8ae52040c302d3ba87
+GATE_BLOB=33609b9eb0b51b6387e428acbf625a3f21d1441f
+UID_PARSER_SOURCE_ONLY_REPAIR=PASS
+CANONICAL_IDENTITY_LINE_IS_SOLE_UID_SOURCE=PASS
+GENERIC_UID_TEXT_WITH_ONE_CANONICAL_LINE=ACCEPTED
+DUPLICATE_CANONICAL_LINES=FAIL_CLOSED
+ZERO_CANONICAL_IDENTITY_LIKE_TEXT=FAIL_CLOSED
+ZERO_CANONICAL_NO_IDENTITY_TEXT=OWNER_ACTION_REQUIRED
+NONZERO_NATIVE_EXIT=NOT_READY
+UID_NUMERIC_BOUNDS=PASS
+UID_HELPER_TEMP_CLEANUP_REGRESSION=PASS
+POWERSHELL_AST_PARSE=PASS
+FULL_UID_VALIDATOR=PASS
+SECRET_SCAN=PASS
+REAL_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+PROVIDER_REQUESTS=0
+NETWORK_REQUESTS=0
+REVIEWER_HANDOFF_MODIFIED=NO
+RESULT=PASS_CANDIDATE_G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1
+STOP_AT_REVIEWER=YES
+```
+
+The parser now derives a candidate only from exactly one canonical stdout identity line. Generic `uid` mentions no longer invalidate that unique line; zero canonical lines still fail closed on identity-like text, while duplicate canonical lines remain ambiguous. The validator's entrypoint assertion was made CRLF-tolerant after its prior end-anchor rejected the existing CRLF source; no readiness/auth logic changed. Full validator fixtures used synthetic non-secret strings and its bounded temporary filesystem fixture only.
+
+Wait for Reviewer; no Owner action or follow-on Gate is authorized here.
+
+## Historical execution status — G4-B Baidu Console Output Compiled Verification R6R2I-D5-R1
 
 ```text
 GATE_ID=G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1

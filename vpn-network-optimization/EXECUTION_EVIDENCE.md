@@ -9022,3 +9022,42 @@ The Owner-local read-only UID checkpoint failed closed before exposing a UID. Te
 Reviewer source inspection found the discovery parser stricter than both the pinned BaiduPCS-Go v4.0.2 `who` output contract and the already accepted readiness parser: it rejects when generic `uid` mentions exceed one, even when there is exactly one canonical account-identity line. Real provider stdout/stderr was not requested or persisted.
 
 Next Gate `G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1` is offline-only and repairs this parser/validator mismatch before any Owner retry.
+
+
+## Executor result — G4B Baidu UID parser repair R6R2J-R1 — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1
+GATE_BLOB=33609b9eb0b51b6387e428acbf625a3f21d1441f
+PRE_GATE_HEAD=2f4d04ce0f46fa4dee0cde8ae52040c302d3ba87
+CHANGED_PATHS=scripts/g4b-baidu-uid-discovery-checkpoint.ps1;scripts/g4b-baidu-uid-discovery-validator.ps1;EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+ROOT_CAUSE=GENERIC_UID_MENTIONS_WERE_COUNTED_AS_MULTIPLE_IDENTITIES
+PARSER_IDENTITY_SOURCE=EXACTLY_ONE_CANONICAL_STDOUT_LINE
+UID_SINGLE_CANONICAL_LINE=PASS
+UID_SINGLE_CANONICAL_PLUS_GENERIC_UID_TEXT=PASS
+UID_DUPLICATE_CANONICAL_LINES_REJECTED=PASS
+UID_ZERO_CANONICAL_WITH_IDENTITY_LIKE_TEXT_REJECTED=PASS
+UID_ZERO_CANONICAL_NO_IDENTITY_TEXT_OWNER_ACTION=PASS
+UID_NONZERO_NATIVE_EXIT_NOT_READY=PASS
+UID_NUMERIC_BOUNDS=PASS
+UID_RAW_PROVIDER_OUTPUT_NOT_EMITTED=PASS
+UID_USERNAME_NOT_EMITTED=PASS
+UID_HELPER_TEMP_CLEANUP_REGRESSION=PASS
+UID_HELPER_READ_ONLY_WHO_ONLY=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+VALIDATOR_CRLF_ENTRYPOINT_ASSERTION=REPAIRED
+FULL_UID_VALIDATOR_EXIT=0
+REAL_AUTH_ACTIONS=0
+REAL_BAIDU_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+PROVIDER_REQUESTS=0
+NETWORK_REQUESTS=0
+LIVE_G4B_ACTIONS=0
+REVIEWER_HANDOFF_MODIFIED=NO
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_UID_PARSER_REPAIR_R6R2J_R1
+STOP_AT_REVIEWER=YES
+```
+
+The offline validator executed the production `Resolve-BaiduUidDiscoveryOutcome` function against synthetic data. Exactly one canonical `当前帐号 uid:` stdout line yields a candidate even when generic `uid` diagnostics also appear in stdout/stderr. Duplicate canonical lines remain fail-closed; with zero canonical lines, identity-like text is ambiguous and no identity-like text returns bounded Owner action required. Nonzero native exit never returns READY. The numeric regex bound remains the pre-existing 1–20 digit, nonzero decimal contract. Validator-only repair made the existing source entrypoint check tolerate CRLF line endings; full fixtures, R6R1 policy fixture, AST and Secret scan passed. The validator's temporary ACL/config/runtime fixtures were non-secret and cleaned. No real provider output, Owner config, credentials, network, VPS or service was accessed or changed.

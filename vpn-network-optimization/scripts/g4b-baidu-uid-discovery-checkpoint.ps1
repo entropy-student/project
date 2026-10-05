@@ -24,15 +24,14 @@ function Resolve-BaiduUidDiscoveryOutcome {
     $uidPattern = '(?m)^当前帐号 uid:\s*([0-9]+),'
     $uidMatches = [regex]::Matches($StdOut, $uidPattern)
     $uidMentionPattern = '(?i)\buid\b|帐号\s*uid'
-    $allUidMentions = [regex]::Matches($StdOut + [Environment]::NewLine + $StdErr, $uidMentionPattern)
-    if ($uidMatches.Count -gt 1 -or $allUidMentions.Count -gt 1 -or $StdErr -match $uidMentionPattern) {
-        return [pscustomobject]@{ State = 'FAIL_CLOSED'; Uid = $null; Code = 'BAIDU_UID_OUTPUT_AMBIGUOUS' }
-    }
     if ($ExitCode -ne 0) {
-        if ($uidMatches.Count -ne 0 -or $StdOut -match $uidMentionPattern) {
+        if ($uidMatches.Count -gt 0 -or ($StdOut + [Environment]::NewLine + $StdErr) -match $uidMentionPattern) {
             return [pscustomobject]@{ State = 'FAIL_CLOSED'; Uid = $null; Code = 'BAIDU_UID_OUTPUT_AMBIGUOUS' }
         }
         return [pscustomobject]@{ State = 'OWNER_ACTION_REQUIRED'; Uid = $null; Code = 'RETURN_OWNER_ACTION_REQUIRED' }
+    }
+    if ($uidMatches.Count -gt 1) {
+        return [pscustomobject]@{ State = 'FAIL_CLOSED'; Uid = $null; Code = 'BAIDU_UID_OUTPUT_AMBIGUOUS' }
     }
     if ($uidMatches.Count -eq 0) {
         if (($StdOut + [Environment]::NewLine + $StdErr) -match $uidMentionPattern) {
