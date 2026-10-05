@@ -8971,3 +8971,34 @@ STOP_AT_REVIEWER=YES
 ```
 
 The existing builder ran once with no parameters, so its retained-binary branch was not entered. It verified the pinned upstream commit/source blobs and official Go archive digest, passed Go tests, built the Windows/amd64 adapter, and ran its compiled invalid-argument process fixture. That fixture passed only when native exit was nonzero and captured stdout plus stderr contained no `BAIDU_COOKIE_AUTH` marker. The helper reported temporary build cleanup PASS. The full current PowerShell validator then exited 0 with `R6R2I_D5_FULL_R6R2H_R3_REGRESSION=PASS`, `SECRET_SCAN=PASS`, and the Owner-config/runtime access markers unchanged. Public network use was limited to the authorized pinned source/toolchain/module build inputs; no Provider request occurred. No source files or real Owner artifacts were modified.
+
+
+## Reviewer decision — R6R2I-D5-R1 compiled verification — 2026-10-05
+
+```text
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1
+REVIEWER_RESULT=PASS_G4B_BAIDU_CONSOLE_OUTPUT_VERIFY_R6R2I_D5_R1
+D5_FINAL_RESULT=PASS_G4B_BAIDU_OWNER_CONSOLE_OUTPUT_REPAIR_R6R2I_D5
+RESULT_COMMIT=cad85ef0d48d330163b4059f460667be2067df6e
+ADAPTER_SOURCE_BLOB=1bf6ec1f1ec98e84bd8db965802de2875104cce6
+ADAPTER_TEST_BLOB=a1d65216f061ee2d5ee32aefc046f01379d40ca2
+BUILD_HELPER_BLOB=61f9b283ee073cd00adac42676cc4e90c83fb1e1
+VALIDATOR_BLOB=b0949461460afd9ebe6ca491d45e9aa5d579f465
+GO_SOURCE_TESTS=PASS
+NATIVE_FAILURE_EXIT_FIXTURE=PASS
+CHILD_STATUS_OUTPUT_ABSENT=PASS
+FULL_VALIDATOR=PASS
+TEMP_BUILD_CLEANUP=PASS
+REAL_AUTH_ACTIONS=0
+OWNER_CONFIG_READ=NO
+OWNER_CONFIG_WRITE=NO
+OWNER_RUNTIME_BINARY_ACCESSED=NO
+PROVIDER_REQUESTS=0
+R6R2J_GATE_BLOB=fed3c0060b56f758fad48b612421e9f7b0ae4cf6
+```
+
+Reviewer confirms the R6R2I-D5-R1 Gate is fully satisfied. The compiled candidate passed Go source tests, Windows/amd64 build, the native invalid-argument process fixture with nonzero exit and no child `BAIDU_COOKIE_AUTH` status marker, temporary build cleanup, and the full D5 validator. The result commit changed only Evidence/Handoff records; frozen source identities remained unchanged.
+
+Therefore D5's console-output repair is formally closed PASS. The already authenticated Owner config remains accepted/frozen and no re-authentication is authorized.
+
+Next Gate `G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_R6R2J` reuses the previously reviewed read-only UID helper to establish the local expected account identity before any recovery-object provider mutation.
