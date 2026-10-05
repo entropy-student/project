@@ -1,6 +1,6 @@
 # Reviewer Transition — 2026-10-05 — G4-B R12 Local ACL Owner-Drift Inventory
 
-> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R12 chronology, current safety boundary and exact next unresolved question.
+> Durable handoff snapshot for the next Reviewer. `REVIEWER_HANDOFF.md` remains the canonical current-state authority. This file preserves the accepted R4→R13 chronology, current safety boundary and exact next unresolved question.
 
 ## 1. Project goal and frozen v1 role order
 
@@ -40,9 +40,9 @@ MVP v1 seal                                 PENDING
 ## 3. Current canonical Reviewer state
 
 ```text
-STATE=OWNER_ACTION_REQUIRED_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12
-GATE_ID=G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12
-PREVIOUS_RESULT=RETURN_R6R2L_R11_BAIDU_AUTH_CONFIG_OWNER_MISMATCH
+STATE=OWNER_ACTION_REQUIRED_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13
+GATE_ID=G4B_BAIDU_CONFIG_FILE_ROLE_OWNER_READONLY_R6R2L_R13
+PREVIOUS_RESULT=PASS_R6R2L_R12_METADATA_OBSERVATION_ADMIN_OWNER_ONE_FILE
 R12_GATE_BLOB=e8a41d4e6bcfe65f1d552c30134d6eb2c862aab2
 ```
 
