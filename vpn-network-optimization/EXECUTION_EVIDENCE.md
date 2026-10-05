@@ -8331,3 +8331,33 @@ The real Owner-host one-shot reconciliation matched the exact accepted failed-ru
 The prior R6R2D partial state is now fully reconciled. A new authentication attempt may therefore start from the accepted absent baseline using the repaired auth helper. Only one retry is authorized.
 
 Next Gate: `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RETRY_R6R2G`.
+
+
+## Owner result / Reviewer reconciliation — G4-B Baidu Interactive Auth Retry R6R2G — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_OWNER_INTERACTIVE_AUTH_RETRY_R6R2G
+RESULT=RETURN_R6R2G_DEPRECATED_INTERACTIVE_LOGIN_50052_EXIT_ZERO
+PROVIDER_VISIBLE_ERROR_CODE=50052
+PROVIDER_VISIBLE_MESSAGE_CLASS=SYSTEM_BUSY
+BAIDU_INTERACTIVE_AUTH=FAIL_CLOSED
+BAIDU_INTERACTIVE_AUTH_FAILURE_CODE=BAIDU_AUTH_WHO_OUTPUT_AMBIGUOUS
+BAIDU_INTERACTIVE_AUTH_CONFIG_STATE=NEW_INITIALIZED
+BAIDU_INTERACTIVE_AUTH_CONFIG_DISPOSITION=REMOVED_NEW_FILE_AND_DIRECTORY
+BAIDU_INTERACTIVE_AUTH_RUNTIME_CLEANUP=PASS
+BAIDU_INTERACTIVE_LOGIN_OUTPUT_CAPTURED=NO
+BAIDU_WHO_RAW_OUTPUT_EMITTED=NO
+BAIDU_UID_EMITTED=NO
+POST_FAILURE_CONFIG_RESIDUE=NONE
+RETRY_AUTHORIZED=NO
+```
+
+The repaired failure rollback worked: the new exact config file and root were removed and temporary runtime cleanup passed. No reconciliation Gate is required for this attempt.
+
+Reviewer re-read pinned v4.0.2 source and current upstream evidence. `RunLogin` returns an error for provider error 50052, and the login action returns that error. However top-level `main` invokes `app.Run(os.Args)` without converting the returned error into an OS process exit, so visible semantic failure can still produce native exit 0. The helper therefore proceeded to its read-only `who`, which correctly failed closed as ambiguous/no valid logged-in identity.
+
+More importantly, upstream documentation marks the username/password path long-unmaintained, and the repository maintainer explicitly stated on 2026-06-18 in issue #526 that username/password login is no longer maintained. The same 50052 pattern has multiple historical issues. This project retires that auth route rather than adding retries or output scraping.
+
+Upstream recommends Cookie login, but the stock `-cookies` / `-bduss` flags expose credential material in process arguments and remain incompatible with the project Secret boundary.
+
+Next Gate: `G4B_BAIDU_SECURE_COOKIE_AUTH_ADAPTER_R6R2H`, to build a pinned local no-echo Cookie adapter with no real credential/provider action.
