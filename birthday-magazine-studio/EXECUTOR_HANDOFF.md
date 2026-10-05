@@ -798,3 +798,15 @@ Read [`docs/evidence/g3cr7r1/README.md`](docs/evidence/g3cr7r1/README.md) first.
 **Reviewer decision requested:** decide whether the explicitly labeled local continuation/ready visual fixture plus real unpaid-order `is_paid()`/forged-query read-back meets the order-received evidence criterion. The only existing on-hold order belongs to a registered account; anonymous replay revealed no order details. No account credentials were read or used, and no order or payment was created. This limitation is documented without treating the visual fixture as a real order receipt.
 
 The runtime remains at `http://127.0.0.1:8189/`; no checkout submission, payment, Provider/model call, production deployment, Shared Infra action or merge occurred. Owner relay: `NONE`. Do not continue to the next Gate before Reviewer decision.
+
+## Current handoff — G3CR7R1R2 Remote Ref + Runtime Reconciliation (2026-10-05)
+
+**Executor result: PASS_CANDIDATE_G3CR7R1R2_REMOTE_REF_AND_RUNTIME_RECONCILIATION; STOP_AT_REVIEWER=YES.** Continue only on existing branch codex/birthday-magazine-g3c-blocksy-wedding-productization and PR #64; do not merge.
+
+Fresh PR source is c01843de4fb8bc139030930ad12caeb9ebbcd2b3 and descends from 88f45f5d. Six unreferenced old Reviewer prototypes are removed; independent frontend-reproduction source remains. Review the complete e71f943 baseline patch and source blobs in docs/evidence/g3cr7r1r2/README.md.
+
+Local runtime is healthy. The prior refusal was the host proxy intercepting loopback; direct local access returns HTTP 200. No restart or Docker lifecycle mutation was needed. Project DB, volumes and network were retained.
+
+The actual local synthetic guest order-received route showed PAYMENT PENDING and “Your magazine work has not started” at 1440px and 375px. paid=1/status=ready did not change Woo payment truth. The guarded synthetic fixture was deleted and counts returned to baseline. See both screenshots plus JSON read-back and hashes under docs/evidence/g3cr7r1r2/.
+
+No Checkout submission, payment/provider/model call, production deployment, Shared Infra change, G3C frontend-suite rerun, or PR merge occurred. Reviewer should inspect the source cleanup/diff, runtime diagnosis, actual order-received screenshots, forged-query negative, fixture cleanup, and counters. Rollback source anchor is 88f45f5d; accepted baseline is e71f943. No Owner action is required.

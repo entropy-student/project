@@ -1,0 +1,47 @@
+{
+  "gate": "G3CR7R1R2_REMOTE_REF_AND_RUNTIME_RECONCILIATION",
+  "remote_source": {
+    "branch": "codex/birthday-magazine-g3c-blocksy-wedding-productization",
+    "fresh_pr_ref": "c01843de4fb8bc139030930ad12caeb9ebbcd2b3",
+    "source_anchor": "88f45f5d712e3c1fe26f4386628703716b8eca3e",
+    "descends_from_anchor": true,
+    "plugin_tree_matches_anchor": true,
+    "birthday_magazine_poc_blob": "0aa39e131b7958652bc0cfbd4ada7a4621fb3caf",
+    "frontend_reproduction_php_blob": "db3af21e56fe2683b20020ae25cda0fbf6a8f5a1",
+    "frontend_reproduction_css_blob": "25290020736b4a523aa7233d2baa5d63004b83fa",
+    "frontend_reproduction_js_blob": "cbd67a7dc0897e87e4c7bc4edb017a1e138d2e6a",
+    "local_seed_blob": "8d41a23776c7270bc2833119d22186ff8d6cb89c"
+  },
+  "runtime_diagnosis": {
+    "project": "birthday-magazine-g3c",
+    "containers": [
+      "birthday-magazine-g3c-wordpress-1: running",
+      "birthday-magazine-g3c-db-1: running/healthy",
+      "birthday-magazine-g3c-mailpit-1: running/healthy",
+      "birthday-magazine-g3c-wpcli-1: exited 137 (4 days)"
+    ],
+    "host_binding": "127.0.0.1:8189 -> container 80",
+    "apache": "apache2 foreground active",
+    "container_http": "200 when using Host 127.0.0.1:8189",
+    "host_http": "200 via direct loopback with proxy bypass",
+    "initial_probe_fault": "system proxy intercepted loopback; no-proxy direct probe succeeds",
+    "database": "running and healthy; existing order/product data readable",
+    "wordpress": "7.1.1",
+    "woocommerce": "11.1.2",
+    "php": "8.3.33",
+    "product_1113": "USD 39.99; virtual",
+    "siteurl": "http://127.0.0.1:8189",
+    "runtime_restart": "NONE",
+    "docker_lifecycle_mutations": 0,
+    "project_volumes": [
+      "birthday-magazine-g3c_database",
+      "birthday-magazine-g3c_wordpress"
+    ],
+    "project_network": [
+      "birthday-magazine-g3c_private"
+    ],
+    "unrelated_docker_mutations": 0
+  },
+  "conclusion": "No restart or repair was needed; Apache, DB, direct host loopback and product data are healthy.",
+  "stop_at_reviewer": true
+}

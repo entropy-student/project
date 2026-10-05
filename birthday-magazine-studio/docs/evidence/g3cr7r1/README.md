@@ -98,3 +98,7 @@ SHARED_INFRA_MUTATIONS=0
 P1_P12_BUILD=0
 PR64_MERGE=0
 ```
+
+## G3CR7R1R2 source/runtime/order-received closure
+
+The stale-local-ref issue is resolved from freshly fetched PR #64 head c01843de4fb8bc139030930ad12caeb9ebbcd2b3, which descends from source anchor 88f45f5d. Six unreferenced Reviewer prototype files were removed; the independent frontend-reproduction.* source remains. See [the G3CR7R1R2 evidence](../g3cr7r1r2/README.md) for the complete baseline diff, layered runtime diagnosis, actual 1440/375 unpaid guest order-received screenshots, forged-query negative, fixture cleanup and counters. This supersedes the earlier limitation about lacking a positive real order-received continuation; historical text above is preserved.

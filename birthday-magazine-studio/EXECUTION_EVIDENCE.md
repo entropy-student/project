@@ -1138,3 +1138,17 @@ This is the Executor candidate for `G3CR7R1_EXECUTOR_REPRODUCTION`; prior eviden
 - Rollback returns target source to `e71f94377d341a88ba388f2c5da153e7cd6ee8b8`; the local runtime overlay backup and exact page IDs are recorded in the README. No rollback was applied.
 
 `REAL_PAYMENTS=0`; `CHECKOUT_SUBMISSIONS=0`; `PROVIDER_MUTATIONS=0`; `MODEL_OR_GENERATION_CALLS=0`; `PRODUCTION_DEPLOYMENTS=0`; `SHARED_INFRA_MUTATIONS=0`; `P1_P12_BUILD=0`; `PR64_MERGE=0`. **STOP_AT_REVIEWER=YES; Owner relay=NONE.**
+
+## Current execution append — G3CR7R1R2 Remote Ref + Runtime Reconciliation (2026-10-05)
+
+**Executor result: PASS_CANDIDATE_G3CR7R1R2_REMOTE_REF_AND_RUNTIME_RECONCILIATION; STOP_AT_REVIEWER=YES.** Existing PR #64 only; fresh remote PR head before this submission was c01843de4fb8bc139030930ad12caeb9ebbcd2b3, open/unmerged. Implementation source anchor 88f45f5d712e3c1fe26f4386628703716b8eca3; accepted baseline e71f94377d341a88ba388f2c5da153e7cd6ee8b8.
+
+Exactly six unreferenced Reviewer-reference prototype files were removed from the candidate plugin. Independent frontend-reproduction.php/css/js remain. Complete baseline-to-final plugin diff, blob preflight and absence read-back are in docs/evidence/g3cr7r1r2/README.md.
+
+Runtime diagnosis found no Docker/web fault: the G3C WordPress container, Apache, MariaDB and local port mapping are healthy. Host requests initially followed the machine’s local loopback proxy and failed; direct no-proxy access to 127.0.0.1:8189 and container-local HTTP with the site Host header return 200. No container restart, rebuild, pull, recreate, teardown, volume/network change or global cleanup occurred. Existing WordPress 7.1.1 / WooCommerce 11.1.2 / PHP 8.3.33 and virtual product 1113 at USD 39.99 remain intact.
+
+A synthetic guest pending order was created directly through WooCommerce application APIs, not Checkout. The actual Woo order-received route rendered the BMS woocommerce_thankyou PAYMENT PENDING continuation at 1440px and 375px. It showed “Your magazine work has not started.” A focused paid=1/status=ready query did not promote the unpaid order. The exact fixture was guarded, deleted, and read back absent; order count returned 2→1, paid count stayed 0, job tables/actions stayed 0. No frontend suite was rerun.
+
+Evidence: docs/evidence/g3cr7r1r2/README.md, runtime-diagnostics.json, order-received-readback.json, complete plugin-source-diff.patch and two actual screenshots. The first cleanup invocation safely refused a missing fixture ID without mutation; the subsequent exact-ID guarded delete succeeded.
+
+REAL_PAYMENTS=0; CHECKOUT_SUBMISSIONS=0; PROVIDER_MUTATIONS=0; MODEL_GENERATION_CALLS=0; PRODUCTION_DEPLOYMENTS=0; SHARED_INFRA_MUTATIONS=0; DOCKER_LIFECYCLE_MUTATIONS=0; PR64_MERGE=0; PREVIOUS_FRONTEND_SUITE_RERUN=0. Historical G3CR7R1 text above is preserved and superseded only for source-boundary/runtime/order-received evidence.
