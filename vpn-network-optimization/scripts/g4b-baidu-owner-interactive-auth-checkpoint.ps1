@@ -176,11 +176,16 @@ function Remove-BaiduInteractiveRuntime {
 }
 
 function Remove-NewEmptyBaiduConfigDirectory {
-    param([string]$ConfigDirectory, [Security.Principal.SecurityIdentifier]$OwnerSid)
+    param(
+        [string]$ConfigDirectory,
+        [Security.Principal.SecurityIdentifier]$OwnerSid,
+        [Parameter(Mandatory = $true)][bool]$RootCreatedThisRun
+    )
     $item = Get-OptionalInteractiveConfigItem -Path $ConfigDirectory
     if ($null -eq $item) { return 'ALREADY_ABSENT' }
     Assert-InteractiveAuth ($item.PSIsContainer -and (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -eq 0)) 'BAIDU_AUTH_CONFIG_ROLLBACK_PATH_INVALID'
     if (Test-DirectoryHasEntry -Path $ConfigDirectory) { return 'PRESERVED_NONEMPTY' }
+    if (-not $RootCreatedThisRun) { return 'PRESERVED_PREEXISTING_EMPTY' }
     Assert-OwnerOnlyAcl -Path $ConfigDirectory -OwnerSid $OwnerSid
     [IO.Directory]::Delete($ConfigDirectory, $false)
     Assert-InteractiveAuth ($null -eq (Get-OptionalInteractiveConfigItem -Path $ConfigDirectory)) 'BAIDU_AUTH_CONFIG_ROLLBACK_UNVERIFIED'
@@ -350,7 +355,7 @@ function Invoke-BaiduOwnerInteractiveAuthCheckpoint {
                 if ($script:interactiveAuthPostLoginShapeVerified) {
                     $script:interactiveAuthConfigDisposition = Remove-NewBaiduInteractiveConfigResidue -ConfigDirectory $script:interactiveAuthConfigPath -ProjectRoot $script:projectRoot -OwnerSid $ownerSid -RootCreatedThisRun $script:interactiveAuthConfigCreated
                 } else {
-                    $script:interactiveAuthConfigDisposition = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $script:interactiveAuthConfigPath -OwnerSid $ownerSid
+                    $script:interactiveAuthConfigDisposition = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $script:interactiveAuthConfigPath -OwnerSid $ownerSid -RootCreatedThisRun $script:interactiveAuthConfigCreated
                 }
             } catch {
                 $script:interactiveAuthConfigDisposition = 'ROLLBACK_FAILED'

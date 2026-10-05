@@ -4,56 +4,48 @@
 > Reviewer transition snapshot: `docs/REVIEWER_TRANSITION_2026-10-04.md`.  
 > Only the first status block below is current. Older blocks retain their historical headings for audit continuity and must not override the canonical Reviewer Handoff.
 
-## Current execution status — G4-B Baidu Partial Config Reconciliation + Auth ACL Repair R6R2E
+## Current execution status — G4-B Baidu Pre-existing Empty Rollback Repair R6R2E-R1
 
 ```text
-GATE_ID=G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E
-EXECUTOR_ROLE=OFFLINE_PARTIAL_CONFIG_RECONCILIATION_AND_AUTH_ACL_REPAIR
-PREVIOUS_RESULT=RETURN_G4B_BAIDU_INTERACTIVE_AUTH_R6R2D_PROVIDER_BUSY_OWNER_MISMATCH
+GATE_ID=G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1
+EXECUTOR_ROLE=OFFLINE_AUTH_ROLLBACK_PROVENANCE_REPAIR
+PREVIOUS_RESULT=RETURN_R6R2E_PREEXISTING_EMPTY_ROOT_DELETION_RISK
 GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
-PRE_GATE_HEAD=b9ed4db61babe9fb4f47106b2205c9df34964330
-LATEST_CANONICAL_SYNC=53e92dd7e4765f291948a6e91679a308dfd858e8
-R6R2E_GATE_BLOB=d1b3790ae7f670bc660a52dfd13d91d562213eca
-R6R2D_RESULT=RETURN_PROVIDER_BUSY_OWNER_MISMATCH
-PINNED_UPSTREAM_CONFIG=pcs_config.json
-R6R1_RESULT=PASS
-R6R1_CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
-R6R1_VALIDATOR_BLOB=891d2eaf981962d2241ec008877b8188dc150dee
-R6R2A_RESULT=PASS
-R6R2A_HELPER_BLOB=ba8502287989ecc8c9b003e67c729b6d82df378a
-R6R2A_VALIDATOR_BLOB=d750c0e665cdfe896e9728a499aad88c77454274
+PRE_GATE_HEAD=af53ff7434f22db6408d663111c396dab3c42f39
+R6R2E_R1_GATE_BLOB=a0262bdb70a8a72edcd6df32a5011964c236cd83
+ACCEPTED_AUTH_HELPER_BASE_BLOB=a5f6430627a1844c990ccd2712eb1f3ee74823ab
+FROZEN_RECONCILIATION_HELPER_BLOB=cb46e2bc949b4b71445de5c79180c5c05bd26c21
 SOURCE_PROVENANCE=PASS
 PRE_GATE_TRACKED_WORKTREE=CLEAN
 UNTRACKED_RESULTS_DIRECTORY=PRESERVED_NOT_STAGED
-PARTIAL_CONFIG_RECONCILIATION_HELPER_READY=YES
-INTERACTIVE_AUTH_HELPER_READY=YES
-R6R2E_RECONCILIATION_FIXTURES=PASS
-R6R2E_AUTH_REPAIR_FIXTURES=PASS
+PREEXISTING_EMPTY_ROOT_PRESERVED=YES
+NEW_EMPTY_ROOT_ROLLBACK=EXACT_ONLY
+EXACT_NEW_FILE_ROLLBACK=FILE_ONLY_IF_ROOT_PREEXISTED
+R6R2E_R1_PRODUCTION_ROLLBACK_FIXTURES=PASS
+R6R2E_FULL_REGRESSION=PASS
 R6R1_ACL_REGRESSION=PASS
 POWERSHELL_AST_PARSE=PASS
 SECRET_SCAN=PASS
-OWNER_RECONCILIATION_HELPER_EXECUTED=NO
-OWNER_LOGIN_HELPER_EXECUTED=NO
+OWNER_HELPERS_EXECUTED=NO
 REAL_LOGIN_ACTIONS=0
 REAL_BAIDU_ACTIONS=0
 OWNER_CONFIG_READ=NO
-OWNER_UID_ACCESSED_OR_EMITTED=NO
+OWNER_UID_ACCESSED=NO
 NETWORK_REQUESTS=0
 SECRET_OR_DPAPI_ACCESSED=NO
 VPS_OR_SSH_ACTIONS=0
 LIVE_G4B_ACTIONS=0
 REAL_WHO_INVOKED=NO
-BAIDU_CLI_INVOKED=NO
 SECRET_VALUES_EMITTED=0
 SECRET_VALUES_COMMITTED=0
 REVIEWER_HANDOFF_MODIFIED=NO
-EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_PARTIAL_CONFIG_RECONCILIATION_REPAIR_R6R2E
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1
 STOP_AT_REVIEWER=YES
 ```
 
-### Executor task — current R6R2E
+### Executor task — current R6R2E-R1
 
-R6R2E adds a metadata-only exact-residue rollback checkpoint and updates the existing no-argument auth helper to inspect the pinned v4.0.2 config shape before normalizing the exact file/root with the accepted Owner-only ACL constructor, then applying the strict R6R1 predicate. Unknown non-empty config remains rejected before login; nonzero login never reaches `who`; only a newly-created exact config may be rolled back, and a pre-existing empty root is preserved. Offline reconciliation/auth fixtures and full R6/R6R1 regression passed. No real Owner config, login, `who`, credential, network, VPS, or provider action was accessed. An NTFS-backed auth fixture ACL-write attempt returned a local `SeSecurityPrivilege` error; its temporary fixture was cleaned. Normalization is therefore validated by the shared synthetic shape/target plan and in-memory accepted ACL constructor, not by mutating a real Owner ACL. Stop at Reviewer.
+R6R2E-R1 fixes only empty-root rollback provenance. `Remove-NewEmptyBaiduConfigDirectory` now requires `RootCreatedThisRun`: it preserves a pre-existing empty root with `PRESERVED_PREEXISTING_EMPTY`, while a verified empty root created by this run remains eligible for exact non-recursive deletion. The finally path passes the recorded creation flag. Exact newly-created `pcs_config.json` rollback behavior remains unchanged. Production rollback functions passed synthetic filesystem fixtures; complete R6/R6R1 regression, AST, and Secret scan passed. No real Owner config, login, `who`, credential, DPAPI, provider, VPS, or network state was accessed. Stop at Reviewer.
 
 ## Current execution status — Owner Secret Prepare repair verification R2R3V2
 

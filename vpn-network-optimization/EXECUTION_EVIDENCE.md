@@ -8239,3 +8239,49 @@ Accepted/frozen findings from R6R2E: the reconciliation helper is metadata-only;
 Blocking defect: failure rollback lost root provenance for the no-file / pre-shape-verification branch. `Initialize-BaiduInteractiveConfigDirectory` allows an existing empty root and records `interactiveAuthConfigCreated=false`. Later, the generic finally branch is gated only on login-started + config-file-absent + !candidateReady; when post-login shape was never verified it calls `Remove-NewEmptyBaiduConfigDirectory`, which deletes any safe empty root and does not accept/check `RootCreatedThisRun`. Thus a pre-existing empty `%APPDATA%\BaiduPCS-Go` can be deleted if login fails before creating `pcs_config.json` (including process-start/early-init failure). This contradicts the Gate and Evidence claim that pre-existing empty roots are preserved.
 
 Next Gate: `G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1`. The accepted reconciliation helper is frozen; only the narrow auth rollback provenance defect is reopened.
+
+
+## Executor Evidence — G4-B Baidu Pre-existing Empty Rollback Repair R6R2E-R1 — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1
+EXECUTOR_RESULT=PASS_CANDIDATE_G4B_BAIDU_PREEXISTING_EMPTY_ROLLBACK_REPAIR_R6R2E_R1
+GOVERNANCE_VERSION_CURRENT=v0.2.7 / ACTIVE_PROVISIONAL
+PRE_GATE_HEAD=af53ff7434f22db6408d663111c396dab3c42f39
+R6R2E_R1_GATE_BLOB=a0262bdb70a8a72edcd6df32a5011964c236cd83
+ACCEPTED_AUTH_HELPER_BASE_BLOB=a5f6430627a1844c990ccd2712eb1f3ee74823ab
+FROZEN_RECONCILIATION_HELPER_BLOB=cb46e2bc949b4b71445de5c79180c5c05bd26c21
+ALLOWED_CHANGED_FILES=scripts/g4b-baidu-owner-interactive-auth-checkpoint.ps1;scripts/g4b-baidu-owner-interactive-auth-validator.ps1;EXECUTION_EVIDENCE.md;EXECUTOR_HANDOFF.md
+REVIEWER_HANDOFF_MODIFIED=NO
+R6R2E_R1_PREEXISTING_EMPTY_START_FAILURE_PRESERVED=PASS
+R6R2E_R1_PREEXISTING_EMPTY_NO_FILE_PRESERVED=PASS
+R6R2E_R1_NEW_EMPTY_ROOT_ROLLBACK_ALLOWED=PASS
+R6R2E_R1_PREEXISTING_ROOT_NEW_EXACT_FILE_REMOVES_FILE_ONLY=PASS
+R6R2E_R1_NEW_ROOT_NEW_EXACT_FILE_REMOVES_FILE_AND_ROOT=PASS
+R6R2E_R1_UNKNOWN_NONEMPTY_PRESERVED=PASS
+R6R2E_R1_NO_CONTENT_READ=PASS
+R6R2E_R1_NO_BROAD_DELETE=PASS
+R6R2E_FULL_REGRESSION=PASS
+R6R1_ACL_REGRESSION=PASS
+POWERSHELL_AST_PARSE=PASS
+SECRET_SCAN=PASS
+REAL_CONFIG_ACTIONS=0
+REAL_LOGIN_ACTIONS=0
+REAL_BAIDU_ACTIONS=0
+OWNER_CONFIG_READ=NO
+NETWORK_REQUESTS=0
+SECRET_OR_DPAPI_ACCESSED=NO
+VPS_OR_SSH_ACTIONS=0
+OWNER_HELPERS_EXECUTED=NO
+STOP_AT_REVIEWER=YES
+```
+
+Source/provenance: fresh `origin/main` was fast-forwarded to `af53ff7434f22db6408d663111c396dab3c42f39`; the tracked worktree was clean before edits. The existing untracked `results/` directory was preserved and not staged. The current Gate blob and accepted auth-helper base blob matched the Reviewer relay. The frozen reconciliation helper remained unchanged.
+
+Actual source change: the production empty-root rollback now requires the caller's `RootCreatedThisRun` provenance. After metadata confirms a real non-reparse directory and enumerates it as empty, a false provenance returns `PRESERVED_PREEXISTING_EMPTY` before any ACL assertion or delete; true provenance retains the existing owner-only ACL assertion and `Directory.Delete(path, false)` behavior. The `finally` call now passes the stored creation flag. Unknown/non-empty roots remain preserved. The separate exact-file rollback function and its provenance semantics were not changed.
+
+Validation: the updated project validator invoked the production rollback function against temporary non-secret filesystem fixtures. It covered login-start failure with a pre-existing empty root, an existing empty root with no file, new empty root exact rollback, exact new file under both pre-existing/new roots, and an unknown non-empty root. The exact-file tests used synthetic accepted metadata for the existing production metadata predicate and performed real exact file/directory existence checks only within the validator-owned temp fixture. Static checks confirmed no content-read API and no recursive deletion in the two production rollback functions. The complete interactive-auth validator and nested R6/R6R1 regression passed; PowerShell AST and Secret scan passed.
+
+Scope/safety: only the auth checkpoint, its validator, this append-only Evidence section, and the current Executor Handoff block changed. No Gate or Reviewer Handoff was modified. Real Owner config was not read or deleted; no login, `who`, Baidu executable, Secret/DPAPI, network/provider operation, VPS/SSH, or service/network-setting change occurred. GitHub fetch/push was used only for the explicitly required repository sync. Existing untracked `results/` artifacts were left untouched.
+
+Rollback: revert only this Gate's two script edits and the current Evidence/Handoff update; retain later unrelated canonical-main commits. No runtime or Owner state changed. GitHub fresh read-back and commit identity are reported in the completion packet.

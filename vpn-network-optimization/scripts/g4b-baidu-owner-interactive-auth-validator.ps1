@@ -157,23 +157,106 @@ try {
     Assert-R6R2CFixture ($newResult.State -ceq 'NEW_INITIALIZED' -and $newResult.CreatedThisRun -and (Test-Path -LiteralPath $newConfig -PathType Container)) 'ABSENT_CONFIG_INITIALIZATION_FIXTURE_FAILED'
     Assert-OwnerOnlyAcl -Path $newConfig -OwnerSid $ownerSid
     Assert-SafeBaiduConfigDirectory -ConfigDirectory $newConfig -ProjectRoot $fixtureProject -OwnerSid $ownerSid
-    $newCleanup = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $newConfig -OwnerSid $ownerSid
+    $newCleanup = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $newConfig -OwnerSid $ownerSid -RootCreatedThisRun $newResult.CreatedThisRun
     $script:interactiveAuthConfigCreated = $false
     Assert-R6R2CFixture ($newCleanup -ceq 'REMOVED_EMPTY_NEW' -and -not (Test-Path -LiteralPath $newConfig)) 'NEW_EMPTY_CONFIG_ROLLBACK_FIXTURE_FAILED'
+    Write-Output 'R6R2E_R1_NEW_EMPTY_ROOT_ROLLBACK_ALLOWED=PASS'
 
     $emptyResult = Initialize-BaiduInteractiveConfigDirectory -ConfigDirectory $emptyConfig -ProjectRoot $fixtureProject -OwnerSid $ownerSid
     Assert-R6R2CFixture ($emptyResult.State -ceq 'EXISTING_EMPTY_INITIALIZED' -and -not $emptyResult.CreatedThisRun) 'EXISTING_EMPTY_CONFIG_FIXTURE_FAILED'
     Assert-OwnerOnlyAcl -Path $emptyConfig -OwnerSid $ownerSid
     Assert-SafeBaiduConfigDirectory -ConfigDirectory $emptyConfig -ProjectRoot $fixtureProject -OwnerSid $ownerSid
-    Assert-R6R2CFixture ((Test-Path -LiteralPath $emptyConfig -PathType Container) -and (@(Get-ChildItem -LiteralPath $emptyConfig -Force).Count -eq 0)) 'PREEXISTING_CONFIG_WAS_REMOVED_OR_CHANGED'
+    $script:interactiveAuthLoginStarted = $true
+    $script:interactiveAuthConfigFileAbsentBeforeLogin = $true
+    $script:interactiveAuthPostLoginShapeVerified = $false
+    $preexistingStartFailure = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $emptyConfig -OwnerSid $ownerSid -RootCreatedThisRun $emptyResult.CreatedThisRun
+    Assert-R6R2CFixture ($preexistingStartFailure -ceq 'PRESERVED_PREEXISTING_EMPTY' -and (Test-Path -LiteralPath $emptyConfig -PathType Container) -and (@(Get-ChildItem -LiteralPath $emptyConfig -Force).Count -eq 0)) 'PREEXISTING_START_FAILURE_ROOT_NOT_PRESERVED'
+    Write-Output 'R6R2E_R1_PREEXISTING_EMPTY_START_FAILURE_PRESERVED=PASS'
+    $preexistingNoFile = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $emptyConfig -OwnerSid $ownerSid -RootCreatedThisRun $false
+    Assert-R6R2CFixture ($preexistingNoFile -ceq 'PRESERVED_PREEXISTING_EMPTY' -and (Test-Path -LiteralPath $emptyConfig -PathType Container) -and (@(Get-ChildItem -LiteralPath $emptyConfig -Force).Count -eq 0)) 'PREEXISTING_EMPTY_NO_FILE_ROOT_NOT_PRESERVED'
+    Write-Output 'R6R2E_R1_PREEXISTING_EMPTY_NO_FILE_PRESERVED=PASS'
+    $script:interactiveAuthLoginStarted = $false
+    $script:interactiveAuthConfigFileAbsentBeforeLogin = $false
+    $script:interactiveAuthPostLoginShapeVerified = $false
     Assert-R6R2CFixture ((Get-Acl -LiteralPath $fixtureAppData).Sddl -ceq $parentSddlBefore) 'UNRELATED_APPDATA_PARENT_ACL_CHANGED'
     [void][IO.Directory]::CreateDirectory((Split-Path -Parent $partialConfig))
     $partialResult = Initialize-BaiduInteractiveConfigDirectory -ConfigDirectory $partialConfig -ProjectRoot $fixtureProject -OwnerSid $ownerSid
     Assert-R6R2CFixture ($partialResult.CreatedThisRun) 'PARTIAL_CONFIG_FIXTURE_NOT_NEW'
     [IO.File]::WriteAllText($partialMarkerPath, 'NON_SECRET_PARTIAL_CONFIG_FIXTURE')
-    $partialDisposition = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $partialConfig -OwnerSid $ownerSid
+    $partialDisposition = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $partialConfig -OwnerSid $ownerSid -RootCreatedThisRun $partialResult.CreatedThisRun
     Assert-R6R2CFixture ($partialDisposition -ceq 'PRESERVED_NONEMPTY' -and (Test-Path -LiteralPath $partialMarkerPath -PathType Leaf)) 'PARTIAL_CONFIG_DATA_WAS_DELETED'
     $script:interactiveAuthConfigCreated = $false
+
+    $r1FixtureRoot = Join-Path $fixtureRoot 'r6r2e-r1'
+    $existingFileRoot = Join-Path $r1FixtureRoot 'existing-file\BaiduPCS-Go'
+    $newFileRoot = Join-Path $r1FixtureRoot 'new-file\BaiduPCS-Go'
+    $unknownRoot = Join-Path $r1FixtureRoot 'unknown\BaiduPCS-Go'
+    foreach ($path in @($existingFileRoot, $newFileRoot, $unknownRoot)) {
+        [void][IO.Directory]::CreateDirectory($path)
+    }
+    $unknownEntryPath = Join-Path $unknownRoot 'unexpected.fixture'
+    [IO.File]::WriteAllText($unknownEntryPath, 'NON_SECRET_UNKNOWN_ROLLBACK_FIXTURE')
+    $unknownDisposition = Remove-NewEmptyBaiduConfigDirectory -ConfigDirectory $unknownRoot -OwnerSid $ownerSid -RootCreatedThisRun $false
+    Assert-R6R2CFixture ($unknownDisposition -ceq 'PRESERVED_NONEMPTY' -and (Test-Path -LiteralPath $unknownRoot -PathType Container) -and (Test-Path -LiteralPath $unknownEntryPath -PathType Leaf)) 'UNKNOWN_NONEMPTY_ROOT_NOT_PRESERVED'
+    Write-Output 'R6R2E_R1_UNKNOWN_NONEMPTY_PRESERVED=PASS'
+
+    $originalMetadataReader = (Get-Command Get-BaiduPartialConfigMetadata -CommandType Function -ErrorAction Stop).ScriptBlock
+    $script:r6r2eR1MetadataSnapshot = $null
+    Set-Item -Path Function:\Get-BaiduPartialConfigMetadata -Value {
+        param([string]$ConfigDirectory, [string]$ProjectRoot)
+        if ([IO.Path]::GetFullPath($ConfigDirectory) -cne [IO.Path]::GetFullPath([string]$script:r6r2eR1MetadataSnapshot.Path)) {
+            throw 'R6R2E_R1_FIXTURE_METADATA_PATH_MISMATCH'
+        }
+        return $script:r6r2eR1MetadataSnapshot
+    }
+    try {
+        $rollbackRules = @([pscustomobject]@{
+            IdentityReference = [Security.Principal.SecurityIdentifier]::new($ownerSid.Value)
+            AccessControlType = [Security.AccessControl.AccessControlType]::Allow
+            IsInherited = $false
+            FileSystemRights = [Security.AccessControl.FileSystemRights]::FullControl
+        })
+        foreach ($case in @(
+            [pscustomobject]@{ Root = $existingFileRoot; RootCreated = $false; Expected = 'REMOVED_NEW_FILE_PRESERVED_DIRECTORY'; Marker = 'R6R2E_R1_PREEXISTING_ROOT_NEW_EXACT_FILE_REMOVES_FILE_ONLY' },
+            [pscustomobject]@{ Root = $newFileRoot; RootCreated = $true; Expected = 'REMOVED_NEW_FILE_AND_DIRECTORY'; Marker = 'R6R2E_R1_NEW_ROOT_NEW_EXACT_FILE_REMOVES_FILE_AND_ROOT' }
+        )) {
+            $configFile = Join-Path $case.Root 'pcs_config.json'
+            [IO.File]::WriteAllText($configFile, 'NON_SECRET_PCS_CONFIG_FIXTURE')
+            $script:r6r2eR1MetadataSnapshot = [pscustomobject]@{
+                Exists = $true
+                Path = $case.Root
+                IsDirectory = $true
+                IsReparsePoint = $false
+                OwnerSid = $ownerSid.Value
+                Rules = $rollbackRules
+                Entries = [object[]]@([pscustomobject]@{
+                    Name = 'pcs_config.json'
+                    IsDirectory = $false
+                    IsReparsePoint = $false
+                    Length = [long]29
+                    OwnerSid = $ownerSid.Value
+                    Rules = $rollbackRules
+                })
+            }
+            $script:interactiveAuthConfigFileAbsentBeforeLogin = $true
+            $script:interactiveAuthPostLoginShapeVerified = $true
+            $disposition = Remove-NewBaiduInteractiveConfigResidue -ConfigDirectory $case.Root -ProjectRoot $fixtureProject -OwnerSid $ownerSid -RootCreatedThisRun $case.RootCreated
+            $fileAbsent = -not (Test-Path -LiteralPath $configFile)
+            $rootExpected = if ($case.RootCreated) { -not (Test-Path -LiteralPath $case.Root) } else { Test-Path -LiteralPath $case.Root -PathType Container }
+            Assert-R6R2CFixture ($disposition -ceq $case.Expected -and $fileAbsent -and $rootExpected) ('EXACT_FILE_ROLLBACK_FIXTURE_FAILED_' + $case.Marker)
+            Write-Output ($case.Marker + '=PASS')
+        }
+    } finally {
+        Set-Item -Path Function:\Get-BaiduPartialConfigMetadata -Value $originalMetadataReader
+        $script:r6r2eR1MetadataSnapshot = $null
+        $script:interactiveAuthConfigFileAbsentBeforeLogin = $false
+        $script:interactiveAuthPostLoginShapeVerified = $false
+    }
+    Write-Output 'R6R2E_R1_NO_CONTENT_READ=PASS'
+    $emptyRollbackText = Get-R6R2CFunctionText -Ast $helperAst -Name 'Remove-NewEmptyBaiduConfigDirectory'
+    $exactRollbackText = Get-R6R2CFunctionText -Ast $helperAst -Name 'Remove-NewBaiduInteractiveConfigResidue'
+    Assert-R6R2CFixture (($emptyRollbackText + $exactRollbackText) -notmatch '(?i)Get-Content|ReadAllText|ReadAllBytes|ReadAllLines|OpenRead|Remove-Item\s+.*-Recurse' -and $exactRollbackText.Contains('[IO.File]::Delete($configFile)') -and $emptyRollbackText.Contains('[IO.Directory]::Delete($ConfigDirectory, $false)')) 'ROLLBACK_CONTENT_OR_BROAD_DELETE_FOUND'
+    Write-Output 'R6R2E_R1_NO_BROAD_DELETE=PASS'
     Write-Output 'R6R2C_EMPTY_CONFIG_INITIALIZATION_BOUNDED=PASS'
 
     $unknownAclBefore = (Get-Acl -LiteralPath $unknownConfig).Sddl
@@ -246,7 +329,7 @@ $negativeReadiness = @(
     (Test-BaiduInteractiveAuthReady -LoginExitCode 0 -ConfigSafe $true -WhoState 'READY' -Uid '913740286' -RuntimeCleanup 'FAIL')
 )
 Assert-R6R2CFixture ($readyFixture -and @($negativeReadiness | Where-Object { $_ }).Count -eq 0) 'PARTIAL_FAILURE_FALSE_PASS'
-Assert-R6R2CFixture ($helperMain.Contains('if ($script:interactiveAuthLoginStarted -and $script:interactiveAuthConfigFileAbsentBeforeLogin -and -not $candidateReady)') -and $configRollback.Contains('Test-DirectoryHasEntry') -and $configRollback.Contains('PRESERVED_NONEMPTY') -and $configRollback.Contains('[IO.Directory]::Delete($ConfigDirectory, $false)') -and $configExactRollback.Contains('Assert-BaiduPartialConfigMetadata') -and $configExactRollback.Contains('[IO.File]::Delete($configFile)') -and $helperText -notmatch 'Remove-Item[^\r\n]*-Recurse') 'PARTIAL_CONFIG_ROLLBACK_BOUNDARY_INVALID'
+Assert-R6R2CFixture ($helperMain.Contains('if ($script:interactiveAuthLoginStarted -and $script:interactiveAuthConfigFileAbsentBeforeLogin -and -not $candidateReady)') -and $helperMain.Contains('-RootCreatedThisRun $script:interactiveAuthConfigCreated') -and $configRollback.Contains('[Parameter(Mandatory = $true)][bool]$RootCreatedThisRun') -and $configRollback.Contains('if (-not $RootCreatedThisRun) { return ''PRESERVED_PREEXISTING_EMPTY'' }') -and $configRollback.Contains('Test-DirectoryHasEntry') -and $configRollback.Contains('PRESERVED_NONEMPTY') -and $configRollback.Contains('[IO.Directory]::Delete($ConfigDirectory, $false)') -and $configExactRollback.Contains('Assert-BaiduPartialConfigMetadata') -and $configExactRollback.Contains('[IO.File]::Delete($configFile)') -and $helperText -notmatch 'Remove-Item[^\r\n]*-Recurse') 'PARTIAL_CONFIG_ROLLBACK_BOUNDARY_INVALID'
 Assert-R6R2CFixture ($helperMain.Contains('-RuntimeCleanup $script:interactiveAuthRuntimeCleanup') -and $helperMain.Contains('Test-BaiduInteractiveAuthReady')) 'SUCCESS_NOT_GATED_ON_CLEANUP'
 Write-Output 'R6R2C_PARTIAL_FAILURE_NO_FALSE_PASS=PASS'
 Assert-R6R2CFixture ($helperMain.IndexOf('Complete-BaiduInteractivePostLoginConfig') -lt $helperMain.IndexOf("if (-not `$loginSucceeded)") -and $helperMain.IndexOf("if (-not `$loginSucceeded)") -lt $helperMain.IndexOf('Invoke-ReadOnlyBaiduWho') -and ([regex]::Matches($helperMain, 'Invoke-ReadOnlyBaiduWho\s+-ExecutablePath').Count -eq 1)) 'NONZERO_LOGIN_WHO_GUARD_INVALID'
@@ -287,6 +370,7 @@ Assert-R6R2CFixture (($helperText + $validatorText + $reconcileText + $reconcile
 Assert-R6R2CFixture (@($helperOutputs | Where-Object { $_ -match '(?i)(?:StdOut|StdErr|\$(?:script:)?\w*(?:Uid|Who))' }).Count -eq 0 -and $helperText.Contains('BAIDU_WHO_RAW_OUTPUT_EMITTED=NO')) 'RAW_OUTPUT_OR_UID_EMISSION_FOUND'
 & (Join-Path $PSScriptRoot 'g4b-baidu-auth-readiness-validator.ps1')
 Write-Output 'R6R2E_R6R1_ACL_REGRESSION=PASS'
+Write-Output 'R6R2E_FULL_REGRESSION=PASS'
 Write-Output 'POWERSHELL_AST_PARSE=PASS'
 Write-Output 'SECRET_SCAN=PASS'
 Write-Output 'REAL_LOGIN_ACTIONS=0'
