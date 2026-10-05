@@ -342,7 +342,7 @@ Fast-forward to current main, verify the R10 parser-repair Gate/runner/validator
 
 Read only what is needed:
 
-- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R9 chronology, root-cause repair, authorization, and active live-retry boundary.
+- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R10 chronology, R9 return reconciliation, provider-format root cause, and current offline parser-repair boundary.
 - `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — exact current offline parser-repair Gate.
 - `docs/G4B_PERSISTENT_THREE_ROLE_LIVE_RETRY_R6R2L_R9.md` — historical failed live retry Gate; do not execute.
 - `docs/REVIEWER_TRANSITION_2026-10-04.md` — older transition history; read only if earlier context is needed.
