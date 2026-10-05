@@ -104,25 +104,25 @@ Do not silently substitute historical C2C blobs from old Evidence or Executor se
 
 ```text
 GATE_ID=G4B_PERSISTENT_THREE_ROLE_READINESS
-STATE=OWNER_ACTION_REQUIRED_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16
-CURRENT_GATE_ESTIMATED_EXECUTION_TIME=OWNER_LOCAL_READ_ONLY_PROVIDER_OBSERVATION
+STATE=REVIEWER_ACTION_REQUIRED_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17
+CURRENT_GATE_ESTIMATED_EXECUTION_TIME=REVIEWER_PREPARE_AND_REVIEW_ONLY
 TIME_OVERRUN_REASON_REQUIRED_IF_YES=YES
-PREVIOUS_RESULT=PASS_R6R2L_R15_UPLOAD_DB_OWNER_NORMALIZATION
-OBJECTIVE=With local Baidu config ACL now reconciled, read only the provider recovery directory and classify whether any R9 residual pending/final project object remains.
-MAX_ENDPOINT_THIS_ROUND=One read-only who + ls observation ending in sanitized residual classification + STOP_AT_REVIEWER. No cleanup, no provider mutation, no live runner.
+PREVIOUS_RESULT=RETURN_R6R2L_R16_STALE_PENDING_PRESENT
+OBJECTIVE=Prepare and review a bounded reversible provider-side quarantine helper for the exact single stale project pending object proven by R16. Do not permanently delete ciphertext.
+MAX_ENDPOINT_THIS_ROUND=Reviewer prepares/locks R17 helper and updates canonical evidence/handoff. No provider mutation or Owner command is authorized yet.
 MANDATORY_REVIEW_STOP=YES
-TARGET_AND_SCOPE=Owner Windows host + approved Baidu recovery directory read-only state only.
-APPLICABLE_CRITICAL_CONSTRAINTS=No mkdir/upload/download-from-Baidu/mv/rm/login/logout/config mutation; no raw UID/stdout/stderr/remote filenames; no DPAPI/recovery Secret; no SSH/VPS; no profile/service/route/proxy/TUN mutation; no live G4-B; no G4-C; retain R15 rollback journal.
-PREFLIGHT=R15 formally PASS; pcs_uploading.json Owner normalized ADMIN→OWNER; strict R6R1 ACL readback PASS; local config shape PASS; remote residual state still UNKNOWN because R11 stopped before provider access.
-REQUIRED_EVIDENCE=R16 Gate blob 33649d6c5cf5b16120f4578680071beab9da4592; reused read-only helper blob b3dfb42f4deaf28650d3aab35d92b5a2965ed662; parser preflight; config ACL PASS; pinned CLI PASS; hidden UID input; who/UID PASS; ls/header PASS; final/pending/unknown project counts; sanitized residual classification; temp cleanup PASS; all no-mutation markers.
-ACCEPTANCE_CRITERIA=Observation only. CLEAN may permit a new bounded live G4-B retry Gate; any residual/unknown/auth/provider failure returns for separate reconciliation. R16 itself never closes G4-B.
-ROLLBACK_STATUS_OR_PLAN=No provider rollback because R16 is read-only. R15 local rollback journal remains retained and untouched.
-OWNER_ONLY_ACTIONS=Safe fast-forward to current main, verify R16 Gate/reused helper blob and Handoff state, parser-preflight helper, run once, enter expected Baidu UID only through hidden local prompt, return sanitized markers, stop.
-REVIEWER_TO_EXECUTOR_RELAY=NONE.
-EXECUTOR_TO_REVIEWER_RELAY=Return sanitized R16 markers only; do not cleanup residuals or run live G4-B.
+TARGET_AND_SCOPE=Approved Baidu recovery directory; exact single strict project pending object only. Planned future mutation is rename-to-quarantine with rename-back rollback.
+APPLICABLE_CRITICAL_CONSTRAINTS=No permanent rm; no upload/download-from-Baidu/mkdir/login/logout/config mutation; no raw UID/stdout/stderr/remote filename output; no DPAPI/recovery Secret; no SSH/VPS; no profile/service/route/proxy/TUN mutation; no live G4-B; no G4-C; retain R15 rollback journal.
+PREFLIGHT=R15 formally PASS. R16 read-only provider observation formally returned STALE_PENDING_PRESENT with final=0, pending=1, unknown=0; config ACL/CLI/account/header all PASS; no provider mutation occurred.
+REQUIRED_EVIDENCE=R17 Gate blob 1b02f0e258b7b2b3e71513f7760f200660bfbf6a; a future locked helper blob; default non-mutating validation path; explicit Owner authorization guard for any rename; exact single-pending precheck; quarantine-target absence; source→quarantine readback; rename-back rollback path; all sanitized/no-action markers.
+ACCEPTANCE_CRITERIA=Preparation only until helper is locked and Owner explicitly authorizes. Future PASS_CANDIDATE requires source pending absent, quarantine present, final=0, pending=0, unknown=0, no permanent delete, and rollback availability/readback.
+ROLLBACK_STATUS_OR_PLAN=R15 local rollback journal remains retained and untouched. Future R17 provider rollback is exact quarantine→source rename with restored final=0/pending=1/unknown=0 readback.
+OWNER_ONLY_ACTIONS=NONE until the next Reviewer prepares and locks the R17 helper. Do not authorize or run a provider mutation from this handoff alone.
+REVIEWER_TO_EXECUTOR_RELAY=Next Reviewer should prepare/review the R17 helper on main, lock its blob into Gate/Handoff/Evidence, then request explicit Owner authorization if all preconditions remain valid.
+EXECUTOR_TO_REVIEWER_RELAY=NONE.
 ```
 
-G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and returned `BAIDU_PENDING_UPLOAD_NOT_PRESENT` with `CONSEQUENTIAL_MUTATION_STARTED=NO`; its pending rollback observation used the superseded pre-R10 parser and remains non-authoritative for remote cleanliness. R11 then stopped locally at `BAIDU_CONFIG_ACL` with `BAIDU_AUTH_CONFIG_OWNER_MISMATCH` before UID/provider action. R12 proved one ADMIN-owned file within an otherwise clean three-item subtree. R13 narrowed the unknown file role. R14 then proved the exact mismatch is `pcs_uploading.json=ADMIN`, while root/config are OWNER, history/captcha absent, and there are no unknown entries or reparse points. R15 has formally PASSed: the exact pcs_uploading.json Owner was normalized ADMIN→OWNER with rollback-before-write, strict R6R1 readback PASS and rollback journal retained. Current work is R16 read-only provider residual-state reconciliation. Remote residual state remains UNKNOWN until R16 completes.
+G4-B0 is formally closed PASS. R8 pipeline-output repair and R10 real-listing parser/fixture repair are formally PASS. R9 reached the real Baidu pending-upload readback boundary and exposed the provider-format parser defect. R11 then stopped locally on Baidu config Owner mismatch; R12-R14 narrowed that drift to exact `pcs_uploading.json=ADMIN`; R15 formally PASSed after bounded ADMIN→OWNER normalization with rollback-before-write and strict R6R1 readback. R16 then completed the previously blocked read-only provider observation: final=0, pending=1, unknown=0, so the remote production residual state is now formally STALE_PENDING_PRESENT. Current work is R17 preparation for reversible quarantine of that exact single pending object; no provider mutation is authorized yet.
 
 Current G4-B recovery-backend Executor identity:
 
@@ -270,6 +270,9 @@ G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_SCRIPT_BLOB=930cae384a3bc1df27
 G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15_RESULT=PASS
 G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_GATE_BLOB=33649d6c5cf5b16120f4578680071beab9da4592
 G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_HELPER_BLOB=b3dfb42f4deaf28650d3aab35d92b5a2965ed662
+G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16_RESULT=RETURN_STALE_PENDING_PRESENT
+G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17_GATE_BLOB=1b02f0e258b7b2b3e71513f7760f200660bfbf6a
+R17_EXECUTION_AUTHORIZED=NO
 OWNER_R15_ACL_NORMALIZATION_AUTHORIZATION=GRANTED
 R15_EXECUTION_AUTHORIZED=YES
 R9_TRANSITION_SNAPSHOT=docs/REVIEWER_TRANSITION_2026-10-05.md
@@ -343,7 +346,7 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 - G4-B0 is formally PASS and closed.
 - G4-B is IN_PROGRESS. R8 pipeline-output repair is formally PASS. R9 executed once and returned in P5 with `BAIDU_PENDING_UPLOAD_NOT_PRESENT`, `CONSEQUENTIAL_MUTATION_STARTED=NO`, remote rollback PASS and pending rollback PASS.
 - R9 source reconciliation identified a real-provider fixture drift: BaiduPCS-Go v4.0.2 `ls -l` is borderless, while the pre-R10 parser/fake fixture assumed pipe-delimited rows.
-- R10 parser/fixture repair is formally PASS. R11 returned before provider access on Owner mismatch. R12-R14 identified the local mismatch as exact `pcs_uploading.json` Owner=ADMIN. R15 then formally PASSed after bounded ADMIN→OWNER normalization with strict post-readback and retained rollback journal. R16 is current and read-only; remote residual state remains UNKNOWN until its provider observation completes.
+- R10 parser/fixture repair is formally PASS. R11 returned before provider access on Owner mismatch. R12-R14 identified the local mismatch as exact `pcs_uploading.json` Owner=ADMIN. R15 formally PASSed after bounded ADMIN→OWNER normalization with strict post-readback and retained rollback journal. R16 then completed read-only provider reconciliation and proved final=0, pending=1, unknown=0: remote production residual state is STALE_PENDING_PRESENT. R17 is now the current prepared reconciliation boundary; helper preparation/review is pending and no provider mutation is authorized.
 - Persistent REALITY backup service and persistent `SELF-VPN-V1` are still not accepted.
 - G4-C remains separate and pending after G4-B formal acceptance.
 - Final v1 production default/control posture remains pending G4.
@@ -352,17 +355,21 @@ G4B0_GATE_BLOB=fcab4cef6a68f9c57c1077134d9b6b237f21ebd9
 
 ## NEXT_STEP
 
-Current step is Owner authorization for `G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15`. Do not execute the mutation path until the Owner explicitly authorizes this exact Gate.
+Next Reviewer prepares and reviews the R17 reversible stale-pending quarantine helper on `main`, locks its blob into Gate/Handoff/Evidence, and only then requests explicit Owner authorization. Do not permanently delete the ciphertext and do not run live G4-B.
 
 ## OWNER_ACTION_REQUIRED
 
-No command is required yet. Owner must explicitly authorize R15 before any ACL mutation command is issued.
+None yet. The R17 helper is not locked, so Owner must not authorize or run a provider mutation from the Gate alone.
 
 ## EVIDENCE_POINTERS
 
 Read only what is needed:
 
-- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R13 chronology, R10 formal PASS, R11/R12 local ACL reconciliation, and current direct-child file-role boundary.
+- `docs/G4B_BAIDU_STALE_PENDING_QUARANTINE_R6R2L_R17.md` — exact current prepared Gate; helper not yet locked and execution not authorized.
+- `docs/G4B_BAIDU_RESIDUAL_READONLY_AFTER_ACL_R6R2L_R16.md` — completed R16 read-only Gate proving final=0/pending=1/unknown=0.
+- `docs/G4B_BAIDU_UPLOAD_DB_OWNER_NORMALIZATION_R6R2L_R15.md` — completed R15 local Owner normalization Gate.
+
+- `docs/REVIEWER_TRANSITION_2026-10-05.md` — current R4→R17 chronology, including R15 formal PASS, R16 stale-pending observation and the prepared R17 quarantine boundary.
 - `docs/G4B_BAIDU_CONFIG_ACL_OWNER_DRIFT_READONLY_R6R2L_R12.md` — exact current metadata-only ACL-owner drift Gate.
 - `docs/G4B_BAIDU_RESIDUAL_READONLY_RECONCILIATION_R6R2L_R11.md` — historical R11 read-only residual-state Gate and return.
 - `docs/G4B_BAIDU_REAL_LISTING_PARSER_REPAIR_R6R2L_R10.md` — accepted R10 parser-repair Gate and history.
