@@ -9086,3 +9086,30 @@ Reviewer independently verified the source delta and Gate fixtures. The discover
 The validator's CRLF-tolerant entrypoint assertion is a validator-only compatibility fix and does not alter runtime semantics. No real Owner/provider/network state was accessed.
 
 R6R2J-R1 is formally PASS. Next Gate `G4B_BAIDU_POSTAUTH_OWNER_UID_DISCOVERY_RETRY_R6R2J_R2` authorizes exactly one Owner-local read-only `who` retry with the repaired helper.
+
+
+## Owner result + Reviewer repair — R6R2J-R2 / R6R2J-R3 — 2026-10-05
+
+```text
+R6R2J_R2_RESULT=RETURN_R6R2J_R2_BAIDU_UID_OUTPUT_AMBIGUOUS
+BAIDU_UID_DISCOVERY=FAIL_CLOSED
+BAIDU_UID_FAILURE_CODE=BAIDU_UID_OUTPUT_AMBIGUOUS
+BAIDU_UID_RUNTIME_CLEANUP=PASS
+UID_DISPLAYED_LOCALLY=NO
+AUTHENTICATED_CONFIG_STATE=ACCEPTED_FROZEN
+REAUTH_AUTHORIZED=NO
+R6R2J_R1_PARSER_REMAINS_ACCEPTED=YES
+REVIEWER_UTF8_REPAIR=APPLIED
+UID_HELPER_BLOB=db75bb7fb2cefffb243b8003186ac6b5dcc96372
+UID_VALIDATOR_BLOB=bde25e6987a16d9f06a368c73b432cb57d958761
+AUTH_READINESS_CHECKPOINT_BLOB=be1c55d4b7623041c338aca83194ec0b59a41dc8
+R6R2J_R3_GATE_BLOB=8edcaf366a27b4e90784f546b7edf35fb2a29942
+```
+
+The second Owner-local read-only UID attempt again failed closed as ambiguous and cleaned its temporary runtime. No UID was accepted, and no provider file mutation occurred.
+
+Reviewer inspection found a remaining decoding boundary: the inherited redirected `who` process did not explicitly set stdout/stderr decoding, while the pinned Go CLI emits its Chinese canonical identity line as UTF-8. The UID helper was repaired without modifying the accepted auth-readiness checkpoint: a UID-specific read-only `who` wrapper reuses the frozen StartInfo contract and locks both redirected output streams to UTF-8 before reading them. The R6R2J-R1 canonical-line parser is unchanged.
+
+Validator coverage now requires the UTF-8 decoder lock and the same one-`who`/no-login boundary.
+
+During Reviewer repository write, an initial string-substitution method interpreted a PowerShell `$'` sequence as JavaScript replacement syntax and temporarily produced a malformed intermediate helper on `main`. Reviewer fresh read-back caught it before any Owner instruction or execution. The helper was rebuilt from the accepted R6R2J-R1 blob using function-style replacement, and final fresh read-back confirms the complete function and bounded call site. No Owner/provider/runtime action used the transient intermediate commits.
