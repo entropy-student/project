@@ -454,3 +454,12 @@ Next Gate: `G4B_BAIDU_OWNER_UID_DISCOVERY_HELPER_R6R2A`, an offline-only impleme
 The helper is bounded to the accepted R6R1 trust/config/ACL/read-only who path. It does not accept credentials or login, suppresses provider raw output/username, parses a single numeric UID, and only displays that UID locally after successful cleanup. Offline fixtures, AST, Secret scan, and zero-live-action evidence are accepted.
 
 Next Gate: `G4B_BAIDU_OWNER_UID_DISCOVERY_RUN_R6R2B`. The numeric UID remains Owner-local and must not be pasted into chat/GitHub.
+
+
+## 2026-10-05 — R6R2B returned: Baidu config absent; prepare bounded interactive auth
+
+**Decision:** `RETURN_OWNER_ACTION_REQUIRED_R6R2B_CONFIG_ABSENT`.
+
+The UID helper stopped before temporary runtime creation, so no `who` was attempted and no UID was displayed. The selected BaiduPCS-Go config is not currently available for read-only identity discovery.
+
+Pinned BaiduPCS-Go v4.0.2 source confirms cookie/BDUSS/username/password flag-based login would expose credential material in process arguments and is forbidden. A no-argument interactive `login` prompts locally with password no-echo, but upstream marks it long-unmaintained. Therefore the next step is the offline-only `G4B_BAIDU_OWNER_INTERACTIVE_AUTH_HELPER_R6R2C` Gate; no manual login is authorized yet.
