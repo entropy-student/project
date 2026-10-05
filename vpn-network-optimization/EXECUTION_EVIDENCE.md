@@ -9534,3 +9534,31 @@ G4B_BAIDU_READONLY_DIAGNOSTIC_REPAIR_R6R2L_R8_SCRIPT_BLOB=59c2ab662562d6130fc921
 ```
 
 Next Gate: `G4B_BAIDU_READONLY_DIAGNOSTIC_REPAIR_R6R2L_R8`.
+
+
+## Reviewer reconciliation — superseded R8 diagnostic parser failure — 2026-10-05
+
+```text
+ATTEMPTED_GATE=G4B_BAIDU_READONLY_DIAGNOSTIC_REPAIR_R6R2L_R8
+OWNER_REPORTED_HEAD_AFTER=d94ea09fad8235a88906679d524da5ca94c508cf
+OWNER_REPORTED_GATE_BLOB=20ed0bbe8fe7a298bd46ec9ebccbd8ac0421f4f5
+OWNER_REPORTED_DIAGNOSTIC_BLOB=59c2ab662562d6130fc9215dae810edbfed59ac2
+OWNER_REPORTED_LOCKED_DIAGNOSTIC_IDENTITY=PASS
+OWNER_REPORTED_RESULT=PARSER_ERROR
+OWNER_REPORTED_ERROR_FILE=g4b-baidu-readonly-diagnostic.ps1
+OWNER_REPORTED_ERROR_LINE=237
+BAIDU_NETWORK_ACTION=NO
+BAIDU_MUTATION_ACTION=NO
+SSH_OR_VPS_ACTION=NO
+RECOVERY_WRITE=NO
+NETWORK_MUTATION=NO
+SECRET_VALUES_EMITTED=0
+REVIEWER_RESULT=RETURN_SUPERSEDED_DIAGNOSTIC_PARSER_ERROR
+```
+
+Reviewer reconciliation:
+- The diagnostic script failed at PowerShell parse time before any diagnostic body executed.
+- No Baidu, SSH/VPS, recovery, Secret, profile, service, route, proxy or TUN action occurred.
+- Fresh canonical Evidence already contains the stronger R7 root-cause determination: uncaptured `$psi.Environment.Remove([string]$key)` Boolean output polluted the PowerShell success stream and caused the same `PropertyNotFoundException` class that explains R5 `UNCLASSIFIED`.
+- Canonical runner and validator already contain the direct `[void]$psi.Environment.Remove(...)` repair under `G4B_BAIDU_PIPELINE_OUTPUT_REPAIR_R6R2L_R8`.
+- Therefore the broken read-only diagnostic branch is superseded and will not be repaired or rerun. The authoritative next Gate is the existing pipeline-output repair offline validation.
