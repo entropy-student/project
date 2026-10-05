@@ -10238,3 +10238,65 @@ Reviewer static inspection confirms:
 - output is sanitized role/presence/count classification only.
 
 No normalization or provider readback is authorized by R14.
+
+
+## Reviewer formal decision — R6R2L-R14 known config-role Owner metadata classification — 2026-10-05
+
+```text
+GATE_ID=G4B_BAIDU_KNOWN_CONFIG_ROLE_OWNER_READONLY_R6R2L_R14
+OWNER_REPORTED_CHECKPOINT_STARTED_AT=2026-10-05T16:52:40.3807678+00:00
+OWNER_REPORTED_HEAD_AFTER=02515caa37dcc8ad32575a1917e6924cc039862c
+OWNER_REPORTED_PROJECT_SOURCE_STATUS=PASS
+OWNER_REPORTED_PREEXISTING_RESULTS_PRESERVED=YES
+OWNER_REPORTED_GATE_BLOB=4a12130337fc79366ce2dceea3fb7ae5f5fe759e
+OWNER_REPORTED_SCRIPT_BLOB=e2a5f2e9f64e5878b66575f50f772131b7dacb0f
+OWNER_REPORTED_LOCKED_R14_SOURCE_IDENTITY=PASS
+OWNER_REPORTED_CURRENT_GATE_ALIGNMENT=PASS
+OWNER_REPORTED_R14_PARSER_PREFLIGHT=PASS
+OWNER_REPORTED_OWNER_RUNTIME=PASS
+OWNER_REPORTED_TOTAL_ITEM_COUNT=3
+OWNER_REPORTED_ROOT_OWNER_ROLE=OWNER
+OWNER_REPORTED_CONFIG_PRESENT=YES
+OWNER_REPORTED_CONFIG_OWNER_ROLE=OWNER
+OWNER_REPORTED_HISTORY_PRESENT=NO
+OWNER_REPORTED_HISTORY_OWNER_ROLE=NOT_PRESENT
+OWNER_REPORTED_UPLOAD_DB_PRESENT=YES
+OWNER_REPORTED_UPLOAD_DB_OWNER_ROLE=ADMIN
+OWNER_REPORTED_CAPTCHA_PRESENT=NO
+OWNER_REPORTED_CAPTCHA_OWNER_ROLE=NOT_PRESENT
+OWNER_REPORTED_UNKNOWN_FILE_COUNT=0
+OWNER_REPORTED_UNKNOWN_DIRECTORY_COUNT=0
+OWNER_REPORTED_REPARSE_POINT_COUNT=0
+OWNER_REPORTED_R14_KNOWN_ROLE_STATE=EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
+OWNER_REPORTED_CONFIG_CONTENT_READ=NO
+OWNER_REPORTED_ACL_MUTATION=NO
+OWNER_REPORTED_BAIDU_PROVIDER_ACTION=NO
+OWNER_REPORTED_UID_INPUT=NO
+OWNER_REPORTED_SECRET_OR_DPAPI_ACCESS=NO
+OWNER_REPORTED_SSH_OR_VPS_ACTION=NO
+OWNER_REPORTED_NETWORK_MUTATION=NO
+OWNER_REPORTED_STOP_AT_REVIEWER=YES
+OWNER_REPORTED_CHECKPOINT_FINISHED_AT=2026-10-05T16:52:47.3620084+00:00
+OWNER_REPORTED_ACTUAL_ELAPSED=00:00:06.9812406
+REVIEWER_DECISION=PASS_R6R2L_R14_EXPECTED_CONFIG_OWNER_UPLOAD_DB_ADMIN
+```
+
+Reviewer acceptance:
+- R14 completed exactly within local metadata-only scope.
+- The config root is owned by the current Owner.
+- `pcs_config.json` exists and is owned by the current Owner.
+- `pcs_command_history.txt` is absent.
+- `pcs_uploading.json` exists and is owned by Builtin Administrators.
+- `captcha.png` is absent.
+- No unknown file, unknown directory or reparse point exists.
+- Combined with R12, there is no Deny ACE, unauthorized Allow, Owner read-rights gap, SYSTEM owner or OTHER owner.
+- No config content, provider, UID, Secret/DPAPI, SSH/VPS or network action occurred.
+
+Causal reconciliation:
+- BaiduPCS-Go v4.0.2 upload path invokes `pcsupload.NewUploadingDatabase()`.
+- That helper opens `pcs_uploading.json` in `pcsconfig.GetConfigDir()` with create/read-write semantics.
+- R9 executed a real upload before its readback failure.
+- R12/R13/R14 now prove the only Owner drift is precisely `pcs_uploading.json`, matching the file role produced by the R9 upload path.
+- This closes the local identity question. It does not yet prove remote Baidu residual state.
+
+Next: prepare a separate narrow consequential ACL-normalization Gate. No mutation is authorized by this R14 acceptance itself.
